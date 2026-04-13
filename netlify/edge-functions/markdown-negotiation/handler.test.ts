@@ -12,25 +12,32 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
+import {
+  assertVaryIncludesAccept,
+  withMockFetch,
+} from '../lib/test-helpers.ts';
 import markdownNegotiation from './index.ts';
 
 test('handler serves markdown when preferred and available', async (t) => {
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
-  globalThis.fetch = (async (input) => {
+  withMockFetch(t, (async (input) => {
     const request = input as Request;
-    assert.equal(request.url, 'https://example.com/docs/index.md');
-    assert.equal(request.method, 'GET');
-    assert.equal(request.headers.get('accept'), 'text/markdown');
+    assert.strictEqual(
+      request.url,
+      'https://example.com/docs/index.md',
+      'Subrequest URL',
+    );
+    assert.strictEqual(request.method, 'GET', 'Subrequest method');
+    assert.strictEqual(
+      request.headers.get('accept'),
+      'text/markdown',
+      'Accept header',
+    );
 
     return new Response('# Docs', {
       headers: { 'content-type': 'text/plain; charset=utf-8' },
       status: 200,
     });
-  }) as typeof fetch;
+  }) as typeof fetch);
 
   const response = await markdownNegotiation(
     new Request('https://example.com/docs/', {
@@ -45,30 +52,30 @@ test('handler serves markdown when preferred and available', async (t) => {
     },
   );
 
-  assert.equal(await response.text(), '# Docs');
-  assert.equal(
+  assert.strictEqual(await response.text(), '# Docs', 'Response body');
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
+    'Content-Type',
   );
-  assert.match(response.headers.get('vary') ?? '', /(^|,\s*)Accept(,|$)/);
+  assertVaryIncludesAccept(response);
 });
 
 test('handler serves markdown for the site root', async (t) => {
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
-  globalThis.fetch = (async (input) => {
+  withMockFetch(t, (async (input) => {
     const request = input as Request;
-    assert.equal(request.url, 'https://example.com/index.md');
-    assert.equal(request.method, 'GET');
+    assert.strictEqual(
+      request.url,
+      'https://example.com/index.md',
+      'Subrequest URL',
+    );
+    assert.strictEqual(request.method, 'GET', 'Subrequest method');
 
     return new Response('# Home', {
       headers: { 'content-type': 'text/plain; charset=utf-8' },
       status: 200,
     });
-  }) as typeof fetch;
+  }) as typeof fetch);
 
   const response = await markdownNegotiation(
     new Request('https://example.com/', {
@@ -79,29 +86,29 @@ test('handler serves markdown for the site root', async (t) => {
     },
   );
 
-  assert.equal(await response.text(), '# Home');
-  assert.equal(
+  assert.strictEqual(await response.text(), '# Home', 'Response body');
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
+    'Content-Type',
   );
 });
 
 test('handler serves markdown for explicit html page requests', async (t) => {
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
-  globalThis.fetch = (async (input) => {
+  withMockFetch(t, (async (input) => {
     const request = input as Request;
-    assert.equal(request.url, 'https://example.com/docs/index.md');
-    assert.equal(request.method, 'GET');
+    assert.strictEqual(
+      request.url,
+      'https://example.com/docs/index.md',
+      'Subrequest URL',
+    );
+    assert.strictEqual(request.method, 'GET', 'Subrequest method');
 
     return new Response('# Html page mapped to markdown', {
       headers: { 'content-type': 'text/plain; charset=utf-8' },
       status: 200,
     });
-  }) as typeof fetch;
+  }) as typeof fetch);
 
   const response = await markdownNegotiation(
     new Request('https://example.com/docs/index.html', {
@@ -112,24 +119,24 @@ test('handler serves markdown for explicit html page requests', async (t) => {
     },
   );
 
-  assert.equal(await response.text(), '# Html page mapped to markdown');
-  assert.equal(
+  assert.strictEqual(
+    await response.text(),
+    '# Html page mapped to markdown',
+    'Response body',
+  );
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
+    'Content-Type',
   );
 });
 
 test('handler bypasses negotiation for non-index html paths', async (t) => {
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
   let fetched = false;
-  globalThis.fetch = (async () => {
+  withMockFetch(t, (async () => {
     fetched = true;
     return new Response('unexpected', { status: 200 });
-  }) as typeof fetch;
+  }) as typeof fetch);
 
   const docsHtmlResponse = await markdownNegotiation(
     new Request('https://example.com/docs.html', {
@@ -144,9 +151,13 @@ test('handler bypasses negotiation for non-index html paths', async (t) => {
     },
   );
 
-  assert.equal(fetched, false);
-  assert.equal(docsHtmlResponse.status, 301);
-  assert.equal(docsHtmlResponse.headers.get('location'), '/docs/');
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(docsHtmlResponse.status, 301, 'HTTP status');
+  assert.strictEqual(
+    docsHtmlResponse.headers.get('location'),
+    '/docs/',
+    'Location',
+  );
 
   const uppercaseIndexHtmlResponse = await markdownNegotiation(
     new Request('https://example.com/docs/index.HTML', {
@@ -161,10 +172,11 @@ test('handler bypasses negotiation for non-index html paths', async (t) => {
     },
   );
 
-  assert.equal(fetched, false);
-  assert.equal(
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(
     await uppercaseIndexHtmlResponse.text(),
     '<html>uppercase</html>',
+    'Response body',
   );
 
   const fourOhFourResponse = await markdownNegotiation(
@@ -180,22 +192,21 @@ test('handler bypasses negotiation for non-index html paths', async (t) => {
     },
   );
 
-  assert.equal(fetched, false);
-  assert.equal(fourOhFourResponse.status, 404);
-  assert.equal(await fourOhFourResponse.text(), '<html>not found</html>');
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(fourOhFourResponse.status, 404, 'HTTP status');
+  assert.strictEqual(
+    await fourOhFourResponse.text(),
+    '<html>not found</html>',
+    'Response body',
+  );
 });
 
 test('handler bypasses markdown fetch when html is preferred', async (t) => {
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
   let fetched = false;
-  globalThis.fetch = (async () => {
+  withMockFetch(t, (async () => {
     fetched = true;
     return new Response('unexpected', { status: 200 });
-  }) as typeof fetch;
+  }) as typeof fetch);
 
   const response = await markdownNegotiation(
     new Request('https://example.com/docs/', {
@@ -210,25 +221,25 @@ test('handler bypasses markdown fetch when html is preferred', async (t) => {
     },
   );
 
-  assert.equal(fetched, false);
-  assert.equal(await response.text(), '<html>docs</html>');
-  assert.equal(
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(
+    await response.text(),
+    '<html>docs</html>',
+    'Response body',
+  );
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/html; charset=utf-8',
+    'Content-Type',
   );
 });
 
 test('handler bypasses markdown fetch when Accept is missing', async (t) => {
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
   let fetched = false;
-  globalThis.fetch = (async () => {
+  withMockFetch(t, (async () => {
     fetched = true;
     return new Response('unexpected', { status: 200 });
-  }) as typeof fetch;
+  }) as typeof fetch);
 
   const response = await markdownNegotiation(
     new Request('https://example.com/docs/'),
@@ -241,25 +252,25 @@ test('handler bypasses markdown fetch when Accept is missing', async (t) => {
     },
   );
 
-  assert.equal(fetched, false);
-  assert.equal(await response.text(), '<html>docs</html>');
-  assert.equal(
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(
+    await response.text(),
+    '<html>docs</html>',
+    'Response body',
+  );
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/html; charset=utf-8',
+    'Content-Type',
   );
 });
 
 test('handler bypasses markdown fetch for unsupported methods', async (t) => {
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
   let fetched = false;
-  globalThis.fetch = (async () => {
+  withMockFetch(t, (async () => {
     fetched = true;
     return new Response('unexpected', { status: 200 });
-  }) as typeof fetch;
+  }) as typeof fetch);
 
   const response = await markdownNegotiation(
     new Request('https://example.com/docs/', {
@@ -275,31 +286,35 @@ test('handler bypasses markdown fetch for unsupported methods', async (t) => {
     },
   );
 
-  assert.equal(fetched, false);
-  assert.equal(await response.text(), '<html>post passthrough</html>');
-  assert.equal(
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(
+    await response.text(),
+    '<html>post passthrough</html>',
+    'Response body',
+  );
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/html; charset=utf-8',
+    'Content-Type',
   );
 });
 
 test('handler serves HEAD markdown responses without a body', async (t) => {
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
-  globalThis.fetch = (async (input) => {
+  withMockFetch(t, (async (input) => {
     const request = input as Request;
-    assert.equal(request.url, 'https://example.com/docs/index.md');
-    assert.equal(request.method, 'HEAD');
+    assert.strictEqual(
+      request.url,
+      'https://example.com/docs/index.md',
+      'Subrequest URL',
+    );
+    assert.strictEqual(request.method, 'HEAD', 'Subrequest method');
 
     return new Response('ignored', {
       headers: { 'content-type': 'text/plain; charset=utf-8' },
       status: 200,
       statusText: 'OK',
     });
-  }) as typeof fetch;
+  }) as typeof fetch);
 
   const response = await markdownNegotiation(
     new Request('https://example.com/docs/', {
@@ -311,27 +326,27 @@ test('handler serves HEAD markdown responses without a body', async (t) => {
     },
   );
 
-  assert.equal(response.status, 200);
-  assert.equal(response.statusText, 'OK');
-  assert.equal(await response.text(), '');
-  assert.equal(
+  assert.strictEqual(response.status, 200, 'HTTP status');
+  assert.strictEqual(response.statusText, 'OK', 'HTTP statusText');
+  assert.strictEqual(await response.text(), '', 'Response body');
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
+    'Content-Type',
   );
-  assert.match(response.headers.get('vary') ?? '', /(^|,\s*)Accept(,|$)/);
+  assertVaryIncludesAccept(response);
 });
 
 test('handler falls back from HEAD to GET when HEAD is not supported', async (t) => {
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
   const methods: string[] = [];
-  globalThis.fetch = (async (input) => {
+  withMockFetch(t, (async (input) => {
     const request = input as Request;
     methods.push(request.method);
-    assert.equal(request.url, 'https://example.com/docs/index.md');
+    assert.strictEqual(
+      request.url,
+      'https://example.com/docs/index.md',
+      'Subrequest URL',
+    );
 
     if (request.method === 'HEAD') {
       return new Response(null, {
@@ -345,7 +360,7 @@ test('handler falls back from HEAD to GET when HEAD is not supported', async (t)
       status: 200,
       statusText: 'OK',
     });
-  }) as typeof fetch;
+  }) as typeof fetch);
 
   const response = await markdownNegotiation(
     new Request('https://example.com/docs/', {
@@ -357,25 +372,23 @@ test('handler falls back from HEAD to GET when HEAD is not supported', async (t)
     },
   );
 
-  assert.deepEqual(methods, ['HEAD', 'GET']);
-  assert.equal(response.status, 200);
-  assert.equal(response.statusText, 'OK');
-  assert.equal(await response.text(), '');
-  assert.equal(
+  assert.deepStrictEqual(methods, ['HEAD', 'GET'], 'Subrequest methods');
+  assert.strictEqual(response.status, 200, 'HTTP status');
+  assert.strictEqual(response.statusText, 'OK', 'HTTP statusText');
+  assert.strictEqual(await response.text(), '', 'Response body');
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
+    'Content-Type',
   );
-  assert.match(response.headers.get('vary') ?? '', /(^|,\s*)Accept(,|$)/);
+  assertVaryIncludesAccept(response);
 });
 
 test('handler falls back to html and varies on Accept when markdown is missing', async (t) => {
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
-  globalThis.fetch = (async () =>
-    new Response('missing', { status: 404 })) as typeof fetch;
+  withMockFetch(
+    t,
+    (async () => new Response('missing', { status: 404 })) as typeof fetch,
+  );
 
   const response = await markdownNegotiation(
     new Request('https://example.com/search/', {
@@ -390,10 +403,15 @@ test('handler falls back to html and varies on Accept when markdown is missing',
     },
   );
 
-  assert.equal(await response.text(), '<html>search</html>');
-  assert.equal(
+  assert.strictEqual(
+    await response.text(),
+    '<html>search</html>',
+    'Response body',
+  );
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/html; charset=utf-8',
+    'Content-Type',
   );
-  assert.match(response.headers.get('vary') ?? '', /(^|,\s*)Accept(,|$)/);
+  assertVaryIncludesAccept(response);
 });
