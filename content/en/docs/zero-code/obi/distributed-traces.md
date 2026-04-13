@@ -29,18 +29,21 @@ specification.
 OBI supports distributed tracing and context propagation in the following
 configurations:
 
-| Area                                 | Supported versions or environments                                                                    | Notes                                                                                                              |
-| :----------------------------------- | :---------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------- |
-| Network-level context propagation    | Linux environments that meet the [OBI compatibility requirements](/docs/zero-code/obi/#compatibility) | Works across programming languages for HTTP and HTTPS traffic. gRPC and HTTP/2 are not supported at network level. |
-| Go library-level context propagation | Go `1.18+`                                                                                            | Supports goroutine context propagation up to 3 nested goroutine levels.                                            |
-| Node.js async hooks                  | Node.js `8.0+`                                                                                        | Custom handling of `SIGUSR1` can interfere with context propagation.                                               |
-| Ruby Puma                            | Ruby applications served by Puma `5.0+`                                                               | Context propagation support requires the Puma server.                                                              |
-| Java thread pools                    | JDK `8+`                                                                                              | No additional documented runtime constraints.                                                                      |
-| Python asyncio                       | Python `3.9+` with `uvloop`                                                                           | Context propagation support requires the `uvloop` event loop.                                                      |
+| Area                                 | Supported versions or environments                                                                    | Notes                                                                                                                                                                                                                               |
+| :----------------------------------- | :---------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Network-level context propagation    | Linux environments that meet the [OBI compatibility requirements](/docs/zero-code/obi/#compatibility) | Works across programming languages for HTTP traffic. For HTTPS, propagation is limited to other OBI-instrumented services and can be disrupted by proxies or L7 load balancers. gRPC and HTTP/2 are not supported at network level. |
+| Go library-level context propagation | Go `1.18+`                                                                                            | Supports goroutine context propagation up to 3 nested goroutine levels. This distributed tracing feature has a higher minimum version than general Go library-level instrumentation.                                                |
+| Node.js async hooks                  | Node.js `8.0+`                                                                                        | Custom handling of `SIGUSR1` can interfere with context propagation.                                                                                                                                                                |
+| Ruby Puma                            | Ruby applications served by Puma `5.0+`                                                               | Context propagation support requires the Puma server.                                                                                                                                                                               |
+| Java thread pools                    | JDK `8+`                                                                                              | No additional documented runtime constraints.                                                                                                                                                                                       |
+| Python asyncio                       | Python `3.9+` with `uvloop`                                                                           | Context propagation support requires the `uvloop` event loop.                                                                                                                                                                       |
 
 The versions listed here are the versions OBI explicitly supports for
 distributed tracing features. Other versions might also work, but they are not
-part of the documented support scope unless stated otherwise.
+part of the documented support scope unless stated otherwise. In particular, the
+Go `1.18+` requirement here applies to distributed tracing and context
+propagation; other OBI Go library-level instrumentation has a lower minimum
+version.
 
 ## Implementation
 

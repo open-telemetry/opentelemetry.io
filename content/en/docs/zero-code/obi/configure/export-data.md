@@ -40,11 +40,11 @@ instrumentation:
 Some application-level instrumentation also depends on specific runtime,
 library, or server versions:
 
-| Area              | Supported versions                       | Notes                                                                    |
-| :---------------- | :--------------------------------------- | :----------------------------------------------------------------------- |
-| Go applications   | Go `1.17+`                               | Applies to Go library-level instrumentation.                             |
-| Java applications | JDK `8+`                                 | No additional documented runtime constraints.                            |
-| NGINX             | Validated on NGINX `1.27.5` and `1.29.7` | These are the NGINX versions currently covered by documented validation. |
+| Area              | Supported versions                       | Notes                                                                                                  |
+| :---------------- | :--------------------------------------- | :----------------------------------------------------------------------------------------------------- |
+| Go applications   | Go `1.17+`                               | Applies to Go library-level instrumentation; Go library-level context propagation requires Go `1.18+`. |
+| Java applications | JDK `8+`                                 | No additional documented runtime constraints.                                                          |
+| NGINX             | Validated on NGINX `1.27.5` and `1.29.7` | These are the NGINX versions currently covered by documented validation.                               |
 
 ### Go library instrumentation compatibility
 
