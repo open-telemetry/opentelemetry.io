@@ -88,20 +88,6 @@ The agent-to-gateway pattern adds operational complexity compared to simpler
 deployment options. Use this pattern when you need one or more of the following
 capabilities:
 
-- **Host-specific data collection**: You need to collect metrics, logs, or
-  traces that are only available on the host where your applications run, such
-  as host metrics, system logs, or resource detection. For example, receivers
-  like the
-  [`hostmetricsreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)
-  or
-  [`filelogreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)
-  must be unique per host instance. Running multiple instances of these
-  receivers on the same host results in duplicate data. Similarly, the
-  [`resourcedetectionprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
-  adds information about the host where both the Collector and the application
-  are running. Running this processor in a Collector on a separate machine from
-  the application results in incorrect data.
-
 - **Centralized processing**: You want to perform complex processing operations,
   such as tail-based sampling, advanced filtering, or data transformation, in a
   central location rather than on every host.
@@ -180,7 +166,7 @@ processors:
 
 exporters:
   # Send to gateway
-  otlp_grpc:
+  otlp:
     endpoint: otel-gateway:4317
     # Absorb short gateway outages
     sending_queue:
@@ -277,7 +263,7 @@ processors:
 
 exporters:
   # Export to your observability backend
-  otlp_grpc:
+  otlp:
     endpoint: your-backend:4317
     headers:
       api-key: ${env:BACKEND_API_KEY}
