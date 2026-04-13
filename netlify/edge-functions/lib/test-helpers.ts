@@ -135,6 +135,23 @@ export function firstAssetFetchEvent(
   return events[0]!;
 }
 
+/** First captured MP event with the given `name` (e.g. `page_view`). */
+export function firstMpEventNamed(
+  ga4Bodies: Record<string, unknown>[],
+  eventName: string,
+  expectedBodyCount = 1,
+): { name: string; params: Record<string, unknown> } {
+  assert.strictEqual(ga4Bodies.length, expectedBodyCount, 'GA4 body count');
+  const events = parseGa4EventsArray(ga4Bodies[0] as Record<string, unknown>);
+  const ev = events.find((e) => e.name === eventName);
+  assert.ok(ev, `GA4 event ${eventName}`);
+  const hit = ev as AssetFetchGa4Event;
+  return {
+    name: hit.name,
+    params: { ...hit.params } as Record<string, unknown>,
+  };
+}
+
 /** Like {@link firstAssetFetchEvent} but returns only `params` (no `name` check). */
 export function firstAssetFetchParams(
   ga4Bodies: Record<string, unknown>[],

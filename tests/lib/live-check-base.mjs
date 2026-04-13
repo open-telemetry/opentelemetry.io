@@ -2,8 +2,8 @@
  * Shared helpers for `live-check.test.mjs` files (plain ESM so `node --test`
  * does not need to load this module from TypeScript).
  *
- * `LIVE_CHECK_BASE_URL` must match the key set in each edge function's
- * `live-check.mjs` before spawning `node --test`.
+ * `LIVE_CHECK_BASE_URL` must match the key set in each `live-check.mjs`
+ * launcher before spawning `node --test`.
  */
 
 import assert from 'node:assert/strict';

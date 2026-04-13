@@ -3,14 +3,17 @@
 This folder contains the markdown-negotiation Edge Function implementation and
 its tests.
 
-Successful `2xx` Markdown responses enqueue a GA4 `asset_fetch` event (GET only)
-when `GA4_API_SECRET` and `HUGO_SERVICES_GOOGLEANALYTICS_ID` are set (see
-`../lib/ga4-asset-fetch.ts` and `projects/2026/asset-fetch-analytics.plan.md`).
-`asset_path` is the resolved `*.md` path; `original_path` is included only when
-it differs from `asset_path`; `content_type` is read from the response headers;
-and `event_emitter` is `negotiation`. Non-2xx results fall back to the normal
-HTML page, which is covered by the site's client-side GA `page_view`
-instrumentation.
+Negotiated Markdown requests that prefer Markdown enqueue a GA4 `asset_fetch`
+event for the returned Markdown subresponse status, including `2xx`, `3xx`,
+`4xx`, and `5xx`, when `GA4_API_SECRET` and `HUGO_SERVICES_GOOGLEANALYTICS_ID`
+are set (see `../lib/ga4-mp.ts` and
+`projects/2026/asset-fetch-analytics.plan.md`). `asset_path` is the resolved
+`*.md` path; `original_path` is included only when it differs from `asset_path`;
+`content_type` is read from the returned response headers; and `event_emitter`
+is `negotiation`.
+
+Negotiated non-`2xx` Markdown outcomes are surfaced directly to the client
+instead of falling back to `context.next()`.
 
 Internal fetches for sibling `index.md` assets include `X-Asset-Fetch-Ga-Info`
 so the asset-tracking Edge Function can detect and skip those subrequests,

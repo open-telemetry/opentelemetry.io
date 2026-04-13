@@ -5,7 +5,7 @@ import {
   enqueueAssetFetchEvent,
   normalizeContentType,
   withAssetFetchGaInfoHeader,
-} from '../lib/ga4-asset-fetch.ts';
+} from '../lib/ga4-mp.ts';
 
 export default async function schemaAnalytics(
   request: Request,
