@@ -5,8 +5,7 @@ description:
   Learn why and how to create a Collector deployment that combines agents and
   gateways
 weight: 100
-# prettier-ignore
-cSpell:ignore: cumulativetodelta filelogreceiver hostmetricsreceiver loadbalancingexporter resourcedetectionprocessor
+cSpell:ignore: cumulativetodelta loadbalancingexporter
 ---
 
 [Agents](/docs/collector/deploy/agent/) and
