@@ -6,7 +6,6 @@ weight: 5
 cSpell:ignore: AggregationBase2ExponentialHistogram base2ExponentialBucketHistogram bedroomTemperatureCelsius buildAndStart buildWithCallback classicUpperBounds connectedDeviceCount CounterValue defaultAggregation deviceCommandDuration devicesConnected errcheck gaugeBuilder GaugeFunc GaugeValue GaugeWithCallback hvac hvacOnTime initLabelValues InstrumentKindHistogram InstrumentSelector InstrumentType labelValues livingRoomTemperatureCelsius LongUpDownCounter MustNewConstMetric NativeHistogramBucketFactor nativeOnly nolint OtelHistogramAsSummary otlpmetrichttp PrometheusHistogramNative PrometheusRegistry PrometheusSummary promhttp sdkmetric setDefaultAggregationSelector setExplicitBucketBoundariesAdvice thermostatSetpoint totalEnergyJoules upDownCounterBuilder
 ---
 
-<!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 
 {{% alert title="Note" %}} This page covers Java and Go. Examples for other
@@ -163,8 +162,8 @@ scrape endpoint and pushing to an OTLP endpoint.
 
 Prometheus
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusScrapeInit.java"?>
+
 ```java
 package otel;
 
@@ -192,12 +191,11 @@ public class PrometheusScrapeInit {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 OpenTelemetry
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelScrapeInit.java"?>
+
 ```java
 package otel;
 
@@ -243,7 +241,6 @@ public class OtelScrapeInit {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 {{% /tab %}} {{% tab Go %}}
 
@@ -337,8 +334,8 @@ func main() {
 Prometheus
 
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusOtlpInit.java"?>
+
 ```java
 package otel;
 
@@ -371,12 +368,11 @@ public class PrometheusOtlpInit {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 OpenTelemetry
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelOtlpInit.java"?>
+
 ```java
 package otel;
 
@@ -423,7 +419,6 @@ public class OtelOtlpInit {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 {{% /tab %}} {{% tab Go %}}
 
@@ -508,8 +503,8 @@ OpenTelemetry equivalent:
 Prometheus
 
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusCounter.java"?>
+
 ```java
 package otel;
 
@@ -537,12 +532,11 @@ public class PrometheusCounter {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 OpenTelemetry
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelCounter.java"?>
+
 ```java
 package otel;
 
@@ -575,7 +569,6 @@ public class OtelCounter {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 Key differences:
 
@@ -676,8 +669,8 @@ to observe it at collection time rather than increment it yourself.
 Prometheus
 
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusCounterCallback.java"?>
+
 ```java
 package otel;
 
@@ -701,12 +694,11 @@ public class PrometheusCounterCallback {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 OpenTelemetry
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelCounterCallback.java"?>
+
 ```java
 package otel;
 
@@ -738,7 +730,6 @@ public class OtelCounterCallback {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 Key differences:
 
@@ -857,8 +848,8 @@ OpenTelemetry `Gauge` instrument.
 Prometheus
 
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusGauge.java"?>
+
 ```java
 package otel;
 
@@ -878,12 +869,11 @@ public class PrometheusGauge {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 OpenTelemetry
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelGauge.java"?>
+
 ```java
 package otel;
 
@@ -913,7 +903,6 @@ public class OtelGauge {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 Key differences:
 
@@ -1001,8 +990,8 @@ want to observe it at collection time rather than track it yourself.
 Prometheus
 
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusGaugeCallback.java"?>
+
 ```java
 package otel;
 
@@ -1026,12 +1015,11 @@ public class PrometheusGaugeCallback {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 OpenTelemetry
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelGaugeCallback.java"?>
+
 ```java
 package otel;
 
@@ -1062,7 +1050,6 @@ public class OtelGaugeCallback {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 {{% /tab %}} {{% tab Go %}}
 
@@ -1155,8 +1142,8 @@ OpenTelemetry `UpDownCounter` instrument.
 Prometheus
 
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusUpDownCounter.java"?>
+
 ```java
 package otel;
 
@@ -1180,12 +1167,11 @@ public class PrometheusUpDownCounter {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 OpenTelemetry
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelUpDownCounter.java"?>
+
 ```java
 package otel;
 
@@ -1217,7 +1203,6 @@ public class OtelUpDownCounter {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 Key differences:
 
@@ -1312,8 +1297,8 @@ want to observe it at collection time.
 Prometheus
 
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusUpDownCounterCallback.java"?>
+
 ```java
 package otel;
 
@@ -1336,12 +1321,11 @@ public class PrometheusUpDownCounterCallback {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 OpenTelemetry
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelUpDownCounterCallback.java"?>
+
 ```java
 package otel;
 
@@ -1371,7 +1355,6 @@ public class OtelUpDownCounterCallback {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 {{% /tab %}} {{% tab Go %}}
 
@@ -1485,8 +1468,8 @@ observations into discrete ranges.
 Prometheus
 
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusHistogram.java"?>
+
 ```java
 package otel;
 
@@ -1507,12 +1490,11 @@ public class PrometheusHistogram {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 OpenTelemetry
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelHistogram.java"?>
+
 ```java
 package otel;
 
@@ -1546,7 +1528,6 @@ public class OtelHistogram {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 Key differences:
 
@@ -1658,8 +1639,8 @@ The example below uses `.nativeOnly()` to restrict to native format; omitting it
 would emit both classic and native formats simultaneously:
 
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusHistogramNative.java"?>
+
 ```java
 package otel;
 
@@ -1680,7 +1661,6 @@ public class PrometheusHistogramNative {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 {{% /tab %}} {{% tab Go %}}
 
@@ -1736,8 +1716,8 @@ instrumentation code:
 {{< tabpane text=true >}} {{% tab Java %}}
 
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelHistogramExponentialExporter.java"?>
+
 ```java
 package otel;
 
@@ -1759,7 +1739,6 @@ public class OtelHistogramExponentialExporter {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 {{% /tab %}} {{% tab Go %}}
 
@@ -1799,8 +1778,8 @@ view instead:
 {{< tabpane text=true >}} {{% tab Java %}}
 
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelHistogramExponentialView.java"?>
+
 ```java
 package otel;
 
@@ -1821,7 +1800,6 @@ public class OtelHistogramExponentialView {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 {{% /tab %}} {{% tab Go %}}
 
@@ -1863,8 +1841,8 @@ below show this simpler approach.
 Prometheus
 
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusSummary.java"?>
+
 ```java
 package otel;
 
@@ -1887,12 +1865,11 @@ public class PrometheusSummary {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 OpenTelemetry
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelHistogramAsSummary.java"?>
+
 ```java
 package otel;
 
@@ -1925,7 +1902,6 @@ public class OtelHistogramAsSummary {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 {{% /tab %}} {{% tab Go %}}
 
