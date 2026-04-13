@@ -476,7 +476,9 @@ example).
 
 ### Performance Optimization for Synchronous Instruments
 
-For synchronous instruments, you can use the `Enabled` method to check if the instrument is enabled before performing expensive operations to compute attributes or values.
+For synchronous instruments, you can use the `Enabled` method to check if the
+instrument is enabled before performing expensive operations to compute
+attributes or values.
 
 ```go
 if apiCounter.Enabled(ctx) {
@@ -485,7 +487,8 @@ if apiCounter.Enabled(ctx) {
 }
 ```
 
-This ensures your instrumentation doesn't pay a performance penalty when no MeterProvider is configured, or when a view is configured to drop the metric.
+This ensures your instrumentation doesn't pay a performance penalty when no
+MeterProvider is configured, or when a view is configured to drop the metric.
 
 ### Using Counters
 
