@@ -1302,8 +1302,8 @@ func getRandomNumber(min int, max int) int {
 
 > [!NOTE] Check your work
 >
-> - Imported the `math/rand` package to support the implementation
->   of the `generateRandomNumber` function.
+> - Imported the `math/rand` package to support the implementation of the
+>   `generateRandomNumber` function.
 > - Added the `generateAtm` function, that instantiates an `Atm` type and
 >   randomly assigns either Illinois or California as the value for `StateID`,
 >   along with the corresponding value for `ISPNetwork`.
