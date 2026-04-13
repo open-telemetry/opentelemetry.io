@@ -8,8 +8,9 @@ cSpell:ignore: AggregationBase2ExponentialHistogram base2ExponentialBucketHistog
 
 <?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 
-{{% alert title="Note" %}} This page covers Java and Go. Examples for other
-languages are planned. {{% /alert %}}
+> [!NOTE]
+>
+> This page covers Java and Go. Examples for other languages are planned.
 
 This guide is for developers familiar with the
 [Prometheus client libraries](https://prometheus.io/docs/instrumenting/clientlibs/)
