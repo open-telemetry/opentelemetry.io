@@ -126,12 +126,12 @@ The tail-sampling processor evaluates completed traces against the configured
 policies. A trace is sampled if **any** policy matches:
 
 - **Critical services** are always sampled to ensure full visibility into
-   payment flows, checkout, and user-facing services.
-- **High-criticality services** are sampled at 50%, balancing observability
-   with data volume.
+  payment flows, checkout, and user-facing services.
+- **High-criticality services** are sampled at 50%, balancing observability with
+  data volume.
 - **Medium and low-criticality services** are progressively sampled at lower
-   rates to reduce noise from less critical paths.
+  rates to reduce noise from less critical paths.
 - **Errors are always captured** regardless of service criticality, ensuring no
-   issues go unnoticed.
+  issues go unnoticed.
 - **Slow traces** (>5s) from critical and high-criticality services are always
-   sampled to help identify performance bottlenecks.
+  sampled to help identify performance bottlenecks.
