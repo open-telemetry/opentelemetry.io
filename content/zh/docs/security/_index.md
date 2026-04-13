@@ -1,7 +1,7 @@
 ---
 title: 安全性
 cascade:
-  collector_vers: 0.149.0
+  collector_vers: 0.150.1
 weight: 970
 default_lang_commit: f35b3300574b428f94dfeeca970d93c5a6ddbf35
 drifted_from_default: true
