@@ -2,7 +2,7 @@
  * Tests end-to-end handler behavior:
  *
  * - markdown success
- * - html fallback
+ * - direct subresponse return for non-2xx negotiated outcomes
  * - root
  * - explicit `.html`
  * - non-index `.html` bypass
@@ -384,10 +384,14 @@ test('handler falls back from HEAD to GET when HEAD is not supported', async (t)
   assertVaryIncludesAccept(response);
 });
 
-test('handler falls back to html and varies on Accept when markdown is missing', async (t) => {
+test('handler returns 404 markdown subresponse directly when markdown is missing', async (t) => {
   withMockFetch(
     t,
-    (async () => new Response('missing', { status: 404 })) as typeof fetch,
+    (async () =>
+      new Response('missing', {
+        headers: { 'content-type': 'text/plain; charset=utf-8' },
+        status: 404,
+      })) as typeof fetch,
   );
 
   const response = await markdownNegotiation(
@@ -403,15 +407,169 @@ test('handler falls back to html and varies on Accept when markdown is missing',
     },
   );
 
+  assert.strictEqual(await response.text(), 'missing', 'Response body');
+  assert.strictEqual(response.status, 404, 'HTTP status');
   assert.strictEqual(
-    await response.text(),
-    '<html>search</html>',
-    'Response body',
+    response.headers.get('content-type'),
+    'text/plain; charset=utf-8',
+    'Content-Type',
   );
+  assertVaryIncludesAccept(response);
+});
+
+test('handler returns 302 markdown subresponse directly', async (t) => {
+  withMockFetch(
+    t,
+    (async () =>
+      new Response(null, {
+        headers: { location: '/elsewhere' },
+        status: 302,
+      })) as typeof fetch,
+  );
+
+  const response = await markdownNegotiation(
+    new Request('https://example.com/search/', {
+      headers: { accept: 'text/markdown' },
+    }),
+    {
+      next: async () =>
+        new Response('<html>search</html>', {
+          headers: { 'content-type': 'text/html; charset=utf-8' },
+          status: 200,
+        }),
+    },
+  );
+
+  assert.strictEqual(response.status, 302, 'HTTP status');
+  assert.strictEqual(
+    response.headers.get('location'),
+    '/elsewhere',
+    'Location',
+  );
+  assertVaryIncludesAccept(response);
+});
+
+test('handler returns 500 markdown subresponse directly', async (t) => {
+  withMockFetch(
+    t,
+    (async () =>
+      new Response('upstream error', {
+        headers: { 'content-type': 'text/plain; charset=utf-8' },
+        status: 500,
+      })) as typeof fetch,
+  );
+
+  const response = await markdownNegotiation(
+    new Request('https://example.com/search/', {
+      headers: { accept: 'text/markdown' },
+    }),
+    {
+      next: async () =>
+        new Response('<html>search</html>', {
+          headers: { 'content-type': 'text/html; charset=utf-8' },
+          status: 200,
+        }),
+    },
+  );
+
+  assert.strictEqual(response.status, 500, 'HTTP status');
+  assert.strictEqual(await response.text(), 'upstream error', 'Response body');
+  assert.strictEqual(
+    response.headers.get('content-type'),
+    'text/plain; charset=utf-8',
+    'Content-Type',
+  );
+  assertVaryIncludesAccept(response);
+});
+
+test('handler returns HEAD 404 markdown subresponse directly without a body', async (t) => {
+  withMockFetch(
+    t,
+    (async () =>
+      new Response('missing', {
+        headers: { 'content-type': 'text/plain; charset=utf-8' },
+        status: 404,
+      })) as typeof fetch,
+  );
+
+  const response = await markdownNegotiation(
+    new Request('https://example.com/search/', {
+      headers: { accept: 'text/markdown' },
+      method: 'HEAD',
+    }),
+    {
+      next: async () => new Response(null, { status: 200 }),
+    },
+  );
+
+  assert.strictEqual(response.status, 404, 'HTTP status');
+  assert.strictEqual(await response.text(), '', 'Response body');
+  assert.strictEqual(
+    response.headers.get('content-type'),
+    'text/plain; charset=utf-8',
+    'Content-Type',
+  );
+  assertVaryIncludesAccept(response);
+});
+
+test('handler bypasses markdown fetch for HEAD when HTML is preferred', async (t) => {
+  let fetched = false;
+  withMockFetch(t, (async () => {
+    fetched = true;
+    return new Response('unexpected', { status: 200 });
+  }) as typeof fetch);
+
+  const response = await markdownNegotiation(
+    new Request('https://example.com/docs/', {
+      headers: { accept: 'text/html, text/markdown;q=0.8' },
+      method: 'HEAD',
+    }),
+    {
+      next: async () =>
+        new Response(null, {
+          headers: { 'content-type': 'text/html; charset=utf-8' },
+          status: 200,
+        }),
+    },
+  );
+
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(response.status, 200, 'HTTP status');
+  assert.strictEqual(await response.text(), '', 'Response body');
   assert.strictEqual(
     response.headers.get('content-type'),
     'text/html; charset=utf-8',
     'Content-Type',
   );
-  assertVaryIncludesAccept(response);
+});
+
+test('handler bypasses markdown fetch for non-negotiable HEAD paths', async (t) => {
+  let fetched = false;
+  withMockFetch(t, (async () => {
+    fetched = true;
+    return new Response('unexpected', { status: 200 });
+  }) as typeof fetch);
+
+  const response = await markdownNegotiation(
+    new Request('https://example.com/docs/index.md', {
+      headers: { accept: 'text/markdown' },
+      method: 'HEAD',
+    }),
+    {
+      next: async () =>
+        new Response(null, {
+          headers: { 'content-type': 'text/markdown; charset=utf-8' },
+          status: 200,
+        }),
+    },
+  );
+
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(response.status, 200, 'HTTP status');
+  assert.strictEqual(await response.text(), '', 'Response body');
+  assert.strictEqual(
+    response.headers.get('content-type'),
+    'text/markdown; charset=utf-8',
+    'Content-Type',
+  );
 });

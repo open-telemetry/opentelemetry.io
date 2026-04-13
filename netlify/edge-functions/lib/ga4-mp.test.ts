@@ -6,9 +6,10 @@ import test from 'node:test';
 import {
   buildAssetFetchGaInfoHeaderValue,
   enqueueAssetFetchEvent,
+  enqueueGa4PageViewEvent,
   normalizeContentType,
   resolveClientId,
-} from './ga4-asset-fetch.ts';
+} from './ga4-mp.ts';
 
 test('normalizeContentType extracts media type', () => {
   assert.strictEqual(
@@ -209,5 +210,64 @@ test('enqueueAssetFetchEvent calls waitUntil with GA4 payload', async (t) => {
     events[0].params.original_path,
     undefined,
     'original_path',
+  );
+});
+
+test('enqueueGa4PageViewEvent calls waitUntil with page_view payload', async (t) => {
+  const g = globalThis as Record<string, unknown>;
+  const originalNetlify = g.Netlify;
+  const originalFetch = globalThis.fetch;
+  t.after(() => {
+    g.Netlify = originalNetlify;
+    globalThis.fetch = originalFetch;
+  });
+
+  g.Netlify = {
+    env: {
+      get: (name: string) => {
+        if (name === 'HUGO_SERVICES_GOOGLEANALYTICS_ID') return 'G-TEST123';
+        if (name === 'GA4_API_SECRET') return 'secret-test';
+        return undefined;
+      },
+    },
+  };
+
+  let capturedBody: Record<string, unknown> | undefined;
+  globalThis.fetch = (async (_input: RequestInfo | URL, init?: RequestInit) => {
+    if (init?.body) {
+      capturedBody = JSON.parse(init.body as string);
+    }
+    return new Response('', { status: 200 });
+  }) as typeof fetch;
+
+  let waitUntilPromise: Promise<unknown> | undefined;
+  const context = {
+    waitUntil: (p: Promise<unknown>) => {
+      waitUntilPromise = p;
+    },
+  };
+
+  const pageUrl = 'https://example.com/ecosystem/registry/miss';
+  enqueueGa4PageViewEvent(new Request(pageUrl), context, {
+    page_location: pageUrl,
+    page_title: 't',
+  });
+
+  assert.ok(waitUntilPromise, 'waitUntil');
+  await waitUntilPromise;
+
+  assert.ok(capturedBody, 'Body exists');
+  const events = capturedBody!.events as Array<{
+    name: string;
+    params: Record<string, string | number>;
+  }>;
+  assert.strictEqual(events.length, 1, 'events length');
+  assert.strictEqual(events[0].name, 'page_view', 'event name');
+  assert.strictEqual(events[0].params.page_location, pageUrl, 'page_location');
+  assert.strictEqual(events[0].params.page_title, 't', 'page_title');
+  assert.strictEqual(
+    events[0].params.engagement_time_msec,
+    1,
+    'engagement_time_msec',
   );
 });
