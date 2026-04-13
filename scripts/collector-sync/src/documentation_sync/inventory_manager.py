@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any
 
 import yaml
-from semantic_version import Version
+from semantic_version import Version  # type: ignore[import-untyped]
 
 from .type_defs import COMPONENT_TYPES, DistributionName
 
@@ -68,9 +68,17 @@ class InventoryManager:
             }
 
             with open(file_path, "w") as f:
-                yaml.dump(component_data, f, default_flow_style=False, sort_keys=False, allow_unicode=True)
+                yaml.dump(
+                    component_data,
+                    f,
+                    default_flow_style=False,
+                    sort_keys=False,
+                    allow_unicode=True,
+                )
 
-    def load_versioned_inventory(self, distribution: DistributionName, version: Version) -> dict[str, Any]:
+    def load_versioned_inventory(
+        self, distribution: DistributionName, version: Version
+    ) -> dict[str, Any]:
         """
         Load inventory for a specific distribution and version.
 
