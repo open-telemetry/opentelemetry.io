@@ -19247,6 +19247,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:55:15.925090874Z"
   },
+  "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-13T13:36:25.949193-08:00"
+  },
   "https://kubernetes.io/docs/concepts/workloads/controllers/": {
     "StatusCode": 206,
     "LastSeen": "2026-03-25T09:56:11.286721173Z"
@@ -22511,6 +22515,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-03-23T14:15:06.803246611Z"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.38.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-13T17:30:53.82668158Z"
+  },
   "https://pkg.go.dev/google.golang.org/grpc": {
     "StatusCode": 200,
     "LastSeen": "2026-03-18T09:54:51.577785387Z"
@@ -22979,6 +22987,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-09T09:44:15.414388151Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.61.0-alpha/opentelemetry-bom-alpha-1.61.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-13T14:13:09.87998692Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.53.0/opentelemetry-bom-1.53.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2026-03-23T14:20:41.201496667Z"
@@ -22990,6 +23002,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.60.1/opentelemetry-bom-1.60.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2026-03-09T09:44:13.804875138Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.61.0/opentelemetry-bom-1.61.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-13T14:13:06.892909545Z"
   },
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "StatusCode": 206,
