@@ -27,7 +27,7 @@ In this guide, you will:
 
 By the end, you will have a simple pipeline running on your machine and a
 clearer idea of how the Collector fits into an observability stack. If you want
-more context before diving in, check out the [Collector](/docs/collector)
+more context before getting started, see the [Collector](/docs/collector)
 overview.
 
 ## Prerequisites
