@@ -54,9 +54,10 @@ export OTEL_RESOURCE_ATTRIBUTES="service.instance.id=$(uuidgen)"
 ```
 
 > [!NOTE]
+>
 > Make sure that `service.instance.id` is unique for each instance, 
 > and that a new `service.instance.id` is generated whenever a resource attribute changes.
-> The [recommended way](https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource) 
+> The [recommended way](/docs/specs/semconv/resource/service/#service-instance) 
 > is to generate a new UUID on each startup of an instance.
 
 #### Configure telemetry
