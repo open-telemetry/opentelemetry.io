@@ -127,9 +127,6 @@ You see output confirming the traces were sent:
   ...
 ```
 
-You should see span details like Trace ID, Name, Kind, and timestamps, that's
-the Collector receiving and processing your data.
-
 6. To explore the traces visually, open <http://localhost:55679/debug/tracez> in
    your browser and select one of the traces from the table.
 
