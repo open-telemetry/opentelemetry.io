@@ -1,0 +1,21 @@
+# cSpell:ignore ciscoosreceiver
+title: Cisco OS Receiver
+registryType: receiver
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+license: Apache 2.0
+description:
+  The Cisco OS Receiver is a modular receiver that collects metrics from Cisco
+  network devices via SSH connections.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/ciscoosreceiver
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/ciscoosreceiver
+  version: v0.149.0

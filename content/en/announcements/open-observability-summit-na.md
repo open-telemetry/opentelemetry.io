@@ -7,13 +7,13 @@ weight: 20250624
 ---
 
 <i class="fas fa-bullhorn"></i> <span class="d-none d-sm-inline">[Get
-ready][CNCF-blog] for the inaugural</span> [**{{% param title %}}**][oss] and
+ready][blog] for the inaugural</span> [**{{% param title %}}**][oss] and
 <span class="d-none d-md-inline"><br></span>
 <span class="d-none d-sm-inline">co-located </span>[**OTel Community
 Day**][ocd], **Denver CO, <span class="text-nowrap">June 24-26</span>**
 
-[CNCF-blog]: /blog/2025/otel-day/
+[blog]: /blog/2025/otel-day/
 [oss]:
-  https://events.linuxfoundation.org/open-source-summit-north-america/?utm_source=opentelemetry&utm_medium=all&utm_campaign=Open-Observability-Summit-2025&utm_content=slim-banner
+  https://events.linuxfoundation.org/open-source-summit-north-america/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner
 [ocd]:
-  https://events.linuxfoundation.org/open-observability-summit-otel-community-day/
+  https://events.linuxfoundation.org/open-observability-summit-otel-community-day/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner

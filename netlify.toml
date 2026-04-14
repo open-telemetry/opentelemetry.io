@@ -15,10 +15,23 @@ from = "https://blog.opentelemetry.io/*"
 to = "https://opentelemetry.io/blog/:splat"
 force = true
 
-[[headers]]
-  for = "/schemas/:version"
-  [headers.values]
-    content-type = "application/yaml"
+[[edge_functions]]
+function = "registry-component-redirect"
+path = "/ecosystem/registry/*"
+
+[[edge_functions]]
+function = "markdown-negotiation"
+path = "/*"
+
+[[edge_functions]]
+function = "schema-analytics"
+path = "/schemas/*"
+
+[[edge_functions]]
+function = "asset-tracking"
+pattern = "/(.*)\\.(md|txt)$"
+
+# cSpell:ignore nosniff sameorigin
 
 [[headers]]
   for = "/*"
