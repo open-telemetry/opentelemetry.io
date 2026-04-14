@@ -1,8 +1,7 @@
 ---
 title: Collector
 description:
-  Forma independente de fornecedor para receber, processar e exportar dados de
-  telemetria.
+  Receba, processe e exporte dados de telemetria de forma agnóstica a fornecedor.
 aliases: [collector/about]
 sidebar_root_for: children
 cascade:
@@ -15,7 +14,7 @@ default_lang_commit: 2871fe3c7fdc376e55ce84f601a54264226531bb
 
 ## Introdução {#introduction}
 
-O OpenTelemetry Collector oferece uma implementação independente de fornecedor
+O OpenTelemetry Collector oferece uma implementação agnóstica a fornecedores
 para receber, processar e exportar dados de telemetria. Eliminando a necessidade
 de executar, operar e manter múltiplos agentes/coletores. Isso melhora a
 escalabilidade e oferece suporte a formatos de dados de observabilidade de
@@ -33,47 +32,46 @@ dados para um ou mais _backends_ de código aberto ou comerciais.
 - _Unificação_: Base de código única, implantável como agente ou coletor, com
   suporte a rastros, métricas e logs.
 
-## Quando usar um collector {#when-to-use-a-collector}
+## Quando usar um Collector {#when-to-use-a-collector}
 
-Na maioria das bibliotecas de instrumentação específicas de linguagem, você tem
+Na maioria das bibliotecas de instrumentação específicas de linguagem, há
 exportadores para _backends_ populares e para OTLP. Você pode se perguntar:
 
-> em quais circunstâncias usar um collector para enviar dados, em vez de fazer
+> em quais circunstâncias usar um Collector para enviar dados, em vez de fazer
 > cada serviço enviar diretamente para o _backend_?
 
-Para testar e começar com OpenTelemetry, enviar seus dados diretamente para um
+Para experimentar e dar os primeiros passos com o OpenTelemetry, enviar seus dados diretamente para um
 _backend_ é uma ótima forma de obter valor rapidamente. Além disso, em um
 ambiente de desenvolvimento ou de pequena escala, você pode obter bons
-resultados sem um collector.
+resultados sem um Collector.
 
-No entanto, em geral recomendamos usar um collector junto ao seu serviço, pois
-isso permite que o serviço envie os dados rapidamente, enquanto o collector
+No entanto, em geral recomenda-se utilizar um Collector junto ao serviço, pois
+isso permite que o serviço envie os dados rapidamente enquanto o Collector
 cuida de tratamentos adicionais, como tentativas de reenvio, agrupamento em
 lotes, criptografia e até filtragem de dados sensíveis.
 
-Também é mais fácil [configurar um collector](quick-start) do que parece: os
-exportadores OTLP padrão em cada linguagem assumem um endpoint local de
-collector. Portanto, ao iniciar um collector, a recepção de telemetria começa
+[Configurar um Collector](quick-start) é mais fácil do que pode parecer: os
+exportadores OTLP padrão em cada linguagem assumem uma rota (_endpoint_) local de
+Collector. Portanto, ao iniciar um Collector, a recepção de telemetria começa
 automaticamente.
 
-## Segurança do collector {#collector-security}
+## Segurança do Collector {#collector-security}
 
-Siga as melhores práticas para garantir que seus collectors sejam [hosted][] e
-[configured][] com segurança.
+Siga as boas práticas para garantir que seus Collectores estejam [hospedados][hosted] e
+[configurados][configured] com segurança.
 
 ## Status {#status}
 
-O status do **Collector** é: [mixed][], pois os componentes centrais do
-Collector atualmente têm [stability levels][] mistos.
+O status do **Collector** é: [misto][mixed], pois os componentes centrais do
+Collector atualmente possuem [níveis de estabilidade][stability levels] variados.
 
 Os **componentes do Collector** diferem em seus níveis de maturidade. Cada
-componente tem sua estabilidade documentada em seu `README.md`. Você pode
-encontrar uma lista de todos os componentes de Collector disponíveis no
-[registry][].
+componente tem sua estabilidade documentada em seu respectivo `README.md`. Uma lista de 
+todos os componentes disponíveis do Collector pode ser encontrada no [registro][registry].
 
-O suporte é garantido para os artefatos de _software_ do Collector por um
+O suporte a artefatos de _software_ do Collector é garantido por um
 período de tempo determinado, com base no público-alvo do artefato. Esse suporte
-inclui, no mínimo, correções para bugs críticos e problemas de segurança.
+inclui, no mínimo, correções para _bugs_ críticos e problemas de segurança.
 Consulte as
 [políticas de suporte](https://github.com/open-telemetry/opentelemetry-collector/blob/main/VERSIONING.md)
 para mais detalhes.
@@ -81,7 +79,7 @@ para mais detalhes.
 ## Distribuições e lançamentos {#releases}
 
 Para informações sobre distribuições e lançamentos do Collector, incluindo a
-[latest release][], consulte [Distributions](distributions/).
+[versão mais recente][latest release], consulte [Distribuições](distributions/).
 
 [configured]: /docs/security/config-best-practices/
 [hosted]: /docs/security/hosting-best-practices/
