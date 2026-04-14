@@ -82,7 +82,7 @@ adjust the command syntax.
 
 The previous command runs the Collector locally and opens three ports:
 
-- `4317` — OTLP over gRPC (the default for most SDKs)
+- `4317` — OTLP over gRPC, the default for most SDKs
 - `4318` — OTLP over HTTP, for clients that don't support gRPC
 - `55679` — ZPages, a built-in debug UI you can open in the browser
 
