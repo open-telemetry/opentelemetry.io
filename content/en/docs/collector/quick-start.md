@@ -14,9 +14,10 @@ The OpenTelemetry Collector receives telemetry such as
 [logs](/docs/concepts/signals/logs/), processes it, and forwards it to one or
 more observability backends through its component pipeline.
 
-{{% alert title="Note" %}} This is a basic local demo. The goal here is to show
-you how the Collector works, not to set up a production-ready environment.
-{{% /alert %}}
+> [!NOTE]
+>
+> This quick start demo creates a basic local setup. The goal is to show
+> you how the Collector works, not to set up a production-ready environment.
 
 In this guide, you will:
 
