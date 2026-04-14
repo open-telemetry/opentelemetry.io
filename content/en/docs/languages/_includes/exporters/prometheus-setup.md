@@ -23,7 +23,7 @@ Once you have Prometheus set up, you can set up the OTLP Exporter, Prometheus ex
 This section explains how to configure your application to send metrics directly to a Prometheus endpoint.
 
 #### Use environment variables
-You can configure OpenTelemetry SDKs and instrumentation libraries with [standard environment variables](/docs/languages/sdk-configuration/). Set the environment variables before starting your application. Below are the OpenTelemetry variables needed to send OpenTelemetry metrics to a Prometheus server on localhost:
+You can configure OpenTelemetry SDKs and instrumentation libraries with [standard environment variables](/docs/languages/sdk-configuration/). Set the environment variables before starting your application. The following OpenTelemetry variables are needed to send OpenTelemetry metrics to a Prometheus server on localhost:
 
 ```bash
 export OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
