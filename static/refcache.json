@@ -284,8 +284,8 @@
     "LastSeen": "2026-03-12T08:33:40.791Z"
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
-    "StatusCode": 429,
-    "LastSeen": "2026-04-14T10:07:14.596540644Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-14T12:24:20.435Z"
   },
   "https://blog.remirepo.net/pages/PECL-extensions-RPM-status": {
     "StatusCode": 200,
@@ -22268,8 +22268,8 @@
     "LastSeen": "2026-03-24T09:57:34.411173517Z"
   },
   "https://sakshipatle.substack.com/p/outreachy-how-when-and-why": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-14T10:07:24.102291817Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-14T12:24:29.029Z"
   },
   "https://schemas.dmtf.org/wbem/cim-html/2.31.0/CIM_Battery.html": {
     "StatusCode": 206,
