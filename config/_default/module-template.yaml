@@ -150,6 +150,23 @@ mounts:
     files: ['! specs/**']
     sites: *zh-matrix
 
+  ## pl
+  - source: content/pl
+    target: content
+    sites: &pl-matrix
+      matrix: { languages: [pl] }
+  # fallback pages
+  - source: content/en/_includes
+    target: content/_includes
+    sites: *pl-matrix
+  - source: content/en/announcements
+    target: content/announcements
+    sites: *pl-matrix
+  - source: content/en/docs
+    target: content/docs
+    files: ['! specs/**']
+    sites: *pl-matrix
+
   ## pt
   - source: content/pt
     target: content
@@ -171,7 +188,11 @@ mounts:
     sites: *pt-matrix
 
   ## static
-  - source: static
+  - files: ['! favicons/**']
+    source: static
+    target: static
+  # Mount favicons to the site root where they are expected
+  - source: static/favicons
     target: static
   - source: content-modules/semantic-conventions/schemas
     target: static/schemas

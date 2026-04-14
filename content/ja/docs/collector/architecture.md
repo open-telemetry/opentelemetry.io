@@ -1,8 +1,7 @@
 ---
 title: アーキテクチャ
 weight: 28
-default_lang_commit: 748555c22f43476291ae0c7974ca4a2577da0472
-drifted_from_default: true
+default_lang_commit: 714d6cc9c14f0cc2ef26397587388644b0e5d12f
 cSpell:ignore: fanoutconsumer probabilisticsampler zpages
 ---
 
@@ -67,11 +66,11 @@ service:
   pipelines: # パイプラインごとに1つずつ、複数のサブセクションを含むことができるセクション
     traces: # パイプラインタイプ
       receivers: [otlp, zipkin]
-      processors: [memory_limiter, batch]
+      processors: [memory_limiter]
       exporters: [otlp, zipkin]
 ```
 
-前述の例では、2つのレシーバー、2つのプロセッサー、および2つのエクスポーターを備えたトレースタイプのテレメトリーデータのパイプラインを定義しています。
+前述の例では、2つのレシーバー、1つのプロセッサー、および2つのエクスポーターを備えたトレースタイプのテレメトリーデータのパイプラインを定義しています。
 
 ### レシーバー {#receivers}
 
@@ -92,7 +91,7 @@ service:
   pipelines:
     traces: # "traces"タイプのパイプライン
       receivers: [otlp]
-      processors: [memory_limiter, batch]
+      processors: [memory_limiter]
       exporters: [otlp]
     traces/2: # "traces"タイプの別のパイプライン
       receivers: [otlp]
@@ -115,14 +114,12 @@ flowchart LR
   P2 ~~~ M2[...]
 ```
 
-{{% alert title="重要" color="warning" %}}
-
-同じレシーバーが1つ以上のパイプラインで参照されている場合、コレクターは実行時にレシーバーを1つだけ作成し、データをファンアウトコンシューマーに送信します。
-ファンアウトコンシューマーは、各パイプラインの最初のプロセッサーにデータを送信します。
-レシーバーからファンアウトコンシューマー、そしてプロセッサーへのデータ伝搬は、同期関数の呼び出しによって完了します。
-つまり、1つのプロセッサーが呼び出しをブロックすると、このレシーバーに接続されている他のパイプラインは同じデータの受信がブロックされ、レシーバー自身も新たに受信したデータの処理と転送を停止します。
-
-{{% /alert %}}
+> [!WARNING]
+>
+> 同じレシーバーが1つ以上のパイプラインで参照されている場合、コレクターは実行時にレシーバーを1つだけ作成し、データをファンアウトコンシューマーに送信します。
+> ファンアウトコンシューマーは、各パイプラインの最初のプロセッサーにデータを送信します。
+> レシーバーからファンアウトコンシューマー、そしてプロセッサーへのデータ伝搬は、同期関数の呼び出しによって完了します。
+> つまり、1つのプロセッサーが呼び出しをブロックすると、このレシーバーに接続されている他のパイプラインは同じデータの受信がブロックされ、レシーバー自身も新たに受信したデータの処理と転送を停止します。
 
 ### エクスポーター {#exporters}
 
@@ -186,24 +183,27 @@ flowchart LR
 同じ名前のプロセッサーは、複数のパイプラインの `processors` キーで参照できます。
 この場合、同じ構成がこれらの各プロセッサーに使用されますが、各パイプラインは常にプロセッサーの独自のインスタンスを取得します。
 これらの各プロセッサーは独自の状態をもち、プロセッサーはパイプライン間で共有されることはありません。
-たとえば、`batch` プロセッサーが複数のパイプラインで使用されている場合、各パイプラインには独自のバッチプロセッサーがありますが、構成内で同じキーを参照している場合は各バッチプロセッサーはまったく同じ方法で構成されます。
+たとえば、`transform` プロセッサーが複数のパイプラインで使用されている場合、各パイプラインには独自の変換プロセッサーがありますが、構成内で同じキーを参照している場合は各変換プロセッサーはまったく同じ方法で構成されます。
 次の構成を参照してください。
 
 ```yaml
 processors:
-  batch:
-    send_batch_size: 10000
-    timeout: 10s
+  transform:
+    error_mode: ignore
+    trace_statements:
+      - set(resource.attributes["namespace"],
+        resource.attributes["k8s.namespace.name"])
+      - delete_key(resource.attributes, "k8s.namespace.name")
 
 service:
   pipelines:
     traces: # "traces"タイプのパイプライン
       receivers: [zipkin]
-      processors: [batch]
+      processors: [transform]
       exporters: [otlp]
     traces/2: # "traces"タイプの別のパイプライン
       receivers: [otlp]
-      processors: [batch]
+      processors: [transform]
       exporters: [otlp]
 ```
 
@@ -214,7 +214,7 @@ service:
 title: パイプライン "traces"
 ---
 flowchart LR
-  R1("`zipkin レシーバー`") --> P1["`#quot;batch#quot; プロセッサー`"]
+  R1("`zipkin レシーバー`") --> P1["`#quot;transform#quot; プロセッサー`"]
   P1 --> E1[["`#quot;otlp#quot; エクスポーター`"]]
 ```
 
@@ -223,11 +223,11 @@ flowchart LR
 title: パイプライン "traces/2"
 ---
 flowchart LR
-  R1("`otlp レシーバー`") --> P1["`#quot;batch#quot; プロセッサー`"]
+  R1("`otlp レシーバー`") --> P1["`#quot;transform#quot; プロセッサー`"]
   P1 --> E1[["`#quot;otlp#quot; エクスポーター`"]]
 ```
 
-各 `batch` プロセッサーは、`send_batch_size` が `10000` で同じように構成されていますが、独立したインスタンスであることに注意してください。
+各 `transform` プロセッサーは、`send_batch_size` が `10000` で同じように構成されていますが、独立したインスタンスであることに注意してください。
 
 > 単一パイプラインの `processors` キーで同じ名前のプロセッサーを複数回参照してはいけません。
 
