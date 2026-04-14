@@ -4,6 +4,7 @@ description: OpenTelemetryのコード計装は、多くの一般的なプログ
 weight: 250
 aliases: [/docs/instrumentation]
 default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
+drifted_from_default: true
 redirects:
   - { from: 'net/*', to: 'dotnet/:splat' }
 ---

@@ -4,6 +4,7 @@ linkTitle: スタンドアロン
 description: OBIをLinuxのスタンドアロンプロセスとしてセットアップして実行する方法を学びます。
 weight: 4
 default_lang_commit: c6df1ca98613ce886d3ea5ecb7ea50d02a31f18a
+drifted_from_default: true
 ---
 
 OBIは、他の実行中プロセスを検査できる昇格された権限を持つスタンドアロンのLinux OSプロセスとして実行できます。

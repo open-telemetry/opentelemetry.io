@@ -6,6 +6,7 @@ aliases:
   - /docs/collector/custom-auth
   - /docs/collector/building/authenticator-extension
 default_lang_commit: 6a7f17450ce3edc2e4363013551ee93ba7934a5d
+drifted_from_default: true
 cSpell:ignore: configauth oidc
 ---
 

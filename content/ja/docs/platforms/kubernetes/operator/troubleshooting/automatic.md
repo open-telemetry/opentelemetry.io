@@ -1,6 +1,7 @@
 ---
 title: 自動計装
 default_lang_commit: 99a39c5e4e51daba968bfbb3eb078be4a14ad363
+drifted_from_default: true
 cSpell:ignore: PYTHONPATH
 ---
 

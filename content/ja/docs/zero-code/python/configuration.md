@@ -3,6 +3,7 @@ title: エージェント設定
 linkTitle: Configuration
 weight: 10
 default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+drifted_from_default: true
 cSpell:ignore: gevent healthcheck instrumentor pyproject Starlette urllib
 ---
 

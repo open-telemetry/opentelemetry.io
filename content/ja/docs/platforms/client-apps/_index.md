@@ -1,6 +1,7 @@
 ---
 title: クライアントサイドアプリ
 default_lang_commit: 3313e15bb8b732773ca705dee6cfec65d1a4cb36
+drifted_from_default: true
 ---
 
 スマートフォンやデスクトップコンピュータなどのエンドユーザーのデバイス上で動作するアプリケーションの計装には、OpenTelemetry（OTel）に精通している方でも、追加の注意が必要です。

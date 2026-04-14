@@ -6,6 +6,7 @@ expiryDate: 2025-06-18 # keep
 build: { list: never, render: never } # Hide in favor of new Asia banner
 weight: 20250616
 default_lang_commit: 9bc3c40e6e637b3d776281eb946a60ebf79a4cd5
+drifted_from_default: true
 ---
 
 <i class="fas fa-bullhorn"></i> [**{{% param title %}}**][LF]が **6月16・17日に東京で開催**

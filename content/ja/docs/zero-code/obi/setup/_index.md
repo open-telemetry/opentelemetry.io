@@ -4,6 +4,7 @@ linkTitle: セットアップ
 description: OBIのセットアップと実行方法を学びます。
 weight: 10
 default_lang_commit: 22c9dea4ea7ec8287b90c810f6d6d7b0b6a35daa
+drifted_from_default: true
 ---
 
 OBIをセットアップして実行するには、さまざまなオプションがあります。

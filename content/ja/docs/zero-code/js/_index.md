@@ -4,6 +4,7 @@ linkTitle: JavaScript
 description: ソースコードの変更なしでアプリケーションからテレメトリーをキャプチャする
 aliases: [/docs/languages/js/automatic]
 default_lang_commit: 55f8de69ad3cf54f24243c200f70cd0b3a608ad4
+drifted_from_default: true
 ---
 
 JavaScriptのゼロコード計装は、コードを変更することなく、任意のNode.jsアプリケーションを計装し、多くの人気のあるライブラリやフレームワークからテレメトリーデータをキャプチャする方法を提供します。

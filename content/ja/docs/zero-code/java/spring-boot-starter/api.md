@@ -4,6 +4,7 @@ linkTitle: APIで拡張
 description: Spring BootスターターとOpenTelemetry APIを組み合わせて、自動生成されたテレメトリーをカスタムスパンとメトリクスで拡張する
 weight: 21
 default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+drifted_from_default: true
 ---
 
 ## はじめに {#introduction}

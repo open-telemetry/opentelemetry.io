@@ -3,6 +3,7 @@ title: 計装
 description: OpenTelemetryはどのように計装を促進するか
 weight: 15
 default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
+drifted_from_default: true
 ---
 
 システムを[観測可能][observable]にするため、システムが **計装** されなければなりません。

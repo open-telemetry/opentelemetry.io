@@ -3,6 +3,7 @@ title: OpenTelemetryとは
 description: OpenTelemetryが何であり、何でないかについての簡潔な説明。
 weight: 150
 default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad # patched
+drifted_from_default: true
 ---
 
 OpenTelemetry とは、次のようなものです。

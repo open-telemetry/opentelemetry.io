@@ -4,6 +4,7 @@ description: アプリケーションからバックエンドへ直接シグナ�
 aliases: [/docs/collector/deployment/no-collector]
 weight: 200
 default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197 # patched
+drifted_from_default: true
 ---
 
 最もシンプルなパターンは、コレクターをまったく使用しないことです。

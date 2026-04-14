@@ -2,6 +2,7 @@
 title: Quarkus計装
 linkTitle: Quarkus
 default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+drifted_from_default: true
 ---
 
 [Quarkus](https://quarkus.io/)は、ソフトウェア開発者がJVMとQuarkusネイティブイメージアプリケーションの両方で効率的なクラウドネイティブアプリケーションを構築するのを支援するために設計されたオープンソースフレームワークです。

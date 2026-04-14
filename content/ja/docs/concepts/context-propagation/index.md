@@ -3,6 +3,7 @@ title: コンテキスト伝搬
 weight: 10
 description: 分散トレーシングを可能にするコンセプトについて学びます。
 default_lang_commit: 2eff1a357d20c7b9ba6e07f8c5b1ac057ac005c7
+drifted_from_default: true
 ---
 
 コンテキスト伝搬を使用すると、[シグナル](../signals/)（[トレース](../signals/traces/)、[メトリクス](../signals/metrics/)、および[ログ](../signals/logs/)）を生成された場所に関係なく相互に関連づけることができます。

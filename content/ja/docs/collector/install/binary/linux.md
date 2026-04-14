@@ -3,6 +3,7 @@ title: Linuxにコレクターをインストールする
 linkTitle: Linux
 weight: 100
 default_lang_commit: ec1657d18d8e1c63bf353049e8a7bf7e65c3e9cb
+drifted_from_default: true
 ---
 
 ## Linux {#linux}

@@ -3,6 +3,7 @@ title: シグナル
 description: OpenTelemetryがサポートするテレメトリーのカテゴリについて学ぶ
 weight: 11
 default_lang_commit: 43ecc19b51fd86d5b2f30c638f6d734ee8b94932
+drifted_from_default: true
 ---
 
 OpenTelemetryの目的は、**[シグナル][signals]** を収集、処理、エクスポートすることです。

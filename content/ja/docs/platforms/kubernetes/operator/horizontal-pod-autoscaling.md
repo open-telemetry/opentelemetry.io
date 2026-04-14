@@ -2,6 +2,7 @@
 title: 水平Pod自動スケーリング
 description: OpenTelemetryコレクターの水平Pod自動スケーリングを設定する
 default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
+drifted_from_default: true
 cSpell:ignore: autoscaler statefulset
 ---
 

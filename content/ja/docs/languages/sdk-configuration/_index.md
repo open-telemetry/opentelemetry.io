@@ -4,6 +4,7 @@ linkTitle: SDKの設定
 aliases: [/docs/concepts/sdk-configuration]
 weight: 1
 default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
+drifted_from_default: true
 ---
 
 OpenTelemetry SDK は、各言語と環境変数によるコンフィギュレーションをサポートしています。

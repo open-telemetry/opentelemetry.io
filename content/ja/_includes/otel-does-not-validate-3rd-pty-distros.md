@@ -1,5 +1,6 @@
 ---
 default_lang_commit: dcd079d98e749febcefd4d7bb1da361770ec8ed3
+drifted_from_default: true
 ---
 
 {{% alert title="免責事項" color="warning" %}}
