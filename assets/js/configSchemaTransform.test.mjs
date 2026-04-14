@@ -1,6 +1,5 @@
 /**
  * Unit tests for Configuration Schema Transformer
- * Uses Node.js built-in test runner (node:test)
  */
 
 import { test, describe } from 'node:test';
@@ -8,7 +7,6 @@ import assert from 'node:assert/strict';
 import {
   resolveType,
   buildConstraints,
-  generateDefaultText,
   cleanDescription,
   processProperty,
   buildTypeConstraints,
@@ -18,90 +16,35 @@ import {
 } from './configSchemaTransform.mjs';
 
 describe('resolveType', () => {
-  test('handles single type string', () => {
-    const propDef = { type: 'string' };
-    assert.equal(resolveType(propDef), 'string');
-  });
+  test('resolves types correctly', () => {
+    const cases = [
+      [{ type: 'string' }, 'string'],
+      [{ type: ['string', 'null'] }, 'string, null'],
+      [{ $ref: '#/$defs/LogRecordProcessor' }, 'LogRecordProcessor'],
+      [{ description: 'Some property' }, 'object'],
+    ];
 
-  test('handles array of types', () => {
-    const propDef = { type: ['string', 'null'] };
-    assert.equal(resolveType(propDef), 'string, null');
-  });
-
-  test('handles $ref pointer', () => {
-    const propDef = { $ref: '#/$defs/LogRecordProcessor' };
-    assert.equal(resolveType(propDef), 'LogRecordProcessor');
-  });
-
-  test('defaults to object when no type or $ref', () => {
-    const propDef = { description: 'Some property' };
-    assert.equal(resolveType(propDef), 'object');
+    cases.forEach(([input, expected]) => {
+      assert.equal(resolveType(input), expected);
+    });
   });
 });
 
 describe('buildConstraints', () => {
-  test('handles numeric constraints', () => {
-    const propDef = { minimum: 1, maximum: 100 };
-    assert.equal(buildConstraints(propDef), 'minimum: 1, maximum: 100');
-  });
+  test('builds constraints correctly', () => {
+    const cases = [
+      [{ minimum: 1, maximum: 100 }, 'minimum: 1, maximum: 100'],
+      [{ minLength: 1, maxLength: 50 }, 'minLength: 1, maxLength: 50'],
+      [{ pattern: '^[a-z]+$' }, 'pattern: ^[a-z]+$'],
+      [{ enum: ['debug', 'info', 'warn', 'error'] }, 'enum: [debug, info, warn, error]'],
+      [{ minProperties: 1, maxProperties: 10 }, 'minProperties: 1, maxProperties: 10'],
+      [{ minItems: 1, maxItems: 5 }, 'minItems: 1, maxItems: 5'],
+      [{ type: 'string' }, ''],
+    ];
 
-  test('handles string length constraints', () => {
-    const propDef = { minLength: 1, maxLength: 50 };
-    assert.equal(buildConstraints(propDef), 'minLength: 1, maxLength: 50');
-  });
-
-  test('handles pattern constraint', () => {
-    const propDef = { pattern: '^[a-z]+$' };
-    assert.equal(buildConstraints(propDef), 'pattern: ^[a-z]+$');
-  });
-
-  test('handles enum constraint', () => {
-    const propDef = { enum: ['debug', 'info', 'warn', 'error'] };
-    assert.equal(
-      buildConstraints(propDef),
-      'enum: [debug, info, warn, error]',
-    );
-  });
-
-  test('handles object property constraints', () => {
-    const propDef = { minProperties: 1, maxProperties: 10 };
-    assert.equal(
-      buildConstraints(propDef),
-      'minProperties: 1, maxProperties: 10',
-    );
-  });
-
-  test('handles array item constraints', () => {
-    const propDef = { minItems: 1, maxItems: 5 };
-    assert.equal(buildConstraints(propDef), 'minItems: 1, maxItems: 5');
-  });
-
-  test('returns empty string when no constraints', () => {
-    const propDef = { type: 'string' };
-    assert.equal(buildConstraints(propDef), '');
-  });
-});
-
-describe('generateDefaultText', () => {
-  test('uses explicit default value', () => {
-    const propDef = { default: 'info' };
-    assert.equal(generateDefaultText(propDef), 'If omitted, info is used.');
-  });
-
-  test('handles null type', () => {
-    const propDef = { type: ['string', 'null'] };
-    assert.equal(
-      generateDefaultText(propDef),
-      'If omitted or null, default behavior applies.',
-    );
-  });
-
-  test('generic message for no default', () => {
-    const propDef = { type: 'string' };
-    assert.equal(
-      generateDefaultText(propDef),
-      'If omitted, default behavior applies.',
-    );
+    cases.forEach(([input, expected]) => {
+      assert.equal(buildConstraints(input), expected);
+    });
   });
 });
 
@@ -128,12 +71,9 @@ describe('cleanDescription', () => {
     assert.equal(cleanDescription(input), expected);
   });
 
-  test('linkifies URLs', () => {
-    const input = 'See https://example.com for details';
-    const result = cleanDescription(input);
-    assert.ok(result.includes('<a href="https://example.com"'));
-    assert.ok(result.includes('target="_blank"'));
-    assert.ok(result.includes('rel="noopener noreferrer"'));
+  test('linkifies URLs with correct attributes', () => {
+    const result = cleanDescription('See https://example.com for details');
+    assert.match(result, /<a href="https:\/\/example\.com"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
   });
 
   test('handles mixed content with lists and text', () => {
@@ -158,32 +98,24 @@ describe('processProperty', () => {
 
     assert.equal(result.name, 'level');
     assert.equal(result.type, 'string');
-    assert.equal(result.default, 'If omitted, info is used.');
+    assert.equal(result.default, 'info');
     assert.equal(result.constraints, 'enum: [debug, info, warn, error]');
     assert.equal(result.description, 'The log level');
   });
 });
 
 describe('buildTypeConstraints', () => {
-  test('handles additionalProperties: false', () => {
-    const typeDef = { additionalProperties: false };
-    assert.equal(buildTypeConstraints(typeDef), 'additionalProperties: false.');
-  });
+  test('handles individual constraints', () => {
+    const cases = [
+      [{ additionalProperties: false }, 'additionalProperties: false.'],
+      [{ required: ['name', 'type'] }, 'Required properties: name, type.'],
+      [{ minProperties: 1, maxProperties: 5 }, 'minProperties: 1. maxProperties: 5.'],
+      [{ properties: {} }, ''],
+    ];
 
-  test('handles required properties', () => {
-    const typeDef = { required: ['name', 'type'] };
-    assert.equal(
-      buildTypeConstraints(typeDef),
-      'Required properties: name, type.',
-    );
-  });
-
-  test('handles min/max properties', () => {
-    const typeDef = { minProperties: 1, maxProperties: 5 };
-    assert.equal(
-      buildTypeConstraints(typeDef),
-      'minProperties: 1. maxProperties: 5.',
-    );
+    cases.forEach(([input, expected]) => {
+      assert.equal(buildTypeConstraints(input), expected);
+    });
   });
 
   test('combines multiple constraints', () => {
@@ -196,11 +128,6 @@ describe('buildTypeConstraints', () => {
     assert.ok(result.includes('additionalProperties: false'));
     assert.ok(result.includes('Required properties: id'));
     assert.ok(result.includes('minProperties: 1'));
-  });
-
-  test('returns empty string when no constraints', () => {
-    const typeDef = { properties: {} };
-    assert.equal(buildTypeConstraints(typeDef), '');
   });
 });
 

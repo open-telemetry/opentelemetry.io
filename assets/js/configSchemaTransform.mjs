@@ -1,5 +1,5 @@
 /**
- * Configuration Schema Transformer - Client-Side Version
+ * Configuration Schema Transformer
  *
  * Transforms the raw OpenTelemetry configuration JSON Schema into a simplified
  * format optimized for the configuration types accordion UI.
@@ -7,10 +7,7 @@
  * Input:  Raw JSON Schema from /schemas/opentelemetry_configuration.json
  * Output: Simplified structure for accordion rendering
  *
- * This module extracts type definitions, processes properties, resolves constraints,
- * and generates human-readable default text
- *
- * @module configSchemaTransform
+ * This module extracts type definitions, processes properties, and resolves constraints
  */
 
 /**
@@ -20,7 +17,7 @@
  * @returns {string} Comma-delimited type string
  */
 export function resolveType(propDef) {
-  let types = [];
+  let types;
 
   if (Array.isArray(propDef.type)) {
     types = propDef.type;
@@ -85,23 +82,6 @@ export function buildConstraints(propDef) {
   return parts.join(', ');
 }
 
-/**
- * Generate human-readable default behavior text
- * @param {Object} propDef - Property definition from JSON Schema
- * @returns {string} Default behavior description
- */
-export function generateDefaultText(propDef) {
-  if (propDef.default !== undefined) {
-    return `If omitted, ${propDef.default} is used.`;
-  }
-
-  const types = Array.isArray(propDef.type) ? propDef.type : [propDef.type];
-  if (types.includes('null')) {
-    return 'If omitted or null, default behavior applies.';
-  }
-
-  return 'If omitted, default behavior applies.';
-}
 
 /**
  * Clean description text
@@ -114,7 +94,6 @@ export function cleanDescription(description) {
 
   let result = description.trim();
 
-  // Split into lines for list processing
   const lines = result.split('\n');
   const processed = [];
   let currentList = null;
@@ -123,7 +102,6 @@ export function cleanDescription(description) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
 
-    // Skip empty lines
     if (!line) continue;
 
     // Check for unordered list item (- or *)
@@ -188,18 +166,13 @@ export function cleanDescription(description) {
 
   // Linkify URLs after list processing
   result = result.replace(/(https?:\/\/[^\s<>"]+)/g, (url) => {
-    // Don't linkify if already in an href attribute
+    // Don't linkify if already in a href attribute
     return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
   });
 
   // Normalize excessive whitespace between non-HTML content
   result = result.replace(/>\s+</g, '><');  // Remove whitespace between tags
   result = result.replace(/\s+/g, ' ').trim();  // Normalize other whitespace
-
-  // Debug logging for descriptions with HTML
-  if (result.includes('<')) {
-    console.log('cleanDescription output with HTML:', result.substring(0, 200));
-  }
 
   return result;
 }
@@ -214,7 +187,7 @@ export function processProperty(propName, propDef) {
   return {
     name: propName,
     type: resolveType(propDef),
-    default: generateDefaultText(propDef),
+    default: propDef.default,
     constraints: buildConstraints(propDef),
     description: cleanDescription(propDef.description),
   };
@@ -313,14 +286,9 @@ export function extractTypes(schema) {
  * @returns {Object} Simplified data structure { types: [...] }
  */
 export function transformSchema(rawSchema) {
-  try {
-    // Extract and process types
-    const types = extractTypes(rawSchema);
+  // Extract and process types
+  const types = extractTypes(rawSchema);
 
-    // Create output structure
-    return { types };
-  } catch (error) {
-    console.error('Error during schema transformation:', error);
-    throw error;
-  }
+  // Create output structure
+  return { types };
 }
