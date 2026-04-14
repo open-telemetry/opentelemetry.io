@@ -141,7 +141,7 @@ real setups:
 - [Configuration](/docs/collector/configuration): Learn how the Collector's
   config file works and how to connect it to a real backend like Jaeger or
   Prometheus.
-- [Deployment Methods](/docs/collector/deploy/): Understand the difference
+- [Deployment patterns](/docs/collector/deploy/): Understand the difference
   between running the Collector as an agent versus a gateway.
 - [Install the Collector](/docs/collector/install/): Explore installation
   options beyond Docker, including binaries and Kubernetes.
