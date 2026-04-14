@@ -61,7 +61,7 @@ adjust the command syntax.
    docker pull otel/opentelemetry-collector:{{% param vers %}}
    ```
 
-2. Install [telemetrygen][], which we'll use to simulate a client generating telemetry:
+2. Install [telemetrygen][], which we'll use to simulate a client that generates telemetry:
 
    ```sh
    go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
