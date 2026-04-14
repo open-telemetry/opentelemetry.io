@@ -135,7 +135,7 @@ You see output confirming the traces were sent:
 ## Next steps
 
 At this point, you've run the Collector locally and seen how it handles
-telemetry end to end. From here, you can start digging into how it's used in
+telemetry end to end. From here, you can start learning how it's used in
 real setups:
 
 - [Configuration](/docs/collector/configuration): Learn how the Collector's
