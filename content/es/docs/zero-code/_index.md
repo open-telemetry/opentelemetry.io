@@ -3,6 +3,7 @@ title: Instrumentación sin código
 redirects: [{ from: 'net/*', to: 'dotnet/:splat' }]
 weight: 265
 default_lang_commit: 788277e362bc602b72a90aa9191f9c05c403458e # patched
+drifted_from_default: true
 ---
 
 OpenTelemetry [instrumentación sin código][zero-code instrumentation] es

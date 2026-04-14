@@ -5,6 +5,7 @@ description:
   Aprende cómo los aprobadores y mantenedores gestionan issues y contribuciones.
 weight: 999
 default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
+drifted_from_default: true
 cSpell:ignore: Comms contribfest docsy hotfixes triager triagers
 ---
 

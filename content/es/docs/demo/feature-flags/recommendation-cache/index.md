@@ -5,6 +5,7 @@ aliases:
   - ../scenarios/recommendation-cache/
   - ../scenarios/recommendation_cache
 default_lang_commit: 2571ec5a1e17744982e8dc6efe1fdf3115d0ebbc
+drifted_from_default: true
 ---
 
 La telemetría de aplicaciones, como la que OpenTelemetry puede proporcionar, es
