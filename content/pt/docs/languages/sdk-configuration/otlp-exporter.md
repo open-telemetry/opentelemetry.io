@@ -4,6 +4,7 @@ linkTitle: OTLP Exporter
 weight: 20
 aliases: [otlp-exporter-configuration]
 default_lang_commit: 99bddc40d1e15c5f33311b736b92fa227f04664a
+drifted_from_default: true
 ---
 
 ## Configurações de rota {#endpoint-configuration}

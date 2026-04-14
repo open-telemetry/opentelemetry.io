@@ -5,6 +5,7 @@ description:
   Saiba como aprovadores e mantenedores gerenciam issues e contribuições.
 weight: 999
 default_lang_commit: 6acef01464b667456e7ba6d151235e56d39c12ca # patched
+drifted_from_default: true
 cSpell:ignore: branch Comms contribfest docsy mergeados
 ---
 

@@ -3,6 +3,7 @@ title: Fornecedores
 description: Fornecedores que oferecem suporte nativo ao OpenTelemetry
 aliases: [/vendors]
 default_lang_commit: b6ddba1118d07bc3c8d1d07b293f227686d0290e # patched
+drifted_from_default: true
 ---
 
 Uma lista não exaustiva de organizações que oferecem soluções que consomem o

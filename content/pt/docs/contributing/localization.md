@@ -4,6 +4,7 @@ description: Criando e mantendo páginas do site em localizações não inglesas
 linkTitle: Localização
 weight: 25
 default_lang_commit: aab27c8f1bb4c72c4ba94920396ef1fd6de1434e # patched
+drifted_from_default: true
 cSpell:ignore: Dowair merge ptbr shortcodes
 ---
 

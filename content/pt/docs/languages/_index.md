@@ -5,6 +5,7 @@ description:
   populares de programação.
 weight: 250
 default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4 # patched
+drifted_from_default: true
 ---
 
 A [instrumentação][instrumentation] de código do OpenTelemetry é suportada para

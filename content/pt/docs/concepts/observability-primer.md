@@ -3,6 +3,7 @@ title: Introdução à Observabilidade
 description: Conceitos essenciais de Observabilidade
 weight: 9
 default_lang_commit: 6e3124135e38e749cdda15271d891813d6bc43db
+drifted_from_default: true
 cSpell:ignore: webshop
 ---
 
