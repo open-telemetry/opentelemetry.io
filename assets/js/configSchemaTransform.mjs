@@ -275,7 +275,6 @@ export function buildTypeConstraints(typeDef) {
 
   if (parts.length === 0) return '';
 
-  // Join with periods and add trailing period
   return parts.join('. ') + '.';
 }
 
@@ -289,7 +288,6 @@ export function processType(typeName, typeDef) {
   const properties = [];
   let hasNoProperties = true;
 
-  // Process properties if they exist
   if (typeDef.properties && Object.keys(typeDef.properties).length > 0) {
     hasNoProperties = false;
     for (const [propName, propDef] of Object.entries(typeDef.properties)) {
@@ -328,7 +326,6 @@ export function extractTypes(schema) {
     types.push(processType(typeName, typeDef));
   }
 
-  // Sort by name
   types.sort((a, b) => a.name.localeCompare(b.name));
 
   return types;
@@ -341,9 +338,7 @@ export function extractTypes(schema) {
  * @returns {Object} Simplified data structure { types: [...] }
  */
 export function transformSchema(rawSchema) {
-  // Extract and process types
   const types = extractTypes(rawSchema);
 
-  // Create output structure
   return { types };
 }
