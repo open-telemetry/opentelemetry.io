@@ -15163,6 +15163,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-16T12:16:33.400715-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/label-manager.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-14T12:46:53.986039138Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-actions.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-03-23T14:16:34.295960935Z"
