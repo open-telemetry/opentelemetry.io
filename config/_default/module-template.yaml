@@ -196,6 +196,9 @@ mounts:
     target: static
   - source: content-modules/semantic-conventions/schemas
     target: static/schemas
+  - source: content-modules/opentelemetry-configuration
+    target: static/schemas
+    files: ['opentelemetry_configuration.json']
   - source: static/img
     target: static/img
   - source: content-modules/opentelemetry-specification/internal/img
