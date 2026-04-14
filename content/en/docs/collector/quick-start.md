@@ -80,7 +80,7 @@ adjust the command syntax.
      2>&1 | tee collector-output.txt
 ```
 
-This runs the Collector locally and opens three ports:
+The previous command runs the Collector locally and opens three ports:
 
 - `4317` — OTLP over gRPC (the default for most SDKs)
 - `4318` — OTLP over HTTP, for clients that don't support gRPC
