@@ -13,6 +13,8 @@ import {
   processType,
   extractTypes,
   transformSchema,
+  escapeHtml,
+  linkifyUrls,
 } from './configSchemaTransform.mjs';
 
 describe('resolveType', () => {
@@ -45,6 +47,38 @@ describe('buildConstraints', () => {
     cases.forEach(([input, expected]) => {
       assert.equal(buildConstraints(input), expected);
     });
+  });
+});
+
+describe('escapeHtml', () => {
+  test('escapes HTML entities', () => {
+    assert.equal(escapeHtml('<script>alert("xss")</script>'), '&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;');
+    assert.equal(escapeHtml('5 > 3 & 2 < 4'), '5 &gt; 3 &amp; 2 &lt; 4');
+    assert.equal(escapeHtml("it's a \"test\""), 'it&#39;s a &quot;test&quot;');
+  });
+
+  test('returns unchanged text without special characters', () => {
+    assert.equal(escapeHtml('plain text'), 'plain text');
+  });
+});
+
+describe('linkifyUrls', () => {
+  test('linkifies URLs and escapes surrounding text', () => {
+    const input = 'See https://example.com for <details>';
+    const result = linkifyUrls(input);
+    assert.ok(result.includes('<a href="https://example.com"'));
+    assert.ok(result.includes('&lt;details&gt;'));
+  });
+
+  test('handles multiple URLs', () => {
+    const input = 'Visit https://example.com or https://test.org';
+    const result = linkifyUrls(input);
+    const matches = result.match(/<a href=/g);
+    assert.equal(matches.length, 2);
+  });
+
+  test('escapes text with no URLs', () => {
+    assert.equal(linkifyUrls('<script>alert(1)</script>'), '&lt;script&gt;alert(1)&lt;/script&gt;');
   });
 });
 
@@ -82,6 +116,28 @@ describe('cleanDescription', () => {
     assert.ok(result.includes('Introduction:'));
     assert.ok(result.includes('<ul>'));
     assert.ok(result.includes('Conclusion'));
+  });
+
+  test('escapes malicious HTML in plain text', () => {
+    const input = 'Check <script>alert("xss")</script> for info';
+    const result = cleanDescription(input);
+    assert.ok(result.includes('&lt;script&gt;'));
+    assert.ok(!result.includes('<script>'));
+  });
+
+  test('escapes malicious HTML in list items', () => {
+    const input = '- Normal item\n- <img src=x onerror=alert(1)>\n- Another item';
+    const result = cleanDescription(input);
+    assert.ok(result.includes('&lt;img'));
+    assert.ok(!result.includes('<img src='));
+  });
+
+  test('linkifies URLs in list items safely', () => {
+    const input = '- See https://example.com\n- Check <script>alert(1)</script>';
+    const result = cleanDescription(input);
+    assert.ok(result.includes('<a href="https://example.com"'));
+    assert.ok(result.includes('&lt;script&gt;'));
+    assert.ok(!result.includes('<script>'));
   });
 });
 
