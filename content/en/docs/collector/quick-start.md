@@ -46,7 +46,7 @@ If `GOBIN` isn't set, run:
 export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
 ```
 
-This guide uses `bash`commands. If you're using a different shell, you might need to
+This guide uses `bash` commands. If you're using a different shell, you might need to
 adjust the command syntax.
 
 [^1]:
@@ -57,75 +57,75 @@ adjust the command syntax.
 
 1. Pull the Docker image of the OpenTelemetry Collector core [distribution](/docs/collector/distributions/):
 
-```sh
+   ```sh
    docker pull otel/opentelemetry-collector:{{% param vers %}}
-```
+   ```
 
 2. Install [telemetrygen][], which we'll use to simulate a client generating telemetry:
 
-```sh
+   ```sh
    go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
-```
+   ```
 
 ## Generate and collect telemetry
 
 3. Start the Collector:
 
-```sh
+   ```sh
    docker run \
      -p 127.0.0.1:4317:4317 \
      -p 127.0.0.1:4318:4318 \
      -p 127.0.0.1:55679:55679 \
      otel/opentelemetry-collector:{{% param vers %}} \
      2>&1 | tee collector-output.txt
-```
+   ```
 
-The previous command runs the Collector locally and opens three ports:
+   The previous command runs the Collector locally and opens three ports:
 
-- `4317` — OTLP over gRPC, the default for most SDKs
-- `4318` — OTLP over HTTP, for clients that don't support gRPC
-- `55679` — ZPages, a built-in debug UI you can open in the browser
+   - `4317` — OTLP over gRPC, the default for most SDKs
+   - `4318` — OTLP over HTTP, for clients that don't support gRPC
+   - `55679` — ZPages, a built-in debug UI you can open in the browser
 
 4. In a separate terminal, generate some traces:
 
-```sh
+   ```sh
    $GOBIN/telemetrygen traces --otlp-insecure --traces 3
-```
+   ```
 
-You see output confirming the traces were sent:
+   You see output confirming the traces were sent:
 
-```text
+   ```text
    2024-01-16T14:33:15.692-0500  INFO  traces/worker.go:99  traces generated  {"worker": 0, "traces": 3}
    2024-01-16T14:33:15.692-0500  INFO  traces/traces.go:58  stop the batch span processor
-```
+   ```
 
 5. Back in the Collector terminal, you should see trace ingest activity similar
    to the following:
 
-```console
-  $ grep -E '^Span|(ID|Name|Kind|time|Status \w+)\s+:' ./collector-output.txt
-  Span #0
-      Trace ID       : f30faffbde5fcf71432f89da1bf7bc14
-      Parent ID      : 6f1ff7f9cf4ec1c7
-      ID             : 8d1e820c1ac57337
-      Name           : okey-dokey
-      Kind           : Server
-      Start time     : 2024-01-16 14:13:54.585877 +0000 UTC
-      End time       : 2024-01-16 14:13:54.586 +0000 UTC
-      Status code    : Unset
-      Status message :
-  Span #1
-      Trace ID       : f30faffbde5fcf71432f89da1bf7bc14
-      Parent ID      :
-      ID             : 6f1ff7f9cf4ec1c7
-      Name           : lets-go
-      Kind           : Client
-      Start time     : 2024-01-16 14:13:54.585877 +0000 UTC
-      End time       : 2024-01-16 14:13:54.586 +0000 UTC
-      Status code    : Unset
-      Status message :
-  ...
-```
+   ```console
+   $ grep -E '^Span|(ID|Name|Kind|time|Status \w+)\s+:' ./collector-output.txt
+   Span #0
+       Trace ID       : f30faffbde5fcf71432f89da1bf7bc14
+       Parent ID      : 6f1ff7f9cf4ec1c7
+       ID             : 8d1e820c1ac57337
+       Name           : okey-dokey
+       Kind           : Server
+       Start time     : 2024-01-16 14:13:54.585877 +0000 UTC
+       End time       : 2024-01-16 14:13:54.586 +0000 UTC
+       Status code    : Unset
+       Status message :
+   Span #1
+       Trace ID       : f30faffbde5fcf71432f89da1bf7bc14
+       Parent ID      :
+       ID             : 6f1ff7f9cf4ec1c7
+       Name           : lets-go
+       Kind           : Client
+       Start time     : 2024-01-16 14:13:54.585877 +0000 UTC
+       End time       : 2024-01-16 14:13:54.586 +0000 UTC
+       Status code    : Unset
+       Status message :
+   ...
+   ```
 
 6. To explore the traces visually, open <http://localhost:55679/debug/tracez> in
    your browser and select one of the traces from the table.
@@ -149,8 +149,5 @@ real setups:
   available receivers, processors, and exporters to extend your pipeline.
 
 [gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
-[logs]: /docs/concepts/signals/logs/
-[metrics]: /docs/concepts/signals/metrics/
 [telemetrygen]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen
-[traces]: /docs/concepts/signals/traces/
