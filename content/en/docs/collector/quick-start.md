@@ -46,7 +46,7 @@ If `GOBIN` isn't set, run:
 export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
 ```
 
-This guide uses `bash`. If you're using a different shell, you may need to
+This guide uses `bash`commands. If you're using a different shell, you might need to
 adjust the command syntax.
 
 [^1]:
