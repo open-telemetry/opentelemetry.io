@@ -8,7 +8,7 @@ cSpell:ignore: docker dokey gobin okey telemetrygen
 
 <!-- markdownlint-disable ol-prefix blanks-around-fences -->
 
-The OpenTelemetry Collector is responsible for receiving telemetry data;
+The OpenTelemetry Collector receives telemetry such as
 [traces](/docs/concepts/signals/traces/),
 [metrics](/docs/concepts/signals/metrics/), and
 [logs](/docs/concepts/signals/logs/) processing it, and forwarding it to one or
