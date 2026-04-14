@@ -38,8 +38,14 @@ describe('buildConstraints', () => {
       [{ minimum: 1, maximum: 100 }, 'minimum: 1, maximum: 100'],
       [{ minLength: 1, maxLength: 50 }, 'minLength: 1, maxLength: 50'],
       [{ pattern: '^[a-z]+$' }, 'pattern: ^[a-z]+$'],
-      [{ enum: ['debug', 'info', 'warn', 'error'] }, 'enum: [debug, info, warn, error]'],
-      [{ minProperties: 1, maxProperties: 10 }, 'minProperties: 1, maxProperties: 10'],
+      [
+        { enum: ['debug', 'info', 'warn', 'error'] },
+        'enum: [debug, info, warn, error]',
+      ],
+      [
+        { minProperties: 1, maxProperties: 10 },
+        'minProperties: 1, maxProperties: 10',
+      ],
       [{ minItems: 1, maxItems: 5 }, 'minItems: 1, maxItems: 5'],
       [{ type: 'string' }, ''],
     ];
@@ -52,9 +58,12 @@ describe('buildConstraints', () => {
 
 describe('escapeHtml', () => {
   test('escapes HTML entities', () => {
-    assert.equal(escapeHtml('<script>alert("xss")</script>'), '&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;');
+    assert.equal(
+      escapeHtml('<script>alert("xss")</script>'),
+      '&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;',
+    );
     assert.equal(escapeHtml('5 > 3 & 2 < 4'), '5 &gt; 3 &amp; 2 &lt; 4');
-    assert.equal(escapeHtml("it's a \"test\""), 'it&#39;s a &quot;test&quot;');
+    assert.equal(escapeHtml('it\'s a "test"'), 'it&#39;s a &quot;test&quot;');
   });
 
   test('returns unchanged text without special characters', () => {
@@ -78,7 +87,10 @@ describe('linkifyUrls', () => {
   });
 
   test('escapes text with no URLs', () => {
-    assert.equal(linkifyUrls('<script>alert(1)</script>'), '&lt;script&gt;alert(1)&lt;/script&gt;');
+    assert.equal(
+      linkifyUrls('<script>alert(1)</script>'),
+      '&lt;script&gt;alert(1)&lt;/script&gt;',
+    );
   });
 });
 
@@ -107,7 +119,10 @@ describe('cleanDescription', () => {
 
   test('linkifies URLs with correct attributes', () => {
     const result = cleanDescription('See https://example.com for details');
-    assert.match(result, /<a href="https:\/\/example\.com"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
+    assert.match(
+      result,
+      /<a href="https:\/\/example\.com"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/,
+    );
   });
 
   test('handles mixed content with lists and text', () => {
@@ -126,14 +141,16 @@ describe('cleanDescription', () => {
   });
 
   test('escapes malicious HTML in list items', () => {
-    const input = '- Normal item\n- <img src=x onerror=alert(1)>\n- Another item';
+    const input =
+      '- Normal item\n- <img src=x onerror=alert(1)>\n- Another item';
     const result = cleanDescription(input);
     assert.ok(result.includes('&lt;img'));
     assert.ok(!result.includes('<img src='));
   });
 
   test('linkifies URLs in list items safely', () => {
-    const input = '- See https://example.com\n- Check <script>alert(1)</script>';
+    const input =
+      '- See https://example.com\n- Check <script>alert(1)</script>';
     const result = cleanDescription(input);
     assert.ok(result.includes('<a href="https://example.com"'));
     assert.ok(result.includes('&lt;script&gt;'));
@@ -165,7 +182,10 @@ describe('buildTypeConstraints', () => {
     const cases = [
       [{ additionalProperties: false }, 'additionalProperties: false.'],
       [{ required: ['name', 'type'] }, 'Required properties: name, type.'],
-      [{ minProperties: 1, maxProperties: 5 }, 'minProperties: 1. maxProperties: 5.'],
+      [
+        { minProperties: 1, maxProperties: 5 },
+        'minProperties: 1. maxProperties: 5.',
+      ],
       [{ properties: {} }, ''],
     ];
 
