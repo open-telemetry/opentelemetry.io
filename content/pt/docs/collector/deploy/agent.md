@@ -5,7 +5,7 @@ description: Envie sinais para Collectors e, em seguida, exporte para backends
 aliases: [/docs/collector/deployment/agent]
 weight: 200
 cSpell:ignore: prometheusremotewrite
-default_lang_commit: bcca85a165acd5dc0c99b011665c53cb30de5ca5
+default_lang_commit: 6cebc46de450dd44481a8a6f17c9b3d6f04aa0f2
 ---
 
 No padrão de implantação de agente, os sinais de telemetria podem vir de:
@@ -72,7 +72,7 @@ receivers:
         endpoint: 0.0.0.0:4318
 
 exporters:
-  prometheusremotewrite: # o exportador PRW, para enviar métricas no backend
+  prometheusremotewrite: # o exportador PRW, para enviar métricas ao backend
     endpoint: https://prw.example.com/v1/api/remote_write
     sending_queue:
       batch:
@@ -94,7 +94,7 @@ receivers:
         endpoint: 0.0.0.0:4318
 
 exporters:
-  file: # o Exportador de Arquivo, para graver logs em um arquivo local
+  file: # o Exportador de Arquivo, para gravar logs em um arquivo local
     path: ./app42_example.log
     rotation:
 
