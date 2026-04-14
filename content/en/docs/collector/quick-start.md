@@ -11,7 +11,7 @@ cSpell:ignore: docker dokey gobin okey telemetrygen
 The OpenTelemetry Collector receives telemetry such as
 [traces](/docs/concepts/signals/traces/),
 [metrics](/docs/concepts/signals/metrics/), and
-[logs](/docs/concepts/signals/logs/) processing it, and forwarding it to one or
+[logs](/docs/concepts/signals/logs/), processes it, and forwards it to one or
 more observability backends through its component pipeline.
 
 {{% alert title="Note" %}} This is a basic local demo. The goal here is to show
