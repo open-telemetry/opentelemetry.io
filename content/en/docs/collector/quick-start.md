@@ -55,7 +55,7 @@ adjust the command syntax.
 
 ## Set up the environment
 
-1. Pull the OpenTelemetry Collector Docker image:
+1. Pull the Docker image of the OpenTelemetry Collector core [distribution](/docs/collector/distributions/):
 
 ```sh
    docker pull otel/opentelemetry-collector:{{% param vers %}}
