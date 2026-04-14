@@ -39,6 +39,7 @@ are internal helpers and are not intended to be run directly.
 | ---------------------- | ----------------------------------------------------------- |
 | `check`                | Run the most commonly needed check scripts in sequence.     |
 | `check:all`            | Run all check scripts in sequence.                          |
+| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                |
 | `check:format`         | Prettier and prose-wrap checks.                             |
 | `check:i18n`           | Validate localization front matter (`default_lang_commit`). |
 | `check:links`          | Run HTML link checker.                                      |
@@ -57,6 +58,7 @@ are internal helpers and are not intended to be run directly.
 | Script                    | Description                                                    |
 | ------------------------- | -------------------------------------------------------------- |
 | `fix`                     | Run the most commonly needed fix scripts.                      |
+| `fix:code-excerpts`       | Refresh code excerpts.                                         |
 | `fix:all`                 | Run all fix scripts.                                           |
 | `fix:format`              | Apply Prettier and trim trailing spaces.                       |
 | `fix:format:staged`       | Format only staged files.                                      |
@@ -74,14 +76,14 @@ are internal helpers and are not intended to be run directly.
 
 ## Submodules and content
 
-| Script             | Description                                        |
-| ------------------ | -------------------------------------------------- |
-| `get:submodule`    | Init/update git submodules (set `GET=no` to skip). |
-| `update:submodule` | Update submodules to latest remote and fetch tags. |
-| `pin:submodule`    | Pin submodule revisions (optional `PIN_SKIP`).     |
-| `cp:spec`          | Copy spec content (content-modules).               |
-| `schemas:update`   | Update OpenTelemetry spec submodule and content.   |
-| `code-excerpts`    | Rebuild code excerpts and update docs.             |
+| Script             | Description                                                                          |
+| ------------------ | ------------------------------------------------------------------------------------ |
+| `code-excerpts`    | Refresh code excerpts. DEPRECATED: use `fix:code-excerpts` or `check:code-excerpts`. |
+| `cp:spec`          | Copy spec content (content-modules).                                                 |
+| `get:submodule`    | Init/update git submodules (set `GET=no` to skip).                                   |
+| `pin:submodule`    | Pin submodule revisions (optional `PIN_SKIP`).                                       |
+| `schemas:update`   | Update OpenTelemetry spec submodule and content.                                     |
+| `update:submodule` | Update submodules to latest remote and fetch tags.                                   |
 
 ## Test and CI
 
