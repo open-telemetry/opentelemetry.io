@@ -15167,10 +15167,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-23T14:16:34.295960935Z"
   },
-  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-approval-labels.yml": {
-    "StatusCode": 404,
-    "LastSeen": "2026-04-14T10:08:43.15149515Z"
-  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-review-trigger.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-04-10T10:03:37.797869938Z"
