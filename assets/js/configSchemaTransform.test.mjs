@@ -15,7 +15,7 @@ import {
   processType,
   extractTypes,
   transformSchema,
-} from './configSchemaTransform.js';
+} from './configSchemaTransform.mjs';
 
 describe('resolveType', () => {
   test('handles single type string', () => {
