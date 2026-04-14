@@ -1,6 +1,6 @@
 ---
 title: Quick start
-description: Setup and collect telemetry in minutes!
+description: Set up and collect telemetry in minutes!
 aliases: [getting-started]
 weight: 1
 cSpell:ignore: docker dokey gobin okey telemetrygen
