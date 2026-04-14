@@ -1,4 +1,4 @@
-# cSpell:ignore bluesky cicd docsy goldmark linkify netlify wordmark noopener
+# cSpell:ignore bluesky cicd docsy goldmark linkify netlify wordmark noopener llms
 baseURL: https://opentelemetry.io
 title: OpenTelemetry
 disableKinds: [taxonomy]
@@ -109,8 +109,8 @@ cascade:
 
   # Enable redirects for site root (and not locales)
   - outputs:
-      # This must match the equivalent of [outputs.home, redirects]
-      [HTML, markdown, RSS, redirects]
+      # This must match the equivalent of [outputs.home, LLMS, redirects]
+      [HTML, markdown, RSS, LLMS, redirects]
     target:
       kind: home
       sites: { matrix: { languages: [en] } }
