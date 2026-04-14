@@ -285,7 +285,7 @@
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
     "StatusCode": 429,
-    "LastSeen": "2026-04-13T10:16:00.089194874Z"
+    "LastSeen": "2026-04-14T10:07:14.596540644Z"
   },
   "https://blog.remirepo.net/pages/PECL-extensions-RPM-status": {
     "StatusCode": 200,
@@ -10303,10 +10303,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-17T09:54:33.901684977Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/semconv/v1.9.0/generated_resource.go": {
-    "StatusCode": 206,
-    "LastSeen": "2026-03-24T09:53:20.393253004Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/docs/rfcs/semconv-feature-gates.md#proposed-mechanism": {
     "StatusCode": 206,
     "LastSeen": "2026-03-10T22:33:47.645393+02:00"
@@ -15173,7 +15169,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-approval-labels.yml": {
     "StatusCode": 404,
-    "LastSeen": "2026-04-13T10:17:15.519595935Z"
+    "LastSeen": "2026-04-14T10:08:43.15149515Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-review-trigger.yml": {
     "StatusCode": 206,
@@ -21987,33 +21983,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-23T18:35:15.718426838Z"
   },
-  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.53.0-alpha/opentelemetry-bom-alpha-1.53.0-alpha.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2026-03-23T14:20:44.859646098Z"
-  },
-  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.58.0-alpha/opentelemetry-bom-alpha-1.58.0-alpha.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2026-03-17T09:56:27.450638231Z"
-  },
-  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.60.1-alpha/opentelemetry-bom-alpha-1.60.1-alpha.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2026-04-10T09:57:20.197769187Z"
-  },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.61.0-alpha/opentelemetry-bom-alpha-1.61.0-alpha.pom": {
     "StatusCode": 206,
     "LastSeen": "2026-04-13T14:13:09.87998692Z"
-  },
-  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.53.0/opentelemetry-bom-1.53.0.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2026-03-23T14:20:41.201496667Z"
-  },
-  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.58.0/opentelemetry-bom-1.58.0.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2026-03-17T09:56:24.605869191Z"
-  },
-  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.60.1/opentelemetry-bom-1.60.1.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2026-04-10T09:57:16.574993459Z"
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.61.0/opentelemetry-bom-1.61.0.pom": {
     "StatusCode": 206,
@@ -22297,7 +22269,7 @@
   },
   "https://sakshipatle.substack.com/p/outreachy-how-when-and-why": {
     "StatusCode": 403,
-    "LastSeen": "2026-04-13T10:16:04.70488377Z"
+    "LastSeen": "2026-04-14T10:07:24.102291817Z"
   },
   "https://schemas.dmtf.org/wbem/cim-html/2.31.0/CIM_Battery.html": {
     "StatusCode": 206,
