@@ -16,8 +16,8 @@ more observability backends through its component pipeline.
 
 > [!NOTE]
 >
-> This quick start demo creates a basic local setup. The goal is to show
-> you how the Collector works, not to set up a production-ready environment.
+> This quick start demo creates a basic local setup. The goal is to show you how
+> the Collector works, not to set up a production-ready environment.
 
 In this guide, you will:
 
@@ -46,8 +46,8 @@ If `GOBIN` isn't set, run:
 export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
 ```
 
-This guide uses `bash` commands. If you're using a different shell, you might need to
-adjust the command syntax.
+This guide uses `bash` commands. If you're using a different shell, you might
+need to adjust the command syntax.
 
 [^1]:
     For more information, see
@@ -55,13 +55,15 @@ adjust the command syntax.
 
 ## Set up the environment
 
-1. Pull the Docker image of the OpenTelemetry Collector core [distribution](/docs/collector/distributions/):
+1. Pull the Docker image of the OpenTelemetry Collector core
+   [distribution](/docs/collector/distributions/):
 
    ```sh
    docker pull otel/opentelemetry-collector:{{% param vers %}}
    ```
 
-2. Install [telemetrygen][], which we'll use to simulate a client that generates telemetry:
+2. Install [telemetrygen][], which we'll use to simulate a client that generates
+   telemetry:
 
    ```sh
    go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
@@ -81,7 +83,6 @@ adjust the command syntax.
    ```
 
    The previous command runs the Collector locally and opens three ports:
-
    - `4317` — OTLP over gRPC, the default for most SDKs
    - `4318` — OTLP over HTTP, for clients that don't support gRPC
    - `55679` — ZPages, a built-in debug UI you can open in the browser
@@ -135,8 +136,8 @@ adjust the command syntax.
 ## Next steps
 
 At this point, you've run the Collector locally and seen how it handles
-telemetry end to end. From here, you can start learning how it's used in
-real setups:
+telemetry end to end. From here, you can start learning how it's used in real
+setups:
 
 - [Configuration](/docs/collector/configuration): Learn how the Collector's
   config file works and how to connect it to a real backend like Jaeger or
