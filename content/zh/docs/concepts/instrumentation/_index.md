@@ -4,6 +4,7 @@ description: OpenTelemetry 如何促进插桩
 aliases: [instrumenting]
 weight: 15
 default_lang_commit: deb98d0648c4833d9e9d77d42e91e2872658b50c # patched
+drifted_from_default: true
 ---
 
 要使系统具备[可观测性][observable]，就必须进行**插桩（Instrumentation）**：

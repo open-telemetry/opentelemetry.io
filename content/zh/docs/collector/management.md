@@ -3,6 +3,7 @@ title: 管理
 description: 如何管理 OpenTelemetry Collector 大规模部署
 weight: 23
 default_lang_commit: 4f2df45798ecb448e9029f155e8eaa64d23555ff # patched
+drifted_from_default: true
 cSpell:ignore: hostmetrics opampsupervisor
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: 开箱即用的插桩
 default_lang_commit: 0b22ed7b760c66407308d5a59053b620ac06a1fa
+drifted_from_default: true
 weight: 40
 cSpell:ignore: webflux webmvc
 ---

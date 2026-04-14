@@ -2,6 +2,7 @@
 title: 配置
 weight: 10
 default_lang_commit: 4a613ef41a86ffa53495e951fdff53de43ba11df
+drifted_from_default: true
 aliases: [agent-config]
 cSpell:ignore: customizer
 ---
