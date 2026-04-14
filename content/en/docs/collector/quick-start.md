@@ -92,7 +92,7 @@ The previous command runs the Collector locally and opens three ports:
    $GOBIN/telemetrygen traces --otlp-insecure --traces 3
 ```
 
-You will see output confirming the traces were sent:
+You see output confirming the traces were sent:
 
 ```text
    2024-01-16T14:33:15.692-0500  INFO  traces/worker.go:99  traces generated  {"worker": 0, "traces": 3}
