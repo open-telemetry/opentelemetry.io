@@ -4,6 +4,7 @@ description: OpenTelemetry দ্বারা সমর্থিত টেলি
 aliases: [data-sources, otel-concepts]
 weight: 11
 default_lang_commit: c370886c9926e6cab3738ababbf6ff5692899bbd
+drifted_from_default: true
 ---
 
 OpenTelemetry-এর উদ্দেশ্য হল [সিগন্যাল][signals] সংগ্রহ, প্রক্রিয়াকরণ এবং রপ্তানি করা।
