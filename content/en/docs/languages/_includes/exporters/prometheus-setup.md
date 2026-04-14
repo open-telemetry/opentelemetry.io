@@ -33,20 +33,20 @@ Note:
 
 The OTEL_EXPORTER_OTLP_METRICS_ENDPOINT environment variable is treated as a base URL. The `/v1/metrics` path is appended as defined by the [OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/specification/protocol/exporter.md#endpoint-urls-for-otlphttp).
 
-Turn off traces and logs:
+Turn off traces and logs when using Prometheus if you only need metrics:
 
 ```bash
 export OTEL_TRACES_EXPORTER=none
 export OTEL_LOGS_EXPORTER=none
 ```
 
-The default push interval for OpenTelemetry metrics is 60 seconds. The following will set a 15-second push interval:
+The default push interval for OpenTelemetry metrics is 60 seconds. The following sets a 15-second interval for more responsive monitoring and faster alerting speed. Shorter intervals may increase network and processing overhead.
 
 ```bash
 export OTEL_METRIC_EXPORT_INTERVAL=15000
 ```
 
-If your instrumentation library does not provide `service.name` and `service.instance.id` out-of-the-box, it is highly recommended to set them. The example below assumes that the `uuidgen` command is available on your system.
+If your instrumentation library does not provide `service.name` and `service.instance.id` out-of-the-box, it is highly recommended to set them. Without these attributes, it becomes difficult to reliably identify services or distinguish between instances, making debugging and aggregation significantly harder. The example below assumes that the `uuidgen` command is available on your system.
 
 ```bash
 export OTEL_SERVICE_NAME="my-example-service"
