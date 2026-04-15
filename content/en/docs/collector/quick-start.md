@@ -36,7 +36,7 @@ Before you begin, make sure your environment has the following tools installed:
 
 - [Docker](https://www.docker.com/) or any compatible container runtime — used
   to run the Collector
-- [Go](https://go.dev/) 1.20 or higher — used to install the telemetry generator
+- [Go](https://go.dev/), one of the latest two minor versions — used to install the telemetry generator
 - [`GOBIN` environment variable][gobin] set — ensures installed Go binaries are
   available in your PATH[^1]
 
