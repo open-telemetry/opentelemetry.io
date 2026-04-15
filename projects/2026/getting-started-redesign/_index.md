@@ -11,7 +11,7 @@ custodian:
 
 ## Description
 
-This oproject redesigns the Getting Started experience on opentelemetry.io by
+This project redesigns the Getting Started experience on opentelemetry.io by
 replacing the current content with a guided, step-by-step wizard. Inspired by
 [Certbot's instruction generator](https://certbot.eff.org/instructions), the
 wizard collects a few key choices from the user, such as their role, programming
@@ -86,7 +86,7 @@ inline and links to setup documentation for the chosen destination.
 
 #### Step 5: Output
 
-Based on the selections, the wizard produces a guide that includess install
+Based on the selections, the wizard produces a guide that includes install
 commands, environment variables, and instrumentation code for the rolldice
 reference application.
 
@@ -100,7 +100,7 @@ supported language needs an implementation that follows the spec.
 
 ### Alternative path: OpenTelemetry Demo
 
-For users who prefer to explore a full system before writing coe, the
+For users who prefer to explore a full system before writing code, the
 [OpenTelemetry Demo][demo] remains available as an alternative path within the
 wizard — e.g., a "Try the demo instead" option on the first step.
 
@@ -118,7 +118,7 @@ The following details are intentionally deferred for community discussion:
 
 - The Platform Engineer / Ops path needs its own set of wizard steps (deployment
   target, Collector configuration, zero-code instrumentation options, etc). What
-  does that flow should look like?
+  should that flow look like?
 - Does selecting a single signal filter the output content, reorder sections, or
   just set expectations? The answer to this question may impact the amount of
   content we need to create for each combination of options.
