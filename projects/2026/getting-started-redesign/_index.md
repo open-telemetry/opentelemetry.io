@@ -72,7 +72,7 @@ The user picks which signals to start with: Traces, Metrics, Logs, or all three.
 > [!NOTE]
 >
 > Baggage and Profiles are intentionally left out of the initial wizard scope,
-> as they could be confusing for unexperienced users.
+> as they could be confusing for inexperienced users.
 
 ![Step 3: Signal Selection](./assets/step-3-signal-selection.png)
 
