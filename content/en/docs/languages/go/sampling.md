@@ -52,8 +52,6 @@ methods:
   sampling decision based on the provided parameters.
 - `Description() string`: Returns a description of the sampler.
 
-### Preserving tracestate
-
 > [!IMPORTANT] Preserve parent tracestate
 >
 > In `ShouldSample`, you _must_ preserve the parent's tracestate in your
