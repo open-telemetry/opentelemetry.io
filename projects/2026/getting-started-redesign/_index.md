@@ -34,7 +34,7 @@ Before seeing any instrumentation code, users currently navigate from:
 
 However, the language-specific getting started pages are often overwhelming for
 users, as they contain a lot of information that may not be relevant to their
-specific use case. Those pages are also heavy-focused on **manual
+specific use case. Those pages are also heavily focused on **manual
 instrumentation**, which may not be the best fit for all users, especially those
 who are new to observability.
 
