@@ -3663,6 +3663,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-25T09:53:43.805909325Z"
   },
+  "https://github.com/DavidAnson/markdownlint#configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-15T08:12:49.873532-04:00"
+  },
   "https://github.com/DavidAnson/markdownlint/blob/main/doc/md052.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-10T09:58:03.828355401Z"

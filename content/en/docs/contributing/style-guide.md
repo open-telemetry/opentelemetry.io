@@ -130,6 +130,10 @@ To enforce standards and consistency for Markdown files, all files should follow
 certain rules, enforced by [markdownlint][]. For a full list, check the
 [.markdownlint.yaml][] and [.markdownlint-cli2.yaml][] files.
 
+When legitimate exceptions to a rule exists, use `markdownlint-disable`
+directive to suppress the rule warnings. For details, see the
+[markdownlint documentation](https://github.com/DavidAnson/markdownlint#configuration).
+
 We also enforce Markdown [file format](#file-format) and strip files of trailing
 whitespace. This precludes the [line break syntax][] of 2+ spaces; use `<br>`
 instead or reformat your text.
