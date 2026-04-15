@@ -24,7 +24,7 @@ labels on pull requests:
 [trigger]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-review-trigger.yml
 [labels]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-approval-labels.yml
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/label-manager.yml
 [blog]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/blog-publish-labels.yml
 
