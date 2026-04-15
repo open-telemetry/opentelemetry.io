@@ -140,6 +140,7 @@
     "test:edge-functions:live": "npm run _test:ef:live --",
     "test:edge-functions": "node --test \"netlify/edge-functions/**/*.test.ts\"",
     "test:js-unit": "node --test \"assets/js/**/*.test.mjs\"",
+    "test:local-tools": "find scripts -type f \\( -name '*.test.mjs' -o -name '*.test.js' \\) -print0 | xargs -0 node --test",
     "test:redirects:live": "npm run _test:redirects:live --",
     "test": "CMD_SKIP=collector-sync npm run test:base",
     "update:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
