@@ -14,7 +14,7 @@ This report presents findings from the OpenTelemetry Japanese Community Survey, 
 
 ## Key Takeaways
 
-- When it comes to OTel adoption, this survey reached a mature audiencewith 61.47% already running it in production and a further 25.69% under evaluation — together accounting for nearly 87% of respondents.
+- When it comes to OTel adoption, this survey reached a mature audience with 61.47% already running it in production and a further 25.69% under evaluation — together accounting for nearly 87% of respondents.
 - Traces dominate signal collection at 93%, contrary to global OTel surveys, where metrics typically lead.
 - The community is strongly satisfied, with an NPS of +49, though 27.37% remain passive — a conversion opportunity through better documentation and community engagement.
 - Go teams show the strongest adoption commitment, jumping from 39% in evaluation to 76% in production — the largest increase of any language.
