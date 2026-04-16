@@ -16,6 +16,7 @@ autoloaded
 autoloader
 autoloading
 backoff
+blockquotes
 caml
 cartservice
 cassandra
@@ -38,6 +39,7 @@ emailservice
 EMEA
 erlang
 errorf
+extensionless
 featureflagservice
 flagd
 frauddetectionservice
@@ -126,6 +128,7 @@ Socha
 Stalnaker
 stdoutmetric
 Strimzi
+subresponse
 symfony
 tabpane
 textlint

@@ -1,30 +1,44 @@
 ---
 title: GA4 asset fetch analytics plan
-custodian: [Patrice Chalin](https://github.com/chalin)
-cSpell:ignore: GA4 BigQuery Netlify NDJSON referrer eventparams GOOGLEANALYTICS
+date: 2026-04-03
+lastmod: 2026-04-11
+version: 0.5
+custodian: Patrice Chalin
+cSpell:ignore: GOOGLEANALYTICS pathing SRRCT subresponse subresponses
 ---
 
 ## Goal
 
-Provide a single design for collecting analytics for non-HTML assets served from
+Support essential GA4 analytics for non-HTML assets served from
 `opentelemetry.io`, including:
 
-- schema files under `/schemas/*`
-- future Markdown assets such as `*.md` variants of site pages
-- other machine-oriented static assets that should not be counted as page views
+- Schema files under `/schemas/*`
+- Markdown assets such as `*.md` variants of site pages
+- Other non-HTML assets, including `llms.txt`
 
-The design should keep reporting accessible to the existing team through Google
+The chosen design keeps reporting accessible to the existing team through Google
 Analytics while preserving a reliable operational view in Netlify.
+
+[Netlify Observability][] remains the operational backstop for request-level
+validation and debugging.
 
 ## Summary
 
-Use a Netlify Edge Function to emit a GA4 custom event named `asset_fetch` for
-selected asset responses. Keep Netlify Observability enabled as the
-request-level validation and debugging surface.
+- Implement using Netlify Edge Function(s) to emit a GA4 custom event named
+  `asset_fetch` for selected asset responses.
+- Keep Netlify Observability enabled as the request-level validation and
+  debugging surface.
+- The `markdown-negotiation` Edge Function emits `asset_fetch` for Markdown
+  delivery for negotiated page paths, with `original_path` when it differs from
+  the resolved `*.md` path; negotiated `GET` requests emit for all returned
+  subrequest statuses and surface that subrequest outcome directly.
+- The `asset-tracking` Edge Function emits `asset_fetch` for explicit `.md` and
+  `*.txt` requests and skips internal subrequests marked with
+  `X-Asset-Fetch-Ga-Info`.
 
-Do not model asset requests as GA4 `page_view` events. Asset requests are not
-HTML page loads, and treating them as page views would pollute site browsing
-metrics.
+We won't model asset requests as GA4 `page_view` events because asset requests
+are not HTML page loads, and treating them as page views would pollute site
+browsing metrics.
 
 ## Why this plan
 
@@ -61,7 +75,8 @@ that the team already uses.
 An Edge Function can:
 
 1. intercept selected asset requests
-2. let Netlify serve the asset normally
+2. either let Netlify serve the route normally or fetch a negotiated asset
+   variant directly
 3. read the response metadata
 4. enqueue a post-response GA4 event send
 
@@ -82,11 +97,14 @@ Observability remains useful as the operational backstop:
 
 ```mermaid
 flowchart LR
-  A["Client or agent requests /schemas/* or *.md"] --> B["Netlify Edge Function"]
-  B --> C["context.next() serves static asset"]
-  C --> D["Response returned to client"]
-  B --> E["context.waitUntil() sends GA4 asset_fetch event"]
-  C --> F["Netlify Observability records request metadata"]
+  A["Client or agent requests /schemas/* or a Markdown-capable page path"] --> B["Netlify Edge Function"]
+  B --> C["context.next() serves normal route response"]
+  B --> D["or fetch() serves negotiated asset variant"]
+  C --> E["Response returned to client"]
+  D --> E
+  B --> F["context.waitUntil() sends GA4 asset_fetch event"]
+  C --> G["Netlify Observability records request metadata"]
+  D --> G
 ```
 
 ### System roles
@@ -101,68 +119,108 @@ flowchart LR
 
 ### Event name
 
-Use one custom event:
+Use a single custom event: `asset_fetch`
 
-`asset_fetch`
+### Event parameters
 
-This keeps reporting simple and avoids proliferating many event names.
+Also call **custom dimensions** in GA4, the following define the event payload:
 
-### Required event parameters
+- Dimension name: `Asset path`
+  - Scope: `Event`
+  - Event parameter: `asset_path`
+  - Description: Path of the resource returned for the fetch (after Path
+    resolution), such as `/schemas/1.40.0`
+- Dimension name: `Original path`
+  - Scope: `Event`
+  - Event parameter: `original_path`
+  - Description: Unmodified request path when it differs from `asset_path`.
+    Register for Markdown negotiation; omit when unused (for example schemas do
+    not send this parameter).
+- Dimension name: `Content type`
+  - Scope: `Event`
+  - Event parameter: `content_type`
+  - Description: Response content type returned for the fetched asset, such as
+    `application/yaml`
+- Dimension name: `Status code`
+  - Scope: `Event`
+  - Event parameter: `status_code`
+  - Description: HTTP response status code returned when serving the asset
+- Dimension name: `Event emitter`
+  - Scope: `Event`
+  - Event parameter: `event_emitter`
+  - Description: Short stable id for the instrumentation scope that emitted the
+    `asset_fetch` event.
+  - Canonical values:
+    - `negotiation` — Accept-negotiated page Markdown (`markdown-negotiation`)
+    - `tracking` — direct `.md` / `.txt` paths (`asset-tracking`)
+    - `schema` — `/schemas/*` responses (`schema-analytics`). **Note:** this
+      value may be deprecated in the future.
 
-Send the following GA4 event parameters for every tracked asset request:
+Deprecated dimensions:
 
-- `asset_group`
-  - one of: `schema`, `markdown`, `other`
-- `asset_path`
-  - normalized request path, for example `/schemas/1.40.0`
-- `asset_ext`
-  - one of: `yaml`, `md`, `json`, `txt`, `other`
-- `content_type`
-  - normalized response content type, for example `application/yaml`
-- `status_code`
-  - response status as a string, for example `200`
+- Dimension name: `Asset extension`
+  - Status: **DEPRECATED** since v0.4
+  - Scope: `Event`
+  - Event parameter: `asset_ext`
+  - Description: Extension from `asset_path` when present. Always `yaml` for
+    schemas.
+- Dimension name: `Asset group`
+  - Status: **DEPRECATED** since v0.4
+  - Scope: `Event`
+  - Event parameter: `asset_group`
+  - Description: Broad category for fetched non-HTML assets, such as `schema` or
+    `markdown`
 
-### Optional event parameters
+Possible future event parameters:
 
-Only add these if they are useful enough to justify extra cardinality:
-
-- `asset_kind`
-  - finer grouping such as `page-markdown`, `schema-version`, `schema-latest`
 - `referrer_host`
-  - normalized host only, not full referrer URL
-- `ua_category`
-  - coarse user-agent class such as `browser`, `ai-agent`, `crawler`, `tooling`,
-    `other`
+- `ua_category`: coarse user-agent class such as `browser`, `ai-agent`,
+  `crawler`, `tooling`, `other`
 
 ### Parameters to avoid
 
 Do not send the following to GA4:
 
-- full user agent string
-- full referrer URL
-- query strings by default
+- Full user agent string
+- Referrer URL
+- Query strings by default
 - IP address
-- request headers beyond coarse classification
+- Request headers beyond coarse classification
 
 These fields either create unnecessary cardinality, expose more data than
 needed, or are poor fits for GA4 reporting.
 
-### Path normalization
+### Path resolution
 
-Normalize paths before sending them to GA4:
+Apply the following when resolving paths for GA4:
+
+**Always (all phases):**
 
 - strip query strings
 - preserve the route path
 - keep the exact schema version path, for example `/schemas/1.40.0`
-- for Markdown assets, prefer the stable public path rather than a filesystem
-  path
 
-Examples:
+**Phase 2 (Markdown and other negotiated routes):**
+
+- `asset_path` is the path of the returned resource after resolution.
+- `original_path`, when sent, is the unmodified request path (only when it
+  differs from `asset_path`).
+
+#### Examples
 
 - `/schemas/1.40.0?cache=1` -> `/schemas/1.40.0`
 - `/docs/concepts/context/index.md` -> `/docs/concepts/context/index.md`
-- `/docs/concepts/context/` with content negotiation should map to the actual
-  served asset path only if that path is stable and public
+
+Markdown negotiation examples:
+
+- Path resolution is case-sensitive by design. URL paths are normally
+  case-sensitive on the web, so only lowercase `index.html` participates in
+  Markdown negotiation; unusual variants such as `index.HTML` fall through.
+- `/docs/` resolves to `/docs/index.md` for `asset_path`; send `original_path`
+  `/docs/` if it differs from the resolved path.
+- `/docs/concepts/context/` with content negotiation: `asset_path` is the path
+  of the returned Markdown file; send `original_path` when the request path
+  differs
 
 ## GA4 configuration
 
@@ -190,153 +248,15 @@ Examples:
 If stream-level separation is not enough for governance, use a separate GA4
 property.
 
-### Custom dimensions
-
-Register these event-scoped custom dimensions in GA4:
-
-- `asset_group`
-- `asset_path`
-- `asset_ext`
-- `content_type`
-- `status_code`
-- `asset_kind` if used
-- `referrer_host` if used
-- `ua_category` if used
-
-### Reporting model
-
-The primary GA4 metric is:
-
-- `Event count`
-
-The main report slices are:
-
-- event count by `asset_path`
-- event count by `asset_group`
-- event count by `asset_ext`
-- event count by `status_code`
-- event count by `ua_category` if implemented
-
 ### Retention and history
 
 GA4 aggregated reports remain available in the GA UI, but event-level retention
-used by Explorations is limited by GA4 retention settings. If exact long-term
-path-level history matters, enable BigQuery export.
+used by Explorations is limited by GA4 retention settings, which is set to 14
+months (as of 2026-04-03).
 
-## Reporting examples
+## Phase 1 runtime configuration (completed)
 
-### Schema access counts
-
-Example question:
-
-How many times was `/schemas/1.40.0` fetched in the last 30 days?
-
-GA4 answer shape:
-
-- filter `event_name = asset_fetch`
-- filter `asset_group = schema`
-- breakdown by `asset_path`
-- metric `Event count`
-
-### Markdown asset access counts
-
-Example question:
-
-Which Markdown-rendered page assets were fetched most often this month?
-
-GA4 answer shape:
-
-- filter `event_name = asset_fetch`
-- filter `asset_group = markdown`
-- breakdown by `asset_path`
-- metric `Event count`
-
-### Bot and AI traffic split
-
-Example question:
-
-How much of Markdown asset traffic comes from AI agents vs browsers?
-
-Two options:
-
-1. In GA4, if `ua_category` is sent as an event parameter.
-2. In Netlify Observability, which already classifies user agents and is better
-   suited for validation and operational analysis.
-
-## Looker Studio reporting
-
-Use the existing GA4-backed Looker Studio reporting approach for asset
-analytics. This should work well for the current goals:
-
-- access counts
-- top-accessed schema files
-- top-accessed Markdown assets
-
-### Top 10 schemas in the last 30 days
-
-Recommended chart configuration:
-
-- data source: GA4 property or dedicated asset stream
-- chart type: table
-- dimension: `asset_path`
-- metric: `Event count`
-- filters:
-  - `event_name = asset_fetch`
-  - `asset_group = schema`
-- sort: `Event count` descending
-- row limit: top `10`
-- date range: last `30` days
-
-### Top Markdown assets in the last 30 days
-
-Recommended chart configuration:
-
-- data source: GA4 property or dedicated asset stream
-- chart type: table
-- dimension: `asset_path`
-- metric: `Event count`
-- filters:
-  - `event_name = asset_fetch`
-  - `asset_group = markdown`
-- sort: `Event count` descending
-- row limit: top `10`
-- date range: last `30` days
-
-### Publishing and sharing
-
-This reporting can be added to the existing public Looker Studio dashboard,
-assuming:
-
-- the report uses owner credentials for the GA4 data source
-- the GA4 custom dimensions have been registered
-- the new fields have propagated and the Looker data source fields have been
-  refreshed
-
-### Limits
-
-This approach is a good fit for top-N reporting. If `asset_path` eventually
-becomes too high-cardinality and GA4 starts collapsing values into `(other)`,
-move the public path-level report to Looker Studio on top of GA4 BigQuery
-export.
-
-## Phase 1 runtime configuration
-
-Configure the Netlify site with:
-
-- `HUGO_SERVICES_GOOGLEANALYTICS_ID`
-  - existing GA4 measurement ID for the site's current web stream
-- `GA4_API_SECRET`
-  - new GA4 Measurement Protocol API secret for `asset_fetch` events
-
-Phase 1 should reuse the existing web stream and should not introduce a second
-measurement ID.
-
-Phase 1 should rely on environment-variable scoping rather than host-based
-checks inside the Edge Function. If `GA4_API_SECRET` is only configured for
-production, local and preview environments will not send GA4 events unless the
-secret is intentionally provided there as well.
-
-### Create the GA4 Measurement Protocol API secret
+### Create a GA4 Measurement Protocol API secret
 
 In GA4:
 
@@ -348,71 +268,35 @@ In GA4:
 
 Operational notes:
 
-- keep the secret private
-- store it only in Netlify site settings
-- rotate it if there is any reason to suspect exposure
+- Keep the secret private
+- Store it only in Netlify site settings
+- Rotate it if there is any reason to suspect exposure
 
-### Set the Netlify environment variable
+### Set `GA4_API_SECRET`
 
-In Netlify site settings:
+In Netlify site Environment Variables settings:
 
 1. Open the site's environment variable settings.
-2. Add `GA4_API_SECRET`.
+2. Add `GA4_API_SECRET` for **production only**.
 3. Paste the Measurement Protocol API secret value.
 4. Redeploy after the variable is added or updated.
 
 `HUGO_SERVICES_GOOGLEANALYTICS_ID` should already exist and should continue to
 point at the existing web stream measurement ID.
 
-### Register GA4 custom dimensions
+### How to register GA4 custom dimensions
 
 In GA4:
 
 1. Open `Admin`.
 2. Under `Data display`, open `Custom definitions`.
 3. Open the `Custom dimensions` tab.
-4. Create event-scoped custom dimensions for the `asset_fetch` parameters.
+4. Create event-scoped custom dimensions for each of the `asset_fetch`
+   parameters listed in [Event parameters](#event-parameters).
 
-Recommended phase 1 custom dimensions:
-
-- `asset_group`
-- `asset_path`
-- `asset_ext`
-- `content_type`
-- `status_code`
-
-Suggested GA4 dimension definitions:
-
-- Dimension name: `Asset group`
-  - Scope: `Event`
-  - Event parameter: `asset_group`
-  - Description: Broad category for fetched non-HTML assets, such as `schema` or
-    `markdown`
-- Dimension name: `Asset path`
-  - Scope: `Event`
-  - Event parameter: `asset_path`
-  - Description: Normalized request path of the fetched asset, such as
-    `/schemas/1.40.0`
-- Dimension name: `Asset extension`
-  - Scope: `Event`
-  - Event parameter: `asset_ext`
-  - Description: File extension group for the fetched asset, such as `yaml` or
-    `md`
-- Dimension name: `Content type`
-  - Scope: `Event`
-  - Event parameter: `content_type`
-  - Description: Response content type returned for the fetched asset, such as
-    `application/yaml`
-- Dimension name: `Status code`
-  - Scope: `Event`
-  - Event parameter: `status_code`
-  - Description: HTTP response status code returned when serving the asset
-
-Reporting note:
-
-- GA4 custom dimensions typically become available in reports and explorations
-  24 to 48 hours after the event data is sent and the custom dimension is
-  created
+> **Note:** GA4 custom dimensions typically become available in reports and
+> explorations 24 to 48 hours after the event data is sent and the custom
+> dimension is created.
 
 ### Validate phase 1 after deploy
 
@@ -421,8 +305,8 @@ After deploying:
 1. Fetch a known schema URL such as `/schemas/1.40.0`.
 2. Confirm the response still returns YAML.
 3. Check GA4 Realtime for the `asset_fetch` event.
-4. After custom dimensions propagate, confirm `asset_group = schema` and the
-   expected `asset_path` appear in GA4 and Looker Studio.
+4. After custom dimensions propagate, confirm the expected `asset_path`,
+   `content_type`, and `status_code` appear in GA4 and Looker Studio.
 
 Validation note:
 
@@ -431,40 +315,99 @@ Validation note:
   validation is needed:
   <https://developers.google.com/analytics/devguides/collection/protocol/ga4/validating-events>
 
+## Analytics reporting
+
+- Google Analytics console:
+  - Engagement > Events report. Select `asset_fetch` to view details of all
+    asset fetch events.
+- Looker Studio
+  - Asset fetch event reporting can be added to the existing public Looker
+    Studio dashboard.
+    - For an example, see the Schema table (added around 2026-04-09)
+  - Note: You may have to refresh the data source to see new custom dimensions.
+  - Limits:
+    - This approach is a good fit for top-N reporting. If `asset_path`
+      eventually becomes too high-cardinality and GA4 starts collapsing values
+      into `(other)`, move the public path-level report to Looker Studio on top
+      of GA4 BigQuery export.
+
 ## Edge Function collection rules
 
 ### Tracked paths
 
-Initial scope:
-
 - `/schemas/*`
-- `*.md` public asset routes once those assets are published
+- Request paths ending in `.md` or `.txt`
+- Any path with content negotiation for Markdown
 
-Future optional scope:
+> **Note:** More extensions may be added in the future in support of [Download
+> URLs #4079][#4079].
 
-- other machine-readable non-HTML assets that warrant analytics
+[#4079]: https://github.com/open-telemetry/opentelemetry.io/issues/4079
 
 ### Response gating
 
 Only send GA4 events when all of the following are true:
 
-1. request method is `GET`
-2. response status is in the `2xx` or `3xx` range
-3. response content type matches a tracked asset type
-4. path matches configured tracked routes
+1. Request method is `GET` or route-specific tracked `HEAD`
+2. Path matches configured tracked routes
+3. The response matches the route-specific tracking rules
 
-This avoids inflating counts with failed or irrelevant requests.
+Current route-specific rules:
+
+- Negotiated Markdown: track Markdown-preferring negotiated requests for all
+  returned subrequest statuses (`2xx`, `3xx`, `4xx`, `5xx`) across `GET` and
+  `HEAD`
+- Explicit `.md` and `.txt`: track direct `GET` requests to tracked asset URLs
+  regardless of response status, and skip any request marked with
+  `X-Asset-Fetch-Ga-Info`
+- Schemas: track `GET /schemas/*` for successful `2xx` YAML responses and
+  successful `3xx` redirects under `/schemas/*`.
+
+These rule help avoid emitting non-essential events to GA. Consult the site's
+[Netlify Observability][] page for responses with other status codes such as
+`4xx` or `5xx`, and other HTTP methods.
+
+### Response header
+
+For rollout and sanity-checking, add a response header:
+
+- `X-Asset-Fetch-Ga-Info: <asset_path>[; <info-tag>[,<info-tag>]*]`
+- `X-Asset-Fetch-Ga-Info: none[: <info-tag> [,<info-tag>]*]`
+
+Where:
+
+- `<asset_path>` is the derived GA `asset_path` that would be sent for the
+  request; or `none` when there is no derived GA path
+
+When `<asset_path>` is `none`, the info-tag offers a reason:
+
+- `request method X is not currently tracked` (where X is the request method)
+- `request path does not match a tracked route`
+- `internal subrequest`
+  - Request is an internal subrequest already marked with
+    `X-Asset-Fetch-Ga-Info`.
+- `response does not meet route-specific gating`
+  - Request path matches, but the response does not meet route-specific gating.
+
+When there is a path, possible info-tags include:
+
+- `config-missing`
+  - GA credentials are not present, so the request is only a local GA event
+    candidate.
+- `config-present`
+  - GA credentials are present, so event enqueue will be attempted.
+- `ga-event-candidate`
+  - The request matches the current route/method/response gating and is a
+    candidate to emit `asset_fetch`.
+
+This header is for validating path derivation and coarse GA event
+candidate/config state only. It does not indicate that GA accepted or reported
+the event. The header might be dropped in the future.
 
 ### Deduplication policy
 
-Do not attempt request deduplication in the Edge Function. Count each served
-request as one `asset_fetch` event.
-
-Reason:
-
-- request count is the simplest and most defensible metric
-- GA4 user/session semantics are weak for server-side asset fetches anyway
-- deduplication would add ambiguity and operational complexity
+Edge Function design should ensure that at most one `asset_fetch` event is sent
+for each request.
 
 ## Identity and privacy
 
@@ -496,7 +439,8 @@ Do not send:
 - full referrer URLs
 - any user-entered content
 
-If coarse origin analysis is useful, send only a normalized `referrer_host`.
+If coarse origin analysis is useful, send only a stable `referrer_host`
+(hostname, no path).
 
 Phase 1 intentionally does not forward the original request `User-Agent` header
 to GA4. The primary reporting goal is event counts and top-accessed asset paths,
@@ -513,11 +457,11 @@ assets are generated for many pages.
 
 ### Mitigations
 
-- use one event name only
-- use a small set of categorical parameters
-- keep `asset_path` normalized
-- do not send query strings
-- use BigQuery export for exact long-term analysis
+- Use one event name only
+- Use a small set of categorical parameters
+- Keep `asset_path` stable (path resolution)
+- Do not send query strings
+- Use BigQuery export for exact long-term analysis
 
 ### When to move beyond GA4 UI
 
@@ -526,24 +470,9 @@ If the GA4 UI starts collapsing rows into `(other)` for `asset_path`, use:
 - GA4 for high-level grouped reporting
 - BigQuery for exact path-level analysis
 
-## Netlify Observability role
-
-Netlify Observability should remain enabled even after GA4 asset tracking is
-added.
-
-Use it for:
-
-- sanity-checking request volumes
-- short-term incident analysis
-- debugging status-code spikes
-- identifying traffic classes such as AI agents and crawlers
-
-Do not treat it as the primary shared reporting surface for this initiative. It
-is better suited to internal operational use than broad publishing.
-
 ## Implementation plan
 
-### Phase 1
+### Phase 1 (completed)
 
 1. Add a Netlify Edge Function that matches `/schemas/*`.
 2. Send `asset_fetch` to GA4 with the required parameters only.
@@ -552,56 +481,226 @@ is better suited to internal operational use than broad publishing.
 
 ### Phase 2
 
-1. Extend tracked routes to public `*.md` assets.
-2. Add `ua_category` if the classification is stable and low-cardinality.
-3. Build a shared GA4 exploration or Looker Studio report for the team.
+**Status:** In progress. Completed steps: 1, 2, 3.
+
+Steps:
+
+1. **Negotiated Markdown tracking** — implemented in the `markdown-negotiation`
+   Edge Function (`asset_path`, `original_path` when the request path differs,
+   negotiated Markdown responses across returned subrequest statuses, and direct
+   subresponse return for negotiated non-`2xx` outcomes).
+
+2. **Asset tracking** — implemented in the `asset-tracking` Edge Function for
+   explicit `.md` and `*.txt` requests. It tracks `GET` requests to tracked
+   asset URLs regardless of response status. Rationale: keeps
+   `markdown-negotiation` focused on `Accept`-based negotiation; direct asset
+   routes use only `context.next()` (no alternate fetch), so a small dedicated
+   handler is simpler to test; a single combined entrypoint can be revisited
+   later if preferred.
+
+   Internal fetches from `markdown-negotiation` should carry
+   `X-Asset-Fetch-Ga-Info`; the direct-asset handler should treat the presence
+   of that request header as an internal subrequest marker and skip tracking to
+   avoid double-counting negotiated page requests. The same header can also
+   expose compact GA-info on responses, which keeps the mechanism simple and
+   live-testable.
+
+3. **GA-info response header** — `X-Asset-Fetch-Ga-Info` responses use the
+   format described in [Response header](#response-header). Purpose: validate
+   derived GA path plus coarse GA event candidate/config state in production
+   without implying GA ingestion.
+
+   The same header is also used as the internal-subrequest marker for
+   deduplication. External callers can emulate it and therefore it is not a
+   security boundary. That tradeoff is accepted: GA4 asset analytics are a
+   convenience surface, while Netlify Observability remains the source of truth
+   for request counts and cross-checking.
+
+4. (optional) Add `ua_category` if the classification is stable and
+   low-cardinality.
+
+### Phase 2b (as of v0.5)
+
+Refine negotiated Markdown so that content negotiation preserves route
+semantics, not just best-effort representation selection.
+
+#### Design principle
+
+When a client prefers Markdown, the negotiated response should preserve the same
+route semantics that a non-Markdown client would observe for the corresponding
+resource, modulo representation format.
+
+In practical terms:
+
+- Content negotiation may change the representation returned.
+- Content negotiation should not silently change redirect behavior or other
+  status semantics unless we explicitly choose that tradeoff
+- Analytics should reflect the semantics we choose, not obscure them.
+
+#### Negotiated Markdown status policy
+
+Decision: for negotiated Markdown, `asset_fetch` should be emitted for all
+relevant negotiated-response outcomes, while still ensuring that exactly one
+event is emitted per negotiated request.
+
+Invariant:
+
+- Emit exactly one `asset_fetch` for each negotiated Markdown request that
+  prefers Markdown.
+- Include all negotiated-response outcomes we intentionally expose to clients.
+- Do not emit when the request does not prefer Markdown.
+
+Grey-area decision:
+
+When the internal Markdown subrequest diverges from what the normal route might
+return, prefer surfacing the Markdown subrequest outcome directly instead of
+falling back to `context.next()`.
+
+Rationale:
+
+- Report status early to clients.
+- Keep the client-visible response aligned with the emitted GA `status_code`.
+- Avoid extra fallback traffic.
+
+Decision table for the case split:
+
+| Condition / case               | A          | B          | C        | D     |
+| ------------------------------ | ---------- | ---------- | -------- | ----- |
+| Method - `GET`/`HEAD`/other    | GET / HEAD | GET / HEAD | GET/HEAD | other |
+| Path is Markdown-negotiable    | Y          | Y          |          | -     |
+| Prefers Markdown               | Y          |            | -        | -     |
+| ------------------------------ | -----      | -----      | -----    | ----  |
+| Case                           | 1          | 2          | 3        | 3     |
+| Emit (`status_code`)           | SRS        | none       | none     | none  |
+| Resp status                    | SRS        | pass       | pass     | pass  |
+| Resp content & content type    | SRRCT      | pass       | pass     | pass  |
+
+Legend:
+
+- `Y`/` ` means true/false
+- `*` means any value
+- `-` means N/A
+- `pass` means the normal response returned by Netlify via `context.next()`
+- `SRS` means the subrequest response status
+- `SRRCT` means the subrequest response content type, and content if any (none
+  for HEAD requests)
+
+The cases are:
+
+1. `GET`/`HEAD` + preferred Markdown
+   - Emit one event: `status_code` is SRS
+   - Response: SRRCT
+2. Request does not prefer Markdown
+   - No event emitted.
+   - Response: pass
+3. Request is outside negotiated Markdown handling
+   - No event emitted.
+   - Response: pass
+
+Current test coverage by condition combo:
+
+| Condition / combo              | 1a   | 1b    | 1c   | 1d    | 2a   | 2b   | 3a       | 3b    |
+| ------------------------------ | ---- | ----- | ---- | ----- | ---- | ---- | -------- | ----- |
+| Method                         | GET  | GET   | HEAD | HEAD  | GET  | HEAD | GET/HEAD | other |
+| Path is Markdown-negotiable    | Y    | Y     | Y    | Y     | Y    | Y    |          | -     |
+| Prefers Markdown               | Y    | Y     | Y    | Y     |      |      | -        | -     |
+| Subrequest status              | 2xx  | non-2 | 2xx  | non-2 | -    | -    | -        | -     |
+| ------------------------------ | ---- | ----- | ---- | ----- | ---- | ---- | -------- | ----  |
+| Case (from table above)        | 1    | 1     | 1    | 1     | 2    | 2    | 3        | 3     |
+| Unit tests                     | Good | Good  | Good | Good  | Good | Good | Some     | Good  |
+| Live tests                     | Good | Some  | Good | Some  | Good | Good | Some     | GAP   |
+
+Uses the same legend as the decision table above.
+
+Tests exercising each combo:
+
+- **1a** (GET + negotiable + prefers md + 2xx):
+  - `analytics.test.ts`: original_path when path differs; index.html → resolved
+    md
+  - `handler.test.ts`: serves markdown when preferred; site root; explicit
+    `index.html` page
+  - `live-check.test.mjs`: regular path; `index.html` with markdown preferred
+- **1b** (GET + negotiable + prefers md + non-2xx):
+  - `analytics.test.ts`: internal 404, 302, 500 subresponses
+  - `handler.test.ts`: direct 404 / 302 / 500 markdown subresponses
+  - `live-check.test.mjs`: `no-md/` 404 subresponse; redirect fixtures and live
+    assertions for real 3xx subresponses are scaffolded but currently skipped
+    pending an alias redirect fix
+- **1c** (HEAD + negotiable + prefers md + 2xx):
+  - `analytics.test.ts`: HEAD emits `asset_fetch`
+  - `handler.test.ts`: HEAD markdown without body; HEAD fallback to GET
+  - `live-check.test.mjs`: HEAD regular path with markdown preferred
+- **1d** (HEAD + negotiable + prefers md + non-2xx):
+  - `analytics.test.ts`: HEAD 404 emits `asset_fetch`
+  - `handler.test.ts`: HEAD 404 direct subresponse without a body
+  - `live-check.test.mjs`: HEAD `no-md/` 404 subresponse
+- **2a** (GET + negotiable + does not prefer md):
+  - `analytics.test.ts`: HTML preferred (no `asset_fetch`)
+  - `handler.test.ts`: HTML preferred; missing `Accept` header
+  - `live-check.test.mjs`: HTML preferred
+- **2b** (HEAD + negotiable + does not prefer md):
+  - `analytics.test.ts`: HEAD HTML preferred (no `asset_fetch`)
+  - `handler.test.ts`: HEAD HTML preferred
+  - `live-check.test.mjs`: HEAD HTML preferred
+- **3a** (GET/HEAD + non-negotiable path):
+  - `analytics.test.ts`: direct `.md` URL pass-through for `GET` and `HEAD` (no
+    `asset_fetch`)
+  - `pathing.test.ts`: `shouldConsiderRequest` matrix (`.md`, `/.`, extensions)
+  - `handler.test.ts`: non-index `.html` bypass; uppercase `index.HTML` bypass;
+    non-negotiable `HEAD` bypass
+  - `live-check.test.mjs`: `/docs.html` redirect; `index.HTML` (skipped)
+- **3b** (non-GET/HEAD method):
+  - `pathing.test.ts`: `shouldConsiderRequest` rejects POST etc.
+  - `handler.test.ts`: unsupported methods bypass
+  - no live coverage
+
+**Significant gaps:**
+
+- **1b**: real deployed negotiated `3xx` coverage is currently skipped pending
+  an alias redirect fix.
+- **1d**: live coverage now exercises HEAD `404`, but not a real deployed HEAD
+  `3xx` or `5xx` negotiated subresponse.
+- **3a**: live coverage still leans on `/docs.html` and a skipped uppercase
+  `index.HTML` edge case rather than a dedicated non-negotiable `HEAD` fixture.
+- **3b**: no live test for non-GET/HEAD methods.
+
+Fixture note:
+
+- The canonical fixtures under `/site/testing/tests/` remain the preferred live
+  probes.
+- Adding page `aliases` does not by itself change the behavior of those
+  canonical fixture paths.
+- Alias paths should be treated as separate redirect/canonicalization cases and
+  verified on preview before being used as negotiated-Markdown control probes.
 
 ### Phase 3
 
+This phase is optional.
+
+1. Build a shared GA4 exploration or Looker Studio report for the team.
 1. Enable GA4 BigQuery export if exact long-term path-level reporting becomes
    important.
-2. Add grouped dashboards for:
+1. Add grouped dashboards for:
    - schema usage by version
    - Markdown asset usage by section
    - asset traffic by status code
 
-## Open decisions
+## Prior art
 
-### Stream vs property
+Useful prior art for phase 2.2 and related documentation:
 
-Default recommendation: use the existing web stream in the existing property.
-
-Decision triggers for a separate property:
-
-- stricter access control
-- a need for stronger isolation than a separate event name provides
-- desire to isolate machine traffic completely
-- concern that asset events will confuse non-technical GA users
-
-### Whether to send `ua_category`
-
-Recommended default: not in phase 1.
-
-Reason:
-
-- Netlify already provides agent classification operationally
-- it can be added later if needed
-
-### Whether to count redirects
-
-Recommended default: yes, if the request is a successful redirect for a tracked
-asset route such as `/schemas/latest`.
-
-If reports should reflect only terminal asset responses, change the gating rule
-to only count `2xx`.
-
-## Proposed dashboard questions
-
-- Which schema versions are fetched most often?
-- How often is `/schemas/latest` used compared to pinned schema versions?
-- Which Markdown asset routes are fetched most often?
-- Which documentation sections receive the most Markdown asset traffic?
-- What share of asset traffic is non-`200`?
+- Cloudflare Workers subrequests:
+  <https://developers.cloudflare.com/workers/platform/limits/#subrequests>
+- Cloudflare analytics with Workers:
+  <https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/>
+- Envoy `x-envoy-internal` header:
+  <https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers.html#x-envoy-internal>
+- Envoy header sanitizing / internal headers:
+  <https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/header_sanitizing.html>
+- NGINX subrequests:
+  <https://nginx.org/en/docs/dev/development_guide.html#subrequests>
+- Next.js middleware docs:
+  <https://nextjs.org/docs/pages/api-reference/file-conventions/middleware>
 
 ## References
 
@@ -621,3 +720,101 @@ to only count `2xx`.
   <https://docs.cloud.google.com/looker/docs/studio/table-reference>
 - Looker Studio sharing:
   <https://docs.cloud.google.com/looker/docs/studio/ways-to-share-your-reports>
+
+## Tasks
+
+This section broadly tracks the tasks for the implementation plan.
+
+### In progress
+
+None.
+
+### Other tasks
+
+In no particular order:
+
+- If registry Markdown output is kept, add a dedicated Markdown-friendly
+  registry template instead of relying on the generic fallback renderer.
+- Add `ua_category` if the classification is stable and low-cardinality.
+- Build a shared GA4 exploration or Looker Studio report for the team.
+
+## Edit history
+
+Plan changes in reverse chronological order. Prepend a `### v…` section for each
+plan-changing PR; use `-dev` on the version until that change set is merged.
+
+### v0.5 - 2026-04-11
+
+- Negotiated Markdown: adopt phase 2b semantics so negotiated `GET` requests
+  emit `asset_fetch` for all returned subrequest statuses and return the
+  subresponse directly for `3xx` / `4xx` / `5xx`.
+- Negotiated Markdown: switch internal fetches to `redirect: 'manual'` so
+  internal `3xx` responses become observable and can be surfaced directly.
+- Negotiated Markdown: extend that same emission policy to Markdown-preferring
+  `HEAD` requests.
+- Added dedicated redirect fixtures under `/site/testing/tests/` so the live
+  suite can exercise real negotiated redirect responses once alias redirect
+  handling is fixed.
+- Added site-level redirect live checks plus shared live-check helpers/runners,
+  including grouped `node:test` entry points for edge-function live checks and
+  for the combined edge-function + redirect live suite.
+- Enabled Markdown output for `/search` and `/ecosystem/registry/` so those
+  routes can participate in negotiated Markdown delivery; registry Markdown
+  currently uses the generic fallback renderer, with a dedicated template left
+  as follow-up.
+- Updated the negotiation tests, live checks, coverage matrix, collection rules,
+  and `markdown-negotiation` README to match the phase 2b design.
+
+### v0.4 - 2026-04-11
+
+- Added `event_emitter` with canonical values `negotiation`, `tracking`, and
+  `schema`, and updated the implementation/tests to emit and validate it.
+- Deprecated `asset_group` and `asset_ext`, and removed them from the emitted
+  GA4 payloads and related test assertions.
+- Added support for `X-Asset-Fetch-Ga-Info` response headers using
+  `<asset_path>[;<info-tag>[,<info-tag>]*]` or
+  `none[: <info-tag> [,<info-tag>]*]`, and updated tests to validate the initial
+  GA event candidate and non-candidate cases, including integration tests and
+  deployed-host live checks.
+- Made deployed-host GA-info header checks environment-aware so production
+  expects `config-present` while preview/local expects `config-missing`.
+- Added dedicated `/site/testing/tests/` content fixtures for live checks,
+  including a regular page and an HTML-only page that does not publish Markdown.
+- Added edge-function test assertion guidance to this plan and refactored
+  repeated helper logic so the test suites stay DRY without changing coverage.
+
+### v0.3 - 2026-04-10
+
+- Implemented phase 2.2/2.3 with a generic `asset-tracking` Edge Function for
+  explicit `.md` and `.txt` requests, with direct tracked asset URLs counted
+  regardless of response status.
+- Added `X-Asset-Fetch-Ga-Info` as the shared marker for internal subrequests,
+  with direct asset tracking skipping any request where the header is present.
+- Added unit and live tests for explicit `.md` and `.txt` delivery, plus
+  internal-marker behavior.
+- Added cross-function integration tests for negotiated Markdown deduplication
+  and direct `.md` pass-through into asset tracking.
+- Updated routing, summary, and tracked-path documentation to reflect explicit
+  `.md` and `.txt` tracking as live.
+
+### v0.2 - 2026-04-10
+
+- Clarified GA4 parameter semantics, especially `asset_path` and
+  `original_path`, plus path-resolution wording and examples.
+- Documented current Markdown behavior: negotiated Markdown tracking is live,
+  direct `.md` pass-through tracking is deferred to a separate step, and
+  `original_path` is specific to negotiated Markdown.
+- Refined tracking rules: GET-only analytics for now, route-specific response
+  gating, and `asset_ext` wording that keeps schemas as `yaml`.
+- Captured implementation/testing work: README notes, unit-test rationale,
+  negotiated Markdown live checks, and schema delivery live checks.
+- Updated deployment/config notes: removed the fallback `/schemas/:version`
+  header rule from `netlify.toml` and recorded a later GA-info response header
+  follow-up.
+
+### v0.1 - 2026-04-03
+
+- First version.
+
+[Netlify Observability]:
+  https://app.netlify.com/projects/opentelemetry/logs-and-metrics/observability

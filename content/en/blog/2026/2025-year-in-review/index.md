@@ -7,7 +7,7 @@ author: >-
   Hrabusa](https://github.com/tiffany76) (Grafana Labs)
 sig: Comms
 # prettier-ignore
-cSpell:ignore: chalin Hrabusa jaydeluca Msksgm Sugimoto triager triagers Vasconcellos vitorvasc windsonsea
+cSpell:ignore: Hrabusa jaydeluca Msksgm Sugimoto triager triagers Vasconcellos vitorvasc windsonsea
 ---
 
 As 2025 has come to an end, we're taking a moment to look back at everything the
