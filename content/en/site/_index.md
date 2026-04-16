@@ -32,8 +32,8 @@ Tentatively planned content organization:
 - [**Build**](./build/) — Tooling, local development setup, CI/CD workflows,
   deployment environments, and automation details.
 - **Deployment** — Deployment-specific behavior for the OpenTelemetry website.
-- **Quality** — Link checking, accessibility standards, tests, review practices,
-  and other quality-related processes.
+- [**Testing**](./testing/) — Link checking, accessibility standards, tests,
+  review practices, and other quality-related processes.
 - **Roadmap** — Milestones, backlog, priorities, technical debt, and
   design/implementation decisions.
 

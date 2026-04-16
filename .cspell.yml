@@ -85,16 +85,19 @@ words:
   # WARNING: the list below gets sorted by CI scripts. Any comment lines
   # will be pushed to the top here.
   - attrlink
+  - chalin
   - Crossplane
   - crosspost
   - desaturate
-  - Docsy
+  - docsy
   - errorf
+  - excerpter
   - favicons
   - Goldmark
   - htmltest
   - jsonify
   - lfasiallc
+  - llms
   - Loffay
   - logback
   - Mancuso

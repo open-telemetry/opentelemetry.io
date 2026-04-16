@@ -2469,6 +2469,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/79828097?v=4
   - name: xuan-cao-swi
     teams:
+      - ruby-approvers
       - ruby-contrib-approvers
       - ruby-contrib-triagers
     html_url: https://github.com/xuan-cao-swi
@@ -3121,6 +3122,9 @@ members:
   - name: perk
     html_url: https://github.com/perk
     avatar_url: https://avatars.githubusercontent.com/u/1143849?v=4
+  - name: petern48
+    html_url: https://github.com/petern48
+    avatar_url: https://avatars.githubusercontent.com/u/115442597?v=4
   - name: pirgeo
     html_url: https://github.com/pirgeo
     avatar_url: https://avatars.githubusercontent.com/u/78350108?v=4
