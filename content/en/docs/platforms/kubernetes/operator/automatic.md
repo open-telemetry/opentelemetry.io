@@ -459,11 +459,10 @@ in the previous step.
 
 #### Auto-instrumenting Python logs
 
-By default, Python logs auto-instrumentation is enabled by the `opentelemetry-instrumentation-logging` package.
-If you would like to
-disable this feature, you must to set
-`OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION` environment variable as
-follows:
+By default, Python logs auto-instrumentation is enabled by the
+`opentelemetry-instrumentation-logging` package. If you would like to disable
+this feature, you must to set `OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION` environment
+variable as follows:
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -484,8 +483,9 @@ spec:
         value: 'false'
 ```
 
-> Before operator v0.148.0 this was handled by `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED`
-> that was set to `false` by default
+> Before operator v0.148.0 this was handled by
+> `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` that was set to `false` by
+> default
 
 #### Excluding auto-instrumentation {#python-excluding-auto-instrumentation}
 
