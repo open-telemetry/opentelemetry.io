@@ -1,17 +1,24 @@
 ---
 title: Implantar o Collector
 linkTitle: Implantar
-description: Padrões que você pode aplicar para implantar o OpenTelemetry Collector
+description:
+  Padrões que você pode aplicar para implantar o OpenTelemetry Collector
 aliases: [/docs/collector/deployment]
 weight: 3
 default_lang_commit: bcca85a165acd5dc0c99b011665c53cb30de5ca5
 ---
 
-O OpenTelemetry Collector consiste em um único binário que você pode implantar de diferentes maneiras para diferentes casos de uso. Esta seção descreve padrões comuns de implantação, seus casos de uso, prós e contras. Também fornece as melhores práticas para configurar o Collector em cenários de múltiplos ambientes e múltiplos backends. Para considerações de segurança relacionadas à implantação, consulte as [melhores práticas de hospedagem do Collector][security].
+O OpenTelemetry Collector consiste em um único binário que você pode implantar
+de diferentes maneiras para diferentes casos de uso. Esta seção descreve padrões
+comuns de implantação, seus casos de uso, prós e contras. Também fornece as
+melhores práticas para configurar o Collector em cenários de múltiplos ambientes
+e múltiplos backends. Para considerações de segurança relacionadas à
+implantação, consulte as [melhores práticas de hospedagem do
+Collector][security].
 
 ## Recursos adicionais {#additional-resources}
 
-- Palestra da KubeCon NA 2021 sobre [Padrões de Implantação do OpenTelemetry 
+- Palestra da KubeCon NA 2021 sobre [Padrões de Implantação do OpenTelemetry
   Collector][y-patterns] (em inglês)
   - [Padrões de implantação][gh-patterns] que acompanham a palestra
 
