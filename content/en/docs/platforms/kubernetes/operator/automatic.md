@@ -459,9 +459,10 @@ in the previous step.
 
 #### Auto-instrumenting Python logs
 
-By default, Python logs auto-instrumentation is disabled. If you would like to
-enable this feature, you must to set
-`OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` environment variable as
+By default, Python logs auto-instrumentation is enabled by the `opentelemetry-instrumentation-logging` package.
+If you would like to
+disable this feature, you must to set
+`OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION` environment variable as
 follows:
 
 ```yaml
@@ -479,12 +480,12 @@ spec:
     - baggage
   python:
     env:
-      - name: OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED
-        value: 'true'
+      - name: OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION
+        value: 'false'
 ```
 
-> As of operator v0.111.0 setting `OTEL_LOGS_EXPORTER` to `otlp` is not required
-> anymore.
+> Before operator v0.148.0 this was handled by `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED`
+> that was set to `false` by default
 
 #### Excluding auto-instrumentation {#python-excluding-auto-instrumentation}
 
