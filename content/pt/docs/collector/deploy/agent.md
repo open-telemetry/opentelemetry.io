@@ -4,7 +4,6 @@ linkTitle: Padrão de agente
 description: Envie sinais para Collectors e, em seguida, exporte para backends
 aliases: [/docs/collector/deployment/agent]
 weight: 200
-cSpell:ignore: prometheusremotewrite
 default_lang_commit: 6cebc46de450dd44481a8a6f17c9b3d6f04aa0f2
 ---
 
