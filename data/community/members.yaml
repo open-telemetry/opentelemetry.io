@@ -2469,6 +2469,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/79828097?v=4
   - name: xuan-cao-swi
     teams:
+      - ruby-approvers
       - ruby-contrib-approvers
       - ruby-contrib-triagers
     html_url: https://github.com/xuan-cao-swi
