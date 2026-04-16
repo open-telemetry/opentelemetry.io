@@ -75,7 +75,15 @@ public class TracedClass {
 > }
 > ```
 
-{{% alert data-why="Using shortcode syntax because of tab panes" title="Note" %}}
+{{< comment >}} Note that we have to use the alert shortcode because it contains
+tab panes.
+
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable prefer-blockquote-vs-docsy-alerts -->
+
+{{< /comment >}}
+
+{{% alert title="Note" %}}
 
 To be able to use the OpenTelemetry annotations, you have to add the Spring Boot
 Starter AOP dependency to your project:
@@ -102,6 +110,8 @@ dependencies {
 {{% /tab %}} {{< /tabpane >}}
 
 {{% /alert %}}
+
+<!-- markdownlint-restore -->
 
 You can disable the OpenTelemetry annotations by setting the
 `otel.instrumentation.annotations.enabled` property to `false`.
