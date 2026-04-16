@@ -18,8 +18,7 @@ Collector][security].
 
 ## Recursos adicionais {#additional-resources}
 
-- Palestra da KubeCon NA 2021 sobre [Padrões de Implantação do OpenTelemetry
-  Collector][y-patterns] (em inglês)
+- Palestra da KubeCon América do Norte 2021 sobre [_OpenTelemetry Collector Deployment Patterns_ (Padrões de Implantação do OpenTelemetry Collector)][y-patterns] (palestra em inglês)
   - [Padrões de implantação][gh-patterns] que acompanham a palestra
 
 [security]: /docs/security/hosting-best-practices/
