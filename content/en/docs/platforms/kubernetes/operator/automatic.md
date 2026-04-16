@@ -483,7 +483,7 @@ spec:
         value: 'false'
 ```
 
-> Before operator v0.148.0 this was handled by
+> Before operator v0.149.0 this was handled by
 > `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` that was set to `false` by
 > default
 
