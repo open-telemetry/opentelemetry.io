@@ -72,6 +72,9 @@ from OpenTelemetry SDK instrumented services still works.
 
 gRPC and HTTP/2 are not supported at the moment.
 
+If you need finer control, `context_propagation` also accepts `headers`, `tcp`,
+and `headers,tcp`. `http` is accepted as an alias for `headers`.
+
 This type of context propagation works for any programming language and doesn't
 require that OBI runs in `privileged` mode or has `CAP_SYS_ADMIN` granted. For
 more details, see the
