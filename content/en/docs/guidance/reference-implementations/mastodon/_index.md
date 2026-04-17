@@ -10,7 +10,7 @@ author: >-
   Mathieu](https://github.com/dmathieu) (Elastic), [Tim
   Campbell](https://github.com/timetinytim) (Mastodon)
 sig: End-User
-cSpell:ignore: devex otelbin Sidekiq Sloughter Öjeling
+cSpell:ignore: otelbin Sidekiq Sloughter Öjeling
 ---
 
 Date: March 18, 2026
