@@ -507,9 +507,9 @@ def roll_dice():
         # This adds 1 to the counter for the given roll value
         roll_counter.add(1, {"roll.value": result})
         if player:
-            logger.warn("%s is rolling the dice: %s", player, result)
+            logger.warning("%s is rolling the dice: %s", player, result)
         else:
-            logger.warn("Anonymous player is rolling the dice: %s", result)
+            logger.warning("Anonymous player is rolling the dice: %s", result)
         return result
 
 def roll():

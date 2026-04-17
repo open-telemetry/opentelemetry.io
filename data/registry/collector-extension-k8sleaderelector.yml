@@ -1,0 +1,21 @@
+# cSpell:ignore sleaderelector
+title: Kubernetes Leader Elector Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+license: Apache 2.0
+description:
+  This extension enables OpenTelemetry components to run in HA mode across a
+  Kubernetes cluster using leader election.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/k8sleaderelector
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/k8sleaderelector
+  version: v0.150.0

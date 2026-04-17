@@ -44,7 +44,7 @@ jobs:
       PRUNE_MORE: ${{ github.event.inputs.prune_more_in_same_PR }}
       REBASE_FROM_MAIN: ${{ github.event.inputs.rebase_from_main }}
     steps:
-      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+      - uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
         id: otelbot-token
         with:
           # the higher privileged docs token is needed to push commits to an existing PR

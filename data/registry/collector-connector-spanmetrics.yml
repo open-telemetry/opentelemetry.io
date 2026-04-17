@@ -1,0 +1,24 @@
+# cSpell:ignore spanmetrics spanmetricsconnector
+title: Span Metrics Connector
+registryType: connector
+language: collector
+tags:
+  - go
+  - connector
+  - collector
+license: Apache 2.0
+description: >-
+  Converts distributed trace span data into RED (Request, Error, Duration)
+  metrics. Generates call counts, error rates, and duration histograms
+  aggregated by service name, span name, span kind, and status code, with
+  support for customizable dimensions, exponential histograms, exemplars, and
+  both cumulative and delta aggregation temporality.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/connector/spanmetricsconnector
+  version: v0.150.0

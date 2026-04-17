@@ -1,4 +1,6 @@
-name: Linter # cSpell:ignore yargs
+name: Linter
+
+# cSpell:ignore startswith yargs
 
 on:
   merge_group:
