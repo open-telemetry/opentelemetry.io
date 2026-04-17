@@ -41,3 +41,5 @@ telemetrie
 tranzacţie
 urmǎrirea
 webshop
+Întreab-o
+Întreab
