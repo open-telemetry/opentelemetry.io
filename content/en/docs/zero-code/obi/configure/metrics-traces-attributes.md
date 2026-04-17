@@ -158,6 +158,8 @@ because it can create false positives, for example, if an application sends SQL
 text for logging through a TCP connection. Currently, OBI natively supports the
 PostgreSQL and MySQL binary protocols.
 
+<a id="http-header-enrichment-for-spans"></a>
+
 ### HTTP header and body enrichment for spans
 
 OBI can attach selected HTTP headers and selected HTTP body fields to spans
@@ -168,9 +170,9 @@ without manually instrumenting the application.
 The enrichment engine is rule-based:
 
 - Set `enabled: true` to activate HTTP header and body enrichment.
-- Use `policy.default_action.headers` and `policy.default_action.body` to define
-  whether unmatched headers or body content are included or excluded. The
-  default for both is `exclude`.
+- Use `policy.default_action.headers` and `policy.default_action.body` in YAML
+  to define whether unmatched headers or body content are included or excluded.
+  The default for both is `exclude`.
 - Use `obfuscate` rules to redact sensitive header values or JSON body fields
   before they are attached to spans.
 - Rules are evaluated in order.
@@ -229,6 +231,10 @@ The following environment variables control the global enrichment behavior:
 
 - `OTEL_EBPF_HTTP_ENRICHMENT_ENABLED`
 - `OTEL_EBPF_HTTP_ENRICHMENT_OBFUSCATION_STRING`
+
+The `policy.default_action.headers` and `policy.default_action.body` settings
+are configured in YAML only; there are no environment variables for these
+defaults.
 
 Rules themselves are configured in YAML. Header rules use `match.patterns` and
 optional `case_sensitive`. Body rules use `match.url_path_patterns`,

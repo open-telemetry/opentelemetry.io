@@ -119,7 +119,7 @@ and `span_id` fields into JSON log objects:
 Plain text logs are passed through unchanged and are **not enriched** with trace
 context.
 
-### Runtime buffering limitations
+#### Runtime buffering limitations
 
 The log enricher only sees trace context when the log write happens on the
 request-handling thread. Runtimes that buffer stdout asynchronously can break

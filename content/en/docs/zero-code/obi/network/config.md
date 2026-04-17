@@ -80,9 +80,9 @@ socket filter to capture the network events. This mode doesn't conflict with
 Cilium CNI or other eBPF programs, which use the Linux Traffic Control egress
 and ingress filters.
 
-| YAML    | Environment variable      | Type                                       | Default |
-| ------- | ------------------------- | ------------------------------------------ | ------- |
-| `cidrs` | `OTEL_EBPF_NETWORK_CIDRS` | list of CIDR strings or named CIDR objects | (empty) |
+| YAML    | Environment variable      | Type                 | Default |
+| ------- | ------------------------- | -------------------- | ------- |
+| `cidrs` | `OTEL_EBPF_NETWORK_CIDRS` | list of CIDR strings | (empty) |
 
 CIDRs list, to be set as the `src.cidr` and `dst.cidr` attribute with the entry
 that matches the `src.address` and `dst.address` respectively.
@@ -94,8 +94,8 @@ narrowest CIDR. As a result, you can safely add a `0.0.0.0/0` entry to group all
 the traffic that does not match any of the other CIDRs.
 
 In YAML, each entry can be either a plain CIDR string or an object with `cidr`
-and `name` fields. If you set this property via environment variable, each entry
-must be separated by a comma, for example:
+and `name` fields. The `OTEL_EBPF_NETWORK_CIDRS` environment variable accepts a
+comma-separated list of CIDR strings only. For example:
 
 ```yaml
 network:
