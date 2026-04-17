@@ -12,18 +12,21 @@ All workflow files live under
 
 ## PR approval labels {#pr-approval-labels}
 
-Two workflows work together to automatically manage approval-related labels on
-pull requests:
+The following workflows work together to automatically manage approval-related
+labels on pull requests:
 
-| Workflow file                      | Trigger                                           | Privileges                                   |
-| ---------------------------------- | ------------------------------------------------- | -------------------------------------------- |
-| [`pr-review-trigger.yml`][trigger] | `pull_request_review`                             | Minimal (no secrets)                         |
-| [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run`, `schedule` | App token for label edits and org/team reads |
+| Workflow file                      | Trigger                               | Privileges                                   |
+| ---------------------------------- | ------------------------------------- | -------------------------------------------- |
+| [`pr-review-trigger.yml`][trigger] | `pull_request_review`                 | Minimal (no secrets)                         |
+| [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run` | App token for label edits and org/team reads |
+| [`blog-publish-labels.yml`][blog]  | `schedule` (daily 7 AM UTC)           | App token + `SLACK_WEBHOOK_URL` secret       |
 
 [trigger]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-review-trigger.yml
 [labels]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-approval-labels.yml
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/label-manager.yml
+[blog]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/blog-publish-labels.yml
 
 ### Labels managed
 
@@ -35,8 +38,8 @@ pull requests:
   removed once a SIG member approves or when no SIG component is touched.
 - **`ready-to-be-merged`** — added when all required approvals are present;
   removed otherwise. For PRs carrying any label in
-  [`PUBLISH_DATE_LABELS`](#publish-date-gating), this label is also gated on the
-  publish date found in changed files.
+  [`PUBLISH_DATE_LABELS`](#publish-date-gating) (currently: `blog`), this label
+  is also gated on the publish date found in changed files.
 
 [docs-approvers]: https://github.com/orgs/open-telemetry/teams/docs-approvers
 [owners]:
@@ -50,24 +53,29 @@ the `ready-to-be-merged` label is withheld until that date arrives (UTC). This
 helps prevent content from being merged before its scheduled publication date.
 
 The check applies to PRs carrying any label listed in the `PUBLISH_DATE_LABELS`
-array in the script (currently: `blog`, automatically applied to any PR touching
-`content/en/blog/**`). Adding a label to that array extends the check to other
-PR types.
+environment variable, set in each workflow YAML (currently: `blog`). Adding a
+label extends the check to other PR types.
 
 If a PR contains multiple files with different dates, the label is gated on the
 latest date — all content must be ready before merging.
 
 #### Script operating modes
 
-The script runs in one of two modes, selected by whether the `PR` environment
-variable is set:
+The [`pr-approval-labels.sh`][script] script processes a single PR (set via the
+`PR` environment variable). It is called by `pr-approval-labels.yml` on PR
+events and by [`blog-publish-check.sh`][batch-script] in batch mode.
 
-- **Single-PR mode** — processes a single PR. Used by the `pull_request_target`
-  and `workflow_run` triggers.
-- **Batch mode** — queries GitHub for all open PRs carrying any
-  `PUBLISH_DATE_LABELS` label and processes each one. Used by the `schedule`
-  trigger (daily at midnight UTC), so a PR whose publish date arrives overnight
-  receives `ready-to-be-merged` automatically without requiring a new commit.
+[script]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/pr-approval-labels.sh
+[batch-script]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/248cc6f/.github/scripts/blog-publish-check.sh
+
+The [`blog-publish-check.sh`][batch-script] script handles batch iteration: it
+queries all open PRs carrying any `PUBLISH_DATE_LABELS` label and calls
+`pr-approval-labels.sh` for each one. Used by the
+[`blog-publish-labels.yml`](#blog-publish-labels) `schedule` trigger (daily at 7
+AM UTC), so a PR whose publish date arrives overnight receives
+`ready-to-be-merged` automatically without requiring a new commit.
 
 ### Why two workflows?
 
@@ -104,7 +112,7 @@ sequenceDiagram
 
     Note over GH: workflow_run event (completed)
 
-    GH->>L: Trigger (base repo context, with secrets)
+    GH->>L: Trigger (base repository context, with secrets)
     L->>L: Download PR number artifact
     L->>L: Run pr-approval-labels.sh
     L->>GH: Add/remove labels
@@ -125,23 +133,6 @@ sequenceDiagram
     L->>GH: Add/remove labels
 ```
 
-```mermaid
-sequenceDiagram
-    participant GH as GitHub
-    participant L as pr-approval-labels
-    participant API as GitHub API
-
-    Note over GH: schedule event (daily, midnight UTC)
-
-    GH->>L: Trigger (base repo context, with secrets)
-    L->>API: Query open PRs with PUBLISH_DATE_LABELS labels
-    API-->>L: List of PRs
-    loop Each PR
-        L->>L: Run pr-approval-labels.sh
-        L->>GH: Add/remove labels
-    end
-```
-
 ### Security model
 
 - **`pr-review-trigger`**: intentionally minimal — no secrets, no privileged
@@ -151,6 +142,99 @@ sequenceDiagram
   / `OTELBOT_DOCS_PRIVATE_KEY`) that has permissions to read org/team membership
   and edit PR labels. Uses `pull_request_target` and `workflow_run` to ensure it
   always executes in the trusted base repository context.
+- **`blog-publish-labels`**: runs on a schedule with a GitHub App token and the
+  `SLACK_WEBHOOK_URL` secret. Always executes in the trusted base repository
+  context (schedule events have no fork variant).
+
+## Blog publish labels {#blog-publish-labels}
+
+The [`blog-publish-labels.yml`][blog] workflow runs daily at 7 AM UTC. It
+executes [`blog-publish-check.sh`][batch-script], which iterates over all open
+PRs with `blog` label and calls `pr-approval-labels.sh` for each one. When
+`ready-to-be-merged` is newly applied to any of them, a Slack notification is
+posted. You can also trigger it manually via `workflow_dispatch` with the
+`force_notify` input to send a test Slack notification. When `force_notify` is
+`true`, the labeling step is skipped entirely (dry run) — only the test Slack
+payload is sent.
+
+| Workflow file                     | Trigger                                                                           | Secrets required                                |
+| --------------------------------- | --------------------------------------------------------------------------------- | ----------------------------------------------- |
+| [`blog-publish-labels.yml`][blog] | `schedule` (daily 7 AM UTC), `workflow_dispatch` (manual test via `force_notify`) | `OTELBOT_DOCS_PRIVATE_KEY`, `SLACK_WEBHOOK_URL` |
+
+The Slack notification fires only when the label transitions from absent to
+present on that run — repeated daily runs for an already-labeled PR do not
+re-notify. When triggering the workflow manually, set `force_notify` to `true`
+to send a one-off test notification (no labels are applied) so you can verify
+the Slack formatting.
+
+### Slack webhook setup {#slack-webhook-setup}
+
+The workflow uses a **Slack Workflow Builder webhook trigger**, which allows
+non-engineers to own the message format without touching workflow code.
+
+**Create the webhook:**
+
+1. In Slack: **Tools → Workflow Builder → New Workflow → Start from scratch**
+2. Choose trigger: **Webhook**
+3. Declare one variable — name: `pr_list`, type: **Text**
+4. Add a step: **Send a message** to the desired channel, with body:
+
+   ```text
+   :newspaper: *Blog posts ready to publish*
+
+   The following PRs have reached their publish date and all required
+   approvals — they are ready to be merged:
+
+   {{pr_list}}
+
+   Have a great day! :sunny:
+   ```
+
+   Then click **Add button** and configure:
+   - **Label**: `Review and merge`
+   - **Color**: Primary (green)
+   - **Action**: Open a link
+   - **URL**:
+     `https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Apr+state%3Aopen+label%3Ablog+label%3Aready-to-be-merged`
+
+5. **Publish** the workflow and copy the webhook URL
+6. Add it to the repository: **Settings → Secrets and variables → Actions → New
+   repository secret**, name: `SLACK_WEBHOOK_URL`
+
+**Payload sent by the workflow:**
+
+```json
+{
+  "pr_list": "• #123: Add blog post: OTel 1.0 — https://github.com/.../pull/123\n• #456: Announce: new SIG — https://github.com/.../pull/456"
+}
+```
+
+Each PR is a bulleted line with its title and URL. Slack auto-links bare URLs.
+Multiple PRs labeled on the same day are batched into a single message — one
+webhook call regardless of how many PRs are ready.
+
+```mermaid
+sequenceDiagram
+    participant GH as GitHub
+    participant W as blog-publish-labels
+    participant B as blog-publish-check.sh
+    participant L as pr-approval-labels.sh
+    participant S as Slack
+
+    Note over GH: schedule event (daily, 7 AM UTC)
+
+    GH->>W: Trigger (base repository context, with secrets)
+    W->>B: Run blog-publish-check.sh
+    B->>GH: Query open PRs with PUBLISH_DATE_LABELS labels
+    GH-->>B: List of PRs
+    loop Each PR
+        B->>L: Run pr-approval-labels.sh (PR=number)
+        L->>GH: Add/remove labels
+    end
+    alt Any PR newly labeled ready-to-be-merged
+        W->>S: POST Slack notification with PR links
+    end
+```
 
 ## PR fix directives {#pr-fix-directives}
 
@@ -189,8 +273,10 @@ The repository includes several other workflows:
 | `check-text.yml`           | Textlint terminology checks                   |
 | `check-i18n.yml`           | Localization front matter validation          |
 | `check-spelling.yml`       | Spell checking                                |
+| `test.yml`                 | Test (excludes `test:base`)                   |
 | `auto-update-registry.yml` | Auto-update registry package versions         |
 | `auto-update-versions.yml` | Auto-update OTel component versions           |
 | `build-dev.yml`            | Development build and preview                 |
-| `label-prs.yml`            | Auto-label PRs based on file paths            |
+| `lint-scripts.yml`         | ShellCheck linting for `.github/scripts/`     |
+| `label-manager.yml`        | PR labels (component labels & approval flow)  |
 | `component-owners.yml`     | Assign reviewers based on component ownership |

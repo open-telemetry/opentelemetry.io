@@ -63,6 +63,28 @@ guidance offered in this section.
 
 </div>
 
+#### Use of AI tools {#ai-tools}
+
+If you use generative AI tools (such as ChatGPT, Gemini, or similar) to assist
+with translations, you must follow the OpenTelemetry [Generative AI Contribution
+Policy][genai-policy] and the Linux Foundation [Generative AI
+Policy][lf-ai-policy]. In particular:
+
+- **Disclose** that you used AI by checking the appropriate box in the [pull
+  request template][].
+- **Review and validate** all AI-generated translations for accuracy. You are
+  responsible for the content you submit.
+- **Do not submit** AI-generated translations that you cannot review and verify
+  yourself (e.g., submissions in languages you are not proficient in). This
+  creates a significant review bottleneck, and your PR may be closed to protect
+  maintainer bandwidth.
+
+[genai-policy]:
+  https://github.com/open-telemetry/community/blob/main/policies/genai.md
+[lf-ai-policy]: https://www.linuxfoundation.org/legal/generative-ai
+[pull request template]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/PULL_REQUEST_TEMPLATE.md
+
 ### Heading IDs {#headings}
 
 To ensure that heading anchor targets are uniform across localizations, when

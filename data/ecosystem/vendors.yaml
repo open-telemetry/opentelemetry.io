@@ -53,7 +53,7 @@
   oss: false
   commercial: true
 - name: Azure
-  nativeOTLP: false
+  nativeOTLP: true
   url: https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview
   contact:
   oss: false
@@ -63,6 +63,12 @@
   url: https://betterstack.com/docs/logs/open-telemetry/#2-setup
   contact: hello@betterstack.com
   oss: false
+  commercial: true
+- name: Bindplane
+  nativeOTLP: true
+  url: https://docs.bindplane.com
+  contact: hello@bindplane.com
+  oss: true
   commercial: true
 - name: BugSnag
   nativeOTLP: true
@@ -317,12 +323,6 @@
   url: https://otelic.com/en/open-telemetry-sample-instrumentation/nodejs-simple
   contact: support@otelic.com
   oss: false
-  commercial: true
-- name: observIQ
-  nativeOTLP: true
-  url: https://docs.bindplane.observiq.com
-  contact:
-  oss: true
   commercial: true
 - name: Odigos
   nativeOTLP: true
