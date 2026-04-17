@@ -17,6 +17,6 @@ community</span>!
 [blog]: /blog/2025/kubecon-japan/
 [kubecon]: https://www.cncf.io/kubecon-cloudnativecon-events
 [LF-Japan]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-Japan-2025&utm_content=slim-banner
+  https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner
 [LF-India]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-india/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-India-2025&utm_content=slim-banner
+  https://events.linuxfoundation.org/kubecon-cloudnativecon-india/register/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner

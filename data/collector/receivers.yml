@@ -492,10 +492,10 @@
     - contrib
     - core
   stability:
+    profiles: alpha
     logs: beta
     metrics: beta
     traces: beta
-    profiles: development
 - name: nsxtreceiver
   display_name: NSX-T Receiver
   repo: contrib
@@ -554,7 +554,7 @@
     - k8s
     - otlp
   stability:
-    profiles: development
+    profiles: alpha
     logs: stable
     metrics: stable
     traces: stable
@@ -634,6 +634,7 @@
     - k8s
   stability:
     logs: alpha
+    profiles: alpha
     traces: alpha
     metrics: beta
 - name: redfishreceiver
@@ -782,7 +783,7 @@
   stability:
     metrics: alpha
 - name: tcplogreceiver
-  display_name: TCP Receiver
+  display_name: TCP Log Receiver
   repo: contrib
   distributions:
     - contrib
@@ -796,7 +797,7 @@
   stability:
     metrics: alpha
 - name: udplogreceiver
-  display_name: UDP Receiver
+  display_name: UDP Log Receiver
   repo: contrib
   distributions:
     - contrib

@@ -1,0 +1,24 @@
+# cSpell:ignore traceid spanid
+title: OpenTelemetry OTTracePropagator
+registryType: utilities
+language: js
+tags:
+  - js
+  - utilities
+license: Apache 2.0
+description:
+  Implements the OT trace propagation format for OpenTelemetry. The OT format
+  uses 64-bit Trace IDs (encoded as 16 hex characters), unlike OpenTelemetry's
+  128-bit IDs — when converting, the least significant bits are retained.
+  Propagates context via ot-tracer-traceid, ot-tracer-spanid, ot-tracer-sampled
+  headers, and ot-baggage-* prefixed baggage entries.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/propagator-ot-trace
+createdAt: 2025-03-26
+package:
+  registry: npm
+  name: '@opentelemetry/propagator-ot-trace'
+  version: 0.29.0
+isFirstParty: false

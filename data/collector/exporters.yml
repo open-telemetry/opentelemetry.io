@@ -146,8 +146,8 @@
   stability:
     logs: alpha
     metrics: alpha
+    profiles: alpha
     traces: alpha
-    profiles: development
 - name: dorisexporter
   display_name: Apache Doris Exporter
   repo: contrib
@@ -220,6 +220,13 @@
     - contrib
   stability:
     metrics: beta
+- name: googlesecopsexporter
+  display_name: googlesecopsexporter
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
 - name: honeycombmarkerexporter
   display_name: Honeycomb Marker Exporter
   repo: contrib
@@ -288,10 +295,10 @@
     - core
     - k8s
   stability:
+    profiles: alpha
     logs: beta
     metrics: beta
     traces: beta
-    profiles: development
 - name: opensearchexporter
   display_name: OpenSearch Exporter
   repo: contrib
@@ -319,7 +326,7 @@
     - k8s
     - otlp
   stability:
-    profiles: development
+    profiles: alpha
     logs: stable
     metrics: stable
     traces: stable
@@ -332,7 +339,7 @@
     - k8s
     - otlp
   stability:
-    profiles: development
+    profiles: alpha
     logs: stable
     metrics: stable
     traces: stable

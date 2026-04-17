@@ -11,11 +11,9 @@ This automation:
    [opentelemetry-ecosystem-explorer](https://github.com/open-telemetry/opentelemetry-ecosystem-explorer)
    repository to access the collector registry
 2. Reads component metadata from `ecosystem-registry/collector/`
-3. Generates markdown tables with component information
-4. Updates documentation pages in `content/en/docs/collector/components/`
-5. Updates version information in `data/collector-versions.yml`
-6. Fixes spelling errors in component names
-7. Creates/updates pull requests with the changes
+3. Updates data registry files in `data/collector/`
+4. Updates version information in `data/collector-versions.yml`
+5. Creates/updates pull requests with the changes
 
 ## Version Management
 
@@ -38,8 +36,6 @@ The automation:
 **To update versions for a new release:**
 
 1. Run the automation script (updates `data/collector-versions.yml`)
-2. Hugo automatically uses new versions in all component links
-3. No need to regenerate markdown tables
 
 ## Local Development
 
@@ -49,9 +45,9 @@ The automation:
 # Install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Install Python dependencies
+# Install Python dependencies (including dev dependencies)
 cd scripts/collector-sync
-uv sync
+uv sync --all-extras
 ```
 
 ### Running Locally
@@ -66,12 +62,16 @@ uv run python -m documentation_sync --no-update
 
 ### Testing
 
+**Prerequisites:** Ensure dev dependencies are installed with
+`uv sync --all-extras`.
+
 ```bash
 # Run all tests
 npm run test:collector-sync
 
 # Or run individually
 npm run check:collector-sync        # pytest
+npm run check:collector-sync:types  # mypy type checking
 npm run check:collector-sync:lint   # ruff linting
 
 # Auto-fix linting issues
