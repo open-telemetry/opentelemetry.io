@@ -4,7 +4,6 @@ linkTitle: Elastic PHP Distro Donation
 date: 2026-04-16
 author: >-
   [Pawel Filipczak](https://github.com/intuibase) (Elastic)
-draft: true
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/9434
 sig: OpenTelemetry PHP
 cSpell:ignore: Filipczak Pawel
