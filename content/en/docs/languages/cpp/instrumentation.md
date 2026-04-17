@@ -236,9 +236,9 @@ p->AddView(std::move(observable_instrument_selector), std::move(observable_meter
 ### Initialize exporter and processor
 
 Initialize an exporter and processor. In this case, you initialize an OStream
-Exporter that prints log records to stdout by default.
-The processor is responsible for conversion of LogRecords to exportable representation
-before they reach the exporter.
+Exporter that prints log records to stdout by default. The processor is
+responsible for conversion of LogRecords to exportable representation before
+they reach the exporter.
 
 ```cpp
 auto exporter = std::unique_ptr<opentelemetry::sdk::logs::LogRecordExporter>(
@@ -251,7 +251,8 @@ auto processor = std::unique_ptr<opentelemetry::sdk::logs::LogRecordProcessor>(
 ### Register a logger provider
 
 Create a `LoggerProvider` and register it as the global provider. Use it to
-obtain `Logger` objects. Loggers can be named to identify the emitting components.
+obtain `Logger` objects. Loggers can be named to identify the emitting
+components.
 
 ```cpp
 auto provider = std::shared_ptr<opentelemetry::logs::LoggerProvider>(
@@ -262,8 +263,10 @@ auto logger = provider->GetLogger(name, "1.0.0");
 
 ### Emit a log record
 
-Use the acquired logger to emit structured log records. Optionally, enrich the log records with trace context by passing the trace ID, span ID, and flags, or other attributes explicitly.
-The supported severity values include: `kTrace`, `kDebug`, `kInfo`, `kWarn`, `kError`, `kFatal`.
+Use the acquired logger to emit structured log records. Optionally, enrich the
+log records with trace context by passing the trace ID, span ID, and flags, or
+other attributes explicitly. The supported severity values include: `kTrace`,
+`kDebug`, `kInfo`, `kWarn`, `kError`, `kFatal`.
 
 ```cpp
 logger->Info("Handling request");
@@ -275,8 +278,6 @@ logger->Info("Request failed", ctx.trace_id(), ctx.span_id(), ctx.trace_flags())
 
 ### Further reading
 
-- [Logs API](https://opentelemetry.io/docs/specs/otel/logs/api/)
-- [Logs SDK](https://opentelemetry.io/docs/specs/otel/logs/sdk/)
 - [Sample Logs Example](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/logs_simple)
 
 ## Next steps
