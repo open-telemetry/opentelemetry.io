@@ -21,7 +21,7 @@ configuration, including the OpenTelemetry Java agent.
 > [!WARNING]
 >
 > The declarative configuration schema is stable. The parts of it that are still
-> experimental are suffixed with `/development`. Java support for declarative
+> experimental are suffixed with `/development`. Java agent support for declarative
 > configuration is still experimental.
 
 ## Supported versions
