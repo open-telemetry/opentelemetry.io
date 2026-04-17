@@ -14,10 +14,11 @@ cSpell:ignore: Sloughter Öjeling
 
 Date: April 8, 2026
 
-This reference implementation features [Adobe](https://www.adobe.com/), a global
-software company. Adobe's observability team has built an OpenTelemetry-based
-telemetry pipeline designed for simplicity at massive scale, with thousands of
-Collectors running per signal type across the company's infrastructure.
+This reference implementation features
+[Adobe](https://www.adobe.com/?link-check=no), a global software company.
+Adobe's observability team has built an OpenTelemetry-based telemetry pipeline
+designed for simplicity at massive scale, with thousands of Collectors running
+per signal type across the company's infrastructure.
 
 ## Organizational structure
 
