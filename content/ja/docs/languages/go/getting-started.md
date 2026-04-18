@@ -337,8 +337,8 @@ func newHTTPHandler() http.Handler {
 	mux := http.NewServeMux()
 
 	// ハンドラーの登録。
-	mux.Handle("/rolldice/", rolldice)
-	mux.Handle("/rolldice/{player}", rolldice)
+	mux.HandleFunc("/rolldice/", rolldice)
+	mux.HandleFunc("/rolldice/{player}", rolldice)
 
 	// サーバー全体に対してHTTP計装を追加します。
 	handler := otelhttp.NewHandler(mux, "/")
