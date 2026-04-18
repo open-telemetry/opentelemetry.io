@@ -1,7 +1,7 @@
 ---
 title: Internal telemetry
 weight: 25
-cSpell:ignore: alloc batchprocessor journalctl
+cSpell:ignore: alloc batchprocessor journalctl otelgrpc
 ---
 
 You can inspect the health of any OpenTelemetry Collector instance by checking
@@ -473,15 +473,53 @@ files in the repository.
 > The `http*` and `rpc*` metrics are not covered by the maturity levels below
 > since they are not under the Collector SIG control.
 >
-> RPC metric names are version-dependent. For instance, Collector releases
-> prior to 0.147.0 exposed `rpc.client.duration` and `rpc.server.duration`
-> instead of `rpc.client.call.duration` and `rpc.server.call.duration`.
+> RPC metric names are version-dependent. For instance, Collector releases prior
+> to 0.147.0 exposed `rpc.client.duration` and `rpc.server.duration` instead of
+> `rpc.client.call.duration` and `rpc.server.call.duration`.
 >
 > The `otelcol_processor_batch_` metrics are unique to the `batchprocessor`.
 >
 > The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
 > `otelcol_exporter_` metrics come from their respective `helper` packages. As
 > such, some components not using those packages might not emit them.
+
+#### Ownership of emitted metrics
+
+Some metrics are not owned by the Collector SIG and some are limited to certain
+components.
+
+**`http*`and `rpc` metrics**
+
+These metrics are not under the Collector SIG's control, and as such, are not
+covered by the maturity levels below.
+
+**`rpc` metrics**
+
+The Collector's internal RPC metrics come from the upstream
+[`otelgrpc`](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/google.golang.org/grpc/otelgrpc)
+instrumentation, which tracks the
+[OpenTelemetry RPC semantic conventions](/docs/specs/semconv/rpc/rpc-metrics/).
+The set of RPC metrics emitted by the Collector has changed across releases:
+
+| Collector version    | Emitted RPC metrics                                                                                                                                                |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| v0.146.x and earlier | `rpc.client.duration`, `rpc.server.duration`, `rpc.*.request.size`, `rpc.*.response.size`, `rpc.*.requests_per_rpc`, `rpc.*.responses_per_rpc`                     |
+| v0.147.0             | `rpc.client.call.duration`, `rpc.server.call.duration`, `rpc.*.request.size`, `rpc.*.response.size` (the `*_per_rpc` metrics are deprecated and no longer emitted) |
+| v0.148.0 and later   | `rpc.client.call.duration`, `rpc.server.call.duration` only                                                                                                        |
+
+RPC size metrics are not emitted by Collector v0.148.0 or later. The
+[RPC semantic conventions v1.40.0](https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.40.0)
+deprecated them due to ambiguous definitions and inconsistent implementation.
+
+**`otelcol_processor_batch_*` metrics**
+
+These metrics are unique to the `batchprocessor`.
+
+**`helper` package metrics**
+
+The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
+`otelcol_exporter_` metrics come from their respective `helper` packages. As
+such, some components not using those packages might not emit them.
 
 ### Events observable with internal logs
 
