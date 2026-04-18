@@ -265,11 +265,11 @@ nothing needed to be committed.
 
 ## Spec integration branches {#spec-integration-branches}
 
-Two scheduled workflows track unreleased changes from upstream spec repos and
-keep a draft PR ("integration branch") current with the next development
+Two scheduled workflows track unreleased changes from upstream spec repositories
+and keep a draft PR ("integration branch") current with the next development
 version:
 
-| Workflow file                             | Upstream repo                 | Branch slug |
+| Workflow file                             | Upstream repository           | Branch slug |
 | ----------------------------------------- | ----------------------------- | ----------- |
 | [update-spec-integration-branch.yml][]    | `opentelemetry-specification` | `spec`      |
 | [update-semconv-integration-branch.yml][] | `semantic-conventions`        | `semconv`   |

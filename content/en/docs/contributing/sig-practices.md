@@ -234,12 +234,10 @@ The following workflow can be applied by maintainers to merge PRs:
   export PR=<ID OF THE PR>; gh pr checks ${PR} --watch && gh pr merge ${PR} --squash
   ```
 
-## Specification PRs
-
-### Spec integration branches {#spec-integration-branches}
+## Specification PRs and integration branches {#spec-integration-branches}
 
 The website continuously integrates unreleased changes from the
-[opentelemetry-specification][] and [semantic-conventions][] repos. Two
+[opentelemetry-specification][] and [semantic-conventions][] repositories. Two
 scheduled workflows ([details][ci-section]) run daily and keep a draft
 "integration" PR current with the next dev version:
 
@@ -256,7 +254,7 @@ scheduled workflows ([details][ci-section]) run daily and keep a draft
 [semconv-branches]:
   https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration
 
-#### Spec / semconv SIG maintainers
+### Spec / semconv SIG maintainers
 
 Just before cutting a release:
 
@@ -271,7 +269,7 @@ Just before cutting a release:
    `@open-telemetry/docs-maintainers` so we can address breakage before the
    release goes out.
 
-#### Comms SIG maintainers
+### Comms SIG maintainers
 
 Throughout the month, regularly check the integration PRs and commit incremental
 fixes to keep their CI checks green. Catching breakage early — while the
