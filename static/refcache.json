@@ -11189,15 +11189,15 @@
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Build.props": {
     "StatusCode": 404,
-    "LastSeen": "2026-04-18T09:52:46.733126422Z"
+    "LastSeen": "2026-04-19T09:52:39.521364569Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Packages.props": {
     "StatusCode": 404,
-    "LastSeen": "2026-04-18T09:52:58.258985068Z"
+    "LastSeen": "2026-04-19T09:52:43.642275251Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation.Native/netfx_assembly_redirection.h": {
     "StatusCode": 404,
-    "LastSeen": "2026-04-18T09:53:09.749606636Z"
+    "LastSeen": "2026-04-19T09:52:47.996048616Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj": {
     "StatusCode": 206,
