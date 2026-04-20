@@ -14,5 +14,6 @@ Dorim să menționăm următoarele surse pentru o parte din conținutul acestui 
    [Urme](/docs/concepts/signals/traces/)
 3. [Ce este OpenTelemetry - Dynatrace](https://www.dynatrace.com/news/blog/what-is-opentelemetry-2/)
 4. [Introducere în OpenTracing, OpenCensus și OpenMetrics - BMC](https://web.archive.org/web/20250624231058/https://www.bmc.com/blogs/opentracing-opencensus-openmetrics/)
-code .cspell/ro-words.txt6. [Observability Whitepaper - CNCF Tag Observability](https://github.com/cncf/tag-observability/blob/whitepaper-v1.0.0/whitepaper.md)
+   code .cspell/ro-words.txt6.
+   [Observability Whitepaper - CNCF Tag Observability](https://github.com/cncf/tag-observability/blob/whitepaper-v1.0.0/whitepaper.md)
    pentru conținutul din [Semnale](/docs/concepts/signals/)
