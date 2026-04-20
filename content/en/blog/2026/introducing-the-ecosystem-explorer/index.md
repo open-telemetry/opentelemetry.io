@@ -1,9 +1,8 @@
 ---
 title: Introducing the Ecosystem Explorer Project
 linkTitle: Introducing the Ecosystem Explorer Project
-date: 2026-04-20
+date: 2026-04-30
 author: '[Jay DeLuca](https://github.com/jaydeluca) (Grafana Labs)'
-draft: true
 sig: Comms SIG
 ---
 
@@ -42,7 +41,7 @@ year, the new site is now live at
 [explorer.opentelemetry.io](https://explorer.opentelemetry.io/) \- but it is
 very much still a work in progress.
 
-## The Java agent Ecosystem
+## The Java agent ecosystem
 
 The Java agent is our first fully mapped ecosystem. Over 240 instrumentations
 are
@@ -52,9 +51,7 @@ pages that show exactly what spans, metrics, and attributes each instrumentation
 emits. Configuration options are documented and mapped to the telemetry they
 affect.
 
-<div style="max-width: 1000px; margin: auto;">
-  <img src="influx-telemetry-by-config.png" alt="Example Telemetry Overview" style="width: 100%; height: auto;" />
-</div>
+![Example telemetry overview](influx-telemetry-by-config.png)
 
 Version support is built in. The Explorer tracks multiple Java agent releases,
 so you can see what telemetry a specific version produces, or what changed
@@ -68,7 +65,7 @@ manual intervention required.
 We've validated the initial approach with Java. Now we need help expanding to
 new ecosystems.
 
-## The frontier: What needs Explorers
+## The frontier: Explorers needed
 
 The Java agent is just one corner of the OpenTelemetry ecosystem. There's a vast
 landscape of other components waiting to be mapped, and each language presents
@@ -108,7 +105,7 @@ capabilities from these distributed packages? What metadata schema works for
 both auto-instrumentation and explicit instrumentation? How do we track changes
 across dozens of independent release cycles?
 
-### JavaScript
+### JavaScript instrumentation
 
 JavaScript follows a similar pattern to Python, with OpenTelemetry JS
 maintaining a modular ecosystem of instrumentation packages covering Express,
@@ -204,7 +201,7 @@ involved:
   "[good first issue](https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issuesq=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22)"
   or
   "[help wanted](https://githubcom/open-telemetry/opentelemetry-ecosystem-explorer/issuesq=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22help%20wanted%22)"
-  labels, there’s quite a few!
+  labels. There are quite a few!
 - **Join the conversation**:
   [`#otel-ecosystem-explorer`](https://cloud-native.slack.com/archives/C09N6DDGSPQ)
   on CNCF Slack
