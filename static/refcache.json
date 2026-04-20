@@ -15139,6 +15139,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-23T14:15:27.098744982Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-semconv-integration-branch.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-18T13:13:24.611167-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-spec-integration-branch.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-18T13:13:22.612054-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/248cc6f/.github/scripts/blog-publish-check.sh": {
     "StatusCode": 206,
     "LastSeen": "2026-03-20T19:58:14.025523139Z"
@@ -15195,6 +15203,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-10T10:03:37.797869938Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-semconv-integration-branch.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-18T13:14:25.301957-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branch.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-18T13:14:24.039183-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint-cli2.yaml": {
     "StatusCode": 206,
     "LastSeen": "2026-04-10T09:57:46.03187341Z"
@@ -15246,6 +15262,14 @@
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/cp-pages.sh": {
     "StatusCode": 206,
     "LastSeen": "2026-03-25T09:54:35.657078937Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-18T13:13:21.117954-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/branches/all?query=spec-integration": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-18T13:13:20.134311-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/commits/main/": {
     "StatusCode": 206,
@@ -15406,6 +15430,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs": {
     "StatusCode": 206,
     "LastSeen": "2026-04-10T09:57:43.700155535Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/specs/pick-branch": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-18T13:14:26.279254-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/templates/registry-entry.yml": {
     "StatusCode": 206,
