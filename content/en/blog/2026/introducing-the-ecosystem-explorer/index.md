@@ -88,7 +88,7 @@ The OpenTelemetry Collector has its own rich ecosystem of receivers, processors,
 exporters, and connectors. We've already built most of the automation pipeline
 to extract Collector component metadata. Now we need to build out the web
 interface to make it all discoverable and searchable. This is close to ready and
-[needs contributors](https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issuesq=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22Collector%20Ecosystem%22)
+[needs contributors](https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22Collector%20Ecosystem%22)
 to help bring it across the finish line.
 
 ### Python instrumentation
@@ -199,9 +199,9 @@ involved:
 - **Browse the code**:
   [github.com/open-telemetry/opentelemetry-ecosystem-explorer](https://github.com/open-telemetry/opentelemetry-ecosystem-explorer)
 - **Find (or submit) issues**: Look for
-  "[good first issue](https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issuesq=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22)"
+  "[good first issue](https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22)"
   or
-  "[help wanted](https://githubcom/open-telemetry/opentelemetry-ecosystem-explorer/issuesq=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22help%20wanted%22)"
+  "[help wanted](https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22help%20wanted%22)"
   labels. There are quite a few!
 - **Join the conversation**:
   [`#otel-ecosystem-explorer`](https://cloud-native.slack.com/archives/C09N6DDGSPQ)
