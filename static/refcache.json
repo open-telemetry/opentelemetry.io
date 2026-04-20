@@ -2735,6 +2735,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:43:07.835289806Z"
   },
+  "https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/server/ResponseStatusException.html": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:26.292813263Z"
+  },
   "https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#jms": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:43:06.039342913Z"
@@ -3290,6 +3294,10 @@
   "https://farfetch.github.io/kafkaflow/docs/guides/open-telemetry": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T13:19:00.56051746Z"
+  },
+  "https://fastapi.tiangolo.com/tutorial/handling-errors/#use-httpexception": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-20T15:29:26.022707089Z"
   },
   "https://firebase.google.com/docs/projects/manage-installations": {
     "StatusCode": 200,
@@ -6518,6 +6526,30 @@
   "https://github.com/kubernetes/cri-api/blob/c75ef5b473bbe2d0a4fc92f82235efd665ea8e9f/pkg/apis/runtime/v1/api.proto#L1237-L1238": {
     "StatusCode": 206,
     "LastSeen": "2026-04-24T10:09:02.57581998Z"
+  },
+  "https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L157C6-L157C20": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:57.126385705Z"
+  },
+  "https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L233": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:53.874123242Z"
+  },
+  "https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L236": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:30:00.777122185Z"
+  },
+  "https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L252": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:30:04.763122275Z"
+  },
+  "https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L256": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:30:01.251199307Z"
+  },
+  "https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L40": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:30:00.660449456Z"
   },
   "https://github.com/kubernetes/kubernetes/blob/8adc0f041b8e7ad1d30e29cc59c6ae7a15e19828/staging/src/k8s.io/kubelet/pkg/apis/stats/v1alpha1/types.go#L230-L233": {
     "StatusCode": 206,
@@ -14671,9 +14703,21 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:39:51.3536559Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.55.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:45.550167734Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.55.0/oteps/0232-maturity-of-otel.md#alpha": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T13:17:11.877908612Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.55.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:39.537825717Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.55.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:22.643213171Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
@@ -15691,6 +15735,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T22:53:45.93430926Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystem": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:45.136770231Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/messaging/messaging-spans.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-23T10:09:14.193894315Z"
@@ -15770,6 +15818,10 @@
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-spans.md#name": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T14:13:02.894411914Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-spans.md#notes-and-well-known-identifiers-for-dbsystemname": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:51.272222904Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.34.0/docs/rpc/rpc-spans.md?plain=1#L26-L50": {
     "StatusCode": 206,
@@ -15891,6 +15943,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T22:57:27.684598612Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/3558": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:49.818456971Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:39:08.196383866Z"
@@ -16003,9 +16059,17 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:41:06.221428389Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3488": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:52.955623834Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/3491": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T22:57:30.944919659Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3559": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:55.371334988Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/981": {
     "StatusCode": 206,
@@ -18435,6 +18499,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:39:50.626937103Z"
   },
+  "https://kubernetes.io/docs/concepts/storage/persistent-volumes/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:26.940866085Z"
+  },
+  "https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:30.907315508Z"
+  },
   "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:36:13.476455202Z"
@@ -18587,6 +18659,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:39:17.373269741Z"
   },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#container-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:30:16.030978948Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#containerstatus-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:30:19.692936058Z"
+  },
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#podspec-v1-core": {
     "StatusCode": 206,
     "LastSeen": "2026-04-24T10:08:48.427072532Z"
@@ -18595,9 +18675,29 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-24T10:08:47.48468778Z"
   },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#resourcerequirements-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:30:12.373890528Z"
+  },
   "https://kubernetes.io/docs/reference/kubectl/": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T14:16:47.576509892Z"
+  },
+  "https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-claim-v1/#PersistentVolumeClaimSpec": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:30:27.547087882Z"
+  },
+  "https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-claim-v1/#PersistentVolumeClaimStatus": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:33.594784698Z"
+  },
+  "https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-v1/#PersistentVolumeSpec": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:25.709614804Z"
+  },
+  "https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-v1/#PersistentVolumeStatus": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:29.174976948Z"
   },
   "https://kubernetes.io/docs/reference/kubernetes-api/service-resources/endpoint-slice-v1/": {
     "StatusCode": 206,
@@ -18638,6 +18738,10 @@
   "https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/": {
     "StatusCode": 206,
     "LastSeen": "2026-04-24T10:12:56.925090406Z"
+  },
+  "https://kubernetes.io/docs/tasks/configure-pod-container/resize-container-resources/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:59.179012701Z"
   },
   "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/#ephemeral-container": {
     "StatusCode": 206,
@@ -19074,6 +19178,10 @@
   "https://learn.microsoft.com/dotnet/standard/garbage-collection/": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:37:24.985364505Z"
+  },
+  "https://learn.microsoft.com/en-us/azure/ai-services/openai/overview": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:40.629281813Z"
   },
   "https://learn.microsoft.com/en-us/azure/aks/custom-node-configuration?tabs=linux-node-pools": {
     "StatusCode": 206,
@@ -19546,6 +19654,10 @@
   "https://nodejs.org/api/perf_hooks.html": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:44:54.315288058Z"
+  },
+  "https://nodejs.org/api/perf_hooks.html#perf-hooksmonitoreventloopdelayoptions": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:29:38.577761629Z"
   },
   "https://nodejs.org/api/perf_hooks.html#perf_hooksmonitoreventloopdelayoptions": {
     "StatusCode": 206,
