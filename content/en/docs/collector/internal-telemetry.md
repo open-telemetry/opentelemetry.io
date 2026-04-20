@@ -462,11 +462,7 @@ files in the repository.
 | `http.server.response.body.size`                      | Measures the size of HTTP server response bodies.               | Counter   |
 | `otelcol_processor_batch_batch_`<br>`send_size_bytes` | Number of bytes in the batch that was sent.                     | Histogram |
 | `rpc.client.call.duration`                            | Measures the duration of outbound remote procedure calls (RPC). | Histogram |
-| `rpc.client.request.size`                             | Measures the size of RPC request messages (uncompressed).       | Histogram |
-| `rpc.client.response.size`                            | Measures the size of RPC response messages (uncompressed).      | Histogram |
 | `rpc.server.call.duration`                            | Measures the duration of inbound remote procedure calls (RPC).  | Histogram |
-| `rpc.server.request.size`                             | Measures the size of RPC request messages (uncompressed).       | Histogram |
-| `rpc.server.response.size`                            | Measures the size of RPC response messages (uncompressed).      | Histogram |
 
 > [!NOTE]
 >
