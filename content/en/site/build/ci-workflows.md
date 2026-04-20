@@ -263,6 +263,59 @@ nothing needed to be committed.
 [pr-actions]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-actions.yml
 
+## Spec integration branches {#spec-integration-branches}
+
+Two scheduled workflows track unreleased changes from upstream spec repositories
+and keep a draft PR ("integration branch") current with the next development
+version:
+
+| Workflow file                             | Upstream repository           | Branch slug |
+| ----------------------------------------- | ----------------------------- | ----------- |
+| [update-spec-integration-branch.yml][]    | `opentelemetry-specification` | `spec`      |
+| [update-semconv-integration-branch.yml][] | `semantic-conventions`        | `semconv`   |
+
+[update-spec-integration-branch.yml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branch.yml
+[update-semconv-integration-branch.yml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-semconv-integration-branch.yml
+
+Both workflows delegate the "pick the next version + branch" step to a shared
+Node helper, [scripts/gh/specs/pick-branch/cli.mjs][]. The helper:
+
+- Reuses an existing `otelbot/<slug>-integration-vX.Y.Z-dev` branch when one
+  exists and the version has not yet been released; otherwise bumps the latest
+  release tag's minor version.
+- Writes `VERSION` and `BRANCH` to `$GITHUB_ENV` for downstream steps.
+- Opens a tracking issue (label `<slug>-integration-warning`, deduplicated) when
+  it detects problems such as multiple stale integration branches.
+
+[scripts/gh/specs/pick-branch/cli.mjs]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/specs/pick-branch
+
+### Run modes
+
+The helper auto-selects between dry-run and write mode and prints a `[mode]`
+banner explaining its choice:
+
+| Context               | Default behavior | Override            |
+| --------------------- | ---------------- | ------------------- |
+| GitHub Actions        | write            | pass `--dry-run`    |
+| Local (anywhere else) | dry-run          | pass `--no-dry-run` |
+
+Locally, dry-run still runs all read-only `git`/`gh` commands (so the issue
+deduplication check executes), but skips writes. With `--no-dry-run` the helper
+uses your local `gh` credentials; if `GITHUB_ENV` is unset, `VERSION`/`BRANCH`
+are printed to stdout only. Try it:
+
+```sh
+node scripts/gh/specs/pick-branch/cli.mjs --spec=otel
+node scripts/gh/specs/pick-branch/cli.mjs --spec=semconv --no-dry-run
+node scripts/gh/specs/pick-branch/cli.mjs --help
+```
+
+Pure logic and CLI argument parsing live in `index.mjs` and are covered by
+`*.test.mjs` files in the same folder (`npm run test:local-tools` to run them).
+
 ## Other workflows
 
 The repository includes several other workflows:
