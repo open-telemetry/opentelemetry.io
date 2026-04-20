@@ -7,7 +7,7 @@ draft: true
 sig: Comms SIG
 ---
 
-OpenTelemetry is vast. The Java Agent alone includes over 240 different
+OpenTelemetry is vast. The Java agent alone includes over 240 different
 auto-instrumentations. The Collector has hundreds of components. Python,
 JavaScript, Go, and .NET each have their own ecosystems of instrumentation
 libraries, each with its own patterns and conventions.
@@ -42,9 +42,9 @@ year, the new site is now live at
 [explorer.opentelemetry.io](https://explorer.opentelemetry.io/) \- but it is
 very much still a work in progress.
 
-## The Java Agent Ecosystem
+## The Java agent Ecosystem
 
-The Java Agent is our first fully mapped ecosystem. Over 240 instrumentations
+The Java agent is our first fully mapped ecosystem. Over 240 instrumentations
 are
 [indexed and searchable](https://explorer.opentelemetry.io/java-agent/instrumentation/latest).
 You can browse by name, filter by instrumentation type, and drill into detail
@@ -56,12 +56,12 @@ affect.
   <img src="influx-telemetry-by-config.png" alt="Example Telemetry Overview" style="width: 100%; height: auto;" />
 </div>
 
-Version support is built in. The Explorer tracks multiple Java Agent releases,
+Version support is built in. The Explorer tracks multiple Java agent releases,
 so you can see what telemetry a specific version produces, or what changed
 between versions. This is particularly useful when planning upgrades or
 debugging why telemetry looks different after a release.
 
-There is automation that runs nightly. When a new Java Agent version releases,
+There is automation that runs nightly. When a new Java agent version releases,
 the pipelines pick it up, extract the metadata, and update the registry. No
 manual intervention required.
 
@@ -70,7 +70,7 @@ new ecosystems.
 
 ## The frontier: What needs Explorers
 
-The Java Agent is just one corner of the OpenTelemetry ecosystem. There's a vast
+The Java agent is just one corner of the OpenTelemetry ecosystem. There's a vast
 landscape of other components waiting to be mapped, and each language presents
 its own interesting challenges.
 

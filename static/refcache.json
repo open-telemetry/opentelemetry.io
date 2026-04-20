@@ -363,6 +363,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-29T10:20:50.030541168Z"
   },
+  "https://camel.apache.org/components/4.18.x/others/opentelemetry2.html": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:33:37.303496738Z"
+  },
   "https://cassandra.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2026-04-28T12:56:19.18352316Z"
@@ -866,6 +870,10 @@
   "https://cloud-native.slack.com/archives/C09H3MNMBQV": {
     "StatusCode": 200,
     "LastSeen": "2026-04-29T10:25:54.556882026Z"
+  },
+  "https://cloud-native.slack.com/archives/C09N6DDGSPQ": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-20T15:34:17.323578409Z"
   },
   "https://cloud-native.slack.com/archives/CJFCJHG4Q": {
     "StatusCode": 200,
@@ -3263,6 +3271,14 @@
     "StatusCode": 200,
     "LastSeen": "2026-04-28T10:28:42.686120617Z"
   },
+  "https://explorer.opentelemetry.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:33:29.984351791Z"
+  },
+  "https://explorer.opentelemetry.io/java-agent/instrumentation/latest": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:33:33.639963994Z"
+  },
   "https://expressjs.com/": {
     "StatusCode": 206,
     "LastSeen": "2026-04-28T12:55:15.585384151Z"
@@ -4163,6 +4179,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-28T14:11:08.982103271Z"
   },
+  "https://github.com/Vjc5h3nt": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:34:06.807903048Z"
+  },
   "https://github.com/Workiva/": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:25:26.320099675Z"
@@ -4266,6 +4286,10 @@
   "https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T10:20:49.836022105Z"
+  },
+  "https://github.com/adaumsilva": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:34:02.832272764Z"
   },
   "https://github.com/addname": {
     "StatusCode": 206,
@@ -6634,6 +6658,10 @@
   "https://github.com/lucacavenaghi97": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:24:14.292722879Z"
+  },
+  "https://github.com/lucacavenaghi97": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:34:00.189969191Z"
   },
   "https://github.com/lukas-reining": {
     "StatusCode": 206,
@@ -11511,6 +11539,22 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-28T12:55:09.355221547Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:34:11.496845659Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issues/154": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:33:49.758712918Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issuesq=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22Collector%20Ecosystem%22": {
+    "StatusCode": 404,
+    "LastSeen": "2026-04-20T15:33:40.352346326Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issuesq=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22": {
+    "StatusCode": 404,
+    "LastSeen": "2026-04-20T15:34:14.058597948Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/tree/main/ecosystem-registry/collector": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:23:40.795595597Z"
@@ -12778,6 +12822,10 @@
   "https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/packages/auto-instrumentations-node/README.md#supported-instrumentations": {
     "StatusCode": 206,
     "LastSeen": "2026-04-25T09:53:47.140908846Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js-contrib/releases": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:33:45.370718144Z"
   },
   "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/52dd28deae0ebfbec43bdaed82f4749fc9803797/plugins/node/opentelemetry-instrumentation-express": {
     "StatusCode": 206,
@@ -16422,6 +16470,10 @@
   "https://github.com/pragmaticivan/nestjs-otel": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:25:00.429328624Z"
+  },
+  "https://github.com/pratik50": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:33:54.740852384Z"
   },
   "https://github.com/prestonvasquez": {
     "StatusCode": 206,
@@ -20098,6 +20150,10 @@
   "https://opentelemetry.devstats.cncf.io/d/9/developer-activity-counts-by-repository-group-table?orgId=1": {
     "StatusCode": 200,
     "LastSeen": "2026-04-29T10:25:39.820905915Z"
+  },
+  "https://opentelemetry.io": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T15:33:26.804013542Z"
   },
   "https://opentelemetry.io/docs/specs/otlp/": {
     "StatusCode": 206,
