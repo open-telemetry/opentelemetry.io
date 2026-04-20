@@ -464,21 +464,6 @@ files in the repository.
 | `rpc.client.call.duration`                            | Measures the duration of outbound remote procedure calls (RPC). | Histogram |
 | `rpc.server.call.duration`                            | Measures the duration of inbound remote procedure calls (RPC).  | Histogram |
 
-> [!NOTE]
->
-> The `http*` and `rpc*` metrics are not covered by the maturity levels below
-> since they are not under the Collector SIG control.
->
-> RPC metric names are version-dependent. For instance, Collector releases prior
-> to 0.147.0 exposed `rpc.client.duration` and `rpc.server.duration` instead of
-> `rpc.client.call.duration` and `rpc.server.call.duration`.
->
-> The `otelcol_processor_batch_` metrics are unique to the `batchprocessor`.
->
-> The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
-> `otelcol_exporter_` metrics come from their respective `helper` packages. As
-> such, some components not using those packages might not emit them.
-
 #### Ownership of emitted metrics
 
 Some metrics are not owned by the Collector SIG and some are limited to certain
