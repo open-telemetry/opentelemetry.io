@@ -21959,6 +21959,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-04-10T09:59:08.246389877Z"
   },
+  "https://prometheus.io/docs/prometheus/latest/getting_started/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-20T20:35:35.466392978Z"
+  },
   "https://prometheus.io/docs/prometheus/latest/http_sd/": {
     "StatusCode": 200,
     "LastSeen": "2026-03-23T14:15:26.26619547Z"
