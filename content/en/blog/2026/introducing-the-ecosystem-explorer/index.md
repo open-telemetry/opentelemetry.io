@@ -4,7 +4,6 @@ linkTitle: Introducing the Ecosystem Explorer Project
 date: 2026-04-30
 author: '[Jay DeLuca](https://github.com/jaydeluca) (Grafana Labs)'
 sig: Comms
-cspell:ignore: pratik Jadhav Cavenaghi lucacavenaghi adaumsilva Manohar Mallipudi
 ---
 
 OpenTelemetry is vast. The Java agent alone includes over 240 different
@@ -185,10 +184,14 @@ Both are valuable. The codebase is approachable, the maintainers are active, and
 we're happy to help people get oriented. Big shout out to the community members
 who have already contributed to the project in its early stages:
 
+<!-- cspell:disable -->
+
 - [Pratik Jadhav (@pratik50)](https://github.com/pratik50)
 - [Luca Cavenaghi (@lucacavenaghi97)](https://github.com/lucacavenaghi97)
 - [Adam Silva @adaumsilva](https://github.com/adaumsilva)
 - [Manohar Mallipudi (@Vjc5h3nt)](https://github.com/Vjc5h3nt)
+
+<!-- cspell:enable -->
 
 The Ecosystem Explorer is live, the foundation is working, and there's
 interesting work ahead. If any of these sound appealing, here's how to get
