@@ -43,9 +43,9 @@ sending queue.
   - Retry Timeout: If the endpoint remains unavailable for longer than the
     configured maximum retry duration (default 5 minutes), the Collector will
     stop retrying for the oldest data in the queue and drop it.
-- Sizing the queue: The default queue size (1000 batches) might be too small
-  for high-throughput Collectors or too large for memory-constrained
-  environments. Tune `queue_size` based on:
+- Sizing the queue: The default queue size (1000 batches) might be too small for
+  high-throughput Collectors or too large for memory-constrained environments.
+  Tune `queue_size` based on:
   - Expected telemetry volume
   - Acceptable backend downtime (how long you want to buffer)
   - Available memory or disk for the queue
@@ -211,8 +211,8 @@ high-load deployments.
 A traffic spike can push the Collector past its memory limit. The runtime then
 kills the process — on Kubernetes as an `OOMKilled` pod, on a plain Linux host
 by the kernel OOM killer. The supervisor restarts the Collector, but any
-in-memory data is lost. If upstream senders keep emitting telemetry, the
-backlog can exceed the limit again on restart, creating a crash loop.
+in-memory data is lost. If upstream senders keep emitting telemetry, the backlog
+can exceed the limit again on restart, creating a crash loop.
 
 The `memory_limiter` processor can help prevent this, but it is not bulletproof:
 incoming data must be deserialized and converted into the Collector's internal
@@ -224,20 +224,20 @@ has a chance to act.
 
 In the typical configuration with an exporting queue enabled, back-pressure
 signals from the export destination do not propagate back to the sending
-applications. Applications continue sending telemetry at full rate even when
-the destination cannot keep up with the received data.
+applications. Applications continue sending telemetry at full rate even when the
+destination cannot keep up with the received data.
 
-If the Collector itself is the bottleneck — for example, the sending queue
-fills up or an upstream `memory_limiter` processor rejects data — it responds
-to clients with errors (gRPC Unavailable or HTTP 503) that should propagate
-back to the sender. The exception is when the pipeline contains asynchronous
-processors, such as the `batch` processor, which can swallow those errors.
+If the Collector itself is the bottleneck — for example, the sending queue fills
+up or an upstream `memory_limiter` processor rejects data — it responds to
+clients with errors (gRPC Unavailable or HTTP 503) that should propagate back to
+the sender. The exception is when the pipeline contains asynchronous processors,
+such as the `batch` processor, which can swallow those errors.
 
 ## Resource management
 
 Proper resource allocation is the first line of defense against overload.
-Configure CPU and memory limits, use the memory limiter processor, and plan
-your memory budget to leave headroom for traffic spikes.
+Configure CPU and memory limits, use the memory limiter processor, and plan your
+memory budget to leave headroom for traffic spikes.
 
 ### Set appropriate resource requests and limits
 
@@ -297,10 +297,10 @@ env:
 
 > [!TIP]
 >
-> The `memory_limiter` processor propagates errors back to the receiver.
-> Monitor `otelcol_receiver_refused_spans` (and the metrics/logs equivalents)
-> for a sustained increase, which indicates the Collector is under pressure and
-> you should either scale resources or reduce incoming traffic. See
+> The `memory_limiter` processor propagates errors back to the receiver. Monitor
+> `otelcol_receiver_refused_spans` (and the metrics/logs equivalents) for a
+> sustained increase, which indicates the Collector is under pressure and you
+> should either scale resources or reduce incoming traffic. See
 > [Internal telemetry](/docs/collector/internal-telemetry/) for more information
 > on the Collector's own telemetry.
 
@@ -378,8 +378,9 @@ window. If the grace period is too short, data still in the pipeline is lost.
 
 ## Monitoring and early warning
 
-Monitor these [Collector metrics](/docs/collector/internal-telemetry/#lists-of-internal-metrics) to detect problems before they become
-catastrophic:
+Monitor these
+[Collector metrics](/docs/collector/internal-telemetry/#lists-of-internal-metrics)
+to detect problems before they become catastrophic:
 
 | Metric                                  | What it tells you                                            |
 | --------------------------------------- | ------------------------------------------------------------ |
@@ -411,9 +412,9 @@ Data loss can occur under these circumstances:
     unavailable, and the sending queue (in-memory or persistent) fills to
     capacity before the endpoint recovers. New data is dropped.
 3.  Collector Crash or Termination (No Persistence): The Collector instance
-    crashes or is terminated — for example, killed by the runtime when a
-    traffic spike exceeds its memory limit. If only an in-memory sending queue
-    is in use, buffered data is lost.
+    crashes or is terminated — for example, killed by the runtime when a traffic
+    spike exceeds its memory limit. If only an in-memory sending queue is in
+    use, buffered data is lost.
 4.  Persistent Storage Failure: The disk used by the `file_storage` extension
     fails or runs out of space.
 5.  Message Queue Failure: The external message queue (like Kafka) experiences
@@ -448,21 +449,23 @@ data collection:
     to decouple Collector tiers, use a managed message queue like Kafka if the
     operational overhead is acceptable.
 6.  Use Appropriate Deployment Patterns:
-    - Employ an [agent-to-gateway architecture](/docs/collector/deploy/other/agent-to-gateway/). Agents handle local collection,
-      gateways handle processing, batching, and resilient export.
+    - Employ an
+      [agent-to-gateway architecture](/docs/collector/deploy/other/agent-to-gateway/).
+      Agents handle local collection, gateways handle processing, batching, and
+      resilient export.
     - Focus resilience efforts (queues, WAL, Kafka) on network hops: Agent ->
       Gateway and Gateway -> Backend.
     - Resilience between the application (SDK) and a local Agent
       (Sidecar/DaemonSet) is often less critical due to reliable local
       networking; adding queues here can sometimes negatively impact the
       application if the agent is unavailable.
-7.  Provision Resources for Traffic Spikes: Set a memory limit at the runtime
-    or orchestrator level (for example, Kubernetes resource requests and
-    limits), add the `memory_limiter` processor as the first processor in every
-    pipeline, and configure `GOMEMLIMIT` to match the available memory so the
-    Go runtime can reclaim memory before the process is killed.
-8.  Minimize Update Gaps: Configure rolling updates so a replacement instance
-    is ready before the previous one terminates (for example, with Kubernetes
+7.  Provision Resources for Traffic Spikes: Set a memory limit at the runtime or
+    orchestrator level (for example, Kubernetes resource requests and limits),
+    add the `memory_limiter` processor as the first processor in every pipeline,
+    and configure `GOMEMLIMIT` to match the available memory so the Go runtime
+    can reclaim memory before the process is killed.
+8.  Minimize Update Gaps: Configure rolling updates so a replacement instance is
+    ready before the previous one terminates (for example, with Kubernetes
     DaemonSet `maxSurge: 1` and `maxUnavailable: 0`), and increase the shutdown
     grace period (such as Kubernetes `terminationGracePeriodSeconds`) so the
     Collector has time to drain in-flight data.

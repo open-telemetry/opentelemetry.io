@@ -141,8 +141,8 @@ and provides recommendations for building a resilient DaemonSet deployment.
 Because a single Collector serves every workload on the node, DaemonSets
 concentrate more load than a sidecar and are subject to the same failure modes
 as any Collector running under pressure. For generic guidance on memory
-pressure, back-pressure, resource tuning, graceful shutdown, and monitoring,
-see [Resiliency](/docs/collector/resiliency/). The subsections below cover the
+pressure, back-pressure, resource tuning, graceful shutdown, and monitoring, see
+[Resiliency](/docs/collector/resiliency/). The subsections below cover the
 failure modes that are specific to the DaemonSet pattern.
 
 #### Node-scoped blast radius
