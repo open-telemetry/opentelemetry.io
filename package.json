@@ -199,7 +199,7 @@
   },
   "optionalDependencies": {
     "netlify-cli": "^24.10.0",
-    "npm-check-updates": "^20.0.0"
+    "npm-check-updates": "^21.0.2"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
