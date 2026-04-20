@@ -1,5 +1,6 @@
 ---
 title: Pull request checks and tests
+linkTitle: PR checks & tests
 description: Learn how to make your pull request successfully pass all checks
 weight: 40
 ---
