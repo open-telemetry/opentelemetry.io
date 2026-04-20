@@ -278,6 +278,8 @@ logger->Info("Request failed", ctx.trace_id(), ctx.span_id(), ctx.trace_flags())
 
 ### Further reading
 
+- [Logs API](https://opentelemetry.io/docs/specs/otel/logs/api/)
+- [Logs SDK](https://opentelemetry.io/docs/specs/otel/logs/sdk/)
 - [Sample Logs Example](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/logs_simple)
 
 ## Next steps
