@@ -4,7 +4,8 @@ linkTitle: Introducing the Ecosystem Explorer Project
 date: 2026-04-30
 author: '[Jay DeLuca](https://github.com/jaydeluca) (Grafana Labs)'
 sig: Comms
-cspell:ignore: pratik Jadhav Cavenaghi lucacavenaghi adaumsilva Manohar Mallipudi
+cspell:ignore:
+  pratik Jadhav Cavenaghi lucacavenaghi adaumsilva Manohar Mallipudi
 ---
 
 OpenTelemetry is vast. The Java agent alone includes over 240 different

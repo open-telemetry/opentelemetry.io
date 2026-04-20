@@ -11547,13 +11547,17 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-20T15:33:49.758712918Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issuesq=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22Collector%20Ecosystem%22": {
-    "StatusCode": 404,
-    "LastSeen": "2026-04-20T15:33:40.352346326Z"
+  "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22Collector%20Ecosystem%22": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T16:54:42.787689784Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issuesq=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22": {
-    "StatusCode": 404,
-    "LastSeen": "2026-04-20T15:34:14.058597948Z"
+  "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T16:54:47.425123038Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22help%20wanted%22": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T16:54:51.187535407Z"
   },
   "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/tree/main/ecosystem-registry/collector": {
     "StatusCode": 206,
