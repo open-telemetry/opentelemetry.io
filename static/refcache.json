@@ -10783,6 +10783,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-25T09:53:21.88673217Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/logs_simple": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T17:06:33.412609523Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/metrics_simple": {
     "StatusCode": 206,
     "LastSeen": "2026-04-15T10:02:58.874605895Z"
