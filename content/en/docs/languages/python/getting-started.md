@@ -769,7 +769,7 @@ docker run -p 4317:4317 `
 
 {{% /tab %}} {{< /tabpane >}}
 
-You will now have an collector instance running locally, listening on port 4317.
+You will now have a collector instance running locally, listening on port 4317.
 
 ### Modify the command to export spans and metrics via OTLP
 
