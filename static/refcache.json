@@ -11623,6 +11623,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-17T10:01:02.031229255Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/google.golang.org/grpc/otelgrpc": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-18T20:56:37.309954588Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/host": {
     "StatusCode": 206,
     "LastSeen": "2026-03-17T10:01:02.546647801Z"
@@ -15902,6 +15906,10 @@
   "https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.33.0": {
     "StatusCode": 206,
     "LastSeen": "2026-04-15T10:04:40.761783142Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.40.0": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-18T20:56:41.578659277Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/tree/v1.26.0": {
     "StatusCode": 206,
