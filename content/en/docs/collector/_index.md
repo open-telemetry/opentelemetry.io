@@ -8,8 +8,6 @@ cascade:
 weight: 270
 ---
 
-![OpenTelemetry Collector diagram with Jaeger, OTLP and Prometheus integration](img/otel-collector.svg)
-
 ## Introduction
 
 The OpenTelemetry Collector offers a vendor-agnostic implementation of how to
@@ -17,6 +15,27 @@ receive, process and export telemetry data. It removes the need to run, operate,
 and maintain multiple agents/collectors. This works with improved scalability
 and supports open source observability data formats (e.g. Jaeger, Prometheus,
 Fluent Bit, etc.) sending to one or more open source or commercial backends.
+
+```mermaid
+flowchart TD
+  subgraph Option1 ["Option 1: Direct Export (Dev/Simple)"]
+    direction LR
+    App1(["Application"]) --> B1[("Backend(s)")]
+  end
+
+  subgraph Option2 ["Option 2: Via Collector (Production)"]
+    direction LR
+    App2(["Application"]) --> Rec["Receivers"]
+
+    subgraph Collector ["OpenTelemetry Collector"]
+      direction LR
+      Rec --> Proc["Processors"]
+      Proc --> Exp["Exporters"]
+    end
+
+    Exp --> B2[("Backend(s)")]
+  end
+```
 
 ## Objectives
 
