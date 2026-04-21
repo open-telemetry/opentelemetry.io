@@ -1,0 +1,26 @@
+title: OpenTelemetry Class auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - php
+  - instrumentation
+  - laravel
+  - symfony
+  - class
+urls:
+  repo: https://github.com/eerzho/opentelemetry-auto-class
+  docs: https://github.com/eerzho/opentelemetry-auto-class/blob/main/README.md
+license: MIT
+description:
+  'Automatic OpenTelemetry tracing for PHP methods via the #[Traceable]
+  attribute. Integrations available for Laravel and Symfony.'
+authors:
+  - name: Zhanbolat Yerkinbay
+    email: eerzho@gmail.com
+    url: https://github.com/eerzho
+createdAt: 2026-04-21
+isNative: false
+isFirstParty: false
+package:
+  registry: packagist
+  name: eerzho/opentelemetry-auto-class
