@@ -25,8 +25,9 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
 
 At this point, we are ready to resolve the conflicts in the active branch:
 
-1. Determine the integration reference (`$BASE_BRANCH`): run `git remote -v`; if
-   an `upstream` remote exists, use `upstream/main`, otherwise use `main`.
+1. Determine the integration reference (`$BASE_BRANCH`) and fetch it:
+   - If an `upstream` remote exists: `git fetch upstream`, use `upstream/main`.
+   - Otherwise: `git fetch origin`, use `origin/main`.
 
 2. If merge or rebase is in progress (`git status`), skip this step. Otherwise,
    ask the user whether to run `git merge $BASE_BRANCH` or
@@ -41,21 +42,28 @@ At this point, we are ready to resolve the conflicts in the active branch:
 
 ## Resolve
 
-1. Check out the `$BASE_BRANCH` version of `static/refcache.json`. The correct
-   command depends on the operation in progress (assumes the active branch is
-   being rebased/merged from `$BASE_BRANCH`, not the other way around):
-   - Rebase: `git checkout --ours static/refcache.json`
-   - Merge: `git checkout --theirs static/refcache.json`
+1. Check out the `$BASE_BRANCH` version of `static/refcache.json`. Assumes the
+   active branch is being rebased/merged from `$BASE_BRANCH`, not the other way
+   around:
 
-2. Run: `git add static/refcache.json`
-3. Stage all resolved files, then `git rebase --continue` or `git commit` for
-   merge.
-4. Rebase only: for each subsequent rebase stop that conflicts on
-   `static/refcache.json`, repeat Resolve steps 1–3. If other paths are also
+   | Operation                                   | Command                                      |
+   | ------------------------------------------- | -------------------------------------------- |
+   | Rebase of active branch onto `$BASE_BRANCH` | `git checkout --ours static/refcache.json`   |
+   | Merge of `$BASE_BRANCH` into active branch  | `git checkout --theirs static/refcache.json` |
+
+2. Stage `static/refcache.json` and any other resolved files, then continue:
+   - Rebase: `git add -u && git rebase --continue`
+   - Merge: `git add -u && git commit --no-edit`
+
+3. Rebase only: for each subsequent rebase stop that conflicts on
+   `static/refcache.json`, repeat Resolve steps 1–2. If other paths are also
    conflicted on that stop, run Preparation step 4 first.
-5. Run: `npm run fix:refcache` (requires network and installed dependencies; can
-   be slow)
-6. Commit the changes, if any:
+
+4. Run: `npm run fix:refcache`. Note: this runs a full Hugo build and link
+   check, it requires network, installed npm dependencies, and populated
+   submodules, and can take several minutes.
+
+5. Commit the changes, if any:
 
    ```sh
    git add static/refcache.json
@@ -63,6 +71,6 @@ At this point, we are ready to resolve the conflicts in the active branch:
       git commit -m "Refresh refcache after resolving conflicts"
    ```
 
-7. Push:
+6. Push:
    - Merge: `git push`
    - Rebase: `git push --force-with-lease`
