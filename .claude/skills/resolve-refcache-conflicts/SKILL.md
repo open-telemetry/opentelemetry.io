@@ -51,17 +51,20 @@ At this point, we are ready to resolve the conflicts in the active branch:
    | Rebase of active branch onto `$BASE_BRANCH` | `git checkout --ours static/refcache.json`   |
    | Merge of `$BASE_BRANCH` into active branch  | `git checkout --theirs static/refcache.json` |
 
-2. Stage `static/refcache.json` and any other resolved files, then continue:
-   - Rebase: `git add -u && git rebase --continue`
-   - Merge: `git add -u && git commit --no-edit`
+2. Stage the resolved files, then continue:
+   - Rebase: `git add static/refcache.json && git rebase --continue`
+   - Merge: `git add static/refcache.json && git commit --no-edit`
+   - If other files were resolved in Preparation step 4, `git add` those too
+     before continuing.
 
 3. Rebase only: for each subsequent rebase stop that conflicts on
    `static/refcache.json`, repeat Resolve steps 1–2. If other paths are also
    conflicted on that stop, run Preparation step 4 first.
 
-4. Run: `npm run fix:refcache`. Note: this runs a full Hugo build and link
-   check, it requires network, installed npm dependencies, and populated
-   submodules, and can take several minutes.
+4. Run `npm run fix:refcache` once, after the entire rebase/merge completes.
+   Note: this runs a full Hugo build and link check — requires network,
+   installed npm dependencies, and populated submodules; can take several
+   minutes.
 
 5. Commit the changes, if any:
 
