@@ -8,8 +8,8 @@ cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan 
 
 This page will show you how to get started with OpenTelemetry in Python.
 
-You will learn how you can instrument a simple Python application automatically, in
-such a way that [traces][], [metrics][], and [logs][] are emitted to the
+You will learn how you can instrument a simple Python application automatically,
+in such a way that [traces][], [metrics][], and [logs][] are emitted to the
 console.
 
 ## Prerequisites
