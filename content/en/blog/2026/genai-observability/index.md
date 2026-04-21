@@ -104,11 +104,11 @@ The span details show GenAI semantic convention attributes:
 - **`gen_ai.response.finish_reasons`** — why the model stopped generating (for
   example, `stop` or `tool_calls`).
 
-When an app is configured to record content, messages and tool calls are captured
-as structured span attributes such as `gen_ai.system_instructions`,
-`gen_ai.input.messages`, and `gen_ai.output.messages`. These attributes can be
-large, and many observability platforms render LLM content as raw JSON, making it
-difficult to read.
+When an app is configured to record content, messages and tool calls are
+captured as structured span attributes such as `gen_ai.system_instructions`,
+`gen_ai.input.messages`, and `gen_ai.output.messages`. This content is valuable
+for debugging, but these attributes can be large, and many observability
+platforms render them as raw JSON, making them difficult to read.
 
 Aspire's
 [GenAI telemetry visualizer](https://aspire.dev/dashboard/explore/#genai-telemetry-visualization)
