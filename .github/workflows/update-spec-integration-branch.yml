@@ -8,6 +8,9 @@ on:
 
 permissions:
   contents: read
+  # Needed so the "Pick integration branch" step can open a tracking issue
+  # via gh when it detects problems (e.g. stale integration branches).
+  issues: write
 
 env:
   REPO: opentelemetry-specification
@@ -32,34 +35,10 @@ jobs:
           fetch-depth: 0
           token: ${{ steps.otelbot-token.outputs.token }}
 
-      - name: Set environment variables
+      - name: Pick integration branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          branch_prefix="otelbot/${{ env.ABBR }}-integration"
-
-          version=$(git branch -r \
-                        | grep -E "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
-                        | sed "s|^ *origin/$branch_prefix-||" \
-                        | sed "s|-dev$||")
-
-          if [[ -z "$version" ]]; then
-            latest_version=$(gh release view \
-                          --repo open-telemetry/${{ env.REPO }} \
-                          --json tagName \
-                          --jq .tagName)
-            if [[ $latest_version =~ ^v([0-9]+)\.([0-9]+)\. ]]; then
-              major="${BASH_REMATCH[1]}"
-              minor="${BASH_REMATCH[2]}"
-              version="v$major.$((minor + 1)).0"
-            else
-              echo "unexpected version: $latest_version"
-              exit 1
-            fi
-          fi
-
-          echo "VERSION=$version" >> $GITHUB_ENV
-          echo "BRANCH=$branch_prefix-$version-dev" >> $GITHUB_ENV
+        run: node scripts/gh/specs/pick-branch/cli.mjs --spec=otel
 
       - name: Checkout or create branch
         run: |
