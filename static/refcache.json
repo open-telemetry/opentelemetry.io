@@ -15287,6 +15287,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-10T10:01:49.139856918Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/resolve-refcache-conflicts/SKILL.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T20:54:18.265886-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-04-10T09:58:01.148862206Z"
@@ -15494,6 +15498,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/security/policy": {
     "StatusCode": 206,
     "LastSeen": "2026-03-24T09:53:38.909114584Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/.claude/skills": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T20:54:16.690618-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/.github": {
     "StatusCode": 206,
