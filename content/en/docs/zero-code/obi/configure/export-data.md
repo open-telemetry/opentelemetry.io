@@ -6,10 +6,96 @@ description:
   and OpenTelemetry traces
 weight: 10
 # prettier-ignore
-cSpell:ignore: AsterixDB couchbase genai jackc memcached pgxpool pyserver spanmetrics
+cSpell:ignore: AsterixDB couchbase genai gonic jackc libcudart memcached pgxpool pyserver segmentio spanmetrics
 ---
 
 OBI can export OpenTelemetry metrics and traces to a OTLP endpoint.
+
+## Instrumentation compatibility
+
+OBI supports the following protocol and feature versions for traces and metrics
+instrumentation:
+
+| Area          | Supported versions   | Notes                                                                                          |
+| :------------ | :------------------- | :--------------------------------------------------------------------------------------------- |
+| HTTP          | `1.0/1.1`            | Context propagation is supported.                                                              |
+| HTTP          | `2.0`                | Context propagation requires Go library-level instrumentation.                                 |
+| gRPC          | `1.0+`               | Long-lived connections started before OBI might use `*` for method names.                      |
+| MySQL         | All                  | Prepared statements created before OBI starts might not include query text.                    |
+| PostgreSQL    | All                  | Prepared statements created before OBI starts might not include query text.                    |
+| Redis         | All                  | Existing connections might not include database number or `db.namespace`.                      |
+| MongoDB       | `5.0+`               | Compressed payloads are not supported.                                                         |
+| Couchbase     | All                  | Bucket or collection names might be unavailable when negotiation completed before OBI started. |
+| Memcached     | All                  | Supports the ASCII text protocol subset, excluding `quit` and meta commands.                   |
+| Kafka         | All                  | Topic name lookup might fail for fetch API versions `13+`.                                     |
+| MQTT          | `3.1.1/5.0`          | Payloads are not captured.                                                                     |
+| GraphQL       | All                  | No additional documented version limits.                                                       |
+| Elasticsearch | `7.14+`              | No additional documented version limits.                                                       |
+| OpenSearch    | `3.0.0+`             | No additional documented version limits.                                                       |
+| AWS S3        | All                  | No additional documented version limits.                                                       |
+| AWS SQS       | All                  | No additional documented version limits.                                                       |
+| SQL++         | All                  | No additional documented version limits.                                                       |
+| GenAI         | OpenAI and Anthropic | No additional documented version limits.                                                       |
+
+Some application-level instrumentation also depends on specific runtime,
+library, or server versions:
+
+| Area              | Supported versions                       | Notes                                                                                                  |
+| :---------------- | :--------------------------------------- | :----------------------------------------------------------------------------------------------------- |
+| Go applications   | Go `1.17+`                               | Applies to Go library-level instrumentation; Go library-level context propagation requires Go `1.18+`. |
+| Java applications | JDK `8+`                                 | No additional documented runtime constraints.                                                          |
+| NGINX             | Validated on NGINX `1.27.5` and `1.29.7` | These are the NGINX versions currently covered by documented validation.                               |
+
+### Go library instrumentation compatibility
+
+OBI supports the following Go libraries and minimum versions for application
+instrumentation:
+
+| Library                          | Supported versions              |
+| :------------------------------- | :------------------------------ |
+| `net/http`                       | `>= 1.17`                       |
+| `golang.org/x/net/http2`         | `>= 0.12.0`                     |
+| `github.com/gorilla/mux`         | `>= v1.5.0`                     |
+| `github.com/gin-gonic/gin`       | `>= v1.6.0`, `!= v1.7.5`        |
+| `google.golang.org/grpc`         | `>= 1.40`                       |
+| `net/rpc/jsonrpc`                | `>= 1.17`                       |
+| `database/sql`                   | `>= 1.17`                       |
+| `github.com/go-sql-driver/mysql` | `>= v1.5.0`                     |
+| `github.com/lib/pq`              | all versions                    |
+| `github.com/redis/go-redis/v9`   | `>= v9.0.0`                     |
+| `github.com/segmentio/kafka-go`  | `>= v0.4.11`                    |
+| `github.com/IBM/sarama`          | `>= 1.37`                       |
+| `go.mongodb.org/mongo-driver`    | `v1: >= v1.10.1; v2: >= v2.0.1` |
+
+The versions listed in these tables are the versions OBI explicitly supports.
+Other versions might also work, but they are not part of the documented support
+scope unless stated otherwise.
+
+### GPU instrumentation compatibility
+
+OBI supports GPU instrumentation when the environment meets the
+[OBI compatibility requirements](/docs/zero-code/obi/#compatibility) and the
+application uses a supported CUDA runtime library.
+
+| Requirement          | Supported                      |
+| :------------------- | :----------------------------- |
+| Operating system     | Linux                          |
+| CPU architecture     | `amd64`, `arm64`               |
+| CUDA runtime library | `libcudart.so` for CUDA `7.0+` |
+
+OBI instruments the following CUDA operations:
+
+| Operation          |
+| :----------------- |
+| `cudaLaunchKernel` |
+| `cudaGraphLaunch`  |
+| `cudaMalloc`       |
+| `cudaMemcpy`       |
+| `cudaMemcpyAsync`  |
+
+GPU instrumentation only applies to applications that use the supported CUDA
+runtime library and operations listed above. Other GPU APIs, frameworks, or
+libraries are outside the documented support scope unless stated otherwise.
 
 ## Common metrics configuration
 

@@ -9,7 +9,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
-cSpell:ignore: CAP_PERFMON
+cSpell:ignore: CAP_PERFMON asyncio uvloop
 ---
 
 OpenTelemetry libraries provide telemetry collection for popular programming
@@ -83,55 +83,63 @@ If you want to explore the upstream examples, see the
 and the
 [Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/apache).
 
-## Requirements
+## How OBI works
 
-OBI requires the following to run:
-
-- Linux kernel version 5.8 or later (or 4.18 for Redhat Enterprise Linux)
-- An x86_64 or arm64 processor
-- Runtime support for eBPF (most modern Linux distributions)
-- Administrative privileges (root access) or the specific capabilities listed in
-  the [configuration reference](security/)
+The following diagram shows the high-level OBI architecture and where eBPF
+instrumentation fits into the telemetry pipeline.
 
 ![OBI eBPF architecture](./ebpf-arch.svg)
 
 ## Compatibility
 
-OBI is tested with the following Linux distributions:
+OBI supports Linux environments that meet the following requirements:
 
-- Ubuntu 20.04 LTS, 21.04, 22.04 LTS and 23.04
-- CentOS 7, 8, and 9
-- AlmaLinux 8, 9
-- Rocky Linux 8, 9
-- Red Hat Enterprise Linux 8, 9
-- Debian 11, 12
-- openSUSE Leap 15.3, 15.4
-- SUSE Linux Enterprise Server 15 SP4
+| Requirement      | Supported                                                             |
+| :--------------- | :-------------------------------------------------------------------- |
+| CPU architecture | `amd64`, `arm64`                                                      |
+| Linux kernel     | `5.8+`, or RHEL-family Linux `4.18+` with the required eBPF backports |
+| Kernel features  | BTF                                                                   |
+| Privileges       | Root, or the Linux capabilities required by the enabled OBI features  |
 
-- OBI also supports RedHat-based distributions: RHEL8, CentOS 8, Rocky8,
-  AlmaLinux8, and others, which ship a Kernel 4.18 that backports eBPF-related
-  patches.
+OBI publishes the following supported release artifacts:
 
-- For instrumenting Go programs, compile with at least Go 1.17. OBI support Go
-  applications built with a major **Go version no earlier than 3 versions**
-  behind the current stable major release.
-- Administrative access rights to execute OBI.
+| Artifact                                         | Supported platforms          |
+| :----------------------------------------------- | :--------------------------- |
+| `obi` binary archive                             | Linux `amd64`, Linux `arm64` |
+| `k8s-cache` binary archive                       | Linux `amd64`, Linux `arm64` |
+| `otel/ebpf-instrument` container image           | Linux `amd64`, Linux `arm64` |
+| `otel/ebpf-instrument-k8s-cache` container image | Linux `amd64`, Linux `arm64` |
+
+OBI can be deployed on standalone Linux hosts, in containers, and on Kubernetes
+when the environment meets the requirements above.
+
+OBI does not support non-Linux operating systems, Linux architectures other than
+`amd64` and `arm64`, Linux environments without BTF, or kernel versions earlier
+than Linux `5.8` outside the documented RHEL-family `4.18+` exception.
+
+Feature-specific support details are documented in these guides:
+
+- [Distributed traces](distributed-traces/): context propagation support,
+  runtime-specific requirements, and distributed tracing limitations
+- [Export data](configure/export-data/): protocol, database, messaging, GenAI,
+  GPU, and Go library instrumentation support
 
 ## Limitations
 
-OBI has its limitations too. It only provides generic metrics and transaction
-level trace span information. Language agents and manual instrumentation is
-still recommended, so that you can specify the custom attributes and events you
-want to capture.
+OBI provides application and protocol observability without code changes, but it
+does not replace language-level instrumentation in every scenario. Use language
+agents or manual instrumentation when you need custom spans,
+application-specific attributes, business events, or other in-process telemetry
+that eBPF-based instrumentation cannot derive automatically.
 
-While most eBPF programs require elevated privileges, OBI allows you to specify
-finer grained permissions to run with minimum required permissions, such as:
-`CAP_DAC_READ_SEARCH`, `CAP_SYS_PTRACE`, `CAP_PERFMON`, `CAP_BPF`,
-`CAP_CHECKPOINT_RESTORE`, and others.
+OBI can automatically capture network and protocol activity, but it cannot
+always recover application-specific details that are not visible from eBPF
+observation points.
 
-Some OBI functionality requires further permissions, for example using the
-network observability probes with Linux Traffic Control requires
-`CAP_NET_ADMIN`, but it's a feature you have to optionally enable.
+Some features also have additional caveats or narrower support than the core
+platform requirements. For details, refer to the feature-specific documentation
+for [distributed traces](distributed-traces/) and
+[exported instrumentation](configure/export-data/).
 
 For a comprehensive list of capabilities required by OBI, refer to
 [Security, permissions and capabilities](security/).
