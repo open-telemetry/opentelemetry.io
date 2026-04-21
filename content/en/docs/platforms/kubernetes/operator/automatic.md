@@ -1122,7 +1122,7 @@ config:
 
 Note that in this case, the Operator replaces "$$" with a single "$" in the replacement keys. This is because the collector supports environment variable substitution, whereas the TA (Target Allocator) does not. Therefore, to ensure compatibility, the TA configuration should only contain a single "$" symbol.
 
-More info on the TargetAllocator can be found [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md).
+More info on the TargetAllocator can be found [Target Allocator README](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md).
 
 ### Using Prometheus Custom Resources for service discovery
 
