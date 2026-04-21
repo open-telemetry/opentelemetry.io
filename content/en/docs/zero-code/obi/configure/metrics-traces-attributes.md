@@ -158,7 +158,7 @@ because it can create false positives, for example, if an application sends SQL
 text for logging through a TCP connection. Currently, OBI natively supports the
 PostgreSQL and MySQL binary protocols.
 
-<a id="http-header-enrichment-for-spans"></a>
+### HTTP header and body enrichment for spans {#http-header-enrichment-for-spans}
 
 ### HTTP header and body enrichment for spans
 
