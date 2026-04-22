@@ -77,7 +77,7 @@ docker run --rm -it -p 18888:18888 -p 4317:18889 -p 4318:18890 -d --name aspire-
     mcr.microsoft.com/dotnet/aspire-dashboard:latest
 ```
 
-The dashboard is now collecting telemetry sent to `http://localhost:4318`, and
+The dashboard collects telemetry sent to `http://localhost:4318`, and
 you can view telemetry by visiting `http://localhost:18888`.
 
 A login token is required on first access. Retrieve it from the container logs.
