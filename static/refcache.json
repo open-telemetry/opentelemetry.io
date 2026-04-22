@@ -19999,6 +19999,14 @@
     "StatusCode": 200,
     "LastSeen": "2026-03-17T09:54:46.661625915Z"
   },
+  "https://opentelemetry.io/docs/specs/otel/logs/api/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-22T00:26:10.396607883Z"
+  },
+  "https://opentelemetry.io/docs/specs/otel/logs/sdk/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-22T00:26:13.174774163Z"
+  },
   "https://opentelemetry.io/docs/specs/otlp/": {
     "StatusCode": 206,
     "LastSeen": "2026-03-26T17:19:30.535671199Z"
