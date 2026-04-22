@@ -13,10 +13,9 @@ params:
 <i class="fas fa-bullhorn"></i> [**{{% param title %}}**][event],
 **<span class="text-nowrap">May 21–22,</span> Minneapolis**.
 <span class="d-none d-md-inline"><br></span>
-[Register][register]<span class="d-none d-sm-inline"> now</span> or
-[view the schedule][schedule]!
+[Register][register]<span class="d-none d-sm-inline"> now</span> or [view the
+schedule][schedule]!
 
 [event]: <{{% param eventUrl %}}?{{% param queryParams %}}>
 [register]: <{{% param eventUrl %}}register/?{{% param queryParams %}}>
-[schedule]:
-  <{{% param eventUrl %}}program/schedule/?{{% param queryParams %}}>
+[schedule]: <{{% param eventUrl %}}program/schedule/?{{% param queryParams %}}>

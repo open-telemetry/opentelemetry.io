@@ -3219,6 +3219,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T12:11:22.406404285Z"
   },
+  "https://events.linuxfoundation.org/observability-summit-north-america/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=slim-banner": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-22T17:12:31.913673484Z"
+  },
+  "https://events.linuxfoundation.org/observability-summit-north-america/program/schedule/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=slim-banner": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-22T17:12:34.930569593Z"
+  },
+  "https://events.linuxfoundation.org/observability-summit-north-america/register/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=slim-banner": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-22T17:12:33.425565683Z"
+  },
   "https://events.linuxfoundation.org/open-observability-summit-otel-community-day/": {
     "StatusCode": 200,
     "LastSeen": "2026-04-22T14:16:31.92558023Z"
