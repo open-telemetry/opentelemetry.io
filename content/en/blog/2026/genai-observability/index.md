@@ -157,8 +157,7 @@ real-world usage directly shapes what gets standardized next.
 - Test GenAI instrumentation in your own applications and
   [report issues](https://github.com/open-telemetry/semantic-conventions/issues).
 - Try the [Aspire Dashboard](https://aspire.dev/dashboard/overview/) for local
-  GenAI debugging and
-  [contribute to it](https://github.com/microsoft/aspire).
+  OpenTelemetry debugging and [contribute to it](https://github.com/microsoft/aspire).
 - Join the
   [SIG GenAI Observability](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md)
   discussions.
