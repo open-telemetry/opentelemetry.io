@@ -11147,6 +11147,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-15T10:03:10.216462794Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/62b4a6a855608a925caeea95752167df5a0960a0/src/OpenTelemetry.AutoInstrumentation.Native/netfx_assembly_redirection.h": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-22T11:37:55.044157868Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/c27acd9bd0f82de47217fba660d9f979e0a0cc2d/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Build.props": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-22T11:37:45.916139262Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/f2d70bd0f095852bf0270aad61b60dfe1ea7834f/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Packages.props": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-22T11:37:52.121847943Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/Directory.Packages.props": {
     "StatusCode": 206,
     "LastSeen": "2026-04-18T09:52:49.721743285Z"
@@ -11186,18 +11198,6 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/Directory.Packages.props": {
     "StatusCode": 206,
     "LastSeen": "2026-04-18T09:52:53.135522792Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Build.props": {
-    "StatusCode": 404,
-    "LastSeen": "2026-04-22T10:06:26.716951151Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Packages.props": {
-    "StatusCode": 404,
-    "LastSeen": "2026-04-22T10:06:29.599871765Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation.Native/netfx_assembly_redirection.h": {
-    "StatusCode": 404,
-    "LastSeen": "2026-04-22T10:06:32.644715578Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj": {
     "StatusCode": 206,
