@@ -284,8 +284,8 @@
     "LastSeen": "2026-04-17T12:58:52.855Z"
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
-    "StatusCode": 429,
-    "LastSeen": "2026-04-22T15:42:20.415714797Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-22T17:27:30.622Z"
   },
   "https://blog.remirepo.net/pages/PECL-extensions-RPM-status": {
     "StatusCode": 200,
@@ -18004,8 +18004,8 @@
     "LastSeen": "2026-04-22T15:47:38.463Z"
   },
   "https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-22T15:38:23.056960604Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-22T17:27:34.239Z"
   },
   "https://hsqldb.org/": {
     "StatusCode": 206,
@@ -19244,8 +19244,8 @@
     "LastSeen": "2026-04-16T10:09:56.089Z"
   },
   "https://medium.com/p/42337e994b63": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-22T15:36:49.862630373Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-22T17:27:37.771Z"
   },
   "https://medium.com/sicreditech/sicredis-path-for-opentelemetry-adoption-3564fc8a743a": {
     "StatusCode": 200,
@@ -22344,8 +22344,8 @@
     "LastSeen": "2026-04-22T14:15:18.7645221Z"
   },
   "https://sakshipatle.substack.com/p/outreachy-how-when-and-why": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-22T15:42:22.397769137Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-22T17:27:41.164Z"
   },
   "https://schemas.dmtf.org/wbem/cim-html/2.31.0/CIM_Battery.html": {
     "StatusCode": 206,
