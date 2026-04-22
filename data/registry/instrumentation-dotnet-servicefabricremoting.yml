@@ -16,5 +16,5 @@ createdAt: 2025-03-26
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.ServiceFabricRemoting
-  version: 1.15.0-beta.1
+  version: 1.15.1-beta.1
 isFirstParty: false
