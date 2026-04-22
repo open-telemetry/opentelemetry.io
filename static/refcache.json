@@ -248,8 +248,8 @@
     "LastSeen": "2026-04-22T14:14:04.183489605Z"
   },
   "https://bento.me/adrianamvillela": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-22T14:17:10.623367518Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-22T15:00:17.46Z"
   },
   "https://betterstack.com/docs/logs/open-telemetry/#2-setup": {
     "StatusCode": 200,
@@ -3128,8 +3128,8 @@
     "LastSeen": "2026-04-22T12:11:35.456945075Z"
   },
   "https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-22T14:11:11.516985306Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-22T15:00:21.429Z"
   },
   "https://erinmeyer.com/books/the-culture-map/": {
     "StatusCode": 200,
@@ -19336,8 +19336,8 @@
     "LastSeen": "2026-03-25T09:55:45.004360333Z"
   },
   "https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java/4.26.1": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-22T14:16:37.94777455Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-22T15:00:40.177Z"
   },
   "https://mybatis.org/mybatis-3/": {
     "StatusCode": 206,
@@ -19856,8 +19856,8 @@
     "LastSeen": "2026-04-18T09:52:18.918906656Z"
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-22T14:16:28.663403735Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-22T15:00:43.352Z"
   },
   "https://openai.com/": {
     "StatusCode": 200,
@@ -22808,7 +22808,7 @@
     "LastSeen": "2026-04-18T09:52:43.341628587Z"
   },
   "https://wiki.osdev.org/CPUID": {
-    "StatusCode": 403,
+    "StatusCode": 206,
     "LastSeen": "2026-04-22T14:12:30.194580487Z"
   },
   "https://wikipedia.org/wiki/.NET": {
@@ -23168,8 +23168,8 @@
     "LastSeen": "2026-04-18T09:52:23.732895944Z"
   },
   "https://www.docsend.com/": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-22T14:11:42.948953498Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-22T15:00:53.141Z"
   },
   "https://www.docsy.dev/docs/": {
     "StatusCode": 206,
