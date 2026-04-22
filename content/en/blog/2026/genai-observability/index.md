@@ -77,7 +77,7 @@ docker run --rm -it -p 18888:18888 -p 4317:18889 -p 4318:18890 -d --name aspire-
     mcr.microsoft.com/dotnet/aspire-dashboard:latest
 ```
 
-The dashboard is now collecting telemetry sent to `http://localhost:4318` and
+The dashboard is now collecting telemetry sent to `http://localhost:4318`, and
 you can view telemetry by visiting `http://localhost:18888`.
 
 A login token is required on first access. Retrieve it from the container logs.
@@ -156,8 +156,9 @@ real-world usage directly shapes what gets standardized next.
 
 - Test GenAI instrumentation in your own applications and
   [report issues](https://github.com/open-telemetry/semantic-conventions/issues).
-- Contribute to the
-  [Semantic Conventions for GenAI](/docs/specs/semconv/gen-ai/) specification.
+- Try the [Aspire Dashboard](https://aspire.dev/dashboard/overview/) for local
+  GenAI debugging and
+  [contribute to it](https://github.com/microsoft/aspire).
 - Join the
   [SIG GenAI Observability](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md)
   discussions.
