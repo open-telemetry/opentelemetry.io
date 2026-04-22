@@ -232,8 +232,8 @@
     "LastSeen": "2026-04-22T12:08:58.588930025Z"
   },
   "https://azure.microsoft.com/products/ai-services/openai-service/": {
-    "StatusCode": 404,
-    "LastSeen": "2026-04-22T15:39:56.447858585Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-22T21:53:18.737Z"
   },
   "https://azure.microsoft.com/products/cosmos-db/": {
     "StatusCode": 200,
