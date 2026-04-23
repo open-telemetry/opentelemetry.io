@@ -90,7 +90,6 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=staging,service.version=1.0.0 ./MyNetApp
 ```
 
-
 > [!IMPORTANT]
 >
 > On macOS [`coreutils`](https://formulae.brew.sh/formula/coreutils) is
