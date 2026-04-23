@@ -11,8 +11,8 @@ when maintaining the site.
 
 We use the term **agent skill** to refer to reusable actions written in
 conformance to [agentskills.io][] that can be invoked by agents or followed
-manually by maintainers. We call a **maintainer procedure** (or maintainer
-skill) a set of steps that an agent or maintainer can follow to accomplish a
+manually by maintainers. We call a **_maintainer_ skill** (or maintainer
+procedure) a set of steps that an agent or maintainer can follow to accomplish a
 specific task. Agent skills are defined in [`.claude/skills/`][]. Maintainer
 procedures are defined in this section.
 
@@ -25,9 +25,9 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 
 Some agent chats let you invoke a skill by typing `/` followed by its name.
 
-## Maintainer procedures
+## Maintainer skills
 
-See the list below.
+See the section index below.
 
 [`.claude/skills/`]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/.claude/skills
