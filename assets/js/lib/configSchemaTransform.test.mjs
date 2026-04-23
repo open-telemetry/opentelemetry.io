@@ -15,7 +15,7 @@ import {
   transformSchema,
   escapeHtml,
   linkifyUrls,
-} from '../configSchemaTransform.mjs';
+} from './configSchemaTransform.mjs';
 
 describe('resolveType', () => {
   test('resolves types correctly', () => {
