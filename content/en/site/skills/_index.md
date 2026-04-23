@@ -20,6 +20,9 @@ procedures are defined in this section.
 
 As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 
+- [`/draft-issue <issue-description>`][draft-issue]: draft a GitHub issue in the
+  `opentelemetry.io` repository following issue templates, contributing
+  guidelines, and the label taxonomy.
 - [`/resolve-refcache-conflicts <optional-pr-number>`][resolve-refcache-conflicts]:
   resolve `static/refcache.json` merge/rebase conflicts.
 - [`/review-blog-post <blog-post-path-or-pr-number>`][review-blog-post]: review
@@ -39,3 +42,5 @@ See the section index below.
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/resolve-refcache-conflicts/SKILL.md
 [review-blog-post]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-blog-post/SKILL.md
+[draft-issue]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/draft-issue/SKILL.md

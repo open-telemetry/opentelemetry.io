@@ -23,7 +23,7 @@ omitted.
 When targeting `open-telemetry/opentelemetry.io`, every rule in this skill is
 grounded in a source-of-truth file. For the full validated label taxonomy and
 the PR-only labels that must never be applied to issues, see the sibling skill
-`otel-issue-draft`. For process rules that connect triaged issues to PR reviews
+`draft-issue`. For process rules that connect triaged issues to PR reviews
 (e.g., the `triage:accepted` linked-issue requirement), see `otel-pr-review`.
 See [References](#references) at the bottom.
 
@@ -412,7 +412,7 @@ template.
 **Never suggest PR-only labels on issues.** `ready-to-be-merged`, `missing:cla`,
 `missing:docs-approval`, `missing:sig-approval`, `sig-approval-missing`,
 `auto-update`, `0-meta`, `admin` are managed by PR workflows and don't belong on
-issues. See `otel-issue-draft` skill, `#pr-only-labels-do-not-suggest`.
+issues. See `draft-issue` skill, `#pr-only-labels-do-not-suggest`.
 
 **Never suggest `type:discussion`.** The label's own description says "Do not
 use, convert discussion issues into real Discussions." If the issue reads as
@@ -698,7 +698,7 @@ The built-in `opentelemetry-website` profile defines the full taxonomy for
 `${CLAUDE_PLUGIN_ROOT}/data/opentelemetry-website.yml`.
 
 **For `open-telemetry/opentelemetry.io` specifically**, the sibling skill
-`otel-issue-draft` has the validated taxonomy grouped by area / SIG /
+`draft-issue` has the validated taxonomy grouped by area / SIG /
 localization / effort / priority / triage / type / assignment, already checked
 against the live label set. Treat it as the source of truth and refer to it
 instead of hand-typing label names. Also honor the PR-only labels warning in
@@ -852,7 +852,7 @@ Source-of-truth files — if this skill drifts from them, trust the file:
 - `gh` CLI: `gh issue close --help` — the only valid `--reason` values are
   `completed`, `not planned`, and `duplicate`. The `--duplicate-of <N>` flag is
   preferred for duplicates.
-- Sibling skill `otel-issue-draft/SKILL.md` — validated label taxonomy,
+- Sibling skill `draft-issue/SKILL.md` — validated label taxonomy,
   `#pr-only-labels-do-not-suggest`, `type:discussion` deprecation, 5-template
   reference
 - Sibling skill `otel-pr-review/SKILL.md` — linked-issue requirement

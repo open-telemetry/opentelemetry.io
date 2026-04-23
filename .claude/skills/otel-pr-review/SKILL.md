@@ -20,7 +20,7 @@ skill. See the [References](#references) section at the end.
 
 For blog-specific rules (`gh-url-hash`, author format, publish-date gating),
 defer to the sibling `otel-blog-review` skill. For the full validated label
-taxonomy, defer to `otel-issue-draft`.
+taxonomy, defer to `draft-issue`.
 
 ## Arguments {#arguments}
 
@@ -173,7 +173,7 @@ discretion.
 
 ## Labels {#labels}
 
-For the full validated repo label taxonomy, see the `otel-issue-draft` skill.
+For the full validated repo label taxonomy, see the `draft-issue` skill.
 This section enumerates only labels that matter at **PR review time**.
 
 ### Auto-applied (don't add by hand) {#auto-labels}
@@ -451,4 +451,4 @@ Source-of-truth files — if this skill drifts from them, trust the file:
 - `package.json` — `check:*`/`fix:*` scripts (30-135), prettier
   `proseWrap: always` (197)
 - Sibling skills: `otel-blog-review` (blog-specific PR rules),
-  `otel-issue-draft` (full label taxonomy)
+  `draft-issue` (full label taxonomy)

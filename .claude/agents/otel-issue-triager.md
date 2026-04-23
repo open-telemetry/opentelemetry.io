@@ -45,7 +45,7 @@ produce recommendations and read-only queries.
   accidentally includes them in `label_taxonomy`, reject these on issue drafts:
   `ready-to-be-merged`, `missing:cla`, `missing:docs-approval`,
   `missing:sig-approval`, `sig-approval-missing`, `auto-update`, `0-meta`,
-  `admin`. See `otel-issue-draft` skill, `#pr-only-labels-do-not-suggest`.
+  `admin`. See `draft-issue` skill, `#pr-only-labels-do-not-suggest`.
 - **Never suggest `type:discussion`.** The label's own description says "Do not
   use, convert discussion issues into real Discussions." If the issue reads as
   an open-ended conversation, recommend `close:not-planned` with a suggested
@@ -475,7 +475,7 @@ Source-of-truth files — if this agent drifts from them, trust the file:
   workflow.**
 - `gh` CLI: `gh issue close --help` — valid `--reason` values are `completed`,
   `not planned`, `duplicate`
-- Sibling skill `otel-issue-draft/SKILL.md` — validated label taxonomy, PR-only
+- Sibling skill `draft-issue/SKILL.md` — validated label taxonomy, PR-only
   label warning (`#pr-only-labels-do-not-suggest`), `type:discussion`
   deprecation (`#type`), 5-template list
 - Sibling skill `otel-triage/SKILL.md` — this agent's orchestrator; provides

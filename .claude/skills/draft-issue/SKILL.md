@@ -1,5 +1,5 @@
 ---
-name: otel-issue-draft
+name: draft-issue
 description: >-
   Draft GitHub issues for opentelemetry.io following the real issue templates
   under `.github/ISSUE_TEMPLATE/`, the contributing guide, and the repo's live
