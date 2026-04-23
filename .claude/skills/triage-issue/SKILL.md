@@ -28,6 +28,31 @@ the PR-only labels that must never be applied to issues, see the sibling skill
 (e.g., the `triage:accepted` linked-issue requirement), see
 `review-pull-request`. See [References](#references) at the bottom.
 
+## Bundled references {#bundled-references}
+
+This skill uses progressive disclosure — the orchestrator below stays small, and
+cold-path detail lives under `references/`. Load each file **only when you enter
+the phase or action that uses it**:
+
+- [`references/analysis-checklist.md`](./references/analysis-checklist.md) — the
+  8-step per-issue signal-gathering checklist + confidence tiers, action tokens,
+  and "never suggest" rules. Read at the start of Phase 3; keep open for the
+  whole batch.
+- [`references/report-template.md`](./references/report-template.md) — report
+  file naming, section skeleton, dossier example, and link-format rules. Read at
+  the start of Phase 4.
+- [`references/state-schema.md`](./references/state-schema.md) — `state.json`
+  fields, example, lifecycle, and subsequent-run routing logic. Read at the
+  start of Phase 5 (and during Phase 1 when applying state-based filtering).
+- [`references/label-taxonomy.md`](./references/label-taxonomy.md) — read before
+  emitting any `--add-label` command to confirm labels exist and exclude PR-only
+  labels.
+- [`references/gh-commands.md`](./references/gh-commands.md) — canonical `gh`
+  command templates and the close-reason mapping. Read whenever a dossier is
+  about to emit a `gh issue close` / `edit` / `comment` command.
+- [`references/comment-templates.md`](./references/comment-templates.md) —
+  fallback comment text when no repo profile defines its own templates.
+
 ## When to Use {#when-to-use}
 
 - Processing untriaged issues in batch
@@ -69,7 +94,7 @@ Run this before anything else.
 
 Gather all `--profile` values (flag may be repeated or comma-separated):
 
-```
+```text
 profiles_requested = split and flatten all --profile values
 ```
 
@@ -78,7 +103,7 @@ profiles_requested = split and flatten all --profile values
 Determine the target repo (from `--repo` flag, or fall back to
 `open-telemetry/opentelemetry.io` if omitted):
 
-```
+```text
 REPO = value of --repo flag, or "open-telemetry/opentelemetry.io"
 ```
 
@@ -117,7 +142,7 @@ Merge all loaded profiles into a single `PROFILE` object:
 
 ### 5. Resolve final REPO and pass to subagents
 
-```
+```text
 If PROFILE.repo.default_repo is set AND --repo was not explicitly provided:
   REPO = PROFILE.repo.default_repo
 Else:
@@ -184,7 +209,9 @@ repo profile with `type_filters` configured.
 
 ### State-Based Filtering
 
-Load `.tasks/triage/state.json`. For each fetched issue:
+Load `.tasks/triage/state.json` (schema and routing rules in
+[`references/state-schema.md`](./references/state-schema.md)). For each fetched
+issue:
 
 - **Skip**: issue exists in state, `issueUpdatedAt` matches current `updatedAt`,
   AND `outcome` is set → already triaged and executed
@@ -257,387 +284,44 @@ Default fallback: `sig:*` (from existing labels), `docs-general`, `blog`,
 
 ## Phase 3: Analyze Issues {#phase-3-analyze-issues}
 
-### Per-Issue Analysis Checklist
+For each issue, gather 8 signals (metadata, type, staleness, codebase
+cross-reference, related PRs, external references, duplicates, recommendation)
+and emit a confidence-tiered recommendation.
 
-For each issue, gather these signals:
+Read [`references/analysis-checklist.md`](./references/analysis-checklist.md)
+once at the start of this phase — it contains every checklist step, the
+`HIGH`/`MEDIUM`/`LOW` confidence criteria, the full action-token table, and the
+"never suggest" rules. Keep it open for the whole batch; each issue re-uses the
+same checklist.
 
-#### 1. Metadata Extraction
-
-- Issue #, title, author, created date, last updated
-- Comment count, last comment date, last commenter role
-- Reaction counts (👍, 👎, total)
-- Current labels
-
-#### 2. Issue Type Classification
-
-Infer from title prefix and body structure:
-
-| Prefix           | Type                               |
-| ---------------- | ---------------------------------- |
-| `[Docs]:`        | Documentation update               |
-| `bug:`           | Bug report                         |
-| `feat:`          | Feature request                    |
-| `blog:`          | Blog proposal                      |
-| `page feedback:` | Page feedback                      |
-| (none)           | Infer from body template structure |
-
-#### 3. Staleness Analysis
-
-```bash
-# Days since last update
-# Calculate from updatedAt field
-```
-
-Staleness tiers below are heuristic only — there is no auto-close automation for
-issues in `open-telemetry/opentelemetry.io` (unlike PRs, which have a 21-day
-stale rule per `sig-practices.md:153-155`). Use these as triage signals, not as
-policy:
-
-| Tier     | Days Since Last Update |
-| -------- | ---------------------- |
-| Critical | > 180 days             |
-| High     | 90–180 days            |
-| Medium   | 30–90 days             |
-| Low      | < 30 days              |
-
-Check:
-
-- Has anyone commented in the last 6 months?
-- Is the author still active on the repo?
-
-```bash
-gh api "repos/<REPO>/issues?creator=<username>&state=all&per_page=5&sort=updated" \
-  --jq '.[0].updated_at'
-```
-
-#### 4. Codebase Cross-Reference
-
-Extract file paths mentioned in the issue body. For each:
-
-```bash
-# Check if file exists
-ls <file-path> 2>/dev/null
-
-# Check git history since issue was opened
-git log --oneline -10 --since="<issue-created-date>" -- "<file-path>"
-```
-
-Report:
-
-- File exists / deleted / renamed
-- Number of commits since issue opened
-- Whether changes appear to address the concern
-
-Read file content when needed to verify if the issue's request has been
-fulfilled.
-
-#### 5. Related PRs and Issues
-
-```bash
-# PRs referencing this issue
-gh pr list --repo <REPO> --state all \
-  --search "<issue-number>" --json number,title,state,mergedAt,url --limit 10
-```
-
-Check if any merged PRs address the issue.
-
-#### 6. External Reference Analysis
-
-Parse issue body for links to `github.com/open-telemetry/*` repos. For each:
-
-```bash
-gh issue view <URL> --json number,title,state,labels 2>/dev/null || \
-gh pr view <URL> --json number,title,state,mergedAt 2>/dev/null
-```
-
-Non-OTel external links: list them, note "external — manual review needed".
-
-#### 7. Duplicate Detection
-
-```bash
-# Search for similar open issues
-gh issue list --repo <REPO> \
-  --state open --search "<key terms from title>" \
-  --json number,title,labels --limit 10
-```
-
-If `--include-closed` is set:
-
-```bash
-gh issue list --repo <REPO> \
-  --state closed --search "<key terms>" \
-  --json number,title,labels --limit 10
-```
-
-Similarity signals: title keyword overlap, same referenced files, same described
-symptoms.
-
-#### 8. Recommendation
-
-**Confidence tiers:**
-
-| Tier   | Criteria                                                                                                           |
-| ------ | ------------------------------------------------------------------------------------------------------------------ |
-| HIGH   | File deleted/renamed; exact duplicate; >1 year with zero engagement; merged PR resolves it; author confirmed fixed |
-| MEDIUM | Clear classification possible; reasonable action path; related PRs exist; active author                            |
-| LOW    | Ambiguous description; cross-cutting; external blockers; high engagement needing judgment                          |
-
-**Triage actions** (internal decision tokens — see
-[Close-Reason Mapping](#close-reason-mapping) for the valid
-`gh issue close --reason` value each token maps to):
-
-| Action                                          | When                                                                                  |
-| ----------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `close:completed`                               | A merged PR resolved the issue; referenced content now exists                         |
-| `close:stale`                                   | No activity, referenced content updated, likely resolved                              |
-| `close:duplicate`                               | Near-duplicate of #XXXX                                                               |
-| `close:wontfix`                                 | Out of scope or superseded                                                            |
-| `close:invalid`                                 | Spam, unclear, not a real issue                                                       |
-| `label:triage:accepted:needs-pr`                | Valid, actionable, needs contributor                                                  |
-| `label:triage:accepted`                         | Valid, may have someone on it                                                         |
-| `label:triage:deciding:needs-info`              | Missing details from reporter                                                         |
-| `label:triage:deciding:blocked`                 | Blocked on external dependency                                                        |
-| `label:triage:deciding:needs-mentor-or-sponsor` | Needs a mentor/sponsor (`sig-practices.md:98`)                                        |
-| `label:triage:deciding`                         | Needs maintainer discussion                                                           |
-| `label:good first issue`                        | Small, well-scoped onboarding task (label is `good first issue` — spaces, no hyphens) |
-| `add-labels`                                    | Only needs co-ownership (`sig:*`/`lang:*`/`docs:*`) / type / area labels added        |
-
-**Accepted issues must carry the `sig-practices.md:77-107` mandatory set.** When
-emitting `label:triage:accepted*` or `add-labels`, also apply — if not already
-present — one co-ownership label (`sig:*`, `lang:*`, or `docs:*`) and verify an
-issue type is set (GitHub-native `bug`/`enhancement`, usually inherited from the
-issue template's `type:` field, or one of the label-based types `type:question`
-/ `type:copyedit`). Do not manually set GitHub-native types; they come from the
-template.
-
-**Never suggest PR-only labels on issues.** `ready-to-be-merged`, `missing:cla`,
-`missing:docs-approval`, `missing:sig-approval`, `sig-approval-missing`,
-`auto-update`, `0-meta`, `admin` are managed by PR workflows and don't belong on
-issues. See `draft-issue` skill, `#pr-only-labels-do-not-suggest`.
-
-**Never suggest `type:discussion`.** The label's own description says "Do not
-use, convert discussion issues into real Discussions." If the issue reads as
-open-ended conversation, recommend `close:wontfix` (→ `--reason "not planned"`)
-with a suggested comment pointing to GitHub Discussions.
-
-**Never recommend `--add-assignee` for first-time contributors.**
-`content/en/docs/contributing/_index.md:19-31`: issues are not assigned to
-contributors who have not already landed a PR (absent a confirmed mentorship).
-If an assignment-request comment is present, note that
-`.github/workflows/first-timer-response.yml` already auto-responds; do not emit
-an assign command.
-
-**`triage:followup` is a manual convention, not automation.**
-`sig-practices.md:124-127` describes an automated 14-day re-triage marker, but
-the `triage:followup` label does not currently exist in the live label set and
-no workflow applies it. Treat it as a manual marker a triager may apply when
-walking stale `triage:deciding` issues. Flag to maintainers if you'd like this
-automated.
+In practice, the analysis work runs through `otel-issue-triager` subagents (see
+[Parallel Execution Strategy](#parallel-execution-strategy)). The subagent spec
+mirrors the same checklist — when editing one, mirror the change to the other.
 
 ---
 
 ## Phase 4: Generate Report {#phase-4-generate-report}
 
-Save to `.tasks/triage/reports/triage-YYYY-MM-DD-Nissues.md` where N is the
-number of issues analyzed (e.g., `triage-2026-04-01-10issues.md`). If a file
-with that exact name exists, append a timestamp:
-`triage-YYYY-MM-DD-Nissues-HHmm.md`.
-
-### Report Template
-
-````markdown
-# Triage Report — YYYY-MM-DD
-
-**Issues analyzed**: N **Filters applied**: (list active filters) **Profiles
-active**: (list profile names, or "none") **Sorting**: staleness-first (oldest
-updated → newest)
-
-## Summary
-
-| Action            | High | Medium | Low | Total |
-| ----------------- | ---- | ------ | --- | ----- |
-| Close (stale)     | X    | X      | X   | X     |
-| Close (duplicate) | X    | X      | X   | X     |
-| Close (wontfix)   | X    | X      | X   | X     |
-| Accept (needs-pr) | X    | X      | X   | X     |
-| Accept            | X    | X      | X   | X     |
-| Needs info        | X    | X      | X   | X     |
-| Deciding          | X    | X      | X   | X     |
-| Add labels only   | X    | X      | X   | X     |
-
-### By Category
-
-| Category      | Issues | Closeable | Actionable | Needs Review |
-| ------------- | ------ | --------- | ---------- | ------------ |
-| sig:collector | X      | X         | X          | X            |
-| docs-general  | X      | X         | X          | X            |
-| ...           | ...    | ...       | ...        | ...          |
-
-<!-- Render one block per evaluation profile. Omit section if no evaluation profiles active. -->
-
-## Profile Assessment: {evaluation_profile.name}
-
-> {evaluation_profile.report_note}
-
-| Verdict      | Count |
-| ------------ | ----- |
-| Recommended  | X     |
-| Maybe        | X     |
-| Not suitable | X     |
-
----
-
-## HIGH Confidence — Auto-actionable
-
-### [#1234](https://github.com/<REPO>/issues/1234) — [Docs]: Update SDK configuration page
-
-- **Type**: docs | **Created**: 2024-01-15 | **Last updated**: 2024-02-01
-- **Author**: @username (last active: 2025-12-01) | **Reactions**: 2 👍
-- **Comments**: 3 (last: 2024-03-01)
-- **Staleness**: Critical (400+ days)
-- **Current labels**: `docs`
-
-**Content Summary:** One-paragraph summary of what the issue requests.
-
-**Codebase Analysis:**
-
-- Referenced file `content/en/docs/languages/go/configuration.md`:
-  - Status: exists
-  - Commits since issue opened: 12
-  - Assessment: content was rewritten in
-    [#4567](https://github.com/<REPO>/pull/4567), appears to address this issue
-
-**Related PRs:**
-
-- [#4567](https://github.com/<REPO>/pull/4567) (merged 2024-06-15): "Rewrite Go
-  config docs" — likely resolves this
-
-**Linked Issues:**
-
-- (none)
-
-**Duplicate Candidates:**
-
-- (none)
-
-**Recommendation:**
-
-- **Action**: `close:stale`
-- **Confidence**: HIGH
-- **Rationale**: Referenced file was rewritten in
-  [#4567](https://github.com/<REPO>/pull/4567). No activity in 12+ months.
-  Content now covers the requested topic.
-- **Suggested labels**: `sig:go`, `docs`
-
-**Suggested Comment:**
-
-> This issue appears to have been addressed by subsequent updates to the
-> configuration documentation (see PR #4567). Closing as resolved. If you
-> believe this is still an issue, please reopen with updated details.
-
-**Commands:**
-
-```bash
-gh issue comment 1234 -R <REPO> --body "This issue appears to have been addressed by subsequent updates to the configuration documentation (see PR #4567). Closing as resolved. If you believe this is still an issue, please reopen with updated details."
-gh issue edit 1234 -R <REPO> --add-label "sig:go,docs"
-gh issue close 1234 -R <REPO> --reason "not planned"
-```
-
----
-
-## MEDIUM Confidence — Suggested Triage
-
-(same dossier format, recommendation less certain)
-
----
-
-## LOW Confidence — Needs Human Review
-
-(same dossier format, multiple possible actions noted)
-
-### Link Format Rules
-
-All issue and PR references in the report MUST be clickable markdown links:
-
-- **Issue headings**: `[#123](https://github.com/<REPO>/issues/123)`
-- **PR references**: `[#456](https://github.com/<REPO>/pull/456)`
-- **Cross-repo issues**:
-  `[repo#789](https://github.com/open-telemetry/repo/issues/789)`
-- **Cross-repo PRs**:
-  `[repo#789](https://github.com/open-telemetry/repo/pull/789)`
-
-Never use bare `#123` references in the report — always wrap in a markdown link
-so the report is navigable from any markdown viewer.
-````
+Save a report to `.tasks/triage/reports/triage-YYYY-MM-DD-Nissues.md`. Read
+[`references/report-template.md`](./references/report-template.md) at the start
+of this phase — it defines the file-naming rule (including the timestamp
+fallback for same-day re-runs), the report skeleton (summary tables, category
+breakdown, per-confidence dossier sections), and the link-format rules for all
+`#123` references.
 
 ---
 
 ## Phase 5: Update State {#phase-5-update-state}
 
-Write/update `.tasks/triage/state.json` (schema:
-`${CLAUDE_PLUGIN_ROOT}/schemas/triage-state.schema.json`). Create the directory
-and an empty `{"version":1,"lastRun":"1970-01-01T00:00:00.000Z","issues":{}}`
-file on the first run if neither exists.
+Write/update `.tasks/triage/state.json` after analysis so subsequent runs can
+skip already-triaged issues. Read
+[`references/state-schema.md`](./references/state-schema.md) for the full field
+list, lifecycle, and example.
 
-### Fields
-
-| Field            | Set by    | Required | Purpose                                                                    |
-| ---------------- | --------- | -------- | -------------------------------------------------------------------------- |
-| `number`         | Analysis  | Yes      | GitHub issue number                                                        |
-| `decision`       | Analysis  | Yes      | Recommended action (e.g., `close:stale`, `label:triage:accepted:needs-pr`) |
-| `confidence`     | Analysis  | Yes      | `HIGH`, `MEDIUM`, or `LOW`                                                 |
-| `analyzedAt`     | Analysis  | Yes      | When the issue was analyzed                                                |
-| `issueUpdatedAt` | Analysis  | Yes      | GitHub `updatedAt` at analysis time — used for change detection            |
-| `executedAt`     | Execution | No       | When the decision was acted on (comment/label/close)                       |
-| `outcome`        | Execution | No       | What was actually done — may differ from `decision` on reviewer override   |
-| `note`           | Execution | No       | Rationale when outcome diverges from recommendation                        |
-
-### Example
-
-```json
-{
-  "version": 1,
-  "lastRun": "2026-04-01T15:00:00-03:00",
-  "issues": {
-    "1234": {
-      "number": 1234,
-      "decision": "close:stale",
-      "confidence": "HIGH",
-      "analyzedAt": "2026-04-01T12:00:00-03:00",
-      "issueUpdatedAt": "2024-02-01T00:00:00Z",
-      "executedAt": "2026-04-02T10:00:00-03:00",
-      "outcome": "close:completed"
-    },
-    "5678": {
-      "number": 5678,
-      "decision": "label:triage:accepted:needs-pr",
-      "confidence": "HIGH",
-      "analyzedAt": "2026-04-01T12:00:00-03:00",
-      "issueUpdatedAt": "2025-01-20T08:41:07Z",
-      "executedAt": "2026-04-02T10:00:00-03:00",
-      "outcome": "label:triage:deciding:needs-info",
-      "note": "Upstream README uses nodes/pods not nodes/proxy — needs clarification before accepting"
-    }
-  }
-}
-```
-
-### Lifecycle
-
-1. **Analysis phase** sets: `number`, `decision`, `confidence`, `analyzedAt`,
-   `issueUpdatedAt`
-2. **Execution phase** (human-driven) adds: `executedAt`, `outcome`, and
-   optionally `note` when the reviewer overrides the recommendation
-3. Issues with `outcome: "skipped"` remain candidates for future triage runs
-
-### State logic on subsequent runs
-
-- **Skip**: `issueUpdatedAt` matches current GitHub `updatedAt` AND `outcome` is
-  set (already triaged and executed)
-- **Re-analyze**: GitHub `updatedAt` > stored `issueUpdatedAt` (new activity)
-- **Pending execution**: `decision` is set but `outcome` is absent — surface
-  these to the reviewer as "awaiting action" instead of re-analyzing
-- **Analyze as new**: issue number not in state
+**Invariant:** every issue analyzed in this run gets a state entry with at least
+`number`, `decision`, `confidence`, `analyzedAt`, and `issueUpdatedAt`.
+Execution-phase fields (`executedAt`, `outcome`, `note`) are written by the
+human reviewer, not by this skill.
 
 ---
 
@@ -649,8 +333,9 @@ management. The token-expensive per-issue analysis (reading full issue bodies,
 comment threads, git log, PR searches, codebase cross-referencing) runs through
 `otel-issue-triager` subagents on a cheaper model (Sonnet). See
 `.claude/agents/otel-issue-triager.md` for the full subagent spec — it mirrors
-the actions, confidence tiers, link-format rules, and
-[Close-Reason Mapping](#close-reason-mapping) used here.
+the actions, confidence tiers, link-format rules, and close-reason mapping (see
+[`references/gh-commands.md`](./references/gh-commands.md#close-reason-mapping))
+used here.
 
 ### Execution flow
 
@@ -682,151 +367,24 @@ synthesis and decision-making on Opus.
 
 ---
 
-## Label Taxonomy Reference {#label-taxonomy-reference}
-
-Label suggestions come from `PROFILE.repo.label_taxonomy` when a repo profile is
-active. Use only labels confirmed to exist in the target repo — do not invent
-labels.
-
-For repositories without a repo profile, fetch the actual label list:
-
-```bash
-gh label list --repo <REPO> --json name --limit 100 | jq -r '.[].name'
-```
-
-The built-in `opentelemetry-website` profile defines the full taxonomy for
-`open-telemetry/opentelemetry.io` — see
-`${CLAUDE_PLUGIN_ROOT}/data/opentelemetry-website.yml`.
-
-**For `open-telemetry/opentelemetry.io` specifically**, the sibling skill
-`draft-issue` has the validated taxonomy grouped by area / SIG / localization /
-effort / priority / triage / type / assignment, already checked against the live
-label set. Treat it as the source of truth and refer to it instead of
-hand-typing label names. Also honor the PR-only labels warning in that skill
-(`#pr-only-labels-do-not-suggest`) — never apply those to an issue.
-
----
-
-## gh Command Templates {#gh-command-templates}
-
-### Close-Reason Mapping {#close-reason-mapping}
-
-The internal action tokens from [Phase 3](#phase-3-analyze-issues) are decision
-labels, not `gh` command flags. `gh issue close --reason` accepts only three
-values (`gh issue close --help`); map as follows when emitting commands:
-
-| Internal action   | `gh issue close --reason` value                         |
-| ----------------- | ------------------------------------------------------- |
-| `close:completed` | `"completed"`                                           |
-| `close:stale`     | `"not planned"`                                         |
-| `close:wontfix`   | `"not planned"`                                         |
-| `close:invalid`   | `"not planned"`                                         |
-| `close:duplicate` | `"duplicate"` — prefer `--duplicate-of <N>` (see below) |
-
-Never emit `--reason "stale"` / `"wontfix"` / `"invalid"` — `gh` rejects them.
-
-### Add triage label
-
-```bash
-gh issue edit <number> --repo <REPO> \
-  --add-label "triage:accepted:needs-pr"
-```
-
-### Add co-ownership / area labels
-
-```bash
-gh issue edit <number> --repo <REPO> \
-  --add-label "sig:collector,docs"
-```
-
-### Post comment
-
-```bash
-gh issue comment <number> --repo <REPO> \
-  --body "<comment text>"
-```
-
-### Close as completed (merged PR resolved it)
-
-```bash
-gh issue close <number> --repo <REPO> \
-  --reason "completed" \
-  --comment "<resolution notice>"
-```
-
-### Close as not planned (stale / wontfix / invalid)
-
-```bash
-gh issue close <number> --repo <REPO> \
-  --reason "not planned" \
-  --comment "<stale/wontfix/invalid notice>"
-```
-
-### Close as duplicate
-
-Preferred form — sets a GitHub-native duplicate relationship:
-
-```bash
-gh issue close <number> --repo <REPO> \
-  --duplicate-of <dup-number> \
-  --comment "Duplicate of #<dup-number>."
-```
-
-Fallback form:
-
-```bash
-gh issue close <number> --repo <REPO> \
-  --reason "duplicate" \
-  --comment "Duplicate of #<dup-number>."
-```
-
----
-
-## Comment Templates {#comment-templates}
-
-Comment templates come from `PROFILE.repo.comment_templates` when a repo profile
-is active. The built-in `opentelemetry-website` profile provides templates for
-`stale`, `needs_info`, `duplicate`, `accepted`, and `good_first_issue`.
-
-When no repo profile is active, use generic variants:
-
-**Stale:**
-
-```
-This issue has had no activity for {N} months. Closing as stale. If still
-relevant, please reopen with updated details.
-```
-
-**Needs info:**
-
-```
-Thank you for filing this issue. Could you provide more details?
-- {specific missing info}
-
-We'll revisit once more details are available.
-```
-
-**Duplicate:**
-
-```
-This appears to be a duplicate of #{duplicate_number}. Please check that
-issue for updates. If your case is different, please reopen.
-```
-
-**Accepted:**
-
-```
-This issue has been triaged and accepted. It's ready for a contributor to
-pick up.
-```
-
-**Good first issue:**
-
-```
-This issue has been triaged as a good first issue for new contributors.
-```
-
 ## References {#references}
+
+Bundled skill resources (read on demand, see
+[Bundled references](#bundled-references) for when-to-read guidance):
+
+- [`references/analysis-checklist.md`](./references/analysis-checklist.md) —
+  Phase 3 per-issue checklist, confidence tiers, action tokens, "never suggest"
+  rules
+- [`references/report-template.md`](./references/report-template.md) — Phase 4
+  report skeleton + dossier example + link-format rules
+- [`references/state-schema.md`](./references/state-schema.md) — Phase 5
+  `state.json` fields, lifecycle, subsequent-run routing
+- [`references/label-taxonomy.md`](./references/label-taxonomy.md) — label
+  provenance (`PROFILE.repo.label_taxonomy`, `draft-issue` skill taxonomy)
+- [`references/gh-commands.md`](./references/gh-commands.md) — `gh` command
+  templates and the close-reason mapping
+- [`references/comment-templates.md`](./references/comment-templates.md) —
+  fallback comment text when no repo profile templates are available
 
 Source-of-truth files — if this skill drifts from them, trust the file:
 
