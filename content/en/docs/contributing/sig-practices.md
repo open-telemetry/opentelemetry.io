@@ -177,8 +177,8 @@ Additional valuable resources to review are
   - **Locale dictionary**: Preferred for words likely to be used across multiple
     pages in the same language, such as `.cspell/en-words.txt`.
   - **Shared (all-locales) word list**: `.cspell/all-words.txt`. Preferred for
-    terms whose spelling is valid across all languages, such as product names
-    or people's names. See [Spell Checking][].
+    terms whose spelling is valid across all languages, such as product names or
+    people's names. See [Spell Checking][].
 
   Reviewers and approvers can determine if the placement is appropriate during
   the review process.

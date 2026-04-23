@@ -181,7 +181,7 @@ If the unknown word appears in multiple pages or is a technical term, add it to
 your locale-specific word list file. Word list files are located in the
 [.cspell/][] directory.
 
-If the word is spelled correctly in all locales, such as "opamp", add it to the
+If the word is spelled correctly in all locales, such as `opamp`, add it to the
 [all-words.txt][] file.
 
 [.cspell/]:

@@ -447,7 +447,7 @@ region, choose the closest region.
   - Add the NPM package as a dev dependency, for example:
     `npm install --save-dev @cspell/dict-bn`.
   - In [`.cspell.yml`][], add the package's `cspell-ext.json` under `import:`,
-    and add the dictionary's id (for example `bn`, `es-es`, `pl_pl`) under
+    and add the dictionary's ID (for example `bn`, `es-es`, `pl_pl`) under
     `dictionaries:`.
 - **If no dictionary is available** for the language, do not add an `import` for
   it. Add `content/LANG_ID` to the `ignorePaths` list in [`.cspell.yml`][] so
