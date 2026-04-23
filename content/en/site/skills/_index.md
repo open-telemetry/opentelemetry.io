@@ -49,7 +49,7 @@ source lives under [`scripts/validate/`][validate].
   required fields, uses a bad date format, or introduces an H1 heading. It
   applies the same conventions as [`/review-blog-post`](#agent-skills) at
   write-time, without waiting for review. Source:
-  [`scripts/validate/frontmatter-check/`][frontmatter-check].
+  [`scripts/validate/front-matter-check/`][frontmatter-check].
 
 Pure logic lives in `index.mjs` and is covered by `*.test.mjs` files in the same
 folder (`npm run test:local-tools` to run them).
@@ -77,4 +77,4 @@ See the section index below.
 [validate]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/validate
 [frontmatter-check]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/validate/frontmatter-check
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/validate/front-matter-check

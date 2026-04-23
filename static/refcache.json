@@ -15247,7 +15247,7 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-23T10:14:15.563797015Z"
   },
-  "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/validate/frontmatter-check": {
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/validate/front-matter-check": {
     "StatusCode": 206,
     "LastSeen": "2026-04-23T10:14:15.563797015Z"
   },

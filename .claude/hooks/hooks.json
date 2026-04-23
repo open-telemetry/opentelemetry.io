@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "printf '%s' \"$TOOL_INPUT\" | node ${PLUGIN_DIR}/../scripts/validate/frontmatter-check/index.mjs"
+            "command": "printf '%s' \"$TOOL_INPUT\" | node ${PLUGIN_DIR}/../scripts/validate/front-matter-check/index.mjs"
           }
         ]
       }
