@@ -21,4 +21,4 @@ Repo-wide contribution context: [CONTRIBUTING.md](CONTRIBUTING.md),
 [Build]: content/en/site/build/_index.md
 [Testing]: content/en/site/testing/_index.md
 [Design]: content/en/site/design/_index.md
-[Skills]: content/en/site/skills.md
+[Skills]: content/en/site/skills/_index.md

@@ -39,49 +39,66 @@ my %versFromSubmod = %versions; # Actual version of submodules. Updated by getVe
 
 # =================================================================================
 # Patches: data-driven list of spec patches.
+#
+# For patch details, see content/en/site/build/content-module-patches.md.
+#
 # To add a new patch, append an entry to this array:
 #
 #  {
 #    id      => '2026-01-01-some-unique-id',   # unique patch identifier
 #    module    => 'semconv',                   # module name: 'spec', 'otlp', 'semconv'
-#    minVers => '1.39.0',                      # target version (patch applies at this version)
-#    maxVers => '1.40.0',                      # optional upper bound (undef if none)
-#    file    => qr|^tmp/semconv/docs/|,        # regex matching file path
+#    minVers => '1.39.0',                      # inclusive lower bound (patch applies when
+#                                              # submodule version starts with, or is >=, minVers)
+#    maxVers => '1.40.0',                      # optional exclusive upper bound.
+#    file    => qr|^tmp/semconv/docs/|,        # optional regex matching file path; defaults
+#                                              # to the module's default spec/docs path
 #    context => 'body',                        # 'body' (default, operates on $_) or
-#                                              # 'frontmatter' (operates on $frontMatterFromFile)
+#                                              # 'front matter' (operates on $frontMatterFromFile)
 #    apply   => sub { s{old}{new}gx; },        # regex substitution to apply
 #  },
 # =================================================================================
 
 my @patches = (
-  {
-    # For the problematic links, see:
-    # https://github.com/open-telemetry/opentelemetry-specification/issues/4958
-    #
-    # Update migration links to new compatibility/migration paths:
-    # https://github.com/open-telemetry/opentelemetry-specification/pull/4958
-    id      => '2026-03-18-opentracing-migration-links',
-    module    => 'spec',
-    minVers => '1.55.0',
-    maxVers => undef,
-    file    => qr|^tmp/otel/specification/compatibility/opentracing\.md$|,
-    apply   => sub {
-      s{
-        (https://opentelemetry\.io/docs)/migration/(opentracing/)
-      }{$1/compatibility/migration/$2}gx;
-    },
-  },
+  # {
+  #   # For the problematic links, see:
+  #   # https://github.com/open-telemetry/opentelemetry-specification/issues/4958
+  #   #
+  #   # Update migration links to new compatibility/migration paths:
+  #   # https://github.com/open-telemetry/opentelemetry-specification/pull/4958
+  #   id      => '2026-03-18-opentracing-migration-links',
+  #   module    => 'spec',
+  #   minVers => '1.55.0',
+  #   file    => qr|^tmp/otel/specification/compatibility/opentracing\.md$|,
+  #   apply   => sub {
+  #     s{
+  #       (https://opentelemetry\.io/docs)/migration/(opentracing/)
+  #     }{$1/compatibility/migration/$2}gx;
+  #   },
+  # },
+);
+
+# Default `file` regex per module, used when a patch entry omits `file`.
+# Each regex matches Markdown files under the module's spec/docs tree.
+my %moduleFileDefaults = (
+  spec    => qr|^tmp/otel/specification/|,
+  otlp    => qr|^tmp/otlp/docs/|,
+  semconv => qr|^tmp/semconv/docs/|,
 );
 
 sub applyPatches($) {
   my ($context) = @_;
   for my $patch (@patches) {
     next unless ($patch->{context} // 'body') eq $context;
-    next unless $ARGV =~ $patch->{file};
+    my $fileRe = $patch->{file} // $moduleFileDefaults{$patch->{module}};
+    if (!defined $fileRe) {
+      warn "WARNING: patch '$patch->{id}' has unknown module '$patch->{module}' and no file regex; skipping";
+      next;
+    }
+    next unless $ARGV =~ $fileRe;
     next unless applyPatchOrPrintMsgIf(
       $patch->{id}, $patch->{module}, $patch->{minVers}, $patch->{maxVers}
     );
-    if ($context eq 'frontmatter') {
+    if ($context eq 'front matter') {
       local $_ = $frontMatterFromFile;
       $patch->{apply}->();
       $frontMatterFromFile = $_;
@@ -141,7 +158,7 @@ sub printFrontMatter() {
     # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
   }
 
-  applyPatches('frontmatter');
+  applyPatches('front matter');
 
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
@@ -183,40 +200,65 @@ sub getVersFromGitmodules($) {
   return $_gitmodulesCache{$specName};
 }
 
+sub _defaultMaxVers($) {
+  # Returns $minVers with its patch (last) number incremented, e.g.,
+  # '1.39.0' -> '1.39.1', '1.55.2' -> '1.55.3'. This preserves the original
+  # prefix-match semantics, where a patch targeting '1.55.0' applied to
+  # '1.55.0' and '1.55.0-N-gHASH' but not to '1.55.1' or later.
+  my ($minVers) = @_;
+  my $v = $minVers;
+  $v =~ s/^v//;
+  if ($v =~ /^(\d+)\.(\d+)\.(\d+)/) {
+    return "$1.$2." . ($3 + 1);
+  }
+  warn "WARNING: cannot derive default maxVers from '$minVers'";
+  return undef;
+}
+
 sub applyPatchOrPrintMsgIf($$$;$) {
   # Returns truthy if patch should be applied, otherwise prints message (once) as to why not.
-  # The patch is applied if $submoduleVers starts with $targetVers and is <= $maxVers (if provided).
+  # Version-range semantics: $minVers is inclusive; $maxVers is exclusive.
+  # If $maxVers is undef, it defaults to $minVers with its patch number incremented
+  # (e.g., '1.55.0' -> '1.55.1'), matching the original prefix-match behavior.
+  # The patch is applied while $submoduleVers is in the range [$minVers, $maxVers).
 
-  my ($patchID, $specName, $targetVers, $maxVers) = @_;
+  my ($patchID, $specName, $minVers, $maxVers) = @_;
+  $maxVers //= _defaultMaxVers($minVers);
   my $vers = $versions{$specName};
   my $submoduleVers = getVersFromGitmodules($specName);
   my $key = $specName . $patchID;
 
   return 0 if $patchMsgCount{$key} && $patchMsgCount{$key} ne 'Apply the patch';
 
-  if ($maxVers && $submoduleVers && semverCmp($submoduleVers, $maxVers) > 0) {
+  # maxVers is exclusive: skip once submodule has reached it.
+  if ($maxVers && $submoduleVers && semverCmp($submoduleVers, $maxVers) >= 0) {
     print STDOUT "INFO: $0: skipping patch '$patchID' since spec '$specName' " .
-      "submodule is at version '$submoduleVers' > '$maxVers' (patch max version); " .
+      "submodule is at version '$submoduleVers' >= '$maxVers' (patch max version, exclusive); " .
       "the fix is likely in upstream now\n" unless $patchMsgCount{$key};
     $patchMsgCount{$key}++;
     return 0;
   }
 
-  if ($submoduleVers && $submoduleVers =~ /^\Q$targetVers\E/) {
+  if ($submoduleVers && semverCmp($submoduleVers, $minVers) >= 0) {
     print STDOUT "INFO: $0: applying patch '$patchID' since spec '$specName' " .
-      "submodule is at version '$submoduleVers', and it starts with the patch target '$targetVers'" .
+      "submodule is at version '$submoduleVers' >= '$minVers' (patch min version, inclusive)" .
+      ($maxVers ? " and < '$maxVers' (patch max version, exclusive)" : "") .
       "\n" unless $patchMsgCount{$key};
     return $patchMsgCount{$key} = 'Apply the patch';
-  } elsif (($maxVers && semverCmp($vers, $maxVers) > 0) || semverCmp($vers, $targetVers) >= 0) {
+  } elsif ($maxVers && semverCmp($vers, $maxVers) >= 0) {
     print STDOUT "INFO: $0: patch '$patchID' is probably obsolete now that " .
-      "spec '$specName' is at version '$vers' >= '$targetVers' (patch target version); " .
+      "spec '$specName' is at version '$vers' >= '$maxVers' (patch max version, exclusive); " .
+      "if so, remove the patch\n";
+  } elsif (semverCmp($vers, $minVers) >= 0) {
+    print STDOUT "INFO: $0: patch '$patchID' is probably obsolete now that " .
+      "spec '$specName' is at version '$vers' >= '$minVers' (patch min version, inclusive); " .
       "if so, remove the patch\n";
   } else {
     my $submodInfo = $submoduleVers
-      ? "and submodule version '$submoduleVers' doesn't start with the patch target '$targetVers'"
+      ? "and submodule version '$submoduleVers' < '$minVers' (patch min version, inclusive)"
       : "and submodule version is unknown";
     print STDOUT "INFO: $0: skipping patch '$patchID' since spec '$specName' " .
-      "submodule is at version '$vers' < '$targetVers' (patch target version); " .
+      "submodule is at version '$vers' < '$minVers' (patch min version, inclusive); " .
       "$submodInfo\n";
   }
   $patchMsgCount{$key}++;

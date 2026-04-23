@@ -39,6 +39,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-04-22T13:28:38.932Z"
   },
+  "https://agentskills.io": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-22T22:04:19.677808-04:00"
+  },
   "https://ai.google.dev/api/generate-content": {
     "StatusCode": 200,
     "LastSeen": "2026-04-22T13:13:24.027132876Z"
@@ -3219,6 +3223,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T12:11:22.406404285Z"
   },
+  "https://events.linuxfoundation.org/observability-summit-north-america/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=slim-banner": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-22T17:12:31.913673484Z"
+  },
+  "https://events.linuxfoundation.org/observability-summit-north-america/program/schedule/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=slim-banner": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-22T17:12:34.930569593Z"
+  },
+  "https://events.linuxfoundation.org/observability-summit-north-america/register/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=slim-banner": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-22T17:12:33.425565683Z"
+  },
   "https://events.linuxfoundation.org/open-observability-summit-otel-community-day/": {
     "StatusCode": 200,
     "LastSeen": "2026-04-22T14:16:31.92558023Z"
@@ -4239,6 +4255,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T22:57:14.754677859Z"
   },
+  "https://github.com/adp2201": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T18:02:38.256863-04:00"
+  },
   "https://github.com/adrielp": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T12:07:49.878917446Z"
@@ -5206,6 +5226,10 @@
   "https://github.com/dominicfraser": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T12:11:38.442907297Z"
+  },
+  "https://github.com/dotnet/SqlClient/blob/v1.0.19239.1/src/Microsoft.Data.SqlClient/netfx/src/Microsoft/Data/SqlClient/SqlCommand.cs#L6369": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-23T07:12:55.431441263Z"
   },
   "https://github.com/dotnet/aspnetcore/blob/main/src/SignalR/docs/specs/TransportProtocols.md": {
     "StatusCode": 206,
@@ -6562,6 +6586,10 @@
   "https://github.com/lquerel": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T22:55:41.437602622Z"
+  },
+  "https://github.com/lucacavenaghi97": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-23T04:42:50.904147045Z"
   },
   "https://github.com/lukas-reining": {
     "StatusCode": 206,
@@ -10979,25 +11007,49 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:36:21.192032277Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.15.1-beta.1/src/OpenTelemetry.Resources.Azure/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-23T07:12:51.8250314Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Container-1.0.0-beta.9/src/OpenTelemetry.Resources.Container/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:36:27.492108487Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Container-1.15.1-beta.1/src/OpenTelemetry.Resources.Container/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-23T07:12:55.150963876Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Host-0.1.0-beta.3/src/OpenTelemetry.Resources.Host/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:36:33.133860982Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Host-1.15.1-beta.1/src/OpenTelemetry.Resources.Host/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-23T07:12:59.184874782Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.OperatingSystem-0.1.0-alpha.4/src/OpenTelemetry.Resources.OperatingSystem/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:36:40.000886723Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.OperatingSystem-1.15.1-beta.1/src/OpenTelemetry.Resources.OperatingSystem/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-23T07:13:04.016973612Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Process-0.1.0-beta.3/src/OpenTelemetry.Resources.Process/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:36:50.158158014Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Process-1.15.1-beta.1/src/OpenTelemetry.Resources.Process/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-23T07:13:08.484175749Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.ProcessRuntime-0.1.0-beta.2/src/OpenTelemetry.Resources.ProcessRuntime/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:37:00.400934414Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.ProcessRuntime-1.15.1-beta.1/src/OpenTelemetry.Resources.ProcessRuntime/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-23T07:13:10.651352628Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.11.0-beta.1": {
     "StatusCode": 206,
@@ -11391,6 +11443,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:36:27.77476708Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.8.0": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-17T18:11:47.603377278Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/2feaeb84ef7aeeb1e57e642b46c96b965ae4b804/internal/test/integration/k8s/manifests?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T22:57:11.825746927Z"
@@ -11406,6 +11462,14 @@
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.7.0/examples/nginx": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:36:34.212717598Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/apache": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-17T18:11:56.141549709Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/nginx": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-17T18:11:52.877605927Z"
   },
   "https://github.com/open-telemetry/opentelemetry-ebpf-profiler": {
     "StatusCode": 206,
@@ -14615,6 +14679,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:42:57.021083809Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/4715": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T18:02:43.28731-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/pull/4719": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T13:18:10.864064011Z"
@@ -14626,6 +14694,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/pull/4855": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T13:18:02.9627115Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/4938": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T18:02:41.065759-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/pull/4947": {
     "StatusCode": 206,
@@ -24038,6 +24110,10 @@
   "https://www.nuget.org/packages/Microsoft.Data.SqlClient": {
     "StatusCode": 200,
     "LastSeen": "2026-04-22T22:51:50.002389516Z"
+  },
+  "https://www.nuget.org/packages/Microsoft.Data.Sqlite": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-23T07:12:50.277248725Z"
   },
   "https://www.nuget.org/packages/Microsoft.EntityFrameworkCore": {
     "StatusCode": 200,

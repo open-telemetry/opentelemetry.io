@@ -244,7 +244,7 @@ The list of instrumentation areas OBI can collect data from:
 - `mqtt`: MQTT publish/subscribe message metrics (MQTT 3.1.1 and 5.0)
 - `couchbase`: Couchbase N1QL/SQL++ query metrics and KV (Key-Value) protocol
   metrics based on memcached protocol
-- `genai`: GenAI client metrics (OpenAI and Anthropic)
+- `genai`: GenAI client metrics (OpenAI, Anthropic, Gemini, and AWS Bedrock)
 - `gpu`: GPU performance metrics
 - `mongo`: MongoDB client call metrics
 - `dns`: DNS query metrics
@@ -304,7 +304,7 @@ The list of instrumentation areas OBI can collect data from:
 - `mqtt`: MQTT publish/subscribe message traces (MQTT 3.1.1 and 5.0)
 - `couchbase`: Couchbase N1QL/SQL++ query traces and KV (Key-Value) protocol
   traces, with query text and operation details
-- `genai`: GenAI client traces (OpenAI and Anthropic)
+- `genai`: GenAI client traces (OpenAI, Anthropic, Gemini, and AWS Bedrock)
 - `gpu`: GPU performance traces
 - `mongo`: MongoDB client call traces
 - `dns`: DNS query traces
@@ -558,7 +558,7 @@ The list of instrumentation areas OBI can collection data from:
 - `kafka`: Kafka client/server message queue metrics
 - `mqtt`: MQTT publish/subscribe message metrics
 - `couchbase`: Couchbase N1QL/SQL++ query metrics and KV protocol metrics
-- `genai`: GenAI client metrics (OpenAI and Anthropic)
+- `genai`: GenAI client metrics (OpenAI, Anthropic, Gemini, and AWS Bedrock)
 
 For example, setting the `instrumentations` option to: `http,grpc` enables the
 collection of `HTTP/HTTPS/HTTP2` and `gRPC` application metrics, and disables
