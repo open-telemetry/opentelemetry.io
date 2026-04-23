@@ -60,17 +60,17 @@ Download and run the `.sh` script:
 > [!NOTE]
 >
 > For air-gapped environments, use the `LOCAL_PATH` variable to provide the
-> installation archive directly:
+> installation file directly:
 >
 > ```shell
-> LOCAL_PATH=<PATH_TO_ARCHIVE> sh ./otel-dotnet-auto-install.sh
+> LOCAL_PATH=<PATH_TO_INSTALLER> sh ./otel-dotnet-auto-install.sh
 > ```
 >
-> Alternatively, use `DOWNLOAD_DIR` to provide a folder with archives, and the
-> install script determines the correct archive to use:
+> Alternatively, use `DOWNLOAD_DIR` to provide a folder with files, and the
+> install script determines the correct file to use:
 >
 > ```shell
-> DOWNLOAD_DIR=<PATH_TO_FOLDER_WITH_ARCHIVES> sh ./otel-dotnet-auto-install.sh
+> DOWNLOAD_DIR=<PATH_TO_FOLDER_WITH_FILES> sh ./otel-dotnet-auto-install.sh
 > ```
 
 ```shell
