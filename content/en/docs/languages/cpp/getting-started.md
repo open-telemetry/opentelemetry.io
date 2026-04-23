@@ -159,9 +159,6 @@ set(SOURCES
 # Create an executable target
 add_executable(dice-server ${SOURCES})
 
-# Use the local install prefix for dependencies
-list(APPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../install")
-
 find_package(oatpp REQUIRED)
 
 target_link_libraries(dice-server PRIVATE oatpp::oatpp)
@@ -224,7 +221,7 @@ Build and run the application with the following CMake commands.
 ```bash
 mkdir build
 cd build
-cmake ..
+cmake .. -DCMAKE_PREFIX_PATH=$(pwd)/../../install
 cmake --build .
 ```
 
@@ -256,9 +253,6 @@ set(SOURCES
 
 # Create an executable target
 add_executable(dice-server ${SOURCES})
-
-# Use the local install prefix for dependencies
-list(APPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../install")
 
 find_package(oatpp REQUIRED)
 find_package(opentelemetry-cpp CONFIG REQUIRED)
@@ -348,7 +342,7 @@ Build your project again.
 
 ```bash
 cd build
-cmake ..
+cmake .. -DCMAKE_PREFIX_PATH=$(pwd)/../../install
 cmake --build .
 ```
 
