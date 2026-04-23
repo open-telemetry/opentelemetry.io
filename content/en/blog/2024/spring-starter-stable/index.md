@@ -43,7 +43,7 @@ Here are some scenarios where you might want to use the Spring Starter:
   doesn't work with the OpenTelemetry Java agent
 - **Programmatic configuration** of the OpenTelemetry Spring Boot starter, such
   as
-  [dynamic auth headers](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#configure-the-exporter-programmatically),
+  [dynamic auth headers](/docs/zero-code/java/spring-boot-starter/programmatic-configuration/#configure-the-exporter-programmatically),
   using Spring beans (the OpenTelemetry Java agent requires an
   [extension](/docs/zero-code/java/agent/extensions/) for this)
 - **Uses code dependencies**: You don't need to add any JVM options (e.g. in
