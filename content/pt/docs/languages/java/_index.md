@@ -10,8 +10,8 @@ redirects:
   - { from: /docs/java/*, to: ':splat' }
 cascade:
   vers:
-    instrumentation: 2.26.1
-    otel: 1.58.0
+    instrumentation: 2.27.0
+    otel: 1.61.0
     contrib: 1.55.0
     semconv: 1.37.0
 weight: 18

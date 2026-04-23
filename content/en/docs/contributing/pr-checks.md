@@ -1,5 +1,6 @@
 ---
-title: Pull request checks
+title: Pull request checks and tests
+linkTitle: PR checks & tests
 description: Learn how to make your pull request successfully pass all checks
 weight: 40
 ---
@@ -179,3 +180,9 @@ The following code enforces the link requirement described in this section:
   [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
 
 </details>
+
+### `TEST (excluding test:base)` {.notranslate lang=en}
+
+Runs `npm run test:compound-tests`, which executes the compound `test:*-*` NPM
+scripts (for example, Netlify edge-function tests). It does **not** run
+`test:base`.

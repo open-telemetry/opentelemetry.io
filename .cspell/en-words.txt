@@ -16,6 +16,7 @@ autoloaded
 autoloader
 autoloading
 backoff
+blockquotes
 caml
 cartservice
 cassandra
@@ -127,6 +128,7 @@ Socha
 Stalnaker
 stdoutmetric
 Strimzi
+subresponse
 symfony
 tabpane
 textlint

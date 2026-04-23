@@ -25,6 +25,8 @@ Tentatively planned content organization:
   purpose, ownership, and overall status.
 - **Needs, requirements, and features** — Stakeholder needs, requirements, and
   other relevant information broken down into features.
+- [**Skills**](./skills/) — Skills for agents and humans to use when maintaining
+  the site.
 - **Design** — Architectural design, Information Architecture (IA), layout, UX
   choices, theme related decisions, and other design-level artifacts.
 - **Implementation** — Code-level structure and conventions, Hugo/Docsy
@@ -32,8 +34,8 @@ Tentatively planned content organization:
 - [**Build**](./build/) — Tooling, local development setup, CI/CD workflows,
   deployment environments, and automation details.
 - **Deployment** — Deployment-specific behavior for the OpenTelemetry website.
-- **Quality** — Link checking, accessibility standards, tests, review practices,
-  and other quality-related processes.
+- [**Testing**](./testing/) — Link checking, accessibility standards, tests,
+  review practices, and other quality-related processes.
 - **Roadmap** — Milestones, backlog, priorities, technical debt, and
   design/implementation decisions.
 
