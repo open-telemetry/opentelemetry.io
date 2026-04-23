@@ -74,13 +74,13 @@ To begin, install Oat++ locally using the
    make
    ```
 
-5. Install oatpp into a local prefix.
-  This command installs the built oatpp library, headers, and CMake package configuration into the `install` directory, making it accessible for development.
+5. Install oatpp into a local prefix. This command installs the built oatpp
+   library, headers, and CMake package configuration into the `install`
+   directory, making it accessible for development.
 
-    ```bash
-    cmake --install . --prefix ../../install
-    ```
-
+   ```bash
+   cmake --install . --prefix ../../install
+   ```
 
 Next, install and build
 [OpenTelemetry C++](https://github.com/open-telemetry/opentelemetry-cpp) locally
