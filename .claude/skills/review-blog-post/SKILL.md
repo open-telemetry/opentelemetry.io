@@ -70,6 +70,16 @@ date: YYYY-MM-DD
 author: '[First Last](https://github.com/handle)'
 ```
 
+> **Automation note.** A `PreToolUse` hook on `Write`/`Edit` enforces a
+> mechanical subset of these rules at write-time for any
+> `content/en/blog/**/*.md` — required fields, `YYYY-MM-DD` date format,
+> Markdown-link author format, and no-H1-in-body. See
+> [`.claude/hooks/hooks.json`][hooks-json] and
+> [`scripts/validate/front-matter-check/index.mjs`][fm-check]. This skill covers
+> both the mechanical subset (for invocation outside the hook, e.g., reviewing
+> an existing PR) and the judgment-call layer (`gh-url-hash`, multi-author YAML,
+> cross-posting, terminology, publish-date gating) that the hook cannot check.
+
 ### Required fields
 
 - **`title`** — full post title. Sentence-case is typical but not enforced; a
@@ -360,3 +370,8 @@ Source-of-truth files — if this skill drifts from them, trust the file:
 - `.github/workflows/blog-publish-labels.yml` — publish-date label workflow.
 - `.cspell.yml`, `.cspell/en-words.txt` — spell-check configuration.
 - `package.json` — `prettier.proseWrap: always` drives 80-char wrapping.
+
+[hooks-json]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/hooks/hooks.json
+[fm-check]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/validate/front-matter-check
