@@ -25,11 +25,15 @@ export function validate({ filePath, content }) {
   const valueOf = (key) => {
     const line = find(key);
     if (!line) return null;
-    return line.slice(key.length + 1).trim().replace(/^['"]|['"]$/g, '');
+    return line
+      .slice(key.length + 1)
+      .trim()
+      .replace(/^['"]|['"]$/g, '');
   };
 
   for (const field of ['title', 'date', 'author']) {
-    if (!find(field)) errors.push(`Missing required frontmatter field: ${field}`);
+    if (!find(field))
+      errors.push(`Missing required frontmatter field: ${field}`);
   }
 
   if (!find('linkTitle')) {
@@ -54,7 +58,9 @@ export function validate({ filePath, content }) {
   }
 
   if (/^# [^#]/m.test(body)) {
-    errors.push('Blog posts must not use H1 (#) headings. Start with ## (H2) instead');
+    errors.push(
+      'Blog posts must not use H1 (#) headings. Start with ## (H2) instead',
+    );
   }
 
   return errors;
@@ -81,7 +87,9 @@ async function main() {
   try {
     data = JSON.parse(input);
   } catch (e) {
-    console.error(`frontmatter-check: failed to parse TOOL_INPUT JSON: ${e.message}`);
+    console.error(
+      `frontmatter-check: failed to parse TOOL_INPUT JSON: ${e.message}`,
+    );
     process.exit(0);
   }
 
