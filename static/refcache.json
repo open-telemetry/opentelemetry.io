@@ -15227,6 +15227,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:36:43.263433439Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-23T07:32:17.519468-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell/all-words.txt": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-23T07:33:25.339338-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/PULL_REQUEST_TEMPLATE.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:36:30.974503868Z"
