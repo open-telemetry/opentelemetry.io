@@ -1795,6 +1795,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-04-23T10:11:05.682789825Z"
   },
+  "https://docs.claude.com/en/docs/claude-code/hooks": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-23T19:54:03.404555836Z"
+  },
   "https://docs.cloud.google.com/run/docs/write-functions": {
     "StatusCode": 200,
     "LastSeen": "2026-04-22T13:12:18.845763438Z"
@@ -15219,6 +15223,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:37:18.233822771Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/hooks/hooks.json": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-23T10:14:15.563797015Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/draft-issue/SKILL.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-23T10:14:15.563797015Z"
@@ -15236,18 +15244,6 @@
     "LastSeen": "2026-04-23T10:14:15.563797015Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/triage-issue/SKILL.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-04-23T10:14:15.563797015Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/hooks/hooks.json": {
-    "StatusCode": 206,
-    "LastSeen": "2026-04-23T10:14:15.563797015Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/validate": {
-    "StatusCode": 206,
-    "LastSeen": "2026-04-23T10:14:15.563797015Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/validate/front-matter-check": {
     "StatusCode": 206,
     "LastSeen": "2026-04-23T10:14:15.563797015Z"
   },
@@ -15538,6 +15534,14 @@
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/specs/pick-branch": {
     "StatusCode": 206,
     "LastSeen": "2026-04-23T10:14:19.023581507Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/validate": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-23T10:14:15.563797015Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/validate/front-matter-check": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-23T10:14:15.563797015Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/templates/registry-entry.yml": {
     "StatusCode": 206,
