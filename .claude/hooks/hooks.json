@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "printf '%s' \"$TOOL_INPUT\" | bash ${PLUGIN_DIR}/hooks/frontmatter-check.sh"
+            "command": "printf '%s' \"$TOOL_INPUT\" | node ${PLUGIN_DIR}/../scripts/validate/frontmatter-check/index.mjs"
           }
         ]
       }

@@ -38,6 +38,22 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 
 Some agent chats let you invoke a skill by typing `/` followed by its name.
 
+## Hooks
+
+Alongside the agent skills above, [hooks][] run automatically on certain tool
+events. Configuration lives in [`.claude/hooks/hooks.json`][hooks-json]; hook
+source lives under [`scripts/validate/`][validate].
+
+- **Blog front matter check**: a `PreToolUse` hook on `Write` and `Edit` that
+  blocks changes to `content/en/blog/**/*.md` when the front matter is missing
+  required fields, uses a bad date format, or introduces an H1 heading. It
+  applies the same conventions as [`/review-blog-post`](#agent-skills) at
+  write-time, without waiting for review. Source:
+  [`scripts/validate/frontmatter-check/`][frontmatter-check].
+
+Pure logic lives in `index.mjs` and is covered by `*.test.mjs` files in the same
+folder (`npm run test:local-tools` to run them).
+
 ## Maintainer skills
 
 See the section index below.
@@ -55,3 +71,10 @@ See the section index below.
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-pull-request/SKILL.md
 [triage-issue]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/triage-issue/SKILL.md
+[hooks]: https://docs.claude.com/en/docs/claude-code/hooks
+[hooks-json]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/hooks/hooks.json
+[validate]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/validate
+[frontmatter-check]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/validate/frontmatter-check
