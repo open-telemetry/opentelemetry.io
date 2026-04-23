@@ -16,14 +16,14 @@ No padrão de implantação de agente, os sinais de telemetria podem vir de:
 Os sinais são enviados para uma instância do [Collector][collector] que executa
 ao lado da aplicação ou no mesmo _host_, como um _sidecar_ ou DaemonSet.
 
-Cada SDK do lado do cliente ou Collector _downstream_ é configurado com o endereço
-de uma instância do Collector:
+Cada SDK do lado do cliente ou Collector _downstream_ é configurado com o
+endereço de uma instância do Collector:
 
 ![Conceito de implantação descentralizada do collector](../../img/otel-agent-sdk.svg)
 
 1. Na aplicação, o SDK é configurado para enviar dados OTLP para um Collector.
 1. O Collector é configurado para enviar dados de telemetria para um ou mais
-    _backends_.
+   _backends_.
 
 ## Exemplo {#example}
 
@@ -112,7 +112,8 @@ Para explorar esse padrão de ponta a ponta, veja os exemplos em
 
 ## Vantagens e desvantagens {#trade-offs}
 
-A seguir estão os principais prós e contras de uso de um Collector em modo agente:
+A seguir estão os principais prós e contras de uso de um Collector em modo
+agente:
 
 Prós:
 
