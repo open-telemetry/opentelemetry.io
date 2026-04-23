@@ -74,20 +74,13 @@ To begin, install Oat++ locally using the
    make
    ```
 
-5. Install oatpp.
+5. Install oatpp into a local prefix.
+  This command installs the built oatpp library, headers, and CMake package configuration into the `install` directory, making it accessible for development.
 
-This command will install the built oatpp library and headers on your system,
-making it accessible for development in your project.
+    ```bash
+    cmake --install . --prefix ../../install
+    ```
 
-```bash
-sudo make install
-```
-
-To uninstall the built oatpp library and headers from your system.
-
-```bash
-sudo make uninstall
-```
 
 Next, install and build
 [OpenTelemetry C++](https://github.com/open-telemetry/opentelemetry-cpp) locally
@@ -132,10 +125,10 @@ using CMake, following these steps:
    cmake --build .
    ```
 
-6. Install OpenTelemetry C++ in otel-cpp-starter/otel-cpp:
+6. Install OpenTelemetry C++ into the same local prefix as oatpp:
 
    ```bash
-   cmake --install . --prefix ../../otel-cpp
+   cmake --install . --prefix ../../install
    ```
 
 With Oat++ and OpenTelemetry C++ ready, you can continue with creating the HTTP
@@ -166,15 +159,12 @@ set(SOURCES
 # Create an executable target
 add_executable(dice-server ${SOURCES})
 
-set(OATPP_ROOT ../oatpp)
-find_library(OATPP_LIB NAMES liboatpp.a HINTS "${OATPP_ROOT}/build/src/" NO_DEFAULT_PATH)
+# Use the local install prefix for dependencies
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../install")
 
-if (NOT OATPP_LIB)
-  message(SEND_ERROR "Did not find oatpp library ${OATPP_ROOT}/build/src")
-endif()
-#set the path to the directory containing "oatpp" package configuration files
-include_directories(${OATPP_ROOT}/src)
-target_link_libraries(dice-server PRIVATE ${OATPP_LIB})
+find_package(oatpp REQUIRED)
+
+target_link_libraries(dice-server PRIVATE oatpp::oatpp)
 ```
 
 Next, the sample HTTP server source code is needed. It will do the following:
@@ -263,24 +253,18 @@ set(project_name roll-dice-server)
 set(SOURCES
     main.cpp  # Add your source files here
 )
+
 # Create an executable target
 add_executable(dice-server ${SOURCES})
 
-set(OATPP_ROOT ../oatpp)
-set(opentelemetry-cpp_DIR ../otel-cpp/lib/cmake/opentelemetry-cpp)
-find_library(OATPP_LIB NAMES liboatpp.a HINTS "${OATPP_ROOT}/build/src/" NO_DEFAULT_PATH)
-if (NOT OATPP_LIB)
-  message(SEND_ERROR "Did not find oatpp library ${OATPP_ROOT}/build/src")
-endif()
-# set the path to the directory containing "oatpp" package configuration files
-include_directories(${OATPP_ROOT}/src)
+# Use the local install prefix for dependencies
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../install")
 
-# Use find_package to include OpenTelemetry C++
-find_package(opentelemetry-cpp CONFIG REQUIRED NO_DEFAULT_PATH)
+find_package(oatpp REQUIRED)
+find_package(opentelemetry-cpp CONFIG REQUIRED)
 
-# Link against each OpenTelemetry C++ library
 target_link_libraries(dice-server PRIVATE
-                      ${OATPP_LIB}
+                      oatpp::oatpp
                       ${OPENTELEMETRY_CPP_LIBRARIES})
 ```
 
