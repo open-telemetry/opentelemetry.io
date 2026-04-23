@@ -6,7 +6,6 @@ vers:
 cSpell:ignore: customizer
 ---
 
-<!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/spring-starter"?>
 
 You can use the `AutoConfigurationCustomizerProvider` for programmatic
@@ -49,8 +48,8 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/FilterPaths.java"?>
+
 ```java
 package otel;
 
@@ -75,15 +74,14 @@ public class FilterPaths {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 ## Configure the exporter programmatically
 
 You can also configure OTLP exporters programmatically. This configuration
 replaces the default OTLP exporter and adds a custom header to the requests.
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomAuth.java"?>
+
 ```java
 package otel;
 
@@ -119,4 +117,3 @@ public class CustomAuth {
   }
 }
 ```
-<!-- prettier-ignore-end -->
