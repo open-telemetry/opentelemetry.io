@@ -54,6 +54,7 @@ Mancuso
 Marylia
 melius
 millicores
+mongodb
 myapp
 myprogram
 nanocores
