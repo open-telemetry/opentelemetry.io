@@ -31,6 +31,10 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 - [`/review-pull-request <pr-number-or-url>`][review-pull-request]: review a
   pull request for CI check semantics, CLA and approval-label workflow, refcache
   handling, locale rules, and content quality.
+- [`/triage-issue [--repo OWNER/REPO] [--count N] [OPTIONS]`][triage-issue]:
+  batch-triage GitHub issues, analyzing staleness, duplicates, and codebase
+  changes to produce actionable reports with ready-to-paste `gh` commands.
+  Read-only — never modifies GitHub.
 
 Some agent chats let you invoke a skill by typing `/` followed by its name.
 
@@ -49,3 +53,5 @@ See the section index below.
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-blog-post/SKILL.md
 [review-pull-request]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-pull-request/SKILL.md
+[triage-issue]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/triage-issue/SKILL.md

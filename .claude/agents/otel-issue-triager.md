@@ -478,7 +478,7 @@ Source-of-truth files — if this agent drifts from them, trust the file:
 - Sibling skill `draft-issue/SKILL.md` — validated label taxonomy, PR-only
   label warning (`#pr-only-labels-do-not-suggest`), `type:discussion`
   deprecation (`#type`), 5-template list
-- Sibling skill `otel-triage/SKILL.md` — this agent's orchestrator; provides
+- Sibling skill `triage-issue/SKILL.md` — this agent's orchestrator; provides
   `<repo_profile>` and `<evaluation_profiles>` XML blocks
 - Plugin: `${CLAUDE_PLUGIN_ROOT}/data/opentelemetry-website.yml` — default repo
   profile for `open-telemetry/opentelemetry.io`

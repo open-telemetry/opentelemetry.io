@@ -1,5 +1,5 @@
 ---
-name: otel-triage
+name: triage-issue
 description: >-
   Batch triage GitHub issues for any repository (defaults to
   open-telemetry/opentelemetry.io). Analyzes staleness, duplicates, codebase
