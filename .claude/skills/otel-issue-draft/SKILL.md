@@ -110,7 +110,7 @@ E.g., Chrome 120 on macOS 14 (Apple Silicon)
 ### Blog Post Proposal (`blog: `)
 
 `BLOG_POST.yml` auto-applies the `blog` label. For writing or reviewing the
-actual post afterward, see the `otel-blog-review` skill.
+actual post afterward, see the `review-blog-post` skill.
 
 ```markdown
 ### Blog Post Title (required)

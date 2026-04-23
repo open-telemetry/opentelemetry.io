@@ -1,5 +1,5 @@
 ---
-name: otel-blog-review
+name: review-blog-post
 description: >-
   Review OpenTelemetry blog posts for front matter compliance, content
   conventions, GitHub link stability (`gh-url-hash`), spelling, and OTel
