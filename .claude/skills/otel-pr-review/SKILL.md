@@ -22,6 +22,18 @@ For blog-specific rules (`gh-url-hash`, author format, publish-date gating),
 defer to the sibling `otel-blog-review` skill. For the full validated label
 taxonomy, defer to `otel-issue-draft`.
 
+## Arguments {#arguments}
+
+- If no `$ARGUMENTS` is provided, ask the user for a PR number or URL before
+  proceeding.
+- If `$ARGUMENTS` is a full GitHub URL containing `/pull/`, extract the numeric
+  PR number from the path segment after `/pull/`.
+- If `$ARGUMENTS` starts with `#`, strip the `#` and treat the remaining digits
+  as the PR number.
+- If `$ARGUMENTS` is a bare number, use it as the PR number.
+- If `$ARGUMENTS` doesn't match any of the above patterns, stop and ask for a
+  valid PR number or URL.
+
 ## When to Use {#when-to-use}
 
 - Reviewing a PR in `open-telemetry/opentelemetry.io`

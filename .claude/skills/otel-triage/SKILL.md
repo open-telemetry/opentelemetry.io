@@ -44,10 +44,6 @@ which commands to run.
 
 ## Arguments {#arguments}
 
-```
-/otel-triage [--repo OWNER/REPO] [--count N] [--fresh] [--pending] [--reanalyze 1234,5678] [--type docs|bug|feat|blog|feedback] [--profile NAME[,NAME2]]
-```
-
 | Flag                     | Default                                                        | Purpose                                                                           |
 | ------------------------ | -------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `--repo OWNER/REPO`      | from active repo profile, or `open-telemetry/opentelemetry.io` | Target GitHub repository                                                          |

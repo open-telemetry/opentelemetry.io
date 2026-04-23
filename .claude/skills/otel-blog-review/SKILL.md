@@ -1,7 +1,7 @@
 ---
 name: otel-blog-review
 description: >-
-  Review OpenTelemetry blog posts for frontmatter compliance, content
+  Review OpenTelemetry blog posts for front matter compliance, content
   conventions, GitHub link stability (`gh-url-hash`), spelling, and OTel
   terminology. Use when reviewing a PR or draft under `content/en/blog/`.
 argument-hint: '<blog post path or PR number>'
@@ -20,7 +20,20 @@ here conflicts with one of those files, trust the file and update this skill.
 
 Invoke when reviewing a PR or local draft that adds or modifies a file under
 `content/en/blog/`. Also useful before submitting a new post, to self-check
-frontmatter and conventions.
+front matter and conventions.
+
+## Arguments {#arguments}
+
+- If no `$ARGUMENTS` is provided, ask the user for a file path or PR number
+  before proceeding.
+- If the `$ARGUMENTS` contains `/` or ends in `.md`, treat it as a file path
+  relative to the repo root.
+- If the `$ARGUMENTS` is a full GitHub URL containing `/pull/`, extract the
+  numeric PR number from the path segment after `/pull/`.
+- If the `$ARGUMENTS` is a bare number or starts with `#`, strip the `#` and
+  treat it as a PR number.
+- If the `$ARGUMENTS` doesn't match any of the above patterns, stop and ask for
+  a valid file path or PR number.
 
 ## Blog Post Location and Scaffolding
 
@@ -46,7 +59,7 @@ npx hugo new content/en/blog/$(date +%Y)/short-name-for-post/index.md
 
 The file is initialized from `archetypes/blog.md`.
 
-## Frontmatter Rules
+## Front matter Rules
 
 Every blog post MUST have:
 
@@ -126,7 +139,7 @@ From `content/en/docs/contributing/blog.md`:
 
 ### Headings
 
-- **No H1.** The H1 is auto-generated from the `title` frontmatter field.
+- **No H1.** The H1 is auto-generated from the `title` front matter field.
 - Start content headings at `##` (H2).
 - Maintain hierarchy: H2 → H3 → H4. Don't skip levels.
 
@@ -141,7 +154,7 @@ run the formatter:
 npm run format
 ```
 
-Exceptions that should not be wrapped: URLs, code blocks, frontmatter values.
+Exceptions that should not be wrapped: URLs, code blocks, front matter values.
 
 ### Images
 
@@ -152,7 +165,7 @@ Exceptions that should not be wrapped: URLs, code blocks, frontmatter values.
 
 ### Multiple Authors
 
-- Primary authors go in the `author` frontmatter field (folded form for lists).
+- Primary authors go in the `author` front matter field (folded form for lists).
 - If you want to credit **secondary contributors** who aren't in the `author`
   field, add them in the intro paragraph with:
 
@@ -207,7 +220,7 @@ Spell-checking uses cSpell (config at `.cspell.yml`).
 - **Repo-wide words** (project names, common technical terms, frequent author
   names) live in `.cspell/en-words.txt`. Add to this file for words you'll use
   repeatedly across the site.
-- **Post-local words** go in the `cSpell:ignore` frontmatter field:
+- **Post-local words** go in the `cSpell:ignore` front matter field:
 
   ```yaml
   cSpell:ignore: devex Sloughter Öjeling
@@ -258,7 +271,7 @@ original OpenTelemetry post). On any external copy:
   the platform supports it.
 
 When the OpenTelemetry post is the cross-post (not the original), set
-`canonical_url` in its frontmatter pointing to the original source.
+`canonical_url` in its front matter pointing to the original source.
 
 ## Review Checklist
 
@@ -271,7 +284,7 @@ Walk this list top-to-bottom against the post.
       directory layout with `index.md`.
 - [ ] `short-name` is kebab-case, no dates, no special characters.
 
-### Frontmatter
+### Front matter
 
 - [ ] `title` present and descriptive.
 - [ ] `linkTitle` present and concise.
@@ -337,7 +350,7 @@ Walk this list top-to-bottom against the post.
 
 Source-of-truth files — if this skill drifts from them, trust the file:
 
-- `archetypes/blog.md` — canonical frontmatter template.
+- `archetypes/blog.md` — canonical front matter template.
 - `content/en/docs/contributing/blog.md` — submission process, cross-posting,
   `gh-url-hash` rationale.
 - `content/en/blog/.markdownlint.yaml` — enables `gh-url-hash` for blog posts.

@@ -7,7 +7,6 @@ description: >-
   conversation context.
 argument-hint: '<description of issue to draft>'
 allowed-tools: Read Grep
-model: haiku
 effort: low
 ---
 
@@ -17,6 +16,13 @@ Draft ready-to-paste GitHub issues for `open-telemetry/opentelemetry.io`. Every
 rule in this skill is grounded in a source-of-truth file — if a claim here
 conflicts with one of those files, trust the file and update this skill. See the
 [References](#references) section at the end.
+
+## Arguments {#arguments}
+
+- If no `$ARGUMENTS` is provided, infer context from the conversation. If there
+  is insufficient context, ask the user what issue to draft.
+- Otherwise, treat the full `$ARGUMENTS` string as the description of the issue
+  to draft. There are no flags — the entire value is the context.
 
 ## When to Use
 
