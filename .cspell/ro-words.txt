@@ -26,6 +26,8 @@ interlingvistice
 intervaluri
 intervalurilor
 încorporezi
+Întreab
+Întreab-o
 microservicii
 migrare
 migrezi
@@ -40,4 +42,3 @@ telemetrice
 telemetrie
 tranzacţie
 urmǎrirea
-webshop
