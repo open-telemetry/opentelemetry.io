@@ -19,7 +19,8 @@ values (`gh issue close --help`); map as follows when emitting commands:
 | `close:invalid`   | `"not planned"`                                         |
 | `close:duplicate` | `"duplicate"` — prefer `--duplicate-of <N>` (see below) |
 
-Never emit `--reason "stale"` / `"wontfix"` / `"invalid"` — `gh` rejects them.
+`--reason "stale"` / `"wontfix"` / `"invalid"` are rejected by `gh` — use the
+mapped values above.
 
 ## Add triage label
 

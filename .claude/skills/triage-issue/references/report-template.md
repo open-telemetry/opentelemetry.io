@@ -125,7 +125,8 @@ gh issue close 1234 -R <REPO> --reason "not planned"
 
 ## Link format rules
 
-All issue and PR references in the report MUST be clickable markdown links:
+All issue and PR references in the report should be clickable markdown links so
+the report is navigable from any markdown viewer:
 
 - **Issue headings**: `[#123](https://github.com/<REPO>/issues/123)`
 - **PR references**: `[#456](https://github.com/<REPO>/pull/456)`
@@ -134,5 +135,5 @@ All issue and PR references in the report MUST be clickable markdown links:
 - **Cross-repo PRs**:
   `[repo#789](https://github.com/open-telemetry/repo/pull/789)`
 
-Never use bare `#123` references in the report — always wrap in a markdown link
-so the report is navigable from any markdown viewer.
+Wrap bare `#123` references in a markdown link — otherwise the report isn't
+navigable.
