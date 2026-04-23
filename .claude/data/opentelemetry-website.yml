@@ -139,8 +139,10 @@ repo:
       - 'triage:deciding'
       - 'triage:deciding:blocked'
       - 'triage:deciding:needs-info'
+      - 'triage:deciding:needs-mentor-or-sponsor'
     type:
       - 'type:copyedit'
+      - 'type:question'
       - 'good first issue'
       - 'help wanted'
 

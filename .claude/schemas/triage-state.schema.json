@@ -55,7 +55,7 @@
             "label:triage:deciding",
             "label:triage:deciding:needs-info",
             "label:triage:deciding:blocked",
-            "label:good-first-issue"
+            "label:good first issue"
           ]
         },
         "confidence": {

@@ -8,7 +8,14 @@ set -euo pipefail
 INPUT=$(cat)
 
 # Extract file path from the tool input JSON
-FILE_PATH=$(echo "$INPUT" | grep -o '"file_path"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed 's/.*"file_path"[[:space:]]*:[[:space:]]*"//;s/"$//')
+FILE_PATH=$(printf '%s' "$INPUT" | python3 -c "
+import sys, json
+try:
+    data = json.load(sys.stdin)
+    print(data.get('file_path', ''))
+except:
+    pass
+" 2>/dev/null || echo "")
 
 # Only check blog posts
 if [[ ! "$FILE_PATH" =~ content/en/blog/.*\.md$ ]]; then
@@ -57,17 +64,31 @@ if ! echo "$FRONTMATTER" | grep -q '^author:'; then
   ERRORS+=("Missing required frontmatter field: author")
 fi
 
+if ! echo "$FRONTMATTER" | grep -q '^linkTitle:'; then
+  ERRORS+=("Missing required frontmatter field: linkTitle")
+else
+  LINK_TITLE_VALUE=$(echo "$FRONTMATTER" | grep '^linkTitle:' | sed 's/^linkTitle:[[:space:]]*//' | tr -d "'\"" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' || true)
+  if [[ -z "$LINK_TITLE_VALUE" ]]; then
+    ERRORS+=("Required frontmatter field linkTitle must be non-empty")
+  fi
+fi
+
 # Validate date format (YYYY-MM-DD)
 DATE_VALUE=$(echo "$FRONTMATTER" | grep '^date:' | sed 's/^date:[[:space:]]*//' | tr -d "'\"" || true)
 if [[ -n "$DATE_VALUE" ]] && ! echo "$DATE_VALUE" | grep -qE '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'; then
   ERRORS+=("Date format must be YYYY-MM-DD, got: $DATE_VALUE")
 fi
 
-# Validate author format: '[Name](url)'
-AUTHOR_VALUE=$(echo "$FRONTMATTER" | grep '^author:' | sed 's/^author:[[:space:]]*//' || true)
+# Validate author format. Accept YAML block scalar forms for multi-author
+# entries, and validate single-line values as Markdown links with optional
+# surrounding quotes.
+AUTHOR_LINE=$(echo "$FRONTMATTER" | grep '^author:' | head -1 || true)
+AUTHOR_VALUE=$(echo "$AUTHOR_LINE" | sed 's/^author:[[:space:]]*//' || true)
 if [[ -n "$AUTHOR_VALUE" ]]; then
-  if ! echo "$AUTHOR_VALUE" | grep -qE "'\[.+\]\(https?://.+\)'"; then
-    ERRORS+=("Author should be in format: '[First Last](https://github.com/username)'")
+  if echo "$AUTHOR_VALUE" | grep -qE '^(>|\|)([-+])?$'; then
+    :
+  elif ! echo "$AUTHOR_VALUE" | grep -qE '^["'"'"']?\[[^]]+\]\(https?://[^)]+\)["'"'"']?$'; then
+    ERRORS+=("Author should be a Markdown link like [First Last](https://github.com/username), optionally quoted, or use YAML block scalar form for multi-author entries")
   fi
 fi
 

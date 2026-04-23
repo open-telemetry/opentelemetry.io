@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${PLUGIN_DIR}/hooks/frontmatter-check.sh \"$TOOL_INPUT\""
+            "command": "printf '%s' \"$TOOL_INPUT\" | bash ${PLUGIN_DIR}/hooks/frontmatter-check.sh"
           }
         ]
       }

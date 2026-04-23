@@ -6,8 +6,9 @@ description: >-
   changes, and related PRs to produce actionable triage reports with
   ready-to-paste gh commands. Read-only — never modifies GitHub.
 argument-hint:
-  '[--repo OWNER/REPO] [--count N] [--label LABEL[,LABEL2]] [--fresh]
-  [--pending] [--reanalyze N,N] [--type TYPE] [--profile NAME[,NAME2]]'
+  '[--repo OWNER/REPO] [--count N] [--label LABEL[,LABEL2]] [--sig SIG] [--since
+  DATE] [--exclude N,N] [--include-closed] [--fresh] [--pending] [--reanalyze
+  N,N] [--type TYPE] [--profile NAME[,NAME2]]'
 allowed-tools: Bash Read Write Glob Agent
 model: opus
 effort: high
@@ -24,8 +25,8 @@ When targeting `open-telemetry/opentelemetry.io`, every rule in this skill is
 grounded in a source-of-truth file. For the full validated label taxonomy and
 the PR-only labels that must never be applied to issues, see the sibling skill
 `draft-issue`. For process rules that connect triaged issues to PR reviews
-(e.g., the `triage:accepted` linked-issue requirement), see `review-pull-request`.
-See [References](#references) at the bottom.
+(e.g., the `triage:accepted` linked-issue requirement), see
+`review-pull-request`. See [References](#references) at the bottom.
 
 ## When to Use {#when-to-use}
 
@@ -541,7 +542,6 @@ gh issue comment 1234 -R <REPO> --body "This issue appears to have been addresse
 gh issue edit 1234 -R <REPO> --add-label "sig:go,docs"
 gh issue close 1234 -R <REPO> --reason "not planned"
 ```
-````
 
 ---
 
@@ -555,41 +555,42 @@ gh issue close 1234 -R <REPO> --reason "not planned"
 
 (same dossier format, multiple possible actions noted)
 
-````
-
 ### Link Format Rules
 
 All issue and PR references in the report MUST be clickable markdown links:
 
 - **Issue headings**: `[#123](https://github.com/<REPO>/issues/123)`
 - **PR references**: `[#456](https://github.com/<REPO>/pull/456)`
-- **Cross-repo issues**: `[repo#789](https://github.com/open-telemetry/repo/issues/789)`
-- **Cross-repo PRs**: `[repo#789](https://github.com/open-telemetry/repo/pull/789)`
+- **Cross-repo issues**:
+  `[repo#789](https://github.com/open-telemetry/repo/issues/789)`
+- **Cross-repo PRs**:
+  `[repo#789](https://github.com/open-telemetry/repo/pull/789)`
 
-Never use bare `#123` references in the report — always wrap in a markdown
-link so the report is navigable from any markdown viewer.
+Never use bare `#123` references in the report — always wrap in a markdown link
+so the report is navigable from any markdown viewer.
+````
 
 ---
 
 ## Phase 5: Update State {#phase-5-update-state}
 
 Write/update `.tasks/triage/state.json` (schema:
-`${CLAUDE_PLUGIN_ROOT}/schemas/triage-state.schema.json`). Create the
-directory and an empty `{"version":1,"issues":{}}` file on the first
-run if neither exists.
+`${CLAUDE_PLUGIN_ROOT}/schemas/triage-state.schema.json`). Create the directory
+and an empty `{"version":1,"lastRun":"1970-01-01T00:00:00.000Z","issues":{}}`
+file on the first run if neither exists.
 
 ### Fields
 
-| Field | Set by | Required | Purpose |
-|-------|--------|----------|---------|
-| `number` | Analysis | Yes | GitHub issue number |
-| `decision` | Analysis | Yes | Recommended action (e.g., `close:stale`, `label:triage:accepted:needs-pr`) |
-| `confidence` | Analysis | Yes | `HIGH`, `MEDIUM`, or `LOW` |
-| `analyzedAt` | Analysis | Yes | When the issue was analyzed |
-| `issueUpdatedAt` | Analysis | Yes | GitHub `updatedAt` at analysis time — used for change detection |
-| `executedAt` | Execution | No | When the decision was acted on (comment/label/close) |
-| `outcome` | Execution | No | What was actually done — may differ from `decision` on reviewer override |
-| `note` | Execution | No | Rationale when outcome diverges from recommendation |
+| Field            | Set by    | Required | Purpose                                                                    |
+| ---------------- | --------- | -------- | -------------------------------------------------------------------------- |
+| `number`         | Analysis  | Yes      | GitHub issue number                                                        |
+| `decision`       | Analysis  | Yes      | Recommended action (e.g., `close:stale`, `label:triage:accepted:needs-pr`) |
+| `confidence`     | Analysis  | Yes      | `HIGH`, `MEDIUM`, or `LOW`                                                 |
+| `analyzedAt`     | Analysis  | Yes      | When the issue was analyzed                                                |
+| `issueUpdatedAt` | Analysis  | Yes      | GitHub `updatedAt` at analysis time — used for change detection            |
+| `executedAt`     | Execution | No       | When the decision was acted on (comment/label/close)                       |
+| `outcome`        | Execution | No       | What was actually done — may differ from `decision` on reviewer override   |
+| `note`           | Execution | No       | Rationale when outcome diverges from recommendation                        |
 
 ### Example
 
@@ -619,7 +620,7 @@ run if neither exists.
     }
   }
 }
-````
+```
 
 ### Lifecycle
 
@@ -698,11 +699,11 @@ The built-in `opentelemetry-website` profile defines the full taxonomy for
 `${CLAUDE_PLUGIN_ROOT}/data/opentelemetry-website.yml`.
 
 **For `open-telemetry/opentelemetry.io` specifically**, the sibling skill
-`draft-issue` has the validated taxonomy grouped by area / SIG /
-localization / effort / priority / triage / type / assignment, already checked
-against the live label set. Treat it as the source of truth and refer to it
-instead of hand-typing label names. Also honor the PR-only labels warning in
-that skill (`#pr-only-labels-do-not-suggest`) — never apply those to an issue.
+`draft-issue` has the validated taxonomy grouped by area / SIG / localization /
+effort / priority / triage / type / assignment, already checked against the live
+label set. Treat it as the source of truth and refer to it instead of
+hand-typing label names. Also honor the PR-only labels warning in that skill
+(`#pr-only-labels-do-not-suggest`) — never apply those to an issue.
 
 ---
 

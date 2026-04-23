@@ -75,7 +75,7 @@ workflow file:
 | _(external)_                           | `Easy CLA`                                                                                                                                     | CNCF CLA signed on every commit author email                                           | See [CLA](#cla)                                    |
 | _(external)_                           | `netlify/opentelemetry Deploy Preview`                                                                                                         | Hugo build deploys on Netlify preview                                                  | Click **Details** for build log                    |
 | `.github/workflows/check-text.yml`     | `Linter / TEXT linter`, `Linter / MARKDOWN linter`                                                                                             | textlint terminology + markdownlint (custom rules in `scripts/_md-rules/`)             | `npm run fix:text`, `npm run fix:markdown`         |
-| `.github/workflows/check-spelling.yml` | `Spelling / SPELLING check`, `Spelling / CSPELL page-local word list check`                                                                    | cSpell + normalization of `cSpell:ignore` front-matter lists                           | Add to `cSpell:ignore` or `npm run fix:dict`       |
+| `.github/workflows/check-spelling.yml` | `Spelling / SPELLING check`, `Spelling / CSPELL word lists check`                                                                              | cSpell + normalization of `cSpell:ignore` front-matter lists                           | Add to `cSpell:ignore` or `npm run fix:dict`       |
 | `.github/workflows/check-file.yml`     | `Files / EXPIRED FILE check`, `Files / FILENAME check`, `Files / FILE FORMAT`, `Files / BRANCH NAME check`                                     | Expired `expiryDate`, kebab-case filenames, Prettier format, branch name is not `main` | `npm run fix:expired`/`fix:filenames`/`fix:format` |
 | `.github/workflows/check-links.yml`    | `Links / BUILD`, `Links / CHECK LINKS (en \| locales-A-to-M \| locales-N-to-Z)`, `Links / REFCACHE updates?`, `Links / WARNINGS in build log?` | Hugo build, sharded htmltest link check, refcache freshness, build warnings            | See [Refcache](#refcache)                          |
 | `.github/workflows/check-registry.yml` | `Registry / check:registry`                                                                                                                    | `data/registry/**` schema (only runs when registry files change)                       | `npm run check:registry` locally                   |
@@ -173,8 +173,8 @@ discretion.
 
 ## Labels {#labels}
 
-For the full validated repo label taxonomy, see the `draft-issue` skill.
-This section enumerates only labels that matter at **PR review time**.
+For the full validated repo label taxonomy, see the `draft-issue` skill. This
+section enumerates only labels that matter at **PR review time**.
 
 ### Auto-applied (don't add by hand) {#auto-labels}
 
@@ -450,5 +450,5 @@ Source-of-truth files — if this skill drifts from them, trust the file:
 - `.cspell.yml`, `.cspell/en-words.txt` — spelling dictionary layout
 - `package.json` — `check:*`/`fix:*` scripts (30-135), prettier
   `proseWrap: always` (197)
-- Sibling skills: `otel-blog-review` (blog-specific PR rules),
-  `draft-issue` (full label taxonomy)
+- Sibling skills: `otel-blog-review` (blog-specific PR rules), `draft-issue`
+  (full label taxonomy)
