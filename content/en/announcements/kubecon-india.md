@@ -1,7 +1,7 @@
 ---
 title: KubeCon + CloudNativeCon India 2026
 linkTitle: KubeCon India 2026
-date: 2026-04-06
+date: 2026-05-23
 expiryDate: 2026-06-19 # keep
 weight: 20260619
 params:
