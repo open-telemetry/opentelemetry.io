@@ -174,15 +174,7 @@
           "properties": {
             "recommended": {
               "type": "string",
-              "examples": ["mentorship:bloomberg:recommended"]
-            },
-            "maybe": {
-              "type": "string",
-              "examples": ["mentorship:bloomberg:maybe"]
-            },
-            "not_suitable": {
-              "type": "string",
-              "examples": ["mentorship:bloomberg:skip"]
+              "examples": ["mentorship:bloomberg"]
             }
           }
         }
