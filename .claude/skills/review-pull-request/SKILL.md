@@ -1,5 +1,5 @@
 ---
-name: otel-pr-review
+name: review-pull-request
 description: >-
   Review pull requests for opentelemetry.io: CI check semantics, CLA and
   approval-label workflow, refcache handling, locale rules, and content quality.

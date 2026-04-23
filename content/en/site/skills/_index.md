@@ -28,6 +28,9 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 - [`/review-blog-post <blog-post-path-or-pr-number>`][review-blog-post]: review
   an OpenTelemetry blog post for front matter compliance, content conventions,
   GitHub link stability (`gh-url-hash`), spelling, and OTel terminology.
+- [`/review-pull-request <pr-number-or-url>`][review-pull-request]: review a
+  pull request for CI check semantics, CLA and approval-label workflow, refcache
+  handling, locale rules, and content quality.
 
 Some agent chats let you invoke a skill by typing `/` followed by its name.
 
@@ -38,9 +41,11 @@ See the section index below.
 [`.claude/skills/`]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/.claude/skills
 [agentskills.io]: https://agentskills.io
+[draft-issue]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/draft-issue/SKILL.md
 [resolve-refcache-conflicts]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/resolve-refcache-conflicts/SKILL.md
 [review-blog-post]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-blog-post/SKILL.md
-[draft-issue]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/draft-issue/SKILL.md
+[review-pull-request]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-pull-request/SKILL.md

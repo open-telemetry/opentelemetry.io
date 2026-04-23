@@ -24,7 +24,7 @@ When targeting `open-telemetry/opentelemetry.io`, every rule in this skill is
 grounded in a source-of-truth file. For the full validated label taxonomy and
 the PR-only labels that must never be applied to issues, see the sibling skill
 `draft-issue`. For process rules that connect triaged issues to PR reviews
-(e.g., the `triage:accepted` linked-issue requirement), see `otel-pr-review`.
+(e.g., the `triage:accepted` linked-issue requirement), see `review-pull-request`.
 See [References](#references) at the bottom.
 
 ## When to Use {#when-to-use}
@@ -855,7 +855,7 @@ Source-of-truth files — if this skill drifts from them, trust the file:
 - Sibling skill `draft-issue/SKILL.md` — validated label taxonomy,
   `#pr-only-labels-do-not-suggest`, `type:discussion` deprecation, 5-template
   reference
-- Sibling skill `otel-pr-review/SKILL.md` — linked-issue requirement
+- Sibling skill `review-pull-request/SKILL.md` — linked-issue requirement
   (`triage:accepted`), approval-label workflow
 - Sibling agent `.claude/agents/otel-issue-triager.md` — the subagent spawned by
   this skill; mirrors actions, confidence tiers, close-reason mapping, and
