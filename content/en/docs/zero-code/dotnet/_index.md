@@ -71,8 +71,24 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 . $HOME/.otel-dotnet-auto/instrument.sh
 
 # Run your application with instrumentation
-OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
+OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=staging,service.version=1.0.0 ./MyNetApp
 ```
+
+> [!NOTE]
+>
+> For air-gapped environments, use the `LOCAL_PATH` variable to provide the
+> installation archive directly:
+>
+> ```shell
+> LOCAL_PATH=<PATH_TO_ARCHIVE> sh ./otel-dotnet-auto-install.sh
+> ```
+>
+> Alternatively, use `DOWNLOAD_DIR` to provide a folder with archives, and the
+> install script determines the correct archive to use:
+>
+> ```shell
+> DOWNLOAD_DIR=<PATH_TO_FOLDER_WITH_ARCHIVES> sh ./otel-dotnet-auto-install.sh
+> ```
 
 > [!IMPORTANT]
 >
