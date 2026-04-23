@@ -13,9 +13,9 @@ import sys, json
 try:
     data = json.load(sys.stdin)
     print(data.get('file_path', ''))
-except:
-    pass
-" 2>/dev/null || echo "")
+except Exception as e:
+    print(f'frontmatter-check: failed to parse TOOL_INPUT JSON: {e}', file=sys.stderr)
+" || echo "")
 
 # Only check blog posts
 if [[ ! "$FILE_PATH" =~ content/en/blog/.*\.md$ ]]; then

@@ -19,7 +19,7 @@ claim here conflicts with one of those files, trust the file and update this
 skill. See the [References](#references) section at the end.
 
 For blog-specific rules (`gh-url-hash`, author format, publish-date gating),
-defer to the sibling `otel-blog-review` skill. For the full validated label
+defer to the sibling `review-blog-post` skill. For the full validated label
 taxonomy, defer to `draft-issue`.
 
 ## Arguments {#arguments}
@@ -61,7 +61,7 @@ taxonomy, defer to `draft-issue`.
    linked-issue, locale-span, AI policy for first-time contributors, and the
    approval-label workflow.
 5. **Review content.** See [Content Review](#content-review). Defer to
-   `otel-blog-review` for blog PRs.
+   `review-blog-post` for blog PRs.
 6. **Write output.** Use the shape in
    [Review Output Format](#review-output-format).
 
@@ -309,7 +309,7 @@ query parameter on the URL (`pr-checks.md:123-129`). Maintainers can validate
 
 ## Content Review {#content-review}
 
-For blog PRs (`content/en/blog/**`): defer to the `otel-blog-review` skill — it
+For blog PRs (`content/en/blog/**`): defer to the `review-blog-post` skill — it
 covers frontmatter, multi-author format, `gh-url-hash`, publish-date gating, and
 cross-posting.
 
@@ -394,7 +394,7 @@ What the author did well. Keep short but present.
 
 ### Blog PRs
 
-- [ ] Deferred to `otel-blog-review` skill
+- [ ] Deferred to `review-blog-post` skill
 
 ## References {#references}
 
@@ -416,7 +416,7 @@ Source-of-truth files — if this skill drifts from them, trust the file:
   workflow (224-235)
 - `content/en/docs/contributing/issues.md` — issue linking from PRs (76-78)
 - `content/en/docs/contributing/blog.md` — blog submission rules (defer to
-  `otel-blog-review`)
+  `review-blog-post`)
 - `.github/workflows/check-text.yml`, `check-spelling.yml`, `check-file.yml`,
   `check-links.yml`, `check-registry.yml`, `check-i18n.yml` — authoritative job
   names and `npm run` commands
@@ -450,5 +450,5 @@ Source-of-truth files — if this skill drifts from them, trust the file:
 - `.cspell.yml`, `.cspell/en-words.txt` — spelling dictionary layout
 - `package.json` — `check:*`/`fix:*` scripts (30-135), prettier
   `proseWrap: always` (197)
-- Sibling skills: `otel-blog-review` (blog-specific PR rules), `draft-issue`
+- Sibling skills: `review-blog-post` (blog-specific PR rules), `draft-issue`
   (full label taxonomy)
