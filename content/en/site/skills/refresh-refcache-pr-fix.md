@@ -1,5 +1,5 @@
 ---
-title: Refresh refcache PR fix
+title: Refresh-refcache PR fix
 description: >-
   How to resolve outstanding non-2XX entries on the otelbot refcache-refresh PR.
 ---
