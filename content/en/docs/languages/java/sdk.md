@@ -1528,7 +1528,110 @@ public class OtlpAuthenticationConfig {
 
 ### Testing
 
-TODO: document tools available for testing the SDK
+The `io.opentelemetry:opentelemetry-sdk-testing:{{% param vers.otel %}}` artifact
+provides utilities for asserting on telemetry produced by your code, without
+exporting data to any backend.
+
+The following components are available:
+
+| Class | Description |
+| --- | --- |
+| [OpenTelemetryExtension](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit5/OpenTelemetryExtension.html) | JUnit 5 extension that sets up the SDK with in-memory exporters and resets state between tests. |
+| [OpenTelemetryRule](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit4/OpenTelemetryRule.html) | JUnit 4 equivalent of `OpenTelemetryExtension`. |
+| [OpenTelemetryAssertions](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/assertj/OpenTelemetryAssertions.html) | AssertJ-based assertions for `SpanData`, `MetricData`, and `LogRecordData`. |
+| [InMemorySpanExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemorySpanExporter.html) | Captures exported spans in memory. |
+| [InMemoryMetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryMetricReader.html) | Reads aggregated metrics in memory. |
+| [InMemoryLogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryLogRecordExporter.html) | Captures exported log records in memory. |
+
+#### JUnit 5
+
+`OpenTelemetryExtension` is the recommended starting point for JUnit 5. Register
+it as a static field and use `getOpenTelemetry()` to obtain a pre-configured
+`OpenTelemetry` instance backed by in-memory exporters. State is automatically
+reset before each test.
+
+```java
+import io.opentelemetry.api.trace.Tracer;
+import io.opentelemetry.sdk.testing.assertj.OpenTelemetryAssertions;
+import io.opentelemetry.sdk.testing.junit5.OpenTelemetryExtension;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+
+class CoolTest {
+  @RegisterExtension
+  static final OpenTelemetryExtension otelTesting = OpenTelemetryExtension.create();
+
+  private final Tracer tracer = otelTesting.getOpenTelemetry().getTracer("test");
+  private final Meter meter = otelTesting.getOpenTelemetry().getMeter("test");
+
+  @Test
+  void test() {
+    tracer.spanBuilder("name").startSpan().end();
+    assertThat(otelTesting.getSpans()).containsExactly(expected);
+
+    LongCounter counter = meter.counterBuilder("counter-name").build();
+    counter.add(1);
+    assertThat(otelTesting.getMetrics()).satisfiesExactlyInAnyOrder(metricData -> {});
+   }
+}
+```
+
+Access raw telemetry with `getSpans()`, `getMetrics()`, and `getLogRecords()`.
+
+#### JUnit 4
+
+`OpenTelemetryRule` provides the same API for JUnit 4:
+
+```java
+import io.opentelemetry.sdk.testing.junit4.OpenTelemetryRule;
+import org.junit.Rule;
+
+public class CoolTest {
+  @Rule public OpenTelemetryRule otelTesting = OpenTelemetryRule.create();
+
+  private Tracer tracer;
+  private Meter meter;
+
+  @Before
+  public void setUp() {
+    tracer = otelTesting.getOpenTelemetry().getTracer("test");
+    meter = otelTesting.getOpenTelemetry().getMeter("test");
+  }
+
+  @Test
+  public void test() {
+    tracer.spanBuilder("name").startSpan().end();
+    assertThat(otelTesting.getSpans()).containsExactly(expected);
+ 
+    LongCounter counter = meter.counterBuilder("counter-name").build();
+    counter.add(1);
+    assertThat(otelTesting.getMetrics()).satisfiesExactlyInAnyOrder(metricData -> {});
+  }
+}
+```
+
+#### Without JUnit
+
+Use the in-memory exporters directly when not using JUnit, or when you need
+finer-grained control over SDK setup:
+
+```java
+import io.opentelemetry.sdk.testing.exporter.InMemorySpanExporter;
+import io.opentelemetry.sdk.trace.SdkTracerProvider;
+import io.opentelemetry.sdk.trace.export.SimpleSpanProcessor;
+
+InMemorySpanExporter exporter = InMemorySpanExporter.create();
+SdkTracerProvider tracerProvider =
+    SdkTracerProvider.builder()
+        .addSpanProcessor(SimpleSpanProcessor.create(exporter))
+        .build();
+
+// After exercising your code:
+List<SpanData> spans = exporter.getFinishedSpanItems();
+```
+
+Use `InMemoryMetricReader` and `InMemoryLogRecordExporter` in the same way for
+metrics and logs.
 
 [JSON file encoding]:
   /docs/specs/otel/protocol/file-exporter/#json-file-serialization
