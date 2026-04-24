@@ -1536,19 +1536,16 @@ The following components are available:
 
 | Class | Description |
 | --- | --- |
-| [OpenTelemetryExtension](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit5/OpenTelemetryExtension.html) | JUnit 5 extension that sets up the SDK with in-memory exporters and resets state between tests. |
+| [OpenTelemetryExtension](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit5/OpenTelemetryExtension.html) | JUnit 5 extension that #TODO |
 | [OpenTelemetryRule](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit4/OpenTelemetryRule.html) | JUnit 4 equivalent of `OpenTelemetryExtension`. |
-| [OpenTelemetryAssertions](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/assertj/OpenTelemetryAssertions.html) | AssertJ-based assertions for `SpanData`, `MetricData`, and `LogRecordData`. |
+| [OpenTelemetryAssertions](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/assertj/OpenTelemetryAssertions.html) | AssertJ-based assertions |
 | [InMemorySpanExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemorySpanExporter.html) | Captures exported spans in memory. |
 | [InMemoryMetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryMetricReader.html) | Reads aggregated metrics in memory. |
 | [InMemoryLogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryLogRecordExporter.html) | Captures exported log records in memory. |
 
 #### JUnit 5
 
-`OpenTelemetryExtension` is the recommended starting point for JUnit 5. Register
-it as a static field and use `getOpenTelemetry()` to obtain a pre-configured
-`OpenTelemetry` instance backed by in-memory exporters. State is automatically
-reset before each test.
+`OpenTelemetryExtension` is the recommended starting point for JUnit 5. 
 
 ```java
 import io.opentelemetry.api.trace.Tracer;
@@ -1609,29 +1606,3 @@ public class CoolTest {
   }
 }
 ```
-
-#### Without JUnit
-
-Use the in-memory exporters directly when not using JUnit, or when you need
-finer-grained control over SDK setup:
-
-```java
-import io.opentelemetry.sdk.testing.exporter.InMemorySpanExporter;
-import io.opentelemetry.sdk.trace.SdkTracerProvider;
-import io.opentelemetry.sdk.trace.export.SimpleSpanProcessor;
-
-InMemorySpanExporter exporter = InMemorySpanExporter.create();
-SdkTracerProvider tracerProvider =
-    SdkTracerProvider.builder()
-        .addSpanProcessor(SimpleSpanProcessor.create(exporter))
-        .build();
-
-// After exercising your code:
-List<SpanData> spans = exporter.getFinishedSpanItems();
-```
-
-Use `InMemoryMetricReader` and `InMemoryLogRecordExporter` in the same way for
-metrics and logs.
-
-[JSON file encoding]:
-  /docs/specs/otel/protocol/file-exporter/#json-file-serialization
