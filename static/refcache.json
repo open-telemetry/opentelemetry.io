@@ -19763,6 +19763,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-24T10:09:02.713461735Z"
   },
+  "https://nodejs.org/api/process.html#processgetactiveresourcesinfo": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-24T10:53:41.852482672Z"
+  },
   "https://nodejs.org/api/v8.html#v8getheapspacestatistics": {
     "StatusCode": 206,
     "LastSeen": "2026-04-24T10:08:56.991979643Z"
