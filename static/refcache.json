@@ -14811,6 +14811,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-20T20:13:16.683480226Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.56.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-25T10:40:26.46944527Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.56.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-25T10:40:25.173092633Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.56.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-25T10:40:08.800905341Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
     "LastSeen": "2026-04-23T10:09:29.103483428Z"
