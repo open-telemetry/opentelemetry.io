@@ -1,7 +1,6 @@
 ---
 title: Prometheus
 description: Learn about OpenTelemetry and Prometheus interoperability
-weight: 5
 ---
 
 This section includes resources and guides on interoperability between
