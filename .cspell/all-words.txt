@@ -39,6 +39,7 @@ jboss
 jdbc
 jsonify
 Juraci
+kapa
 knative
 kotlin
 Kröhling
