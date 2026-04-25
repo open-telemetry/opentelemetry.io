@@ -1,5 +1,5 @@
 /* Docsy-delta full file override: we're not tracking changes to the Docsy file of the same name. */
-// cSpell:ignore docsy
+// cSpell:ignore docsy kapa
 
 @import 'registry';
 @import 'tabs';
@@ -63,3 +63,14 @@ body.td-page--draft .td-content {
     padding-left: 0.6rem;
   }
 }
+
+// Kapa widget
+
+#kapa-widget-container {
+  --modal-inner-align: flex-end !important;
+}
+
+// Alternative to the above:
+// #kapa-widget-container::part(modal-inner) {
+//   align-items: flex-end !important;
+// }

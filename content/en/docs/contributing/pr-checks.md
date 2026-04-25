@@ -1,5 +1,6 @@
 ---
 title: Pull request checks and tests
+linkTitle: PR checks & tests
 description: Learn how to make your pull request successfully pass all checks
 weight: 40
 ---
@@ -66,16 +67,19 @@ the suggested changes manually.
 
 ### `SPELLING check` {.notranslate lang=en}
 
-This check verifies that
-[all words are spelled correctly](../style-guide/#spell-checking).
+This check verifies that [all words are spelled correctly][spell checking] in
+all locales.
 
-If this check fails, run `npm run check:spelling` locally to see the misspelled
-words. If a word is spelled correctly, you may need to add it to the
-`cSpell:ignore` section in the front matter of the file.
+If the check fails, run `npm run check:spelling` locally to list issues. To add
+or change allowed words, see [Spell checking][] in the style guide.
+
+[Spell checking]: ../style-guide/#spell-checking
 
 ### `CSPELL` check {.notranslate lang=en}
 
-This check will verify that all words in your cSpell ignore list are normalized.
+This check verifies that cSpell `cSpell:ignore` lists in front matter are
+normalized and that `.cspell/*.txt` word lists are sorted (see
+`npm run fix:dict`).
 
 If this check fails, run `npm run fix:dict` locally and push the changes in a
 new commit.

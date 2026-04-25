@@ -24,7 +24,7 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.55.0
+    spec: 1.56.0
     otlp: 1.10.0
     semconv: 1.40.0
   );
@@ -36,6 +36,109 @@ my $otlpSpecVers = $versions{'otlp'};
 my $semconvVers = $versions{'semconv'};
 
 my %versFromSubmod = %versions; # Actual version of submodules. Updated by getVersFromSubmodule().
+
+# =================================================================================
+# Patches: data-driven list of spec patches.
+#
+# For patch details, see content/en/site/build/content-module-patches.md.
+#
+# To add a new patch, append an entry to this array:
+#
+#  {
+#    id      => '2026-01-01-some-unique-id',   # unique patch identifier
+#    module    => 'semconv',                   # module name: 'spec', 'otlp', 'semconv'
+#    minVers => '1.39.0',                      # inclusive lower bound (patch applies when
+#                                              # submodule version starts with, or is >=, minVers)
+#    maxVers => '1.40.0',                      # optional exclusive upper bound.
+#    file    => qr|^tmp/semconv/docs/|,        # optional regex matching file path; defaults
+#                                              # to the module's default spec/docs path
+#    context => 'body',                        # 'body' (default, operates on $_) or
+#                                              # 'front matter' (operates on $frontMatterFromFile)
+#    apply   => sub { s{old}{new}gx; },        # regex substitution to apply
+#  },
+# =================================================================================
+
+my @patches = (
+  # {
+  #   # For the problematic links, see:
+  #   # https://github.com/open-telemetry/opentelemetry-specification/issues/4958
+  #   #
+  #   # Update migration links to new compatibility/migration paths:
+  #   # https://github.com/open-telemetry/opentelemetry-specification/pull/4958
+  #   id      => '2026-03-18-opentracing-migration-links',
+  #   module    => 'spec',
+  #   minVers => '1.55.0',
+  #   file    => qr|^tmp/otel/specification/compatibility/opentracing\.md$|,
+  #   apply   => sub {
+  #     s{
+  #       (https://opentelemetry\.io/docs)/migration/(opentracing/)
+  #     }{$1/compatibility/migration/$2}gx;
+  #   },
+  # },
+);
+
+# Default `file` regex per module, used when a patch entry omits `file`.
+# Each regex matches Markdown files under the module's spec/docs tree.
+my %moduleFileDefaults = (
+  spec    => qr|^tmp/otel/specification/|,
+  otlp    => qr|^tmp/otlp/docs/|,
+  semconv => qr|^tmp/semconv/docs/|,
+);
+
+sub applyPatches($) {
+  my ($context) = @_;
+  for my $patch (@patches) {
+    next unless ($patch->{context} // 'body') eq $context;
+    my $fileRe = $patch->{file} // $moduleFileDefaults{$patch->{module}};
+    if (!defined $fileRe) {
+      warn "WARNING: patch '$patch->{id}' has unknown module '$patch->{module}' and no file regex; skipping";
+      next;
+    }
+    next unless $ARGV =~ $fileRe;
+    next unless applyPatchOrPrintMsgIf(
+      $patch->{id}, $patch->{module}, $patch->{minVers}, $patch->{maxVers}
+    );
+    if ($context eq 'front matter') {
+      local $_ = $frontMatterFromFile;
+      $patch->{apply}->();
+      $frontMatterFromFile = $_;
+    } else {
+      $patch->{apply}->();
+    }
+  }
+}
+
+sub _parseSemver($) {
+  my ($v) = @_;
+  $v =~ s/^v//;
+  if ($v =~ /^(\d+)\.(\d+)\.(\d+)(?:-(.+))?$/) {
+    my ($maj, $min, $pat, $suffix) = ($1, $2, $3, $4);
+    if (!defined $suffix) {
+      return ($maj, $min, $pat, 0, 0);              # clean release
+    } elsif ($suffix =~ /^(\d+)-g[0-9a-f]+$/) {
+      return ($maj, $min, $pat, 1, $1);              # git describe: N-gHASH
+    } elsif ($suffix =~ /^(\d+)$/) {
+      return ($maj, $min, $pat, 1, $1);              # partial git describe: N
+    } else {
+      return ($maj, $min, $pat, -1, 0);              # pre-release (e.g., -dev, -rc1)
+    }
+  }
+  warn "WARNING: cannot parse version '$v'";
+  return (0, 0, 0, 0, 0);
+}
+
+sub semverCmp($$) {
+  # Compare two version strings numerically. Returns -1, 0, or 1.
+  # Handles: X.Y.Z, X.Y.Z-pre-release, X.Y.Z-N-gHASH (git describe).
+  # For the same X.Y.Z: pre-release < release < git-describe.
+  my ($a, $b) = @_;
+  my @ap = _parseSemver($a);
+  my @bp = _parseSemver($b);
+  for my $i (0..4) {
+    return $ap[$i] <=> $bp[$i] if $ap[$i] != $bp[$i];
+  }
+  return 0;
+}
 
 sub printFrontMatter() {
   print "---\n";
@@ -54,16 +157,8 @@ sub printFrontMatter() {
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
     # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
   }
-  # elsif ($ARGV =~ m|^tmp/otel/specification/logs/|
-  #     && applyPatchOrPrintMsgIf('2026-01-29-hugo01550-alias-processing-diff', 'spec', '1.53.0')) {
-  #   $frontMatterFromFile =~ s{^(\s+-\s+)\./(event-\w+)$}{$1logs/$2}gxm;
-  # }
-  # Sample front-matter patch:
-  #
-  # } elsif ($ARGV =~ /otel\/specification\/logs\/api.md$/) {
-  #   $frontMatterFromFile .= "linkTitle: API\naliases: [bridge-api]\n" if
-  #     applyPatchOrPrintMsgIf('2024-12-01-bridge-api', 'spec', '1.39.0');
-  # }
+
+  applyPatches('front matter');
 
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
@@ -79,102 +174,95 @@ sub printFrontMatter() {
   print "---\n";
 }
 
+my %_gitmodulesCache;
+my $_gitmodulesCacheLoaded;
+
 sub getVersFromGitmodules($) {
   # Returns the pinned version of the submodule $specName from .gitmodules, or undef if not found.
+  # Results are cached since .gitmodules doesn't change during script execution.
   my ($specName) = @_;
-  my $pinKey = "$specName-pin";
 
-  open(my $fh, '<', '.gitmodules') or return undef;
-  my $vers;
-
-  while (my $line = <$fh>) {
-    if ($line =~ /^\s*$pinKey\s*=\s*(.+)/) {
-      $vers = $1;
-      chomp($vers);
-      $vers =~ s/^v//;  # Remove leading v
-      last;
+  if (!$_gitmodulesCacheLoaded) {
+    $_gitmodulesCacheLoaded = 1;
+    if (open(my $fh, '<', '.gitmodules')) {
+      while (my $line = <$fh>) {
+        if ($line =~ /^\s*(\w+)-pin\s*=\s*(.+)/) {
+          my $key = $1;
+          my $vers = $2;
+          chomp($vers);
+          $vers =~ s/^v//;
+          $_gitmodulesCache{$key} = $vers;
+        }
+      }
+      close($fh);
     }
   }
-  close($fh);
-  return $vers;
+  return $_gitmodulesCache{$specName};
 }
 
-sub applyPatchOrPrintMsgIf($$$) {
-  # Returns truthy if patch should be applied, otherwise prints message (once) as to why not.
-  # The patch is applied if $submoduleVers starts with $targetVers.
+sub _defaultMaxVers($) {
+  # Returns $minVers with its patch (last) number incremented, e.g.,
+  # '1.39.0' -> '1.39.1', '1.55.2' -> '1.55.3'. This preserves the original
+  # prefix-match semantics, where a patch targeting '1.55.0' applied to
+  # '1.55.0' and '1.55.0-N-gHASH' but not to '1.55.1' or later.
+  my ($minVers) = @_;
+  my $v = $minVers;
+  $v =~ s/^v//;
+  if ($v =~ /^(\d+)\.(\d+)\.(\d+)/) {
+    return "$1.$2." . ($3 + 1);
+  }
+  warn "WARNING: cannot derive default maxVers from '$minVers'";
+  return undef;
+}
 
-  my ($patchID, $specName, $targetVers) = @_;
+sub applyPatchOrPrintMsgIf($$$;$) {
+  # Returns truthy if patch should be applied, otherwise prints message (once) as to why not.
+  # Version-range semantics: $minVers is inclusive; $maxVers is exclusive.
+  # If $maxVers is undef, it defaults to $minVers with its patch number incremented
+  # (e.g., '1.55.0' -> '1.55.1'), matching the original prefix-match behavior.
+  # The patch is applied while $submoduleVers is in the range [$minVers, $maxVers).
+
+  my ($patchID, $specName, $minVers, $maxVers) = @_;
+  $maxVers //= _defaultMaxVers($minVers);
   my $vers = $versions{$specName};
   my $submoduleVers = getVersFromGitmodules($specName);
   my $key = $specName . $patchID;
 
   return 0 if $patchMsgCount{$key} && $patchMsgCount{$key} ne 'Apply the patch';
 
-  if ($submoduleVers && $submoduleVers =~ /^$targetVers/) {
+  # maxVers is exclusive: skip once submodule has reached it.
+  if ($maxVers && $submoduleVers && semverCmp($submoduleVers, $maxVers) >= 0) {
+    print STDOUT "INFO: $0: skipping patch '$patchID' since spec '$specName' " .
+      "submodule is at version '$submoduleVers' >= '$maxVers' (patch max version, exclusive); " .
+      "the fix is likely in upstream now\n" unless $patchMsgCount{$key};
+    $patchMsgCount{$key}++;
+    return 0;
+  }
+
+  if ($submoduleVers && semverCmp($submoduleVers, $minVers) >= 0) {
     print STDOUT "INFO: $0: applying patch '$patchID' since spec '$specName' " .
-      "submodule is at version '$submoduleVers', and it starts with the patch target '$targetVers'" .
+      "submodule is at version '$submoduleVers' >= '$minVers' (patch min version, inclusive)" .
+      ($maxVers ? " and < '$maxVers' (patch max version, exclusive)" : "") .
       "\n" unless $patchMsgCount{$key};
     return $patchMsgCount{$key} = 'Apply the patch';
-  } elsif ($vers ge $targetVers) {
+  } elsif ($maxVers && semverCmp($vers, $maxVers) >= 0) {
     print STDOUT "INFO: $0: patch '$patchID' is probably obsolete now that " .
-      "spec '$specName' is at version '$vers' >= '$targetVers' (patch target version); " .
+      "spec '$specName' is at version '$vers' >= '$maxVers' (patch max version, exclusive); " .
+      "if so, remove the patch\n";
+  } elsif (semverCmp($vers, $minVers) >= 0) {
+    print STDOUT "INFO: $0: patch '$patchID' is probably obsolete now that " .
+      "spec '$specName' is at version '$vers' >= '$minVers' (patch min version, inclusive); " .
       "if so, remove the patch\n";
   } else {
+    my $submodInfo = $submoduleVers
+      ? "and submodule version '$submoduleVers' < '$minVers' (patch min version, inclusive)"
+      : "and submodule version is unknown";
     print STDOUT "INFO: $0: skipping patch '$patchID' since spec '$specName' " .
-      "submodule is at version '$vers' < '$targetVers' (patch target version); " .
-      "and submodule version '$submoduleVers' doesn't start with the patch target '$targetVers'\n";
+      "submodule is at version '$vers' < '$minVers' (patch min version, inclusive); " .
+      "$submodInfo\n";
   }
   $patchMsgCount{$key}++;
   return 0;
-}
-
-# =================================================================================
-# KEEP THE FOLLOWING SUB AS AN EXAMPLE / TEMPLATE; copy it and modify it as needed.
-# =================================================================================
-
-sub patchSpec_because_of_SpecName_SomeDescription_AsTemplate() {
-  # The code below uses semconv as an example. Adapt as needed.
-  return unless
-    # Restrict the patch to the proper spec, and section or file:
-    $ARGV =~ m|^tmp/semconv/docs/|
-    &&
-    # Call helper function that will cause the function to return early if the
-    # current version of the named spec (arg 2) is greater than the target
-    # version (arg 3). The first argument is a unique id that will be printed if
-    # the patch is outdated. Otherwise, if the patch is still relevant we fall
-    # through to the body of this patch function.
-    applyPatchOrPrintMsgIf('2026-01-01-some-unique-id', 'semconv', '1.39.0-dev');
-
-  # Give info about the patch:
-  #
-  # For the problematic links, see:
-  # https://github.com/open-telemetry/semantic-conventions/issues/3103
-  #
-  # Replace older Docker API versions with the latest one like in:
-  # https://github.com/open-telemetry/semantic-conventions/pull/3093
-
-  # This is the actual regex-based patch code:
-  s{
-    (https://docs.docker.com/reference/api/engine/version)/v1.(43|51)/(\#tag/)
-  }{$1/v1.52/$3}gx;
-}
-
-sub patchSpec_because_of_Spec_OpenTracingMigrationLinks() {
-  return unless
-    $ARGV =~ m|^tmp/otel/specification/compatibility/opentracing\.md$|
-    &&
-    applyPatchOrPrintMsgIf('2026-03-18-opentracing-migration-links',
-      'spec', '1.55.0');
-
-  # For the problematic links, see:
-  # https://github.com/open-telemetry/opentelemetry-specification/issues/4958
-  #
-  # Update migration links to new compatibility/migration paths:
-  # https://github.com/open-telemetry/opentelemetry-specification/pull/4958
-
-  s{
-    (https://opentelemetry\.io/docs)/migration/(opentracing/)
-  }{$1/compatibility/migration/$2}gx;
 }
 
 sub getVersFromSubmodule() {
@@ -299,7 +387,7 @@ while(<>) {
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 
-  patchSpec_because_of_Spec_OpenTracingMigrationLinks();
+  applyPatches('body');
 
   # Make website-local page references local:
   s|https://opentelemetry.io/|/|g;

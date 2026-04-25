@@ -257,6 +257,13 @@
     - core
   stability:
     traces: alpha
+- name: spanpruningprocessor
+  display_name: spanpruningprocessor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: alpha
 - name: sumologicprocessor
   display_name: Sumo Logic Processor
   repo: contrib

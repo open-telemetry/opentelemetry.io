@@ -13,14 +13,14 @@ class ExplorerRepositoryManager:
     """Manages cloning and updating the opentelemetry-ecosystem-explorer repository."""
 
     EXPLORER_REPO_URL = "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer.git"
-    DEFAULT_CLONE_PATH = Path("tmp_repos/opentelemetry-ecosystem-explorer")
+    DEFAULT_CLONE_PATH = Path("tmp/repos/opentelemetry-ecosystem-explorer")
 
     def __init__(self, clone_path: Path | None = None):
         """Initialize the repository manager.
 
         Args:
             clone_path: Path where the repository should be cloned.
-                       Defaults to tmp_repos/opentelemetry-ecosystem-explorer
+                       Defaults to tmp/repos/opentelemetry-ecosystem-explorer
         """
         self.clone_path = clone_path or self.DEFAULT_CLONE_PATH
         self._repo: Repo | None = None

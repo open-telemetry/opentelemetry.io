@@ -6,7 +6,7 @@
  */
 
 import * as AccordionUtils from './shared/accordionUtils.js';
-import { transformSchema } from './configSchemaTransform.mjs';
+import { transformSchema } from './lib/configSchemaTransform.mjs';
 
 const DEBOUNCE_DELAY = 300;
 const LOCAL_STORAGE_KEY = 'config-types-preferences';
