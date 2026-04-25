@@ -2,7 +2,7 @@
 title: OpenTelemetryとは
 description: OpenTelemetryが何であり、何でないかについての簡潔な説明。
 weight: 150
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad # patched
 ---
 
 OpenTelemetry とは、次のようなものです。
@@ -82,7 +82,7 @@ OpenTelemetryは、[Cloud Native Computing Foundation][](CNCF)プロジェクト
 これらのプロジェクトはどちらも、コードを計装し、オブザーバビリティバックエンドにテレメトリーデータを送信する方法の標準がないという問題を解決するために作られました。
 どちらのプロジェクトも、独立してこの問題を完全には解決できなかったので、協力するためにOpenTelemetryプロジェクトとして合併し、単一のソリューションを提供しながら、それぞれの強みを組み合わせました。
 
-現在OpenTracingまたはOpenCensusを使っている場合は、[移行ガイド](../migration/)でOpenTelemetryへの移行方法を確認してください。
+現在OpenTracingまたはOpenCensusを使っている場合は、[移行ガイド](../compatibility/migration/)でOpenTelemetryへの移行方法を確認してください。
 
 [統合された]: https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
 

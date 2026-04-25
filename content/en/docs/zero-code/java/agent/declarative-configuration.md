@@ -2,7 +2,7 @@
 title: Java Agent Declarative configuration
 linkTitle: Declarative configuration
 weight: 11
-cSpell:ignore: Customizer Dotel genai
+cSpell:ignore: Customizer Dotel
 ---
 
 Declarative configuration uses a YAML file instead of environment variables or
@@ -20,21 +20,23 @@ configuration, including the OpenTelemetry Java agent.
 
 > [!WARNING]
 >
-> Declarative configuration is experimental.
+> The declarative configuration schema is stable. The parts of it that are still
+> experimental are suffixed with `/development`. Java agent support for
+> declarative configuration is still experimental.
 
 ## Supported versions
 
 Declarative configuration is supported in the **OpenTelemetry Java agent version
-2.20.0 and later**.
+2.26.0 and later**.
 
 ## Getting started
 
 1. Save the configuration file below as `otel-config.yaml`.
 2. Add the following to your JVM startup arguments:<br>
-   `-Dotel.experimental.config.file=/path/to/otel-config.yaml`
+   `-Dotel.config.file=/path/to/otel-config.yaml`
 
 ```yaml
-file_format: '1.0-rc.1'
+file_format: '1.0'
 
 resource:
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
@@ -74,6 +76,8 @@ getting started guide for declarative configuration.
 
 This page focuses on specifics for the
 [OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation).
+For the Spring Boot starter, see
+[Spring Boot starter declarative configuration](/docs/zero-code/java/spring-boot-starter/declarative-configuration/).
 
 ## Mapping of configuration options
 
@@ -137,6 +141,25 @@ instrumentation/development:
           new_trace: true
 ```
 
+Agent-specific options (starting with `otel.javaagent.`) are placed under the
+`distribution` section:
+
+```yaml
+distribution:
+  javaagent:
+    instrumentation:
+      default_enabled: false # was otel.instrumentation.common.default-enabled
+      enabled:
+        - tomcat
+        - spring_webmvc
+      disabled:
+        - armeria_grpc
+    exclude_classes: # was otel.javaagent.exclude-classes
+      - com.example.excluded.Class1
+    exclude_class_loaders: # was otel.javaagent.exclude-class-loaders
+      - com.example.ExcludedClassLoader
+```
+
 ## Environment variables and system properties only options
 
 The following configuration options are supported by declarative configuration,
@@ -187,29 +210,12 @@ are not yet supported by declarative configuration:
 The following settings still need to be set via environment variables or system
 properties:
 
-- `otel.experimental.javascript-snippet`
-- `otel.instrumentation.aws-sdk.experimental-record-individual-http-error`
-- `otel.instrumentation.aws-sdk.experimental-span-attributes`
-- `otel.instrumentation.aws-sdk.experimental-use-propagator-for-messaging`
-- `otel.instrumentation.common.db-statement-sanitizer.enabled`
-- `otel.instrumentation.common.logging.span-id`
-- `otel.instrumentation.common.logging.trace-flags`
-- `otel.instrumentation.common.logging.trace-id`
-- `otel.instrumentation.experimental.span-suppression-strategy`
-- `otel.instrumentation.genai.capture-message-content`
-- `otel.instrumentation.jdbc.experimental.capture-query-parameters`
-- `otel.instrumentation.jdbc.experimental.transaction.enabled`
-- `otel.instrumentation.log4j-context-data.add-baggage`
-- `otel.instrumentation.messaging.experimental.capture-headers`
-- `otel.instrumentation.messaging.experimental.receive-telemetry.enabled`
 - `otel.javaagent.experimental.thread-propagation-debugger.enabled`
-- `otel.semconv-stability.opt-in`
 
 ### Features not yet supported at all
 
 Java agent features that are not yet supported by declarative configuration:
 
-- `otel.instrumentation.common.mdc.resource-attributes`
 - `otel.javaagent.add-thread-details`
 
 Contrib features that are not yet supported by declarative configuration:
@@ -217,14 +223,6 @@ Contrib features that are not yet supported by declarative configuration:
 - [AWS X-Ray](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-xray)
 - [GCP authentication](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-auth-extension)
 - [Inferred Spans](https://github.com/open-telemetry/opentelemetry-java-contrib/blob/main/inferred-spans)
-
-### Spring Boot starter limitations
-
-Lastly, the [Spring Boot starter](/docs/zero-code/java/spring-boot-starter) does
-not yet support declarative configuration:
-
-- however, you can already use `application.yaml` to configure the OpenTelemetry
-  Spring Boot starter
 
 ## Extension API
 

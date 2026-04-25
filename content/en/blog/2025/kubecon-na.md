@@ -3,13 +3,17 @@ title: Join us for OpenTelemetry Talks and Activities at KubeCon NA 2025
 linkTitle: KubeCon NA '25
 date: 2025-10-03
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
+eventUrl: &eventUrl >-
+  https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
+queryParams: >-
+  utm_source=opentelemetry&utm_medium=website&utm_content=blog
 # prettier-ignore
 cSpell:ignore: Aditya Agno Alipio Amir Aronoff Artem Bagga Bodhish Caldwell Chauhan Chomiak CLDF Contribfest CopperPoint Cutsail Célestin Dixit EBPF Fairwinds Faseela Forrester Furst Grcevski Harshita Hodgson Hrabusa Hrittik Jakoby Jitendra Juspay Khallai Kubecon Kubestronaut Kusha Mackie Macías Maharshi Mancioppi Markou Melamed Mohsine Nduka Nilson Octopus Olly Omlet Pająk Panos Pavlick Payal Pech Pyroscope Raveesh Reimagining Sandeep Sawmills Shiran Suereth Tkachuk Tsilopoulos Varma Veeam Verma Vijay Wijay Wrike Yahn Zscaler
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
 technical committee are thrilled to be at [KubeCon NA][] in Atlanta from
-November 10 - 13, 2025. [Register][kubecon registration] today to join us!
+November 10 - 13, 2025. [Register][] today to join us!
 
 Read on to learn about all the events related to OpenTelemetry during KubeCon.
 
@@ -134,7 +138,7 @@ Observability and OpenTelemetry in the [schedule][obs-day-sched].
 > [!IMPORTANT] Important access note
 >
 > You need an _all-access_ pass to attend **Observability Day**. For details,
-> see [KubeCon registration][].
+> see [KubeCon registration][register].
 
 ## OpenTelemetry Observatory
 
@@ -170,15 +174,13 @@ Come join us to listen, learn, and get involved in OpenTelemetry.
 
 See you in Atlanta!
 
-[kubecon na]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
+[kubecon na]: <{{% param eventUrl %}}?{{% param queryParams %}}>
 [Observability Day]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/observability-day/
-[kubecon registration]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/register/
+  <{{% param eventUrl %}}co-located-events/observability-day/?{{% param queryParams %}}>
+[register]: <{{% param eventUrl %}}register/?{{% param queryParams %}}>
 [summit schedule]: https://maintainersummitna2025.sched.com/
 [maintainer summit]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/features-add-ons/maintainer-summit/
+  <{{% param eventUrl %}}features-add-ons/maintainer-summit/?{{% param queryParams %}}>
 [membership]:
   https://github.com/open-telemetry/community/blob/25f027532a6e9b503d6eb4dd3db0a98eb3b5f1cb/guides/contributor/membership.md?from_branch=main#member
 [obs-day-sched]:

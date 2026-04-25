@@ -1,0 +1,21 @@
+# cSpell:ignore countconnector
+title: Count Connector
+registryType: connector
+language: collector
+tags:
+  - go
+  - connector
+  - collector
+license: Apache 2.0
+description:
+  The `count` connector can be used to count spans, span events, metrics, data
+  points, and log records.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/countconnector
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/connector/countconnector
+  version: v0.150.0
