@@ -11,9 +11,8 @@ params:
   blogPostURL: /blog/2025/kubecon-japan/
 ---
 
-<i class="fas fa-bullhorn"></i> [**KubeCon + CloudNativeCon**][kubecon] in
-**<span class="text-nowrap">[Tokyo, June 16-17][LF-Japan]</span>** and
-[**Hyderabad India, August 6-7**][LF-India].
+[**KubeCon + CloudNativeCon**][kubecon] in **<span class="text-nowrap">[Tokyo,
+June 16-17][LF-Japan]</span>** and [**Hyderabad India, August 6-7**][LF-India].
 <span class="d-none d-md-inline"><br></span>[Come collaborate, learn, and
 share][blog]<span class="d-none d-sm-inline"> with the Cloud Native
 community</span>!

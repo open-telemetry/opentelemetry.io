@@ -10,10 +10,9 @@ params:
   blogPostURL: /blog/2026/kubecon-eu/
 ---
 
-<i class="fas fa-bullhorn"></i> [**{{% param title %}}**][LF],
-**<span class="text-nowrap">March 23–26,</span> Amsterdam**.
-<span class="d-none d-md-inline"><br></span> Come [collaborate, learn, and
-share][blog]<span class="d-none d-sm-inline"> with the Cloud Native
+[**{{% param title %}}**][LF], **<span class="text-nowrap">March 23–26,</span>
+Amsterdam**. <span class="d-none d-md-inline"><br></span> Come [collaborate,
+learn, and share][blog]<span class="d-none d-sm-inline"> with the Cloud Native
 community</span>!
 
 [blog]: <{{% param blogPostURL %}}>

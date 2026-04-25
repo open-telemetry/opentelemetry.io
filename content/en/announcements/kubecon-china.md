@@ -14,10 +14,9 @@ params:
     https://events.linuxfoundation.org/kubecon-cloudnativecon-china/reg/register/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner
 ---
 
-<i class="fas fa-bullhorn"></i> [**{{% param title %}}**][LF],
-**<span class="text-nowrap">June 10-11,</span> Hong Kong**.
-<span class="d-none d-md-inline"><br></span> [Come collaborate, learn, and
-share][blog]<span class="d-none d-sm-inline"> with the Cloud Native
+[**{{% param title %}}**][LF], **<span class="text-nowrap">June 10-11,</span>
+Hong Kong**. <span class="d-none d-md-inline"><br></span> [Come collaborate,
+learn, and share][blog]<span class="d-none d-sm-inline"> with the Cloud Native
 community</span>!
 
 [blog]: <{{% param blogPostURL %}}>

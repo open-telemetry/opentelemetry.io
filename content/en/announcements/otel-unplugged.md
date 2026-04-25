@@ -10,8 +10,8 @@ params:
 cSpell:ignore: fosdem
 ---
 
-<i class="fas fa-bullhorn"></i> [**OTel Unplugged EU**][event] is coming to
-**Brussels, <span class="text-nowrap">February 2, 2026</span>**!
+[**OTel Unplugged EU**][event] is coming to **Brussels,
+<span class="text-nowrap">February 2, 2026</span>**!
 <span class="d-none d-md-inline"><br></span>Join the OpenTelemetry
 [unconference][blog]<span class="d-none d-sm-inline"> the day after
 FOSDEM</span>!
