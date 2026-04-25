@@ -5,9 +5,8 @@ date: 2026-02-02
 expiryDate: 2026-03-26 # keep
 weight: 20260326
 params:
-  eventUrl: >-
+  eventUrl: &eventUrl >-
     https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/
-  queryParams: utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner
   blogPostURL: /blog/2026/kubecon-eu/
 ---
 
@@ -18,4 +17,4 @@ share][blog]<span class="d-none d-sm-inline"> with the Cloud Native
 community</span>!
 
 [blog]: <{{% param blogPostURL %}}>
-[LF]: <{{% param eventUrl %}}register/?{{% param queryParams %}}>
+[LF]: <{{% param eventUrl %}}register/?{{% _param utmParam %}}>
