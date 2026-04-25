@@ -40,21 +40,23 @@ duplicate the cascaded parameters.
 Keep the banner text short and concise. A common body template is:
 
 ```markdown
-<i class="fas fa-bullhorn"></i> [**{{%/* param title */%}}**][LF],
-**<span class="text-nowrap">March 23–26,</span> Amsterdam**.
-<span class="d-none d-md-inline"><br></span> Come [collaborate, learn, and
-share][blog]<span class="d-none d-sm-inline"> with the Cloud Native
-community</span>
+[**{{%/* param title */%}}**][LF], **<span class="text-nowrap">March
+23–26,</span> Amsterdam**. <span class="d-none d-md-inline"><br></span> Come
+[collaborate, learn, and share][blog]<span class="d-none d-sm-inline"> with the
+Cloud Native community</span>
 
 [blog]: <{{%/* param blogPostURL */%}}>
 [LF]: <{{%/* param eventUrl */%}}register/?{{%/* _param utmParam */%}}>
 ```
 
-> [!NOTE]
->
-> We use `_param` to access `utmParam` because it assumes the value is safe, in
-> contrast to `param` that escapes the query parameters `&` to `&amp;`, which we
-> don't want.
+Design notes:
+
+- We use classes like `d-none` and `d-*-inline` to control visibility of banner
+  text based on screen size. This allows for more compact banner text on smaller
+  screens.
+- We use `_param` to access `utmParam` because it assumes the value is safe, in
+  contrast to `param` that escapes the query parameters `&` to `&amp;`, which we
+  don't want.
 
 ## Rendering behavior
 
