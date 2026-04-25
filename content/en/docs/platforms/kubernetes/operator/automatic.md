@@ -5,7 +5,7 @@ weight: 11
 description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 # prettier-ignore
-cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA
+cSpell:ignore: Dockerfiles dotnet GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver redis REDISCALA replicaset statefulset
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
