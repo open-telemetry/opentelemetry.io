@@ -21,7 +21,7 @@ duplicate the cascaded parameters.
 - `date`: the date that the announcement should start showing.
 - `expiryDate`: date after which the announcement should no longer be shown.
   - Set this to the event end date, e.g., `2026-06-06`.
-  - Suffix this line with `# keep` to prevent the announcement from being
+  - If the announcement might be reused in the future, suffix this line with `# keep` to prevent the announcement file from being
     deleted.
 - `weight`: required. Set this to the event end date as a `yyyymmdd` integer,
   e.g., `20260606`. Announcements are listed in ascending `weight` order, so the
@@ -43,7 +43,7 @@ Keep the banner text short and concise. A common body template is:
 [**{{%/* param title */%}}**][LF], **<span class="text-nowrap">March
 23–26,</span> Amsterdam**. <span class="d-none d-md-inline"><br></span> Come
 [collaborate, learn, and share][blog]<span class="d-none d-sm-inline"> with the
-Cloud Native community</span>
+Cloud Native community</span>!
 
 [blog]: <{{%/* param blogPostURL */%}}>
 [LF]: <{{%/* param eventUrl */%}}register/?{{%/* _param utmParam */%}}>
