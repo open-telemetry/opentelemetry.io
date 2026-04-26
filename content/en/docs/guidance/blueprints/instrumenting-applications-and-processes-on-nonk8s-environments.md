@@ -216,7 +216,7 @@ can plan and execute in sequence.
 
 ### 1. Define a baseline telemetry contract and layered configuration model
 
-<small>Guidelines supported: 1, 3</small>
+_Guidelines supported: 1, 3_
 
 Define the minimum required telemetry contract for the organization and document
 which parts of agent and SDK configuration are centrally owned versus locally
