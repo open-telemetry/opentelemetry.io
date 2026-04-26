@@ -2,8 +2,8 @@
 title: Instrumenting Infrastructure and Processes on Non-K8s Environments
 linkTitle: Instrumenting Infrastructure and Processes on Non-K8s Environments
 date: 2026-04-21
-cSpell:ignore: ciukaj lukasz rollouts
 author: Lukasz Ciukaj (Splunk)
+cSpell:ignore: ciukaj lukasz rollouts
 ---
 
 ## Summary
@@ -50,9 +50,10 @@ workloads.
 
 ## Common challenges
 
-Organizations operating in non-Kubernetes environments typically face a distinct set of challenges that hinder effective
-observability. Without built-in automation, standardization, and centralized
-management, these setups find that ensuring consistent, high-quality telemetry across a diverse landscape of
+Organizations operating in non-Kubernetes environments typically face a distinct
+set of challenges that hinder effective observability. Without built-in
+automation, standardization, and centralized management, these setups find that
+ensuring consistent, high-quality telemetry across a diverse landscape of
 infrastructure and applications can be complex and resource-intensive.
 
 ### 1. Fragmented instrumentation approaches
@@ -110,13 +111,13 @@ This leads to:
 
 To address the challenges described above, organizations should adopt a set of
 strategic guidelines designed to streamline observability practices across
-diverse environments. These guidelines provide a foundation for
-standardizing instrumentation, automating agent management, and
-ensuring consistent data quality. 
+diverse environments. These guidelines provide a foundation for standardizing
+instrumentation, automating agent management, and ensuring consistent data
+quality.
 
 ### 1. Centrally manage agent lifecycle while allowing controlled customization
 
-_Challenges addressed: 1, 2_
+**Challenges addressed:** 1, 2
 
 Use OpAMP, where supported, to centrally manage OpenTelemetry agents running as
 system services or service containers. Platform teams should own the baseline
@@ -148,7 +149,7 @@ By implementing this guideline, organizations can expect to achieve:
 
 ### 2. Centralize telemetry collection and processing through an OpenTelemetry Collector gateway layer
 
-_Challenges addressed: 1, 3_
+**Challenges addressed:** 1, 3
 
 Deploy one or more OpenTelemetry Collector gateways as central aggregation
 points for telemetry data from hosts and directly managed containers. In
@@ -170,7 +171,7 @@ By implementing this guideline, organizations can expect to achieve:
 
 ### 3. Standardize resource attribution and distribute reusable instrumentation building blocks
 
-_Challenges addressed: 1_
+**Challenges addressed:** 1
 
 Define an organization-wide telemetry contract for resource attribution and
 ensure it is applied consistently across all workloads. This should not rely
@@ -216,7 +217,7 @@ can plan and execute in sequence.
 
 ### 1. Define a baseline telemetry contract and layered configuration model
 
-_Guidelines supported: 1, 3_
+**Guidelines supported:** 1, 3
 
 Define the minimum required telemetry contract for the organization and document
 which parts of agent and SDK configuration are centrally owned versus locally
@@ -241,7 +242,7 @@ Documentation:
 
 ### 2. Stand up an OpAMP management plane for agents
 
-_Guidelines supported: 1_
+**Guidelines supported:** 1
 
 Deploy a central OpAMP management service to manage agent configuration, status
 reporting, health monitoring, and controlled rollouts for supported agents.
@@ -255,6 +256,47 @@ Checklist:
 - Define rollback procedures for failed updates or bad configurations.
 - Monitor management-plane health and agent connectivity.
 
+A common OpAMP architecture uses a central management service to control
+configuration, rollout, and health monitoring for agents running across many
+hosts. In deployments that use an OpAMP Supervisor, the management service
+communicates with a host-local supervisor, which then manages the lifecycle and
+configuration of the local agent or Collector.
+
+```mermaid
+flowchart TB
+    M[Central OpAMP management service]
+
+    subgraph H1[Host or VM]
+        S1[OpAMP Supervisor]
+        A1[OpenTelemetry agent or Collector]
+        S1 --> A1
+    end
+
+    subgraph H2[Host or VM]
+        S2[OpAMP Supervisor]
+        A2[OpenTelemetry agent or Collector]
+        S2 --> A2
+    end
+
+    subgraph H3[Host or VM]
+        S3[OpAMP Supervisor]
+        A3[OpenTelemetry agent or Collector]
+        S3 --> A3
+    end
+
+    M -->|Configuration and lifecycle management| S1
+    M -->|Configuration and lifecycle management| S2
+    M -->|Configuration and lifecycle management| S3
+
+    S1 -->|Status, health, and capabilities| M
+    S2 -->|Status, health, and capabilities| M
+    S3 -->|Status, health, and capabilities| M
+
+    A1 --> O[Observability backend]
+    A2 --> O
+    A3 --> O
+```
+
 Documentation:
 
 - [OpAMP Specification](/docs/specs/opamp/)
@@ -263,7 +305,7 @@ Documentation:
 
 ### 3. Package and deploy standardized agents and SDK bootstrap artifacts
 
-_Guidelines supported: 1, 3_
+**Guidelines supported:** 1, 3
 
 Use configuration management and image packaging to deliver supported telemetry
 components consistently across hosts and containerized workloads.
@@ -286,7 +328,7 @@ Documentation:
 
 ### 4. Deploy an OpenTelemetry Collector gateway layer
 
-_Guidelines supported: 2_
+**Guidelines supported:** 2
 
 Deploy one or more OpenTelemetry Collector gateways as the central processing
 and export tier. Choose a topology appropriate for the environment, such as
@@ -303,6 +345,51 @@ Checklist:
 - Define high-availability and failover behavior for gateways.
 - Validate end-to-end routing to observability backends.
 
+A common pattern in non-Kubernetes environments is to run host-level Collectors
+on individual hosts and forward telemetry to a site-local Collector gateway.
+This allows processing and policy enforcement to happen close to the source
+while still centralizing export to shared observability backends.
+
+```mermaid
+flowchart TB
+    subgraph S1[Site or Business Unit A]
+        A1[VM or Bare Metal Host]
+        A2[VM or Bare Metal Host]
+        A3[Host running directly managed containers]
+
+        AC1[Host-level Collector]
+        AC2[Host-level Collector]
+        AC3[Host-level Collector]
+
+        A1 --> AC1
+        A2 --> AC2
+        A3 --> AC3
+
+        AC1 --> AG[Site-local Collector gateway]
+        AC2 --> AG
+        AC3 --> AG
+        AG --> P1[Site-local processing and policy enforcement]
+    end
+
+    subgraph S2[Site or Business Unit B]
+        B1[VM or Bare Metal Host]
+        B2[Host running directly managed containers]
+
+        BC1[Host-level Collector]
+        BC2[Host-level Collector]
+
+        B1 --> BC1
+        B2 --> BC2
+
+        BC1 --> BG[Site-local Collector gateway]
+        BC2 --> BG
+        BG --> P2[Site-local processing and policy enforcement]
+    end
+
+    P1 --> O[Observability backend]
+    P2 --> O
+```
+
 Documentation:
 
 - [OpenTelemetry Collector deployment patterns](/docs/collector/deploy/)
@@ -310,7 +397,7 @@ Documentation:
 
 ### 5. Enforce resource attribution and correlation standards
 
-_Guidelines supported: 1, 3_
+**Guidelines supported:** 1, 3
 
 Ensure that all telemetry includes the required metadata for correlation across
 infrastructure and application layers.
@@ -332,7 +419,7 @@ Documentation:
 
 ### 6. Centralize governance, policy enforcement, and change management
 
-_Guidelines supported: 2, 3_
+**Guidelines supported:** 2, 3
 
 Use the Collector gateway layer and centrally owned configuration to enforce
 organization-wide rules for processing, routing, and exporting telemetry.
@@ -348,17 +435,16 @@ Checklist:
 Documentation:
 
 - [OpenTelemetry Collector configuration](/docs/collector/configuration/)
-- [OpenTelemetry Collector gateway deployments]{/docs/collector/deploy/gateway/)
+- [OpenTelemetry Collector gateway deployments](/docs/collector/deploy/gateway/)
 
 ## Reference architectures
 
-The patterns described in this blueprint have been successfully implemented by the following
-end-users:
+The patterns described in this blueprint have been successfully implemented by
+the following end-users:
 
-_Coming soon!._
+_Coming soon!_
 
-Have you implemented an architecture for this blueprint?
-Share your experience or a link to your article by opening an issue in
-the
-[End User SIG](https://github.com/open-telemetry/sig-end-user/issues)
-GitHub repository.
+Have you implemented an architecture for this blueprint? Share your experience
+or a link to your article by opening an issue in the
+[End User SIG](https://github.com/open-telemetry/sig-end-user/issues) GitHub
+repository.
