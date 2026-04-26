@@ -275,7 +275,7 @@ Checklist:
   deployments.
 - Publish shared libraries, starter packages, or bootstrap wrappers for
   supported SDK languages.
-- Standardize environment-variable and configuration-file conventions across
+- Standardize environment variable and configuration file conventions across
   environments.
 - Validate that new workloads inherit the baseline configuration by default.
 
