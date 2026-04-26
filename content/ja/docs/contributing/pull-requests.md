@@ -11,14 +11,14 @@ default_lang_commit: ae2a3f327e0360c11a97bdf3e2704bd997924645
 - もし変更が小さかったり、自身が [Git][] に慣れていなかったら、[GitHub を使用](#changes-using-github)を参照しページの編集方法を学んでください。
 - もしくは、[ローカルのフォークから作業する](#fork-the-repo)を参照し、ローカルのコンピュータから変更を行う方法を学んでください。
 
-## 生成 AI コントリビューション ポリシー {#using-ai}
+## 生成AIコントリビューションポリシー {#using-ai}
 
 > [!WARNING] **初めてのコントリビューター**への注意!
 >
 > もし、[初めてのコントリビューター][first-time contributor] であれば、以下の点に注意してください。
 >
 > 最初の 3 つのコントリビューションは、マイナーな AI 支援のみが許可され ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail))、主に人間が書いたものでなければなりません。
-> これは、コードをご自身で書くということを意味しますが、AI はコードの補完、フォーマット、リンティング、およびベストプラクティスに役立つことがあります。
+> これは、コードをご自身で書くということを意味しますが、AI はコードの補完、フォーマット、リンティング、およびベストプラクティスに従うことに役立つことがあります。
 > あなたの PR の説明は、AI の関与なしで完全に人間が書いたものでなければなりません (AIL0)。
 >
 > もちろん、AI ツールを使用して、リポジトリやプロジェクト、コントリビューション方法について学べます。
@@ -30,7 +30,7 @@ default_lang_commit: ae2a3f327e0360c11a97bdf3e2704bd997924645
 生成 AI は許可されていますが、あなたにはすべての AI 生成コンテンツを**レビューおよび検証**する**責任があります**。
 もしあなたがそのことを理解できない場合、そのコンテンツを提出しないでください!
 
-詳細については、[生成 AI コントリビューション ポリシー][Generative AI Contribution Policy]を参照してください。
+詳細については、[生成AIコントリビューションポリシー][Generative AI Contribution Policy]を参照してください。
 
 [first-time contributor]: ../#first-time-contributing
 [Generative AI Contribution Policy]: https://github.com/open-telemetry/community/blob/main/policies/genai.md
