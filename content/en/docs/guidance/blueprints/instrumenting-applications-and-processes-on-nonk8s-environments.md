@@ -284,7 +284,7 @@ Documentation:
 - [OpenTelemetry Collector](/docs/collector/)
 - [OpenTelemetry language SDKs and APIs](/docs/languages/)
 
-### 4. Deploy an OpenTelemetry Collector Gateway layer
+### 4. Deploy an OpenTelemetry Collector gateway layer
 
 <small>Guidelines supported: 2</small>
 
