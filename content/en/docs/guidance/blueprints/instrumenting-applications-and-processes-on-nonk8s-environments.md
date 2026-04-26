@@ -309,7 +309,7 @@ Documentation:
 
 ### 5. Enforce resource attribution and correlation standards
 
-<small>Guidelines supported: 1, 3</small>
+_Guidelines supported: 1, 3_
 
 Ensure that all telemetry includes the required metadata for correlation across
 infrastructure and application layers.
