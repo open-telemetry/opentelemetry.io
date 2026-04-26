@@ -257,8 +257,9 @@ Checklist:
 
 Documentation:
 
-- [OpAMP Specification](https://github.com/open-telemetry/opamp-spec)
-- [OpenTelemetry Collector Documentation](/docs/collector/)
+- [OpAMP Specification](/docs/specs/opamp/)
+- [OpAMP getting started guide](/docs/collector/management/)
+- [OpenTelemetry Collector](/docs/collector/)
 
 ### 3. Package and deploy standardized agents and SDK bootstrap artifacts
 
