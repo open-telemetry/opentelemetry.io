@@ -150,7 +150,7 @@ By implementing this guideline, organizations can expect to achieve:
 
 _Challenges addressed: 1, 3_
 
-Deploy one or more OpenTelemetry Collector Gateways as central aggregation
+Deploy one or more OpenTelemetry Collector gateways as central aggregation
 points for telemetry data from hosts and directly managed containers. In
 non-Kubernetes environments, these gateways can be deployed using several
 patterns, depending on scale and operational model, including:
