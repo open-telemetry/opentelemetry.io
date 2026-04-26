@@ -146,7 +146,7 @@ By implementing this guideline, organizations can expect to achieve:
 - A controlled mechanism for local customization without sacrificing central
   governance.
 
-### 2. Centralize telemetry collection and processing through an OpenTelemetry Collector Gateway layer
+### 2. Centralize telemetry collection and processing through an OpenTelemetry Collector gateway layer
 
 <small>Challenges addressed: 1, 3</small>
 
