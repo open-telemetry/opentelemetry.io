@@ -22,6 +22,7 @@ Contents:
 - [Deploying OBI from helm](#deploying-obi-from-helm)
 - [Configuring OBI](#configuring-obi)
 - [Configuring OBI metadata](#configuring-obi-metadata)
+- [Centralizing Kubernetes metadata with k8s-cache](#centralizing-kubernetes-metadata-with-k8s-cache)
 - [Providing secrets to the Helm configuration](#providing-secrets-to-the-helm-configuration)
 <!-- TOC -->
 
@@ -107,6 +108,33 @@ multiple resources involved in the deployment of OBI, such as service accounts,
 cluster roles, security contexts, etc. The
 [OBI Helm chart documentation](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-ebpf-instrumentation)
 describes the diverse configuration options.
+
+## Centralizing Kubernetes metadata with k8s-cache
+
+By default each OBI Pod opens its own connections to the Kubernetes API server
+to watch Pod, Node, and Service metadata. On large clusters this can overload
+the API server and affect the whole cluster.
+
+To avoid that, the OBI Helm chart can deploy a small companion service called
+`k8s-cache`. The cache watches the Kubernetes API once on behalf of all OBI Pods
+and streams metadata to them over gRPC, so OBI no longer talks to the API server
+directly. For more background on what `k8s-cache` is and when to use it, see the
+[Kubernetes setup guide](../kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache).
+
+To enable it, set `k8sCache.replicas` to a non-zero value in your
+`helm-obi.yml`:
+
+```yaml
+k8sCache:
+  replicas: 1
+```
+
+A single replica is usually enough. For high availability or very large
+clusters, increase the replica count — OBI Pods will load-balance across them
+through the cache `Service` and reconnect to a healthy replica on failure.
+
+When `k8sCache.replicas` is `0` (the default), the cache is not deployed and
+each OBI Pod uses its own local informers.
 
 ## Providing secrets to the Helm configuration
 

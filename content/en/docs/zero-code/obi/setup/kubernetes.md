@@ -412,6 +412,93 @@ metadata:
 ---
 ```
 
+## Centralizing Kubernetes metadata with k8s-cache
+
+When OBI runs as a DaemonSet, every OBI Pod opens its own `list` and `watch`
+connections against the Kubernetes API server to fetch the metadata it needs to
+decorate metrics and traces. On large clusters this fan-out can put significant
+load on the API server, to the point where it can affect the whole cluster.
+
+To avoid that, OBI ships an optional companion service called `k8s-cache`. It
+runs as a small `Deployment`, watches the Kubernetes API once on behalf of every OBI Pod, and streams the metadata to OBI
+instances over gRPC. Each OBI Pod opens a single connection to the cache instead
+of to the API server.
+
+Use `k8s-cache` when:
+
+- You run OBI as a DaemonSet on a large cluster.
+- You run many OBI replicas (large `Deployment`, multiple sidecars, etc.) on the
+  same cluster.
+- The Kubernetes API server is under pressure or rate-limited.
+
+If you do not configure a cache address, each OBI instance keeps its own local
+in-process informers, which is fine for small clusters.
+
+`k8s-cache` is only relevant when running OBI on Kubernetes; it has no effect in
+the standalone or Docker setups.
+
+To use the cache, deploy it and point OBI at its `Service` address with the
+`OTEL_EBPF_KUBE_META_CACHE_ADDRESS` environment variable (or
+`attributes.kubernetes.meta_cache_address` in YAML). The easiest way is to use
+the
+[OBI Helm chart](../kubernetes-helm/#centralizing-kubernetes-metadata-with-k8s-cache),
+which sets up the `Deployment`, `Service`, and OBI wiring for you when you set
+`k8sCache.replicas` to a non-zero value.
+
+If you prefer to deploy it manually, the cache is published as the
+`ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache`
+container image. A minimal manifest looks like:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-cache
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-cache
+  template:
+    metadata:
+      labels:
+        app: k8s-cache
+    spec:
+      serviceAccountName: obi # needs list/watch on pods, nodes, services
+      containers:
+        - name: k8s-cache
+          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:latest
+          ports:
+            - containerPort: 50055
+              name: grpc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-cache
+spec:
+  selector:
+    app: k8s-cache
+  ports:
+    - port: 50055
+      name: grpc
+      protocol: TCP
+```
+
+Then point OBI at it from the DaemonSet:
+
+```yaml
+env:
+  - name: OTEL_EBPF_KUBE_METADATA_ENABLE
+    value: 'true'
+  - name: OTEL_EBPF_KUBE_META_CACHE_ADDRESS
+    value: 'k8s-cache.default.svc:50055'
+```
+
+A single replica is usually enough. For high availability, run multiple replicas
+behind the same `Service` — each OBI Pod connects to one and reconnects to
+another on failure.
+
 ## Providing an external configuration file
 
 In the previous examples, OBI was configured via environment variables. However,
