@@ -241,7 +241,7 @@ Documentation:
 
 ### 2. Stand up an OpAMP management plane for agents
 
-<small>Guidelines supported: 1</small>
+_Guidelines supported: 1_
 
 Deploy a central OpAMP management service to manage agent configuration, status
 reporting, health monitoring, and controlled rollouts for supported agents.
