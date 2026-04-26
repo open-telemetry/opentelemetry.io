@@ -351,13 +351,13 @@ Documentation:
 
 ## Reference architectures
 
-The patterns described above have been successfully implemented by the following
+The patterns described in this blueprint have been successfully implemented by the following
 end-users:
 
-_To be added soon._
+_Coming soon!._
 
-Do you have an architecture for this blueprint implemented and documented?
-Please share your experience or a link to your article by opening an issue in
+Have you implemented an architecture for this blueprint?
+Share your experience or a link to your article by opening an issue in
 the
-[opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io/issues)
+[End User SIG](https://github.com/open-telemetry/sig-end-user/issues)
 GitHub repository.
