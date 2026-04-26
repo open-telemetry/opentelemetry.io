@@ -47,12 +47,13 @@ balancing visibility with risk.
 Many industrial systems cannot run agents, support modern libraries, or be
 changed at all. This means:
 
-- no native TLS or authentication at the source
+- limited or inconsistent support for modern TLS and authentication at the
+  source
 - no direct instrumentation using SDKs
 - reliance on intermediaries (Collectors, bridges, log pipelines)
 
-Security responsibility shifts **away from the source** and toward the
-**Collector and network boundaries**.
+When source systems cannot enforce modern controls, more of the security burden
+shifts to the Collector, intermediary systems, and network boundaries.
 
 ### Weak or non-existent network segmentation
 
@@ -62,8 +63,8 @@ telemetry collection can:
 - expose new ingestion endpoints
 - allow unintended lateral access to Collectors or bridges
 
-In these environments, **where you place the Collector** matters more than how
-you configure it.
+In these environments, Collector placement can be as important as Collector
+configuration.
 
 ### Limited patching and long lifecycles
 
@@ -79,7 +80,7 @@ This shifts the focus from patching to **containment and mitigation**:
 - restricting network access
 - disabling unnecessary telemetry paths
 
-### Different definition of “sensitive data”
+### Sensitive data looks different in these environments
 
 In manufacturing environments, sensitive data often includes:
 
@@ -110,9 +111,9 @@ Key design principles:
   environment before exporting it externally.
 
 The goal is to treat the OpenTelemetry Collector as a **controlled boundary**,
-not just a data router. This approach aligns with Zero Trust principles, where
-security controls are applied at data flow boundaries rather than relying solely
-on perimeter defenses.
+not just a data router. This approach is consistent with Zero Trust-style
+boundary enforcement, where access and data flows are constrained explicitly
+rather than assumed to be safe because of network location.
 
 ## A pragmatic decision model for securing telemetry
 
@@ -121,23 +122,23 @@ based on system constraints in legacy and industrial environments.
 
 ```mermaid
 flowchart TD
-    A[Legacy System] --> Q0{Is safety critical or restricted?}
+    A[Legacy System] --> Q0{Is the system safety-critical or change-restricted?}
 
     Q0 -- Yes --> S1[Use low impact signals and passive monitoring]
-    Q0 -- No --> Q1{Can system be modified?}
+    Q0 -- No --> Q1{Can the system be modified?}
 
     S1 --> Q1
 
     Q1 -- Yes --> C1[Use OTel SDK or auto instrumentation if supported]
     C1 --> C2[Apply source controls TLS auth and least privilege]
 
-    Q1 -- No --> Q2{Does system expose data?}
+    Q1 -- No --> Q2{Does the system expose data?}
 
     Q2 -- Yes --> C3[Use OTel Collector receivers if available]
 
     Q2 -- No --> Q3{Are logs or files available?}
 
-    Q3 -- Yes --> C4[Use OTel Collector filelog receiver and derive telemetry]
+    Q3 -- Yes --> C4[Use the Collector filelog receiver and derive telemetry]
 
     Q3 -- No --> C5[Use external monitoring if permitted]
     C5 --> C6[Bridge signals into OTel Collector]
@@ -147,15 +148,15 @@ flowchart TD
     C4 --> P1
     C6 --> P1
 
-    P1[Apply Collector processors] --> P2{Is data sensitive}
+    P1[Apply Collector processors] --> P2{Is the data sensitive?}
 
-    P2 -- Yes --> P3[Use redaction attributes transform filter processors]
+    P2 -- Yes --> P3[Use redaction, filter, or transform processors]
     P2 -- No --> P4[Allow controlled telemetry]
 
     P3 --> E1
     P4 --> E1
 
-    E1[Restrict Collector exposure] --> E2{Is segmentation available}
+    E1[Restrict Collector exposure] --> E2{Is network segmentation available?}
 
     E2 -- Yes --> E3[Place Collector in controlled network segment]
     E2 -- No --> E4[Bind endpoints narrowly and limit receivers]
@@ -169,7 +170,7 @@ flowchart TD
 
 ## Handling sensitive operational data
 
-OpenTelemetry does not know what data is sensitive in your environment. That
+OpenTelemetry tooling cannot determine business sensitivity on its own. That
 responsibility sits with the implementer. Two principles are critical:
 
 ### Data minimization
@@ -182,8 +183,9 @@ Only collect telemetry that serves a clear purpose. In constrained environments:
 
 ### Scrubbing and transformation
 
-Use Collector processors to reduce risk before data leaves the environment. For
-example, replacing identifiers:
+For example, depending on Collector distribution and version, processors such as
+transform or redaction can be used to hash identifiers, remove sensitive fields,
+or enforce allowlists.
 
 ```yaml
 processors:
@@ -220,7 +222,8 @@ important where systems cannot defend themselves. Focus on:
 - running Collectors with minimal permissions
 - limiting inbound traffic to known, trusted sources
 
-In these environments, **less telemetry infrastructure is often more secure**.
+In these environments, **minimizing telemetry infrastructure and exposed
+endpoints can reduce attack surface**.
 
 ## Security as a trade-off
 
@@ -235,6 +238,10 @@ This leads to a different mindset: _Security is not about achieving ideal
 observability. It is about selecting the safest way to gain useful visibility._
 
 ## Conclusion
+
+In operational technology and industrial settings, telemetry changes should also
+be evaluated against safety, reliability, and change-control requirements, not
+only cybersecurity goals.
 
 OpenTelemetry can bring powerful observability to legacy and industrial
 environments, but it changes where and how security controls must be applied.
