@@ -236,7 +236,7 @@ Checklist:
 
 Documentation:
 
-- [OpAMP Specification](https://github.com/open-telemetry/opamp-spec)
+- [OpAMP Specification](/docs/specs/opamp/)
 - [OpenTelemetry Semantic Conventions](/docs/specs/semconv/)
 
 ### 2. Stand up an OpAMP Management Plane for agents
