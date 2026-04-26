@@ -331,7 +331,7 @@ Documentation:
 
 ### 6. Centralize governance, policy enforcement, and change management
 
-<small>Guidelines supported: 2, 3</small>
+_Guidelines supported: 2, 3_
 
 Use the Collector Gateway layer and centrally owned configuration to enforce
 organization-wide rules for processing, routing, and exporting telemetry.
