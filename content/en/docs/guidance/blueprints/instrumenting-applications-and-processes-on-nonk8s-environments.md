@@ -288,7 +288,7 @@ Documentation:
 
 _Guidelines supported: 2_
 
-Deploy one or more OpenTelemetry Collector Gateways as the central processing
+Deploy one or more OpenTelemetry Collector gateways as the central processing
 and export tier. Choose a topology appropriate for the environment, such as
 dedicated VMs, service pools behind a load balancer, or regional gateway nodes.
 
