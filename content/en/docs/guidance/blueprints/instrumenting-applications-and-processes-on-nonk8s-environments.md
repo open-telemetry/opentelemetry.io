@@ -281,8 +281,8 @@ Checklist:
 
 Documentation:
 
-- [OpenTelemetry Collector Documentation](/docs/collector/)
-- [OpenTelemetry Documentation](/docs/)
+- [OpenTelemetry Collector](/docs/collector/)
+- [OpenTelemetry language SDKs and APIs](/docs/languages/)
 
 ### 4. Deploy an OpenTelemetry Collector Gateway layer
 
