@@ -50,13 +50,9 @@ workloads.
 
 ## Common challenges
 
-Organizations operating in non-Kubernetes environments, such as those relying on
-traditional virtual machines, bare metal servers, or containers running directly
-on hosts, typically face a distinct set of challenges that hinder effective
-observability. Unlike environments with orchestrators such as Kubernetes, these
-setups often lack built-in automation, standardization, and centralized
-management for deploying and configuring observability tooling. As a result,
-ensuring consistent, high-quality telemetry across a diverse landscape of
+Organizations operating in non-Kubernetes environments typically face a distinct set of challenges that hinder effective
+observability. Without built-in automation, standardization, and centralized
+management, these setups find that ensuring consistent, high-quality telemetry across a diverse landscape of
 infrastructure and applications can be complex and resource-intensive.
 
 ### 1. Fragmented instrumentation approaches
