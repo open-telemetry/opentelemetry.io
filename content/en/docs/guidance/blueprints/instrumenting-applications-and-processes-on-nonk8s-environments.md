@@ -239,7 +239,7 @@ Documentation:
 - [OpAMP Specification](/docs/specs/opamp/)
 - [OpenTelemetry Semantic Conventions](/docs/specs/semconv/)
 
-### 2. Stand up an OpAMP Management Plane for agents
+### 2. Stand up an OpAMP management plane for agents
 
 <small>Guidelines supported: 1</small>
 
