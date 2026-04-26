@@ -148,7 +148,7 @@ By implementing this guideline, organizations can expect to achieve:
 
 ### 2. Centralize telemetry collection and processing through an OpenTelemetry Collector gateway layer
 
-<small>Challenges addressed: 1, 3</small>
+_Challenges addressed: 1, 3_
 
 Deploy one or more OpenTelemetry Collector Gateways as central aggregation
 points for telemetry data from hosts and directly managed containers. In
