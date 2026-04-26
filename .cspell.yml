@@ -86,7 +86,6 @@ words:
   # will be pushed to the top here.
   - attrlink
   - chalin
-  - Ciukaj
   - Crossplane
   - crosspost
   - desaturate
@@ -101,7 +100,6 @@ words:
   - llms
   - Loffay
   - logback
-  - Lukasz
   - Mancuso
   - Marylia
   - millicores
@@ -114,7 +112,6 @@ words:
   - otelbot
   - Powerjob
   - refcache
-  - rollouts
   - submatch
   - textlintrc
   - tracestate
