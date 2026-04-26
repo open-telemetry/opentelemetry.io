@@ -3183,6 +3183,14 @@
     "StatusCode": 200,
     "LastSeen": "2026-04-22T15:36:05.11994212Z"
   },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-india/register/?utm_source=opentelemetry&utm_medium=website&utm_content=community-events": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-25T11:21:12.393921-04:00"
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-india/register/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-25T11:20:28.256754-04:00"
+  },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/?utm_source=opentelemetry&utm_medium=website&utm_content=blog": {
     "StatusCode": 200,
     "LastSeen": "2026-04-22T22:51:53.55696824Z"
@@ -3227,13 +3235,37 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T17:12:31.913673484Z"
   },
+  "https://events.linuxfoundation.org/observability-summit-north-america/?utm_source=opentelemetry&utm_medium=website&utm_content=community-events": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-25T11:21:11.141515-04:00"
+  },
+  "https://events.linuxfoundation.org/observability-summit-north-america/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-25T11:20:28.547368-04:00"
+  },
   "https://events.linuxfoundation.org/observability-summit-north-america/program/schedule/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=slim-banner": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T17:12:34.930569593Z"
   },
+  "https://events.linuxfoundation.org/observability-summit-north-america/program/schedule/?utm_source=opentelemetry&utm_medium=website&utm_content=community-events": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-25T11:21:11.712085-04:00"
+  },
+  "https://events.linuxfoundation.org/observability-summit-north-america/program/schedule/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-25T11:20:28.896821-04:00"
+  },
   "https://events.linuxfoundation.org/observability-summit-north-america/register/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=slim-banner": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T17:12:33.425565683Z"
+  },
+  "https://events.linuxfoundation.org/observability-summit-north-america/register/?utm_source=opentelemetry&utm_medium=website&utm_content=community-events": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-25T11:21:11.448558-04:00"
+  },
+  "https://events.linuxfoundation.org/observability-summit-north-america/register/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-25T11:20:28.485337-04:00"
   },
   "https://events.linuxfoundation.org/open-observability-summit-otel-community-day/": {
     "StatusCode": 200,
@@ -17802,6 +17834,10 @@
   "https://gohugo.io/documentation/": {
     "StatusCode": 200,
     "LastSeen": "2026-04-25T10:02:42.146Z"
+  },
+  "https://gohugo.io/methods/page/regularpages/#default-sort-order": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-25T11:21:30.61953-04:00"
   },
   "https://gohugo.io/methods/site/regularpages/": {
     "StatusCode": 206,
