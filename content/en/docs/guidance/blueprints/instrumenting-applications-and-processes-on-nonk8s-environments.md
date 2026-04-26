@@ -346,8 +346,8 @@ Checklist:
 
 Documentation:
 
-- [OpenTelemetry Collector Documentation](/docs/collector/)
-- [OpenTelemetry Semantic Conventions](/docs/specs/semconv/)
+- [OpenTelemetry Collector configuration](/docs/collector/configuration/)
+- [OpenTelemetry Collector gateway deployments]{/docs/collector/deploy/gateway/)
 
 ## Reference architectures
 
