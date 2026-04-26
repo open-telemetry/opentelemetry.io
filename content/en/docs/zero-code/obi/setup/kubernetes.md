@@ -420,9 +420,9 @@ decorate metrics and traces. On large clusters this fan-out can put significant
 load on the API server, to the point where it can affect the whole cluster.
 
 To avoid that, OBI ships an optional companion service called `k8s-cache`. It
-runs as a small `Deployment`, watches the Kubernetes API once on behalf of every OBI Pod, and streams the metadata to OBI
-instances over gRPC. Each OBI Pod opens a single connection to the cache instead
-of to the API server.
+runs as a small `Deployment`, watches the Kubernetes API once on behalf of every
+OBI Pod, and streams the metadata to OBI instances over gRPC. Each OBI Pod opens
+a single connection to the cache instead of to the API server.
 
 Use `k8s-cache` when:
 
