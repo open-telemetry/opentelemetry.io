@@ -99,6 +99,9 @@ components:
   content/ja:
     - open-telemetry/docs-maintainers
     - open-telemetry/docs-ja-approvers
+  content/pl:
+    - open-telemetry/docs-maintainers
+    - open-telemetry/docs-pl-approvers
   content/pt:
     - open-telemetry/docs-maintainers
     - open-telemetry/docs-pt-approvers

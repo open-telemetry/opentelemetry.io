@@ -1,5 +1,4 @@
 name: Update semconv integration branch
-# cSpell:ignore otelbot
 
 on:
   schedule:
@@ -9,13 +8,21 @@ on:
 
 permissions:
   contents: read
+  # Needed so the "Pick integration branch" step can open a tracking issue
+  # via gh when it detects problems (e.g. stale integration branches).
+  issues: write
+
+env:
+  REPO: semantic-conventions
+  # Abbreviation of REPO used in branch and submodule names
+  ABBR: semconv
 
 jobs:
   update-semconv-integration-branch:
     runs-on: ubuntu-latest
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
-      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+      - uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
         id: otelbot-token
         with:
           # the higher privileged docs token is needed to push commits to an existing PR
@@ -29,34 +36,10 @@ jobs:
           # this is needed to trigger workflows when pushing new commits to an existing PR
           token: ${{ steps.otelbot-token.outputs.token }}
 
-      - name: Set environment variables
+      - name: Pick integration branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          branch_prefix="otelbot/semconv-integration"
-
-          version=$(git branch -r \
-                        | grep -E "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
-                        | sed "s|^ *origin/$branch_prefix-||" \
-                        | sed "s|-dev$||")
-
-          if [[ -z "$version" ]]; then
-            latest_version=$(gh release view \
-                          --repo open-telemetry/semantic-conventions \
-                          --json tagName \
-                          --jq .tagName)
-            if [[ $latest_version =~ ^v([0-9]+)\.([0-9]+)\. ]]; then
-              major="${BASH_REMATCH[1]}"
-              minor="${BASH_REMATCH[2]}"
-              version="v$major.$((minor + 1)).0"
-            else
-              echo "unexpected version: $latest_version"
-              exit 1
-            fi
-          fi
-
-          echo "VERSION=$version" >> $GITHUB_ENV
-          echo "BRANCH=$branch_prefix-$version-dev" >> $GITHUB_ENV
+        run: node scripts/gh/specs/pick-branch/cli.mjs --spec=semconv
 
       - name: Checkout or create branch
         run: |
@@ -83,8 +66,8 @@ jobs:
 
       - name: Update submodule and Hugo mounts
         run: |
-          git submodule update --init content-modules/semantic-conventions
-          cd content-modules/semantic-conventions
+          git submodule update --init content-modules/${{ env.REPO }}
+          cd content-modules/${{ env.REPO }}
 
           if git ls-remote --exit-code --tags origin $VERSION; then
             git reset --hard $VERSION
@@ -96,10 +79,10 @@ jobs:
           commit_desc=$(git describe --tags)
           cd ../..
 
-          sed -i "s/^\tsemconv-pin = .*/\tsemconv-pin = $commit_desc/" .gitmodules
+          sed -i "s/^\t${{ env.ABBR }}-pin = .*/\t${{ env.ABBR }}-pin = $commit_desc/" .gitmodules
 
           if [ "$tag_exists" == "true" ]; then
-            sed -i "s/^\(\s *\)semconv: .*/\1semconv: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
+            sed -i "s/^\(\s *\)${{ env.ABBR }}: .*/\1${{ env.ABBR }}: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
           fi
 
           ./scripts/update-semconv-mounts.pl
@@ -107,7 +90,7 @@ jobs:
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Update semconv submodule to $commit_desc"
+            git commit -am "Update ${{ env.ABBR }} submodule to $commit_desc"
             git push
           fi
 
@@ -137,7 +120,7 @@ jobs:
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
-            gh pr create --title "DRAFT Update semantic conventions to unreleased $VERSION-dev" \
-                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) semantic conventions." \
+            gh pr create --title "DRAFT Update ${{ env.REPO }} to unreleased $VERSION-dev" \
+                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) [${{ env.REPO }}](https://github.com/open-telemetry/${{ env.REPO }})." \
                          --draft
           fi

@@ -1,7 +1,7 @@
 ---
 title: Internal telemetry
 weight: 25
-cSpell:ignore: alloc batchprocessor journalctl
+cSpell:ignore: alloc batchprocessor journalctl otelgrpc
 ---
 
 You can inspect the health of any OpenTelemetry Collector instance by checking
@@ -160,6 +160,15 @@ You can further configure how metrics from the Collector are emitted by using
 configuration updates the metric named `otelcol_process_uptime` to emit a new
 name `process_uptime` and description:
 
+> [!NOTE]
+>
+> When configuring the Prometheus exporter for internal metrics manually (using
+> `readers`), `otelcol_process_uptime` may be exported as
+> `otelcol_process_uptime_seconds_total` unless `without_type_suffix` and
+> `without_units` are set to `true`. Use the `instrument_name` value
+> `otelcol_process_uptime` (the OTLP name) in views regardless. To control
+> Prometheus-specific suffixes, see [Unit suffixes](#unit-suffixes).
+
 ```yaml
 service:
   telemetry:
@@ -310,7 +319,7 @@ libraries.
 By default and unique to Prometheus, the Prometheus exporter adds a `_total`
 suffix to summation metrics to follow Prometheus naming conventions, such as
 `otelcol_exporter_send_failed_spans_total`. This behavior can be disabled by
-setting `without_type_suffix: false` in the Prometheus exporter's configuration.
+setting `without_type_suffix: true` in the Prometheus exporter's configuration.
 
 If you leave out `service::telemetry::metrics::readers` in the Collector
 configuration, the default Prometheus exporter set up by the Collector already
@@ -323,6 +332,38 @@ Internal metrics exported through OTLP do not have this behavior. The
 [internal metrics](#lists-of-internal-metrics) on this page are listed in OTLP
 format, such as `otelcol_exporter_send_failed_spans`.
 
+#### `_seconds` and other unit suffixes {#unit-suffixes}
+
+The Prometheus exporter appends a unit suffix to metrics that carry a unit. For
+example, `otelcol_process_uptime` (unit: seconds) can be exported as
+`otelcol_process_uptime_seconds_total` — the `_seconds` unit suffix is added
+first, then the `_total` counter suffix.
+
+The default Prometheus exporter configured by the Collector (when no `readers`
+are specified) already sets `without_type_suffix` and `without_units` to `true`
+for backwards compatibility, so `otelcol_process_uptime` is used as-is.
+
+However, when you manually configure the Prometheus exporter under
+`service::telemetry::metrics::readers`, those options are not set by default. To
+keep the original, shorter metric names, explicitly set both options to `true`:
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      readers:
+        - pull:
+            exporter:
+              prometheus:
+                host: '0.0.0.0'
+                port: 8888
+                without_type_suffix: true
+                without_units: true
+```
+
+With this configuration, `otelcol_process_uptime_seconds_total` is exported as
+`otelcol_process_uptime`.
+
 #### Dots (`.`) v. underscores (`_`) {#dots-v-underscores}
 
 `http*` and `rpc*` metrics come from instrumentation libraries. Their original
@@ -334,7 +375,7 @@ naming conventions, resulting in metric names that looked like
 Versions 0.120.0 and later of the Collector use Prometheus 3.0 scrapers, so the
 original `http*` and `rpc*` metric names with dots are preserved. The
 [internal metrics](#lists-of-internal-metrics) on this page are listed in their
-original form, such as`rpc.server.duration`. For more information, see the
+original form, such as `rpc.server.call.duration`. For more information, see the
 [Collector v0.120.0 release notes](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CHANGELOG.md#v01200).
 
 ### Lists of internal metrics
@@ -412,35 +453,54 @@ files in the repository.
 
 #### Additional `detailed`-level metrics
 
-| Metric name                                           | Description                                                                               | Type      |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------------------- | --------- |
-| `http.client.request.body.size`                       | Measures the size of HTTP client request bodies.                                          | Counter   |
-| `http.client.request.duration`                        | Measures the duration of HTTP client requests.                                            | Histogram |
-| `http.server.request.body.size`                       | Measures the size of HTTP server request bodies.                                          | Counter   |
-| `http.server.request.duration`                        | Measures the duration of HTTP server requests.                                            | Histogram |
-| `http.server.response.body.size`                      | Measures the size of HTTP server response bodies.                                         | Counter   |
-| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | Number of bytes in the batch that was sent.                                               | Histogram |
-| `rpc.client.duration`                                 | Measures the duration of outbound RPC.                                                    | Histogram |
-| `rpc.client.request.size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
-| `rpc.client.requests_per_rpc`                         | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
-| `rpc.client.response.size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
-| `rpc.client.responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
-| `rpc.server.duration`                                 | Measures the duration of inbound RPC.                                                     | Histogram |
-| `rpc.server.request.size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
-| `rpc.server.requests_per_rpc`                         | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
-| `rpc.server.response.size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
-| `rpc.server.responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
+| Metric name                                           | Description                                                     | Type      |
+| ----------------------------------------------------- | --------------------------------------------------------------- | --------- |
+| `http.client.request.body.size`                       | Measures the size of HTTP client request bodies.                | Counter   |
+| `http.client.request.duration`                        | Measures the duration of HTTP client requests.                  | Histogram |
+| `http.server.request.body.size`                       | Measures the size of HTTP server request bodies.                | Counter   |
+| `http.server.request.duration`                        | Measures the duration of HTTP server requests.                  | Histogram |
+| `http.server.response.body.size`                      | Measures the size of HTTP server response bodies.               | Counter   |
+| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | Number of bytes in the batch that was sent.                     | Histogram |
+| `rpc.client.call.duration`                            | Measures the duration of outbound remote procedure calls (RPC). | Histogram |
+| `rpc.server.call.duration`                            | Measures the duration of inbound remote procedure calls (RPC).  | Histogram |
 
-> [!NOTE]
->
-> The `http*` and `rpc*` metrics are not covered by the maturity levels below
-> since they are not under the Collector SIG control.
->
-> The `otelcol_processor_batch_` metrics are unique to the `batchprocessor`.
->
-> The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
-> `otelcol_exporter_` metrics come from their respective `helper` packages. As
-> such, some components not using those packages might not emit them.
+#### Ownership of emitted metrics
+
+Some metrics are not owned by the Collector SIG and some are limited to certain
+components.
+
+**`http*`and `rpc` metrics**
+
+These metrics are not under the Collector SIG's control, and as such, are not
+covered by the maturity levels below.
+
+**`rpc` metrics**
+
+The Collector's internal RPC metrics come from the upstream
+[`otelgrpc`](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/google.golang.org/grpc/otelgrpc)
+instrumentation, which tracks the
+[OpenTelemetry RPC semantic conventions](/docs/specs/semconv/rpc/rpc-metrics/).
+The set of RPC metrics emitted by the Collector has changed across releases:
+
+| Collector version    | Emitted RPC metrics                                                                                                                                                |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| v0.146.x and earlier | `rpc.client.duration`, `rpc.server.duration`, `rpc.*.request.size`, `rpc.*.response.size`, `rpc.*.requests_per_rpc`, `rpc.*.responses_per_rpc`                     |
+| v0.147.0             | `rpc.client.call.duration`, `rpc.server.call.duration`, `rpc.*.request.size`, `rpc.*.response.size` (the `*_per_rpc` metrics are deprecated and no longer emitted) |
+| v0.148.0 and later   | `rpc.client.call.duration`, `rpc.server.call.duration` only                                                                                                        |
+
+RPC size metrics are not emitted by Collector v0.148.0 or later. The
+[RPC semantic conventions v1.40.0](https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.40.0)
+deprecated them due to ambiguous definitions and inconsistent implementation.
+
+**`otelcol_processor_batch_*` metrics**
+
+These metrics are unique to the `batchprocessor`.
+
+**`helper` package metrics**
+
+The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
+`otelcol_exporter_` metrics come from their respective `helper` packages. As
+such, some components not using those packages might not emit them.
 
 ### Events observable with internal logs
 

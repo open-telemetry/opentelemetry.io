@@ -1,0 +1,33 @@
+{{- /*
+Component link shortcode - generates GitHub links with version from data file
+
+Usage: {{< component-link name="otlpreceiver" type="receiver" repo="core" >}}
+       {{< component-link name="encodingextension" type="extension" subtype="encoding" repo="contrib" >}}
+
+Parameters:
+- name: Component name (required)
+- type: Component type (receiver, processor, exporter, connector, extension) (required)
+- repo: Repository (core or contrib) (required)
+- subtype: Optional subtype for nested components (e.g., "encoding" for extensions)
+
+Versions are dynamically read from data/collector-versions.yml
+*/ -}}
+
+{{- $name := .Get "name" -}}
+{{- $type := .Get "type" -}}
+{{- $repo := .Get "repo" -}}
+{{- $subtype := .Get "subtype" -}}
+
+{{- $repoName := cond (eq $repo "core") "opentelemetry-collector" "opentelemetry-collector-contrib" -}}
+{{- $version := index .Site.Data "collector-versions" $repo -}}
+
+{{- $path := "" -}}
+{{- if $subtype -}}
+  {{- $path = printf "%s/%s/%s" $type $subtype $name -}}
+{{- else -}}
+  {{- $path = printf "%s/%s" $type $name -}}
+{{- end -}}
+
+{{- $url := printf "https://github.com/open-telemetry/%s/tree/%s/%s" $repoName $version $path -}}
+
+<a href="{{- $url -}}" target='_blank'>{{- $name -}}</a>

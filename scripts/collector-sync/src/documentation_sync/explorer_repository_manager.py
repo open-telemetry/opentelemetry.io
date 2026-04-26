@@ -2,7 +2,6 @@
 
 import logging
 from pathlib import Path
-from typing import Optional
 
 from git import Repo
 from git.exc import GitCommandError
@@ -14,17 +13,17 @@ class ExplorerRepositoryManager:
     """Manages cloning and updating the opentelemetry-ecosystem-explorer repository."""
 
     EXPLORER_REPO_URL = "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer.git"
-    DEFAULT_CLONE_PATH = Path("tmp_repos/opentelemetry-ecosystem-explorer")
+    DEFAULT_CLONE_PATH = Path("tmp/repos/opentelemetry-ecosystem-explorer")
 
-    def __init__(self, clone_path: Optional[Path] = None):
+    def __init__(self, clone_path: Path | None = None):
         """Initialize the repository manager.
 
         Args:
             clone_path: Path where the repository should be cloned.
-                       Defaults to tmp_repos/opentelemetry-ecosystem-explorer
+                       Defaults to tmp/repos/opentelemetry-ecosystem-explorer
         """
         self.clone_path = clone_path or self.DEFAULT_CLONE_PATH
-        self._repo: Optional[Repo] = None
+        self._repo: Repo | None = None
 
     def ensure_repository(self) -> Path:
         """Ensure the repository is cloned and up to date.

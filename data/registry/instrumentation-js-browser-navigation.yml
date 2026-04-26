@@ -1,0 +1,20 @@
+title: OpenTelemetry Instrumentation Browser Navigation
+registryType: instrumentation
+language: js
+tags:
+  - js
+  - instrumentation
+license: Apache 2.0
+description:
+  This module provides automatic instrumentation for browser navigation in Web
+  applications. It emits log records via the Logs API to represent:.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-browser-navigation
+createdAt: 2025-03-26
+package:
+  registry: npm
+  name: '@opentelemetry/instrumentation-browser-navigation'
+  version: 0.8.0
+isFirstParty: false

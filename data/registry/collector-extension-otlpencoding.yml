@@ -1,0 +1,21 @@
+# cSpell:ignore unmarshals otlpencodingextension
+title: OTLP Encoding Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+license: Apache 2.0
+description:
+  This extension unmarshals and marshals data encoded according to the [OTLP
+  specification](https://opentelemetry.io/docs/specs/otlp/).
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/otlpencodingextension
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding/otlpencodingextension
+  version: v0.150.0

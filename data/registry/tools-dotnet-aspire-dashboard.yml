@@ -1,4 +1,4 @@
-title: Standalone .NET Aspire dashboard
+title: Standalone Aspire Dashboard
 registryType: utilities
 language: dotnet
 tags:
@@ -7,12 +7,13 @@ tags:
   - viewer
   - browser-based
 urls:
-  repo: https://github.com/dotnet/aspire/tree/main/src/Aspire.Dashboard
-  docs: https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/dashboard/standalone?tabs=bash
+  repo: https://github.com/microsoft/aspire/tree/main/src/Aspire.Dashboard
+  docs: https://aspire.dev/dashboard/standalone/
 license: MIT
 description:
-  The .NET Aspire Dashboard is a browser-based app to view run-time information
-  about your distributed application.
+  The Aspire Dashboard is a docker based dashboard for viewing OpenTelemetry
+  data, correlating Logs, Traces and Metrics with unique visualisations tied to
+  the OpenTelemetry Semantic Conventions.
 authors:
   - name: Microsoft
     url: https://github.com/microsoft
