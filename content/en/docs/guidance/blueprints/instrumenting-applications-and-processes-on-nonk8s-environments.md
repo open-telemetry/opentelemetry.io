@@ -170,7 +170,7 @@ By implementing this guideline, organizations can expect to achieve:
 
 ### 3. Standardize resource attribution and distribute reusable instrumentation building blocks
 
-<small>Challenges addressed: 1</small>
+_Challenges addressed: 1_
 
 Define an organization-wide telemetry contract for resource attribution and
 ensure it is applied consistently across all workloads. This should not rely
