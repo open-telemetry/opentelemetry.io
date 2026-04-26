@@ -263,7 +263,7 @@ Documentation:
 
 ### 3. Package and deploy standardized agents and SDK bootstrap artifacts
 
-<small>Guidelines supported: 1, 3</small>
+_Guidelines supported: 1, 3_
 
 Use configuration management and image packaging to deliver supported telemetry
 components consistently across hosts and containerized workloads.
