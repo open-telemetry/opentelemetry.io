@@ -333,7 +333,7 @@ Documentation:
 
 _Guidelines supported: 2, 3_
 
-Use the Collector Gateway layer and centrally owned configuration to enforce
+Use the Collector gateway layer and centrally owned configuration to enforce
 organization-wide rules for processing, routing, and exporting telemetry.
 
 Checklist:
