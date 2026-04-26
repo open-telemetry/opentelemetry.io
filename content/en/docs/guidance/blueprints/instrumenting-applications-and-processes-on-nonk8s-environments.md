@@ -116,7 +116,7 @@ ensuring consistent data quality.
 
 ### 1. Centrally manage agent lifecycle while allowing controlled customization
 
-<small>Challenges addressed: 1, 2</small>
+_Challenges addressed: 1, 2_
 
 Use OpAMP, where supported, to centrally manage OpenTelemetry agents running as
 system services or service containers. Platform teams should own the baseline
