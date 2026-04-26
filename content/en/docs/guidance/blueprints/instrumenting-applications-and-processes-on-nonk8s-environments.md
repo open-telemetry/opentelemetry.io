@@ -286,7 +286,7 @@ Documentation:
 
 ### 4. Deploy an OpenTelemetry Collector gateway layer
 
-<small>Guidelines supported: 2</small>
+_Guidelines supported: 2_
 
 Deploy one or more OpenTelemetry Collector Gateways as the central processing
 and export tier. Choose a topology appropriate for the environment, such as
