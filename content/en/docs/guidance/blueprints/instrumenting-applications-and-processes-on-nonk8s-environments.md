@@ -2,6 +2,7 @@
 title: Instrumenting Infrastructure and Processes on Non-K8s Environments
 linkTitle: Instrumenting Infrastructure and Processes on Non-K8s Environments
 date: 2026-04-21
+cSpell:ignore: ciukaj lukasz rollouts
 author: Lukasz Ciukaj (Splunk)
 ---
 
