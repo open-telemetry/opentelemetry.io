@@ -110,13 +110,9 @@ This leads to:
 
 To address the challenges described above, organizations should adopt a set of
 strategic guidelines designed to streamline observability practices across
-diverse non-Kubernetes environments. These guidelines provide a foundation for
-standardizing telemetry instrumentation, automating agent management, and
-ensuring consistent data quality, whether workloads are running on VMs, bare
-metal, or as containers managed directly by a runtime. By following these
-recommendations, teams can reduce operational overhead, improve visibility, and
-lay the groundwork for scalable, sustainable observability in complex
-infrastructure landscapes.
+diverse environments. These guidelines provide a foundation for
+standardizing instrumentation, automating agent management, and
+ensuring consistent data quality. 
 
 ### 1. Centrally manage agent lifecycle while allowing controlled customization
 
