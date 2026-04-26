@@ -305,8 +305,8 @@ Checklist:
 
 Documentation:
 
-- [OpenTelemetry Collector Documentation](/docs/collector/)
-- [OpenTelemetry Collector Configuration](/docs/collector/configuration/)
+- [OpenTelemetry Collector deployment patterns](/docs/collector/deploy/)
+- [OpenTelemetry Collector configuration](/docs/collector/configuration/)
 
 ### 5. Enforce resource attribution and correlation standards
 
