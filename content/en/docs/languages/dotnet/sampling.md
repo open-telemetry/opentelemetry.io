@@ -22,4 +22,3 @@ var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .SetSampler(new TraceIdRatioBasedSampler(0.25))
     .Build();
 ```
-
