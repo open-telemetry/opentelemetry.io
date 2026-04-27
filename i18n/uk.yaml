@@ -1,0 +1,64 @@
+# Blockquote alert types
+# https://gohugo.io/render-hooks/blockquotes/#alerts
+# TODO: Upstream to Docsy
+
+caution: Застереження
+important: Важливо
+note: Примітка
+tip: Порада
+warning: Попередження
+
+# Docsy overrides
+
+ui_search: Спитати ШІ або шукати…
+
+# Community
+
+community_introduce: >-
+  {{ .Site.Title }} це проєкт з відкритим вихідним кодом, який кожен член
+  спільноти може використовувати, вдосконалювати та насолоджуватися ним. Ми
+  будемо раді, якщо ви приєднаєтеся до нас!
+
+community_contribute: >-
+  Щоб дізнатися, як зробити внесок до документації {{ .Site.Title }}, див.
+  [Внесок](/docs/contributing/). Інші корисні посилання:
+
+community_how_to:
+  Наш посібник зі стилю документації та багато іншого можна знайти тут
+community_guideline: Участь
+
+# Search AI
+ui_search_ai_modal_title: ШІ Асистент OpenTelemetry
+
+ui_search_ai_modal_disclaimer: >-
+  Отримуйте відповіді на основі документації сайту, OpenTelemetry GitHub, Stack
+  Overflow та інших ресурсів. [Поділитися
+  відгуком](https://github.com/open-telemetry/opentelemetry.io/discussions/6802).
+ui_search_ai_popover_content: >-
+  <a id='ask-ai-trigger' href='#'>Спитати ШІ</a> (&#x2318;-K)
+
+feedback_title: Відгук
+feedback_question: Чи це було корисним?
+feedback_positive: Так
+feedback_negative: Ні
+post_create_issue: Запропонувати зміни в документацію
+post_edit_this: Змінити сторінку
+post_view_this: Переглянути код сторінки
+
+# Collector component table headers
+collector_component_table_header_name: Назва
+collector_component_table_header_distributions: Дистрибутив
+collector_component_table_header_traces: Трейси
+collector_component_table_header_metrics: Метрики
+collector_component_table_header_logs: Логи
+collector_component_table_header_stability: Стабільність
+
+# Footnotes
+collector_component_distributions_footnote: >-
+  Показує, які [дистрибутиви](/docs/collector/distributions/) (core, contrib,
+  K8s тощо) включають цей компонент.
+
+collector_component_stability_footnote: >-
+  Для деталей про рівні стабільності компонентів див. [Визначення стабільності
+  компонентів OpenTelemetry
+  Collector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
