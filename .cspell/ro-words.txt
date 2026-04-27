@@ -10,7 +10,7 @@ consultǎ
 contribuitoare
 contribuitori
 contribuitorii
-Corecteazǎ
+corecteazǎ
 creeazǎ
 depanezi
 deții
@@ -26,8 +26,9 @@ interlingvistice
 intervaluri
 intervalurilor
 încorporezi
-Întreab
-Întreab-o
+întâmpini
+întreab
+întreab-o
 microservicii
 migrare
 migrezi
@@ -36,8 +37,12 @@ nestandard
 observabilitate
 observabilitatea
 observabilității
+postând
+prepopulată
 receptoarelor
+remediează
 semneazǎ
+sugerezi
 telemetrice
 telemetrie
 tranzacţie
