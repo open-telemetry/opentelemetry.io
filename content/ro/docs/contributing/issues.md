@@ -28,8 +28,8 @@ problemă existentă.
    sens.
 6. Lucrează la remedierea problemei. Anunță administratorii dacă întâmpini
    probleme.
-7. Când ești gata,
-   [trimite lucrarea printr-o cerere de extragere](../pull-requests) (PR).
+7. Când ești gata, [trimite lucrarea printr-un pull request](../pull-requests)
+   (PR).
 
 ## Raportarea unei probleme {#reporting-an-issue}
 
@@ -65,7 +65,7 @@ raporta erori și vulnerabilități de securitate.
 
 4. Trimite problema.
 
-### Cum să trimiți probleme excelente {#how-to-file-great-issues}
+### Cum să raportezi probleme excelente {#how-to-file-great-issues}
 
 Reține următoarele aspecte atunci când trimiți o problemă:
 
