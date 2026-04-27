@@ -5,7 +5,7 @@ weight: 11
 description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 # prettier-ignore
-cSpell:ignore: Dockerfiles dotnet GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver redis REDISCALA replicaset statefulset
+cSpell:ignore: Dockerfiles GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA replicaset statefulset
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
@@ -912,7 +912,7 @@ information about multi-instrumentation feature capabilities, see
 
 The OpenTelemetry Operator can automatically set resource attributes as defined
 in the
-[OpenTelemetry Semantic Conventions](/docs/specs/semconv/non-normative/k8s-attributes.md).
+[OpenTelemetry Semantic Conventions](/docs/specs/semconv/non-normative/k8s-attributes/).
 
 ### Configure resource attributes with annotations
 
