@@ -1,7 +1,7 @@
 ---
 title: Introducing the Ecosystem Explorer Project
 linkTitle: Introducing the Ecosystem Explorer Project
-date: 2026-04-30
+date: 2026-04-26
 author: '[Jay DeLuca](https://github.com/jaydeluca) (Grafana Labs)'
 sig: Comms
 ---
@@ -51,15 +51,17 @@ pages that show exactly what spans, metrics, and attributes each instrumentation
 emits. Configuration options are documented and mapped to the telemetry they
 affect.
 
-![Example telemetry overview](influx-telemetry-by-config.png)
+![Example telemetry overview](vertx-telemetry.png)
 
 Version support is built in. The Explorer tracks multiple Java agent releases,
 so you can see what telemetry a specific version produces, or what changed
 between versions. This is particularly useful when planning upgrades or
 debugging why telemetry looks different after a release.
 
+![Example version comparison](vertx-comparison.png)
+
 There is automation that runs nightly. When a new Java agent version releases,
-the pipelines pick it up, extract the metadata, and update the registry. No
+the pipelines pick it up, extract the metadata, and update the registry, so no
 manual intervention required.
 
 We've validated the initial approach with Java. Now we need help expanding to
@@ -179,10 +181,14 @@ you're a front-end developer, you can make a visible impact quickly.
 
 ## Join the expedition
 
-Some contributors will go deep in one area. Others will help across multiple.
-Both are valuable. The codebase is approachable, the maintainers are active, and
-we're happy to help people get oriented. Big shout out to the community members
-who have already contributed to the project in its early stages:
+Some contributors will go deep in one area, while others might help across
+multiple. We're excited to welcome newcomers, and happy to help people get
+oriented. If an issue looks interesting, but you're not sure where to start,
+just ask! The maintainers are active and happy to help point you in the right
+direction.
+
+Big shout out to some of the community members who have already contributed to
+the project in its early stages:
 
 <!-- cspell:disable -->
 
@@ -190,6 +196,8 @@ who have already contributed to the project in its early stages:
 - [Luca Cavenaghi (@lucacavenaghi97)](https://github.com/lucacavenaghi97)
 - [Adam Silva @adaumsilva](https://github.com/adaumsilva)
 - [Manohar Mallipudi (@Vjc5h3nt)](https://github.com/Vjc5h3nt)
+- [Erick Ruiz de Chavez (@eruizdechavez)](https://github.com/eruizdechavez)
+- [Love Kumar Chauhan (@LoveChauhan-18)](https://github.com/LoveChauhan-18)
 
 <!-- cspell:enable -->
 
