@@ -1,6 +1,6 @@
 ---
 title: Introducing the Ecosystem Explorer Project
-linkTitle: Introducing the Ecosystem Explorer Project
+linkTitle: Ecosystem Explorer Project
 date: 2026-04-30
 author: '[Jay DeLuca](https://github.com/jaydeluca) (Grafana Labs)'
 sig: Comms
