@@ -1,5 +1,6 @@
 ---
 title: Events
+weight: 30
 ---
 
 The OpenTelemetry community participates in and organizes various events
@@ -9,7 +10,7 @@ the project, and connect with the broader observability community.
 
 ## Upcoming Events
 
-{{< community-event-list >}}
+{{% community-events %}}
 
 ## Key Community Events
 
