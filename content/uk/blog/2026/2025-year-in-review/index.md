@@ -8,7 +8,7 @@ author: >-
 sig: Comms
 default_lang_commit: f09627656c918ddb572c6c876beed29bb415f5ef
 # prettier-ignore
-cSpell:ignore: chalin Hrabusa jaydeluca Msksgm Vasconcellos vitorvasc windsonsea Васконселос Вітор Майкл Масакі Патріс Сугімото Шалін Яо коміти комітів рефакторинг
+cSpell:ignore: Hrabusa jaydeluca Msksgm Vasconcellos vitorvasc windsonsea Васконселос Вітор Майкл Масакі Патріс Сугімото Шалін Яо коміти комітів рефакторинг
 ---
 
 2025 рік добіг кінця, і ми вирішили приділити хвилинку, щоб оглянути все, чого спільнота досягла в рамках розвитку вебсайту, документації та локалізації. Цей рік став ще однією захопливою главою в історії OpenTelemetry.io, і ми раді поділитися з вами деякими найважливішими подіями.
