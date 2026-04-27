@@ -18151,6 +18151,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T22:51:33.348440726Z"
   },
+  "https://icinga.com/docs/icinga-2/latest/doc/14-features/#otlpmetrics-writer": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-27T16:30:31.570340418Z"
+  },
   "https://img.shields.io/badge/-deprecated-red": {
     "StatusCode": 200,
     "LastSeen": "2026-04-23T10:08:52.323865258Z"
