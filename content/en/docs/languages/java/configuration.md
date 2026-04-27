@@ -272,7 +272,7 @@ Properties for setting exporters:
 | System property                  | Purpose                                                                                                                                                                | Default         |
 | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | `otel.traces.exporter`           | Comma-separated list of span exporters. Known values include `otlp`, `zipkin`, `console`, `logging-otlp`, `none`. **[1]**                                              | `otlp`          |
-| `otel.metrics.exporter`          | Comma-separated list of metric exporters. Known values include `otlp`, `prometheus`, `none`. **[1]**                                                                   | `otlp`          |
+| `otel.metrics.exporter`          | Comma-separated list of metric exporters. Known values include `otlp`, `prometheus`, `console`, `none`. **[1]**                                                        | `otlp`          |
 | `otel.logs.exporter`             | Comma-separated list of log record exporters. Known values include `otlp`, `console`, `logging-otlp`, `none`. **[1]**                                                  | `otlp`          |
 | `otel.java.exporter.memory_mode` | If `reusable_data`, enable reusable memory mode (on exporters which support it) to reduce allocations. Known values include `reusable_data`, `immutable_data`. **[2]** | `reusable_data` |
 
