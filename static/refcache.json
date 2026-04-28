@@ -18168,12 +18168,12 @@
     "LastSeen": "2026-04-28T12:57:44.116579358Z"
   },
   "https://javadoc.io/doc/com.azure/azure-cosmos/latest/com/azure/cosmos/CosmosAsyncContainer.html#executeBulkOperations%28reactor.core.publisher.Flux%29": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:56:30.513266364Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T09:13:30.327011-04:00"
   },
   "https://javadoc.io/doc/io.opentelemetry": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:10.552902564Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:10:22.535Z"
   },
   "https://javadoc.io/doc/org.apache.logging.log4j/log4j-api/latest/org.apache.logging.log4j/org/apache/logging/log4j/Logger.html": {
     "StatusCode": 200,
@@ -23636,60 +23636,60 @@
     "LastSeen": "2026-04-22T22:51:17.278859003Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/Baggage.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:56:53.647349193Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:10:39.172Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/propagation/W3CBaggagePropagator.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:56:58.708977649Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:10:42.043Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/common/Attributes.html": {
     "StatusCode": 200,
     "LastSeen": "2026-04-22T22:51:15.645768932Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/LogRecordBuilder.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:56:50.872200684Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:10:44.934Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/Logger.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:56:44.647360876Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:10:47.658Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/LoggerProvider.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:56:36.859631954Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:10:50.53Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleCounter.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:21.043935131Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:10:53.371Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleGauge.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:56:11.656648635Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:11:27.038Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleHistogram.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:59.551043124Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:11:29.781Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleUpDownCounter.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:46.374071119Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:11:32.6Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongCounter.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:15.170929086Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:11:35.434Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongGauge.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:56:18.237143716Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:11:38.338Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongHistogram.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:56:04.271047995Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:11:41.208Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongUpDownCounter.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:41.473997887Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:11:44.154Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/Meter.html": {
     "StatusCode": 200,
@@ -23700,28 +23700,28 @@
     "LastSeen": "2026-04-25T09:53:50.037423844Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleCounter.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:33.20505486Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:11:46.925Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleGauge.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:56:25.603562419Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:11:49.819Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleUpDownCounter.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:54.497447142Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:11:52.718Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongCounter.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:27.142709138Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:11:55.594Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongGauge.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:56:30.210914417Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:11:58.512Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongUpDownCounter.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:49.380333201Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:12:01.287Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/Span.html": {
     "StatusCode": 200,
@@ -23756,12 +23756,12 @@
     "LastSeen": "2026-04-22T22:51:13.40054316Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/TextMapPropagator.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:19.808052993Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:12:04.009Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-prometheus/latest/io/opentelemetry/exporter/prometheus/PrometheusMetricReader.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:04.448300966Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:12:06.812Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-common/latest/io/opentelemetry/sdk/resources/Resource.html": {
     "StatusCode": 200,
@@ -23772,8 +23772,8 @@
     "LastSeen": "2026-04-25T09:53:39.417769185Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/ConfigurablePropagatorProvider.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:00.237749674Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:12:09.599Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/ResourceProvider.html": {
     "StatusCode": 200,
@@ -23796,28 +23796,28 @@
     "LastSeen": "2026-04-25T09:53:43.796079528Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/LogLimits.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:13.678407589Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:12:12.396Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/LogRecordProcessor.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:05.436678075Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:12:15.229Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/SdkLoggerProvider.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:00.664103497Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:12:18.069Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/export/LogRecordExporter.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:08.653316865Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:12:20.816Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/SdkMeterProvider.html": {
     "StatusCode": 200,
     "LastSeen": "2026-04-25T09:53:41.937016545Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/View.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-04-28T12:55:00.277171114Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T13:12:23.591Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/CardinalityLimitSelector.html": {
     "StatusCode": 200,
