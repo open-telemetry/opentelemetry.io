@@ -163,7 +163,6 @@ repo:
       - 'help wanted'
       - 'mentorship:bloomberg'
 
-
   comment_templates:
     stale: |
       This issue has had no activity for {N} months and the referenced content has

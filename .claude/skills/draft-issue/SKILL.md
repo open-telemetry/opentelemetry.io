@@ -189,8 +189,8 @@ all label suggestions. Categories: `area`, `sig`, `localization`, `effort`,
   manually on issues.
 - `localization` — auto-applied to PRs touching `content/<lang>/**`; add
   manually on issues.
-- `availability` — use to signal contributor-grabbable issues (`good first
-  issue`, `help wanted`, `contribfest`, `mentorship:bloomberg`).
+- `availability` — use to signal contributor-grabbable issues
+  (`good first issue`, `help wanted`, `contribfest`, `mentorship:bloomberg`).
 
 > **Do not use `type:discussion`.** Its own label description says "Do not use,
 > convert discussion issues into real Discussions." Skip it in drafts.

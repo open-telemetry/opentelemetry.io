@@ -240,8 +240,8 @@ issues in the repo.
 ### 7. Produce Recommendation
 
 Apply the confidence tiers and triage action tokens from
-`analysis-checklist.md`. For close commands, apply the close-reason mapping
-from `gh-commands.md`.
+`analysis-checklist.md`. For close commands, apply the close-reason mapping from
+`gh-commands.md`.
 
 **Mandatory labels on `add-labels` / `label:triage:accepted*`.** Per
 `content/en/docs/contributing/sig-practices.md:77-107`, every accepted issue
@@ -358,9 +358,10 @@ explaining the verdict, noting any high-weight concerns.
 gh issue edit <number> -R <REPO> --add-label "<verdict_label>"
 ```
 
-> Omit the `gh` command block entirely if `evaluation_profile.verdict_labels` has no entry for the reached verdict tier.
+> Omit the `gh` command block entirely if `evaluation_profile.verdict_labels`
+> has no entry for the reached verdict tier.
 
-````
+```
 
 ### Link Format Rules
 
@@ -422,3 +423,4 @@ Source-of-truth files — if this agent drifts from them, trust the file:
   profile for `open-telemetry/opentelemetry.io`
 - Plugin: `${CLAUDE_PLUGIN_ROOT}/schemas/triage-profiles.schema.json` — profile
   schema
+```

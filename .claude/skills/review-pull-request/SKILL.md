@@ -24,27 +24,30 @@ taxonomy, defer to `draft-issue`.
 
 ## Bundled references {#bundled-references}
 
-Cold-path detail lives under `references/`. Load each file **only when you enter
-the step or action that uses it**:
+Most reference material for this skill lives in the public site documentation
+and the contributing guide. The skill loads them on demand rather than restating
+the content. The only file under `references/` is the docs review checklist,
+which is skill-specific:
 
-- [`references/ci-checks.md`](./references/ci-checks.md) — workflow → check name
-  → validation → fix table, shard rules, link-check escape hatch. Read during
-  step 3 (walk CI checks).
-- [`references/process-rules.md`](./references/process-rules.md) — CLA,
-  linked-issue, locale-span, AI policy, submodules, branch freshness, stale,
-  co-owned. Read during step 4 (verify process rules).
-- [`references/labels.md`](./references/labels.md) — auto-applied labels,
-  script-managed approval labels, and other PR-review labels. Read when the
-  label set looks wrong or needs auditing.
-- [`references/fix-bot-commands.md`](./references/fix-bot-commands.md) — the
-  `/fix` and `/fix:<name>` comment syntax the `otelbot` workflow accepts. Read
-  when recommending an automated fix.
-- [`references/local-commands.md`](./references/local-commands.md) —
-  `npm run check:*` / `fix:*` scripts for reproducing CI locally. Read when
-  pointing the author at a local fix path.
 - [`references/content-review.md`](./references/content-review.md) — docs
   content criteria + final review checklist. Read during step 5 (review content)
   and again before writing the review output.
+
+External references the workflow points at — read on demand:
+
+- [`content/en/docs/contributing/pr-checks.md`](../../../content/en/docs/contributing/pr-checks.md):
+  every PR check workflow with jobs, validation, and local-fix command. Read
+  during step 3 (walk CI checks).
+- [`content/en/site/build/npm-scripts.md`](../../../content/en/site/build/npm-scripts.md):
+  full `npm run` catalog. Read when pointing the author at a local fix path.
+- [`content/en/docs/contributing/pull-requests.md`](../../../content/en/docs/contributing/pull-requests.md),
+  [`content/en/docs/contributing/sig-practices.md`](../../../content/en/docs/contributing/sig-practices.md),
+  [`content/en/docs/contributing/localization.md`](../../../content/en/docs/contributing/localization.md),
+  [`content/en/docs/contributing/pr-checks.md`](../../../content/en/docs/contributing/pr-checks.md),
+  [`content/en/docs/contributing/issues.md`](../../../content/en/docs/contributing/issues.md)
+  — process rules deep-linked from step 4.
+- `.claude/data/opentelemetry-website.yml` — full repository label taxonomy
+  (read via the sibling `draft-issue` skill).
 
 ## Arguments {#arguments}
 
@@ -67,7 +70,8 @@ the step or action that uses it**:
 
 ## PR Review Workflow {#pr-review-workflow}
 
-1. **Fetch.** Pull PR metadata, diff, and check status:
+1. **Setup.** Pull PR metadata, diff, and checks, then classify the changed
+   files:
 
    ```bash
    gh pr view <N> --json title,body,files,reviews,labels,author,isDraft,headRepositoryOwner
@@ -75,22 +79,57 @@ the step or action that uses it**:
    gh pr checks <N>
    ```
 
-2. **Classify.** Group changed files: `content/en/blog/**`,
-   `content/en/docs/**`, `content/<lang>/**`, `data/registry/**`, `.github/**`,
-   `scripts/**`, config files. Classification drives which CI checks matter and
-   which reference files apply.
-3. **Walk CI checks.** Open
-   [`references/ci-checks.md`](./references/ci-checks.md) and match each check
-   from `gh pr checks` to the table. Note what each failure means and the
-   suggested fix path.
-4. **Verify process rules.** Open
-   [`references/process-rules.md`](./references/process-rules.md) and walk the
-   rules against the PR — especially CLA, linked-issue, locale-span, AI policy,
-   and the approval-label workflow.
-5. **Review content.** Open
+   Group files into `content/en/blog/**`, `content/en/docs/**`,
+   `content/<lang>/**`, `data/registry/**`, `.github/**`, `scripts/**`, or
+   config. Classification drives which CI checks matter and which reference
+   files apply.
+
+2. **Walk CI checks.** For each failing check, match the
+   `<workflow-name> / <job-name>` against
+   [`pr-checks.md`](../../../content/en/docs/contributing/pr-checks.md) — every
+   check has a section explaining what it validates and the local fix command.
+   Caveats:
+   - Link checking is sharded (`en` / `locales-A-to-M` / `locales-N-to-Z`) — a
+     single shard failing does not necessarily block merge. Read the specific
+     failure.
+   - Fork PRs can hit token-scope limits that look like check failures but are
+     permissions artifacts. Read the log before concluding.
+   - `Netlify Deploy Preview` failures: click **Details** for the build log
+     before reasoning about them.
+
+3. **Verify process rules.** Walk each themed group against the PR.
+
+   **Pre-merge approval**
+   - CLA: every commit author email is covered (CNCF EasyCLA) —
+     [`pr-checks.md#easy-cla`](../../../content/en/docs/contributing/pr-checks.md#easy-cla).
+   - Linked issue: PR references an issue labeled `triage:accepted`. Exceptions:
+     auto-update PRs, hotfixes by maintainers/approvers —
+     [`sig-practices.md#prs`](../../../content/en/docs/contributing/sig-practices.md#prs).
+   - Co-owned PRs: docs approver + SIG/locale approver —
+     [`sig-practices.md#co-owned-prs`](../../../content/en/docs/contributing/sig-practices.md#co-owned-prs),
+     [`#translation-prs`](../../../content/en/docs/contributing/sig-practices.md#translation-prs).
+
+   **Content origin**
+   - Submodules: non-maintainer PRs should not touch them; a maintainer fixes
+     before merge —
+     [`sig-practices.md#general`](../../../content/en/docs/contributing/sig-practices.md#general).
+   - Locale span: semantic changes per-locale; editorial cross-locale edits OK
+     and append `# patched` to `default_lang_commit` —
+     [`localization.md#prs-should-not-span-locales`](../../../content/en/docs/contributing/localization.md#prs-should-not-span-locales),
+     [`#patch-locale-links`](../../../content/en/docs/contributing/localization.md#patch-locale-links).
+
+   **Branch state**
+   - Branch freshness: authors should not continuously rebase; maintainers
+     update before merge —
+     [`sig-practices.md#general`](../../../content/en/docs/contributing/sig-practices.md#general).
+   - Stale handling: `stale` after 21 days inactivity; never auto-closed —
+     [`sig-practices.md#prs`](../../../content/en/docs/contributing/sig-practices.md#prs).
+
+4. **Review content.** Open
    [`references/content-review.md`](./references/content-review.md). Defer to
    `review-blog-post` for blog PRs.
-6. **Write output.** Use the shape in
+
+5. **Write output.** Use the shape in
    [Review Output Format](#review-output-format). Before finalizing, walk the
    checklist at the bottom of
    [`references/content-review.md`](./references/content-review.md#pr-review-checklist).
@@ -99,15 +138,17 @@ the step or action that uses it**:
 
 `static/refcache.json` is a 1MB+ cache of external-link status codes.
 `npm run check:links` updates it as a side effect — authors commit the updated
-file themselves (`pr-checks.md:99-104`). The `Links / REFCACHE updates?` job
-fails if the refcache on the PR branch is stale relative to what the link check
-produced.
+file themselves
+([`pr-checks.md#build-and-check-links`](../../../content/en/docs/contributing/pr-checks.md#build-and-check-links)).
+The `Links / REFCACHE updates?` job fails if the refcache on the PR branch is
+stale relative to what the link check produced.
 
 Avoid hand-editing `refcache.json`. If a URL returns a non-200 for server
 reasons (blocked bot, LinkedIn 999, etc.) use the `?link-check=no` /
-`&link-check=no` query parameter on the URL (`pr-checks.md:123-129`).
+`&link-check=no` query parameter on the URL
+([`pr-checks.md#handling-valid-external-links`](../../../content/en/docs/contributing/pr-checks.md#handling-valid-external-links)).
 Maintainers can validate 4xx entries via
-`./scripts/double-check-refcache-4XX.mjs` (`pr-checks.md:131-143`).
+`./scripts/double-check-refcache-4XX.mjs`.
 
 ## Review Output Format {#review-output-format}
 
@@ -133,46 +174,43 @@ What the author did well. Keep short but present.
 
 ## References {#references}
 
-Bundled skill resources (read on demand, see
+Bundled skill resource (read on demand, see
 [Bundled references](#bundled-references) for when-to-read guidance):
 
-- [`references/ci-checks.md`](./references/ci-checks.md) — CI check table +
-  shard rules + link-check escape hatch
-- [`references/process-rules.md`](./references/process-rules.md) — CLA,
-  linked-issue, locale-span, AI policy, submodules, freshness, stale, co-owned
-- [`references/labels.md`](./references/labels.md) — auto / approval-script /
-  other PR labels
-- [`references/fix-bot-commands.md`](./references/fix-bot-commands.md) — `/fix`
-  bot comment syntax
-- [`references/local-commands.md`](./references/local-commands.md) —
-  `npm run check:*` / `fix:*` scripts
 - [`references/content-review.md`](./references/content-review.md) — docs
   content review criteria + final checklist
 
+External docs the skill points at — read on demand:
+
+- [`content/en/docs/contributing/pr-checks.md`](../../../content/en/docs/contributing/pr-checks.md)
+  — per-check decoder for failing PR checks (what each validates, how to fix).
+  Read during step 3 (walk CI checks).
+- [`content/en/site/build/npm-scripts.md`](../../../content/en/site/build/npm-scripts.md)
+  — full `npm run` catalog (check / fix / build / test). Read when pointing the
+  author at a local fix path.
+
 Source-of-truth files — if this skill drifts from them, trust the file:
 
-- `content/en/docs/contributing/pull-requests.md` — AI policy (18-50), CLA (64),
-  fix-command list (168-179), `npm run fix:all` local fix
-- `content/en/docs/contributing/pr-checks.md` — CLA (30-32), Netlify (34-37),
-  linters + file checks (48-97), build + links + refcache + maintainer Puppeteer
-  script (99-143), site-local links (151-169)
-- `content/en/docs/contributing/style-guide.md` — OpenTelemetry word list
-  (42-60), link references (103-125), spelling (137-156), file format +
-  kebab-case (166-179)
-- `content/en/docs/contributing/localization.md` — locale-span rule (468-476),
-  editorial cross-locale exceptions with `# patched` (478-536)
-- `content/en/docs/contributing/sig-practices.md` — linked-issue requirement
-  (131-134), auto-labeling + `missing:*` + stale policy (135-156), CLA failure
-  recovery (169-172), co-owned PRs (188-202), translation PRs (218-222), merging
-  workflow (224-235)
-- `content/en/docs/contributing/issues.md` — issue linking from PRs (76-78)
+- `content/en/docs/contributing/pull-requests.md` — AI policy, CLA, fix-command
+  list, `npm run fix:all` local fix
+- `content/en/docs/contributing/pr-checks.md` — EasyCLA, Netlify, linters + file
+  checks, build + links + refcache + maintainer Puppeteer script, site-local
+  links
+- `content/en/docs/contributing/style-guide.md` — OpenTelemetry word list, link
+  references, spelling, file format + kebab-case
+- `content/en/docs/contributing/localization.md` — locale-span rule, editorial
+  cross-locale exceptions with `# patched`
+- `content/en/docs/contributing/sig-practices.md` — linked-issue requirement,
+  auto-labeling + `missing:*` + stale policy, CLA failure recovery, co-owned
+  PRs, translation PRs, merging workflow
+- `content/en/docs/contributing/issues.md` — issue linking from PRs
 - `content/en/docs/contributing/blog.md` — blog submission rules (defer to
   `review-blog-post`)
 - `.github/workflows/check-text.yml`, `check-spelling.yml`, `check-file.yml`,
   `check-links.yml`, `check-registry.yml`, `check-i18n.yml` — authoritative job
   names and `npm run` commands
-- `.github/workflows/pr-actions.yml` — `/fix` bot (otelbot identity 13-14,
-  syntax 42-50, compat map 70-80, commit message 175)
+- `.github/workflows/pr-actions.yml` — `/fix` bot (otelbot identity, syntax,
+  compat map, commit message)
 - `.github/workflows/label-manager.yml` — auto-label entry + approval label
   automation
 - `.github/workflows/pr-review-trigger.yml` — `pr-number` artifact handoff to
@@ -186,7 +224,7 @@ Source-of-truth files — if this skill drifts from them, trust the file:
   (withheld on outstanding change-requested reviews)
 - `.github/scripts/blog-publish-check.sh` — blog publish-date gating
 - `.github/scripts/double-check-refcache-4XX.mjs` — maintainer Puppeteer
-  refcache revalidation (path per `pr-checks.md:131-143`)
+  refcache revalidation
 - `.github/component-label-map.yml` — path → label auto-labeling config
 - `.github/component-owners.yml` — path → SIG reviewer assignment
 - `.github/CODEOWNERS` — global `@open-telemetry/docs-approvers`
@@ -199,7 +237,6 @@ Source-of-truth files — if this skill drifts from them, trust the file:
   `trim-code-blank-lines`, `unindent-code-blocks`, `gh-url-hash`)
 - `.textlintrc.yml` — terminology + prh rules
 - `.cspell.yml`, `.cspell/en-words.txt` — spelling dictionary layout
-- `package.json` — `check:*`/`fix:*` scripts (30-135), prettier
-  `proseWrap: always` (197)
+- `package.json` — `check:*`/`fix:*` scripts, prettier `proseWrap: always`
 - Sibling skills: `review-blog-post` (blog-specific PR rules), `draft-issue`
   (full label taxonomy)

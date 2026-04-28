@@ -34,8 +34,8 @@ For docs PRs (`content/en/docs/**`), check:
 
 - [ ] `Easy CLA` green (or author has a fix path)
 - [ ] Netlify preview builds
-- [ ] Each failing `check-*` check assessed against the table in
-      [`ci-checks.md`](./ci-checks.md)
+- [ ] Each failing `check-*` check assessed against
+      [`pr-checks.md#checks`](../../../../content/en/docs/contributing/pr-checks.md#checks)
 - [ ] Linked issue is `triage:accepted` (or this is an auto/hotfix PR)
 - [ ] Does not span multiple locales with semantic changes — or uses `# patched`
       for editorial cross-locale edits
