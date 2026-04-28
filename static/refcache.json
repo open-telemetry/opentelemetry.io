@@ -22915,10 +22915,6 @@
     "StatusCode": 200,
     "LastSeen": "2026-04-22T22:50:58.502500076Z"
   },
-  "https://wiki.osdev.org/CPUID": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-28T10:25:24.397161617Z"
-  },
   "https://wikipedia.org/wiki/.NET": {
     "StatusCode": 200,
     "LastSeen": "2026-04-22T15:39:27.664911192Z"
