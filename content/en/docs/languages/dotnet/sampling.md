@@ -8,7 +8,7 @@ Sampling controls which traces are recorded and exported. By reducing the number
 of collected spans, sampling helps control overhead and telemetry volume.
 
 In OpenTelemetry, sampling decisions are typically made when a trace is started
-and then propagated to downstream services through context.
+(head-based sampling) and then propagated to downstream services through context.
 
 ## Configure a sampler
 
