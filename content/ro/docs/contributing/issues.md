@@ -16,11 +16,9 @@ problemă existentă.
 1. Răsfoiește lista de [probleme]({{% param _issues %}}).
 2. Selectează o problemă la care dorești să lucrezi.
 
-   {{% alert color="warning" %}}
-
-   {{% param chooseAnIssueAtYourLevel %}}
-
-   {{% /alert %}}
+   > [!WARNING] Important!
+   >
+   > {{% param chooseAnIssueAtYourLevel %}}
 
 3. Citește comentariile la problemă, dacă există.
 4. Întreabă administratorii dacă această problemă este încă relevantă și
@@ -92,4 +90,4 @@ Reține următoarele aspecte atunci când trimiți o problemă:
 
 <!-- markdownlint-disable link-image-reference-definitions -->
 
-[probleme]: <{{% param _issues %}}>
+[choose an issue]: <{{% param _issues %}}>
