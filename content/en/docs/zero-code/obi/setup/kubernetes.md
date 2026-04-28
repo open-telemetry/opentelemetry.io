@@ -419,7 +419,7 @@ connections against the Kubernetes API server to fetch the metadata it needs to
 decorate metrics and traces, not only the local node metadata, but metadata from
 the entire cluster. this is done to enrich information outside of the local
 node, for example to add
-[peer](https://opentelemetry.io/docs/specs/semconv/registry/attributes/service/#service-attributes-for-peer-services)
+[peer](/docs/specs/semconv/registry/attributes/service/#service-attributes-for-peer-services)
 attributes to spans making requests between nodes on the cluster. On large
 clusters this fan-out can put significant load on the API server, to the point
 where it can affect the whole cluster.
