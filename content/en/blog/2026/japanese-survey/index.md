@@ -3,10 +3,10 @@ title: OpenTelemetry Japanese Community Survey
 linkTitle: OTel Japanese Survey
 date: 2026-04-28
 author: >-
-  "[Ernest Owojori](https://github.com/E-STAT), [Andrej
-  Kiripolsky](https://github.com/andrejkiri), [Yoshifumi
+  [Ernest Owojori](https://github.com/E-STAT), [Andrej
+  Kiripolsky](https://github.com/andrejkiri) (Grafana Labs), [Yoshifumi
   YAMAGUCHI](https://github.com/ymotongpoo) (Grafana Labs), [Austin
-  Parker](https://github.com/austinlparker) (Honeycomb.io)"
+  Parker](https://github.com/austinlparker) (Honeycomb.io)
 issue: 8985
 sig: End User
 # prettier-ignore
