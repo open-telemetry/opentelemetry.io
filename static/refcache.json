@@ -8571,10 +8571,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-23T10:11:52.011919307Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/dnslookupprocessor": {
-    "StatusCode": 404,
-    "LastSeen": "2026-04-27T10:25:11.909563469Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor": {
     "StatusCode": 206,
     "LastSeen": "2026-04-24T10:07:52.056514167Z"
@@ -19364,8 +19360,8 @@
     "LastSeen": "2026-04-22T17:27:37.771Z"
   },
   "https://medium.com/sicreditech/sicredis-path-for-opentelemetry-adoption-3564fc8a743a": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-27T10:24:27.096508381Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T07:44:32.822Z"
   },
   "https://medium.com/wish-engineering/horizontally-scaling-prometheus-at-wish-ea4b694318dd": {
     "StatusCode": 200,
@@ -23108,8 +23104,8 @@
     "LastSeen": "2026-04-22T14:20:16.007Z"
   },
   "https://www.britannica.com/dictionary/pipeline": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-27T10:23:37.173918036Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T07:44:55.983Z"
   },
   "https://www.buoyant.io/mtls-guide": {
     "StatusCode": 200,
