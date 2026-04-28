@@ -1,5 +1,5 @@
 ---
-name: OpenTelemetry Issue Triager
+name: otel-issue-triager
 description: >
   Analyzes GitHub issues in OpenTelemetry repositories and produces structured
   triage dossiers with recommendations and ready-to-paste gh commands.
