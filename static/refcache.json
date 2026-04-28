@@ -248,8 +248,8 @@
     "LastSeen": "2026-04-28T10:25:09.494795623Z"
   },
   "https://bento.me/adrianamvillela": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-28T10:29:09.351130177Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T11:37:32.286Z"
   },
   "https://betterstack.com/docs/logs/open-telemetry/#2-setup": {
     "StatusCode": 200,
@@ -3132,8 +3132,8 @@
     "LastSeen": "2026-04-24T10:12:45.761702548Z"
   },
   "https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-28T10:22:14.782351497Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T11:37:36.955Z"
   },
   "https://erinmeyer.com/books/the-culture-map/": {
     "StatusCode": 200,
@@ -19964,8 +19964,8 @@
     "LastSeen": "2026-04-22T22:51:22.351887537Z"
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-28T10:28:31.036925868Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-28T11:37:40.956Z"
   },
   "https://openai.com/": {
     "StatusCode": 200,
