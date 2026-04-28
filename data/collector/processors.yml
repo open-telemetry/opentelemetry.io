@@ -1,0 +1,301 @@
+# OpenTelemetry Collector component data
+# This file is automatically updated by scripts/collector-sync
+
+---
+- name: attributesprocessor
+  display_name: Attributes Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - core
+    - k8s
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: batchprocessor
+  display_name: Batch Processor
+  repo: core
+  distributions:
+    - contrib
+    - core
+    - k8s
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: coralogixprocessor
+  display_name: Coralogix Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: alpha
+- name: cumulativetodeltaprocessor
+  display_name: Cumulative to Delta Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    metrics: beta
+- name: deltatocumulativeprocessor
+  display_name: Delta to Cumulative Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    metrics: alpha
+- name: deltatorateprocessor
+  display_name: Delta to Rate Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    metrics: alpha
+- name: dnslookupprocessor
+  display_name: DNS Lookup Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+    metrics: development
+    traces: development
+- name: filterprocessor
+  display_name: Filter Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - core
+    - k8s
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+    profiles: development
+- name: geoipprocessor
+  display_name: GeoIP Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+- name: groupbyattrsprocessor
+  display_name: Group by Attributes Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: groupbytraceprocessor
+  display_name: Group by Trace Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    traces: beta
+- name: intervalprocessor
+  display_name: Interval Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    metrics: alpha
+- name: isolationforestprocessor
+  display_name: Isolation Forest Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+- name: k8sattributesprocessor
+  display_name: Kubernetes Attributes Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+    profiles: development
+- name: logdedupprocessor
+  display_name: Log DeDuplication Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: alpha
+- name: logstransformprocessor
+  display_name: Logs Transform Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+- name: lookupprocessor
+  display_name: Lookup Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+- name: memorylimiterprocessor
+  display_name: Memory Limiter Processor
+  repo: core
+  distributions:
+    - contrib
+    - core
+    - k8s
+  stability:
+    profiles: alpha
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: metricsgenerationprocessor
+  display_name: Metrics Generation Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: metricstarttimeprocessor
+  display_name: Metric Start Time Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: metricstransformprocessor
+  display_name: Metrics Transform Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    metrics: beta
+- name: probabilisticsamplerprocessor
+  display_name: Probabilistic Sampling Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - core
+    - k8s
+  stability:
+    logs: alpha
+    traces: beta
+- name: redactionprocessor
+  display_name: Redaction Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: beta
+- name: remotetapprocessor
+  display_name: Remote Tap Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+- name: resourcedetectionprocessor
+  display_name: Resource Detection Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+    profiles: development
+- name: resourceprocessor
+  display_name: Resource Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - core
+    - k8s
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+    profiles: development
+- name: schemaprocessor
+  display_name: Schema Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+    metrics: development
+    traces: development
+- name: spanprocessor
+  display_name: Span Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - core
+  stability:
+    traces: alpha
+- name: spanpruningprocessor
+  display_name: spanpruningprocessor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: alpha
+- name: sumologicprocessor
+  display_name: Sumo Logic Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: tailsamplingprocessor
+  display_name: Tail Sampling Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    traces: beta
+- name: transformprocessor
+  display_name: Transform Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+    profiles: development
+- name: unrollprocessor
+  display_name: Unroll Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha

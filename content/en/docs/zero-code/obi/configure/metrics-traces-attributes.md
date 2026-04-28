@@ -82,10 +82,10 @@ YAML section: `ebpf`
 You can configure the component under the `ebpf` section of your YAML
 configuration or via environment variables.
 
-| YAML<br>environment variable                                     | Description                                                                                                                                                                      | Type    | Default  |
-| ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- |
-| `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`     | Controls trace context propagation method. Accepted: `all`, `headers`, `ip`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
-| `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS` | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                | boolean | false    |
+| YAML<br>environment variable                                     | Description                                                                                                                                                                                      | Type    | Default  |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | -------- |
+| `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`     | Controls trace context propagation method. Accepted: `all`, `headers`, `tcp`, `headers,tcp`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
+| `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS` | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                                | boolean | false    |
 
 ### Context propagation
 
@@ -102,16 +102,20 @@ that also use TC must chain correctly with OBI. For more information about
 chaining programs, see the
 [Cilium compatibility documentation](../../cilium-compatibility/).
 
-You can disable the TCP/IP level encoding and TC programs by setting
-`context_propagation="headers"`. This context propagation is fully compatible
-with any OpenTelemetry distributed tracing library.
+You can disable the TCP-level propagation and Linux Traffic Control programs by
+setting `context_propagation="headers"`. This mode is fully compatible with any
+OpenTelemetry distributed tracing library.
 
 Context propagation values:
 
-- `all`: Enable both HTTP and IP options context propagation
+- `all`: Enable both HTTP header and TCP context propagation
 - `headers`: Enable context propagation via the HTTP headers only
-- `ip`: Enable context propagation via the IP options field only
+- `tcp`: Enable context propagation via the TCP packet path only
+- `headers,tcp`: Enable both methods explicitly
 - `disabled`: Disable trace context propagation
+
+`http` is accepted as an alias for `headers`, but `headers` is the preferred
+name in examples and configuration.
 
 To use this option in containerized environments (Kubernetes and Docker), you
 must:
@@ -121,7 +125,7 @@ must:
   path
 - Grant the `CAP_NET_ADMIN` capability to the OBI container
 
-gRPC and HTTP/2 are not supported.
+gRPC and HTTP/2 are not supported for this network-level mode.
 
 For an example of how to configure distributed traces in Kubernetes, see our
 [Distributed traces with OBI](../../distributed-traces/) guide.
@@ -153,6 +157,92 @@ option to get database client telemetry. This option is not enabled by default,
 because it can create false positives, for example, if an application sends SQL
 text for logging through a TCP connection. Currently, OBI natively supports the
 PostgreSQL and MySQL binary protocols.
+
+### HTTP header and body enrichment for spans {#http-header-enrichment-for-spans}
+
+### HTTP header and body enrichment for spans
+
+OBI can attach selected HTTP headers and selected HTTP body fields to spans
+through the `ebpf.payload_extraction.http.enrichment` configuration section.
+This is useful when you want to carry business or routing headers into traces
+without manually instrumenting the application.
+
+The enrichment engine is rule-based:
+
+- Set `enabled: true` to activate HTTP header and body enrichment.
+- Use `policy.default_action.headers` and `policy.default_action.body` in YAML
+  to define whether unmatched headers or body content are included or excluded.
+  The default for both is `exclude`.
+- Use `obfuscate` rules to redact sensitive header values or JSON body fields
+  before they are attached to spans.
+- Rules are evaluated in order.
+
+For example:
+
+```yaml
+ebpf:
+  buffer_sizes:
+    http: 8192
+  payload_extraction:
+    http:
+      enrichment:
+        enabled: true
+        policy:
+          default_action:
+            headers: exclude
+            body: exclude
+          obfuscation_string: '***'
+        rules:
+          - action: obfuscate
+            type: headers
+            scope: all
+            match:
+              patterns:
+                - Authorization
+              case_sensitive: false
+          - action: include
+            type: headers
+            scope: all
+            match:
+              patterns:
+                - Content-Type
+                - X-Custom-*
+                - X-Dice-Roll
+              case_sensitive: false
+          - action: include
+            type: body
+            scope: request
+            match:
+              methods: [POST]
+              url_path_patterns:
+                - /v1/chat/completions
+          - action: obfuscate
+            type: body
+            scope: request
+            match:
+              methods: [POST]
+              url_path_patterns:
+                - /v1/chat/completions
+              obfuscation_json_paths:
+                - $.messages[*].content
+```
+
+The following environment variables control the global enrichment behavior:
+
+- `OTEL_EBPF_HTTP_ENRICHMENT_ENABLED`
+- `OTEL_EBPF_HTTP_ENRICHMENT_OBFUSCATION_STRING`
+
+The `policy.default_action.headers` and `policy.default_action.body` settings
+are configured in YAML only; there are no environment variables for these
+defaults.
+
+Rules themselves are configured in YAML. Header rules use `match.patterns` and
+optional `case_sensitive`. Body rules use `match.url_path_patterns`,
+`match.methods`, and `match.obfuscation_json_paths`.
+
+Body extraction requires HTTP payload capture. Increase `ebpf.buffer_sizes.http`
+so OBI can capture the request or response bytes you want to enrich. The limit
+applies independently to requests and responses.
 
 ## Instance ID decoration
 
@@ -212,15 +302,16 @@ attributes:
     enable: true
 ```
 
-| YAML<br>environment variable                                            | Description                                                                                                                                                                                   | Type           | Default        |
-| ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- |
-| `enable`<br>`OTEL_EBPF_KUBE_METADATA_ENABLE`                            | Enable or disable Kubernetes metadata decoration. Set to `autodetect` to enable if running in Kubernetes. For more information, refer to the [enable Kubernetes section](#enable-kubernetes). | boolean/string | false          |
-| `kubeconfig_path`<br>`KUBECONFIG`                                       | Path to the Kubernetes config file. For more information, refer to the [Kubernetes configuration path section](#kubernetes-configuration-path).                                               | string         | ~/.kube/config |
-| `disable_informers`<br>`OTEL_EBPF_KUBE_DISABLE_INFORMERS`               | List of informers to disable (`node`, `service`). For more information, refer to the [disable informers section](#disable-informers).                                                         | string         | (empty)        |
-| `meta_restrict_local_node`<br>`OTEL_EBPF_KUBE_META_RESTRICT_LOCAL_NODE` | Restrict metadata to local node only. For more information, refer to the [meta restrict local node section](#meta-restrict-local-node).                                                       | boolean        | false          |
-| `informers_sync_timeout`<br>`OTEL_EBPF_KUBE_INFORMERS_SYNC_TIMEOUT`     | Maximum time to wait for Kubernetes metadata before starting. For more information, refer to the [informers sync timeout section](#informers-sync-timeout).                                   | Duration       | 30s            |
-| `informers_resync_period`<br>`OTEL_EBPF_KUBE_INFORMERS_RESYNC_PERIOD`   | Periodically resynchronize all Kubernetes metadata. For more information, refer to the [informers resynchronization period section](#informers-resynchronization-period).                     | Duration       | 30m            |
-| `service_name_template`<br>`OTEL_EBPF_SERVICE_NAME_TEMPLATE`            | Go template for service names. For more information, refer to the [service name template section](#service-name-template).                                                                    | string         | (empty)        |
+| YAML<br>environment variable                                                | Description                                                                                                                                                                                   | Type           | Default        |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- |
+| `enable`<br>`OTEL_EBPF_KUBE_METADATA_ENABLE`                                | Enable or disable Kubernetes metadata decoration. Set to `autodetect` to enable if running in Kubernetes. For more information, refer to the [enable Kubernetes section](#enable-kubernetes). | boolean/string | false          |
+| `kubeconfig_path`<br>`KUBECONFIG`                                           | Path to the Kubernetes config file. For more information, refer to the [Kubernetes configuration path section](#kubernetes-configuration-path).                                               | string         | ~/.kube/config |
+| `disable_informers`<br>`OTEL_EBPF_KUBE_DISABLE_INFORMERS`                   | List of informers to disable (`node`, `service`). For more information, refer to the [disable informers section](#disable-informers).                                                         | string         | (empty)        |
+| `meta_restrict_local_node`<br>`OTEL_EBPF_KUBE_META_RESTRICT_LOCAL_NODE`     | Restrict metadata to local node only. For more information, refer to the [meta restrict local node section](#meta-restrict-local-node).                                                       | boolean        | false          |
+| `informers_sync_timeout`<br>`OTEL_EBPF_KUBE_INFORMERS_SYNC_TIMEOUT`         | Maximum time to wait for Kubernetes metadata before starting. For more information, refer to the [informers sync timeout section](#informers-sync-timeout).                                   | Duration       | 30s            |
+| `reconnect_initial_interval`<br>`OTEL_EBPF_KUBE_RECONNECT_INITIAL_INTERVAL` | Initial delay before reconnecting to the Kubernetes API after connection loss. For more information, refer to the [reconnect initial interval section](#reconnect-initial-interval).          | Duration       | 5s             |
+| `informers_resync_period`<br>`OTEL_EBPF_KUBE_INFORMERS_RESYNC_PERIOD`       | Periodically resynchronize all Kubernetes metadata. For more information, refer to the [informers resynchronization period section](#informers-resynchronization-period).                     | Duration       | 30m            |
+| `service_name_template`<br>`OTEL_EBPF_SERVICE_NAME_TEMPLATE`                | Go template for service names. For more information, refer to the [service name template section](#service-name-template).                                                                    | string         | (empty)        |
 
 ### Enable Kubernetes
 
@@ -278,6 +369,14 @@ This is the maximum time OBI waits to get all the Kubernetes metadata before
 starting to decorate metrics and traces. If this timeout is reached, OBI starts
 normally, but the metadata attributes might be incomplete until all the
 Kubernetes metadata is updated in the background.
+
+### Reconnect initial interval
+
+When OBI loses connection to the Kubernetes API, this value controls the initial
+delay before retrying the connection.
+
+Increase this value to reduce reconnect pressure on unstable or overloaded API
+servers. Decrease it when you need faster recovery after temporary API outages.
 
 ### Informers resynchronization period
 

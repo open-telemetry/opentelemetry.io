@@ -39,6 +39,7 @@ are internal helpers and are not intended to be run directly.
 | ---------------------- | ----------------------------------------------------------- |
 | `check`                | Run the most commonly needed check scripts in sequence.     |
 | `check:all`            | Run all check scripts in sequence.                          |
+| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                |
 | `check:format`         | Prettier and prose-wrap checks.                             |
 | `check:i18n`           | Validate localization front matter (`default_lang_commit`). |
 | `check:links`          | Run HTML link checker.                                      |
@@ -48,7 +49,7 @@ are internal helpers and are not intended to be run directly.
 | `check:registry`       | Validate registry YAML under `data/registry/`.              |
 | `check:spelling`       | cspell over content, data, and layout Markdown.             |
 | `check:text`           | textlint over content and data.                             |
-| `check:filenames`      | Ensure no underscores in asset/content/static filenames.    |
+| `check:filenames`      | [Validate file naming & detect obsolete files/folders][fn]. |
 | `check:expired`        | List expired content (by front matter).                     |
 | `check:collector-sync` | Run collector-sync checks.                                  |
 
@@ -57,6 +58,7 @@ are internal helpers and are not intended to be run directly.
 | Script                    | Description                                                    |
 | ------------------------- | -------------------------------------------------------------- |
 | `fix`                     | Run the most commonly needed fix scripts.                      |
+| `fix:code-excerpts`       | Refresh code excerpts.                                         |
 | `fix:all`                 | Run all fix scripts.                                           |
 | `fix:format`              | Apply Prettier and trim trailing spaces.                       |
 | `fix:format:staged`       | Format only staged files.                                      |
@@ -65,7 +67,7 @@ are internal helpers and are not intended to be run directly.
 | `fix:refcache`            | Prune refcache and re-run link check (updates refcache).       |
 | `fix:refcache:refresh`    | Prune refcache by count.                                       |
 | `fix:submodule`           | Pin submodule revisions (same as `pin:submodule`).             |
-| `fix:filenames`           | Rename files with underscores to kebab-case.                   |
+| `fix:filenames`           | [Rename files & remove obsolete files/folders][fn].            |
 | `fix:dict`                | Sort cspell word lists and normalize front matter.             |
 | `fix:expired`             | Delete files reported by `check:expired`.                      |
 | `fix:text`                | Run textlint with --fix.                                       |
@@ -74,23 +76,27 @@ are internal helpers and are not intended to be run directly.
 
 ## Submodules and content
 
-| Script             | Description                                        |
-| ------------------ | -------------------------------------------------- |
-| `get:submodule`    | Init/update git submodules (set `GET=no` to skip). |
-| `update:submodule` | Update submodules to latest remote and fetch tags. |
-| `pin:submodule`    | Pin submodule revisions (optional `PIN_SKIP`).     |
-| `cp:spec`          | Copy spec content (content-modules).               |
-| `schemas:update`   | Update OpenTelemetry spec submodule and content.   |
-| `code-excerpts`    | Rebuild code excerpts and update docs.             |
+| Script             | Description                                                                          |
+| ------------------ | ------------------------------------------------------------------------------------ |
+| `code-excerpts`    | Refresh code excerpts. DEPRECATED: use `fix:code-excerpts` or `check:code-excerpts`. |
+| `cp:spec`          | Copy spec content (content-modules).                                                 |
+| `get:submodule`    | Init/update git submodules (set `GET=no` to skip).                                   |
+| `pin:submodule`    | Pin submodule revisions (optional `PIN_SKIP`).                                       |
+| `schemas:update`   | Update OpenTelemetry spec submodule and content.                                     |
+| `update:submodule` | Update submodules to latest remote and fetch tags.                                   |
 
 ## Test and CI
 
 | Script                     | Description                                                       |
 | -------------------------- | ----------------------------------------------------------------- |
 | `test`                     | Run the most commonly needed tests.                               |
-| `test:base`                | Base tests.                                                       |
-| `test:all`                 | Run all tests: base checks plus collector-sync tests and lint.    |
+| `test:base`                | Base tests (same as `check`).                                     |
+| `test:compound-tests`      | Runs compound `test:*-*` scripts.                                 |
+| `test:all`                 | Runs `test:base` then `test:compound-tests`.                      |
 | `test:collector-sync`      | Collector-sync tests.                                             |
+| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.      |
+| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.               |
+| `test:local-tools`         | Node test runner for `scripts/**/*.test.{mjs,js}`.                |
 | `test-and-fix`             | Run fix scripts (excluding i18n/refcache/submodule), then checks. |
 | `diff:check`               | Warn if working tree has uncommitted changes.                     |
 | `diff:fail`                | Fail if working tree has changes (e.g. after build).              |
@@ -99,16 +105,16 @@ are internal helpers and are not intended to be run directly.
 
 ## Utilities
 
-| Script                                             | Description                                                                                          |
-| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `seq`                                              | Run given script names in sequence; exit on first failure.                                           |
-| `all`                                              | Run given script names in sequence; run all even if some fail, then exit with failure if any failed. |
-| `prepare`                                          | Install step: `get:submodule`, then Docsy theme npm install.                                         |
-| `prebuild`                                         | Before build: `get:submodule`, `cp:spec`.                                                            |
-| `update:hugo`                                      | Install latest hugo-extended.                                                                        |
-| `update:packages`                                  | Run npm-check-updates to bump deps.                                                                  |
-| `fix:htmltest-config`                              | Generate/update HTMLTest config (used by link-check pipeline).                                       |
-| `log:build`, `log:check:links`, `log:test-and-fix` | Run the corresponding script and tee output to `tmp/`.                                               |
+| Script                                             | Description                                                    |
+| -------------------------------------------------- | -------------------------------------------------------------- |
+| `seq`                                              | Run given script names in sequence; exit on first failure.     |
+| `all`                                              | Run all given scripts, then exit with failure if any failed.   |
+| `prepare`                                          | Install step: `get:submodule`, then Docsy theme npm install.   |
+| `prebuild`                                         | Before build: `get:submodule`, `cp:spec`.                      |
+| `update:hugo`                                      | Install latest hugo-extended.                                  |
+| `update:packages`                                  | Run npm-check-updates to bump deps.                            |
+| `fix:htmltest-config`                              | Generate/update HTMLTest config (used by link-check pipeline). |
+| `log:build`, `log:check:links`, `log:test-and-fix` | Run the corresponding script and tee output to `tmp/`.         |
 
 ## Notes
 
@@ -117,3 +123,5 @@ are internal helpers and are not intended to be run directly.
   refresh it.
 - **`all`** runs every listed script even when one fails, then exits with a
   non-zero status if any failed.
+
+[fn]: /docs/contributing/pr-checks/#filename-check

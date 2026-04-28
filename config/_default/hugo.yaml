@@ -1,10 +1,11 @@
-# cSpell:ignore bluesky cicd docsy goldmark linkify netlify wordmark noopener
+# cSpell:ignore bluesky cicd docsy goldmark linkify netlify wordmark noopener llms
 baseURL: https://opentelemetry.io
 title: OpenTelemetry
 disableKinds: [taxonomy]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
+enableRobotsTXT: true
 ignoreLogs: []
 
 # Language settings
@@ -17,7 +18,7 @@ languages:
     params:
       description: The OpenTelemetry Project Site
   bn:
-    languageName: বাংলা (Bengali)
+    languageName: বাংলা
     params:
       description: ওপেনটেলিমেট্রি প্রকল্পের সাইট
   es:
@@ -29,30 +30,35 @@ languages:
     params:
       description: Site du projet OpenTelemetry
   ja:
-    languageName: 日本語 (Japanese)
+    languageName: 日本語
     params:
       description: OpenTelemetryプロジェクト公式サイト
       notes:
         docker-compose-v2: |
           `docker-compose` は非推奨です. 詳細は、
           [Migrate to Compose V2](https://docs.docker.com/compose/) を確認してください。
+  pl:
+    languageName: Polski
+    languageCode: pl-PL
+    params:
+      description: Strona projektu OpenTelemetry
   pt:
     languageName: Português
     languageCode: pt-BR
     params:
       description: Site do Projeto OpenTelemetry
   ro:
-    languageName: Română (Romanian)
+    languageName: Română
     languageCode: ro-RO
     params:
       description: Site-ul proiectului OpenTelemetry
   uk:
-    languageName: Українська (Ukrainian)
+    languageName: Українська
     languageCode: uk-UA
     params:
       description: Сайт проєкту OpenTelemetry
   zh:
-    languageName: 中文 (Chinese)
+    languageName: 中文
     languageCode: zh-CN
     params:
       description: OpenTelemetry 项目网站
@@ -84,21 +90,38 @@ mediaTypes:
   text/netlify: {}
 
 outputFormats:
-  REDIRECTS:
+  redirects:
     mediaType: text/netlify
     baseName: _redirects
     notAlternative: true
 
 outputs:
-  home: [HTML, RSS]
-  section: [HTML]
+  home: [HTML, markdown, RSS]
+  page: [HTML, markdown]
+  section: [HTML, markdown]
 
 services:
   rss: { limit: 20 }
 
 cascade:
-  build: { list: never, publishResources: false, render: never }
-  _target: { path: '{,/**}/_includes{,/**}' }
+  - build: { list: never, publishResources: false, render: never }
+    target: { path: '{,/**}/_includes{,/**}' }
+
+  # Enable redirects for site root (and not locales)
+  - outputs:
+      # This must match the equivalent of [outputs.home, LLMS, redirects]
+      [HTML, markdown, RSS, LLMS, redirects]
+    target:
+      kind: home
+      sites: { matrix: { languages: [en] } }
+
+  # Enable RSS for blog section
+  - outputs:
+      # This must match the equivalent of [outputs.section, RSS]
+      [HTML, markdown, RSS]
+    target:
+      kind: section
+      path: '/blog'
 
 params:
   copyright:
