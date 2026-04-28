@@ -11,7 +11,7 @@ cascade:
   vers:
     instrumentation: 2.27.0
     otel: 1.61.0
-    contrib: 1.55.0
+    contrib: 1.56.0
     semconv: 1.40.0
 weight: 150
 default_lang_commit: 3b3395c0f4ec255435bd36c57704e024e72bce69
