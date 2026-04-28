@@ -30,14 +30,14 @@ the content. The only file under `references/` is the docs review checklist,
 which is skill-specific:
 
 - [`references/content-review.md`](./references/content-review.md) — docs
-  content criteria + final review checklist. Read during step 5 (review content)
+  content criteria + final review checklist. Read during step 4 (review content)
   and again before writing the review output.
 
 External references the workflow points at — read on demand:
 
 - [`content/en/docs/contributing/pr-checks.md`](../../../content/en/docs/contributing/pr-checks.md):
   every PR check workflow with jobs, validation, and local-fix command. Read
-  during step 3 (walk CI checks).
+  during step 2 (walk CI checks).
 - [`content/en/site/build/npm-scripts.md`](../../../content/en/site/build/npm-scripts.md):
   full `npm run` catalog. Read when pointing the author at a local fix path.
 - [`content/en/docs/contributing/pull-requests.md`](../../../content/en/docs/contributing/pull-requests.md),
@@ -45,7 +45,7 @@ External references the workflow points at — read on demand:
   [`content/en/docs/contributing/localization.md`](../../../content/en/docs/contributing/localization.md),
   [`content/en/docs/contributing/pr-checks.md`](../../../content/en/docs/contributing/pr-checks.md),
   [`content/en/docs/contributing/issues.md`](../../../content/en/docs/contributing/issues.md)
-  — process rules deep-linked from step 4.
+  — process rules deep-linked from step 3.
 - `.claude/data/opentelemetry-website.yml` — full repository label taxonomy
   (read via the sibling `draft-issue` skill).
 
