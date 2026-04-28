@@ -12,7 +12,6 @@ description:
   their own container technology. The component in charge of providing a local
   API in each node (also known as "diego-cell") is named Garden. The
   cfgarden_observer looks at the current host to discover Garden containers.
-
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -21,4 +20,4 @@ createdAt: 2025-03-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/observer/cfgardenobserver
-  version: v0.147.0
+  version: v0.150.0

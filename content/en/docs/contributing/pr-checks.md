@@ -1,5 +1,6 @@
 ---
-title: Pull request checks
+title: Pull request checks and tests
+linkTitle: PR checks & tests
 description: Learn how to make your pull request successfully pass all checks
 weight: 40
 ---
@@ -66,16 +67,19 @@ the suggested changes manually.
 
 ### `SPELLING check` {.notranslate lang=en}
 
-This check verifies that
-[all words are spelled correctly](../style-guide/#spell-checking).
+This check verifies that [all words are spelled correctly][spell checking] in
+all locales.
 
-If this check fails, run `npm run check:spelling` locally to see the misspelled
-words. If a word is spelled correctly, you may need to add it to the
-`cSpell:ignore` section in the front matter of the file.
+If the check fails, run `npm run check:spelling` locally to list issues. To add
+or change allowed words, see [Spell checking][] in the style guide.
+
+[Spell checking]: ../style-guide/#spell-checking
 
 ### `CSPELL` check {.notranslate lang=en}
 
-This check will verify that all words in your cSpell ignore list are normalized.
+This check verifies that cSpell `cSpell:ignore` lists in front matter are
+normalized and that `.cspell/*.txt` word lists are sorted (see
+`npm run fix:dict`).
 
 If this check fails, run `npm run fix:dict` locally and push the changes in a
 new commit.
@@ -90,11 +94,27 @@ new commit.
 
 ### `FILENAME check` {.notranslate lang=en}
 
-This check verifies that all
-[file names are in kebab-case](../style-guide/#file-names).
+This check verifies that:
+
+- All [file names are in kebab-case](../style-guide/#file-names)
+- No obsolete files or folders exist in the repository (see list below)
 
 If this check fails, run `npm run fix:filenames` locally and push the changes in
 a new commit.
+
+> [!NOTE]
+>
+> `fix:filenames` may **delete** obsolete files or folders.
+
+#### Obsolete files and folders
+
+The following paths are flagged as obsolete and removed by `fix:filenames`. When
+present, an issue or PR number provides context for the change that made the
+path obsolete.
+
+- `tools/` - [Migrate code-excerpts tooling to npm package version #9638][#9638]
+
+[#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
@@ -179,3 +199,9 @@ The following code enforces the link requirement described in this section:
   [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
 
 </details>
+
+### `TEST (excluding test:base)` {.notranslate lang=en}
+
+Runs `npm run test:compound-tests`, which executes the compound `test:*-*` NPM
+scripts (for example, Netlify edge-function tests). It does **not** run
+`test:base`.

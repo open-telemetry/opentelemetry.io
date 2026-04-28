@@ -101,6 +101,10 @@ sub getSiteWideDictWords {
   my $textlintrc_file = shift;
 
   my %dictionary = readYmlOrPlainListOfWords('', $dictionary_file);
+  if (-f '.cspell/all-words.txt') {
+    my %allWordsDictionary = readYmlOrPlainListOfWords('', '.cspell/all-words.txt');
+    @dictionary{keys %allWordsDictionary} = values %allWordsDictionary;
+  }
   my %textlintDictionary = readYmlOrPlainListOfWords('terms', $textlintrc_file);
   @dictionary{keys %textlintDictionary} = values %textlintDictionary;
 
