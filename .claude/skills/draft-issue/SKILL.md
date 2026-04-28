@@ -6,35 +6,33 @@ description: >-
   label taxonomy. Use when creating issue drafts from investigation findings or
   conversation context.
 argument-hint: '<description of issue to draft>'
-allowed-tools: Read Grep
+allowed-tools: Read Grep Bash
 effort: low
 ---
 
-# OTel Issue Draft
+# Draft Issue
 
-Draft ready-to-paste GitHub issues for `open-telemetry/opentelemetry.io`. Every
-rule in this skill is grounded in a source-of-truth file — if a claim here
-conflicts with one of those files, trust the file and update this skill. See the
-[References](#references) section at the end.
+Drafts ready-to-paste GitHub issues for `open-telemetry/opentelemetry.io`. The
+templates under `.github/ISSUE_TEMPLATE/` and the live label set are the
+sources of truth — when this skill drifts from them, trust the source.
 
 ## Arguments {#arguments}
 
-- If no `$ARGUMENTS` is provided, infer context from the conversation. If there
-  is insufficient context, ask the user what issue to draft.
-- Otherwise, treat the full `$ARGUMENTS` string as the description of the issue
-  to draft. There are no flags — the entire value is the context.
+- If `$ARGUMENTS` is empty, infer context from the conversation. If there is
+  insufficient context, ask the user what issue to draft.
+- Otherwise, treat the full `$ARGUMENTS` string as the description. There are
+  no flags.
 
-## When to Use
+## When to use
 
-- After investigating a problem in the OTel site codebase
-- When a conversation reveals a bug, docs gap, or feature need
-- When the user wants to file an issue based on current findings
-- When drafting a blog post proposal for OTel
+- After investigating a problem in the OTel site codebase.
+- When a conversation reveals a bug, docs gap, or feature need.
+- When drafting a blog post proposal for OTel.
 
-## Issue Types {#issue-types}
+## Issue types {#issue-types}
 
-The repo has **five** issue templates under `.github/ISSUE_TEMPLATE/`.
-Auto-detect type from context, or accept an explicit type from the user.
+The repo has five issue templates. Auto-detect type from context, or accept an
+explicit type from the user.
 
 | Template file         | Title prefix      | Use for                                              |
 | --------------------- | ----------------- | ---------------------------------------------------- |
@@ -44,180 +42,49 @@ Auto-detect type from context, or accept an explicit type from the user.
 | `BLOG_POST.yml`       | `blog: `          | Blog post proposals (auto-applies `blog` label)      |
 | `PAGE_FEEDBACK.yml`   | `page feedback: ` | Feedback from the "was this page helpful?" widget    |
 
-Notes on template metadata:
+When drafting, read the chosen template under `.github/ISSUE_TEMPLATE/` and
+mirror its section labels verbatim so GitHub maps the body back to template
+form fields. Required fields are marked in the template.
 
-- `DOCS_UPDATE.yml` sets `type: bug` at the template level (GitHub's new issue
-  "type" classification). Drafters don't set this manually.
-- `BLOG_POST.yml` auto-applies `labels: ['blog']`. Don't duplicate.
+For writing or reviewing the post itself after a `blog:` proposal lands, see
+the `review-blog-post` skill.
 
-## Template Structures
-
-Each snippet below matches its YAML field-for-field. `(required)` marks fields
-that the template enforces.
-
-### Docs Update (`[Docs]: `)
-
-```markdown
-### What needs to be changed? (required)
-
-<clear description of the docs issue>
-
-### Name + path of the page (required)
-
-content/en/docs/concepts/what-is-otel.md — "What is OpenTelemetry?"
-
-### Additional context
-
-<links, screenshots, related issues/PRs, etc.>
-```
-
-### Website Issue/Bug (`bug: `)
-
-```markdown
-### What happened? (required)
-
-<clear description of the bug>
-
-### What did you expect would happen? (required)
-
-<expected behavior>
-
-### Name + path of the page (required)
-
-content/en/docs/... — "Page Title"
-
-### Browser, OS, and platform
-
-E.g., Chrome 120 on macOS 14 (Apple Silicon)
-
-### Additional context
-
-<links, screenshots, related issues/PRs, etc.>
-```
-
-### Feature Request (`feat: `)
-
-```markdown
-### Desired feature or idea (required)
-
-<description of the feature>
-
-### Additional context
-
-<supporting details, motivation, alternatives considered>
-```
-
-### Blog Post Proposal (`blog: `)
-
-`BLOG_POST.yml` auto-applies the `blog` label. For writing or reviewing the
-actual post afterward, see the `review-blog-post` skill.
-
-```markdown
-### Blog Post Title (required)
-
-<proposed title>
-
-### Blog Post Outline (required)
-
-<short description and outline; main topics you plan to cover>
-
-### Technologies Used
-
-<list; prefer CNCF / open source; Jaeger for traces, Prometheus for metrics>
-
-### Related Special Interest Groups (SIGs)
-
-<SIGs related to this post — helps routing to reviewers>
-
-### Sponsoring SIG
-
-<name of the SIG that will sponsor the post, if known>
-
-### Sponsor Name
-
-<maintainer or approver from the sponsoring SIG; ideally from a different
-company>
-
-### Additional Information
-
-<timeline preferences, related issues/PRs, etc.>
-```
-
-### Page Feedback (`page feedback: `)
-
-Filed by the "was this page helpful?" widget when a visitor clicks "no". Rarely
-hand-drafted, but follow the shape if you do.
-
-```markdown
-### URL (required)
-
-https://opentelemetry.io/...
-
-### Description (required)
-
-<how the page was not helpful; what information is missing>
-```
-
-## How to File Great Issues
+## Drafting rules
 
 From `content/en/docs/contributing/issues.md`:
 
 - **Be specific.** Describe what is missing, out of date, wrong, or needs
   improvement. "Fix the security docs" is too broad; "Add details to the
   'Restricting network access' topic" is actionable.
-- **Explain user impact.** What does this cost someone reading the site?
-- **Right-size the scope.** Break broad problems into smaller, reviewable
-  issues. One issue = one reasonable unit of work.
-- **Search first.** Check existing issues for duplicates or related work before
-  filing.
+- **Right-size the scope.** One issue = one reasonable unit of work; break
+  broad problems into smaller, reviewable issues.
+- **Search first.** Check existing issues for duplicates before filing.
 - **Reference related issues and PRs** with `#1234` for the same repo, or the
-  full URL for cross-repo references. Example: `Introduced by #987654`.
-- **Follow the Code of Conduct.** Respect fellow contributors. "The docs are
-  terrible" is not helpful feedback.
+  full URL for cross-repo references.
+- **Concise, actionable** descriptions; no filler.
+- Wrap body prose at 80 characters (convention, not enforced).
 
-## Label Taxonomy {#label-taxonomy}
+## Labels {#labels}
 
-Read `.claude/data/opentelemetry-website.yml` and use `repo.label_taxonomy` for
-all label suggestions. Categories: `area`, `sig`, `localization`, `effort`,
-`priority`, `triage`, `type`, `availability`.
+The repo's labels evolve; do not maintain a copy in this skill. Discover the
+live set with:
 
-**Notes on specific categories:**
+```bash
+gh label list --repo open-telemetry/opentelemetry.io --limit 200
+```
 
-- `area` — `Github actions` and `github_actions` are both real labels in the
-  repo (a quirk, not a typo); suggest whichever matches the issue context.
-- `sig` — auto-applied to PRs via `.github/component-label-map.yml`; add
-  manually on issues.
-- `localization` — auto-applied to PRs touching `content/<lang>/**`; add
-  manually on issues.
-- `availability` — use to signal contributor-grabbable issues
-  (`good first issue`, `help wanted`, `contribfest`, `mentorship:bloomberg`).
+Path-based auto-labeling (e.g. `blog`, `registry`, `i18n`, `lang:*`, several
+`sig:*`) is defined in `.github/component-label-map.yml` and applies on PRs
+only. You can still suggest these on issues manually.
 
-> **Do not use `type:discussion`.** Its own label description says "Do not use,
-> convert discussion issues into real Discussions." Skip it in drafts.
+Governance for the `triage:*`, `type:*`, `priority:*`, and `sig:*` families
+lives in `content/en/docs/contributing/sig-practices.md`. Skip
+`type:discussion` — its own label description says "Do not use, convert
+discussion issues into real Discussions."
 
-`component-label-map.yml` auto-applies some labels to PRs based on file paths
-(`blog`, `registry`, `i18n`, `lang:*`, several `sig:*`). You can still suggest
-these on issues manually.
+## Output format
 
-## Formatting Rules
-
-- **Title** uses the exact template prefix (see [Issue Types](#issue-types))
-  plus a concise summary.
-- **Body** uses markdown with sections matching the chosen template. Keep the
-  template's exact field labels — GitHub maps them back to template fields for
-  search and filtering.
-- **References to other issues/PRs**: `#1234` for the same repo, full URL for
-  cross-repo. From `issues.md:76-78`.
-- **Code snippets** use fenced blocks with language tags.
-- **File paths** are relative to repo root (e.g.,
-  `content/en/docs/concepts/what-is-otel.md`).
-- **Concise, actionable** descriptions — no filler.
-- Wrap body prose at 80 characters for readability (convention, not enforced by
-  GitHub).
-
-## Output Format
-
-Produce a fenced block with title, suggested labels, and body. Labels go
+Produce a fenced block with title, suggested labels, and body. Labels are
 comma-separated so they can be passed directly to
 `gh issue create --label "<comma,separated>"`.
 
@@ -250,16 +117,12 @@ Related to #1234.
 
 ## References {#references}
 
-Source-of-truth files — if this skill drifts from them, trust the file:
-
-- `.github/ISSUE_TEMPLATE/DOCS_UPDATE.yml` — docs issue template
-- `.github/ISSUE_TEMPLATE/ISSUE_REPORT.yml` — bug / website issue template
-- `.github/ISSUE_TEMPLATE/FEATURE_REQUEST.yml` — feature request template
-- `.github/ISSUE_TEMPLATE/BLOG_POST.yml` — blog post proposal template (7
-  fields; auto-applies `blog` label)
-- `.github/ISSUE_TEMPLATE/PAGE_FEEDBACK.yml` — page feedback template
+- `.github/ISSUE_TEMPLATE/*.yml` — five real templates; mirror their section
+  labels verbatim.
 - `content/en/docs/contributing/issues.md` — user-facing guidance on filing
-  great issues
-- `.github/component-label-map.yml` — path-based auto-labeling for PRs
-- Live label set (refresh as needed):
-  `gh label list --repo open-telemetry/opentelemetry.io --limit 200`
+  great issues.
+- `content/en/docs/contributing/sig-practices.md` — label and triage
+  governance.
+- `.github/component-label-map.yml` — path-based PR auto-labeling.
+- `gh label list --repo open-telemetry/opentelemetry.io --limit 200` — live
+  label set.
