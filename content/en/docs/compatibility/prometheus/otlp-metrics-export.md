@@ -88,5 +88,7 @@ export OTEL_RESOURCE_ATTRIBUTES="service.instance.id=$(uuidgen)"
 ### Configure telemetry
 
 Update your OpenTelemetry Configuration to use the same `exporter` and `reader`
-from the [OTLP](#otlp-dependencies) setup. If the environment variables are set
-up and loaded correctly, the OpenTelemetry SDK reads them automatically.
+from the OTLP setup in your
+[language SDK documentation](/docs/languages/_index.md). If the environment
+variables are set up and loaded correctly, the OpenTelemetry SDK reads them
+automatically.
