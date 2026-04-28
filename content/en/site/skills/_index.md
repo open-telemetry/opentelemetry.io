@@ -49,10 +49,9 @@ source lives under [`scripts/validate/`][validate].
   required fields, uses a bad date format, or introduces an H1 heading. It
   applies the same conventions as [`/review-blog-post`](#agent-skills) at
   write-time, without waiting for review. Source:
-  [`scripts/validate/front-matter-check/`][frontmatter-check].
-
-Pure logic lives in `index.mjs` and is covered by `*.test.mjs` files in the same
-folder (`npm run test:local-tools` to run them).
+  [`scripts/validate/front-matter-check/`][frontmatter-check]. Pure logic lives
+  in `index.mjs` and is covered by `index.test.mjs` in the same folder
+  (`npm run test:local-tools` to run it).
 
 ## Maintainer skills
 

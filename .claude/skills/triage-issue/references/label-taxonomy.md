@@ -20,9 +20,9 @@ The built-in `opentelemetry-website` profile defines the full taxonomy for
 `open-telemetry/opentelemetry.io` — see
 `${CLAUDE_PLUGIN_ROOT}/data/opentelemetry-website.yml`.
 
-**For `open-telemetry/opentelemetry.io` specifically**, the sibling skill
-`draft-issue` has the validated taxonomy grouped by area / SIG / localization /
-effort / priority / triage / type / assignment, already checked against the live
-label set. Treat it as the source of truth and refer to it instead of
-hand-typing label names. Also honor the PR-only labels warning in that skill
-(`#pr-only-labels-do-not-suggest`) — never apply those to an issue.
+**For `open-telemetry/opentelemetry.io` specifically**, the source of truth is
+`.claude/data/opentelemetry-website.yml` (`repo.label_taxonomy`), which is
+verified against the live label set. The sibling skill `draft-issue` reads this
+file at runtime — refer to the YAML directly rather than hand-typing label
+names. Never apply PR-only labels to an issue (see `draft-issue`
+`#pr-only-labels-do-not-suggest` for the list).
