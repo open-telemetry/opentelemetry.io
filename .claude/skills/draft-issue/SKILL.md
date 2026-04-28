@@ -13,15 +13,15 @@ effort: low
 # Draft Issue
 
 Drafts ready-to-paste GitHub issues for `open-telemetry/opentelemetry.io`. The
-templates under `.github/ISSUE_TEMPLATE/` and the live label set are the
-sources of truth — when this skill drifts from them, trust the source.
+templates under `.github/ISSUE_TEMPLATE/` and the live label set are the sources
+of truth — when this skill drifts from them, trust the source.
 
 ## Arguments {#arguments}
 
 - If `$ARGUMENTS` is empty, infer context from the conversation. If there is
   insufficient context, ask the user what issue to draft.
-- Otherwise, treat the full `$ARGUMENTS` string as the description. There are
-  no flags.
+- Otherwise, treat the full `$ARGUMENTS` string as the description. There are no
+  flags.
 
 ## When to use
 
@@ -43,11 +43,11 @@ explicit type from the user.
 | `PAGE_FEEDBACK.yml`   | `page feedback: ` | Feedback from the "was this page helpful?" widget    |
 
 When drafting, read the chosen template under `.github/ISSUE_TEMPLATE/` and
-mirror its section labels verbatim so GitHub maps the body back to template
-form fields. Required fields are marked in the template.
+mirror its section labels verbatim so GitHub maps the body back to template form
+fields. Required fields are marked in the template.
 
-For writing or reviewing the post itself after a `blog:` proposal lands, see
-the `review-blog-post` skill.
+For writing or reviewing the post itself after a `blog:` proposal lands, see the
+`review-blog-post` skill.
 
 ## Drafting rules
 
@@ -56,8 +56,8 @@ From `content/en/docs/contributing/issues.md`:
 - **Be specific.** Describe what is missing, out of date, wrong, or needs
   improvement. "Fix the security docs" is too broad; "Add details to the
   'Restricting network access' topic" is actionable.
-- **Right-size the scope.** One issue = one reasonable unit of work; break
-  broad problems into smaller, reviewable issues.
+- **Right-size the scope.** One issue = one reasonable unit of work; break broad
+  problems into smaller, reviewable issues.
 - **Search first.** Check existing issues for duplicates before filing.
 - **Reference related issues and PRs** with `#1234` for the same repo, or the
   full URL for cross-repo references.
@@ -78,9 +78,9 @@ Path-based auto-labeling (e.g. `blog`, `registry`, `i18n`, `lang:*`, several
 only. You can still suggest these on issues manually.
 
 Governance for the `triage:*`, `type:*`, `priority:*`, and `sig:*` families
-lives in `content/en/docs/contributing/sig-practices.md`. Skip
-`type:discussion` — its own label description says "Do not use, convert
-discussion issues into real Discussions."
+lives in `content/en/docs/contributing/sig-practices.md`. Skip `type:discussion`
+— its own label description says "Do not use, convert discussion issues into
+real Discussions."
 
 ## Output format
 
@@ -121,8 +121,7 @@ Related to #1234.
   labels verbatim.
 - `content/en/docs/contributing/issues.md` — user-facing guidance on filing
   great issues.
-- `content/en/docs/contributing/sig-practices.md` — label and triage
-  governance.
+- `content/en/docs/contributing/sig-practices.md` — label and triage governance.
 - `.github/component-label-map.yml` — path-based PR auto-labeling.
 - `gh label list --repo open-telemetry/opentelemetry.io --limit 200` — live
   label set.
