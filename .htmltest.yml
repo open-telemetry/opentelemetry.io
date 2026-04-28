@@ -61,6 +61,7 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - ^https://www.perplexity.ai
   - ^https://sched.co # Often yields 403 Forbidden and needs manual verification
   - ^https://.*\.sched\.com
+  - ^https://wiki.osdev.org
 
   # Ignore because they forget to renew their certificates too often, e.g., see:
   # https://github.com/oatpp/oatpp/issues/1082
