@@ -6,6 +6,7 @@
         "hooks": [
           {
             "type": "command",
+            "_comment": "Path traversal is intentional: hook config lives in .claude/, source lives under scripts/validate/ as a repo-level tool.",
             "command": "printf '%s' \"$TOOL_INPUT\" | node ${PLUGIN_DIR}/../scripts/validate/front-matter-check/index.mjs"
           }
         ]
