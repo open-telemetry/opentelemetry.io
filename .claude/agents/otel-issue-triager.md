@@ -394,6 +394,8 @@ explaining the verdict, noting any high-weight concerns.
 gh issue edit <number> -R <REPO> --add-label "<verdict_label>"
 ```
 
+> Omit the `gh` command block entirely if `evaluation_profile.verdict_labels` has no entry for the reached verdict tier.
+
 ````
 
 ### Link Format Rules

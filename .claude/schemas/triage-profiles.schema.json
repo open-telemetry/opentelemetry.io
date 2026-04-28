@@ -175,6 +175,12 @@
             "recommended": {
               "type": "string",
               "examples": ["mentorship:bloomberg"]
+            },
+            "maybe": {
+              "type": "string"
+            },
+            "not_suitable": {
+              "type": "string"
             }
           }
         }
