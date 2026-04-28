@@ -112,13 +112,21 @@ describes the diverse configuration options.
 ## Centralizing Kubernetes metadata with k8s-cache
 
 By default each OBI Pod opens its own connections to the Kubernetes API server
-to watch Pod, Node, and Service metadata. On large clusters this can overload
-the API server and affect the whole cluster.
+to watch Pod, Node, and Service metadata, not only from its local node, but from
+the entire k8s cluster. This is done in order to enrich not only the source of
+the request, but the destination info (for example, getting the service name for
+an outbound http request to add
+[peer](https://opentelemetry.io/docs/specs/semconv/registry/attributes/service/#service-attributes-for-peer-services)
+attributes, or for
+[service graph](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/servicegraphconnector)
+metric destination). Querying the full k8s cluster metadata on large clusters
+from each OBI pod can overload the API server and affect the whole cluster.
 
 To avoid that, the OBI Helm chart can deploy a small companion service called
 `k8s-cache`. The cache watches the Kubernetes API once on behalf of all OBI Pods
-and streams metadata to them over gRPC, so OBI no longer talks to the API server
-directly. For more background on what `k8s-cache` is and when to use it, see the
+and streams metadata to them over gRPC, which removes OBI's per-Pod informer
+traffic to the API server and substantially reduces API load. For more
+background on what `k8s-cache` is and when to use it, see the
 [Kubernetes setup guide](../kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache).
 
 To enable it, set `k8sCache.replicas` to a non-zero value in your
