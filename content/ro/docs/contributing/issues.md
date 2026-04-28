@@ -90,4 +90,4 @@ Reține următoarele aspecte atunci când trimiți o problemă:
 
 <!-- markdownlint-disable link-image-reference-definitions -->
 
-[probleme]: <{{% param _issues %}}>
+[choose an issue]: <{{% param _issues %}}>
