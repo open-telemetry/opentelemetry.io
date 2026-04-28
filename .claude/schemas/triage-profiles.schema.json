@@ -113,7 +113,12 @@
             "effort": { "type": "array", "items": { "type": "string" } },
             "priority": { "type": "array", "items": { "type": "string" } },
             "triage": { "type": "array", "items": { "type": "string" } },
-            "type": { "type": "array", "items": { "type": "string" } }
+            "type": { "type": "array", "items": { "type": "string" } },
+            "availability": {
+              "type": "array",
+              "description": "Labels for contributor availability / assignment (e.g. good first issue, mentorship).",
+              "items": { "type": "string" }
+            }
           }
         },
         "comment_templates": {
@@ -169,7 +174,7 @@
         "verdict_labels": {
           "type": "object",
           "description": "GitHub labels to suggest per verdict in the dossier's label command.",
-          "required": ["recommended", "maybe", "not_suitable"],
+          "required": ["recommended"],
           "additionalProperties": false,
           "properties": {
             "recommended": {

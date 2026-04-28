@@ -75,9 +75,14 @@ repo:
   label_taxonomy:
     area:
       - 'CI/infra'
-      - 'Github actions'
+      - 'github_actions'
       - 'blog'
       - 'docs'
+      - 'docs:blog'
+      - 'docs:javascript'
+      - 'docs:mobile'
+      - 'docs:registry'
+      - 'docs:vendor-list'
       - 'registry'
       - 'i18n'
       - 'site:accessibility'
@@ -87,9 +92,15 @@ repo:
       - 'upstream'
       - 'upstream:docsy'
       - 'upstream:hugo'
+      - 'analytics+observability'
+      - 'IA'
+      - 'metadata-quality'
+      - 'dependencies'
+      - 'blocked'
     sig:
       - 'sig:android'
       - 'sig:collector'
+      - 'sig:collector:refactor'
       - 'sig:cpp'
       - 'sig:demo'
       - 'sig:dotnet'
@@ -140,11 +151,18 @@ repo:
       - 'triage:deciding:blocked'
       - 'triage:deciding:needs-info'
       - 'triage:deciding:needs-mentor-or-sponsor'
+      - 'triage:rejected'
+      - 'triage:rejected:duplicate'
+      - 'triage:rejected:invalid'
+      - 'triage:rejected:wontfix'
     type:
       - 'type:copyedit'
       - 'type:question'
+    availability:
       - 'good first issue'
       - 'help wanted'
+      - 'mentorship:bloomberg'
+
 
   comment_templates:
     stale: |
