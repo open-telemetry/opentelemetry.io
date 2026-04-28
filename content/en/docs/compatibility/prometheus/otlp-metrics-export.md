@@ -1,6 +1,7 @@
 ---
 title: OTLP metrics export to Prometheus
 linkTitle: OTLP metrics export
+cSpell:ignore: uuidgen
 ---
 
 ## Introduction
