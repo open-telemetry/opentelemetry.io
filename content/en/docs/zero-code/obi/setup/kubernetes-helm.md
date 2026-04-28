@@ -113,13 +113,13 @@ describes the diverse configuration options.
 
 By default each OBI Pod opens its own connections to the Kubernetes API server
 to watch Pod, Node, and Service metadata, not only from its local node, but from
-the entire K8S cluster. This is done in order to enrich not only the source of
+the entire K8s cluster. This is done in order to enrich not only the source of
 the request, but the destination info (for example, getting the service name for
 an outbound HTTP request to add
 [peer](/docs/specs/semconv/registry/attributes/service/#service-attributes-for-peer-services)
 attributes, or for
 [service graph](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/servicegraphconnector)
-metric destination). Querying the full K8S cluster metadata on large clusters
+metric destination). Querying the full K8s cluster metadata on large clusters
 from each OBI pod can overload the API server and affect the whole cluster.
 
 To avoid that, the OBI Helm chart can deploy a small companion service called
