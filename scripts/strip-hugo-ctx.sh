@@ -10,5 +10,7 @@ if [[ ! -d "$target_dir" ]]; then
 fi
 
 find -L "$target_dir" -type f -name '*.md' -exec perl -i -ne '
-  print unless /^\s*\{\{__hugo_ctx pid=\d+\}\}\s*$/;
+  # Drop whole-line markers: opening (pid=…), closing ({{__hugo_ctx/}}), optional
+  # Markdown blockquote prefix (e.g. callouts), and leading indent (fenced code).
+  print unless /^(?:\s*>\s*)*\s*(?:\{\{__hugo_ctx\s+pid=\d+\}\}|\{\{__hugo_ctx\/\}\})\s*$/;
 ' {} +
