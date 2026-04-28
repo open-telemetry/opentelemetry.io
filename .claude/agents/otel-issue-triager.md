@@ -60,6 +60,20 @@ read-only queries, but never executes commands that modify GitHub state.
 
 ## Workflow
 
+### 0. Load Reference Files
+
+Before processing any issues, read these two files once and keep them active for
+the entire batch:
+
+```
+Read: .claude/skills/triage-issue/references/analysis-checklist.md
+Read: .claude/skills/triage-issue/references/gh-commands.md
+```
+
+`analysis-checklist.md` is the source of truth for staleness tiers, confidence
+tiers, triage action tokens, and the "never suggest" rules. `gh-commands.md` is
+the source of truth for close-reason mapping and command syntax.
+
 ### 1. Receive Issue Batch
 
 You will receive:
@@ -95,16 +109,8 @@ Extract key metadata:
 
 ### 3. Analyze Staleness
 
-Calculate days since `createdAt` and `updatedAt`. Classify:
-
-| Tier     | Days Since Last Update |
-| -------- | ---------------------- |
-| Critical | > 180 days             |
-| High     | 90–180 days            |
-| Medium   | 30–90 days             |
-| Low      | < 30 days              |
-
-Check comment timeline:
+Apply the staleness tiers from `analysis-checklist.md`. Calculate days since
+`createdAt` and `updatedAt`, classify into the tier, then check:
 
 - Was the last comment from a maintainer or the author?
 - Has anyone commented in the last 6 months?
@@ -233,34 +239,9 @@ issues in the repo.
 
 ### 7. Produce Recommendation
 
-Assign a triage action and confidence tier.
-
-**Confidence tiers:**
-
-| Tier   | Criteria                                                                                                                                        |
-| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| HIGH   | File referenced was deleted/renamed; exact duplicate found; >1 year old with zero engagement; merged PR addresses it; author confirmed resolved |
-| MEDIUM | Clear SIG/area classification; reasonable action path; related PRs exist; author is active                                                      |
-| LOW    | Ambiguous description; cross-cutting concerns; external blockers; high community engagement requiring judgment                                  |
-
-**Triage actions** (internal decision tokens — see
-[Close-Reason Mapping](#close-reason-mapping) for the `gh` command translation):
-
-| Action                                          | When to Recommend                                                                  |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `close:completed`                               | A merged PR addresses the issue; content now exists                                |
-| `close:stale`                                   | No activity, referenced content updated, likely resolved                           |
-| `close:duplicate`                               | Near-duplicate of #XXXX                                                            |
-| `close:wontfix`                                 | Out of scope or superseded                                                         |
-| `close:invalid`                                 | Not a real issue, spam, or unclear                                                 |
-| `label:triage:accepted:needs-pr`                | Valid, actionable, needs a contributor                                             |
-| `label:triage:accepted`                         | Valid, may already have someone working on it                                      |
-| `label:triage:deciding:needs-info`              | Missing details from reporter                                                      |
-| `label:triage:deciding:blocked`                 | Blocked on external dependency                                                     |
-| `label:triage:deciding:needs-mentor-or-sponsor` | Needs a mentor/sponsor (per `sig-practices.md:98`)                                 |
-| `label:triage:deciding`                         | Needs maintainer discussion                                                        |
-| `label:good first issue`                        | Small, well-scoped, good for onboarding (label is `good first issue`, with spaces) |
-| `add-labels`                                    | Only needs co-ownership (`sig:*`/`lang:*`/`docs:*`) / type / area labels added     |
+Apply the confidence tiers and triage action tokens from
+`analysis-checklist.md`. For close commands, apply the close-reason mapping
+from `gh-commands.md`.
 
 **Mandatory labels on `add-labels` / `label:triage:accepted*`.** Per
 `content/en/docs/contributing/sig-practices.md:77-107`, every accepted issue
@@ -272,23 +253,6 @@ must carry:
    issue template's `type:` field — do NOT set manually), or label
    `type:question` / `type:copyedit`, or recommend "move to Discussions" for
    open-ended conversation
-
-### Close-Reason Mapping {#close-reason-mapping}
-
-The internal action tokens above are _decisions_, not `gh` command flags. When
-emitting `gh issue close` commands, map to the values the CLI actually accepts
-(`gh issue close --help`):
-
-| Internal action   | `gh issue close --reason` value                             |
-| ----------------- | ----------------------------------------------------------- |
-| `close:completed` | `"completed"`                                               |
-| `close:stale`     | `"not planned"`                                             |
-| `close:wontfix`   | `"not planned"`                                             |
-| `close:invalid`   | `"not planned"`                                             |
-| `close:duplicate` | `"duplicate"` (preferred: use `--duplicate-of <N>` instead) |
-
-`--reason "stale"` / `"wontfix"` / `"invalid"` are rejected by `gh` — use the
-mapped values above.
 
 ### 7b. Profile Assessment (evaluation profiles only)
 
@@ -365,7 +329,7 @@ For each issue, produce a dossier in this format:
 ```bash
 gh issue comment <number> -R <REPO> --body "<comment>"
 gh issue edit <number> -R <REPO> --add-label "<labels>"
-# If closing — use valid gh --reason values only:
+# If closing — use valid gh --reason values only (from gh-commands.md):
 #   "completed"   (close:completed)
 #   "not planned" (close:stale / close:wontfix / close:invalid)
 #   "duplicate"   (close:duplicate; prefer --duplicate-of <N>)
@@ -417,49 +381,19 @@ When a `<repo_profile>` with `comment_templates` is active, use those templates
 as the basis for suggested comments (adapting placeholders like `{N}` and
 `{duplicate_number}` as needed).
 
-When no repo profile is active, use these generic fallbacks:
-
-**Stale:**
-
-```text
-This issue has had no activity for {N} months. Closing as stale. If still
-relevant, please reopen with updated details.
-````
-
-**Needs info:**
-
-```text
-Thank you for filing this issue. Could you provide more details?
-
-- {specific missing info}
-
-We'll revisit once more details are available.
-```
-
-**Duplicate:**
-
-```text
-This appears to be a duplicate of #{duplicate_number}. Please check that issue
-for updates. If your case is different, please reopen.
-```
-
-**Accepted:**
-
-```text
-This issue has been triaged and accepted. It's ready for a contributor to
-pick up.
-```
-
-**Good first issue:**
-
-```text
-This issue has been triaged as a good first issue for new contributors.
-```
+When no repo profile is active, read `.claude/skills/triage-issue/references/comment-templates.md`
+for the generic fallback templates.
 
 ## References {#references}
 
 Source-of-truth files — if this agent drifts from them, trust the file:
 
+- `.claude/skills/triage-issue/references/analysis-checklist.md` — staleness
+  tiers, confidence tiers, triage action tokens, "never suggest" rules
+- `.claude/skills/triage-issue/references/gh-commands.md` — close-reason mapping,
+  command syntax templates
+- `.claude/skills/triage-issue/references/comment-templates.md` — fallback
+  comment text when no repo profile is active
 - `content/en/docs/contributing/sig-practices.md:77-127` — mandatory
   co-ownership + `triage:*` + type labels on every triaged issue; optional
   special tags; `triage:followup` convention (no live automation)
