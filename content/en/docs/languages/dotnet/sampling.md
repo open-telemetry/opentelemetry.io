@@ -75,7 +75,7 @@ This means:
 ## Environment variable configuration
 
 Sampling can also be configured using environment variables, which is useful for
-containerized and cloud-native deployments.
+containerized and cloud native deployments.
 
 ### OTEL_TRACES_SAMPLER
 
