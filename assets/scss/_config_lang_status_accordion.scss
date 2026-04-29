@@ -1,0 +1,364 @@
+// Declarative Configuration Language Implementation Status Accordion Styles
+
+// Language-specific CSS Custom Properties
+:root {
+  --config-accordion-pill-size: 3rem;
+  --config-accordion-pill-font-size: 0.7rem;
+
+  // Status colors (matching Bootstrap defaults)
+  --config-status-supported: #28a745;
+  --config-status-not-implemented: #dc3545;
+  --config-status-unknown: #ffc107;
+  --config-status-not-applicable: #6c757d;
+  --config-status-ignored: #17a2b8;
+  --config-status-missing: #e9ecef;
+  --config-status-missing-text: #6c757d;
+
+  // Language-specific colors
+  --config-legend-divider: var(--bs-border-color);
+}
+
+// Dark mode support for language-specific colors
+@media (prefers-color-scheme: dark) {
+  :root {
+    --config-legend-divider: rgba(255, 255, 255, 0.1);
+
+    // Adjust status colors for better visibility in dark mode
+    --config-status-supported: #34c759;
+    --config-status-not-implemented: #ff3b30;
+    --config-status-unknown: #ffcc00;
+    --config-status-not-applicable: #8e8e93;
+    --config-status-ignored: #30b0c7;
+    --config-status-missing: rgba(255, 255, 255, 0.1);
+    --config-status-missing-text: #8e8e93;
+  }
+}
+
+// Extend shared accordion base styles
+.config-lang-status-accordion {
+  @extend %config-accordion-base;
+
+  // Language-specific additions
+  .status-legend {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 1rem 1.5rem;
+    background: var(--config-controls-bg);
+    border-radius: var(--config-accordion-border-radius);
+    border: 1px solid var(--bs-border-color);
+
+    .legend-section {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+
+      .legend-title {
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: var(--bs-body-color);
+        padding-top: 0.25rem;
+      }
+
+      .legend-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: var(--bs-body-color);
+
+        .legend-label {
+          white-space: nowrap;
+        }
+      }
+    }
+
+    .legend-divider {
+      width: 1px;
+      background: var(--config-legend-divider);
+      align-self: stretch;
+    }
+
+    .lang-indicator {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background: var(--bs-primary);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .legend-lang-logo {
+      width: 24px !important;
+      height: 24px;
+      object-fit: contain;
+      flex-shrink: 0;
+      border: none;
+      // Make white SVG logos dark/visible on light background
+      filter: brightness(0);
+    }
+
+    // Keep status pills smaller in legend
+    .lang-status-pill {
+      width: 1.25rem;
+      height: 1.25rem;
+      border-width: 2px;
+    }
+  }
+
+  // Language-specific accordion button overrides
+  .accordion-header {
+    .accordion-button {
+      &:not(.collapsed) {
+        .lang-status-pill {
+          // Keep status border colors visible even on blue background
+          // Pills maintain their colored borders for clarity
+        }
+
+        .type-name a {
+          color: white;
+        }
+      }
+
+      .type-name {
+        a {
+          color: inherit;
+          text-decoration: none;
+          transition: text-decoration 0.2s ease;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .lang-status-summary {
+        display: flex;
+        gap: 0.375rem;
+        margin-left: 1rem;
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  .lang-support-card {
+    padding: 1rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--config-accordion-border-radius);
+    background-color: var(--config-card-bg);
+    height: 100%;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: var(--bs-primary);
+    }
+
+    h6 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: var(--bs-body-color);
+    }
+
+    .property-support {
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--bs-body-color);
+
+      ul {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Language status pills (mini indicators in header)
+.lang-status-pill {
+  display: inline-flex;
+  justify-content: center;
+  width: var(--config-accordion-pill-size);
+  height: var(--config-accordion-pill-size);
+  border-radius: 50%;
+  border: 3px solid;
+  background-color: var(--bs-body-bg);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  padding: 0.25rem;
+  overflow: visible;
+  flex-shrink: 0;
+
+  .language-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: none;
+    border: none;
+    outline: none;
+  }
+
+  &:hover {
+    transform: scale(1.4);
+    z-index: 10;
+    position: relative;
+  }
+
+  &.status-supported {
+    border-color: var(--config-status-supported);
+
+    &:hover {
+      box-shadow: 0 0 0.75rem rgba(40, 167, 69, 0.6);
+    }
+  }
+
+  &.status-not_implemented {
+    border-color: var(--config-status-not-implemented);
+
+    &:hover {
+      box-shadow: 0 0 0.75rem rgba(220, 53, 69, 0.6);
+    }
+  }
+
+  &.status-unknown {
+    border-color: var(--config-status-unknown);
+
+    &:hover {
+      box-shadow: 0 0 0.75rem rgba(255, 193, 7, 0.6);
+    }
+  }
+
+  &.status-not_applicable {
+    border-color: var(--config-status-not-applicable);
+
+    &:hover {
+      box-shadow: 0 0 0.75rem rgba(108, 117, 125, 0.6);
+    }
+  }
+
+  &.status-ignored {
+    border-color: var(--config-status-ignored);
+
+    &:hover {
+      box-shadow: 0 0 0.75rem rgba(23, 162, 184, 0.6);
+    }
+  }
+
+  &.status-missing {
+    border-color: var(--config-status-missing);
+
+    &:hover {
+      box-shadow: 0 0 0.75rem rgba(233, 236, 239, 0.6);
+    }
+  }
+}
+
+// Dark mode specific overrides
+@media (prefers-color-scheme: dark) {
+  .lang-status-pill {
+    // In dark mode, use a slightly lighter background for the pills
+    background-color: rgba(255, 255, 255, 0.95);
+
+    // No need for logo filter since background is always light
+    .language-logo {
+      filter: none;
+    }
+  }
+
+  .config-lang-status-accordion {
+    @extend %config-accordion-dark;
+
+    // Make legend logos visible in dark mode
+    .status-legend {
+      .legend-lang-logo {
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .config-lang-status-accordion {
+    @extend %config-accordion-mobile;
+
+    .status-legend {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+
+      .legend-section {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .legend-items {
+          width: 100%;
+          gap: 0.75rem;
+        }
+      }
+
+      .legend-divider {
+        width: 100%;
+        height: 1px;
+      }
+    }
+
+    .accordion-button {
+      .lang-status-summary {
+        flex-direction: column;
+        gap: 0.125rem !important;
+        margin-left: 0.5rem;
+      }
+    }
+
+    .lang-support-card {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .lang-status-pill {
+    --config-accordion-pill-size: 2.25rem;
+    --config-accordion-pill-font-size: 0.65rem;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+// Print styles
+@media print {
+  .config-lang-status-accordion {
+    @extend %config-accordion-print;
+
+    .lang-status-pill {
+      border: 1px solid #000;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .config-lang-status-accordion {
+    @extend %config-accordion-reduced-motion;
+  }
+
+  .lang-status-pill,
+  .lang-support-card {
+    transition: none;
+  }
+}
