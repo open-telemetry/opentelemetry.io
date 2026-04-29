@@ -194,10 +194,6 @@ function classify(key) {
   const enableMatch = key.match(/^otel\.instrumentation\.(.+)\.enabled$/);
   if (enableMatch) {
     const name = enableMatch[1];
-    if (name === 'common.default') {
-      // otel.instrumentation.common.default-enabled — parsed from .properties
-      // won't match this; handled separately
-    }
     // Skip if it looks like a sub-property (e.g. common.db-statement-sanitizer.enabled)
     if (!name.includes('.')) {
       return { type: 'enable', name };
