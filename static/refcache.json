@@ -4851,6 +4851,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-28T10:25:17.131774883Z"
   },
+  "https://github.com/cilium/hubble-otel": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-07T08:52:55.092025+01:00"
+  },
   "https://github.com/cisco-open": {
     "StatusCode": 206,
     "LastSeen": "2026-04-28T14:16:42.130469564Z"
@@ -7454,6 +7458,10 @@
   "https://github.com/open-telemetry/community/issues/3312": {
     "StatusCode": 206,
     "LastSeen": "2026-04-28T12:59:24.589798212Z"
+  },
+  "https://github.com/open-telemetry/community/issues/3247": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-07T08:52:53.059555+01:00"
   },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
@@ -18303,6 +18311,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-24T10:07:40.79644766Z"
   },
+  "https://kubernetes.io/blog/2026/01/29/ingress-nginx-statement/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-07T08:52:53.269008+01:00"
+  },
   "https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/": {
     "StatusCode": 206,
     "LastSeen": "2026-04-23T10:13:17.309026111Z"
@@ -23211,6 +23223,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-04-23T10:13:20.128152883Z"
   },
+  "https://www.cncf.io/reports/the-cncf-annual-cloud-native-survey/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-07T08:52:56.542234+01:00"
+  },
   "https://www.cncf.io/training/certification/": {
     "StatusCode": 200,
     "LastSeen": "2026-04-28T12:58:13.512387207Z"
@@ -23262,6 +23278,10 @@
   "https://www.dash0.com/": {
     "StatusCode": 200,
     "LastSeen": "2026-04-28T14:09:47.454217346Z"
+  },
+  "https://www.dash0.com/blog/observing-ingress-nginx-with-opentelemetry-and-dash0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-07T08:52:53.843498+01:00"
   },
   "https://www.docker.com/": {
     "StatusCode": 206,
