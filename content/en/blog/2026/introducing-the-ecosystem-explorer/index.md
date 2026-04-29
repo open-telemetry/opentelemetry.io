@@ -1,9 +1,10 @@
 ---
 title: Introducing the Ecosystem Explorer Project
 linkTitle: Ecosystem Explorer Project
-date: 2026-04-30
+date: 2026-04-28
 author: '[Jay DeLuca](https://github.com/jaydeluca) (Grafana Labs)'
 sig: Comms
+cspell:ignore: Cavenaghi lucacavenaghi
 ---
 
 OpenTelemetry is vast. The Java agent alone includes over 240 different
@@ -82,6 +83,16 @@ repository, third-party extensions from the community, and native
 instrumentation built directly into libraries like
 [Apache Camel](https://camel.apache.org/components/4.18.x/others/opentelemetry2.html).
 Each layer adds coverage that developers need to discover.
+
+We are also working on a "Configuration Builder" feature that will provide users
+with a way to interactively explore and build their Java agent declarative
+configuration files. I want to extend a huge thank you to community member
+[Luca Cavenaghi (@lucacavenaghi97)](https://github.com/lucacavenaghi97) who has
+been doing amazing work on this new feature that is coming soon.
+
+Here is a sneak peak:
+
+![Configuration builder](configuration-builder.png)
 
 ### Collector components
 
@@ -187,8 +198,8 @@ oriented. If an issue looks interesting, but you're not sure where to start,
 just ask! The maintainers are active and happy to help point you in the right
 direction.
 
-Big shout out to some of the community members who have already contributed to
-the project in its early stages:
+Big shout out to some of the community members who have been contributing to the
+project in its early stages:
 
 <!-- cspell:disable -->
 
@@ -198,6 +209,7 @@ the project in its early stages:
 - [Manohar Mallipudi (@Vjc5h3nt)](https://github.com/Vjc5h3nt)
 - [Erick Ruiz de Chavez (@eruizdechavez)](https://github.com/eruizdechavez)
 - [Love Kumar Chauhan (@LoveChauhan-18)](https://github.com/LoveChauhan-18)
+- [PittuSharma (@Pittu-Sharma)](https://github.com/Pittu-Sharma)
 
 <!-- cspell:enable -->
 
