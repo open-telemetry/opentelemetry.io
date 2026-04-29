@@ -209,7 +209,7 @@ project in its early stages:
 - [Manohar Mallipudi (@Vjc5h3nt)](https://github.com/Vjc5h3nt)
 - [Erick Ruiz de Chavez (@eruizdechavez)](https://github.com/eruizdechavez)
 - [Love Kumar Chauhan (@LoveChauhan-18)](https://github.com/LoveChauhan-18)
-- [PittuSharma (@Pittu-Sharma)](https://github.com/Pittu-Sharma)
+- [Pittu Sharma (@Pittu-Sharma)](https://github.com/Pittu-Sharma)
 
 <!-- cspell:enable -->
 
