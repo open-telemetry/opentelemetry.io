@@ -44,7 +44,7 @@ using the following issue templates:
 - [Blueprint](https://github.com/open-telemetry/sig-end-user/issues/new?template=blueprint_proposal.yml)
 - [Reference Implementation](https://github.com/open-telemetry/sig-end-user/issues/new?template=reference_implementation.yml)
 
-End-User SIG members will guide you through the process, from helping you craft
+End User SIG members will guide you through the process, from helping you craft
 a high-quality document following our
 [standard templates](https://github.com/open-telemetry/sig-end-user/tree/main/architecture),
 to ultimately making your contribution to the official documentation.
