@@ -162,7 +162,7 @@ real-world usage directly shapes what gets standardized next.
   [report issues](https://github.com/open-telemetry/semantic-conventions/issues).
 - Try the [Aspire Dashboard](https://aspire.dev/dashboard/overview/) for local
   OpenTelemetry debugging and
-  [contribute to it](https://github.com/microsoft/aspire).
+  [give feedback](https://github.com/microsoft/aspire).
 - Join the
   [GenAI Semantic Conventions and Instrumentation SIG](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md)
   discussions.
