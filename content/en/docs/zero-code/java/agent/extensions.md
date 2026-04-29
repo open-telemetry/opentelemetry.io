@@ -5,7 +5,7 @@ description:
   Extensions add capabilities to the agent without having to create a separate
   distribution.
 weight: 300
-cSpell:ignore: Customizer Dotel
+cSpell:ignore: Customizer Dotel myextension
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -25,7 +25,7 @@ Extensions allow you to:
 - Implement custom SDK components (samplers, exporters, propagators)
 - Modify telemetry data collection and processing
 
-## Quick Start
+## Quick start
 
 Here's a minimal extension that adds a custom span processor to get you started:
 
@@ -143,7 +143,7 @@ java -javaagent:opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-## Using Extensions
+## Using extensions
 
 There are two ways to use extensions with the Java agent:
 
@@ -155,14 +155,14 @@ There are two ways to use extensions with the Java agent:
 | **Runtime Loading** | Easy to swap extensions, no rebuild needed           | Extra command-line flag required      | Development, testing     |
 | **Embedding**       | Single JAR, simpler deployment, can't forget to load | Requires rebuild to change extensions | Production, distribution |
 
-### Loading Extensions at Runtime
+### Loading extensions at runtime
 
 Extensions can be loaded at runtime using the `otel.javaagent.extensions` system
 property or `OTEL_JAVAAGENT_EXTENSIONS` environment variable. This configuration
 option accepts comma-separated paths to extension JAR files or directories
 containing extension JARs.
 
-#### Single Extension
+#### Single extension
 
 ```bash
 java -javaagent:path/to/opentelemetry-javaagent.jar \
@@ -170,7 +170,7 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-#### Multiple Extensions
+#### Multiple extensions
 
 ```bash
 java -javaagent:path/to/opentelemetry-javaagent.jar \
@@ -178,7 +178,7 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-#### Extension Directory
+#### Extension directory
 
 You can specify a directory containing multiple extension JARs, and all JARs in
 that directory will be loaded:
@@ -189,7 +189,7 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-#### Mixed Paths
+#### Mixed paths
 
 You can combine individual JAR files and directories:
 
@@ -199,7 +199,7 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-#### How Extension Loading Works
+#### How extension loading works
 
 When you load extensions at runtime, the agent:
 
@@ -209,7 +209,7 @@ When you load extensions at runtime, the agent:
    [ServiceLoader](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ServiceLoader.html)
    mechanism (via `@AutoService` annotations in your code, for example)
 
-### Embedding Extensions in the Agent
+### Embedding extensions in the agent
 
 Another deployment option is to create a single JAR file that contains both the
 OpenTelemetry Java agent and your extension(s). This approach simplifies
@@ -217,7 +217,7 @@ deployment (just one JAR file to manage) and eliminates the need for the
 `-Dotel.javaagent.extensions` command line option, which makes it harder to
 accidentally forget to load your extension.
 
-#### How It Works
+#### How it works
 
 The agent automatically looks for extensions in a special `extensions/`
 directory inside the agent JAR file, so we can use a Gradle build task to:
@@ -227,7 +227,7 @@ directory inside the agent JAR file, so we can use a Gradle build task to:
 3. Add your extension JAR(s) into the `extensions/` directory
 4. Repackage everything into a single JAR
 
-#### The `extendedAgent` Gradle Task
+#### The `extendedAgent` Gradle task
 
 Add the following to your extension project's `build.gradle.kts` file:
 
@@ -305,7 +305,7 @@ tasks {
 For a complete example, reference the gradle file from the
 [extension example](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/build.gradle.kts).
 
-#### Building and Using the Extended Agent
+#### Building and using the extended agent
 
 Once you've added the `extendedAgent` task to your `build.gradle.kts`:
 
@@ -320,7 +320,7 @@ ls build/libs/opentelemetry-javaagent.jar
 java -javaagent:build/libs/opentelemetry-javaagent.jar -jar myapp.jar
 ```
 
-#### Embedding Multiple Extensions
+#### Embedding multiple extensions
 
 To embed multiple extensions, modify the `extendedAgent` task to include
 multiple extension JARs:
@@ -349,6 +349,438 @@ val extendedAgent by tasks.registering(Jar::class) {
   }
 }
 ```
+
+## Writing extensions
+
+Creating an extension involves implementing one or more Service Provider
+Interface (SPI) classes and packaging them as a JAR file.
+
+### Project setup and dependencies
+
+Extensions must carefully manage their dependencies to avoid conflicts with the
+agent and application.
+
+#### Dependencies provided by agent (use `compileOnly`)
+
+These APIs are available at runtime from the agent:
+
+```kotlin
+compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi")
+compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api")
+compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator")
+compileOnly("io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api")
+```
+
+#### Dependencies from application classpath (use `compileOnly`)
+
+When creating instrumentation, you need to reference classes from the target
+application. These should also be `compileOnly`:
+
+```kotlin
+// Only accessible in Advice classes during instrumentation
+compileOnly("javax.servlet:javax.servlet-api:3.0.1")
+```
+
+#### External runtime dependencies (use `implementation`)
+
+Any external libraries your extension needs at runtime must use `implementation`
+scope and will be packaged into the shadow JAR:
+
+```kotlin
+implementation("org.apache.commons:commons-lang3:3.19.0")
+implementation("com.google.guava:guava:33.0.0-jre")
+```
+
+> [!IMPORTANT]
+>
+> Extensions cannot load dependencies from separate JAR files. All dependencies
+> must be merged into a single shadow JAR.
+
+### Extension points overview
+
+OpenTelemetry Java agent provides multiple extension points through SPI
+interfaces, here are the most commonly used ones:
+
+| Extension Point                       | Package                                                       | Purpose                                |
+| ------------------------------------- | ------------------------------------------------------------- | -------------------------------------- |
+| `AutoConfigurationCustomizerProvider` | `io.opentelemetry.sdk.autoconfigure.spi`                      | Main entry point for SDK customization |
+| `ConfigurablePropagatorProvider`      | `io.opentelemetry.sdk.autoconfigure.spi`                      | Register custom propagators            |
+| `ConfigurableSamplerProvider`         | `io.opentelemetry.sdk.autoconfigure.spi.traces`               | Register custom samplers               |
+| `ResourceProvider`                    | `io.opentelemetry.sdk.autoconfigure.spi`                      | Add custom resource attributes         |
+| `InstrumenterCustomizerProvider`      | `io.opentelemetry.instrumentation.api.incubator.instrumenter` | Customize existing instrumentations    |
+| `InstrumentationModule`               | `io.opentelemetry.javaagent.extension.instrumentation`        | Create new instrumentations            |
+
+### Configuration in extensions
+
+Extensions can read and provide configuration to customize their behavior.
+
+#### Accessing configuration in extensions
+
+Many SPI methods receive a `ConfigProperties` parameter that allows you to read
+configuration:
+
+```java
+@Override
+public Sampler createSampler(ConfigProperties config) {
+  // Read configuration with defaults
+  String endpoint = config.getString("otel.exporter.otlp.endpoint", "http://localhost:4317");
+  int threshold = config.getInt("otel.instrumentation.myext.threshold", 100);
+  boolean enabled = config.getBoolean("otel.instrumentation.myext.enabled", true);
+  return new MySampler(endpoint, threshold, enabled);
+}
+```
+
+#### Providing default configuration
+
+Extensions can provide default configuration values that will be used if not
+overridden:
+
+```java
+@Override
+public void customize(AutoConfigurationCustomizer config) {
+  config.addPropertiesSupplier(() -> {
+    Map<String, String> props = new HashMap<>();
+    props.put("otel.exporter.otlp.endpoint", "http://my-backend:8080");
+    props.put("otel.service.name", "my-service");
+    props.put("otel.instrumentation.myext.enabled", "true");
+    return props;
+  });
+}
+```
+
+#### Configuration naming conventions
+
+Follow these conventions for configuration parameter names:
+
+Standard OpenTelemetry properties use an `otel.*` prefix
+
+- `otel.service.name`
+- `otel.traces.sampler`
+- `otel.exporter.otlp.endpoint`
+
+Instrumentation-specific properties use `otel.instrumentation.<name>.*`
+
+- `otel.instrumentation.cassandra.enabled`
+- `otel.instrumentation.jdbc.statement-sanitizer.enabled`
+
+Extension-specific properties follow the same pattern
+
+- `otel.instrumentation.myextension.enabled`
+- `otel.instrumentation.myextension.threshold`
+- `otel.instrumentation.myextension.custom-value`
+
+### Using @AutoService
+
+The `@AutoService` annotation automatically generates the required
+`META-INF/services/` files for SPI registration. To use it:
+
+Add the dependency:
+
+```kotlin
+compileOnly("com.google.auto.service:auto-service:1.1.1")
+annotationProcessor("com.google.auto.service:auto-service:1.1.1")
+```
+
+And then annotate your SPI implementations like this:
+
+```java
+import com.google.auto.service.AutoService;
+
+@AutoService(AutoConfigurationCustomizerProvider.class)
+public class MyExtension implements AutoConfigurationCustomizerProvider {
+  // Implementation
+}
+```
+
+This is equivalent to manually creating
+`META-INF/services/io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider`
+with your class name.
+
+---
+
+## Extension point reference
+
+### AutoConfigurationCustomizerProvider
+
+> [!NOTE] This will not work for situations where
+> [declarative configuration](../declarative-configuration) is in use.
+
+The main entry point for customizing SDK configuration. This allows you to:
+
+- Customize the tracer provider
+- Add span processors and exporters
+- Provide default configuration properties
+- Customize other SDK components
+
+**Example:**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt "src/main/java/com/example/javaagent/DemoAutoConfigurationCustomizerProvider.java" from="@AutoService"?>
+```java
+@AutoService(AutoConfigurationCustomizerProvider.class)
+public class DemoAutoConfigurationCustomizerProvider
+    implements AutoConfigurationCustomizerProvider {
+
+  @Override
+  public void customize(AutoConfigurationCustomizer autoConfiguration) {
+    autoConfiguration
+        .addTracerProviderCustomizer(this::configureSdkTracerProvider)
+        .addPropertiesSupplier(this::getDefaultProperties);
+  }
+
+  private SdkTracerProviderBuilder configureSdkTracerProvider(
+      SdkTracerProviderBuilder tracerProvider, ConfigProperties config) {
+
+    return tracerProvider
+        .setIdGenerator(new DemoIdGenerator())
+        .setSpanLimits(SpanLimits.builder().setMaxNumberOfAttributes(1024).build())
+        .addSpanProcessor(new DemoSpanProcessor())
+        .addSpanProcessor(SimpleSpanProcessor.create(new DemoSpanExporter()));
+  }
+
+  private Map<String, String> getDefaultProperties() {
+    Map<String, String> properties = new HashMap<>();
+    properties.put("otel.exporter.otlp.endpoint", "http://backend:8080");
+    properties.put("otel.exporter.otlp.insecure", "true");
+    properties.put("otel.config.max.attrs", "16");
+    properties.put("otel.traces.sampler", "demo");
+    return properties;
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+### InstrumenterCustomizerProvider
+
+Customize existing instrumentations without modifying their code. This is the
+recommended way to add attributes, metrics, or modify behavior of built-in
+instrumentations.
+
+**Example:**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt "src/main/java/com/example/javaagent/DemoInstrumenterCustomizerProvider.java" from="/**"?>
+```java
+/**
+ * This example demonstrates how to use the InstrumenterCustomizerProvider SPI to customize
+ * instrumentation behavior without modifying the core instrumentation code.
+ *
+ * <p>This customizer adds:
+ *
+ * <ul>
+ *   <li>Custom attributes to HTTP server spans (based on instrumentation name)
+ *   <li>Custom attributes to HTTP client spans (based on instrumentation type)
+ *   <li>Custom metrics for HTTP operations
+ *   <li>Request correlation IDs via context customization
+ *   <li>Custom span name transformation
+ * </ul>
+ *
+ * <p>The customizer will be automatically applied to instrumenters that match the specified
+ * instrumentation name or type.
+ *
+ * @see InstrumenterCustomizerProvider
+ * @see InstrumenterCustomizer
+ */
+@AutoService(InstrumenterCustomizerProvider.class)
+public class DemoInstrumenterCustomizerProvider implements InstrumenterCustomizerProvider {
+
+  @Override
+  public void customize(InstrumenterCustomizer customizer) {
+    String instrumentationName = customizer.getInstrumentationName();
+    if (isHttpServerInstrumentation(instrumentationName)) {
+      customizeHttpServer(customizer);
+    }
+
+    if (customizer.hasType(InstrumenterCustomizer.InstrumentationType.HTTP_CLIENT)) {
+      customizeHttpClient(customizer);
+    }
+  }
+
+  private boolean isHttpServerInstrumentation(String instrumentationName) {
+    return instrumentationName.contains("servlet")
+        || instrumentationName.contains("jetty")
+        || instrumentationName.contains("tomcat")
+        || instrumentationName.contains("undertow")
+        || instrumentationName.contains("spring-webmvc");
+  }
+
+  private void customizeHttpServer(InstrumenterCustomizer customizer) {
+    customizer.addAttributesExtractor(new DemoAttributesExtractor());
+    customizer.addOperationMetrics(new DemoMetrics());
+    customizer.addContextCustomizer(new DemoContextCustomizer());
+    customizer.setSpanNameExtractorCustomizer(
+        unused -> (SpanNameExtractor<Object>) object -> "CustomHTTP/" + object.toString());
+  }
+
+  private void customizeHttpClient(InstrumenterCustomizer customizer) {
+    // Simple customization for HTTP client instrumentations
+    customizer.addAttributesExtractor(new DemoHttpClientAttributesExtractor());
+  }
+
+  /** Custom attributes extractor for HTTP client instrumentations. */
+  private static class DemoHttpClientAttributesExtractor
+      implements AttributesExtractor<Object, Object> {
+    private static final AttributeKey<String> CLIENT_ATTR =
+        AttributeKey.stringKey("demo.client.type");
+
+    @Override
+    public void onStart(AttributesBuilder attributes, Context context, Object request) {
+      attributes.put(CLIENT_ATTR, "demo-http-client");
+    }
+
+    @Override
+    public void onEnd(
+        AttributesBuilder attributes,
+        Context context,
+        Object request,
+        Object response,
+        Throwable error) {}
+  }
+
+  /** Custom attributes extractor that adds demo-specific attributes. */
+  private static class DemoAttributesExtractor implements AttributesExtractor<Object, Object> {
+    private static final AttributeKey<String> CUSTOM_ATTR = AttributeKey.stringKey("demo.custom");
+    private static final AttributeKey<String> ERROR_ATTR = AttributeKey.stringKey("demo.error");
+
+    @Override
+    public void onStart(AttributesBuilder attributes, Context context, Object request) {
+      attributes.put(CUSTOM_ATTR, "demo-extension");
+    }
+
+    @Override
+    public void onEnd(
+        AttributesBuilder attributes,
+        Context context,
+        Object request,
+        Object response,
+        Throwable error) {
+      if (error != null) {
+        attributes.put(ERROR_ATTR, error.getClass().getSimpleName());
+      }
+    }
+  }
+
+  /** Custom metrics that track request counts. */
+  private static class DemoMetrics implements OperationMetrics {
+    @Override
+    public OperationListener create(Meter meter) {
+      LongCounter requestCounter =
+          meter
+              .counterBuilder("demo.requests")
+              .setDescription("Number of requests")
+              .setUnit("requests")
+              .build();
+
+      return new OperationListener() {
+        @Override
+        public Context onStart(Context context, Attributes attributes, long startNanos) {
+          requestCounter.add(1, attributes);
+          return context;
+        }
+
+        @Override
+        public void onEnd(Context context, Attributes attributes, long endNanos) {
+          // Could add duration metrics here if needed
+        }
+      };
+    }
+  }
+
+  /** Context customizer that adds request correlation IDs and custom context data. */
+  private static class DemoContextCustomizer implements ContextCustomizer<Object> {
+    private static final AtomicLong requestIdCounter = new AtomicLong(1);
+    private static final ContextKey<String> REQUEST_ID_KEY = ContextKey.named("demo.request.id");
+
+    @Override
+    public Context onStart(Context context, Object request, Attributes startAttributes) {
+      // Generate a unique request ID for correlation
+      String requestId = "req-" + requestIdCounter.getAndIncrement();
+
+      // Add custom context data that can be accessed throughout the request lifecycle
+      context = context.with(REQUEST_ID_KEY, requestId);
+      return context;
+    }
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+### ConfigurablePropagatorProvider
+
+Register custom propagators that can be referenced by name in the
+`otel.propagators` configuration.
+
+**Example:**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt "src/main/java/com/example/javaagent/DemoPropagatorProvider.java" from="@AutoService"?>
+```java
+@AutoService(ConfigurablePropagatorProvider.class)
+public class DemoPropagatorProvider implements ConfigurablePropagatorProvider {
+  @Override
+  public TextMapPropagator getPropagator(ConfigProperties config) {
+    return new DemoPropagator();
+  }
+
+  @Override
+  public String getName() {
+    return "demo";
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+### ConfigurableSamplerProvider
+
+Register custom samplers that can be referenced in the `otel.traces.sampler`
+configuration.
+
+**Example (`otel.traces.sampler=demo`):**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt "src/main/java/com/example/javaagent/DemoConfigurableSamplerProvider.java" from="@AutoService"?>
+```java
+@AutoService(ConfigurableSamplerProvider.class)
+public class DemoConfigurableSamplerProvider implements ConfigurableSamplerProvider {
+
+  @Override
+  public Sampler createSampler(ConfigProperties config) {
+    return new DemoSampler();
+  }
+
+  @Override
+  public String getName() {
+    return "demo";
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+### ResourceProvider
+
+Add custom resource attributes that will be automatically merged with other
+resource providers.
+
+**Example:**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt "src/main/java/com/example/javaagent/DemoResourceProvider.java" from="@AutoService"?>
+```java
+@AutoService(ResourceProvider.class)
+public class DemoResourceProvider implements ResourceProvider {
+  @Override
+  public Resource createResource(ConfigProperties config) {
+    Attributes attributes = Attributes.builder().put("custom.resource", "demo").build();
+    return Resource.create(attributes);
+  }
+}
+```
+<!-- prettier-ignore-end -->
 
 ## Extension examples
 
