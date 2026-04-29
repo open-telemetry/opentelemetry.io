@@ -6,17 +6,18 @@ cSpell:ignore: uuidgen
 
 ## Introduction
 
-Prometheus typically collects metrics using a pull-based model, where it scrapes
-metrics endpoints exposed by services at regular intervals. This scrape-based
-approach is the standard and recommended setup for production because it is
-predictable, scalable, and well understood in most observability systems.
+Prometheus was designed and optimized for pull-based monitoring, where it
+discovers targets and scrapes metrics endpoints at regular intervals. This model
+is central to its architecture, supporting features like service discovery and
+consistent target-based collection.
 
-In addition to this model, Prometheus can also accept metrics using an
-OpenTelemetry (OTLP) ingestion endpoint. In this setup, OpenTelemetry SDKs
-export metrics using OTLP over HTTP, and Prometheus acts as an OTLP receiver
-instead of scraping metrics. This approach is generally used in simpler setups,
-experiments, or local development environments where a full scrape-based
-infrastructure is not available or necessary.
+With the growing adoption of OpenTelemetry, newer versions of Prometheus have
+introduced support for receiving push-based metrics via OTLP. In this setup,
+OpenTelemetry SDKs export metrics using OTLP over HTTP, and Prometheus acts as
+an OTLP receiver instead of scraping metrics. This approach can be used in
+simpler setups, experiments, or local development environments. However, for
+production deployments using OpenTelemetry, it is strongly recommended to use an
+OpenTelemetry Collector as an intermediary.
 
 This guide explains how to configure direct OTLP metric export from
 OpenTelemetry SDKs to a Prometheus OTLP endpoint. It covers required environment
