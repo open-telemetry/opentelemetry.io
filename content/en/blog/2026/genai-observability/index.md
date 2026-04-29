@@ -66,10 +66,10 @@ arguments, and tool results.
 
 Any OTLP-compatible backend can receive GenAI telemetry. For this walkthrough,
 we use the [Aspire Dashboard](https://aspire.dev/dashboard/overview/) — a free,
-open source telemetry viewer that ships as a
-Docker container. It accepts OTLP data directly and provides a built-in trace
-viewer, metrics explorer, and structured logs page — no cloud account required.
-It is well suited for local development and debugging of GenAI workloads.
+open source telemetry viewer that ships as a Docker container. It accepts OTLP
+data directly and provides a built-in trace viewer, metrics explorer, and
+structured logs page — no cloud account required. It is well suited for local
+development and debugging of GenAI workloads.
 
 Run the following Docker command to get started:
 
@@ -78,8 +78,8 @@ docker run --rm -p 18888:18888 -p 4317:18889 -p 4318:18890 -d --name aspire-dash
     mcr.microsoft.com/dotnet/aspire-dashboard:latest
 ```
 
-The dashboard collects telemetry sent to `http://localhost:4318`, and
-you can view telemetry by visiting `http://localhost:18888`.
+The dashboard collects telemetry sent to `http://localhost:4318`, and you can
+view telemetry by visiting `http://localhost:18888`.
 
 A login token is required on first access. Retrieve it from the container logs.
 To skip the login prompt during local development, add
@@ -161,7 +161,8 @@ real-world usage directly shapes what gets standardized next.
 - Test GenAI instrumentation in your own applications and
   [report issues](https://github.com/open-telemetry/semantic-conventions/issues).
 - Try the [Aspire Dashboard](https://aspire.dev/dashboard/overview/) for local
-  OpenTelemetry debugging and [contribute to it](https://github.com/microsoft/aspire).
+  OpenTelemetry debugging and
+  [contribute to it](https://github.com/microsoft/aspire).
 - Join the
   [GenAI Semantic Conventions and Instrumentation SIG](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md)
   discussions.
