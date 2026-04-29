@@ -32,6 +32,16 @@ the repository root.
 
 5. If any content modules are out of date, run `npm run get:submodule`.
 
+## Handling 5XX responses
+
+Status 5XX responses are usually transient. If `static/refcache.json` or
+`./scripts/double-check-refcache-4XX.mjs` (below) reports status 5XX for a URL,
+treat it as likely temporary (origin down, gateway errors, overload). **Do not**
+change site content or links solely to work around a 5XX; prefer re-running the
+double-check script or `npm run fix:refcache` later. Only investigate a 5XX like
+a real defect if it **keeps** failing across multiple runs over time and you
+have confirmed the URL is not otherwise healthy.
+
 ## Resolve non-2XX entries
 
 1. Run `./scripts/double-check-refcache-4XX.mjs` to retry transient 4XX failures
@@ -47,11 +57,20 @@ the repository root.
      static/refcache.json
    ```
 
-5. For each remaining status, fix or remove the source link that produced it:
-   - For a 404, identify the site pages that refer to the dead URL and update or
-     remove that link.
-   - For any other non-2XX status, inspect it manually and update or remove the
-     source link as needed before continuing.
-6. Run `npm run fix:refcache` to refresh `static/refcache.json` after those
-   source-link changes, then repeat the steps in this section until no non-2XX
-   statuses remain.
+5. **Analyze and recommend**. For each URL from the previous step, produce a
+   numbered or bulleted list that includes at least:
+   - The URL and HTTP status.
+   - Where it originates from: provide links to files or pages.
+   - A recommendation. For links into github.com, recommend a replacement link
+     based on the last commit that contains the named resource.
+
+   Pause for feedback from a reviewer.
+
+6. **Apply approved fixes.** After approval, edit the suggested sources:
+   - For a **404**, update or remove the referring link where you identified it.
+   - For **other non-2XX** statuses, apply the reviewed recommendation (manual
+     inspection may still be required for ambiguous cases).
+
+7. Run `npm run fix:refcache` to refresh `static/refcache.json` after those
+   source-link changes, then repeat the steps in this section (from step 1)
+   until no non-2XX statuses remain.
