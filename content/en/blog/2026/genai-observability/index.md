@@ -64,16 +64,17 @@ arguments, and tool results.
 
 ## Exploring GenAI telemetry with the Aspire Dashboard
 
-The [Aspire Dashboard](https://aspire.dev/dashboard/overview/) is a free, open
-source telemetry viewer that ships as a Docker container. It accepts OTLP data
-directly and provides a built-in trace viewer, metrics explorer, and structured
-logs page — no cloud account required. It is well suited for local development
-and debugging of GenAI workloads.
+Any OTLP-compatible backend can receive GenAI telemetry. For this walkthrough,
+we use the [Aspire Dashboard](https://aspire.dev/dashboard/overview/) — a free,
+open source telemetry viewer that ships as a
+Docker container. It accepts OTLP data directly and provides a built-in trace
+viewer, metrics explorer, and structured logs page — no cloud account required.
+It is well suited for local development and debugging of GenAI workloads.
 
 Run the following Docker command to get started:
 
 ```sh
-docker run --rm -it -p 18888:18888 -p 4317:18889 -p 4318:18890 -d --name aspire-dashboard \
+docker run --rm -p 18888:18888 -p 4317:18889 -p 4318:18890 -d --name aspire-dashboard \
     mcr.microsoft.com/dotnet/aspire-dashboard:latest
 ```
 
@@ -81,6 +82,9 @@ The dashboard collects telemetry sent to `http://localhost:4318`, and
 you can view telemetry by visiting `http://localhost:18888`.
 
 A login token is required on first access. Retrieve it from the container logs.
+To skip the login prompt during local development, add
+`-e ASPIRE_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true` to the `docker run`
+command.
 
 ![Docker container logs showing the Aspire Dashboard login URL with token](dashboard-login.png)
 
@@ -146,7 +150,7 @@ with instrumentation from other AI tools and frameworks. Whether you are
 monitoring a Python application using the
 [OpenTelemetry OpenAI instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/6733459e4ee6a1d7a46025a71da6887f83491223/instrumentation-genai/opentelemetry-instrumentation-openai-v2),
 or a .NET application with
-[Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai),
+[Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/microsoft-extensions-ai),
 the same attributes and span structures appear in your observability backend.
 
 ## Get involved
@@ -159,5 +163,5 @@ real-world usage directly shapes what gets standardized next.
 - Try the [Aspire Dashboard](https://aspire.dev/dashboard/overview/) for local
   OpenTelemetry debugging and [contribute to it](https://github.com/microsoft/aspire).
 - Join the
-  [SIG GenAI Observability](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md)
+  [GenAI Semantic Conventions and Instrumentation SIG](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md)
   discussions.
