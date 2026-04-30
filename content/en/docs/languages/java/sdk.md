@@ -1552,7 +1552,7 @@ measurement, or log emit:
 
 ### Testing
 
-The `io.opentelemetry:opentelemetry-sdk-testing:{{% param vers.otel %}}` artifact
+The `io.opentelemetry:opentelemetry-sdk-testing` artifact
 provides utilities for asserting on telemetry produced by your code, without
 exporting data to any backend.
 
@@ -1560,73 +1560,62 @@ The following components are available:
 
 | Class | Description |
 | --- | --- |
-| [OpenTelemetryExtension](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit5/OpenTelemetryExtension.html) | JUnit 5 extension that #TODO |
-| [OpenTelemetryRule](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit4/OpenTelemetryRule.html) | JUnit 4 equivalent of `OpenTelemetryExtension`. |
-| [OpenTelemetryAssertions](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/assertj/OpenTelemetryAssertions.html) | AssertJ-based assertions |
+| [OpenTelemetryExtension](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit5/OpenTelemetryExtension.html) | JUnit 5 extension that sets up an `OpenTelemetrySdk` with in-memory exporters and W3C trace context propagation, registers it as `GlobalOpenTelemetry`, and resets all captured telemetry before each test. |
+| [OpenTelemetryRule](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit4/OpenTelemetryRule.html) | JUnit 4 equivalent of `OpenTelemetryExtension`. Cannot be used as `@ClassRule`. |
+| [OpenTelemetryAssertions](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/assertj/OpenTelemetryAssertions.html) | Extends AssertJ with OTel-aware `assertThat()` overloads for `SpanData`, `MetricData`, `LogRecordData`, `Attributes`, and `EventData`. Use via `import static ...OpenTelemetryAssertions.assertThat`. |
 | [InMemorySpanExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemorySpanExporter.html) | Captures exported spans in memory. |
 | [InMemoryMetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryMetricReader.html) | Reads aggregated metrics in memory. |
 | [InMemoryLogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryLogRecordExporter.html) | Captures exported log records in memory. |
+| [TestClock](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/time/TestClock.html) | Mutable `Clock` for controlling time in tests. Pass to `SdkTracerProvider.builder().setClock(...)`. |
+| [TestSpanData](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/trace/TestSpanData.html) | Immutable builder for constructing `SpanData` instances in tests without running real instrumentation. |
+| [TestLogRecordData](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/logs/TestLogRecordData.html) | Immutable builder for constructing `LogRecordData` instances in tests. |
+| [SettableContextStorageProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/context/SettableContextStorageProvider.html) | `ContextStorageProvider` that lets you swap `ContextStorage` at runtime; useful for testing context propagation behavior. |
 
 #### JUnit 5
 
-`OpenTelemetryExtension` is the recommended starting point for JUnit 5. 
+`OpenTelemetryExtension` is the recommended starting point for JUnit 5.
 
 ```java
-import io.opentelemetry.api.trace.Tracer;
-import io.opentelemetry.sdk.testing.assertj.OpenTelemetryAssertions;
-import io.opentelemetry.sdk.testing.junit5.OpenTelemetryExtension;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
-
 class CoolTest {
   @RegisterExtension
   static final OpenTelemetryExtension otelTesting = OpenTelemetryExtension.create();
 
   private final Tracer tracer = otelTesting.getOpenTelemetry().getTracer("test");
-  private final Meter meter = otelTesting.getOpenTelemetry().getMeter("test");
 
   @Test
   void test() {
     tracer.spanBuilder("name").startSpan().end();
-    assertThat(otelTesting.getSpans()).containsExactly(expected);
-
-    LongCounter counter = meter.counterBuilder("counter-name").build();
-    counter.add(1);
-    assertThat(otelTesting.getMetrics()).satisfiesExactlyInAnyOrder(metricData -> {});
-   }
+    assertThat(otelTesting.getSpans())
+        .satisfiesExactly(span -> assertThat(span).hasName("name"));
+  }
 }
 ```
 
-Access raw telemetry with `getSpans()`, `getMetrics()`, and `getLogRecords()`.
+Access raw telemetry with `getSpans()`, `getMetrics()`, and `getLogRecords()`. Use
+`assertTraces()` for fluent trace-level assertions via `TracesAssert`. Telemetry is
+automatically reset before each test; `clearSpans()`, `clearMetrics()`, and
+`clearLogRecords()` are available for mid-test resets.
 
 #### JUnit 4
 
 `OpenTelemetryRule` provides the same API for JUnit 4:
 
 ```java
-import io.opentelemetry.sdk.testing.junit4.OpenTelemetryRule;
-import org.junit.Rule;
-
 public class CoolTest {
   @Rule public OpenTelemetryRule otelTesting = OpenTelemetryRule.create();
 
   private Tracer tracer;
-  private Meter meter;
 
   @Before
   public void setUp() {
     tracer = otelTesting.getOpenTelemetry().getTracer("test");
-    meter = otelTesting.getOpenTelemetry().getMeter("test");
   }
 
   @Test
   public void test() {
     tracer.spanBuilder("name").startSpan().end();
-    assertThat(otelTesting.getSpans()).containsExactly(expected);
- 
-    LongCounter counter = meter.counterBuilder("counter-name").build();
-    counter.add(1);
-    assertThat(otelTesting.getMetrics()).satisfiesExactlyInAnyOrder(metricData -> {});
+    assertThat(otelTesting.getSpans())
+        .satisfiesExactly(span -> assertThat(span).hasName("name"));
   }
 }
 ```
