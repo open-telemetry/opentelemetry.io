@@ -1,7 +1,7 @@
 ---
 title: Eventos
-default_lang_commit: 4f38b130938b017a283457de2404a4cd0fd77819
-cSpell:ignore: cloudnativecon
+default_lang_commit: 4f38b130938b017a283457de2404a4cd0fd77819 # patched
+weight: 30
 ---
 
 A comunidade OpenTelemetry participa e organiza diversos eventos ao longo do ano
@@ -11,7 +11,7 @@ projeto e se conectar com a comunidade de observabilidade mais ampla.
 
 ## Eventos Futuros {#upcoming-events}
 
-{{< community-event-list >}}
+{{% community-events %}}
 
 ## Principais Eventos da Comunidade {#key-community-events}
 

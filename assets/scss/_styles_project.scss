@@ -1,5 +1,5 @@
 /* Docsy-delta full file override: we're not tracking changes to the Docsy file of the same name. */
-// cSpell:ignore docsy
+// cSpell:ignore docsy kapa
 
 @import 'registry';
 @import 'tabs';
@@ -59,4 +59,28 @@ body.td-page--draft .td-content {
   @include media-breakpoint-up(md) {
     padding-left: 0.6rem;
   }
+}
+
+// Kapa widget
+
+#kapa-widget-container {
+  --modal-inner-align: flex-end !important;
+  transition:
+    opacity 2000ms ease,
+    transform 2000ms ease;
+}
+
+// Alternative to the above:
+// #kapa-widget-container::part(modal-inner) {
+//   align-items: flex-end !important;
+// }
+
+// Fade out the Kapa launcher when the site footer is in view, so it doesn't
+// cover the footer icons. The `data-kapa-near-footer` flag is toggled in JS
+// (see layouts/_partials/hooks/head-end.html) and is only set while the Kapa
+// modal is closed, so an open modal is unaffected. See #9676 and #9689.
+html[data-kapa-near-footer] #kapa-widget-container {
+  opacity: 0;
+  // transform: translateY(1rem);
+  pointer-events: none;
 }

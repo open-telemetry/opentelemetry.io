@@ -15,5 +15,5 @@ createdAt: 2023-05-22
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-laravel
-  version: 1.5.0
+  version: 1.7.0
 isFirstParty: false
