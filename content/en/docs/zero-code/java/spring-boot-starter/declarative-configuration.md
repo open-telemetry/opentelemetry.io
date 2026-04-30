@@ -72,6 +72,10 @@ otel:
 Note that `${VAR:default}` uses a single colon (Spring syntax), not the
 `${VAR:-default}` syntax used in the agent's standalone YAML file.
 
+## Convert your existing configuration
+
+{{< dc-converter source="spring" >}}
+
 ## Mapping of configuration options
 
 The following rules describe how `application.properties` / `application.yaml`
