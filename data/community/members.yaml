@@ -415,6 +415,13 @@ maintainers:
       - social-media-approvers
     html_url: https://github.com/chalin
     avatar_url: https://avatars.githubusercontent.com/u/4140793?v=4
+  - name: ChrisLightfootWild
+    teams:
+      - php-approvers
+      - php-contrib-maintainers
+      - php-triagers
+    html_url: https://github.com/ChrisLightfootWild
+    avatar_url: https://avatars.githubusercontent.com/u/106102472?v=4
   - name: christos68k
     teams:
       - ebpf-profiler-approvers
@@ -1837,12 +1844,6 @@ approvers:
       - docs-zh-approvers
     html_url: https://github.com/chluknight1224
     avatar_url: https://avatars.githubusercontent.com/u/192717373?v=4
-  - name: ChrisLightfootWild
-    teams:
-      - php-approvers
-      - php-triagers
-    html_url: https://github.com/ChrisLightfootWild
-    avatar_url: https://avatars.githubusercontent.com/u/106102472?v=4
   - name: CodeBlanch
     teams:
       - dotnet-approvers
@@ -2392,6 +2393,12 @@ approvers:
       - python-approvers
     html_url: https://github.com/tammy-baylis-swi
     avatar_url: https://avatars.githubusercontent.com/u/96076570?v=4
+  - name: thompson-tomo
+    teams:
+      - ruby-contrib-approvers
+      - ruby-contrib-triagers
+    html_url: https://github.com/thompson-tomo
+    avatar_url: https://avatars.githubusercontent.com/u/19771933?v=4
   - name: TimothyMothra
     teams:
       - dotnet-contrib-approvers
@@ -2689,11 +2696,6 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/t2t2
     avatar_url: https://avatars.githubusercontent.com/u/1122555?v=4
-  - name: thompson-tomo
-    teams:
-      - ruby-contrib-triagers
-    html_url: https://github.com/thompson-tomo
-    avatar_url: https://avatars.githubusercontent.com/u/19771933?v=4
   - name: tidal
     teams:
       - php-triagers
@@ -3020,6 +3022,9 @@ members:
   - name: lopes-felipe
     html_url: https://github.com/lopes-felipe
     avatar_url: https://avatars.githubusercontent.com/u/15851809?v=4
+  - name: lucacavenaghi97
+    html_url: https://github.com/lucacavenaghi97
+    avatar_url: https://avatars.githubusercontent.com/u/247595880?v=4
   - name: luke6Lh43
     html_url: https://github.com/luke6Lh43
     avatar_url: https://avatars.githubusercontent.com/u/52648621?v=4

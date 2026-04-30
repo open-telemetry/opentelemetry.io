@@ -8,7 +8,7 @@ author: >-
   [Victoria Nduka](https://github.com/nwanduka)
 sig: End User
 # prettier-ignore
-cSpell:ignore: Beorn explorative Kiripolsky Nduka negotiables Rabestein Suereth sunsetting Volz
+cSpell:ignore: Beorn explorative Kiripolsky Nduka negotiables Rabestein Suereth Volz
 ---
 
 <!-- markdownlint-configure-file {"no-shortcut-ref-link": {"ignore_pattern": "^[Ww]ith$"}} -->

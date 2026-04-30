@@ -176,9 +176,9 @@ Additional valuable resources to review are
     unlikely to appear elsewhere. See [Spell Checking][].
   - **Locale dictionary**: Preferred for words likely to be used across multiple
     pages in the same language, such as `.cspell/en-words.txt`.
-  - **Global dictionary**: The main cSpell dictionary, located in `.cspell.yml`.
-    This is preferred for words whose spelling is valid across all languages,
-    such as package or people's names.
+  - **Shared (all-locales) word list**: `.cspell/all-words.txt`. Preferred for
+    terms whose spelling is valid across all languages, such as product names or
+    people's names. See [Spell Checking][].
 
   Reviewers and approvers can determine if the placement is appropriate during
   the review process.
@@ -221,7 +221,7 @@ PRs with changes to translations should aim for two approvals: one by a docs
 approver and one by a translation approver. Similar practices apply as suggested
 for the co-owned PRs.
 
-### Merging PRs
+## Merging PRs
 
 The following workflow can be applied by maintainers to merge PRs:
 
@@ -233,3 +233,50 @@ The following workflow can be applied by maintainers to merge PRs:
   ```shell
   export PR=<ID OF THE PR>; gh pr checks ${PR} --watch && gh pr merge ${PR} --squash
   ```
+
+## Specification PRs and integration branches {#spec-integration-branches}
+
+The website continuously integrates unreleased changes from the
+[opentelemetry-specification][] and [semantic-conventions][] repositories. Two
+scheduled workflows ([details][ci-section]) run daily and keep a draft
+"integration" PR current with the next dev version:
+
+- Branch pattern: `otelbot/spec-integration-vX.Y.Z-dev` and
+  `otelbot/semconv-integration-vX.Y.Z-dev`.
+- List of live branches: [spec][spec-branches] · [semconv][semconv-branches].
+
+[opentelemetry-specification]:
+  https://github.com/open-telemetry/opentelemetry-specification
+[semantic-conventions]: https://github.com/open-telemetry/semantic-conventions
+[ci-section]: /site/build/ci-workflows/#spec-integration-branches
+[spec-branches]:
+  https://github.com/open-telemetry/opentelemetry.io/branches/all?query=spec-integration
+[semconv-branches]:
+  https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration
+
+### Spec / semconv SIG maintainers
+
+Just before cutting a release:
+
+1. Find the latest integration branch for your spec at the links given in the
+   previous section (e.g. `otelbot/spec-integration-v1.56.0-dev`).
+2. Open the associated PR (linked from the branch page).
+3. Trigger a fresh run of the corresponding workflow to pick up your latest
+   changes:
+   - [update-spec-integration-branch.yml][]
+   - [update-semconv-integration-branch.yml][]
+4. If the PR checks are green, the spec is safe to release. If not, ping
+   `@open-telemetry/docs-maintainers` so we can address breakage before the
+   release goes out.
+
+### Comms SIG maintainers
+
+Throughout the month, regularly check the integration PRs and commit incremental
+fixes to keep their CI checks green. Catching breakage early — while the
+upstream change set is still small — is much easier than firefighting on release
+day.
+
+[update-spec-integration-branch.yml]:
+  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-spec-integration-branch.yml
+[update-semconv-integration-branch.yml]:
+  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-semconv-integration-branch.yml
