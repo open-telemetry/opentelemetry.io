@@ -45,7 +45,7 @@ have confirmed the URL is not otherwise healthy.
 ## Resolve non-2XX entries
 
 1. Run `./scripts/double-check-refcache-4XX.mjs` to retry transient 4XX failures
-   and update `static/refcache.json`.
+   and update `static/refcache.json`. See LinkedIn note below.
 2. Scan `static/refcache.json` for remaining non-2XX statuses.
 3. If none remain, commit and push any changed files (only
    `static/refcache.json` should have changed) to
@@ -56,6 +56,13 @@ have confirmed the URL is not otherwise healthy.
    jq -r 'to_entries[] | select(.value.StatusCode < 200 or .value.StatusCode >= 300) | "\(.key) \(.value.StatusCode)"' \
      static/refcache.json
    ```
+
+   > [!NOTE] LinkedIn URLs
+   >
+   > Responses from `LinkedIn.com` are often unreliable (agents and bots may see
+   > 403 or 404 even when profiles exist). **Do not** remove or edit LinkedIn
+   > 4XX links, instead let a maintainer manually run the
+   > `double-check-refcache-4XX.mjs` script locally first.
 
 5. **Analyze and recommend**. For each URL from the previous step, produce a
    numbered or bulleted list that includes at least:
@@ -70,6 +77,9 @@ have confirmed the URL is not otherwise healthy.
    - For a **404**, update or remove the referring link where you identified it.
    - For **other non-2XX** statuses, apply the reviewed recommendation (manual
      inspection may still be required for ambiguous cases).
+   - If any touched page is outside `content/en/`, follow
+     [Localization](/docs/contributing/localization/#link-fixes-and-resource-updates)
+     for that edit (e.g. `# patched` on `default_lang_commit`).
 
 7. Run `npm run fix:refcache` to refresh `static/refcache.json` after those
    source-link changes, then repeat the steps in this section (from step 1)
