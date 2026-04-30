@@ -12763,6 +12763,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-28T12:55:26.622435315Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/LogRecordBenchmark.java": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-28T15:25:30.448745-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/MetricRecordBenchmark.java": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-28T15:25:29.188296-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/SpanRecordBenchmark.java": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-28T15:25:26.823011-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java/blob/release/v1.40.x/sdk-extensions/autoconfigure/src/main/java/io/opentelemetry/sdk/autoconfigure/internal/ComponentLoader.java": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:22:47.467240505Z"
@@ -20026,6 +20038,10 @@
   "https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js": {
     "StatusCode": 206,
     "LastSeen": "2026-04-28T14:06:28.013735833Z"
+  },
+  "https://open-telemetry.github.io/opentelemetry-java/benchmarks/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-28T15:25:25.103335-05:00"
   },
   "https://open-telemetry.github.io/opentelemetry-js/benchmarks/data.js": {
     "StatusCode": 206,
