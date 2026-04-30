@@ -1,179 +1,178 @@
 ---
-title: Development setup and commands to build, serve, and more
-linkTitle: Dev setup and more
-description: Learn how to set up a development environment for this website.
+title: Configurarea mediului de dezvoltare și comenzi pentru build, servire și altele
+linkTitle: Configurare dev și altele
+description: Aflați cum să configurați un mediu de dezvoltare pentru acest site web.
 what-next: >
-  You're now ready to [build](#build), [serve](#serve), and make updates to
-  website files. For details on how to submit changes, see [Submitting
-  content](../pull-requests).
+  Acum ești pregătit să [construiești](#build), [servești](#serve) și să faci actualizări
+  fișierelor site-ului. Pentru detalii despre cum să trimiți modificări, consultați [Trimiterea
+  conținutului](../pull-requests).
 weight: 60
 cSpell:ignore: TOCSS
 ---
 
-> [!WARNING] Supported build environments
+> [!WARNING] Medii de build acceptate
 >
-> Builds are officially supported on Linux-based environments and macOS. Other
-> environments, such as [DevContainers](#devcontainers), are supported on a
-> best-effort basis. For builds on Windows, you can follow steps similar to
-> those for Linux using Windows Subsystem for Linux command line [WSL][].
+> Build-urile sunt oficial acceptate pe medii bazate pe Linux și macOS. Alte
+> medii, precum [DevContainers](#devcontainers), sunt acceptate în limita
+> posibilităților. Pentru build-uri pe Windows, puteți urma pași similari celor
+> pentru Linux folosind linia de comandă Windows Subsystem for Linux [WSL][].
 
-The following instructions explain how to set up a development environment for
-this website.
+Următoarele instrucțiuni explică cum să configurați un mediu de dezvoltare pentru
+acest site web.
 
-## Cloud-IDE setup
+## Configurare Cloud-IDE
 
 ### Gitpod
 
-To work via [Gitpod.io][]:
+Pentru a lucra prin [Gitpod.io][]:
 
-1.  Fork this repository. For help, see [Fork a repository][fork].
-2.  From [gitpod.io/workspaces][], create a new workspace (do this only once) or
-    open an existing workspace over your fork. You can also visit a link of the
-    form:
+1.  Faceți un fork acestui repository. Pentru ajutor, consultați [Crearea unui fork][fork].
+2.  Din [gitpod.io/workspaces][], creați un spațiu de lucru nou (faceți acest lucru doar o dată) sau
+    deschideți un spațiu de lucru existent peste fork-ul dumneavoastră. Puteți accesa și un link de forma:
     `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`.
 
-    > **Note**: If you have the necessary permissions to work from this
-    > repository, or just want to look around, open
+    > **Notă**: Dacă aveți permisiunile necesare pentru a lucra din acest
+    > repository sau doriți doar să explorați, deschideți
     > <https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io>.
 
-Gitpod automatically installs the repo-specific packages for you.
+Gitpod instalează automat pachetele specifice repository-ului pentru dumneavoastră.
 {{% param what-next %}}
 
 ### Codespaces
 
-To work via GitHub [Codespaces][]:
+Pentru a lucra prin GitHub [Codespaces][]:
 
-1. [Fork][] the website repository.
-2. Open a Codespace from your fork.
+1. Faceți un [Fork][] repository-ului de site web.
+2. Deschideți un Codespace din fork-ul dumneavoastră.
 
-Your development environment will be initialized via the
-[DevContainer](#devcontainers) configuration. {{% param what-next %}}
+Mediul de dezvoltare va fi inițializat prin
+configurația [DevContainer](#devcontainers). {{% param what-next %}}
 
-## Local setup
+## Configurare locală
 
-1.  [Fork][] and then [clone][] the website repository at
+1.  Faceți un [Fork][] și apoi [clonați][clone] repository-ul site-ului web la
     <{{% param github_repo %}}>.
-2.  Go to the repository directory:
+2.  Navigați în directorul repository-ului:
 
-    ```sh
+```sh
     cd opentelemetry.io
-    ```
+```
 
-3.  Install or upgrade to the [**active LTS** release][nodejs-rel] of Node.js.
-    We recommend using [nvm][] to manage your Node installation. Under Linux,
-    run the following command, which will install and upgrade to the version
-    specified in the .nvmrc file:
+3.  Instalați sau actualizați la versiunea [**LTS activă**][nodejs-rel] a Node.js.
+    Recomandăm utilizarea [nvm][] pentru a gestiona instalarea Node. Pe Linux,
+    rulați următoarea comandă, care va instala și actualiza la versiunea
+    specificată în fișierul .nvmrc:
 
-    ```sh
+```sh
     nvm install
-    ```
+```
 
-    To [install under Windows][nodejs-win], use [nvm-windows][]. We recommend
-    using `cmd` and not Windows PowerShell for the command below:
+    Pentru [instalare pe Windows][nodejs-win], utilizați [nvm-windows][]. Recomandăm
+    folosirea `cmd` și nu Windows PowerShell pentru comanda de mai jos:
 
-    ```cmd
+```cmd
     nvm install lts && nvm use lts
-    ```
+```
 
-4.  Get npm packages and other prerequisites:
+4.  Obțineți pachetele npm și alte cerințe preliminare:
 
-    ```sh
+```sh
     npm install
-    ```
+```
 
-Launch your favorite IDE. {{% param what-next %}}
+Lansați IDE-ul preferat. {{% param what-next %}}
 
 ### Build
 
-To build the site run:
+Pentru a construi site-ul, rulați:
 
 ```sh
 npm run build
 ```
 
-The generated site files are under `public`.
+Fișierele generate ale site-ului se află în directorul `public`.
 
 > [!IMPORTANT]
 >
-> If you see build or serve command **errors** similar to the following:
+> Dacă întâlniți **erori** la comenzile de build sau servire similare cu următoarele:
 >
 > ```log
-> ERROR error building site: ...[long message]... TOCSS: failed to transform "/scss/main.scss" (text/x-scss)
+> ERROR error building site: ...[mesaj lung]... TOCSS: failed to transform "/scss/main.scss" (text/x-scss)
 > ```
 >
-> Or:
+> Sau:
 >
 > ```log
 > ERROR failed to load modules: module "github.com/FortAwesome/Font-Awesome" not found
 > ```
 >
-> This is usually because you didn't complete all the steps in the
-> [local setup](#local-setup). In particular, (re)run this command:
+> Aceasta se datorează de obicei faptului că nu ați finalizat toți pașii din
+> [configurarea locală](#local-setup). În special, rulați din nou această comandă:
 >
 > ```sh
 > npm install
 > ```
 
-### Serve
+### Servire
 
-To serve the site run:
+Pentru a servi site-ul, rulați:
 
 ```sh
 npm run serve
 ```
 
-The site is served at [localhost:1313][].
+Site-ul este servit la [localhost:1313][].
 
-If you need to test [Netlify][] redirects, use the following command and visit
-the site at [localhost:8888][]:
+Dacă trebuie să testați redirecționările [Netlify][], utilizați următoarea comandă și
+accesați site-ul la [localhost:8888][]:
 
 ```sh
 npm run serve:netlify
 ```
 
-The serve command serves files from memory, not from disk.
+Comanda de servire servește fișierele din memorie, nu de pe disc.
 
-If you see an error like `too many open files` or `pipe failed` under macOS, you
-might need to increase the file descriptor limit. See
-[Hugo issue #6109](https://github.com/gohugoio/hugo/issues/6109).
+Dacă întâlniți o eroare de tipul `too many open files` sau `pipe failed` pe macOS,
+este posibil să fie nevoie să măriți limita descriptorilor de fișiere. Consultați
+[problema Hugo #6109](https://github.com/gohugoio/hugo/issues/6109).
 
-### Content and submodules
+### Conținut și submodule
 
-The website is built from the following content:
+Site-ul web este construit din următoarele conținuturi:
 
-- Files under `content/`, `static/`, etc. per [Hugo][] defaults.
-- Mount points, defined by Hugo [config][] in
-  `config/_default/module-template.yaml`. Mounts are either directly from git
-  submodules under [content-modules][], or preprocessed content from
-  `content-modules` (placed under `tmp/`), and no where else.
+- Fișiere din `content/`, `static/` etc., conform configurărilor implicite [Hugo][].
+- Puncte de montare, definite de [config][] Hugo în
+  `config/_default/module-template.yaml`. Montările provin fie direct din submodule
+  git din [content-modules][], fie din conținut procesat din
+  `content-modules` (plasat în `tmp/`), și de nicăieri altundeva.
 
 [config]: https://github.com/open-telemetry/opentelemetry.io/tree/main/config
 [content-modules]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
+https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
-### Submodule changes
+### Modificări ale submodulelor
 
-If you change any content inside of a [content-modules][] submodule, then you
-need to first submit a PR (containing the submodule changes) to the submodule's
-repository. Only after the submodule PR has been accepted, can you update the
-submodule and have the changes appear in this website.
+Dacă modificați orice conținut dintr-un submodul [content-modules][], trebuie mai întâi
+să trimiteți un PR (conținând modificările submodulului) către repository-ul submodulului.
+Abia după ce PR-ul submodulului a fost acceptat, puteți actualiza submodulul și
+modificările vor apărea pe acest site web.
 
-It's easiest to manage your `content-modules` changes by working with the
-repository that the corresponding submodule is linked to, rather than inside the
-submodule itself.
+Cel mai simplu este să gestionați modificările `content-modules` lucrând cu
+repository-ul la care este legat submodulul corespunzător, în loc să lucrați direct
+în interiorul submodulului.
 
-Expert contributors can work directly in the submodule. You are then able to
-directly build and serve your (submodule) changes. By default, the CI scripts
-get submodules on every invocation. To prevent this behavior while you work
-within a submodule, set the environment variable `GET=no`. You also need to run
-`git fetch --unshallow` the submodule before you can submit a PR. Alternatively,
-set `DEPTH=100` and re-fetch submodules.
+Contribuitorii experimentați pot lucra direct în submodul, putând astfel construi și
+servi direct modificările (din submodul). În mod implicit, scripturile CI obțin
+submodulele la fiecare invocare. Pentru a preveni acest comportament în timp ce
+lucrați într-un submodul, setați variabila de mediu `GET=no`. De asemenea, trebuie
+să rulați `git fetch --unshallow` în submodul înainte de a putea trimite un PR.
+Alternativ, setați `DEPTH=100` și reobțineți submodulele.
 
-## DevContainer support {#devcontainers}
+## Suport DevContainer {#devcontainers}
 
-This repository is configured for use in [Development
-Containers][devcontainers], which are supported by various cloud and local IDEs
-such as (in alphabetical order):
+Acest repository este configurat pentru utilizare în [Development
+Containers][devcontainers], care sunt acceptate de diverse IDE-uri cloud și locale,
+precum (în ordine alfabetică):
 
 - [Codespaces][cs-devc]
 - [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
@@ -181,10 +180,10 @@ such as (in alphabetical order):
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
 [clone]:
-  https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
 [cs-devc]:
-  https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
+https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io
@@ -195,8 +194,8 @@ such as (in alphabetical order):
 [netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
 [nodejs-win]:
-  https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
+https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm]:
-  https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
 [WSL]: https://learn.microsoft.com/en-us/windows/wsl/install
