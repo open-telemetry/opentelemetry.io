@@ -10279,6 +10279,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-28T14:13:19.328823608Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/main/CONTRIBUTING.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-25T11:42:37.907496123Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/README.md#compatibility": {
     "StatusCode": 206,
     "LastSeen": "2026-04-24T10:07:48.108970388Z"
@@ -14475,6 +14479,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-28T12:55:14.187465319Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/CONTRIBUTING.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-25T11:42:32.722909875Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:18:02.880855684Z"
@@ -15526,6 +15534,10 @@
   "https://github.com/open-telemetry/semantic-conventions/blob/main/docs/exceptions/exceptions-spans.md/": {
     "StatusCode": 206,
     "LastSeen": "2026-04-28T14:10:26.078229439Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/main/CONTRIBUTING.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-25T11:42:36.318240912Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.21.0/docs/general/general-attributes.md#server-and-client-attributes": {
     "StatusCode": 206,
