@@ -7,4 +7,4 @@
 > **unspecified**. If you are interested in helping out, get in touch with the
 > [Browser SIG][].
 
-[Browser SIG]: https://github.com/open-telemetry/community#implementation-sigs
+[Browser SIG]: https://github.com/open-telemetry/community#sig-browser
