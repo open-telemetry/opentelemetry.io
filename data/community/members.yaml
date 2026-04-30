@@ -114,6 +114,15 @@ maintainers:
       - sqlcommenter-maintainers
     html_url: https://github.com/aabmass
     avatar_url: https://avatars.githubusercontent.com/u/1510004?v=4
+  - name: aalexand
+    teams:
+      - profiling-approvers
+      - profiling-maintainers
+      - profiling-triagers
+      - proto-approvers
+      - proto-triagers
+    html_url: https://github.com/aalexand
+    avatar_url: https://avatars.githubusercontent.com/u/1519040?v=4
   - name: ahayworth
     teams:
       - ruby-approvers
@@ -277,6 +286,8 @@ maintainers:
   - name: bobstrecansky
     teams:
       - php-approvers
+      - php-contrib-approvers
+      - php-contrib-maintainers
       - php-distro-approvers
       - php-distro-maintainers
       - php-maintainers
@@ -324,6 +335,8 @@ maintainers:
     teams:
       - configuration-approvers
       - php-approvers
+      - php-contrib-approvers
+      - php-contrib-maintainers
       - php-distro-approvers
       - php-distro-maintainers
       - php-maintainers
@@ -415,6 +428,14 @@ maintainers:
       - social-media-approvers
     html_url: https://github.com/chalin
     avatar_url: https://avatars.githubusercontent.com/u/4140793?v=4
+  - name: ChrisLightfootWild
+    teams:
+      - php-approvers
+      - php-contrib-approvers
+      - php-contrib-maintainers
+      - php-triagers
+    html_url: https://github.com/ChrisLightfootWild
+    avatar_url: https://avatars.githubusercontent.com/u/106102472?v=4
   - name: christos68k
     teams:
       - ebpf-profiler-approvers
@@ -689,6 +710,16 @@ maintainers:
       - proto-triagers
     html_url: https://github.com/felixge
     avatar_url: https://avatars.githubusercontent.com/u/15000?v=4
+  - name: florianl
+    teams:
+      - ebpf-profiler-approvers
+      - profiling-approvers
+      - profiling-maintainers
+      - profiling-triagers
+      - proto-approvers
+      - proto-triagers
+    html_url: https://github.com/florianl
+    avatar_url: https://avatars.githubusercontent.com/u/1132494?v=4
   - name: fractalwrench
     teams:
       - android-approvers
@@ -857,6 +888,12 @@ maintainers:
       - browser-maintainers
     html_url: https://github.com/joaquin-diaz
     avatar_url: https://avatars.githubusercontent.com/u/32420835?v=4
+  - name: johannaojeling
+    teams:
+      - sig-developer-experience-approvers
+      - sig-developer-experience-maintainers
+    html_url: https://github.com/johannaojeling
+    avatar_url: https://avatars.githubusercontent.com/u/51084516?v=4
   - name: jpkrohling
     teams:
       - docs-pt-approvers
@@ -1702,14 +1739,6 @@ maintainers:
     html_url: https://github.com/zacharycmontoya
     avatar_url: https://avatars.githubusercontent.com/u/13769665?v=4
 approvers:
-  - name: aalexand
-    teams:
-      - profiling-approvers
-      - profiling-triagers
-      - proto-approvers
-      - proto-triagers
-    html_url: https://github.com/aalexand
-    avatar_url: https://avatars.githubusercontent.com/u/1519040?v=4
   - name: adrielp
     teams:
       - semconv-cicd-approvers
@@ -1837,12 +1866,6 @@ approvers:
       - docs-zh-approvers
     html_url: https://github.com/chluknight1224
     avatar_url: https://avatars.githubusercontent.com/u/192717373?v=4
-  - name: ChrisLightfootWild
-    teams:
-      - php-approvers
-      - php-triagers
-    html_url: https://github.com/ChrisLightfootWild
-    avatar_url: https://avatars.githubusercontent.com/u/106102472?v=4
   - name: CodeBlanch
     teams:
       - dotnet-approvers
@@ -1930,15 +1953,6 @@ approvers:
       - go-triagers
     html_url: https://github.com/flc1125
     avatar_url: https://avatars.githubusercontent.com/u/14297703?v=4
-  - name: florianl
-    teams:
-      - ebpf-profiler-approvers
-      - profiling-approvers
-      - profiling-triagers
-      - proto-approvers
-      - proto-triagers
-    html_url: https://github.com/florianl
-    avatar_url: https://avatars.githubusercontent.com/u/1132494?v=4
   - name: geekdave
     teams:
       - semconv-oracle-cloud-approvers
@@ -1984,6 +1998,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/40302054?v=4
   - name: iblancasa
     teams:
+      - collector-contrib-approvers
       - collector-contrib-triagers
       - operator-approvers
       - operator-triagers
@@ -2952,9 +2967,6 @@ members:
   - name: jiekun
     html_url: https://github.com/jiekun
     avatar_url: https://avatars.githubusercontent.com/u/30280396?v=4
-  - name: johannaojeling
-    html_url: https://github.com/johannaojeling
-    avatar_url: https://avatars.githubusercontent.com/u/51084516?v=4
   - name: johnbley
     html_url: https://github.com/johnbley
     avatar_url: https://avatars.githubusercontent.com/u/5139839?v=4
@@ -3021,6 +3033,9 @@ members:
   - name: lopes-felipe
     html_url: https://github.com/lopes-felipe
     avatar_url: https://avatars.githubusercontent.com/u/15851809?v=4
+  - name: lucacavenaghi97
+    html_url: https://github.com/lucacavenaghi97
+    avatar_url: https://avatars.githubusercontent.com/u/247595880?v=4
   - name: luke6Lh43
     html_url: https://github.com/luke6Lh43
     avatar_url: https://avatars.githubusercontent.com/u/52648621?v=4

@@ -20,7 +20,9 @@ configuration, including the OpenTelemetry Java agent.
 
 > [!WARNING]
 >
-> Declarative configuration is experimental.
+> The declarative configuration schema is stable. The parts of it that are still
+> experimental are suffixed with `/development`. Java agent support for
+> declarative configuration is still experimental.
 
 ## Supported versions
 
@@ -74,6 +76,8 @@ getting started guide for declarative configuration.
 
 This page focuses on specifics for the
 [OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation).
+For the Spring Boot starter, see
+[Spring Boot starter declarative configuration](/docs/zero-code/java/spring-boot-starter/declarative-configuration/).
 
 ## Mapping of configuration options
 
@@ -219,14 +223,6 @@ Contrib features that are not yet supported by declarative configuration:
 - [AWS X-Ray](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-xray)
 - [GCP authentication](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-auth-extension)
 - [Inferred Spans](https://github.com/open-telemetry/opentelemetry-java-contrib/blob/main/inferred-spans)
-
-### Spring Boot starter limitations
-
-Lastly, the [Spring Boot starter](/docs/zero-code/java/spring-boot-starter) does
-not yet support declarative configuration:
-
-- however, you can already use `application.yaml` to configure the OpenTelemetry
-  Spring Boot starter
 
 ## Extension API
 

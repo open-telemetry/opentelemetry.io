@@ -1,9 +1,8 @@
 ---
 title: Migration
 description: How to migrate to OpenTelemetry
-aliases:
-  - /docs/migration/
-weight: 800
+aliases: [/docs/migration/]
+weight: -10
 ---
 
 ## OpenTracing and OpenCensus
