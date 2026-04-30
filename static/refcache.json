@@ -20103,6 +20103,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-28T14:14:21.199538657Z"
   },
+  "https://opentelemetry.io/docs/specs/semconv/registry/attributes/service/#service-attributes-for-peer-services": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-28T11:12:12.096928+03:00"
+  },
   "https://opentracing.io": {
     "StatusCode": 206,
     "LastSeen": "2026-04-24T10:07:47.977740197Z"

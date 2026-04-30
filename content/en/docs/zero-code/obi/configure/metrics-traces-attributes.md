@@ -311,6 +311,7 @@ attributes:
 | `informers_sync_timeout`<br>`OTEL_EBPF_KUBE_INFORMERS_SYNC_TIMEOUT`         | Maximum time to wait for Kubernetes metadata before starting. For more information, refer to the [informers sync timeout section](#informers-sync-timeout).                                   | Duration       | 30s            |
 | `reconnect_initial_interval`<br>`OTEL_EBPF_KUBE_RECONNECT_INITIAL_INTERVAL` | Initial delay before reconnecting to the Kubernetes API after connection loss. For more information, refer to the [reconnect initial interval section](#reconnect-initial-interval).          | Duration       | 5s             |
 | `informers_resync_period`<br>`OTEL_EBPF_KUBE_INFORMERS_RESYNC_PERIOD`       | Periodically resynchronize all Kubernetes metadata. For more information, refer to the [informers resynchronization period section](#informers-resynchronization-period).                     | Duration       | 30m            |
+| `meta_cache_address`<br>`OTEL_EBPF_KUBE_META_CACHE_ADDRESS`                 | Address of an external `k8s-cache` service to fetch Kubernetes metadata from. For more information, refer to the [meta cache address section](#meta-cache-address).                           | string         | (empty)        |
 | `service_name_template`<br>`OTEL_EBPF_SERVICE_NAME_TEMPLATE`                | Go template for service names. For more information, refer to the [service name template section](#service-name-template).                                                                    | string         | (empty)        |
 
 ### Enable Kubernetes
@@ -383,6 +384,16 @@ servers. Decrease it when you need faster recovery after temporary API outages.
 OBI immediately receives any update on resources' metadata. In addition, OBI
 periodically resynchronizes all Kubernetes metadata at the frequency you specify
 with this property. Higher values reduce the load on the Kubernetes API service.
+
+### Meta cache address
+
+When set, OBI fetches Kubernetes metadata from an external `k8s-cache` service
+over gRPC instead of running its own informers against the Kubernetes API
+server. This is recommended on large clusters and DaemonSet deployments to avoid
+overloading the Kubernetes API.
+
+For background and deployment instructions, see
+[Centralizing Kubernetes metadata with k8s-cache](../../setup/kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache).
 
 ### Service name template
 
