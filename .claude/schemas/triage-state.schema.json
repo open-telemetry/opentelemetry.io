@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OTel Triage State",
+  "description": "Tracks triage decisions and outcomes for opentelemetry.io GitHub issues across runs.",
+  "type": "object",
+  "required": ["version", "lastRun", "issues"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Schema version for forward compatibility."
+    },
+    "lastRun": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of the most recent triage run."
+    },
+    "issues": {
+      "type": "object",
+      "description": "Map of issue number (string key) to triage entry.",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[0-9]+$": {
+          "$ref": "#/$defs/triageEntry"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "triageEntry": {
+      "type": "object",
+      "required": [
+        "number",
+        "decision",
+        "confidence",
+        "analyzedAt",
+        "issueUpdatedAt"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "number": {
+          "type": "integer",
+          "description": "GitHub issue number."
+        },
+        "decision": {
+          "type": "string",
+          "description": "Recommended triage action from analysis (e.g., 'close:stale', 'label:triage:accepted:needs-pr').",
+          "examples": [
+            "close:stale",
+            "close:wontfix",
+            "close:duplicate",
+            "label:triage:accepted",
+            "label:triage:accepted:needs-pr",
+            "label:triage:deciding",
+            "label:triage:deciding:needs-info",
+            "label:triage:deciding:blocked",
+            "label:good first issue"
+          ]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["HIGH", "MEDIUM", "LOW"],
+          "description": "Confidence tier of the recommendation."
+        },
+        "analyzedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the issue was analyzed."
+        },
+        "issueUpdatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "GitHub updatedAt at time of analysis. Used to detect new activity on subsequent runs."
+        },
+        "executedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the triage decision was acted on (comment posted, label applied, or issue closed). Absent if not yet executed."
+        },
+        "outcome": {
+          "type": "string",
+          "description": "What was actually done, which may differ from 'decision' when the reviewer overrides. Values follow the same format as 'decision', plus 'skipped' for issues not acted on.",
+          "examples": [
+            "close:completed",
+            "close:not_planned",
+            "label:triage:accepted",
+            "label:triage:accepted,mentorship:bloomberg",
+            "label:triage:deciding:blocked",
+            "skipped"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "description": "Optional rationale when the outcome diverges from the recommendation."
+        }
+      }
+    }
+  }
+}
