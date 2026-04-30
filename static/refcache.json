@@ -14603,10 +14603,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-24T10:09:00.529208662Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/specification/protocol/exporter.md#endpoint-urls-for-otlphttp": {
-    "StatusCode": 206,
-    "LastSeen": "2026-04-28T11:10:09.674020434Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/oteps/0232-maturity-of-otel.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:39:45.47486848Z"
@@ -21994,10 +21990,6 @@
   "https://prometheus.io/docs/concepts/metric_types/#histogram": {
     "StatusCode": 200,
     "LastSeen": "2026-04-22T22:51:04.584643704Z"
-  },
-  "https://prometheus.io/docs/guides/opentelemetry/#configuring-prometheus": {
-    "StatusCode": 200,
-    "LastSeen": "2026-04-28T11:10:02.416268772Z"
   },
   "https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver": {
     "StatusCode": 200,
