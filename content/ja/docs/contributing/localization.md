@@ -380,6 +380,15 @@ NPMパッケージ[@cspell/dict-LANG_ID][]として利用可能な[cSpell辞書]
 [@cspell/dict-LANG_ID]: https://www.npmjs.com/search?q=%40cspell%2Fdict
 [`.cspell.yml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml
 
+#### 単語一覧 {#word-list}
+
+新しいロケールごとに、(最初は空の) `.cspell/LANG_ID-words.txt` を作成します。
+**スペルチェック**に追加する自然言語辞書がない場合も同様です。
+
+- [`.cspell.yml`][] でそのファイルを登録し、有効にします
+  - `disctionaryDefinitions` に、`name` (たとえば `LANG_ID-words`) と `path` (たとえば `.cspell/LANG_ID-words.txt`) を含んだエントリを追加します
+  - `dictionaries` に、上記のステップで追加したのと同じ `name` の値を追加します (ファイルパスではありません)
+
 #### その他のツールサポート {#other-tooling-support}
 
 - Prettierサポート：`LANG_ID`がPrettierで十分にサポートされていない場合は、`.prettierignore`に無視ルールを追加します
