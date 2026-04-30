@@ -52,7 +52,7 @@ Așadar, dacă dorești să forțezi un anunț în partea de sus, utilizează o
 `greutate` negativă în prima pagină.
 
 Dacă găsești o eroare sau o problemă cu conținutul acestui depozit sau dacă
-dorești să soliciti o îmbunătățire, [creează o problemă][problemă-nouă].
+dorești să soliciți o îmbunătățire, [creează o problemă][problemă-nouă].
 
 Dacă descoperi o problemă de securitate, citește
 [Politica de securitate](https://github.com/open-telemetry/opentelemetry.io/security/policy)
