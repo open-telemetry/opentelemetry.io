@@ -13339,6 +13339,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-29T10:25:48.082472352Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-operator/tree/main/autoinstrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-21T19:08:16.485115352Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator": {
     "StatusCode": 206,
     "LastSeen": "2026-04-24T10:08:00.308603064Z"
