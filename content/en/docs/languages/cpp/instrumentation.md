@@ -241,39 +241,59 @@ responsible for conversion of LogRecords to exportable representation before
 they reach the exporter.
 
 ```cpp
-auto exporter = std::unique_ptr<opentelemetry::sdk::logs::LogRecordExporter>(
-    new opentelemetry::exporters::logs::OStreamLogRecordExporter());
-auto processor = std::unique_ptr<opentelemetry::sdk::logs::LogRecordProcessor>(
-    new opentelemetry::sdk::logs::SimpleLogRecordExportProcessor(
-        std::move(exporter)));
+auto exporter = opentelemetry::exporter::logs::OStreamLogRecordExporterFactory::Create();
+auto processor =
+    opentelemetry::sdk::logs::SimpleLogRecordProcessorFactory::Create(std::move(exporter));
 ```
 
 ### Register a logger provider
 
-Create a `LoggerProvider` and register it as the global provider. Use it to
-obtain `Logger` objects. Loggers can be named to identify the emitting
-components.
+Create a `LoggerProvider` using `LoggerProviderFactory` and register it as the
+global provider. Note that the factory returns a `unique_ptr`, whereas
+`SetLoggerProvider` expects a `shared_ptr`. Use the provider to obtain `Logger`
+objects. Loggers can be named to identify the emitting components.
 
 ```cpp
-auto provider = std::shared_ptr<opentelemetry::logs::LoggerProvider>(
-    new opentelemetry::sdk::logs::LoggerProvider(std::move(processor)));
+// LoggerProviderFactory::Create returns a unique_ptr;
+// wrap it in a shared_ptr for SetLoggerProvider
+std::shared_ptr<opentelemetry::logs::LoggerProvider> provider(
+    opentelemetry::sdk::logs::LoggerProviderFactory::Create(std::move(processor)));
 opentelemetry::logs::Provider::SetLoggerProvider(provider);
 auto logger = provider->GetLogger(name, "1.0.0");
 ```
 
 ### Emit a log record
 
-Use the acquired logger to emit structured log records. Optionally, enrich the
-log records with trace context by passing the trace ID, span ID, and flags, or
-other attributes explicitly. The supported severity values include: `kTrace`,
-`kDebug`, `kInfo`, `kWarn`, `kError`, `kFatal`.
+Use the acquired logger to emit structured log records. The supported severity
+values include: `kTrace`, `kDebug`, `kInfo`, `kWarn`, `kError`, `kFatal`.
+
+Optionally, enrich the log records with trace context either by **implicitly**
+adding the span to a scope and log within the scope, or by **explicitly**
+passing trace ID, span ID, and flags.
+
+#### With active span scope
+
+Add the span to a scope to set the current active runtime context, and any log
+records emitted within the scope automatically get the span context metadata:
 
 ```cpp
-logger->Info("Handling request");
+{
+  auto span = get_tracer()->StartSpan("HandleRequest");
+  auto scope = opentelemetry::trace::Scope{span};
+  // This log record gets trace_id, span_id, and trace_flags, etc.
+  // from the active scope
+  logger->Info("Handling request");
+}
+```
+
+#### With explicit trace context
+
+You can also pass the trace context explicitly:
+
+```cpp
 auto span = get_tracer()->StartSpan("HandleRequest");
 auto ctx = span->GetContext();
-// enrich log with the trace context
-logger->Info("Request failed", ctx.trace_id(), ctx.span_id(), ctx.trace_flags());
+logger->Info("Handling request", ctx.trace_id(), ctx.span_id(), ctx.trace_flags());
 ```
 
 ### Further reading
