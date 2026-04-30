@@ -15,5 +15,3 @@ maintained and may not reflect current best practices as the OpenTelemetry
 project evolves.
 
 <!-- Add how to propose a new reference implementation once the issue template and repo are ready. -->
-
-**Coming soon!**
