@@ -360,11 +360,13 @@ Jeden z [śladów](#trace), [metryk](#metric) lub [logów](#log). Zobacz
 
 ### Zakres {#span}
 
-Reprezentuje pojedynczą operację w ramach [śladu](#trace). Zobacz [Zakres][span].
+Reprezentuje pojedynczą operację w ramach [śladu](#trace). Zobacz
+[Zakres][span].
 
 ### Powiązanie między zakresami {#span-link}
 
-Powiązanie między zakresami to powiązanie między przyczynowo związanymi zakresami. Szczegóły w
+Powiązanie między zakresami to powiązanie między przyczynowo związanymi
+zakresami. Szczegóły w
 [Linkach między zakresami](/docs/specs/otel/overview#links-between-spans) oraz
 [Określaniu linków](/docs/specs/otel/trace/api#specifying-links).
 
