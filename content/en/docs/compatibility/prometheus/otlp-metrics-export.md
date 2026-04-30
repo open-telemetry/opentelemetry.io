@@ -17,8 +17,8 @@ OpenTelemetry SDKs export metrics using OTLP over HTTP, and Prometheus acts as
 an OTLP receiver instead of scraping metrics. This approach can be used in
 simpler setups, experiments, or local development environments. However, for
 production deployments using OpenTelemetry, it is strongly recommended to use an
-[OpenTelemetry Collector](https://opentelemetry.io/docs/collector/#when-to-use-a-collector)
-as an intermediary.
+[OpenTelemetry Collector](/docs/collector/#when-to-use-a-collector) as an
+intermediary.
 
 This guide explains how to configure direct OTLP metric export from
 OpenTelemetry SDKs to a Prometheus OTLP endpoint. It covers required environment
