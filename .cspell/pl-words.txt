@@ -1,6 +1,6 @@
 backendem
-backendu
 backendów
+backendu
 deserializacji
 frameworków
 międzyjęzykowe
