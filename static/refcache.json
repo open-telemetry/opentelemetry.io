@@ -10635,10 +10635,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-30T04:19:45.779342662Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.151.0/processor/dnslookupprocessor": {
-    "StatusCode": 404,
-    "LastSeen": "2026-04-30T04:23:01.668306719Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.151.0/processor/drainprocessor": {
     "StatusCode": 206,
     "LastSeen": "2026-04-30T04:19:48.803021948Z"
