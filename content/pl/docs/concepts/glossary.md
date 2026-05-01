@@ -206,7 +206,7 @@ użyj dodatkowych określeń, na przykład `rekord logu`. Zobacz [Log][].
 ### Rekord logu {#log-record}
 
 Zapis danych ze znacznikiem czasu i stopniem ważności. Może również zawierać
-identyfikatory [śladu](#trace) i [zakresu](#span), gdy jest skorelowany ze śladem. Zobacz
+identyfikatory [śladu](#trace) i [odcinka](#span), gdy jest skorelowany ze śladem. Zobacz
 [rekord logu][log record].
 
 ### Metadane {#metadata}
@@ -301,8 +301,8 @@ Skrót od [OpenTelemetry Protocol](/docs/specs/otlp/).
 ### Propagatory {#propagators}
 
 Służą do serializacji i deserializacji określonych części danych
-telemetrycznych, takich jak kontekst zakresu i [bagaż](#baggage) w
-[zakresach](#span). Zobacz [Propagatory][propagators].
+telemetrycznych, takich jak kontekst odcinka i [bagaż](#baggage) w
+[odcinkach](#span). Zobacz [Propagatory][propagators].
 
 ### Proto {#proto}
 
@@ -358,16 +358,16 @@ może być wdrożona w wielu lokalizacjach.
 Jeden z [śladów](#trace), [metryk](#metric) lub [logów](#log). Zobacz
 [Sygnały][signals].
 
-### Zakres {#span}
+### Odcinek {#span}
 
 Reprezentuje pojedynczą operację w ramach [śladu](#trace). Zobacz
-[Zakres][span].
+[Odcinek][span].
 
-### Powiązanie między zakresami {#span-link}
+### Powiązanie między odcinkami {#span-link}
 
-Powiązanie między zakresami to powiązanie między przyczynowo związanymi
-zakresami. Szczegóły w
-[Linkach między zakresami](/docs/specs/otel/overview#links-between-spans) oraz
+Powiązanie między odcinkami to powiązanie między przyczynowo związanymi
+odcinkami. Szczegóły w
+[Linkach między odcinkami](/docs/specs/otel/overview#links-between-spans) oraz
 [Określaniu linków](/docs/specs/otel/trace/api#specifying-links).
 
 ### Specyfikacja {#specification}
@@ -386,12 +386,12 @@ Zobacz [Metadane](#metadata).
 
 ### Ślad {#trace}
 
-[DAG](#dag) [zakresów](#span), gdzie krawędzie między [zakresami](#span) są
+[DAG](#dag) [odcinków](#span), gdzie krawędzie między [odcinkami](#span) są
 zdefiniowane jako relacja rodzic-dziecko. Zobacz [Ślady][traces].
 
 ### Tracer {#tracer}
 
-Odpowiedzialny za tworzenie [zakresów](#span). Zobacz [Tracer][].
+Odpowiedzialny za tworzenie [odcinków](#span). Zobacz [Tracer][].
 
 ### Transakcja {#transaction}
 
