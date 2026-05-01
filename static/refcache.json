@@ -1784,8 +1784,8 @@
     "LastSeen": "2026-04-28T14:09:30.717215216Z"
   },
   "https://docs.bmc.com/docs/helixoperationsmanagement/244/en/metric-operation-management-endpoints-in-the-rest-api-1392780044.html": {
-    "StatusCode": -10,
-    "LastSeen": "2026-05-01T10:12:11.727328444Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-01T15:31:21.627Z"
   },
   "https://docs.bugsnag.com/performance/distributed-tracing": {
     "StatusCode": 206,
@@ -24208,8 +24208,8 @@
     "LastSeen": "2026-04-30T10:30:37.394Z"
   },
   "https://www.npmjs.com/search?q=%40cspell%2Fdict": {
-    "StatusCode": 403,
-    "LastSeen": "2026-05-01T10:08:38.04225221Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-01T15:31:24.746Z"
   },
   "https://www.nuget.org/packages/Azure.Monitor.OpenTelemetry.Exporter": {
     "StatusCode": 200,
