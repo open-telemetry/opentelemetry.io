@@ -47,10 +47,23 @@ have confirmed the URL is not otherwise healthy.
 1. Run `./scripts/double-check-refcache-4XX.mjs` to retry transient 4XX failures
    and update `static/refcache.json`. See LinkedIn note below.
 2. Scan `static/refcache.json` for remaining non-2XX statuses.
-3. If none remain, commit and push any changed files (only
-   `static/refcache.json` should have changed) to
-   `upstream/otelbot/refcache-refresh`, then stop.
-4. List remaining non-2XX URLs and their statuses:
+3. If none remain, that is, the double-check script succeeds:
+   - Share the double-check summary: in your reply or PR comment (retried URLs,
+     entries updated, final HTTP status counts, and “Processed N URLs” when
+     shown).
+   - If `static/refcache.json` changed, commit and push to
+     `upstream/otelbot/refcache-refresh` (as of this step).
+   - Mark the PR ready for review: `gh pr ready <num>`.
+   - Enable auto-merge, so that the PR is merged once all approvals are in and
+     the checks pass: `gh pr merge <num> --auto`.
+   - **Remind a maintainer to approve** the PR so auto-merge can complete.
+     Provide a link to the PR:
+     `https://github.com/open-telemetry/opentelemetry.io/pull/<num>`.
+
+   Then stop unless you are also leaving notes for reviewers.
+
+4. **Otherwise** (non-2XX still present after step 2), list remaining URLs and
+   their statuses:
 
    ```sh
    jq -r 'to_entries[] | select(.value.StatusCode < 200 or .value.StatusCode >= 300) | "\(.key) \(.value.StatusCode)"' \
