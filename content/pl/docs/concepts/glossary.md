@@ -206,7 +206,7 @@ użyj dodatkowych określeń, na przykład `rekord logu`. Zobacz [Log][].
 ### Rekord logu {#log-record}
 
 Zapis danych ze znacznikiem czasu i stopniem ważności. Może również zawierać
-[Trace ID](#trace) i [Span ID](#span), gdy jest skorelowany ze śladem. Zobacz
+identyfikatory [śladu](#trace) i [zakresu](#span), gdy jest skorelowany ze śladem. Zobacz
 [rekord logu][log record].
 
 ### Metadane {#metadata}
@@ -252,7 +252,7 @@ Poprzednik OpenTelemetry. Szczegóły w sekcji
 ### OpenTelemetry {#opentelemetry}
 
 Projekt OpenTelemetry, powstały w wyniku [połączenia][merger] projektów
-[OpenTracing](#opentracing) i [OpenCensus](#opencensus) &mdash; tematyka tej
+[OpenTracing](#opentracing) i [OpenCensus](#opencensus) &mdash; który jest tematyką tej
 witryny &mdash; to zbiór [API](#api), [SDK](#sdk) i narzędzi, których można użyć
 do [instrumentacji](/docs/concepts/instrumentation/), generowania,
 [zbierania](/docs/concepts/components/#collector) i
