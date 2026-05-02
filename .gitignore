@@ -1,6 +1,7 @@
 # cSpell:ignore worktrees
 
 /.claude/worktrees
+/.claude/settings.local.json
 
 # Hugo-generated assets
 .hugo_build.lock

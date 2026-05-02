@@ -6,8 +6,7 @@ developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
 show_banner: true
-default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268 # patched
-drifted_from_default: true
+default_lang_commit: f09627656c918ddb572c6c876beed29bb415f5ef
 ---
 
 {{% blocks/cover image_anchor="top" height="max" color="primary" %}}
