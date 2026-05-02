@@ -1592,8 +1592,8 @@
     "LastSeen": "2026-04-28T14:13:59.145705402Z"
   },
   "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Lambda-Insights-metrics.html": {
-    "StatusCode": 404,
-    "LastSeen": "2026-05-02T09:56:44.182397831Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-02T16:48:32.219Z"
   },
   "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_instances.html": {
     "StatusCode": 206,
@@ -1620,8 +1620,8 @@
     "LastSeen": "2026-05-02T09:56:46.281928701Z"
   },
   "https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format": {
-    "StatusCode": 404,
-    "LastSeen": "2026-05-02T09:56:41.447514887Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-02T16:48:12.345Z"
   },
   "https://docs.aws.amazon.com/bedrock/latest/userguide/agents-session-state.html": {
     "StatusCode": 206,
