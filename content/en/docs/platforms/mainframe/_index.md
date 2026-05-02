@@ -154,7 +154,7 @@ IBM, which supplies the operating system and subsystem software for the most
 pervasively used mainframe systems, is currently in the process of including
 native OpenTelemetry support into its services.
 
-Many Independent [Mainframe][] Software Vendors (ISVs) are also transitioning
+Many independent mainframe software vendors (ISVs) are also transitioning
 their observability support to favor the OpenTelemetry vendor-neutral approach.
 
 Of course, this successful transition depends upon common terminology and
