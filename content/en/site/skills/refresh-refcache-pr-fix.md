@@ -38,14 +38,15 @@ Status 5XX responses are usually transient. If `static/refcache.json` or
 `./scripts/double-check-refcache-4XX.mjs` (below) reports status 5XX for a URL,
 treat it as likely temporary (origin down, gateway errors, overload). **Do not**
 change site content or links solely to work around a 5XX; prefer re-running the
-double-check script or `npm run fix:refcache` later. Only investigate a 5XX like
-a real defect if it **keeps** failing across multiple runs over time and you
-have confirmed the URL is not otherwise healthy.
+double-check script (with `--retry-404` if useful) or `npm run fix:refcache`
+later. Only investigate a 5XX like a real defect if it **keeps** failing across
+multiple runs over time and you have confirmed the URL is not otherwise healthy.
 
 ## Resolve non-2XX entries
 
-1. Run `./scripts/double-check-refcache-4XX.mjs` to retry transient 4XX failures
-   and update `static/refcache.json`. See LinkedIn note below.
+1. Run `./scripts/double-check-refcache-4XX.mjs --retry-404` to re-fetch URLs
+   still cached as 4XX and fragment URLs marked INVALID FRAGMENT, then update
+   `static/refcache.json`. See LinkedIn note below.
 2. Scan `static/refcache.json` for remaining non-2XX statuses.
 3. If none remain, that is, the double-check script succeeds:
    - Share the double-check summary: in your reply or PR comment (retried URLs,
@@ -74,8 +75,8 @@ have confirmed the URL is not otherwise healthy.
    >
    > Responses from `LinkedIn.com` are often unreliable (agents and bots may see
    > 403 or 404 even when profiles exist). **Do not** remove or edit LinkedIn
-   > 4XX links, instead let a maintainer manually run the
-   > `double-check-refcache-4XX.mjs` script locally first.
+   > 4XX links, instead let a maintainer manually run
+   > `./scripts/double-check-refcache-4XX.mjs --retry-404` locally first.
 
 5. **Analyze and recommend**. For each URL from the previous step, produce a
    numbered or bulleted list that includes at least:
