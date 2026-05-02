@@ -1,10 +1,10 @@
 ---
 name: refresh-refcache-pr-fix
-description:
-  Follows the maintainer procedure for clearing non-2XX `static/refcache.json`
-  entries on the upstream `otelbot/refcache-refresh` PR. Use when working on
-  that branch or PR, or when users mention otelbot refcache, refcache refresh,
-  or the refcache refresh PR-fix flow.
+description: >-
+  Fetch, review, and attempt to fix non-2XX `static/refcache.json` URLs on the
+  upstream `otelbot/refcache-refresh` PR. Use when that bot branch is red,
+  refcache still lists 4XX/fragment errors after retries, or you want a guided
+  pass over the refcache-refresh fix loop.
 disable-model-invocation: true
 ---
 
