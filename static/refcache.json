@@ -248,8 +248,8 @@
     "LastSeen": "2026-05-02T09:57:47.670516327Z"
   },
   "https://bento.me/adrianamvillela": {
-    "StatusCode": 403,
-    "LastSeen": "2026-05-02T10:01:09.498471429Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-02T16:45:11.293Z"
   },
   "https://betterstack.com/docs/logs/open-telemetry/#2-setup": {
     "StatusCode": 200,
@@ -2156,8 +2156,8 @@
     "LastSeen": "2026-05-02T09:55:06.464247759Z"
   },
   "https://docs.logz.io/docs/shipping/other/opentelemetry-data/": {
-    "StatusCode": -10,
-    "LastSeen": "2026-05-02T09:58:36.783502538Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-02T16:45:14.784Z"
   },
   "https://docs.lumigo.io/docs/opentelemetry": {
     "StatusCode": 200,
@@ -3144,8 +3144,8 @@
     "LastSeen": "2026-04-30T10:26:25.764747064Z"
   },
   "https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a": {
-    "StatusCode": 403,
-    "LastSeen": "2026-05-02T09:54:54.229430265Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-02T16:45:19.653Z"
   },
   "https://erinmeyer.com/books/the-culture-map/": {
     "StatusCode": 200,
@@ -20072,12 +20072,12 @@
     "LastSeen": "2026-04-29T10:20:17.936869704Z"
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
-    "StatusCode": 403,
-    "LastSeen": "2026-05-02T10:00:25.163614332Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-02T16:45:23.479Z"
   },
   "https://openai.com/": {
-    "StatusCode": 403,
-    "LastSeen": "2026-05-02T09:56:33.517959364Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-02T16:45:27.13Z"
   },
   "https://opencensus.io": {
     "StatusCode": 206,
@@ -23212,8 +23212,8 @@
     "LastSeen": "2026-05-02T10:04:55.603Z"
   },
   "https://www.britannica.com/dictionary/pipeline": {
-    "StatusCode": 403,
-    "LastSeen": "2026-05-02T09:56:26.224188241Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-02T16:45:49.965Z"
   },
   "https://www.buoyant.io/mtls-guide": {
     "StatusCode": 200,
