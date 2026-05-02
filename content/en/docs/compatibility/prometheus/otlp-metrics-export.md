@@ -49,10 +49,6 @@ export OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=http://localhost:9090/api/v1/otlp
 ```
 
-The OTEL_EXPORTER_OTLP_METRICS_ENDPOINT environment variable is treated as a
-base URL. The `/v1/metrics` path is appended as defined by the
-[OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/specification/protocol/exporter.md#endpoint-urls-for-otlphttp).
-
 Turn off traces and logs when using Prometheus if you only need metrics:
 
 ```bash
