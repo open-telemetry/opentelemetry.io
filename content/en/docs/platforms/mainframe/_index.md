@@ -2,8 +2,8 @@
 title: OpenTelemetry with Mainframes
 linkTitle: Mainframes
 description:
-  Use OpenTelemetry to gain insights into mainframe workloads alongside
-  your cloud and distributed systems.
+  Use OpenTelemetry to gain insights into mainframe workloads alongside your
+  cloud and distributed systems.
 ---
 
 Mainframes continue to run a large share of the world’s most critical
@@ -29,24 +29,31 @@ This content is aimed at people who:
 ## Assumptions
 
 You do _not_ need prior mainframe experience, and you do not need to be a COBOL
-or z/OS expert to benefit from this section. But you should be familiar with [OpenTelemetry concepts](/docs/concepts/) such as traces, metrics, logs, OTLP, and the Collector.
+or z/OS expert to benefit from this section. But you should be familiar with
+[OpenTelemetry concepts](/docs/concepts/) such as traces, metrics, logs, OTLP,
+and the Collector.
 
 ## What we mean by mainframe
-Mainframes are data servers that are designed to process billions of transactions daily with the highest levels of security and reliability. For a more detailed overview, please visit: [What is a mainframe?](https://www.ibm.com/think/topics/mainframe)
-By “mainframe” we generally mean:
 
-IBM Z systems with the z/OS operating system that host
-  host:
-  - Transaction processing (e.g., CICS®, IMS™ and similar subsystems)
-  - Batch processing (JCL-driven jobs, schedulers)
-  - High-value systems of record (databases and files that are the “source of
-    truth”)
-> Platforms such as **IBM z/OS® mainframes** and compatible environments that host:
-> 
-> - Transaction processing (e.g., CICS®, IMS™ and similar subsystems)
-> - Batch processing (JCL-driven jobs, schedulers)
-> - High-value systems of record (databases and files that are the “source of
-> - Large **high-volume transaction processing** and **batch workloads**.
+Mainframes are data servers that are designed to process billions of
+transactions daily with the highest levels of security and reliability. For a
+more detailed overview, please visit:
+[What is a mainframe?](https://www.ibm.com/think/topics/mainframe) By
+“mainframe” we generally mean:
+
+IBM Z systems with the z/OS operating system that host host:
+
+- Transaction processing (e.g., CICS®, IMS™ and similar subsystems)
+- Batch processing (JCL-driven jobs, schedulers)
+- High-value systems of record (databases and files that are the “source of
+  truth”)
+  > Platforms such as **IBM z/OS® mainframes** and compatible environments that
+  > host:
+  >
+  > - Transaction processing (e.g., CICS®, IMS™ and similar subsystems)
+  > - Batch processing (JCL-driven jobs, schedulers)
+  > - High-value systems of record (databases and files that are the “source of
+  > - Large **high-volume transaction processing** and **batch workloads**.
 
 While the details vary by vendor and product, most mainframe environments share
 characteristics that affect observability:
@@ -75,8 +82,8 @@ In a typical architecture, telemetry flows might look like:
   mainframe activity.
 - Mainframe-resident components emit **events,
   [SMF records](https://www.ibm.com/docs/en/zos/3.2.0?topic=smf-introduction),
-  logs, trace spans, or metrics** that must be transformed or exported into OpenTelemetry
-  formats (often via a Collector or gateway running off-platform).
+  logs, trace spans, or metrics** that must be transformed or exported into
+  OpenTelemetry formats (often via a Collector or gateway running off-platform).
 
 The goal of this section is to help you **connect those dots** so you can see a
 single, coherent picture across mainframe and non-mainframe systems.
@@ -130,7 +137,8 @@ on Linux servers or containers) and acts as a **bridge** between:
 
 ## Current status
 
-Foundational OpenTelemetry instrumentation for mainframe environments is available today, with ongoing enhancements to expand the platform support.
+Foundational OpenTelemetry instrumentation for mainframe environments is
+available today, with ongoing enhancements to expand the platform support.
 
 Historically, much of this mainframe-specific instrumentation has been vendor
 supplied. Many observability backend vendors provide vendor-specific extensions
@@ -145,7 +153,7 @@ IBM, which supplies the operating system and subsystem software for the most
 pervasively used mainframe systems, is currently in the process of including
 native OpenTelemetry support into its services.
 
-Many Independent [Mainframe] Software Vendors (ISVs) are also transitioning
+Many Independent [Mainframe][] Software Vendors (ISVs) are also transitioning
 their observability support to favor the OpenTelemetry vendor-neutral approach.
 
 Of course, this successful transition depends upon common terminology and
@@ -163,11 +171,10 @@ focused on:
 The SIG currently has representation from IBM, Broadcom and other ISVs,
 observability backend vendors, and some customers. Join us!
 
-If you are interested in contributing, see the 
-[Community](/community/) and 
-[SIG information](https://github.com/open-telemetry/community#special-interest-groups) 
-in the OpenTelemetry repositories and website for 
-[meeting times](https://groups.google.com/a/opentelemetry.io/g/calendar-mainframe), 
-[meeting minutes](https://docs.google.com/document/d/14p-bpofozTL4n3jy6HZH_TKjoOXvog18G1HBRqq6liE), 
-and communication channels 
+If you are interested in contributing, see the [Community](/community/) and
+[SIG information](https://github.com/open-telemetry/community#special-interest-groups)
+in the OpenTelemetry repositories and website for
+[meeting times](https://groups.google.com/a/opentelemetry.io/g/calendar-mainframe),
+[meeting minutes](https://docs.google.com/document/d/14p-bpofozTL4n3jy6HZH_TKjoOXvog18G1HBRqq6liE),
+and communication channels
 ([#otel-mainframes](https://cloud-native.slack.com/archives/C05PXDFTCPJ)).
