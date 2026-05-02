@@ -23,7 +23,7 @@ cascade:
 
   > [!WARNING] イシューを割り当てません
   >
-  > 確認されたメンターシップまたはオンボーディングプロセスの一環でない限り、[OpenTelemetry organization][org] に貢献していない人に対しては**イシューを割り当てません**。
+  > 確認されたメンターシップまたはオンボーディングプロセスの一環でない限り、[OpenTelemetry organization][org] に貢献していない人に対しては**イシューを *割り当てません***。
   >
   > [org]: https://github.com/open-telemetry
 
