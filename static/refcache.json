@@ -21991,6 +21991,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-04-22T22:51:04.584643704Z"
   },
+  "https://prometheus.io/docs/guides/opentelemetry/#configuring-prometheus": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-02T14:33:57.68506878Z"
+  },
   "https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver": {
     "StatusCode": 200,
     "LastSeen": "2026-04-22T22:51:03.643626389Z"
