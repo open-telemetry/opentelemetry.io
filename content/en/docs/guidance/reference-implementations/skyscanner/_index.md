@@ -2,7 +2,6 @@
 title:
   'Skyscanner: Managing OpenTelemetry Collectors across 24 production clusters'
 linkTitle: Skyscanner
-date: 2026-04-21
 author: >-
   [Johanna Öjeling](https://github.com/johannaojeling) (Grafana Labs), [Juliano
   Costa](https://github.com/julianocosta89) (Datadog), [Tristan
