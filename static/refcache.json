@@ -7191,6 +7191,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:17:13.805200232Z"
   },
+  "https://github.com/open-telemetry/community#sig-browser": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-01T02:57:10.437192363Z"
+  },
   "https://github.com/open-telemetry/community#special-interest-groups": {
     "StatusCode": 206,
     "LastSeen": "2026-04-28T10:24:53.545125881Z"
