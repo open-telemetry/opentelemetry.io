@@ -2,7 +2,6 @@
 title:
   'Mastodon: Running OpenTelemetry Collectors in production with a small team'
 linkTitle: Mastodon
-date: 2026-03-18
 author: >-
   [Juliano Costa](https://github.com/julianocosta89) (Datadog), [Tristan
   Sloughter](https://github.com/tsloughter) (community), [Johanna
