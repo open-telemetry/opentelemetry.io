@@ -12,7 +12,10 @@ sig: End-User
 cSpell:ignore: Fordyce kube kubelet rollouts Skyscanner Sloughter unsets Öjeling
 ---
 
-Date: April 21, 2026
+By [Johanna Öjeling](https://github.com/johannaojeling) (Grafana Labs),
+[Juliano Costa](https://github.com/julianocosta89) (Datadog),
+[Tristan Sloughter](https://github.com/tsloughter) (community),
+[Neil Fordyce](https://github.com/neilfordyce) (Skyscanner) | April 21, 2026
 
 This reference implementation describes how
 [Skyscanner](https://www.skyscanner.net/), a global travel search platform based
