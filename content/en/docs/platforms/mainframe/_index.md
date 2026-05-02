@@ -1,9 +1,10 @@
 ---
 title: OpenTelemetry with Mainframes
 linkTitle: Mainframes
-description:
+description: >-
   Use OpenTelemetry to gain insights into mainframe workloads alongside your
   cloud and distributed systems.
+cSpell:ignore: frontends CICS LOGREC VSAM
 ---
 
 Mainframes continue to run a large share of the world’s most critical
