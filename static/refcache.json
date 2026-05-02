@@ -3067,6 +3067,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-04-25T10:00:21.866324832Z"
   },
+  "https://en.wikipedia.org/wiki/No_Silver_Bullet": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-02T11:03:30.946034+01:00"
+  },
   "https://en.wikipedia.org/wiki/Non-uniform_memory_access": {
     "StatusCode": 200,
     "LastSeen": "2026-04-28T12:57:04.244464183Z"
@@ -10635,10 +10639,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-30T04:19:45.779342662Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.151.0/processor/dnslookupprocessor": {
-    "StatusCode": 404,
-    "LastSeen": "2026-04-30T04:23:01.668306719Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.151.0/processor/drainprocessor": {
     "StatusCode": 206,
     "LastSeen": "2026-04-30T04:19:48.803021948Z"
@@ -17151,9 +17151,29 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-29T10:25:53.482877991Z"
   },
+  "https://github.com/open-telemetry/sig-end-user/blob/887e20c58849d583e2e25bc25ef93ea146ce1d78/architecture/blueprint-template.md?plain=1&from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-02T11:03:33.759854+01:00"
+  },
   "https://github.com/open-telemetry/sig-end-user/blob/b5cb097ca529cea62809d5078ef8e30a54ad86b9/end-user-surveys/otel-prom-interoperability/otel-prom-interoperability-survey.csv?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T10:25:40.669514117Z"
+  },
+  "https://github.com/open-telemetry/sig-end-user/blob/c483a44b12e95c093e0a8b0d7542d470e82ff7fc/architecture/reference-implementation-template.md?plain=1&from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-02T11:03:37.839667+01:00"
+  },
+  "https://github.com/open-telemetry/sig-end-user/issues/245": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-02T11:03:39.829159+01:00"
+  },
+  "https://github.com/open-telemetry/sig-end-user/issues/246": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-02T11:03:44.729444+01:00"
+  },
+  "https://github.com/open-telemetry/sig-end-user/issues/247": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-02T11:03:41.429378+01:00"
   },
   "https://github.com/open-telemetry/sig-end-user/tree/01bdcafbc787c0aa0b076ecd85432c24d50e62ac/end-user-surveys/contributor-experience?from_branch=main": {
     "StatusCode": 206,
