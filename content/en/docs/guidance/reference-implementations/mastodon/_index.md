@@ -13,7 +13,11 @@ sig: End-User
 cSpell:ignore: otelbin Sidekiq Sloughter Öjeling
 ---
 
-Date: March 18, 2026
+By [Juliano Costa](https://github.com/julianocosta89) (Datadog),
+[Tristan Sloughter](https://github.com/tsloughter) (community),
+[Johanna Öjeling](https://github.com/johannaojeling) (Grafana Labs),
+[Damien Mathieu](https://github.com/dmathieu) (Elastic),
+[Tim Campbell](https://github.com/timetinytim) (Mastodon) | March 18, 2026
 
 This reference implementation describes how Mastodon, a non-profit organization
 operating at global scale with a remarkably small team, runs the OpenTelemetry
@@ -166,6 +170,8 @@ The configuration focuses on:
 
 A full production configuration is included below for reference (you can also
 view it on [otelbin][otelbin-mastodon]):
+
+<details><summary>Mastodon's Collector configuration</summary>
 
 ```yaml
 apiVersion: opentelemetry.io/v1beta1
@@ -368,6 +374,8 @@ spec:
             ]
           exporters: [datadog]
 ```
+
+</details>
 
 ### Staying up to date
 
