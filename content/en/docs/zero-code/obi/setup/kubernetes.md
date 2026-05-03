@@ -431,7 +431,7 @@ per-Pod informer traffic to the API server and greatly reduces API load, though
 OBI may still perform limited direct Kubernetes API lookups for node and cluster
 metadata.
 
-Use `k8s-cache` when:
+Use of `k8s-cache` is always recommended, but especially if:
 
 - You run OBI as a DaemonSet on a large cluster.
 - You run many OBI replicas (large `Deployment`, multiple sidecars, etc.) on the
