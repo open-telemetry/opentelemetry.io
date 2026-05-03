@@ -14,6 +14,7 @@ As point-in-time snapshots, reference implementations are not actively
 maintained and may not reflect current best practices as the OpenTelemetry
 project evolves.
 
-<!-- Add how to propose a new reference implementation once the issue template and repo are ready. -->
-
-**Coming soon!**
+If your organization has implemented OpenTelemetry and you think others could
+benefit from your experience, we would love to hear from you! Please see our
+guidance on [how to contribute](../#how-to-contribute) to share your reference
+implementation.

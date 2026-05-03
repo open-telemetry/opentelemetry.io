@@ -16,5 +16,5 @@ createdAt: 2025-03-26
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-browser-navigation'
-  version: 0.8.0
+  version: 0.9.0
 isFirstParty: false
