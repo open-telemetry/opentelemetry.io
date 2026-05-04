@@ -10863,6 +10863,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:08:04.723225599Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/logs_simple": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-20T17:06:33.412609523Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/metrics_simple": {
     "StatusCode": 206,
     "LastSeen": "2026-05-03T09:58:45.758361792Z"
@@ -20198,6 +20202,14 @@
   "https://opentelemetry.io": {
     "StatusCode": 206,
     "LastSeen": "2026-04-30T10:26:17.901852157Z"
+  },
+  "https://opentelemetry.io/docs/specs/otel/logs/api/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-22T00:26:10.396607883Z"
+  },
+  "https://opentelemetry.io/docs/specs/otel/logs/sdk/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-22T00:26:13.174774163Z"
   },
   "https://opentelemetry.io/docs/specs/otlp/": {
     "StatusCode": 206,
