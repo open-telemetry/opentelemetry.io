@@ -1539,8 +1539,8 @@ Current benchmarks cover the **record path** for all three signals — the hot
 path that application threads exercise on every span start/end, metric
 measurement, or log emit:
 
-| Benchmark                                    | Dimensions                                                                              |
-| -------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Benchmark                                      | Dimensions                                                                              |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------- |
 | [`SpanRecordBenchmark`][span-record-src][]     | span size, concurrent threads                                                           |
 | [`MetricRecordBenchmark`][metric-record-src][] | instrument type + aggregation, aggregation temporality, cardinality, concurrent threads |
 | [`LogRecordBenchmark`][log-record-src][]       | log record size, concurrent threads                                                     |
