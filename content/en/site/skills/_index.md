@@ -23,6 +23,8 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 - [`/draft-issue <issue-description>`][draft-issue]: draft a GitHub issue in the
   `opentelemetry.io` repository following issue templates, contributing
   guidelines, and the label taxonomy.
+- [`/refresh-refcache-pr-fix`][refresh-refcache-pr-fix]: fetch, review and
+  attempt to fix non-2XX URLs on the upstream `otelbot/refcache-refresh` PR.
 - [`/resolve-refcache-conflicts <optional-pr-number>`][resolve-refcache-conflicts]:
   resolve `static/refcache.json` merge/rebase conflicts.
 - [`/review-blog-post <blog-post-path-or-pr-number>`][review-blog-post]: review
@@ -62,6 +64,8 @@ See the section index below.
 [agentskills.io]: https://agentskills.io
 [draft-issue]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/draft-issue/SKILL.md
+[refresh-refcache-pr-fix]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/refresh-refcache-pr-fix/SKILL.md
 [resolve-refcache-conflicts]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/resolve-refcache-conflicts/SKILL.md
 [review-blog-post]:
