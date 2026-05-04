@@ -18,22 +18,24 @@ construirii, a determina ordinea bannerelor, a gestiona revenirea la bannerele
 ## Crearea unui anunț {#creating-an-announcement}
 
 Pentru a adăuga un anunț nou, creează un fișier Markdown pentru anunțuri în
-folderul `anunțuri` al localizării tale folosind următoarea comandă:
+dosarul `anunțuri` al localizării tale folosind următoarea comandă:
 
 ```sh
 hugo new --kind announcement content/YOUR-LOCALE/announcements/announcement-file-name.md
 ```
 
 Ajustează în funcție de setările regionale și de numele fișierului dorite.
-Adăugă textul anunțului ca corp al paginii.
+Adăugă textul anunțului în corpul paginii.
 
 > Pentru bannere, corpul anunțului ar trebui să fie o frază scurtă.
 
 <!-- markdownlint-disable no-blanks-blockquote -->
 
-> [!NOTE] Pentru localizări Dacă creezi o **suprascriere a anunțului specifică
-> setărilor regionale**, asigură-te că utilizezi **același nume de fișier** ca
-> anunțul >în limba engleză.
+> [!NOTE] Pentru localizări
+
+> Dacă creezi o **suprascriere a anunțului specifică setărilor regionale**,
+> asigură-te că utilizezi **același nume de fișier** ca anunțul în limba
+> engleză.
 
 ## Lista anunțurilor {#announcement-list}
 
@@ -51,8 +53,8 @@ ponderile sunt aceleași sau nespecificate, cele mai recente anunțuri (după
 Așadar, dacă dorești să forțezi un anunț în partea de sus, utilizează o
 `greutate` negativă în prima pagină.
 
-Dacă găsești o eroare sau o problemă cu conținutul acestui depozit sau dacă
-dorești să soliciți o îmbunătățire, [creează o problemă][problemă-nouă].
+Dacă găsești o eroare sau o problemă cu conținutul acestui repozitoriu sau dacă
+dorești să soliciți o îmbunătățire, [raportează o problemă][problemă-nouă].
 
 Dacă descoperi o problemă de securitate, citește
 [Politica de securitate](https://github.com/open-telemetry/opentelemetry.io/security/policy)
