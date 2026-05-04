@@ -15263,6 +15263,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-30T10:27:41.928136119Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-i18n-drift-status/SKILL.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-30T10:27:41.928136119Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-04-28T12:56:50.690752624Z"

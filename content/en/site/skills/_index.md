@@ -31,6 +31,10 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 - [`/review-pull-request <pr-number-or-url>`][review-pull-request]: review a
   pull request for CI check semantics, CLA and approval-label workflow, refcache
   handling, locale rules, and content quality.
+- [`/update-i18n-drift-status [--locale locale,...] [--create-pr]`][update-i18n-drift-status]:
+  update the `drifted_from_default` front matter field for localized content,
+  with optional arguments to limit which locales are processed and whether to
+  open a PR automatically.
 
 Some agent chats let you invoke a skill by typing `/` followed by its name.
 
@@ -64,6 +68,8 @@ See the section index below.
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-blog-post/SKILL.md
 [review-pull-request]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-pull-request/SKILL.md
+[update-i18n-drift-status]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-i18n-drift-status/SKILL.md
 [hooks]: https://docs.claude.com/en/docs/claude-code/hooks
 [hooks-json]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/hooks/hooks.json
