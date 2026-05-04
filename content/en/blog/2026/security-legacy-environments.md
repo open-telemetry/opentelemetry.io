@@ -3,7 +3,7 @@ title:
   'Security in OpenTelemetry for Legacy and Industrial Environments: What
   Changes'
 linkTitle: Security for Legacy Environments
-date: 2026-04-22
+date: 2026-05-12
 author: >-
   [Lukasz Ciukaj (Cisco Splunk)](https://github.com/luke6Lh43)
 sig: SIG Security
