@@ -35,7 +35,7 @@ You spoke, and we listened. I'm pleased to announce a new initiative driven by
 the End User SIG in collaboration with the Developer Experience SIG: [Blueprints
 and Reference Implementations][2].
 
-### The source of complexity and the need for blueprints
+## The source of complexity and the need for blueprints
 
 Let's go back to that first question we asked: _"Why is this stuff so complex?_.
 Using the terms described by Fred Brooks in his paper titled [_No Silver
@@ -43,7 +43,7 @@ Bullet—Essence and Accident in Software Engineering_][3], written back in 1986
 the complexity of adopting OTel is two-fold: _essential_ and, more frequently
 than not, _accidental_.
 
-#### Essential complexity
+### Essential complexity
 
 The _essential_ part of OTel's complexity, the one inherent in its design,
 mostly comes down to its breadth and cross-cutting nature. OpenTelemetry touches
@@ -67,7 +67,7 @@ complexity.
 In summary, OTel can be _essentially_ complex when applied at scale, and this is
 normally for good reasons.
 
-#### Accidental complexity
+### Accidental complexity
 
 The _accidental_ part of OTel adoption complexity, as in most tooling adoption,
 comes mostly from humans. When multiple teams start to organically adopt
@@ -85,7 +85,7 @@ OTel, a new way of configuring and deploying a component. The result is a system
 that's neither effective nor efficient at describing itself with high-quality
 telemetry across all its different layers and dependencies.
 
-#### The role of blueprints in taming complexity
+### The role of blueprints in taming complexity
 
 The reality is that, as Fred Brooks stated, there's no "silver bullet". We
 cannot simply eliminate the _essential_ complexity of modern observability
@@ -117,7 +117,7 @@ OpenTelemetry maintainers will also be able to use blueprints as a way to
 identify any possible friction in adoption which could be further simplified via
 enhanced tooling.
 
-### What to expect from blueprints
+## What to expect from blueprints
 
 OTel Blueprints will not rewrite existing documentation. You will not see a
 blueprint that tells you how to configure an SDK, or how to deploy a Collector
@@ -226,7 +226,7 @@ These, and other reference implementations, will soon be published in the new
 together a standard [template][13] to facilitate end users sharing their stories
 in the future. The more, the merrier!
 
-### Now more than ever, we want your input!
+## Now more than ever, we want your input!
 
 All this work would've not been possible without end users giving us feedback,
 sharing their adoption journeys, contributing their expertise to the project,
