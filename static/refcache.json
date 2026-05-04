@@ -15251,6 +15251,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-30T10:27:32.412107958Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/refresh-refcache-pr-fix/SKILL.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-04T15:39:19.947308843Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/resolve-refcache-conflicts/SKILL.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:23:50.634329856Z"
