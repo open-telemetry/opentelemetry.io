@@ -21,7 +21,8 @@ Legacy and industrial environments often include:
 - systems that cannot be modified or instrumented
 - long equipment life cycles and limited patching windows
 - flat or weakly segmented networks
-- sensitive operational data that is not typical PII
+- sensitive operational data that is not typical
+  [PII](https://en.wikipedia.org/wiki/Personal_data)
 
 This article focuses on what is different about securing OpenTelemetry in these
 environments, and how to adapt your approach accordingly.
@@ -57,28 +58,55 @@ shifts to the Collector, intermediary systems, and network boundaries.
 
 ### Weak or non-existent network segmentation
 
-Legacy environments often operate on flat or shared networks. Introducing
-telemetry collection can:
+Legacy environments often have network architectures that were not designed with
+modern observability in mind. Some operate on flat or shared networks with
+minimal segmentation, while others rely on deeply nested networks with a mix of
+legacy protocols. In either case, introducing telemetry collection can:
 
-- expose new ingestion endpoints
+- expose new ingestion endpoints to unintended network segments
 - allow unintended lateral access to Collectors or bridges
+- create unexpected paths between previously isolated zones
 
-In these environments, Collector placement can be as important as Collector
-configuration.
+In these environments, Collector placement is as important as Collector
+configuration. Carefully evaluate where Collectors sit relative to network
+boundaries, firewalls, and protocol gateways.
 
 ### Limited patching and long lifecycles
 
-Industrial systems may run for years without upgrades. When vulnerabilities are
-discovered:
+Industrial systems may run for years without upgrades. How you deploy the
+Collector determines your patching strategy. Two common models exist:
 
-- immediate patching may not be possible
-- compensating controls become critical
+**Collector as an external bridge (recommended):**
 
-This shifts the focus from patching to **containment and mitigation**:
+The Collector runs outside the legacy system boundary (on a separate host, VM,
+or container) and acts as a bridge between the industrial environment and the
+observability backend. In this model:
 
-- isolating affected components
-- restricting network access
-- disabling unnecessary telemetry paths
+- The Collector can be patched and updated independently of the legacy system.
+- Supply chain security issues can be addressed immediately.
+- The legacy system remains untouched and stable.
+
+**Collector embedded within the legacy environment:**
+
+The Collector runs alongside or within the legacy system, subject to the same
+change control and maintenance windows. In this model:
+
+- Immediate patching may not be possible.
+- Compensating controls become critical.
+- Plan for running older Collector versions and monitor CVEs to assess exposure
+  during the gap between disclosure and patching.
+
+Where possible, prefer the bridge model. It provides a clear separation of
+concerns and allows the telemetry pipeline to be maintained on a modern
+lifecycle, even when the source systems cannot be.
+
+When the bridge model is not feasible, shift the focus from patching to
+**containment and mitigation**:
+
+- Isolate affected components from the broader network.
+- Restrict network access to and from the Collector.
+- Disable unnecessary telemetry paths and components.
+- Monitor CVE advisories and assess risk exposure continuously.
 
 ### Sensitive data looks different in these environments
 
@@ -101,14 +129,26 @@ Key design principles:
 - **Constrain ingestion points**: Avoid exposing Collector endpoints broadly.
   Bind to specific interfaces and restrict network access.
 
+- **Classify data by source trust level**: Distinguish telemetry based on how it
+  was ingested. For example, data received over unauthenticated channels (such
+  as UDP multicast) should be treated differently from data received over
+  authenticated channels (such as mTLS). Use resource attributes or metadata to
+  tag telemetry with its ingestion context so that downstream systems can apply
+  appropriate trust and access policies.
+
 - **Isolate bridging components**: MQTT bridges, log collectors, or protocol
   adapters should run in controlled segments and not be directly accessible.
 
-- **Minimize exposed components**: Only enable the receivers and exporters you
-  actually need.
+- **Minimize exposed components**: Legacy environments may accumulate
+  unnecessary components over time as systems evolve. Regularly audit your
+  Collector configuration to ensure only the receivers and exporters required
+  for your current observability goals are enabled, reducing the attack surface
+  in environments where patching and updates are less frequent.
 
-- **Prefer internal aggregation**: Collect and process telemetry inside the
-  environment before exporting it externally.
+- **Prefer internal processing**: Collect and transform telemetry inside the
+  trusted environment before exporting it externally. Use processors to filter,
+  redact, or reshape data at the Collector level, minimizing the volume and
+  sensitivity of data that crosses network boundaries.
 
 The goal is to treat the OpenTelemetry Collector as a **controlled boundary**,
 not just a data router. This approach is consistent with Zero Trust-style
