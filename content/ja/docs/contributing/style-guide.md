@@ -109,6 +109,9 @@ Markdown [リンク参照][reference links] を使用する場合は、_collapse
 マークダウンファイルの規約と一貫性を確保するために、[markdownlint][] によって定められたルールに従う必要があります。
 すべてのルールの一覧は、[.markdownlint.yaml][] ファイルと [.markdownlint-cli2.yaml][] ファイルを確認してください。
 
+ルールに正当な例外がある場合は、`markdownlint-disable` ディレクティブを使用して、そのルールの警告を抑制してください。
+詳しくは [markdownlint のドキュメント](https://github.com/DavidAnson/markdownlint#configuration) を参照してください。
+
 同様に、Markdown [file format](#file-format) を適用し、ファイルの末尾スペースを削除します。
 これは 2 つ以上のスペースを使用する [line break syntax][] を排除します。
 かわりに `<br>` を使うか、再フォーマットしてください。
