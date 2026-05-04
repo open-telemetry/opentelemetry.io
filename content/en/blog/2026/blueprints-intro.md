@@ -4,6 +4,7 @@ linkTitle: Blueprints and Reference Implementations
 date: 2026-05-05
 sig: End-User SIG
 author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
+cSpell:ignore: Skyscanner
 ---
 
 It's not uncommon for end users adopting OpenTelemetry to, at some point in
@@ -82,7 +83,7 @@ entropy and complexity has _accidentally_ grown uncontrolled as AI-assisted
 development adds a new file here, a duplicated method there, or, in the case of
 OTel, a new way of configuring and deploying a component. The result is a system
 that's neither effective nor efficient at describing itself with high-quality
-telemetry across all its differenet layers and dependencies.
+telemetry across all its different layers and dependencies.
 
 #### The role of blueprints in taming complexity
 
