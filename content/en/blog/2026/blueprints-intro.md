@@ -213,18 +213,16 @@ flowchart BT
     RC -->|Implements| BC
 ```
 
-You may have already seen some of these reference implementations being
-published as blogs on our website. [Mastodon][8], [Adobe][9], and
-[Skyscanner][10] have already shared how they've approached OpenTelemetry
-adoption across their environments. This work has been diligently driven by the
-Developer Experience SIG, supporting those end users in sharing their stories,
-and has cemented much of the way for OTel Blueprints to be successful. I would
-like to personally thank the DevEx SIG for this effort!
+[Adobe][9], [Mastodon][8], and [Skyscanner][10] have already shared how they've
+approached OpenTelemetry adoption across their environments. This work has been
+diligently driven by the Developer Experience SIG, supporting those end users in
+sharing their stories, and has cemented much of the way for OTel Blueprints to
+be successful. I would like to personally thank the DevEx SIG for this effort!
 
-These, and other reference implementations, will soon be published in the new
-[Reference implementations][12] section in our website. We have also put
-together a standard [template][13] to facilitate end users sharing their stories
-in the future. The more, the merrier!
+These reference implementations have now been published in the new [Reference
+implementations][12] section of our website. We have also put together a
+standard [template][13] to facilitate end users sharing their stories in the
+future. The more, the merrier!
 
 ## Now more than ever, we want your input!
 
@@ -255,9 +253,9 @@ journey!
 [6]: /docs/platforms/kubernetes/operator/
 [7]:
   https://github.com/open-telemetry/sig-end-user/blob/887e20c58849d583e2e25bc25ef93ea146ce1d78/architecture/blueprint-template.md?plain=1&from_branch=main
-[8]: /blog/2026/devex-mastodon/
-[9]: /blog/2026/devex-adobe/
-[10]: /blog/2026/devex-skyscanner/
+[8]: /docs/guidance/reference-implementations/adobe/
+[9]: /docs/guidance/reference-implementations/mastodon/
+[10]: /docs/guidance/reference-implementations/skyscanner/
 [11]: /docs/guidance/blueprints/
 [12]: /docs/guidance/reference-implementations/
 [13]:
