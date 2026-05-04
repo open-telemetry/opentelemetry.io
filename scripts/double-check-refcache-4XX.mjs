@@ -109,8 +109,12 @@ async function retry400sAndUpdateCache() {
       continue;
     }
 
-    // Invalid fragment sentinel: always skipped here (handled with --check-fragments flow).
-    if (parsedUrl.hash && is4XXForFragments(StatusCode, lastSeenDate)) {
+    // Invalid fragment sentinel: skip repeat fetches unless --retry-404 (see below).
+    if (
+      parsedUrl.hash &&
+      is4XXForFragments(StatusCode, lastSeenDate) &&
+      !retry404
+    ) {
       console.log(
         `Skipping ${StatusCode}: ${url} (last seen ${lastSeenDate.toLocaleDateString()}) INVALID FRAGMENT`,
       );
@@ -239,6 +243,8 @@ Options:
                              which htmltest doesn't do.
   --retry-404, -4            Re-fetch URLs that are cached with status 404
                              instead of skipping them (default: skip cached 404s).
+                             Also re-fetches fragment URLs with INVALID FRAGMENT
+                             LastSeen sentinel so they are not stuck skipped.
   --verbose, -v              Show verbose output.
 `);
   exit(exitCode);
