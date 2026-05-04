@@ -386,7 +386,7 @@ NPMパッケージ[@cspell/dict-LANG_ID][]として利用可能な[cSpell辞書]
 **スペルチェック**に追加する自然言語辞書がない場合も同様です。
 
 - [`.cspell.yml`][] でそのファイルを登録し、有効にします
-  - `disctionaryDefinitions` に、`name` (たとえば `LANG_ID-words`) と `path` (たとえば `.cspell/LANG_ID-words.txt`) を含んだエントリを追加します
+  - `dictionaryDefinitions` に、`name` (たとえば `LANG_ID-words`) と `path` (たとえば `.cspell/LANG_ID-words.txt`) を含んだエントリを追加します
   - `dictionaries` に、上記のステップで追加したのと同じ `name` の値を追加します (ファイルパスではありません)
 
 #### その他のツールサポート {#other-tooling-support}
