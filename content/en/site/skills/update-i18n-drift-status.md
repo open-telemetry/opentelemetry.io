@@ -42,8 +42,8 @@ the repository root.
 
 ## Discover locales {#discover-locales}
 
-If `--locale` was not passed, discover all non-English locales from the Hugo
-configuration:
+If `--locale` was not passed, discover all non-English locales from the content
+directory:
 
 ```sh
 find content -maxdepth 1 -mindepth 1 -type d ! -name 'en' -exec basename {} \;
@@ -66,7 +66,7 @@ For each `{LANG_ID}` in the resolved locale list:
 1. Run the drift-status update command:
 
    ```sh
-   npm run fix:i18n:status -d content/{LANG_ID}
+   npm run fix:i18n:status -- content/{LANG_ID}
    ```
 
 2. Collect stats for the PR description table:
