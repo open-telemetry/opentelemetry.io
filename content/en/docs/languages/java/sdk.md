@@ -1541,9 +1541,9 @@ measurement, or log emit:
 
 | Benchmark                                    | Dimensions                                                                              |
 | -------------------------------------------- | --------------------------------------------------------------------------------------- |
-| [`SpanRecordBenchmark`][span-record-src]     | span size, concurrent threads                                                           |
-| [`MetricRecordBenchmark`][metric-record-src] | instrument type + aggregation, aggregation temporality, cardinality, concurrent threads |
-| [`LogRecordBenchmark`][log-record-src]       | log record size, concurrent threads                                                     |
+| [`SpanRecordBenchmark`][span-record-src][]     | span size, concurrent threads                                                           |
+| [`MetricRecordBenchmark`][metric-record-src][] | instrument type + aggregation, aggregation temporality, cardinality, concurrent threads |
+| [`LogRecordBenchmark`][log-record-src][]       | log record size, concurrent threads                                                     |
 
 > [!NOTE]
 >
@@ -1552,24 +1552,24 @@ measurement, or log emit:
 
 ### Testing
 
-The `io.opentelemetry:opentelemetry-sdk-testing` artifact
-provides utilities for asserting on telemetry produced by your code, without
-exporting data to any backend.
+The `io.opentelemetry:opentelemetry-sdk-testing` artifact provides utilities for
+asserting on telemetry produced by your code, without exporting data to any
+backend.
 
 The following components are available:
 
-| Class | Description |
-| --- | --- |
-| [OpenTelemetryExtension](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit5/OpenTelemetryExtension.html) | JUnit 5 extension that sets up an `OpenTelemetrySdk` with in-memory exporters and W3C trace context propagation, registers it as `GlobalOpenTelemetry`, and resets all captured telemetry before each test. |
-| [OpenTelemetryRule](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit4/OpenTelemetryRule.html) | JUnit 4 equivalent of `OpenTelemetryExtension`. Cannot be used as `@ClassRule`. |
-| [OpenTelemetryAssertions](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/assertj/OpenTelemetryAssertions.html) | Extends AssertJ with OTel-aware `assertThat()` overloads for `SpanData`, `MetricData`, `LogRecordData`, `Attributes`, and `EventData`. Use via `import static ...OpenTelemetryAssertions.assertThat`. |
-| [InMemorySpanExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemorySpanExporter.html) | Captures exported spans in memory. |
-| [InMemoryMetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryMetricReader.html) | Reads aggregated metrics in memory. |
-| [InMemoryLogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryLogRecordExporter.html) | Captures exported log records in memory. |
-| [TestClock](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/time/TestClock.html) | Mutable `Clock` for controlling time in tests. Pass to `SdkTracerProvider.builder().setClock(...)`. |
-| [TestSpanData](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/trace/TestSpanData.html) | Immutable builder for constructing `SpanData` instances in tests without running real instrumentation. |
-| [TestLogRecordData](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/logs/TestLogRecordData.html) | Immutable builder for constructing `LogRecordData` instances in tests. |
-| [SettableContextStorageProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/context/SettableContextStorageProvider.html) | `ContextStorageProvider` that lets you swap `ContextStorage` at runtime; useful for testing context propagation behavior. |
+| Class                                                                                                                                                                                   | Description                                                                                                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [OpenTelemetryExtension](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit5/OpenTelemetryExtension.html)                  | JUnit 5 extension that sets up an `OpenTelemetrySdk` with in-memory exporters and W3C trace context propagation, registers it as `GlobalOpenTelemetry`, and resets all captured telemetry before each test. |
+| [OpenTelemetryRule](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit4/OpenTelemetryRule.html)                            | JUnit 4 equivalent of `OpenTelemetryExtension`. Cannot be used as `@ClassRule`.                                                                                                                             |
+| [OpenTelemetryAssertions](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/assertj/OpenTelemetryAssertions.html)               | Extends AssertJ with OTel-aware `assertThat()` overloads for `SpanData`, `MetricData`, `LogRecordData`, `Attributes`, and `EventData`. Use via `import static ...OpenTelemetryAssertions.assertThat`.       |
+| [InMemorySpanExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemorySpanExporter.html)                    | Captures exported spans in memory.                                                                                                                                                                          |
+| [InMemoryMetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryMetricReader.html)                    | Reads aggregated metrics in memory.                                                                                                                                                                         |
+| [InMemoryLogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryLogRecordExporter.html)          | Captures exported log records in memory.                                                                                                                                                                    |
+| [TestClock](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/time/TestClock.html)                                              | Mutable `Clock` for controlling time in tests. Pass to `SdkTracerProvider.builder().setClock(...)`.                                                                                                         |
+| [TestSpanData](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/trace/TestSpanData.html)                                       | Immutable builder for constructing `SpanData` instances in tests without running real instrumentation.                                                                                                      |
+| [TestLogRecordData](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/logs/TestLogRecordData.html)                              | Immutable builder for constructing `LogRecordData` instances in tests.                                                                                                                                      |
+| [SettableContextStorageProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/context/SettableContextStorageProvider.html) | `ContextStorageProvider` that lets you swap `ContextStorage` at runtime; useful for testing context propagation behavior.                                                                                   |
 
 #### JUnit 5
 
@@ -1591,10 +1591,10 @@ class CoolTest {
 }
 ```
 
-Access raw telemetry with `getSpans()`, `getMetrics()`, and `getLogRecords()`. Use
-`assertTraces()` for fluent trace-level assertions via `TracesAssert`. Telemetry is
-automatically reset before each test; `clearSpans()`, `clearMetrics()`, and
-`clearLogRecords()` are available for mid-test resets.
+Access raw telemetry with `getSpans()`, `getMetrics()`, and `getLogRecords()`.
+Use `assertTraces()` for fluent trace-level assertions via `TracesAssert`.
+Telemetry is automatically reset before each test; `clearSpans()`,
+`clearMetrics()`, and `clearLogRecords()` are available for mid-test resets.
 
 #### JUnit 4
 
