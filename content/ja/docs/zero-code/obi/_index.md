@@ -8,7 +8,6 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
 default_lang_commit: 6751402db060c25800bb41c270dcaebb48aa7acb
-cSpell:ignore: CAP_PERFMON
 ---
 
 OpenTelemetry ライブラリは、一般的なプログラミング言語やフレームワーク向けのテレメトリー収集機能を提供します。
@@ -66,21 +65,21 @@ OBI v0.8.0 は、プロトコルカバレッジ、ペイロード抽出、およ
 
 OBI は、以下の要件を満たす Linux 環境をサポートしています。
 
-| 要件              | サポート対象                                                                    |
-| :--------------- | :----------------------------------------------------------------------------- |
-| CPU アーキテクチャ | `amd64`、`arm64`                                                               |
-| Linux カーネル    | `5.8+`、または必要な eBPF バックポートが適用された RHEL ファミリーのカーネルバージョン `4.18+` の Linux  |
-| カーネル機能      | BTF                                                                            |
-| 権限             | Root、または有効化された OBI 機能に必要な Linux ケーパビリティ                   |
+| 要件               | サポート対象                                                                                            |
+| :----------------- | :------------------------------------------------------------------------------------------------------ |
+| CPU アーキテクチャ | `amd64`、`arm64`                                                                                        |
+| Linux カーネル     | `5.8+`、または必要な eBPF バックポートが適用された RHEL ファミリーのカーネルバージョン `4.18+` の Linux |
+| カーネル機能       | BTF                                                                                                     |
+| 権限               | Root、または有効化された OBI 機能に必要な Linux ケーパビリティ                                          |
 
 OBI は以下のサポートされたリリース成果物を公開しています。
 
-| 成果物                                           | サポートされるプラットフォーム          |
-| :----------------------------------------------- | :--------------------------- |
-| `obi` バイナリアーカイブ                           | Linux `amd64`, Linux `arm64` |
-| `k8s-cache` バイナリアーカイブ                     | Linux `amd64`, Linux `arm64` |
-| `otel/ebpf-instrument` コンテナイメージ            | Linux `amd64`, Linux `arm64` |
-| `otel/ebpf-instrument-k8s-cache` コンテナイメージ  | Linux `amd64`, Linux `arm64` |
+| 成果物                                            | サポートされるプラットフォーム |
+| :------------------------------------------------ | :----------------------------- |
+| `obi` バイナリアーカイブ                          | Linux `amd64`, Linux `arm64`   |
+| `k8s-cache` バイナリアーカイブ                    | Linux `amd64`, Linux `arm64`   |
+| `otel/ebpf-instrument` コンテナイメージ           | Linux `amd64`, Linux `arm64`   |
+| `otel/ebpf-instrument-k8s-cache` コンテナイメージ | Linux `amd64`, Linux `arm64`   |
 
 OBI は、要件を満たす環境であれば、スタンドアロン Linux ホスト、コンテナ、および Kubernetes にデプロイできます。
 
