@@ -54,7 +54,8 @@ developments like [Declarative Configuration][4] or the [Injector][5], and the
 long-existing [OpenTelemetry Operator][6], have made it easier to apply a
 consolidated set of configuration across all these components. However, the fact
 remains that this is still a very large deployment surface in which one needs to
-achieve consistency and, in most cases, cannot even be handled by a single team.
+achieve consistency and which, in most cases, cannot even be handled by a single
+team.
 
 OpenTelemetry is also designed to work with any backend, not limited to a single
 solution. The old model of dropping a pre-built agent into your stack and seeing
@@ -78,12 +79,13 @@ with the Collector Gateway deployed by another team, or they may be propagating
 context in a different way than the dependencies they call, breaking context
 propagation for both.
 
-Unfortunately, AI won't save us here. We have all heard stories of systems where
-entropy and complexity has _accidentally_ grown uncontrolled as AI-assisted
-development adds a new file here, a duplicated method there, or, in the case of
-OTel, a new way of configuring and deploying a component. The result is a system
-that's neither effective nor efficient at describing itself with high-quality
-telemetry across all its different layers and dependencies.
+Unfortunately, AI won't save us here, and it might even make matters worse. We
+have all heard stories of systems where entropy and complexity has
+_accidentally_ grown uncontrolled as AI-assisted development adds a new file
+here, a duplicated method there, or, in the case of OTel, a new way of
+configuring and deploying a component. The result is a system that's neither
+effective nor efficient at describing itself with high-quality telemetry across
+all its different layers and dependencies.
 
 ### The role of blueprints in taming complexity
 
@@ -95,9 +97,13 @@ aim to make sense of the breadth of the project to help those navigating OTel
 adoption, and together keep that _accidental_ complexity at bay!
 
 This is where OTel Blueprints come in. The structure of these blueprints is
-based upon best practices in strategic thinking. The primary focus is on
-identifying the most critical challenges to solve in a particular environment,
-and scope our solutions to those alone, removing any unnecessary complexity.
+based upon best practices in strategic thinking, and their content is guided by
+end user experience, including that contained in reference implementations
+shared by adopters at some point along their OTel journeys.
+
+The primary focus is on identifying the most critical challenges to solve in a
+particular environment, and scope our solutions to those alone, removing any
+unnecessary complexity.
 
 With OTel Blueprints, we aim to categorize the most common observability
 challenges that organizations face across different scenarios, and propose a set
@@ -113,9 +119,9 @@ scenarios and environments with which they can identify, and immediate,
 actionable guidance on how to deploy best practices across multiple components,
 all working together as part of a consolidated strategy.
 
-OpenTelemetry maintainers will also be able to use blueprints as a way to
-identify any possible friction in adoption which could be further simplified via
-enhanced tooling.
+OpenTelemetry maintainers will also be able to use blueprints and reference
+implementations as a way to identify any possible pockets of friction in
+adoption which could be further simplified via enhanced tooling.
 
 ## What to expect from blueprints
 
@@ -213,7 +219,7 @@ flowchart BT
     RC -->|Implements| BC
 ```
 
-[Adobe][9], [Mastodon][8], and [Skyscanner][10] have already shared how they've
+[Adobe][8], [Mastodon][9], and [Skyscanner][10] have already shared how they've
 approached OpenTelemetry adoption across their environments. This work has been
 diligently driven by the Developer Experience SIG, supporting those end users in
 sharing their stories, and has cemented much of the way for OTel Blueprints to
@@ -241,7 +247,40 @@ many other reference implementations across different industries and
 environments, and proposals for new blueprints helping other end users adopt
 best practices in observability. If you want to continue helping us to scale
 adoption of best practices in OpenTelemetry, you can see [how to contribute][17]
-to this effort in our documentation.
+to this effort in our documentation. Here's a quick summary of the contribution
+process:
+
+```mermaid
+flowchart LR
+    B1([Want to share blueprint])
+    B2([Want to get blueprint])
+    B3[Open sig-end-user issue]
+    B4[Collaborate to scope common challenges]
+    B5[Collaborate to craft blueprint]
+    B6[Review blueprint]
+    B7([Blueprint published])
+
+    B1 --> B3
+    B2 --> B3
+    B3 --> B4
+    B4 --> B5
+    B5 --> B6
+    B6 --> B7
+```
+
+```mermaid
+flowchart LR
+    R1([Want to share reference implementation])
+    R2[Open sig-end-user issue]
+    R3[Collaborate to craft reference implementation]
+    R4[Review reference implementation]
+    R5([Reference implementation published])
+
+    R1 --> R2
+    R2 --> R3
+    R3 --> R4
+    R4 --> R5
+```
 
 This is your chance to make your end user journey a part of the OpenTelemetry
 journey!
