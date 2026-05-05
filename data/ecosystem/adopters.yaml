@@ -73,8 +73,7 @@
 - name: EcoBee
   url: https://www.ecobee.com/
   components: [Collector, Java]
-  reference: https://www.honeycomb.io/blog/bees-working-together-how-ecobees-engineers-adopted-honeycomb-for-visibility-into-system-optimization-and-customer-experience
-  referenceTitle: blog post
+  reference: ''
   contact: ''
 - name: Farfetch
   url: https://www.farfetch.com/

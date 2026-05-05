@@ -5,7 +5,7 @@ weight: 320
 default_lang_commit: 1c2b0563e8e66ef0952c442e3662e4bec18a8762 # patched
 drifted_from_default: true
 # prettier-ignore
-cSpell:ignore: attributesprocessor batchprocessor coralogixprocessor cumulativetodeltaprocessor deltatocumulativeprocessor deltatorateprocessor dnslookupprocessor filterprocessor geoipprocessor groupbyattrsprocessor groupbytraceprocessor intervalprocessor isolationforestprocessor logdedupprocessor logstransformprocessor memorylimiterprocessor metricsgenerationprocessor metricstarttimeprocessor metricstransformprocessor probabilisticsamplerprocessor redactionprocessor remotetapprocessor resourcedetectionprocessor resourceprocessor sattributesprocessor schemaprocessor spanprocessor sumologicprocessor tailsamplingprocessor transformprocessor unrollprocessor xprocessor
+cSpell:ignore: attributesprocessor batchprocessor coralogixprocessor cumulativetodeltaprocessor deltatocumulativeprocessor deltatorateprocessor filterprocessor geoipprocessor groupbyattrsprocessor groupbytraceprocessor intervalprocessor isolationforestprocessor logdedupprocessor logstransformprocessor memorylimiterprocessor metricsgenerationprocessor metricstarttimeprocessor metricstransformprocessor probabilisticsamplerprocessor redactionprocessor remotetapprocessor resourcedetectionprocessor resourceprocessor sattributesprocessor schemaprocessor spanprocessor sumologicprocessor tailsamplingprocessor transformprocessor unrollprocessor xprocessor
 ---
 
 プロセッサーは、パイプラインを通過するテレメトリーデータを変換、フィルタリング、強化します。
@@ -21,7 +21,6 @@ cSpell:ignore: attributesprocessor batchprocessor coralogixprocessor cumulativet
 | {{< component-link name="cumulativetodeltaprocessor" type="processor" repo="contrib" >}}    | contrib, K8s               | -            | beta           | -           |
 | {{< component-link name="deltatocumulativeprocessor" type="processor" repo="contrib" >}}    | contrib, K8s               | -            | alpha          | -           |
 | {{< component-link name="deltatorateprocessor" type="processor" repo="contrib" >}}          | contrib, K8s               | -            | alpha          | -           |
-| {{< component-link name="dnslookupprocessor" type="processor" repo="contrib" >}}            | contrib                    | development  | development    | development |
 | {{< component-link name="filterprocessor" type="processor" repo="contrib" >}}               | contrib, core, K8s         | alpha        | alpha          | alpha       |
 | {{< component-link name="geoipprocessor" type="processor" repo="contrib" >}}                | contrib                    | alpha        | alpha          | alpha       |
 | {{< component-link name="groupbyattrsprocessor" type="processor" repo="contrib" >}}         | contrib, K8s               | beta         | beta           | beta        |
