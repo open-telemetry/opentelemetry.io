@@ -1,14 +1,14 @@
 ---
 title: OBI のエクスポートモードを構成する
 linkTitle: エクスポートモード
-description: OTLP エンドポイントへ直接データをエクスポートするように OBI を構成します
+description: OTLP エンドポイントへ直接データをエクスポートするように OBI を構成する
 weight: 1
 default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
 ---
 
 Direct モードでは、OBI は OpenTelemetry protocol（OTLP）を使用して、メトリクスとトレースをリモートエンドポイントへ直接プッシュします。
 
-OBI は、たとえば **pull** モードでスクレイプできるように、Prometheus HTTP エンドポイントを公開することもできます。
+OBI は、たとえば **プル** モードでスクレイプできるように、Prometheus HTTP エンドポイントを公開することもできます。
 
 Direct モードを使用するには、認証情報を含む構成が必要です。
 OTLP エンドポイントの認証情報は、次の環境変数で設定します。
@@ -52,7 +52,7 @@ otel_traces_export:
 obi -config instrument-config.yml
 ```
 
-または
+あるいは次のように実行します。
 
 ```shell
 OTEL_EBPF_CONFIG_PATH=instrument-config.yml obi
