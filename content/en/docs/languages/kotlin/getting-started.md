@@ -18,7 +18,7 @@ supported platforms and their prerequisites are listed below:
 | Platform   | Prerequisite |
 | ---------- | ------------ |
 | Android    | minSdk >=21  |
-| JVM       | JDK >= 11    |
+| JVM        | JDK >= 11    |
 | iOS        | 16.0         |
 | JavaScript | ES5          |
 
@@ -42,10 +42,10 @@ kotlin.compilerOptions {
 OpenTelemetry Kotlin's API operates in 2 modes:
 
 - Regular mode, which captures telemetry with a Kotlin Multiplatform (KMP)
-   implementation. This is available for all targets.
+  implementation. This is available for all targets.
 - Compatibility mode, which acts as a façade for the
-   [OpenTelemetry Java SDK](https://github.com/open-telemetry/opentelemetry-java).
-   This is available for JVM/Android targets only.
+  [OpenTelemetry Java SDK](https://github.com/open-telemetry/opentelemetry-java).
+  This is available for JVM/Android targets only.
 
 ## Install OpenTelemetry Kotlin
 
@@ -143,9 +143,9 @@ fun example(otel: OpenTelemetry = NoopOpenTelemetry) {
 }
 ```
 
-To emit telemetry, pass a real instance of `OpenTelemetry` as a parameter
-rather than a no-op. If you're a library author, this pattern is very useful as
-it allows your library consumers to opt in to capturing telemetry from your
+To emit telemetry, pass a real instance of `OpenTelemetry` as a parameter rather
+than a no-op. If you're a library author, this pattern is very useful as it
+allows your library consumers to opt in to capturing telemetry from your
 library.
 
 ### Export to an OpenTelemetry Collector
