@@ -1029,6 +1029,7 @@ maintainers:
       - python-approvers
       - semconv-db-approvers
       - semconv-genai-approvers
+      - semconv-genai-maintainers
       - semconv-http-approvers
       - semconv-log-approvers
       - semconv-messaging-approvers
@@ -1586,6 +1587,8 @@ maintainers:
       - java-instrumentation-triagers
       - java-triagers
       - semconv-db-approvers
+      - semconv-genai-approvers
+      - semconv-genai-maintainers
       - semconv-http-approvers
       - semconv-jvm-approvers
       - semconv-log-approvers
@@ -1604,7 +1607,6 @@ maintainers:
       - javascript-contrib-triagers
       - javascript-maintainers
       - javascript-triagers
-      - semconv-genai-approvers
     html_url: https://github.com/trentm
     avatar_url: https://avatars.githubusercontent.com/u/46866?v=4
   - name: tsloughter
@@ -1684,7 +1686,6 @@ maintainers:
       - opentelemetry-python-contrib-maintainers
       - python-approvers
       - python-maintainers
-      - semconv-genai-approvers
     html_url: https://github.com/xrmx
     avatar_url: https://avatars.githubusercontent.com/u/12932?v=4
   - name: XSAM
@@ -1730,11 +1731,6 @@ approvers:
       - sig-security-approvers
     html_url: https://github.com/adrielp
     avatar_url: https://avatars.githubusercontent.com/u/25961386?v=4
-  - name: alexmojaki
-    teams:
-      - semconv-genai-approvers
-    html_url: https://github.com/alexmojaki
-    avatar_url: https://avatars.githubusercontent.com/u/3627481?v=4
   - name: alexvanboxel
     teams:
       - semconv-security-approvers
@@ -1887,11 +1883,6 @@ approvers:
       - semconv-messaging-approvers
     html_url: https://github.com/dpauls
     avatar_url: https://avatars.githubusercontent.com/u/14791351?v=4
-  - name: drewby
-    teams:
-      - semconv-genai-approvers
-    html_url: https://github.com/drewby
-    avatar_url: https://avatars.githubusercontent.com/u/192652?v=4
   - name: DylanRussell
     teams:
       - javascript-contrib-triagers
@@ -1935,11 +1926,6 @@ approvers:
       - erlang-contrib-approvers
     html_url: https://github.com/GregMefford
     avatar_url: https://avatars.githubusercontent.com/u/69467?v=4
-  - name: gyliu513
-    teams:
-      - semconv-genai-approvers
-    html_url: https://github.com/gyliu513
-    avatar_url: https://avatars.githubusercontent.com/u/4461983?v=4
   - name: hannahramadan
     teams:
       - ruby-contrib-approvers
@@ -2059,11 +2045,6 @@ approvers:
       - specs-semconv-approvers
     html_url: https://github.com/kamphaus
     avatar_url: https://avatars.githubusercontent.com/u/8219709?v=4
-  - name: karthikscale3
-    teams:
-      - semconv-genai-approvers
-    html_url: https://github.com/karthikscale3
-    avatar_url: https://avatars.githubusercontent.com/u/105607645?v=4
   - name: keith-decker
     teams:
       - opentelemetry-python-contrib-approvers
@@ -2165,11 +2146,6 @@ approvers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/NameHaibinZhang
     avatar_url: https://avatars.githubusercontent.com/u/30917104?v=4
-  - name: nirga
-    teams:
-      - semconv-genai-approvers
-    html_url: https://github.com/nirga
-    avatar_url: https://avatars.githubusercontent.com/u/4224692?v=4
   - name: nwanduka
     teams:
       - sig-end-user-approvers
@@ -2398,12 +2374,6 @@ approvers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/txabman42
     avatar_url: https://avatars.githubusercontent.com/u/39015378?v=4
-  - name: v0y4g3r
-    teams:
-      - arrow-approvers
-      - arrow-triagers
-    html_url: https://github.com/v0y4g3r
-    avatar_url: https://avatars.githubusercontent.com/u/6406592?v=4
   - name: VihasMakwana
     teams:
       - collector-contrib-approvers
@@ -2717,6 +2687,9 @@ members:
   - name: bai
     html_url: https://github.com/bai
     avatar_url: https://avatars.githubusercontent.com/u/17348?v=4
+  - name: belimawr
+    html_url: https://github.com/belimawr
+    avatar_url: https://avatars.githubusercontent.com/u/333577?v=4
   - name: bg451
     html_url: https://github.com/bg451
     avatar_url: https://avatars.githubusercontent.com/u/1350653?v=4
@@ -2786,6 +2759,9 @@ members:
   - name: DotSpy
     html_url: https://github.com/DotSpy
     avatar_url: https://avatars.githubusercontent.com/u/11577813?v=4
+  - name: drewby
+    html_url: https://github.com/drewby
+    avatar_url: https://avatars.githubusercontent.com/u/192652?v=4
   - name: edsoncelio
     html_url: https://github.com/edsoncelio
     avatar_url: https://avatars.githubusercontent.com/u/5833278?v=4
@@ -2837,6 +2813,9 @@ members:
   - name: gruebel
     html_url: https://github.com/gruebel
     avatar_url: https://avatars.githubusercontent.com/u/33207684?v=4
+  - name: gyliu513
+    html_url: https://github.com/gyliu513
+    avatar_url: https://avatars.githubusercontent.com/u/4461983?v=4
   - name: haddasbronfman
     html_url: https://github.com/haddasbronfman
     avatar_url: https://avatars.githubusercontent.com/u/85441461?v=4
@@ -3176,6 +3155,9 @@ members:
   - name: tydhot
     html_url: https://github.com/tydhot
     avatar_url: https://avatars.githubusercontent.com/u/27889201?v=4
+  - name: v0y4g3r
+    html_url: https://github.com/v0y4g3r
+    avatar_url: https://avatars.githubusercontent.com/u/6406592?v=4
   - name: VenuEmmadi
     html_url: https://github.com/VenuEmmadi
     avatar_url: https://avatars.githubusercontent.com/u/57027311?v=4
