@@ -1,5 +1,6 @@
 ---
 title: Events
+weight: 30
 ---
 
 The OpenTelemetry community participates in and organizes various events
@@ -9,7 +10,7 @@ the project, and connect with the broader observability community.
 
 ## Upcoming Events
 
-{{< community-event-list >}}
+{{% community-events %}}
 
 ## Key Community Events
 
@@ -24,7 +25,7 @@ challenges and successes. These events include:
 - Q&A sessions with the community
 
 Find all SIG End-User virtual events and join the community at
-[community.cncf.io/opentelemetry/](https://community.cncf.io/opentelemetry/).
+[Open Community Groups](https://ocgroups.dev/cncf/group/xkrw4uk).
 
 ### KubeCon + CloudNativeCon
 
