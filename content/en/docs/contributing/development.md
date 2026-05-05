@@ -180,11 +180,58 @@ such as (in alphabetical order):
 - [Gitpod](https://ona.com/docs/ona/configuration/devcontainer/overview)
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
-[clone]:
-  https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+## Tools
+
+### Code-excerpter
+
+Use [code-excerpter][] for code snippets that should stay in sync with source
+files in this repository. Site pages in any locale can contain code excerpts,
+but original content that uses them is authored in English under `content/en`
+and then updated by localization teams to their own locales.
+
+In the English source page, place a file excerpt directive immediately before
+the fenced code block that it updates:
+
+````md
+<?code-excerpt path-base="examples/java/getting-started"?>
+
+<?code-excerpt "src/main/java/otel/DiceApplication.java" from="@SpringBootApplication"?>
+
+```java
+@SpringBootApplication
+public class DiceApplication {
+  public static void main(String[] args) {
+    SpringApplication app = new SpringApplication(DiceApplication.class);
+    app.setBannerMode(Banner.Mode.OFF);
+    app.run(args);
+  }
+}
+```
+````
+
+Use an optional `path-base` directive once near the top of the page when several
+excerpts come from the same directory. For details concerning the `code-excerpt`
+directive syntax, see the [code-excerpter][] readme.
+
+Edit the source file or the directive, **not the fenced code**. Then run the
+following [npm script](/site/build/npm-scripts/):
+
+```sh
+npm run fix:code-excerpts
+```
+
+To check is code-excerpts are up to date, run:
+
+```sh
+npm run check:code-excerpts
+```
+
+[code-excerpter]: https://github.com/chalin/code-excerpter
+
+<!-- prettier-ignore-start -->
+[clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
-[cs-devc]:
-  https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
+[cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io
@@ -194,9 +241,8 @@ such as (in alphabetical order):
 [localhost:8888]: http://localhost:8888
 [netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
-[nodejs-win]:
-  https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
-[nvm]:
-  https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+[nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
+[nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [WSL]: https://learn.microsoft.com/en-us/windows/wsl/install
+<!-- prettier-ignore-end -->
