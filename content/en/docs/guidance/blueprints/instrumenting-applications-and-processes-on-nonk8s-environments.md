@@ -52,9 +52,9 @@ workloads.
 
 Organizations operating in non-Kubernetes environments typically face a distinct
 set of challenges that hinder effective observability. Without built-in
-automation, standardization, and centralized management, these setups find that
-ensuring consistent, high-quality telemetry across a diverse landscape of
-infrastructure and applications can be complex and resource-intensive.
+automation, standardization, and centralized management, these environments
+often find it difficult to ensure consistent, high-quality telemetry across a
+diverse landscape of infrastructure and applications.
 
 ### 1. Fragmented instrumentation approaches
 
@@ -64,9 +64,10 @@ containerized workloads.
 
 This leads to:
 
-- **Inconsistent metadata:** Telemetry signals may lack standard resource
-  attributes such as `service.name`, `host.id`, `host.name`, `container.id`, and
-  `deployment.environment`, making cross-system correlation difficult.
+- **Inconsistent semantic conventions:** Telemetry signals may lack standard
+  resource attributes such as `service.name`, `host.id`, `host.name`,
+  `container.id`, and `deployment.environment`, making cross-system correlation
+  difficult.
 - **Divergent instrumentation behavior:** Different teams may apply different
   defaults for sampling, propagation, resource detection, or export, producing
   uneven telemetry quality.
@@ -120,9 +121,13 @@ quality.
 **Challenges addressed:** 1, 2
 
 Use OpAMP, where supported, to centrally manage OpenTelemetry agents running as
-system services or service containers. Platform teams should own the baseline
-agent distribution, required processors and exporters, security settings, health
-reporting, and default resource detection behavior.
+system services or service containers. Where OpAMP is not supported,
+organizations should use other centralized management mechanisms, such as
+configuration management tools, golden images, or standardized deployment
+artifacts, to maintain consistent agent deployment, configuration, and lifecycle
+management. Platform teams should own the baseline agent distribution, required
+processors and exporters, security settings, health reporting, and default
+resource detection behavior.
 
 At the same time, organizations should explicitly define how
 environment-specific or workload-specific customization is allowed. A practical
@@ -151,15 +156,40 @@ By implementing this guideline, organizations can expect to achieve:
 
 **Challenges addressed:** 1, 3
 
-Deploy one or more OpenTelemetry Collector gateways as central aggregation
-points for telemetry data from hosts and directly managed containers. In
-non-Kubernetes environments, these gateways can be deployed using several
+Deploy one or more OpenTelemetry Collector gateways as aggregation points for
+telemetry data from hosts and directly managed containers. In this context,
+“centralized” does not necessarily mean a single global deployment. Depending on
+organizational structure, network boundaries, isolation requirements, and
+traffic patterns, the gateway layer may be implemented at different levels, such
+as per region, per site, per environment, or per cloud account, while still
+providing centralized policy enforcement within that scope.
+
+In non-Kubernetes environments, these gateways can be deployed using several
 patterns, depending on scale and operational model, including:
 
 - Dedicated gateway VMs or bare metal hosts.
 - A service pool behind a load balancer.
 - Containerized gateway services running on general-purpose compute.
 - Regional or site-local gateways for distributed environments.
+
+```mermaid
+flowchart TB
+    S[Telemetry Sources<br/>Hosts and Containers]
+
+    subgraph G["OpenTelemetry&nbsp;Collector&nbsp;Gateway"]
+        direction LR
+        P1[Dedicated VMs /<br/>Bare Metal Hosts]
+        P2[Service Pool Behind<br/>Load Balancer]
+        P3[Containerized Gateways<br/>on General Compute]
+        P4[Regional / Site-Local<br/>Gateways]
+        P1 ~~~ P2 ~~~ P3 ~~~ P4
+    end
+
+    B[(Observability<br/>Backends)]
+
+    S --> G
+    G --> B
+```
 
 By implementing this guideline, organizations can expect to achieve:
 
@@ -173,12 +203,14 @@ By implementing this guideline, organizations can expect to achieve:
 
 **Challenges addressed:** 1
 
-Define an organization-wide telemetry contract for resource attribution and
+Define an organization-wide telemetry standard for resource attribution and
 ensure it is applied consistently across all workloads. This should not rely
 only on documentation; it should be delivered through reusable building blocks
 such as:
 
 - Pre-baked agent images.
+- Packaged language agents and auto-instrumentation artifacts where applicable.
+- Standardized OpenTelemetry Collector binaries or distributions.
 - Shared libraries or starter packages for SDK-based instrumentation.
 - Standard startup wrappers or environment-variable conventions.
 - Centrally maintained configuration snippets or templates.
@@ -215,20 +247,28 @@ standardized tooling, and centralized management. The implementation steps below
 are written as roadmap items, with checklist-style actions that organizations
 can plan and execute in sequence.
 
-### 1. Define a baseline telemetry contract and layered configuration model
+### 1. Define a baseline telemetry standard and layered configuration model
 
 **Guidelines supported:** 1, 3
 
-Define the minimum required telemetry contract for the organization and document
-which parts of agent and SDK configuration are centrally owned versus locally
-customizable. This is the foundation for consistency at scale.
+Define the minimum required telemetry standard for the organization and document
+which parts of telemetry configuration are centrally owned versus locally
+customizable. This includes the supported configuration for host or service
+agents, language agents where applicable, SDK-based instrumentation, and
+OpenTelemetry Collectors used for local collection or forwarding. Where OpAMP is
+used, it should be aligned with this model so centrally managed agent
+configuration follows the same baseline and approved overlays. This is the
+foundation for consistency at scale.
 
 Checklist:
 
 - Define the mandatory resource attributes and signal conventions that all
   workloads must emit.
-- Define the baseline agent configuration, including exporters, authentication,
-  TLS, health reporting, and default processors.
+- Define the baseline configuration for supported telemetry components,
+  including agents, language agents where applicable, SDKs, and OpenTelemetry
+  Collectors.
+- Standardize exporters, authentication, TLS, health reporting, and default
+  processors according to the role of each component.
 - Define the allowed extension points for environment-specific and
   workload-specific customization.
 - Version all baseline and overlay configurations so they can be rolled out and
@@ -249,12 +289,19 @@ reporting, health monitoring, and controlled rollouts for supported agents.
 
 Checklist:
 
-- Select the supported OpAMP-capable agent distributions.
-- Stand up a central OpAMP server or management endpoint.
-- Register agents and enable health/status reporting.
-- Define rollout rings such as development, staging, and production.
-- Define rollback procedures for failed updates or bad configurations.
-- Monitor management-plane health and agent connectivity.
+- Select the supported OpAMP-capable agent distributions and define which
+  components will be managed centrally.
+- Stand up a central OpAMP server or management endpoint with appropriate
+  authentication, authorization, and transport security.
+- Configure agents or supervisors to enroll with the management service and
+  report their identity, capabilities, health, and effective configuration
+  status.
+- Organize agents into logical groups such as development, staging, production,
+  region, or environment so configuration changes can be rolled out in stages.
+- Define how configuration updates are promoted between rollout groups and how
+  failed changes are detected and reverted.
+- Monitor management-plane health, agent connectivity, update status, and
+  configuration drift to ensure the fleet remains under control.
 
 A common OpAMP architecture uses a central management service to control
 configuration, rollout, and health monitoring for agents running across many
@@ -301,14 +348,18 @@ Documentation:
 
 - [OpAMP Specification](/docs/specs/opamp/)
 - [OpAMP getting started guide](/docs/collector/management/)
-- [OpenTelemetry Collector](/docs/collector/)
+- [OpenTelemetry Collector configuration](/docs/collector/configuration/)
 
 ### 3. Package and deploy standardized agents and SDK bootstrap artifacts
 
 **Guidelines supported:** 1, 3
 
 Use configuration management and image packaging to deliver supported telemetry
-components consistently across hosts and containerized workloads.
+components consistently across hosts and containerized workloads. Prefer
+declarative configuration for SDK-based instrumentation where it is supported.
+Where it is not available, standardize environment variables, startup options,
+or SDK-specific configuration patterns so teams inherit consistent defaults with
+minimal manual setup.
 
 Checklist:
 
@@ -317,14 +368,18 @@ Checklist:
   deployments.
 - Publish shared libraries, starter packages, or bootstrap wrappers for
   supported SDK languages.
-- Standardize environment variable and configuration file conventions across
-  environments.
+- Prefer declarative SDK configuration where supported, and otherwise
+  standardize environment variable, startup, and configuration file conventions
+  across environments.
 - Validate that new workloads inherit the baseline configuration by default.
 
 Documentation:
 
-- [OpenTelemetry Collector](/docs/collector/)
+- [OpenTelemetry Collector configuration](/docs/collector/configuration/)
 - [OpenTelemetry language SDKs and APIs](/docs/languages/)
+- [OpenTelemetry zero-code instrumentation](/docs/zero-code/)
+- [Java zero-code instrumentation](/docs/zero-code/java/)
+- [Java agent configuration](/docs/zero-code/java/agent/configuration/)
 
 ### 4. Deploy an OpenTelemetry Collector gateway layer
 
@@ -346,9 +401,11 @@ Checklist:
 - Validate end-to-end routing to observability backends.
 
 A common pattern in non-Kubernetes environments is to run host-level Collectors
-on individual hosts and forward telemetry to a site-local Collector gateway.
-This allows processing and policy enforcement to happen close to the source
-while still centralizing export to shared observability backends.
+on individual hosts and forward telemetry to a site-local or region-local
+Collector gateway. That gateway layer should be horizontally scalable and highly
+available, using appropriate load-balancing and failover mechanisms for the
+environment, such as cloud native scaling patterns or equivalent HA setups in
+non-cloud infrastructure.
 
 ```mermaid
 flowchart TB
@@ -407,10 +464,17 @@ Checklist:
 - Publish the minimum required resource attribute set for hosts, processes,
   runtimes, operating systems, and containers where applicable.
 - Ensure application telemetry includes at least `host.id` or `host.name`.
-- Enable resource detection and enrichment wherever supported.
-- Validate emitted telemetry against the standard attribute contract.
+- Enable and validate resource detectors wherever supported so host, OS,
+  process, runtime, and container metadata is populated automatically and
+  consistently.
+- Validate emitted telemetry against the defined attribute standard.
 - Add conformance checks to deployment pipelines or post-deployment validation
   steps.
+
+This blueprint focuses on the attribute requirements and workload-level
+practices needed to emit them consistently. More detailed centralized
+enforcement and normalization patterns are out of scope for this section and may
+be covered separately.
 
 Documentation:
 
