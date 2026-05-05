@@ -18,17 +18,17 @@ supported platforms and their prerequisites are listed below:
 | Platform   | Prerequisite |
 | ---------- | ------------ |
 | Android    | minSdk >=21  |
-| JVM.       | JDK >= 11    |
+| JVM       | JDK >= 11    |
 | iOS        | 16.0         |
 | JavaScript | ES5          |
 
 ### API stability
 
-The API is currently subject to breaking change without notice and most symbols
-require an opt-in. You can opt-in on a case-by-case basis by adding
+The API is currently subject to breaking changes without notice and most symbols
+require an opt-in. You can opt in on a case-by-case basis by adding
 `@OptIn(ExperimentalApi::class)` at each call site.
 
-Alternatively, you can opt-in for your whole module or project by altering
+Alternatively, you can opt in for your whole module or project by altering
 Kotlin's compiler arguments:
 
 ```kotlin
@@ -41,15 +41,15 @@ kotlin.compilerOptions {
 
 OpenTelemetry Kotlin's API operates in 2 modes:
 
-1. Regular mode, which captures telemetry with a Kotlin Multiplatform (KMP)
+- Regular mode, which captures telemetry with a Kotlin Multiplatform (KMP)
    implementation. This is available for all targets.
-2. Compatibility mode, which acts as a façade for the
+- Compatibility mode, which acts as a façade for the
    [OpenTelemetry Java SDK](https://github.com/open-telemetry/opentelemetry-java).
    This is available for JVM/Android targets only.
 
 ## Install OpenTelemetry Kotlin
 
-Firstly, choose whether to follow the regular or compatibility mode guide below.
+First, choose whether to follow the regular or compatibility mode guide below.
 
 ### Use regular mode
 
@@ -143,9 +143,9 @@ fun example(otel: OpenTelemetry = NoopOpenTelemetry) {
 }
 ```
 
-To emit telemetry simply pass a real instance of `OpenTelemetry` as a parameter
+To emit telemetry, pass a real instance of `OpenTelemetry` as a parameter
 rather than a no-op. If you're a library author, this pattern is very useful as
-it allows your library consumers to opt-in to capturing telemetry from your
+it allows your library consumers to opt in to capturing telemetry from your
 library.
 
 ### Export to an OpenTelemetry Collector
