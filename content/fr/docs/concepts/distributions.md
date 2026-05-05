@@ -19,8 +19,8 @@ distribution.
 
 ## Qu'est-ce qu'une distribution ? {#what-is-a-distribution}
 
-Une distribution est une version personnalisée d'un composant OpenTelemetry.
-Il s'agit d'une enveloppe (_wrapper_) autour d'un dépôt OpenTelemetry en amont,
+Une distribution est une version personnalisée d'un composant OpenTelemetry. Il
+s'agit d'une enveloppe (_wrapper_) autour d'un dépôt OpenTelemetry en amont,
 avec quelques personnalisations. Les distributions ne sont pas à confondre avec
 des forks.
 
@@ -39,8 +39,8 @@ Les personnalisations d'une distribution peuvent inclure :
 
 Les distributions se répartissent globalement en trois catégories :
 
-- **« Pure » (_Pure_):** Ces distributions offrent les mêmes fonctionnalités
-  que la version en amont et sont compatibles à 100 %. Les personnalisations
+- **« Pure » (_Pure_):** Ces distributions offrent les mêmes fonctionnalités que
+  la version en amont et sont compatibles à 100 %. Les personnalisations
   améliorent généralement la facilité d'utilisation ou le packaging. Ces
   personnalisations peuvent être spécifiques à un backend, un fournisseur ou un
   utilisateur final.
@@ -72,8 +72,8 @@ pour tout le monde et devraient donc être inclus dans les implémentations de
 référence :
 
 - Vos scripts de « facilité d'utilisation » peuvent-ils être généralisés ?
-- Vos modifications des paramètres par défaut seraient-elles la meilleure
-  option pour tout le monde ?
+- Vos modifications des paramètres par défaut seraient-elles la meilleure option
+  pour tout le monde ?
 - Vos options de packaging supplémentaires sont-elles vraiment spécifiques ?
 - Votre couverture de tests, de performance et de sécurité pourrait-elle
   fonctionner avec l'implémentation de référence ?
@@ -107,8 +107,8 @@ le nom, pour votre distribution, assurez-vous d'être en conformité avec les
 Contributrices][guidelines].
 
 Le projet OpenTelemetry ne certifie pas les distributions pour le moment. À
-l'avenir, OpenTelemetry pourra certifier des distributions et des partenaires,
-à l'image du projet Kubernetes. Lors de l'évaluation d'une distribution,
+l'avenir, OpenTelemetry pourra certifier des distributions et des partenaires, à
+l'image du projet Kubernetes. Lors de l'évaluation d'une distribution,
 assurez-vous que son utilisation n'entraîne pas de dépendance envers un
 fournisseur (_vendor lock-in_).
 
