@@ -1,7 +1,6 @@
 ---
 title:
-  'Security in OpenTelemetry for Legacy and Industrial Environments: What
-  Changes'
+  'Applying OpenTelemetry Security Practices in Legacy Environments'
 linkTitle: Security for Legacy Environments
 date: 2026-05-12
 author: >-
