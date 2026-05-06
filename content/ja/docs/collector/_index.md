@@ -8,13 +8,32 @@ default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 drifted_from_default: true
 ---
 
-![Jaeger、OTLP、Prometheusを統合したOpenTelemetryコレクターのダイアグラム](img/otel-collector.svg)
-
 ## はじめに {#introduction}
 
 OpenTelemetryコレクターは、テレメトリーデータの受信、処理、エクスポート方法について、ベンダーにとらわれない実装を提供します。
 複数のエージェント／コレクターの実行、操作、メンテナンスの必要性を取り除きます。
 これはスケーラビリティを向上させ、1つ以上のオープンソースまたは商用バックエンドに送信するオープンソースのオブザーバビリティデータフォーマット（Jaeger、Prometheus、Fluent Bitなど）をサポートします。
+
+```mermaid
+flowchart TD
+  subgraph Option1 ["オプション1: 直接エクスポート (開発/シンプル)"]
+    direction LR
+    App1(["アプリケーション"]) --> B1[("バックエンド")]
+  end
+
+  subgraph Option2 ["オプション2: コレクター経由 (本番環境推奨)"]
+    direction LR
+    App2(["アプリケーション"]) --> Rec["受信"]
+
+    subgraph Collector ["OpenTelemetry Collector"]
+      direction LR
+      Rec --> Proc["処理"]
+      Proc --> Exp["エクスポート"]
+    end
+
+    Exp --> B2[("バックエンド")]
+  end
+```
 
 ## 目的 {#objectives}
 
