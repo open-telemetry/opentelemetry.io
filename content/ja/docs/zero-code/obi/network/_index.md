@@ -3,8 +3,8 @@ title: ネットワークメトリクス
 linkTitle: ネットワーク
 description: OBI をポイントツーポイントのネットワークメトリクスの観察用に設定する
 weight: 8
-cSpell:ignore: replicaset statefulset
 default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
+cSpell:ignore: replicaset statefulset
 ---
 
 OpenTelemetry eBPF 計装は、異なるエンドポイント間のネットワークメトリクスを提供するように設定できます。
