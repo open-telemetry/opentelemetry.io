@@ -9,6 +9,7 @@ default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
 # prettier-ignore
 cSpell:ignore: AsterixDB couchbase genai gonic jackc libcudart memcached pgxpool pyserver segmentio spanmetrics
 ---
+
 <!-- markdownlint-disable no-emphasis-as-heading -->
 
 OBI は OpenTelemetry 形式のメトリクスとトレースを OTLP エンドポイントにエクスポートできます。
