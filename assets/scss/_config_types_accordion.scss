@@ -1,0 +1,133 @@
+// Configuration Types Accordion Styles
+
+// Extend shared accordion base styles
+.config-types-accordion {
+  @extend %config-accordion-base;
+
+  // Type-specific overrides and additions
+  .accordion-header {
+    .accordion-button {
+      &:not(.collapsed) {
+        .type-name {
+          color: white;
+
+          .badge {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            color: var(--bs-warning) !important;
+          }
+        }
+
+        .property-summary {
+          color: rgba(255, 255, 255, 0.8) !important;
+        }
+      }
+
+      .type-name {
+        display: flex;
+        align-items: center;
+      }
+
+      .property-summary {
+        font-size: 0.875rem;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .type-anchor-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    text-decoration: none;
+    color: var(--bs-secondary);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    margin-left: 0.5rem;
+
+    &:hover {
+      text-decoration: none;
+      color: var(--bs-primary);
+    }
+
+    // Show on parent hover or focus
+    .accordion-body:hover &,
+    .accordion-body:focus-within & {
+      opacity: 1;
+    }
+  }
+
+  .type-table-container {
+    overflow-x: auto;
+    margin-bottom: 1rem;
+
+    table {
+      width: 100%;
+      margin-bottom: 0;
+    }
+  }
+
+  .type-constraints {
+    padding: 1rem;
+    background: var(--config-card-bg);
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--config-accordion-border-radius);
+    font-size: 0.875rem;
+  }
+}
+
+// Hide the original markdown content (keep in DOM for SEO)
+.config-types-content.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Dark mode specific overrides
+@media (prefers-color-scheme: dark) {
+  .config-types-accordion {
+    @extend %config-accordion-dark;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .config-types-accordion {
+    @extend %config-accordion-mobile;
+
+    .accordion-button {
+      .property-summary {
+        margin-left: 0.5rem;
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+// Print styles
+@media print {
+  .config-types-accordion {
+    @extend %config-accordion-print;
+  }
+
+  .config-types-content.visually-hidden {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .config-types-accordion {
+    @extend %config-accordion-reduced-motion;
+  }
+}
