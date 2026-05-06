@@ -5,9 +5,9 @@ description:
   OBI コンポーネントが Prometheus 形式と OpenTelemetry 形式のメトリクスおよび
   OpenTelemetry 形式のトレースをエクスポートするよう設定する
 weight: 10
+default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
 # prettier-ignore
 cSpell:ignore: AsterixDB couchbase genai gonic jackc libcudart memcached pgxpool pyserver segmentio spanmetrics
-default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
 ---
 
 OBI は OpenTelemetry 形式のメトリクスとトレースを OTLP エンドポイントにエクスポートできます。
