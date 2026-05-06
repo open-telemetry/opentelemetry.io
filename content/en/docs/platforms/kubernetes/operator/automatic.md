@@ -5,7 +5,7 @@ weight: 11
 description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 # prettier-ignore
-cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA
+cSpell:ignore: Dockerfiles GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA replicaset statefulset
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
@@ -29,7 +29,7 @@ chart, there is an option to generate a self-signed certificate instead.
 
 > If you want to use Go auto-instrumentation, you need to enable the feature
 > gate. See
-> [Controlling Instrumentation Capabilities](https://github.com/open-telemetry/opentelemetry-operator#controlling-instrumentation-capabilities)
+> [Controlling Instrumentation Capabilities](#controlling-instrumentation-capabilities)
 > for details.
 
 ## Create an OpenTelemetry Collector (Optional)
@@ -172,6 +172,23 @@ spec:
         value: false
 ```
 
+.NET auto-instrumentation also supports a runtime annotation to set the .NET
+[Runtime Identifier (RID)](https://learn.microsoft.com/en-us/dotnet/core/rid-catalog).
+Currently `linux-x64` (default) and `linux-musl-x64` are supported:
+
+```bash
+instrumentation.opentelemetry.io/inject-dotnet: "true"
+instrumentation.opentelemetry.io/otel-dotnet-auto-runtime: "linux-x64"   # default, can be omitted
+instrumentation.opentelemetry.io/otel-dotnet-auto-runtime: "linux-musl-x64"  # for musl-based images
+```
+
+> **Note:** By default, the operator sets
+> `OTEL_DOTNET_AUTO_TRACES_ENABLED_INSTRUMENTATIONS` to all available
+> instrumentations supported by the consumed
+> `opentelemetry-dotnet-instrumentation` release (e.g.
+> `AspNet,HttpClient,SqlClient`). This value can be overridden by configuring
+> the environment variable explicitly.
+
 #### Learn more {#dotnet-learn-more}
 
 For more details, see [.NET Auto Instrumentation docs](/docs/zero-code/dotnet/).
@@ -224,8 +241,7 @@ the `otlpreceiver` of the Collector created in the previous step.
 
 #### Configuration options {#deno-configuration-options}
 
-By default, the Deno OpenTelemetry integration exports `console.log()` output
-as\
+By default, the Deno OpenTelemetry integration exports `console.log()` output as
 [logs](/docs/concepts/signals/logs/), while still printing the logs to stdout /
 stderr. You can configure these alternative behaviors:
 
@@ -459,10 +475,10 @@ in the previous step.
 
 #### Auto-instrumenting Python logs
 
-By default, Python logs auto-instrumentation is enabled by the
-`opentelemetry-instrumentation-logging` package. If you would like to disable
-this feature, you must to set `OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION` environment
-variable as follows:
+By default, Python logs auto-instrumentation is disabled. If you would like to
+enable this feature, you must to set
+`OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` environment variable as
+follows:
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -479,13 +495,12 @@ spec:
     - baggage
   python:
     env:
-      - name: OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION
-        value: 'false'
+      - name: OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED
+        value: 'true'
 ```
 
-> Before operator v0.149.0 this was handled by
-> `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` that was set to `false` by
-> default
+> As of operator v0.111.0 setting `OTEL_LOGS_EXPORTER` to `otlp` is not required
+> anymore.
 
 #### Excluding auto-instrumentation {#python-excluding-auto-instrumentation}
 
@@ -539,7 +554,7 @@ your deployment.
 ## Add annotations to existing deployments
 
 The final step is to opt in your services to automatic instrumentation. This is
-done by updating your service’s `spec.template.metadata.annotations` to include
+done by updating your service's `spec.template.metadata.annotations` to include
 a language-specific annotation:
 
 - .NET: `instrumentation.opentelemetry.io/inject-dotnet: "true"`
@@ -572,6 +587,7 @@ via a sidecar. When opted in, the Operator will inject this sidecar into your
 pod. In addition to the `instrumentation.opentelemetry.io/inject-go` annotation
 mentioned above, you must also supply a value for the
 [`OTEL_GO_AUTO_TARGET_EXE` environment variable](https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/main/docs/how-it-works.md).
+
 You can set this environment variable via the
 `instrumentation.opentelemetry.io/otel-go-auto-target-exe` annotation.
 
@@ -607,6 +623,409 @@ instrumentation.opentelemetry.io/otel-python-platform: "glibc"
 # for Linux musl based images
 instrumentation.opentelemetry.io/otel-python-platform: "musl"
 ```
+
+## Multi-container pods
+
+### Single instrumentation
+
+If nothing else is specified, instrumentation is performed on the first
+container available in the pod spec (from `.spec.containers`, not init
+containers). In some cases — for example when an Istio sidecar is injected — it
+becomes necessary to specify on which container(s) the injection must be
+performed.
+
+Use the `instrumentation.opentelemetry.io/container-names` annotation to
+indicate one or more container names (from `.spec.containers.name` or
+`.spec.initContainers.name`) on which the injection must be made:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment-with-multiple-containers
+spec:
+  selector:
+    matchLabels:
+      app: my-pod-with-multiple-containers
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-pod-with-multiple-containers
+      annotations:
+        instrumentation.opentelemetry.io/inject-java: 'true'
+        instrumentation.opentelemetry.io/container-names: 'myapp,myapp2'
+    spec:
+      containers:
+        - name: myapp
+          image: myImage1
+        - name: myapp2
+          image: myImage2
+        - name: myapp3
+          image: myImage3
+```
+
+In the above case, `myapp` and `myapp2` containers will be instrumented;
+`myapp3` will not.
+
+> **NOTE**: Go auto-instrumentation **does not** support multi-container pods.
+> When injecting Go auto-instrumentation the first container should be the only
+> container you want instrumented.
+
+### Instrumenting init containers
+
+Init containers can be instrumented by including their names in the
+`container-names` annotation. When an init container is targeted for
+instrumentation, the operator automatically inserts the instrumentation init
+container **before** the target init container in the pod's init container
+sequence. This ensures the instrumentation agent files are available when the
+target init container runs.
+
+Supported instrumentations for init containers: Java, Python, Node.js, .NET, and
+SDK-only injection.
+
+Not supported for init containers: Go (does not support multi-container pods),
+Apache HTTPD, and NGINX.
+
+> **Note**: Kubernetes guarantees that container names are unique across both
+> the `initContainers` and `containers` lists within a pod spec, allowing the
+> operator to unambiguously identify whether a container name refers to an init
+> container or a regular container.
+
+Example with both init container and regular container instrumentation:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment-with-init-container
+spec:
+  selector:
+    matchLabels:
+      app: my-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-app
+      annotations:
+        instrumentation.opentelemetry.io/inject-python: 'true'
+        instrumentation.opentelemetry.io/container-names: 'my-init-job,myapp'
+    spec:
+      initContainers:
+        - name: my-init-job
+          image: my-python-init-image
+      containers:
+        - name: myapp
+          image: my-python-app-image
+```
+
+In this example, both `my-init-job` (an init container) and `myapp` (a regular
+container) will be instrumented with Python auto-instrumentation.
+
+### Multiple instrumentations
+
+Multi-instrumentation works only when the `enable-multi-instrumentation` feature
+flag is set to `true`. When enabled, use language-specific container name
+annotations to specify which containers should receive which instrumentation.
+
+If language instrumentation specific container names are not specified,
+instrumentation is performed on the first regular container available in the pod
+spec (only if single instrumentation injection is configured).
+
+In some cases, containers in the same pod use different technologies. Use the
+language-specific container name annotations to indicate one or more container
+names (from `.spec.containers.name` or `.spec.initContainers.name`) on which the
+injection must be made:
+
+| Language     | Annotation                                                      |
+| ------------ | --------------------------------------------------------------- |
+| Java         | `instrumentation.opentelemetry.io/java-container-names`         |
+| Node.js      | `instrumentation.opentelemetry.io/nodejs-container-names`       |
+| Python       | `instrumentation.opentelemetry.io/python-container-names`       |
+| .NET         | `instrumentation.opentelemetry.io/dotnet-container-names`       |
+| Go           | `instrumentation.opentelemetry.io/go-container-names`           |
+| Apache HTTPD | `instrumentation.opentelemetry.io/apache-httpd-container-names` |
+| NGINX        | `instrumentation.opentelemetry.io/nginx-container-names`        |
+| SDK only     | `instrumentation.opentelemetry.io/sdk-container-names`          |
+
+Example with Java and Python running in different containers:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment-with-multi-containers-multi-instrumentations
+spec:
+  selector:
+    matchLabels:
+      app: my-pod-with-multi-containers-multi-instrumentations
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-pod-with-multi-containers-multi-instrumentations
+      annotations:
+        instrumentation.opentelemetry.io/inject-java: 'true'
+        instrumentation.opentelemetry.io/java-container-names: 'myapp,myapp2'
+        instrumentation.opentelemetry.io/inject-python: 'true'
+        instrumentation.opentelemetry.io/python-container-names: 'myapp3'
+    spec:
+      containers:
+        - name: myapp
+          image: myImage1
+        - name: myapp2
+          image: myImage2
+        - name: myapp3
+          image: myImage3
+```
+
+In the above case, `myapp` and `myapp2` will be instrumented with Java and
+`myapp3` with Python instrumentation.
+
+> **NOTE**: Go auto-instrumentation **does not** support multi-container pods.
+> **NOTE**: A single container cannot be instrumented with multiple language
+> instrumentations. **NOTE**: The
+> `instrumentation.opentelemetry.io/container-names` annotation is not used for
+> this feature.
+
+## Using customized or vendor instrumentation
+
+By default, the operator uses upstream auto-instrumentation libraries. Custom
+auto-instrumentation images can be configured by overriding the `image` fields
+in the `Instrumentation` CR:
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: my-instrumentation
+spec:
+  java:
+    image: your-customized-auto-instrumentation-image:java
+  nodejs:
+    image: your-customized-auto-instrumentation-image:nodejs
+  python:
+    image: your-customized-auto-instrumentation-image:python
+  dotnet:
+    image: your-customized-auto-instrumentation-image:dotnet
+  go:
+    image: your-customized-auto-instrumentation-image:go
+  apacheHttpd:
+    image: your-customized-auto-instrumentation-image:apache-httpd
+  nginx:
+    image: your-customized-auto-instrumentation-image:nginx
+```
+
+The Dockerfiles for auto-instrumentation can be found in the
+[autoinstrumentation directory](https://github.com/open-telemetry/opentelemetry-operator/tree/main/autoinstrumentation).
+Follow the instructions in the Dockerfiles on how to build a custom container
+image.
+
+## Using Apache HTTPD auto-instrumentation
+
+For Apache HTTPD auto-instrumentation, the operator assumes HTTPD version 2.4
+and configuration directory `/usr/local/apache2/conf` by default (as used in the
+official `httpd` image). If you need version 2.2, a different config directory,
+or custom agent attributes, use the following example:
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: my-instrumentation
+spec:
+  apacheHttpd:
+    image: your-customized-auto-instrumentation-image:apache-httpd
+    version: '2.2'
+    configPath: /your-custom-config-path
+    attrs:
+      - name: ApacheModuleOtelMaxQueueSize
+        value: '4096'
+```
+
+A full list of available attributes can be found at
+[otel-webserver-module](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module).
+
+## Using NGINX auto-instrumentation
+
+For NGINX auto-instrumentation, NGINX versions 1.22.0, 1.23.0, and 1.23.1 are
+supported. The NGINX configuration file is expected to be
+`/etc/nginx/nginx.conf` by default. Instrumentation also expects a `conf.d`
+directory in the same directory as the configuration file, with an
+`include <config-file-dir-path>/conf.d/*.conf;` directive in the `http { ... }`
+section. You can also adjust OpenTelemetry SDK attributes:
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: my-instrumentation
+spec:
+  nginx:
+    image: your-customized-auto-instrumentation-image:nginx
+    configFile: /my/custom-dir/custom-nginx.conf
+    attrs:
+      - name: NginxModuleOtelMaxQueueSize
+        value: '4096'
+```
+
+A full list of available attributes can be found at
+[otel-webserver-module](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module).
+
+## Inject OpenTelemetry SDK environment variables only
+
+You can configure the OpenTelemetry SDK for applications that cannot currently
+be auto-instrumented by using `inject-sdk` in place of `inject-python` or
+`inject-java`. This will inject environment variables like
+`OTEL_RESOURCE_ATTRIBUTES`, `OTEL_TRACES_SAMPLER`, and
+`OTEL_EXPORTER_OTLP_ENDPOINT` that you configure in the `Instrumentation`
+resource, but will not inject the SDK itself.
+
+```bash
+instrumentation.opentelemetry.io/inject-sdk: "true"
+```
+
+## Controlling Instrumentation Capabilities
+
+The operator allows specifying, via feature flags, which languages the
+`Instrumentation` resource may instrument. Languages enabled by default only
+need their gate supplied when disabling. Language support can be disabled by
+passing the flag with a value of `false`.
+
+| Language     | Gate                                  | Default Value |
+| ------------ | ------------------------------------- | ------------- |
+| Java         | `enable-java-instrumentation`         | `true`        |
+| Node.js      | `enable-nodejs-instrumentation`       | `true`        |
+| Python       | `enable-python-instrumentation`       | `true`        |
+| .NET         | `enable-dotnet-instrumentation`       | `true`        |
+| Apache HTTPD | `enable-apache-httpd-instrumentation` | `true`        |
+| Go           | `enable-go-instrumentation`           | `false`       |
+| NGINX        | `enable-nginx-instrumentation`        | `false`       |
+
+Multi-instrumentation (multiple languages in the same pod) can be enabled with
+the `enable-multi-instrumentation` flag, which defaults to `false`. For more
+information about multi-instrumentation feature capabilities, see
+[Multi-container pods with multiple instrumentations](#multiple-instrumentations).
+
+## Configure resource attributes
+
+The OpenTelemetry Operator can automatically set resource attributes as defined
+in the
+[OpenTelemetry Semantic Conventions](/docs/specs/semconv/non-normative/k8s-attributes/).
+
+### Configure resource attributes with annotations
+
+Use the `resource.opentelemetry.io/` annotation prefix to add resource
+attributes to data produced by OpenTelemetry instrumentation:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod
+  annotations:
+    resource.opentelemetry.io/service.name: 'my-service'
+    resource.opentelemetry.io/service.version: '1.0.0'
+    resource.opentelemetry.io/deployment.environment.name: 'production'
+spec:
+  containers:
+    - name: main-container
+      image: your-image:tag
+```
+
+### Configure resource attributes with labels
+
+You can also use common Kubernetes labels to set resource attributes (first
+entry wins). The following labels are supported:
+
+- `app.kubernetes.io/instance` → `service.name`
+- `app.kubernetes.io/name` → `service.name`
+- `app.kubernetes.io/version` → `service.version`
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod
+  labels:
+    app.kubernetes.io/name: 'my-service'
+    app.kubernetes.io/version: '1.0.0'
+    app.kubernetes.io/part-of: 'shop'
+spec:
+  containers:
+    - name: main-container
+      image: your-image:tag
+```
+
+This requires explicit opt-in via the `Instrumentation` CR:
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: my-instrumentation
+spec:
+  defaults:
+    useLabelsForResourceAttributes: true
+```
+
+### Priority for setting resource attributes
+
+The priority for setting resource attributes is as follows (first found wins):
+
+1. `OTEL_RESOURCE_ATTRIBUTES` and `OTEL_SERVICE_NAME` environment variables
+2. Annotations with the `resource.opentelemetry.io/` prefix
+3. Labels (e.g. `app.kubernetes.io/name`) when
+   `defaults.useLabelsForResourceAttributes=true`
+4. Resource attributes calculated from the pod's metadata (e.g. `k8s.pod.name`)
+5. Resource attributes set in the `Instrumentation` CR under
+   `spec.resource.resourceAttributes`
+
+This priority is applied per attribute individually, so it is possible to set
+some attributes via annotations and others via labels.
+
+### How resource attributes are calculated from pod metadata
+
+#### How `service.name` is calculated
+
+The first value found in this order is used:
+
+1. `pod.annotation[resource.opentelemetry.io/service.name]`
+2. `pod.label[app.kubernetes.io/name]` (if
+   `useLabelsForResourceAttributes=true`)
+3. `k8s.deployment.name`
+4. `k8s.replicaset.name`
+5. `k8s.statefulset.name`
+6. `k8s.daemonset.name`
+7. `k8s.cronjob.name`
+8. `k8s.job.name`
+9. `k8s.pod.name`
+10. `k8s.container.name`
+
+#### How `service.version` is calculated
+
+The first value found in this order is used:
+
+1. `pod.annotation[resource.opentelemetry.io/service.version]`
+2. `pod.label[app.kubernetes.io/version]` (if
+   `useLabelsForResourceAttributes=true`)
+3. Container Docker image tag (only if the tag does not contain a `/`)
+
+#### How `service.instance.id` is calculated
+
+The first value found in this order is used:
+
+1. `pod.annotation[resource.opentelemetry.io/service.instance.id]`
+2. Concatenation of `k8s.namespace.name`, `k8s.pod.name`, and
+   `k8s.container.name` joined by `.`
+
+#### How `service.namespace` is calculated
+
+The first value found in this order is used:
+
+1. `pod.annotation[resource.opentelemetry.io/service.namespace]`
+2. `k8s.namespace.name`
 
 ## Troubleshooting
 
@@ -682,7 +1101,7 @@ kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manage
 ### Were the resources deployed in the right order?
 
 Order matters! The `Instrumentation` resource needs to be deployed before
-deploying the application, otherwise the auto-instrumentation won’t work.
+deploying the application, otherwise the auto-instrumentation won't work.
 
 Recall the auto-instrumentation annotation:
 
@@ -692,7 +1111,7 @@ annotations:
 ```
 
 When the pod starts up, the annotation above tells the OTel Operator to look for
-an `Instrumentation` object in the pod’s namespace. It also tells the Operator
+an `Instrumentation` object in the pod's namespace. It also tells the Operator
 to inject Python auto-instrumentation into the pod.
 
 It adds an
@@ -700,8 +1119,8 @@ It adds an
 to the application's pod, called `opentelemetry-auto-instrumentation`, which is
 then used to inject the auto-instrumentation into the app container.
 
-If the `Instrumentation` resource isn’t present by the time the application is
-deployed, however, the init-container can’t be created. Therefore, if the
+If the `Instrumentation` resource isn't present by the time the application is
+deployed, however, the init-container can't be created. Therefore, if the
 application is deployed _before_ deploying the `Instrumentation` resource, the
 auto-instrumentation will fail.
 
@@ -723,11 +1142,11 @@ If the output is missing `Created` and/or `Started` entries for
 `opentelemetry-auto-instrumentation`, then it means that there is an issue with
 your auto-instrumentation. This can be the result of any of the following:
 
-- The `Instrumentation` resource wasn’t installed (or wasn’t installed
+- The `Instrumentation` resource wasn't installed (or wasn't installed
   properly).
 - The `Instrumentation` resource was installed _after_ the application was
   deployed.
-- There’s an error in the auto-instrumentation annotation, or the annotation in
+- There's an error in the auto-instrumentation annotation, or the annotation in
   the wrong spot — see #4 below.
 
 Be sure to check the output of `kubectl get events` for any errors, as these
@@ -751,7 +1170,7 @@ Here are a few things to check for:
   defining a `Deployment`, annotations can be added in one of two locations:
   `spec.metadata.annotations`, and `spec.template.metadata.annotations`. The
   auto-instrumentation annotation needs to be added to
-  `spec.template.metadata.annotations`, otherwise it won’t work.
+  `spec.template.metadata.annotations`, otherwise it won't work.
 
 ### Was the auto-instrumentation endpoint configured correctly?
 
@@ -778,5 +1197,5 @@ Here, the Collector endpoint is set to
 `demo-collector` is the name of the OTel Collector Kubernetes `Service`. In the
 above example, the Collector is running in a different namespace from the
 application, which means that `opentelemetry.svc.cluster.local` must be appended
-to the Collector’s service name, where `opentelemetry` is the namespace in which
+to the Collector's service name, where `opentelemetry` is the namespace in which
 the Collector resides.
