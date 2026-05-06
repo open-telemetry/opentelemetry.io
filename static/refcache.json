@@ -15615,6 +15615,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:54:58.204333257Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions-genai": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:21.893156846Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions-java": {
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:08:13.74748075Z"
@@ -18475,6 +18479,30 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:09:28.230833509Z"
   },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#configmap": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:32.225746767Z"
+  },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#downwardapi": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:35.04659621Z"
+  },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#emptydir": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:37.309504188Z"
+  },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#local": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:40.147244535Z"
+  },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#persistentvolumeclaim": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:43.452172875Z"
+  },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#secret": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:48.186954937Z"
+  },
   "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:55:09.517693588Z"
@@ -18631,9 +18659,65 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:58:07.328302926Z"
   },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#containerstate-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:18.441183571Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#containerstateterminated-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:15.733335684Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#containerstatewaiting-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:12.850393399Z"
+  },
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#containerstatus-v1-core": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:58:10.201481871Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#cronjobstatus-v1-batch": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:10:34.37527452Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#daemonsetstatus-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:10:27.71325327Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#deploymentspec-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:55.018362312Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#deploymentstatus-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:57.792194858Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#horizontalpodautoscalerspec-v2-autoscaling": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:10:21.740534278Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#horizontalpodautoscalerstatus-v2-autoscaling": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:10:18.038353786Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#jobspec-v1-batch": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:10:32.370825334Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#jobstatus-v1-batch": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:10:29.883056877Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#metrictarget-v2-autoscaling": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:10:24.21687702Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#namespacestatus-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:21.852825764Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#nodecondition-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:23.680850413Z"
   },
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#podspec-v1-core": {
     "StatusCode": 206,
@@ -18643,9 +18727,41 @@
     "StatusCode": 200,
     "LastSeen": "2026-04-30T10:30:12.345Z"
   },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#replicasetspec-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:10:00.23097415Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#replicasetstatus-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:10:02.858706328Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#replicationcontrollerspec-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:10:05.475878554Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#replicationcontrollerstatus-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:10:08.982947998Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#resourcequotastatus-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:26.530612724Z"
+  },
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#resourcerequirements-v1-core": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:58:03.577660899Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#statefulsetspec-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:10:14.542021184Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#statefulsetstatus-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:10:16.401755288Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#storageclass-v1-storage-k8s-io": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:14.059013445Z"
   },
   "https://kubernetes.io/docs/reference/kubectl/": {
     "StatusCode": 206,
@@ -18698,6 +18814,10 @@
   "https://kubernetes.io/docs/reference/networking/virtual-ips/#traffic-distribution": {
     "StatusCode": 206,
     "LastSeen": "2026-05-03T10:00:13.240283733Z"
+  },
+  "https://kubernetes.io/docs/reference/node/node-status/#condition": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T11:09:26.17013492Z"
   },
   "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/": {
     "StatusCode": 206,
