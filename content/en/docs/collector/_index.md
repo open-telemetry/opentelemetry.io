@@ -1,6 +1,6 @@
 ---
 title: Collector
-description: Vendor-agnostic way to receive, process and export telemetry data.
+description: A vendor-neutral service for receiving, processing, and exporting telemetry
 aliases: [collector/about]
 sidebar_root_for: children
 cascade:
@@ -8,8 +8,7 @@ cascade:
 weight: 270
 ---
 
-OpenTelemetry gives you access to the OpenTelemetry Collector,
-an open source central hub for all of your telemetry data.
+The OpenTelemetry Collector is a core component of the OpenTelemetry ecosystem, designed to unify how you collect, process, and export telemetry. It supports multiple deployment models and integrates with a wide range of open source and commercial backends. 
 
-For information about Collector distributions and releases, including the
-[latest release][], see [Distributions](distributions/).
+See the [`opentelemetry-collector-releases`](https://github.com/open-telemetry/opentelemetry-collector-releases) repository for Collector releases, including the
+[latest release](https://github.com/open-telemetry/opentelemetry-collector-releases/releases/latest), .
