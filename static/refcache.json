@@ -5147,6 +5147,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:23:03.747853485Z"
   },
+  "https://github.com/dash0hq/dash0-examples/tree/main/istio": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-07T08:31:03.044157+01:00"
+  },
   "https://github.com/dash0hq/otelbin": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T10:02:31.34806814Z"
@@ -7470,6 +7474,10 @@
   "https://github.com/open-telemetry/community/issues/3312": {
     "StatusCode": 206,
     "LastSeen": "2026-05-03T10:03:41.863962291Z"
+  },
+  "https://github.com/open-telemetry/community/issues/3247": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-07T08:31:02.16976+01:00"
   },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
@@ -18215,6 +18223,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-05-02T10:03:59.003Z"
   },
+  "https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-EnvoyOpenTelemetryLogProvider-LogFormat": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-15T08:01:21.341137513Z"
+  },
   "https://istio.io/latest/docs/reference/config/security/peer_authentication/": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T10:01:13.304302213Z"
@@ -18394,6 +18406,10 @@
   "https://kubernetes.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-04-30T10:20:55.60416482Z"
+  },
+  "https://kubernetes.io/blog/2026/01/29/ingress-nginx-statement/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-07T08:31:01.091597+01:00"
   },
   "https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/": {
     "StatusCode": 206,
