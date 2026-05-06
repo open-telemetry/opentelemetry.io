@@ -11,9 +11,9 @@ default_lang_commit: b6536b5ba70214905f981c8854421f62d5082ece
 
 OpenTelemetryは、OpenTracingとOpenCensusの統合によって誕生しました。
 当初から、OpenTelemetryは[OpenTracingとOpenCensusの次のメジャーバージョン][to be the next major version of both OpenTracing and OpenCensus]と位置づけられていました。
-そのため、OpenTelemetryプロジェクトの[主要な目標][key goals]の1つは、両方のプロジェクトとの後方互換性を提供し、既存ユーザーの移行ストーリーを示すことです。
+そのため、OpenTelemetryプロジェクトの[主要な目標][key goals]の1つは、両方のプロジェクトとの後方互換性を提供し、既存ユーザーに移行の道筋を示すことです。
 
-これらのプロジェクトから移行する場合は、[OpenTracing](opentracing/)と[OpenCensus](opencensus/)の移行ガイドに従ってください。
+これらのプロジェクトから移行する場合は、[OpenTracing](opentracing/)と[OpenCensus](opencensus/)の移行ガイドをご覧ください。
 
 ## Jaegerクライアント {#jaeger-client}
 
