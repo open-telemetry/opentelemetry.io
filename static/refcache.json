@@ -3859,6 +3859,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:15:20.932025271Z"
   },
+  "https://github.com/JPeer264": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T04:53:31.512943019Z"
+  },
   "https://github.com/JacksonWeber": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:23:40.956704906Z"
@@ -13399,6 +13403,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-29T10:25:48.082472352Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-operator/tree/main/autoinstrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-21T19:08:16.485115352Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator": {
     "StatusCode": 206,
     "LastSeen": "2026-04-30T10:21:25.308415742Z"
@@ -16354,6 +16362,10 @@
   "https://github.com/oshi/oshi/": {
     "StatusCode": 206,
     "LastSeen": "2026-05-05T10:16:17.591105325Z"
+  },
+  "https://github.com/osullivandonal": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T04:53:25.003668034Z"
   },
   "https://github.com/otterize": {
     "StatusCode": 206,
