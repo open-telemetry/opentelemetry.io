@@ -1,6 +1,7 @@
 ---
 title: コントリビューション
 aliases: [/docs/contribution-guidelines]
+sidebar_root_for: self
 weight: 980
 default_lang_commit: ae2a3f327e0360c11a97bdf3e2704bd997924645
 cascade:
