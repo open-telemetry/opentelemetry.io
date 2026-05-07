@@ -2,7 +2,7 @@
 title: Getting Started
 weight: 10
 # prettier-ignore
-cSpell:ignore: eprintln println rolldice tokio tracing appender otel SdkTracerProvider SdkMeterProvider SdkLoggerProvider MetricExporter LogExporter SpanExporter OnceLock
+cSpell:ignore: eprintln println rolldice tokio tracing appender SdkTracerProvider SdkMeterProvider SdkLoggerProvider MetricExporter LogExporter SpanExporter OnceLock ctrl_c
 ---
 
 This page will show you how to get started with OpenTelemetry in Rust.
@@ -189,32 +189,46 @@ fn get_tracer() -> &'static BoxedTracer {
     TRACER.get_or_init(|| global::tracer("dice_server"))
 }
 
-fn init_tracer_provider() {
+fn init_tracer_provider() -> SdkTracerProvider {
     let provider = SdkTracerProvider::builder()
         .with_simple_exporter(SpanExporter::default())
         .build();
-    global::set_tracer_provider(provider);
+    global::set_tracer_provider(provider.clone());
+    provider
 }
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
+    let tracer_provider = init_tracer_provider();
 
     let listener = TcpListener::bind(addr).await?;
-    init_tracer_provider();
+    println!("Listening on {addr}");
 
     loop {
-        let (stream, _) = listener.accept().await?;
-        let io = TokioIo::new(stream);
-        tokio::task::spawn(async move {
-            if let Err(err) = http1::Builder::new()
-                .serve_connection(io, service_fn(handle))
-                .await
-            {
-                eprintln!("Error serving connection: {:?}", err);
+        tokio::select! {
+            Ok((stream, _)) = listener.accept() => {
+                let io = TokioIo::new(stream);
+                tokio::task::spawn(async move {
+                    if let Err(err) = http1::Builder::new()
+                        .serve_connection(io, service_fn(handle))
+                        .await
+                    {
+                        eprintln!("Error serving connection: {:?}", err);
+                    }
+                });
             }
-        });
+            _ = tokio::signal::ctrl_c() => {
+                break;
+            }
+        }
     }
+
+    if let Err(err) = tracer_provider.shutdown() {
+        eprintln!("Error shutting down tracer provider: {err:?}");
+    }
+
+    Ok(())
 }
 ```
 
@@ -330,40 +344,58 @@ fn get_tracer() -> &'static BoxedTracer {
     TRACER.get_or_init(|| global::tracer("dice_server"))
 }
 
-fn init_tracer_provider() {
+fn init_tracer_provider() -> SdkTracerProvider {
     let provider = SdkTracerProvider::builder()
         .with_simple_exporter(SpanExporter::default())
         .build();
-    global::set_tracer_provider(provider);
+    global::set_tracer_provider(provider.clone());
+    provider
 }
 
-fn init_meter_provider() {
+fn init_meter_provider() -> SdkMeterProvider {
     let provider = SdkMeterProvider::builder()
         .with_periodic_exporter(MetricExporter::default())
         .build();
-    global::set_meter_provider(provider);
+    global::set_meter_provider(provider.clone());
+    provider
 }
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
+    let tracer_provider = init_tracer_provider();
+    let meter_provider = init_meter_provider();
 
     let listener = TcpListener::bind(addr).await?;
-    init_tracer_provider();
-    init_meter_provider();
+    println!("Listening on {addr}");
 
     loop {
-        let (stream, _) = listener.accept().await?;
-        let io = TokioIo::new(stream);
-        tokio::task::spawn(async move {
-            if let Err(err) = http1::Builder::new()
-                .serve_connection(io, service_fn(handle))
-                .await
-            {
-                eprintln!("Error serving connection: {:?}", err);
+        tokio::select! {
+            Ok((stream, _)) = listener.accept() => {
+                let io = TokioIo::new(stream);
+                tokio::task::spawn(async move {
+                    if let Err(err) = http1::Builder::new()
+                        .serve_connection(io, service_fn(handle))
+                        .await
+                    {
+                        eprintln!("Error serving connection: {:?}", err);
+                    }
+                });
             }
-        });
+            _ = tokio::signal::ctrl_c() => {
+                break;
+            }
+        }
     }
+
+    if let Err(err) = tracer_provider.shutdown() {
+        eprintln!("Error shutting down tracer provider: {err:?}");
+    }
+    if let Err(err) = meter_provider.shutdown() {
+        eprintln!("Error shutting down meter provider: {err:?}");
+    }
+
+    Ok(())
 }
 ```
 
@@ -499,25 +531,26 @@ fn get_tracer() -> &'static BoxedTracer {
     TRACER.get_or_init(|| global::tracer("dice_server"))
 }
 
-fn init_tracer_provider() {
+fn init_tracer_provider() -> SdkTracerProvider {
     let provider = SdkTracerProvider::builder()
         .with_simple_exporter(SpanExporter::default())
         .build();
-    global::set_tracer_provider(provider);
+    global::set_tracer_provider(provider.clone());
+    provider
 }
 
-fn init_meter_provider() {
+fn init_meter_provider() -> SdkMeterProvider {
     let provider = SdkMeterProvider::builder()
         .with_periodic_exporter(MetricExporter::default())
         .build();
-    global::set_meter_provider(provider);
+    global::set_meter_provider(provider.clone());
+    provider
 }
 
 fn init_logger_provider() -> SdkLoggerProvider {
-    let provider = SdkLoggerProvider::builder()
+    SdkLoggerProvider::builder()
         .with_simple_exporter(LogExporter::default())
-        .build();
-    provider
+        .build()
 }
 
 #[tokio::main]
@@ -525,8 +558,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
 
     // Initialize OpenTelemetry providers
-    init_tracer_provider();
-    init_meter_provider();
+    let tracer_provider = init_tracer_provider();
+    let meter_provider = init_meter_provider();
     let logger_provider = init_logger_provider();
 
     // Create the OpenTelemetry tracing bridge layer.
@@ -537,19 +570,38 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
         .init();
 
     let listener = TcpListener::bind(addr).await?;
+    println!("Listening on {addr}");
 
     loop {
-        let (stream, _) = listener.accept().await?;
-        let io = TokioIo::new(stream);
-        tokio::task::spawn(async move {
-            if let Err(err) = http1::Builder::new()
-                .serve_connection(io, service_fn(handle))
-                .await
-            {
-                eprintln!("Error serving connection: {:?}", err);
+        tokio::select! {
+            Ok((stream, _)) = listener.accept() => {
+                let io = TokioIo::new(stream);
+                tokio::task::spawn(async move {
+                    if let Err(err) = http1::Builder::new()
+                        .serve_connection(io, service_fn(handle))
+                        .await
+                    {
+                        eprintln!("Error serving connection: {:?}", err);
+                    }
+                });
             }
-        });
+            _ = tokio::signal::ctrl_c() => {
+                break;
+            }
+        }
     }
+
+    if let Err(err) = tracer_provider.shutdown() {
+        eprintln!("Error shutting down tracer provider: {err:?}");
+    }
+    if let Err(err) = meter_provider.shutdown() {
+        eprintln!("Error shutting down meter provider: {err:?}");
+    }
+    if let Err(err) = logger_provider.shutdown() {
+        eprintln!("Error shutting down logger provider: {err:?}");
+    }
+
+    Ok(())
 }
 ```
 
