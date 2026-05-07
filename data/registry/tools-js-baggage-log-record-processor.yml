@@ -17,5 +17,5 @@ createdAt: 2025-03-26
 package:
   registry: npm
   name: '@opentelemetry/baggage-log-record-processor'
-  version: 0.17.0
+  version: 0.18.0
 isFirstParty: false

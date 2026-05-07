@@ -79,6 +79,10 @@ This page focuses on specifics for the
 For the Spring Boot starter, see
 [Spring Boot starter declarative configuration](/docs/zero-code/java/spring-boot-starter/declarative-configuration/).
 
+## Convert your existing configuration
+
+{{< dc-converter source="agent" >}}
+
 ## Mapping of configuration options
 
 When you want to map your existing environment variables or system properties
