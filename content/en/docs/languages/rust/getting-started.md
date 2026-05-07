@@ -2,7 +2,7 @@
 title: Getting Started
 weight: 10
 # prettier-ignore
-cSpell:ignore: eprintln println rolldice tokio tracing appender
+cSpell:ignore: eprintln println rolldice tokio tracing appender otel SdkTracerProvider SdkMeterProvider SdkLoggerProvider MetricExporter LogExporter SpanExporter OnceLock
 ---
 
 This page will show you how to get started with OpenTelemetry in Rust.
@@ -130,7 +130,7 @@ Stdout Exporter
 ```toml
 opentelemetry = "{{% version-from-registry otel-rust %}}"
 opentelemetry_sdk = "{{% version-from-registry otel-rust-sdk %}}"
-opentelemetry-stdout = { version = "{{% version-from-registry exporter-rust-stdout %}}", features = ["trace", "metrics", "logs"] }
+opentelemetry-stdout = "{{% version-from-registry exporter-rust-stdout %}}"
 ```
 
 ### Traces
@@ -258,16 +258,9 @@ Span #0
 
 ### Metrics
 
-Next, you'll add metrics to the application. Update the `Cargo.toml`
-dependencies to add the `metrics` feature to the `opentelemetry_sdk` crate (if
-not already present):
-
-```toml
-opentelemetry_sdk = { version = "{{% version-from-registry otel-rust-sdk %}}", features = ["metrics"] }
-```
-
-Now update `main.rs` to initialize a `MeterProvider` and create a counter
-instrument that tracks the number of dice rolls by value:
+Next, you'll add metrics to the application. Update `main.rs` to initialize a
+`MeterProvider` and create a counter instrument that tracks the number of dice
+rolls by value:
 
 ```rust
 use std::convert::Infallible;
