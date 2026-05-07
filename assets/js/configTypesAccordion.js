@@ -236,7 +236,8 @@ function wireControls(container, types) {
   // Expand / collapse all
   const expandBtn = container.querySelector('#ct-expand-all');
   const collapseBtn = container.querySelector('#ct-collapse-all');
-  if (expandBtn) expandBtn.addEventListener('click', () => expandAll(accordion));
+  if (expandBtn)
+    expandBtn.addEventListener('click', () => expandAll(accordion));
   if (collapseBtn)
     collapseBtn.addEventListener('click', () => collapseAll(accordion));
 }
@@ -258,7 +259,8 @@ async function init() {
     const data = await res.json();
     const types = data.types;
 
-    container.innerHTML = renderControls(types, i18n) + renderAccordion(types, i18n);
+    container.innerHTML =
+      renderControls(types, i18n) + renderAccordion(types, i18n);
     injectDescriptions(container, types);
     wireControls(container, types);
   } catch (err) {

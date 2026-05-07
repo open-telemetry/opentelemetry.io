@@ -1,6 +1,6 @@
 /**
  * Shared utilities for config documentation accordions.
- * Used by configTypesAccordion.js and (in PR D) configLangStatusAccordion.js.
+ * Used by configTypesAccordion.js and configLangStatusAccordion.js.
  */
 
 export function expandAll(container) {
