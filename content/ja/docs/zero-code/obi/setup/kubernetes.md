@@ -401,3 +401,9 @@ env:
         key: otelcol-secret
         name: headers
 ```
+
+## k8s-cache による Kubernetes メタデータの集約 {#centralizing-kubernetes-metadata-with-k8s-cache}
+
+このセクションはまだ翻訳されていません。`k8s-cache` サービスの詳細については、
+[英語版](/docs/zero-code/obi/setup/kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache)
+を参照してください。

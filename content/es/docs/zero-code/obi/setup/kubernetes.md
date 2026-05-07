@@ -463,3 +463,9 @@ env:
         key: otelcol-secret
         name: headers
 ```
+
+## Centralización de metadatos de Kubernetes con k8s-cache {#centralizing-kubernetes-metadata-with-k8s-cache}
+
+Esta sección aún no se ha traducido. Consulta la
+[versión en inglés](/docs/zero-code/obi/setup/kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache)
+para conocer los detalles sobre el servicio `k8s-cache`.
