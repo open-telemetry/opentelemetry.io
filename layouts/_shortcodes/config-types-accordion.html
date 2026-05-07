@@ -1,0 +1,18 @@
+{{- $schemaUrl := "/schemas/config-types.json" -}}
+
+<div class="config-types-accordion"
+  data-schema-url="{{ $schemaUrl }}"
+  data-i18n-search="{{ i18n "config_types_search_label" }}"
+  data-i18n-filter-all="{{ i18n "config_types_filter_all" }}"
+  data-i18n-filter-stable="{{ i18n "config_types_filter_stable" }}"
+  data-i18n-filter-experimental="{{ i18n "config_types_filter_experimental" }}"
+  data-i18n-expand-all="{{ i18n "config_types_expand_all" }}"
+  data-i18n-collapse-all="{{ i18n "config_types_collapse_all" }}"
+  data-i18n-no-results="{{ i18n "config_types_no_results" }}"
+  data-i18n-loading="{{ i18n "config_types_loading" }}"
+  data-i18n-col-type="{{ i18n "config_types_col_type" }}"
+  data-i18n-col-constraints="{{ i18n "config_types_col_constraints" }}"
+  data-i18n-col-description="{{ i18n "config_types_col_description" }}">
+</div>
+
+{{ partial "script.html" (dict "src" "js/configTypesAccordion.js") -}}

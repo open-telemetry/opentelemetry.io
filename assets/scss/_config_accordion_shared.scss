@@ -1,0 +1,22 @@
+// Shared styles for config documentation accordions (config types, lang status).
+
+.config-types-controls {
+  background-color: var(--bs-tertiary-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  padding: 0.75rem 1rem;
+}
+
+// Visual indicator for experimental types: left border accent.
+.accordion-item[data-is-experimental='true'] {
+  .accordion-button {
+    border-left: 3px solid var(--bs-warning);
+  }
+}
+
+// Keep the property count readable when the accordion button is in its open
+// (expanded) state — the button background darkens and `text-body-secondary`
+// would otherwise become hard to read.
+.accordion-button:not(.collapsed) .ct-prop-count {
+  opacity: 0.7;
+}
