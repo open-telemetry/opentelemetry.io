@@ -156,6 +156,8 @@ sub printFrontMatter() {
     $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
     # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
+  } elsif ($ARGV =~ "tmp/otel/spec-compliance-matrix.md") {
+    $linkTitle = "Spec compliance";
   }
 
   applyPatches('front matter');
@@ -384,6 +386,13 @@ while(<>) {
       [^)]+
     )
   }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
+
+
+  if ($ARGV eq "tmp/otel/spec-compliance-matrix.md") {
+    s|(\]\()(?:\./)?specification/([^)#]+?)\.md|$1/docs/specs/otel/$2|g;
+    # Strip /README.md from relative/absolute (localized) links
+    s|\]\((\.?/[^#) ]+/)README(?:\.md)?((?:#[^) ]*)?)\)|]($1$2)|g;
+  }
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 
