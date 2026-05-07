@@ -1,0 +1,514 @@
+---
+title: Instrumenting Infrastructure and Processes on Non-K8s Environments
+linkTitle: Instrumenting Infrastructure and Processes on Non-K8s Environments
+date: 2026-04-21
+author: Lukasz Ciukaj (Splunk)
+cSpell:ignore: ciukaj lukasz rollouts
+---
+
+## Summary
+
+This blueprint outlines a strategic reference for Platform Engineering and SRE
+teams operating in traditional virtual machine (VM), bare metal, and on-premises
+environments, including scenarios where containers are run directly on an
+operating system without an orchestrator like Kubernetes.
+
+It addresses the friction often found when attempting to establish consistent
+observability across heterogeneous infrastructure, legacy processes, and
+containerized workloads.
+
+By implementing the patterns in this blueprint, organizations can expect to
+achieve the following outcomes:
+
+- Out-of-the-box, high-quality telemetry for applications and services running
+  in non-Kubernetes environments, including directly managed containers.
+- Consistent lifecycle management for OpenTelemetry agents, together with
+  standardized bootstrap and configuration patterns for SDK-based
+  instrumentation.
+- Unified observability across mixed infrastructure: VMs, bare metal, and
+  containers without an orchestrator.
+- Improved governance over telemetry signal quality, data enrichment, routing,
+  and export pipelines.
+- Reduced manual toil and cognitive load for developers and operators.
+
+## Background
+
+Many organizations maintain a blend of legacy infrastructure, VMs, bare metal
+servers, and direct-to-runtime container deployments, in addition to or instead
+of Kubernetes. These environments can be complex and often lack the automation
+and standardization provided by orchestrators. Ensuring consistent, high-quality
+observability in these scenarios is critical, yet frequently hampered by
+fragmented tooling and manual processes.
+
+The introduction of Open Agent Management Protocol (OpAMP) provides a
+standardized, scalable way to remotely manage, configure, and monitor
+OpenTelemetry agents across diverse infrastructure. In parallel, shared
+libraries, pre-baked images, and centrally maintained configuration artifacts
+can help standardize SDK-based instrumentation. Together, these approaches
+reduce friction and improve reliability for both host-based and containerized
+workloads.
+
+## Common challenges
+
+Organizations operating in non-Kubernetes environments typically face a distinct
+set of challenges that hinder effective observability. Without built-in
+automation, standardization, and centralized management, these environments
+often find it difficult to ensure consistent, high-quality telemetry across a
+diverse landscape of infrastructure and applications.
+
+### 1. Fragmented instrumentation approaches
+
+Without standardized deployment and management patterns, teams often adopt
+different OpenTelemetry agents, SDKs, or exporters for host-based and
+containerized workloads.
+
+This leads to:
+
+- **Inconsistent semantic conventions:** Telemetry signals may lack standard
+  resource attributes such as `service.name`, `host.id`, `host.name`,
+  `container.id`, and `deployment.environment`, making cross-system correlation
+  difficult.
+- **Divergent instrumentation behavior:** Different teams may apply different
+  defaults for sampling, propagation, resource detection, or export, producing
+  uneven telemetry quality.
+- **Manual configuration drift:** Host- and container-based agents frequently
+  require manual configuration, resulting in drift and an increased risk of
+  errors.
+
+### 2. Limited automation for telemetry deployment and management
+
+Instrumentation and agent deployment on VMs, bare metal, and directly run
+containers is often manual or script-based, and ongoing configuration is
+difficult to manage at scale. This decentralized, ad hoc approach typically
+requires operators or developers to install, configure, and update OpenTelemetry
+agents individually on each host or workload.
+
+This leads to:
+
+- **High toil:** New workloads or hosts require repeated, error-prone
+  configuration steps.
+- **Slow rollout and update cycles:** Updates to instrumentation or
+  configuration are slow and difficult to propagate fleet-wide.
+- **Operational risk:** Rollbacks, version control, and health monitoring are
+  harder to perform consistently across the estate.
+
+### 3. Siloed data processing and export
+
+Data collection and export pipelines are often set up per application, per host,
+or per team. In the absence of centralized management, individual teams may
+independently configure telemetry agents, exporters, and data processing logic
+for each workload or environment.
+
+This leads to:
+
+- **Duplicated effort:** Teams may duplicate data enrichment, filtering, and
+  routing logic across environments.
+- **Inconsistent policy enforcement:** Redaction, retry behavior, batching, and
+  routing policies may vary between teams.
+- **Lack of visibility:** Operations and governance teams lack unified control
+  over what telemetry is collected and how it is processed or exported.
+
+## General guidelines
+
+To address the challenges described above, organizations should adopt a set of
+strategic guidelines designed to streamline observability practices across
+diverse environments. These guidelines provide a foundation for standardizing
+instrumentation, automating agent management, and ensuring consistent data
+quality.
+
+### 1. Centrally manage agent lifecycle while allowing controlled customization
+
+**Challenges addressed:** 1, 2
+
+Use OpAMP, where supported, to centrally manage OpenTelemetry agents running as
+system services or service containers. Where OpAMP is not supported,
+organizations should use other centralized management mechanisms, such as
+configuration management tools, golden images, or standardized deployment
+artifacts, to maintain consistent agent deployment, configuration, and lifecycle
+management. Platform teams should own the baseline agent distribution, required
+processors and exporters, security settings, health reporting, and default
+resource detection behavior.
+
+At the same time, organizations should explicitly define how
+environment-specific or workload-specific customization is allowed. A practical
+model is to use a **layered configuration approach**:
+
+- A **platform-owned baseline** for mandatory defaults, security controls, and
+  organization-wide processors/exporters.
+- An **environment overlay** for differences such as endpoints, tenancy,
+  deployment environment, or site-specific metadata.
+- A **workload overlay** for approved variations such as opt-in receivers,
+  additional resource attributes, or safe tuning parameters.
+
+This creates a clear boundary between standardization and flexibility: teams can
+extend approved parts of the configuration without creating one-off, unmanaged
+deployments.
+
+By implementing this guideline, organizations can expect to achieve:
+
+- Automated, consistent telemetry configuration across all environments.
+- Reduced manual errors and simplified onboarding for new workloads.
+- Faster, safer upgrades and rollbacks of agent configurations.
+- A controlled mechanism for local customization without sacrificing central
+  governance.
+
+### 2. Centralize telemetry collection and processing through an OpenTelemetry Collector gateway layer
+
+**Challenges addressed:** 1, 3
+
+Deploy one or more OpenTelemetry Collector gateways as aggregation points for
+telemetry data from hosts and directly managed containers. In this context,
+“centralized” does not necessarily mean a single global deployment. Depending on
+organizational structure, network boundaries, isolation requirements, and
+traffic patterns, the gateway layer may be implemented at different levels, such
+as per region, per site, per environment, or per cloud account, while still
+providing centralized policy enforcement within that scope.
+
+In non-Kubernetes environments, these gateways can be deployed using several
+patterns, depending on scale and operational model, including:
+
+- Dedicated gateway VMs or bare metal hosts.
+- A service pool behind a load balancer.
+- Containerized gateway services running on general-purpose compute.
+- Regional or site-local gateways for distributed environments.
+
+```mermaid
+flowchart TB
+    S[Telemetry Sources<br/>Hosts and Containers]
+
+    subgraph G["OpenTelemetry&nbsp;Collector&nbsp;Gateway"]
+        direction LR
+        P1[Dedicated VMs /<br/>Bare Metal Hosts]
+        P2[Service Pool Behind<br/>Load Balancer]
+        P3[Containerized Gateways<br/>on General Compute]
+        P4[Regional / Site-Local<br/>Gateways]
+        P1 ~~~ P2 ~~~ P3 ~~~ P4
+    end
+
+    B[(Observability<br/>Backends)]
+
+    S --> G
+    G --> B
+```
+
+By implementing this guideline, organizations can expect to achieve:
+
+- Unified control over data processing, enrichment, and export pipelines.
+- Simplified governance and easier implementation of organization-wide policies.
+- Better resilience and scalability than per-host or per-application export
+  topologies.
+- Clear separation between local collection and centralized policy enforcement.
+
+### 3. Standardize resource attribution and distribute reusable instrumentation building blocks
+
+**Challenges addressed:** 1
+
+Define an organization-wide telemetry standard for resource attribution and
+ensure it is applied consistently across all workloads. This should not rely
+only on documentation; it should be delivered through reusable building blocks
+such as:
+
+- Pre-baked agent images.
+- Packaged language agents and auto-instrumentation artifacts where applicable.
+- Standardized OpenTelemetry Collector binaries or distributions.
+- Shared libraries or starter packages for SDK-based instrumentation.
+- Standard startup wrappers or environment-variable conventions.
+- Centrally maintained configuration snippets or templates.
+
+At minimum, the standard resource model for non-Kubernetes environments should
+cover:
+
+- **Host:** `host.id`, `host.name`, `host.arch`
+- **Device (where applicable):** `device.id` and other relevant device
+  attributes
+- **Process:** `process.pid`, `process.executable.name`, `process.command`
+- **Process runtime:** `process.runtime.name`, `process.runtime.version`
+- **Operating system:** `os.type`, `os.description`, `os.version`
+- **Container (where applicable):** `container.id`
+- **Service identity:** `service.name`, `service.version`,
+  `deployment.environment`
+
+Application telemetry should include at least `host.id` or `host.name` so that
+application signals can be correlated with host- and infrastructure-level
+telemetry.
+
+By implementing this guideline, organizations can expect to achieve:
+
+- Improved correlation and searchability of telemetry data across systems.
+- Easier analysis and troubleshooting regardless of infrastructure type.
+- Consistent metadata quality without requiring every team to reinvent
+  instrumentation patterns.
+- Faster adoption through reusable, supported building blocks.
+
+## Implementation
+
+Translating these guidelines into practice requires a combination of automation,
+standardized tooling, and centralized management. The implementation steps below
+are written as roadmap items, with checklist-style actions that organizations
+can plan and execute in sequence.
+
+### 1. Define a baseline telemetry standard and layered configuration model
+
+**Guidelines supported:** 1, 3
+
+Define the minimum required telemetry standard for the organization and document
+which parts of telemetry configuration are centrally owned versus locally
+customizable. This includes the supported configuration for host or service
+agents, language agents where applicable, SDK-based instrumentation, and
+OpenTelemetry Collectors used for local collection or forwarding. Where OpAMP is
+used, it should be aligned with this model so centrally managed agent
+configuration follows the same baseline and approved overlays. This is the
+foundation for consistency at scale.
+
+Checklist:
+
+- Define the mandatory resource attributes and signal conventions that all
+  workloads must emit.
+- Define the baseline configuration for supported telemetry components,
+  including agents, language agents where applicable, SDKs, and OpenTelemetry
+  Collectors.
+- Standardize exporters, authentication, TLS, health reporting, and default
+  processors according to the role of each component.
+- Define the allowed extension points for environment-specific and
+  workload-specific customization.
+- Version all baseline and overlay configurations so they can be rolled out and
+  rolled back safely.
+- Publish ownership boundaries so teams know what they can and cannot modify.
+
+Documentation:
+
+- [OpAMP Specification](/docs/specs/opamp/)
+- [OpenTelemetry Semantic Conventions](/docs/specs/semconv/)
+
+### 2. Stand up an OpAMP management plane for agents
+
+**Guidelines supported:** 1
+
+Deploy a central OpAMP management service to manage agent configuration, status
+reporting, health monitoring, and controlled rollouts for supported agents.
+
+Checklist:
+
+- Select the supported OpAMP-capable agent distributions and define which
+  components will be managed centrally.
+- Stand up a central OpAMP server or management endpoint with appropriate
+  authentication, authorization, and transport security.
+- Configure agents or supervisors to enroll with the management service and
+  report their identity, capabilities, health, and effective configuration
+  status.
+- Organize agents into logical groups such as development, staging, production,
+  region, or environment so configuration changes can be rolled out in stages.
+- Define how configuration updates are promoted between rollout groups and how
+  failed changes are detected and reverted.
+- Monitor management-plane health, agent connectivity, update status, and
+  configuration drift to ensure the fleet remains under control.
+
+A common OpAMP architecture uses a central management service to control
+configuration, rollout, and health monitoring for agents running across many
+hosts. In deployments that use an OpAMP Supervisor, the management service
+communicates with a host-local supervisor, which then manages the lifecycle and
+configuration of the local agent or Collector.
+
+```mermaid
+flowchart TB
+    M[Central OpAMP management service]
+
+    subgraph H1[Host or VM]
+        S1[OpAMP Supervisor]
+        A1[OpenTelemetry agent or Collector]
+        S1 --> A1
+    end
+
+    subgraph H2[Host or VM]
+        S2[OpAMP Supervisor]
+        A2[OpenTelemetry agent or Collector]
+        S2 --> A2
+    end
+
+    subgraph H3[Host or VM]
+        S3[OpAMP Supervisor]
+        A3[OpenTelemetry agent or Collector]
+        S3 --> A3
+    end
+
+    M -->|Configuration and lifecycle management| S1
+    M -->|Configuration and lifecycle management| S2
+    M -->|Configuration and lifecycle management| S3
+
+    S1 -->|Status, health, and capabilities| M
+    S2 -->|Status, health, and capabilities| M
+    S3 -->|Status, health, and capabilities| M
+
+    A1 --> O[Observability backend]
+    A2 --> O
+    A3 --> O
+```
+
+Documentation:
+
+- [OpAMP Specification](/docs/specs/opamp/)
+- [OpAMP getting started guide](/docs/collector/management/)
+- [OpenTelemetry Collector configuration](/docs/collector/configuration/)
+
+### 3. Package and deploy standardized agents and SDK bootstrap artifacts
+
+**Guidelines supported:** 1, 3
+
+Use configuration management and image packaging to deliver supported telemetry
+components consistently across hosts and containerized workloads. Prefer
+declarative configuration for SDK-based instrumentation where it is supported.
+Where it is not available, standardize environment variables, startup options,
+or SDK-specific configuration patterns so teams inherit consistent defaults with
+minimal manual setup.
+
+Checklist:
+
+- Package host-based agents as standard system services.
+- Provide pre-baked images or service-container definitions for containerized
+  deployments.
+- Publish shared libraries, starter packages, or bootstrap wrappers for
+  supported SDK languages.
+- Prefer declarative SDK configuration where supported, and otherwise
+  standardize environment variable, startup, and configuration file conventions
+  across environments.
+- Validate that new workloads inherit the baseline configuration by default.
+
+Documentation:
+
+- [OpenTelemetry Collector configuration](/docs/collector/configuration/)
+- [OpenTelemetry language SDKs and APIs](/docs/languages/)
+- [OpenTelemetry zero-code instrumentation](/docs/zero-code/)
+- [Java zero-code instrumentation](/docs/zero-code/java/)
+- [Java agent configuration](/docs/zero-code/java/agent/configuration/)
+
+### 4. Deploy an OpenTelemetry Collector gateway layer
+
+**Guidelines supported:** 2
+
+Deploy one or more OpenTelemetry Collector gateways as the central processing
+and export tier. Choose a topology appropriate for the environment, such as
+dedicated VMs, service pools behind a load balancer, or regional gateway nodes.
+
+Checklist:
+
+- Select the gateway deployment topology for each environment.
+- Define how local agents discover and connect to gateways.
+- Configure processors for batching, memory protection, enrichment, retry, and
+  routing.
+- Separate lightweight ingest from heavier centralized processing where scale
+  requires it.
+- Define high-availability and failover behavior for gateways.
+- Validate end-to-end routing to observability backends.
+
+A common pattern in non-Kubernetes environments is to run host-level Collectors
+on individual hosts and forward telemetry to a site-local or region-local
+Collector gateway. That gateway layer should be horizontally scalable and highly
+available, using appropriate load-balancing and failover mechanisms for the
+environment, such as cloud native scaling patterns or equivalent HA setups in
+non-cloud infrastructure.
+
+```mermaid
+flowchart TB
+    subgraph S1[Site or Business Unit A]
+        A1[VM or Bare Metal Host]
+        A2[VM or Bare Metal Host]
+        A3[Host running directly managed containers]
+
+        AC1[Host-level Collector]
+        AC2[Host-level Collector]
+        AC3[Host-level Collector]
+
+        A1 --> AC1
+        A2 --> AC2
+        A3 --> AC3
+
+        AC1 --> AG[Site-local Collector gateway]
+        AC2 --> AG
+        AC3 --> AG
+        AG --> P1[Site-local processing and policy enforcement]
+    end
+
+    subgraph S2[Site or Business Unit B]
+        B1[VM or Bare Metal Host]
+        B2[Host running directly managed containers]
+
+        BC1[Host-level Collector]
+        BC2[Host-level Collector]
+
+        B1 --> BC1
+        B2 --> BC2
+
+        BC1 --> BG[Site-local Collector gateway]
+        BC2 --> BG
+        BG --> P2[Site-local processing and policy enforcement]
+    end
+
+    P1 --> O[Observability backend]
+    P2 --> O
+```
+
+Documentation:
+
+- [OpenTelemetry Collector deployment patterns](/docs/collector/deploy/)
+- [OpenTelemetry Collector configuration](/docs/collector/configuration/)
+
+### 5. Enforce resource attribution and correlation standards
+
+**Guidelines supported:** 1, 3
+
+Ensure that all telemetry includes the required metadata for correlation across
+infrastructure and application layers.
+
+Checklist:
+
+- Publish the minimum required resource attribute set for hosts, processes,
+  runtimes, operating systems, and containers where applicable.
+- Ensure application telemetry includes at least `host.id` or `host.name`.
+- Enable and validate resource detectors wherever supported so host, OS,
+  process, runtime, and container metadata is populated automatically and
+  consistently.
+- Validate emitted telemetry against the defined attribute standard.
+- Add conformance checks to deployment pipelines or post-deployment validation
+  steps.
+
+This blueprint focuses on the attribute requirements and workload-level
+practices needed to emit them consistently. More detailed centralized
+enforcement and normalization patterns are out of scope for this section and may
+be covered separately.
+
+Documentation:
+
+- [OpenTelemetry Semantic Conventions](/docs/specs/semconv/)
+- [OpenTelemetry Resource Semantic Conventions](/docs/specs/semconv/resource/)
+
+### 6. Centralize governance, policy enforcement, and change management
+
+**Guidelines supported:** 2, 3
+
+Use the Collector gateway layer and centrally owned configuration to enforce
+organization-wide rules for processing, routing, and exporting telemetry.
+
+Checklist:
+
+- Define approved exporters and backend destinations.
+- Centralize redaction, filtering, enrichment, and routing policies.
+- Define standard retry, batching, and sampling policies.
+- Establish an exception process for workloads that need non-default behavior.
+- Review telemetry quality and policy compliance regularly.
+
+Documentation:
+
+- [OpenTelemetry Collector configuration](/docs/collector/configuration/)
+- [OpenTelemetry Collector gateway deployments](/docs/collector/deploy/gateway/)
+
+## Reference architectures
+
+The patterns described in this blueprint have been successfully implemented by
+the following end-users:
+
+_Coming soon!_
+
+Have you implemented an architecture for this blueprint? Share your experience
+or a link to your article by opening an issue in the
+[End User SIG](https://github.com/open-telemetry/sig-end-user/issues) GitHub
+repository.
