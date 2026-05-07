@@ -220,6 +220,8 @@ maintainers:
       - collector-releases-approvers
       - collector-releases-maintainers
       - collector-triagers
+      - helm-approvers
+      - helm-triagers
       - injector-approvers
       - injector-maintainers
       - network-triagers
@@ -566,7 +568,6 @@ maintainers:
       - go-maintainers
       - go-triagers
       - sig-developer-experience-approvers
-      - sig-developer-experience-maintainers
     html_url: https://github.com/dmathieu
     avatar_url: https://avatars.githubusercontent.com/u/9347?v=4
   - name: dmitryax
@@ -1021,7 +1022,6 @@ maintainers:
       - semconv-messaging-approvers
       - semconv-rpc-approvers
       - sig-developer-experience-approvers
-      - sig-developer-experience-maintainers
       - specs-approvers
       - specs-maintainers
       - specs-semconv-approvers
@@ -1459,21 +1459,6 @@ maintainers:
       - operator-triagers
     html_url: https://github.com/swiatekm
     avatar_url: https://avatars.githubusercontent.com/u/93588780?v=4
-  - name: tedsuo
-    teams:
-      - proto-approvers
-      - proto-triagers
-      - semconv-browser-approvers
-      - semconv-client-approvers
-      - sig-developer-experience-approvers
-      - sig-developer-experience-maintainers
-      - specs-approvers
-      - specs-entities-approvers
-      - specs-semconv-approvers
-      - specs-trace-approvers
-      - specs-triagers
-    html_url: https://github.com/tedsuo
-    avatar_url: https://avatars.githubusercontent.com/u/24074?v=4
   - name: theletterf
     teams:
       - docs-approvers
@@ -2308,6 +2293,20 @@ approvers:
       - python-approvers
     html_url: https://github.com/tammy-baylis-swi
     avatar_url: https://avatars.githubusercontent.com/u/96076570?v=4
+  - name: tedsuo
+    teams:
+      - proto-approvers
+      - proto-triagers
+      - semconv-browser-approvers
+      - semconv-client-approvers
+      - sig-developer-experience-approvers
+      - specs-approvers
+      - specs-entities-approvers
+      - specs-semconv-approvers
+      - specs-trace-approvers
+      - specs-triagers
+    html_url: https://github.com/tedsuo
+    avatar_url: https://avatars.githubusercontent.com/u/24074?v=4
   - name: thompson-tomo
     teams:
       - ruby-contrib-approvers
@@ -2795,6 +2794,9 @@ members:
   - name: hekike
     html_url: https://github.com/hekike
     avatar_url: https://avatars.githubusercontent.com/u/1764512?v=4
+  - name: Horiodino
+    html_url: https://github.com/Horiodino
+    avatar_url: https://avatars.githubusercontent.com/u/99384392?v=4
   - name: HudsonHumphries
     html_url: https://github.com/HudsonHumphries
     avatar_url: https://avatars.githubusercontent.com/u/23504959?v=4
