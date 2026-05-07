@@ -107,6 +107,14 @@
     "StatusCode": 200,
     "LastSeen": "2026-05-03T09:59:08.832332967Z"
   },
+  "https://aspire.dev/dashboard/explore/#genai-telemetry-visualization": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-29T05:53:27.634988059Z"
+  },
+  "https://aspire.dev/dashboard/overview/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-29T05:53:17.20085592Z"
+  },
   "https://aspire.dev/dashboard/standalone/": {
     "StatusCode": 206,
     "LastSeen": "2026-04-28T14:16:31.729140722Z"
@@ -1039,6 +1047,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-30T10:21:14.920323366Z"
   },
+  "https://code.visualstudio.com/docs/copilot/guides/monitoring-agents": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-29T05:53:20.135271172Z"
+  },
   "https://code.visualstudio.com/docs/devcontainers/containers#_installation": {
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:08:41.851770201Z"
@@ -1514,6 +1526,10 @@
   "https://developers.openai.com/api/reference/responses/overview": {
     "StatusCode": 206,
     "LastSeen": "2026-05-03T10:00:11.792973109Z"
+  },
+  "https://developers.openai.com/codex/config-advanced#observability-and-telemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-29T05:53:23.975814398Z"
   },
   "https://devpod.sh/docs/developing-in-workspaces/devcontainer-json": {
     "StatusCode": 206,
@@ -6143,6 +6159,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:12:15.458953021Z"
   },
+  "https://github.com/jamesnk": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-29T05:53:12.767718521Z"
+  },
   "https://github.com/jaronoff97": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T10:24:47.182198041Z"
@@ -6851,6 +6871,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:19:49.239860303Z"
   },
+  "https://github.com/microsoft/aspire": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-29T05:53:41.241007703Z"
+  },
   "https://github.com/microsoft/aspire/tree/main/src/Aspire.Dashboard": {
     "StatusCode": 206,
     "LastSeen": "2026-04-28T14:16:31.484963298Z"
@@ -7250,6 +7274,10 @@
   "https://github.com/open-telemetry/community/blob/47813530864b9fe5a5146f466a58bd2bb94edc72/maturity-matrix.yaml#L57": {
     "StatusCode": 206,
     "LastSeen": "2026-04-30T10:23:02.302937926Z"
+  },
+  "https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-29T05:53:43.628322562Z"
   },
   "https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main": {
     "StatusCode": 206,
@@ -13815,6 +13843,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-05T10:20:56.95169917Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/6733459e4ee6a1d7a46025a71da6887f83491223/instrumentation-genai/opentelemetry-instrumentation-openai-v2": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-29T05:53:31.361579606Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/fecd8afac9ecc3fdc0d581fbaad2e063a2f8018d/instrumentation-genai/opentelemetry-instrumentation-openai-v2/examples?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-05-05T10:21:03.234500683Z"
@@ -18854,6 +18886,10 @@
   "https://learn.microsoft.com/azure/storage/common/storage-sas-overview#sas-token": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:56:39.83495417Z"
+  },
+  "https://learn.microsoft.com/dotnet/ai/microsoft-extensions-ai": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-29T05:53:37.299826543Z"
   },
   "https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.diagnostics.iexceptionhandler": {
     "StatusCode": 206,
