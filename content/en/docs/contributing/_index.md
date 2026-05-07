@@ -58,20 +58,30 @@ What do you want to do?
 
 ## What can I contribute to?
 
-OpenTelemetry documentation contributors:
+If you want to contribute to the core OpenTelemetry projects, here is a list of
+the main repositories:
+
+- **[Specification](https://github.com/open-telemetry/opentelemetry-specification)** -
+  Cross-language requirements and expectations for all implementations.
+  ([Contributing Guide](https://github.com/open-telemetry/opentelemetry-specification/blob/main/CONTRIBUTING.md))
+- **[Semantic Conventions](https://github.com/open-telemetry/semantic-conventions)** -
+  Defines standard attribute names for telemetry data.
+  ([Contributing Guide](https://github.com/open-telemetry/semantic-conventions/blob/main/CONTRIBUTING.md))
+- **[Collector](https://github.com/open-telemetry/opentelemetry-collector)** - A
+  vendor-agnostic proxy that can receive, process, and export telemetry data.
+  ([Contributing Guide](https://github.com/open-telemetry/opentelemetry-collector/blob/main/CONTRIBUTING.md))
+- **Language SDKs**: Every [language implementation repository][org] contains
+  its own project-specific contributing guide.
+
+For general guidance on contributing to the overall project, see the community
+[OpenTelemetry New Contributor Guide][].
+
+If you would like to contribute to OpenTelemetry **documentation**, you can:
 
 - Improve existing or create new content
 - [Submit a blog post](blog/) or case study
 - Add to or update the [OpenTelemetry Registry](/ecosystem/registry/)
 - Improve the code that builds the site
-
-The pages in this section describe how to contribute to OpenTelemetry
-**documentation**.
-
-For guidance on how to contribute to the OpenTelemetry project in general, see
-the community [OpenTelemetry New Contributor Guide][]. Every [OTel
-repository][org] for language implementations, the Collector, and conventions
-have their own project-specific contributing guides.
 
 [choose an issue]: issues/#fixing-an-existing-issue
 [issues]: issues/
