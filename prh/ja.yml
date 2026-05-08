@@ -60,3 +60,6 @@ rules:
   - expected: アノテーション
     patterns:
       - 注釈
+  - expected: コンテナ
+    patterns:
+      - コンテナー
