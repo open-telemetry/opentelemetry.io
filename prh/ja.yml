@@ -63,3 +63,6 @@ rules:
   - expected: コンテナ
     patterns:
       - コンテナー
+  - expected: バイナリ
+    patterns:
+      - バイナリー
