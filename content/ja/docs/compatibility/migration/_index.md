@@ -3,8 +3,8 @@ title: 移行
 description: OpenTelemetryへの移行方法
 aliases:
   - /docs/migration/
-weight: 800
-default_lang_commit: b6536b5ba70214905f981c8854421f62d5082ece
+weight: 300
+default_lang_commit: c99573bcaeda128c288d5ce8cf271913007c8866
 ---
 
 ## OpenTracingとOpenCensus {#opentracing-and-opencensus}
