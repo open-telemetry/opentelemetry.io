@@ -11367,6 +11367,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-29T10:21:10.538231879Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Api/Context/Propagation/EnvironmentVariableCarrier.cs": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-08T10:57:41.701975876Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Prometheus.AspNetCore/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-30T10:20:59.551202115Z"
