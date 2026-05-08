@@ -29,9 +29,33 @@ You can find more configuration options for the OpenTelemetry appender in the
 [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
 instrumentation library.
 
-| System property                               | Type    | Default | Description                                                                                     |
-| --------------------------------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------- |
-| `otel.instrumentation.log4j-appender.enabled` | Boolean | true    | Enables the configuration of the Log4j OpenTelemetry appender with an `OpenTelemetry` instance. |
+{{< tabpane text=true >}} {{% tab "Properties" %}}
+
+Enables the configuration of the Log4j OpenTelemetry appender with an
+`OpenTelemetry` instance:
+
+```yaml
+otel:
+  instrumentation:
+    log4j-appender:
+      enabled: true # default: true
+```
+
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+In [declarative configuration](../declarative-configuration/), use the
+centralized instrumentation lists to enable or disable Log4j:
+
+```yaml
+otel:
+  distribution:
+    spring_starter:
+      instrumentation:
+        disabled:
+          - log4j_appender
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ## Instrumentation libraries
 

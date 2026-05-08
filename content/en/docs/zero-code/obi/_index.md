@@ -9,7 +9,6 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
-cSpell:ignore: asyncio uvloop
 ---
 
 OpenTelemetry libraries provide telemetry collection for popular programming
@@ -40,11 +39,13 @@ OBI offers the following features:
 - **Visibility into encrypted communications**: Capture transactions over
   TLS/SSL without decryption
 - **Context propagation**: Propagate trace context across services automatically
-- **Protocol support**: HTTP/S, gRPC, gRPC-Web, MQTT, Memcached, and more
+- **Protocol support**: HTTP/S, gRPC, gRPC-Web, JSON-RPC, MQTT, Memcached, and
+  more
 - **Database instrumentation**: PostgreSQL (including pgx driver), MySQL,
   MongoDB, Redis, Couchbase (N1QL/SQL++ and KV protocol)
-- **GenAI instrumentation**: Trace and metrics for OpenAI and Anthropic Claude
-  API calls with automatic payload extraction
+- **GenAI instrumentation**: Trace and metrics for OpenAI, Anthropic Claude,
+  Google AI Studio (Gemini), and AWS Bedrock API calls with automatic payload
+  extraction
 - **Low cardinality metrics**: Prometheus-compatible metrics with low
   cardinality for cost reduction
 - **Network observability**: Capture network flows between services with
@@ -54,36 +55,32 @@ OBI offers the following features:
 - **Collector integration**: Run OBI as an OpenTelemetry Collector receiver
   component
 
-## Recent highlights (v0.7.0)
+## Recent highlights (v0.8.0)
 
-OBI v0.7.0 introduces several significant improvements:
+OBI v0.8.0 expands protocol coverage, payload extraction, and deployment
+documentation:
 
-- **StatsO11y**: New statistical metrics pipeline for host-level network
-  statistics, starting with TCP RTT metrics
-- **Expanded protocol coverage**: Added Memcached protocol tracing support
-- **Enhanced GenAI instrumentation**: Added support for Anthropic Claude with
-  automatic payload extraction
-- **Python asyncio improvements**: Added context propagation support for Python
-  asyncio workloads using `uvloop`
-- **New example scenario**: Added an NGINX example covering direct routing,
-  reverse proxying, and route-based telemetry across Docker, Kubernetes, and
-  standalone deployments
-- **Prometheus exemplars**: Support for exemplars in metrics export for better
-  correlation with traces
-- **New span types**: SQL instrumentation now emits server spans for database
-  calls
-- **Operational controls**: Added configurable `log_format` and Kubernetes API
-  reconnect interval settings
-- **Network diagnostics**: Added `obi_bpf_network_ignored_packets_total` for
-  troubleshooting dropped network packets
-- **Release artifacts**: CycloneDX SBOMs now included in release packages for
-  supply chain security
+- **Generic Go tracing improvements**: Added generic Go protocol support,
+  including context propagation for generic requests
+- **Expanded protocol coverage**: Added JSON-RPC support across all languages
+- **Deeper HTTP payload extraction**: Added full HTTP body extraction, with
+  bounded decompression for response bodies
+- **Broader GenAI coverage**: Added Google AI Studio (Gemini) and AWS Bedrock
+  payload extraction, and fixed Vertex AI Gemini support
+- **Named CIDR labels**: Network metrics can now label configured CIDR ranges
+  with human-readable names
+- **New example scenario**: Added an Apache HTTP Server example alongside the
+  existing NGINX walkthroughs
+- **Support documentation**: Added a project support matrix for release
+  artifacts and supported environments
 
 For a complete list of changes and upgrade notes, see the
-[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.7.0).
+[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.8.0).
 
-If you want to explore the new NGINX example, see the
-[example walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.7.0/examples/nginx).
+If you want to explore the upstream examples, see the
+[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/nginx)
+and the
+[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/apache).
 
 ## How OBI works
 

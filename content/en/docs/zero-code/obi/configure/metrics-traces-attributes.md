@@ -82,10 +82,10 @@ YAML section: `ebpf`
 You can configure the component under the `ebpf` section of your YAML
 configuration or via environment variables.
 
-| YAML<br>environment variable                                     | Description                                                                                                                                                                      | Type    | Default  |
-| ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- |
-| `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`     | Controls trace context propagation method. Accepted: `all`, `headers`, `ip`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
-| `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS` | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                | boolean | false    |
+| YAML<br>environment variable                                     | Description                                                                                                                                                                                      | Type    | Default  |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | -------- |
+| `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`     | Controls trace context propagation method. Accepted: `all`, `headers`, `tcp`, `headers,tcp`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
+| `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS` | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                                | boolean | false    |
 
 ### Context propagation
 
@@ -102,16 +102,20 @@ that also use TC must chain correctly with OBI. For more information about
 chaining programs, see the
 [Cilium compatibility documentation](../../cilium-compatibility/).
 
-You can disable the TCP/IP level encoding and TC programs by setting
-`context_propagation="headers"`. This context propagation is fully compatible
-with any OpenTelemetry distributed tracing library.
+You can disable the TCP-level propagation and Linux Traffic Control programs by
+setting `context_propagation="headers"`. This mode is fully compatible with any
+OpenTelemetry distributed tracing library.
 
 Context propagation values:
 
-- `all`: Enable both HTTP and IP options context propagation
+- `all`: Enable both HTTP header and TCP context propagation
 - `headers`: Enable context propagation via the HTTP headers only
-- `ip`: Enable context propagation via the IP options field only
+- `tcp`: Enable context propagation via the TCP packet path only
+- `headers,tcp`: Enable both methods explicitly
 - `disabled`: Disable trace context propagation
+
+`http` is accepted as an alias for `headers`, but `headers` is the preferred
+name in examples and configuration.
 
 To use this option in containerized environments (Kubernetes and Docker), you
 must:
@@ -121,7 +125,7 @@ must:
   path
 - Grant the `CAP_NET_ADMIN` capability to the OBI container
 
-gRPC and HTTP/2 are not supported.
+gRPC and HTTP/2 are not supported for this network-level mode.
 
 For an example of how to configure distributed traces in Kubernetes, see our
 [Distributed traces with OBI](../../distributed-traces/) guide.
@@ -154,22 +158,24 @@ because it can create false positives, for example, if an application sends SQL
 text for logging through a TCP connection. Currently, OBI natively supports the
 PostgreSQL and MySQL binary protocols.
 
-### HTTP header enrichment for spans
+### HTTP header and body enrichment for spans {#http-header-enrichment-for-spans}
 
-OBI can attach selected HTTP headers to spans through the
-`ebpf.payload_extraction.http.enrichment` configuration section. This is useful
-when you want to carry business or routing headers into traces without manually
-instrumenting the application.
+### HTTP header and body enrichment for spans
+
+OBI can attach selected HTTP headers and selected HTTP body fields to spans
+through the `ebpf.payload_extraction.http.enrichment` configuration section.
+This is useful when you want to carry business or routing headers into traces
+without manually instrumenting the application.
 
 The enrichment engine is rule-based:
 
-- Set `enabled: true` to activate HTTP header enrichment.
-- Use `policy.default_action` to define whether unmatched headers are included
-  or excluded. The default is `exclude`.
-- Use `policy.match_order` to control rule evaluation. The default is
-  `first_match_wins`.
-- Use `obfuscate` rules to redact sensitive values while still exposing the
-  header key on the span.
+- Set `enabled: true` to activate HTTP header and body enrichment.
+- Use `policy.default_action.headers` and `policy.default_action.body` in YAML
+  to define whether unmatched headers or body content are included or excluded.
+  The default for both is `exclude`.
+- Use `obfuscate` rules to redact sensitive header values or JSON body fields
+  before they are attached to spans.
+- Rules are evaluated in order.
 
 For example:
 
@@ -182,8 +188,9 @@ ebpf:
       enrichment:
         enabled: true
         policy:
-          default_action: exclude
-          match_order: first_match_wins
+          default_action:
+            headers: exclude
+            body: exclude
           obfuscation_string: '***'
         rules:
           - action: obfuscate
@@ -202,17 +209,40 @@ ebpf:
                 - X-Custom-*
                 - X-Dice-Roll
               case_sensitive: false
+          - action: include
+            type: body
+            scope: request
+            match:
+              methods: [POST]
+              url_path_patterns:
+                - /v1/chat/completions
+          - action: obfuscate
+            type: body
+            scope: request
+            match:
+              methods: [POST]
+              url_path_patterns:
+                - /v1/chat/completions
+              obfuscation_json_paths:
+                - $.messages[*].content
 ```
 
-The following environment variables control the policy defaults:
+The following environment variables control the global enrichment behavior:
 
 - `OTEL_EBPF_HTTP_ENRICHMENT_ENABLED`
-- `OTEL_EBPF_HTTP_ENRICHMENT_DEFAULT_ACTION`
-- `OTEL_EBPF_HTTP_ENRICHMENT_MATCH_ORDER`
 - `OTEL_EBPF_HTTP_ENRICHMENT_OBFUSCATION_STRING`
 
-Rules themselves are configured in YAML. If you expect large headers, increase
-`ebpf.buffer_sizes.http` so OBI can capture the relevant values.
+The `policy.default_action.headers` and `policy.default_action.body` settings
+are configured in YAML only; there are no environment variables for these
+defaults.
+
+Rules themselves are configured in YAML. Header rules use `match.patterns` and
+optional `case_sensitive`. Body rules use `match.url_path_patterns`,
+`match.methods`, and `match.obfuscation_json_paths`.
+
+Body extraction requires HTTP payload capture. Increase `ebpf.buffer_sizes.http`
+so OBI can capture the request or response bytes you want to enrich. The limit
+applies independently to requests and responses.
 
 ## Instance ID decoration
 

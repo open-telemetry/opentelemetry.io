@@ -141,15 +141,23 @@ instead or reformat your text.
 ## Spell checking
 
 Use [CSpell](https://github.com/streetsidesoftware/cspell) to make sure that all
-your text is spelled correctly. For a list of words that are specific to the
-OpenTelemetry website, see the
-[`.cspell.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml)
-file.
+your text is spelled correctly.
 
-If `cspell` indicates an "Unknown word" error, check whether you wrote the word
-correctly. If so, add the word to the `cSpell:ignore` section at the top of your
-file. If no such section exists, you can add it to the front matter of a
-Markdown file:
+If `cspell` reports an "Unknown word", check whether you wrote the word
+correctly. If so, add the word to one of these locations:
+
+- A page-local `cSpell:ignore` list in the page front matter. For details, see
+  below.
+- Your locale-specific word list file
+- The general [all-words.txt][] word list
+
+[all-words.txt]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell/all-words.txt
+
+### Page-local `cSpell:ignore` list
+
+If the unknown word appears only on a single or a few pages, add it to a
+page-local `cSpell:ignore` list in the page front matter:
 
 ```markdown
 ---
@@ -158,14 +166,26 @@ cSpell:ignore: <word>
 ---
 ```
 
-For any other file, add `cSpell:ignore <word>` in a comment line appropriate for
-the file's context. For a [registry](/ecosystem/registry/) entry YAML file, it
-might look like this:
+For non-Markdown files, add `cSpell:ignore <word>` in a comment line appropriate
+for the file. For example, in a [registry](/ecosystem/registry/) entry YAML
+file, it might look like this:
 
 ```yaml
 # cSpell:ignore <word>
 title: registryEntryTitle
 ```
+
+### Word list files
+
+If the unknown word appears in multiple pages or is a technical term, add it to
+your locale-specific word list file. Word list files are located in the
+[.cspell/][] directory.
+
+If the word is spelled correctly in all locales, such as `opamp`, add it to the
+[all-words.txt][] file.
+
+[.cspell/]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell/
 
 ## File format
 
