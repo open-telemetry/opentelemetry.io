@@ -57,7 +57,7 @@ def do_work():
         # 'with'ブロックのスコープを抜けると、'span'は自動的に閉じられる
 ```
 
-`start_span`を使用して、現在のスパンにせずにスパンを作成することもできます。
+`start_span`を使用して、現在のスパンとせずにスパンを作成することもできます。
 これは通常、並行処理や非同期処理を追跡するために使用します。
 
 ### ネストされたスパンの作成 {#creating-nested-spans}
@@ -221,7 +221,7 @@ except Exception as ex:
 
 ### デフォルトの伝搬（伝搬）フォーマットの変更 {#change-the-default-propagation-format}
 
-デフォルトでは、OpenTelemetry Pythonは以下の伝搬（伝搬）フォーマットを使用します。
+デフォルトでは、OpenTelemetry Pythonは以下の伝搬フォーマットを使用します。
 
 - W3C Trace Context
 - W3C Baggage
