@@ -54,7 +54,7 @@ var myMeter = new Meter("MyCompany.MyProduct.MyLibrary", "1.0");
 var myFruitCounter = myMeter.CreateCounter<long>("MyFruitCounter");
 
 // Configure the OpenTelemetry MeterProvider with OTLP export
-using var meterProvider = Sdk.CreateMeterProviderBuilder()
+var meterProvider = Sdk.CreateMeterProviderBuilder()
     .AddMeter("MyCompany.MyProduct.MyLibrary")
     .AddOtlpExporter((exporterOptions, metricReaderOptions) =>
     {

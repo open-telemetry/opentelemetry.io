@@ -1,0 +1,18 @@
+title: Exporter Creator
+registryType: exporter
+language: collector
+tags:
+  - exporter
+  - dynamic
+urls:
+  repo: https://github.com/stuart23/exportercreator
+license: Apache 2.0
+description:
+  A collector plugin that dynamically creates exporters at runtime based on
+  observed endpoints.
+authors:
+  - name: Stuart Buckingham
+    url: https://github.com/stuart23
+createdAt: '2026-03-25'
+isNative: false
+isFirstParty: false

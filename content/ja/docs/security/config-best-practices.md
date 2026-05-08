@@ -2,8 +2,7 @@
 title: コレクターの設定のベストプラクティス
 linkTitle: コレクターの設定
 weight: 112
-default_lang_commit: 179f03bf118e1e8a3cc195ab56fc09d85c476394 # patched
-drifted_from_default: true
+default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
 cSpell:ignore: exporterhelper
 ---
 

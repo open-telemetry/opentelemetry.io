@@ -80,9 +80,9 @@ socket filter to capture the network events. This mode doesn't conflict with
 Cilium CNI or other eBPF programs, which use the Linux Traffic Control egress
 and ingress filters.
 
-| YAML    | Environment variable      | Type     | Default |
-| ------- | ------------------------- | -------- | ------- |
-| `cidrs` | `OTEL_EBPF_NETWORK_CIDRS` | []string | (empty) |
+| YAML    | Environment variable      | Type                 | Default |
+| ------- | ------------------------- | -------------------- | ------- |
+| `cidrs` | `OTEL_EBPF_NETWORK_CIDRS` | list of CIDR strings | (empty) |
 
 CIDRs list, to be set as the `src.cidr` and `dst.cidr` attribute with the entry
 that matches the `src.address` and `dst.address` respectively.
@@ -93,8 +93,17 @@ address matches multiple CIDR definitions, the flow is decorated with the
 narrowest CIDR. As a result, you can safely add a `0.0.0.0/0` entry to group all
 the traffic that does not match any of the other CIDRs.
 
-If you set this property via environment variable each entry must be separated
-by a comma, for example:
+In YAML, each entry can be either a plain CIDR string or an object with `cidr`
+and `name` fields. The `OTEL_EBPF_NETWORK_CIDRS` environment variable accepts a
+comma-separated list of CIDR strings only. For example:
+
+```yaml
+network:
+  cidrs:
+    - cidr: 10.0.0.0/8
+      name: cluster-internal
+    - 192.168.0.0/16
+```
 
 ```sh
 OTEL_EBPF_NETWORK_CIDRS=10.0.0.0/8,192.168.0.0/16
@@ -231,3 +240,35 @@ target collector.
 
 If set to `true`, OBI prints each network flow to standard output. Note, this
 might generate a lot of output.
+
+| YAML          | Environment variable            | Type   | Default   |
+| ------------- | ------------------------------- | ------ | --------- |
+| `guess_ports` | `OTEL_EBPF_NETWORK_GUESS_PORTS` | string | `disable` |
+
+> [!IMPORTANT]
+>
+> In v0.7.0, network port guessing is now **disabled by default**. This is a
+> breaking change from v0.6.0 and earlier versions. If you depend on inferred
+> client/server ports for flows where OBI cannot determine the initiator,
+> `client.port` and `server.port` may now be empty unless you explicitly opt
+> back into ordinal guessing.
+
+Specifies whether OBI should attempt to guess client and server ports based on
+ordinal heuristics when the initiator cannot be determined from flow metadata.
+This is useful for tracking connections to unknown services where the port alone
+might help identify the service.
+
+Accepted values are: `disable` (default), `ordinal`.
+
+To re-enable port guessing based on ordinal heuristics, use:
+
+```yaml
+network:
+  guess_ports: ordinal
+```
+
+Or via environment variable:
+
+```sh
+OTEL_EBPF_NETWORK_GUESS_PORTS=ordinal
+```

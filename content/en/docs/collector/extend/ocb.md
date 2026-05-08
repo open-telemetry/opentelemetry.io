@@ -305,6 +305,17 @@ Follow these steps to containerize your custom Collector.
    EXPOSE 4317 4318 12001
    ```
 
+   > [!NOTE]
+   >
+   > The Dockerfile references the distribution name `otelcol-dev` from
+   > `builder-config.yaml` in the `COPY` and `ENTRYPOINT` instructions. If you
+   > change the `name` or `output_path` in the `dist` section of your
+   > `builder-config.yaml`, make sure to update the following lines in the
+   > Dockerfile to match:
+   >
+   > - `COPY --chmod=755 --from=build-stage /build/<dist_name> /otelcol`
+   > - `ENTRYPOINT ["/otelcol/<dist_name>"]`
+
 1. Add the following definition to your `collector-config.yaml` file:
 
    ```yaml

@@ -66,7 +66,7 @@ These are the members of [@open-telemetry/docs-maintainers][]:
 - [Phillip Carter](https://github.com/cartermp), Salesforce
 - [Severin Neumann](https://github.com/svrnm), Causely
 - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
-- [Vitor Vasconcellos](https://github.com/vitorvasc), Mercado Libre
+- [Vitor Vasconcellos](https://github.com/vitorvasc)
 
 For more information about the maintainer role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
@@ -85,36 +85,26 @@ For more information about the approver role, see the
 
 These are the members of [@open-telemetry/docs-triagers][]:
 
+- [Diana Todea](https://github.com/didiViking), VictoriaMetrics
 - [Emídio Neto](https://github.com/emdneto)
 - [Ezzio Moreira](https://github.com/EzzioMoreira)
-- [Masaki Sugimoto](https://github.com/Msksgm), Henry, Inc.
 - [Michael Yao](https://github.com/windsonsea), DaoCloud
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), AWS
 
 For more information about the triager role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#triager).
 
-### Emeritus maintainers
+### Emeritus
 
-- [jparsana](https://github.com/jparsana)
-- [Morgan McLean](https://github.com/mtwo)
-- [Steve Flanders](https://github.com/flands)
-
-For more information about the emeritus role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
-
-### Emeritus approvers
-
-- [Paul Bruce](https://github.com/paulsbruce)
-- [Michael Hausenblas](https://github.com/mhausenblas)
-- [Ted Young](https://github.com/tedsuo)
-
-For more information about the emeritus role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
-
-### Emeritus triagers
-
-- [Kazunori Otani](https://github.com/katzchang)
+- [jparsana](https://github.com/jparsana), Maintainer
+- [Kazunori Otani](https://github.com/katzchang), Triager
+- [Masaki Sugimoto](https://github.com/Msksgm), Triager
+- [Michael Hausenblas](https://github.com/mhausenblas), Approver
+- [Morgan McLean](https://github.com/mtwo), Maintainer
+- [Paul Bruce](https://github.com/paulsbruce), Approver
+- [Sergey Kanzhelev](https://github.com/SergeyKanzhelev), Approver
+- [Steve Flanders](https://github.com/flands), Maintainer
+- [Ted Young](https://github.com/tedsuo), Approver
 
 For more information about the emeritus role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).

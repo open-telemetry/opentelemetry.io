@@ -14,10 +14,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Automatically manages PR approval labels:
+# Manages PR approval labels for a single PR:
 #   - missing:docs-approval  -> when docs-approvers approval is pending
 #   - missing:sig-approval   -> when SIG approval is pending
 #   - ready-to-be-merged     -> when all required approvals are present
+#
+# Required environment variables:
+#   REPO - Repository in "owner/repo" format
+#   PR   - Pull request number to process
+#
+# Optional environment variables:
+#   LABELED_PRS_OUTPUT_FILE - Path to append newly-labeled PR metadata (JSONL)
+#   PUBLISH_DATE_LABELS     - Space-separated list of labels that trigger
+#                             publish-date checks. If unset, date checks are
+#                             skipped with a warning.
+#   TEAM_CACHE_DIR          - Directory for caching team membership lookups
+#                             (set by blog-publish-check.sh in batch mode)
+#
+# Authentication:
+#   Uses the GitHub CLI (gh). Expects it to be authenticated via GITHUB_TOKEN,
+#   GH_TOKEN, or `gh auth login`.
 
 set -euo pipefail
 
@@ -30,9 +46,24 @@ DOCS_MAINTAINERS_TEAM="docs-maintainers"
 COMPONENT_OWNERS_FILE=".github/component-owners.yml"
 ORG="open-telemetry"
 
-if [[ -z "${REPO:-}" || -z "${PR:-}" ]]; then
-  echo "ERROR: REPO and PR environment variables must be set."
-  exit 0
+# Labels that indicate a PR may contain content with a publish date in its
+# frontmatter. Set via the PUBLISH_DATE_LABELS environment variable (space-
+# separated list) in the workflow YAML. Falls back gracefully if unset.
+if [[ -z "${PUBLISH_DATE_LABELS:-}" ]]; then
+  echo "WARNING: PUBLISH_DATE_LABELS not set. Skipping publish date checks."
+  _PUBLISH_DATE_LABELS=()
+else
+  read -ra _PUBLISH_DATE_LABELS <<< "${PUBLISH_DATE_LABELS}"
+fi
+
+if [[ -z "${REPO:-}" ]]; then
+  echo "ERROR: REPO environment variable must be set."
+  exit 1
+fi
+
+if [[ -z "${PR:-}" ]]; then
+  echo "ERROR: PR environment variable must be set."
+  exit 1
 fi
 
 # ---------------------------------------------------------------------------
@@ -45,6 +76,8 @@ add_label() {
   else
     echo "Adding label '${label}'."
     gh pr edit "${PR}" --repo "${REPO}" --add-label "${label}"
+    CURRENT_LABELS="${CURRENT_LABELS}
+${label}"
   fi
 }
 
@@ -56,6 +89,7 @@ remove_label() {
   if echo "${CURRENT_LABELS}" | grep -qxF "${label}"; then
     echo "Removing label '${label}'."
     gh pr edit "${PR}" --repo "${REPO}" --remove-label "${label}"
+    CURRENT_LABELS=$(echo "${CURRENT_LABELS}" | grep -vxF "${label}")
   else
     echo "Label '${label}' not present, nothing to remove."
   fi
@@ -67,10 +101,33 @@ remove_label() {
 # ---------------------------------------------------------------------------
 get_team_members() {
   local team_slug="$1"
-  gh api \
+
+  # Use cache if available (set by blog-publish-check.sh for batch mode)
+  if [[ -n "${TEAM_CACHE_DIR:-}" ]]; then
+    local cache_file="${TEAM_CACHE_DIR}/${team_slug}.txt"
+    if [[ -f "${cache_file}" ]]; then
+      cat "${cache_file}"
+      return
+    fi
+  fi
+
+  local output
+  if ! output=$(gh api \
     --paginate \
     "/orgs/${ORG}/teams/${team_slug}/members" \
-    --jq '.[].login' 2>/dev/null | tr '[:upper:]' '[:lower:]' || true
+    --jq '.[].login' 2>&1); then
+    echo "::warning::Failed to fetch team '${team_slug}': ${output}" >&2
+    return 0  # Return empty (graceful degradation)
+  fi
+  local members
+  members=$(echo "${output}" | tr '[:upper:]' '[:lower:]')
+
+  # Populate cache if available
+  if [[ -n "${TEAM_CACHE_DIR:-}" ]]; then
+    echo "${members}" > "${TEAM_CACHE_DIR}/${team_slug}.txt"
+  fi
+
+  echo "${members}"
 }
 
 # ---------------------------------------------------------------------------
@@ -85,7 +142,7 @@ get_team_members() {
 # Outputs unique team slugs (without the org prefix), one per line.
 # ---------------------------------------------------------------------------
 get_sig_teams_for_files() {
-  local pr_files="$1"
+  local -a pr_files=("$@")
   local sig_teams=""
 
   local current_component=""
@@ -99,7 +156,7 @@ get_sig_teams_for_files() {
     if [[ "${line}" =~ ^[[:space:]]+([^[:space:]-][^:]+):[[:space:]]*$ ]]; then
       # Before moving to new component, process the previous one
       if [[ -n "${current_component}" && -n "${current_teams}" ]]; then
-        for file in ${pr_files}; do
+        for file in "${pr_files[@]}"; do
           if [[ "${file}" == "${current_component}"/* || "${file}" == "${current_component}" ]]; then
             sig_teams="${sig_teams} ${current_teams}"
             break
@@ -123,7 +180,7 @@ get_sig_teams_for_files() {
 
   # Process the last component
   if [[ -n "${current_component}" && -n "${current_teams}" ]]; then
-    for file in ${pr_files}; do
+    for file in "${pr_files[@]}"; do
       if [[ "${file}" == "${current_component}"/* || "${file}" == "${current_component}" ]]; then
         sig_teams="${sig_teams} ${current_teams}"
         break
@@ -135,6 +192,93 @@ get_sig_teams_for_files() {
   echo "${sig_teams}" | tr ' ' '\n' | sort -u | grep -v '^$' || true
 }
 
+# ---------------------------------------------------------------------------
+# Check if the PR has potentially a publish date in the frontmatter of 
+# changed files.
+# -------------------------------------------------------------------------
+should_check_publish_date() {
+  # Skip if the PR is already labeled ready-to-be-merged — the date check was
+  # satisfied on a previous run and re-evaluating could only flip-flop the label.
+  if echo "${CURRENT_LABELS}" | grep -qxF "${LABEL_READY}"; then
+    return 1
+  fi
+  local label
+  for label in "${_PUBLISH_DATE_LABELS[@]}"; do
+    if echo "${CURRENT_LABELS}" | grep -qxF "${label}"; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+# ---------------------------------------------------------------------------
+# Fetch the latest publish date (YYYY-MM-DD) from the 'date:' frontmatter
+# field of all markdown files changed in the PR, commonly used on blog posts.
+# Uses the GitHub API to read content from the PR head (handles fork PRs).
+# Returns the latest date found, or empty string if none.
+# ---------------------------------------------------------------------------
+get_publish_date() {
+  local head_sha="$1"
+  shift
+  local -a pr_files=("$@")
+  local latest_date=""
+
+  for file in "${pr_files[@]}"; do
+    # Only inspect markdown files in known content paths to avoid unnecessary
+    # GitHub API calls, which can cause rate limiting in batch mode.
+    if [[ ! "${file}" == *.md && ! "${file}" == *.mdx ]]; then
+      continue
+    fi
+    # Restrict to paths that commonly contain publish dates in frontmatter.
+    if [[ ! "${file}" == content/en/blog/* && ! "${file}" == content/en/announcements/* ]]; then
+      continue
+    fi
+    # Skip any file path containing potentially unsafe characters to avoid
+    # shell injection when constructing the GitHub API URL.
+    if [[ ! "${file}" =~ ^[A-Za-z0-9._/-]+$ ]]; then
+      echo "Skipping potentially unsafe file path: ${file}" >&2
+      continue
+    fi
+    local raw_content
+    if ! raw_content=$(gh api "/repos/${REPO}/contents/${file}?ref=${head_sha}" \
+      --jq '.content' 2>&1); then
+      echo "::warning::Failed to fetch content for ${file}: ${raw_content}" >&2
+      continue
+    fi
+    local content
+    content=$(echo "${raw_content}" | base64 --decode 2>/dev/null || true)
+    [[ -z "${content}" ]] && continue
+
+    local raw_date_line
+    raw_date_line=$(echo "${content}" | grep -m 1 '^date:' || true)
+    [[ -z "${raw_date_line}" ]] && continue
+
+    # Strip the "date:" prefix.
+    local file_date
+    # shellcheck disable=SC2001 # sed is clearer here than nested parameter expansion
+    file_date=$(echo "${raw_date_line}" | sed 's/date:[[:space:]]*//')
+    # Remove any inline comment starting with '#'.
+    file_date=${file_date%%#*}
+    # Remove surrounding quotes.
+    file_date=$(echo "${file_date}" | tr -d "\"'")
+    # Take the first whitespace-delimited token as the date.
+    file_date=$(echo "${file_date}" | awk '{print $1}')
+    # Ensure we only keep the first 10 characters (YYYY-MM-DD).
+    file_date=${file_date:0:10}
+    # Validate that the extracted string is a proper YYYY-MM-DD date.
+    if [[ ! "${file_date}" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+      continue
+    fi
+
+    echo "Found date '${file_date}' in ${file}" >&2
+    if [[ -z "${latest_date}" || "${file_date}" > "${latest_date}" ]]; then
+      latest_date="${file_date}"
+    fi
+  done
+
+  echo "${latest_date}"
+}
+
 # ===========================================================================
 # Main
 # ===========================================================================
@@ -143,15 +287,41 @@ main() {
 
   # Fetch PR data
   local pr_json
-  pr_json=$(gh pr view "${PR}" --repo "${REPO}" --json "files,latestReviews,labels")
+  pr_json=$(gh pr view "${PR}" --repo "${REPO}" \
+    --json "files,latestReviews,labels,headRefOid,title,url")
 
-  local pr_files
-  pr_files=$(echo "${pr_json}" | jq -r '.files[].path')
+  local -a pr_files
+  mapfile -t pr_files < <(echo "${pr_json}" | jq -r '.files[].path')
 
   local latest_reviews
   latest_reviews=$(echo "${pr_json}" | jq -c '.latestReviews')
 
   CURRENT_LABELS=$(echo "${pr_json}" | jq -r '.labels[].name')
+
+  local head_sha
+  head_sha=$(echo "${pr_json}" | jq -r '.headRefOid')
+
+  # -------------------------------------------------------------------------
+  # 0. Pre-check: block merge if any reviewer has an outstanding CHANGES_REQUESTED
+  # -------------------------------------------------------------------------
+  echo ""
+  echo "=== Checking for outstanding change requests ==="
+  local has_changes_requested=false
+  while IFS= read -r review; do
+    local cr_state
+    cr_state=$(echo "${review}" | jq -r '.state')
+    if [[ "${cr_state}" == "CHANGES_REQUESTED" ]]; then
+      local cr_reviewer
+      cr_reviewer=$(echo "${review}" | jq -r '.author.login')
+      echo "Outstanding change request from: ${cr_reviewer}"
+      has_changes_requested=true
+      break
+    fi
+  done < <(echo "${latest_reviews}" | jq -c '.[]')
+
+  if [[ "${has_changes_requested}" == "false" ]]; then
+    echo "No outstanding change requests found."
+  fi
 
   # -------------------------------------------------------------------------
   # 1. Check docs approval
@@ -189,7 +359,7 @@ main() {
   echo ""
   echo "=== Checking SIG approval ==="
   local sig_teams
-  sig_teams=$(get_sig_teams_for_files "${pr_files}")
+  sig_teams=$(get_sig_teams_for_files "${pr_files[@]}")
 
   local sig_needed=false
   local sig_approved=false
@@ -236,7 +406,35 @@ ${members}"
   fi
 
   # -------------------------------------------------------------------------
-  # 3. Apply / remove labels
+  # 3. Check publish date, if applicable
+  # -------------------------------------------------------------------------
+  echo ""
+  echo "=== Checking publish date ==="
+  local publish_date_ready="true"
+
+  if should_check_publish_date; then
+    local publish_date
+    publish_date=$(get_publish_date "${head_sha}" "${pr_files[@]}")
+
+    if [[ -n "${publish_date}" ]]; then
+      local today
+      today=$(date -u +%Y-%m-%d)
+      echo "Publish date: ${publish_date}, today: ${today}"
+      if [[ "${publish_date}" > "${today}" ]]; then
+        echo "Publish date is in the future. Not labeling ready-to-be-merged."
+        publish_date_ready="false"
+      else
+        echo "Publish date is today or past. Labeling ready-to-be-merged."
+      fi
+    else
+      echo "No publish date found in changed files."
+    fi
+  else
+    echo "PR does not have any of the '${_PUBLISH_DATE_LABELS[*]}' labels. Skipping date check."
+  fi
+
+  # -------------------------------------------------------------------------
+  # 4. Apply / remove labels
   # -------------------------------------------------------------------------
   echo ""
   echo "=== Applying labels ==="
@@ -277,8 +475,29 @@ ${members}"
     fi
   fi
 
+  # Do not label ready-to-be-merged if publish date is in the future
+  if [[ "${all_approved}" == "true" && "${publish_date_ready}" == "false" ]]; then
+    all_approved="false"
+  fi
+
+  # Block ready-to-be-merged if any reviewer has an outstanding change request.
+  # Also ensure missing:docs-approval is present so maintainers have visibility.
+  if [[ "${has_changes_requested}" == "true" && "${all_approved}" != "unknown" ]]; then
+    echo "Blocking ${LABEL_READY}: outstanding change request(s) detected."
+    all_approved="false"
+    add_label "${LABEL_DOCS_MISSING}"
+  fi
+
   if [[ "${all_approved}" == "true" ]]; then
+    local was_ready_before="false"
+    if echo "${CURRENT_LABELS}" | grep -qxF "${LABEL_READY}"; then
+      was_ready_before="true"
+    fi
     add_label "${LABEL_READY}"
+    if [[ "${was_ready_before}" == "false" && -n "${LABELED_PRS_OUTPUT_FILE:-}" ]]; then
+      echo "${pr_json}" | jq -c --argjson number "${PR}" '{number: $number, title, url}' \
+        >> "${LABELED_PRS_OUTPUT_FILE}"
+    fi
   elif [[ "${all_approved}" == "false" ]]; then
     remove_label "${LABEL_READY}"
   else
@@ -289,5 +508,4 @@ ${members}"
   echo "Done."
 }
 
-# Ensure the script does not block a PR even if it fails
-main || echo "Failed to run $0"
+main

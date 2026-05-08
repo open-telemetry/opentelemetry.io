@@ -103,12 +103,12 @@ spec:
     spec:
       containers:
         - name: nodejs-service
-          image: ghcr.io/open-teletry/obi-testimg:node-0.1.1
+          image: ghcr.io/open-telemetry/obi-testimg:node-0.1.0
           ports:
-            - containerPort: 3000
+            - containerPort: 3030
           env:
             - name: NODEJS_SERVICE_PORT
-              value: '3000'
+              value: '3030'
             - name: NODEJS_SERVICE_HOST
               value: '0.0.0.0'
 ---
@@ -120,8 +120,8 @@ spec:
   selector:
     app: nodejs-service
   ports:
-    - port: 3000
-      targetPort: 3000
+    - port: 3030
+      targetPort: 3030
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -139,7 +139,7 @@ spec:
     spec:
       containers:
         - name: go-service
-          image: ghcr.io/open-teletry/obi-testimg:go-0.1.1
+          image: ghcr.io/open-telemetry/obi-testimg:go-0.1.0
           ports:
             - containerPort: 8080
           env:
@@ -175,12 +175,12 @@ spec:
     spec:
       containers:
         - name: python-service
-          image: ghcr.io/open-teletry/obi-testimg:python-0.1.1
+          image: ghcr.io/open-telemetry/obi-testimg:python-0.1.0
           ports:
-            - containerPort: 8080
+            - containerPort: 8380
           env:
             - name: PYTHON_SERVICE_PORT
-              value: '8080'
+              value: '8380'
             - name: PYTHON_SERVICE_HOST
               value: '0.0.0.0'
 ---
@@ -192,8 +192,8 @@ spec:
   selector:
     app: python-service
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 8380
+      targetPort: 8380
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -211,12 +211,12 @@ spec:
     spec:
       containers:
         - name: ruby-service
-          image: ghcr.io/open-telemetry/obi-testimg:rails-0.1.1
+          image: ghcr.io/open-telemetry/obi-testimg:rails-0.1.0
           ports:
-            - containerPort: 3000
+            - containerPort: 3040
           env:
             - name: RAILS_SERVICE_PORT
-              value: '3000'
+              value: '3040'
             - name: RAILS_SERVICE_HOST
               value: '0.0.0.0'
 ---
@@ -228,8 +228,8 @@ spec:
   selector:
     app: ruby-service
   ports:
-    - port: 3000
-      targetPort: 3000
+    - port: 3040
+      targetPort: 3040
 ```
 
 ### Deploy OBI
@@ -347,8 +347,8 @@ spec:
 Forward a port to the host and trigger a request:
 
 ```shell
-kubectl port-forward services/nodejs-service 3000:3000 &
-curl http://localhost:3000/traceme
+kubectl port-forward services/nodejs-service 3030:3030 &
+curl http://localhost:3030/traceme
 ```
 
 Finally check your OBI Pod logs:

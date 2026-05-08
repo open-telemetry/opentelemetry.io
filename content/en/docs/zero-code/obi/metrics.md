@@ -9,22 +9,25 @@ cSpell:ignore: replicaset statefulset
 The following table describes the exported metrics in both OpenTelemetry and
 Prometheus format.
 
-| Family      | Name (OTel)                      | Name (Prometheus)                      | Type      | Unit    | Description                                                                                                           |
-| ----------- | -------------------------------- | -------------------------------------- | --------- | ------- | --------------------------------------------------------------------------------------------------------------------- |
-| Application | `http.client.request.duration`   | `http_client_request_duration_seconds` | Histogram | seconds | Duration of HTTP service calls from the client side                                                                   |
-| Application | `http.client.request.body.size`  | `http_client_request_body_size_bytes`  | Histogram | bytes   | Size of the HTTP request body as sent by the client                                                                   |
-| Application | `http.client.response.body.size` | `http_client_response_body_size_bytes` | Histogram | bytes   | Size of the HTTP response body as sent by the client                                                                  |
-| Application | `http.server.request.duration`   | `http_server_request_duration_seconds` | Histogram | seconds | Duration of HTTP service calls from the server side                                                                   |
-| Application | `http.server.request.body.size`  | `http_server_request_body_size_bytes`  | Histogram | bytes   | Size of the HTTP request body as received at the server side                                                          |
-| Application | `http.server.response.body.size` | `http_server_response_body_size_bytes` | Histogram | bytes   | Size of the HTTP response body as received at the server side                                                         |
-| Application | `rpc.client.duration`            | `rpc_client_duration_seconds`          | Histogram | seconds | Duration of gRPC service calls from the client side                                                                   |
-| Application | `rpc.server.duration`            | `rpc_server_duration_seconds`          | Histogram | seconds | Duration of RPC service calls from the server side                                                                    |
-| Application | `sql.client.duration`            | `sql_client_duration_seconds`          | Histogram | seconds | Duration of SQL client operations (Experimental)                                                                      |
-| Application | `redis.client.duration`          | `redis_client_duration_seconds`        | Histogram | seconds | Duration of Redis client operations (Experimental)                                                                    |
-| Application | `messaging.publish.duration`     | `messaging_publish_duration`           | Histogram | seconds | Duration of Messaging (Kafka) publish operations (Experimental)                                                       |
-| Application | `messaging.process.duration`     | `messaging_process_duration`           | Histogram | seconds | Duration of Messaging (Kafka) process operations (Experimental)                                                       |
-| Network     | `obi.network.flow.bytes`         | `obi_network_flow_bytes`               | Counter   | bytes   | Bytes submitted from a source network endpoint to a destination network endpoint                                      |
-| Network     | `obi.network.inter.zone.bytes`   | `obi_network_inter_zone_bytes`         | Counter   | bytes   | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes) |
+| Family      | Name (OTel)                        | Name (Prometheus)                          | Type      | Unit    | Description                                                                                                           |
+| ----------- | ---------------------------------- | ------------------------------------------ | --------- | ------- | --------------------------------------------------------------------------------------------------------------------- |
+| Application | `http.client.request.duration`     | `http_client_request_duration_seconds`     | Histogram | seconds | Duration of HTTP service calls from the client side                                                                   |
+| Application | `http.client.request.body.size`    | `http_client_request_body_size_bytes`      | Histogram | bytes   | Size of the HTTP request body as sent by the client                                                                   |
+| Application | `http.client.response.body.size`   | `http_client_response_body_size_bytes`     | Histogram | bytes   | Size of the HTTP response body as sent by the client                                                                  |
+| Application | `http.server.request.duration`     | `http_server_request_duration_seconds`     | Histogram | seconds | Duration of HTTP service calls from the server side                                                                   |
+| Application | `http.server.request.body.size`    | `http_server_request_body_size_bytes`      | Histogram | bytes   | Size of the HTTP request body as received at the server side                                                          |
+| Application | `http.server.response.body.size`   | `http_server_response_body_size_bytes`     | Histogram | bytes   | Size of the HTTP response body as received at the server side                                                         |
+| Application | `rpc.client.duration`              | `rpc_client_duration_seconds`              | Histogram | seconds | Duration of gRPC service calls from the client side                                                                   |
+| Application | `rpc.server.duration`              | `rpc_server_duration_seconds`              | Histogram | seconds | Duration of RPC service calls from the server side                                                                    |
+| Application | `sql.client.duration`              | `sql_client_duration_seconds`              | Histogram | seconds | Duration of SQL client operations (Experimental)                                                                      |
+| Application | `redis.client.duration`            | `redis_client_duration_seconds`            | Histogram | seconds | Duration of Redis client operations (Experimental)                                                                    |
+| Application | `messaging.publish.duration`       | `messaging_publish_duration`               | Histogram | seconds | Duration of Messaging (Kafka) publish operations (Experimental)                                                       |
+| Application | `messaging.process.duration`       | `messaging_process_duration`               | Histogram | seconds | Duration of Messaging (Kafka) process operations (Experimental)                                                       |
+| Application | `gen_ai.client.operation.duration` | `gen_ai_client_operation_duration_seconds` | Histogram | seconds | Duration of GenAI client operations (Experimental)                                                                    |
+| Application | `gen_ai.client.token.usage`        | `gen_ai_client_token_usage`                | Histogram | 1       | Number of GenAI input/output tokens consumed, labeled by token type (Experimental)                                    |
+| Network     | `obi.network.flow.bytes`           | `obi_network_flow_bytes_total`             | Counter   | bytes   | Bytes submitted from a source network endpoint to a destination network endpoint                                      |
+| Network     | `obi.network.inter.zone.bytes`     | `obi_network_inter_zone_bytes_total`       | Counter   | bytes   | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes) |
+| Network     | `obi.stat.tcp.rtt`                 | `obi_stat_tcp_rtt_seconds`                 | Histogram | seconds | TCP round-trip time (RTT) latency observed between network endpoints (StatsO11y)                                      |
 
 OBI can also export
 [Span metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector)
@@ -60,6 +63,19 @@ check the `attributes`->`select` section in the
 | Application (all)              | `k8s.replicaset.name`        | shown if Kubernetes metadata is enabled           |
 | Application (all)              | `k8s.statefulset.name`       | shown if Kubernetes metadata is enabled           |
 | Application (all)              | `k8s.cluster.name`           | shown if Kubernetes metadata is enabled           |
+| Application (all)              | `container.id`               | shown if Docker metadata is enabled               |
+| Application (all)              | `container.name`             | shown if Docker metadata is enabled               |
+| Application (all)              | `cloud.provider`             | shown if cloud metadata is enabled                |
+| Application (all)              | `cloud.platform`             | shown if cloud metadata is enabled                |
+| Application (all)              | `cloud.region`               | shown if cloud metadata is enabled                |
+| Application (all)              | `cloud.account.id`           | shown if cloud metadata is enabled                |
+| Application (all)              | `cloud.availability_zone`    | shown if cloud metadata is enabled                |
+| Application (all)              | `cloud.resource_id`          | shown if cloud metadata is enabled (Azure only)   |
+| Application (all)              | `host.id`                    | shown if cloud metadata is enabled                |
+| Application (all)              | `host.type`                  | shown if cloud metadata is enabled                |
+| Application (all)              | `host.image.id`              | shown if cloud metadata is enabled (AWS only)     |
+| Application (all)              | `gcp.gce.instance.name`      | shown if cloud metadata is enabled (GCP only)     |
+| Application (all)              | `gcp.gce.instance.hostname`  | shown if cloud metadata is enabled (GCP only)     |
 | Application (all)              | `service.name`               | shown                                             |
 | Application (all)              | `service.namespace`          | shown                                             |
 | Application (all)              | `target.instance`            | shown                                             |
@@ -126,13 +142,14 @@ OBI can be
 [configured to report internal metrics](../configure/internal-metrics-reporter/)
 in Prometheus Format.
 
-| Name                                 | Type       | Description                                                                              |
-| ------------------------------------ | ---------- | ---------------------------------------------------------------------------------------- |
-| `obi_ebpf_tracer_flushes`            | Histogram  | Length of the groups of traces flushed from the eBPF tracer to the next pipeline stage   |
-| `obi_metric_exports_total`           | Counter    | Length of the metric batches submitted to the remote OTel collector                      |
-| `obi_metric_export_errors_total`     | CounterVec | Error count on each failed OTel metric export, by error type                             |
-| `obi_trace_exports_total`            | Counter    | Length of the trace batches submitted to the remote OTel collector                       |
-| `obi_trace_export_errors_total`      | CounterVec | Error count on each failed OTel trace export, by error type                              |
-| `obi_prometheus_http_requests_total` | CounterVec | Number of requests towards the Prometheus Scrape endpoint, faceted by HTTP port and path |
-| `obi_instrumented_processes`         | GaugeVec   | Instrumented processes by OBI, with process name                                         |
-| `obi_internal_build_info`            | GaugeVec   | Version information of the OBI binary, including the build time and commit hash          |
+| Name                                    | Type       | Description                                                                              |
+| --------------------------------------- | ---------- | ---------------------------------------------------------------------------------------- |
+| `obi_ebpf_tracer_flushes`               | Histogram  | Length of the groups of traces flushed from the eBPF tracer to the next pipeline stage   |
+| `obi_metric_exports_total`              | Counter    | Length of the metric batches submitted to the remote OTel collector                      |
+| `obi_metric_export_errors_total`        | CounterVec | Error count on each failed OTel metric export, by error type                             |
+| `obi_trace_exports_total`               | Counter    | Length of the trace batches submitted to the remote OTel collector                       |
+| `obi_trace_export_errors_total`         | CounterVec | Error count on each failed OTel trace export, by error type                              |
+| `obi_prometheus_http_requests_total`    | CounterVec | Number of requests towards the Prometheus Scrape endpoint, faceted by HTTP port and path |
+| `obi_bpf_network_ignored_packets_total` | Counter    | Number of network packets dropped by OBI network filters before flow accounting          |
+| `obi_instrumented_processes`            | GaugeVec   | Instrumented processes by OBI, with process name                                         |
+| `obi_internal_build_info`               | GaugeVec   | Version information of the OBI binary, including the build time and commit hash          |

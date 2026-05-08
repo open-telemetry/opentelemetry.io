@@ -108,9 +108,8 @@ PHP supports OpenTelemetry's experimental
 [Declarative Configuration](/docs/specs/otel/configuration/#declarative-configuration),
 where the SDK can be configured through a YAML file.
 
-To enable this, set `OTEL_EXPERIMENTAL_CONFIG_FILE=/path/to/config.yaml` where
-`config.yaml` is a file which conforms to the declarative configuration schema,
-for example:
+To enable this, set `OTEL_CONFIG_FILE=/path/to/config.yaml` where `config.yaml`
+is a file which conforms to the declarative configuration schema, for example:
 
 `config.yaml`:
 
@@ -132,13 +131,13 @@ resource:
 
 ```shell
 OTEL_PHP_AUTOLOAD_ENABLED=true \
-OTEL_EXPERIMENTAL_CONFIG_FILE=/path/to/config.yaml
+OTEL_CONFIG_FILE=/path/to/config.yaml
 php example.php
 ```
 
-The existence of `OTEL_EXPERIMENTAL_CONFIG_FILE` will cause the autoloader to
-attempt to configure with the provided config file, and other environment
-variables will be ignored.
+The existence of `OTEL_CONFIG_FILE` will cause the autoloader to attempt to
+configure with the provided config file, and other environment variables will be
+ignored.
 
 ### Excluded URLs
 
@@ -163,17 +162,17 @@ details, see the
 
 There are also a number of PHP-specific configurations:
 
-| Name                                   | Default value | Values                                                                                | Example                      | Description                                                                                  |
-| -------------------------------------- | ------------- | ------------------------------------------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------- |
-| `OTEL_PHP_TRACES_PROCESSOR`            | `batch`       | `batch`, `simple`                                                                     | `simple`                     | Span processor selection                                                                     |
-| `OTEL_PHP_DETECTORS`                   | `all`         | `env`, `host`, `os`, `process`, `process_runtime`, `sdk`, `sdk_provided`, `container` | `env,os,process`             | Resource detector selection                                                                  |
-| `OTEL_PHP_AUTOLOAD_ENABLED`            | `false`       | `true`, `false`                                                                       | `true`                       | Enable/disable SDK autoloading                                                               |
-| `OTEL_PHP_LOG_DESTINATION`             | `default`     | `error_log`, `stderr`, `stdout`, `psr3`, `none`                                       | `stderr`                     | Where internal errors and warnings will be sent                                              |
-| `OTEL_PHP_INTERNAL_METRICS_ENABLED`    | `false`       | `true`, `false`                                                                       | `true`                       | Whether the SDK should emit metrics about its internal state (for example, batch processors) |
-| `OTEL_PHP_DISABLED_INSTRUMENTATIONS`   | `[]`          | Instrumentation names, or `all`                                                       | `psr15,psr18`                | Disable one or more installed auto-instrumentations                                          |
-| `OTEL_PHP_EXCLUDED_URLS`               | ``            | Comma-delimited regular expression patterns                                           | `client/.*/info,healthcheck` | Do not load the SDK if request URL matches one of the supplied regular expressions           |
-| `OTEL_PHP_DEBUG_SCOPES_DISABLED`       | `false`       | `true`, `false`                                                                       | `true`                       | Turn on or off scope detachment debugging.                                                   |
-| `OTEL_PHP_EXPERIMENTAL_AUTO_ROOT_SPAN` | `false`       | `true`, `false`                                                                       | `true`                       | Start a root span during composer autoloading                                                |
+| Name                                   | Default value | Values                                                                                | Example                      | Description                                                                                                                         |
+| -------------------------------------- | ------------- | ------------------------------------------------------------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `OTEL_PHP_TRACES_PROCESSOR`            | `batch`       | `batch`, `simple`                                                                     | `simple`                     | Span processor selection                                                                                                            |
+| `OTEL_PHP_DETECTORS`                   | `all`         | `env`, `host`, `os`, `process`, `process_runtime`, `sdk`, `sdk_provided`, `container` | `env,os,process`             | Resource detector selection                                                                                                         |
+| `OTEL_PHP_AUTOLOAD_ENABLED`            | `false`       | `true`, `false`                                                                       | `true`                       | Enable/disable SDK autoloading                                                                                                      |
+| `OTEL_PHP_LOG_DESTINATION`             | `default`     | `error_log`, `trigger_error`, `stderr`, `stdout`, `psr3`, `none`                      | `stderr`                     | Where internal errors and warnings will be sent. `error_log` and `trigger_error` correspond to the PHP functions with the same name |
+| `OTEL_PHP_INTERNAL_METRICS_ENABLED`    | `false`       | `true`, `false`                                                                       | `true`                       | Whether the SDK should emit metrics about its internal state (for example, batch processors)                                        |
+| `OTEL_PHP_DISABLED_INSTRUMENTATIONS`   | `[]`          | Instrumentation names, or `all`                                                       | `psr15,psr18`                | Disable one or more installed auto-instrumentations                                                                                 |
+| `OTEL_PHP_EXCLUDED_URLS`               | ``            | Comma-delimited regular expression patterns                                           | `client/.*/info,healthcheck` | Do not load the SDK if request URL matches one of the supplied regular expressions                                                  |
+| `OTEL_PHP_DEBUG_SCOPES_DISABLED`       | `false`       | `true`, `false`                                                                       | `true`                       | Turn on or off scope detachment debugging.                                                                                          |
+| `OTEL_PHP_EXPERIMENTAL_AUTO_ROOT_SPAN` | `false`       | `true`, `false`                                                                       | `true`                       | Start a root span during composer autoloading                                                                                       |
 
 Configurations can be provided as environment variables, or via `php.ini` (or a
 file included by `php.ini`)

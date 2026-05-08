@@ -371,7 +371,7 @@ processors:
       - key: email
         action: hash
 
-  # Data sources: metrics, metrics, logs
+  # Data sources: traces, metrics, logs
   filter:
     error_mode: ignore
     traces:

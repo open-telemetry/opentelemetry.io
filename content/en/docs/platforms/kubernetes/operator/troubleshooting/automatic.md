@@ -171,7 +171,6 @@ Containers:
       OTEL_POD_IP:                                        (v1:status.podIP)
       OTEL_METRICS_EXPORTER:                             console,otlp_proto_http
       OTEL_LOGS_EXPORTER:                                otlp_proto_http
-      OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED:  true
       PYTHONPATH:                                        /otel-auto-instrumentation-python/opentelemetry/instrumentation/auto_instrumentation:/otel-auto-instrumentation-python
       OTEL_TRACES_EXPORTER:                              otlp
       OTEL_EXPORTER_OTLP_TRACES_PROTOCOL:                http/protobuf

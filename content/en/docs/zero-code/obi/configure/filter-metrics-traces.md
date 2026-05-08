@@ -46,8 +46,8 @@ filter:
 
 ## Numeric filters
 
-OBI also allows since version 0.6 to use numeric filters e.g. the following to
-include all spans with a server port >= 8000:
+Starting with OBI v0.6.0, you can also use numeric filters. For example, the
+following includes all spans with a server port >= 8000:
 
 ```yaml
 filter:

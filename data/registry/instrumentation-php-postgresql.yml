@@ -1,0 +1,17 @@
+title: OpenTelemetry PostgreSQL auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - php
+  - instrumentation
+license: Apache 2.0
+description:
+  This package provides auto-instrumentation for the PostgreSQL native PHP
+  extension (ext-pgsql). Hooks are registered via Composer, and client spans are
+  automatically created for key database operations.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/PostgreSql
+createdAt: 2025-03-26
+isFirstParty: false

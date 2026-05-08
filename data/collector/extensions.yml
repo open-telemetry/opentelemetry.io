@@ -1,0 +1,357 @@
+# OpenTelemetry Collector component data
+# This file is automatically updated by scripts/collector-sync
+
+---
+- name: ackextension
+  display_name: ACK Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    extension: alpha
+- name: asapauthextension
+  display_name: ASAP Client Authentication Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: beta
+- name: avrologencodingextension
+  display_name: AVRO Log Encoding Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: development
+  subtype: encoding
+- name: awscloudwatchmetricstreamsencodingextension
+  display_name: AWS CloudWatch Metric Streams Encoding Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+  subtype: encoding
+- name: awslogsencodingextension
+  display_name: AWS Logs Encoding Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+  subtype: encoding
+- name: awsproxy
+  display_name: AWS Proxy Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: beta
+- name: azureauthextension
+  display_name: Azure Authenticator Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+- name: azureencodingextension
+  display_name: Azure Logs/Traces/Metrics Encoding Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+  subtype: encoding
+- name: basicauthextension
+  display_name: Basic Auth Authenticator Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    extension: beta
+- name: bearertokenauthextension
+  display_name: Bearer Token Authenticator Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    extension: beta
+- name: cfgardenobserver
+  display_name: Cloud Foundry Garden Observer Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+  subtype: observer
+- name: cgroupruntimeextension
+  display_name: Cgroup Go Runtime Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+- name: datadogextension
+  display_name: Datadog Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+- name: dbstorage
+  display_name: Database Storage Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+  subtype: storage
+- name: dockerobserver
+  display_name: Docker Observer Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: beta
+  subtype: observer
+- name: ecsobserver
+  display_name: Amazon Elastic Container Service Observer
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: beta
+  subtype: observer
+- name: filestorage
+  display_name: File Storage Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    extension: beta
+  subtype: storage
+- name: googleclientauthextension
+  display_name: Google Client Auth Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: beta
+- name: googlecloudlogentryencodingextension
+  display_name: Google Cloud LogEntry Encoding Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+  subtype: encoding
+- name: headerssetterextension
+  display_name: Headers Setter Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    extension: alpha
+- name: healthcheckextension
+  display_name: Health Check Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - core
+    - k8s
+  stability:
+    extension: alpha
+- name: healthcheckv2extension
+  display_name: Health Check Extension V2
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: development
+- name: hostobserver
+  display_name: Host Observer Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    extension: beta
+  subtype: observer
+- name: httpforwarderextension
+  display_name: HTTP Forwarder Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    extension: beta
+- name: jaegerencodingextension
+  display_name: Jaeger Encoding Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+  subtype: encoding
+- name: jaegerremotesampling
+  display_name: Jaeger Remote Sampling Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+- name: jsonlogencodingextension
+  display_name: JSON Log Encoding Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+  subtype: encoding
+- name: k8sleaderelector
+  display_name: Kubernetes Leader Elector Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    extension: alpha
+- name: k8sobserver
+  display_name: Kubernetes Observer Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    extension: alpha
+  subtype: observer
+- name: kafkatopicsobserver
+  display_name: Kafka Topics Observer Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+  subtype: observer
+- name: memorylimiterextension
+  display_name: Memory Limiter Extension
+  repo: core
+  distributions:
+    - core
+  stability:
+    extension: development
+- name: oauth2clientauthextension
+  display_name: OAuth2 Client Credentials Authenticator Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    extension: beta
+- name: oidcauthextension
+  display_name: OIDC Authenticator Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    extension: beta
+- name: opampextension
+  display_name: OpAMP Agent Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    extension: alpha
+- name: otlpencodingextension
+  display_name: OTLP Encoding Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: beta
+  subtype: encoding
+- name: pprofextension
+  display_name: Performance Profiler Extension
+  repo: contrib
+  distributions:
+    - contrib
+    - core
+    - k8s
+  stability:
+    extension: beta
+- name: redisstorageextension
+  display_name: Redis Storage Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+  subtype: storage
+- name: remotetapextension
+  display_name: Remote Tap Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: development
+- name: sigv4authextension
+  display_name: SigV4 Authenticator Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: beta
+- name: skywalkingencodingextension
+  display_name: Skywalking Encoding Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+  subtype: encoding
+- name: solarwindsapmsettingsextension
+  display_name: Solarwinds APM Settings extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: development
+- name: sumologicextension
+  display_name: Sumo Logic Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+- name: textencodingextension
+  display_name: Text Encoding Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: beta
+  subtype: encoding
+- name: zipkinencodingextension
+  display_name: Zipkin Encoding Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: alpha
+  subtype: encoding
+- name: zpagesextension
+  display_name: zPages Extension
+  repo: core
+  distributions:
+    - contrib
+    - core
+    - k8s
+  stability:
+    extension: beta

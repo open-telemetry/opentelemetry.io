@@ -1,0 +1,33 @@
+# cSpell:ignore Traceway traceway
+title: Traceway OpenTelemetry Symfony Bundle
+registryType: instrumentation
+language: php
+tags:
+  - symfony
+  - php
+  - instrumentation
+  - tracing
+  - doctrine
+  - twig
+  - cache
+  - messenger
+  - http-client
+  - console
+urls:
+  repo: https://github.com/tracewayapp/opentelemetry-symfony-bundle
+  docs: https://github.com/tracewayapp/opentelemetry-symfony-bundle#readme
+license: MIT
+description:
+  Pure-PHP OpenTelemetry tracing for Symfony — automatic instrumentation for
+  HTTP, Console, Doctrine DBAL, Cache, Twig, Messenger, and HttpClient. No C
+  extension required. Supports PHP 8.1+ and Symfony 6.4/7.x/8.x.
+authors:
+  - name: Traceway
+    url: https://github.com/tracewayapp
+createdAt: 2026-03-13
+package:
+  registry: packagist
+  name: traceway/opentelemetry-symfony
+  version: v1.6.1
+isNative: false
+isFirstParty: false

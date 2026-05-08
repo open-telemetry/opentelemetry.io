@@ -53,7 +53,7 @@
   oss: false
   commercial: true
 - name: Azure
-  nativeOTLP: false
+  nativeOTLP: true
   url: https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview
   contact:
   oss: false
@@ -63,6 +63,12 @@
   url: https://betterstack.com/docs/logs/open-telemetry/#2-setup
   contact: hello@betterstack.com
   oss: false
+  commercial: true
+- name: Bindplane
+  nativeOTLP: true
+  url: https://docs.bindplane.com
+  contact: hello@bindplane.com
+  oss: true
   commercial: true
 - name: BugSnag
   nativeOTLP: true
@@ -192,6 +198,12 @@
   contact: support@hyperdx.io
   oss: true
   commercial: true
+- name: Icinga 2
+  nativeOTLP: true
+  url: https://icinga.com/docs/icinga-2/latest/doc/14-features/#otlpmetrics-writer
+  contact: info@icinga.com
+  oss: true
+  commercial: true
 - name: Immersive Fusion
   nativeOTLP: true
   url: https://docs.immersivefusion.com/instrument
@@ -212,7 +224,7 @@
   commercial: true
 - name: KloudFuse
   nativeOTLP: true
-  url: https://docs.kloudfuse.com/platform/latest/agent-otel/
+  url: https://docs.kloudfuse.com/platform/latest/data-collection/agents/otel/overview/
   contact: support@kloudfuse.com
   oss: false
   commercial: true
@@ -317,12 +329,6 @@
   url: https://otelic.com/en/open-telemetry-sample-instrumentation/nodejs-simple
   contact: support@otelic.com
   oss: false
-  commercial: true
-- name: observIQ
-  nativeOTLP: true
-  url: https://docs.bindplane.observiq.com
-  contact:
-  oss: true
   commercial: true
 - name: Odigos
   nativeOTLP: true
@@ -512,7 +518,7 @@
   commercial: true
 - name: Alauda
   nativeOTLP: true
-  url: https://www.alauda.io/community/143237
+  url: https://docs.alauda.io/container_platform/4.2/observability/tracing/concept#opentelemetry
   contact: info@alauda.io
   oss: false
   commercial: true
@@ -600,5 +606,11 @@
   nativeOTLP: true
   url: https://docs.oodle.ai/integrations/metrics/otel/
   contact: support@oodle.ai
+  oss: false
+  commercial: true
+- name: Respan
+  nativeOTLP: true
+  url: https://www.respan.ai/docs/apis/observe/traces/otlp-ingest
+  contact: frank@respan.ai
   oss: false
   commercial: true
