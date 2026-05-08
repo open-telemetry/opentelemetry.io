@@ -2,11 +2,11 @@
 title: OpenTelemetry
 description: >-
   テレメトリーのオープンスタンダード
-developer_note: 以下で使用する blocks/cover コラムは、ファイル名に "background" を含む画像ファイルを背景画像として使用します。
+developer_note: blocks/coverコラム（以下で使用）は、ファイル名に "background" を含む画像ファイルを背景画像として使用します。
 params:
   btn-lg: class="btn btn-lg btn-{1}" role="button"
   show_banner: true
-default_lang_commit:
+default_lang_commit: 7b18c9d78fd86516e9e6c838563f850496e5959a
 ---
 
 {{% blocks/cover image_anchor="top" height="max td-below-navbar" %}}
