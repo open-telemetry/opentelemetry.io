@@ -3,38 +3,19 @@ title: Collector（收集器）
 description: 提供厂商中立的遥测数据接收、处理和导出功能。
 aliases: [collector/about]
 cascade:
-  vers: 0.150.0
+  vers: 0.128.0
 weight: 270
 default_lang_commit: b13d5dd3a9f288ab64d2af98c0b4ec1694499ef3 # patched
 drifted_from_default: true
 ---
+
+![集成 Jaeger、OTLP 和 Prometheus 的 OpenTelemetry Collector 示意图](img/otel-collector.svg)
 
 ## 简介 {#introduction}
 
 OpenTelemetry Collector 提供了一种与厂商中立的实现方式，用于接收、处理和导出遥测数据。
 它省去了运行、操作和维护多个代理/收集器的需要。这种方式具有更好的可扩展性，
 并支持开源可观测性数据格式（例如 Jaeger、Prometheus、Fluent Bit 等），可将数据发送到一个或多个开源或商业后端。
-
-```mermaid
-flowchart TD
-  subgraph Option1 ["选项1: 直接导出 (开发/简单设置)"]
-    direction LR
-    App1(["应用程序"]) --> B1[("后端")]
-  end
-
-  subgraph Option2 ["选项2: 通过收集器 (推荐用于生产环境)"]
-    direction LR
-    App2(["应用程序"]) --> Rec["接收器"]
-
-    subgraph Collector ["OpenTelemetry Collector"]
-      direction LR
-      Rec --> Proc["处理器"]
-      Proc --> Exp["导出器"]
-    end
-
-    Exp --> B2[("后端")]
-  end
-```
 
 ## 目标 {#objectives}
 
