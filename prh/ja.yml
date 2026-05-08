@@ -66,3 +66,6 @@ rules:
   - expected: バイナリ
     patterns:
       - バイナリー
+  - expected: ライブラリ
+    patterns:
+      - ライブラリー
