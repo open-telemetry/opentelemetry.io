@@ -69,3 +69,6 @@ rules:
   - expected: ライブラリ
     patterns:
       - ライブラリー
+  - expected: ユーザー
+    patterns:
+      - /ユーザ(?!ー)/
