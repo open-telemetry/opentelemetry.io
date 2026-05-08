@@ -85,7 +85,6 @@ async fn handle(req: Request<hyper::body::Incoming>) -> Result<Response<Full<Byt
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
 
-
     let listener = TcpListener::bind(addr).await?;
 
     loop {
@@ -123,20 +122,25 @@ slightly different.
 ### Add dependencies
 
 Update the `Cargo.toml` with the dependencies for the OpenTelemetry Rust SDK
-[`opentelemetry`](https://crates.io/crates/opentelemetry) and the OpenTelemetry
+[`opentelemetry`](https://crates.io/crates/opentelemetry), the OpenTelemetry
 Stdout Exporter
-[`opentelemetry-stdout`](https://crates.io/crates/opentelemetry-stdout):
+[`opentelemetry-stdout`](https://crates.io/crates/opentelemetry-stdout), and the
+[`opentelemetry-appender-tracing`](https://crates.io/crates/opentelemetry-appender-tracing)
+bridge for logs:
 
 ```toml
 opentelemetry = "{{% version-from-registry otel-rust %}}"
 opentelemetry_sdk = "{{% version-from-registry otel-rust-sdk %}}"
 opentelemetry-stdout = "{{% version-from-registry exporter-rust-stdout %}}"
+opentelemetry-appender-tracing = "{{% version-from-registry otel-rust %}}"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["registry", "env-filter"] }
 ```
 
-### Traces
+### Complete instrumented application
 
-Update the `main.rs` file with code to initialize a tracer and to emit spans
-when the `handle` function is called:
+Replace `main.rs` with the following fully instrumented version. The sections
+below explain what each signal adds:
 
 ```rust
 use std::convert::Infallible;
@@ -152,21 +156,47 @@ use hyper::{Request, Response};
 use hyper_util::rt::TokioIo;
 use opentelemetry::global::{self, BoxedTracer};
 use opentelemetry::trace::{Span, SpanKind, Status, Tracer};
+use opentelemetry::KeyValue;
+use opentelemetry_appender_tracing::layer::OpenTelemetryTracingBridge;
+use opentelemetry_sdk::logs::SdkLoggerProvider;
+use opentelemetry_sdk::metrics::SdkMeterProvider;
 use opentelemetry_sdk::trace::SdkTracerProvider;
-use opentelemetry_stdout::SpanExporter;
+use opentelemetry_stdout::{LogExporter, MetricExporter, SpanExporter};
 use rand::Rng;
 use tokio::net::TcpListener;
+use tracing_subscriber::layer::SubscriberExt;
+use tracing_subscriber::util::SubscriberInitExt;
 
+// --- Metrics: counter stored once for reuse across requests ---
+static ROLL_COUNTER: OnceLock<opentelemetry::metrics::Counter<u64>> = OnceLock::new();
+
+fn get_roll_counter() -> &'static opentelemetry::metrics::Counter<u64> {
+    ROLL_COUNTER.get_or_init(|| {
+        global::meter("dice_server")
+            .u64_counter("dice.rolls")
+            .with_description("The number of rolls by roll value")
+            .build()
+    })
+}
+
+// --- Application handlers ---
 async fn roll_dice(_: Request<hyper::body::Incoming>) -> Result<Response<Full<Bytes>>, Infallible> {
     let random_number = rand::rng().random_range(1..=6);
+
+    // Metrics: record each roll
+    get_roll_counter().add(1, &[KeyValue::new("roll.value", random_number as i64)]);
+
+    // Logs: emit a structured log event via the tracing bridge
+    tracing::info!(roll.value = random_number, "Player rolled the dice");
+
     Ok(Response::new(Full::new(Bytes::from(
         random_number.to_string(),
     ))))
 }
 
 async fn handle(req: Request<hyper::body::Incoming>) -> Result<Response<Full<Bytes>>, Infallible> {
+    // Traces: create a server span for each incoming request
     let tracer = get_tracer();
-
     let mut span = tracer
         .span_builder(format!("{} {}", req.method(), req.uri().path()))
         .with_kind(SpanKind::Server)
@@ -184,11 +214,13 @@ async fn handle(req: Request<hyper::body::Incoming>) -> Result<Response<Full<Byt
     }
 }
 
+// --- Traces: global tracer accessor ---
 fn get_tracer() -> &'static BoxedTracer {
     static TRACER: OnceLock<BoxedTracer> = OnceLock::new();
     TRACER.get_or_init(|| global::tracer("dice_server"))
 }
 
+// --- Provider initialization ---
 fn init_tracer_provider() -> SdkTracerProvider {
     let provider = SdkTracerProvider::builder()
         .with_simple_exporter(SpanExporter::default())
@@ -197,10 +229,34 @@ fn init_tracer_provider() -> SdkTracerProvider {
     provider
 }
 
+fn init_meter_provider() -> SdkMeterProvider {
+    let provider = SdkMeterProvider::builder()
+        .with_periodic_exporter(MetricExporter::default())
+        .build();
+    global::set_meter_provider(provider.clone());
+    provider
+}
+
+fn init_logger_provider() -> SdkLoggerProvider {
+    SdkLoggerProvider::builder()
+        .with_simple_exporter(LogExporter::default())
+        .build()
+}
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
+
+    // Initialize providers and hold on to them for shutdown
     let tracer_provider = init_tracer_provider();
+    let meter_provider = init_meter_provider();
+    let logger_provider = init_logger_provider();
+
+    // Logs: wire the tracing bridge so tracing::info! etc. go to OTel
+    let otel_layer = OpenTelemetryTracingBridge::new(&logger_provider);
+    tracing_subscriber::registry()
+        .with(otel_layer)
+        .init();
 
     let listener = TcpListener::bind(addr).await?;
     println!("Listening on {addr}");
@@ -224,15 +280,22 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
         }
     }
 
+    // Flush and shutdown all providers before exit
     if let Err(err) = tracer_provider.shutdown() {
         eprintln!("Error shutting down tracer provider: {err:?}");
+    }
+    if let Err(err) = meter_provider.shutdown() {
+        eprintln!("Error shutting down meter provider: {err:?}");
+    }
+    if let Err(err) = logger_provider.shutdown() {
+        eprintln!("Error shutting down logger provider: {err:?}");
     }
 
     Ok(())
 }
 ```
 
-Start your server again:
+Start your server:
 
 ```sh
 $ cargo run
@@ -240,8 +303,24 @@ $ cargo run
 Listening on 127.0.0.1:8080
 ```
 
-When you send a request to the server at <http://localhost:8080/rolldice>,
-you'll see a span being emitted to the console:
+### Traces
+
+Tracing is added in `handle()`. For each incoming HTTP request a **server
+span** is created using a `BoxedTracer` retrieved from the global provider:
+
+```rust
+let mut span = tracer
+    .span_builder(format!("{} {}", req.method(), req.uri().path()))
+    .with_kind(SpanKind::Server)
+    .start(tracer);
+```
+
+`init_tracer_provider()` builds an `SdkTracerProvider` with the stdout
+exporter, sets it globally, and returns it so `main()` can call
+`.shutdown()` on exit.
+
+When you send a request to <http://localhost:8080/rolldice> you'll see a span
+printed to the console:
 
 <details>
 <summary>View example output</summary>
@@ -272,136 +351,15 @@ Span #0
 
 ### Metrics
 
-Next, you'll add metrics to the application. Update `main.rs` to initialize a
-`MeterProvider` and create a counter instrument that tracks the number of dice
-rolls by value:
+A `u64_counter` named `dice.rolls` is created once (via `OnceLock`) and
+incremented in `roll_dice()`:
 
 ```rust
-use std::convert::Infallible;
-use std::net::SocketAddr;
-use std::sync::OnceLock;
-
-use http_body_util::Full;
-use hyper::body::Bytes;
-use hyper::server::conn::http1;
-use hyper::service::service_fn;
-use hyper::Method;
-use hyper::{Request, Response};
-use hyper_util::rt::TokioIo;
-use opentelemetry::global::{self, BoxedTracer};
-use opentelemetry::trace::{Span, SpanKind, Status, Tracer};
-use opentelemetry::KeyValue;
-use opentelemetry_sdk::metrics::SdkMeterProvider;
-use opentelemetry_sdk::trace::SdkTracerProvider;
-use opentelemetry_stdout::{MetricExporter, SpanExporter};
-use rand::Rng;
-use tokio::net::TcpListener;
-
-static ROLL_COUNTER: OnceLock<opentelemetry::metrics::Counter<u64>> = OnceLock::new();
-
-fn get_roll_counter() -> &'static opentelemetry::metrics::Counter<u64> {
-    ROLL_COUNTER.get_or_init(|| {
-        global::meter("dice_server")
-            .u64_counter("dice.rolls")
-            .with_description("The number of rolls by roll value")
-            .build()
-    })
-}
-
-async fn roll_dice(_: Request<hyper::body::Incoming>) -> Result<Response<Full<Bytes>>, Infallible> {
-    let random_number = rand::rng().random_range(1..=6);
-
-    // Record the roll value with the counter
-    get_roll_counter().add(1, &[KeyValue::new("roll.value", random_number as i64)]);
-
-    Ok(Response::new(Full::new(Bytes::from(
-        random_number.to_string(),
-    ))))
-}
-
-async fn handle(req: Request<hyper::body::Incoming>) -> Result<Response<Full<Bytes>>, Infallible> {
-    let tracer = get_tracer();
-
-    let mut span = tracer
-        .span_builder(format!("{} {}", req.method(), req.uri().path()))
-        .with_kind(SpanKind::Server)
-        .start(tracer);
-
-    match (req.method(), req.uri().path()) {
-        (&Method::GET, "/rolldice") => roll_dice(req).await,
-        _ => {
-            span.set_status(Status::Ok);
-            Ok(Response::builder()
-                .status(404)
-                .body(Full::new(Bytes::from("Not Found")))
-                .unwrap())
-        }
-    }
-}
-
-fn get_tracer() -> &'static BoxedTracer {
-    static TRACER: OnceLock<BoxedTracer> = OnceLock::new();
-    TRACER.get_or_init(|| global::tracer("dice_server"))
-}
-
-fn init_tracer_provider() -> SdkTracerProvider {
-    let provider = SdkTracerProvider::builder()
-        .with_simple_exporter(SpanExporter::default())
-        .build();
-    global::set_tracer_provider(provider.clone());
-    provider
-}
-
-fn init_meter_provider() -> SdkMeterProvider {
-    let provider = SdkMeterProvider::builder()
-        .with_periodic_exporter(MetricExporter::default())
-        .build();
-    global::set_meter_provider(provider.clone());
-    provider
-}
-
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
-    let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
-    let tracer_provider = init_tracer_provider();
-    let meter_provider = init_meter_provider();
-
-    let listener = TcpListener::bind(addr).await?;
-    println!("Listening on {addr}");
-
-    loop {
-        tokio::select! {
-            Ok((stream, _)) = listener.accept() => {
-                let io = TokioIo::new(stream);
-                tokio::task::spawn(async move {
-                    if let Err(err) = http1::Builder::new()
-                        .serve_connection(io, service_fn(handle))
-                        .await
-                    {
-                        eprintln!("Error serving connection: {:?}", err);
-                    }
-                });
-            }
-            _ = tokio::signal::ctrl_c() => {
-                break;
-            }
-        }
-    }
-
-    if let Err(err) = tracer_provider.shutdown() {
-        eprintln!("Error shutting down tracer provider: {err:?}");
-    }
-    if let Err(err) = meter_provider.shutdown() {
-        eprintln!("Error shutting down meter provider: {err:?}");
-    }
-
-    Ok(())
-}
+get_roll_counter().add(1, &[KeyValue::new("roll.value", random_number as i64)]);
 ```
 
-Start the server and send a few requests to <http://localhost:8080/rolldice>.
-After a short interval, you'll see the `dice.rolls` counter metric emitted to
-the console, with separate counts for each roll value:
+`init_meter_provider()` builds an `SdkMeterProvider` with a periodic stdout
+exporter. After a short interval you'll see the counter emitted:
 
 <details>
 <summary>View example output</summary>
@@ -440,174 +398,25 @@ crate together with the
 [`opentelemetry-appender-tracing`](https://crates.io/crates/opentelemetry-appender-tracing)
 bridge.
 
-Add the following dependencies to `Cargo.toml`:
-
-```toml
-tracing = "0.1"
-tracing-subscriber = { version = "0.3", features = ["registry", "env-filter"] }
-opentelemetry-appender-tracing = "{{% version-from-registry otel-rust %}}"
-```
-
-Now update `main.rs` to initialize a `LoggerProvider` and connect it to the
-`tracing` subscriber via the `OpenTelemetryTracingBridge` layer. This sends all
-`tracing` events (such as `tracing::info!`) to the configured OpenTelemetry
-exporter:
+`init_logger_provider()` builds an `SdkLoggerProvider` with the stdout
+exporter. In `main()`, `OpenTelemetryTracingBridge` is wired into the
+`tracing_subscriber` stack so that any `tracing::info!` (or other level) call
+is forwarded to the OTel log pipeline:
 
 ```rust
-use std::convert::Infallible;
-use std::net::SocketAddr;
-use std::sync::OnceLock;
-
-use http_body_util::Full;
-use hyper::body::Bytes;
-use hyper::server::conn::http1;
-use hyper::service::service_fn;
-use hyper::Method;
-use hyper::{Request, Response};
-use hyper_util::rt::TokioIo;
-use opentelemetry::global::{self, BoxedTracer};
-use opentelemetry::trace::{Span, SpanKind, Status, Tracer};
-use opentelemetry::KeyValue;
-use opentelemetry_appender_tracing::layer::OpenTelemetryTracingBridge;
-use opentelemetry_sdk::logs::SdkLoggerProvider;
-use opentelemetry_sdk::metrics::SdkMeterProvider;
-use opentelemetry_sdk::trace::SdkTracerProvider;
-use opentelemetry_stdout::{LogExporter, MetricExporter, SpanExporter};
-use rand::Rng;
-use tokio::net::TcpListener;
-use tracing_subscriber::layer::SubscriberExt;
-use tracing_subscriber::util::SubscriberInitExt;
-
-static ROLL_COUNTER: OnceLock<opentelemetry::metrics::Counter<u64>> = OnceLock::new();
-
-fn get_roll_counter() -> &'static opentelemetry::metrics::Counter<u64> {
-    ROLL_COUNTER.get_or_init(|| {
-        global::meter("dice_server")
-            .u64_counter("dice.rolls")
-            .with_description("The number of rolls by roll value")
-            .build()
-    })
-}
-
-async fn roll_dice(_: Request<hyper::body::Incoming>) -> Result<Response<Full<Bytes>>, Infallible> {
-    let random_number = rand::rng().random_range(1..=6);
-
-    // Record the roll value with the counter
-    get_roll_counter().add(1, &[KeyValue::new("roll.value", random_number as i64)]);
-
-    // Emit a log record
-    tracing::info!(
-        roll.value = random_number,
-        "Player rolled the dice"
-    );
-
-    Ok(Response::new(Full::new(Bytes::from(
-        random_number.to_string(),
-    ))))
-}
-
-async fn handle(req: Request<hyper::body::Incoming>) -> Result<Response<Full<Bytes>>, Infallible> {
-    let tracer = get_tracer();
-
-    let mut span = tracer
-        .span_builder(format!("{} {}", req.method(), req.uri().path()))
-        .with_kind(SpanKind::Server)
-        .start(tracer);
-
-    match (req.method(), req.uri().path()) {
-        (&Method::GET, "/rolldice") => roll_dice(req).await,
-        _ => {
-            span.set_status(Status::Ok);
-            Ok(Response::builder()
-                .status(404)
-                .body(Full::new(Bytes::from("Not Found")))
-                .unwrap())
-        }
-    }
-}
-
-fn get_tracer() -> &'static BoxedTracer {
-    static TRACER: OnceLock<BoxedTracer> = OnceLock::new();
-    TRACER.get_or_init(|| global::tracer("dice_server"))
-}
-
-fn init_tracer_provider() -> SdkTracerProvider {
-    let provider = SdkTracerProvider::builder()
-        .with_simple_exporter(SpanExporter::default())
-        .build();
-    global::set_tracer_provider(provider.clone());
-    provider
-}
-
-fn init_meter_provider() -> SdkMeterProvider {
-    let provider = SdkMeterProvider::builder()
-        .with_periodic_exporter(MetricExporter::default())
-        .build();
-    global::set_meter_provider(provider.clone());
-    provider
-}
-
-fn init_logger_provider() -> SdkLoggerProvider {
-    SdkLoggerProvider::builder()
-        .with_simple_exporter(LogExporter::default())
-        .build()
-}
-
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
-    let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
-
-    // Initialize OpenTelemetry providers
-    let tracer_provider = init_tracer_provider();
-    let meter_provider = init_meter_provider();
-    let logger_provider = init_logger_provider();
-
-    // Create the OpenTelemetry tracing bridge layer.
-    // This sends `tracing` events to the OpenTelemetry LoggerProvider.
-    let otel_layer = OpenTelemetryTracingBridge::new(&logger_provider);
-    tracing_subscriber::registry()
-        .with(otel_layer)
-        .init();
-
-    let listener = TcpListener::bind(addr).await?;
-    println!("Listening on {addr}");
-
-    loop {
-        tokio::select! {
-            Ok((stream, _)) = listener.accept() => {
-                let io = TokioIo::new(stream);
-                tokio::task::spawn(async move {
-                    if let Err(err) = http1::Builder::new()
-                        .serve_connection(io, service_fn(handle))
-                        .await
-                    {
-                        eprintln!("Error serving connection: {:?}", err);
-                    }
-                });
-            }
-            _ = tokio::signal::ctrl_c() => {
-                break;
-            }
-        }
-    }
-
-    if let Err(err) = tracer_provider.shutdown() {
-        eprintln!("Error shutting down tracer provider: {err:?}");
-    }
-    if let Err(err) = meter_provider.shutdown() {
-        eprintln!("Error shutting down meter provider: {err:?}");
-    }
-    if let Err(err) = logger_provider.shutdown() {
-        eprintln!("Error shutting down logger provider: {err:?}");
-    }
-
-    Ok(())
-}
+let otel_layer = OpenTelemetryTracingBridge::new(&logger_provider);
+tracing_subscriber::registry()
+    .with(otel_layer)
+    .init();
 ```
 
-Start the server and send a request to <http://localhost:8080/rolldice>. Along
-with the trace span and metrics, you'll now see log records emitted to the
-console:
+In `roll_dice()`, a structured log event is emitted:
+
+```rust
+tracing::info!(roll.value = random_number, "Player rolled the dice");
+```
+
+Along with the span and metric, you'll now see log records on the console:
 
 <details>
 <summary>View example output</summary>
