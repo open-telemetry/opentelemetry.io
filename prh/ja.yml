@@ -72,3 +72,6 @@ rules:
   - expected: ユーザー
     patterns:
       - /ユーザ(?!ー)/
+  - expected: サーバー
+    patterns:
+      - /サーバ(?!ー)/
