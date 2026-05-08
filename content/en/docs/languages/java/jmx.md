@@ -135,9 +135,9 @@ java -Dcom.sun.management.jmxremote \
   -jar myapp.jar
 ```
 
-> [!WARNING]
-> The example above disables authentication and SSL for simplicity. In production
-> environments, always enable authentication and SSL for JMX connections.
+> [!WARNING] The example above disables authentication and SSL for simplicity.
+> In production environments, always enable authentication and SSL for JMX
+> connections.
 
 #### Step 2: Run the JMX Scraper
 
@@ -159,8 +159,7 @@ You can configure the scraper using the same properties as the Java agent
 For more details, see the
 [JMX Scraper documentation](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper).
 
-> [!NOTE]
-> If you're migrating from the deprecated JMX Metric Gatherer, see the
+> [!NOTE] If you're migrating from the deprecated JMX Metric Gatherer, see the
 > [migration guide](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migrating-from-jmx-metric-gatherer).
 
 ## Custom Metric Mappings
