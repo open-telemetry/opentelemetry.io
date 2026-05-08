@@ -10,7 +10,7 @@ cSpell:ignore: distro
 これを活用することで、OpenTelemetry のユーザーは必要に応じてコンポーネントを設定できます。
 `opentelemetry-distro` パッケージは、使い始めたいユーザー向けにいくつかのデフォルト設定を提供しており、次のものを構成します。
 
-- SDK `TracerProvider`
+- `TracerProvider` SDK
 - `BatchSpanProcessor`
 - OpenTelemetry Collector にデータを送信する OTLP `SpanExporter`
 
