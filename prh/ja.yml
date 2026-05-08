@@ -75,3 +75,6 @@ rules:
   - expected: サーバー
     patterns:
       - /サーバ(?!ー)/
+  - expected: パラメーター
+    patterns:
+      - /パラメータ(?!ー)/
