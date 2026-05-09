@@ -215,8 +215,7 @@ such as:
 - Standard startup wrappers or environment-variable conventions.
 - Centrally maintained configuration snippets or templates.
 
-At minimum, the standard resource model for non-Kubernetes environments should
-cover:
+The recommended resource model for non-Kubernetes environments should cover:
 
 - **Host:** `host.id`, `host.name`, `host.arch`
 - **Device (where applicable):** `device.id` and other relevant device
@@ -289,13 +288,18 @@ reporting, health monitoring, and controlled rollouts for supported agents.
 
 Checklist:
 
-- Select the supported OpAMP-capable agent distributions and define which
-  components will be managed centrally.
-- Stand up a central OpAMP server or management endpoint with appropriate
-  authentication, authorization, and transport security.
+- Decide which agents or OpenTelemetry Collector deployments will be managed
+  through, based on the capabilities of the distributions used in your
+  environment (for example, whether they are upstream or vendor-specific,
+  whether they embed an OpAMP client, whether they use a supervisor, and whether
+  OpAMP is compiled in or packaged separately), and the components you want to
+  manage centrally.
+- Stand up a central OpAMP server or management endpoint, following the
+  [Collector management documentation](/docs/collector/management/#opamp), with
+  appropriate authentication, authorization, and transport security.
 - Configure agents or supervisors to enroll with the management service and
   report their identity, capabilities, health, and effective configuration
-  status.
+  status, as defined by the [OpAMP specification](/docs/specs/opamp/).
 - Organize agents into logical groups such as development, staging, production,
   region, or environment so configuration changes can be rolled out in stages.
 - Define how configuration updates are promoted between rollout groups and how
@@ -360,6 +364,19 @@ declarative configuration for SDK-based instrumentation where it is supported.
 Where it is not available, standardize environment variables, startup options,
 or SDK-specific configuration patterns so teams inherit consistent defaults with
 minimal manual setup.
+
+Common packaging patterns include standard system-service packages for
+host-based agents, pre-baked container images for Collector or agent
+deployments, and shared SDK bootstrap artifacts such as starter packages or
+startup wrappers. For example:
+
+- A host-based Collector can be installed as a standard system service with a
+  centrally managed configuration file and environment file.
+- A containerized deployment can use a pre-baked image that includes the
+  approved Collector binary, extensions, and default configuration.
+- SDK-based instrumentation can be distributed through shared startup wrappers,
+  language agents, or starter packages that apply organization-approved defaults
+  automatically.
 
 Checklist:
 
@@ -461,15 +478,21 @@ infrastructure and application layers.
 
 Checklist:
 
-- Publish the minimum required resource attribute set for hosts, processes,
-  runtimes, operating systems, and containers where applicable.
-- Ensure application telemetry includes at least `host.id` or `host.name`.
+- Publish the recommended resource attribute set for hosts, processes, runtimes,
+  operating systems, and containers where applicable, and make that baseline
+  available through shared configuration, bootstrap artifacts, or centrally
+  maintained templates.
+- Ensure application telemetry includes at least `host.id` or `host.name`, for
+  example by injecting standard resource attributes through SDK configuration,
+  language agents, or startup wrappers.
 - Enable and validate resource detectors wherever supported so host, OS,
   process, runtime, and container metadata is populated automatically and
-  consistently.
-- Validate emitted telemetry against the defined attribute standard.
+  consistently, and supplement detector output with centrally defined attributes
+  where needed.
+- Validate emitted telemetry against the defined attribute standard by checking
+  representative telemetry from hosts and applications before broad rollout.
 - Add conformance checks to deployment pipelines or post-deployment validation
-  steps.
+  steps so new workloads can be verified against the expected attribute set.
 
 This blueprint focuses on the attribute requirements and workload-level
 practices needed to emit them consistently. More detailed centralized
