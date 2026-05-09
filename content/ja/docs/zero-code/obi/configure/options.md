@@ -47,7 +47,7 @@ channel_buffer_len: 33
 | `open_port`<br>`OTEL_EBPF_OPEN_PORT`               | オープンポートによって計装するプロセスを選択します。ポートとポート範囲のカンマ区切りリストを受け付けます。                                   | string                          | 未設定     |
 | `target_pids`<br>`OTEL_EBPF_TARGET_PID`            | PID によって計装するプロセスを選択します。YAML リスト、単一値、またはカンマ区切り環境変数リストを受け付けます。                              | integer または integer のリスト | 未設定     |
 | `shutdown_timeout`<br>`OTEL_EBPF_SHUTDOWN_TIMEOUT` | グレースフルシャットダウンのタイムアウトを設定します。                                                                                       | string                          | "10s"      |
-| `log_level`<br>`OTEL_EBPF_LOG_LEVEL`               | プロセスロガーの詳細レベルを設定します。有効な値は `DEBUG`、`INFO`、`WARN`、`ERROR` です。                                                         | string                          | `INFO`     |
+| `log_level`<br>`OTEL_EBPF_LOG_LEVEL`               | プロセスロガーの詳細レベルを設定します。有効な値は `DEBUG`、`INFO`、`WARN`、`ERROR` です。                                                   | string                          | `INFO`     |
 | `log_format`<br>`OTEL_EBPF_LOG_FORMAT`             | ロガーの出力形式を設定します。有効な値は `text`、`json`　です。                                                                              | string                          | `text`     |
 | `trace_printer`<br>`OTEL_EBPF_TRACE_PRINTER`       | 計装されたトレースを指定された形式で標準出力に出力します。[トレースプリンター形式](#trace-printer-formats)を参照してください。               | string                          | `disabled` |
 | `enforce_sys_caps`<br>`OTEL_EBPF_ENFORCE_SYS_CAPS` | 起動時にシステムケーパビリティが不足している場合の OBI の処理方法を制御します。                                                              | boolean                         | `false`    |
