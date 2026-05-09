@@ -24,7 +24,7 @@ default_lang_commit: b51a1db58883aa963c461d34356aa86ac18d94b7
 
   > [!WARNING] イシューはアサインしません
   >
-  > メンターシップやオンボーディングプロセスの一部として確認されている場合を除き、[OpenTelemetry organization][org] にまだコントリビューションをしていない方には、イシューを**_アサインしません_**。
+  > メンターシップやオンボーディングプロセスの一部として確認されている場合を除き、[OpenTelemetry organization][org] にまだコントリビューションをしていない方には、イシューを***アサインしません***。
   >
   > [org]: https://github.com/open-telemetry
 

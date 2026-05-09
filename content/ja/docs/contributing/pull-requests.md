@@ -27,14 +27,13 @@ default_lang_commit: b51a1db58883aa963c461d34356aa86ac18d94b7
 >
 > コントリビューションが「drive-by」であり、メンテナー側で多くの追加作業をしなくてもマージできることが明らかな場合、メンテナーは例外を認めることがあります。
 
-生成 AI は許可されていますが、AI が生成したすべてのコンテンツを**レビュー**し、**_検証_**することは、**あなたの責任**です。
+生成 AI は許可されていますが、AI が生成したすべてのコンテンツを**レビュー**し、***検証***することは、**あなたの責任**です。
 理解できない場合は、提出しないでください！
 
 詳細は、[生成 AI コントリビューションポリシー][Generative AI Contribution Policy]を参照してください。
 
 [first-time contributor]: ../#first-time-contributing
-[Generative AI Contribution Policy]:
-  https://github.com/open-telemetry/community/blob/main/policies/genai.md
+[Generative AI Contribution Policy]: https://github.com/open-telemetry/community/blob/main/policies/genai.md
 
 ## コントリビューション方法 {#how-to-contribute}
 
