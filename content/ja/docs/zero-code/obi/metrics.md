@@ -3,8 +3,8 @@ title: OBI がエクスポートするメトリクス
 linkTitle: エクスポートされるメトリクス
 description: OBI がエクスポートできる HTTP/gRPC メトリクスについて学びます。
 weight: 21
-cSpell:ignore: replicaset statefulset
 default_lang_commit: b51a1db58883aa963c461d34356aa86ac18d94b7
+cSpell:ignore: replicaset statefulset
 ---
 
 次の表では、OpenTelemetry 形式と Prometheus 形式の両方でエクスポートされるメトリクスについて説明します。
