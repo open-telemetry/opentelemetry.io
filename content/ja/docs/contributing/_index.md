@@ -3,6 +3,12 @@ title: コントリビューション
 aliases: [/docs/contribution-guidelines]
 sidebar_root_for: self
 weight: 980
+cascade:
+  chooseAnIssueAtYourLevel: |
+    自分の OpenTelemetry に関する**経験**と**理解**のレベルに合った[イシューを選択][choose an issue]してください。
+    自分の能力を超えたイシューに取り組むことは避けてください。
+  _issues: https://github.com/open-telemetry/opentelemetry.io/issues
+  _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=state%3Aopen%20label%3A
 default_lang_commit: b51a1db58883aa963c461d34356aa86ac18d94b7
 ---
 
