@@ -19,7 +19,7 @@ For detailed use of the OpenTelemetry Operator visit its
 To install the chart with the release name `my-opentelemetry-operator`, run the
 following commands:
 
-```console
+```shell
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 ```
 ```shell
