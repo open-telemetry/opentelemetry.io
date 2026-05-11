@@ -1132,6 +1132,7 @@ maintainers:
       - proto-go-maintainers
       - python-approvers
       - ruby-contrib-triagers
+      - semconv-genai-approvers
     html_url: https://github.com/MikeGoldsmith
     avatar_url: https://avatars.githubusercontent.com/u/3481731?v=4
   - name: mmanciop
@@ -1815,6 +1816,11 @@ approvers:
       - docs-zh-approvers
     html_url: https://github.com/chluknight1224
     avatar_url: https://avatars.githubusercontent.com/u/192717373?v=4
+  - name: Cirilla-zmh
+    teams:
+      - semconv-genai-approvers
+    html_url: https://github.com/Cirilla-zmh
+    avatar_url: https://avatars.githubusercontent.com/u/84360903?v=4
   - name: CodeBlanch
     teams:
       - dotnet-approvers
@@ -2001,6 +2007,11 @@ approvers:
       - helm-triagers
     html_url: https://github.com/jvoravong
     avatar_url: https://avatars.githubusercontent.com/u/47871238?v=4
+  - name: JWinermaSplunk
+    teams:
+      - semconv-genai-approvers
+    html_url: https://github.com/JWinermaSplunk
+    avatar_url: https://avatars.githubusercontent.com/u/225237985?v=4
   - name: kamphaus
     teams:
       - semconv-cicd-approvers
@@ -2243,6 +2254,11 @@ approvers:
       - ruby-contrib-triagers
     html_url: https://github.com/simi
     avatar_url: https://avatars.githubusercontent.com/u/193936?v=4
+  - name: singankit
+    teams:
+      - semconv-genai-approvers
+    html_url: https://github.com/singankit
+    avatar_url: https://avatars.githubusercontent.com/u/30610298?v=4
   - name: skl
     teams:
       - ebpf-instrumentation-approvers
@@ -2651,9 +2667,6 @@ members:
   - name: chrlic
     html_url: https://github.com/chrlic
     avatar_url: https://avatars.githubusercontent.com/u/6670587?v=4
-  - name: Cirilla-zmh
-    html_url: https://github.com/Cirilla-zmh
-    avatar_url: https://avatars.githubusercontent.com/u/84360903?v=4
   - name: cnnradams
     html_url: https://github.com/cnnradams
     avatar_url: https://avatars.githubusercontent.com/u/10487992?v=4
