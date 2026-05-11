@@ -1,12 +1,10 @@
 ---
 title: OpenTelemetry
 description: O padrão aberto para telemetria
-outputs:
-  - HTML
-developer_note: >
+developer_note:
   O shortcode blocks/cover (usado abaixo) vai servir como imagem de background
   para qualquer arquivo de imagem que contenha "background" no nome.
-default_lang_commit: 48f579c733f727417a51edb81a294151e5878d4d
+default_lang_commit: 48f579c733f727417a51edb81a294151e5878d4d # patched
 params:
   btn-lg: class="btn btn-lg btn-{1}" role="button"
   show_banner: true

@@ -57,6 +57,22 @@ script for your operating system.
 
 Download and run the `.sh` script:
 
+> [!NOTE]
+>
+> For air-gapped environments, use the `LOCAL_PATH` variable to provide the
+> installation file directly:
+>
+> ```shell
+> LOCAL_PATH=<PATH_TO_INSTALLER> sh ./otel-dotnet-auto-install.sh
+> ```
+>
+> Alternatively, use `DOWNLOAD_DIR` to provide a folder with files, and the
+> install script determines the correct file to use:
+>
+> ```shell
+> DOWNLOAD_DIR=<PATH_TO_FOLDER_WITH_FILES> sh ./otel-dotnet-auto-install.sh
+> ```
+
 ```shell
 # Download the bash script
 curl -sSfL https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh -O
@@ -71,7 +87,7 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 . $HOME/.otel-dotnet-auto/instrument.sh
 
 # Run your application with instrumentation
-OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
+OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=staging,service.version=1.0.0 ./MyNetApp
 ```
 
 > [!IMPORTANT]

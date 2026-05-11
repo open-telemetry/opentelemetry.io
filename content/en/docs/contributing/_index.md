@@ -45,6 +45,8 @@ What do you want to do?
 
 - Correct a **typo or other quick fixes**, see
   [Submitting content using GitHub](pull-requests/#changes-using-github)
+- Add or update a homepage announcement, see
+  [Homepage announcements](/site/build/announcements/)
 - For more significant contributions, read the pages in this section starting
   with:
   - [Prerequisites][]

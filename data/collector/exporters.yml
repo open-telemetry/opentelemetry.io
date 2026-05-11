@@ -220,6 +220,13 @@
     - contrib
   stability:
     metrics: beta
+- name: googlesecopsexporter
+  display_name: googlesecopsexporter
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
 - name: honeycombmarkerexporter
   display_name: Honeycomb Marker Exporter
   repo: contrib

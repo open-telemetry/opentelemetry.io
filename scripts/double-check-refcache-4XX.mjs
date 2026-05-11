@@ -15,6 +15,8 @@ const DEFAULT_MAX_NUM_TO_UPDATE = null; // no max
 
 let verbose = false;
 let checkForFragments = false;
+/** When true, re-fetch URLs cached as 404 instead of skipping them. */
+let retry404 = false;
 let maxNumEntriesToUpdate = DEFAULT_MAX_NUM_TO_UPDATE;
 
 // Magic numbers that we use to determine if a URL with a fragment has been
@@ -65,9 +67,13 @@ async function writeRefcache(cache) {
   console.log(`Wrote updated ${CACHE_FILE}.`);
 }
 
-// Retry HTTP status check for refcache URLs with non-200s and not 404
+// Retry HTTP status check for refcache URLs with non-2XX (normally skips cached 404).
 async function retry400sAndUpdateCache() {
-  console.log(`Checking ${CACHE_FILE} for 4XX status URLs ...`);
+  console.log(
+    `Checking ${CACHE_FILE} for 4XX status URLs` +
+      (retry404 ? ' (retry-404 enabled)' : '') +
+      ` ...`,
+  );
   const cache = await readRefcache();
   let updatedCount = 0;
   let entriesCount = 0;
@@ -103,16 +109,25 @@ async function retry400sAndUpdateCache() {
       continue;
     }
 
+    // Invalid fragment sentinel: skip repeat fetches unless --retry-404 (see below).
     if (
-      isStatusNotFound(StatusCode, url) ||
-      (parsedUrl.hash && is4XXForFragments(StatusCode, lastSeenDate))
+      parsedUrl.hash &&
+      is4XXForFragments(StatusCode, lastSeenDate) &&
+      !retry404
     ) {
       console.log(
-        `Skipping ${StatusCode}: ${url} (last seen ${lastSeenDate.toLocaleDateString()})${
-          is4XXForFragments(StatusCode, lastSeenDate) ? ' INVALID FRAGMENT' : ''
-        }`,
+        `Skipping ${StatusCode}: ${url} (last seen ${lastSeenDate.toLocaleDateString()}) INVALID FRAGMENT`,
       );
-      if (parsedUrl.hash) urlWithInvalidFragCount++;
+      urlWithInvalidFragCount++;
+      continue;
+    }
+
+    // Cached 404: skip unless --retry-404 (still-404 responses still do not
+    // update the cache non-hash path unless the new status is 2XX).
+    if (isStatusNotFound(StatusCode, url) && !retry404) {
+      console.log(
+        `Skipping ${StatusCode}: ${url} (last seen ${lastSeenDate.toLocaleDateString()})`,
+      );
       continue;
     }
 
@@ -226,6 +241,10 @@ Options:
                              Use 0 to have file scanned and checked for updates.
   --check-fragments, -f      Also check URLs with fragments for validity,
                              which htmltest doesn't do.
+  --retry-404, -4            Re-fetch URLs that are cached with status 404
+                             instead of skipping them (default: skip cached 404s).
+                             Also re-fetches fragment URLs with INVALID FRAGMENT
+                             LastSeen sentinel so they are not stuck skipped.
   --verbose, -v              Show verbose output.
 `);
   exit(exitCode);
@@ -245,6 +264,11 @@ function parseCliArgs() {
     'check-fragments': {
       type: 'boolean',
       short: 'f',
+      default: false,
+    },
+    'retry-404': {
+      type: 'boolean',
+      short: '4',
       default: false,
     },
     verbose: {
@@ -282,6 +306,7 @@ function parseCliArgs() {
   return {
     maxNumEntriesToUpdate: maxNumValue,
     checkForFragments: args.values['check-fragments'],
+    retry404: args.values['retry-404'],
     verbose: args.values['verbose'],
   };
 }
@@ -296,6 +321,7 @@ async function main() {
   // Set global configuration variables
   maxNumEntriesToUpdate = config.maxNumEntriesToUpdate;
   checkForFragments = config.checkForFragments;
+  retry404 = config.retry404;
   verbose = config.verbose;
 
   await retry400sAndUpdateCache();

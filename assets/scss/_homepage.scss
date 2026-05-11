@@ -45,11 +45,6 @@
   // HERO SEARCH - Search bar section below compact hero
   // =============================================================================
 
-  // Hide navbar search on homepage (hero search is used instead)
-  .td-navbar__search {
-    display: none !important;
-  }
-
   // Override td-box default padding for compact search section
   section.td-box.hero-search-section {
     padding-top: 3rem;

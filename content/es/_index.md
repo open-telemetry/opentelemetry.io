@@ -1,12 +1,10 @@
 ---
 title: OpenTelemetry
 description: El estándar abierto para telemetría
-outputs:
-  - HTML
-developer_note: >
+developer_note:
   La macro para los bloques/portada usa como imagen de fondo cualquier archivo
   de imagen que contenga la palabra "background" en su nombre.
-default_lang_commit: 48f579c733f727417a51edb81a294151e5878d4d
+default_lang_commit: 48f579c733f727417a51edb81a294151e5878d4d # patched
 params:
   btn-lg: class="btn btn-lg btn-{1}" role="button"
   show_banner: true

@@ -1,12 +1,10 @@
 """Generate YAML data files for Hugo rendering of component tables."""
 
-import re
+import logging
 from pathlib import Path
 from typing import Any
 
 import yaml
-
-import logging
 
 from documentation_sync import component_utils
 from documentation_sync.metadata_diagnostics import MetadataDiagnostics
@@ -14,9 +12,9 @@ from documentation_sync.metadata_diagnostics import MetadataDiagnostics
 logger = logging.getLogger(__name__)
 
 class IndentDumper(yaml.Dumper):
-    def increase_indent(self, flow=False, indentless=False):
+    def increase_indent(self, flow: bool = False, indentless: bool = False) -> Any:
         # Setting indentless=False forces the list items to indent
-        return super(IndentDumper, self).increase_indent(flow, False)
+        return super().increase_indent(flow, False)
 
 class ComponentDataGenerator:
     """Generates component data files."""
@@ -139,9 +137,3 @@ class ComponentDataGenerator:
                 )
 
             logger.info("  ✓ %s", output_file.relative_to(output_dir))
-
-
-class IndentDumper(yaml.Dumper):
-    def increase_indent(self, flow=False, indentless=False):
-        # Setting indentless=False forces the list items to indent
-        return super(IndentDumper, self).increase_indent(flow, False)

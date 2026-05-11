@@ -1,12 +1,7 @@
 ---
 title: OpenTelemetry
 description: The open standard for telemetry
-outputs:
-  - HTML
-  # Include the following for `content/en` ONLY
-  - REDIRECTS
-  - RSS
-developer_note: >
+developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
 params:

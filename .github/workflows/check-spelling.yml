@@ -20,7 +20,7 @@ jobs:
       - run: npm run check:spelling
 
   dict-check:
-    name: CSPELL page-local word list check
+    name: CSPELL word lists check
     runs-on: ubuntu-latest
     env:
       FIX_CMD: fix:dict
@@ -37,5 +37,5 @@ jobs:
             echo "$CHANGES"
             exit 1
           else
-            echo "All page-local dictionaries are well formatted."
+            echo "cSpell front-matter ignore lists and .cspell/*.txt word lists are normalized and sorted."
           fi
