@@ -284,7 +284,7 @@
     "LastSeen": "2026-04-29T15:54:04.751Z"
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
-    "StatusCode": 429,
+    "StatusCode": 200,
     "LastSeen": "2026-05-11T10:52:18.527438743Z"
   },
   "https://blog.remirepo.net/pages/PECL-extensions-RPM-status": {
