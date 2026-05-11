@@ -22,10 +22,8 @@ of prompts, completions, tool calls, and tool results.
 This post walks through:
 
 - Exporting GenAI telemetry from an LLM-powered app.
-- Configuring the [Aspire Dashboard](https://aspire.dev/dashboard/overview/), an
-  observability tool optimized for local development, to receive and display
-  that telemetry.
-- Exploring GenAI traces, metrics, and events in Aspire's GenAI visualizer.
+- Configuring an observability tool to receive and display that telemetry.
+- Exploring GenAI traces, metrics, and events with a GenAI visualizer.
 
 ## Exporting GenAI telemetry
 
@@ -62,7 +60,7 @@ token counts, and durations are included. Enabling content capture populates
 span attributes with full prompt messages, system prompts, tool schemas, tool
 arguments, and tool results.
 
-## Exploring GenAI telemetry with the Aspire Dashboard
+## Exploring GenAI telemetry
 
 Any OTLP-compatible backend can receive GenAI telemetry. For this walkthrough,
 we use the [Aspire Dashboard](https://aspire.dev/dashboard/overview/) — a free,
@@ -115,17 +113,16 @@ captured as structured span attributes such as `gen_ai.system_instructions`,
 for debugging, but these attributes can be large, and many observability
 platforms render them as raw JSON, making them difficult to read.
 
-Aspire's
-[GenAI telemetry visualizer](https://aspire.dev/dashboard/explore/#genai-telemetry-visualization)
-parses these attributes and renders a chat-style view of the conversation,
-showing system prompts, user messages, assistant responses, and tool call
-arguments and results. Launch the visualizer by selecting the sparkle icon next
-to a GenAI span.
+Observability tools can include specialized UI for viewing GenAI telemetry. We'll use
+a [GenAI telemetry visualizer](https://aspire.dev/dashboard/explore/#genai-telemetry-visualization) that parses these
+attributes and renders a chat-style view of the conversation, showing system
+prompts, user messages, assistant responses, and tool call arguments and
+results.
 
 ![Aspire Dashboard GenAI telemetry visualizer showing a chat-style view of prompts and responses](dashboard-genai-visualizer.png)
 
-No more guessing about LLM usage or digging through raw JSON — every prompt,
-response, and tool call is visible at a glance.
+No more guessing about LLM usage or digging through raw JSON. With GenAI
+telemetry, every prompt, response, and tool call is visible at a glance.
 
 ### Explore metrics
 
@@ -143,27 +140,16 @@ patterns across models and agents.
 
 ## Beyond this demo
 
-The [Aspire Dashboard](https://aspire.dev/dashboard/overview/) is ideal for
-local debugging, but the same OpenTelemetry data can be sent to any
-OTLP-compatible backend. Because the telemetry follows the
-[GenAI semantic conventions](/docs/specs/semconv/gen-ai/), it is interoperable
-with instrumentation from other AI tools and frameworks. Whether you are
-monitoring a Python application using the
-[OpenTelemetry OpenAI instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/6733459e4ee6a1d7a46025a71da6887f83491223/instrumentation-genai/opentelemetry-instrumentation-openai-v2),
-or a .NET application with
-[Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/microsoft-extensions-ai),
-the same attributes and span structures appear in your observability backend.
-
-## Get involved
-
-The GenAI semantic conventions are in active development — your feedback on
-real-world usage directly shapes what gets standardized next.
+The GenAI semantic conventions are already in use today and under active
+development — your feedback on real-world usage directly shapes what gets
+standardized next.
 
 - Test GenAI instrumentation in your own applications and
   [report issues](https://github.com/open-telemetry/semantic-conventions/issues).
-- Try the [Aspire Dashboard](https://aspire.dev/dashboard/overview/) for local
-  OpenTelemetry debugging and
-  [give feedback](https://github.com/microsoft/aspire).
+- Set up a telemetry visualization tool for local debugging:
+  - [Aspire Dashboard](https://aspire.dev/dashboard/overview/)
+  - [Jaeger](https://www.jaegertracing.io/)
+  - [Grafana Tempo](https://grafana.com/docs/tempo/latest/set-up-for-tracing/)
 - Join the
   [GenAI Semantic Conventions and Instrumentation SIG](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md)
   discussions.
