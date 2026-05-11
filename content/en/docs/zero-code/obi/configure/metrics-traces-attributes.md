@@ -156,7 +156,7 @@ use a database technology not directly supported by OBI, you can enable this
 option to get database client telemetry. This option is not enabled by default,
 because it can create false positives, for example, if an application sends SQL
 text for logging through a TCP connection. Currently, OBI natively supports the
-PostgreSQL and MySQL binary protocols.
+PostgreSQL, MySQL, and MSSQL binary protocols.
 
 ### HTTP header and body enrichment for spans {#http-header-enrichment-for-spans}
 

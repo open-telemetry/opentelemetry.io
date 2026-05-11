@@ -21,13 +21,14 @@ Prometheus format.
 | Application | `rpc.server.duration`              | `rpc_server_duration_seconds`              | Histogram | seconds | Duration of RPC service calls from the server side                                                                    |
 | Application | `sql.client.duration`              | `sql_client_duration_seconds`              | Histogram | seconds | Duration of SQL client operations (Experimental)                                                                      |
 | Application | `redis.client.duration`            | `redis_client_duration_seconds`            | Histogram | seconds | Duration of Redis client operations (Experimental)                                                                    |
-| Application | `messaging.publish.duration`       | `messaging_publish_duration`               | Histogram | seconds | Duration of Messaging (Kafka) publish operations (Experimental)                                                       |
-| Application | `messaging.process.duration`       | `messaging_process_duration`               | Histogram | seconds | Duration of Messaging (Kafka) process operations (Experimental)                                                       |
+| Application | `messaging.publish.duration`       | `messaging_publish_duration`               | Histogram | seconds | Duration of messaging publish operations across supported systems such as Kafka, MQTT, NATS, and AMQP (Experimental) |
+| Application | `messaging.process.duration`       | `messaging_process_duration`               | Histogram | seconds | Duration of messaging process operations across supported systems such as Kafka, MQTT, NATS, and AMQP (Experimental) |
 | Application | `gen_ai.client.operation.duration` | `gen_ai_client_operation_duration_seconds` | Histogram | seconds | Duration of GenAI client operations (Experimental)                                                                    |
 | Application | `gen_ai.client.token.usage`        | `gen_ai_client_token_usage`                | Histogram | 1       | Number of GenAI input/output tokens consumed, labeled by token type (Experimental)                                    |
 | Network     | `obi.network.flow.bytes`           | `obi_network_flow_bytes_total`             | Counter   | bytes   | Bytes submitted from a source network endpoint to a destination network endpoint                                      |
 | Network     | `obi.network.inter.zone.bytes`     | `obi_network_inter_zone_bytes_total`       | Counter   | bytes   | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes) |
 | Network     | `obi.stat.tcp.rtt`                 | `obi_stat_tcp_rtt_seconds`                 | Histogram | seconds | TCP round-trip time (RTT) latency observed between network endpoints (StatsO11y)                                      |
+| Network     | `obi.stat.tcp.failed.connections`  | `obi_stat_tcp_failed_connections_total`    | Counter   | 1       | Failed TCP connection attempts between endpoints, labeled by failure reason (StatsO11y)                               |
 
 OBI can also export
 [Span metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector)
@@ -128,6 +129,25 @@ check the `attributes`->`select` section in the
 | `obi.network.flow.bytes`       | `src.asn`                    | shown if the `geoip` configuration section exists |
 | `obi.network.flow.bytes`       | `dst.country`                | shown if the `geoip` configuration section exists |
 | `obi.network.flow.bytes`       | `dst.asn`                    | shown if the `geoip` configuration section exists |
+| `obi.stat.tcp.rtt`             | `obi.ip`                     | hidden                                            |
+| `obi.stat.tcp.rtt`             | `src.address`                | hidden                                            |
+| `obi.stat.tcp.rtt`             | `dst.address`                | hidden                                            |
+| `obi.stat.tcp.rtt`             | `src.port`                   | hidden                                            |
+| `obi.stat.tcp.rtt`             | `dst.port`                   | hidden                                            |
+| `obi.stat.tcp.rtt`             | `src.name`                   | hidden                                            |
+| `obi.stat.tcp.rtt`             | `dst.name`                   | hidden                                            |
+| `obi.stat.tcp.rtt`             | `src.zone`                   | hidden                                            |
+| `obi.stat.tcp.rtt`             | `dst.zone`                   | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `obi.ip`                  | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `src.address`             | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `dst.address`             | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `src.port`                | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `dst.port`                | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `src.name`                | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `dst.name`                | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `src.zone`                | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `dst.zone`                | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `reason`                  | hidden                                            |
 | Traces (SQL, Redis)            | `db.query.text`              | hidden                                            |
 
 > [!NOTE]
