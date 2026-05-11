@@ -9,7 +9,7 @@ drifted_from_default: true
 cascade:
   vers:
     instrumentation: 2.27.0
-    otel: 1.61.0
+    otel: 1.62.0
     contrib: 1.56.0
     semconv: 1.41.0
 weight: 18

@@ -1287,6 +1287,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:56:35.865520256Z"
   },
+  "https://datatracker.ietf.org/doc/html/rfc4122#section-3": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-07T15:27:22.461979889Z"
+  },
   "https://datatracker.ietf.org/doc/html/rfc4648#section-4": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:56:57.698651218Z"
@@ -2571,6 +2575,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-05-02T09:56:41.44790968Z"
   },
+  "https://docs.oracle.com/javase/8/docs/technotes/guides/management/agent.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-05T15:50:14.87247516Z"
+  },
   "https://docs.oracle.com/javase/specs/jls/se7/html/jls-10.html": {
     "StatusCode": 200,
     "LastSeen": "2026-05-02T09:56:58.000968776Z"
@@ -3843,6 +3851,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:22:33.519218611Z"
   },
+  "https://github.com/Horiodino": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-07T04:53:09.709085147Z"
+  },
   "https://github.com/HudsonHumphries": {
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:15:18.164440238Z"
@@ -3858,6 +3870,14 @@
   "https://github.com/IliaBrahinets": {
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:15:20.932025271Z"
+  },
+  "https://github.com/JPeer264": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T04:53:31.512943019Z"
+  },
+  "https://github.com/JWinermaSplunk": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-11T05:04:58.640921208Z"
   },
   "https://github.com/JacksonWeber": {
     "StatusCode": 206,
@@ -11967,6 +11987,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:08:22.239534387Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/releases": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:20.980800941Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/b7a327218c8cf0928c8cb2198e5fa764d530afda/samplers?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T10:25:38.265930543Z"
@@ -11994,6 +12018,22 @@
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources": {
     "StatusCode": 206,
     "LastSeen": "2026-05-03T09:59:28.385718442Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:23.580862059Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:17.024513191Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migrating-from-jmx-metric-gatherer": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:28.371643052Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#predefined-metric-sets": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:30.588620347Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/micrometer-meter-provider": {
     "StatusCode": 206,
@@ -12082,6 +12122,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:08:18.741245669Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metric-sets": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-12T06:56:30.112929035Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/kafka-broker.md": {
     "StatusCode": 206,
@@ -13398,6 +13442,10 @@
   "https://github.com/open-telemetry/opentelemetry-operator/tree/de81a64ae8d7d2f4f48945049d8ef9ad3509f89e/cmd/otel-allocator?from_branch=main#target-allocator": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T10:25:48.082472352Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/tree/main/autoinstrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-21T19:08:16.485115352Z"
   },
   "https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator": {
     "StatusCode": 206,
@@ -16355,6 +16403,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-05T10:16:17.591105325Z"
   },
+  "https://github.com/osullivandonal": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-06T04:53:25.003668034Z"
+  },
   "https://github.com/otterize": {
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:11:01.908332236Z"
@@ -17055,6 +17107,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:13:04.606002854Z"
   },
+  "https://github.com/singankit": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-11T05:05:03.692292724Z"
+  },
   "https://github.com/singhvibhanshu": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T04:49:15.617321402Z"
@@ -17566,6 +17622,10 @@
   "https://github.com/vvydier": {
     "StatusCode": 206,
     "LastSeen": "2026-04-30T10:27:05.999600305Z"
+  },
+  "https://github.com/vyagh": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-10T04:59:19.38600244Z"
   },
   "https://github.com/w3c/baggage/blob/main/baggage/HTTP_HEADER_FORMAT_RATIONALE.md#case-sensitivity-of-keys": {
     "StatusCode": 206,
@@ -18386,6 +18446,10 @@
   "https://kotlinlang.org/docs/coroutines-overview.html": {
     "StatusCode": 206,
     "LastSeen": "2026-05-03T10:01:38.851917649Z"
+  },
+  "https://kotlinlang.org/multiplatform/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-28T13:19:16.64618+01:00"
   },
   "https://kubernetes.io": {
     "StatusCode": 206,
@@ -22267,9 +22331,17 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-03T09:58:45.271392982Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.62.0-alpha/opentelemetry-bom-alpha-1.62.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-10T22:59:45.069555466Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.61.0/opentelemetry-bom-1.61.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2026-05-03T09:58:41.734374305Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.62.0/opentelemetry-bom-1.62.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-10T22:59:43.468255261Z"
   },
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "StatusCode": 206,
