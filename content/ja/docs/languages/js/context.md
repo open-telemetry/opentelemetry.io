@@ -3,8 +3,7 @@ title: コンテキスト
 description: OpenTelemetry JavaScript Context API ドキュメント
 aliases: [api/context]
 weight: 60
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
-drifted_from_default: true
+default_lang_commit: 6751402db060c25800bb41c270dcaebb48aa7acb
 ---
 
 OpenTelemetryが動作するためには、重要なテレメトリーデータを保存し、伝搬する必要があります。
@@ -102,7 +101,7 @@ const ctx = api.ROOT_CONTEXT;
 const ctx2 = ctx.setValue(key, 'context 2');
 
 // エントリを削除
-const ctx3 = ctx.deleteValue(key);
+const ctx3 = ctx2.deleteValue(key);
 
 // ctx3にはエントリが含まれない
 console.log(ctx3.getValue(key)); // undefined
