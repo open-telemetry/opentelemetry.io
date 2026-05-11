@@ -1287,6 +1287,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:56:35.865520256Z"
   },
+  "https://datatracker.ietf.org/doc/html/rfc4122#section-3": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-07T15:27:22.461979889Z"
+  },
   "https://datatracker.ietf.org/doc/html/rfc4648#section-4": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:56:57.698651218Z"
