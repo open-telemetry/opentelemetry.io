@@ -22,6 +22,7 @@ following commands:
 ```shell
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 ```
+
 ```shell
 helm install my-opentelemetry-operator open-telemetry/opentelemetry-operator \
   --set "manager.collectorImage.repository=otel/opentelemetry-collector-k8s" \
