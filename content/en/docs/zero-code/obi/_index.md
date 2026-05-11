@@ -39,10 +39,10 @@ OBI offers the following features:
 - **Visibility into encrypted communications**: Capture transactions over
   TLS/SSL without decryption
 - **Context propagation**: Propagate trace context across services automatically
-- **Protocol support**: HTTP/S, gRPC, gRPC-Web, JSON-RPC, MQTT, NATS, AMQP
-  1.0, Memcached, and more
-- **Database instrumentation**: PostgreSQL (including pgx driver), MySQL,
-  MSSQL, MongoDB, Redis, Couchbase (N1QL/SQL++ and KV protocol)
+- **Protocol support**: HTTP/S, gRPC, gRPC-Web, JSON-RPC, MQTT, NATS, AMQP 1.0,
+  Memcached, and more
+- **Database instrumentation**: PostgreSQL (including pgx driver), MySQL, MSSQL,
+  MongoDB, Redis, Couchbase (N1QL/SQL++ and KV protocol)
 - **GenAI instrumentation**: Trace and metrics for OpenAI, Anthropic Claude,
   Google AI Studio (Gemini), AWS Bedrock, Qwen (DashScope), MCP over JSON-RPC,
   and embedding and rerank APIs for Voyage AI, Cohere, and Jina AI
@@ -71,9 +71,8 @@ instrumentation:
   existing TCP RTT metrics
 - **Telemetry schema registry**: Added a Weaver-compatible schema registry for
   OBI-emitted metrics and attributes
-- **Span and service graph alignment**: OBI now documents and emits
-  span-metrics and service-graph telemetry aligned with the collector-contrib
-  connectors
+- **Span and service graph alignment**: OBI now documents and emits span-metrics
+  and service-graph telemetry aligned with the collector-contrib connectors
 
 For a complete list of changes and upgrade notes, see the
 [release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.9.0).

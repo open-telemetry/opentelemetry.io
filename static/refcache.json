@@ -11503,6 +11503,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:17:41.363180144Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.9.0": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-11T21:25:33.679333006Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/2feaeb84ef7aeeb1e57e642b46c96b965ae4b804/internal/test/integration/k8s/manifests?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:28:27.968959334Z"
@@ -11522,6 +11526,14 @@
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/nginx": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:17:43.267111366Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.9.0/examples/apache": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-11T21:25:43.748300573Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.9.0/examples/nginx": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-11T21:25:38.162147884Z"
   },
   "https://github.com/open-telemetry/opentelemetry-ebpf-profiler": {
     "StatusCode": 206,
