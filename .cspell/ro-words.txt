@@ -18,6 +18,7 @@ dezvoltatori
 dezvoltatorii
 discutǎ
 exportatorilor
+forțezi
 gestionezi
 informatica
 informatică
@@ -33,6 +34,7 @@ microservicii
 migrare
 migrezi
 nedeterministe
+nespecificate
 nestandard
 observabilitate
 observabilitatea
@@ -42,6 +44,7 @@ prepopulată
 receptoarelor
 remediează
 semneazǎ
+soliciți
 sugerezi
 telemetrice
 telemetrie
