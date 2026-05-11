@@ -148,8 +148,8 @@ garante estabilidade a longo prazo e evolução orientada pela comunidade.
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry é um projeto [graduado][graduated] da [CNCF][]**.<br>
-Formado por meio de uma junção dos projetos OpenTracing e OpenCensus.
+**OpenTelemetry é um projeto [graduado][graduated] da [CNCF][]**.<br> Formado
+por meio de uma junção dos projetos OpenTracing e OpenCensus.
 
 [![CNCF logo][]][cncf]
 
