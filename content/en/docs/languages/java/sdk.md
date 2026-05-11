@@ -1526,9 +1526,39 @@ public class OtlpAuthenticationConfig {
 ```
 <!-- prettier-ignore-end -->
 
+### Benchmarks
+
+The SDK publishes [JMH](https://github.com/openjdk/jmh) benchmark results to
+[open-telemetry.github.io/opentelemetry-java/benchmarks/](https://open-telemetry.github.io/opentelemetry-java/benchmarks/).
+Benchmarks run on every commit to `main` using a dedicated bare-metal runner to
+minimize noise. The results include tools for date filtering and series
+selection, along with links to the benchmark source code where Javadoc
+elaborates on what is benchmarked and why.
+
+Current benchmarks cover the **record path** for all three signals — the hot
+path that application threads exercise on every span start/end, metric
+measurement, or log emit:
+
+| Benchmark                                    | Dimensions                                                                              |
+| -------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [`SpanRecordBenchmark`][span-record-src]     | span size, concurrent threads                                                           |
+| [`MetricRecordBenchmark`][metric-record-src] | instrument type + aggregation, aggregation temporality, cardinality, concurrent threads |
+| [`LogRecordBenchmark`][log-record-src]       | log record size, concurrent threads                                                     |
+
+> [!NOTE]
+>
+> Benchmarks for the **export path** (batch processor flush, exporter I/O, etc.)
+> are planned but lower priority, since export occurs off the hot path.
+
 ### Testing
 
 TODO: document tools available for testing the SDK
 
 [JSON file encoding]:
   /docs/specs/otel/protocol/file-exporter/#json-file-serialization
+[span-record-src]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/SpanRecordBenchmark.java
+[metric-record-src]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/MetricRecordBenchmark.java
+[log-record-src]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/LogRecordBenchmark.java

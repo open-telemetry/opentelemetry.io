@@ -94,11 +94,27 @@ new commit.
 
 ### `FILENAME check` {.notranslate lang=en}
 
-This check verifies that all
-[file names are in kebab-case](../style-guide/#file-names).
+This check verifies that:
+
+- All [file names are in kebab-case](../style-guide/#file-names)
+- No obsolete files or folders exist in the repository (see list below)
 
 If this check fails, run `npm run fix:filenames` locally and push the changes in
 a new commit.
+
+> [!NOTE]
+>
+> `fix:filenames` may **delete** obsolete files or folders.
+
+#### Obsolete files and folders
+
+The following paths are flagged as obsolete and removed by `fix:filenames`. When
+present, an issue or PR number provides context for the change that made the
+path obsolete.
+
+- `tools/` - [Migrate code-excerpts tooling to npm package version #9638][#9638]
+
+[#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 

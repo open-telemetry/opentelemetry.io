@@ -246,7 +246,7 @@
     - contrib
   stability:
     metrics: alpha
-    traces: development
+    traces: alpha
 - name: gitlabreceiver
   display_name: GitLab Receiver
   repo: contrib
@@ -524,7 +524,7 @@
   distributions:
     - contrib
   stability:
-    logs: development
+    logs: alpha
 - name: otelarrowreceiver
   display_name: Apache Arrow OTLP Receiver
   repo: contrib
