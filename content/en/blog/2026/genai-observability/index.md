@@ -129,8 +129,6 @@ telemetry, every prompt, response, and tool call is visible at a glance.
 Navigate to the **Metrics** page and select the `copilot-chat` service. The
 GenAI metrics are prefixed with `gen_ai`:
 
-![Dashboard metrics page showing GenAI metrics](dashboard-metrics.png)
-
 - **`gen_ai.client.operation.duration`** — histogram of LLM call latencies.
   Filter by `gen_ai.request.model` to compare models.
 - **`gen_ai.client.token.usage`** — histogram of token consumption. Filter by
@@ -139,6 +137,8 @@ GenAI metrics are prefixed with `gen_ai`:
 These metrics let you estimate per-request cost, catch token-hungry prompts
 before they hit production, detect latency regressions, and monitor usage
 patterns across models and agents.
+
+![Dashboard metrics page showing GenAI metrics](dashboard-metrics.png)
 
 ## Beyond this demo
 
@@ -150,8 +150,8 @@ standardized next.
   [report issues](https://github.com/open-telemetry/semantic-conventions/issues).
 - Set up a telemetry visualization tool for local debugging:
   - [Aspire Dashboard](https://aspire.dev/dashboard/overview/)
-  - [Jaeger](https://www.jaegertracing.io/)
   - [Grafana Tempo](https://grafana.com/docs/tempo/latest/set-up-for-tracing/)
+  - [Jaeger](https://www.jaegertracing.io/)
 - Join the
   [GenAI Semantic Conventions and Instrumentation SIG](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md)
   discussions.
