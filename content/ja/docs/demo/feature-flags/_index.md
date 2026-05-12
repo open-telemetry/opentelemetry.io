@@ -32,7 +32,7 @@ cSpell:ignore: L9ECAV7KIM loadgenerator OLJCESPC7Z
 | `llmInaccurateResponse`             | LLM                | 商品 ID `L9ECAV7KIM` について、モック LLM サービスは不正確な商品レビューの要約を返します                                               |
 | `llmRateLimitError`                 | LLM                | モック LLM サービスは HTTP ステータスコード 429 の RateLimitError を断続的に返します                                                   |
 | `productCatalogFailure`             | 商品カタログ       | 商品 ID: `OLJCESPC7Z` の `GetProduct` リクエストに対してエラーを生成します                                                             |
-| `recommendationServiceCacheFailure` | レコメンデーション | 指数関数的に増大するキャッシュによりメモリリークが発生します。 1.4 倍のペースで増加し、とリクエストの 50% がその増加を引き起こします   |
+| `recommendationServiceCacheFailure` | レコメンデーション | 指数関数的に増大するキャッシュによりメモリリークが発生します。 1.4 倍のペースで増加し、リクエストの 50% がその増加を引き起こします   |
 | `paymentServiceFailure`             | 支払い             | `charge` メソッドを呼び出すときに、エラーを発生させます                                                                                |
 | `paymentServiceUnreachable`         | 決済               | 支払いサービスを呼び出すときに支払いサービスが利用できないように見せるために、不正アドレスを使用します                                 |
 | `loadgeneratorFloodHomepage`        | 負荷生成ツール     | 大量のリクエストでホームページにフラッディングを開始します。 これは状態である flagd JSON の変更で設定可能です                          |
