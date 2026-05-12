@@ -11395,6 +11395,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-03T09:59:08.953460599Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/docs/logs/routing": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-12T02:17:11.659497536Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/examples": {
     "StatusCode": 206,
     "LastSeen": "2026-05-03T09:58:45.513828801Z"
@@ -14714,6 +14718,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/pull/4947": {
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:14:32.703322458Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/5073": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-12T02:17:21.274113535Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme": {
     "StatusCode": 206,
