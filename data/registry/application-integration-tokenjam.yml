@@ -1,0 +1,26 @@
+title: TokenJam
+registryType: application integration
+language: python
+tags:
+  - ai
+  - llm
+  - agents
+  - observability
+  - genai
+license: MIT
+description: |
+  TokenJam is an open-source, local-first, OTel-native observability and
+  token-economics platform for autonomous AI agents and coding agents. It
+  ingests OTLP traces, metrics, and logs into a local DuckDB store, captures
+  costs and token usage across providers, detects behavioral drift, surfaces
+  sensitive-action alerts, and exposes everything through a CLI, a local web
+  UI, and an MCP server. Native support for Claude Code, Codex CLI, and any
+  OTel-emitting agent framework. No signup, no proxy, no cloud dependency.
+authors:
+  - name: Metabuilder Labs
+    url: https://tokenjam.dev
+urls:
+  repo: https://github.com/Metabuilder-Labs/tokenjam
+  website: https://tokenjam.dev
+  docs: https://github.com/Metabuilder-Labs/tokenjam#readme
+createdAt: 2026-05-12
