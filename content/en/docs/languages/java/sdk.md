@@ -1541,9 +1541,9 @@ measurement, or log emit:
 
 | Benchmark                                      | Dimensions                                                                              |
 | ---------------------------------------------- | --------------------------------------------------------------------------------------- |
-| [`SpanRecordBenchmark`][span-record-src][]     | span size, concurrent threads                                                           |
-| [`MetricRecordBenchmark`][metric-record-src][] | instrument type + aggregation, aggregation temporality, cardinality, concurrent threads |
-| [`LogRecordBenchmark`][log-record-src][]       | log record size, concurrent threads                                                     |
+| [`SpanRecordBenchmark`][span-record-src]     | span size, concurrent threads                                                           |
+| [`MetricRecordBenchmark`][metric-record-src] | instrument type + aggregation, aggregation temporality, cardinality, concurrent threads |
+| [`LogRecordBenchmark`][log-record-src]       | log record size, concurrent threads                                                     |
 
 > [!NOTE]
 >
