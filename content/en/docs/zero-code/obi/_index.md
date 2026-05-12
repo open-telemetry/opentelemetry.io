@@ -5,6 +5,8 @@ description:
   Learn how to use OpenTelemetry eBPF Instrumentation for automatic
   instrumentation.
 weight: 3
+# prettier-ignore
+cSpell:ignore: Qwen rerank
 cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
