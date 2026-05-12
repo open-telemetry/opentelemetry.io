@@ -1,7 +1,7 @@
 ---
 title: Introducing OTel Blueprints and Reference Implementations
 linkTitle: Blueprints and Reference Implementations
-date: 2026-05-05
+date: 2026-05-12
 sig: End-User SIG
 author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
 cSpell:ignore: Skyscanner
@@ -80,7 +80,7 @@ context in a different way than the dependencies they call, breaking context
 propagation for both.
 
 Unfortunately, AI won't save us here, and it might even make matters worse. We
-have all heard stories of systems where entropy and complexity has
+have all heard stories of systems where entropy and complexity have
 _accidentally_ grown uncontrolled as AI-assisted development adds a new file
 here, a duplicated method there, or, in the case of OTel, a new way of
 configuring and deploying a component. The result is a system that's neither
