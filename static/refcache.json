@@ -1143,6 +1143,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-28T14:17:36.3Z"
   },
+  "https://crates.io/crates/opentelemetry-appender-tracing": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-12T03:45:00Z"
+  },
   "https://crates.io/crates/opentelemetry-application-insights": {
     "StatusCode": 206,
     "LastSeen": "2026-04-28T14:17:39.431Z"
@@ -1222,6 +1226,10 @@
   "https://crates.io/crates/opentelemetry_sdk": {
     "StatusCode": 206,
     "LastSeen": "2026-04-28T14:18:28.905Z"
+  },
+  "https://crates.io/crates/tracing": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-12T03:45:00Z"
   },
   "https://crates.io/crates/tracing-opentelemetry": {
     "StatusCode": 206,

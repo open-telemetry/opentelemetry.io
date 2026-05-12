@@ -2,7 +2,7 @@
 title: Getting Started
 weight: 10
 # prettier-ignore
-cSpell:ignore: eprintln println rolldice tokio tracing appender SdkTracerProvider SdkMeterProvider SdkLoggerProvider MetricExporter LogExporter SpanExporter OnceLock ctrl_c
+cSpell:ignore: ctrl_c eprintln LogExporter MetricExporter OnceLock rolldice SdkLoggerProvider SdkMeterProvider SdkTracerProvider SpanExporter tokio tracing
 ---
 
 This page will show you how to get started with OpenTelemetry in Rust.
@@ -187,7 +187,7 @@ async fn roll_dice(_: Request<hyper::body::Incoming>) -> Result<Response<Full<By
     get_roll_counter().add(1, &[KeyValue::new("roll.value", random_number as i64)]);
 
     // Logs: emit a structured log event via the tracing bridge
-    tracing::info!(roll.value = random_number, "Player rolled the dice");
+    tracing::info!(name: "roll_dice", roll.value = random_number, message = "Player rolled the dice");
 
     Ok(Response::new(Full::new(Bytes::from(
         random_number.to_string(),
@@ -259,7 +259,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
         .init();
 
     let listener = TcpListener::bind(addr).await?;
-    println!("Listening on {addr}");
+    tracing::info!("Listening on {addr}");
 
     loop {
         tokio::select! {
@@ -305,8 +305,8 @@ Listening on 127.0.0.1:8080
 
 ### Traces
 
-Tracing is added in `handle()`. For each incoming HTTP request a **server
-span** is created using a `BoxedTracer` retrieved from the global provider:
+Tracing is added in `handle()`. For each incoming HTTP request a **server span**
+is created using a `Tracer` retrieved from the global provider:
 
 ```rust
 let mut span = tracer
@@ -315,9 +315,8 @@ let mut span = tracer
     .start(tracer);
 ```
 
-`init_tracer_provider()` builds an `SdkTracerProvider` with the stdout
-exporter, sets it globally, and returns it so `main()` can call
-`.shutdown()` on exit.
+`init_tracer_provider()` builds an `SdkTracerProvider` with the stdout exporter,
+sets it globally, and returns it so `main()` can call `.shutdown()` on exit.
 
 When you send a request to <http://localhost:8080/rolldice> you'll see a span
 printed to the console:
@@ -398,10 +397,10 @@ crate together with the
 [`opentelemetry-appender-tracing`](https://crates.io/crates/opentelemetry-appender-tracing)
 bridge.
 
-`init_logger_provider()` builds an `SdkLoggerProvider` with the stdout
-exporter. In `main()`, `OpenTelemetryTracingBridge` is wired into the
-`tracing_subscriber` stack so that any `tracing::info!` (or other level) call
-is forwarded to the OTel log pipeline:
+`init_logger_provider()` builds an `SdkLoggerProvider` with the stdout exporter.
+In `main()`, `OpenTelemetryTracingBridge` is wired into the `tracing_subscriber`
+stack so that any `tracing::info!` (or other level) call is forwarded to the
+OTel log pipeline:
 
 ```rust
 let otel_layer = OpenTelemetryTracingBridge::new(&logger_provider);
@@ -413,7 +412,7 @@ tracing_subscriber::registry()
 In `roll_dice()`, a structured log event is emitted:
 
 ```rust
-tracing::info!(roll.value = random_number, "Player rolled the dice");
+tracing::info!(name: "roll_dice", roll.value = random_number, message = "Player rolled the dice");
 ```
 
 Along with the span and metric, you'll now see log records on the console:
