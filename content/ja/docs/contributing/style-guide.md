@@ -8,14 +8,14 @@ params:
   alertExamples: |
     > [!TIP]
     >
-    > If you are writing new content, generally prefer using this blockquote alert
-    > syntax instead of the Docsy
-    > [alert shortcode](https://www.docsy.dev/docs/content/shortcodes/#alert).
+    > 新しいコンテンツを書く場合は、通常、Docsy の
+    > [alert ショートコード](https://www.docsy.dev/docs/content/shortcodes/#alert) ではなく、
+    > この blockquote alert 構文を使うことを推奨します。
 
-    > [!WARNING] :warning: Blank line required!
+    > [!WARNING] :warning: 空行が必要です！
     >
-    > This site uses the [Prettier] formatter, and it requires an empty line
-    > separating the alert tag/title from the alert body.
+    > このサイトでは [Prettier] フォーマッターを使用しており、alert タグ/タイトルと
+    > alert 本文の間に空行が必要です。
 cSpell:ignore: postgre
 ---
 
