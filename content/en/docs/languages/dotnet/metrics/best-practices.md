@@ -404,25 +404,25 @@ while measuring an operation which normally takes 10 milliseconds).
 
 ## Metrics correlation
 
-🛑 You should avoid using `TraceId` and `SpanId` as attributes in metrics.
+> [!WARNING] **Avoid using `TraceId` and `SpanId` as attributes in metrics.**
+>
+> Including trace context (`TraceId`, `SpanId`) as metric attributes might seem
+> like an intuitive way to correlate metrics with traces, but this approach is
+> ineffective and can make metrics practically unusable. Including trace context
+> as attributes leads to cardinality explosion since each unique trace context
+> becomes a new attribute combination. This can quickly cause metrics to hit the
+> [cardinality limit](#cardinality-limits), resulting in measurements being
+> folded into the overflow bucket and losing the correlation information you
+> were trying to achieve.
 
-> [!WARNING] Including trace context (`TraceId`, `SpanId`) as metric attributes
-> might seem like an intuitive way to correlate metrics with traces, but this
-> approach is ineffective and can make metrics practically unusable. Including
-> trace context as attributes leads to cardinality explosion since each unique
-> trace context becomes a new attribute combination. This can quickly cause
-> metrics to hit the [cardinality limit](#cardinality-limits), resulting in
-> measurements being folded into the overflow bucket and losing the correlation
-> information you were trying to achieve.
-
-✔️ You should use exemplars for correlating metrics with traces.
-
-[Exemplars](/docs/specs/otel/metrics/sdk/#exemplar) provide a mechanism to
-correlate metrics with [traces](/docs/languages/dotnet/traces/) by sampling
-specific measurements and attaching trace context to them. This approach
-preserves metric cardinality while enabling trace correlation for a subset of
-measurements. Check the [Exemplars](/docs/languages/dotnet/metrics/exemplars/)
-tutorial to learn more.
+> [!TIP] **Use exemplars to correlate metrics with traces.**
+>
+> [Exemplars](/docs/specs/otel/metrics/sdk/#exemplar) provide a mechanism to
+> correlate metrics with [traces](/docs/languages/dotnet/traces/) by sampling
+> specific measurements and attaching trace context to them. This approach
+> preserves metric cardinality while enabling trace correlation for a subset of
+> measurements. Check the [Exemplars](/docs/languages/dotnet/metrics/exemplars/)
+> tutorial to learn more.
 
 ## Metrics enrichment
 

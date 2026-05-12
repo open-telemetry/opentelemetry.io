@@ -122,7 +122,7 @@ internal sealed class RoutingProcessor : BaseProcessor<LogRecord>
 }
 ```
 
-### Wiring it up
+### Registering the routing processor on the LoggerProvider
 
 Register the routing processor on the `LoggerProvider`. Both loggers below share
 the same `ILoggerFactory` and `LoggerProvider` pipeline, but their log records
