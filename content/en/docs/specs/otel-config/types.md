@@ -5,6 +5,13 @@ description: >-
   Searchable reference for all types defined in the OpenTelemetry declarative
   configuration schema, including their properties and constraints.
 weight: 10
+# This file lives in the opentelemetry.io repo but is mounted into the
+# docs/specs/otel/ hierarchy, which cascades github_repo/github_subdir from
+# the opentelemetry-specification submodule. Override those params so the
+# Docsy "View page source" link points to the correct repo.
+github_repo: https://github.com/open-telemetry/opentelemetry.io
+github_subdir: ''
+path_base_for_github_subdir: ''
 ---
 
 The OpenTelemetry
