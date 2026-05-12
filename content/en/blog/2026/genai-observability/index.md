@@ -73,19 +73,16 @@ Run the following Docker command to get started:
 
 ```sh
 docker run --rm -p 18888:18888 -p 4317:18889 -p 4318:18890 -d --name aspire-dashboard \
+    -e ASPIRE_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true \
     mcr.microsoft.com/dotnet/aspire-dashboard:latest
 ```
 
 The dashboard collects telemetry sent to `http://localhost:4318`, and you can
 view telemetry by visiting `http://localhost:18888`.
 
-A login token is required on first access. Retrieve it from the container logs.
-
-![Docker container logs showing the Aspire Dashboard login URL with token](dashboard-login.png)
-
-To skip the login prompt during local development, add
-`-e ASPIRE_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true` to the `docker run`
-command.
+> ℹ️ The dashboard requires authentication by default.
+> Use `-e ASPIRE_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true` to allow anonymous access
+> during local development.
 
 ### Explore traces
 
