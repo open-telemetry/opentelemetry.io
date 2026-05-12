@@ -7,6 +7,7 @@ description:
 aliases: [/docs/collector/deployment/gateway]
 weight: 300
 default_lang_commit: ccb79745a6b30511661b7071ecf1e866fcd2a122
+# prettier-ignore
 cSpell:ignore: hostnames loadbalancer loadbalancing resourcedetectionprocessor subchave
 ---
 
