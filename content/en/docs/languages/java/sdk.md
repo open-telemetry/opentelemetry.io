@@ -1550,6 +1550,15 @@ measurement, or log emit:
 > Benchmarks for the **export path** (batch processor flush, exporter I/O, etc.)
 > are planned but lower priority, since export occurs off the hot path.
 
+[JSON file encoding]:
+  /docs/specs/otel/protocol/file-exporter/#json-file-serialization
+[span-record-src]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/SpanRecordBenchmark.java
+[metric-record-src]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/MetricRecordBenchmark.java
+[log-record-src]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/LogRecordBenchmark.java
+
 ### Testing
 
 The `io.opentelemetry:opentelemetry-sdk-testing` artifact
