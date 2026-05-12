@@ -129,6 +129,8 @@ telemetry, every prompt, response, and tool call is visible at a glance.
 Navigate to the **Metrics** page and select the `copilot-chat` service. The
 GenAI metrics are prefixed with `gen_ai`:
 
+![Dashboard metrics page showing GenAI metrics](dashboard-metrics.png)
+
 - **`gen_ai.client.operation.duration`** — histogram of LLM call latencies.
   Filter by `gen_ai.request.model` to compare models.
 - **`gen_ai.client.token.usage`** — histogram of token consumption. Filter by
