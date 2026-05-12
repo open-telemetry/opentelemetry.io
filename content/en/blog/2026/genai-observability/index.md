@@ -78,7 +78,10 @@ docker run --rm -p 18888:18888 -p 4317:18889 -p 4318:18890 -d --name aspire-dash
 ```
 
 The dashboard collects telemetry sent to `http://localhost:4318`, and you can
-view telemetry by visiting `http://localhost:18888`. The dashboard also requires authentication by default. Use `-e ASPIRE_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true` to allow anonymous access during local development.
+view telemetry by visiting `http://localhost:18888`. The dashboard also requires
+authentication by default. Use
+`-e ASPIRE_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true` to allow anonymous access
+during local development.
 
 ### Explore traces
 
@@ -106,11 +109,12 @@ captured as structured span attributes such as `gen_ai.system_instructions`,
 for debugging, but these attributes can be large, and many observability
 platforms render them as raw JSON, making them difficult to read.
 
-Observability tools can include specialized UI for viewing GenAI telemetry. We'll use
-a [GenAI telemetry visualizer](https://aspire.dev/dashboard/explore/#genai-telemetry-visualization) that parses these
-attributes and renders a chat-style view of the conversation, showing system
-prompts, user messages, assistant responses, and tool call arguments and
-results.
+Observability tools can include specialized UI for viewing GenAI telemetry.
+We'll use a
+[GenAI telemetry visualizer](https://aspire.dev/dashboard/explore/#genai-telemetry-visualization)
+that parses these attributes and renders a chat-style view of the conversation,
+showing system prompts, user messages, assistant responses, and tool call
+arguments and results.
 
 ![Aspire Dashboard GenAI telemetry visualizer showing a chat-style view of prompts and responses](dashboard-genai-visualizer.png)
 
