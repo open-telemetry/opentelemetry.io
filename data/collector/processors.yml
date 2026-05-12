@@ -55,15 +55,13 @@
     - k8s
   stability:
     metrics: alpha
-- name: dnslookupprocessor
-  display_name: DNS Lookup Processor
+- name: drainprocessor
+  display_name: Drain Processor
   repo: contrib
   distributions:
     - contrib
   stability:
-    logs: development
-    metrics: development
-    traces: development
+    logs: alpha
 - name: filterprocessor
   display_name: Filter Processor
   repo: contrib
@@ -258,7 +256,7 @@
   stability:
     traces: alpha
 - name: spanpruningprocessor
-  display_name: spanpruningprocessor
+  display_name: Span Pruning Processor
   repo: contrib
   distributions:
     - contrib

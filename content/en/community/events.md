@@ -25,7 +25,7 @@ challenges and successes. These events include:
 - Q&A sessions with the community
 
 Find all SIG End-User virtual events and join the community at
-[community.cncf.io/opentelemetry/](https://community.cncf.io/opentelemetry/).
+[Open Community Groups](https://ocgroups.dev/cncf/group/xkrw4uk).
 
 ### KubeCon + CloudNativeCon
 

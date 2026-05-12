@@ -12,7 +12,8 @@ cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 - Docker
 - [Docker Compose](https://docs.docker.com/compose/install/) v2.0.0+
 - Make (optional)
-- 6 GB of RAM for the application
+- 6 GB of RAM for the application (or ~3 GB using
+  [minimal mode](#run-in-minimal-mode))
 - 14 GB of disk space
 
 ## Get and run the demo
@@ -44,6 +45,32 @@ docker compose up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
+
+### Run in minimal mode
+
+If you have limited resources, you can start the demo without Kafka and its
+dependent services, reducing memory usage to approximately 3 GB of RAM:
+
+    {{< tabpane text=true >}} {{% tab Make %}}
+
+```shell
+make start-minimal
+```
+
+    {{% /tab %}} {{% tab Docker %}}
+
+```shell
+docker compose -f docker-compose.minimal.yml up --force-recreate --remove-orphans --detach
+```
+
+    {{% /tab %}} {{< /tabpane >}}
+
+The following services are **not** included in minimal mode:
+
+- `accounting`
+- `fraud-detection`
+- `flagd-ui`
+- `kafka`
 
 4.  (Optional) Enable API observability-driven testing[^1]:
 
