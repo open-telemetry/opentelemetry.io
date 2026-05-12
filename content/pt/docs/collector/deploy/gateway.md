@@ -7,8 +7,8 @@ description:
 aliases: [/docs/collector/deployment/gateway]
 weight: 300
 default_lang_commit: ccb79745a6b30511661b7071ecf1e866fcd2a122
-cSpell:ignore:
-  hostnames loadbalancer loadbalancing resourcedetectionprocessor subchave
+# prettier-ignore
+cSpell:ignore: hostnames loadbalancer loadbalancing resourcedetectionprocessor subchave
 ---
 
 O padrão de implantação de Gateway do Collector consiste em aplicações ou outros
