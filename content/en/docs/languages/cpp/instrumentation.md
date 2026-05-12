@@ -233,9 +233,74 @@ p->AddView(std::move(observable_instrument_selector), std::move(observable_meter
 
 ## Logs
 
-The documentation for the logs API & SDK is missing, you can help make it
-available by
-[editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/languages/cpp/instrumentation.md).
+### Initialize exporter and processor
+
+Initialize an exporter and processor. In this case, you initialize an OStream
+Exporter that prints log records to stdout by default. The processor is
+responsible for conversion of LogRecords to exportable representation before
+they reach the exporter.
+
+```cpp
+auto exporter = opentelemetry::exporter::logs::OStreamLogRecordExporterFactory::Create();
+auto processor =
+    opentelemetry::sdk::logs::SimpleLogRecordProcessorFactory::Create(std::move(exporter));
+```
+
+### Register a logger provider
+
+Create a `LoggerProvider` using `LoggerProviderFactory` and register it as the
+global provider. Note that the factory returns a `unique_ptr`, whereas
+`SetLoggerProvider` expects a `shared_ptr`. Use the provider to obtain `Logger`
+objects. Loggers can be named to identify the emitting components.
+
+```cpp
+// LoggerProviderFactory::Create returns a unique_ptr;
+// wrap it in a shared_ptr for SetLoggerProvider
+std::shared_ptr<opentelemetry::logs::LoggerProvider> provider(
+    opentelemetry::sdk::logs::LoggerProviderFactory::Create(std::move(processor)));
+opentelemetry::logs::Provider::SetLoggerProvider(provider);
+auto logger = provider->GetLogger(name, "1.0.0");
+```
+
+### Emit a log record
+
+Use the acquired logger to emit structured log records. The supported severity
+values include: `kTrace`, `kDebug`, `kInfo`, `kWarn`, `kError`, `kFatal`.
+
+Optionally, enrich the log records with trace context either by **implicitly**
+adding the span to a scope and log within the scope, or by **explicitly**
+passing trace ID, span ID, and flags.
+
+#### With active span scope
+
+Add the span to a scope to set the current active runtime context, and any log
+records emitted within the scope automatically get the span context metadata:
+
+```cpp
+{
+  auto span = get_tracer()->StartSpan("HandleRequest");
+  auto scope = opentelemetry::trace::Scope{span};
+  // This log record gets trace_id, span_id, and trace_flags, etc.
+  // from the active scope
+  logger->Info("Handling request");
+}
+```
+
+#### With explicit trace context
+
+You can also pass the trace context explicitly:
+
+```cpp
+auto span = get_tracer()->StartSpan("HandleRequest");
+auto ctx = span->GetContext();
+logger->Info("Handling request", ctx.trace_id(), ctx.span_id(), ctx.trace_flags());
+```
+
+### Further reading
+
+- [Logs API](/docs/specs/otel/logs/api/)
+- [Logs SDK](/docs/specs/otel/logs/sdk/)
+- [Sample Logs Example](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/logs_simple)
 
 ## Next steps
 
