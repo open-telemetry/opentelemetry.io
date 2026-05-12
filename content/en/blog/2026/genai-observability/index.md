@@ -1,7 +1,7 @@
 ---
 title: 'Inside the LLM Call: GenAI Observability with OpenTelemetry'
 linkTitle: GenAI Observability with OpenTelemetry
-date: 2026-04-21
+date: 2026-05-14
 author: '[James Newton-King](https://github.com/jamesnk) (Microsoft)'
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/9707
 sig: SIG GenAI Observability
@@ -78,11 +78,7 @@ docker run --rm -p 18888:18888 -p 4317:18889 -p 4318:18890 -d --name aspire-dash
 ```
 
 The dashboard collects telemetry sent to `http://localhost:4318`, and you can
-view telemetry by visiting `http://localhost:18888`.
-
-> ℹ️ The dashboard requires authentication by default.
-> Use `-e ASPIRE_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true` to allow anonymous access
-> during local development.
+view telemetry by visiting `http://localhost:18888`. The dashboard also requires authentication by default. Use `-e ASPIRE_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true` to allow anonymous access during local development.
 
 ### Explore traces
 
@@ -145,10 +141,6 @@ standardized next.
 
 - Test GenAI instrumentation in your own applications and
   [report issues](https://github.com/open-telemetry/semantic-conventions/issues).
-- Set up a telemetry visualization tool for local debugging:
-  - [Aspire Dashboard](https://aspire.dev/dashboard/overview/)
-  - [Grafana Tempo](https://grafana.com/docs/tempo/latest/set-up-for-tracing/)
-  - [Jaeger](https://www.jaegertracing.io/)
 - Join the
   [GenAI Semantic Conventions and Instrumentation SIG](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md)
   discussions.
