@@ -6,7 +6,7 @@ description:
   and OpenTelemetry traces
 weight: 10
 # prettier-ignore
-cSpell:ignore: AsterixDB couchbase genai gonic jackc libcudart memcached pgxpool pyserver segmentio spanmetrics
+cSpell:ignore: AsterixDB couchbase genai gonic jackc libcudart memcached nats pgxpool pyserver Qwen rerank segmentio spanmetrics
 ---
 
 OBI can export OpenTelemetry metrics and traces to a OTLP endpoint.
@@ -16,26 +16,29 @@ OBI can export OpenTelemetry metrics and traces to a OTLP endpoint.
 OBI supports the following protocol and feature versions for traces and metrics
 instrumentation:
 
-| Area          | Supported versions   | Notes                                                                                          |
-| :------------ | :------------------- | :--------------------------------------------------------------------------------------------- |
-| HTTP          | `1.0/1.1`            | Context propagation is supported.                                                              |
-| HTTP          | `2.0`                | Context propagation requires Go library-level instrumentation.                                 |
-| gRPC          | `1.0+`               | Long-lived connections started before OBI might use `*` for method names.                      |
-| MySQL         | All                  | Prepared statements created before OBI starts might not include query text.                    |
-| PostgreSQL    | All                  | Prepared statements created before OBI starts might not include query text.                    |
-| Redis         | All                  | Existing connections might not include database number or `db.namespace`.                      |
-| MongoDB       | `5.0+`               | Compressed payloads are not supported.                                                         |
-| Couchbase     | All                  | Bucket or collection names might be unavailable when negotiation completed before OBI started. |
-| Memcached     | All                  | Supports the ASCII text protocol subset, excluding `quit` and meta commands.                   |
-| Kafka         | All                  | Topic name lookup might fail for fetch API versions `13+`.                                     |
-| MQTT          | `3.1.1/5.0`          | Payloads are not captured.                                                                     |
-| GraphQL       | All                  | No additional documented version limits.                                                       |
-| Elasticsearch | `7.14+`              | No additional documented version limits.                                                       |
-| OpenSearch    | `3.0.0+`             | No additional documented version limits.                                                       |
-| AWS S3        | All                  | No additional documented version limits.                                                       |
-| AWS SQS       | All                  | No additional documented version limits.                                                       |
-| SQL++         | All                  | No additional documented version limits.                                                       |
-| GenAI         | OpenAI and Anthropic | No additional documented version limits.                                                       |
+| Area          | Supported versions                                                                 | Notes                                                                                           |
+| :------------ | :--------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------- |
+| HTTP          | `1.0/1.1`                                                                          | Context propagation is supported.                                                               |
+| HTTP          | `2.0`                                                                              | Context propagation requires Go library-level instrumentation.                                  |
+| gRPC          | `1.0+`                                                                             | Long-lived connections started before OBI might use `*` for method names.                       |
+| MySQL         | All                                                                                | Prepared statements created before OBI starts might not include query text.                     |
+| PostgreSQL    | All                                                                                | Prepared statements created before OBI starts might not include query text.                     |
+| MSSQL         | All                                                                                | Prepared statements created before OBI starts might not include query text.                     |
+| Redis         | All                                                                                | Existing connections might not include database number or `db.namespace`.                       |
+| MongoDB       | `5.0+`                                                                             | Compressed payloads are not supported.                                                          |
+| Couchbase     | All                                                                                | Bucket or collection names might be unavailable when negotiation completed before OBI started.  |
+| Memcached     | All                                                                                | Supports the ASCII text protocol subset, excluding `quit` and meta commands.                    |
+| Kafka         | All                                                                                | Topic name lookup might fail for fetch API versions `13+`.                                      |
+| MQTT          | `3.1.1/5.0`                                                                        | Payloads are not captured.                                                                      |
+| NATS          | All                                                                                | No additional documented version limits.                                                        |
+| AMQP          | `1.0`                                                                              | Only transfer performatives create spans.                                                       |
+| GraphQL       | All                                                                                | No additional documented version limits.                                                        |
+| Elasticsearch | `7.14+`                                                                            | No additional documented version limits.                                                        |
+| OpenSearch    | `3.0.0+`                                                                           | No additional documented version limits.                                                        |
+| AWS S3        | All                                                                                | No additional documented version limits.                                                        |
+| AWS SQS       | All                                                                                | No additional documented version limits.                                                        |
+| SQL++         | All                                                                                | No additional documented version limits.                                                        |
+| GenAI         | OpenAI, Anthropic, Gemini, AWS Bedrock, Qwen, MCP, embedding APIs, and rerank APIs | Provider-specific payload extraction requires the matching `ebpf.payload_extraction.http` flag. |
 
 Some application-level instrumentation also depends on specific runtime,
 library, or server versions:
@@ -113,9 +116,9 @@ metrics:
   features: ['network', 'network_inter_zone']
 ```
 
-| YAML<br>environment variable               | Description                                                                                                                                                                                                                                                       | Type            | Default           |
-| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------- |
-| `features`<br>`OTEL_EBPF_METRICS_FEATURES` | The list of metric groups OBI exports data for, refer to [metrics export features](#metrics-export-features). Accepted values `all`, `*`, `application`, `application_span`, `application_host`, `application_service_graph`, `network` and `network_inter_zone`. | list of strings | `["application"]` |
+| YAML<br>environment variable               | Description                                                                                                                                                                                                                                                                                                                                                                             | Type            | Default           |
+| ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------- |
+| `features`<br>`OTEL_EBPF_METRICS_FEATURES` | The list of metric groups OBI exports data for, refer to [metrics export features](#metrics-export-features). Accepted values `all`, `*`, `application`, `application_span`, `application_span_otel`, `application_span_sizes`, `application_host`, `application_service_graph`, `network`, `network_inter_zone`, `stats`, `stats_tcp_rtt`, `stats_tcp_failed_connections`, and `ebpf`. | list of strings | `["application"]` |
 
 ### Metrics export features
 
@@ -140,6 +143,12 @@ processes matching entries in the [metrics discovery](./) configuration.
   [network metrics](../../network) configuration documentation to learn more.
 - `network_inter_zone`: Network inter-zone metrics, refer to the
   [network metrics](../../network/) configuration documentation to learn more.
+- `stats`: All TCP statistical metrics.
+- `stats_tcp_rtt`: TCP round-trip time histogram metrics.
+- `stats_tcp_failed_connections`: TCP failed connection counter metrics, labeled
+  by failure reason.
+- `ebpf`: eBPF runtime metrics for loaded probes and maps, exposed through the
+  Prometheus exporter and internal metrics reporter.
 
 ### Per-application metrics export features
 
@@ -242,9 +251,12 @@ The list of instrumentation areas OBI can collect data from:
 - `redis`: Redis client/server database metrics
 - `kafka`: Kafka client/server message queue metrics
 - `mqtt`: MQTT publish/subscribe message metrics (MQTT 3.1.1 and 5.0)
+- `nats`: NATS publish/subscribe message metrics
+- `amqp`: AMQP 1.0 publish/process message metrics
 - `couchbase`: Couchbase N1QL/SQL++ query metrics and KV (Key-Value) protocol
   metrics based on memcached protocol
-- `genai`: GenAI client metrics (OpenAI, Anthropic, Gemini, and AWS Bedrock)
+- `genai`: GenAI client metrics (OpenAI, Anthropic, Gemini, AWS Bedrock, Qwen,
+  MCP, and supported embedding and rerank APIs)
 - `gpu`: GPU performance metrics
 - `mongo`: MongoDB client call metrics
 - `dns`: DNS query metrics
@@ -302,9 +314,12 @@ The list of instrumentation areas OBI can collect data from:
 - `redis`: Redis client/server database traces
 - `kafka`: Kafka client/server message queue traces
 - `mqtt`: MQTT publish/subscribe message traces (MQTT 3.1.1 and 5.0)
+- `nats`: NATS publish/subscribe message traces
+- `amqp`: AMQP 1.0 publish/process message traces
 - `couchbase`: Couchbase N1QL/SQL++ query traces and KV (Key-Value) protocol
   traces, with query text and operation details
-- `genai`: GenAI client traces (OpenAI, Anthropic, Gemini, and AWS Bedrock)
+- `genai`: GenAI client traces (OpenAI, Anthropic, Gemini, AWS Bedrock, Qwen,
+  MCP, and supported embedding and rerank APIs)
 - `gpu`: GPU performance traces
 - `mongo`: MongoDB client call traces
 - `dns`: DNS query traces
@@ -557,8 +572,11 @@ The list of instrumentation areas OBI can collection data from:
 - `redis`: Redis client/server database metrics
 - `kafka`: Kafka client/server message queue metrics
 - `mqtt`: MQTT publish/subscribe message metrics
+- `nats`: NATS publish/subscribe message metrics
+- `amqp`: AMQP 1.0 publish/process message metrics
 - `couchbase`: Couchbase N1QL/SQL++ query metrics and KV protocol metrics
-- `genai`: GenAI client metrics (OpenAI, Anthropic, Gemini, and AWS Bedrock)
+- `genai`: GenAI client metrics (OpenAI, Anthropic, Gemini, AWS Bedrock, Qwen,
+  MCP, and supported embedding and rerank APIs)
 
 For example, setting the `instrumentations` option to: `http,grpc` enables the
 collection of `HTTP/HTTPS/HTTP2` and `gRPC` application metrics, and disables
