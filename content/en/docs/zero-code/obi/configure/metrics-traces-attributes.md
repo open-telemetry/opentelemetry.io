@@ -75,6 +75,40 @@ client metrics and `http_route` for HTTP server metrics.
 When a metric name matches multiple definitions using wildcards, exact matches
 take precedence over wildcard matches.
 
+## Trace selection {#trace-selection}
+
+For exported OpenTelemetry traces, use the `traces` key (not a metric name)
+under `attributes.select`. It controls optional trace decoration such as
+`db.query.text`, `url.query`, GenAI payload attributes, and `db.response.error`.
+
+```yaml
+attributes:
+  select:
+    traces:
+      include:
+        - db.query.text
+        - db.response.error
+```
+
+### `db.response.error` {#db-response-error}
+
+`db.response.error` is not part of the OpenTelemetry semantic conventions. OBI
+uses this string only as a configuration flag under `attributes.select.traces`.
+
+| Condition              | Behavior                                                                                                                                                                                                                                                               |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Not included (default) | On failed database-related spans (SQL, Redis, MongoDB, Couchbase, Memcached, SQL++ over HTTP), `span.status.message` is left empty. This is consistent with how other optional attributes (for example, `db.query.text`) behave — when not selected, they are omitted. |
+| Included               | On those same spans, `span.status.message` is set to the actual error description parsed from the protocol response.                                                                                                                                                   |
+
+`db.response.error` is never attached as a span attribute on OTLP traces. During
+export, OBI uses the gated value only to build `span.status.message` for
+database spans, then drops the attribute from the exported span. Enabling this
+option changes the status description, not a separate `db.response.error` field
+on the span.
+
+The opt-in exists because error strings may contain sensitive or
+high-cardinality detail (schema names, fragments of queries, or data values).
+
 ## Distributed traces and context propagation
 
 YAML section: `ebpf`
@@ -156,7 +190,7 @@ use a database technology not directly supported by OBI, you can enable this
 option to get database client telemetry. This option is not enabled by default,
 because it can create false positives, for example, if an application sends SQL
 text for logging through a TCP connection. Currently, OBI natively supports the
-PostgreSQL and MySQL binary protocols.
+PostgreSQL, MySQL, and MSSQL binary protocols.
 
 ### HTTP header and body enrichment for spans {#http-header-enrichment-for-spans}
 
