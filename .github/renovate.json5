@@ -1,8 +1,12 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   extends: [
-    'github>open-telemetry/community//.github/renovate.json5',
+    'config:recommended',
+    'docker:pinDigests',
+    'helpers:pinGitHubActionDigestsToSemver',
   ],
+  minimumReleaseAge: '7 days',
+  internalChecksFilter: 'strict',
   labels: ['dependencies'],
   schedule: ['before 9am on monday'],
   packageRules: [
