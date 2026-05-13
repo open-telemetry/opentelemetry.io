@@ -21,13 +21,14 @@ Prometheus format.
 | Application | `rpc.server.duration`              | `rpc_server_duration_seconds`              | Histogram | seconds | Duration of RPC service calls from the server side                                                                    |
 | Application | `sql.client.duration`              | `sql_client_duration_seconds`              | Histogram | seconds | Duration of SQL client operations (Experimental)                                                                      |
 | Application | `redis.client.duration`            | `redis_client_duration_seconds`            | Histogram | seconds | Duration of Redis client operations (Experimental)                                                                    |
-| Application | `messaging.publish.duration`       | `messaging_publish_duration`               | Histogram | seconds | Duration of Messaging (Kafka) publish operations (Experimental)                                                       |
-| Application | `messaging.process.duration`       | `messaging_process_duration`               | Histogram | seconds | Duration of Messaging (Kafka) process operations (Experimental)                                                       |
+| Application | `messaging.publish.duration`       | `messaging_publish_duration`               | Histogram | seconds | Duration of messaging publish operations across supported systems such as Kafka, MQTT, NATS, and AMQP (Experimental)  |
+| Application | `messaging.process.duration`       | `messaging_process_duration`               | Histogram | seconds | Duration of messaging process operations across supported systems such as Kafka, MQTT, NATS, and AMQP (Experimental)  |
 | Application | `gen_ai.client.operation.duration` | `gen_ai_client_operation_duration_seconds` | Histogram | seconds | Duration of GenAI client operations (Experimental)                                                                    |
 | Application | `gen_ai.client.token.usage`        | `gen_ai_client_token_usage`                | Histogram | 1       | Number of GenAI input/output tokens consumed, labeled by token type (Experimental)                                    |
 | Network     | `obi.network.flow.bytes`           | `obi_network_flow_bytes_total`             | Counter   | bytes   | Bytes submitted from a source network endpoint to a destination network endpoint                                      |
 | Network     | `obi.network.inter.zone.bytes`     | `obi_network_inter_zone_bytes_total`       | Counter   | bytes   | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes) |
 | Network     | `obi.stat.tcp.rtt`                 | `obi_stat_tcp_rtt_seconds`                 | Histogram | seconds | TCP round-trip time (RTT) latency observed between network endpoints (StatsO11y)                                      |
+| Network     | `obi.stat.tcp.failed.connections`  | `obi_stat_tcp_failed_connections_total`    | Counter   | 1       | Failed TCP connection attempts between endpoints, labeled by failure reason (StatsO11y)                               |
 
 OBI can also export
 [Span metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector)
@@ -46,89 +47,108 @@ In order to configure which attributes to show or which attributes to hide,
 check the `attributes`->`select` section in the
 [configuration documentation](../configure/options/).
 
-| Metrics                        | Name                         | Default                                           |
-| ------------------------------ | ---------------------------- | ------------------------------------------------- |
-| Application (all)              | `http.request.method`        | shown                                             |
-| Application (all)              | `http.response.status_code`  | shown                                             |
-| Application (all)              | `http.route`                 | shown if `routes` configuration section exists    |
-| Application (all)              | `k8s.daemonset.name`         | shown if Kubernetes metadata is enabled           |
-| Application (all)              | `k8s.deployment.name`        | shown if Kubernetes metadata is enabled           |
-| Application (all)              | `k8s.namespace.name`         | shown if Kubernetes metadata is enabled           |
-| Application (all)              | `k8s.node.name`              | shown if Kubernetes metadata is enabled           |
-| Application (all)              | `k8s.owner.name`             | shown if Kubernetes metadata is enabled           |
-| Application (all)              | `k8s.pod.name`               | shown if Kubernetes metadata is enabled           |
-| Application (all)              | `k8s.container.name`         | shown if Kubernetes metadata is enabled           |
-| Application (all)              | `k8s.pod.start_time`         | shown if Kubernetes metadata is enabled           |
-| Application (all)              | `k8s.pod.uid`                | shown if Kubernetes metadata is enabled           |
-| Application (all)              | `k8s.replicaset.name`        | shown if Kubernetes metadata is enabled           |
-| Application (all)              | `k8s.statefulset.name`       | shown if Kubernetes metadata is enabled           |
-| Application (all)              | `k8s.cluster.name`           | shown if Kubernetes metadata is enabled           |
-| Application (all)              | `container.id`               | shown if Docker metadata is enabled               |
-| Application (all)              | `container.name`             | shown if Docker metadata is enabled               |
-| Application (all)              | `cloud.provider`             | shown if cloud metadata is enabled                |
-| Application (all)              | `cloud.platform`             | shown if cloud metadata is enabled                |
-| Application (all)              | `cloud.region`               | shown if cloud metadata is enabled                |
-| Application (all)              | `cloud.account.id`           | shown if cloud metadata is enabled                |
-| Application (all)              | `cloud.availability_zone`    | shown if cloud metadata is enabled                |
-| Application (all)              | `cloud.resource_id`          | shown if cloud metadata is enabled (Azure only)   |
-| Application (all)              | `host.id`                    | shown if cloud metadata is enabled                |
-| Application (all)              | `host.type`                  | shown if cloud metadata is enabled                |
-| Application (all)              | `host.image.id`              | shown if cloud metadata is enabled (AWS only)     |
-| Application (all)              | `gcp.gce.instance.name`      | shown if cloud metadata is enabled (GCP only)     |
-| Application (all)              | `gcp.gce.instance.hostname`  | shown if cloud metadata is enabled (GCP only)     |
-| Application (all)              | `service.name`               | shown                                             |
-| Application (all)              | `service.namespace`          | shown                                             |
-| Application (all)              | `target.instance`            | shown                                             |
-| Application (all)              | `url.path`                   | hidden                                            |
-| Application (client)           | `server.address`             | hidden                                            |
-| Application (client)           | `server.port`                | hidden                                            |
-| Application `rpc.*`            | `rpc.grpc.status_code`       | shown                                             |
-| Application `rpc.*`            | `rpc.method`                 | shown                                             |
-| Application `rpc.*`            | `rpc.system`                 | shown                                             |
-| Application (server)           | `client.address`             | hidden                                            |
-| `obi.network.flow.bytes`       | `obi.ip`                     | hidden                                            |
-| `db.client.operation.duration` | `db.operation.name`          | shown                                             |
-| `db.client.operation.duration` | `db.collection.name`         | hidden                                            |
-| `messaging.publish.duration`   | `messaging.system`           | shown                                             |
-| `messaging.publish.duration`   | `messaging.destination.name` | shown                                             |
-| `messaging.process.duration`   | `messaging.system`           | shown                                             |
-| `messaging.process.duration`   | `messaging.destination.name` | shown                                             |
-| `obi.network.flow.bytes`       | `client.port`                | hidden                                            |
-| `obi.network.flow.bytes`       | `direction`                  | hidden                                            |
-| `obi.network.flow.bytes`       | `dst.address`                | hidden                                            |
-| `obi.network.flow.bytes`       | `dst.cidr`                   | shown if the `cidrs` configuration section exists |
-| `obi.network.flow.bytes`       | `dst.name`                   | hidden                                            |
-| `obi.network.flow.bytes`       | `dst.port`                   | hidden                                            |
-| `obi.network.flow.bytes`       | `dst.zone` (only Kubernetes) | hidden                                            |
-| `obi.network.flow.bytes`       | `iface`                      | hidden                                            |
-| `obi.network.flow.bytes`       | `k8s.cluster.name`           | shown if Kubernetes is enabled                    |
-| `obi.network.flow.bytes`       | `k8s.dst.name`               | hidden                                            |
-| `obi.network.flow.bytes`       | `k8s.dst.namespace`          | shown if Kubernetes is enabled                    |
-| `obi.network.flow.bytes`       | `k8s.dst.node.ip`            | hidden                                            |
-| `obi.network.flow.bytes`       | `k8s.dst.node.name`          | hidden                                            |
-| `obi.network.flow.bytes`       | `k8s.dst.owner.type`         | hidden                                            |
-| `obi.network.flow.bytes`       | `k8s.dst.type`               | hidden                                            |
-| `obi.network.flow.bytes`       | `k8s.dst.owner.name`         | shown if Kubernetes is enabled                    |
-| `obi.network.flow.bytes`       | `k8s.src.name`               | hidden                                            |
-| `obi.network.flow.bytes`       | `k8s.src.namespace`          | shown if Kubernetes is enabled                    |
-| `obi.network.flow.bytes`       | `k8s.src.node.ip`            | hidden                                            |
-| `obi.network.flow.bytes`       | `k8s.src.owner.name`         | shown if Kubernetes is enabled                    |
-| `obi.network.flow.bytes`       | `k8s.src.owner.type`         | hidden                                            |
-| `obi.network.flow.bytes`       | `k8s.src.type`               | hidden                                            |
-| `obi.network.flow.bytes`       | `server.port`                | hidden                                            |
-| `obi.network.flow.bytes`       | `src.address`                | hidden                                            |
-| `obi.network.flow.bytes`       | `src.cidr`                   | shown if the `cidrs` configuration section exists |
-| `obi.network.flow.bytes`       | `src.name`                   | hidden                                            |
-| `obi.network.flow.bytes`       | `src.port`                   | hidden                                            |
-| `obi.network.flow.bytes`       | `src.zone` (only Kubernetes) | hidden                                            |
-| `obi.network.flow.bytes`       | `transport`                  | hidden                                            |
-| `obi.network.flow.bytes`       | `network.type`               | hidden                                            |
-| `obi.network.flow.bytes`       | `network.protocol.name`      | hidden                                            |
-| `obi.network.flow.bytes`       | `src.country`                | shown if the `geoip` configuration section exists |
-| `obi.network.flow.bytes`       | `src.asn`                    | shown if the `geoip` configuration section exists |
-| `obi.network.flow.bytes`       | `dst.country`                | shown if the `geoip` configuration section exists |
-| `obi.network.flow.bytes`       | `dst.asn`                    | shown if the `geoip` configuration section exists |
-| Traces (SQL, Redis)            | `db.query.text`              | hidden                                            |
+| Metrics                           | Name                         | Default                                           |
+| --------------------------------- | ---------------------------- | ------------------------------------------------- |
+| Application (all)                 | `http.request.method`        | shown                                             |
+| Application (all)                 | `http.response.status_code`  | shown                                             |
+| Application (all)                 | `http.route`                 | shown if `routes` configuration section exists    |
+| Application (all)                 | `k8s.daemonset.name`         | shown if Kubernetes metadata is enabled           |
+| Application (all)                 | `k8s.deployment.name`        | shown if Kubernetes metadata is enabled           |
+| Application (all)                 | `k8s.namespace.name`         | shown if Kubernetes metadata is enabled           |
+| Application (all)                 | `k8s.node.name`              | shown if Kubernetes metadata is enabled           |
+| Application (all)                 | `k8s.owner.name`             | shown if Kubernetes metadata is enabled           |
+| Application (all)                 | `k8s.pod.name`               | shown if Kubernetes metadata is enabled           |
+| Application (all)                 | `k8s.container.name`         | shown if Kubernetes metadata is enabled           |
+| Application (all)                 | `k8s.pod.start_time`         | shown if Kubernetes metadata is enabled           |
+| Application (all)                 | `k8s.pod.uid`                | shown if Kubernetes metadata is enabled           |
+| Application (all)                 | `k8s.replicaset.name`        | shown if Kubernetes metadata is enabled           |
+| Application (all)                 | `k8s.statefulset.name`       | shown if Kubernetes metadata is enabled           |
+| Application (all)                 | `k8s.cluster.name`           | shown if Kubernetes metadata is enabled           |
+| Application (all)                 | `container.id`               | shown if Docker metadata is enabled               |
+| Application (all)                 | `container.name`             | shown if Docker metadata is enabled               |
+| Application (all)                 | `cloud.provider`             | shown if cloud metadata is enabled                |
+| Application (all)                 | `cloud.platform`             | shown if cloud metadata is enabled                |
+| Application (all)                 | `cloud.region`               | shown if cloud metadata is enabled                |
+| Application (all)                 | `cloud.account.id`           | shown if cloud metadata is enabled                |
+| Application (all)                 | `cloud.availability_zone`    | shown if cloud metadata is enabled                |
+| Application (all)                 | `cloud.resource_id`          | shown if cloud metadata is enabled (Azure only)   |
+| Application (all)                 | `host.id`                    | shown if cloud metadata is enabled                |
+| Application (all)                 | `host.type`                  | shown if cloud metadata is enabled                |
+| Application (all)                 | `host.image.id`              | shown if cloud metadata is enabled (AWS only)     |
+| Application (all)                 | `gcp.gce.instance.name`      | shown if cloud metadata is enabled (GCP only)     |
+| Application (all)                 | `gcp.gce.instance.hostname`  | shown if cloud metadata is enabled (GCP only)     |
+| Application (all)                 | `service.name`               | shown                                             |
+| Application (all)                 | `service.namespace`          | shown                                             |
+| Application (all)                 | `target.instance`            | shown                                             |
+| Application (all)                 | `url.path`                   | hidden                                            |
+| Application (client)              | `server.address`             | hidden                                            |
+| Application (client)              | `server.port`                | hidden                                            |
+| Application `rpc.*`               | `rpc.grpc.status_code`       | shown                                             |
+| Application `rpc.*`               | `rpc.method`                 | shown                                             |
+| Application `rpc.*`               | `rpc.system`                 | shown                                             |
+| Application (server)              | `client.address`             | hidden                                            |
+| `obi.network.flow.bytes`          | `obi.ip`                     | hidden                                            |
+| `db.client.operation.duration`    | `db.operation.name`          | shown                                             |
+| `db.client.operation.duration`    | `db.collection.name`         | hidden                                            |
+| `messaging.publish.duration`      | `messaging.system`           | shown                                             |
+| `messaging.publish.duration`      | `messaging.destination.name` | shown                                             |
+| `messaging.process.duration`      | `messaging.system`           | shown                                             |
+| `messaging.process.duration`      | `messaging.destination.name` | shown                                             |
+| `obi.network.flow.bytes`          | `client.port`                | hidden                                            |
+| `obi.network.flow.bytes`          | `direction`                  | hidden                                            |
+| `obi.network.flow.bytes`          | `dst.address`                | hidden                                            |
+| `obi.network.flow.bytes`          | `dst.cidr`                   | shown if the `cidrs` configuration section exists |
+| `obi.network.flow.bytes`          | `dst.name`                   | hidden                                            |
+| `obi.network.flow.bytes`          | `dst.port`                   | hidden                                            |
+| `obi.network.flow.bytes`          | `dst.zone` (only Kubernetes) | hidden                                            |
+| `obi.network.flow.bytes`          | `iface`                      | hidden                                            |
+| `obi.network.flow.bytes`          | `k8s.cluster.name`           | shown if Kubernetes is enabled                    |
+| `obi.network.flow.bytes`          | `k8s.dst.name`               | hidden                                            |
+| `obi.network.flow.bytes`          | `k8s.dst.namespace`          | shown if Kubernetes is enabled                    |
+| `obi.network.flow.bytes`          | `k8s.dst.node.ip`            | hidden                                            |
+| `obi.network.flow.bytes`          | `k8s.dst.node.name`          | hidden                                            |
+| `obi.network.flow.bytes`          | `k8s.dst.owner.type`         | hidden                                            |
+| `obi.network.flow.bytes`          | `k8s.dst.type`               | hidden                                            |
+| `obi.network.flow.bytes`          | `k8s.dst.owner.name`         | shown if Kubernetes is enabled                    |
+| `obi.network.flow.bytes`          | `k8s.src.name`               | hidden                                            |
+| `obi.network.flow.bytes`          | `k8s.src.namespace`          | shown if Kubernetes is enabled                    |
+| `obi.network.flow.bytes`          | `k8s.src.node.ip`            | hidden                                            |
+| `obi.network.flow.bytes`          | `k8s.src.owner.name`         | shown if Kubernetes is enabled                    |
+| `obi.network.flow.bytes`          | `k8s.src.owner.type`         | hidden                                            |
+| `obi.network.flow.bytes`          | `k8s.src.type`               | hidden                                            |
+| `obi.network.flow.bytes`          | `server.port`                | hidden                                            |
+| `obi.network.flow.bytes`          | `src.address`                | hidden                                            |
+| `obi.network.flow.bytes`          | `src.cidr`                   | shown if the `cidrs` configuration section exists |
+| `obi.network.flow.bytes`          | `src.name`                   | hidden                                            |
+| `obi.network.flow.bytes`          | `src.port`                   | hidden                                            |
+| `obi.network.flow.bytes`          | `src.zone` (only Kubernetes) | hidden                                            |
+| `obi.network.flow.bytes`          | `transport`                  | hidden                                            |
+| `obi.network.flow.bytes`          | `network.type`               | hidden                                            |
+| `obi.network.flow.bytes`          | `network.protocol.name`      | hidden                                            |
+| `obi.network.flow.bytes`          | `src.country`                | shown if the `geoip` configuration section exists |
+| `obi.network.flow.bytes`          | `src.asn`                    | shown if the `geoip` configuration section exists |
+| `obi.network.flow.bytes`          | `dst.country`                | shown if the `geoip` configuration section exists |
+| `obi.network.flow.bytes`          | `dst.asn`                    | shown if the `geoip` configuration section exists |
+| `obi.stat.tcp.rtt`                | `obi.ip`                     | hidden                                            |
+| `obi.stat.tcp.rtt`                | `src.address`                | hidden                                            |
+| `obi.stat.tcp.rtt`                | `dst.address`                | hidden                                            |
+| `obi.stat.tcp.rtt`                | `src.port`                   | hidden                                            |
+| `obi.stat.tcp.rtt`                | `dst.port`                   | hidden                                            |
+| `obi.stat.tcp.rtt`                | `src.name`                   | hidden                                            |
+| `obi.stat.tcp.rtt`                | `dst.name`                   | hidden                                            |
+| `obi.stat.tcp.rtt`                | `src.zone`                   | hidden                                            |
+| `obi.stat.tcp.rtt`                | `dst.zone`                   | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `obi.ip`                     | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `src.address`                | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `dst.address`                | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `src.port`                   | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `dst.port`                   | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `src.name`                   | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `dst.name`                   | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `src.zone`                   | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `dst.zone`                   | hidden                                            |
+| `obi.stat.tcp.failed.connections` | `reason`                     | hidden                                            |
+| Traces (SQL, Redis)               | `db.query.text`              | hidden                                            |
 
 > [!NOTE]
 >
