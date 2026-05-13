@@ -24,6 +24,13 @@
     logs: beta
     metrics: beta
     traces: beta
+- name: cardinalityguardianprocessor
+  display_name: cardinalityguardianprocessor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: development
 - name: coralogixprocessor
   display_name: Coralogix Processor
   repo: contrib
@@ -60,6 +67,7 @@
   repo: contrib
   distributions:
     - contrib
+    - k8s
   stability:
     logs: alpha
 - name: filterprocessor
@@ -74,6 +82,13 @@
     metrics: alpha
     traces: alpha
     profiles: development
+- name: genainormalizerprocessor
+  display_name: GenAI Normalizer Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: development
 - name: geoipprocessor
   display_name: GeoIP Processor
   repo: contrib
