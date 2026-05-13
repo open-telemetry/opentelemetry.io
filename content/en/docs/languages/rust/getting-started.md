@@ -129,9 +129,9 @@ Stdout Exporter
 bridge for logs:
 
 ```toml
-opentelemetry = "{{% version-from-registry otel-rust %}}"
-opentelemetry_sdk = "{{% version-from-registry otel-rust-sdk %}}"
-opentelemetry-stdout = "{{% version-from-registry exporter-rust-stdout %}}"
+opentelemetry = { version = "{{% version-from-registry otel-rust %}}", features = ["metrics"] }
+opentelemetry_sdk = { version = "{{% version-from-registry otel-rust-sdk %}}", features = ["trace", "metrics", "logs"] }
+opentelemetry-stdout = { version = "{{% version-from-registry exporter-rust-stdout %}}", features = ["trace", "metrics", "logs"] }
 opentelemetry-appender-tracing = "{{% version-from-registry otel-rust %}}"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["registry", "env-filter"] }
