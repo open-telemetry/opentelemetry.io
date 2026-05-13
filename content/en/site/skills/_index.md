@@ -23,6 +23,8 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 - [`/draft-issue <issue-description>`][draft-issue]: draft a GitHub issue in the
   `opentelemetry.io` repository following issue templates, contributing
   guidelines, and the label taxonomy.
+- [`/refresh-refcache-pr-fix`][refresh-refcache-pr-fix]: fetch, review and
+  attempt to fix non-2XX URLs on the upstream `otelbot/refcache-refresh` PR.
 - [`/resolve-refcache-conflicts <optional-pr-number>`][resolve-refcache-conflicts]:
   resolve `static/refcache.json` merge/rebase conflicts.
 - [`/review-blog-post <blog-post-path-or-pr-number>`][review-blog-post]: review
@@ -31,6 +33,10 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 - [`/review-pull-request <pr-number-or-url>`][review-pull-request]: review a
   pull request for CI check semantics, CLA and approval-label workflow, refcache
   handling, locale rules, and content quality.
+- [`/update-i18n-drift-status [--locale locale,...] [--create-pr]`][update-i18n-drift-status]:
+  update the `drifted_from_default` front matter field for localized content,
+  with optional arguments to limit which locales are processed and whether to
+  open a PR automatically.
 
 Some agent chats let you invoke a skill by typing `/` followed by its name.
 
@@ -58,12 +64,16 @@ See the section index below.
 [agentskills.io]: https://agentskills.io
 [draft-issue]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/draft-issue/SKILL.md
+[refresh-refcache-pr-fix]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/refresh-refcache-pr-fix/SKILL.md
 [resolve-refcache-conflicts]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/resolve-refcache-conflicts/SKILL.md
 [review-blog-post]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-blog-post/SKILL.md
 [review-pull-request]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-pull-request/SKILL.md
+[update-i18n-drift-status]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-i18n-drift-status/SKILL.md
 [hooks]: https://docs.claude.com/en/docs/claude-code/hooks
 [hooks-json]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/hooks/hooks.json
