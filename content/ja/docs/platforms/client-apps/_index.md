@@ -3,7 +3,6 @@ title: クライアントサイドアプリ
 description: >-
   スマートフォン、デスクトップ、小売キオスクなどのデバイスで動く、エンドユーザーが操作するアプリで OpenTelemetry を使用します。
 aliases: [android, client-apps/overview]
-cSpell:ignore: contentful
 default_lang_commit: bd0020e6582fd42cc898f33fd5eba17e6c8f52ad
 ---
 
