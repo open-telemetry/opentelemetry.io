@@ -3071,6 +3071,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-05-01T10:15:13.596787216Z"
   },
+  "https://en.wikipedia.org/wiki/No_Silver_Bullet": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-02T11:03:30.946034+01:00"
+  },
   "https://en.wikipedia.org/wiki/Non-uniform_memory_access": {
     "StatusCode": 200,
     "LastSeen": "2026-05-03T10:00:55.185231227Z"
@@ -10407,6 +10411,30 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-29T12:24:46.401655593Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.152.0/component/config.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-12T14:27:42.385913775Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.152.0/config/configtls/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-12T14:27:44.538244723Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.152.0/pdata/pcommon/map.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-12T14:27:58.094053909Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.152.0/pdata/ptrace/generated_resourcespans.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-12T14:27:51.190272262Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.152.0/receiver/receiver.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-12T14:27:48.291577263Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.152.0/receiver/receiver.go#L58": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-12T14:27:45.737392531Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/10469": {
     "StatusCode": 206,
     "LastSeen": "2026-04-30T10:26:31.58211594Z"
@@ -16099,9 +16127,29 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:28:38.286942016Z"
   },
+  "https://github.com/open-telemetry/sig-end-user/blob/887e20c58849d583e2e25bc25ef93ea146ce1d78/architecture/blueprint-template.md?plain=1&from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-02T11:03:33.759854+01:00"
+  },
   "https://github.com/open-telemetry/sig-end-user/blob/b5cb097ca529cea62809d5078ef8e30a54ad86b9/end-user-surveys/otel-prom-interoperability/otel-prom-interoperability-survey.csv?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:28:23.853426273Z"
+  },
+  "https://github.com/open-telemetry/sig-end-user/blob/c483a44b12e95c093e0a8b0d7542d470e82ff7fc/architecture/reference-implementation-template.md?plain=1&from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-02T11:03:37.839667+01:00"
+  },
+  "https://github.com/open-telemetry/sig-end-user/issues/245": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-02T11:03:39.829159+01:00"
+  },
+  "https://github.com/open-telemetry/sig-end-user/issues/246": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-02T11:03:44.729444+01:00"
+  },
+  "https://github.com/open-telemetry/sig-end-user/issues/247": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-02T11:03:41.429378+01:00"
   },
   "https://github.com/open-telemetry/sig-end-user/tree/01bdcafbc787c0aa0b076ecd85432c24d50e62ac/end-user-surveys/contributor-experience?from_branch=main": {
     "StatusCode": 206,
@@ -23934,6 +23982,46 @@
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/MetricReader.html": {
     "StatusCode": 200,
     "LastSeen": "2026-05-01T10:08:20.528101662Z"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/assertj/OpenTelemetryAssertions.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-04T11:27:56.548303903Z"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/context/SettableContextStorageProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-04T11:28:11.470589948Z"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryLogRecordExporter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-04T11:28:06.836876889Z"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryMetricReader.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-04T11:28:05.228945697Z"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemorySpanExporter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-04T11:27:59.887694418Z"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit4/OpenTelemetryRule.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-04T11:27:52.29576775Z"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit5/OpenTelemetryExtension.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-04T11:27:51.912253756Z"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/logs/TestLogRecordData.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-04T11:28:10.103766072Z"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/time/TestClock.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-04T11:28:06.982318212Z"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/trace/TestSpanData.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-04T11:28:08.216513969Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SdkTracerProvider.html": {
     "StatusCode": 200,
