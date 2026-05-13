@@ -23543,10 +23543,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:55:23.861196354Z"
   },
-  "https://www.honeycomb.io/blog/bees-working-together-how-ecobees-engineers-adopted-honeycomb-for-visibility-into-system-optimization-and-customer-experience": {
-    "StatusCode": 404,
-    "LastSeen": "2026-05-04T12:53:27.926368604Z"
-  },
   "https://www.honeycomb.io/blog/what-is-auto-instrumentation": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:22:46.515633245Z"
