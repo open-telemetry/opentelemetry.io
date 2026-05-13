@@ -227,6 +227,8 @@ maintainers:
       - network-triagers
       - operator-approvers
       - operator-triagers
+      - packaging-approvers
+      - packaging-maintainers
     html_url: https://github.com/atoulme
     avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: austinlparker
@@ -574,6 +576,8 @@ maintainers:
       - go-approvers
       - go-maintainers
       - go-triagers
+      - packaging-approvers
+      - packaging-maintainers
       - sig-developer-experience-approvers
     html_url: https://github.com/dmathieu
     avatar_url: https://avatars.githubusercontent.com/u/9347?v=4
@@ -595,6 +599,14 @@ maintainers:
       - specs-entities-approvers
     html_url: https://github.com/dmitryax
     avatar_url: https://avatars.githubusercontent.com/u/6628631?v=4
+  - name: douglascamata
+    teams:
+      - collector-contrib-triagers
+      - collector-releases-approvers
+      - packaging-approvers
+      - packaging-maintainers
+    html_url: https://github.com/douglascamata
+    avatar_url: https://avatars.githubusercontent.com/u/159076?v=4
   - name: drewrelmas
     teams:
       - arrow-approvers
@@ -1020,6 +1032,8 @@ maintainers:
       - proto-maintainers
       - proto-triagers
       - python-approvers
+      - python-genai-approvers
+      - python-genai-maintainers
       - semconv-db-approvers
       - semconv-genai-approvers
       - semconv-genai-maintainers
@@ -1138,6 +1152,8 @@ maintainers:
     teams:
       - injector-approvers
       - injector-maintainers
+      - packaging-approvers
+      - packaging-maintainers
     html_url: https://github.com/mmanciop
     avatar_url: https://avatars.githubusercontent.com/u/14020598?v=4
   - name: mmat11
@@ -1563,6 +1579,8 @@ maintainers:
       - java-instrumentation-maintainers
       - java-instrumentation-triagers
       - java-triagers
+      - python-genai-approvers
+      - python-genai-maintainers
       - semconv-db-approvers
       - semconv-genai-approvers
       - semconv-genai-maintainers
@@ -1662,6 +1680,12 @@ maintainers:
       - lambda-extension-maintainers
     html_url: https://github.com/wpessers
     avatar_url: https://avatars.githubusercontent.com/u/45464718?v=4
+  - name: x1unix
+    teams:
+      - packaging-approvers
+      - packaging-maintainers
+    html_url: https://github.com/x1unix
+    avatar_url: https://avatars.githubusercontent.com/u/9203548?v=4
   - name: xrmx
     teams:
       - opentelemetry-python-contrib-approvers
@@ -1855,12 +1879,6 @@ approvers:
       - docs-triagers
     html_url: https://github.com/didiViking
     avatar_url: https://avatars.githubusercontent.com/u/33810708?v=4
-  - name: douglascamata
-    teams:
-      - collector-contrib-triagers
-      - collector-releases-approvers
-    html_url: https://github.com/douglascamata
-    avatar_url: https://avatars.githubusercontent.com/u/159076?v=4
   - name: dpauls
     teams:
       - semconv-messaging-approvers
