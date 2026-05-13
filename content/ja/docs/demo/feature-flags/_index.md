@@ -5,9 +5,8 @@ aliases:
   - scenarios
   - services/feature-flag
   - services/featureflagservice
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
-drifted_from_default: true
-cSpell:ignore: OLJCESPC7Z
+default_lang_commit: 924424b3aad888ee3ddb745eaed063021a5ef8d9
+cSpell:ignore: L9ECAV7KIM loadgenerator OLJCESPC7Z
 ---
 
 デモは、異なるシナリオのシミュレートするために利用可能ないくつかのフィーチャーフラグを提供しています。
@@ -23,20 +22,23 @@ cSpell:ignore: OLJCESPC7Z
 
 ## 実装済みフィーチャーフラグ {#implemented-feature-flags}
 
-| フィーチャーフラグ                  | サービス           | 説明                                                                                                                                 |
-| ----------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `adServiceFailure`                  | 広告               | 10分の1の確率で `GetAds` のエラーを生成します                                                                                        |
-| `adServiceManualGc`                 | 広告               | 広告サービスで完全手動のガベージコレクションを引き起こします                                                                         |
-| `adServiceHighCpu`                  | 広告               | 広告サービスで CPU を高負荷にします。 CPU スロットリングをデモしたい場合は、CPUリソース制限を設定します                              |
-| `cartServiceFailure`                | カート             | `EmptyCart` が呼び出されるたびにエラーを生成します                                                                                   |
-| `emailMemoryLeak`                   | Eメール            | `email` サービスでメモリリークをシミュレートします                                                                                   |
-| `productCatalogFailure`             | 商品カタログ       | 商品 ID: `OLJCESPC7Z` の `GetProduct` リクエストに対してエラーを生成します                                                           |
-| `recommendationServiceCacheFailure` | レコメンデーション | 指数関数的に増大するキャッシュによりメモリリークが発生します。 1.4 倍のペースで増加し、とリクエストの 50% がその増加を引き起こします |
-| `paymentServiceFailure`             | 支払い             | `charge` メソッドを呼び出すときに、エラーを発生させます                                                                              |
-| `paymentServiceUnreachable`         | 決済               | 支払いサービスを呼び出すときに支払いサービスが利用できないように見せるために、不正アドレスを使用します                               |
-| `loadgeneratorFloodHomepage`        | 負荷生成ツール     | 大量のリクエストでホームページにフラッディングを開始します。 これは状態である flagd JSON の変更で設定可能です                        |
-| `kafkaQueueProblems`                | キュー             | Kafka キューに過負荷がかかり、同時にコンシューマー側の遅延も発生し、ラグの急増を引き起こします                                       |
-| `imageSlowLoad`                     | フロントエンド     | Envoy フォールトインジェクションを利用し、フロントエンドでの製品画像の読み込みに遅延を発生させます                                   |
+| フィーチャーフラグ                  | サービス           | 説明                                                                                                                                   |
+| ----------------------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `adServiceFailure`                  | 広告               | 10分の1の確率で `GetAds` のエラーを生成します                                                                                          |
+| `adServiceManualGc`                 | 広告               | 広告サービスで完全手動のガベージコレクションを引き起こします                                                                           |
+| `adServiceHighCpu`                  | 広告               | 広告サービスで CPU を高負荷にします。 CPU スロットリングをデモしたい場合は、CPUリソース制限を設定します                                |
+| `cartServiceFailure`                | カート             | `EmptyCart` が呼び出されるたびにエラーを生成します                                                                                     |
+| `emailMemoryLeak`                   | Eメール            | `email` サービスでメモリリークをシミュレートします                                                                                     |
+| `llmInaccurateResponse`             | LLM                | 商品 ID `L9ECAV7KIM` について、モック LLM サービスは不正確な商品レビューの要約を返します                                               |
+| `llmRateLimitError`                 | LLM                | モック LLM サービスは HTTP ステータスコード 429 の RateLimitError を断続的に返します                                                   |
+| `productCatalogFailure`             | 商品カタログ       | 商品 ID: `OLJCESPC7Z` の `GetProduct` リクエストに対してエラーを生成します                                                             |
+| `recommendationServiceCacheFailure` | レコメンデーション | 指数関数的に増大するキャッシュによりメモリリークが発生します。 1.4 倍のペースで増加し、リクエストの 50% がその増加を引き起こします     |
+| `paymentServiceFailure`             | 支払い             | `charge` メソッドを呼び出すときに、エラーを発生させます                                                                                |
+| `paymentServiceUnreachable`         | 決済               | 支払いサービスを呼び出すときに支払いサービスが利用できないように見せるために、不正アドレスを使用します                                 |
+| `loadgeneratorFloodHomepage`        | 負荷生成ツール     | 大量のリクエストでホームページにフラッディングを開始します。 これは状態である flagd JSON の変更で設定可能です                          |
+| `kafkaQueueProblems`                | キュー             | Kafka キューに過負荷がかかり、同時にコンシューマー側の遅延も発生し、ラグの急増を引き起こします                                         |
+| `imageSlowLoad`                     | フロントエンド     | Envoy フォールトインジェクションを利用し、フロントエンドでの製品画像の読み込みに遅延を発生させます                                     |
+| `failedReadinessProbe`              | カート             | レディネスプローブを失敗させ、ステータスを異常にし、Pod の "NotReady" 状態を再現します。 Kubernetes デプロイメントにのみ適用されます。 |
 
 ## ガイド付きデバッグシナリオ {#guided-debugging-scenario}
 
