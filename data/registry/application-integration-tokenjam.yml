@@ -9,7 +9,7 @@ tags:
   - genai
 license: MIT
 description: |
-  TokenJam is an open-source, local-first, OTel-native observability and
+  TokenJam is an open source, local-first, OTel-native observability and
   token-economics platform for autonomous AI agents and coding agents. It
   ingests OTLP traces, metrics, and logs into a local DuckDB store, captures
   costs and token usage across providers, detects behavioral drift, surfaces
