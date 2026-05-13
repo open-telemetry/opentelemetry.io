@@ -3,8 +3,6 @@ title: OpenTelemetry
 description: >-
   Telemetrie de înaltă calitate, omniprezentă și portabilă pentru a permite o
   observabilitate eficientă
-outputs:
-  - HTML
 developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.

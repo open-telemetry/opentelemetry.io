@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Getting Started by Example
 description: Get telemetry for your app in less than 5 minutes!
 weight: 10
 # prettier-ignore
@@ -8,8 +8,8 @@ cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan 
 
 This page will show you how to get started with OpenTelemetry in Python.
 
-You will learn how you can instrument a simple application automatically, in
-such a way that [traces][], [metrics][], and [logs][] are emitted to the
+You will learn how you can instrument a simple Python application automatically,
+in such a way that [traces][], [metrics][], and [logs][] are emitted to the
 console.
 
 ## Prerequisites
@@ -507,9 +507,9 @@ def roll_dice():
         # This adds 1 to the counter for the given roll value
         roll_counter.add(1, {"roll.value": result})
         if player:
-            logger.warn("%s is rolling the dice: %s", player, result)
+            logger.warning("%s is rolling the dice: %s", player, result)
         else:
-            logger.warn("Anonymous player is rolling the dice: %s", result)
+            logger.warning("Anonymous player is rolling the dice: %s", result)
         return result
 
 def roll():
@@ -769,7 +769,7 @@ docker run -p 4317:4317 `
 
 {{% /tab %}} {{< /tabpane >}}
 
-You will now have an collector instance running locally, listening on port 4317.
+You will now have a collector instance running locally, listening on port 4317.
 
 ### Modify the command to export spans and metrics via OTLP
 

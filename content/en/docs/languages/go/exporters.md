@@ -70,22 +70,20 @@ func main() {
 }
 ```
 
-{{% alert title="Note" color="info" %}}
-
-The standard OTLP exporter packages (`otlptracegrpc`, `otlptracehttp`, etc.)
-already read most OTLP environment variables such as
-`OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_HEADERS`,
-`OTEL_EXPORTER_OTLP_TIMEOUT`, and `OTEL_EXPORTER_OTLP_COMPRESSION`.
-
-The `autoexport` package adds support for the **exporter selector variables**
-(`OTEL_TRACES_EXPORTER`, `OTEL_METRICS_EXPORTER`, `OTEL_LOGS_EXPORTER`) that
-choose _which_ exporter implementation to use. This separation keeps binary
-sizes smaller by not bundling exporter dependencies (like gRPC) unless
-explicitly imported.
-
-Also note that `OTEL_SDK_DISABLED` is not currently supported by the Go SDK.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> The standard OTLP exporter packages (`otlptracegrpc`, `otlptracehttp`, etc.)
+> already read most OTLP environment variables such as
+> `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_HEADERS`,
+> `OTEL_EXPORTER_OTLP_TIMEOUT`, and `OTEL_EXPORTER_OTLP_COMPRESSION`.
+>
+> The `autoexport` package adds support for the **exporter selector variables**
+> (`OTEL_TRACES_EXPORTER`, `OTEL_METRICS_EXPORTER`, `OTEL_LOGS_EXPORTER`) that
+> choose _which_ exporter implementation to use. This separation keeps binary
+> sizes smaller by not bundling exporter dependencies (like gRPC) unless
+> explicitly imported.
+>
+> Also note that `OTEL_SDK_DISABLED` is not currently supported by the Go SDK.
 
 For a complete overview of which environment variables are supported by the Go
 SDK and contrib packages, see the

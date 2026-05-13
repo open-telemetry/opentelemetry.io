@@ -20,12 +20,9 @@ community_guideline: Contribuer
 ui_search_ai_modal_title: Assistant IA d'OpenTelemetry
 
 ui_search_ai_modal_disclaimer: >-
-  Cette **fonctionnalité expérimentale** utilise l'IA pour répondre aux
-  questions basées sur la documentation du site, GitHub OpenTelemetry, Stack
-  Overflow et d'autres ressources. L'IA peut ne pas toujours fournir des
-  informations précises ou pertinentes. Partagez vos impressions en fournissant
-  des
-  [commentaires](https://github.com/open-telemetry/opentelemetry.io/discussions/6802).
+  Obtenez des réponses basées sur la documentation du site, sur GitHub
+  OpenTelemetry, sur Stack Overflow et sur d'autres ressources. [Partagez vos
+  commentaires](https://github.com/open-telemetry/opentelemetry.io/discussions/6802).
 ui_search_ai_popover_content: >-
   <a id='ask-ai-trigger' href='#'>Demandez à l'IA</a> (&#x2318;-K)
 

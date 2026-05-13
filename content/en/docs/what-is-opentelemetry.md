@@ -37,9 +37,10 @@ For more videos in this series and additional resources, see
 ## What is observability?
 
 [Observability][] is the ability to understand the internal state of a system by
-examining its outputs. In the context of software, this means being able to
-understand the internal state of a system by examining its telemetry data, which
-includes traces, metrics, and logs.
+examining its outputs.
+
+In software, this is typically achieved by analyzing telemetry data such as
+traces, metrics, and logs.
 
 To make a system observable, it must be [instrumented][instr]. That is, the code
 must emit [traces][], [metrics][], or [logs][]. The instrumented data must then
@@ -123,7 +124,7 @@ they merged to form OpenTelemetry and combine their strengths while offering a
 single solution.
 
 If you are currently using OpenTracing or OpenCensus, you can learn how to
-migrate to OpenTelemetry in the [Migration guide](../migration/).
+migrate to OpenTelemetry in the [Migration guide](../compatibility/migration/).
 
 [merger]:
   https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/

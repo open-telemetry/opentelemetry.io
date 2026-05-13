@@ -1,10 +1,9 @@
 ---
-title: Componentes clave para Kubernetes
+title: Componentes importantes para Kubernetes
 linkTitle: Componentes
-default_lang_commit: 3815d1481fe753df10ea3dc26cbe64dba0230579 # with patched links
-drifted_from_default: true
+default_lang_commit: 4e426662aa975d6b3d5c2c2fe450f160415d1a3a
 # prettier-ignore
-cSpell:ignore: alertmanagers asignador containerd crio filelog gotime horizontalpodautoscalers hostfs hostmetrics iostream k8sattributes kubelet kubeletstats logtag paginación replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
+cSpell:ignore: alertmanagers asignador filelog horizontalpodautoscalers hostfs hostmetrics k8sattributes kubelet kubeletstats paginación replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---
 
 El [OpenTelemetry Collector](/docs/collector/) admite numerosos receptores y
@@ -29,7 +28,7 @@ Componentes incluidos en esta página:
 - [Receptor de métricas del host](#host-metrics-receiver): extrae métricas del
   host de nodos de Kubernetes.
 
-Para los logs, las métricas o los rastros de aplicaciones, recomendamos el
+Para las trazas, las métricas o los logs de aplicaciones, recomendamos el
 [receptor OTLP](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver),
 pero cualquier receptor que se ajuste a sus datos es adecuado.
 
@@ -42,16 +41,15 @@ pero cualquier receptor que se ajuste a sus datos es adecuado.
 | Sidecar                  | No         |
 
 El procesador de atributos de Kubernetes descubre automáticamente los pods de
-Kubernetes, extrae sus metadatos y agrega los metadatos extraídos a intervalos,
+Kubernetes, extrae sus metadatos y agrega los metadatos extraídos a spans,
 métricas y logs como atributos de recursos.
 
 **El procesador de atributos de Kubernetes es uno de los componentes más
 importantes para un recopilador que se ejecuta en Kubernetes. Cualquier
 recopilador que reciba datos de la aplicación debe usarlo.** Debido a que agrega
 contexto de Kubernetes a su telemetría, el procesador de atributos de Kubernetes
-le permite correlacionar los rastros, las métricas y los logs de de su
-aplicación con su telemetría de Kubernetes, como las métricas de pod y los
-rastros.
+le permite correlacionar las trazas, las métricas y los logs de su aplicación
+con su telemetría de Kubernetes, como las métricas de pod y las trazas.
 
 El procesador de atributos de Kubernetes utiliza la API de Kubernetes para
 descubrir todos los pods que se ejecutan en un clúster y mantiene un registro de
@@ -194,16 +192,16 @@ roleRef:
 | Deployment (gateway)     | Sí, pero solo recopilará métricas del nodo en el que está implementado |
 | Sidecar                  | No                                                                     |
 
-Cada nodo de Kubernetes ejecuta un kubelet que incluye un servidor API. Los
-Kubernetes El receptor se conecta a ese kubelet a través del servidor API para
+Cada nodo de Kubernetes ejecuta un kubelet que incluye un servidor API. El
+receptor Kubeletstats se conecta a ese kubelet a través del servidor API para
 recopilar métricas sobre el nodo y las cargas de trabajo que se ejecutan en el
 nodo.
 
 Existen diferentes métodos de autenticación, pero normalmente una cuenta de
 servicio se utiliza. La cuenta de servicio también necesitará los permisos
-adecuados para extraer datos de el Kubelet (ver más abajo). Si estás usando el
-[Gráfico de timón de OpenTelemetry Collector](/docs/platforms/kubernetes/helm/collector/)
-puede utilizar el
+adecuados para obtener datos del kubelet (ver más abajo). Si usas el
+[gráfico Helm de OpenTelemetry Collector](/docs/platforms/kubernetes/helm/collector/)
+puedes usar el
 [`kubeletMetrics` preset](/docs/platforms/kubernetes/helm/collector/#kubelet-metrics-preset)
 para empezar.
 
@@ -297,77 +295,13 @@ filelog:
   exclude:
     # Exclude logs from all containers named otel-collector
     - /var/log/pods/*/otel-collector/*.log
-  start_at: beginning
+  start_at: end
   include_file_path: true
   include_file_name: false
   operators:
-    # Find out which format is used by kubernetes
-    - type: router
-      id: get-format
-      routes:
-        - output: parser-docker
-          expr: 'body matches "^\\{"'
-        - output: parser-crio
-          expr: 'body matches "^[^ Z]+ "'
-        - output: parser-containerd
-          expr: 'body matches "^[^ Z]+Z"'
-    # Parse CRI-O format
-    - type: regex_parser
-      id: parser-crio
-      regex:
-        '^(?P<time>[^ Z]+) (?P<stream>stdout|stderr) (?P<logtag>[^ ]*)
-        ?(?P<log>.*)$'
-      output: extract_metadata_from_filepath
-      timestamp:
-        parse_from: attributes.time
-        layout_type: gotime
-        layout: '2006-01-02T15:04:05.999999999Z07:00'
-    # Parse CRI-Containerd format
-    - type: regex_parser
-      id: parser-containerd
-      regex:
-        '^(?P<time>[^ ^Z]+Z) (?P<stream>stdout|stderr) (?P<logtag>[^ ]*)
-        ?(?P<log>.*)$'
-      output: extract_metadata_from_filepath
-      timestamp:
-        parse_from: attributes.time
-        layout: '%Y-%m-%dT%H:%M:%S.%LZ'
-    # Parse Docker format
-    - type: json_parser
-      id: parser-docker
-      output: extract_metadata_from_filepath
-      timestamp:
-        parse_from: attributes.time
-        layout: '%Y-%m-%dT%H:%M:%S.%LZ'
-    - type: move
-      from: attributes.log
-      to: body
-    # Extract metadata from file path
-    - type: regex_parser
-      id: extract_metadata_from_filepath
-      regex: '^.*\/(?P<namespace>[^_]+)_(?P<pod_name>[^_]+)_(?P<uid>[a-f0-9\-]{36})\/(?P<container_name>[^\._]+)\/(?P<restart_count>\d+)\.log$'
-      parse_from: attributes["log.file.path"]
-      cache:
-        size: 128 # default maximum amount of Pods per Node is 110
-    # Rename attributes
-    - type: move
-      from: attributes.stream
-      to: attributes["log.iostream"]
-    - type: move
-      from: attributes.container_name
-      to: resource["k8s.container.name"]
-    - type: move
-      from: attributes.namespace
-      to: resource["k8s.namespace.name"]
-    - type: move
-      from: attributes.pod_name
-      to: resource["k8s.pod.name"]
-    - type: move
-      from: attributes.restart_count
-      to: resource["k8s.container.restart_count"]
-    - type: move
-      from: attributes.uid
-      to: resource["k8s.pod.uid"]
+    # parse container logs
+    - type: container
+      id: container-parser
 ```
 
 Para conocer los detalles de configuración de Filelog Receiver, consulta
@@ -432,15 +366,15 @@ receptor en todo el clúster para recopilar todos los datos.
 Existen diferentes métodos de autenticación, pero normalmente se utiliza una
 cuenta de servicio. La cuenta de servicio también necesita los permisos
 adecuados para extraer datos del servidor API de Kubernetes (consulte a
-continuación). Si estás utilizando el gráfico Helm de OpenTelemetry Collector
-(/docs/platforms/kubernetes/helm/collector/), puedes utilizar el valor
-preestablecido
+continuación). Si estás utilizando el
+[gráfico Helm de OpenTelemetry Collector](/docs/platforms/kubernetes/helm/collector/)
+puedes usar el preset
 [`clusterMetrics`](/docs/platforms/kubernetes/helm/collector/#cluster-metrics-preset)
 para comenzar.
 
 Para las condiciones del nodo, el receptor solo recopila `Ready` de manera
 predeterminada, pero puede configurarse para recopilar más. El receptor también
-puede configurarse para informar un conjunto de recursos asignables, como `CPU`
+puede configurarse para informar un conjunto de recursos asignables, como `cpu`
 y `memory`:
 
 ```yaml
@@ -692,15 +626,15 @@ subjects:
 
 | Patrón de implementación | Utilizable |
 | ------------------------ | ---------- |
-| DaemonSet (agent)        | Yes        |
-| Deployment (gateway)     | Yes        |
+| DaemonSet (agente)       | Sí         |
+| Deployment (gateway)     | Sí         |
 | Sidecar                  | No         |
 
 Prometheus es un formato de métricas común tanto para Kubernetes como para los
 servicios que se ejecutan en Kubernetes. El receptor Prometheus es un reemplazo
 mínimo e inmediato para la recopilación de esas métricas. Admite el conjunto
 completo de opciones
-[`scrape_config` de Prometheus](https://prometheus.io/docs/prometheus/1.8/configuration/configuration/#scrape_config).
+[`scrape_config` de Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
 
 Hay algunas funciones avanzadas de Prometheus que el receptor no admite. El
 receptor devuelve un error si el código/YAML de configuración contiene alguno de

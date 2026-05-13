@@ -1,4 +1,4 @@
-# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT KM KloudMate
+# cSpell:ignore Splunk AWS ADOT Grafana Bindplane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT KM KloudMate
 - name: Splunk Distribution of OpenTelemetry Collector
   url: https://github.com/signalfx/splunk-otel-collector
   docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
@@ -51,9 +51,9 @@
   url: https://github.com/grafana/grafana-opentelemetry-java
   docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/
   components: [Java]
-- name: observIQ BindPlane Agent
-  url: https://github.com/observIQ/observiq-otel-collector
-  docsUrl: https://github.com/observIQ/bindplane-agent/tree/main/docs
+- name: Bindplane Distro for OpenTelemetry Collector
+  url: https://github.com/observIQ/bindplane-otel-collector
+  docsUrl: https://github.com/observIQ/bindplane-otel-collector/tree/main/docs
   components: [Collector]
 - name: RedHat RHOSDT OpenTelemetry Collector Distribution
   url: https://github.com/os-observability/redhat-opentelemetry-collector

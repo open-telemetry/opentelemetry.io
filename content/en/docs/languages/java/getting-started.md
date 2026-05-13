@@ -4,7 +4,6 @@ description: Get telemetry for your app in less than 5 minutes!
 weight: 10
 ---
 
-<!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/getting-started"?>
 
 This page will show you how to get started with OpenTelemetry in Java.
@@ -62,8 +61,8 @@ dependencies {
 In that same folder, create a file called `DiceApplication.java` and add the
 following code to the file:
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/DiceApplication.java"?>
+
 ```java
 package otel;
 
@@ -80,13 +79,12 @@ public class DiceApplication {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 Create another file called `RollController.java` and add the following code to
 the file:
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/RollController.java"?>
+
 ```java
 package otel;
 
@@ -118,7 +116,6 @@ public class RollController {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 Build and run the application with the following command, then open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
@@ -151,9 +148,9 @@ agent][] in a number of ways, the steps below use environment variables.
 
    ```sh
    export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
-     OTEL_TRACES_EXPORTER=logging \
-     OTEL_METRICS_EXPORTER=logging \
-     OTEL_LOGS_EXPORTER=logging \
+     OTEL_TRACES_EXPORTER=console \
+     OTEL_METRICS_EXPORTER=console \
+     OTEL_LOGS_EXPORTER=console \
      OTEL_METRIC_EXPORT_INTERVAL=15000
    ```
 

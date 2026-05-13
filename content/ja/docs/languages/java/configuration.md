@@ -3,8 +3,7 @@ title: SDKの設定
 linkTitle: SDKの設定
 weight: 13
 aliases: [config]
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
-drifted_from_default: true
+default_lang_commit: 4edfbfc2ff38123678ca63eca95de94ede457623
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---
@@ -21,20 +20,10 @@ cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKC
 
 [ゼロコードSDK自動設定](#zero-code-sdk-autoconfigure)モジュールは、システムプロパティまたは環境変数を通じてSDKコンポーネントを設定し、プロパティが不十分な場合のさまざまな拡張ポイントを提供します。
 
-{{% alert %}}
-
-[ゼロコードSDK自動設定](#zero-code-sdk-autoconfigure)モジュールの使用を推奨します。
-これにより定型コードが削減され、コードの書き直しやアプリケーションの再コンパイルなしに再設定が可能になり、言語の相互運用性があります。
-
-{{% /alert %}}
-
-{{% alert %}}
-
-[Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。
-
-すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
-
-{{% /alert %}}
+> [!NOTE] **Notes**
+>
+> - [ゼロコードSDK自動設定](#zero-code-sdk-autoconfigure)モジュールの使用を推奨します。これにより定型コードが削減され、コードの書き直しやアプリケーションの再コンパイルなしに再設定が可能になり、言語の相互運用性があります。
+> - [Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
 
 ## プログラム設定 {#programmatic-configuration}
 
@@ -74,22 +63,10 @@ public class AutoConfiguredSdk {
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert %}}
-
-[Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。
-すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
-
-{{% /alert %}}
-
-{{% alert %}}
-
-自動設定モジュールは、適切なときにSDKをシャットダウンするためにJavaシャットダウンフックを登録します。
-OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#internal-logging)するため、シャットダウンフック中に一部のログが抑制される可能性があります。
-これはJDK自体のバグであり、OpenTelemetry Javaの制御下にあるものではありません。
-シャットダウンフック中にログが必要な場合は、シャットダウンフック内で自身をシャットダウンしてログメッセージを抑制する可能性があるログフレームワークではなく、`System.out`の使用を検討してください。
-詳細については、この[JDKバグ](https://bugs.openjdk.java.net/browse/JDK-8161253)を参照してください。
-
-{{% /alert %}}
+> [!NOTE] **Notes**
+>
+> - [Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
+> - 自動設定モジュールは、適切なときにSDKをシャットダウンするためにJavaシャットダウンフックを登録します。OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#internal-logging)するため、シャットダウンフック中に一部のログが抑制される可能性があります。これはJDK自体のバグであり、OpenTelemetry Javaの制御下にあるものではありません。シャットダウンフック中にログが必要な場合は、シャットダウンフック内で自身をシャットダウンしてログメッセージを抑制する可能性があるログフレームワークではなく、`System.out`の使用を検討してください。詳細については、この[JDKバグ](https://bugs.openjdk.java.net/browse/JDK-8161253)を参照してください。
 
 ### 環境変数とシステムプロパティ {#environment-variables-and-system-properties}
 
@@ -623,12 +600,10 @@ public class CustomTextMapPropagatorProvider implements ConfigurablePropagatorPr
 | ------------------------------- | ----------------------- | ---------- |
 | `otel.experimental.config.file` | SDK設定ファイルのパス。 | 未設定     |
 
-{{% alert title="注意" color="warning" %}}
-
-設定ファイルが指定された場合、[環境変数とシステムプロパティ](#environment-variables-and-system-properties)は無視され、[プログラムカスタマイゼーション](#programmatic-customization)と[SPIs](#spi-service-provider-interface)はスキップされます。
-ファイルの内容のみがSDK設定を決定します。
-
-{{% /alert %}}
+> [!WARNING]
+>
+> 設定ファイルが指定された場合、[環境変数とシステムプロパティ](#environment-variables-and-system-properties)は無視され、[プログラムカスタマイゼーション](#programmatic-customization)と[SPIs](#spi-service-provider-interface)はスキップされます。
+> ファイルの内容のみがSDK設定を決定します。
 
 詳細については、以下のリソースを参照してください。
 

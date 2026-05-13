@@ -1,3 +1,8 @@
+# cSpell:ignore worktrees
+
+/.claude/worktrees
+/.claude/settings.local.json
+
 # Hugo-generated assets
 .hugo_build.lock
 /public
@@ -7,8 +12,6 @@
 node_modules/
 package-lock.json
 pnpm-lock.yaml
-
-# Link checker
 tmp/
 
 # macOS
@@ -28,11 +31,5 @@ assets/jsconfig.json
 # WebStorm
 **/.idea/**
 
-.dart_tool
-pubspec.lock
-
 *.pyc
-*tmp_repos/
 *uv.lock
-
-# cSpell:ignore pubspec

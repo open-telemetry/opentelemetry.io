@@ -58,7 +58,6 @@ cSpell:ignore: alertmanagerexporter alibabacloudlogserviceexporter awscloudwatch
 | {{< component-link name="prometheusremotewriteexporter" type="exporter" repo="contrib" >}}     | contrib, core              | -            | beta           | -            |
 | {{< component-link name="pulsarexporter" type="exporter" repo="contrib" >}}                    | contrib                    | alpha        | alpha          | alpha        |
 | {{< component-link name="rabbitmqexporter" type="exporter" repo="contrib" >}}                  | contrib                    | alpha        | alpha          | alpha        |
-| {{< component-link name="sapmexporter" type="exporter" repo="contrib" >}}                      | contrib                    | deprecated   | -              | -            |
 | {{< component-link name="sematextexporter" type="exporter" repo="contrib" >}}                  | contrib                    | -            | development    | development  |
 | {{< component-link name="sentryexporter" type="exporter" repo="contrib" >}}                    | contrib                    | alpha        | -              | alpha        |
 | {{< component-link name="signalfxexporter" type="exporter" repo="contrib" >}}                  | contrib                    | beta         | beta           | beta         |

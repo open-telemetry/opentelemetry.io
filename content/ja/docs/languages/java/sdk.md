@@ -2,8 +2,7 @@
 title: SDKによるテレメトリーの管理
 weight: 12
 aliases: [exporters]
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
-drifted_from_default: true
+default_lang_commit: 4edfbfc2ff38123678ca63eca95de94ede457623
 cSpell:ignore: Interceptable Logback okhttp
 ---
 
@@ -90,12 +89,10 @@ public class OpenTelemetrySdkConfig {
 [Resource](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-common/latest/io/opentelemetry/sdk/resources/Resource.html)は、テレメトリーソースを定義する属性のセットです。
 アプリケーションは、[SdkTracerProvider](#sdktracerprovider)、[SdkMeterProvider](#sdkmeterprovider)、[SdkLoggerProvider](#sdkloggerprovider)と同じリソースを関連付ける必要があります。
 
-{{% alert %}}
-
-[ResourceProviders](../configuration/#resourceprovider)は、環境に基づいて[自動設定された](../configuration/#zero-code-sdk-autoconfigure)リソースにコンテキスト情報を提供します。
-利用可能な`ResourceProvider`のリストについてはドキュメントを参照してください。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> [ResourceProviders](../configuration/#resourceprovider)は、環境に基づいて[自動設定された](../configuration/#zero-code-sdk-autoconfigure)リソースにコンテキスト情報を提供します。
+> 利用可能な`ResourceProvider`のリストについてはドキュメントを参照してください。
 
 以下のコードスニペットは`Resource`のプログラム設定を示します。
 
@@ -158,12 +155,10 @@ public class SdkTracerProviderConfig {
 
 [Sampler](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/samplers/Sampler.html)は、記録およびサンプリングされるスパンを決定する責任を持つ[プラグイン拡張インターフェース](#sdk-plugin-extension-interfaces)です。
 
-{{% alert %}}
-
-デフォルトで`SdkTracerProvider`は`ParentBased(root=AlwaysOn)`サンプラーで設定されています。
-これにより、呼び出し元アプリケーションがサンプリングを実行しない限り、100%のスパンがサンプリングされます。これが過度にノイジー/高コストの場合は、サンプラーを変更してください。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> デフォルトで`SdkTracerProvider`は`ParentBased(root=AlwaysOn)`サンプラーで設定されています。
+> これにより、呼び出し元アプリケーションがサンプリングを実行しない限り、100%のスパンがサンプリングされます。これが過度にノイジー/高コストの場合は、サンプラーを変更してください。
 
 SDKに組み込まれ、`opentelemetry-java-contrib`でコミュニティによって維持されているサンプラー。
 
@@ -811,15 +806,13 @@ public class CustomMetricExporter implements MetricExporter {
 
 [Views](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/View.html)は、メトリクス名の変更、メトリクス説明、メトリクス集約（ヒストグラムバケット境界など）、保持する属性キーのセット、カーディナリティ制限などを含む、メトリクスストリームのカスタマイズを可能にします。
 
-{{% alert %}}
-
-ビューは、特定の計装に複数がマッチした場合、やや直感的でない動作をします。
-マッチするビューの一つがメトリクス名を変更し、別のビューがメトリクス集約を変更する場合、名前と集約の両方が変更されることを期待するかもしれませんが、
-そうではありません。かわりに、2つのメトリクスストリームが生成されます。一つは設定されたメトリクス名とデフォルト集約、もう一つは元のメトリクス名と設定された集約です。
-言い換えると、マッチするビューは _マージされません_。
-最良の結果を得るために、狭い選択基準（特定の単一計装を選択するなど）でビューを設定してください。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> ビューは、特定の計装に複数がマッチした場合、やや直感的でない動作をします。
+> マッチするビューの一つがメトリクス名を変更し、別のビューがメトリクス集約を変更する場合、名前と集約の両方が変更されることを期待するかもしれませんが、そうではありません。
+> かわりに、2つのメトリクスストリームが生成されます。一つは設定されたメトリクス名とデフォルト集約、もう一つは元のメトリクス名と設定された集約です。
+> 言い換えると、マッチするビューは _マージされません_。
+> 最良の結果を得るために、狭い選択基準（特定の単一計装を選択するなど）でビューを設定してください。
 
 以下のコードスニペットは`View`のプログラム設定を示します。
 

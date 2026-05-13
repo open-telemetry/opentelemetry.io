@@ -100,14 +100,14 @@ var resource = ResourceBuilder.CreateDefault()
     .AddService(serviceName: "exemplars-demo", serviceVersion: "1.0.0");
 
 // Create a tracer provider
-using var tracerProvider = Sdk.CreateTracerProviderBuilder()
+var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .SetResourceBuilder(resource)
     .AddSource("MyCompany.MyProduct.MyLibrary")
     .AddOtlpExporter(options => options.Endpoint = new Uri("http://localhost:4317"))
     .Build();
 
 // Create a meter provider with exemplar support
-using var meterProvider = Sdk.CreateMeterProviderBuilder()
+var meterProvider = Sdk.CreateMeterProviderBuilder()
     .SetResourceBuilder(resource)
     .AddMeter("MyCompany.MyProduct.MyLibrary")
     .SetExemplarFilter(ExemplarFilterType.TraceBased)  // Enable trace-based exemplars
@@ -147,6 +147,11 @@ for (int i = 0; i < 100; i++)
 
 Console.WriteLine("Application running and sending data. Press any key to exit.");
 Console.ReadKey();
+
+// Dispose the providers before the application ends.
+// This will flush the remaining telemetry and shutdown the pipelines.
+meterProvider.Dispose();
+tracerProvider.Dispose();
 ```
 
 ## Viewing exemplars in Grafana

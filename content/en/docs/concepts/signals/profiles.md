@@ -4,12 +4,7 @@ weight: 5
 description: A recording of resource usage at the code level.
 ---
 
-**Status**: [Development](/docs/specs/otel/document-status/)
-
-> [!NOTE]
->
-> The profiles signal is still experimental and under active development.
-> Breaking changes may be introduced in future versions.
+**Status**: [Alpha](/docs/specs/otel/document-status/)
 
 A **profile** is a **collection** of samples and associated metadata that shows
 where applications consume resources during execution. A sample records values

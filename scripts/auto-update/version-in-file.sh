@@ -64,10 +64,40 @@ function process_file() {
   fi
 }
 
+function update_locale_files() {
+  # Only expand files under content/en/
+  if [[ ! "$file_name" =~ ^content/en/ ]]; then
+    return
+  fi
+
+  local relative_path="${file_name#content/en/}"
+
+  for locale_dir in content/*/; do
+    local locale="${locale_dir#content/}"
+    locale="${locale%/}"
+    [[ "$locale" == "en" ]] && continue
+
+    local locale_file="content/${locale}/${relative_path}"
+    [[ ! -f "$locale_file" ]] && continue
+
+    local match_regex="^ *$variable_name:"
+    local ver="$latest_semver"
+
+    if ! grep -q "$match_regex" "$locale_file"; then
+      continue
+    fi
+
+    echo "UPDATING locale:  $locale_file"
+    sed -i.bak -e "s/\($match_regex\) .*/\1 $ver/" "$locale_file"
+    rm -f "$locale_file".bak
+  done
+}
+
 while [[ $# -gt 0 ]]; do
   variable_name=$1; shift;
   file_name=$1; shift;
   process_file $variable_name $file_name
+  update_locale_files
 done
 
 if git diff --quiet "${file_names[@]}"; then

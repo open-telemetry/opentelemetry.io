@@ -493,9 +493,9 @@ Resource usage for OBI as a Collector receiver varies significantly based on:
 - **Exporter configuration**: Batch sizes, queue depths, and number of backends
 - **Service discovery scope**: Number of processes being monitored
 
-Like [standalone OBI](/docs/zero-code/obi/), the eBPF instrumentation provides
-[minimal overhead](/docs/zero-code/obi/#requirements). The Collector pipeline
-adds additional resource requirements that depend on your configuration.
+Like standalone OBI, the eBPF instrumentation provides minimal overhead. The
+Collector pipeline adds additional resource requirements that depend on your
+configuration.
 
 **Recommendations**:
 

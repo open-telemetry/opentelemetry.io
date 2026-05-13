@@ -1,0 +1,14 @@
+title: NATS Instrumentation
+registryType: instrumentation
+language: java
+tags:
+  - java
+  - instrumentation
+license: Apache 2.0
+description: OpenTelemetry auto-instrumentation for NATS.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/nats
+createdAt: 2025-03-26
+isFirstParty: false

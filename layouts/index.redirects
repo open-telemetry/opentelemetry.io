@@ -1,4 +1,10 @@
 # Netlify redirects. See https://www.netlify.com/docs/redirects/
+
+# Support Docsy (<= 0.14) convention of having favicons in the favicons folder.
+# This is temporary until the following is fixed and Docsy is updated:
+# https://github.com/google/docsy/issues/2595
+/favicons/*  /:splat
+
 {{ partial "redirects/pages.txt" . | partial "func/trim-lines.html" -}}
 {{ partial "redirects/languages.txt" . | partial "func/trim-lines.html" -}}
 

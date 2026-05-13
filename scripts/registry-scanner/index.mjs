@@ -75,7 +75,7 @@ const selection = process.argv[2].split(',').map((x) => x.trim());
 
 const scanners = {
   collector: () => {
-    ['receiver', 'exporter', 'processor', 'extension'].forEach(
+    ['receiver', 'exporter', 'processor', 'extension', 'connector'].forEach(
       async (component) => scanCollectorComponent(component),
     );
   },
