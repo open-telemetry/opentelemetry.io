@@ -16,10 +16,10 @@ and how security controls must be applied.
 
 Legacy and industrial environments often include:
 
-- systems that cannot be modified or instrumented
-- long equipment life cycles and limited patching windows
-- flat or weakly segmented networks
-- sensitive operational data that is not typical
+- Systems that cannot be modified or instrumented
+- Long equipment life cycles and limited patching windows
+- Flat or weakly segmented networks
+- Sensitive operational data that is not typical
   [PII](https://en.wikipedia.org/wiki/Personal_data)
 
 This article focuses on what is different about securing OpenTelemetry in these
@@ -29,9 +29,9 @@ environments, and how to adapt your approach accordingly.
 
 In cloud native systems, security guidance assumes:
 
-- services can be instrumented
-- encryption and authentication can be enforced everywhere
-- systems can be patched regularly
+- Services can be instrumented
+- Encryption and authentication can be enforced everywhere
+- Systems can be patched regularly
 
 In legacy and industrial environments, these assumptions often do not hold.
 
@@ -46,10 +46,10 @@ balancing visibility with risk.
 Many industrial systems cannot run agents, support modern libraries, or be
 changed at all. This means:
 
-- limited or inconsistent support for modern TLS and authentication at the
+- Limited or inconsistent support for modern TLS and authentication at the
   source
-- no direct instrumentation using SDKs
-- reliance on intermediaries (Collectors, bridges, log pipelines)
+- No direct instrumentation using SDKs
+- Reliance on intermediaries (Collectors, bridges, log pipelines)
 
 When source systems cannot enforce modern controls, more of the security burden
 shifts to the Collector, intermediary systems, and network boundaries.
@@ -61,9 +61,9 @@ modern observability in mind. Some operate on flat or shared networks with
 minimal segmentation, while others rely on deeply nested networks with a mix of
 legacy protocols. In either case, introducing telemetry collection can:
 
-- expose new ingestion endpoints to unintended network segments
-- allow unintended lateral access to Collectors or bridges
-- create unexpected paths between previously isolated zones
+- Expose new ingestion endpoints to unintended network segments
+- Allow unintended lateral access to Collectors or bridges
+- Create unexpected paths between previously isolated zones
 
 In these environments, Collector placement is as important as Collector
 configuration. Carefully evaluate where Collectors sit relative to network
@@ -110,9 +110,9 @@ When the bridge model is not feasible, shift the focus from patching to
 
 In manufacturing environments, sensitive data often includes:
 
-- production processes and machine configurations
-- asset identifiers and operational states
-- plant-level performance data
+- Production processes and machine configurations
+- Asset identifiers and operational states
+- Plant-level performance data
 
 Telemetry pipelines must be designed to avoid exposing this information outside
 controlled boundaries.
@@ -215,9 +215,9 @@ responsibility sits with the implementer. Two principles are critical:
 
 Only collect telemetry that serves a clear purpose. In constrained environments:
 
-- avoid capturing full payloads unless necessary
-- prefer aggregated signals over raw data
-- review collected attributes regularly
+- Avoid capturing full payloads unless necessary
+- Prefer aggregated signals over raw data
+- Review collected attributes regularly
 
 ### Scrubbing and transformation
 
@@ -255,10 +255,10 @@ where data can be controlled**.
 Every telemetry component introduces potential risk. This is especially
 important where systems cannot defend themselves. Focus on:
 
-- reducing the number of active receivers and exporters
-- avoiding unnecessary external exposure
-- running Collectors with minimal permissions
-- limiting inbound traffic to known, trusted sources
+- Reducing the number of active receivers and exporters
+- Avoiding unnecessary external exposure
+- Running Collectors with minimal permissions
+- Limiting inbound traffic to known, trusted sources
 
 In these environments, **minimizing telemetry infrastructure and exposed
 endpoints can reduce attack surface**.
@@ -268,9 +268,9 @@ endpoints can reduce attack surface**.
 In modern systems, the goal is often complete observability. In legacy
 environments, that goal must be balanced against:
 
-- system stability
-- safety constraints
-- limited control over source systems
+- System stability
+- Safety constraints
+- Limited control over source systems
 
 This leads to a different mindset: _Security is not about achieving ideal
 observability. It is about selecting the safest way to gain useful visibility._
@@ -285,9 +285,9 @@ OpenTelemetry can bring powerful observability to legacy and industrial
 environments, but it changes where and how security controls must be applied.
 Instead of relying on source-level protections, teams must:
 
-- secure the telemetry pipeline itself
-- carefully manage data exposure
-- design for constrained and imperfect systems
+- Secure the telemetry pipeline itself
+- Carefully manage data exposure
+- Design for constrained and imperfect systems
 
 With this approach, organizations can gain meaningful visibility while
 respecting the realities of traditional environments.
