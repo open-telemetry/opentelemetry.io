@@ -1,0 +1,33 @@
+// Config types accordion — types-specific styles.
+
+.config-types-accordion {
+  .ct-props-table {
+    font-size: 0.875rem;
+
+    code {
+      // Prevent double-shrink from Bootstrap's inline code styling.
+      font-size: inherit;
+      // Allow long type names (e.g. ExperimentalComposableRuleBasedSampler) to wrap.
+      white-space: normal;
+    }
+
+    // Normalize lists inside pre-rendered description HTML.
+    td:last-child {
+      ul,
+      ol {
+        margin-bottom: 0;
+        padding-left: 1.25rem;
+      }
+    }
+  }
+
+  // Type-level constraints note at the bottom of each accordion body.
+  .ct-type-constraints {
+    font-size: 0.8125rem;
+    color: var(--bs-secondary-color);
+    border-top: 1px solid var(--bs-border-color-translucent);
+    padding-top: 0.5rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+  }
+}

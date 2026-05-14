@@ -1143,6 +1143,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:31:27.39Z"
   },
+  "https://crates.io/crates/opentelemetry-appender-tracing": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-12T03:45:00Z"
+  },
   "https://crates.io/crates/opentelemetry-application-insights": {
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:31:29.411Z"
@@ -1222,6 +1226,10 @@
   "https://crates.io/crates/opentelemetry_sdk": {
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:32:04.432Z"
+  },
+  "https://crates.io/crates/tracing": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-12T03:45:00Z"
   },
   "https://crates.io/crates/tracing-opentelemetry": {
     "StatusCode": 206,
@@ -16582,6 +16590,10 @@
   "https://github.com/pragmaticivan/nestjs-otel": {
     "StatusCode": 206,
     "LastSeen": "2026-04-29T13:25:00.429328624Z"
+  },
+  "https://github.com/pratik-mahalle": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-14T05:01:56.658554668Z"
   },
   "https://github.com/pratik50": {
     "StatusCode": 206,
