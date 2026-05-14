@@ -215,21 +215,43 @@ such as:
 - Standard startup wrappers or environment-variable conventions.
 - Centrally maintained configuration snippets or templates.
 
-The recommended resource model for non-Kubernetes environments should cover:
+The recommended resource model for non-Kubernetes environments should align with
+[OpenTelemetry resource semantic conventions](/docs/specs/semconv/resource/) and
+rely on automatic resource detection wherever possible. In practice,
+organizations should ensure that telemetry can be correlated across the
+following resource domains, using automatically detected attributes where
+supported:
 
-- **Host:** `host.id`, `host.name`, `host.arch`
-- **Device (where applicable):** `device.id` and other relevant device
-  attributes
-- **Process:** `process.pid`, `process.executable.name`, `process.command`
-- **Process runtime:** `process.runtime.name`, `process.runtime.version`
-- **Operating system:** `os.type`, `os.description`, `os.version`
-- **Container (where applicable):** `container.id`
-- **Service identity:** `service.name`, `service.version`,
-  `deployment.environment`
+- **Host**
+- **Device** (where applicable)
+- **Process**
+- **Process runtime**
+- **Operating system**
+- **Container** (where applicable)
+- **Service identity**
 
-Application telemetry should include at least `host.id` or `host.name` so that
-application signals can be correlated with host- and infrastructure-level
-telemetry.
+Rather than manually maintaining all of the corresponding attributes,
+organizations should prefer existing instrumentation and resource detection for
+host, process, runtime, OS, and container metadata, and use shared configuration
+or bootstrap artifacts to keep that detection enabled consistently.
+
+The area that usually requires the most deliberate standardization is **service
+identity**. Organizations should ensure that service telemetry uses the
+appropriate
+[service semantic conventions](/docs/specs/semconv/registry/attributes/service/),
+with attributes such as `service.name`, and, where relevant, `service.version`,
+`service.namespace`, `service.instance.id`, and `deployment.environment`.
+
+Which service attributes should be present depends on how workloads are deployed
+and identified in the environment. For example, `service.namespace` may be
+useful to distinguish services across organizational or platform boundaries,
+while `service.instance.id` may be needed to distinguish replicated instances of
+the same service.
+
+Application telemetry should include enough service and infrastructure context
+to support correlation with host- and infrastructure-level telemetry, using
+semantic conventions as the source of truth for which identifying attributes
+apply to each resource type.
 
 By implementing this guideline, organizations can expect to achieve:
 
@@ -283,18 +305,22 @@ Documentation:
 
 **Guidelines supported:** 1
 
-Deploy a central OpAMP management service to manage agent configuration, status
-reporting, health monitoring, and controlled rollouts for supported agents.
+Provide a central OpAMP management capability to manage agent configuration,
+status reporting, health monitoring, and controlled rollouts for supported
+agents. This blueprint recommends the management pattern, not any specific
+example server implementation; organizations should use a production-ready
+solution appropriate for their environment.
 
 Checklist:
 
 - Decide which agents or OpenTelemetry Collector deployments will be managed
-  through, based on the capabilities of the distributions used in your
+  through OpAMP, based on the capabilities of the distributions used in your
   environment (for example, whether they are upstream or vendor-specific,
   whether they embed an OpAMP client, whether they use a supervisor, and whether
   OpAMP is compiled in or packaged separately), and the components you want to
   manage centrally.
-- Stand up a central OpAMP server or management endpoint, following the
+- Stand up or adopt a production-ready OpAMP server or management endpoint,
+  following the
   [Collector management documentation](/docs/collector/management/#opamp), with
   appropriate authentication, authorization, and transport security.
 - Configure agents or supervisors to enroll with the management service and
@@ -478,13 +504,14 @@ infrastructure and application layers.
 
 Checklist:
 
-- Publish the recommended resource attribute set for hosts, processes, runtimes,
-  operating systems, and containers where applicable, and make that baseline
-  available through shared configuration, bootstrap artifacts, or centrally
-  maintained templates.
-- Ensure application telemetry includes at least `host.id` or `host.name`, for
-  example by injecting standard resource attributes through SDK configuration,
-  language agents, or startup wrappers.
+- Define which host, process, runtime, operating system, and container resources
+  should be detected and correlated, and enable automatic resource detection for
+  them consistently through shared configuration, bootstrap artifacts, or
+  centrally maintained templates.
+- Ensure application telemetry includes sufficient infrastructure context for
+  correlation, such as `host.id` or `host.name` where appropriate, for example
+  through SDK configuration, language agents, startup wrappers, or automatic
+  resource detection where supported.
 - Enable and validate resource detectors wherever supported so host, OS,
   process, runtime, and container metadata is populated automatically and
   consistently, and supplement detector output with centrally defined attributes
