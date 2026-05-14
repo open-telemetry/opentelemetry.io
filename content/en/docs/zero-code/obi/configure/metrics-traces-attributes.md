@@ -427,7 +427,7 @@ server. This is recommended on large clusters and DaemonSet deployments to avoid
 overloading the Kubernetes API.
 
 For background and deployment instructions, see
-[Centralizing Kubernetes metadata with k8s-cache](../../setup/kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache).
+[Centralizing Kubernetes metadata with k8s-cache](/docs/zero-code/obi/setup/kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache).
 
 ### Service name template
 

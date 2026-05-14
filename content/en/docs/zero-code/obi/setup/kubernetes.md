@@ -448,7 +448,7 @@ To use the cache, deploy it and point OBI at its `Service` address with the
 `OTEL_EBPF_KUBE_META_CACHE_ADDRESS` environment variable (or
 `attributes.kubernetes.meta_cache_address` in YAML). The easiest way is to use
 the
-[OBI Helm chart](../kubernetes-helm/#centralizing-kubernetes-metadata-with-k8s-cache),
+[OBI Helm chart](/docs/zero-code/obi/setup/kubernetes-helm/#centralizing-kubernetes-metadata-with-k8s-cache),
 which sets up the `Deployment`, `Service`, and OBI wiring for you when you set
 `k8sCache.replicas` to a non-zero value.
 

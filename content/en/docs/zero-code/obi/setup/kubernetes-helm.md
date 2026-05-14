@@ -127,7 +127,7 @@ To avoid that, the OBI Helm chart can deploy a small companion service called
 and streams metadata to them over gRPC, which removes OBI's per-Pod informer
 traffic to the API server and substantially reduces API load. For more
 background on what `k8s-cache` is and when to use it, see the
-[Kubernetes setup guide](../kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache).
+[Kubernetes setup guide](/docs/zero-code/obi/setup/kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache).
 
 To enable it, set `k8sCache.replicas` to a non-zero value in your
 `helm-obi.yml`:
