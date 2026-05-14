@@ -401,4 +401,3 @@ env:
         key: otelcol-secret
         name: headers
 ```
-
