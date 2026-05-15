@@ -1,6 +1,6 @@
 ---
 title: Padrão de implantação de Gateway
-linkTitle: Padrão de Gateway
+linkTitle: Padrão de gateway
 description:
   Saiba por que e como enviar sinais primeiro para uma única rota OTLP e, em
   seguida, para os backends
@@ -121,7 +121,7 @@ principais de configuração:
   enviados para o mesmo Collector de destino para coleta de métricas, garantindo
   agregações precisas.
 
-O Collector de primeira camada que serve o endpoint OTLP é configurado da
+O Collector de primeira camada, que serve a rota OTLP, é configurado da
 seguinte forma:
 
 {{< tabpane text=true >}} {{% tab Estático %}}
