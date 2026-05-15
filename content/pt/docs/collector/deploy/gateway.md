@@ -11,27 +11,27 @@ default_lang_commit: ccb79745a6b30511661b7071ecf1e866fcd2a122
 cSpell:ignore: hostnames loadbalancer loadbalancing resourcedetectionprocessor subchave
 ---
 
-O padrão de implantação de Gateway do Collector consiste em aplicações ou outros
+O padrão de implantação de _gateway_ do Collector consiste em aplicações ou outros
 Collectors enviando sinais de telemetria para uma única
 [rota](/docs/specs/otlp/) OTLP. Esta rota é fornecida por uma ou mais instâncias
-de Collector executando como um serviço independente, por exemplo, em uma
-implantação de Kubernetes. Geralmente, uma rota é fornecida por _cluster_, por
+de Collector executando como serviço independente, por exemplo, em uma
+implantação do Kubernetes. Geralmente, uma rota é fornecida por _cluster_, por
 data center ou por região.
 
-Em geral, você pode usar um balanceador de carga pronto para uso imediato para
+Em geral, é possível usar um balanceador de carga (_load balancer_) pronto para
 distribuir a carga entre os Collectors:
 
 ![Conceito de implantação de gateway](../../img/otel-gateway-sdk.svg)
 
 Para casos de uso onde os dados de telemetria devem ser processados em um
 Collector específico, use uma configuração de duas camadas. O Collector de
-primeira camada possui um pipeline configurado com o [exportador de
-balanceamento de carga ciente de ID de rastro ou nome de serviço][lb-exporter].
+primeira camada possui um _pipeline_ configurado com o [exportador de
+balanceamento de carga ciente do ID de rastro ou nome de serviço][lb-exporter].
 Na segunda camada, cada Collector recebe e processa a telemetria que pode ser
-direcionada especificamente para ele. Por exemplo, você pode usar o Exporter de
+direcionada especificamente a ele. Por exemplo, é possível usar o exportador de
 balanceamento de carga em sua primeira camada para enviar dados a um Collector
-de segunda camada configurado com o [Processor de amostragem de cauda (tail
-sampling)][tailsample-processor], de modo que todos os trechos de um determinado
+de segunda camada configurado com o [processador de amostragem de cauda (_tail
+sampling_)][tailsample-processor], de modo que todos os trechos de um determinado
 rastro alcancem a mesma instância de Collector onde a política de amostragem é
 aplicada.
 
@@ -48,14 +48,14 @@ balanceamento de carga:
 
 ## Exemplos {#examples}
 
-Os exemplos a seguir mostram como configurar um Collector de gateway com
+Os exemplos a seguir mostram como configurar um Collector de _gateway_ com
 componentes comuns.
 
 ### NGINX como um balanceador de carga pronto para uso {#nginx-as-an-out-of-the-box-load-balancer}
 
 Supondo que você tenha três Collectors (`collector1`, `collector2` e
 `collector3`) configurados e queira balancear o tráfego entre eles usando o
-NGINX, você pode usar a seguinte configuração:
+NGINX, utilize a seguinte configuração:
 
 ```nginx
 server {
@@ -103,29 +103,29 @@ upstream collector4318 {
 ### Exporter de balanceamento de carga {#load-balancing-exporter}
 
 Para um exemplo concreto do padrão de implantação de Collector centralizado,
-veja primeiro o Exporter de balanceamento de carga. Ele possui dois campos
+veja primeiro o exportador de balanceamento de carga. Ele possui dois campos
 principais de configuração:
 
-- O `resolver` determina onde encontrar os Collectors _downstream_ ou
-  _backends_. Se você usar a subchave `static` aqui, deverá enumerar manualmente
-  as URLs do Collector. O outro resolvedor suportado é o DNS, que verifica
+- O `resolver` determina onde encontrar os Collectors ou _backends_ de
+  destino. Ao usar a subchave `static`, é necessário enumerar manualmente
+  as URLs dos Collectors. O outro resolvedor suportado é o DNS, que verifica
   atualizações periodicamente e resolve endereços IP. Para este tipo de
   resolvedor, a subchave `hostname` especifica o nome do _host_ a ser consultado
   para obter a lista de endereços IP.
-- O campo `routing_key` roteia os spans para Collectors _downstream_
-  específicos. Se você definir este campo como `traceID`, o exportador de
-  balanceamento de carga exportará spans com base em seus `traceID`. Caso
-  contrário, se você usar `service` para `routing_key`, ele exportará spans com
-  base em seu nome de serviço. Esse roteamento é útil ao usar conectores como o
-  [conector de métricas de span (span metrics
-  connector)][spanmetrics-connector], pois todos os spans de um serviço são
-  enviados para o mesmo Collector _downstream_ para coleta de métricas,
+- O campo `routing_key` direciona os trechos para Collectors de destino
+  específicos. Se definido como `traceID`, o exportador de
+  balanceamento de carga exportará os trechos com base em seu `traceID`. 
+  Se definido como `service`, exporta com base no nome do serviço.
+  Esse roteamento é útil ao usar conectores como o
+  [conector de métricas de trechos (span metrics
+  connector)][spanmetrics-connector], pois todos os trechos de um serviço são
+  enviados para o mesmo Collector de destino para coleta de métricas,
   garantindo agregações precisas.
 
 O Collector de primeira camada que serve o endpoint OTLP é configurado da
 seguinte forma:
 
-{{< tabpane text=true >}} {{% tab Static %}}
+{{< tabpane text=true >}} {{% tab Estático %}}
 
 ```yaml
 receivers:
@@ -180,7 +180,7 @@ service:
       exporters: [loadbalancing]
 ```
 
-{{% /tab %}} {{% tab "DNS with service" %}}
+{{% /tab %}} {{% tab "DNS com serviço" %}}
 
 ```yaml
 receivers:
@@ -211,12 +211,12 @@ service:
 {{% /tab %}} {{< /tabpane >}}
 
 O exportador de balanceamento de carga emite
-[métricas](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter#metrics)
+[métricas](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter#metrics),
 incluindo `otelcol_loadbalancer_num_backends` e
-`otelcol_loadbalancer_backend_latency` que você pode usar para monitorar a saúde
-e o desempenho do Collector que serve o endpoint OTLP.
+`otelcol_loadbalancer_backend_latency`, que podem ser usadas para monitorar a saúde
+e o desempenho do Collector que serve a rota OTLP.
 
-## Vantagens e desvantagens {#trade-offs}
+## Prós e contras {#trade-offs}
 
 Prós:
 
@@ -226,8 +226,8 @@ Prós:
 
 Contras:
 
-- Mais um item para manutenção e que pode falhar (complexidade)
-- Latência adicional no caso de coletores em cascata
+- Mais um componente para manter e que pode falhar (complexidade)
+- Latência adicional no caso de Collectors em cascata
 - Maior uso geral de recursos (custos)
 
 [lb-exporter]:
@@ -243,40 +243,40 @@ Todos os fluxos de dados de métricas dentro do OTLP devem ter um
 [escritor único](/docs/specs/otel/metrics/data-model/#single-writer). Ao
 implantar múltiplos Collectors em uma configuração de _gateway_, certifique-se
 de que todos os fluxos de dados de métricas tenham um único escritor e uma
-identidade globalmente exclusiva.
+identidade globalmente única.
 
-### Potenciais problemas {#potential-problems}
+### Problemas potenciais {#potential-problems}
 
-O acesso simultâneo de várias aplicações que modificam ou relatam os mesmos
+O acesso simultâneo de múltiplas várias que modificam ou relatam os mesmos
 dados pode levar à perda de dados ou à degradação da qualidade dos dados. Por
-exemplo, você pode ver dados inconsistentes de múltiplas fontes no mesmo
-recurso, onde as diferentes fontes podem sobrescrever umas às outras porque o
-recurso não está identificado de forma exclusiva.
+exemplo, podem aparecer dados inconsistentes de múltiplas fontes no mesmo
+recurso, onde diferentes fontes podem sobrescrever umas às outras porque o
+recurso não está identificado de forma única.
 
-Existem padrões nos dados que podem fornecer informações sobre se isso está
-acontecendo ou não. Por exemplo, em uma inspeção visual, uma série com lacunas
-ou saltos inexplicáveis pode ser uma pista de que múltiplos collectors estão
-enviando as mesmas amostras. Você também pode ver erros em seu _backend_. Por
+Existem padrões nos dados que podem fornecer informações se isso está
+ocorrendo. Por exemplo, em uma inspeção visual, uma série com lacunas
+ou saltos inexplicados pode ser um indício de que múltiplos collectors estão
+enviando as mesmas amostras. Também podem aparecer erros em seu _backend_. Por
 exemplo, com um _backend_ Prometheus:
 
 `Error on ingesting out-of-order samples`
 
 Este erro pode indicar que existem alvos idênticos em dois _jobs_, e a ordem dos
-_timestamps_ está incorreta. Por exemplo:
+carimbos de data/hora (_timestamps_) está incorreta. Por exemplo:
 
-- Métrica `M1` recebida em `T1` com um timestamp 13:56:04 com valor `100`
-- Métrica `M1` recebida em `T2` com um timestamp 13:56:24 com valor `120`
-- Métrica `M1` recebida em `T3` com um timestamp 13:56:04 com valor `110`
+- Métrica `M1` recebida em `T1` com _timestamp_ 13:56:04 e valor `100`
+- Métrica `M1` recebida em `T2` com _timestamp_ 13:56:24 e valor `120`
+- Métrica `M1` recebida em `T3` com _timestamp_ 13:56:04 e valor `110`
 - Métrica `M1` recebida às 13:56:24 com valor `120`
 - Métrica `M1` recebida às 13:56:04 com valor `110`
 
 ### Melhores práticas {#best-practices}
 
 - Use o
-  [processador de atributos do Kubernetes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
-  para adicionar etiquetas (_labels_) a diferentes recursos do Kubernetes.
+  [processador de atributos do Kubernetes (Kubernetes Attributes Processor)](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
+  para adicionar rótulos (_labels_) a diferentes recursos do Kubernetes.
 - Use o
-  [processador de detecção de recursos (resource detector processor)](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)
+  [processador de detecção de recursos (Resource Detection Processor)](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)
   para detectar informações de recursos do _host_ e coletar metadados de
   recursos.
 
