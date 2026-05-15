@@ -121,8 +121,8 @@ principais de configuração:
   enviados para o mesmo Collector de destino para coleta de métricas, garantindo
   agregações precisas.
 
-O Collector de primeira camada, que serve a rota OTLP, é configurado da
-seguinte forma:
+O Collector de primeira camada, que serve a rota OTLP, é configurado da seguinte
+forma:
 
 {{< tabpane text=true >}} {{% tab Estático %}}
 
