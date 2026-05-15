@@ -11,8 +11,8 @@ default_lang_commit: ccb79745a6b30511661b7071ecf1e866fcd2a122
 cSpell:ignore: hostnames loadbalancer loadbalancing resourcedetectionprocessor subchave
 ---
 
-O padrão de implantação de _gateway_ do Collector consiste em aplicações ou outros
-Collectors enviando sinais de telemetria para uma única
+O padrão de implantação de _gateway_ do Collector consiste em aplicações ou
+outros Collectors enviando sinais de telemetria para uma única
 [rota](/docs/specs/otlp/) OTLP. Esta rota é fornecida por uma ou mais instâncias
 de Collector executando como serviço independente, por exemplo, em uma
 implantação do Kubernetes. Geralmente, uma rota é fornecida por _cluster_, por
@@ -31,9 +31,9 @@ Na segunda camada, cada Collector recebe e processa a telemetria que pode ser
 direcionada especificamente a ele. Por exemplo, é possível usar o exportador de
 balanceamento de carga em sua primeira camada para enviar dados a um Collector
 de segunda camada configurado com o [processador de amostragem de cauda (_tail
-sampling_)][tailsample-processor], de modo que todos os trechos de um determinado
-rastro alcancem a mesma instância de Collector onde a política de amostragem é
-aplicada.
+sampling_)][tailsample-processor], de modo que todos os trechos de um
+determinado rastro alcancem a mesma instância de Collector onde a política de
+amostragem é aplicada.
 
 O diagrama a seguir mostra essa configuração usando o exportador de
 balanceamento de carga:
@@ -106,21 +106,20 @@ Para um exemplo concreto do padrão de implantação de Collector centralizado,
 veja primeiro o exportador de balanceamento de carga. Ele possui dois campos
 principais de configuração:
 
-- O `resolver` determina onde encontrar os Collectors ou _backends_ de
-  destino. Ao usar a subchave `static`, é necessário enumerar manualmente
-  as URLs dos Collectors. O outro resolvedor suportado é o DNS, que verifica
-  atualizações periodicamente e resolve endereços IP. Para este tipo de
-  resolvedor, a subchave `hostname` especifica o nome do _host_ a ser consultado
-  para obter a lista de endereços IP.
+- O `resolver` determina onde encontrar os Collectors ou _backends_ de destino.
+  Ao usar a subchave `static`, é necessário enumerar manualmente as URLs dos
+  Collectors. O outro resolvedor suportado é o DNS, que verifica atualizações
+  periodicamente e resolve endereços IP. Para este tipo de resolvedor, a
+  subchave `hostname` especifica o nome do _host_ a ser consultado para obter a
+  lista de endereços IP.
 - O campo `routing_key` direciona os trechos para Collectors de destino
-  específicos. Se definido como `traceID`, o exportador de
-  balanceamento de carga exportará os trechos com base em seu `traceID`. 
-  Se definido como `service`, exporta com base no nome do serviço.
-  Esse roteamento é útil ao usar conectores como o
-  [conector de métricas de trechos (span metrics
+  específicos. Se definido como `traceID`, o exportador de balanceamento de
+  carga exportará os trechos com base em seu `traceID`. Se definido como
+  `service`, exporta com base no nome do serviço. Esse roteamento é útil ao usar
+  conectores como o [conector de métricas de trechos (span metrics
   connector)][spanmetrics-connector], pois todos os trechos de um serviço são
-  enviados para o mesmo Collector de destino para coleta de métricas,
-  garantindo agregações precisas.
+  enviados para o mesmo Collector de destino para coleta de métricas, garantindo
+  agregações precisas.
 
 O Collector de primeira camada que serve o endpoint OTLP é configurado da
 seguinte forma:
@@ -213,8 +212,8 @@ service:
 O exportador de balanceamento de carga emite
 [métricas](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter#metrics),
 incluindo `otelcol_loadbalancer_num_backends` e
-`otelcol_loadbalancer_backend_latency`, que podem ser usadas para monitorar a saúde
-e o desempenho do Collector que serve a rota OTLP.
+`otelcol_loadbalancer_backend_latency`, que podem ser usadas para monitorar a
+saúde e o desempenho do Collector que serve a rota OTLP.
 
 ## Prós e contras {#trade-offs}
 
@@ -247,17 +246,17 @@ identidade globalmente única.
 
 ### Problemas potenciais {#potential-problems}
 
-O acesso simultâneo de múltiplas várias que modificam ou relatam os mesmos
-dados pode levar à perda de dados ou à degradação da qualidade dos dados. Por
-exemplo, podem aparecer dados inconsistentes de múltiplas fontes no mesmo
-recurso, onde diferentes fontes podem sobrescrever umas às outras porque o
-recurso não está identificado de forma única.
+O acesso simultâneo de múltiplas várias que modificam ou relatam os mesmos dados
+pode levar à perda de dados ou à degradação da qualidade dos dados. Por exemplo,
+podem aparecer dados inconsistentes de múltiplas fontes no mesmo recurso, onde
+diferentes fontes podem sobrescrever umas às outras porque o recurso não está
+identificado de forma única.
 
-Existem padrões nos dados que podem fornecer informações se isso está
-ocorrendo. Por exemplo, em uma inspeção visual, uma série com lacunas
-ou saltos inexplicados pode ser um indício de que múltiplos collectors estão
-enviando as mesmas amostras. Também podem aparecer erros em seu _backend_. Por
-exemplo, com um _backend_ Prometheus:
+Existem padrões nos dados que podem fornecer informações se isso está ocorrendo.
+Por exemplo, em uma inspeção visual, uma série com lacunas ou saltos
+inexplicados pode ser um indício de que múltiplos collectors estão enviando as
+mesmas amostras. Também podem aparecer erros em seu _backend_. Por exemplo, com
+um _backend_ Prometheus:
 
 `Error on ingesting out-of-order samples`
 
