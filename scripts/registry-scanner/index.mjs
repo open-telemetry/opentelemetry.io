@@ -101,9 +101,9 @@ const scanners = {
     scanByLanguage('instrumentation', 'ruby');
     scanByLanguage('exporter', 'ruby', 'exporter', 'md', 'opentelemetry-ruby');
     scanByLanguage('processor', 'ruby');
-    scanByLanguage('utilities', 'ruby', 'propagator');
+    scanByLanguage('propagator', 'ruby');
     scanByLanguage('resource-detector', 'ruby', 'resources');
-    scanByLanguage('utilities', 'ruby', 'sampler');
+    scanByLanguage('sampler', 'ruby');
     scanByLanguage('utilities', 'ruby', 'helpers');
   },
   erlang: () => {
