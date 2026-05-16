@@ -28,6 +28,6 @@ createdAt: 2026-03-13
 package:
   registry: packagist
   name: traceway/opentelemetry-symfony
-  version: v1.8.0
+  version: v1.9.0
 isNative: false
 isFirstParty: false
