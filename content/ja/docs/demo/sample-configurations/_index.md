@@ -1,6 +1,6 @@
 ---
 title: サンプル設定
-default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
+default_lang_commit: d503571bbd711e05b9e6f85966fed6f0e00ba910
 ---
 
 このセクションでは、OpenTelemetry Collector の構成例を示します。これらの例は、

@@ -1,6 +1,7 @@
 ---
 title: `service.criticality` を使用した tail-based サンプリング
-linkTitle: Tail Sampling
+linkTitle: Tail サンプリング
+default_lang_commit: d503571bbd711e05b9e6f85966fed6f0e00ba910
 ---
 
 この例では、OpenTelemetry
