@@ -1,11 +1,11 @@
 ---
-title: service.criticality を使用した tail-based サンプリング
+title: service.criticality を使った tail-based サンプリング
 linkTitle: Tail サンプリング
 default_lang_commit: d503571bbd711e05b9e6f85966fed6f0e00ba910
 ---
 
 この例では、OpenTelemetry
-Collector において、賢い tail-based サンプリングの決定を行うために、リソース属性 [`service.criticality`](/docs/specs/semconv/resource/service/#service) を使用するやり方を示します。
+Collector において、賢い tail-based サンプリングの決定を行うために、リソース属性 [`service.criticality`](/docs/specs/semconv/resource/service/#service) を使うやり方を示します。
 
 デモアプリケーションは、各サービスに`service.criticality`値を割り当て、運用上の重要度に基づいて分類します。
 
@@ -117,11 +117,11 @@ service:
       exporters: [otlp, debug, spanmetrics]
 ```
 
-## どのように機能するか
+## どのように動くか
 
 tail-sampling プロセッサーは完了したトレースを、設定済みのポリシーと照らし合わせて、評価します。トレースは、以下のいずれかのポリシーに一致する場合にサンプリングされます。
 
-- **重要なサービス** は常にサンプリングされ、決済フロー、チェックアウト、およびユーザー向けサービスを完全に可視化します。
+- **重要なサービス** は常にサンプリングされ、決済フロー、チェックアウト、およびユーザー向けサービスを全て可視化します。
 - **重要度の高いサービス** は、可観測性とデータ量のバランスを取るため、50%の割合でサンプリングされます。
 - **中・低重要度のサービス** は、重要度の低い経路からのノイズを低減するために、段階的に低いサンプリングレートでサンプリングされます。
 - サービスの重要度に関わらず、 **エラーは常に捕捉される** ため、問題が見落とされることはありません。
