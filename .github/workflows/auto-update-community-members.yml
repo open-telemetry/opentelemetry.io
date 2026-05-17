@@ -32,7 +32,7 @@ jobs:
         id: otelbot-token
         with:
           # the higher privileged docs token is needed to push commits to an existing PR
-          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          client-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
       - name: Run script

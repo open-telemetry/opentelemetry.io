@@ -4,6 +4,9 @@ linkTitle: Declarative configuration
 weight: 30
 ---
 
+<!-- markdownlint-disable blanks-around-fences -->
+<?code-excerpt path-base="examples/otel-config"?>
+
 Declarative configuration uses a YAML file instead of environment variables.
 
 This approach is useful when:
@@ -34,21 +37,45 @@ For details, refer to the
 
 Recommended configuration file:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "examples/otel-getting-started.yaml"?>
 ```yaml
-file_format: '1.0'
+# otel-getting-started.yaml is a good starting point for configuring the SDK, including exporting to
+# localhost via OTLP.
+#
+# NOTE: With the exception of env var substitution syntax (i.e. ${MY_ENV}), SDKs ignore
+# environment variables when interpreting config files. This including ignoring all env
+# vars defined in https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/.
+#
+# For schema documentation, including required properties, semantics, default behavior, etc,
+# see: https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md
+
+file_format: "1.0"
 
 resource:
+  # Read resource attributes from the OTEL_RESOURCE_ATTRIBUTES environment variable.
+  # This aligns well with the OpenTelemetry Operator and other deployment methods.
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
-  detection/development:
+  detection/development: # /development properties may not be supported in all SDKs
     detectors:
-      - service: # will add "service.instance.id" and "service.name" from OTEL_SERVICE_NAME
+      - service: # will add "service.instance.id" and "service.name" from the OTEL_SERVICE_NAME env var
+      - host:
+      - process:
+      - container:
 
 propagator:
   composite:
     - tracecontext:
     - baggage:
 
+# Read backend endpoint from the OTEL_EXPORTER_OTLP_ENDPOINT environment variable.
+# This aligns well with the OpenTelemetry Operator and other deployment methods.
+
 tracer_provider:
+  sampler:
+    parent_based:
+      root:
+        always_on:
   processors:
     - batch:
         exporter:
@@ -69,6 +96,7 @@ logger_provider:
           otlp_http:
             endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/logs
 ```
+<!-- prettier-ignore-end -->
 
 ## Environment variables
 

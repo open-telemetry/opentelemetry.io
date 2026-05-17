@@ -7,7 +7,7 @@ aliases:
 cascade:
   vers:
     instrumentation: 2.27.0
-    otel: 1.61.0
+    otel: 1.62.0
 default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 drifted_from_default: true
 ---
