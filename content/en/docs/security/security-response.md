@@ -28,7 +28,7 @@ artifacts to be secure against availability attacks. We highly recommend not
 using insecure defaults where feasible. To ensure availability, users must
 require authentication for their endpoint communication following the guidance
 on the
-[Security section of our website](docs/security/).
+[Security section of our website](/docs/security/).
 
 Additionally, the OpenTelemetry project does not consider the following to be
 security vulnerabilities:
