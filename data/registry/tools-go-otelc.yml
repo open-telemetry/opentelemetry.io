@@ -1,0 +1,19 @@
+title: otelc - OpenTelemetry Go Compile-Time Instrumentation
+registryType: core
+language: go
+tags:
+  - go
+  - instrumentation
+  - compile-time
+  - auto-instrumentation
+license: Apache 2.0
+description: >-
+  otelc is a compile-time auto-instrumentation tool for Go applications.
+  It injects OpenTelemetry instrumentation during the Go build process
+  without requiring manual source-code changes in the target application.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation
+createdAt: 2024-06-01
+isFirstParty: true
