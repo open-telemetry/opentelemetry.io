@@ -46,10 +46,10 @@ docker compose up --force-recreate --remove-orphans --detach
 
     {{% /tab %}} {{< /tabpane >}}
 
-### Run in minimal mode
+    ### Run in minimal mode
 
-If you have limited resources, you can start the demo without Kafka and its
-dependent services, reducing memory usage to approximately 3 GB of RAM:
+    If you have limited resources, you can start the demo without Kafka and its
+    dependent services, reducing memory usage to approximately 3 GB of RAM:
 
     {{< tabpane text=true >}} {{% tab Make %}}
 
@@ -65,12 +65,12 @@ docker compose -f docker-compose.minimal.yml up --force-recreate --remove-orphan
 
     {{% /tab %}} {{< /tabpane >}}
 
-The following services are **not** included in minimal mode:
+    The following services are **not** included in minimal mode:
 
-- `accounting`
-- `fraud-detection`
-- `flagd-ui`
-- `kafka`
+    - `accounting`
+    - `fraud-detection`
+    - `flagd-ui`
+    - `kafka`
 
 4.  (Optional) Enable API observability-driven testing[^1]:
 
