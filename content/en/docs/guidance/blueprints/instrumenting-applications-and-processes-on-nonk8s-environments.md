@@ -40,21 +40,27 @@ and standardization provided by orchestrators. Ensuring consistent, high-quality
 observability in these scenarios is critical, yet frequently hampered by
 fragmented tooling and manual processes.
 
-The introduction of Open Agent Management Protocol (OpAMP) provides a
-standardized, scalable way to remotely manage, configure, and monitor
-OpenTelemetry agents across diverse infrastructure. In parallel, shared
-libraries, pre-baked images, and centrally maintained configuration artifacts
-can help standardize SDK-based instrumentation. Together, these approaches
-reduce friction and improve reliability for both host-based and containerized
-workloads.
+Open Agent Management Protocol (OpAMP) provides a standardized way to remotely
+manage, configure, and monitor OpenTelemetry agents across diverse
+infrastructure where supported. At the time of writing, the OpAMP specification
+is in Beta, so organizations should evaluate implementation maturity and
+operational support before standardizing on a specific solution. Where OpAMP is
+not yet suitable, shared libraries, pre-baked images, centrally maintained
+configuration artifacts, and existing deployment or configuration management
+tooling can still provide consistent lifecycle management for SDK- and
+agent-based instrumentation.
 
 ## Common challenges
 
-Organizations operating in non-Kubernetes environments typically face a distinct
-set of challenges that hinder effective observability. Without built-in
-automation, standardization, and centralized management, these environments
-often find it difficult to ensure consistent, high-quality telemetry across a
-diverse landscape of infrastructure and applications.
+Organizations operating in non-Kubernetes environments typically face a set of
+challenges that hinder effective observability. Without built-in automation,
+standardization, and centralized management, these environments often find it
+difficult to ensure consistent, high-quality telemetry across a diverse
+landscape of infrastructure and applications. Many of these observability
+challenges are not unique to non-Kubernetes environments. In non-Kubernetes
+environments, however, teams often have fewer built-in platform mechanisms for
+rollout management, service discovery, metadata enrichment, and centralized
+policy distribution.
 
 ### 1. Fragmented instrumentation approaches
 
@@ -120,24 +126,30 @@ quality.
 
 **Challenges addressed:** 1, 2
 
-Use OpAMP, where supported, to centrally manage OpenTelemetry agents running as
-system services or service containers. Where OpAMP is not supported,
-organizations should use other centralized management mechanisms, such as
-configuration management tools, golden images, or standardized deployment
-artifacts, to maintain consistent agent deployment, configuration, and lifecycle
-management. Platform teams should own the baseline agent distribution, required
-processors and exporters, security settings, health reporting, and default
-resource detection behavior.
+Use OpAMP, where supported and operationally suitable, to centrally manage
+OpenTelemetry agents running as system services or service containers. Because
+the OpAMP specification is currently in Beta, organizations should evaluate the
+maturity and supportability of the implementations available in their
+environment before standardizing on a specific solution. Where OpAMP is not
+supported or not yet suitable, organizations should use other centralized
+management mechanisms, such as configuration management tools, golden images, or
+standardized deployment artifacts, to maintain consistent agent deployment,
+configuration, and lifecycle management. Platform teams should own the baseline
+agent distribution, required processors and exporters, security settings, health
+reporting, and default resource detection behavior.
 
 At the same time, organizations should explicitly define how
 environment-specific or workload-specific customization is allowed. A practical
 model is to use a **layered configuration approach**:
 
-- A **platform-owned baseline** for mandatory defaults, security controls, and
-  organization-wide processors/exporters.
-- An **environment overlay** for differences such as endpoints, tenancy,
-  deployment environment, or site-specific metadata.
-- A **workload overlay** for approved variations such as opt-in receivers,
+- A **platform-owned baseline**, typically owned by **platform engineering**,
+  for mandatory defaults, security controls, and organization-wide
+  processors/exporters.
+- An **environment overlay**, typically owned by **infrastructure or environment
+  operators**, for differences such as endpoints, tenancy, deployment
+  environment, site-specific metadata, or network-specific settings.
+- A **workload overlay**, typically owned by **application teams** within
+  platform-defined guardrails, for approved variations such as opt-in receivers,
   additional resource attributes, or safe tuning parameters.
 
 This creates a clear boundary between standardization and flexibility: teams can
@@ -195,6 +207,8 @@ By implementing this guideline, organizations can expect to achieve:
 
 - Unified control over data processing, enrichment, and export pipelines.
 - Simplified governance and easier implementation of organization-wide policies.
+- Fewer direct connections from hosts or applications to external observability
+  backends, which can simplify firewall and network policy management.
 - Better resilience and scalability than per-host or per-application export
   topologies.
 - Clear separation between local collection and centralized policy enforcement.
@@ -216,11 +230,12 @@ such as:
 - Centrally maintained configuration snippets or templates.
 
 The recommended resource model for non-Kubernetes environments should align with
-[OpenTelemetry resource semantic conventions](/docs/specs/semconv/resource/) and
-rely on automatic resource detection wherever possible. In practice,
-organizations should ensure that telemetry can be correlated across the
-following resource domains, using automatically detected attributes where
-supported:
+OpenTelemetry resource semantic conventions and rely on automatic resource
+detection wherever possible. In OpenTelemetry, a resource identifies the entity
+that produced the telemetry, such as a host, VM, process, container, or service
+instance. In practice, organizations should ensure that telemetry can be
+correlated across the following resource domains, using automatically detected
+attributes where supported:
 
 - **Host**
 - **Device** (where applicable)
