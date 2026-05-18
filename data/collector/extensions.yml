@@ -236,8 +236,15 @@
   distributions:
     - contrib
   stability:
-    extension: alpha
+    extension: deprecated
   subtype: observer
+- name: mcp
+  display_name: MCP Server
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: development
 - name: memorylimiterextension
   display_name: Memory Limiter Extension
   repo: core

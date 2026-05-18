@@ -9,6 +9,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
+cSpell:ignore: Qwen rerank
 ---
 
 OpenTelemetry libraries provide telemetry collection for popular programming
@@ -39,13 +40,13 @@ OBI offers the following features:
 - **Visibility into encrypted communications**: Capture transactions over
   TLS/SSL without decryption
 - **Context propagation**: Propagate trace context across services automatically
-- **Protocol support**: HTTP/S, gRPC, gRPC-Web, JSON-RPC, MQTT, Memcached, and
-  more
-- **Database instrumentation**: PostgreSQL (including pgx driver), MySQL,
+- **Protocol support**: HTTP/S, gRPC, gRPC-Web, JSON-RPC, MQTT, NATS, AMQP 1.0,
+  Memcached, and more
+- **Database instrumentation**: PostgreSQL (including pgx driver), MySQL, MSSQL,
   MongoDB, Redis, Couchbase (N1QL/SQL++ and KV protocol)
 - **GenAI instrumentation**: Trace and metrics for OpenAI, Anthropic Claude,
-  Google AI Studio (Gemini), and AWS Bedrock API calls with automatic payload
-  extraction
+  Google AI Studio (Gemini), AWS Bedrock, Qwen (DashScope), MCP over JSON-RPC,
+  and embedding and rerank APIs for Voyage AI, Cohere, and Jina AI
 - **Low cardinality metrics**: Prometheus-compatible metrics with low
   cardinality for cost reduction
 - **Network observability**: Capture network flows between services with
@@ -55,32 +56,32 @@ OBI offers the following features:
 - **Collector integration**: Run OBI as an OpenTelemetry Collector receiver
   component
 
-## Recent highlights (v0.8.0)
+## Recent highlights (v0.9.0)
 
-OBI v0.8.0 expands protocol coverage, payload extraction, and deployment
-documentation:
+OBI v0.9.0 expands protocol coverage, emitted telemetry, and GenAI
+instrumentation:
 
-- **Generic Go tracing improvements**: Added generic Go protocol support,
-  including context propagation for generic requests
-- **Expanded protocol coverage**: Added JSON-RPC support across all languages
-- **Deeper HTTP payload extraction**: Added full HTTP body extraction, with
-  bounded decompression for response bodies
-- **Broader GenAI coverage**: Added Google AI Studio (Gemini) and AWS Bedrock
-  payload extraction, and fixed Vertex AI Gemini support
-- **Named CIDR labels**: Network metrics can now label configured CIDR ranges
-  with human-readable names
-- **New example scenario**: Added an Apache HTTP Server example alongside the
-  existing NGINX walkthroughs
-- **Support documentation**: Added a project support matrix for release
-  artifacts and supported environments
+- **New messaging protocol support**: Added NATS and AMQP 1.0 tracing and
+  metrics
+- **Expanded database coverage**: Added MSSQL protocol support, including
+  prepared statement handling and error extraction
+- **Broader GenAI coverage**: Added Qwen (DashScope), MCP over JSON-RPC,
+  embedding providers (Voyage AI, Cohere, Jina AI), and rerank providers
+  (Cohere, Jina AI, Voyage AI, and Qwen)
+- **New stats metrics**: Added TCP failed connection metrics alongside the
+  existing TCP RTT metrics
+- **Telemetry schema registry**: Added a Weaver-compatible schema registry for
+  OBI-emitted metrics and attributes
+- **Span and service graph alignment**: OBI now documents and emits span-metrics
+  and service-graph telemetry aligned with the collector-contrib connectors
 
 For a complete list of changes and upgrade notes, see the
-[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.8.0).
+[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.9.0).
 
 If you want to explore the upstream examples, see the
-[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/nginx)
+[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.9.0/examples/nginx)
 and the
-[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/apache).
+[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.9.0/examples/apache).
 
 ## How OBI works
 
