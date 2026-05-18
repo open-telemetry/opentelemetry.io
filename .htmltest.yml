@@ -82,6 +82,9 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/[^d]
   - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/[^s]
   - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/security
+  # TODO: remove once https://github.com/open-telemetry/opentelemetry.io/pull/9850 is merged;
+  # this file is new and won't exist on main until then:
+  - ^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/docs/specs/otel-config/
   # FIXME: same issue as for the OTel spec mentioned above:
   - ^https://github.com/open-telemetry/semantic-conventions/tree/main
 
