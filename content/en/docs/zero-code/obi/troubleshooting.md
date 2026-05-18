@@ -124,37 +124,6 @@ This is an advanced use case and typically not required.
 
 This section covers how to resolve common OBI issues.
 
-### Node.js services crash or become unresponsive when OBI is running
-
-To enable better context propagation in Node.js applications, OBI injects custom
-code to track the current execution context. It does so using the Node.js
-inspector protocol and sends the `SIGUSR1` signal to the Node process to open
-the inspector.
-
-However, if the application defines its own `SIGUSR1` signal handler, it handles
-OBI's signal in a custom way, which may cause crashes or unresponsiveness of the
-targeted application. For example:
-
-```javascript
-process.on('SIGUSR1', () => {
-  process.exit(0);
-});
-```
-
-Or by using Node.js flags that register their own signal handling, such as:
-
-```commandline
-node --heapsnapshot-signal=SIGUSR1
-```
-
-**Solutions:**
-
-- Use the `discovery` configuration to exclude specific Node.js applications
-  from OBI tracking, preventing OBI from sending `SIGUSR1`.
-- Disable Node.js context propagation entirely by setting `nodejs.enabled:false`
-  in configuration file or environment variable
-  `OTEL_EBPF_NODEJS_ENABLED=false`.
-
 ### ClickHouse instances crash when OBI is running
 
 If you're running [Clickhouse](https://github.com/ClickHouse/ClickHouse) on the
