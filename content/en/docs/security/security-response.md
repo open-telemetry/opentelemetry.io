@@ -13,7 +13,7 @@ the incident including internal communication and external disclosure.
 
 ## Security model
 
-<!-- 
+<!--
     This section is mirrored from the authoritative source at:
     https://github.com/open-telemetry/sig-security/blob/main/security-response.md#supported-versions
 
@@ -23,12 +23,12 @@ the incident including internal communication and external disclosure.
 When assessing the urgency and importance of a security fix, confidentiality and
 integrity are our topmost concerns for all OpenTelemetry software artifacts.
 
-In contrast, we do not consider the default settings of OpenTelemetry software 
+In contrast, we do not consider the default settings of OpenTelemetry software
 artifacts to be secure against availability attacks. We highly recommend not
 using insecure defaults where feasible. To ensure availability, users must
 require authentication for their endpoint communication following the guidance
-on the [Security section of our
-website](https://opentelemetry.io/docs/security/).
+on the
+[Security section of our website](https://opentelemetry.io/docs/security/).
 
 Additionally, the OpenTelemetry project does not consider the following to be
 security vulnerabilities:
