@@ -9,7 +9,7 @@ author: >-
 sig: End User
 default_lang_commit: b4b91dc7bdbb03ae1de2c1e276194d98b9d15b94
 # prettier-ignore
-cSpell:ignore: Beorn cardinalidad explorative Kiripolsky Nduka negotiables Rabestein stakeholders Suereth telescoping Volz
+cSpell:ignore: Beorn cardinalidad Kiripolsky Nduka Rabestein stakeholders Suereth telescoping Volz
 ---
 
 <!-- markdownlint-configure-file {"no-shortcut-ref-link": {"ignore_pattern": "^[Ww]ith$"}} -->
@@ -82,7 +82,7 @@ las entrevistas.
 
 ## Perspectivas de las entrevistas a stakeholders
 
-_(Nota: Las citas han sido traducidas del inglés original)_
+> [!NOTE] Las citas han sido traducidas del inglés original.
 
 Hablé con 6 stakeholders—3 de cada proyecto:
 
@@ -112,7 +112,7 @@ interesantes:
   de las diferentes bases filosóficas y técnicas sobre las que se construyó cada
   uno de los proyectos.
 
-  > _[Traducción]_ "Si pensamos en situaciones exploratorias o casos de uso,
+  > _(Traducción)_ "Si pensamos en situaciones exploratorias o casos de uso,
   > entonces podemos justificar muchas de las decisiones de diseño detrás de
   > OpenTelemetry. Y si pensamos en métricas y escalado, monitoreo, para
   > infraestructura enorme, entonces las decisiones de diseño para Prometheus
@@ -121,13 +121,13 @@ interesantes:
 
   <!-- markdownlint-disable no-shortcut-ref-link -->
 
-  > _[Traducción]_ "Creo que uno de los mayores [problemas de >
+  > _(Traducción)_ "Creo que uno de los mayores [problemas de > >
   > interoperabilidad] es la diferencia entre push y pull." — _Julius Volz_
 
   Julius luego elaboró que su preocupación va más allá del mecanismo de entrega
   en sí. En sus palabras:
 
-  > _[Traducción]_ "Una de las mayores desventajas de usar OTLP para enviar
+  > _(Traducción)_ "Una de las mayores desventajas de usar OTLP para enviar
   > métricas a Prometheus es que terminas desechando una de las características
   > principales de Prometheus como sistema de monitoreo: su modelo de
   > recolección de métricas basado en pull que se basa en información de
@@ -166,7 +166,7 @@ Respecto a los modelos mentales, muchos usuarios (tanto entrevistados como
 encuestados) no distinguen entre atributos de recurso y etiquetas de Prometheus.
 Tienden a pensar en ellos como lo mismo.
 
-> _[Traducción]_ "Esperaría que los atributos de recurso por regla se trataran
+> _(Traducción)_ "Esperaría que los atributos de recurso por regla se trataran
 > exactamente de la misma manera que los atributos adjuntos al tracer, a la
 > métrica... No trazaría una frontera entre ellos." — _Participante de
 > Entrevista 1_
@@ -268,7 +268,7 @@ plazo vs. lo que es parte de una visión a largo plazo:
   para la evolución, especialmente si las nuevas capacidades pueden
   complementar, en lugar de reemplazar, el comportamiento actual.
 
-  > _[Traducción]_ Veo a OTel y Prometheus como provenientes de supuestos muy
+  > _(Traducción)_ Veo a OTel y Prometheus como provenientes de supuestos muy
   > diferentes sobre cómo debería funcionar la telemetría en general. Entonces,
   > mientras que Prometheus es muy opinado sobre el almacenamiento de series
   > temporales...OTel, por otro lado, proviene de un contexto de tracing, lo que
@@ -288,7 +288,7 @@ plazo vs. lo que es parte de una visión a largo plazo:
   hace menos útiles en entornos donde las trazas no están disponibles o
   instrumentadas.
 
-  > _[Traducción]_ "Una de las cosas clave innovadoras en OpenCensus era... que
+  > _(Traducción)_ "Una de las cosas clave innovadoras en OpenCensus era... que
   > podías dividir el uso de CPU por qué solicitudes estaban usando CPU y
   > obtener una métrica que dijera, 'aquí está el uso de CPU por solicitud.' Eso
   > es algo que podías lograr en OpenCensus porque todo estaba basado en
