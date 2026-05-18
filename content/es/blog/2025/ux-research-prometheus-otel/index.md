@@ -121,8 +121,8 @@ interesantes:
 
   <!-- markdownlint-disable no-shortcut-ref-link -->
 
-  > _(Traducción)_ "Creo que uno de los mayores [problemas de > > >
-  > interoperabilidad] es la diferencia entre push y pull." — _Julius Volz_
+  > _(Traducción)_ "Creo que uno de los mayores [problemas de interoperabilidad]
+  > es la diferencia entre push y pull." — _Julius Volz_
 
   Julius luego elaboró que su preocupación va más allá del mecanismo de entrega
   en sí. En sus palabras:
