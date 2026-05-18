@@ -15,7 +15,7 @@ the incident including internal communication and external disclosure.
 
 <!--
     This section is mirrored from the authoritative source at:
-    https://github.com/open-telemetry/sig-security/blob/main/security-response.md#supported-versions
+    https://github.com/open-telemetry/sig-security/blob/main/security-response.md#security-model
 
     Any changes should be made there first, then synced back here.
 -->
