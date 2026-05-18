@@ -2139,6 +2139,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:23:09.568102217Z"
   },
+  "https://docs.kernel.org/admin-guide/cgroup-v2.html#cpu-interface-files": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-18T11:40:01.143168524Z"
+  },
   "https://docs.kernel.org/trace/user_events.html": {
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:15:17.165181779Z"
@@ -3078,6 +3082,10 @@
   "https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes": {
     "StatusCode": 200,
     "LastSeen": "2026-05-21T10:49:35.758792589Z"
+  },
+  "https://en.wikipedia.org/wiki/LuaJIT": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-18T11:39:37.043397556Z"
   },
   "https://en.wikipedia.org/wiki/Monkey_patch": {
     "StatusCode": 200,
@@ -21259,6 +21267,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-05-06T10:29:42.089415944Z"
   },
+  "https://pkg.go.dev/github.com/Moby/Moby@v28.5.2+incompatible/api/types/container#CPUUsage": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-18T11:39:51.784216545Z"
+  },
   "https://pkg.go.dev/github.com/XSAM/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2026-05-21T10:58:22.525947303Z"
@@ -21274,6 +21286,10 @@
   "https://pkg.go.dev/github.com/dnwe/otelsarama": {
     "StatusCode": 200,
     "LastSeen": "2026-05-25T11:10:04.797401998Z"
+  },
+  "https://pkg.go.dev/github.com/google/cadvisor@v0.56.2/info/v1#CpuUsage": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-18T11:39:56.648814161Z"
   },
   "https://pkg.go.dev/github.com/goyek/x/otelgoyek": {
     "StatusCode": 200,
@@ -22290,6 +22306,10 @@
   "https://pkg.go.dev/github.com/openclarity/apiclarity/plugins/otel-collector/apiclarityexporter": {
     "StatusCode": 200,
     "LastSeen": "2026-05-06T10:27:12.750474299Z"
+  },
+  "https://pkg.go.dev/github.com/opencontainers/cgroups@v0.0.6#CpuUsage": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-18T11:39:50.567049043Z"
   },
   "https://pkg.go.dev/github.com/r0mdau/fluentforwardexporter": {
     "StatusCode": 200,
@@ -24838,6 +24858,10 @@
   "https://www.kernel.org/doc/Documentation/sysctl/kernel.txt": {
     "StatusCode": 206,
     "LastSeen": "2026-05-03T09:59:02.923153422Z"
+  },
+  "https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v1/cpuacct.html#cpu-accounting-controller": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-18T11:39:58.391149866Z"
   },
   "https://www.keycloak.org": {
     "StatusCode": 206,
