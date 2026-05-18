@@ -9,7 +9,7 @@ author: >-
 sig: End User
 default_lang_commit: b4b91dc7bdbb03ae1de2c1e276194d98b9d15b94
 # prettier-ignore
-cSpell:ignore: Beorn cardinalidad Kiripolsky Nduka Rabestein stakeholders Suereth telescoping Volz
+cSpell:ignore: Beorn cardinalidad conceptualizan correlacionen desenfatizar Kiripolsky Nduka Rabestein stakeholders Suereth superestrellas telescoping Volz
 ---
 
 <!-- markdownlint-configure-file {"no-shortcut-ref-link": {"ignore_pattern": "^[Ww]ith$"}} -->
@@ -121,7 +121,7 @@ interesantes:
 
   <!-- markdownlint-disable no-shortcut-ref-link -->
 
-  > _(Traducción)_ "Creo que uno de los mayores [problemas de > >
+  > _(Traducción)_ "Creo que uno de los mayores [problemas de > > >
   > interoperabilidad] es la diferencia entre push y pull." — _Julius Volz_
 
   Julius luego elaboró que su preocupación va más allá del mecanismo de entrega
@@ -198,7 +198,7 @@ Aquí están los hallazgos clave:
 - El 78% de los encuestados encuentran las brechas de documentación un desafío
   en su uso de atributos de recurso.
 
-![Un gráfico de barras mostrando desafíos con los atributos de recurso de OpenTelemetry en Prometheus](../../../en/blog/2025/ux-research-prometheus-otel/Chart.PNG)
+![Un gráfico de barras mostrando desafíos con los atributos de recurso de OpenTelemetry en Prometheus](Chart.PNG)
 
 Los patrones de la encuesta fueron consistentes con lo que surgió de mi
 investigación cualitativa. Para resultados detallados, consulta las
