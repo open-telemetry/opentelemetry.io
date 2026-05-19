@@ -184,6 +184,28 @@ By default, not all measurements are stored as exemplars (that would be
 inefficient). The backend typically uses sampling strategies to decide which
 measurements to store as exemplars.
 
+Exemplars do not require a separate instrumentation API. Continue using the
+regular `System.Diagnostics.Metrics` instrument APIs; when exemplar filtering is
+enabled and backend support exists, the SDK and export path attach exemplars
+automatically. For regular API usage, see the
+[Metrics API](/docs/languages/dotnet/metrics-api/).
+
+## Exemplars and View-based attribute filtering
+
+> [!IMPORTANT] Restricting `TagKeys` (or otherwise dropping attributes via a
+> `View`) drops them from the **aggregated metric** stream, but does **not**
+> drop them from any Exemplars recorded for the same instrument. Dropped
+> attributes are preserved on Exemplars as _filtered tags_.
+>
+> If the goal of dropping the attribute is **data redaction** (for example,
+> removing an attribute containing sensitive data), the `View` alone is **not**
+> sufficient when Exemplars are enabled. Either keep the default
+> `ExemplarFilterType.AlwaysOff` to disable Exemplars entirely, or configure a
+> custom `ExemplarFilter` / `ExemplarReservoir` to control which measurements
+> are sampled. See
+> [opentelemetry-specification#5073](https://github.com/open-telemetry/opentelemetry-specification/pull/5073)
+> for the corresponding spec clarification.
+
 ## Learn more
 
 - [OpenTelemetry Exemplar Specification](/docs/specs/otel/metrics/sdk/#exemplar)
