@@ -416,6 +416,7 @@ while measuring an operation which normally takes 10 milliseconds).
 > were trying to achieve.
 
 <!-- markdownlint-disable-next-line MD028 -->
+
 > [!TIP] **Use exemplars to correlate metrics with traces.**
 >
 > [Exemplars](/docs/specs/otel/metrics/sdk/#exemplar) provide a mechanism to
