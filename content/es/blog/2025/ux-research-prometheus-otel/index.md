@@ -106,8 +106,7 @@ Hablé con 6 stakeholders—3 de cada proyecto:
 Mis conversaciones con stakeholders sacaron a la luz varios descubrimientos
 interesantes:
 
-- Las comunidades de Prometheus y OpenTelemetry no siempre se habían comunicado
-  bien y eso les impidió colaborar desde el principio.
+- La comunicación entre las comunidades de Prometheus y OpenTelemetry no siempre había sido la mejor y eso les impidió colaborar desde el principio.
 - Gran parte de los problemas de interoperabilidad que existen ahora provienen
   de las diferentes bases filosóficas y técnicas sobre las que se construyó cada
   uno de los proyectos.
@@ -142,15 +141,15 @@ interesantes:
   los usuarios existentes).
 
 Una conclusión clave de las entrevistas para mí fue darme cuenta de que los
-problemas actuales de interoperabilidad no son fallas, sino consecuencias
-naturales de diferentes comunidades resolviendo diferentes problemas en
+problemas actuales de interoperabilidad no son fallos, sino el resultado natural de 
+diferentes comunidades resolviendo diferentes problemas en
 diferentes momentos. Y es bueno ver que ambos proyectos están trabajando juntos
 ahora para mejorar la experiencia del usuario.
 
 ## Perspectivas de las entrevistas a usuarios
 
 Las entrevistas a usuarios fueron tan reveladoras como las conversaciones con
-stakeholders. Mi objetivo era hablar con alrededor de 10 usuarios (admitidamente
+stakeholders. Mi objetivo era hablar con alrededor de 10 usuarios (ciertamente
 ambicioso) pero logré entrevistar a 7, y todos compartieron perspectivas
 increíblemente útiles.
 
@@ -190,15 +189,15 @@ Aquí están los hallazgos clave:
 - Los usuarios no conceptualizan los atributos de recurso como diferentes de las
   etiquetas regulares, sin embargo, la implementación actual los trata como
   metadatos separados.
-- La sintaxis compleja de join es una gran barrera para la adopción, con
-  desarrolladores promedio incapaces de escribir consultas básicas que accedan a
+- La sintaxis compleja de join es una gran barrera para la adopción, lo que hace que 
+  al desarrollador común le cueste escribir consultas básicas que accedan a
   atributos de recurso.
 - La promoción manual de atributos crea una sobrecarga operacional que escala
   mal con el tamaño del equipo y la complejidad.
 - El 78% de los encuestados encuentran las brechas de documentación un desafío
   en su uso de atributos de recurso.
 
-![Un gráfico de barras mostrando desafíos con los atributos de recurso de OpenTelemetry en Prometheus](Chart.PNG)
+![Un gráfico de barras mostrando desafíos con los atributos de recurso de OpenTelemetry en Prometheus](../../../en/blog/2025/ux-research-prometheus-otel/Chart.PNG)
 
 Los patrones de la encuesta fueron consistentes con lo que surgió de mi
 investigación cualitativa. Para resultados detallados, consulta las
@@ -303,7 +302,7 @@ alrededor de estas ideas, puedes consultar el repositorio de GitHub donde todo
 está siendo documentado:
 [OpenTelemetry Resource Attributes in Prometheus UX Research](https://github.com/prometheus-community/ux-research/tree/a2f8c6684321fd04de7b94cfbd39a48bb1d7beb4/prom-otel-research?from_branch=main)
 
-## Agradecimientos
+## Agradecimientos {#acknowledgments}
 
 Esta publicación estaría incompleta sin reconocer a mis increíbles mentores:
 [Amy Super](https://github.com/amy-super),
@@ -318,6 +317,6 @@ Sus perspectivas hicieron que esta investigación fuera significativa.
 
 ## Qué sigue para mí
 
-Estoy emocionada de seguir trabajando en la intersección de UX y sistemas cloud
+Me entusiasma seguir trabajando en la intersección de UX y sistemas cloud
 native. Si conoces oportunidades similares a esta mentoría, ¡me encantaría saber
 de ti! Soy una trabajadora dedicada—solo pregúntales a mis mentores.
