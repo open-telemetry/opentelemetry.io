@@ -294,8 +294,8 @@ func newLoggerProvider() (*log.LoggerProvider, error) {
 
 > [!TIP]
 >
-> The previous example uses console (stdout) exporters for demonstration. For
-> production, you can use the
+> The previous example uses console (stdout) exporters for demonstration. You
+> can use the
 > [`autoexport`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport)
 > package to configure exporters via environment variables such as
 > `OTEL_TRACES_EXPORTER`, `OTEL_METRICS_EXPORTER`, `OTEL_LOGS_EXPORTER`, and
