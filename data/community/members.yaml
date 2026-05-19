@@ -101,6 +101,8 @@ maintainers:
       - opentelemetry-python-contrib-approvers
       - opentelemetry-python-contrib-maintainers
       - python-approvers
+      - python-genai-approvers
+      - python-genai-maintainers
       - python-maintainers
       - semconv-genai-approvers
       - sqlcommenter-approvers
@@ -676,6 +678,7 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-maintainers
       - collector-contrib-triagers
+      - collector-maintainers
       - collector-releases-approvers
       - collector-releases-maintainers
       - collector-triagers
@@ -1073,6 +1076,7 @@ maintainers:
       - proto-approvers
       - proto-triagers
       - python-approvers
+      - python-genai-approvers
       - python-maintainers
       - semconv-sdk-health-approvers
       - specs-approvers
@@ -1144,6 +1148,7 @@ maintainers:
       - proto-go-approvers
       - proto-go-maintainers
       - python-approvers
+      - python-genai-approvers
       - ruby-contrib-triagers
       - semconv-genai-approvers
     html_url: https://github.com/MikeGoldsmith
@@ -1889,6 +1894,7 @@ approvers:
       - javascript-contrib-triagers
       - opentelemetry-python-contrib-approvers
       - python-approvers
+      - python-genai-approvers
     html_url: https://github.com/DylanRussell
     avatar_url: https://avatars.githubusercontent.com/u/7339604?v=4
   - name: fatsheep9146
@@ -2036,6 +2042,7 @@ approvers:
   - name: keith-decker
     teams:
       - opentelemetry-python-contrib-approvers
+      - python-genai-approvers
     html_url: https://github.com/keith-decker
     avatar_url: https://avatars.githubusercontent.com/u/47755047?v=4
   - name: kinyoklion
@@ -2540,6 +2547,11 @@ triagers:
       - collector-contrib-triagers
     html_url: https://github.com/paulojmdias
     avatar_url: https://avatars.githubusercontent.com/u/44772900?v=4
+  - name: pratik-mahalle
+    teams:
+      - docs-triagers
+    html_url: https://github.com/pratik-mahalle
+    avatar_url: https://avatars.githubusercontent.com/u/124587957?v=4
   - name: psx95
     teams:
       - javascript-contrib-triagers
