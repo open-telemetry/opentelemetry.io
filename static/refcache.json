@@ -11272,8 +11272,8 @@
     "LastSeen": "2026-05-12T10:34:31.936416637Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.Runtime": {
-    "StatusCode": -10,
-    "LastSeen": "2026-05-12T10:34:46.93928441Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-19T08:51:35.202Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.ServiceFabricRemoting": {
     "StatusCode": 206,
@@ -14456,8 +14456,8 @@
     "LastSeen": "2026-05-12T10:34:09.72851255Z"
   },
   "https://github.com/open-telemetry/opentelemetry-ruby/tree/main/exporter/otlp-metrics": {
-    "StatusCode": -10,
-    "LastSeen": "2026-05-12T10:34:24.732146566Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-19T08:51:43.585Z"
   },
   "https://github.com/open-telemetry/opentelemetry-ruby/tree/main/exporter/zipkin": {
     "StatusCode": 206,
@@ -18364,8 +18364,8 @@
     "LastSeen": "2026-05-03T09:58:58.149088035Z"
   },
   "https://javadoc.io/doc/org.apache.logging.log4j/log4j-api/latest/org.apache.logging.log4j/org/apache/logging/log4j/Logger.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-05-12T10:27:27.045546562Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-19T08:52:05.745Z"
   },
   "https://javaee.github.io/grizzly/httpserverframework.html": {
     "StatusCode": 206,
@@ -24064,12 +24064,12 @@
     "LastSeen": "2026-05-01T10:08:09.277243536Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SpanProcessor.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-05-12T10:25:48.33693065Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-19T08:52:11.869Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/export/SpanExporter.html": {
-    "StatusCode": 521,
-    "LastSeen": "2026-05-12T10:25:52.335473535Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-19T08:52:16.089Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/samplers/Sampler.html": {
     "StatusCode": 200,
