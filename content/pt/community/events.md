@@ -26,7 +26,7 @@ implementação no mundo real. Esses eventos incluem:
 - Sessões de perguntas e respostas com a comunidade
 
 Encontre todos os eventos virtuais do SIG End-User e junte-se à comunidade em
-[community.cncf.io/opentelemetry/](https://community.cncf.io/opentelemetry/).
+[Open Community Groups](https://ocgroups.dev/cncf/group/xkrw4uk).
 
 ### KubeCon + CloudNativeCon {#kubecon-cloudnativecon}
 
