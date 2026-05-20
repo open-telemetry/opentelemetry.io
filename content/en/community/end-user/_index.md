@@ -35,13 +35,13 @@ File an issue in one of our repositories.
 
 <div class="{{% param btn-class %}}">
 
-- [Review issues][projects]
+- [Review issues][issues]
 
 </div>
 
 [Learn more](issue-participation/) about how we track reactions to issues.
 
-[projects]: https://github.com/orgs/open-telemetry/projects
+[issues]: https://github.com/search?q=is%3Aissue+is%3Aopen+org%3Aopen-telemetry+&type=issues
 
 ## Chat on Slack {#slack}
 
