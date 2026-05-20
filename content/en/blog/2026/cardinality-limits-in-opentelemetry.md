@@ -10,7 +10,7 @@ issue: 9943
 sig: Metrics
 # canonical_url: https://...   # add if cross-posted from another blog
 # prettier-ignore
-cSpell:ignore: cijothomas Cijo MeterProvider OTLP overflows reservoir AlwaysOff preallocation Aspire cardinality undercount undercounting
+cSpell:ignore: Aspire cardinality Cijo cijothomas OTLP overflows undercount undercounting
 ---
 
 You query your metrics for error count -- it says **zero**. The error rate panel
