@@ -281,15 +281,15 @@
   },
   "https://blog.olly.garden/how-to-name-your-metrics": {
     "StatusCode": 429,
-    "LastSeen": "2026-05-19T10:50:47.003686665Z"
+    "LastSeen": "2026-05-20T10:42:06.384212896Z"
   },
   "https://blog.olly.garden/how-to-name-your-span-attributes": {
     "StatusCode": 429,
-    "LastSeen": "2026-05-19T10:50:46.660693174Z"
+    "LastSeen": "2026-05-20T10:42:06.323697191Z"
   },
   "https://blog.olly.garden/how-to-name-your-spans": {
     "StatusCode": 429,
-    "LastSeen": "2026-05-19T10:50:49.212563805Z"
+    "LastSeen": "2026-05-20T10:42:07.75009723Z"
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
     "StatusCode": 200,
@@ -22375,17 +22375,9 @@
     "StatusCode": 200,
     "LastSeen": "2026-05-05T10:23:17.626029444Z"
   },
-  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.27.0-alpha/opentelemetry-instrumentation-bom-alpha-2.27.0-alpha.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-05T10:15:35.355547389Z"
-  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.28.0-alpha/opentelemetry-instrumentation-bom-alpha-2.28.0-alpha.pom": {
     "StatusCode": 206,
     "LastSeen": "2026-05-19T09:02:56.125569973Z"
-  },
-  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.27.0/opentelemetry-instrumentation-bom-2.27.0.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-05T10:15:31.162858434Z"
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.28.0/opentelemetry-instrumentation-bom-2.28.0.pom": {
     "StatusCode": 206,
