@@ -15,7 +15,7 @@ default_lang_commit: d503571bbd711e05b9e6f85966fed6f0e00ba910
 | `medium`    | 10%           | レコメンデーション、広告、商品レビュー、メール                                                 |
 | `low`       | 1%            | 会計、不正検知、画像プロバイダー、負荷生成、見積もり、flagd、flagd-ui、Kafka |
 
-## Collector Configuration
+## コレクター設定
 
 テイルベースサンプリングを有効にするには、`otelcol-config-extras.yml` に以下を追加してください。
 
