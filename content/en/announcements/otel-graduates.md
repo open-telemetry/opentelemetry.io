@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry is a CNCF Graduated Project
 linkTitle: OpenTelemetry Graduates
-date: 2026-05-19
+date: 2026-05-21
 expiryDate: 2026-05-31
 weight: 20260531
 params:
