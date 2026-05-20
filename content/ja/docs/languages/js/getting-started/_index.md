@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Getting Started by Example
 aliases: [/docs/js/getting_started]
 weight: 10
 description: Node.jsとブラウザでOpenTelemetryを開始する。
