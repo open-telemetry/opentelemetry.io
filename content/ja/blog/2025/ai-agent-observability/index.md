@@ -46,7 +46,7 @@ AIエージェントの場合、その非決定論的な性質から、テレメ
 
 AIエージェントのエコシステムが成熟し続けるにつれて、標準化された強固なオブザーバビリティの必要性がより明らかになってきています。
 いくつかのフレームワークが組み込みの計装を提供する一方で、他のフレームワークはオブザーバビリティツールとの統合に依存しています。
-この断片的な状況は、[生成AIオブザーバビリティプロジェクト](hhttps://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main)とOpenTelemetryの新たなセマンティック規約の重要性を強調しています。
+この断片的な状況は、[生成AIオブザーバビリティプロジェクト](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main)とOpenTelemetryの新たなセマンティック規約の重要性を強調しています。
 これらは、テレメトリーデータがどのように収集され報告されるかを統一することを目的としています。
 
 ### AIエージェントアプリケーションとAIエージェントフレームワークの比較
