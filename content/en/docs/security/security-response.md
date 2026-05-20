@@ -11,6 +11,37 @@ The relevant OpenTelemetry repository maintainers, supported by the Security SIG
 and OpenTelemetry Technical Committee (TC), are responsible for responding to
 the incident including internal communication and external disclosure.
 
+## Security model
+
+<!--
+    This section is mirrored from the authoritative source at:
+    https://github.com/open-telemetry/sig-security/blob/main/security-response.md#security-model
+
+    Any changes should be made there first, then synced back here.
+-->
+
+When assessing the urgency and importance of a security fix, confidentiality and
+integrity are our topmost concerns for all OpenTelemetry software artifacts.
+
+In contrast, we do not consider the default settings of OpenTelemetry software
+artifacts to be secure against availability attacks. We highly recommend not
+using insecure defaults where feasible. To ensure availability, users must
+require authentication for their endpoint communication following the guidance
+on the [Security section of our website](/docs/security/).
+
+Additionally, the OpenTelemetry project does not consider the following to be
+security vulnerabilities:
+
+- a denial of service attack by properly authenticated clients
+- availability-related attack to endpoints by properly authenticated clients
+
+These may still be considered bugs, and users can report them as such. When
+assessing availability-related impact, maintainers will also take into account
+the security policies of other projects (e.g. Prometheus) when assessing
+vulnerabilities against components that provide compatibility with those
+projects, as well as the level of asymmetry in terms of resource usage leveraged
+by the attack.
+
 ## Supported Versions
 
 The OTel project provides community support only for the last overall minor
