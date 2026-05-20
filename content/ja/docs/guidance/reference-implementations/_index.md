@@ -1,7 +1,7 @@
 ---
 title: リファレンス実装
 description: どのように異なる環境を持つさまざまな組織が OpenTelemetry を実装したかの例
-default_lang_commit: 64ad1ca5e1cf9508aa1fd6a11f42fa19e984ce0d
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
 ---
 
 リファレンス実装は、現実世界の組織がアプリケーションのテレメトリーを可観測性バックエンドへ送るスケーラブルで回復性のあるパイプラインを構築する際に、OpenTelemetry をどのように使っているかを示します。
