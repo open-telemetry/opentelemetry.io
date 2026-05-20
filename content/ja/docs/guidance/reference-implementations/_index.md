@@ -1,6 +1,6 @@
 ---
 title: リファレンス実装
-description: どのように異なる環境を持つさまざまな組織が OpenTelemetry を実装したかの例
+description: さまざまな環境を持つさまざまな組織が OpenTelemetry をどのように実装したかの例
 default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
 ---
 
