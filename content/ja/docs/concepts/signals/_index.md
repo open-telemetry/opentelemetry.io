@@ -20,7 +20,7 @@ OpenTelemetry は現在、下記をサポートしています。
 同様に、下記は開発中または[提案][proposal]の段階です。
 
 - [イベント][Events]は、特定の[ログ](logs)のタイプです。
-- [プロファイル][Profiles](profiles)
+- [プロファイル](profiles)
 
 [Events]: /docs/specs/otel/logs/data-model/#events
 [proposal]: https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme
