@@ -1,14 +1,13 @@
 ---
-title: OpenTelemetry Graduates from the CNCF
+title: OpenTelemetry is a CNCF Graduated Project
 linkTitle: OpenTelemetry Graduates
-date: 2026-05-21
+date: 2026-05-19
 author: >-
-  The OpenTelemetry Community
-sig: SIG Comms
+  [The OpenTelemetry Community](https://github.com/open-telemetry)
 ---
 
-Today, the Cloud Native Computing Foundation (CNCF) [announced](link to CNCF
-press release) that OpenTelemetry has graduated.
+Today, the Cloud Native Computing Foundation (CNCF) [announced](TODO: add link
+to CNCF press release) that OpenTelemetry has graduated.
 
 Graduation is an important milestone for the project and reflects the strength
 of the OpenTelemetry community and ecosystem. Since the merger of OpenTracing
@@ -20,9 +19,9 @@ This milestone belongs to the community.
 
 We want to thank everyone who has contributed code, documentation,
 specifications, language SDKs, semantic conventions, bug reports, reviews,
-community support, advocacy, and end-user experiences along the way.
-OpenTelemetry exists because of the people who continue to invest their time and
-expertise in the project every day.
+community support, advocacy, and end-user experiences. OpenTelemetry exists
+because of the people who continue to invest their time and expertise in the
+project every day.
 
 We are also grateful to the CNCF community, Technical Oversight Committee
 sponsors, and end users who supported OpenTelemetry throughout the graduation
