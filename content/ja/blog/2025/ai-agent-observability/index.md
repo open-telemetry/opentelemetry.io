@@ -7,8 +7,8 @@ linkTitle: AI Agent Observability
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/6389
 sig: SIG GenAI Observability
 date: 2025-03-06
-cSpell:ignore: genai Guangya PydanticAI Sujay
 default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
+cSpell:ignore: genai Guangya PydanticAI Sujay
 ---
 
 ## 2025年、AIエージェントの年
