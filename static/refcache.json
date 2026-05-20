@@ -17027,6 +17027,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-30T10:26:19.542463741Z"
   },
+  "https://github.com/search?q=is%3Aissue+is%3Aopen+org%3Aopen-telemetry+&type=issues": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-20T21:19:01.666122489Z"
+  },
   "https://github.com/secustor": {
     "StatusCode": 206,
     "LastSeen": "2026-04-30T10:27:22.158499918Z"
@@ -24342,10 +24346,6 @@
   "https://www.npmjs.com/package/@opentelemetry/shim-opentracing": {
     "StatusCode": 206,
     "LastSeen": "2026-04-30T10:30:37.394Z"
-  },
-  "https://www.npmjs.com/package/react-telemetry-open": {
-    "StatusCode": 403,
-    "LastSeen": "2026-05-15T09:20:57.502544367Z"
   },
   "https://www.npmjs.com/search?q=%40cspell%2Fdict": {
     "StatusCode": 200,
