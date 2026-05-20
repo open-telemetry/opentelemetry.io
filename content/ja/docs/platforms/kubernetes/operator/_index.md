@@ -10,8 +10,7 @@ redirects:
   - { from: /docs/operator/*, to: ':splat' }
   - { from: /docs/k8s-operator/*, to: ':splat' }
   - { from: /docs/platforms/kubernetes-operator/*, to: ':splat' }
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad # patched
-drifted_from_default: true
+default_lang_commit: 8db50c269e4c19d13ff6e32e2cf16a872e45402a
 ---
 
 ## はじめに {#introduction}
@@ -53,9 +52,6 @@ spec:
         check_interval: 1s
         limit_percentage: 75
         spike_limit_percentage: 15
-      batch:
-        send_batch_size: 10000
-        timeout: 10s
 
     exporters:
       # NOTE: v0.86.0より前では `debug` の代わりに `logging` を使用します。
@@ -65,17 +61,15 @@ spec:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: [memory_limiter, batch]
+          processors: [memory_limiter]
           exporters: [debug]
 EOF
 ```
 
-{{% alert title="Note" %}}
-
-デフォルトでは、`opentelemetry-operator` は [`opentelemetry-collector` イメージ](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector)を使用します。
-[Helmチャート](/docs/platforms/kubernetes/helm/)を使用してオペレーターをインストールした場合は、[`opentelemetry-collector-k8s` イメージ](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s)が使用されます。
-これらのリリースにないコンポーネントが必要な場合は、[独自のコレクター](/docs/collector/extend/ocb/)を構築する必要があるかもしれません。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> デフォルトでは、`opentelemetry-operator` は [`opentelemetry-collector` イメージ](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector)を使用します。
+> [Helmチャート](/docs/platforms/kubernetes/helm/)を使用してオペレーターをインストールした場合は、[`opentelemetry-collector-k8s` イメージ](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s)が使用されます。
+> これらのリリースにないコンポーネントが必要な場合は、[独自のコレクター](/docs/collector/extend/ocb/)を構築する必要があるかもしれません。
 
 より詳細な設定オプションや、OpenTelemetryの計装ライブラリを使用したワークロードの自動計装を挿入する設定については、[Kubernetes用のOpenTelemetryオペレーター](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md)を参照してください。
