@@ -41,7 +41,8 @@ File an issue in one of our repositories.
 
 [Learn more](issue-participation/) about how we track reactions to issues.
 
-[issues]: https://github.com/search?q=is%3Aissue+is%3Aopen+org%3Aopen-telemetry+&type=issues
+[issues]:
+  https://github.com/search?q=is%3Aissue+is%3Aopen+org%3Aopen-telemetry+&type=issues
 
 ## Chat on Slack {#slack}
 
