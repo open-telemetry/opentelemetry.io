@@ -1,3 +1,4 @@
+# cSpell:ignore abhishek sinha
 title: react-telemetry-open
 registryType: instrumentation
 isNative: false
@@ -9,7 +10,7 @@ tags:
   - frontend
 urls:
   repo: https://github.com/techiesinha/react-telemetry-open
-  website: https://www.npmjs.com/package/react-telemetry-open
+  website: https://www.npmjs.com/package/react-telemetry-open?link-check=no
 license: Apache 2.0
 description: >
   React-aware observability for React 18+ applications. Tracks component render
