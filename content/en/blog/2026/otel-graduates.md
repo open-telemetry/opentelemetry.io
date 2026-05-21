@@ -6,8 +6,9 @@ author: >-
   [The OpenTelemetry Community](https://github.com/open-telemetry)
 ---
 
-Today, the Cloud Native Computing Foundation (CNCF) [announced](TODO: add link
-to CNCF press release) that OpenTelemetry has graduated.
+Today, the Cloud Native Computing Foundation (CNCF)
+[announced](https://www.cncf.io/announcements/2026/05/21/cloud-native-computing-foundation-announces-opentelemetrys-graduation-solidifying-status-as-the-de-facto-observability-standard/)
+that OpenTelemetry has graduated.
 
 Graduation is an important milestone for the project and reflects the strength
 of the OpenTelemetry community and ecosystem. Since the merger of OpenTracing
