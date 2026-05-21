@@ -101,6 +101,8 @@ maintainers:
       - opentelemetry-python-contrib-approvers
       - opentelemetry-python-contrib-maintainers
       - python-approvers
+      - python-genai-approvers
+      - python-genai-maintainers
       - python-maintainers
       - semconv-genai-approvers
       - sqlcommenter-approvers
@@ -227,6 +229,8 @@ maintainers:
       - network-triagers
       - operator-approvers
       - operator-triagers
+      - packaging-approvers
+      - packaging-maintainers
     html_url: https://github.com/atoulme
     avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: austinlparker
@@ -522,7 +526,6 @@ maintainers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
-      - collector-releases-approvers
       - go-approvers
       - go-maintainers
       - go-triagers
@@ -574,6 +577,8 @@ maintainers:
       - go-approvers
       - go-maintainers
       - go-triagers
+      - packaging-approvers
+      - packaging-maintainers
       - sig-developer-experience-approvers
     html_url: https://github.com/dmathieu
     avatar_url: https://avatars.githubusercontent.com/u/9347?v=4
@@ -595,6 +600,14 @@ maintainers:
       - specs-entities-approvers
     html_url: https://github.com/dmitryax
     avatar_url: https://avatars.githubusercontent.com/u/6628631?v=4
+  - name: douglascamata
+    teams:
+      - collector-contrib-triagers
+      - collector-releases-approvers
+      - packaging-approvers
+      - packaging-maintainers
+    html_url: https://github.com/douglascamata
+    avatar_url: https://avatars.githubusercontent.com/u/159076?v=4
   - name: drewrelmas
     teams:
       - arrow-approvers
@@ -629,8 +642,6 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-maintainers
       - collector-contrib-triagers
-      - collector-releases-approvers
-      - collector-releases-maintainers
     html_url: https://github.com/edmocosta
     avatar_url: https://avatars.githubusercontent.com/u/11836452?v=4
   - name: emdneto
@@ -664,6 +675,7 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-maintainers
       - collector-contrib-triagers
+      - collector-maintainers
       - collector-releases-approvers
       - collector-releases-maintainers
       - collector-triagers
@@ -1020,6 +1032,8 @@ maintainers:
       - proto-maintainers
       - proto-triagers
       - python-approvers
+      - python-genai-approvers
+      - python-genai-maintainers
       - semconv-db-approvers
       - semconv-genai-approvers
       - semconv-genai-maintainers
@@ -1059,6 +1073,7 @@ maintainers:
       - proto-approvers
       - proto-triagers
       - python-approvers
+      - python-genai-approvers
       - python-maintainers
       - semconv-sdk-health-approvers
       - specs-approvers
@@ -1130,6 +1145,7 @@ maintainers:
       - proto-go-approvers
       - proto-go-maintainers
       - python-approvers
+      - python-genai-approvers
       - ruby-contrib-triagers
       - semconv-genai-approvers
     html_url: https://github.com/MikeGoldsmith
@@ -1138,6 +1154,8 @@ maintainers:
     teams:
       - injector-approvers
       - injector-maintainers
+      - packaging-approvers
+      - packaging-maintainers
     html_url: https://github.com/mmanciop
     avatar_url: https://avatars.githubusercontent.com/u/14020598?v=4
   - name: mmat11
@@ -1197,7 +1215,6 @@ maintainers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
-      - collector-releases-approvers
       - ruby-approvers
       - ruby-contrib-approvers
       - ruby-contrib-maintainers
@@ -1563,6 +1580,8 @@ maintainers:
       - java-instrumentation-maintainers
       - java-instrumentation-triagers
       - java-triagers
+      - python-genai-approvers
+      - python-genai-maintainers
       - semconv-db-approvers
       - semconv-genai-approvers
       - semconv-genai-maintainers
@@ -1662,6 +1681,12 @@ maintainers:
       - lambda-extension-maintainers
     html_url: https://github.com/wpessers
     avatar_url: https://avatars.githubusercontent.com/u/45464718?v=4
+  - name: x1unix
+    teams:
+      - packaging-approvers
+      - packaging-maintainers
+    html_url: https://github.com/x1unix
+    avatar_url: https://avatars.githubusercontent.com/u/9203548?v=4
   - name: xrmx
     teams:
       - opentelemetry-python-contrib-approvers
@@ -1855,12 +1880,6 @@ approvers:
       - docs-triagers
     html_url: https://github.com/didiViking
     avatar_url: https://avatars.githubusercontent.com/u/33810708?v=4
-  - name: douglascamata
-    teams:
-      - collector-contrib-triagers
-      - collector-releases-approvers
-    html_url: https://github.com/douglascamata
-    avatar_url: https://avatars.githubusercontent.com/u/159076?v=4
   - name: dpauls
     teams:
       - semconv-messaging-approvers
@@ -1871,15 +1890,9 @@ approvers:
       - javascript-contrib-triagers
       - opentelemetry-python-contrib-approvers
       - python-approvers
+      - python-genai-approvers
     html_url: https://github.com/DylanRussell
     avatar_url: https://avatars.githubusercontent.com/u/7339604?v=4
-  - name: fatsheep9146
-    teams:
-      - collector-contrib-approvers
-      - collector-contrib-triagers
-      - collector-releases-approvers
-    html_url: https://github.com/fatsheep9146
-    avatar_url: https://avatars.githubusercontent.com/u/11855957?v=4
   - name: ferd
     teams:
       - erlang-approvers
@@ -1944,11 +1957,6 @@ approvers:
       - dotnet-instrumentation-triagers
     html_url: https://github.com/iskiselev
     avatar_url: https://avatars.githubusercontent.com/u/5084964?v=4
-  - name: jackgopack4
-    teams:
-      - collector-releases-approvers
-    html_url: https://github.com/jackgopack4
-    avatar_url: https://avatars.githubusercontent.com/u/6229304?v=4
   - name: JacksonWeber
     teams:
       - javascript-approvers
@@ -2018,6 +2026,7 @@ approvers:
   - name: keith-decker
     teams:
       - opentelemetry-python-contrib-approvers
+      - python-genai-approvers
     html_url: https://github.com/keith-decker
     avatar_url: https://avatars.githubusercontent.com/u/47755047?v=4
   - name: kinyoklion
@@ -2430,6 +2439,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/facostaembrace
     avatar_url: https://avatars.githubusercontent.com/u/108752213?v=4
+  - name: fatsheep9146
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/fatsheep9146
+    avatar_url: https://avatars.githubusercontent.com/u/11855957?v=4
   - name: Frapschen
     teams:
       - collector-contrib-triagers
@@ -2522,6 +2536,11 @@ triagers:
       - collector-contrib-triagers
     html_url: https://github.com/paulojmdias
     avatar_url: https://avatars.githubusercontent.com/u/44772900?v=4
+  - name: pratik-mahalle
+    teams:
+      - docs-triagers
+    html_url: https://github.com/pratik-mahalle
+    avatar_url: https://avatars.githubusercontent.com/u/124587957?v=4
   - name: psx95
     teams:
       - javascript-contrib-triagers

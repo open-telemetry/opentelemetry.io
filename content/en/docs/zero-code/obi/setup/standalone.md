@@ -38,7 +38,7 @@ Set your desired version and architecture:
 ```sh
 # Set your desired version (find latest at
 # https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases)
-VERSION=0.6.0
+VERSION=0.9.0
 
 # Determine your architecture
 # For Intel/AMD 64-bit: amd64
