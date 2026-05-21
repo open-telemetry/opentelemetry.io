@@ -24,9 +24,11 @@
         "instrumentation",
         "log-bridge",
         "processor",
+        "propagator",
         "provider",
         "receiver",
         "resource-detector",
+        "sampler",
         "utilities"
       ]
     },
