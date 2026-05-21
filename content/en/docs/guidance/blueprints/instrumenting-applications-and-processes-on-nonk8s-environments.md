@@ -1,6 +1,6 @@
 ---
-title: Instrumenting Infrastructure and Processes on Non-K8s Environments
-linkTitle: Instrumenting Infrastructure and Processes on Non-K8s Environments
+title: Infrastructure and Processes in Non-K8s Environments
+linkTitle: Infrastructure and Processes in Non-K8s Environments
 date: 2026-04-21
 author: Lukasz Ciukaj (Splunk)
 cSpell:ignore: ciukaj lukasz rollouts
@@ -40,15 +40,15 @@ and standardization provided by orchestrators. Ensuring consistent, high-quality
 observability in these scenarios is critical, yet frequently hampered by
 fragmented tooling and manual processes.
 
-Open Agent Management Protocol (OpAMP) provides a standardized way to remotely
-manage, configure, and monitor OpenTelemetry agents across diverse
-infrastructure where supported. At the time of writing, the OpAMP specification
-is in Beta, so organizations should evaluate implementation maturity and
-operational support before standardizing on a specific solution. Where OpAMP is
-not yet suitable, shared libraries, pre-baked images, centrally maintained
-configuration artifacts, and existing deployment or configuration management
-tooling can still provide consistent lifecycle management for SDK- and
-agent-based instrumentation.
+[Open Agent Management Protocol (OpAMP)](/docs/specs/opamp/) provides a
+standardized way to remotely manage, configure, and monitor OpenTelemetry agents
+across diverse infrastructure where supported. At the time of writing, the OpAMP
+specification is in Beta, so organizations should evaluate implementation
+maturity and operational support before standardizing on a specific solution.
+Where OpAMP is not yet suitable, shared libraries, pre-baked images, centrally
+maintained configuration artifacts, and existing deployment or configuration
+management tooling can still provide consistent lifecycle management for SDK-
+and agent-based instrumentation.
 
 ## Common challenges
 
@@ -62,26 +62,7 @@ environments, however, teams often have fewer built-in platform mechanisms for
 rollout management, service discovery, metadata enrichment, and centralized
 policy distribution.
 
-### 1. Fragmented instrumentation approaches
-
-Without standardized deployment and management patterns, teams often adopt
-different OpenTelemetry agents, SDKs, or exporters for host-based and
-containerized workloads.
-
-This leads to:
-
-- **Inconsistent semantic conventions:** Telemetry signals may lack standard
-  resource attributes such as `service.name`, `host.id`, `host.name`,
-  `container.id`, and `deployment.environment`, making cross-system correlation
-  difficult.
-- **Divergent instrumentation behavior:** Different teams may apply different
-  defaults for sampling, propagation, resource detection, or export, producing
-  uneven telemetry quality.
-- **Manual configuration drift:** Host- and container-based agents frequently
-  require manual configuration, resulting in drift and an increased risk of
-  errors.
-
-### 2. Limited automation for telemetry deployment and management
+### 1. Limited automation for telemetry deployment and management
 
 Instrumentation and agent deployment on VMs, bare metal, and directly run
 containers is often manual or script-based, and ongoing configuration is
@@ -98,12 +79,38 @@ This leads to:
 - **Operational risk:** Rollbacks, version control, and health monitoring are
   harder to perform consistently across the estate.
 
+This automation gap also sets the stage for the fragmentation described in
+Challenge 2: when each host or workload is configured manually, teams tend to
+make independent choices about agents, SDKs, and exporters that are then
+difficult to reconcile.
+
+### 2. Fragmented instrumentation approaches
+
+Building on the lack of automation described in Challenge 1, the absence of
+standardized deployment and management patterns leads teams to adopt different
+OpenTelemetry agents, SDKs, or exporters for host-based and containerized
+workloads.
+
+This leads to:
+
+- **Inconsistent semantic conventions:** Telemetry signals may lack standard
+  resource attributes such as `service.name`, `host.id`, `host.name`,
+  `container.id`, and `deployment.environment`, making cross-system correlation
+  difficult.
+- **Divergent instrumentation behavior:** Different teams may apply different
+  defaults for sampling, propagation, resource detection, or export, producing
+  uneven telemetry quality.
+- **Manual configuration drift:** Host- and container-based agents frequently
+  require manual configuration, resulting in drift and an increased risk of
+  errors.
+
 ### 3. Siloed data processing and export
 
-Data collection and export pipelines are often set up per application, per host,
-or per team. In the absence of centralized management, individual teams may
-independently configure telemetry agents, exporters, and data processing logic
-for each workload or environment.
+The automation gap (Challenge 1) and the resulting fragmentation (Challenge 2)
+compound at the data pipeline layer: data collection and export pipelines are
+often set up per application, per host, or per team. In the absence of
+centralized management, individual teams may independently configure telemetry
+agents, exporters, and data processing logic for each workload or environment.
 
 This leads to:
 
@@ -127,14 +134,17 @@ quality.
 **Challenges addressed:** 1, 2
 
 Use OpAMP, where supported and operationally suitable, to centrally manage
-OpenTelemetry agents running as system services or service containers. Because
-the OpAMP specification is currently in Beta, organizations should evaluate the
-maturity and supportability of the implementations available in their
-environment before standardizing on a specific solution. Where OpAMP is not
-supported or not yet suitable, organizations should use other centralized
+OpenTelemetry agents running as system services or service containers.
+
+Because the OpAMP specification is currently in Beta, organizations should
+evaluate the maturity and supportability of the implementations available in
+their environment before standardizing on a specific solution. Where OpAMP is
+not supported or not yet suitable, organizations should use other centralized
 management mechanisms, such as configuration management tools, golden images, or
 standardized deployment artifacts, to maintain consistent agent deployment,
-configuration, and lifecycle management. Platform teams should own the baseline
+configuration, and lifecycle management.
+
+Regardless of the management mechanism, platform teams should own the baseline
 agent distribution, required processors and exporters, security settings, health
 reporting, and default resource detection behavior.
 
@@ -166,15 +176,17 @@ By implementing this guideline, organizations can expect to achieve:
 
 ### 2. Centralize telemetry collection and processing through an OpenTelemetry Collector gateway layer
 
-**Challenges addressed:** 1, 3
+**Challenges addressed:** 2, 3
 
-Deploy one or more OpenTelemetry Collector gateways as aggregation points for
-telemetry data from hosts and directly managed containers. In this context,
-“centralized” does not necessarily mean a single global deployment. Depending on
-organizational structure, network boundaries, isolation requirements, and
-traffic patterns, the gateway layer may be implemented at different levels, such
-as per region, per site, per environment, or per cloud account, while still
-providing centralized policy enforcement within that scope.
+Deploy one or more
+[OpenTelemetry Collector gateways](/docs/collector/deploy/gateway/) as
+aggregation points for telemetry data from hosts and directly managed
+containers. In this context, “centralized” does not necessarily mean a single
+global deployment. Depending on organizational structure, network boundaries,
+isolation requirements, and traffic patterns, the gateway layer may be
+implemented at different levels, such as per region, per site, per environment,
+or per cloud account, while still providing centralized policy enforcement
+within that scope.
 
 In non-Kubernetes environments, these gateways can be deployed using several
 patterns, depending on scale and operational model, including:
@@ -184,23 +196,35 @@ patterns, depending on scale and operational model, including:
 - Containerized gateway services running on general-purpose compute.
 - Regional or site-local gateways for distributed environments.
 
+The diagram below shows the gateway tier with its alternative deployment
+patterns. Each box represents a separate way to implement the gateway role; an
+organization typically picks one pattern, or combines patterns across sites:
+
 ```mermaid
-flowchart TB
+flowchart TD
     S[Telemetry Sources<br/>Hosts and Containers]
-
-    subgraph G["OpenTelemetry&nbsp;Collector&nbsp;Gateway"]
-        direction LR
-        P1[Dedicated VMs /<br/>Bare Metal Hosts]
-        P2[Service Pool Behind<br/>Load Balancer]
-        P3[Containerized Gateways<br/>on General Compute]
-        P4[Regional / Site-Local<br/>Gateways]
-        P1 ~~~ P2 ~~~ P3 ~~~ P4
-    end
-
     B[(Observability<br/>Backends)]
 
-    S --> G
-    G --> B
+    subgraph G1["Pattern&nbsp;1"]
+        P1[Dedicated VMs /<br/>Bare Metal Hosts]
+    end
+
+    subgraph G2["Pattern&nbsp;2"]
+        P2[Service Pool Behind<br/>Load Balancer]
+    end
+
+    subgraph G3["Pattern&nbsp;3"]
+        P3[Containerized Gateways<br/>on General Compute]
+    end
+
+    subgraph G4["Pattern&nbsp;4"]
+        P4[Regional / Site-Local<br/>Gateways]
+    end
+
+    S --> G1 --> B
+    S --> G2 --> B
+    S --> G3 --> B
+    S --> G4 --> B
 ```
 
 By implementing this guideline, organizations can expect to achieve:
@@ -215,7 +239,7 @@ By implementing this guideline, organizations can expect to achieve:
 
 ### 3. Standardize resource attribution and distribute reusable instrumentation building blocks
 
-**Challenges addressed:** 1
+**Challenges addressed:** 2
 
 Define an organization-wide telemetry standard for resource attribution and
 ensure it is applied consistently across all workloads. This should not rely
@@ -230,20 +254,20 @@ such as:
 - Centrally maintained configuration snippets or templates.
 
 The recommended resource model for non-Kubernetes environments should align with
-OpenTelemetry resource semantic conventions and rely on automatic resource
-detection wherever possible. In OpenTelemetry, a resource identifies the entity
-that produced the telemetry, such as a host, VM, process, container, or service
-instance. In practice, organizations should ensure that telemetry can be
-correlated across the following resource domains, using automatically detected
-attributes where supported:
+[OpenTelemetry resource semantic conventions](/docs/specs/semconv/resource/) and
+rely on automatic resource detection wherever possible. In OpenTelemetry, a
+resource identifies the entity that produced the telemetry, such as a host, VM,
+process, container, or service instance. In practice, organizations should
+ensure that telemetry can be correlated across the following resource domains,
+using automatically detected attributes where supported:
 
-- **Host**
-- **Device** (where applicable)
-- **Process**
-- **Process runtime**
-- **Operating system**
-- **Container** (where applicable)
-- **Service identity**
+- **[Host](/docs/specs/semconv/resource/host/)**
+- **[Device](/docs/specs/semconv/resource/device/)** (where applicable)
+- **[Process](/docs/specs/semconv/resource/process/)**
+- **[Process runtime](/docs/specs/semconv/resource/process/#process-runtimes)**
+- **[Operating system](/docs/specs/semconv/resource/os/)**
+- **[Container](/docs/specs/semconv/resource/container/)** (where applicable)
+- **[Service identity](/docs/specs/semconv/resource/#service)**
 
 Rather than manually maintaining all of the corresponding attributes,
 organizations should prefer existing instrumentation and resource detection for
