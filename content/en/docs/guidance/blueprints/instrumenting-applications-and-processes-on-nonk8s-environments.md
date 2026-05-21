@@ -64,7 +64,7 @@ policy distribution.
 
 ### 1. Limited automation for telemetry deployment and management
 
-Instrumentation and agent deployment on VMs, bare metal, and directly run
+Instrumentation and agent deployment on VMs, bare metal, and directly managed
 containers is often manual or script-based, and ongoing configuration is
 difficult to manage at scale. This decentralized, ad hoc approach typically
 requires operators or developers to install, configure, and update OpenTelemetry
@@ -425,10 +425,11 @@ Documentation:
 
 Use configuration management and image packaging to deliver supported telemetry
 components consistently across hosts and containerized workloads. Prefer
-declarative configuration for SDK-based instrumentation where it is supported.
-Where it is not available, standardize environment variables, startup options,
-or SDK-specific configuration patterns so teams inherit consistent defaults with
-minimal manual setup.
+[declarative configuration](/docs/specs/otel/configuration/#declarative-configuration)
+for SDK-based instrumentation where it is supported. Where it is not available,
+standardize environment variables, startup options, or
+[SDK-specific configuration](/docs/languages/sdk-configuration/) patterns so
+teams inherit consistent defaults with minimal manual setup.
 
 Common packaging patterns include standard system-service packages for
 host-based agents, pre-baked container images for Collector or agent
@@ -440,8 +441,8 @@ startup wrappers. For example:
 - A containerized deployment can use a pre-baked image that includes the
   approved Collector binary, extensions, and default configuration.
 - SDK-based instrumentation can be distributed through shared startup wrappers,
-  language agents, or starter packages that apply organization-approved defaults
-  automatically.
+  [language agents](/docs/zero-code/), or starter packages that apply
+  organization-approved defaults automatically.
 
 Checklist:
 
