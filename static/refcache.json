@@ -23355,6 +23355,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-05-12T10:28:33.564779091Z"
   },
+  "https://www.cncf.io/announcements/2026/05/21/cloud-native-computing-foundation-announces-opentelemetrys-graduation-solidifying-status-as-the-de-facto-observability-standard/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-21T14:19:39.401126731Z"
+  },
   "https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/": {
     "StatusCode": 200,
     "LastSeen": "2026-04-30T10:21:13.451855267Z"
