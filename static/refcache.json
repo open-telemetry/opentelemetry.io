@@ -15311,6 +15311,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-21T09:36:48.744033436Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.57.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-21T11:36:06.458805081Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.57.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-21T11:35:48.88474736Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.57.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-21T11:35:46.217794764Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
     "LastSeen": "2026-05-12T10:27:31.244916755Z"
@@ -20447,6 +20459,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-05-25T11:01:59.613085163Z"
   },
+  "https://nodejs.org/api/perf_hooks.html#perf_hooksmonitoreventloopdelayoptions": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-21T11:36:00.306084448Z"
+  },
   "https://nodejs.org/api/perf_hooks.html#performanceeventlooputilizationutilization1-utilization2": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:56:31.084763927Z"
@@ -22934,6 +22950,10 @@
   "https://publicsuffix.org/": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:56:52.021047398Z"
+  },
+  "https://pubs.opengroup.org/onlinepubs/9699919799/functions/fcntl.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-05-21T11:36:02.080000528Z"
   },
   "https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/V1_chap08.html": {
     "StatusCode": 206,
