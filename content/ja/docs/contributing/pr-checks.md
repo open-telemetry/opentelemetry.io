@@ -1,6 +1,6 @@
 ---
 title: プルリクエストのチェックとテスト
-linkTitle: プルリクエストのチェックとテスト
+linkTitle: PR チェック & テスト
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
 default_lang_commit: bb20a7fb593782fea0e05e988d1478831726f9f5
@@ -89,7 +89,7 @@ PR のチェックは次のことを検証します。
 #### 古いファイルやフォルダ
 
 以下のパスは古いものとしてフラグが付き、`fix:filenames` によって削除されます。
-イシューまたはプルリクエスト番号が存在する場合、そのパスが古くなった変更の経緯を示しています。
+イシューまたは PR 番号が存在する場合、そのパスが古くなった変更の経緯を示しています。
 
 - `tools/` - [Migrate code-excerpts tooling to npm package version #9638][#9638]
 
