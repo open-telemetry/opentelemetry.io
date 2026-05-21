@@ -280,16 +280,16 @@
     "LastSeen": "2026-05-19T10:55:26.075Z"
   },
   "https://blog.olly.garden/how-to-name-your-metrics": {
-    "StatusCode": 429,
-    "LastSeen": "2026-05-20T10:42:06.384212896Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-21T09:54:13.647954000Z"
   },
   "https://blog.olly.garden/how-to-name-your-span-attributes": {
-    "StatusCode": 429,
-    "LastSeen": "2026-05-20T10:42:06.323697191Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-21T09:54:13.647954000Z"
   },
   "https://blog.olly.garden/how-to-name-your-spans": {
-    "StatusCode": 429,
-    "LastSeen": "2026-05-20T10:42:07.75009723Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-21T09:54:13.647954000Z"
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
     "StatusCode": 200,
