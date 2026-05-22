@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry が CNCF の Graduated プロジェクトに
-linkTitle: OpenTelemetry が CNCF Graduated プロジェクトに到達 
+linkTitle: OpenTelemetry が CNCF Graduated プロジェクトに到達
 date: 2026-05-21
 author: >-
   [The OpenTelemetry Community](https://github.com/open-telemetry)
