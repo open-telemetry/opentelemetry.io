@@ -1,4 +1,4 @@
-# cSpell:ignore Ingero eBPF libnccl NCCL OTLP
+# cSpell:ignore Ingero eBPF libnccl NCCL OTLP cuda nccl nvidia gpu
 title: Ingero Fleet
 registryType: application integration
 language: collector
