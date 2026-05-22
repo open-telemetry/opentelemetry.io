@@ -41,6 +41,14 @@
     }
   }
 
+  // When 2+ banners are stacked, the fixed overlay grows beyond what the hero's
+  // default padding-top covers. Compensate with :has() so the hero content stays visible.
+  @include media-breakpoint-up(md) {
+    &:has(.o-banner > div:nth-child(2)) main > section:first-of-type {
+      padding-top: calc(#{$td-navbar-min-height} + #{$td-block-space-top-base} + 5rem);
+    }
+  }
+
   // =============================================================================
   // HERO SEARCH - Search bar section below compact hero
   // =============================================================================
