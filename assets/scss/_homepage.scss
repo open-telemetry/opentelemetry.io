@@ -41,6 +41,15 @@
     }
   }
 
+  // When 2+ banners are stacked, the fixed overlay grows beyond what the hero's
+  // default padding-top covers. .td-below-navbar sets padding-top with !important,
+  // so we must do the same to override it.
+  @include media-breakpoint-up(md) {
+    &:has(.o-banner > div:nth-child(2)) .td-cover-block.td-below-navbar {
+      padding-top: calc(#{$td-block-space-top-base} + 3rem) !important;
+    }
+  }
+
   // =============================================================================
   // HERO SEARCH - Search bar section below compact hero
   // =============================================================================
