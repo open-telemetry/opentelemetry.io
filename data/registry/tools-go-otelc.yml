@@ -1,5 +1,6 @@
+# cSpell:ignore otelc
 title: otelc
-registryType: utilities
+registryType: tools
 language: go
 tags:
   - go
@@ -10,9 +11,10 @@ urls:
   repo: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation
 license: Apache 2.0
 description: >
-  otelc is a compile-time auto-instrumentation tool for Go applications.
-  It injects OpenTelemetry instrumentation during the Go build process without
+  otelc is a compile-time auto-instrumentation tool for Go applications. It
+  injects OpenTelemetry instrumentation during the Go build process without
   requiring manual source-code changes in the target application.
 authors:
   - name: OpenTelemetry Authors
+    url: https://github.com/open-telemetry
 createdAt: 2026-05-14

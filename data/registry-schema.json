@@ -29,6 +29,7 @@
         "receiver",
         "resource-detector",
         "sampler",
+        "tools",
         "utilities"
       ]
     },
