@@ -4,19 +4,17 @@ linkTitle: 開発環境セットアップなど
 description: この Web サイトの開発環境をセットアップする方法を学びます。
 what-next: >
   これで、[ビルド](#build)、[サーブ](#serve)、Web サイトファイルの更新を行う準備が整いました。
-  変更の提出方法の詳細については、[コンテンツの提出][Submitting content]を参照してください。
+  変更の提出方法の詳細については、[コンテンツの提出](../pull-requests)を参照してください。
 weight: 60
-default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9 # patched
-drifted_from_default: true
+default_lang_commit: 4f9b6de11b3a5062c94790b1ca2d7b0fb05114a5
+cSpell:ignore: TOCSS
 ---
 
-{{% alert title="サポートされているビルド環境" color=warning %}}
-
-ビルドは Linux ベースの環境と macOS で公式にサポートされています。
-[DevContainers](#devcontainers) などの他の環境は、ベストエフォートベースでサポートされています。
-Windows でのビルドについては、Windows Subsystem for Linux コマンドライン [WSL][windows-wsl] を使用して Linux と同様の手順に従うことができます。
-
-{{% /alert %}}
+> [!WARNING]
+>
+> ビルドは Linux ベースの環境と macOS で公式にサポートされています。
+> [DevContainers](#devcontainers) などの他の環境は、ベストエフォートベースでサポートされています。
+> Windows でのビルドについては、Windows Subsystem for Linux コマンドライン [WSL][] を使用して Linux と同様の手順に従うことができます。
 
 以下の手順では、この Web サイトの開発環境をセットアップする方法を説明します。
 
@@ -89,6 +87,27 @@ npm run build
 
 生成されたサイトのファイルは `public` ディレクトリ内にあります。
 
+> [!IMPORTANT]
+>
+> 以下のような `build` または `serve` コマンドの**エラー**が発生する場合、
+>
+> ```log
+> ERROR error building site: ...[long message]... TOCSS: failed to transform "/scss/main.scss" (text/x-scss)
+> ```
+>
+> または
+>
+> ```log
+> ERROR failed to load modules: module "github.com/FortAwesome/Font-Awesome" not found
+> ```
+>
+> 通常、これは[ローカルセットアップ](#local-setup)の手順を完了していないことが原因です。
+> 特に、次のコマンドを実行してください。
+>
+> ```sh
+> npm install
+> ```
+
 ### サーブ {#serve}
 
 サイトをサーブするには、次のコマンドを実行します。
@@ -115,9 +134,10 @@ macOS で `too many open files` や `pipe failed` というエラーが発生す
 Web サイトは以下のコンテンツを基に構築されます。
 
 - `content/`、`static/` などの [Hugo][] のデフォルトディレクトリ
-- [hugo.yaml][] の `mounts` で定義されたマウントポイント。マウントは [content-modules][] の Git サブモジュールから直接取得される場合や、`content-modules` から前処理されたコンテンツ（`tmp/` に配置）の場合があり、それ以外の場所からは取得されません。
+- `config/_default/module-template.yaml` の Hugo [config][] で定義されたマウントポイント。
+  マウントは [content-modules][] の Git サブモジュールから直接取得される場合や、`content-modules` から前処理されたコンテンツ（`tmp/` に配置）の場合があり、それ以外の場所からは取得されません。
 
-[hugo.yaml]: https://github.com/open-telemetry/opentelemetry.io/blob/bc94737/hugo.yaml
+[config]: https://github.com/open-telemetry/opentelemetry.io/tree/main/config
 [content-modules]: https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
 ### サブモジュールの変更 {#submodule-changes}
@@ -143,6 +163,51 @@ Web サイトは以下のコンテンツを基に構築されます。
 - [Gitpod](https://ona.com/docs/ona/configuration/devcontainer/overview)
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
+## ツール {#tools}
+
+### Code-excerpter {#code-excerpter}
+
+このリポジトリ内のソースファイルと同期を保つ必要があるコードスニペットには、[code-excerpter][] を使用してください。
+各ロケールのサイトページはコードの抜粋を含みますが、それらを利用する原文は `content/en` 配下で英語で作成され、ローカリゼーションチームが各ロケール向けに更新します。
+
+英語のソースページでは、更新対象となるフェンス付きコードブロックの直前に、ファイル抜粋ディレクティブを記載してください。
+
+````md
+<?code-excerpt path-base="examples/java/getting-started"?>
+
+<?code-excerpt "src/main/java/otel/DiceApplication.java"from="@SpringBootApplication"?>
+
+```java
+@SpringBootApplication
+public class DiceApplication {
+  public static void main(String[] args) {
+    SpringApplication app = new SpringApplication(DiceApplication.class);
+    app.setBannerMode(Banner.Mode.OFF);
+    app.run(args);
+  }
+}
+```
+````
+
+複数の抜粋が同じディレクトリから取得される場合は、任意の `path-base` ディレクティブをページ上部付近に 1 度だけ記載してください。
+`code-excerpter` ディレクティブ構文の詳細については、[code-excerpter][] の README を参照してください。
+
+ソースファイルまたはディレクティブを編集し、**フェンス付きコードを編集しないでください**。
+その後、次の [npm スクリプト](/site/build/npm-scripts/) を実行してください。
+
+```sh
+npm run fix:code-excerpts
+```
+
+code-excerpts が最新かどうかを確認するには、次のコマンドを実行してください。
+
+```sh
+npm run check:code-excerpts
+```
+
+[code-excerpter]: https://github.com/chalin/code-excerpter
+
+<!-- prettier-ignore-start -->
 [clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
 [cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
@@ -156,10 +221,7 @@ Web サイトは以下のコンテンツを基に構築されます。
 [netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
 [nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
-[nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
-[windows-wsl]: https://learn.microsoft.com/en-us/windows/wsl/install
-
-<!-- markdownlint-disable link-image-reference-definitions -->
-
-[Submitting content]: ../pull-requests/
+[nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+[WSL]: https://learn.microsoft.com/en-us/windows/wsl/install
+<!-- prettier-ignore-end -->
