@@ -20,6 +20,7 @@ authors:
     url: https://github.com/ingero-io
 urls:
   repo: https://github.com/ingero-io/ingero-fleet
+  docs: https://github.com/ingero-io/ingero-fleet/tree/main/docs
   website: https://ingero.io/
 createdAt: '2026-05-22'
 isNative: false
