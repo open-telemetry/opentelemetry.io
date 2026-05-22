@@ -1,0 +1,25 @@
+# cSpell:ignore Ingero eBPF libnccl NCCL OTLP
+title: Ingero Fleet
+registryType: application integration
+language: collector
+tags:
+  - collector
+  - gpu
+  - nvidia
+  - cuda
+  - nccl
+  - ebpf
+license: Apache 2.0
+description:
+  A GPU-cluster OpenTelemetry Collector distribution. Receives OTLP from
+  Ingero eBPF agents and runs GPU-specific stream processing (MAD-based
+  straggler-threshold detection, per-rank NCCL collective skew, and
+  provider cost attribution), then forwards to any OTLP backend.
+authors:
+  - name: Ingero
+    url: https://github.com/ingero-io
+urls:
+  repo: https://github.com/ingero-io/ingero-fleet
+  website: https://ingero.io/
+createdAt: 2026-05-22
+isNative: false
