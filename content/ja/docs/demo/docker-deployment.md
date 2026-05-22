@@ -2,7 +2,7 @@
 title: Docker デプロイ
 linkTitle: Docker
 aliases: [docker_deployment]
-default_lang_commit: b51a1db58883aa963c461d34356aa86ac18d94b7
+default_lang_commit: c1e141558ab36cc1ab9f864728e4665e272ac131
 cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 ---
 
@@ -39,38 +39,38 @@ cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 make start
 ```
 
-    {{% /tab %}} {{% tab Docker %}}
+   {{% /tab %}} {{% tab Docker %}}
 
 ```shell
 docker compose up --force-recreate --remove-orphans --detach
 ```
 
-    {{% /tab %}} {{< /tabpane >}}
+   {{% /tab %}} {{< /tabpane >}}
 
-### 最小モードで実行する {#run-in-minimal-mode}
+   ### 最小モードで実行する {#run-in-minimal-mode}
 
-リソースが限られている場合は、Kafka とそれに依存するサービスなしでデモを開始でき、メモリ使用量を約 3 GB の RAM に削減できます。
+   リソースが限られている場合は、Kafka とそれに依存するサービスなしでデモを開始でき、メモリ使用量を約 3 GB の RAM に削減できます。
 
-    {{< tabpane text=true >}} {{% tab Make %}}
+   {{< tabpane text=true >}} {{% tab Make %}}
 
 ```shell
 make start-minimal
 ```
 
-    {{% /tab %}} {{% tab Docker %}}
+   {{% /tab %}} {{% tab Docker %}}
 
 ```shell
 docker compose -f docker-compose.minimal.yml up --force-recreate --remove-orphans --detach
 ```
 
-    {{% /tab %}} {{< /tabpane >}}
+   {{% /tab %}} {{< /tabpane >}}
 
-以下のサービスは最小モードには**含まれていません**。
+   以下のサービスは最小モードには**含まれていません**。
 
-- `accounting`
-- `fraud-detection`
-- `flagd-ui`
-- `kafka`
+   - `accounting`
+   - `fraud-detection`
+   - `flagd-ui`
+   - `kafka`
 
 4. (オプション) API オブザーバビリティ駆動テストの有効化[^1]します。
 
