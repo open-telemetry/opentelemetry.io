@@ -281,15 +281,15 @@
   },
   "https://blog.olly.garden/how-to-name-your-metrics": {
     "StatusCode": 429,
-    "LastSeen": "2026-05-21T10:54:52.920548567Z"
+    "LastSeen": "2026-05-22T10:41:56.286634517Z"
   },
   "https://blog.olly.garden/how-to-name-your-span-attributes": {
     "StatusCode": 429,
-    "LastSeen": "2026-05-21T10:54:52.971005282Z"
+    "LastSeen": "2026-05-22T10:41:57.064526748Z"
   },
   "https://blog.olly.garden/how-to-name-your-spans": {
     "StatusCode": 429,
-    "LastSeen": "2026-05-21T10:54:53.563444244Z"
+    "LastSeen": "2026-05-22T10:41:59.443702293Z"
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
     "StatusCode": 200,
@@ -2128,8 +2128,8 @@
     "LastSeen": "2026-05-02T09:58:17.145406976Z"
   },
   "https://docs.itrsgroup.com/docs/geneos/data-collection/opentelemetry/current/opentelemetry.html": {
-    "StatusCode": -40,
-    "LastSeen": "2026-05-21T10:55:00.928321424Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-22T10:45:18.41Z"
   },
   "https://docs.joinmastodon.org/admin/config/#otel": {
     "StatusCode": 206,
@@ -2708,8 +2708,8 @@
     "LastSeen": "2026-05-01T10:08:18.291810563Z"
   },
   "https://docs.splunk.com/Documentation/Splunk/latest/Updating/Aboutdeploymentserver": {
-    "StatusCode": 403,
-    "LastSeen": "2026-05-21T10:49:32.824179719Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-22T10:45:22.923Z"
   },
   "https://docs.splunk.com/Observability/gdi/opentelemetry/opentelemetry.html": {
     "StatusCode": 200,
@@ -3274,30 +3274,6 @@
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-open-source-summit-ai-dev-china/": {
     "StatusCode": 206,
     "LastSeen": "2026-05-12T10:31:36.598215766Z"
-  },
-  "https://events.linuxfoundation.org/observability-summit-north-america/?utm_source=opentelemetry&utm_medium=website&utm_content=community-events": {
-    "StatusCode": 200,
-    "LastSeen": "2026-05-01T10:11:17.207715864Z"
-  },
-  "https://events.linuxfoundation.org/observability-summit-north-america/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-01T10:07:49.924737902Z"
-  },
-  "https://events.linuxfoundation.org/observability-summit-north-america/program/schedule/?utm_source=opentelemetry&utm_medium=website&utm_content=community-events": {
-    "StatusCode": 200,
-    "LastSeen": "2026-05-01T10:11:25.505670058Z"
-  },
-  "https://events.linuxfoundation.org/observability-summit-north-america/program/schedule/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-01T10:07:54.858004879Z"
-  },
-  "https://events.linuxfoundation.org/observability-summit-north-america/register/?utm_source=opentelemetry&utm_medium=website&utm_content=community-events": {
-    "StatusCode": 200,
-    "LastSeen": "2026-05-01T10:11:20.889115878Z"
-  },
-  "https://events.linuxfoundation.org/observability-summit-north-america/register/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-01T10:07:51.326243837Z"
   },
   "https://events.linuxfoundation.org/open-observability-summit-otel-community-day/": {
     "StatusCode": 200,
@@ -24268,8 +24244,8 @@
     "LastSeen": "2026-05-12T10:31:41.975938634Z"
   },
   "https://www.linkedin.com/in/iris-dyrmishi-b15a9a164/": {
-    "StatusCode": 404,
-    "LastSeen": "2026-05-21T10:54:57.105977257Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-05-22T10:45:26.334Z"
   },
   "https://www.linkedin.com/in/reese-lee/": {
     "StatusCode": 200,
