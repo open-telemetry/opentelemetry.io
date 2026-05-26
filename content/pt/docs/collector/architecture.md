@@ -1,8 +1,8 @@
 ---
 title: Arquitetura
 weight: 28
-default_lang_commit: 4edfbfc2f
 cSpell:ignore: fanoutconsumer probabilisticsampler zpages
+default_lang_commit: 2871fe3c7fdc376e55ce84f601a54264226531bb
 ---
 
 O OpenTelemetry Collector é um arquivo executável que pode receber telemetria,
