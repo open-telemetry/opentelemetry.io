@@ -4,8 +4,8 @@ linkTitle: Python
 weight: 30
 cascade:
   collector_vers: 0.152.0
-cSpell:ignore: distro
 default_lang_commit: 4ed6dc80de862696701831ebc0ad3defbea70e31
+cSpell:ignore: distro
 ---
 
 Pythonによる自動計装は、任意のPythonアプリケーションにアタッチ可能なPythonエージェントを使用します。
