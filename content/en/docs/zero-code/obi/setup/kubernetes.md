@@ -447,10 +447,8 @@ the standalone or Docker setups.
 To use the cache, deploy it and point OBI at its `Service` address with the
 `OTEL_EBPF_KUBE_META_CACHE_ADDRESS` environment variable (or
 `attributes.kubernetes.meta_cache_address` in YAML). The easiest way is to use
-the
-[OBI Helm chart](/docs/zero-code/obi/setup/kubernetes-helm/#centralizing-kubernetes-metadata-with-k8s-cache),
-which sets up the `Deployment`, `Service`, and OBI wiring for you when you set
-`k8sCache.replicas` to a non-zero value.
+the OBI Helm chart, which sets up the `Deployment`, `Service`, and OBI wiring
+for you when you set `k8sCache.replicas` to a non-zero value.
 
 If you prefer to deploy it manually, the cache is published as the
 `ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache`

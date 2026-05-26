@@ -125,9 +125,7 @@ from each OBI pod can overload the API server and affect the whole cluster.
 To avoid that, the OBI Helm chart can deploy a small companion service called
 `k8s-cache`. The cache watches the Kubernetes API once on behalf of all OBI Pods
 and streams metadata to them over gRPC, which removes OBI's per-Pod informer
-traffic to the API server and substantially reduces API load. For more
-background on what `k8s-cache` is and when to use it, see the
-[Kubernetes setup guide](/docs/zero-code/obi/setup/kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache).
+traffic to the API server and substantially reduces API load.
 
 To enable it, set `k8sCache.replicas` to a non-zero value in your
 `helm-obi.yml`:

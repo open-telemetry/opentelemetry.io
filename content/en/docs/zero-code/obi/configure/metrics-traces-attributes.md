@@ -426,9 +426,6 @@ over gRPC instead of running its own informers against the Kubernetes API
 server. This is recommended on large clusters and DaemonSet deployments to avoid
 overloading the Kubernetes API.
 
-For background and deployment instructions, see
-[Centralizing Kubernetes metadata with k8s-cache](/docs/zero-code/obi/setup/kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache).
-
 ### Service name template
 
 You can template service names using Go templates. This lets you create
