@@ -1,10 +1,9 @@
 ---
 title: OpenTelemetryコレクターチャート
 linkTitle: コレクターチャート
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
-drifted_from_default: true
+default_lang_commit: f7dab5cfc4d44a8c788b7e02d07ec1e1d84e3845
 # prettier-ignore
-cSpell:ignore: debugexporter filelog filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
+cSpell:ignore: filelog filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlp_http sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
 ---
 
 ## はじめに {#introduction}
@@ -173,13 +172,13 @@ presets:
     enabled: true
 ```
 
-チャートのデフォルトのログパイプラインは `debugexporter` を使用します。
+チャートのデフォルトのログパイプラインは `debug` エクスポーターを使用します。
 `logsCollection` プリセットの `filelogreceiver` と組み合わせると、エクスポートしたログを誤ってコレクターに戻してしまい、「ログの爆発」を引き起こす可能性があります。
 
 ループを防止するために、レシーバーのデフォルト設定ではコレクター自身のログを除外しています。
 コレクターのログを含めたい場合は、 `debug` エクスポーターをコレクターの標準出力にログを送信しないエクスポーターに置き換えてください。
 
-以下は `values.yaml` の例で、`logs` パイプラインのデフォルトの `debug` エクスポーターを、コンテナのログを `https://example.com:55681` エンドポイントに送信する `otlphttp` エクスポーターに置き換えたものです。
+以下は `values.yaml` の例で、`logs` パイプラインのデフォルトの `debug` エクスポーターを、コンテナのログを `https://example.com:55681` エンドポイントに送信する `otlp_http` エクスポーターに置き換えたものです。
 また、`presets.logsCollection.includeCollectorLogs` を使用して、コレクターのログの収集を有効にするようにプリセットに指示します。
 
 ```yaml
@@ -198,7 +197,7 @@ config:
     pipelines:
       logs:
         exporters:
-          - otlphttp
+          - otlp_http
 ```
 
 #### Kubernetes属性プリセット {#kubernetes-attributes-preset}
