@@ -6,8 +6,7 @@ author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger)(Grafana Labs), [Jay
   DeLuca](https://github.com/jaydeluca) (Grafana Labs), [Marylia
   Gutierrez](https://github.com/maryliag) (Grafana Labs)
-default_lang_commit: 2e0c4fbe87eeefebb416874d28b8d332ab91b4a6 # patched
-drifted_from_default: true
+default_lang_commit: f7dab5cfc4d44a8c788b7e02d07ec1e1d84e3845
 cSpell:ignore: Dotel marylia otelconf zeitlinger
 ---
 
@@ -41,6 +40,11 @@ resource:
   detection/development:
     detectors:
       - service: # OTEL_SERVICE_NAMEから"service.instance.id"と"service.name"を追加します
+
+propagator:
+  composite:
+    - tracecontext:
+    - baggage:
 
 tracer_provider:
   processors:
@@ -220,22 +224,22 @@ CNCF Slackの[`#otel-config-file`][slack-config]チャンネルを使用して�
 
 [drop-spans-issue]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/1060
 [java-project]: https://github.com/orgs/open-telemetry/projects/151
-[migration-file]: https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-migration-config.yaml
-[full-file]: https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md
-[java-sampler]: https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/samplers
+[migration-file]: https://github.com/open-telemetry/opentelemetry-configuration/blob/db08177916083273421c1fd10247b63badd6a87a/examples/otel-sdk-migration-config.yaml?from_branch=main
+[full-file]: https://github.com/open-telemetry/opentelemetry-configuration/blob/28784d4ea2054f95affe3912189ccd51ee6aea3a/schema-docs.md?from_branch=main
+[java-sampler]: https://github.com/open-telemetry/opentelemetry-java-contrib/tree/b7a327218c8cf0928c8cb2198e5fa764d530afda/samplers?from_branch=main
 [complete-config]: https://gist.github.com/zeitlinger/09585b1ab57c454f87e6dcb9a6f50a5c
 [declarative-docs]: /docs/languages/sdk-configuration/declarative-configuration
-[compliance-matrix]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#declarative-configuration
+[compliance-matrix]: https://github.com/open-telemetry/opentelemetry-specification/blob/af2606810c19c31850738d1fd105b4eca7aa8c98/spec-compliance-matrix.md?from_branch=main#declarative-configuration
 [java-declarative-config]: /docs/zero-code/java/agent/declarative-configuration/
 [slack-java]: https://cloud-native.slack.com/archives/C014L2KCTE3
 [slack-js]: https://cloud-native.slack.com/archives/C01NL1GRPQR
 [slack-php]: https://cloud-native.slack.com/archives/C01NFPCV44V
 [slack-go]: https://cloud-native.slack.com/archives/C01NPAXACKT
 [slack-config]: https://cloud-native.slack.com/archives/C0476L7UJT1
-[java-bridge]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/declarative-config-bridge
-[js-package]: https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/configuration
-[php-docs]: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Config/SDK#initialization-from-configuration-file
-[go-package]: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/otelconf
+[java-bridge]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/3c573ea4492a5f25e0f482eb523f829d318d0027/declarative-config-bridge?from_branch=main
+[js-package]: https://github.com/open-telemetry/opentelemetry-js/tree/ad92be4c2c1094745a85b0b7eeff1444a11b1b4a/experimental/packages/configuration?from_branch=main
+[php-docs]: https://github.com/open-telemetry/opentelemetry-php/tree/08f0dc1afb23f7ff634cda54de4af8e779e11fe1/src/Config/SDK?from_branch=main#initialization-from-configuration-file
+[go-package]: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/848eb220bc83bb81d77383bbf39ebd86b5034407/otelconf?from_branch=main
 [go-package-index]: https://pkg.go.dev/go.opentelemetry.io/contrib/otelconf
 [sigs]: https://github.com/open-telemetry/community?tab=readme-ov-file#implementation-sigs
 [yt-config]: https://www.youtube.com/watch?v=u6svjtGpXO4
