@@ -2,7 +2,7 @@
 title: ゼロコード計装
 redirects: [{ from: 'net/*', to: 'dotnet/:splat' }]
 weight: 265
-default_lang_commit: d1ef521ee4a777881fb99c3ec2b506e068cdec4c # patched
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
 ---
 
 OpenTelemetryの[ゼロコード計装][zero-code instrumentation]は、以下のセクションインデックスに記載されている言語でサポートされています。
