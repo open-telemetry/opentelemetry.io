@@ -55,7 +55,7 @@ OpenTelemetry は API、SDK、ツールのコレクションです。
 
 {{% blocks/feature icon="fas fa-magic" title="ドロップイン計装&統合" %}}
 
-OpenTelemetry は多くの人気のライブラリーとフレームワークに[インテグレート][instrumentation]されています。
+OpenTelemetry は多くの人気のライブラリとフレームワークに[インテグレート][instrumentation]されています。
 そして、手動およびゼロコードの[計装][integrates]をサポートしています。
 
 [instrumentation]: /docs/concepts/instrumentation/
