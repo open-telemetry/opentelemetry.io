@@ -2,8 +2,10 @@
 title: Pythonゼロコード・計装
 linkTitle: Python
 weight: 30
-default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
+default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0 # patched
 drifted_from_default: true
+cascade:
+  collector_vers: 0.152.0
 ---
 
 Pythonによる自動計装は、任意のPythonアプリケーションにアタッチ可能なPythonエージェントを使用します。
