@@ -5,8 +5,8 @@ date: 2026-05-19
 author: >-
   [Lukasz Ciukaj (Cisco Splunk)](https://github.com/luke6Lh43)
 sig: SIG Security
-cSpell:ignore: Ciukaj Lukasz
 default_lang_commit: 813498074d85258c7180d137ace9e272d0149353
+cSpell:ignore: Ciukaj Lukasz
 ---
 
 製造業をはじめとするレガシー環境において、組織がモダンなオブザーバビリティのアプローチを模索する中で、OpenTelemetry は注目を集めつつあります。
