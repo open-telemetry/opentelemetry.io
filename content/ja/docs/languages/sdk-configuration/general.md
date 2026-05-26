@@ -86,7 +86,7 @@ export OTEL_TRACES_SAMPLER_ARG="0.5"
 - `jaeger_remote` と `parentbased_jaeger_remote` の場合: 値はカンマ区切りのリストです。
   - 例:
     `"endpoint=http://localhost:14250,pollingIntervalMs=5000,initialSamplingRate=0.25"`
-  - `endpoint`: サービスのサンプリング戦略を提供する gRPC サーバの `scheme://host:port` 形式のエンドポイント ([sampling.proto](https://github.com/jaegertracing/jaeger-idl/blob/main/proto/api_v2/sampling.proto)).
+  - `endpoint`: サービスのサンプリング戦略を提供する gRPC サーバーの `scheme://host:port` 形式のエンドポイント ([sampling.proto](https://github.com/jaegertracing/jaeger-idl/blob/main/proto/api_v2/sampling.proto)).
   - `pollingIntervalMs`: サンプラーがサンプリング戦略の更新のためにバックエンドをポーリングする頻度をミリ秒単位で指定します。
   - `initialSamplingRate`: [0..1]の範囲で、サンプリング戦略を取得するためにバックエンドに到達できない場合のサンプリング確率として使用されます。サンプリング戦略の取得に成功すると、この値は意味を持たなくなり、新しいアップデートが取得されるまでリモート戦略が使用されるようになります。
 
