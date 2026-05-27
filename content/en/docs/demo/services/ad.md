@@ -124,9 +124,8 @@ HTTPServer prometheusServer =
     HTTPServer.builder().port(prometheusPort).buildAndStart();
 ```
 
-> [!NOTE]
-> This is intentionally included to illustrate a **common pattern during OTel
-> adoption**: organizations frequently already own significant Prometheus
+> [!NOTE] This is intentionally included to illustrate a **common pattern during
+> OTel adoption**: organizations frequently already own significant Prometheus
 > instrumentation -- in libraries, third-party exporters, or legacy services --
 > and want to ingest those metrics into an OpenTelemetry-native pipeline without
 > rewriting everything up front. The Collector's `prometheus` receiver is the
@@ -145,8 +144,7 @@ receivers:
             - targets: ['ad:${env:AD_PROMETHEUS_PORT}']
 ```
 
-> [!TIP]
-> **Recommendation**: this is a _transitional_ pattern. Prefer the
+> [!TIP] **Recommendation**: this is a _transitional_ pattern. Prefer the
 > OpenTelemetry SDK for new custom metrics, and migrate existing
 > Prometheus-client metrics to it -- incremental migration as you touch the
 > surrounding code has proven successful in practice, but a focused refactor
