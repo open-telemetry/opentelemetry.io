@@ -198,7 +198,7 @@ Aquí están los hallazgos clave:
 - El 78% de los encuestados encuentran las brechas de documentación un desafío
   en su uso de atributos de recurso.
 
-![Un gráfico de barras mostrando desafíos con los atributos de recurso de OpenTelemetry en Prometheus](../../../en/blog/2025/ux-research-prometheus-otel/Chart.PNG)
+![Un gráfico de barras mostrando desafíos con los atributos de recurso de OpenTelemetry en Prometheus](Chart.PNG)
 
 Los patrones de la encuesta fueron consistentes con lo que surgió de mi
 investigación cualitativa. Para resultados detallados, consulta las
