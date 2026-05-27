@@ -8,6 +8,7 @@
   distributions:
     - contrib
   stability:
+    logs: development
     traces: development
 - name: alibabacloudlogserviceexporter
   display_name: AlibabaCloud LogService Exporter
@@ -15,10 +16,9 @@
   distributions:
     - contrib
   stability:
-    logs: unmaintained
-    metrics: unmaintained
-    traces: unmaintained
-  unmaintained: true
+    logs: beta
+    metrics: beta
+    traces: beta
 - name: awscloudwatchlogsexporter
   display_name: AWS CloudWatch Logs Exporter
   repo: contrib
