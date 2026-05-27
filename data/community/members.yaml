@@ -793,6 +793,13 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/jack-berg
     avatar_url: https://avatars.githubusercontent.com/u/34418638?v=4
+  - name: JakeDern
+    teams:
+      - arrow-approvers
+      - arrow-maintainers
+      - arrow-triagers
+    html_url: https://github.com/JakeDern
+    avatar_url: https://avatars.githubusercontent.com/u/33842784?v=4
   - name: JamieDanielson
     teams:
       - javascript-approvers
@@ -1981,12 +1988,6 @@ approvers:
       - collector-triagers
     html_url: https://github.com/jade-guiton-dd
     avatar_url: https://avatars.githubusercontent.com/u/179536679?v=4
-  - name: JakeDern
-    teams:
-      - arrow-approvers
-      - arrow-triagers
-    html_url: https://github.com/JakeDern
-    avatar_url: https://avatars.githubusercontent.com/u/33842784?v=4
   - name: JaredTan95
     teams:
       - collector-contrib-triagers
@@ -2423,6 +2424,7 @@ triagers:
   - name: bogdan-st
     teams:
       - collector-contrib-triagers
+      - sig-contributor-experience-triagers
     html_url: https://github.com/bogdan-st
     avatar_url: https://avatars.githubusercontent.com/u/102800531?v=4
   - name: constanca-m
