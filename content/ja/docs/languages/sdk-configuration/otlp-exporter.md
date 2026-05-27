@@ -3,13 +3,14 @@ title: OTLPエクスポーター設定
 linkTitle: OTLPエクスポーター
 weight: 20
 aliases: [otlp-exporter-configuration]
-default_lang_commit: 8587d0c0ff3bc57f99b0ecd461f03dd1f73c07ec
-drifted_from_default: true
+default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
 ---
+
+{{% include "env-var-note.md" %}}
 
 ## エンドポイントの設定 {#endpoint-configuration}
 
-以下の環境変数により、トレース、メトリクス、およびログのためのOTLP/gRPCまたはOTLP/HTTPエンドポイントを構成できます。
+以下の環境変数により、トレース、メトリクス、プロファイル、およびログのためのOTLP/gRPCまたはOTLP/HTTPエンドポイントを構成できます。
 
 ### `OTEL_EXPORTER_OTLP_ENDPOINT`
 
@@ -85,6 +86,24 @@ OTLP/HTTP を使う場合は、通常 `v1/logs` で終わります。
 - HTTP:
   `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="http://my-api-endpoint/v1/logs"`
 
+### `OTEL_EXPORTER_OTLP_PROFILES_ENDPOINT`
+
+プロファイルデータ専用のエンドポイントURL。
+オプションでポート番号を指定できます。
+OTLP/HTTP を使う場合は、通常 `v1/profiles` で終わります。
+
+**デフォルト値:**
+
+- gRPC: `"http://localhost:4317"`
+- HTTP: `"http://localhost:4318/v1/profiles"`
+
+**例:**
+
+- gRPC:
+  `export OTEL_EXPORTER_OTLP_PROFILES_ENDPOINT="https://my-api-endpoint:443"`
+- HTTP:
+  `export OTEL_EXPORTER_OTLP_PROFILES_ENDPOINT="http://my-api-endpoint/v1/profiles"`
+
 ## ヘッダーの設定 {#header-configuration}
 
 以下の環境変数を使用すると、gRPC または HTTP リクエストの発信時に追加するヘッダーを、キーと値のペアのリストとして設定できます。
@@ -125,6 +144,15 @@ OTLP/HTTP を使う場合は、通常 `v1/logs` で終わります。
 **例:**
 `export OTEL_EXPORTER_OTLP_LOGS_HEADERS="api-key=key,other-config-value=value"`
 
+### `OTEL_EXPORTER_OTLP_PROFILES_HEADERS`
+
+すべての送信プロファイルに適用するヘッダーのリスト。
+
+**デフォルト値:** なし
+
+**例:**
+`export OTEL_EXPORTER_OTLP_PROFILES_HEADERS="api-key=key,other-config-value=value"`
+
 ## タイムアウトの設定 {#timeout-configuration}
 
 以下の環境変数は、OTLPエクスポーターがデータの次のバッチを送信する前に待つ最大時間（ミリ秒単位）を設定します。
@@ -160,6 +188,14 @@ OTLP/HTTP を使う場合は、通常 `v1/logs` で終わります。
 **デフォルト値:** 10000 (10s)
 
 **例:** `export OTEL_EXPORTER_OTLP_LOGS_TIMEOUT=500`
+
+### `OTEL_EXPORTER_OTLP_PROFILES_TIMEOUT`
+
+すべての送信プロファイルのタイムアウト値をミリ秒単位で指定します。
+
+**デフォルト値:** 10000 (10秒)
+
+**例:** `export OTEL_EXPORTER_OTLP_PROFILES_TIMEOUT=500`
 
 ## プロトコルの設定 {#protocol-configuration}
 
@@ -214,6 +250,20 @@ OTLP/HTTP を使う場合は、通常 `v1/logs` で終わります。
 **デフォルト値:** SDK依存ですが、通常は `http/protobuf` か `grpc` のいずれかです。
 
 **例:** `export OTEL_EXPORTER_OTLP_LOGS_PROTOCOL=grpc`
+
+指定できる値は以下です。
+
+- OTLP/gRPCを使う場合は `grpc`
+- OTLP/HTTP + protobuf を使う場合は `http/protobuf`
+- OTLP/HTTP + JSON を使う場合は `http/json`
+
+### `OTEL_EXPORTER_OTLP_PROFILES_PROTOCOL`
+
+プロファイルデータに使用するOTLPトランスポートプロトコルを指定します。
+
+**デフォルト値:** SDK依存ですが、通常は `http/protobuf` か `grpc` のいずれかです。
+
+**例:** `export OTEL_EXPORTER_OTLP_PROFILES_PROTOCOL=grpc`
 
 指定できる値は以下です。
 
