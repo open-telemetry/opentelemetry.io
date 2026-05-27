@@ -10,7 +10,7 @@ default_lang_commit: 4f9b6de11b3a5062c94790b1ca2d7b0fb05114a5
 cSpell:ignore: TOCSS
 ---
 
-> [!WARNING]
+> [!WARNING] サポートされているビルド環境
 >
 > ビルドは Linux ベースの環境と macOS で公式にサポートされています。
 > [DevContainers](#devcontainers) などの他の環境は、ベストエフォートベースでサポートされています。
@@ -175,7 +175,7 @@ Web サイトは以下のコンテンツを基に構築されます。
 ````md
 <?code-excerpt path-base="examples/java/getting-started"?>
 
-<?code-excerpt "src/main/java/otel/DiceApplication.java"from="@SpringBootApplication"?>
+<?code-excerpt "src/main/java/otel/DiceApplication.java" from="@SpringBootApplication"?>
 
 ```java
 @SpringBootApplication
