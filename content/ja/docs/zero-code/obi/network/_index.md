@@ -8,7 +8,7 @@ cSpell:ignore: replicaset statefulset
 ---
 
 OpenTelemetry eBPF 計装は、異なるエンドポイント間のネットワークメトリクスを提供するように設定できます。
-たとえば、物理ノード、コンテナー、Kubernetes Pod、サービスなどの間です。
+たとえば、物理ノード、コンテナ、Kubernetes Pod、サービスなどの間です。
 
 ## はじめに {#get-started}
 
