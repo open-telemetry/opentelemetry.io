@@ -95,7 +95,7 @@ func main() {
 
 > [!WARNING]
 >
-> eBPF ベースの [Go ゼロコード計装](/docs/zero-code/go) と共に手動スパンを追加する場合は、グローバルトレーサープロバイダーを設定しないでください。
+> eBPF ベースの [Go ゼロコード計装](/docs/zero-code/go) ([OBI](/docs/zero-code/obi) など) と共に手動スパンを追加する場合は、グローバルトレーサープロバイダーを設定しないでください。
 > 詳細については、[Auto SDK](/docs/zero-code/go/autosdk) のドキュメントをご覧ください。
 
 ### スパンの作成 {#creating-spans}
