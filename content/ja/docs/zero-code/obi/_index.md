@@ -37,7 +37,7 @@ OBI は以下の機能を提供します。
 - **強化されたサービスディスカバリー**: DNS 解決によるサービス名の検索の改善
 - **Collector との統合**: OBI を OpenTelemetry Collector レシーバーコンポーネントとして実行
 
-## 最近のハイライト（v0.9.0） {#recent-highlights-v080}
+## 最近のハイライト（v0.9.0） {#recent-highlights-v090}
 
 OBI v0.9.0 は、プロトコルカバレッジ、出力テレメトリー、および生成 AI 計装を拡張しました。
 
