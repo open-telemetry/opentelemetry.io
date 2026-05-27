@@ -145,12 +145,11 @@ receivers:
             - targets: ['ad:${env:AD_PROMETHEUS_PORT}']
 ```
 
-> [!TIP]
-> **Recommendation**: this is a _transitional_ pattern. Prefer the OpenTelemetry
-> SDK for new custom metrics, and migrate existing Prometheus-client metrics to it
-> -- incremental migration as you touch the surrounding code has proven successful
-> in practice, but a focused refactor works too; what matters is that the
-> migration happens.
+> [!TIP] **Recommendation**: this is a _transitional_ pattern. Prefer the
+> OpenTelemetry SDK for new custom metrics, and migrate existing
+> Prometheus-client metrics to it -- incremental migration as you touch the
+> surrounding code has proven successful in practice, but a focused refactor
+> works too; what matters is that the migration happens.
 
 ### Current Metrics Produced
 
