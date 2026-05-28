@@ -1,10 +1,9 @@
 ---
 title: Getting Started（入門）
 weight: 10
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
-drifted_from_default: true
+default_lang_commit: 869b2bb90ca9e54d8d98e7815e66111b577165eb
 # prettier-ignore
-cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
+cSpell:ignore: autoexport chan fatalln funcs intn itoa otelhttp rolldice stdouttrace strconv
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -14,11 +13,10 @@ cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace 
 
 シンプルなアプリケーションに対して手動で計装を行い、[トレース][traces]、[メトリクス][metrics]、[ログ][logs]をコンソールに出力する方法を学ぶことができます。
 
-{{% alert title="Note" %}}
-
-ログシグナルは現在も実験的な段階にあります。将来のバージョンで破壊的変更が加えられる可能性があります。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> ログシグナルは現在も実験的な段階にあります。
+> 将来のバージョンで破壊的変更が加えられる可能性があります。
 
 ## 前提条件 {#prerequisites}
 
@@ -50,14 +48,64 @@ go mod init dice
 package main
 
 import (
+	"context"
 	"log"
+	"net"
 	"net/http"
+	"os"
+	"os/signal"
+	"time"
 )
 
 func main() {
-	http.HandleFunc("/rolldice", rolldice)
+	if err := run(); err != nil {
+		log.Fatalln(err)
+	}
+}
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+func run() (err error) {
+	// SIGINT (CTRL+C) を適切に処理します。
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
+	defer stop()
+
+	// HTTPサーバーを起動します。
+	srv := &http.Server{
+		Addr:         ":8080",
+		BaseContext:  func(net.Listener) context.Context { return ctx },
+		ReadTimeout:  time.Second,
+		WriteTimeout: 10 * time.Second,
+		Handler:      newHTTPHandler(),
+	}
+	srvErr := make(chan error, 1)
+	go func() {
+		log.Println("Running HTTP server...")
+		srvErr <- srv.ListenAndServe()
+	}()
+
+	// 割り込みを待ちます。
+	select {
+	case err = <-srvErr:
+		// HTTPサーバーの起動時にエラーが発生しました。
+		return err
+	case <-ctx.Done():
+		// 最初のCTRL+Cを待ちます。
+		// できるだけ早くシグナル通知の受信を停止します。
+		stop()
+	}
+
+	// Shutdownが呼び出されると、ListenAndServeはすぐにErrServerClosedを返します。
+	err = srv.Shutdown(context.Background())
+	return err
+}
+
+func newHTTPHandler() http.Handler {
+	mux := http.NewServeMux()
+
+	// ハンドラーを登録します。
+	mux.HandleFunc("/rolldice/", rolldice)
+	mux.HandleFunc("/rolldice/{player}", rolldice)
+
+	return mux
 }
 ```
 
@@ -77,9 +125,17 @@ import (
 func rolldice(w http.ResponseWriter, r *http.Request) {
 	roll := 1 + rand.Intn(6)
 
+	var msg string
+	if player := r.PathValue("player"); player != "" {
+		msg = player + " is rolling the dice"
+	} else {
+		msg = "Anonymous player is rolling the dice"
+	}
+	log.Printf("%s, result: %d", msg, roll)
+
 	resp := strconv.Itoa(roll) + "\n"
 	if _, err := io.WriteString(w, resp); err != nil {
-		log.Printf("Write failed: %v\n", err)
+		log.Printf("Write failed: %v", err)
 	}
 }
 ```
@@ -96,30 +152,6 @@ go run .
 
 サンプルアプリケーションにOpenTelemetryの計装を追加する方法を紹介します。
 自身のアプリケーションを使用している場合でも、同様の手順で進めることができますが、コードが多少異なる場合がある点にご注意ください。
-
-### 依存関係を追加する {#add-dependencies}
-
-次のパッケージをインストールしてください
-
-```shell
-go get "go.opentelemetry.io/otel" \
-  "go.opentelemetry.io/otel/exporters/stdout/stdoutmetric" \
-  "go.opentelemetry.io/otel/exporters/stdout/stdouttrace" \
-  "go.opentelemetry.io/otel/exporters/stdout/stdoutlog" \
-  "go.opentelemetry.io/otel/sdk/log" \
-  "go.opentelemetry.io/otel/log/global" \
-  "go.opentelemetry.io/otel/propagation" \
-  "go.opentelemetry.io/otel/sdk/metric" \
-  "go.opentelemetry.io/otel/sdk/resource" \
-  "go.opentelemetry.io/otel/sdk/trace" \
-  "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"\
-  "go.opentelemetry.io/contrib/bridges/otelslog"
-```
-
-これにより、OpenTelemetryのSDKコンポーネントと`net/http`の計装がインストールされます。
-
-別のネットワークリクエスト用ライブラリを計装する場合は、対応する計装用ライブラリをインストールする必要があります。
-詳しくは、[ライブラリ](/docs/languages/go/libraries/)をご覧ください。
 
 ### OpenTelemetry SDKを初期化する {#initialize-the-opentelemetry-sdk}
 
@@ -214,8 +246,7 @@ func newPropagator() propagation.TextMapPropagator {
 }
 
 func newTracerProvider() (*trace.TracerProvider, error) {
-	traceExporter, err := stdouttrace.New(
-		stdouttrace.WithPrettyPrint())
+	traceExporter, err := stdouttrace.New(stdouttrace.WithPrettyPrint())
 	if err != nil {
 		return nil, err
 	}
@@ -229,7 +260,7 @@ func newTracerProvider() (*trace.TracerProvider, error) {
 }
 
 func newMeterProvider() (*metric.MeterProvider, error) {
-	metricExporter, err := stdoutmetric.New()
+	metricExporter, err := stdoutmetric.New(stdoutmetric.WithPrettyPrint())
 	if err != nil {
 		return nil, err
 	}
@@ -243,7 +274,7 @@ func newMeterProvider() (*metric.MeterProvider, error) {
 }
 
 func newLoggerProvider() (*log.LoggerProvider, error) {
-	logExporter, err := stdoutlog.New()
+	logExporter, err := stdoutlog.New(stdoutlog.WithPrettyPrint())
 	if err != nil {
 		return nil, err
 	}
@@ -255,6 +286,12 @@ func newLoggerProvider() (*log.LoggerProvider, error) {
 }
 ```
 <!-- prettier-ignore-end -->
+
+> [!TIP]
+>
+> 前述の例ではデモのためにコンソール (stdout) エクスポーターを使用しています。
+> [`autoexport`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport) パッケージを使うと、`OTEL_TRACES_EXPORTER`、`OTEL_METRICS_EXPORTER`、`OTEL_LOGS_EXPORTER`、`OTEL_EXPORTER_OTLP_ENDPOINT` といった環境変数によってエクスポーターを設定できます。
+> 詳細については [エクスポーター](/docs/languages/go/exporters/) を参照してください。
 
 トレースまたはメトリクスのどちらか一方のみを使用する場合は、対応するTracerProviderまたはMeterProviderの初期化コードを省略できます。
 
@@ -306,7 +343,7 @@ func run() error {
 	// HTTPサーバーを起動。
 	srv := &http.Server{
 		Addr:         ":8080",
-		BaseContext:  func(_ net.Listener) context.Context { return ctx },
+		BaseContext:  func(net.Listener) context.Context { return ctx },
 		ReadTimeout:  time.Second,
 		WriteTimeout: 10 * time.Second,
 		Handler:      newHTTPHandler(),
@@ -337,8 +374,8 @@ func newHTTPHandler() http.Handler {
 	mux := http.NewServeMux()
 
 	// ハンドラーの登録。
-	mux.Handle("/rolldice/", rolldice)
-	mux.Handle("/rolldice/{player}", rolldice)
+	mux.Handle("/rolldice", http.HandlerFunc(rolldice))
+	mux.Handle("/rolldice/{player}", http.HandlerFunc(rolldice))
 
 	// サーバー全体に対してHTTP計装を追加します。
 	handler := otelhttp.NewHandler(mux, "/")
@@ -360,25 +397,24 @@ func newHTTPHandler() http.Handler {
 package main
 
 import (
-	"fmt"
 	"io"
-	"log"
 	"math/rand"
 	"net/http"
 	"strconv"
 
-	"go.opentelemetry.io/contrib/bridges/otelslog"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric"
+
+	"go.opentelemetry.io/contrib/bridges/otelslog"
 )
 
-const name = "go.opentelemetry.io/otel/example/dice"
+const name = "go.opentelemetry.io/contrib/examples/dice"
 
 var (
-	tracer = otel.Tracer(name)
-	meter  = otel.Meter(name)
-	logger = otelslog.NewLogger(name)
+	tracer  = otel.Tracer(name)
+	meter   = otel.Meter(name)
+	logger  = otelslog.NewLogger(name)
 	rollCnt metric.Int64Counter
 )
 
@@ -400,7 +436,7 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 
 	var msg string
 	if player := r.PathValue("player"); player != "" {
-		msg = fmt.Sprintf("%s is rolling the dice", player)
+		msg = player + " is rolling the dice"
 	} else {
 		msg = "Anonymous player is rolling the dice"
 	}
@@ -412,7 +448,7 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 
 	resp := strconv.Itoa(roll) + "\n"
 	if _, err := io.WriteString(w, resp); err != nil {
-		log.Printf("Write failed: %v\n", err)
+		logger.ErrorContext(ctx, "Write failed", "error", err)
 	}
 }
 ```
@@ -442,28 +478,28 @@ go run .
 {
 	"Name": "roll",
 	"SpanContext": {
-		"TraceID": "829fb7ceb787403c96eac3caf285c965",
-		"SpanID": "8b6b408b6c1a35e5",
+		"TraceID": "f00f8045a6c78b3aa5ecaca9f3b971b4",
+		"SpanID": "f641bd25400a1b70",
 		"TraceFlags": "01",
 		"TraceState": "",
 		"Remote": false
 	},
 	"Parent": {
-		"TraceID": "829fb7ceb787403c96eac3caf285c965",
-		"SpanID": "612be4bbdf450de6",
+		"TraceID": "f00f8045a6c78b3aa5ecaca9f3b971b4",
+		"SpanID": "a10f1d2ca2f685c9",
 		"TraceFlags": "01",
 		"TraceState": "",
 		"Remote": false
 	},
 	"SpanKind": 1,
-	"StartTime": "2023-09-25T12:42:06.177119576+02:00",
-	"EndTime": "2023-09-25T12:42:06.177136776+02:00",
+	"StartTime": "2026-01-28T09:58:44.298985982+01:00",
+	"EndTime": "2026-01-28T09:58:44.299067482+01:00",
 	"Attributes": [
 		{
 			"Key": "roll.value",
 			"Value": {
 				"Type": "INT64",
-				"Value": 6
+				"Value": 1
 			}
 		}
 	],
@@ -510,21 +546,28 @@ go run .
 			"Key": "telemetry.sdk.version",
 			"Value": {
 				"Type": "STRING",
-				"Value": "1.19.0-rc.1"
+				"Value": "1.39.0"
 			}
 		}
 	],
-	"InstrumentationLibrary": {
-		"Name": "rolldice",
+	"InstrumentationScope": {
+		"Name": "go.opentelemetry.io/contrib/examples/dice",
 		"Version": "",
-		"SchemaURL": ""
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "go.opentelemetry.io/contrib/examples/dice",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
 	}
 }
 {
 	"Name": "/",
 	"SpanContext": {
-		"TraceID": "829fb7ceb787403c96eac3caf285c965",
-		"SpanID": "612be4bbdf450de6",
+		"TraceID": "f00f8045a6c78b3aa5ecaca9f3b971b4",
+		"SpanID": "a10f1d2ca2f685c9",
 		"TraceFlags": "01",
 		"TraceState": "",
 		"Remote": false
@@ -537,81 +580,88 @@ go run .
 		"Remote": false
 	},
 	"SpanKind": 2,
-	"StartTime": "2023-09-25T12:42:06.177071077+02:00",
-	"EndTime": "2023-09-25T12:42:06.177158076+02:00",
+	"StartTime": "2026-01-28T09:58:44.298951202+01:00",
+	"EndTime": "2026-01-28T09:58:44.299109293+01:00",
 	"Attributes": [
 		{
-			"Key": "http.method",
-			"Value": {
-				"Type": "STRING",
-				"Value": "GET"
-			}
-		},
-		{
-			"Key": "http.scheme",
-			"Value": {
-				"Type": "STRING",
-				"Value": "http"
-			}
-		},
-		{
-			"Key": "http.flavor",
-			"Value": {
-				"Type": "STRING",
-				"Value": "1.1"
-			}
-		},
-		{
-			"Key": "net.host.name",
+			"Key": "server.address",
 			"Value": {
 				"Type": "STRING",
 				"Value": "localhost"
 			}
 		},
 		{
-			"Key": "net.host.port",
+			"Key": "http.request.method",
+			"Value": {
+				"Type": "STRING",
+				"Value": "GET"
+			}
+		},
+		{
+			"Key": "url.scheme",
+			"Value": {
+				"Type": "STRING",
+				"Value": "http"
+			}
+		},
+		{
+			"Key": "server.port",
 			"Value": {
 				"Type": "INT64",
 				"Value": 8080
 			}
 		},
 		{
-			"Key": "net.sock.peer.addr",
+			"Key": "network.peer.address",
 			"Value": {
 				"Type": "STRING",
-				"Value": "::1"
+				"Value": "127.0.0.1"
 			}
 		},
 		{
-			"Key": "net.sock.peer.port",
+			"Key": "network.peer.port",
 			"Value": {
 				"Type": "INT64",
-				"Value": 49046
+				"Value": 43804
 			}
 		},
 		{
-			"Key": "http.user_agent",
+			"Key": "user_agent.original",
 			"Value": {
 				"Type": "STRING",
-				"Value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+				"Value": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:147.0) Gecko/20100101 Firefox/147.0"
 			}
 		},
 		{
-			"Key": "http.route",
+			"Key": "client.address",
+			"Value": {
+				"Type": "STRING",
+				"Value": "127.0.0.1"
+			}
+		},
+		{
+			"Key": "url.path",
 			"Value": {
 				"Type": "STRING",
 				"Value": "/rolldice/Alice"
 			}
 		},
 		{
-			"Key": "http.wrote_bytes",
+			"Key": "network.protocol.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "1.1"
+			}
+		},
+		{
+			"Key": "http.response.body.size",
 			"Value": {
 				"Type": "INT64",
 				"Value": 2
 			}
 		},
 		{
-			"Key": "http.status_code",
+			"Key": "http.response.status_code",
 			"Value": {
 				"Type": "INT64",
 				"Value": 200
@@ -661,14 +711,21 @@ go run .
 			"Key": "telemetry.sdk.version",
 			"Value": {
 				"Type": "STRING",
-				"Value": "1.19.0-rc.1"
+				"Value": "1.39.0"
 			}
 		}
 	],
+	"InstrumentationScope": {
+		"Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+		"Version": "0.64.0",
+		"SchemaURL": "",
+		"Attributes": null
+	},
 	"InstrumentationLibrary": {
 		"Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
-		"Version": "0.44.0",
-		"SchemaURL": ""
+		"Version": "0.64.0",
+		"SchemaURL": "",
+		"Attributes": null
 	}
 }
 ```
@@ -682,10 +739,10 @@ go run .
 
 ```json
 {
-  "Timestamp": "2023-09-25T12:42:05.177136776+02:00",
-  "ObservedTimestamp": "2023-09-25T12:42:06.809396011+02:00",
+  "Timestamp": "2026-01-28T09:58:44.29900397+01:00",
+  "ObservedTimestamp": "2026-01-28T09:58:44.299031783+01:00",
   "Severity": 9,
-  "SeverityText": "",
+  "SeverityText": "INFO",
   "Body": {
     "Type": "String",
     "Value": "Alice is rolling the dice"
@@ -695,12 +752,12 @@ go run .
       "Key": "result",
       "Value": {
         "Type": "Int64",
-        "Value": 6
+        "Value": 1
       }
     }
   ],
-  "TraceID": "829fb7ceb787403c96eac3caf285c965",
-  "SpanID": "8b6b408b6c1a35e5",
+  "TraceID": "f00f8045a6c78b3aa5ecaca9f3b971b4",
+  "SpanID": "f641bd25400a1b70",
   "TraceFlags": "01",
   "Resource": [
     {
@@ -735,14 +792,15 @@ go run .
       "Key": "telemetry.sdk.version",
       "Value": {
         "Type": "STRING",
-        "Value": "1.19.0-rc.1"
+        "Value": "1.39.0"
       }
     }
   ],
   "Scope": {
-    "Name": "rolldice",
+    "Name": "go.opentelemetry.io/contrib/examples/dice",
     "Version": "",
-    "SchemaURL": ""
+    "SchemaURL": "",
+    "Attributes": {}
   },
   "DroppedAttributes": 0
 }
@@ -792,16 +850,17 @@ go run .
       "Key": "telemetry.sdk.version",
       "Value": {
         "Type": "STRING",
-        "Value": "1.19.0-rc.1"
+        "Value": "1.39.0"
       }
     }
   ],
   "ScopeMetrics": [
     {
       "Scope": {
-        "Name": "rolldice",
+        "Name": "go.opentelemetry.io/contrib/examples/dice",
         "Version": "",
-        "SchemaURL": ""
+        "SchemaURL": "",
+        "Attributes": null
       },
       "Metrics": [
         {
@@ -816,27 +875,22 @@ go run .
                     "Key": "roll.value",
                     "Value": {
                       "Type": "INT64",
-                      "Value": 1
+                      "Value": 2
                     }
                   }
                 ],
-                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
-                "Time": "2023-09-25T12:42:15.482694258+02:00",
-                "Value": 4
-              },
-              {
-                "Attributes": [
+                "StartTime": "2026-01-28T09:58:36.297218201+01:00",
+                "Time": "2026-01-28T09:59:04.826103626+01:00",
+                "Value": 2,
+                "Exemplars": [
                   {
-                    "Key": "roll.value",
-                    "Value": {
-                      "Type": "INT64",
-                      "Value": 5
-                    }
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:58.310873844+01:00",
+                    "Value": 1,
+                    "SpanID": "MFfLVpcp2E8=",
+                    "TraceID": "KGizZKX5cz9DqgG95WoBvQ=="
                   }
-                ],
-                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
-                "Time": "2023-09-25T12:42:15.482694258+02:00",
-                "Value": 3
+                ]
               },
               {
                 "Attributes": [
@@ -848,9 +902,18 @@ go run .
                     }
                   }
                 ],
-                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
-                "Time": "2023-09-25T12:42:15.482694258+02:00",
-                "Value": 4
+                "StartTime": "2026-01-28T09:58:36.297218201+01:00",
+                "Time": "2026-01-28T09:59:04.826103626+01:00",
+                "Value": 1,
+                "Exemplars": [
+                  {
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:48.446722639+01:00",
+                    "Value": 1,
+                    "SpanID": "Xa6wKaCre6k=",
+                    "TraceID": "VncSsITnUTtWpMAFGRoLng=="
+                  }
+                ]
               },
               {
                 "Attributes": [
@@ -858,13 +921,22 @@ go run .
                     "Key": "roll.value",
                     "Value": {
                       "Type": "INT64",
-                      "Value": 2
+                      "Value": 1
                     }
                   }
                 ],
-                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
-                "Time": "2023-09-25T12:42:15.482694258+02:00",
-                "Value": 2
+                "StartTime": "2026-01-28T09:58:36.297218201+01:00",
+                "Time": "2026-01-28T09:59:04.826103626+01:00",
+                "Value": 4,
+                "Exemplars": [
+                  {
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:56.340332341+01:00",
+                    "Value": 1,
+                    "SpanID": "RAsXIMJQIcg=",
+                    "TraceID": "NbZh738k1TlZ/I32RuLS/A=="
+                  }
+                ]
               },
               {
                 "Attributes": [
@@ -872,27 +944,22 @@ go run .
                     "Key": "roll.value",
                     "Value": {
                       "Type": "INT64",
-                      "Value": 6
+                      "Value": 5
                     }
                   }
                 ],
-                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
-                "Time": "2023-09-25T12:42:15.482694258+02:00",
-                "Value": 5
-              },
-              {
-                "Attributes": [
+                "StartTime": "2026-01-28T09:58:36.297218201+01:00",
+                "Time": "2026-01-28T09:59:04.826103626+01:00",
+                "Value": 1,
+                "Exemplars": [
                   {
-                    "Key": "roll.value",
-                    "Value": {
-                      "Type": "INT64",
-                      "Value": 4
-                    }
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:55.131367409+01:00",
+                    "Value": 1,
+                    "SpanID": "eVC0Kj4/vzw=",
+                    "TraceID": "NVuservV50eLN7sNu9Sm4A=="
                   }
-                ],
-                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
-                "Time": "2023-09-25T12:42:15.482694258+02:00",
-                "Value": 9
+                ]
               }
             ],
             "Temporality": "CumulativeTemporality",
@@ -904,215 +971,259 @@ go run .
     {
       "Scope": {
         "Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
-        "Version": "0.44.0",
-        "SchemaURL": ""
+        "Version": "0.64.0",
+        "SchemaURL": "",
+        "Attributes": null
       },
       "Metrics": [
         {
-          "Name": "http.server.request_content_length",
-          "Description": "",
-          "Unit": "",
+          "Name": "http.server.request.body.size",
+          "Description": "Size of HTTP server request bodies.",
+          "Unit": "By",
           "Data": {
             "DataPoints": [
               {
                 "Attributes": [
                   {
-                    "Key": "http.flavor",
-                    "Value": {
-                      "Type": "STRING",
-                      "Value": "1.1"
-                    }
-                  },
-                  {
-                    "Key": "http.method",
+                    "Key": "http.request.method",
                     "Value": {
                       "Type": "STRING",
                       "Value": "GET"
                     }
                   },
                   {
-                    "Key": "http.route",
-                    "Value": {
-                      "Type": "STRING",
-                      "Value": "/rolldice/Alice"
-                    }
-                  },
-                  {
-                    "Key": "http.scheme",
-                    "Value": {
-                      "Type": "STRING",
-                      "Value": "http"
-                    }
-                  },
-                  {
-                    "Key": "http.status_code",
+                    "Key": "http.response.status_code",
                     "Value": {
                       "Type": "INT64",
                       "Value": 200
                     }
                   },
                   {
-                    "Key": "net.host.name",
+                    "Key": "network.protocol.name",
                     "Value": {
                       "Type": "STRING",
-                      "Value": "localhost"
+                      "Value": "http"
                     }
                   },
                   {
-                    "Key": "net.host.port",
-                    "Value": {
-                      "Type": "INT64",
-                      "Value": 8080
-                    }
-                  }
-                ],
-                "StartTime": "2023-09-25T12:42:04.279212238+02:00",
-                "Time": "2023-09-25T12:42:15.482695758+02:00",
-                "Value": 0
-              }
-            ],
-            "Temporality": "CumulativeTemporality",
-            "IsMonotonic": true
-          }
-        },
-        {
-          "Name": "http.server.response_content_length",
-          "Description": "",
-          "Unit": "",
-          "Data": {
-            "DataPoints": [
-              {
-                "Attributes": [
-                  {
-                    "Key": "http.flavor",
+                    "Key": "network.protocol.version",
                     "Value": {
                       "Type": "STRING",
                       "Value": "1.1"
                     }
                   },
                   {
-                    "Key": "http.method",
-                    "Value": {
-                      "Type": "STRING",
-                      "Value": "GET"
-                    }
-                  },
-                  {
-                    "Key": "http.route",
-                    "Value": {
-                      "Type": "STRING",
-                      "Value": "/rolldice/Alice"
-                    }
-                  },
-                  {
-                    "Key": "http.scheme",
-                    "Value": {
-                      "Type": "STRING",
-                      "Value": "http"
-                    }
-                  },
-                  {
-                    "Key": "http.status_code",
-                    "Value": {
-                      "Type": "INT64",
-                      "Value": 200
-                    }
-                  },
-                  {
-                    "Key": "net.host.name",
+                    "Key": "server.address",
                     "Value": {
                       "Type": "STRING",
                       "Value": "localhost"
                     }
                   },
                   {
-                    "Key": "net.host.port",
+                    "Key": "server.port",
                     "Value": {
                       "Type": "INT64",
                       "Value": 8080
                     }
-                  }
-                ],
-                "StartTime": "2023-09-25T12:42:04.279214438+02:00",
-                "Time": "2023-09-25T12:42:15.482696158+02:00",
-                "Value": 54
-              }
-            ],
-            "Temporality": "CumulativeTemporality",
-            "IsMonotonic": true
-          }
-        },
-        {
-          "Name": "http.server.duration",
-          "Description": "",
-          "Unit": "",
-          "Data": {
-            "DataPoints": [
-              {
-                "Attributes": [
-                  {
-                    "Key": "http.flavor",
-                    "Value": {
-                      "Type": "STRING",
-                      "Value": "1.1"
-                    }
                   },
                   {
-                    "Key": "http.method",
-                    "Value": {
-                      "Type": "STRING",
-                      "Value": "GET"
-                    }
-                  },
-                  {
-                    "Key": "http.route",
-                    "Value": {
-                      "Type": "STRING",
-                      "Value": "/rolldice/Alice"
-                    }
-                  },
-                  {
-                    "Key": "http.scheme",
+                    "Key": "url.scheme",
                     "Value": {
                       "Type": "STRING",
                       "Value": "http"
                     }
-                  },
-                  {
-                    "Key": "http.status_code",
-                    "Value": {
-                      "Type": "INT64",
-                      "Value": 200
-                    }
-                  },
-                  {
-                    "Key": "net.host.name",
-                    "Value": {
-                      "Type": "STRING",
-                      "Value": "localhost"
-                    }
-                  },
-                  {
-                    "Key": "net.host.port",
-                    "Value": {
-                      "Type": "INT64",
-                      "Value": 8080
-                    }
                   }
                 ],
-                "StartTime": "2023-09-25T12:42:04.279219438+02:00",
-                "Time": "2023-09-25T12:42:15.482697158+02:00",
-                "Count": 27,
+                "StartTime": "2026-01-28T09:58:36.297829232+01:00",
+                "Time": "2026-01-28T09:59:04.82612558+01:00",
+                "Count": 8,
                 "Bounds": [
                   0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000,
                   7500, 10000
                 ],
                 "BucketCounts": [
-                  0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                  8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
                 ],
-                "Min": {},
-                "Max": {},
-                "Sum": 2.1752759999999993
+                "Min": 0,
+                "Max": 0,
+                "Sum": 0,
+                "Exemplars": [
+                  {
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:58.310903274+01:00",
+                    "Value": 0,
+                    "SpanID": "YQY4fyjDhiQ=",
+                    "TraceID": "KGizZKX5cz9DqgG95WoBvQ=="
+                  }
+                ]
+              }
+            ],
+            "Temporality": "CumulativeTemporality"
+          }
+        },
+        {
+          "Name": "http.server.response.body.size",
+          "Description": "Size of HTTP server response bodies.",
+          "Unit": "By",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.request.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.response.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "network.protocol.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "network.protocol.version",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "server.address",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "server.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  },
+                  {
+                    "Key": "url.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  }
+                ],
+                "StartTime": "2026-01-28T09:58:36.297836516+01:00",
+                "Time": "2026-01-28T09:59:04.826130841+01:00",
+                "Count": 8,
+                "Bounds": [
+                  0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000,
+                  7500, 10000
+                ],
+                "BucketCounts": [
+                  0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                ],
+                "Min": 2,
+                "Max": 2,
+                "Sum": 16,
+                "Exemplars": [
+                  {
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:58.310905174+01:00",
+                    "Value": 2,
+                    "SpanID": "YQY4fyjDhiQ=",
+                    "TraceID": "KGizZKX5cz9DqgG95WoBvQ=="
+                  }
+                ]
+              }
+            ],
+            "Temporality": "CumulativeTemporality"
+          }
+        },
+        {
+          "Name": "http.server.request.duration",
+          "Description": "Duration of HTTP server requests.",
+          "Unit": "s",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.request.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.response.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "network.protocol.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "network.protocol.version",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "server.address",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "server.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  },
+                  {
+                    "Key": "url.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  }
+                ],
+                "StartTime": "2026-01-28T09:58:36.297850485+01:00",
+                "Time": "2026-01-28T09:59:04.826135353+01:00",
+                "Count": 8,
+                "Bounds": [
+                  0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.25, 0.5, 0.75, 1, 2.5,
+                  5, 7.5, 10
+                ],
+                "BucketCounts": [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                "Min": 0.000067593,
+                "Max": 0.000635093,
+                "Sum": 0.001617854,
+                "Exemplars": [
+                  {
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:58.310908469+01:00",
+                    "Value": 0.000197799,
+                    "SpanID": "YQY4fyjDhiQ=",
+                    "TraceID": "KGizZKX5cz9DqgG95WoBvQ=="
+                  }
+                ]
               }
             ],
             "Temporality": "CumulativeTemporality"
