@@ -120,7 +120,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/1519040?v=4
   - name: ahayworth
     teams:
-      - ruby-approvers
       - ruby-contrib-approvers
       - ruby-contrib-maintainers
     html_url: https://github.com/ahayworth
@@ -653,7 +652,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/9735060?v=4
   - name: ericmustin
     teams:
-      - ruby-approvers
       - ruby-contrib-approvers
       - ruby-contrib-maintainers
     html_url: https://github.com/ericmustin
@@ -719,6 +717,7 @@ maintainers:
       - profiling-maintainers
       - profiling-triagers
       - proto-approvers
+      - proto-maintainers
       - proto-triagers
     html_url: https://github.com/florianl
     avatar_url: https://avatars.githubusercontent.com/u/1132494?v=4
@@ -764,6 +763,12 @@ maintainers:
       - rust-maintainers
     html_url: https://github.com/hdost
     avatar_url: https://avatars.githubusercontent.com/u/643846?v=4
+  - name: inge4pres
+    teams:
+      - zig-approvers
+      - zig-maintainers
+    html_url: https://github.com/inge4pres
+    avatar_url: https://avatars.githubusercontent.com/u/4930991?v=4
   - name: intuibase
     teams:
       - php-distro-approvers
@@ -997,6 +1002,12 @@ maintainers:
       - dotnet-triagers
     html_url: https://github.com/Kielek
     avatar_url: https://avatars.githubusercontent.com/u/5972917?v=4
+  - name: kmos
+    teams:
+      - zig-approvers
+      - zig-maintainers
+    html_url: https://github.com/kmos
+    avatar_url: https://avatars.githubusercontent.com/u/8403734?v=4
   - name: lalitb
     teams:
       - arrow-approvers
@@ -1211,12 +1222,6 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/MrAlias
     avatar_url: https://avatars.githubusercontent.com/u/5543599?v=4
-  - name: ms-jcorley
-    teams:
-      - sig-security-approvers
-      - sig-security-maintainers
-    html_url: https://github.com/ms-jcorley
-    avatar_url: https://avatars.githubusercontent.com/u/55004047?v=4
   - name: Msksgm
     teams:
       - docs-ja-approvers
@@ -1319,6 +1324,7 @@ maintainers:
       - go-maintainers
       - go-triagers
       - proto-approvers
+      - proto-maintainers
       - proto-triagers
       - semconv-code-attribute-approvers
       - semconv-log-approvers
@@ -1337,7 +1343,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/22105064?v=4
   - name: plantfansam
     teams:
-      - ruby-approvers
       - ruby-contrib-approvers
       - ruby-contrib-maintainers
     html_url: https://github.com/plantfansam
@@ -1757,6 +1762,11 @@ approvers:
       - sig-security-approvers
     html_url: https://github.com/adrielp
     avatar_url: https://avatars.githubusercontent.com/u/25961386?v=4
+  - name: agagniere
+    teams:
+      - zig-approvers
+    html_url: https://github.com/agagniere
+    avatar_url: https://avatars.githubusercontent.com/u/8630600?v=4
   - name: alexmojaki
     teams:
       - semconv-genai-approvers
@@ -2150,13 +2160,6 @@ approvers:
       - cpp-approvers
     html_url: https://github.com/owent
     avatar_url: https://avatars.githubusercontent.com/u/1209475?v=4
-  - name: petethepig
-    teams:
-      - profiling-triagers
-      - proto-approvers
-      - proto-triagers
-    html_url: https://github.com/petethepig
-    avatar_url: https://avatars.githubusercontent.com/u/662636?v=4
   - name: pinoOgni
     teams:
       - ebpf-instrumentation-approvers
@@ -2523,6 +2526,11 @@ triagers:
       - collector-contrib-triagers
     html_url: https://github.com/paulojmdias
     avatar_url: https://avatars.githubusercontent.com/u/44772900?v=4
+  - name: petethepig
+    teams:
+      - profiling-triagers
+    html_url: https://github.com/petethepig
+    avatar_url: https://avatars.githubusercontent.com/u/662636?v=4
   - name: pratik-mahalle
     teams:
       - docs-triagers
@@ -2587,9 +2595,6 @@ members:
   - name: addname
     html_url: https://github.com/addname
     avatar_url: https://avatars.githubusercontent.com/u/3360883?v=4
-  - name: agagniere
-    html_url: https://github.com/agagniere
-    avatar_url: https://avatars.githubusercontent.com/u/8630600?v=4
   - name: AlchemyDing
     html_url: https://github.com/AlchemyDing
     avatar_url: https://avatars.githubusercontent.com/u/88769332?v=4
@@ -2806,9 +2811,6 @@ members:
   - name: IliaBrahinets
     html_url: https://github.com/IliaBrahinets
     avatar_url: https://avatars.githubusercontent.com/u/13045792?v=4
-  - name: inge4pres
-    html_url: https://github.com/inge4pres
-    avatar_url: https://avatars.githubusercontent.com/u/4930991?v=4
   - name: iredelmeier
     html_url: https://github.com/iredelmeier
     avatar_url: https://avatars.githubusercontent.com/u/3298606?v=4
@@ -2872,9 +2874,6 @@ members:
   - name: Kludex
     html_url: https://github.com/Kludex
     avatar_url: https://avatars.githubusercontent.com/u/7353520?v=4
-  - name: kmos
-    html_url: https://github.com/kmos
-    avatar_url: https://avatars.githubusercontent.com/u/8403734?v=4
   - name: kovrus
     html_url: https://github.com/kovrus
     avatar_url: https://avatars.githubusercontent.com/u/7442373?v=4
