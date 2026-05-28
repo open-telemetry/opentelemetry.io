@@ -1,6 +1,6 @@
 # cSpell:ignore otelc
 title: otelc
-registryType: tools
+registryType: utilities
 language: go
 tags:
   - go
