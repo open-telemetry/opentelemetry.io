@@ -190,7 +190,7 @@ public class DiceApplication {
 ````
 
 複数の抜粋が同じディレクトリから取得される場合は、任意の `path-base` ディレクティブをページ上部付近に 1 度だけ記載してください。
-`code-excerpter` ディレクティブ構文の詳細については、[code-excerpter][] の README を参照してください。
+`code-excerpt` ディレクティブ構文の詳細については、[code-excerpter][] の README を参照してください。
 
 ソースファイルまたはディレクティブを編集し、**フェンス付きコードを編集しないでください**。
 その後、次の [npm スクリプト](/site/build/npm-scripts/) を実行してください。
