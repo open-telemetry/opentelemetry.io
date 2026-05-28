@@ -66,7 +66,6 @@ cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
    {{% /tab %}} {{< /tabpane >}}
 
    以下のサービスは最小モードには**含まれていません**。
-
    - `accounting`
    - `fraud-detection`
    - `flagd-ui`
