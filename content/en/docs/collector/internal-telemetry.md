@@ -1,7 +1,7 @@
 ---
 title: Internal telemetry
 weight: 25
-cSpell:ignore: alloc batchprocessor journalctl otelgrpc
+cSpell:ignore: alloc batchprocessor journalctl lowmemory otelconf otelgrpc
 ---
 
 You can inspect the health of any OpenTelemetry Collector instance by checking
@@ -72,6 +72,8 @@ service:
                 protocol: http/protobuf
                 endpoint: https://backend:4318
 ```
+
+For all available options, see [OTLP exporter options](#otlp-exporter-options).
 
 #### Prometheus endpoint for internal metrics
 
@@ -241,6 +243,8 @@ service:
                 endpoint: https://backend:4318
 ```
 
+For all available options, see [OTLP exporter options](#otlp-exporter-options).
+
 ### Configure internal traces
 
 The Collector does not expose traces by default, but it can be configured to.
@@ -265,11 +269,53 @@ service:
                 endpoint: https://backend:4318
 ```
 
-See the [example configuration][kitchen-sink-config] for additional options.
-Note that the `tracer_provider` section there corresponds to `traces` here.
+For all available options, see [OTLP exporter options](#otlp-exporter-options).
+See also the [example configuration][kitchen-sink-config] for additional options;
+note that the `tracer_provider` section there corresponds to `traces` here.
 
 [kitchen-sink-config]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml
+
+### OTLP exporter options {#otlp-exporter-options}
+
+The following options are available for the OTLP exporter in all three signal configurations:
+
+- `metrics::readers[*]::periodic::exporter::otlp`
+- `logs::processors[*]::batch::exporter::otlp`
+- `traces::processors[*]::batch::exporter::otlp`
+
+For the full list of fields, see the
+[`OTLP` struct](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L256) in the `otelconf` package.
+
+| Field name           | Default value | Description                                                                                                                                                                                                                                                                          |
+| -------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `endpoint`           | `localhost:4317` (grpc), `localhost:4318` (http/protobuf) | Target URL to send telemetry to, for example `https://backend:4318`.                                                                                                                                                                                                                 |
+| `protocol`           | (required)    | Transport protocol. Supported values: `grpc`, `http/protobuf`.                                                                                                                                                                                                                       |
+| `compression`        |               | Compression algorithm applied before sending. Supported values: `gzip`, `none`.                                                                                                                                                                                                      |
+| `timeout`            | `10000`       | Timeout in milliseconds for each export attempt.                                                                                                                                                                                                                                     |
+| `headers`            |               | List of key-value pairs sent as request headers. Each entry requires a `name` field and a `value` field.                                                                                                                                                                             |
+| `headers_list`       |               | Headers in [W3C Baggage](https://www.w3.org/TR/baggage/) format (for example, `key1=value1,key2=value2`). When both `headers` and `headers_list` are set, `headers` takes precedence on an individual header basis. |
+| `certificate`        |               | Path to a PEM-encoded CA certificate file used to verify the server's certificate.                                                                                                                                                                                                  |
+| `client_certificate` |               | Path to a PEM-encoded client certificate file for mutual TLS (mTLS). Required when `client_key` is set.                                                                                                                                                                             |
+| `client_key`         |               | Path to a PEM-encoded private key file for the client certificate. Required when `client_certificate` is set.                                                                                                                                                                        |
+| `insecure`           | `false`       | Only applies to the `grpc` protocol. When `true`, disables TLS for gRPC connections where the endpoint scheme is not `http` or `https`. For `http/protobuf`, TLS is determined solely by the endpoint URL scheme: use `http://` for plain-text or `https://` for TLS.               |
+
+> [!NOTE]
+>
+> The internal OTLP exporter is implemented in the Go SDK and programmatically configured by
+> the collector. While the Go SDK supports [environment variable-based configuration](/docs/languages/sdk-configuration/otlp-exporter/), programmatic configuration takes
+> precedence, so it is recommended to use the collector's YAML configuration to avoid
+> unexpected behavior.
+
+#### Additional options for metrics {#otlp-exporter-options-metrics}
+
+The following options apply only to the OTLP metric exporter
+(`metrics::readers[*].periodic.exporter.otlp`). For the full list of fields,
+see the [`OTLPMetric` struct](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L288) in the `otelconf` package.
+
+| Field name                       | Default value | Description                                                                                                                                                                                                      |
+| -------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `temporality_preference`         | `cumulative`  | Aggregation temporality for metric instruments. Supported values: `cumulative` (all instruments), `delta` (delta for counters, histograms, and observable counters; cumulative for all others), `lowmemory` (delta for counters and histograms; cumulative for all others).     |
 
 ## Types of internal telemetry
 
