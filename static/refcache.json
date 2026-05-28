@@ -15275,6 +15275,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-21T09:36:36.338254739Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.57.0/oteps/profiles/0212-profiling-vision.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-28T11:42:25.36990627Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.57.0/oteps/profiles/0239-profiles-data-model.md#message-mapping": {
     "StatusCode": 206,
     "LastSeen": "2026-05-21T09:36:38.196983646Z"
