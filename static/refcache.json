@@ -12843,6 +12843,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-12T10:31:44.16199463Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L256": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-28T15:49:01.755144-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L288": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-28T15:49:03.28792-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-go-contrib/issues/5655": {
     "StatusCode": 206,
     "LastSeen": "2026-05-12T10:31:28.715884733Z"
