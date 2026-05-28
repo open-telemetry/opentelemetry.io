@@ -128,7 +128,7 @@ HTTPServer prometheusServer =
 > OTel adoption**: organizations frequently already own significant Prometheus
 > instrumentation -- in libraries, third-party exporters, or legacy services --
 > and want to ingest those metrics into an OpenTelemetry-native pipeline without
-> rewriting everything up front. The Collector's `prometheus` receiver is the
+> rewriting everything upfront. The Collector's `prometheus` receiver is the
 > bridge that makes this possible.
 
 The Collector configuration that wires this up:
