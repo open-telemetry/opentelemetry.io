@@ -31,7 +31,7 @@ OBI は以下の機能を提供します。
 - **コンテキスト伝搬**: サービス間でトレースコンテキストを自動的に伝搬
 - **プロトコルサポート**: HTTP/S、gRPC、gRPC-Web、JSON-RPC、MQTT、NATS、AMQP 1.0、Memcached など
 - **データベース計装**: PostgreSQL（pgx ドライバーを含む）、MySQL、MSSQL、MongoDB、Redis、Couchbase（N1QL/SQL++ および KV プロトコル）
-- **生成 AI 計装**: OpenAI、Anthropic Claude、Google AI Studio（Gemini）、AWS Bedrock、Qwen（DashScope）、MCP over JSON-RPC、および Voyage AI、Cohere、Jina AI の埋め込みおよび再ランク API
+- **生成 AI 計装**: OpenAI、Anthropic Claude、Google AI Studio（Gemini）、AWS Bedrock、Qwen（DashScope）、MCP over JSON-RPC、および Voyage AI、Cohere、Jina AI の埋め込みおよび再ランク API のトレースとメトリクス
 - **低カーディナリティメトリクス**: コスト削減のための低カーディナリティの Prometheus 互換メトリクス
 - **ネットワークのオブザーバビリティ**: ホストレベルの TCP RTT 統計とともにサービス間のネットワークフローをキャプチャ
 - **強化されたサービスディスカバリー**: DNS 解決によるサービス名の検索の改善
@@ -43,7 +43,7 @@ OBI v0.9.0 は、プロトコルカバレッジ、出力テレメトリー、お
 
 - **新しいメッセージングプロトコルサポート**: NATS と AMQP 1.0 のトレースとメトリクスを追加
 - **データベースカバレッジの拡大**: 準備済みステートメントの処理とエラー抽出を含む、MSSQL プロトコルサポートを追加
-- **より広い生成 AI カバレッジ**: Qwen (DashScope)、MCP over JSON-RPC、埋め込みプロバイダー (Voyage AI、 Cohere、Jina AI) と再ランクプロバイダー (Cohere、Jina AI、 Voyage AI、Qwen) を追加
+- **より広い生成 AI カバレッジ**: Qwen（DashScope）、MCP over JSON-RPC、埋め込みプロバイダー（Voyage AI、Cohere、Jina AI）と再ランクプロバイダー（Cohere、Jina AI、Voyage AI、Qwen）を追加
 - **新しい統計メトリクス**: 既存の TCP RTT メトリクスに加え、TCP 接続失敗メトリクスを追加
 - **テレメトリースキーマレジストリ**: OBI が出力するメトリクスと属性向けの Weaver 互換スキーマレジストリを追加
 - **スパンおよびサービスグラフの整合**: OBI がスパンメトリクスおよびサービスグラフテレメトリーをドキュメント化し、collector-contrib コネクターと整合した形式で出力
