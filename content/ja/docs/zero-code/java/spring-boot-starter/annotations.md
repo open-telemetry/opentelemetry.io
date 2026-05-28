@@ -1,8 +1,7 @@
 ---
 title: アノテーション
 weight: 50
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
-drifted_from_default: true
+default_lang_commit: a790e3cf91025305c683047b181120ab6bbae3de
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -42,35 +41,43 @@ public class TracedClass {
   @WithSpan(kind = SpanKind.CLIENT)
   public void tracedClientSpan() {}
 
+  @WithSpan
   public void tracedMethodWithAttribute(@SpanAttribute("attributeName") String parameter) {}
 }
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert title="注意" %}}
+> [!NOTE]
+>
+> OpenTelemetryアノテーションは、プロキシに基づくSpring AOPを使用します。
+>
+> これらのアノテーションは、プロキシのメソッドに対してのみ機能します。
+> 詳細については、[Springドキュメント](https://docs.spring.io/spring-framework/reference/core/aop/proxying.html)を参照してください。
+>
+> 次の例では、GETエンドポイントが呼び出されたときに、`WithSpan`アノテーションは何もしません。
+>
+> ```java
+> @RestController
+> public class MyControllerManagedBySpring {
+>
+>     @GetMapping("/ping")
+>     public void aMethod() {
+>         anotherMethod();
+>     }
+>
+>     @WithSpan
+>     public void anotherMethod() {
+>     }
+> }
+> ```
 
-OpenTelemetryアノテーションは、プロキシに基づくSpring AOPを使用します。
+{{< comment >}} Note that we have to use the alert shortcode because it contains
+tab panes.
 
-これらのアノテーションは、プロキシのメソッドに対してのみ機能します。詳細については、[Springドキュメント](https://docs.spring.io/spring-framework/reference/core/aop/proxying.html)を参照してください。
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable prefer-blockquote-vs-docsy-alerts -->
 
-次の例では、GETエンドポイントが呼び出されたときに、`WithSpan`アノテーションは何もしません。
-
-```java
-@RestController
-public class MyControllerManagedBySpring {
-
-    @GetMapping("/ping")
-    public void aMethod() {
-        anotherMethod();
-    }
-
-    @WithSpan
-    public void anotherMethod() {
-    }
-}
-```
-
-{{% /alert %}}
+{{< /comment >}}
 
 {{% alert title="注意" %}}
 
@@ -99,7 +106,20 @@ dependencies {
 
 {{% /alert %}}
 
+<!-- markdownlint-restore -->
+
 `otel.instrumentation.annotations.enabled`プロパティを`false`に設定することで、OpenTelemetryアノテーションを無効にできます。
+
+[宣言的設定](../declarative-configuration/)では、かわりに集中型の計装リストを使用します。
+
+```yaml
+otel:
+  distribution:
+    spring_starter:
+      instrumentation:
+        disabled:
+          - annotations
+```
 
 `WithSpan`アノテーションの要素を使用してスパンをカスタマイズできます。
 
