@@ -7,7 +7,8 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
-default_lang_commit: 6751402db060c25800bb41c270dcaebb48aa7acb
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
+cSpell:ignore: Qwen
 ---
 
 OpenTelemetry ライブラリは、一般的なプログラミング言語やフレームワーク向けのテレメトリー収集機能を提供します。
@@ -28,32 +29,31 @@ OBI は以下の機能を提供します。
 - **Kubernetes ネイティブ**: Kubernetes アプリケーションに構成不要の自動計装を提供
 - **暗号化された通信の可視性**: TLS/SSL 経由のトランザクションを復号化せずにキャプチャ
 - **コンテキスト伝搬**: サービス間でトレースコンテキストを自動的に伝搬
-- **プロトコルサポート**: HTTP/S、gRPC、gRPC-Web、JSON-RPC、MQTT、Memcached など
-- **データベース計装**: PostgreSQL（pgx ドライバーを含む）、MySQL、MongoDB、Redis、Couchbase（N1QL/SQL++ および KV プロトコル）
-- **生成AI 計装**: OpenAI、Anthropic Claude、Google AI Studio（Gemini）、および AWS Bedrock API 呼び出しのトレースとメトリクス（ペイロードの自動抽出を含む）
+- **プロトコルサポート**: HTTP/S、gRPC、gRPC-Web、JSON-RPC、MQTT、NATS、AMQP 1.0、Memcached など
+- **データベース計装**: PostgreSQL（pgx ドライバーを含む）、MySQL、MSSQL、MongoDB、Redis、Couchbase（N1QL/SQL++ および KV プロトコル）
+- **生成 AI 計装**: OpenAI、Anthropic Claude、Google AI Studio（Gemini）、AWS Bedrock、Qwen（DashScope）、MCP over JSON-RPC、および Voyage AI、Cohere、Jina AI の埋め込みおよび再ランク API のトレースとメトリクス
 - **低カーディナリティメトリクス**: コスト削減のための低カーディナリティの Prometheus 互換メトリクス
 - **ネットワークのオブザーバビリティ**: ホストレベルの TCP RTT 統計とともにサービス間のネットワークフローをキャプチャ
 - **強化されたサービスディスカバリー**: DNS 解決によるサービス名の検索の改善
 - **Collector との統合**: OBI を OpenTelemetry Collector レシーバーコンポーネントとして実行
 
-## 最近のハイライト（v0.8.0） {#recent-highlights-v080}
+## 最近のハイライト（v0.9.0） {#recent-highlights-v090}
 
-OBI v0.8.0 は、プロトコルカバレッジ、ペイロード抽出、およびデプロイメントドキュメントを拡張しました。
+OBI v0.9.0 は、プロトコルカバレッジ、出力テレメトリー、および生成 AI 計装を拡張しました。
 
-- **汎用 Go トレーシングの改善**: 汎用リクエストのコンテキスト伝搬を含む、汎用 Go プロトコルサポートを追加
-- **プロトコルカバレッジの拡大**: すべての言語で JSON-RPC サポートを追加
-- **より深い HTTP ペイロード抽出**: 完全な HTTP ボディ抽出を追加し、レスポンスボディの制限付き解凍をサポート
-- **より広い生成 AI カバレッジ**: Google AI Studio（Gemini）と AWS Bedrock のペイロード抽出を追加し、Vertex AI Gemini サポートを修正
-- **名前付き CIDR ラベル**: ネットワークメトリクスで設定された CIDR 範囲に人間が読みやすい名前をラベル付けできるようになりました
-- **新しいサンプルシナリオ**: 既存の NGINX ウォークスルーに加えて、Apache HTTP Server のサンプルを追加
-- **サポートドキュメント**: リリース成果物とサポートされる環境のプロジェクトサポートマトリクスを追加
+- **新しいメッセージングプロトコルサポート**: NATS と AMQP 1.0 のトレースとメトリクスを追加
+- **データベースカバレッジの拡大**: 準備済みステートメントの処理とエラー抽出を含む、MSSQL プロトコルサポートを追加
+- **より広い生成 AI カバレッジ**: Qwen（DashScope）、MCP over JSON-RPC、埋め込みプロバイダー（Voyage AI、Cohere、Jina AI）と再ランクプロバイダー（Cohere、Jina AI、Voyage AI、Qwen）を追加
+- **新しい統計メトリクス**: 既存の TCP RTT メトリクスに加え、TCP 接続失敗メトリクスを追加
+- **テレメトリースキーマレジストリ**: OBI が出力するメトリクスと属性向けの Weaver 互換スキーマレジストリを追加
+- **スパンおよびサービスグラフの整合**: OBI がスパンメトリクスおよびサービスグラフテレメトリーをドキュメント化し、collector-contrib コネクターと整合した形式で出力
 
 完全な変更リストとアップグレードノートについては、
-[リリースノート](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.8.0)を参照してください。
+[リリースノート](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.9.0)を参照してください。
 
 上流のサンプルを確認するには、
-[NGINX ウォークスルー](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/nginx)と
-[Apache ウォークスルー](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/apache)を参照してください。
+[NGINX ウォークスルー](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.9.0/examples/nginx)と
+[Apache ウォークスルー](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.9.0/examples/apache)を参照してください。
 
 ## OBI の仕組み {#how-obi-works}
 
