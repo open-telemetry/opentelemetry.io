@@ -39,6 +39,9 @@ spec-sponsors:
   - name: jpkrohling
     html_url: https://github.com/jpkrohling
     avatar_url: https://avatars.githubusercontent.com/u/13387?v=4
+  - name: jsuereth
+    html_url: https://github.com/jsuereth
+    avatar_url: https://avatars.githubusercontent.com/u/29006?v=4
   - name: lzchen
     html_url: https://github.com/lzchen
     avatar_url: https://avatars.githubusercontent.com/u/11580155?v=4
@@ -82,9 +85,6 @@ technical-committee:
   - name: jmacd
     html_url: https://github.com/jmacd
     avatar_url: https://avatars.githubusercontent.com/u/3629705?v=4
-  - name: jsuereth
-    html_url: https://github.com/jsuereth
-    avatar_url: https://avatars.githubusercontent.com/u/29006?v=4
   - name: lmolkova
     html_url: https://github.com/lmolkova
     avatar_url: https://avatars.githubusercontent.com/u/2347409?v=4
@@ -118,12 +118,6 @@ maintainers:
       - proto-triagers
     html_url: https://github.com/aalexand
     avatar_url: https://avatars.githubusercontent.com/u/1519040?v=4
-  - name: ahayworth
-    teams:
-      - ruby-contrib-approvers
-      - ruby-contrib-maintainers
-    html_url: https://github.com/ahayworth
-    avatar_url: https://avatars.githubusercontent.com/u/1781907?v=4
   - name: alanwest
     teams:
       - dotnet-approvers
@@ -650,12 +644,6 @@ maintainers:
       - python-approvers
     html_url: https://github.com/emdneto
     avatar_url: https://avatars.githubusercontent.com/u/9735060?v=4
-  - name: ericmustin
-    teams:
-      - ruby-contrib-approvers
-      - ruby-contrib-maintainers
-    html_url: https://github.com/ericmustin
-    avatar_url: https://avatars.githubusercontent.com/u/14250318?v=4
   - name: esigo
     teams:
       - cpp-approvers
@@ -694,8 +682,6 @@ maintainers:
   - name: fbogsany
     teams:
       - ruby-approvers
-      - ruby-contrib-approvers
-      - ruby-contrib-maintainers
       - ruby-maintainers
     html_url: https://github.com/fbogsany
     avatar_url: https://avatars.githubusercontent.com/u/1551119?v=4
@@ -1234,8 +1220,6 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-triagers
       - ruby-approvers
-      - ruby-contrib-approvers
-      - ruby-contrib-maintainers
       - ruby-maintainers
     html_url: https://github.com/mwear
     avatar_url: https://avatars.githubusercontent.com/u/2513372?v=4
@@ -1341,12 +1325,6 @@ maintainers:
       - javascript-triagers
     html_url: https://github.com/pichlermarc
     avatar_url: https://avatars.githubusercontent.com/u/22105064?v=4
-  - name: plantfansam
-    teams:
-      - ruby-contrib-approvers
-      - ruby-contrib-maintainers
-    html_url: https://github.com/plantfansam
-    avatar_url: https://avatars.githubusercontent.com/u/370182?v=4
   - name: puckpuck
     teams:
       - demo-approvers
@@ -1413,8 +1391,6 @@ maintainers:
   - name: robertlaurin
     teams:
       - ruby-approvers
-      - ruby-contrib-approvers
-      - ruby-contrib-maintainers
       - ruby-maintainers
     html_url: https://github.com/robertlaurin
     avatar_url: https://avatars.githubusercontent.com/u/23463253?v=4
@@ -2784,6 +2760,9 @@ members:
   - name: hekike
     html_url: https://github.com/hekike
     avatar_url: https://avatars.githubusercontent.com/u/1764512?v=4
+  - name: hgaol
+    html_url: https://github.com/hgaol
+    avatar_url: https://avatars.githubusercontent.com/u/11908658?v=4
   - name: Horiodino
     html_url: https://github.com/Horiodino
     avatar_url: https://avatars.githubusercontent.com/u/99384392?v=4
