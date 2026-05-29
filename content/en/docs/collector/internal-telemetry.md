@@ -279,16 +279,11 @@ here.
 
 ### OTLP exporter options {#otlp-exporter-options}
 
-The following options are available for the OTLP exporter in all three signal
-configurations:
+The following [options](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L256) are available for the OTLP exporter for all three signals but there are [additional options for metrics](#otlp-exporter-options-metrics).
 
 - `metrics::readers[*]::periodic::exporter::otlp`
 - `logs::processors[*]::batch::exporter::otlp`
 - `traces::processors[*]::batch::exporter::otlp`
-
-For the full list of fields, see the
-[`OTLP` struct](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L256)
-in the `otelconf` package.
 
 | Field name           | Default value                                             | Description                                                                                                                                                                                                                                                           |
 | -------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -299,9 +294,9 @@ in the `otelconf` package.
 | `headers`            |                                                           | List of key-value pairs sent as request headers. Each entry requires a `name` field and a `value` field.                                                                                                                                                              |
 | `headers_list`       |                                                           | Headers in [W3C Baggage](https://www.w3.org/TR/baggage/) format (for example, `key1=value1,key2=value2`). When both `headers` and `headers_list` are set, `headers` takes precedence on an individual header basis.                                                   |
 | `certificate`        |                                                           | Path to a PEM-encoded CA certificate file used to verify the server's certificate.                                                                                                                                                                                    |
-| `client_certificate` |                                                           | Path to a PEM-encoded client certificate file for mutual TLS (mTLS). Required when `client_key` is set.                                                                                                                                                               |
+| `client_certificate` |                                                           | Path to a PEM-encoded client certificate file for mTLS. Required when `client_key` is set.                                                                                                                                                               |
 | `client_key`         |                                                           | Path to a PEM-encoded private key file for the client certificate. Required when `client_certificate` is set.                                                                                                                                                         |
-| `insecure`           | `false`                                                   | Only applies to the `grpc` protocol. When `true`, disables TLS for gRPC connections where the endpoint scheme is not `http` or `https`. For `http/protobuf`, TLS is determined solely by the endpoint URL scheme: use `http://` for plain-text or `https://` for TLS. |
+| `insecure`           | `false`                                                   | Only applies to the `grpc` protocol. When `true`, disables TLS for gRPC connections where the endpoint scheme is not `http` or `https`. For `http/protobuf`, TLS is determined by the endpoint URL scheme. |
 
 > [!NOTE]
 >
@@ -313,11 +308,8 @@ in the `otelconf` package.
 
 #### Additional options for metrics {#otlp-exporter-options-metrics}
 
-The following options apply only to the OTLP metric exporter
-(`metrics::readers[*].periodic.exporter.otlp`). For the full list of fields, see
-the
-[`OTLPMetric` struct](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L288)
-in the `otelconf` package.
+The following [options](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L288) apply only to the OTLP metric exporter
+(`metrics::readers[*].periodic.exporter.otlp`). 
 
 | Field name               | Default value | Description                                                                                                                                                                                                                                                                 |
 | ------------------------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
