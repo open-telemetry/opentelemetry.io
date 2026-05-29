@@ -37,6 +37,7 @@
     - contrib
   stability:
     logs: alpha
+    metrics: alpha
 - name: awscontainerinsightreceiver
   display_name: AWS Container Insights Receiver
   repo: contrib
@@ -854,7 +855,7 @@
   distributions:
     - contrib
   stability:
-    metrics: development
+    metrics: alpha
 - name: yanggrpcreceiver
   display_name: YANG gRPC Receiver
   repo: contrib
