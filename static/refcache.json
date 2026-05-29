@@ -2161,7 +2161,7 @@
   },
   "https://docs.kubewarden.io/howtos/telemetry/opentelemetry-qs": {
     "StatusCode": 404,
-    "LastSeen": "2026-05-28T10:54:30.73882323Z"
+    "LastSeen": "2026-05-29T10:52:53.26149447Z"
   },
   "https://docs.lightstep.com/docs/about-sending-data": {
     "StatusCode": 206,
@@ -4335,10 +4335,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-25T05:16:31.417601245Z"
   },
-  "https://github.com/ahayworth": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-03T10:02:32.702293141Z"
-  },
   "https://github.com/akahenry": {
     "StatusCode": 206,
     "LastSeen": "2026-05-25T11:09:57.713002175Z"
@@ -5490,10 +5486,6 @@
   "https://github.com/envoyproxy/envoy/pull/29547": {
     "StatusCode": 206,
     "LastSeen": "2026-05-01T10:13:35.531749535Z"
-  },
-  "https://github.com/ericmustin": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-06T10:27:01.74633738Z"
   },
   "https://github.com/eruizdechavez": {
     "StatusCode": 206,
@@ -6958,10 +6950,6 @@
   "https://github.com/mperham": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T10:02:27.080504026Z"
-  },
-  "https://github.com/ms-jcorley": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-06T10:28:40.404690806Z"
   },
   "https://github.com/mterhar": {
     "StatusCode": 206,
@@ -10403,30 +10391,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:28:41.251776695Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.152.0/component/config.go": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-12T14:27:42.385913775Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.152.0/config/configtls/README.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-12T14:27:44.538244723Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.152.0/pdata/pcommon/map.go": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-12T14:27:58.094053909Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.152.0/pdata/ptrace/generated_resourcespans.go": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-12T14:27:51.190272262Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.152.0/receiver/receiver.go": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-12T14:27:48.291577263Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.152.0/receiver/receiver.go#L58": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-12T14:27:45.737392531Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.153.0/component/config.go": {
     "StatusCode": 206,
     "LastSeen": "2026-05-28T17:27:05.561637975Z"
@@ -11555,10 +11519,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-03T10:04:20.063216532Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.8.0": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-12T10:25:57.181855317Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.9.0": {
     "StatusCode": 206,
     "LastSeen": "2026-05-11T21:25:33.679333006Z"
@@ -11574,14 +11534,6 @@
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/f6deabc4387de1e0bf4b2acdbc674f7601d4c7f2/internal/test/integration?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:28:19.73503149Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/apache": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-12T10:26:02.35434435Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/nginx": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-12T10:26:00.769335795Z"
   },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.9.0/examples/apache": {
     "StatusCode": 206,
@@ -12633,7 +12585,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/payara": {
     "StatusCode": 404,
-    "LastSeen": "2026-05-28T11:00:38.041920914Z"
+    "LastSeen": "2026-05-29T10:59:00.526785607Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/pekko": {
     "StatusCode": 206,
@@ -16679,10 +16631,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-21T10:55:41.88196946Z"
   },
-  "https://github.com/plantfansam": {
-    "StatusCode": 206,
-    "LastSeen": "2026-05-06T10:29:00.749260717Z"
-  },
   "https://github.com/playframework/play-ws": {
     "StatusCode": 206,
     "LastSeen": "2026-05-05T10:16:32.245848953Z"
@@ -20426,10 +20374,6 @@
   "https://opentelemetry.io/docs/specs/otlp/": {
     "StatusCode": 206,
     "LastSeen": "2026-05-05T10:22:54.45528098Z"
-  },
-  "https://opentelemetry.io/docs/specs/semconv/registry/attributes/service/#service-attributes-for-peer-services": {
-    "StatusCode": 206,
-    "LastSeen": "2026-04-28T11:12:12.096928+03:00"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
