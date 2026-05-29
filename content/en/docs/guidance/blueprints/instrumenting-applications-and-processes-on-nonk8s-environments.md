@@ -355,9 +355,10 @@ Checklist:
 - Decide which agents or OpenTelemetry Collector deployments will be managed
   through OpAMP, based on the capabilities of the distributions used in your
   environment (for example, whether they are upstream or vendor-specific,
-  whether they embed an OpAMP client, whether they use a supervisor, and whether
-  OpAMP is compiled in or packaged separately), and the components you want to
-  manage centrally.
+  whether they embed an OpAMP client, whether they use an
+  [OpAMP Supervisor for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor),
+  and whether OpAMP is compiled in or packaged separately), and the components
+  you want to manage centrally.
 - Stand up or adopt a production-ready OpAMP server or management endpoint,
   following the
   [Collector management documentation](/docs/collector/management/#opamp), with
@@ -372,11 +373,29 @@ Checklist:
 - Monitor management-plane health, agent connectivity, update status, and
   configuration drift to ensure the fleet remains under control.
 
-A common OpAMP architecture uses a central management service to control
-configuration, rollout, and health monitoring for agents running across many
-hosts. In deployments that use an OpAMP Supervisor, the management service
-communicates with a host-local supervisor, which then manages the lifecycle and
-configuration of the local agent or Collector.
+OpAMP can be integrated with the OpenTelemetry Collector in two ways, with
+different scopes of capability:
+
+- Using an **OpAMP Supervisor** — a separate host-local process that manages the
+  Collector lifecycle and applies remote configuration in addition to reporting
+  status, health, and capabilities. This is the most capable integration and is
+  suitable when OpAMP is the primary mechanism for configuration and lifecycle
+  management.
+
+- Using the **Collector's built-in OpAMP extension** — a lightweight integration
+  that reports status, health, and capabilities to the management service, but
+  does not handle remote configuration delivery or lifecycle management. This is
+  suitable when configuration and lifecycle are already handled by other tooling
+  (for example, configuration management, golden images, or packaged
+  distributions) and OpAMP is used primarily for centralized observability of
+  the agent fleet.
+
+In a Supervisor-based deployment, the management service communicates with the
+host-local Supervisor, which then manages the lifecycle and configuration of the
+local agent or Collector. The diagram below illustrates the Supervisor pattern;
+the extension-only pattern looks similar but with the Supervisor box removed and
+the management service communicating directly with the Collector for status
+reporting only.
 
 ```mermaid
 flowchart TB
