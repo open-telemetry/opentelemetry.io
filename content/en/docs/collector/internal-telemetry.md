@@ -269,9 +269,10 @@ service:
                 endpoint: https://backend:4318
 ```
 
-See the [example configuration][kitchen-sink-config] for additional
-options; note that the `tracer_provider` section there corresponds to `traces`
-here. For details about the OTLP exporter options specifically, see [below](#otlp-exporter-options).
+See the [example configuration][kitchen-sink-config] for additional options;
+note that the `tracer_provider` section there corresponds to `traces` here. For
+details about the OTLP exporter options specifically, see
+[below](#otlp-exporter-options).
 
 [kitchen-sink-config]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml
@@ -287,18 +288,18 @@ options are available [for metrics](#otlp-exporter-options-metrics).
 - `logs::processors[*]::batch::exporter::otlp`
 - `traces::processors[*]::batch::exporter::otlp`
 
-| Field name           | Default value                                             | Description                                                                                                                                                                                                         |
-| -------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Field name           | Default value                                             | Description                                                                                                                                                                                                                                                 |
+| -------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `endpoint`           | `localhost:4317` (gRPC), `localhost:4318` (http/protobuf) | Target URL to send telemetry to, for example `https://backend:4318`. For `http/protobuf`, any path in the URL is forwarded to the exporter; if no path is specified, the default signal-specific path is used (`/v1/traces`, `/v1/metrics`, or `/v1/logs`). |
-| `protocol`           | (required)                                                | Transport protocol. Supported values: `grpc`, `http/protobuf`.                                                                                                                                                      |
-| `compression`        |                                                           | Compression algorithm applied before sending. Supported values: `gzip`, `none`.                                                                                                                                     |
-| `timeout`            | `10000`                                                   | Timeout in milliseconds for each export attempt.                                                                                                                                                                    |
-| `headers`            |                                                           | List of key-value pairs sent as request headers. Each entry requires a `name` field and a `value` field.                                                                                                            |
-| `headers_list`       |                                                           | Headers in [W3C Baggage](https://www.w3.org/TR/baggage/) format (for example, `key1=value1,key2=value2`). When both `headers` and `headers_list` are set, `headers` takes precedence on an individual header basis. |
-| `certificate`        |                                                           | Path to a PEM-encoded CA certificate file used to verify the server's certificate.                                                                                                                                  |
-| `client_certificate` |                                                           | Path to a PEM-encoded client certificate file for mTLS. Required when `client_key` is set.                                                                                                                          |
-| `client_key`         |                                                           | Path to a PEM-encoded private key file for the client certificate. Required when `client_certificate` is set.                                                                                                       |
-| `insecure`           | `false`                                                   | Only applies to the `grpc` protocol. When `true`, disables TLS for gRPC connections where the endpoint scheme is not `http` or `https`. For `http/protobuf`, TLS is determined by the endpoint URL scheme.          |
+| `protocol`           | (required)                                                | Transport protocol. Supported values: `grpc`, `http/protobuf`.                                                                                                                                                                                              |
+| `compression`        |                                                           | Compression algorithm applied before sending. Supported values: `gzip`, `none`.                                                                                                                                                                             |
+| `timeout`            | `10000`                                                   | Timeout in milliseconds for each export attempt.                                                                                                                                                                                                            |
+| `headers`            |                                                           | List of key-value pairs sent as request headers. Each entry requires a `name` field and a `value` field.                                                                                                                                                    |
+| `headers_list`       |                                                           | Headers in [W3C Baggage](https://www.w3.org/TR/baggage/) format (for example, `key1=value1,key2=value2`). When both `headers` and `headers_list` are set, `headers` takes precedence on an individual header basis.                                         |
+| `certificate`        |                                                           | Path to a PEM-encoded CA certificate file used to verify the server's certificate.                                                                                                                                                                          |
+| `client_certificate` |                                                           | Path to a PEM-encoded client certificate file for mTLS. Required when `client_key` is set.                                                                                                                                                                  |
+| `client_key`         |                                                           | Path to a PEM-encoded private key file for the client certificate. Required when `client_certificate` is set.                                                                                                                                               |
+| `insecure`           | `false`                                                   | Only applies to the `grpc` protocol. When `true`, disables TLS for gRPC connections where the endpoint scheme is not `http` or `https`. For `http/protobuf`, TLS is determined by the endpoint URL scheme.                                                  |
 
 > [!NOTE]
 >
