@@ -201,14 +201,14 @@ params:
         url: https://cloud-native.slack.com/archives/C09H3MNMBQV
         icon: fab fa-slack
         desc: >-
-          Clarify doubts and learn contribution etiquette. Sign up via
+          Ask beginner questions and learn contribution etiquette. Sign up via
           [slack.cncf.io](https://slack.cncf.io).
       - name: 'Slack #opentelemetry'
         url: https://cloud-native.slack.com/archives/CJFCJHG4Q
         icon: fab fa-slack
         desc: >-
-          Chat with other project developers and follow developments. Also see
-          other channels starting with a `#otel-` prefix.
+          Follow project-wide developments. To chat about a specific subproject,
+          check out the other channels starting with `#otel-`.
       - name: CNCF DevStats
         url: https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m
         icon: fas fa-chart-area
