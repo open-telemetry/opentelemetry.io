@@ -5,7 +5,7 @@ weight: 11
 description: OpenTelemetryオペレーターを使用した自動計装の実装。
 default_lang_commit: 869b2bb90ca9e54d8d98e7815e66111b577165eb
 # prettier-ignore
-cSpell:ignore: Dockerfiles GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA replicaset statefulset
+cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA replicaset statefulset
 ---
 
 OpenTelemetryオペレーターは、.NET、Java、Node.js、Python、およびGoのサービスについて、自動計装ライブラリの注入と構成をサポートしています。
