@@ -106,8 +106,7 @@ configuration with a receiver, a processor, an exporter, and three extensions.
 >
 > While it is generally preferable to bind endpoints to `localhost` when all
 > clients are local, our example configurations use the "unspecified" address
-> `0.0.0.0` as a convenience. The Collector currently defaults to `0.0.0.0`, but
-> the default will be changed to `localhost` in the near future. For details
+> `0.0.0.0` as a convenience. The Collector defaults to `localhost`. For details
 > concerning either of these choices as endpoint configuration value, see
 > [Safeguards against denial of service attacks][].
 
