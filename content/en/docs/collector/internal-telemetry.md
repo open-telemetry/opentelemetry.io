@@ -401,35 +401,36 @@ files in the repository.
 
 #### `basic`-level metrics
 
-| Metric name                                            | Description                                                                             | Type    |
-| ------------------------------------------------------ | --------------------------------------------------------------------------------------- | ------- |
-| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | Number of logs that exporter(s) failed to enqueue.                                      | Counter |
-| `otelcol_exporter_enqueue_failed_`<br>`metric_points`  | Number of metric points that exporter(s) failed to enqueue.                             | Counter |
-| `otelcol_exporter_enqueue_failed_`<br>`spans`          | Number of spans that exporter(s) failed to enqueue.                                     | Counter |
-| `otelcol_exporter_queue_capacity`                      | Fixed capacity of the sending queue, in batches.                                        | Gauge   |
-| `otelcol_exporter_queue_size`                          | Current size of the sending queue, in batches.                                          | Gauge   |
-| `otelcol_exporter_send_failed_`<br>`log_records`       | Number of logs that exporter(s) failed to send to destination.                          | Counter |
-| `otelcol_exporter_send_failed_`<br>`metric_points`     | Number of metric points that exporter(s) failed to send to destination.                 | Counter |
-| `otelcol_exporter_send_failed_`<br>`spans`             | Number of spans that exporter(s) failed to send to destination.                         | Counter |
-| `otelcol_exporter_sent_log_records`                    | Number of logs successfully sent to destination.                                        | Counter |
-| `otelcol_exporter_sent_metric_points`                  | Number of metric points successfully sent to destination.                               | Counter |
-| `otelcol_exporter_sent_spans`                          | Number of spans successfully sent to destination.                                       | Counter |
-| `otelcol_process_cpu_seconds`                          | Total CPU user and system time in seconds.                                              | Counter |
-| `otelcol_process_memory_rss`                           | Total physical memory (resident set size) in bytes.                                     | Gauge   |
-| `otelcol_process_runtime_heap_`<br>`alloc_bytes`       | Bytes of allocated heap objects (see 'go doc runtime.MemStats.HeapAlloc').              | Gauge   |
-| `otelcol_process_runtime_total_`<br>`alloc_bytes`      | Cumulative bytes allocated for heap objects (see 'go doc runtime.MemStats.TotalAlloc'). | Counter |
-| `otelcol_process_runtime_total_`<br>`sys_memory_bytes` | Total bytes of memory obtained from the OS (see 'go doc runtime.MemStats.Sys').         | Gauge   |
-| `otelcol_process_uptime`                               | Uptime of the process in seconds.                                                       | Counter |
-| `otelcol_processor_incoming_items`                     | Number of items passed to the processor.                                                | Counter |
-| `otelcol_processor_outgoing_items`                     | Number of items emitted from the processor.                                             | Counter |
-| `otelcol_receiver_accepted_`<br>`log_records`          | Number of logs successfully ingested and pushed into the pipeline.                      | Counter |
-| `otelcol_receiver_accepted_`<br>`metric_points`        | Number of metric points successfully ingested and pushed into the pipeline.             | Counter |
-| `otelcol_receiver_accepted_spans`                      | Number of spans successfully ingested and pushed into the pipeline.                     | Counter |
-| `otelcol_receiver_refused_`<br>`log_records`           | Number of logs that could not be pushed into the pipeline.                              | Counter |
-| `otelcol_receiver_refused_`<br>`metric_points`         | Number of metric points that could not be pushed into the pipeline.                     | Counter |
-| `otelcol_receiver_refused_spans`                       | Number of spans that could not be pushed into the pipeline.                             | Counter |
-| `otelcol_scraper_errored_`<br>`metric_points`          | Number of metric points the Collector failed to scrape.                                 | Counter |
-| `otelcol_scraper_scraped_`<br>`metric_points`          | Number of metric points scraped by the Collector.                                       | Counter |
+| Metric name                                            | Description                                                                             | Type          |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------- | ------------- |
+| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | Number of logs that exporter(s) failed to enqueue.                                      | Counter       |
+| `otelcol_exporter_enqueue_failed_`<br>`metric_points`  | Number of metric points that exporter(s) failed to enqueue.                             | Counter       |
+| `otelcol_exporter_enqueue_failed_`<br>`spans`          | Number of spans that exporter(s) failed to enqueue.                                     | Counter       |
+| `otelcol_exporter_in_flight_requests`                  | Number of export requests currently in flight, including retry backoff.                 | UpDownCounter |
+| `otelcol_exporter_queue_capacity`                      | Fixed capacity of the sending queue, in batches.                                        | Gauge         |
+| `otelcol_exporter_queue_size`                          | Current size of the sending queue, in batches.                                          | Gauge         |
+| `otelcol_exporter_send_failed_`<br>`log_records`       | Number of logs that exporter(s) failed to send to destination.                          | Counter       |
+| `otelcol_exporter_send_failed_`<br>`metric_points`     | Number of metric points that exporter(s) failed to send to destination.                 | Counter       |
+| `otelcol_exporter_send_failed_`<br>`spans`             | Number of spans that exporter(s) failed to send to destination.                         | Counter       |
+| `otelcol_exporter_sent_log_records`                    | Number of logs successfully sent to destination.                                        | Counter       |
+| `otelcol_exporter_sent_metric_points`                  | Number of metric points successfully sent to destination.                               | Counter       |
+| `otelcol_exporter_sent_spans`                          | Number of spans successfully sent to destination.                                       | Counter       |
+| `otelcol_process_cpu_seconds`                          | Total CPU user and system time in seconds.                                              | Counter       |
+| `otelcol_process_memory_rss`                           | Total physical memory (resident set size) in bytes.                                     | Gauge         |
+| `otelcol_process_runtime_heap_`<br>`alloc_bytes`       | Bytes of allocated heap objects (see 'go doc runtime.MemStats.HeapAlloc').              | Gauge         |
+| `otelcol_process_runtime_total_`<br>`alloc_bytes`      | Cumulative bytes allocated for heap objects (see 'go doc runtime.MemStats.TotalAlloc'). | Counter       |
+| `otelcol_process_runtime_total_`<br>`sys_memory_bytes` | Total bytes of memory obtained from the OS (see 'go doc runtime.MemStats.Sys').         | Gauge         |
+| `otelcol_process_uptime`                               | Uptime of the process in seconds.                                                       | Counter       |
+| `otelcol_processor_incoming_items`                     | Number of items passed to the processor.                                                | Counter       |
+| `otelcol_processor_outgoing_items`                     | Number of items emitted from the processor.                                             | Counter       |
+| `otelcol_receiver_accepted_`<br>`log_records`          | Number of logs successfully ingested and pushed into the pipeline.                      | Counter       |
+| `otelcol_receiver_accepted_`<br>`metric_points`        | Number of metric points successfully ingested and pushed into the pipeline.             | Counter       |
+| `otelcol_receiver_accepted_spans`                      | Number of spans successfully ingested and pushed into the pipeline.                     | Counter       |
+| `otelcol_receiver_refused_`<br>`log_records`           | Number of logs that could not be pushed into the pipeline.                              | Counter       |
+| `otelcol_receiver_refused_`<br>`metric_points`         | Number of metric points that could not be pushed into the pipeline.                     | Counter       |
+| `otelcol_receiver_refused_spans`                       | Number of spans that could not be pushed into the pipeline.                             | Counter       |
+| `otelcol_scraper_errored_`<br>`metric_points`          | Number of metric points the Collector failed to scrape.                                 | Counter       |
+| `otelcol_scraper_scraped_`<br>`metric_points`          | Number of metric points scraped by the Collector.                                       | Counter       |
 
 #### Additional `normal`-level metrics
 
