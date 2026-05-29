@@ -2,8 +2,8 @@
 title: トラブルシューティング
 description: OBI の一般的な問題やエラーのトラブルシューティング
 weight: 22
-cSpell:ignore: Clickhouse uprobe uprobes
 default_lang_commit: 4aa05a4d65591e780952439f45415c597f3047dd
+cSpell:ignore: Clickhouse uprobe
 ---
 
 このページでは、OBI で発生する一般的なエラーや問題を診断し、解決する方法を学びます。
