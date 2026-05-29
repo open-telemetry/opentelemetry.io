@@ -269,47 +269,52 @@ service:
                 endpoint: https://backend:4318
 ```
 
-For all available options, see [OTLP exporter options](#otlp-exporter-options).
-See also the [example configuration][kitchen-sink-config] for additional
+See the [example configuration][kitchen-sink-config] for additional
 options; note that the `tracer_provider` section there corresponds to `traces`
-here.
+here. For details about the OTLP exporter options specifically, see [below](#otlp-exporter-options).
 
 [kitchen-sink-config]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml
 
 ### OTLP exporter options {#otlp-exporter-options}
 
-The following [options](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L256) are available for the OTLP exporter for all three signals but there are [additional options for metrics](#otlp-exporter-options-metrics).
+The following
+[options](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L256)
+are available for the OTLP exporter for all three signals. Some additional
+options are available [for metrics](#otlp-exporter-options-metrics).
 
 - `metrics::readers[*]::periodic::exporter::otlp`
 - `logs::processors[*]::batch::exporter::otlp`
 - `traces::processors[*]::batch::exporter::otlp`
 
-| Field name           | Default value                                             | Description                                                                                                                                                                                                                                                           |
-| -------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `endpoint`           | `localhost:4317` (gRPC), `localhost:4318` (http/protobuf) | Target URL to send telemetry to, for example `https://backend:4318`.                                                                                                                                                                                                  |
-| `protocol`           | (required)                                                | Transport protocol. Supported values: `grpc`, `http/protobuf`.                                                                                                                                                                                                        |
-| `compression`        |                                                           | Compression algorithm applied before sending. Supported values: `gzip`, `none`.                                                                                                                                                                                       |
-| `timeout`            | `10000`                                                   | Timeout in milliseconds for each export attempt.                                                                                                                                                                                                                      |
-| `headers`            |                                                           | List of key-value pairs sent as request headers. Each entry requires a `name` field and a `value` field.                                                                                                                                                              |
-| `headers_list`       |                                                           | Headers in [W3C Baggage](https://www.w3.org/TR/baggage/) format (for example, `key1=value1,key2=value2`). When both `headers` and `headers_list` are set, `headers` takes precedence on an individual header basis.                                                   |
-| `certificate`        |                                                           | Path to a PEM-encoded CA certificate file used to verify the server's certificate.                                                                                                                                                                                    |
-| `client_certificate` |                                                           | Path to a PEM-encoded client certificate file for mTLS. Required when `client_key` is set.                                                                                                                                                               |
-| `client_key`         |                                                           | Path to a PEM-encoded private key file for the client certificate. Required when `client_certificate` is set.                                                                                                                                                         |
-| `insecure`           | `false`                                                   | Only applies to the `grpc` protocol. When `true`, disables TLS for gRPC connections where the endpoint scheme is not `http` or `https`. For `http/protobuf`, TLS is determined by the endpoint URL scheme. |
+| Field name           | Default value                                             | Description                                                                                                                                                                                                         |
+| -------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `endpoint`           | `localhost:4317` (gRPC), `localhost:4318` (http/protobuf) | Target URL to send telemetry to, for example `https://backend:4318`.                                                                                                                                                |
+| `protocol`           | (required)                                                | Transport protocol. Supported values: `grpc`, `http/protobuf`.                                                                                                                                                      |
+| `compression`        |                                                           | Compression algorithm applied before sending. Supported values: `gzip`, `none`.                                                                                                                                     |
+| `timeout`            | `10000`                                                   | Timeout in milliseconds for each export attempt.                                                                                                                                                                    |
+| `headers`            |                                                           | List of key-value pairs sent as request headers. Each entry requires a `name` field and a `value` field.                                                                                                            |
+| `headers_list`       |                                                           | Headers in [W3C Baggage](https://www.w3.org/TR/baggage/) format (for example, `key1=value1,key2=value2`). When both `headers` and `headers_list` are set, `headers` takes precedence on an individual header basis. |
+| `certificate`        |                                                           | Path to a PEM-encoded CA certificate file used to verify the server's certificate.                                                                                                                                  |
+| `client_certificate` |                                                           | Path to a PEM-encoded client certificate file for mTLS. Required when `client_key` is set.                                                                                                                          |
+| `client_key`         |                                                           | Path to a PEM-encoded private key file for the client certificate. Required when `client_certificate` is set.                                                                                                       |
+| `insecure`           | `false`                                                   | Only applies to the `grpc` protocol. When `true`, disables TLS for gRPC connections where the endpoint scheme is not `http` or `https`. For `http/protobuf`, TLS is determined by the endpoint URL scheme.          |
 
 > [!NOTE]
 >
-> The internal OTLP exporter is implemented in the Go SDK and programmatically
-> configured by the collector. While the Go SDK supports
+> The internal OTLP exporter is implemented in the Go SDK used by the colletor.
+> While the Go SDK supports
 > [environment variable-based configuration](/docs/languages/sdk-configuration/otlp-exporter/),
-> programmatic configuration takes precedence, so it is recommended to use the
-> collector's YAML configuration to avoid unexpected behavior.
+> programmatic configuration by the collector takes precedence, so it is
+> recommended to use the collector's YAML configuration to avoid unexpected
+> behavior.
 
 #### Additional options for metrics {#otlp-exporter-options-metrics}
 
-The following [options](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L288) apply only to the OTLP metric exporter
-(`metrics::readers[*].periodic.exporter.otlp`). 
+The following
+[options](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L288)
+apply only to the OTLP metric exporter
+(`metrics::readers[*].periodic.exporter.otlp`).
 
 | Field name               | Default value | Description                                                                                                                                                                                                                                                                 |
 | ------------------------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
