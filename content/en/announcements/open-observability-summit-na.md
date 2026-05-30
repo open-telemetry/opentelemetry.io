@@ -2,7 +2,7 @@
 title: Observability Summit NA 2026
 linkTitle: Observability Summit NA '26
 date: 2026-04-22
-expiryDate: 2026-05-22 # keep
+expiryDate: 2026-05-20 # keep
 weight: 20260522
 params:
   eventUrl: &eventUrl >-
