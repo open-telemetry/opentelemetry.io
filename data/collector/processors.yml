@@ -259,9 +259,9 @@
   distributions:
     - contrib
   stability:
-    logs: development
-    metrics: development
-    traces: development
+    logs: alpha
+    metrics: alpha
+    traces: alpha
 - name: spanprocessor
   display_name: Span Processor
   repo: contrib

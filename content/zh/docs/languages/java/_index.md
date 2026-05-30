@@ -8,9 +8,9 @@ default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
 drifted_from_default: true
 cascade:
   vers:
-    instrumentation: 2.27.0
+    instrumentation: 2.28.1
     otel: 1.62.0
-    contrib: 1.56.0
+    contrib: 1.57.0
     semconv: 1.41.0
 weight: 18
 ---
