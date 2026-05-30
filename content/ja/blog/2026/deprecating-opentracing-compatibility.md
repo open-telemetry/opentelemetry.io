@@ -5,8 +5,8 @@ date: 2026-04-23
 author: '[Amol Patil](https://github.com/adp2201)'
 issue: 9385
 sig: Specification
-cSpell:ignore: Patil
 default_lang_commit: e17943afc3a71a67fcdd3a69dcd428c3e45b306d
+cSpell:ignore: Patil
 ---
 
 2026年3月19日、OpenTelemetry Specification プロジェクトは [PR #4938](https://github.com/open-telemetry/opentelemetry-specification/pull/4938) をマージし、仕様における OpenTracing 互換性要件を非推奨としました。
