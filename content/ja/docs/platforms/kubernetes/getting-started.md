@@ -3,7 +3,7 @@ title: はじめに
 weight: 1
 default_lang_commit: e17943afc3a71a67fcdd3a69dcd428c3e45b306d
 # prettier-ignore
-cSpell:ignore: filelog filelogreceiver kubelet kubeletstats kubeletstatsreceiver sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
+cSpell:ignore: filelog kubelet kubeletstats kubeletstatsreceiver sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
 ---
 
 このページでは、OpenTelemetry を使って Kubernetes クラスターの監視を始める最速の方法を説明します。
