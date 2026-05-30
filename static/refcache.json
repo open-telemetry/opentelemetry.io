@@ -2159,10 +2159,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-25T11:08:10.472969799Z"
   },
-  "https://docs.kubewarden.io/howtos/telemetry/opentelemetry-qs": {
-    "StatusCode": 404,
-    "LastSeen": "2026-05-29T10:52:53.26149447Z"
-  },
   "https://docs.lightstep.com/docs/about-sending-data": {
     "StatusCode": 206,
     "LastSeen": "2026-05-12T10:29:53.833288439Z"
@@ -12582,10 +12578,6 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/oshi": {
     "StatusCode": 206,
     "LastSeen": "2026-05-25T11:11:05.393616374Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/payara": {
-    "StatusCode": 404,
-    "LastSeen": "2026-05-29T10:59:00.526785607Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/pekko": {
     "StatusCode": 206,
