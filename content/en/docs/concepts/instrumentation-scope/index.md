@@ -3,9 +3,9 @@ title: Instrumentation scope
 weight: 80
 ---
 
-The [instrumentation scope](/docs/specs/otel/common/instrumentation-scope/)
-is a logical unit of software with which emitted telemetry is associated. It
-can represent a module, package, class, library, or framework — any meaningful
+The [instrumentation scope](/docs/specs/otel/common/instrumentation-scope/) is a
+logical unit of software with which emitted telemetry is associated. It can
+represent a module, package, class, library, or framework — any meaningful
 boundary that a developer chooses to distinguish one source of telemetry from
 another.
 
@@ -13,8 +13,8 @@ another.
 
 A scope is identified by a `(name, version, schema_url, attributes)` tuple,
 where `version`, `schema_url`, and `attributes` are optional. The `name` should
-uniquely identify the logical unit of software — for example, the fully qualified
-name of a library, class, or module.
+uniquely identify the logical unit of software — for example, the fully
+qualified name of a library, class, or module.
 
 You specify the scope when obtaining a tracer, meter, or logger from a provider.
 Every span, metric, and log record produced by that instance is then tagged with
@@ -36,8 +36,8 @@ versions of the same component.
 
 ## Scopes in a trace
 
-The following diagram shows a trace with spans from six different instrumentation
-scopes, color-coded and identified in the legend:
+The following diagram shows a trace with spans from six different
+instrumentation scopes, color-coded and identified in the legend:
 
 - The `http-framework` scope produces the root `/api/placeOrder` span.
 - The `CheckoutService` scope produces `CheckoutService::placeOrder`,
