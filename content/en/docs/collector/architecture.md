@@ -80,7 +80,7 @@ service:
 ```
 
 The previous example defines a pipeline for the traces type of telemetry data,
-with two receivers, two processors, and two exporters.
+with two receivers, one processor, and two exporters.
 
 ### Receivers
 

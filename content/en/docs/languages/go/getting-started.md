@@ -2,11 +2,11 @@
 title: Getting Started
 weight: 10
 # prettier-ignore
-cSpell:ignore: chan fatalln funcs intn itoa otelhttp rolldice stdouttrace strconv
+cSpell:ignore: autoexport chan fatalln funcs intn itoa otelhttp rolldice stdouttrace strconv
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/go/dice"?>
+<?code-excerpt path-base="examples/go/dice/instrumented"?>
 
 This page will show you how to get started with OpenTelemetry in Go.
 
@@ -291,6 +291,16 @@ func newLoggerProvider() (*log.LoggerProvider, error) {
 }
 ```
 <!-- prettier-ignore-end -->
+
+> [!TIP]
+>
+> The previous example uses console (stdout) exporters for demonstration. You
+> can use the
+> [`autoexport`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport)
+> package to configure exporters via environment variables such as
+> `OTEL_TRACES_EXPORTER`, `OTEL_METRICS_EXPORTER`, `OTEL_LOGS_EXPORTER`, and
+> `OTEL_EXPORTER_OTLP_ENDPOINT`. See [Exporters](/docs/languages/go/exporters/)
+> for details.
 
 If you're only using tracing or metrics, you can omit the corresponding
 TracerProvider or MeterProvider initialization code.

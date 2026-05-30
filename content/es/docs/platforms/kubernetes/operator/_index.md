@@ -13,8 +13,7 @@ redirects:
   - { from: /docs/operator/*, to: ':splat' }
   - { from: /docs/k8s-operator/*, to: ':splat' }
   - { from: /docs/platforms/kubernetes-operator/*, to: ':splat' }
-default_lang_commit: 5273b533bd6dcf1aa1a4b8f57295320dc001a4a4 # patched
-drifted_from_default: true
+default_lang_commit: 4e426662aa975d6b3d5c2c2fe450f160415d1a3a
 ---
 
 ## Introducción {#introduction}
@@ -64,9 +63,6 @@ spec:
         check_interval: 1s
         limit_percentage: 75
         spike_limit_percentage: 15
-      batch:
-        send_batch_size: 10000
-        timeout: 10s
 
     exporters:
       # NOTA: Antes de v0.86.0 utiliza `logging` en lugar de `debug`.
@@ -76,22 +72,20 @@ spec:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: [memory_limiter, batch]
+          processors: [memory_limiter]
           exporters: [debug]
 EOF
 ```
 
-{{% alert title="Nota" %}}
-
-Por defecto, el `opentelemetry-operator` usa la
-[imagen `opentelemetry-collector`](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector).
-Cuando el operator se instala usando
-[Helm charts](/docs/platforms/kubernetes/helm/), se usa la imagen
-[`opentelemetry-collector-k8s`](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s).
-Si necesitas un componente que no se encuentra en estas versiones, es posible
-que debas [construir tu propio collector](/docs/collector/extend/ocb/).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Por defecto, el `opentelemetry-operator` usa la
+> [imagen `opentelemetry-collector`](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector).
+> Cuando el operador se instala usando
+> [Helm charts](/docs/platforms/kubernetes/helm/), se usa la imagen
+> [`opentelemetry-collector-k8s`](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s).
+> Si necesitas un componente que no se encuentra en estas versiones, es posible
+> que debas [construir tu propio collector](/docs/collector/extend/ocb/).
 
 Para más opciones de configuración y para configurar la inyección de
 auto-instrumentación de las cargas de trabajo usando librerías de

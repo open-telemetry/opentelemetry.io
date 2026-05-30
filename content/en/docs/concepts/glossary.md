@@ -204,7 +204,7 @@ record][].
 
 A key-value pair, for example `foo="bar"`, added to an entity producing
 telemetry. OpenTelemetry calls these pairs [Attributes](#attribute). In
-addition, [Metrics](#metric) have [Dimensions](#dimension) an [Labels](#label),
+addition, [Metrics](#metric) have [Dimensions](#dimension) and [Labels](#label),
 while [Logs](#log) have [Fields](#field).
 
 ### Metric
@@ -403,10 +403,10 @@ on web pages when requested. See [zPages][].
 [Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
 [log record]: /docs/specs/otel/glossary#log-record
-[log]: /docs/specs/otel/glossary#log
+[log]: /docs/concepts/signals/logs/
 [metric]: ../signals/metrics/
 [opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
-[propagators]: /docs/languages/go/instrumentation/#propagators-and-context
+[propagators]: /docs/specs/otel/context/api-propagators/
 [Prometheus]: https://prometheus.io/
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer

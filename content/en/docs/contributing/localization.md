@@ -63,6 +63,28 @@ guidance offered in this section.
 
 </div>
 
+#### Use of AI tools {#ai-tools}
+
+If you use generative AI tools (such as ChatGPT, Gemini, or similar) to assist
+with translations, you must follow the OpenTelemetry [Generative AI Contribution
+Policy][genai-policy] and the Linux Foundation [Generative AI
+Policy][lf-ai-policy]. In particular:
+
+- **Disclose** that you used AI by checking the appropriate box in the [pull
+  request template][].
+- **Review and validate** all AI-generated translations for accuracy. You are
+  responsible for the content you submit.
+- **Do not submit** AI-generated translations that you cannot review and verify
+  yourself (e.g., submissions in languages you are not proficient in). This
+  creates a significant review bottleneck, and your PR may be closed to protect
+  maintainer bandwidth.
+
+[genai-policy]:
+  https://github.com/open-telemetry/community/blob/main/policies/genai.md
+[lf-ai-policy]: https://www.linuxfoundation.org/legal/generative-ai
+[pull request template]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/PULL_REQUEST_TEMPLATE.md
+
 ### Heading IDs {#headings}
 
 To ensure that heading anchor targets are uniform across localizations, when
@@ -421,20 +443,31 @@ Look for [cSpell dictionaries][] available as NPM packages
 [@cspell/dict-LANG_ID][]. If a dictionary isn't available for your dialect or
 region, choose the closest region.
 
-If no dictionary is available, then skip the rest of this subsection. Otherwise:
-
-- Add the NPM package as a dev dependency, for example:
-  `npm install --save-dev @cspell/dict-bn`.
-- Create `.cspell/LANG_ID-words.txt` as the site-local dictionary words for
-  `LANG_ID`.
-- In `.cspell.yml`, add entries for:
-  - `import`
-  - `dictionaryDefinitions`
-  - `dictionaries`: add two entries here, one for `LANG_ID` and one for
-    `LANG_ID-words.txt`
+- **If a dictionary is available**:
+  - Add the NPM package as a dev dependency, for example:
+    `npm install --save-dev @cspell/dict-bn`.
+  - In [`.cspell.yml`][], add the package's `cspell-ext.json` under `import:`,
+    and add the dictionary's ID (for example `bn`, `es-es`, `pl_pl`) under
+    `dictionaries:`.
+- **If no dictionary is available** for the language, do not add an `import` for
+  it. Add `content/LANG_ID` to the `ignorePaths` list in [`.cspell.yml`][] so
+  cSpell does not try to spell-check that locale's Markdown as English.
 
 [cSpell dictionaries]: https://github.com/streetsidesoftware/cspell-dicts
 [@cspell/dict-LANG_ID]: https://www.npmjs.com/search?q=%40cspell%2Fdict
+[`.cspell.yml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml
+
+#### Word list
+
+Create `.cspell/LANG_ID-words.txt` for every new locale (empty at first), even
+when **Spelling** has no natural-language dictionary to add.
+
+- In [`.cspell.yml`][], register the file and enable it:
+  - Under `dictionaryDefinitions`, add an entry with `name` (for example
+    `LANG_ID-words`) and `path` (for example `.cspell/LANG_ID-words.txt`).
+  - Under `dictionaries`, add the same `name` value as in the step above (not
+    the file path).
 
 #### Other tooling support
 

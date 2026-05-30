@@ -24,3 +24,5 @@ OpenTelemetry.
    - **Spring Boot configuration files** (`application.properties`,
      `application.yml`) to configure the OpenTelemetry Spring Boot starter which
      doesn't work with the OpenTelemetry Java agent
+   - **[Declarative configuration](declarative-configuration/)** using a
+     structured YAML format inside `application.yaml`

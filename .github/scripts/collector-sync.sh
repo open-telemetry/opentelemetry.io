@@ -38,12 +38,15 @@ echo "Checking links..."
 npm run check:links || echo "Warning: Link check failed"
 
 # Get version info from cloned ecosystem-explorer registry
-if [ ! -d "tmp_repos/opentelemetry-ecosystem-explorer" ]; then
+if [ ! -d "tmp/repos/opentelemetry-ecosystem-explorer" ]; then
   echo "Error: ecosystem-explorer repository not found"
   exit 1
 fi
 
-VERSION=$(ls -1 tmp_repos/opentelemetry-ecosystem-explorer/ecosystem-registry/collector/core 2>/dev/null | grep -v -i 'SNAPSHOT' | sort -V | tail -n 1)
+VERSION=$(find tmp/repos/opentelemetry-ecosystem-explorer/ecosystem-registry/collector/core \
+  -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null | \
+  grep -v -i 'SNAPSHOT' | sort -V | tail -n 1)
+
 if [ -z "$VERSION" ]; then
   echo "Error: No collector versions found"
   exit 1
@@ -91,15 +94,15 @@ _Last updated: $(date -u '+%Y-%m-%d %H:%M:%S UTC')_"
   rm -f metadata-issues.md
 fi
 
-echo "Checking for documentation changes..."
-CHANGED_FILES=$(git diff --name-only content/en/docs/collector/components/)
+echo "Checking for component changes..."
+CHANGED_FILES=$(git diff --name-only data/collector/ data/collector-versions.yml)
 
 if [ -z "$CHANGED_FILES" ]; then
-  echo "No documentation changes detected"
+  echo "No component changes detected"
   exit 0
 fi
 
-echo "Documentation changes detected:"
+echo "Component changes detected:"
 echo "$CHANGED_FILES"
 
 BRANCH_NAME="otelbot/collector-docs-${VERSION//\./-}"

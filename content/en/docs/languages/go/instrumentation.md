@@ -474,6 +474,22 @@ In cases like these, it's often better to observe a cumulative value directly,
 rather than aggregate a series of deltas in post-processing (the synchronous
 example).
 
+### Performance Optimization for Synchronous Instruments
+
+For synchronous instruments, you can use the `Enabled` method to check if the
+instrument is enabled before performing expensive operations to compute
+attributes or values.
+
+```go
+if apiCounter.Enabled(ctx) {
+    // compute attributes or values
+    apiCounter.Add(ctx, 1, metric.WithAttributes(attributes...))
+}
+```
+
+This ensures your instrumentation doesn't pay a performance penalty when no
+MeterProvider is configured, or when a view is configured to drop the metric.
+
 ### Using Counters
 
 Counters can be used to measure a non-negative, increasing value.
@@ -497,7 +513,9 @@ func init() {
 		panic(err)
 	}
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		apiCounter.Add(r.Context(), 1)
+		if apiCounter.Enabled(r.Context()) {
+			apiCounter.Add(r.Context(), 1)
+		}
 
 		// do some work in an API call
 	})
@@ -535,13 +553,19 @@ func init() {
 func addItem() {
 	// code that adds an item to the collection
 
-	itemsCounter.Add(context.Background(), 1)
+	ctx := context.Background()
+	if itemsCounter.Enabled(ctx) {
+		itemsCounter.Add(ctx, 1)
+	}
 }
 
 func removeItem() {
 	// code that removes an item from the collection
 
-	itemsCounter.Add(context.Background(), -1)
+	ctx := context.Background()
+	if itemsCounter.Enabled(ctx) {
+		itemsCounter.Add(ctx, -1)
+	}
 }
 ```
 
@@ -597,7 +621,9 @@ func init() {
 func recordFanSpeed() {
 	ctx := context.Background()
 	for fanSpeed := range fanSpeedSubscription {
-		speedGauge.Record(ctx, fanSpeed)
+		if speedGauge.Enabled(ctx) {
+			speedGauge.Record(ctx, fanSpeed)
+		}
 	}
 }
 ```
@@ -632,7 +658,9 @@ func init() {
 		// do some work in an API call
 
 		duration := time.Since(start)
-		histogram.Record(r.Context(), duration.Seconds())
+		if histogram.Enabled(r.Context()) {
+			histogram.Record(r.Context(), duration.Seconds())
+		}
 	})
 }
 ```

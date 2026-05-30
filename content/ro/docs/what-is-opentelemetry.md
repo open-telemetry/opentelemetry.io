@@ -128,7 +128,7 @@ rezolve problema independent, ele au fuzionat pentru a forma OpenTelemetry și
 a-își combina punctele forte, oferind în același timp o soluție unică.
 
 Dacă utilizezi în prezent OpenTracing sau OpenCensus, poți afla cum să migrezi
-la OpenTelemetry în [Ghidul de migrare](../migration/).
+la OpenTelemetry în [Ghidul de migrare](../compatibility/migration/).
 
 [fuziuni]:
   https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/

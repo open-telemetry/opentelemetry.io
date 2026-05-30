@@ -2,10 +2,9 @@
 title: サンプルによる入門
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
-default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9 # patched
+default_lang_commit: c2f1762937a709892f60dece2e238d35d8a4d103
 ---
 
-<!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/getting-started"?>
 
 このページでは、JavaでOpenTelemetryを始める方法を紹介します。
@@ -58,8 +57,8 @@ dependencies {
 
 同じフォルダに、`DiceApplication.java`というファイルを作成し、次のコードをファイルに追加します。
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/DiceApplication.java"?>
+
 ```java
 package otel;
 
@@ -76,12 +75,11 @@ public class DiceApplication {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 `RollController.java`という別のファイルを作成し、次のコードをファイルに追加します。
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/RollController.java"?>
+
 ```java
 package otel;
 
@@ -113,7 +111,6 @@ public class RollController {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 次のコマンドでアプリケーションをビルドして実行し、Webブラウザで<http://localhost:8080/rolldice>を開いて動作していることを確認します。
 
@@ -133,27 +130,27 @@ java -jar ./build/libs/java-simple.jar
    curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
    ```
 
-   {{% alert %}}
-
-   <i class="fas fa-edit"></i> JARファイルへのパスをメモしてください。
-
-   {{% /alert %}}
+   > [!IMPORTANT] <i class="fas fa-edit"></i> JARファイルへのパスをメモしてください。
 
 2. JavaエージェントJARと[コンソールエクスポーター][console exporter]を指定する変数を設定してエクスポートします。シェル/ターミナル環境に適した記法を使用してください。ここではbashライクなシェルの記法を示します。
 
    ```sh
    export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
-     OTEL_TRACES_EXPORTER=logging \
-     OTEL_METRICS_EXPORTER=logging \
-     OTEL_LOGS_EXPORTER=logging \
+     OTEL_TRACES_EXPORTER=console \
+     OTEL_METRICS_EXPORTER=console \
+     OTEL_LOGS_EXPORTER=console \
      OTEL_METRIC_EXPORT_INTERVAL=15000
    ```
 
-   {{% alert title="重要" color="warning" %}}
-   - 上記の`PATH/TO`を、JARへのパスに置き換えてください。
-   - メトリクスが適切に生成されることを迅速に確認するために、**テスト中のみ**、上記のように`OTEL_METRIC_EXPORT_INTERVAL`をデフォルトよりもはるかに低い値に設定してください。
+   <!-- markdownlint-disable no-blanks-blockquote -->
 
-   {{% /alert %}}
+   > [!NOTE]
+   >
+   > 上記の`PATH/TO`を、JARへのパスに置き換えてください。
+
+   > [!WARNING]
+   >
+   > **テスト中のみ**、上記のように`OTEL_METRIC_EXPORT_INTERVAL`をデフォルトよりもはるかに低い値に設定してください。メトリクスが適切に生成されることを迅速に確認するためです。
 
 3. **アプリケーション**をもう一度実行します。
 

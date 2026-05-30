@@ -5,6 +5,10 @@ title:
 linkTitle: KubeCon EU '25
 date: 2025-03-04
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
+eventUrl: &eventUrl >-
+  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/
+queryParams: >-
+  utm_source=opentelemetry&utm_medium=website&utm_content=blog
 # prettier-ignore
 cSpell:ignore: Adevinta Aftab Arianna Baeyens Bartłomiej Boulineau Celalettin Cgroupv Chauhan codecentric Contribfest Cosmonic Geisendoerfer Guangya Hoeven Horovits Hrabusa Jiří Juraj Kalyanaraman Karemba Karthik Kasper Kathiresan kedify Keycloak Kimpel Kluwer Kokilavani Kovalenko Kowall Kremser Kruthika Liatrio Mancioppi Michálek MTTD Nilson Nissen Norimatsu Oberaigner observ Olly OTTL Paessler Pahlke Prasanna Płotka Querel Roubalik SCRM Simha Skyscanner Suereth Tanaka Vamerlatti Vespri Vijay Wolters Zbynek
 ---
@@ -218,13 +222,12 @@ Come listen, learn, and get involved in OpenTelemetry. See you in London!
 
 [#otel-sig-end-user]: https://cloud-native.slack.com/archives/C01RT3MSWGZ
 [KubeCon + CloudNativeCon Europe]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog
+  <{{% param eventUrl %}}?{{% param queryParams %}}>
 [Observability Day]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/
+  <{{% param eventUrl %}}co-located-events/observability-day/>
 [OpenTelemetry End User Working Group]:
   https://cloud-native.slack.com/archives/C01RT3MSWGZ
 [OTel Observatory Calendar]:
   https://calendar.google.com/calendar/embed?src=c_6b6b343737cc9bbf0393ba40c101d6b017514751e66951c9890d089eedd78a37@group.calendar.google.com&mode=WEEK&dates=20250331/20250406
-[registration]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog
+[registration]: <{{% param eventUrl %}}register/?{{% param queryParams %}}>
 [Splunk]: https://www.splunk.com/

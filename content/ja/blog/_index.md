@@ -1,19 +1,21 @@
 ---
 title: ブログ
 menu: { main: { weight: 50 } }
-outputs: [HTML, RSS]
 description: OpenTelemetry ブログ
-default_lang_commit: 94d77ab8cbfe5552a7cd68bf677be86c574a613a
-drifted_from_default: true
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
 ---
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         if (window.location.pathname.includes('/page/')) return;
 
-        var checkbox = document.getElementById("m-blog2025-check");
-        if (checkbox) checkbox.checked = true;
-        checkbox = document.getElementById("m-blog2024-check");
-        if (checkbox) checkbox.checked = true;
+        // Open the sidebar year-groups for the current and previous years
+        var currentYear = new Date().getFullYear();
+        var yearsToCheck = [currentYear, currentYear - 1];
+
+        yearsToCheck.forEach(function(year) {
+            var checkbox = document.getElementById("m-blog" + year + "-check");
+            if (checkbox) checkbox.checked = true;
+        });
     });
 </script>

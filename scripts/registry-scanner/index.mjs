@@ -75,7 +75,7 @@ const selection = process.argv[2].split(',').map((x) => x.trim());
 
 const scanners = {
   collector: () => {
-    ['receiver', 'exporter', 'processor', 'extension'].forEach(
+    ['receiver', 'exporter', 'processor', 'extension', 'connector'].forEach(
       async (component) => scanCollectorComponent(component),
     );
   },
@@ -100,6 +100,11 @@ const scanners = {
   ruby: () => {
     scanByLanguage('instrumentation', 'ruby');
     scanByLanguage('exporter', 'ruby', 'exporter', 'md', 'opentelemetry-ruby');
+    scanByLanguage('processor', 'ruby');
+    scanByLanguage('propagator', 'ruby');
+    scanByLanguage('resource-detector', 'ruby', 'resources');
+    scanByLanguage('sampler', 'ruby');
+    scanByLanguage('utilities', 'ruby', 'helpers');
   },
   erlang: () => {
     scanByLanguage('instrumentation', 'erlang', 'instrumentation');

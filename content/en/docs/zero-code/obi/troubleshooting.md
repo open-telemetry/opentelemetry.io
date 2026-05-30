@@ -72,7 +72,8 @@ Resource SchemaURL:
 Resource attributes:
      -> service.name: Str(flagd)
      -> telemetry.sdk.language: Str(go)
-     -> telemetry.sdk.name: Str(opentelemetry-ebpf-instrumentation)
+     -> telemetry.sdk.name: Str(opentelemetry)
+     -> telemetry.distro.name: Str(opentelemetry-ebpf-instrumentation)
      -> telemetry.sdk.version: Str(main)
      -> host.name: Str(flagd-5cccb4c4f5-sfkcm)
      -> os.type: Str(linux)
@@ -108,6 +109,9 @@ Attributes:
      -> server.port: Int(4317)
 ```
 
+Starting with OBI v0.6.0, `telemetry.sdk.name` reflects the underlying SDK when
+available, and OBI identifies itself using `telemetry.distro.name`.
+
 ### Performance profiler (pprof)
 
 OBI can expose a `pprof` port to allow performance profiling. To enable it, set
@@ -119,37 +123,6 @@ This is an advanced use case and typically not required.
 ## Common OBI issues
 
 This section covers how to resolve common OBI issues.
-
-### Node.js services crash or become unresponsive when OBI is running
-
-To enable better context propagation in Node.js applications, OBI injects custom
-code to track the current execution context. It does so using the Node.js
-inspector protocol and sends the `SIGUSR1` signal to the Node process to open
-the inspector.
-
-However, if the application defines its own `SIGUSR1` signal handler, it handles
-OBI's signal in a custom way, which may cause crashes or unresponsiveness of the
-targeted application. For example:
-
-```javascript
-process.on('SIGUSR1', () => {
-  process.exit(0);
-});
-```
-
-Or by using Node.js flags that register their own signal handling, such as:
-
-```commandline
-node --heapsnapshot-signal=SIGUSR1
-```
-
-**Solutions:**
-
-- Use the `discovery` configuration to exclude specific Node.js applications
-  from OBI tracking, preventing OBI from sending `SIGUSR1`.
-- Disable Node.js context propagation entirely by setting `nodejs.enabled:false`
-  in configuration file or environment variable
-  `OTEL_EBPF_NODEJS_ENABLED=false`.
 
 ### ClickHouse instances crash when OBI is running
 
@@ -200,3 +173,51 @@ You can either:
 - Run OBI as privileged.
 - Add `CAP_SYS_ADMIN` to the list of capabilities in your deployment security
   configuration.
+
+## Migration to v0.7.0: Network port guessing changes
+
+OBI v0.7.0 introduces a breaking change: **network port guessing is now disabled
+by default**. This change improves network metrics accuracy by not making
+assumptions about unknown initiators in network flows.
+
+### What changed
+
+In v0.6.0 and earlier, OBI would attempt to guess which endpoint was the client
+and which was the server in network flows where the initiator couldn't be
+determined. This guessing was based on ordinal heuristics (typically assuming
+the lower port number was the server and the higher port number was the client).
+
+In v0.7.0, this guessing is disabled by default, which means:
+
+- `client.port` and `server.port` attributes may be empty for flows where OBI
+  cannot determine the initiator
+- Network metrics will be more accurate but may lose information for unknown
+  flows
+
+### How to migrate
+
+If you depend on the old behavior and want `client.port` and `server.port` to be
+inferred even when the initiator is unknown, re-enable port guessing with
+ordinal heuristics:
+
+**YAML configuration:**
+
+```yaml
+network:
+  guess_ports: ordinal
+```
+
+**Environment variable:**
+
+```sh
+OTEL_EBPF_NETWORK_GUESS_PORTS=ordinal
+```
+
+For more details, see the
+[network configuration documentation](../network/config/).
+
+### Recommendation
+
+We recommend leaving port guessing disabled unless you have a specific use case
+that requires it. The default behavior provides cleaner, more accurate network
+metrics that are less prone to misclassification.

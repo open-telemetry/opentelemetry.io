@@ -1,0 +1,14 @@
+title: Library Instrumentation for Failsafe version 3.0.1 and higher
+registryType: instrumentation
+language: java
+tags:
+  - java
+  - instrumentation
+license: Apache 2.0
+description: Provides OpenTelemetry instrumentation for Failsafe.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/failsafe-3.0
+createdAt: 2025-03-26
+isFirstParty: false

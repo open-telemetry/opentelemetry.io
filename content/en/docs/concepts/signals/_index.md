@@ -24,11 +24,9 @@ OpenTelemetry currently supports:
 Also under development or at the [proposal][] stage:
 
 - [Events][], a specific type of [log](logs)
-- [Profiles][] are being worked on by the Profiling Working Group.
+- [Profiles](profiles)
 
 [Events]: /docs/specs/otel/logs/data-model/#events
-[Profiles]:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md
 [proposal]:
   https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme
 [signals]: /docs/specs/otel/glossary/#signals

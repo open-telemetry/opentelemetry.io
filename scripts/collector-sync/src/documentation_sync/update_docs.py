@@ -7,15 +7,19 @@ in a local opentelemetry.io repository using marker-based updates.
 
 import logging
 import sys
+from typing import Any
+
+from semantic_version import Version  # type: ignore[import-untyped]
 
 from documentation_sync.inventory_manager import InventoryManager
 from documentation_sync.type_defs import DistributionName
-from semantic_version import Version
 
 logger = logging.getLogger(__name__)
 
 
-def get_latest_version(inventory_manager: InventoryManager, distribution: DistributionName) -> Version:
+def get_latest_version(
+    inventory_manager: InventoryManager, distribution: DistributionName
+) -> Version:
     versions = inventory_manager.list_versions(distribution)
     if not versions:
         logger.error(f"❌ No versions found for {distribution} distribution in inventory.")
@@ -37,12 +41,13 @@ def _is_experimental_component(name: str, component_type: str) -> bool:
     return name == f"x{component_type}"
 
 
-def _get_distributions(component: dict) -> list[str]:
+def _get_distributions(component: dict[str, Any]) -> list[str]:
     """Extract distributions list from component metadata."""
-    return component.get("metadata", {}).get("status", {}).get("distributions", [])
+    dists: list[str] = component.get("metadata", {}).get("status", {}).get("distributions", [])
+    return dists
 
 
-def _merge_component_metadata(existing: dict, new: dict) -> None:
+def _merge_component_metadata(existing: dict[str, Any], new: dict[str, Any]) -> None:
     """
     Merge metadata from new component into existing component.
 
@@ -63,7 +68,12 @@ def _merge_component_metadata(existing: dict, new: dict) -> None:
     existing["metadata"]["status"]["distributions"] = all_dists
 
 
-def _add_component_to_map(component_map: dict, component: dict, source_repo: str, component_type: str) -> None:
+def _add_component_to_map(
+    component_map: dict[str, Any],
+    component: dict[str, Any],
+    source_repo: str,
+    component_type: str,
+) -> None:
     """
     Add or merge a component into the component map.
 
@@ -73,7 +83,10 @@ def _add_component_to_map(component_map: dict, component: dict, source_repo: str
         source_repo: Source repository ("core" or "contrib")
         component_type: Type of component (receiver, processor, etc.)
     """
-    name = component.get("name")
+    name: str | None = component.get("name")
+
+    if not name:
+        return
 
     if _is_experimental_component(name, component_type):
         return
@@ -86,7 +99,9 @@ def _add_component_to_map(component_map: dict, component: dict, source_repo: str
         component_map[name] = component_copy
 
 
-def merge_inventories(core_inventory: dict, contrib_inventory: dict) -> dict:
+def merge_inventories(
+    core_inventory: dict[str, Any], contrib_inventory: dict[str, Any]
+) -> dict[str, Any]:
     """
     Merge core and contrib inventories into a unified inventory.
 
@@ -100,15 +115,17 @@ def merge_inventories(core_inventory: dict, contrib_inventory: dict) -> dict:
     Returns:
         Merged inventory with unified components
     """
-    merged = {"components": {}}
+    merged: dict[str, Any] = {"components": {}}
 
-    all_types = set(core_inventory.get("components", {}).keys()) | set(contrib_inventory.get("components", {}).keys())
+    all_types = set(core_inventory.get("components", {}).keys()) | set(
+        contrib_inventory.get("components", {}).keys()
+    )
 
     for component_type in all_types:
         core_comps = core_inventory.get("components", {}).get(component_type, [])
         contrib_comps = contrib_inventory.get("components", {}).get(component_type, [])
 
-        component_map = {}
+        component_map: dict[str, Any] = {}
 
         for component in core_comps:
             _add_component_to_map(component_map, component, "core", component_type)
@@ -116,6 +133,8 @@ def merge_inventories(core_inventory: dict, contrib_inventory: dict) -> dict:
         for component in contrib_comps:
             _add_component_to_map(component_map, component, "contrib", component_type)
 
-        merged["components"][component_type] = sorted(component_map.values(), key=lambda c: c.get("name", ""))
+        merged["components"][component_type] = sorted(
+            component_map.values(), key=lambda c: c.get("name", "")
+        )
 
     return merged

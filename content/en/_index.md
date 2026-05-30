@@ -1,16 +1,7 @@
 ---
-NOTE_TO_LOCALE_AUTHORS: |
-  DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
-  DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
-  DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
 title: OpenTelemetry
 description: The open standard for telemetry
-outputs:
-  - HTML
-  # Include the following for `content/en` ONLY
-  - REDIRECTS
-  - RSS
-developer_note: >
+developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
 params:
@@ -150,13 +141,13 @@ stability and community-driven evolution. {{< /homepage/otel-feature >}}
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry is a [CNCF][] [incubating][] project**.<br> Formed through a
+**OpenTelemetry is a [CNCF][] [graduated][] project**.<br> Formed through a
 merger of the OpenTracing and OpenCensus projects.
 
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[incubating]: https://www.cncf.io/projects/
+[graduated]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}

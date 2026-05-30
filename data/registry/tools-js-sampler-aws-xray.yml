@@ -1,0 +1,18 @@
+title: AWS X-Ray Remote Sampler
+registryType: utilities
+language: js
+tags:
+  - js
+  - utilities
+license: Apache 2.0
+description: This module provides the remote/centralized sampler for AWS X-Ray.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/sampler-aws-xray
+createdAt: 2025-03-26
+package:
+  registry: npm
+  name: '@opentelemetry/sampler-aws-xray'
+  version: 0.2.0
+isFirstParty: false

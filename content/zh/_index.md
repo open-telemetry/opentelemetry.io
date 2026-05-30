@@ -2,10 +2,7 @@
 title: OpenTelemetry
 description: >-
   高质量、普遍适用和可移植的遥测助你实现有效的可观测
-outputs:
-  - HTML
-developer_note: >
-  下文所用的 blocks/cover 短代码将使用文件名中包含 "background"
+developer_note: 下文所用的 blocks/cover 短代码将使用文件名中包含 "background"
   的图像文件作为背景图。
 show_banner: true
 default_lang_commit: c2cd5b14 # patched
@@ -75,7 +72,7 @@ OpenTelemetry 是 100% 免费和开源的，
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry 是一个 [CNCF][] [孵化级](https://www.cncf.io/projects/)项目**。<br> 这个项目是由
+**OpenTelemetry 是一个 [CNCF][] [毕业](https://www.cncf.io/projects/)项目**。<br> 这个项目是由
 OpenTracing 和 OpenCensus 项目合并而诞生的。
 
 [![CNCF logo][]][cncf]

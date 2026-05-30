@@ -52,13 +52,13 @@ First, install the appropriate packages (or add them to your project file and
 run `uv sync`):
 
 ```sh
-uv pip install opentelemetry-distro opentelemetry-exporter-otlp
+uv add opentelemetry-distro opentelemetry-exporter-otlp
 ```
 
 Now, you can install the auto instrumentation:
 
 ```sh
-uv run opentelemetry-bootstrap -a requirements | uv pip install --requirement -
+uv run opentelemetry-bootstrap -a requirements | uv add --requirement -
 ```
 
 Finally, use `uv run` to start your application (see
