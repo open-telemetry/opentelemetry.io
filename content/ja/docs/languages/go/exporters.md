@@ -18,7 +18,7 @@ cSpell:ignore: autoexport otlplog otlploggrpc otlploghttp otlpmetric otlpmetricg
 | 関数                                                                                                     | 環境変数                | 説明                           |
 | -------------------------------------------------------------------------------------------------------- | ----------------------- | ------------------------------ |
 | [`NewSpanExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewSpanExporter) | `OTEL_TRACES_EXPORTER`  | トレースエクスポーターを作成   |
-| [`NewMetricReader`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewMetricReader) | `OTEL_METRICS_EXPORTER` | メトリクスエクスポーターを作成 |
+| [`NewMetricReader`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewMetricReader) | `OTEL_METRICS_EXPORTER` | メトリクスリーダーを作成 |
 | [`NewLogExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewLogExporter)   | `OTEL_LOGS_EXPORTER`    | ログエクスポーターを作成       |
 
 セレクター変数でサポートされる値は、`otlp` (デフォルト) と `none` です。
