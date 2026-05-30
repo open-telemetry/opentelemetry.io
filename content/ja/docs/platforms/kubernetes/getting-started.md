@@ -1,10 +1,9 @@
 ---
 title: はじめに
 weight: 1
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad # patched
-drifted_from_default: true
+default_lang_commit: e17943afc3a71a67fcdd3a69dcd428c3e45b306d
 # prettier-ignore
-cSpell:ignore: filelog kubelet kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
+cSpell:ignore: filelog filelogreceiver kubelet kubeletstats kubeletstatsreceiver sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
 ---
 
 このページでは、OpenTelemetry を使って Kubernetes クラスターの監視を始める最速の方法を説明します。
@@ -121,8 +120,8 @@ presets:
   # ファイルログレシーバーを有効にし、ログパイプラインに追加します
   logsCollection:
     enabled: true
-## チャートにはデフォルトでloggingexporterしか含まれていません
-## データをどこかに送りたい場合は、otlpexporterのようなエクスポーターを設定する必要があります
+## チャートにはデフォルトでdebugexporterしか含まれていません
+## データをどこかに送りたい場合は、otlp exporterのようなエクスポーターを設定する必要があります
 # config:
 #   exporters:
 #     otlp:
@@ -194,8 +193,8 @@ presets:
   # k8sobjectsreceiverがイベントのみを収集するようにし、ログパイプラインに追加します
   kubernetesEvents:
     enabled: true
-## チャートにはデフォルトでloggingexporterしか含まれていません
-## データをどこかに送りたい場合は、otlpexporterのようなエクスポーターを設定する必要があります
+## チャートにはデフォルトでdebugexporterしか含まれていません
+## データをどこかに送りたい場合は、otlp exporterのようなエクスポーターを設定する必要があります
 # config:
 # exporters:
 #   otlp:
