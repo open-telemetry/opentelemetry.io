@@ -1,11 +1,12 @@
 ---
 title: コレクター
 description: テレメトリーデータを受信、処理、エクスポートするためのベンダー非依存な方法
+aliases: [collector/about]
+sidebar_root_for: children
 cascade:
-  vers: 0.150.0
+  vers: 0.153.0
 weight: 270
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
-drifted_from_default: true
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
 ---
 
 ![Jaeger、OTLP、Prometheusを統合したOpenTelemetryコレクターのダイアグラム](img/otel-collector.svg)

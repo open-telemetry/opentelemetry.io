@@ -24,6 +24,13 @@
     logs: beta
     metrics: beta
     traces: beta
+- name: cardinalityguardianprocessor
+  display_name: cardinalityguardianprocessor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: development
 - name: coralogixprocessor
   display_name: Coralogix Processor
   repo: contrib
@@ -55,15 +62,14 @@
     - k8s
   stability:
     metrics: alpha
-- name: dnslookupprocessor
-  display_name: DNS Lookup Processor
+- name: drainprocessor
+  display_name: Drain Processor
   repo: contrib
   distributions:
     - contrib
+    - k8s
   stability:
-    logs: development
-    metrics: development
-    traces: development
+    logs: alpha
 - name: filterprocessor
   display_name: Filter Processor
   repo: contrib
@@ -76,6 +82,13 @@
     metrics: alpha
     traces: alpha
     profiles: development
+- name: genainormalizerprocessor
+  display_name: GenAI Normalizer Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: development
 - name: geoipprocessor
   display_name: GeoIP Processor
   repo: contrib
@@ -246,9 +259,9 @@
   distributions:
     - contrib
   stability:
-    logs: development
-    metrics: development
-    traces: development
+    logs: alpha
+    metrics: alpha
+    traces: alpha
 - name: spanprocessor
   display_name: Span Processor
   repo: contrib
@@ -258,7 +271,7 @@
   stability:
     traces: alpha
 - name: spanpruningprocessor
-  display_name: spanpruningprocessor
+  display_name: Span Pruning Processor
   repo: contrib
   distributions:
     - contrib

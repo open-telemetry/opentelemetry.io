@@ -1,8 +1,7 @@
 ---
 title: 共通脆弱性識別子 - CVEs
 weight: 100
-default_lang_commit: 179f03bf118e1e8a3cc195ab56fc09d85c476394
-drifted_from_default: true
+default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
 ---
 
 このページは[GitHubのOpenTelemetry Organization](https://github.com/open-telemetry/)上の全リポジトリで報告されたCVEsの一覧です。
@@ -42,7 +41,7 @@ drifted_from_default: true
     function renderTable(data) {
       var table = document.getElementById('cve-table').querySelector('tbody');
 
-      data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      data.sort((a, b) => b.cve_id.localeCompare(a.cve_id));
 
       data.forEach(item => {
         var row = table.insertRow();

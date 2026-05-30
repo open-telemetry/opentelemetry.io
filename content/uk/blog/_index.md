@@ -2,6 +2,5 @@
 title: Блог
 menu: { main: { weight: 50 } }
 description: Блог OpenTelemetry
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4 # patched
-drifted_from_default: true
+default_lang_commit: f09627656c918ddb572c6c876beed29bb415f5ef
 ---
