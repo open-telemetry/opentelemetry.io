@@ -197,13 +197,18 @@ params:
         url: https://github.com/open-telemetry
         icon: fab fa-github
         desc: Find us on GitHub.
+      - name: 'Slack #opentelemetry-new-contributors'
+        url: https://cloud-native.slack.com/archives/C09H3MNMBQV
+        icon: fab fa-slack
+        desc: >-
+          Ask beginner questions and learn contribution etiquette. Sign up via
+          [slack.cncf.io](https://slack.cncf.io).
       - name: 'Slack #opentelemetry'
         url: https://cloud-native.slack.com/archives/CJFCJHG4Q
         icon: fab fa-slack
         desc: >-
-          Chat with other project developers. Sign up via
-          [slack.cncf.io](https://slack.cncf.io). Also see other channels
-          starting with a `#otel-` prefix.
+          Follow project-wide developments. To chat about a specific subproject,
+          check out the other channels starting with `#otel-`.
       - name: CNCF DevStats
         url: https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m
         icon: fas fa-chart-area
