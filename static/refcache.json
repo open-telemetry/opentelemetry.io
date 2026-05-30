@@ -2159,6 +2159,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-25T11:08:10.472969799Z"
   },
+  "https://docs.kubewarden.io/admission-controller/latest/en/howtos/telemetry/10-opentelemetry-qs.html": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-30T06:08:29.348083497Z"
+  },
   "https://docs.lightstep.com/docs/about-sending-data": {
     "StatusCode": 206,
     "LastSeen": "2026-05-12T10:29:53.833288439Z"
@@ -12578,6 +12582,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/oshi": {
     "StatusCode": 206,
     "LastSeen": "2026-05-25T11:11:05.393616374Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/payara-5.2020": {
+    "StatusCode": 206,
+    "LastSeen": "2026-05-30T06:13:01.828679749Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/pekko": {
     "StatusCode": 206,
