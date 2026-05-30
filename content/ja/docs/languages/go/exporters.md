@@ -21,9 +21,9 @@ cSpell:ignore: autoexport otlplog otlploggrpc otlploghttp otlpmetric otlpmetricg
 | [`NewMetricReader`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewMetricReader) | `OTEL_METRICS_EXPORTER` | メトリクスリーダーを作成     |
 | [`NewLogExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewLogExporter)   | `OTEL_LOGS_EXPORTER`    | ログエクスポーターを作成     |
 
-セレクター変数でサポートされる値は、`otlp` (デフォルト) と `none` です。
+セレクター変数でサポートされる値は、`otlp`（デフォルト）と `none` です。
 `OTEL_METRICS_EXPORTER` では、`prometheus` もサポートされています。
-エクスポーターが選択されると、そのエクスポーターの設定 (エンドポイント、ヘッダー、タイムアウト、プロトコルなど) は、基となる OTLP エクスポーターパッケージにより、標準の [OTLP エクスポーター環境変数](/docs/languages/sdk-configuration/otlp-exporter/)から読み取られます。
+エクスポーターが選択されると、そのエクスポーターの設定（エンドポイント、ヘッダー、タイムアウト、プロトコルなど）は、基となる OTLP エクスポーターパッケージにより、標準の [OTLP エクスポーター環境変数](/docs/languages/sdk-configuration/otlp-exporter/)から読み取られます。
 
 使用例:
 
@@ -65,11 +65,11 @@ func main() {
 
 > [!NOTE]
 >
-> 標準の OTLP エクスポーターパッケージ (`otlptracegrpc`、`otlptracehttp` など) は、`OTEL_EXPORTER_OTLP_ENDPOINT`、`OTEL_EXPORTER_OTLP_HEADERS`、`OTEL_EXPORTER_OTLP_TIMEOUT`、`OTEL_EXPORTER_OTLP_COMPRESSION` など、ほとんどの OTLP 環境変数をすでに読み取っています。
+> 標準の OTLP エクスポーターパッケージ（`otlptracegrpc`、`otlptracehttp` など）は、`OTEL_EXPORTER_OTLP_ENDPOINT`、`OTEL_EXPORTER_OTLP_HEADERS`、`OTEL_EXPORTER_OTLP_TIMEOUT`、`OTEL_EXPORTER_OTLP_COMPRESSION` など、ほとんどの OTLP 環境変数をすでに読み取っています。
 >
-> `autoexport` パッケージにより、**エクスポーターセレクター変数** (`OTEL_TRACES_EXPORTER`、`OTEL_METRICS_EXPORTER`、`OTEL_LOGS_EXPORTER`) のサポートが追加されます。
+> `autoexport` パッケージにより、**エクスポーターセレクター変数**（`OTEL_TRACES_EXPORTER`、`OTEL_METRICS_EXPORTER`、`OTEL_LOGS_EXPORTER`）のサポートが追加されます。
 > これらの変数で、_どの_ エクスポーター実装を使うかを選択します。
-> この分離により、明示的にインポートしない限り、エクスポーターの依存関係 (gRPC など) をバンドルしないため、バイナリサイズを小さくすることができます。
+> この分離により、明示的にインポートしない限り、エクスポーターの依存関係（gRPC など）をバンドルしないため、バイナリサイズを小さくすることができます。
 >
 > なお、`OTEL_SDK_DISABLED` は現在、Go SDK ではサポートされていません。
 
