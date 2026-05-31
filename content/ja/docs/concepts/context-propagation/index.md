@@ -134,12 +134,10 @@ OpenTelemetry APIおよびSDKの個々の言語特有の実装については、
 - Rust
 - Swift
 
-{{% alert title="Help wanted" color="secondary" %}}
-
-.NET、Rust、Swift言語の場合、コンテキスト伝搬に関する言語固有のドキュメントが不足しています。
-これらの言語のいずれかを知っていて、協力に興味がある場合は、[貢献方法を確認してください](/docs/contributing/)！
-
-{{% /alert %}}
+> [!IMPORTANT] Help wanted
+>
+> .NET、Rust、Swift言語の場合、コンテキスト伝搬に関する言語固有のドキュメントが不足しています。
+> これらの言語のいずれかを知っていて、協力に興味がある場合は、[貢献方法を確認してください](/docs/contributing/)！
 
 ## 仕様 {#specification}
 
