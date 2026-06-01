@@ -88,33 +88,42 @@ config:
 flowchart TB
   subgraph Cluster["Kubernetes Cluster"]
     direction TB
-    AppA["Application A<br>(starts trace X)"]:::node
-    AppB["Application B<br>(starts trace Y)"]:::node
-    Collector["Collector kubeletstats<br>(k8s.cluster.name=cluster-1)"]:::node
+      AppA["Application A<br>(starts trace X)"]
+      AppB["Application B<br>(starts trace Y)"]
+      Collector["Collector kubeletstats<br>(k8s.cluster.name=cluster-1)"]
   end
-
   subgraph Backend["Telemetry Backend"]
     direction TB
-    Traces[("Traces")]:::node
-    Metrics[("Metrics")]:::node
+      Traces[("Traces")]
+      Metrics[("Metrics")]
   end
+    User(("User")) -- Inbound request --> AppA
+    AppA L_AppA_AppB_0@-. Broken context<br>(incompatible propagators) .-x AppB
+    Traces L_Traces_Metrics_0@x-. "Broken correlation<br>(missing k8s.* attributes)" .-x Metrics
+    AppA L_AppA_Traces_0@== Exports spans ==> Traces
+    AppB L_AppB_Traces_0@== Exports spans ==> Traces
+    Collector L_Collector_Metrics_0@== Exports utilization metrics ==> Metrics
 
-  User(("User")):::node -- Inbound request --> AppA
-  AppA -. "Broken context<br>(incompatible propagators)" .-x AppB
-  Traces x-. "Broken correlation<br>(missing k8s.* attributes)" .-x Metrics
-  AppA == "Exports spans" ==> Traces
-  AppB == "Exports spans" ==> Traces
-  Collector == "Exports utilization metrics" ==> Metrics
+      AppA:::node
+      AppB:::node
+      Collector:::node
+      Traces:::node
+      Metrics:::node
+      User:::node
+    classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
+    style Cluster fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style Backend fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    linkStyle 1 stroke:#D50000, fill:none,fill:none
+    linkStyle 2 stroke:#cc0000, fill:none,fill:none
+    linkStyle 3 stroke:#C8E6C9, fill:none,fill:none
+    linkStyle 4 stroke:#C8E6C9, fill:none,fill:none
+    linkStyle 5 stroke:#C8E6C9, fill:none,fill:none
 
-  linkStyle 1 stroke:#D50000, fill:none
-  linkStyle 2 stroke:#cc0000, fill:none
-  linkStyle 3 stroke:#C8E6C9, fill:none
-  linkStyle 4 stroke:#C8E6C9, fill:none
-  linkStyle 5 stroke:#C8E6C9, fill:none
-
-  classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
-  style Cluster fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
-  style Backend fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    L_AppA_AppB_0@{ animation: slow }
+    L_Traces_Metrics_0@{ animation: slow }
+    L_AppA_Traces_0@{ animation: fast }
+    L_AppB_Traces_0@{ animation: fast }
+    L_Collector_Metrics_0@{ animation: fast }
 ```
 
 This leads to:
