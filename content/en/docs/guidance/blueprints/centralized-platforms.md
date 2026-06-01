@@ -4,7 +4,8 @@ linkTitle: 'Centralized Cloud Native Telemetry Platforms'
 date: '2026-05-28'
 author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
 sig: End-User
-cSpell:ignore: SDLC rollouts overprovision memorylimiter OTTL spanmetrics signaltometrics statefulset filestorage Autoscaler k8sattributes tailsampling loadbalancing actioned Skyscanner kube statefulset
+# prettier-ignore
+cSpell:ignore: actioned Autoscaler filestorage k8sattributes kube loadbalancing memorylimiter OTTL overprovision rollouts SDLC signaltometrics Skyscanner spanmetrics statefulset tailsampling
 ---
 
 ## Summary
