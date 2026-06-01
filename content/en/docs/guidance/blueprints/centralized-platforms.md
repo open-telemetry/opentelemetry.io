@@ -6,8 +6,6 @@ author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
 sig: End-User
 ---
 
-# Centralized Cloud Native Telemetry Platforms
-
 ## Summary
 
 This blueprint provides strategic guidance for organizations that wish to ease
@@ -358,7 +356,7 @@ telemetry at the application level (see [Guideline 4][guideline-4]).
 > convention registries, and to measure and validate adherence to those,
 > ensuring instrumentation quality by design. However, these concepts are
 > tangential to this blueprint and will be covered in future blueprints. Learn
-> more about Weaver [here][11].
+> more about Weaver in [this blogpost][11].
 
 Ultimately, application owners should remain owners of the telemetry data
 emitted by their applications (both manually and automatically instrumented
@@ -884,7 +882,7 @@ application process (e.g., if the SDK's internal queue fills up), we recommend:
 
 - Where supported by the language ecosystem (e.g. Java via the
   `opentelemetry-sdk` instrumentation library, or .NET with the
-  ` OpenTelemetry-Sdk` `EventSource`), enable SDK self-metrics to expose
+  `OpenTelemetry-Sdk` `EventSource`), enable SDK self-metrics to expose
   internal queue capacities, dropped spans, and exporter latency. [OpenTelemetry
   SDK Semantic Conventions][57] define the telemetry to be produced by SDKs, but
   support varies depending on language.
@@ -1066,7 +1064,7 @@ use client-side load balancing, or consider using HTTP/protobuf (see [Action
 [42]: /docs/platforms/kubernetes/helm/
 [43]: /docs/platforms/kubernetes/operator/horizontal-pod-autoscaling/
 [44]:
-  http://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor
+  https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor
 [45]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter#getting-started
 [46]:
@@ -1082,7 +1080,7 @@ use client-side load balancing, or consider using HTTP/protobuf (see [Action
 [51]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor
 [52]:
-  http://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
 [53]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter
 [54]: /docs/collector/deploy/gateway/#load-balancing-exporter
