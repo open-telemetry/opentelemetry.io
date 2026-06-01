@@ -303,7 +303,7 @@ options are available [for metrics](#otlp-exporter-options-metrics).
 
 > [!NOTE]
 >
-> The internal OTLP exporter is implemented in the Go SDK used by the colletor.
+> The internal OTLP exporter is implemented in the Go SDK used by the Collector.
 > While the Go SDK supports
 > [environment variable-based configuration](/docs/languages/sdk-configuration/otlp-exporter/),
 > programmatic configuration by the collector takes precedence, so it is
