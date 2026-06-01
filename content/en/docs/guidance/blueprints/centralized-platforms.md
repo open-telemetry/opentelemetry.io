@@ -48,7 +48,7 @@ OpenTelemetry and modern observability tooling. Product teams prioritize feature
 delivery over Non-Functional Requirements (NFRs), like telemetry
 instrumentation, and see these tasks as a burden on their delivery goals.
 
-To address this, organizations are widely adopting cloud-native Platform
+To address this, organizations are widely adopting cloud native Platform
 Engineering models to reduce cognitive load and abstract complexity. By treating
 observability as a curated internal [platform product][1], organizations can
 offer a paved road, or a golden path, that ensures high-quality, contextual
@@ -60,7 +60,7 @@ telemetry.
 
 Organizations operating in these federated, distributed environments typically
 face a distinct set of challenges that hinder effective observability and
-cloud-native maturity.
+cloud native maturity.
 
 ### 1. Inconsistent configuration and low adoption of organization standards {#challenge-1}
 
@@ -760,7 +760,7 @@ the baseline and how they can extend it:
   aspects via environment variables overriding defaults set in the base image.
 - **Internal libraries:** Internal shared libraries should provide the necessary
   hooks for users to pass in standard configuration blocks as required. For
-  instance, in Javascript a wrapper library to set up a Node SDK should allow
+  instance, in JavaScript a wrapper library to set up a Node SDK should allow
   the user to provide standard [NodeSDKConfiguration][41] configurations like
   `resource` or `traceExporter`.
 - **Declarative configuration**: Platform teams may utilize the environment
