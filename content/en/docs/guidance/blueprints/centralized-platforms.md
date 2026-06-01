@@ -82,24 +82,24 @@ holistic way, across service boundaries and different infrastructure layers.
 ```mermaid
 ---
 config:
-  theme: mc
-  look: neo
+  flowchart:
+    curve: basis
 ---
 flowchart TB
   subgraph Cluster["Kubernetes Cluster"]
     direction TB
-    AppA["Application A<br>(starts trace X)"]
-    AppB["Application B<br>(starts trace Y)"]
-    Collector["Collector kubeletstats<br>(k8s.cluster.name=cluster-1)"]
+    AppA["Application A<br>(starts trace X)"]:::node
+    AppB["Application B<br>(starts trace Y)"]:::node
+    Collector["Collector kubeletstats<br>(k8s.cluster.name=cluster-1)"]:::node
   end
 
   subgraph Backend["Telemetry Backend"]
     direction TB
-    Traces[("Traces")]
-    Metrics[("Metrics")]
+    Traces[("Traces")]:::node
+    Metrics[("Metrics")]:::node
   end
 
-  User(("User")) -- Inbound request --> AppA
+  User(("User")):::node -- Inbound request --> AppA
   AppA -. "Broken context<br>(incompatible propagators)" .-x AppB
   Traces x-. "Broken correlation<br>(missing k8s.* attributes)" .-x Metrics
   AppA == "Exports spans" ==> Traces
@@ -111,6 +111,10 @@ flowchart TB
   linkStyle 3 stroke:#C8E6C9, fill:none
   linkStyle 4 stroke:#C8E6C9, fill:none
   linkStyle 5 stroke:#C8E6C9, fill:none
+
+  classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
+  style Cluster fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+  style Backend fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
 ```
 
 This leads to:
@@ -305,26 +309,26 @@ configuration to produce telemetry out of the box.
 ```mermaid
 ---
 config:
-  theme: base
-  look: classic
+  flowchart:
+    curve: basis
 ---
 flowchart LR
     subgraph User["Application Ownership"]
-        Application["Application"]
-        Config["Config"]
+        Application["Application"]:::node
+        Config["Config"]:::node
     end
 
     subgraph Platform["Platform Ownership"]
-        Collector[("Collector<br>Pipelines")]
-        BaseConfig["Base Config"]
+        Collector[("Collector<br>Pipelines")]:::node
+        BaseConfig["Base Config"]:::node
     end
 
     subgraph Application["Application"]
-        AppCode["Application Code"]
-        ThirdParty["Third-Party Libraries"]
-        InstLibs["Instrumentation Libraries"]
-        OTelSDK["OTel SDK"]
-        OTelAPI["OTel API"]
+        AppCode["Application Code"]:::node
+        ThirdParty["Third-Party Libraries"]:::node
+        InstLibs["Instrumentation Libraries"]:::node
+        OTelSDK["OTel SDK"]:::node
+        OTelAPI["OTel API"]:::node
     end
 
     AppCode -- Uses --> OTelAPI
@@ -334,8 +338,13 @@ flowchart LR
 
     Config -.-> InstLibs & OTelSDK
     OTelSDK -- Exports --> Collector
-    Collector --> Sink[("Backend")]
+    Collector --> Sink[("Backend")]:::node
     BaseConfig -.-> Config
+
+    classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
+    style User fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style Platform fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style Application fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
 ```
 
 This model relies on OpenTelemetry’s API design to abstract implementation
@@ -387,25 +396,30 @@ automatically ingested into a centralized layer deployed as an OpenTelemetry
 OTLP.
 
 ```mermaid
+---
+config:
+  flowchart:
+    curve: basis
+---
 flowchart LR
     %% Application Subgraph
     subgraph App["Application"]
-        SDK["💼 OpenTelemetry SDK"]:::whiteNode
+        SDK["💼 OpenTelemetry SDK"]:::node
     end
 
     %% Load Balancer
-    LB["🎯 Load Balancer"]:::accentNode
+    LB["🎯 Load Balancer"]:::node
 
     %% OpenTelemetry Collector Subgraph
-    subgraph OTelCol["OpenTelemetry Collector"]
+    subgraph OTelCol["Collector Gateway"]
         direction TB
-        C1["📥 ⚙️ 📤"]:::whiteNode
-        C2["📥 ⚙️ 📤"]:::whiteNode
-        C3["📥 ⚙️ 📤"]:::whiteNode
+        C1["📥 ⚙️ 📤"]:::node
+        C2["📥 ⚙️ 📤"]:::node
+        C3["📥 ⚙️ 📤"]:::node
     end
 
     %% Backend
-    Backend["🗄️ Backend"]:::accentNode
+    Backend["🗄️ Backend"]:::node
 
     %% Connections
     SDK -- "OTLP" --> LB
@@ -418,12 +432,9 @@ flowchart LR
     C2 --> Backend
     C3 --> Backend
 
-    %% Custom Styles (Matching the image's color palette)
-    classDef whiteNode fill:#ffffff, stroke:#e5e7eb, stroke-width:2px, color:#6b7280, rx:5px, ry:5px
-    classDef accentNode fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280, rx:5px, ry:5px
-
-    style App fill:#eef2ff, stroke:#ffffff, stroke-width:0px, color:#818cf8, rx:5px, ry:5px
-    style OTelCol fill:#
+    classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
+    style App fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style OTelCol fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
 ```
 
 In multi-tenant environments, multiple Collector Gateways may need to be chained
@@ -537,41 +548,44 @@ scenario.
 title: >-
   Multi-Tenant Architecture with Trace ID-Based Global Load Balancing and
   Tail-Sampling
+config:
+  flowchart:
+    curve: basis
 ---
 flowchart TB
     %% Cluster A Definition
     subgraph LocalA["Local Gateway"]
         direction LR
-        LA1["Collector<br>📥 ⚙️ 📤"] ~~~ LA2["Collector<br>📥 ⚙️ 📤"]
+        LA1["Collector<br>📥 ⚙️ 📤"]:::node ~~~ LA2["Collector<br>📥 ⚙️ 📤"]:::node
     end
 
     subgraph ClusterA["Cluster A"]
         direction TB
-        AppA["💼 OTel SDK"]
+        AppA["💼 OTel SDK"]:::node
         LocalA
     end
 
     %% Cluster B Definition
     subgraph LocalB["Local Gateway"]
         direction LR
-        LB1["Collector<br>📥 ⚙️ 📤"] ~~~ LB2["Collector<br>📥 ⚙️ 📤"]
+        LB1["Collector<br>📥 ⚙️ 📤"]:::node ~~~ LB2["Collector<br>📥 ⚙️ 📤"]:::node
     end
 
     subgraph ClusterB["Cluster B"]
         direction TB
-        AppB["💼 OTel SDK"]
+        AppB["💼 OTel SDK"]:::node
         LocalB
     end
 
     %% Unified Global Gateway Definition
     subgraph LB_Layer["Load Balancing Layer"]
         direction LR
-        GLB1["Collector<br>📥 ⚙️ 📤"] ~~~ GLB2["Collector<br>📥 ⚙️ 📤"] ~~~ GLB3["Collector<br>📥 ⚙️ 📤"]
+        GLB1["Collector<br>📥 ⚙️ 📤"]:::node ~~~ GLB2["Collector<br>📥 ⚙️ 📤"]:::node ~~~ GLB3["Collector<br>📥 ⚙️ 📤"]:::node
     end
 
     subgraph SamplingLayer["Tail Sampling Layer"]
         direction LR
-        TS1["Collector<br>📥 ⚙️ 📤"] ~~~ TS2["Collector<br>📥 ⚙️ 📤"] ~~~ TS3["Collector<br>📥 ⚙️ 📤"]
+        TS1["Collector<br>📥 ⚙️ 📤"]:::node ~~~ TS2["Collector<br>📥 ⚙️ 📤"]:::node ~~~ TS3["Collector<br>📥 ⚙️ 📤"]:::node
     end
 
     subgraph GlobalTier["Unified Global Gateway"]
@@ -580,7 +594,7 @@ flowchart TB
         SamplingLayer
     end
 
-    ObsBackend["🗄️ Observability Backend"]
+    ObsBackend["🗄️ Observability Backend"]:::node
 
     %% --- Connections & Routing ---
 
@@ -589,19 +603,29 @@ flowchart TB
     AppB -- OTLP --> LocalB
 
     %% Local Gateway to Global Gateway (Spans)
-    LocalA -- OTLP (spans) --> LB_Layer
-    LocalB -- OTLP (spans) --> LB_Layer
-    LB_Layer -- OTLP (spans) --> SamplingLayer
+    LocalA -- "OTLP (spans)" --> LB_Layer
+    LocalB -- "OTLP (spans)" --> LB_Layer
+    LB_Layer -- "OTLP (spans)" --> SamplingLayer
 
     %% Combined metrics and logs routing to the single backend
-    LocalA -- OTLP (metrics & log records) --> ObsBackend
-    SamplingLayer -- OTLP (sampled spans) --> ObsBackend
+    LocalA -- "OTLP (metrics & log records)" --> ObsBackend
+    SamplingLayer -- "OTLP (sampled spans)" --> ObsBackend
 
     %% --- Annotations & Notes ---
-    AppA -.- n1["Head sampling, aggregation, limits, etc."]
-    LocalA -.- n2["Redaction, enrichment, OTTL, governance, etc."]
-    LB_Layer -.- n3["Group and route spans by trace ID"]
-    SamplingLayer -.- n4["Sample traces, post-processing"]
+    AppB -.- n1["Head sampling, aggregation, limits, etc."]:::note
+    LocalA -.- n2["Redaction, enrichment, OTTL, governance, etc."]:::note
+    LB_Layer -.- n3["Group and route spans by trace ID"]:::note
+    SamplingLayer -.- n4["Sample traces, post-processing"]:::note
+
+    classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
+    classDef note fill:#f9fafb, stroke:#c7d2fe, stroke-width:1px, color:#9ca3af
+    style ClusterA fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style ClusterB fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style LocalA fill:#dde4ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style LocalB fill:#dde4ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style GlobalTier fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style LB_Layer fill:#dde4ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style SamplingLayer fill:#dde4ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
 ```
 
 As a rule of thumb, processing of telemetry should be done as close as possible
