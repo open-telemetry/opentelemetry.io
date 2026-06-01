@@ -1,8 +1,8 @@
 ---
 title: Arquitetura
 weight: 28
-cSpell:ignore: fanoutconsumer probabilisticsampler zpages
 default_lang_commit: 2871fe3c7fdc376e55ce84f601a54264226531bb
+cSpell:ignore: fanoutconsumer probabilisticsampler zpages
 ---
 
 O OpenTelemetry Collector é um arquivo executável que pode receber telemetria,
@@ -60,11 +60,11 @@ flowchart LR
   FO --> EN[[Exporter N]]
 ```
 
-Os _pipelines_ podem ter um ou mais _receivers_. Os dados de todos os _receivers_
-são enviados para o primeiro _processor_, que processa os dados e os repassa
-para o próximo _processor_. Um _processor_ também pode descartar os dados caso
-esteja realizando amostragem ou filtragem. Esse processo continua até que o
-último _processor_ do _pipeline_ envie os dados para os _exporters_. Cada
+Os _pipelines_ podem ter um ou mais _receivers_. Os dados de todos os
+_receivers_ são enviados para o primeiro _processor_, que processa os dados e os
+repassa para o próximo _processor_. Um _processor_ também pode descartar os
+dados caso esteja realizando amostragem ou filtragem. Esse processo continua até
+que o último _processor_ do _pipeline_ envie os dados para os _exporters_. Cada
 _exporter_ recebe uma cópia de cada elemento de dado. O último _processor_ usa
 um `fanoutconsumer` para enviar os dados para múltiplos _exporters_.
 
@@ -82,17 +82,18 @@ service:
       exporters: [otlp, zipkin]
 ```
 
-O exemplo anterior define um _pipeline_ para o tipo de dado de telemetria rastro, que inclui dois _receivers_, um _processor_ e dois _exporters_. O _receiver_
-com dois _receivers_, um _processor_ e dois _exporters_.
+O exemplo anterior define um _pipeline_ para o tipo de dado de telemetria
+rastro, que inclui dois _receivers_, um _processor_ e dois _exporters_. O
+_receiver_ com dois _receivers_, um _processor_ e dois _exporters_.
 
 ### Receivers
 
 Os _receivers_ normalmente escutam em uma porta de rede e recebem dados de
-telemetria. Eles também podem obter dados ativamente, como _scrapers_. Normalmente
-um _receiver_ é configurado para enviar os dados recebidos para um pipeline.
-No entanto, também é possível configurar o mesmo _receiver_ para enviar os mesmos
-dados recebidos para múltiplos pipelines. Isso pode ser feito listando o mesmo
-_receiver_ na chave `receivers` de vários pipelines:
+telemetria. Eles também podem obter dados ativamente, como _scrapers_.
+Normalmente um _receiver_ é configurado para enviar os dados recebidos para um
+pipeline. No entanto, também é possível configurar o mesmo _receiver_ para
+enviar os mesmos dados recebidos para múltiplos pipelines. Isso pode ser feito
+listando o mesmo _receiver_ na chave `receivers` de vários pipelines:
 
 ```yaml
 receivers:
@@ -134,13 +135,13 @@ flowchart LR
 >
 > Quando o mesmo _receiver_ é referenciado em mais de um pipeline, o Collector
 > cria apenas uma instância do _receiver_ em tempo de execução, que envia os
-> dados para um distribuidor. O distribuidor, por sua vez, envia os
-> dados para o primeiro _processor_ de cada pipeline. A propagação dos dados do
-> _receiver_ para o distribuidor e depois para os _processors_ é realizada
-> por meio de uma chamada de função síncrona. Isso significa que, se um
-> _processor_ bloquear a chamada, os outros pipelines associados a esse
-> _receiver_ serão bloqueados de receber os mesmos dados, e o próprio _receiver_
-> para de processar e encaminhar os dados recebidos.
+> dados para um distribuidor. O distribuidor, por sua vez, envia os dados para o
+> primeiro _processor_ de cada pipeline. A propagação dos dados do _receiver_
+> para o distribuidor e depois para os _processors_ é realizada por meio de uma
+> chamada de função síncrona. Isso significa que, se um _processor_ bloquear a
+> chamada, os outros pipelines associados a esse _receiver_ serão bloqueados de
+> receber os mesmos dados, e o próprio _receiver_ para de processar e encaminhar
+> os dados recebidos.
 
 ### Exporters
 
@@ -148,9 +149,9 @@ Os _exporters_ normalmente encaminham os dados que recebem para um destino na
 rede, mas também podem enviar os dados para outros lugares. Por exemplo, o
 _exporter_ `debug` escreve os dados de telemetria no destino de log.
 
-A configuração permite múltiplos _exporters_ do mesmo tipo, no mesmo
-_pipeline_. Por exemplo, você pode ter dois _exporters_ `otlp` definidos, cada
-um enviando para um _endpoint_ OTLP diferente:
+A configuração permite múltiplos _exporters_ do mesmo tipo, no mesmo _pipeline_.
+Por exemplo, você pode ter dois _exporters_ `otlp` definidos, cada um enviando
+para um _endpoint_ OTLP diferente:
 
 ```yaml
 exporters:
@@ -200,13 +201,13 @@ flowchart LR
 Um _pipeline_ pode conter _processors_ conectados em sequência. O primeiro
 _processor_ recebe os dados de um ou mais _receivers_ configurados para o
 _pipeline_, e o último _processor_ envia os dados para um ou mais _exporters_
-configurados para o _pipeline_. Todos os _processors_ entre o primeiro e o último
-recebem os dados de apenas um _processor_ anterior e enviam dados para apenas um
-_processor_ sucessor.
+configurados para o _pipeline_. Todos os _processors_ entre o primeiro e o
+último recebem os dados de apenas um _processor_ anterior e enviam dados para
+apenas um _processor_ sucessor.
 
 Os _processors_ podem transformar os dados antes de encaminhá-los, como
-adicionar ou remover atributos de trecho. Podem também descartar os dados
-ao decidir não encaminhá-los (por exemplo, o _processor_ `probabilisticsampler`).
+adicionar ou remover atributos de trecho. Podem também descartar os dados ao
+decidir não encaminhá-los (por exemplo, o _processor_ `probabilisticsampler`).
 Ou podem gerar novos dados.
 
 O mesmo nome do _processor_ pode ser referenciado na chave `processors` de
@@ -214,10 +215,10 @@ múltiplos _pipelines_. Nesse caso, a mesma configuração é usada para cada um
 desses _processors_, mas cada _pipeline_ sempre obtém sua própria instância do
 _processor_. Cada um desses _processors_ tem seu próprio estado, e os
 _processors_ nunca são compartilhados entre _pipelines_. Por exemplo, se o
-_processor_ `transform` for usado em vários _pipelines_, cada _pipeline_ terá seu
-próprio _processor_ transform, mas cada _processor_ transform é configurado
-exatamente da mesma forma se referenciarem a mesma chave na configuração. Veja
-a seguinte configuração:
+_processor_ `transform` for usado em vários _pipelines_, cada _pipeline_ terá
+seu próprio _processor_ transform, mas cada _processor_ transform é configurado
+exatamente da mesma forma se referenciarem a mesma chave na configuração. Veja a
+seguinte configuração:
 
 ```yaml
 processors:
@@ -273,8 +274,8 @@ Em uma VM/container típica, as aplicações do usuário estão sendo executadas
 alguns processos/pods com uma biblioteca OpenTelemetry. Anteriormente, a
 biblioteca fazia todo o registro, coleta, amostragem e agregação de rastros,
 métricas e logs e, em seguida, exportava os dados para outros _backends_ de
-armazenamento persistente através dos _exporters_ da biblioteca, ou os exibia
-em zpages locais. Esse padrão tem várias desvantagens, por exemplo:
+armazenamento persistente através dos _exporters_ da biblioteca, ou os exibia em
+zpages locais. Esse padrão tem várias desvantagens, por exemplo:
 
 1. Para cada biblioteca OpenTelemetry, os _exporters_ e zpages precisam ser
    reimplementados em linguagens nativas.
@@ -291,14 +292,13 @@ em zpages locais. Esse padrão tem várias desvantagens, por exemplo:
    usuários podem relutar em "poluir" seu código com OpenTelemetry.
 
 Para resolver os problemas acima, você pode executar o OpenTelemetry Collector
-como um agente. O agente é executado como um _daemon_ na VM/container e pode
-ser implantado independentemente da biblioteca. Uma vez implantado e em
-execução, o agente deve ser capaz de recuperar rastros, métricas e logs da
-biblioteca e exportá-los para outros _backends_. Também podemos dar ao agente
-a capacidade de enviar configurações (como a probabilidade de amostragem) para
-a biblioteca. Para as linguagens que não conseguem fazer a agregação de
-estatísticas em processo, elas podem enviar medições brutas e deixar o agente
-fazer a agregação.
+como um agente. O agente é executado como um _daemon_ na VM/container e pode ser
+implantado independentemente da biblioteca. Uma vez implantado e em execução, o
+agente deve ser capaz de recuperar rastros, métricas e logs da biblioteca e
+exportá-los para outros _backends_. Também podemos dar ao agente a capacidade de
+enviar configurações (como a probabilidade de amostragem) para a biblioteca.
+Para as linguagens que não conseguem fazer a agregação de estatísticas em
+processo, elas podem enviar medições brutas e deixar o agente fazer a agregação.
 
 ```mermaid
 flowchart LR
@@ -349,7 +349,8 @@ classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad,color:#000000;
 > Para desenvolvedores e mantenedores de outras bibliotecas: adicionando
 > _receivers_ específicos, você pode configurar um agente para aceitar rastros,
 > métricas e logs de outras bibliotecas de rastreamento/monitoramento, como
-> Zipkin, Prometheus, etc. Consulte [_Receivers_](#receivers) para mais detalhes.
+> Zipkin, Prometheus, etc. Consulte [_Receivers_](#receivers) para mais
+> detalhes.
 
 ## Executando como _gateway_ {#running-as-a-gateway}
 
