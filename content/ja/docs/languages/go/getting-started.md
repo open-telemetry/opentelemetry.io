@@ -356,7 +356,6 @@ func run() error {
 	// 割り込みを待機する。
 	select {
 	case err = <-srvErr:
-		// Error when starting HTTP server.
 		// HTTPサーバーの起動中のエラー。
 		return err
 	case <-ctx.Done():
