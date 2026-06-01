@@ -4,6 +4,7 @@ linkTitle: 'Centralized Cloud Native Telemetry Platforms'
 date: '2026-05-28'
 author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
 sig: End-User
+cSpell:ignore: SDLC rollouts overprovision memorylimiter OTTL spanmetrics signaltometrics statefulset filestorage Autoscaler k8sattributes tailsampling loadbalancing actioned Skyscanner kube statefulset
 ---
 
 ## Summary
@@ -59,8 +60,8 @@ telemetry.
 ## Common challenges
 
 Organizations operating in these federated, distributed environments typically
-face a distinct set of challenges that hinder effective observability and
-cloud native maturity.
+face a distinct set of challenges that hinder effective observability and cloud
+native maturity.
 
 ### 1. Inconsistent configuration and low adoption of organization standards {#challenge-1}
 
@@ -882,9 +883,9 @@ application process (e.g., if the SDK's internal queue fills up), we recommend:
 
 - Where supported by the language ecosystem (e.g. Java via the
   `opentelemetry-sdk` instrumentation library, or .NET with the
-  `OpenTelemetry-Sdk` `EventSource`), enable SDK self-metrics to expose
-  internal queue capacities, dropped spans, and exporter latency. [OpenTelemetry
-  SDK Semantic Conventions][57] define the telemetry to be produced by SDKs, but
+  `OpenTelemetry-Sdk` `EventSource`), enable SDK self-metrics to expose internal
+  queue capacities, dropped spans, and exporter latency. [OpenTelemetry SDK
+  Semantic Conventions][57] define the telemetry to be produced by SDKs, but
   support varies depending on language.
 - For languages lacking native SDK metric support, enable error logging on the
   OTel SDK's global error handler.

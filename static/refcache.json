@@ -11623,6 +11623,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-03T09:59:24.725818991Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter#getting-started": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-01T16:51:15.535637+01:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter": {
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:27:52.82316722Z"
@@ -14311,6 +14315,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:22:48.973989035Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/experimental/packages/opentelemetry-sdk-node/src/types.ts#L25": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-01T16:51:13.473694+01:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-js/discussions": {
     "StatusCode": 206,
     "LastSeen": "2026-05-21T10:50:36.957490868Z"
@@ -14510,6 +14518,10 @@
   "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscrservicemonitorselector": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T09:55:26.624604666Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/compatibility.md#compatibility-matrix": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-01T16:51:08.457035+01:00"
   },
   "https://github.com/open-telemetry/opentelemetry-operator/issues/1393": {
     "StatusCode": 206,
@@ -23162,6 +23174,10 @@
   "https://pkgs.alpinelinux.org/packages?name=opentelemetry-cpp-*": {
     "StatusCode": 200,
     "LastSeen": "2026-05-01T10:16:59.132704638Z"
+  },
+  "https://platformengineering.org/talks-library/platform-as-a-product": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-01T16:51:05.445534+01:00"
   },
   "https://plugins.jenkins.io/opentelemetry/": {
     "StatusCode": 206,
