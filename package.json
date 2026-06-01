@@ -177,7 +177,7 @@
     "postcss-cli": "^11.0.1",
     "prettier": "3.8.3",
     "puppeteer": "^24.42.0",
-    "puppeteer-core": "^24.42.0",
+    "puppeteer-core": "^25.0.4",
     "require-dir": "^1.2.0",
     "textlint": "^15.5.4",
     "textlint-filter-rule-allowlist": "^4.0.0",
