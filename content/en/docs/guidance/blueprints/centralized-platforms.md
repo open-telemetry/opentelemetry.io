@@ -198,11 +198,15 @@ This leads to:
   vendors, or apply global network policies when configurations are deeply
   embedded within individual applications.
 
-> [!NOTE] The scope of this blueprint is defined by the challenges related to
-> providing pipelines optimized for low-latency and efficient resource usage, as
-> these are frequently the problems to solve for observability purposes.
-> Completeness or durability guarantees, necessary for cases like audit logging
-> or business data reporting, may be covered in future blueprints.
+> [!NOTE] Help wanted
+>
+> The scope of this blueprint is defined by common challenges faced by platform
+> teams to provide pipelines optimized for low-latency and efficient resource
+> usage. In certain scenarios, like those requiring audit logging or business
+> reporting, balancing completeness or durability guarantees is critical. These
+> challenges are out of scope for this blueprint and may be targeted in a
+> separate blueprint. See our [guidance][63] if you are interested in
+> contributing.
 
 ### 4. Lack of telemetry governance and low ROI {#challenge-4}
 
@@ -236,9 +240,12 @@ This leads to:
   costs, they may also increase noise, forcing users to filter through
   low-quality data to find relevant telemetry.
 
-> [!NOTE] Multi-tenant environments often deal with strict compliance
-> requirements (GDPR, HIPAA, PCI). As this is a complex issue in itself, it will
-> be targeted in a separate blueprint.
+> [!NOTE] Help wanted
+>
+> Multi-tenant environments often deal with strict compliance requirements
+> (GDPR, HIPAA, PCI). These challenges are out of scope for this blueprint and
+> may be targeted in a separate blueprint. See our [guidance][63] if you are
+> interested in contributing.
 
 ### 5. Low observability and operational efficiency of SDKs and data pipelines {#challenge-5}
 
@@ -365,9 +372,10 @@ telemetry at the application level (see [Guideline 4][guideline-4]).
 
 > [!NOTE] [Weaver][10] can help teams to manage organization-specific semantic
 > convention registries, and to measure and validate adherence to those,
-> ensuring instrumentation quality by design. However, these concepts are
-> tangential to this blueprint and will be covered in future blueprints. Learn
-> more about Weaver in [this blogpost][11].
+> ensuring instrumentation quality by design. Learn more about Weaver in [this
+> blogpost][11]. Semantic conventions governance is out of cope for this
+> blueprint and may be targeted in a future blueprint. See our [guidance][63] if
+> you are interested in contributing.
 
 Ultimately, application owners should remain owners of the telemetry data
 emitted by their applications (both manually and automatically instrumented
@@ -1104,3 +1112,4 @@ use client-side load balancing, or consider using HTTP/protobuf (see [Action
 [60]: /docs/guidance/reference-implementations/adobe/
 [61]: /docs/guidance/reference-implementations/mastodon/
 [62]: /docs/guidance/reference-implementations/skyscanner/
+[63]: /docs/guidance/#how-to-contribute
