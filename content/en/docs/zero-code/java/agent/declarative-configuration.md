@@ -112,7 +112,6 @@ configuration to declarative configuration, use the following rules:
 
 ```yaml
 instrumentation/development:
-
   general:
     http:
       client:
