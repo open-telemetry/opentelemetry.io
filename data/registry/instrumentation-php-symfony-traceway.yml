@@ -26,11 +26,11 @@ urls:
 license: MIT
 description:
   Pure-PHP OpenTelemetry instrumentation for Symfony — automatic tracing for
-  HTTP, Console, HttpClient, Messenger, Mailer, Scheduler, Doctrine DBAL,
-  Cache, and Twig; Monolog log-trace correlation; opt-in OTel log export;
-  opt-in metrics for Messenger/DBAL/HTTP/Mailer; and native AWS X-Ray
-  propagator and ID generator. Ships a traceway:doctor command for
-  diagnostics. No C extension required. PHP 8.1+, Symfony 6.4 LTS / 7.x / 8.x.
+  HTTP, Console, HttpClient, Messenger, Mailer, Scheduler, Doctrine DBAL, Cache,
+  and Twig; Monolog log-trace correlation; opt-in OTel log export; opt-in
+  metrics for Messenger/DBAL/HTTP/Mailer; and native AWS X-Ray propagator and ID
+  generator. Ships a traceway:doctor command for diagnostics. No C extension
+  required. PHP 8.1+, Symfony 6.4 LTS / 7.x / 8.x.
 authors:
   - name: Traceway
     url: https://github.com/tracewayapp
