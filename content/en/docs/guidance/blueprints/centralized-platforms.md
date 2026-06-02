@@ -1,6 +1,6 @@
 ---
-title: 'Cloud Native Telemetry Platform'
-linkTitle: 'Cloud Native Telemetry Platform'
+title: 'Cloud Native Telemetry Platforms'
+linkTitle: 'Cloud Native Telemetry Platforms'
 date: '2026-05-28'
 author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
 sig: End-User
