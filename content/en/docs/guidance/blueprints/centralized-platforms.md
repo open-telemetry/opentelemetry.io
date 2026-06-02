@@ -81,6 +81,7 @@ holistic way, across service boundaries and different infrastructure layers.
 
 ```mermaid
 ---
+title: "Figure 1: Silos due to lack of consistent semantic conventions and context propagation."
 config:
   flowchart:
     curve: basis
@@ -327,6 +328,7 @@ configuration to produce telemetry out of the box.
 
 ```mermaid
 ---
+title: "Figure 2: Shared ownership model between platform teams and application owners."
 config:
   flowchart:
     curve: basis
@@ -435,6 +437,7 @@ OTLP.
 
 ```mermaid
 ---
+title: "Figure 3: General behaviour of an OpenTelemetry Collector Gateway."
 config:
   flowchart:
     curve: basis
@@ -587,9 +590,7 @@ scenario.
 
 ```mermaid
 ---
-title: >-
-  Multi-Tenant Architecture with Trace ID-Based Global Load Balancing and
-  Tail-Sampling
+title: "Figure 4: Multi-tenant architecture with Trace ID based global load balancing and tail sampling."
 config:
   flowchart:
     curve: basis
