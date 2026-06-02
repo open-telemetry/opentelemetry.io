@@ -331,23 +331,23 @@ config:
   flowchart:
     curve: basis
 ---
-flowchart LR
+flowchart TD
     subgraph User["Application Ownership"]
         Application["Application"]:::node
-        Config["⚙️ Config"]:::node
+        Config["⚙️<br>Config"]:::node
     end
 
     subgraph Platform["Platform Ownership"]
-        Collector[("🔀️ Collector<br>Pipelines")]:::node
-        BaseConfig["⚙️ Base Config"]:::node
+        Collector[("🔀️<br>Collector<br>Pipelines")]:::node
+        BaseConfig["⚙️<br>Base Config"]:::node
     end
 
     subgraph Application["Application"]
-        AppCode["💻 Application Code"]:::node
-        ThirdParty["📦 Third-Party Libraries"]:::node
-        InstLibs["🔭 Instrumentation Libraries"]:::node
-        OTelSDK["🔭 OTel SDK"]:::node
-        OTelAPI["🔭 OTel API"]:::node
+        AppCode["💻<br>App Code"]:::node
+        ThirdParty["📦<br>3rd-Party Libs"]:::node
+        InstLibs["🔭<br>Instro Libs"]:::node
+        OTelSDK["🔭<br>OTel SDK"]:::node
+        OTelAPI["🔭<br>OTel API"]:::node
     end
 
     Sink[("🗄️ Backend")]:::node
@@ -367,10 +367,9 @@ flowchart LR
     style User fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
     style Platform fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
     style Application fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
-    linkStyle 0,1,2 stroke:#7dd3fc, fill:none
-    linkStyle 3 stroke:#d8b4fe, fill:none
-    linkStyle 4,5,8 stroke:#fde68a, fill:none
-    linkStyle 6,7 stroke:#a3e635, fill:none
+    linkStyle 0,1,2 stroke:#7dd3fc, fill:none, stroke-width:3px
+    linkStyle 3,4,5,8 stroke:#fde68a, fill:none, stroke-width:3px
+    linkStyle 6,7 stroke:#a3e635, fill:none, stroke-width:3px
 
     L_AppCode_API@{ animation: fast }
     L_ThirdParty_API@{ animation: fast }
