@@ -1838,12 +1838,6 @@ approvers:
       - semconv-system-approvers
     html_url: https://github.com/braydonk
     avatar_url: https://avatars.githubusercontent.com/u/93549768?v=4
-  - name: cedricziel
-    teams:
-      - php-approvers
-      - php-triagers
-    html_url: https://github.com/cedricziel
-    avatar_url: https://avatars.githubusercontent.com/u/418970?v=4
   - name: chluknight1224
     teams:
       - docs-zh-approvers
