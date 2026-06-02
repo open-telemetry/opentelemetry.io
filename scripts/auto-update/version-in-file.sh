@@ -137,6 +137,7 @@ if [[ "$repo" == "opentelemetry-specification"
     npm run get:submodule -- content-modules/$repo &&
     cd content-modules/$repo &&
     git fetch &&
+    git fetch $(git remote | tail -1) --tags &&
     git switch --detach $latest_version
   )
 fi
