@@ -85,7 +85,7 @@ config:
   flowchart:
     curve: basis
 ---
-flowchart TB
+flowchart LR
   subgraph K8sNode["Kubernetes Node"]
     direction TB
     AppA["📦 App A"]:::node
