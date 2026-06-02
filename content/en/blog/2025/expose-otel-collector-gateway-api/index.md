@@ -82,7 +82,7 @@ Before we start, ensure you have the following:
 The [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io/) is an evolution
 of the older Ingress API. It provides a more expressive, role-oriented, and
 flexible way to manage inbound traffic to your cluster. The
-[GAMMA initiative](https://gateway-api.sigs.k8s.io/mesh/gamma/) defines the
+[GAMMA initiative](https://gateway-api.sigs.k8s.io/concepts/gamma/) defines the
 Gateway API implementation. It was introduced for the following reasons:
 
 - **Limitations of Ingress:** The Ingress API, while useful, became limiting. It
@@ -590,7 +590,7 @@ of when configuring this setup during production:
 - When working with routes and gateways in multiple namespaces, you may need
   references of resources such as backend `services`, and other configurations
   from other namespaces. For details, refer to Gateway
-  [ReferenceGrant](https://gateway-api.sigs.k8s.io/api-types/referencegrant/).
+  [ReferenceGrant](https://gateway-api.sigs.k8s.io/reference/api-types/referencegrant/).
 
 ## Alternative Gateway Implementations
 

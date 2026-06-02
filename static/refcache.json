@@ -255,10 +255,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-30T10:18:16.177815673Z"
   },
-  "https://bento.me/adrianamvillela": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-02T18:16:47.187177407Z"
-  },
   "https://betterstack.com/docs/logs/open-telemetry/#2-setup": {
     "StatusCode": 200,
     "LastSeen": "2026-05-05T10:18:02.967257513Z"
@@ -3375,17 +3371,9 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-02T18:19:35.169Z"
   },
-  "https://gateway-api.sigs.k8s.io/api-types/referencegrant/": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-02T18:17:20.419080002Z"
-  },
   "https://gateway-api.sigs.k8s.io/implementations/v1.2/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-02T18:17:13.535054224Z"
-  },
-  "https://gateway-api.sigs.k8s.io/mesh/gamma/": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-02T18:17:10.600309424Z"
   },
   "https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype": {
     "StatusCode": 206,
@@ -19696,8 +19684,8 @@
     "LastSeen": "2026-05-03T10:02:20.52529899Z"
   },
   "https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java/4.26.1": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-02T18:16:17.054325542Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-02T18:32:01.182Z"
   },
   "https://mybatis.org/mybatis-3/": {
     "StatusCode": 206,
@@ -20232,8 +20220,8 @@
     "LastSeen": "2026-05-06T10:22:47.383021683Z"
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-02T18:16:05.52872897Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-02T18:32:10.89Z"
   },
   "https://openai.com/": {
     "StatusCode": 200,
@@ -24227,10 +24215,6 @@
     "StatusCode": 200,
     "LastSeen": "2026-05-10T10:11:57.889Z"
   },
-  "https://www.linkedin.com/in/richardchukwu1/": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-02T18:16:39.326682814Z"
-  },
   "https://www.linkedin.com/posts/killenko_opentelemetry-observability-fintech-activity-7416735796872785920-XHER": {
     "StatusCode": 200,
     "LastSeen": "2026-05-12T10:28:29.607549225Z"
@@ -24380,8 +24364,8 @@
     "LastSeen": "2026-05-25T11:12:36.039Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-trace-node": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-02T18:10:33.370691904Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-02T18:32:28.432Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/shim-opentracing": {
     "StatusCode": 206,
@@ -24920,16 +24904,16 @@
     "LastSeen": "2026-05-25T11:02:42.048486034Z"
   },
   "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased": {
-    "StatusCode": -10,
-    "LastSeen": "2026-06-02T18:10:35.389564309Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-02T18:32:33.326Z"
   },
   "https://www.rust-lang.org/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-02T18:10:37.847735663Z"
   },
   "https://www.sap.com/products/technology-platform/hana/what-is-sap-hana.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-02T18:12:25.47712741Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-02T18:32:42.324Z"
   },
   "https://www.scala-lang.org/api/2.12.0/scala/concurrent/forkjoin/package$$ForkJoinPool$.html": {
     "StatusCode": 206,
