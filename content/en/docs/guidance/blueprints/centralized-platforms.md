@@ -90,7 +90,7 @@ flowchart TB
     direction TB
     AppA["📦 App A"]:::node
     AppB["📦 App B"]:::node
-    Collector["🔀️ Collector"]:::node
+    Collector["🎛️️ Collector"]:::node
   end
 
   subgraph TracesDB["🐾️ Traces Backend"]
@@ -338,7 +338,7 @@ flowchart TD
     end
 
     subgraph Platform["Platform Ownership"]
-        Collector[("🔀️<br>Collector<br>Pipelines")]:::node
+        Collector[("🎛️️<br>Collector<br>Pipelines")]:::node
         BaseConfig["⚙️<br>Base Config"]:::node
     end
 
@@ -440,39 +440,43 @@ config:
     curve: basis
 ---
 flowchart LR
-    %% Application Subgraph
     subgraph App["Application"]
-        SDK["💼 OpenTelemetry SDK"]:::node
+        SDK["📦 OTel SDK"]:::node
     end
 
-    %% Load Balancer
-    LB["🎯 Load Balancer"]:::node
+    LB["🔀 Load Balancer"]:::node
 
-    %% OpenTelemetry Collector Subgraph
     subgraph OTelCol["Collector Gateway"]
         direction TB
-        C1["📥 ⚙️ 📤"]:::node
-        C2["📥 ⚙️ 📤"]:::node
-        C3["📥 ⚙️ 📤"]:::node
+        C1["🎛️ Collector 1"]:::node
+        C2["🎛️ Collector 2"]:::node
+        C3["🎛️ Collector 3"]:::node
     end
 
-    %% Backend
-    Backend["🗄️ Backend"]:::node
+    Backend[("🗄️ Backend")]:::node
 
-    %% Connections
-    SDK -- "OTLP" --> LB
+    SDK L_SDK_LB@-- "OTLP" --> LB
 
-    LB --> C1
-    LB --> C2
-    LB --> C3
+    LB L_LB_C1@--> C1
+    LB L_LB_C2@--> C2
+    LB L_LB_C3@--> C3
 
-    C1 --> Backend
-    C2 --> Backend
-    C3 --> Backend
+    C1 L_C1_Backend@--> Backend
+    C2 L_C2_Backend@--> Backend
+    C3 L_C3_Backend@--> Backend
 
     classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
     style App fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
     style OTelCol fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    linkStyle 0,1,2,3,4,5,6 stroke:#a3e635, fill:none, stroke-width:3px
+
+    L_SDK_LB@{ animation: fast }
+    L_LB_C1@{ animation: fast }
+    L_LB_C2@{ animation: fast }
+    L_LB_C3@{ animation: fast }
+    L_C1_Backend@{ animation: fast }
+    L_C2_Backend@{ animation: fast }
+    L_C3_Backend@{ animation: fast }
 ```
 
 In multi-tenant environments, multiple Collector Gateways may need to be chained
