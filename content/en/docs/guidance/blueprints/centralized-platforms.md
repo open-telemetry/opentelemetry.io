@@ -90,17 +90,17 @@ flowchart TB
     direction TB
     AppA["📦 App A"]:::node
     AppB["📦 App B"]:::node
-    Collector["🎛️️ Collector"]:::node
+    Collector["🔀 Collector"]:::node
   end
 
-  subgraph TracesDB["🐾️ Traces Backend"]
+  subgraph TracesDB["🧵️Traces Backend"]
     direction LR
-    TraceX[("🐾 Trace X")]:::node
-    TraceY[("🐾 Trace Y")]:::node
+    TraceX[("🧵 Trace X")]:::node
+    TraceY[("🧵 Trace Y")]:::node
   end
 
-  subgraph MetricsDB["📊️ Metrics Backend"]
-    Metrics[("📊 Container Metrics")]:::node
+  subgraph MetricsDB["📈 Metrics Backend"]
+    Metrics[("📈 Container Metrics")]:::node
   end
 
   User["👤 User"]:::node
@@ -338,19 +338,19 @@ flowchart TD
     end
 
     subgraph Platform["Platform Ownership"]
-        Collector[("🎛️️<br>Collector<br>Pipelines")]:::node
+        Collector[("🔀️<br>Collector<br>Pipelines")]:::node
         BaseConfig["⚙️<br>Base Config"]:::node
     end
 
     subgraph Application["Application"]
-        AppCode["💻<br>App Code"]:::node
-        ThirdParty["📦<br>3rd-Party Libs"]:::node
-        InstLibs["🔭<br>Instro Libs"]:::node
-        OTelSDK["🔭<br>OTel SDK"]:::node
-        OTelAPI["🔭<br>OTel API"]:::node
+        AppCode["💼<br>Biz Logic"]:::node
+        ThirdParty["👽<br>3rd-Party Libs"]:::node
+        InstLibs["📦<br>Instrumentation"]:::node
+        OTelSDK["📦<br>OTel SDK"]:::node
+        OTelAPI["📦<br>OTel API"]:::node
     end
 
-    Sink[("🗄️ Backend")]:::node
+    Sink[("🗄️ Observability Backend")]:::node
 
     AppCode L_AppCode_API@-- Uses --> OTelAPI
     ThirdParty L_ThirdParty_API@-- Uses --> OTelAPI
@@ -444,13 +444,13 @@ flowchart LR
         SDK["📦 OTel SDK"]:::node
     end
 
-    LB["🔀 Load Balancer"]:::node
+    LB["⚖️Load Balancer"]:::node
 
     subgraph OTelCol["Collector Gateway"]
         direction TB
-        C1["🎛️ Collector 1"]:::node
-        C2["🎛️ Collector 2"]:::node
-        C3["🎛️ Collector 3"]:::node
+        C1["🔀 Collector 1"]:::node
+        C2["🔀 Collector 2"]:::node
+        C3["🔀 Collector 3"]:::node
     end
 
     Backend[("🗄️ Backend")]:::node
@@ -597,7 +597,7 @@ config:
 flowchart LR
     subgraph LocalA["Local Gateway"]
         direction LR
-        LA1["🎛️ Collector"]:::node ~~~ LA2["🎛️ Collector"]:::node
+        LA1["🔀️ Collector"]:::node ~~~ LA2["🔀 Collector"]:::node
     end
     subgraph ClusterA["Cluster A"]
         direction TB
@@ -607,7 +607,7 @@ flowchart LR
 
     subgraph LocalB["Local Gateway"]
         direction LR
-        LB1["🎛️ Collector"]:::node ~~~ LB2["🎛️ Collector"]:::node
+        LB1["🔀 Collector"]:::node ~~~ LB2["🔀 Collector"]:::node
     end
 
     subgraph ClusterB["Cluster B"]
@@ -618,12 +618,12 @@ flowchart LR
 
     subgraph LB_Layer["Load Balancing Layer"]
         direction TD
-        GLB1["🎛️ Collector"]:::node ~~~ GLB2["🎛️ Collector"]:::node ~~~ GLB3["🎛️ Collector"]:::node
+        GLB1["🔀 Collector"]:::node ~~~ GLB2["🔀 Collector"]:::node ~~~ GLB3["🔀 Collector"]:::node
     end
 
     subgraph SamplingLayer["Tail Sampling Layer"]
         direction TD
-        TS1["🎛️ Collector"]:::node ~~~ TS2["🎛️ Collector"]:::node ~~~ TS3["🎛️ Collector"]:::node
+        TS1["🔀 Collector"]:::node ~~~ TS2["🔀 Collector"]:::node ~~~ TS3["🔀 Collector"]:::node
     end
 
     subgraph GlobalTier["Unified Global Gateway"]
