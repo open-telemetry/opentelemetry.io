@@ -86,44 +86,46 @@ config:
     curve: basis
 ---
 flowchart TB
-  subgraph Cluster["Kubernetes Cluster"]
+  subgraph K8sNode["Kubernetes Node"]
     direction TB
-      AppA["Application A<br>(starts trace X)"]
-      AppB["Application B<br>(starts trace Y)"]
-      Collector["Collector kubeletstats<br>(k8s.cluster.name=cluster-1)"]
+    AppA["📦 App A Pod"]:::node
+    AppB["📦 App B Pod"]:::node
+    Collector["🎛️ Collector DaemonSet"]:::node
   end
-  subgraph Backend["Telemetry Backend"]
-    direction TB
-      Traces[("Traces")]
-      Metrics[("Metrics")]
+
+  subgraph TracesDB["🐾️ Traces"]
+    direction LR
+    TraceX[("🐾 Trace X")]:::node
+    TraceY[("🐾 Trace Y")]:::node
   end
-    User(("User")) -- Inbound request --> AppA
-    AppA L_AppA_AppB_0@-. Broken context<br>(incompatible propagators) .-x AppB
-    Traces L_Traces_Metrics_0@x-. "Broken correlation<br>(missing k8s.* attributes)" .-x Metrics
-    AppA L_AppA_Traces_0@== Exports spans ==> Traces
-    AppB L_AppB_Traces_0@== Exports spans ==> Traces
-    Collector L_Collector_Metrics_0@== Exports utilization metrics ==> Metrics
 
-      AppA:::node
-      AppB:::node
-      Collector:::node
-      Traces:::node
-      Metrics:::node
-      User:::node
-    classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
-    style Cluster fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
-    style Backend fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
-    linkStyle 1 stroke:#D50000, fill:none,fill:none
-    linkStyle 2 stroke:#cc0000, fill:none,fill:none
-    linkStyle 3 stroke:#C8E6C9, fill:none,fill:none
-    linkStyle 4 stroke:#C8E6C9, fill:none,fill:none
-    linkStyle 5 stroke:#C8E6C9, fill:none,fill:none
+  subgraph MetricsDB["📊️ Metrics"]
+    Metrics[("📊 Pod Metrics")]:::node
+  end
 
-    L_AppA_AppB_0@{ animation: slow }
-    L_Traces_Metrics_0@{ animation: slow }
-    L_AppA_Traces_0@{ animation: fast }
-    L_AppB_Traces_0@{ animation: fast }
-    L_Collector_Metrics_0@{ animation: fast }
+  User["👤 User"]:::node
+
+  User L_User_AppA@-- Inbound request --> AppA
+  AppA L_AppA_AppB@-. "Dependency<br>(broken trace context)" .-x AppB
+  TracesDB L_TracesDB_MetricsDB@x-. "Broken correlation<br>(missing k8s.* attributes)" .-x MetricsDB
+  AppA L_AppA_TraceX@== Spans ==> TraceX
+  AppB L_AppB_TraceY@== Spans ==> TraceY
+  Collector L_Collector_MetricsDB@== "Metrics<br>(k8s.pod.name=app-...)" ==> MetricsDB
+
+  classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
+  style K8sNode fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+  style TracesDB fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+  style MetricsDB fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+  linkStyle 1 stroke:#D50000, fill:none
+  linkStyle 2 stroke:#cc0000, fill:none
+  linkStyle 3,4,5 stroke:#C8E6C9, fill:none
+
+  L_User_AppA@{ animation: slow }
+  L_AppA_AppB@{ animation: slow }
+  L_TracesDB_MetricsDB@{ animation: slow }
+  L_AppA_TraceX@{ animation: fast }
+  L_AppB_TraceY@{ animation: fast }
+  L_Collector_MetricsDB@{ animation: fast }
 ```
 
 This leads to:
