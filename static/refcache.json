@@ -16223,6 +16223,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-02T11:03:37.839667+01:00"
   },
+  "https://github.com/open-telemetry/sig-end-user/issues": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-02T23:19:26.207047113Z"
+  },
   "https://github.com/open-telemetry/sig-end-user/issues/245": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T11:03:39.829159+01:00"
