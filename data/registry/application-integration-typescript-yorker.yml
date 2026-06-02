@@ -10,9 +10,9 @@ license: proprietary
 description:
   Yorker runs HTTP and Playwright browser checks and emits each run as a
   structured OTLP signal. Every signal is anomaly-scored against per-metric
-  baselines, carries third-party attribution, and injects a W3C traceparent
-  so the check joins your distributed trace. Forwarded to your OTLP endpoint
-  and works with any OpenTelemetry backend.
+  baselines, carries third-party attribution, and injects a W3C traceparent so
+  the check joins your distributed trace. Forwarded to your OTLP endpoint and
+  works with any OpenTelemetry backend.
 authors:
   - name: Reverse Sweep Ltd
     url: https://yorkermonitoring.com
