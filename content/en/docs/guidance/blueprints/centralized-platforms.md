@@ -594,69 +594,59 @@ config:
   flowchart:
     curve: basis
 ---
-flowchart TB
-    %% Cluster A Definition
+flowchart LR
     subgraph LocalA["Local Gateway"]
         direction LR
-        LA1["Collector<br>📥 ⚙️ 📤"]:::node ~~~ LA2["Collector<br>📥 ⚙️ 📤"]:::node
+        LA1["🎛️ Collector"]:::node ~~~ LA2["🎛️ Collector"]:::node
     end
-
     subgraph ClusterA["Cluster A"]
         direction TB
-        AppA["💼 OTel SDK"]:::node
+        AppA["📦 OTel SDK"]:::node
         LocalA
     end
 
-    %% Cluster B Definition
     subgraph LocalB["Local Gateway"]
         direction LR
-        LB1["Collector<br>📥 ⚙️ 📤"]:::node ~~~ LB2["Collector<br>📥 ⚙️ 📤"]:::node
+        LB1["🎛️ Collector"]:::node ~~~ LB2["🎛️ Collector"]:::node
     end
 
     subgraph ClusterB["Cluster B"]
         direction TB
-        AppB["💼 OTel SDK"]:::node
+        AppB["📦 OTel SDK"]:::node
         LocalB
     end
 
-    %% Unified Global Gateway Definition
     subgraph LB_Layer["Load Balancing Layer"]
-        direction LR
-        GLB1["Collector<br>📥 ⚙️ 📤"]:::node ~~~ GLB2["Collector<br>📥 ⚙️ 📤"]:::node ~~~ GLB3["Collector<br>📥 ⚙️ 📤"]:::node
+        direction TD
+        GLB1["🎛️ Collector"]:::node ~~~ GLB2["🎛️ Collector"]:::node ~~~ GLB3["🎛️ Collector"]:::node
     end
 
     subgraph SamplingLayer["Tail Sampling Layer"]
-        direction LR
-        TS1["Collector<br>📥 ⚙️ 📤"]:::node ~~~ TS2["Collector<br>📥 ⚙️ 📤"]:::node ~~~ TS3["Collector<br>📥 ⚙️ 📤"]:::node
+        direction TD
+        TS1["🎛️ Collector"]:::node ~~~ TS2["🎛️ Collector"]:::node ~~~ TS3["🎛️ Collector"]:::node
     end
 
     subgraph GlobalTier["Unified Global Gateway"]
-        direction TB
+        direction LR
         LB_Layer
         SamplingLayer
     end
 
-    ObsBackend["🗄️ Observability Backend"]:::node
+    ObsBackend[("🗄️ Observability Backend")]:::node
 
-    %% --- Connections & Routing ---
+    AppA L_AppA_LocalA@-- OTLP --> LocalA
+    AppB L_AppB_LocalB@-- OTLP --> LocalB
 
-    %% App to Local Gateway
-    AppA -- OTLP --> LocalA
-    AppB -- OTLP --> LocalB
+    LocalA L_LocalA_LBLayer@-- "OTLP (spans)" --> LB_Layer
+    LocalB L_LocalB_LBLayer@-- "OTLP (spans)" --> LB_Layer
+    LB_Layer L_LBLayer_Sampling@-- "Route by<br>Trace ID" --> SamplingLayer
 
-    %% Local Gateway to Global Gateway (Spans)
-    LocalA -- "OTLP (spans)" --> LB_Layer
-    LocalB -- "OTLP (spans)" --> LB_Layer
-    LB_Layer -- "OTLP (spans)" --> SamplingLayer
+    LocalA L_LocalA_Backend@-- "OTLP (metrics & logs)" --> ObsBackend
+    LocalB L_LocalB_Backend@-- "OTLP (metrics & logs)" --> ObsBackend
+    SamplingLayer L_Sampling_Backend@-- "OTLP (sampled spans)" --> ObsBackend
 
-    %% Combined metrics and logs routing to the single backend
-    LocalA -- "OTLP (metrics & log records)" --> ObsBackend
-    SamplingLayer -- "OTLP (sampled spans)" --> ObsBackend
-
-    %% --- Annotations & Notes ---
     AppB -.- n1["Head sampling, aggregation, limits, etc."]:::note
     LocalA -.- n2["Redaction, enrichment, OTTL, governance, etc."]:::note
-    LB_Layer -.- n3["Group and route spans by trace ID"]:::note
     SamplingLayer -.- n4["Sample traces, post-processing"]:::note
 
     classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
@@ -668,6 +658,19 @@ flowchart TB
     style GlobalTier fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
     style LB_Layer fill:#dde4ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
     style SamplingLayer fill:#dde4ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    linkStyle 6,7 stroke:#7dd3fc, fill:none, stroke-width:3px
+    linkStyle 8,9,10,13 stroke:#a3e635, fill:none, stroke-width:3px
+    linkStyle 11,12 stroke:#fde68a, fill:none, stroke-width:3px
+    linkStyle 14,15,16 stroke:#c7d2fe, fill:none, stroke-width:1px
+
+    L_AppA_LocalA@{ animation: fast }
+    L_AppB_LocalB@{ animation: fast }
+    L_LocalA_LBLayer@{ animation: fast }
+    L_LocalB_LBLayer@{ animation: fast }
+    L_LBLayer_Sampling@{ animation: fast }
+    L_LocalA_Backend@{ animation: fast }
+    L_LocalB_Backend@{ animation: fast }
+    L_Sampling_Backend@{ animation: fast }
 ```
 
 As a rule of thumb, processing of telemetry should be done as close as possible
