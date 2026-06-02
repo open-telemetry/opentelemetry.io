@@ -187,6 +187,8 @@ jobs:
             - Refreshes the oldest ${{ env.REFRESH_COUNT }} refcache entries.
             - Oldest entry after pruning:
             ${{ env.OLDEST_ENTRY }}
+
+            /cc @vitorvasc
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           echo "Existing PR(s):"
