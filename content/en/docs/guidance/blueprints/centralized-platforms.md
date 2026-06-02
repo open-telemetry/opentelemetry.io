@@ -90,7 +90,7 @@ flowchart TB
     direction TB
     AppA["📦 App A Pod"]:::node
     AppB["📦 App B Pod"]:::node
-    Collector["🎛️ Collector DaemonSet"]:::node
+    Collector["🔀️ Collector DaemonSet"]:::node
   end
 
   subgraph TracesDB["🐾️ Traces"]
@@ -113,12 +113,13 @@ flowchart TB
   Collector L_Collector_MetricsDB@== "Metrics<br>(k8s.pod.name=app-...)" ==> MetricsDB
 
   classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
-  style K8sNode fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
-  style TracesDB fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
-  style MetricsDB fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
-  linkStyle 1 stroke:#D50000, fill:none
-  linkStyle 2 stroke:#cc0000, fill:none
-  linkStyle 3,4,5 stroke:#C8E6C9, fill:none
+  style K8sNode fill:#eef2ff, stroke:#818cf8, stroke-width:2px, color:#818cf8
+  style TracesDB fill:#eef2ff, stroke:#818cf8, stroke-width:2px, color:#818cf8
+  style MetricsDB fill:#eef2ff, stroke:#818cf8, stroke-width:2px, color:#818cf8
+  linkStyle 0 stroke:#7dd3fc, fill:none, stroke-width:3px
+  linkStyle 1 stroke:#fca5a5, fill:none, stroke-width:3px
+  linkStyle 2 stroke:#fca5a5, fill:none, stroke-width:3px
+  linkStyle 3,4,5 stroke:#a3e635, fill:none, stroke-width:3px
 
   L_User_AppA@{ animation: slow }
   L_AppA_AppB@{ animation: slow }
@@ -333,36 +334,53 @@ config:
 flowchart LR
     subgraph User["Application Ownership"]
         Application["Application"]:::node
-        Config["Config"]:::node
+        Config["⚙️ Config"]:::node
     end
 
     subgraph Platform["Platform Ownership"]
-        Collector[("Collector<br>Pipelines")]:::node
-        BaseConfig["Base Config"]:::node
+        Collector[("🔀️ Collector<br>Pipelines")]:::node
+        BaseConfig["⚙️ Base Config"]:::node
     end
 
     subgraph Application["Application"]
-        AppCode["Application Code"]:::node
-        ThirdParty["Third-Party Libraries"]:::node
-        InstLibs["Instrumentation Libraries"]:::node
-        OTelSDK["OTel SDK"]:::node
-        OTelAPI["OTel API"]:::node
+        AppCode["💻 Application Code"]:::node
+        ThirdParty["📦 Third-Party Libraries"]:::node
+        InstLibs["🔭 Instrumentation Libraries"]:::node
+        OTelSDK["🔭 OTel SDK"]:::node
+        OTelAPI["🔭 OTel API"]:::node
     end
 
-    AppCode -- Uses --> OTelAPI
-    ThirdParty -- Uses --> OTelAPI
-    InstLibs -- Uses --> OTelAPI
-    OTelSDK -. Implements .-> OTelAPI
+    Sink[("🗄️ Backend")]:::node
 
-    Config -.-> InstLibs & OTelSDK
-    OTelSDK -- Exports --> Collector
-    Collector --> Sink[("Backend")]:::node
-    BaseConfig -.-> Config
+    AppCode L_AppCode_API@-- Uses --> OTelAPI
+    ThirdParty L_ThirdParty_API@-- Uses --> OTelAPI
+    InstLibs L_InstLibs_API@-- Uses --> OTelAPI
+    OTelSDK L_SDK_API@-. Implements .-> OTelAPI
+
+    Config L_Config_InstLibs@-.-> InstLibs
+    Config L_Config_SDK@-.-> OTelSDK
+    OTelSDK L_SDK_Collector@-- Exports --> Collector
+    Collector L_Collector_Sink@--> Sink
+    BaseConfig L_BaseConfig_Config@-.-> Config
 
     classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
     style User fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
     style Platform fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
     style Application fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    linkStyle 0,1,2 stroke:#7dd3fc, fill:none
+    linkStyle 3 stroke:#d8b4fe, fill:none
+    linkStyle 4,5,8 stroke:#fde68a, fill:none
+    linkStyle 6,7 stroke:#a3e635, fill:none
+
+    L_AppCode_API@{ animation: fast }
+    L_ThirdParty_API@{ animation: fast }
+    L_InstLibs_API@{ animation: fast }
+    L_SDK_API@{ animation: slow }
+    L_Config_InstLibs@{ animation: slow }
+    L_Config_SDK@{ animation: slow }
+    L_SDK_Collector@{ animation: fast }
+    L_Collector_Sink@{ animation: fast }
+    L_BaseConfig_Config@{ animation: slow }
 ```
 
 This model relies on OpenTelemetry’s API design to abstract implementation
