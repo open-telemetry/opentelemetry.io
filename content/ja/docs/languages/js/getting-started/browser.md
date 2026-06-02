@@ -3,8 +3,7 @@ title: ブラウザ
 aliases: [/docs/js/getting_started/browser]
 description: ブラウザアプリにOpenTelemetryを追加する方法を学ぶ
 weight: 20
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
-drifted_from_default: true
+default_lang_commit: f7dab5cfc4d44a8c788b7e02d07ec1e1d84e3845
 ---
 
 {{% include browser-instrumentation-warning.md %}}
@@ -229,11 +228,20 @@ registerInstrumentations({
 
 ### 計装の追加 {#add-instrumentations}
 
-Ajaxリクエスト、ユーザーインタラクションなどを計装したい場合は、それらのための追加の計装を登録できます。
+Ajaxリクエスト、ユーザーインタラクションなどを計装したい場合は、追加の計装ライブラリをインストールして登録できます。
+
+```sh
+npm install @opentelemetry/instrumentation-user-interaction \
+  @opentelemetry/instrumentation-xml-http-request \
+```
 
 ```javascript
+import { UserInteractionInstrumentation } from '@opentelemetry/instrumentation-user-interaction';
+import { XMLHttpRequestInstrumentation } from '@opentelemetry/instrumentation-xml-http-request';
+
 registerInstrumentations({
   instrumentations: [
+    new DocumentLoadInstrumentation(),
     new UserInteractionInstrumentation(),
     new XMLHttpRequestInstrumentation(),
   ],
