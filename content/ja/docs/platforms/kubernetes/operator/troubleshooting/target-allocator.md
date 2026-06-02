@@ -259,7 +259,7 @@ curl localhost:8080/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F0/targets
 }
 ```
 
-上記の出力の `_link` フィールドのクエリパラメータ `collector_id` は、これらのターゲットが `otelcol-collector-0` (`OpenTelemetryCollector` リソースのために作成された `StatefulSet` の名前) に関連することを示しています。
+上記の出力の `_link` フィールドのクエリパラメーター `collector_id` は、これらのターゲットが `otelcol-collector-0` (`OpenTelemetryCollector` リソースのために作成された `StatefulSet` の名前) に関連することを示しています。
 
 {{% alert title="Note" %}}
 
