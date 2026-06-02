@@ -88,19 +88,19 @@ config:
 flowchart TB
   subgraph K8sNode["Kubernetes Node"]
     direction TB
-    AppA["📦 App A Pod"]:::node
-    AppB["📦 App B Pod"]:::node
-    Collector["🔀️ Collector DaemonSet"]:::node
+    AppA["📦 App A"]:::node
+    AppB["📦 App B"]:::node
+    Collector["🔀️ Collector"]:::node
   end
 
-  subgraph TracesDB["🐾️ Traces"]
+  subgraph TracesDB["🐾️ Traces Backend"]
     direction LR
     TraceX[("🐾 Trace X")]:::node
     TraceY[("🐾 Trace Y")]:::node
   end
 
-  subgraph MetricsDB["📊️ Metrics"]
-    Metrics[("📊 Pod Metrics")]:::node
+  subgraph MetricsDB["📊️ Metrics Backend"]
+    Metrics[("📊 Container Metrics")]:::node
   end
 
   User["👤 User"]:::node
