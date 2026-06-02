@@ -1,0 +1,23 @@
+title: Yorker Synthetic Monitoring
+registryType: application integration
+language: typescript
+tags:
+  - synthetic-monitoring
+  - browser-monitoring
+  - playwright
+  - otlp
+license: proprietary
+description:
+  Yorker runs HTTP and Playwright browser checks and emits each run as a
+  structured OTLP signal. Every signal is anomaly-scored against per-metric
+  baselines, carries third-party attribution, and injects a W3C traceparent
+  so the check joins your distributed trace. Forwarded to your OTLP endpoint
+  and works with any OpenTelemetry backend.
+authors:
+  - name: Reverse Sweep Ltd
+    url: https://yorkermonitoring.com
+urls:
+  website: https://yorkermonitoring.com
+  docs: https://yorkermonitoring.com/docs
+createdAt: '2026-06-02'
+isNative: true
