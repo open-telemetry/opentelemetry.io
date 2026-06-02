@@ -184,7 +184,6 @@
     "textlint-filter-rule-comments": "^1.3.0",
     "textlint-rule-prh": "^6.1.0",
     "textlint-rule-terminology": "^5.2.16",
-    "through2": "^4.0.2",
     "yargs": "^18.0.0"
   },
   "dependencies": {
