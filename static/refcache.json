@@ -16183,6 +16183,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-25T11:01:39.048879648Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.41.1//model/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-02T13:44:17.307121-04:00"
+  },
   "https://github.com/open-telemetry/sig-contributor-experience": {
     "StatusCode": 206,
     "LastSeen": "2026-05-02T10:00:29.889222357Z"
