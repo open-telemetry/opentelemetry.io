@@ -370,7 +370,9 @@ than simply hiding implementation details. When required, SDK features (e.g.
 [Metric Views][8], or [Span Processors][9]) can be utilized to transform
 telemetry at the application level (see [Guideline 4][guideline-4]).
 
-> [!NOTE] [Weaver][10] can help teams to manage organization-specific semantic
+> [!NOTE] Help wanted
+>
+> [Weaver][10] can help teams to manage organization-specific semantic
 > convention registries, and to measure and validate adherence to those,
 > ensuring instrumentation quality by design. Learn more about Weaver in [this
 > blogpost][11]. Semantic conventions governance is out of cope for this
