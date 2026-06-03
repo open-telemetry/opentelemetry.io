@@ -10,15 +10,17 @@ cSpell:ignore: actioned Autoscaler filestorage k8sattributes kube loadbalancing 
 
 ## Summary
 
-This blueprint provides strategic guidance for organizations that wish to ease
-adoption of OpenTelemetry across their engineering teams by following Platform
-Engineering practices, providing centrally managed telemetry platforms inclusive
-of self-serve tooling to be used “as-a-service” by product engineering teams.
+This blueprint provides strategic guidance for organizations aiming to follow
+Platform Engineering practices to ease adoption of OpenTelemetry tooling and
+standards across their engineering teams. This includes usage of SDKs,
+instrumentation libraries, configuration patterns, and Collector architectures
+to provide centrally managed telemetry platforms paired with self-serve tooling
+designed to be consumed “as-a-service”.
 
-It is aimed at organizations operating in medium-to-large scale cloud and
-Kubernetes environments, aiming to provide a consistent, scalable, and governed
-telemetry platform across workloads owned by highly autonomous product teams,
-achieving the following outcomes:
+It is aimed at organizations operating in cloud and Kubernetes environments,
+wishing to provide a consistent, scalable, and governed telemetry platform
+across workloads owned by highly autonomous product teams, achieving the
+following outcomes:
 
 - Consistent SDK and instrumentation configuration, improving time-to-value by
   facilitating adoption of organization-specific standards across all workloads,
@@ -36,7 +38,8 @@ achieving the following outcomes:
   compute requirements of telemetry processing.
 - Future-proof telemetry pipelines that shield product teams from changes in the
   underlying observability backend, enabling data migrations or multi-vendor
-  strategies without requiring changes to application instrumentation.
+  strategies without requiring changes to application instrumentation or
+  collection infrastructure.
 
 ## Background
 
@@ -140,15 +143,15 @@ This leads to:
 
 - **Inconsistent [Semantic Conventions][2]:** Telemetry lacks common
   [Resource][3] attributes (e.g., `service.version`, `k8s.cluster.name`,
-  `org.cost.center`), breaking correlation across different signals,
+  `example.cost.center`), breaking correlation across different signals,
   applications, and system layers, and limiting the usefulness of observability
   data for automatic analysis.
 - **Context silos:** Without consistent [context propagation][4] (e.g. W3C Trace
-  Context or Baggage) baked into every SDK, distributed traces break at service
-  boundaries, making it impossible to tie backend performance regressions to
-  customer-facing business impact.
-- **SDK version fragmentation**: Largely different versions of OpenTelemetry
-  SDKs running in production, introducing maintenance and security concerns.
+  Context) baked into every SDK, distributed traces break at service boundaries,
+  making it impossible to tie backend performance regressions to customer-facing
+  business impact.
+- **SDK version fragmentation**: Widely different versions of OpenTelemetry SDKs
+  running in production, introducing maintenance and security concerns.
 - **High cognitive load:** Developers must manually configure SDKs and
   instrumentation packages for every new service, increasing toil and the risk
   of misconfiguration.
@@ -249,11 +252,11 @@ This leads to:
   always improve the insights one may require to operate systems reliably.
 - **Carbon emissions**: Processing of low-value data can be detrimental to
   achieving green software targets, including scope 3 emissions from embedded
-  carbon present into the devices necessary for fast retrieval of observability
+  carbon present in the devices necessary for fast retrieval of observability
   data, e.g. SSDs.
 - **High cognitive load**: Large data volumes not only result in unnecessary
-  costs, they may also increase noise, forcing users to filter through
-  low-quality data to find relevant telemetry.
+  costs, they may also increase noise, forcing users and agents to filter
+  through low-quality data to find relevant telemetry.
 
 > [!NOTE] Help wanted
 >
@@ -307,8 +310,8 @@ By implementing this guideline, organizations can expect to achieve:
 - **Cohesive organization standards:** Specific organization standards (e.g.
   resource attributes, exporter endpoint, etc) are applied automatically across
   the stack.
-- **Consistent context propagation:** Trace Context and Baggage are propagated
-  between services using compatible propagator configurations.
+- **Consistent context propagation:** Trace Context is propagated between
+  services using compatible propagator configurations.
 - **Lower cognitive load:** Application owners can abstract themselves from
   lower-level configuration, such as that related to setting up the
   OpenTelemetry SDK.
@@ -398,9 +401,9 @@ flowchart TD
 
 This model relies on OpenTelemetry’s API design to abstract implementation
 details. We recommend considering direct usage of the different signal APIs and
-avoid building further abstractions around them, unless these provide more value
-than simply hiding implementation details. When required, SDK features (e.g.
-[Metric Views][8], or [Span Processors][9]) can be utilized to transform
+avoiding building further abstractions around them, unless these provide more
+value than simply hiding implementation details. When required, SDK features
+(e.g. [Metric Views][8], or [Span Processors][9]) can be utilized to transform
 telemetry at the application level (see [Guideline 4][guideline-4]).
 
 > [!NOTE] Help wanted
@@ -413,14 +416,13 @@ telemetry at the application level (see [Guideline 4][guideline-4]).
 > you are interested in contributing.
 
 Ultimately, application owners should remain owners of the telemetry data
-emitted by their applications (both manually and automatically instrumented
-telemetry), and be accountable for its quality and resiliency. To aid in this
-endeavor, platform teams should enable [SDK telemetry][12] out of the box, in
-languages that support it. Application owners should make use of this telemetry
-to ensure the reliability of the data emitted from their applications, and
-optimize their configuration accordingly. This includes configuring SDK
-components like the `BatchSpanProcessor` or the `PeriodicMetricReader` to change
-buffer sizes, retry queues, or timeouts, if required.
+emitted by their applications (both manually and automatically instrumented),
+and be accountable for its quality and resiliency. This includes monitoring and
+alerting on [SDK telemetry][12], automatically configured by the platform team
+in languages that support it, and optimize their configuration according to
+their specific application needs. This involves tuning SDK components like the
+`BatchSpanProcessor` or the `PeriodicMetricReader` to change buffer sizes, retry
+queues, cardinality limits, or timeouts, as required by their telemetry volumes.
 
 By implementing this guideline, organizations can expect to achieve:
 
@@ -580,8 +582,8 @@ Sampling can be mainly configured at two distinct layers:
   - [_Tail_][23] _sampling:_ A single Collector replica must store all spans for
     a given trace in memory before making a decision. As single replica
     deployment is not recommended in production environments, this model
-    normally requires one layer of Collectors to load balance spans according to
-    trace ID and another to perform sampling.
+    normally requires one layer of Collectors to [load balance][53] spans
+    according to trace ID and another to perform sampling.
 
 Tail sampling requires more resources to operate and maintain. However, it
 provides a richer way of defining sampling policies that allow organizations to
@@ -590,12 +592,13 @@ operations. For instance, traces with durations longer than a particular
 threshold, or those containing errors across any span in a given trace.
 
 When sampling is implemented, consistent use of semantic conventions becomes
-crucial, with metrics providing complete (yet aggregated) views of telemetry,
-and sampled traces providing the high granularity for a given operation, which
-can then link to logs and other telemetry signals. Using standard semantic
-conventions and consistent _Resource_ attributes empowers correlation between
-these signals, allowing operators to “zoom in” from long-term, aggregated metric
-streams to highly-granular, contextual traces.
+crucial. Metrics provide complete (yet aggregated) views of telemetry, using
+[Exemplars][66] to correlate to high granularity trace spans for a given
+operation, which can then link to logs and other telemetry signals (e.g.
+profiles). Using standard semantic conventions and consistent _Resource_
+attributes also empowers correlation between these signals, allowing operators
+to “zoom in” from long-term, aggregated metric streams to highly-granular,
+contextual traces.
 
 The following diagram provides a summary of different layers where aggregation,
 processing, and sampling may be configured in a tail-sampling, multi-cluster
@@ -611,7 +614,7 @@ config:
 flowchart LR
     subgraph LocalA["Local Gateway"]
         direction LR
-        LA1["🔀️ Collector"]:::node ~~~ LA2["🔀 Collector"]:::node
+        LA1["🔀 Collector"]:::node ~~~ LA2["🔀 Collector"]:::node
     end
     subgraph ClusterA["Cluster A"]
         direction TB
@@ -759,11 +762,6 @@ use of [declarative configuration][36]. Although currently not fully supported
 by all languages, this YAML-based configuration model provides consistency in
 SDK and instrumentation configuration.
 
-Finally, in environments where the OpenTelemetry Operator cannot be deployed,
-and where providing base container images is not a possibility, we recommend
-deploying the [OpenTelemetry eBPF Instrumentation (OBI)][37], which can provide
-a zero-code option for teams not in charge of build or deployment pipelines.
-
 ### 2. Include organization standards into default, extensible application-level configuration {#action-2}
 
 **Guidelines implemented:** 1, 2, 4
@@ -774,14 +772,15 @@ base configuration as part of their offering:
 
 - **Exporters:** OTLP HTTP/protobuf (default) or OTLP gRPC configured to export
   to the most optimal Collector (e.g. local Gateway in the same cluster).
-  Backend/SaaS endpoints or API keys should not be included in application-level
-  configuration, as we recommend handling these at a Collector Gateway. See
-  [Action 3][action-3] and [Appendix 1][appendix-1] for more details on side
-  effects of OTLP gRPC used with standard Kubernetes Services.
-- **Propagators:** W3C Trace Context (`tracecontext`) and W3C Baggage
-  (`baggage`) to ensure distributed traces do not break across service
-  boundaries. If necessary, include legacy formats as secondary options
-  (Propagators API will prioritize in the order they are configured).
+  - **Note:** Backend/SaaS endpoints or API keys should not be included in
+    application-level configuration, as we recommend handling these at a
+    Collector Gateway.
+  - **Note:** See [Action 3][action-3] and [Appendix 1][appendix-1] for more
+    details on side effects of OTLP gRPC used with standard Kubernetes Services.
+- **Propagators:** W3C Trace Context (`tracecontext`) to ensure distributed
+  traces do not break across service boundaries. If necessary, include legacy
+  formats as secondary options (Propagators API will prioritize in the order
+  they are configured).
 - **Resource detectors:** Auto-detectors for the underlying infrastructure
   (e.g., cloud provider, Kubernetes, OS, container) to achieve consistency with
   no manual input.
@@ -791,6 +790,15 @@ base configuration as part of their offering:
 - **Processors, readers and views**: Settings specific to the backend in use
   (e.g. aggregation temporality, export intervals, attribute limits) or
   organization-wide standards (e.g. span/metric attributes).
+  - **Note:** OTLP exporters will retry when the receiving Collector applies
+    backpressure (returning retryable errors such as `429`; see [Action
+    3][action-3]). However, SDK processors and readers will drop data when their
+    internal buffers are full. Platform teams should manage sensible defaults
+    for these buffer sizes and prioritize export to local Collectors (e.g.
+    cluster-local Gateway) to move telemetry out of the application process as
+    fast and reliably as possible. Application owners should monitor [SDK
+    telemetry][12], when available, and react accordingly.
+
 - **Organization-specific resource attributes:** Standard conventions critical
   for routing, billing, and ownership. At a minimum, we recommend:
   - `service.name` ideally extracted from existing environment variables or
@@ -930,9 +938,9 @@ in Collector Gateways to execute the following processing steps (in order):
     any of these will result in the Collector silently skipping enrichment for
     the affected attributes.
 - **Processors to filter and transform data:** As a fallback measure on
-  applications that could not apply these changes at source, use processors like
-  [attributes][48], [filter][49], [redaction][27], [resource][50], or
-  [transform][51] to define rules to:
+  applications that could not apply these settings at the SDK level before being
+  sent to the Collector, use processors like [attributes][48], [filter][49],
+  [redaction][27], [resource][50], or [transform][51] to define rules to:
   - Drop single-span traces and access logs for routine endpoints (`/health`,
     `/metrics`, `/ready`) or non-actionable debug logs (`level=DEBUG` or
     `level=TRACE`).
@@ -970,11 +978,11 @@ To identify and monitor data loss occurring before telemetry even leaves the
 application process (e.g., if the SDK's internal queue fills up), we recommend:
 
 - Where supported by the language ecosystem (e.g. Java via the
-  `opentelemetry-sdk` instrumentation library, or .NET with the
-  `OpenTelemetry-Sdk` `EventSource`), enable SDK self-metrics to expose internal
-  queue capacities, dropped spans, and exporter latency. [OpenTelemetry SDK
-  Semantic Conventions][57] define the telemetry to be produced by SDKs, but
-  support varies depending on language.
+  `opentelemetry-sdk` instrumentation library, or Go via the `sdk/metric`
+  package), enable SDK self-metrics to expose internal queue capacities, dropped
+  spans, and exporter latency. [OpenTelemetry SDK Semantic Conventions][57]
+  define the telemetry to be produced by SDKs, but support varies depending on
+  language.
 - For languages lacking native SDK metric support, enable error logging on the
   OTel SDK's global error handler.
 
@@ -1082,17 +1090,6 @@ there is no Service Mesh and traffic remains entirely within the same cluster,
 use client-side load balancing, or consider using HTTP/protobuf (see [Action
 2][action-2]).
 
-<!-- Section references -->
-
-[guideline-1]: #guideline-1
-[guideline-3]: #guideline-3
-[guideline-4]: #guideline-4
-[action-1]: #action-1
-[action-2]: #action-2
-[action-3]: #action-3
-[action-5]: #action-5
-[appendix-1]: #appendix-1
-
 <!-- Link references -->
 
 [1]: https://platformengineering.org/talks-library/platform-as-a-product
@@ -1142,7 +1139,6 @@ use client-side load balancing, or consider using HTTP/protobuf (see [Action
 [34]: /docs/zero-code/
 [35]: /docs/languages/
 [36]: /docs/languages/sdk-configuration/declarative-configuration/
-[37]: /docs/zero-code/obi/
 [38]: /docs/specs/otel/configuration/sdk-environment-variables/
 [39]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables
@@ -1185,3 +1181,4 @@ use client-side load balancing, or consider using HTTP/protobuf (see [Action
 [63]: /docs/guidance/#how-to-contribute
 [64]: https://kubernetes.io/docs/concepts/workloads/pods/downward-api/
 [65]: /docs/specs/otel/trace/sdk/#tracerprovider
+[66]: /docs/specs/otel/metrics/sdk/#exemplar
