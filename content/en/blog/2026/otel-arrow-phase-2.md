@@ -200,12 +200,15 @@ for readers who want to explore the raw charts and configuration details.
 The benchmark results are not only about avoiding serialization. They show a
 deeper change in the cost model of telemetry processing.
 
-In a traditional OTLP-oriented path, telemetry usually arrives as protobuf
-bytes. Before a processor can act on it, the pipeline often needs to decode
-those bytes into nested objects, walk resource, scope, and signal structures,
-update attribute collections, allocate memory, and then encode the result again.
-For simple operations such as attribute renames, this surrounding work can cost
-more than the transformation itself.
+In a row-oriented, OTLP-based path, telemetry arrives as protobuf bytes.
+Decoding those bytes materializes each telemetry record as a heap-allocated
+object graph spanning resource, scope, and individual signal records. A
+processor walks and modifies those objects, and re-encoding converts the result
+back to bytes. Every allocation on the way in becomes garbage on the way out.
+For batch-uniform operations such as attribute renames, that allocation and
+collection pressure can outweigh the transformation itself. This is a
+structural cost of row-oriented processing, independent of any particular
+implementation.
 
 With an OTAP-native path, telemetry can remain in Arrow record batches.
 Processors can operate on a compact, columnar, batch-oriented representation,
