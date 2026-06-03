@@ -105,7 +105,7 @@ The benchmarks shown here were run on an Intel Xeon Platinum 8581C system with
 
 ![3 benchmark takeaways](otel-arrow-phase-2/3_takeaways.svg)
 
-Figure 1: Summary of transformation benchmarks showing rule-count sensitivity,
+Figure 1: Summary of transformation benchmarks showing sensitivity to the count of transformation rules,
 batch-size behavior, and overload behavior.
 
 The first diagram summarizes three important observations from the
