@@ -88,7 +88,7 @@ compression settings, memory behavior, network usage, and saturation markers.
 
 ### Benchmark Context
 
-The transformation benchmark uses a deliberately simple operation: renaming log
+The benchmark uses a deliberately simple transformation operation: renaming log
 attributes such as `exception.type` to `exception.kind`.
 
 This kind of work appears frequently in OpenTelemetry pipelines. Teams rename
