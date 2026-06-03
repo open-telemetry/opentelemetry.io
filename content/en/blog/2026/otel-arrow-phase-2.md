@@ -38,7 +38,7 @@ more efficiently and predictably. We believe OTAP can play an important role in 
 OpenTelemetry pipelines handle this next phase of telemetry growth more
 efficiently.
 
-## A Runtime Built to Test the Native Arrow Path
+## A Dataflow Engine Built to Test the Native Arrow Path
 
 To explore this idea, we built the OTel-Arrow Dataflow Engine. This Arrow-first
 Rust runtime is designed to build OTAP-based pipelines that can efficiently
