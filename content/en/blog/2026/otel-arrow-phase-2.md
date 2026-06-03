@@ -155,13 +155,13 @@ scaling test, the OTel-Arrow Dataflow Engine was evaluated from 1 core to 16
 cores. The measured result reached 14.6x acceleration on 16 cores, very close to
 the ideal 16x line, and reached 1.91M logs/sec on 16 cores.
 
-This result is important because Phase 2 is not only about a new protocol. It is
-also about the runtime model around the OTAP-oriented internal path. In this
+This result separates the runtime question from the protocol question. In this
 test, telemetry enters as OTLP and must be decoded and converted before
 processing can happen. Even with that conversion cost, the thread-per-core,
-share-nothing architecture with bounded flow control converts additional
-assigned cores into stable throughput with limited efficiency loss.
-
+share-nothing architecture with bounded flow control is able to use the assigned
+CPU cores effectively. For operators, the practical result is vertical scaling:
+more cores translate into more throughput with limited efficiency loss.
+  
 ## Result 3: OTAP Provides Higher Throughput on the Same Runtime
 
 ![OTAP versus OTLP throughput](otel-arrow-phase-2/otap_scaling.svg)
