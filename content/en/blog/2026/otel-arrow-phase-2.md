@@ -117,7 +117,7 @@ flat. The DFE OTAP path moves from 6.4% to 6.6% CPU.
 
 The DFE OTLP path is an important middle point in this comparison. It pays an up-front cost of decoding OTLP and converting it into the OTAP-oriented internal path, which explains the more expensive baseline for a single operation. Once converted to an OTAP representation, the cost per additional operation remains as low as the end-to-end OTAP path.
 
-The Go Collector OTLP path represents the traditional Collector execution model.
+The OTel Collector OTLP path represents the current Collector execution model.
 It does not use the Arrow-native internal representation or the Dataflow Engine
 runtime, and reaches 92.5% CPU with four rename actions.
 
