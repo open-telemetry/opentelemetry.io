@@ -108,7 +108,7 @@ The benchmarks shown here were run on an Intel Xeon Platinum 8581C system with
 Figure 1: Summary of transformation benchmarks showing sensitivity to the count of transformation rules,
 batch-size behavior, and overload behavior.
 
-The first diagram summarizes three important observations from the
+The above diagram summarizes three important observations from the
 transformation benchmarks.
 
 The first observation shows that at 200K logs/sec, with approximately 300 bytes per log entry, increasing the
