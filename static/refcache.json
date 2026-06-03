@@ -255,6 +255,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-30T10:18:16.177815673Z"
   },
+  "https://bento.me/adrianamvillela": {
+    "StatusCode": 403,
+    "LastSeen": "2026-06-03T11:27:37.448469237Z"
+  },
   "https://betterstack.com/docs/logs/open-telemetry/#2-setup": {
     "StatusCode": 200,
     "LastSeen": "2026-05-05T10:18:02.967257513Z"
@@ -3371,9 +3375,17 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-02T18:19:35.169Z"
   },
+  "https://gateway-api.sigs.k8s.io/concepts/gamma/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-03T11:27:32.448062544Z"
+  },
   "https://gateway-api.sigs.k8s.io/implementations/v1.2/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-02T18:17:13.535054224Z"
+  },
+  "https://gateway-api.sigs.k8s.io/reference/api-types/referencegrant/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-03T11:27:34.756381229Z"
   },
   "https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype": {
     "StatusCode": 206,
@@ -24214,6 +24226,10 @@
   "https://www.linkedin.com/in/reese-lee/": {
     "StatusCode": 200,
     "LastSeen": "2026-05-10T10:11:57.889Z"
+  },
+  "https://www.linkedin.com/in/richardchukwu1/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-03T11:30:06.003Z"
   },
   "https://www.linkedin.com/posts/killenko_opentelemetry-observability-fintech-activity-7416735796872785920-XHER": {
     "StatusCode": 200,
