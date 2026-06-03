@@ -164,7 +164,7 @@ processing can happen. Even with that conversion cost, the thread-per-core,
 share-nothing architecture with bounded flow control converts additional
 assigned cores into stable throughput with limited efficiency loss.
 
-## OTAP Provides Higher Throughput on the Same Runtime
+## Result 3: OTAP Provides Higher Throughput on the Same Runtime
 
 ![OTAP versus OTLP throughput](otel-arrow-phase-2/otap_scaling.svg)
 
