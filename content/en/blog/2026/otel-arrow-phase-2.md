@@ -35,10 +35,10 @@ batch.
 
 That pattern maps well to a columnar representation. If telemetry can remain in
 compact Arrow batches while processors rename attributes, enrich data, and route
-signals, pipelines can avoid repeated conversion work and use CPU and memory
-more efficiently and predictably. We believe OTAP can play an important role in helping
-OpenTelemetry pipelines handle this next phase of telemetry growth more
-efficiently.
+signals, the pipeline can do less work around each transformation and use CPU
+and memory more efficiently and predictably. We believe OTAP can play an
+important role in helping OpenTelemetry pipelines handle this next phase of
+telemetry growth more efficiently.
 
 ## A Dataflow Engine Built to Test the Native Arrow Path
 
