@@ -99,14 +99,19 @@ the right discipline for a graph that wants to be a source of truth. Match
 identity **exactly**: an observation is either a known entity (same Id) or a
 different one.
 
-The trap is putting volatile facts in the Id. If a process's identity includes
-its pid, every restart looks like a brand-new process and the timeline shatters;
-if a host's identity includes a leased IP, a DHCP renewal forks it. The fix is to
-pick **stable identifying attributes** and push everything that legitimately
-changes — pid, current address, last-seen state — into _descriptive_ attributes.
-Then a restart or re-address is an attribute update on the _same_ entity, and a
-genuine identity change is correctly a _new_ entity rather than a silent merge of
-two different things.
+The trap is putting a value that _changes_ into the identity. If a host's
+identity includes its current leased IP, a DHCP renewal forks it into a brand-new
+entity. Pick attributes that stay stable for the entity's lifetime, and let
+everything that legitimately changes — current address, resource usage, last-seen
+state — be a _descriptive_ attribute. Then a re-address is an attribute update on
+the _same_ entity, and a genuine identity change is correctly a _new_ entity
+rather than a silent merge of two different things.
+
+When a single value is reused over time, the fix isn't to drop it but to pair it
+with a discriminator. OpenTelemetry's `process` entity is a good model: a PID can
+be recycled, so a process is identified by `process.pid` **and**
+`process.creation.time` together — stable for that process's lifetime — while its
+changing facts stay descriptive.
 
 This is worth getting right early: a "tolerant" match that treats an observation
 differing by one identifying value as the same entity quietly merges distinct
@@ -161,7 +166,7 @@ LogRecord
     entity.relation.event.type: state                   # or delete
     entity.relation.type:       runs_on
     entity.relation.from.type:  process
-    entity.relation.from.id:    { process.executable.name: nginx, host.name: web-server-1 }
+    entity.relation.from.id:    { process.pid: 1287, process.creation.time: "2026-05-26T08:00:00Z" }
     entity.relation.to.type:    host
     entity.relation.to.id:      { host.name: web-server-1 }
 ```
