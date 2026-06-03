@@ -209,7 +209,7 @@ With an OTAP-native path, telemetry can remain in Arrow record batches.
 Processors can operate on a compact, columnar, batch-oriented representation,
 with better memory locality and fewer allocations. Repeated values are grouped
 more naturally, compression has a more favorable layout to work with, and future
-processors can take advantage of Arrow kernels, dictionary-aware operations, or
+processors can take advantage of Arrow kernels, dictionary encodings, or
 vectorized execution where the operation fits the columnar model.
 
 In short, OTAP does not only reduce the number of bytes on the network. Its
