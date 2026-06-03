@@ -6,9 +6,11 @@ date: {{ dataFormat "2026-01-02" .Date }}
 author: >-
   [Laurent Querel](https://github.com/lquerel) (F5),
   [Joshua MacDonald](https://github.com/jmacd) (Microsoft), 
-  [Jake Dern](https://github.com/JakeDern) (F5),
-  [Cijo Thomas](https://github.com/cijothomas) (Microsoft)
-cSpell:ignore: Laurent Querel Joshua MacDonald Jake Dern Cijo Thomas
+  [Albert Lockett](https://github.com/albertlockett) (F5),
+  [Cijo Thomas](https://github.com/cijothomas) (Microsoft),
+  [Drew Relmas](https://github.com/drewrelmas) (Microsoft),
+  [Jake Dern](https://github.com/JakeDern) (F5)
+cSpell:ignore: Laurent Querel Joshua MacDonald Jake Dern Cijo Thomas Drew Relmas Albert Lockett
 ---
 
 [Phase 1](https://github.com/open-telemetry/otel-arrow/blob/main/docs/phase1-overview.md)
@@ -53,11 +55,11 @@ Collector implementation. The purpose of this work is to explore what becomes
 possible when a telemetry data plane is designed around an Arrow-native
 representation and a bounded runtime model from the start.
 
-The Dataflow Engine uses a NUMA-friendly, thread-per-core, mostly share-nothing
+The Dataflow Engine uses a [NUMA-friendly](https://www.kernel.org/doc/html/v4.18/vm/numa.html),
+[thread-per-core, share-nothing](https://seastar.io/shared-nothing/)
 architecture. It emphasizes bounded channels and data structures, avoids
 synchronization in hot paths, propagates ack/nack signals through pipelines,
-supports live pipeline reconfiguration through an admin API, and is exploring
-WASM-based extensions for specialized components.
+and supports live pipeline reconfiguration through an admin API.
 
 The important point is not that the implementation is in Rust. The benchmark
 results should be read as measurements of data representation and runtime
@@ -107,9 +109,19 @@ batch-size behavior, and overload behavior.
 The first diagram summarizes three important observations from the
 transformation benchmarks.
 
-At 200K logs/sec, increasing the number of rename actions from one to four keeps
-the OTAP path nearly flat. The DFE OTAP path moves from 6.4% to 6.6% CPU, while
-the OTLP paths remain much more expensive.
+At 200K logs/sec, with approximately 300 bytes per log entry, increasing the
+number of rename actions from one to four keeps the native OTAP path nearly
+flat. The DFE OTAP path moves from 6.4% to 6.6% CPU.
+
+The DFE OTLP path is an important middle point in this comparison. It runs on
+the same bounded runtime and shows a similar shape as the number of rules
+increases, but it still pays the up-front cost of decoding OTLP and converting
+it into the OTAP-oriented internal path. That conversion boundary explains why
+it remains much more expensive than native OTAP.
+
+The Go Collector OTLP path represents the traditional Collector execution model.
+It does not use the Arrow-native internal representation or the Dataflow Engine
+runtime, and reaches 92.5% CPU with four rename actions.
 
 At 400K logs/sec, larger batches reduce CPU cost for every path, but the OTAP
 path benefits the most. It drops from 21% CPU at 256 logs per batch to 7.8% at
