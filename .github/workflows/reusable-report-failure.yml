@@ -8,7 +8,7 @@ name: Reusable - report workflow failure
 #     if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
 #     uses: ./.github/workflows/reusable-report-failure.yml
 #     permissions:
-#       issues: write
+#       issues: write  # Pass through for failure tracking issues
 #       contents: read
 #
 # In a called workflow the `github` context refers to the caller, so the
@@ -39,7 +39,7 @@ jobs:
   report:
     runs-on: ubuntu-latest
     permissions:
-      issues: write
+      issues: write # Create or comment on failure tracking issues via gh
       contents: read
     steps:
       - uses: actions/checkout@v6

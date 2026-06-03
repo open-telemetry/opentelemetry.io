@@ -127,5 +127,5 @@ jobs:
     if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
     uses: ./.github/workflows/reusable-report-failure.yml
     permissions:
-      issues: write
+      issues: write # Pass through for failure tracking issues
       contents: read
