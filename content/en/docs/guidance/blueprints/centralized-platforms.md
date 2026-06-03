@@ -34,6 +34,9 @@ achieving the following outcomes:
 - Centralized telemetry governance and data optimization to reduce operational
   costs and carbon emissions by minimizing storage, network transfer, and
   compute requirements of telemetry processing.
+- Future-proof telemetry pipelines that shield product teams from changes in the
+  underlying observability backend, enabling data migrations or multi-vendor
+  strategies without requiring changes to application instrumentation.
 
 ## Background
 
@@ -69,15 +72,18 @@ native maturity.
 In environments where product teams operate with maximum autonomy, distinct ways
 of configuring individual applications and services for observability may
 coexist, while still operating under a shared compute layer. This includes
-setting up OpenTelemetry SDKs for applications, configuring agents and
-instrumentation libraries, or deciding how to propagate observability context
-from/to their dependencies.
+setting up OpenTelemetry SDKs for applications, configuring instrumentation
+agents and libraries, or deciding how to propagate observability context from/to
+their dependencies.
 
-Telemetry instrumentation is frequently treated as an afterthought or
-implemented retroactively as a checkbox exercise, leading to poor quality
-instrumentation. When considered, this instrumentation is focused on a
-particular application without considering the overall distributed system in a
-holistic way, across service boundaries and different infrastructure layers.
+Organizations may have a set of documented engineering standards they wish all
+teams to follow, but rely on manual implementation of these standards by each
+individual team, including configuration and code-level changes. This is often
+treated by teams as an afterthought, not part of the software design process,
+leading to poor quality instrumentation. When considered, configuration is often
+focused on a particular application without considering the overall distributed
+system in a holistic way, across service boundaries and different infrastructure
+layers.
 
 ```mermaid
 ---
@@ -146,6 +152,11 @@ This leads to:
 - **High cognitive load:** Developers must manually configure SDKs and
   instrumentation packages for every new service, increasing toil and the risk
   of misconfiguration.
+- **Reduced velocity:** Any change in engineering standards related to telemetry
+  instrumentation, or any change in the underlying observability backend such as
+  data or protocol migrations, creates friction and reduces overall velocity in
+  the organization as technology adoption is ultimately hampered by manual
+  implementation.
 
 ### 2. Collector configuration sprawl across clusters {#challenge-2}
 
@@ -300,9 +311,9 @@ By implementing this guideline, organizations can expect to achieve:
 - **Lower cognitive load:** Application owners can abstract themselves from
   lower-level configuration, such as that related to setting up the
   OpenTelemetry SDK.
-- **Easier maintenance:** Effort to adopt best practices in observability is
-  minimized, as new standards can be rolled out via version bumps of internal
-  tooling.
+- **Easier maintenance:** Effort to adopt engineering standards and best
+  practices in observability is minimized, as new standards can be rolled out
+  via version bumps of internal tooling.
 
 ### 2. Establish ownership, responsibilities, and monitoring for telemetry data production {#guideline-2}
 
@@ -396,7 +407,7 @@ telemetry at the application level (see [Guideline 4][guideline-4]).
 > [Weaver][10] can help teams to manage organization-specific semantic
 > convention registries, and to measure and validate adherence to those,
 > ensuring instrumentation quality by design. Learn more about Weaver in [this
-> blogpost][11]. Semantic conventions governance is out of cope for this
+> blogpost][11]. Semantic conventions governance is out of scope for this
 > blueprint and may be targeted in a future blueprint. See our [guidance][63] if
 > you are interested in contributing.
 
@@ -500,10 +511,11 @@ assigned higher reliability requirements than spans, favoring dropping data on
 the latter before affecting the former. To accommodate for these conditions
 platform teams may consider different options, including:
 
-- **Isolated Gateways for different signals:** Deploying a different Gateway for
-  logs, metrics, spans, etc. This can facilitate compute resource allocation,
-  however it can make sharing configuration or components between pipelines more
-  complex.
+- **Isolated Gateways per signal:** Deploy separate Gateways for logs, metrics,
+  and spans. Isolated deployments simplify compute resource allocation and
+  capacity planning per signal, but increase maintenance toil since shared
+  processor configuration must be duplicated across Gateways unless managed
+  through external templating tools.
 - **Multiple memory limiters on a single Gateway:** Defining separate
   [memorylimiter][14] configurations per signal, with different thresholds. This
   relies on the OTLP receiver in front of a `memorylimiter` returning a
@@ -585,7 +597,7 @@ these signals, allowing operators to “zoom in” from long-term, aggregated me
 streams to highly-granular, contextual traces.
 
 The following diagram provides a summary of different layers where aggregation,
-processing, and sampling may be configured in a tail-sampling, muti-cluster
+processing, and sampling may be configured in a tail-sampling, multi-cluster
 scenario.
 
 ```mermaid
@@ -746,8 +758,8 @@ use of [declarative configuration][36]. Although currently not fully supported
 by all languages, this YAML-based configuration model provides consistency in
 SDK and instrumentation configuration.
 
-Finally, in environments were the OpenTelemetry Operator cannot be deployed, and
-were providing base container images is not a possibility, we recommend
+Finally, in environments where the OpenTelemetry Operator cannot be deployed,
+and where providing base container images is not a possibility, we recommend
 deploying the [OpenTelemetry eBPF Instrumentation (OBI)][37], which can provide
 a zero-code option for teams not in charge of build or deployment pipelines.
 
@@ -782,8 +794,10 @@ base configuration as part of their offering:
   for routing, billing, and ownership. At a minimum, we recommend:
   - `service.name` ideally extracted from existing environment variables or
     labels injected via CI/CD tooling.
+  - `service.version` to identify telemetry source during blue/green deployments
+    or progressive rollouts.
   - `service.namespace` or `service.owner` for resource ownership.
-  - `deployment.environment.name` (e.g. `production`, `staging`)
+  - `deployment.environment.name` (e.g. `production`, `staging`).
 
 Depending on the methods established in [Action 1][action-1] for providing OTel
 configuration, the platform team must document exactly how developers inherit
@@ -852,12 +866,15 @@ and owners should ensure resiliency is configured from the start:
   backend failures before dropping data.
 - **Consider [filestorage][46] extension**: If dropping data on extended
   observability backend service interruptions is critical to the functioning of
-  the business, consider the [filestorage][46] extension. This requires
-  deploying the Gateway as a `StatefulSet` with `PersistentVolumeClaims`. If the
-  backend is unavailable or rate-limits exports, the Collector will buffer data
-  to disk and automatically retry, preventing data loss. As with OTLP exporter
-  settings, operators must balance between the criticality of dropping data (in
-  this case potentially stale data) and the cost of maintenance.
+  the business, consider [filestorage][46]. With this extension configured, if
+  the backend is unavailable or rate-limits exports, the Collector will buffer
+  data to disk and automatically retry, preventing data loss. While this
+  mechanism provides added completeness guarantees, it moves away from stateless
+  deployments, requiring the Gateway to be deployed as a `StatefulSet` with
+  `PersistentVolumeClaims`. As with OTLP exporter settings, operators must
+  consider the trade-offs between the criticality of dropping data (in this case
+  potentially stale data) and the cost of maintenance toil and support (e.g.,
+  managing disk pressure, volume resizing, etc).
 - **gRPC load balancing**: OTLP/gPRC can be very efficient, but standard
   Kubernetes service routing can make it inefficient. See [Appendix
   1][appendix-1] to implement gRPC load balancing, or consider OTLP/HTTP (the
