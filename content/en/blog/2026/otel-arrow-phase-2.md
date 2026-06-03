@@ -132,7 +132,7 @@ batch-oriented representation.
 
 The third observation is about overload behavior. In the overload scenario, the
 Dataflow Engine keeps memory under control, while the Collector OTLP path grows
-from 102 MiB to 11 GiB as saturation increases from 1x to 2x. This is not only a
+from 95 MiB to 14 GiB as saturation increases from 1x to 2x. This is not only a
 protocol result. It also reflects the importance of bounded execution, explicit
 flow control, and making overload visible rather than allowing memory to absorb
 it.
@@ -247,10 +247,9 @@ OpenTelemetry ecosystem explicit.
 Phase 3 is currently under discussion. It is expected to target a first stable,
 production-usable release, with significant improvements in several areas:
 
-- **Pipeline-level control mechanisms**: generalized ack/nack mechanisms, retry
-  handling, fan-out support, inter-pipeline topics, tenant-aware resource
-  governance, live reconfiguration with rollback support, and possible OpAMP
-  support.
+- **Pipeline-level control mechanisms**: inter-pipeline topics, tenant-aware
+  resource governance, live reconfiguration with rollback support, and
+  possible OpAMP support.
 - **Core component ecosystem**: receivers, processors, exporters, and extensions
   covering the majority of common telemetry pipelines, implemented in Rust and
   maintained within OpenTelemetry.
@@ -264,10 +263,10 @@ production-usable release, with significant improvements in several areas:
 
 OPL, or OpenTelemetry Processing Language, is currently being specified and
 implemented. It is intended to be stream-oriented, strongly typed, and safe for
-processing signals that comply with the OpenTelemetry data model. The same
-processor could also enable predicate and projection pushdown, allowing
-receivers to apply filtering and field-selection requirements closer to the
-source when supported.
+processing signals that comply with the OpenTelemetry data model. This
+processing language could also enable predicate and projection pushdown,
+allowing receivers to apply filtering and field-selection requirements closer
+to the source when supported.
 
 We are also exploring native integration with agentic workflows, enabling agents
 to discover engine capabilities, configuration possibilities, and internal
