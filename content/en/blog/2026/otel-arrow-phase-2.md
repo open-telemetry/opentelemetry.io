@@ -298,7 +298,7 @@ Join the discussions in the
 [otel-arrow](https://github.com/open-telemetry/otel-arrow/discussions) GitHub
 project, on the [#otel-arrow](https://cloud-native.slack.com/archives/C07S4Q67LTF)
 Slack channel, or in the relevant OpenTelemetry
-[SIG meetings](https://docs.google.com/document/d/1z8_Ra-ALDaYNa88mMj1gOZtOpLZLRk0-dZEmDjPmcUs).
+[SIG meetings - Arrow](https://github.com/open-telemetry/community/tree/main#sig-arrow).
 Contributions are welcome. For larger contributions, we strongly encourage
 opening a [GitHub issue](https://github.com/open-telemetry/otel-arrow/issues)
 before beginning implementation work and using SIG discussions for early
