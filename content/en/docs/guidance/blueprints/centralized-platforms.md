@@ -139,7 +139,7 @@ flowchart LR
 This leads to:
 
 - **Inconsistent [Semantic Conventions][2]:** Telemetry lacks common
-  [Resource][3] attributes (e.g., `service.version` , `k8s.cluster.name`,
+  [Resource][3] attributes (e.g., `service.version`, `k8s.cluster.name`,
   `org.cost.center`), breaking correlation across different signals,
   applications, and system layers, and limiting the usefulness of observability
   data for automatic analysis.
@@ -258,8 +258,9 @@ This leads to:
 > [!NOTE] Help wanted
 >
 > Multi-tenant environments often deal with strict compliance requirements
-> (GDPR, HIPAA, PCI). These challenges are out of scope for this blueprint and
-> may be targeted in a separate blueprint. See our [guidance][63] if you are
+> (GDPR, HIPAA, PCI) and security concerns such as authentication and encryption
+> between pipeline layers. These challenges are out of scope for this blueprint
+> and may be targeted in a separate blueprint. See our [guidance][63] if you are
 > interested in contributing.
 
 ### 5. Low observability and operational efficiency of SDKs and data pipelines {#challenge-5}
@@ -315,7 +316,7 @@ By implementing this guideline, organizations can expect to achieve:
   practices in observability is minimized, as new standards can be rolled out
   via version bumps of internal tooling.
 
-### 2. Establish ownership, responsibilities, and monitoring for telemetry data production {#guideline-2}
+### 2. Establish shared ownership for telemetry production {#guideline-2}
 
 **Challenges addressed**: 4, 5 **Implementation actions**: 1, 2, 5
 
@@ -558,7 +559,7 @@ APIs and their SDK implementations. This allows instrumentation authors
 measurements][16], [create spans][17], or [emit log records][18], without having
 to define how those will be aggregated in memory, processed, and ultimately
 exported. This decision can be deferred to the moment when [meter][19],
-[tracer][19], and [logger][20] providers are created as part of the SDK setup.
+[tracer][65], and [logger][20] providers are created as part of the SDK setup.
 Configuration of these aspects should be shared, with platform teams providing a
 basic layer of configuration, and application owners extending that
 configuration for their particular use cases.
@@ -776,7 +777,7 @@ base configuration as part of their offering:
   Backend/SaaS endpoints or API keys should not be included in application-level
   configuration, as we recommend handling these at a Collector Gateway. See
   [Action 3][action-3] and [Appendix 1][appendix-1] for more details on side
-  effects of OTLP gPRC used with standard Kubernetes Services.
+  effects of OTLP gRPC used with standard Kubernetes Services.
 - **Propagators:** W3C Trace Context (`tracecontext`) and W3C Baggage
   (`baggage`) to ensure distributed traces do not break across service
   boundaries. If necessary, include legacy formats as secondary options
@@ -861,24 +862,35 @@ and owners should ensure resiliency is configured from the start:
 - **Configure [memorylimiter][44]**: As the first processor in Collector
   pipelines, this prevents Out-of-Memory (OOM) crashes during massive telemetry
   spikes by forcing the Collector to drop data and/or apply backpressure when
-  memory usage hits a configure threshold. As mentioned in [Guideline
+  memory usage hits a configured threshold. As mentioned in [Guideline
   3][guideline-3], different `memorylimiter` processors per signal may be
   required.
 - **Configure [OTLP exporter][45]:** Ensure queues and retries are aligned with
   expectations on reliability vs resource consumption, handling transient
-  backend failures before dropping data.
+  backend failures before dropping data. In particular, consider `sending_queue`
+  options like `block_on_overflow` which controls if the Collector should drop
+  data or wait until space becomes available if the queue (persistent or
+  in-memory) is full.
 - **Consider [filestorage][46] extension**: If dropping data on extended
   observability backend service interruptions is critical to the functioning of
-  the business, consider [filestorage][46]. With this extension configured, if
-  the backend is unavailable or rate-limits exports, the Collector will buffer
-  data to disk and automatically retry, preventing data loss. While this
-  mechanism provides added completeness guarantees, it moves away from stateless
-  deployments, requiring the Gateway to be deployed as a `StatefulSet` with
-  `PersistentVolumeClaims`. As with OTLP exporter settings, operators must
-  consider the trade-offs between the criticality of dropping data (in this case
-  potentially stale data) and the cost of maintenance toil and support (e.g.,
-  managing disk pressure, volume resizing, etc).
-- **gRPC load balancing**: OTLP/gPRC can be very efficient, but standard
+  the business, consider configuring `sending_queue.storage` in your OTLP
+  exporter with the [filestorage][46] extension. With this extension configured,
+  if the backend is unavailable or rate-limits exports, the Collector will
+  buffer data to disk and automatically retry, preventing data loss.
+  - **Note:** While this mechanism provides added completeness guarantees, it
+    moves away from stateless deployments, requiring the Gateway to be deployed
+    as a `StatefulSet` with `PersistentVolumeClaims`. As with OTLP exporter
+    settings, operators must consider the trade-offs between the criticality of
+    dropping data (in this case potentially stale data) and the cost of
+    maintenance toil and support (e.g., managing disk pressure, volume resizing,
+    etc).
+  - **Note**: Enabling persistent queues delays backpressure propagation to
+    downstream clients. Data is buffered to disk before memory pressure builds,
+    meaning the `memorylimiter` will not trigger early backpressure. Once the
+    persistent queue is full, the pipeline will block and the receiver will
+    return retryable errors (e.g. `429`) to clients, signaling backpressure.
+    Operators must size the persistent queue and monitor disk usage accordingly.
+- **gRPC load balancing**: OTLP/gRPC can be very efficient, but standard
   Kubernetes service routing can make it inefficient. See [Appendix
   1][appendix-1] to implement gRPC load balancing, or consider OTLP/HTTP (the
   default for most SDKs).
@@ -906,14 +918,14 @@ in Collector Gateways to execute the following processing steps (in order):
   Configure this processor to extract and append attributes like
   `k8s.deployment.name`, `k8s.statefulset.name`, etc. based on the incoming
   connection's pod IP.
-  - If using a proxy, ensure pass-through mode is enabled on the proxy so the
-    Gateway sees the original Pod IP of the application, not the proxy's IP.
-    Alternatively, inject fields available via Downward API (e.g. `k8s.pod.uid`)
-    at the SDK level and use `k8sattributes` pod association rules to match the
-    incoming data with a given Pod.
-  - When using this processor, the `ServiceAccount` used by the Collector must
-    be granted RBAC `get`, `watch`, and `list` permissions on the Kubernetes
-    resources corresponding to the attributes being extracted, e.g.
+  - **Note:** If using a proxy, ensure pass-through mode is enabled on the proxy
+    so the Gateway sees the original Pod IP of the application, not the proxy's
+    IP. Alternatively, inject fields available via Downward API (e.g.
+    `k8s.pod.uid`) at the SDK level and use `k8sattributes` pod association
+    rules to match the incoming data with a given Pod.
+  - **Note:** When using this processor, the `ServiceAccount` used by the
+    Collector must be granted RBAC `get`, `watch`, and `list` permissions on the
+    Kubernetes resources corresponding to the attributes being extracted, e.g.
     `deployments` for `k8s.deployment.name` and `k8s.deployment.uid`. Missing
     any of these will result in the Collector silently skipping enrichment for
     the affected attributes.
@@ -930,17 +942,16 @@ in Collector Gateways to execute the following processing steps (in order):
   - Any other processing to remove low-value, noisy telemetry.
 - [**spanmetrics**][25] **or [signaltometrics][26] connectors:** Ensure
   completeness of golden signals (i.e. R.E.D. metrics) from applications, even
-  if traces are heavily sampled downstream, especially if the SDK or
-  client/server libraries cannot produce these metrics. Route the raw trace
-  stream through these connectors before any sampling occurs.
+  if traces are heavily sampled upstream, especially if the SDK or client/server
+  libraries cannot produce these metrics. Route the raw trace stream through
+  these connectors before any sampling occurs.
 - [**tailsampling**][52] **processor:** Define strict retention policies, for
-  instance keeping 100% of traces containing errors (`otel.status_code=ERROR`),
-  100% of traces exceeding certain duration, and a small baseline (e.g., 5%) of
-  successful, normal-duration requests. As documented in [Guideline
-  4][guideline-4], this requires two layers of collectors, using the
-  [loadbalancing][53] exporter on the first layer to route traces to the second
-  layer based on Trace ID. See more information about load balancing exporting
-  in our [documentation][54].
+  instance keeping 100% of traces containing errors or exceeding a latency
+  threshold, and a small baseline (e.g., 5%) of successful, normal-duration
+  requests. As documented in [Guideline 4][guideline-4], this requires two
+  layers of collectors, using the [loadbalancing][53] exporter on the first
+  layer to route traces to the second layer based on Trace ID. See more
+  information about load balancing exporting in our [documentation][54].
 
 This is not an exhaustive list, and OpenTelemetry Collectors have many
 [processors][55] and [connectors][56] that allow organizations to extract more
@@ -1173,3 +1184,4 @@ use client-side load balancing, or consider using HTTP/protobuf (see [Action
 [62]: /docs/guidance/reference-implementations/skyscanner/
 [63]: /docs/guidance/#how-to-contribute
 [64]: https://kubernetes.io/docs/concepts/workloads/pods/downward-api/
+[65]: /docs/specs/otel/trace/sdk/#tracerprovider
