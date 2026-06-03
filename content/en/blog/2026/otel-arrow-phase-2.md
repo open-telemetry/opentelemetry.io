@@ -111,7 +111,7 @@ batch-size behavior, and overload behavior.
 The first diagram summarizes three important observations from the
 transformation benchmarks.
 
-At 200K logs/sec, with approximately 300 bytes per log entry, increasing the
+The first observation shows that at 200K logs/sec, with approximately 300 bytes per log entry, increasing the
 number of rename actions from one to four keeps the native OTAP path nearly
 flat. The DFE OTAP path moves from 6.4% to 6.6% CPU.
 
