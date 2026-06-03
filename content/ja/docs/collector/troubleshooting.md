@@ -2,8 +2,7 @@
 title: トラブルシューティング
 description: コレクターのトラブルシューティングに関する推奨事項
 weight: 25
-default_lang_commit: 974cdea55c03089f4e86d6068ec133b04e2653da
-drifted_from_default: true
+default_lang_commit: 80f1878ba5e02e1ac98daab3397999078dc67179
 cSpell:ignore: confmap pprof tracez zpages
 ---
 
@@ -249,6 +248,10 @@ extensions:
 - 次のホップはどのように設定されていますか？
 - データの出入りを妨げるネットワークポリシーはありますか？
 
+## Kubernetes 環境でのトラブルシューティング {#troubleshooting-in-kubernetes-environments}
+
+Kubernetes 上で OpenTelemetry Collector を実行している場合、[エフェメラルデバッグコンテナ](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/#ephemeral-container)を使用して Collector 関連の問題を調査できます。
+
 ## 一般的なコレクターの問題 {#common-collector-issues}
 
 このセクションでは、一般的なコレクターの問題を解決する方法について説明します。
@@ -264,8 +267,7 @@ extensions:
 - コレクターのサイジングが不適切で、受信したデータを処理してエクスポートする速度が追いつかない。
 - エクスポーターの宛先が利用できないか、データの受け入れが遅すぎる。
 
-ドロップを軽減するには、[`batch` プロセッサー](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md)を設定します。
-さらに、有効化されているエクスポーターで[キューリトライオプション](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#configuration)を設定する必要があるかもしれません。
+ドロップを軽減するには、有効化されているエクスポーターで[キューリトライオプション](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#configuration)、特に [Sending queue batch settings](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#sending-queue-batch-settings) を設定してください。
 
 #### コレクターがデータを受信していない {#collector-is-not-receiving-data}
 
