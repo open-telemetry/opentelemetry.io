@@ -95,8 +95,8 @@ This kind of work appears frequently in OpenTelemetry pipelines. Teams rename
 attributes during semantic convention migrations, normalize fields before
 sending data to a backend, add environment metadata, or prepare telemetry for
 routing, governance, and enrichment. Individually, these operations should be
-inexpensive; when they are not, the cost is often the surrounding decode,
-object-walk, allocation, and encode work.
+inexpensive; and they often are. But the cost is often the surrounding decode,
+object-walk, allocation, and encode work, not the actual transformation itself.
 
 The benchmarks shown here were run on an Intel Xeon Platinum 8581C system with
 16 cores and 118 GiB of RAM, running Debian GNU/Linux 12.
