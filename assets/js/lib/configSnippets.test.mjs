@@ -7,6 +7,7 @@ import assert from 'node:assert/strict';
 import {
   toTitleCase,
   parseSnippetFilename,
+  extractSnippet,
   extractSnippetContent,
   parseSnippet,
 } from './configSnippets.mjs';
@@ -52,8 +53,9 @@ describe('parseSnippetFilename', () => {
 });
 
 describe('extractSnippetContent', () => {
-  test('returns lines after the marker, dedented by its column', () => {
+  test('returns the full file with the marker line removed', () => {
     const raw = [
+      'file_format: "1.0"',
       'tracer_provider:',
       '  sampler:',
       '    # SNIPPET_START',
@@ -64,39 +66,115 @@ describe('extractSnippetContent', () => {
 
     assert.equal(
       extractSnippetContent(raw),
-      ['parent_based:', '  root:', '    always_on:'].join('\n'),
+      [
+        'file_format: "1.0"',
+        'tracer_provider:',
+        '  sampler:',
+        '    parent_based:',
+        '      root:',
+        '        always_on:',
+      ].join('\n'),
     );
   });
 
-  test('does not dedent when the marker is at column 0', () => {
-    const raw = ['# SNIPPET_START', 'foo:', '  bar: baz'].join('\n');
-    assert.equal(extractSnippetContent(raw), ['foo:', '  bar: baz'].join('\n'));
+  test('keeps non-marker comment lines', () => {
+    const raw = [
+      '  sampler:',
+      '    # SNIPPET_START',
+      '    # configure the sampler',
+      '    always_on:',
+    ].join('\n');
+
+    assert.equal(
+      extractSnippetContent(raw),
+      ['  sampler:', '    # configure the sampler', '    always_on:'].join(
+        '\n',
+      ),
+    );
   });
 
   test('preserves blank lines between content', () => {
-    const raw = ['  # SNIPPET_START', '  foo:', '', '  bar:'].join('\n');
+    const raw = ['foo:', '', 'bar:', '# SNIPPET_START'].join('\n');
     assert.equal(extractSnippetContent(raw), ['foo:', '', 'bar:'].join('\n'));
   });
 
-  test('does not throw when a line is shorter than the marker column', () => {
-    const raw = ['    # SNIPPET_START', '  ab', '    cd: ef'].join('\n');
-    // The short line dedents to '' (substring clamps).
-    assert.equal(extractSnippetContent(raw), ['', 'cd: ef'].join('\n'));
+  test('normalizes CRLF and trims surrounding blank lines', () => {
+    const raw = '\r\nfile_format: "1.0"\r\n# SNIPPET_START\r\nfoo: bar\r\n\r\n';
+    assert.equal(
+      extractSnippetContent(raw),
+      ['file_format: "1.0"', 'foo: bar'].join('\n'),
+    );
   });
 
-  test('normalizes CRLF line endings', () => {
-    const raw = '# SNIPPET_START\r\nfoo: bar\r\n';
-    assert.equal(extractSnippetContent(raw), 'foo: bar');
+  test('returns the whole file unchanged when no marker is present', () => {
+    assert.equal(
+      extractSnippetContent('foo: bar\nbaz: qux'),
+      'foo: bar\nbaz: qux',
+    );
+  });
+});
+
+describe('extractSnippet highlightStart', () => {
+  test('points at the line that followed the marker', () => {
+    const raw = [
+      'file_format: "1.0"', // 0
+      'tracer_provider:', //   1
+      '  sampler:', //         2
+      '    # SNIPPET_START',
+      '    parent_based:', //  3 (after marker removed)
+      '      root:', //        4
+    ].join('\n');
+
+    assert.deepEqual(extractSnippet(raw), {
+      content: [
+        'file_format: "1.0"',
+        'tracer_provider:',
+        '  sampler:',
+        '    parent_based:',
+        '      root:',
+      ].join('\n'),
+      highlightStart: 3,
+    });
   });
 
-  test('returns an empty string when the marker is absent', () => {
-    assert.equal(extractSnippetContent('foo: bar\nbaz: qux'), '');
+  test('is null when there is no marker', () => {
+    assert.deepEqual(extractSnippet('foo: bar'), {
+      content: 'foo: bar',
+      highlightStart: null,
+    });
+  });
+
+  test('equals the line count when the marker is the last line', () => {
+    const raw = ['foo:', '  bar: baz', '# SNIPPET_START'].join('\n');
+    assert.deepEqual(extractSnippet(raw), {
+      content: ['foo:', '  bar: baz'].join('\n'),
+      highlightStart: 2,
+    });
+  });
+
+  test('is 0 when the marker precedes all content', () => {
+    const raw = ['# SNIPPET_START', 'foo:', '  bar: baz'].join('\n');
+    assert.deepEqual(extractSnippet(raw), {
+      content: ['foo:', '  bar: baz'].join('\n'),
+      highlightStart: 0,
+    });
+  });
+
+  test('adjusts for trimmed leading blank lines', () => {
+    const raw = ['', '', 'file_format: "1.0"', '# SNIPPET_START', 'foo:'].join(
+      '\n',
+    );
+    assert.deepEqual(extractSnippet(raw), {
+      content: ['file_format: "1.0"', 'foo:'].join('\n'),
+      highlightStart: 1,
+    });
   });
 });
 
 describe('parseSnippet', () => {
   test('combines filename and content parsing', () => {
     const raw = [
+      'file_format: "1.0"',
       'tracer_provider:',
       '  sampler:',
       '    # SNIPPET_START',
@@ -106,7 +184,13 @@ describe('parseSnippet', () => {
     assert.deepEqual(parseSnippet('Sampler_always_on.yaml', raw), {
       typeName: 'Sampler',
       description: 'Always On',
-      content: 'always_on:',
+      content: [
+        'file_format: "1.0"',
+        'tracer_provider:',
+        '  sampler:',
+        '    always_on:',
+      ].join('\n'),
+      highlightStart: 3,
     });
   });
 });

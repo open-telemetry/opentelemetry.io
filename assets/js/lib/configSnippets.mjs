@@ -5,9 +5,11 @@
  * into the structure consumed by the configuration types accordion.
  *
  * Snippet files live in the opentelemetry-configuration repo under `snippets/`
- * and are named `<JsonSchemaType>_<snake_case_description>.yaml`. Each file
- * contains a `# SNIPPET_START` marker; the relevant example is the lines that
- * follow the marker, dedented by the marker's indentation column.
+ * and are named `<JsonSchemaType>_<snake_case_description>.yaml`. We display the
+ * full file contents as a complete, runnable example, stripping only the
+ * `# SNIPPET_START` marker comment. The marker also serves as a demarcation
+ * point: the lines from the marker onward are the type-relevant portion, which
+ * the UI highlights subtly within the surrounding context.
  */
 
 const SNIPPET_START = '# SNIPPET_START';
@@ -50,35 +52,65 @@ export function parseSnippetFilename(filename) {
 }
 
 /**
- * Extract the snippet body from raw file content.
- * Finds the `# SNIPPET_START` marker and returns the following lines, dedented
- * by the marker's indentation column. Returns '' when no marker is present
- * (callers decide whether that is an error).
+ * Extract the snippet body from raw file content: the full file with the
+ * `# SNIPPET_START` marker line removed and surrounding blank lines trimmed,
+ * plus the line index where the highlighted (type-relevant) portion begins.
+ *
+ * `highlightStart` is a 0-based line index into `content` pointing at the line
+ * that followed the marker. It is `null` when there is no marker, and equal to
+ * the line count when the marker was the last line (nothing to highlight).
+ * @param {string} rawContent
+ * @returns {{ content: string, highlightStart: number|null }}
+ */
+export function extractSnippet(rawContent) {
+  const lines = rawContent.replace(/\r\n/g, '\n').split('\n');
+
+  const kept = [];
+  let highlightStart = null;
+  for (const line of lines) {
+    if (line.includes(SNIPPET_START)) {
+      // The next kept line begins the highlighted portion.
+      highlightStart = kept.length;
+      continue;
+    }
+    kept.push(line);
+  }
+
+  // Trim leading/trailing blank lines, adjusting the highlight index for any
+  // leading lines removed.
+  let lead = 0;
+  while (lead < kept.length && kept[lead].trim() === '') lead++;
+  let end = kept.length;
+  while (end > lead && kept[end - 1].trim() === '') end--;
+  const trimmed = kept.slice(lead, end);
+
+  if (highlightStart !== null) {
+    highlightStart = Math.max(
+      0,
+      Math.min(highlightStart - lead, trimmed.length),
+    );
+  }
+
+  return { content: trimmed.join('\n'), highlightStart };
+}
+
+/**
+ * Convenience wrapper returning only the snippet text.
  * @param {string} rawContent
  * @returns {string}
  */
 export function extractSnippetContent(rawContent) {
-  const lines = rawContent.replace(/\r\n/g, '\n').split('\n');
-  const markerIndex = lines.findIndex(
-    (line) => line.indexOf(SNIPPET_START) !== -1,
-  );
-  if (markerIndex === -1) return '';
-
-  const col = lines[markerIndex].indexOf(SNIPPET_START);
-  return lines
-    .slice(markerIndex + 1)
-    .map((line) => line.substring(col))
-    .join('\n')
-    .replace(/\n+$/, '');
+  return extractSnippet(rawContent).content;
 }
 
 /**
  * Parse a snippet file (name + content) into its structured form.
  * @param {string} filename
  * @param {string} rawContent
- * @returns {{ typeName: string, description: string, content: string }}
+ * @returns {{ typeName: string, description: string, content: string, highlightStart: number|null }}
  */
 export function parseSnippet(filename, rawContent) {
   const { typeName, description } = parseSnippetFilename(filename);
-  return { typeName, description, content: extractSnippetContent(rawContent) };
+  const { content, highlightStart } = extractSnippet(rawContent);
+  return { typeName, description, content, highlightStart };
 }

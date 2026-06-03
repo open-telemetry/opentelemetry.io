@@ -31,14 +31,16 @@ let snippetCount = 0;
 for (const file of readdirSync(snippetsDir).sort()) {
   if (!file.endsWith('.yaml')) continue;
   const raw = readFileSync(join(snippetsDir, file), 'utf8');
-  if (!raw.includes('# SNIPPET_START')) {
-    throw new Error(`Snippet ${file} is missing a "# SNIPPET_START" marker`);
-  }
-  const { typeName, description, content } = parseSnippet(file, raw);
-  // A marker with nothing after it (e.g. the console exporter, which takes no
-  // config) yields an empty fragment — there's nothing to show, so skip it.
-  if (!content.trim()) continue;
-  (snippetsByType[typeName] ??= []).push({ description, content });
+  const { typeName, description, content, highlightStart } = parseSnippet(
+    file,
+    raw,
+  );
+  if (!content.trim()) continue; // defensive: nothing to show
+  (snippetsByType[typeName] ??= []).push({
+    description,
+    content,
+    highlightStart,
+  });
   snippetCount++;
 }
 

@@ -122,13 +122,33 @@ function renderPropertiesTable(type, i18n) {
 </table>`;
 }
 
+// Build the <code> body, wrapping the type-relevant portion (from the snippet's
+// demarcation point onward) in a highlight band. A block-level <span> after the
+// context naturally starts on its own line, so no separator newline is added.
+function renderSnippetCode(snippet) {
+  const lines = snippet.content.split('\n');
+  const start = snippet.highlightStart;
+
+  if (start == null || start >= lines.length) {
+    return escapeHtml(snippet.content);
+  }
+  const highlight = `<span class="ct-snippet-highlight">${escapeHtml(
+    lines.slice(start).join('\n'),
+  )}</span>`;
+  if (start <= 0) {
+    return highlight;
+  }
+
+  return escapeHtml(lines.slice(0, start).join('\n')) + highlight;
+}
+
 function renderCodeBlock(snippet, i18n) {
   return `
 <div class="ct-snippet">
   <button type="button" class="btn btn-sm btn-outline-secondary ct-snippet-copy"
           data-snippet-copy
           aria-label="${escapeAttr(i18n.copy)}">${escapeHtml(i18n.copy)}</button>
-  <pre class="ct-snippet-pre"><code>${escapeHtml(snippet.content)}</code></pre>
+  <pre class="ct-snippet-pre"><code>${renderSnippetCode(snippet)}</code></pre>
 </div>`;
 }
 

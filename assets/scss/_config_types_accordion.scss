@@ -30,12 +30,48 @@
     margin-bottom: 0.5rem;
   }
 
-  .ct-snippet-tabs {
+  // Example snippet tabs — a "folder tab" strip whose active tab merges into the
+  // code panel below it. The strip's bottom border is the shared baseline; the
+  // active tab punches a hole in it (bottom border tinted to the panel colour).
+  .ct-snippet-tabs.nav-tabs {
     margin-bottom: 0;
-  }
+    gap: 0.125rem;
+    border-bottom: 1px solid var(--bs-border-color);
 
-  .tab-content {
-    padding-top: 0.5rem;
+    // Docsy gives every content <li> a bottom margin; remove it so the tabs
+    // sit flush on the strip's border instead of floating above it.
+    .nav-item {
+      margin-bottom: 0;
+    }
+
+    .nav-link {
+      margin-bottom: -1px; // sit the tab's bottom border on the strip line
+      padding: 0.375rem 0.85rem;
+      font-size: 0.8125rem;
+      color: var(--bs-secondary-color);
+      background-color: transparent;
+      border: 1px solid transparent;
+      border-top-left-radius: var(--bs-border-radius);
+      border-top-right-radius: var(--bs-border-radius);
+
+      &:hover {
+        color: var(--bs-emphasis-color);
+        border-color: var(--bs-border-color-translucent)
+          var(--bs-border-color-translucent) transparent;
+        background-color: var(--bs-tertiary-bg);
+      }
+
+      &.active {
+        color: var(--bs-emphasis-color);
+        font-weight: 600;
+        background-color: var(--bs-tertiary-bg);
+        // Sides + top border; bottom border matches the panel so it merges in.
+        border-color: var(--bs-border-color) var(--bs-border-color)
+          var(--bs-tertiary-bg);
+        // Accent bar across the top of the active tab.
+        box-shadow: inset 0 2px 0 var(--bs-primary);
+      }
+    }
   }
 
   .ct-snippet {
@@ -46,7 +82,7 @@
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    z-index: 1;
+    z-index: 2;
   }
 
   .ct-snippet-pre {
@@ -57,6 +93,34 @@
     background-color: var(--bs-tertiary-bg);
     border: 1px solid var(--bs-border-color);
     border-radius: var(--bs-border-radius);
+
+    code {
+      display: block;
+    }
+  }
+
+  // Under tabs the strip border is the panel's top edge: drop the panel's own
+  // top border and square its top corners so the two line up seamlessly.
+  .tab-content .ct-snippet-pre {
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  // Subtle highlight band marking the type-relevant portion of a snippet
+  // (everything from the original `# SNIPPET_START` marker onward).
+  .ct-snippet-highlight {
+    display: block;
+    // Extend the band edge-to-edge across the <pre>'s horizontal padding,
+    // then restore the text indent so it lines up with the context above.
+    margin: 0 -0.75rem;
+    padding: 0 0.75rem;
+    background-color: rgba(var(--bs-primary-rgb), 0.1);
+    box-shadow: inset 3px 0 0 rgba(var(--bs-primary-rgb), 0.6);
+
+    [data-bs-theme='dark'] & {
+      background-color: rgba(var(--bs-primary-rgb), 0.22);
+    }
   }
 
   // Type-level constraints note at the bottom of each accordion body.
