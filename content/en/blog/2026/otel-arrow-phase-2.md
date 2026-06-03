@@ -125,7 +125,7 @@ The Go Collector OTLP path represents the traditional Collector execution model.
 It does not use the Arrow-native internal representation or the Dataflow Engine
 runtime, and reaches 92.5% CPU with four rename actions.
 
-At 400K logs/sec, larger batches reduce CPU cost for every path, but the OTAP
+The second observation shows that at 400K logs/sec, larger batches reduce CPU cost for every path, but the OTAP
 path benefits the most. It drops from 21% CPU at 256 logs per batch to 7.8% at
 4096 logs per batch, which is the expected behavior for a compact, columnar,
 batch-oriented representation.
