@@ -15063,6 +15063,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:24:23.176318005Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/profiles/data-format.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-03T12:08:50.752345331Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/profiles/mappings.md": {
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:24:20.646529832Z"
@@ -15118,6 +15122,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/schemas/file_format_v1.1.0.md": {
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:24:24.340158929Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/self-observability.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-03T12:08:49.446719498Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/semantic-conventions.md": {
     "StatusCode": 206,
