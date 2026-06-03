@@ -261,15 +261,25 @@ export function reportFailure({
     buildIssueBody({ workflow, branch, sha, runUrl }),
   ]).trim();
   const issueNumber = Number(createdUrl.split('/').pop());
+  if (!Number.isInteger(issueNumber) || issueNumber <= 0) {
+    throw new Error(
+      `Could not parse issue number from gh issue create output: ${createdUrl}`,
+    );
+  }
   log(`Created issue #${issueNumber}.`);
 
   // gh has no flag to set an issue's type, so do it via GraphQL.
-  const typeSet = setIssueType(runGh, {
-    repo,
-    issueNumber,
-    issueType,
-    log,
-  });
+  let typeSet = false;
+  try {
+    typeSet = setIssueType(runGh, {
+      repo,
+      issueNumber,
+      issueType,
+      log,
+    });
+  } catch (err) {
+    log(`Could not set issue type "${issueType}"; skipping. ${err.message}`);
+  }
 
   return { action: 'created', issueNumber, typeSet };
 }

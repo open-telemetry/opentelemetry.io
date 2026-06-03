@@ -217,6 +217,38 @@ describe('report-failure: reportFailure', () => {
     assert.equal(result.typeSet, false);
   });
 
+  test('still succeeds (typeSet=false) when the issue-type mutation fails', () => {
+    const { runGh } = makeFakeGh({
+      'issue list': { stdout: '[]', status: 0 },
+      'issue create': {
+        stdout: 'https://github.com/o/r/issues/5\n',
+        status: 0,
+      },
+      'issue view': { stdout: 'I_node123', status: 0 },
+      'api graphql': (args) => {
+        const q = args.find((a) => a.startsWith('query=')) ?? '';
+        if (q.includes('issueTypes')) return { stdout: TYPES_JSON, status: 0 };
+        return { stdout: '', status: 1 };
+      },
+    });
+
+    const result = reportFailure({ ...BASE, runGh, log: noLog });
+    assert.equal(result.action, 'created');
+    assert.equal(result.issueNumber, 5);
+    assert.equal(result.typeSet, false);
+  });
+
+  test('throws when gh issue create output is not a parseable issue URL', () => {
+    const { runGh } = makeFakeGh({
+      'issue list': { stdout: '[]', status: 0 },
+      'issue create': { stdout: 'unexpected output\n', status: 0 },
+    });
+    assert.throws(
+      () => reportFailure({ ...BASE, runGh, log: noLog }),
+      /Could not parse issue number from gh issue create output/,
+    );
+  });
+
   test('throws when a gh call fails', () => {
     const { runGh } = makeFakeGh({
       'issue list': { stdout: '', status: 1 },
