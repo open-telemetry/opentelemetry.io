@@ -43,19 +43,18 @@ telemetry growth more efficiently.
 ## A Dataflow Engine Built to Test the Native Arrow Path
 
 To explore this idea, we built the OTel-Arrow Dataflow Engine. This Arrow-first
-engine (written in Rust) is designed to build OTAP-based pipelines that can efficiently
-consume and produce OTAP streams, while also supporting OTLP, Syslog ingestion,
-and experimental STEF support through optimized conversions to and from OTAP.
+engine (written in Rust) is designed to build OTAP-based pipelines that can
+efficiently consume and produce OTAP streams, while also supporting OTLP.
 
 Support for multiple protocols is essential because OpenTelemetry users should
 not have to choose between compatibility and efficiency. The objective is to
 preserve compatibility while introducing Arrow-native fast paths wherever the
 workload justifies them.
 
-The Go Collector remains the broadly deployed, general-purpose OpenTelemetry
-Collector implementation. The purpose of this work is to explore what becomes
-possible when a telemetry data plane is designed around an Arrow-native
-representation and a bounded runtime model.
+The current Collector remains the broadly deployed, general-purpose
+OpenTelemetry Collector implementation. The purpose of this work is to explore
+what becomes possible when a telemetry data plane is designed around an
+Arrow-native representation and a bounded runtime model.
 
 The Dataflow Engine uses a [NUMA-friendly](https://www.kernel.org/doc/html/v4.18/vm/numa.html),
 [thread-per-core, share-nothing](https://seastar.io/shared-nothing/)
