@@ -124,3 +124,11 @@ jobs:
                          --body "This is a draft PR used for identifying issues integrating the latest (unreleased) [${{ env.REPO }}](https://github.com/open-telemetry/${{ env.REPO }})." \
                          --draft
           fi
+
+  report-failure:
+    needs: update-semconv-integration-branch
+    if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
+    uses: ./.github/workflows/reusable-report-failure.yml
+    permissions:
+      issues: write # Pass through for failure tracking issues
+      contents: read

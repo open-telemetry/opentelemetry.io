@@ -15427,6 +15427,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-03T10:05:48.345134942Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/reusable-report-failure.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-03T15:27:42.601021-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-semconv-integration-branch.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-05-21T10:49:36.93759165Z"
@@ -15662,6 +15666,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs": {
     "StatusCode": 206,
     "LastSeen": "2026-05-03T09:59:21.01351518Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/report-failure": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-03T15:27:44.206866-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/specs/pick-branch": {
     "StatusCode": 206,
