@@ -59,8 +59,8 @@ Arrow-native representation and a bounded runtime model.
 The Dataflow Engine uses a [NUMA-friendly](https://www.kernel.org/doc/html/v4.18/vm/numa.html),
 [thread-per-core, share-nothing](https://seastar.io/shared-nothing/)
 architecture. It emphasizes bounded channels and data structures, avoids
-synchronization in hot paths, propagates ack/nack signals through pipelines,
-and supports live pipeline reconfiguration through an admin API.
+synchronization in hot paths, propagates delivery acknowledgments through
+pipelines, and supports live pipeline reconfiguration through an admin API.
 
 The important point is not that the implementation is in Rust. The benchmark
 results should be read as measurements of data representation and runtime
