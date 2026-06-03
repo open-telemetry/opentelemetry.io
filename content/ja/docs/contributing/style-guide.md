@@ -3,7 +3,7 @@ title: ドキュメントスタイルガイド
 description: OpenTelemetry のドキュメントを書く際の用語とスタイル。
 linkTitle: スタイルガイド
 weight: 20
-default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
+default_lang_commit: e17943afc3a71a67fcdd3a69dcd428c3e45b306d
 params:
   alertExamples: |
     > [!TIP]
