@@ -141,6 +141,10 @@ Taken together, these results show that OTAP is not only about smaller payloads.
 It keeps processing cost low, benefits from batching, and helps make overload
 behavior more predictable.
 
+The next two results separate two questions: first, whether the Dataflow Engine
+runtime scales when telemetry enters through OTLP, and second, how much more
+throughput is available when the same runtime can stay on the native OTAP path.
+
 ## Result 2: Scaling Stays Close to Linear
 
 ![OTLP scaling](otel-arrow-phase-2/otlp_scaling.svg)
@@ -182,10 +186,10 @@ scaling.
 
 These three benchmark summaries validate the main direction of Phase 2. OTAP
 reduces the cost of representing telemetry. The OTel-Arrow Dataflow Engine
-preserves that advantage through processing. The runtime architecture then
-scales that advantage across cores while keeping overload behavior visible and
-contained. OTAP is not only cheaper per operation; it also enables much higher
-throughput on the same runtime.
+preserves that advantage through processing, scales it across cores, and keeps
+overload behavior visible and contained. For production telemetry pipelines,
+that predictability matters as much as raw throughput. OTAP is not only cheaper
+per operation; it also enables much higher throughput on the same runtime.
 
 These comparisons should be read as measurements of the specific benchmark
 paths and configurations shown here, not as universal claims about every
@@ -221,6 +225,10 @@ The OTel-Arrow Dataflow Engine has reached a maturity level where many essential
 capabilities are usable in realistic environments. It is still more accurate,
 however, to describe it as an incubation-stage project than as a broadly
 production-stabilized platform for external users.
+
+Production users should treat the engine as something to evaluate, benchmark,
+and shape through feedback, not as a drop-in replacement for existing Collector
+deployments today.
 
 Configuration formats, APIs, component interfaces, and certain operational
 semantics may still evolve during Phase 3 as benchmarks improve, real-world
