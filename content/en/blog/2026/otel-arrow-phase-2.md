@@ -62,10 +62,9 @@ architecture. It emphasizes bounded channels and data structures, avoids
 synchronization in hot paths, propagates delivery acknowledgments through
 pipelines, and supports live pipeline reconfiguration through an admin API.
 
-The important point is not that the implementation is in Rust. The benchmark
-results should be read as measurements of data representation and runtime
-design: Arrow-native processing, fewer conversion boundaries, bounded execution,
-and explicit flow control.
+The benchmark results should be read as measurements of data representation and
+runtime design: Arrow-native processing, fewer conversion boundaries, bounded
+execution, and explicit flow control.
 
 In the diagrams below, DFE refers to the OTel-Arrow Dataflow Engine, while
 Collector refers to the OpenTelemetry Collector implementation.
