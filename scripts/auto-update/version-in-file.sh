@@ -6,8 +6,12 @@ GH=gh
 GIT=git
 
 if [[ -n "$GITHUB_ACTIONS" ]]; then
-  # Ensure that we're starting from a clean state
+  # Ensure that we're starting from a clean state. The previous iteration may
+  # have left us on a feature branch and/or with submodules checked out at a
+  # different commit (e.g., a freshly bumped tag).
+  git checkout main
   git reset --hard origin/main
+  npm run get:submodule
 elif [[ "$1" != "-f" ]]; then
   # Do a dry-run when script it executed locally, unless the
   # force flag is specified (-f).
