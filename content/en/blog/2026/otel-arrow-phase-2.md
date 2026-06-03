@@ -134,7 +134,7 @@ flow control, and making overload visible rather than allowing memory to absorb
 it.
 
 Taken together, these results show that OTAP is not only about smaller payloads.
-It keeps processing cost low, benefits from batching, and helps make overload
+It keeps processing cost low, benefits significantly from batching, and helps make overload
 behavior more predictable.
 
 The next two results separate two questions: first, whether the Dataflow Engine
