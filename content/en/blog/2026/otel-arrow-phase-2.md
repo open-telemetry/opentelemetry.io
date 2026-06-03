@@ -41,7 +41,7 @@ efficiently.
 ## A Dataflow Engine Built to Test the Native Arrow Path
 
 To explore this idea, we built the OTel-Arrow Dataflow Engine. This Arrow-first
-Rust runtime is designed to build OTAP-based pipelines that can efficiently
+engine (written in Rust) is designed to build OTAP-based pipelines that can efficiently
 consume and produce OTAP streams, while also supporting OTLP, Syslog ingestion,
 and experimental STEF support through optimized conversions to and from OTAP.
 
