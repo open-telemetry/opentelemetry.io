@@ -53,7 +53,7 @@ workload justifies them.
 The Go Collector remains the broadly deployed, general-purpose OpenTelemetry
 Collector implementation. The purpose of this work is to explore what becomes
 possible when a telemetry data plane is designed around an Arrow-native
-representation and a bounded runtime model from the start.
+representation and a bounded runtime model.
 
 The Dataflow Engine uses a [NUMA-friendly](https://www.kernel.org/doc/html/v4.18/vm/numa.html),
 [thread-per-core, share-nothing](https://seastar.io/shared-nothing/)
