@@ -56,3 +56,6 @@ config_types_col_name: Name
 config_types_col_type: Type
 config_types_col_constraints: Constraints
 config_types_col_description: Description
+config_types_examples_heading: Examples
+config_types_copy: Copy
+config_types_copied: Copied!

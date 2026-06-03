@@ -21,6 +21,44 @@
     }
   }
 
+  // Example snippets section.
+  .ct-examples {
+    margin-top: 1rem;
+  }
+
+  .ct-examples-heading {
+    margin-bottom: 0.5rem;
+  }
+
+  .ct-snippet-tabs {
+    margin-bottom: 0;
+  }
+
+  .tab-content {
+    padding-top: 0.5rem;
+  }
+
+  .ct-snippet {
+    position: relative;
+  }
+
+  .ct-snippet-copy {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1;
+  }
+
+  .ct-snippet-pre {
+    overflow-x: auto;
+    font-size: 0.875rem;
+    margin-bottom: 0;
+    padding: 0.75rem;
+    background-color: var(--bs-tertiary-bg);
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+  }
+
   // Type-level constraints note at the bottom of each accordion body.
   .ct-type-constraints {
     font-size: 0.8125rem;
