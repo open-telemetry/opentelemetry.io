@@ -71,15 +71,17 @@ Collector refers to the OpenTelemetry Collector implementation.
 
 ## Benchmark Highlights
 
-The Phase 2 benchmarks were designed to answer two practical questions:
+The Phase 2 benchmarks were designed to answer three practical questions:
 
 - Does keeping telemetry in an Arrow-native representation make real pipeline
   processing cheaper, or does OTAP only help on the wire?
 - Can the runtime architecture turn that advantage into stable throughput as
   more CPU cores are assigned?
+- How much throughput does native OTAP unlock compared with OTLP on the same
+  Dataflow Engine runtime?
 
 Rather than walk through the full benchmark matrix in this post, we focus on
-two summary diagrams that capture the most important results. The
+three summary diagrams that capture the most important results. The
 [interactive benchmark](https://open-telemetry.github.io/otel-arrow/compare/)
 site provides the complete view, including additional rates, batch sizes,
 compression settings, memory behavior, network usage, and saturation markers.
@@ -141,28 +143,48 @@ behavior more predictable.
 
 ## Result 2: Scaling Stays Close to Linear
 
-![Scaling linearly](otel-arrow-phase-2/scaling_linearly.svg)
+![OTLP scaling](otel-arrow-phase-2/otlp_scaling.svg)
 
-Figure 2: Scaling test comparing measured speedup with ideal linear scaling
-from 1 to 16 cores.
+Figure 2: OTLP scaling test comparing measured speedup with ideal linear
+scaling from 1 to 16 cores.
 
-The second diagram looks at the runtime architecture itself. In this scaling
-test, the OTel-Arrow Dataflow Engine was evaluated from 1 core to 16 cores. The
-measured result reached 14.6x acceleration on 16 cores, very close to the ideal
-16x line.
+The second diagram looks at the runtime architecture itself. In this OTLP
+scaling test, the OTel-Arrow Dataflow Engine was evaluated from 1 core to 16
+cores. The measured result reached 14.6x acceleration on 16 cores, very close to
+the ideal 16x line, and reached 1.91M logs/sec on 16 cores.
 
 This result is important because Phase 2 is not only about a new protocol. It is
 also about a runtime model designed to exploit that representation efficiently.
-The thread-per-core, mostly share-nothing architecture with bounded flow control
-converts additional assigned cores into stable throughput with limited
-efficiency loss.
+Even when the path still pays the OTLP conversion cost, the thread-per-core,
+mostly share-nothing architecture with bounded flow control converts additional
+assigned cores into stable throughput with limited efficiency loss.
 
-## What These Results Mean
+## Result 3: OTAP Unlocks Much Higher Throughput
 
-These benchmark summaries validate the main direction of Phase 2. OTAP reduces
-the cost of representing telemetry. The OTel-Arrow Dataflow Engine preserves
-that advantage through processing. The runtime architecture then scales that
-advantage across cores while keeping overload behavior visible and contained.
+![OTAP versus OTLP throughput](otel-arrow-phase-2/otap_scaling.svg)
+
+Figure 3: Throughput comparison between OTAP and OTLP paths on the OTel-Arrow
+Dataflow Engine.
+
+The third diagram compares OTAP and OTLP throughput on the same Dataflow Engine
+runtime. At 8 cores, the OTAP path reaches 14.1M logs/sec, while the OTLP path
+reaches 1.03M logs/sec. That is about 13.7x higher throughput for OTAP in this
+test.
+
+This result reinforces the cost-model argument. OTAP avoids heavy OTLP
+transcoding and lets the Arrow-native engine process data more directly. The
+8-core OTAP run is load-generator limited, and the projected full-saturation
+throughput is about 16M logs/sec, so there is still room to move closer to ideal
+scaling.
+
+## Key Takeaways
+
+These three benchmark summaries validate the main direction of Phase 2. OTAP
+reduces the cost of representing telemetry. The OTel-Arrow Dataflow Engine
+preserves that advantage through processing. The runtime architecture then
+scales that advantage across cores while keeping overload behavior visible and
+contained. OTAP is not only cheaper per operation; it also enables much higher
+throughput on the same runtime.
 
 These comparisons should be read as measurements of the specific benchmark
 paths and configurations shown here, not as universal claims about every
