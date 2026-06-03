@@ -252,9 +252,10 @@ production-usable release, with significant improvements in several areas:
   covering the majority of common telemetry pipelines, implemented in Rust and
   maintained within OpenTelemetry.
 - **Extensibility and processing**: a WASM-based extension model for specialized
-  components, exploration of compatibility paths for selected Collector
-  components, and a new OTAP-native transform processor with OTTL-compatible
-  transformations and the experimental OPL language.
+  components, including exploration of how selected existing OpenTelemetry
+  Collector components could run inside the Dataflow Engine. This also includes
+  a new OTAP-native transform processor with OTTL-compatible transformations and
+  the experimental OPL language.
 - **Ecosystem validation and guidance**: collaboration with the OpenTelemetry
   Demo and relevant Blueprint efforts to validate OTAP and the Dataflow Engine
   in realistic end-to-end scenarios.
