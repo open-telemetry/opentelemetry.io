@@ -78,7 +78,7 @@ The Phase 2 benchmarks were designed to answer three practical questions:
 - Can the runtime architecture turn that advantage into stable throughput as
   more CPU cores are assigned?
 - How much additional throughput does native OTAP provide compared with OTLP
-  on the same Dataflow Engine runtime?
+  using the same amount of resources?
 
 Rather than walk through the full benchmark matrix in this post, we focus on
 three summary diagrams that capture the most important results. The
@@ -111,12 +111,14 @@ batch-size behavior, and overload behavior.
 The above diagram summarizes three important observations from the
 transformation benchmarks.
 
-The first observation shows that at 200K logs/sec, with approximately 300 bytes per log entry, increasing the
-number of rename actions from one to four keeps the native OTAP path nearly
-flat. The DFE OTAP path moves from 6.4% to 6.6% CPU.
-
-The DFE OTLP path is an important middle point in this comparison. It pays an up-front cost of decoding OTLP and converting it into the OTAP-oriented internal path, which explains the more expensive baseline for a single operation. Once converted to an OTAP representation, the cost per additional operation remains as low as the end-to-end OTAP path.
-
+The first observation shows that adding more rename actions has very little
+incremental cost on the Dataflow Engine. At 200K logs/sec, with approximately
+300 bytes per log entry, the native OTAP path moves from 6.4% to 6.6% CPU as the
+number of rename actions increases from one to four. The DFE OTLP path is more
+expensive because telemetry first has to be decoded from OTLP and converted into
+the OTAP-oriented internal representation, but once that conversion cost is paid,
+additional rename actions add very little CPU there as well.
+  
 The OTel Collector OTLP path represents the current Collector. It pays the high
 up-front cost of decoding OTLP proto and then a further 3.75% CPU per operation
 for a total of 92.5% CPU after four operations.
