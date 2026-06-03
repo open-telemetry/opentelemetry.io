@@ -798,6 +798,9 @@ base configuration as part of their offering:
     or progressive rollouts.
   - `service.namespace` or `service.owner` for resource ownership.
   - `deployment.environment.name` (e.g. `production`, `staging`).
+  - Other attributes injected as environment variables via the Kubernetes
+    [Downward API][64] (i.e. `valueFrom.fieldRef.fieldPath`) standardized across
+    application deployment templates.
 
 Depending on the methods established in [Action 1][action-1] for providing OTel
 configuration, the platform team must document exactly how developers inherit
@@ -896,14 +899,24 @@ costs from low-value telemetry data, and enforce compliance before data leaves
 the corporate network, the platform team should consider configuring pipelines
 in Collector Gateways to execute the following processing steps (in order):
 
-- [**k8sattributes**][47] **processor:** While Kubernetes resource details (like
-  pod and namespace names) should ideally be appended at the application level
-  via SDK Resource Detectors (see [Action 2][action-2]), the platform team must
-  ensure 100% compliance for unmanaged workloads. Configure this processor to
-  extract and append `k8s.namespace.name`, `k8s.pod.name`,
-  `k8s.deployment.name`, or `k8s.cluster.name` based on the incoming
-  connection's pod IP. If using a proxy, ensure pass-through mode is enabled so
-  the Gateway sees the original Pod IP of the application, not the proxy's IP.
+- [**k8sattributes**][47] **processor:** While some Kubernetes resource details
+  (like pod ID or namespace name) can be appended at the application level (see
+  [Action 2][action-2]), the platform team must ensure 100% compliance for
+  unmanaged workloads. This includes fields not available via the Downward API.
+  Configure this processor to extract and append attributes like
+  `k8s.deployment.name`, `k8s.statefulset.name`, etc. based on the incoming
+  connection's pod IP.
+  - If using a proxy, ensure pass-through mode is enabled on the proxy so the
+    Gateway sees the original Pod IP of the application, not the proxy's IP.
+    Alternatively, inject fields available via Downward API (e.g. `k8s.pod.uid`)
+    at the SDK level and use `k8sattributes` pod association rules to match the
+    incoming data with a given Pod.
+  - When using this processor, the `ServiceAccount` used by the Collector must
+    be granted RBAC `get`, `watch`, and `list` permissions on the Kubernetes
+    resources corresponding to the attributes being extracted, e.g.
+    `deployments` for `k8s.deployment.name` and `k8s.deployment.uid`. Missing
+    any of these will result in the Collector silently skipping enrichment for
+    the affected attributes.
 - **Processors to filter and transform data:** As a fallback measure on
   applications that could not apply these changes at source, use processors like
   [attributes][48], [filter][49], [redaction][27], [resource][50], or
@@ -1159,3 +1172,4 @@ use client-side load balancing, or consider using HTTP/protobuf (see [Action
 [61]: /docs/guidance/reference-implementations/mastodon/
 [62]: /docs/guidance/reference-implementations/skyscanner/
 [63]: /docs/guidance/#how-to-contribute
+[64]: https://kubernetes.io/docs/concepts/workloads/pods/downward-api/
