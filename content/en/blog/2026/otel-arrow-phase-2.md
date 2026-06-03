@@ -154,9 +154,10 @@ cores. The measured result reached 14.6x acceleration on 16 cores, very close to
 the ideal 16x line, and reached 1.91M logs/sec on 16 cores.
 
 This result is important because Phase 2 is not only about a new protocol. It is
-also about a runtime model designed to exploit that representation efficiently.
-Even when the path still pays the OTLP conversion cost, the thread-per-core,
-mostly share-nothing architecture with bounded flow control converts additional
+also about the runtime model around the OTAP-oriented internal path. In this
+test, telemetry enters as OTLP and must be decoded and converted before
+processing can happen. Even with that conversion cost, the thread-per-core,
+share-nothing architecture with bounded flow control converts additional
 assigned cores into stable throughput with limited efficiency loss.
 
 ## Result 3: OTAP Unlocks Much Higher Throughput
