@@ -219,7 +219,7 @@ except Exception as ex:
     current_span.record_exception(ex)
 ```
 
-### デフォルトの伝搬（伝搬）フォーマットの変更 {#change-the-default-propagation-format}
+### デフォルトの伝搬フォーマットの変更 {#change-the-default-propagation-format}
 
 デフォルトでは、OpenTelemetry Pythonは以下の伝搬フォーマットを使用します。
 
@@ -248,7 +248,7 @@ except Exception as ex:
 
 かわりに、コード内でフォーマットを変更することもできます。
 
-たとえば、ZipkinのB3伝搬（伝搬）フォーマットを使用する必要がある場合は、B3パッケージをインストールします。
+たとえば、ZipkinのB3伝搬フォーマットを使用する必要がある場合は、B3パッケージをインストールします。
 
 ```shell
 pip install opentelemetry-propagator-b3
