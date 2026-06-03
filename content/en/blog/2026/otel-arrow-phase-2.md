@@ -15,8 +15,10 @@ cSpell:ignore: Laurent Querel Joshua MacDonald Jake Dern Cijo Thomas Drew Relmas
 
 [Phase 1](https://github.com/open-telemetry/otel-arrow/blob/main/docs/phase1-overview.md)
 of OTel-Arrow established OTAP, the OpenTelemetry Arrow Protocol, as an
-efficient transport protocol for OpenTelemetry. It showed that telemetry could
-be transported with significantly lower network overhead while preserving
+efficient transport protocol for OpenTelemetry. Apache Arrow is a
+language-independent, columnar in-memory format designed to move and process
+structured data efficiently across systems. We demonstrated that telemetry
+could be transported with significantly lower network overhead while preserving
 compatibility with the OpenTelemetry data model.
 
 [Phase 2](https://opentelemetry.io/blog/2025/otel-arrow-phase-2/) asked a
