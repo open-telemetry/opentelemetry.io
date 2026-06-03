@@ -319,9 +319,9 @@ Pure logic and CLI argument parsing live in `index.mjs` and are covered by
 ## Workflow failure reporting {#workflow-failure-reporting}
 
 [`reusable-report-failure.yml`][report-failure] opens (or comments on) a
-tracking issue when a caller workflow fails. How to wire it up, optional
-inputs, and caller context behavior are documented in the workflow file header;
-issue logic lives in [scripts/gh/report-failure/][report-failure-script]
+tracking issue when a caller workflow fails. How to wire it up, optional inputs,
+and caller context behavior are documented in the workflow file header; issue
+logic lives in [scripts/gh/report-failure/][report-failure-script]
 (`npm run test:local-tools`).
 
 [report-failure]:
