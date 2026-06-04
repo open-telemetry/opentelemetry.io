@@ -1,7 +1,7 @@
 ---
 title: サーバーレス
 weight: 100
-description: OpenTelemetry JavaScriptでサーバーレス関数をインストルメント
+description: OpenTelemetry JavaScriptでサーバーレス関数を計装
 default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
 cSpell:ignore: otelwrapper
 ---
