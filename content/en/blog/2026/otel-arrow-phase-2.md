@@ -80,12 +80,12 @@ Collector refers to the OpenTelemetry Collector implementation.
 
 The Phase 2 benchmarks were designed to answer three practical questions:
 
-- Does keeping telemetry in an Arrow-native representation make real pipeline
-  processing cheaper, or does OTAP only help on the wire?
+- Does keeping telemetry in an Arrow representation make real pipeline
+  processing less expensive, or does OTAP only help on the wire?
 - If so, can the runtime architecture itself sustain and scale that efficiency
   linearly as more CPU cores are assigned?
-- How much additional throughput does native OTAP provide compared with OTLP
-  using the same amount of resources?
+- How much additional throughput do OTAP streams provide compared with OTLP
+  streams using the same amount of resources?
 
 The full benchmark matrix is available on the
 [interactive benchmark site](https://open-telemetry.github.io/otel-arrow/compare/).
