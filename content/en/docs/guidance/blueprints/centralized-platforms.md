@@ -788,8 +788,11 @@ base configuration as part of their offering:
   (e.g., cloud provider, Kubernetes, OS, container) to achieve consistency with
   no manual input.
 - **Instrumentation libraries**: Ensure a minimal set of instrumentation
-  libraries are configured out of the box. Prioritize client and server
-  instrumentation (e.g. gRPC, HTTP, messaging, database).
+  libraries are configured out of the box. If auto-instrumentation is being
+  used, platform teams should not default to enable all by instrumentation
+  libraries by default, carefully selecting the ones most critical to their
+  environment, prioritizing client and server instrumentation (e.g. gRPC, HTTP,
+  messaging, database).
 - **Processors, readers and views**: Settings specific to the backend in use
   (e.g. aggregation temporality, export intervals, attribute limits) or
   organization-wide standards (e.g. span/metric attributes).
@@ -952,11 +955,10 @@ in Collector Gateways to execute the following processing steps (in order):
     less useful in Kubernetes environments where these attributes are present in
     CI/CD pipelines.
   - Any other processing to remove low-value, noisy telemetry.
-- [**span_metrics**][25] **or [signal_to_metrics][26] connectors:** Ensure
-  completeness of golden signals (i.e. R.E.D. metrics) from applications, even
-  if traces are heavily sampled upstream, especially if the SDK or client/server
-  libraries cannot produce these metrics. Route the raw trace stream through
-  these connectors before any sampling occurs.
+- [**span_metrics**][25] **or [signal_to_metrics][26] connectors:** These can
+  ensure completeness of golden signals (i.e. R.E.D. metrics) for applications
+  where the SDK or client/server libraries do not produce these metrics. Route
+  the raw trace stream through these connectors before any sampling occurs.
 - [**tail_sampling**][52] **processor:** Define strict retention policies, for
   instance keeping 100% of traces containing errors or exceeding a latency
   threshold, and a small baseline (e.g., 5%) of successful, normal-duration
@@ -987,8 +989,11 @@ application process (e.g., if the SDK's internal queue fills up), we recommend:
   spans, and exporter latency. [OpenTelemetry SDK Semantic Conventions][57]
   define the telemetry to be produced by SDKs, but support varies depending on
   language.
-- For languages lacking native SDK metric support, enable error logging on the
-  OTel SDK's global error handler.
+- Languages lacking native SDK metric support for internal telemetry may still
+  support internal diagnostics in different ways (e.g. .NET's `EventSource`,
+  Javas `java.util.logging`, or Node.js's `diag`). Users should refer to
+  specific implementations to configure for their particular needs and
+  verbosity.
 
 To monitor the health of the aggregation and processing tiers, the platform team
 must actively capture and alert on internal [Collector telemetry][15]. We
