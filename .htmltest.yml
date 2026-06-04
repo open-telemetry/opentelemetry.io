@@ -67,6 +67,10 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   # https://github.com/oatpp/oatpp/issues/1082
   - ^https://oatpp.io
 
+  # Unreliable host (connection timeouts); matching semantic-conventions, see
+  # https://github.com/open-telemetry/semantic-conventions/pull/2069
+  - ^https://www\.intersystems\.com
+
   # Ignore issues and discussions with query parameters, e.g.:
   - ^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=
   - ^https://github\.com/open-telemetry/opentelemetry\.io/discussions\?discussions_q=
