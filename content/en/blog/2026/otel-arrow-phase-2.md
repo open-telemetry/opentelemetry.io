@@ -40,12 +40,19 @@ and memory more efficiently and predictably. We believe OTAP can play an
 important role in helping OpenTelemetry pipelines handle this next phase of
 telemetry growth more efficiently.
 
-## A Dataflow Engine Built to Test the Native Arrow Path
+## A Dataflow Engine Built to Test the Arrow Path
 
-To explore this idea, we built the OTel-Arrow Dataflow Engine. This Arrow-first
-engine (written in Rust) is designed to build OTAP-based pipelines that can
-efficiently consume and produce OTAP streams, while also supporting OTLP.
+To explore this idea, we built the OTel-Arrow Dataflow Engine, a Rust runtime
+designed around OTAP as the primary in-pipeline representation. It can consume
+and produce OTAP streams end to end, while also supporting OTLP through a
+separate first-class data path.
 
+This dual-path design lets us compare two modes in the same runtime: an
+OTAP-direct path that keeps telemetry in Arrow record batches, and an
+OTLP-compatible path that converts between OTLP and OTAP at explicit boundaries.
+The result is clear: when telemetry stays on the OTAP path end to end, transport
+and processing costs drop substantially.
+  
 The current Collector remains the broadly deployed, general-purpose
 OpenTelemetry Collector implementation. The purpose of this work is to explore
 what becomes possible when a telemetry data plane is designed around an
