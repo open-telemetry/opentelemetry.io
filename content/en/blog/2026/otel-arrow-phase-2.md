@@ -139,7 +139,7 @@ scenario, making overload visible instead of letting memory absorb it.
 
 Taken together, these results show that OTAP is not only about smaller payloads.
 It keeps processing cost low, benefits significantly from batching, and helps
-make overload behavior more predictable.
+make overload behavior more predictable by applying backpressure.
 
 The next two results separate two questions: first, whether the Dataflow Engine
 runtime scales when telemetry enters through OTLP, and second, how much more
