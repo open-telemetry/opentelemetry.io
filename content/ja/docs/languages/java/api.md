@@ -556,7 +556,7 @@ public class OpenTelemetryUsage {
 
 ### GlobalOpenTelemetry {#globalopentelemetry}
 
-> [!NOTE] Java agent
+> [!NOTE] Javaエージェント
 >
 > Javaエージェントは特別なケースで、`GlobalOpenTelemetry`はエージェントによって設定されます。
 > 単純に`GlobalOpenTelemetry.getOrNoop()`を呼び出して`OpenTelemetry`インスタンスにアクセスしてください。
