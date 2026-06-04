@@ -67,9 +67,11 @@ architecture. It emphasizes bounded channels and data structures, avoids
 synchronization in hot paths, propagates delivery acknowledgments through
 pipelines, and supports live pipeline reconfiguration through an admin API.
 
-The benchmark results should be read as measurements of data representation and
-runtime design: Arrow-native processing, fewer conversion boundaries, bounded
-execution, and explicit flow control.
+Our benchmarks compare the cost of two pipeline data representations: the
+OTLP-shaped object model used by the Collector, and the OTAP representation used
+by the Dataflow Engine. They also evaluate runtime design choices such as
+Arrow-based processing, fewer conversion boundaries, bounded execution, and
+explicit flow control.
 
 In the diagrams below, DFE refers to the OTel-Arrow Dataflow Engine, while
 Collector refers to the OpenTelemetry Collector implementation.
