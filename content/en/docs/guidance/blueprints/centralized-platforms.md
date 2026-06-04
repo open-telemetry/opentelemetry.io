@@ -523,8 +523,8 @@ platform teams may consider different options, including:
   processor configuration must be duplicated across Gateways unless managed
   through external templating tools.
 - **Multiple memory limiters on a single Gateway:** Defining separate
-  [memory_limiter][14] configurations per signal, with different thresholds. This
-  relies on the OTLP receiver in front of a `memory_limiter` returning a
+  [memory_limiter][14] configurations per signal, with different thresholds.
+  This relies on the OTLP receiver in front of a `memory_limiter` returning a
   retryable error code to OTLP clients (e.g. SDKs or other Collectors) when
   telemetry is refused, applying backpressure as required. Pipelines with lower
   priority can then be configured with lower memory limiter thresholds in order
@@ -876,18 +876,19 @@ and owners should ensure resiliency is configured from the start:
   memory usage hits a configured threshold. As mentioned in [Guideline
   3][guideline-3], different `memory_limiter` processors per signal may be
   required.
-- **Configure [otlp][45] or [otlp_http][67] exporter:** Ensure queues and retries are aligned with
-  expectations on reliability vs resource consumption, handling transient
-  backend failures before dropping data. In particular, consider `sending_queue`
-  options like `block_on_overflow` which controls if the Collector should drop
-  data or wait until space becomes available if the queue (persistent or
-  in-memory) is full.
+- **Configure [otlp][45] or [otlp_http][67] exporter:** Ensure queues and
+  retries are aligned with expectations on reliability vs resource consumption,
+  handling transient backend failures before dropping data. In particular,
+  consider `sending_queue` options like `block_on_overflow` which controls if
+  the Collector should drop data or wait until space becomes available if the
+  queue (persistent or in-memory) is full.
 - **Consider [file_storage][46] extension**: If dropping data on extended
   observability backend service interruptions is critical to the functioning of
   the business, consider configuring `sending_queue.storage` in your OTLP
-  exporter with the [file_storage][46] extension. With this extension configured,
-  if the backend is unavailable or rate-limits exports, the Collector will
-  buffer data to disk and automatically retry, preventing data loss.
+  exporter with the [file_storage][46] extension. With this extension
+  configured, if the backend is unavailable or rate-limits exports, the
+  Collector will buffer data to disk and automatically retry, preventing data
+  loss.
   - **Note:** While this mechanism provides added completeness guarantees, it
     moves away from stateless deployments, requiring the Gateway to be deployed
     as a `StatefulSet` with `PersistentVolumeClaims`. As with OTLP exporter
@@ -1168,7 +1169,7 @@ use client-side load balancing, or consider using HTTP/protobuf (see [Action
 [51]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor/README.md
 [52]:
-https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor/README.md
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor/README.md
 [53]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter/README.md
 [54]: /docs/collector/deploy/gateway/#load-balancing-exporter
