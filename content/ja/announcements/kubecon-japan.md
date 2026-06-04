@@ -9,6 +9,7 @@ params:
   eventUrl: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/
   blogPostURL: /blog/2025/kubecon-japan/
 default_lang_commit: 9bc3c40e6e637b3d776281eb946a60ebf79a4cd5 # patched
+drifted_from_default: true
 ---
 
 [**{{% param title %}}**][LF]が **6月16・17日に東京で開催**
