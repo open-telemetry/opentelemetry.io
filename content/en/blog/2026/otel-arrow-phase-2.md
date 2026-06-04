@@ -251,7 +251,7 @@ production-usable release, with significant improvements in several areas:
   maintained within OpenTelemetry.
 - **Extensibility and processing**: a WASM-based extension model for specialized
   components, including exploration of how selected existing OpenTelemetry
-  Collector components could run inside the Dataflow Engine. This also includes
+  Collector (and collector contrib) components could run inside the Dataflow Engine. This also includes
   a new OTAP-native transform processor with OTTL-compatible transformations and
   the experimental OPL language.
 - **SDK-level OTAP export**: prototyping OTAP exporters in OpenTelemetry SDKs,
