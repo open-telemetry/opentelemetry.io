@@ -191,7 +191,7 @@ Java 代理开箱即用地对许多库、框架和应用服务器进行自动插
 [GraphQL Server Spans]: /docs/specs/semconv/graphql/graphql-spans/
 [FaaS Server Spans]: /docs/specs/semconv/faas/faas-spans/
 [GenAI Client Spans]: /docs/specs/semconv/gen-ai/gen-ai-spans/
-[GenAI Client Metrics]: /docs/specs/semconv/gen-ai/gen-ai-metrics/#generative-ai-client-metrics
+[GenAI Client Metrics]: /docs/specs/semconv/gen-ai/gen-ai-metrics/?link-check=no&see-issue=10153#generative-ai-client-metrics
 
 ## 应用服务器 {#application-servers}
 
