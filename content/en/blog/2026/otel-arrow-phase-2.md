@@ -174,9 +174,9 @@ the engine pays no conversion cost - telemetry stays in its Arrow-native
 representation from ingestion through processing to export. When input is OTLP,
 the engine must decode and convert each batch before processing, and convert
 back on the way out. That conversion boundary is the entire difference between
-the two paths, and eliminating it makes OTAP consistently more than 10x faster
-than OTLP on the same runtime. At 1 core, the OTAP path reaches 2.47M logs/sec
-while the OTLP path reaches 121K logs/sec.
+the two paths, and eliminating it makes OTAP consistently **more than 10x
+faster** than OTLP on the same runtime. At 1 core, the OTAP path reaches 2.47M
+logs/sec while the OTLP path reaches 121K logs/sec.
 
 This result shows the effect of removing the OTLP conversion boundary. OTAP
 avoids heavy OTLP transcoding and lets the Arrow-native engine process data
