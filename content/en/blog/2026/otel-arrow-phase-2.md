@@ -4,8 +4,8 @@ linkTitle: 'OTel-Arrow Phase 2: Efficient Telemetry Pipelines'
 sig: OTel Arrow SIG
 date: {{ dataFormat "2026-01-02" .Date }}
 author: >-
-  [Laurent Querel](https://github.com/lquerel) (F5),
-  [Joshua MacDonald](https://github.com/jmacd) (Microsoft), 
+  [Laurent Querel](https://github.com/lquerel) (F5, project lead),
+  [Joshua MacDonald](https://github.com/jmacd) (Microsoft, project lead), 
   [Albert Lockett](https://github.com/albertlockett) (F5),
   [Cijo Thomas](https://github.com/cijothomas) (Microsoft),
   [Drew Relmas](https://github.com/drewrelmas) (Microsoft),
@@ -296,7 +296,8 @@ production-usable release, with significant improvements in several areas:
 - **Ecosystem validation and guidance**: collaboration with the OpenTelemetry
   Demo and relevant Blueprint efforts to validate OTAP and the Dataflow Engine
   in realistic end-to-end scenarios.
-- **OpenTelemetry Profiles**: add support for OpenTelemetry profiles in the OTAP representation.
+- **OpenTelemetry Profiles**: add support for OpenTelemetry profiles in the OTAP
+  representation.
 
 OPL, or OpenTelemetry Processing Language, is currently being specified and
 implemented. It is intended to be stream-oriented, strongly typed, and safe for
