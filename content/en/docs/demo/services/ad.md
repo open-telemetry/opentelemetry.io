@@ -124,7 +124,7 @@ HTTPServer prometheusServer =
     HTTPServer.builder().port(prometheusPort).buildAndStart();
 ```
 
-> [!NOTE] 
+> [!NOTE]
 >
 > This is intentionally included to illustrate a **common pattern during
 > OTel adoption**: organizations frequently already own significant Prometheus
@@ -146,13 +146,23 @@ receivers:
             - targets: ['ad:${env:AD_PROMETHEUS_PORT}']
 ```
 
-> [!TIP] 
+> [!TIP]
 >
-> **Recommendation**: this is a _transitional_ pattern. Prefer the
-> OpenTelemetry SDK for new custom metrics, and migrate existing
-> Prometheus-client metrics to it -- incremental migration as you touch the
-> surrounding code has proven successful in practice, but a focused refactor
-> works too; what matters is that the migration happens.
+> **Recommendation**: treat this as a _transitional_ pattern. For new custom
+> metrics, use the OpenTelemetry SDK directly. For existing Prometheus-client
+> metrics, migrate incrementally as you touch the surrounding code, or in a
+> focused refactor.
+>
+> Common challenges when mixing OpenTelemetry and Prometheus telemetry:
+>
+> - **Identity misalignment**: `service.name` and `service.instance.id` may
+>   not align across the two pipelines.
+> - **Dual mental models**: Prometheus and OTel use different concepts (labels
+>   vs. attributes, different semantic conventions) with separate APIs,
+>   ingestion pipelines, and potentially different enrichment rules.
+> - **Inconsistent code**: mixing Prometheus client calls for older metrics
+>   with OTel API calls for newer ones leaves the codebase without a single
+>   idiomatic style.
 
 ### Current Metrics Produced
 
