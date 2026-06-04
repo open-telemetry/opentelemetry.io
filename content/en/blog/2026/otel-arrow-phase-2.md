@@ -202,7 +202,7 @@ reduces the cost of representing telemetry. The OTel-Arrow Dataflow Engine
 preserves that advantage through processing, scales it across cores, and keeps
 overload behavior visible and contained. For production telemetry pipelines,
 that predictability matters as much as raw throughput. OTAP is not only cheaper
-per operation; it also enables much higher throughput on the same runtime.
+per operation; it also enables much higher throughput on the same hardware.
 
 These comparisons should be read as measurements of the specific benchmark
 paths and configurations shown here, not as universal claims about every
