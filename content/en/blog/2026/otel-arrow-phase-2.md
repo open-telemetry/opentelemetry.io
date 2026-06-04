@@ -95,7 +95,7 @@ object-walk, allocation, and encode work, not the actual transformation itself.
 
 Most transformation benchmarks were run on an Intel Xeon Platinum 8581C system
 with 16 cores and 118 GiB of RAM, running Debian GNU/Linux 12. In those tests,
-one core was assigned to the system under test; the remaining cores were used by
+* a single core* was assigned to the system under test; the remaining cores were used by
 the traffic generator and simulated backend. Cores were pinned to keep placement
 stable and reduce cross-component interference. Scaling and saturation tests used
 a separate 64-core, 2-socket Intel Xeon 8358 system with 1024 GiB of RAM.
@@ -140,7 +140,7 @@ absorb it.
 
 Taken together, these results show that OTAP is not only about smaller payloads.
 It keeps processing cost low, benefits significantly from batching, and helps
-make overload behavior more predictable.
+make overload behavior more predictable by applying backpressure.
 
 The next two results separate two questions: first, whether the Dataflow Engine
 runtime scales when telemetry enters through OTLP, and second, how much more
