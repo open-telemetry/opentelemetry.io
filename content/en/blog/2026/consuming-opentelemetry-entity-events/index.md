@@ -144,46 +144,60 @@ $ ask "which switches did db-07 depend on last Tuesday — and what changed sinc
 No dashboard pivoting; the assistant reasons over a live, time-aware graph that
 came entirely from OTLP entity events.
 
-## Relationships: the edge of the spec — literally
+## Relationships are now in the spec
 
-Inventory is half the story; **topology** is the other half — "this process _runs
-on_ that host," "this interface _connects to_ that switch." Here's the catch: the
-OpenTelemetry Entity Data Model **does not model entity-to-entity relationships
-yet**.
-[OTEP 0256](https://github.com/open-telemetry/oteps/blob/main/text/entities/0256-entities-data-model.md)
-lists relationships as explicit _Future Work_, citing exactly cases like "Process
-runs on Host."
+Inventory is half the story; **topology** is the other half — "this service
+_depends on_ that database," "this process _runs on_ that host." When this post
+was first drafted, relationships were still future work; since then, an
+**approved** entity-events specification
+([opentelemetry-specification#4836](https://github.com/open-telemetry/opentelemetry-specification/pull/4836),
+pending merge) models them directly.
 
-A graph consumer needs edges today, so one pragmatic approach is a
-**vendor-neutral, non-standard extension** that never pretends to be standard
-OTel. It can ride the same log-record convention under an `entity.relation.*`
-namespace:
+Relationships are **embedded in an entity's state event** as an
+`entity.relationships` array. Each descriptor names a relationship `type` and the
+target entity (its `entity.type` and `entity.id`); direction is
+`source --[type]--> target`, and the types are an open enumeration (`depends_on`,
+`contains`, …):
 
 ```text
-# A relationship — a vendor-neutral entity.relation.* extension
+# Relationships ride inside an entity-state event (approved spec, #4836)
 LogRecord
   attributes:
-    entity.relation.event.type: state                   # or delete
-    entity.relation.type:       runs_on
-    entity.relation.from.type:  process
-    entity.relation.from.id:    { process.pid: 1287, process.creation.time: "2026-05-26T08:00:00Z" }
-    entity.relation.to.type:    host
-    entity.relation.to.id:      { host.name: web-server-1 }
+    otel.entity.event.type: entity_state
+    otel.entity.type:       service.instance
+    otel.entity.id:         { service.instance.id: checkout-1 }
+    entity.relationships:
+      - type:        depends_on
+        entity.type: service.instance
+        entity.id:   { service.instance.id: payments-1 }
 ```
 
-The namespace is a deliberate choice: _not_ `otel.entity.relationship.*` (that
-would squat a reserved OTel namespace before the spec exists), and _not_ a
-vendor-specific prefix (a neutral name lets any producer and any consumer speak
-it). It is shaped to map 1:1 onto the eventual relationships standard. A relation
-record also carries **no `otel.entity.*` attribute at all** — its lifecycle rides
-the neutral `entity.relation.event.type`, so a standard OTel entity-events
-consumer cleanly ignores it instead of choking on a malformed-looking entity
-event.
+The edges travel with the entity that owns them, not as separate events: removing
+a relationship is just the source re-emitting its state without that descriptor. A
+consumer building a temporal graph reads each state event, upserts the entity, and
+reconciles its outgoing edges — gaining and losing relationships as the array
+changes over time, which slots into the same change taxonomy as attribute updates.
 
-This is exactly the kind of thing that belongs upstream. If you care about
-inventory and topology semantics in OpenTelemetry, relationships are an open
-design area — and reference consumers exercising real queries are a good way to
-pressure-test proposals.
+## Why a graph: it joins your other signals
+
+The point of all this isn't a standalone inventory — it's leverage on the
+telemetry you already have. OpenTelemetry carries entities on the **Resource**, so
+the same entities you're tracking are already attached to your metrics, logs, and
+traces. The inventory and topology graph becomes the **join key** across them:
+
+- **Scope, not scrape.** Use the graph to decide _which_ signals to pull — the
+  entities and the slice of topology you actually care about — instead of querying
+  blindly.
+- **Correlate by entity.** Tie a metric spike, a log line, and a trace to the same
+  host, process, or service because they share an entity identity, not because you
+  hand-matched labels.
+- **Follow the edges.** Relationships (`depends_on`, `runs_on`) turn correlation
+  into blast-radius reasoning: when `db-07` degrades, the graph points you at the
+  upstream services whose traces and metrics to look at first.
+
+A live, time-aware graph of what exists and how it connects is what lets you ask
+those questions of the rest of your observability data — and answer them as of any
+point in time.
 
 ## Keep the producer side generic
 
@@ -220,13 +234,16 @@ A consumer that wants to be a source of truth has to face some realities:
   in descriptive attributes so history survives change.
 - Expose the graph for both humans (GraphQL) and assistants (MCP); the
   natural-language query story is a strong reason to care.
-- Relationships aren't in the spec yet — a great place to contribute.
+- Relationships now have an approved spec — embedded in each entity's state event.
+- Entities ride on the Resource, so the graph is a join key for your existing
+  metrics, logs, and traces.
 
 ## Get involved
 
 - Read the [Entity Data Model](/docs/specs/otel/entities/data-model/) and
   [OTEP 0256](https://github.com/open-telemetry/oteps/blob/main/text/entities/0256-entities-data-model.md),
   then join the conversation in the OpenTelemetry **Entities SIG** and **Semantic
-  Conventions** — relationships are open design space.
+  Conventions** — the entity-events and relationships work is approved and still
+  moving (identity scope and more are in flight).
 
 _Thanks to the Entities SIG for the spec work this builds on._
