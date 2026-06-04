@@ -126,8 +126,8 @@ HTTPServer prometheusServer =
 
 > [!NOTE]
 >
-> This is intentionally included to illustrate a **common pattern during
-> OTel adoption**: organizations frequently already own significant Prometheus
+> This is intentionally included to illustrate a **common pattern during OTel
+> adoption**: organizations frequently already own significant Prometheus
 > instrumentation -- in libraries, third-party exporters, or legacy services --
 > and want to ingest those metrics into an OpenTelemetry-native pipeline without
 > rewriting everything upfront. The Collector's `prometheus` receiver is the
@@ -155,14 +155,14 @@ receivers:
 >
 > Common challenges when mixing OpenTelemetry and Prometheus telemetry:
 >
-> - **Identity misalignment**: `service.name` and `service.instance.id` may
->   not align across the two pipelines.
+> - **Identity misalignment**: `service.name` and `service.instance.id` may not
+>   align across the two pipelines.
 > - **Dual mental models**: Prometheus and OTel use different concepts (labels
 >   vs. attributes, different semantic conventions) with separate APIs,
 >   ingestion pipelines, and potentially different enrichment rules.
-> - **Inconsistent code**: mixing Prometheus client calls for older metrics
->   with OTel API calls for newer ones leaves the codebase without a single
->   idiomatic style.
+> - **Inconsistent code**: mixing Prometheus client calls for older metrics with
+>   OTel API calls for newer ones leaves the codebase without a single idiomatic
+>   style.
 
 ### Current Metrics Produced
 
