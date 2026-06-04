@@ -152,9 +152,11 @@ scenario. With that setting, Collector memory grows sharply under saturation
 while received throughput drops. Higher Collector memory limits improve received
 throughput: at 2x saturation, a 2048 MiB limit receives about 544K logs/sec
 versus about 128K logs/sec with a 512 MiB limit, but average memory rises to
-about 1.3 GiB. The Dataflow Engine keeps memory bounded even when overloaded as
-it applies backpressure, making overload visible instead of letting memory
-absorb it.
+about 1.3 GiB. The higher limit lets the Collector keep more work in memory while
+CPU is saturated, which improves received throughput but shifts more of the
+overload cost into memory usage. The Dataflow Engine keeps memory bounded even
+when overloaded as it applies backpressure, making overload visible instead of
+letting memory absorb it.
 
 Taken together, these results show that OTAP is not only about smaller payloads.
 It keeps processing cost low, benefits significantly from batching, and helps
