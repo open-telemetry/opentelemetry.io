@@ -296,6 +296,7 @@ production-usable release, with significant improvements in several areas:
 - **Ecosystem validation and guidance**: collaboration with the OpenTelemetry
   Demo and relevant Blueprint efforts to validate OTAP and the Dataflow Engine
   in realistic end-to-end scenarios.
+- **OpenTelemetry Profiles**: add support for OpenTelemetry profiles in the OTAP representation.
 
 OPL, or OpenTelemetry Processing Language, is currently being specified and
 implemented. It is intended to be stream-oriented, strongly typed, and safe for
