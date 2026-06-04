@@ -2,8 +2,7 @@
 title: バゲッジ
 weight: 4
 description: シグナル間でやり取りされるコンテキスト情報
-default_lang_commit: 458f7c58d64f19b075332989bcbf5bff1a343b82
-drifted_from_default: true
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 ---
 
 OpenTelemetryでは、バゲッジ（Baggage）はコンテキストの隣にあるコンテキスト情報です。
