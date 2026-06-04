@@ -65,7 +65,7 @@ HTTP リクエストの自動タイムアウトを有効にするには、この
 ```yaml
 ebpf:
   maps_config:
-    global_scale_factor: 1 # Double the default map sizes
+    global_scale_factor: 1 # デフォルトのマップサイズを2倍にする
 ```
 
 これは、リソース制約のために eBPF メモリ使用量の慎重なチューニングが必要となるコンテナ化された環境や Kubernetes 環境で特に有用です。
