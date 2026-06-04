@@ -149,10 +149,17 @@ throughput is available when the same runtime can stay on the native OTAP path.
 Figure 2: OTLP scaling test comparing measured speedup with ideal linear
 scaling from 1 to 16 cores.
 
-The second diagram looks at the runtime architecture itself. In this OTLP
-scaling test, the OTel-Arrow Dataflow Engine was evaluated from 1 core to 16
-cores. The measured result reached 14.6x acceleration on 16 cores, very close to
-the ideal 16x line, and reached 1.91M logs/sec on 16 cores.
+The second diagram demonstrates how well the Dataflow Engine uses available
+CPU cores. The thread-per-core, share-nothing architecture avoids
+synchronization primitives in hot paths, so additional cores translate into
+additional throughput with minimal coordination overhead. In this test,
+telemetry enters as OTLP, meaning each batch must be decoded and converted
+before processing — a deliberate choice to show scaling under realistic
+conversion cost rather than an ideal Arrow-only workload. Even so, the engine
+reaches 14.6x speedup on 16 cores, close to the ideal 16x line, and 1.91M
+logs/sec overall. If a single core handles throughput N, sixteen cores deliver
+close to 16N. For operators, this means vertical scaling is effective — a
+benefit that complements the horizontal scaling most pipelines already rely on.
 
 This result separates the runtime question from the protocol question. In this
 test, telemetry enters as OTLP and must be decoded and converted before
