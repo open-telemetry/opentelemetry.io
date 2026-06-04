@@ -5,7 +5,7 @@ date: '2026-05-28'
 author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
 sig: End-User
 # prettier-ignore
-cSpell:ignore: actioned Autoscaler filestorage k8sattributes kube loadbalancing memorylimiter OTTL overprovision rollouts SDLC signaltometrics Skyscanner spanmetrics statefulset tailsampling
+cSpell:ignore: actioned Autoscaler kube OTTL overprovision rollouts SDLC Skyscanner statefulset
 ---
 
 ## Summary
@@ -523,8 +523,8 @@ platform teams may consider different options, including:
   processor configuration must be duplicated across Gateways unless managed
   through external templating tools.
 - **Multiple memory limiters on a single Gateway:** Defining separate
-  [memorylimiter][14] configurations per signal, with different thresholds. This
-  relies on the OTLP receiver in front of a `memorylimiter` returning a
+  [memory_limiter][14] configurations per signal, with different thresholds. This
+  relies on the OTLP receiver in front of a `memory_limiter` returning a
   retryable error code to OTLP clients (e.g. SDKs or other Collectors) when
   telemetry is refused, applying backpressure as required. Pipelines with lower
   priority can then be configured with lower memory limiter thresholds in order
@@ -534,7 +534,7 @@ platform teams may consider different options, including:
 Platform engineers should make use of [internal Collector telemetry][15] to
 ensure the reliability of the data ingested, processed, and exported by their
 pipelines, and optimize their configuration accordingly. This includes
-configuring components like the `memorylimiter`, or OTLP options like
+configuring components like the `memory_limiter`, or OTLP options like
 `sending_queue` or `retry_on_failure`. These metrics should be used to avoid
 default CPU-based autoscaling of Collector Gateways, scaling fleets based on
 pipeline queue depth or memory consumption, to handle sudden telemetry spikes.
@@ -698,7 +698,7 @@ to the application layer, avoiding compute and transfer costs. However,
 deferring processing decisions to different Collector layers may be desirable in
 certain situations, such as facilitating maintenance, enforcing standards,
 performing advanced filtering/transformations with [OTTL][24], aggregating
-signals into metrics (e.g. [spanmetrics][25] or [signaltometrics][26]
+signals into metrics (e.g. [span_metrics][25] or [signal_to_metrics][26]
 connectors), or securing pipelines with [redaction][27] rules to ensure
 sensitive information never reaches a particular backend.
 
@@ -870,22 +870,22 @@ architectural considerations for enterprise workloads:
 Regardless of the deployment tool chosen, the Gateway tier is a critical point,
 and owners should ensure resiliency is configured from the start:
 
-- **Configure [memorylimiter][44]**: As the first processor in Collector
+- **Configure [memory_limiter][44]**: As the first processor in Collector
   pipelines, this prevents Out-of-Memory (OOM) crashes during massive telemetry
   spikes by forcing the Collector to drop data and/or apply backpressure when
   memory usage hits a configured threshold. As mentioned in [Guideline
-  3][guideline-3], different `memorylimiter` processors per signal may be
+  3][guideline-3], different `memory_limiter` processors per signal may be
   required.
-- **Configure [OTLP exporter][45]:** Ensure queues and retries are aligned with
+- **Configure [otlp][45] or [otlp_http][67] exporter:** Ensure queues and retries are aligned with
   expectations on reliability vs resource consumption, handling transient
   backend failures before dropping data. In particular, consider `sending_queue`
   options like `block_on_overflow` which controls if the Collector should drop
   data or wait until space becomes available if the queue (persistent or
   in-memory) is full.
-- **Consider [filestorage][46] extension**: If dropping data on extended
+- **Consider [file_storage][46] extension**: If dropping data on extended
   observability backend service interruptions is critical to the functioning of
   the business, consider configuring `sending_queue.storage` in your OTLP
-  exporter with the [filestorage][46] extension. With this extension configured,
+  exporter with the [file_storage][46] extension. With this extension configured,
   if the backend is unavailable or rate-limits exports, the Collector will
   buffer data to disk and automatically retry, preventing data loss.
   - **Note:** While this mechanism provides added completeness guarantees, it
@@ -897,7 +897,7 @@ and owners should ensure resiliency is configured from the start:
     etc).
   - **Note**: Enabling persistent queues delays backpressure propagation to
     downstream clients. Data is buffered to disk before memory pressure builds,
-    meaning the `memorylimiter` will not trigger early backpressure. Once the
+    meaning the `memory_limiter` will not trigger early backpressure. Once the
     persistent queue is full, the pipeline will block and the receiver will
     return retryable errors (e.g. `429`) to clients, signaling backpressure.
     Operators must size the persistent queue and monitor disk usage accordingly.
@@ -922,7 +922,7 @@ costs from low-value telemetry data, and enforce compliance before data leaves
 the corporate network, the platform team should consider configuring pipelines
 in Collector Gateways to execute the following processing steps (in order):
 
-- [**k8sattributes**][47] **processor:** While some Kubernetes resource details
+- [**k8s_attributes**][47] **processor:** While some Kubernetes resource details
   (like pod ID or namespace name) can be appended at the application level (see
   [Action 2][action-2]), the platform team must ensure 100% compliance for
   unmanaged workloads. This includes fields not available via the Downward API.
@@ -932,7 +932,7 @@ in Collector Gateways to execute the following processing steps (in order):
   - **Note:** If using a proxy, ensure pass-through mode is enabled on the proxy
     so the Gateway sees the original Pod IP of the application, not the proxy's
     IP. Alternatively, inject fields available via Downward API (e.g.
-    `k8s.pod.uid`) at the SDK level and use `k8sattributes` pod association
+    `k8s.pod.uid`) at the SDK level and use `k8s_attributes` pod association
     rules to match the incoming data with a given Pod.
   - **Note:** When using this processor, the `ServiceAccount` used by the
     Collector must be granted RBAC `get`, `watch`, and `list` permissions on the
@@ -951,16 +951,16 @@ in Collector Gateways to execute the following processing steps (in order):
     less useful in Kubernetes environments where these attributes are present in
     CI/CD pipelines.
   - Any other processing to remove low-value, noisy telemetry.
-- [**spanmetrics**][25] **or [signaltometrics][26] connectors:** Ensure
+- [**span_metrics**][25] **or [signal_to_metrics][26] connectors:** Ensure
   completeness of golden signals (i.e. R.E.D. metrics) from applications, even
   if traces are heavily sampled upstream, especially if the SDK or client/server
   libraries cannot produce these metrics. Route the raw trace stream through
   these connectors before any sampling occurs.
-- [**tailsampling**][52] **processor:** Define strict retention policies, for
+- [**tail_sampling**][52] **processor:** Define strict retention policies, for
   instance keeping 100% of traces containing errors or exceeding a latency
   threshold, and a small baseline (e.g., 5%) of successful, normal-duration
   requests. As documented in [Guideline 4][guideline-4], this requires two
-  layers of collectors, using the [loadbalancing][53] exporter on the first
+  layers of collectors, using the [load_balancing][53] exporter on the first
   layer to route traces to the second layer based on Trace ID. See more
   information about load balancing exporting in our [documentation][54].
 
@@ -1109,7 +1109,7 @@ use client-side load balancing, or consider using HTTP/protobuf (see [Action
 [12]: /docs/specs/semconv/otel/sdk-metrics/
 [13]: /docs/collector/deploy/gateway/
 [14]:
-  https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor
+  https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor/README.md
 [15]: /docs/collector/internal-telemetry/
 [16]: /docs/specs/otel/metrics/#programming-model
 [17]: /docs/specs/otel/trace/api/#span-creation
@@ -1118,17 +1118,17 @@ use client-side load balancing, or consider using HTTP/protobuf (see [Action
 [20]: /docs/specs/otel/logs/sdk/#loggerprovider
 [21]: /docs/concepts/sampling/
 [22]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor/README.md
 [23]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor/README.md
 [24]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md
 [25]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector/README.md
 [26]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/signaltometricsconnector
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/signaltometricsconnector/README.md
 [27]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor/README.md
 [28]:
   https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/compatibility.md#compatibility-matrix
 [29]:
@@ -1152,25 +1152,25 @@ use client-side load balancing, or consider using HTTP/protobuf (see [Action
 [42]: /docs/platforms/kubernetes/helm/
 [43]: /docs/platforms/kubernetes/operator/horizontal-pod-autoscaling/
 [44]:
-  https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor
+  https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor/README.md
 [45]:
-  https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter#getting-started
+  https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter#getting-started/README.md
 [46]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/storage/filestorage
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/storage/filestorage/README.md
 [47]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor/README.md
 [48]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor/README.md
 [49]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor/README.md
 [50]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourceprocessor
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourceprocessor/README.md
 [51]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor/README.md
 [52]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
+https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor/README.md
 [53]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter/README.md
 [54]: /docs/collector/deploy/gateway/#load-balancing-exporter
 [55]: /docs/collector/components/processor/
 [56]: /docs/collector/components/connector/
@@ -1185,3 +1185,5 @@ use client-side load balancing, or consider using HTTP/protobuf (see [Action
 [64]: https://kubernetes.io/docs/concepts/workloads/pods/downward-api/
 [65]: /docs/specs/otel/trace/sdk/#tracerprovider
 [66]: /docs/specs/otel/metrics/sdk/#exemplar
+[67]:
+  https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/otlphttpexporter/README.md
