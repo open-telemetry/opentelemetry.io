@@ -52,11 +52,14 @@ OTAP-direct path that keeps telemetry in Arrow record batches, and an
 OTLP-compatible path that converts between OTLP and OTAP at explicit boundaries.
 The result is clear: when telemetry stays on the OTAP path end to end, transport
 and processing costs drop substantially.
-  
-The current Collector remains the broadly deployed, general-purpose
-OpenTelemetry Collector implementation. The purpose of this work is to explore
-what becomes possible when a telemetry data plane is designed around an
-Arrow-native representation and a bounded runtime model.
+
+The OpenTelemetry Collector is the broadly deployed, general-purpose
+implementation for OpenTelemetry pipelines. Its pipeline model is built around
+OTLP-shaped in-memory data structures, which makes it flexible and closely
+aligned with the OpenTelemetry data model, but also relatively expensive for
+high-volume batch processing. The purpose of this work is to test a different
+design point: a telemetry data plane built around OTAP as the primary data
+representation, with OTLP compatibility handled at explicit boundaries. 
 
 The Dataflow Engine uses a [NUMA-friendly](https://www.kernel.org/doc/html/v4.18/vm/numa.html),
 [thread-per-core, share-nothing](https://seastar.io/shared-nothing/)
