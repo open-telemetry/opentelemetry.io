@@ -98,7 +98,9 @@ with 16 cores and 118 GiB of RAM, running Debian GNU/Linux 12. In those tests,
 * a single core* was assigned to the system under test; the remaining cores were used by
 the traffic generator and simulated backend. Cores were pinned to keep placement
 stable and reduce cross-component interference. Scaling and saturation tests used
-a separate 64-core, 2-socket Intel Xeon 8358 system with 1024 GiB of RAM.
+a separate 64-core, 2-socket Intel Xeon 8358 system with 1024 GiB of RAM. See our 
+[benchmark documentation](TODO) for a complete description of our experimental
+setup, including how we configured back-pressure for each of the tested pipelines.
 
 ## Result 1: OTAP Keeps Common Pipeline Work Cheap
 
