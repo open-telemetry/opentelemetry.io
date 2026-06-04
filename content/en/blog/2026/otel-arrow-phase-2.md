@@ -94,14 +94,17 @@ inexpensive; and they often are. But the cost is often the surrounding decode,
 object-walk, allocation, and encode work, not the actual transformation itself.
 
 Most transformation benchmarks were run on an Intel Xeon Platinum 8581C system
-with 16 cores and 118 GiB of RAM, running Debian GNU/Linux 12. In those tests,
-* a single core* was assigned to the system under test; the remaining cores were used by
-the traffic generator and simulated backend. Cores were pinned to keep placement
-stable and reduce cross-component interference. Scaling and saturation tests used
-a separate 64-core, 2-socket Intel Xeon 8358 system with 1024 GiB of RAM. See our 
-[benchmark documentation](TODO) for a complete description of our experimental
-setup, including how we configured back-pressure for each of the tested pipelines.
-
+with 16 cores and 118 GiB of RAM, running Debian GNU/Linux 12; see the
+[interactive benchmark website](https://open-telemetry.github.io/otel-arrow/compare/)
+for full environment details. In these tests, *a single core* was assigned to
+the pipeline under test, while the remaining cores were used by the traffic
+generator and simulated backend. Cores were pinned to keep placement stable and
+reduce cross-component interference. Scaling and saturation tests used a
+separate 64-core, 2-socket Intel Xeon 8358 system with 1024 GiB of RAM. See the
+[benchmark documentation](https://github.com/open-telemetry/otel-arrow/blob/main/docs/benchmarks.md)
+for the full experimental setup, including how back-pressure was configured for
+each tested pipeline.
+  
 ## Result 1: OTAP Keeps Common Pipeline Work Cheap
 
 ![3 benchmark takeaways](otel-arrow-phase-2/3_takeaways.svg)
