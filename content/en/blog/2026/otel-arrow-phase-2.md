@@ -107,7 +107,7 @@ a separate 64-core, 2-socket Intel Xeon 8358 system with 1024 GiB of RAM.
 Figure 1: Summary of transformation benchmarks showing sensitivity to the count of transformation rules,
 batch-size behavior, and overload behavior.
 
-The above diagram summarizes three important observations from the
+The diagram above summarizes three important observations from the
 transformation benchmarks.
 
 The first observation shows that adding more rename actions has very little
