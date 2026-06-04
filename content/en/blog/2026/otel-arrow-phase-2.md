@@ -247,7 +247,7 @@ production-usable release, with significant improvements in several areas:
   resource governance, live reconfiguration with rollback support, and
   possible OpAMP support.
 - **Core component ecosystem**: receivers, processors, exporters, and extensions
-  covering the majority of common telemetry pipelines, implemented in Rust and
+  covering the majority of common telemetry pipelines,
   maintained within OpenTelemetry.
 - **Extensibility and processing**: a WASM-based extension model for specialized
   components, including exploration of how selected existing OpenTelemetry
