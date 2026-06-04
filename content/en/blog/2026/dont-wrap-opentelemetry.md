@@ -23,6 +23,15 @@ The intention is genuine. The outcome is usually not good.
 I'll use .NET and Rust metrics as concrete examples here, but the anti-patterns
 apply across every OpenTelemetry language SDK and signal type.
 
+To be clear: this post is about wrapping the
+[OTel API](/docs/specs/otel/overview/) — the instrumentation surface your
+application or library code calls to create logs, metrics, and traces. It's
+perfectly reasonable for organizations to provide shared helpers that configure
+the [SDK](/docs/specs/otel/glossary/#telemetry-sdk) — setting up exporters,
+sampling policies, resource attributes, and so on. That's infrastructure setup,
+not an API wrapper, and it doesn't interfere with how developers instrument
+their code.
+
 ## What the wrapper looks like
 
 The wrapper typically starts small and reasonable. In C#:
@@ -78,8 +87,8 @@ var tags = new TagList
 histogram.Record(value, tags);
 ```
 
-In Rust, the OTel API takes a borrowed slice of `KeyValue` — no `Vec` allocation
-required:
+In Rust, the OTel API takes a borrowed slice of `KeyValue` — the examples below
+use a stack-allocated array, no heap allocation needed:
 
 ```rust
 histogram.record(value, &[KeyValue::new("status", "ok")]);
