@@ -18335,10 +18335,6 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-02T18:16:25.128688561Z"
   },
-  "https://hydrolix.io/": {
-    "StatusCode": 202,
-    "LastSeen": "2026-06-02T18:17:04.943529787Z"
-  },
   "https://hyper.rs/": {
     "StatusCode": 200,
     "LastSeen": "2026-06-02T18:10:53.511912913Z"
