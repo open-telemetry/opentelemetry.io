@@ -3,6 +3,7 @@ title: 機微データの取り扱い
 description: OpenTelemetryにおける機微データの取り扱いに関するベストプラクティスとガイダンス
 weight: 100
 default_lang_commit: 5b82e8f9c057d4d4961d41091a4bc75fc9b5b37c
+drifted_from_default: true
 ---
 
 OpenTelemetryを計装する際には、機密データの取り扱いに注意することが重要です。
