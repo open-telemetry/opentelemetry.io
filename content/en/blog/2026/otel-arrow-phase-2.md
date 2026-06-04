@@ -271,11 +271,6 @@ intentional: the goal is to stabilize the engine once the architecture,
 operational model, and integration boundaries are fully validated, rather than
 freezing interfaces too early.
 
-That does not mean reproducing the Collector's configuration, pipeline, or
-operational semantics one-for-one. The goal is to define semantics that fit a
-bounded, columnar runtime, then make the integration points with the broader
-OpenTelemetry ecosystem explicit.
-
 ## Phase 3
 
 Phase 3 is currently under discussion. It is expected to target a first stable,
