@@ -93,8 +93,12 @@ routing, governance, and enrichment. Individually, these operations should be
 inexpensive; and they often are. But the cost is often the surrounding decode,
 object-walk, allocation, and encode work, not the actual transformation itself.
 
-The benchmarks shown here were run on an Intel Xeon Platinum 8581C system with
-16 cores and 118 GiB of RAM, running Debian GNU/Linux 12.
+Most transformation benchmarks were run on an Intel Xeon Platinum 8581C system
+with 16 cores and 118 GiB of RAM, running Debian GNU/Linux 12. In those tests,
+one core was assigned to the system under test; the remaining cores were used by
+the traffic generator and simulated backend. Cores were pinned to keep placement
+stable and reduce cross-component interference. Scaling and saturation tests used
+a separate 64-core, 2-socket Intel Xeon 8358 system with 1024 GiB of RAM.
 
 ## Result 1: OTAP Keeps Common Pipeline Work Cheap
 
@@ -165,9 +169,14 @@ Figure 3: Throughput comparison between OTAP and OTLP paths on the OTel-Arrow
 Dataflow Engine.
 
 The third diagram compares OTAP and OTLP throughput on the same Dataflow Engine
-runtime. At 8 cores, the OTAP path reaches 14.1M logs/sec, while the OTLP path
-reaches 1.03M logs/sec. That is about 13.7x higher throughput for OTAP in this
-test.
+runtime, using the same number of cores. When both input and output are OTAP,
+the engine pays no conversion cost - telemetry stays in its Arrow-native
+representation from ingestion through processing to export. When input is OTLP,
+the engine must decode and convert each batch before processing, and convert
+back on the way out. That conversion boundary is the entire difference between
+the two paths, and eliminating it makes OTAP consistently more than 10x faster
+than OTLP on the same runtime. At 1 core, the OTAP path reaches 2.47M logs/sec
+while the OTLP path reaches 121K logs/sec.
 
 This result shows the effect of removing the OTLP conversion boundary. OTAP
 avoids heavy OTLP transcoding and lets the Arrow-native engine process data
