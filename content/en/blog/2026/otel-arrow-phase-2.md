@@ -122,21 +122,24 @@ The OTel Collector OTLP path represents the current Collector. It pays the high
 up-front cost of decoding OTLP proto and then a further 3.75% CPU per operation
 for a total of 92.5% CPU after four operations.
 
-The second observation shows that at 400K logs/sec, larger batches reduce CPU cost for every path, but the OTAP
-path benefits the most. It drops from 21% CPU at 256 logs per batch to 7.8% at
-4096 logs per batch, which is the expected behavior for a compact, columnar,
-batch-oriented representation.
+The second observation shows that at 400K logs/sec, larger batches reduce CPU
+cost for every path, but the OTAP path benefits the most. It drops from 21% CPU
+at 256 logs per batch to 7.8% at 4096 logs per batch, which is the expected
+behavior for a compact, columnar, batch-oriented representation.
 
-The third observation is about overload behavior. In the overload scenario, the
-Dataflow Engine keeps memory under control, while the Collector OTLP path grows
-from 95 MiB to 14 GiB as saturation increases from 1x to 2x. This is not only a
-protocol result. It also reflects the importance of bounded execution, explicit
-flow control, and making overload visible rather than allowing memory to absorb
-it.
+The third observation is about overload behavior. The figure shows the Collector
+OTLP path with a 512 MiB memory limit, chosen to keep the memory budget in the
+same range as the Dataflow Engine OTLP path, which uses about 300 MiB in this
+scenario. With that setting, Collector memory grows sharply under saturation
+while received throughput drops. Higher Collector memory limits improve received
+throughput: at 2x saturation, a 2048 MiB limit receives about 544K logs/sec
+versus about 128K logs/sec with a 512 MiB limit, but average memory rises to
+about 1.3 GiB. The Dataflow Engine keeps memory bounded in the same overload
+scenario, making overload visible instead of letting memory absorb it.
 
 Taken together, these results show that OTAP is not only about smaller payloads.
-It keeps processing cost low, benefits significantly from batching, and helps make overload
-behavior more predictable.
+It keeps processing cost low, benefits significantly from batching, and helps
+make overload behavior more predictable.
 
 The next two results separate two questions: first, whether the Dataflow Engine
 runtime scales when telemetry enters through OTLP, and second, how much more
