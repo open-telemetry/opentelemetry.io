@@ -54,7 +54,7 @@ OTLP/HTTP を使用している場合は、通常 `v1/traces` で終わります
 
 ### `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` {#otel_exporter_otlp_metrics_endpoint}
 
-オプションでポート番号を指定することができます。
+メトリクスデータ専用のエンドポイントURLであり、オプションでポート番号を指定することができます。
 OTLP/HTTP を使用する場合は、通常 `v1/metrics` で終わります。
 
 **デフォルト値:**
