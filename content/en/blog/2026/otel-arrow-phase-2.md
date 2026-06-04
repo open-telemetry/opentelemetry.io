@@ -28,7 +28,7 @@ also as the representation the pipeline works with internally?
 Telemetry volume is increasing quickly, driven by broader OpenTelemetry
 adoption, richer instrumentation, and more dynamic AI and agentic workloads. At
 that scale, common pipeline operations such as removing an attribute, renaming a
-field, adding metadata, or routing signals need to stay cheap. Many of these
+field, adding metadata, or routing signals should cost as little as possible. Many of these
 operations are simple and repetitive: if a processor touches an attribute in one
 record, it will often touch the same attribute across many records in the same
 batch.
