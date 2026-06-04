@@ -180,7 +180,7 @@ Figure 3: Throughput comparison between OTAP and OTLP paths on the OTel-Arrow
 Dataflow Engine.
 
 The third diagram compares OTAP and OTLP throughput on the same Dataflow Engine
-runtime, using the same number of cores. When both input and output are OTAP,
+, using the same number of cores. When both input and output are OTAP,
 the engine pays no conversion cost - telemetry stays in its Arrow-native
 representation from ingestion through processing to export. When input is OTLP,
 the engine must decode and convert each batch before processing, and convert
