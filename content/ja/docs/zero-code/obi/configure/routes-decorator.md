@@ -146,7 +146,7 @@ URL パスパターンが一定の構造に従っており、一意の ID が数
 以下の両方の URL パスは:
 
 ```text
-document/d/CfMkAGbE_aivhFydEpaRafPuGWbmHfG/edit (no numbers in the ID)
+document/d/CfMkAGbE_aivhFydEpaRafPuGWbmHfG/edit (IDに数字を含まない)
 document/d/C2fMkAGb3E_aivhFyd5EpaRafP123uGWbmHfG/edit
 ```
 
