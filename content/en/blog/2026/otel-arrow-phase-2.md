@@ -255,7 +255,7 @@ production-usable release, with significant improvements in several areas:
   a new OTAP-native transform processor with OTTL-compatible transformations and
   the experimental OPL language.
 - **SDK-level OTAP export**: prototyping OTAP exporters in OpenTelemetry SDKs,
-  starting with Rust, to evaluate how much efficiency is gained when telemetry
+  starting with OTel Rust, to evaluate how much efficiency is gained when telemetry
   starts in an Arrow-friendly representation at the SDK boundary instead of being
   converted later in the pipeline.
 - **Ecosystem validation and guidance**: collaboration with the OpenTelemetry
