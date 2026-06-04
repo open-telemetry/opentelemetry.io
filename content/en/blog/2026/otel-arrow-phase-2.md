@@ -75,11 +75,12 @@ The Phase 2 benchmarks were designed to answer three practical questions:
 - How much additional throughput does native OTAP provide compared with OTLP
   using the same amount of resources?
 
-Rather than walk through the full benchmark matrix in this post, we focus on
-three summary diagrams that capture the most important results. The
-[interactive benchmark](https://open-telemetry.github.io/otel-arrow/compare/)
+A full matrix of benchmark results is included in a companion to this
+post—here we focus on three summary diagrams that capture the most 
+important results. The [interactive benchmark](https://open-telemetry.github.io/otel-arrow/compare/)
 site provides the complete view, including additional rates, batch sizes,
-compression settings, memory behavior, network usage, and saturation markers.
+compression settings, memory behavior, network usage, and saturation markers
+and the test configurations used.
 
 ### Benchmark Context
 
