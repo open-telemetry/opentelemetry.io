@@ -362,9 +362,11 @@ flowchart TD
     subgraph Application["Application"]
         AppCode["💼<br>Biz Logic"]:::node
         ThirdParty["👽<br>3rd-Party Libs"]:::node
-        InstLibs["📦<br>Instrumentation"]:::node
-        OTelSDK["📦<br>OTel SDK"]:::node
-        OTelAPI["📦<br>OTel API"]:::node
+        subgraph OTel["OpenTelemetry"]
+            InstLibs["📦<br>Instrumentation"]:::node
+            OTelSDK["📦<br>OTel SDK"]:::node
+            OTelAPI["📦<br>OTel API"]:::node
+        end
     end
 
     Sink[("🗄️ Observability Backend")]:::node
@@ -372,18 +374,19 @@ flowchart TD
     AppCode L_AppCode_API@-- Uses --> OTelAPI
     ThirdParty L_ThirdParty_API@-- Uses --> OTelAPI
     InstLibs L_InstLibs_API@-- Uses --> OTelAPI
-    OTelSDK L_SDK_API@-. Implements .-> OTelAPI
+    OTelAPI L_SDK_API@-. Implemented By .-> OTelSDK
 
     Config L_Config_InstLibs@-.-> InstLibs
     Config L_Config_SDK@-.-> OTelSDK
     OTelSDK L_SDK_Collector@-- Exports --> Collector
     Collector L_Collector_Sink@--> Sink
-    BaseConfig L_BaseConfig_Config@-.-> Config
+    BaseConfig L_BaseConfig_Config@-- Extended By --> Config
 
     classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
     style User fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
     style Platform fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
     style Application fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style OTel fill:#dde4ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
     linkStyle 0,1,2 stroke:#7dd3fc, fill:none, stroke-width:3px
     linkStyle 3,4,5,8 stroke:#fde68a, fill:none, stroke-width:3px
     linkStyle 6,7 stroke:#a3e635, fill:none, stroke-width:3px
