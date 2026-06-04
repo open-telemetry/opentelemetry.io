@@ -70,8 +70,8 @@ The Phase 2 benchmarks were designed to answer three practical questions:
 
 - Does keeping telemetry in an Arrow-native representation make real pipeline
   processing cheaper, or does OTAP only help on the wire?
-- Can the runtime architecture turn that advantage into stable throughput as
-  more CPU cores are assigned?
+- If so, can the runtime architecture itself sustain and scale that efficiency
+  linearly as more CPU cores are assigned?
 - How much additional throughput does native OTAP provide compared with OTLP
   using the same amount of resources?
 
