@@ -290,10 +290,11 @@ This leads to:
 
 ### 1. Centralize default, extensible configuration for SDKs and instrumentation packages {#guideline-1}
 
-**Challenges addressed**: 1, 4 **Implementation actions**: 1, 2
+**Challenges addressed**: [1](#challenge-1), [4](#challenge-4) |
+**Implementation actions**: [1](#action-1), [2](#action-2)
 
 We recommend teams in charge of observability tooling maintain a set of
-resources (see [Action 1][#action-1]) to provide basic, out-of-the-box
+resources (see [Action 1](#action-1)) to provide basic, out-of-the-box
 configuration for [SDKs][5] and [instrumentation libraries][6]. The aim is for
 applications deployed in a Kubernetes cluster to emit a basic level of
 telemetry, and to propagate context from and to dependencies, with minimal input
@@ -321,7 +322,8 @@ By implementing this guideline, organizations can expect to achieve:
 
 ### 2. Establish shared ownership for telemetry production {#guideline-2}
 
-**Challenges addressed**: 4, 5 **Implementation actions**: 1, 2, 5
+**Challenges addressed**: [4](#challenge-4), [5](#challenge-5) |
+**Implementation actions**: [1](#action-1), [2](#action-2), [5](#action-5)
 
 To balance governance and autonomy, platform teams operating in the environments
 described in this blueprint should aim to “shift left” on instrumentation,
@@ -444,7 +446,9 @@ By implementing this guideline, organizations can expect to achieve:
 
 ### 3. Maintain a set of centrally managed Collector Gateways {#guideline-3}
 
-**Challenges addressed**: 2, 3, 4 **Implementation actions**: 1, 3, 5
+**Challenges addressed**: [2](#challenge-2), [3](#challenge-3),
+[4](#challenge-4) | **Implementation actions**: [1](#action-1), [3](#action-3),
+[5](#action-5)
 
 We recommend that telemetry in this type of Kubernetes environment is
 automatically ingested into a centralized layer deployed as an OpenTelemetry
@@ -557,7 +561,8 @@ By implementing this guideline, organizations can expect to achieve:
 
 ### 4. Efficiently aggregate, process, and sample telemetry at different layers {#guideline-4}
 
-**Challenges addressed**: 3, 4 **Implementation actions**: 2, 4
+**Challenges addressed**: [3](#challenge-3), [4](#challenge-4) |
+**Implementation actions**: [2](#action-2), [4](#action-4)
 
 At an application level, OpenTelemetry client design decouples instrumentation
 APIs and their SDK implementations. This allows instrumentation authors
@@ -726,7 +731,7 @@ By implementing this guideline, organizations can expect to achieve:
 
 ### 1. Use OpenTelemetry Operator, or internal shared packages, for application-level configuration {#action-1}
 
-**Guidelines implemented:** 1
+**Guidelines implemented:** [1](#guideline-1)
 
 If the environment in scope is in the supported [Kubernetes versions][28] and
 [instrumented languages][29], we recommend prioritizing the use of the
@@ -768,7 +773,8 @@ SDK and instrumentation configuration.
 
 ### 2. Include organization standards into default, extensible application-level configuration {#action-2}
 
-**Guidelines implemented:** 1, 2, 4
+**Guidelines implemented:** [1](#guideline-1), [2](#guideline-2),
+[4](#guideline-4)
 
 Regardless of how the configuration is delivered as part of [Action
 1][#action-1], we recommend the platform team to include the following minimum
@@ -854,7 +860,7 @@ the baseline and how they can extend it:
 
 ### 3. Use OpenTelemetry Operator or Helm Charts to deploy Collector Gateways {#action-3}
 
-**Guidelines implemented:** 3
+**Guidelines implemented:** [3](#guideline-3)
 
 To deploy centralized Gateway tiers, platform teams should standardize on either
 the [OpenTelemetry Operator][30] or the official [OpenTelemetry Helm
@@ -921,7 +927,7 @@ and owners should ensure resiliency is configured from the start:
 
 ### 4. Configure Collector processors for efficient telemetry volumes {#action-4}
 
-**Guidelines implemented:** 4
+**Guidelines implemented:** [4](#guideline-4)
 
 To enrich telemetry with infrastructure context, reduce transfer and ingestion
 costs from low-value telemetry data, and enforce compliance before data leaves
@@ -975,7 +981,7 @@ value out of their telemetry data.
 
 ### 5. Monitor SDKs and Collectors to ensure reliability requirements {#action-5}
 
-**Guidelines implemented:** 2, 3
+**Guidelines implemented:** [2](#guideline-2), [3](#guideline-3)
 
 OpenTelemetry SDKs and Collectors export standard telemetry describing the
 internal state of their components in operation. Application owners and platform
