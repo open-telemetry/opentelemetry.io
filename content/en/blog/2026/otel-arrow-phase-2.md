@@ -6,13 +6,14 @@ sig: OTel Arrow SIG
 date: 2026-06-05
 author: >-
   [Laurent Querel](https://github.com/lquerel) (F5, project lead), [Joshua
-  MacDonald](https://github.com/jmacd) (Microsoft, project lead), [Reiley Yang](reyang@microsoft.com) (Microsoft, project sponsor), [Albert
+  MacDonald](https://github.com/jmacd) (Microsoft, project lead), [Reiley
+  Yang](mailto:reyang@microsoft.com) (Microsoft, project sponsor), [Albert
   Lockett](https://github.com/albertlockett) (F5), [Cijo
   Thomas](https://github.com/cijothomas) (Microsoft), [Drew
   Relmas](https://github.com/drewrelmas) (Microsoft), [Jake
   Dern](https://github.com/JakeDern) (F5)
 # prettier-ignore
-cSpell:ignore: Albert Cijo Dern Drew Jake Joshua Laurent Lockett MacDonald OTAP OTTL pushdown Querel Relmas reserialization Thomas
+cSpell:ignore: Albert Cijo Dern Drew Jake Joshua Laurent Lockett MacDonald OTAP OTTL pushdown Querel Reiley Relmas reserialization Thomas
 ---
 
 [Phase 1](https://github.com/open-telemetry/otel-arrow/blob/c6ed105cab28e537bf5c2c81a97e9b63677d3cff/docs/phase1-overview.md)
@@ -121,7 +122,7 @@ separate 64-core, 2-socket Intel Xeon 8358 system with 1024 GiB of RAM. See the
 for the full experimental setup, including how back-pressure was configured for
 each tested pipeline.
 
-## Result 1: OTAP Keeps Common Pipeline Work Cheap
+## Result 1: OTAP Keeps Processing Cheap, While Backpressure Bounds Overload
 
 ![3 benchmark takeaways](3-takeaways.svg)
 
@@ -148,22 +149,23 @@ cost for every path, but the OTAP path benefits the most. It drops from 21% CPU
 at 256 logs per batch to 7.8% at 4096 logs per batch, which is the expected
 behavior for a compact, columnar, batch-oriented representation.
 
-The third observation is about overload behavior. The figure shows the Collector
-OTLP path with a 512 MiB memory limit, chosen to keep the memory budget in the
-same range as the Dataflow Engine OTLP path, which uses about 300 MiB in this
-scenario. With that setting, Collector memory grows sharply under saturation
-while received throughput drops. Higher Collector memory limits improve received
-throughput: at 2x saturation, a 2048 MiB limit receives about 544K logs/sec
-versus about 128K logs/sec with a 512 MiB limit, but average memory rises to
-about 1.3 GiB. The higher limit lets the Collector keep more work in memory
-while CPU is saturated, which improves received throughput but shifts more of
-the overload cost into memory usage. The Dataflow Engine keeps memory bounded
-even when overloaded as it applies backpressure, making overload visible instead
-of letting memory absorb it.
+The third observation is about the engine's overload behavior. The figure shows
+the Collector OTLP path with a 512 MiB memory limit, chosen to keep the memory
+budget in the same range as the Dataflow Engine OTLP path, which uses about 300
+MiB in this scenario. With that setting, Collector memory grows sharply under
+saturation while received throughput drops. Higher Collector memory limits
+improve received throughput: at 2x saturation, a 2048 MiB limit receives about
+544K logs/sec versus about 128K logs/sec with a 512 MiB limit, but average
+memory rises to about 1.3 GiB. The higher limit lets the Collector keep more
+work in memory while CPU is saturated, which improves received throughput but
+shifts more of the overload cost into memory usage. The Dataflow Engine keeps
+memory bounded even when overloaded as it applies backpressure, making overload
+visible instead of letting memory absorb it.
 
-Taken together, these results show that OTAP is not only about smaller payloads.
-It keeps processing cost low, benefits significantly from batching, and helps
-make overload behavior more predictable by applying backpressure.
+Taken together, these results show two complementary effects: OTAP keeps
+processing cost low and benefits significantly from batching, while the Dataflow
+Engine's bounded execution model makes overload behavior more predictable by
+applying backpressure.
 
 The next two results separate two questions: first, whether the Dataflow Engine
 runtime scales when telemetry enters through OTLP, and second, how much more
@@ -177,7 +179,7 @@ Figure 2: OTLP scaling test comparing measured speedup with ideal linear scaling
 from 1 to 16 cores.
 
 The second diagram demonstrates how well the Dataflow Engine uses available CPU
-cores. The thread-per-core, share-nothing architecture avoids synchronization
+cores. The thread-per-core, shared-nothing architecture avoids synchronization
 primitives in hot paths, so additional cores translate into additional
 throughput with minimal coordination overhead. In this test, telemetry enters as
 OTLP, meaning each batch must be decoded and converted before processing — a
@@ -191,9 +193,9 @@ scaling most pipelines already rely on.
 This result separates the runtime question from the protocol question. In this
 test, telemetry enters as OTLP and must be decoded and converted before
 processing can happen. Even with that conversion cost, the thread-per-core,
-share-nothing architecture with bounded flow control is able to use the assigned
-CPU cores effectively. For operators, the practical result is vertical scaling:
-more cores translate into more throughput with limited efficiency loss.
+shared-nothing architecture with bounded flow control is able to use the
+assigned CPU cores effectively. For operators, the practical result is vertical
+scaling: more cores translate into more throughput with limited efficiency loss.
 
 ## Result 3: OTAP Provides Higher Throughput on the Same Runtime
 
@@ -208,9 +210,10 @@ pays no conversion cost - telemetry stays in its Arrow-native representation
 from ingestion through processing to export. When input is OTLP, the engine must
 decode and convert each batch before processing, and convert back on the way
 out. That conversion boundary is the entire difference between the two paths,
-and eliminating it makes OTAP consistently **more than 10x faster** than OTLP on
-the same runtime. At 1 core, the OTAP path reaches 2.47M logs/sec while the OTLP
-path reaches 121K logs/sec.
+and removing it gives the OTAP path roughly **10 to 20 times the throughput** of
+the OTLP path, depending on core count, on the same runtime. At 1 core, the OTAP
+path reaches 2.47M logs/sec while the OTLP path reaches 121K logs/sec, a little
+over 20x.
 
 This result shows the effect of removing the OTLP conversion boundary. OTAP
 avoids heavy OTLP transcoding and lets the Arrow-native engine process data more
