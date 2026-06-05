@@ -1,7 +1,7 @@
 blog:
   - changed-files:
       - any-glob-to-any-file:
-          - content/en/blog/**
+          - content/*/blog/**
 registry:
   - changed-files:
       - any-glob-to-any-file:
@@ -138,15 +138,40 @@ sig:swift:
           - content/en/docs/languages/swift/**
 
 # CI & Infrastructure labels
-CI/infra:
+CI/infra: # including config
   - changed-files:
       - any-glob-to-any-file:
+          - .claude/**
+          - .cspell/**
+          - .cspell.yml
           - .devcontainer/**
+          - .editorconfig
           - .github/**
+          - .gitpod.yml
+          - .htmltest.yml
+          - .markdown*.*
+          - content/**/.markdownlint.yaml
+          - .nvmrc
+          - .prettierignore
+          - .python-version
+          - .textlintrc.yml
+          - .warnings-skip-list.txt
+          - AGENTS.md
           - config/**
+          - content/en/site/**
+          - gulp-src/**
+          - gulpfile.js
+          - Makefile
+          - netlify/**
+          - netlify.toml
+          - prh/**
+          - scripts/**
+          - static/refcache.json
+          - tests/**
 
 dependencies:
   - changed-files:
       - any-glob-to-any-file:
           - package.json
           - .gitmodules
+          - content-modules/**
