@@ -2147,9 +2147,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-25T11:07:23.573127615Z"
   },
-  "https://docs.kloudmate.com/using-opentelemetry-collector": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-05T14:08:29.202128504Z"
+  "https://docs.kloudmate.com/opentelemetry/using-opentelemetry-collector/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-05T11:15:12.592004-04:00"
   },
   "https://docs.konghq.com/hub/kong-inc/opentelemetry/": {
     "StatusCode": 206,
@@ -22459,9 +22459,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-02T18:10:50.038974422Z"
   },
-  "https://rocketmq.apache.org/docs/domainModel/07consumergroup": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-05T14:06:59.08861573Z"
+  "https://rocketmq.apache.org/docs/domainModel/08consumergroup/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-05T11:15:36.186364-04:00"
   },
   "https://rubygems.org/gems/elasticsearch": {
     "StatusCode": 206,

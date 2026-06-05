@@ -224,7 +224,7 @@
   commercial: true
 - name: KloudMate
   nativeOTLP: true
-  url: https://docs.kloudmate.com/using-opentelemetry-collector
+  url: https://docs.kloudmate.com/opentelemetry/using-opentelemetry-collector/
   contact: hello@kloudmate.com
   oss: false
   commercial: true
