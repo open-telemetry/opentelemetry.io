@@ -796,14 +796,15 @@ base configuration as part of their offering:
 - **Processors, readers and views**: Settings specific to the backend in use
   (e.g. aggregation temporality, export intervals, attribute limits) or
   organization-wide standards (e.g. span/metric attributes).
-  - **Note:** OTLP exporters will retry when the receiving Collector applies
-    backpressure (returning retryable errors such as `429`; see [Action
-    3][action-3]). However, SDK processors and readers will drop data when their
-    internal buffers are full. Platform teams should manage sensible defaults
-    for these buffer sizes and prioritize export to local Collectors (e.g.
-    cluster-local Gateway) to move telemetry out of the application process as
-    fast and reliably as possible. Application owners should monitor [SDK
-    telemetry][12], when available, and react accordingly.
+  - **Note:** Depending on language implementations, OTLP exporters may retry
+    when receiving retryable errors such as HTTP `429`, `503`, or gRPC
+    `UNAVAILABLE` with optional `RetryInfo`. However, these exporters do not
+    have the same capabilities as Collectors in terms of sending queues, and
+    will drop batches of data if unsuccessful. Platform teams should manage
+    sensible defaults for these buffer sizes and prioritize export to local
+    Collectors (e.g. cluster-local Gateway) to move telemetry out of the
+    application process as fast and reliably as possible. Application owners
+    should monitor [SDK telemetry][12], when available, and react accordingly.
 
 - **Organization-specific resource attributes:** Standard conventions critical
   for routing, billing, and ownership. At a minimum, we recommend:
