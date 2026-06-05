@@ -46,15 +46,15 @@ OpenTelemetry には、事前のラベル宣言がありません。
 
 Prometheus は `snake_case` のメトリクス名を使用します。
 カウンター名は `_total` で終わります。
-慣例として、Prometheus のメトリクス名には、衝突を避けるためにアプリケーションまたはライブラリ名のプレフィックスが付けられます（たとえば `smart_home_hvac_on_seconds_total`）。
+慣例として、Prometheus のメトリクス名には、衝突を避けるためにアプリケーションまたはライブラリ名の接頭辞が付けられます（たとえば `smart_home_hvac_on_seconds_total`）。
 すべてのメトリクスがフラットなグローバル名前空間を共有するためです。
 
 OpenTelemetry は慣例として[ドット区切りの名前](/docs/specs/semconv/general/naming/)を使用します。
-所有権と名前空間は計装スコープ（`Meter` 名、たとえば `smart.home`）で表現されるため、メトリクス名自体にプレフィックスは不要です（たとえば `hvac.on`）。
-Prometheus にエクスポートする際、エクスポーターは名前を変換します。ドットはアンダースコアに変わり、単位の略語は完全な単語に展開され（たとえば `s` → `seconds`）、カウンターには `_total` サフィックスが付きます。
+所有権と名前空間は計装スコープ（`Meter` 名、たとえば `smart.home`）で表現されるため、メトリクス名自体に接頭辞は不要です（たとえば `hvac.on`）。
+Prometheus にエクスポートする際、エクスポーターは名前を変換します。ドットはアンダースコアに変わり、単位の略語は完全な単語に展開され（たとえば `s` → `seconds`）、カウンターには `_total` 接尾辞が付きます。
 `hvac.on` という名前で単位 `s` の OpenTelemetry カウンターは、`hvac_on_seconds_total` としてエクスポートされます。
 名前変換ルールの完全なセットについては、[互換性仕様](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)を参照してください。
-変換戦略は設定可能です。たとえば、UTF-8 文字を保持したり、単位や型のサフィックスを抑制したりできます。
+変換戦略は設定可能です。たとえば、UTF-8 文字を保持したり、単位や型の接尾辞を抑制したりできます。
 詳細は [Prometheus エクスポーター](/docs/specs/otel/metrics/sdk_exporters/prometheus/)設定リファレンスを参照してください。
 
 ### ステートフルインスツルメントとコールバックインスツルメント {#stateful-and-callback-instruments}
@@ -73,7 +73,7 @@ Prometheus にエクスポートする際、エクスポーターは名前を変
 ### OTel: API と SDK {#otel-api-and-sdk}
 
 OpenTelemetry は、計装と設定を2層設計で分離しています。**API** パッケージと **SDK** パッケージです。
-API はメトリクスの記録に使用されるインターフェースを定義します。
+API はメトリクスの記録に使用されるインターフェイスを定義します。
 SDK は実装を提供します。具体的なプロバイダー、エクスポーター、処理パイプラインです。
 
 計装コードは API のみに依存すべきです。
@@ -436,7 +436,7 @@ func main() {
 Prometheus の `Counter` は OpenTelemetry の `Counter` インスツルメントに対応します。
 
 - **単位のエンコーディング**: Prometheus はメトリクス名に単位をエンコードします（`hvac_on_seconds_total`）。
-  OpenTelemetry は名前（`hvac.on`）と単位（`s`）を分離し、Prometheus エクスポーターが自動的に単位サフィックスを付加します。
+  OpenTelemetry は名前（`hvac.on`）と単位（`s`）を分離し、Prometheus エクスポーターが自動的に単位接尾辞を付加します。
 
 ### カウンター {#counter-1}
 
