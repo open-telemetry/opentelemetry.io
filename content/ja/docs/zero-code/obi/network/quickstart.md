@@ -95,7 +95,7 @@ spec:
               value: '/config/obi-config.yml'
 ```
 
-この設定に関するいくつかの観察点:
+この設定についての注意点は次のとおりです。
 
 - コンテナイメージは、開発中の最新版 `otel/ebpf-instrument:main` イメージを使用しています。
 - OBI はノードごとに 1 つの OBI インスタンスしか必要としないため、DaemonSet として実行する必要があります。
