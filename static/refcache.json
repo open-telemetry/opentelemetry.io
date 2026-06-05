@@ -3389,7 +3389,7 @@
   },
   "https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype": {
     "StatusCode": 404,
-    "LastSeen": "2026-06-05T12:49:59.999Z"
+    "LastSeen": "2026-06-05T12:57:59.999Z"
   },
   "https://gcc.gnu.org/frontends.html": {
     "StatusCode": 206,
@@ -19459,10 +19459,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-30T10:18:19.429445733Z"
   },
-  "https://logease.cn/en-logease-observability-platform/": {
-    "StatusCode": -20,
-    "LastSeen": "2026-06-04T15:45:48.271474689Z"
-  },
   "https://logging.apache.org/log4j/1.2/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-04T15:47:08.050264692Z"
@@ -24250,6 +24246,10 @@
   "https://www.linuxfoundation.org/legal/trademark-usage": {
     "StatusCode": 200,
     "LastSeen": "2026-05-21T10:49:43.074466738Z"
+  },
+  "https://www.logease.co/en/logease-observability-platform/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-05T08:55:16.980434-04:00"
   },
   "https://www.logicmonitor.com/support/tracing/getting-started-with-tracing": {
     "StatusCode": 206,
