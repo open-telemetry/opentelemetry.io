@@ -2,9 +2,8 @@
 title: 計装ライブラリの使用
 linkTitle: ライブラリ
 weight: 40
-description: アプリが依存するライブラリをインストルメントする方法
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
-drifted_from_default: true
+description: アプリが依存するライブラリを計装する方法
+default_lang_commit: f7dab5cfc4d44a8c788b7e02d07ec1e1d84e3845
 ---
 
 {{% docs/languages/libraries-intro "js" %}}
@@ -14,6 +13,8 @@ drifted_from_default: true
 ライブラリがOpenTelemetryを最初から組み込んでいない場合、ライブラリやフレームワークのテレメトリーデータを生成するために[計装ライブラリ](/docs/specs/otel/glossary/#instrumentation-library)を使用できます。
 
 たとえば、[Expressの計装ライブラリ](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)は、インバウンドHTTPリクエストに基づいて自動的に[スパン](/docs/concepts/signals/traces/#spans)を作成します。
+
+{{% include esm-support-note.md %}}
 
 ### セットアップ {#setup}
 
@@ -198,8 +199,8 @@ const sdk = new NodeSDK({
 ```typescript
 import { Span } from '@opentelemetry/api';
 import {
-  SEMATTRS_HTTP_METHOD,
-  SEMATTRS_HTTP_URL,
+  ATTR_HTTP_REQUEST_METHOD,
+  ATTR_URL_FULL,
 } from '@opentelemetry/semantic-conventions';
 import {
   ExpressInstrumentation,
@@ -210,8 +211,8 @@ import {
 const expressInstrumentation = new ExpressInstrumentation({
   requestHook: function (span: Span, info: ExpressRequestInfo) {
     if (info.layerType === ExpressLayerType.REQUEST_HANDLER) {
-      span.setAttribute(SEMATTRS_HTTP_METHOD, info.request.method);
-      span.setAttribute(SEMATTRS_HTTP_URL, info.request.baseUrl);
+      span.setAttribute(ATTR_HTTP_REQUEST_METHOD, info.request.method);
+      span.setAttribute(ATTR_URL_FULL, info.request.baseUrl);
     }
   },
 });
@@ -224,8 +225,8 @@ const expressInstrumentation = new ExpressInstrumentation({
 ```javascript
 /*instrumentation.js*/
 const {
-  SEMATTRS_HTTP_METHOD,
-  SEMATTRS_HTTP_URL,
+  ATTR_HTTP_REQUEST_METHOD,
+  ATTR_URL_FULL,
 } = require('@opentelemetry/semantic-conventions');
 const {
   ExpressInstrumentation,
@@ -235,8 +236,8 @@ const {
 const expressInstrumentation = new ExpressInstrumentation({
   requestHook: function (span, info) {
     if (info.layerType === ExpressLayerType.REQUEST_HANDLER) {
-      span.setAttribute(SEMATTRS_HTTP_METHOD, info.request.method);
-      span.setAttribute(SEMATTRS_HTTP_URL, info.request.baseUrl);
+      span.setAttribute(ATTR_HTTP_REQUEST_METHOD, info.request.method);
+      span.setAttribute(ATTR_URL_FULL, info.request.baseUrl);
     }
   },
 });

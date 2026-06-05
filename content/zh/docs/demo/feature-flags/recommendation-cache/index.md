@@ -2,6 +2,7 @@
 title: 使用指标和链路诊断内存泄漏
 linkTitle: 诊断内存泄漏
 default_lang_commit: 2571ec5a1e17744982e8dc6efe1fdf3115d0ebbc
+drifted_from_default: true
 aliases:
   - ../scenarios/recommendation-cache/
   - ../scenarios/recommendation_cache

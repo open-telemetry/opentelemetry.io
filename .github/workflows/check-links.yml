@@ -54,6 +54,13 @@ jobs:
           echo "submodule(s); or undo the submodule update(s) if it happened by mistake."
           npm run _diff:fail
 
+      - name: Htmltest config up to date?
+        run: |
+          npm run fix:htmltest-config
+          echo "If the diff check below fails, then locally run 'npm run fix:htmltest-config'"
+          echo "and commit the updated .htmltest.yml."
+          npm run _diff:fail
+
       - name: Build the site
         run: npm run log:build
         continue-on-error: true
