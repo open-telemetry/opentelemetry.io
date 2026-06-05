@@ -15,9 +15,9 @@ mais protocolos.
 
 O recebimento, processamento e exportação de dados são feitos usando
 [_pipelines_](#pipelines). Você pode configurar o Collector para ter um ou mais
-pipelines.
+_pipelines_.
 
-Cada pipeline inclui o seguinte:
+Cada _pipeline_ inclui:
 
 - Um conjunto de [_receivers_](#receivers) que coletam os dados.
 - Uma série de [_processors_](#processors) opcionais que recebem os dados dos
@@ -82,8 +82,8 @@ service:
       exporters: [otlp, zipkin]
 ```
 
-O exemplo anterior define um _pipeline_ para o tipo de dado de telemetria
-rastro, que inclui dois _receivers_, um _processor_ e dois _exporters_. O
+O exemplo anterior define um _pipeline_ para o tipo rastro de dado de telemetria,
+que inclui dois _receivers_, um _processor_ e dois _exporters_. O
 _receiver_ com dois _receivers_, um _processor_ e dois _exporters_.
 
 ### Receivers
@@ -104,11 +104,11 @@ receivers:
 
 service:
   pipelines:
-    traces: # o _pipeline_ do tipo "traces"
+    traces: # o _pipeline_ do tipo "rastro (_traces_)"
       receivers: [otlp]
       processors: [memory_limiter]
       exporters: [otlp]
-    traces/2: # outro _pipeline_ do tipo "traces"
+    traces/2: # outro _pipeline_ do tipo "rastro (_traces_)"
       receivers: [otlp]
       processors: [transform]
       exporters: [otlp]
@@ -117,7 +117,7 @@ service:
 No exemplo acima, o _receiver_ `otlp` enviará os mesmos dados para o _pipeline_
 `traces` e para o _pipeline_ `traces/2`.
 
-> A configuração usa nomes de chaves compostas na forma `type[/name]`.
+> A configuração usa nomes de chaves compostas na forma `tipo[/nome]`.
 
 Quando o Collector carrega essa configuração, o resultado se parece com este
 diagrama (parte dos _processors_ e _exporters_ foram omitidos por brevidade):
@@ -131,7 +131,7 @@ flowchart LR
   P2 ~~~ M2[...]
 ```
 
-> [!ATENÇÃO]
+> [!WARNING]
 >
 > Quando o mesmo _receiver_ é referenciado em mais de um pipeline, o Collector
 > cria apenas uma instância do _receiver_ em tempo de execução, que envia os
@@ -173,11 +173,11 @@ exporters:
 
 service:
   pipelines:
-    traces: # o _pipeline_ do tipo "traces"
+    traces: # o _pipeline_ do tipo "rastro (_traces_)"
       receivers: [zipkin]
       processors: [memory_limiter]
       exporters: [otlp]
-    traces/2: # outro _pipeline_ do tipo "traces"
+    traces/2: # outro _pipeline_ do tipo "rastro (_traces_)"
       receivers: [otlp]
       processors: [transform]
       exporters: [otlp]
@@ -231,11 +231,11 @@ processors:
 
 service:
   pipelines:
-    traces: # o _pipeline_ do tipo "traces"
+    traces: # o _pipeline_ do tipo "rastro (_traces_)"
       receivers: [zipkin]
       processors: [transform]
       exporters: [otlp]
-    traces/2: # outro _pipeline_ do tipo "traces"
+    traces/2: # outro _pipeline_ do tipo "rastro (_traces_)"
       receivers: [otlp]
       processors: [transform]
       exporters: [otlp]
