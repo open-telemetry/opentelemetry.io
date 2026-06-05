@@ -81,7 +81,7 @@ cSpell:ignore: kube-system spanmetrics
 クライアントとバックエンドの両方が OBI によって計装されています。
 他のコンポーネントは外部です。
 
-![Example architecture](./cardinality-example.png)
+![アーキテクチャ例](./cardinality-example.png)
 
 悲観的な計算は次のようになります。
 
