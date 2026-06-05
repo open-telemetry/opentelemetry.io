@@ -24368,8 +24368,8 @@
     "LastSeen": "2026-06-02T18:20:58.255Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-node": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-05T15:52:31.797906356Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-05T17:42:26.78Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-trace-node": {
     "StatusCode": 200,
