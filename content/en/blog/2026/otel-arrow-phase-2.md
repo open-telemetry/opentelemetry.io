@@ -6,7 +6,7 @@ sig: OTel Arrow SIG
 date: 2026-06-05
 author: >-
   [Laurent Querel](https://github.com/lquerel) (F5, project lead), [Joshua
-  MacDonald](https://github.com/jmacd) (Microsoft, project lead), [Albert
+  MacDonald](https://github.com/jmacd) (Microsoft, project lead), [Reiley Yang](reyang@microsoft.com) (Microsoft, project sponsor), [Albert
   Lockett](https://github.com/albertlockett) (F5), [Cijo
   Thomas](https://github.com/cijothomas) (Microsoft), [Drew
   Relmas](https://github.com/drewrelmas) (Microsoft), [Jake
