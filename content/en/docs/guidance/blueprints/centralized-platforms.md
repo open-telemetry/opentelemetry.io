@@ -999,17 +999,12 @@ To monitor the health of the aggregation and processing tiers, the platform team
 must actively capture and alert on internal [Collector telemetry][15]. We
 recommend following these steps:
 
-- **Export internal telemetry via OTLP:** Configure the `telemetry` block within
-  the Collector’s `service` section to emit internal metrics. In enterprise
-  Kubernetes environments, this often requires a dual approach:
-  - _OTLP_: Emit metrics directly to the observability backend via OTLP for
-    long-term retention, global dashboards, and centralized alerting, following
-    company wide standards. Please note, this OTLP configuration is separate
-    from the OTLP exporter configured on Collector pipelines.
-  - _Prometheus_: Simultaneously expose a Prometheus endpoint so that
-    cluster-local metric servers (like KEDA or Prometheus Adapter) can rapidly
-    scrape metrics like `otelcol_exporter_queue_size` to trigger Horizontal Pod
-    Autoscaling (HPA) without relying on an external internet round-trip.
+- **Export internal telemetry via OTLP:** Configure the `service.telemetry`
+  block to emit internal metrics via OTLP to the observability backend,
+  following company-wide standards. In addition to monitoring, these metrics
+  should also be used as the data source for autoscaling decisions (see [Action
+  3][action-3]). Please note, this OTLP configuration is separate from the OTLP
+  exporter configured on Collector pipelines.
 - **Monitor and troubleshoot:** Follow advice present in the [monitor][58] and
   [troubleshoot][59] sections of Collector documentation, and create the
   necessary high-priority alerts to detect resource exhaustion and failed
