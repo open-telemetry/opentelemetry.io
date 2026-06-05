@@ -4391,6 +4391,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-30T10:18:05.2942521Z"
   },
+  "https://github.com/amazingakai": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-05T05:08:30.174070337Z"
+  },
   "https://github.com/amy-super": {
     "StatusCode": 206,
     "LastSeen": "2026-05-03T10:02:46.421174607Z"
@@ -6482,6 +6486,10 @@
   "https://github.com/konghq": {
     "StatusCode": 206,
     "LastSeen": "2026-06-02T18:14:59.579965767Z"
+  },
+  "https://github.com/kota-sakuma": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-05T05:08:20.192932364Z"
   },
   "https://github.com/kovrus": {
     "StatusCode": 206,
