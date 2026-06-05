@@ -168,12 +168,6 @@
   contact: https://github.com/jpkrohling/
   oss: true
   commercial: true
-- name: Helios
-  nativeOTLP: true
-  url: https://gethelios.dev/
-  contact:
-  oss: false
-  commercial: true
 - name: Heroku
   nativeOTLP: true
   url: https://devcenter.heroku.com/articles/heroku-telemetry

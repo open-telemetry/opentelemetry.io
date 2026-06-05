@@ -3389,7 +3389,7 @@
   },
   "https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype": {
     "StatusCode": 404,
-    "LastSeen": "2026-06-05T12:57:59.999Z"
+    "LastSeen": "2026-06-05T09:08:03.822434-04:00"
   },
   "https://gcc.gnu.org/frontends.html": {
     "StatusCode": 206,
@@ -3414,10 +3414,6 @@
   "https://getcomposer.org/doc/01-basic-usage.md#autoloading": {
     "StatusCode": 200,
     "LastSeen": "2026-06-02T18:10:10.776003676Z"
-  },
-  "https://gethelios.dev/": {
-    "StatusCode": -30,
-    "LastSeen": "2026-06-04T15:45:50.423543449Z"
   },
   "https://gist.github.com/braydonk/b2381da98dc3c4fd5ac064045d556634": {
     "StatusCode": 206,
