@@ -1030,22 +1030,21 @@ Kubernetes Service, it establishes one TCP connection and holds it open
 indefinitely. As a result, 100% of the telemetry from that agent will stream to
 a single Gateway pod.
 
-In high-throughput environments, this may cause hot spots in specific Collectors
-(triggering Out-Of-Memory crashes on specific pods) and may break horizontal
-autoscaling, as newly spun-up Gateway pods will receive zero traffic.
+In high-throughput environments, this creates hot spots on specific Gateway
+replicas as newly scaled pods receive no traffic, undermining horizontal pod
+autoscaling and risking resource exhaustion on long-lived pods.
 
-To distribute telemetry evenly, platform teams should consider one of the two
+To distribute telemetry evenly, platform teams should consider one of the three
 following patterns:
 
 #### Client-side load balancing {#client-side-load-balancing}
 
-In this approach, the OTLP exporter on the sending side (the application or
-local Collector) performs the load balancing itself. It queries Kubernetes DNS
-to discover the IPs of all available Gateway pods and distributes requests in a
-round-robin fashion across them.
+OTLP gRPC exporters can perform the load balancing on the client side, querying
+Kubernetes DNS to discover the IPs of all available Gateway pods and distribute
+requests in a round-robin fashion across them.
 
-The Gateway tier should be deployed with a Headless Service so that DNS queries
-return a list of pod IPs rather than a single virtual IP.
+To achieve this, the Gateway tier should be deployed with a Headless Service so
+that DNS queries return a list of pod IPs rather than a single virtual IP.
 
 - **OpenTelemetry Operator:** If you deploy an `OpenTelemetryCollector` CR in
   `statefulset` mode, the Operator automatically generates a headless service
@@ -1054,7 +1053,7 @@ return a list of pod IPs rather than a single virtual IP.
   Kubernetes Service with `ClusterIP: None`.
 - **Helm Chart:** Set `service.clusterIP: None` when deploying the Gateway.
 
-The sending OTLP exporter must be configured to use the DNS resolver and the
+The sending OTLP exporter should be configured to use the DNS resolver and the
 round-robin balancer. When configuring the OTLP exporter on the Collector (e.g.
 from local Collector to a Gateway):
 
@@ -1067,11 +1066,11 @@ individual client implementations to configure client-side gRPC load balancing.
 
 #### Layer 7 Proxy / Service Mesh {#layer-7-proxy-service-mesh}
 
-In this approach, a HTTP/2-aware Layer 7 proxy is placed between the SDKs, or
-local Collectors, and the Gateway tier. Because the proxy operates at Layer 7,
-it understands the HTTP/2 frames. It accepts the single long-lived TCP
-connection, inspects the individual gRPC requests, and distributes them evenly
-across all backend Gateway pods.
+In this approach, an HTTP/2-aware Layer 7 proxy is placed between the OTLP gRPC
+exporter and the Gateway tier. Because the proxy operates at Layer 7, it
+understands the HTTP/2 frames. It accepts the single long-lived TCP connection,
+inspects the individual gRPC requests, and distributes them evenly across all
+backend Gateway pods.
 
 **Implementation Methods:**
 
@@ -1088,11 +1087,45 @@ across all backend Gateway pods.
   (e.g., NGINX Ingress, Traefik, AWS ALB) is explicitly configured to support
   gRPC and HTTP/2 backend routing.
 
-If the organization in scope already runs a Service Mesh, relying on this option
-requires zero configuration on the OpenTelemetry side and works flawlessly. If
-there is no Service Mesh and traffic remains entirely within the same cluster,
-use client-side load balancing, or consider using HTTP/protobuf (see [Action
-2][action-2]).
+#### Server-side connection recycling {#server-side-connection-recycling}
+
+Lastly, the Gateway OTLP gRPC receiver can be configured to close long-lived
+connections after a set duration using
+`keepalive.server_parameters.max_connection_age`. When a connection reaches this
+age, the server sends a `GoAway` frame, forcing the client to reconnect. On
+reconnection, standard Kubernetes Service routing redistributes the client
+across available Gateway pods.
+
+This option requires zero client-side changes — only the Gateway receiver
+configuration needs updating:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        keepalive:
+          server_parameters:
+            max_connection_age: 60s
+            max_connection_age_grace: 10s
+```
+
+This approach is less precise than per-request balancing (traffic is only
+redistributed on reconnection, not per-request), and newly scaled pods will not
+receive traffic until existing connections expire. However, it is the simplest
+option as it requires no headless services, DNS resolvers, or L7 proxies.
+
+#### Recommendation
+
+If the organization already runs a Service Mesh, the L7 proxy option requires
+zero configuration on the OpenTelemetry side. If there is no Service Mesh and
+traffic remains within the same cluster, client-side load balancing provides the
+most precise distribution. Server-side connection recycling is the simplest
+starting point when neither is available. Alternatively, including cases where
+operators don't have control over the receiving backend (e.g. connections routed
+via public internet), consider using OTLP/HTTP (see [Action 2][action-2]) which
+operates over HTTP/1.1 or short-lived HTTP/2 connections and does not suffer
+from the same pinning behavior.
 
 <!-- Link references -->
 
