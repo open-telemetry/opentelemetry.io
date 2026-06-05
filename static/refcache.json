@@ -1283,6 +1283,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:06:35.373009944Z"
   },
+  "https://dash0.com": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-05T11:37:38.801097-04:00"
+  },
   "https://datatracker.ietf.org/doc/draft-ietf-httpbis-safe-method-w-body/?include_text=1": {
     "StatusCode": 206,
     "LastSeen": "2026-06-02T18:12:03.146503093Z"
@@ -5150,6 +5154,14 @@
   "https://github.com/darccio": {
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:06:11.104307393Z"
+  },
+  "https://github.com/dash0hq": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-05T11:37:41.817249-04:00"
+  },
+  "https://github.com/dash0hq/dash0-operator": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-05T11:37:39.154837-04:00"
   },
   "https://github.com/dash0hq/otelbin": {
     "StatusCode": 206,
@@ -23518,6 +23530,10 @@
   "https://www.dash0.com/": {
     "StatusCode": 200,
     "LastSeen": "2026-06-04T15:45:25.226204007Z"
+  },
+  "https://www.dash0.com/hub/integrations/int_dash0_operator/overview": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-05T11:37:40.240581-04:00"
   },
   "https://www.docker.com/": {
     "StatusCode": 206,
