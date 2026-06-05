@@ -3,6 +3,7 @@ title: Dockerでコレクターをインストールする
 linkTitle: Docker
 weight: 100
 default_lang_commit: 065ae35400c045c61d49556d79abe3a04033bedf
+drifted_from_default: true
 ---
 
 ## Docker {#docker}

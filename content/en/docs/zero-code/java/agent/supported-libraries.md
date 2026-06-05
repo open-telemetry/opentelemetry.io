@@ -208,7 +208,7 @@ view execution. See
 [FaaS Server Spans]: /docs/specs/semconv/faas/faas-spans/
 [GenAI Client Spans]: /docs/specs/semconv/gen-ai/gen-ai-spans/
 [GenAI Client Metrics]:
-  /docs/specs/semconv/gen-ai/gen-ai-metrics/#generative-ai-client-metrics
+  /docs/specs/semconv/gen-ai/gen-ai-metrics/?link-check=no&see-issue=10153#generative-ai-client-metrics
 
 ## Application Servers
 
