@@ -107,7 +107,7 @@ podAnnotations:
 大規模クラスターでは、各 OBI Pod からクラスター全体の Kubernetes メタデータをクエリすると、API サーバーに過負荷がかかり、クラスター全体に影響を与える可能性があります。
 
 これを回避するため、OBI Helm チャートは `k8s-cache` と呼ばれる小規模なコンパニオンサービスをデプロイできます。
-キャッシュはすべての OBI Pod に代わって Kubernetes API を一度だけ監視し、gRPC 経由でメタデータをストリーミングします。
+キャッシュはすべての OBI Pod にかわって Kubernetes API を一度だけ監視し、gRPC 経由でメタデータをストリーミングします。
 これにより、OBI の Pod ごとの informer トラフィックが API サーバーに送信されなくなり、API の負荷が大幅に軽減されます。
 
 有効にするには、`helm-obi.yml` で `k8sCache.replicas` をゼロ以外の値に設定します。
