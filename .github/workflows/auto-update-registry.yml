@@ -10,7 +10,7 @@ on:
 permissions: read-all
 
 jobs:
-  auto-update-versions:
+  auto-update:
     name: Auto-update registry versions
     runs-on: ubuntu-latest
     permissions:
@@ -38,3 +38,11 @@ jobs:
         env:
           # change to ${{ secrets.GITHUB_TOKEN }} and comment out the step above when testing against a fork
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+
+  report-failure:
+    needs: auto-update
+    if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
+    uses: ./.github/workflows/reusable-report-failure.yml
+    permissions:
+      issues: write # Pass through for failure tracking issues
+      contents: read
