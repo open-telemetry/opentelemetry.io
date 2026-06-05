@@ -65,7 +65,7 @@ representation, with OTLP compatibility handled at explicit boundaries.
 
 The Dataflow Engine uses a
 [NUMA-friendly](https://www.kernel.org/doc/html/v4.18/vm/numa.html),
-[thread-per-core, share-nothing](https://seastar.io/shared-nothing/)
+[thread-per-core, shared-nothing](https://seastar.io/shared-nothing/)
 architecture. It emphasizes bounded channels and data structures, avoids
 synchronization in hot paths, propagates delivery acknowledgments through
 pipelines, and supports live pipeline reconfiguration through an admin API.
