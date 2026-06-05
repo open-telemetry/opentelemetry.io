@@ -166,7 +166,7 @@ handler.setFormatter(JSONFormatter())
 logger.addHandler(handler)
 ```
 
-{{% /tab %}} {{% tab header="Go (using zap)" lang=go %}}
+{{% /tab %}} {{% tab header="Go (zapを使用)" lang=go %}}
 
 ```go
 import "go.uber.org/zap"
@@ -176,7 +176,7 @@ defer logger.Sync()
 logger.Info("Request processed", zap.Duration("duration", 125*time.Millisecond))
 ```
 
-{{% /tab %}} {{% tab header="Java (using Logback)" lang=java %}}
+{{% /tab %}} {{% tab header="Java (Logbackを使用)" lang=java %}}
 
 ```xml
 <appender name="FILE" class="ch.qos.logback.core.ConsoleAppender">
@@ -184,7 +184,7 @@ logger.Info("Request processed", zap.Duration("duration", 125*time.Millisecond))
 </appender>
 ```
 
-{{% /tab %}} {{% tab header="Node.js (using pino)" lang=javascript %}}
+{{% /tab %}} {{% tab header="Node.js (pinoを使用)" lang=javascript %}}
 
 ```javascript
 const pino = require('pino');
