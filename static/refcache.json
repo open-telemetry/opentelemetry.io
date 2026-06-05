@@ -3383,13 +3383,13 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-02T18:17:13.535054224Z"
   },
+  "https://gateway-api.sigs.k8s.io/reference/api-spec/1.5/spec/#tlsmodetype": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-05T09:30:56.252136-04:00"
+  },
   "https://gateway-api.sigs.k8s.io/reference/api-types/referencegrant/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-03T11:27:34.756381229Z"
-  },
-  "https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-05T09:08:03.822434-04:00"
   },
   "https://gcc.gnu.org/frontends.html": {
     "StatusCode": 206,
