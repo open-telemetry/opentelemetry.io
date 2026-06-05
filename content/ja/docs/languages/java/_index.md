@@ -12,10 +12,9 @@ cascade:
     instrumentation: 2.28.1
     otel: 1.62.0
     contrib: 1.57.0
-    semconv: 1.41.0
+    semconv: 1.41.1
 weight: 150
-default_lang_commit: a790e3cf91025305c683047b181120ab6bbae3de
-drifted_from_default: true
+default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
 ---
 
 {{% docs/languages/index-intro java /%}}
