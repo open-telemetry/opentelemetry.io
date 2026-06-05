@@ -63,9 +63,18 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - ^https://.*\.sched\.com
   - ^https://wiki.osdev.org
 
+  # Returns a 202 (Accepted) that htmltest treats as a non-OK status, even
+  # though the page loads fine in a browser (verified 200 manually); drop
+  # if/once we switch to lychee:
+  - ^https://hydrolix\.io/
+
   # Ignore because they forget to renew their certificates too often, e.g., see:
   # https://github.com/oatpp/oatpp/issues/1082
   - ^https://oatpp.io
+
+  # Unreliable host (connection timeouts); matching semantic-conventions, see
+  # https://github.com/open-telemetry/semantic-conventions/pull/2069
+  - ^https://www\.intersystems\.com
 
   # Ignore issues and discussions with query parameters, e.g.:
   - ^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=
