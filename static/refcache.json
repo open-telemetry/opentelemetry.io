@@ -859,6 +859,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-05-06T10:28:51.912831569Z"
   },
+  "https://cloud-native.slack.com/archives/C07S4Q67LTF": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-04T18:20:00.010505-07:00"
+  },
   "https://cloud-native.slack.com/archives/C088D8GSSSF": {
     "StatusCode": 200,
     "LastSeen": "2026-05-21T10:55:03.975959069Z"
@@ -7490,6 +7494,10 @@
   "https://github.com/open-telemetry/community/pull/3021": {
     "StatusCode": 206,
     "LastSeen": "2026-05-05T10:20:58.933090862Z"
+  },
+  "https://github.com/open-telemetry/community/tree/fa6a4b68cf63438b760419124b0abfbe4ae238ed#sig-arrow": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-04T18:20:02.243903-07:00"
   },
   "https://github.com/open-telemetry/community/tree/main/mission-vision-values.md": {
     "StatusCode": 206,
@@ -15691,6 +15699,22 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-12T10:29:25.351161479Z"
   },
+  "https://github.com/open-telemetry/otel-arrow/blob/c6ed105cab28e537bf5c2c81a97e9b63677d3cff/docs/benchmarks.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-04T18:19:56.651566-07:00"
+  },
+  "https://github.com/open-telemetry/otel-arrow/blob/c6ed105cab28e537bf5c2c81a97e9b63677d3cff/docs/phase1-overview.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-04T18:19:51.769784-07:00"
+  },
+  "https://github.com/open-telemetry/otel-arrow/discussions": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-04T18:19:57.799405-07:00"
+  },
+  "https://github.com/open-telemetry/otel-arrow/issues": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-04T18:20:04.137686-07:00"
+  },
   "https://github.com/open-telemetry/otel-arrow/pull/293": {
     "StatusCode": 206,
     "LastSeen": "2026-06-02T18:16:17.955158372Z"
@@ -20227,6 +20251,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-06T10:22:47.383021683Z"
   },
+  "https://open-telemetry.github.io/otel-arrow/compare/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-04T18:19:54.977784-07:00"
+  },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
     "StatusCode": 200,
     "LastSeen": "2026-06-02T18:32:10.89Z"
@@ -22727,6 +22755,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-05-30T10:19:33.386506684Z"
   },
+  "https://seastar.io/shared-nothing/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-04T18:19:53.662381-07:00"
+  },
   "https://sematext.com/": {
     "StatusCode": 200,
     "LastSeen": "2026-05-25T11:09:43.103770501Z"
@@ -24174,6 +24206,10 @@
   "https://www.kernel.org/doc/Documentation/sysctl/kernel.txt": {
     "StatusCode": 206,
     "LastSeen": "2026-06-02T18:10:07.041210644Z"
+  },
+  "https://www.kernel.org/doc/html/v4.18/vm/numa.html": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-04T18:19:52.748366-07:00"
   },
   "https://www.keycloak.org": {
     "StatusCode": 206,

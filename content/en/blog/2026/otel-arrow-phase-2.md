@@ -1,15 +1,16 @@
 ---
-title: 'OTel-Arrow Phase 2: From Efficient Transport to Efficient Telemetry Pipelines'
+title:
+  'OTel-Arrow Phase 2: From Efficient Transport to Efficient Telemetry Pipelines'
 linkTitle: 'OTel-Arrow Phase 2: Efficient Telemetry Pipelines'
 sig: OTel Arrow SIG
 date: 2026-06-05
 author: >-
-  [Laurent Querel](https://github.com/lquerel) (F5, project lead),
-  [Joshua MacDonald](https://github.com/jmacd) (Microsoft, project lead),
-  [Albert Lockett](https://github.com/albertlockett) (F5),
-  [Cijo Thomas](https://github.com/cijothomas) (Microsoft),
-  [Drew Relmas](https://github.com/drewrelmas) (Microsoft),
-  [Jake Dern](https://github.com/JakeDern) (F5)
+  [Laurent Querel](https://github.com/lquerel) (F5, project lead), [Joshua
+  MacDonald](https://github.com/jmacd) (Microsoft, project lead), [Albert
+  Lockett](https://github.com/albertlockett) (F5), [Cijo
+  Thomas](https://github.com/cijothomas) (Microsoft), [Drew
+  Relmas](https://github.com/drewrelmas) (Microsoft), [Jake
+  Dern](https://github.com/JakeDern) (F5)
 # prettier-ignore
 cSpell:ignore: Albert Cijo Dern Drew Jake Joshua Laurent Lockett MacDonald OTAP OTTL pushdown Querel Relmas reserialization Thomas
 ---
@@ -18,13 +19,13 @@ cSpell:ignore: Albert Cijo Dern Drew Jake Joshua Laurent Lockett MacDonald OTAP 
 of OTel-Arrow established OTAP, the OpenTelemetry Arrow Protocol, as an
 efficient transport protocol for OpenTelemetry. Apache Arrow is a
 language-independent, columnar in-memory format designed to move and process
-structured data efficiently across systems. We demonstrated that telemetry
-could be transported with significantly lower network overhead while preserving
+structured data efficiently across systems. We demonstrated that telemetry could
+be transported with significantly lower network overhead while preserving
 compatibility with the OpenTelemetry data model.
 
-[Phase 2](/blog/2025/otel-arrow-phase-2/) asked a
-different question: what happens if Arrow is used not only on the wire, but
-also as the representation the pipeline works with internally?
+[Phase 2](/blog/2025/otel-arrow-phase-2/) asked a different question: what
+happens if Arrow is used not only on the wire, but also as the representation
+the pipeline works with internally?
 
 Telemetry volume is increasing quickly, driven by broader OpenTelemetry
 adoption, richer instrumentation, and more dynamic AI and agentic workloads. At
@@ -62,7 +63,8 @@ high-volume batch processing. The purpose of this work is to test a different
 design point: a telemetry data plane built around OTAP as the primary data
 representation, with OTLP compatibility handled at explicit boundaries.
 
-The Dataflow Engine uses a [NUMA-friendly](https://www.kernel.org/doc/html/v4.18/vm/numa.html),
+The Dataflow Engine uses a
+[NUMA-friendly](https://www.kernel.org/doc/html/v4.18/vm/numa.html),
 [thread-per-core, share-nothing](https://seastar.io/shared-nothing/)
 architecture. It emphasizes bounded channels and data structures, avoids
 synchronization in hot paths, propagates delivery acknowledgments through
@@ -110,7 +112,7 @@ object-walk, allocation, and encode work, not the actual transformation itself.
 Most transformation benchmarks were run on an Intel Xeon Platinum 8581C system
 with 16 cores and 118 GiB of RAM, running Debian GNU/Linux 12; see the
 [interactive benchmark website](https://open-telemetry.github.io/otel-arrow/compare/)
-for full environment details. In these tests, *a single core* was assigned to
+for full environment details. In these tests, _a single core_ was assigned to
 the pipeline under test, while the remaining cores were used by the traffic
 generator and simulated backend. Cores were pinned to keep placement stable and
 reduce cross-component interference. Scaling and saturation tests used a
@@ -121,10 +123,10 @@ each tested pipeline.
 
 ## Result 1: OTAP Keeps Common Pipeline Work Cheap
 
-![3 benchmark takeaways](otel-arrow-phase-2/3-takeaways.svg)
+![3 benchmark takeaways](3-takeaways.svg)
 
-Figure 1: Summary of transformation benchmarks showing sensitivity to the count of transformation rules,
-batch-size behavior, and overload behavior.
+Figure 1: Summary of transformation benchmarks showing sensitivity to the count
+of transformation rules, batch-size behavior, and overload behavior.
 
 The diagram above summarizes three important observations from the
 transformation benchmarks.
@@ -134,8 +136,8 @@ incremental cost on the Dataflow Engine. At 200K logs/sec, with approximately
 300 bytes per log entry, the native OTAP path moves from 6.4% to 6.6% CPU as the
 number of rename actions increases from one to four. The DFE OTLP path is more
 expensive because telemetry first has to be decoded from OTLP and converted into
-the OTAP-oriented internal representation, but once that conversion cost is paid,
-additional rename actions add very little CPU there as well.
+the OTAP-oriented internal representation, but once that conversion cost is
+paid, additional rename actions add very little CPU there as well.
 
 The OTel Collector OTLP path represents the current Collector. It pays the high
 upfront cost of decoding OTLP proto and then a further 3.75% CPU per operation
@@ -153,11 +155,11 @@ scenario. With that setting, Collector memory grows sharply under saturation
 while received throughput drops. Higher Collector memory limits improve received
 throughput: at 2x saturation, a 2048 MiB limit receives about 544K logs/sec
 versus about 128K logs/sec with a 512 MiB limit, but average memory rises to
-about 1.3 GiB. The higher limit lets the Collector keep more work in memory while
-CPU is saturated, which improves received throughput but shifts more of the
-overload cost into memory usage. The Dataflow Engine keeps memory bounded even
-when overloaded as it applies backpressure, making overload visible instead of
-letting memory absorb it.
+about 1.3 GiB. The higher limit lets the Collector keep more work in memory
+while CPU is saturated, which improves received throughput but shifts more of
+the overload cost into memory usage. The Dataflow Engine keeps memory bounded
+even when overloaded as it applies backpressure, making overload visible instead
+of letting memory absorb it.
 
 Taken together, these results show that OTAP is not only about smaller payloads.
 It keeps processing cost low, benefits significantly from batching, and helps
@@ -169,22 +171,22 @@ throughput is available when the same runtime can stay on the native OTAP path.
 
 ## Result 2: Scaling Stays Close to Linear
 
-![OTLP scaling](otel-arrow-phase-2/otlp-scaling.svg)
+![OTLP scaling](otlp-scaling.svg)
 
-Figure 2: OTLP scaling test comparing measured speedup with ideal linear
-scaling from 1 to 16 cores.
+Figure 2: OTLP scaling test comparing measured speedup with ideal linear scaling
+from 1 to 16 cores.
 
-The second diagram demonstrates how well the Dataflow Engine uses available
-CPU cores. The thread-per-core, share-nothing architecture avoids
-synchronization primitives in hot paths, so additional cores translate into
-additional throughput with minimal coordination overhead. In this test,
-telemetry enters as OTLP, meaning each batch must be decoded and converted
-before processing — a deliberate choice to show scaling under realistic
-conversion cost rather than an ideal Arrow-only workload. Even so, the engine
-reaches 14.6x speedup on 16 cores, close to the ideal 16x line, and 1.91M
-logs/sec overall. If a single core handles throughput N, sixteen cores deliver
-close to 16N. For operators, this means vertical scaling is effective — a
-benefit that complements the horizontal scaling most pipelines already rely on.
+The second diagram demonstrates how well the Dataflow Engine uses available CPU
+cores. The thread-per-core, share-nothing architecture avoids synchronization
+primitives in hot paths, so additional cores translate into additional
+throughput with minimal coordination overhead. In this test, telemetry enters as
+OTLP, meaning each batch must be decoded and converted before processing — a
+deliberate choice to show scaling under realistic conversion cost rather than an
+ideal Arrow-only workload. Even so, the engine reaches 14.6x speedup on 16
+cores, close to the ideal 16x line, and 1.91M logs/sec overall. If a single core
+handles throughput N, sixteen cores deliver close to 16N. For operators, this
+means vertical scaling is effective — a benefit that complements the horizontal
+scaling most pipelines already rely on.
 
 This result separates the runtime question from the protocol question. In this
 test, telemetry enters as OTLP and must be decoded and converted before
@@ -195,26 +197,26 @@ more cores translate into more throughput with limited efficiency loss.
 
 ## Result 3: OTAP Provides Higher Throughput on the Same Runtime
 
-![OTAP versus OTLP throughput](otel-arrow-phase-2/otap-scaling.svg)
+![OTAP versus OTLP throughput](otap-scaling.svg)
 
 Figure 3: Throughput comparison between OTAP and OTLP paths on the OTel-Arrow
 Dataflow Engine.
 
 The third diagram compares OTAP and OTLP throughput on the same Dataflow Engine,
-using the same number of cores. When both input and output are OTAP,
-the engine pays no conversion cost - telemetry stays in its Arrow-native
-representation from ingestion through processing to export. When input is OTLP,
-the engine must decode and convert each batch before processing, and convert
-back on the way out. That conversion boundary is the entire difference between
-the two paths, and eliminating it makes OTAP consistently **more than 10x
-faster** than OTLP on the same runtime. At 1 core, the OTAP path reaches 2.47M
-logs/sec while the OTLP path reaches 121K logs/sec.
+using the same number of cores. When both input and output are OTAP, the engine
+pays no conversion cost - telemetry stays in its Arrow-native representation
+from ingestion through processing to export. When input is OTLP, the engine must
+decode and convert each batch before processing, and convert back on the way
+out. That conversion boundary is the entire difference between the two paths,
+and eliminating it makes OTAP consistently **more than 10x faster** than OTLP on
+the same runtime. At 1 core, the OTAP path reaches 2.47M logs/sec while the OTLP
+path reaches 121K logs/sec.
 
 This result shows the effect of removing the OTLP conversion boundary. OTAP
-avoids heavy OTLP transcoding and lets the Arrow-native engine process data
-more directly. The 8-core OTAP run is load-generator limited, and the projected
-full-saturation throughput is about 16M logs/sec, so there is still room to
-move closer to ideal scaling.
+avoids heavy OTLP transcoding and lets the Arrow-native engine process data more
+directly. The 8-core OTAP run is load-generator limited, and the projected
+full-saturation throughput is about 16M logs/sec, so there is still room to move
+closer to ideal scaling.
 
 ## Key Takeaways
 
@@ -225,9 +227,9 @@ overload behavior visible and contained. For production telemetry pipelines,
 that predictability matters as much as raw throughput. OTAP is not only cheaper
 per operation; it also enables much higher throughput on the same hardware.
 
-These comparisons should be read as measurements of the specific benchmark
-paths and configurations shown here, not as universal claims about every
-possible Collector deployment. The full benchmark matrix is available on the
+These comparisons should be read as measurements of the specific benchmark paths
+and configurations shown here, not as universal claims about every possible
+Collector deployment. The full benchmark matrix is available on the
 [interactive benchmark site](https://open-telemetry.github.io/otel-arrow/compare/)
 for readers who want to explore the raw charts and configuration details.
 
@@ -242,9 +244,8 @@ object graph spanning resource, scope, and individual signal records. A
 processor walks and modifies those objects, and re-encoding converts the result
 back to bytes. Every allocation on the way in becomes garbage on the way out.
 For batch-uniform operations such as attribute renames, that allocation and
-collection pressure can outweigh the transformation itself. This is a
-structural cost of row-oriented processing, independent of any particular
-implementation.
+collection pressure can outweigh the transformation itself. This is a structural
+cost of row-oriented processing, independent of any particular implementation.
 
 With an OTAP-native path, telemetry can remain in Arrow record batches.
 Processors can operate on a compact, columnar, batch-oriented representation,
@@ -280,20 +281,20 @@ Phase 3 is currently under discussion. It is expected to target a first stable,
 production-usable release, with significant improvements in several areas:
 
 - **Pipeline-level control mechanisms**: inter-pipeline topics, tenant-aware
-  resource governance, live reconfiguration with rollback support, and
-  possible OpAMP support.
+  resource governance, live reconfiguration with rollback support, and possible
+  OpAMP support.
 - **Core component ecosystem**: receivers, processors, exporters, and extensions
-  covering the majority of common telemetry pipelines,
-  maintained within OpenTelemetry.
+  covering the majority of common telemetry pipelines, maintained within
+  OpenTelemetry.
 - **Extensibility and processing**: a WASM-based extension model for specialized
   components, including exploration of how selected existing OpenTelemetry
   Collector (and collector contrib) components could run inside the Dataflow
   Engine. This also includes a new OTAP-native transform processor with
   OTTL-compatible transformations and the experimental OPL language.
 - **SDK-level OTAP export**: prototyping OTAP exporters in OpenTelemetry SDKs,
-  starting with OTel Rust, to evaluate how much efficiency is gained when telemetry
-  starts in an Arrow-friendly representation at the SDK boundary instead of being
-  converted later in the pipeline.
+  starting with OTel Rust, to evaluate how much efficiency is gained when
+  telemetry starts in an Arrow-friendly representation at the SDK boundary
+  instead of being converted later in the pipeline.
 - **Ecosystem validation and guidance**: collaboration with the OpenTelemetry
   Demo and relevant Blueprint efforts to validate OTAP and the Dataflow Engine
   in realistic end-to-end scenarios.
@@ -304,8 +305,8 @@ OPL, or OpenTelemetry Processing Language, is currently being specified and
 implemented. It is intended to be stream-oriented, strongly typed, and safe for
 processing signals that comply with the OpenTelemetry data model. This
 processing language could also enable predicate and projection pushdown,
-allowing receivers to apply filtering and field-selection requirements closer
-to the source when supported.
+allowing receivers to apply filtering and field-selection requirements closer to
+the source when supported.
 
 We are also exploring native integration with agentic workflows, enabling agents
 to discover engine capabilities, configuration possibilities, and internal
@@ -339,8 +340,9 @@ bar for telemetry pipelines.
 
 Join the discussions in the
 [otel-arrow](https://github.com/open-telemetry/otel-arrow/discussions) GitHub
-project, on the [#otel-arrow](https://cloud-native.slack.com/archives/C07S4Q67LTF)
-Slack channel, or in the relevant OpenTelemetry
+project, on the
+[#otel-arrow](https://cloud-native.slack.com/archives/C07S4Q67LTF) Slack
+channel, or in the relevant OpenTelemetry
 [SIG meetings - Arrow](https://github.com/open-telemetry/community/tree/fa6a4b68cf63438b760419124b0abfbe4ae238ed#sig-arrow).
 Contributions are welcome. For larger contributions, we strongly encourage
 opening a [GitHub issue](https://github.com/open-telemetry/otel-arrow/issues)
