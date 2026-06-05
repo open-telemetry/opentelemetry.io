@@ -53,13 +53,13 @@
                 "icon" "fa-solid fa-feather")
     -}}
 
-    {{ $isNative := and (or (eq .registryType "instrumentation") (eq .registryType "application integration")) (.isNative) }}
-    {{ $isFirstParty := and (or (eq .registryType "instrumentation") (eq .registryType "application integration")) (.isFirstParty) }}
+    {{ $isNative := and (or (eq .registryType "instrumentation") (eq .registryType "application integration")) (.isNative) -}}
+    {{ $isFirstParty := and (or (eq .registryType "instrumentation") (eq .registryType "application integration")) (.isFirstParty) -}}
     {{ $currentTime := (time now) -}}
     {{ $delta := $currentTime.Sub (time.AsTime .createdAt) -}}
     {{ $isNew := lt $delta.Hours 730 -}}
-    {{ $usedInDemo := and (isset . "urls") (isset .urls "demo") }}
-    {{ $deprecated := and (isset . "deprecated") (isset .deprecated "reason") }}
+    {{ $usedInDemo := and (isset . "urls") (isset .urls "demo") -}}
+    {{ $deprecated := and (isset . "deprecated") (isset .deprecated "reason") -}}
     {{ $package := "" -}}
     {{ if and (.package) (isset $remoteRegistries .package.registry) -}}
         {{ $package = merge .package (index $remoteRegistries .package.registry) -}}
@@ -90,9 +90,9 @@
     {{ errorf "The %q registry entry requires a repo or website URL." .title }}
     {{ end -}}
     {{ $primaryHref := printf "href=%q" $primaryUrl | safeHTMLAttr -}}
-    {{ $flags := slice -}} <!-- Initialize flags slice -->
-    {{ if $isNew -}}  <!-- Check if the entry is new -->
-    {{ $flags = $flags | append "new" -}}
+    {{ $flags := slice -}}
+    {{ if $isNew -}}
+        {{ $flags = $flags | append "new" -}}
     {{ end -}}
     {{ if $isNative -}}
         {{ $flags = $flags | append "native" -}}
@@ -100,8 +100,8 @@
     {{ if $isFirstParty -}}
         {{ $flags = $flags | append "first_party" -}}
     {{ end -}}
-    {{ if $usedInDemo -}}  <!-- Check if the entry was used in a demo -->
-    {{ $flags = $flags | append "used_in_demo" -}}
+    {{ if $usedInDemo -}}
+        {{ $flags = $flags | append "used_in_demo" -}}
     {{ end -}}
     {{ if $deprecated -}}
         {{ $flags = $flags | append "deprecated" -}}
@@ -141,17 +141,17 @@
         <p class="card-text">
             <small class="text-body-secondary">
             by
-            {{ range $index, $author := .authors -}}
-                {{ if $index }}, {{ end }}
-                {{ if eq $author.name "OpenTelemetry Authors" -}}
+            {{- range $index, $author := .authors }}
+                {{- if $index }}, {{ else }} {{ end }}
+                {{- if eq $author.name "OpenTelemetry Authors" -}}
                     <a href="/" class="badge rounded-pill text-bg-primary">🔭 {{ $author.name }} 🔭</a>
-                {{ else if isset $author "url" }}
-                    {{ $href := printf "href=%q" $author.url | safeHTMLAttr -}}
+                {{- else if isset $author "url" }}
+                    {{- $href := printf "href=%q" $author.url | safeHTMLAttr -}}
                     <a {{ $href }} target="_blank" rel="noopener" class="card-link external-link">{{ $author.name }}</a>
-                {{ else -}}
-                    {{ $author.name -}}
-                {{ end -}}
-            {{ end -}}
+                {{- else -}}
+                    {{- $author.name -}}
+                {{- end -}}
+            {{- end -}}
             </small>
         </p>
         <div class="row p-2">
@@ -165,19 +165,17 @@
                     {{ end -}}
                     {{- .description | markdownify -}}
                 </div>
-
                 <div class="tags mb-2">
-                    {{ if .tags }}
+                    {{- if .tags }}
                         <div>
-                            {{ range .tags }}
+                            {{- range .tags }}
                                 <a href="{{ $registryUrl }}/?s={{ . | urlize }}" class="badge text-bg-primary me-1">{{ . }}</a>
-                            {{ end }}
+                            {{- end }}
                         </div>
-                    {{ end }}
+                    {{- end }}
                 </div>
-
                 {{ with $package -}}
-                    {{ if not (eq .quickInstall false) }}
+                    {{ if not (eq .quickInstall false) -}}
                     <h6><i class="fa-solid fa-forward"></i> Quick Install</h6>
                     <p>{{ (partial .installTemplate .) | markdownify -}}
                     </p>
@@ -228,9 +226,7 @@
             {{- end -}}
             </div>
         </div>
-        <div>
-
-        </div>
+        <div></div>
         {{ with .urls.website -}}
         {{ $websiteHref := printf "href=%q" . | safeHTMLAttr -}}
         <a {{ $websiteHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-house" aria-hidden="true"></i>&nbsp;Website</a>
@@ -254,4 +250,4 @@
         {{- end -}}
         </div>
     </li>
-  {{ end -}}
+{{ end -}}
