@@ -7,7 +7,7 @@ default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
 ---
 
 Cilium は、Kubernetes クラスター向けのネットワーキングとセキュリティを提供するために eBPF を使用する、オープンソースのセキュリティ・ネットワーキング・オブザーバビリティのプラットフォームです。
-場合によっては、Cilium と OBI の両方が使用する eBPF プログラムが OBI が使用する eBPF プログラムと競合し、問題を引き起こすことがあります。
+場合によっては、Cilium と OBI がそれぞれ使用する eBPF プログラムが競合し、問題を引き起こすことがあります。
 
 OBI と Cilium は、eBPF のトラフィック制御クラシファイアプログラム `BPF_PROG_TYPE_SCHED_CLS` を使用します。
 これらのプログラムは、カーネルネットワーキングスタックの ingress と egress のデータパスにアタッチされます。
@@ -277,7 +277,7 @@ data:
         enable: true
     routes:
       unmatched: heuristic
-    # let's instrument only the docs server
+    # ドキュメントサーバーのみを計装する
     discovery:
       instrument:
         - k8s_deployment_name: "nodejs-service"
