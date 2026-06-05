@@ -6,8 +6,7 @@ sidebar_root_for: children
 cascade:
   vers: 0.153.0
 weight: 270
-default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
-drifted_from_default: true
+default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
 ---
 
 ![Jaeger、OTLP、Prometheusを統合したOpenTelemetryコレクターのダイアグラム](img/otel-collector.svg)
