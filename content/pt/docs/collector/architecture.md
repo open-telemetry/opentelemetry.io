@@ -82,8 +82,8 @@ service:
       exporters: [otlp, zipkin]
 ```
 
-O exemplo anterior define um _pipeline_ para o tipo rastro de dado de telemetria,
-que inclui dois _receivers_, um _processor_ e dois _exporters_. O
+O exemplo anterior define um _pipeline_ para o tipo rastro de dado de
+telemetria, que inclui dois _receivers_, um _processor_ e dois _exporters_. O
 _receiver_ com dois _receivers_, um _processor_ e dois _exporters_.
 
 ### Receivers
