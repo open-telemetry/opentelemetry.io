@@ -12235,9 +12235,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T16:01:30.294678083Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/akka/akka-actor-fork-join-2.5/": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-05T16:01:30.879887168Z"
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/akka/akka-actor-forkjoin-2.5": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-05T17:56:46.520863318Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/akka/akka-http-10.0/javaagent": {
     "StatusCode": 206,
@@ -12579,10 +12579,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T16:02:10.161287094Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/oshi": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-05T16:02:10.722637367Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/payara-5.2020": {
     "StatusCode": 206,
     "LastSeen": "2026-06-05T16:02:11.224062628Z"
@@ -12611,9 +12607,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T16:02:14.418822159Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/quarkus-resteasy-reactive": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-05T16:02:14.904355776Z"
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/quarkus-resteasy-reactive-1.11": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-05T17:57:08.836170681Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/quartz-2.0": {
     "StatusCode": 206,
@@ -12667,9 +12663,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T16:02:21.654921812Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/scala-fork-join-2.8": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-05T16:02:22.141593523Z"
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/scala-forkjoin-2.8": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-05T17:57:15.54997598Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/servlet": {
     "StatusCode": 206,
