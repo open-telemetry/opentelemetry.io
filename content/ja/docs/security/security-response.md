@@ -2,6 +2,7 @@
 title: コミュニティインシデント対応ガイドライン
 weight: 102
 default_lang_commit: 4285e9500a42e673c587c02a4a79fb4910b4a8dc
+drifted_from_default: true
 ---
 
 セキュリティ上の脆弱性は、迅速に、そして場合によっては非公開で対応する必要があります。
