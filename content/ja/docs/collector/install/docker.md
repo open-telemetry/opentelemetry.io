@@ -1,12 +1,12 @@
 ---
-title: Dockerでコレクターをインストールする
+title: Docker で Collector をインストールする
 linkTitle: Docker
 weight: 100
 default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
 ---
 
-以下のコマンドを使用して、Docker イメージをプルし、コンテナでコレクターを実行します。
-`{{% param vers %}}`は、実行したいコレクターのバージョンに置き換えてください。
+以下のコマンドを使用して、Docker イメージをプルし、コンテナで Collector を実行します。
+`{{% param vers %}}` は、実行したい Collector のバージョンに置き換えてください。
 
 {{< tabpane text=true >}} {{% tab DockerHub %}}
 
@@ -51,7 +51,7 @@ otel-collector:
     - ./otel-collector-config.yaml:/etc/otelcol/config.yaml
   ports:
     - 1888:1888 # pprof拡張
-    - 8888:8888 # コレクターのPrometheusメトリクス
+    - 8888:8888 # Collector の Prometheus メトリクス
     - 8889:8889 # Prometheusエクスポーターのメトリクス
     - 13133:13133 # health_check拡張
     - 4317:4317 # OTLP gRPCレシーバー
