@@ -168,12 +168,6 @@
   contact: https://github.com/jpkrohling/
   oss: true
   commercial: true
-- name: Helios
-  nativeOTLP: true
-  url: https://gethelios.dev/
-  contact:
-  oss: false
-  commercial: true
 - name: Heroku
   nativeOTLP: true
   url: https://devcenter.heroku.com/articles/heroku-telemetry
@@ -230,7 +224,7 @@
   commercial: true
 - name: KloudMate
   nativeOTLP: true
-  url: https://docs.kloudmate.com/using-opentelemetry-collector
+  url: https://docs.kloudmate.com/opentelemetry/using-opentelemetry-collector/
   contact: hello@kloudmate.com
   oss: false
   commercial: true
@@ -567,7 +561,7 @@
   commercial: true
 - name: GuanChaYi by LogEase
   nativeOTLP: true
-  url: https://logease.cn/en-logease-observability-platform/
+  url: https://www.logease.co/en/logease-observability-platform/
   contact: contact@yottabyte.cn
   oss: false
   commercial: true

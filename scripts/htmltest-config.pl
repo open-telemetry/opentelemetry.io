@@ -7,19 +7,60 @@ my $gD = 0;
 
 sub main {
     my @ignore_dirs;
+    my @drifted_ignore_dirs;
 
-    collect_htmltest_config_from_front_matter(\@ignore_dirs, @ARGV);
-    update_htmltest_config_file(\@ignore_dirs);
+    collect_htmltest_config_from_front_matter(\@ignore_dirs, \@drifted_ignore_dirs, @ARGV);
+    update_htmltest_config_file(\@ignore_dirs, \@drifted_ignore_dirs);
 }
 
 sub collect_htmltest_config_from_front_matter {
-    my ($ignore_dirs_ref, @files) = @_;
+    my ($ignore_dirs_ref, $drifted_ignore_dirs_ref, @files) = @_;
 
     foreach my $file_path (sort @files) {
+        my $drifted_dir = extract_drifted_ignore_dir($file_path);
+        push @$drifted_ignore_dirs_ref, $drifted_dir if defined $drifted_dir;
+
         my @htmltest_config = extract_htmltest_config($file_path);
         next unless @htmltest_config;
         push @$ignore_dirs_ref, @htmltest_config;
     }
+}
+
+sub extract_drifted_ignore_dir {
+    # If $file_path is a drifted localized page (drifted_from_default: true in
+    # front matter), return an end-anchored IgnoreDirs regex for its output
+    # directory; otherwise return undef.
+    #
+    # Link checking originating from drifted pages is skipped (their links may be
+    # stale), but the pages are still resolvable as anchor targets, so inbound
+    # links from non-drifted pages keep being validated.
+    my ($file_path) = @_;
+
+    open my $fh, '<', $file_path or die "Could not open '$file_path': $!";
+    my $content = do { local $/; <$fh> };
+    close $fh;
+
+    return unless $content =~ /---\n(.*?)\n---/s;
+    my $front_matter = $1;
+    return unless $front_matter =~ /^drifted_from_default:\s*true\s*$/m;
+
+    # Strip the leading 'content/' source prefix.
+    my $path = $file_path;
+    $path =~ s{^\./}{};
+    return unless $path =~ s{^content/}{};
+
+    # Skip files under underscore-prefixed directories (e.g. '_includes'): they
+    # are fragments, not standalone output pages.
+    return if $path =~ m{(^|/)_[^/]+/};
+
+    # Map the source file to its pretty-URL output directory.
+    if ($path =~ m{^(.*)/(?:_index|index)\.(?:md|html)$}) {
+        $path = $1; # section or leaf-bundle: directory is the URL
+    } else {
+        $path =~ s{\.(?:md|html)$}{}; # leaf page: filename slug is the URL segment
+    }
+
+    return "^$path/\$";
 }
 
 sub extract_htmltest_config {
@@ -98,9 +139,10 @@ sub _extract_htmltest_config {
 }
 
 sub update_htmltest_config_file {
-    my ($ignore_dirs_ref) = @_;
+    my ($ignore_dirs_ref, $drifted_ignore_dirs_ref) = @_;
     my $htmltest_config_path = '.htmltest.yml';
     my $do_not_edit_msg = "  # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.\n";
+    my $drifted_msg = "  # Drifted localized pages (drifted_from_default: true):\n";
 
     # Read config file as array of lines
     open my $fh, '<', $htmltest_config_path or die "Could not open '$htmltest_config_path' for reading: $!";
@@ -116,6 +158,12 @@ sub update_htmltest_config_file {
             foreach my $ignore_dir (@$ignore_dirs_ref) {
                 my $prefix = $ignore_dir =~ /^#/ ? '  ' : '  - ';
                 push @new_lines, "$prefix$ignore_dir\n";
+            }
+            if (@$drifted_ignore_dirs_ref) {
+                push @new_lines, $drifted_msg;
+                foreach my $drifted_dir (sort @$drifted_ignore_dirs_ref) {
+                    push @new_lines, "  - $drifted_dir\n";
+                }
             }
             push @new_lines, $do_not_edit_msg;
             $in_ignore_dirs = 1;
