@@ -146,7 +146,7 @@ utilizará la libería Oat++, incluyendo los archivos de cabecera de oatpp y
 enlazándolos durante la compilación de tu proyecto.
 
 Dentro de `roll-dice`, crea un fichero llamado `CMakeLists.txt` para definir los
-directorios de la libería de Oatp++, incluir las rutas de directorio, y enlazar
+directorios de la librería de Oatp++, incluir las rutas de directorio, y enlazar
 con Oat++ durante el proceso de compilación.
 
 ```cmake
