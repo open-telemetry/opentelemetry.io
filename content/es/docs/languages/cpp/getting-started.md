@@ -356,7 +356,7 @@ cmake .. -DCMAKE_PREFIX_PATH=$(pwd)/../../install
 cmake --build .
 ```
 
-Tras construir correctamente tu proyecto, puedes ejectuar el archivo ejecutable
+Tras compilar correctamente tu proyecto, puedes ejecutar el archivo ejecutable
 generado.
 
 ```bash
