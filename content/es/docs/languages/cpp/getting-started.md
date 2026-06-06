@@ -141,7 +141,7 @@ servidor HTTP, que queremos instrumentar posteriormente.
 
 ## Crea y levanta un Servidor HTTP
 
-En tu carpeta `otel-cpp-starter`, crea un subcarpeta `roll-dice`, donde se
+En tu carpeta `otel-cpp-starter`, crea una subcarpeta `roll-dice`, donde se
 utilizará la libería Oat++, incluyendo los archivos de cabecera de oatpp y
 enlazándolos durante la compilación de tu proyecto.
 
