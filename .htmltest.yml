@@ -150,7 +150,6 @@ IgnoreDirs:
   - ^ja/docs/languages/ruby/getting-started/$
   - ^ja/docs/languages/ruby/instrumentation/$
   - ^ja/docs/platforms/faas/lambda-auto-instrument/$
-  - ^ja/docs/platforms/faas/lambda-collector/$
   - ^ja/docs/platforms/faas/lambda-manual-instrument/$
   - ^ja/docs/platforms/kubernetes/collector/components/$
   - ^ja/docs/platforms/kubernetes/helm/collector/$
