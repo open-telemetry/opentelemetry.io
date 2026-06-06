@@ -162,7 +162,6 @@ IgnoreDirs:
   - ^ja/docs/zero-code/java/spring-boot-starter/api/$
   - ^ja/docs/zero-code/java/spring-boot-starter/other-spring-autoconfig/$
   - ^ja/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/$
-  - ^ja/docs/zero-code/js/configuration/$
   - ^ja/docs/zero-code/obi/configure/export-data/$
   - ^ja/docs/zero-code/obi/metrics/$
   - ^ja/docs/zero-code/obi/setup/docker/$
