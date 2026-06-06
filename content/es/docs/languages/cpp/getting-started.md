@@ -348,7 +348,7 @@ int main() {
 }
 ```
 
-Construye de nuevo tu proyecto.
+Compila de nuevo tu proyecto.
 
 ```bash
 cd build
