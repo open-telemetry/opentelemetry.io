@@ -224,7 +224,7 @@ int main() {
 }
 ```
 
-Construye y ejecuta la aplicación con los siguientes comandos cd CMake:
+Construye y ejecuta la aplicación con los siguientes comandos CMake:
 
 ```bash
 mkdir build
