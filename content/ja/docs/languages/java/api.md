@@ -2,15 +2,14 @@
 title: APIによるテレメトリーの記録
 weight: 11
 aliases: [/docs/languages/java/api-components]
-logBridgeWarning: >
+logBridgeWarning: >-
   `LoggerProvider` / `Logger` APIは構造的に等価なトレースとメトリクスAPIと類似していますが、
   異なる用途を提供します。現在のところ、`LoggerProvider` / `Logger` および関連クラスは
   [Log Bridge API](/docs/specs/otel/logs/api/)を表しており、これは他のログAPI/フレームワークを通じて
   記録されたログをOpenTelemetryにブリッジするためのログアペンダーを作成するために存在します。
   これらはLog4j / SLF4J / Logback / などの代替として、エンドユーザーが使用することを意図していません。
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
-drifted_from_default: true
-cSpell:ignore: Dotel kotlint Logback updowncounter
+default_lang_commit: 813498074d85258c7180d137ace9e272d0149353
+cSpell:ignore: kotlint Logback updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -32,17 +31,15 @@ APIは複数の実装をサポートするように設計されています。
 OpenTelemetryによって2つの実装が提供されています。
 
 - [SDK](../sdk/)参照実装：これはほとんどのユーザーにとって適切な選択です
-- [Noop](#noop-implementation)実装：ユーザーがインスタンスをインストールしないときに計装がデフォルトで使用する、最小限でゼロ依存の実装です
+- [No-op](#no-op-implementation)実装：ユーザーがインスタンスをインストールしないときに計装がデフォルトで使用する、最小限でゼロ依存の実装です
 
 APIは、ライブラリ、フレームワーク、およびアプリケーション所有者が直接的な依存関係として取得するように設計されています。
 APIには[強力な後方互換性保証](https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#compatibility-requirements)し、推移的依存関係がなく、[Java 8+をサポート](https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility)しています。
 ライブラリとフレームワークはAPIのみに依存し、APIのメソッドのみを呼び出すべきであり、アプリケーション/エンドユーザーにSDKへの依存関係を追加し、設定されたインスタンスをインストールするよう指示する必要があります。
 
-{{% alert title=Javadoc %}}
-
-すべてのOpenTelemetry Javaコンポーネントのjavadocリファレンスについては、[javadoc.io/doc/io.opentelemetry](https://javadoc.io/doc/io.opentelemetry)を参照してください。
-
-{{% /alert %}}
+> [!NOTE] Javadoc
+>
+> すべてのOpenTelemetry Javaコンポーネントのjavadocリファレンスについては、[javadoc.io/doc/io.opentelemetry](https://javadoc.io/doc/io.opentelemetry)を参照してください。
 
 ## APIコンポーネント {#api-components}
 
@@ -334,7 +331,7 @@ public class ExtractContextUsage {
 
 ## OpenTelemetry API {#opentelemetry-api}
 
-`io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}` アーティファクトには、トレース、メトリクス、ログ、noop実装、バゲージ、主要な`TextMapPropagator`実装、および[context API](#context-api)への依存関係を含むOpenTelemetry APIが含まれています。
+`io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}` アーティファクトには、トレース、メトリクス、ログ、no-op実装、バゲージ、主要な`TextMapPropagator`実装、および[context API](#context-api)への依存関係を含むOpenTelemetry APIが含まれています。
 
 ### プロバイダーとスコープ {#providers-and-scopes}
 
@@ -346,7 +343,9 @@ public class ExtractContextUsage {
 - [MeterProvider](#meterprovider)は、メトリクスを記録するためのスコープ付き[Meters](#meter)を提供します
 - [LoggerProvider](#loggerprovider)は、ログを記録するためのスコープ付き[Loggers](#logger)を提供します
 
-{{% alert %}} {{% param logBridgeWarning %}} {{% /alert %}}
+> [!WARNING]
+>
+> {{% param logBridgeWarning %}}
 
 スコープは三要素（name、version、schemaUrl）によって識別されます。スコープの識別が一意であることを確実にするよう注意する必要があります。
 典型的なアプローチは、スコープ名をパッケージ名または完全修飾クラス名に設定し、スコープバージョンをライブラリバージョンに設定することです。
@@ -413,7 +412,7 @@ public class ProvidersAndScopes {
 
 ### Attributes {#attributes}
 
-[Attributes](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/common/Attributes.html)は[標準属性定義](/docs/specs/otel/common/#attribute)を表すキー値ペアのバンドルです。
+[Attributes](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/common/Attributes.html)は[属性定義](/docs/specs/otel/common/#attribute)を表すキー値ペアのバンドルです。
 `Attributes`は、OpenTelemetry APIにおける繰り返し出現する概念です。
 
 - [スパン](#span)、スパンイベント、スパンリンクには属性があります
@@ -510,15 +509,13 @@ public class AttributesUsage {
 ```
 <!-- prettier-ignore-end -->
 
-### OpenTelemetry {##opentelemetry}
+### OpenTelemetry {#opentelemetry}
 
-{{% alert title="Spring Boot Starter" %}}
-
-Spring Boot starterは特別なケースで、`OpenTelemetry`がSpring Beanとして利用可能です。単純にSpringコンポーネントに`OpenTelemetry`を注入してください。
-
-[カスタム手動計装によるSpring Boot starterの拡張](/docs/zero-code/java/spring-boot-starter/api/)についてもっと読む。
-
-{{% /alert %}}
+> [!NOTE] Spring Boot Starter
+>
+> Spring Boot starterは特別なケースで、`OpenTelemetry`がSpring Beanとして利用可能です。単純にSpringコンポーネントに`OpenTelemetry`を注入してください。
+>
+> [カスタム手動計装によるSpring Boot starterの拡張](/docs/zero-code/java/spring-boot-starter/api/)についてもっと読む。
 
 [OpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html)は、計装に渡すのに便利なトップレベルAPIコンポーネントのホルダーです。
 
@@ -559,50 +556,124 @@ public class OpenTelemetryUsage {
 
 ### GlobalOpenTelemetry {#globalopentelemetry}
 
-{{% alert title="Java agent" %}}
-
-Javaエージェントは特別なケースで、`GlobalOpenTelemetry`はエージェントによって設定されます。
-単純に`GlobalOpenTelemetry.get()`を呼び出して`OpenTelemetry`インスタンスにアクセスしてください。
-
-[カスタム手動計装によるJavaエージェントの拡張](/docs/zero-code/java/agent/api/)についてもっと読む。
-
-{{% /alert %}}
+> [!NOTE] Javaエージェント
+>
+> Javaエージェントは特別なケースで、`GlobalOpenTelemetry`はエージェントによって設定されます。
+> 単純に`GlobalOpenTelemetry.getOrNoop()`を呼び出して`OpenTelemetry`インスタンスにアクセスしてください。
+>
+> [カスタム手動計装によるJavaエージェントの拡張](/docs/zero-code/java/agent/api/)についてもっと読む。
 
 [GlobalOpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html)は、グローバルシングルトンの[OpenTelemetry](#opentelemetry)インスタンスを保持します。
 
-計装は、`GlobalOpenTelemetry`の使用を避けるべきです。
-かわりに、初期化引数として`OpenTelemetry`を受け入れ、設定されていない場合は[Noop実装](#noop-implementation)にデフォルトするべきです。
-この規則には例外があります。
-[Javaエージェント](/docs/zero-code/java/agent/)によってインストールされた`OpenTelemetry`インスタンスは`GlobalOpenTelemetry`を介して利用可能です。
-追加の手動計装を持つユーザーは、`GlobalOpenTelemetry.get()`を介してアクセスすることが推奨されます。
+`GlobalOpenTelemetry`は、初期化順序の問題を避けるために非常に独特な設計になっており、その結果として慎重に使う必要があります。
+具体的には、`GlobalOpenTelemetry.get()`は、`GlobalOpenTelemetry.set(..)`が呼び出されたかどうかにかかわらず、常に同じ結果を返します。
+内部的には、`get()`が`set()`より前に呼び出された場合、実装は[no-op実装](#no-op-implementation)を引数として内部的に`set(..)`を呼び出し、それを返します。
+`set(..)`は2回以上呼び出されると例外をトリガーするため、`get()`の後に`set(..)`を呼び出すと、サイレントに失敗するのではなく例外が発生します。
 
-`GlobalOpenTelemetry.get()`は常に同じ結果を返すことが保証されています。`GlobalOpenTelemetry.set(..)`より前に`GlobalOpenTelemetry.get()`が呼び出された場合、`GlobalOpenTelemetry`はnoop実装に設定され、`GlobalOpenTelemetry.set(..)`への将来の呼び出しは例外をスローします。したがって、アプリケーションライフサイクルの可能な限り早期に、計装によって`GlobalOpenTelemetry.get()`が呼び出される前に`GlobalOpenTelemetry.set(..)`を呼び出すことが重要です。この保証により初期化順序の問題が表面化します。`GlobalOpenTelemetry.set()`の呼び出しが遅すぎる場合（計装が`GlobalOpenTelemetry.get()`を呼び出した後）、サイレントに失敗するのではなく例外をトリガーします。
+Javaエージェントは特別なケースです。
+`GlobalOpenTelemetry`は、[ネイティブ計装](../instrumentation/#native-instrumentation)と[手動計装](../instrumentation/#manual-instrumentation)が、エージェントによってインストールされた`OpenTelemetry`インスタンスにテレメトリーを記録するための唯一の手段です。
+このインスタンスを使うことは重要かつ有用なので、`GlobalOpenTelemetry`には次の方法でアクセスすることを推奨します。
 
-[autoconfigure](../configuration/#zero-code-sdk-autoconfigure)が存在する場合、`GlobalOpenTelemetry`は`-Dotel.java.global-autoconfigure.enabled=true`を設定することで自動的に初期化できます（または環境変数`export OTEL_JAVA_GLOBAL_AUTOCONFIGURE_ENABLED=true`を介して）。有効にされると、`GlobalOpenTelemetry.get()`への最初の呼び出しが自動設定をトリガーし、結果の`OpenTelemetry`インスタンスで`GlobalOpenTelemetry.set(..)`を呼び出します。
-
-以下のコードスニペットは`GlobalOpenTelemetry` APIコンテキスト伝搬を調査します。
+**ネイティブ計装では、デフォルトで`GlobalOpenTelemetry.getOrNoop()`を使用してください:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt "src/main/java/otel/GlobalOpenTelemetryUsage.java"?>
+<?code-excerpt "src/main/java/otel/GlobalOpenTelemetryNativeInstrumentationUsage.java"?>
 ```java
 package otel;
 
 import io.opentelemetry.api.GlobalOpenTelemetry;
 import io.opentelemetry.api.OpenTelemetry;
 
-public class GlobalOpenTelemetryUsage {
+public class GlobalOpenTelemetryNativeInstrumentationUsage {
 
-  public static void openTelemetryUsage(OpenTelemetry openTelemetry) {
-    // アプリケーションライフサイクルの可能な限り早期にGlobalOpenTelemetryインスタンスを設定
-    // setは一度だけ呼び出される必要があります。複数回呼び出すと例外が発生します。
-    GlobalOpenTelemetry.set(openTelemetry);
+  public static void globalOpenTelemetryUsage(OpenTelemetry openTelemetry) {
+    // JavaエージェントのOpenTelemetryが存在する場合はそれで、なければno-op実装で初期化される。
+    MyClient client1 = new MyClientBuilder().build();
 
-    // GlobalOpenTelemetryインスタンスを取得。
-    openTelemetry = GlobalOpenTelemetry.get();
+    // 明示的なOpenTelemetryインスタンスで初期化し、Javaエージェントのインスタンスをオーバーライドする。
+    MyClient client2 = new MyClientBuilder().setOpenTelemetry(openTelemetry).build();
+  }
+
+  /**
+   * OpenTelemetryをネイティブ計装したサンプルライブラリ。{@link MyClientBuilder} で初期化される。
+   */
+  public static class MyClient {
+    private final OpenTelemetry openTelemetry;
+
+    private MyClient(OpenTelemetry openTelemetry) {
+      this.openTelemetry = openTelemetry;
+    }
+
+    // ... ライブラリのメソッドは省略
+  }
+
+  /** {@link MyClient} のビルダー。 */
+  public static class MyClientBuilder {
+    // OpenTelemetryはGlobalOpenTelemetryのインスタンスが設定されていればそれにフォールバックし、
+    // （Javaエージェントやアプリケーションによって設定）、なければno-op実装にフォールバックする。
+    private OpenTelemetry openTelemetry = GlobalOpenTelemetry.getOrNoop();
+
+    /** 使用するOpenTelemetryインスタンスを明示的に設定する。 */
+    public MyClientBuilder setOpenTelemetry(OpenTelemetry openTelemetry) {
+      this.openTelemetry = openTelemetry;
+      return this;
+    }
+
+    /** クライアントをビルドする。 */
+    public MyClient build() {
+      return new MyClient(openTelemetry);
+    }
   }
 }
 ```
 <!-- prettier-ignore-end -->
+
+`GlobalOpenTelemetry.getOrNoop()`は、`get()`が`set(..)`を呼び出すという副作用なしに設計されており、アプリケーションコードが後で`set(..)`を呼び出しても例外を発生させない能力を保っていることに注意してください。
+
+その結果として:
+
+- Javaエージェントが存在する場合、計装はデフォルトでエージェントによってインストールされた`OpenTelemetry`インスタンスで初期化されます。
+- Javaエージェントが存在しない場合、計装はデフォルトでno-op実装で初期化されます。
+- ユーザーは別のインスタンスを引数に`setOpenTelemetry(..)`を呼び出すことで、デフォルトを明示的にオーバーライドできます。
+
+**手動計装では、デフォルトで次の方法を使用してください:**
+
+<!-- prettier-ignore-start -->
+<!-- temporarily change except path to resolve relative to configuration directory, and revert after -->
+<?code-excerpt path-base="examples/java/configuration"?>
+<?code-excerpt "src/main/java/otel/GlobalOpenTelemetryManualInstrumentationUsage.java"?>
+```java
+package otel;
+
+import io.opentelemetry.api.GlobalOpenTelemetry;
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
+
+public class GlobalOpenTelemetryManualInstrumentationUsage {
+
+  public static void globalOpenTelemetryUsage() {
+    // GlobalOpenTelemetryがすでに設定されていれば（Javaエージェントなどによって）それを使う。
+    // そうでなければ、OpenTelemetry SDKインスタンスを初期化して使う。
+    OpenTelemetry openTelemetry =
+        GlobalOpenTelemetry.isSet() ? GlobalOpenTelemetry.get() : initializeOpenTelemetry();
+
+    // 手動計装にインストールする。これにはアプリケーションの依存性注入フレームワークに
+    // シングルトンとして設定する作業が含まれる場合がある。
+  }
+
+  /** 自動設定を使用してOpenTelemetry SDKを初期化する。 */
+  public static OpenTelemetry initializeOpenTelemetry() {
+    return AutoConfiguredOpenTelemetrySdk.initialize().getOpenTelemetrySdk();
+  }
+}
+```
+<?code-excerpt path-base="examples/java/api"?>
+<!-- prettier-ignore-end -->
+
+その結果として:
+
+- Javaエージェントが存在する場合、アプリケーションはエージェントによってインストールされた`OpenTelemetry`インスタンスで手動計装を初期化します。
+- Javaエージェントが存在しない場合、アプリケーションは[OpenTelemetrySdk](../sdk/#opentelemetrysdk)インスタンスを初期化し、それを使用して手動計装を初期化します。
 
 ### TracerProvider {#tracerprovider}
 
@@ -1215,7 +1286,9 @@ public class AsyncGaugeUsage {
 [LoggerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/LoggerProvider.html)は、ログのAPIエントリポイントで、[Loggers](#logger)を提供します。
 プロバイダーとスコープの情報については、[プロバイダーとスコープ](#providers-and-scopes)を参照してください。
 
-{{% alert %}} {{% param logBridgeWarning %}} {{% /alert %}}
+> [!WARNING]
+>
+> {{% param logBridgeWarning %}}
 
 #### Logger {#logger}
 
@@ -1297,9 +1370,12 @@ public class LogRecordUsage {
 ```
 <!-- prettier-ignore-end -->
 
-### Noop実装 {#noop-implementation}
+### No-op実装 {#no-op-implementation}
 
-`OpenTelemetry#noop()`メソッドは、[OpenTelemetry](#opentelemetry)および提供するすべてのAPIコンポーネントのnoop実装へのアクセスを提供します。名前が示すように、noop実装は何もせず、パフォーマンスに影響を与えないように設計されています。計装は、noop が使用されている場合でも、テレメトリーを記録するために必要な属性値やその他のデータを計算/割り当てしている場合、パフォーマンスに影響を与える可能性があります。noopは、ユーザーが[SDK](../sdk/)などの具体的な実装を設定およびインストールしていないときの有用なデフォルトの`OpenTelemetry`インスタンスです。
+`OpenTelemetry#noop()`メソッドは、[OpenTelemetry](#opentelemetry)および提供するすべてのAPIコンポーネントのno-op実装へのアクセスを提供します。
+名前が示すように、no-op実装は何もせず、パフォーマンスに影響を与えないように設計されています。
+no-opが使用されている場合でも、計装はテレメトリーを記録するために必要な属性値やその他のデータを計算/割り当てしている場合、パフォーマンスに影響を与える可能性があります。
+no-opは、ユーザーが[SDK](../sdk/)などの具体的な実装を設定およびインストールしていないときの有用なデフォルトの`OpenTelemetry`インスタンスです。
 
 以下のコードスニペットは`OpenTelemetry#noop()` API使用法を調査します。
 
@@ -1328,10 +1404,10 @@ public class NoopUsage {
   private static final String SCOPE_NAME = "fully.qualified.name";
 
   public static void noopUsage() {
-    // noop OpenTelemetryインスタンスにアクセス
+    // no-op OpenTelemetryインスタンスにアクセス
     OpenTelemetry noopOpenTelemetry = OpenTelemetry.noop();
 
-    // noop トレーシング
+    // no-op トレーシング
     Tracer noopTracer = OpenTelemetry.noop().getTracer(SCOPE_NAME);
     noopTracer
         .spanBuilder("span name")
@@ -1341,7 +1417,7 @@ public class NoopUsage {
         .addEvent("event-name", Attributes.builder().put(WIDGET_COLOR, "red").build())
         .end();
 
-    // noop メトリクス
+    // no-op メトリクス
     Attributes attributes = WIDGET_RED_CIRCLE;
     Meter noopMeter = OpenTelemetry.noop().getMeter(SCOPE_NAME);
     DoubleHistogram histogram = noopMeter.histogramBuilder("fully.qualified.histogram").build();
@@ -1369,7 +1445,7 @@ public class NoopUsage {
         .gaugeBuilder("fully.qualified.gauge")
         .buildWithCallback(observable -> observable.record(10, attributes));
 
-    // noop ログ
+    // no-op ログ
     Logger noopLogger = OpenTelemetry.noop().getLogsBridge().get(SCOPE_NAME);
     noopLogger
         .logRecordBuilder()
@@ -1393,13 +1469,11 @@ public class NoopUsage {
 | 安定したセマンティック規約用に生成されたコード             | `io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha`            |
 | インキュベーティングセマンティック規約用に生成されたコード | `io.opentelemetry.semconv:opentelemetry-semconv-incubating:{{% param vers.semconv %}}-alpha` |
 
-{{% alert %}}
-
-`opentelemetry-semconv`と`opentelemetry-semconv-incubating`の両方に`-alpha`接尾辞が含まれ、破壊的変更の対象となりますが、意図は`opentelemetry-semconv`を安定化し、`opentelemetry-semconv-incubating`には永続的に`-alpha`接尾辞を残すことです。
-ライブラリはテスト用に`opentelemetry-semconv-incubating`を使用できますが、依存関係として含めるべきではありません。
-属性はバージョンから別のバージョンに来たり行ったりする可能性があるため、依存関係として含めると、推移的バージョンの競合が発生したときにエンドユーザーがランタイムエラーにさらされる可能性があります。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> `opentelemetry-semconv`と`opentelemetry-semconv-incubating`の両方に`-alpha`接尾辞が含まれ、破壊的変更の対象となりますが、意図は`opentelemetry-semconv`を安定化し、`opentelemetry-semconv-incubating`には永続的に`-alpha`接尾辞を残すことです。
+> ライブラリはテスト用に`opentelemetry-semconv-incubating`を使用できますが、依存関係として含めるべきではありません。
+> 属性はバージョンから別のバージョンに来たり行ったりする可能性があるため、依存関係として含めると、推移的バージョンの競合が発生したときにエンドユーザーがランタイムエラーにさらされる可能性があります。
 
 セマンティック規約から生成された属性定数は`AttributeKey<T>`のインスタンスで、OpenTelemetry APIが属性を受け入れるどこでも使用できます。
 
