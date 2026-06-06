@@ -125,7 +125,6 @@ IgnoreDirs:
   - ^fr/docs/zero-code/python/troubleshooting/$
   - ^ja/announcements/kubecon-japan/$
   - ^ja/blog/2025/kubecon-japan/$
-  - ^ja/docs/collector/$
   - ^ja/docs/collector/components/connector/$
   - ^ja/docs/collector/deploy/agent/$
   - ^ja/docs/collector/deploy/other/no-collector/$
