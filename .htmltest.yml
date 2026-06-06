@@ -138,7 +138,6 @@ IgnoreDirs:
   - ^ja/docs/collector/internal-telemetry/$
   - ^ja/docs/collector/management/$
   - ^ja/docs/collector/troubleshooting/$
-  - ^ja/docs/concepts/observability-primer/$
   - ^ja/docs/guidance/blueprints/$
   - ^ja/docs/languages/java/$
   - ^ja/docs/languages/java/configuration/$
