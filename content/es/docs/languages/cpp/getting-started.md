@@ -169,7 +169,7 @@ find_package(oatpp REQUIRED)
 target_link_libraries(dice-server PRIVATE oatpp::oatpp)
 ```
 
-A continuación, se necesita el código fuente de ejemplo del servidor HTTP. Este
+A continuación, se requiere el código fuente de ejemplo del servidor HTTP. Este
 realizará lo siguiente:
 
 - Inicializará un router HTTP y configurará un gestor de solicitudes para
