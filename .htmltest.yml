@@ -159,7 +159,6 @@ IgnoreDirs:
   - ^ja/docs/platforms/kubernetes/operator/troubleshooting/automatic/$
   - ^ja/docs/security/$
   - ^ja/docs/security/handling-sensitive-data/$
-  - ^ja/docs/security/security-response/$
   - ^ja/docs/zero-code/java/agent/getting-started/$
   - ^ja/docs/zero-code/java/quarkus/$
   - ^ja/docs/zero-code/java/spring-boot-starter/additional-instrumentations/$
