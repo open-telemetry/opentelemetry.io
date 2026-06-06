@@ -152,7 +152,6 @@ IgnoreDirs:
   - ^ja/docs/platforms/kubernetes/collector/components/$
   - ^ja/docs/platforms/kubernetes/operator/horizontal-pod-autoscaling/$
   - ^ja/docs/platforms/kubernetes/operator/troubleshooting/automatic/$
-  - ^ja/docs/security/$
   - ^ja/docs/security/handling-sensitive-data/$
   - ^ja/docs/zero-code/java/agent/getting-started/$
   - ^ja/docs/zero-code/java/quarkus/$
