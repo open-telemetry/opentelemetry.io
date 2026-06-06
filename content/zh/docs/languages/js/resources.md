@@ -3,6 +3,7 @@ title: 资源
 weight: 70
 description: 在你的遥测数据中添加有关应用程序环境的详细信息
 default_lang_commit: 72833370dbaba23a35a21fcb0961329201700246
+drifted_from_default: true
 cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 ---
 

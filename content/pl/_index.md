@@ -8,6 +8,7 @@ params:
   btn-lg: class="btn btn-lg btn-{1}" role="button"
   show_banner: true
 default_lang_commit: 385a8b07a0ea97568abc86caf46606c16d3110c6
+drifted_from_default: true
 ---
 
 {{% blocks/cover image_anchor="top" height="max td-below-navbar" %}}
