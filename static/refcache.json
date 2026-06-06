@@ -2848,8 +2848,8 @@
     "LastSeen": "2026-06-04T15:43:21.831253491Z"
   },
   "https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet-framework": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-06T10:19:50.873699844Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-06T10:58:32.379Z"
   },
   "https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core": {
     "StatusCode": 200,
@@ -2964,12 +2964,12 @@
     "LastSeen": "2026-06-04T15:44:20.805442568Z"
   },
   "https://en.cppreference.com/w/cpp/container/set.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-06T10:21:34.090282076Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-06T10:58:36.076Z"
   },
   "https://en.cppreference.com/w/cpp/container/vector.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-06T10:21:16.311473134Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-06T10:58:39.496Z"
   },
   "https://en.wikipedia.org": {
     "StatusCode": 200,
@@ -20104,16 +20104,16 @@
     "LastSeen": "2026-06-06T10:30:19.29Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-container": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-06T10:29:08.150939417Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-06T10:58:44.254Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-gcp": {
     "StatusCode": 200,
     "LastSeen": "2026-06-06T10:30:24.617Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-github": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-06T10:29:08.218860662Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-06T10:58:48.306Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-instana": {
     "StatusCode": 200,
