@@ -3,6 +3,7 @@ title: Traces
 weight: 1
 description: Le chemin des requêtes dans votre application.
 default_lang_commit: bc9473716003fd99487e16f95dd2c3a5b072bd2a
+drifted_from_default: true
 cSpell:ignore: Guten
 ---
 

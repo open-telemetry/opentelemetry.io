@@ -2,6 +2,7 @@
 title: ブループリント
 description: 一般的な環境において OpenTelemetry を採用し実装する際のベストプラクティスのためのブループリント
 default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
+drifted_from_default: true
 ---
 
 ブループリントは、所定の環境における OpenTelemetry の一般的な採用および実装の課題を解決するリビングドキュメントです。

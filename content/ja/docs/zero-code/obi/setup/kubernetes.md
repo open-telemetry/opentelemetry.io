@@ -2,20 +2,17 @@
 title: KubernetesにOBIをデプロイする
 linkTitle: Kubernetes
 description: KubernetesにOBIをデプロイする方法を学びます。
-weight: 3
-default_lang_commit: 19ca575e83b5d058ed02dea12c7c6770b477aa71
-drifted_from_default: true
+weight: 4
+default_lang_commit: 813498074d85258c7180d137ace9e272d0149353
 # prettier-ignore
 cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefulset
 ---
 
-{{% alert type="note" %}}
-
-このドキュメントでは、必要なエンティティをすべて自分で設定して、KubernetesにOBIを手動でデプロイする方法について説明します。
-
-<!-- Helmを使用してKubernetesにOBIをデプロイする](../kubernetes-helm/)ドキュメントを参照することをお勧めします。 -->
-
-{{% /alert %}}
+> [!NOTE]
+>
+> このドキュメントでは、必要なエンティティをすべて自分で設定して、KubernetesにOBIを手動でデプロイする方法について説明します。
+>
+> <!-- Helmを使用してKubernetesにOBIをデプロイする](../kubernetes-helm/)ドキュメントを参照することをお勧めします。 -->
 
 ## Kubernetesメタデータデコレーションを構成する {#configuring-kubernetes-metadata-decoration}
 
@@ -92,7 +89,7 @@ Kubernetesには、2つの異なる方法でOBIをデプロイできます。
 
 サイドカーコンテナとしてOBIをデプロイするには、次の構成要件があります。
 
-- プロセスの名前異空間はPod内のすべてのコンテナで共有されている必要があります(Podの `shareProcessNamespace: true` 変数)。
+- プロセスの名前空間はPod内のすべてのコンテナで共有されている必要があります(Podの `shareProcessNamespace: true` 変数)。
 - 自動計装コンテナは、特権モード(コンテナ構成の`securityContext.privileged:true` プロパティ)で実行する必要があります。
   - 一部のKubernetesインストールでは次の `securityContext` 構成が許可されますが、一部のコンテナランタイム構成ではコンテナを制限して一部の権限を削除するため、すべてのコンテナランタイム構成で機能するとは限りません。
 
@@ -105,7 +102,67 @@ Kubernetesには、2つの異なる方法でOBIをデプロイできます。
           - SYS_RESOURCE # カーネル 5.11+では不要
     ```
 
-以下の例では、OBIをコンテナ(`otel/ebpf-instrument:latest` で利用可能なイメージ)としてアタッチすることで `goblog` Podを計装します。
+#### Pod内のすべてのプロセスを計装する(推奨) {#instrumenting-all-processes-in-a-pod-recommended}
+
+OBIが `shareProcessNamespace: true` でサイドカーコンテナとして実行されている場合、OBIはPodのPID名前空間を共有するため、そのPod内のプロセスのみを参照できます。
+つまり、個別の実行可能ファイル名やポートを指定しなくても、`OTEL_EBPF_AUTO_TARGET_EXE=*` を使うことでPod内のすべてのプロセスを計装できます。
+
+これはサイドカーデプロイメントで推奨されるアプローチであり、変更を加えなくてもさまざまなPodで動作する、シンプルで再利用可能な構成が得られます。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goblog
+  labels:
+    app: goblog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: goblog
+  template:
+    metadata:
+      labels:
+        app: goblog
+    spec:
+      # サイドカー計装ツールがサービスプロセスにアクセスできるようにするために必要
+      shareProcessNamespace: true
+      serviceAccountName: obi # Kubernetesメタデータデコレーションが必要な場合
+      containers:
+        # 計装されたサービスのコンテナ
+        - name: goblog
+          image: mariomac/goblog:dev
+          imagePullPolicy: IfNotPresent
+          command: ['/goblog']
+          ports:
+            - containerPort: 8443
+              name: https
+        # OBIのサイドカーコンテナ - eBPF自動計装ツール
+        - name: obi
+          image: otel/ebpf-instrument:main
+          securityContext: # eBPFプローブのインストールには特権が必要
+            privileged: true
+          env:
+            # Pod内のすべてのプロセスを計装する(ワイルドカード)
+            - name: OTEL_EBPF_AUTO_TARGET_EXE
+              value: '*'
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: 'http://otelcol:4318'
+            # Kubernetesメタデータデコレーションが必要な場合
+            - name: OTEL_EBPF_KUBE_METADATA_ENABLE
+              value: 'true'
+```
+
+ワイルドカードを使うアプローチは、個別の実行可能ファイル名やポートを指定するよりエラーが少なくなります。
+Podに新しいサービスを追加してもOBIの構成を更新する必要がないためです。
+OBIは(共有されたPID名前空間のため)同じPod内のプロセスにしかアクセスできないので、Pod外のプロセスを誤って計装するリスクはありません。
+
+#### Pod内の特定のプロセスを計装する {#instrumenting-specific-processes-in-a-pod}
+
+Pod内で計装するプロセスをより細かく制御する必要がある場合は、ワイルドカードのかわりに実行可能ファイル名やオープンポートを指定できます。
+
+以下の例では、OBIをコンテナ(`otel/ebpf-instrument:main` で利用可能なイメージ)としてアタッチすることで `goblog` Podを計装します。
 自動計装ツールは、同じ名前空間の `otelcol` サービスの背後にあるアクセス可能なOpenTelemetryコレクターにメトリクスとトレースを転送するように構成されています。
 
 ```yaml
@@ -139,7 +196,7 @@ spec:
               name: https
         # OBIのサイドカーコンテナ - eBPF自動計装ツール
         - name: obi
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           securityContext: # eBPFプローブのインストールには特権が必要
             privileged: true
           env:
@@ -190,7 +247,7 @@ spec:
       serviceAccountName: obi # Kubernetesメタデータデコレーションが必要な場合
       containers:
         - name: autoinstrument
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           securityContext:
             privileged: true
           env:
@@ -247,11 +304,11 @@ spec:
         k8s-app: obi
     spec:
       serviceAccount: obi
-      hostPID: true           # <-- 重要。DeamonSetモードではOBIがすべての監視対象プロセスを検出できるようにするために必要
+      hostPID: true           # <-- 重要。DaemonSetモードではOBIがすべての監視対象プロセスを検出できるようにするために必要
       containers:
       - name: obi
         terminationMessagePolicy: FallbackToLogsOnError
-        image: otel/ebpf-instrument:latest
+        image: otel/ebpf-instrument:main
         env:
           - name: OTEL_EBPF_TRACE_PRINTER
             value: "text"
@@ -308,7 +365,7 @@ metadata:
 前述の例では、OBIは環境変数を介して構成されていました。
 しかし、(このページの[構成](../../configure/options/)セクションのドキュメントのように)外部のYAMLファイルを介して構成することもできます。
 
-構成をファイルとして提供するには、意図した構成のCOnfigMapをデプロイし、そのConfigMapをOBI Podにマウントし、`OTEL_EBPF_CONFIG_PATH` 環境変数で参照する方法が推奨されています。
+構成をファイルとして提供するには、意図した構成のConfigMapをデプロイし、そのConfigMapをOBI Podにマウントし、`OTEL_EBPF_CONFIG_PATH` 環境変数で参照する方法が推奨されています。
 
 OBIのYAMLドキュメントを使用したConfigMapの例です。
 
@@ -350,7 +407,7 @@ spec:
       hostPID: true # 重要！
       containers:
         - name: obi
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true
@@ -391,7 +448,7 @@ stringData:
 ```
 
 これにより、環境変数として秘密情報の値にアクセスできます。
-前述のDeamonSetの例を用いて、OBIコンテナに次の `env` セクションを追加することで実現できます。
+前述のDaemonSetの例を用いて、OBIコンテナに次の `env` セクションを追加することで実現できます。
 
 ```yaml
 env:

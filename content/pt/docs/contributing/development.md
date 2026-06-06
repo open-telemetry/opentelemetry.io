@@ -9,6 +9,7 @@ what-next: >
   alterações, veja [Enviando conteúdo][].
 weight: 60
 default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
+drifted_from_default: true
 ---
 
 {{% alert title="Ambientes de construção suportados" color=warning %}}

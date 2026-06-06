@@ -4,6 +4,7 @@ description: 5分以内にあなたのアプリからテレメトリを取得し
 aliases: [getting_started]
 weight: 10
 default_lang_commit: 646aedf04033f2d955dbdfb20f5e912c3cc89482
+drifted_from_default: true
 cSpell:ignore: darwin rolldice sinatra struct truffleruby
 ---
 

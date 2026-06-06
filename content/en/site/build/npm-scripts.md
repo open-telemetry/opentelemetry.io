@@ -96,12 +96,16 @@ are internal helpers and are not intended to be run directly.
 | `test:collector-sync`      | Collector-sync tests.                                             |
 | `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.      |
 | `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.               |
-| `test:local-tools`         | Node test runner for `scripts/**/*.test.{mjs,js}`.                |
+| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^local-tools-note]  |
 | `test-and-fix`             | Run fix scripts (excluding i18n/refcache/submodule), then checks. |
 | `diff:check`               | Warn if working tree has uncommitted changes.                     |
 | `diff:fail`                | Fail if working tree has changes (e.g. after build).              |
 | `netlify-build:preview`    | `build:preview` then `diff:check`.                                |
 | `netlify-build:production` | `build:production` then `diff:check`.                             |
+
+[^local-tools-note]:
+    This script has a compound name, rather than being `test:tools`, so that it
+    gets picked up by `test:compound-tests`.
 
 ## Utilities
 
