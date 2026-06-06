@@ -132,7 +132,6 @@ IgnoreDirs:
   - ^ja/docs/collector/extend/custom-component/extension/authenticator/$
   - ^ja/docs/collector/extend/ocb/$
   - ^ja/docs/collector/install/binary/linux/$
-  - ^ja/docs/collector/install/binary/macos/$
   - ^ja/docs/collector/install/docker/$
   - ^ja/docs/collector/install/kubernetes/$
   - ^ja/docs/collector/internal-telemetry/$
