@@ -3,6 +3,7 @@ title: Observability入門
 description: 重要なオブザーバビリティに関する概念
 weight: 9
 default_lang_commit: ebd92bb # patched
+drifted_from_default: true
 ---
 
 ## オブザーバビリティとは何か {#what-is-observability}

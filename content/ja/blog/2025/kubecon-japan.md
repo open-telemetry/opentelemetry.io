@@ -5,6 +5,7 @@ linkTitle: KubeCon Japan '25
 date: 2025-05-29
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
 default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: Baazi Chauhan Hrabusa Kang Kasper Mostafa Nissen Radwan Shivay Siddharth Vijay
 ---

@@ -5,6 +5,7 @@ description:
 linkTitle: Guía de estilo
 weight: 20
 default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
+drifted_from_default: true
 params:
   alertExamples: |
     > [!TIP]

@@ -4,6 +4,7 @@ linkTitle: Helm チャート
 description: KubernetesにHelmチャートとしてOBIをデプロイする方法を学ぶ
 weight: 2
 default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
+drifted_from_default: true
 ---
 
 > [!NOTE]
