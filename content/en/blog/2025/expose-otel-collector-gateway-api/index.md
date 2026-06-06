@@ -413,8 +413,8 @@ spec:
 > We make use of `options` in the gateway for implementation-specific
 > configuration of mTLS. Currently, the gateway API does not explicitly have
 > `Mutual TLS`
-> [mode](https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype). Refer to
-> the latest documentation of Gateway API for updates.
+> [mode](https://gateway-api.sigs.k8s.io/reference/api-spec/1.5/spec/#tlsmodetype).
+> Refer to the latest documentation of Gateway API for updates.
 
 Apply the Gateway configuration:
 
