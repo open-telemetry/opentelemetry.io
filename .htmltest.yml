@@ -146,7 +146,6 @@ IgnoreDirs:
   - ^ja/docs/languages/js/benchmarks/$
   - ^ja/docs/languages/js/getting-started/nodejs/$
   - ^ja/docs/languages/js/propagation/$
-  - ^ja/docs/languages/ruby/getting-started/$
   - ^ja/docs/languages/ruby/instrumentation/$
   - ^ja/docs/platforms/faas/lambda-auto-instrument/$
   - ^ja/docs/platforms/faas/lambda-manual-instrument/$
