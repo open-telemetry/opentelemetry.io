@@ -158,7 +158,6 @@ IgnoreDirs:
   - ^ja/docs/zero-code/java/agent/getting-started/$
   - ^ja/docs/zero-code/java/quarkus/$
   - ^ja/docs/zero-code/java/spring-boot-starter/additional-instrumentations/$
-  - ^ja/docs/zero-code/java/spring-boot-starter/api/$
   - ^ja/docs/zero-code/java/spring-boot-starter/other-spring-autoconfig/$
   - ^ja/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/$
   - ^ja/docs/zero-code/js/configuration/$
