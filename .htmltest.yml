@@ -136,7 +136,6 @@ IgnoreDirs:
   - ^ja/docs/collector/install/docker/$
   - ^ja/docs/collector/install/kubernetes/$
   - ^ja/docs/collector/internal-telemetry/$
-  - ^ja/docs/collector/management/$
   - ^ja/docs/collector/troubleshooting/$
   - ^ja/docs/concepts/observability-primer/$
   - ^ja/docs/guidance/blueprints/$
