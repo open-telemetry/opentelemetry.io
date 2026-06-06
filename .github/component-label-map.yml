@@ -166,7 +166,6 @@ CI/infra: # including config
           - netlify.toml
           - prh/**
           - scripts/**
-          - static/refcache.json
           - tests/**
 
 dependencies:

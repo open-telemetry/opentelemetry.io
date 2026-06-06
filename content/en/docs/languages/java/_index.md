@@ -11,7 +11,7 @@ redirects:
 cascade:
   vers:
     instrumentation: 2.28.1
-    otel: 1.62.0
+    otel: 1.63.0
     contrib: 1.57.0
     semconv: 1.41.1
 weight: 150
