@@ -138,7 +138,6 @@ IgnoreDirs:
   - ^ja/docs/languages/java/sdk/$
   - ^ja/docs/languages/js/benchmarks/$
   - ^ja/docs/languages/ruby/instrumentation/$
-  - ^ja/docs/platforms/kubernetes/operator/horizontal-pod-autoscaling/$
   - ^ja/docs/platforms/kubernetes/operator/troubleshooting/automatic/$
   - ^ja/docs/zero-code/java/agent/getting-started/$
   - ^ja/docs/zero-code/java/quarkus/$
