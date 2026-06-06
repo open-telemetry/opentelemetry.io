@@ -136,7 +136,7 @@ localmente usando CMake, siguiendo estos pasos:
    cmake --install . --prefix ../../install
    ```
 
-Con Oat++ y OpenTelemetry C++ lists, puedes continuar con la creación del
+Con Oat++ y OpenTelemetry C++ listos, puedes continuar con la creación del
 servidor HTTP, que queremos instrumentar posteriormente.
 
 ## Crea y levanta un Servidor HTTP
