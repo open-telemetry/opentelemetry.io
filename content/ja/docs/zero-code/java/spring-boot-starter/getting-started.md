@@ -1,17 +1,14 @@
 ---
 title: はじめに
 weight: 20
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
-drifted_from_default: true
+default_lang_commit: a790e3cf91025305c683047b181120ab6bbae3de
 cSpell:ignore: springboot
 ---
 
-{{% alert title="注意" %}}
-
-Spring Bootアプリケーションを計装するために、[Javaエージェント](../../agent)を使用することもできます。
-長所と短所については、[Javaゼロコード計装](..)を参照してください。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Spring Bootアプリケーションを計装するために、[Javaエージェント](../../agent)を使用することもできます。
+> 長所と短所については、[Javaゼロコード計装](..)を参照してください。
 
 ## 互換性 {#compatibility}
 
@@ -24,14 +21,12 @@ Bill of Material（[BOM](https://maven.apache.org/guides/introduction/introducti
 
 OpenTelemetryスターターを使用する際は、すべてのOpenTelemetry依存関係のバージョン整合性を確保するために、`opentelemetry-instrumentation-bom` BOMをインポートする必要があります。
 
-{{% alert title="注意" %}}
-
-Mavenを使用する場合は、プロジェクト内の他のBOMよりも前にOpenTelemetry BOMをインポートしてください。
-たとえば、`spring-boot-dependencies` BOMをインポートする場合は、OpenTelemetry BOMの後に宣言する必要があります。
-
-Gradleは依存関係の[最新バージョン](https://docs.gradle.org/current/userguide/dependency_resolution.html#2_perform_conflict_resolution)を選択するため、BOMの順序は重要ではありません。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Mavenを使用する場合は、プロジェクト内の他のBOMよりも前にOpenTelemetry BOMをインポートしてください。
+> たとえば、`spring-boot-dependencies` BOMをインポートする場合は、OpenTelemetry BOMの後に宣言する必要があります。
+>
+> Gradleは依存関係の[最新バージョン](https://docs.gradle.org/current/userguide/dependency_resolution.html#2_perform_conflict_resolution)を選択するため、BOMの順序は重要ではありません。
 
 以下の例は、Mavenを使用してOpenTelemetry BOMをインポートする方法を示しています。
 
@@ -83,12 +78,10 @@ dependencyManagement {
 }
 ```
 
-{{% alert title="注意" %}}
-
-Gradleで異なる設定方法を混在させないよう注意してください。
-たとえば、`io.spring.dependency-management`プラグインと一緒に`implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))`を使用しないでください。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Gradleで異なる設定方法を混在させないよう注意してください。
+> たとえば、`io.spring.dependency-management`プラグインと一緒に`implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))`を使用しないでください。
 
 ### OpenTelemetryスターターの依存関係 {#opentelemetry-starter-dependency}
 
