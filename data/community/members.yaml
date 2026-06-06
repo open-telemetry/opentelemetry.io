@@ -1873,6 +1873,12 @@ approvers:
       - collector-releases-approvers
     html_url: https://github.com/crobert-1
     avatar_url: https://avatars.githubusercontent.com/u/92119472?v=4
+  - name: DavidGrath
+    teams:
+      - android-approvers
+      - android-triagers
+    html_url: https://github.com/DavidGrath
+    avatar_url: https://avatars.githubusercontent.com/u/49921604?v=4
   - name: DebajitDas
     teams:
       - cpp-contrib-approvers
@@ -2037,6 +2043,11 @@ approvers:
       - docs-ja-approvers
     html_url: https://github.com/kohbis
     avatar_url: https://avatars.githubusercontent.com/u/18735471?v=4
+  - name: kota-sakuma
+    teams:
+      - docs-ja-approvers
+    html_url: https://github.com/kota-sakuma
+    avatar_url: https://avatars.githubusercontent.com/u/98725121?v=4
   - name: kpratyus
     teams:
       - cpp-contrib-approvers
@@ -2579,6 +2590,9 @@ members:
   - name: alxbl
     html_url: https://github.com/alxbl
     avatar_url: https://avatars.githubusercontent.com/u/860411?v=4
+  - name: amazingakai
+    html_url: https://github.com/amazingakai
+    avatar_url: https://avatars.githubusercontent.com/u/93782497?v=4
   - name: AnaMMedina21
     html_url: https://github.com/AnaMMedina21
     avatar_url: https://avatars.githubusercontent.com/u/3894791?v=4
