@@ -1873,6 +1873,12 @@ approvers:
       - collector-releases-approvers
     html_url: https://github.com/crobert-1
     avatar_url: https://avatars.githubusercontent.com/u/92119472?v=4
+  - name: DavidGrath
+    teams:
+      - android-approvers
+      - android-triagers
+    html_url: https://github.com/DavidGrath
+    avatar_url: https://avatars.githubusercontent.com/u/49921604?v=4
   - name: DebajitDas
     teams:
       - cpp-contrib-approvers
