@@ -140,7 +140,6 @@ IgnoreDirs:
   - ^ja/docs/collector/management/$
   - ^ja/docs/collector/troubleshooting/$
   - ^ja/docs/concepts/observability-primer/$
-  - ^ja/docs/concepts/signals/baggage/$
   - ^ja/docs/guidance/blueprints/$
   - ^ja/docs/languages/java/$
   - ^ja/docs/languages/java/configuration/$
@@ -150,7 +149,6 @@ IgnoreDirs:
   - ^ja/docs/languages/js/propagation/$
   - ^ja/docs/languages/ruby/getting-started/$
   - ^ja/docs/languages/ruby/instrumentation/$
-  - ^ja/docs/platforms/client-apps/$
   - ^ja/docs/platforms/faas/lambda-auto-instrument/$
   - ^ja/docs/platforms/faas/lambda-collector/$
   - ^ja/docs/platforms/faas/lambda-manual-instrument/$
