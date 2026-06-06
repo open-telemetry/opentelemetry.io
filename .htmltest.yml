@@ -141,7 +141,6 @@ IgnoreDirs:
   - ^ja/docs/collector/troubleshooting/$
   - ^ja/docs/concepts/observability-primer/$
   - ^ja/docs/concepts/signals/baggage/$
-  - ^ja/docs/guidance/blueprints/$
   - ^ja/docs/languages/java/$
   - ^ja/docs/languages/java/configuration/$
   - ^ja/docs/languages/java/sdk/$
