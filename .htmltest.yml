@@ -164,7 +164,6 @@ IgnoreDirs:
   - ^ja/docs/zero-code/obi/setup/kubernetes-helm/$
   - ^ja/docs/zero-code/obi/setup/standalone/$
   - ^ja/docs/zero-code/python/configuration/$
-  - ^ja/docs/zero-code/python/operator/$
   - ^ja/docs/zero-code/python/troubleshooting/$
   - ^pl/$
   - ^pt/announcements/$
