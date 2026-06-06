@@ -103,7 +103,7 @@ localmente usando CMake, siguiendo estos pasos:
    cd opentelemetry-cpp
    ```
 
-3. Crea un directorio de construcción y accede a él.
+3. Crea un directorio de compilación y accede a él.
 
    ```bash
    mkdir build
