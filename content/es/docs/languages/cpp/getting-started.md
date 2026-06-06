@@ -111,7 +111,7 @@ localmente usando CMake, siguiendo estos pasos:
    ```
 
 4. En el directorio `build`, ejecuta CMake para configurar y generar el sistema
-   de construcción sin habilitar los tests:
+   de compilación sin habilitar los tests:
 
    ```bash
    cmake -DBUILD_TESTING=OFF ..
