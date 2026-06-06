@@ -7,6 +7,7 @@ developer_note:
   image file containing "background" in its name.
 show_banner: true
 default_lang_commit: f09627656c918ddb572c6c876beed29bb415f5ef
+drifted_from_default: true
 ---
 
 {{% blocks/cover image_anchor="top" height="max" color="primary" %}}
