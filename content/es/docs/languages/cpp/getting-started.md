@@ -68,7 +68,7 @@ Para empezar, instala Oat++ localmente usando el
    cd build
    ```
 
-4. Construye oatpp usando los comandos `cmake` y `make`. Este comando iniciará
+4. Compila oatpp usando los comandos `cmake` y `make`. Este comando iniciará
    el proceso de compilación especificado en el fichero `CMakeLists.txt`
    incluido en el código fuente de oatpp.
 
