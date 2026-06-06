@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 /**
  * Sanity tests for convert.pl
- * Run: node test.js
+ * Run: npm run test:local-tools
  */
 
-const assert = require('assert');
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+import assert from 'node:assert/strict';
+import { execSync } from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const scriptPath = path.join(__dirname, 'convert.pl');
 const tmpFile = path.join(__dirname, 'test-tmp.md');
 

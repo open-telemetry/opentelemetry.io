@@ -2,6 +2,7 @@
 title: Kubernetesのための重要なコンポーネント
 linkTitle: コンポーネント
 default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics k8sattributes kubelet kubeletstats replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---
@@ -420,7 +421,7 @@ subjects:
 | Deployment （ゲートウェイ） | Yes しかし、2つ以上のレプリカを使用すると、データが重複する |
 | サイドカー                  | No                                                          |
 
-Kubernetesオブジェクトレシーバーは、Kubernetes APIサーバからオブジェクトをプルまたはウォッチして収集します。
+Kubernetesオブジェクトレシーバーは、Kubernetes APIサーバーからオブジェクトをプルまたはウォッチして収集します。
 このレシーバーのもっとも一般的な使用例はKubernetesイベントの監視ですが、あらゆるタイプのKubernetesオブジェクトを収集するために使用できます。
 レシーバーはクラスタ全体のテレメトリーを収集するため、すべてのデータを収集するためにはクラスタ全体で1つのインスタンスしか必要ありません。
 

@@ -1,12 +1,14 @@
 ---
 title: Go
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/Golang_SDK.svg"
-  alt="Go"> GoにおけるOpenTelemetryの言語固有の実装。
+  <img width="35" class="img-initial otel-icon"
+  src="/img/logos/32x32/Golang_SDK.svg" alt="Go"> GoにおけるOpenTelemetryの言語固有の実装。
 aliases: [/golang, /golang/metrics, /golang/tracing]
-weight: 16
-default_lang_commit: dc174c212e81fadbf8382bb54c54cff294954b1b
-drifted_from_default: true
+redirects:
+  - { from: /go/*, to: ':splat' }
+  - { from: /docs/go/*, to: ':splat' }
+weight: 140
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
 ---
 
 {{% docs/languages/index-intro go /%}}
