@@ -3,6 +3,7 @@ title: 从 OpenTracing 迁移
 linkTitle: OpenTracing
 weight: 2
 default_lang_commit: 0b7c6aeafe53e44fdeb64ed2c7bdb42e88f35802
+drifted_from_default: file not found
 ---
 
 OpenTelemetry 项目自从诞生以来，[OpenTracing][] 的向后兼容性就是优先事项之一。
