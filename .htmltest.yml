@@ -134,7 +134,6 @@ IgnoreDirs:
   - ^ja/docs/collector/install/binary/linux/$
   - ^ja/docs/collector/install/binary/macos/$
   - ^ja/docs/collector/install/binary/windows/$
-  - ^ja/docs/collector/install/docker/$
   - ^ja/docs/collector/install/kubernetes/$
   - ^ja/docs/collector/internal-telemetry/$
   - ^ja/docs/collector/management/$
