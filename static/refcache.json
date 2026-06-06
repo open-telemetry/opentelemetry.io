@@ -10751,6 +10751,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-04T15:45:53.484383469Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#idgenerator-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-06T11:04:06.555721154Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#logrecordexporter-": {
     "StatusCode": 206,
     "LastSeen": "2026-06-04T15:45:28.441014603Z"
