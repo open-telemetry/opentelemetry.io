@@ -54,12 +54,8 @@ jobs:
           echo "submodule(s); or undo the submodule update(s) if it happened by mistake."
           npm run _diff:fail
 
-      - name: Htmltest config up to date?
-        run: |
-          npm run fix:htmltest-config
-          echo "If the diff check below fails, then locally run 'npm run fix:htmltest-config'"
-          echo "and commit the updated .htmltest.yml."
-          npm run _diff:fail
+      - name: Generate htmltest config
+        run: npm run fix:htmltest-config
 
       - name: Build the site
         run: npm run log:build
@@ -68,8 +64,10 @@ jobs:
       - uses: actions/upload-artifact@v7
         with:
           name: build-artifacts
+          include-hidden-files: true
           path: |
             public/
+            .htmltest.yml
             tmp/build-log.txt
             tmp/package*.json
 

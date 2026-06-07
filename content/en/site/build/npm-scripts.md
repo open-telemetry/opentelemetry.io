@@ -117,7 +117,7 @@ are internal helpers and are not intended to be run directly.
 | `prebuild`                                         | Before build: `get:submodule`, `cp:spec`.                      |
 | `update:hugo`                                      | Install latest hugo-extended.                                  |
 | `update:packages`                                  | Run npm-check-updates to bump deps.                            |
-| `fix:htmltest-config`                              | Generate/update HTMLTest config (used by link-check pipeline). |
+| `fix:htmltest-config`                              | Generate git-ignored `.htmltest.yml` from `.htmltest.base.yml` |
 | `log:build`, `log:check:links`, `log:test-and-fix` | Run the corresponding script and tee output to `tmp/`.         |
 
 ## Notes
