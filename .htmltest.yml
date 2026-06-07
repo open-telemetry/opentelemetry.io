@@ -133,7 +133,6 @@ IgnoreDirs:
   - ^ja/docs/collector/install/kubernetes/$
   - ^ja/docs/collector/internal-telemetry/$
   - ^ja/docs/collector/troubleshooting/$
-  - ^ja/docs/guidance/blueprints/$
   - ^ja/docs/languages/java/$
   - ^ja/docs/languages/java/sdk/$
   - ^ja/docs/languages/js/benchmarks/$
