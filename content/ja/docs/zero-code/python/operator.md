@@ -2,8 +2,7 @@
 title: OpenTelemetryオペレーターを使用して自動計装を注入する
 linkTitle: Operator
 weight: 30
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
-drifted_from_default: true
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 cSpell:ignore: gevent grpcio psutil PYTHONPATH
 ---
 
