@@ -123,7 +123,6 @@ IgnoreDirs:
   - ^fr/docs/zero-code/python/logs-example/$
   - ^fr/docs/zero-code/python/operator/$
   - ^fr/docs/zero-code/python/troubleshooting/$
-  - ^ja/announcements/kubecon-japan/$
   - ^ja/docs/collector/$
   - ^ja/docs/collector/deploy/agent/$
   - ^ja/docs/collector/deploy/other/no-collector/$
