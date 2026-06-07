@@ -140,7 +140,6 @@ IgnoreDirs:
   - ^ja/docs/languages/ruby/getting-started/$
   - ^ja/docs/languages/ruby/instrumentation/$
   - ^ja/docs/platforms/faas/lambda-auto-instrument/$
-  - ^ja/docs/platforms/kubernetes/collector/components/$
   - ^ja/docs/platforms/kubernetes/operator/horizontal-pod-autoscaling/$
   - ^ja/docs/platforms/kubernetes/operator/troubleshooting/automatic/$
   - ^ja/docs/zero-code/java/agent/getting-started/$
