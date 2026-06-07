@@ -1,10 +1,7 @@
 ---
 title: Migrating from OpenTracing
 linkTitle: OpenTracing
-weight: 2
-aliases:
-  - /docs/migration/opentracing/
-cSpell:ignore: codebases
+aliases: [/docs/migration/opentracing/]
 ---
 
 Backward compatibility with [OpenTracing][] has been a priority for the

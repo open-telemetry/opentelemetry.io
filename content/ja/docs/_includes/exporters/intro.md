@@ -1,5 +1,6 @@
 ---
 default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
+drifted_from_default: true
 ---
 
 [OpenTelemetryコレクター](/docs/collector/)にテレメトリーを送信し、正しくエクスポートされることを確認してください。

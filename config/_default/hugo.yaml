@@ -1,4 +1,4 @@
-# cSpell:ignore bluesky cicd docsy goldmark linkify netlify wordmark noopener
+# cSpell:ignore bluesky cicd docsy goldmark linkify netlify wordmark noopener llms
 baseURL: https://opentelemetry.io
 title: OpenTelemetry
 disableKinds: [taxonomy]
@@ -96,8 +96,9 @@ outputFormats:
     notAlternative: true
 
 outputs:
-  home: &home-outputs [HTML, RSS]
-  section: &section-outputs [HTML]
+  home: [HTML, markdown, RSS]
+  page: [HTML, markdown]
+  section: [HTML, markdown]
 
 services:
   rss: { limit: 20 }
@@ -108,16 +109,16 @@ cascade:
 
   # Enable redirects for site root (and not locales)
   - outputs:
-      # This must match the equivalent of [*home-outputs, redirects]
-      [HTML, RSS, redirects]
+      # This must match the equivalent of [outputs.home, LLMS, redirects]
+      [HTML, markdown, RSS, LLMS, redirects]
     target:
       kind: home
       sites: { matrix: { languages: [en] } }
 
   # Enable RSS for blog section
   - outputs:
-      # This must match the equivalent of [*section-outputs, RSS]
-      [HTML, RSS]
+      # This must match the equivalent of [outputs.section, RSS]
+      [HTML, markdown, RSS]
     target:
       kind: section
       path: '/blog'
@@ -196,13 +197,18 @@ params:
         url: https://github.com/open-telemetry
         icon: fab fa-github
         desc: Find us on GitHub.
+      - name: 'Slack #opentelemetry-new-contributors'
+        url: https://cloud-native.slack.com/archives/C09H3MNMBQV
+        icon: fab fa-slack
+        desc: >-
+          Ask beginner questions and learn contribution etiquette. Sign up via
+          [slack.cncf.io](https://slack.cncf.io).
       - name: 'Slack #opentelemetry'
         url: https://cloud-native.slack.com/archives/CJFCJHG4Q
         icon: fab fa-slack
         desc: >-
-          Chat with other project developers. Sign up via
-          [slack.cncf.io](https://slack.cncf.io). Also see other channels
-          starting with a `#otel-` prefix.
+          Follow project-wide developments. To chat about a specific subproject,
+          check out the other channels starting with `#otel-`.
       - name: CNCF DevStats
         url: https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m
         icon: fas fa-chart-area

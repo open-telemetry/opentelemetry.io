@@ -2,7 +2,7 @@
 title: コンテキスト伝搬
 weight: 10
 description: 分散トレーシングを可能にするコンセプトについて学びます。
-default_lang_commit: 2eff1a357d20c7b9ba6e07f8c5b1ac057ac005c7
+default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
 ---
 
 コンテキスト伝搬を使用すると、[シグナル](../signals/)（[トレース](../signals/traces/)、[メトリクス](../signals/metrics/)、および[ログ](../signals/logs/)）を生成された場所に関係なく相互に関連づけることができます。
@@ -110,7 +110,7 @@ OpenTelemetry SDKは、ログをトレースと自動的に関連づけること
   信頼できないソースからのコンテキストを無視またはサニタイズすることを検討してください。
 - **送信コンテキスト**: 外部サービスに伝搬する内容に注意してください
   内部のトレースID、スパンID、またはバゲッジアイテムによって、内部アーキテクチャやビジネスロジックに関する機密情報が漏洩する可能性があります。
-  プロぱゲーターを構成して、外部またはパブリック向けのエンドポイントにコンテキストを送信しないようにすることを検討してください。
+  プロパゲーターを構成して、外部またはパブリック向けのエンドポイントにコンテキストを送信しないようにすることを検討してください。
 
 ### バゲージ {#baggage}
 
@@ -120,7 +120,7 @@ OpenTelemetry SDKは、ログをトレースと自動的に関連づけること
 
 ## 言語SDKでのサポート {#language-sdk-support}
 
-OpenTelemetry APIおよびSDKの個々の言語特有の実装については、それぞれのドキュメントページでコンテキスト伝搬のsパオートに関する詳細を確認できます。
+OpenTelemetry APIおよびSDKの個々の言語特有の実装については、それぞれのドキュメントページでコンテキスト伝搬のサポートに関する詳細を確認できます。
 
 - [C++](/docs/languages/cpp/instrumentation/#context-propagation)
 - .NET
@@ -134,12 +134,10 @@ OpenTelemetry APIおよびSDKの個々の言語特有の実装については、
 - Rust
 - Swift
 
-{{% alert title="Help wanted" color="secondary" %}}
-
-.NET、Rust、Swift言語の場合、コンテキスト伝搬に関する言語固有のドキュメントが不足しています。
-これらの言語のいずれかを知っていて、協力に興味がある場合は、[貢献方法を確認してください](/docs/contributing/)！
-
-{{% /alert %}}
+> [!IMPORTANT] Help wanted
+>
+> .NET、Rust、Swift言語の場合、コンテキスト伝搬に関する言語固有のドキュメントが不足しています。
+> これらの言語のいずれかを知っていて、協力に興味がある場合は、[貢献方法を確認してください](/docs/contributing/)！
 
 ## 仕様 {#specification}
 

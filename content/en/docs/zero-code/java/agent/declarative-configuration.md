@@ -20,7 +20,9 @@ configuration, including the OpenTelemetry Java agent.
 
 > [!WARNING]
 >
-> Declarative configuration is experimental.
+> The declarative configuration schema is stable. The parts of it that are still
+> experimental are suffixed with `/development`. Java agent support for
+> declarative configuration is still experimental.
 
 ## Supported versions
 
@@ -74,6 +76,12 @@ getting started guide for declarative configuration.
 
 This page focuses on specifics for the
 [OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation).
+For the Spring Boot starter, see
+[Spring Boot starter declarative configuration](/docs/zero-code/java/spring-boot-starter/declarative-configuration/).
+
+## Convert your existing configuration
+
+{{< dc-converter source="agent" >}}
 
 ## Mapping of configuration options
 
@@ -105,12 +113,6 @@ configuration to declarative configuration, use the following rules:
 ```yaml
 instrumentation/development:
   general:
-    peer:
-      service_mapping: # was "otel.instrumentation.common.peer-service-mapping"
-        - peer: 1.2.3.4
-          service: FooService
-        - peer: 2.3.4.5
-          service: BarService
     http:
       client:
         request_captured_headers: # was otel.instrumentation.http.client.capture-request-headers
@@ -126,7 +128,15 @@ instrumentation/development:
         response_captured_headers: # was otel.instrumentation.http.server.capture-response-headers
           - Content-Type
           - Content-Encoding
+
   java:
+    common:
+      service_mapping: # was "otel.instrumentation.common.peer-service-mapping"
+        - peer: 1.2.3.4
+          service_name: FooService
+        - peer: 2.3.4.5
+          service_name: BarService
+
     agent:
       # was otel.instrumentation.common.default-enabled
       # instrumentation_mode: none  # was false
@@ -219,14 +229,6 @@ Contrib features that are not yet supported by declarative configuration:
 - [AWS X-Ray](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-xray)
 - [GCP authentication](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-auth-extension)
 - [Inferred Spans](https://github.com/open-telemetry/opentelemetry-java-contrib/blob/main/inferred-spans)
-
-### Spring Boot starter limitations
-
-Lastly, the [Spring Boot starter](/docs/zero-code/java/spring-boot-starter) does
-not yet support declarative configuration:
-
-- however, you can already use `application.yaml` to configure the OpenTelemetry
-  Spring Boot starter
 
 ## Extension API
 

@@ -1,0 +1,3 @@
+extends: ../../.markdownlint.yaml
+
+prefer-blockquote-vs-docsy-alerts: true

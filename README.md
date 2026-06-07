@@ -89,33 +89,23 @@ These are the members of [@open-telemetry/docs-triagers][]:
 - [Emídio Neto](https://github.com/emdneto)
 - [Ezzio Moreira](https://github.com/EzzioMoreira)
 - [Michael Yao](https://github.com/windsonsea), DaoCloud
+- [Pratik Mahalle](https://github.com/pratik-mahalle), DrDroid
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), AWS
 
 For more information about the triager role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#triager).
 
-### Emeritus maintainers
+### Emeritus
 
-- [jparsana](https://github.com/jparsana)
-- [Morgan McLean](https://github.com/mtwo)
-- [Steve Flanders](https://github.com/flands)
-
-For more information about the emeritus role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
-
-### Emeritus approvers
-
-- [Paul Bruce](https://github.com/paulsbruce)
-- [Michael Hausenblas](https://github.com/mhausenblas)
-- [Ted Young](https://github.com/tedsuo)
-
-For more information about the emeritus role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
-
-### Emeritus triagers
-
-- [Kazunori Otani](https://github.com/katzchang)
-- [Masaki Sugimoto](https://github.com/Msksgm)
+- [jparsana](https://github.com/jparsana), Maintainer
+- [Kazunori Otani](https://github.com/katzchang), Triager
+- [Masaki Sugimoto](https://github.com/Msksgm), Triager
+- [Michael Hausenblas](https://github.com/mhausenblas), Approver
+- [Morgan McLean](https://github.com/mtwo), Maintainer
+- [Paul Bruce](https://github.com/paulsbruce), Approver
+- [Sergey Kanzhelev](https://github.com/SergeyKanzhelev), Approver
+- [Steve Flanders](https://github.com/flands), Maintainer
+- [Ted Young](https://github.com/tedsuo), Approver
 
 For more information about the emeritus role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).

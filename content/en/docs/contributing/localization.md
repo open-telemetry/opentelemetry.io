@@ -299,10 +299,10 @@ npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 
 ### Drift status
 
-Run `npm run fix:i18n:status` to add a front-matter field `drifted_from_default`
-to those target localization pages that have drifted. This field will soon be
-used to display a banner at the top of pages that have drifted relative to their
-English counterparts.
+Run `npm run fix:i18n:status` to set the `drifted_from_default` front-matter
+field on those target localization pages that have drifted. This field displays
+an "outdated" banner at the top of the page, and causes the link checker to skip
+the page, so that stale links on drifted pages don't fail CI.
 
 ### Script help
 
@@ -443,20 +443,31 @@ Look for [cSpell dictionaries][] available as NPM packages
 [@cspell/dict-LANG_ID][]. If a dictionary isn't available for your dialect or
 region, choose the closest region.
 
-If no dictionary is available, then skip the rest of this subsection. Otherwise:
-
-- Add the NPM package as a dev dependency, for example:
-  `npm install --save-dev @cspell/dict-bn`.
-- Create `.cspell/LANG_ID-words.txt` as the site-local dictionary words for
-  `LANG_ID`.
-- In `.cspell.yml`, add entries for:
-  - `import`
-  - `dictionaryDefinitions`
-  - `dictionaries`: add two entries here, one for `LANG_ID` and one for
-    `LANG_ID-words.txt`
+- **If a dictionary is available**:
+  - Add the NPM package as a dev dependency, for example:
+    `npm install --save-dev @cspell/dict-bn`.
+  - In [`.cspell.yml`][], add the package's `cspell-ext.json` under `import:`,
+    and add the dictionary's ID (for example `bn`, `es-es`, `pl_pl`) under
+    `dictionaries:`.
+- **If no dictionary is available** for the language, do not add an `import` for
+  it. Add `content/LANG_ID` to the `ignorePaths` list in [`.cspell.yml`][] so
+  cSpell does not try to spell-check that locale's Markdown as English.
 
 [cSpell dictionaries]: https://github.com/streetsidesoftware/cspell-dicts
 [@cspell/dict-LANG_ID]: https://www.npmjs.com/search?q=%40cspell%2Fdict
+[`.cspell.yml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml
+
+#### Word list
+
+Create `.cspell/LANG_ID-words.txt` for every new locale (empty at first), even
+when **Spelling** has no natural-language dictionary to add.
+
+- In [`.cspell.yml`][], register the file and enable it:
+  - Under `dictionaryDefinitions`, add an entry with `name` (for example
+    `LANG_ID-words`) and `path` (for example `.cspell/LANG_ID-words.txt`).
+  - Under `dictionaries`, add the same `name` value as in the step above (not
+    the file path).
 
 #### Other tooling support
 
@@ -493,7 +504,8 @@ link-check failures for non-English locales. This happens when documentation
 pages are moved or deleted.
 
 In such situations, make the following updates to each non-English page that has
-a path that fails link checking:
+a path that fails link checking (drifted pages are skipped by the link checker,
+so this typically applies to in-sync pages):
 
 - Update the link reference to the new page path.
 - Add the `# patched` YAML comment at the end of the line for the

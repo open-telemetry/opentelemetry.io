@@ -17,11 +17,322 @@ IgnoreDirs:
   - ^(../)?blog/(\d+/)?page/\d+
   # Ignore old blog posts
   - ^(../)?blog/20(19|21|22|23)/
-  # TODO drop the following config once this page is updated to reflect the corresponding `en`
-  # page and the link 404 (detailed below) are resolved:
-  #   zh/docs/contributing/index.html
-  #     Non-OK status: 404 --> https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md
-  - ^zh/docs/contributing/
+  # Drifted localized pages (drifted_from_default: true):
+  - ^bn/$
+  - ^bn/docs/concepts/glossary/$
+  - ^bn/docs/concepts/signals/$
+  - ^bn/docs/demo/$
+  - ^bn/docs/demo/architecture/$
+  - ^bn/docs/demo/docker-deployment/$
+  - ^bn/docs/demo/kubernetes-deployment/$
+  - ^bn/docs/demo/services/accounting/$
+  - ^bn/docs/demo/services/email/$
+  - ^bn/docs/what-is-opentelemetry/$
+  - ^es/blog/$
+  - ^es/blog/2025/contribute-to-otel/$
+  - ^es/blog/2025/declarative-config/$
+  - ^es/community/events/$
+  - ^es/community/members/$
+  - ^es/docs/$
+  - ^es/docs/concepts/context-propagation/$
+  - ^es/docs/concepts/glossary/$
+  - ^es/docs/concepts/instrumentation/$
+  - ^es/docs/concepts/observability-primer/$
+  - ^es/docs/concepts/resources/$
+  - ^es/docs/concepts/signals/$
+  - ^es/docs/concepts/signals/baggage/$
+  - ^es/docs/concepts/signals/logs/$
+  - ^es/docs/concepts/signals/traces/$
+  - ^es/docs/contributing/$
+  - ^es/docs/contributing/blog/$
+  - ^es/docs/contributing/development/$
+  - ^es/docs/contributing/localization/$
+  - ^es/docs/contributing/pr-checks/$
+  - ^es/docs/contributing/pull-requests/$
+  - ^es/docs/contributing/sig-practices/$
+  - ^es/docs/contributing/style-guide/$
+  - ^es/docs/demo/$
+  - ^es/docs/demo/docker-deployment/$
+  - ^es/docs/demo/feature-flags/$
+  - ^es/docs/demo/feature-flags/recommendation-cache/$
+  - ^es/docs/demo/kubernetes-deployment/$
+  - ^es/docs/languages/$
+  - ^es/docs/languages/go/$
+  - ^es/docs/languages/js/$
+  - ^es/docs/languages/js/getting-started/$
+  - ^es/docs/languages/js/getting-started/browser/$
+  - ^es/docs/languages/js/getting-started/nodejs/$
+  - ^es/docs/languages/python/instrumentation/$
+  - ^es/docs/what-is-opentelemetry/$
+  - ^es/docs/zero-code/$
+  - ^es/docs/zero-code/dotnet/$
+  - ^es/docs/zero-code/dotnet/custom/$
+  - ^es/docs/zero-code/dotnet/instrumentations/$
+  - ^es/docs/zero-code/go/autosdk/$
+  - ^es/docs/zero-code/obi/$
+  - ^es/docs/zero-code/obi/distributed-traces/$
+  - ^es/docs/zero-code/obi/metrics/$
+  - ^es/docs/zero-code/obi/security/$
+  - ^es/docs/zero-code/obi/setup/$
+  - ^es/docs/zero-code/obi/setup/docker/$
+  - ^es/docs/zero-code/obi/setup/kubernetes-helm/$
+  - ^es/docs/zero-code/obi/setup/kubernetes/$
+  - ^es/docs/zero-code/obi/setup/standalone/$
+  - ^es/ecosystem/registry/$
+  - ^fr/$
+  - ^fr/docs/concepts/context-propagation/$
+  - ^fr/docs/concepts/observability-primer/$
+  - ^fr/docs/concepts/signals/$
+  - ^fr/docs/concepts/signals/traces/$
+  - ^fr/docs/platforms/kubernetes/operator/$
+  - ^fr/docs/platforms/kubernetes/operator/automatic/$
+  - ^fr/docs/platforms/kubernetes/operator/horizontal-pod-autoscaling/$
+  - ^fr/docs/platforms/kubernetes/operator/troubleshooting/automatic/$
+  - ^fr/docs/platforms/kubernetes/operator/troubleshooting/target-allocator/$
+  - ^fr/docs/what-is-opentelemetry/$
+  - ^fr/docs/zero-code/$
+  - ^fr/docs/zero-code/dotnet/$
+  - ^fr/docs/zero-code/dotnet/configuration/$
+  - ^fr/docs/zero-code/dotnet/custom/$
+  - ^fr/docs/zero-code/dotnet/instrumentations/$
+  - ^fr/docs/zero-code/dotnet/troubleshooting/$
+  - ^fr/docs/zero-code/go/$
+  - ^fr/docs/zero-code/java/$
+  - ^fr/docs/zero-code/java/agent/api/$
+  - ^fr/docs/zero-code/java/agent/configuration/$
+  - ^fr/docs/zero-code/java/agent/disable/$
+  - ^fr/docs/zero-code/java/agent/extensions/$
+  - ^fr/docs/zero-code/java/agent/getting-started/$
+  - ^fr/docs/zero-code/java/agent/performance/$
+  - ^fr/docs/zero-code/java/agent/server-config/$
+  - ^fr/docs/zero-code/java/quarkus/$
+  - ^fr/docs/zero-code/java/spring-boot-starter/$
+  - ^fr/docs/zero-code/java/spring-boot-starter/additional-instrumentations/$
+  - ^fr/docs/zero-code/java/spring-boot-starter/annotations/$
+  - ^fr/docs/zero-code/java/spring-boot-starter/api/$
+  - ^fr/docs/zero-code/java/spring-boot-starter/getting-started/$
+  - ^fr/docs/zero-code/java/spring-boot-starter/other-spring-autoconfig/$
+  - ^fr/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/$
+  - ^fr/docs/zero-code/java/spring-boot-starter/sdk-configuration/$
+  - ^fr/docs/zero-code/js/$
+  - ^fr/docs/zero-code/js/configuration/$
+  - ^fr/docs/zero-code/php/$
+  - ^fr/docs/zero-code/python/$
+  - ^fr/docs/zero-code/python/configuration/$
+  - ^fr/docs/zero-code/python/example/$
+  - ^fr/docs/zero-code/python/logs-example/$
+  - ^fr/docs/zero-code/python/operator/$
+  - ^fr/docs/zero-code/python/troubleshooting/$
+  - ^ja/announcements/kubecon-japan/$
+  - ^ja/docs/collector/$
+  - ^ja/docs/collector/deploy/agent/$
+  - ^ja/docs/collector/deploy/other/no-collector/$
+  - ^ja/docs/collector/extend/ocb/$
+  - ^ja/docs/collector/install/binary/linux/$
+  - ^ja/docs/collector/install/docker/$
+  - ^ja/docs/collector/install/kubernetes/$
+  - ^ja/docs/collector/internal-telemetry/$
+  - ^ja/docs/collector/troubleshooting/$
+  - ^ja/docs/guidance/blueprints/$
+  - ^ja/docs/languages/java/$
+  - ^ja/docs/languages/java/sdk/$
+  - ^ja/docs/languages/js/benchmarks/$
+  - ^ja/docs/languages/ruby/getting-started/$
+  - ^ja/docs/languages/ruby/instrumentation/$
+  - ^ja/docs/platforms/faas/lambda-auto-instrument/$
+  - ^ja/docs/platforms/kubernetes/operator/horizontal-pod-autoscaling/$
+  - ^ja/docs/platforms/kubernetes/operator/troubleshooting/automatic/$
+  - ^ja/docs/zero-code/java/agent/getting-started/$
+  - ^ja/docs/zero-code/java/quarkus/$
+  - ^ja/docs/zero-code/java/spring-boot-starter/additional-instrumentations/$
+  - ^ja/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/$
+  - ^ja/docs/zero-code/obi/configure/export-data/$
+  - ^ja/docs/zero-code/obi/metrics/$
+  - ^ja/docs/zero-code/obi/setup/docker/$
+  - ^ja/docs/zero-code/obi/setup/kubernetes-helm/$
+  - ^ja/docs/zero-code/obi/setup/standalone/$
+  - ^ja/docs/zero-code/python/configuration/$
+  - ^ja/docs/zero-code/python/troubleshooting/$
+  - ^pl/$
+  - ^pt/announcements/$
+  - ^pt/blog/$
+  - ^pt/blog/2025/contribute-to-otel/$
+  - ^pt/blog/2025/declarative-config/$
+  - ^pt/community/end-user/$
+  - ^pt/community/events/$
+  - ^pt/community/members/$
+  - ^pt/docs/collector/quick-start/$
+  - ^pt/docs/concepts/context-propagation/$
+  - ^pt/docs/concepts/glossary/$
+  - ^pt/docs/concepts/instrumentation/$
+  - ^pt/docs/concepts/observability-primer/$
+  - ^pt/docs/concepts/resources/$
+  - ^pt/docs/concepts/signals/$
+  - ^pt/docs/concepts/signals/baggage/$
+  - ^pt/docs/concepts/signals/logs/$
+  - ^pt/docs/concepts/signals/profiles/$
+  - ^pt/docs/concepts/signals/traces/$
+  - ^pt/docs/contributing/$
+  - ^pt/docs/contributing/announcements/$
+  - ^pt/docs/contributing/blog/$
+  - ^pt/docs/contributing/development/$
+  - ^pt/docs/contributing/issues/$
+  - ^pt/docs/contributing/localization/$
+  - ^pt/docs/contributing/pr-checks/$
+  - ^pt/docs/contributing/pull-requests/$
+  - ^pt/docs/contributing/sig-practices/$
+  - ^pt/docs/contributing/style-guide/$
+  - ^pt/docs/languages/$
+  - ^pt/docs/languages/go/$
+  - ^pt/docs/languages/go/exporters/$
+  - ^pt/docs/languages/go/getting-started/$
+  - ^pt/docs/languages/go/instrumentation/$
+  - ^pt/docs/languages/go/sampling/$
+  - ^pt/docs/languages/java/$
+  - ^pt/docs/languages/java/api/$
+  - ^pt/docs/languages/java/configuration/$
+  - ^pt/docs/languages/java/getting-started/$
+  - ^pt/docs/languages/java/instrumentation/$
+  - ^pt/docs/languages/java/intro/$
+  - ^pt/docs/languages/js/$
+  - ^pt/docs/languages/js/getting-started/$
+  - ^pt/docs/languages/js/getting-started/nodejs/$
+  - ^pt/docs/languages/js/instrumentation/$
+  - ^pt/docs/languages/js/libraries/$
+  - ^pt/docs/languages/python/$
+  - ^pt/docs/languages/python/benchmarks/$
+  - ^pt/docs/languages/python/exporters/$
+  - ^pt/docs/languages/python/getting-started/$
+  - ^pt/docs/languages/sdk-configuration/$
+  - ^pt/docs/languages/sdk-configuration/general/$
+  - ^pt/docs/languages/sdk-configuration/otlp-exporter/$
+  - ^pt/docs/what-is-opentelemetry/$
+  - ^pt/docs/zero-code/java/agent/api/$
+  - ^pt/ecosystem/adopters/$
+  - ^pt/ecosystem/distributions/$
+  - ^pt/ecosystem/integrations/$
+  - ^pt/ecosystem/registry/$
+  - ^pt/ecosystem/registry/adding/$
+  - ^pt/ecosystem/registry/updating/$
+  - ^pt/ecosystem/vendors/$
+  - ^ro/$
+  - ^ro/docs/concepts/glossary/$
+  - ^ro/docs/concepts/observability-primer/$
+  - ^ro/docs/contributing/$
+  - ^ro/docs/what-is-opentelemetry/$
+  - ^uk/$
+  - ^zh/$
+  - ^zh/announcements/$
+  - ^zh/blog/$
+  - ^zh/blog/2025/slack-workspace-changes/$
+  - ^zh/community/end-user/$
+  - ^zh/community/members/$
+  - ^zh/docs/$
+  - ^zh/docs/collector/$
+  - ^zh/docs/collector/architecture/$
+  - ^zh/docs/collector/configuration/$
+  - ^zh/docs/collector/deploy/$
+  - ^zh/docs/collector/deploy/agent/$
+  - ^zh/docs/collector/distributions/$
+  - ^zh/docs/collector/management/$
+  - ^zh/docs/collector/quick-start/$
+  - ^zh/docs/collector/resiliency/$
+  - ^zh/docs/collector/scaling/$
+  - ^zh/docs/collector/troubleshooting/$
+  - ^zh/docs/concepts/components/$
+  - ^zh/docs/concepts/context-propagation/$
+  - ^zh/docs/concepts/glossary/$
+  - ^zh/docs/concepts/instrumentation/$
+  - ^zh/docs/concepts/observability-primer/$
+  - ^zh/docs/concepts/resources/$
+  - ^zh/docs/concepts/sampling/$
+  - ^zh/docs/concepts/semantic-conventions/$
+  - ^zh/docs/concepts/signals/$
+  - ^zh/docs/concepts/signals/baggage/$
+  - ^zh/docs/concepts/signals/logs/$
+  - ^zh/docs/concepts/signals/metrics/$
+  - ^zh/docs/concepts/signals/traces/$
+  - ^zh/docs/contributing/$
+  - ^zh/docs/contributing/announcements/$
+  - ^zh/docs/contributing/blog/$
+  - ^zh/docs/contributing/development/$
+  - ^zh/docs/contributing/issues/$
+  - ^zh/docs/contributing/localization/$
+  - ^zh/docs/contributing/pr-checks/$
+  - ^zh/docs/contributing/prerequisites/$
+  - ^zh/docs/contributing/pull-requests/$
+  - ^zh/docs/contributing/sig-practices/$
+  - ^zh/docs/contributing/style-guide/$
+  - ^zh/docs/demo/$
+  - ^zh/docs/demo/architecture/$
+  - ^zh/docs/demo/collector-data-flow-dashboard/$
+  - ^zh/docs/demo/docker-deployment/$
+  - ^zh/docs/demo/feature-flags/$
+  - ^zh/docs/demo/feature-flags/recommendation-cache/$
+  - ^zh/docs/demo/kubernetes-deployment/$
+  - ^zh/docs/demo/requirements/application/$
+  - ^zh/docs/demo/services/$
+  - ^zh/docs/getting-started/dev/$
+  - ^zh/docs/getting-started/ops/$
+  - ^zh/docs/languages/$
+  - ^zh/docs/languages/go/exporters/$
+  - ^zh/docs/languages/go/getting-started/$
+  - ^zh/docs/languages/go/instrumentation/$
+  - ^zh/docs/languages/go/sampling/$
+  - ^zh/docs/languages/java/$
+  - ^zh/docs/languages/java/api/$
+  - ^zh/docs/languages/java/configuration/$
+  - ^zh/docs/languages/java/getting-started/$
+  - ^zh/docs/languages/java/instrumentation/$
+  - ^zh/docs/languages/java/intro/$
+  - ^zh/docs/languages/java/sdk/$
+  - ^zh/docs/languages/js/$
+  - ^zh/docs/languages/js/benchmarks/$
+  - ^zh/docs/languages/js/context/$
+  - ^zh/docs/languages/js/getting-started/$
+  - ^zh/docs/languages/js/getting-started/nodejs/$
+  - ^zh/docs/languages/js/instrumentation/$
+  - ^zh/docs/languages/js/libraries/$
+  - ^zh/docs/languages/js/propagation/$
+  - ^zh/docs/languages/js/resources/$
+  - ^zh/docs/languages/js/serverless/$
+  - ^zh/docs/platforms/faas/$
+  - ^zh/docs/platforms/faas/lambda-collector/$
+  - ^zh/docs/platforms/faas/lambda-manual-instrument/$
+  - ^zh/docs/platforms/kubernetes/collector/components/$
+  - ^zh/docs/platforms/kubernetes/helm/collector/$
+  - ^zh/docs/platforms/kubernetes/helm/operator/$
+  - ^zh/docs/platforms/kubernetes/operator/$
+  - ^zh/docs/security/$
+  - ^zh/docs/security/cve/$
+  - ^zh/docs/security/handling-sensitive-data/$
+  - ^zh/docs/specs/$
+  - ^zh/docs/specs/status/$
+  - ^zh/docs/what-is-opentelemetry/$
+  - ^zh/docs/zero-code/$
+  - ^zh/docs/zero-code/java/$
+  - ^zh/docs/zero-code/java/agent/api/$
+  - ^zh/docs/zero-code/java/agent/configuration/$
+  - ^zh/docs/zero-code/java/agent/declarative-configuration/$
+  - ^zh/docs/zero-code/java/agent/disable/$
+  - ^zh/docs/zero-code/java/agent/extensions/$
+  - ^zh/docs/zero-code/java/agent/getting-started/$
+  - ^zh/docs/zero-code/java/agent/performance/$
+  - ^zh/docs/zero-code/java/agent/server-config/$
+  - ^zh/docs/zero-code/java/agent/supported-libraries/$
+  - ^zh/docs/zero-code/java/spring-boot-starter/$
+  - ^zh/docs/zero-code/java/spring-boot-starter/additional-instrumentations/$
+  - ^zh/docs/zero-code/java/spring-boot-starter/annotations/$
+  - ^zh/docs/zero-code/java/spring-boot-starter/api/$
+  - ^zh/docs/zero-code/java/spring-boot-starter/getting-started/$
+  - ^zh/docs/zero-code/java/spring-boot-starter/other-spring-autoconfig/$
+  - ^zh/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/$
+  - ^zh/docs/zero-code/java/spring-boot-starter/sdk-configuration/$
+  - ^zh/docs/zero-code/js/$
+  - ^zh/docs/zero-code/js/configuration/$
+  - ^zh/docs/zero-code/php/$
+  - ^zh/ecosystem/adopters/$
+  - ^zh/ecosystem/vendors/$
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexes of paths or URLs to be ignored
@@ -61,10 +372,21 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - ^https://www.perplexity.ai
   - ^https://sched.co # Often yields 403 Forbidden and needs manual verification
   - ^https://.*\.sched\.com
+  - ^https://wiki.osdev.org
+  - ^https://www\.merriam-webster\.com # Cloudflare bot challenge
+
+  # Returns a 202 (Accepted) that htmltest treats as a non-OK status, even
+  # though the page loads fine in a browser (verified 200 manually); drop
+  # if/once we switch to lychee:
+  - ^https://hydrolix\.io/
 
   # Ignore because they forget to renew their certificates too often, e.g., see:
   # https://github.com/oatpp/oatpp/issues/1082
   - ^https://oatpp.io
+
+  # Unreliable host (connection timeouts); matching semantic-conventions, see
+  # https://github.com/open-telemetry/semantic-conventions/pull/2069
+  - ^https://www\.intersystems\.com
 
   # Ignore issues and discussions with query parameters, e.g.:
   - ^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=
@@ -81,9 +403,17 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/[^d]
   - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/[^s]
   - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/security
+  # TODO: remove once https://github.com/open-telemetry/opentelemetry.io/pull/9850 is merged;
+  # this file is new and won't exist on main until then:
+  - ^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/docs/specs/otel-config/
   # FIXME: same issue as for the OTel spec mentioned above:
   - ^https://github.com/open-telemetry/semantic-conventions/tree/main
 
   # TODO delete once the following is fixed and lands in this repo:
   # https://github.com/open-telemetry/semantic-conventions/issues/2909
   - ^https://www.whatsmyua.info
+
+  # Retired Kubernetes v1.30 doc host (404 outside "current + 4" doc policy).
+  # semantic-conventions still links here for volume types; remove when fixed:
+  # https://github.com/open-telemetry/opentelemetry.io/issues/9808
+  - ^https://v1-30\.docs\.kubernetes\.io/

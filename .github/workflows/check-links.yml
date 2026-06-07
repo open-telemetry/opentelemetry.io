@@ -29,7 +29,7 @@ jobs:
       - name: Create and use reduced-dependencies package.json
         run: |
           jq '.devDependencies |= with_entries(
-                  select(.key | test("prefix|hugo|css"))
+                  select(.key | test("prefix|hugo|css|js-yaml"))
                 )
                 | .dependencies |= with_entries(
                   select(.key | test("minisearch")))
@@ -52,6 +52,13 @@ jobs:
           npm run seq pin:submodule
           echo "If the diff check below fails, then update .gitmodules by pinning the named git"
           echo "submodule(s); or undo the submodule update(s) if it happened by mistake."
+          npm run _diff:fail
+
+      - name: Htmltest config up to date?
+        run: |
+          npm run fix:htmltest-config
+          echo "If the diff check below fails, then locally run 'npm run fix:htmltest-config'"
+          echo "and commit the updated .htmltest.yml."
           npm run _diff:fail
 
       - name: Build the site

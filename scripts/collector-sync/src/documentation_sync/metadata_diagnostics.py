@@ -100,7 +100,10 @@ class MetadataDiagnostics:
         for issue_type, issues in sorted(by_type.items()):
             lines.append(f"### {issue_type.replace('_', ' ').title()} ({len(issues)})\n")
             for issue in sorted(issues, key=lambda i: (i.component_type, i.name)):
-                lines.append(f"- **{issue.component_type}/{issue.name}** ({issue.source_repo}): {issue.details}")
+                lines.append(
+                    f"- **{issue.component_type}/{issue.name}** "
+                    f"({issue.source_repo}): {issue.details}"
+                )
             lines.append("")
 
         return "\n".join(lines)
@@ -139,11 +142,17 @@ class MetadataDiagnostics:
             lines.append("| Component | Source | Issue | Details |")
             lines.append("|-----------|--------|-------|---------|")
             for issue in sorted(issues, key=lambda i: i.name):
-                lines.append(f"| `{issue.name}` | {issue.source_repo} | {issue.issue_type} | {issue.details} |")
+                lines.append(
+                    f"| `{issue.name}` | {issue.source_repo} | "
+                    f"{issue.issue_type} | {issue.details} |"
+                )
             lines.append("")
 
         lines.append("## Action Required\n")
-        lines.append("Please review the affected components and ensure their metadata files include:")
+        lines.append(
+            "Please review the affected components and ensure "
+            "their metadata files include:"
+        )
         lines.append("1. `metadata` field")
         lines.append("2. `metadata.status` field")
         lines.append("3. `metadata.status.stability` field with appropriate signal levels")

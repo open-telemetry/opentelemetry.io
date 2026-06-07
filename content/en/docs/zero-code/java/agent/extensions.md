@@ -47,7 +47,7 @@ java {
 
 dependencies {
     // Use BOM to manage OpenTelemetry dependency versions
-    compileOnly(platform("io.opentelemetry:opentelemetry-bom:1.57.0"))
+    compileOnly(platform("io.opentelemetry:opentelemetry-bom:1.61.0"))
 
     // OpenTelemetry SDK autoconfiguration SPI (provided by agent)
     compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi")

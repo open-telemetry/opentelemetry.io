@@ -7,7 +7,6 @@ from pathlib import Path
 
 from documentation_sync.component_data_generator import ComponentDataGenerator
 from documentation_sync.explorer_repository_manager import ExplorerRepositoryManager
-from documentation_sync.fix_spelling import fix_component_spelling
 from documentation_sync.inventory_manager import InventoryManager
 from documentation_sync.metadata_diagnostics import MetadataDiagnostics
 from documentation_sync.update_docs import get_latest_version, merge_inventories
@@ -125,13 +124,6 @@ def main() -> None:
     data_generator = ComponentDataGenerator(diagnostics)
     data_generator.write_component_data_files(merged_inventory, repo_root)
     logger.info("✅ Component data files generated")
-
-    # Fix spelling errors (runs in current directory)
-    logger.info("\n" + "=" * 60)
-    logger.info("Fixing Spelling Errors")
-    logger.info("=" * 60 + "\n")
-
-    fix_component_spelling()
 
     logger.info("\n" + "=" * 60)
     logger.info("Metadata Quality Report")
