@@ -27,11 +27,11 @@ Runs link checking for a specific shard by appending a shard-specific
 .github/scripts/check-links-shard.sh [-qk] <shard-id> <shard-regex>
 ```
 
-| Flag | Description                                             |
-| ---- | ------------------------------------------------------- |
-| `-h` | Show help                                               |
-| `-k` | Keep generated `.htmltest.yml` (default: after the run) |
-| `-q` | Quiet mode                                              |
+| Flag | Description                                                    |
+| ---- | -------------------------------------------------------------- |
+| `-h` | Show help                                                      |
+| `-k` | Keep generated `.htmltest.yml` (default: delete after the run) |
+| `-q` | Quiet mode                                                     |
 
 ## check-refcache.sh
 
