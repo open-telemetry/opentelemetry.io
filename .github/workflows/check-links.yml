@@ -54,8 +54,7 @@ jobs:
           echo "submodule(s); or undo the submodule update(s) if it happened by mistake."
           npm run _diff:fail
 
-      - name: Generate htmltest config
-        run: npm run fix:htmltest-config
+      - run: npm run generate:config:links
 
       - name: Build the site
         run: npm run log:build

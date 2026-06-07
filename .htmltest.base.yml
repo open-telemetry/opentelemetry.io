@@ -1,5 +1,5 @@
 # Static base configuration for htmltest. The generated `.htmltest.yml` is
-# produced from this file by `npm run fix:htmltest-config`, which appends
+# produced from this file by `npm run generate:config:links`, which appends
 # auto-discovered `IgnoreDirs` entries from page front matter. `.htmltest.yml`
 # is git-ignored. Edit this base file, not `.htmltest.yml`.
 CacheExpires: 13300h # ~ 18 months

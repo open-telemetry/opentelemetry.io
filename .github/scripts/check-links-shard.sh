@@ -53,7 +53,7 @@ fi
 # locally, generate it on demand if it's missing.
 if [[ ! -f .htmltest.yml ]]; then
   [[ -z $QUIET ]] && echo "Generating .htmltest.yml from .htmltest.base.yml"
-  npm run fix:htmltest-config
+  npm run generate:config:links
 fi
 
 # Append this shard's IgnoreDirs regex to the generated config.
@@ -73,10 +73,8 @@ npm run --ignore-scripts __check:links 2>&1 | \
   grep -Ev '(anchor without href|OK|cache|Content) --- |^[0-9]+:|ignored |testDocument on|DOCTYPE|<nil>'
 EXIT_CODE=${PIPESTATUS[0]}
 
-# Remove the generated, shard-modified `.htmltest.yml` unless -k is given, so
-# repeated local runs start from a freshly generated config (it is regenerated
-# above when missing). In CI the file comes from the build artifact and is not
-# needed after this step.
+# Remove the generated .htmltest.yml unless -k is given, so repeated local runs
+# start from a clean config. (Harmless in CI: the file is per-job and discarded.)
 if [[ -z $KEEP ]]; then
   rm -f .htmltest.yml
   [[ -z $QUIET ]] && echo "Removed generated .htmltest.yml"
