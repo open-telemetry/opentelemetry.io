@@ -14,7 +14,7 @@ cSpell:ignore: backendsystem crand debugexporter mapstructure pcommon pdata ptra
 
 OpenTelemetry は[分散トレーシング](/docs/concepts/glossary/#distributed-tracing)を次のように定義しています。
 
-> トレースは、アプリケーションを構成するサービスによって処理される、トレースとして知られる単一のリクエストの進行を追跡します。
+> トレースは、アプリケーションを構成するサービスによって処理される、単一のリクエストの進行を追跡します。
 > リクエストはユーザーまたはアプリケーションによって開始されることがあります。
 > 分散トレーシングは、プロセス、ネットワーク、セキュリティの境界を越えるトレースの形態です。
 
@@ -168,7 +168,7 @@ go mod init github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tai
 
 > [!NOTE]
 >
-> 上記のモジュールパスはモックパスであり、任意のプライベートまたはパブリックパスにできます。
+> 上記のモジュールパスはモックパスであり、任意のプライベートまたはパブリックなパスにできます。
 > [初期 trace-receiver コード](https://github.com/rquedas/otel4devs/tree/main/collector/receiver/trace-receiver)を参照してください。
 
 `otelcol-dev` と `tailtracer`、そして将来的にはさらに多くのコンポーネントという複数の Go モジュールを管理するため、Go の [Workspaces](https://go.dev/doc/tutorial/workspaces) を有効にすることを推奨します。
