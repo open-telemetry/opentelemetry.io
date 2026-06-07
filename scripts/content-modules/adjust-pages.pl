@@ -69,7 +69,8 @@ my @patches = (
     # cSpell:ignore rocketmq
     id      => '2026-06-05-rocketmq-consumer-group-url',
     module  => 'semconv',
-    minVers => '1.41.1',
+    minVers => '1.41.0',
+    maxVers => '1.42.0',
     file    => qr|^tmp/semconv/docs/messaging/rocketmq\.md$|,
     apply   => sub {
       s{
