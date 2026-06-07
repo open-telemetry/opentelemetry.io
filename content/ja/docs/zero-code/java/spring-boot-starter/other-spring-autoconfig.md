@@ -42,7 +42,7 @@ dependencies {
 
 ### 設定 {#configurations}
 
-{{< tabpane text=true >}} {{% tab "Properties" %}}
+{{< tabpane text=true >}} {{% tab "プロパティ" %}}
 
 Zipkin エクスポーターを有効にします（クラスパスに `ZipkinSpanExporter` が必要です）。
 
@@ -53,7 +53,7 @@ otel:
       enabled: true # デフォルト: true
 ```
 
-{{% /tab %}} {{% tab "Declarative Configuration" %}}
+{{% /tab %}} {{% tab "宣言的設定" %}}
 
 [宣言的設定](../declarative-configuration/)では、Zipkin エクスポーターは `tracer_provider.processors` 配下の標準的な[宣言的設定スキーマ](/docs/languages/sdk-configuration/declarative-configuration/)の一部として設定されます。
 
