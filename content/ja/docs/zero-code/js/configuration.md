@@ -6,8 +6,7 @@ aliases:
   - /docs/languages/js/automatic/configuration
   - /docs/languages/js/automatic/module-config
 weight: 10
-default_lang_commit: 115933c1b9c643c8b6cf0d413a32061cd3a1b65f
-drifted_from_default: true
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 cSpell:ignore: serviceinstance
 ---
 
@@ -74,9 +73,7 @@ OTEL_NODE_ENABLED_INSTRUMENTATIONS="http,express"
 OTEL_NODE_DISABLED_INSTRUMENTATIONS="fs,grpc"
 ```
 
-{{% alert title="Note" %}}
-
-両方の環境変数が設定されている場合、最初に `OTEL_NODE_ENABLED_INSTRUMENTATIONS` が適用され、次に `OTEL_NODE_DISABLED_INSTRUMENTATIONS` がそのリストに適用されます。
-したがって、両方のリストに同じ計装が含まれている場合、その計装は無効化されます。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> 両方の環境変数が設定されている場合、最初に `OTEL_NODE_ENABLED_INSTRUMENTATIONS` が適用され、次に `OTEL_NODE_DISABLED_INSTRUMENTATIONS` がそのリストに適用されます。
+> したがって、両方のリストに同じ計装が含まれている場合、その計装は無効化されます。
