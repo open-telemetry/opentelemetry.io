@@ -12,7 +12,7 @@ Esta página te muestra cómo dar los primeros pasos con OpenTelemetry en C++.
 Aprenderás a instrumentar una aplicación sencilla en C++, de forma que se emitan
 [trazas](/docs/concepts/signals/traces/) a la terminal.
 
-## Prerrequisitos
+## Prerrequisitos {#prerequisites}
 
 Asegúrate de tener instalado localmente lo siguiente:
 
@@ -21,13 +21,13 @@ Asegúrate de tener instalado localmente lo siguiente:
 - Make
 - Versión de CMake >= 3.25
 
-## Aplicación de Ejemplo
+## Aplicación de Ejemplo {#example-application}
 
 El siguiente ejemplo utiliza una applicación básica de
 [Oat++](https://oatpp.io/). Si no utilizas Oat++, no hay problema; también
 puedes usar OpenTelemetry C++ con cualquier otro framework web.
 
-## Configuración
+## Configuración {#setup}
 
 - Crea una carpeta llamada `otel-cpp-starter`.
 - Accede a la carpeta recién creada. Esta será tu directorio de trabajo.
@@ -42,7 +42,7 @@ puedes usar OpenTelemetry C++ con cualquier otro framework web.
   └── roll-dice
   ```
 
-## Dependencias
+## Dependencias {#dependencies}
 
 Para empezar, instala Oat++ localmente usando el
 [código fuente](https://github.com/oatpp) y `make`, siguiendo estos pasos:
@@ -86,7 +86,7 @@ Para empezar, instala Oat++ localmente usando el
    cmake --install . --prefix ../../install
    ```
 
-A continuación, instala y construye
+A continuación, instala y compila
 [OpenTelemetry C++](https://github.com/open-telemetry/opentelemetry-cpp)
 localmente usando CMake, siguiendo estos pasos:
 
@@ -123,7 +123,7 @@ localmente usando CMake, siguiendo estos pasos:
    cmake -DBUILD_TESTING=OFF -DWITH_ABSEIL=ON ..
    ```
 
-5. Ejecuta el proceso de construcción:
+5. Ejecuta el proceso de compilación:
 
    ```bash
    cmake --build .
@@ -139,7 +139,7 @@ localmente usando CMake, siguiendo estos pasos:
 Con Oat++ y OpenTelemetry C++ listos, puedes continuar con la creación del
 servidor HTTP, que queremos instrumentar posteriormente.
 
-## Crea y levanta un Servidor HTTP
+## Crea y levanta un Servidor HTTP {#create-and-launch-an-http-server}
 
 En tu carpeta `otel-cpp-starter`, crea una subcarpeta `roll-dice`, donde se
 utilizará la libería Oat++, incluyendo los archivos de cabecera de oatpp y
@@ -224,7 +224,7 @@ int main() {
 }
 ```
 
-Construye y ejecuta la aplicación con los siguientes comandos CMake:
+Compila y ejecuta la aplicación con los siguientes comandos CMake:
 
 ```bash
 mkdir build
@@ -233,7 +233,7 @@ cmake .. -DCMAKE_PREFIX_PATH=$(pwd)/../../install
 cmake --build .
 ```
 
-Tras construir correctamente tu proyecto, puedes ejecutar el binario
+Tras compilar correctamente tu proyecto, puedes ejecutar el binario
 generado.
 
 ```bash
@@ -243,7 +243,7 @@ generado.
 Luego, abre <http://localhost:8080/rolldice> en tu navegador para comprobar que
 funciona.
 
-## Instrumentación
+## Instrumentación {#instrumentation}
 
 Para agregar OpenTelemetry a tu aplicación, actualiza el fichero
 `CMakeLists.txt` con las siguientes dependencias adicionales.
@@ -385,7 +385,7 @@ verás un span en la terminal.
 }
 ```
 
-## Siguientes pasos
+## Siguientes pasos {#next-steps}
 
 Para más información sobre cómo instrumentar tu código, consulta la
 documentación de [instrumentación](/docs/languages/cpp/instrumentation).
