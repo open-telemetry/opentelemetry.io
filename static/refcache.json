@@ -256,8 +256,8 @@
     "LastSeen": "2026-06-05T15:53:00.790422246Z"
   },
   "https://bento.me/adrianamvillela": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-07T10:30:46.679796086Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-07T10:47:05.288Z"
   },
   "https://betterstack.com/docs/logs/open-telemetry/#2-setup": {
     "StatusCode": 200,
@@ -2836,20 +2836,20 @@
     "LastSeen": "2026-06-05T14:05:04.979518088Z"
   },
   "https://dotnet.microsoft.com/download/dotnet-framework": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-07T10:24:37.942068163Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-07T10:47:10.113Z"
   },
   "https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-07T10:24:40.145397829Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-07T10:47:14.807Z"
   },
   "https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet-framework": {
     "StatusCode": 200,
     "LastSeen": "2026-06-06T10:58:32.379Z"
   },
   "https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-07T10:25:20.856692601Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-07T10:47:19.402Z"
   },
   "https://drive.google.com/file/d/1C4e7OevZ5vXyZLjxZif9Mi06A6uPNH7K/view": {
     "StatusCode": 200,
@@ -20140,8 +20140,8 @@
     "LastSeen": "2026-06-07T10:25:01.868882879Z"
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-07T10:30:05.763519708Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-07T10:47:23.765Z"
   },
   "https://openai.com/": {
     "StatusCode": 200,
@@ -23264,12 +23264,12 @@
     "LastSeen": "2026-06-04T15:44:34.668322364Z"
   },
   "https://www.base64encode.org/": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-07T10:30:17.46609313Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-07T10:47:28.238Z"
   },
   "https://www.britannica.com/dictionary/pipeline": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-07T10:26:19.521227262Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-07T10:47:59.543Z"
   },
   "https://www.buoyant.io/mtls-guide": {
     "StatusCode": 200,
@@ -24296,8 +24296,8 @@
     "LastSeen": "2026-06-05T17:42:26.78Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-trace-node": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-07T10:24:42.393868818Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-07T10:48:04.121Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/shim-opentracing": {
     "StatusCode": 200,
@@ -24844,8 +24844,8 @@
     "LastSeen": "2026-06-06T10:20:00.900510991Z"
   },
   "https://www.sap.com/products/technology-platform/hana/what-is-sap-hana.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-07T10:26:30.192450966Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-07T10:48:10.312Z"
   },
   "https://www.scala-lang.org/api/2.12.0/scala/concurrent/forkjoin/package$$ForkJoinPool$.html": {
     "StatusCode": 206,
