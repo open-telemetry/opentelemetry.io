@@ -201,7 +201,6 @@ IgnoreDirs:
   - ^pt/docs/languages/js/getting-started/$
   - ^pt/docs/languages/js/getting-started/nodejs/$
   - ^pt/docs/languages/js/instrumentation/$
-  - ^pt/docs/languages/js/libraries/$
   - ^pt/docs/languages/python/$
   - ^pt/docs/languages/python/benchmarks/$
   - ^pt/docs/languages/python/exporters/$
