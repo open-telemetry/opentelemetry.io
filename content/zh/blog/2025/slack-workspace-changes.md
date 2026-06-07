@@ -4,6 +4,7 @@ linkTitle: Slack 工作区变更
 date: 2025-06-17
 author: OpenTelemetry 维护者
 default_lang_commit: 881be59002ff3c840ea147358bc05147d2d629e3
+drifted_from_default: true
 ---
 
 昨天，云原生计算基金会（CNCF）[发布公告](https://www.cncf.io/blog/2025/06/16/cncf-slack-workspace-changes-coming-on-friday-june-20/)，表示
