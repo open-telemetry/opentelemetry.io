@@ -48,9 +48,10 @@ strategies, in priority order:
    `docs-approvers` as a required reviewer there. The `main` branch ruleset
    already requires code-owner review, so this lets a locale team approve — and
    thereby unblock — its own PRs without waiting on `docs-approvers`, directly
-   advancing [#9219]. A reviewer who owns every changed path satisfies a PR with
-   a single approval, so a maintainer who belongs to multiple locale teams can
-   approve a PR that spans those locales (e.g. a cross-locale broken-link fix).
+   advancing [#9219][]. A reviewer who owns every changed path satisfies a PR
+   with a single approval, so a maintainer who belongs to multiple locale teams
+   can approve a PR that spans those locales (e.g. a cross-locale broken-link
+   fix).
 
 2. **PR status check (secondary, optional).** A required check that flags a PR
    _escaping_ locale-owned files into shared or `en` content, overridable by a
@@ -64,20 +65,21 @@ still-open concern (ideally self-service, e.g. via a bot) tracked under
 
 ## Appendix A: Code-ownership notes
 
-- **Locale-owned paths (spec).** A locale `<loc>` owns these path globs; each
-  becomes a CODEOWNERS rule assigning `@open-telemetry/docs-<loc>-approvers`:
+- **Locale-owned paths (spec).** A locale `<loc>` owns these path globs where
+  they exist; each becomes a CODEOWNERS rule assigning
+  `@open-telemetry/docs-<loc>-approvers`:
   - `/content/<loc>/` — localized content
   - `/.cspell/<loc>-*.txt` — locale spell-check word list
   - `/prh/<loc>.yml` — locale proofreading-helper rules
 
   This matches the locale-owned scope used in earlier iterations. Rules for
-  paths a locale doesn't yet have (e.g. a missing word list) are harmless and
-  future-proof.
+  paths a locale doesn't yet have (e.g. a missing word list) are harmless; PRH
+  rules are currently Japanese-only.
 
 - **Sole-owner form (target).** List the locale team alone, e.g.
   `/content/<loc>/ @open-telemetry/docs-<loc>-approvers` (and one line per path
   above). Last-match-wins drops `docs-approvers` for those files, making the
-  locale team autonomous for locale-only PRs — the behavior [#9219] is after.
+  locale team autonomous for locale-only PRs — the behavior [#9219][] is after.
 - **Additive form (gentler interim).** List both teams,
   `/content/<loc>/ @open-telemetry/docs-<loc>-approvers @open-telemetry/docs-approvers`,
   which _adds_ locale-team sufficiency while keeping `docs-approvers` as a
@@ -127,9 +129,8 @@ still-open concern (ideally self-service, e.g. via a bot) tracked under
 ## Status details
 
 - **In progress.** De-risking strategy 1 by giving `ja` and `pt` locale teams
-  sole ownership of their locale-owned paths (content, word list, prh rules) in
-  `.github/CODEOWNERS`, to validate that `docs-approvers` is dropped as a
-  required reviewer and the locale team's review satisfies the gate on a live
-  PR.
+  sole ownership of their locale-owned paths in `.github/CODEOWNERS`, to
+  validate that `docs-approvers` is dropped as a required reviewer and the
+  locale team's review satisfies the gate on a live PR.
 
 [#9219]: https://github.com/open-telemetry/opentelemetry.io/issues/9219
