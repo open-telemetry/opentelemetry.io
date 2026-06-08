@@ -149,7 +149,7 @@ jobs:
           REFCACHE_NUM_STATUS_4XX=$(grep '"StatusCode": 4' static/refcache.json | wc -l | xargs)
           echo "REFCACHE_NUM_STATUS_4XX=$REFCACHE_NUM_STATUS_4XX" >> $GITHUB_ENV
 
-      - uses: browser-actions/setup-chrome@v2
+      - uses: browser-actions/setup-chrome@2e1d749697dd1612b833dba4a722266286fbefcd # v2.1.2
         id: setup-chrome
         if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
         with:
