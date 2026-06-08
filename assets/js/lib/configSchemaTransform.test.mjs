@@ -28,7 +28,10 @@ describe('extractTypeRef', () => {
 
   test('returns type name for items $ref', () => {
     assert.equal(
-      extractTypeRef({ type: 'array', items: { $ref: '#/$defs/LogRecordProcessor' } }),
+      extractTypeRef({
+        type: 'array',
+        items: { $ref: '#/$defs/LogRecordProcessor' },
+      }),
       'LogRecordProcessor',
     );
   });
@@ -405,7 +408,9 @@ describe('transformSchema', () => {
     };
 
     const result = transformSchema(rawSchema);
-    const exemplarFilter = result.types.find((t) => t.name === 'ExemplarFilter');
+    const exemplarFilter = result.types.find(
+      (t) => t.name === 'ExemplarFilter',
+    );
     assert.equal(exemplarFilter.usages.length, 1);
     assert.equal(exemplarFilter.usages[0].typeName, 'MeterProvider');
     assert.equal(exemplarFilter.usages[0].typeId, 'meterprovider');

@@ -185,7 +185,9 @@ function renderTypeItem(type, i18n, knownTypeIds) {
 }
 
 function renderAccordion(types, i18n, knownTypeIds) {
-  const items = types.map((t) => renderTypeItem(t, i18n, knownTypeIds)).join('');
+  const items = types
+    .map((t) => renderTypeItem(t, i18n, knownTypeIds))
+    .join('');
   return `
 <div id="${ACCORDION_ID}" class="accordion">
   ${items}
@@ -330,7 +332,10 @@ function handleInitialHash(container) {
   }
   if (!item || !item.classList.contains('accordion-item')) return;
   expandItem(item);
-  setTimeout(() => item.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  setTimeout(
+    () => item.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+    50,
+  );
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────────
