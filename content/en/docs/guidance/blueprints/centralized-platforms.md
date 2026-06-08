@@ -1135,16 +1135,6 @@ via public internet), consider using OTLP/HTTP (see [Action 2][#action-2]) which
 operates over HTTP/1.1 or short-lived HTTP/2 connections and does not suffer
 from the same pinning behavior.
 
-<!-- Section references -->
-
-[challenge-1]:[#challenge-1] [challenge-2]:[#challenge-2]
-[challenge-3]:[#challenge-3] [challenge-4]:[#challenge-4]
-[challenge-5]:[#challenge-5] [guideline-1]:[#guideline-1]
-[guideline-2]:[#guideline-2] [guideline-3]:[#guideline-3]
-[guideline-4]:[#guideline-4] [action-1]:[#action-1] [action-2]:[#action-2]
-[action-3]:[#action-3] [action-4]:[#action-4] [action-5]:[#action-5]
-[appendix-1]:[#appendix-1]
-
 <!-- Link references -->
 
 [1]: https://platformengineering.org/talks-library/platform-as-a-product
@@ -1235,7 +1225,7 @@ from the same pinning behavior.
 [62]: /docs/guidance/reference-implementations/skyscanner/
 [63]: /docs/guidance/#how-to-contribute
 [64]: https://kubernetes.io/docs/concepts/workloads/pods/downward-api/
-[65]: /docs/specs/otel/trace/sdk/#tracerprovider
+[65]: /docs/specs/otel/trace/sdk/#tracer-provider
 [66]: /docs/specs/otel/metrics/sdk/#exemplar
 [67]:
   https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/otlphttpexporter/README.md
