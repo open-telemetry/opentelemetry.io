@@ -3,8 +3,7 @@ title: SDKの設定
 linkTitle: SDKの設定
 weight: 13
 aliases: [config]
-default_lang_commit: 4edfbfc2ff38123678ca63eca95de94ede457623
-drifted_from_default: true
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---
@@ -207,7 +206,7 @@ public class AutoConfiguredSdk {
 | システムプロパティ               | 目的                                                                                                                                                                                          | デフォルト      |
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | `otel.traces.exporter`           | スパンエクスポーターのカンマ区切りリスト。既知の値には`otlp`、`zipkin`、`console`、`logging-otlp`、`none`が含まれます。**[1]**                                                                | `otlp`          |
-| `otel.metrics.exporter`          | メトリクスエクスポーターのカンマ区切りリスト。既知の値には`otlp`、`prometheus`、`none`が含まれます。**[1]**                                                                                   | `otlp`          |
+| `otel.metrics.exporter`          | メトリクスエクスポーターのカンマ区切りリスト。既知の値には`otlp`、`prometheus`、`console`、`none`が含まれます。**[1]**                                                                        | `otlp`          |
 | `otel.logs.exporter`             | ログレコードエクスポーターのカンマ区切りリスト。既知の値には`otlp`、`console`、`logging-otlp`、`none`が含まれます。**[1]**                                                                    | `otlp`          |
 | `otel.java.exporter.memory_mode` | `reusable_data`の場合、アロケーションを削減するために（サポートするエクスポーターで）再利用可能メモリモードを有効にします。既知の値には`reusable_data`、`immutable_data`が含まれます。**[2]** | `reusable_data` |
 
