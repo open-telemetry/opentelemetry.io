@@ -14,7 +14,7 @@ postare pe blog, citește mai jos care sunt cerințele.
 
 Înainte de a scrie o postare pe blog, întreabă-te dacă și conținutul tău ar
 putea fi o bună adăugare la documentație. Dacă răspunsul este „da”, creează o
-nouă problemă sau o cerere de extragere cu conținutul tău pentru a-l adăuga în
+nouă problemă sau un pull request (PR) cu conținutul tău pentru a-l adăuga în
 documentație.
 
 Reține că obiectivul administratorilor și al aprobatorilor site-ului web
@@ -34,7 +34,7 @@ conținut original care se aplică în general comunității OpenTelemetry. Post
 pe blog trebuie să respecte politicile descrise în
 [Ghidul pentru rețelele sociale](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
 
-### Legături către depozitele GitHub
+### Legături către repertoriul GitHub
 
 Postările pe blog sunt verificate de markdownlint (`gh-url-hash`) pentru a
 preveni linkurile instabile `blob`/`tree` de pe GitHub.
@@ -64,7 +64,7 @@ Conținutul neadecvat include:
 
 - Prezentări de produse ale furnizorilor
 
-Dacă postarea dvs. de pe blog se încadrează în lista de conținut adecvat,
+Dacă postarea ta de pe blog se încadrează în lista de conținut adecvat,
 [raportează o problemă](https://github.com/open-telemetry/opentelemetry.io/issues/new?title=New%20Blog%20Post:%20%3Ctitle%3E)
 cu următoarele detalii:
 
@@ -88,7 +88,7 @@ asemenea, către un SIG adecvat, pe care îl poți contacta pentru sponsorizare.
 avea un sponsor este opțional, dar a avea unul crește șansa ca postarea ta pe
 blog să fie revizuită și aprobată mai rapid.
 
-Dacă problema ta are tot ce este necesar, un întreținător va verifica dacă poți
+Dacă problema ta are tot ce este necesar, un administrator va verifica dacă poți
 continua și trimite postarea pe blog.
 
 ### Apel pentru contribuitori {#call-for-contributors}
@@ -105,17 +105,17 @@ Acest lucru necesită să urmezi procesele pentru
 
 ## Trimite o postare pe blog
 
-Poți trimite o postare pe blog fie prin crearea unei bifurcații în acest depozit
-și scrierea acesteia local, fie utilizând interfața cu utilizatorul GitHub. În
+Poți trimite o postare pe blog fie prin crearea unui fork în acest repertoriu și
+scrierea acesteia local, fie utilizând interfața cu utilizatorul GitHub. În
 ambele cazuri, te rugăm să urmezi instrucțiunile furnizate de
 [șablonul de postare pe blog](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md).
 
-### Crează o bifurcație și scrie local
+### Crează un fork și scrie local
 
 După ce ai configurat bifurcația locală, poți crea o postare pe blog folosind un
 șablon. Urmează acești pași pentru a crea o postare din șablon:
 
-1. Rulează următoarea comandă din rădăcina depozitului:
+1. Rulează următoarea comandă din rădăcina repertoriului:
 
 ```sh
 npx hugo new content/en/blog/$(date +%Y)/short-name-for-post.md
