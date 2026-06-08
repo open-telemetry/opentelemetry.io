@@ -1,0 +1,57 @@
+name: Locale auto-merge
+
+# Lets a locale team member enable (or disable) GitHub-native auto-merge on a
+# locale-only PR by commenting `/auto-merge` (or `/auto-merge:enable` /
+# `:disable`). The DOCS bot (which has the permissions needed to enable
+# auto-merge) performs the action;
+# branch protection + CODEOWNERS remain the hard gate — the PR still won't
+# merge until all required reviews and checks pass. The eligibility and
+# locale-team authorization logic lives in scripts/gh/locale-auto-merge/.
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+
+jobs:
+  auto-merge:
+    name: Locale auto-merge command
+    runs-on: ubuntu-latest
+    if: |
+      github.repository_owner == 'open-telemetry' &&
+      github.event.issue.pull_request != null &&
+      startsWith(github.event.comment.body, '/auto-merge')
+
+    steps:
+      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+
+      # The DOCS bot has the elevated permissions needed to enable auto-merge
+      # under branch protection (a plain GITHUB_TOKEN cannot do this) and to
+      # read org team membership for the locale-team authorization check.
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        id: otelbot-token
+        with:
+          client-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
+      # Full checkout so the helper can enumerate locales from content/.
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with: { persist-credentials: false }
+
+      - name: Run locale auto-merge command
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+          REPO: ${{ github.repository }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
+          PR_NUM: ${{ github.event.issue.number }}
+        run: |
+          node scripts/gh/locale-auto-merge/cli.mjs \
+            --pr "$PR_NUM" \
+            --comment "$COMMENT_BODY" \
+            --user "$COMMENT_AUTHOR" \
+            --no-dry-run
