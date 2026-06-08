@@ -1,3 +1,7 @@
+# Static base configuration for htmltest. The generated `.htmltest.yml` is
+# produced from this file by `npm run generate:config:links`, which appends
+# auto-discovered `IgnoreDirs` entries from page front matter. `.htmltest.yml`
+# is git-ignored. Edit this base file, not `.htmltest.yml`.
 CacheExpires: 13300h # ~ 18 months
 DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
@@ -12,17 +16,6 @@ RetryCachedErrors: false
 CacheAllExternal: true
 RedirectLimit: 3
 IgnoreDirs:
-  # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
-  # Ignore blog index pages for all locales and in all blog sections (top-level and years)
-  - ^(../)?blog/(\d+/)?page/\d+
-  # Ignore old blog posts
-  - ^(../)?blog/20(19|21|22|23)/
-  # TODO drop the following config once this page is updated to reflect the corresponding `en`
-  # page and the link 404 (detailed below) are resolved:
-  #   zh/docs/contributing/index.html
-  #     Non-OK status: 404 --> https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md
-  - ^zh/docs/contributing/
-  # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - /index.xml$ # Ignore rel="alternative" links to RSS feeds
@@ -62,6 +55,7 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - ^https://sched.co # Often yields 403 Forbidden and needs manual verification
   - ^https://.*\.sched\.com
   - ^https://wiki.osdev.org
+  - ^https://www\.merriam-webster\.com # Cloudflare bot challenge
 
   # Returns a 202 (Accepted) that htmltest treats as a non-OK status, even
   # though the page loads fine in a browser (verified 200 manually); drop

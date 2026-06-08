@@ -148,7 +148,7 @@ CI/infra: # including config
           - .editorconfig
           - .github/**
           - .gitpod.yml
-          - .htmltest.yml
+          - .htmltest.base.yml
           - .markdown*.*
           - content/**/.markdownlint.yaml
           - .nvmrc
@@ -166,7 +166,6 @@ CI/infra: # including config
           - netlify.toml
           - prh/**
           - scripts/**
-          - static/refcache.json
           - tests/**
 
 dependencies:
