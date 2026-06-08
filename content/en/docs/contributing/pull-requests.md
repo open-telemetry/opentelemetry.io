@@ -170,7 +170,6 @@ fix:dict
 fix:expired
 fix:filenames
 fix:format
-fix:htmltest-config
 fix:i18n
 fix:markdown
 fix:refcache

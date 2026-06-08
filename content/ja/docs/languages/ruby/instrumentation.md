@@ -7,8 +7,7 @@ aliases:
   - /docs/languages/ruby/context-propagation
 weight: 20
 description: OpenTelemetry Ruby計装
-default_lang_commit: c651bbf2a61f1ea643ae1d2ae89d496c58dbb56d
-drifted_from_default: true
+default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
 cSpell:ignore: SIGHUP
 ---
 
@@ -23,7 +22,29 @@ gem install opentelemetry-sdk
 ```
 
 次に、プログラムの初期化時に実行される、設定コードを記述します。
-サービス名を設定して、`service.name` が設定されていることを確認してください。
+サービス名を設定して（たとえば `OTEL_SERVICE_NAME` 環境変数を使って）、`service.name` が設定されていることを確認してください。
+
+各計装を個別に有効にせずに、多くの一般的なライブラリを計装するには、`opentelemetry-instrumentation-all` を使用します。
+
+```sh
+gem install opentelemetry-instrumentation-all
+```
+
+次に、利用可能な計装を有効にするように SDK を設定します。
+
+```ruby
+require 'opentelemetry/sdk'
+OpenTelemetry::SDK.configure do |c|
+  c.use_all
+end
+```
+
+> [!TIP]
+>
+> Ruby on Rails アプリでは、この設定を `config/initializers/opentelemetry.rb` に配置できます。
+
+このアプローチにより、サポートされているライブラリの計装が自動的に有効になります（そのため、通常は以下の[トレース](#traces)セクションにある個別の計装手順に従う必要はありません）。
+デプロイメントに適したエクスポーターと環境変数の設定は、別途必要になる場合があります。
 
 ## トレース {#traces}
 
@@ -317,6 +338,15 @@ gem 'opentelemetry-propagator-b3'
 ## ログ {#logs}
 
 ログAPIとSDKは現在開発中です。
+
+Ruby の標準 `Logger` で出力されるアプリケーションログをキャプチャするには、logger 計装パッケージをインストールします。
+
+```sh
+gem install opentelemetry-instrumentation-logger
+```
+
+インストール後、ログをサポートするエクスポーター/エンドポイントが設定されていることを確認してください。
+たとえば、次のセクションで参照されるエクスポーター設定を使用します。
 
 ## 次のステップ {#next-steps}
 
