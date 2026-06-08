@@ -194,8 +194,6 @@ PostgreSQL, MySQL, and MSSQL binary protocols.
 
 ### HTTP header and body enrichment for spans {#http-header-enrichment-for-spans}
 
-### HTTP header and body enrichment for spans
-
 OBI can attach selected HTTP headers and selected HTTP body fields to spans
 through the `ebpf.payload_extraction.http.enrichment` configuration section.
 This is useful when you want to carry business or routing headers into traces
