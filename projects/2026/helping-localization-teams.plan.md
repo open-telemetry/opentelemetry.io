@@ -83,6 +83,11 @@ still-open concern (ideally self-service, e.g. via a bot) tracked under
   which _adds_ locale-team sufficiency while keeping `docs-approvers` as a
   fallback. Useful if we want to validate reviewer auto-request before removing
   the fallback.
+- **No-owner form (shared high-churn files).** A pattern with _no_ owner clears
+  the global `*` rule for that path, leaving it with no required code owner
+  (it's still subject to the branch's general approval requirement). Used for
+  `/static/refcache.json`, the auto-maintained link cache, so it doesn't drag
+  `docs-approvers` into locale PRs that happen to update it.
 - Scope-drift is mostly closed by strategy 1: when a locale team self-serves,
   any later commit that escapes into other-owned files adds a required reviewer
   whose approval is absent, blocking the merge. The residual case (a

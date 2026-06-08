@@ -15,6 +15,9 @@
 # Global owners, will be the owners for everything in the repo.
 * @open-telemetry/docs-approvers
 
+# No-owner files:
+/static/refcache.json
+
 # Localization teams own their locale's files.
 
 /.cspell/ja-*.txt @open-telemetry/docs-ja-approvers
