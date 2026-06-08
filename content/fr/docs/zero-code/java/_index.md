@@ -6,8 +6,8 @@ aliases:
   - /docs/languages/java/automatic_instrumentation
 cascade:
   vers:
-    instrumentation: 2.26.1
-    otel: 1.61.0
+    instrumentation: 2.28.1
+    otel: 1.62.0
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 drifted_from_default: true
 ---

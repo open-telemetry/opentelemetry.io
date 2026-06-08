@@ -7,20 +7,30 @@ tags:
   - php
   - instrumentation
   - tracing
+  - metrics
+  - logs
   - doctrine
   - twig
   - cache
   - messenger
+  - mailer
+  - scheduler
+  - monolog
   - http-client
   - console
+  - otlp
+  - aws-xray
 urls:
   repo: https://github.com/tracewayapp/opentelemetry-symfony-bundle
   docs: https://github.com/tracewayapp/opentelemetry-symfony-bundle#readme
 license: MIT
 description:
-  Pure-PHP OpenTelemetry tracing for Symfony — automatic instrumentation for
-  HTTP, Console, Doctrine DBAL, Cache, Twig, Messenger, and HttpClient. No C
-  extension required. Supports PHP 8.1+ and Symfony 6.4/7.x/8.x.
+  Pure-PHP OpenTelemetry instrumentation for Symfony — automatic tracing for
+  HTTP, Console, HttpClient, Messenger, Mailer, Scheduler, Doctrine DBAL, Cache,
+  and Twig; Monolog log-trace correlation; opt-in OTel log export; opt-in
+  metrics for Messenger/DBAL/HTTP/Mailer; and native AWS X-Ray propagator and ID
+  generator. Ships a traceway:doctor command for diagnostics. No C extension
+  required. PHP 8.1+, Symfony 6.4 LTS / 7.x / 8.x.
 authors:
   - name: Traceway
     url: https://github.com/tracewayapp
@@ -28,6 +38,6 @@ createdAt: 2026-03-13
 package:
   registry: packagist
   name: traceway/opentelemetry-symfony
-  version: v1.6.1
+  version: v2.2.0
 isNative: false
 isFirstParty: false

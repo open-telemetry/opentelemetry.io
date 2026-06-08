@@ -8,8 +8,8 @@ aliases:
   - /docs/languages/java/automatic_instrumentation
 cascade:
   vers:
-    instrumentation: 2.26.1
-    otel: 1.61.0
+    instrumentation: 2.28.1
+    otel: 1.62.0
 ---
 
 Java 中零代码插桩的常见选项包括 Java 代理 JAR、Spring Boot 启动器和 Quarkus OpenTelemetry 扩展。

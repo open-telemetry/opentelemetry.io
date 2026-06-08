@@ -9,6 +9,7 @@ what-next: >
   enviar cambios, consulta [Enviar contenido][].
 weight: 60
 default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
+drifted_from_default: true
 cSpell:ignore: preprocesado prerequisitos
 ---
 
@@ -163,7 +164,7 @@ locales como (en orden alfabético):
 
 - [Codespaces][cs-devc]
 - [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
-- [Gitpod](https://www.gitpod.io/docs/flex/configuration/devcontainer/overview)
+- [Gitpod](https://ona.com/docs/ona/configuration/devcontainer/overview)
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
 [clone]:

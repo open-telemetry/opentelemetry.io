@@ -9,7 +9,7 @@ on:
 permissions: read-all
 
 jobs:
-  auto-update-versions:
+  auto-update:
     name: Auto-update versions
     runs-on: ubuntu-latest
     permissions:
@@ -26,13 +26,21 @@ jobs:
           git config user.name otelbot
           git config user.email 197425009+otelbot@users.noreply.github.com
 
-      - uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
-          app-id: ${{ vars.OTELBOT_APP_ID }}
+          client-id: ${{ vars.OTELBOT_APP_ID }}
           private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
 
       - run: ./scripts/auto-update/all-versions.sh
         env:
           # change to ${{ secrets.GITHUB_TOKEN }} and comment out the step above when testing against a fork
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+
+  report-failure:
+    needs: auto-update
+    if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
+    uses: ./.github/workflows/reusable-report-failure.yml
+    permissions:
+      issues: write # Pass through for failure tracking issues
+      contents: read

@@ -148,9 +148,9 @@ agent][] in a number of ways, the steps below use environment variables.
 
    ```sh
    export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
-     OTEL_TRACES_EXPORTER=logging \
-     OTEL_METRICS_EXPORTER=logging \
-     OTEL_LOGS_EXPORTER=logging \
+     OTEL_TRACES_EXPORTER=console \
+     OTEL_METRICS_EXPORTER=console \
+     OTEL_LOGS_EXPORTER=console \
      OTEL_METRIC_EXPORT_INTERVAL=15000
    ```
 

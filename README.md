@@ -89,6 +89,7 @@ These are the members of [@open-telemetry/docs-triagers][]:
 - [Emídio Neto](https://github.com/emdneto)
 - [Ezzio Moreira](https://github.com/EzzioMoreira)
 - [Michael Yao](https://github.com/windsonsea), DaoCloud
+- [Pratik Mahalle](https://github.com/pratik-mahalle), DrDroid
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), AWS
 
 For more information about the triager role, see the

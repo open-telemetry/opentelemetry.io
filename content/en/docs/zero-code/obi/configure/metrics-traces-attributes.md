@@ -75,6 +75,40 @@ client metrics and `http_route` for HTTP server metrics.
 When a metric name matches multiple definitions using wildcards, exact matches
 take precedence over wildcard matches.
 
+## Trace selection {#trace-selection}
+
+For exported OpenTelemetry traces, use the `traces` key (not a metric name)
+under `attributes.select`. It controls optional trace decoration such as
+`db.query.text`, `url.query`, GenAI payload attributes, and `db.response.error`.
+
+```yaml
+attributes:
+  select:
+    traces:
+      include:
+        - db.query.text
+        - db.response.error
+```
+
+### `db.response.error` {#db-response-error}
+
+`db.response.error` is not part of the OpenTelemetry semantic conventions. OBI
+uses this string only as a configuration flag under `attributes.select.traces`.
+
+| Condition              | Behavior                                                                                                                                                                                                                                                               |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Not included (default) | On failed database-related spans (SQL, Redis, MongoDB, Couchbase, Memcached, SQL++ over HTTP), `span.status.message` is left empty. This is consistent with how other optional attributes (for example, `db.query.text`) behave — when not selected, they are omitted. |
+| Included               | On those same spans, `span.status.message` is set to the actual error description parsed from the protocol response.                                                                                                                                                   |
+
+`db.response.error` is never attached as a span attribute on OTLP traces. During
+export, OBI uses the gated value only to build `span.status.message` for
+database spans, then drops the attribute from the exported span. Enabling this
+option changes the status description, not a separate `db.response.error` field
+on the span.
+
+The opt-in exists because error strings may contain sensitive or
+high-cardinality detail (schema names, fragments of queries, or data values).
+
 ## Distributed traces and context propagation
 
 YAML section: `ebpf`
@@ -82,10 +116,10 @@ YAML section: `ebpf`
 You can configure the component under the `ebpf` section of your YAML
 configuration or via environment variables.
 
-| YAML<br>environment variable                                     | Description                                                                                                                                                                      | Type    | Default  |
-| ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- |
-| `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`     | Controls trace context propagation method. Accepted: `all`, `headers`, `ip`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
-| `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS` | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                | boolean | false    |
+| YAML<br>environment variable                                     | Description                                                                                                                                                                                      | Type    | Default  |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | -------- |
+| `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`     | Controls trace context propagation method. Accepted: `all`, `headers`, `tcp`, `headers,tcp`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
+| `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS` | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                                | boolean | false    |
 
 ### Context propagation
 
@@ -102,16 +136,20 @@ that also use TC must chain correctly with OBI. For more information about
 chaining programs, see the
 [Cilium compatibility documentation](../../cilium-compatibility/).
 
-You can disable the TCP/IP level encoding and TC programs by setting
-`context_propagation="headers"`. This context propagation is fully compatible
-with any OpenTelemetry distributed tracing library.
+You can disable the TCP-level propagation and Linux Traffic Control programs by
+setting `context_propagation="headers"`. This mode is fully compatible with any
+OpenTelemetry distributed tracing library.
 
 Context propagation values:
 
-- `all`: Enable both HTTP and IP options context propagation
+- `all`: Enable both HTTP header and TCP context propagation
 - `headers`: Enable context propagation via the HTTP headers only
-- `ip`: Enable context propagation via the IP options field only
+- `tcp`: Enable context propagation via the TCP packet path only
+- `headers,tcp`: Enable both methods explicitly
 - `disabled`: Disable trace context propagation
+
+`http` is accepted as an alias for `headers`, but `headers` is the preferred
+name in examples and configuration.
 
 To use this option in containerized environments (Kubernetes and Docker), you
 must:
@@ -121,7 +159,7 @@ must:
   path
 - Grant the `CAP_NET_ADMIN` capability to the OBI container
 
-gRPC and HTTP/2 are not supported.
+gRPC and HTTP/2 are not supported for this network-level mode.
 
 For an example of how to configure distributed traces in Kubernetes, see our
 [Distributed traces with OBI](../../distributed-traces/) guide.
@@ -152,24 +190,24 @@ use a database technology not directly supported by OBI, you can enable this
 option to get database client telemetry. This option is not enabled by default,
 because it can create false positives, for example, if an application sends SQL
 text for logging through a TCP connection. Currently, OBI natively supports the
-PostgreSQL and MySQL binary protocols.
+PostgreSQL, MySQL, and MSSQL binary protocols.
 
-### HTTP header enrichment for spans
+### HTTP header and body enrichment for spans {#http-header-enrichment-for-spans}
 
-OBI can attach selected HTTP headers to spans through the
-`ebpf.payload_extraction.http.enrichment` configuration section. This is useful
-when you want to carry business or routing headers into traces without manually
-instrumenting the application.
+OBI can attach selected HTTP headers and selected HTTP body fields to spans
+through the `ebpf.payload_extraction.http.enrichment` configuration section.
+This is useful when you want to carry business or routing headers into traces
+without manually instrumenting the application.
 
 The enrichment engine is rule-based:
 
-- Set `enabled: true` to activate HTTP header enrichment.
-- Use `policy.default_action` to define whether unmatched headers are included
-  or excluded. The default is `exclude`.
-- Use `policy.match_order` to control rule evaluation. The default is
-  `first_match_wins`.
-- Use `obfuscate` rules to redact sensitive values while still exposing the
-  header key on the span.
+- Set `enabled: true` to activate HTTP header and body enrichment.
+- Use `policy.default_action.headers` and `policy.default_action.body` in YAML
+  to define whether unmatched headers or body content are included or excluded.
+  The default for both is `exclude`.
+- Use `obfuscate` rules to redact sensitive header values or JSON body fields
+  before they are attached to spans.
+- Rules are evaluated in order.
 
 For example:
 
@@ -182,8 +220,9 @@ ebpf:
       enrichment:
         enabled: true
         policy:
-          default_action: exclude
-          match_order: first_match_wins
+          default_action:
+            headers: exclude
+            body: exclude
           obfuscation_string: '***'
         rules:
           - action: obfuscate
@@ -202,17 +241,40 @@ ebpf:
                 - X-Custom-*
                 - X-Dice-Roll
               case_sensitive: false
+          - action: include
+            type: body
+            scope: request
+            match:
+              methods: [POST]
+              url_path_patterns:
+                - /v1/chat/completions
+          - action: obfuscate
+            type: body
+            scope: request
+            match:
+              methods: [POST]
+              url_path_patterns:
+                - /v1/chat/completions
+              obfuscation_json_paths:
+                - $.messages[*].content
 ```
 
-The following environment variables control the policy defaults:
+The following environment variables control the global enrichment behavior:
 
 - `OTEL_EBPF_HTTP_ENRICHMENT_ENABLED`
-- `OTEL_EBPF_HTTP_ENRICHMENT_DEFAULT_ACTION`
-- `OTEL_EBPF_HTTP_ENRICHMENT_MATCH_ORDER`
 - `OTEL_EBPF_HTTP_ENRICHMENT_OBFUSCATION_STRING`
 
-Rules themselves are configured in YAML. If you expect large headers, increase
-`ebpf.buffer_sizes.http` so OBI can capture the relevant values.
+The `policy.default_action.headers` and `policy.default_action.body` settings
+are configured in YAML only; there are no environment variables for these
+defaults.
+
+Rules themselves are configured in YAML. Header rules use `match.patterns` and
+optional `case_sensitive`. Body rules use `match.url_path_patterns`,
+`match.methods`, and `match.obfuscation_json_paths`.
+
+Body extraction requires HTTP payload capture. Increase `ebpf.buffer_sizes.http`
+so OBI can capture the request or response bytes you want to enrich. The limit
+applies independently to requests and responses.
 
 ## Instance ID decoration
 
@@ -281,6 +343,7 @@ attributes:
 | `informers_sync_timeout`<br>`OTEL_EBPF_KUBE_INFORMERS_SYNC_TIMEOUT`         | Maximum time to wait for Kubernetes metadata before starting. For more information, refer to the [informers sync timeout section](#informers-sync-timeout).                                   | Duration       | 30s            |
 | `reconnect_initial_interval`<br>`OTEL_EBPF_KUBE_RECONNECT_INITIAL_INTERVAL` | Initial delay before reconnecting to the Kubernetes API after connection loss. For more information, refer to the [reconnect initial interval section](#reconnect-initial-interval).          | Duration       | 5s             |
 | `informers_resync_period`<br>`OTEL_EBPF_KUBE_INFORMERS_RESYNC_PERIOD`       | Periodically resynchronize all Kubernetes metadata. For more information, refer to the [informers resynchronization period section](#informers-resynchronization-period).                     | Duration       | 30m            |
+| `meta_cache_address`<br>`OTEL_EBPF_KUBE_META_CACHE_ADDRESS`                 | Address of an external `k8s-cache` service to fetch Kubernetes metadata from. For more information, refer to the [meta cache address section](#meta-cache-address).                           | string         | (empty)        |
 | `service_name_template`<br>`OTEL_EBPF_SERVICE_NAME_TEMPLATE`                | Go template for service names. For more information, refer to the [service name template section](#service-name-template).                                                                    | string         | (empty)        |
 
 ### Enable Kubernetes
@@ -353,6 +416,13 @@ servers. Decrease it when you need faster recovery after temporary API outages.
 OBI immediately receives any update on resources' metadata. In addition, OBI
 periodically resynchronizes all Kubernetes metadata at the frequency you specify
 with this property. Higher values reduce the load on the Kubernetes API service.
+
+### Meta cache address
+
+When set, OBI fetches Kubernetes metadata from an external `k8s-cache` service
+over gRPC instead of running its own informers against the Kubernetes API
+server. This is recommended on large clusters and DaemonSet deployments to avoid
+overloading the Kubernetes API.
 
 ### Service name template
 

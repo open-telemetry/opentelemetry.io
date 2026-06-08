@@ -1,6 +1,7 @@
 ---
 title: 扩展
 default_lang_commit: 94b83c9010b9e61255dc840066ae23313a05f592
+drifted_from_default: true
 aliases: [/docs/instrumentation/java/extensions]
 description: 扩展功能可为代理增加能力，而无需创建单独的发行版本。
 weight: 300
