@@ -17911,6 +17911,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:05:42.370833109Z"
   },
+  "https://gohugo.io/content-management/multilingual/#page-bundles": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-08T13:12:30.009887-04:00"
+  },
   "https://gohugo.io/documentation/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:06:13.794595276Z"
