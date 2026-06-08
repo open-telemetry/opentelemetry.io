@@ -42,6 +42,7 @@ are internal helpers and are not intended to be run directly.
 | `check:code-excerpts`  | Check code excerpts, fail if updates needed.                |
 | `check:format`         | Prettier and prose-wrap checks.                             |
 | `check:i18n`           | Validate localization front matter (`default_lang_commit`). |
+| `check:l10n`           | Run localization checks.                                    |
 | `check:links`          | Run HTML link checker.                                      |
 | `check:links:internal` | Link check without extra HTMLTest args.                     |
 | `check:markdown`       | Markdown lint (content and projects).                       |
@@ -63,6 +64,7 @@ are internal helpers and are not intended to be run directly.
 | `fix:format`              | Apply Prettier and trim trailing spaces.                       |
 | `fix:format:staged`       | Format only staged files.                                      |
 | `fix:i18n`                | Add/fix i18n front matter (`fix:i18n:new`, `fix:i18n:status`). |
+| `fix:l10n`                | Apply localization fixes.                                      |
 | `fix:markdown`            | Fix Markdown lint issues and trailing spaces.                  |
 | `fix:refcache`            | Prune refcache and re-run link check (updates refcache).       |
 | `fix:refcache:refresh`    | Prune refcache by count.                                       |
@@ -117,7 +119,7 @@ are internal helpers and are not intended to be run directly.
 | `prebuild`                                         | Before build: `get:submodule`, `cp:spec`.                      |
 | `update:hugo`                                      | Install latest hugo-extended.                                  |
 | `update:packages`                                  | Run npm-check-updates to bump deps.                            |
-| `fix:htmltest-config`                              | Generate/update HTMLTest config (used by link-check pipeline). |
+| `generate:config:links`                            | Generate git-ignored `.htmltest.yml` from `.htmltest.base.yml` |
 | `log:build`, `log:check:links`, `log:test-and-fix` | Run the corresponding script and tee output to `tmp/`.         |
 
 ## Notes
