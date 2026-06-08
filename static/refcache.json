@@ -10335,9 +10335,33 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:12:21.902775665Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/component/config.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-08T13:02:52.619998262Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/config/configtls/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-08T13:02:54.154737552Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/docs/rfcs/semconv-feature-gates.md#proposed-mechanism": {
     "StatusCode": 206,
     "LastSeen": "2026-06-04T15:50:04.663372131Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/pdata/pcommon/map.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-08T13:03:12.04561453Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/pdata/ptrace/generated_resourcespans.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-08T13:03:07.897817047Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/receiver/receiver.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-08T13:03:01.850335019Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/receiver/receiver.go#L58": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-08T13:02:56.711024257Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.153.0/component/config.go": {
     "StatusCode": 206,
