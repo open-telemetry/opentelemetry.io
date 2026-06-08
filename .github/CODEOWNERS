@@ -14,3 +14,12 @@
 
 # Global owners, will be the owners for everything in the repo.
 * @open-telemetry/docs-approvers
+
+# Localization teams own their locale's files.
+
+/.cspell/ja-*.txt @open-telemetry/docs-ja-approvers
+/content/ja/ @open-telemetry/docs-ja-approvers
+/prh/ja.yml @open-telemetry/docs-ja-approvers
+
+/.cspell/pt-*.txt @open-telemetry/docs-pt-approvers
+/content/pt/ @open-telemetry/docs-pt-approvers
