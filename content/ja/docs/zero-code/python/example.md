@@ -2,8 +2,9 @@
 title: 自動計装の例
 linkTitle: Example
 weight: 20
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
-drifted_from_default: true
+default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
+# prettier-ignore
+cSpell:ignore: Aiohttp ASGI distro instrumentor mkdir MSIE Referer Starlette venv
 ---
 
 このページでは、OpenTelemetry で Python 自動計装を使う方法を示します。
@@ -298,9 +299,12 @@ opentelemetry-instrument --traces_exporter console --metrics_exporter none --log
 
 これらの設定オプションは、以下のHTTP計装でサポートされています。
 
+- Aiohttp-server
+- ASGI
 - Django
 - Falcon
 - FastAPI
+- Flask
 - Pyramid
 - Starlette
 - Tornado
@@ -320,6 +324,19 @@ opentelemetry-instrument --traces_exporter console --metrics_exporter none --log
   }
 }
 ```
+
+### 取得したヘッダーのサニタイズ {#sanitization-of-captured-headers}
+
+個人を特定できる情報 (PII)、セッションキー、パスワードなどの機密データの保存を防ぐために、環境変数 `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS` にサニタイズ対象とする HTTP ヘッダー名のカンマ区切りリストを設定してください。
+正規表現を使用でき、ヘッダー名はすべて大文字小文字を区別せずにマッチングされます。
+
+たとえば、次のように指定します。
+
+```sh
+export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS=".*session.*,set-cookie"
+```
+
+すると、`session-id` や `set-cookie` などのヘッダーの値は、スパン内では `[REDACTED]` に置き換えられます。
 
 [semantic convention]: /docs/specs/semconv/http/http-spans/
 [api reference]: https://opentelemetry-python.readthedocs.io/en/latest/index.html

@@ -1,8 +1,7 @@
 ---
 title: その他のSpring自動設定
 weight: 70
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
-drifted_from_default: true
+default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
 cSpell:ignore: autoconfigurations
 ---
 
@@ -43,6 +42,29 @@ dependencies {
 
 ### 設定 {#configurations}
 
-| プロパティ                     | デフォルト値 | ConditionalOnClass   |
-| ------------------------------ | ------------ | -------------------- |
-| `otel.exporter.zipkin.enabled` | true         | `ZipkinSpanExporter` |
+{{< tabpane text=true >}} {{% tab "プロパティ" %}}
+
+Zipkin エクスポーターを有効にします（クラスパスに `ZipkinSpanExporter` が必要です）。
+
+```yaml
+otel:
+  exporter:
+    zipkin:
+      enabled: true # デフォルト: true
+```
+
+{{% /tab %}} {{% tab "宣言的設定" %}}
+
+[宣言的設定](../declarative-configuration/)では、Zipkin エクスポーターは `tracer_provider.processors` 配下の標準的な[宣言的設定スキーマ](/docs/languages/sdk-configuration/declarative-configuration/)の一部として設定されます。
+
+```yaml
+otel:
+  tracer_provider:
+    processors:
+      - batch:
+          exporter:
+            zipkin:
+              endpoint: http://localhost:9411/api/v2/spans
+```
+
+{{% /tab %}} {{< /tabpane >}}
