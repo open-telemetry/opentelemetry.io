@@ -5,7 +5,8 @@ description: Reduza a quantidade de telemetria criada
 default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57
 ---
 
-[Amostragem](/docs/concepts/sampling/) é um processo que restringe a quantidade de rastros gerados por um sistema. O SDK JavaScript oferece diversos
+[Amostragem](/docs/concepts/sampling/) é um processo que restringe a quantidade
+de rastros gerados por um sistema. O SDK JavaScript oferece diversos
 [amostradores de cabeçalho (_head samplers_)](/docs/concepts/sampling#head-sampling).
 
 ## Comportamento padrão {#default-behavior}
@@ -16,9 +17,8 @@ configurar um amostrador.
 
 ## TraceIDRatioBasedSampler
 
-O amostrador de cabeçalho mais comum é o TraceIdRatioBasedSampler. Ele
-realiza a amostragem determinística de uma porcentagem de rastros definida como
-parâmetro.
+O amostrador de cabeçalho mais comum é o TraceIdRatioBasedSampler. Ele realiza a
+amostragem determinística de uma porcentagem de rastros definida como parâmetro.
 
 ### Variáveis de ambiente {#environment-variables}
 
