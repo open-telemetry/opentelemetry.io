@@ -1,0 +1,17 @@
+name: Localization
+
+on:
+  merge_group:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check-localization:
+    # Checks a subset of the localization guidelines.
+    name: LOCALIZATION guidelines
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: npm run check:l10n

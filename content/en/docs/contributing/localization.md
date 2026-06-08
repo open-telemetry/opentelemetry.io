@@ -44,7 +44,8 @@ guidance offered in this section.
 <div class="border-start border-warning bg-warning-subtle">
 
 - **Translate**:
-  - [Alert types](../style-guide/#alerts) such as `TIP`, `WARNING`, etc.
+  - [Alert types](../style-guide/#alerts) such as `TIP`, `WARNING`, etc. This is
+    enforced by a [`MARKDOWN` linter][] rule.
   - Code, including code blocks and inline code (like this
     `inline code example`)
   - **File or directory** names of resources in this repository
@@ -60,6 +61,8 @@ guidance offered in this section.
     style (typography, letter case, and spacing for example).
 
 [^*]: For a possible exception, see [Links](#links).
+
+[`MARKDOWN` linter]: ../pr-checks/#markdown-linter
 
 </div>
 
@@ -146,17 +149,18 @@ This would be translated in French as:
 
 ### Images and diagrams {#images}
 
-Do **not** make copies of image files unless you localize text in the image
-itself[^shared-images].
-
-**Do** translate text in [Mermaid][] diagrams.
-
-[^shared-images]:
-    Hugo is smart about the way that it renders image files that are shared
+- Do **not** make copies of image, video, or other (non-content) files unless
+  you localize text in the file itself.
+  - Hugo is smart about the way that it renders image files that are shared
     across site localizations. That is, Hugo will output a _single_ image file
-    and share it across locales.
+    and share it across locales. For details, see [Page bundles][].
+  - This is enforced by a [`LOCALIZATION` guidelines][l10n-check] check.
 
+- **Do** translate text in [Mermaid][] diagrams.
+
+[l10n-check]: ../pr-checks/#localization
 [Mermaid]: https://mermaid.js.org
+[Page bundles]: https://gohugo.io/content-management/multilingual/#page-bundles
 
 ### Include files {#includes}
 

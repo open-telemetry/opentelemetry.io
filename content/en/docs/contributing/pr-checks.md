@@ -200,6 +200,16 @@ The following code enforces the link requirement described in this section:
 
 </details>
 
+### `LOCALIZATION` guidelines {.notranslate lang=en #localization}
+
+This check enforces mechanically-verifiable
+[localization guidelines](../localization/), such as
+[not copying images](../localization/#images) across localizations, that are not
+already covered by other checks.
+
+If this check fails, run `npm run fix:l10n` locally and push the changes in a
+new commit.
+
 ### `TEST (excluding test:base)` {.notranslate lang=en}
 
 Runs `npm run test:compound-tests`, which executes the compound `test:*-*` NPM
