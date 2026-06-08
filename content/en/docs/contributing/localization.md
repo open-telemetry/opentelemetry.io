@@ -54,7 +54,8 @@ guidance offered in this section.
   - [Links](#links), this includes [heading IDs](#headings) [^*]
   - Markdown elements marked as `notranslate` (usually as a CSS class), in
     particular for [headings](#headings)
-- Create **copies of images**, unless you [localize text in the images](#images)
+- Create **copies of images and other assets**, unless you
+  [localize text in them](#images)
 - Add new or change:
   - **Content** that would be different from the originally intended meaning
   - Presentation **style**, including: _formatting_, _layout_, and _design_
@@ -104,7 +105,8 @@ translating headings:
 ### Links {#links}
 
 Do **not** translate link references. This holds true for external links, and
-paths to website pages and section-local resources such as [images](#images).
+paths to website pages and section-local resources such as
+[images and other assets](#images).
 
 The only exception is for links to external pages (such as
 <https://en.wikipedia.org>) that have a version specific to your local. Often
@@ -147,10 +149,10 @@ This would be translated in French as:
 [link definitions]:
   https://spec.commonmark.org/0.31.2/#link-reference-definitions
 
-### Images and diagrams {#images}
+### Images and other assets {#images}
 
-- Do **not** make copies of image, video, or other (non-content) files unless
-  you localize text in the file itself.
+- Do **not** make copies of image, video, or other non-content asset files
+  unless you localize text in the file itself.
   - Hugo is smart about the way that it renders image files that are shared
     across site localizations. That is, Hugo will output a _single_ image file
     and share it across locales. For details, see [Page bundles][].

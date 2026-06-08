@@ -5,10 +5,11 @@
 // that can be validated mechanically. Currently implements:
 //
 //   - copied-images: a localized page bundle must NOT contain a byte-identical
-//     copy of an image that already exists in the corresponding English bundle.
-//     Hugo shares a single English asset across localizations, so such copies
-//     are both a guideline violation and redundant. A genuinely localized image
-//     (text translated inside the image) differs in bytes and is allowed.
+//     copy of an image or other asset that already exists in the corresponding
+//     English bundle. Hugo shares a single English asset across localizations, so
+//     such copies are both a guideline violation and redundant. A genuinely
+//     localized image or other asset (text translated inside it) differs in
+//     bytes and is allowed.
 //
 // Usage:
 //   node scripts/validate/l10n-do-not-copy-images-etc/index.mjs [--fix]
@@ -106,12 +107,14 @@ function main() {
   const violations = findCopiedImages(files, fs);
 
   if (violations.length === 0) {
-    console.log('✓ do-not-copy-images: no copied images found.');
+    console.log(
+      '✓ do-not-copy-images: no copied images and other assets found.',
+    );
     return 0;
   }
 
   console.log(
-    `do-not-copy-images: found ${violations.length} copied image(s) that duplicate the English asset:`,
+    `do-not-copy-images: found ${violations.length} copied image(s) or other asset(s) that duplicate the English asset:`,
   );
   for (const { file, enFile } of violations) {
     console.log(`  ${file}\n    └─ identical to ${enFile}`);
@@ -126,8 +129,8 @@ function main() {
   }
 
   console.log(
-    `\nDo not copy images across localizations; Hugo shares the English asset automatically.` +
-      `\nRemove the copies (or run \`npm run fix:l10n:do-not-copy-images-etc\`), or localize the image text so it differs.` +
+    `\nDo not copy images and other assets across localizations; Hugo shares the English asset automatically.` +
+      `\nRemove the copies (or run \`npm run fix:l10n\`), or localize the image or asset text so it differs.` +
       `\nSee ${DOC_URL}`,
   );
   return 1;
