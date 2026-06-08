@@ -299,10 +299,10 @@ npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 
 ### Drift status
 
-Run `npm run fix:i18n:status` to add a front-matter field `drifted_from_default`
-to those target localization pages that have drifted. This field will soon be
-used to display a banner at the top of pages that have drifted relative to their
-English counterparts.
+Run `npm run fix:i18n:status` to set the `drifted_from_default` front-matter
+field on those target localization pages that have drifted. This field displays
+an "outdated" banner at the top of the page, and causes the link checker to skip
+the page, so that stale links on drifted pages don't fail CI.
 
 ### Script help
 
@@ -504,7 +504,8 @@ link-check failures for non-English locales. This happens when documentation
 pages are moved or deleted.
 
 In such situations, make the following updates to each non-English page that has
-a path that fails link checking:
+a path that fails link checking (drifted pages are skipped by the link checker,
+so this typically applies to in-sync pages):
 
 - Update the link reference to the new page path.
 - Add the `# patched` YAML comment at the end of the line for the

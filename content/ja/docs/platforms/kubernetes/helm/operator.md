@@ -1,8 +1,7 @@
 ---
 title: OpenTelemetryオペレーターチャート
 linkTitle: オペレーターチャート
-default_lang_commit: e8f18928513b726068be250802ebe7ece25e8851
-drifted_from_default: true
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 ---
 
 ## はじめに {#introduction}
@@ -16,8 +15,11 @@ OpenTelemetryオペレーターの詳しい使い方については、[ドキュ
 
 リリース名 `my-opentelemetry-operator` のチャートをインストールするには、以下のコマンドを実行します。
 
-```console
+```shell
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+```
+
+```shell
 helm install my-opentelemetry-operator open-telemetry/opentelemetry-operator \
   --set "manager.collectorImage.repository=otel/opentelemetry-collector-k8s" \
   --set admissionWebhooks.certManager.enabled=false \
