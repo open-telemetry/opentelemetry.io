@@ -1,15 +1,12 @@
 ---
-title: Dockerでコレクターをインストールする
+title: Docker で Collector をインストールする
 linkTitle: Docker
 weight: 100
-default_lang_commit: 065ae35400c045c61d49556d79abe3a04033bedf
-drifted_from_default: true
+default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
 ---
 
-## Docker {#docker}
-
-以下のコマンドを使用して、Dockerイメージをプルし、コンテナでコレクターを実行します。
-`{{% param vers %}}`は、実行したいコレクターのバージョンに置き換えてください。
+以下のコマンドを使用して、Docker イメージをプルし、コンテナで Collector を実行します。
+`{{% param vers %}}` は、実行したい Collector のバージョンに置き換えてください。
 
 {{< tabpane text=true >}} {{% tab DockerHub %}}
 
@@ -27,7 +24,7 @@ docker run ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry
 
 {{% /tab %}} {{< /tabpane >}}
 
-作業ディレクトリからカスタム構成ファイルを読み込むには、そのファイルをボリュームとしてマウントします。
+作業ディレクトリからカスタム構成ファイルを読み込むには、ファイルをボリュームとしてマウントします。
 
 {{< tabpane text=true >}} {{% tab DockerHub %}}
 
@@ -45,7 +42,7 @@ docker run -v $(pwd)/config.yaml:/etc/otelcol/config.yaml ghcr.io/open-telemetry
 
 ## Docker Compose {#docker-compose}
 
-以下の例のように、既存の`docker-compose.yaml`ファイルにOpenTelemetry Collectorを追加できます。
+既存の `docker-compose.yaml` ファイルに OpenTelemetry Collector を追加することもできます。
 
 ```yaml
 otel-collector:
@@ -54,10 +51,41 @@ otel-collector:
     - ./otel-collector-config.yaml:/etc/otelcol/config.yaml
   ports:
     - 1888:1888 # pprof拡張
-    - 8888:8888 # コレクターのPrometheusメトリクス
+    - 8888:8888 # Collector の Prometheus メトリクス
     - 8889:8889 # Prometheusエクスポーターのメトリクス
     - 13133:13133 # health_check拡張
     - 4317:4317 # OTLP gRPCレシーバー
     - 4318:4318 # OTLP httpレシーバー
     - 55679:55679 # zpages拡張
+```
+
+`otel-collector-config.yaml` ファイルは Collector の起動に必要です。
+詳しくは [Collector の設定](/docs/collector/configuration/)を参照してください。
+
+以下は、受信したすべてのテレメトリーをログに出力する最小限の Collector 設定です。
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [debug]
+    metrics:
+      receivers: [otlp]
+      exporters: [debug]
+    logs:
+      receivers: [otlp]
+      exporters: [debug]
 ```
