@@ -91,7 +91,7 @@ blog să fie revizuită și aprobată mai rapid.
 Dacă problema ta are tot ce este necesar, un întreținător va verifica dacă poți
 continua și trimite postarea pe blog.
 
-### Apel pentru contribuitori
+### Apel pentru contribuitori {#call-for-contributors}
 
 Dacă propui crearea unui nou proiect sau SIG sau dacă oferi o donație pentru
 proiectul OpenTelemetry, vei avea nevoie de contribuitori suplimentari pentru ca
