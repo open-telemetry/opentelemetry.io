@@ -148,7 +148,7 @@ CI/infra: # including config
           - .editorconfig
           - .github/**
           - .gitpod.yml
-          - .htmltest.yml
+          - .htmltest.base.yml
           - .markdown*.*
           - content/**/.markdownlint.yaml
           - .nvmrc
