@@ -36,10 +36,12 @@ languageSettings:
       - CodeBlock
       - HeadingID
 dictionaryDefinitions:
-  - name: en-words
-    path: .cspell/en-words.txt
+  - name: all-words
+    path: .cspell/all-words.txt
   - name: bn-words
     path: .cspell/bn-words.txt
+  - name: en-words
+    path: .cspell/en-words.txt
   - name: es-palabras
     path: .cspell/es-palabras.txt
   - name: fr-mots
@@ -57,11 +59,12 @@ dictionaries:
   - bn
   - es-es
   - fr-fr
-  - pl_pl
+  - pl-pl
   - pt-br
   - ro-ro
   - uk-ua
   # Local word lists
+  - all-words
   - bn-words
   - en-words
   - es-palabras
@@ -78,45 +81,3 @@ dictionaries:
   - softwareTerms
   # Other
   - companies
-words:
-  # Valid words across all locales, in particular for Hugo code keywords,
-  # and proper names.
-  #
-  # WARNING: the list below gets sorted by CI scripts. Any comment lines
-  # will be pushed to the top here.
-  - attrlink
-  - chalin
-  - Crossplane
-  - crosspost
-  - desaturate
-  - docsy
-  - errorf
-  - excerpter
-  - favicons
-  - Goldmark
-  - htmltest
-  - jsonify
-  - lfasiallc
-  - llms
-  - Loffay
-  - logback
-  - Mancuso
-  - Marylia
-  - millicores
-  - myapp
-  - myprogram
-  - nanocores
-  - notranslate
-  - nvmrc
-  - opentelemetrybot
-  - otelbot
-  - Powerjob
-  - refcache
-  - submatch
-  - textlintrc
-  - tracestate
-  - UpDown
-  - Valkey
-  - warnf
-  - warnidf
-  - Wayback

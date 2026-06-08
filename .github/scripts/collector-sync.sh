@@ -38,12 +38,12 @@ echo "Checking links..."
 npm run check:links || echo "Warning: Link check failed"
 
 # Get version info from cloned ecosystem-explorer registry
-if [ ! -d "tmp_repos/opentelemetry-ecosystem-explorer" ]; then
+if [ ! -d "tmp/repos/opentelemetry-ecosystem-explorer" ]; then
   echo "Error: ecosystem-explorer repository not found"
   exit 1
 fi
 
-VERSION=$(find tmp_repos/opentelemetry-ecosystem-explorer/ecosystem-registry/collector/core \
+VERSION=$(find tmp/repos/opentelemetry-ecosystem-explorer/ecosystem-registry/collector/core \
   -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null | \
   grep -v -i 'SNAPSHOT' | sort -V | tail -n 1)
 

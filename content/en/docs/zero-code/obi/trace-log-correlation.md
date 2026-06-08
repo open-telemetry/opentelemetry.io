@@ -5,7 +5,7 @@ weight: 35
 description:
   Learn how OBI correlates application logs with distributed traces for faster
   debugging and troubleshooting.
-cSpell:ignore: BPFFS ringbuffer
+cSpell:ignore: BPFFS PYTHONUNBUFFERED ringbuffer
 ---
 
 OpenTelemetry eBPF Instrumentation (OBI) correlates application logs with
@@ -118,6 +118,18 @@ and `span_id` fields into JSON log objects:
 
 Plain text logs are passed through unchanged and are **not enriched** with trace
 context.
+
+#### Runtime buffering limitations
+
+The log enricher only sees trace context when the log write happens on the
+request-handling thread. Runtimes that buffer stdout asynchronously can break
+this assumption.
+
+- Python in Docker commonly needs `PYTHONUNBUFFERED=1`
+- .NET `Console.Out` is buffered by default when stdout is a pipe; use a
+  `StreamWriter` with `AutoFlush = true`
+- ASP.NET Core's default `Microsoft.Extensions.Logging.AddConsole()` pipeline is
+  not compatible because it writes from a background thread
 
 ### 2. Trace export and log enrichment enabled
 

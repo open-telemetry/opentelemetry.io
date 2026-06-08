@@ -9,6 +9,7 @@ what-next: >
   alterações, veja [Enviando conteúdo][].
 weight: 60
 default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
+drifted_from_default: true
 ---
 
 {{% alert title="Ambientes de construção suportados" color=warning %}}
@@ -162,7 +163,7 @@ como (em ordem alfabética):
 
 - [Codespaces][cs-devc]
 - [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
-- [Gitpod](https://www.gitpod.io/docs/flex/configuration/devcontainer/overview)
+- [Gitpod](https://ona.com/docs/ona/configuration/devcontainer/overview)
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
 [clone]:

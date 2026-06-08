@@ -3,7 +3,6 @@ title: Content module patches
 description: >-
   Creating and managing temporary patches for content modules between releases.
 weight: 15
-cSpell:ignore: frontmatter
 ---
 
 Spec pages published on this site (OTel specification, OTLP, semantic
@@ -25,14 +24,19 @@ matter, their links point to GitHub URLs, and image paths assume the repository
 layout. The [`adjust-pages.pl`][script] script bridges this gap by applying the
 following transformations to each file:
 
-| Transformation             | Description                                                                                                                                                            |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Front matter injection** | Extracts the first `# Heading` as `title`, generates `linkTitle`, and emits Hugo front matter. Supports front matter embedded in `<!--- Hugo ... --->` comment blocks. |
-| **Version stamping**       | Appends spec version numbers (e.g., `1.54.0`) to titles and linkTitles for OTel spec, OTLP, and semconv landing pages.                                                 |
-| **URL rewriting**          | Converts absolute GitHub URLs for spec repositories into local `/docs/specs/...` paths so cross-spec links work on the site.                                           |
-| **Image path adjustment**  | Rewrites relative image paths so they resolve correctly from the Hugo page location.                                                                                   |
-| **Content stripping**      | Removes `<details>` blocks and `<!-- toc -->` sections that are not needed on the site.                                                                                |
-| **Temporary patches**      | Applies regex-based patches for spec issues that have not yet been fixed in a release (see below).                                                                     |
+- **Front matter injection** — Extracts the first `# Heading` as `title`,
+  generates `linkTitle`, and emits Hugo front matter. Supports front matter
+  embedded in `<!--- Hugo ... --->` comment blocks.
+- **Version stamping** — Appends spec version numbers (e.g., `1.54.0`) to titles
+  and linkTitles for OTel spec, OTLP, and semconv landing pages.
+- **URL rewriting** — Converts absolute GitHub URLs for spec repositories into
+  local `/docs/specs/...` paths so cross-spec links work on the site.
+- **Image path adjustment** — Rewrites relative image paths so they resolve
+  correctly from the Hugo page location.
+- **Content stripping** — Removes `<details>` blocks and `<!-- toc -->` sections
+  that are not needed on the site.
+- **Temporary patches** — Applies regex-based patches for spec issues that have
+  not yet been fixed in a release (see below).
 
 Spec versions are declared at the top of the script in the `%versionsRaw` hash
 and are updated automatically by the version-update workflow.
@@ -48,8 +52,8 @@ PRs that check every external link on the site.
 To unblock CI without waiting for an upstream release, you can add a temporary
 patch to [`adjust-pages.pl`][script]. Patches are regex-based rewrites that run
 at build time and include built-in version tracking: once the spec advances past
-the target version, `cp:spec` prints a warning that the patch is obsolete and
-can be removed.
+the patch's version range, `cp:spec` prints a warning that the patch is obsolete
+and can be removed.
 
 ### 1. Add a patch entry
 
@@ -82,15 +86,25 @@ my @patches = (
 
 The fields for each patch entry are:
 
-| Field     | Description                                                                                                                                                                                         |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`      | A unique ID (date + short description) printed in log messages.                                                                                                                                     |
-| `module`  | One of `spec`, `otlp`, or `semconv`.                                                                                                                                                                |
-| `minVers` | The spec version the patch applies to. The patch runs while the submodule is at this version and becomes obsolete once the spec advances past it.                                                   |
-| `maxVers` | Optional upper bound version. Set to `undef` if not needed. When set, the patch won't apply if the submodule version exceeds this value.                                                            |
-| `file`    | A compiled regular expression matching the file paths the patch should apply to, for example `qr\|^tmp/semconv/docs/\|`.                                                                            |
-| `context` | Optional. Set to `'frontmatter'` for patches that modify front matter. Defaults to `'body'` (patches that modify page content).                                                                     |
-| `apply`   | An anonymous subroutine containing the regular expression substitution. For body patches, it operates on `$_`. For front-matter patches, it operates on `$frontMatterFromFile` (via `$_` aliasing). |
+- **`id`** — A unique ID (date + short description) printed in log messages.
+- **`module`** — One of `spec`, `otlp`, or `semconv`.
+- **`minVers`** — Inclusive lower bound. The patch applies while the submodule
+  version is at or above this version, and becomes obsolete once the spec
+  advances past the patch's version range.
+- **`maxVers`** — Optional exclusive upper bound. If omitted or set to `undef`,
+  it defaults to `minVers` with its patch number incremented (for example,
+  `1.55.0` implies `maxVers = 1.55.1`), which matches the original prefix-match
+  behavior. When set explicitly, the patch is skipped once the submodule version
+  reaches `maxVers` (that is, it applies only while the version is `< maxVers`).
+- **`file`** — Optional compiled regular expression matching the file paths the
+  patch should apply to, for example `qr|^tmp/semconv/docs/|`. If omitted,
+  defaults to the module's spec/docs tree: `^tmp/otel/specification/` for
+  `spec`, `^tmp/otlp/docs/` for `otlp`, and `^tmp/semconv/docs/` for `semconv`.
+- **`context`** — Optional: `body|front matter` (default: `body`). Set to
+  `front matter` for patches that modify front matter.
+- **`apply`** — An anonymous subroutine containing the regular expression
+  substitution. For body patches, it operates on `$_`. For front-matter patches,
+  it operates on `$frontMatterFromFile` (via `$_` aliasing).
 
 No separate registration step is needed — the `applyPatches` dispatcher
 automatically iterates over all entries in `@patches` during the build.

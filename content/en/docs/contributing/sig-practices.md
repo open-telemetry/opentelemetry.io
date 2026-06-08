@@ -176,9 +176,9 @@ Additional valuable resources to review are
     unlikely to appear elsewhere. See [Spell Checking][].
   - **Locale dictionary**: Preferred for words likely to be used across multiple
     pages in the same language, such as `.cspell/en-words.txt`.
-  - **Global dictionary**: The main cSpell dictionary, located in `.cspell.yml`.
-    This is preferred for words whose spelling is valid across all languages,
-    such as package or people's names.
+  - **Shared (all-locales) word list**: `.cspell/all-words.txt`. Preferred for
+    terms whose spelling is valid across all languages, such as product names or
+    people's names. See [Spell Checking][].
 
   Reviewers and approvers can determine if the placement is appropriate during
   the review process.
