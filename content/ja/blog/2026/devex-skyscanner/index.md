@@ -137,7 +137,7 @@ Skyscanner は、これらのパターンを実際に理解するための本番
 [Gateway Collector][gateway-otelbin] は処理の大部分を担います。
 
 - サービスからの OTLP メトリクスとトレース、および Istio からの Zipkin スパンを受信します
-- span metrics connector を使って Istio スパンからメトリクスを生成します
+- span metrics コネクター を使って Istio スパンからメトリクスを生成します
 - 広範な transform プロセッサーを使って Istio 属性をセマンティック規約にマッピングします
 - キャッシュサービス向けの 404 フィルタリングロジックを実装します
 - メトリクスとトレースを OTLP 経由でオブザーバビリティベンダーにエクスポートします
