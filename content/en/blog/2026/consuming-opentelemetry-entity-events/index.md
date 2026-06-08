@@ -148,10 +148,10 @@ came entirely from OTLP entity events.
 
 Inventory is half the story; **topology** is the other half — "this service
 _depends on_ that database," "this process _runs on_ that host." When this post
-was first drafted, relationships were still future work; since then, an
-**approved** entity-events specification
-([opentelemetry-specification#4836](https://github.com/open-telemetry/opentelemetry-specification/pull/4836),
-pending merge) models them directly.
+was first drafted, relationships were still future work; since then the
+entity-events specification has been **merged** and models them directly — see
+[Entity events](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/entities/entity-events.md)
+([opentelemetry-specification#4836](https://github.com/open-telemetry/opentelemetry-specification/pull/4836)).
 
 Relationships are **embedded in an entity's state event** as an
 `entity.relationships` array. Each descriptor names a relationship `type` and the
@@ -181,9 +181,11 @@ changes over time, which slots into the same change taxonomy as attribute update
 ## Why a graph: it joins your other signals
 
 The point of all this isn't a standalone inventory — it's leverage on the
-telemetry you already have. OpenTelemetry carries entities on the **Resource**, so
-the same entities you're tracking are already attached to your metrics, logs, and
-traces. The inventory and topology graph becomes the **join key** across them:
+telemetry you already have. OpenTelemetry carries entities on the
+[**Resource**](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/data-model.md),
+so the same entities you're tracking are already attached to your metrics, logs,
+and traces. The inventory and topology graph becomes the **join key** across
+them:
 
 - **Scope, not scrape.** Use the graph to decide _which_ signals to pull — the
   entities and the slice of topology you actually care about — instead of querying
