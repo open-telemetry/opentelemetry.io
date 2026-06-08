@@ -3,8 +3,7 @@ title: コレクターなし
 description: アプリケーションからバックエンドへ直接シグナルを送信する
 aliases: [/docs/collector/deployment/no-collector]
 weight: 200
-default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197 # patched
-drifted_from_default: true
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 ---
 
 最もシンプルなパターンは、コレクターをまったく使用しないことです。

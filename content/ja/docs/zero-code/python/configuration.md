@@ -2,8 +2,7 @@
 title: エージェント設定
 linkTitle: Configuration
 weight: 10
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
-drifted_from_default: true
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 cSpell:ignore: gevent healthcheck instrumentor pyproject Starlette urllib
 ---
 
@@ -98,9 +97,9 @@ export OTEL_PYTHON_TORNADO_TRACED_REQUEST_ATTRS='uri,query'
 - `OTEL_PYTHON_LOG_CORRELATION`: ログへのトレースコンテキストの注入を有効にする (true、false)。
 - `OTEL_PYTHON_LOG_FORMAT`: カスタムログフォーマットを使うように設定します。
 - `OTEL_PYTHON_LOG_LEVEL`: カスタムのログレベル (情報、エラー、デバッグ、警告) を設定します。
-- `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED`: ログの自動計装を有効にします。
-  Pythonルートロガーに OTLP ハンドラーをアタッチします。
-  例については、[ログの自動計装](/docs/zero-code/python/logs-example/) を参照してください。
+- `OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION`: ログハンドラーを自動的に設定するかどうかを制御します（true、false）。デフォルトで有効です。
+  [ログの自動計装](/docs/zero-code/python/logs-example/)を参照してください。
+- `OTEL_PYTHON_LOG_CODE_ATTRIBUTES`: ログに `code` 属性（`code.file.path`、`code.function.name`、`code.line.number`）を追加する機能を有効にします（true、false）。
 
 例を挙げましょう。
 
@@ -108,8 +107,12 @@ export OTEL_PYTHON_TORNADO_TRACED_REQUEST_ATTRS='uri,query'
 export OTEL_PYTHON_LOG_CORRELATION=true
 export OTEL_PYTHON_LOG_FORMAT="%(msg)s [span_id=%(span_id)s]"
 export OTEL_PYTHON_LOG_LEVEL=debug
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
+export OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION=false
+export OTEL_PYTHON_LOG_CODE_ATTRIBUTES=true
 ```
+
+> OpenTelemetry Python 1.40.0 より前のバージョンでは、ログの自動計装はデフォルトで無効であり、`opentelemetry-sdk` パッケージに実装されていました。
+> `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` を `true` に設定すると有効になりました。
 
 ### その他 {#other}
 
