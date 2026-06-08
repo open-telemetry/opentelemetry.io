@@ -18684,8 +18684,8 @@
     "LastSeen": "2026-06-05T14:07:34.936159326Z"
   },
   "https://kubernetes.io/docs/reference/kubernetes-api/service-resources/endpoint-slice-v1/": {
-    "StatusCode": -10,
-    "LastSeen": "2026-06-08T11:21:36.463746497Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-08T12:05:42.482Z"
   },
   "https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/#ServiceSpec": {
     "StatusCode": 206,
@@ -24676,8 +24676,8 @@
     "LastSeen": "2026-06-06T10:19:43.162897845Z"
   },
   "https://www.respan.ai/docs/apis/observe/traces/otlp-ingest": {
-    "StatusCode": -10,
-    "LastSeen": "2026-06-08T11:22:22.197095237Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-08T12:05:49.198Z"
   },
   "https://www.rfc-editor.org/info/bcp14": {
     "StatusCode": 206,
