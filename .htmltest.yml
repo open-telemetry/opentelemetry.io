@@ -125,7 +125,6 @@ IgnoreDirs:
   - ^fr/docs/zero-code/python/troubleshooting/$
   - ^ja/docs/collector/$
   - ^ja/docs/collector/deploy/agent/$
-  - ^ja/docs/collector/deploy/other/no-collector/$
   - ^ja/docs/collector/extend/ocb/$
   - ^ja/docs/collector/install/binary/linux/$
   - ^ja/docs/collector/install/docker/$
