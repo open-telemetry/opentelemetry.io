@@ -20,22 +20,18 @@ npm run fix:i18n:new
 
 ## check-links-shard.sh
 
-Runs link checking for a specific shard by temporarily modifying
-`.htmltest.yml`.
+Runs link checking for a specific shard by appending a shard-specific
+`IgnoreDirs` regular expression to the generated `.htmltest.yml`.
 
 ```sh
 .github/scripts/check-links-shard.sh [-qk] <shard-id> <shard-regex>
 ```
 
-| Flag | Description                                                |
-| ---- | ---------------------------------------------------------- |
-| `-q` | Quiet mode                                                 |
-| `-k` | Keep modified `.htmltest.yml` (default: restore after run) |
-| `-h` | Show help                                                  |
-
-The script injects the shard regular expression into the `IgnoreDirs` config,
-runs `npm run __check:links`, and restores the original config unless `-k` is
-used.
+| Flag | Description                                                    |
+| ---- | -------------------------------------------------------------- |
+| `-h` | Show help                                                      |
+| `-k` | Keep generated `.htmltest.yml` (default: delete after the run) |
+| `-q` | Quiet mode                                                     |
 
 ## check-refcache.sh
 
