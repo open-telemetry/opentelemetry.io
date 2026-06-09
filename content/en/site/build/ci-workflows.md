@@ -249,16 +249,18 @@ scripts by commenting on a PR:
 
 [#9291]: https://github.com/open-telemetry/opentelemetry.io/pull/9291
 
-It runs as a two-stage pipeline:
+It runs as a three-stage pipeline:
 
 1. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
    command, prunes the link refcache, and uploads a patch artifact
-   (`pr-fix.patch`), up to 1024 KB.
+   (`site.patch`), up to 1024 KB.
 2. **`apply-patch`** (trusted): runs with a GitHub App token, applies the patch,
-   and pushes a commit to the PR branch.
-
-If a directive produces no changes, a separate `notify-noop` job comments that
-nothing needed to be committed.
+   and pushes a commit to the PR branch. Skipped when the command produced no
+   changes.
+3. **`report`** (trusted): always comments the outcome back on the PR, so the
+   requestor learns the result of every directive — including invalid
+   directives, no-op runs, and failures that happen before any patch is
+   produced.
 
 [pr-actions]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-actions.yml
