@@ -22,6 +22,9 @@ jobs:
     concurrency:
       group: locale-auto-merge-${{ github.event.issue.number }}
       cancel-in-progress: false
+    # Only a broad prefix match on the comment body here. The helper does the
+    # exact parsing and posts "Unrecognized command" when the comment is
+    # malformed.
     if: |
       github.repository_owner == 'open-telemetry' &&
       github.event.issue.pull_request != null &&
