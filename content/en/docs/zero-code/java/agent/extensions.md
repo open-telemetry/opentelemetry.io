@@ -530,7 +530,8 @@ with your class name.
 > This will not work for situations where
 > [declarative configuration](../declarative-configuration) is in use.
 
-This is the main entry point for customizing SDK configuration. It allows you to:
+This is the main entry point for customizing SDK configuration. It allows you
+to:
 
 - Customize the tracer provider
 - Add span processors and exporters
