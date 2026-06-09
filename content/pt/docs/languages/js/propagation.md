@@ -456,7 +456,7 @@ Parsed JSON: { key: 'value' }
 ```
 
 Como o exemplo até aqui dependeu apenas da API do OpenTelemetry, todas as
-chamadas a ela são [instruções _no-op_](https://pt.wikipedia.org/wiki/NOP) e o
+chamadas a ela são [instruções sem operação (_no-op_)](https://pt.wikipedia.org/wiki/NOP) e o
 cliente e o servidor se comportam como se o OpenTelemetry não estivesse sendo
 usado.
 
