@@ -9,9 +9,6 @@
   internalChecksFilter: 'strict',
   labels: ['dependencies'],
   schedule: ['before 9am on monday'],
-  lockFileMaintenance: {
-    automerge: true,
-  },
   patch: {
     automerge: true,
   },
