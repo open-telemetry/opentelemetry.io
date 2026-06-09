@@ -153,4 +153,16 @@ describe('locale-auto-merge cli', { skip }, () => {
     assert.ok(!res.ghCalls.some((c) => c.startsWith('pr merge')));
     assert.ok(res.ghCalls.some((c) => c.startsWith('pr comment 42')));
   });
+
+  test('infrastructure failure (gh read throws) exits 1', () => {
+    // A failing `gh pr view` is not an expected user error: it should surface
+    // as a failed run, not a silent exit 0.
+    const res = runCli({
+      args: ['--pr', '42', '--enable', '--no-dry-run'],
+      fail: 'pr view',
+    });
+    assert.equal(res.status, 1);
+    // It never got far enough to mutate auto-merge.
+    assert.ok(!res.ghCalls.some((c) => c.startsWith('pr merge')));
+  });
 });
