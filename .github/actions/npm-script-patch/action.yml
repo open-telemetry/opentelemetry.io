@@ -50,18 +50,20 @@ runs:
         INPUT_COMMAND: ${{ inputs.command }}
         INPUT_POST_COMMAND: ${{ inputs.post-command }}
       run: |
-        # Allow the script to fail without failing the step, so that we can
-        # still capture and commit any file changes it produced.
+        # Run the command without letting a non-zero exit fail this step, so that
+        # any file changes it produced can still be captured as a patch. The exit
+        # status is surfaced via the action_exit_status output for the caller to
+        # act on. The optional post-command is best-effort for the same reason.
         set +e
         (set -x; npm run "$INPUT_COMMAND")
         action_exit_status=$?
-        set -e
         echo "action_exit_status=$action_exit_status" >> "$GITHUB_OUTPUT"
         echo "npm script exit status: $action_exit_status"
 
         if [[ -n "$INPUT_POST_COMMAND" ]]; then
           npm run "$INPUT_POST_COMMAND"
         fi
+        exit 0
 
     - name: Generate and validate patch
       id: check_patch
@@ -69,15 +71,15 @@ runs:
       env:
         MAX_PATCH_SIZE_KB: ${{ inputs.max-patch-size-kb }}
       run: |
-        git diff > changes.patch
+        git diff > site.patch
 
-        if [ ! -s changes.patch ]; then
+        if [ ! -s site.patch ]; then
           echo "No changes detected. Skipping patch."
           echo "skipped=true" >> "$GITHUB_OUTPUT"
           exit 0
         fi
 
-        actual_size_kb=$(du -k changes.patch | cut -f1)
+        actual_size_kb=$(du -k site.patch | cut -f1)
         if (( actual_size_kb > MAX_PATCH_SIZE_KB )); then
           echo "Patch too large: ${actual_size_kb} KB (limit: ${MAX_PATCH_SIZE_KB} KB)"
           exit 1
@@ -90,5 +92,5 @@ runs:
       uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
       with:
         name: ${{ inputs.patch-name }}
-        path: changes.patch
+        path: site.patch
         retention-days: 1
