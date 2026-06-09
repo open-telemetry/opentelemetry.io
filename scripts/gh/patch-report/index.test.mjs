@@ -31,6 +31,13 @@ describe('buildOutcomeComment', () => {
     );
   });
 
+  test('command failed and produced no changes', () => {
+    const body = build({ patchSkipped: 'true', commandExitStatus: '2' });
+    assert.match(body, /^❌ `fix:refcache` failed \(exit status 2\)/);
+    assert.match(body, /made no changes/);
+    assert.match(body, /See logs: https:\/\/example\.test\/run\/123/);
+  });
+
   test('command failed non-zero but changes were applied', () => {
     const body = build({ commandExitStatus: '1' });
     assert.match(

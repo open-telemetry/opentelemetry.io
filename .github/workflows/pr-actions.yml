@@ -7,6 +7,10 @@ on:
 permissions:
   contents: read
 
+# Serialize runs per PR so that two rapid directives don't race on the push.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.issue.number }}
+
 env:
   COMMENT: ${{ github.event.comment.body }}
   PR_NUM: ${{ github.event.issue.number }}
@@ -20,6 +24,10 @@ jobs:
       github.event.issue.pull_request &&
       startsWith(github.event.comment.body, '/fix')
 
+    # These outputs are produced by the untrusted job (PR-supplied code can
+    # influence or even forge them), so they must never gate anything
+    # security-relevant. Here they only decide whether the apply job runs and
+    # what the outcome comment says.
     outputs:
       action_name: ${{ steps.extract.outputs.action_name }}
       action_exit_status: ${{ steps.patch.outputs.action_exit_status }}

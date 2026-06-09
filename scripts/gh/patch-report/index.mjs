@@ -66,6 +66,12 @@ export function buildOutcomeComment({
 
   // 2. Generation succeeded but produced no changes.
   if (patchSkipped === 'true') {
+    if (commandExitStatus && commandExitStatus !== '0') {
+      return (
+        `❌ ${what} failed (exit status ${commandExitStatus}) ` +
+        `and made no changes. ${logs}`
+      );
+    }
     return `ℹ️ ${what} made no changes. Nothing to commit.`;
   }
 
@@ -76,7 +82,7 @@ export function buildOutcomeComment({
   if (applyResult !== 'success') {
     return `❌ ${what} produced changes, but they could not be applied or pushed. ${logs}`;
   }
-  if (commandExitStatus !== '0') {
+  if (commandExitStatus && commandExitStatus !== '0') {
     return (
       `⚠️ ${what} exited with a non-zero status (${commandExitStatus}), ` +
       `but the resulting changes were applied. ${logs}`

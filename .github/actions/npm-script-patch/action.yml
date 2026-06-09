@@ -2,6 +2,8 @@ name: npm-script-patch
 description:
   Run an approved npm script in an untrusted context and capture any file
   changes as a patch artifact. Does not require write permissions or secrets.
+  The artifact contains a single file named `site.patch` (a `git diff`);
+  consumers of the artifact rely on that name.
 
 inputs:
   command:
@@ -59,6 +61,9 @@ runs:
         action_exit_status=$?
         echo "action_exit_status=$action_exit_status" >> "$GITHUB_OUTPUT"
         echo "npm script exit status: $action_exit_status"
+        if (( action_exit_status != 0 )); then
+          echo "::warning title=npm script failed::npm run $INPUT_COMMAND exited with status $action_exit_status"
+        fi
 
         if [[ -n "$INPUT_POST_COMMAND" ]]; then
           npm run "$INPUT_POST_COMMAND"

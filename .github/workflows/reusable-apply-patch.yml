@@ -27,7 +27,9 @@ on:
         required: true
         type: string
       patch-name:
-        description: Name of the artifact containing the `site.patch` file.
+        description: >-
+          Name of the artifact containing the patch. The artifact must contain a
+          single `git diff` file named `site.patch`.
         required: true
         type: string
       commit-message:
