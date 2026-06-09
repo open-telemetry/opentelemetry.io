@@ -487,9 +487,9 @@ when **Spelling** has no natural-language dictionary to add.
 Members of a locale's maintainers team can enable [GitHub auto-merge][] on a
 locale-only PR by commenting `/auto-merge` (or `/auto-merge:enable`; use
 `/auto-merge:disable` to turn it off). This lets established localization teams
-land their own PRs without waiting on a docs maintainer. Branch protection and
-CODEOWNERS still gate the merge: the PR only merges once all required reviews
-and checks pass.
+land their own PRs without waiting on a docs maintainer. GitHub, branch
+protection, and CODEOWNERS rules still gate the merge: the PR only merges once
+all required reviews are in and checks pass.
 
 An auto-merge comment is honored only when every changed file is owned by a
 locale you maintain, so it can't be used to make changes to shared or English
