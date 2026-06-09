@@ -7,10 +7,6 @@ on:
 permissions:
   contents: read
 
-# Serialize runs per PR so that two rapid directives don't race on the push.
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.issue.number }}
-
 env:
   COMMENT: ${{ github.event.comment.body }}
   PR_NUM: ${{ github.event.issue.number }}
@@ -45,8 +41,8 @@ jobs:
       - name: Extract action name and resolve command
         id: extract
         # Parses the `/fix` directive and applies the `fix:all`/`fix:ALL` compat
-        # mapping. We don't have permissions in this job to comment on the PR, so
-        # an invalid directive just fails the step.
+        # mapping. An invalid directive fails this step; the `report` job then
+        # comments the outcome (with a usage hint) on the PR.
         run: node scripts/gh/pr-fix/cli.mjs
 
       - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
@@ -72,6 +68,13 @@ jobs:
     # A reusable workflow (resolved from the default branch, never from the PR)
     # so that no PR-controlled code can run with write credentials.
     uses: ./.github/workflows/reusable-apply-patch.yml
+    # Serialize patch pushes per PR so that two rapid directives don't race.
+    # Job-level (not workflow-level) so that unrelated PR comments — which
+    # trigger this workflow but skip every job — can't evict a queued run.
+    concurrency:
+      group: ${{ github.workflow }}-apply-${{ github.event.issue.number }}
+    # GITHUB_TOKEN grants forwarded to the reusable workflow (its jobs cannot
+    # exceed these); see that workflow for how its steps authenticate.
     permissions:
       contents: write # push the applied patch to the PR branch
       pull-requests: write # gh pr checkout

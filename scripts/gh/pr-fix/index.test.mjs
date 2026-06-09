@@ -51,7 +51,7 @@ describe('parseFixDirective', () => {
     });
   });
 
-  test('directive is matched on its own line within a larger comment', () => {
+  test('parser-level only: directive matched on its own line within a larger comment (the workflow trigger additionally requires the comment to start with /fix)', () => {
     const body = ['Thanks for the patch!', '/fix:format', ''].join('\n');
     assert.deepEqual(parseFixDirective(body), {
       valid: true,

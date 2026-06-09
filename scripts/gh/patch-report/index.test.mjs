@@ -31,6 +31,13 @@ describe('buildOutcomeComment', () => {
     );
   });
 
+  test('no-op with unknown (empty) exit status is not reported as a failure', () => {
+    assert.equal(
+      build({ patchSkipped: 'true', commandExitStatus: '' }),
+      'ℹ️ `fix:refcache` made no changes. Nothing to commit.',
+    );
+  });
+
   test('command failed and produced no changes', () => {
     const body = build({ patchSkipped: 'true', commandExitStatus: '2' });
     assert.match(body, /^❌ `fix:refcache` failed \(exit status 2\)/);

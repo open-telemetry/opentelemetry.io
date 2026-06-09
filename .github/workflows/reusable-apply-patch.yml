@@ -15,6 +15,8 @@ name: Reusable - apply patch to PR
 #       pr-number: ${{ github.event.issue.number }}
 #       patch-name: my-patch-${{ github.run_id }}
 #       commit-message: Apply patch
+#       user-name: otelbot
+#       user-email: 197425009+otelbot@users.noreply.github.com
 #       app-id: ${{ vars.MY_APP_ID }}
 #     secrets:
 #       app-private-key: ${{ secrets.MY_APP_PRIVATE_KEY }}
@@ -67,6 +69,9 @@ jobs:
   apply:
     name: Apply and push patch
     runs-on: ubuntu-latest
+    # NOTE: the steps below authenticate with the app token, not GITHUB_TOKEN,
+    # so these GITHUB_TOKEN grants may be trimmable. Verify in a live run
+    # (e.g. the artifact download) before tightening.
     permissions:
       contents: write # push the applied patch to the PR branch
       pull-requests: write # gh pr checkout

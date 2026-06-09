@@ -261,12 +261,25 @@ It runs as a three-stage pipeline:
 3. **`report`** (trusted): always comments the outcome back on the PR, so the
    requestor learns the result of every directive — including invalid
    directives, no-op runs, and failures that happen before any patch is
-   produced.
+   produced. Note that only comments _starting with_ `/fix` enter the pipeline
+   at all: `/fix please` or `/fixup` get feedback, but a `/fix` appearing later
+   in a comment is silently ignored.
+
+The directive parser lives in [scripts/gh/pr-fix/][], patch generation is the
+[npm-script-patch][] action, and the outcome comment is composed by
+[scripts/gh/patch-report/][]; all are unit tested via
+`npm run test:local-tools`.
 
 [pr-actions]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-actions.yml
 [`reusable-apply-patch.yml`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/reusable-apply-patch.yml
+[npm-script-patch]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/.github/actions/npm-script-patch
+[scripts/gh/pr-fix/]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/pr-fix
+[scripts/gh/patch-report/]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/patch-report
 
 ## Locale auto-merge
 

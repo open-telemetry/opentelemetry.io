@@ -82,6 +82,10 @@ once the shared patch path has proven stable.
 - Outcome reporting is a third, always-run trusted job: the requestor is
   notified of every directive outcome, improving on the original workflow's
   silent failure modes.
+- Push policy lives inside the trusted reusable workflow (the cost of the
+  security fix above). Phase 3 (maintenance fixes published as a new PR) should
+  be a _sibling_ trusted workflow (patch → branch → `gh pr create`) rather than
+  evolving this one into a multi-mode publisher.
 
 ## Status details
 
