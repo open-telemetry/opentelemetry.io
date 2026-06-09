@@ -145,8 +145,8 @@ CI/infra: # including config
           # Entries are maintainer-owned unless indicated otherwise.
           # cSpell:ignore gulpfile
           - .claude/**
-          - .cspell/**  # owned by docs-approvers
-          - .cspell.yml  # owned by docs-approvers
+          - .cspell/** # owned by docs-approvers
+          - .cspell.yml # owned by docs-approvers
           - .devcontainer/**
           - .editorconfig
           - .github/**
