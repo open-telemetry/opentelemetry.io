@@ -18,8 +18,8 @@ ou
 [`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
 propagam o contexto entre serviços por você.
 
-Se você seguiu o [Guia de Primeiros Passos](../getting-started/nodejs), você pode
-criar uma aplicação cliente que consulta o _endpoint_ `/rolldice`.
+Se você seguiu o [Guia de Primeiros Passos](../getting-started/nodejs), você
+pode criar uma aplicação cliente que consulta o _endpoint_ `/rolldice`.
 
 > [!NOTE]
 >
@@ -456,7 +456,8 @@ Parsed JSON: { key: 'value' }
 ```
 
 Como o exemplo até aqui dependeu apenas da API do OpenTelemetry, todas as
-chamadas a ela são [instruções sem operação (_no-op_)](https://pt.wikipedia.org/wiki/NOP) e o
+chamadas a ela são
+[instruções sem operação (_no-op_)](https://pt.wikipedia.org/wiki/NOP) e o
 cliente e o servidor se comportam como se o OpenTelemetry não estivesse sendo
 usado.
 
