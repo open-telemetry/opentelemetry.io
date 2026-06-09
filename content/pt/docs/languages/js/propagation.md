@@ -349,7 +349,7 @@ trace.setSpan(activeContext, span);
 
 {{% /tab %}} {{< /tabpane >}}
 
-A partir daí, quando você tem um contexto ativo desserializado, pode criar
+A partir daí, quando você tem um contexto ativo desserializado, você pode criar
 trechos que farão parte do mesmo rastro do outro serviço.
 
 Você também pode usar a [API de Contexto](/docs/languages/js/context) para
