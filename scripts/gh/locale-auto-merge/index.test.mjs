@@ -236,7 +236,7 @@ describe('locale-auto-merge: resolveVerdict', () => {
   const eligible = { eligible: true, locales: ['ja'], offending: [] };
   const authorized = { authorized: true, missing: [] };
 
-  test('ineligible (offending files) -> exit 1, no mutation', () => {
+  test('ineligible (offending files) -> exit 0, no mutation', () => {
     const v = resolveVerdict({
       action: 'enable',
       eligibility: { eligible: false, locales: [], offending: ['x.html'] },
@@ -244,12 +244,12 @@ describe('locale-auto-merge: resolveVerdict', () => {
       autoMergeEnabled: false,
     });
     assert.equal(v.outcome, 'ineligible');
-    assert.equal(v.exitCode, 1);
+    assert.equal(v.exitCode, 0);
     assert.equal(v.apply, null);
     assert.match(v.message, /x\.html/);
   });
 
-  test('unauthorized -> exit 1, lists missing teams', () => {
+  test('unauthorized -> exit 0, lists missing teams', () => {
     const v = resolveVerdict({
       action: 'enable',
       eligibility: {
@@ -261,7 +261,7 @@ describe('locale-auto-merge: resolveVerdict', () => {
       autoMergeEnabled: false,
     });
     assert.equal(v.outcome, 'unauthorized');
-    assert.equal(v.exitCode, 1);
+    assert.equal(v.exitCode, 0);
     assert.equal(v.apply, null);
     assert.match(v.message, /docs-pt-maintainers/);
   });
@@ -464,7 +464,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
       }),
     });
     assert.equal(r.outcome, 'unauthorized');
-    assert.equal(r.exitCode, 1);
+    assert.equal(r.exitCode, 0);
     assert.ok(!calls.some((a) => a[0] === 'pr' && a[1] === 'merge'));
   });
 
@@ -533,7 +533,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
       }),
     });
     assert.equal(r.outcome, 'too-many-files');
-    assert.equal(r.exitCode, 1);
+    assert.equal(r.exitCode, 0);
     // Never consulted team membership and never merged.
     assert.ok(!calls.some((a) => a.some((s) => s.includes('/teams/'))));
     assert.ok(!calls.some((a) => a[0] === 'pr' && a[1] === 'merge'));
@@ -605,7 +605,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
       }),
     });
     assert.equal(r.outcome, 'not-open');
-    assert.equal(r.exitCode, 1);
+    assert.equal(r.exitCode, 0);
   });
 
   test('dry run computes the verdict but issues no mutating calls', () => {

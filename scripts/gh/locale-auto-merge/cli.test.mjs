@@ -110,21 +110,21 @@ describe('locale-auto-merge cli', { skip }, () => {
     assert.match(res.stdout, /\[dry-run\]/);
   });
 
-  test('--user impersonation: a non-member is unauthorized (exit 1)', () => {
+  test('--user impersonation: a non-member is unauthorized (exit 0, commented)', () => {
     const res = runCli({
       args: ['--pr', '42', '--enable', '--user', 'mallory', '--dry-run'],
       author: 'mallory',
     });
-    assert.equal(res.status, 1);
+    assert.equal(res.status, 0);
     assert.match(res.stdout, /docs-ja-maintainers/);
   });
 
-  test('ineligible PR (non-locale file): exit 1', () => {
+  test('ineligible PR (non-locale file): exit 0', () => {
     const res = runCli({
       args: ['--pr', '42', '--enable', '--dry-run'],
       files: 'content/ja/a.md,layouts/x.html',
     });
-    assert.equal(res.status, 1);
+    assert.equal(res.status, 0);
   });
 
   test('--no-dry-run actually issues gh pr merge --auto', () => {
@@ -142,13 +142,13 @@ describe('locale-auto-merge cli', { skip }, () => {
     assert.match(res.stderr, /only one of/);
   });
 
-  test('fails closed (exit 1) when changedFiles exceeds the returned file list', () => {
+  test('fails closed (exit 0, commented) when changedFiles exceeds the returned file list', () => {
     const res = runCli({
       args: ['--pr', '42', '--enable', '--no-dry-run'],
       files: 'content/ja/docs/a.md',
       changed: 150,
     });
-    assert.equal(res.status, 1);
+    assert.equal(res.status, 0);
     // Never enables auto-merge; posts an explanatory comment instead.
     assert.ok(!res.ghCalls.some((c) => c.startsWith('pr merge')));
     assert.ok(res.ghCalls.some((c) => c.startsWith('pr comment 42')));

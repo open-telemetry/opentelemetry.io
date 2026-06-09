@@ -198,8 +198,9 @@ export function authorizeForLocales(runGh, org, user, locales, onCheck) {
  *
  * @typedef {Object} Verdict
  * @property {'ineligible'|'unauthorized'|'noop'|'apply'} outcome
- * @property {number} exitCode `1` for failures, `0` for no-ops and applied
- *   actions.
+ * @property {number} exitCode Always `0` here: ineligible and unauthorized are
+ *   expected user errors, reported via the PR comment rather than a failed run.
+ *   (Only infrastructure failures, surfaced by the orchestrator, exit non-zero.)
  * @property {string} message Human-readable PR comment body.
  * @property {'enable'|'disable'|null} apply The auto-merge mutation to perform,
  *   or `null` when nothing should be mutated.
@@ -240,7 +241,7 @@ export function resolveVerdict({
         : 'it does not change any locale-owned files.';
     return {
       outcome: 'ineligible',
-      exitCode: 1,
+      exitCode: 0,
       apply: null,
       message: `❌ This PR is not eligible for locale auto-merge: ${reason}`,
     };
@@ -252,7 +253,7 @@ export function resolveVerdict({
       .join(', ');
     return {
       outcome: 'unauthorized',
-      exitCode: 1,
+      exitCode: 0,
       apply: null,
       message:
         `❌ You must be a member of the maintainer team for every locale this ` +
@@ -362,7 +363,10 @@ function requireGh(runGh, args) {
  *
  * @typedef {Object} CommandResult
  * @property {'no-command'|'not-open'|'too-many-files'|'ineligible'|'unauthorized'|'noop'|'apply'|'mutation-failed'} outcome
- * @property {number} exitCode
+ * @property {number} exitCode `0` for every expected outcome (including user
+ *   errors like `unauthorized`, `ineligible`, `too-many-files`, and `not-open`,
+ *   which are reported via a PR comment). Only an infrastructure failure —
+ *   `mutation-failed`, or a failed `gh` read that throws — exits non-zero.
  * @property {CommandDetails} details Structured evidence behind the decision.
  */
 
@@ -493,7 +497,7 @@ export function runAutoMergeCommand({
       message,
     ]);
     log(`[not-open] ${message}`);
-    return { outcome: 'not-open', exitCode: 1, details };
+    return { outcome: 'not-open', exitCode: 0, details };
   }
 
   const paths = (pr.files ?? []).map((f) => f.path);
@@ -522,7 +526,7 @@ export function runAutoMergeCommand({
       message,
     ]);
     log(`[too-many-files] ${message}`);
-    return { outcome: 'too-many-files', exitCode: 1, details };
+    return { outcome: 'too-many-files', exitCode: 0, details };
   }
 
   // In verbose mode, log each file as it is classified, capped at verboseLimit
