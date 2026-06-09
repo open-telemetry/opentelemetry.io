@@ -10,8 +10,6 @@ permissions:
 env:
   COMMENT: ${{ github.event.comment.body }}
   PR_NUM: ${{ github.event.issue.number }}
-  USER_EMAIL: 197425009+otelbot@users.noreply.github.com
-  USER_NAME: otelbot
   MAX_PATCH_SIZE_KB: 1024
 
 jobs:
@@ -61,59 +59,24 @@ jobs:
 
   apply-patch:
     name: Apply and push patch (trusted)
-    runs-on: ubuntu-latest
     needs: generate-patch
     if: needs.generate-patch.outputs.patch_skipped == 'false'
+    # A reusable workflow (resolved from the default branch, never from the PR)
+    # so that no PR-controlled code can run with write credentials.
+    uses: ./.github/workflows/reusable-apply-patch.yml
     permissions:
-      contents: write
-      pull-requests: write
-
-    steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
-        with:
-          egress-policy: audit
-
-      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
-        id: otelbot-token
-        with:
-          # the higher privileged docs token is needed to push commits to an existing PR
-          client-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
-          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
-
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          fetch-depth: 999
-          token: ${{ steps.otelbot-token.outputs.token }}
-
-      - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
-        env:
-          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
-
-      - name: Apply patch and commit
-        id: apply
-        # Trusted: applies the untrusted patch artifact and commits it. It runs no
-        # PR-supplied code; pushing is handled by the caller-owned step below.
-        uses: ./.github/actions/apply-patch
-        with:
-          patch-name: ${{ needs.generate-patch.outputs.patch_name }}
-          commit-message: Results from /fix directive
-          user-name: ${{ env.USER_NAME }}
-          user-email: ${{ env.USER_EMAIL }}
-
-      - name: Push changes, if any
-        if: steps.apply.outputs.committed == 'true'
-        run: |
-          current_branch=$(git rev-parse --abbrev-ref HEAD)
-          echo current_branch=$current_branch
-          # gh pr checkout sets some git configs that we can use to make sure
-          # we push to the right repo & to the right branch
-          remote_repo=$(git config --get branch.${current_branch}.remote)
-          echo remote_repo=$remote_repo
-          remote_branch=$(git config --get branch.${current_branch}.merge)
-          echo remote_branch=$remote_branch
-          git push ${remote_repo} HEAD:${remote_branch}
-        env:
-          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+      contents: write # push the applied patch to the PR branch
+      pull-requests: write # gh pr checkout
+    with:
+      pr-number: ${{ github.event.issue.number }}
+      patch-name: ${{ needs.generate-patch.outputs.patch_name }}
+      commit-message: Results from /fix directive
+      user-name: otelbot
+      user-email: 197425009+otelbot@users.noreply.github.com
+      # the higher privileged docs app is needed to push commits to an existing PR
+      app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+    secrets:
+      app-private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
   report:
     name: Report outcome (trusted)

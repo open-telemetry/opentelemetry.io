@@ -254,9 +254,10 @@ It runs as a three-stage pipeline:
 1. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
    command, prunes the link refcache, and uploads a patch artifact
    (`site.patch`), up to 1024 KB.
-2. **`apply-patch`** (trusted): runs with a GitHub App token, applies the patch,
-   and pushes a commit to the PR branch. Skipped when the command produced no
-   changes.
+2. **`apply-patch`** (trusted): calls the [`reusable-apply-patch.yml`][]
+   workflow — resolved from the default branch, never from the PR — which
+   applies the patch with a GitHub App token and pushes a commit to the PR
+   branch. Skipped when the command produced no changes.
 3. **`report`** (trusted): always comments the outcome back on the PR, so the
    requestor learns the result of every directive — including invalid
    directives, no-op runs, and failures that happen before any patch is
@@ -264,6 +265,8 @@ It runs as a three-stage pipeline:
 
 [pr-actions]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-actions.yml
+[`reusable-apply-patch.yml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/reusable-apply-patch.yml
 
 ## Locale auto-merge
 
