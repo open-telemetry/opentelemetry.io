@@ -329,7 +329,7 @@ To balance governance and autonomy, platform teams operating in the environments
 described in this blueprint should aim to “shift left” on instrumentation,
 ensuring that application owners have full control and ownership of the
 telemetry emitted by their applications. Default configurations mentioned in
-[Guideline 1][#guideline-1] should ensure that provenance of data is guaranteed,
+[Guideline 1](#guideline-1) should ensure that provenance of data is guaranteed,
 including technical attributes (e.g. cluster, deployment, pod) and
 organizational information (e.g. team, business domain), with the aim of making
 it trivial to identify the source of telemetry, and the owning team.
@@ -409,7 +409,7 @@ details. We recommend considering direct usage of the different signal APIs and
 avoiding building further abstractions around them, unless these provide more
 value than simply hiding implementation details. When required, SDK features
 (e.g. [Metric Views][8], or [Span Processors][9]) can be utilized to transform
-telemetry at the application level (see [Guideline 4][#guideline-4]).
+telemetry at the application level (see [Guideline 4](#guideline-4)).
 
 > [!NOTE] Help wanted
 >
@@ -453,7 +453,7 @@ By implementing this guideline, organizations can expect to achieve:
 We recommend that telemetry in this type of Kubernetes environment is
 automatically ingested into a centralized layer deployed as an OpenTelemetry
 [Collector Gateway.][13] The base configuration provided as part of [Guideline
-1][#guideline-1] should ensure that telemetry is exported to this layer using
+1](#guideline-1) should ensure that telemetry is exported to this layer using
 OTLP.
 
 ```mermaid
@@ -506,7 +506,7 @@ flowchart LR
 In multi-tenant environments, multiple Collector Gateways may need to be chained
 to accommodate for different scenarios. For instance, multi-cluster setups with
 local Gateways per cluster and a global Gateway for tail-sampling (see
-[Guideline 4][#guideline-4]), or namespace-scoped Gateways managed by
+[Guideline 4](#guideline-4)), or namespace-scoped Gateways managed by
 independent teams, feeding into a cluster-wide Gateway in heavily federated
 environments.
 
@@ -555,7 +555,7 @@ By implementing this guideline, organizations can expect to achieve:
   improve resource utilization in environments where telemetry volumes vary over
   time.
 - **Consolidated Collector configuration:** As described in [Action
-  3][#action-3], this model allows for a consolidated deployment of Collector
+  3](#action-3), this model allows for a consolidated deployment of Collector
   configuration across multiple layers, minimizing maintenance toil and reducing
   risk of change failure.
 
@@ -735,12 +735,12 @@ By implementing this guideline, organizations can expect to achieve:
 
 If the environment in scope is in the supported [Kubernetes versions][28] and
 [instrumented languages][29], we recommend prioritizing the use of the
-[OpenTelemetry Operator for Kubernetes][30]. This involves:
+[OpenTelemetry Operator for Kubernetes][30] for [auto-instrumentation][31]. This involves:
 
-- [Installing][31] the OpenTelemetry Operator.
-- [Creating][32] the relevant `Instrumentation` CRs to configure SDKs and
+- Installing the OpenTelemetry Operator.
+- Creating the relevant `Instrumentation` CRs to configure SDKs and
   instrumentation.
-- [Adding annotations][33] to individual pods or namespaces (to instrument all
+- Adding annotations to individual pods or namespaces (to instrument all
   pods in a namespace).
 
 If deploying the OpenTelemetry Operator is not possible/compatible, we recommend
@@ -777,7 +777,7 @@ SDK and instrumentation configuration.
 [4](#guideline-4)
 
 Regardless of how the configuration is delivered as part of [Action
-1][#action-1], we recommend the platform team to include the following minimum
+1](#action-1), we recommend the platform team to include the following minimum
 base configuration as part of their offering:
 
 - **Exporters:** OTLP HTTP/protobuf (default) or OTLP gRPC configured to export
@@ -785,7 +785,7 @@ base configuration as part of their offering:
   - **Note:** Backend/SaaS endpoints or API keys should not be included in
     application-level configuration, as we recommend handling these at a
     Collector Gateway.
-  - **Note:** See [Action 3][#action-3] and [Appendix 1][#appendix-1] for more
+  - **Note:** See [Action 3](#action-3) and [Appendix 1](#appendix-1) for more
     details on side effects of OTLP gRPC used with standard Kubernetes Services.
 - **Propagators:** W3C Trace Context (`tracecontext`) to ensure distributed
   traces do not break across service boundaries. If necessary, include legacy
@@ -825,7 +825,7 @@ base configuration as part of their offering:
     [Downward API][64] (i.e. `valueFrom.fieldRef.fieldPath`) standardized across
     application deployment templates.
 
-Depending on the methods established in [Action 1][#action-1] for providing OTel
+Depending on the methods established in [Action 1](#action-1) for providing OTel
 configuration, the platform team must document exactly how developers inherit
 the baseline and how they can extend it:
 
@@ -868,7 +868,7 @@ Charts][42]. Both support GitOps workflows, but they require specific
 architectural considerations for enterprise workloads:
 
 - **OpenTelemetry Operator**: Ideal if the Operator is already used for
-  application auto-instrumentation ([Action 1][#action-1]). The Gateway can be
+  application auto-instrumentation ([Action 1](#action-1)). The Gateway can be
   deployed by creating an `OpenTelemetryCollector` CR and setting
   `mode: deployment` or `mode: statefulset` (depending on requirements). The
   Operator abstracts away much of the Kubernetes boilerplate. See the Operator
@@ -885,7 +885,7 @@ and owners should ensure resiliency is configured from the start:
   pipelines, this prevents Out-of-Memory (OOM) crashes during massive telemetry
   spikes by forcing the Collector to drop data and/or apply backpressure when
   memory usage hits a configured threshold. As mentioned in [Guideline
-  3][#guideline-3], different `memory_limiter` processors per signal may be
+  3](#guideline-3), different `memory_limiter` processors per signal may be
   required.
 - **Configure [otlp][45] or [otlp_http][67] exporter:** Ensure queues and
   retries are aligned with expectations on reliability vs resource consumption,
@@ -918,7 +918,7 @@ and owners should ensure resiliency is configured from the start:
   1][#appendix-1] to implement gRPC load balancing, or consider OTLP/HTTP (the
   default for most SDKs).
 - **Scale on memory and internal telemetry:** Utilize the Kubernetes Horizontal
-  Pod Autoscaler (HPA) combined with custom metrics (see [Action 5][#action-5]).
+  Pod Autoscaler (HPA) combined with custom metrics (see (Action 5](#action-5)).
   Configure the cluster to scale Gateway replicas based on memory utilization,
   active connections, or pipeline queue depth.
 - **Configuration as code**: Store the Helm values or Operator CRs in a central
@@ -936,7 +936,7 @@ in Collector Gateways to execute the following processing steps (in order):
 
 - [**k8s_attributes**][47] **processor:** While some Kubernetes resource details
   (like pod ID or namespace name) can be appended at the application level (see
-  [Action 2][#action-2]), the platform team must ensure 100% compliance for
+  [Action 2](#action-2)), the platform team must ensure 100% compliance for
   unmanaged workloads. This includes fields not available via the Downward API.
   Configure this processor to extract and append attributes like
   `k8s.deployment.name`, `k8s.statefulset.name`, etc. based on the incoming
@@ -970,10 +970,10 @@ in Collector Gateways to execute the following processing steps (in order):
 - [**tail_sampling**][52] **processor:** Define strict retention policies, for
   instance keeping 100% of traces containing errors or exceeding a latency
   threshold, and a small baseline (e.g., 5%) of successful, normal-duration
-  requests. As documented in [Guideline 4][#guideline-4], this requires two
+  requests. As documented in [Guideline 4](#guideline-4), this requires two
   layers of collectors, using the [load_balancing][53] exporter on the first
   layer to route traces to the second layer based on Trace ID. See more
-  information about load balancing exporting in our [documentation][54].
+  information about load balancing exporting in our [documentation][13].
 
 This is not an exhaustive list, and OpenTelemetry Collectors have many
 [processors][55] and [connectors][56] that allow organizations to extract more
@@ -1011,7 +1011,7 @@ recommend following these steps:
   block to emit internal metrics via OTLP to the observability backend,
   following company-wide standards. In addition to monitoring, these metrics
   should also be used as the data source for autoscaling decisions (see [Action
-  3][#action-3]). Please note, this OTLP configuration is separate from the OTLP
+  3](#action-3)). Please note, this OTLP configuration is separate from the OTLP
   exporter configured on Collector pipelines.
 - **Monitor and troubleshoot:** Follow advice present in the [monitor][58] and
   [troubleshoot][59] sections of Collector documentation, and create the
@@ -1131,7 +1131,7 @@ traffic remains within the same cluster, client-side load balancing provides the
 most precise distribution. Server-side connection recycling is the simplest
 starting point when neither is available. Alternatively, including cases where
 operators don't have control over the receiving backend (e.g. connections routed
-via public internet), consider using OTLP/HTTP (see [Action 2][#action-2]) which
+via public internet), consider using OTLP/HTTP (see [Action 2](#action-2)) which
 operates over HTTP/1.1 or short-lived HTTP/2 connections and does not suffer
 from the same pinning behavior.
 
@@ -1176,11 +1176,7 @@ from the same pinning behavior.
 [29]:
   https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection
 [30]: /docs/platforms/kubernetes/operator/
-[31]: /docs/platforms/kubernetes/operator/automatic/#installation
-[32]:
-  /docs/platforms/kubernetes/operator/automatic/#configure-automatic-instrumentation
-[33]:
-  /docs/platforms/kubernetes/operator/automatic/#add-annotations-to-existing-deployments
+[31]: /docs/platforms/kubernetes/operator/automatic/
 [34]: /docs/zero-code/
 [35]: /docs/languages/
 [36]: /docs/languages/sdk-configuration/declarative-configuration/
@@ -1188,15 +1184,15 @@ from the same pinning behavior.
 [39]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables
 [40]:
-  /docs/zero-code/java/agent/configuration/#configuring-with-environment-variables
+  /docs/zero-code/java/agent/configuration/
 [41]:
-  https://github.com/open-telemetry/opentelemetry-js/blob/main/experimental/packages/opentelemetry-sdk-node/src/types.ts#L25
+  https://github.com/open-telemetry/opentelemetry-js/blob/main/experimental/packages/opentelemetry-sdk-node/src/types.ts
 [42]: /docs/platforms/kubernetes/helm/
 [43]: /docs/platforms/kubernetes/operator/horizontal-pod-autoscaling/
 [44]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor/README.md
 [45]:
-  https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter#getting-started/README.md
+  https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter/README.md
 [46]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/storage/filestorage/README.md
 [47]:
@@ -1213,17 +1209,16 @@ from the same pinning behavior.
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor/README.md
 [53]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter/README.md
-[54]: /docs/collector/deploy/gateway/#load-balancing-exporter
 [55]: /docs/collector/components/processor/
 [56]: /docs/collector/components/connector/
 [57]: /docs/specs/semconv/otel/
 [58]:
-  /docs/collector/internal-telemetry/#use-internal-telemetry-to-monitor-the-collector
+  /docs/collector/internal-telemetry/
 [59]: /docs/collector/troubleshooting/
 [60]: /docs/guidance/reference-implementations/adobe/
 [61]: /docs/guidance/reference-implementations/mastodon/
 [62]: /docs/guidance/reference-implementations/skyscanner/
-[63]: /docs/guidance/#how-to-contribute
+[63]: /docs/guidance/
 [64]: https://kubernetes.io/docs/concepts/workloads/pods/downward-api/
 [65]: /docs/specs/otel/trace/sdk/#tracer-provider
 [66]: /docs/specs/otel/metrics/sdk/#exemplar
