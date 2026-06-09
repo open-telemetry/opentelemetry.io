@@ -18,7 +18,7 @@ ou
 [`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
 propagam o contexto entre serviços por você.
 
-Se você seguiu o [Guia de Primeiros Passos](../getting-started/nodejs), pode
+Se você seguiu o [Guia de Primeiros Passos](../getting-started/nodejs), você pode
 criar uma aplicação cliente que consulta o _endpoint_ `/rolldice`.
 
 > [!NOTE]
