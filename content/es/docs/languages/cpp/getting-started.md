@@ -68,9 +68,9 @@ Para empezar, instala Oat++ localmente usando el
    cd build
    ```
 
-4. Compila oatpp usando los comandos `cmake` y `make`. Este comando iniciará
-   el proceso de compilación especificado en el fichero `CMakeLists.txt`
-   incluido en el código fuente de oatpp.
+4. Compila oatpp usando los comandos `cmake` y `make`. Este comando iniciará el
+   proceso de compilación especificado en el fichero `CMakeLists.txt` incluido
+   en el código fuente de oatpp.
 
    ```bash
    cmake ..
@@ -233,8 +233,7 @@ cmake .. -DCMAKE_PREFIX_PATH=$(pwd)/../../install
 cmake --build .
 ```
 
-Tras compilar correctamente tu proyecto, puedes ejecutar el binario
-generado.
+Tras compilar correctamente tu proyecto, puedes ejecutar el binario generado.
 
 ```bash
 ./dice-server
