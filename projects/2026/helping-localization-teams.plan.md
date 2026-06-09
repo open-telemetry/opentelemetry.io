@@ -107,17 +107,16 @@ still-open concern (ideally self-service, e.g. via a bot) explored in
 
 - This repo also runs [`dyladan/component-owners`][component-owners] (the
   `Component owners` workflow) against
-  [`.github/component-owners.yml`][component-owners-yml], which already maps
-  each `content/<loc>` dir to its `docs-<loc>-approvers` team and
-  auto-**requests** their review on matching PRs (via the otelbot app token, so
-  it works for forked PRs).
-- That action only _requests_ reviews; it does not _gate_ merges and does not
-  require owners to have write access. The branch ruleset consults only
-  CODEOWNERS, so dropping the `docs-approvers` requirement for locale files
-  still requires the CODEOWNERS change in strategy 1.
-- The locale→team mapping therefore lives in both files by necessity: they drive
-  different mechanisms (request vs. require). The small overlap is intentional,
-  not redundant.
+  [`.github/component-owners.yml`][component-owners-yml]. That action only
+  _requests_ reviews; it does not _gate_ merges. The branch ruleset consults
+  only CODEOWNERS, so dropping the `docs-approvers` requirement for locale files
+  requires the CODEOWNERS change in strategy 1.
+- Because strategy 1 now lists each locale team in CODEOWNERS, GitHub
+  auto-requests that team on locale PRs natively. The per-locale entries were
+  therefore **removed** from `component-owners.yml` as redundant; it now carries
+  only non-locale component mappings (language SIGs, content modules) and the
+  no-owner `static/refcache.json` marker. CODEOWNERS is the single source of
+  truth for locale ownership.
 
 [`.github/CODEOWNERS`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
@@ -217,9 +216,11 @@ maintainers, ideally via a `/auto-merge:enable`-style comment handled by a bot.
 
 ## Status details
 
-- **Done.** Strategy 1 (CODEOWNERS) de-risked: `ja` and `pt` locale teams have
-  sole ownership in `.github/CODEOWNERS` (merged). Strategy 2 (auto-merge
-  enablement): `.github/workflows/locale-auto-merge.yml` plus the
+- **Done.** Strategy 1 (CODEOWNERS): every onboarded locale team (`bn`, `es`,
+  `fr`, `ja`, `pl`, `pt`, `ro`, `uk`, `zh`) has sole ownership of its content in
+  `.github/CODEOWNERS`, so locale-only PRs no longer require a `docs-approvers`
+  review. Strategy 2 (auto-merge enablement):
+  `.github/workflows/locale-auto-merge.yml` plus the
   `scripts/gh/locale-auto-merge/` helper are implemented, unit/integration
   tested, and validated against a live PR (see the spike result above).
 
