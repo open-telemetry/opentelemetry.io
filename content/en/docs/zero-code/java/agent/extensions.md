@@ -23,6 +23,8 @@ Extensions allow you to:
 - Add new instrumentations for libraries not currently supported
 - Customize existing instrumentation behavior
 - Implement custom SDK components (samplers, exporters, propagators)
+- Customize configuration programmatically, for cases that aren't covered by
+  environment variables or declarative configuration
 - Modify telemetry data collection and processing
 
 ## Quick start
@@ -150,9 +152,9 @@ There are two ways to use extensions with the Java agent:
 - **Load as a separate JAR file** - Flexible for development and testing
 - **Embed in the agent** - Single JAR deployment for production
 
-| Approach            | Pros                                                 | Cons                                  | Best For                 |
+| Approach            | Pros                                                 | Cons                                  | Best for                 |
 | ------------------- | ---------------------------------------------------- | ------------------------------------- | ------------------------ |
-| **Runtime Loading** | Easy to swap extensions, no rebuild needed           | Extra command-line flag required      | Development, testing     |
+| **Runtime loading** | Easy to swap extensions, no rebuild needed           | Extra command-line flag required      | Development, testing     |
 | **Embedding**       | Single JAR, simpler deployment, can't forget to load | Requires rebuild to change extensions | Production, distribution |
 
 ### Loading extensions at runtime
@@ -353,12 +355,23 @@ val extendedAgent by tasks.registering(Jar::class) {
 ## Writing extensions
 
 Creating an extension involves implementing one or more Service Provider
-Interface (SPI) classes and packaging them as a JAR file.
+Interface (SPI) classes, packaging them as a JAR file, and pointing the agent at
+that JAR when you run your application (see
+[Using extensions](#using-extensions)).
+
+> [!TIP]
+>
+> For a complete, runnable reference covering each of the SPIs described below,
+> see the
+> [extension example project](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension)
+> in the Java instrumentation repository.
 
 ### Project setup and dependencies
 
 Extensions must carefully manage their dependencies to avoid conflicts with the
-agent and application.
+agent and application. For background on how the agent isolates extensions
+across class loaders, see
+[Javaagent structure](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/contributing/javaagent-structure.md).
 
 #### Dependencies provided by agent (use `compileOnly`)
 
@@ -401,7 +414,15 @@ implementation("com.google.guava:guava:33.0.0-jre")
 OpenTelemetry Java agent provides multiple extension points through SPI
 interfaces, here are the most commonly used ones:
 
-| Extension Point                       | Package                                                       | Purpose                                |
+> [!NOTE]
+>
+> The configuration-related SPIs below (such as
+> `AutoConfigurationCustomizerProvider`) apply when the SDK is configured with
+> environment variables or system properties. They behave differently, or don't
+> apply, when [declarative configuration](../declarative-configuration) is in
+> use. See each extension point's reference below for details.
+
+| Extension point                       | Package                                                       | Purpose                                |
 | ------------------------------------- | ------------------------------------------------------------- | -------------------------------------- |
 | `AutoConfigurationCustomizerProvider` | `io.opentelemetry.sdk.autoconfigure.spi`                      | Main entry point for SDK customization |
 | `ConfigurablePropagatorProvider`      | `io.opentelemetry.sdk.autoconfigure.spi`                      | Register custom propagators            |
@@ -409,6 +430,10 @@ interfaces, here are the most commonly used ones:
 | `ResourceProvider`                    | `io.opentelemetry.sdk.autoconfigure.spi`                      | Add custom resource attributes         |
 | `InstrumenterCustomizerProvider`      | `io.opentelemetry.instrumentation.api.incubator.instrumenter` | Customize existing instrumentations    |
 | `InstrumentationModule`               | `io.opentelemetry.javaagent.extension.instrumentation`        | Create new instrumentations            |
+
+For a full reference of the autoconfiguration SPIs, including built-in and
+community implementations, see
+[SPI (Service provider interface)](/docs/languages/java/configuration/#spi-service-provider-interface).
 
 ### Configuration in extensions
 
