@@ -4,6 +4,7 @@ description: GitHub UI 利用して、またはローカルのフォークから
 aliases: [new-content]
 weight: 15
 default_lang_commit: b51a1db58883aa963c461d34356aa86ac18d94b7
+drifted_from_default: true
 ---
 
 新しいドキュメントの内容を追加や改善するには、[プルリクエスト][PR] （PR）を提出してください。

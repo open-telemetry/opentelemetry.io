@@ -1,6 +1,7 @@
 actualizeazǎ
 adaugǎ
 agnostice
+aprobatorilor
 aspirațional
 calificatori
 colectezi
@@ -17,6 +18,7 @@ deții
 dezvoltatori
 dezvoltatorii
 discutǎ
+enumerează
 exportatorilor
 forțezi
 gestionezi
@@ -30,6 +32,7 @@ intervalurilor
 întâmpini
 întreab
 întreab-o
+întreținătorii
 microservicii
 migrare
 migrezi
@@ -39,10 +42,12 @@ nestandard
 observabilitate
 observabilitatea
 observabilității
+partajezi
 postând
 prepopulată
 receptoarelor
 remediează
+semnalizate
 semneazǎ
 soliciți
 sugerezi
