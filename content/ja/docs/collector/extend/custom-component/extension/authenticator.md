@@ -5,8 +5,7 @@ weight: 100
 aliases:
   - /docs/collector/custom-auth
   - /docs/collector/building/authenticator-extension
-default_lang_commit: 6a7f17450ce3edc2e4363013551ee93ba7934a5d
-drifted_from_default: true
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 cSpell:ignore: configauth oidc
 ---
 

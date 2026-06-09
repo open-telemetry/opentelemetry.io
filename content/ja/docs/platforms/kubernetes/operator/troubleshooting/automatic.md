@@ -1,7 +1,6 @@
 ---
 title: 自動計装
-default_lang_commit: 99a39c5e4e51daba968bfbb3eb078be4a14ad363
-drifted_from_default: true
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 cSpell:ignore: PYTHONPATH
 ---
 
@@ -162,7 +161,6 @@ Containers:
       OTEL_POD_IP:                                        (v1:status.podIP)
       OTEL_METRICS_EXPORTER:                             console,otlp_proto_http
       OTEL_LOGS_EXPORTER:                                otlp_proto_http
-      OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED:  true
       PYTHONPATH:                                        /otel-auto-instrumentation-python/opentelemetry/instrumentation/auto_instrumentation:/otel-auto-instrumentation-python
       OTEL_TRACES_EXPORTER:                              otlp
       OTEL_EXPORTER_OTLP_TRACES_PROTOCOL:                http/protobuf
