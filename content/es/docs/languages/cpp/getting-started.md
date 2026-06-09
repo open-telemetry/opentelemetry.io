@@ -3,8 +3,8 @@ title: Primeros Pasos con Ejemplos
 description:
   ¡Obtén datos de telemetría para tu aplicación en menos de 5 minutos!
 weight: 10
-cSpell:ignore: oatpp rolldice
 default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
+cSpell:ignore: oatpp rolldice
 ---
 
 Esta página te muestra cómo dar los primeros pasos con OpenTelemetry en C++.
