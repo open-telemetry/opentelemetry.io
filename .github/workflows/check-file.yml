@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with: { persist-credentials: false }
       - run: npm run check:expired
       - run: npm run _diff:fail
 
@@ -21,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with: { persist-credentials: false }
       - run: npm run check:filenames
 
   check-formatting:
@@ -28,6 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with: { persist-credentials: false }
       - run: npm run check:format
 
   check-branch-name:
@@ -35,4 +38,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with: { persist-credentials: false }
       - uses: ./.github/actions/fail-if-branch-is-main
