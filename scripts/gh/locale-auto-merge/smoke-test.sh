@@ -26,17 +26,19 @@ eligible_pr="${ELIGIBLE_PR:-10094}"
 # A PR that also touches files outside any locale (ineligible).
 ineligible_pr="${INELIGIBLE_PR:-10235}"
 # Impersonate this user for the authorization check (default: the gh user).
-author_args=()
-if [[ -n "${USER_LOGIN:-}" ]]; then author_args=(--user "$USER_LOGIN"); fi
+author_args=""
+# if [[ -n "${USER_LOGIN:-}" ]]; then author_args=(--user "$USER_LOGIN"); fi
+
+set -x
 
 echo "## enable on an eligible locale PR (#${eligible_pr})"
-"${cli[@]}" --pr "${eligible_pr}" --enable "${author_args[@]}"
+"${cli[@]}" --pr "${eligible_pr}" --enable ${author_args}
 
 echo
 echo "## disable on the same PR (#${eligible_pr})"
-"${cli[@]}" --pr "${eligible_pr}" --disable "${author_args[@]}"
+"${cli[@]}" --pr "${eligible_pr}" --disable ${author_args}
 
 echo
 echo "## enable on an ineligible PR (#${ineligible_pr}) -> expected to exit 1"
-"${cli[@]}" --pr "${ineligible_pr}" --enable "${author_args[@]}" ||
+"${cli[@]}" --pr "${ineligible_pr}" --enable ${author_args} ||
   echo "(non-zero exit, as expected for an ineligible PR)"
