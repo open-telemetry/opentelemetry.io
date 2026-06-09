@@ -93,8 +93,8 @@ EnvDetector found resource. Resource {
 
 Recursos personalizados também podem ser configurados no seu código. O `NodeSDK`
 oferece uma opção de configuração onde você pode defini-los. Por exemplo, você
-pode atualizar seu arquivo de instrumentação como o seguinte para ter os
-atributos `service.*` definidos:
+pode atualizar o seu arquivo de instrumentação da seguinte forma para definir os
+atributos `service.*`:
 
 ```javascript
 ...
@@ -132,7 +132,7 @@ EXPOSE 8080
 CMD [ "node", "--import", "./instrumentation.mjs", "app.js" ]
 ```
 
-Para garantir que você consiga parar seu contêiner docker com <kbd>Ctrl +
+Para garantir que você consiga parar seu contêiner Docker com <kbd>Ctrl +
 C</kbd> (`SIGINT`), adicione o seguinte ao final do `app.js`:
 
 ```javascript
@@ -141,14 +141,14 @@ process.on('SIGINT', function () {
 });
 ```
 
-Para obter o ID do seu contêiner detectado automaticamente para você, instale a
+Para que o ID do seu contêiner seja detectado automaticamente, instale a
 seguinte dependência adicional:
 
 ```sh
 npm install @opentelemetry/resource-detector-container
 ```
 
-Em seguida, atualize seu `instrumentation.mjs` como o seguinte:
+Em seguida, atualize seu `instrumentation.mjs` com o seguinte código:
 
 ```javascript
 const opentelemetry = require('@opentelemetry/sdk-node');
@@ -172,13 +172,13 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 ```
 
-Construa sua imagem docker:
+Crie sua imagem Docker:
 
 ```sh
 docker build . -t nodejs-otel-getting-started
 ```
 
-Execute seu contêiner docker:
+Execute seu contêiner:
 
 ```sh
 $ docker run --rm -p 8080:8080 nodejs-otel-getting-started
@@ -222,7 +222,7 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 ```
 
-Reconstrua sua imagem e execute seu contêiner mais uma vez:
+Reconstrua sua imagem e execute o contêiner mais uma vez:
 
 ```shell
 docker run --rm -p 8080:8080 nodejs-otel-getting-started
@@ -252,7 +252,7 @@ DockerCGroupV1Detector found resource. Resource {
 ## Próximos passos {#next-steps}
 
 Há mais detectores de recursos que você pode adicionar à sua configuração, por
-exemplo, para obter detalhes sobre seu ambiente de [Nuvem][cloud] ou
+exemplo, para obter detalhes sobre o seu ambiente de [Nuvem][cloud] ou
 [Implantação][deployment]. Para mais, veja os
 [pacotes nomeados `resource-detector-*` no repositório opentelemetry-js-contrib](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages).
 
