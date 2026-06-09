@@ -22,8 +22,7 @@ jobs:
     if: |
       github.repository_owner == 'open-telemetry' &&
       github.event.issue.pull_request != null &&
-      (startsWith(github.event.comment.body, '/auto-merge:') ||
-       github.event.comment.body == '/auto-merge')
+      startsWith(github.event.comment.body, '/auto-merge')
 
     steps:
       - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
