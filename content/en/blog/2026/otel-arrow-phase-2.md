@@ -264,59 +264,16 @@ larger opportunity is to reduce overhead inside the telemetry data plane itself.
 
 The OTel-Arrow Dataflow Engine has reached a maturity level where many essential
 capabilities are usable in realistic environments. It is still more accurate,
-however, to describe it as an incubation-stage project than as a broadly
+however, to describe it as an incubation-stage project than as a
 production-stabilized platform for external users.
 
-Production users should treat the engine as something to evaluate, benchmark,
-and shape through feedback, not as a drop-in replacement for existing Collector
-deployments today.
+The project is still evolving, including configuration formats, APIs, component
+interfaces, and operational semantics. At this stage, there is no stability or
+backward-compatibility guarantee for those surfaces.
 
-Configuration formats, APIs, component interfaces, and certain operational
-semantics may still evolve during Phase 3 as benchmarks improve, real-world
-experimentation progresses, and community feedback accumulates. This caution is
-intentional: the goal is to stabilize the engine once the architecture,
-operational model, and integration boundaries are fully validated, rather than
-freezing interfaces too early.
-
-## Phase 3
-
-Phase 3 is currently under discussion. It is expected to target a first stable,
-production-usable release, with significant improvements in several areas:
-
-- **Pipeline-level control mechanisms**: inter-pipeline topics, tenant-aware
-  resource governance, live reconfiguration with rollback support, and possible
-  OpAMP support.
-- **Core component ecosystem**: receivers, processors, exporters, and extensions
-  covering the majority of common telemetry pipelines, maintained within
-  OpenTelemetry.
-- **Extensibility and processing**: a WASM-based extension model for specialized
-  components, including exploration of how selected existing OpenTelemetry
-  Collector (and collector contrib) components could run inside the Dataflow
-  Engine. This also includes a new OTAP-native transform processor with
-  OTTL-compatible transformations and the experimental OPL language.
-- **SDK-level OTAP export**: prototyping OTAP exporters in OpenTelemetry SDKs,
-  starting with OTel Rust, to evaluate how much efficiency is gained when
-  telemetry starts in an Arrow-friendly representation at the SDK boundary
-  instead of being converted later in the pipeline.
-- **Ecosystem validation and guidance**: collaboration with the OpenTelemetry
-  Demo and relevant Blueprint efforts to validate OTAP and the Dataflow Engine
-  in realistic end-to-end scenarios.
-- **OpenTelemetry Profiles**: add support for OpenTelemetry profiles in the OTAP
-  representation.
-
-OPL, or OpenTelemetry Processing Language, is currently being specified and
-implemented. It is intended to be stream-oriented, strongly typed, and safe for
-processing signals that comply with the OpenTelemetry data model. This
-processing language could also enable predicate and projection pushdown,
-allowing receivers to apply filtering and field-selection requirements closer to
-the source when supported.
-
-We are also exploring native integration with agentic workflows, enabling agents
-to discover engine capabilities, configuration possibilities, and internal
-telemetry, and to safely validate generated configurations. During Phase 3, we
-will begin a second round of discussions with the OpenTelemetry Governance
-Committee to evaluate how this engine could integrate into the broader
-OpenTelemetry ecosystem.
+Users should treat the engine as something to evaluate, benchmark, and shape
+through feedback. Real-world usage should be limited to controlled experiments;
+production workloads are not recommended at this stage.
 
 ## Conclusion
 
