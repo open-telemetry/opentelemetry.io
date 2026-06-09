@@ -19,6 +19,9 @@ jobs:
   auto-merge:
     name: Locale auto-merge command
     runs-on: ubuntu-latest
+    concurrency:
+      group: locale-auto-merge-${{ github.event.issue.number }}
+      cancel-in-progress: false
     if: |
       github.repository_owner == 'open-telemetry' &&
       github.event.issue.pull_request != null &&
