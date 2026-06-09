@@ -13,7 +13,7 @@ author: >-
   Relmas](https://github.com/drewrelmas) (Microsoft), [Jake
   Dern](https://github.com/JakeDern) (F5)
 # prettier-ignore
-cSpell:ignore: Albert Cijo Dern Drew Jake Joshua Laurent Lockett MacDonald OTAP OTTL pushdown Querel Reiley Relmas reserialization Thomas
+cSpell:ignore: Albert Cijo Dern Drew Jake Joshua Laurent Lockett MacDonald OTAP Querel Reiley Relmas reserialization Thomas
 ---
 
 [Phase 1](https://github.com/open-telemetry/otel-arrow/blob/c6ed105cab28e537bf5c2c81a97e9b63677d3cff/docs/phase1-overview.md)
