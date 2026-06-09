@@ -10,7 +10,7 @@
 // remain the hard gate, so the PR still won't merge until every required code
 // owner has approved and all checks pass. The helper adds two guards of its
 // own: (1) every changed file must be locale-owned, and (2) the commenter must
-// be a member of the approver team for every locale the PR touches.
+// be a member of the maintainer team for every locale the PR touches.
 
 import { readdirSync } from 'node:fs';
 
@@ -145,20 +145,22 @@ export function evaluateEligibility(paths, knownLocales, onFile) {
  *
  * @typedef {Object} Authorization
  * @property {boolean} authorized True iff the user is a member of every
- *   touched locale's approver team.
- * @property {string[]} missing Locales whose approver team the user is *not* a
+ *   touched locale's maintainer team.
+ * @property {string[]} missing Locales whose maintainer team the user is *not* a
  *   member of, sorted.
  */
 
 /**
  * Report whether `user` may enable auto-merge for the given `locales`, i.e. is
- * a member of `@<org>/docs-<loc>-approvers` for *every* locale.
+ * a member of `@<org>/docs-<loc>-maintainers` for *every* locale.
  *
  * GitHub natively limits "Enable auto-merge" to users with write access, but
  * acting through the DOCS bot token bypasses that gate — so we re-check the
- * commenter's authority explicitly, by locale team membership (the relevant
- * authority under CODEOWNERS delegation, where locale teams need not hold repo
- * write at all).
+ * commenter's authority explicitly, by locale maintainer-team membership (the
+ * relevant authority under CODEOWNERS delegation, where locale teams need not
+ * hold repo write at all). Note this is the locale *maintainers* team, a
+ * stricter bar than the `docs-<loc>-approvers` team that CODEOWNERS uses to gate
+ * the merge itself.
  *
  * @param {(args: string[]) => GhResult} runGh
  * @param {string} org GitHub org login (e.g. `open-telemetry`).
@@ -174,7 +176,7 @@ export function authorizeForLocales(runGh, org, user, locales, onCheck) {
   const missing = [];
 
   for (const loc of locales) {
-    const team = `docs-${loc}-approvers`;
+    const team = `docs-${loc}-maintainers`;
     const { stdout, status } = runGh([
       'api',
       '--paginate',
@@ -252,14 +254,14 @@ export function resolveVerdict({
 
   if (!authorization.authorized) {
     const teams = authorization.missing
-      .map((loc) => `\`@open-telemetry/docs-${loc}-approvers\``)
+      .map((loc) => `\`@open-telemetry/docs-${loc}-maintainers\``)
       .join(', ');
     return {
       outcome: 'unauthorized',
       exitCode: 1,
       apply: null,
       message:
-        `❌ You must be a member of the approver team for every locale this ` +
+        `❌ You must be a member of the maintainer team for every locale this ` +
         `PR touches to change auto-merge. Missing: ${teams}.`,
     };
   }
@@ -288,10 +290,10 @@ export function resolveVerdict({
     // teams, so the PR carries a record of why the bot acted.
     const who = author ? `@${author}` : 'the requester';
     const teams = eligibility.locales
-      .map((loc) => `\`@open-telemetry/docs-${loc}-approvers\``)
+      .map((loc) => `\`@open-telemetry/docs-${loc}-maintainers\``)
       .join(', ');
     const proof =
-      `\n\n<sub>Verified ${who} is a member of the approver team for every ` +
+      `\n\n<sub>Verified ${who} is a member of the maintainer team for every ` +
       `locale this PR touches: ${teams}.</sub>`;
     return {
       outcome: 'apply',

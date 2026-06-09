@@ -45,7 +45,7 @@ function runCli({
   files = 'content/ja/docs/a.md',
   autoMerge = false,
   state = 'OPEN',
-  teams = { 'docs-ja-approvers': ['alice'] },
+  teams = { 'docs-ja-maintainers': ['alice'] },
   author = 'alice',
   fail,
 } = {}) {
@@ -112,7 +112,7 @@ describe('locale-auto-merge cli', { skip }, () => {
       author: 'mallory',
     });
     assert.equal(res.status, 1);
-    assert.match(res.stdout, /docs-ja-approvers/);
+    assert.match(res.stdout, /docs-ja-maintainers/);
   });
 
   test('ineligible PR (non-locale file): exit 1', () => {

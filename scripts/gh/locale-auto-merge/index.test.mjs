@@ -163,8 +163,8 @@ function teamRunner(teams) {
 
 describe('locale-auto-merge: authorizeForLocales', () => {
   const teams = {
-    'docs-ja-approvers': ['Alice', 'bob'],
-    'docs-pt-approvers': ['carol', 'alice'],
+    'docs-ja-maintainers': ['Alice', 'bob'],
+    'docs-pt-maintainers': ['carol', 'alice'],
   };
 
   test('member of the single touched locale team is authorized', () => {
@@ -226,8 +226,8 @@ describe('locale-auto-merge: authorizeForLocales', () => {
       (c) => seen.push(c),
     );
     assert.deepEqual(seen, [
-      { locale: 'ja', team: 'docs-ja-approvers', member: true },
-      { locale: 'pt', team: 'docs-pt-approvers', member: false },
+      { locale: 'ja', team: 'docs-ja-maintainers', member: true },
+      { locale: 'pt', team: 'docs-pt-maintainers', member: false },
     ]);
   });
 });
@@ -263,7 +263,7 @@ describe('locale-auto-merge: resolveVerdict', () => {
     assert.equal(v.outcome, 'unauthorized');
     assert.equal(v.exitCode, 1);
     assert.equal(v.apply, null);
-    assert.match(v.message, /docs-pt-approvers/);
+    assert.match(v.message, /docs-pt-maintainers/);
   });
 
   test('enable when already enabled -> noop', () => {
@@ -313,9 +313,9 @@ describe('locale-auto-merge: resolveVerdict', () => {
       autoMergeEnabled: false,
       author: 'alice',
     });
-    assert.match(v.message, /@alice is a member of the approver team/);
-    assert.match(v.message, /@open-telemetry\/docs-ja-approvers/);
-    assert.match(v.message, /@open-telemetry\/docs-pt-approvers/);
+    assert.match(v.message, /@alice is a member of the maintainer team/);
+    assert.match(v.message, /@open-telemetry\/docs-ja-maintainers/);
+    assert.match(v.message, /@open-telemetry\/docs-pt-maintainers/);
   });
 
   test('enable message states files are locale-owned or shared', () => {
@@ -340,7 +340,7 @@ describe('locale-auto-merge: resolveVerdict', () => {
       autoMergeEnabled: true,
       author: 'alice',
     });
-    assert.doesNotMatch(v.message, /is a member of the approver team/);
+    assert.doesNotMatch(v.message, /is a member of the maintainer team/);
   });
 
   test('disable when enabled -> apply disable', () => {
@@ -406,7 +406,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           files: [{ path: 'content/ja/docs/a.md' }],
           autoMergeRequest: null,
         },
-        teams: { 'docs-ja-approvers': ['alice'] },
+        teams: { 'docs-ja-maintainers': ['alice'] },
         calls,
       }),
     });
@@ -418,8 +418,8 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     // The posted comment carries the auditable proof line.
     const comment = calls.find((a) => a[0] === 'pr' && a[1] === 'comment');
     const body = comment[comment.indexOf('--body') + 1];
-    assert.match(body, /@alice is a member of the approver team/);
-    assert.match(body, /@open-telemetry\/docs-ja-approvers/);
+    assert.match(body, /@alice is a member of the maintainer team/);
+    assert.match(body, /@open-telemetry\/docs-ja-maintainers/);
   });
 
   test('mixed-locale PR requires membership in all locale teams', () => {
@@ -436,7 +436,10 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           files: [{ path: 'content/ja/a.md' }, { path: 'content/pt/b.md' }],
           autoMergeRequest: null,
         },
-        teams: { 'docs-ja-approvers': ['bob'], 'docs-pt-approvers': ['carol'] },
+        teams: {
+          'docs-ja-maintainers': ['bob'],
+          'docs-pt-maintainers': ['carol'],
+        },
         calls,
       }),
     });
@@ -464,8 +467,8 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           autoMergeRequest: null,
         },
         teams: {
-          'docs-ja-approvers': ['alice'],
-          'docs-pt-approvers': ['alice'],
+          'docs-ja-maintainers': ['alice'],
+          'docs-pt-maintainers': ['alice'],
         },
         calls,
       }),
@@ -477,12 +480,12 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     // Both touched locales are checked against their teams.
     const teamCalls = calls.filter((a) => a.some((s) => s.includes('/teams/')));
     assert.equal(teamCalls.length, 2);
-    // The posted comment names both locales and both approver teams.
+    // The posted comment names both locales and both maintainer teams.
     const comment = calls.find((a) => a[0] === 'pr' && a[1] === 'comment');
     const body = comment[comment.indexOf('--body') + 1];
     assert.match(body, /locale\(s\) `ja`, `pt`/);
-    assert.match(body, /@open-telemetry\/docs-ja-approvers/);
-    assert.match(body, /@open-telemetry\/docs-pt-approvers/);
+    assert.match(body, /@open-telemetry\/docs-ja-maintainers/);
+    assert.match(body, /@open-telemetry\/docs-pt-maintainers/);
   });
 
   test('fails closed when the PR has more files than gh can return', () => {
@@ -505,7 +508,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           changedFiles: 150,
           autoMergeRequest: null,
         },
-        teams: { 'docs-ja-approvers': ['alice'] },
+        teams: { 'docs-ja-maintainers': ['alice'] },
         calls,
       }),
     });
@@ -537,7 +540,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           changedFiles: 100,
           autoMergeRequest: null,
         },
-        teams: { 'docs-ja-approvers': ['alice'] },
+        teams: { 'docs-ja-maintainers': ['alice'] },
         calls,
       }),
     });
@@ -559,7 +562,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           files: [{ path: 'content/ja/a.md' }, { path: 'layouts/x.html' }],
           autoMergeRequest: null,
         },
-        teams: { 'docs-ja-approvers': ['alice'] },
+        teams: { 'docs-ja-maintainers': ['alice'] },
         calls,
       }),
     });
@@ -602,7 +605,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           files: [{ path: 'content/ja/a.md' }],
           autoMergeRequest: null,
         },
-        teams: { 'docs-ja-approvers': ['alice'] },
+        teams: { 'docs-ja-maintainers': ['alice'] },
         calls,
       }),
     });
@@ -627,7 +630,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           files: [{ path: 'content/ja/a.md' }],
           autoMergeRequest: {},
         },
-        teams: { 'docs-ja-approvers': ['alice'] },
+        teams: { 'docs-ja-maintainers': ['alice'] },
         calls,
       }),
     });
@@ -656,7 +659,10 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           ],
           autoMergeRequest: null,
         },
-        teams: { 'docs-ja-approvers': ['bob'], 'docs-pt-approvers': ['carol'] },
+        teams: {
+          'docs-ja-maintainers': ['bob'],
+          'docs-pt-maintainers': ['carol'],
+        },
         calls,
       }),
     });
@@ -673,12 +679,12 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     );
     assert.ok(
       logs.some((m) =>
-        /\[team\] @bob ✓ is a member of .*docs-ja-approvers/.test(m),
+        /\[team\] @bob ✓ is a member of .*docs-ja-maintainers/.test(m),
       ),
     );
     assert.ok(
       logs.some((m) =>
-        /\[team\] @bob ✗ is NOT a member of .*docs-pt-approvers/.test(m),
+        /\[team\] @bob ✗ is NOT a member of .*docs-pt-maintainers/.test(m),
       ),
     );
   });
@@ -705,7 +711,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           ],
           autoMergeRequest: null,
         },
-        teams: { 'docs-ja-approvers': ['alice'] },
+        teams: { 'docs-ja-maintainers': ['alice'] },
         calls,
       }),
     });

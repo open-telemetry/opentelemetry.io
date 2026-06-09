@@ -16,7 +16,7 @@ The helper adds two guards of its own:
    `.cspell/<loc>-*.txt`, `prh/<loc>.yml`) or a recognized no-owner file
    (`static/refcache.json`). A PR may touch more than one locale.
 2. **Authorization** — the commenter must be a member of
-   `@open-telemetry/docs-<loc>-approvers` for **every** locale the PR touches.
+   `@open-telemetry/docs-<loc>-maintainers` for **every** locale the PR touches.
 
 ## Files
 
@@ -64,5 +64,5 @@ failure outcomes and `0` otherwise.
 | `not-open`        | 1    | The PR is not open, so auto-merge can't be changed.                                              |
 | `too-many-files`  | 1    | The PR changes more files than `gh` can return, so eligibility can't be verified (fails closed). |
 | `ineligible`      | 1    | A changed file is outside the locale-owned set.                                                  |
-| `unauthorized`    | 1    | The commenter isn't on the approver team for every touched locale.                               |
+| `unauthorized`    | 1    | The commenter isn't on the maintainer team for every touched locale.                             |
 | `mutation-failed` | 1    | The `gh pr merge` call itself failed.                                                            |

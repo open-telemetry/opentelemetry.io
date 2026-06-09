@@ -188,7 +188,7 @@ maintainers, ideally via a `/auto-merge:enable`-style comment handled by a bot.
   delegates to `scripts/gh/locale-auto-merge/` (testable helper + CLI). A locale
   team member comments `/auto-merge` (or `:enable` / `:disable`). The helper
   checks: (1) every changed file is locale-owned (or `static/refcache.json`);
-  (2) the commenter is a member of `docs-<loc>-approvers` for **every** locale
+  (2) the commenter is a member of `docs-<loc>-maintainers` for **every** locale
   touched (so a mixed ja+pt PR needs authority over both). It then runs
   `gh pr merge --auto --squash` as the DOCS bot. The CLI's `--user` flag
   evaluates the verdict _as if_ a given user commented (dry-run by default), for
