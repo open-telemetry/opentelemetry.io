@@ -55,7 +55,7 @@ cSpell:ignore: AZUREAPPSERVICE CLSID CORECLR dylib ILREWRITE LOGRECORD NETFX OPE
    サービス名が明示的に構成されていない場合、自動的に生成されます。
    これはいくつかの状況で役立ちます。
    - アプリケーションが .NET Framework の IIS 上でホストされている場合、`SiteName\VirtualPath`（例: `MySite\MyApp`）になります。
-   - それ以外の場合は、アプリケーションの [entry Assembly](https://learn.microsoft.com/en-us/dotnet/api/system.reflection.assembly.getentryassembly?view=net-7.0) の名前が使用されます。
+   - それ以外の場合は、アプリケーションの [Entry Assembly](https://learn.microsoft.com/en-us/dotnet/api/system.reflection.assembly.getentryassembly?view=net-7.0) の名前が使用されます。
 
 デフォルトでは、構成に環境変数を使用することを推奨します。
 ただし、特定の設定がサポートしている場合は次のようにします。
