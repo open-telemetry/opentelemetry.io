@@ -177,14 +177,13 @@ Expose a Grafana variable `$team` backed by `label_values(namespace:gpu_cost_usd
 
 ### Reference implementation
 
-A complete reference implementation is available as an AWS Sample:
+A complete reference implementation is available at:
 
-- **GitHub:** `github.com/aws-samples/ai-inference-reliability-lab`
-  - `terraform/` — EKS cluster with GPU node groups, DCGM DaemonSet, OTel Collector
-  - `manifests/` — KEDA ScaledObjects, ValidatingWebhookConfiguration, ArgoCD Applications
+- **GitHub:** `github.com/sguruvar/ai-inference-observability-eks`
+  - `scripts/` — Step-by-step EKS cluster setup with GPU node groups, DCGM, OTel Collector
+  - `manifests/` — KEDA ScaledObjects, ValidatingWebhookConfiguration, ArgoCD Applications, Istio configs
   - `mcp-server/` — FastMCP server with OTel-instrumented GPU observability tools (`get_gpu_utilization`, `get_agent_cost`)
-  - `agents/` — LangGraph agent with OTel span decorators and MCP tool integration
-  - `dashboards/` — Grafana dashboard JSON (FinOps, SRE, DevOps personas)
+  - `manifests/dashboards/` — Grafana dashboard JSON (FinOps, SRE, KEDA scaling personas)
 
 ### Related resources
 
