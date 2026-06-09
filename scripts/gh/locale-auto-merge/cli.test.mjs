@@ -33,6 +33,8 @@ const skip = process.platform === 'win32';
  * @param {Object} opts
  * @param {string[]} [opts.args] CLI argv (default: --pr 1 --enable --dry-run).
  * @param {string} [opts.files] Comma-separated changed-file paths.
+ * @param {number} [opts.changed] Total changed-file count (to simulate >100
+ *   truncation); defaults to the number of `files`.
  * @param {boolean} [opts.autoMerge]
  * @param {string} [opts.state] PR state (OPEN/CLOSED/MERGED).
  * @param {Object<string,string[]>} [opts.teams] team-slug -> [logins].
@@ -43,6 +45,7 @@ const skip = process.platform === 'win32';
 function runCli({
   args = ['--pr', '1', '--enable', '--dry-run'],
   files = 'content/ja/docs/a.md',
+  changed,
   autoMerge = false,
   state = 'OPEN',
   teams = { 'docs-ja-maintainers': ['alice'] },
@@ -61,6 +64,7 @@ function runCli({
     REPO: 'open-telemetry/opentelemetry.io',
     COMMENT_AUTHOR: author,
     FAKE_GH_FILES: files,
+    ...(changed != null ? { FAKE_GH_CHANGED: String(changed) } : {}),
     FAKE_GH_AUTOMERGE: autoMerge ? '1' : '0',
     FAKE_GH_STATE: state,
     FAKE_GH_TEAMS: JSON.stringify(teams),
@@ -136,5 +140,17 @@ describe('locale-auto-merge cli', { skip }, () => {
     const res = runCli({ args: ['--pr', '1', '--enable', '--disable'] });
     assert.equal(res.status, 1);
     assert.match(res.stderr, /only one of/);
+  });
+
+  test('fails closed (exit 1) when changedFiles exceeds the returned file list', () => {
+    const res = runCli({
+      args: ['--pr', '42', '--enable', '--no-dry-run'],
+      files: 'content/ja/docs/a.md',
+      changed: 150,
+    });
+    assert.equal(res.status, 1);
+    // Never enables auto-merge; posts an explanatory comment instead.
+    assert.ok(!res.ghCalls.some((c) => c.startsWith('pr merge')));
+    assert.ok(res.ghCalls.some((c) => c.startsWith('pr comment 42')));
   });
 });

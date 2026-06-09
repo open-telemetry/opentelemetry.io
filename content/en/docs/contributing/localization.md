@@ -485,10 +485,16 @@ when **Spelling** has no natural-language dictionary to add.
 ### Enabling auto-merge on locale-only PRs {#auto-merge}
 
 Members of a locale's maintainers team can enable [GitHub auto-merge][] on a
-locale-only PR by commenting `/auto-merge` (use `/auto-merge:disable` to turn it
-off). This lets established localization teams land their own PRs without
-waiting on a docs maintainer. Branch protection and CODEOWNERS still gate the
-merge: the PR only merges once all required reviews and checks pass.
+locale-only PR by commenting `/auto-merge` (or `/auto-merge:enable`; use
+`/auto-merge:disable` to turn it off). This lets established localization teams
+land their own PRs without waiting on a docs maintainer. Branch protection and
+CODEOWNERS still gate the merge: the PR only merges once all required reviews
+and checks pass.
+
+This fully removes the docs-maintainer step only for locales whose team has sole
+code ownership of its content (currently `ja` and `pt`). For other locales the
+bot can still enable auto-merge, but `docs-approvers` remains a required
+reviewer, so the PR won't merge until a docs approver also approves.
 
 A comment is honored only when every changed file is owned by a locale you
 maintain, so it can't be used to slip changes into shared or English content.

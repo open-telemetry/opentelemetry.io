@@ -194,10 +194,10 @@ maintainers, ideally via a `/auto-merge:enable`-style comment handled by a bot.
   evaluates the verdict _as if_ a given user commented (dry-run by default), for
   testing the authorization gate before going live.
 
-- **To confirm (small spike).**
-  1. That the DOCS bot is a permitted (non-excluded) actor under the `main`
-     ruleset — i.e. enabling auto-merge via the bot token doesn't hit a bypass
-     restriction. (Admins can check under Settings → Rulesets.)
+- **Confirmed (spike done).** The DOCS bot is a permitted (non-excluded) actor
+  under the `main` ruleset: a live, non-dry-run `/auto-merge` on a real locale
+  PR successfully enabled GitHub auto-merge via the bot token, and the PR merged
+  once its required reviews and checks were satisfied.
 
 [auto-merge]:
   https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
@@ -217,9 +217,10 @@ maintainers, ideally via a `/auto-merge:enable`-style comment handled by a bot.
 
 ## Status details
 
-- **In progress.** Strategy 1 (CODEOWNERS) de-risked: `ja` and `pt` locale teams
-  have sole ownership in `.github/CODEOWNERS` (merged). Strategy 2 (auto-merge
-  enablement): `.github/workflows/locale-auto-merge.yml` drafted on branch
-  `chalin-l10n-auto-merge-bot-2026-0608`, pending test against a live PR.
+- **Done.** Strategy 1 (CODEOWNERS) de-risked: `ja` and `pt` locale teams have
+  sole ownership in `.github/CODEOWNERS` (merged). Strategy 2 (auto-merge
+  enablement): `.github/workflows/locale-auto-merge.yml` plus the
+  `scripts/gh/locale-auto-merge/` helper are implemented, unit/integration
+  tested, and validated against a live PR (see the spike result above).
 
 [#9219]: https://github.com/open-telemetry/opentelemetry.io/issues/9219

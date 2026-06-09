@@ -392,6 +392,26 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     assert.equal(calls.length, 0); // never even fetched the PR
   });
 
+  test('malformed /auto-merge attempt posts an unrecognized-command reply', () => {
+    const calls = [];
+    const r = runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 5,
+      commentAuthor: 'alice',
+      commentBody: '/auto-merge please',
+      knownLocales: KNOWN,
+      runGh: makeRunGh({ pr: {}, calls }),
+    });
+    assert.equal(r.outcome, 'no-command');
+    assert.equal(r.exitCode, 0);
+    // It never fetches the PR, but it does post a feedback comment.
+    assert.ok(!calls.some((a) => a[0] === 'pr' && a[1] === 'view'));
+    const comment = calls.find((a) => a[0] === 'pr' && a[1] === 'comment');
+    assert.ok(comment, 'expected a feedback comment');
+    const body = comment[comment.indexOf('--body') + 1];
+    assert.match(body, /Unrecognized auto-merge command/);
+  });
+
   test('eligible + authorized enable issues gh pr merge --auto', () => {
     const calls = [];
     const r = runAutoMergeCommand({
@@ -720,5 +740,62 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     assert.ok(
       logs.some((m) => m.includes('verbose limit (2) reached; 1 more file')),
     );
+  });
+
+  test('enable applies but gh pr merge failure yields mutation-failed', () => {
+    const calls = [];
+    const base = makeRunGh({
+      pr: {
+        state: 'OPEN',
+        files: [{ path: 'content/ja/docs/a.md' }],
+        autoMergeRequest: null,
+      },
+      teams: { 'docs-ja-maintainers': ['alice'] },
+      calls,
+    });
+    // Wrap the runner so the merge mutation fails, but reads still succeed.
+    const runGh = (args) =>
+      args[0] === 'pr' && args[1] === 'merge'
+        ? { stdout: '', status: 1 }
+        : base(args);
+    const r = runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 42,
+      commentAuthor: 'alice',
+      commentBody: '/auto-merge',
+      knownLocales: KNOWN,
+      runGh,
+    });
+    assert.equal(r.outcome, 'mutation-failed');
+    assert.equal(r.exitCode, 1);
+    const comment = calls.find((a) => a[0] === 'pr' && a[1] === 'comment');
+    const body = comment[comment.indexOf('--body') + 1];
+    assert.match(body, /Failed to enable auto-merge/);
+  });
+
+  test('disable on an enabled PR issues gh pr merge --disable-auto', () => {
+    const calls = [];
+    const r = runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 42,
+      commentAuthor: 'alice',
+      commentBody: '/auto-merge:disable',
+      knownLocales: KNOWN,
+      runGh: makeRunGh({
+        pr: {
+          state: 'OPEN',
+          files: [{ path: 'content/ja/docs/a.md' }],
+          autoMergeRequest: { enabledAt: '2026-01-01T00:00:00Z' },
+        },
+        teams: { 'docs-ja-maintainers': ['alice'] },
+        calls,
+      }),
+    });
+    assert.equal(r.outcome, 'apply');
+    assert.equal(r.exitCode, 0);
+    const merge = calls.find((a) => a[0] === 'pr' && a[1] === 'merge');
+    assert.ok(merge, 'expected a gh pr merge call');
+    assert.ok(merge.includes('--disable-auto'));
+    assert.ok(!merge.includes('--auto'));
   });
 });

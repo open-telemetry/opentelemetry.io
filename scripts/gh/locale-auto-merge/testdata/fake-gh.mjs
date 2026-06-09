@@ -4,6 +4,9 @@
 //
 // Canned responses come from the environment so the test stays declarative:
 //   FAKE_GH_FILES     Comma-separated changed-file paths for `pr view`.
+//   FAKE_GH_CHANGED   Total changed-file count for `pr view` (defaults to the
+//                     number of FAKE_GH_FILES; set higher to simulate the
+//                     >100-file truncation that trips the fail-closed guard).
 //   FAKE_GH_AUTOMERGE `1` => auto-merge already enabled; anything else => off.
 //   FAKE_GH_STATE     PR state for `pr view`. Default: OPEN.
 //   FAKE_GH_TEAMS     JSON object of team-slug -> [logins] for membership API.
@@ -34,7 +37,12 @@ if (key === 'pr view') {
     .map((path) => ({ path }));
   const autoMergeRequest = process.env.FAKE_GH_AUTOMERGE === '1' ? {} : null;
   const state = process.env.FAKE_GH_STATE ?? 'OPEN';
-  process.stdout.write(JSON.stringify({ files, autoMergeRequest, state }));
+  const changedFiles = process.env.FAKE_GH_CHANGED
+    ? Number(process.env.FAKE_GH_CHANGED)
+    : files.length;
+  process.stdout.write(
+    JSON.stringify({ files, changedFiles, autoMergeRequest, state }),
+  );
 } else if (key === 'api user') {
   process.stdout.write(`${process.env.FAKE_GH_LOGIN ?? 'octocat'}\n`);
 } else if (args[0] === 'api') {

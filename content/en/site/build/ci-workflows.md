@@ -276,9 +276,9 @@ The thin workflow delegates to the testable helper in
 guards before acting: every changed file must be locale-owned, and the commenter
 must be a member of the `docs-<loc>-maintainers` team for every locale the PR
 touches. The helper's eligibility and authorization rules (and how to dry-run
-them locally) are documented in its [README][locale-auto-merge-script]
-(`npm run test:local-tools`). Contributor-facing usage lives in the
-[localization guide][localization-auto-merge].
+them locally) are documented in its [README][locale-auto-merge-script]; its unit
+and integration tests run with `npm run test:local-tools`. Contributor-facing
+usage lives in the [localization guide][localization-auto-merge].
 
 [GitHub auto-merge]:
   https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request

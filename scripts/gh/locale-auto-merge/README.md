@@ -52,17 +52,19 @@ the bot did or didn't act.
 
 ## Outcomes
 
-Every run resolves to exactly one outcome (logged as `[<outcome>] …` and, except
-for `no-command`, posted as a PR comment). The process exit code is `1` for the
+Every run resolves to exactly one outcome (logged as `[<outcome>] …`). All
+outcomes post a PR comment except a `no-command` result on a comment that wasn't
+an auto-merge attempt at all (a malformed `/auto-merge …` variant still gets a
+short "unrecognized command" reply). The process exit code is `1` for the
 failure outcomes and `0` otherwise.
 
-| Outcome           | Exit | Meaning                                                                                          |
-| ----------------- | ---- | ------------------------------------------------------------------------------------------------ |
-| `apply`           | 0    | Auto-merge was enabled or disabled.                                                              |
-| `noop`            | 0    | Already in the requested state; nothing to do.                                                   |
-| `no-command`      | 0    | The comment was not a recognized `/auto-merge` command.                                          |
-| `not-open`        | 1    | The PR is not open, so auto-merge can't be changed.                                              |
-| `too-many-files`  | 1    | The PR changes more files than `gh` can return, so eligibility can't be verified (fails closed). |
-| `ineligible`      | 1    | A changed file is outside the locale-owned set.                                                  |
-| `unauthorized`    | 1    | The commenter isn't on the maintainer team for every touched locale.                             |
-| `mutation-failed` | 1    | The `gh pr merge` call itself failed.                                                            |
+| Outcome           | Exit | Meaning                                                                                                    |
+| ----------------- | ---- | ---------------------------------------------------------------------------------------------------------- |
+| `apply`           | 0    | Auto-merge was enabled or disabled.                                                                        |
+| `noop`            | 0    | Already in the requested state; nothing to do.                                                             |
+| `no-command`      | 0    | The comment was not a recognized `/auto-merge` command (a malformed `/auto-merge …` variant gets a reply). |
+| `not-open`        | 1    | The PR is not open, so auto-merge can't be changed.                                                        |
+| `too-many-files`  | 1    | The PR changes more files than `gh` can return, so eligibility can't be verified (fails closed).           |
+| `ineligible`      | 1    | A changed file is outside the locale-owned set.                                                            |
+| `unauthorized`    | 1    | The commenter isn't on the maintainer team for every touched locale.                                       |
+| `mutation-failed` | 1    | The `gh pr merge` call itself failed.                                                                      |

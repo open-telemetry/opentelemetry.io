@@ -3,14 +3,8 @@
 // (`runAutoMergeCommand`) funnels every GitHub side effect through an injected
 // `runGh` runner so it stays unit-testable; ./cli.mjs wires in the real `gh`.
 //
-// Design: a locale team member comments `/auto-merge` (or `/auto-merge:enable`
-// / `:disable`) on a locale-only PR; the workflow runs this helper as the DOCS
-// bot (which has the permissions needed) to enable GitHub-native auto-merge. The
-// bot only flips the "merge when ready" switch — branch protection and CODEOWNERS
-// remain the hard gate, so the PR still won't merge until every required code
-// owner has approved and all checks pass. The helper adds two guards of its
-// own: (1) every changed file must be locale-owned, and (2) the commenter must
-// be a member of the maintainer team for every locale the PR touches.
+// See ./README.md for the design, the eligibility and authorization rules, and
+// the full list of outcomes.
 
 import { readdirSync } from 'node:fs';
 
@@ -444,7 +438,32 @@ export function runAutoMergeCommand({
   const action = parseCommand(commentBody);
   details.command = action;
   if (action === null) {
-    log('No recognized /auto-merge command; nothing to do.');
+    // Stay a silent no-op for comments that aren't auto-merge attempts at all.
+    // But the workflow triggers on any `/auto-merge`-prefixed comment, so a
+    // malformed variant (e.g. `/auto-merge please` or `/auto-merge:foo`) should
+    // get feedback rather than a silent, seemingly-successful run.
+    const looksLikeAttempt =
+      typeof commentBody === 'string' &&
+      commentBody.trim().startsWith('/auto-merge');
+    if (!looksLikeAttempt) {
+      log('No recognized /auto-merge command; nothing to do.');
+      return { outcome: 'no-command', exitCode: 0, details };
+    }
+    const message =
+      `❓ Unrecognized auto-merge command. Use \`/auto-merge\` (or ` +
+      `\`/auto-merge:enable\`) to enable auto-merge, or \`/auto-merge:disable\` ` +
+      `to turn it off.`;
+    details.message = message;
+    mutatingRunGh([
+      'pr',
+      'comment',
+      String(prNum),
+      '--repo',
+      repo,
+      '--body',
+      message,
+    ]);
+    log(`[no-command] ${message}`);
     return { outcome: 'no-command', exitCode: 0, details };
   }
 
