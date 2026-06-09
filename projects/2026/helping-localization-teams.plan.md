@@ -18,13 +18,15 @@ How code ownership is set up in this repo:
 
 - The `main` branch ruleset requires code-owner review, so
   [`.github/CODEOWNERS`][] _gates_ merges (it doesn't merely suggest reviewers).
-- Today CODEOWNERS has a single global rule, `* @open-telemetry/docs-approvers`,
-  making `docs-approvers` the required reviewer for **every** file — including
-  locale-only content.
+- Before the start of this work, CODEOWNERS had a single global rule, `*
+  @open-telemetry/docs-approvers`, making `docs-approvers` the required reviewer
+  for **every** file — including locale-only content.
 - CODEOWNERS is last-match-wins: for a given file, the last matching pattern
   supplies the _sole_ owner set, and a review from any one listed owner
-  satisfies the gate.
-- [CODEOWNERS syntax does not support negation][codeowners-syntax] (`!`), so
+  satisfies the gate. Also see [Appendix A: Code-ownership
+  notes](#appendix-a-code-ownership-notes).
+-
+- [CODEOWNERS syntax][codeowners-syntax] **does not support negation** (`!`), so
   "everything _except_ locale files" can't be expressed directly; per-directory
   rules are used instead.
 
@@ -39,8 +41,8 @@ Explore ways to:
 
 ## Approach
 
-Favor GitHub-native mechanisms over bespoke tooling. Two complementary
-strategies, in priority order:
+Favor GitHub-native mechanisms over custom scripts and tooling. Two
+complementary strategies, in priority order:
 
 1. **Code ownership.** Delegate review authority over each locale's content to
    its locale team in [`.github/CODEOWNERS`][] by listing that team as the
@@ -66,16 +68,15 @@ still-open concern (ideally self-service, e.g. via a bot) explored in
 
 ## Appendix A: Code-ownership notes
 
-- **Locale-owned paths (spec).** A locale `<loc>` owns these path globs where
-  they exist; each becomes a CODEOWNERS rule assigning
-  `@open-telemetry/docs-<loc>-approvers`:
+- **Locale-owned paths (spec).** A locale `<loc>` owns these path globs, whether
+  the glob matches existing files or not, each becomes a CODEOWNERS rule
+  assigning `@open-telemetry/docs-<loc>-approvers`:
   - `/content/<loc>/` — localized content
   - `/.cspell/<loc>-*.txt` — locale spell-check word list
   - `/prh/<loc>.yml` — locale proofreading-helper rules
 
-  This matches the locale-owned scope used in earlier iterations. Rules for
-  paths a locale doesn't yet have (e.g. a missing word list) are harmless; PRH
-  rules are currently Japanese-only.
+  Rules for paths a locale doesn't yet have (e.g. a missing word list) are
+  harmless; PRH rules are currently Japanese-only.
 
 - **Sole-owner form (target).** List the locale team alone, e.g.
   `/content/<loc>/ @open-telemetry/docs-<loc>-approvers` (and one line per path
