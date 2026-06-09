@@ -23,7 +23,7 @@ The helper adds two guards of its own:
 - `index.mjs` — pure logic + the `runAutoMergeCommand` orchestrator (all `gh`
   access is injected, so it is unit-testable).
 - `cli.mjs` — wires the real `gh`; run with `--help` for usage.
-- `*.test.mjs` — picked up by `npm run test:local-tools`.
+- `*.test.mjs` — run with `npm run test:local-tools`.
 - `smoke-test.sh` — read-only dry runs against real PRs.
 
 ## Testing it on a PR as a given user
@@ -33,11 +33,14 @@ given user had commented (handy for confirming the locale-team gate):
 
 ```sh
 # Eligible + user is on the locale team -> would enable
-node scripts/gh/locale-auto-merge/cli.mjs --pr 10094 --user some-login
+npm run locale-auto-merge -- --pr 10094 --user some-login
 
 # See every option
-node scripts/gh/locale-auto-merge/cli.mjs --help
+npm run locale-auto-merge -- --help
 ```
+
+(Everything after `--` is passed straight to `cli.mjs`; you can also invoke
+`node scripts/gh/locale-auto-merge/cli.mjs …` directly.)
 
 Add `--no-dry-run` to actually enable/disable auto-merge (needs a sufficiently
 privileged token; the workflow uses the DOCS bot token).
