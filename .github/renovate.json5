@@ -4,6 +4,7 @@
     'config:best-practices',
     'docker:pinDigests',
     'helpers:pinGitHubActionDigestsToSemver',
+    ':automergePatch',
   ],
   minimumReleaseAge: '7 days',
   internalChecksFilter: 'strict',
