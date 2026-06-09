@@ -88,11 +88,20 @@ jobs:
         with:
           client-id: ${{ inputs.app-id }}
           private-key: ${{ secrets.app-private-key }}
+          permission-contents: write # apply/push the patch commit
+          permission-pull-requests: read # gh pr checkout
 
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 999
           token: ${{ steps.app-token.outputs.token }}
+          persist-credentials: false
+
+      # Let git resolve credentials through the gh CLI (which reads GH_TOKEN
+      # from each step's env) instead of persisting the token in .git/config.
+      - run: gh auth setup-git
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
 
       - run: gh pr checkout "$PR_NUM" -b "pr-action-${RANDOM}"
         env:

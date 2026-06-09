@@ -117,6 +117,8 @@ jobs:
         with:
           client-id: ${{ vars.OTELBOT_APP_ID }}
           private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+          permission-issues: write # PR comments go through the issues API
+          permission-pull-requests: read # gh pr view/metadata lookups
 
       - name: Comment run outcome
         env:
