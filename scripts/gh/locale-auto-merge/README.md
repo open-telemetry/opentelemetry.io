@@ -24,7 +24,6 @@ The helper adds two guards of its own:
   access is injected, so it is unit-testable).
 - `cli.mjs` — wires the real `gh`; run with `--help` for usage.
 - `*.test.mjs` — run with `npm run test:local-tools`.
-- `smoke-test.sh` — read-only dry runs against real PRs.
 
 ## Testing it on a PR as a given user
 

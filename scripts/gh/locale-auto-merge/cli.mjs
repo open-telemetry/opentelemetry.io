@@ -44,7 +44,7 @@ Options:
 gh uses your existing gh authentication (or GH_TOKEN if set). Reading team
 membership needs a token with org read access; a real (non-dry) run needs a
 sufficiently privileged token (the workflow uses the DOCS bot token).
-See ./smoke-test.sh for ready-to-run examples against real PRs.`;
+See ./README.md for dry-run examples.`;
 
 /** Print a message plus the one-line synopsis to stderr and exit non-zero. */
 function fail(message) {
