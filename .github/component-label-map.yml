@@ -141,9 +141,12 @@ sig:swift:
 CI/infra: # including config
   - changed-files:
       - any-glob-to-any-file:
+          # Maintainer note: keep .github/CODEOWNERS in sync with this list.
+          # Entries are maintainer-owned unless indicated otherwise.
+          # cSpell:ignore gulpfile
           - .claude/**
-          - .cspell/**
-          - .cspell.yml
+          - .cspell/** # owned by docs-approvers
+          - .cspell.yml # owned by docs-approvers
           - .devcontainer/**
           - .editorconfig
           - .github/**
