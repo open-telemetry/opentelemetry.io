@@ -24,9 +24,9 @@ jobs:
 
     outputs:
       action_name: ${{ steps.extract.outputs.action_name }}
-      action_exit_status: ${{ steps.run_action.outputs.action_exit_status }}
+      action_exit_status: ${{ steps.patch.outputs.action_exit_status }}
       patch_name: pr-fix-${{ github.run_id }}
-      patch_skipped: ${{ steps.check_patch.outputs.skipped }}
+      patch_skipped: ${{ steps.patch.outputs.patch_skipped }}
 
     steps:
       - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
@@ -36,83 +36,28 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with: { fetch-depth: 0, persist-credentials: false }
 
-      - name: Extract action name
+      - name: Extract action name and resolve command
         id: extract
-        run: |
-          PR_ACTION=$(echo "$COMMENT" | grep -oP '^/\Kfix(:[-_0-9a-zA-Z]+)*$' || true)
-          if [[ -z "$PR_ACTION" ]]; then
-            msg="❌ Invalid fix directive. Use \`/fix\` or \`/fix:<name>\` and no other text."
-            # We don't have permissions in this job to comment on the PR. Skip for now:
-            # gh pr comment "$PR_NUM" --body "$msg"
-            echo "$msg"
-            exit 1
-          fi
-          echo "action_name=$PR_ACTION" >> "$GITHUB_OUTPUT"
+        # Parses the `/fix` directive and applies the `fix:all`/`fix:ALL` compat
+        # mapping. We don't have permissions in this job to comment on the PR, so
+        # an invalid directive just fails the step.
+        run: node scripts/gh/pr-fix/cli.mjs
 
       - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
         env:
           GH_TOKEN: ${{ github.token }}
 
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      - name: Run PR action and generate patch
+        id: patch
+        # Untrusted: runs the resolved npm script and captures any changes as a
+        # patch artifact. Has no write permissions or secrets. The `_refcache:prune`
+        # post-command drops 404 entries so refcache updates stay clean.
+        uses: ./.github/actions/npm-script-patch
         with:
-          node-version-file: .nvmrc
-
-      - run: npm install --omit=optional
-
-      - name: Run PR action
-        id: run_action
-        # Allow the PR action to fail without failing the step, so that we can
-        # commit any file changes. For example, we want to commit updates to the
-        # refcache even if there might still be some broken links.
-        continue-on-error: true
-        run: |
-          cmd="${{ steps.extract.outputs.action_name }}"
-          # Since https://github.com/open-telemetry/opentelemetry.io/pull/9291,
-          # the `fix:all` command is now handled via `fix`; map the command.
-          if [[ $cmd == "fix:all" ]]; then
-            cmd="fix"
-            msg="ℹ️ INFO: Running \`/fix\` for \`/fix:all\` (compat mode). Use \`/fix\` moving forward."
-            # We don't have permissions in this job to comment on the PR. Skip for now:
-            # gh pr comment $PR_NUM --body "$msg"
-            echo "$msg"
-          elif [[ $cmd == "fix:ALL" ]]; then
-            # Allow maintainers to still run `fix:all` via `fix:ALL`.
-            cmd="fix:all"
-          fi
-          (set -x; npm run $cmd)
-          action_exit_status=$?
-          echo "action_exit_status=$action_exit_status" >> "$GITHUB_OUTPUT"
-          echo "PR action exit status: $action_exit_status"
-
-          # For refcache updates, prune 404 entries, if any
-          npm run _refcache:prune
-
-      - name: Generate and validate patch
-        id: check_patch
-        run: |
-          git diff > pr-fix.patch
-
-          if [ ! -s pr-fix.patch ]; then
-            echo "No changes detected. Skipping patch."
-            echo "skipped=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          actual_size_kb=$(du -k pr-fix.patch | cut -f1)
-          if (( actual_size_kb > MAX_PATCH_SIZE_KB )); then
-            echo "Patch too large: ${actual_size_kb} KB (limit: ${MAX_PATCH_SIZE_KB} KB)"
-            exit 1
-          fi
-
-          echo "skipped=false" >> "$GITHUB_OUTPUT"
-
-      - name: Upload patch artifact
-        if: steps.check_patch.outputs.skipped != 'true'
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: pr-fix-${{ github.run_id }}
-          path: pr-fix.patch
-          retention-days: 1
+          command: ${{ steps.extract.outputs.command }}
+          patch-name: pr-fix-${{ github.run_id }}
+          max-patch-size-kb: ${{ env.MAX_PATCH_SIZE_KB }}
+          post-command: _refcache:prune
 
   apply-patch:
     name: Apply and push patch (trusted)
@@ -144,39 +89,29 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
-      - name: Download patch
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+      - name: Apply patch and commit
+        id: apply
+        # Trusted: applies the untrusted patch artifact and commits it. It runs no
+        # PR-supplied code; pushing is handled by the caller-owned step below.
+        uses: ./.github/actions/apply-patch
         with:
-          name: ${{ needs.generate-patch.outputs.patch_name }}
+          patch-name: ${{ needs.generate-patch.outputs.patch_name }}
+          commit-message: Results from /fix directive
+          user-name: ${{ env.USER_NAME }}
+          user-email: ${{ env.USER_EMAIL }}
 
-      - name: Apply patch
+      - name: Push changes, if any
+        if: steps.apply.outputs.committed == 'true'
         run: |
-          if ! git apply --verbose pr-fix.patch; then
-            echo "Patch failed to apply. For details, see output above. To debug this locally,"
-            echo "get the patch file from the workflow summary artifact section."
-            exit 1
-          fi
-          rm pr-fix.patch
-
-      - name: Commit and push changes, if any
-        run: |
-          git config --local user.email "$USER_EMAIL"
-          git config --local user.name "$USER_NAME"
-          if [[ $(git status --porcelain) ]]; then
-            git add -A
-            current_branch=$(git rev-parse --abbrev-ref HEAD)
-            echo current_branch=$current_branch
-            # gh pr checkout sets some git configs that we can use to make sure
-            # we push to the right repo & to the right branch
-            remote_repo=$(git config --get branch.${current_branch}.remote)
-            echo remote_repo=$remote_repo
-            remote_branch=$(git config --get branch.${current_branch}.merge)
-            echo remote_branch=$remote_branch
-            git commit -m "Results from /fix directive"
-            git push ${remote_repo} HEAD:${remote_branch}
-          else
-            echo "No changes to commit"
-          fi
+          current_branch=$(git rev-parse --abbrev-ref HEAD)
+          echo current_branch=$current_branch
+          # gh pr checkout sets some git configs that we can use to make sure
+          # we push to the right repo & to the right branch
+          remote_repo=$(git config --get branch.${current_branch}.remote)
+          echo remote_repo=$remote_repo
+          remote_branch=$(git config --get branch.${current_branch}.merge)
+          echo remote_branch=$remote_branch
+          git push ${remote_repo} HEAD:${remote_branch}
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 

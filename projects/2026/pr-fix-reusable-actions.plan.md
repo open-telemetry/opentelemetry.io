@@ -1,0 +1,82 @@
+---
+title: Reusable patch actions for PR and maintenance fixes
+custodian: [Patrice Chalin](https://github.com/chalin)
+status: Draft plan for review.
+cSpell:ignore: otelbot test-and-fix
+---
+
+## Context
+
+This work addresses
+[open-telemetry/opentelemetry.io#6592](https://github.com/open-telemetry/opentelemetry.io/issues/6592):
+automated fix workflows should be reusable, safe across trust boundaries, and
+available to both PR-scoped fixes and repository maintenance tasks.
+
+The current `/fix` workflow already follows the right security shape: untrusted
+PR code can generate a patch, while trusted automation applies and publishes the
+patch. The need is to turn that embedded workflow pattern into shared
+infrastructure.
+
+## Needs
+
+- A reusable way to run an approved fix command and capture its file changes as
+  a patch.
+- A reusable trusted path to publish those patch changes without running
+  untrusted code with write credentials.
+- A foundation that can support `/fix`, i18n fixes, and scheduled maintenance
+  fixes without duplicating workflow logic.
+- Clear separation between reusable mechanics and caller-specific policy.
+
+## Goals
+
+- Preserve the current `/fix` behavior and security posture.
+- Make the untrusted/trusted split explicit and reusable.
+- Keep future maintenance workflows thin and easier to review.
+- Support incremental rollout: first refactor existing behavior, then add i18n
+  or scheduled maintenance callers.
+
+## Non-goals
+
+- Do not broaden who can trigger PR fix commands.
+- Do not make full `test-and-fix` run on every PR.
+- Do not solve every scheduled maintenance case in the first extraction.
+- Do not collapse trust-boundary policy into a single all-powerful workflow.
+
+## Architectural strategies
+
+### Strategy 1: Extract reusable local actions
+
+Create local GitHub Actions that capture the two reusable responsibilities:
+patch creation in an untrusted context, and patch publication in a trusted
+context. Workflows remain responsible for triggers, permissions, and policy.
+
+This is the preferred direction because it preserves the current security model
+while reducing duplication.
+
+### Strategy 2: Keep workflow policy thin and explicit
+
+Each caller should decide what command is allowed, where the patch is applied,
+and whether the result is pushed to a PR branch or opened as a maintenance PR.
+The shared actions should provide mechanics, not hidden policy.
+
+### Strategy 3: Roll out in phases
+
+Start by refactoring `/fix` with no intended behavior change. Then add the next
+caller, likely i18n fixes. After that, add scheduled maintenance PR creation
+once the shared patch path has proven stable.
+
+## Open decisions
+
+- Whether the first implementation PR should include only the `/fix` refactor or
+  also the first i18n caller.
+- Whether scheduled maintenance should use one stable branch per fix family or a
+  shared generated-fixes branch.
+- Whether `fix:i18n` should be available by PR comment, schedule, or both.
+
+## Status details
+
+As of 2026-06-09:
+
+- Branch: `chalin-m24-pr-actions-refactor-2026-0609`.
+- Plan drafted for review.
+- No workflow implementation has started.
