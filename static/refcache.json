@@ -11979,6 +11979,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:05:43.053018904Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/contributing/javaagent-structure.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-09T21:10:00.423783234Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md": {
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:05:05.522728583Z"
