@@ -130,7 +130,7 @@ still-open concern (ideally self-service, e.g. via a bot) explored in
 ## Appendix C: Auto-merge enablement via a bot
 
 Once a locale PR is eligible (owned-by-locale-team and green), _someone_ still
-has to **enable GitHub-native [auto-merge]** so it lands without a maintainer
+has to **enable GitHub-native [auto-merge][]** so it lands without a maintainer
 babysitting the merge button. We'd like this to be self-service for locale
 maintainers, ideally via a `/auto-merge:enable`-style comment handled by a bot.
 
@@ -190,7 +190,7 @@ maintainers, ideally via a `/auto-merge:enable`-style comment handled by a bot.
   checks: (1) every changed file is locale-owned (or `static/refcache.json`);
   (2) the commenter is a member of `docs-<loc>-approvers` for **every** locale
   touched (so a mixed ja+pt PR needs authority over both). It then runs
-  `gh pr merge --auto --squash` as the DOCS bot. The CLI's `--author` flag
+  `gh pr merge --auto --squash` as the DOCS bot. The CLI's `--user` flag
   evaluates the verdict _as if_ a given user commented (dry-run by default), for
   testing the authorization gate before going live.
 

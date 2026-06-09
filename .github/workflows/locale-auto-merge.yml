@@ -22,7 +22,8 @@ jobs:
     if: |
       github.repository_owner == 'open-telemetry' &&
       github.event.issue.pull_request != null &&
-      startsWith(github.event.comment.body, '/auto-merge')
+      (startsWith(github.event.comment.body, '/auto-merge:') ||
+       github.event.comment.body == '/auto-merge')
 
     steps:
       - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
@@ -32,11 +33,19 @@ jobs:
       # The DOCS bot has the elevated permissions needed to enable auto-merge
       # under branch protection (a plain GITHUB_TOKEN cannot do this) and to
       # read org team membership for the locale-team authorization check.
+      # Request only the scopes this workflow uses, rather than inheriting the
+      # app installation's full set:
+      #   contents: write       — required to enable auto-merge
+      #   pull-requests: write   — post the result comment / toggle auto-merge
+      #   members: read          — read docs-<loc> team membership
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
           client-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+          permission-members: read
 
       # Full checkout so the helper can enumerate locales from content/.
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2

@@ -18,13 +18,19 @@ import { readdirSync } from 'node:fs';
 // otherwise locale-only PR without making it ineligible.
 const NO_OWNER_PATHS = new Set(['static/refcache.json']);
 
+// The default content language. `content/en/` is the source English content,
+// owned by docs maintainers — not a translation locale — so it is excluded from
+// the discovered locale set and never counts as locale-owned.
+const DEFAULT_LOCALE = 'en';
+
 // Default cap on the number of per-file lines emitted in verbose mode, so a
 // huge PR can't flood the workflow log. Override via runAutoMergeCommand.
 const DEFAULT_VERBOSE_FILE_LIMIT = 100;
 
 /**
- * Discover the set of locale ids, i.e. the immediate subdirectories of the
- * Hugo `content/` tree (`en`, `ja`, `zh`, ...).
+ * Discover the set of translation locale ids, i.e. the immediate subdirectories
+ * of the Hugo `content/` tree (`ja`, `zh`, ...), excluding the default English
+ * content (`content/en/`), which is maintainer-owned rather than locale-owned.
  *
  * @param {string} [contentDir] Path to the content root. Defaults to `content`.
  * @returns {Set<string>}
@@ -33,7 +39,8 @@ export function discoverLocales(contentDir = 'content') {
   return new Set(
     readdirSync(contentDir, { withFileTypes: true })
       .filter((entry) => entry.isDirectory())
-      .map((entry) => entry.name),
+      .map((entry) => entry.name)
+      .filter((name) => name !== DEFAULT_LOCALE),
   );
 }
 
@@ -358,7 +365,7 @@ function requireGh(runGh, args) {
  * Result of running the auto-merge workflow for one PR comment.
  *
  * @typedef {Object} CommandResult
- * @property {'no-command'|'not-open'|'ineligible'|'unauthorized'|'noop'|'apply'|'mutation-failed'} outcome
+ * @property {'no-command'|'not-open'|'too-many-files'|'ineligible'|'unauthorized'|'noop'|'apply'|'mutation-failed'} outcome
  * @property {number} exitCode
  * @property {CommandDetails} details Structured evidence behind the decision.
  */
@@ -447,7 +454,7 @@ export function runAutoMergeCommand({
       '--repo',
       repo,
       '--json',
-      'files,autoMergeRequest,state',
+      'files,changedFiles,autoMergeRequest,state',
     ]),
   );
   details.state = pr.state;
@@ -473,6 +480,29 @@ export function runAutoMergeCommand({
   details.files = paths;
   details.fileCount = paths.length;
   details.autoMergeEnabled = autoMergeEnabled;
+
+  // `gh pr view --json files` is backed by GraphQL `files(first: 100)` with no
+  // pagination, so a PR with more than 100 changed files returns only the first
+  // 100. We can't see every path, so we can't prove the PR is locale-only — fail
+  // closed rather than risk enabling auto-merge on an unseen, non-locale file.
+  if (pr.changedFiles != null && paths.length < pr.changedFiles) {
+    const message =
+      `❌ This PR changes ${pr.changedFiles} files, more than the ` +
+      `${paths.length} this check can read, so locale auto-merge eligibility ` +
+      `can't be verified. Please ask a docs maintainer to review and merge.`;
+    details.message = message;
+    mutatingRunGh([
+      'pr',
+      'comment',
+      String(prNum),
+      '--repo',
+      repo,
+      '--body',
+      message,
+    ]);
+    log(`[too-many-files] ${message}`);
+    return { outcome: 'too-many-files', exitCode: 1, details };
+  }
 
   // In verbose mode, log each file as it is classified, capped at verboseLimit
   // lines so a huge PR can't flood the workflow log.

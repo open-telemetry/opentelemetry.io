@@ -15,6 +15,14 @@ import {
 
 const LOCALES = discoverLocales();
 
+describe('locale-auto-merge: discoverLocales', () => {
+  test('includes translation locales but excludes the default en', () => {
+    assert.ok(LOCALES.has('ja'), 'expected ja to be a locale');
+    assert.ok(LOCALES.has('pt'), 'expected pt to be a locale');
+    assert.ok(!LOCALES.has('en'), 'en is maintainer-owned, not a locale');
+  });
+});
+
 describe('locale-auto-merge: parseCommand', () => {
   test('bare /auto-merge means enable', () => {
     assert.equal(parseCommand('/auto-merge'), 'enable');
@@ -66,7 +74,7 @@ describe('locale-auto-merge: localeForPath', () => {
 });
 
 describe('locale-auto-merge: evaluateEligibility', () => {
-  const known = new Set(['ja', 'pt', 'en']);
+  const known = new Set(['ja', 'pt']);
 
   test('single-locale PR is eligible', () => {
     const r = evaluateEligibility(
@@ -104,12 +112,18 @@ describe('locale-auto-merge: evaluateEligibility', () => {
   });
 
   test('a non-locale file makes the PR ineligible and is reported', () => {
+    const r = evaluateEligibility(['content/ja/a.md', 'layouts/x.html'], known);
+    assert.equal(r.eligible, false);
+    assert.deepEqual(r.offending, ['layouts/x.html']);
+  });
+
+  test('content/en is ineligible (default locale, not a translation)', () => {
     const r = evaluateEligibility(
-      ['content/ja/a.md', 'layouts/x.html', 'content/en/a.md'],
+      ['content/ja/a.md', 'content/en/a.md'],
       known,
     );
     assert.equal(r.eligible, false);
-    assert.deepEqual(r.offending, ['layouts/x.html']);
+    assert.deepEqual(r.offending, ['content/en/a.md']);
   });
 
   test('empty PR is ineligible', () => {
@@ -361,7 +375,7 @@ function makeRunGh({ pr, teams = {}, calls }) {
   };
 }
 
-const KNOWN = new Set(['ja', 'pt', 'en']);
+const KNOWN = new Set(['ja', 'pt']);
 
 describe('locale-auto-merge: runAutoMergeCommand', () => {
   test('no recognized command is a no-op', () => {
@@ -469,6 +483,66 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     assert.match(body, /locale\(s\) `ja`, `pt`/);
     assert.match(body, /@open-telemetry\/docs-ja-approvers/);
     assert.match(body, /@open-telemetry\/docs-pt-approvers/);
+  });
+
+  test('fails closed when the PR has more files than gh can return', () => {
+    const calls = [];
+    // gh returns only 100 files, but the PR actually changed 150 — we can't
+    // see the other 50, so eligibility must not be asserted.
+    const files = Array.from({ length: 100 }, (_, i) => ({
+      path: `content/ja/${i}.md`,
+    }));
+    const r = runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 11,
+      commentAuthor: 'alice',
+      commentBody: '/auto-merge',
+      knownLocales: KNOWN,
+      runGh: makeRunGh({
+        pr: {
+          state: 'OPEN',
+          files,
+          changedFiles: 150,
+          autoMergeRequest: null,
+        },
+        teams: { 'docs-ja-approvers': ['alice'] },
+        calls,
+      }),
+    });
+    assert.equal(r.outcome, 'too-many-files');
+    assert.equal(r.exitCode, 1);
+    // Never consulted team membership and never merged.
+    assert.ok(!calls.some((a) => a.some((s) => s.includes('/teams/'))));
+    assert.ok(!calls.some((a) => a[0] === 'pr' && a[1] === 'merge'));
+    const comment = calls.find((a) => a[0] === 'pr' && a[1] === 'comment');
+    const body = comment[comment.indexOf('--body') + 1];
+    assert.match(body, /more than the 100 this check can read/);
+  });
+
+  test('exactly 100 files (not truncated) is evaluated normally', () => {
+    const calls = [];
+    const files = Array.from({ length: 100 }, (_, i) => ({
+      path: `content/ja/${i}.md`,
+    }));
+    const r = runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 12,
+      commentAuthor: 'alice',
+      commentBody: '/auto-merge',
+      knownLocales: KNOWN,
+      runGh: makeRunGh({
+        pr: {
+          state: 'OPEN',
+          files,
+          changedFiles: 100,
+          autoMergeRequest: null,
+        },
+        teams: { 'docs-ja-approvers': ['alice'] },
+        calls,
+      }),
+    });
+    assert.equal(r.outcome, 'apply');
+    assert.ok(calls.some((a) => a[0] === 'pr' && a[1] === 'merge'));
   });
 
   test('ineligible PR never checks team membership or merges', () => {

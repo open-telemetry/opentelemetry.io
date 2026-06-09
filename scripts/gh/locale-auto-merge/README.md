@@ -49,3 +49,20 @@ Add `--verbose` (`-v`) to log each changed file as it is classified
 (locale-owned / shared / not-owned) and each locale-team membership check
 (pass/fail). The workflow runs with `--verbose` so its log records exactly why
 the bot did or didn't act.
+
+## Outcomes
+
+Every run resolves to exactly one outcome (logged as `[<outcome>] …` and, except
+for `no-command`, posted as a PR comment). The process exit code is `1` for the
+failure outcomes and `0` otherwise.
+
+| Outcome           | Exit | Meaning                                                                                          |
+| ----------------- | ---- | ------------------------------------------------------------------------------------------------ |
+| `apply`           | 0    | Auto-merge was enabled or disabled.                                                              |
+| `noop`            | 0    | Already in the requested state; nothing to do.                                                   |
+| `no-command`      | 0    | The comment was not a recognized `/auto-merge` command.                                          |
+| `not-open`        | 1    | The PR is not open, so auto-merge can't be changed.                                              |
+| `too-many-files`  | 1    | The PR changes more files than `gh` can return, so eligibility can't be verified (fails closed). |
+| `ineligible`      | 1    | A changed file is outside the locale-owned set.                                                  |
+| `unauthorized`    | 1    | The commenter isn't on the approver team for every touched locale.                               |
+| `mutation-failed` | 1    | The `gh pr merge` call itself failed.                                                            |
