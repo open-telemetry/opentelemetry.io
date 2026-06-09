@@ -916,7 +916,7 @@ and owners should ensure resiliency is configured from the start:
     Operators must size the persistent queue and monitor disk usage accordingly.
 - **gRPC load balancing**: OTLP/gRPC can be very efficient, but standard
   Kubernetes service routing can make it inefficient. See [Appendix
-  1][#appendix-1] to implement gRPC load balancing, or consider OTLP/HTTP (the
+  1](#appendix-1) to implement gRPC load balancing, or consider OTLP/HTTP (the
   default for most SDKs).
 - **Scale on memory and internal telemetry:** Utilize the Kubernetes Horizontal
   Pod Autoscaler (HPA) combined with custom metrics (see (Action 5](#action-5)).

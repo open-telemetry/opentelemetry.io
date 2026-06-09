@@ -10599,6 +10599,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-08T11:26:03.117345+01:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-09T09:48:48.144879+01:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter": {
     "StatusCode": 206,
     "LastSeen": "2026-06-04T15:51:38.730162186Z"
@@ -13158,6 +13162,10 @@
   "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/esm-support.md": {
     "StatusCode": 206,
     "LastSeen": "2026-06-07T10:24:37.61926949Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/experimental/packages/opentelemetry-sdk-node/src/types.ts": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-09T09:48:45.086811+01:00"
   },
   "https://github.com/open-telemetry/opentelemetry-js/blob/main/experimental/packages/opentelemetry-sdk-node/src/types.ts#L25": {
     "StatusCode": 206,
