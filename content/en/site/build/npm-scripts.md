@@ -115,6 +115,7 @@ are internal helpers and are not intended to be run directly.
 | -------------------------------------------------- | -------------------------------------------------------------- |
 | `seq`                                              | Run given script names in sequence; exit on first failure.     |
 | `all`                                              | Run all given scripts, then exit with failure if any failed.   |
+| `locale-auto-merge`                                | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).  |
 | `prepare`                                          | Install step: `get:submodule`, then Docsy theme npm install.   |
 | `prebuild`                                         | Before build: `get:submodule`, `cp:spec`.                      |
 | `update:hugo`                                      | Install latest hugo-extended.                                  |
@@ -131,3 +132,4 @@ are internal helpers and are not intended to be run directly.
   non-zero status if any failed.
 
 [fn]: /docs/contributing/pr-checks/#filename-check
+[locale-auto-merge]: ../ci-workflows/#locale-auto-merge
