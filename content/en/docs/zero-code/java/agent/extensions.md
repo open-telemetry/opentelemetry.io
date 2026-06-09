@@ -412,7 +412,7 @@ implementation("com.google.guava:guava:33.0.0-jre")
 ### Extension points overview
 
 OpenTelemetry Java agent provides multiple extension points through SPI
-interfaces, here are the most commonly used ones:
+interfaces. Here are the most commonly used ones:
 
 > [!NOTE]
 >
@@ -477,18 +477,18 @@ public void customize(AutoConfigurationCustomizer config) {
 
 Follow these conventions for configuration parameter names:
 
-Standard OpenTelemetry properties use an `otel.*` prefix
+Standard OpenTelemetry properties use an `otel.*` prefix.
 
 - `otel.service.name`
 - `otel.traces.sampler`
 - `otel.exporter.otlp.endpoint`
 
-Instrumentation-specific properties use `otel.instrumentation.<name>.*`
+Instrumentation-specific properties use `otel.instrumentation.<name>.*`.
 
 - `otel.instrumentation.cassandra.enabled`
 - `otel.instrumentation.jdbc.statement-sanitizer.enabled`
 
-Extension-specific properties follow the same pattern
+Extension-specific properties follow the same pattern.
 
 - `otel.instrumentation.myextension.enabled`
 - `otel.instrumentation.myextension.threshold`
@@ -521,16 +521,16 @@ This is equivalent to manually creating
 `META-INF/services/io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider`
 with your class name.
 
----
-
 ## Extension point reference
 
 ### AutoConfigurationCustomizerProvider
 
-> [!NOTE] This will not work for situations where
+> [!NOTE]
+>
+> This will not work for situations where
 > [declarative configuration](../declarative-configuration) is in use.
 
-The main entry point for customizing SDK configuration. This allows you to:
+This is the main entry point for customizing SDK configuration. It allows you to:
 
 - Customize the tracer provider
 - Add span processors and exporters
