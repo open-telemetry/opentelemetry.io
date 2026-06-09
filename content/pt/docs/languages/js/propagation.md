@@ -240,7 +240,7 @@ const output: Carrier = {};
 // Serializa o traceparent e o tracestate do contexto para
 // um objeto de saída.
 //
-// Este exemplo usa o contexto de rastro ativo, mas você pode
+// Este exemplo usa o contexto ativo de rastro, mas você pode
 // usar o contexto que for apropriado ao seu cenário.
 propagation.inject(context.active(), output);
 
