@@ -15287,6 +15287,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-09T10:49:28.261831866Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/reusable-apply-patch.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-09T17:45:46.26226-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/reusable-report-failure.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-06-07T10:30:21.335883253Z"
@@ -15467,6 +15471,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-09T10:49:19.910730852Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/.github/actions/npm-script-patch": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-09T17:45:47.61329-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/.github/scripts": {
     "StatusCode": 206,
     "LastSeen": "2026-06-09T10:49:18.04686812Z"
@@ -15530,6 +15538,14 @@
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge": {
     "StatusCode": 206,
     "LastSeen": "2026-06-08T21:39:49.270243-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/patch-report": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-09T17:45:48.420986-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/pr-fix": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-09T17:45:46.815302-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/report-failure": {
     "StatusCode": 206,
