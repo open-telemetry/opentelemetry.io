@@ -1,7 +1,7 @@
 name: apply-patch
 description: >-
-  Apply a patch artifact and commit the result.
-  Pushing or opening a PR is left to the caller.
+  Apply a patch artifact and commit the result. Pushing or opening a PR is left
+  to the caller.
 
   This action is trusted in the sense that it is meant to run in a job that
   holds write credentials, and it never executes caller- or patch-supplied code
