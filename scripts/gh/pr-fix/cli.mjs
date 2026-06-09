@@ -1,23 +1,43 @@
 #!/usr/bin/env node
 // CLI entry point: parse a `/fix` PR-comment directive for the `pr-actions`
 // workflow. All pure logic lives in ./index.mjs.
-//
-// Reads the comment body from the environment and, on a valid directive, writes
-// `action_name` and `command` to $GITHUB_OUTPUT. On an invalid directive it
-// prints the error and exits non-zero.
-//
-// Required environment:
-//   COMMENT         The PR comment body.
-//
-// Optional environment:
-//   GITHUB_OUTPUT   Path written by GitHub Actions. If unset, the outputs are
-//                   printed to stdout only (useful for local runs).
 
 import { appendFileSync } from 'node:fs';
+import { parseArgs } from 'node:util';
 
 import { parseFixDirective } from './index.mjs';
 
-const directive = parseFixDirective(process.env.COMMENT);
+const HELP = `Usage: cli.mjs --comment <body>
+
+Parse a \`/fix\` PR-comment directive. On a valid directive, prints
+\`action_name\` and \`command\` key=value pairs (and appends them to
+$GITHUB_OUTPUT when set, as under GitHub Actions). On an invalid directive,
+prints the error and exits non-zero.
+
+Options:
+  -c, --comment <body>  The PR comment body to parse. Required.
+  -h, --help            Show this help.
+`;
+
+const { values } = parseArgs({
+  options: {
+    comment: { type: 'string', short: 'c' },
+    help: { type: 'boolean', short: 'h' },
+  },
+});
+
+if (values.help) {
+  console.log(HELP);
+  process.exit(0);
+}
+
+if (values.comment === undefined) {
+  console.error('Missing required option: --comment\n');
+  console.error(HELP);
+  process.exit(1);
+}
+
+const directive = parseFixDirective(values.comment);
 
 if (!directive.valid) {
   console.error(directive.error);

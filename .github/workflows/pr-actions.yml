@@ -43,7 +43,7 @@ jobs:
         # Parses the `/fix` directive and applies the `fix:all`/`fix:ALL` compat
         # mapping. An invalid directive fails this step; the `report` job then
         # comments the outcome (with a usage hint) on the PR.
-        run: node scripts/gh/pr-fix/cli.mjs
+        run: node scripts/gh/pr-fix/cli.mjs --comment "$COMMENT"
 
       - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
         env:
@@ -124,14 +124,22 @@ jobs:
       - name: Comment run outcome
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
-          PR_NUM: ${{ env.PR_NUM }}
           LABEL: ${{ needs.generate-patch.outputs.action_name }}
           GENERATE_RESULT: ${{ needs.generate-patch.result }}
           PATCH_SKIPPED: ${{ needs.generate-patch.outputs.patch_skipped }}
           COMMAND_EXIT_STATUS:
             ${{ needs.generate-patch.outputs.action_exit_status }}
           APPLY_RESULT: ${{ needs.apply-patch.result }}
-          HINT:
-            Start your comment with `/fix` or `/fix:<name>` on a line of its
-            own.
-        run: node scripts/gh/patch-report/cli.mjs
+        # The hint is owned by the directive parser (single source of truth
+        # with its invalid-directive message); this checkout is of the default
+        # branch, so the imported text is trusted.
+        run: |
+          hint=$(node -e 'import("./scripts/gh/pr-fix/index.mjs").then((m) => console.log(m.DIRECTIVE_HINT))')
+          node scripts/gh/patch-report/cli.mjs \
+            --pr "$PR_NUM" \
+            --label "$LABEL" \
+            --generate-result "$GENERATE_RESULT" \
+            --patch-skipped "$PATCH_SKIPPED" \
+            --command-exit-status "$COMMAND_EXIT_STATUS" \
+            --apply-result "$APPLY_RESULT" \
+            --hint "$hint"

@@ -5,8 +5,12 @@
 // parsing and the backward-compatibility mapping so the logic is unit-testable;
 // see ./cli.mjs for the workflow wiring and ./index.test.mjs for the tests.
 
-export const INVALID_DIRECTIVE_MESSAGE =
-  '❌ Invalid fix directive. Start your comment with `/fix` or `/fix:<name>` on a line of its own.';
+// Single source of truth for how to phrase a directive; also surfaced by the
+// report job as a hint when a request could not be identified.
+export const DIRECTIVE_HINT =
+  'Start your comment with `/fix` or `/fix:<name>` on a line of its own.';
+
+export const INVALID_DIRECTIVE_MESSAGE = `❌ Invalid fix directive. ${DIRECTIVE_HINT}`;
 
 export const FIX_ALL_COMPAT_MESSAGE =
   'ℹ️ INFO: Running `/fix` for `/fix:all` (compat mode). Use `/fix` moving forward.';
