@@ -18,14 +18,13 @@ How code ownership is set up in this repo:
 
 - The `main` branch ruleset requires code-owner review, so
   [`.github/CODEOWNERS`][] _gates_ merges (it doesn't merely suggest reviewers).
-- Before the start of this work, CODEOWNERS had a single global rule, `*
-  @open-telemetry/docs-approvers`, making `docs-approvers` the required reviewer
-  for **every** file — including locale-only content.
+- Before the start of this work, CODEOWNERS had a single global rule,
+  `* @open-telemetry/docs-approvers`, making `docs-approvers` the required
+  reviewer for **every** file — including locale-only content.
 - CODEOWNERS is last-match-wins: for a given file, the last matching pattern
   supplies the _sole_ owner set, and a review from any one listed owner
-  satisfies the gate. Also see [Appendix A: Code-ownership
-  notes](#appendix-a-code-ownership-notes).
--
+  satisfies the gate. Also see
+  [Appendix A: Code-ownership notes](#appendix-a-code-ownership-notes).
 - [CODEOWNERS syntax][codeowners-syntax] **does not support negation** (`!`), so
   "everything _except_ locale files" can't be expressed directly; per-directory
   rules are used instead.

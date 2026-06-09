@@ -491,14 +491,10 @@ land their own PRs without waiting on a docs maintainer. Branch protection and
 CODEOWNERS still gate the merge: the PR only merges once all required reviews
 and checks pass.
 
-This fully removes the docs-maintainer step only for locales whose team has sole
-code ownership of its content (currently `ja` and `pt`). For other locales the
-bot can still enable auto-merge, but `docs-approvers` remains a required
-reviewer, so the PR won't merge until a docs approver also approves.
-
-A comment is honored only when every changed file is owned by a locale you
-maintain, so it can't be used to slip changes into shared or English content.
-For the eligibility rules and command details, see the [helper README][].
+An auto-merge comment is honored only when every changed file is owned by a
+locale you maintain, so it can't be used to make changes to shared or English
+content. For the eligibility rules and command details, see the [helper
+README][].
 
 [GitHub auto-merge]:
   https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
