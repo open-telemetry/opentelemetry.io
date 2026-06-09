@@ -22099,6 +22099,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:11:22.00071131Z"
   },
+  "https://pt.wikipedia.org/wiki/NOP": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-09T16:21:37.950426653Z"
+  },
   "https://publicsuffix.org/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-06T10:21:40.007232176Z"
