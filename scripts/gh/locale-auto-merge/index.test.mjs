@@ -431,6 +431,46 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     assert.ok(!calls.some((a) => a[0] === 'pr' && a[1] === 'merge'));
   });
 
+  test('mixed-locale PR enables when author is in every locale team', () => {
+    const calls = [];
+    const r = runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 8,
+      commentAuthor: 'alice',
+      commentBody: '/auto-merge',
+      knownLocales: KNOWN,
+      runGh: makeRunGh({
+        pr: {
+          state: 'OPEN',
+          files: [
+            { path: 'content/ja/a.md' },
+            { path: 'content/pt/b.md' },
+            { path: 'static/refcache.json' },
+          ],
+          autoMergeRequest: null,
+        },
+        teams: {
+          'docs-ja-approvers': ['alice'],
+          'docs-pt-approvers': ['alice'],
+        },
+        calls,
+      }),
+    });
+    assert.equal(r.outcome, 'apply');
+    assert.equal(r.exitCode, 0);
+    const merge = calls.find((a) => a[0] === 'pr' && a[1] === 'merge');
+    assert.ok(merge && merge.includes('--auto'));
+    // Both touched locales are checked against their teams.
+    const teamCalls = calls.filter((a) => a.some((s) => s.includes('/teams/')));
+    assert.equal(teamCalls.length, 2);
+    // The posted comment names both locales and both approver teams.
+    const comment = calls.find((a) => a[0] === 'pr' && a[1] === 'comment');
+    const body = comment[comment.indexOf('--body') + 1];
+    assert.match(body, /locale\(s\) `ja`, `pt`/);
+    assert.match(body, /@open-telemetry\/docs-ja-approvers/);
+    assert.match(body, /@open-telemetry\/docs-pt-approvers/);
+  });
+
   test('ineligible PR never checks team membership or merges', () => {
     const calls = [];
     const r = runAutoMergeCommand({
