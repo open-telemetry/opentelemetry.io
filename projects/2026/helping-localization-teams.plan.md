@@ -2,7 +2,7 @@
 title: Helping localization teams merge their own PRs
 custodian: [Patrice Chalin](https://github.com/chalin)
 status: See "Status details" section below.
-cSpell:ignore: dyladan automerge platformAutomerge renovatebot
+cSpell:ignore: dyladan
 ---
 
 > **Plan conventions.** This plan is kept intentionally lean and free of design
