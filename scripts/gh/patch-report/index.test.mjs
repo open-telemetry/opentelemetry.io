@@ -1,4 +1,4 @@
-// Tests for the `/fix` run outcome comment composer.
+// Tests for the patch-pipeline outcome comment composer.
 
 import { describe, test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -7,10 +7,10 @@ import { buildOutcomeComment } from './index.mjs';
 
 describe('buildOutcomeComment', () => {
   const BASE = {
-    actionName: 'fix:refcache',
+    label: 'fix:refcache',
     generateResult: 'success',
     patchSkipped: 'false',
-    actionExitStatus: '0',
+    commandExitStatus: '0',
     applyResult: 'success',
     runId: '123',
     runUrl: 'https://example.test/run/123',
@@ -32,7 +32,7 @@ describe('buildOutcomeComment', () => {
   });
 
   test('command failed non-zero but changes were applied', () => {
-    const body = build({ actionExitStatus: '1' });
+    const body = build({ commandExitStatus: '1' });
     assert.match(
       body,
       /^⚠️ `fix:refcache` exited with a non-zero status \(1\)/,
@@ -40,10 +40,20 @@ describe('buildOutcomeComment', () => {
     assert.match(body, /the resulting changes were applied/);
   });
 
-  test('invalid directive: generation failed with no action name', () => {
-    const body = build({ generateResult: 'failure', actionName: '' });
-    assert.match(body, /^❌ Invalid `\/fix` directive/);
-    assert.match(body, /\/fix:<name>/);
+  test('unidentified request: generation failed with no label', () => {
+    const body = build({ generateResult: 'failure', label: '' });
+    assert.match(body, /^❌ The request could not be processed\./);
+    assert.match(body, /See logs: https:\/\/example\.test\/run\/123/);
+  });
+
+  test('unidentified request includes a caller-supplied hint', () => {
+    const body = build({
+      generateResult: 'failure',
+      label: '',
+      hint: 'Use `/fix` or `/fix:<name>` and no other text.',
+    });
+    assert.match(body, /^❌ The request could not be processed\./);
+    assert.match(body, /Use `\/fix` or `\/fix:<name>` and no other text\./);
   });
 
   test('generation failed for a known command (e.g. oversized patch)', () => {
@@ -67,6 +77,11 @@ describe('buildOutcomeComment', () => {
     assert.match(body, /applying them was cancelled/);
   });
 
+  test('falls back to a generic label when none is given', () => {
+    const body = build({ label: '' });
+    assert.match(body, /^✅ the requested action applied successfully/);
+  });
+
   test('every outcome produces a non-empty comment', () => {
     for (const generateResult of ['success', 'failure', 'cancelled']) {
       for (const patchSkipped of ['true', 'false']) {
@@ -76,21 +91,24 @@ describe('buildOutcomeComment', () => {
           'cancelled',
           'skipped',
         ]) {
-          for (const actionExitStatus of ['0', '1', '']) {
-            for (const actionName of ['fix', '']) {
-              const body = buildOutcomeComment({
-                actionName,
-                generateResult,
-                patchSkipped,
-                actionExitStatus,
-                applyResult,
-                runId: '1',
-                runUrl: 'u',
-              });
-              assert.ok(
-                typeof body === 'string' && body.length > 0,
-                'comment should be a non-empty string',
-              );
+          for (const commandExitStatus of ['0', '1', '']) {
+            for (const label of ['fix', '']) {
+              for (const hint of ['Use `/fix`.', '']) {
+                const body = buildOutcomeComment({
+                  label,
+                  generateResult,
+                  patchSkipped,
+                  commandExitStatus,
+                  applyResult,
+                  runId: '1',
+                  runUrl: 'u',
+                  hint,
+                });
+                assert.ok(
+                  typeof body === 'string' && body.length > 0,
+                  'comment should be a non-empty string',
+                );
+              }
             }
           }
         }

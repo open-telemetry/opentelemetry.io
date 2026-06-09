@@ -148,10 +148,11 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           PR_NUM: ${{ env.PR_NUM }}
-          ACTION_NAME: ${{ needs.generate-patch.outputs.action_name }}
+          LABEL: ${{ needs.generate-patch.outputs.action_name }}
           GENERATE_RESULT: ${{ needs.generate-patch.result }}
           PATCH_SKIPPED: ${{ needs.generate-patch.outputs.patch_skipped }}
-          ACTION_EXIT_STATUS:
+          COMMAND_EXIT_STATUS:
             ${{ needs.generate-patch.outputs.action_exit_status }}
           APPLY_RESULT: ${{ needs.apply-patch.result }}
-        run: node scripts/gh/pr-fix/report-cli.mjs
+          HINT: Use `/fix` or `/fix:<name>` and no other text.
+        run: node scripts/gh/patch-report/cli.mjs

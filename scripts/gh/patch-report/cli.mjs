@@ -1,19 +1,21 @@
 #!/usr/bin/env node
-// CLI entry point: post the single outcome comment for a `/fix` run. Runs in the
-// trusted `report` job so the requestor always learns the result, even when
-// patch generation failed before anything could be applied. All pure logic
-// (message selection) lives in ./index.mjs.
+// CLI entry point: post the single outcome comment for a patch-pipeline run.
+// Runs in a trusted job so the requestor always learns the result, even when the
+// patch could not be generated or applied. All pure logic (message selection)
+// lives in ./index.mjs.
 //
 // Required environment:
-//   GH_TOKEN            Used by `gh`; needs `pull-requests: write`.
-//   PR_NUM              The pull request number to comment on.
+//   GH_TOKEN             Used by `gh`; needs `pull-requests: write`.
+//   PR_NUM               The pull request number to comment on.
 //
 // Outcome inputs (passed from job results/outputs; may be empty):
-//   ACTION_NAME         The `/fix` directive as written.
-//   GENERATE_RESULT     Result of the patch-generation job.
-//   PATCH_SKIPPED       'true' when generation produced no changes.
-//   ACTION_EXIT_STATUS  Exit status of the fix command.
-//   APPLY_RESULT        Result of the apply job.
+//   LABEL                The action as requested (e.g. the command).
+//   GENERATE_RESULT      Result of the patch-generation job.
+//   PATCH_SKIPPED        'true' when generation produced no changes.
+//   COMMAND_EXIT_STATUS  Exit status of the command that produced the patch.
+//   APPLY_RESULT         Result of the apply job.
+//   HINT                 Optional guidance shown when the request could not be
+//                        identified (e.g. how to phrase it correctly).
 //
 // Provided by GitHub Actions:
 //   GITHUB_SERVER_URL, GITHUB_REPOSITORY, GITHUB_RUN_ID
@@ -35,13 +37,14 @@ const { GITHUB_SERVER_URL, GITHUB_REPOSITORY, GITHUB_RUN_ID } = process.env;
 const runUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}`;
 
 const body = buildOutcomeComment({
-  actionName: process.env.ACTION_NAME || '',
+  label: process.env.LABEL || '',
   generateResult: process.env.GENERATE_RESULT || '',
   patchSkipped: process.env.PATCH_SKIPPED || '',
-  actionExitStatus: process.env.ACTION_EXIT_STATUS || '',
+  commandExitStatus: process.env.COMMAND_EXIT_STATUS || '',
   applyResult: process.env.APPLY_RESULT || '',
   runId: GITHUB_RUN_ID || '',
   runUrl,
+  hint: process.env.HINT || '',
 });
 
 const prNum = requireEnv('PR_NUM');
