@@ -1991,6 +1991,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:07:36.456409362Z"
   },
+  "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-08T21:38:38.759646-04:00"
+  },
   "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request": {
     "StatusCode": 206,
     "LastSeen": "2026-06-05T15:52:41.63431669Z"
@@ -15303,6 +15307,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-04T15:49:38.962096271Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/locale-auto-merge.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-08T21:44:52.670798-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-actions.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-06-06T10:25:40.660341368Z"
@@ -15550,6 +15558,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs": {
     "StatusCode": 206,
     "LastSeen": "2026-06-07T10:26:55.636455443Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-08T21:39:49.270243-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/report-failure": {
     "StatusCode": 206,

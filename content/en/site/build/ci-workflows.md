@@ -263,6 +263,31 @@ nothing needed to be committed.
 [pr-actions]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-actions.yml
 
+## Locale auto-merge
+
+The [locale-auto-merge.yml][] workflow lets a locale's maintainers enable
+[GitHub auto-merge][] on a locale-only PR by commenting `/auto-merge` (or
+`/auto-merge:disable`). It runs as the DOCS bot, which holds the privileges
+needed to flip the "merge when ready" switch under branch protection; CODEOWNERS
+and required checks remain the hard merge gate.
+
+The thin workflow delegates to the testable helper in
+[scripts/gh/locale-auto-merge/][locale-auto-merge-script], which enforces two
+guards before acting: every changed file must be locale-owned, and the commenter
+must be a member of the `docs-<loc>-maintainers` team for every locale the PR
+touches. The helper's eligibility and authorization rules (and how to dry-run
+them locally) are documented in its [README][locale-auto-merge-script]
+(`npm run test:local-tools`). Contributor-facing usage lives in the
+[localization guide][localization-auto-merge].
+
+[GitHub auto-merge]:
+  https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
+[locale-auto-merge.yml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/locale-auto-merge.yml
+[locale-auto-merge-script]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
+[localization-auto-merge]: /docs/contributing/localization/#auto-merge
+
 ## Spec integration branches {#spec-integration-branches}
 
 Two scheduled workflows track unreleased changes from upstream spec repositories

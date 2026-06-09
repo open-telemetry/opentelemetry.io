@@ -482,6 +482,23 @@ when **Spelling** has no natural-language dictionary to add.
 
 ## Approver and maintainer guidance
 
+### Enabling auto-merge on locale-only PRs {#auto-merge}
+
+Members of a locale's maintainers team can enable [GitHub auto-merge][] on a
+locale-only PR by commenting `/auto-merge` (use `/auto-merge:disable` to turn it
+off). This lets established localization teams land their own PRs without
+waiting on a docs maintainer. Branch protection and CODEOWNERS still gate the
+merge: the PR only merges once all required reviews and checks pass.
+
+A comment is honored only when every changed file is owned by a locale you
+maintain, so it can't be used to slip changes into shared or English content.
+For the eligibility rules and command details, see the [helper README][].
+
+[GitHub auto-merge]:
+  https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
+[helper README]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
+
 ### PRs with semantic changes should not span locales {#prs-should-not-span-locales}
 
 Approvers should ensure that [PRs][] making **semantic** changes to doc pages do
