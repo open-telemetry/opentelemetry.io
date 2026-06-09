@@ -14,6 +14,7 @@ class AIDetectionConfig {
   constructor() {
     // Required configuration
     this.ghToken = process.env.GH_TOKEN;
+    this.copilotToken = process.env.COPILOT_TOKEN || null;
     this.prNumber = parseInt(process.env.PR_NUMBER, 10);
     this.repo = process.env.GITHUB_REPOSITORY;
 
@@ -39,6 +40,15 @@ class AIDetectionConfig {
   validate() {
     if (!this.ghToken) {
       throw new Error('GH_TOKEN is required');
+    }
+
+    if (!this.copilotToken) {
+      console.warn(
+        'WARNING: COPILOT_TOKEN not set. Copilot analysis will be skipped.',
+      );
+      console.warn(
+        'To enable AI detection, configure COPILOT_TOKEN with a PAT that has Copilot access.',
+      );
     }
 
     if (!this.prNumber || isNaN(this.prNumber)) {
@@ -149,11 +159,20 @@ function escapeShellArg(arg) {
 
 /**
  * Runs Copilot CLI analysis on the diff
+ *
+ * Note: Uses config.copilotToken instead of config.ghToken because
+ * Copilot CLI requires user-level "Copilot Requests" permission.
+ *
  * @param {string} diff - Git diff content
  * @param {AIDetectionConfig} config - Configuration object
- * @returns {string} Copilot analysis output
+ * @returns {string|null} Copilot analysis output, or null if COPILOT_TOKEN unavailable
  */
 function runCopilotAnalysis(diff, config) {
+  if (!config.copilotToken) {
+    console.log('Skipping Copilot analysis - COPILOT_TOKEN not configured');
+    return null;
+  }
+
   console.log('Running Copilot analysis...');
 
   // Build prompt
@@ -167,7 +186,7 @@ function runCopilotAnalysis(diff, config) {
     const output = execSync(command, {
       encoding: 'utf-8',
       maxBuffer: 10 * 1024 * 1024, // 10MB buffer
-      env: { ...process.env, GH_TOKEN: config.ghToken },
+      env: { ...process.env, GH_TOKEN: config.copilotToken },
     });
 
     console.log('--- Copilot Analysis Output ---');
@@ -320,6 +339,12 @@ async function main() {
 
     // 5. Run Copilot analysis
     const analysis = runCopilotAnalysis(diff, cfg);
+
+    // Handle case where Copilot analysis was skipped
+    if (!analysis) {
+      console.log('No Copilot analysis performed. Exiting without detection.');
+      process.exit(0);
+    }
 
     // 6. Parse confidence score
     const score = parseConfidenceScore(analysis);
