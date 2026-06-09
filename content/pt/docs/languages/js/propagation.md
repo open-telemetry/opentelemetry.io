@@ -275,7 +275,7 @@ const { traceparent, tracestate } = output;
 {{% /tab %}} {{< /tabpane >}}
 
 No serviço de recebimento, você precisa extrair o `context` (por exemplo, de
-cabeçalhos HTTP analisados) e defini-lo como o contexto de rastro atual.
+cabeçalhos HTTP analisados) e defini-lo como o contexto atual de rastro.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
