@@ -247,6 +247,10 @@ scripts by commenting on a PR:
   ([#9291][]).
 - **`/fix:ALL`** is mapped to `fix:all` so that maintainers can run `fix:all`.
 
+The directive must be the first line of the comment; any following lines are
+ignored, so you can add an explanation after it. A `/fix` appearing anywhere
+else in a comment does not trigger the workflow.
+
 [#9291]: https://github.com/open-telemetry/opentelemetry.io/pull/9291
 
 It runs as a three-stage pipeline:
@@ -259,11 +263,9 @@ It runs as a three-stage pipeline:
    applies the patch with a GitHub App token and pushes a commit to the PR
    branch. Skipped when the command produced no changes.
 3. **`report`** (trusted): always comments the outcome back on the PR, so the
-   requestor learns the result of every directive — including invalid
-   directives, no-op runs, and failures that happen before any patch is
-   produced. Note that only comments _starting with_ `/fix` enter the pipeline
-   at all: `/fix please` or `/fixup` get feedback, but a `/fix` appearing later
-   in a comment is silently ignored.
+   requestor learns the result of every directive that triggers the workflow —
+   including invalid directives (such as `/fixup` or `/fix please`), no-op runs,
+   and failures that happen before any patch is produced.
 
 The directive parser lives in [scripts/gh/pr-fix/][], patch generation is the
 [npm-script-patch][] action, and the outcome comment is composed by

@@ -51,13 +51,19 @@ describe('parseFixDirective', () => {
     });
   });
 
-  test('parser-level only: directive matched on its own line within a larger comment (the workflow trigger additionally requires the comment to start with /fix)', () => {
-    const body = ['Thanks for the patch!', '/fix:format', ''].join('\n');
+  test('directive on the first line may be followed by free-form text', () => {
+    const body = ['/fix:format', '', 'CI flagged prettier, retrying.'].join(
+      '\n',
+    );
     assert.deepEqual(parseFixDirective(body), {
       valid: true,
       actionName: 'fix:format',
       command: 'fix:format',
     });
+  });
+
+  test('trailing whitespace/newline after the directive is accepted', () => {
+    assert.equal(parseFixDirective('/fix \n').valid, true);
   });
 
   for (const bad of [
@@ -69,6 +75,9 @@ describe('parseFixDirective', () => {
     '/fix:',
     '/fix:bad name',
     '/build',
+    // Directives not on the first line are rejected.
+    'Thanks for the patch!\n/fix:format',
+    '/fix please\n/fix',
   ]) {
     test(`rejects invalid directive: ${JSON.stringify(bad)}`, () => {
       assert.deepEqual(parseFixDirective(bad), {

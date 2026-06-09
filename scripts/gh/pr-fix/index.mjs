@@ -6,14 +6,15 @@
 // see ./cli.mjs for the workflow wiring and ./index.test.mjs for the tests.
 
 export const INVALID_DIRECTIVE_MESSAGE =
-  '❌ Invalid fix directive. Use `/fix` or `/fix:<name>` and no other text.';
+  '❌ Invalid fix directive. Start your comment with `/fix` or `/fix:<name>` on a line of its own.';
 
 export const FIX_ALL_COMPAT_MESSAGE =
   'ℹ️ INFO: Running `/fix` for `/fix:all` (compat mode). Use `/fix` moving forward.';
 
-// A directive is a line that is exactly `/fix` optionally followed by one or
-// more `:segment` parts, where a segment is one or more of `-_0-9a-zA-Z`.
-const DIRECTIVE_RE = /^\/(fix(?::[-_0-9A-Za-z]+)*)$/m;
+// The first line of the comment must be exactly `/fix` optionally followed by
+// one or more `:segment` parts, where a segment is one or more of `-_0-9a-zA-Z`.
+// Any following lines are ignored.
+const DIRECTIVE_RE = /^\/(fix(?::[-_0-9A-Za-z]+)*)$/;
 
 /**
  * Result of parsing a `/fix` directive.
@@ -31,6 +32,9 @@ const DIRECTIVE_RE = /^\/(fix(?::[-_0-9A-Za-z]+)*)$/m;
 /**
  * Parse a PR comment body into a `/fix` directive.
  *
+ * Only the first line of the comment is considered (so a directive may be
+ * followed by free-form text on subsequent lines).
+ *
  * The compat mapping preserves historical behavior:
  *  - `/fix:all` runs `fix` (the modern command), with an info message.
  *  - `/fix:ALL` lets maintainers still run the literal `fix:all` script.
@@ -39,7 +43,8 @@ const DIRECTIVE_RE = /^\/(fix(?::[-_0-9A-Za-z]+)*)$/m;
  * @returns {FixDirective}
  */
 export function parseFixDirective(commentBody) {
-  const match = DIRECTIVE_RE.exec(commentBody ?? '');
+  const firstLine = (commentBody ?? '').split('\n', 1)[0].trim();
+  const match = DIRECTIVE_RE.exec(firstLine);
   if (!match) {
     return { valid: false, error: INVALID_DIRECTIVE_MESSAGE };
   }

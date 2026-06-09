@@ -77,7 +77,7 @@ jobs:
     # exceed these); see that workflow for how its steps authenticate.
     permissions:
       contents: write # push the applied patch to the PR branch
-      pull-requests: write # gh pr checkout
+      pull-requests: write # may be trimmable; steps authenticate with the app token
     with:
       pr-number: ${{ github.event.issue.number }}
       patch-name: ${{ needs.generate-patch.outputs.patch_name }}
@@ -97,8 +97,9 @@ jobs:
     # failed before anything could be applied. Only skip when there was no /fix
     # invocation to report on.
     if: always() && needs.generate-patch.result != 'skipped'
+    # The outcome comment is posted with the app token below, not GITHUB_TOKEN.
     permissions:
-      pull-requests: write # comment the run outcome on the PR
+      contents: read # checkout
 
     steps:
       - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
@@ -130,5 +131,7 @@ jobs:
           COMMAND_EXIT_STATUS:
             ${{ needs.generate-patch.outputs.action_exit_status }}
           APPLY_RESULT: ${{ needs.apply-patch.result }}
-          HINT: Use `/fix` or `/fix:<name>` and no other text.
+          HINT:
+            Start your comment with `/fix` or `/fix:<name>` on a line of its
+            own.
         run: node scripts/gh/patch-report/cli.mjs
