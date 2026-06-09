@@ -115,6 +115,20 @@ describe('locale-auto-merge: evaluateEligibility', () => {
   test('empty PR is ineligible', () => {
     assert.equal(evaluateEligibility([], known).eligible, false);
   });
+
+  test('onFile callback classifies each path', () => {
+    const seen = [];
+    evaluateEligibility(
+      ['content/ja/a.md', 'static/refcache.json', 'layouts/x.html'],
+      known,
+      (f) => seen.push(f),
+    );
+    assert.deepEqual(seen, [
+      { path: 'content/ja/a.md', kind: 'locale', locale: 'ja' },
+      { path: 'static/refcache.json', kind: 'shared', locale: null },
+      { path: 'layouts/x.html', kind: 'offending', locale: null },
+    ]);
+  });
 });
 
 // Build a fake runGh that answers team-membership queries from a map of
@@ -186,6 +200,21 @@ describe('locale-auto-merge: authorizeForLocales', () => {
     const failing = () => ({ stdout: '', status: 1 });
     const r = authorizeForLocales(failing, 'open-telemetry', 'alice', ['ja']);
     assert.deepEqual(r, { authorized: false, missing: ['ja'] });
+  });
+
+  test('onCheck callback reports each membership result', () => {
+    const seen = [];
+    authorizeForLocales(
+      teamRunner(teams),
+      'open-telemetry',
+      'bob',
+      ['ja', 'pt'],
+      (c) => seen.push(c),
+    );
+    assert.deepEqual(seen, [
+      { locale: 'ja', team: 'docs-ja-approvers', member: true },
+      { locale: 'pt', team: 'docs-pt-approvers', member: false },
+    ]);
   });
 });
 
@@ -490,5 +519,86 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     });
     assert.equal(r.outcome, 'noop');
     assert.ok(!calls.some((a) => a[0] === 'pr' && a[1] === 'merge'));
+  });
+
+  test('verbose mode logs each file and each team check', () => {
+    const calls = [];
+    const logs = [];
+    runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 42,
+      commentAuthor: 'bob',
+      commentBody: '/auto-merge',
+      knownLocales: KNOWN,
+      verbose: true,
+      log: (m) => logs.push(m),
+      runGh: makeRunGh({
+        pr: {
+          state: 'OPEN',
+          files: [
+            { path: 'content/ja/a.md' },
+            { path: 'content/pt/b.md' },
+            { path: 'static/refcache.json' },
+          ],
+          autoMergeRequest: null,
+        },
+        teams: { 'docs-ja-approvers': ['bob'], 'docs-pt-approvers': ['carol'] },
+        calls,
+      }),
+    });
+    assert.ok(
+      logs.some((m) => m === '[file] ✓ locale-owned (ja): content/ja/a.md'),
+    );
+    assert.ok(
+      logs.some((m) => m === '[file] ✓ locale-owned (pt): content/pt/b.md'),
+    );
+    assert.ok(
+      logs.some(
+        (m) => m === '[file] ✓ shared (no owner): static/refcache.json',
+      ),
+    );
+    assert.ok(
+      logs.some((m) =>
+        /\[team\] @bob ✓ is a member of .*docs-ja-approvers/.test(m),
+      ),
+    );
+    assert.ok(
+      logs.some((m) =>
+        /\[team\] @bob ✗ is NOT a member of .*docs-pt-approvers/.test(m),
+      ),
+    );
+  });
+
+  test('verbose mode caps per-file lines at verboseLimit', () => {
+    const calls = [];
+    const logs = [];
+    runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 42,
+      commentAuthor: 'alice',
+      commentBody: '/auto-merge',
+      knownLocales: KNOWN,
+      verbose: true,
+      verboseLimit: 2,
+      log: (m) => logs.push(m),
+      runGh: makeRunGh({
+        pr: {
+          state: 'OPEN',
+          files: [
+            { path: 'content/ja/a.md' },
+            { path: 'content/ja/b.md' },
+            { path: 'content/ja/c.md' },
+          ],
+          autoMergeRequest: null,
+        },
+        teams: { 'docs-ja-approvers': ['alice'] },
+        calls,
+      }),
+    });
+    const fileLines = logs.filter((m) => m.startsWith('[file] ✓'));
+    assert.equal(fileLines.length, 2);
+    assert.ok(
+      logs.some((m) => m.includes('verbose limit (2) reached; 1 more file')),
+    );
   });
 });

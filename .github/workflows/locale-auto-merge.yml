@@ -54,4 +54,5 @@ jobs:
             --pr "$PR_NUM" \
             --comment "$COMMENT_BODY" \
             --user "$COMMENT_AUTHOR" \
+            --verbose \
             --no-dry-run

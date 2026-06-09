@@ -18,6 +18,10 @@ import { readdirSync } from 'node:fs';
 // otherwise locale-only PR without making it ineligible.
 const NO_OWNER_PATHS = new Set(['static/refcache.json']);
 
+// Default cap on the number of per-file lines emitted in verbose mode, so a
+// huge PR can't flood the workflow log. Override via runAutoMergeCommand.
+const DEFAULT_VERBOSE_FILE_LIMIT = 100;
+
 /**
  * Discover the set of locale ids, i.e. the immediate subdirectories of the
  * Hugo `content/` tree (`en`, `ja`, `zh`, ...).
@@ -101,17 +105,28 @@ export function localeForPath(path, knownLocales) {
  *
  * @param {string[]} paths Changed-file paths.
  * @param {Set<string>} knownLocales Set of valid locale ids.
+ * @param {(file: { path: string, kind: 'locale'|'shared'|'offending',
+ *   locale: string|null }) => void} [onFile] Optional per-file callback,
+ *   invoked once per path with its classification (used by verbose mode).
  * @returns {Eligibility}
  */
-export function evaluateEligibility(paths, knownLocales) {
+export function evaluateEligibility(paths, knownLocales, onFile) {
   const offending = [];
   const locales = new Set();
 
   for (const path of paths) {
-    if (NO_OWNER_PATHS.has(path)) continue;
+    if (NO_OWNER_PATHS.has(path)) {
+      onFile?.({ path, kind: 'shared', locale: null });
+      continue;
+    }
     const locale = localeForPath(path, knownLocales);
-    if (locale == null) offending.push(path);
-    else locales.add(locale);
+    if (locale == null) {
+      offending.push(path);
+      onFile?.({ path, kind: 'offending', locale: null });
+    } else {
+      locales.add(locale);
+      onFile?.({ path, kind: 'locale', locale });
+    }
   }
 
   const eligible = offending.length === 0 && locales.size > 0;
@@ -142,9 +157,12 @@ export function evaluateEligibility(paths, knownLocales) {
  * @param {string} org GitHub org login (e.g. `open-telemetry`).
  * @param {string} user Login to check (lower-cased for comparison).
  * @param {string[]} locales Locales the PR touches.
+ * @param {(check: { locale: string, team: string, member: boolean }) => void}
+ *   [onCheck] Optional per-locale callback, invoked once per membership check
+ *   with its pass/fail result (used by verbose mode).
  * @returns {Authorization}
  */
-export function authorizeForLocales(runGh, org, user, locales) {
+export function authorizeForLocales(runGh, org, user, locales, onCheck) {
   const target = String(user).toLowerCase();
   const missing = [];
 
@@ -164,7 +182,9 @@ export function authorizeForLocales(runGh, org, user, locales) {
             .map((m) => m.trim().toLowerCase())
             .filter(Boolean)
         : [];
-    if (!members.includes(target)) missing.push(loc);
+    const member = members.includes(target);
+    if (!member) missing.push(loc);
+    onCheck?.({ locale: loc, team, member });
   }
 
   return { authorized: missing.length === 0, missing: missing.sort() };
@@ -359,6 +379,10 @@ function requireGh(runGh, args) {
  *   compute the verdict as usual, but log the mutating `gh` calls instead of
  *   running them.
  * @param {(message: string) => void} [input.log] Optional logger.
+ * @param {boolean} [input.verbose] When true, log each changed file as it is
+ *   classified (locale-owned / shared / not-owned) and each locale-team
+ *   membership check (pass/fail), up to `verboseLimit` file lines.
+ * @param {number} [input.verboseLimit] Cap on per-file verbose lines.
  * @returns {CommandResult}
  */
 export function runAutoMergeCommand({
@@ -370,6 +394,8 @@ export function runAutoMergeCommand({
   runGh,
   dryRun = false,
   log = () => {},
+  verbose = false,
+  verboseLimit = DEFAULT_VERBOSE_FILE_LIMIT,
 }) {
   const org = repo.split('/')[0];
 
@@ -448,13 +474,48 @@ export function runAutoMergeCommand({
   details.fileCount = paths.length;
   details.autoMergeEnabled = autoMergeEnabled;
 
-  const eligibility = evaluateEligibility(paths, knownLocales);
+  // In verbose mode, log each file as it is classified, capped at verboseLimit
+  // lines so a huge PR can't flood the workflow log.
+  let filesLogged = 0;
+  const fileLogger = verbose
+    ? ({ path, kind, locale }) => {
+        if (filesLogged >= verboseLimit) return;
+        filesLogged++;
+        const label =
+          kind === 'locale'
+            ? `✓ locale-owned (${locale})`
+            : kind === 'shared'
+              ? '✓ shared (no owner)'
+              : '✗ NOT locale-owned';
+        log(`[file] ${label}: ${path}`);
+        if (filesLogged === verboseLimit && paths.length > verboseLimit) {
+          log(
+            `[file] … verbose limit (${verboseLimit}) reached; ` +
+              `${paths.length - verboseLimit} more file(s) not shown`,
+          );
+        }
+      }
+    : undefined;
+
+  const eligibility = evaluateEligibility(paths, knownLocales, fileLogger);
   details.locales = eligibility.locales;
   details.offending = eligibility.offending;
 
   // Only consult the team-membership API once the PR is known to be eligible.
   const authorization = eligibility.eligible
-    ? authorizeForLocales(runGh, org, commentAuthor, eligibility.locales)
+    ? authorizeForLocales(
+        runGh,
+        org,
+        commentAuthor,
+        eligibility.locales,
+        verbose
+          ? ({ team, member }) =>
+              log(
+                `[team] @${commentAuthor} ${member ? '✓ is' : '✗ is NOT'} a ` +
+                  `member of @${org}/${team}`,
+              )
+          : undefined,
+      )
     : { authorized: false, missing: [] };
   if (eligibility.eligible) {
     details.authorized = authorization.authorized;

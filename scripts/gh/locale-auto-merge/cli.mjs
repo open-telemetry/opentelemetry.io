@@ -37,6 +37,8 @@ Options:
   -f, --no-dry-run     Actually mutate auto-merge and comment. The default
                        under GitHub Actions; pass it to force a real run
                        locally.
+  -v, --verbose        Log each changed file as it is classified and each
+                       locale-team membership check (pass/fail).
   -h, --help           Show this help.
 
 gh uses your existing gh authentication (or GH_TOKEN if set). Reading team
@@ -83,6 +85,7 @@ try {
       user: { type: 'string', short: 'u' },
       'dry-run': { type: 'boolean', short: 'n', default: false },
       'no-dry-run': { type: 'boolean', short: 'f', default: false },
+      verbose: { type: 'boolean', short: 'v', default: false },
       help: { type: 'boolean', short: 'h', default: false },
     },
   }));
@@ -128,6 +131,7 @@ const { exitCode } = runAutoMergeCommand({
   commentBody,
   knownLocales: discoverLocales(),
   dryRun,
+  verbose: values.verbose,
   runGh,
   log: (message) => console.log(message),
 });

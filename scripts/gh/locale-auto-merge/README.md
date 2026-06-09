@@ -41,3 +41,8 @@ node scripts/gh/locale-auto-merge/cli.mjs --help
 
 Add `--no-dry-run` to actually enable/disable auto-merge (needs a sufficiently
 privileged token; the workflow uses the DOCS bot token).
+
+Add `--verbose` (`-v`) to log each changed file as it is classified
+(locale-owned / shared / not-owned) and each locale-team membership check
+(pass/fail). The workflow runs with `--verbose` so its log records exactly why
+the bot did or didn't act.
