@@ -371,7 +371,7 @@ that JAR when you run your application (see
 Extensions must carefully manage their dependencies to avoid conflicts with the
 agent and application. For background on how the agent isolates extensions
 across class loaders, see
-[Javaagent structure](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/contributing/javaagent-structure.md).
+[Java agent structure](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/contributing/javaagent-structure.md).
 
 #### Dependencies provided by agent (use `compileOnly`)
 
