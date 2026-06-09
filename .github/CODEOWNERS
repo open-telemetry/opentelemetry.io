@@ -60,6 +60,7 @@
 # import fs from 'node:fs';
 # const log = (line) => console.log(line);
 # const locales = ['bn', 'es', 'fr', 'ja', 'pl', 'pt', 'ro', 'uk', 'zh'];
+# locales.sort();
 # for (const loc of locales) {
 #   const approver = `@open-telemetry/docs-${loc}-approvers`;
 #   log(`\n# ${loc}`);
