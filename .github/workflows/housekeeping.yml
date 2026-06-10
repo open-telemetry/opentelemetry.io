@@ -58,6 +58,9 @@ jobs:
 
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
+          # Full history: the i18n fix/check scripts that the default command
+          # runs diff localized pages against their `default_lang_commit`.
+          fetch-depth: 0
           persist-credentials: false
 
       # Needed by the check:collector-sync scripts that the default command
