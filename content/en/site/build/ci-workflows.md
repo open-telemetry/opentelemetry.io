@@ -258,8 +258,8 @@ all).
 
 It runs as a four-stage pipeline:
 
-1. **`ack`** (trusted): immediately replies with a 🔄 in-progress comment that
-   links the directive comment and the run.
+1. **`ack`** (trusted): as soon as a directive is received, replies with a 🔄
+   in-progress comment that links to the directive comment and to the run.
 2. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
    command, prunes the link refcache, and uploads a patch artifact
    (`site.patch`), up to 1024 KB.
@@ -269,8 +269,8 @@ It runs as a four-stage pipeline:
    branch. Skipped when the command produced no changes.
 4. **`report`** (trusted): replaces the acknowledgement with the final outcome
    when possible, or posts a new outcome comment when no acknowledgement exists,
-   such as for closed PRs. Each directive thus maps to a single comment that
-   links back to the directive and to the run that produced it. This covers
+   such as for closed PRs. Each directive thus normally maps to a single comment
+   that links back to the directive and to the run that produced it. This covers
    every directive that triggers the workflow, including invalid directives
    (such as `/fixup` or `/fix please`), no-op runs, and failures that happen
    before any patch is produced.

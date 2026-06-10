@@ -25,6 +25,18 @@ describe('buildOutcomeComment', () => {
     assert.match(body, /^✅ `fix:refcache` applied successfully/);
   });
 
+  test('strips Markdown metacharacters from a forgeable label', () => {
+    // cspell:ignore xhttps exampley
+    const body = build({
+      label: 'x`](https://evil.example)[`y',
+      directiveUrl: 'https://example.test/c/7',
+    });
+    assert.match(
+      body,
+      /^✅ \[`xhttps:\/\/evil\.exampley`\]\(https:\/\/example\.test\/c\/7\)/,
+    );
+  });
+
   test('no-op: generation produced no changes', () => {
     assert.equal(
       build({ patchSkipped: 'true' }),

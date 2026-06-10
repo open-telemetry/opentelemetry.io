@@ -42,10 +42,13 @@
 
 /**
  * Render the action label, linked back to the requesting comment when its URL
- * is known.
+ * is known. The label can originate from an untrusted (forgeable) job output,
+ * so strip Markdown code/link metacharacters before wrapping it in trusted
+ * link syntax.
  */
 function renderWhat(label, directiveUrl, fallback = 'the requested action') {
-  const text = label ? `\`${label}\`` : fallback;
+  const safeLabel = label ? label.replace(/[`[\]()]/g, '') : '';
+  const text = safeLabel ? `\`${safeLabel}\`` : fallback;
   return directiveUrl ? `[${text}](${directiveUrl})` : text;
 }
 

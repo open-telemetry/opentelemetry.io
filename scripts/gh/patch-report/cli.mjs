@@ -72,6 +72,12 @@ if (!values.pr) {
   process.exit(1);
 }
 
+if (values.ack && values['comment-id']) {
+  console.error('--ack and --comment-id are mutually exclusive\n');
+  console.error(HELP);
+  process.exit(1);
+}
+
 const { GITHUB_SERVER_URL, GITHUB_REPOSITORY, GITHUB_RUN_ID } = process.env;
 const runUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}`;
 const runId = GITHUB_RUN_ID || '';
@@ -121,11 +127,17 @@ const res = spawnSync(
   { encoding: 'utf8' },
 );
 process.stderr.write(res.stderr ?? '');
-if (res.status !== 0) process.exit(res.status ?? 1);
+if (res.status !== 0) {
+  // Surface any captured API error body, which gh writes to stdout.
+  process.stdout.write(res.stdout ?? '');
+  process.exit(res.status ?? 1);
+}
 
 const id = (res.stdout ?? '').trim();
 console.log(`Comment id: ${id}`);
+// Only the ack invocation's comment id is a meaningful output (the report
+// invocation consumes ids, it doesn't produce them).
 const githubOutput = process.env.GITHUB_OUTPUT;
-if (githubOutput) {
+if (values.ack && githubOutput) {
   appendFileSync(githubOutput, `comment_id=${id}\n`);
 }
