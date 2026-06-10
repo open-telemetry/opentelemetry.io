@@ -338,9 +338,23 @@ It runs as a three-stage pipeline:
 3. **`report-failure`**: files a tracking issue on failure, via
    [workflow failure reporting](#workflow-failure-reporting).
 
+> [!NOTE]
+>
+> The [`refcache-refresh.yml`][] workflow also runs daily (9:33 UTC) and also
+> touches `refcache.json` (it refreshes the oldest entries), so the two bot PRs
+> can conflict depending on merge order. No action is needed: conflicts
+> self-heal, since the housekeeping branch is regenerated from `main` daily and
+> the refcache-refresh branch syncs from `main` on each run. Migrating
+> refcache-refresh onto the reusable patch actions — which would eliminate such
+> conflicts by construction — is tracked in the [project plan][].
+
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 [housekeeping]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/housekeeping.yml
+[project plan]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/2026/pr-fix-reusable-actions.plan.md
+[`refcache-refresh.yml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/refcache-refresh.yml
 [`reusable-patch-pr.yml`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/reusable-patch-pr.yml
 
