@@ -227,3 +227,4 @@ jobs:
             echo "Updated $pr_url"
           fi
           echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
+          echo ":rocket: Patch published: $pr_url" >> "$GITHUB_STEP_SUMMARY"

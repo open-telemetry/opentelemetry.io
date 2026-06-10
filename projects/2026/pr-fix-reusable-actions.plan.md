@@ -219,6 +219,15 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
     `pyproject.toml`, which a fresh `uv run` does not install. The npm scripts
     now pass `--extra dev`, making them self-sufficient on clean checkouts.
 
+  Findings from the third live run:
+  - `check:format` failed on `scripts/collector-sync/.pytest_cache/README.md`, a
+    side effect of the now-working pytest run: Prettier only honors the root
+    `.gitignore`/`.prettierignore`, not the `.gitignore` pytest drops inside its
+    cache directory. Root `.gitignore` now lists the cache dirs of all three
+    Python tools (`.pytest_cache/`, `.mypy_cache/`, `.ruff_cache/`) — each
+    drops a `*` `.gitignore` inside its own cache, and the mypy cache (JSON
+    files) was a latent identical failure.
+
   Live validation status:
   - [x] dispatch run with changes → `otelbot/housekeeping` branch + PR created
         ([#10336][])

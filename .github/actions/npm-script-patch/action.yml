@@ -63,6 +63,8 @@ runs:
         echo "npm script exit status: $action_exit_status"
         if (( action_exit_status != 0 )); then
           echo "::warning title=npm script failed::npm run $INPUT_COMMAND exited with status $action_exit_status"
+          echo ":warning: \`npm run $INPUT_COMMAND\` exited with status $action_exit_status." \
+            >> "$GITHUB_STEP_SUMMARY"
         fi
 
         if [[ -n "$INPUT_POST_COMMAND" ]]; then
@@ -80,6 +82,8 @@ runs:
 
         if [ ! -s site.patch ]; then
           echo "No changes detected. Skipping patch."
+          echo ":information_source: No changes detected — nothing to publish." \
+            >> "$GITHUB_STEP_SUMMARY"
           echo "skipped=true" >> "$GITHUB_OUTPUT"
           exit 0
         fi
@@ -87,9 +91,13 @@ runs:
         actual_size_kb=$(du -k site.patch | cut -f1)
         if (( actual_size_kb > MAX_PATCH_SIZE_KB )); then
           echo "Patch too large: ${actual_size_kb} KB (limit: ${MAX_PATCH_SIZE_KB} KB)"
+          echo ":no_entry: Patch too large: ${actual_size_kb} KB (limit: ${MAX_PATCH_SIZE_KB} KB)." \
+            >> "$GITHUB_STEP_SUMMARY"
           exit 1
         fi
 
+        echo ":package: Patch generated (${actual_size_kb} KB); it will be published as a PR." \
+          >> "$GITHUB_STEP_SUMMARY"
         echo "skipped=false" >> "$GITHUB_OUTPUT"
 
     - name: Upload patch artifact
