@@ -327,9 +327,10 @@ It runs as a three-stage pipeline:
    carrying the latest results. Any commits pushed to the branch — manual or via
    `/fix` — are clobbered by the next run, so merge the PR promptly if you push
    commits to it. Skipped when the command produced no changes, leaving any open
-   housekeeping PR as is. Auto-merge is safe to enable on housekeeping PRs:
-   GitHub still gates the merge on the required reviews, which remain the
-   control over the machine- and internet-derived content.
+   housekeeping PR as is. Auto-merge is safe to enable on housekeeping PRs
+   provided that stale approvals are dismissed when commits are pushed: required
+   reviews then remain the control over the machine- and internet-derived
+   content, even across force-pushes.
 3. **`report-failure`**: files a tracking issue on failure, via
    [workflow failure reporting](#workflow-failure-reporting).
 

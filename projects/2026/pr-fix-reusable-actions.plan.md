@@ -216,6 +216,10 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
         default command
   - [ ] consider `egress-policy: block` on the publish job (it only talks to
         GitHub), unlike the generate job whose link checking needs open egress
+  - [ ] confirm the auto-merge × force-push interaction: approve the
+        housekeeping PR, enable auto-merge, wait for the next run's force-push,
+        and verify the merge waits for re-approval (or auto-merge is disabled)
+        rather than landing content no reviewer saw
 - Open PR on a clean no-change run: left as is for now. Since the branch is
   recreated from `main` each run, a clean exit-0 no-diff run means `main` no
   longer needs the open PR's fixes, so auto-closing it (clean runs only — a
