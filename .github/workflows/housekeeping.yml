@@ -107,7 +107,7 @@ jobs:
       pr-title: 'Housekeeping: automated fix results'
       pr-body: >-
         Automated fix results from the scheduled
-        [housekeeping](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/housekeeping.yml)
+        [housekeeping](https://opentelemetry.io/site/build/ci-workflows/#housekeeping)
         workflow.
       commit-message: Housekeeping fix results
       user-name: otelbot
