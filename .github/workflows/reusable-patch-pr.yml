@@ -48,10 +48,11 @@ on:
       pr-body:
         description: >-
           Body for the PR, rendered as the first item of a Markdown list that
-          also carries a link to the latest run. An IMPORTANT note about the
-          per-run regeneration of the branch is appended. The body is refreshed
-          on every run, so it always links to the run that produced the PR's
-          current content.
+          also carries a link to the latest run; it should be a single paragraph
+          (multiline Markdown would break out of the list item). An IMPORTANT
+          note about the per-run regeneration of the branch is appended. The
+          body is refreshed on every run, so it always links to the run that
+          produced the PR's current content.
         required: false
         type: string
         default: ''

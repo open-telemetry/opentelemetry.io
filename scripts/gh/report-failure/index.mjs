@@ -203,6 +203,9 @@ export function setIssueType(
  * @param {string} input.issueType   Org issue type name (e.g. `Bug`).
  * @param {string} input.issuePrefix Title prefix (e.g. `Workflow failed`).
  * @param {string} [input.prUrl]     URL of a related PR to link, if any.
+ *                                   Ignored unless it is a well-formed
+ *                                   https URL (no whitespace), since callers
+ *                                   may pass less-controlled strings.
  * @param {(args: string[]) => GhResult} input.runGh
  * @param {(msg: string) => void} [input.log]
  * @returns {ReportResult}
@@ -221,6 +224,14 @@ export function reportFailure({
   log = console.log,
 }) {
   const title = buildIssueTitle({ prefix: issuePrefix, workflow, branch });
+
+  // The PR link is rendered into Markdown: accept only a plain https URL so a
+  // less-controlled caller value can't inject content into the issue.
+  prUrl = prUrl.trim();
+  if (prUrl && !/^https:\/\/\S+$/.test(prUrl)) {
+    log(`Ignoring malformed PR URL: ${JSON.stringify(prUrl)}`);
+    prUrl = '';
+  }
 
   const listed = gh(runGh, [
     'issue',

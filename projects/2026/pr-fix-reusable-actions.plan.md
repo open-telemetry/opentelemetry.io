@@ -229,6 +229,9 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
         warning in the PR body, and a comment appended to the existing failure
         issue rather than a duplicate issue ([#10339][]); warning clearance on
         the next clean run still to be observed
+  - [ ] failure issue links to the housekeeping PR (pr-url propagation through
+        the publish → report-failure workflow boundary; unit tests cover the
+        body builders only)
   - [x] fork-filtered PR lookup works live: `env.REPO_OWNER` resolved in the
         publish job and the lookup/create path produced [#10339][] (hostile-fork
         case remains unit-tested only, as staging one is impractical)

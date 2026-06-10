@@ -186,6 +186,31 @@ describe('report-failure: reportFailure', () => {
     assert.deepEqual(kinds, ['issue list', 'issue comment']);
   });
 
+  test('drops a malformed prUrl instead of rendering it', () => {
+    const title = buildIssueTitle({
+      prefix: BASE.issuePrefix,
+      workflow: BASE.workflow,
+      branch: BASE.branch,
+    });
+    const { runGh, calls } = makeFakeGh({
+      'issue list': {
+        stdout: JSON.stringify([{ number: 42, title }]),
+        status: 0,
+      },
+    });
+    reportFailure({
+      ...BASE,
+      prUrl: 'https://example/pr/7 @everyone\n# injected',
+      runGh,
+      log: noLog,
+    });
+
+    const comment = calls.find((a) => a[0] === 'issue' && a[1] === 'comment');
+    const body = comment[comment.indexOf('--body') + 1];
+    assert.doesNotMatch(body, /\*\*PR:\*\*/);
+    assert.doesNotMatch(body, /injected/);
+  });
+
   test('creates a new issue and sets its type when none exists', () => {
     const { runGh, calls } = makeFakeGh({
       'issue list': { stdout: '[]', status: 0 },
