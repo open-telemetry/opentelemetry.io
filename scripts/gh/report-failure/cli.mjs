@@ -16,6 +16,7 @@
 //   LABEL           Existing label to apply. Default: `CI/infra`.
 //   ISSUE_TYPE      Org issue type name. Default: `Bug`.
 //   ISSUE_PREFIX    Title prefix. Default: `Workflow failed`.
+//   PR_URL          URL of a related PR to link from the issue/comment.
 
 import { spawnSync } from 'node:child_process';
 
@@ -52,5 +53,6 @@ reportFailure({
   label: process.env.LABEL || 'CI/infra',
   issueType: process.env.ISSUE_TYPE || 'Bug',
   issuePrefix: process.env.ISSUE_PREFIX || 'Workflow failed',
+  prUrl: process.env.PR_URL || '',
   runGh,
 });

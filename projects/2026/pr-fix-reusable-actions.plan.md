@@ -4,7 +4,7 @@ custodian: '[Patrice Chalin](https://github.com/chalin)'
 status:
   Phases 1 and 2 merged; first-run fixes addressed; phase-2 live validation in
   progress.
-cSpell:ignore: fixx gitlink
+cSpell:ignore: fixx gitlink mypy pyproject pytest
 ---
 
 ## Context
@@ -213,25 +213,33 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
   - `check:i18n` ran redundantly right after `fix:i18n`; now excluded from the
     default command's check phase.
 
+  Findings from the second live run ([#10339][]):
+  - `check:collector-sync` failed (`uv run pytest` → `Failed to spawn: pytest`):
+    pytest, mypy, and ruff live in the optional `dev` extra of the project's
+    `pyproject.toml`, which a fresh `uv run` does not install. The npm scripts
+    now pass `--extra dev`, making them self-sufficient on clean checkouts.
+
   Live validation status:
   - [x] dispatch run with changes → `otelbot/housekeeping` branch + PR created
         ([#10336][])
   - [ ] second run with changes while the PR is open → PR force-updated in
         place, no duplicate PR
   - [ ] run with no changes → publish skipped, open PR untouched
-  - [ ] failing command with fixes → fixes published ([#10336][], partially
-        validated); failure issue and ⚠️ partial-results warning in the PR body
-        (cleared on the next clean run) pending re-validation after the
-        first-run fixes
-  - [ ] confirm the fork-filtered PR lookup in the publish job still finds the
-        canonical housekeeping PR (the jq filter is unit-tested locally; staging
-        a hostile fork branch is impractical)
+  - [x] failing command with fixes → fixes published with ⚠️ partial-results
+        warning in the PR body, and a comment appended to the existing failure
+        issue rather than a duplicate issue ([#10339][]); warning clearance on
+        the next clean run still to be observed
+  - [ ] failure issue links to the housekeeping PR (pr-url propagation through
+        the publish → report-failure workflow boundary; unit tests cover the
+        body builders only)
+  - [x] fork-filtered PR lookup works live: `env.REPO_OWNER` resolved in the
+        publish job and the lookup/create path produced [#10339][] (hostile-fork
+        case remains unit-tested only, as staging one is impractical)
   - [ ] check whether the forwarded `GITHUB_TOKEN` grants on `publish-patch` can
         be trimmed (steps authenticate with the app token), as for the `/fix`
         publish job
-  - [ ] watch the runtime of the first full `fix-and-test:all` run
-        (`fix:refcache` implies a full build plus link check); bump the 30-min
-        job timeout if it is tight
+  - [x] runtime of a full `fix-and-test:all` run: ~12.5 min, comfortably within
+        the 30-min job timeout
   - [ ] verify that a `fix:submodule` bump (gitlink diff) survives the generate
         → artifact → `git apply` pipeline; a failure is loud (apply exits
         non-zero, issue filed) but would block submodule maintenance via the
@@ -259,5 +267,6 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
 [#10329]: https://github.com/open-telemetry/opentelemetry.io/issues/10329
 [#10332]: https://github.com/open-telemetry/opentelemetry.io/pull/10332
 [#10336]: https://github.com/open-telemetry/opentelemetry.io/pull/10336
+[#10339]: https://github.com/open-telemetry/opentelemetry.io/pull/10339
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 <!-- prettier-ignore-end -->
