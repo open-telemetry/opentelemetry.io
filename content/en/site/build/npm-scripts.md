@@ -100,6 +100,7 @@ are internal helpers and are not intended to be run directly.
 | `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.               |
 | `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^local-tools-note]  |
 | `test-and-fix`             | Run fix scripts (excluding i18n/refcache/submodule), then checks. |
+| `fix-and-test:all`         | All fixes (incl. i18n) then all checks; links checked once.[^fat] |
 | `diff:check`               | Warn if working tree has uncommitted changes.                     |
 | `diff:fail`                | Fail if working tree has changes (e.g. after build).              |
 | `netlify-build:preview`    | `build:preview` then `diff:check`.                                |
@@ -108,6 +109,12 @@ are internal helpers and are not intended to be run directly.
 [^local-tools-note]:
     This script has a compound name, rather than being `test:tools`, so that it
     gets picked up by `test:compound-tests`.
+
+[^fat]:
+    The housekeeping default: runs `fix:refcache` (prune, then link check) after
+    the content fixes and excludes `check:links` and `check:collector-sync` from
+    the check phase; uses the keep-going `all` runner so every fix is captured.
+    See [Housekeeping](ci-workflows/#housekeeping).
 
 ## Utilities
 

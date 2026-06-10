@@ -88,7 +88,7 @@
     "diff:check": "npm run _diff:check || (echo; echo 'WARNING: the files above have not been committed'; echo)",
     "diff:fail": "npm run _diff:check || (echo; echo 'ERROR: the files above have changed. Locally rerun `npm run test-and-fix` and commit changes'; echo; exit 1)",
     "fix:all": "npm run all -- $(npm -s run _list:fix:*)",
-    "fix-and-test:all": "npm run all -- fix:submodule $(CMD_SKIP='refcache|submodule' npm -s run _list:fix:*) fix:refcache $(CMD_SKIP=links npm -s run _list:check:*)",
+    "fix-and-test:all": "npm run all -- fix:submodule $(CMD_SKIP='refcache|submodule' npm -s run _list:fix:*) fix:refcache $(CMD_SKIP='links|collector-sync' npm -s run _list:check:*)",
     "fix:code-excerpts": "npm run _code-excerpter-over-en",
     "fix:collector-sync:lint": "cd scripts/collector-sync && uv run ruff check --fix src/",
     "fix:dict": "scripts/sort-cspell-words.pl .cspell/*.txt && npm run _fix:dict",

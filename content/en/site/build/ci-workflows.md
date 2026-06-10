@@ -307,16 +307,10 @@ composed by [scripts/gh/patch-report/][]; all are unit tested via
 ## Housekeeping {#housekeeping}
 
 The [`housekeeping.yml`][housekeeping] workflow runs an approved fix command —
-`fix-and-test:all` by default, or an npm script given via manual
+[`fix-and-test:all`](npm-scripts/) by default, or an npm script given via manual
 (maintainer-only) dispatch — daily at 7:37 UTC, and publishes any resulting
 changes as a PR. It is the second caller of the reusable patch actions, and the
 scheduled-maintenance flow that motivated [#6592][].
-
-Unlike the contributor-oriented `test-and-fix`, the `fix-and-test:all` script
-runs _all_ fix scripts (including i18n) followed by _all_ check scripts, keeps
-going past failures so every fix is captured, and checks links exactly once:
-`fix:refcache` (prune, then link check) runs after the content fixes, and
-`check:links` is excluded from the check phase.
 
 It runs as a three-stage pipeline:
 
@@ -327,25 +321,22 @@ It runs as a three-stage pipeline:
    fails the job, but any fixes it produced are still published.
 2. **`publish-patch`**: calls the [`reusable-patch-pr.yml`][] workflow — the
    sibling of [`reusable-apply-patch.yml`][] for callers without a PR context —
-   which applies the patch to the stable `otelbot/housekeeping` branch,
+   which force-pushes the patch to the stable `otelbot/housekeeping` branch,
    recreated from `main` on every run, and opens a PR for it unless one is
-   already open. There is thus at most one housekeeping PR at a time, and each
-   run force-pushes the latest results to it until it is merged. Skipped when
-   the command produced no changes, leaving any open housekeeping PR as is.
-   Since the branch is regenerated each run, any commits pushed to it — manual
-   or via `/fix` — are clobbered by the next run: merge the PR promptly if you
-   push commits to it.
+   already open. There is thus at most one housekeeping PR at a time, always
+   carrying the latest results. Any commits pushed to the branch — manual or via
+   `/fix` — are clobbered by the next run, so merge the PR promptly if you push
+   commits to it. Skipped when the command produced no changes, leaving any open
+   housekeeping PR as is.
 3. **`report-failure`**: files a tracking issue on failure, via
    [workflow failure reporting](#workflow-failure-reporting).
 
 > [!NOTE]
 >
-> The [`refcache-refresh.yml`][] workflow also runs daily (9:33 UTC) and also
-> touches `refcache.json` (it refreshes the oldest entries), so the two bot PRs
-> can conflict depending on merge order. No action is needed: conflicts
-> self-heal, since the housekeeping branch is regenerated from `main` daily and
-> the refcache-refresh branch syncs from `main` on each run. Migrating
-> refcache-refresh onto the reusable patch actions — which would eliminate such
+> The [`refcache-refresh.yml`][] workflow also runs daily and touches
+> `refcache.json`, so the two bot PRs can conflict depending on merge order.
+> Conflicts self-heal, since both branches sync from `main` on each run.
+> Migrating refcache-refresh onto the reusable patch actions — eliminating such
 > conflicts by construction — is tracked in the [project plan][].
 
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592

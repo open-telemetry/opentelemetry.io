@@ -93,9 +93,12 @@ mechanics decoupled from the `issue_comment` trigger.
   security fix above). Phase 2 (housekeeping fixes published as a new PR) should
   be a _sibling_ trusted workflow (patch → branch → `gh pr create`) rather than
   evolving this one into a multi-mode publisher.
-- Phase 2 is a scheduled housekeeping workflow rather than an i18n caller: it is
-  what the founding issue ([#6592][]) asked for, and its lack of PR context best
-  demonstrates that the patch actions are trigger-agnostic.
+- Phase 2 is a scheduled housekeeping workflow rather than a dedicated i18n
+  caller: it is what the founding issue ([#6592][]) asked for, and its lack of
+  PR context best demonstrates that the patch actions are trigger-agnostic. Its
+  default command, `fix-and-test:all`, deliberately includes `fix:i18n` and
+  `check:i18n` (unlike `test-and-fix`): scheduled i18n drift fixes are part of
+  the housekeeping mandate, lessening the need for a dedicated i18n caller.
 - Housekeeping publication follows the `refcache-refresh.yml` precedent: one PR
   for all fixes, on the stable `otelbot/housekeeping` branch recreated from
   `main` each run (force-push). At most one open housekeeping PR exists at a
@@ -204,6 +207,9 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
   - [ ] check whether the forwarded `GITHUB_TOKEN` grants on `publish-patch` can
         be trimmed (steps authenticate with the app token), as for the `/fix`
         publish job
+  - [ ] watch the runtime of the first full `fix-and-test:all` run
+        (`fix:refcache` implies a full build plus link check); bump the 30-min
+        job timeout if it is tight
 - Open PR on a clean no-change run: left as is for now. Since the branch is
   recreated from `main` each run, a clean exit-0 no-diff run means `main` no
   longer needs the open PR's fixes, so auto-closing it (clean runs only — a
