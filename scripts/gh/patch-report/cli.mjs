@@ -24,6 +24,7 @@ Options:
                                an outcome, and emit its comment id.
       --comment-id <id>        Update this existing comment instead of
                                creating a new one (e.g. the ack comment).
+                               Mutually exclusive with --ack.
       --directive-url <url>    URL of the comment that requested the action;
                                linked from the posted comment.
       --label <name>           The action as requested (e.g. the command).
@@ -135,8 +136,8 @@ if (res.status !== 0) {
 
 const id = (res.stdout ?? '').trim();
 console.log(`Comment id: ${id}`);
-// Only the ack invocation's comment id is a meaningful output (the report
-// invocation consumes ids, it doesn't produce them).
+// Only the ack invocation's comment id is a meaningful output (on the
+// report invocation's fallback create, the new comment's id has no consumer).
 const githubOutput = process.env.GITHUB_OUTPUT;
 if (values.ack && githubOutput) {
   appendFileSync(githubOutput, `comment_id=${id}\n`);

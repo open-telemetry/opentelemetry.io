@@ -13,7 +13,7 @@ const CLI = new URL('./cli.mjs', import.meta.url).pathname;
 
 // Runs the CLI with a stubbed `gh` and returns the args that the stub
 // received plus the contents written to $GITHUB_OUTPUT. The stub exits with
-// $GH_STUB_EXIT (default 0) so failure propagation can be tested.
+// the `ghExit` option (default 0) so failure propagation can be tested.
 function runCli(cliArgs, { ghExit = 0 } = {}) {
   const dir = mkdtempSync(join(tmpdir(), 'patch-report-cli-'));
   const argsFile = join(dir, 'gh-args.txt');
