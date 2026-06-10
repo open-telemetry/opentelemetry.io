@@ -114,7 +114,7 @@ are internal helpers and are not intended to be run directly.
     The housekeeping default: runs `fix:refcache` (prune, then link check) after
     the content fixes and excludes `check:links` from the check phase; uses the
     keep-going `all` runner so every fix is captured. See
-    [Housekeeping](ci-workflows/#housekeeping).
+    [Housekeeping](../ci-workflows/#housekeeping).
 
 ## Utilities
 

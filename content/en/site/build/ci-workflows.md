@@ -307,10 +307,10 @@ composed by [scripts/gh/patch-report/][]; all are unit tested via
 ## Housekeeping {#housekeeping}
 
 The [`housekeeping.yml`][housekeeping] workflow runs an approved fix command —
-[`fix-and-test:all`](npm-scripts/) by default, or an npm script given via manual
-(maintainer-only) dispatch — daily at 7:37 UTC, and publishes any resulting
-changes as a PR. It is the second caller of the reusable patch actions, and the
-scheduled-maintenance flow that motivated [#6592][].
+[`fix-and-test:all`](../npm-scripts/) by default, or an npm script given via
+manual (maintainer-only) dispatch — daily at 7:37 UTC, and publishes any
+resulting changes as a PR. It is the second caller of the reusable patch
+actions, and the scheduled-maintenance flow that motivated [#6592][].
 
 It runs as a three-stage pipeline:
 
@@ -327,7 +327,9 @@ It runs as a three-stage pipeline:
    carrying the latest results. Any commits pushed to the branch — manual or via
    `/fix` — are clobbered by the next run, so merge the PR promptly if you push
    commits to it. Skipped when the command produced no changes, leaving any open
-   housekeeping PR as is.
+   housekeeping PR as is. Auto-merge is safe to enable on housekeeping PRs:
+   GitHub still gates the merge on the required reviews, which remain the
+   control over the machine- and internet-derived content.
 3. **`report-failure`**: files a tracking issue on failure, via
    [workflow failure reporting](#workflow-failure-reporting).
 
