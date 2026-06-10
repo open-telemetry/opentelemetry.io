@@ -107,6 +107,8 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
         changed to latest-wins: a new directive cancels the PR's in-flight run,
         which still reports a ⚠️ outcome.
   - [ ] `/fix` followed by explanatory lines → treated as `/fix`
+  - [x] directive on a closed PR → ❌ "only apply to open PRs" comment, no fix
+        work run
   - [ ] failing command → ❌/⚠️ comment
   - [ ] same flow from a fork PR
 - Follow-up: trim the `GITHUB_TOKEN` grants forwarded to the reusable workflow
