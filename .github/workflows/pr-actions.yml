@@ -29,8 +29,10 @@ jobs:
     # Same broad /fix PR-comment gate as generate-patch, including the open-PR
     # check; closed PRs skip the ack and get a fresh outcome comment from the
     # report job. The report job updates the ack comment in place with the
-    # outcome.
+    # outcome. The repository-owner check keeps the pipeline from failing in
+    # forks, which lack the bot app variables and secrets.
     if: |
+      github.repository_owner == 'open-telemetry' &&
       github.event.issue.pull_request &&
       github.event.issue.state == 'open' &&
       startsWith(github.event.comment.body, '/fix')
@@ -77,6 +79,7 @@ jobs:
     # step below. Closed (including merged) PRs are gated out here; the report
     # job still explains why nothing ran.
     if: |
+      github.repository_owner == 'open-telemetry' &&
       github.event.issue.pull_request &&
       github.event.issue.state == 'open' &&
       startsWith(github.event.comment.body, '/fix')
@@ -155,6 +158,7 @@ jobs:
     # check): invalid directives, failures, and directives on closed PRs.
     if: |
       always() &&
+      github.repository_owner == 'open-telemetry' &&
       github.event.issue.pull_request &&
       startsWith(github.event.comment.body, '/fix')
     # The outcome comment is posted with the app token below, not GITHUB_TOKEN.
