@@ -7,7 +7,6 @@ author:
   [Adriana Villela](https://github.com/avillela) (Dynatrace), [Diana
   Todea](https://github.com/didiViking) (VictoriaMetrics)
 draft: true # TODO: remove this line once your post is ready to be published
-canonical_url: https://community.dynatrace.com/t5/Community-Voices/The-Lazy-Developer-s-Guide-to-Observing-Your-Own-Code/ba-p/299230
 issue: 10132
 sig: End User SIG
 cSpell:ignore: Devoxx Devs otlphttp Todea vibecoded
