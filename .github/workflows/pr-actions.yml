@@ -121,8 +121,11 @@ jobs:
         with:
           client-id: ${{ vars.OTELBOT_APP_ID }}
           private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
-          permission-issues: write # PR comments go through the issues API
-          permission-pull-requests: read # gh pr view/metadata lookups
+          # PR comments authorize via the pull-requests permission (even
+          # though they're posted through the issues API endpoint). The
+          # otelbot installation has no issues permission; requesting it
+          # makes the token mint fail (422).
+          permission-pull-requests: write # comment the run outcome on the PR
 
       - name: Comment run outcome
         env:
