@@ -108,10 +108,11 @@ the _same_ entity, and a genuine identity change is correctly a _new_ entity
 rather than a silent merge of two different things.
 
 When a single value is reused over time, the fix isn't to drop it but to pair it
-with a discriminator. OpenTelemetry's `process` entity is a good model: a PID can
-be recycled, so a process is identified by `process.pid` **and**
-`process.creation.time` together — stable for that process's lifetime — while its
-changing facts stay descriptive.
+with a discriminator. OpenTelemetry's
+[`process` entity](https://opentelemetry.io/docs/specs/semconv/registry/entities/process/#process)
+is a good model: a PID can be recycled, so a process is identified by
+`process.pid` **and** `process.creation.time` together — stable for that
+process's lifetime — while its changing facts stay descriptive.
 
 This is worth getting right early: a "tolerant" match that treats an observation
 differing by one identifying value as the same entity quietly merges distinct
