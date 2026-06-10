@@ -50,7 +50,7 @@ export function buildOutcomeComment({
   hint,
 }) {
   const what = label ? `\`${label}\`` : 'the requested action';
-  const logs = `See logs: ${runUrl}`;
+  const logs = `See the [run logs](${runUrl}).`;
 
   // 1. Patch generation did not succeed: no changes were ever captured.
   if (generateResult === 'cancelled') {

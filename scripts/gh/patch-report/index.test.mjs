@@ -42,7 +42,10 @@ describe('buildOutcomeComment', () => {
     const body = build({ patchSkipped: 'true', commandExitStatus: '2' });
     assert.match(body, /^❌ `fix:refcache` failed \(exit status 2\)/);
     assert.match(body, /made no changes/);
-    assert.match(body, /See logs: https:\/\/example\.test\/run\/123/);
+    assert.match(
+      body,
+      /See the \[run logs\]\(https:\/\/example\.test\/run\/123\)\./,
+    );
   });
 
   test('command failed non-zero but changes were applied', () => {
@@ -57,7 +60,10 @@ describe('buildOutcomeComment', () => {
   test('unidentified request: generation failed with no label', () => {
     const body = build({ generateResult: 'failure', label: '' });
     assert.match(body, /^❌ The request could not be processed\./);
-    assert.match(body, /See logs: https:\/\/example\.test\/run\/123/);
+    assert.match(
+      body,
+      /See the \[run logs\]\(https:\/\/example\.test\/run\/123\)\./,
+    );
   });
 
   test('unidentified request includes a caller-supplied hint', () => {
@@ -72,7 +78,10 @@ describe('buildOutcomeComment', () => {
   test('generation failed for a known command (e.g. oversized patch)', () => {
     const body = build({ generateResult: 'failure' });
     assert.match(body, /^❌ `fix:refcache` could not be run/);
-    assert.match(body, /See logs: https:\/\/example\.test\/run\/123/);
+    assert.match(
+      body,
+      /See the \[run logs\]\(https:\/\/example\.test\/run\/123\)\./,
+    );
   });
 
   test('generation cancelled', () => {
