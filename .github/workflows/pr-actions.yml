@@ -12,6 +12,16 @@ env:
   PR_NUM: ${{ github.event.issue.number }}
   MAX_PATCH_SIZE_KB: 1024
 
+# Latest directive wins: a new /fix comment on a PR cancels that PR's
+# in-flight run (the cancelled run's report job still posts a ⚠️ outcome).
+# Non-/fix comments trigger this workflow too (all jobs skip), so they get a
+# unique group to keep them from cancelling a /fix run.
+concurrency:
+  group:
+    ${{ github.workflow }}-${{ startsWith(github.event.comment.body, '/fix') &&
+    github.event.issue.number || github.run_id }}
+  cancel-in-progress: ${{ startsWith(github.event.comment.body, '/fix') }}
+
 jobs:
   generate-patch:
     name: Run PR action and generate patch (untrusted)
@@ -71,11 +81,6 @@ jobs:
     # A reusable workflow (resolved from the default branch, never from the PR)
     # so that no PR-controlled code can run with write credentials.
     uses: ./.github/workflows/reusable-apply-patch.yml
-    # Serialize patch pushes per PR so that two rapid directives don't race.
-    # Job-level (not workflow-level) so that unrelated PR comments — which
-    # trigger this workflow but skip every job — can't evict a queued run.
-    concurrency:
-      group: ${{ github.workflow }}-apply-${{ github.event.issue.number }}
     # GITHUB_TOKEN grants forwarded to the reusable workflow (its jobs cannot
     # exceed these); see that workflow for how its steps authenticate.
     permissions:

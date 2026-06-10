@@ -89,7 +89,7 @@ once the shared patch path has proven stable.
 
 ## Status details
 
-As of 2026-06-10:
+As of 2026-06-10 (continued work tracked in [#10320][]):
 
 - Phase 1 merged ([#10309][], plus app-token scope fix [#10318][]):
   `npm-script-patch` action (untrusted), `reusable-apply-patch.yml` workflow
@@ -99,8 +99,10 @@ As of 2026-06-10:
   - [x] `/fix:<name>` with changes pending → ✅ comment + pushed commit
   - [x] `/fixx` (invalid directive) → ❌ comment with usage hint
   - [x] `/fix:<name>` with no changes pending → ℹ️ no-op comment
-  - [x] two `/fix` directives in rapid succession → two independent runs
-        (applies serialize per-PR; a stale duplicate patch fails loudly)
+  - [x] two `/fix` directives in rapid succession → two independent runs; the
+        second failed loudly (stale duplicate patch). Since then, semantics
+        changed to latest-wins: a new directive cancels the PR's in-flight run,
+        which still reports a ⚠️ outcome.
   - [ ] `/fix` followed by explanatory lines → treated as `/fix`
   - [ ] failing command → ❌/⚠️ comment
   - [ ] same flow from a fork PR
@@ -116,6 +118,9 @@ As of 2026-06-10:
         rejected as invasive (alters user content).
   - [x] Include the run link in the ℹ️ no-op outcome (the other outcomes already
         link to the run or logs).
+  - [x] Latest directive wins: per-PR workflow-level concurrency with
+        cancel-in-progress, so concurrent runs don't waste resources. Non-`/fix`
+        comments get a unique group so they can't cancel a `/fix` run.
 - Phases 2 (i18n caller) and 3 (scheduled maintenance) not started.
 
 <!-- prettier-ignore-start -->
@@ -123,4 +128,5 @@ As of 2026-06-10:
 [#10317]: https://github.com/open-telemetry/opentelemetry.io/pull/10317
 [#10318]: https://github.com/open-telemetry/opentelemetry.io/pull/10318
 [#10319]: https://github.com/open-telemetry/opentelemetry.io/pull/10319
+[#10320]: https://github.com/open-telemetry/opentelemetry.io/issues/10320
 <!-- prettier-ignore-end -->
