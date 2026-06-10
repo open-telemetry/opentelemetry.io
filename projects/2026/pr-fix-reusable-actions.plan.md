@@ -2,7 +2,7 @@
 title: Reusable patch actions for PR and maintenance fixes
 custodian: [Patrice Chalin](https://github.com/chalin)
 status: Phase 1 merged and partially live-validated; phases 2–3 pending.
-cSpell:ignore: otelbot test-and-fix
+cSpell:ignore: fixx otelbot test-and-fix
 ---
 
 ## Context
@@ -95,9 +95,13 @@ As of 2026-06-10:
   `npm-script-patch` action (untrusted), `reusable-apply-patch.yml` workflow
   (trusted), always-run outcome reporting, unit-tested directive parsing and
   report composition, and a guard test for workflow-to-file references.
-- Live validation: happy path confirmed (`/fix:dict` on [#10317] — patch
-  generated, applied, pushed, ✅ outcome comment). Remaining checklist: invalid
-  directive, no-op, failing command, directive with trailing text, fork PR.
+- Live validation on [#10317]:
+  - [x] `/fix:<name>` with changes pending → ✅ comment + pushed commit
+  - [x] `/fixx` (invalid directive) → ❌ comment with usage hint
+  - [ ] `/fix:<name>` with no changes pending → ℹ️ no-op comment
+  - [ ] `/fix` followed by explanatory lines → treated as `/fix`
+  - [ ] failing command → ❌/⚠️ comment
+  - [ ] same flow from a fork PR
 - Follow-up: trim the `GITHUB_TOKEN` grants forwarded to the reusable workflow
   once live runs confirm the minimum required.
 - Phases 2 (i18n caller) and 3 (scheduled maintenance) not started.
