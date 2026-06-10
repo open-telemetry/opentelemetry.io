@@ -21,7 +21,7 @@ a set of checks are executed. The PR checks verify that:
 > [fix content issues](../pull-requests/#fix-issues) first by running
 > `npm run fix:all` locally.
 >
-> You can also add the comment `/fix:all` to your PR. This will trigger the
+> You can also add the comment `/fix` to your PR. This will trigger the
 > OpenTelemetry Bot to run that command on your behalf and update the PR. Make
 > sure that you pull those changes locally.
 >
