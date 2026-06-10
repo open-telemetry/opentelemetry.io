@@ -1,7 +1,7 @@
 ---
 title: Reusable patch actions for PR and maintenance fixes
 custodian: [Patrice Chalin](https://github.com/chalin)
-status: Phase 1 implemented; phases 2–3 pending.
+status: Phase 1 merged and partially live-validated; phases 2–3 pending.
 cSpell:ignore: otelbot test-and-fix
 ---
 
@@ -89,11 +89,19 @@ once the shared patch path has proven stable.
 
 ## Status details
 
-As of 2026-06-09:
+As of 2026-06-10:
 
-- Branch: `chalin-m24-pr-actions-refactor-2026-0609`.
-- Phase 1 implemented: `npm-script-patch` action (untrusted),
-  `reusable-apply-patch.yml` workflow (trusted), always-run outcome reporting,
-  unit-tested directive parsing and report composition, and a guard test for
-  workflow-to-file references.
+- Phase 1 merged ([#10309], plus app-token scope fix [#10318]):
+  `npm-script-patch` action (untrusted), `reusable-apply-patch.yml` workflow
+  (trusted), always-run outcome reporting, unit-tested directive parsing and
+  report composition, and a guard test for workflow-to-file references.
+- Live validation: happy path confirmed (`/fix:dict` on [#10317] — patch
+  generated, applied, pushed, ✅ outcome comment). Remaining checklist: invalid
+  directive, no-op, failing command, directive with trailing text, fork PR.
+- Follow-up: trim the `GITHUB_TOKEN` grants forwarded to the reusable workflow
+  once live runs confirm the minimum required.
 - Phases 2 (i18n caller) and 3 (scheduled maintenance) not started.
+
+[#10309]: https://github.com/open-telemetry/opentelemetry.io/pull/10309
+[#10317]: https://github.com/open-telemetry/opentelemetry.io/pull/10317
+[#10318]: https://github.com/open-telemetry/opentelemetry.io/pull/10318
