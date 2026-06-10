@@ -12,14 +12,26 @@ env:
   PR_NUM: ${{ github.event.issue.number }}
   MAX_PATCH_SIZE_KB: 1024
 
+# Latest directive wins: a new /fix comment on a PR cancels that PR's
+# in-flight run (the cancelled run's report job still posts a ⚠️ outcome).
+# Non-/fix comments trigger this workflow too (all jobs skip), so they get a
+# unique group to keep them from cancelling a /fix run.
+concurrency:
+  group:
+    ${{ github.workflow }}-${{ startsWith(github.event.comment.body, '/fix') &&
+    github.event.issue.number || github.run_id }}
+  cancel-in-progress: ${{ startsWith(github.event.comment.body, '/fix') }}
+
 jobs:
   generate-patch:
     name: Run PR action and generate patch (untrusted)
     runs-on: ubuntu-latest
     # Broad prefix gate; exact (first-line) parsing happens in the extract
-    # step below.
+    # step below. Closed (including merged) PRs are gated out here; the report
+    # job still explains why nothing ran.
     if: |
       github.event.issue.pull_request &&
+      github.event.issue.state == 'open' &&
       startsWith(github.event.comment.body, '/fix')
 
     # These outputs are produced by the untrusted job (PR-supplied code can
@@ -71,11 +83,6 @@ jobs:
     # A reusable workflow (resolved from the default branch, never from the PR)
     # so that no PR-controlled code can run with write credentials.
     uses: ./.github/workflows/reusable-apply-patch.yml
-    # Serialize patch pushes per PR so that two rapid directives don't race.
-    # Job-level (not workflow-level) so that unrelated PR comments — which
-    # trigger this workflow but skip every job — can't evict a queued run.
-    concurrency:
-      group: ${{ github.workflow }}-apply-${{ github.event.issue.number }}
     # GITHUB_TOKEN grants forwarded to the reusable workflow (its jobs cannot
     # exceed these); see that workflow for how its steps authenticate.
     permissions:
@@ -96,10 +103,13 @@ jobs:
     name: Report outcome (trusted)
     runs-on: ubuntu-latest
     needs: [generate-patch, apply-patch]
-    # Always tell the requestor what happened, including when patch generation
-    # failed before anything could be applied. Only skip when there was no /fix
-    # invocation to report on.
-    if: always() && needs.generate-patch.result != 'skipped'
+    # Always tell the requestor what happened, for every comment that enters
+    # the pipeline (same broad gate as generate-patch, minus the PR-state
+    # check): invalid directives, failures, and directives on closed PRs.
+    if: |
+      always() &&
+      github.event.issue.pull_request &&
+      startsWith(github.event.comment.body, '/fix')
     # The outcome comment is posted with the app token below, not GITHUB_TOKEN.
     permissions:
       contents: read # checkout
@@ -131,6 +141,9 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           LABEL: ${{ needs.generate-patch.outputs.action_name }}
+          # 'open' or 'closed'; merged PRs are 'closed' with a merged_at time.
+          PR_STATE: ${{ github.event.issue.state }}
+          PR_MERGED: ${{ github.event.issue.pull_request.merged_at != null }}
           GENERATE_RESULT: ${{ needs.generate-patch.result }}
           PATCH_SKIPPED: ${{ needs.generate-patch.outputs.patch_skipped }}
           COMMAND_EXIT_STATUS:
@@ -144,6 +157,8 @@ jobs:
           node scripts/gh/patch-report/cli.mjs \
             --pr "$PR_NUM" \
             --label "$LABEL" \
+            --pr-state "$PR_STATE" \
+            --pr-merged "$PR_MERGED" \
             --generate-result "$GENERATE_RESULT" \
             --patch-skipped "$PATCH_SKIPPED" \
             --command-exit-status "$COMMAND_EXIT_STATUS" \

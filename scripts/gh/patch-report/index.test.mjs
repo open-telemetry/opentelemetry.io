@@ -16,25 +16,26 @@ describe('buildOutcomeComment', () => {
     runUrl: 'https://example.test/run/123',
   };
 
+  const LOGS = 'See [run 123](https://example.test/run/123).';
+
   const build = (overrides) => buildOutcomeComment({ ...BASE, ...overrides });
 
   test('success: command applied cleanly', () => {
     const body = build({});
     assert.match(body, /^✅ `fix:refcache` applied successfully/);
-    assert.match(body, /\[run 123\]\(https:\/\/example\.test\/run\/123\)/);
   });
 
   test('no-op: generation produced no changes', () => {
     assert.equal(
       build({ patchSkipped: 'true' }),
-      'ℹ️ `fix:refcache` made no changes. Nothing to commit.',
+      `ℹ️ \`fix:refcache\` made no changes; nothing to commit. ${LOGS}`,
     );
   });
 
   test('no-op with unknown (empty) exit status is not reported as a failure', () => {
     assert.equal(
       build({ patchSkipped: 'true', commandExitStatus: '' }),
-      'ℹ️ `fix:refcache` made no changes. Nothing to commit.',
+      `ℹ️ \`fix:refcache\` made no changes; nothing to commit. ${LOGS}`,
     );
   });
 
@@ -42,7 +43,6 @@ describe('buildOutcomeComment', () => {
     const body = build({ patchSkipped: 'true', commandExitStatus: '2' });
     assert.match(body, /^❌ `fix:refcache` failed \(exit status 2\)/);
     assert.match(body, /made no changes/);
-    assert.match(body, /See logs: https:\/\/example\.test\/run\/123/);
   });
 
   test('command failed non-zero but changes were applied', () => {
@@ -57,7 +57,6 @@ describe('buildOutcomeComment', () => {
   test('unidentified request: generation failed with no label', () => {
     const body = build({ generateResult: 'failure', label: '' });
     assert.match(body, /^❌ The request could not be processed\./);
-    assert.match(body, /See logs: https:\/\/example\.test\/run\/123/);
   });
 
   test('unidentified request includes a caller-supplied hint', () => {
@@ -72,7 +71,6 @@ describe('buildOutcomeComment', () => {
   test('generation failed for a known command (e.g. oversized patch)', () => {
     const body = build({ generateResult: 'failure' });
     assert.match(body, /^❌ `fix:refcache` could not be run/);
-    assert.match(body, /See logs: https:\/\/example\.test\/run\/123/);
   });
 
   test('generation cancelled', () => {
@@ -95,7 +93,25 @@ describe('buildOutcomeComment', () => {
     assert.match(body, /^✅ the requested action applied successfully/);
   });
 
-  test('every outcome produces a non-empty comment', () => {
+  test('closed PR: nothing ran', () => {
+    const body = build({ prState: 'closed' });
+    assert.match(body, /^❌ This PR is closed, so `fix:refcache` was not run/);
+    assert.match(body, /only apply to open PRs/);
+  });
+
+  test('merged PR: nothing ran', () => {
+    const body = build({ prState: 'closed', prMerged: 'true', label: '' });
+    assert.match(
+      body,
+      /^❌ This PR has already been merged, so the requested action was not run/,
+    );
+  });
+
+  test('open PR state does not short-circuit the outcome', () => {
+    assert.equal(build({ prState: 'open' }), build({}));
+  });
+
+  test('every outcome produces a non-empty comment ending with the run link', () => {
     for (const generateResult of ['success', 'failure', 'cancelled']) {
       for (const patchSkipped of ['true', 'false']) {
         for (const applyResult of [
@@ -107,20 +123,27 @@ describe('buildOutcomeComment', () => {
           for (const commandExitStatus of ['0', '1', '']) {
             for (const label of ['fix', '']) {
               for (const hint of ['Any hint text.', '']) {
-                const body = buildOutcomeComment({
-                  label,
-                  generateResult,
-                  patchSkipped,
-                  commandExitStatus,
-                  applyResult,
-                  runId: '1',
-                  runUrl: 'u',
-                  hint,
-                });
-                assert.ok(
-                  typeof body === 'string' && body.length > 0,
-                  'comment should be a non-empty string',
-                );
+                for (const prState of ['open', 'closed', '']) {
+                  const body = buildOutcomeComment({
+                    label,
+                    prState,
+                    generateResult,
+                    patchSkipped,
+                    commandExitStatus,
+                    applyResult,
+                    runId: '1',
+                    runUrl: 'u',
+                    hint,
+                  });
+                  assert.ok(
+                    typeof body === 'string' && body.length > 0,
+                    'comment should be a non-empty string',
+                  );
+                  assert.ok(
+                    body.endsWith('See [run 1](u).'),
+                    `comment should end with the run link: ${body}`,
+                  );
+                }
               }
             }
           }

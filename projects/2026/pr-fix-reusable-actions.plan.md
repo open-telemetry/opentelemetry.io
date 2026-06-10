@@ -1,8 +1,8 @@
 ---
 title: Reusable patch actions for PR and maintenance fixes
-custodian: [Patrice Chalin](https://github.com/chalin)
-status: Phase 1 implemented; phases 2–3 pending.
-cSpell:ignore: otelbot test-and-fix
+custodian: '[Patrice Chalin](https://github.com/chalin)'
+status: Phase 1 merged and partially live-validated; phases 2–3 pending.
+cSpell:ignore: fixx otelbot test-and-fix
 ---
 
 ## Context
@@ -89,11 +89,48 @@ once the shared patch path has proven stable.
 
 ## Status details
 
-As of 2026-06-09:
+As of 2026-06-10 (continued work tracked in [#10320][]):
 
-- Branch: `chalin-m24-pr-actions-refactor-2026-0609`.
-- Phase 1 implemented: `npm-script-patch` action (untrusted),
-  `reusable-apply-patch.yml` workflow (trusted), always-run outcome reporting,
-  unit-tested directive parsing and report composition, and a guard test for
-  workflow-to-file references.
+- Phase 1 merged ([#10309][], plus app-token scope fix [#10318][]):
+  `npm-script-patch` action (untrusted), `reusable-apply-patch.yml` workflow
+  (trusted), always-run outcome reporting, unit-tested directive parsing and
+  report composition, and a guard test for workflow-to-file references.
+- Live validation on [#10317][] and [#10319][]:
+  - [x] `/fix:<name>` with changes pending → ✅ comment + pushed commit
+  - [x] `/fixx` (invalid directive) → ❌ comment with usage hint
+  - [x] `/fix:<name>` with no changes pending → ℹ️ no-op comment
+  - [x] two `/fix` directives in rapid succession → two independent runs; the
+        second failed loudly (stale duplicate patch). Since then, semantics
+        changed to latest-wins: a new directive cancels the PR's in-flight run,
+        which still reports a ⚠️ outcome.
+  - [ ] `/fix` followed by explanatory lines → treated as `/fix`
+  - [ ] failing command → ❌/⚠️ comment
+  - [ ] same flow from a fork PR
+- Follow-up: trim the `GITHUB_TOKEN` grants forwarded to the reusable workflow
+  once live runs confirm the minimum required.
+- Feature candidates (improve directive↔outcome association when a PR has
+  several directives):
+  - [ ] Immediate acknowledgement: a trusted "ack" job posts a progress comment
+        (e.g. "🔄 Running `/fix:format` — [run](link)") as soon as a directive
+        is received; the report job then edits that same comment with the final
+        outcome (1:1 comment per directive, no mutation of user content).
+        Alternative considered: editing the originating comment's first line —
+        rejected as invasive (alters user content).
+  - [x] Include the run link in every outcome, in a uniform format: each outcome
+        message ends with "See the logs of [run ID](url)."
+  - [x] Latest directive wins: per-PR workflow-level concurrency with
+        cancel-in-progress, so concurrent runs don't waste resources. Non-`/fix`
+        comments get a unique group so they can't cancel a `/fix` run.
+  - [x] Directives on closed or merged PRs are gated out (from the trigger
+        payload, before any runner does fix work) and reported as ❌ with the
+        reason. Draft PRs still work; deleted-branch sub-cases are moot since
+        nothing is checked out.
 - Phases 2 (i18n caller) and 3 (scheduled maintenance) not started.
+
+<!-- prettier-ignore-start -->
+[#10309]: https://github.com/open-telemetry/opentelemetry.io/pull/10309
+[#10317]: https://github.com/open-telemetry/opentelemetry.io/pull/10317
+[#10318]: https://github.com/open-telemetry/opentelemetry.io/pull/10318
+[#10319]: https://github.com/open-telemetry/opentelemetry.io/pull/10319
+[#10320]: https://github.com/open-telemetry/opentelemetry.io/issues/10320
+<!-- prettier-ignore-end -->

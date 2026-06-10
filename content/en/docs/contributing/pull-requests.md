@@ -181,7 +181,8 @@ a specific failure:
 ```
 
 The fix command must be the first line of your comment; you can add explanatory
-text on the lines that follow.
+text on the lines that follow. Issuing a new fix command while one is already
+running cancels the in-progress run so that the latest command wins.
 
 > [!TIP] Pro tip
 >
