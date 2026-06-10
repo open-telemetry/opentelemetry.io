@@ -1,7 +1,8 @@
 {
   "Notes": [
     "The 'all' runs _all_ named scripts in sequence, even if one fails; and exits with failure in that case.",
-    "check:links actually has the side-effect of 'fixing' the refcache; this is why test-and-fix uses _fix:most"
+    "check:links actually has the side-effect of 'fixing' the refcache; this is why test-and-fix uses _fix:most",
+    "fix-and-test:all is the housekeeping (CI) default: all fixes then all checks, with links checked exactly once -- fix:refcache (prune + link check) runs after the content fixes are done, and check:links is dropped from the check phase."
   ],
   "scripts": {
     "__check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve",
@@ -65,6 +66,7 @@
     "cd:public": "cd public &&",
     "check:all": "npm run seq -- $(npm run -s _list:check:*)",
     "check:code-excerpts": "npm run _code-excerpter-over-en -- --dry-run --fail-on-update",
+    "_check:uv": "command -v uv >/dev/null || { echo '[help] The collector-sync scripts require uv. Install it: https://docs.astral.sh/uv/getting-started/installation/'; exit 1; }",
     "check:collector-sync:lint": "cd scripts/collector-sync && uv run ruff check src/",
     "check:collector-sync:types": "cd scripts/collector-sync && uv run mypy src/",
     "check:collector-sync": "cd scripts/collector-sync && uv run pytest",
@@ -88,6 +90,7 @@
     "diff:check": "npm run _diff:check || (echo; echo 'WARNING: the files above have not been committed'; echo)",
     "diff:fail": "npm run _diff:check || (echo; echo 'ERROR: the files above have changed. Locally rerun `npm run test-and-fix` and commit changes'; echo; exit 1)",
     "fix:all": "npm run all -- $(npm -s run _list:fix:*)",
+    "fix-and-test:all": "npm run all -- fix:submodule $(CMD_SKIP='refcache|submodule' npm -s run _list:fix:*) fix:refcache $(CMD_SKIP=links npm -s run _list:check:*)",
     "fix:code-excerpts": "npm run _code-excerpter-over-en",
     "fix:collector-sync:lint": "cd scripts/collector-sync && uv run ruff check --fix src/",
     "fix:dict": "scripts/sort-cspell-words.pl .cspell/*.txt && npm run _fix:dict",
@@ -127,9 +130,13 @@
     "prebuild:production": "npm run _prebuild",
     "prebuild": "npm run _prebuild",
     "pre__check:links": "npm run generate:config:links",
+    "precheck:collector-sync": "npm run -s _check:uv",
+    "precheck:collector-sync:lint": "npm run -s _check:uv",
+    "precheck:collector-sync:types": "npm run -s _check:uv",
     "precheck:links:internal": "npm run build",
     "precheck:links": "npm run build",
     "precheck:markdown:specs": "mkdir -p tmp && cp .markdownlint-for-specs.yml tmp/.markdownlint.yml",
+    "prefix:collector-sync:lint": "npm run -s _check:uv",
     "prefix:submodule": "npm run update:submodule",
     "prepare": "npm run seq -- get:submodule _prepare:docsy",
     "preserve:hugo": "npm run _prebuild",
