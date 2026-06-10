@@ -67,9 +67,9 @@ deal with the extra work and overhead of instrumenting application code.
 We spoke with a few developers to get some of their thoughts on instrumentation,
 and they shared some of their pain points with us.
 
-#### Pain point #1
+### Pain point #1
 
-_“Dependent on the efforts of that specific SDK’s community”_
+“Dependent on the efforts of that specific SDK’s community”
 
 Each language supported by OpenTelemetry has its own
 [Special Interest Group (SIG)](https://en.wikipedia.org/wiki/Special_interest_group)
@@ -79,10 +79,10 @@ SIGs have more contributors than others. Some individuals can dedicate more time
 to the project than others. Additionally, the amount of time taken to address an
 issue varies by SIG.
 
-#### Pain point #2
+### Pain point #2
 
-_“If there is no auto-instrumentation, developers have a hard time manually
-instrumenting”_
+“If there is no auto-instrumentation, developers have a hard time manually
+instrumenting”
 
 OpenTelemetry offers
 [zero-code (auto) instrumentation for some languages](/docs/zero-code/).
@@ -91,20 +91,20 @@ instrumentation support, making it more daunting for instrumenting, as
 developers have to start from scratch. We’ll talk more about zero-code
 instrumentation later.
 
-#### Pain point #3
+### Pain point #3
 
-_“Too many options in instrumenting: SDKs, eBPF, compile-time. Also these
-projects are not mature enough.”_
+“Too many options in instrumenting: SDKs, eBPF, compile-time. Also these
+projects are not mature enough.”
 
 The OpenTelemetry ecosystem is very large and has many moving parts. Also, not
 all parts move at the same rate. This makes it challenging for developers to
 keep up.
 
-#### Pain point #4
+### Pain point #4
 
-_“Public API stability, upgrading project dependency is painful, instrumentation
+“Public API stability, upgrading project dependency is painful, instrumentation
 is too verbose, metrics cardinality is a big problem for the high cardinality
-attributes”_
+attributes”
 
 OpenTelemetry has definitely experienced some growing pains over the years.
 There are challenges around project dependencies, and getting started with
@@ -186,7 +186,7 @@ Let’s start with some good practices for instrumenting application code.
 Once you’re ready to instrument code, what exactly _should_ you instrument? It
 starts with traces.
 
-#### Add spans to meaningful units of work
+### Add spans to meaningful units of work
 
 What happened when going from point A to point B? Traces help with that, by
 telling the story of a request. A trace is made up of spans, which represent
@@ -199,7 +199,7 @@ meaningful units of work. These can include:
 - Outbound calls to DB caches, APIs, messaging queues
 - Business critical operations
 
-#### Capture significant events in logs
+### Capture significant events in logs
 
 While traces tell the overall story of what is happening within and across
 services, logs help us understand specific things that happened at a specific
@@ -215,7 +215,7 @@ happened. This includes capturing:
 - Security-related events, such as authentication failures and permission
   denials
 
-#### Capture latency metrics
+### Capture latency metrics
 
 Writing performant code is important for developers. In an age where end users
 expect responsive applications and are happy to abandon non-performant
@@ -225,12 +225,12 @@ time for each step in the “add to shopping cart and checkout” experience to 
 milliseconds, not seconds. This is why capturing latency metrics is important,
 as it can help pinpoint why a particular request is taking longer than usual.
 
-#### Instrument home-grown frameworks and libraries
+### Instrument home-grown frameworks and libraries
 
 Chances are that most of your code will touch these, so you’ll get pretty good
 coverage overall.
 
-#### DON’T PANIC!
+### DON’T PANIC!
 
 One of our favourite things about the OpenTelemetry project is that there is a
 huge community of practice at your disposal. This takes on the form of
