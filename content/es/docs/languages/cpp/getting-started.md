@@ -271,7 +271,7 @@ target_link_libraries(dice-server PRIVATE
 ```
 
 Actualiza el fichero `main.cpp` con siguiente código para inicializar un
-traceador y emitir spans cuando se llame al controlador de solicitudes
+rastreador y emitir spans cuando se llame al controlador de solicitudes
 `/rolldice`.
 
 ```cpp
