@@ -78,11 +78,28 @@
     position: relative;
   }
 
-  .ct-snippet-copy {
+  // Caption naming a single snippet (the context the tab label carries when
+  // there are several).
+  .ct-snippet-caption {
+    margin-bottom: 0.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--bs-secondary-color);
+  }
+
+  // Toolbar overlaid on the top-right of the code block: source link + copy.
+  .ct-snippet-toolbar {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
     z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .ct-snippet-source {
+    font-size: 0.8125rem;
   }
 
   .ct-snippet-pre {

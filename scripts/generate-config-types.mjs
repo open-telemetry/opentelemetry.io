@@ -21,6 +21,24 @@ const snippetsDir = join(configRoot, 'snippets');
 const outputDir = join(root, 'tmp/schemas');
 const outputPath = join(outputDir, 'config-types.json');
 
+// Resolve the opentelemetry-configuration ref the snippets are pinned to, so we
+// can link each snippet back to its source on GitHub. Prefer the `config-pin`
+// from .gitmodules (a human-readable tag like `v1.0.0`); fall back to `main`.
+const SNIPPET_REPO = 'open-telemetry/opentelemetry-configuration';
+function resolveConfigRef() {
+  try {
+    const gitmodules = readFileSync(join(root, '.gitmodules'), 'utf8');
+    const block = gitmodules
+      .split(/^\[submodule /m)
+      .find((b) => b.includes('opentelemetry-configuration'));
+    const pin = block?.match(/config-pin\s*=\s*(\S+)/)?.[1];
+    return pin || 'main';
+  } catch {
+    return 'main';
+  }
+}
+const snippetSourceBase = `https://github.com/${SNIPPET_REPO}/blob/${resolveConfigRef()}/snippets`;
+
 const rawSchema = JSON.parse(readFileSync(schemaPath, 'utf8'));
 const result = transformSchema(rawSchema);
 
@@ -40,6 +58,7 @@ for (const file of readdirSync(snippetsDir).sort()) {
     description,
     content,
     highlightStart,
+    sourceUrl: `${snippetSourceBase}/${file}`,
   });
   snippetCount++;
 }

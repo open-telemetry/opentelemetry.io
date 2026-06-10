@@ -59,3 +59,4 @@ config_types_col_description: Description
 config_types_examples_heading: Examples
 config_types_copy: Copy
 config_types_copied: Copied!
+config_types_source: Source

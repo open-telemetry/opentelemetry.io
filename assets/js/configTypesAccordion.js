@@ -30,6 +30,7 @@ function readI18n(container) {
     examples: d.i18nExamples,
     copy: d.i18nCopy,
     copied: d.i18nCopied,
+    source: d.i18nSource,
   };
 }
 
@@ -143,11 +144,18 @@ function renderSnippetCode(snippet) {
 }
 
 function renderCodeBlock(snippet, i18n) {
+  const sourceLink = snippet.sourceUrl
+    ? `<a class="ct-snippet-source" href="${escapeAttr(snippet.sourceUrl)}"
+          target="_blank" rel="noopener">${escapeHtml(i18n.source)}</a>`
+    : '';
   return `
 <div class="ct-snippet">
-  <button type="button" class="btn btn-sm btn-outline-secondary ct-snippet-copy"
-          data-snippet-copy
-          aria-label="${escapeAttr(i18n.copy)}">${escapeHtml(i18n.copy)}</button>
+  <div class="ct-snippet-toolbar">
+    ${sourceLink}
+    <button type="button" class="btn btn-sm btn-outline-secondary ct-snippet-copy"
+            data-snippet-copy
+            aria-label="${escapeAttr(i18n.copy)}">${escapeHtml(i18n.copy)}</button>
+  </div>
   <pre class="ct-snippet-pre"><code>${renderSnippetCode(snippet)}</code></pre>
 </div>`;
 }
@@ -158,9 +166,13 @@ function renderSnippets(type, i18n) {
 
   const heading = `<p class="ct-examples-heading"><strong>${escapeHtml(i18n.examples)}</strong></p>`;
 
-  // Single snippet: just the code block, no tab chrome.
+  // Single snippet: no tab chrome, but keep the snippet's name as a caption so
+  // the context the tab label would have provided isn't lost.
   if (snippets.length === 1) {
-    return `<div class="ct-examples">${heading}${renderCodeBlock(snippets[0], i18n)}</div>`;
+    const caption = snippets[0].description
+      ? `<p class="ct-snippet-caption">${escapeHtml(snippets[0].description)}</p>`
+      : '';
+    return `<div class="ct-examples">${heading}${caption}${renderCodeBlock(snippets[0], i18n)}</div>`;
   }
 
   // Multiple snippets: Bootstrap tabs.
