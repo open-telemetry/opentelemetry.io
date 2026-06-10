@@ -15271,6 +15271,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:11:48.121724142Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/housekeeping.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-10T09:51:57.874324-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/label-manager.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-06-09T10:49:35.870633722Z"
@@ -15290,6 +15294,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/reusable-apply-patch.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-06-09T17:45:46.26226-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/reusable-patch-pr.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-10T09:52:01.119431-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/reusable-report-failure.yml": {
     "StatusCode": 206,
@@ -15394,6 +15402,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/issues": {
     "StatusCode": 206,
     "LastSeen": "2026-06-10T10:54:57.069842029Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/issues/6592": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-10T09:51:59.570097-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/issues/9449": {
     "StatusCode": 206,

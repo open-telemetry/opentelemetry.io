@@ -1,8 +1,9 @@
 ---
 title: Reusable patch actions for PR and maintenance fixes
 custodian: '[Patrice Chalin](https://github.com/chalin)'
-status: Phase 1 merged and partially live-validated; phases 2–3 pending.
-cSpell:ignore: fixx test-and-fix
+status:
+  Phase 1 merged; phase 2 (housekeeping) implemented, live validation pending.
+cSpell:ignore: fixx footgun test-and-fix
 ---
 
 ## Context
@@ -73,13 +74,6 @@ mechanics decoupled from the `issue_comment` trigger.
 
 ## Open decisions
 
-- Housekeeping workflow: one PR for all fixes (matching `test-and-fix` semantics
-  — simplest, the starting point) vs. one PR per fix script (independently
-  reviewable/mergeable; adopt later if single-PR review proves painful).
-- Housekeeping workflow: when a previous housekeeping PR is still open, skip the
-  new run or update the existing PR's branch?
-- Whether scheduled housekeeping should use one stable branch per fix family or
-  a shared generated-fixes branch.
 - Whether an i18n caller (e.g. `fix:i18n` by PR comment, schedule, or both) is
   wanted as a third caller.
 
@@ -102,6 +96,22 @@ mechanics decoupled from the `issue_comment` trigger.
 - Phase 2 is a scheduled housekeeping workflow rather than an i18n caller: it is
   what the founding issue ([#6592][]) asked for, and its lack of PR context best
   demonstrates that the patch actions are trigger-agnostic.
+- Housekeeping publication follows the `refcache-refresh.yml` precedent: one PR
+  for all fixes, on the stable `otelbot/housekeeping` branch recreated from
+  `main` each run (force-push). At most one open housekeeping PR exists at a
+  time; new runs update it in place until it is merged, and a no-change run
+  skips publication, leaving any open PR as is. Per-script PRs can be adopted
+  later if single-PR review proves painful.
+  - Recreate-from-main rather than the spec/semconv integration-branch pattern
+    (work from the PR branch, merge main, rerun): housekeeping results are fully
+    derived from `main` — yesterday's results are superseded, not extended — and
+    the patch is generated against `main`, so reapplying it to a stale branch
+    risks conflicts for no benefit.
+  - Caveat: any commits pushed to the housekeeping PR branch — manual or via
+    `/fix`, which pushes to the same branch — are clobbered by the next run's
+    force-push. Merge the PR promptly if it is amended; the PR body carries an
+    IMPORTANT note to that effect. (If this bites in practice, add a guard that
+    skips the force-push when the branch has non-bot commits.)
 
 ## Status details
 
@@ -145,6 +155,18 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
   then succeeds only if the bot app holds the Workflows permission. If not, the
   push fails closed and reports ❌ — the desired default. Verify the app
   permission once and record the intended behavior.
+- Follow-up (consolidation roadmap): reduce duplication across the patch-family
+  workflows.
+  - `reusable-apply-patch.yml` and `reusable-patch-pr.yml` share ~30 lines of
+    download/apply/commit plumbing. Constraint on sharing: a local composite
+    action or `scripts/` file resolves from the checked-out workspace, and
+    `reusable-apply-patch.yml` checks out the PR branch — the same footgun
+    documented on `generate-patch`. Share only via steps that run before the
+    PR-branch checkout, by copying the shared script to a temp path first, or
+    keep the trusted steps inline (current choice).
+  - Candidate migrations onto the generate→publish patch actions, retiring
+    bespoke branch-management code: `refcache-refresh.yml`, and possibly the
+    spec/semconv integration-branch workflows.
 - Directive↔outcome improvements (all shipped):
   - A trusted `ack` job posts a 🔄 in-progress comment (linking the directive
     comment and the run) as soon as a directive is received; the report job then
@@ -169,7 +191,15 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
     with write access, so any directive author is privileged by construction,
     and the bot (a GitHub App with write permission) can still post and edit its
     comments on a locked conversation.
-- Phase 2 (scheduled housekeeping caller) not started.
+- Phase 2 (scheduled housekeeping caller) implemented: `housekeeping.yml` runs
+  an approved fix command (default `test-and-fix`) daily or on dispatch, and
+  publishes the results as a PR via the new `reusable-patch-pr.yml` sibling
+  workflow. Live validation pending post-merge:
+  - [ ] dispatch run with changes → `otelbot/housekeeping` branch + PR created
+  - [ ] second run with changes while the PR is open → PR force-updated in
+        place, no duplicate PR
+  - [ ] run with no changes → publish skipped, open PR untouched
+  - [ ] failing command with fixes → failure issue filed and fixes published
 
 <!-- prettier-ignore-start -->
 [#10309]: https://github.com/open-telemetry/opentelemetry.io/pull/10309

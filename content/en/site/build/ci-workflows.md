@@ -304,6 +304,41 @@ composed by [scripts/gh/patch-report/][]; all are unit tested via
 [scripts/gh/patch-report/]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/patch-report
 
+## Housekeeping {#housekeeping}
+
+The [`housekeeping.yml`][housekeeping] workflow runs an approved fix command —
+`test-and-fix` by default, or an npm script given via manual (maintainer-only)
+dispatch — daily at 7:37 UTC, and publishes any resulting changes as a PR. It is
+the second caller of the reusable patch actions, and the scheduled-maintenance
+flow that motivated [#6592][].
+
+It runs as a three-stage pipeline:
+
+1. **`generate-patch`**: runs the housekeeping command via the
+   [npm-script-patch][] action, prunes the link refcache, and uploads the
+   changes as a patch artifact. Unlike the `/fix` pipeline, the whole run is
+   trusted: the schedule and dispatch triggers only ever execute default-branch
+   code. A failing command fails the job, but any fixes it produced are still
+   published.
+2. **`publish-patch`**: calls the [`reusable-patch-pr.yml`][] workflow — the
+   sibling of [`reusable-apply-patch.yml`][] for callers without a PR context —
+   which applies the patch to the stable `otelbot/housekeeping` branch,
+   recreated from `main` on every run, and opens a PR for it unless one is
+   already open. There is thus at most one housekeeping PR at a time, and each
+   run force-pushes the latest results to it until it is merged. Skipped when
+   the command produced no changes, leaving any open housekeeping PR as is.
+   Since the branch is regenerated each run, any commits pushed to it — manual
+   or via `/fix` — are clobbered by the next run: merge the PR promptly if you
+   amend it.
+3. **`report-failure`**: files a tracking issue on failure, via
+   [workflow failure reporting](#workflow-failure-reporting).
+
+[#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
+[housekeeping]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/housekeeping.yml
+[`reusable-patch-pr.yml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/reusable-patch-pr.yml
+
 ## Locale auto-merge
 
 The [locale-auto-merge.yml][] workflow lets a locale's maintainers enable
