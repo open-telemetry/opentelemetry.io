@@ -10,7 +10,7 @@ draft: true # TODO: remove this line once your post is ready to be published
 canonical_url: https://community.dynatrace.com/t5/Community-Voices/The-Lazy-Developer-s-Guide-to-Observing-Your-Own-Code/ba-p/299230
 issue: 10132
 sig: End User SIG
-cSpell:ignore: Devs,Todea,vibecoded,Devoxx,otlphttp
+cSpell:ignore: Devoxx Devs otlphttp Todea vibecoded
 ---
 
 It’s no secret that developers are increasingly being asked to shift left. It
