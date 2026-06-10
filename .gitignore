@@ -1,4 +1,4 @@
-# cSpell:ignore worktrees
+# cSpell:ignore worktrees venv
 
 /.claude/worktrees
 /.claude/settings.local.json
@@ -32,5 +32,6 @@ assets/jsconfig.json
 # WebStorm
 **/.idea/**
 
+.venv/
 *.pyc
 *uv.lock
