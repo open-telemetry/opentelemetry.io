@@ -1,6 +1,6 @@
 ---
-title: 'Cloud Native Telemetry Platforms'
-linkTitle: 'Cloud Native Telemetry Platforms'
+title: 'Managed Telemetry Platforms for K8s Workloads'
+linkTitle: 'Managed Telemetry Platforms for K8s Workloads'
 date: '2026-05-28'
 author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
 sig: End-User
