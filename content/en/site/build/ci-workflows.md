@@ -267,13 +267,13 @@ It runs as a four-stage pipeline:
    workflow — resolved from the default branch, never from the PR — which
    applies the patch with a GitHub App token and pushes a commit to the PR
    branch. Skipped when the command produced no changes.
-4. **`report`** (trusted): updates the ack comment in place with the outcome (or
-   posts a new comment when there is no ack, such as on a closed PR), so each
-   directive maps to a single progress-then-outcome comment that links back to
-   the directive and to the run that produced it. This covers every directive
-   that triggers the workflow, including invalid directives (such as `/fixup` or
-   `/fix please`), no-op runs, and failures that happen before any patch is
-   produced.
+4. **`report`** (trusted): replaces the acknowledgement with the final outcome
+   when possible, or posts a new outcome comment when no acknowledgement exists,
+   such as for closed PRs. Each directive thus maps to a single comment that
+   links back to the directive and to the run that produced it. This covers
+   every directive that triggers the workflow, including invalid directives
+   (such as `/fixup` or `/fix please`), no-op runs, and failures that happen
+   before any patch is produced.
 
 Directives only run against open PRs (draft PRs included): on a closed or merged
 PR the fix command never runs and the report job explains why. The PR state

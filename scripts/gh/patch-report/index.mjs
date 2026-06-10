@@ -1,4 +1,5 @@
-// Pure library for composing the comment that reports a patch-pipeline outcome.
+// Pure library for composing the comments that track a patch-pipeline run:
+// an in-progress acknowledgement and the final outcome.
 //
 // A workflow that generates a patch and applies it can funnel every outcome
 // through this builder so the requestor always learns the result, even when the

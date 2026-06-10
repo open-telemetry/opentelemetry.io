@@ -114,9 +114,9 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
         comment (linking the directive comment and the run) as soon as a
         directive is received; the report job then edits that same comment with
         the final outcome (1:1 comment per directive, no mutation of user
-        content). Outcome labels link back to the directive comment. Alternative
-        considered: editing the originating comment's first line — rejected as
-        invasive (alters user content).
+        content). Outcome messages link back to the directive comment.
+        Alternative considered: editing the originating comment's first line —
+        rejected as invasive (alters user content).
   - [x] Include the run link in every outcome, in a uniform format: each outcome
         message ends with "See the logs of [run ID](url)."
   - [x] Latest directive wins: per-PR workflow-level concurrency with
@@ -126,6 +126,10 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
         payload, before any runner does fix work) and reported as ❌ with the
         reason. Draft PRs still work; deleted-branch sub-cases are moot since
         nothing is checked out.
+  - [x] Locked PRs need no special handling: locking restricts commenting to
+        users with write access, so any directive author is privileged by
+        construction, and the bot (a GitHub App with write permission) can still
+        post and edit its comments on a locked conversation.
 - Phases 2 (i18n caller) and 3 (scheduled maintenance) not started.
 
 <!-- prettier-ignore-start -->

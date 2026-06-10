@@ -26,9 +26,10 @@ jobs:
   ack:
     name: Acknowledge request (trusted)
     runs-on: ubuntu-latest
-    # Same broad gate as report (PR state included): every directive that gets
-    # an outcome comment first gets an in-progress acknowledgement, which the
-    # report job then updates in place with the outcome.
+    # Same broad /fix PR-comment gate as generate-patch, including the open-PR
+    # check; closed PRs skip the ack and get a fresh outcome comment from the
+    # report job. The report job updates the ack comment in place with the
+    # outcome.
     if: |
       github.event.issue.pull_request &&
       github.event.issue.state == 'open' &&
