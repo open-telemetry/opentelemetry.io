@@ -106,7 +106,7 @@ describe('buildOutcomeComment', () => {
         ]) {
           for (const commandExitStatus of ['0', '1', '']) {
             for (const label of ['fix', '']) {
-              for (const hint of ['Use `/fix`.', '']) {
+              for (const hint of ['Any hint text.', '']) {
                 const body = buildOutcomeComment({
                   label,
                   generateResult,
