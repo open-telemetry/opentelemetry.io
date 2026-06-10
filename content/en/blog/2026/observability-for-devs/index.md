@@ -1,23 +1,24 @@
 ---
 title: The Lazy Developer's Guide to Observing Your Own Code
-linkTitle: Observability for Devs
+linkTitle: Observability for Dev
 date: 2026-06-10 # Put the current date, we will keep the date updated until your PR is merged
 author:
   >- # If you have only one author, then add the single name on this line in quotes.
   [Adriana Villela](https://github.com/avillela) (Dynatrace), [Diana
   Todea](https://github.com/didiViking) (VictoriaMetrics)
 draft: true # TODO: remove this line once your post is ready to be published
-canonical_url: https://geekingoutpodcast.substack.com/p/the-lazy-developers-guide-to-observing?r=27vnzy
+canonical_url: https://community.dynatrace.com/t5/Community-Voices/The-Lazy-Developer-s-Guide-to-Observing-Your-Own-Code/ba-p/299230
 issue: 10132
 sig: End User SIG
+cSpell:ignore: Devs,Todea,vibecoded,Devoxx,otlphttp
 ---
 
 It’s no secret that developers are increasingly being asked to shift left. It
 seems there’s always something new to shift left on. And now developers are
 being asked to shift left on observability. This means that in addition to all
 the other things developers must do, they must also take the extra step of
-instrumenting their application code with
-[OpenTelemetry,](/) to help make it observable.
+instrumenting their application code with [OpenTelemetry,](/) to help make it
+observable.
 
 This seems needless. It’s extra work.
 [Why should developers care about observability](https://adrianavillela.com/post/observability-is-a-team-sport/)?
@@ -54,8 +55,8 @@ While that’s true, let’s look at how observability benefits developers.
   untangle the web of not-so-great code.
 
 Understanding how observability helps developers is the first step. Next comes
-[instrumentation](/docs/concepts/instrumentation/), the
-process of translating interesting things into telemetry signals.
+[instrumentation](/docs/concepts/instrumentation/), the process of translating
+interesting things into telemetry signals.
 
 ## Instrumentation pain points
 
@@ -144,12 +145,9 @@ Let’s start with some good practices for instrumenting application code.
    instrumentation agents to intercept code at runtime or compile-time to add
    instrumentation to common third-party libraries and frameworks called by the
    application code. At the time of this writing, zero-code instrumentation is
-   available for [Java](/docs/zero-code/java/),
-   [.NET](/docs/zero-code/dotnet/),
-   [Python](/docs/zero-code/python/),
-   [JavaScript](/docs/zero-code/js/),
-   [PHP](/docs/zero-code/php/), and
-   [Go](/docs/zero-code/go/).
+   available for [Java](/docs/zero-code/java/), [.NET](/docs/zero-code/dotnet/),
+   [Python](/docs/zero-code/python/), [JavaScript](/docs/zero-code/js/),
+   [PHP](/docs/zero-code/php/), and [Go](/docs/zero-code/go/).
 
    While zero-code instrumentation isn’t perfect and still requires
    [code-based (manual) instrumentation](/docs/concepts/instrumentation/code-based/)
@@ -232,13 +230,12 @@ coverage overall.
 
 ### DON’T PANIC!
 
-One of our favourite things about the OpenTelemetry project is that there is a
+One of our favorite things about the OpenTelemetry project is that there is a
 huge community of practice at your disposal. This takes on the form of
 [official documentation,](/) the
 [OpenTelemetry YouTube channel](https://youtube.com/@otel-official), vendor blog
 posts, personal blog posts, and [newsletters](https://o11y.news). There is also
-a vibrant and thriving
-[OpenTelemetry community](/community/) on
+a vibrant and thriving [OpenTelemetry community](/community/) on
 [CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf)…and the folks
 are friendly and willing to help!
 
@@ -254,12 +251,11 @@ would’ve definitely been a nice-to-have all those years ago!
 Diana, on the other hand, comes from an SRE background. She found that
 experimenting with different SDKs was essential for truly understanding how
 instrumentation works under the hood. Many language APIs/SDKs are still evolving
-and
-[are at different levels of maturity](/docs/languages/)
-in terms of OpenTelemetry feature support. As part of her OpenTelemetry
-instrumentation learning journey, AI-assisted instrumentation proved especially
-helpful in speeding up exploration and reducing friction. You can find more
-details and examples of what she tried in her
+and [are at different levels of maturity](/docs/languages/) in terms of
+OpenTelemetry feature support. As part of her OpenTelemetry instrumentation
+learning journey, AI-assisted instrumentation proved especially helpful in
+speeding up exploration and reducing friction. You can find more details and
+examples of what she tried in her
 [GitHub repository](https://github.com/didiViking/OTel-Devoxx-demos).
 
 As you can see from our two different perspectives, having AI to help you
@@ -301,8 +297,7 @@ telemetry data.
 
 ### OpenTelemetry Collector for Developers
 
-It starts with the
-[OpenTelemetry Collector](/docs/collector/). The
+It starts with the [OpenTelemetry Collector](/docs/collector/). The
 OpenTelemetry Collector is a vendor neutral agent used to ingest OpenTelemetry
 signals (traces, logs, metrics) from multiple sources, process the data (if/as
 needed), and export the data to one or more destinations.
@@ -382,8 +377,8 @@ Important components:
   calculating the duration of an OpenTelemetry span. It can send that span
   duration as a receiver in a metrics pipeline. This helps developers identify
   latency issues if a span suddenly seems to take longer than usual to complete.
-- **[Pipelines](/docs/collector/architecture/#pipelines):**
-  There’s a separate pipeline for traces, logs, and metrics.
+- **[Pipelines](/docs/collector/architecture/#pipelines):** There’s a separate
+  pipeline for traces, logs, and metrics.
 
 The problem with sending telemetry to the Collector via the debug exporter is
 that you get a text output like this:
@@ -404,8 +399,7 @@ we’ll explore below:
 If you’re interested in exploring these tools in greater detail for yourself,
 you can check out
 [our GitHub repository](https://github.com/avillela/otel-for-devs) using a
-simple
-[Java client/server application](/docs/languages/java/getting-started/)
+simple [Java client/server application](/docs/languages/java/getting-started/)
 (with a few more things added) to emit telemetry.
 
 Since the OpenTelemetry Collector and the three desktop OpenTelemetry
@@ -495,7 +489,7 @@ service:
 
 Notes:
 
-- `otphttp/otel-desktop-viewer` was only added to the traces pipeline. This is
+- `otlphttp/otel-desktop-viewer` was only added to the traces pipeline. This is
   because this tool only works for traces. If you try to add it to the metrics
   or logs pipeline, it will fail to start.
 
@@ -761,9 +755,9 @@ The good news is that once it’s set up, you won’t have to do it again.
 
 Another option is to go the SaaS vendor route. If your company is already using
 OpenTelemetry in production, chances are that it may already have a license for
-[one of the many OpenTelemetry compatible vendors](/ecosystem/vendors/),
-which means that you can ask your manager for a license. The challenge with
-going this route is:
+[one of the many OpenTelemetry compatible vendors](/ecosystem/vendors/), which
+means that you can ask your manager for a license. The challenge with going this
+route is:
 
 - Depending on the licensing agreement, you may not get one
 - Large vendor tools have a larger learning curve
@@ -785,9 +779,6 @@ before, instrumentation with OpenTelemetry:
 But most of all, it’s because it has _always_ mattered. When you think about it,
 developers have been doing observability for a while, using logs, stack traces,
 and profiling tools. We just didn’t call it that.
-
-Thanks for reading Geeking Out Podcast! Subscribe for free to receive new posts
-and support my work.
 
 PS: Catch our talk from
 [Devoxx Greece 2026](https://www.youtube.com/@devoxxgreece) on this topic!
