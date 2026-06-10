@@ -28,10 +28,10 @@ export function buildIssueTitle({ prefix, workflow, branch }) {
 /**
  * Build the body of a newly created failure issue.
  *
- * @param {{ workflow: string, branch: string, sha: string, runUrl: string }} input
+ * @param {{ workflow: string, branch: string, sha: string, runUrl: string, prUrl?: string }} input
  * @returns {string}
  */
-export function buildIssueBody({ workflow, branch, sha, runUrl }) {
+export function buildIssueBody({ workflow, branch, sha, runUrl, prUrl = '' }) {
   return [
     'A workflow run failed.',
     '',
@@ -39,6 +39,7 @@ export function buildIssueBody({ workflow, branch, sha, runUrl }) {
     `**Branch:** ${branch}`,
     `**Commit:** ${sha}`,
     `**Run:** ${runUrl}`,
+    ...(prUrl ? [`**PR:** ${prUrl}`] : []),
     '',
     'This issue was opened automatically; close it once the failure is resolved.',
   ].join('\n');
@@ -47,15 +48,16 @@ export function buildIssueBody({ workflow, branch, sha, runUrl }) {
 /**
  * Build the comment appended when a failure issue is already open.
  *
- * @param {{ sha: string, runUrl: string }} input
+ * @param {{ sha: string, runUrl: string, prUrl?: string }} input
  * @returns {string}
  */
-export function buildCommentBody({ sha, runUrl }) {
+export function buildCommentBody({ sha, runUrl, prUrl = '' }) {
   return [
     'Another failure occurred.',
     '',
     `**Run:** ${runUrl}`,
     `**Commit:** ${sha}`,
+    ...(prUrl ? [`**PR:** ${prUrl}`] : []),
   ].join('\n');
 }
 
@@ -200,6 +202,7 @@ export function setIssueType(
  * @param {string} input.label       Existing label to apply / search by.
  * @param {string} input.issueType   Org issue type name (e.g. `Bug`).
  * @param {string} input.issuePrefix Title prefix (e.g. `Workflow failed`).
+ * @param {string} [input.prUrl]     URL of a related PR to link, if any.
  * @param {(args: string[]) => GhResult} input.runGh
  * @param {(msg: string) => void} [input.log]
  * @returns {ReportResult}
@@ -213,6 +216,7 @@ export function reportFailure({
   label,
   issueType,
   issuePrefix,
+  prUrl = '',
   runGh,
   log = console.log,
 }) {
@@ -242,7 +246,7 @@ export function reportFailure({
       '--repo',
       repo,
       '--body',
-      buildCommentBody({ sha, runUrl }),
+      buildCommentBody({ sha, runUrl, prUrl }),
     ]);
     log(`Commented on existing issue #${existing}.`);
     return { action: 'commented', issueNumber: existing, typeSet: false };
@@ -258,7 +262,7 @@ export function reportFailure({
     '--label',
     label,
     '--body',
-    buildIssueBody({ workflow, branch, sha, runUrl }),
+    buildIssueBody({ workflow, branch, sha, runUrl, prUrl }),
   ]).trim();
   const issueNumber = Number(createdUrl.split('/').pop());
   if (!Number.isInteger(issueNumber) || issueNumber <= 0) {

@@ -79,6 +79,18 @@ describe('report-failure: pure helpers', () => {
     assert.match(body, /\*\*Branch:\*\* main/);
     assert.match(body, /\*\*Commit:\*\* deadbeef/);
     assert.match(body, /\*\*Run:\*\* https:\/\/example\/run/);
+    assert.doesNotMatch(body, /\*\*PR:\*\*/);
+  });
+
+  test('buildIssueBody includes the PR link when given', () => {
+    const body = buildIssueBody({
+      workflow: 'CI',
+      branch: 'main',
+      sha: 'deadbeef',
+      runUrl: 'https://example/run',
+      prUrl: 'https://example/pr/1',
+    });
+    assert.match(body, /\*\*PR:\*\* https:\/\/example\/pr\/1/);
   });
 
   test('buildCommentBody includes run and commit', () => {
@@ -89,6 +101,16 @@ describe('report-failure: pure helpers', () => {
     assert.match(body, /Another failure occurred/);
     assert.match(body, /https:\/\/example\/run2/);
     assert.match(body, /feed/);
+    assert.doesNotMatch(body, /\*\*PR:\*\*/);
+  });
+
+  test('buildCommentBody includes the PR link when given', () => {
+    const body = buildCommentBody({
+      sha: 'feed',
+      runUrl: 'https://example/run2',
+      prUrl: 'https://example/pr/2',
+    });
+    assert.match(body, /\*\*PR:\*\* https:\/\/example\/pr\/2/);
   });
 });
 

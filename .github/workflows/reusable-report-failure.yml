@@ -31,6 +31,13 @@ on:
         required: false
         type: string
         default: Workflow failed
+      pr-url:
+        description: >-
+          Optional URL of a PR related to the failure (e.g. the PR publishing
+          partial results); linked from the issue body or comment.
+        required: false
+        type: string
+        default: ''
 
 permissions:
   contents: read
@@ -60,4 +67,5 @@ jobs:
           LABEL: ${{ inputs.label }}
           ISSUE_TYPE: ${{ inputs.issue-type }}
           ISSUE_PREFIX: ${{ inputs.issue-prefix }}
+          PR_URL: ${{ inputs.pr-url }}
         run: node scripts/gh/report-failure/cli.mjs

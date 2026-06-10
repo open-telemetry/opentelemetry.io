@@ -116,6 +116,7 @@ jobs:
         ' ⚠️ The housekeeping command itself failed, so these results may be
         partial; for details, see the run logs (and the failure-report issue,
         once filed).' || '' }}
+      pr-body-footer: /cc @chalin @vitorvasc
       commit-message: Housekeeping fix results
       user-name: otelbot
       user-email: 197425009+otelbot@users.noreply.github.com
@@ -134,3 +135,7 @@ jobs:
       contents: read
     with:
       issue-prefix: Housekeeping workflow failed
+      # Link back to the housekeeping PR ('' when no fixes were published).
+      # GitHub's automatic cross-referencing surfaces this mention in the PR
+      # timeline, so no PR → issue link is needed.
+      pr-url: ${{ needs.publish-patch.outputs.pr-url }}
