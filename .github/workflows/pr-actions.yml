@@ -26,6 +26,7 @@ jobs:
   ack:
     name: Acknowledge request (trusted)
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     # Same broad /fix PR-comment gate as generate-patch, including the open-PR
     # check; closed PRs skip the ack and get a fresh outcome comment from the
     # report job. The report job updates the ack comment in place with the
@@ -75,6 +76,8 @@ jobs:
   generate-patch:
     name: Run PR action and generate patch (untrusted)
     runs-on: ubuntu-latest
+    # Bounds runner usage by hostile or runaway fix scripts.
+    timeout-minutes: 15
     # Broad prefix gate; exact (first-line) parsing happens in the extract
     # step below. Closed (including merged) PRs are gated out here; the report
     # job still explains why nothing ran.
@@ -110,7 +113,7 @@ jobs:
         # usage hint) on the PR.
         run: node scripts/gh/pr-fix/cli.mjs --comment "$COMMENT"
 
-      - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
+      - run: gh pr checkout "$PR_NUM" -b "pr-action-${RANDOM}"
         env:
           GH_TOKEN: ${{ github.token }}
 
@@ -119,6 +122,9 @@ jobs:
         # Untrusted: runs the resolved npm script and captures any changes as a
         # patch artifact. Has no write permissions or secrets. The `_refcache:prune`
         # post-command drops 404 entries so refcache updates stay clean.
+        # NOTE: after `gh pr checkout` above, this local action's definition
+        # resolves from the PR branch — treat the action itself as untrusted;
+        # never add secrets or write permissions to this job.
         uses: ./.github/actions/npm-script-patch
         with:
           command: ${{ steps.extract.outputs.command }}
@@ -152,6 +158,7 @@ jobs:
   report:
     name: Report outcome (trusted)
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     needs: [ack, generate-patch, apply-patch]
     # Always tell the requestor what happened, for every comment that enters
     # the pipeline (same broad gate as generate-patch, minus the PR-state

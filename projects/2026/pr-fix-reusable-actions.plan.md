@@ -123,6 +123,15 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
 - Follow-up: the trusted `ack` and `report` jobs share ~40 lines of setup
   boilerplate (harden-runner, checkout, setup-node, app token); factor out a
   composite action if a third trusted comment job appears.
+- Follow-up (security pass): decide who may trigger `/fix` — currently anyone
+  who can comment; tracked as its own issue since it is a policy decision.
+- Follow-up (security pass): consider `egress-policy: block` + allowlist for the
+  trusted jobs' harden-runner steps (their egress set is small and known); keep
+  `audit` on the untrusted job, which needs broad egress for npm install.
+- Follow-up (security pass): a patch may touch `.github/workflows/**`; the push
+  then succeeds only if the bot app holds the Workflows permission. If not, the
+  push fails closed and reports ❌ — the desired default. Verify the app
+  permission once and record the intended behavior.
 - Directive↔outcome improvements (all shipped):
   - A trusted `ack` job posts a 🔄 in-progress comment (linking the directive
     comment and the run) as soon as a directive is received; the report job then
