@@ -23,7 +23,7 @@ Asegúrate de tener instalado localmente lo siguiente:
 
 ## Aplicación de Ejemplo {#example-application}
 
-El siguiente ejemplo utiliza una applicación básica de
+El siguiente ejemplo utiliza una aplicación básica de
 [Oat++](https://oatpp.io/). Si no utilizas Oat++, no hay problema; también
 puedes usar OpenTelemetry C++ con cualquier otro framework web.
 
@@ -142,11 +142,11 @@ servidor HTTP, que queremos instrumentar posteriormente.
 ## Crea y levanta un Servidor HTTP {#create-and-launch-an-http-server}
 
 En tu carpeta `otel-cpp-starter`, crea una subcarpeta `roll-dice`, donde se
-utilizará la libería Oat++, incluyendo los archivos de cabecera de oatpp y
+utilizará la librería Oat++, incluyendo los archivos de cabecera de oatpp y
 enlazándolos durante la compilación de tu proyecto.
 
 Dentro de `roll-dice`, crea un fichero llamado `CMakeLists.txt` para definir los
-directorios de la librería de Oatp++, incluir las rutas de directorio, y enlazar
+directorios de la librería de Oat++, incluir las rutas de directorio, y enlazar
 con Oat++ durante el proceso de compilación.
 
 ```cmake
