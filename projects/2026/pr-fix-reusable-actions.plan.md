@@ -224,9 +224,9 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
     side effect of the now-working pytest run: Prettier only honors the root
     `.gitignore`/`.prettierignore`, not the `.gitignore` pytest drops inside its
     cache directory. Root `.gitignore` now lists the cache dirs of all three
-    Python tools (`.pytest_cache/`, `.mypy_cache/`, `.ruff_cache/`) — each
-    drops a `*` `.gitignore` inside its own cache, and the mypy cache (JSON
-    files) was a latent identical failure.
+    Python tools (`.pytest_cache/`, `.mypy_cache/`, `.ruff_cache/`) — each drops
+    a `*` `.gitignore` inside its own cache, and the mypy cache (JSON files) was
+    a latent identical failure.
 
   Live validation status:
   - [x] dispatch run with changes → `otelbot/housekeeping` branch + PR created
