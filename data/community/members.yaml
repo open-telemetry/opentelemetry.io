@@ -1657,6 +1657,7 @@ maintainers:
   - name: utpilla
     teams:
       - arrow-approvers
+      - arrow-maintainers
       - arrow-triagers
       - rust-approvers
       - rust-maintainers
