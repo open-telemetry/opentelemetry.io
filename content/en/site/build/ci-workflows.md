@@ -271,6 +271,10 @@ It runs as a three-stage pipeline:
    (such as `/fixup` or `/fix please`), no-op runs, and failures that happen
    before any patch is produced.
 
+Directives only run against open PRs (draft PRs included): on a closed or merged
+PR the fix command never runs and the report job explains why. The PR state
+comes from the trigger payload, so no runner is spent on the fix itself.
+
 Directives follow latest-wins semantics: a new `/fix` comment on a PR cancels
 that PR's in-flight run (which still reports a ⚠️ outcome), since concurrent fix
 runs on the same branch serve no purpose — the second push would fail anyway

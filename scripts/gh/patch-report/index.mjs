@@ -15,6 +15,11 @@
  * @property {string} label              The action as requested (e.g. the
  *                                       command); '' when it could not be
  *                                       identified.
+ * @property {string} [prState]          PR state at the time of the request:
+ *                                       'open' or 'closed' (merged PRs are
+ *                                       closed). '' is treated as open for
+ *                                       callers that don't gate on state.
+ * @property {string} [prMerged]         'true' when the PR is merged.
  * @property {string} generateResult     Result of the patch-generation job:
  *                                       'success' | 'failure' | 'cancelled'.
  * @property {string} patchSkipped       'true' when generation produced no
@@ -41,6 +46,8 @@
  */
 export function buildOutcomeComment({
   label,
+  prState,
+  prMerged,
   generateResult,
   patchSkipped,
   commandExitStatus,
@@ -51,6 +58,12 @@ export function buildOutcomeComment({
 }) {
   const what = label ? `\`${label}\`` : 'the requested action';
   const logs = `See [run ${runId}](${runUrl}).`;
+
+  // 0. The PR isn't open: nothing ran (the pipeline gates on PR state).
+  if (prState && prState !== 'open') {
+    const why = prMerged === 'true' ? 'has already been merged' : 'is closed';
+    return `❌ This PR ${why}, so ${what} was not run: such actions only apply to open PRs. ${logs}`;
+  }
 
   // 1. Patch generation did not succeed: no changes were ever captured.
   if (generateResult === 'cancelled') {

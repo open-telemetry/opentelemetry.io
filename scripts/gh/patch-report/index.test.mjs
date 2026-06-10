@@ -93,6 +93,24 @@ describe('buildOutcomeComment', () => {
     assert.match(body, /^✅ the requested action applied successfully/);
   });
 
+  test('closed PR: nothing ran', () => {
+    const body = build({ prState: 'closed' });
+    assert.match(body, /^❌ This PR is closed, so `fix:refcache` was not run/);
+    assert.match(body, /only apply to open PRs/);
+  });
+
+  test('merged PR: nothing ran', () => {
+    const body = build({ prState: 'closed', prMerged: 'true', label: '' });
+    assert.match(
+      body,
+      /^❌ This PR has already been merged, so the requested action was not run/,
+    );
+  });
+
+  test('open PR state does not short-circuit the outcome', () => {
+    assert.equal(build({ prState: 'open' }), build({}));
+  });
+
   test('every outcome produces a non-empty comment ending with the run link', () => {
     for (const generateResult of ['success', 'failure', 'cancelled']) {
       for (const patchSkipped of ['true', 'false']) {
@@ -105,24 +123,27 @@ describe('buildOutcomeComment', () => {
           for (const commandExitStatus of ['0', '1', '']) {
             for (const label of ['fix', '']) {
               for (const hint of ['Any hint text.', '']) {
-                const body = buildOutcomeComment({
-                  label,
-                  generateResult,
-                  patchSkipped,
-                  commandExitStatus,
-                  applyResult,
-                  runId: '1',
-                  runUrl: 'u',
-                  hint,
-                });
-                assert.ok(
-                  typeof body === 'string' && body.length > 0,
-                  'comment should be a non-empty string',
-                );
-                assert.ok(
-                  body.endsWith('See [run 1](u).'),
-                  `comment should end with the run link: ${body}`,
-                );
+                for (const prState of ['open', 'closed', '']) {
+                  const body = buildOutcomeComment({
+                    label,
+                    prState,
+                    generateResult,
+                    patchSkipped,
+                    commandExitStatus,
+                    applyResult,
+                    runId: '1',
+                    runUrl: 'u',
+                    hint,
+                  });
+                  assert.ok(
+                    typeof body === 'string' && body.length > 0,
+                    'comment should be a non-empty string',
+                  );
+                  assert.ok(
+                    body.endsWith('See [run 1](u).'),
+                    `comment should end with the run link: ${body}`,
+                  );
+                }
               }
             }
           }

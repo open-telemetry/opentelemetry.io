@@ -121,6 +121,10 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
   - [x] Latest directive wins: per-PR workflow-level concurrency with
         cancel-in-progress, so concurrent runs don't waste resources. Non-`/fix`
         comments get a unique group so they can't cancel a `/fix` run.
+  - [x] Directives on closed or merged PRs are gated out (from the trigger
+        payload, before any runner does fix work) and reported as ❌ with the
+        reason. Draft PRs still work; deleted-branch sub-cases are moot since
+        nothing is checked out.
 - Phases 2 (i18n caller) and 3 (scheduled maintenance) not started.
 
 <!-- prettier-ignore-start -->
