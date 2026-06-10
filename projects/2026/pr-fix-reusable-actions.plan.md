@@ -3,7 +3,7 @@ title: Reusable patch actions for PR and maintenance fixes
 custodian: '[Patrice Chalin](https://github.com/chalin)'
 status:
   Phase 1 merged; phase 2 (housekeeping) implemented, live validation pending.
-cSpell:ignore: fixx
+cSpell:ignore: fixx gitlink
 ---
 
 ## Context
@@ -210,6 +210,12 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
   - [ ] watch the runtime of the first full `fix-and-test:all` run
         (`fix:refcache` implies a full build plus link check); bump the 30-min
         job timeout if it is tight
+  - [ ] verify that a `fix:submodule` bump (gitlink diff) survives the generate
+        → artifact → `git apply` pipeline; a failure is loud (apply exits
+        non-zero, issue filed) but would block submodule maintenance via the
+        default command
+  - [ ] consider `egress-policy: block` on the publish job (it only talks to
+        GitHub), unlike the generate job whose link checking needs open egress
 - Open PR on a clean no-change run: left as is for now. Since the branch is
   recreated from `main` each run, a clean exit-0 no-diff run means `main` no
   longer needs the open PR's fixes, so auto-closing it (clean runs only — a

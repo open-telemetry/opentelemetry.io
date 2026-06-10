@@ -37,6 +37,8 @@ on:
       branch:
         description: >-
           Stable branch to (re)create from `main` and push the patch commit to.
+          Must start with `otelbot/`: this workflow force-pushes, so it refuses
+          branches outside the bot namespace.
         required: true
         type: string
       pr-title:
@@ -100,6 +102,18 @@ jobs:
         with:
           egress-policy: audit
 
+      # This workflow force-pushes to the given branch; refuse anything
+      # outside the bot namespace so that a buggy caller can't target a
+      # protected or contributor branch.
+      - name: Validate branch name
+        env:
+          BRANCH: ${{ inputs.branch }}
+        run: |
+          if [[ "$BRANCH" != otelbot/* ]]; then
+            echo "Branch '$BRANCH' is not in the otelbot/ namespace; refusing to force-push."
+            exit 1
+          fi
+
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: app-token
         with:
@@ -111,7 +125,6 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: main
-          token: ${{ steps.app-token.outputs.token }}
           persist-credentials: false
 
       # Let git resolve credentials through the gh CLI (which reads GH_TOKEN
