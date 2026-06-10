@@ -167,15 +167,15 @@ with the outcome. Or you can issue one of the following fix commands to address
 a specific failure:
 
 ```text
-fix:dict
-fix:expired
-fix:filenames
-fix:format
-fix:i18n
-fix:markdown
-fix:refcache
-fix:submodule
-fix:text
+/fix:dict
+/fix:expired
+/fix:filenames
+/fix:format
+/fix:i18n
+/fix:markdown
+/fix:refcache
+/fix:submodule
+/fix:text
 ```
 
 The fix command must be the first line of your comment; you can add explanatory
