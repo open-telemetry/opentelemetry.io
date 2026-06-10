@@ -159,23 +159,29 @@ failures, like formatting issues, can be fixed automatically.
 Add the following comment to your PR:
 
 ```text
-/fix:all
+/fix
 ```
 
-This will trigger the OpenTelemetry bot to try to fix build issues. Or you can
-issue one of the following fix commands to address a specific failure:
+This will trigger the OpenTelemetry bot to try to fix build issues, and reply
+with the outcome. Or you can issue one of the following fix commands to address
+a specific failure:
 
 ```text
-fix:dict
-fix:expired
-fix:filenames
-fix:format
-fix:i18n
-fix:markdown
-fix:refcache
-fix:submodule
-fix:text
+/fix:code-excerpts
+/fix:dict
+/fix:expired
+/fix:filenames
+/fix:format
+/fix:i18n
+/fix:l10n
+/fix:markdown
+/fix:refcache
+/fix:submodule
+/fix:text
 ```
+
+The fix command must be the first line of your comment; you can add explanatory
+text on the lines that follow.
 
 > [!TIP] Pro tip
 >

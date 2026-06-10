@@ -1,0 +1,101 @@
+name: npm-script-patch
+description:
+  Run an approved npm script in an untrusted context and capture any file
+  changes as a patch artifact. Does not require write permissions or secrets.
+  The artifact contains a single file named `site.patch` (a `git diff`);
+  consumers of the artifact rely on that name.
+
+inputs:
+  command:
+    description: The npm script to run (passed to `npm run`).
+    required: true
+  patch-name:
+    description: Name of the uploaded patch artifact.
+    required: true
+  max-patch-size-kb:
+    description: Fail if the generated patch exceeds this size, in KB.
+    required: false
+    default: '1024'
+  post-command:
+    description:
+      Optional npm script to run after the main command and before generating
+      the patch. Empty to skip.
+    required: false
+    default: ''
+  node-version-file:
+    description: File to read the Node.js version from.
+    required: false
+    default: .nvmrc
+
+outputs:
+  action_exit_status:
+    description: Exit status of the main npm script.
+    value: ${{ steps.run_command.outputs.action_exit_status }}
+  patch_skipped:
+    description: Whether the command produced no changes ('true' or 'false').
+    value: ${{ steps.check_patch.outputs.skipped }}
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      with:
+        node-version-file: ${{ inputs.node-version-file }}
+
+    - run: npm install --omit=optional
+      shell: bash
+
+    - name: Run npm script
+      id: run_command
+      shell: bash
+      env:
+        INPUT_COMMAND: ${{ inputs.command }}
+        INPUT_POST_COMMAND: ${{ inputs.post-command }}
+      run: |
+        # Run the command without letting a non-zero exit fail this step, so that
+        # any file changes it produced can still be captured as a patch. The exit
+        # status is surfaced via the action_exit_status output for the caller to
+        # act on. The optional post-command is best-effort for the same reason.
+        set +e
+        (set -x; npm run "$INPUT_COMMAND")
+        action_exit_status=$?
+        echo "action_exit_status=$action_exit_status" >> "$GITHUB_OUTPUT"
+        echo "npm script exit status: $action_exit_status"
+        if (( action_exit_status != 0 )); then
+          echo "::warning title=npm script failed::npm run $INPUT_COMMAND exited with status $action_exit_status"
+        fi
+
+        if [[ -n "$INPUT_POST_COMMAND" ]]; then
+          npm run "$INPUT_POST_COMMAND"
+        fi
+        exit 0
+
+    - name: Generate and validate patch
+      id: check_patch
+      shell: bash
+      env:
+        MAX_PATCH_SIZE_KB: ${{ inputs.max-patch-size-kb }}
+      run: |
+        git diff > site.patch
+
+        if [ ! -s site.patch ]; then
+          echo "No changes detected. Skipping patch."
+          echo "skipped=true" >> "$GITHUB_OUTPUT"
+          exit 0
+        fi
+
+        actual_size_kb=$(du -k site.patch | cut -f1)
+        if (( actual_size_kb > MAX_PATCH_SIZE_KB )); then
+          echo "Patch too large: ${actual_size_kb} KB (limit: ${MAX_PATCH_SIZE_KB} KB)"
+          exit 1
+        fi
+
+        echo "skipped=false" >> "$GITHUB_OUTPUT"
+
+    - name: Upload patch artifact
+      if: steps.check_patch.outputs.skipped != 'true'
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      with:
+        name: ${{ inputs.patch-name }}
+        path: site.patch
+        retention-days: 1
