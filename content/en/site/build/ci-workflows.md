@@ -279,6 +279,10 @@ Directives only run against open PRs (draft PRs included): on a closed or merged
 PR the fix command never runs and the report job explains why. The PR state
 comes from the trigger payload, so no runner is spent on the fix itself.
 
+The pipeline only runs in the canonical `open-telemetry` repository, where the
+bot app credentials exist. Fork PRs work normally — `issue_comment` events fire
+in the base repository — but the workflow skips itself inside forks.
+
 Directives follow latest-wins semantics: a new `/fix` comment on a PR cancels
 that PR's in-flight run (which still reports a ⚠️ outcome), since concurrent fix
 runs on the same branch serve no purpose — the second push would fail anyway

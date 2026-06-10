@@ -109,8 +109,14 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
   - [ ] `/fix` followed by explanatory lines → treated as `/fix`
   - [x] directive on a closed PR → ❌ "only apply to open PRs" comment, no fix
         work run
-  - [ ] failing command → ❌/⚠️ comment
-  - [ ] same flow from a fork PR
+  - [x] failing command → ❌ "could not be run, or its changes could not be
+        captured" comment
+  - [x] same flow from a fork PR: all of the above were exercised from fork PRs
+        targeting the canonical repo (`issue_comment` runs in the base
+        repository, where the bot credentials exist)
+  - [x] PR opened within a fork → pipeline skips (repository-owner gate);
+        previously the trusted jobs failed at the app-token mint for lack of the
+        bot app variables and secrets
 - Follow-up: trim the `GITHUB_TOKEN` grants forwarded to the reusable workflow
   once live runs confirm the minimum required.
 - Follow-up: the trusted `ack` and `report` jobs share ~40 lines of setup
