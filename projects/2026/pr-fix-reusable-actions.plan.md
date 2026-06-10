@@ -2,8 +2,8 @@
 title: Reusable patch actions for PR and maintenance fixes
 custodian: '[Patrice Chalin](https://github.com/chalin)'
 status:
-  Phases 1 and 2 merged; phase-2 live validation in progress (first run exposed
-  fixes now in review).
+  Phases 1 and 2 merged; first-run fixes addressed; phase-2 live validation in
+  progress.
 cSpell:ignore: fixx gitlink
 ---
 
@@ -205,7 +205,7 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
   dedicated target that runs all fixes then checks, links checked once) daily or
   on dispatch, and publishes the results as a PR via the new
   `reusable-patch-pr.yml` sibling workflow. Findings from the first live run
-  (fixes in a follow-up PR):
+  (since addressed):
   - i18n scripts failed with `git diff error (128) or invalid hash`: they diff
     against `default_lang_commit`, so the checkout needs `fetch-depth: 0`.
   - The command failure produced a PR ([#10336][]) with no indication of the
