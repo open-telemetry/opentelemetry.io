@@ -114,8 +114,8 @@ jobs:
         [housekeeping](https://opentelemetry.io/site/build/ci-workflows/#housekeeping)
         workflow. ${{ needs.generate-patch.outputs.command_exit_status != '0' &&
         '⚠️ The housekeeping command itself failed, so these results may be
-        partial; for details, see the failure-report issue and the run logs.' ||
-        '' }}
+        partial; for details, see the run logs (and the failure-report issue,
+        once filed).' || '' }}
       commit-message: Housekeeping fix results
       user-name: otelbot
       user-email: 197425009+otelbot@users.noreply.github.com

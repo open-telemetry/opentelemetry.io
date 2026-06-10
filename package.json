@@ -1,8 +1,7 @@
 {
   "Notes": [
     "The 'all' runs _all_ named scripts in sequence, even if one fails; and exits with failure in that case.",
-    "check:links actually has the side-effect of 'fixing' the refcache; this is why test-and-fix uses _fix:most",
-    "fix-and-test:all is the housekeeping (CI) default: all fixes then all checks, with links checked exactly once -- fix:refcache (prune + link check) runs after the content fixes are done, and check:links is dropped from the check phase."
+    "check:links actually has the side-effect of 'fixing' the refcache; this is why test-and-fix uses _fix:most"
   ],
   "scripts": {
     "__check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve",

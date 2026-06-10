@@ -93,7 +93,7 @@ are internal helpers and are not intended to be run directly.
 | -------------------------- | ----------------------------------------------------------------- |
 | `diff:check`               | Warn if working tree has uncommitted changes.                     |
 | `diff:fail`                | Fail if working tree has changes (e.g. after build).              |
-| `fix-and-test:all`         | All fixes (incl. i18n) then all checks; links checked once.[^fat] |
+| `fix-and-test:all`         | All fixes (incl. i18n), then checks; links checked once.[^fat]    |
 | `netlify-build:preview`    | `build:preview` then `diff:check`.                                |
 | `netlify-build:production` | `build:production` then `diff:check`.                             |
 | `test-and-fix`             | Run fix scripts (excluding i18n/refcache/submodule), then checks. |

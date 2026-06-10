@@ -96,9 +96,11 @@ mechanics decoupled from the `issue_comment` trigger.
 - Phase 2 is a scheduled housekeeping workflow rather than a dedicated i18n
   caller: it is what the founding issue ([#6592][]) asked for, and its lack of
   PR context best demonstrates that the patch actions are trigger-agnostic. Its
-  default command, `fix-and-test:all`, deliberately includes `fix:i18n` and
-  `check:i18n` (unlike `test-and-fix`): scheduled i18n drift fixes are part of
-  the housekeeping mandate, lessening the need for a dedicated i18n caller.
+  default command, `fix-and-test:all`, deliberately includes `fix:i18n` (unlike
+  `test-and-fix`): scheduled i18n drift fixes are part of the housekeeping
+  mandate, lessening the need for a dedicated i18n caller. `check:i18n` is
+  excluded as redundant: `fix:i18n:status` has just recorded the drift status it
+  would report.
 - Housekeeping publication follows the `refcache-refresh.yml` precedent: one PR
   for all fixes, on the stable `otelbot/housekeeping` branch recreated from
   `main` each run (force-push). At most one open housekeeping PR exists at a
@@ -203,7 +205,9 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
   - [ ] second run with changes while the PR is open → PR force-updated in
         place, no duplicate PR
   - [ ] run with no changes → publish skipped, open PR untouched
-  - [ ] failing command with fixes → failure issue filed and fixes published
+  - [ ] failing command with fixes → failure issue filed and fixes published,
+        with the ⚠️ partial-results warning in the PR body (cleared on the next
+        clean run)
   - [ ] check whether the forwarded `GITHUB_TOKEN` grants on `publish-patch` can
         be trimmed (steps authenticate with the app token), as for the `/fix`
         publish job
