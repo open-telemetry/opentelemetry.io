@@ -2,7 +2,8 @@
 title: Reusable patch actions for PR and maintenance fixes
 custodian: '[Patrice Chalin](https://github.com/chalin)'
 status:
-  Phase 1 merged; phase 2 (housekeeping) implemented, live validation pending.
+  Phases 1 and 2 merged; first-run fixes addressed; phase-2 live validation in
+  progress.
 cSpell:ignore: fixx gitlink
 ---
 
@@ -96,9 +97,11 @@ mechanics decoupled from the `issue_comment` trigger.
 - Phase 2 is a scheduled housekeeping workflow rather than a dedicated i18n
   caller: it is what the founding issue ([#6592][]) asked for, and its lack of
   PR context best demonstrates that the patch actions are trigger-agnostic. Its
-  default command, `fix-and-test:all`, deliberately includes `fix:i18n` and
-  `check:i18n` (unlike `test-and-fix`): scheduled i18n drift fixes are part of
-  the housekeeping mandate, lessening the need for a dedicated i18n caller.
+  default command, `fix-and-test:all`, deliberately includes `fix:i18n` (unlike
+  `test-and-fix`): scheduled i18n drift fixes are part of the housekeeping
+  mandate, lessening the need for a dedicated i18n caller. `check:i18n` is
+  excluded as redundant: `fix:i18n:status` has just recorded the drift status it
+  would report.
 - Housekeeping publication follows the `refcache-refresh.yml` precedent: one PR
   for all fixes, on the stable `otelbot/housekeeping` branch recreated from
   `main` each run (force-push). At most one open housekeeping PR exists at a
@@ -157,7 +160,10 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
 - Follow-up (security pass): a patch may touch `.github/workflows/**`; the push
   then succeeds only if the bot app holds the Workflows permission. If not, the
   push fails closed and reports ❌ — the desired default. Verify the app
-  permission once and record the intended behavior.
+  permission once and record the intended behavior. An explicit
+  reject-`.github/`-paths guard was considered and declined: legitimate fixes
+  touch workflows (`fix:format` runs Prettier over the whole repo, including
+  workflow YAML).
 - Follow-up (consolidation roadmap): reduce duplication across the patch-family
   workflows.
   - `reusable-apply-patch.yml` and `reusable-patch-pr.yml` share ~30 lines of
@@ -194,16 +200,32 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
     with write access, so any directive author is privileged by construction,
     and the bot (a GitHub App with write permission) can still post and edit its
     comments on a locked conversation.
-- Phase 2 (scheduled housekeeping caller) implemented: `housekeeping.yml` runs
-  an approved fix command (default `fix-and-test:all`, a dedicated target that
-  runs all fixes then all checks, links checked once) daily or on dispatch, and
-  publishes the results as a PR via the new `reusable-patch-pr.yml` sibling
-  workflow. Live validation pending post-merge:
-  - [ ] dispatch run with changes → `otelbot/housekeeping` branch + PR created
+- Phase 2 (scheduled housekeeping caller) merged ([#10332][]):
+  `housekeeping.yml` runs an approved fix command (default `fix-and-test:all`, a
+  dedicated target that runs all fixes then checks, links checked once) daily or
+  on dispatch, and publishes the results as a PR via the new
+  `reusable-patch-pr.yml` sibling workflow. Findings from the first live run
+  (since addressed):
+  - i18n scripts failed with `git diff error (128) or invalid hash`: they diff
+    against `default_lang_commit`, so the checkout needs `fetch-depth: 0`.
+  - The command failure produced a PR ([#10336][]) with no indication of the
+    failure; the PR body now carries a ⚠️ partial-results warning.
+  - `check:i18n` ran redundantly right after `fix:i18n`; now excluded from the
+    default command's check phase.
+
+  Live validation status:
+  - [x] dispatch run with changes → `otelbot/housekeeping` branch + PR created
+        ([#10336][])
   - [ ] second run with changes while the PR is open → PR force-updated in
         place, no duplicate PR
   - [ ] run with no changes → publish skipped, open PR untouched
-  - [ ] failing command with fixes → failure issue filed and fixes published
+  - [ ] failing command with fixes → fixes published ([#10336][], partially
+        validated); failure issue and ⚠️ partial-results warning in the PR body
+        (cleared on the next clean run) pending re-validation after the
+        first-run fixes
+  - [ ] confirm the fork-filtered PR lookup in the publish job still finds the
+        canonical housekeeping PR (the jq filter is unit-tested locally; staging
+        a hostile fork branch is impractical)
   - [ ] check whether the forwarded `GITHUB_TOKEN` grants on `publish-patch` can
         be trimmed (steps authenticate with the app token), as for the `/fix`
         publish job
@@ -220,6 +242,7 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
         housekeeping PR, enable auto-merge, wait for the next run's force-push,
         and verify the merge waits for re-approval (or auto-merge is disabled)
         rather than landing content no reviewer saw
+
 - Open PR on a clean no-change run: left as is for now. Since the branch is
   recreated from `main` each run, a clean exit-0 no-diff run means `main` no
   longer needs the open PR's fixes, so auto-closing it (clean runs only — a
@@ -234,5 +257,7 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
 [#10319]: https://github.com/open-telemetry/opentelemetry.io/pull/10319
 [#10320]: https://github.com/open-telemetry/opentelemetry.io/issues/10320
 [#10329]: https://github.com/open-telemetry/opentelemetry.io/issues/10329
+[#10332]: https://github.com/open-telemetry/opentelemetry.io/pull/10332
+[#10336]: https://github.com/open-telemetry/opentelemetry.io/pull/10336
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 <!-- prettier-ignore-end -->

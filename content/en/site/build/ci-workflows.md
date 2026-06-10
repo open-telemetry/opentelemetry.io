@@ -318,7 +318,8 @@ It runs as a three-stage pipeline:
    [npm-script-patch][] action and uploads the changes as a patch artifact.
    Unlike the `/fix` pipeline, the whole run is trusted: the schedule and
    dispatch triggers only ever execute default-branch code. A failing command
-   fails the job, but any fixes it produced are still published.
+   fails the job, but any fixes it produced are still published, with a
+   partial-results warning in the PR body.
 2. **`publish-patch`**: calls the [`reusable-patch-pr.yml`][] workflow — the
    sibling of [`reusable-apply-patch.yml`][] for callers without a PR context —
    which force-pushes the patch to the stable `otelbot/housekeeping` branch,

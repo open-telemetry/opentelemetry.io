@@ -93,7 +93,7 @@ are internal helpers and are not intended to be run directly.
 | -------------------------- | ----------------------------------------------------------------- |
 | `diff:check`               | Warn if working tree has uncommitted changes.                     |
 | `diff:fail`                | Fail if working tree has changes (e.g. after build).              |
-| `fix-and-test:all`         | All fixes (incl. i18n) then all checks; links checked once.[^fat] |
+| `fix-and-test:all`         | All fixes (incl. i18n), then checks; links checked once.[^fat]    |
 | `netlify-build:preview`    | `build:preview` then `diff:check`.                                |
 | `netlify-build:production` | `build:production` then `diff:check`.                             |
 | `test-and-fix`             | Run fix scripts (excluding i18n/refcache/submodule), then checks. |
@@ -112,8 +112,9 @@ are internal helpers and are not intended to be run directly.
 
 [^fat]:
     The housekeeping default: runs `fix:refcache` (prune, then link check) after
-    the content fixes and excludes `check:links` from the check phase; uses the
-    keep-going `all` runner so every fix is captured. See
+    the content fixes; uses the keep-going `all` runner so every fix is
+    captured. The check phase excludes `check:links` (`fix:refcache` covers it)
+    and `check:i18n` (redundant after `fix:i18n` records drift status). See
     [Housekeeping](../ci-workflows/#housekeeping).
 
 ## Utilities

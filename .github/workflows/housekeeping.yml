@@ -50,6 +50,7 @@ jobs:
     outputs:
       patch_name: housekeeping-${{ github.run_id }}
       patch_skipped: ${{ steps.patch.outputs.patch_skipped }}
+      command_exit_status: ${{ steps.patch.outputs.action_exit_status }}
 
     steps:
       - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
@@ -58,6 +59,9 @@ jobs:
 
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
+          # Full history: the i18n fix/check scripts that the default command
+          # runs diff localized pages against their `default_lang_commit`.
+          fetch-depth: 0
           persist-credentials: false
 
       # Needed by the check:collector-sync scripts that the default command
@@ -107,8 +111,11 @@ jobs:
       pr-title: 'Housekeeping: automated fix results'
       pr-body: >-
         Automated fix results from the scheduled
-        [housekeeping](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/housekeeping.yml)
-        workflow.
+        [housekeeping](https://opentelemetry.io/site/build/ci-workflows/#housekeeping)
+        workflow.${{ needs.generate-patch.outputs.command_exit_status != '0' &&
+        ' ⚠️ The housekeeping command itself failed, so these results may be
+        partial; for details, see the run logs (and the failure-report issue,
+        once filed).' || '' }}
       commit-message: Housekeeping fix results
       user-name: otelbot
       user-email: 197425009+otelbot@users.noreply.github.com
