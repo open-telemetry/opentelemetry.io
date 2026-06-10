@@ -330,14 +330,15 @@ It runs as a three-stage pipeline:
    Since the branch is regenerated each run, any commits pushed to it — manual
    or via `/fix` — are clobbered by the next run: merge the PR promptly if you
    amend it.
-3. **`report-failure`**: files a tracking issue on failure, via
-   [workflow failure reporting](#workflow-failure-reporting).
+3. **`report-failure`**: files a tracking issue on failure, via [workflow
+   failure reporting][].
 
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 [housekeeping]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/housekeeping.yml
 [`reusable-patch-pr.yml`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/reusable-patch-pr.yml
+[workflow failure reporting]: #workflow-failure-reporting
 
 ## Locale auto-merge
 

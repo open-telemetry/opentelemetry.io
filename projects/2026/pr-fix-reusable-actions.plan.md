@@ -3,7 +3,7 @@ title: Reusable patch actions for PR and maintenance fixes
 custodian: '[Patrice Chalin](https://github.com/chalin)'
 status:
   Phase 1 merged; phase 2 (housekeeping) implemented, live validation pending.
-cSpell:ignore: fixx footgun test-and-fix
+cSpell:ignore: fixx
 ---
 
 ## Context
@@ -160,7 +160,7 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
   - `reusable-apply-patch.yml` and `reusable-patch-pr.yml` share ~30 lines of
     download/apply/commit plumbing. Constraint on sharing: a local composite
     action or `scripts/` file resolves from the checked-out workspace, and
-    `reusable-apply-patch.yml` checks out the PR branch — the same footgun
+    `reusable-apply-patch.yml` checks out the PR branch — the same hazard
     documented on `generate-patch`. Share only via steps that run before the
     PR-branch checkout, by copying the shared script to a temp path first, or
     keep the trusted steps inline (current choice).
