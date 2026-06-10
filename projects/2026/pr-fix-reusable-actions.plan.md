@@ -2,7 +2,7 @@
 title: Reusable patch actions for PR and maintenance fixes
 custodian: '[Patrice Chalin](https://github.com/chalin)'
 status: Phase 1 merged and partially live-validated; phases 2–3 pending.
-cSpell:ignore: fixx otelbot test-and-fix
+cSpell:ignore: fixx test-and-fix
 ---
 
 ## Context
