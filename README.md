@@ -4,8 +4,7 @@
 # <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry.io
 
 This is the source repository for the [OpenTelemetry][] website, project
-documentation, and blog.
-The site is [built][contributing.md] using [Hugo][] and
+documentation, and blog. The site is [built][contributing.md] using [Hugo][] and
 is hosted on [Netlify][].
 
 For website analytics, see [OpenTelemetry.io Analytics][] dashboard.
