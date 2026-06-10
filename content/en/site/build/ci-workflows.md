@@ -265,10 +265,16 @@ It runs as a three-stage pipeline:
    workflow — resolved from the default branch, never from the PR — which
    applies the patch with a GitHub App token and pushes a commit to the PR
    branch. Skipped when the command produced no changes.
-3. **`report`** (trusted): always comments the outcome back on the PR, so the
-   requestor learns the result of every directive that triggers the workflow —
-   including invalid directives (such as `/fixup` or `/fix please`), no-op runs,
-   and failures that happen before any patch is produced.
+3. **`report`** (trusted): always comments the outcome back on the PR — with a
+   link to the run that produced it — so the requestor learns the result of
+   every directive that triggers the workflow, including invalid directives
+   (such as `/fixup` or `/fix please`), no-op runs, and failures that happen
+   before any patch is produced.
+
+Directives follow latest-wins semantics: a new `/fix` comment on a PR cancels
+that PR's in-flight run (which still reports a ⚠️ outcome), since concurrent fix
+runs on the same branch serve no purpose — the second push would fail anyway
+once the branch has moved.
 
 The directive parser lives in [scripts/gh/pr-fix/][], patch generation is the
 [npm-script-patch][] action, and the outcome comment is composed by

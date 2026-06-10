@@ -116,8 +116,8 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
         outcome (1:1 comment per directive, no mutation of user content).
         Alternative considered: editing the originating comment's first line —
         rejected as invasive (alters user content).
-  - [x] Include the run link in the ℹ️ no-op outcome (the other outcomes already
-        link to the run or logs).
+  - [x] Include the run link in every outcome, in a uniform format: each outcome
+        message ends with "See the logs of [run ID](url)."
   - [x] Latest directive wins: per-PR workflow-level concurrency with
         cancel-in-progress, so concurrent runs don't waste resources. Non-`/fix`
         comments get a unique group so they can't cancel a `/fix` run.

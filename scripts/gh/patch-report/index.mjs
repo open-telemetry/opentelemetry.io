@@ -50,7 +50,9 @@ export function buildOutcomeComment({
   hint,
 }) {
   const what = label ? `\`${label}\`` : 'the requested action';
-  const logs = `See the [run logs](${runUrl}).`;
+  // Every outcome ends with this sentence so that outcomes can be traced back
+  // to the run that produced them, in a uniform format.
+  const logs = `See the logs of [run ${runId}](${runUrl}).`;
 
   // 1. Patch generation did not succeed: no changes were ever captured.
   if (generateResult === 'cancelled') {
@@ -72,7 +74,7 @@ export function buildOutcomeComment({
         `and made no changes. ${logs}`
       );
     }
-    return `ℹ️ ${what} made no changes in [run ${runId}](${runUrl}). Nothing to commit.`;
+    return `ℹ️ ${what} made no changes; nothing to commit. ${logs}`;
   }
 
   // 3. Changes were produced: report how applying them went.
@@ -88,5 +90,5 @@ export function buildOutcomeComment({
       `but the resulting changes were applied. ${logs}`
     );
   }
-  return `✅ ${what} applied successfully in [run ${runId}](${runUrl}).`;
+  return `✅ ${what} applied successfully. ${logs}`;
 }
