@@ -50,9 +50,7 @@ export function buildOutcomeComment({
   hint,
 }) {
   const what = label ? `\`${label}\`` : 'the requested action';
-  // Every outcome ends with this sentence so that outcomes can be traced back
-  // to the run that produced them, in a uniform format.
-  const logs = `See the logs of [run ${runId}](${runUrl}).`;
+  const logs = `See [run ${runId}](${runUrl}).`;
 
   // 1. Patch generation did not succeed: no changes were ever captured.
   if (generateResult === 'cancelled') {

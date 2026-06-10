@@ -16,7 +16,7 @@ describe('buildOutcomeComment', () => {
     runUrl: 'https://example.test/run/123',
   };
 
-  const LOGS = 'See the logs of [run 123](https://example.test/run/123).';
+  const LOGS = 'See [run 123](https://example.test/run/123).';
 
   const build = (overrides) => buildOutcomeComment({ ...BASE, ...overrides });
 
@@ -120,7 +120,7 @@ describe('buildOutcomeComment', () => {
                   'comment should be a non-empty string',
                 );
                 assert.ok(
-                  body.endsWith('See the logs of [run 1](u).'),
+                  body.endsWith('See [run 1](u).'),
                   `comment should end with the run link: ${body}`,
                 );
               }
