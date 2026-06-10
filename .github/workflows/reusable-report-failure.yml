@@ -13,7 +13,8 @@ name: Reusable - report workflow failure
 #
 # In a called workflow the `github` context refers to the caller, so the
 # workflow name, branch, commit, and run URL are derived automatically and don't
-# need to be passed in. The issue logic lives in
+# need to be passed in. Optional inputs (label, issue-type, issue-prefix,
+# pr-url) are declared below. The issue logic lives in
 # scripts/gh/report-failure/ (with unit tests).
 
 on:

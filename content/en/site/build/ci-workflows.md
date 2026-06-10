@@ -334,7 +334,8 @@ It runs as a three-stage pipeline:
    reviews then remain the control over the machine- and internet-derived
    content, even across force-pushes.
 3. **`report-failure`**: files a tracking issue on failure, via
-   [workflow failure reporting](#workflow-failure-reporting).
+   [workflow failure reporting](#workflow-failure-reporting); when fixes were
+   published, the issue links to the housekeeping PR.
 
 > [!NOTE]
 >
