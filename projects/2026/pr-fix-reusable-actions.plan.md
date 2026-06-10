@@ -109,9 +109,9 @@ mechanics decoupled from the `issue_comment` trigger.
     risks conflicts for no benefit.
   - Caveat: any commits pushed to the housekeeping PR branch — manual or via
     `/fix`, which pushes to the same branch — are clobbered by the next run's
-    force-push. Merge the PR promptly if it is amended; the PR body carries an
-    IMPORTANT note to that effect. (If this bites in practice, add a guard that
-    skips the force-push when the branch has non-bot commits.)
+    force-push. Merge the PR promptly if commits are pushed to it; the PR body
+    carries an IMPORTANT note to that effect. (If this bites in practice, add a
+    guard that skips the force-push when the branch has non-bot commits.)
 
 ## Status details
 

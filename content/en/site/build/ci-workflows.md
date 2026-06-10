@@ -329,7 +329,7 @@ It runs as a three-stage pipeline:
    the command produced no changes, leaving any open housekeeping PR as is.
    Since the branch is regenerated each run, any commits pushed to it — manual
    or via `/fix` — are clobbered by the next run: merge the PR promptly if you
-   amend it.
+   push commits to it.
 3. **`report-failure`**: files a tracking issue on failure, via [workflow
    failure reporting][].
 
