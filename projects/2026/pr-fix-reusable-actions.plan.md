@@ -192,7 +192,8 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
     and the bot (a GitHub App with write permission) can still post and edit its
     comments on a locked conversation.
 - Phase 2 (scheduled housekeeping caller) implemented: `housekeeping.yml` runs
-  an approved fix command (default `test-and-fix`) daily or on dispatch, and
+  an approved fix command (default `fix-and-test:all`, a dedicated target that
+  runs all fixes then all checks, links checked once) daily or on dispatch, and
   publishes the results as a PR via the new `reusable-patch-pr.yml` sibling
   workflow. Live validation pending post-merge:
   - [ ] dispatch run with changes → `otelbot/housekeeping` branch + PR created

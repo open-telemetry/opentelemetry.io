@@ -307,19 +307,24 @@ composed by [scripts/gh/patch-report/][]; all are unit tested via
 ## Housekeeping {#housekeeping}
 
 The [`housekeeping.yml`][housekeeping] workflow runs an approved fix command —
-`test-and-fix` by default, or an npm script given via manual (maintainer-only)
-dispatch — daily at 7:37 UTC, and publishes any resulting changes as a PR. It is
-the second caller of the reusable patch actions, and the scheduled-maintenance
-flow that motivated [#6592][].
+`fix-and-test:all` by default, or an npm script given via manual
+(maintainer-only) dispatch — daily at 7:37 UTC, and publishes any resulting
+changes as a PR. It is the second caller of the reusable patch actions, and the
+scheduled-maintenance flow that motivated [#6592][].
+
+Unlike the contributor-oriented `test-and-fix`, the `fix-and-test:all` script
+runs _all_ fix scripts (including i18n) followed by _all_ check scripts, keeps
+going past failures so every fix is captured, and checks links exactly once:
+`fix:refcache` (prune, then link check) runs after the content fixes, and
+`check:links` is excluded from the check phase.
 
 It runs as a three-stage pipeline:
 
 1. **`generate-patch`**: runs the housekeeping command via the
-   [npm-script-patch][] action, prunes the link refcache, and uploads the
-   changes as a patch artifact. Unlike the `/fix` pipeline, the whole run is
-   trusted: the schedule and dispatch triggers only ever execute default-branch
-   code. A failing command fails the job, but any fixes it produced are still
-   published.
+   [npm-script-patch][] action and uploads the changes as a patch artifact.
+   Unlike the `/fix` pipeline, the whole run is trusted: the schedule and
+   dispatch triggers only ever execute default-branch code. A failing command
+   fails the job, but any fixes it produced are still published.
 2. **`publish-patch`**: calls the [`reusable-patch-pr.yml`][] workflow — the
    sibling of [`reusable-apply-patch.yml`][] for callers without a PR context —
    which applies the patch to the stable `otelbot/housekeeping` branch,
