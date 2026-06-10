@@ -91,20 +91,20 @@ are internal helpers and are not intended to be run directly.
 
 | Script                     | Description                                                       |
 | -------------------------- | ----------------------------------------------------------------- |
-| `test`                     | Run the most commonly needed tests.                               |
-| `test:base`                | Base tests (same as `check`).                                     |
-| `test:compound-tests`      | Runs compound `test:*-*` scripts.                                 |
-| `test:all`                 | Runs `test:base` then `test:compound-tests`.                      |
-| `test:collector-sync`      | Collector-sync tests.                                             |
-| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.      |
-| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.               |
-| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^local-tools-note]  |
-| `test-and-fix`             | Run fix scripts (excluding i18n/refcache/submodule), then checks. |
-| `fix-and-test:all`         | All fixes (incl. i18n) then all checks; links checked once.[^fat] |
 | `diff:check`               | Warn if working tree has uncommitted changes.                     |
 | `diff:fail`                | Fail if working tree has changes (e.g. after build).              |
+| `fix-and-test:all`         | All fixes (incl. i18n) then all checks; links checked once.[^fat] |
 | `netlify-build:preview`    | `build:preview` then `diff:check`.                                |
 | `netlify-build:production` | `build:production` then `diff:check`.                             |
+| `test-and-fix`             | Run fix scripts (excluding i18n/refcache/submodule), then checks. |
+| `test:all`                 | Runs `test:base` then `test:compound-tests`.                      |
+| `test:base`                | Base tests (same as `check`).                                     |
+| `test:collector-sync`      | Collector-sync tests.                                             |
+| `test:compound-tests`      | Runs compound `test:*-*` scripts.                                 |
+| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.               |
+| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.      |
+| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^local-tools-note]  |
+| `test`                     | Run the most commonly needed tests.                               |
 
 [^local-tools-note]:
     This script has a compound name, rather than being `test:tools`, so that it
