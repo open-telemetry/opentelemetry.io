@@ -1,21 +1,31 @@
 #!/usr/bin/env node
-// CLI entry point: post the single outcome comment for a patch-pipeline run.
-// Runs in a trusted job so the requestor always learns the result, even when
-// the patch could not be generated or applied. All pure logic (message
+// CLI entry point: post or update the comment that tracks a patch-pipeline
+// run. Runs in trusted jobs so the requestor always learns the result, even
+// when the patch could not be generated or applied. All pure logic (message
 // selection) lives in ./index.mjs.
 
+import { appendFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { parseArgs } from 'node:util';
 
-import { buildOutcomeComment } from './index.mjs';
+import { buildAckComment, buildOutcomeComment } from './index.mjs';
 
 const HELP = `Usage: cli.mjs --pr <num> [options]
 
-Compose the outcome comment for a patch-pipeline run and post it to the PR
-with \`gh pr comment\` (which authenticates via $GH_TOKEN).
+Compose the comment that tracks a patch-pipeline run and post it to the PR
+via the GitHub API (authenticating with $GH_TOKEN). With --ack, posts an
+acknowledgement that the run is in progress and emits the comment id (as a
+\`comment_id\` step output under GitHub Actions); the outcome invocation can
+then pass that id as --comment-id to update the same comment in place.
 
 Options:
   -p, --pr <num>               Pull request number to comment on. Required.
+  -a, --ack                    Post the in-progress acknowledgement instead of
+                               an outcome, and emit its comment id.
+      --comment-id <id>        Update this existing comment instead of
+                               creating a new one (e.g. the ack comment).
+      --directive-url <url>    URL of the comment that requested the action;
+                               linked from the posted comment.
       --label <name>           The action as requested (e.g. the command).
       --pr-state <state>       PR state: 'open' or 'closed' ('' acts as open).
       --pr-merged <bool>       'true' when the PR is merged.
@@ -35,6 +45,9 @@ $GITHUB_RUN_ID (provided by GitHub Actions).
 const { values } = parseArgs({
   options: {
     pr: { type: 'string', short: 'p' },
+    ack: { type: 'boolean', short: 'a', default: false },
+    'comment-id': { type: 'string', default: '' },
+    'directive-url': { type: 'string', default: '' },
     label: { type: 'string', default: '' },
     'pr-state': { type: 'string', default: '' },
     'pr-merged': { type: 'string', default: '' },
@@ -61,26 +74,58 @@ if (!values.pr) {
 
 const { GITHUB_SERVER_URL, GITHUB_REPOSITORY, GITHUB_RUN_ID } = process.env;
 const runUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}`;
+const runId = GITHUB_RUN_ID || '';
+const directiveUrl = values['directive-url'];
 
-const body = buildOutcomeComment({
-  label: values.label,
-  prState: values['pr-state'],
-  prMerged: values['pr-merged'],
-  generateResult: values['generate-result'],
-  patchSkipped: values['patch-skipped'],
-  commandExitStatus: values['command-exit-status'],
-  applyResult: values['apply-result'],
-  runId: GITHUB_RUN_ID || '',
-  runUrl,
-  hint: values.hint,
-});
+const body = values.ack
+  ? buildAckComment({ directiveUrl, runId, runUrl })
+  : buildOutcomeComment({
+      label: values.label,
+      prState: values['pr-state'],
+      prMerged: values['pr-merged'],
+      generateResult: values['generate-result'],
+      patchSkipped: values['patch-skipped'],
+      commandExitStatus: values['command-exit-status'],
+      applyResult: values['apply-result'],
+      runId,
+      runUrl,
+      directiveUrl,
+      hint: values.hint,
+    });
 
-console.log(`Posting outcome comment to PR #${values.pr}:`);
+const commentId = values['comment-id'];
+const action = commentId
+  ? `Updating comment ${commentId} on`
+  : 'Posting comment to';
+console.log(`${action} PR #${values.pr}:`);
 console.log(body);
 
 if (values['dry-run']) process.exit(0);
 
-const res = spawnSync('gh', ['pr', 'comment', values.pr, '--body', body], {
-  stdio: 'inherit',
-});
-process.exit(res.status ?? 1);
+// Use the REST API directly (rather than `gh pr comment`) so that we can
+// capture the comment id on create, and update an existing comment in place.
+const endpoint = commentId
+  ? `repos/${GITHUB_REPOSITORY}/issues/comments/${commentId}`
+  : `repos/${GITHUB_REPOSITORY}/issues/${values.pr}/comments`;
+const res = spawnSync(
+  'gh',
+  [
+    'api',
+    ...(commentId ? ['-X', 'PATCH'] : []),
+    endpoint,
+    '-f',
+    `body=${body}`,
+    '--jq',
+    '.id',
+  ],
+  { encoding: 'utf8' },
+);
+process.stderr.write(res.stderr ?? '');
+if (res.status !== 0) process.exit(res.status ?? 1);
+
+const id = (res.stdout ?? '').trim();
+console.log(`Comment id: ${id}`);
+const githubOutput = process.env.GITHUB_OUTPUT;
+if (githubOutput) {
+  appendFileSync(githubOutput, `comment_id=${id}\n`);
+}

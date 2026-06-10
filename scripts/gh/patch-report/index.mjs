@@ -30,10 +30,37 @@
  *                                       'failure' | 'cancelled' | 'skipped'.
  * @property {string} runId              GitHub Actions run id.
  * @property {string} runUrl             URL of the workflow run.
+ * @property {string} [directiveUrl]     URL of the comment that requested the
+ *                                       action; when given, the action label
+ *                                       links back to it so the outcome can be
+ *                                       traced to its request.
  * @property {string} [hint]             Optional caller-supplied guidance shown
  *                                       when the request could not be identified
  *                                       (e.g. how to phrase it correctly).
  */
+
+/**
+ * Render the action label, linked back to the requesting comment when its URL
+ * is known.
+ */
+function renderWhat(label, directiveUrl, fallback = 'the requested action') {
+  const text = label ? `\`${label}\`` : fallback;
+  return directiveUrl ? `[${text}](${directiveUrl})` : text;
+}
+
+/**
+ * Build the comment acknowledging that a request is being processed. A
+ * trusted job posts it as soon as a request enters the pipeline; the outcome
+ * comment later replaces it (same comment, edited) so each request maps to a
+ * single progress-then-outcome comment.
+ *
+ * @param {{directiveUrl?: string, runId: string, runUrl: string}} input
+ * @returns {string} The comment body.
+ */
+export function buildAckComment({ directiveUrl, runId, runUrl }) {
+  const what = renderWhat('', directiveUrl, 'your request');
+  return `🔄 Processing ${what}… See [run ${runId}](${runUrl}).`;
+}
 
 /**
  * Build the single comment that tells the requestor how their run turned out,
@@ -54,9 +81,10 @@ export function buildOutcomeComment({
   applyResult,
   runId,
   runUrl,
+  directiveUrl,
   hint,
 }) {
-  const what = label ? `\`${label}\`` : 'the requested action';
+  const what = renderWhat(label, directiveUrl);
   const logs = `See [run ${runId}](${runUrl}).`;
 
   // 0. The PR isn't open: nothing ran (the pipeline gates on PR state).
@@ -72,7 +100,8 @@ export function buildOutcomeComment({
   if (generateResult !== 'success') {
     if (!label) {
       const guidance = hint ? ` ${hint}` : '';
-      return `❌ The request could not be processed.${guidance} ${logs}`;
+      const req = renderWhat('', directiveUrl, 'The request');
+      return `❌ ${req} could not be processed.${guidance} ${logs}`;
     }
     return `❌ ${what} could not be run, or its changes could not be captured. ${logs}`;
   }

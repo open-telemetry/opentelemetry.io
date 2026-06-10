@@ -110,12 +110,13 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
   once live runs confirm the minimum required.
 - Feature candidates (improve directive↔outcome association when a PR has
   several directives):
-  - [ ] Immediate acknowledgement: a trusted "ack" job posts a progress comment
-        (e.g. "🔄 Running `/fix:format` — [run](link)") as soon as a directive
-        is received; the report job then edits that same comment with the final
-        outcome (1:1 comment per directive, no mutation of user content).
-        Alternative considered: editing the originating comment's first line —
-        rejected as invasive (alters user content).
+  - [x] Immediate acknowledgement: a trusted `ack` job posts a 🔄 in-progress
+        comment (linking the directive comment and the run) as soon as a
+        directive is received; the report job then edits that same comment with
+        the final outcome (1:1 comment per directive, no mutation of user
+        content). Outcome labels link back to the directive comment. Alternative
+        considered: editing the originating comment's first line — rejected as
+        invasive (alters user content).
   - [x] Include the run link in every outcome, in a uniform format: each outcome
         message ends with "See the logs of [run ID](url)."
   - [x] Latest directive wins: per-PR workflow-level concurrency with
