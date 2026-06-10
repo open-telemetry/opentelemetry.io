@@ -8,7 +8,7 @@ eventUrl: &eventUrl >-
 queryParams: >-
   utm_source=opentelemetry&utm_medium=website&utm_content=blog
 # prettier-ignore
-cSpell:ignore: Aditya Agno Alipio Amir Aronoff Artem Bagga Bodhish Caldwell Chauhan Chomiak CLDF Contribfest CopperPoint Cutsail Célestin Dixit EBPF Fairwinds Faseela Forrester Furst Grcevski Harshita Hodgson Hrabusa Hrittik Jakoby Jitendra Juspay Khallai Kubecon Kubestronaut Kusha Mackie Macías Maharshi Mancioppi Markou Melamed Mohsine Nduka Nilson Octopus Olly Omlet Pająk Panos Pavlick Payal Pech Pyroscope Raveesh Reimagining Sandeep Sawmills Shiran Suereth Tkachuk Tsilopoulos Varma Veeam Verma Vijay Wijay Wrike Yahn Zscaler
+cSpell:ignore: Aditya Agno Alipio Amir Aronoff Artem Bagga Bodhish Caldwell Chauhan Chomiak CLDF Contribfest CopperPoint Cutsail Célestin Dixit Fairwinds Faseela Forrester Furst Grcevski Harshita Hodgson Hrittik Jakoby Jitendra Juspay Khallai Kubestronaut Kusha Mackie Macías Maharshi Mancioppi Markou Melamed Mohsine Nduka Nilson Octopus Olly Omlet Pająk Panos Pavlick Payal Pech Pyroscope Raveesh Reimagining Sandeep Sawmills Shiran Suereth Tkachuk Tsilopoulos Varma Veeam Verma Vijay Wijay Wrike Yahn Zscaler
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
