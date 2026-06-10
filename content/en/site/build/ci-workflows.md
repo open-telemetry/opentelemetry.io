@@ -247,21 +247,69 @@ scripts by commenting on a PR:
   ([#9291][]).
 - **`/fix:ALL`** is mapped to `fix:all` so that maintainers can run `fix:all`.
 
+The directive must be the first line of the comment; any following lines are
+ignored, so you can add an explanation after it. The workflow itself triggers on
+any comment whose body starts with `/fix` (so for example `/fixup` enters the
+pipeline and gets invalid-directive feedback, while a comment starting with a
+space, or with `/fix` only on a later line, does not trigger the workflow at
+all).
+
 [#9291]: https://github.com/open-telemetry/opentelemetry.io/pull/9291
 
-It runs as a two-stage pipeline:
+It runs as a three-stage pipeline:
 
 1. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
    command, prunes the link refcache, and uploads a patch artifact
-   (`pr-fix.patch`), up to 1024 KB.
-2. **`apply-patch`** (trusted): runs with a GitHub App token, applies the patch,
-   and pushes a commit to the PR branch.
+   (`site.patch`), up to 1024 KB.
+2. **`apply-patch`** (trusted): calls the [`reusable-apply-patch.yml`][]
+   workflow — resolved from the default branch, never from the PR — which
+   applies the patch with a GitHub App token and pushes a commit to the PR
+   branch. Skipped when the command produced no changes.
+3. **`report`** (trusted): always comments the outcome back on the PR, so the
+   requestor learns the result of every directive that triggers the workflow —
+   including invalid directives (such as `/fixup` or `/fix please`), no-op runs,
+   and failures that happen before any patch is produced.
 
-If a directive produces no changes, a separate `notify-noop` job comments that
-nothing needed to be committed.
+The directive parser lives in [scripts/gh/pr-fix/][], patch generation is the
+[npm-script-patch][] action, and the outcome comment is composed by
+[scripts/gh/patch-report/][]; all are unit tested via
+`npm run test:local-tools`.
 
 [pr-actions]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-actions.yml
+[`reusable-apply-patch.yml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/reusable-apply-patch.yml
+[npm-script-patch]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/.github/actions/npm-script-patch
+[scripts/gh/pr-fix/]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/pr-fix
+[scripts/gh/patch-report/]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/patch-report
+
+## Locale auto-merge
+
+The [locale-auto-merge.yml][] workflow lets a locale's maintainers enable
+[GitHub auto-merge][] on a locale-only PR by commenting `/auto-merge` (or
+`/auto-merge:disable`). It runs as the DOCS bot, which holds the privileges
+needed to flip the "merge when ready" switch under branch protection; CODEOWNERS
+and required checks remain the hard merge gate.
+
+The thin workflow delegates to the testable helper in
+[scripts/gh/locale-auto-merge/][locale-auto-merge-script], which enforces two
+guards before acting: every changed file must be locale-owned, and the commenter
+must be a member of the `docs-<loc>-maintainers` team for every locale the PR
+touches. The helper's eligibility and authorization rules (and how to dry-run
+them locally) are documented in its [README][locale-auto-merge-script]; its unit
+and integration tests run with `npm run test:local-tools`. Contributor-facing
+usage lives in the [localization guide][localization-auto-merge].
+
+[GitHub auto-merge]:
+  https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
+[locale-auto-merge.yml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/locale-auto-merge.yml
+[locale-auto-merge-script]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
+[localization-auto-merge]: /docs/contributing/localization/#auto-merge
 
 ## Spec integration branches {#spec-integration-branches}
 

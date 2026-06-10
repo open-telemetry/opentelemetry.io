@@ -4,7 +4,7 @@ title: KubeCon + CloudNativeCon Japan 2025で、
 linkTitle: KubeCon Japan '25
 date: 2025-05-29
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
-default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 # prettier-ignore
 cSpell:ignore: Baazi Chauhan Hrabusa Kang Kasper Mostafa Nissen Radwan Shivay Siddharth Vijay
 ---
