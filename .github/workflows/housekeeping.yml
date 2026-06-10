@@ -15,7 +15,7 @@ name: Housekeeping
 
 on:
   schedule:
-    - cron: '37 7 * * *' # daily at 7:37 UTC
+    - cron: '37 21 * * *' # daily at 21:37 UTC, ~12h after refcache-refresh and the other daily jobs
   workflow_dispatch:
     inputs:
       command:

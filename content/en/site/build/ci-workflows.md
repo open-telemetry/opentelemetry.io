@@ -308,9 +308,10 @@ composed by [scripts/gh/patch-report/][]; all are unit tested via
 
 The [`housekeeping.yml`][housekeeping] workflow runs an approved fix command —
 [`fix-and-test:all`](../npm-scripts/) by default, or an npm script given via
-manual (maintainer-only) dispatch — daily at 7:37 UTC, and publishes any
-resulting changes as a PR. It is the second caller of the reusable patch
-actions, and the scheduled-maintenance flow that motivated [#6592][].
+manual (maintainer-only) dispatch — daily at 21:37 UTC, about 12 hours after the
+other daily automation jobs, and publishes any resulting changes as a PR. It is
+the second caller of the reusable patch actions, and the scheduled-maintenance
+flow that motivated [#6592][].
 
 It runs as a three-stage pipeline:
 
