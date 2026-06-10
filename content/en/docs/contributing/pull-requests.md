@@ -167,11 +167,13 @@ with the outcome. Or you can issue one of the following fix commands to address
 a specific failure:
 
 ```text
+/fix:code-excerpts
 /fix:dict
 /fix:expired
 /fix:filenames
 /fix:format
 /fix:i18n
+/fix:l10n
 /fix:markdown
 /fix:refcache
 /fix:submodule
