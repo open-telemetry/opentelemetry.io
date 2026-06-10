@@ -60,6 +60,13 @@ jobs:
         with:
           persist-credentials: false
 
+      # Needed by the check:collector-sync scripts that the default command
+      # runs; uv resolves the Python toolchain and project deps on first use.
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: true
+
       - name: Run housekeeping command and generate patch
         id: patch
         # Unlike the `pr-actions.yml` caller, this runs default-branch code
