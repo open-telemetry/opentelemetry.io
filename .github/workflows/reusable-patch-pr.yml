@@ -138,6 +138,7 @@ jobs:
           rm site.patch
 
       - name: Commit and push
+        id: commit
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           BRANCH: ${{ inputs.branch }}
@@ -147,14 +148,23 @@ jobs:
         run: |
           git config --local user.email "$USER_EMAIL"
           git config --local user.name "$USER_NAME"
-          git add -A
-          git commit -m "$COMMIT_MESSAGE"
-          # Recreate the branch from main on every run so the PR always
-          # reflects exactly the latest patch.
-          git push --force origin "HEAD:$BRANCH"
+          # The patch is applied to main at publish time, which may be newer
+          # than the main it was generated against: tolerate an empty result.
+          if [[ $(git status --porcelain) ]]; then
+            git add -A
+            git commit -m "$COMMIT_MESSAGE"
+            # Recreate the branch from main on every run so the PR always
+            # reflects exactly the latest patch.
+            git push --force origin "HEAD:$BRANCH"
+            echo "committed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Patch applied cleanly but resulted in no changes"
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Create PR, or refresh the open PR's body
         id: pr
+        if: steps.commit.outputs.committed == 'true'
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           BRANCH: ${{ inputs.branch }}

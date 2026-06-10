@@ -201,6 +201,15 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
         place, no duplicate PR
   - [ ] run with no changes → publish skipped, open PR untouched
   - [ ] failing command with fixes → failure issue filed and fixes published
+  - [ ] check whether the forwarded `GITHUB_TOKEN` grants on `publish-patch` can
+        be trimmed (steps authenticate with the app token), as for the `/fix`
+        publish job
+- Open PR on a clean no-change run: left as is for now. Since the branch is
+  recreated from `main` each run, a clean exit-0 no-diff run means `main` no
+  longer needs the open PR's fixes, so auto-closing it (clean runs only — a
+  failing command with no captured fixes says nothing about `main`) would
+  prevent merging superseded content. Revisit after live validation shows how
+  often this case occurs.
 
 <!-- prettier-ignore-start -->
 [#10309]: https://github.com/open-telemetry/opentelemetry.io/pull/10309
