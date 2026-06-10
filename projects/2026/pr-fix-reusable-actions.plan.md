@@ -223,6 +223,9 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
         validated); failure issue and ⚠️ partial-results warning in the PR body
         (cleared on the next clean run) pending re-validation after the
         first-run fixes
+  - [ ] confirm the fork-filtered PR lookup in the publish job still finds the
+        canonical housekeeping PR (the jq filter is unit-tested locally; staging
+        a hostile fork branch is impractical)
   - [ ] check whether the forwarded `GITHUB_TOKEN` grants on `publish-patch` can
         be trimmed (steps authenticate with the app token), as for the `/fix`
         publish job
