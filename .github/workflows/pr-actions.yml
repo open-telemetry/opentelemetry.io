@@ -189,8 +189,10 @@ jobs:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           LABEL: ${{ needs.generate-patch.outputs.action_name }}
           # Updates the ack comment in place when one was posted; otherwise
-          # (e.g. directive on a closed PR, or the ack job failed) the
-          # outcome is posted as a new comment.
+          # (e.g. directive on a closed PR, the ack job failed, or the run
+          # was cancelled before the ack posted its comment id) the outcome
+          # is posted as a new comment — in the cancelled case a stale 🔄
+          # comment may remain.
           ACK_COMMENT_ID: ${{ needs.ack.outputs.comment_id }}
           DIRECTIVE_URL: ${{ github.event.comment.html_url }}
           # 'open' or 'closed'; merged PRs are 'closed' with a merged_at time.

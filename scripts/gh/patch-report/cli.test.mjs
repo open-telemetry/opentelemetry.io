@@ -67,6 +67,8 @@ describe('patch-report CLI', () => {
       '42',
       '--comment-id',
       '314159',
+      '--directive-url',
+      'https://example.test/c/7',
       '--label',
       'fix:format',
       '--generate-result',
@@ -79,7 +81,27 @@ describe('patch-report CLI', () => {
     assert.deepEqual(ghArgs.slice(0, 3), ['api', '-X', 'PATCH']);
     assert.ok(ghArgs.includes('repos/org/repo/issues/comments/314159'));
     const body = ghArgs.find((a) => a.startsWith('body='));
-    assert.match(body, /^body=✅ `fix:format` applied successfully/);
+    assert.match(
+      body,
+      /^body=✅ \[`fix:format`\]\(https:\/\/example\.test\/c\/7\) applied successfully/,
+    );
+  });
+
+  test('empty --comment-id creates a new comment (ack fallback path)', () => {
+    const { ghArgs } = runCli([
+      '--pr',
+      '42',
+      '--comment-id',
+      '',
+      '--label',
+      'fix:format',
+      '--generate-result',
+      'success',
+      '--patch-skipped',
+      'true',
+    ]);
+    assert.ok(!ghArgs.includes('PATCH'), 'fallback must create, not PATCH');
+    assert.ok(ghArgs.includes('repos/org/repo/issues/42/comments'));
   });
 
   test('--dry-run prints the comment without invoking gh', () => {

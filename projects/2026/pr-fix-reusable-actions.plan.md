@@ -79,9 +79,12 @@ once the shared patch path has proven stable.
   i18n caller comes later.
 - The trusted publication path is a reusable workflow rather than a composite
   action, so that no PR-controlled code can run with write credentials.
-- Outcome reporting is a third, always-run trusted job: the requestor is
+- Outcome reporting is an always-run trusted `report` job: the requestor is
   notified of every directive outcome, improving on the original workflow's
-  silent failure modes.
+  silent failure modes. A trusted `ack` job posts an immediate in-progress
+  comment that `report` then updates in place. The ack deliberately says "your
+  request" (with a link to the directive comment) rather than naming the
+  command, so the trusted ack job never parses the directive.
 - Push policy lives inside the trusted reusable workflow (the cost of the
   security fix above). Phase 3 (maintenance fixes published as a new PR) should
   be a _sibling_ trusted workflow (patch → branch → `gh pr create`) rather than
@@ -108,28 +111,31 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
   - [ ] same flow from a fork PR
 - Follow-up: trim the `GITHUB_TOKEN` grants forwarded to the reusable workflow
   once live runs confirm the minimum required.
-- Feature candidates (improve directive↔outcome association when a PR has
-  several directives):
-  - [x] Immediate acknowledgement: a trusted `ack` job posts a 🔄 in-progress
-        comment (linking the directive comment and the run) as soon as a
-        directive is received; the report job then edits that same comment with
-        the final outcome (1:1 comment per directive, no mutation of user
-        content). Outcome messages link back to the directive comment.
-        Alternative considered: editing the originating comment's first line —
-        rejected as invasive (alters user content).
-  - [x] Include the run link in every outcome, in a uniform format: each outcome
-        message ends with "See the logs of [run ID](url)."
-  - [x] Latest directive wins: per-PR workflow-level concurrency with
-        cancel-in-progress, so concurrent runs don't waste resources. Non-`/fix`
-        comments get a unique group so they can't cancel a `/fix` run.
-  - [x] Directives on closed or merged PRs are gated out (from the trigger
-        payload, before any runner does fix work) and reported as ❌ with the
-        reason. Draft PRs still work; deleted-branch sub-cases are moot since
-        nothing is checked out.
-  - [x] Locked PRs need no special handling: locking restricts commenting to
-        users with write access, so any directive author is privileged by
-        construction, and the bot (a GitHub App with write permission) can still
-        post and edit its comments on a locked conversation.
+- Follow-up: the trusted `ack` and `report` jobs share ~40 lines of setup
+  boilerplate (harden-runner, checkout, setup-node, app token); factor out a
+  composite action if a third trusted comment job appears.
+- Directive↔outcome improvements (all shipped):
+  - A trusted `ack` job posts a 🔄 in-progress comment (linking the directive
+    comment and the run) as soon as a directive is received; the report job then
+    edits that same comment with the final outcome (1:1 comment per directive,
+    no mutation of user content). Outcome messages link back to the directive
+    comment. Alternative considered: editing the originating comment's first
+    line — rejected as invasive (alters user content).
+  - Every outcome message ends with the run link in a uniform format: "See
+    [run ID](url)."
+  - Latest directive wins: per-PR workflow-level concurrency with
+    cancel-in-progress, so concurrent runs don't waste resources. Non-`/fix`
+    comments get a unique group so they can't cancel a `/fix` run. Edge case: if
+    a run is cancelled after its ack posted but before the outcome update, its
+    🔄 comment is updated to ⚠️ by its own always-run report job.
+  - Directives on closed or merged PRs are gated out (from the trigger payload,
+    before any runner does fix work) and reported as ❌ with the reason. Draft
+    PRs still work; deleted-branch sub-cases are moot since nothing is checked
+    out.
+  - Locked PRs need no special handling: locking restricts commenting to users
+    with write access, so any directive author is privileged by construction,
+    and the bot (a GitHub App with write permission) can still post and edit its
+    comments on a locked conversation.
 - Phases 2 (i18n caller) and 3 (scheduled maintenance) not started.
 
 <!-- prettier-ignore-start -->

@@ -165,6 +165,12 @@ describe('buildOutcomeComment', () => {
                       body.endsWith('See [run 1](u).'),
                       `comment should end with the run link: ${body}`,
                     );
+                    if (directiveUrl) {
+                      assert.ok(
+                        body.includes('](d)'),
+                        `comment should link the directive: ${body}`,
+                      );
+                    }
                   }
                 }
               }

@@ -285,8 +285,8 @@ runs on the same branch serve no purpose — the second push would fail anyway
 once the branch has moved.
 
 The directive parser lives in [scripts/gh/pr-fix/][], patch generation is the
-[npm-script-patch][] action, and the outcome comment is composed by
-[scripts/gh/patch-report/][]; all are unit tested via
+[npm-script-patch][] action, and the acknowledgement and outcome comments are
+composed by [scripts/gh/patch-report/][]; all are unit tested via
 `npm run test:local-tools`.
 
 [pr-actions]:
