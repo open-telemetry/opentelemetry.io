@@ -47,7 +47,7 @@ puedes usar OpenTelemetry C++ con cualquier otro framework web.
 Para empezar, instala Oat++ localmente usando el
 [código fuente](https://github.com/oatpp) y `make`, siguiendo estos pasos:
 
-1. Obtén el código fuente de Oat++ clonándolo desde el repositorio
+1. Obtén el código fuente de Oat++ clonando desde el repositorio
    [oatpp/oatpp](https://github.com/oatpp/oatpp) de GitHub.
 
    ```bash
