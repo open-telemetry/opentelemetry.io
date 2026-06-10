@@ -124,7 +124,7 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
   boilerplate (harden-runner, checkout, setup-node, app token); factor out a
   composite action if a third trusted comment job appears.
 - Follow-up (security pass): decide who may trigger `/fix` — currently anyone
-  who can comment; tracked as its own issue since it is a policy decision.
+  who can comment; tracked as [#10329][] since it is a policy decision.
 - Follow-up (security pass): consider `egress-policy: block` + allowlist for the
   trusted jobs' harden-runner steps (their egress set is small and known); keep
   `audit` on the untrusted job, which needs broad egress for npm install.
@@ -164,4 +164,5 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
 [#10318]: https://github.com/open-telemetry/opentelemetry.io/pull/10318
 [#10319]: https://github.com/open-telemetry/opentelemetry.io/pull/10319
 [#10320]: https://github.com/open-telemetry/opentelemetry.io/issues/10320
+[#10329]: https://github.com/open-telemetry/opentelemetry.io/issues/10329
 <!-- prettier-ignore-end -->
