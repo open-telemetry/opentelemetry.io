@@ -4,12 +4,17 @@ import { describe, test } from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+  DIRECTIVE_HINT,
   FIX_ALL_COMPAT_MESSAGE,
   INVALID_DIRECTIVE_MESSAGE,
   parseFixDirective,
 } from './index.mjs';
 
 describe('parseFixDirective', () => {
+  test('the invalid-directive message includes the directive hint', () => {
+    assert.ok(INVALID_DIRECTIVE_MESSAGE.includes(DIRECTIVE_HINT));
+  });
+
   test('bare /fix runs the fix script', () => {
     assert.deepEqual(parseFixDirective('/fix'), {
       valid: true,

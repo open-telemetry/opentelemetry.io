@@ -9,7 +9,8 @@ import { parseFixDirective } from './index.mjs';
 
 const HELP = `Usage: cli.mjs --comment <body>
 
-Parse a \`/fix\` PR-comment directive. On a valid directive, prints
+Parse a \`/fix\` PR-comment directive. Only the first line of the comment is
+parsed; any following lines are ignored. On a valid directive, prints
 \`action_name\` and \`command\` key=value pairs (and appends them to
 $GITHUB_OUTPUT when set, as under GitHub Actions). On an invalid directive,
 prints the error and exits non-zero.

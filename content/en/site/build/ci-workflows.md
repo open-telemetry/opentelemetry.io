@@ -248,8 +248,11 @@ scripts by commenting on a PR:
 - **`/fix:ALL`** is mapped to `fix:all` so that maintainers can run `fix:all`.
 
 The directive must be the first line of the comment; any following lines are
-ignored, so you can add an explanation after it. A `/fix` appearing anywhere
-else in a comment does not trigger the workflow.
+ignored, so you can add an explanation after it. The workflow itself triggers on
+any comment whose body starts with `/fix` (so for example `/fixup` enters the
+pipeline and gets invalid-directive feedback, while a comment starting with a
+space, or with `/fix` only on a later line, does not trigger the workflow at
+all).
 
 [#9291]: https://github.com/open-telemetry/opentelemetry.io/pull/9291
 

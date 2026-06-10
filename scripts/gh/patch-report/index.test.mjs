@@ -61,13 +61,12 @@ describe('buildOutcomeComment', () => {
   });
 
   test('unidentified request includes a caller-supplied hint', () => {
-    const body = build({
-      generateResult: 'failure',
-      label: '',
-      hint: 'Use `/fix` or `/fix:<name>` and no other text.',
-    });
+    // The hint is an opaque caller-supplied string (this reporter is generic,
+    // not /fix-specific), so any text works here.
+    const hint = 'See the docs for how to phrase a request.';
+    const body = build({ generateResult: 'failure', label: '', hint });
     assert.match(body, /^❌ The request could not be processed\./);
-    assert.match(body, /Use `\/fix` or `\/fix:<name>` and no other text\./);
+    assert.ok(body.includes(hint));
   });
 
   test('generation failed for a known command (e.g. oversized patch)', () => {

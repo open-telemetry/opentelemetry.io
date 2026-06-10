@@ -40,9 +40,11 @@ jobs:
 
       - name: Extract action name and resolve command
         id: extract
-        # Parses the `/fix` directive and applies the `fix:all`/`fix:ALL` compat
-        # mapping. An invalid directive fails this step; the `report` job then
-        # comments the outcome (with a usage hint) on the PR.
+        # Parses the `/fix` directive (first line of the comment only) and
+        # applies the `fix:all`/`fix:ALL` compat mapping. The job `if` is a
+        # broad prefix gate; exact parsing happens here. An invalid directive
+        # fails this step; the `report` job then comments the outcome (with a
+        # usage hint) on the PR.
         run: node scripts/gh/pr-fix/cli.mjs --comment "$COMMENT"
 
       - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
