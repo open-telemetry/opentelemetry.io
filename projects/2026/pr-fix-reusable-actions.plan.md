@@ -114,7 +114,7 @@ As of 2026-06-10:
         outcome (1:1 comment per directive, no mutation of user content).
         Alternative considered: editing the originating comment's first line —
         rejected as invasive (alters user content).
-  - [ ] Include the run link in the ℹ️ no-op outcome (the other outcomes already
+  - [x] Include the run link in the ℹ️ no-op outcome (the other outcomes already
         link to the run or logs).
 - Phases 2 (i18n caller) and 3 (scheduled maintenance) not started.
 

@@ -27,14 +27,14 @@ describe('buildOutcomeComment', () => {
   test('no-op: generation produced no changes', () => {
     assert.equal(
       build({ patchSkipped: 'true' }),
-      'ℹ️ `fix:refcache` made no changes. Nothing to commit.',
+      'ℹ️ `fix:refcache` made no changes in [run 123](https://example.test/run/123). Nothing to commit.',
     );
   });
 
   test('no-op with unknown (empty) exit status is not reported as a failure', () => {
     assert.equal(
       build({ patchSkipped: 'true', commandExitStatus: '' }),
-      'ℹ️ `fix:refcache` made no changes. Nothing to commit.',
+      'ℹ️ `fix:refcache` made no changes in [run 123](https://example.test/run/123). Nothing to commit.',
     );
   });
 

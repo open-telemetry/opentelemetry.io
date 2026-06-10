@@ -72,7 +72,7 @@ export function buildOutcomeComment({
         `and made no changes. ${logs}`
       );
     }
-    return `ℹ️ ${what} made no changes. Nothing to commit.`;
+    return `ℹ️ ${what} made no changes in [run ${runId}](${runUrl}). Nothing to commit.`;
   }
 
   // 3. Changes were produced: report how applying them went.
