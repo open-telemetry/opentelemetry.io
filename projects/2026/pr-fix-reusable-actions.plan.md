@@ -106,7 +106,8 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
         second failed loudly (stale duplicate patch). Since then, semantics
         changed to latest-wins: a new directive cancels the PR's in-flight run,
         which still reports a ⚠️ outcome.
-  - [ ] `/fix` followed by explanatory lines → treated as `/fix`
+  - [ ] `/fix` followed by explanatory lines → treated as `/fix` (first-line
+        parsing has unit coverage in `pr-fix`; live check pending)
   - [x] directive on a closed PR → ❌ "only apply to open PRs" comment, no fix
         work run
   - [x] failing command → ❌ "could not be run, or its changes could not be
@@ -133,9 +134,11 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
     [run ID](url)."
   - Latest directive wins: per-PR workflow-level concurrency with
     cancel-in-progress, so concurrent runs don't waste resources. Non-`/fix`
-    comments get a unique group so they can't cancel a `/fix` run. Edge case: if
-    a run is cancelled after its ack posted but before the outcome update, its
-    🔄 comment is updated to ⚠️ by its own always-run report job.
+    comments get a unique group so they can't cancel a `/fix` run. Edge cases:
+    if a run is cancelled after its ack posted but before the outcome update,
+    its 🔄 comment is updated to ⚠️ by its own always-run report job; if it is
+    cancelled before the ack posts its comment id, the outcome lands in a new
+    comment and a stale 🔄 comment may remain.
   - Directives on closed or merged PRs are gated out (from the trigger payload,
     before any runner does fix work) and reported as ❌ with the reason. Draft
     PRs still work; deleted-branch sub-cases are moot since nothing is checked

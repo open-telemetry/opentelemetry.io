@@ -67,8 +67,9 @@ export function buildAckComment({ directiveUrl, runId, runUrl }) {
  * Build the final outcome comment that tells the requestor how their run
  * turned out (replacing the acknowledgement comment when one was posted),
  * for every outcome including failures that happen before any patch is produced
- * (unidentifiable request, oversized patch, setup errors). This is the one
- * message the workflow posts, so it must cover all paths.
+ * (unidentifiable request, oversized patch, setup errors). This is the final
+ * message posted for a run (replacing the ack when present), so it must cover
+ * all paths.
  *
  * @param {OutcomeInput} input
  * @returns {string} The comment body.
