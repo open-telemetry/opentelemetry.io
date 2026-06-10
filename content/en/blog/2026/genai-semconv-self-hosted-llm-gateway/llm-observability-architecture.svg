@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Self-Hosted LLM Observability Architecture</title>
+  <desc id="desc">Clients call a FastAPI LLM gateway in front of Ollama. The gateway emits OpenTelemetry GenAI traces, metrics, and logs to an OpenTelemetry Collector, which routes them to Prometheus for metrics, Loki for logs, and Tempo for traces, with Grafana dashboards and Alertmanager alerts. Everything runs on CPU in a single-node Kubernetes cluster.</desc>
+  <defs>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0B1B33" flood-opacity="0.12"/>
+    </filter>
+    <marker id="aReq" viewBox="0 0 12 12" refX="9.5" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#E95420"/>
+    </marker>
+    <marker id="aTel" viewBox="0 0 12 12" refX="9.5" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#3B5BDB"/>
+    </marker>
+    <marker id="aQry" viewBox="0 0 12 12" refX="9.5" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#047857"/>
+    </marker>
+    <marker id="aAlt" viewBox="0 0 12 12" refX="9.5" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#B91C1C"/>
+    </marker>
+    <style>
+      .bg { fill: #FFFFFF; }
+      .h1 { font: 700 46px system-ui, "Segoe UI", Arial, sans-serif; fill: #1A1A2E; }
+      .h2 { font: 400 23px system-ui, "Segoe UI", Arial, sans-serif; fill: #5A6472; }
+      .frameLabel { font: 700 22px system-ui, "Segoe UI", Arial, sans-serif; fill: #344054; }
+      .cardTitle { font: 700 22px system-ui, "Segoe UI", Arial, sans-serif; fill: #FFFFFF; text-anchor: middle; }
+      .body { font: 400 17px system-ui, "Segoe UI", Arial, sans-serif; fill: #344054; text-anchor: middle; }
+      .muted { font: 400 15px system-ui, "Segoe UI", Arial, sans-serif; fill: #707A8A; text-anchor: middle; }
+      .legendTitle { font: 700 20px system-ui, "Segoe UI", Arial, sans-serif; fill: #1A1A2E; text-anchor: middle; }
+      .legendRow { font: 400 17px system-ui, "Segoe UI", Arial, sans-serif; fill: #344054; }
+      .edgeLabel { font: 700 15px system-ui, "Segoe UI", Arial, sans-serif; fill: #45506180; }
+      .edgeLabelC { font: 700 15px system-ui, "Segoe UI", Arial, sans-serif; fill: #455061; text-anchor: middle; }
+      .footer { font: 400 17px system-ui, "Segoe UI", Arial, sans-serif; fill: #707A8A; }
+      .card { fill: #FFFFFF; stroke: #E3E8EF; stroke-width: 1.5; filter: url(#cardShadow); }
+      .outer { fill: #F6F8FC; stroke: #DDE3EC; stroke-width: 2; }
+      .cos { fill: #FBF7FB; stroke: #E4D3E0; stroke-width: 2; }
+      .reqArrow { fill: none; stroke: #E95420; stroke-width: 4; stroke-linecap: round; marker-end: url(#aReq); marker-start: url(#aReq); }
+      .telArrow { fill: none; stroke: #3B5BDB; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 10 9; marker-end: url(#aTel); }
+      .qryArrow { fill: none; stroke: #047857; stroke-width: 4; stroke-linecap: round; marker-end: url(#aQry); }
+      .altArrow { fill: none; stroke: #B91C1C; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#aAlt); }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1920" height="1080"/>
+  <circle cx="1788" cy="120" r="96" fill="#E95420" opacity="0.05"/>
+  <circle cx="120" cy="980" r="120" fill="#3B5BDB" opacity="0.04"/>
+
+  <!-- Title -->
+  <text class="h1" x="72" y="90">Self-Hosted LLM Observability</text>
+  <text class="h2" x="74" y="130">OpenAI-compatible gateway · OpenTelemetry GenAI signals · Prometheus · Loki · Tempo · Grafana</text>
+
+  <!-- Platform substrate frame -->
+  <rect class="outer" x="56" y="168" width="1808" height="804" rx="20"/>
+  <circle cx="80" cy="200" r="7" fill="#E95420"/>
+  <text class="frameLabel" x="98" y="207">Single-node Kubernetes  ·  CPU-only Ollama demo</text>
+
+  <!-- ===== Tier 1: request / model path ===== -->
+  <!-- Clients -->
+  <rect class="card" x="104" y="244" width="270" height="176" rx="14"/>
+  <path d="M118,244 h242 a14,14 0 0 1 14,14 v32 h-270 v-32 a14,14 0 0 1 14,-14 z" fill="#E95420"/>
+  <text class="cardTitle" x="239" y="274">Clients</text>
+  <text class="body" x="239" y="326">Load generator</text>
+  <text class="body" x="239" y="356">OpenAI-compatible apps</text>
+  <text class="body" x="239" y="386">Scenario-labelled traffic</text>
+
+  <!-- FastAPI Gateway -->
+  <rect class="card" x="434" y="244" width="330" height="176" rx="14"/>
+  <path d="M448,244 h302 a14,14 0 0 1 14,14 v32 h-330 v-32 a14,14 0 0 1 14,-14 z" fill="#772953"/>
+  <text class="cardTitle" x="599" y="274">FastAPI LLM Gateway</text>
+  <text class="body" x="599" y="326">/v1/chat/completions proxy</text>
+  <text class="body" x="599" y="356">Manual OTel GenAI signals</text>
+  <text class="body" x="599" y="386">Optional quality + redaction</text>
+
+  <!-- Ollama -->
+  <rect class="card" x="834" y="244" width="330" height="176" rx="14"/>
+  <path d="M848,244 h302 a14,14 0 0 1 14,14 v32 h-330 v-32 a14,14 0 0 1 14,-14 z" fill="#0F766E"/>
+  <text class="cardTitle" x="999" y="274">Ollama Model Serving</text>
+  <text class="body" x="999" y="326">llama3.2:1b · OpenAI /v1</text>
+  <text class="body" x="999" y="356">qwen3.5:2b · native /api/chat</text>
+  <text class="body" x="999" y="386">CPU-only local inference</text>
+
+  <!-- Legend -->
+  <rect class="card" x="1410" y="244" width="406" height="176" rx="14"/>
+  <text class="legendTitle" x="1613" y="282">Signal types</text>
+  <line x1="1440" y1="315" x2="1470" y2="315" stroke="#E95420" stroke-width="4" stroke-linecap="round"/>
+  <text class="legendRow" x="1482" y="321">Request / model path</text>
+  <line x1="1440" y1="347" x2="1470" y2="347" stroke="#3B5BDB" stroke-width="4" stroke-linecap="round" stroke-dasharray="9 7"/>
+  <text class="legendRow" x="1482" y="353">OTLP telemetry (traces · metrics · logs)</text>
+  <line x1="1440" y1="379" x2="1470" y2="379" stroke="#047857" stroke-width="4" stroke-linecap="round"/>
+  <text class="legendRow" x="1482" y="385">Dashboard queries</text>
+  <line x1="1440" y1="411" x2="1470" y2="411" stroke="#B91C1C" stroke-width="4" stroke-linecap="round"/>
+  <text class="legendRow" x="1482" y="417">Alert rules</text>
+
+  <!-- OpenTelemetry Collector -->
+  <rect class="card" x="419" y="486" width="360" height="120" rx="14"/>
+  <path d="M433,486 h332 a14,14 0 0 1 14,14 v32 h-360 v-32 a14,14 0 0 1 14,-14 z" fill="#3B5BDB"/>
+  <text class="cardTitle" x="599" y="516">OpenTelemetry Collector</text>
+  <text class="body" x="599" y="568">OTLP gRPC :4317 · HTTP :4318</text>
+  <text class="muted" x="599" y="592">enrich · batch · route by signal</text>
+
+  <!-- ===== Observability backend frame ===== -->
+  <rect class="cos" x="104" y="636" width="1712" height="312" rx="18"/>
+  <circle cx="132" cy="671" r="7" fill="#772953"/>
+  <text class="frameLabel" x="150" y="678">Observability backend (OpenTelemetry-compatible)</text>
+
+  <!-- Prometheus -->
+  <rect class="card" x="144" y="706" width="290" height="176" rx="14"/>
+  <path d="M158,706 h262 a14,14 0 0 1 14,14 v32 h-290 v-32 a14,14 0 0 1 14,-14 z" fill="#C2410C"/>
+  <text class="cardTitle" x="289" y="736">Prometheus</text>
+  <text class="body" x="289" y="792">Metrics</text>
+  <text class="muted" x="289" y="822">remote-write</text>
+
+  <!-- Loki -->
+  <rect class="card" x="454" y="706" width="290" height="176" rx="14"/>
+  <path d="M468,706 h262 a14,14 0 0 1 14,14 v32 h-290 v-32 a14,14 0 0 1 14,-14 z" fill="#047857"/>
+  <text class="cardTitle" x="599" y="736">Loki</text>
+  <text class="body" x="599" y="792">Logs</text>
+  <text class="muted" x="599" y="822">trace-correlated</text>
+
+  <!-- Tempo -->
+  <rect class="card" x="764" y="706" width="290" height="176" rx="14"/>
+  <path d="M778,706 h262 a14,14 0 0 1 14,14 v32 h-290 v-32 a14,14 0 0 1 14,-14 z" fill="#6D28D9"/>
+  <text class="cardTitle" x="909" y="736">Tempo</text>
+  <text class="body" x="909" y="792">Traces</text>
+  <text class="muted" x="909" y="822">object-storage backed</text>
+
+  <!-- Grafana -->
+  <rect class="card" x="1174" y="706" width="290" height="176" rx="14"/>
+  <path d="M1188,706 h262 a14,14 0 0 1 14,14 v32 h-290 v-32 a14,14 0 0 1 14,-14 z" fill="#1D4ED8"/>
+  <text class="cardTitle" x="1319" y="736">Grafana</text>
+  <text class="body" x="1319" y="788">LLM Golden Signals</text>
+  <text class="muted" x="1319" y="816">queries Prometheus · Loki · Tempo</text>
+  <text class="muted" x="1319" y="842">exemplars link to traces</text>
+
+  <!-- Alertmanager -->
+  <rect class="card" x="1484" y="706" width="290" height="176" rx="14"/>
+  <path d="M1498,706 h262 a14,14 0 0 1 14,14 v32 h-290 v-32 a14,14 0 0 1 14,-14 z" fill="#B91C1C"/>
+  <text class="cardTitle" x="1629" y="736">Alertmanager</text>
+  <text class="body" x="1629" y="788">High TTFC</text>
+  <text class="body" x="1629" y="816">Token burn</text>
+  <text class="body" x="1629" y="844">Error rate</text>
+
+  <!-- ===== Arrows ===== -->
+  <!-- request/response path -->
+  <path class="reqArrow" d="M374,332 L434,332"/>
+  <text class="edgeLabelC" x="404" y="318">chat</text>
+  <path class="reqArrow" d="M764,332 L834,332"/>
+  <text class="edgeLabelC" x="799" y="318">proxy</text>
+
+  <!-- gateway -> collector (telemetry) -->
+  <path class="telArrow" d="M599,420 L599,486"/>
+  <text class="edgeLabel" x="614" y="450">OTLP</text>
+  <text class="edgeLabel" x="614" y="470">traces · metrics · logs</text>
+
+  <!-- collector -> stores -->
+  <path class="telArrow" d="M585,606 C470,656 360,664 297,702"/>
+  <path class="telArrow" d="M599,606 L599,702"/>
+  <path class="telArrow" d="M613,606 C720,656 840,664 901,702"/>
+
+  <!-- stores -> grafana -->
+  <path class="qryArrow" d="M1054,794 L1174,794"/>
+  <text class="edgeLabelC" x="1114" y="780">queries</text>
+
+  <!-- prometheus -> alertmanager (routed below cards) -->
+  <path class="altArrow" d="M289,882 L289,914 L1629,914 L1629,884"/>
+  <text class="edgeLabelC" x="959" y="906">alert rules</text>
+
+  <!-- Footer -->
+  <text class="footer" x="72" y="1016">Core LLM signals:  time to first chunk  ·  total latency  ·  token usage  ·  throughput  ·  error rate  ·  finish reason  ·  trace ID  ·  optional quality score</text>
+</svg>
