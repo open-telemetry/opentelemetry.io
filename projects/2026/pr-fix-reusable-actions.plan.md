@@ -160,7 +160,10 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
 - Follow-up (security pass): a patch may touch `.github/workflows/**`; the push
   then succeeds only if the bot app holds the Workflows permission. If not, the
   push fails closed and reports ❌ — the desired default. Verify the app
-  permission once and record the intended behavior.
+  permission once and record the intended behavior. An explicit
+  reject-`.github/`-paths guard was considered and declined: legitimate fixes
+  touch workflows (`fix:format` runs Prettier over the whole repo, including
+  workflow YAML).
 - Follow-up (consolidation roadmap): reduce duplication across the patch-family
   workflows.
   - `reusable-apply-patch.yml` and `reusable-patch-pr.yml` share ~30 lines of

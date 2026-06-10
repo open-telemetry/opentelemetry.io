@@ -112,8 +112,8 @@ jobs:
       pr-body: >-
         Automated fix results from the scheduled
         [housekeeping](https://opentelemetry.io/site/build/ci-workflows/#housekeeping)
-        workflow. ${{ needs.generate-patch.outputs.command_exit_status != '0' &&
-        '⚠️ The housekeeping command itself failed, so these results may be
+        workflow.${{ needs.generate-patch.outputs.command_exit_status != '0' &&
+        ' ⚠️ The housekeeping command itself failed, so these results may be
         partial; for details, see the run logs (and the failure-report issue,
         once filed).' || '' }}
       commit-message: Housekeeping fix results
