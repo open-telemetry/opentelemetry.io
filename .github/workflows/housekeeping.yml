@@ -50,6 +50,7 @@ jobs:
     outputs:
       patch_name: housekeeping-${{ github.run_id }}
       patch_skipped: ${{ steps.patch.outputs.patch_skipped }}
+      command_exit_status: ${{ steps.patch.outputs.action_exit_status }}
 
     steps:
       - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
@@ -111,7 +112,10 @@ jobs:
       pr-body: >-
         Automated fix results from the scheduled
         [housekeeping](https://opentelemetry.io/site/build/ci-workflows/#housekeeping)
-        workflow.
+        workflow. ${{ needs.generate-patch.outputs.command_exit_status != '0' &&
+        '⚠️ The housekeeping command itself failed, so these results may be
+        partial; for details, see the failure-report issue and the run logs.' ||
+        '' }}
       commit-message: Housekeeping fix results
       user-name: otelbot
       user-email: 197425009+otelbot@users.noreply.github.com
