@@ -256,17 +256,21 @@ all).
 
 [#9291]: https://github.com/open-telemetry/opentelemetry.io/pull/9291
 
-It runs as a three-stage pipeline:
+It runs as a four-stage pipeline:
 
-1. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
+1. **`ack`** (trusted): as soon as a directive is received, replies with a 🔄
+   in-progress comment that links to the directive comment and to the run.
+2. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
    command, prunes the link refcache, and uploads a patch artifact
    (`site.patch`), up to 1024 KB.
-2. **`apply-patch`** (trusted): calls the [`reusable-apply-patch.yml`][]
+3. **`apply-patch`** (trusted): calls the [`reusable-apply-patch.yml`][]
    workflow — resolved from the default branch, never from the PR — which
    applies the patch with a GitHub App token and pushes a commit to the PR
    branch. Skipped when the command produced no changes.
-3. **`report`** (trusted): always comments the outcome back on the PR — with a
-   link to the run that produced it — so the requestor learns the result of
+4. **`report`** (trusted): replaces the acknowledgement with the final outcome
+   when possible, or posts a new outcome comment when no acknowledgement exists,
+   such as for closed PRs. Each directive thus normally maps to a single comment
+   that links back to the directive and to the run that produced it. This covers
    every directive that triggers the workflow, including invalid directives
    (such as `/fixup` or `/fix please`), no-op runs, and failures that happen
    before any patch is produced.
@@ -275,14 +279,18 @@ Directives only run against open PRs (draft PRs included): on a closed or merged
 PR the fix command never runs and the report job explains why. The PR state
 comes from the trigger payload, so no runner is spent on the fix itself.
 
+The pipeline only runs in the canonical `open-telemetry` repository, where the
+bot app credentials exist. Fork PRs work normally — `issue_comment` events fire
+in the base repository — but the workflow skips itself inside forks.
+
 Directives follow latest-wins semantics: a new `/fix` comment on a PR cancels
 that PR's in-flight run (which still reports a ⚠️ outcome), since concurrent fix
 runs on the same branch serve no purpose — the second push would fail anyway
 once the branch has moved.
 
 The directive parser lives in [scripts/gh/pr-fix/][], patch generation is the
-[npm-script-patch][] action, and the outcome comment is composed by
-[scripts/gh/patch-report/][]; all are unit tested via
+[npm-script-patch][] action, and the acknowledgement and outcome comments are
+composed by [scripts/gh/patch-report/][]; all are unit tested via
 `npm run test:local-tools`.
 
 [pr-actions]:

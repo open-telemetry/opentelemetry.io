@@ -23,8 +23,9 @@ infrastructure.
   a patch.
 - A reusable trusted path to publish those patch changes without running
   untrusted code with write credentials.
-- A foundation that can support `/fix`, i18n fixes, and scheduled maintenance
-  fixes without duplicating workflow logic.
+- A foundation that can support `/fix` and scheduled housekeeping fixes (and
+  potentially other callers, such as i18n fixes) without duplicating workflow
+  logic.
 - Clear separation between reusable mechanics and caller-specific policy.
 
 ## Goals
@@ -32,8 +33,8 @@ infrastructure.
 - Preserve the current `/fix` behavior and security posture.
 - Make the untrusted/trusted split explicit and reusable.
 - Keep future maintenance workflows thin and easier to review.
-- Support incremental rollout: first refactor existing behavior, then add i18n
-  or scheduled maintenance callers.
+- Support incremental rollout: first refactor existing behavior, then add the
+  scheduled housekeeping caller.
 
 ## Non-goals
 
@@ -63,29 +64,44 @@ The shared actions should provide mechanics, not hidden policy.
 
 ### Strategy 3: Roll out in phases
 
-Start by refactoring `/fix` with no intended behavior change. Then add the next
-caller, likely i18n fixes. After that, add scheduled maintenance PR creation
-once the shared patch path has proven stable.
+Start by refactoring `/fix` with no intended behavior change. Then add a
+scheduled **housekeeping** caller — run the approved fix scripts (e.g.
+`test-and-fix` or `test:all`) on a schedule and publish the results as a new PR
+— once the shared patch path has proven stable. This is the second caller that
+proves the actions are reusable: it has no PR context, so it exercises the patch
+mechanics decoupled from the `issue_comment` trigger.
 
 ## Open decisions
 
-- Whether scheduled maintenance should use one stable branch per fix family or a
-  shared generated-fixes branch.
-- Whether `fix:i18n` should be available by PR comment, schedule, or both.
+- Housekeeping workflow: one PR for all fixes (matching `test-and-fix` semantics
+  — simplest, the starting point) vs. one PR per fix script (independently
+  reviewable/mergeable; adopt later if single-PR review proves painful).
+- Housekeeping workflow: when a previous housekeeping PR is still open, skip the
+  new run or update the existing PR's branch?
+- Whether scheduled housekeeping should use one stable branch per fix family or
+  a shared generated-fixes branch.
+- Whether an i18n caller (e.g. `fix:i18n` by PR comment, schedule, or both) is
+  wanted as a third caller.
 
 ## Resolved decisions
 
 - The first implementation PR includes only the `/fix` refactor (phase 1); the
-  i18n caller comes later.
+  scheduled housekeeping caller comes later.
 - The trusted publication path is a reusable workflow rather than a composite
   action, so that no PR-controlled code can run with write credentials.
-- Outcome reporting is a third, always-run trusted job: the requestor is
+- Outcome reporting is an always-run trusted `report` job: the requestor is
   notified of every directive outcome, improving on the original workflow's
-  silent failure modes.
+  silent failure modes. A trusted `ack` job posts an immediate in-progress
+  comment that `report` then updates in place. The ack deliberately says "your
+  request" (with a link to the directive comment) rather than naming the
+  command, so the trusted ack job never parses the directive.
 - Push policy lives inside the trusted reusable workflow (the cost of the
-  security fix above). Phase 3 (maintenance fixes published as a new PR) should
+  security fix above). Phase 2 (housekeeping fixes published as a new PR) should
   be a _sibling_ trusted workflow (patch → branch → `gh pr create`) rather than
   evolving this one into a multi-mode publisher.
+- Phase 2 is a scheduled housekeeping workflow rather than an i18n caller: it is
+  what the founding issue ([#6592][]) asked for, and its lack of PR context best
+  demonstrates that the patch actions are trigger-agnostic.
 
 ## Status details
 
@@ -103,29 +119,57 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
         second failed loudly (stale duplicate patch). Since then, semantics
         changed to latest-wins: a new directive cancels the PR's in-flight run,
         which still reports a ⚠️ outcome.
-  - [ ] `/fix` followed by explanatory lines → treated as `/fix`
-  - [ ] failing command → ❌/⚠️ comment
-  - [ ] same flow from a fork PR
+  - [x] `/fix` followed by explanatory lines → treated as `/fix` (first-line
+        parsing; also has unit coverage in `pr-fix`)
+  - [x] directive on a closed PR → ❌ "only apply to open PRs" comment, no fix
+        work run
+  - [x] failing command → ❌ "could not be run, or its changes could not be
+        captured" comment
+  - [x] same flow from a fork PR: all of the above were exercised from fork PRs
+        targeting the canonical repo (`issue_comment` runs in the base
+        repository, where the bot credentials exist)
+  - [x] PR opened within a fork → pipeline skips (repository-owner gate);
+        previously the trusted jobs failed at the app-token mint for lack of the
+        bot app variables and secrets
 - Follow-up: trim the `GITHUB_TOKEN` grants forwarded to the reusable workflow
   once live runs confirm the minimum required.
-- Feature candidates (improve directive↔outcome association when a PR has
-  several directives):
-  - [ ] Immediate acknowledgement: a trusted "ack" job posts a progress comment
-        (e.g. "🔄 Running `/fix:format` — [run](link)") as soon as a directive
-        is received; the report job then edits that same comment with the final
-        outcome (1:1 comment per directive, no mutation of user content).
-        Alternative considered: editing the originating comment's first line —
-        rejected as invasive (alters user content).
-  - [x] Include the run link in every outcome, in a uniform format: each outcome
-        message ends with "See the logs of [run ID](url)."
-  - [x] Latest directive wins: per-PR workflow-level concurrency with
-        cancel-in-progress, so concurrent runs don't waste resources. Non-`/fix`
-        comments get a unique group so they can't cancel a `/fix` run.
-  - [x] Directives on closed or merged PRs are gated out (from the trigger
-        payload, before any runner does fix work) and reported as ❌ with the
-        reason. Draft PRs still work; deleted-branch sub-cases are moot since
-        nothing is checked out.
-- Phases 2 (i18n caller) and 3 (scheduled maintenance) not started.
+- Follow-up: the trusted `ack` and `report` jobs share ~40 lines of setup
+  boilerplate (harden-runner, checkout, setup-node, app token); factor out a
+  composite action if a third trusted comment job appears.
+- Follow-up (security pass): decide who may trigger `/fix` — currently anyone
+  who can comment; tracked as [#10329][] since it is a policy decision.
+- Follow-up (security pass): consider `egress-policy: block` + allowlist for the
+  trusted jobs' harden-runner steps (their egress set is small and known); keep
+  `audit` on the untrusted job, which needs broad egress for npm install.
+- Follow-up (security pass): a patch may touch `.github/workflows/**`; the push
+  then succeeds only if the bot app holds the Workflows permission. If not, the
+  push fails closed and reports ❌ — the desired default. Verify the app
+  permission once and record the intended behavior.
+- Directive↔outcome improvements (all shipped):
+  - A trusted `ack` job posts a 🔄 in-progress comment (linking the directive
+    comment and the run) as soon as a directive is received; the report job then
+    edits that same comment with the final outcome (1:1 comment per directive,
+    no mutation of user content). Outcome messages link back to the directive
+    comment. Alternative considered: editing the originating comment's first
+    line — rejected as invasive (alters user content).
+  - Every outcome message ends with the run link in a uniform format: "See
+    [run ID](url)."
+  - Latest directive wins: per-PR workflow-level concurrency with
+    cancel-in-progress, so concurrent runs don't waste resources. Non-`/fix`
+    comments get a unique group so they can't cancel a `/fix` run. Edge cases:
+    if a run is cancelled after its ack posted but before the outcome update,
+    its 🔄 comment is updated to ⚠️ by its own always-run report job; if it is
+    cancelled before the ack posts its comment id, the outcome lands in a new
+    comment and a stale 🔄 comment may remain.
+  - Directives on closed or merged PRs are gated out (from the trigger payload,
+    before any runner does fix work) and reported as ❌ with the reason. Draft
+    PRs still work; deleted-branch sub-cases are moot since nothing is checked
+    out.
+  - Locked PRs need no special handling: locking restricts commenting to users
+    with write access, so any directive author is privileged by construction,
+    and the bot (a GitHub App with write permission) can still post and edit its
+    comments on a locked conversation.
+- Phase 2 (scheduled housekeeping caller) not started.
 
 <!-- prettier-ignore-start -->
 [#10309]: https://github.com/open-telemetry/opentelemetry.io/pull/10309
@@ -133,4 +177,6 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
 [#10318]: https://github.com/open-telemetry/opentelemetry.io/pull/10318
 [#10319]: https://github.com/open-telemetry/opentelemetry.io/pull/10319
 [#10320]: https://github.com/open-telemetry/opentelemetry.io/issues/10320
+[#10329]: https://github.com/open-telemetry/opentelemetry.io/issues/10329
+[#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 <!-- prettier-ignore-end -->

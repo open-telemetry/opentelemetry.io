@@ -3,7 +3,7 @@
 import { describe, test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { buildOutcomeComment } from './index.mjs';
+import { buildAckComment, buildOutcomeComment } from './index.mjs';
 
 describe('buildOutcomeComment', () => {
   const BASE = {
@@ -23,6 +23,18 @@ describe('buildOutcomeComment', () => {
   test('success: command applied cleanly', () => {
     const body = build({});
     assert.match(body, /^✅ `fix:refcache` applied successfully/);
+  });
+
+  test('strips Markdown metacharacters from a forgeable label', () => {
+    // cspell:ignore xhttps exampley
+    const body = build({
+      label: 'x`](https://evil.example)[`y',
+      directiveUrl: 'https://example.test/c/7',
+    });
+    assert.match(
+      body,
+      /^✅ \[`xhttps:\/\/evil\.exampley`\]\(https:\/\/example\.test\/c\/7\)/,
+    );
   });
 
   test('no-op: generation produced no changes', () => {
@@ -111,6 +123,26 @@ describe('buildOutcomeComment', () => {
     assert.equal(build({ prState: 'open' }), build({}));
   });
 
+  test('label links to the directive comment when its URL is given', () => {
+    const body = build({ directiveUrl: 'https://example.test/c/1' });
+    assert.match(
+      body,
+      /^✅ \[`fix:refcache`\]\(https:\/\/example\.test\/c\/1\) applied successfully/,
+    );
+  });
+
+  test('unidentified request links to the directive comment', () => {
+    const body = build({
+      generateResult: 'failure',
+      label: '',
+      directiveUrl: 'https://example.test/c/1',
+    });
+    assert.match(
+      body,
+      /^❌ \[The request\]\(https:\/\/example\.test\/c\/1\) could not be processed\./,
+    );
+  });
+
   test('every outcome produces a non-empty comment ending with the run link', () => {
     for (const generateResult of ['success', 'failure', 'cancelled']) {
       for (const patchSkipped of ['true', 'false']) {
@@ -124,25 +156,34 @@ describe('buildOutcomeComment', () => {
             for (const label of ['fix', '']) {
               for (const hint of ['Any hint text.', '']) {
                 for (const prState of ['open', 'closed', '']) {
-                  const body = buildOutcomeComment({
-                    label,
-                    prState,
-                    generateResult,
-                    patchSkipped,
-                    commandExitStatus,
-                    applyResult,
-                    runId: '1',
-                    runUrl: 'u',
-                    hint,
-                  });
-                  assert.ok(
-                    typeof body === 'string' && body.length > 0,
-                    'comment should be a non-empty string',
-                  );
-                  assert.ok(
-                    body.endsWith('See [run 1](u).'),
-                    `comment should end with the run link: ${body}`,
-                  );
+                  for (const directiveUrl of ['d', '']) {
+                    const body = buildOutcomeComment({
+                      label,
+                      prState,
+                      generateResult,
+                      patchSkipped,
+                      commandExitStatus,
+                      applyResult,
+                      runId: '1',
+                      runUrl: 'u',
+                      directiveUrl,
+                      hint,
+                    });
+                    assert.ok(
+                      typeof body === 'string' && body.length > 0,
+                      'comment should be a non-empty string',
+                    );
+                    assert.ok(
+                      body.endsWith('See [run 1](u).'),
+                      `comment should end with the run link: ${body}`,
+                    );
+                    if (directiveUrl) {
+                      assert.ok(
+                        body.includes('](d)'),
+                        `comment should link the directive: ${body}`,
+                      );
+                    }
+                  }
                 }
               }
             }
@@ -150,5 +191,25 @@ describe('buildOutcomeComment', () => {
         }
       }
     }
+  });
+});
+
+describe('buildAckComment', () => {
+  test('links the directive comment and the run', () => {
+    assert.equal(
+      buildAckComment({
+        directiveUrl: 'https://example.test/c/1',
+        runId: '123',
+        runUrl: 'https://example.test/run/123',
+      }),
+      '🔄 Processing [your request](https://example.test/c/1)… See [run 123](https://example.test/run/123).',
+    );
+  });
+
+  test('omits the directive link when the URL is unknown', () => {
+    assert.equal(
+      buildAckComment({ directiveUrl: '', runId: '1', runUrl: 'u' }),
+      '🔄 Processing your request… See [run 1](u).',
+    );
   });
 });
