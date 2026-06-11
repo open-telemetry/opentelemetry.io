@@ -39,7 +39,7 @@ Add an entry for the new language in `config/_default/hugo.yaml` under the
 ```yaml
 LANG_ID:
   label: NativeName
-  locale: LANG_ID-REGION
+  locale: LANG_ID-REGION # optional; see note below
   params:
     description: <site description translated into the new language>
 ```
