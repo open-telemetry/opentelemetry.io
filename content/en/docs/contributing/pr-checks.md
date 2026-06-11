@@ -43,8 +43,16 @@ To make sure that contributions follow our [style guide](../style-guide/) we
 have implemented a set of checks that verify style guide rules and fail if they
 find any issues.
 
-The following list describes current checks and what you can do to fix related
-errors:
+The sections below describe current checks and what you can do to fix related
+errors.
+
+> [!NOTE]
+>
+> Only recent blog posts are checked. For details, see [Old blogs are not
+> updated][old-blogs]. In particular, while old posts are rendered to the
+> website, the checks listed below do not apply to old blogs.
+
+[old-blogs]: ../blog/#old-blogs-are-not-updated
 
 ### `TEXT linter` {.notranslate lang=en}
 
