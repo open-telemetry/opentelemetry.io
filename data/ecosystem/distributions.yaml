@@ -1,4 +1,4 @@
-# cSpell:ignore Splunk AWS ADOT Grafana Bindplane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT KM KloudMate Ingero
+# cSpell:ignore Splunk AWS ADOT Grafana Bindplane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT KM KloudMate
 - name: Splunk Distribution of OpenTelemetry Collector
   url: https://github.com/signalfx/splunk-otel-collector
   docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
