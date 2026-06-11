@@ -123,6 +123,71 @@ Cons:
 - Limited scalability for teams and infrastructure resources
 - Inflexible for complex or evolving deployments
 
+## Kubernetes DaemonSet
+
+Running the OpenTelemetry Collector as a Kubernetes
+[DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
+is one of the most common agent deployment patterns. A DaemonSet ensures one
+Collector pod runs on each node, collecting telemetry from all workloads on that
+node.
+
+While this pattern is straightforward to set up, it introduces specific failure
+modes that can lead to data loss or cascading failures during traffic spikes,
+node pressure, or rolling updates. This section describes those failure modes
+and provides recommendations for building a resilient DaemonSet deployment.
+
+### How DaemonSet deployments fail
+
+Because a single Collector serves every workload on the node, DaemonSets
+concentrate more load than a sidecar and are subject to the same failure modes
+as any Collector running under pressure. For generic guidance on memory
+pressure, back-pressure, resource tuning, graceful shutdown, and monitoring, see
+[Resiliency](/docs/collector/resiliency/). The subsections below cover the
+failure modes that are specific to the DaemonSet pattern.
+
+#### Node-scoped blast radius
+
+Because a DaemonSet runs exactly one Collector per node, a single Collector
+failure affects **all** workloads on that node. Unlike the sidecar pattern,
+where a failure only impacts one application, a DaemonSet failure creates a
+node-wide telemetry gap.
+
+#### Noisy neighbors
+
+A single application that suddenly emits a large volume of telemetry can consume
+the Collector's resources on that node, starving other applications. The
+Collector does not currently enforce fairness across clients of a receiver, so
+one chatty producer can degrade telemetry collection for all others on the same
+node. There is also no built-in per-client rate limiting; the Collector expects
+an external load balancer to handle rate limiting when needed.
+
+#### Rolling update gaps
+
+During a rolling update of the DaemonSet, the old Collector pod terminates
+before the new pod is ready. Any telemetry generated during this transition
+window is lost unless applications buffer locally or retry.
+
+### When to consider alternatives
+
+A DaemonSet is not always the best choice. Consider these alternatives when:
+
+- **Isolation is critical**: Use the
+  [sidecar pattern](/docs/collector/scaling/#scaling-stateless-collectors-and-using-load-balancers)
+  when you need per-application isolation, so that one application's telemetry
+  spike cannot affect another.
+- **Processing is heavy**: Offload processors like `tail_sampling` or
+  `transform` to a [Gateway tier](/docs/collector/deploy/gateway/) and keep the
+  DaemonSet Collector lightweight (receive + forward only).
+- **High pod-to-node ratio**: When you have many small pods per node, a
+  DaemonSet works well. When you have a few large pods, a sidecar avoids the
+  blast radius problem.
+- **gRPC load balancing**: DaemonSet Collectors behind a Kubernetes Service
+  don't distribute gRPC connections evenly. Use a service mesh or sidecar
+  pattern for balanced gRPC distribution.
+
+See [Deployment patterns](/docs/collector/deploy/) for a comparison of all
+available options.
+
 [instrumentation]: /docs/languages/
 [otlp]: /docs/specs/otel/protocol/
 [collector]: /docs/collector/
