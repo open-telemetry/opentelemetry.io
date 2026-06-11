@@ -3399,6 +3399,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:07:28.057439202Z"
   },
+  "https://git-scm.com/docs/git-describe": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-11T08:05:04.448833-04:00"
+  },
   "https://git-scm.com/docs/git-merge#_how_conflicts_are_presented": {
     "StatusCode": 206,
     "LastSeen": "2026-06-07T10:26:50.214177156Z"
@@ -15231,6 +15235,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-10T22:49:27.563612-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-git-submodule/SKILL.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-11T08:05:03.493683-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-06-07T10:27:46.615550932Z"
@@ -15318,6 +15326,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branch.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:11:30.099814835Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.gitmodules": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-11T08:05:03.739911-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint-cli2.yaml": {
     "StatusCode": 206,
