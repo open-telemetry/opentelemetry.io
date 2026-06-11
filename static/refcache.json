@@ -5703,14 +5703,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-11T11:09:53.989250546Z"
   },
-  "https://github.com/ingero-io/ingero-fleet": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-11T14:42:27.775869227Z"
-  },
-  "https://github.com/ingero-io/ingero-fleet/tree/main/docs": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-11T14:42:29.380531579Z"
-  },
   "https://github.com/instana/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-11T14:51:09.761737219Z"
