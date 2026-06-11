@@ -44,9 +44,10 @@ LANG_ID:
     description: <site description translated into the new language>
 ```
 
-The `locale` is optional: provide it when the region tag matters (for example,
-for RSS feeds or Google Translate, as is the case for `zh-CN`); omit it
-otherwise.
+The `locale` field is optional: use it when the site should emit a regional
+language tag, such as `en-US`, `pl-PL`, or `zh-CN` — for example, in RSS feeds;
+otherwise the language ID is used. Google Translate needs the full `zh-CN` tag
+for Chinese, while most other languages use the primary subtag.
 
 For example, the Polish entry looks like:
 
