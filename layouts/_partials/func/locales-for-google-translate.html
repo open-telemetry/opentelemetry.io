@@ -14,10 +14,10 @@
   */ -}}
 
 {{ $locales := slice -}}
-{{ range site.Languages -}}
-  {{ $langCode := .LanguageCode -}}
+{{ range hugo.Sites -}}
+  {{ $langCode := .Language.Locale -}}
   {{ $primaryTag := index (split $langCode "-") 0 -}}
-  {{ $localeTagForGT := cond (eq .Lang "zh") .LanguageCode $primaryTag -}}
+  {{ $localeTagForGT := cond (eq .Language.Lang "zh") $langCode $primaryTag -}}
   {{ $locales = $locales | append $localeTagForGT -}}
 {{ end -}}
 {{ return $locales -}}

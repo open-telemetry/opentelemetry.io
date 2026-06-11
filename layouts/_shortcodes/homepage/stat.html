@@ -14,7 +14,7 @@
     {{- end -}}
     {{- $number = printf "%d+" $count -}}
   {{- else if eq $type "vendors" -}}
-    {{- $vendors := site.Data.ecosystem.vendors -}}
+    {{- $vendors := hugo.Data.ecosystem.vendors -}}
     {{- $number = printf "%d+" (len $vendors) -}}
   {{- else if eq $type "registry" -}}
     {{- $registryFiles := readDir "data/registry" -}}
