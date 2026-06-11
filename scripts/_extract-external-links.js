@@ -11,6 +11,15 @@ const HTML_DIR = 'public';
 const OUTPUT_FILE = 'tmp/external-links.txt';
 
 /**
+ * Should the given blog-year folder be skipped? Old blog posts are excluded
+ * (match the corresponding htmltest IgnoreDirs rule in the front matter of
+ * content/en/blog/_index.md).
+ */
+function isOldBlogDir(name) {
+  return /^20(19|2[1-4])$/.test(name);
+}
+
+/**
  * Recursively find all HTML files in a directory
  */
 function findHtmlFiles(dir, files = []) {
@@ -25,9 +34,8 @@ function findHtmlFiles(dir, files = []) {
     }
 
     if (entry.isDirectory()) {
-      // Slight optimization: skip old blog posts (match corresponding htmltest
-      // IgnoreDirs rule)
-      if (dir.endsWith('/blog') && /^20(19|21|22|23)$/.test(entry.name)) {
+      // Slight optimization: skip old blog posts
+      if (dir.endsWith('/blog') && isOldBlogDir(entry.name)) {
         continue;
       }
       findHtmlFiles(fullPath, files);
@@ -133,3 +141,5 @@ function main() {
 if (require.main === module) {
   main();
 }
+
+module.exports = { isOldBlogDir };
