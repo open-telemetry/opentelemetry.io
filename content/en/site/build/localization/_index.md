@@ -45,11 +45,11 @@ LANG_ID:
 ```
 
 The `locale` field is optional: use it when the site should emit a regional
-language tag, such as `en-US`, `pl-PL`, or `zh-CN` — for example, in RSS feeds;
+language tag, such as `en-US`, `pl-PL`, or `zh-CN`, in RSS feeds, for example;
 otherwise the language ID is used. Google Translate needs the full `zh-CN` tag
 for Chinese, while most other languages use the primary subtag.
 
-For example, the Polish entry looks like:
+As an example, the Polish entry looks like:
 
 ```yaml
 pl:
