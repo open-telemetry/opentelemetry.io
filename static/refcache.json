@@ -1335,6 +1335,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-11T11:11:03.451389433Z"
   },
+  "https://developer.android.com/guide/components/activities/activity-lifecycle#lifecycle-callbacks": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-11T11:55:54.708468549Z"
+  },
   "https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels": {
     "StatusCode": 200,
     "LastSeen": "2026-06-11T11:11:20.909807924Z"
@@ -1530,6 +1534,10 @@
   "https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html#RESTAuthenticationQueryStringAuth": {
     "StatusCode": 206,
     "LastSeen": "2026-06-06T10:21:32.530646107Z"
+  },
+  "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv-authentication-methods.html": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-11T11:55:57.989035978Z"
   },
   "https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format": {
     "StatusCode": 206,
