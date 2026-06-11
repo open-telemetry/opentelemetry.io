@@ -15227,6 +15227,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:12:13.799462878Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-old-blog-ignores/SKILL.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-10T22:49:27.563612-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-06-07T10:27:46.615550932Z"
