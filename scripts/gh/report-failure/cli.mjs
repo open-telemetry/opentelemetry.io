@@ -17,7 +17,11 @@
 //   ISSUE_TYPE      Org issue type name. Default: `Bug`.
 //   ISSUE_PREFIX    Title prefix. Default: `Workflow failed`.
 //   PR_URL          URL of a related PR to link from the issue/comment.
+//
+// When GITHUB_STEP_SUMMARY is set, a one-line note pointing at the tracking
+// issue is appended to the run summary.
 
+import { appendFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
 import { reportFailure } from './index.mjs';
@@ -44,8 +48,9 @@ function requireEnv(name) {
   return value;
 }
 
-reportFailure({
-  repo: requireEnv('REPO'),
+const repo = requireEnv('REPO');
+const { action, issueNumber } = reportFailure({
+  repo,
   workflow: requireEnv('WORKFLOW_NAME'),
   branch: requireEnv('HEAD_BRANCH'),
   sha: requireEnv('HEAD_SHA'),
@@ -56,3 +61,11 @@ reportFailure({
   prUrl: process.env.PR_URL || '',
   runGh,
 });
+
+if (process.env.GITHUB_STEP_SUMMARY) {
+  const verb = action === 'created' ? 'filed as' : 'tracked in';
+  appendFileSync(
+    process.env.GITHUB_STEP_SUMMARY,
+    `:beetle: Failure ${verb} https://github.com/${repo}/issues/${issueNumber}\n`,
+  );
+}
