@@ -474,9 +474,9 @@ export function runAutoMergeCommand({
     const message =
       `❓ Unrecognized auto-merge command. Use \`/auto-merge\` (or ` +
       `\`/auto-merge:enable\`) to enable auto-merge, or \`/auto-merge:disable\` ` +
-      `to turn it off. The directive must be on its own line — with no ` +
-      `leading text or spaces — as the first or last non-blank line of the ` +
-      `comment, and appear at most once.`;
+      `to turn it off. The directive must be on its own line, with no ` +
+      `leading text or whitespace, as the first or last non-blank line of ` +
+      `the comment. It may appear at most once.`;
     details.message = message;
     mutatingRunGh([
       'pr',

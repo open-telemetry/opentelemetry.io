@@ -486,9 +486,9 @@ when **Spelling** has no natural-language dictionary to add.
 
 Members of a locale's maintainers team can enable [GitHub auto-merge][] on a
 locale-only PR by commenting `/auto-merge` (or `/auto-merge:enable`; use
-`/auto-merge:disable` to turn it off). The directive must be on its own line —
-with no leading text or spaces — as the first or last non-blank line of the
-comment, and appear at most once, so you can write, for example:
+`/auto-merge:disable` to turn it off). The directive must be on its own line,
+with no leading text or whitespace, as the first or last non-blank line of the
+comment. It may appear at most once. For example, you can write:
 
 ```text
 LGTM
