@@ -19,6 +19,18 @@ npm run locale-team-cleanup           # dry run
 npm run locale-team-cleanup -- -f     # actually remove (org owner only!)
 ```
 
+The run is **idempotent**: it plans from live rosters, so re-running after a
+(partial) cleanup only removes what is left. To limit a run (e.g. for a
+permissions smoke test), combine `-l <locale>`, `-u <user>`, and `--max <n>`:
+
+```sh
+# Test: can the runner remove a single membership? (child team first)
+npm run locale-team-cleanup -- -f -l bn -u cartermp --max 1
+```
+
+Every `gh` call has a timeout (default 30s, `--timeout <s>`) since `gh api` can
+occasionally stall indefinitely.
+
 ## Cautions
 
 - **Run as an org owner.** Team-membership writes need org-owner privileges (or

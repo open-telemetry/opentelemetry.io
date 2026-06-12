@@ -47,16 +47,23 @@ export function teamsInRemovalOrder(locales = LOCALES) {
  * Compute the memberships to remove, given live team rosters.
  *
  * @param {Map<string, Set<string>>} rosters Team slug -> member logins.
+ * @param {Object} [filters]
+ * @param {string[]} [filters.locales] Restrict to these locales.
+ * @param {string[]} [filters.users] Restrict to these users.
+ * @param {number} [filters.max] Bound the number of removals.
  * @returns {{ team: string, user: string }[]} In removal order.
  */
-export function planRemovals(rosters) {
+export function planRemovals(rosters, filters = {}) {
+  const { locales, users, max = Infinity } = filters;
   const removals = [];
-  for (const team of teamsInRemovalOrder()) {
+  for (const team of teamsInRemovalOrder(locales)) {
     const roster = rosters.get(team);
     if (!roster) continue;
     const locale = team.split('-')[1];
     const keep = new Set(KEEP[locale] ?? []);
-    for (const user of DOCS_CORE) {
+    for (const user of users ?? DOCS_CORE) {
+      if (!DOCS_CORE.includes(user)) continue;
+      if (removals.length >= max) return removals;
       if (roster.has(user) && !keep.has(user)) removals.push({ team, user });
     }
   }
@@ -64,19 +71,31 @@ export function planRemovals(rosters) {
 }
 
 /**
- * Fetch rosters, plan removals, and (unless dryRun) perform them.
+ * Fetch rosters, plan removals, and (unless dryRun) perform them. The whole
+ * run is idempotent: it plans from live rosters, so re-running after a
+ * (partial) cleanup finds only what is still left to remove.
  *
  * @param {Object} opts
  * @param {(args: string[]) => { stdout: string, stderr?: string,
  *   status: number }} opts.runGh Injected `gh` runner.
  * @param {boolean} [opts.dryRun]
+ * @param {string[]} [opts.locales] Restrict to these locales.
+ * @param {string[]} [opts.users] Restrict to these users.
+ * @param {number} [opts.max] Bound the number of removals.
  * @param {(msg: string) => void} [opts.log]
  * @returns {{ removals: { team: string, user: string, status: string }[],
  *   exitCode: number }}
  */
-export function runCleanup({ runGh, dryRun = true, log = () => {} }) {
+export function runCleanup({
+  runGh,
+  dryRun = true,
+  locales,
+  users,
+  max,
+  log = () => {},
+}) {
   const rosters = new Map();
-  for (const team of teamsInRemovalOrder()) {
+  for (const team of teamsInRemovalOrder(locales)) {
     const res = runGh([
       'api',
       `/orgs/${ORG}/teams/${team}/members`,
@@ -91,7 +110,7 @@ export function runCleanup({ runGh, dryRun = true, log = () => {} }) {
     rosters.set(team, new Set(res.stdout.split('\n').filter(Boolean)));
   }
 
-  const planned = planRemovals(rosters);
+  const planned = planRemovals(rosters, { locales, users, max });
   if (planned.length === 0) {
     log('Nothing to remove; all locale teams are already clean.');
     return { removals: [], exitCode: 0 };

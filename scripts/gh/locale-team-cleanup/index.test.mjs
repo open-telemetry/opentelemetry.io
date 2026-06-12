@@ -57,6 +57,37 @@ describe('locale-team-cleanup: planRemovals', () => {
     const clean = new Map([['docs-ja-maintainers', new Set(['katzchang'])]]);
     assert.deepEqual(planRemovals(clean), []);
   });
+
+  test('locales filter restricts the teams considered', () => {
+    const rosters = new Map([
+      ['docs-bn-maintainers', new Set(['cartermp'])],
+      ['docs-ja-maintainers', new Set(['cartermp'])],
+    ]);
+    assert.deepEqual(planRemovals(rosters, { locales: ['bn'] }), [
+      { team: 'docs-bn-maintainers', user: 'cartermp' },
+    ]);
+  });
+
+  test('users filter restricts who is removed; non-docs-core ignored', () => {
+    const rosters = new Map([
+      ['docs-bn-maintainers', new Set(['cartermp', 'svrnm', 'badhon495'])],
+    ]);
+    assert.deepEqual(
+      planRemovals(rosters, { users: ['cartermp', 'badhon495'] }),
+      [{ team: 'docs-bn-maintainers', user: 'cartermp' }],
+    );
+  });
+
+  test('max bounds the number of planned removals', () => {
+    const rosters = new Map([
+      ['docs-bn-maintainers', new Set(['cartermp', 'svrnm'])],
+      ['docs-bn-approvers', new Set(['cartermp', 'svrnm'])],
+    ]);
+    const removals = planRemovals(rosters, { max: 3 });
+    assert.equal(removals.length, 3);
+    // Removal order is preserved: child team is exhausted first.
+    assert.deepEqual(removals[0].team, 'docs-bn-maintainers');
+  });
 });
 
 // Fake gh: returns canned rosters; records DELETE calls.
@@ -133,6 +164,25 @@ describe('locale-team-cleanup: runCleanup', () => {
     });
     assert.equal(r.exitCode, 1);
     assert.deepEqual(r.removals, []);
+  });
+
+  test('locales filter limits roster fetches and removals', () => {
+    const calls = [];
+    const r = runCleanup({
+      runGh: makeRunGh({ rosters, calls }),
+      dryRun: false,
+      locales: ['ja'],
+      users: ['chalin'],
+      max: 1,
+    });
+    assert.equal(r.exitCode, 0);
+    // Only the two ja teams fetched, single removal due to max.
+    const fetches = calls.filter((a) => !a.includes('DELETE'));
+    assert.equal(fetches.length, 2);
+    assert.deepEqual(
+      r.removals.map((x) => `${x.team}:${x.user}:${x.status}`),
+      ['docs-ja-maintainers:chalin:removed'],
+    );
   });
 });
 
