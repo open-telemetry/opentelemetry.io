@@ -89,14 +89,24 @@ describe('locale-team-cleanup: planRemovals', () => {
     assert.deepEqual(removals[0].team, 'docs-bn-maintainers');
   });
 
-  test('self is removed last from each team', () => {
+  test('self is excluded by default', () => {
+    const rosters = new Map([
+      ['docs-bn-maintainers', new Set(['chalin', 'svrnm'])],
+    ]);
+    assert.deepEqual(planRemovals(rosters, { self: 'chalin' }), [
+      { team: 'docs-bn-maintainers', user: 'svrnm' },
+    ]);
+  });
+
+  test('with selfToo, self is removed last from each team', () => {
     const rosters = new Map([
       ['docs-bn-maintainers', new Set(['chalin', 'svrnm', 'tiffany76'])],
       ['docs-bn-approvers', new Set(['chalin', 'austinlparker'])],
     ]);
-    const removals = planRemovals(rosters, { self: 'chalin' }).map(
-      (r) => `${r.team}:${r.user}`,
-    );
+    const removals = planRemovals(rosters, {
+      self: 'chalin',
+      selfToo: true,
+    }).map((r) => `${r.team}:${r.user}`);
     assert.deepEqual(removals, [
       'docs-bn-maintainers:svrnm',
       'docs-bn-maintainers:tiffany76',

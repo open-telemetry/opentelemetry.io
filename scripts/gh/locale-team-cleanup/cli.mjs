@@ -24,6 +24,10 @@ Options:
   -l, --locale <loc>   Restrict to this locale (repeatable), e.g. -l bn.
   -u, --user <login>   Restrict to this user (repeatable), e.g. -u cartermp.
       --max <n>        Remove at most <n> memberships.
+      --self-too       Also remove the runner (last from each team). By
+                       default the runner is excluded, since self-removal
+                       destroys their team-maintainer role and cannot be
+                       undone by the runner.
       --timeout <s>    Per-gh-call timeout in seconds (default: ${DEFAULT_TIMEOUT_S}).
   -h, --help           Show this help.
 `;
@@ -59,6 +63,7 @@ function main() {
         locale: { type: 'string', short: 'l', multiple: true },
         user: { type: 'string', short: 'u', multiple: true },
         max: { type: 'string' },
+        'self-too': { type: 'boolean' },
         timeout: { type: 'string' },
         help: { type: 'boolean', short: 'h' },
       },
@@ -119,10 +124,12 @@ function main() {
   }
 
   const dryRun = !values['no-dry-run'];
+  const selfToo = values['self-too'] ?? false;
 
   // Removing yourself from a team destroys your team-maintainer role on it,
-  // which the remaining removals may depend on — so the runner is removed
-  // last from each team. Detect who is running.
+  // which the remaining removals may depend on. So by default the runner is
+  // excluded from removals; with --self-too they are removed last from each
+  // team. Detect who is running.
   const runGh = makeRunGh(timeoutS);
   const whoami = runGh(['api', 'user', '-q', '.login']);
   if (whoami.status !== 0) {
@@ -132,7 +139,8 @@ function main() {
   const self = whoami.stdout.trim();
 
   console.log(
-    `== Locale team cleanup (${dryRun ? 'DRY RUN' : 'APPLY'}; as ${self}) ==\n`,
+    `== Locale team cleanup (${dryRun ? 'DRY RUN' : 'APPLY'}; as ${self}` +
+      `${selfToo ? '' : ', excluded'}) ==\n`,
   );
   const { exitCode } = runCleanup({
     runGh,
@@ -141,6 +149,7 @@ function main() {
     users,
     max,
     self,
+    selfToo,
     log: console.log,
   });
   process.exit(exitCode);
