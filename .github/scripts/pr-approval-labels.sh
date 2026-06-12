@@ -44,6 +44,7 @@ LABEL_READY="ready-to-be-merged"
 DOCS_APPROVERS_TEAM="docs-approvers"
 DOCS_MAINTAINERS_TEAM="docs-maintainers"
 COMPONENT_OWNERS_FILE=".github/component-owners.yml"
+CODEOWNERS_FILE=".github/CODEOWNERS"
 ORG="open-telemetry"
 
 # Labels that indicate a PR may contain content with a publish date in its
@@ -93,6 +94,30 @@ remove_label() {
   else
     echo "Label '${label}' not present, nothing to remove."
   fi
+}
+
+# ---------------------------------------------------------------------------
+# Helper: normalize a space/newline-separated list into unique, non-empty,
+# sorted lines.
+# ---------------------------------------------------------------------------
+dedupe_words() {
+  echo "$1" | tr ' ' '\n' | sort -u | grep -v '^$' || true
+}
+
+# ---------------------------------------------------------------------------
+# Helper: true if the given owners list (CODEOWNERS owner tokens) names a
+# locale/SIG approver team, i.e. an "@org/*-approvers" team other than the
+# docs-approvers baseline. docs-maintainers and individual owners do not match.
+# ---------------------------------------------------------------------------
+owners_have_locale_team() {
+  local owner slug
+  for owner in $1; do
+    [[ "${owner}" == @${ORG}/*-approvers ]] || continue
+    slug="${owner#@"${ORG}"/}"
+    [[ "${slug}" == "${DOCS_APPROVERS_TEAM}" ]] && continue
+    return 0
+  done
+  return 1
 }
 
 # ---------------------------------------------------------------------------
@@ -189,11 +214,88 @@ get_sig_teams_for_files() {
   fi
 
   # Deduplicate and output
-  echo "${sig_teams}" | tr ' ' '\n' | sort -u | grep -v '^$' || true
+  dedupe_words "${sig_teams}"
 }
 
 # ---------------------------------------------------------------------------
-# Check if the PR has potentially a publish date in the frontmatter of 
+# Parse CODEOWNERS for locale-approval teams owning the given PR files.
+# Since #10295, CODEOWNERS is the single source of truth for locale ownership.
+#
+# We read only single-segment directory rules under content/ (e.g.
+# "/content/ja/"), with no glob characters. That reproduces the prefix matching
+# the locale block in component-owners.yml used before #10295, without
+# reimplementing CODEOWNERS glob and last-match-wins resolution here. The
+# .cspell/<loc>-*.txt and prh/<loc>.yml rules are intentionally not covered,
+# matching that block (locale ownership of those files is enforced by the
+# CODEOWNERS ruleset, not by this label).
+#
+# The docs-approvers baseline and docs-maintainers are skipped, matching the
+# SIG-team exclusion in get_sig_teams_for_files.
+#
+# Outputs unique team slugs (without the org prefix), one per line.
+# ---------------------------------------------------------------------------
+get_locale_teams_for_files() {
+  local -a pr_files=("$@")
+  local locale_teams=""
+
+  if [[ ! -f "${CODEOWNERS_FILE}" ]]; then
+    echo "::warning::${CODEOWNERS_FILE} not found; skipping locale approval checks." >&2
+    return 0
+  fi
+
+  while IFS= read -r line; do
+    line="${line%%#*}"          # strip inline comments
+    line="${line//$'\r'/}"      # tolerate CRLF
+    [[ -z "${line//[[:space:]]/}" ]] && continue
+
+    local pattern owners
+    pattern="${line%%[[:space:]]*}"   # first token is the path pattern
+    owners="${line#"${pattern}"}"     # remainder is the owners list
+
+    # Warn if a /content/<loc>/ locale rule has been reworked into a glob
+    # (e.g. /content/ja/**): it would silently stop matching here and undo the
+    # missing:sig-approval coverage. Non-locale content globs (owned by
+    # docs-maintainers) do not trigger this.
+    if [[ "${pattern}" == /content/* && "${pattern}" == *"*"* ]] \
+      && owners_have_locale_team "${owners}"; then
+      echo "::warning::CODEOWNERS rule '${pattern}' looks like a locale rule but is a glob; pr-approval-labels.sh only matches plain /content/<loc>/ directory rules, so it will not apply missing:sig-approval for it." >&2
+    fi
+
+    # Only directory rules under content/, with no glob characters.
+    [[ "${pattern}" == /content/*/ ]] || continue
+    [[ "${pattern}" == *"*"* ]] && continue
+
+    # Keep only single-segment locale directories and normalize to a prefix:
+    #   /content/ja/ -> content/ja   (skip nested dirs like /content/en/docs/)
+    local prefix="${pattern#/content/}"
+    prefix="${prefix%/}"
+    [[ "${prefix}" == */* ]] && continue
+    prefix="content/${prefix}"
+
+    # Skip rules that no changed file lives under.
+    local file matched=
+    for file in "${pr_files[@]}"; do
+      [[ "${file}" == "${prefix}/"* ]] && { matched=1; break; }
+    done
+    [[ -n "${matched}" ]] || continue
+
+    # Collect owning teams, dropping the org prefix and the baseline teams.
+    local owner
+    for owner in ${owners}; do
+      [[ "${owner}" == @${ORG}/* ]] || continue
+      local team_slug="${owner#@"${ORG}"/}"
+      [[ "${team_slug}" == "${DOCS_APPROVERS_TEAM}" ]] && continue
+      [[ "${team_slug}" == "${DOCS_MAINTAINERS_TEAM}" ]] && continue
+      locale_teams="${locale_teams} ${team_slug}"
+    done
+  done < "${CODEOWNERS_FILE}"
+
+  # Deduplicate and output
+  dedupe_words "${locale_teams}"
+}
+
+# ---------------------------------------------------------------------------
+# Check if the PR has potentially a publish date in the frontmatter of
 # changed files.
 # -------------------------------------------------------------------------
 should_check_publish_date() {
@@ -358,8 +460,14 @@ main() {
   # -------------------------------------------------------------------------
   echo ""
   echo "=== Checking SIG approval ==="
+  # Component (SIG) teams come from component-owners.yml; locale-approval teams
+  # come from CODEOWNERS (the single source of truth for locale ownership since
+  # #10295). Union them so locale PRs require missing:sig-approval again.
   local sig_teams
   sig_teams=$(get_sig_teams_for_files "${pr_files[@]}")
+  local locale_teams
+  locale_teams=$(get_locale_teams_for_files "${pr_files[@]}")
+  sig_teams=$(dedupe_words "${sig_teams} ${locale_teams}")
 
   local sig_needed=false
   local sig_approved=false
