@@ -115,6 +115,7 @@
     "generate:config:links": "scripts/htmltest-config.sh",
     "get:submodule": "npm run _get:${GET:-submodule} --",
     "locale-auto-merge": "node scripts/gh/locale-auto-merge/cli.mjs",
+    "locale-team-cleanup": "node scripts/gh/locale-team-cleanup/cli.mjs",
     "log:build": "npm run build 2>&1 | tee tmp/build-log.txt",
     "log:check:links": "npm run check:links 2>&1 | tee tmp/check-links-log.txt",
     "log:test-and-fix": "npm run test-and-fix 2>&1 | tee tmp/test-log.txt",
