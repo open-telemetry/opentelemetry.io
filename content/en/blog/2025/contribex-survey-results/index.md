@@ -7,8 +7,7 @@ author: >-
   Hrabusa](https://github.com/tiffany76) (Grafana Labs), [Andrej
   Kiripolský](https://github.com/andrejkiri) (Grafana Labs)
 sig: Contributor Experience
-# prettier-ignore
-cSpell:ignore: Andrej Baeyens Contribfest devstats gatekeeping Hrabusa Kiripolský
+cSpell:ignore: Andrej Baeyens Contribfest devstats gatekeeping Kiripolský
 ---
 
 The OpenTelemetry Contributor Experience SIG

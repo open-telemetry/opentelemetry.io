@@ -62,8 +62,9 @@ uv run python -m documentation_sync --no-update
 
 ### Testing
 
-**Prerequisites:** Ensure dev dependencies are installed with
-`uv sync --all-extras`.
+**Prerequisites:** none beyond [uv](https://docs.astral.sh/uv/) — the npm
+scripts run `uv run --extra dev`, which installs pytest, mypy, and ruff on first
+use, even on a clean checkout.
 
 ```bash
 # Run all tests

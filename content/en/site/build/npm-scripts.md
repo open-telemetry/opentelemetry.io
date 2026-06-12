@@ -42,6 +42,7 @@ are internal helpers and are not intended to be run directly.
 | `check:code-excerpts`  | Check code excerpts, fail if updates needed.                |
 | `check:format`         | Prettier and prose-wrap checks.                             |
 | `check:i18n`           | Validate localization front matter (`default_lang_commit`). |
+| `check:l10n`           | Run localization checks.                                    |
 | `check:links`          | Run HTML link checker.                                      |
 | `check:links:internal` | Link check without extra HTMLTest args.                     |
 | `check:markdown`       | Markdown lint (content and projects).                       |
@@ -63,6 +64,7 @@ are internal helpers and are not intended to be run directly.
 | `fix:format`              | Apply Prettier and trim trailing spaces.                       |
 | `fix:format:staged`       | Format only staged files.                                      |
 | `fix:i18n`                | Add/fix i18n front matter (`fix:i18n:new`, `fix:i18n:status`). |
+| `fix:l10n`                | Apply localization fixes.                                      |
 | `fix:markdown`            | Fix Markdown lint issues and trailing spaces.                  |
 | `fix:refcache`            | Prune refcache and re-run link check (updates refcache).       |
 | `fix:refcache:refresh`    | Prune refcache by count.                                       |
@@ -89,23 +91,31 @@ are internal helpers and are not intended to be run directly.
 
 | Script                     | Description                                                       |
 | -------------------------- | ----------------------------------------------------------------- |
-| `test`                     | Run the most commonly needed tests.                               |
-| `test:base`                | Base tests (same as `check`).                                     |
-| `test:compound-tests`      | Runs compound `test:*-*` scripts.                                 |
-| `test:all`                 | Runs `test:base` then `test:compound-tests`.                      |
-| `test:collector-sync`      | Collector-sync tests.                                             |
-| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.      |
-| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.               |
-| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^local-tools-note]  |
-| `test-and-fix`             | Run fix scripts (excluding i18n/refcache/submodule), then checks. |
 | `diff:check`               | Warn if working tree has uncommitted changes.                     |
 | `diff:fail`                | Fail if working tree has changes (e.g. after build).              |
+| `fix-and-test:all`         | All fixes (incl. i18n), then checks; links checked once.[^fat]    |
 | `netlify-build:preview`    | `build:preview` then `diff:check`.                                |
 | `netlify-build:production` | `build:production` then `diff:check`.                             |
+| `test-and-fix`             | Run fix scripts (excluding i18n/refcache/submodule), then checks. |
+| `test:all`                 | Runs `test:base` then `test:compound-tests`.                      |
+| `test:base`                | Base tests (same as `check`).                                     |
+| `test:collector-sync`      | Collector-sync tests.                                             |
+| `test:compound-tests`      | Runs compound `test:*-*` scripts.                                 |
+| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.               |
+| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.      |
+| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^local-tools-note]  |
+| `test`                     | Run the most commonly needed tests.                               |
 
 [^local-tools-note]:
     This script has a compound name, rather than being `test:tools`, so that it
     gets picked up by `test:compound-tests`.
+
+[^fat]:
+    The housekeeping default: runs `fix:refcache` (prune, then link check) after
+    the content fixes; uses the keep-going `all` runner so every fix is
+    captured. The check phase excludes `check:links` (`fix:refcache` covers it)
+    and `check:i18n` (redundant after `fix:i18n` records drift status). See
+    [Housekeeping](../ci-workflows/#housekeeping).
 
 ## Utilities
 
@@ -113,6 +123,7 @@ are internal helpers and are not intended to be run directly.
 | -------------------------------------------------- | -------------------------------------------------------------- |
 | `seq`                                              | Run given script names in sequence; exit on first failure.     |
 | `all`                                              | Run all given scripts, then exit with failure if any failed.   |
+| `locale-auto-merge`                                | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).  |
 | `prepare`                                          | Install step: `get:submodule`, then Docsy theme npm install.   |
 | `prebuild`                                         | Before build: `get:submodule`, `cp:spec`.                      |
 | `update:hugo`                                      | Install latest hugo-extended.                                  |
@@ -129,3 +140,4 @@ are internal helpers and are not intended to be run directly.
   non-zero status if any failed.
 
 [fn]: /docs/contributing/pr-checks/#filename-check
+[locale-auto-merge]: ../ci-workflows/#locale-auto-merge
