@@ -20,7 +20,7 @@ Prometheus はオブザーバビリティの分野で不動の地位を築いて
 
 Prometheus と OTel はどちらもメトリクスを出力しますが、両者の違いと共通点については多くのことがあり、この記事の範囲を超えています。
 ここでは、特に Kubernetes 環境において OTel が Prometheus をどのようにサポートしているかをお見せしたいと思います。
-以下のことを学べます。
+本記事では以下のことを学べます。
 
 - OTel Collector の
   [Prometheus レシーバー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/dbdb56d285d860849323346d58c83b14c1ed6c62/receiver/prometheusreceiver?from_branch=main)
