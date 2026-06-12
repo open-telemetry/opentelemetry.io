@@ -97,6 +97,14 @@ remove_label() {
 }
 
 # ---------------------------------------------------------------------------
+# Helper: normalize a space/newline-separated list into unique, non-empty,
+# sorted lines.
+# ---------------------------------------------------------------------------
+dedupe_words() {
+  echo "$1" | tr ' ' '\n' | sort -u | grep -v '^$' || true
+}
+
+# ---------------------------------------------------------------------------
 # Fetch team members for a given team slug (e.g. "docs-approvers").
 # Returns newline-separated list of GitHub usernames (lowercased).
 # ---------------------------------------------------------------------------
@@ -190,18 +198,20 @@ get_sig_teams_for_files() {
   fi
 
   # Deduplicate and output
-  echo "${sig_teams}" | tr ' ' '\n' | sort -u | grep -v '^$' || true
+  dedupe_words "${sig_teams}"
 }
 
 # ---------------------------------------------------------------------------
 # Parse CODEOWNERS for locale-approval teams owning the given PR files.
 # Since #10295, CODEOWNERS is the single source of truth for locale ownership.
 #
-#
-# We read only directory rules under content/ (pattern starts with /content/,
-# ends with /, no glob characters). That reproduces the prefix matching the
-# locale block in component-owners.yml used before #10295, without
-# reimplementing CODEOWNERS glob and last-match-wins resolution here.
+# We read only single-segment directory rules under content/ (e.g.
+# "/content/ja/"), with no glob characters. That reproduces the prefix matching
+# the locale block in component-owners.yml used before #10295, without
+# reimplementing CODEOWNERS glob and last-match-wins resolution here. The
+# .cspell/<loc>-*.txt and prh/<loc>.yml rules are intentionally not covered,
+# matching that block (locale ownership of those files is enforced by the
+# CODEOWNERS ruleset, not by this label).
 #
 # The docs-approvers baseline and docs-maintainers are skipped, matching the
 # SIG-team exclusion in get_sig_teams_for_files.
@@ -212,7 +222,10 @@ get_locale_teams_for_files() {
   local -a pr_files=("$@")
   local locale_teams=""
 
-  [[ -f "${CODEOWNERS_FILE}" ]] || return 0
+  if [[ ! -f "${CODEOWNERS_FILE}" ]]; then
+    echo "::warning::${CODEOWNERS_FILE} not found; skipping locale approval checks." >&2
+    return 0
+  fi
 
   while IFS= read -r line; do
     line="${line%%#*}"          # strip inline comments
@@ -227,20 +240,19 @@ get_locale_teams_for_files() {
     [[ "${pattern}" == /content/*/ ]] || continue
     [[ "${pattern}" == *"*"* ]] && continue
 
-    # Normalize the pattern to a prefix: /content/ja/ -> content/ja
-    local prefix="${pattern#/}"
+    # Keep only single-segment locale directories and normalize to a prefix:
+    #   /content/ja/ -> content/ja   (skip nested dirs like /content/en/docs/)
+    local prefix="${pattern#/content/}"
     prefix="${prefix%/}"
+    [[ "${prefix}" == */* ]] && continue
+    prefix="content/${prefix}"
 
-    # Does any changed file live under this directory?
-    local matched=false
-    local file
+    # Skip rules that no changed file lives under.
+    local file matched=
     for file in "${pr_files[@]}"; do
-      if [[ "${file}" == "${prefix}/"* ]]; then
-        matched=true
-        break
-      fi
+      [[ "${file}" == "${prefix}/"* ]] && { matched=1; break; }
     done
-    [[ "${matched}" == "false" ]] && continue
+    [[ -n "${matched}" ]] || continue
 
     # Collect owning teams, dropping the org prefix and the baseline teams.
     local owner
@@ -254,7 +266,7 @@ get_locale_teams_for_files() {
   done < "${CODEOWNERS_FILE}"
 
   # Deduplicate and output
-  echo "${locale_teams}" | tr ' ' '\n' | sort -u | grep -v '^$' || true
+  dedupe_words "${locale_teams}"
 }
 
 # ---------------------------------------------------------------------------
@@ -430,8 +442,7 @@ main() {
   sig_teams=$(get_sig_teams_for_files "${pr_files[@]}")
   local locale_teams
   locale_teams=$(get_locale_teams_for_files "${pr_files[@]}")
-  sig_teams=$(printf '%s\n%s\n' "${sig_teams}" "${locale_teams}" \
-    | sort -u | grep -v '^$' || true)
+  sig_teams=$(dedupe_words "${sig_teams} ${locale_teams}")
 
   local sig_needed=false
   local sig_approved=false
