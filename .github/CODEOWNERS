@@ -71,9 +71,9 @@
 /.cspell/bn-*.txt @open-telemetry/docs-bn-approvers @open-telemetry/docs-approvers
 /content/bn/      @open-telemetry/docs-bn-approvers @open-telemetry/docs-approvers
 
-# es (unstaffed)
-/.cspell/es-*.txt @open-telemetry/docs-es-approvers @open-telemetry/docs-approvers
-/content/es/      @open-telemetry/docs-es-approvers @open-telemetry/docs-approvers
+# es
+/.cspell/es-*.txt @open-telemetry/docs-es-approvers
+/content/es/      @open-telemetry/docs-es-approvers
 
 # fr
 /.cspell/fr-*.txt @open-telemetry/docs-fr-approvers

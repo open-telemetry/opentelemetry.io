@@ -4,6 +4,8 @@
 #
 #   npm run fix:codeowners
 #
+# cSpell:disable
+#
 # Membership changes require a PR against this file (audit trail), applied to
 # the live teams by an org admin. Notes:
 #
@@ -13,12 +15,13 @@
 # - A locale with no maintainers is considered unstaffed: its CODEOWNERS
 #   lines additionally list @open-telemetry/docs-approvers as a fallback.
 #   See https://github.com/open-telemetry/opentelemetry.io/issues/10374.
+
 locales:
   bn:
     maintainers: []
     approvers: [badhon495, sajibAdhi]
   es:
-    maintainers: []
+    maintainers: [theletterf]
     approvers: [krol3, mx-psi]
   fr:
     maintainers: [chalin, codeboten, dmathieu, marcalff]
