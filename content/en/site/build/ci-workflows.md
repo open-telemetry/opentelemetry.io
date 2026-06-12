@@ -358,10 +358,12 @@ It runs as a three-stage pipeline:
 ## Locale auto-merge
 
 The [locale-auto-merge.yml][] workflow lets a locale's maintainers enable
-[GitHub auto-merge][] on a locale-only PR by commenting `/auto-merge` (or
-`/auto-merge:disable`). It runs as the DOCS bot, which holds the privileges
-needed to flip the "merge when ready" switch under branch protection; CODEOWNERS
-and required checks remain the hard merge gate.
+[GitHub auto-merge][] on a locale-only PR through an `/auto-merge` (or
+`/auto-merge:enable` / `/auto-merge:disable`) comment directive — for placement
+rules, see the helper [README][locale-auto-merge-script]. It runs as the DOCS
+bot, which holds the privileges needed to flip the "merge when ready" switch
+under branch protection; CODEOWNERS and required checks remain the hard merge
+gate.
 
 The thin workflow delegates to the testable helper in
 [scripts/gh/locale-auto-merge/][locale-auto-merge-script], which enforces two
