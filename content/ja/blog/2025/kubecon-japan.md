@@ -5,8 +5,9 @@ linkTitle: KubeCon Japan '25
 date: 2025-05-29
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
 default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
+drifted_from_default: true
 # prettier-ignore
-cSpell:ignore: Baazi Chauhan Hrabusa Kang Kasper Mostafa Nissen Radwan Shivay Siddharth Vijay
+cSpell:ignore: Baazi Chauhan Kang Kasper Mostafa Nissen Radwan Shivay Siddharth Vijay
 ---
 
 OpenTelemetryプロジェクトは、[KubeCon + CloudNativeCon Japan][]（[参加登録][registration]）

@@ -69,6 +69,7 @@ jobs:
   apply:
     name: Apply and push patch
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     # NOTE: the steps below authenticate with the app token, not GITHUB_TOKEN,
     # so these GITHUB_TOKEN grants may be trimmable. Verify in a live run
     # (e.g. the artifact download) before tightening.

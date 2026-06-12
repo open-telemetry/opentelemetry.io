@@ -2,7 +2,10 @@
 title: Blog
 description: Află cum să trimiți o postare pe blog.
 weight: 30
-default_lang_commit: 09d3687760884bda721b6ddb9f3b91e2ddfb1021
+# NOTE: once this translation is updated, remove the following htmltest config:
+htmltest: { IgnoreDirs: [/en/docs/contributing/blog/] }
+default_lang_commit: 09d3687760884bda721b6ddb9f3b91e2ddfb1021 #patched
+drifted_from_default: true
 ---
 
 [Blogul OpenTelemetry](/blog/) comunică noi funcții, rapoarte comunitare și
@@ -194,3 +197,10 @@ platformă, ești binevenit(ă) să o faci. Reține următoarele:
 
 Acest lucru ajută la asigurarea unei atribuiri corecte, susține cele mai bune
 practici SEO și evită duplicarea conținutului.
+
+## Old blogs are not updated {#old-blogs-are-not-updated}
+
+<!-- markdownlint-disable no-lang-prefix-in-paths -->
+
+(Translation coming soon. In the meantime, see the
+[English section](/en/docs/contributing/blog/#old-blogs-are-not-updated).)

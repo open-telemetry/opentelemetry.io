@@ -3,7 +3,7 @@ title: Export to Jaeger
 linkTitle: Export to Jaeger
 description: Learn how to export traces to Jaeger with OpenTelemetry .NET
 weight: 30
-cSpell:ignore: Gantt OTLP
+cSpell:ignore: Gantt
 ---
 
 This guide will show you how to export OpenTelemetry .NET traces to Jaeger for

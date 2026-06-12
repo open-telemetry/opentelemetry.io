@@ -6,7 +6,7 @@ aliases:
   - /docs/collector/building/connector
 weight: 200
 # prettier-ignore
-cSpell:ignore: debugexporter Errorf exampleconnector gomod gord Jaglowski mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
+cSpell:ignore: debugexporter exampleconnector gomod gord Jaglowski mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
 ---
 
 ## Connectors in OpenTelemetry
