@@ -7,7 +7,7 @@ import { parseArgs } from 'node:util';
 
 import { DOCS_CORE, LOCALES, runCleanup } from './index.mjs';
 
-const DEFAULT_TIMEOUT_S = 30;
+const DEFAULT_TIMEOUT_S = 10;
 
 const HELP = `Usage: cli.mjs [options]
 

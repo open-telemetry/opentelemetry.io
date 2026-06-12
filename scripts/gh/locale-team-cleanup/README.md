@@ -28,7 +28,7 @@ permissions smoke test), combine `-l <locale>`, `-u <user>`, and `--max <n>`:
 npm run locale-team-cleanup -- -f -l bn -u cartermp --max 1
 ```
 
-Every `gh` call has a timeout (default 30s, `--timeout <s>`) since `gh api` can
+Every `gh` call has a timeout (default 10s, `--timeout <s>`) since `gh api` can
 occasionally stall indefinitely.
 
 ## Cautions
