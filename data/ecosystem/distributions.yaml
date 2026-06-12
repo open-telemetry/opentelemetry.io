@@ -1,4 +1,4 @@
-# cSpell:ignore Splunk AWS ADOT Grafana Bindplane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT KM KloudMate Ingero
+# cSpell:ignore Splunk AWS ADOT Grafana Bindplane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT KM KloudMate
 - name: Splunk Distribution of OpenTelemetry Collector
   url: https://github.com/signalfx/splunk-otel-collector
   docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
@@ -224,8 +224,4 @@
 - name: OpenTelemetry Collector eBPF Profiling Distribution
   url: https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-ebpf-profiler
   docsUrl: https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-ebpf-profiler/README.md
-  components: [Collector]
-- name: Ingero Fleet
-  url: https://github.com/ingero-io/ingero-fleet
-  docsUrl: https://github.com/ingero-io/ingero-fleet/tree/main/docs
   components: [Collector]
