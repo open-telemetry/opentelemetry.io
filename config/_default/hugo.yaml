@@ -67,8 +67,6 @@ enableEmoji: true
 
 imaging:
   resampleFilter: CatmullRom # cspell:disable-line
-  quality: 75
-  anchor: smart
 
 markup:
   tableOfContents:
