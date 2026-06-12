@@ -51,18 +51,24 @@ export function teamsInRemovalOrder(locales = LOCALES) {
  * @param {string[]} [filters.locales] Restrict to these locales.
  * @param {string[]} [filters.users] Restrict to these users.
  * @param {number} [filters.max] Bound the number of removals.
+ * @param {string} [filters.self] Login of the runner: removed last from each
+ *   team, since self-removal destroys the runner's team-maintainer role on
+ *   that team (which the other removals may depend on).
  * @returns {{ team: string, user: string }[]} In removal order.
  */
 export function planRemovals(rosters, filters = {}) {
-  const { locales, users, max = Infinity } = filters;
+  const { locales, users, max = Infinity, self } = filters;
+  const candidates = (users ?? DOCS_CORE).filter(
+    (u) => DOCS_CORE.includes(u) && u !== self,
+  );
+  if (self && (users ?? DOCS_CORE).includes(self)) candidates.push(self);
   const removals = [];
   for (const team of teamsInRemovalOrder(locales)) {
     const roster = rosters.get(team);
     if (!roster) continue;
     const locale = team.split('-')[1];
     const keep = new Set(KEEP[locale] ?? []);
-    for (const user of users ?? DOCS_CORE) {
-      if (!DOCS_CORE.includes(user)) continue;
+    for (const user of candidates) {
       if (removals.length >= max) return removals;
       if (roster.has(user) && !keep.has(user)) removals.push({ team, user });
     }
@@ -82,6 +88,7 @@ export function planRemovals(rosters, filters = {}) {
  * @param {string[]} [opts.locales] Restrict to these locales.
  * @param {string[]} [opts.users] Restrict to these users.
  * @param {number} [opts.max] Bound the number of removals.
+ * @param {string} [opts.self] Login of the runner; removed last per team.
  * @param {(msg: string) => void} [opts.log]
  * @returns {{ removals: { team: string, user: string, status: string }[],
  *   exitCode: number }}
@@ -92,6 +99,7 @@ export function runCleanup({
   locales,
   users,
   max,
+  self,
   log = () => {},
 }) {
   const rosters = new Map();
@@ -110,7 +118,7 @@ export function runCleanup({
     rosters.set(team, new Set(res.stdout.split('\n').filter(Boolean)));
   }
 
-  const planned = planRemovals(rosters, { locales, users, max });
+  const planned = planRemovals(rosters, { locales, users, max, self });
   if (planned.length === 0) {
     log('Nothing to remove; all locale teams are already clean.');
     return { removals: [], exitCode: 0 };

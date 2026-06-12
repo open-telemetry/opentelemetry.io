@@ -88,6 +88,23 @@ describe('locale-team-cleanup: planRemovals', () => {
     // Removal order is preserved: child team is exhausted first.
     assert.deepEqual(removals[0].team, 'docs-bn-maintainers');
   });
+
+  test('self is removed last from each team', () => {
+    const rosters = new Map([
+      ['docs-bn-maintainers', new Set(['chalin', 'svrnm', 'tiffany76'])],
+      ['docs-bn-approvers', new Set(['chalin', 'austinlparker'])],
+    ]);
+    const removals = planRemovals(rosters, { self: 'chalin' }).map(
+      (r) => `${r.team}:${r.user}`,
+    );
+    assert.deepEqual(removals, [
+      'docs-bn-maintainers:svrnm',
+      'docs-bn-maintainers:tiffany76',
+      'docs-bn-maintainers:chalin',
+      'docs-bn-approvers:austinlparker',
+      'docs-bn-approvers:chalin',
+    ]);
+  });
 });
 
 // Fake gh: returns canned rosters; records DELETE calls.

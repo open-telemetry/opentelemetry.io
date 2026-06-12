@@ -119,13 +119,28 @@ function main() {
   }
 
   const dryRun = !values['no-dry-run'];
-  console.log(`== Locale team cleanup (${dryRun ? 'DRY RUN' : 'APPLY'}) ==\n`);
+
+  // Removing yourself from a team destroys your team-maintainer role on it,
+  // which the remaining removals may depend on — so the runner is removed
+  // last from each team. Detect who is running.
+  const runGh = makeRunGh(timeoutS);
+  const whoami = runGh(['api', 'user', '-q', '.login']);
+  if (whoami.status !== 0) {
+    console.error(`Could not determine current gh user: ${whoami.stderr}`);
+    process.exit(1);
+  }
+  const self = whoami.stdout.trim();
+
+  console.log(
+    `== Locale team cleanup (${dryRun ? 'DRY RUN' : 'APPLY'}; as ${self}) ==\n`,
+  );
   const { exitCode } = runCleanup({
-    runGh: makeRunGh(timeoutS),
+    runGh,
     dryRun,
     locales,
     users,
     max,
+    self,
     log: console.log,
   });
   process.exit(exitCode);
