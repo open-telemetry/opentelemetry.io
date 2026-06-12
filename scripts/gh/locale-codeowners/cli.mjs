@@ -46,7 +46,11 @@ function main() {
   }
 
   const registry = yaml.load(fs.readFileSync(REGISTRY, 'utf8'));
-  const problems = validateRegistry(registry);
+  const localeDirs = fs
+    .readdirSync('content', { withFileTypes: true })
+    .filter((e) => e.isDirectory() && e.name !== 'en')
+    .map((e) => e.name);
+  const problems = validateRegistry(registry, { localeDirs });
   if (problems.length) {
     console.error(`Invalid ${REGISTRY}:\n - ${problems.join('\n - ')}`);
     process.exit(1);

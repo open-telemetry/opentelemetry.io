@@ -31,6 +31,12 @@ npm run check:codeowners  # verify it is up to date (used by CI)
   empty teams, so unstaffed-locale PRs are honestly gated by docs-approvers.
   When the locale team is staffed (registry PR adding maintainers), regenerating
   drops the fallback — that's the "graduation" PR.
+- Owner lines always reference GitHub **team** slugs, never individual
+  usernames. The registry's member lists determine staffing status and serve as
+  the audit record of expected team membership; they are not emitted into
+  CODEOWNERS.
+- Registry locale keys must match the locale directories under `content/`
+  (excluding `en`); validation fails on either a missing or an extra locale.
 
 ## Files
 

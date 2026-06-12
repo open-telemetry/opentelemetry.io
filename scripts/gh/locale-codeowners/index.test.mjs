@@ -121,4 +121,19 @@ describe('locale-codeowners: validateRegistry', () => {
     };
     assert.ok(validateRegistry(overlap).some((p) => p.includes('both')));
   });
+
+  test('checks registry keys against content locale dirs when given', () => {
+    const dirs = ['bn', 'ja', 'uk'];
+    assert.deepEqual(validateRegistry(registry, { localeDirs: dirs }), []);
+    assert.ok(
+      validateRegistry(registry, { localeDirs: ['bn', 'ja', 'uk', 'xx'] }).some(
+        (p) => p.includes('not in registry'),
+      ),
+    );
+    assert.ok(
+      validateRegistry(registry, { localeDirs: ['bn', 'ja'] }).some((p) =>
+        p.includes('no content/ directory'),
+      ),
+    );
+  });
 });

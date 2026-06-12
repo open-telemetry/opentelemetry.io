@@ -84,15 +84,30 @@ export function updateCodeowners(content, section) {
 
 /**
  * Basic registry validation: structure, sorted + duplicate-free rosters,
- * no overlap between maintainers and approvers of a locale.
+ * no overlap between maintainers and approvers of a locale. When
+ * `localeDirs` is given, registry keys must match it exactly.
  *
  * @param {Object} registry Parsed data/locale-teams.yaml.
+ * @param {Object} [opts]
+ * @param {string[]} [opts.localeDirs] Locale dirs under content/ (sans en).
  * @returns {string[]} Problems found; empty when valid.
  */
-export function validateRegistry(registry) {
+export function validateRegistry(registry, { localeDirs } = {}) {
   const problems = [];
   if (!registry?.locales || typeof registry.locales !== 'object') {
     return ['missing top-level `locales` map'];
+  }
+  if (localeDirs) {
+    const keys = new Set(Object.keys(registry.locales));
+    for (const dir of localeDirs) {
+      if (!keys.has(dir))
+        problems.push(`${dir}: content/ locale not in registry`);
+    }
+    for (const loc of keys) {
+      if (!localeDirs.includes(loc)) {
+        problems.push(`${loc}: registry locale has no content/ directory`);
+      }
+    }
   }
   for (const [loc, teams] of Object.entries(registry.locales)) {
     if (!/^[a-z]{2}(-[a-z]{2,4})?$/i.test(loc)) {
