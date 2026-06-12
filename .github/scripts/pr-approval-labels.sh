@@ -105,6 +105,22 @@ dedupe_words() {
 }
 
 # ---------------------------------------------------------------------------
+# Helper: true if the given owners list (CODEOWNERS owner tokens) names a
+# locale/SIG approver team, i.e. an "@org/*-approvers" team other than the
+# docs-approvers baseline. docs-maintainers and individual owners do not match.
+# ---------------------------------------------------------------------------
+owners_have_locale_team() {
+  local owner slug
+  for owner in $1; do
+    [[ "${owner}" == @${ORG}/*-approvers ]] || continue
+    slug="${owner#@"${ORG}"/}"
+    [[ "${slug}" == "${DOCS_APPROVERS_TEAM}" ]] && continue
+    return 0
+  done
+  return 1
+}
+
+# ---------------------------------------------------------------------------
 # Fetch team members for a given team slug (e.g. "docs-approvers").
 # Returns newline-separated list of GitHub usernames (lowercased).
 # ---------------------------------------------------------------------------
@@ -235,6 +251,15 @@ get_locale_teams_for_files() {
     local pattern owners
     pattern="${line%%[[:space:]]*}"   # first token is the path pattern
     owners="${line#"${pattern}"}"     # remainder is the owners list
+
+    # Warn if a /content/<loc>/ locale rule has been reworked into a glob
+    # (e.g. /content/ja/**): it would silently stop matching here and undo the
+    # missing:sig-approval coverage. Non-locale content globs (owned by
+    # docs-maintainers) do not trigger this.
+    if [[ "${pattern}" == /content/* && "${pattern}" == *"*"* ]] \
+      && owners_have_locale_team "${owners}"; then
+      echo "::warning::CODEOWNERS rule '${pattern}' looks like a locale rule but is a glob; pr-approval-labels.sh only matches plain /content/<loc>/ directory rules, so it will not apply missing:sig-approval for it." >&2
+    fi
 
     # Only directory rules under content/, with no glob characters.
     [[ "${pattern}" == /content/*/ ]] || continue
