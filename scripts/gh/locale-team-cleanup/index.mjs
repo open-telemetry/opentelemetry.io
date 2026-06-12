@@ -51,22 +51,20 @@ export function teamsInRemovalOrder(locales = LOCALES) {
  * @param {string[]} [filters.locales] Restrict to these locales.
  * @param {string[]} [filters.users] Restrict to these users.
  * @param {number} [filters.max] Bound the number of removals.
- * @param {string} [filters.self] Login of the runner: excluded from removals
- *   unless selfToo is set, since self-removal destroys the runner's
- *   team-maintainer role on that team (which the other removals may depend
- *   on) and cannot be undone by the runner.
- * @param {boolean} [filters.selfToo] Also remove the runner — last from each
- *   team, so the other removals still succeed.
- * @returns {{ team: string, user: string }[]} In removal order.
+ * @param {string} [filters.self] Login of the runner: always planned last
+ *   from each team (whether the entry is acted on is up to the caller —
+ *   see selfToo in runCleanup).
+ * @returns {{ team: string, user: string, self: boolean }[]} In removal
+ *   order.
  */
 export function planRemovals(rosters, filters = {}) {
-  const { locales, users, max = Infinity, self, selfToo = false } = filters;
-  const candidates = (users ?? DOCS_CORE).filter(
-    (u) => DOCS_CORE.includes(u) && u !== self,
-  );
-  if (selfToo && self && (users ?? DOCS_CORE).includes(self)) {
-    candidates.push(self);
-  }
+  const { locales, users, max = Infinity, self } = filters;
+  const requested = (users ?? DOCS_CORE).filter((u) => DOCS_CORE.includes(u));
+  const others = requested.filter((u) => u !== self);
+  // The runner goes last per team: self-removal destroys their
+  // team-maintainer role, which the other removals may depend on.
+  const candidates =
+    requested.length > others.length ? [...others, self] : others;
   const removals = [];
   for (const team of teamsInRemovalOrder(locales)) {
     const roster = rosters.get(team);
@@ -75,7 +73,9 @@ export function planRemovals(rosters, filters = {}) {
     const keep = new Set(KEEP[locale] ?? []);
     for (const user of candidates) {
       if (removals.length >= max) return removals;
-      if (roster.has(user) && !keep.has(user)) removals.push({ team, user });
+      if (roster.has(user) && !keep.has(user)) {
+        removals.push({ team, user, self: user === self });
+      }
     }
   }
   return removals;
@@ -93,7 +93,8 @@ export function planRemovals(rosters, filters = {}) {
  * @param {string[]} [opts.locales] Restrict to these locales.
  * @param {string[]} [opts.users] Restrict to these users.
  * @param {number} [opts.max] Bound the number of removals.
- * @param {string} [opts.self] Login of the runner; excluded unless selfToo.
+ * @param {string} [opts.self] Login of the runner; listed but skipped
+ *   unless selfToo.
  * @param {boolean} [opts.selfToo] Also remove the runner, last per team.
  * @param {(msg: string) => void} [opts.log]
  * @returns {{ removals: { team: string, user: string, status: string }[],
@@ -125,18 +126,23 @@ export function runCleanup({
     rosters.set(team, new Set(res.stdout.split('\n').filter(Boolean)));
   }
 
-  const planned = planRemovals(rosters, { locales, users, max, self, selfToo });
+  const planned = planRemovals(rosters, { locales, users, max, self });
   if (planned.length === 0) {
     log('Nothing to remove; all locale teams are already clean.');
     return { removals: [], exitCode: 0 };
   }
 
   let failures = 0;
-  const removals = planned.map(({ team, user }) => {
+  let actionable = 0;
+  const removals = planned.map(({ team, user, self: isSelf }) => {
     let status;
-    if (dryRun) {
+    if (isSelf && !selfToo) {
+      status = 'skipped (runner; pass --self-too to remove)';
+    } else if (dryRun) {
+      actionable++;
       status = 'would remove';
     } else {
+      actionable++;
       const res = runGh([
         'api',
         '-X',
@@ -159,7 +165,7 @@ export function runCleanup({
 
   if (dryRun) {
     log(
-      `\nDry run only: ${planned.length} removal(s) planned. ` +
+      `\nDry run only: ${actionable} removal(s) planned. ` +
         `Pass --no-dry-run (-f) to perform them.`,
     );
   }

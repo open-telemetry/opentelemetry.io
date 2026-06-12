@@ -37,11 +37,11 @@ occasionally stall indefinitely.
   Team-membership writes need org-owner privileges or a maintainer role _on that
   very team_. Round-trip (remove + re-add) verified live with a
   team-maintainer-only runner on 2026-06-12.
-- **The runner is excluded by default; `--self-too` removes them last from each
-  team** (handled automatically): removing yourself from a team destroys your
-  team-maintainer role on it, so removing yourself first would 403 the remaining
-  removals — and you can't re-add yourself afterwards either (learned the hard
-  way, 2026-06-12).
+- **The runner's memberships are listed but skipped by default; `--self-too`
+  removes them too, last from each team**: removing yourself from a team
+  destroys your team-maintainer role on it, so removing yourself first would 403
+  the remaining removals — and you can't re-add yourself afterwards either
+  (learned the hard way, 2026-06-12).
 - **Child before parent.** `docs-<loc>-maintainers` is a child of
   `docs-<loc>-approvers` and GitHub rosters include child-team members, so the
   helper removes from the maintainers team first and treats a 404 (not a direct

@@ -24,8 +24,8 @@ describe('locale-team-cleanup: planRemovals', () => {
     ]);
     const removals = planRemovals(rosters);
     assert.deepEqual(removals, [
-      { team: 'docs-ja-maintainers', user: 'chalin' },
-      { team: 'docs-ja-maintainers', user: 'svrnm' },
+      { team: 'docs-ja-maintainers', user: 'chalin', self: false },
+      { team: 'docs-ja-maintainers', user: 'svrnm', self: false },
     ]);
   });
 
@@ -48,7 +48,7 @@ describe('locale-team-cleanup: planRemovals', () => {
       ['docs-ro-approvers', new Set(['chalin'])],
     ]);
     assert.deepEqual(planRemovals(rosters), [
-      { team: 'docs-ro-approvers', user: 'chalin' },
+      { team: 'docs-ro-approvers', user: 'chalin', self: false },
     ]);
   });
 
@@ -64,7 +64,7 @@ describe('locale-team-cleanup: planRemovals', () => {
       ['docs-ja-maintainers', new Set(['cartermp'])],
     ]);
     assert.deepEqual(planRemovals(rosters, { locales: ['bn'] }), [
-      { team: 'docs-bn-maintainers', user: 'cartermp' },
+      { team: 'docs-bn-maintainers', user: 'cartermp', self: false },
     ]);
   });
 
@@ -74,7 +74,7 @@ describe('locale-team-cleanup: planRemovals', () => {
     ]);
     assert.deepEqual(
       planRemovals(rosters, { users: ['cartermp', 'badhon495'] }),
-      [{ team: 'docs-bn-maintainers', user: 'cartermp' }],
+      [{ team: 'docs-bn-maintainers', user: 'cartermp', self: false }],
     );
   });
 
@@ -89,30 +89,20 @@ describe('locale-team-cleanup: planRemovals', () => {
     assert.deepEqual(removals[0].team, 'docs-bn-maintainers');
   });
 
-  test('self is excluded by default', () => {
-    const rosters = new Map([
-      ['docs-bn-maintainers', new Set(['chalin', 'svrnm'])],
-    ]);
-    assert.deepEqual(planRemovals(rosters, { self: 'chalin' }), [
-      { team: 'docs-bn-maintainers', user: 'svrnm' },
-    ]);
-  });
-
-  test('with selfToo, self is removed last from each team', () => {
+  test('self is planned last per team and flagged', () => {
     const rosters = new Map([
       ['docs-bn-maintainers', new Set(['chalin', 'svrnm', 'tiffany76'])],
       ['docs-bn-approvers', new Set(['chalin', 'austinlparker'])],
     ]);
-    const removals = planRemovals(rosters, {
-      self: 'chalin',
-      selfToo: true,
-    }).map((r) => `${r.team}:${r.user}`);
+    const removals = planRemovals(rosters, { self: 'chalin' }).map(
+      (r) => `${r.team}:${r.user}:${r.self}`,
+    );
     assert.deepEqual(removals, [
-      'docs-bn-maintainers:svrnm',
-      'docs-bn-maintainers:tiffany76',
-      'docs-bn-maintainers:chalin',
-      'docs-bn-approvers:austinlparker',
-      'docs-bn-approvers:chalin',
+      'docs-bn-maintainers:svrnm:false',
+      'docs-bn-maintainers:tiffany76:false',
+      'docs-bn-maintainers:chalin:true',
+      'docs-bn-approvers:austinlparker:false',
+      'docs-bn-approvers:chalin:true',
     ]);
   });
 });
@@ -191,6 +181,37 @@ describe('locale-team-cleanup: runCleanup', () => {
     });
     assert.equal(r.exitCode, 1);
     assert.deepEqual(r.removals, []);
+  });
+
+  test('self is listed but skipped by default; no DELETE issued', () => {
+    const calls = [];
+    const r = runCleanup({
+      runGh: makeRunGh({ rosters, calls }),
+      dryRun: false,
+      self: 'chalin',
+    });
+    assert.equal(r.exitCode, 0);
+    assert.deepEqual(
+      r.removals.map((x) => `${x.team}:${x.user}:${x.status}`),
+      [
+        'docs-ja-maintainers:chalin:skipped (runner; pass --self-too to remove)',
+        'docs-ja-approvers:chalin:skipped (runner; pass --self-too to remove)',
+      ],
+    );
+    assert.ok(!calls.some((a) => a.includes('DELETE')));
+  });
+
+  test('with selfToo, self is removed', () => {
+    const calls = [];
+    const r = runCleanup({
+      runGh: makeRunGh({ rosters, calls }),
+      dryRun: false,
+      self: 'chalin',
+      selfToo: true,
+    });
+    assert.equal(r.exitCode, 0);
+    assert.ok(r.removals.every((x) => x.status === 'removed'));
+    assert.equal(calls.filter((a) => a.includes('DELETE')).length, 2);
   });
 
   test('locales filter limits roster fetches and removals', () => {
