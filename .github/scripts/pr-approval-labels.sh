@@ -44,6 +44,7 @@ LABEL_READY="ready-to-be-merged"
 DOCS_APPROVERS_TEAM="docs-approvers"
 DOCS_MAINTAINERS_TEAM="docs-maintainers"
 COMPONENT_OWNERS_FILE=".github/component-owners.yml"
+CODEOWNERS_FILE=".github/CODEOWNERS"
 ORG="open-telemetry"
 
 # Labels that indicate a PR may contain content with a publish date in its
@@ -193,7 +194,71 @@ get_sig_teams_for_files() {
 }
 
 # ---------------------------------------------------------------------------
-# Check if the PR has potentially a publish date in the frontmatter of 
+# Parse CODEOWNERS for locale-approval teams owning the given PR files.
+# Since #10295, CODEOWNERS is the single source of truth for locale ownership.
+#
+#
+# We read only directory rules under content/ (pattern starts with /content/,
+# ends with /, no glob characters). That reproduces the prefix matching the
+# locale block in component-owners.yml used before #10295, without
+# reimplementing CODEOWNERS glob and last-match-wins resolution here.
+#
+# The docs-approvers baseline and docs-maintainers are skipped, matching the
+# SIG-team exclusion in get_sig_teams_for_files.
+#
+# Outputs unique team slugs (without the org prefix), one per line.
+# ---------------------------------------------------------------------------
+get_locale_teams_for_files() {
+  local -a pr_files=("$@")
+  local locale_teams=""
+
+  [[ -f "${CODEOWNERS_FILE}" ]] || return 0
+
+  while IFS= read -r line; do
+    line="${line%%#*}"          # strip inline comments
+    line="${line//$'\r'/}"      # tolerate CRLF
+    [[ -z "${line//[[:space:]]/}" ]] && continue
+
+    local pattern owners
+    pattern="${line%%[[:space:]]*}"   # first token is the path pattern
+    owners="${line#"${pattern}"}"     # remainder is the owners list
+
+    # Only directory rules under content/, with no glob characters.
+    [[ "${pattern}" == /content/*/ ]] || continue
+    [[ "${pattern}" == *"*"* ]] && continue
+
+    # Normalize the pattern to a prefix: /content/ja/ -> content/ja
+    local prefix="${pattern#/}"
+    prefix="${prefix%/}"
+
+    # Does any changed file live under this directory?
+    local matched=false
+    local file
+    for file in "${pr_files[@]}"; do
+      if [[ "${file}" == "${prefix}/"* ]]; then
+        matched=true
+        break
+      fi
+    done
+    [[ "${matched}" == "false" ]] && continue
+
+    # Collect owning teams, dropping the org prefix and the baseline teams.
+    local owner
+    for owner in ${owners}; do
+      [[ "${owner}" == @${ORG}/* ]] || continue
+      local team_slug="${owner#@"${ORG}"/}"
+      [[ "${team_slug}" == "${DOCS_APPROVERS_TEAM}" ]] && continue
+      [[ "${team_slug}" == "${DOCS_MAINTAINERS_TEAM}" ]] && continue
+      locale_teams="${locale_teams} ${team_slug}"
+    done
+  done < "${CODEOWNERS_FILE}"
+
+  # Deduplicate and output
+  echo "${locale_teams}" | tr ' ' '\n' | sort -u | grep -v '^$' || true
+}
+
+# ---------------------------------------------------------------------------
+# Check if the PR has potentially a publish date in the frontmatter of
 # changed files.
 # -------------------------------------------------------------------------
 should_check_publish_date() {
@@ -358,8 +423,15 @@ main() {
   # -------------------------------------------------------------------------
   echo ""
   echo "=== Checking SIG approval ==="
+  # Component (SIG) teams come from component-owners.yml; locale-approval teams
+  # come from CODEOWNERS (the single source of truth for locale ownership since
+  # #10295). Union them so locale PRs require missing:sig-approval again.
   local sig_teams
   sig_teams=$(get_sig_teams_for_files "${pr_files[@]}")
+  local locale_teams
+  locale_teams=$(get_locale_teams_for_files "${pr_files[@]}")
+  sig_teams=$(printf '%s\n%s\n' "${sig_teams}" "${locale_teams}" \
+    | sort -u | grep -v '^$' || true)
 
   local sig_needed=false
   local sig_approved=false
