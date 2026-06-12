@@ -53,6 +53,7 @@ servlet
 shippingservice
 stdoutmetric
 subresponse
+subtag
 sunsetting
 tabpane
 timeframe
