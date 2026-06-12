@@ -83,7 +83,7 @@ OpenTelemetry SDKは、ログをトレースと自動的に関連づけること
 - 送信側では、コンテキストはキャリアに[注入](/docs/specs/otel/context/api-propagators/#inject)されます。
   たとえば、HTTPリクエストのヘッダーに注入されます。
   それ以外の場合では、リクエストのメタデータを保存できる場所を見つける必要があります。
-- 受診側では、コンテキストはキャリアから[抽出](/docs/specs/otel/context/api-propagators/#extract)されます。
+- 受信側では、コンテキストはキャリアから[抽出](/docs/specs/otel/context/api-propagators/#extract)されます。
   HTTPの場合は、ヘッダーから取得されます。
   それ以外の場合は、送信側でコンテキストを保存するために選択した場所を選択します。
 

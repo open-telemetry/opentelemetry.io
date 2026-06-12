@@ -1,5 +1,5 @@
 {{ $lang := .Get 0 -}}
-{{ $data := index $.Site.Data.instrumentation $lang }}
+{{ $data := index hugo.Data.instrumentation $lang }}
 {{ $name := $data.name -}}
 
 {{ $tracesStatus := partial "docs/get-signal-status.html" (dict "lang" $lang "signal" "traces") -}}

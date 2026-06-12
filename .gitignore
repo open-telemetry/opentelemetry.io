@@ -1,4 +1,4 @@
-# cSpell:ignore worktrees venv
+# cSpell:ignore worktrees venv mypy pytest
 
 /.claude/worktrees
 /.claude/settings.local.json
