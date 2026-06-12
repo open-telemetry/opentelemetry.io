@@ -4,11 +4,14 @@ Logic + CLI behind the **Locale auto-merge** workflow
 ([`.github/workflows/locale-auto-merge.yml`](../../../.github/workflows/locale-auto-merge.yml)).
 
 A locale team member comments `/auto-merge` (or `/auto-merge:enable` /
-`/auto-merge:disable`) on a locale-only PR. The workflow runs this helper as the
-**DOCS bot** (which has the permissions needed to enable auto-merge) to enable
-GitHub-native auto-merge. The bot only flips the "merge when ready" switch —
-**branch protection and CODEOWNERS remain the hard gate**, so the PR still won't
-merge until every required code owner has approved and all checks pass.
+`/auto-merge:disable`) on a locale-only PR. The directive must be on its own
+line — no leading text or spaces — as the first or last line of the comment (so,
+e.g., `LGTM` followed by `/auto-merge` works), and appear at most once. The
+workflow runs this helper as the **DOCS bot** (which has the permissions needed
+to enable auto-merge) to enable GitHub-native auto-merge. The bot only flips the
+"merge when ready" switch — **branch protection and CODEOWNERS remain the hard
+gate**, so the PR still won't merge until every required code owner has approved
+and all checks pass.
 
 The helper adds two guards of its own:
 
