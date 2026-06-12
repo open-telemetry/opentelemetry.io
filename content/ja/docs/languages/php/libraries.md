@@ -3,7 +3,7 @@ title: 計装ライブラリの使用
 linkTitle: ライブラリ
 weight: 40
 default_lang_commit: 80f1878ba5e02e1ac98daab3397999078dc67179
-cSpell:ignore: Packagist
+drifted_from_default: true
 ---
 
 {{% docs/languages/libraries-intro "php" %}}

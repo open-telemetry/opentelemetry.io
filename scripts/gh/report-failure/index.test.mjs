@@ -79,6 +79,18 @@ describe('report-failure: pure helpers', () => {
     assert.match(body, /\*\*Branch:\*\* main/);
     assert.match(body, /\*\*Commit:\*\* deadbeef/);
     assert.match(body, /\*\*Run:\*\* https:\/\/example\/run/);
+    assert.doesNotMatch(body, /\*\*PR:\*\*/);
+  });
+
+  test('buildIssueBody includes the PR link when given', () => {
+    const body = buildIssueBody({
+      workflow: 'CI',
+      branch: 'main',
+      sha: 'deadbeef',
+      runUrl: 'https://example/run',
+      prUrl: 'https://example/pr/1',
+    });
+    assert.match(body, /\*\*PR:\*\* https:\/\/example\/pr\/1/);
   });
 
   test('buildCommentBody includes run and commit', () => {
@@ -89,6 +101,16 @@ describe('report-failure: pure helpers', () => {
     assert.match(body, /Another failure occurred/);
     assert.match(body, /https:\/\/example\/run2/);
     assert.match(body, /feed/);
+    assert.doesNotMatch(body, /\*\*PR:\*\*/);
+  });
+
+  test('buildCommentBody includes the PR link when given', () => {
+    const body = buildCommentBody({
+      sha: 'feed',
+      runUrl: 'https://example/run2',
+      prUrl: 'https://example/pr/2',
+    });
+    assert.match(body, /\*\*PR:\*\* https:\/\/example\/pr\/2/);
   });
 });
 
@@ -162,6 +184,31 @@ describe('report-failure: reportFailure', () => {
     });
     const kinds = calls.map((a) => a.slice(0, 2).join(' '));
     assert.deepEqual(kinds, ['issue list', 'issue comment']);
+  });
+
+  test('drops a malformed prUrl instead of rendering it', () => {
+    const title = buildIssueTitle({
+      prefix: BASE.issuePrefix,
+      workflow: BASE.workflow,
+      branch: BASE.branch,
+    });
+    const { runGh, calls } = makeFakeGh({
+      'issue list': {
+        stdout: JSON.stringify([{ number: 42, title }]),
+        status: 0,
+      },
+    });
+    reportFailure({
+      ...BASE,
+      prUrl: 'https://example/pr/7 @everyone\n# injected',
+      runGh,
+      log: noLog,
+    });
+
+    const comment = calls.find((a) => a[0] === 'issue' && a[1] === 'comment');
+    const body = comment[comment.indexOf('--body') + 1];
+    assert.doesNotMatch(body, /\*\*PR:\*\*/);
+    assert.doesNotMatch(body, /injected/);
   });
 
   test('creates a new issue and sets its type when none exists', () => {
