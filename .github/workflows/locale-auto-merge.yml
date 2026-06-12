@@ -3,9 +3,8 @@ name: Locale auto-merge
 # Lets a locale team member enable (or disable) GitHub-native auto-merge on a
 # locale-only PR by commenting `/auto-merge` (or `/auto-merge:enable` /
 # `:disable`) on its own line, as the first or last non-blank line of the
-# comment. The
-# DOCS bot (which has the permissions needed to enable auto-merge) performs
-# the action;
+# comment. The DOCS bot (which has the permissions needed to enable
+# auto-merge) performs the action;
 # branch protection + CODEOWNERS remain the hard gate — the PR still won't
 # merge until all required reviews and checks pass. The eligibility and
 # locale-team authorization logic lives in scripts/gh/locale-auto-merge/.
