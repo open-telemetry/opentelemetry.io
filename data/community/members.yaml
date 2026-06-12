@@ -223,6 +223,8 @@ maintainers:
       - operator-triagers
       - packaging-approvers
       - packaging-maintainers
+      - semconv-mainframe-approvers
+      - semconv-mainframe-maintainers
     html_url: https://github.com/atoulme
     avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: austinlparker
@@ -538,6 +540,7 @@ maintainers:
       - javascript-contrib-triagers
       - javascript-maintainers
       - javascript-triagers
+      - semconv-js-approvers
     html_url: https://github.com/david-luna
     avatar_url: https://avatars.githubusercontent.com/u/999029?v=4
   - name: dazuma
@@ -740,9 +743,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/6207777?v=4
   - name: gshriver
     teams:
-      - sig-mainframe-approvers
-      - sig-mainframe-maintainers
-      - sig-mainframe-triagers
+      - semconv-mainframe-approvers
+      - semconv-mainframe-maintainers
     html_url: https://github.com/gshriver
     avatar_url: https://avatars.githubusercontent.com/u/5203552?v=4
   - name: hdost
@@ -1100,6 +1102,7 @@ maintainers:
   - name: marcalff
     teams:
       - configuration-approvers
+      - configuration-maintainers
       - cpp-approvers
       - cpp-contrib-approvers
       - cpp-contrib-maintainers
@@ -1150,6 +1153,7 @@ maintainers:
       - javascript-contrib-triagers
       - javascript-triagers
       - semconv-db-approvers
+      - semconv-js-approvers
       - sig-contributor-experience-approvers
       - sig-contributor-experience-maintainers
       - sig-contributor-experience-triagers
@@ -1418,9 +1422,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/73110295?v=4
   - name: rrschulze
     teams:
-      - sig-mainframe-approvers
-      - sig-mainframe-maintainers
-      - sig-mainframe-triagers
+      - semconv-mainframe-approvers
+      - semconv-mainframe-maintainers
     html_url: https://github.com/rrschulze
     avatar_url: https://avatars.githubusercontent.com/u/140042958?v=4
   - name: SergeyKleyman
@@ -1608,6 +1611,7 @@ maintainers:
       - javascript-contrib-triagers
       - javascript-maintainers
       - javascript-triagers
+      - semconv-js-approvers
     html_url: https://github.com/trentm
     avatar_url: https://avatars.githubusercontent.com/u/46866?v=4
   - name: tsloughter
@@ -1657,6 +1661,7 @@ maintainers:
   - name: utpilla
     teams:
       - arrow-approvers
+      - arrow-maintainers
       - arrow-triagers
       - rust-approvers
       - rust-maintainers
@@ -1781,6 +1786,12 @@ approvers:
       - swift-triagers
     html_url: https://github.com/alolita
     avatar_url: https://avatars.githubusercontent.com/u/1942529?v=4
+  - name: amazingakai
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/amazingakai
+    avatar_url: https://avatars.githubusercontent.com/u/93782497?v=4
   - name: ArthurSens
     teams:
       - collector-contrib-approvers
@@ -2562,9 +2573,6 @@ members:
   - name: alxbl
     html_url: https://github.com/alxbl
     avatar_url: https://avatars.githubusercontent.com/u/860411?v=4
-  - name: amazingakai
-    html_url: https://github.com/amazingakai
-    avatar_url: https://avatars.githubusercontent.com/u/93782497?v=4
   - name: AnaMMedina21
     html_url: https://github.com/AnaMMedina21
     avatar_url: https://avatars.githubusercontent.com/u/3894791?v=4

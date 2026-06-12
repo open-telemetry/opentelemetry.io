@@ -28,6 +28,7 @@ gitpod
 goldmark
 grafana
 Hausenblas
+Hrabusa
 htmltest
 hugo
 instana
@@ -120,6 +121,7 @@ Trask
 UpDown
 Valkey
 Villela
+vitorvasc
 warnf
 warnidf
 Wayback

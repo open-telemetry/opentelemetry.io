@@ -4,7 +4,7 @@ weight: 12
 aliases: [exporters]
 default_lang_commit: 6652551fda266f2edff5c60456a59e3bfcb5989f # patched
 drifted_from_default: true
-cSpell:ignore: Interceptable Logback okhttp
+cSpell:ignore: Interceptable okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
