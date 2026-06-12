@@ -1287,9 +1287,21 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-12T10:58:20.902625012Z"
   },
+  "https://datatracker.ietf.org/doc/html/rfc8259#section-4": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T08:59:51.144236-04:00"
+  },
+  "https://datatracker.ietf.org/doc/html/rfc8259#section-5": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T08:59:50.597094-04:00"
+  },
   "https://datatracker.ietf.org/doc/html/rfc8259#section-6": {
     "StatusCode": 206,
     "LastSeen": "2026-06-12T10:58:23.265986399Z"
+  },
+  "https://datatracker.ietf.org/doc/html/rfc8259#section-7": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T08:59:50.927092-04:00"
   },
   "https://datatracker.ietf.org/doc/html/rfc8555": {
     "StatusCode": 206,
@@ -9979,6 +9991,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-08T11:21:55.496900488Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#idgenerator-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T08:59:51.382741-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#logrecordexporter-": {
     "StatusCode": 206,
     "LastSeen": "2026-06-08T11:21:35.23017878Z"
@@ -13863,6 +13879,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-11T11:10:55.993946504Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/entities/entity-events.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T08:59:55.089683-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/entities/entity-propagation.md": {
     "StatusCode": 206,
     "LastSeen": "2026-06-12T10:58:23.124911504Z"
@@ -13983,6 +14003,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-08T11:20:43.419130292Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/profiles/data-format.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T08:59:52.149644-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/profiles/mappings.md": {
     "StatusCode": 206,
     "LastSeen": "2026-06-08T11:20:42.89248009Z"
@@ -14038,6 +14062,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/schemas/file_format_v1.1.0.md": {
     "StatusCode": 206,
     "LastSeen": "2026-06-08T11:20:48.366650871Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/self-observability.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T08:59:51.47422-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/semantic-conventions.md": {
     "StatusCode": 206,
@@ -14194,6 +14222,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.57.0/oteps/metrics/0146-metrics-prototype-scenarios.md": {
     "StatusCode": 206,
     "LastSeen": "2026-06-11T11:10:49.784360143Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.57.0/oteps/profiles/0212-profiling-vision.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T08:59:52.394168-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.57.0/oteps/profiles/0239-profiles-data-model.md#message-mapping": {
     "StatusCode": 206,
@@ -20823,9 +20855,17 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-12T10:58:47.872925456Z"
   },
+  "https://prometheus.io/docs/specs/native_histograms/#staleness-markers": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T08:59:50.830172-04:00"
+  },
   "https://prometheus.io/docs/specs/om/open_metrics_spec/#exemplars": {
     "StatusCode": 200,
     "LastSeen": "2026-06-07T10:25:08.706394286Z"
+  },
+  "https://prometheus.io/docs/specs/prw/remote_write_spec_2_0/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-12T08:59:50.279335-04:00"
   },
   "https://prometheus.io/download/": {
     "StatusCode": 200,
