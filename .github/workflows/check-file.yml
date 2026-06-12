@@ -39,6 +39,8 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with: { persist-credentials: false }
+      # Only dependency of the check; skip the full (slow) npm install.
+      - run: npm install --no-save --ignore-scripts js-yaml
       - run: npm run check:codeowners
 
   check-branch-name:
