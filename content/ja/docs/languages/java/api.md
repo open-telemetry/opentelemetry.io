@@ -8,8 +8,7 @@ logBridgeWarning: >-
   [Log Bridge API](/docs/specs/otel/logs/api/)を表しており、これは他のログAPI/フレームワークを通じて
   記録されたログをOpenTelemetryにブリッジするためのログアペンダーを作成するために存在します。
   これらはLog4j / SLF4J / Logback / などの代替として、エンドユーザーが使用することを意図していません。
-default_lang_commit: 813498074d85258c7180d137ace9e272d0149353
-drifted_from_default: true
+default_lang_commit: 9229908e7b567bc9c3f6352a5a8922caf5c1ac1c
 cSpell:ignore: kotlint updowncounter
 ---
 
