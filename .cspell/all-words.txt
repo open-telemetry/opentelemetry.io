@@ -15,6 +15,7 @@ desaturate
 docsy
 dotnet
 Dyla
+dyladan
 dynatrace
 ebpf
 EMEA
@@ -120,6 +121,7 @@ traefik
 Trask
 UpDown
 Valkey
+Vasconcellos
 Villela
 vitorvasc
 warnf
