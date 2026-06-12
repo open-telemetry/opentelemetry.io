@@ -1,0 +1,43 @@
+# Expected membership of the docs-<locale> GitHub teams. This registry is the
+# data source for the generated locale section of .github/CODEOWNERS -- see
+# scripts/gh/locale-codeowners/README.md. Regenerate via:
+#
+#   npm run fix:codeowners
+#
+# Membership changes require a PR against this file (audit trail), applied to
+# the live teams by an org admin. Notes:
+#
+# - `maintainers` and `approvers` list *direct* members of the corresponding
+#   `docs-<locale>-maintainers` / `-approvers` teams. GitHub also reports
+#   child-team (maintainers) members as part of the parent (approvers) team.
+# - A locale with no maintainers is considered unstaffed: its CODEOWNERS
+#   lines additionally list @open-telemetry/docs-approvers as a fallback.
+#   See https://github.com/open-telemetry/opentelemetry.io/issues/10374.
+locales:
+  bn:
+    maintainers: []
+    approvers: [badhon495, sajibAdhi]
+  es:
+    maintainers: []
+    approvers: [krol3, mx-psi]
+  fr:
+    maintainers: [chalin, codeboten, dmathieu, marcalff]
+    approvers: [bertysentry, jeanbisutti]
+  ja:
+    maintainers: [katzchang, Msksgm, ymotongpoo]
+    approvers: [kohbis, kota-sakuma]
+  pl:
+    maintainers: []
+    approvers: [andrzej-stencel, Kielek, pellared]
+  pt:
+    maintainers: [emdneto, EzzioMoreira, jpkrohling, maryliag, vitorvasc]
+    approvers: [joaopgrassi]
+  ro:
+    maintainers: []
+    approvers: [didiViking]
+  uk:
+    maintainers: []
+    approvers: []
+  zh:
+    maintainers: []
+    approvers: [chluknight1224, my-git9, reyang, windsonsea]
