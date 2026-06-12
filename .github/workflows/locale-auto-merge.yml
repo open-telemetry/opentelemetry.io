@@ -2,7 +2,8 @@ name: Locale auto-merge
 
 # Lets a locale team member enable (or disable) GitHub-native auto-merge on a
 # locale-only PR by commenting `/auto-merge` (or `/auto-merge:enable` /
-# `:disable`) on its own line, as the first or last line of the comment. The
+# `:disable`) on its own line, as the first or last non-blank line of the
+# comment. The
 # DOCS bot (which has the permissions needed to enable auto-merge) performs
 # the action;
 # branch protection + CODEOWNERS remain the hard gate — the PR still won't
@@ -23,8 +24,10 @@ jobs:
     concurrency:
       group: locale-auto-merge-${{ github.event.issue.number }}
       cancel-in-progress: false
-    # Only a broad substring match on the comment body here. The helper does
-    # the exact (line-anchored) parsing and posts "Unrecognized command" when
+    # Only a broad substring match on the comment body here (intentional: the
+    # directive may sit below review text, so a prefix match is not enough; an
+    # incidental mention just costs one short no-op job). The helper does the
+    # exact (line-anchored) parsing and posts "Unrecognized command" when
     # the comment looks like an attempt but is malformed.
     if: |
       github.repository_owner == 'open-telemetry' &&

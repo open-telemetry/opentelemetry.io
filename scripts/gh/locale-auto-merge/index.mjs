@@ -456,12 +456,17 @@ export function runAutoMergeCommand({
   if (action === null) {
     // Stay a silent no-op for comments that aren't auto-merge attempts at all.
     // But the workflow triggers on any comment mentioning `/auto-merge`, so a
-    // failed attempt — a line starting with `/auto-merge` that is malformed
-    // (e.g. `/auto-merge please`, `/auto-merge:foo`), buried mid-comment, or
-    // duplicated — should get feedback rather than a silent run.
+    // failed attempt — a line starting with `/auto-merge`, possibly indented,
+    // that is malformed (e.g. `/auto-merge please`, `/auto-merge:foo`,
+    // `  /auto-merge`), buried mid-comment, or duplicated — should get
+    // feedback rather than a silent run. Blockquoted directives
+    // (`> /auto-merge`) stay silent: quoting a command is a citation, not an
+    // attempt.
     const looksLikeAttempt =
       typeof commentBody === 'string' &&
-      commentBody.split('\n').some((line) => line.startsWith('/auto-merge'));
+      commentBody
+        .split('\n')
+        .some((line) => line.trimStart().startsWith('/auto-merge'));
     if (!looksLikeAttempt) {
       log('No recognized /auto-merge command; nothing to do.');
       return { outcome: 'no-command', exitCode: 0, details };
@@ -470,8 +475,8 @@ export function runAutoMergeCommand({
       `❓ Unrecognized auto-merge command. Use \`/auto-merge\` (or ` +
       `\`/auto-merge:enable\`) to enable auto-merge, or \`/auto-merge:disable\` ` +
       `to turn it off. The directive must be on its own line — with no ` +
-      `leading text or spaces — as the first or last line of the comment, ` +
-      `and appear at most once.`;
+      `leading text or spaces — as the first or last non-blank line of the ` +
+      `comment, and appear at most once.`;
     details.message = message;
     mutatingRunGh([
       'pr',
