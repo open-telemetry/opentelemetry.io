@@ -1,5 +1,5 @@
 ---
-title:
+title: >-
   Cardinality Limits in OpenTelemetry — When Your Metrics Lie, and What to Do
   About It
 linkTitle: Cardinality Limits in OpenTelemetry
@@ -263,7 +263,7 @@ the string `"true"`; OTLP-native backends preserve the boolean type.
 an overflow data point:
 
 ```promql
-count by (__name__, service_name)({otel_metric_overflow="true"} > 0)
+count by (__name__, service_name)({otel_metric_overflow="true"})
 ```
 
 This returns the list of `(metric_name, service_name)` pairs where overflow has
