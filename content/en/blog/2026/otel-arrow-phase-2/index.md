@@ -126,7 +126,7 @@ each tested pipeline.
 
 ## Result 1: OTAP Keeps Processing Cheap, While Backpressure Bounds Overload
 
-![3 benchmark takeaways](3-takeaways.svg)
+![Three benchmark summaries showing low incremental CPU cost for OTAP transformations as rename rules increase, lower CPU usage with larger batches, and bounded memory under overload](3-takeaways.svg)
 
 Figure 1: Summary of transformation benchmarks showing sensitivity to the count
 of transformation rules, batch-size behavior, and overload behavior.
