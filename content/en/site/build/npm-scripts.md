@@ -40,6 +40,7 @@ are internal helpers and are not intended to be run directly.
 | `check`                | Run the most commonly needed check scripts in sequence.     |
 | `check:all`            | Run all check scripts in sequence.                          |
 | `check:code-excerpts`  | Check code excerpts, fail if updates needed.                |
+| `check:codeowners`     | Verify CODEOWNERS locale section matches the registry.      |
 | `check:format`         | Prettier and prose-wrap checks.                             |
 | `check:i18n`           | Validate localization front matter (`default_lang_commit`). |
 | `check:l10n`           | Run localization checks.                                    |
@@ -60,6 +61,7 @@ are internal helpers and are not intended to be run directly.
 | ------------------------- | -------------------------------------------------------------- |
 | `fix`                     | Run the most commonly needed fix scripts.                      |
 | `fix:code-excerpts`       | Refresh code excerpts.                                         |
+| `fix:codeowners`          | Regenerate CODEOWNERS locale section from the registry.        |
 | `fix:all`                 | Run all fix scripts.                                           |
 | `fix:format`              | Apply Prettier and trim trailing spaces.                       |
 | `fix:format:staged`       | Format only staged files.                                      |

@@ -26,7 +26,8 @@ describe('locale-auto-merge: discoverLocales', () => {
 describe('locale-auto-merge: parseCommand', () => {
   test('bare /auto-merge means enable', () => {
     assert.equal(parseCommand('/auto-merge'), 'enable');
-    assert.equal(parseCommand('  /auto-merge  '), 'enable');
+    assert.equal(parseCommand('/auto-merge  '), 'enable');
+    assert.equal(parseCommand('/auto-merge\r\n'), 'enable');
   });
 
   test('explicit enable/disable', () => {
@@ -34,8 +35,41 @@ describe('locale-auto-merge: parseCommand', () => {
     assert.equal(parseCommand('/auto-merge:disable'), 'disable');
   });
 
-  test('rejects surrounding text and unknown verbs', () => {
+  test('directive as last line after text', () => {
+    assert.equal(parseCommand('LGTM\n/auto-merge'), 'enable');
+    assert.equal(
+      parseCommand('LGTM!\nThanks.\n\n/auto-merge:disable\n'),
+      'disable',
+    );
+  });
+
+  test('directive as first line before text', () => {
+    assert.equal(parseCommand('/auto-merge\nLGTM, merging.'), 'enable');
+    assert.equal(parseCommand('\n/auto-merge\n\nLGTM.'), 'enable');
+  });
+
+  test('rejects a directive that is neither first nor last non-blank line', () => {
+    assert.equal(parseCommand('LGTM\n/auto-merge\nthanks'), null);
+    assert.equal(parseCommand('```\n/auto-merge\n```'), null);
+  });
+
+  test('rejects leading whitespace, quotes, and inline text', () => {
+    assert.equal(parseCommand('  /auto-merge'), null);
+    assert.equal(parseCommand('> /auto-merge'), null);
     assert.equal(parseCommand('please /auto-merge'), null);
+    assert.equal(parseCommand('LGTM\n  /auto-merge'), null);
+  });
+
+  test('rejects multiple directives', () => {
+    assert.equal(parseCommand('/auto-merge\n/auto-merge'), null);
+    assert.equal(
+      parseCommand('/auto-merge:enable\nhmm\n/auto-merge:disable'),
+      null,
+    );
+  });
+
+  test('stays silent on mid-sentence mentions and unknown verbs', () => {
+    assert.equal(parseCommand('Use /auto-merge to merge.'), null);
     assert.equal(parseCommand('/auto-merge now'), null);
     assert.equal(parseCommand('/auto-merge:later'), null);
     assert.equal(parseCommand('/automerge'), null);
@@ -392,6 +426,20 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     assert.equal(calls.length, 0); // never even fetched the PR
   });
 
+  test('mid-sentence /auto-merge mention stays a silent no-op', () => {
+    const calls = [];
+    const r = runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 1,
+      commentAuthor: 'alice',
+      commentBody: 'You can use /auto-merge to merge locale PRs.',
+      knownLocales: KNOWN,
+      runGh: makeRunGh({ pr: {}, calls }),
+    });
+    assert.equal(r.outcome, 'no-command');
+    assert.equal(calls.length, 0); // no PR fetch, no feedback comment
+  });
+
   test('malformed /auto-merge attempt posts an unrecognized-command reply', () => {
     const calls = [];
     const r = runAutoMergeCommand({
@@ -410,6 +458,68 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     assert.ok(comment, 'expected a feedback comment');
     const body = comment[comment.indexOf('--body') + 1];
     assert.match(body, /Unrecognized auto-merge command/);
+  });
+
+  test('mid-comment or duplicated directives get an unrecognized-command reply', () => {
+    for (const body of [
+      'LGTM\n/auto-merge\nthanks', // buried mid-comment
+      '/auto-merge\nhmm\n/auto-merge:disable', // more than one directive
+      'LGTM\n  /auto-merge', // mis-indented directive
+    ]) {
+      const calls = [];
+      const r = runAutoMergeCommand({
+        repo: 'open-telemetry/opentelemetry.io',
+        prNum: 5,
+        commentAuthor: 'alice',
+        commentBody: body,
+        knownLocales: KNOWN,
+        runGh: makeRunGh({ pr: {}, calls }),
+      });
+      assert.equal(r.outcome, 'no-command');
+      const comment = calls.find((a) => a[0] === 'pr' && a[1] === 'comment');
+      assert.ok(comment, `expected a feedback comment for: ${body}`);
+      const replyBody = comment[comment.indexOf('--body') + 1];
+      assert.match(replyBody, /first or last non-blank line/);
+    }
+  });
+
+  test('blockquoted directive is a citation, not an attempt: silent no-op', () => {
+    const calls = [];
+    const r = runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 5,
+      commentAuthor: 'alice',
+      commentBody: '> /auto-merge\n\nWho ran this?',
+      knownLocales: KNOWN,
+      runGh: makeRunGh({ pr: {}, calls }),
+    });
+    assert.equal(r.outcome, 'no-command');
+    assert.equal(calls.length, 0);
+  });
+
+  test('LGTM followed by /auto-merge on the last line enables auto-merge', () => {
+    const calls = [];
+    const r = runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 43,
+      commentAuthor: 'alice',
+      commentBody: 'LGTM\n/auto-merge',
+      knownLocales: KNOWN,
+      runGh: makeRunGh({
+        pr: {
+          state: 'OPEN',
+          files: [{ path: 'content/ja/a.md' }],
+          autoMergeRequest: null,
+        },
+        teams: { 'docs-ja-maintainers': ['alice'] },
+        calls,
+      }),
+    });
+    assert.equal(r.outcome, 'apply');
+    assert.equal(r.exitCode, 0);
+    const merge = calls.find((a) => a[0] === 'pr' && a[1] === 'merge');
+    assert.ok(merge, 'expected a gh pr merge call');
+    assert.ok(merge.includes('--auto'));
   });
 
   test('eligible + authorized enable issues gh pr merge --auto', () => {
