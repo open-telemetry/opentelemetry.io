@@ -201,7 +201,7 @@ scaling: more cores translate into more throughput with limited efficiency loss.
 
 ## Result 3: OTAP Provides Higher Throughput on the Same Runtime
 
-![OTAP versus OTLP throughput](otap-scaling.svg)
+![Chart comparing OTAP and OTLP throughput on the Dataflow Engine across core counts, with the OTAP path delivering roughly 10 to 20 times the throughput](otap-scaling.svg)
 
 Figure 3: Throughput comparison between OTAP and OTLP paths on the OTel-Arrow
 Dataflow Engine.
