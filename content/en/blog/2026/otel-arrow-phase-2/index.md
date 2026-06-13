@@ -175,7 +175,7 @@ throughput is available when the same runtime can stay on the native OTAP path.
 
 ## Result 2: Scaling Stays Close to Linear
 
-![OTLP scaling](otlp-scaling.svg)
+![Chart comparing measured Dataflow Engine speedup with ideal linear scaling from 1 to 16 cores for OTLP ingestion, reaching 14.6x on 16 cores](otlp-scaling.svg)
 
 Figure 2: OTLP scaling test comparing measured speedup with ideal linear scaling
 from 1 to 16 cores.
