@@ -771,6 +771,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-09T10:50:02.744565051Z"
   },
+  "https://cloud-native.slack.com/archives/C07S4Q67LTF": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-12T19:51:44.44326-04:00"
+  },
   "https://cloud-native.slack.com/archives/C088D8GSSSF": {
     "StatusCode": 200,
     "LastSeen": "2026-06-11T14:48:14.438798831Z"
@@ -7090,6 +7094,10 @@
   "https://github.com/open-telemetry/community/pull/3021": {
     "StatusCode": 206,
     "LastSeen": "2026-06-09T10:49:33.530521336Z"
+  },
+  "https://github.com/open-telemetry/community/tree/fa6a4b68cf63438b760419124b0abfbe4ae238ed#sig-arrow": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T19:51:45.70839-04:00"
   },
   "https://github.com/open-telemetry/community/tree/main/mission-vision-values.md": {
     "StatusCode": 206,
@@ -14679,6 +14687,22 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-11T11:16:31.358975029Z"
   },
+  "https://github.com/open-telemetry/otel-arrow/blob/c6ed105cab28e537bf5c2c81a97e9b63677d3cff/docs/benchmarks.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T19:51:41.306976-04:00"
+  },
+  "https://github.com/open-telemetry/otel-arrow/blob/c6ed105cab28e537bf5c2c81a97e9b63677d3cff/docs/phase1-overview.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T19:51:38.422721-04:00"
+  },
+  "https://github.com/open-telemetry/otel-arrow/discussions": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T19:51:42.797508-04:00"
+  },
+  "https://github.com/open-telemetry/otel-arrow/issues": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T19:51:47.10086-04:00"
+  },
   "https://github.com/open-telemetry/otel-arrow/pull/293": {
     "StatusCode": 206,
     "LastSeen": "2026-06-07T10:30:27.585147031Z"
@@ -19131,6 +19155,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-07T10:25:01.868882879Z"
   },
+  "https://open-telemetry.github.io/otel-arrow/compare/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T19:51:40.488161-04:00"
+  },
   "https://openai.com/": {
     "StatusCode": 200,
     "LastSeen": "2026-06-07T10:34:11.125Z"
@@ -21523,6 +21551,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-12T10:58:54.441307183Z"
   },
+  "https://seastar.io/shared-nothing/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T19:51:40.069845-04:00"
+  },
   "https://sematext.com/": {
     "StatusCode": 200,
     "LastSeen": "2026-06-12T11:02:59.931176247Z"
@@ -22878,6 +22910,10 @@
   "https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v1/cpuacct.html#cpu-accounting-controller": {
     "StatusCode": 206,
     "LastSeen": "2026-06-12T21:45:26.584285648Z"
+  },
+  "https://www.kernel.org/doc/html/v4.18/vm/numa.html": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-12T19:51:39.173064-04:00"
   },
   "https://www.keycloak.org": {
     "StatusCode": 206,
