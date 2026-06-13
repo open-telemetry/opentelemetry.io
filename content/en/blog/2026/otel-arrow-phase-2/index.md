@@ -48,7 +48,8 @@ telemetry growth more efficiently.
 
 To explore this idea, we built the OTel-Arrow Dataflow Engine, a Rust runtime
 designed around OTAP as the primary in-pipeline representation. It can consume
-and produce OTAP streams end to end, while also supporting OTLP through a
+and produce OTAP streams end to end, while also supporting
+[OTLP](/docs/specs/otlp/) (OpenTelemetry Protocol) through a
 separate first-class data path.
 
 This dual-path design lets us compare two modes in the same runtime: an
