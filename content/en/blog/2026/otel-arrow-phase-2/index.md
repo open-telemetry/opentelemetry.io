@@ -3,7 +3,7 @@ title:
   'OTel-Arrow Phase 2: From Efficient Transport to Efficient Telemetry Pipelines'
 linkTitle: 'OTel-Arrow Phase 2: Efficient Telemetry Pipelines'
 sig: OTel Arrow SIG
-date: 2026-06-05
+date: 2026-06-12
 author: >-
   [Laurent Querel](https://github.com/lquerel) (F5, project lead), [Joshua
   MacDonald](https://github.com/jmacd) (Microsoft, project lead), [Reiley
