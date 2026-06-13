@@ -2,7 +2,7 @@
 title:
   'OTel-Arrow Phase 2: From Efficient Transport to Efficient Telemetry Pipelines'
 linkTitle: 'OTel-Arrow Phase 2: Efficient Telemetry Pipelines'
-sig: OTel Arrow SIG
+sig: OTel-Arrow
 date: 2026-06-12
 issue: 10077
 author: >-
