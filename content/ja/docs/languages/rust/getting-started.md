@@ -157,7 +157,7 @@ use tokio::net::TcpListener;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::SubscriberInitExt;
 
-// --- Metrics: counter stored once for reuse across requests ---
+// --- メトリクス: カウンターはリクエスト間で再利用するために一度だけ保存する ---
 static ROLL_COUNTER: OnceLock<opentelemetry::metrics::Counter<u64>> = OnceLock::new();
 
 fn get_roll_counter() -> &'static opentelemetry::metrics::Counter<u64> {
@@ -169,14 +169,14 @@ fn get_roll_counter() -> &'static opentelemetry::metrics::Counter<u64> {
     })
 }
 
-// --- Application handlers ---
+// --- アプリケーションハンドラー ---
 async fn roll_dice(_: Request<hyper::body::Incoming>) -> Result<Response<Full<Bytes>>, Infallible> {
     let random_number = rand::rng().random_range(1..=6);
 
-    // Metrics: record each roll
+    // メトリクス: 各ロールを記録する
     get_roll_counter().add(1, &[KeyValue::new("roll.value", random_number as i64)]);
 
-    // Logs: emit a structured log event via the tracing bridge
+    // ログ: tracingブリッジ経由で構造化ログイベントを送出する
     tracing::info!(name: "roll_dice", roll.value = random_number, message = "Player rolled the dice");
 
     Ok(Response::new(Full::new(Bytes::from(
@@ -185,7 +185,7 @@ async fn roll_dice(_: Request<hyper::body::Incoming>) -> Result<Response<Full<By
 }
 
 async fn handle(req: Request<hyper::body::Incoming>) -> Result<Response<Full<Bytes>>, Infallible> {
-    // Traces: create a server span for each incoming request
+    // トレース: 受信リクエストごとにサーバースパンを作成する
     let tracer = get_tracer();
     let mut span = tracer
         .span_builder(format!("{} {}", req.method(), req.uri().path()))
@@ -204,13 +204,13 @@ async fn handle(req: Request<hyper::body::Incoming>) -> Result<Response<Full<Byt
     }
 }
 
-// --- Traces: global tracer accessor ---
+// --- トレース: グローバルトレーサーアクセサー ---
 fn get_tracer() -> &'static BoxedTracer {
     static TRACER: OnceLock<BoxedTracer> = OnceLock::new();
     TRACER.get_or_init(|| global::tracer("dice_server"))
 }
 
-// --- Provider initialization ---
+// --- プロバイダーの初期化 ---
 fn init_tracer_provider() -> SdkTracerProvider {
     let provider = SdkTracerProvider::builder()
         .with_simple_exporter(SpanExporter::default())
@@ -237,12 +237,12 @@ fn init_logger_provider() -> SdkLoggerProvider {
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
 
-    // Initialize providers and hold on to them for shutdown
+    // プロバイダーを初期化してシャットダウン用に保持する
     let tracer_provider = init_tracer_provider();
     let meter_provider = init_meter_provider();
     let logger_provider = init_logger_provider();
 
-    // Logs: wire the tracing bridge so tracing::info! etc. go to OTel
+    // ログ: tracing::info! 等が OTel に送られるように tracingブリッジを接続する
     let otel_layer = OpenTelemetryTracingBridge::new(&logger_provider);
     tracing_subscriber::registry()
         .with(otel_layer)
@@ -270,7 +270,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
         }
     }
 
-    // Flush and shutdown all providers before exit
+    // 終了前にすべてのプロバイダーをフラッシュしてシャットダウンする
     if let Err(err) = tracer_provider.shutdown() {
         eprintln!("Error shutting down tracer provider: {err:?}");
     }
