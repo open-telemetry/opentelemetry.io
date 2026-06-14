@@ -18812,8 +18812,8 @@
     "LastSeen": "2026-06-11T15:40:40.664Z"
   },
   "https://npmjs.com/package/@waitingliou/tsc-otel-instrumentation": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-14T10:47:37.581642041Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-14T10:59:50.814Z"
   },
   "https://npmjs.com/package/opentelemetry-instrumentation-remix": {
     "StatusCode": 200,
@@ -21880,8 +21880,8 @@
     "LastSeen": "2026-06-14T10:43:45.417897285Z"
   },
   "https://www.britannica.com/dictionary/pipeline": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-14T10:41:36.044114473Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-14T11:00:17.455Z"
   },
   "https://www.buoyant.io/mtls-guide": {
     "StatusCode": 200,
