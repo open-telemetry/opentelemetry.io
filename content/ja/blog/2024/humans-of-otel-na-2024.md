@@ -13,7 +13,7 @@ cSpell:ignore: Adriana Akhigbe Bhattacharya Bluesky Braydon Budha causely Christ
 
 [Humans of OpenTelemetry](/blog/2024/humans-of-otel-eu-2024/) の第3弾をお届けします。
 今回の舞台は、アメリカ・ユタ州ソルトレイクシティで開催された KubeCon NA です。
-[Reese Lee](https://github.com/reese-lee) と私は、再び OpenTelemetry のコントリビューターやエンドユーザーにインタビューし（そしてお互いにも！）、彼らが OTel にどのように関わるようになったかを聞きました。
+[Reese Lee](https://github.com/reese-lee) と私は、再び OpenTelemetry のコントリビューターやエンドユーザーに（そしてお互いにも！）インタビューし、彼らが OTel にどのように関わるようになったかを聞きました。
 
 - [Hazel Weakly (The Nivenly Foundation)](https://github.com/hazelweakly)
 - [Eromosele Akhigbe (Sematext)](https://github.com/AkhigbeEromo)
@@ -94,7 +94,7 @@ Outreachy では OpenTelemetry に関わる機会をいただき、Golang でロ
 インターンシップの終わりまでに、OTel zerolog を使ったロギングブリッジを構築することができました。
 
 **Budha Bhattacharya:** OpenTelemetry にどう関わるようになったか？
-これは複数の要因がある質問、いえ、回答ですね。
+これは複数の要因がある質問、そして、回答ですね。
 注目するようになったきっかけはいくつかあります。
 まず、新しく入ったグループプロダクトマネージャーのアドボカシーから始まりました。
 彼女はオブザーバビリティ、特に OpenTelemetry の強力な支持者でした。
@@ -172,8 +172,8 @@ OpenTelemetry は大いに役立っています。
 OpenTelemetry は、エンジニアリングの知識を外に持ち出し、外部の知識をエンジニアリングに取り込む上で、非常に大きなインパクトをもたらしてくれました。
 
 **Budha Bhattacharya:** 社内では物事がずっと効率的になりました。
-SRE チームや DevOps チームと話すと、プラットフォームスタックのさまざまな要素を扱う際にずっと満足しています。
-管理やハンドリングがずっと楽になったのです。
+SRE チームや DevOps チームと話を聞いてみると、プラットフォームスタックのさまざまな要素を扱う際に以前よりもずっと満足しています。
+プラットフォームスタックの管理や扱いがずっと楽になったのです。
 エンドユーザーについて言えば、彼らはその価値を実感しています。
 個人的には、アドボカシーの面が本当に充実しています。
 コミュニティにさまざまな形で関わることで、多くを学べました。
