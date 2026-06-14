@@ -21,7 +21,7 @@ a set of checks are executed. The PR checks verify that:
 > [fix content issues](../pull-requests/#fix-issues) first by running
 > `npm run fix:all` locally.
 >
-> You can also add the comment `/fix:all` to your PR. This will trigger the
+> You can also add the comment `/fix` to your PR. This will trigger the
 > OpenTelemetry Bot to run that command on your behalf and update the PR. Make
 > sure that you pull those changes locally.
 >
@@ -43,8 +43,16 @@ To make sure that contributions follow our [style guide](../style-guide/) we
 have implemented a set of checks that verify style guide rules and fail if they
 find any issues.
 
-The following list describes current checks and what you can do to fix related
-errors:
+The sections below describe current checks and what you can do to fix related
+errors.
+
+> [!NOTE]
+>
+> Only recent blog posts are checked. For details, see [Old blogs are not
+> updated][old-blogs]. In particular, while old posts are rendered to the
+> website, the checks listed below do not apply to old blogs.
+
+[old-blogs]: ../blog/#old-blogs-are-not-updated
 
 ### `TEXT linter` {.notranslate lang=en}
 
@@ -199,6 +207,16 @@ The following code enforces the link requirement described in this section:
   [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
 
 </details>
+
+### `LOCALIZATION` guidelines {.notranslate lang=en #localization}
+
+This check enforces mechanically-verifiable
+[localization guidelines](../localization/), such as
+[not copying images and other assets](../localization/#images) across
+localizations, that are not already covered by other checks.
+
+If this check fails, run `npm run fix:l10n` locally and push the changes in a
+new commit.
 
 ### `TEST (excluding test:base)` {.notranslate lang=en}
 

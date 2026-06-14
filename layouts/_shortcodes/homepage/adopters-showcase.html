@@ -5,8 +5,8 @@
 {{ $ctaText := .Get "ctaText" | default "View all adopters" -}}
 {{ $ctaUrl := .Get "ctaUrl" | default "/ecosystem/adopters/" -}}
 
-{{ $featuredAdopters := site.Data.ecosystem.featured_adopters -}}
-{{ $regularAdopters := site.Data.ecosystem.adopters -}}
+{{ $featuredAdopters := hugo.Data.ecosystem.featured_adopters -}}
+{{ $regularAdopters := hugo.Data.ecosystem.adopters -}}
 {{ $adopters := $featuredAdopters | default $regularAdopters -}}
 {{ $sortedAdopters := sort $adopters "name" -}}
 

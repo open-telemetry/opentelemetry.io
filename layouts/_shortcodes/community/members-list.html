@@ -1,4 +1,4 @@
-{{ $data := $.Site.Data.community.members -}}
+{{ $data := hugo.Data.community.members -}}
 {{ $key := .Get 0 -}}
 {{ $group := index $data $key -}}
 {{ $lastIndex := 0 }}

@@ -13,6 +13,8 @@ import:
 caseSensitive: true
 ignorePaths:
   - '*.svg'
+  - content/en/blog/2019/**/*.md
+  - content/en/blog/202[0-4]/**/*.md
   - content/{ja,zh}
   - data/community/members.yaml
   - data/ecosystem/vendors.yaml

@@ -15,5 +15,3 @@ If you want to propose a blueprint to share best practices for adopting
 OpenTelemetry in a new environment, let us know! Please see our guidance on
 [how to contribute](../#how-to-contribute) to start the process towards crafting
 a new blueprint.
-
-**Coming soon!**

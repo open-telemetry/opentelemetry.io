@@ -1,6 +1,6 @@
 const gulp = require('gulp');
+const { Transform } = require('node:stream');
 const { taskArgs } = require('./_util');
-const through2 = require('through2');
 const yaml = require('js-yaml');
 const Ajv = require('ajv');
 const addFormats = require('ajv-formats');
@@ -21,8 +21,12 @@ addFormats(ajv);
 addErrors(ajv);
 const validate = ajv.compile(schema);
 
+function objTransform(fn) {
+  return new Transform({ objectMode: true, transform: fn });
+}
+
 function logFiles(debug) {
-  return through2.obj(function (file, enc, cb) {
+  return objTransform(function (file, enc, cb) {
     if (debug) {
       console.log('Processing file:', file.path);
     }
@@ -165,7 +169,7 @@ function validateRegistry() {
   return gulp
     .src(globs, { followSymlinks: false })
     .pipe(logFiles(argv.debug))
-    .pipe(through2.obj(validateRegistryEntry))
+    .pipe(objTransform(validateRegistryEntry))
     .on('end', () => {
       const fileOrFiles = 'file' + (numFilesProcessed == 1 ? '' : 's');
       const msg = `Processed ${numFilesProcessed} ${fileOrFiles}, ${numFilesWithIssues} had issues.`;

@@ -13,6 +13,16 @@
     logs: beta
     metrics: beta
     traces: beta
+- name: awsecsattributesprocessor
+  display_name: awsecsattributesprocessor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+    metrics: development
+    profiles: development
+    traces: development
 - name: batchprocessor
   display_name: Batch Processor
   repo: core
@@ -88,7 +98,7 @@
   distributions:
     - contrib
   stability:
-    traces: development
+    traces: alpha
 - name: geoipprocessor
   display_name: GeoIP Processor
   repo: contrib
@@ -166,6 +176,8 @@
     - contrib
   stability:
     logs: development
+    metrics: development
+    traces: development
 - name: memorylimiterprocessor
   display_name: Memory Limiter Processor
   repo: core
@@ -259,9 +271,9 @@
   distributions:
     - contrib
   stability:
-    logs: development
-    metrics: development
-    traces: development
+    logs: alpha
+    metrics: alpha
+    traces: alpha
 - name: spanprocessor
   display_name: Span Processor
   repo: contrib

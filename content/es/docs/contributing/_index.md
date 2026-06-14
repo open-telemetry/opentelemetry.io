@@ -4,6 +4,7 @@ aliases: [/docs/contribution-guidelines]
 sidebar_root_for: self
 weight: 980
 default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
+drifted_from_default: true
 cascade:
   chooseAnIssueAtYourLevel: |
     Asegúrate de [elegir un issue][] que coincida con tu nivel de **experiencia**

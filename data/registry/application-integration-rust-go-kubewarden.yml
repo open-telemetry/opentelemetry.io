@@ -15,7 +15,7 @@ authors:
     url: https://github.com/kubewarden
 urls:
   website: https://kubewarden.io/
-  docs: https://docs.kubewarden.io/howtos/telemetry/opentelemetry-qs
+  docs: https://docs.kubewarden.io/admission-controller/latest/en/howtos/telemetry/10-opentelemetry-qs.html
 createdAt: '2024-08-06'
 cncfProjectLevel: sandbox
 isNative: true
