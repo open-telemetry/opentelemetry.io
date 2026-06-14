@@ -45,7 +45,7 @@ Istio がリクエストを最も近い利用可能な Collector にルーティ
 
 デプロイメントは 2 つの異なる Collector パターンで構成されています。
 
-**Gateway Collector（Replica Set）**: 大部分の OTLP トラフィック（トレースとメトリクス）を処理し、処理の大半がここで行われます。
+**Gateway Collector（Replica Set）**: 大部分のサービスからの大量の OTLP トラフィック（トレースとメトリクス）を処理し、処理の大半がここで行われます。
 
 **Agent Collector（DaemonSet）**: まだネイティブに OTLP をサポートしていないオープンソースやプラットフォームサービスから Prometheus エンドポイントをスクレイピングします。
 
