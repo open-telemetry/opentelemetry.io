@@ -7095,9 +7095,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-13T10:26:59.301708313Z"
   },
-  "https://github.com/open-telemetry/opamp-spec/blob/main/proto/opamp.proto": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-14T10:41:44.898122221Z"
+  "https://github.com/open-telemetry/opamp-spec/blob/v0.17.0/proto/opamp.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-14T07:16:08.434466-04:00"
   },
   "https://github.com/open-telemetry/opamp-spec/issues/new": {
     "StatusCode": 206,
