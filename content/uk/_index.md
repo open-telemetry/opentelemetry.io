@@ -10,7 +10,7 @@ params:
 default_lang_commit: 3aa0f7a25cd2f7878cad1665e67937c5e9c70694
 ---
 
-{{% blocks/cover image_anchor="top" height="max" color="primary" %}}
+{{% blocks/cover image_anchor="top" height="max td-below-navbar" %}}
 
 <!-- prettier-ignore -->
 ![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
@@ -34,7 +34,7 @@ default_lang_commit: 3aa0f7a25cd2f7878cad1665e67937c5e9c70694
 
 {{< homepage/hero-search placeholder="Шукати в документації OpenTelemetry..." >}}
 
-{{% homepage/intro-section image="/img/homepage/collector-pipeline.svg" imageAlt="OpenTelemetry overview" %}}
+{{% homepage/intro-section image="/img/homepage/collector-pipeline.svg" imageAlt="Огляд OpenTelemetry" %}}
 
 **OpenTelemetry** — це відкрита платформа спостережуваності для хмарного програмного забезпечення. Вона надає єдиний набір API, бібліотек, агентів і служб збору даних для отримання розподілених трасувань і метрик з вашого програмного забезпечення.
 
@@ -71,7 +71,7 @@ OpenTelemetry є на 100% відкритим та незалежним від �
 
 {{% /homepage/main-feature %}}
 
-{{% /homepage/main-features %}}
+{{< /homepage/main-features >}}
 
 {{< homepage/signals-showcase title="Сигнали спостережуваності" >}}
 {{< homepage/signal name="Трейси" image="/img/homepage/signal-traces.svg" url="docs/concepts/signals/traces/" >}}
