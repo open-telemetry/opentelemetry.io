@@ -1,0 +1,8 @@
+%% cSpell:ignore gantt
+gantt
+    title Structure of a server-side trace from the eBPF auto-instrument
+    axisFormat %L ms # removing axis
+    section Server trace
+        trace name (e.g. /users/add)    :a1, 2014-01-01 00:00, 100ms
+        in queue                        :a2, 2014-01-01 00:00, 50ms
+        processing                      :a3, after a2, 50ms
