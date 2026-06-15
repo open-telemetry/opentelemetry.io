@@ -61,14 +61,14 @@ hundreds of maintainers across various language-specific Special Interest Groups
 (SIGs).”
 
 Since its inception, traces, logs, and metrics have reached general availability
-(GA). [Profiling](blog/2024/profiling) was added as a new OTel signal. The
+(GA). [Profiling](/blog/2024/profiling) was added as a new OTel signal. The
 [OpenTelemetry Demo](https://github.com/open-telemetry/opentelemetry-demo) has
 expanded. The
 [OTel Collector](https://github.com/open-telemetry/opentelemetry-collector) has
 expanded, with new components being added regularly. We’ve seen the addition of
 new components to the OTel ecosystem to help make it more ergonomic, including
-[OpAMP](docs/specs/opamp/), the
-[OTel Operator](docs/platforms/kubernetes/operator/),
+[OpAMP](/docs/specs/opamp/), the
+[OTel Operator](/docs/platforms/kubernetes/operator/),
 [OTel Weaver](https://github.com/open-telemetry/weaver), and
 [OTel Arrow](https://github.com/open-telemetry/otel-arrow).
 
@@ -119,7 +119,7 @@ with the CNCF.
 So what does OpenTelemetry graduation mean for you, dear reader?
 
 Dan Gomez Blanco, one of the maintainers of the
-[OTel End User SIG](community/end-user/) put it perfectly
+[OTel End User SIG](/community/end-user/) put it perfectly
 [in a recent LinkedIn post](https://www.linkedin.com/feed/update/urn:li:activity:7459538615640010752/):
 
     “For end users, this graduation signals that OTel is far from being an "emerging standard". Its contributor health, security and quality standards, governance processes, and wide adoption have been evaluated to be at the level required by any enterprise, of any scale. So, if you're in the 25% of skeptics not using OTel, there's really no excuse anymore. There has never been a better time to adopt it!”
