@@ -102,15 +102,16 @@ are internal helpers and are not intended to be run directly.
 | `test:all`                 | Runs `test:base` then `test:compound-tests`.                      |
 | `test:base`                | Base tests (same as `check`).                                     |
 | `test:collector-sync`      | Collector-sync tests.                                             |
-| `test:compound-tests`      | Runs compound `test:*-*` scripts.                                 |
+| `test:compound-tests`      | Runs compound `test:*-*` scripts.[^categories]                    |
 | `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.               |
 | `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.      |
-| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^local-tools-note]  |
+| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^categories]        |
+| `test:public`              | Runs the `tests/public/` checks over the built site.[^categories] |
 | `test`                     | Run the most commonly needed tests.                               |
 
-[^local-tools-note]:
-    This script has a compound name, rather than being `test:tools`, so that it
-    gets picked up by `test:compound-tests`.
+[^categories]:
+    These scripts follow the test-script naming conventions; see
+    [Test categories](../../testing/#test-categories).
 
 [^fat]:
     The housekeeping default: runs `fix:refcache` (prune, then link check) after
