@@ -7,8 +7,7 @@ developer_note:
 params:
   btn-lg: class="btn btn-lg btn-{1}" role="button"
   show_banner: true
-default_lang_commit: 385a8b07a0ea97568abc86caf46606c16d3110c6
-drifted_from_default: true
+default_lang_commit: 3aa0f7a25cd2f7878cad1665e67937c5e9c70694
 ---
 
 {{% blocks/cover image_anchor="top" height="max td-below-navbar" %}}
@@ -147,13 +146,13 @@ zapewnia długoterminową stabilność i rozwój napędzany przez społeczność
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry jest projektem [CNCF][] w fazie [inkubacji][incubating]**.<br>
-Powstał z połączenia projektów OpenTracing i OpenCensus.
+**OpenTelemetry jest [dojrzałym][graduated] projektem [CNCF][]**.<br> Powstał z
+połączenia projektów OpenTracing i OpenCensus.
 
 [![Logo CNCF][cncf logo]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[incubating]: https://www.cncf.io/projects/
+[graduated]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}
