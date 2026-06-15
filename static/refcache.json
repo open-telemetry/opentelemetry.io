@@ -7867,6 +7867,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-11T11:17:11.745267549Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/tailstorage/pebbletailstorageextension": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T15:57:26.586891242Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl": {
     "StatusCode": 206,
     "LastSeen": "2026-06-13T10:25:17.214064629Z"
@@ -19662,6 +19666,10 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/sumologicextension": {
     "StatusCode": 200,
     "LastSeen": "2026-06-13T10:30:16.107727033Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/tailstorage/pebbletailstorageextension": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-15T15:57:29.578476342Z"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor": {
     "StatusCode": 200,
