@@ -1,4 +1,4 @@
-# cSpell:ignore pebbletailstorage
+# cSpell:ignore pebbletailstorage, pebbletailstorageextension, tailstorage
 title: Pebble Tail Storage Extension
 registryType: extension
 language: collector
