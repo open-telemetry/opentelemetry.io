@@ -10,7 +10,8 @@ tags:
 license: Apache 2.0
 description:
   The Pebble Tail Storage Extension stores pending trace data for tail sampling
-  in a local Pebble database, keeping collector memory usage bounded under high load.
+  in a local Pebble database, keeping collector memory usage bounded under high
+  load.
 authors:
   - name: OpenTelemetry Authors
 urls:
