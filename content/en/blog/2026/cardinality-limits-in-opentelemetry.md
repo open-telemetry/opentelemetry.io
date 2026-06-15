@@ -249,8 +249,9 @@ Two caveats:
    bursts, and treat sustained overflow on these instruments as a real
    operational signal.
 
-The general principle: **the cardinality limit is a per-cycle working set, not a
-per-lifetime budget.**
+The general principle: **under delta temporality the cardinality limit is a
+per-cycle working set; under cumulative temporality it accumulates until the
+process restarts.**
 
 ## Two things to do this week
 
@@ -259,11 +260,13 @@ per-lifetime budget.**
 The overflow attribute value is the boolean `true`. Prometheus represents it as
 the string `"true"`; OTLP-native backends preserve the boolean type.
 
-**Prometheus / PromQL** — find every metric in your fleet that has ever emitted
-an overflow data point:
+**Prometheus / PromQL** — find every metric in your fleet that emitted an
+overflow data point within your retention window:
 
 ```promql
-count by (__name__, service_name)({otel_metric_overflow="true"})
+count by (__name__, service_name)(
+  present_over_time({otel_metric_overflow="true"}[30d])
+)
 ```
 
 This returns the list of `(metric_name, service_name)` pairs where overflow has
@@ -291,12 +294,13 @@ metric name and `service.name`.
    combinations into overflow until it restarts — so a restart after the fix
    ships is what gets the named series back.
 
-If the query returns nothing, either no instrument in your fleet has hit its cap
--- a useful baseline — or your SDK doesn't implement cardinality limits yet. At
-the time of writing, .NET, C++, Go, Java, JavaScript, and Rust all implement the
-cap (default: 2000); check the [spec compliance matrix][spec-compliance] for
-your SDK. If your SDK doesn't support it, the process can hold unbounded state
-and OOM-kill under a cardinality leak — watch process memory carefully.
+If the query returns nothing within your retention window, either no instrument
+in your fleet has hit its cap in that window — a useful baseline — or your SDK
+doesn't implement cardinality limits yet. At the time of writing, .NET, C++, Go,
+Java, JavaScript, and Rust all implement the cap (default: 2000); check the
+[spec compliance matrix][spec-compliance] for your SDK. If your SDK doesn't
+support it, the process can hold unbounded state and OOM-kill under a
+cardinality leak — watch process memory carefully.
 
 ### Action 2: Monitor for overflow continuously
 
@@ -311,7 +315,7 @@ to your fleet:
 
 ```promql
 sum by (service_name, __name__) (
-  rate({otel_metric_overflow="true"}[5m])
+  present_over_time({otel_metric_overflow="true"}[5m])
 ) > 0
 ```
 
