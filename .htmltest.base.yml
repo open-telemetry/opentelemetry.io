@@ -18,6 +18,9 @@ RedirectLimit: 3
 IgnoreDirs:
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexes of paths or URLs to be ignored
+  # KEEP IN SYNC with the `exclude` array in `lychee.base.toml` (the lychee
+  # link-check pilot ports these rules — see #10449). Changes here should be
+  # mirrored there until one tool is retired.
   - /index.xml$ # Ignore rel="alternative" links to RSS feeds
   - '[?&]link-check=no' # Query param to ignore link checking
   - ^/api/?$

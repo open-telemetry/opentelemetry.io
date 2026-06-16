@@ -21,6 +21,10 @@ include_fragments = "full"  # parity with htmltest anchor checking (0.24.2: enum
 index_files = ["index.html"]  # resolve Hugo pretty-URL dir links to index.html for fragment checks
 
 exclude = [
+  # KEEP IN SYNC with `IgnoreURLs` in `.htmltest.base.yml`: this array ports
+  # those rules for the lychee pilot (see #10449). Mirror changes between the
+  # two until one tool is retired. (Internal-path rules drop htmltest's leading
+  # `^/…` anchor to match lychee's resolved `file://` URIs.)
   # --- internal path rules (htmltest IgnoreURLs, internal) ---
   '/index\.xml$',                                   # RSS alternate links
   '[?&]link-check=no',                              # opt-out query param
