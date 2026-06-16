@@ -6919,6 +6919,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-10T10:56:51.940166661Z"
   },
+  "https://github.com/open-telemetry/community/blob/main/governance-charter.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-16T17:25:17.777050525Z"
+  },
   "https://github.com/open-telemetry/community/blob/main/governance-charter.md#elections": {
     "StatusCode": 206,
     "LastSeen": "2026-06-12T11:02:41.370507402Z"
@@ -12406,6 +12410,10 @@
   "https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator": {
     "StatusCode": 206,
     "LastSeen": "2026-06-10T10:54:26.092604348Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-packaging": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-16T17:25:25.236795107Z"
   },
   "https://github.com/open-telemetry/opentelemetry-php": {
     "StatusCode": 206,
@@ -21299,6 +21307,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-14T10:42:04.169424483Z"
   },
+  "https://shorturl.at/ZxB5O": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-16T17:30:22.820176177Z"
+  },
   "https://signoz.io": {
     "StatusCode": 200,
     "LastSeen": "2026-06-14T10:43:18.301972897Z"
@@ -21966,6 +21978,10 @@
   "https://www.cncf.io/projects/": {
     "StatusCode": 200,
     "LastSeen": "2026-06-10T10:55:21.280573437Z"
+  },
+  "https://www.cncf.io/projects/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-16T17:25:21.70670325Z"
   },
   "https://www.cncf.io/training/certification/": {
     "StatusCode": 200,
@@ -23583,6 +23599,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-14T10:41:13.684815475Z"
   },
+  "https://www.youtube.com/live/vB9_SiTV5CI?si=F3jRi2w83Gp1lp_F": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-16T17:25:13.815166902Z"
+  },
   "https://www.youtube.com/watch?v=LUsfZFRM4yo": {
     "StatusCode": 200,
     "LastSeen": "2026-06-10T10:54:47.748898001Z"
@@ -23638,6 +23658,10 @@
   "https://youtu.be/5iM8n3uCo_U?si=PJ6tFYcYED3lhAcK": {
     "StatusCode": 200,
     "LastSeen": "2026-06-14T10:43:04.369931632Z"
+  },
+  "https://youtu.be/9iaGG-YZw5I?si=YDjY8N4Z4zI4uKiV": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-16T17:25:16.382183333Z"
   },
   "https://youtu.be/HY3LZOQqdig": {
     "StatusCode": 200,
