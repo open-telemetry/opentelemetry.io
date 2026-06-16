@@ -29,6 +29,9 @@ locales:
   ja:
     maintainers: [katzchang, Msksgm, ymotongpoo]
     approvers: [kohbis, kota-sakuma]
+  ko:
+    maintainers: []
+    approvers: []
   pl:
     maintainers: []
     approvers: [andrzej-stencel, Kielek, pellared]
