@@ -90,7 +90,7 @@ These are the members of [@open-telemetry/docs-triagers][]:
 - [Ezzio Moreira](https://github.com/EzzioMoreira)
 - [Michael Yao](https://github.com/windsonsea), DaoCloud
 - [Pratik Mahalle](https://github.com/pratik-mahalle), DrDroid
-- [Yoshi Yamaguchi](https://github.com/ymotongpoo), AWS
+- [Yoshi Yamaguchi](https://github.com/ymotongpoo), Grafana Labs
 
 For more information about the triager role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#triager).
