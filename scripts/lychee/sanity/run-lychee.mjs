@@ -1,12 +1,9 @@
 // Test helper: invoke the real lychee binary and normalize its JSON output.
-//
-// Used by the lychee sanity tests. Kept separate from the tests so the
-// invoke/parse logic is the unit under test and the tests stay declarative.
+// Kept separate from the tests so they stay declarative.
 
 import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 
-// Returns true when the `lychee` binary is callable on PATH.
 export function lycheeAvailable() {
   try {
     execFileSync('lychee', ['--version'], { stdio: 'ignore' });
@@ -62,10 +59,9 @@ function normalize(json) {
   };
 }
 
-// Returns the error status text for the first errored URL containing
-// `urlSubstring`, or null when no such URL is in error. URLs are matched by
-// substring because lychee reports absolute (e.g. file://) URLs whose prefix
-// depends on the temp fixture directory.
+// Error status text for the first errored URL containing `urlSubstring`, or
+// null. Matches by substring because lychee reports absolute (e.g. file://)
+// URLs whose prefix depends on the temp fixture directory.
 export function findError(result, urlSubstring) {
   for (const [url, reason] of result.errorsByUrl) {
     if (url.includes(urlSubstring)) return reason;
@@ -73,7 +69,6 @@ export function findError(result, urlSubstring) {
   return null;
 }
 
-// Returns true when some excluded URL contains `urlSubstring`.
 export function wasExcluded(result, urlSubstring) {
   for (const url of result.excludedUrls) {
     if (url.includes(urlSubstring)) return true;

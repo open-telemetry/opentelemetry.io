@@ -1,15 +1,9 @@
 // Behavioral "sanity" tests that run the real lychee binary against tiny
 // fixtures to lock down the assumptions our config depends on: fragment (#id)
-// checking on both local and external URLs, `index_files` pretty-URL
-// resolution, the `extensions` input filter, and `exclude` reporting.
+// checking on local and external URLs, `index_files` pretty-URL resolution,
+// the `extensions` input filter, and `exclude` reporting.
 //
-// These tests need the `lychee` binary on PATH, so they skip cleanly where it
-// is absent (e.g. the unit-test CI job). They are executed for real in the
-// link-check CI job, which installs lychee.
-//
-// Every lychee run uses a fixture dir as its cwd so lychee does not
-// auto-discover the repo's generated `lychee.toml` (whose excludes would
-// otherwise suppress the external-URL checks below).
+// They skip cleanly when the `lychee` binary is absent from PATH.
 
 import { test, describe, before, after } from 'node:test';
 import assert from 'node:assert/strict';
@@ -59,18 +53,15 @@ describe('lychee fragment checking on local (path) URLs', { skip }, () => {
         '</body></html>',
       ].join('\n'),
     );
-    result = runLychee(
-      [
-        '--offline',
-        '--include-fragments',
-        '--root-dir',
-        dir,
-        '--index-files',
-        'index.html',
-        join(dir, 'page.html'),
-      ],
-      { cwd: dir },
-    );
+    result = runLychee([
+      '--offline',
+      '--include-fragments',
+      '--root-dir',
+      dir,
+      '--index-files',
+      'index.html',
+      join(dir, 'page.html'),
+    ]);
   });
 
   after(() => rmSync(dir, { recursive: true, force: true }));
@@ -147,9 +138,7 @@ describe('lychee fragment checking on external (http) URLs', { skip }, () => {
         '</body></html>',
       ].join('\n'),
     );
-    result = runLychee(['--include-fragments', join(dir, 'page.html')], {
-      cwd: dir,
-    });
+    result = runLychee(['--include-fragments', join(dir, 'page.html')]);
   });
 
   after(() => {
@@ -185,17 +174,14 @@ describe('lychee input filtering and exclusion', { skip }, () => {
       );
       writeFileSync(join(dir, 'skip.md'), '[bad](./does-not-exist.md)\n');
       writeFileSync(join(dir, 'cfg.toml'), 'extensions = ["html"]\n');
-      const result = runLychee(
-        [
-          '--config',
-          join(dir, 'cfg.toml'),
-          '--offline',
-          '--root-dir',
-          dir,
-          dir,
-        ],
-        { cwd: dir },
-      );
+      const result = runLychee([
+        '--config',
+        join(dir, 'cfg.toml'),
+        '--offline',
+        '--root-dir',
+        dir,
+        dir,
+      ]);
       assert.equal(
         result.errors,
         0,
@@ -217,10 +203,11 @@ describe('lychee input filtering and exclusion', { skip }, () => {
         join(dir, 'page.html'),
         '<!doctype html><html><body><a href="https://excluded.example.test/x">x</a></body></html>',
       );
-      const result = runLychee(
-        ['--config', join(dir, 'cfg.toml'), join(dir, 'page.html')],
-        { cwd: dir },
-      );
+      const result = runLychee([
+        '--config',
+        join(dir, 'cfg.toml'),
+        join(dir, 'page.html'),
+      ]);
       assert.equal(result.errors, 0, 'an excluded URL contributes no errors');
       assert.ok(
         wasExcluded(result, 'excluded.example.test'),
