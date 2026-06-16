@@ -109,6 +109,7 @@ are internal helpers and are not intended to be run directly.
 | `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.               |
 | `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.      |
 | `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^categories]        |
+| `test:local-tools:lychee`  | Lychee-binary slice of `test:local-tools` (see Notes).            |
 | `test:public`              | Runs the `tests/public/` checks over the built site.[^categories] |
 | `test`                     | Run the most commonly needed tests.                               |
 
@@ -151,6 +152,13 @@ are internal helpers and are not intended to be run directly.
   cache. Lychee runs as a non-blocking
   [CI pilot](../ci-workflows/#other-workflows) while it's evaluated in
   [#10449](https://github.com/open-telemetry/opentelemetry.io/issues/10449).
+- **`test:local-tools:lychee`** is the subset of `test:local-tools` that needs
+  the `lychee` binary (behavioral fragment- and config-checking tests). Those
+  tests skip when the binary is absent, so `test:local-tools` already covers
+  them in the general test job; the trailing `:lychee` keeps this script out of
+  `test:compound-tests` (which matches `test:*-*`) so the suite isn't run twice.
+  The link-check CI job installs lychee and runs this script to exercise them
+  for real.
 - **`all`** runs every listed script even when one fails, then exits with a
   non-zero status if any failed.
 

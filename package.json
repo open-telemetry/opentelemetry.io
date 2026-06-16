@@ -169,6 +169,7 @@
     "test:edge-functions": "node --test \"netlify/edge-functions/**/*.test.ts\"",
     "test:config-schema-tests": "node --test \"assets/js/**/*.test.mjs\"",
     "test:local-tools": "node --test \"scripts/**/*.test.mjs\"",
+    "test:local-tools:lychee": "echo 'Running the lychee slice of local-tools tests (needs the lychee binary)' && node --test \"scripts/lychee/sanity/**/*.test.mjs\"",
     "test:public": "node --test \"tests/public/**/*.test.mjs\"",
     "test:redirects:live": "npm run _test:redirects:live --",
     "test": "CMD_SKIP=collector-sync npm run test:base",

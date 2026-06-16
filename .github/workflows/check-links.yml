@@ -148,6 +148,12 @@ jobs:
           install -D "$(find "$tmp" -type f -name lychee | head -n1)" "$HOME/.local/bin/lychee"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
+      # Behavioral sanity tests: assert that lychee actually catches bad
+      # fragments (local + external), resolves pretty URLs via index_files, and
+      # honors extensions/exclude — the assumptions our config relies on.
+      - name: Lychee sanity tests
+        run: npm run test:local-tools:lychee
+
       # Runs scripts/lychee/check/index.sh (absolute public/ path, so
       # exclude_path anchored on /public/... binds).
       - name: Check links with lychee
