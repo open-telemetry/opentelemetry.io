@@ -2,10 +2,9 @@
 title: サンプルによる入門
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
-default_lang_commit: 4b5381a2e9f129651ab8658357ab846bd4c965f2
+default_lang_commit: c2f1762937a709892f60dece2e238d35d8a4d103
 ---
 
-<!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/getting-started"?>
 
 このページでは、JavaでOpenTelemetryを始める方法を紹介します。
@@ -58,8 +57,8 @@ dependencies {
 
 同じフォルダに、`DiceApplication.java`というファイルを作成し、次のコードをファイルに追加します。
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/DiceApplication.java"?>
+
 ```java
 package otel;
 
@@ -76,12 +75,11 @@ public class DiceApplication {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 `RollController.java`という別のファイルを作成し、次のコードをファイルに追加します。
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/RollController.java"?>
+
 ```java
 package otel;
 
@@ -113,7 +111,6 @@ public class RollController {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 次のコマンドでアプリケーションをビルドして実行し、Webブラウザで<http://localhost:8080/rolldice>を開いて動作していることを確認します。
 
@@ -139,9 +136,9 @@ java -jar ./build/libs/java-simple.jar
 
    ```sh
    export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
-     OTEL_TRACES_EXPORTER=logging \
-     OTEL_METRICS_EXPORTER=logging \
-     OTEL_LOGS_EXPORTER=logging \
+     OTEL_TRACES_EXPORTER=console \
+     OTEL_METRICS_EXPORTER=console \
+     OTEL_LOGS_EXPORTER=console \
      OTEL_METRIC_EXPORT_INTERVAL=15000
    ```
 

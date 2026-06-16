@@ -1,15 +1,14 @@
 ---
 title: JavaScript
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/JS_SDK.svg"
-  alt="JavaScript"> JavaScript（Node.jsとブラウザ向け）でのOpenTelemetryの言語固有実装。
+  <img width="35" class="img-initial otel-icon"
+  src="/img/logos/32x32/JS_SDK.svg" alt="JavaScript"> JavaScript（Node.jsとブラウザ向け）でのOpenTelemetryの言語固有実装。
 aliases: [/js/metrics, /js/tracing, nodejs]
 redirects:
   - { from: /js/*, to: ':splat' }
   - { from: /docs/js/*, to: ':splat' }
-weight: 20
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
-drifted_from_default: true
+weight: 160
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
 ---
 
 {{% docs/languages/index-intro js /%}}

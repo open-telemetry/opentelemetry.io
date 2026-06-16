@@ -42,3 +42,17 @@ collector_component_stability_footnote: >-
   For details about component stability levels, see the [OpenTelemetry Collector
   component stability
   definitions](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
+
+# Config types accordion
+config_types_search_label: Search types and properties
+config_types_filter_all: All
+config_types_filter_stable: Stable
+config_types_filter_experimental: Experimental
+config_types_expand_all: Expand all
+config_types_collapse_all: Collapse all
+config_types_no_results: No types match your search.
+config_types_loading: Loading configuration types…
+config_types_col_name: Name
+config_types_col_type: Type
+config_types_col_constraints: Constraints
+config_types_col_description: Description

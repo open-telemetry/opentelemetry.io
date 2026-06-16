@@ -7,7 +7,7 @@ htmltest:
     # Ignore blog index pages for all locales and in all blog sections (top-level and years)
     - ^(../)?blog/(\d+/)?page/\d+
     # Ignore old blog posts
-    - ^(../)?blog/20(19|21|22|23)/
+    - ^(../)?blog/20(19|21|22|23|24)/
 description: OpenTelemetry blog
 ---
 

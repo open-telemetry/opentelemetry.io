@@ -1,6 +1,6 @@
 {{ $counter := 0 -}}
 {{ $entries := slice -}}
-{{ range $key, $entry := .Site.Data.registry -}}
+{{ range $key, $entry := hugo.Data.registry -}}
   {{ $flags := slice -}}
   {{ if .isNative -}}
     {{ $flags = $flags | append "native" -}}

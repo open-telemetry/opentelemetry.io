@@ -75,6 +75,40 @@ client metrics and `http_route` for HTTP server metrics.
 When a metric name matches multiple definitions using wildcards, exact matches
 take precedence over wildcard matches.
 
+## Trace selection {#trace-selection}
+
+For exported OpenTelemetry traces, use the `traces` key (not a metric name)
+under `attributes.select`. It controls optional trace decoration such as
+`db.query.text`, `url.query`, GenAI payload attributes, and `db.response.error`.
+
+```yaml
+attributes:
+  select:
+    traces:
+      include:
+        - db.query.text
+        - db.response.error
+```
+
+### `db.response.error` {#db-response-error}
+
+`db.response.error` is not part of the OpenTelemetry semantic conventions. OBI
+uses this string only as a configuration flag under `attributes.select.traces`.
+
+| Condition              | Behavior                                                                                                                                                                                                                                                               |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Not included (default) | On failed database-related spans (SQL, Redis, MongoDB, Couchbase, Memcached, SQL++ over HTTP), `span.status.message` is left empty. This is consistent with how other optional attributes (for example, `db.query.text`) behave — when not selected, they are omitted. |
+| Included               | On those same spans, `span.status.message` is set to the actual error description parsed from the protocol response.                                                                                                                                                   |
+
+`db.response.error` is never attached as a span attribute on OTLP traces. During
+export, OBI uses the gated value only to build `span.status.message` for
+database spans, then drops the attribute from the exported span. Enabling this
+option changes the status description, not a separate `db.response.error` field
+on the span.
+
+The opt-in exists because error strings may contain sensitive or
+high-cardinality detail (schema names, fragments of queries, or data values).
+
 ## Distributed traces and context propagation
 
 YAML section: `ebpf`
@@ -156,11 +190,9 @@ use a database technology not directly supported by OBI, you can enable this
 option to get database client telemetry. This option is not enabled by default,
 because it can create false positives, for example, if an application sends SQL
 text for logging through a TCP connection. Currently, OBI natively supports the
-PostgreSQL and MySQL binary protocols.
+PostgreSQL, MySQL, and MSSQL binary protocols.
 
 ### HTTP header and body enrichment for spans {#http-header-enrichment-for-spans}
-
-### HTTP header and body enrichment for spans
 
 OBI can attach selected HTTP headers and selected HTTP body fields to spans
 through the `ebpf.payload_extraction.http.enrichment` configuration section.
@@ -311,6 +343,7 @@ attributes:
 | `informers_sync_timeout`<br>`OTEL_EBPF_KUBE_INFORMERS_SYNC_TIMEOUT`         | Maximum time to wait for Kubernetes metadata before starting. For more information, refer to the [informers sync timeout section](#informers-sync-timeout).                                   | Duration       | 30s            |
 | `reconnect_initial_interval`<br>`OTEL_EBPF_KUBE_RECONNECT_INITIAL_INTERVAL` | Initial delay before reconnecting to the Kubernetes API after connection loss. For more information, refer to the [reconnect initial interval section](#reconnect-initial-interval).          | Duration       | 5s             |
 | `informers_resync_period`<br>`OTEL_EBPF_KUBE_INFORMERS_RESYNC_PERIOD`       | Periodically resynchronize all Kubernetes metadata. For more information, refer to the [informers resynchronization period section](#informers-resynchronization-period).                     | Duration       | 30m            |
+| `meta_cache_address`<br>`OTEL_EBPF_KUBE_META_CACHE_ADDRESS`                 | Address of an external `k8s-cache` service to fetch Kubernetes metadata from. For more information, refer to the [meta cache address section](#meta-cache-address).                           | string         | (empty)        |
 | `service_name_template`<br>`OTEL_EBPF_SERVICE_NAME_TEMPLATE`                | Go template for service names. For more information, refer to the [service name template section](#service-name-template).                                                                    | string         | (empty)        |
 
 ### Enable Kubernetes
@@ -383,6 +416,13 @@ servers. Decrease it when you need faster recovery after temporary API outages.
 OBI immediately receives any update on resources' metadata. In addition, OBI
 periodically resynchronizes all Kubernetes metadata at the frequency you specify
 with this property. Higher values reduce the load on the Kubernetes API service.
+
+### Meta cache address
+
+When set, OBI fetches Kubernetes metadata from an external `k8s-cache` service
+over gRPC instead of running its own informers against the Kubernetes API
+server. This is recommended on large clusters and DaemonSet deployments to avoid
+overloading the Kubernetes API.
 
 ### Service name template
 

@@ -9,6 +9,7 @@ aliases:
 weight: 10
 description: Ecossistema de Instrumentação no OpenTelemetry Java
 default_lang_commit: 4690071352ffd91e2ec874546aeca3ac68775bad
+drifted_from_default: true
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

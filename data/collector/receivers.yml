@@ -37,6 +37,7 @@
     - contrib
   stability:
     logs: alpha
+    metrics: alpha
 - name: awscontainerinsightreceiver
   display_name: AWS Container Insights Receiver
   repo: contrib
@@ -246,7 +247,7 @@
     - contrib
   stability:
     metrics: alpha
-    traces: development
+    traces: alpha
 - name: gitlabreceiver
   display_name: GitLab Receiver
   repo: contrib
@@ -524,7 +525,7 @@
   distributions:
     - contrib
   stability:
-    logs: development
+    logs: alpha
 - name: otelarrowreceiver
   display_name: Apache Arrow OTLP Receiver
   repo: contrib
@@ -854,7 +855,7 @@
   distributions:
     - contrib
   stability:
-    metrics: development
+    metrics: alpha
 - name: yanggrpcreceiver
   display_name: YANG gRPC Receiver
   repo: contrib

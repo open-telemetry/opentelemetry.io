@@ -2,6 +2,7 @@
 title: 内部テレメトリー
 weight: 25
 default_lang_commit: 548ae50123bba6fd70cb0b080c68294b8239769a
+drifted_from_default: true
 cSpell:ignore: alloc batchprocessor journalctl
 ---
 

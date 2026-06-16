@@ -10,5 +10,5 @@ cascade:
       utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner
   target:
     sites: { matrix: { languages: ['**'] } }
-redirects: [{ from: '*', to: '? 302!' }]
+redirects: [{ from: '*', to: '? 302' }]
 ---
