@@ -7,7 +7,7 @@ author: >-
   Name](https://github.com/reese-lee) (New Relic)
 draft: true
 sig: Governance Committee
-cSpell:ignore: ICYMI shoutout Farfetch
+cSpell:ignore: Farfetch ICYMI shoutout
 ---
 
 ICYMI:
@@ -92,9 +92,9 @@ the following criteria:
    [Farfetch](https://youtu.be/9iaGG-YZw5I?si=YDjY8N4Z4zI4uKiV), run
    OpenTelemetry in production.
 2. **Robust governance.** OTel has a documented
-   [governance model](https://shorturl.at/ZxB5O)
-   with clearly defined roles around election and retirement, along with
-   transparent communication and decision-making.
+   [governance model](https://shorturl.at/ZxB5O) with clearly defined roles
+   around election and retirement, along with transparent communication and
+   decision-making.
 3. **Community health.** OpenTelemetry has an established process for PR review
    and management. The project has
    [a number of regular contributors across multiple organizations](https://www.cncf.io/projects/opentelemetry).
