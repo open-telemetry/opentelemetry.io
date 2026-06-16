@@ -1,0 +1,23 @@
+name: Localization
+
+on:
+  merge_group:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group:
+    ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-localization:
+    # Checks a subset of the localization guidelines.
+    name: LOCALIZATION guidelines
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with: { persist-credentials: false }
+      - run: npm run check:l10n

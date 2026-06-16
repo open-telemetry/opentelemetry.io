@@ -6,7 +6,7 @@ linkTitle: KubeCon Japan '25
 date: 2025-05-29
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
 # prettier-ignore
-cSpell:ignore: Baazi Chauhan Hrabusa Kang Kasper Mostafa Nissen Radwan Shivay Siddharth Vijay
+cSpell:ignore: Baazi Chauhan Kang Kasper Mostafa Nissen Radwan Shivay Siddharth Vijay
 ---
 
 The OpenTelemetry project invites you to join members of the OpenTelemetry
