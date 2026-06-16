@@ -16807,6 +16807,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-17T11:19:20.222759722Z"
   },
+  "https://gohugo.io/templates/introduction/#whitespace": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-16T17:06:58.173823-04:00"
+  },
   "https://google.aip.dev/122#full-resource-names": {
     "StatusCode": 206,
     "LastSeen": "2026-06-17T11:20:36.972332054Z"
