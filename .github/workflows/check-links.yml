@@ -135,16 +135,34 @@ jobs:
 
       - run: npm run _lychee:setup
 
+      # Install the pinned lychee ourselves: lychee-action's installer can't
+      # handle the versioned release-tarball layout (the binary sits under
+      # lychee-<target>/, not at the archive root), so `install` fails.
+      - name: Install lychee
+        env:
+          LYCHEE_VERSION: v0.24.2
+        run: |
+          tmp="$(mktemp -d)"
+          curl -sfL "https://github.com/lycheeverse/lychee/releases/download/lychee-${LYCHEE_VERSION}/lychee-x86_64-unknown-linux-gnu.tar.gz" \
+            | tar -xz -C "$tmp"
+          install -D "$(find "$tmp" -type f -name lychee | head -n1)" "$HOME/.local/bin/lychee"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      # Runs scripts/lychee/check/index.sh (absolute public/ path, so
+      # exclude_path anchored on /public/... binds).
       - name: Check links with lychee
-        uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
-        with:
-          lycheeVersion: v0.24.2
-          # Absolute public/ path so exclude_path (anchored on /public/...) binds.
-          args: |-
-            --config lychee.toml
-            --root-dir ${{ github.workspace }}/public
-            ${{ github.workspace }}/public
-          fail: true
+        run: npm run _check:links:lychee 2>&1 | tee lychee-out.txt
+
+      - name: Lychee summary
+        if: always()
+        run: |
+          {
+            echo '## Lychee link check (pilot)'
+            echo
+            echo '```text'
+            tail -n 40 lychee-out.txt 2>/dev/null || echo '(no lychee output captured)'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
   check-refcache:
     name: REFCACHE updates?
