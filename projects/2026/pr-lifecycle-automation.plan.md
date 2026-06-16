@@ -2,6 +2,7 @@
 title: Redesign of PR lifecycle automation
 custodian: '[Vitor Vasconcellos](https://github.com/vitorvasc)'
 status: draft
+cSpell:ignore: unstaffed
 ---
 
 ## Context {#context}
@@ -288,9 +289,9 @@ privileged tokens on `pull_request_target`.
 - Engine reads the registries directly; `CODEOWNERS` is a generated output,
   never an engine input. Removes the text parsing the bash relied on.
 - Locale-approval preserved on `missing:sig-approval`. [#10371][] made it live
-  by unioning locale teams with SIG teams; the engine keeps that exact label. A
-  future split to `missing:locale-approval` is a config-only change, not an
-  engine change.
+  by taking the union of locale and SIG teams; the engine keeps that exact
+  label. A future split to `missing:locale-approval` is a config-only change,
+  not an engine change.
 - No new `ready-to-be-published` label. An earlier draft mentioned one; the
   single `ready-to-be-merged` label, date-gated for blog PRs, stays.
 - Digest over transition-based notification. The notification derives from label
