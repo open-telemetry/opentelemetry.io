@@ -1,0 +1,87 @@
+# Experimental lychee config for the link-check-lychee pilot (BASE FILE).
+#
+# `lychee.toml` is GENERATED from this file plus an `exclude_path` block (the
+# IgnoreDirs port). Edit THIS base; do not edit the generated `lychee.toml`
+# (gitignored). Regenerate with: npm run generate:config:links:lychee
+#
+# Ports `.htmltest.base.yml` `IgnoreURLs` -> lychee `exclude`. Internal-path
+# rules are written without a leading `^/` so they match lychee's resolved
+# `file://` URIs (built with `--root-dir public`).
+#
+# cSpell:disable
+
+cache = true
+max_cache_age = "554d"      # ~18 months, matching htmltest CacheExpires
+cache_exclude_status = "400..599"  # don't persist transient/bot-wall failures (htmltest only caches 2xx)
+no_progress = true
+extensions = ["html"]       # parity with htmltest FileExtension: .html (skip the llms *.md outputs)
+timeout = 15
+max_retries = 0
+include_fragments = "full"  # parity with htmltest anchor checking (0.24.2: enum, not bool)
+index_files = ["index.html"]  # resolve Hugo pretty-URL dir links to index.html for fragment checks
+
+exclude = [
+  # --- internal path rules (htmltest IgnoreURLs, internal) ---
+  '/index\.xml$',                                   # RSS alternate links
+  '[?&]link-check=no',                              # opt-out query param
+  '/api/?$',                                        # ^/api/?$
+  '/docs/languages/\w+/(api|examples|registry)/?$',
+  '/docs/collector/registry/?$',
+  '/docs/languages/dotnet/(metrics-api|traces-api)/?',
+  '/opencensus/?$',                                 # compatibility/migration redirect
+  '/../docs/specs/?$',                             # non-default locale spec redirect
+
+  # --- external host rules ---
+  '^https://deploy-preview-\d+--opentelemetry\.netlify\.app/',
+  '^https://www\.googletagmanager\.com',
+  '^(https:)?//translate\.google\.com',
+  '^https?://localhost(:([^1]|16*)|(/.*)?$)',
+  '^https?://127\.0\.0\.1\b',
+  '^https?://(otel-demo|traefik)\.localhost',
+  '^https://pdf\.sciencedirectassets\.com/280203/',
+  '^https://platform\.openai\.com',
+  '^https://star-history\.com',
+  '^https://twitter\.com',
+  '^https://www\.youtube\.com/playlist\?list=',
+  '^https://x\.com',
+  '^https://x\.ai',
+  '^https://www\.deepseek\.com',
+  '^https://www\.perplexity\.ai',
+  '^https://sched\.co',
+  '^https://.*\.sched\.com',
+  '^https://wiki\.osdev\.org',
+  '^https://www\.merriam-webster\.com',
+  '^https://hydrolix\.io/',
+  '^https://oatpp\.io',
+  '^https://www\.intersystems\.com',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/discussions\?discussions_q=',
+
+  # Docsy-generated GitHub edit/new/view-source links
+  '^https?://github\.com/.*?/.*?/(new/|edit/|issues/new\?)',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/[^e]',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/es',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/.*?/_index\.md$',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/[^d]',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/docs/[^s]',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/docs/security',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/docs/specs/otel-config/',
+  '^https://github\.com/open-telemetry/semantic-conventions/tree/main',
+
+  # --- data-proofer-ignore parity (element-level skip, ported to URL) ---
+  # Docsy "last modified" page-meta links: htmltest skips these via the
+  # `data-proofer-ignore` attribute (its IgnoreTagAttribute), which Lychee has
+  # no equivalent for. They're never in refcache (htmltest never checks them)
+  # and can't be cache-seeded, so exclude by URL to match htmltest's skip.
+  # Derived from the on-page `data-proofer-ignore` elements; regenerate/verify
+  # the set with: node scripts/data-proofer-ignore-to-lychee.mjs
+  '^https://github\.com/open-telemetry/opentelemetry\.io/commit/',
+  # `compare/` is restricted to the page-meta SHA-range form (`<sha>..<sha>`):
+  # the year-in-review posts link real, checked `compare/<tag>...<tag>` URLs
+  # that are NOT under data-proofer-ignore, so a bare `compare/` would wrongly
+  # skip them.
+  '^https://github\.com/open-telemetry/opentelemetry\.io/compare/[0-9a-f]{7,40}\.\.[0-9a-f]{7,40}',
+
+  '^https://www\.whatsmyua\.info',
+  '^https://v1-30\.docs\.kubernetes\.io/',
+]
