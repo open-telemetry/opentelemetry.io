@@ -1,6 +1,6 @@
 name: Links
 
-# cSpell:ignore minisearch
+# cSpell:ignore minisearch lycheecache lycheeverse
 on:
   merge_group:
   pull_request:
@@ -115,6 +115,36 @@ jobs:
           path: |
             static/refcache.json
             tmp/*log.txt
+
+  check-links-lychee:
+    name: CHECK LINKS · lychee
+    needs: build
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with: { persist-credentials: false }
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with: { name: build-artifacts }
+
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
+
+      - run: npm run _lychee:setup
+
+      - name: Check links with lychee
+        uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
+        with:
+          lycheeVersion: v0.24.2
+          # Absolute public/ path so exclude_path (anchored on /public/...) binds.
+          args: |-
+            --config lychee.toml
+            --root-dir ${{ github.workspace }}/public
+            ${{ github.workspace }}/public
+          fail: true
 
   check-refcache:
     name: REFCACHE updates?
