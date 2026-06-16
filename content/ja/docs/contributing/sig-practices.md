@@ -3,8 +3,7 @@ title: 承認者およびメンテナーのための SIG のプラクティス
 linkTitle: SIG のプラクティス
 description: 承認者およびメンテナーがどのようにイシューやコントリビューションを管理するかを学びます。
 weight: 999
-default_lang_commit: bb20a7fb593782fea0e05e988d1478831726f9f5
-drifted_from_default: true
+default_lang_commit: 94f3816a5eadb63c7ac0309fe5aac6552abec12a
 cSpell:ignore: Comms contribfest
 ---
 
