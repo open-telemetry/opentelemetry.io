@@ -286,6 +286,7 @@ sub applyPatchOrPrintMsgIf($$$;$) {
 
 sub getVersFromSubmodule() {
   my %repoNames = qw(
+    opamp   opamp-spec
     otlp    opentelemetry-proto
     semconv semantic-conventions
     spec    opentelemetry-specification
@@ -416,7 +417,7 @@ while(<>) {
 
   ## OpAMP
 
-  s|\]\((proto/opamp.proto)\)|]($opAmpSpecRepoUrl/blob/main/$1)|;
+  s|\]\((proto/opamp.proto)\)|]($opAmpSpecRepoUrl/blob/v$versFromSubmod{'opamp'}/$1)|;
 
   print;
 }

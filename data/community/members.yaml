@@ -230,22 +230,8 @@ maintainers:
   - name: austinlparker
     teams:
       - docs-approvers
-      - docs-bn-approvers
-      - docs-bn-maintainers
-      - docs-es-approvers
-      - docs-es-maintainers
-      - docs-fr-approvers
-      - docs-fr-maintainers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
-      - docs-pt-approvers
-      - docs-pt-maintainers
-      - docs-ro-approvers
-      - docs-ro-maintainers
       - docs-triagers
-      - docs-uk-approvers
-      - docs-uk-maintainers
       - semconv-log-approvers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
@@ -371,52 +357,18 @@ maintainers:
   - name: cartermp
     teams:
       - docs-approvers
-      - docs-bn-approvers
-      - docs-bn-maintainers
-      - docs-es-approvers
-      - docs-es-maintainers
-      - docs-fr-approvers
-      - docs-fr-maintainers
-      - docs-ja-approvers
-      - docs-ja-maintainers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
-      - docs-pt-approvers
-      - docs-pt-maintainers
-      - docs-ro-approvers
-      - docs-ro-maintainers
       - docs-triagers
-      - docs-uk-approvers
-      - docs-uk-maintainers
-      - docs-zh-approvers
-      - docs-zh-maintainers
       - social-media-approvers
     html_url: https://github.com/cartermp
     avatar_url: https://avatars.githubusercontent.com/u/6309070?v=4
   - name: chalin
     teams:
       - docs-approvers
-      - docs-bn-approvers
-      - docs-bn-maintainers
-      - docs-es-approvers
-      - docs-es-maintainers
       - docs-fr-approvers
       - docs-fr-maintainers
-      - docs-ja-approvers
-      - docs-ja-maintainers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
-      - docs-pt-approvers
-      - docs-pt-maintainers
-      - docs-ro-approvers
-      - docs-ro-maintainers
       - docs-triagers
-      - docs-uk-approvers
-      - docs-uk-maintainers
-      - docs-zh-approvers
-      - docs-zh-maintainers
       - social-media-approvers
     html_url: https://github.com/chalin
     avatar_url: https://avatars.githubusercontent.com/u/4140793?v=4
@@ -1324,6 +1276,7 @@ maintainers:
       - semconv-log-approvers
       - specs-approvers
       - specs-logs-approvers
+      - specs-maintainers
       - specs-triagers
     html_url: https://github.com/pellared
     avatar_url: https://avatars.githubusercontent.com/u/5067549?v=4
@@ -1458,26 +1411,8 @@ maintainers:
   - name: svrnm
     teams:
       - docs-approvers
-      - docs-bn-approvers
-      - docs-bn-maintainers
-      - docs-es-approvers
-      - docs-es-maintainers
-      - docs-fr-approvers
-      - docs-fr-maintainers
-      - docs-ja-approvers
-      - docs-ja-maintainers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
-      - docs-pt-approvers
-      - docs-pt-maintainers
-      - docs-ro-approvers
-      - docs-ro-maintainers
       - docs-triagers
-      - docs-uk-approvers
-      - docs-uk-maintainers
-      - docs-zh-approvers
-      - docs-zh-maintainers
       - ecosystem-explorer-approvers
       - ecosystem-explorer-maintainers
       - proto-approvers
@@ -1500,22 +1435,8 @@ maintainers:
   - name: theletterf
     teams:
       - docs-approvers
-      - docs-bn-approvers
-      - docs-bn-maintainers
-      - docs-es-approvers
-      - docs-es-maintainers
-      - docs-fr-approvers
-      - docs-fr-maintainers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
-      - docs-pt-approvers
-      - docs-pt-maintainers
-      - docs-ro-approvers
-      - docs-ro-maintainers
       - docs-triagers
-      - docs-uk-approvers
-      - docs-uk-maintainers
       - social-media-approvers
     html_url: https://github.com/theletterf
     avatar_url: https://avatars.githubusercontent.com/u/1773616?v=4
@@ -1531,26 +1452,8 @@ maintainers:
   - name: tiffany76
     teams:
       - docs-approvers
-      - docs-bn-approvers
-      - docs-bn-maintainers
-      - docs-es-approvers
-      - docs-es-maintainers
-      - docs-fr-approvers
-      - docs-fr-maintainers
-      - docs-ja-approvers
-      - docs-ja-maintainers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
-      - docs-pt-approvers
-      - docs-pt-maintainers
-      - docs-ro-approvers
-      - docs-ro-maintainers
       - docs-triagers
-      - docs-uk-approvers
-      - docs-uk-maintainers
-      - docs-zh-approvers
-      - docs-zh-maintainers
       - social-media-approvers
     html_url: https://github.com/tiffany76
     avatar_url: https://avatars.githubusercontent.com/u/30397949?v=4
@@ -1671,8 +1574,6 @@ maintainers:
     teams:
       - docs-approvers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-triagers
