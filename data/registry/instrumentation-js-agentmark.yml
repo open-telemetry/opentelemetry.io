@@ -1,4 +1,4 @@
-# cSpell:ignore agentmark
+# cSpell:ignore agentmark genai mastra pydantic vercel
 title: AgentMark
 registryType: instrumentation
 language: js
@@ -17,12 +17,14 @@ description:
   AgentMark is an OpenTelemetry-native SDK for building and observing AI agents.
   It instruments the Vercel AI SDK, Mastra, the Claude Agent SDK, and Pydantic
   AI, emitting gen_ai.* spans for inference, tool calls, and streaming and
-  exporting them over OTLP to any OpenTelemetry-compatible backend.
+  exporting them over OTLP to any OpenTelemetry-compatible backend. It also
+  ingests and normalizes OpenInference and OpenLLMetry spans, bringing traces
+  from frameworks like LangChain and LlamaIndex into the same gen_ai.* model.
 authors:
   - name: AgentMark
     url: https://github.com/agentmark-ai
 package:
-  name: "@agentmark-ai/sdk"
+  name: '@agentmark-ai/sdk'
   registry: npm
 createdAt: '2026-06-04'
 isNative: false
