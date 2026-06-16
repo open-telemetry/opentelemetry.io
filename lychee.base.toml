@@ -23,8 +23,11 @@ index_files = ["index.html"]  # resolve Hugo pretty-URL dir links to index.html 
 exclude = [
   # KEEP IN SYNC with `IgnoreURLs` in `.htmltest.base.yml`: this array ports
   # those rules for the lychee pilot (see #10449). Mirror changes between the
-  # two until one tool is retired. (Internal-path rules drop htmltest's leading
-  # `^/…` anchor to match lychee's resolved `file://` URIs.)
+  # two, but the internal-path rules are NOT 1:1 copies. To port an htmltest
+  # internal rule: drop the leading `^/` anchor and the `(/..)?`/`\.\.` locale
+  # alternatives (lychee matches the resolved `file://` URI, so an unanchored
+  # `/docs/…` substring covers every locale); escape literal dots. External-host
+  # rules (those starting `^https?://`) carry over verbatim.
   # --- internal path rules (htmltest IgnoreURLs, internal) ---
   '/index\.xml$',                                   # RSS alternate links
   '[?&]link-check=no',                              # opt-out query param
@@ -78,7 +81,8 @@ exclude = [
   # no equivalent for. They're never in refcache (htmltest never checks them)
   # and can't be cache-seeded, so exclude by URL to match htmltest's skip.
   # Derived from the on-page `data-proofer-ignore` elements; regenerate/verify
-  # the set with: node scripts/data-proofer-ignore-to-lychee.mjs
+  # the set with:
+  #   node scripts/lychee/data-proofer-ignore-to-lychee/index.mjs
   '^https://github\.com/open-telemetry/opentelemetry\.io/commit/',
   # `compare/` is restricted to the page-meta SHA-range form (`<sha>..<sha>`):
   # the year-in-review posts link real, checked `compare/<tag>...<tag>` URLs

@@ -27,7 +27,8 @@
 //
 // Usage: node scripts/lychee/data-proofer-ignore-to-lychee/index.mjs [public-dir] [lychee-toml]
 // Prints TOML-ready `exclude` array lines on stdout; a grouped summary on
-// stderr. Re-run after a build and paste the lines into `lychee.toml`.
+// stderr. Re-run after a build and paste the lines into the `exclude` array in
+// `lychee.base.toml` (the committed source; `lychee.toml` is generated).
 //
 // cSpell:ignore proofer rawtext
 

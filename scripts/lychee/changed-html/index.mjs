@@ -5,7 +5,7 @@
 //
 // Hugo builds `content/<lang>/<path>.md` into pretty-URL HTML under `public/`.
 // We replicate the common mapping (default-language strip, locale prefix,
-// `_index.md`/`index.md`/`page.md` -> `.../index.html`) and keep only paths that
+// `_index.md`/`index.md` -> `.../index.html`) and keep only paths that
 // actually exist in the build. This is best-effort: front-matter `url`/`slug`
 // overrides, aliases, and drafts may not map — those are reported on stderr, so
 // fall back to `npm run check:links:lychee` for guaranteed full coverage.
