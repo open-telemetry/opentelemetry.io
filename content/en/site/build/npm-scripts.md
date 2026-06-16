@@ -4,6 +4,7 @@ description: >-
   NPM scripts for building, serving, validating, and maintaining the
   OpenTelemetry website.
 weight: 20
+cSpell:ignore: lycheecache
 ---
 
 Script definitions live in the repository root
@@ -45,7 +46,9 @@ are internal helpers and are not intended to be run directly.
 | `check:i18n`           | Validate localization front matter (`default_lang_commit`). |
 | `check:l10n`           | Run localization checks.                                    |
 | `check:links`          | Run HTML link checker.                                      |
+| `check:links:diff`     | Lychee link check of changed files only (pilot).            |
 | `check:links:internal` | Link check without extra HTMLTest args.                     |
+| `check:links:lychee`   | Lychee link check of the whole site (pilot).                |
 | `check:markdown`       | Markdown lint (content and projects).                       |
 | `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                 |
 | `check:registry`       | Validate registry YAML under `data/registry/`.              |
@@ -132,6 +135,8 @@ are internal helpers and are not intended to be run directly.
 | `update:hugo`                                      | Install latest hugo-extended.                                  |
 | `update:packages`                                  | Run npm-check-updates to bump deps.                            |
 | `generate:config:links`                            | Generate git-ignored `.htmltest.yml` from `.htmltest.base.yml` |
+| `generate:config:links:lychee`                     | Generate git-ignored `lychee.toml` from `lychee.base.toml`.    |
+| `lychee:reseed`                                    | Rebuild `.lycheecache` from the refcache.                      |
 | `log:build`, `log:check:links`, `log:test-and-fix` | Run the corresponding script and tee output to `tmp/`.         |
 
 ## Notes
@@ -139,6 +144,13 @@ are internal helpers and are not intended to be run directly.
 - **`check:links`** updates the refcache as a side effect. The test-and-fix flow
   uses the internal fix list that excludes refcache so the check step can
   refresh it.
+- **Lychee link check (pilot).** The `:lychee` and `:diff` scripts run
+  [Lychee](https://github.com/lycheeverse/lychee) as a faster alternative to
+  htmltest, mirroring its coverage. They generate `lychee.toml` and seed
+  `.lycheecache` from the refcache automatically; `lychee:reseed` refreshes that
+  cache. Lychee runs as a non-blocking
+  [CI pilot](../ci-workflows/#other-workflows) while it's evaluated in
+  [#10449](https://github.com/open-telemetry/opentelemetry.io/issues/10449).
 - **`all`** runs every listed script even when one fails, then exits with a
   non-zero status if any failed.
 
