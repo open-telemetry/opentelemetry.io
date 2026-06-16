@@ -12,15 +12,15 @@
 //
 // cSpell:ignore unmappable unbuilt
 
-import { execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 
 const DEFAULT_BRANCH = process.env.LYCHEE_DIFF_BASE || 'main';
 
-function git(args) {
+function git(...args) {
   try {
-    return execSync(`git ${args}`, {
+    return execFileSync('git', args, {
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'ignore'],
     });
@@ -40,12 +40,14 @@ function splitLines(out) {
 // (staged + unstaged) and untracked files. De-duplicated.
 export function changedFiles() {
   const files = new Set();
-  const base = git(`merge-base ${DEFAULT_BRANCH} HEAD`).trim();
+  const base = git('merge-base', DEFAULT_BRANCH, 'HEAD').trim();
   if (base)
-    splitLines(git(`diff --name-only ${base}`)).forEach((f) => files.add(f));
-  splitLines(git('diff --name-only')).forEach((f) => files.add(f));
-  splitLines(git('diff --name-only --cached')).forEach((f) => files.add(f));
-  splitLines(git('ls-files --others --exclude-standard')).forEach((f) =>
+    splitLines(git('diff', '--name-only', base)).forEach((f) => files.add(f));
+  splitLines(git('diff', '--name-only')).forEach((f) => files.add(f));
+  splitLines(git('diff', '--name-only', '--cached')).forEach((f) =>
+    files.add(f),
+  );
+  splitLines(git('ls-files', '--others', '--exclude-standard')).forEach((f) =>
     files.add(f),
   );
   return [...files];
@@ -66,6 +68,17 @@ export function contentToPublic(file) {
   return path.posix.join('public', prefix + urlPath, 'index.html');
 }
 
+// Resolve a `public/...` path (from `contentToPublic`) to an absolute path, but
+// only if it stays within `<root>/public`. Returns `null` on escape, so a `..`
+// segment in a changed-file path (whether from a crafted diff or an odd git
+// report) can't steer the lychee run at files outside the built site. Pure.
+export function confineToPublic(rel, root = process.cwd()) {
+  if (!rel) return null;
+  const pubRoot = path.resolve(root, 'public');
+  const abs = path.resolve(root, rel);
+  return abs === pubRoot || abs.startsWith(pubRoot + path.sep) ? abs : null;
+}
+
 // Mapped, existing, absolute public HTML files for the current diff. Reports
 // unmappable / unbuilt changes on stderr.
 export function mappedHtmlFiles(root = process.cwd()) {
@@ -78,13 +91,16 @@ export function mappedHtmlFiles(root = process.cwd()) {
       continue;
     }
     const rel = contentToPublic(f);
-    const abs = rel ? path.join(root, rel) : null;
-    if (abs && existsSync(abs)) mapped.push(abs);
-    else
-      skipped.push([
-        f,
-        rel ? 'no built HTML (draft / url override / alias?)' : 'unmappable',
-      ]);
+    const abs = confineToPublic(rel, root);
+    if (abs && existsSync(abs)) {
+      mapped.push(abs);
+    } else {
+      let why;
+      if (!rel) why = 'unmappable';
+      else if (!abs) why = 'maps outside public/ (skipped)';
+      else why = 'no built HTML (draft / url override / alias?)';
+      skipped.push([f, why]);
+    }
   }
   const unique = [...new Set(mapped)];
   if (skipped.length) {

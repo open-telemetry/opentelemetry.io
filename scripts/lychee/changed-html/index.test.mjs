@@ -5,7 +5,7 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { contentToPublic } from './index.mjs';
+import { contentToPublic, confineToPublic } from './index.mjs';
 
 describe('contentToPublic()', () => {
   test('an EN section index drops the locale prefix', () => {
@@ -53,5 +53,34 @@ describe('contentToPublic()', () => {
 
   test('a non-Markdown content file is not mappable', () => {
     assert.equal(contentToPublic('content/en/docs/img/diagram.svg'), null);
+  });
+});
+
+describe('confineToPublic()', () => {
+  const root = '/tmp/site';
+
+  test('a normal mapped page resolves under public/', () => {
+    assert.equal(
+      confineToPublic('public/docs/concepts/signals/index.html', root),
+      '/tmp/site/public/docs/concepts/signals/index.html',
+    );
+  });
+
+  test('the public/ root itself is allowed', () => {
+    assert.equal(
+      confineToPublic('public/index.html', root),
+      '/tmp/site/public/index.html',
+    );
+  });
+
+  test('a path that escapes public/ via .. is rejected', () => {
+    // A crafted changed-file path like content/en/../../../etc/passwd.md maps to
+    // a `..`-laden public path; confinement must reject it.
+    const rel = contentToPublic('content/en/../../../etc/passwd.md');
+    assert.equal(confineToPublic(rel, root), null);
+  });
+
+  test('a null input stays null', () => {
+    assert.equal(confineToPublic(null, root), null);
   });
 });
