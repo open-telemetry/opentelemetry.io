@@ -46,7 +46,6 @@ Or in Rust:
 
 ```rust
 fn record_histogram(
-    name: &str,
     value: f64,
     attributes: Vec<(String, String)>,
 ) { /* ... */ }
