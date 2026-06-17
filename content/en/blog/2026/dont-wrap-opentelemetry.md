@@ -106,7 +106,11 @@ signature requires any collection type, every caller heap-allocates on every
 measurement. That zero-allocation design is silently gone — and developers using
 your wrapper have no idea it ever existed.
 
-## Anti-pattern #2: The lookup wrapper (the worst one)
+## Anti-pattern #2: The lookup wrapper
+
+This wrapper takes the instrument name as a parameter, maintains an internal
+cache of instruments, and looks up — or creates — the instrument on every call.
+The caller never holds a direct reference to the instrument.
 
 In C#:
 
