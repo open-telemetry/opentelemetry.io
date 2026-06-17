@@ -5,7 +5,7 @@ date: 2023-12-22
 author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 default_lang_commit: de831c090fcae11c643908504392583cbebb09ea
 # prettier-ignore
-cSpell:ignore: alex aronoff bogdan boten caramanolis constance dapr drutu jacob juraci kanal kröhling paixāo purvi tyler villela yahn youtube
+cSpell:ignore: alex aronoff bogdan boten caramanolis constance drutu jacob juraci kanal kröhling paixāo purvi tyler villela yahn youtube
 ---
 
 OpenTelemetry にとって、なんて素晴らしい一年だったのでしょう！
