@@ -110,7 +110,8 @@ your wrapper have no idea it ever existed.
 
 This wrapper takes the instrument name as a parameter, maintains an internal
 cache of instruments, and looks up — or creates — the instrument on every call.
-The caller never holds a direct reference to the instrument.
+The caller never holds a direct reference to the instrument. The appeal is
+convenience: developers don't have to create or store instruments themselves.
 
 In C#:
 
