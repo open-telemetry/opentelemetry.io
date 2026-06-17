@@ -256,8 +256,8 @@
     "LastSeen": "2026-06-11T15:38:31.48Z"
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-17T11:22:30.528244459Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:05:35.382Z"
   },
   "https://blog.remirepo.net/pages/PECL-extensions-RPM-status": {
     "StatusCode": 200,
@@ -1492,16 +1492,16 @@
     "LastSeen": "2026-06-16T11:22:30.43724875Z"
   },
   "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:20:22.051056481Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:05:42.434Z"
   },
   "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-system-attributes": {
     "StatusCode": 206,
     "LastSeen": "2026-06-12T10:58:33.924492419Z"
   },
   "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/iam-access-control-overview-cwl.html#CWL_ARN_Format": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:29:59.999Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:05:12.345Z"
   },
   "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Streams.html": {
     "StatusCode": 206,
@@ -1512,8 +1512,8 @@
     "LastSeen": "2026-06-13T10:26:36.903864768Z"
   },
   "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_instances.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:20:18.150445026Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:05:54.975Z"
   },
   "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/clusters.html": {
     "StatusCode": 206,
@@ -1540,12 +1540,12 @@
     "LastSeen": "2026-06-13T10:26:34.298497604Z"
   },
   "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:20:39.747714779Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:06:00.72Z"
   },
   "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:20:43.294290778Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:06:06.715Z"
   },
   "https://docs.aws.amazon.com/cli/latest/reference/kinesis/describe-stream.html": {
     "StatusCode": 206,
@@ -1616,8 +1616,8 @@
     "LastSeen": "2026-06-12T10:57:18.238729951Z"
   },
   "https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:20:21.541404093Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:06:12.762Z"
   },
   "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html#available-regions": {
     "StatusCode": 206,
@@ -1636,8 +1636,8 @@
     "LastSeen": "2026-06-13T10:26:26.734262906Z"
   },
   "https://docs.aws.amazon.com/lambda/latest/dg/java-handler.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:20:15.144390027Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:06:19.07Z"
   },
   "https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html": {
     "StatusCode": 206,
@@ -1648,8 +1648,8 @@
     "LastSeen": "2026-06-12T10:58:35.771959612Z"
   },
   "https://docs.aws.amazon.com/lambda/latest/dg/ruby-handler.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:27:30.570959393Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:06:25.367Z"
   },
   "https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html": {
     "StatusCode": 206,
@@ -1664,8 +1664,8 @@
     "LastSeen": "2026-06-11T11:15:28.330548153Z"
   },
   "https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:20:22.071875105Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:06:31.27Z"
   },
   "https://docs.aws.amazon.com/streams/latest/dev/introduction.html": {
     "StatusCode": 206,
@@ -1728,8 +1728,8 @@
     "LastSeen": "2026-06-13T10:26:25.642653442Z"
   },
   "https://docs.confluent.io/platform/current/clients/consumer.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:20:34.352468559Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:06:37.766Z"
   },
   "https://docs.controlplane.com/reference/org#tracing": {
     "StatusCode": 200,
@@ -1776,8 +1776,8 @@
     "LastSeen": "2026-06-17T11:23:42.675583205Z"
   },
   "https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/dml/dmlConfigConsistency.html": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-17T11:20:24.780952577Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:06:43.22Z"
   },
   "https://docs.deno.com/runtime/fundamentals/open_telemetry/": {
     "StatusCode": 206,
@@ -2492,16 +2492,16 @@
     "LastSeen": "2026-06-12T11:06:39.891Z"
   },
   "https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:20:26.563987318Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:06:50.744Z"
   },
   "https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#clusterresourcequota-quota-openshift-io-v1": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:29:59.999Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:06:12.345Z"
   },
   "https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#status-total": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:30:59.999Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:07:12.345Z"
   },
   "https://docs.roadrunner.dev/docs/logging-and-observability/otel": {
     "StatusCode": 200,
@@ -17048,8 +17048,8 @@
     "LastSeen": "2026-06-11T11:12:04.960512576Z"
   },
   "https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:22:33.421121466Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:07:12.28Z"
   },
   "https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97": {
     "StatusCode": 200,
@@ -18464,8 +18464,8 @@
     "LastSeen": "2026-06-17T11:30:32.336Z"
   },
   "https://npmjs.com/package/@arizeai/openinference-instrumentation-openai": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-17T11:27:15.256375544Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:07:18.671Z"
   },
   "https://npmjs.com/package/@autotelic/fastify-opentelemetry": {
     "StatusCode": 200,
@@ -18476,8 +18476,8 @@
     "LastSeen": "2026-06-11T14:55:17.331Z"
   },
   "https://npmjs.com/package/@azure/opentelemetry-instrumentation-azure-sdk": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:27:02.866514199Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:07:24.518Z"
   },
   "https://npmjs.com/package/@cerbos/opentelemetry": {
     "StatusCode": 200,
@@ -18528,12 +18528,12 @@
     "LastSeen": "2026-06-14T10:48:59.181Z"
   },
   "https://npmjs.com/package/@opentelemetry/host-metrics": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-17T11:27:09.067727326Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:07:30.923Z"
   },
   "https://npmjs.com/package/@opentelemetry/id-generator-aws-xray": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-17T11:27:43.750235502Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:07:37.274Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-amqplib": {
     "StatusCode": 200,
@@ -18700,8 +18700,8 @@
     "LastSeen": "2026-06-11T15:40:27.704Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-undici": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:27:19.736470501Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:07:42.017Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-user-interaction": {
     "StatusCode": 200,
@@ -18728,8 +18728,8 @@
     "LastSeen": "2026-06-17T11:30:59.88Z"
   },
   "https://npmjs.com/package/@opentelemetry/propagator-aws-xray-lambda": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-17T11:27:44.882187249Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:07:50.037Z"
   },
   "https://npmjs.com/package/@opentelemetry/propagator-instana": {
     "StatusCode": 206,
@@ -18768,8 +18768,8 @@
     "LastSeen": "2026-06-13T10:35:04.777Z"
   },
   "https://npmjs.com/package/@opentelemetry/sampler-aws-xray": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-17T11:27:46.673111155Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:07:56.43Z"
   },
   "https://npmjs.com/package/@prisma/instrumentation": {
     "StatusCode": 200,
@@ -22144,8 +22144,8 @@
     "LastSeen": "2026-06-12T10:59:54.299245554Z"
   },
   "https://www.honeycomb.io/": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:18:35.756860562Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:08:06.871Z"
   },
   "https://www.honeycomb.io/blog/ask-miss-o11y-opentelemetry-baggage/": {
     "StatusCode": 206,
@@ -22720,8 +22720,8 @@
     "LastSeen": "2026-06-14T10:41:23.150992338Z"
   },
   "https://www.mongodb.com/docs/manual/reference/command/": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-17T11:20:22.98064888Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-17T12:08:15.674Z"
   },
   "https://www.mongodb.com/docs/manual/reference/error-codes/": {
     "StatusCode": 200,
