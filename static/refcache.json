@@ -6331,6 +6331,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-13T10:31:30.585460004Z"
   },
+  "https://github.com/lycheeverse/lychee": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-16T17:29:12.402949516Z"
+  },
   "https://github.com/lzchen": {
     "StatusCode": 206,
     "LastSeen": "2026-06-13T10:30:42.419741349Z"
@@ -6618,6 +6622,10 @@
   "https://github.com/nats-io/nats.java": {
     "StatusCode": 206,
     "LastSeen": "2026-06-15T11:38:53.089882233Z"
+  },
+  "https://github.com/neil-the-nowledgeable": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-17T05:28:23.922006716Z"
   },
   "https://github.com/neilfordyce": {
     "StatusCode": 206,
@@ -14354,6 +14362,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/issues": {
     "StatusCode": 206,
     "LastSeen": "2026-06-16T11:23:10.590331819Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/issues/10449": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-16T17:29:13.370936402Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/issues/6592": {
     "StatusCode": 206,
