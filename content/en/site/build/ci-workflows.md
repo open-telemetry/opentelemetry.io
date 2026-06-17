@@ -452,16 +452,18 @@ logic lives in [scripts/gh/report-failure/][report-failure-script]
 
 The repository includes several other workflows:
 
-| Workflow                   | Purpose                                       |
-| -------------------------- | --------------------------------------------- |
-| `check-links.yml`          | Sharded link checking using htmltest          |
-| `check-text.yml`           | Textlint terminology checks                   |
-| `check-i18n.yml`           | Localization front matter validation          |
-| `check-spelling.yml`       | Spell checking                                |
-| `test.yml`                 | Test (excludes `test:base`)                   |
-| `auto-update-registry.yml` | Auto-update registry package versions         |
-| `auto-update-versions.yml` | Auto-update OTel component versions           |
-| `build-dev.yml`            | Development build and preview                 |
-| `lint-scripts.yml`         | ShellCheck linting for `.github/scripts/`     |
-| `label-manager.yml`        | PR labels (component labels & approval flow)  |
-| `component-owners.yml`     | Assign reviewers based on component ownership |
+| Workflow                   | Purpose                                                                                |
+| -------------------------- | -------------------------------------------------------------------------------------- |
+| `check-links.yml`          | Sharded link checking using htmltest, plus a non-blocking [Lychee][lychee-pilot] pilot |
+| `check-text.yml`           | Textlint terminology checks                                                            |
+| `check-i18n.yml`           | Localization front matter validation                                                   |
+| `check-spelling.yml`       | Spell checking                                                                         |
+| `test.yml`                 | Test (excludes `test:base`)                                                            |
+| `auto-update-registry.yml` | Auto-update registry package versions                                                  |
+| `auto-update-versions.yml` | Auto-update OTel component versions                                                    |
+| `build-dev.yml`            | Development build and preview                                                          |
+| `lint-scripts.yml`         | ShellCheck linting for `.github/scripts/`                                              |
+| `label-manager.yml`        | PR labels (component labels & approval flow)                                           |
+| `component-owners.yml`     | Assign reviewers based on component ownership                                          |
+
+[lychee-pilot]: ../npm-scripts/#notes

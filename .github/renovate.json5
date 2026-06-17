@@ -4,6 +4,7 @@
     'config:best-practices',
     'docker:pinDigests',
     'helpers:pinGitHubActionDigestsToSemver',
+    'group:allNonMajor',
   ],
   minimumReleaseAge: '7 days',
   internalChecksFilter: 'strict',
@@ -17,11 +18,6 @@
       // hugo-extended is intentionally pinned; updated manually via `npm run update:hugo`.
       matchPackageNames: ['hugo-extended'],
       enabled: false,
-    },
-    {
-      matchDepTypes: ['devDependencies'],
-      matchUpdateTypes: ['patch', 'minor'],
-      groupName: 'npm devDependencies (non-major)',
     },
   ],
 }
