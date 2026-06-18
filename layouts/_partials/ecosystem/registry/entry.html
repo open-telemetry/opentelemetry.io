@@ -140,18 +140,18 @@
         </h4>
         <p class="card-text">
             <small class="text-body-secondary">
-            by
-            {{- range $index, $author := .authors }}
-                {{- if $index }}, {{ else }} {{ end }}
-                {{- if eq $author.name "OpenTelemetry Authors" -}}
+            by{{ " " -}}
+            {{ range $index, $author := .authors -}}
+                {{ if $index }}, {{ end -}}
+                {{ if eq $author.name "OpenTelemetry Authors" -}}
                     <a href="/" class="badge rounded-pill text-bg-primary">🔭 {{ $author.name }} 🔭</a>
-                {{- else if isset $author "url" }}
-                    {{- $href := printf "href=%q" $author.url | safeHTMLAttr -}}
+                {{- else if isset $author "url" -}}
+                    {{ $href := printf "href=%q" $author.url | safeHTMLAttr -}}
                     <a {{ $href }} target="_blank" rel="noopener" class="card-link external-link">{{ $author.name }}</a>
                 {{- else -}}
-                    {{- $author.name -}}
+                    {{ $author.name }}
                 {{- end -}}
-            {{- end -}}
+            {{ end -}}
             </small>
         </p>
         <div class="row p-2">
@@ -166,13 +166,13 @@
                     {{- .description | markdownify -}}
                 </div>
                 <div class="tags mb-2">
-                    {{- if .tags }}
+                    {{ if .tags -}}
                         <div>
-                            {{- range .tags }}
+                            {{ range .tags -}}
                                 <a href="{{ $registryUrl }}/?s={{ . | urlize }}" class="badge text-bg-primary me-1">{{ . }}</a>
-                            {{- end }}
+                            {{ end -}}
                         </div>
-                    {{- end }}
+                    {{ end -}}
                 </div>
                 {{ with $package -}}
                     {{ if not (eq .quickInstall false) -}}
