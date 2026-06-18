@@ -13,7 +13,7 @@ logBridgeWarning: >
   SLF4J / Logback / etc.
 default_lang_commit: dabd30226437f71ca1eca69f9e8f04926a042bae # patched
 drifted_from_default: true
-cSpell:ignore: kotlint Logback updowncounter
+cSpell:ignore: kotlint updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
