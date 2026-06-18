@@ -5387,6 +5387,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-15T11:42:09.964050054Z"
   },
+  "https://github.com/google/docsy/issues/2659": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-17T15:04:41.571608-04:00"
+  },
   "https://github.com/google/pprof": {
     "StatusCode": 206,
     "LastSeen": "2026-06-15T11:38:13.347982767Z"
@@ -16535,6 +16539,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-11T11:13:42.917444525Z"
   },
+  "https://github.com/wjdp/htmltest": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-17T15:04:42.184708-04:00"
+  },
   "https://github.com/wolfgangcodes": {
     "StatusCode": 206,
     "LastSeen": "2026-06-17T11:26:01.921458189Z"
@@ -18158,6 +18166,14 @@
   "https://lwn.net/Articles/696216/": {
     "StatusCode": 200,
     "LastSeen": "2026-06-13T10:25:05.14916657Z"
+  },
+  "https://lychee.cli.rs/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-17T15:04:40.993281-04:00"
+  },
+  "https://lychee.cli.rs/guides/getting-started/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-17T15:04:41.193882-04:00"
   },
   "https://macias.info": {
     "StatusCode": 200,
