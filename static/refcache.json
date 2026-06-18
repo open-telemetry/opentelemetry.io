@@ -17244,8 +17244,8 @@
     "LastSeen": "2026-06-15T11:39:51.474521749Z"
   },
   "https://keda.sh/": {
-    "StatusCode": -10,
-    "LastSeen": "2026-06-18T11:07:11.237557649Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-18T22:25:45.623Z"
   },
   "https://keda.sh/docs/latest/integrations/opentelemetry/": {
     "StatusCode": 206,
@@ -17300,8 +17300,8 @@
     "LastSeen": "2026-06-16T11:22:55.687747903Z"
   },
   "https://kubernetes.io/docs/concepts/extend-kubernetes/operator/": {
-    "StatusCode": -10,
-    "LastSeen": "2026-06-18T11:06:09.72148871Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-18T22:25:48.716Z"
   },
   "https://kubernetes.io/docs/concepts/overview/working-with-objects/names/": {
     "StatusCode": 206,
@@ -21300,8 +21300,8 @@
     "LastSeen": "2026-06-16T11:23:08.826413868Z"
   },
   "https://slsa.dev/attestation-model": {
-    "StatusCode": -10,
-    "LastSeen": "2026-06-18T11:05:28.290592855Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-18T22:25:52.124Z"
   },
   "https://slsa.dev/spec/v1.0/about": {
     "StatusCode": 206,
@@ -21964,8 +21964,8 @@
     "LastSeen": "2026-06-18T11:07:32.33774268Z"
   },
   "https://www.cockroachlabs.com/": {
-    "StatusCode": -10,
-    "LastSeen": "2026-06-18T11:05:28.320877769Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-18T22:25:57.903Z"
   },
   "https://www.comet.com/docs/opik/integrations/opentelemetry": {
     "StatusCode": 200,
@@ -22016,8 +22016,8 @@
     "LastSeen": "2026-06-18T11:04:32.185480204Z"
   },
   "https://www.docsy.dev/docs/content/shortcodes/#alert": {
-    "StatusCode": -10,
-    "LastSeen": "2026-06-18T11:04:28.447553164Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-18T22:26:12.345Z"
   },
   "https://www.dropwizard.io/en/latest/manual/views.html": {
     "StatusCode": 200,
