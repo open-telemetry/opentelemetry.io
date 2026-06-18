@@ -33,7 +33,7 @@
     "full:build": "BUILD_KIND=full npm run",
     "_get:no": "echo SKIPPING get operation",
     "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 999}",
-    "_htmltest": "LINK_CHECKER=htmltest",
+    "_htmltest": "LINK_CHECKER=htmltest npm run",
     "_hugo": "hugo --cleanDestinationDir",
     "_install:cspell": "npm install -D $(npm run -s _list:cspell)",
     "_install:netlify-cli": "npm list netlify-cli || npm install -O netlify-cli",

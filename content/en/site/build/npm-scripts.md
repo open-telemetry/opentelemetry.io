@@ -146,7 +146,7 @@ are internal helpers and are not intended to be run directly.
 ## Notes
 
 - **Refcache maintenance** is htmltest-specific. For details, see
-  [Refcache](./link-checking/#refcache).
+  [Refcache](../link-checking/#refcache).
 - **Lychee link check (pilot).** The `:lychee` and `:diff` scripts run
   [Lychee](https://github.com/lycheeverse/lychee) as a faster alternative to
   htmltest, mirroring its coverage. They generate `lychee.toml` and seed
