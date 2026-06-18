@@ -44,7 +44,8 @@ guidance offered in this section.
 <div class="border-start border-warning bg-warning-subtle">
 
 - **Translate**:
-  - [Alert types](../style-guide/#alerts) such as `TIP`, `WARNING`, etc.
+  - [Alert types](../style-guide/#alerts) such as `TIP`, `WARNING`, etc. This is
+    enforced by a [`MARKDOWN` linter][] rule.
   - Code, including code blocks and inline code (like this
     `inline code example`)
   - **File or directory** names of resources in this repository
@@ -53,13 +54,16 @@ guidance offered in this section.
   - [Links](#links), this includes [heading IDs](#headings) [^*]
   - Markdown elements marked as `notranslate` (usually as a CSS class), in
     particular for [headings](#headings)
-- Create **copies of images**, unless you [localize text in the images](#images)
+- Create **copies of images and other assets**, unless you
+  [localize text in them](#images)
 - Add new or change:
   - **Content** that would be different from the originally intended meaning
   - Presentation **style**, including: _formatting_, _layout_, and _design_
     style (typography, letter case, and spacing for example).
 
 [^*]: For a possible exception, see [Links](#links).
+
+[`MARKDOWN` linter]: ../pr-checks/#markdown-linter
 
 </div>
 
@@ -101,7 +105,8 @@ translating headings:
 ### Links {#links}
 
 Do **not** translate link references. This holds true for external links, and
-paths to website pages and section-local resources such as [images](#images).
+paths to website pages and section-local resources such as
+[images and other assets](#images).
 
 The only exception is for links to external pages (such as
 <https://en.wikipedia.org>) that have a version specific to your local. Often
@@ -144,19 +149,20 @@ This would be translated in French as:
 [link definitions]:
   https://spec.commonmark.org/0.31.2/#link-reference-definitions
 
-### Images and diagrams {#images}
+### Images and other assets {#images}
 
-Do **not** make copies of image files unless you localize text in the image
-itself[^shared-images].
-
-**Do** translate text in [Mermaid][] diagrams.
-
-[^shared-images]:
-    Hugo is smart about the way that it renders image files that are shared
+- Do **not** make copies of image, video, or other non-content asset files
+  unless you localize text in the file itself.
+  - Hugo is smart about the way that it renders image files that are shared
     across site localizations. That is, Hugo will output a _single_ image file
-    and share it across locales.
+    and share it across locales. For details, see [Page bundles][].
+  - This is enforced by a [`LOCALIZATION` guidelines][l10n-check] check.
 
+- **Do** translate text in [Mermaid][] diagrams.
+
+[l10n-check]: ../pr-checks/#localization
 [Mermaid]: https://mermaid.js.org
+[Page bundles]: https://gohugo.io/content-management/multilingual/#page-bundles
 
 ### Include files {#includes}
 
@@ -475,6 +481,33 @@ when **Spelling** has no natural-language dictionary to add.
   rules to `.prettierignore`
 
 ## Approver and maintainer guidance
+
+### Enabling auto-merge on locale-only PRs {#auto-merge}
+
+Members of a locale's maintainers team can enable [GitHub auto-merge][] on a
+locale-only PR by commenting `/auto-merge` (or `/auto-merge:enable`; use
+`/auto-merge:disable` to turn it off). The directive must be on its own line,
+with no leading text or whitespace, as the first or last non-blank line of the
+comment. It may appear at most once. For example, you can write:
+
+```text
+LGTM
+/auto-merge
+```
+
+This lets established localization teams land their own PRs without waiting on a
+docs maintainer. GitHub, branch protection, and CODEOWNERS rules still gate the
+merge: the PR only merges once all required reviews are in and checks pass.
+
+An auto-merge comment is honored only when every changed file is owned by a
+locale you maintain, so it can't be used to make changes to shared or English
+content. For the eligibility rules and command details, see the [helper
+README][].
+
+[GitHub auto-merge]:
+  https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
+[helper README]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
 
 ### PRs with semantic changes should not span locales {#prs-should-not-span-locales}
 

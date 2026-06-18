@@ -2,18 +2,15 @@
 title: Linuxにコレクターをインストールする
 linkTitle: Linux
 weight: 100
-default_lang_commit: ec1657d18d8e1c63bf353049e8a7bf7e65c3e9cb
-drifted_from_default: true
+default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
 ---
-
-## Linux {#linux}
 
 すべてのコレクターのリリースには、Linux amd64/arm64/i386システム用のAPK、DEB、RPMパッケージが含まれています。
 インストール後のデフォルト設定は `/etc/otelcol/config.yaml` にあります。
 
 > Note: サービスの自動設定には `systemd` が必要です。
 
-### DEBのインストール {#deb-installation}
+## DEBのインストール {#deb-installation}
 
 Debian系のシステムで使い始めるには、以下のコマンドを実行します。
 
@@ -46,7 +43,7 @@ sudo dpkg -i otelcol_{{% param vers %}}_linux_386.deb
 
 {{% /tab %}} {{< /tabpane >}}
 
-### RPMのインストール {#rpm-installation}
+## RPMのインストール {#rpm-installation}
 
 Red Hat系のシステムで使い始めるには、以下のコマンドを実行します。
 
@@ -79,10 +76,10 @@ sudo rpm -ivh otelcol_{{% param vers %}}_linux_386.rpm
 
 {{% /tab %}} {{< /tabpane >}}
 
-### 手動でのLinuxへのインストール {#manual-linux-installation}
+## 手動でのインストール {#manual-installation}
 
 Linux向けの[リリース][releases]は、さまざまなアーキテクチャに対応しています。
-バイナリを含むファイルをダウンロードし、あなたのマシンに手動でインストールしてください。
+バイナリファイルをダウンロードし、あなたのマシンに手動でインストールしてください。
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
@@ -114,21 +111,25 @@ tar -xvf otelcol_{{% param vers %}}_linux_ppc64le.tar.gz
 
 {{% /tab %}} {{< /tabpane >}}
 
-### 自動サービスコンフィギュレーション {#automatic-service-configuration}
+## 自動サービスコンフィギュレーション {#automatic-service-configuration}
 
-デフォルトでは、`otelcol` systemd サービスはインストール後に `--config=/etc/otelcol/config.yaml` オプションをつけて起動します。
+OpenTelemetry Collector が `systemd` サービスとして動作する場合、デフォルトで `/etc/otelcol/config.yaml` 設定ファイルを使用して起動します。
 
-別の設定を使うには、`/etc/otelcol/otelcol.conf` systemd 環境ファイルにある `OTELCOL_OPTIONS` 変数を適切なコマンドラインオプションに設定します。
-`/usr/bin/otelcol --help` を実行すると、利用可能なすべてのオプションを確認できます。
-このファイルに追加の環境変数を追加して `otelcol` サービスに渡せます。
+この設定を変更したい場合は、`systemd` 環境ファイル `/etc/otelcol/otelcol.conf` 内の `OTELCOL_OPTIONS` 変数を編集します。
+同じファイルで `otelcol` サービスの追加の環境変数を定義することもできます。
+利用可能なすべてのオプションの一覧を確認するには、以下のコマンドを実行します。
 
-コレクターの設定ファイルまたは `/etc/otelcol/otelcol.conf` を変更した場合は、`otelcol` サービスを再起動して変更を適用します。
+```sh
+/usr/bin/otelcol --help
+```
+
+Collector の設定ファイル（`config.yaml`）または環境ファイル（`otelcol.conf`）を変更した場合は、サービスを再起動して変更を適用する必要があります。
 
 ```sh
 sudo systemctl restart otelcol
 ```
 
-`otelcol` サービスからの出力をチェックするには、以下を実行します。
+`otelcol` サービスのログ出力をチェックするには、以下を実行します。
 
 ```sh
 sudo journalctl -u otelcol

@@ -1,4 +1,4 @@
-# cSpell:ignore worktrees
+# cSpell:ignore worktrees venv mypy pytest lycheecache
 
 /.claude/worktrees
 /.claude/settings.local.json
@@ -20,6 +20,9 @@ tmp/
 # Misc
 scripts/collector.yaml
 assets/jsconfig.json
+/.htmltest.yml
+/.lycheecache
+/lychee.toml
 /.netlify
 
 # IntelliJ
@@ -31,5 +34,9 @@ assets/jsconfig.json
 # WebStorm
 **/.idea/**
 
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.venv/
 *.pyc
 *uv.lock

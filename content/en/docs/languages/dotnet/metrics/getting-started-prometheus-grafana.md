@@ -4,7 +4,7 @@ linkTitle: Export to Prometheus
 description:
   Learn how to export metrics to Prometheus and visualize them in Grafana
 weight: 30
-cSpell:ignore: OTLP promlabs PromQL
+cSpell:ignore: promlabs PromQL
 ---
 
 This guide will show you how to export OpenTelemetry metrics to Prometheus and
