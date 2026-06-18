@@ -5,6 +5,7 @@ description: >-
   alt="JavaScript"> OpenTelemetry 在 JavaScript 中的特定语言实现（适用于 Node.js 和浏览器）。
 aliases: [/js, /js/metrics, /js/tracing]
 default_lang_commit: 3d401ad8e2e5d528c107d83d202b4c6f62c020ef # patched
+drifted_from_default: true
 redirects:
   - { from: /js/*, to: ':splat' }
   - { from: /docs/js/*, to: ':splat' }

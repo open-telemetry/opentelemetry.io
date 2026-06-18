@@ -1,10 +1,11 @@
 ---
-default_lang_commit: 3c38c3392fc74f8f071a7a0179fbd141faa7dc40
+default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
 ---
 
-これはOpenTelemetry{{ $name }}のドキュメントです。
-OpenTelemetryはオブザーバビリティのためのフレームワークであり、メトリクス、ログ、トレースといったアプリケーションのテレメトリーデータの生成および収集を支援するように設計された API、SDK、およびツール群で構成されています。
-このドキュメントは、OpenTelemetry {{ $name }}の使い方を理解し、利用を開始するための手助けとなるように作られています。
+OpenTelemetry {{ $name }} のドキュメントへようこそ。
+このセクションでは、OpenTelemetry の API と SDK を使い、{{ $name }} でメトリクス、ログ、トレースなどのテレメトリーデータを生成・収集する方法を紹介します。
+
+これらのページは、OpenTelemetry {{ $name }} の利用を開始し、現在の機能とステータスを理解するための手助けとなるように作られています。
 
 ## ステータスとリリース {#status-and-releases}
 

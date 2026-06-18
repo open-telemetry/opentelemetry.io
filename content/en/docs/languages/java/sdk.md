@@ -2,7 +2,7 @@
 title: Manage Telemetry with SDK
 weight: 12
 aliases: [exporters]
-cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
+cSpell:ignore: autoconfigured FQCNs Interceptable okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

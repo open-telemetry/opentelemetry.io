@@ -190,11 +190,7 @@ mounts:
     sites: *pt-matrix
 
   ## static
-  - files: ['! favicons/**']
-    source: static
-    target: static
-  # Mount favicons to the site root where they are expected
-  - source: static/favicons
+  - source: static
     target: static
   - source: content-modules/semantic-conventions/schemas
     target: static/schemas
