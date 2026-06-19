@@ -1814,6 +1814,11 @@ approvers:
       - python-genai-approvers
     html_url: https://github.com/DylanRussell
     avatar_url: https://avatars.githubusercontent.com/u/7339604?v=4
+  - name: eternalcuriouslearner
+    teams:
+      - python-genai-approvers
+    html_url: https://github.com/eternalcuriouslearner
+    avatar_url: https://avatars.githubusercontent.com/u/266411623?v=4
   - name: ferd
     teams:
       - erlang-approvers
@@ -2843,6 +2848,9 @@ members:
   - name: mxiamxia
     html_url: https://github.com/mxiamxia
     avatar_url: https://avatars.githubusercontent.com/u/5331577?v=4
+  - name: neil-the-nowledgeable
+    html_url: https://github.com/neil-the-nowledgeable
+    avatar_url: https://avatars.githubusercontent.com/u/254185769?v=4
   - name: nekufa
     html_url: https://github.com/nekufa
     avatar_url: https://avatars.githubusercontent.com/u/405067?v=4
