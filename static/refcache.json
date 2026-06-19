@@ -22063,10 +22063,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:04:02.876951485Z"
   },
-  "https://www.docsy.dev/docs/best-practices/link-checking/": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-18T19:38:25.336677-04:00"
-  },
   "https://www.docsy.dev/docs/content/adding-content/#alerts": {
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:04:32.185480204Z"
