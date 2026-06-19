@@ -1,5 +1,6 @@
 ---
 title: OpenTelemetry
+default_lang_commit: temporary-placeholder
 developer_note: |
   Temporary placeholder to bootstrap the Korean (ko) localization. It makes
   content/ko/ exist so CI (FILE FORMAT and CODEOWNERS check) passes. Remove this
