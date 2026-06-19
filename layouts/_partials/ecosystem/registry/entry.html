@@ -145,11 +145,9 @@
                 {{ if $index }}, {{ end }}
                 {{ if eq $author.name "OpenTelemetry Authors" -}}
                     <a href="/" class="badge rounded-pill text-bg-primary">🔭 {{ $author.name }} 🔭</a>
-                {{- else if isset $author "url" -}}
+                {{ else if isset $author "url" }}
                     {{ $href := printf "href=%q" $author.url | safeHTMLAttr -}}
                     <a {{ $href }} target="_blank" rel="noopener" class="card-link external-link">{{ $author.name }}</a>
-                {{- else -}}
-                    {{ $author.name }}
                 {{ else -}}
                     {{ $author.name -}}
                 {{ end -}}
@@ -228,7 +226,6 @@
             {{- end -}}
             </div>
         </div>
-        <div></div>
         {{ with .urls.website -}}
         {{ $websiteHref := printf "href=%q" . | safeHTMLAttr -}}
         <a {{ $websiteHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-house" aria-hidden="true"></i>&nbsp;Website</a>
