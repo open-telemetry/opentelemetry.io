@@ -6,7 +6,7 @@ weight: 200
 default_lang_commit: 0cbe6d7a9d94ab78637023f0d31119fa7ac7ebe1
 ---
 
-Ten słownik definiuje terminologię i [pojęcia](/docs/concepts/) specyficzne dla
+Ten glosariusz definiuje terminologię i [pojęcia](/docs/concepts/) specyficzne dla
 projektu OpenTelemetry oraz wyjaśnia, jak używać terminów z dziedziny
 obserwowalności w kontekście OpenTelemetry.
 
@@ -34,9 +34,10 @@ lub dla innych aplikacji.
 
 ### APM {#apm}
 
-Application Performance Monitoring — monitorowanie aplikacji, ich wydajności
-(szybkość, niezawodność, dostępność itp.) w celu wykrywania problemów,
-ostrzeganie oraz narzędzia do znajdowania przyczyny źródłowej.
+Monitorowanie Wydajności Aplikacji (en. Application Performance Monitoring) -
+monitorowanie aplikacji, ich wydajności (szybkość, niezawodność, dostępność itp.)
+w celu wykrywania problemów, ostrzeganie oraz narzędzia do znajdowania przyczyny
+źródłowej.
 
 ### Atrybut {#attribute}
 
@@ -58,13 +59,13 @@ Mechanizm propagacji [metadanych](#metadata) ułatwiający ustalenie związku
 przyczynowego między zdarzeniami i usługami. Zobacz [specyfikację
 bagażu][baggage].
 
-### Kardynalność {#cardinality}
+### Liczebność {#cardinality}
 
 Liczba unikalnych wartości dla danego [atrybutu](#attribute) lub zestawu
-atrybutów. Wysoka kardynalność oznacza wiele unikalnych wartości, co może
+atrybutów. Wysoka liczebność oznacza wiele unikalnych wartości, co może
 wpływać na wydajność i wymagania magazynowe backendów telemetrii. Na przykład
-atrybut `user_id` miałby wysoką kardynalność, natomiast atrybut `status_code` z
-wartościami takimi jak "200", "404", "500" miałby niską kardynalność.
+atrybut `user_id` miałby wysoką liczebność, natomiast atrybut `status_code` z
+wartościami takimi jak "200", "404", "500" miałby niską liczebność.
 
 ### Biblioteka kliencka {#client-library}
 
@@ -84,8 +85,8 @@ dostawcy, która odbiera, przetwarza i eksportuje dane telemetryczne. Pojedynczy
 plik binarny, który można wdrożyć jako agenta lub bramę.
 
 > **Pisownia**: Odnosząc się do [OpenTelemetry Collector][], zawsze pisz
-> Kolektor z wielkiej litery. Używaj samego "Kolektor", gdy używasz go jako
-> przymiotnika &mdash; np. "konfiguracja Kolektora".
+> Kolektor z wielkiej litery. Użycie samego "Kolektor" również jest
+dopuszczalne &mdash; np. "konfiguracja Kolektora".
 
 [OpenTelemetry Collector]: /docs/collector/
 
@@ -104,7 +105,7 @@ kontekstu][context propagation].
 
 ### DAG {#dag}
 
-[Directed Acyclic Graph][dag] - skierowany graf acykliczny.
+[Skierowany graf acykliczny][dag] (en. Directed Acyclic Graph).
 
 ### Źródło danych {#data-source}
 
@@ -126,8 +127,8 @@ Zobacz [Śledzenie rozproszone][distributed tracing].
 
 ### Dystrybucja {#distribution}
 
-Dystrybucja to opakowanie wokół repozytorium źródłowego OpenTelemetry z pewnymi
-dostosowaniami. Zobacz [Dystrybucje][distributions].
+Dystrybucja to dostosowana wersja repozytorium nadrzędnego OpenTelemetry.
+Zobacz [Dystrybucje][distributions].
 
 ### Encja {#entity}
 
@@ -355,7 +356,7 @@ może być wdrożona w wielu lokalizacjach.
 
 ### Sygnał {#signal}
 
-Jeden z [śladów](#trace), [metryk](#metric) lub [logów](#log). Zobacz
+Jedno ze [Ślady](#trace), [Metryki](#metric) lub [Logi](#log). Zobacz
 [Sygnały][signals].
 
 ### Odcinek {#span}
