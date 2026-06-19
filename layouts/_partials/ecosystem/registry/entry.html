@@ -142,7 +142,7 @@
             <small class="text-body-secondary">
             by {{/**/ -}}
             {{ range $index, $author := .authors -}}
-                {{ if $index }}, {{ end -}}
+                {{ if $index }}, {{ end }}
                 {{ if eq $author.name "OpenTelemetry Authors" -}}
                     <a href="/" class="badge rounded-pill text-bg-primary">🔭 {{ $author.name }} 🔭</a>
                 {{- else if isset $author "url" -}}
