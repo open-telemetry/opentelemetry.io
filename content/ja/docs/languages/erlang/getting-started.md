@@ -60,7 +60,7 @@ def deps do
 end
 ```
 
-最後の2つは、アプリケーション起動時にセットアップする必要があります:
+最後の2つは、アプリケーション起動時にセットアップする必要があります。
 
 ```elixir
 # application.ex
@@ -72,7 +72,7 @@ def start(_type, _args) do
 end
 ```
 
-また、`endpoint.ex` ファイルに以下の行が含まれていることを確認してください:
+また、`endpoint.ex` ファイルに以下の行が含まれていることを確認してください。
 
 ```elixir
 # endpoint.ex
@@ -162,7 +162,7 @@ scope "/api", RollDiceWeb do
 end
 ```
 
-そして、計装なしのシンプルな `DiceController` を作成します:
+そして、計装なしのシンプルな `DiceController` を作成します。
 
 ```elixir
 # lib/roll_dice_web/controllers/dice_controller.ex
@@ -351,7 +351,7 @@ Elli に含まれていない追加の依存関係がいくつか必要です。
 - `opentelemetry_api_experimental`: メトリクスのサポートを含む API の不安定な部分です。
 - `opentelemetry_experimental`: メトリクスのサポートを含む SDK の不安定な部分です。
 
-これらはすべて `elli` と共に rebar3 の依存関係と、リリースに含めるアプリケーションに追加されます:
+これらはすべて `elli` と共に rebar3 の依存関係と、リリースに含めるアプリケーションに追加されます。
 
 ```erlang
 {deps, [elli,
@@ -378,7 +378,7 @@ Elli に含まれていない追加の依存関係がいくつか必要です。
 ]}.
 ```
 
-また、依存関係はアプリケーションの `.app.src`、`src/roll_dice.app.src` に含める必要があります:
+また、依存関係はアプリケーションの `.app.src`、`src/roll_dice.app.src` に含める必要があります。
 
 ```erlang
 {application, roll_dice,
@@ -404,7 +404,7 @@ Elli に含まれていない追加の依存関係がいくつか必要です。
 
 ### 設定 {#configuration}
 
-SDK と Experimental SDK は `config/sys.config` で設定します:
+SDK と Experimental SDK は `config/sys.config` で設定します。
 
 ```erlang
 {opentelemetry,
@@ -421,7 +421,7 @@ SDK と Experimental SDK は `config/sys.config` で設定します:
 
 ### Elli サーバー {#the-elli-server}
 
-HTTP サーバーは、アプリケーションのトップレベルスーパーバイザー `src/roll_dice_sup.erl` で起動されます:
+HTTP サーバーは、アプリケーションのトップレベルスーパーバイザー `src/roll_dice_sup.erl` で起動されます。
 
 ```erlang
 init([]) ->
@@ -441,7 +441,7 @@ init([]) ->
     {ok, {SupFlags, ChildSpecs}}.
 ```
 
-ハンドラー `roll_dice_handler` には、`GET` リクエストを受け取りランダムなサイコロの出目を返す `handle` 関数が必要です:
+ハンドラー `roll_dice_handler` には、`GET` リクエストを受け取りランダムなサイコロの出目を返す `handle` 関数が必要です。
 
 ```erlang
 handle(Req, _Args) ->
@@ -462,14 +462,14 @@ do_roll() ->
 
 ### 計装 {#instrumentation}
 
-計装の最初のステップは、Elli の計装ライブラリ [otel_elli_middleware](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_elli) を追加することです:
+計装の最初のステップは、Elli の計装ライブラリ [otel_elli_middleware](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_elli) を追加することです。
 
 ```erlang
 {callback_args, [{mods, [{otel_elli_middleware, []},
                          {roll_dice_handler, []}]}]},
 ```
 
-次に、ハンドラーで、ハンドラーが作成したスパンの名前を HTTP のセマンティック規約に合わせて更新する必要があります:
+次に、ハンドラーで、ハンドラーが作成したスパンの名前を HTTP のセマンティック規約に合わせて更新する必要があります。
 
 ```erlang
 handle('GET', [~"rolldice"], _Req) ->
@@ -493,7 +493,7 @@ do_roll() ->
                end).
 ```
 
-最後に必要なコードは、`roll_dice_app.erl` で計装 `ROLL_COUNTER` を作成することです:
+最後に必要なコードは、`roll_dice_app.erl` で計装 `ROLL_COUNTER` を作成することです。
 
 ```erlang
 -include_lib("opentelemetry_api_experimental/include/otel_meter.hrl").
