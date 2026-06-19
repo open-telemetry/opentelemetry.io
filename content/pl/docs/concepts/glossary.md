@@ -3,7 +3,7 @@ title: Glosariusz
 description:
   Definicje i konwencje dotyczące terminów stosowanych w OpenTelemetry.
 weight: 200
-default_lang_commit: 0cbe6d7a9d94ab78637023f0d31119fa7ac7ebe1
+default_lang_commit: 9a7c5701fba4f91cf75c66e57279a3beed458f63
 ---
 
 Ten glosariusz definiuje terminologię i [pojęcia](/docs/concepts/) specyficzne
@@ -416,10 +416,10 @@ serwowane na stronach internetowych na żądanie. Zobacz [zPages][].
 [Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
 [log record]: /docs/specs/otel/glossary#log-record
-[log]: /docs/specs/otel/glossary#log
+[log]: /docs/concepts/signals/logs/
 [metric]: ../signals/metrics/
 [opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
-[propagators]: /docs/languages/go/instrumentation/#propagators-and-context
+[propagators]: /docs/specs/otel/context/api-propagators/
 [Prometheus]: https://prometheus.io/
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
