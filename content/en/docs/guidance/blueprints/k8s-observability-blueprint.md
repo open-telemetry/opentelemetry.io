@@ -1,6 +1,6 @@
 ---
-title: Centralized Observability Platform on Kubernetes
-linkTitle: Centralized Observability Platform on Kubernetes
+title: Kubernetes Observability
+linkTitle: Kubernetes Observability
 date: 2026-04-23
 author: Alexandre Ferreira
 ---
@@ -12,34 +12,34 @@ This blueprint outlines a strategic reference for Platform Engineering and SRE t
 By implementing the patterns in this blueprint, organizations can expect to achieve:
 
 - Out-of-the-box visibility into workload resource usage, OOM events, probe failures, and pod lifecycle state without application-side changes.
-- Reliable monitoring of Kubernetes critical components (CoreDNS, CNI plugins, Ingress controllers, KEDA) with known-good dashboards and alerts.
+- Path to reliable monitoring of Kubernetes critical components (CoreDNS, CNI plugins, Ingress controllers, KEDA, etc)
 - Uniform metadata enrichment using OTel semantic conventions, enabling correlated investigation across metrics, logs, and traces.
 - Self-monitoring of the telemetry collection infrastructure so silent data gaps are detected before they affect incident response.
-- A clear decision framework for Prometheus format versus OTLP, preventing duplicate collection and inconsistent naming.
+- When to use OTLP native ingestion like cluster metrics vs Prometheus ingestion for Control Plane components that doesn't offer OTLP support yet - please note that Prometheus compatibility on OTel pipelines are subject of a separate blueprint
 
 ## Background
 
-Kubernetes clusters host two classes of observable entities. **Workloads** — application containers and the Kubernetes primitives managing them — emit signals via OTel SDKs, but their resource utilization and operational state (CPU throttling, OOM kills, pod phase, probe results) are only visible through Kubernetes-specific APIs. **Critical infrastructure components** — CoreDNS, CNI plugins, Ingress controllers, volume subsystems, KEDA — are platform-owned, expose Prometheus metrics natively, and require dedicated scrape configurations.
+Kubernetes clusters host two classes of observable entities. **Workloads** — application containers and the Kubernetes primitives (Statefulset, Deployment, Daemonset, ReplicaSet, etc) managing them — emit signals via OTel SDKs, but their resource utilization and operational state (CPU throttling, OOM kills, pod phase, probe results) are only visible through Kubernetes-specific APIs. **Critical infrastructure components** — CoreDNS, CNI plugins, Ingress controllers, volume subsystems, KEDA, and similar platform services — are (generally) platform-owned, expose Prometheus metrics natively, and require dedicated scrape configurations.
 
-This blueprint focuses on *what* to collect and *how to label it*. Collector pipeline topology (gateway vs. agent, batching, retry) is documented in a separate blueprint. This blueprint assumes an OTel Collector is already available in the cluster.
+This blueprint focuses on *what* to collect and *how to label it*. Collector pipeline topology (gateway vs. agent, batching, retry) is documented in a separate blueprint. This blueprint assumes a set of OTel Collectors are already available in the cluster
 
 ## Common Challenges
 
-### 1. Workload Telemetry Is Incomplete Without Dedicated Scrapers
+### 1. Workload Telemetry Is Incomplete
 
-CPU throttling, OOM kills, pod phase transitions, and probe failures are not emitted by application code. They are only accessible through the kubelet API, cAdvisor, and kube-state-metrics — separate workloads the platform team must explicitly deploy and scrape.
+CPU throttling, OOM kills, pod phase transitions, and probe failures are not emitted by application code. They are only accessible through the Kubernetes API server, the kubelet, and cAdvisor — sources the platform team must explicitly collect.
 
 This leads to:
 
 - **Invisible resource pressure**: CPU throttling at the cgroup level surfaces only as increased latency, with no infrastructure attribution.
 - **OOM kills appear as application crashes**: Without a correlated OOM signal, operators cannot distinguish a memory misconfiguration from an application bug.
-- **Throttled versus OOM is indistinguishable**: Both cause pod restarts. Without `kube_pod_container_status_last_terminated_reason` and `container_cpu_cfs_throttled_periods_total`, there is no basis for remediation.
+- **Throttled versus OOM is indistinguishable**: Both cause pod restarts. Without container restart and last-terminated-reason signals (`k8s.container.restarts` from the API server) correlated with kubelet CPU/memory metrics, there is no basis for remediation.
 
 ### 2. Critical Cluster Components Are Not Observable by Default
 
-CoreDNS, CNI plugins, Ingress controllers, and KEDA each expose metrics from different endpoints with different access requirements and no standard discovery mechanism.
+CoreDNS, CNI plugins, Ingress controllers, KEDA, cert-manager **and many others** each expose metrics with no standard discovery mechanism.
 
-This leads to:
+Some examples of what this leads to:
 
 - **DNS latency spikes look like application problems**: CoreDNS slowdowns appear as upstream timeouts, indistinguishable from a slow downstream service without a DNS-layer metric.
 - **CNI packet drops are unattributed**: Packets dropped at the network policy layer surface as intermittent pod connectivity failures with no network-layer attribution.
@@ -47,39 +47,39 @@ This leads to:
 
 ### 3. Telemetry Collection Infrastructure Has No Self-Monitoring
 
-KSM, node-exporter, and the OTel Collector are the foundation of all cluster observability. When they fail, the resulting gaps are silent — dashboards show "no data" and no alert fires on the absence of metrics.
+The OTel Collector and its receivers are the foundation of all cluster observability. When they fail, the resulting gaps are silent — dashboards show "no data" and no alert fires on the absence of metrics.
 
 This leads to:
 
-- **A crashed KSM removes all workload-state visibility**: The `kube_pod_*` and `kube_deployment_*` families disappear silently; operators may not notice until mid-incident.
-- **Tainted nodes have no node-exporter coverage**: GPU or spot nodes without DaemonSet tolerations have no CPU, memory, or filesystem metrics.
+- **A crashed cluster-metrics Collector removes all workload-state visibility**: The `k8s.pod.*` and `k8s.deployment.*` families disappear silently; operators may not notice until mid-incident.
+- **Tainted nodes have no DaemonSet Collector coverage**: GPU or spot nodes without DaemonSet tolerations have no CPU, memory, or filesystem metrics.
 - **The Collector drops data silently under backpressure**: SLO calculations based on incomplete data produce false confidence.
 
-### 4. Metadata Is Inconsistent Across Signals
+### 4. Metadata Is Inconsistent Across Signals and Layers
 
 Each scraper attaches different label schemas (`pod_name`, `pod`, `kubernetes_namespace`, `namespace`). OTel semantic convention attributes (`k8s.pod.name`, `k8s.namespace.name`) are not applied automatically.
 
 This leads to:
-
-- **Cross-signal joins require per-query remapping**: Correlating a KSM metric with an OTel trace requires knowing the label mismatch and applying a transform in every query.
+- **Disjointed Infra telemetry from App telemetry**: Increases cognitive load on operators to troubleshoot if a certain issue is caused by the app/container or infra/resources
 - **Alert rules break silently on scraper changes**: An alert written against `pod_name` stops matching when a new scraper uses `pod`.
 - **Organizational context is absent**: Team ownership, environment, and tier labels from pod annotations are rarely in telemetry, making alert routing and cost attribution manual.
 
-### 5. There Is No Decision Framework for Prometheus Format Versus OTLP
-
-The Kubernetes ecosystem exposes metrics in Prometheus format; OTel SDKs emit OTLP. Without an explicit policy, teams collect both for the same signals, creating duplicates.
-
-This leads to:
-
-- **Duplicate signals and doubled storage costs**: Two time series for the same signal, each with different label schemas and timestamp granularity.
-- **Naming conflicts that break alert rules**: `http_requests_total` and `http.server.request.count` represent the same signal; an alert on one does not fire when the pipeline switches to the other.
-
 ## General Guidelines
 
-### 1. Deploy Dedicated Scrapers for Workload and Infrastructure Signals
+### 1. Use OTel native exporters to collect Workload and Infrastructure signals
 <small>Challenges Addressed: 1, 2</small>
 
-Platform teams must deploy kube-state-metrics and node-exporter as cluster-managed workloads and configure the OTel Collector to scrape the kubelet and cAdvisor APIs. For each critical component (CoreDNS, CNI, Ingress, KEDA), the platform team must explicitly declare a scrape job — there is no auto-discovery.
+Up until recently, teams had to use Prometheus components like kube-state-metrics and node-exporter to get telemetry from workloads and resource usage.
+
+Now, the recommended best practice is to use Otel native receivers:
+
+| OpenTelemetry Collector component | Helm chart preset | Analog Prometheus/Kubernetes component | What it covers                                                                                                                                   |
+| --------------------------------- | ----------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **`k8s_cluster` receiver**        | `clusterMetrics`  | **kube-state-metrics**                 | Kubernetes object/state metrics from the Kubernetes API, such as pods, nodes, namespaces, workloads, quotas, and conditions.                     |
+| **`hostmetrics` receiver**        | `hostMetrics`     | **node-exporter**                      | Host/node OS metrics such as CPU, memory, filesystem, disk I/O, network, load, paging, processes, and system metrics.                            |
+| **`kubeletstats` receiver**       | `kubeletMetrics`  | **cAdvisor / kubelet metrics**         | Node, pod, container, and volume resource metrics from the kubelet. This is the closest OTel-native analog for cAdvisor-style container metrics. |
+
+For each critical component (CoreDNS, CNI, Ingress, KEDA, core-dns, cert-manager, etc), the platform team must explicitly configure these components to expose metrics and configure the Otel collectors to properly collect them, either explicitly or via annotation auto-discovery. (Refer to Prometheus blueprint)
 
 Outcomes:
 - Complete workload-level resource coverage (throttling, OOM, pod phase, probe failures) without any application code changes.
@@ -112,110 +112,94 @@ Outcomes:
 ### 4. Instrument the Instrumentation — Self-Monitor All Telemetry Collection Components
 <small>Challenges Addressed: 3</small>
 
-KSM, node-exporter, and the OTel Collector must each be scraped for their own internal health metrics and alerted on using the same pipeline as primary data. Self-monitoring must cover: KSM API list/watch errors, node-exporter DaemonSet coverage versus total node count, Collector queue depth and drop rates, and `up == 0` for every configured scrape target.
+The OTel Collector and its receivers must be monitored for their own internal health metrics and alerted on using the same pipeline as primary data. Self-monitoring must cover: `k8s_cluster` receiver Kubernetes API errors, DaemonSet Collector coverage versus total node count, Collector queue depth and drop rates, and `up == 0` for every remaining Prometheus scrape target (critical components).
 
 Outcomes:
 - Silent data gaps are paged before affecting incident response or SLO calculations.
-- An observability coverage SLO is enforceable (e.g., "100% of nodes have active node-exporter scrapes").
-
-### 5. Establish a Signal-Format Decision Framework: Prometheus Versus OTLP
-<small>Challenges Addressed: 5</small>
-
-An unambiguous rule governs which format to use at each collection point:
-
-- **Prometheus + `prometheusreceiver`**: for Kubernetes infrastructure components (KSM, node-exporter, CoreDNS, CNI, Ingress, KEDA) that expose Prometheus natively and have no OTLP support.
-- **OTLP**: for applications instrumented with an OTel SDK, or any component with native OTLP support.
-- **Never collect the same signal in both formats.** When onboarding a new component, check for OTLP support first; fall back to Prometheus only if unavailable. Apply naming normalization via `metricstransformprocessor` for Prometheus-scraped metrics that have a canonical OTel equivalent.
-
-Outcomes:
-- Storage costs are predictable; no signal is double-counted.
-- Alert rules reference a single authoritative metric name per signal.
+- An observability coverage SLO is enforceable (e.g., "100% of nodes have an active DaemonSet Collector").
 
 ### 6. Provide Reference Deployment Architectures for Each Telemetry Component
 <small>Challenges Addressed: 1, 2, 3</small>
 
-Each telemetry component in this blueprint has a canonical deployment reference: Helm chart, RBAC requirements, resource requests, and links to known-good dashboards and alerts. New clusters reach full observability coverage with a repeatable playbook rather than tribal knowledge.
+Each telemetry component in this blueprint has a canonical deployment reference: Helm chart, RBAC requirements, resource requests, and links to sample dashboards and alerts (note that thresholds are almost always environment specific, tune it to your needs). New clusters reach full observability coverage with a repeatable playbook rather than tribal knowledge.
 
 ## Implementation
 
-### 0. Deploy the OpenTelemetry Operator and Bootstrap the Collector
+### 0. Deploy the OpenTelemetry Operator and the Collector Helm Chart
 <small>Guidelines Supported: 2, 6</small>
 
-Deploy the OTel Operator using the `opentelemetry-operator` Helm chart. cert-manager is required for webhook TLS; install it first if not already present.
+First, deploy the OTel Operator using the `opentelemetry-operator` Helm chart. The Operator and its TargetAllocator remain responsible for distributed **Prometheus scraping of critical components** (Steps 4–7).
 
 ```bash
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 helm install opentelemetry-operator open-telemetry/opentelemetry-operator \
-  --namespace opentelemetry-operator-system \
-  --create-namespace \
-  --set admissionWebhooks.certManager.enabled=true
+  --namespace opentelemetry --create-namespace
 ```
 
-Once running, declare an `OpenTelemetryCollector` CR in Deployment mode with `targetAllocator.enabled: true`. The TargetAllocator needs a ClusterRole to list/watch `Services`, `Endpoints`, `Pods`, `Nodes`, and `Namespaces`. The Collector service account needs separate ClusterRole rules for kubelet access (Action 3) and `k8sattributesprocessor` (Action 4).
+Then deploy Collectors with the `opentelemetry-collector` Helm chart. Rather than hand-writing receiver, processor, and RBAC configuration, this blueprint enables the chart's **presets** — each preset wires the matching receiver/processor into the pipeline and generates the required RBAC, volumes, and mounts automatically. The remaining steps are `values.yaml` fragments for this chart.
+
+Because the native receivers have different deployment requirements (see Guideline 2), install the chart as **two releases**:
+
+- a single-replica **Deployment** for cluster-wide metrics (`clusterMetrics`, Step 1)
+- a **DaemonSet** for per-node host and kubelet metrics (`hostMetrics` + `kubeletMetrics`, Step 2)
+
+Both releases enable the `kubernetesAttributes` preset (Step 3). Use a Collector image that includes the Contrib receivers, for example:
+
+```bash
+helm install otel-cluster open-telemetry/opentelemetry-collector \
+  --namespace opentelemetry --values cluster-values.yaml
+helm install otel-agent open-telemetry/opentelemetry-collector \
+  --namespace opentelemetry --values agent-values.yaml
+```
 
 Documentation:
 - [OpenTelemetry Operator Helm chart](https://opentelemetry.io/docs/platforms/kubernetes/helm/operator/)
-- [OpenTelemetryCollector CRD](https://opentelemetry.io/docs/platforms/kubernetes/operator/collector/)
+- [OpenTelemetry Collector Helm chart](https://opentelemetry.io/docs/platforms/kubernetes/helm/collector/)
 - [TargetAllocator](https://opentelemetry.io/docs/platforms/kubernetes/operator/target-allocator/)
 
-### 1. Deploy kube-state-metrics
+### 1. Collect Cluster-State Metrics with the `clusterMetrics` Preset
 <small>Guidelines Supported: 1, 6</small>
 
-KSM provides object state (pod phase, restart counts, replica state, node conditions, PVC binding) by watching the Kubernetes API. It does not provide resource consumption — that comes from the kubelet (Action 3).
+The `k8s_cluster` receiver provides object state (pod phase, restart counts, replica state, node conditions) by watching the Kubernetes API — the OTel-native replacement for kube-state-metrics. It does not provide resource consumption; that comes from the kubelet (Step 2).
 
-```bash
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm install kube-state-metrics prometheus-community/kube-state-metrics \
-  --namespace monitoring --create-namespace
+Because the receiver gathers cluster-wide telemetry, run it in a **single-replica Deployment** Collector. Multiple replicas produce duplicate data. Use the `opentelemetry-collector` Helm chart with the `clusterMetrics` preset, which adds the `k8s_cluster` receiver and the required RBAC automatically:
+
+```yaml
+mode: deployment
+replicaCount: 1
+presets:
+  clusterMetrics:
+    enabled: true
 ```
 
-Register KSM (port 8080) as a TargetAllocator scrape target. Enable at minimum: `kube_pod_*`, `kube_deployment_*`, `kube_daemonset_*`, `kube_statefulset_*`, `kube_node_*`, `kube_persistentvolumeclaim_*`, `kube_job_*`. Start with `memory: 256Mi/1Gi` and tune after 24 hours.
+This emits OTel-native equivalents such as `k8s.pod.phase`, `k8s.container.restarts`, `k8s.deployment.available`/`k8s.deployment.desired`, `k8s.node.condition_ready`, and quota/replica state. Requires a Collector image that includes the receiver (such as the Contrib distribution).
 
-Documentation: [kube-state-metrics Helm chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics), [exposed metrics](https://github.com/kubernetes/kube-state-metrics/tree/main/docs)
+Documentation: [Cluster Metrics preset](https://opentelemetry.io/docs/platforms/kubernetes/helm/collector/#cluster-metrics-preset), [Kubernetes Cluster Receiver](https://opentelemetry.io/docs/platforms/kubernetes/collector/components/#kubernetes-cluster-receiver)
 
-### 2. Deploy node-exporter
+### 2. Collect Host and Kubelet Metrics with the `hostMetrics` and `kubeletMetrics` Presets
 <small>Guidelines Supported: 1, 6</small>
 
-node-exporter exposes hardware and OS-level metrics from `/proc` and `/sys`. It must run on every node, including control plane and tainted nodes.
-
-```bash
-helm install prometheus-node-exporter prometheus-community/prometheus-node-exporter \
-  --namespace monitoring \
-  --set tolerations[0].operator=Exists
-```
-
-After installation, verify DaemonSet desired count equals total node count — any mismatch is a coverage gap. Enable: `filesystem`, `meminfo`, `diskstats`, `netstat`, `cpu`, `loadavg`. Disable `hwmon` and `ipvs` unless the cluster uses IPVS kube-proxy. Register as a TargetAllocator scrape target on port 9100.
-
-Documentation: [prometheus-node-exporter Helm chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter)
-
-### 3. Configure the Collector to Scrape Kubelet and cAdvisor
-<small>Guidelines Supported: 1</small>
-
-KSM provides state; the kubelet APIs provide consumption. Use the `kubeletstatsreceiver` in a DaemonSet-mode `OpenTelemetryCollector` CR (separate from the Deployment-mode CR used for cluster-scoped scraping):
+Host/node OS metrics (the node-exporter replacement) come from the `hostmetrics` receiver, and node/pod/container resource consumption (the cAdvisor/kubelet replacement) comes from the `kubeletstats` receiver. Both must run **once per node**, so deploy them together in a single **DaemonSet** Collector with both presets enabled:
 
 ```yaml
-receivers:
-  kubeletstats:
-    collection_interval: 20s
-    auth_type: serviceAccount
-    endpoint: "https://${env:K8S_NODE_NAME}:10250"
-    insecure_skip_verify: true
-    metric_groups: [node, pod, container]
+mode: daemonset
+presets:
+  hostMetrics:
+    enabled: true
+  kubeletMetrics:
+    enabled: true
 ```
 
-Required ClusterRole rules:
-```yaml
-- apiGroups: [""]
-  resources: ["nodes/metrics", "nodes/stats", "nodes/proxy"]
-  verbs: ["get"]
-```
+The `hostMetrics` preset enables the `cpu`, `load`, `memory`, `disk`, `filesystem`, and `network` scrapers and mounts the host root filesystem at `/hostfs`. The `kubeletMetrics` preset adds the `kubeletstats` receiver (with `metric_groups: [node, pod, container]`) and its RBAC. Both presets add the necessary volumes/RBAC automatically and require a Collector image that includes the receivers (such as the Contrib distribution).
 
-Documentation: [kubeletstats receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver)
+To guarantee coverage on control-plane and tainted nodes (GPU, spot), add tolerations to the DaemonSet so every node is scraped — any node without a Collector pod is a coverage gap (see Step 8).
 
-### 4. Configure the `k8sattributesprocessor` for Metadata Enrichment
+Documentation: [Host Metrics preset](https://opentelemetry.io/docs/platforms/kubernetes/helm/collector/#host-metrics-preset), [Kubelet Metrics preset](https://opentelemetry.io/docs/platforms/kubernetes/helm/collector/#kubelet-metrics-preset), [Host Metrics Receiver](https://opentelemetry.io/docs/platforms/kubernetes/collector/components/#host-metrics-receiver), [Kubeletstats Receiver](https://opentelemetry.io/docs/platforms/kubernetes/collector/components/#kubeletstats-receiver)
+
+### 3. Apply Metadata Enrichment with the `kubernetesAttributes` Preset
 <small>Guidelines Supported: 3</small>
 
-Add to all pipelines in every `OpenTelemetryCollector` CR:
+Enable the `kubernetesAttributes` preset on every Collector to wire the `k8sattributesprocessor` into all pipelines and add the required RBAC. For full control over which attributes and labels are extracted, configure the processor explicitly in all pipelines:
 
 ```yaml
 processors:
@@ -256,32 +240,10 @@ Required ClusterRole rules:
 
 If `k8s.cluster.name` is not resolvable from cloud metadata, inject it as a static resource attribute via the `resourceprocessor`.
 
-Documentation: [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor), [K8s semantic conventions](https://opentelemetry.io/docs/specs/semconv/resource/k8s/)
+Documentation: [Kubernetes Attributes preset](https://opentelemetry.io/docs/platforms/kubernetes/helm/collector/#kubernetes-attributes-preset), [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor), [K8s semantic conventions](https://opentelemetry.io/docs/specs/semconv/resource/k8s/)
 
-### 5. Normalize Prometheus Metric Names to OTel Convention
-<small>Guidelines Supported: 5</small>
 
-The `prometheusreceiver` already normalizes `_total` counters. For metrics with a canonical OTel semantic convention equivalent, apply explicit renames via `metricstransformprocessor`:
-
-```yaml
-processors:
-  metricstransform:
-    transforms:
-      - include: node_cpu_seconds_total
-        action: update
-        new_name: system.cpu.time
-      - include: node_memory_MemAvailable_bytes
-        action: update
-        new_name: system.memory.usage
-```
-
-For metrics without a published OTel equivalent (most KSM metrics), retain the Prometheus name. Do not invent OTel-style names — it creates maintenance burden when conventions are eventually published.
-
-Document the authoritative pipeline per signal family. This is the enforcing mechanism against future duplicate collection.
-
-Documentation: [metricstransformprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor), [OTel metric conventions](https://opentelemetry.io/docs/specs/semconv/system/)
-
-### 6. Configure CoreDNS Scraping
+### 4. Configure CoreDNS Scraping
 <small>Guidelines Supported: 1, 6</small>
 
 CoreDNS exposes metrics on port 9153. Scrape the `kube-dns` service in `kube-system`:
@@ -305,7 +267,7 @@ Alert on: `coredns_dns_request_duration_seconds` p99 > 500ms, `coredns_dns_respo
 
 Documentation: [CoreDNS metrics](https://coredns.io/plugins/metrics/)
 
-### 7. Configure CNI Plugin Scraping
+### 5. Configure CNI Plugin Scraping
 <small>Guidelines Supported: 1, 6</small>
 
 **Cilium** (agent port 9962, operator port 9963):
@@ -338,11 +300,11 @@ Key metrics: `cilium_drop_count_total`, `cilium_forward_count_total`, `cilium_po
 ```
 Key metrics: `felix_active_local_policies`, `felix_ipset_errors`, `felix_route_table_sync_errors_total`.
 
-**Flannel**: No Prometheus metrics by default — rely on `node_network_*` from node-exporter.
+**Flannel**: No Prometheus metrics by default — rely on `system.network.*` from the `hostmetrics` receiver (Step 2).
 
 Documentation: [Cilium metrics](https://docs.cilium.io/en/stable/observability/metrics/), [Calico Felix](https://docs.tigera.io/calico/latest/reference/felix/configuration)
 
-### 8. Configure Ingress Controller Scraping
+### 6. Configure Ingress Controller Scraping
 <small>Guidelines Supported: 1, 6</small>
 
 **NGINX Ingress** (port 10254):
@@ -375,7 +337,7 @@ Documentation: [Cilium metrics](https://docs.cilium.io/en/stable/observability/m
 
 Alert on: 5xx rate > 1% over 5 minutes, TLS certificate expiry within 30 days, `up == 0`.
 
-### 9. Configure KEDA Scraping (Conditional)
+### 7. Configure KEDA Scraping (Conditional)
 <small>Guidelines Supported: 1, 6</small>
 
 Applies only to clusters running KEDA. KEDA exposes metrics on port 8080:
@@ -399,29 +361,7 @@ Key metrics: `keda_scaler_active`, `keda_scaler_metrics_value`, `keda_scaler_err
 
 Documentation: [KEDA metrics](https://keda.sh/docs/latest/operate/prometheus/)
 
-### 10. Configure Meta-Monitoring for KSM and node-exporter
-<small>Guidelines Supported: 4, 6</small>
-
-**KSM alerts:**
-```yaml
-- alert: KubeStateMetricsListErrors
-  expr: rate(kube_state_metrics_list_errors_total[5m]) > 0
-  for: 5m
-- alert: KubeStateMetricsDown
-  expr: up{job="kube-state-metrics"} == 0
-  for: 1m
-```
-
-**node-exporter coverage (absence detection):**
-```yaml
-- alert: NodeExporterCoverageGap
-  expr: count(up{job="node-exporter"} == 1) < count(kube_node_info)
-  for: 5m
-  annotations:
-    summary: "node-exporter not running on all nodes"
-```
-
-### 11. Enable and Monitor OTel Collector Internal Telemetry
+### 8. Enable and Monitor OTel Collector Internal Telemetry
 <small>Guidelines Supported: 4</small>
 
 Enable in the `OpenTelemetryCollector` CR:
@@ -430,12 +370,11 @@ service:
   telemetry:
     metrics:
       level: detailed
-      address: 0.0.0.0:8888
     logs:
       level: warn
 ```
 
-Scrape port 8888 and alert on:
+Suggested alerts:
 ```yaml
 - alert: CollectorExporterFailures
   expr: rate(otelcol_exporter_send_failed_metric_points[5m]) > 0
@@ -461,12 +400,14 @@ The patterns described above have been successfully implemented by the following
 
 ### A. RBAC Reference — Minimum Required Permissions
 
+The Helm chart presets (`clusterMetrics`, `hostMetrics`, `kubeletMetrics`, `kubernetesAttributes`) generate the rows below automatically. They are listed for reference and for non-preset deployments.
+
 | Component | Resource | Verbs | Notes |
 |---|---|---|---|
-| kube-state-metrics | `*` (core + apps) | `list`, `watch` | Created by Helm chart |
-| node-exporter | — | — | Reads from host `/proc` and `/sys`; no API access |
-| Collector (kubelet) | `nodes/metrics`, `nodes/stats`, `nodes/proxy` | `get` | Required for `kubeletstatsreceiver` |
-| Collector (k8sattributes) | `pods`, `namespaces`, `nodes`, `endpoints` | `get`, `list`, `watch` | |
+| Collector (`k8s_cluster`) | `pods`, `nodes`, `namespaces`, `events`, `replicationcontrollers`, `resourcequotas`, `services` (core); `daemonsets`, `deployments`, `replicasets`, `statefulsets` (apps); `jobs`, `cronjobs` (batch); `horizontalpodautoscalers` (autoscaling) | `get`, `list`, `watch` | Added by `clusterMetrics` preset |
+| Collector (`hostmetrics`) | — | — | Reads from host `/proc` and `/sys` via `/hostfs` mount; no API access |
+| Collector (`kubeletstats`) | `nodes/stats`, `nodes/proxy` | `get`, `list`, `watch` | Added by `kubeletMetrics` preset |
+| Collector (k8sattributes) | `pods`, `namespaces`, `nodes`, `endpoints` | `get`, `list`, `watch` | Added by `kubernetesAttributes` preset |
 | Collector (k8sattributes) | `replicasets` (apps) | `get`, `list`, `watch` | Owner ref resolution to Deployment |
 | TargetAllocator | `services`, `endpoints`, `pods`, `nodes`, `namespaces` | `get`, `list`, `watch` | Prometheus service discovery |
 | OTel Operator | `opentelemetrycollectors`, `instrumentations` | `*` | Created by Operator Helm chart |
@@ -482,11 +423,14 @@ The patterns described above have been successfully implemented by the following
 | `node_network_transmit_bytes_total` | `system.network.io` | direction `transmit` |
 | `container_cpu_usage_seconds_total` | `container.cpu.time` | |
 | `container_memory_working_set_bytes` | `container.memory.usage` | excludes inactive file cache |
-| `kube_pod_*`, `kube_deployment_*`, `coredns_*` | No OTel equivalent yet | Retain Prometheus names |
+| `kube_pod_status_phase` | `k8s.pod.phase` | From the `k8s_cluster` receiver |
+| `kube_pod_container_status_restarts_total` | `k8s.container.restarts` | From the `k8s_cluster` receiver |
+| `kube_deployment_status_replicas_available` | `k8s.deployment.available` | `k8s_cluster`; `k8s.deployment.desired` for spec |
+| `coredns_*`, `nginx_*`, `keda_*`, `cilium_*` | No OTel equivalent yet | Critical components — retain Prometheus names |
 
 ### C. k8sattributesprocessor Configuration Examples
 
-**Metrics (KSM / cAdvisor):**
+**Metrics (`k8s_cluster` / `kubeletstats`):**
 ```yaml
 processors:
   k8sattributes:
@@ -529,10 +473,12 @@ processors:
 
 ### D. Dashboard and Alert Registry
 
+Community dashboards for cluster-state and host metrics are written against Prometheus metric names (`kube_*`, `node_*`). When collecting natively with the `k8s_cluster` and `hostmetrics` receivers, either pick a dashboard built for OTel semantic-convention metric names or adapt the queries using the mapping in Appendix B.
+
 | Component | Dashboard | Key Alerts |
 |---|---|---|
-| kube-state-metrics | [Grafana community 13332](https://grafana.com/grafana/dashboards/13332) | Pod restarts, replica drift, node conditions |
-| node-exporter | [Grafana community 1860](https://grafana.com/grafana/dashboards/1860) | CPU saturation, memory pressure, disk full |
+| Cluster state (`k8s_cluster`) | [Grafana community 13332](https://grafana.com/grafana/dashboards/13332) (adapt to `k8s.*` names) | Pod restarts, replica drift, node conditions |
+| Host metrics (`hostmetrics`) | [Grafana community 1860](https://grafana.com/grafana/dashboards/1860) (adapt to `system.*` names) | CPU saturation, memory pressure, disk full |
 | CoreDNS | [Grafana community 14981](https://grafana.com/grafana/dashboards/14981) | SERVFAIL rate, p99 latency, pod availability |
 | NGINX Ingress | [Grafana community 9614](https://grafana.com/grafana/dashboards/9614) | 5xx rate, upstream latency, TLS expiry |
 | Traefik | [Grafana community 17346](https://grafana.com/grafana/dashboards/17346) | Request error rate, TLS expiry |
@@ -542,15 +488,15 @@ processors:
 
 ### E. Troubleshooting — Common Data Gaps
 
-**KSM metrics missing**
-1. `kubectl get pod -n monitoring -l app.kubernetes.io/name=kube-state-metrics`
-2. `kubectl logs` for API errors; verify `ClusterRoleBinding` exists
-3. Check TargetAllocator has assigned the KSM target to a replica
+**Cluster-state metrics missing (`k8s.pod.*`, `k8s.deployment.*`)**
+1. Verify the `clusterMetrics` Collector pod is running and is a **single replica** (multiple replicas duplicate data)
+2. `kubectl logs` the Collector for Kubernetes API permission errors; confirm the `k8s_cluster` ClusterRole is bound
+3. Confirm the Collector image includes the `k8s_cluster` receiver (e.g. the Contrib distribution)
 
-**node-exporter missing on specific nodes**
-1. `kubectl get ds -n monitoring prometheus-node-exporter` — desired vs. ready count
-2. `kubectl describe node <node> | grep Taint` — check for unhandled taints
-3. `helm upgrade ... --set tolerations[0].operator=Exists`
+**Host metrics missing on specific nodes (`system.*`)**
+1. `kubectl get ds` for the DaemonSet Collector — compare desired vs. ready count
+2. `kubectl describe node <node> | grep Taint` — add matching tolerations so the DaemonSet schedules on tainted/control-plane nodes
+3. Verify the `/hostfs` host mount is present and the Collector image includes the `hostmetrics` receiver
 
 **Metadata attributes missing in backend**
 1. Verify `k8sattributesprocessor` ClusterRole is bound to the Collector service account
@@ -558,9 +504,9 @@ processors:
 3. Verify the Collector pod can reach pod IPs (needed for connection-based association)
 
 **Duplicate metrics in backend**
-1. Find the metric in both `prometheusreceiver` and `otlpreceiver` configs
-2. Apply the signal-format rule (Action 5) to identify the authoritative pipeline
-3. Update dashboards and alerts to the authoritative name, then remove the duplicate config
+1. Find the metric in both `prometheusreceiver` and a native receiver (`k8s_cluster`, `hostmetrics`, `kubeletstats`) — collecting the same signal twice is the usual cause
+2. Choose the OTel-native receiver as the authoritative source and remove the overlapping Prometheus scrape job
+3. Update dashboards and alerts to the authoritative metric name, then remove the duplicate config
 
 **Collector silently dropping data**
 1. Check `otelcol_exporter_send_failed_metric_points` and `otelcol_processor_dropped_metric_points`
