@@ -6,8 +6,8 @@ weight: 200
 default_lang_commit: 0cbe6d7a9d94ab78637023f0d31119fa7ac7ebe1
 ---
 
-Ten glosariusz definiuje terminologię i [pojęcia](/docs/concepts/) specyficzne dla
-projektu OpenTelemetry oraz wyjaśnia, jak używać terminów z dziedziny
+Ten glosariusz definiuje terminologię i [pojęcia](/docs/concepts/) specyficzne
+dla projektu OpenTelemetry oraz wyjaśnia, jak używać terminów z dziedziny
 obserwowalności w kontekście OpenTelemetry.
 
 Dokumentujemy również pisownię, także dotyczącą wielkości liter, gdy jest to
@@ -35,9 +35,9 @@ lub dla innych aplikacji.
 ### APM {#apm}
 
 Monitorowanie Wydajności Aplikacji (en. Application Performance Monitoring) -
-monitorowanie aplikacji, ich wydajności (szybkość, niezawodność, dostępność itp.)
-w celu wykrywania problemów, ostrzeganie oraz narzędzia do znajdowania przyczyny
-źródłowej.
+monitorowanie aplikacji, ich wydajności (szybkość, niezawodność, dostępność
+itp.) w celu wykrywania problemów, ostrzegania oraz narzędzia do znajdowania
+przyczyny źródłowej.
 
 ### Atrybut {#attribute}
 
@@ -62,9 +62,9 @@ bagażu][baggage].
 ### Liczebność {#cardinality}
 
 Liczba unikalnych wartości dla danego [atrybutu](#attribute) lub zestawu
-atrybutów. Wysoka liczebność oznacza wiele unikalnych wartości, co może
-wpływać na wydajność i wymagania magazynowe backendów telemetrii. Na przykład
-atrybut `user_id` miałby wysoką liczebność, natomiast atrybut `status_code` z
+atrybutów. Wysoka liczebność oznacza wiele unikalnych wartości, co może wpływać
+na wydajność i wymagania magazynowe backendów telemetrii. Na przykład atrybut
+`user_id` miałby wysoką liczebność, natomiast atrybut `status_code` z
 wartościami takimi jak "200", "404", "500" miałby niską liczebność.
 
 ### Biblioteka kliencka {#client-library}
@@ -85,8 +85,8 @@ dostawcy, która odbiera, przetwarza i eksportuje dane telemetryczne. Pojedynczy
 plik binarny, który można wdrożyć jako agenta lub bramę.
 
 > **Pisownia**: Odnosząc się do [OpenTelemetry Collector][], zawsze pisz
-> Kolektor z wielkiej litery. Użycie samego "Kolektor" również jest
-dopuszczalne &mdash; np. "konfiguracja Kolektora".
+> Kolektor z wielkiej litery. Użycie samego "Kolektor" również jest dopuszczalne
+> &mdash; np. "konfiguracja Kolektora".
 
 [OpenTelemetry Collector]: /docs/collector/
 
@@ -127,8 +127,8 @@ Zobacz [Śledzenie rozproszone][distributed tracing].
 
 ### Dystrybucja {#distribution}
 
-Dystrybucja to dostosowana wersja repozytorium nadrzędnego OpenTelemetry.
-Zobacz [Dystrybucje][distributions].
+Dystrybucja to dostosowana wersja repozytorium nadrzędnego OpenTelemetry. Zobacz
+[Dystrybucje][distributions].
 
 ### Encja {#entity}
 
@@ -207,8 +207,8 @@ użyj dodatkowych określeń, na przykład `rekord logu`. Zobacz [Log][].
 ### Rekord logu {#log-record}
 
 Zapis danych ze znacznikiem czasu i stopniem ważności. Może również zawierać
-identyfikatory [śladu](#trace) i [odcinka](#span), gdy jest skorelowany ze śladem. Zobacz
-[rekord logu][log record].
+identyfikatory [śladu](#trace) i [odcinka](#span), gdy jest skorelowany ze
+śladem. Zobacz [rekord logu][log record].
 
 ### Metadane {#metadata}
 
@@ -253,10 +253,10 @@ Poprzednik OpenTelemetry. Szczegóły w sekcji
 ### OpenTelemetry {#opentelemetry}
 
 Projekt OpenTelemetry, powstały w wyniku [połączenia][merger] projektów
-[OpenTracing](#opentracing) i [OpenCensus](#opencensus) &mdash; który jest tematyką tej
-witryny &mdash; to zbiór [API](#api), [SDK](#sdk) i narzędzi, których można użyć
-do [instrumentacji](/docs/concepts/instrumentation/), generowania,
-[zbierania](/docs/concepts/components/#collector) i
+[OpenTracing](#opentracing) i [OpenCensus](#opencensus) &mdash; który jest
+tematyką tej witryny &mdash; to zbiór [API](#api), [SDK](#sdk) i narzędzi,
+których można użyć do [instrumentacji](/docs/concepts/instrumentation/),
+generowania, [zbierania](/docs/concepts/components/#collector) i
 [eksportowania](/docs/concepts/components/#exporters)
 [danych telemetrycznych](/docs/concepts/signals/) takich jak [metryki](#metric),
 [logi](#log) i [ślady](#trace).
