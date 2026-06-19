@@ -1,11 +1,9 @@
 ---
 name: setup-new-localization
 description: >-
-  Set up a new website localization (language) for opentelemetry.io: Hugo
-  language config, content mounts, cSpell wiring, label map, CODEOWNERS via the
-  locale-teams registry, and the localization project page. Use when adding a
-  new language/locale, wiring a new `content/<lang>/` tree, or onboarding a
-  localization team.
+  Set up a new website localization (language) for opentelemetry.io. Use when
+  adding a new language/locale, wiring a new `content/<lang>/` tree, or
+  onboarding a localization team.
 argument-hint: '<kickoff-issue | lang-code>'
 allowed-tools: Bash Read Edit Write Grep Glob
 cSpell:ignore: endonym unstaffed
@@ -26,10 +24,7 @@ Wire a new language into the site end-to-end. Start from one of:
 
 Either way, derive these; don't ask for them as separate arguments:
 
-- **Hugo locale** — usually the bare code, so you **omit the `locale:` field**
-  (Hugo defaults it to `<lang>`, as `bn`, `es`, `fr`, and `ja` do). When
-  `<lang>` has several regional variants in real use, you must ask which one.
-  See step (a).
+- **Hugo locale** — derived in step (a).
 - **`<native-label>`** — the endonym for that language (from the issue, or see
   gotchas for picking the right one).
 - **`<country>`** — the language's primary country, for the Slack channel / team
@@ -199,12 +194,11 @@ npm run check:codeowners   # must report "up to date"
   added a `content/<lang>:` block there; #10295 removed **all** locale teams
   from that file. It now holds only non-locale component reviewers. Re-adding a
   locale duplicates ownership.
-- **Do NOT hand-edit** the generated locale section of `.github/CODEOWNERS`.
-  Edit `data/locale-teams.yaml` and run `npm run fix:codeowners`.
+- **Do NOT hand-edit** the generated locale section of `.github/CODEOWNERS` —
+  see step (g).
 - **Pick the right endonym.** Korean is `한국어` (South Korea), not `조선말`
   (North Korea). Choose the endonym matching the language's primary country.
-- **Never assume an upstream cSpell dict exists.** Check the cspell-dicts repo
-  folders (there is no `ko`, `ja`, or `zh`).
+- **Never assume an upstream cSpell dict exists** — see step (c).
 
 ## Out-of-repo: create the org teams {#out-of-repo-create-the-org-teams}
 
