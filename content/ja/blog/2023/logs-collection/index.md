@@ -46,7 +46,7 @@ except Exception as e:
 return True
 ```
 
-上記の Python コードは実際には特に有用なことはしておらず、指定された時間だけランダムな句読点を出力するだけで、これが「練習」を表しています。
+上記の Python コードは実際には特に有用なことはしておらず、指定された時間だけランダムな句読点を出力するだけで、これが「練習」を表現しています。
 ただし、Baby Grogu がここで使っている `print()` 関数のセマンティクスの違いに注目してください。
 
 たとえば、`print(next_char, end="", flush=True)` と書いたとき、実際には作業を実行していますが、`print("\nDone practicing")` と書いたときは、作業が完了したことを知らせる情報メッセージです。
@@ -92,10 +92,10 @@ OK、Baby Grogu はよくやりました。
 
 ## Expert Grogu レベル {#expert-grogu-level}
 
-時間が経つにつれ、Baby Grogu はオブザーバビリティとテレメトリーについて特に学んできました。
+時間が経つにつれ、Baby Grogu はオブザーバビリティとテレメトリーについて特に学びました。
 Expert Grogu レベルに昇格したのです。
 どうやって？聞いてくれてうれしいです。
-見せましょう。
+お見せしましょう。
 
 まず、[expert-grogu/][repo-expert-grogu] ディレクトリに移動してください。
 
@@ -112,7 +112,7 @@ flowchart LR
     otelcol["OTel collector"] -->  stdout["stdout"]
 ```
 
-まず、Expert Grogu がロギングの面で何をしているか見てみましょう（`expert-grogu/main.py` の `practice()` 関数内）。
+まず、Expert Grogu がロギングに関して何をしているか見てみましょう（`expert-grogu/main.py` の `practice()` 関数内）。
 
 ```python
 start_time = time.time()
@@ -370,11 +370,11 @@ yoda-baby-grogu-1  | =`;*'+.|,+?):(*-<}~}
 
 楽しいでしょう？Yoda のソースコードをいじって、コンテキスト情報を追加したり、プロセッサーを追加してログレコードが Collector を通過する際に操作したりできるようになりました。
 
-May _The Telemetry_ be with you, young Padawan!
+_テレメトリー_ とともにあらんことを、若きパダワンよ！
 
 ## 次のステップ {#whats-next}
 
-_The Telemetry_ とそのベストプラクティスに慣れたら、Yoda のコードを拡張して以下のことを試してみてください。
+_テレメトリー_ とそのベストプラクティスに慣れたら、Yoda のコードを拡張して以下のことを試してみてください。
 
 1. コンテキストを追加する。
    たとえば、[OTel リソース属性](/docs/concepts/resources/)と[セマンティック規約](/docs/concepts/semantic-conventions/)を使って、実行のコンテキストをより明示的にしてみてください。
