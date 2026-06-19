@@ -73,13 +73,9 @@ jobs:
 
       - name: Run housekeeping command and generate patch
         id: patch
-        # Unlike the `pr-actions.yml` caller, this runs default-branch code
-        # only (schedule and dispatch triggers), so the whole pipeline is
-        # trusted. The action tolerates a non-zero command exit so that
-        # fixes are still captured when residual check failures remain
-        # (the default command runs checks after fixes); such failures are
-        # surfaced by the report-failure job below. No post-command prune
-        # is needed: the default command's fix:refcache already prunes.
+        # Default-branch only (trusted; cf. pr-actions). Non-zero exit is OK—
+        # fixes still publish; residual failures fail in report-failure below.
+        # No post-command prune: fix:refcache in the default command handles it.
         uses: ./.github/actions/npm-script-patch
         with:
           command: ${{ inputs.command || 'fix-and-test:all' }}
