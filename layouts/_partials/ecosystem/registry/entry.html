@@ -150,7 +150,9 @@
                     <a {{ $href }} target="_blank" rel="noopener" class="card-link external-link">{{ $author.name }}</a>
                 {{- else -}}
                     {{ $author.name }}
-                {{- end -}}
+                {{ else -}}
+                    {{ $author.name -}}
+                {{ end -}}
             {{ end -}}
             </small>
         </p>
