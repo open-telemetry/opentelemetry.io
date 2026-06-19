@@ -170,7 +170,7 @@
                 <div class="tags mb-2">
                     {{ if .tags -}}
                         <div>
-                            {{ range .tags -}}
+                            {{ range .tags }}
                                 <a href="{{ $registryUrl }}/?s={{ . | urlize }}" class="badge text-bg-primary me-1">{{ . }}</a>
                             {{ end -}}
                         </div>
