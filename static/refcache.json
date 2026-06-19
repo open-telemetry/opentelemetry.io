@@ -5403,6 +5403,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-15T11:42:09.964050054Z"
   },
+  "https://github.com/google/docsy/issues/2659": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-17T15:04:41.571608-04:00"
+  },
   "https://github.com/google/pprof": {
     "StatusCode": 206,
     "LastSeen": "2026-06-15T11:38:13.347982767Z"
@@ -16547,6 +16551,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:07:21.048757148Z"
   },
+  "https://github.com/wjdp/htmltest": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-17T15:04:42.184708-04:00"
+  },
   "https://github.com/wolfgangcodes": {
     "StatusCode": 206,
     "LastSeen": "2026-06-17T11:26:01.921458189Z"
@@ -18171,6 +18179,14 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-13T10:25:05.14916657Z"
   },
+  "https://lychee.cli.rs/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-17T15:04:40.993281-04:00"
+  },
+  "https://lychee.cli.rs/guides/getting-started/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-17T15:04:41.193882-04:00"
+  },
   "https://macias.info": {
     "StatusCode": 200,
     "LastSeen": "2026-06-12T10:57:11.213375584Z"
@@ -18178,6 +18194,10 @@
   "https://mackerel.io/docs/entry/tracing/guide/what-is-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2026-06-13T10:28:15.224514457Z"
+  },
+  "https://main--docsydocs.netlify.app/docs/best-practices/link-checking/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-18T20:07:46.755935-04:00"
   },
   "https://man7.org/linux/man-pages/man1/free.1.html": {
     "StatusCode": 206,
@@ -22034,6 +22054,10 @@
   "https://www.docsy.dev/docs/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:04:02.876951485Z"
+  },
+  "https://www.docsy.dev/docs/best-practices/link-checking/": {
+    "StatusCode": 404,
+    "LastSeen": "2026-06-18T19:38:25.336677-04:00"
   },
   "https://www.docsy.dev/docs/content/adding-content/#alerts": {
     "StatusCode": 206,
