@@ -4,7 +4,7 @@ linkTitle: Python ログ収集
 date: 2023-11-21
 author: '[Michael Hausenblas](https://github.com/mhausenblas) (AWS)'
 default_lang_commit: 53f798ca0e698ca5270ac7c63f02e2083ba9f257
-cSpell:ignore: asctime Chehab filelog grogu Houssam levelname padawan yoda
+cSpell:ignore: asctime Chehab filelog grogu Houssam levelname yoda
 ---
 
 以下では、OpenTelemetry（OTel）を使った[ログ収集](/docs/concepts/signals/logs/)の方法を説明します。
