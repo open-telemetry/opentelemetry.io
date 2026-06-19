@@ -5,7 +5,6 @@ date: 2024-12-18
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/5793
 sig: Communications, End-User
-cSpell:ignore: Hrabusa
 ---
 
 [The OpenTelemetry End-User SIG](/community/end-user/) recently surveyed the

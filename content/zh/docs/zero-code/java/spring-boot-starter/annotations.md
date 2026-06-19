@@ -1,6 +1,7 @@
 ---
 title: 注解
 default_lang_commit: 1edcb4998a74ca24a76668310b762a765c6f5966
+drifted_from_default: true
 weight: 50
 ---
 

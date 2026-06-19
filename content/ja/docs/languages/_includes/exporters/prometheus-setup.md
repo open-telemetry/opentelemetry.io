@@ -1,42 +1,16 @@
 ---
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91 # patched
+default_lang_commit: 8013aa5f0aae284fa343311981625be6dbb25e5b
 ---
 
 ## Prometheus {#prometheus}
 
-メトリクスデータを[Prometheus](https://prometheus.io/)に送信するには、[PrometheusのOTLPレシーバーを有効にして](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver)[OTLPエクスポーター](#otlp)を使用するか、Prometheusエクスポーターを使用できます。
-Prometheusエクスポーターは、メトリクスを収集しリクエストに応じてPrometheusテキスト形式にシリアライズするHTTPサーバーを起動する`MetricReader`です。
+メトリクスデータを [Prometheus](https://prometheus.io/) に送信するには、以下のいずれかの方法を使用できます。
+
+- [Prometheus の OTLP レシーバーを有効にして](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver) [OTLP エクスポーター](#otlp)を使用する（ベストプラクティス）
+- Prometheus エクスポーターを使用する。Prometheus エクスポーターは、メトリクスを収集しリクエストに応じて Prometheus テキスト形式にシリアライズする HTTP サーバーを起動する `MetricReader` です。
 
 ### バックエンドのセットアップ {#prometheus-setup}
 
-{{% alert title=注意 %}}
+Prometheus サーバーバックエンドを実行してメトリクスのスクレイピングを開始するには、[Prometheus 入門ガイド](https://prometheus.io/docs/prometheus/latest/getting_started/)を参照してください。
 
-すでにPrometheusまたはPrometheus互換のバックエンドをセットアップしている場合は、このセクションをスキップして、アプリケーション用の[Prometheus](#prometheus-dependencies)または[OTLP](#otlp-dependencies)エクスポーターの依存関係をセットアップしてください。
-
-{{% /alert %}}
-
-[Prometheus](https://prometheus.io)をDockerコンテナで実行し、ポート`9090`でアクセスできるようにするには、以下の手順に従ってください。
-
-以下の内容で`prometheus.yml`というファイルを作成します。
-
-```yaml
-scrape_configs:
-  - job_name: dice-service
-    scrape_interval: 5s
-    static_configs:
-      - targets: [host.docker.internal:9464]
-```
-
-UIがポート`9090`でアクセス可能なDockerコンテナでPrometheusを実行します。
-
-```shell
-docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --web.enable-otlp-receiver
-```
-
-{{% alert title=注意 %}}
-
-PrometheusのOTLPレシーバーを使用する場合は、アプリケーションでメトリクス用のOTLPエンドポイントを`http://localhost:9090/api/v1/otlp`に設定してください。
-
-すべてのDocker環境が`host.docker.internal`をサポートしているわけではありません。場合によっては、`host.docker.internal`を`localhost`またはマシンのIPアドレスに置き換える必要があるかもしれません。
-
-{{% /alert %}}
+OTLP レシーバーを有効にするには、[OTLP レシーバーの有効化に関する Prometheus ガイド](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver)を参照してください。
