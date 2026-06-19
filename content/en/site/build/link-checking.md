@@ -6,45 +6,51 @@ description: How the site's links are checked, locally and in CI.
 
 The site is link-checked with two tools:
 
-- **[htmltest][]** — the original checker tool we adopted. It is installed
-  automatically on first run, if necessary. This is also the checker used by
-  scripts and workflows related to the [refcache](#refcache).
-- **[Lychee][]** — the new **default** checker, run by `check:links`.
-  > [!NB] :warning: You must [install Lychee][lychee-install] locally.
+- **[htmltest][]** — the original checker and current **default**, run by
+  `check:links`. It is installed automatically on first run, if necessary, so no
+  setup is needed. It also backs the scripts and workflows related to the
+  [refcache](#refcache).
+- **[Lychee][]** — a faster alternative that contributors can test drive.
+  > [!NB] :warning: You must [install Lychee][lychee-install] locally first.
 
 ## Check links
 
-To check links locally, ensure you have Lychee installed, and run
+To check links locally (using htmltest), run:
 
 ```sh
 npm run check:links
 ```
 
-Or run checks with htmltest like this:
+Or to try Lychee run the following after installing it:
 
 ```sh
-npm run _htmltest -- check:links
+npm run _lychee -- check:links
 ```
 
 > [!TIP] Pro tip
 >
-> Want to fallback to htmltest as your default check without the need for a
-> command prefix? Then set the following environment variable to have all npm
-> scripts -- that rely on this variable directly or indirectly (such as
-> `check:links`, `check`, etc) -- use htmltest:
+> Want to use Lychee instead? Once you've [installed it][lychee-install], either
+> prefix a one-off run:
 >
 > ```sh
-> export LINK_CHECKER=htmltest
+> npm run _lychee -- check:links
+> ```
+>
+> or set the following environment variable to have all npm scripts that rely on
+> it (directly or indirectly, such as `check:links`, `check`, etc.) use Lychee:
+>
+> ```sh
+> export LINK_CHECKER=lychee
 > ```
 
 ## Common commands
 
-| Command                | Checking scope     | Checker                         |
-| ---------------------- | ------------------ | ------------------------------- |
-| `check:links`          | Whole site         | `LINK_CHECKER` (default Lychee) |
-| `check:links:htmltest` | Whole site         | htmltest                        |
-| `check:links:lychee`   | Whole site         | Lychee                          |
-| `check:links:diff`     | Changed files only | Lychee                          |
+| Command                | Checking scope     | Checker                           |
+| ---------------------- | ------------------ | --------------------------------- |
+| `check:links`          | Whole site         | `LINK_CHECKER` (default htmltest) |
+| `check:links:htmltest` | Whole site         | htmltest                          |
+| `check:links:lychee`   | Whole site         | Lychee                            |
+| `check:links:diff`     | Changed files only | Lychee                            |
 
 The `check:links` and `check:links:*` scripts run over a build of `BUILD_KIND`.
 For details, see [Build kinds: full and lean][]

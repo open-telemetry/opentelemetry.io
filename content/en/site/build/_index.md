@@ -39,5 +39,7 @@ Most checks that force a fresh build first, such as link-checking, use
 If you're curious about the size and performance of the different build kinds,
 run `npm run metrics:build` (full) or `npm run metrics:build -- --lean`.
 
-<-- TODO: change to www.docsy.dev once Docsy 0.16.0 is released -->
+<!-- prettier-ignore-start -->
+<!-- TODO: change to www.docsy.dev once Docsy 0.16.0 is released -->
 [Link checking]: https://main--docsydocs.netlify.app/docs/best-practices/link-checking/
+<!-- prettier-ignore-end -->

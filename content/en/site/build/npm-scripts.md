@@ -39,27 +39,27 @@ are internal helpers and are not intended to be run directly.
 
 ## Checking
 
-| Script                 | Description                                                  |
-| ---------------------- | ------------------------------------------------------------ |
-| `check:all`            | Run all check scripts in sequence.                           |
-| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                 |
-| `check:codeowners`     | Verify CODEOWNERS locale section matches the registry.       |
-| `check:collector-sync` | Run collector-sync checks.                                   |
-| `check:expired`        | List expired content (by front matter).                      |
-| `check:filenames`      | [Validate file naming & detect obsolete files/folders][fn].  |
-| `check:format`         | Prettier and prose-wrap checks.                              |
-| `check:i18n`           | Validate localization front matter (`default_lang_commit`).  |
-| `check:l10n`           | Run localization checks.                                     |
-| `check:links:diff`     | Lychee link check of changed files only (pilot).             |
-| `check:links:htmltest` | Link check the whole site with htmltest; lean build first.   |
-| `check:links:lychee`   | Lychee link check of the whole site; lean build first.       |
-| `check:links`          | Link check the whole site (Lychee, default); lean build 1st. |
-| `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                  |
-| `check:markdown`       | Markdown lint (content and projects).                        |
-| `check:registry`       | Validate registry YAML under `data/registry/`.               |
-| `check:spelling`       | cspell over content, data, and layout Markdown.              |
-| `check:text`           | textlint over content and data.                              |
-| `check`                | Run the most commonly needed check scripts in sequence.      |
+| Script                 | Description                                                    |
+| ---------------------- | -------------------------------------------------------------- |
+| `check:all`            | Run all check scripts in sequence.                             |
+| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                   |
+| `check:codeowners`     | Verify CODEOWNERS locale section matches the registry.         |
+| `check:collector-sync` | Run collector-sync checks.                                     |
+| `check:expired`        | List expired content (by front matter).                        |
+| `check:filenames`      | [Validate file naming & detect obsolete files/folders][fn].    |
+| `check:format`         | Prettier and prose-wrap checks.                                |
+| `check:i18n`           | Validate localization front matter (`default_lang_commit`).    |
+| `check:l10n`           | Run localization checks.                                       |
+| `check:links:diff`     | Lychee link check of changed files only (pilot).               |
+| `check:links:htmltest` | Link check the whole site with htmltest; lean build first.     |
+| `check:links:lychee`   | Lychee link check of the whole site; lean build first.         |
+| `check:links`          | Link check the whole site (htmltest, default); lean build 1st. |
+| `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                    |
+| `check:markdown`       | Markdown lint (content and projects).                          |
+| `check:registry`       | Validate registry YAML under `data/registry/`.                 |
+| `check:spelling`       | cspell over content, data, and layout Markdown.                |
+| `check:text`           | textlint over content and data.                                |
+| `check`                | Run the most commonly needed check scripts in sequence.        |
 
 ## Fixing
 
