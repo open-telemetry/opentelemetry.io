@@ -10,9 +10,8 @@ tags:
   - azure
 license: MIT
 description:
-  Azure SDK for .NET (Track 2 libraries) natively emits distributed traces
-  using System.Diagnostics APIs, which is the official OpenTelemetry API for
-  .NET.
+  Azure SDK for .NET (Track 2 libraries) natively emits distributed traces using
+  System.Diagnostics APIs, which is the official OpenTelemetry API for .NET.
 authors:
   - name: Microsoft Azure Authors
     url: https://github.com/Azure
