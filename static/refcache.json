@@ -3387,6 +3387,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-16T11:25:28.84591838Z"
   },
+  "https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/Diagnostics.md#opentelemetry-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-20T10:55:57.110913913Z"
+  },
   "https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/monitor/Azure.Monitor.OpenTelemetry.AspNetCore": {
     "StatusCode": 206,
     "LastSeen": "2026-06-14T10:43:10.528403957Z"
