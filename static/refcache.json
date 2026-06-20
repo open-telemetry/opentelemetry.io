@@ -3715,6 +3715,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-12T11:04:56.303474251Z"
   },
+  "https://github.com/Krishnachaitanyakc": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:08.182993115Z"
+  },
   "https://github.com/LZiHaN": {
     "StatusCode": 206,
     "LastSeen": "2026-06-13T10:31:33.790141969Z"
@@ -10991,6 +10995,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-15T11:39:27.078243663Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-go/tree/928d4f3726bf08e5be046752ebae169ad9f9376a/bridge/opencensus": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:18.643742738Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/otlp": {
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:12:07.130813966Z"
@@ -11843,6 +11851,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-16T11:23:29.439372943Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java/tree/a5cd87f127cd8d4e5845bc1e29360f815a6f01c8/opencensus-shim": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:23.491446874Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java/tree/main/api/incubator": {
     "StatusCode": 206,
     "LastSeen": "2026-06-13T10:26:12.547822485Z"
@@ -12238,6 +12250,10 @@
   "https://github.com/open-telemetry/opentelemetry-js/releases/tag/v2.0.0": {
     "StatusCode": 206,
     "LastSeen": "2026-06-14T10:43:26.619525789Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/tree/13a035bc695996cf4aec885fef7b9866f48bc555/experimental/packages/shim-opencensus": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:27.459688716Z"
   },
   "https://github.com/open-telemetry/opentelemetry-js/tree/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main": {
     "StatusCode": 206,
@@ -13067,6 +13083,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-16T11:22:23.614387244Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-python/tree/51c1d1888c4045b8296e088fa307738685321bf3/shim/opentelemetry-opencensus-shim": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:32.35863456Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation": {
     "StatusCode": 206,
     "LastSeen": "2026-06-19T11:08:07.813566013Z"
@@ -13591,6 +13611,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-19T11:08:05.093199455Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/issues/5109": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:39.346353272Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/617": {
     "StatusCode": 206,
     "LastSeen": "2026-06-13T10:25:09.036109281Z"
@@ -13630,6 +13654,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/pull/5073": {
     "StatusCode": 206,
     "LastSeen": "2026-06-13T10:25:07.326355042Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/5138": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:14.735403969Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme": {
     "StatusCode": 206,
