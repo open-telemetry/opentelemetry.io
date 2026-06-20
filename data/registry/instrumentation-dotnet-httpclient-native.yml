@@ -13,8 +13,8 @@ license: MIT
 description:
   .NET HttpClient (System.Net.Http) natively emits distributed traces and
   metrics using the OpenTelemetry semantic conventions via System.Diagnostics
-  APIs, which is the official OpenTelemetry API for .NET. Available since
-  .NET 8.
+  APIs, which is the official OpenTelemetry API for .NET. Available since .NET
+  8.
 authors:
   - name: .NET Team
     url: https://github.com/dotnet
