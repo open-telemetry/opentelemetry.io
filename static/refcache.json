@@ -4995,9 +4995,17 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:07:44.842359497Z"
   },
+  "https://github.com/dotnet": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-20T10:56:11.00374842Z"
+  },
   "https://github.com/dotnet/SqlClient/blob/v1.0.19239.1/src/Microsoft.Data.SqlClient/netfx/src/Microsoft/Data/SqlClient/SqlCommand.cs#L6369": {
     "StatusCode": 206,
     "LastSeen": "2026-06-17T11:18:45.215241703Z"
+  },
+  "https://github.com/dotnet/aspnetcore": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-20T10:55:50.406969098Z"
   },
   "https://github.com/dotnet/aspnetcore/blob/main/src/SignalR/docs/specs/TransportProtocols.md": {
     "StatusCode": 206,
@@ -5006,6 +5014,10 @@
   "https://github.com/dotnet/extensions/blob/main/src/Libraries/Microsoft.Extensions.Telemetry.Abstractions/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-06-16T11:22:28.360439716Z"
+  },
+  "https://github.com/dotnet/runtime": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-20T10:55:49.270571079Z"
   },
   "https://github.com/dotnet/runtime/blob/d8302cef7946be82775ba5b94a88ad8eee800714/docs/design/coreclr/profiling/Profiler%20Loading.md": {
     "StatusCode": 206,
@@ -17683,6 +17695,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-16T11:22:27.309930696Z"
   },
+  "https://learn.microsoft.com/aspnet/core/log-mon/metrics/metrics": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-20T10:55:38.013595805Z"
+  },
   "https://learn.microsoft.com/aspnet/core/tutorials/min-web-api": {
     "StatusCode": 206,
     "LastSeen": "2026-06-16T11:22:34.563877916Z"
@@ -17990,6 +18006,10 @@
   "https://learn.microsoft.com/dotnet/api/system.threading.timer.activecount": {
     "StatusCode": 200,
     "LastSeen": "2026-06-15T11:38:26.530260702Z"
+  },
+  "https://learn.microsoft.com/dotnet/core/diagnostics/built-in-metrics-system-net": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-20T10:55:39.159802335Z"
   },
   "https://learn.microsoft.com/dotnet/core/diagnostics/compare-metric-apis#systemdiagnosticsmetrics": {
     "StatusCode": 200,
