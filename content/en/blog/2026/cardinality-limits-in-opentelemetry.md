@@ -156,6 +156,8 @@ measurements via the metrics API**. It does _not_ apply to:
   `service.instance.id`, and friends. These live on the resource, not on
   individual data points.
 - **Meter-level attributes** set at `Meter` construction time.
+- **The number of Meters or instruments** — you can create as many as needed
+  without hitting the cardinality limit.
 
 **Anything in Resource or Meter attributes can be reliably queried, even when
 overflow is happening.** An overflowing counter in `service.name="checkout"`,
