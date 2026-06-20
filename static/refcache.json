@@ -3727,6 +3727,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-12T11:04:56.303474251Z"
   },
+  "https://github.com/Krishnachaitanyakc": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:08.182993115Z"
+  },
   "https://github.com/LZiHaN": {
     "StatusCode": 206,
     "LastSeen": "2026-06-13T10:31:33.790141969Z"
@@ -7895,6 +7899,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:08:48.001932786Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/tailstorage/pebbletailstorageextension": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T15:57:26.586891242Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl": {
     "StatusCode": 206,
     "LastSeen": "2026-06-13T10:25:17.214064629Z"
@@ -11003,6 +11011,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-15T11:39:27.078243663Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-go/tree/928d4f3726bf08e5be046752ebae169ad9f9376a/bridge/opencensus": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:18.643742738Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/otlp": {
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:12:07.130813966Z"
@@ -11855,6 +11867,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-16T11:23:29.439372943Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java/tree/a5cd87f127cd8d4e5845bc1e29360f815a6f01c8/opencensus-shim": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:23.491446874Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java/tree/main/api/incubator": {
     "StatusCode": 206,
     "LastSeen": "2026-06-13T10:26:12.547822485Z"
@@ -12250,6 +12266,10 @@
   "https://github.com/open-telemetry/opentelemetry-js/releases/tag/v2.0.0": {
     "StatusCode": 206,
     "LastSeen": "2026-06-14T10:43:26.619525789Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/tree/13a035bc695996cf4aec885fef7b9866f48bc555/experimental/packages/shim-opencensus": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:27.459688716Z"
   },
   "https://github.com/open-telemetry/opentelemetry-js/tree/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main": {
     "StatusCode": 206,
@@ -13079,6 +13099,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-16T11:22:23.614387244Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-python/tree/51c1d1888c4045b8296e088fa307738685321bf3/shim/opentelemetry-opencensus-shim": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:32.35863456Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation": {
     "StatusCode": 206,
     "LastSeen": "2026-06-12T10:57:05.867328995Z"
@@ -13603,6 +13627,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-12T10:56:57.110183472Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/issues/5109": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:39.346353272Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/617": {
     "StatusCode": 206,
     "LastSeen": "2026-06-13T10:25:09.036109281Z"
@@ -13642,6 +13670,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/pull/5073": {
     "StatusCode": 206,
     "LastSeen": "2026-06-13T10:25:07.326355042Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/5138": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T13:05:14.735403969Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme": {
     "StatusCode": 206,
@@ -19719,6 +19751,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-13T10:30:16.107727033Z"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/tailstorage/pebbletailstorageextension": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-15T15:57:29.578476342Z"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor": {
     "StatusCode": 200,
     "LastSeen": "2026-06-17T11:24:04.181050306Z"
@@ -21003,9 +21039,17 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-17T11:19:58.004466435Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.29.0-alpha/opentelemetry-instrumentation-bom-alpha-2.29.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T04:43:43.764533674Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.28.1/opentelemetry-instrumentation-bom-2.28.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2026-06-17T11:19:56.076951567Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.29.0/opentelemetry-instrumentation-bom-2.29.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-19T04:43:39.741788443Z"
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.63.0-alpha/opentelemetry-bom-alpha-1.63.0-alpha.pom": {
     "StatusCode": 206,
@@ -22058,10 +22102,6 @@
   "https://www.docsy.dev/docs/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:04:02.876951485Z"
-  },
-  "https://www.docsy.dev/docs/best-practices/link-checking/": {
-    "StatusCode": 404,
-    "LastSeen": "2026-06-18T19:38:25.336677-04:00"
   },
   "https://www.docsy.dev/docs/content/adding-content/#alerts": {
     "StatusCode": 206,
