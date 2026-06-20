@@ -166,9 +166,10 @@ point, including the overflow one.
 
 Practical guidance:
 
-- **Push steady-state context into Resource.** Service name, environment,
-  region, cluster, instance — anything constant for the process lifetime belongs
-  there. It's always queryable, regardless of overflow.
+- **Ensure steady-state context is in Resource where it belongs.** Service name,
+  environment, region, cluster, instance — these describe the entity producing
+  telemetry, not individual measurements, so they belong in Resource by design.
+  As a bonus, they're always queryable regardless of overflow.
 - **Reserve measurement-time attributes for things that genuinely vary per
   measurement** — route, status code, error category.
 
