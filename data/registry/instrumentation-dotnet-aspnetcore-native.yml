@@ -1,0 +1,25 @@
+# cSpell:ignore aspnetcore
+title: ASP.NET Core
+registryType: instrumentation
+language: dotnet
+tags:
+  - dotnet
+  - C#
+  - .NET
+  - instrumentation
+  - aspnetcore
+  - web
+license: MIT
+description:
+  ASP.NET Core natively emits distributed traces and metrics using the
+  OpenTelemetry semantic conventions via System.Diagnostics APIs. Available
+  since .NET 8.
+authors:
+  - name: .NET Team
+    url: https://github.com/dotnet
+urls:
+  website: https://github.com/dotnet/aspnetcore
+  docs: https://learn.microsoft.com/en-us/aspnet/core/log-mon/metrics/metrics
+  repo: https://github.com/dotnet/aspnetcore
+createdAt: '2026-06-20'
+isNative: true
