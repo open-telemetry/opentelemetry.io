@@ -251,6 +251,9 @@ Two caveats:
    cause overflow** for that cycle. Set the limit with headroom for realistic
    bursts, and treat sustained overflow on these instruments as a real
    operational signal.
+3. **Shorter export intervals reduce the per-cycle working set** — halving the
+   interval can roughly halve the active combinations per cycle. The tradeoff
+   is increased CPU and network overhead from more frequent exports.
 
 The general principle: **under delta temporality the cardinality limit is a
 per-cycle working set; under cumulative temporality it accumulates until the
