@@ -210,8 +210,9 @@ documentație și una din partea unui aprobator al SIG-ului.
 - Aprobatorul de documentație etichetează astfel de PR-uri cu `sig:<nume>` și
   menționează grupul SIG `-approvers` în acel PR.
 - După ce un aprobator de documentație a revizuit și aprobat PR-ul, acesta poate
-  adăuga eticheta `sig-approval-missing`. Aceasta semnalează SIG-ului că trebuie
-  să revizuiască și să aprobe PR-ul.
+  adăuga eticheta
+  [`sig-approval-missing`](https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing).
+  Aceasta semnalează SIG-ului că trebuie să revizuiască și să aprobe PR-ul.
 - Dacă nu este acordată nicio aprobare din partea SIG-ului într-o perioadă de
   grație rezonabilă (în general două săptămâni, dar mai puțin în cazurile
   urgente), un menținător al documentației poate decide, pe baza propriei
@@ -278,7 +279,7 @@ lucru programate ([detalii][ci-section]) rulează zilnic și mențin un PR de
 [semconv-branches]:
   https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration
 
-### Mentenanți SIG spec / semconv {#spec-semconv-sig-maintainers}
+### Mentenanți SIG spec / semconv {#spec--semconv-sig-maintainers}
 
 Chiar înainte de a pregăti o lansare:
 
