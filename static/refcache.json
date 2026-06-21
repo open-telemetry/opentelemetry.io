@@ -245,15 +245,15 @@
   },
   "https://blog.olly.garden/how-to-name-your-metrics": {
     "StatusCode": 429,
-    "LastSeen": "2026-06-20T10:29:35.33721155Z"
+    "LastSeen": "2026-06-21T10:51:06.121267114Z"
   },
   "https://blog.olly.garden/how-to-name-your-span-attributes": {
     "StatusCode": 429,
-    "LastSeen": "2026-06-20T10:29:35.458307326Z"
+    "LastSeen": "2026-06-21T10:51:06.141435213Z"
   },
   "https://blog.olly.garden/how-to-name-your-spans": {
     "StatusCode": 429,
-    "LastSeen": "2026-06-20T10:29:35.892393803Z"
+    "LastSeen": "2026-06-21T10:51:08.036440617Z"
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
     "StatusCode": 200,
@@ -14451,6 +14451,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-15T11:42:04.301269209Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/.github/workflows": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-21T10:54:41.16187601Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:04:04.627085748Z"
@@ -18556,8 +18560,8 @@
     "LastSeen": "2026-06-20T10:34:21.518Z"
   },
   "https://npmjs.com/package/@jenniferplusplus/opentelemetry-instrumentation-bullmq": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-20T10:32:54.203997391Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-21T10:55:43.398Z"
   },
   "https://npmjs.com/package/@jufab/opentelemetry-angular-interceptor": {
     "StatusCode": 200,
@@ -18572,8 +18576,8 @@
     "LastSeen": "2026-06-17T11:30:41.64Z"
   },
   "https://npmjs.com/package/@opentelemetry/exporter-jaeger": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-20T10:31:16.367354892Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-21T10:55:45.637Z"
   },
   "https://npmjs.com/package/@opentelemetry/exporter-prometheus": {
     "StatusCode": 200,
@@ -18592,8 +18596,8 @@
     "LastSeen": "2026-06-17T12:07:37.274Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-amqplib": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-20T10:32:45.854976217Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-21T10:55:47.979Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-aws-lambda": {
     "StatusCode": 200,
@@ -18601,7 +18605,7 @@
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-aws-sdk": {
     "StatusCode": 403,
-    "LastSeen": "2026-06-20T10:32:50.148370858Z"
+    "LastSeen": "2026-06-21T10:53:54.233556044Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-browser-navigation": {
     "StatusCode": 206,
@@ -18612,12 +18616,12 @@
     "LastSeen": "2026-06-19T11:19:37.648Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-cassandra-driver": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-20T10:32:57.291821578Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-21T10:55:51.881Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-connect": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-20T10:33:01.632212483Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-21T10:55:53.415Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-cucumber": {
     "StatusCode": 200,
@@ -18632,8 +18636,8 @@
     "LastSeen": "2026-06-19T11:19:50.64Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-document-load": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-20T10:33:12.120882847Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-21T10:55:54.886Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-express": {
     "StatusCode": 200,
@@ -18648,8 +18652,8 @@
     "LastSeen": "2026-06-19T11:20:00.634Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-generic-pool": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-20T10:33:22.258771863Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-21T10:55:56.769Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-graphql": {
     "StatusCode": 200,
@@ -18664,8 +18668,8 @@
     "LastSeen": "2026-06-19T11:20:11.155Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-http": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-20T10:33:30.996720422Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-21T10:55:58.179Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-ioredis": {
     "StatusCode": 200,
@@ -18704,16 +18708,16 @@
     "LastSeen": "2026-06-19T11:20:35.514Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-mysql2": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-20T10:33:44.746177288Z"
+    "StatusCode": 403,
+    "LastSeen": "2026-06-21T10:54:25.187613851Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-nestjs-core": {
     "StatusCode": 200,
     "LastSeen": "2026-06-19T11:20:40.665Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-net": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-20T10:33:47.089117498Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-21T10:56:01.735Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-oracledb": {
     "StatusCode": 200,
@@ -18732,8 +18736,8 @@
     "LastSeen": "2026-06-19T11:20:51.643Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-redis-4": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-20T10:33:47.656872076Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-21T10:56:03.923Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-restify": {
     "StatusCode": 200,
@@ -18749,7 +18753,7 @@
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-socket.io": {
     "StatusCode": 429,
-    "LastSeen": "2026-06-20T10:33:47.688610925Z"
+    "LastSeen": "2026-06-21T10:54:35.489631361Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-tedious": {
     "StatusCode": 200,
@@ -18761,7 +18765,7 @@
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-user-interaction": {
     "StatusCode": 429,
-    "LastSeen": "2026-06-20T10:33:47.72348742Z"
+    "LastSeen": "2026-06-21T10:54:39.635750729Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-web-exception": {
     "StatusCode": 206,
@@ -18832,8 +18836,8 @@
     "LastSeen": "2026-06-20T10:35:12.231Z"
   },
   "https://npmjs.com/package/@sap/opentelemetry-exporter-for-sap-cloud-logging": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-20T10:31:20.500688545Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-21T10:56:09.318Z"
   },
   "https://npmjs.com/package/@waitingliou/tsc-otel-instrumentation": {
     "StatusCode": 200,
@@ -22832,12 +22836,12 @@
     "LastSeen": "2026-06-20T10:35:16.493Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-20T10:26:03.013006316Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-21T10:56:11.151Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-20T10:26:00.152729068Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-21T10:56:12.615Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-zipkin": {
     "StatusCode": 206,
