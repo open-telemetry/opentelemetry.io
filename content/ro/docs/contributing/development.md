@@ -15,7 +15,7 @@ cSpell:ignore: TOCSS
 > Build-urile sunt oficial acceptate pe medii bazate pe Linux și macOS. Alte
 > medii, precum [DevContainers](#devcontainers), sunt acceptate în limita
 > posibilităților. Pentru build-uri pe Windows, puteți urma pași similari celor
-> pentru Linux folosind linia de comandă Windows Subsystem for Linux [WSL][].
+> pentru Linux folosind Windows Subsystem for Linux [WSL][].
 
 Următoarele instrucțiuni explică cum să configurați un mediu de dezvoltare pentru
 acest site web.
@@ -59,7 +59,7 @@ configurația [DevContainer](#devcontainers). {{% param what-next %}}
 ```
 
 3.  Instalați sau actualizați la versiunea [**LTS activă**][nodejs-rel] a Node.js.
-    Recomandăm utilizarea [nvm][] pentru a gestiona instalarea Node. Pe Linux,
+    Recomandăm utilizarea [nvm][] pentru a gestiona instalarea runtime-ului pentru Node. Pe Linux,
     rulați următoarea comandă, care va instala și actualiza la versiunea
     specificată în fișierul .nvmrc:
 
@@ -179,6 +179,53 @@ precum (în ordine alfabetică):
 - [Gitpod](https://ona.com/docs/ona/configuration/devcontainer/overview)
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
+## Unelte
+
+### Code-excerpter
+
+Utilizați [code-excerpter][] pentru fragmente de cod care ar trebui să fie sincronizate cu fișierele sursă din acest repository .
+Pagini ale site-ului web pot conține fragmente de cod pentru orice setare regională, dar conținutul original care le
+folosește este redactat în `content/en` apoi este actualizat de către echipele de traducere în limba proprie.
+
+În pagina sursă scrisă în limba engleză, plasează o directivă de extragere a fișierului imediat înainte de
+blocul de cod închis pe care îl actualizează:
+
+````md
+<?code-excerpt path-base="examples/java/getting-started"?>
+
+<?code-excerpt "src/main/java/otel/DiceApplication.java" from="@SpringBootApplication"?>
+
+```java
+@SpringBootApplication
+public class DiceApplication {
+  public static void main(String[] args) {
+    SpringApplication app = new SpringApplication(DiceApplication.class);
+    app.setBannerMode(Banner.Mode.OFF);
+    app.run(args);
+  }
+}
+```
+````
+
+Folosește o directivă opțională `path-base` o dată când sunteți aproape de începutul paginii atunci când mai multe
+fragmente de cod provin din același director. Pentru detalii legat de sintaxa directivei `code-excerpt`,
+accesați fișierul readme [code-excerpter][].
+
+Modificați fișierul sursă sau directiva, **nu și blocul de cod închis**. Apoi rulați următoarea comandă[npm script](/site/build/npm-scripts/):
+
+```sh
+npm run fix:code-excerpts
+```
+
+Pentru a verificat dacă fragmentele de cod sunt actualizate, rulați:
+
+```sh
+npm run check:code-excerpts
+```
+
+[code-excerpter]: https://github.com/chalin/code-excerpter
+
+<!-- prettier-ignore-start -->
 [clone]:
 https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
@@ -199,3 +246,4 @@ https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wi
 https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
 [WSL]: https://learn.microsoft.com/en-us/windows/wsl/install
+<!-- prettier-ignore-end -->
