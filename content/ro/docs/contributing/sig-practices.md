@@ -246,16 +246,17 @@ recomandate pentru PR-urile aflate în responsabilitate comună.
 Următorul flux de lucru poate fi utilizat de menținători pentru integrarea
 PR-urilor:
 
-Asigură-te că PR-ul are toate aprobările necesare și că toate verificările CI
-sunt finalizate cu succes. Dacă ramura nu este actualizată față de ramura de
-bază, actualizeaz-o prin rebase folosind interfața GitHub. Actualizarea va
-declanșa din nou rularea tuturor verificărilor CI. Așteaptă finalizarea lor cu
-succes sau execută un script precum cel de mai jos pentru ca acest lucru să se
-întâmple în fundal:
+- Asigură-te că PR-ul are toate aprobările necesare și că toate verificările CI
+  sunt finalizate cu succes.
+- Dacă ramura nu este actualizată față de ramura de bază, actualizeaz-o prin
+  rebase folosind interfața GitHub.
+- Actualizarea va declanșa din nou rularea tuturor verificărilor CI. Așteaptă
+  finalizarea lor cu succes sau execută un script precum cel de mai jos pentru
+  ca acest lucru să se întâmple în fundal:
 
-```shell
-export PR=<ID-UL PR-ULUI>; gh pr checks ${PR} --watch && gh pr merge ${PR} --squash
-```
+  ```shell
+  export PR=<ID-UL PR-ULUI>; gh pr checks ${PR} --watch && gh pr merge ${PR} --squash
+  ```
 
 ## PR-uri de specificație și ramuri de integrare {#spec-integration-branches}
 
