@@ -4,8 +4,6 @@
 // assets/scss/_image_zoom.scss.
 
 (function () {
-  'use strict';
-
   // Content images, but not ones wrapped in a link.
   const SELECTOR = '.td-content img';
   let overlay = null;
