@@ -1,0 +1,50 @@
+// Medium-style click-to-zoom lightbox for content images
+// (see assets/js/imageZoom.js). Applies to images in the content body, except
+// linked images, which keep their normal pointer cursor.
+
+.td-content img {
+  cursor: zoom-in;
+}
+
+.td-content a img {
+  cursor: pointer;
+}
+
+.td-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1080; // above the sticky navbar
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  visibility: hidden;
+  cursor: zoom-out;
+  transition:
+    opacity 200ms ease,
+    visibility 0s linear 200ms;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 200ms ease;
+  }
+}
+
+.td-zoom-overlay__img {
+  max-width: 100%;
+  max-height: 100%;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.5);
+  transform: scale(0.95);
+  transition: transform 200ms ease;
+
+  .td-zoom-overlay.is-open & {
+    transform: scale(1);
+  }
+}
+
+body.td-zoom-open {
+  overflow: hidden;
+}
