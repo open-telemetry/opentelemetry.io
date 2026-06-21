@@ -3,7 +3,7 @@ title: Declarative configuration
 linkTitle: Configuration
 weight: 55
 description: Configure the Python SDK using a YAML configuration file
-cSpell:ignore: pyyaml jsonschema
+cSpell:ignore: jsonschema pyyaml
 ---
 
 The Python SDK supports
