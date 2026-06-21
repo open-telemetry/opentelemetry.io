@@ -133,7 +133,7 @@ except Exception as e:
 return True
 ```
 
-上記の関数では、Expert Grogu が `logger.xxx()` 関数を使ってステータス/進捗を伝え、練習時間に不正な入力値を提供した場合（`python main.py 5` ではなく `python main.py ABC` とした場合、前者は整数にパースできないため）などのエラー状態も伝えていることがわかります。
+上記の関数では、Expert Grogu が `logger.xxx()` 関数を使ってステータス/進捗を伝え、練習時間に不正な入力値を提供した場合（`python main.py ABC` ではなく `python main.py 5` とした場合、前者は整数にパースできないため）などのエラー状態も伝えていることがわかります。
 
 以下の `Dockerfile` を使用しています（依存関係 `python-json-logger==2.0.7` をインストールしています）。
 
