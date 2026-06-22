@@ -1,13 +1,17 @@
 ---
-title: Configurarea mediului de dezvoltare și comenzi pentru build, servire și altele
+title:
+  Configurarea mediului de dezvoltare și comenzi pentru build, servire și altele
 linkTitle: Configurare dev și altele
-description: Află cum să configurezi un mediu de dezvoltare pentru acest site web.
+description:
+  Află cum să configurezi un mediu de dezvoltare pentru acest site web.
 what-next: >
-  Acum ești pregătit să [construiești](#build), [servești](#serve) și să faci actualizări
-  fișierelor site-ului. Pentru detalii despre cum să trimiți modificări, consultați [Trimiterea
-  conținutului](../pull-requests).
+  Acum ești pregătit să [construiești](#build), [servești](#serve) și să faci
+  actualizări fișierelor site-ului. Pentru detalii despre cum să trimiți
+  modificări, consultați [Trimiterea conținutului](../pull-requests).
 weight: 60
 cSpell:ignore: TOCSS
+default_lang_commit: f184d8b9305065730fc78d4038b0120848e2d385
+drifted_from_default: true
 ---
 
 > [!WARNING] Supported build environments
@@ -17,8 +21,8 @@ cSpell:ignore: TOCSS
 > best-effort basis. For builds on Windows, you can follow steps similar to
 > those for Linux using Windows Subsystem for Linux command line [WSL][].
 
-Următoarele instrucțiuni explică cum să configurați un mediu de dezvoltare pentru
-acest site web.
+Următoarele instrucțiuni explică cum să configurați un mediu de dezvoltare
+pentru acest site web.
 
 ## Configurare Cloud-IDE
 
@@ -26,17 +30,19 @@ acest site web.
 
 Pentru a lucra prin [Gitpod.io][]:
 
-1.  Fă un fork al acestui repository. Pentru ajutor, consultați [Crearea unui fork][fork].
-2.  Din [gitpod.io/workspaces][], creză un spațiu de lucru nou (fă acest lucru doar o dată) sau
-    deschide un spațiu de lucru existent peste fork-ul dumneavoastră. Poți accesa și un link de forma:
+1.  Fă un fork al acestui repository. Pentru ajutor, consultați [Crearea unui
+    fork][fork].
+2.  Din [gitpod.io/workspaces][], creză un spațiu de lucru nou (fă acest lucru
+    doar o dată) sau deschide un spațiu de lucru existent peste fork-ul
+    dumneavoastră. Poți accesa și un link de forma:
     `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`.
 
     > **Notă**: Dacă ai permisiunile necesare pentru a lucra din acest
     > repository sau dorești doar să explorezi, deschideți
     > <https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io>.
 
-Gitpod instalează automat pachetele specifice repository-ului pentru dumneavoastră.
-{{% param what-next %}}
+Gitpod instalează automat pachetele specifice repository-ului pentru
+dumneavoastră. {{% param what-next %}}
 
 ### Codespaces
 
@@ -45,8 +51,8 @@ Pentru a lucra prin GitHub [Codespaces][]:
 1. Fă un [Fork][] repository-ului de site web.
 2. Deschideți un Codespace din fork-ul tău.
 
-Mediul de dezvoltare va fi inițializat prin
-configurația [DevContainer](#devcontainers). {{% param what-next %}}
+Mediul de dezvoltare va fi inițializat prin configurația
+[DevContainer](#devcontainers). {{% param what-next %}}
 
 ## Configurare locală
 
@@ -55,29 +61,29 @@ configurația [DevContainer](#devcontainers). {{% param what-next %}}
 2.  Navighează în directorul repository-ului:
 
 ```sh
-    cd opentelemetry.io
+cd opentelemetry.io
 ```
 
-3.  Instalează sau actualizează la versiunea [**LTS activă**][nodejs-rel] a Node.js.
-    Recomandăm utilizarea [nvm][] pentru a gestiona instalarea runtime-ului pentru Node. Pe Linux,
-    rulează următoarea comandă, care va instala și actualiza la versiunea
-    specificată în fișierul .nvmrc:
+1.  Instalează sau actualizează la versiunea [**LTS activă**][nodejs-rel] a
+    Node.js. Recomandăm utilizarea [nvm][] pentru a gestiona instalarea
+    runtime-ului pentru Node. Pe Linux, rulează următoarea comandă, care va
+    instala și actualiza la versiunea specificată în fișierul .nvmrc:
 
 ```sh
-    nvm install
+nvm install
 ```
 
     Pentru [instalare pe Windows][nodejs-win], utilizează [nvm-windows][]. Recomandăm
     folosirea `cmd` și nu Windows PowerShell pentru comanda de mai jos:
 
 ```cmd
-    nvm install lts && nvm use lts
+nvm install lts && nvm use lts
 ```
 
-4.  Obține pachetele npm și alte cerințe preliminare:
+1.  Obține pachetele npm și alte cerințe preliminare:
 
 ```sh
-    npm install
+npm install
 ```
 
 Lansează IDE-ul preferat. {{% param what-next %}}
@@ -94,7 +100,8 @@ Fișierele generate ale site-ului se află în directorul `public`.
 
 > [!IMPORTANT]
 >
-> Dacă întâmpini **erori** la comenzile de build sau servire similare cu următoarele:
+> Dacă întâmpini **erori** la comenzile de build sau servire similare cu
+> următoarele:
 >
 > ```log
 > ERROR error building site: ...[mesaj lung]... TOCSS: failed to transform "/scss/main.scss" (text/x-scss)
@@ -107,7 +114,8 @@ Fișierele generate ale site-ului se află în directorul `public`.
 > ```
 >
 > Aceasta se datorează de obicei faptului că nu ai finalizat toți pașii din
-> [configurarea locală](#local-setup). În special, rulează din nou această comandă:
+> [configurarea locală](#local-setup). În special, rulează din nou această
+> comandă:
 >
 > ```sh
 > npm install
@@ -123,8 +131,8 @@ npm run serve
 
 Site-ul este servit la [localhost:1313][].
 
-Dacă trebuie să testezi redirecționările [Netlify][], utilizează următoarea comandă și
-accesează site-ul la [localhost:8888][]:
+Dacă trebuie să testezi redirecționările [Netlify][], utilizează următoarea
+comandă și accesează site-ul la [localhost:8888][]:
 
 ```sh
 npm run serve:netlify
@@ -132,47 +140,49 @@ npm run serve:netlify
 
 Comanda de servire servește fișierele din memorie, nu de pe disc.
 
-Dacă întâlnești o eroare de tipul `too many open files` sau `pipe failed` pe macOS,
-este posibil să fie nevoie să mărești limita descriptorilor de fișiere. Consultă
-[problema Hugo #6109](https://github.com/gohugoio/hugo/issues/6109).
+Dacă întâlnești o eroare de tipul `too many open files` sau `pipe failed` pe
+macOS, este posibil să fie nevoie să mărești limita descriptorilor de fișiere.
+Consultă [problema Hugo #6109](https://github.com/gohugoio/hugo/issues/6109).
 
 ### Conținut și submodule
 
 Site-ul web este construit din următoarele conținuturi:
 
-- Fișiere din `content/`, `static/` etc., conform configurărilor implicite [Hugo][].
+- Fișiere din `content/`, `static/` etc., conform configurărilor implicite
+  [Hugo][].
 - Puncte de montare, definite de [config][] Hugo în
-  `config/_default/module-template.yaml`. Montările provin fie direct din submodule
-  git din [content-modules][], fie din conținut procesat din
+  `config/_default/module-template.yaml`. Montările provin fie direct din
+  submodule git din [content-modules][], fie din conținut procesat din
   `content-modules` (plasat în `tmp/`), și de nicăieri altundeva.
 
 [config]: https://github.com/open-telemetry/opentelemetry.io/tree/main/config
 [content-modules]:
-https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
 ### Modificări ale submodulelor
 
-Dacă modifici orice conținut dintr-un submodul [content-modules][], trebuie mai întâi
-să trimiți un PR (conținând modificările submodulului) către repository-ul submodulului.
-Abia după ce PR-ul submodulului a fost acceptat, poți actualiza submodulul și
-modificările vor apărea pe acest site web.
+Dacă modifici orice conținut dintr-un submodul [content-modules][], trebuie mai
+întâi să trimiți un PR (conținând modificările submodulului) către repository-ul
+submodulului. Abia după ce PR-ul submodulului a fost acceptat, poți actualiza
+submodulul și modificările vor apărea pe acest site web.
 
 Cel mai simplu este să gestionezi modificările din `content-modules` lucrând cu
-repository-ul la care este legat submodulul corespunzător, în loc să lucrezi direct
-în interiorul submodulului.
+repository-ul la care este legat submodulul corespunzător, în loc să lucrezi
+direct în interiorul submodulului.
 
-Contribuitorii experimentați pot lucra direct în submodul, putând astfel construi și
-servi direct modificările (din submodul). În mod implicit, scripturile CI obțin
-submodulele la fiecare invocare. Pentru a preveni acest comportament în timp ce
-lucrezi într-un submodul, setează variabila de mediu `GET=no`. De asemenea, trebuie
-să rulezi `git fetch --unshallow` în submodul înainte de a putea trimite un PR.
-Alternativ, setează `DEPTH=100` și reobține submodulele.
+Contribuitorii experimentați pot lucra direct în submodul, putând astfel
+construi și servi direct modificările (din submodul). În mod implicit,
+scripturile CI obțin submodulele la fiecare invocare. Pentru a preveni acest
+comportament în timp ce lucrezi într-un submodul, setează variabila de mediu
+`GET=no`. De asemenea, trebuie să rulezi `git fetch --unshallow` în submodul
+înainte de a putea trimite un PR. Alternativ, setează `DEPTH=100` și reobține
+submodulele.
 
 ## Suport DevContainer {#devcontainers}
 
 Acest repository este configurat pentru utilizare în [Development
-Containers][devcontainers], care sunt acceptate de diverse IDE-uri cloud și locale,
-precum (în ordine alfabetică):
+Containers][devcontainers], care sunt acceptate de diverse IDE-uri cloud și
+locale, precum (în ordine alfabetică):
 
 - [Codespaces][cs-devc]
 - [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
@@ -183,13 +193,14 @@ precum (în ordine alfabetică):
 
 ### Code-excerpter
 
-Utilizează [code-excerpter][] pentru fragmente de cod care ar trebui să fie sincronizate
-cu fișierele sursă din acest repository .
-Pagini ale site-ului web pot conține fragmente de cod pentru orice setare regională, dar conținutul original care le
-folosește este redactat în `content/en` apoi este actualizat de către echipele de traducere în limba proprie.
+Utilizează [code-excerpter][] pentru fragmente de cod care ar trebui să fie
+sincronizate cu fișierele sursă din acest repository . Pagini ale site-ului web
+pot conține fragmente de cod pentru orice setare regională, dar conținutul
+original care le folosește este redactat în `content/en` apoi este actualizat de
+către echipele de traducere în limba proprie.
 
-În pagina sursă scrisă în limba engleză, plasează o directivă de extragere a fișierului imediat înainte de
-blocul de cod închis pe care îl actualizează:
+În pagina sursă scrisă în limba engleză, plasează o directivă de extragere a
+fișierului imediat înainte de blocul de cod închis pe care îl actualizează:
 
 ````md
 <?code-excerpt path-base="examples/java/getting-started"?>
@@ -208,11 +219,13 @@ public class DiceApplication {
 ```
 ````
 
-Folosește o directivă opțională `path-base` o dată când ești aproape de începutul paginii atunci când mai multe
-fragmente de cod provin din același director. Pentru detalii legat de sintaxa directivei `code-excerpt`,
-accesează fișierul readme [code-excerpter][].
+Folosește o directivă opțională `path-base` o dată când ești aproape de
+începutul paginii atunci când mai multe fragmente de cod provin din același
+director. Pentru detalii legat de sintaxa directivei `code-excerpt`, accesează
+fișierul readme [code-excerpter][].
 
-Modifică fișierul sursă sau directiva, **nu și blocul de cod închis**. Apoi rulează următoarea comandă[npm script](/site/build/npm-scripts/):
+Modifică fișierul sursă sau directiva, **nu și blocul de cod închis**. Apoi
+rulează următoarea comandă[npm script](/site/build/npm-scripts/):
 
 ```sh
 npm run fix:code-excerpts
@@ -245,6 +258,5 @@ https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/add
 https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm]:
 https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
-[nvm-windows]: https://github.com/coreybutler/nvm-windows
 [WSL]: https://learn.microsoft.com/en-us/windows/wsl/install
 <!-- prettier-ignore-end -->
