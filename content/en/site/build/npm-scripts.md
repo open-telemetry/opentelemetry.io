@@ -4,6 +4,7 @@ description: >-
   NPM scripts for building, serving, validating, and maintaining the
   OpenTelemetry website.
 weight: 20
+todo: Keep table entries sorted
 cSpell:ignore: lycheecache
 ---
 
@@ -24,39 +25,41 @@ are internal helpers and are not intended to be run directly.
 
 ## Build and serve
 
-| Script             | Description                                            |
-| ------------------ | ------------------------------------------------------ |
-| `build`            | Build the site (dev base URL, drafts/future included). |
-| `build:preview`    | Build with minification (e.g. for Netlify preview).    |
-| `build:production` | Production Hugo build with minification.               |
-| `serve`            | Start Hugo dev server (default).                       |
-| `serve:hugo`       | Start Hugo server with in-memory render.               |
-| `serve:netlify`    | Start Netlify Dev using Hugo.                          |
-| `clean`            | Run `make clean`.                                      |
+| Script             | Description                                                    |
+| ------------------ | -------------------------------------------------------------- |
+| `build:full`       | Build the full site. For details, see [Build kinds][].         |
+| `build:lean`       | Do a lean build of the site. For details, see [Build kinds][]. |
+| `build:preview`    | Full build with minification (e.g. for Netlify preview).       |
+| `build:production` | Production Hugo build with minification.                       |
+| `build`            | Build the site. Defaults to lean; see [Build kinds][].         |
+| `clean`            | Run `make clean`.                                              |
+| `serve:hugo`       | Start Hugo server with in-memory render.                       |
+| `serve:netlify`    | Start Netlify Dev using Hugo.                                  |
+| `serve`            | Start Hugo dev server (default; full render).                  |
 
 ## Checking
 
-| Script                 | Description                                                 |
-| ---------------------- | ----------------------------------------------------------- |
-| `check`                | Run the most commonly needed check scripts in sequence.     |
-| `check:all`            | Run all check scripts in sequence.                          |
-| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                |
-| `check:codeowners`     | Verify CODEOWNERS locale section matches the registry.      |
-| `check:format`         | Prettier and prose-wrap checks.                             |
-| `check:i18n`           | Validate localization front matter (`default_lang_commit`). |
-| `check:l10n`           | Run localization checks.                                    |
-| `check:links`          | Run HTML link checker.                                      |
-| `check:links:diff`     | Lychee link check of changed files only (pilot).            |
-| `check:links:internal` | Link check without extra HTMLTest args.                     |
-| `check:links:lychee`   | Lychee link check of the whole site (pilot).                |
-| `check:markdown`       | Markdown lint (content and projects).                       |
-| `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                 |
-| `check:registry`       | Validate registry YAML under `data/registry/`.              |
-| `check:spelling`       | cspell over content, data, and layout Markdown.             |
-| `check:text`           | textlint over content and data.                             |
-| `check:filenames`      | [Validate file naming & detect obsolete files/folders][fn]. |
-| `check:expired`        | List expired content (by front matter).                     |
-| `check:collector-sync` | Run collector-sync checks.                                  |
+| Script                 | Description                                                    |
+| ---------------------- | -------------------------------------------------------------- |
+| `check:all`            | Run all check scripts in sequence.                             |
+| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                   |
+| `check:codeowners`     | Verify CODEOWNERS locale section matches the registry.         |
+| `check:collector-sync` | Run collector-sync checks.                                     |
+| `check:expired`        | List expired content (by front matter).                        |
+| `check:filenames`      | [Validate file naming & detect obsolete files/folders][fn].    |
+| `check:format`         | Prettier and prose-wrap checks.                                |
+| `check:i18n`           | Validate localization front matter (`default_lang_commit`).    |
+| `check:l10n`           | Run localization checks.                                       |
+| `check:links:diff`     | Lychee link check of changed files only (pilot).               |
+| `check:links:htmltest` | Link check the whole site with htmltest; lean build first.     |
+| `check:links:lychee`   | Lychee link check of the whole site; lean build first.         |
+| `check:links`          | Link check the whole site (htmltest, default); lean build 1st. |
+| `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                    |
+| `check:markdown`       | Markdown lint (content and projects).                          |
+| `check:registry`       | Validate registry YAML under `data/registry/`.                 |
+| `check:spelling`       | cspell over content, data, and layout Markdown.                |
+| `check:text`           | textlint over content and data.                                |
+| `check`                | Run the most commonly needed check scripts in sequence.        |
 
 ## Fixing
 
@@ -126,25 +129,24 @@ are internal helpers and are not intended to be run directly.
 
 ## Utilities
 
-| Script                                             | Description                                                    |
-| -------------------------------------------------- | -------------------------------------------------------------- |
-| `seq`                                              | Run given script names in sequence; exit on first failure.     |
-| `all`                                              | Run all given scripts, then exit with failure if any failed.   |
-| `locale-auto-merge`                                | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).  |
-| `prepare`                                          | Install step: `get:submodule`, then Docsy theme npm install.   |
-| `prebuild`                                         | Before build: `get:submodule`, `cp:spec`.                      |
-| `update:hugo`                                      | Install latest hugo-extended.                                  |
-| `update:packages`                                  | Run npm-check-updates to bump deps.                            |
-| `generate:config:links`                            | Generate git-ignored `.htmltest.yml` from `.htmltest.base.yml` |
-| `generate:config:links:lychee`                     | Generate git-ignored `lychee.toml` from `lychee.base.toml`.    |
-| `lychee:reseed`                                    | Rebuild `.lycheecache` from the refcache.                      |
-| `log:build`, `log:check:links`, `log:test-and-fix` | Run the corresponding script and tee output to `tmp/`.         |
+| Script                         | Description                                                    |
+| ------------------------------ | -------------------------------------------------------------- |
+| `seq`                          | Run given script names in sequence; exit on first failure.     |
+| `all`                          | Run all given scripts, then exit with failure if any failed.   |
+| `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).  |
+| `prepare`                      | Install step: `get:submodule`, then Docsy theme npm install.   |
+| `prebuild:*`                   | Pre-`build*` hooks; each runs `_prebuild`.                     |
+| `update:hugo`                  | Install latest hugo-extended.                                  |
+| `update:packages`              | Run npm-check-updates to bump deps.                            |
+| `generate:config:links`        | Generate git-ignored `.htmltest.yml` from `.htmltest.base.yml` |
+| `generate:config:links:lychee` | Generate git-ignored `lychee.toml` from `lychee.base.toml`.    |
+| `lychee:reseed`                | Rebuild `.lycheecache` from the refcache.                      |
+| `log:build`, `log:check:links` | Run the corresponding script and tee output to `tmp/`.         |
 
 ## Notes
 
-- **`check:links`** updates the refcache as a side effect. The test-and-fix flow
-  uses the internal fix list that excludes refcache so the check step can
-  refresh it.
+- **Refcache maintenance** is htmltest-specific. For details, see
+  [Refcache](../link-checking/#refcache).
 - **Lychee link check (pilot).** The `:lychee` and `:diff` scripts run
   [Lychee](https://github.com/lycheeverse/lychee) as a faster alternative to
   htmltest, mirroring its coverage. They generate `lychee.toml` and seed
@@ -162,5 +164,6 @@ are internal helpers and are not intended to be run directly.
 - **`all`** runs every listed script even when one fails, then exits with a
   non-zero status if any failed.
 
+[build kinds]: ../#build-kinds
 [fn]: /docs/contributing/pr-checks/#filename-check
 [locale-auto-merge]: ../ci-workflows/#locale-auto-merge
