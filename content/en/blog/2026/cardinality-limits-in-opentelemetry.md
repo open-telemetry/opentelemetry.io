@@ -19,7 +19,7 @@ is flat. The dashboard looks fine.
 But users are reporting failures. Logs confirm errors. Your application has been
 instrumented with OpenTelemetry the whole time. So where did the errors go?
 
-This post is about a deliberate piece of the OpenTelemetry metrics SDK design --
+This post is about a deliberate piece of the OpenTelemetry metrics SDK design —
 the **cardinality limit** — which may already be affecting one of your
 dashboards without you noticing.
 
@@ -62,7 +62,7 @@ in-memory state can OOM-kill the process before anything is even exported.
 ## How OpenTelemetry caps cardinality
 
 To prevent this, the OpenTelemetry metrics SDK enforces a **cardinality limit**
--- a maximum number of unique attribute combinations per metric stream. The
+— a maximum number of unique attribute combinations per metric stream. The
 default is **2000**, and SDKs let you override it when you need to.
 
 Here's what happens when the limit is reached. Say your counter
@@ -131,7 +131,7 @@ on `success=false` would never fire.**
 
 ### 2. Even your safest attributes become unreliable when their _combination_ overflows
 
-`success` is a boolean — about as low-cardinality as an attribute can get -- yet
+`success` is a boolean — about as low-cardinality as an attribute can get — yet
 `success=false` returned zero above. Why? Because the overflow bucket replaces
 the **entire attribute combination**, not just the high-cardinality part. The
 boolean `success` is dropped alongside `url.path`.
@@ -175,7 +175,7 @@ Practical guidance:
 
 One caveat: the SDK cap only limits what a single process holds in memory at any
 given time. It doesn't limit what reaches your backend. With delta temporality,
-the same process can export _different_ 2000-combination sets each cycle --
+the same process can export _different_ 2000-combination sets each cycle —
 accumulating far more distinct series over time. After a restart, the slate is
 wiped and 2000 new combinations can appear. And across a fleet, a 2000-cap
 counter exported by 1000 pods can produce up to 2 million backend series. **The
@@ -312,7 +312,7 @@ cardinality leak — watch process memory carefully.
 
 Cardinality issues sneak in with deployments: a route template that wasn't
 applied, an instrumentation library upgrade that adds a new attribute, an
-attribute populated from new untrusted input. A one-time audit isn't enough --
+attribute populated from new untrusted input. A one-time audit isn't enough —
 you want to know when overflow first appears, not on the next quarterly review.
 
 Set up an alert that fires when _any_ metric in any service emits the overflow
