@@ -7,7 +7,7 @@ description:
 what-next: >
   Acum ești pregătit să [construiești](#build), [servești](#serve) și să faci
   actualizări fișierelor site-ului. Pentru detalii despre cum să trimiți
-  modificări, consultați [Trimiterea conținutului](../pull-requests).
+  modificări, consultă [Trimiterea conținutului](../pull-requests).
 weight: 60
 cSpell:ignore: TOCSS
 default_lang_commit: f184d8b9305065730fc78d4038b0120848e2d385
@@ -21,7 +21,7 @@ drifted_from_default: true
 > best-effort basis. For builds on Windows, you can follow steps similar to
 > those for Linux using Windows Subsystem for Linux command line [WSL][].
 
-Următoarele instrucțiuni explică cum să configurați un mediu de dezvoltare
+Următoarele instrucțiuni explică pașii de configurare a un mediu de dezvoltare
 pentru acest site web.
 
 ## Configurare Cloud-IDE
@@ -30,35 +30,35 @@ pentru acest site web.
 
 Pentru a lucra prin [Gitpod.io][]:
 
-1.  Fă un fork al acestui repository. Pentru ajutor, consultați [Crearea unui
+1.  Fă un fork al acestui repertoriu. Pentru ajutor, consultă [Crearea unui
     fork][fork].
-2.  Din [gitpod.io/workspaces][], creză un spațiu de lucru nou (fă acest lucru
+2.  Din [gitpod.io/workspaces][], creează un spațiu de lucru nou (fă acest lucru
     doar o dată) sau deschide un spațiu de lucru existent peste fork-ul
-    dumneavoastră. Poți accesa și un link de forma:
+    tău. Poți accesa și un link de forma:
     `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`.
 
     > **Notă**: Dacă ai permisiunile necesare pentru a lucra din acest
-    > repository sau dorești doar să explorezi, deschideți
+    > repertoriu sau dorești doar să explorezi, deschide
     > <https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io>.
 
-Gitpod instalează automat pachetele specifice repository-ului pentru
-dumneavoastră. {{% param what-next %}}
+Gitpod instalează automat pachetele specifice repertoriului pentru
+tău. {{% param what-next %}}
 
 ### Codespaces
 
 Pentru a lucra prin GitHub [Codespaces][]:
 
-1. Fă un [Fork][] repository-ului de site web.
-2. Deschideți un Codespace din fork-ul tău.
+1. Fă un [Fork][] repertoriului de site web.
+2. Deschide un Codespace din fork-ul tău.
 
 Mediul de dezvoltare va fi inițializat prin configurația
 [DevContainer](#devcontainers). {{% param what-next %}}
 
 ## Configurare locală
 
-1.  Faceți un [Fork][] și apoi [clonați][clone] repository-ul site-ului web la
+1.  Faceți un [Fork][] și apoi [clonați][clone] repertoriul site-ului web la
     <{{% param github_repo %}}>.
-2.  Navighează în directorul repository-ului:
+2.  Navighează în directorul repertoriului:
 
 ```sh
 cd opentelemetry.io
@@ -162,12 +162,12 @@ Site-ul web este construit din următoarele conținuturi:
 ### Modificări ale submodulelor
 
 Dacă modifici orice conținut dintr-un submodul [content-modules][], trebuie mai
-întâi să trimiți un PR (conținând modificările submodulului) către repository-ul
+întâi să trimiți un PR (conținând modificările submodulului) către repertoriul
 submodulului. Abia după ce PR-ul submodulului a fost acceptat, poți actualiza
 submodulul și modificările vor apărea pe acest site web.
 
 Cel mai simplu este să gestionezi modificările din `content-modules` lucrând cu
-repository-ul la care este legat submodulul corespunzător, în loc să lucrezi
+repertoriul la care este legat submodulul corespunzător, în loc să lucrezi
 direct în interiorul submodulului.
 
 Contribuitorii experimentați pot lucra direct în submodul, putând astfel
@@ -180,7 +180,7 @@ submodulele.
 
 ## Suport DevContainer {#devcontainers}
 
-Acest repository este configurat pentru utilizare în [Development
+Acest repertoriu este configurat pentru utilizare în [Development
 Containers][devcontainers], care sunt acceptate de diverse IDE-uri cloud și
 locale, precum (în ordine alfabetică):
 
@@ -194,7 +194,7 @@ locale, precum (în ordine alfabetică):
 ### Code-excerpter
 
 Utilizează [code-excerpter][] pentru fragmente de cod care ar trebui să fie
-sincronizate cu fișierele sursă din acest repository . Pagini ale site-ului web
+sincronizate cu fișierele sursă din acest repertoriu. Pagini ale site-ului web
 pot conține fragmente de cod pentru orice setare regională, dar conținutul
 original care le folosește este redactat în `content/en` apoi este actualizat de
 către echipele de traducere în limba proprie.
