@@ -41,7 +41,7 @@ Pentru a lucra prin [Gitpod.io][]:
     > repertoriu sau dorești doar să explorezi, deschide
     > <https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io>.
 
-Gitpod instalează automat pachetele specifice repertoriului pentru tău.
+Gitpod instalează automat pachetele specifice repertoriului tău.
 {{% param what-next %}}
 
 ### Codespaces
@@ -56,7 +56,7 @@ Mediul de dezvoltare va fi inițializat prin configurația
 
 ## Configurare locală
 
-1.  Faceți un [Fork][] și apoi [clonați][clone] repertoriul site-ului web la
+1.  Fă un [Fork][] și apoi [clonați][clone] repertoriul site-ului web la
     <{{% param github_repo %}}>.
 2.  Navighează în directorul repertoriului:
 
@@ -73,7 +73,7 @@ cd opentelemetry.io
 nvm install
 ```
 
-    Pentru [instalare pe Windows][nodejs-win], utilizează [nvm-windows][]. Recomandăm
+    Pentru [instalarea pe Windows][nodejs-win], utilizează [nvm-windows][]. Recomandăm
     folosirea `cmd` și nu Windows PowerShell pentru comanda de mai jos:
 
 ```cmd
