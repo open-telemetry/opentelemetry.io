@@ -1,14 +1,13 @@
 ---
 title: CI workflows
-linkTitle: CI workflows
 description: >-
   GitHub Actions workflows that automate PR checks, label management, and other
   CI/CD processes.
 weight: 10
 ---
 
-All workflow files live under
-[`.github/workflows/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/.github/workflows).
+For workflows and (most of) their helper scripts, see the `workflow` and
+`scripts` folder under [.github][]
 
 ## PR approval labels {#pr-approval-labels}
 
@@ -358,10 +357,12 @@ It runs as a three-stage pipeline:
 ## Locale auto-merge
 
 The [locale-auto-merge.yml][] workflow lets a locale's maintainers enable
-[GitHub auto-merge][] on a locale-only PR by commenting `/auto-merge` (or
-`/auto-merge:disable`). It runs as the DOCS bot, which holds the privileges
-needed to flip the "merge when ready" switch under branch protection; CODEOWNERS
-and required checks remain the hard merge gate.
+[GitHub auto-merge][] on a locale-only PR through an `/auto-merge` (or
+`/auto-merge:enable` / `/auto-merge:disable`) comment directive — for placement
+rules, see the helper [README][locale-auto-merge-script]. It runs as the DOCS
+bot, which holds the privileges needed to flip the "merge when ready" switch
+under branch protection; CODEOWNERS and required checks remain the hard merge
+gate.
 
 The thin workflow delegates to the testable helper in
 [scripts/gh/locale-auto-merge/][locale-auto-merge-script], which enforces two
@@ -450,16 +451,21 @@ logic lives in [scripts/gh/report-failure/][report-failure-script]
 
 The repository includes several other workflows:
 
-| Workflow                   | Purpose                                       |
-| -------------------------- | --------------------------------------------- |
-| `check-links.yml`          | Sharded link checking using htmltest          |
-| `check-text.yml`           | Textlint terminology checks                   |
-| `check-i18n.yml`           | Localization front matter validation          |
-| `check-spelling.yml`       | Spell checking                                |
-| `test.yml`                 | Test (excludes `test:base`)                   |
-| `auto-update-registry.yml` | Auto-update registry package versions         |
-| `auto-update-versions.yml` | Auto-update OTel component versions           |
-| `build-dev.yml`            | Development build and preview                 |
-| `lint-scripts.yml`         | ShellCheck linting for `.github/scripts/`     |
-| `label-manager.yml`        | PR labels (component labels & approval flow)  |
-| `component-owners.yml`     | Assign reviewers based on component ownership |
+| Workflow                   | Purpose                                                                                |
+| -------------------------- | -------------------------------------------------------------------------------------- |
+| `check-links.yml`          | Sharded link checking using htmltest, plus a non-blocking [Lychee][lychee-pilot] pilot |
+| `check-text.yml`           | Textlint terminology checks                                                            |
+| `check-i18n.yml`           | Localization front matter validation                                                   |
+| `check-spelling.yml`       | Spell checking                                                                         |
+| `test.yml`                 | Test (excludes `test:base`)                                                            |
+| `auto-update-registry.yml` | Auto-update registry package versions                                                  |
+| `auto-update-versions.yml` | Auto-update OTel component versions                                                    |
+| `build-dev.yml`            | Development build and preview                                                          |
+| `lint-scripts.yml`         | ShellCheck linting for `.github/scripts/`                                              |
+| `label-manager.yml`        | PR labels (component labels & approval flow)                                           |
+| `component-owners.yml`     | Assign reviewers based on component ownership                                          |
+
+<!-- prettier-ignore-start -->
+[lychee-pilot]: ../npm-scripts/#notes
+[.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
+<!-- prettier-ignore-end -->

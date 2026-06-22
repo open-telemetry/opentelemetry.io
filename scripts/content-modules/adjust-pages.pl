@@ -26,7 +26,7 @@ my %versionsRaw = # Keyname must end with colons because the auto-version update
   qw(
     spec: 1.57.0
     otlp: 1.10.0
-    semconv: 1.41.1
+    semconv: 1.42.0
   );
 # Versions map without the colon in the keys
 my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
@@ -286,6 +286,7 @@ sub applyPatchOrPrintMsgIf($$$;$) {
 
 sub getVersFromSubmodule() {
   my %repoNames = qw(
+    opamp   opamp-spec
     otlp    opentelemetry-proto
     semconv semantic-conventions
     spec    opentelemetry-specification
@@ -416,7 +417,7 @@ while(<>) {
 
   ## OpAMP
 
-  s|\]\((proto/opamp.proto)\)|]($opAmpSpecRepoUrl/blob/main/$1)|;
+  s|\]\((proto/opamp.proto)\)|]($opAmpSpecRepoUrl/blob/v$versFromSubmod{'opamp'}/$1)|;
 
   print;
 }

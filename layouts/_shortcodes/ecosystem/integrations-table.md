@@ -1,13 +1,13 @@
 <!-- cSpell:ignore: cond isset -->
 {{ $integrations := slice -}}
-{{ range $entry := $.Site.Data.registry -}}
+{{ range $entry := hugo.Data.registry -}}
   {{ if or (and (eq ($.Get 0) "native libraries") (eq $entry.isNative true) (eq $entry.registryType "instrumentation")) (and (eq ($.Get 0) "application integrations") (eq $entry.registryType "application integration")) -}}
     {{ $entry = merge $entry (dict "oss" (ne .license "Commercial")) -}}
     {{ $integrations = $integrations | append $entry -}}
   {{ end -}}
 {{ end -}}
 
-{{ $languages := merge $.Site.Data.instrumentation (dict "collector" (dict "name" "collector") "lua" (dict "name" "Lua")) -}}
+{{ $languages := merge hugo.Data.instrumentation (dict "collector" (dict "name" "collector") "lua" (dict "name" "Lua")) -}}
 
 Name[^1]     | OSS | Component |  Learn more
 ------------ | --- | ---------- |  ----------
@@ -15,7 +15,7 @@ Name[^1]     | OSS | Component |  Learn more
 {{ $lang := cond
     (eq .language "collector")
     (dict "name" "Collector")
-    (index $.Site.Data.instrumentation .language)
+    (index hugo.Data.instrumentation .language)
 -}}
 {{ $cncfTag := cond
     (isset . "cncfProjectLevel")

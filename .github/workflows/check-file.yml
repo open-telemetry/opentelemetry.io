@@ -12,7 +12,7 @@ jobs:
     name: EXPIRED FILE check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with: { persist-credentials: false }
       - run: npm run check:expired
       - run: npm run _diff:fail
@@ -21,7 +21,7 @@ jobs:
     name: FILENAME check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with: { persist-credentials: false }
       - run: npm run check:filenames
 
@@ -29,14 +29,24 @@ jobs:
     name: FILE FORMAT
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with: { persist-credentials: false }
       - run: npm run check:format
+
+  check-codeowners:
+    name: CODEOWNERS check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with: { persist-credentials: false }
+      # Only dependency of the check; skip the full (slow) npm install.
+      - run: npm install --no-save --ignore-scripts js-yaml
+      - run: npm run check:codeowners
 
   check-branch-name:
     name: BRANCH NAME check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with: { persist-credentials: false }
       - uses: ./.github/actions/fail-if-branch-is-main

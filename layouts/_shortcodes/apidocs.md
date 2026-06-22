@@ -1,5 +1,5 @@
 {{ $pages := slice -}}
-{{ range $key,$value := $.Site.Data.instrumentation -}}
+{{ range $key,$value := hugo.Data.instrumentation -}}
     {{ if eq $key "dotnet" -}}
       {{ with $.Site.GetPage "/docs/languages/dotnet/traces-api" -}}
           {{ $pages = $pages | append (dict "lang" $value "page" .) -}}

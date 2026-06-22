@@ -1,4 +1,4 @@
-{{- range $lang, $data := $.Site.Data.instrumentation }}
+{{- range $lang, $data := hugo.Data.instrumentation }}
   {{- $path := printf "/docs/languages/%s/sampling.md" $lang }}
   {{- with site.GetPage $path }}
     {{- template "list-item" (dict "name" $data.name "page" .) }}
