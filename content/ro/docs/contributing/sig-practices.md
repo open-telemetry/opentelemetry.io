@@ -1,8 +1,8 @@
 ---
-title: Practici SIG pentru aprobatori și menținători
+title: Practici SIG pentru aprobatori și administratori
 linkTitle: Practici SIG
 description:
-  Află cum aprobatorii și menținătorii gestionează problemele și contribuțiile.
+  Află cum aprobatorii și administratorii gestionează problemele și contribuțiile.
 weight: 999
 # prettier-ignore
 cSpell:ignore: Comms contribfest hotfixes inactivitiy onboarded triager triagers
@@ -10,13 +10,13 @@ default_lang_commit: db8337edbbac824aebbb330acea18a7042b38806
 ---
 
 Această pagină include îndrumări și câteva practici comune folosite de
-aprobatori și menținători.
+aprobatori și administratori.
 
 ## Integrare {#onboarding}
 
 Dacă un contribuitor își asumă un rol cu mai multă responsabilitate față de
-documentație (aprobator, menținător), acesta va fi integrat de aprobatorii și
-menținătorii existenți:
+documentație (aprobator, administrator), acesta va fi integrat de aprobatorii și
+administratorii existenți:
 
 - Este adăugat în grupul `docs-approvers` (sau `docs-maintainers`).
 - Este adăugat în canalele Slack `#otel-comms` și `#otel-maintainers`, precum și
@@ -24,9 +24,9 @@ menținătorii existenți:
 - I se cere să se înscrie pentru invitațiile de calendar la
   [întâlnirea SIG Comms](https://groups.google.com/a/opentelemetry.io/g/calendar-comms)
   și la
-  [întâlnirea menținătorilor](https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting).
+  [întâlnirea administratorilor](https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting).
 - I se cere să verifice dacă ora actuală a întâlnirii SIG Comms i se potrivește,
-  iar dacă nu, să colaboreze cu aprobatorii și menținătorii existenți pentru a
+  iar dacă nu, să colaboreze cu aprobatorii și administratorii existenți pentru a
   găsi o oră care convine tuturor.
 - I se cere să consulte diferitele resurse disponibile pentru contribuitori:
   - [Resurse pentru comunitate](https://github.com/open-telemetry/community/),
@@ -51,21 +51,21 @@ Resurse suplimentare valoroase de consultat sunt:
 
 ## Colaborare {#collaboration}
 
-- Aprobatorii și menținătorii au programe de lucru și circumstanțe diferite. De
+- Aprobatorii și administratorii au programe de lucru și circumstanțe diferite. De
   aceea, se presupune că întreaga comunicare este asincronă și nimeni nu ar
   trebui să se simtă obligat să răspundă în afara programului său obișnuit.
-- Atunci când un aprobator sau un menținător nu va putea contribui pentru o
+- Atunci când un aprobator sau un administrator nu va putea contribui pentru o
   perioadă mai lungă (mai mult de câteva zile sau o săptămână), acesta ar trebui
   să comunice acest lucru pe canalul
   [#otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6) și să își
   actualizeze statusul pe GitHub.
-- Aprobatorii și menținătorii respectă
+- Aprobatorii și administratorii respectă
   [Codul de conduită OTel](https://github.com/open-telemetry/community/?tab=coc-ov-file#opentelemetry-community-code-of-conduct)
   și [Valorile comunității](/community/mission/#community-values). Ei sunt
   prietenoși și de ajutor pentru contribuitori. În cazul unui conflict, al unei
   neînțelegeri sau al oricărei alte situații care îi face să se simtă
   inconfortabil, se pot retrage dintr-o conversație, un issue sau un PR și pot
-  solicita intervenția unui alt aprobator sau menținător.
+  solicita intervenția unui alt aprobator sau administrator.
 
 ## Triere {#triage}
 
@@ -78,7 +78,7 @@ Resurse suplimentare valoroase de consultat sunt:
     responsabilitatea (sau co-responsabilitatea) pentru problemă:
     - O etichetă `sig:*` dacă problema este legată de conținut sau de o
       întrebare aflată în responsabilitatea unui SIG (de exemplu, o întrebare
-      despre Collector va fi etichetată `sig:collector`).
+      despre Colector va fi etichetată `sig:collector`).
     - O etichetă `lang:*` dacă problema este legată de conținut sau de o
       întrebare specifică unei anumite localizări.
     - O etichetă `docs:*` dacă problema este legată de conținut sau de o
@@ -112,7 +112,7 @@ Resurse suplimentare valoroase de consultat sunt:
     - `e0-minutes`
     - ...
     - `e4-months`
-  - **Opțional (doar pentru menținători):** o etichetă de prioritate:
+  - **Opțional (doar pentru administratori):** o etichetă de prioritate:
     - `p0-critical`
     - `p1-high`
     - `p2-medium`
@@ -135,7 +135,7 @@ Resurse suplimentare valoroase de consultat sunt:
 - PR-urile trebuie să aibă o problemă asociată etichetată `triage:accepted`, cu
   următoarele excepții:
   - PR-uri automate;
-  - remedieri urgente (_hotfixes_) efectuate de menținători sau aprobatori.
+  - remedieri urgente (_hotfixes_) efectuate de administratori sau aprobatori.
 - Automatizarea se va asigura că PR-urile sunt
   [etichetate](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml)
   și
@@ -172,7 +172,7 @@ Resurse suplimentare valoroase de consultat sunt:
   branch_), nu este necesar să fie sincronizată în mod continuu: fiecare
   actualizare declanșează rularea tuturor verificărilor CI ale PR-ului. De multe
   ori este suficient să fie actualizată chiar înainte de integrare.
-- Un PR creat de o persoană care nu este menținător nu ar trebui **niciodată**
+- Un PR creat de o persoană care nu este administrator nu ar trebui **niciodată**
   să actualizeze submodule Git. Acest lucru se întâmplă ocazional din greșeală.
   Informează autorul PR-ului că nu trebuie să își facă griji, deoarece problema
   va fi remediată înainte de integrare, însă pe viitor ar trebui să se asigure
@@ -184,7 +184,7 @@ Resurse suplimentare valoroase de consultat sunt:
   nouă verificare a CLA-ului.
 - Cuvintele necunoscute pentru cSpell pot fi adăugate la lista de ignorare în
   unul dintre următoarele trei locuri:
-  - **Front matter-ul paginii**: în general preferat pentru cuvinte izolate care
+  - **Antetul paginii**: în general preferat pentru cuvinte izolate care
     este puțin probabil să apară în alte pagini. Vezi [Verificarea
     ortografiei][].
   - **Dicționarul localizării**: preferat pentru cuvinte care sunt susceptibile
@@ -203,7 +203,7 @@ Resurse suplimentare valoroase de consultat sunt:
 ### PR-uri în coproprietate {#co-owned-prs}
 
 PR-urile care conțin modificări ale documentației aflate în responsabilitatea
-comună a unui SIG (Collector, Demo, documentație specifică unui limbaj etc.) ar
+comună a unui SIG (Colector, Demo, documentație specifică unui limbaj etc.) ar
 trebui să obțină două aprobări: una din partea unui aprobator al echipei de
 documentație și una din partea unui aprobator al SIG-ului.
 
@@ -215,7 +215,7 @@ documentație și una din partea unui aprobator al SIG-ului.
   Aceasta semnalează SIG-ului că trebuie să revizuiască și să aprobe PR-ul.
 - Dacă nu este acordată nicio aprobare din partea SIG-ului într-o perioadă de
   grație rezonabilă (în general două săptămâni, dar mai puțin în cazurile
-  urgente), un menținător al documentației poate decide, pe baza propriei
+  urgente), un administrator al documentației poate decide, pe baza propriei
   evaluări, integrarea PR-ului.
 
 ### PR-uri de la roboți {#prs-from-bots}
@@ -225,7 +225,7 @@ PR-urile create de roboți pot fi integrate conform următoarei practici:
 - PR-urile care actualizează automat versiunile din registru pot fi corectate,
   aprobate și integrate imediat.
 - PR-urile care actualizează automat versiunile SDK-urilor, ale instrumentărilor
-  fără cod (_zero-code instrumentations_) sau ale Collector pot fi aprobate și
+  fără cod sau ale Colectorului pot fi aprobate și
   integrate, cu excepția cazului în care SIG-ul corespunzător semnalează că
   integrarea ar trebui amânată.
 - PR-urile care actualizează automat versiunea unei specificații necesită adesea
@@ -244,7 +244,7 @@ recomandate pentru PR-urile aflate în responsabilitate comună.
 
 ## Integrarea PR-urilor {#merging-prs}
 
-Următorul flux de lucru poate fi utilizat de menținători pentru integrarea
+Următorul flux de lucru poate fi utilizat de administratori pentru integrarea
 PR-urilor:
 
 - Asigură-te că PR-ul are toate aprobările necesare și că toate verificările CI
@@ -279,7 +279,7 @@ lucru programate ([detalii][ci-section]) rulează zilnic și mențin un PR de
 [semconv-branches]:
   https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration
 
-### Mentenanți SIG spec / semconv {#spec--semconv-sig-maintainers}
+### Administratori SIG spec / semconv {#spec--semconv-sig-maintainers}
 
 Chiar înainte de a pregăti o lansare:
 
@@ -295,7 +295,7 @@ Chiar înainte de a pregăti o lansare:
    siguranță. Dacă nu, notifică `@open-telemetry/docs-maintainers` pentru a
    putea remedia defecțiunea înainte de lansare.
 
-### Mentenanți SIG Comms {#comms-sig-maintainers}
+### Administratori SIG Comms {#comms-sig-maintainers}
 
 Pe parcursul lunii, verifică periodic PR-urile de integrare și aplică remedieri
 incrementale pentru a menține verificările CI „verzi”. Identificarea problemelor
