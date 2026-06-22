@@ -84,6 +84,10 @@
 /content/ja/      @open-telemetry/docs-ja-approvers
 /prh/ja.yml       @open-telemetry/docs-ja-approvers
 
+# ko (unstaffed)
+/.cspell/ko-*.txt @open-telemetry/docs-ko-approvers @open-telemetry/docs-approvers
+/content/ko/      @open-telemetry/docs-ko-approvers @open-telemetry/docs-approvers
+
 # pl (unstaffed)
 /.cspell/pl-*.txt @open-telemetry/docs-pl-approvers @open-telemetry/docs-approvers
 /content/pl/      @open-telemetry/docs-pl-approvers @open-telemetry/docs-approvers
