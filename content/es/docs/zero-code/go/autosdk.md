@@ -4,6 +4,7 @@ linkTitle: Auto SDK
 description: Integra spans manuales con spans eBPF sin código con el Auto SDK
 weight: 16
 default_lang_commit: 28d760e734e5b20c9af47efce57484ae691e3975
+drifted_from_default: true
 ---
 
 El framework de instrumentación eBPF de OpenTelemetry Go, utilizado por

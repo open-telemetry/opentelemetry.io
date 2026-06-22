@@ -1,7 +1,7 @@
 ---
 title: はじめに
 weight: 1
-default_lang_commit: dabd30226437f71ca1eca69f9e8f04926a042bae
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 cSpell:ignore: Dotel
 ---
 

@@ -1,4 +1,4 @@
-{{ $data := $.Site.Data.instrumentation }}
+{{ $data := hugo.Data.instrumentation }}
 {{ $signal := .Get 0 -}}
 
 Language | {{ humanize $signal }} |
