@@ -15,16 +15,18 @@ const SPECIAL_MAPPINGS = {
     'general.sanitization.url.sensitive_query_parameters/development',
   'otel.semconv-stability.opt-in': 'general.semconv_stability.opt_in',
   'otel.instrumentation.http.known-methods': 'java.common.http.known_methods',
-  'otel.instrumentation.http.client.experimental.redact-query-parameters':
-    'java.common.http.client.redact_query_parameters/development',
   'otel.instrumentation.http.client.emit-experimental-telemetry':
     'java.common.http.client.emit_experimental_telemetry/development',
   'otel.instrumentation.http.server.emit-experimental-telemetry':
     'java.common.http.server.emit_experimental_telemetry/development',
+  'otel.instrumentation.common.db.query-sanitization.enabled':
+    'java.common.db.query_sanitization.enabled',
   'otel.instrumentation.common.db-statement-sanitizer.enabled':
-    'java.common.database.statement_sanitizer.enabled',
-  'otel.instrumentation.common.experimental.db-sqlcommenter.enabled':
-    'java.common.database.sqlcommenter/development.enabled',
+    'java.common.db_statement_sanitizer.enabled',
+  'otel.instrumentation.common.db.experimental.sqlcommenter.enabled':
+    'java.common.db.sqlcommenter/development.enabled',
+  'otel.semconv.exception.signal.preview':
+    'general.semconv_exception.signal.preview',
   'otel.instrumentation.messaging.experimental.receive-telemetry.enabled':
     'java.common.messaging.receive_telemetry/development.enabled',
   'otel.instrumentation.messaging.experimental.capture-headers':
@@ -39,6 +41,7 @@ const SPECIAL_MAPPINGS = {
     'java.servlet.javascript_snippet/development',
   'otel.jmx.enabled': 'java.jmx.enabled',
   'otel.jmx.config': 'java.jmx.config',
+  'otel.jmx.discovery.delay': 'java.jmx.discovery.delay',
   'otel.jmx.target.system': 'java.jmx.target.system',
 };
 

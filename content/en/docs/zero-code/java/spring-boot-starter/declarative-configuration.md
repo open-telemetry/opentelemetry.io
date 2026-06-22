@@ -1,7 +1,7 @@
 ---
 title: Declarative configuration
 weight: 25
-cSpell:ignore: Customizer Dotel
+cSpell:ignore: Customizer Dotel genai
 ---
 
 Declarative configuration uses the
@@ -24,6 +24,26 @@ This approach is useful when:
 
 Declarative configuration is supported in the **OpenTelemetry Spring Boot
 starter version 2.26.0 and later**.
+
+## Dependency management
+
+Make sure you import the `opentelemetry-instrumentation-bom` in
+`dependencyManagement` as described in the
+[Getting started](../getting-started/#dependency-management) page.
+
+> [!IMPORTANT]
+>
+> On Spring Boot 3.5 and later, importing the
+> `opentelemetry-instrumentation-bom` is **required**. Spring Boot 3.5+ ships
+> its own OpenTelemetry dependency management that pins `opentelemetry-api` to a
+> version that does not include `io.opentelemetry.common.ComponentLoader`, which
+> the starter needs for declarative configuration. Without the BOM, the
+> application fails to start with
+> `NoClassDefFoundError: io/opentelemetry/common/ComponentLoader`.
+>
+> When using Maven, the OpenTelemetry BOM must be imported **before** the Spring
+> Boot parent / `spring-boot-dependencies` BOM so that its versions take
+> precedence.
 
 ## Getting started
 
@@ -117,7 +137,8 @@ map to `otel.instrumentation/development.java.*`:
 2. Per segment: replace `-` with `_`
 3. Place under `otel.instrumentation/development.java.`
 4. A `/development` suffix on a key indicates an experimental feature (see the
-   `translateName` method in `ConfigPropertiesBackedDeclarativeConfigProperties`
+   `translateName` method in
+   [`ConfigPropertiesBackedDeclarativeConfigProperties`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/declarative-config-bridge/src/main/java/io/opentelemetry/instrumentation/config/bridge/ConfigPropertiesBackedDeclarativeConfigProperties.java)
    for the reverse mapping)
 
 For example:
@@ -128,18 +149,31 @@ For example:
 
 Some options have special mappings that don't follow the default algorithm:
 
-| Properties                                                              | Declarative Configuration                                                                          |
-| ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `otel.instrumentation.common.db-statement-sanitizer.enabled`            | `otel.instrumentation/development.java.common.database.statement_sanitizer.enabled`                |
-| `otel.instrumentation.http.client.capture-request-headers`              | `otel.instrumentation/development.general.http.client.request_captured_headers`                    |
-| `otel.instrumentation.http.client.capture-response-headers`             | `otel.instrumentation/development.general.http.client.response_captured_headers`                   |
-| `otel.instrumentation.http.server.capture-request-headers`              | `otel.instrumentation/development.general.http.server.request_captured_headers`                    |
-| `otel.instrumentation.http.server.capture-response-headers`             | `otel.instrumentation/development.general.http.server.response_captured_headers`                   |
-| `otel.instrumentation.http.client.emit-experimental-telemetry`          | `otel.instrumentation/development.java.common.http.client.emit_experimental_telemetry/development` |
-| `otel.instrumentation.http.server.emit-experimental-telemetry`          | `otel.instrumentation/development.java.common.http.server.emit_experimental_telemetry/development` |
-| `otel.instrumentation.http.known-methods`                               | `otel.instrumentation/development.java.common.http.known_methods`                                  |
-| `otel.instrumentation.messaging.experimental.receive-telemetry.enabled` | `otel.instrumentation/development.java.common.messaging.receive_telemetry/development.enabled`     |
-| `otel.jmx.enabled`                                                      | `otel.instrumentation/development.java.jmx.enabled`                                                |
+| Properties                                                                      | Declarative Configuration                                                                          |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `otel.instrumentation.common.db.query-sanitization.enabled`                     | `otel.instrumentation/development.java.common.db.query_sanitization.enabled`                       |
+| `otel.instrumentation.common.db-statement-sanitizer.enabled` (deprecated)       | `otel.instrumentation/development.java.common.db_statement_sanitizer.enabled`                      |
+| `otel.instrumentation.common.db.experimental.sqlcommenter.enabled`              | `otel.instrumentation/development.java.common.db.sqlcommenter/development.enabled`                 |
+| `otel.instrumentation.http.client.capture-request-headers`                      | `otel.instrumentation/development.general.http.client.request_captured_headers`                    |
+| `otel.instrumentation.http.client.capture-response-headers`                     | `otel.instrumentation/development.general.http.client.response_captured_headers`                   |
+| `otel.instrumentation.http.server.capture-request-headers`                      | `otel.instrumentation/development.general.http.server.request_captured_headers`                    |
+| `otel.instrumentation.http.server.capture-response-headers`                     | `otel.instrumentation/development.general.http.server.response_captured_headers`                   |
+| `otel.instrumentation.http.client.emit-experimental-telemetry`                  | `otel.instrumentation/development.java.common.http.client.emit_experimental_telemetry/development` |
+| `otel.instrumentation.http.server.emit-experimental-telemetry`                  | `otel.instrumentation/development.java.common.http.server.emit_experimental_telemetry/development` |
+| `otel.instrumentation.http.known-methods`                                       | `otel.instrumentation/development.java.common.http.known_methods`                                  |
+| `otel.instrumentation.messaging.experimental.receive-telemetry.enabled`         | `otel.instrumentation/development.java.common.messaging.receive_telemetry/development.enabled`     |
+| `otel.instrumentation.messaging.experimental.capture-headers`                   | `otel.instrumentation/development.java.common.messaging.capture_headers/development`               |
+| `otel.instrumentation.genai.capture-message-content`                            | `otel.instrumentation/development.java.common.gen_ai.capture_message_content`                      |
+| `otel.instrumentation.sanitization.url.experimental.sensitive-query-parameters` | `otel.instrumentation/development.general.sanitization.url.sensitive_query_parameters/development` |
+| `otel.semconv-stability.opt-in`                                                 | `otel.instrumentation/development.general.semconv_stability.opt_in`                                |
+| `otel.semconv.exception.signal.preview`                                         | `otel.instrumentation/development.general.semconv_exception.signal.preview`                        |
+| `otel.instrumentation.experimental.span-suppression-strategy`                   | `otel.instrumentation/development.java.common.span_suppression_strategy/development`               |
+| `otel.instrumentation.opentelemetry-annotations.exclude-methods`                | `otel.instrumentation/development.java.opentelemetry_extension_annotations.exclude_methods`        |
+| `otel.experimental.javascript-snippet`                                          | `otel.instrumentation/development.java.servlet.javascript_snippet/development`                     |
+| `otel.jmx.enabled`                                                              | `otel.instrumentation/development.java.jmx.enabled`                                                |
+| `otel.jmx.config`                                                               | `otel.instrumentation/development.java.jmx.config`                                                 |
+| `otel.jmx.discovery.delay`                                                      | `otel.instrumentation/development.java.jmx.discovery.delay`                                        |
+| `otel.jmx.target.system`                                                        | `otel.instrumentation/development.java.jmx.target.system`                                          |
 
 The `instrumentation/development` section has two top-level groups:
 
