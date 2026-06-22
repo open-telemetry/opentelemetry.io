@@ -9,9 +9,9 @@ what-next: >
   actualizări fișierelor site-ului. Pentru detalii despre cum să trimiți
   modificări, consultă [Trimiterea conținutului](../pull-requests).
 weight: 60
-cSpell:ignore: TOCSS
 default_lang_commit: f184d8b9305065730fc78d4038b0120848e2d385
 drifted_from_default: true
+cSpell:ignore: TOCSS
 ---
 
 > [!WARNING] Supported build environments
@@ -33,16 +33,16 @@ Pentru a lucra prin [Gitpod.io][]:
 1.  Fă un fork al acestui repertoriu. Pentru ajutor, consultă [Crearea unui
     fork][fork].
 2.  Din [gitpod.io/workspaces][], creează un spațiu de lucru nou (fă acest lucru
-    doar o dată) sau deschide un spațiu de lucru existent peste fork-ul
-    tău. Poți accesa și un link de forma:
+    doar o dată) sau deschide un spațiu de lucru existent peste fork-ul tău.
+    Poți accesa și un link de forma:
     `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`.
 
     > **Notă**: Dacă ai permisiunile necesare pentru a lucra din acest
     > repertoriu sau dorești doar să explorezi, deschide
     > <https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io>.
 
-Gitpod instalează automat pachetele specifice repertoriului pentru
-tău. {{% param what-next %}}
+Gitpod instalează automat pachetele specifice repertoriului pentru tău.
+{{% param what-next %}}
 
 ### Codespaces
 
