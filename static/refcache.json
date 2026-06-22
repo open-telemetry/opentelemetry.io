@@ -244,16 +244,16 @@
     "LastSeen": "2026-06-19T11:18:30.656Z"
   },
   "https://blog.olly.garden/how-to-name-your-metrics": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-21T10:51:06.121267114Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-22T06:09:38.327Z"
   },
   "https://blog.olly.garden/how-to-name-your-span-attributes": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-21T10:51:06.141435213Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-22T06:10:18.893Z"
   },
   "https://blog.olly.garden/how-to-name-your-spans": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-21T10:51:08.036440617Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-22T06:10:38.806Z"
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
     "StatusCode": 200,
@@ -18604,8 +18604,8 @@
     "LastSeen": "2026-06-19T11:19:32.485Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-aws-sdk": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-21T10:53:54.233556044Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-22T06:10:45.776Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-browser-navigation": {
     "StatusCode": 206,
@@ -18708,8 +18708,8 @@
     "LastSeen": "2026-06-19T11:20:35.514Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-mysql2": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-21T10:54:25.187613851Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-22T06:10:51.316Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-nestjs-core": {
     "StatusCode": 200,
@@ -18752,8 +18752,8 @@
     "LastSeen": "2026-06-17T11:30:51.457Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-socket.io": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-21T10:54:35.489631361Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-22T06:10:57.237Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-tedious": {
     "StatusCode": 200,
@@ -18764,8 +18764,8 @@
     "LastSeen": "2026-06-17T12:07:42.017Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-user-interaction": {
-    "StatusCode": 429,
-    "LastSeen": "2026-06-21T10:54:39.635750729Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-22T06:11:08.381Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-web-exception": {
     "StatusCode": 206,
