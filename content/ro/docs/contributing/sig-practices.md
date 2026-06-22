@@ -4,9 +4,8 @@ linkTitle: Practici SIG
 description:
   Află cum aprobatorii și administratorii gestionează problemele și contribuțiile.
 weight: 999
-# prettier-ignore
-cSpell:ignore: Comms contribfest hotfixes inactivitiy onboarded triager triagers
 default_lang_commit: db8337edbbac824aebbb330acea18a7042b38806
+cSpell:ignore: Comms contribfest hotfixes triager triagers
 ---
 
 Această pagină include îndrumări și câteva practici comune folosite de
