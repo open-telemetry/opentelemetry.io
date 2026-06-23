@@ -1,5 +1,5 @@
 ---
-title: 'Managed Telemetry Platforms for K8s Workloads'
+title: 'Managed Telemetry Platforms for Kubernetes Workloads'
 linkTitle: 'Managed Telemetry Platforms for K8s Workloads'
 date: '2026-05-28'
 author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
@@ -72,21 +72,19 @@ native maturity.
 
 ### 1. Inconsistent configuration and low adoption of organization standards {#challenge-1}
 
-In environments where product teams operate with maximum autonomy, distinct ways
-of configuring individual applications and services for observability may
-coexist, while still operating under a shared compute layer. This includes
-setting up OpenTelemetry SDKs for applications, configuring instrumentation
-agents and libraries, or deciding how to propagate observability context from/to
-their dependencies.
+In environments where product teams operate with autonomy, distinct ways of
+configuring individual applications and services for observability may coexist,
+while still operating under a shared compute layer. This includes setting up
+OpenTelemetry SDKs for applications, configuring instrumentation agents and
+libraries, or deciding how to propagate observability context from/to their
+dependencies.
 
 Organizations may have a set of documented engineering standards they wish all
-teams to follow, but rely on manual implementation of these standards by each
-individual team, including configuration and code-level changes. This is often
-treated by teams as an afterthought, not part of the software design process,
-leading to poor quality instrumentation. When considered, configuration is often
-focused on a particular application without considering the overall distributed
-system in a holistic way, across service boundaries and different infrastructure
-layers.
+engineers to follow, but they often rely on manual implementation of these
+standards by each individual team, including configuration and code-level
+changes. This is often treated by teams as an afterthought, not part of the
+software design process, and focused on a particular application without
+considering the overall distributed system in a holistic way.
 
 ```mermaid
 ---
@@ -576,33 +574,12 @@ basic layer of configuration, and application owners extending that
 configuration for their particular use cases.
 
 At a distributed system level, different [trace sampling][23] techniques may be
-used to efficiently store the most valuable traces in a consistent manner.
-Sampling can be mainly configured at two distinct layers:
+used to efficiently store the most valuable traces in a consistent manner. See
+[Appendix 1](#appendix-1) for an introduction to these techniques.
 
-- **SDK:** Head sampling configured at the SDK level provides an efficient use
-  of compute resources as unsampled traces are never recorded or exported by a
-  given application. However, sampling decisions need to be made at span
-  creation, normally resulting in probabilistic sampling, which could miss
-  critical traces (e.g. those containing errors).
-- **Collector**: Collectors empower two main sampling techniques:
-  - [_Probabilistic_][24] _sampling:_ Can be configured at any Collector layer
-    and does not require coordination between Collectors as long as the same
-    algorithm and seed are in use for the same trace.
-  - [_Tail_][25] _sampling:_ A single Collector replica must store all spans for
-    a given trace in memory before making a decision. As single replica
-    deployment is not recommended in production environments, this model
-    normally requires one layer of Collectors to [load balance][26] spans
-    according to trace ID and another to perform sampling.
-
-Tail sampling requires more resources to operate and maintain. However, it
-provides a richer way of defining sampling policies that allow organizations to
-efficiently store only the traces that are critical for their services
-operations. For instance, traces with durations longer than a particular
-threshold, or those containing errors across any span in a given trace.
-
-When sampling is implemented, consistent use of semantic conventions becomes
-crucial. Metrics provide complete (yet aggregated) views of telemetry, using
-[Exemplars][27] to correlate to high granularity trace spans for a given
+When trace sampling is implemented, consistent use of semantic conventions
+becomes crucial. Metrics provide complete (yet aggregated) views of telemetry,
+using [Exemplars][27] to correlate to high granularity trace spans for a given
 operation, which can then link to logs and other telemetry signals (e.g.
 profiles). Using standard semantic conventions and consistent _Resource_
 attributes also empowers correlation between these signals, allowing operators
@@ -786,7 +763,7 @@ minimum base configuration as part of their offering:
   - **Note:** Backend/SaaS endpoints or API keys should not be included in
     application-level configuration, as we recommend handling these at a
     Collector Gateway.
-  - **Note:** See [Action 3](#action-3) and [Appendix 1](#appendix-1) for more
+  - **Note:** See [Action 3](#action-3) and [Appendix 2](#appendix-2) for more
     details on side effects of OTLP gRPC used with standard Kubernetes Services.
 - **Propagators:** W3C Trace Context (`tracecontext`) to ensure distributed
   traces do not break across service boundaries. If necessary, include legacy
@@ -826,38 +803,10 @@ minimum base configuration as part of their offering:
     [Downward API][39] (i.e. `valueFrom.fieldRef.fieldPath`) standardized across
     application deployment templates.
 
-Depending on the methods established in [Action 1](#action-1) for providing OTel
-configuration, the platform team must document exactly how developers inherit
-the baseline and how they can extend it:
-
-- **OpenTelemetry Operator**: The platform team provisions a central
-  `Instrumentation` CR in the cluster. Application owners can opt in or out via
-  pod/namespace annotations.
-  - _Basic overrides:_ Application owners can override specific baseline
-    properties by injecting standard [environment variables][40] directly into
-    their Pod spec. The [compliance matrix][41] details support for different
-    environment variables per language. Additionally, some language
-    implementations (e.g. [Java][42]) support configuring instrumentation
-    libraries via library-specific environment variables.
-  - _Complex overrides:_ If teams need to modify the `Instrumentation` CR itself
-    (e.g., to add custom samplers or specific auto-instrumentation libraries),
-    the platform team should manage the CR via Helm or Kustomize. This allows
-    the platform to maintain a base template while application owners provide
-    local overrides or value files that are merged before deployment into the
-    cluster.
-- **Base container images**: Similarly to above, teams may override specific
-  aspects via environment variables overriding defaults set in the base image.
-- **Internal libraries:** Internal shared libraries should provide the necessary
-  hooks for users to pass in standard configuration blocks as required. For
-  instance, in JavaScript a wrapper library to set up a Node SDK should allow
-  the user to provide standard [NodeSDKConfiguration][43] configurations like
-  `resource` or `traceExporter`.
-- **Declarative configuration**: Platform teams may utilize the environment
-  variable interpolation features of the file-based configuration and allow
-  application owners to set local environment variables that the base YAML file
-  reads, or, as the file-based configuration standard matures, use configuration
-  merging to blend a developer-provided `custom-otel.yaml` with the platform's
-  `base-otel.yaml`.
+Platform teams must provide ways for application owners to override and extend
+this default configuration. The mechanism to do so will depend on the methods
+established in [Action 1](#action-1) for providing OTel configuration. Possible
+options are documented in [Appendix 3](#appendix-3)
 
 ### 3. Use OpenTelemetry Operator or Helm Charts to deploy Collector Gateways {#action-3}
 
@@ -1029,7 +978,39 @@ recommend following these steps:
 
 ## Appendix {#appendix}
 
-### 1. gRPC load balancing {#appendix-1}
+### 1. Distributed trace sampling {#appendix-1}
+
+At a very high level, sampling can be mainly configured at two distinct layers:
+
+- **SDK:** Head sampling configured at the SDK level provides an efficient use
+  of compute resources as unsampled traces are never recorded or exported by a
+  given application. However, sampling decisions need to be made at span
+  creation, normally resulting in probabilistic sampling, which could miss
+  critical traces (e.g. those containing errors).
+- **Collector**: Collectors empower two main sampling techniques:
+  - [_Probabilistic_][24] _sampling:_ Can be configured at any Collector layer
+    and does not require coordination between Collectors as long as the same
+    algorithm and seed are in use for the same trace.
+  - [_Tail_][25] _sampling:_ A single Collector replica must store all spans for
+    a given trace in memory before making a decision. As single replica
+    deployment is not recommended in production environments, this model
+    normally requires one layer of Collectors to [load balance][26] spans
+    according to trace ID and another to perform sampling.
+
+Tail sampling requires more resources to operate and maintain. However, it
+provides a richer way of defining sampling policies that allow organizations to
+efficiently store only the traces that are critical for their services
+operations. For instance, traces with durations longer than a particular
+threshold, or those containing errors across any span in a given trace.
+
+> [!NOTE] Help wanted
+>
+> Distributed trace sampling is a complex topic in and on itself, designing a
+> sampling architecture across all different layers. These challenges are out of
+> scope for this blueprint and may be targeted in a separate blueprint. See our
+> [guidance][5] if you are interested in contributing.
+
+### 2. gRPC load balancing {#appendix-2}
 
 gRPC relies on HTTP/2, multiplexing many requests over a single, long-lived TCP
 connection. Standard Kubernetes Services operate at Layer 4 (TCP) using
@@ -1135,6 +1116,41 @@ operators don't have control over the receiving backend (e.g. connections routed
 via public internet), consider using OTLP/HTTP (see [Action 2](#action-2)) which
 operates over HTTP/1.1 or short-lived HTTP/2 connections and does not suffer
 from the same pinning behavior.
+
+### 3. SDK config overrides {#appendix-3}
+
+Depending on the methods established in [Action 1](#action-1) for providing OTel
+configuration, the platform team must document exactly how developers inherit
+the baseline and how they can extend it:
+
+- **OpenTelemetry Operator**: The platform team provisions a central
+  `Instrumentation` CR in the cluster. Application owners can opt in or out via
+  pod/namespace annotations.
+  - _Basic overrides:_ Application owners can override specific baseline
+    properties by injecting standard [environment variables][40] directly into
+    their Pod spec. The [compliance matrix][41] details support for different
+    environment variables per language. Additionally, some language
+    implementations (e.g. [Java][42]) support configuring instrumentation
+    libraries via library-specific environment variables.
+  - _Complex overrides:_ If teams need to modify the `Instrumentation` CR itself
+    (e.g., to add custom samplers or specific auto-instrumentation libraries),
+    the platform team should manage the CR via Helm or Kustomize. This allows
+    the platform to maintain a base template while application owners provide
+    local overrides or value files that are merged before deployment into the
+    cluster.
+- **Base container images**: Similarly to above, teams may override specific
+  aspects via environment variables overriding defaults set in the base image.
+- **Internal libraries:** Internal shared libraries should provide the necessary
+  hooks for users to pass in standard configuration blocks as required. For
+  instance, in JavaScript a wrapper library to set up a Node SDK should allow
+  the user to provide standard [NodeSDKConfiguration][43] configurations like
+  `resource` or `traceExporter`.
+- **Declarative configuration**: Platform teams may utilize the environment
+  variable interpolation features of the file-based configuration and allow
+  application owners to set local environment variables that the base YAML file
+  reads, or, as the file-based configuration standard matures, use configuration
+  merging to blend a developer-provided `custom-otel.yaml` with the platform's
+  `base-otel.yaml`.
 
 <!-- Link references -->
 
