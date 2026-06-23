@@ -191,8 +191,7 @@ serverless deploy
 ```
 
 Agora você pode invocar a função Lambda recém-implantada pela interface do AWS
-Console. Você deve esperar ver trechos relacionados à invocação da função
-Lambda.
+Console. Você deverá ver trechos relacionados à invocação da função Lambda.
 
 ### Acessando o backend {#visiting-the-backend}
 
