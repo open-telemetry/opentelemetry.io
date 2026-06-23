@@ -222,7 +222,7 @@ o seguinte valor:
 --require ./otelwrapper.js
 ```
 
-### Selecionar o runtime {#select-runtime}
+### Selecione o runtime {#select-runtime}
 
 Na próxima tela (_Code_), selecione o Node.js versão 16 para o seu _runtime_.
 
