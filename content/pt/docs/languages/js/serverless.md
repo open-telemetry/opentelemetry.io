@@ -97,7 +97,7 @@ Substitua `<backend_url>` pela URL do seu _backend_ favorito para exportar todos
 os rastros para ele. Se você ainda não tem um configurado, pode conferir o
 [Jaeger](https://www.jaegertracing.io/) ou o [Zipkin](https://zipkin.io/).
 
-Observe que `disableAwsContextPropagation` está definido como true. O motivo
+Observe que `disableAwsContextPropagation` está definido como `true`. O motivo
 disso é que a instrumentação do Lambda tenta usar os cabeçalhos de contexto do
 X-Ray por padrão; a menos que o rastreamento ativo esteja habilitado para esta
 função, isso resulta em um contexto não amostrado, que cria um
