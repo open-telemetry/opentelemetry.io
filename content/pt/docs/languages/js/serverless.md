@@ -6,7 +6,7 @@ default_lang_commit: 2b99811a310f2749a5b6389f5e4d654a4f2e2f8e
 cSpell:ignore: otelwrapper
 ---
 
-Este guia mostra como começar a rastrear funções serverless usando as
+Este guia mostra como começar a rastrear funções _serverless_ (sem servidor) usando as
 bibliotecas de instrumentação do OpenTelemetry.
 
 > [!NOTE]
