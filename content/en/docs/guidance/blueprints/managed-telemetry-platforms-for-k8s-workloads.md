@@ -676,7 +676,7 @@ flowchart LR
     L_Sampling_Backend@{ animation: fast }
 ```
 
-As a rule of thumb, processing of telemetry should be done as close as possible
+Generally, processing of telemetry should be done as close as possible
 to the application layer, avoiding compute and transfer costs. However,
 deferring processing decisions to different Collector layers may be desirable in
 certain situations, such as facilitating maintenance, enforcing standards,
