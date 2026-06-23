@@ -318,7 +318,7 @@ Se você executa o OTel Collector em uma VM do GCP, provavelmente precisará
 [criar um conector de acesso VPC](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 para conseguir enviar rastros.
 
-### Implantar {#deploy}
+### Implante {#deploy}
 
 Selecione Deploy na interface e aguarde a implantação ficar pronta.
 
