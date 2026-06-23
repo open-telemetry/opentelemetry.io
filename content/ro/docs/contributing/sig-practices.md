@@ -2,7 +2,8 @@
 title: Practici SIG pentru aprobatori și administratori
 linkTitle: Practici SIG
 description:
-  Află cum aprobatorii și administratorii gestionează problemele și contribuțiile.
+  Află cum aprobatorii și administratorii gestionează problemele și
+  contribuțiile.
 weight: 999
 default_lang_commit: db8337edbbac824aebbb330acea18a7042b38806
 cSpell:ignore: Comms contribfest hotfixes triager triagers
@@ -25,8 +26,8 @@ administratorii existenți:
   și la
   [întâlnirea administratorilor](https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting).
 - I se cere să verifice dacă ora actuală a întâlnirii SIG Comms i se potrivește,
-  iar dacă nu, să colaboreze cu aprobatorii și administratorii existenți pentru a
-  găsi o oră care convine tuturor.
+  iar dacă nu, să colaboreze cu aprobatorii și administratorii existenți pentru
+  a găsi o oră care convine tuturor.
 - I se cere să consulte diferitele resurse disponibile pentru contribuitori:
   - [Resurse pentru comunitate](https://github.com/open-telemetry/community/),
     în special documentul despre
@@ -50,8 +51,8 @@ Resurse suplimentare valoroase de consultat sunt:
 
 ## Colaborare {#collaboration}
 
-- Aprobatorii și administratorii au programe de lucru și circumstanțe diferite. De
-  aceea, se presupune că întreaga comunicare este asincronă și nimeni nu ar
+- Aprobatorii și administratorii au programe de lucru și circumstanțe diferite.
+  De aceea, se presupune că întreaga comunicare este asincronă și nimeni nu ar
   trebui să se simtă obligat să răspundă în afara programului său obișnuit.
 - Atunci când un aprobator sau un administrator nu va putea contribui pentru o
   perioadă mai lungă (mai mult de câteva zile sau o săptămână), acesta ar trebui
@@ -171,11 +172,11 @@ Resurse suplimentare valoroase de consultat sunt:
   branch_), nu este necesar să fie sincronizată în mod continuu: fiecare
   actualizare declanșează rularea tuturor verificărilor CI ale PR-ului. De multe
   ori este suficient să fie actualizată chiar înainte de integrare.
-- Un PR creat de o persoană care nu este administrator nu ar trebui **niciodată**
-  să actualizeze submodule Git. Acest lucru se întâmplă ocazional din greșeală.
-  Informează autorul PR-ului că nu trebuie să își facă griji, deoarece problema
-  va fi remediată înainte de integrare, însă pe viitor ar trebui să se asigure
-  că lucrează dintr-un fork actualizat.
+- Un PR creat de o persoană care nu este administrator nu ar trebui
+  **niciodată** să actualizeze submodule Git. Acest lucru se întâmplă ocazional
+  din greșeală. Informează autorul PR-ului că nu trebuie să își facă griji,
+  deoarece problema va fi remediată înainte de integrare, însă pe viitor ar
+  trebui să se asigure că lucrează dintr-un fork actualizat.
 - Dacă un contribuitor întâmpină dificultăți la semnarea CLA-ului sau a utilizat
   din greșeală o adresă de e-mail incorectă într-unul dintre commiturile sale,
   roagă-l să remedieze problema sau să refacă istoricul PR-ului printr-un
@@ -183,9 +184,8 @@ Resurse suplimentare valoroase de consultat sunt:
   nouă verificare a CLA-ului.
 - Cuvintele necunoscute pentru cSpell pot fi adăugate la lista de ignorare în
   unul dintre următoarele trei locuri:
-  - **Antetul paginii**: în general preferat pentru cuvinte izolate care
-    este puțin probabil să apară în alte pagini. Vezi [Verificarea
-    ortografiei][].
+  - **Antetul paginii**: în general preferat pentru cuvinte izolate care este
+    puțin probabil să apară în alte pagini. Vezi [Verificarea ortografiei][].
   - **Dicționarul localizării**: preferat pentru cuvinte care sunt susceptibile
     să fie utilizate în mai multe pagini ale aceleiași limbi, de exemplu
     `.cspell/en-words.txt`.
@@ -224,9 +224,9 @@ PR-urile create de roboți pot fi integrate conform următoarei practici:
 - PR-urile care actualizează automat versiunile din registru pot fi corectate,
   aprobate și integrate imediat.
 - PR-urile care actualizează automat versiunile SDK-urilor, ale instrumentărilor
-  fără cod sau ale Colectorului pot fi aprobate și
-  integrate, cu excepția cazului în care SIG-ul corespunzător semnalează că
-  integrarea ar trebui amânată.
+  fără cod sau ale Colectorului pot fi aprobate și integrate, cu excepția
+  cazului în care SIG-ul corespunzător semnalează că integrarea ar trebui
+  amânată.
 - PR-urile care actualizează automat versiunea unei specificații necesită adesea
   actualizarea unor scripturi pentru ca verificările CI să fie finalizate cu
   succes. În acest caz, [@chalin](https://github.com/chalin/) se va ocupa de PR.
