@@ -73,17 +73,16 @@ with the following details:
   all of them are open source, and prefer CNCF projects over non-CNCF projects
   (e.g. use Jaeger for trace visualization, and Prometheus for metric
   visualization)
-- Name of a [SIG](https://github.com/open-telemetry/community/), which is
-  related to this blog post
-- Name of a sponsor (maintainer or approver) from this SIG, who will help to
-  review that PR. That sponsor should ideally be from a different company.
+- Name of a [SIG](https://github.com/open-telemetry/community/) willing to
+  sponsor your blog post. **A SIG sponsor is required.**
+- Name of a sponsor (maintainer or approver) from that SIG, who will do the
+  first round of review before the Comms SIG reviews the post. That sponsor
+  should ideally be from a different company than the author.
 
-Maintainers of SIG Communication will verify, that your blog post satisfies all
-the requirements for being accepted. If you cannot name a SIG/sponsor in your
-initial issue details, they will also point you to an appropriate SIG, you can
-reach out to for sponsorship. Having a sponsor is optional, but having one
-increases the chance of having your blog post reviewed and approved more
-quickly.
+Maintainers of SIG Communication will verify that your blog post satisfies all
+the requirements for being accepted. The SIG sponsor must complete their review
+before the Comms SIG will look at the post. The author of the blog post is
+responsible for finding a Sponsor.
 
 If your issue has everything needed, a maintainer will verify that you can go
 ahead and submit your blog post.
