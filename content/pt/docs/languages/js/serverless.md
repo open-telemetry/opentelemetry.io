@@ -230,7 +230,7 @@ Na próxima tela (_Code_), selecione o Node.js versão 16 para o seu _runtime_.
 
 Crie um novo arquivo chamado `otelwrapper.js`, que será usado para instrumentar
 o seu serviço. Certifique-se de fornecer um `SERVICE_NAME` e de definir o
-`<address for your backend>`.
+`<endereço do seu backend>`.
 
 ```javascript
 /* otelwrapper.js */
