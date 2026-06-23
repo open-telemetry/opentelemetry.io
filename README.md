@@ -62,11 +62,13 @@ These are the members of [@open-telemetry/docs-maintainers][] (members-only):
 
 - [Austin Parker](https://github.com/austinlparker), Honeycomb
 - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
+- [Jay DeLuca](https://github.com/jaydeluca), Grafana Labs
+- [Marylia Gutierrez](https://github.com/maryliag), Grafana Labs
 - [Patrice Chalin](https://github.com/chalin), CNCF
 - [Phillip Carter](https://github.com/cartermp), Salesforce
 - [Severin Neumann](https://github.com/svrnm), Causely
 - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
-- [Vitor Vasconcellos](https://github.com/vitorvasc)
+- [Vitor Vasconcellos](https://github.com/vitorvasc), DoorDash
 
 For more information about the maintainer role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
@@ -75,8 +77,7 @@ For more information about the maintainer role, see the
 
 These are the members of [@open-telemetry/docs-approvers][] (members-only):
 
-- [Jay DeLuca](https://github.com/jaydeluca), Grafana Labs
-- [Marylia Gutierrez](https://github.com/maryliag), Grafana Labs
+-
 
 For more information about the approver role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
