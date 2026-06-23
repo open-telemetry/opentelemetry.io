@@ -290,7 +290,7 @@ Adicione o seguinte ao seu `package.json`:
 }
 ```
 
-### Adicionar uma chamada HTTP à função {#add-http-call-to-function}
+### Adicione uma chamada HTTP à função {#add-http-call-to-function}
 
 O código a seguir faz uma chamada ao site do OpenTelemetry para demonstrar uma
 chamada de saída.
