@@ -38,8 +38,8 @@ following outcomes:
   compute requirements of telemetry processing.
 - Future-proof telemetry pipelines that shield product teams from changes in the
   underlying observability backend, enabling data migrations or multi-vendor
-  strategies without requiring changes to application instrumentation or
-  collection infrastructure.
+  strategies with minimal changes to application instrumentation or collection
+  infrastructure.
 
 ## Background
 
@@ -75,7 +75,7 @@ native maturity.
 In environments where product teams operate with autonomy, distinct ways of
 configuring individual applications and services for observability may coexist,
 while still operating under a shared compute layer. This includes setting up
-OpenTelemetry SDKs for applications, configuring instrumentation agents and
+OpenTelemetry SDKs for applications, configuring instrumentation packages and
 libraries, or deciding how to propagate observability context from/to their
 dependencies.
 
@@ -522,9 +522,10 @@ platform teams may consider different options, including:
 
 - **Isolated Gateways per signal:** Deploy separate Gateways for logs, metrics,
   and spans. Isolated deployments simplify compute resource allocation and
-  capacity planning per signal, but increase maintenance toil since shared
-  processor configuration must be duplicated across Gateways unless managed
-  through external templating tools.
+  capacity planning per signal, but shared processor configuration must be
+  duplicated across Gateways. This can be managed through external templating
+  tools, e.g. Kapitan, Kustomize, or using multiple config [locations][61] to
+  override each other. However, it may increase maintenance toil.
 - **Multiple memory limiters on a single Gateway:** Defining separate
   [memory_limiter][15] configurations per signal, with different thresholds.
   This relies on the OTLP receiver in front of a `memory_limiter` returning a
@@ -676,14 +677,13 @@ flowchart LR
     L_Sampling_Backend@{ animation: fast }
 ```
 
-Generally, processing of telemetry should be done as close as possible
-to the application layer, avoiding compute and transfer costs. However,
-deferring processing decisions to different Collector layers may be desirable in
-certain situations, such as facilitating maintenance, enforcing standards,
-performing advanced filtering/transformations with [OTTL][28], aggregating
-signals into metrics (e.g. [span_metrics][29] or [signal_to_metrics][30]
-connectors), or securing pipelines with [redaction][31] rules to ensure
-sensitive information never reaches a particular backend.
+Generally, processing of telemetry should be done as close as possible to the
+application layer, avoiding compute and transfer costs. However, deferring
+processing decisions to different Collector layers may be desirable in certain
+situations, such as facilitating maintenance, enforcing standards, performing
+advanced filtering/transformations with [OTTL][28], or securing pipelines with
+[redaction][31] rules to ensure sensitive information never reaches a particular
+backend.
 
 By combining intelligent sampling, metric aggregation at different layers, and
 central transform/filter processors to reduce noisy telemetry, this architecture
@@ -695,7 +695,7 @@ By implementing this guideline, organizations can expect to achieve:
 - **Efficient telemetry volumes:** Optimal use of OpenTelemetry signals,
   sampling, and aggregation provide telemetry volumes that allow organizations
   to balance between high-granularity, cost, and observability requirements.
-- **Efficient use of compute resources:** Position data processing at different
+- **Efficient use of compute resources:** Position data processing at differentO
   levels limits data transfer and compute resources associated with data that
   can be aggregated or filtered at early stages.
 - **Central governance and guardrails:** Platform teams have a central point to
@@ -831,18 +831,19 @@ architectural considerations for enterprise workloads:
 Regardless of the deployment tool chosen, the Gateway tier is a critical point,
 and owners should ensure resiliency is configured from the start:
 
-- **Configure [memory_limiter][15]**: As the first processor in Collector
-  pipelines, this prevents Out-of-Memory (OOM) crashes during massive telemetry
-  spikes by forcing the Collector to drop data and/or apply backpressure when
-  memory usage hits a configured threshold. As mentioned in
+- **Configure [memory_limiter][15]**: When configured as the first processor in
+  every Collector pipeline, this prevents Out-of-Memory (OOM) crashes during
+  massive telemetry spikes by forcing the Collector to drop data and/or apply
+  backpressure when memory usage hits a configured threshold. As mentioned in
   [Guideline 3](#guideline-3), different `memory_limiter` processors per signal
   may be required.
 - **Configure [otlp][46] or [otlp_http][47] exporter:** Ensure queues and
   retries are aligned with expectations on reliability vs resource consumption,
   handling transient backend failures before dropping data. In particular,
-  consider `sending_queue` options like `block_on_overflow` which controls if
-  the Collector should drop data or wait until space becomes available if the
-  queue (persistent or in-memory) is full.
+  consider `sending_queue` options like `batch`, which allows for efficient
+  network transfer and backpressure propagation, and `block_on_overflow`, which
+  controls if the Collector should drop data or wait until space becomes
+  available if the queue (persistent or in-memory) is full.
 - **Consider [file_storage][48] extension**: If dropping data on extended
   observability backend service interruptions is critical to the functioning of
   the business, consider configuring `sending_queue.storage` in your OTLP
@@ -913,10 +914,6 @@ in Collector Gateways to execute the following processing steps (in order):
     less useful in Kubernetes environments where these attributes are present in
     CI/CD pipelines.
   - Any other processing to remove low-value, noisy telemetry.
-- [**span_metrics**][29] **or [signal_to_metrics][30] connectors:** These can
-  ensure completeness of golden signals (i.e. R.E.D. metrics) for applications
-  where the SDK or client/server libraries do not produce these metrics. Route
-  the raw trace stream through these connectors before any sampling occurs.
 - [**tail_sampling**][25] **processor:** Define strict retention policies, for
   instance keeping 100% of traces containing errors or exceeding a latency
   threshold, and a small baseline (e.g., 5%) of successful, normal-duration
@@ -1049,7 +1046,8 @@ from local Collector to a Gateway):
 
 - **`endpoint`** must start with `dns:///` to instruct the gRPC client to
   perform continuous DNS resolution.
-- **`balancer_name`** should be set to `round_robin`.
+- **`balancer_name`** should be set to `round_robin` (default in the Collector
+  since `v0.105.0`).
 
 Specific client SDKs may configure gRPC clients in different ways. Refer to
 individual client implementations to configure client-side gRPC load balancing.
@@ -1187,10 +1185,6 @@ the baseline and how they can extend it:
 [27]: /docs/specs/otel/metrics/sdk/#exemplar
 [28]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md
-[29]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector/README.md
-[30]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/signaltometricsconnector/README.md
 [31]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor/README.md
 [32]:
@@ -1234,3 +1228,4 @@ the baseline and how they can extend it:
 [58]: /docs/guidance/reference-implementations/adobe/
 [59]: /docs/guidance/reference-implementations/mastodon/
 [60]: /docs/guidance/reference-implementations/skyscanner/
+[61]: /docs/collector/configuration/#location
