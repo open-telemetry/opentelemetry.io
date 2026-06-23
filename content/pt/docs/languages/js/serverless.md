@@ -107,7 +107,7 @@ Mais detalhes podem ser encontrados na
 [documentação](https://www.npmjs.com/package/@opentelemetry/instrumentation-aws-lambda)
 da instrumentação.
 
-### Handler da função AWS Lambda {#aws-lambda-function-handler}
+### Manipulador (Handler) da função AWS Lambda {#aws-lambda-function-handler}
 
 Agora que você tem um _wrapper_ Lambda, crie um _handler_ simples que serve como
 uma função Lambda. Salve o código a seguir como `handler.js`.
