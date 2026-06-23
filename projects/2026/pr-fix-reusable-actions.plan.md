@@ -1,8 +1,10 @@
 ---
 title: Reusable patch actions for PR and maintenance fixes
 custodian: '[Patrice Chalin](https://github.com/chalin)'
-status: Phase 1 merged and partially live-validated; phases 2–3 pending.
-cSpell:ignore: fixx test-and-fix
+status:
+  Phases 1 and 2 merged; first-run fixes addressed; phase-2 live validation in
+  progress.
+cSpell:ignore: fixx gitlink mypy pyproject pytest
 ---
 
 ## Context
@@ -73,13 +75,6 @@ mechanics decoupled from the `issue_comment` trigger.
 
 ## Open decisions
 
-- Housekeeping workflow: one PR for all fixes (matching `test-and-fix` semantics
-  — simplest, the starting point) vs. one PR per fix script (independently
-  reviewable/mergeable; adopt later if single-PR review proves painful).
-- Housekeeping workflow: when a previous housekeeping PR is still open, skip the
-  new run or update the existing PR's branch?
-- Whether scheduled housekeeping should use one stable branch per fix family or
-  a shared generated-fixes branch.
 - Whether an i18n caller (e.g. `fix:i18n` by PR comment, schedule, or both) is
   wanted as a third caller.
 
@@ -99,9 +94,30 @@ mechanics decoupled from the `issue_comment` trigger.
   security fix above). Phase 2 (housekeeping fixes published as a new PR) should
   be a _sibling_ trusted workflow (patch → branch → `gh pr create`) rather than
   evolving this one into a multi-mode publisher.
-- Phase 2 is a scheduled housekeeping workflow rather than an i18n caller: it is
-  what the founding issue ([#6592][]) asked for, and its lack of PR context best
-  demonstrates that the patch actions are trigger-agnostic.
+- Phase 2 is a scheduled housekeeping workflow rather than a dedicated i18n
+  caller: it is what the founding issue ([#6592][]) asked for, and its lack of
+  PR context best demonstrates that the patch actions are trigger-agnostic. Its
+  default command, `fix-and-test:all`, deliberately includes `fix:i18n` (unlike
+  `test-and-fix`): scheduled i18n drift fixes are part of the housekeeping
+  mandate, lessening the need for a dedicated i18n caller. `check:i18n` is
+  excluded as redundant: `fix:i18n:status` has just recorded the drift status it
+  would report.
+- Housekeeping publication follows the `refcache-refresh.yml` precedent: one PR
+  for all fixes, on the stable `otelbot/housekeeping` branch recreated from
+  `main` each run (force-push). At most one open housekeeping PR exists at a
+  time; new runs update it in place until it is merged, and a no-change run
+  skips publication, leaving any open PR as is. Per-script PRs can be adopted
+  later if single-PR review proves painful.
+  - Recreate-from-main rather than the spec/semconv integration-branch pattern
+    (work from the PR branch, merge main, rerun): housekeeping results are fully
+    derived from `main` — yesterday's results are superseded, not extended — and
+    the patch is generated against `main`, so reapplying it to a stale branch
+    risks conflicts for no benefit.
+  - Caveat: any commits pushed to the housekeeping PR branch — manual or via
+    `/fix`, which pushes to the same branch — are clobbered by the next run's
+    force-push. Merge the PR promptly if commits are pushed to it; the PR body
+    carries an IMPORTANT note to that effect. (If this bites in practice, add a
+    guard that skips the force-push when the branch has non-bot commits.)
 
 ## Status details
 
@@ -144,7 +160,22 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
 - Follow-up (security pass): a patch may touch `.github/workflows/**`; the push
   then succeeds only if the bot app holds the Workflows permission. If not, the
   push fails closed and reports ❌ — the desired default. Verify the app
-  permission once and record the intended behavior.
+  permission once and record the intended behavior. An explicit
+  reject-`.github/`-paths guard was considered and declined: legitimate fixes
+  touch workflows (`fix:format` runs Prettier over the whole repo, including
+  workflow YAML).
+- Follow-up (consolidation roadmap): reduce duplication across the patch-family
+  workflows.
+  - `reusable-apply-patch.yml` and `reusable-patch-pr.yml` share ~30 lines of
+    download/apply/commit plumbing. Constraint on sharing: a local composite
+    action or `scripts/` file resolves from the checked-out workspace, and
+    `reusable-apply-patch.yml` checks out the PR branch — the same hazard
+    documented on `generate-patch`. Share only via steps that run before the
+    PR-branch checkout, by copying the shared script to a temp path first, or
+    keep the trusted steps inline (current choice).
+  - Candidate migrations onto the generate→publish patch actions, retiring
+    bespoke branch-management code: `refcache-refresh.yml`, and possibly the
+    spec/semconv integration-branch workflows.
 - Directive↔outcome improvements (all shipped):
   - A trusted `ack` job posts a 🔄 in-progress comment (linking the directive
     comment and the run) as soon as a directive is received; the report job then
@@ -169,7 +200,72 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
     with write access, so any directive author is privileged by construction,
     and the bot (a GitHub App with write permission) can still post and edit its
     comments on a locked conversation.
-- Phase 2 (scheduled housekeeping caller) not started.
+- Phase 2 (scheduled housekeeping caller) merged ([#10332][]):
+  `housekeeping.yml` runs an approved fix command (default `fix-and-test:all`, a
+  dedicated target that runs all fixes then checks, links checked once) daily or
+  on dispatch, and publishes the results as a PR via the new
+  `reusable-patch-pr.yml` sibling workflow. Findings from the first live run
+  (since addressed):
+  - i18n scripts failed with `git diff error (128) or invalid hash`: they diff
+    against `default_lang_commit`, so the checkout needs `fetch-depth: 0`.
+  - The command failure produced a PR ([#10336][]) with no indication of the
+    failure; the PR body now carries a ⚠️ partial-results warning.
+  - `check:i18n` ran redundantly right after `fix:i18n`; now excluded from the
+    default command's check phase.
+
+  Findings from the second live run ([#10339][]):
+  - `check:collector-sync` failed (`uv run pytest` → `Failed to spawn: pytest`):
+    pytest, mypy, and ruff live in the optional `dev` extra of the project's
+    `pyproject.toml`, which a fresh `uv run` does not install. The npm scripts
+    now pass `--extra dev`, making them self-sufficient on clean checkouts.
+
+  Findings from the third live run:
+  - `check:format` failed on `scripts/collector-sync/.pytest_cache/README.md`, a
+    side effect of the now-working pytest run: Prettier only honors the root
+    `.gitignore`/`.prettierignore`, not the `.gitignore` pytest drops inside its
+    cache directory. Root `.gitignore` now lists the cache dirs of all three
+    Python tools (`.pytest_cache/`, `.mypy_cache/`, `.ruff_cache/`) — each drops
+    a `*` `.gitignore` inside its own cache, and the mypy cache (JSON files) was
+    a latent identical failure.
+
+  Live validation status:
+  - [x] dispatch run with changes → `otelbot/housekeeping` branch + PR created
+        ([#10336][])
+  - [ ] second run with changes while the PR is open → PR force-updated in
+        place, no duplicate PR
+  - [ ] run with no changes → publish skipped, open PR untouched
+  - [x] failing command with fixes → fixes published with ⚠️ partial-results
+        warning in the PR body, and a comment appended to the existing failure
+        issue rather than a duplicate issue ([#10339][]); warning clearance on
+        the next clean run still to be observed
+  - [ ] failure issue links to the housekeeping PR (pr-url propagation through
+        the publish → report-failure workflow boundary; unit tests cover the
+        body builders only)
+  - [x] fork-filtered PR lookup works live: `env.REPO_OWNER` resolved in the
+        publish job and the lookup/create path produced [#10339][] (hostile-fork
+        case remains unit-tested only, as staging one is impractical)
+  - [ ] check whether the forwarded `GITHUB_TOKEN` grants on `publish-patch` can
+        be trimmed (steps authenticate with the app token), as for the `/fix`
+        publish job
+  - [x] runtime of a full `fix-and-test:all` run: ~12.5 min, comfortably within
+        the 30-min job timeout
+  - [ ] verify that a `fix:submodule` bump (gitlink diff) survives the generate
+        → artifact → `git apply` pipeline; a failure is loud (apply exits
+        non-zero, issue filed) but would block submodule maintenance via the
+        default command
+  - [ ] consider `egress-policy: block` on the publish job (it only talks to
+        GitHub), unlike the generate job whose link checking needs open egress
+  - [ ] confirm the auto-merge × force-push interaction: approve the
+        housekeeping PR, enable auto-merge, wait for the next run's force-push,
+        and verify the merge waits for re-approval (or auto-merge is disabled)
+        rather than landing content no reviewer saw
+
+- Open PR on a clean no-change run: left as is for now. Since the branch is
+  recreated from `main` each run, a clean exit-0 no-diff run means `main` no
+  longer needs the open PR's fixes, so auto-closing it (clean runs only — a
+  failing command with no captured fixes says nothing about `main`) would
+  prevent merging superseded content. Revisit after live validation shows how
+  often this case occurs.
 
 <!-- prettier-ignore-start -->
 [#10309]: https://github.com/open-telemetry/opentelemetry.io/pull/10309
@@ -178,5 +274,8 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
 [#10319]: https://github.com/open-telemetry/opentelemetry.io/pull/10319
 [#10320]: https://github.com/open-telemetry/opentelemetry.io/issues/10320
 [#10329]: https://github.com/open-telemetry/opentelemetry.io/issues/10329
+[#10332]: https://github.com/open-telemetry/opentelemetry.io/pull/10332
+[#10336]: https://github.com/open-telemetry/opentelemetry.io/pull/10336
+[#10339]: https://github.com/open-telemetry/opentelemetry.io/pull/10339
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 <!-- prettier-ignore-end -->

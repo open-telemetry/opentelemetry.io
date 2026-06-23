@@ -2,7 +2,7 @@
 title: 計装ライブラリの使用
 linkTitle: ライブラリ
 weight: 40
-default_lang_commit: 80f1878ba5e02e1ac98daab3397999078dc67179
+default_lang_commit: d8383cfad8c21b9cfd5851eb8a4e7def1c4cebbb
 ---
 
 {{% docs/languages/libraries-intro "php" %}}

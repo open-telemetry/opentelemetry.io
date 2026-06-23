@@ -38,18 +38,23 @@ Add an entry for the new language in `config/_default/hugo.yaml` under the
 
 ```yaml
 LANG_ID:
-  languageName: NativeName (English name)
-  languageCode: LANG_ID-REGION
+  label: NativeName
+  locale: LANG_ID-REGION # optional; see note below
   params:
     description: <site description translated into the new language>
 ```
 
-For example, the Polish entry looks like:
+The `locale` field is optional: use it when the site should emit a regional
+language tag, such as `en-US`, `pl-PL`, or `zh-CN`, in RSS feeds, for example;
+otherwise the language ID is used. Google Translate needs the full `zh-CN` tag
+for Chinese, while most other languages use the primary subtag.
+
+As an example, the Polish entry looks like:
 
 ```yaml
 pl:
-  languageName: Polski (Polish)
-  languageCode: pl-PL
+  label: Polski
+  locale: pl-PL
   params:
     description: Strona projektu OpenTelemetry
 ```

@@ -121,6 +121,7 @@ Trask
 UpDown
 Valkey
 Villela
+vitorvasc
 warnf
 warnidf
 Wayback
