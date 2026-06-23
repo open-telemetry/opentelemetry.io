@@ -89,9 +89,9 @@ body:
     attributes:
       label: Sponsor Name
       description: >-
-        Name of a maintainer or approver from the sponsoring SIG who will do
-        the first round of review. The sponsor must complete their review before
-        the Comms SIG will review the post. The sponsor should ideally be from a
+        Name of a maintainer or approver from the sponsoring SIG who will do the
+        first round of review. The sponsor must complete their review before the
+        Comms SIG will review the post. The sponsor should ideally be from a
         different company than the author.
       placeholder: 'e.g., @username'
     validations:
