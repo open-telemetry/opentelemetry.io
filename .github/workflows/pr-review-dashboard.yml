@@ -3,31 +3,39 @@ name: PR dashboard
 on:
   schedule:
     # hourly
-    - cron: "0 * * * *"
+    - cron: '0 * * * *'
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
   update-dashboard:
+    name: Update PR dashboard
     if: github.repository == 'open-telemetry/opentelemetry.io'
     permissions:
-      issues: write
+      issues: write # needed to create and update the dashboard issue
     environment: protected
     runs-on: ubuntu-latest
     env:
-      DASHBOARD_TITLE: "Pull Request Dashboard"
-      DASHBOARD_LABEL: "dashboard"
+      DASHBOARD_TITLE: 'Pull Request Dashboard'
+      DASHBOARD_LABEL: 'dashboard'
       DASHBOARD_OUTPUT: pull-request-dashboard.md
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
 
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
           app-id: ${{ vars.OTELBOT_APP_ID }}
           private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
 
       - name: Install Copilot CLI
         run: npm install -g @github/copilot@1.0.40
