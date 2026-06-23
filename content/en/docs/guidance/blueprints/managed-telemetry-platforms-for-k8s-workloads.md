@@ -978,7 +978,7 @@ recommend following these steps:
 
 ## Appendix {#appendix}
 
-### 1. Distributed trace sampling {#appendix-1}
+### 1. Distributed trace sampling techniques {#appendix-1}
 
 At a very high level, sampling can be mainly configured at two distinct layers:
 
