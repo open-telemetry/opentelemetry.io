@@ -1,7 +1,7 @@
 ---
 title: Don't Wrap OpenTelemetry — You're Probably Hurting More Than Helping
 linkTitle: Don't Wrap OpenTelemetry
-date: 2026-06-18
+date: 2026-06-24
 author: >-
   [Cijo Thomas](https://github.com/cijothomas) (Microsoft)
 issue: 10169
