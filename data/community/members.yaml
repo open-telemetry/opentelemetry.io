@@ -230,22 +230,8 @@ maintainers:
   - name: austinlparker
     teams:
       - docs-approvers
-      - docs-bn-approvers
-      - docs-bn-maintainers
-      - docs-es-approvers
-      - docs-es-maintainers
-      - docs-fr-approvers
-      - docs-fr-maintainers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
-      - docs-pt-approvers
-      - docs-pt-maintainers
-      - docs-ro-approvers
-      - docs-ro-maintainers
       - docs-triagers
-      - docs-uk-approvers
-      - docs-uk-maintainers
       - semconv-log-approvers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
@@ -371,52 +357,18 @@ maintainers:
   - name: cartermp
     teams:
       - docs-approvers
-      - docs-bn-approvers
-      - docs-bn-maintainers
-      - docs-es-approvers
-      - docs-es-maintainers
-      - docs-fr-approvers
-      - docs-fr-maintainers
-      - docs-ja-approvers
-      - docs-ja-maintainers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
-      - docs-pt-approvers
-      - docs-pt-maintainers
-      - docs-ro-approvers
-      - docs-ro-maintainers
       - docs-triagers
-      - docs-uk-approvers
-      - docs-uk-maintainers
-      - docs-zh-approvers
-      - docs-zh-maintainers
       - social-media-approvers
     html_url: https://github.com/cartermp
     avatar_url: https://avatars.githubusercontent.com/u/6309070?v=4
   - name: chalin
     teams:
       - docs-approvers
-      - docs-bn-approvers
-      - docs-bn-maintainers
-      - docs-es-approvers
-      - docs-es-maintainers
       - docs-fr-approvers
       - docs-fr-maintainers
-      - docs-ja-approvers
-      - docs-ja-maintainers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
-      - docs-pt-approvers
-      - docs-pt-maintainers
-      - docs-ro-approvers
-      - docs-ro-maintainers
       - docs-triagers
-      - docs-uk-approvers
-      - docs-uk-maintainers
-      - docs-zh-approvers
-      - docs-zh-maintainers
       - social-media-approvers
     html_url: https://github.com/chalin
     avatar_url: https://avatars.githubusercontent.com/u/4140793?v=4
@@ -1227,7 +1179,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/49427230?v=4
   - name: mwear
     teams:
-      - collector-contrib-approvers
       - collector-contrib-triagers
       - ruby-approvers
       - ruby-maintainers
@@ -1324,6 +1275,7 @@ maintainers:
       - semconv-log-approvers
       - specs-approvers
       - specs-logs-approvers
+      - specs-maintainers
       - specs-triagers
     html_url: https://github.com/pellared
     avatar_url: https://avatars.githubusercontent.com/u/5067549?v=4
@@ -1458,26 +1410,8 @@ maintainers:
   - name: svrnm
     teams:
       - docs-approvers
-      - docs-bn-approvers
-      - docs-bn-maintainers
-      - docs-es-approvers
-      - docs-es-maintainers
-      - docs-fr-approvers
-      - docs-fr-maintainers
-      - docs-ja-approvers
-      - docs-ja-maintainers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
-      - docs-pt-approvers
-      - docs-pt-maintainers
-      - docs-ro-approvers
-      - docs-ro-maintainers
       - docs-triagers
-      - docs-uk-approvers
-      - docs-uk-maintainers
-      - docs-zh-approvers
-      - docs-zh-maintainers
       - ecosystem-explorer-approvers
       - ecosystem-explorer-maintainers
       - proto-approvers
@@ -1500,22 +1434,8 @@ maintainers:
   - name: theletterf
     teams:
       - docs-approvers
-      - docs-bn-approvers
-      - docs-bn-maintainers
-      - docs-es-approvers
-      - docs-es-maintainers
-      - docs-fr-approvers
-      - docs-fr-maintainers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
-      - docs-pt-approvers
-      - docs-pt-maintainers
-      - docs-ro-approvers
-      - docs-ro-maintainers
       - docs-triagers
-      - docs-uk-approvers
-      - docs-uk-maintainers
       - social-media-approvers
     html_url: https://github.com/theletterf
     avatar_url: https://avatars.githubusercontent.com/u/1773616?v=4
@@ -1531,26 +1451,8 @@ maintainers:
   - name: tiffany76
     teams:
       - docs-approvers
-      - docs-bn-approvers
-      - docs-bn-maintainers
-      - docs-es-approvers
-      - docs-es-maintainers
-      - docs-fr-approvers
-      - docs-fr-maintainers
-      - docs-ja-approvers
-      - docs-ja-maintainers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
-      - docs-pt-approvers
-      - docs-pt-maintainers
-      - docs-ro-approvers
-      - docs-ro-maintainers
       - docs-triagers
-      - docs-uk-approvers
-      - docs-uk-maintainers
-      - docs-zh-approvers
-      - docs-zh-maintainers
       - social-media-approvers
     html_url: https://github.com/tiffany76
     avatar_url: https://avatars.githubusercontent.com/u/30397949?v=4
@@ -1671,8 +1573,6 @@ maintainers:
     teams:
       - docs-approvers
       - docs-maintainers
-      - docs-pl-approvers
-      - docs-pl-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-triagers
@@ -1913,6 +1813,11 @@ approvers:
       - python-genai-approvers
     html_url: https://github.com/DylanRussell
     avatar_url: https://avatars.githubusercontent.com/u/7339604?v=4
+  - name: eternalcuriouslearner
+    teams:
+      - python-genai-approvers
+    html_url: https://github.com/eternalcuriouslearner
+    avatar_url: https://avatars.githubusercontent.com/u/266411623?v=4
   - name: ferd
     teams:
       - erlang-approvers
@@ -2417,11 +2322,6 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/facostaembrace
     avatar_url: https://avatars.githubusercontent.com/u/108752213?v=4
-  - name: fatsheep9146
-    teams:
-      - collector-contrib-triagers
-    html_url: https://github.com/fatsheep9146
-    avatar_url: https://avatars.githubusercontent.com/u/11855957?v=4
   - name: Frapschen
     teams:
       - collector-contrib-triagers
@@ -2723,9 +2623,6 @@ members:
   - name: garysassano
     html_url: https://github.com/garysassano
     avatar_url: https://avatars.githubusercontent.com/u/10464497?v=4
-  - name: gbbr
-    html_url: https://github.com/gbbr
-    avatar_url: https://avatars.githubusercontent.com/u/6686356?v=4
   - name: gouthamve
     html_url: https://github.com/gouthamve
     avatar_url: https://avatars.githubusercontent.com/u/7354143?v=4
@@ -2942,6 +2839,9 @@ members:
   - name: mxiamxia
     html_url: https://github.com/mxiamxia
     avatar_url: https://avatars.githubusercontent.com/u/5331577?v=4
+  - name: neil-the-nowledgeable
+    html_url: https://github.com/neil-the-nowledgeable
+    avatar_url: https://avatars.githubusercontent.com/u/254185769?v=4
   - name: nekufa
     html_url: https://github.com/nekufa
     avatar_url: https://avatars.githubusercontent.com/u/405067?v=4
