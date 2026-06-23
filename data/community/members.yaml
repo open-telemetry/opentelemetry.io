@@ -2322,11 +2322,6 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/facostaembrace
     avatar_url: https://avatars.githubusercontent.com/u/108752213?v=4
-  - name: fatsheep9146
-    teams:
-      - collector-contrib-triagers
-    html_url: https://github.com/fatsheep9146
-    avatar_url: https://avatars.githubusercontent.com/u/11855957?v=4
   - name: Frapschen
     teams:
       - collector-contrib-triagers
