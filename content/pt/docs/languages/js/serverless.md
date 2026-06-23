@@ -270,7 +270,7 @@ registerInstrumentations({
 });
 ```
 
-### Adicionar as dependências do pacote {#add-package-dependencies}
+### Adicione as dependências do pacote {#add-package-dependencies}
 
 Adicione o seguinte ao seu `package.json`:
 
