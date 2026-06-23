@@ -22884,16 +22884,16 @@
     "LastSeen": "2026-06-14T10:49:56.863Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-node": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-22T11:28:10.769420001Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-23T10:55:42.453Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-trace-node": {
     "StatusCode": 206,
     "LastSeen": "2026-06-14T10:50:00.577Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/shim-opentracing": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-22T11:27:30.581802513Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-23T10:55:44.526Z"
   },
   "https://www.npmjs.com/search?q=%40cspell%2Fdict": {
     "StatusCode": 200,
