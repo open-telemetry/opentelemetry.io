@@ -256,7 +256,7 @@ const collectorOptions = {
 
 const provider = new NodeTracerProvider({
   resource: resourceFromAttributes({
-    [ATTR_SERVICE_NAME]: '<your function name>',
+    [ATTR_SERVICE_NAME]: '<nome da sua função>',
   }),
   spanProcessors: [
     new BatchSpanProcessor(new OTLPTraceExporter(collectorOptions)),
