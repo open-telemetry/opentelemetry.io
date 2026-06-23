@@ -20,7 +20,7 @@ para que você tenha os arquivos `package.json`, `app.js` (ou `app.ts`) e
 
 {{% include esm-support-note.md %}}
 
-## Detecção de recursos de processo e ambiente {#process--environment-resource-detection}
+## Detecção de recursos de processo e ambiente {#process-environment-resource-detection}
 
 Por padrão, o SDK do Node.js detecta [recursos de processo e do _runtime_ de
 processo][process and process runtime resources] e obtém atributos da variável
