@@ -1,7 +1,7 @@
 {{/*
 cSpell:ignore: cial cond
 */ -}}
-{{ $data := sort (sort (sort $.Site.Data.ecosystem.vendors "name") "oss" "desc") "commercial" -}}
+{{ $data := sort (sort (sort hugo.Data.ecosystem.vendors "name") "oss" "desc") "commercial" -}}
 
 | Organization[^org] | OSS | Com&shy;mer&shy;cial | Native OTLP | Learn more  |
 | ----------- | ----------- | ---------- | ----------------- | ----------- | ----------- |

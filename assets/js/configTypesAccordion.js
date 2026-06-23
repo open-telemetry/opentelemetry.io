@@ -27,6 +27,10 @@ function readI18n(container) {
     colType: d.i18nColType,
     colConstraints: d.i18nColConstraints,
     colDescription: d.i18nColDescription,
+    examples: d.i18nExamples,
+    copy: d.i18nCopy,
+    copied: d.i18nCopied,
+    source: d.i18nSource,
   };
 }
 
@@ -136,6 +140,91 @@ function renderPropertiesTable(type, i18n, knownTypeIds) {
 </table>`;
 }
 
+// Build the <code> body, wrapping the type-relevant portion (from the snippet's
+// demarcation point onward) in a highlight band. A block-level <span> after the
+// context naturally starts on its own line, so no separator newline is added.
+function renderSnippetCode(snippet) {
+  const lines = snippet.content.split('\n');
+  const start = snippet.highlightStart;
+
+  if (start == null || start >= lines.length) {
+    return escapeHtml(snippet.content);
+  }
+  const highlight = `<span class="ct-snippet-highlight">${escapeHtml(
+    lines.slice(start).join('\n'),
+  )}</span>`;
+  if (start <= 0) {
+    return highlight;
+  }
+
+  return escapeHtml(lines.slice(0, start).join('\n')) + highlight;
+}
+
+function renderCodeBlock(snippet, i18n) {
+  const sourceLink = snippet.sourceUrl
+    ? `<a class="ct-snippet-source" href="${escapeAttr(snippet.sourceUrl)}"
+          target="_blank" rel="noopener">${escapeHtml(i18n.source)}</a>`
+    : '';
+  return `
+<div class="ct-snippet">
+  <div class="ct-snippet-toolbar">
+    ${sourceLink}
+    <button type="button" class="btn btn-sm btn-outline-secondary ct-snippet-copy"
+            data-snippet-copy
+            aria-label="${escapeAttr(i18n.copy)}">${escapeHtml(i18n.copy)}</button>
+  </div>
+  <pre class="ct-snippet-pre"><code>${renderSnippetCode(snippet)}</code></pre>
+</div>`;
+}
+
+function renderSnippets(type, i18n) {
+  const snippets = type.snippets ?? [];
+  if (snippets.length === 0) return '';
+
+  const heading = `<p class="ct-examples-heading"><strong>${escapeHtml(i18n.examples)}</strong></p>`;
+
+  // Single snippet: no tab chrome, but keep the snippet's name as a caption so
+  // the context the tab label would have provided isn't lost.
+  if (snippets.length === 1) {
+    const caption = snippets[0].description
+      ? `<p class="ct-snippet-caption">${escapeHtml(snippets[0].description)}</p>`
+      : '';
+    return `<div class="ct-examples">${heading}${caption}${renderCodeBlock(snippets[0], i18n)}</div>`;
+  }
+
+  // Multiple snippets: Bootstrap tabs.
+  const tabs = snippets
+    .map((snippet, i) => {
+      const tabId = `ct-snip-${escapeAttr(type.id)}-${i}`;
+      const active = i === 0 ? ' active' : '';
+      const selected = i === 0 ? 'true' : 'false';
+      return `
+    <li class="nav-item" role="presentation">
+      <button class="nav-link${active}" id="${tabId}-tab" data-bs-toggle="tab"
+              type="button" role="tab" data-bs-target="#${tabId}"
+              aria-controls="${tabId}" aria-selected="${selected}">${escapeHtml(snippet.description)}</button>
+    </li>`;
+    })
+    .join('');
+
+  const panes = snippets
+    .map((snippet, i) => {
+      const tabId = `ct-snip-${escapeAttr(type.id)}-${i}`;
+      const active = i === 0 ? ' show active' : '';
+      return `
+    <div class="tab-pane fade${active}" id="${tabId}" role="tabpanel"
+         aria-labelledby="${tabId}-tab">${renderCodeBlock(snippet, i18n)}</div>`;
+    })
+    .join('');
+
+  return `
+<div class="ct-examples">
+  ${heading}
+  <ul class="nav nav-tabs ct-snippet-tabs" role="tablist">${tabs}</ul>
+  <div class="tab-content">${panes}</div>
+</div>`;
+}
+
 function renderUsages(type) {
   if (!type.usages?.length) return '';
   const items = type.usages
@@ -177,6 +266,7 @@ function renderTypeItem(type, i18n, knownTypeIds) {
   <div id="ct-${escapeAttr(type.id)}" class="accordion-collapse collapse">
     <div class="accordion-body">
       ${renderPropertiesTable(type, i18n, knownTypeIds)}
+      ${renderSnippets(type, i18n)}
       ${constraintsHtml}
       ${renderUsages(type)}
     </div>
@@ -240,10 +330,25 @@ function applyFilters(container, types, state) {
 
 // ── Event wiring ──────────────────────────────────────────────────────────────
 
-function wireControls(container, types) {
+function wireControls(container, types, i18n) {
   const accordion = container.querySelector(`#${ACCORDION_ID}`);
   const state = { query: '', filter: 'all' };
   let debounceTimer;
+
+  // Copy buttons (delegated, since the accordion is built in one innerHTML pass).
+  container.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-snippet-copy]');
+    if (!btn) return;
+    const code = btn.closest('.ct-snippet')?.querySelector('pre code');
+    if (!code) return;
+    navigator.clipboard.writeText(code.textContent).then(() => {
+      const original = btn.textContent;
+      btn.textContent = i18n.copied;
+      setTimeout(() => {
+        btn.textContent = original;
+      }, 2000);
+    });
+  });
 
   // Search
   const searchInput = container.querySelector('#ct-search');
@@ -359,7 +464,7 @@ async function init() {
     container.innerHTML =
       renderControls(types, i18n) + renderAccordion(types, i18n, knownTypeIds);
     injectDescriptions(container, types);
-    const resetControls = wireControls(container, types);
+    const resetControls = wireControls(container, types, i18n);
     wireTypeLinks(container, resetControls);
     handleInitialHash(container);
   } catch (err) {

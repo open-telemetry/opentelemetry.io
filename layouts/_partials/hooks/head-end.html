@@ -26,6 +26,10 @@
 
 {{- end -}}
 
+{{ if os.FileExists "static/site.webmanifest" -}}
+<link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+{{ end -}}
+
 {{ partial "script.html" (dict "src" "js/kapa-footer-yield.js") }}
 <script
   async
@@ -45,6 +49,8 @@
   xx-DOES-NOT-WORK-data-launcher-button-font-size="1rem"
   data-font-size-lg="1rem"
   data-color-scheme-selector="[data-bs-theme='dark']"
+  data-mcp-enabled="true"
+  data-mcp-server-url="https://opentelemetry.mcp.kapa.ai"
 >
 </script>
 {{/* */ -}}

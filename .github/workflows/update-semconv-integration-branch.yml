@@ -29,7 +29,7 @@ jobs:
           client-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with:
           # this is needed to do the rebase below
           fetch-depth: 0
@@ -120,6 +120,13 @@ jobs:
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
+            if [ -z "$(git rev-list origin/main..HEAD)" ]; then
+              # Bootstrap this long-lived integration branch with an empty
+              # commit so that PR creation succeeds (gh pr create fails when
+              # there are no commits between main and the branch).
+              git commit --allow-empty -m "Trigger PR creation for $BRANCH"
+              git push
+            fi
             gh pr create --title "DRAFT Update ${{ env.REPO }} to unreleased $VERSION-dev" \
                          --body "This is a draft PR used for identifying issues integrating the latest (unreleased) [${{ env.REPO }}](https://github.com/open-telemetry/${{ env.REPO }})." \
                          --draft
