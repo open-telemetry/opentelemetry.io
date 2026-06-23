@@ -251,7 +251,7 @@ const {
 api.diag.setLogger(new api.DiagConsoleLogger(), api.DiagLogLevel.ALL);
 
 const collectorOptions = {
-  url: '<address for your backend>',
+  url: '<endereço do seu backend>',
 };
 
 const provider = new NodeTracerProvider({
