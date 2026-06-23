@@ -38,7 +38,7 @@ jobs:
 
       - run: npm install --omit=optional
 
-      - run: npm run log:test-and-fix
+      - run: npm run fix-and-test:all 2>&1 | tee tmp/build-log.txt
         env:
           CMD_SKIP: i18n|registry
           GET: no # For details, see: https://opentelemetry.io/docs/contributing/development/#submodule-changes

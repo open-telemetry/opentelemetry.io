@@ -1179,7 +1179,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/49427230?v=4
   - name: mwear
     teams:
-      - collector-contrib-approvers
       - collector-contrib-triagers
       - ruby-approvers
       - ruby-maintainers
@@ -1814,6 +1813,11 @@ approvers:
       - python-genai-approvers
     html_url: https://github.com/DylanRussell
     avatar_url: https://avatars.githubusercontent.com/u/7339604?v=4
+  - name: eternalcuriouslearner
+    teams:
+      - python-genai-approvers
+    html_url: https://github.com/eternalcuriouslearner
+    avatar_url: https://avatars.githubusercontent.com/u/266411623?v=4
   - name: ferd
     teams:
       - erlang-approvers
@@ -2624,9 +2628,6 @@ members:
   - name: garysassano
     html_url: https://github.com/garysassano
     avatar_url: https://avatars.githubusercontent.com/u/10464497?v=4
-  - name: gbbr
-    html_url: https://github.com/gbbr
-    avatar_url: https://avatars.githubusercontent.com/u/6686356?v=4
   - name: gouthamve
     html_url: https://github.com/gouthamve
     avatar_url: https://avatars.githubusercontent.com/u/7354143?v=4
