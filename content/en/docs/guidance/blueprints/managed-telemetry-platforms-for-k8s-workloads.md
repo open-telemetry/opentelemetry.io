@@ -695,7 +695,7 @@ By implementing this guideline, organizations can expect to achieve:
 - **Efficient telemetry volumes:** Optimal use of OpenTelemetry signals,
   sampling, and aggregation provide telemetry volumes that allow organizations
   to balance between high-granularity, cost, and observability requirements.
-- **Efficient use of compute resources:** Position data processing at differentO
+- **Efficient use of compute resources:** Position data processing at different
   levels limits data transfer and compute resources associated with data that
   can be aggregated or filtered at early stages.
 - **Central governance and guardrails:** Platform teams have a central point to
