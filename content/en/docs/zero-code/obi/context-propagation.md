@@ -53,7 +53,7 @@ models:
 | Java virtual threads | Tracks virtual-thread mount and unmount operations so request context is keyed to the virtual thread rather than only the carrier OS thread.   | JDK `21+`. Log enrichment is skipped for requests handled on virtual threads.                                                                                                              |
 | Python asyncio       | Tracks the current `asyncio` task, child task creation, inherited context, and `asyncio.to_thread()` work.                                     | Supported for Python `3.9+` with the `uvloop` event loop.                                                                                                                                  |
 | Ruby Puma            | Associates requests when Puma's reactor thread hands accepted work to a worker thread.                                                         | Requires Puma `5.0+`. Ruby services not served by Puma use the language-agnostic behavior.                                                                                                 |
-| nginx                | Associates an incoming request with the upstream connection selected by nginx.                                                                 | Applies to nginx upstream proxying observed by OBI.                                                                                                                                        |
+| NGINX                | Associates an incoming request with the upstream connection selected by NGINX.                                                                 | Applies to NGINX upstream proxying observed by OBI.                                                                                                                                        |
 
 These mechanisms are designed for common framework behavior. For example, OBI
 can usually associate parent and child spans for:
@@ -66,7 +66,7 @@ can usually associate parent and child spans for:
 - Python `asyncio` services running on `uvloop`, including work created with
   `asyncio.create_task()`, `asyncio.gather()`, and `asyncio.to_thread()`.
 - Ruby applications served by Puma.
-- nginx reverse proxy requests to upstream services.
+- NGINX reverse proxy requests to upstream services.
 
 ## Language-agnostic association
 
