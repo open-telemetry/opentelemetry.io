@@ -76,8 +76,8 @@ Judgment calls beyond the hook:
   contributors are credited in the intro paragraph (see
   [Authoring rules](#authoring-rules)).
 - **`issue`** — optional; only ~15% of recent posts set this.
-- **`sig`** — sponsoring SIG (e.g. `Developer Experience SIG`). When present,
-  the PR should carry a matching `sig:<name>` label.
+- **`sig`** — sponsoring SIG (e.g. `Developer Experience SIG`). **Required.**
+  The PR should carry a matching `sig:<name>` label.
 - **`cSpell:ignore`** — see [Spelling](#spelling).
 
 ## Submission prerequisites
@@ -86,8 +86,9 @@ From [`content/en/docs/contributing/blog.md`][contrib-blog]:
 
 - Non-commercial, broadly relevant; no vendor product pitches.
 - Prefer CNCF projects in examples (Jaeger for traces, Prometheus for metrics).
-- A pre-submission issue is required; a SIG sponsor is strongly recommended
-  (ideally from a different company than the author).
+- A pre-submission issue is required; a SIG sponsor is **required** (ideally
+  from a different company than the author). The SIG sponsor must complete their
+  review before the Comms SIG reviews the post.
 - "Call for Contributors" posts follow the project-management process in
   `open-telemetry/community`.
 
@@ -170,7 +171,7 @@ below are what humans most often miss after the hook + linters pass:
    if needed.
 4. `gh-url-hash`: no `main`/`master` or short SHAs; tags or full SHAs only.
 5. Submission prerequisites: non-commercial, CNCF tools preferred, SIG sponsor
-   identified.
+   identified and has completed their review before Comms SIG review.
 6. OTel terminology consistent throughout.
 7. `date` and `draft` set so the publish workflow gates the merge as intended.
 
