@@ -271,19 +271,56 @@ function setNested(obj, dottedPath, value) {
   current[parts[parts.length - 1]] = value;
 }
 
-function coerceValue(value) {
+// Property keys whose value the SDK treats as a Duration. The SDK
+// declarative-config schema represents durations as plain millisecond
+// numbers, so values like "5s" or "100ms" have to be parsed here.
+const DURATION_KEYS = new Set(['otel.jmx.discovery.delay']);
+
+// Parse a value as a Duration → milliseconds, mirroring the SDK Java
+// DurationProperty parser. Returns null if the input does not look like a
+// duration so callers can fall back to default coercion.
+function parseDurationMs(value) {
+  const match = /^(\d+)(ns|us|ms|s|m|h|d)?$/.exec(value);
+  if (!match) return null;
+  const n = Number(match[1]);
+  switch (match[2]) {
+    case undefined:
+    case 'ms':
+      return n;
+    case 'ns':
+      return Math.floor(n / 1_000_000);
+    case 'us':
+      return Math.floor(n / 1_000);
+    case 's':
+      return n * 1_000;
+    case 'm':
+      return n * 60_000;
+    case 'h':
+      return n * 3_600_000;
+    case 'd':
+      return n * 86_400_000;
+    default:
+      return null;
+  }
+}
+
+function coerceValue(value, key) {
   if (value === 'true') return true;
   if (value === 'false') return false;
   if (/^\d+$/.test(value)) return Number(value);
+  if (key && DURATION_KEYS.has(key)) {
+    const ms = parseDurationMs(value);
+    if (ms !== null) return ms;
+  }
   return value;
 }
 
-function coerceListValue(value) {
+function coerceListValue(value, key) {
   // Comma-separated → array
   if (typeof value === 'string' && value.includes(',')) {
     return value.split(',').map((s) => s.trim());
   }
-  return coerceValue(value);
+  return coerceValue(value, key);
 }
 
 function buildDcYaml(properties, source, gettingStartedYaml) {
@@ -311,12 +348,12 @@ function buildDcYaml(properties, source, gettingStartedYaml) {
         break;
 
       case 'special':
-        setNested(instrumentationConfig, cls.dcPath, coerceListValue(value));
+        setNested(instrumentationConfig, cls.dcPath, coerceListValue(value, key));
         break;
 
       case 'instrumentation': {
         const dcPath = defaultInstrumentationPath(cls.suffix);
-        setNested(instrumentationConfig, dcPath, coerceListValue(value));
+        setNested(instrumentationConfig, dcPath, coerceListValue(value, key));
         break;
       }
 

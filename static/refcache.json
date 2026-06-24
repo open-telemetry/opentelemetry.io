@@ -11187,6 +11187,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-16T11:23:34.785839394Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/declarative-config-bridge/src/main/java/io/opentelemetry/instrumentation/config/bridge/ConfigPropertiesBackedDeclarativeConfigProperties.java": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-24T15:24:08.786661356Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md": {
     "StatusCode": 206,
     "LastSeen": "2026-06-16T11:23:28.934593404Z"

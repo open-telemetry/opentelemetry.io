@@ -1,7 +1,7 @@
 ---
 title: Declarative configuration
 weight: 25
-cSpell:ignore: Customizer Dotel genai
+cSpell:ignore: Customizer Dotel genai sqlcommenter
 ---
 
 Declarative configuration uses the
