@@ -42,7 +42,9 @@ span as an anonymous object (map) for the attribute key/values pair.
 
 ```javascript
 span?.setAttributes({
-  'demo.payment.amount': parseFloat(`${amount.units}.${amount.nanos}`).toFixed(2),
+  'demo.payment.amount': parseFloat(`${amount.units}.${amount.nanos}`).toFixed(
+    2,
+  ),
 });
 ```
 
@@ -62,9 +64,8 @@ span.setStatus({ code: SpanStatusCode.ERROR, message: err.message });
 
 ### Creating Meters and Instruments
 
-Meters can be created using the `@opentelemetry/api` package. You can
-create meters as seen below, and then use the created meter to create
-instruments.
+Meters can be created using the `@opentelemetry/api` package. You can create
+meters as seen below, and then use the created meter to create instruments.
 
 ```javascript
 const { metrics } = require('@opentelemetry/api');
