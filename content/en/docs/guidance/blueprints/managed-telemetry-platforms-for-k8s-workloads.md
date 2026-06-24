@@ -5,7 +5,7 @@ date: '2026-05-28'
 author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
 sig: End-User
 # prettier-ignore
-cSpell:ignore: actioned Autoscaler kube OTTL overprovision rollouts SDLC Skyscanner statefulset
+cSpell:ignore: actioned Autoscaler Karpenter kube OTTL overprovision rollouts SDLC Skyscanner statefulset
 ---
 
 ## Summary
@@ -549,10 +549,14 @@ By implementing this guideline, organizations can expect to achieve:
   exporter and receiver configurations with load-balanced, reliable Collector
   pipelines, teams are able to fulfil their reliability requirements on a
   per-signal basis.
-- **Efficient use of compute resources:** Centralizing Collector deployments,
-  and load balancing telemetry through horizontally scalable deployments, can
-  improve resource utilization in environments where telemetry volumes vary over
-  time.
+- **Efficient use of compute resources:** Horizontally scaled, centralized
+  Gateways utilize compute resources more efficiently than per-node DaemonSets
+  or per-pod Sidecars in heterogeneous, multi-tenant environments. DaemonSets
+  normally have to be overprovisioned to handle variable node sizes (i.e. a
+  single node may serve 4 or 40 application pods) and variable per-pod telemetry
+  volume that fluctuates over time. Keeping per-node footprints small matters as
+  teams often struggle to schedule workloads on smaller nodes. A central Gateway
+  tier scales independently, sized to total telemetry volume.
 - **Consolidated Collector configuration:** As described in
   [Action 3](#action-3), this model allows for a consolidated deployment of
   Collector configuration across multiple layers, minimizing maintenance toil
@@ -759,12 +763,12 @@ Regardless of how the configuration is delivered as part of
 minimum base configuration as part of their offering:
 
 - **Exporters:** OTLP HTTP/protobuf (default) or OTLP gRPC configured to export
-  to the most optimal Collector (e.g. local Gateway in the same cluster).
+  to the most optimal Collector (e.g. local Gateway in the same cluster). See
+  [Appendix 2](#appendix-2) and [Action 3](#action-3) for more details on side
+  effects of OTLP gRPC used with standard Kubernetes Services.
   - **Note:** Backend/SaaS endpoints or API keys should not be included in
     application-level configuration, as we recommend handling these at a
     Collector Gateway.
-  - **Note:** See [Action 3](#action-3) and [Appendix 2](#appendix-2) for more
-    details on side effects of OTLP gRPC used with standard Kubernetes Services.
 - **Propagators:** W3C Trace Context (`tracecontext`) to ensure distributed
   traces do not break across service boundaries. If necessary, include legacy
   formats as secondary options (Propagators API will prioritize in the order
@@ -850,23 +854,11 @@ and owners should ensure resiliency is configured from the start:
   exporter with the [file_storage][48] extension. With this extension
   configured, if the backend is unavailable or rate-limits exports, the
   Collector will buffer data to disk and automatically retry, preventing data
-  loss.
-  - **Note:** While this mechanism provides added completeness guarantees, it
-    moves away from stateless deployments, requiring the Gateway to be deployed
-    as a `StatefulSet` with `PersistentVolumeClaims`. As with OTLP exporter
-    settings, operators must consider the trade-offs between the criticality of
-    dropping data (in this case potentially stale data) and the cost of
-    maintenance toil and support (e.g., managing disk pressure, volume resizing,
-    etc).
-  - **Note**: Enabling persistent queues delays backpressure propagation to
-    downstream clients. Data is buffered to disk before memory pressure builds,
-    meaning the `memory_limiter` will not trigger early backpressure. Once the
-    persistent queue is full, the pipeline will block and the receiver will
-    return retryable errors (e.g. `429`) to clients, signaling backpressure.
-    Operators must size the persistent queue and monitor disk usage accordingly.
+  loss. See [Appendix 4](#appendix-4) for notes on deploying the `file_storage`
+  extension.
 - **gRPC load balancing**: OTLP/gRPC can be very efficient, but standard
   Kubernetes service routing can make it inefficient. See
-  [Appendix 1](#appendix-1) to implement gRPC load balancing, or consider
+  [Appendix 2](#appendix-2) to implement gRPC load balancing, or consider
   OTLP/HTTP (the default for most SDKs).
 - **Scale on memory and internal telemetry:** Utilize the Kubernetes Horizontal
   Pod Autoscaler (HPA) combined with custom metrics (see (Action 5](#action-5)).
@@ -891,18 +883,8 @@ in Collector Gateways to execute the following processing steps (in order):
   unmanaged workloads. This includes fields not available via the Downward API.
   Configure this processor to extract and append attributes like
   `k8s.deployment.name`, `k8s.statefulset.name`, etc. based on the incoming
-  connection's pod IP.
-  - **Note:** If using a proxy, ensure pass-through mode is enabled on the proxy
-    so the Gateway sees the original Pod IP of the application, not the proxy's
-    IP. Alternatively, inject fields available via Downward API (e.g.
-    `k8s.pod.uid`) at the SDK level and use `k8s_attributes` pod association
-    rules to match the incoming data with a given Pod.
-  - **Note:** When using this processor, the `ServiceAccount` used by the
-    Collector must be granted RBAC `get`, `watch`, and `list` permissions on the
-    Kubernetes resources corresponding to the attributes being extracted, e.g.
-    `deployments` for `k8s.deployment.name` and `k8s.deployment.uid`. Missing
-    any of these will result in the Collector silently skipping enrichment for
-    the affected attributes.
+  connection's pod IP. See [Appendix 5](#appendix-5) for details to consider
+  when using the `k8s_attributes` processor.
 - **Processors to filter and transform data:** As a fallback measure on
   applications that could not apply these settings at the SDK level before being
   sent to the Collector, use processors like [attributes][50], [filter][51],
@@ -1150,6 +1132,52 @@ the baseline and how they can extend it:
   merging to blend a developer-provided `custom-otel.yaml` with the platform's
   `base-otel.yaml`.
 
+### 4. Deployment notes on `file_storage` extension {#appendix-4}
+
+While using the [file_storage][48] extension and OTLP exporter's
+`sending_queue.storage` provides added completeness guarantees, it moves away
+from stateless deployments, requiring the Gateway to be deployed as a
+`StatefulSet` with `PersistentVolumeClaims`. As with OTLP exporter settings,
+operators must consider the trade-offs between the criticality of dropping data
+(in this case potentially stale data) and the cost of maintenance toil and
+support (e.g., managing disk pressure, volume resizing, etc).
+
+Additionally, enabling persistent queues delays backpressure propagation to
+downstream clients. Data is buffered to disk before memory pressure builds,
+meaning the `memory_limiter` will not trigger early backpressure. Once the
+persistent queue is full, the pipeline will block and the receiver will return
+retryable errors (e.g. `429`) to clients, signaling backpressure.
+
+Operators must size the persistent queue and monitor disk usage accordingly.
+
+### 5. Deployment notes on `k8s_attributes` processor {#appendix-5}
+
+If a proxy is placed between the pod emitting telemetry and the Collector
+processing it, ensure pass-through mode is enabled on the proxy so the Gateway
+sees the original Pod IP of the application, not the proxy's IP. Alternatively,
+inject fields available via Downward API (e.g. `k8s.pod.uid`) as Resource
+attributes when configuring OTel SDKs, and configure `k8s_attributes` pod
+association rules to match the incoming Resource attributes with a given Pod.
+
+When using the `k8s_attributes` processor, the `ServiceAccount` used by the
+Collector must be granted RBAC `get`, `watch`, and `list` permissions on the
+Kubernetes resources corresponding to the attributes being extracted, e.g.
+`deployments` for `k8s.deployment.name` and `k8s.deployment.uid`. Missing any of
+these will result in the Collector silently skipping enrichment for the affected
+attributes.
+
+Finally, running this processor in a Gateway will cause higher memory
+utilization on each of the Collectors, scaling according to cluster size. The
+`k8s_attributes` processor keeps metadata in memory related to Objects in the
+cluster, and the more Objects there are to cache, the more memory the collector
+will consume.
+
+When run as a Gateway, each pod in the collector Deployment or StatefulSet has
+to remember ALL the metadata about the entire cluster (as opposed to running as
+a DaemonSet, where the pod only has to know about the metadata for its own
+node). The component documentation contains more details on [deployment and
+scaling considerations][62].
+
 <!-- Link references -->
 
 [1]: https://platformengineering.org/talks-library/platform-as-a-product
@@ -1229,3 +1257,5 @@ the baseline and how they can extend it:
 [59]: /docs/guidance/reference-implementations/mastodon/
 [60]: /docs/guidance/reference-implementations/skyscanner/
 [61]: /docs/collector/configuration/#location
+[62]:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md#production-deployment-guide
