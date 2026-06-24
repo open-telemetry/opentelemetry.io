@@ -4707,6 +4707,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-22T11:34:47.16472633Z"
   },
+  "https://github.com/cockroachdb/pebble": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-24T03:34:23.990720624Z"
+  },
   "https://github.com/codeboten": {
     "StatusCode": 206,
     "LastSeen": "2026-06-22T11:32:06.017128176Z"
@@ -7394,6 +7398,14 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41791": {
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:07:22.349365328Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/42326": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-24T03:34:19.052237923Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/42326#issuecomment-3992297512": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-24T03:34:26.766050365Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/42491": {
     "StatusCode": 206,
@@ -23915,6 +23927,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-14T10:41:13.684815475Z"
   },
+  "https://www.youtube.com/watch?v=9a_w0Txy0gs": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-24T03:34:27.75837812Z"
+  },
   "https://www.youtube.com/watch?v=LUsfZFRM4yo": {
     "StatusCode": 200,
     "LastSeen": "2026-06-16T11:24:54.03341488Z"
@@ -23934,6 +23950,10 @@
   "https://www.youtube.com/watch?v=WhRrwSHDBFs": {
     "StatusCode": 200,
     "LastSeen": "2026-06-22T11:28:22.012184536Z"
+  },
+  "https://www.youtube.com/watch?v=ehKzt_kGEeM": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-24T03:34:14.68549506Z"
   },
   "https://www.youtube.com/watch?v=g8rtqqNTL9Q": {
     "StatusCode": 200,
