@@ -10,10 +10,10 @@ processed.
 
 [Payment service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/payment/)
 
-## Auto-instrumentation
+## Zero-code instrumentation
 
-This Node.js based service makes use of the OpenTelemetry Node.js Automatic
-Instrumentation, activated by requiring the
+This Node.js based service makes use of the OpenTelemetry Node.js Zero-code
+Instrumentation, setting up by requiring the
 `@opentelemetry/auto-instrumentations-node/register` module at startup. Export
 endpoints, resource attributes, and service name are automatically set based on
 environment variables. This can be done in the service's `package.json` start
