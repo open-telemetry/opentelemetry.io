@@ -216,20 +216,30 @@ where they live.
 > Spring's relaxed binding has long understood that `OTEL_..._ENDPOINT` is
 > another spelling of `otel....endpoint`, brackets and all.
 >
-> But the starter is doing something unusual. The OTel schema is too big
-> and changes too often to bind to a configuration class, so the starter
-> does not ask Spring for known properties — it *enumerates* every
-> `PropertySource` and collects keys that begin with `otel.`. The walk
-> sees the YAML source's names with brackets
+> The usual Spring move for "I have a tree of config" would be a
+> [`@ConfigurationProperties`](https://docs.spring.io/spring-boot/reference/features/external-config.html#features.external-config.typesafe-configuration-properties)
+> class: declare a Java POJO shaped like your config tree, annotate it with
+> the property prefix, and Spring binds every source onto it for you. The
+> OTel SDK schema is hundreds of properties across many polymorphic layers
+> (every exporter type, every sampler type, every processor type),
+> [generated](/docs/languages/sdk-configuration/declarative-configuration/)
+> from a YAML schema that is still evolving. A hand-written POJO tree to
+> mirror it would be a second source of truth, perpetually behind the first.
+>
+> So the starter does something Spring rarely sees: it walks every
+> `PropertySource` directly and collects keys that begin with `otel.`. The
+> walk sees the YAML source's names with brackets
 > (`otel.tracer_provider.processors[0]...`), the env-var source's names
 > with underscores (`OTEL_TRACER_..._ENDPOINT`); Spring's rename only
-> happens when you *resolve* a property, not when you *list* one.
+> happens when you *resolve* a property, not when you *list* one. Then
+> Jackson binds the collected keys onto the *generated* configuration
+> model, which always matches the live schema.
 >
 > Sixteen lines in
 > [`EmbeddedConfigFile`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/EmbeddedConfigFile.java#L66-L82)
-> close that gap. For every `otel.*` key that contains a `[N]` bracket,
-> the starter rebuilds the env-var name from the property name and asks
-> Spring directly. The cousin gets called.
+> close the gap between the two naming conventions. For every `otel.*`
+> key that contains a `[N]` bracket, the starter rebuilds the env-var name
+> from the property name and asks Spring directly. The cousin gets called.
 
 ## Stage three: two substituters, one syntax
 
