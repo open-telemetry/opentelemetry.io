@@ -8,11 +8,11 @@ sig: Instrumentation
 cSpell:ignore: Customizer Dockerfiles Dotel petclinic relaxed sqlcommenter substituters zeitlinger
 ---
 
-The OpenTelemetry Spring Boot starter recently gained
-declarative-configuration support — the same YAML schema [the Java agent
-introduced in late 2025](/blog/2025/declarative-config/), now embedded inside
-`application.yaml`. This post is the story of how that landed, told through
-the eyes of one small environment variable.
+The OpenTelemetry Spring Boot starter 2.26.0 gained declarative-configuration
+support — the same YAML schema [the Java agent introduced in late
+2025](/blog/2025/declarative-config/), now embedded inside `application.yaml`.
+This post is the story of how that landed, told through the eyes of one
+small environment variable.
 
 *In a hurry? Jump straight to the
 [Spring Boot starter declarative-config docs](/docs/zero-code/java/spring-boot-starter/declarative-configuration/),
@@ -147,6 +147,7 @@ a tree?
 She travels.
 
 ## Stage one: arriving at Spring's property stack
+
 When the application starts, our env var arrives at the front desk of a
 building she has known her entire life: the Spring property loader. She is
 not alone. Behind her is the JVM `-D`, in front of her is `application.yaml`,
@@ -184,25 +185,17 @@ line.
 
 ```mermaid
 flowchart LR
-  subgraph PS[Spring PropertySources]
-    direction TB
-    P1[JVM system properties]
-    P2[env vars]
-    P3[command-line args]
-    P4[application-prod.yaml]
-    P5[application.yaml]
-  end
-  PS --> W["starter walks every source<br/>collects every otel.* key"]
-  W --> SEAM{"key sits under a list index?"}
+  S["Spring resolves<br/>all properties"] --> W["starter walks otel.* keys"]
+  W --> SEAM{"key sits under<br/>a list index?"}
   SEAM -- no --> OUT["un-flatten the whole map<br/>→ Jackson (once)<br/>→ SDK model"]
   SEAM -- yes --> RE["recompute env-var name<br/>re-read environment"]
   RE --> OUT
 ```
 
-*The starter walks every property source, collects every `otel.*` key, and
-hands the assembled map to Jackson — once, for the whole tree, not per
-element. The diamond is the seam this post is about: an extra step for keys
-that sit under a list index, which the next stage explains.*
+*The starter walks every property Spring exposes, picks out the `otel.*`
+keys, and hands the assembled map to Jackson — once, for the whole tree, not
+per element. The diamond is the seam this post is about: an extra step for
+keys that sit under a list index, which the next stage explains.*
 
 ## Stage two: a cousin Spring almost lost
 
@@ -214,9 +207,22 @@ OTEL_TRACER_PROVIDER_PROCESSORS_0_BATCH_EXPORTER_OTLP_HTTP_ENDPOINT=http://colle
 ```
 
 This one has a job to do — override one exporter's endpoint inside the YAML
-sister's tree — and she almost did not get heard.
+sister's tree — and Spring almost did not recognize her. Spring's relaxed
+binding renames env vars onto the dotted property tree for everything else,
+but it stops looking for env-var overrides the moment a key contains a `[0]`
+list bracket from the YAML. The cousin's name does not match anything Spring
+is searching for. She stands at the desk unread.
 
-> [!NOTE] What Spring's binding does, with a worked example
+The starter catches her there. For every `otel.*` key that sits under a list
+index, it reconstructs the env-var name from scratch — the same rule Spring
+would have used — and re-reads from the environment itself. Sixteen lines of
+code, deep inside [`EmbeddedConfigFile`][embed-link], that stitch the family
+back together so the cousin can reach into her sister's tree. The seam is
+the diamond in the diagram above.
+
+[embed-link]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/EmbeddedConfigFile.java#L66-L82
+
+> [!NOTE] What Spring's binding does, with a working example
 >
 > Setting `OTEL_SERVICE_NAME=petclinic` is the same as writing
 > `otel.service.name: petclinic` in `application.yaml`. Spring's binding
@@ -226,22 +232,17 @@ sister's tree — and she almost did not get heard.
 > `otel.resource.attributes[0].name`. So far, so good.
 >
 > The rule *stops* the moment a property with brackets in its name is already
-> in play. If `application.yaml` already declared `otel.tracer_provider.processors[0]....endpoint`,
-> Spring will *not* go looking for `OTEL_TRACER_PROVIDER_PROCESSORS_0_..._ENDPOINT`
-> as an override for that key. The bracket throws it off.
-
-That seam is where our cousin gets stuck. The starter notices and fixes it.
-For every `otel.*` key that sits under a list index, it reconstructs the
-env-var name from scratch — the same rule Spring would have used — and
-re-reads from the environment itself. Sixteen lines of code, deep inside
-[`EmbeddedConfigFile`][embed-link], that stitch the family back together so
-the cousin can reach into her sister's tree.
-
-[embed-link]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/EmbeddedConfigFile.java#L66-L82
-
-That seam is the diamond in the diagram above.
+> in play. If `application.yaml` already declared
+> `otel.tracer_provider.processors[0]....endpoint`, Spring will *not* go
+> looking for `OTEL_TRACER_PROVIDER_PROCESSORS_0_..._ENDPOINT` as an override
+> for that key. The bracket throws it off.
+>
+> That gap is exactly what the starter's 16-line patch closes: whenever it
+> sees an `otel.*` key with brackets in it, it rebuilds the env-var name
+> by the same rule and re-checks the environment itself.
 
 ## Stage three: two substituters, one syntax
+
 Our env var can also speak in placeholders. So can her sister. They both use
 `${...}`. They mean almost — but not quite — the same thing.
 
@@ -282,20 +283,30 @@ config servers — work transparently for OTel config. The starter never
 implemented any of them. Spring's resolver did, and the starter just reads
 properties.
 
-> [!NOTE] The biggest practical difference: env vars are first-class in the starter
+The biggest practical consequence: in the starter, any env var named on the
+same canonical key path as a YAML leaf overrides it automatically — no
+extra wiring. The agent's standalone YAML cannot do that. There, an env-var
+override has to be wired into the YAML as a `${VAR}` placeholder ahead of
+time, or it does nothing.
+
+> [!NOTE] Example: overriding a YAML leaf with an env var
 >
-> In the Spring starter, any env var named on the same canonical key path as
-> a YAML leaf overrides it automatically. Setting
-> `OTEL_TRACER_PROVIDER_PROCESSORS_0_BATCH_EXPORTER_OTLP_HTTP_ENDPOINT=http://prod-collector:4318/v1/traces`
-> at startup will replace whatever the YAML said. No extra wiring.
+> In the starter, this works at startup with nothing else changed in the
+> YAML:
 >
-> In the Java agent's standalone YAML, the SDK substituter only resolves
-> `${VAR}` placeholders that *already exist in the YAML file*. If you want
-> an env var to override an agent-config value, you have to write
-> `${MY_VAR:-default}` into the YAML yourself ahead of time. Containers in
+> ```bash
+> OTEL_TRACER_PROVIDER_PROCESSORS_0_BATCH_EXPORTER_OTLP_HTTP_ENDPOINT=\
+>   http://prod-collector:4318/v1/traces
+> ```
+>
+> Whatever the `application.yaml` said for that endpoint is replaced.
+>
+> In the agent, you would first have to write `${MY_ENDPOINT:-http://...}`
+> into the YAML, then set `MY_ENDPOINT` at startup. Containers in
 > production land softer in the starter.
 
 ## Arrival: the resolved tree the SDK actually boots from
+
 By the time our env var crosses the last boundary, she has been resolved,
 relaxed, normalized, and joined with every other `otel.*` key into a single
 flat map. The starter un-flattens that map back into the tree the SDK
