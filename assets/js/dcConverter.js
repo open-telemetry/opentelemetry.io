@@ -348,7 +348,11 @@ function buildDcYaml(properties, source, gettingStartedYaml) {
         break;
 
       case 'special':
-        setNested(instrumentationConfig, cls.dcPath, coerceListValue(value, key));
+        setNested(
+          instrumentationConfig,
+          cls.dcPath,
+          coerceListValue(value, key),
+        );
         break;
 
       case 'instrumentation': {
