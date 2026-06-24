@@ -31,6 +31,7 @@ function readI18n(container) {
     copy: d.i18nCopy,
     copied: d.i18nCopied,
     source: d.i18nSource,
+    viewSchema: d.i18nViewSchema,
   };
 }
 
@@ -240,6 +241,23 @@ function renderUsages(type) {
 </div>`;
 }
 
+function renderRawSchema(type, i18n) {
+  if (!type.rawDef) return '';
+  const json = JSON.stringify(type.rawDef, null, 2);
+  const sourceLink = type.sourceUrl
+    ? `<a class="ct-snippet-source" href="${escapeAttr(type.sourceUrl)}"
+          target="_blank" rel="noopener">${escapeHtml(i18n.source)}</a>`
+    : '';
+  return `
+<details class="ct-schema-details mt-3">
+  <summary class="ct-schema-summary">${escapeHtml(i18n.viewSchema)}</summary>
+  <div class="ct-snippet mt-1">
+    ${sourceLink ? `<div class="ct-snippet-toolbar">${sourceLink}</div>` : ''}
+    <pre class="ct-snippet-pre"><code>${escapeHtml(json)}</code></pre>
+  </div>
+</details>`;
+}
+
 function renderTypeItem(type, i18n, knownTypeIds) {
   const propCount = type.hasNoProperties ? 0 : (type.properties?.length ?? 0);
   const countText = propCount === 1 ? '1 property' : `${propCount} properties`;
@@ -269,6 +287,7 @@ function renderTypeItem(type, i18n, knownTypeIds) {
       ${renderSnippets(type, i18n)}
       ${constraintsHtml}
       ${renderUsages(type)}
+      ${renderRawSchema(type, i18n)}
     </div>
   </div>
 </div>`;
