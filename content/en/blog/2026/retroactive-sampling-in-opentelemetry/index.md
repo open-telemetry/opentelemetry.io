@@ -9,8 +9,8 @@ sig: Collector SIG
 cSpell:ignore: Jiekun NSDI Retroacting tailsampling vtagent youtube
 ---
 
-In March, our team gave a talk on **retroactive sampling** at KubeCon
-Europe 2026 ([recording](https://www.youtube.com/watch?v=ehKzt_kGEeM)).
+In March, our team gave a talk on **retroactive sampling** at KubeCon Europe
+2026 ([recording](https://www.youtube.com/watch?v=ehKzt_kGEeM)).
 
 By writing this blog post, as a transcript of the session, we want to explain
 how retroactive sampling **reduces outbound traffic, CPU, and memory usage** in
