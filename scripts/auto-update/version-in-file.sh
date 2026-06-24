@@ -105,7 +105,8 @@ fi
 
 if [[ "$repo" == "opentelemetry-specification"
   || "$repo" == "opentelemetry-proto"
-  || "$repo" == "semantic-conventions" ]]; then
+  || "$repo" == "semantic-conventions"
+  || "$repo" == "opentelemetry-configuration" ]]; then
   echo "Switching to $repo at tag $latest_version"
   ( set -x;
     npm run get:submodule -- content-modules/$repo &&
