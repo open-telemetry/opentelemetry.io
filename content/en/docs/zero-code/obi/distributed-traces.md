@@ -24,6 +24,10 @@ instead its own generated trace context. If OBI cannot find an incoming
 `traceparent` context value, it generates one according to the W3C
 specification.
 
+For details about how OBI chooses the parent request when work moves across
+threads, goroutines, tasks, or event loops, see
+[trace context association](../context-propagation/).
+
 ## Compatibility
 
 OBI supports distributed tracing and context propagation in the following
