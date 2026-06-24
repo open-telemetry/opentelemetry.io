@@ -37,7 +37,9 @@ The association step is separate from the step that writes the outgoing
 `traceparent` value. For example, language-agnostic network-level context
 propagation can associate HTTP/1.x requests across languages, but it does not
 write context for gRPC or HTTP/2 traffic. Go library-level context propagation
-can write context for HTTP/2 and gRPC with the limitations documented in
+can write context for HTTP/2 and gRPC only on new, non-HTTPS connections; reused
+HTTP/2/gRPC connections are not supported yet. Other limitations are documented
+in
 [distributed traces](../distributed-traces/#go-context-propagation-by-instrumenting-at-library-level).
 
 ## Runtime-specific association
@@ -47,7 +49,7 @@ models:
 
 | Runtime or component | Association mechanism                                                                                                                          | Supported scope and limitations                                                                                                                                                            |
 | :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Go                   | Tracks trace context across goroutines.                                                                                                        | Go `1.18+`. Supports up to 3 nested goroutine levels.                                                                                                                                      |
+| Go                   | Tracks trace context across goroutines.                                                                                                        | Go `1.18+`. Supports up to 6 nested goroutine levels.                                                                                                                                      |
 | Node.js              | Uses Node.js async hooks to refresh the active request context before async callbacks and to associate outgoing sockets with incoming sockets. | Node.js `8.0+`. Custom handling of `SIGUSR1` can interfere with OBI's Node.js support.                                                                                                     |
 | Java                 | Tracks hand-offs through common JDK task APIs, including `Executor`, `Runnable`, `Callable`, and `ForkJoinTask`.                               | JDK `8+`. Supports task parent lookup up to 3 hand-off levels. Custom queues or scheduler implementations that do not use these task APIs can fall back to the language-agnostic behavior. |
 | Java virtual threads | Tracks virtual-thread mount and unmount operations so request context is keyed to the virtual thread rather than only the carrier OS thread.   | JDK `21+`. Log enrichment is skipped for requests handled on virtual threads.                                                                                                              |
