@@ -1,7 +1,7 @@
 ---
 title: 'Managed Telemetry Platforms for Kubernetes Workloads'
 linkTitle: 'Managed Telemetry Platforms for K8s Workloads'
-date: '2026-05-28'
+date: '2026-06-24'
 author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
 sig: End-User
 # prettier-ignore
