@@ -10,9 +10,7 @@ cSpell:ignore: Jiekun NSDI Retroacting tailsampling vtagent youtube
 ---
 
 In March, our team gave a talk on **retroactive sampling** at KubeCon
-Europe 2026.
-
-{{< youtube ehKzt_kGEeM >}}
+Europe 2026 ([recording](https://www.youtube.com/watch?v=ehKzt_kGEeM)).
 
 By writing this blog post, as a transcript of the session, we want to explain
 how retroactive sampling **reduces outbound traffic, CPU, and memory usage** in
@@ -433,7 +431,7 @@ We also plan to add the same functionality to VictoriaTraces' own agent
 ## 6. Further Reading
 
 The idea of retroactive sampling originates from the NSDI 2023 paper
-[The Benefit of Hindsight: Tracing Edge-Cases in Distributed Systems](https://www.usenix.org/conference/nsdi23/presentation/zhang-lei),
+[The Benefit of Hindsight: Tracing Edge-Cases in Distributed Systems](https://www.youtube.com/watch?v=9a_w0Txy0gs),
 by Lei Zhang.
 
 While its implementation differs from VictoriaMetrics' prototype, the paper
