@@ -320,8 +320,8 @@ By implementing this guideline, organizations can expect to achieve:
 
 ### 2. Establish shared ownership for telemetry production {#guideline-2}
 
-**Challenges addressed**: [4](#challenge-4), [6](#challenge-5) |
-**Implementation actions**: [1](#action-1), [2](#action-2), [6](#action-5)
+**Challenges addressed**: [4](#challenge-4), [5](#challenge-5) |
+**Implementation actions**: [1](#action-1), [2](#action-2), [5](#action-5)
 
 To balance governance and autonomy, platform teams operating in the environments
 described in this blueprint should aim to “shift left” on instrumentation,
@@ -446,7 +446,7 @@ By implementing this guideline, organizations can expect to achieve:
 
 **Challenges addressed**: [2](#challenge-2), [3](#challenge-3),
 [4](#challenge-4) | **Implementation actions**: [1](#action-1), [3](#action-3),
-[6](#action-5)
+[5](#action-5)
 
 We recommend that telemetry in this type of Kubernetes environment is
 automatically ingested into a centralized layer deployed as an OpenTelemetry
@@ -861,7 +861,7 @@ and owners should ensure resiliency is configured from the start:
   [Appendix 2](#appendix-2) to implement gRPC load balancing, or consider
   OTLP/HTTP (the default for most SDKs).
 - **Scale on memory and internal telemetry:** Utilize the Kubernetes Horizontal
-  Pod Autoscaler (HPA) combined with custom metrics (see (Action 5](#action-5)).
+  Pod Autoscaler (HPA) combined with custom metrics (see [Action 5](#action-5)).
   Configure the cluster to scale Gateway replicas based on memory utilization,
   active connections, or pipeline queue depth.
 - **Configuration as code**: Store the Helm values or Operator CRs in a central
@@ -902,7 +902,7 @@ in Collector Gateways to execute the following processing steps (in order):
   requests. As documented in [Guideline 4](#guideline-4), this requires two
   layers of collectors, using the [load_balancing][26] exporter on the first
   layer to route traces to the second layer based on Trace ID. See more
-  information about load balancing exporting in our [documentation][14].
+  information about load balancing exporting in our [documentation][26].
 
 This is not an exhaustive list, and OpenTelemetry Collectors have many
 [processors][54] and [connectors][55] that allow organizations to extract more
@@ -928,7 +928,7 @@ application process (e.g., if the SDK's internal queue fills up), we recommend:
   language.
 - Languages lacking native SDK metric support for internal telemetry may still
   support internal diagnostics in different ways (e.g. .NET's `EventSource`,
-  Javas `java.util.logging`, or Node.js's `diag`). Users should refer to
+  Java's `java.util.logging`, or Node.js's `diag`). Users should refer to
   specific implementations to configure for their particular needs and
   verbosity.
 
