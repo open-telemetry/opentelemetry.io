@@ -4,6 +4,12 @@
   contact:
   oss: false
   commercial: true
+- name: AgentMark
+  nativeOTLP: true
+  url: https://docs.agentmark.co/observe/overview
+  contact: ryan@agentmark.co
+  oss: false
+  commercial: true
 - name: AppDynamics (Cisco)
   nativeOTLP: true
   url: https://docs.appdynamics.com/latest/en/application-monitoring/splunk-appdynamics-for-opentelemetry
