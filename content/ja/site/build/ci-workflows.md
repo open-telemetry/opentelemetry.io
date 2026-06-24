@@ -375,6 +375,6 @@ node scripts/gh/specs/pick-branch/cli.mjs --help
 | `component-owners.yml`     | コンポーネント所有権に基づくレビュアーの割り当て                                                  |
 
 <!-- prettier-ignore-start -->
-[lychee-pilot]: ../npm-scripts/#notes
+[lychee-pilot]: /site/build/npm-scripts/#notes
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
 <!-- prettier-ignore-end -->
