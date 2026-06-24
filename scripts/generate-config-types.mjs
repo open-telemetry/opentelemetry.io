@@ -88,6 +88,9 @@ for (const type of result.types) {
   }
 }
 
+result.schemaVersion = configRef;
+result.schemaSourceUrl = schemaGithubBase;
+
 // Read example snippets and group them by the schema type they illustrate.
 // Snippet files are named `<JsonSchemaType>_<snake_case_description>.yaml`.
 const snippetsByType = {};
