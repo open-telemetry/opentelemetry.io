@@ -28,6 +28,10 @@ lang:ja:
   - changed-files:
       - any-glob-to-any-file:
           - content/ja/**
+lang:ko:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/ko/**
 lang:pl:
   - changed-files:
       - any-glob-to-any-file:

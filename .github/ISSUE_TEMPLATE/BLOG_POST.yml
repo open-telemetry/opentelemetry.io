@@ -75,23 +75,27 @@ body:
     id: sponsoring_sig
     attributes:
       label: Sponsoring SIG
-      description:
-        Name of the SIG that will sponsor this blog post (if known). Having a
-        sponsor increases the chance of faster review and approval.
+      description: >-
+        Name of the SIG that will sponsor this blog post. **A sponsoring SIG is
+        required.** The author is responsible for finding a willing SIG. If you
+        need help identifying one, a maintainer can point you in the right
+        direction.
       placeholder: 'e.g., SIG Go'
     validations:
-      required: false
+      required: true
 
   - type: input
     id: sponsor_name
     attributes:
       label: Sponsor Name
-      description:
-        Name of a maintainer or approver from the sponsoring SIG who will help
-        review the PR (ideally from a different company).
+      description: >-
+        Name of a maintainer or approver from the sponsoring SIG who will do the
+        first round of review. The sponsor must complete their review before the
+        Comms SIG will review the post. The sponsor should ideally be from a
+        different company than the author.
       placeholder: 'e.g., @username'
     validations:
-      required: false
+      required: true
 
   - type: textarea
     id: additional_info

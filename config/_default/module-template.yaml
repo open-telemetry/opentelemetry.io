@@ -101,6 +101,23 @@ mounts:
     files: ['! specs/**']
     sites: *ja-matrix
 
+  ## ko
+  - source: content/ko
+    target: content
+    sites: &ko-matrix
+      matrix: { languages: [ko] }
+    # fallback pages
+  - source: content/en/_includes
+    target: content/_includes
+    sites: *ko-matrix
+  - source: content/en/announcements
+    target: content/announcements
+    sites: *ko-matrix
+  - source: content/en/docs
+    target: content/docs
+    files: ['! specs/**']
+    sites: *ko-matrix
+
   ## ro
   - source: content/ro
     target: content
