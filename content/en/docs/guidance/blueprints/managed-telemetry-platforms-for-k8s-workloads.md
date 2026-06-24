@@ -5,7 +5,7 @@ date: '2026-05-28'
 author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
 sig: End-User
 # prettier-ignore
-cSpell:ignore: actioned Autoscaler Karpenter kube OTTL overprovision rollouts SDLC Skyscanner statefulset
+cSpell:ignore: actioned Autoscaler kube OTTL overprovision rollouts SDLC Skyscanner statefulset
 ---
 
 ## Summary
@@ -552,7 +552,7 @@ By implementing this guideline, organizations can expect to achieve:
 - **Efficient use of compute resources:** Horizontally scaled, centralized
   Gateways utilize compute resources more efficiently than per-node DaemonSets
   or per-pod Sidecars in heterogeneous, multi-tenant environments. DaemonSets
-  normally have to be overprovisioned to handle variable node sizes (i.e. a
+  normally have to be over provisioned to handle variable node sizes (i.e. a
   single node may serve 4 or 40 application pods) and variable per-pod telemetry
   volume that fluctuates over time. Keeping per-node footprints small matters as
   teams often struggle to schedule workloads on smaller nodes. A central Gateway

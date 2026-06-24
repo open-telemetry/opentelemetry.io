@@ -7671,6 +7671,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:07:01.347958696Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md#production-deployment-guide": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-24T08:42:35.840301+01:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-06-05T14:05:04.379032634Z"
