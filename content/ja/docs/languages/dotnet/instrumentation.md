@@ -327,7 +327,7 @@ using System.Diagnostics;
 
 /// <summary>
 /// ActivitySource の参照を保持するにはカスタム型を使用することが推奨されます。
-/// これにより、DI コンテナー内の他のコンポーネントとの型の衝突を回避できます。
+/// これにより、DI コンテナ内の他のコンポーネントとの型の衝突を回避できます。
 /// </summary>
 public class Instrumentation : IDisposable
 {
@@ -353,7 +353,7 @@ public class Instrumentation : IDisposable
 ```csharp
 //...
 
-// Instrumentation クラスを DI コンテナーにシングルトンとして登録します。
+// Instrumentation クラスを DI コンテナにシングルトンとして登録します。
 builder.Services.AddSingleton<Instrumentation>();
 
 builder.Services.AddControllers();
