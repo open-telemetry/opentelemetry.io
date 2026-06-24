@@ -224,7 +224,14 @@ where they live.
 > (every exporter type, every sampler type, every processor type),
 > [generated](/docs/languages/sdk-configuration/declarative-configuration/)
 > from a YAML schema that is still evolving. A hand-written POJO tree to
-> mirror it would be a second source of truth, perpetually behind the first.
+> mirror it would be a second source of truth, perpetually behind the
+> first. The gold-plated answer is to *generate* the POJOs from the schema
+> (the SDK's DC schema plus the not-yet-existing schemas for the
+> `distribution.*` and `instrumentation/development.*` subtrees) — that
+> same generated description could also drive the JSON metadata Spring uses
+> for IDE completion. The Java instrumentation team tracks that as a future
+> improvement in
+> [opentelemetry-java-instrumentation#14083](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/14083).
 >
 > So the starter does something Spring rarely sees: it walks every
 > `PropertySource` directly and collects keys that begin with `otel.`. The
@@ -244,7 +251,13 @@ where they live.
 ## Stage three: two substituters, one syntax
 
 Our env var can also speak in placeholders. So can her sister. They both use
-`${...}`. They mean almost — but not quite — the same thing.
+`${...}`. They mean almost — but not quite — the same thing. Spring will
+happily resolve a chained fallback like
+`${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:${OTEL_EXPORTER_OTLP_ENDPOINT:http://localhost:4318}}/v1/traces`
+— chasing the outer placeholder into the inner so you can prefer a
+signal-specific override, fall back to a general one, and ultimately to a
+literal. The SDK's substituter is a single non-recursive regex pass; the
+same expression in `otel-config.yaml` would not parse.
 
 ```mermaid
 flowchart LR
