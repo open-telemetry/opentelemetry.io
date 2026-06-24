@@ -8,7 +8,7 @@ author: >-
   Software/Dartastic.io)
 issue: 9902
 sig: Governance Committee
-cSpell:ignore: Bushe Dartastic dartastic
+cSpell:ignore: Bushe dartastic
 ---
 
 ## Why OpenTelemetry for Dart and Flutter?
