@@ -2,8 +2,7 @@
 title: Usando bibliotecas de instrumentação
 linkTitle: Bibliotecas
 weight: 40
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
-drifted_from_default: true
+default_lang_commit: 2b99811a310f2749a5b6389f5e4d654a4f2e2f8e
 description: Como instrumentar bibliotecas das quais uma aplicação depende
 cSpell:ignore: metapackages metapacotes
 ---
@@ -20,6 +19,8 @@ Por exemplo,
 [a biblioteca de instrumentação para Express](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
 irá criar automaticamente [trechos](/docs/concepts/signals/traces/#spans)
 baseados nas requisições HTTP de entrada.
+
+{{% include esm-support-note.md %}}
 
 ### Configuração {#setup}
 

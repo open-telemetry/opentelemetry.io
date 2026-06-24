@@ -51,7 +51,7 @@ jobs:
           client-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with:
           fetch-depth: 0
           # Needed to trigger workflows when pushing new commits to an existing PR
@@ -143,7 +143,7 @@ jobs:
         run: |
           $HTMLTEST -v
           # Ignore link-check failures so we can still commit refcache updates
-          npm run fix:refcache || true
+          npm run full:build -- fix:refcache || true
           ./scripts/clean-refcache.sh
 
           REFCACHE_NUM_STATUS_4XX=$(grep '"StatusCode": 4' static/refcache.json | wc -l | xargs)

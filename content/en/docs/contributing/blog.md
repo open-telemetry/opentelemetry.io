@@ -21,20 +21,24 @@ lower priority for review.
 
 ## Social Media Content Request
 
-If you want to request the publication of content on the social media channels
-of the OpenTelemetry project, which aren't a blog post,
-[use this form](https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml).
+To request publication on OpenTelemetry's social media channels instead of the
+blog, [submit a social media request][].
+
+[submit a social media request]:
+  https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml
 
 ## Before submitting a blog post
 
 Blog posts should not be commercial in nature and should consist of original
 content that applies broadly to the OpenTelemetry community. Blog posts should
-follow the policies outlined in the
-[Social Media Guide](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
+follow the policies outlined in the [Social Media Guide][].
+
+[Social Media Guide]:
+  https://github.com/open-telemetry/community/blob/main/social-media-guide.md
 
 ### Linking to GitHub repositories
 
-Blog posts are checked by markdownlint (`gh-url-hash`) to prevent unstable
+Blog posts are [checked by markdownlint][] (`gh-url-hash`) to prevent unstable
 GitHub `blob`/`tree` links.
 
 If the check reports an issue:
@@ -69,17 +73,16 @@ with the following details:
   all of them are open source, and prefer CNCF projects over non-CNCF projects
   (e.g. use Jaeger for trace visualization, and Prometheus for metric
   visualization)
-- Name of a [SIG](https://github.com/open-telemetry/community/), which is
-  related to this blog post
-- Name of a sponsor (maintainer or approver) from this SIG, who will help to
-  review that PR. That sponsor should ideally be from a different company.
+- Name of a [SIG](https://github.com/open-telemetry/community/) willing to
+  sponsor your blog post. **A SIG sponsor is required.**
+- Name of a sponsor (maintainer or approver) from that SIG, who will do the
+  first round of review before the Comms SIG reviews the post. That sponsor
+  should ideally be from a different company than the author.
 
-Maintainers of SIG Communication will verify, that your blog post satisfies all
-the requirements for being accepted. If you cannot name a SIG/sponsor in your
-initial issue details, they will also point you to an appropriate SIG, you can
-reach out to for sponsorship. Having a sponsor is optional, but having one
-increases the chance of having your blog post reviewed and approved more
-quickly.
+Maintainers of SIG Communication will verify that your blog post satisfies all
+the requirements for being accepted. The SIG sponsor must complete their review
+before the Comms SIG will look at the post. The author of the blog post is
+responsible for finding a Sponsor.
 
 If your issue has everything needed, a maintainer will verify that you can go
 ahead and submit your blog post.
@@ -176,3 +179,15 @@ welcome to do so. Just keep the following in mind:
 
 This helps ensure proper attribution, supports SEO best practices, and avoids
 content duplication.
+
+## Old blogs are not updated
+
+Blog posts are considered historical and not updated after a year or so (except
+for essential changes that ensure that the site builds). Old blog posts have a
+banner at the top warning the reader that the content may be outdated and some
+links may be invalid.
+
+Also note that old posts are neither [linted nor link checked][pr-checks].
+
+[pr-checks]: ../pr-checks/#checks
+[checked by markdownlint]: ../pr-checks/#markdown-linter
