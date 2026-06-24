@@ -206,45 +206,30 @@ who barely makes it past the front desk:
 OTEL_TRACER_PROVIDER_PROCESSORS_0_BATCH_EXPORTER_OTLP_HTTP_ENDPOINT=http://collector:4318/v1/traces
 ```
 
-This one has a job to do: override one exporter's endpoint inside the YAML
-sister's tree. Asking Spring for the property by name would return her value
-just fine — Spring's relaxed binding has long understood that
-`OTEL_..._ENDPOINT` is another spelling of `otel....endpoint`, brackets and
-all.
+She makes it past — but only because sixteen lines, deep inside the
+starter, go hunting for her by name. The diamond in the diagram above is
+where they live.
 
-But the starter is doing something unusual. The OTel schema is too big and
-changes too often to bind to a configuration class, so the starter does not
-ask Spring for known properties — it *enumerates* every `PropertySource`
-looking for keys that begin with `otel.`. The walk sees the YAML source's
-names (`otel.tracer_provider.processors[0]...`) but misses the env-var
-source's names (`OTEL_TRACER_..._ENDPOINT`); Spring's rename only happens
-when you *resolve* a property, not when you *list* one. The cousin's value
-is right there behind the front desk; the starter is simply not looking in
-the place where Spring filed her.
-
-Sixteen lines of code in [`EmbeddedConfigFile`][embed-link] close that gap.
-For every yaml-style `otel.*` key that contains a `[N]` bracket, the starter
-reconstructs the env-var name from the property name and asks Spring
-directly. The cousin gets called. The seam is the diamond in the diagram
-above.
-
-[embed-link]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/EmbeddedConfigFile.java#L66-L82
-
-> [!NOTE] What Spring's binding does — and what it doesn't
+> [!NOTE] How the cousin gets through (and why it takes work)
 >
-> Setting `OTEL_SERVICE_NAME=petclinic` is the same as writing
-> `otel.service.name: petclinic` in `application.yaml` — Spring resolves
-> both spellings to the same property. The same rule extends to list
-> indices: `OTEL_RESOURCE_ATTRIBUTES_0_NAME` is another way of writing
-> `otel.resource.attributes[0].name`.
+> Asking Spring for the property by name would return her value just fine —
+> Spring's relaxed binding has long understood that `OTEL_..._ENDPOINT` is
+> another spelling of `otel....endpoint`, brackets and all.
 >
-> But the renaming only happens when you *resolve* a property by name. If
-> you *enumerate* property names from the environment-variable source, you
-> see the raw `OTEL_..._NAME` form. The yaml source enumerates names with
-> brackets. A program that walks both lists — instead of binding to a
-> known set of keys — sees two parallel naming conventions and has to
-> align them itself. That alignment is what the starter's 16-line patch
-> does.
+> But the starter is doing something unusual. The OTel schema is too big
+> and changes too often to bind to a configuration class, so the starter
+> does not ask Spring for known properties — it *enumerates* every
+> `PropertySource` and collects keys that begin with `otel.`. The walk
+> sees the YAML source's names with brackets
+> (`otel.tracer_provider.processors[0]...`), the env-var source's names
+> with underscores (`OTEL_TRACER_..._ENDPOINT`); Spring's rename only
+> happens when you *resolve* a property, not when you *list* one.
+>
+> Sixteen lines in
+> [`EmbeddedConfigFile`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/EmbeddedConfigFile.java#L66-L82)
+> close that gap. For every `otel.*` key that contains a `[N]` bracket,
+> the starter rebuilds the env-var name from the property name and asks
+> Spring directly. The cousin gets called.
 
 ## Stage three: two substituters, one syntax
 
