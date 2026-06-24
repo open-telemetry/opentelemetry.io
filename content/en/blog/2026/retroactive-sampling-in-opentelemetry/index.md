@@ -6,6 +6,7 @@ linkTitle: 'Retroactive Sampling in OpenTelemetry'
 date: 2026-06-24
 author: '[Zhu Jiekun](https://github.com/jiekun) (VictoriaMetrics)'
 sig: Collector SIG
+cSpell:ignore: Jiekun NSDI Retroacting tailsampling vtagent youtube
 ---
 
 In March, our team gave a talk on **retroactive sampling** at KubeCon
@@ -190,12 +191,12 @@ only 33 bytes long, while a full span can easily exceed 1 KB. As a result, the
 collector consumes far less memory buffering them compared with the traditional
 tail sampling approach which buffers the full span.
 
-```
- +---------------------------+-----------------+-----------------+-----------------+
- |         16 bytes          |     8 bytes     |     8 bytes     |     1 byte      |
- +---------------------------+-----------------+-----------------+-----------------+
- |         trace_id          |    start_time   |     end_time    |   status_code   |
- +---------------------------+-----------------+-----------------+-----------------+
+```text
++---------------------------+-----------------+-----------------+-----------------+
+|         16 bytes          |     8 bytes     |     8 bytes     |     1 byte      |
++---------------------------+-----------------+-----------------+-----------------+
+|         trace_id          |    start_time   |     end_time    |   status_code   |
++---------------------------+-----------------+-----------------+-----------------+
 ```
 
 The collector in retroactive sampling operates similarly to tail sampling before
@@ -310,7 +311,7 @@ and bandwidth. In the worst case, if users want to sample using all attributes
 of a span, retroactive sampling becomes a degraded version of tail sampling and
 loses much of its value.
 
-```
+```text
 +-------------+--------+------------------+---------------+---------------+----------------+
 |  16 bytes   |   ...  |     128 bytes    |    64 bytes   |    8 bytes    |    64 bytes    |
 +-------------+--------+------------------+---------------+---------------+----------------+
@@ -350,7 +351,7 @@ From a data structure perspective, attributes like the examples above (128-byte
 `exception_log`, 64-byte `user_agent`) can be effectively replaced by a single
 1-byte `sampled` flag.
 
-```
+```text
 +-------------+-------------------+-------------------------+-------------------------+
 |   1 byte    |     16 bytes      |        8 bytes          |        8 bytes          |
 +-------------+-------------------+-------------------------+-------------------------+
