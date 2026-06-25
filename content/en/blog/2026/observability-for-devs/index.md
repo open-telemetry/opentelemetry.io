@@ -12,11 +12,10 @@ sig: End User SIG
 cSpell:ignore: Devoxx Devs otlphttp Todea vibecoded
 ---
 
-It’s no secret that developers are increasingly being asked to shift left. It
-seems there’s always something new to shift left on. And now developers are
-being asked to shift left on observability. This means that in addition to all
-the other things developers must do, they must also take the extra step of
-instrumenting their application code with [OpenTelemetry,](/) to help make it
+It seems there’s always something new for developers to shift left on. And now
+they're being asked to shift left on observability. This means that in addition
+to all the other things developers must do, they must also take the extra step
+of instrumenting their application code with [OpenTelemetry,](/) to help make it
 observable.
 
 This seems needless. It’s extra work.
@@ -40,13 +39,13 @@ While that’s true, let’s look at how observability benefits developers.
 - **It reduces debug time**: Nobody loves spending hours and hours trying to
   chase down a nasty bug.
 - **It accelerates development and deployment**: Faster debugging means that
-  developers can finish working on a feature faster and ship it faster.
+  developers can finish working on a feature and ship it faster.
 - **It improves your code**: Instrumenting code can expose slow paths, hidden
-  retries, and weird edge cases which can be addressed *before*the code ever
+  retries, and weird edge cases which can be addressed _before_ the code ever
   hits production.
-- **It helps us understand distributed systems**: Micro services are
-  _everywhere_, and working with them means dealing with many moving parts, with
-  often unpredictable behavior. Observability helps developers understand
+- **It helps us understand distributed systems**: Microservices are
+  _everywhere_, and working with them means dealing with many moving parts,
+  often with unpredictable behavior. Observability helps developers understand
   exactly what’s going on within and between services.
 - **It helps us make sense of vibecoded applications**: Like it or not, AI is
   being used for software development, and the quality of the code it produces
@@ -141,8 +140,8 @@ Let’s start with some good practices for instrumenting application code.
 
    Zero-code instrumentation adds instrumentation to application code without
    requiring developers to touch their source code. It uses shims or bytecode
-   instrumentation agents to intercept code at runtime or compile-time to add
-   instrumentation to common third-party libraries and frameworks called by the
+   instrumentation agents to intercept code at runtime or compile-time to
+   instrument common third-party libraries and frameworks called by the
    application code. At the time of this writing, zero-code instrumentation is
    available for [Java](/docs/zero-code/java/), [.NET](/docs/zero-code/dotnet/),
    [Python](/docs/zero-code/python/), [JavaScript](/docs/zero-code/js/),
@@ -151,13 +150,12 @@ Let’s start with some good practices for instrumenting application code.
    While zero-code instrumentation isn’t perfect and still requires
    [code-based (manual) instrumentation](/docs/concepts/instrumentation/code-based/)
    to fill in the gaps, it’s a great way to get things started, especially when
-   you don’t know _where or how_ to start.
+   you don’t know _where_ or _how_ to start.
 
 2. Supplement with manual instrumentation to fill in the gaps
 
-   Zero-code instrumentation is a great starting point if it’s available for
-   your language. However, it’s not enough. Zero-code instrumentation doesn’t
-   include what’s important for _your_ application. This is where
+   Zero-code instrumentation is not enough, because it doesn’t include what’s
+   important for _your_ application. This is where
    [code-based (manual) instrumentation](/docs/concepts/instrumentation/code-based/)
    helps fill in the gaps. Code-based instrumentation requires that the
    developer add traces, metrics, logs, context propagation, attributes, and so
@@ -168,10 +166,8 @@ Let’s start with some good practices for instrumenting application code.
    Observability-driven development (ODD) is the practice of instrumenting as
    you write new application code.
 
-   By instrumenting your code while it’s still top of mind, it’s easier to
-   identify what actually needs to be instrumented. As a developer, this is key,
-   because going back to your code to instrument a day or a week later, things
-   might not be as fresh in your mind.
+   This is key for developers: Instrumenting your code while it’s fresh makes it
+   easier to identify what actually needs to be instrumented.
 
 4. Don’t be afraid to use AI to help with instrumentation!
 
@@ -199,9 +195,9 @@ meaningful units of work. These can include:
 ### Capture significant events in logs
 
 While traces tell the overall story of what is happening within and across
-services, logs help us understand specific things that happened at a specific
-point in time, providing additional context to help developers understand what
-is happening in their application.
+services, logs help us understand what happened at a specific point in time,
+providing additional context to help developers understand what is happening in
+their application.
 
 Keeping that in mind, developers should add logs to explain _why_ something
 happened. This includes capturing:
@@ -214,13 +210,13 @@ happened. This includes capturing:
 
 ### Capture latency metrics
 
-Writing performant code is important for developers. In an age where end users
-expect responsive applications and are happy to abandon non-performant
-applications and web sites in the blink of an eye, this is especially important.
-If you’re writing a shopping cart feature, for example, you want the response
-time for each step in the “add to shopping cart and checkout” experience to take
-milliseconds, not seconds. This is why capturing latency metrics is important,
-as it can help pinpoint why a particular request is taking longer than usual.
+Writing performant code is especially important for developers in an age where
+end users abandon non-performant applications and web sites in the blink of an
+eye. If you’re writing a shopping cart feature, for example, you want the
+response time for each step in the “add to shopping cart and checkout”
+experience to take milliseconds, not seconds. This is why capturing latency
+metrics is important, as it can help pinpoint why a particular request is taking
+longer than usual.
 
 ### Instrument home-grown frameworks and libraries
 
@@ -235,7 +231,7 @@ huge community of practice at your disposal. This takes on the form of
 [OpenTelemetry YouTube channel](https://youtube.com/@otel-official), vendor blog
 posts, personal blog posts, and [newsletters](https://o11y.news). There is also
 a vibrant and thriving [OpenTelemetry community](/community/) on
-[CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf)…and the folks
+[CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf)… and the folks
 are friendly and willing to help!
 
 ## AI-assisted instrumentation
@@ -259,8 +255,8 @@ examples of what she tried in her
 
 As you can see from our two different perspectives, having AI to help you
 instrument your code is a game-changer, and can certainly help make the whole
-instrumentation journey a lot less stressful, whether you’re practicing ODD or
-and/or if you’re instrumenting legacy code. That is…if it’s done properly.
+instrumentation journey a lot less stressful, whether you’re practicing ODD
+and/or if you’re instrumenting legacy code. That is… if it’s done properly.
 
 Here are some of the things that developers can keep in mind when using AI
 coding assistants to help instrument application code with OpenTelemetry.
