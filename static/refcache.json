@@ -22156,8 +22156,8 @@
     "LastSeen": "2026-06-25T10:36:01.913629318Z"
   },
   "https://www.britannica.com/dictionary/pipeline": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-25T10:34:18.924998064Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-25T11:05:27.81Z"
   },
   "https://www.buoyant.io/mtls-guide": {
     "StatusCode": 200,
@@ -22956,8 +22956,8 @@
     "LastSeen": "2026-06-17T11:31:14.728Z"
   },
   "https://www.linkedin.com/in/richardchukwu1/": {
-    "StatusCode": 999,
-    "LastSeen": "2026-06-25T10:36:41.852312672Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-25T11:05:32.749Z"
   },
   "https://www.linkedin.com/posts/killenko_opentelemetry-observability-fintech-activity-7416735796872785920-XHER": {
     "StatusCode": 200,
@@ -23108,8 +23108,8 @@
     "LastSeen": "2026-06-23T10:55:42.453Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-trace-node": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-25T10:31:46.601818635Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-25T11:05:37.059Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/shim-opentracing": {
     "StatusCode": 200,
