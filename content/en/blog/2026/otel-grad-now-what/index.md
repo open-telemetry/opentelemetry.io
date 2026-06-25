@@ -80,7 +80,7 @@ graduation helps to cement that.
 ## Graduation!
 
 OpenTelemetry achieved graduated status in May 2026, having started its path to
-graduation in 2024.
+graduation in 2025.
 
 So what does it take to become a graduated CNCF project? Projects must fulfill
 the following criteria:
