@@ -3,7 +3,6 @@ title: Export to Jaeger
 linkTitle: Export to Jaeger
 description: Learn how to export traces to Jaeger with OpenTelemetry Rust
 weight: 20
-# prettier-ignore
 cSpell:ignore: Gantt OnceLock SdkTracerProvider SpanExporter tokio tonic
 ---
 
