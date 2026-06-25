@@ -31,6 +31,8 @@ function readI18n(container) {
     copy: d.i18nCopy,
     copied: d.i18nCopied,
     source: d.i18nSource,
+    viewSchema: d.i18nViewSchema,
+    schemaVersion: d.i18nSchemaVersion,
   };
 }
 
@@ -51,7 +53,7 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;');
 }
 
-function renderControls(types, i18n) {
+function renderControls(types, i18n, schemaVersion, schemaSourceUrl) {
   const stableCount = types.filter((t) => !t.isExperimental).length;
   const expCount = types.filter((t) => t.isExperimental).length;
   const total = types.length;
@@ -59,9 +61,13 @@ function renderControls(types, i18n) {
   const rootLinkHtml = rootType
     ? `<p>The root schema type is <a href="#ct-item-${escapeAttr(rootType.id)}" data-ct-type-link="${escapeAttr(rootType.id)}">${escapeHtml(rootType.name)}</a>.</p>`
     : '';
+  const versionHtml =
+    schemaVersion && schemaSourceUrl
+      ? `<p>${escapeHtml(i18n.schemaVersion)}: <a href="${escapeAttr(schemaSourceUrl)}" target="_blank" rel="noopener">${escapeHtml(schemaVersion)}</a></p>`
+      : '';
 
   return `
-${rootLinkHtml}<div class="config-types-controls mb-3">
+${rootLinkHtml}${versionHtml}<div class="config-types-controls mb-3">
   <div class="row g-2 align-items-center">
     <div class="col-md-5">
       <input type="search"
@@ -240,6 +246,23 @@ function renderUsages(type) {
 </div>`;
 }
 
+function renderRawSchema(type, i18n) {
+  if (!type.rawDef) return '';
+  const json = JSON.stringify(type.rawDef, null, 2);
+  const sourceLink = type.sourceUrl
+    ? `<a class="ct-snippet-source" href="${escapeAttr(type.sourceUrl)}"
+          target="_blank" rel="noopener">${escapeHtml(i18n.source)}</a>`
+    : '';
+  return `
+<details class="ct-schema-details mt-3">
+  <summary class="ct-schema-summary">${escapeHtml(i18n.viewSchema)}</summary>
+  <div class="ct-snippet mt-1">
+    ${sourceLink ? `<div class="ct-snippet-toolbar">${sourceLink}</div>` : ''}
+    <pre class="ct-snippet-pre"><code>${escapeHtml(json)}</code></pre>
+  </div>
+</details>`;
+}
+
 function renderTypeItem(type, i18n, knownTypeIds) {
   const propCount = type.hasNoProperties ? 0 : (type.properties?.length ?? 0);
   const countText = propCount === 1 ? '1 property' : `${propCount} properties`;
@@ -269,6 +292,7 @@ function renderTypeItem(type, i18n, knownTypeIds) {
       ${renderSnippets(type, i18n)}
       ${constraintsHtml}
       ${renderUsages(type)}
+      ${renderRawSchema(type, i18n)}
     </div>
   </div>
 </div>`;
@@ -458,11 +482,12 @@ async function init() {
     const res = await fetch(schemaUrl);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    const types = data.types;
+    const { types, schemaVersion, schemaSourceUrl } = data;
     const knownTypeIds = new Set(types.map((t) => t.id));
 
     container.innerHTML =
-      renderControls(types, i18n) + renderAccordion(types, i18n, knownTypeIds);
+      renderControls(types, i18n, schemaVersion, schemaSourceUrl) +
+      renderAccordion(types, i18n, knownTypeIds);
     injectDescriptions(container, types);
     const resetControls = wireControls(container, types, i18n);
     wireTypeLinks(container, resetControls);
