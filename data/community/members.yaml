@@ -118,6 +118,15 @@ maintainers:
       - proto-triagers
     html_url: https://github.com/aalexand
     avatar_url: https://avatars.githubusercontent.com/u/1519040?v=4
+  - name: adrielp
+    teams:
+      - semconv-cicd-approvers
+      - shared-workflows-approvers
+      - shared-workflows-maintainers
+      - sig-project-infra-approvers
+      - sig-security-approvers
+    html_url: https://github.com/adrielp
+    avatar_url: https://avatars.githubusercontent.com/u/25961386?v=4
   - name: alanwest
     teams:
       - dotnet-approvers
@@ -1111,6 +1120,8 @@ maintainers:
       - javascript-triagers
       - semconv-db-approvers
       - semconv-js-approvers
+      - shared-workflows-approvers
+      - shared-workflows-maintainers
       - sig-contributor-experience-approvers
       - sig-contributor-experience-maintainers
       - sig-contributor-experience-triagers
@@ -1204,6 +1215,8 @@ maintainers:
       - ecosystem-explorer-maintainers
       - semconv-k8s-approvers
       - semconv-system-approvers
+      - shared-workflows-approvers
+      - shared-workflows-maintainers
       - sig-contributor-experience-approvers
       - sig-contributor-experience-maintainers
       - sig-contributor-experience-triagers
@@ -1506,6 +1519,8 @@ maintainers:
       - semconv-jvm-approvers
       - semconv-log-approvers
       - semconv-rpc-approvers
+      - shared-workflows-approvers
+      - shared-workflows-maintainers
       - sig-project-infra-approvers
       - sig-project-infra-maintainers
       - sig-security-approvers
@@ -1657,13 +1672,6 @@ maintainers:
     html_url: https://github.com/zacharycmontoya
     avatar_url: https://avatars.githubusercontent.com/u/13769665?v=4
 approvers:
-  - name: adrielp
-    teams:
-      - semconv-cicd-approvers
-      - sig-project-infra-approvers
-      - sig-security-approvers
-    html_url: https://github.com/adrielp
-    avatar_url: https://avatars.githubusercontent.com/u/25961386?v=4
   - name: agagniere
     teams:
       - zig-approvers
