@@ -87,10 +87,10 @@ From [`content/en/docs/contributing/blog.md`][contrib-blog]:
 
 - Non-commercial, broadly relevant; no vendor product pitches.
 - Prefer CNCF projects in examples (Jaeger for traces, Prometheus for metrics).
-- A pre-submission issue is **mandatory** — PRs without an accepted issue can
-  be closed without review. A SIG sponsor is **required**, and the sponsor
-  **must** be from a different company than the author. The SIG sponsor must
-  complete their review before the Comms SIG reviews the post.
+- A pre-submission issue is **mandatory** — PRs without an accepted issue can be
+  closed without review. A SIG sponsor is **required**, and the sponsor **must**
+  be from a different company than the author. The SIG sponsor must complete
+  their review before the Comms SIG reviews the post.
 - "Call for Contributors" posts follow the project-management process in
   `open-telemetry/community`.
 
