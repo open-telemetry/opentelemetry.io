@@ -6,14 +6,14 @@ author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger) (Grafana Labs)
 sig: Instrumentation
 # prettier-ignore
-cSpell:ignore: Customizer Dockerfiles Dotel petclinic relaxed substituters zeitlinger
+cSpell:ignore: Customizer Dotel petclinic relaxed substituters zeitlinger
 ---
 
 The OpenTelemetry Spring Boot starter 2.26.0 gained declarative-configuration
 support — the same YAML schema
 [the Java agent introduced in late 2025](/blog/2025/declarative-config/), now
-embedded inside `application.yaml`. This post is the story of how that landed,
-told through the eyes of one small environment variable.
+embedded inside `application.yaml`. This post traces what one env var,
+`OTEL_SERVICE_NAME=petclinic`, does in that new world, and where the seams are.
 
 _In a hurry? Jump straight to the
 [Spring Boot starter declarative-config docs](/docs/zero-code/java/spring-boot-starter/declarative-configuration/),
@@ -24,46 +24,26 @@ Boot starter target selected. Come back for the story when you have a coffee._
 
 ---
 
-Meet a small environment variable.
+For years, environment variables (and their JVM `-D` cousins) were the only way
+to configure the OpenTelemetry SDK: every exporter, every sampler, every
+captured header, expressed as a flat list of `OTEL_*` variables.
 
-```bash
-OTEL_SERVICE_NAME=petclinic
-```
-
-You have set her hundreds of times. In CI files. In Dockerfiles. In your
-terminal, with a `&&` and a shrug. She is so familiar that you have never
-thought twice about where she actually goes.
-
-She is older than you think.
-
-For years, environment variables (and their close cousin, the JVM `-D` system
-property) were the only way to configure the OpenTelemetry SDK. Every exporter,
-every sampler, every captured header — all expressed as a flat list of `OTEL_*`
-variables. Our small env var did the whole job, alone.
-
-Recently, she got a sister.
-
-The OpenTelemetry SDK
+Since OpenTelemetry Spring Boot starter **2.26.0**, that list has a sibling. The
+SDK
 [declarative-configuration schema](/docs/languages/sdk-configuration/declarative-configuration/)
 is a YAML tree that can describe an entire telemetry pipeline (every processor,
 every exporter, every nested option) in the same shape the SDK actually runs.
-Things the env var could not say. Spring starter users wrote a `@Bean` for them.
-Java agent users had to write a full extension and package it in a separate jar
-to ship alongside the agent — almost prohibitive.
+Things the env var could not say. Spring starter users used to write a `@Bean`
+for them; Java agent users had to ship a full extension in a separate jar —
+almost prohibitive.
 
-The two of them share a roof now. Since OpenTelemetry Spring Boot starter
-**2.26.0**, the YAML sister moves into your `application.yaml`, under a single
-`otel:` key. Our env var still has a place, but a narrower one.
-`OTEL_SERVICE_NAME` survives because a service-name resource detector goes
-hunting for her at boot. The new family rule is that most env vars don't flow
-into the SDK automatically anymore; if you want one to override a YAML leaf, you
-invite her in by name with `${VAR:default}`.
-
-This is the story of how they get along.
+The schema moves into your `application.yaml`, under a single `otel:` key. Env
+vars still work, but in a narrower role: `OTEL_SERVICE_NAME` lands as a resource
+attribute because a service-name detector reads it at boot, and any
+`${VAR:default}` placeholder you write into the YAML pulls one in by name.
+Otherwise, the YAML is the source of truth.
 
 ## A YAML file inside your YAML file
-
-Here is what living together looks like:
 
 ```yaml
 otel:
@@ -82,22 +62,22 @@ otel:
               endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:http://localhost:4318/v1/traces}
 ```
 
-That block under `otel:` is the OpenTelemetry SDK speaking its own native YAML
-(list of processors, each holding an exporter, each holding configuration)
-inside Spring's `application.yaml`. The presence of `otel.file_format` is the
-switch. Everything beneath it is parsed against the SDK schema. Spring does not
-need to know what any of it means.
+The block under `otel:` is the OpenTelemetry SDK schema (list of processors,
+each holding an exporter, each holding configuration) inside Spring's
+`application.yaml`. The presence of `otel.file_format` is the switch. Everything
+beneath it is parsed against the SDK schema. Spring does not need to know what
+any of it means.
 
-## The wall the env var alone could not climb
+## The wall env vars alone could not climb
 
-Env vars do cover a fixed list of built-in choices: a
+Env vars cover a fixed list of built-in choices: a
 [fixed set of samplers](/docs/languages/sdk-configuration/general/#otel_traces_sampler)
 via `OTEL_TRACES_SAMPLER`, the standard OTLP exporters via
 `OTEL_EXPORTER_OTLP_*`, the usual signal-toggle flags. Anything outside that
 catalog (a custom rule-based sampler, a second OTLP exporter on a debug
 pipeline, a baggage processor, any nested option the SDK exposes) meant writing
 a `@Bean` (Spring starter) or shipping a separate extension jar (Java agent).
-The bigger sister is what unlocks the rest of the tree.
+Declarative config unlocks the rest of the tree.
 
 The docs page for the starter has a small example most teams need on day one:
 [exclude actuator endpoints from tracing](/docs/zero-code/java/spring-boot-starter/programmatic-configuration/#exclude-actuator-endpoints-from-tracing).
@@ -136,9 +116,8 @@ otel:
                 pattern: /actuator.*
 ```
 
-It's the same Java code under the hood: both the agent and the starter already
-bundle the `opentelemetry-samplers` contrib jar. What changes is who writes the
-wiring. With declarative config, you do not.
+Both versions run the same Java code — the agent and the starter already bundle
+the `opentelemetry-samplers` contrib jar. What changes is who writes the wiring.
 
 > [!NOTE] An alternative: the composable rule-based sampler
 >
@@ -154,22 +133,17 @@ wiring. With declarative config, you do not.
 > [example](https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0/snippets/Sampler_rule_based_kitchen_sink.yaml#L10-L53)
 > in the SDK config repository.
 
-So how does our small env var fit into a world where the SDK is configured by a
-tree?
-
-She travels.
+The rest of this post follows `OTEL_SERVICE_NAME` through three stages on its
+way into the SDK.
 
 ## Stage one: arriving at Spring's property stack
 
-When the application starts, our env var arrives at the front desk of a building
-she has known her entire life: the Spring property loader. She is not alone.
-Behind her is the JVM `-D`, in front of her is `application.yaml`, beside her is
-the active profile's overlay and the `--key=value` from the command line. Spring
-stacks them all into a single addressable property universe.
-
-She is one of many. `OTEL_SERVICE_NAME` rides the same Spring property bus as
-`SERVER_PORT` and `SPRING_PROFILES_ACTIVE`. Spring does not know which of these
-belong to OpenTelemetry; that is the starter's job, at the end of the line.
+Spring's property loader stacks every source the app sees — `application.yaml`,
+every active profile's overlay, the JVM `-D` flags, the `--key=value`
+command-line args, environment variables — into a single addressable property
+universe. `OTEL_SERVICE_NAME` lives in that stack alongside `SERVER_PORT` and
+`SPRING_PROFILES_ACTIVE`. Spring does not know which of these belong to
+OpenTelemetry; that is the starter's job, at the end of the line.
 
 > [!NOTE] How Spring quietly aligns env vars with YAML keys
 >
@@ -203,26 +177,25 @@ flowchart LR
   RE --> OUT
 ```
 
-_The starter walks every property Spring exposes, picks out the `otel._` keys,
+_The starter walks every property Spring exposes, picks out the `otel.*` keys,
 and hands the assembled map to Jackson — once, for the whole tree, not per
 element. The diamond is the seam this post is about: an extra step for keys that
-sit under a list index, which the next stage explains.\*
+sit under a list index, which the next stage explains._
 
-## Stage two: a cousin Spring almost lost
+## Stage two: the env var Spring almost lost
 
-Our protagonist is humble. But she has a gnarly cousin, the kind of relative who
-barely makes it past the front desk:
+Most `otel.*` env vars travel light. This one does not:
 
 ```bash
 OTEL_TRACER_PROVIDER_PROCESSORS_0_BATCH_EXPORTER_OTLP_HTTP_ENDPOINT=http://collector:4318/v1/traces
 ```
 
-She makes it past, but only because sixteen lines, deep inside the starter, go
-hunting for her by name. The diamond in the diagram above is where they live.
+It gets through, but only because sixteen lines deep inside the starter go
+hunting for it by name. The diamond in the diagram above is where they live.
 
-> [!NOTE] How the cousin gets through (and why it takes work)
+> [!NOTE] Why the starter walks every property source
 >
-> Asking Spring for the property by name would return her value just fine.
+> Asking Spring for the property by name would return this value just fine.
 > Spring's relaxed binding has long understood that `OTEL_..._ENDPOINT` is
 > another spelling of `otel....endpoint`, brackets and all.
 >
@@ -255,13 +228,13 @@ hunting for her by name. The diamond in the diagram above is where they live.
 > [`EmbeddedConfigFile`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v2.29.0/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/EmbeddedConfigFile.java#L66-L82)
 > close the gap between the two naming conventions. For every `otel.*` key that
 > contains a `[N]` bracket, the starter rebuilds the env-var name from the
-> property name and asks Spring directly. The cousin gets called.
+> property name and asks Spring directly.
 
 ## Stage three: two substituters, one syntax
 
-Our env var can also speak in placeholders. So can her sister. They both use
-`${...}`. They mean almost, but not quite, the same thing. Spring will happily
-resolve a chained fallback like
+Both `application.yaml` and the SDK's standalone YAML use `${...}` placeholders.
+They mean almost, but not quite, the same thing. Spring will happily resolve a
+chained fallback like
 `${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:${OTEL_EXPORTER_OTLP_ENDPOINT:http://localhost:4318}}/v1/traces`,
 chasing the outer placeholder into the inner so you can prefer a signal-specific
 override, fall back to a general one, and ultimately to a literal. The SDK's
@@ -293,11 +266,6 @@ flowchart LR
 > vars and JVM system properties only. In the starter, the SDK substituter never
 > runs; Spring has already finished by the time the starter reads the value.
 
-The dialects are close enough that mixing them up is easy. The reason the
-starter uses Spring's syntax is that Spring's resolver runs first, and by the
-time the starter retrieves a property the placeholder is already gone. The SDK
-never gets a chance to find one.
-
 That is also why all the Spring-native config tricks (profiles, command-line
 `--key=value`, `@Value`-style externalization, even external config servers)
 work transparently for OTel config. The starter never implemented any of them.
@@ -325,14 +293,12 @@ wired into the YAML as a `${VAR}` placeholder ahead of time, or it does nothing.
 
 ## Arrival: the resolved tree the SDK actually boots from
 
-By the time our env var crosses the last boundary, she has been resolved,
-relaxed, normalized, and joined with every other `otel.*` key into a single flat
-map. The starter un-flattens that map back into the tree the SDK expects, hands
-it to Jackson, and Jackson produces the `OpenTelemetryConfigurationModel` the
-SDK boots from.
-
-The env var and the YAML sister converge at the same door. Whoever wrote which
-value, the SDK only ever sees the resolved result.
+By the time the SDK boots, every `otel.*` value has been resolved, relaxed,
+normalized, and joined with every other into a single flat map. The starter
+un-flattens that map back into the tree the SDK expects, hands it to Jackson,
+and Jackson produces the `OpenTelemetryConfigurationModel` the SDK boots from.
+Whatever wrote which value — yaml, env var, profile overlay, command-line arg —
+the SDK only ever sees the resolved result.
 
 ```mermaid
 flowchart TD
@@ -357,10 +323,7 @@ every language. It is not finished. The Spring Boot starter's support for it is
 marked experimental, exactly because it has not seen enough real applications
 yet to know which corners to tighten.
 
-That is not a warning. It is an invitation.
-
-Env-var configuration has been around long enough that all its rough edges have
-names. The YAML schema is younger, and pre-stable. Now, before it freezes, is
+That is not a warning. It is an invitation. Now, before the schema freezes, is
 the highest-leverage moment to put declarative config into a real
 `application.yaml` and see what breaks. Your friction is what shapes the schema
 that lands.
@@ -394,17 +357,9 @@ Two starting points, both already there:
   [agent extension API docs](/docs/zero-code/java/agent/declarative-configuration/#extension-api)
   apply to the starter unchanged.
 
-## Two sisters under one roof
-
-The env var did the job alone for a long time. Her sister fills in what she
-could never quite say. They share a building, share a stack, share a door into
-the SDK. Spring is the building they both live in. OpenTelemetry is the work
-they both do.
-
 If you migrate a real application onto this and hit something off, please file
 an issue:
 [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues)
 for code,
 [opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io/issues)
-for docs. That is how the docs got fixed last time, and how they will keep
-getting better.
+for docs.
