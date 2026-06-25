@@ -4,13 +4,13 @@ linkTitle: Spring Boot declarative config
 date: 2026-06-23
 author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger) (Grafana Labs)
-sig: Instrumentation
+sig: Java
 # prettier-ignore
 cSpell:ignore: Customizer Dotel petclinic relaxed substituters zeitlinger
 ---
 
-The OpenTelemetry Spring Boot starter 2.26.0 gained declarative-configuration
-support — the same YAML schema
+The OpenTelemetry Spring Boot starter gained declarative-configuration support
+starting in version 2.26.0 — the same YAML schema
 [the Java agent introduced in late 2025](/blog/2025/declarative-config/), now
 embedded inside `application.yaml`. This post traces what one env var,
 `OTEL_SERVICE_NAME=petclinic`, does in that new world, and where the seams are.
@@ -28,14 +28,14 @@ For years, environment variables (and their JVM `-D` cousins) were the only way
 to configure the OpenTelemetry SDK: every exporter, every sampler, every
 captured header, expressed as a flat list of `OTEL_*` variables.
 
-Since OpenTelemetry Spring Boot starter **2.26.0**, that list has a sibling. The
-SDK
+Since starter 2.26.0, that list has a sibling. The SDK
 [declarative-configuration schema](/docs/languages/sdk-configuration/declarative-configuration/)
 is a YAML tree that can describe an entire telemetry pipeline (every processor,
 every exporter, every nested option) in the same shape the SDK actually runs.
-Things the env var could not say. Spring starter users used to write a `@Bean`
-for them; Java agent users had to ship a full extension in a separate jar —
-almost prohibitive.
+
+For things the env var could not say, Spring starter users needed to write a
+`@Bean`. Java agent users had to write a full extension and package it in a
+separate jar to ship alongside the agent — which can be prohibitive.
 
 The schema moves into your `application.yaml`, under a single `otel:` key. Env
 vars still work, but in a narrower role: `OTEL_SERVICE_NAME` lands as a resource
