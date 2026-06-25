@@ -11,6 +11,24 @@
  */
 
 /**
+ * Extract the referenced type name from a property definition.
+ * Returns the type name for direct $ref or array items $ref, otherwise null.
+ * @param {Object} propDef - Property definition from JSON Schema
+ * @returns {string|null} Referenced type name, or null if not a $ref
+ */
+export function extractTypeRef(propDef) {
+  if (propDef.$ref) {
+    const parts = propDef.$ref.split('/');
+    return parts[parts.length - 1];
+  }
+  if (propDef.items?.$ref) {
+    const parts = propDef.items.$ref.split('/');
+    return parts[parts.length - 1];
+  }
+  return null;
+}
+
+/**
  * Resolve type information from a property definition
  * Handles arrays, single values, and $ref pointers
  * @param {Object} propDef - Property definition from JSON Schema
@@ -249,6 +267,7 @@ export function processProperty(propName, propDef) {
   return {
     name: propName,
     type: resolveType(propDef),
+    typeRef: extractTypeRef(propDef),
     default: propDef.default,
     constraints: buildConstraints(propDef),
     description: cleanDescription(propDef.description),
@@ -333,6 +352,15 @@ export function extractTypes(schema) {
     types.push(processType(typeName, typeDef));
   }
 
+  // Include the root schema object as a named type when it has a title and
+  // its own properties (e.g. OpenTelemetryConfiguration). Without this, types
+  // referenced only from root-level properties would appear to have no usages.
+  if (schema.title && schema.properties) {
+    const rootType = processType(schema.title, schema);
+    rootType.isRoot = true;
+    types.push(rootType);
+  }
+
   types.sort((a, b) => a.name.localeCompare(b.name));
 
   return types;
@@ -346,6 +374,25 @@ export function extractTypes(schema) {
  */
 export function transformSchema(rawSchema) {
   const types = extractTypes(rawSchema);
+
+  const typesByName = new Map(types.map((t) => [t.name, t]));
+  for (const type of types) {
+    type.usages = [];
+  }
+  for (const type of types) {
+    for (const prop of type.properties) {
+      if (prop.typeRef) {
+        const target = typesByName.get(prop.typeRef);
+        if (target) {
+          target.usages.push({
+            typeName: type.name,
+            typeId: type.id,
+            propertyName: prop.name,
+          });
+        }
+      }
+    }
+  }
 
   return { types };
 }
