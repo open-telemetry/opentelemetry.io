@@ -150,8 +150,8 @@ wiring. With declarative config, you do not.
 > nested composition. The example above stays with `rule_based_routing`
 > because OTel Java has long recommended that sampler for this problem, and
 > the `composite/development` path still carries the `*/development` suffix
-> until the composable schema stabilizes. See a worked
-> [kitchen-sink example](https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0/snippets/Sampler_rule_based_kitchen_sink.yaml#L10-L53)
+> until the composable schema stabilizes. See a working
+> [example](https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0/snippets/Sampler_rule_based_kitchen_sink.yaml#L10-L53)
 > in the SDK config repo.
 
 So how does our small env var fit into a world where the SDK is configured by a
