@@ -75,7 +75,8 @@ Judgment calls beyond the hook:
 - **`body_class: otel-with-contributions-from`** — set when secondary
   contributors are credited in the intro paragraph (see
   [Authoring rules](#authoring-rules)).
-- **`issue`** — optional; only ~15% of recent posts set this.
+- **`issue`** — references the pre-submission issue. A pre-submission issue is
+  mandatory; PRs without one can be closed without review.
 - **`sig`** — sponsoring SIG (e.g. `Developer Experience SIG`). **Required.**
   The PR should carry a matching `sig:<name>` label.
 - **`cSpell:ignore`** — see [Spelling](#spelling).
@@ -86,9 +87,10 @@ From [`content/en/docs/contributing/blog.md`][contrib-blog]:
 
 - Non-commercial, broadly relevant; no vendor product pitches.
 - Prefer CNCF projects in examples (Jaeger for traces, Prometheus for metrics).
-- A pre-submission issue is required; a SIG sponsor is **required** (ideally
-  from a different company than the author). The SIG sponsor must complete their
-  review before the Comms SIG reviews the post.
+- A pre-submission issue is **mandatory** — PRs without an accepted issue can
+  be closed without review. A SIG sponsor is **required**, and the sponsor
+  **must** be from a different company than the author. The SIG sponsor must
+  complete their review before the Comms SIG reviews the post.
 - "Call for Contributors" posts follow the project-management process in
   `open-telemetry/community`.
 
@@ -170,8 +172,10 @@ below are what humans most often miss after the hook + linters pass:
 3. Multi-author intro credits + `body_class: otel-with-contributions-from` set
    if needed.
 4. `gh-url-hash`: no `main`/`master` or short SHAs; tags or full SHAs only.
-5. Submission prerequisites: non-commercial, CNCF tools preferred, SIG sponsor
-   identified and has completed their review before Comms SIG review.
+5. Submission prerequisites: pre-submission issue linked (mandatory — flag PRs
+   without one for closure), non-commercial, CNCF tools preferred, SIG sponsor
+   identified and from a different company than the author, sponsor has
+   completed their review before Comms SIG review.
 6. OTel terminology consistent throughout.
 7. `date` and `draft` set so the publish workflow gates the merge as intended.
 
