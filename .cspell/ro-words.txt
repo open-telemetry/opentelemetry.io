@@ -7,6 +7,7 @@ calificatori
 colectezi
 colectorului
 comunitǎții
+configurezi
 consultǎ
 contribuitoare
 contribuitori
@@ -14,11 +15,13 @@ contribuitorii
 corecteazǎ
 creeazǎ
 depanezi
+descriptorilor
 deții
 dezvoltatori
 dezvoltatorii
 discutǎ
 enumerează
+explorezi
 exportatorilor
 forțezi
 gestionezi
@@ -33,6 +36,7 @@ intervalurilor
 întreab
 întreab-o
 întreținătorii
+mărești
 microservicii
 migrare
 migrezi
@@ -47,9 +51,16 @@ postând
 prepopulată
 receptoarelor
 remediează
+reobține
 semnalizate
 semneazǎ
+setează
+sincronizate
 soliciți
+submodul
+submodulele
+submodulelor
+submodulului
 sugerezi
 telemetrice
 telemetrie
