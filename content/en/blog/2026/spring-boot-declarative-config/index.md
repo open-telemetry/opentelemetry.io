@@ -142,15 +142,15 @@ wiring. With declarative config, you do not.
 
 > [!NOTE] An alternative: the composable rule-based sampler
 >
-> The schema also has the
-> [composable rule-based sampler](/docs/specs/otel-config/types/#ct-item-experimentalcomposablerulebasedsampler)
-> (under `composite/development.rule_based`), which accomplishes the same
-> thing with a richer rule grammar: attribute patterns with includes/excludes,
-> multi-condition matches, span-kind filters, parent state, and arbitrary
-> nested composition. The example above stays with `rule_based_routing`
-> because OTel Java has long recommended that sampler for this problem, and
-> the `composite/development` path still carries the `*/development` suffix
-> until the composable schema stabilizes. See a working
+> The schema also has the composable rule-based sampler (under
+> `composite/development.rule_based` in the
+> [configuration types reference](/docs/specs/otel-config/types/)), which
+> accomplishes the same thing with a richer rule grammar: attribute patterns
+> with includes/excludes, multi-condition matches, span-kind filters, parent
+> state, and arbitrary nested composition. The example above stays with
+> `rule_based_routing` because OTel Java has long recommended that sampler for
+> this problem, and the `composite/development` path still carries the
+> `*/development` suffix until the composable schema stabilizes. See a working
 > [example](https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0/snippets/Sampler_rule_based_kitchen_sink.yaml#L10-L53)
 > in the SDK config repository.
 
@@ -263,10 +263,10 @@ Our env var can also speak in placeholders. So can her sister. They both use
 `${...}`. They mean almost, but not quite, the same thing. Spring will happily
 resolve a chained fallback like
 `${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:${OTEL_EXPORTER_OTLP_ENDPOINT:http://localhost:4318}}/v1/traces`,
-chasing the outer placeholder into the inner so you can prefer a
-signal-specific override, fall back to a general one, and ultimately to a
-literal. The SDK's substituter is a single non-recursive regular-expression
-pass; the same expression in `otel-config.yaml` would not parse.
+chasing the outer placeholder into the inner so you can prefer a signal-specific
+override, fall back to a general one, and ultimately to a literal. The SDK's
+substituter is a single non-recursive regular-expression pass; the same
+expression in `otel-config.yaml` would not parse.
 
 ```mermaid
 flowchart LR

@@ -10203,6 +10203,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-03T06:50:48.732083565Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0/snippets/Sampler_rule_based_kitchen_sink.yaml#L10-L53": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-25T11:54:27.255083395Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/issues/100": {
     "StatusCode": 206,
     "LastSeen": "2026-07-03T06:51:18.468739058Z"
