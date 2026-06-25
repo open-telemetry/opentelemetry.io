@@ -152,7 +152,7 @@ wiring. With declarative config, you do not.
 > the `composite/development` path still carries the `*/development` suffix
 > until the composable schema stabilizes. See a working
 > [example](https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0/snippets/Sampler_rule_based_kitchen_sink.yaml#L10-L53)
-> in the SDK config repo.
+> in the SDK config repository.
 
 So how does our small env var fit into a world where the SDK is configured by a
 tree?
