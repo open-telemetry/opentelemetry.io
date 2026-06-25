@@ -46,9 +46,9 @@ export function normalizeForSearch(str) {
 
 /**
  * Check if a type object matches a search query.
- * Searches type name, property names, and property types.
+ * Searches type name, property names, property types, and example snippets.
  * Descriptions are not searched because they contain pre-rendered HTML.
- * @param {{ name: string, properties?: Array<{name: string, type: string}> }} typeObj
+ * @param {{ name: string, properties?: Array<{name: string, type: string}>, snippets?: Array<{description: string, content: string}> }} typeObj
  * @param {string} normalizedQuery - result of normalizeForSearch()
  */
 export function typeMatchesSearch(typeObj, normalizedQuery) {
@@ -57,6 +57,12 @@ export function typeMatchesSearch(typeObj, normalizedQuery) {
   for (const prop of typeObj.properties ?? []) {
     if (normalizeForSearch(prop.name).includes(normalizedQuery)) return true;
     if (normalizeForSearch(prop.type).includes(normalizedQuery)) return true;
+  }
+  for (const snippet of typeObj.snippets ?? []) {
+    if (normalizeForSearch(snippet.description).includes(normalizedQuery))
+      return true;
+    if (normalizeForSearch(snippet.content).includes(normalizedQuery))
+      return true;
   }
   return false;
 }

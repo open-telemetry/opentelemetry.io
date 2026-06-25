@@ -1,11 +1,16 @@
+actualizeaz
 actualizeazǎ
 adaugǎ
 agnostice
+aprobatorii
 aprobatorilor
+aprobatorul
 aspirațional
 calificatori
+colaboreze
 colectezi
 colectorului
+commiturile
 comunitǎții
 configurezi
 consultǎ
@@ -41,6 +46,7 @@ microservicii
 migrare
 migrezi
 nedeterministe
+nelansate
 nespecificate
 nestandard
 observabilitate
