@@ -19,7 +19,7 @@ The shortcode reads from data/collector/{type}s.yml and uses i18n strings for he
 
 {{- $componentType := .Get "type" -}}
 {{- $dataFile := printf "%ss" $componentType -}}
-{{- $data := index .Site.Data.collector $dataFile -}}
+{{- $data := index hugo.Data.collector $dataFile -}}
 
 {{- if not $data -}}
   {{- errorf "No data found for component type '%s' (expected data/collector/%s.yml)" $componentType $dataFile -}}
@@ -84,7 +84,7 @@ The shortcode reads from data/collector/{type}s.yml and uses i18n strings for he
   {{- if $shouldRender -}}
     {{- /* Build GitHub URL */ -}}
     {{- $repoName := cond (eq $repo "core") "opentelemetry-collector" "opentelemetry-collector-contrib" -}}
-    {{- $version := index $.Site.Data "collector-versions" $repo -}}
+    {{- $version := index hugo.Data "collector-versions" $repo -}}
     {{- $path := "" -}}
     {{- if $itemSubtype -}}
       {{- $path = printf "%s/%s/%s" $componentType $itemSubtype $name -}}
