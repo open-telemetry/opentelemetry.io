@@ -7,7 +7,7 @@ cSpell:ignore: gradio httpx
 
 The Chatbot service provides a browser-based chat UI for the OpenTelemetry
 Astronomy Shop demo. It uses [Gradio](https://www.gradio.app/) to render the
-interface and forwards user messages to the [Agent service](./agent.md).
+interface and forwards user messages to the [Agent service](../agent/).
 
 [Chatbot service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/chatbot/)
 
@@ -22,7 +22,8 @@ interface and forwards user messages to the [Agent service](./agent.md).
 
 The service starts from `run.py`, configures OpenTelemetry tracing, creates a
 `ChatAgentUI`, and launches a Gradio `ChatInterface`. When running, the chatbot
-UI is available at [http://localhost:8080/chatbot/](http://localhost:8080/chatbot/).
+UI is available at
+[http://localhost:8080/chatbot/](http://localhost:8080/chatbot/).
 
 ## How it works
 
@@ -64,8 +65,8 @@ pre-defined responses. Requests users can try out are:
 `OTEL_SERVICE_NAME`, defaulting to `chatbot`. Export endpoints and resource
 attributes are set through OpenTelemetry environment variables.
 
-The service instruments outbound HTTP calls made with `requests` and `httpx`,
-so calls from the chatbot to the Agent service are captured as spans. Spans are
+The service instruments outbound HTTP calls made with `requests` and `httpx`, so
+calls from the chatbot to the Agent service are captured as spans. Spans are
 exported through `opentelemetry-exporter-otlp-proto-grpc` to the configured OTLP
 endpoint. In Docker Compose, telemetry is sent to the local OpenTelemetry
 Collector.
@@ -75,18 +76,18 @@ Collector.
 The service is configured with environment variables. Values can be supplied
 through Docker Compose, `.env`, `.env.override`, or the local shell environment.
 
-| Variable | Default | Description |
-| --- | --- | --- |
-| `CHATBOT_ENDPOINT` | `0.0.0.0` | Host/interface where the Gradio server binds. |
-| `CHATBOT_HOST` | `chatbot` in `.env` | Hostname used by other services, such as the frontend proxy. |
-| `CHATBOT_PORT` | `7860` | Port used by the Gradio server. |
-| `CHATBOT_ROOT_PATH` | empty, `/chatbot` in `.env` | Root path used when the UI is served behind the frontend proxy. |
-| `AGENT_ENDPOINT` | `0.0.0.0` in code, `agent` in `.env` | Hostname of the Agent service. |
-| `AGENT_PORT` | `8010` | Port of the Agent service. |
-| `AGENT_CHAT_INTERFACE_TIMEOUT` | `300` | Timeout, in seconds, for calls from the chatbot to the Agent service. |
-| `OTEL_SERVICE_NAME` | `chatbot` in Compose | Service name used in telemetry. |
-| `OTEL_EXPORTER_OTLP_ENDPOINT` | `otel-collector` | OTLP endpoint used by the OpenTelemetry exporter. In Compose this points to the OpenTelemetry Collector. |
-| `OTEL_RESOURCE_ATTRIBUTES` | inherited | Additional OpenTelemetry resource attributes. |
+| Variable                       | Default                              | Description                                                                                              |
+| ------------------------------ | ------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| `CHATBOT_ENDPOINT`             | `0.0.0.0`                            | Host/interface where the Gradio server binds.                                                            |
+| `CHATBOT_HOST`                 | `chatbot` in `.env`                  | Hostname used by other services, such as the frontend proxy.                                             |
+| `CHATBOT_PORT`                 | `7860`                               | Port used by the Gradio server.                                                                          |
+| `CHATBOT_ROOT_PATH`            | empty, `/chatbot` in `.env`          | Root path used when the UI is served behind the frontend proxy.                                          |
+| `AGENT_ENDPOINT`               | `0.0.0.0` in code, `agent` in `.env` | Hostname of the Agent service.                                                                           |
+| `AGENT_PORT`                   | `8010`                               | Port of the Agent service.                                                                               |
+| `AGENT_CHAT_INTERFACE_TIMEOUT` | `300`                                | Timeout, in seconds, for calls from the chatbot to the Agent service.                                    |
+| `OTEL_SERVICE_NAME`            | `chatbot` in Compose                 | Service name used in telemetry.                                                                          |
+| `OTEL_EXPORTER_OTLP_ENDPOINT`  | `otel-collector`                     | OTLP endpoint used by the OpenTelemetry exporter. In Compose this points to the OpenTelemetry Collector. |
+| `OTEL_RESOURCE_ATTRIBUTES`     | inherited                            | Additional OpenTelemetry resource attributes.                                                            |
 
 ### Docker Compose configuration
 

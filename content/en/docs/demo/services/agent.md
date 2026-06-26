@@ -2,7 +2,9 @@
 title: Agent Service
 linkTitle: Agent
 aliases: [agentservice]
-cSpell:ignore: langgraph langchain litellm traceloop fastmcp uvicorn gradio vcr cassettes ChatOpenAI
+cSpell:ignore:
+  langgraph langchain litellm traceloop fastmcp uvicorn gradio vcr cassettes
+  ChatOpenAI
 ---
 
 The Agent service provides an AI assistant for the OpenTelemetry Astronomy Shop
@@ -104,7 +106,7 @@ These tools call the frontend API through `APPLICATION_ENDPOINT`.
 
 ### MCP tool mode
 
-When `MCP_ENABLED=True`, the service connects to the [MCP service](./mcp.md) at:
+When `MCP_ENABLED=True`, the service connects to the [MCP service](../mcp/) at:
 
 ```text
 http://${MCP_ENDPOINT}:${MCP_PORT}/mcp
@@ -119,24 +121,24 @@ are not used.
 The service is configured with environment variables. Values can be supplied
 through Docker Compose, `.env`, `.env.override`, or the local shell environment.
 
-| Variable | Default | Description |
-| --- | --- | --- |
-| `AGENT_PORT` | `8010` | Port used by the FastAPI/Uvicorn server. |
-| `AGENT_ENDPOINT` | `agent` in Compose | Service hostname used by other demo services. |
-| `GRAPH_RECURSION_LIMIT` | `25` | Recursion limit read by the agent implementation. |
-| `APPLICATION_ENDPOINT` | `localhost:8080` | Frontend/API endpoint used by built-in shop tools. In Compose this is usually `frontend:8080`. |
-| `LLM_BASE_URL` | unset | Base URL for the OpenAI-compatible LLM API. |
-| `LLM_MODEL` | `default` | Model name passed to the LLM client. |
-| `API_KEY` | unset | API key for the configured LLM provider. |
-| `LLM_TLS_VERIFY` | `True` | Enables TLS certificate verification for LLM HTTP calls. Set to `False` only for trusted development environments. |
-| `USE_VCR` | `False` | Enables replay/recording through VCR cassettes for LLM requests. |
-| `MCP_ENABLED` | `False` | Enables tool loading from the MCP service when set to `True`. |
-| `MCP_ENDPOINT` | `0.0.0.0` in code, `mcp` in Compose | Hostname for the MCP service. |
-| `MCP_PORT` | `8011` | Port for the MCP service. |
-| `OTEL_EXPORTER_OTLP_ENDPOINT` | `localhost:4317` | OTLP endpoint used by Traceloop/OpenTelemetry. In Compose this points to the OpenTelemetry Collector. |
-| `OTEL_EXPORTER_OTLP_INSECURE` | unset | Set to `true` in Compose for insecure local OTLP export. |
-| `OTEL_RESOURCE_ATTRIBUTES` | inherited | Additional OpenTelemetry resource attributes. |
-| `OTEL_SERVICE_NAME` | `AstronomyShopAgent` | Service name used in telemetry. |
+| Variable                      | Default                             | Description                                                                                                        |
+| ----------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `AGENT_PORT`                  | `8010`                              | Port used by the FastAPI/Uvicorn server.                                                                           |
+| `AGENT_ENDPOINT`              | `agent` in Compose                  | Service hostname used by other demo services.                                                                      |
+| `GRAPH_RECURSION_LIMIT`       | `25`                                | Recursion limit read by the agent implementation.                                                                  |
+| `APPLICATION_ENDPOINT`        | `localhost:8080`                    | Frontend/API endpoint used by built-in shop tools. In Compose this is usually `frontend:8080`.                     |
+| `LLM_BASE_URL`                | unset                               | Base URL for the OpenAI-compatible LLM API.                                                                        |
+| `LLM_MODEL`                   | `default`                           | Model name passed to the LLM client.                                                                               |
+| `API_KEY`                     | unset                               | API key for the configured LLM provider.                                                                           |
+| `LLM_TLS_VERIFY`              | `True`                              | Enables TLS certificate verification for LLM HTTP calls. Set to `False` only for trusted development environments. |
+| `USE_VCR`                     | `False`                             | Enables replay/recording through VCR cassettes for LLM requests.                                                   |
+| `MCP_ENABLED`                 | `False`                             | Enables tool loading from the MCP service when set to `True`.                                                      |
+| `MCP_ENDPOINT`                | `0.0.0.0` in code, `mcp` in Compose | Hostname for the MCP service.                                                                                      |
+| `MCP_PORT`                    | `8011`                              | Port for the MCP service.                                                                                          |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | `localhost:4317`                    | OTLP endpoint used by Traceloop/OpenTelemetry. In Compose this points to the OpenTelemetry Collector.              |
+| `OTEL_EXPORTER_OTLP_INSECURE` | unset                               | Set to `true` in Compose for insecure local OTLP export.                                                           |
+| `OTEL_RESOURCE_ATTRIBUTES`    | inherited                           | Additional OpenTelemetry resource attributes.                                                                      |
+| `OTEL_SERVICE_NAME`           | `AstronomyShopAgent`                | Service name used in telemetry.                                                                                    |
 
 Do not commit real API keys. Prefer local overrides or secret management for
 `API_KEY`. Note that the VCR file is created using `LLM_MODEL` and is case
@@ -178,7 +180,7 @@ python run.py
 ```
 
 To run the agent in MCP mode with `MCP_ENABLED=True`, see the
-[MCP service](./mcp.md) documentation.
+[MCP service](../mcp/) documentation.
 
 You can test the endpoint with:
 

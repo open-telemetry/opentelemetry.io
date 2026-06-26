@@ -8,7 +8,7 @@ cSpell:ignore: fastmcp traceloop httpx jlowin
 The MCP service exposes the OpenTelemetry Astronomy Shop demo's tools over the
 [Model Context Protocol](https://modelcontextprotocol.io/). It runs a
 [FastMCP](https://github.com/jlowin/fastmcp) server that lets the
-[Agent service](./agent.md) (or any other MCP-compatible client) discover and
+[Agent service](../agent/) (or any other MCP-compatible client) discover and
 invoke shop operations such as listing products, managing carts, and checking
 out.
 
@@ -34,18 +34,18 @@ The MCP server registers the Astronomy Shop tools defined in
 `src/shared/tools.py` (copied into the image at build time). Each tool calls the
 frontend HTTP API through `APPLICATION_ENDPOINT`.
 
-| Tool | Description |
-| --- | --- |
-| `list_products` | Lists available products. |
-| `get_product(product_id)` | Gets details for a specific product. |
-| `get_ads(category)` | Fetches promotional ads for a category. |
-| `get_recommendations(product_id)` | Returns product recommendations. |
-| `add_to_cart(user_id, product_id, quantity)` | Adds an item to a user's cart. |
-| `get_cart(user_id)` | Retrieves a user's cart. |
-| `empty_cart(user_id)` | Empties a user's cart. |
-| `checkout(checkout_person)` | Performs checkout for a user's cart. |
-| `get_supported_currencies()` | Lists supported currencies. |
-| `get_shipping_quote(items, currency_code, address)` | Returns a shipping quote. |
+| Tool                                                | Description                             |
+| --------------------------------------------------- | --------------------------------------- |
+| `list_products`                                     | Lists available products.               |
+| `get_product(product_id)`                           | Gets details for a specific product.    |
+| `get_ads(category)`                                 | Fetches promotional ads for a category. |
+| `get_recommendations(product_id)`                   | Returns product recommendations.        |
+| `add_to_cart(user_id, product_id, quantity)`        | Adds an item to a user's cart.          |
+| `get_cart(user_id)`                                 | Retrieves a user's cart.                |
+| `empty_cart(user_id)`                               | Empties a user's cart.                  |
+| `checkout(checkout_person)`                         | Performs checkout for a user's cart.    |
+| `get_supported_currencies()`                        | Lists supported currencies.             |
+| `get_shipping_quote(items, currency_code, address)` | Returns a shipping quote.               |
 
 MCP clients connect to the streamable HTTP endpoint:
 
@@ -71,15 +71,15 @@ name is set to `mcp`.
 The service is configured with environment variables. Values can be supplied
 through Docker Compose, `.env`, `.env.override`, or the local shell environment.
 
-| Variable | Default | Description |
-| --- | --- | --- |
-| `MCP_PORT` | `8011` | Port used by the FastMCP HTTP server. |
-| `MCP_ENDPOINT` | `mcp` in Compose | Service hostname used by other demo services (e.g. `agent`). |
-| `APPLICATION_ENDPOINT` | `frontend:8080` in Compose | Frontend/API endpoint used by the shop tools. |
-| `OTEL_EXPORTER_OTLP_ENDPOINT` | `localhost:4317` | OTLP endpoint used by Traceloop/OpenTelemetry. In Compose this points to the OpenTelemetry Collector. |
-| `OTEL_EXPORTER_OTLP_INSECURE` | unset | Set to `true` in Compose for insecure local OTLP export. |
-| `OTEL_RESOURCE_ATTRIBUTES` | inherited | Additional OpenTelemetry resource attributes (Compose adds `service.criticality=low`). |
-| `OTEL_SERVICE_NAME` | `AstronomyShopAgentMCP` | Service name used in telemetry. |
+| Variable                      | Default                    | Description                                                                                           |
+| ----------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `MCP_PORT`                    | `8011`                     | Port used by the FastMCP HTTP server.                                                                 |
+| `MCP_ENDPOINT`                | `mcp` in Compose           | Service hostname used by other demo services (e.g. `agent`).                                          |
+| `APPLICATION_ENDPOINT`        | `frontend:8080` in Compose | Frontend/API endpoint used by the shop tools.                                                         |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | `localhost:4317`           | OTLP endpoint used by Traceloop/OpenTelemetry. In Compose this points to the OpenTelemetry Collector. |
+| `OTEL_EXPORTER_OTLP_INSECURE` | unset                      | Set to `true` in Compose for insecure local OTLP export.                                              |
+| `OTEL_RESOURCE_ATTRIBUTES`    | inherited                  | Additional OpenTelemetry resource attributes (Compose adds `service.criticality=low`).                |
+| `OTEL_SERVICE_NAME`           | `AstronomyShopAgentMCP`    | Service name used in telemetry.                                                                       |
 
 ### Docker Compose configuration
 
