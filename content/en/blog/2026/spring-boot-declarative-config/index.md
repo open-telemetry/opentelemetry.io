@@ -5,7 +5,6 @@ date: 2026-06-23
 author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger) (Grafana Labs)
 sig: Java
-# prettier-ignore
 cSpell:ignore: Customizer Dotel petclinic relaxed substituters zeitlinger
 ---
 
