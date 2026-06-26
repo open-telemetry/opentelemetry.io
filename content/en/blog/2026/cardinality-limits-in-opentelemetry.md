@@ -3,7 +3,7 @@ title: >-
   Cardinality Limits in OpenTelemetry — When Your Metrics Lie, and What to Do
   About It
 linkTitle: Cardinality Limits in OpenTelemetry
-date: 2026-05-15
+date: 2026-06-29
 author: >-
   [Cijo Thomas](https://github.com/cijothomas) (Microsoft)
 issue: 9943
@@ -155,7 +155,8 @@ measurements via the metrics API**. It does _not_ apply to:
 - **Resource attributes** — `service.name`, `cloud.region`,
   `service.instance.id`, and friends. These live on the resource, not on
   individual data points.
-- **Meter-level attributes** set at `Meter` construction time.
+- **Meter-level attributes** (also called _instrumentation scope attributes_)
+  set at `Meter` construction time.
 - **The number of Meters or instruments** — you can create as many as needed
   without hitting the cardinality limit.
 
@@ -241,7 +242,7 @@ than the per-cycle working set.
 > _concurrent_ active key-set exceeds the limit. The total population doesn't
 > matter.
 
-Two caveats:
+Three caveats:
 
 1. **Cumulative temporality on the same instrument doesn't work.** Once a
    tenant's combination is tracked, it stays tracked for the process lifetime;
