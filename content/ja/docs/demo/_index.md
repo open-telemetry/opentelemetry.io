@@ -4,7 +4,7 @@ linkTitle: デモ
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-default_lang_commit: b51a1db58883aa963c461d34356aa86ac18d94b7
+default_lang_commit: 83d3356437c8ad2a4d3b25ee1bfe1068ca0db180
 ---
 
 [OpenTelemetryデモ](/ecosystem/demo/)のドキュメンテーションへようこそ。
@@ -28,7 +28,7 @@ default_lang_commit: b51a1db58883aa963c461d34356aa86ac18d94b7
 | Elixir     |                                                                                                           | [Flagd-UIサービス](services/flagd-ui/)                                                 |                                                                                                           |
 | Go         |                                                                                                           | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/)  | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/)                     |
 | Java       | [広告サービス](services/ad/)                                                                              |                                                                                        | [広告サービス](services/ad/)                                                                              |
-| JavaScript |                                                                                                           |                                                                                        | [支払いサービス](services/payment/)                                                                       |
+| JavaScript | [支払いサービス](services/payment/)                                                                       |                                                                                        | [支払いサービス](services/payment/)                                                                       |
 | TypeScript |                                                                                                           | [フロントエンド](services/frontend/), [React Nativeアプリ](services/react-native-app/) | [フロントエンド](services/frontend/)                                                                      |
 | Kotlin     |                                                                                                           | [不正検知サービス](services/fraud-detection/)                                          |                                                                                                           |
 | PHP        |                                                                                                           | [見積サービス](services/quote/)                                                        | [見積サービス](services/quote/)                                                                           |
