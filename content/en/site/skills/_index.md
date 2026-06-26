@@ -21,9 +21,9 @@ procedures are defined in this section.
 As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 
 - [`/approve-registry-update [pr-number-or-url]`][approve-registry-update]:
-  verify that an otelbot registry version-bump PR is a clean bump, then approve
-  it and add it to the merge queue. With no argument, processes open registry
-  auto-update PRs.
+  assist reviewers deciding whether to merge an otelbot registry version-bump
+  PR; verify it's a clean bump and, on confirmation, approve it and add it to
+  the merge queue. With no argument, processes open registry auto-update PRs.
 - [`/draft-issue <issue-description>`][draft-issue]: draft a GitHub issue in the
   `opentelemetry.io` repository following issue templates, contributing
   guidelines, and the label taxonomy.

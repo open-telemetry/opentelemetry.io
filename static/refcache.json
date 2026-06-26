@@ -15427,6 +15427,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:10:37.537854Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/approve-registry-update/SKILL.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-26T15:17:37.958271-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/draft-issue/SKILL.md": {
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:10:10.685307114Z"
