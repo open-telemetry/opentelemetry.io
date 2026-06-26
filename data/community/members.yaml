@@ -2443,6 +2443,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/sharadraju
     avatar_url: https://avatars.githubusercontent.com/u/86588332?v=4
+  - name: singhvibhanshu
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/singhvibhanshu
+    avatar_url: https://avatars.githubusercontent.com/u/135852806?v=4
   - name: sudarshan12s
     teams:
       - javascript-contrib-triagers
@@ -2976,9 +2981,6 @@ members:
   - name: shivanshuraj1333
     html_url: https://github.com/shivanshuraj1333
     avatar_url: https://avatars.githubusercontent.com/u/26167974?v=4
-  - name: singhvibhanshu
-    html_url: https://github.com/singhvibhanshu
-    avatar_url: https://avatars.githubusercontent.com/u/135852806?v=4
   - name: sokoide
     html_url: https://github.com/sokoide
     avatar_url: https://avatars.githubusercontent.com/u/1452761?v=4
