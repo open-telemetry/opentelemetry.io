@@ -59,25 +59,25 @@ my %versFromSubmod = %versions; # Actual version of submodules. Updated by getVe
 # =================================================================================
 
 my @patches = (
-  {
-    # RocketMQ docs renumbered the consumer group page from 07 to 08:
-    # https://rocketmq.apache.org/docs/domainModel/08consumergroup/
-    #
-    # Upstreamed fix:
-    # https://github.com/open-telemetry/semantic-conventions/pull/3771
-    #
-    # cSpell:ignore rocketmq
-    id      => '2026-06-05-rocketmq-consumer-group-url',
-    module  => 'semconv',
-    minVers => '1.41.0',
-    maxVers => '1.42.0',
-    file    => qr|^tmp/semconv/docs/messaging/rocketmq\.md$|,
-    apply   => sub {
-      s{
-        (https://rocketmq\.apache\.org/docs/domainModel/)07(consumergroup)
-      }{${1}08$2/}gx;
-    },
-  },
+  # {
+  #   # RocketMQ docs renumbered the consumer group page from 07 to 08:
+  #   # https://rocketmq.apache.org/docs/domainModel/08consumergroup/
+  #   #
+  #   # Upstreamed fix:
+  #   # https://github.com/open-telemetry/semantic-conventions/pull/3771
+  #   #
+  #   # cSpell:ignore rocketmq
+  #   id      => '2026-06-05-rocketmq-consumer-group-url',
+  #   module  => 'semconv',
+  #   minVers => '1.41.0',
+  #   maxVers => '1.42.0',
+  #   file    => qr|^tmp/semconv/docs/messaging/rocketmq\.md$|,
+  #   apply   => sub {
+  #     s{
+  #       (https://rocketmq\.apache\.org/docs/domainModel/)07(consumergroup)
+  #     }{${1}08$2/}gx;
+  #   },
+  # },
   # {
   #   # For the problematic links, see:
   #   # https://github.com/open-telemetry/opentelemetry-specification/issues/4958
