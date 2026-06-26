@@ -12259,6 +12259,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-19T11:09:03.540776515Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent-declarative-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-26T12:16:16.358275935Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native": {
     "StatusCode": 206,
     "LastSeen": "2026-06-18T11:04:48.179385401Z"
@@ -12982,6 +12986,10 @@
   "https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim": {
     "StatusCode": 206,
     "LastSeen": "2026-06-26T06:55:25.503670406Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/declarative-config": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-26T12:16:13.804198512Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#declarative-configuration": {
     "StatusCode": 206,
