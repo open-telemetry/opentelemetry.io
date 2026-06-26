@@ -39,10 +39,10 @@ _secret_.
 O `values.yaml` padrão do chart do Operator está pronto para ser instalado, mas
 espera que o Cert Manager já esteja presente no _cluster_.
 
-No Kubernetes, para que o servidor de API se comunique com o componente _webhook_,
-o _webhook_ requer um certificado TLS no qual o servidor de API esteja configurado
-para confiar. Existem algumas formas diferentes de gerar/configurar o
-certificado TLS necessário.
+No Kubernetes, para que o servidor de API se comunique com o componente
+_webhook_, o _webhook_ requer um certificado TLS no qual o servidor de API
+esteja configurado para confiar. Existem algumas formas diferentes de
+gerar/configurar o certificado TLS necessário.
 
 - O método mais simples e padrão é instalar o
   [cert-manager](https://cert-manager.io/docs/) e definir
@@ -61,8 +61,8 @@ certificado TLS necessário.
 - É possível usar um certificado autoassinado gerado manualmente definindo tanto
   `admissionWebhooks.certManager.enabled` quanto
   `admissionWebhooks.autoGenerateCert.enabled` como `false`. Os valores
-  necessários para `admissionWebhooks.cert_file`,
-  `admissionWebhooks.key_file` e `admissionWebhooks.ca_file` devem ser fornecidos.
+  necessários para `admissionWebhooks.cert_file`, `admissionWebhooks.key_file` e
+  `admissionWebhooks.ca_file` devem ser fornecidos.
 - É possível carregar _webhooks_ e certificados personalizados desabilitando
   `.Values.admissionWebhooks.create` e `admissionWebhooks.certManager.enabled`
   enquanto define o nome do _secret_ do cert personalizado em
