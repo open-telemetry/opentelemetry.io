@@ -1,3 +1,4 @@
+
 ---
 title: OpenTelemetry Demo Docs
 linkTitle: Demo
@@ -33,7 +34,7 @@ here.
 | TypeScript |                                                                                                          | [Frontend](services/frontend/), [React Native App](services/react-native-app/)               | [Frontend](services/frontend/)                                                                           |
 | Kotlin     |                                                                                                          | [Fraud Detection Service](services/fraud-detection/)                                         |                                                                                                          |
 | PHP        |                                                                                                          | [Quote Service](services/quote/)                                                             | [Quote Service](services/quote/)                                                                         |
-| Python     | [Recommendation Service](services/recommendation/), [Product Reviews Service](services/product-reviews/) |                                                                                              | [Recommendation Service](services/recommendation/), [Product Reviews Service](services/product-reviews/) |
+| Python     | [Recommendation Service](services/recommendation/), [Product Reviews Service](services/product-reviews/) | [Agent Service](services/agent/), [Chatbot Service](services/chatbot/), [MCP Service](services/mcp/) | [Recommendation Service](services/recommendation/), [Product Reviews Service](services/product-reviews/) |
 | Ruby       |                                                                                                          | [Email Service](services/email/)                                                             | [Email Service](services/email/)                                                                         |
 | Rust       |                                                                                                          | [Shipping Service](services/shipping/)                                                       | [Shipping Service](services/shipping/)                                                                   |
 
@@ -44,11 +45,14 @@ found here:
 
 - [Accounting Service](services/accounting/)
 - [Ad Service](services/ad/)
+- [Agent Service](services/agent/)
 - [Cart Service](services/cart/)
+- [Chatbot Service](services/chatbot/)
 - [Checkout Service](services/checkout/)
 - [Email Service](services/email/)
 - [Frontend](services/frontend/)
 - [Load Generator](services/load-generator/)
+- [MCP Service](services/mcp/)
 - [Payment Service](services/payment/)
 - [Product Catalog Service](services/product-catalog/)
 - [Product Reviews Service](services/product-reviews/)
