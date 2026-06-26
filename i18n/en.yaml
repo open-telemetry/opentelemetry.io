@@ -60,3 +60,5 @@ config_types_examples_heading: Examples
 config_types_copy: Copy
 config_types_copied: Copied!
 config_types_source: Source
+config_types_view_schema: View JSON schema
+config_types_schema_version: Schema version
