@@ -1,0 +1,19 @@
+# cSpell:ignore oodle
+title: Oodle
+registryType: application integration
+language: collector
+tags:
+  - collector
+  - observability
+license: proprietary
+description:
+  AI-native observability platform for infrastructure, applications and AI agents.
+  Compatible with OpenTelemetry, drop-in replacement for Prometheus, Grafana, Elasticsearch.
+authors:
+  - name: Oodle AI
+    url: https://github.com/oodle-ai
+urls:
+  website: https://oodle.ai
+  docs: https://docs.oodle.ai
+createdAt: '2026-06-26'
+isNative: true
