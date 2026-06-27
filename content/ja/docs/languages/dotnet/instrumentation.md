@@ -20,7 +20,7 @@ cSpell:ignore: dicelib rolldice
 ## 用語に関する注意 {#a-note-on-terminology}
 
 .NET は OpenTelemetry をサポートする他の言語やランタイムとは異なります。
-[Tracing API](/docs/concepts/signals/traces/) は [System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics) API によって実装されており、`ActivitySource` や `Activity` といった既存のコンストラクトを再利用して、内部的に OpenTelemetry に準拠するようになっています。
+[トレース API](/docs/concepts/signals/traces/) は [System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics) API によって実装されており、`ActivitySource` や `Activity` といった既存のコンストラクトを再利用して、内部的に OpenTelemetry に準拠するようになっています。
 
 しかし、.NET 開発者がアプリケーションを計装するために知っておく必要がある OpenTelemetry API と用語の部分があり、ここでは `System.Diagnostics` API とともにそれらを取り上げます。
 
@@ -348,7 +348,7 @@ public class Instrumentation : IDisposable
 }
 ```
 
-次に、Instrument オブジェクトを依存性注入として追加するために `Program.cs` を更新します。
+次に、Instrumentation オブジェクトを依存性注入として追加するために `Program.cs` を更新します。
 
 ```csharp
 //...
