@@ -1,14 +1,13 @@
 ---
 title: CI workflows
-linkTitle: CI workflows
 description: >-
   GitHub Actions workflows that automate PR checks, label management, and other
   CI/CD processes.
 weight: 10
 ---
 
-All workflow files live under
-[`.github/workflows/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/.github/workflows).
+For workflows and (most of) their helper scripts, see the `workflow` and
+`scripts` folder under [.github][]
 
 ## PR approval labels {#pr-approval-labels}
 
@@ -304,13 +303,66 @@ composed by [scripts/gh/patch-report/][]; all are unit tested via
 [scripts/gh/patch-report/]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/patch-report
 
+## Housekeeping {#housekeeping}
+
+The [`housekeeping.yml`][housekeeping] workflow runs an approved fix command —
+[`fix-and-test:all`](../npm-scripts/) by default, or an npm script given via
+manual (maintainer-only) dispatch — daily at 21:37 UTC, about 12 hours after the
+other daily automation jobs, and publishes any resulting changes as a PR. It is
+the second caller of the reusable patch actions, and the scheduled-maintenance
+flow that motivated [#6592][].
+
+It runs as a three-stage pipeline:
+
+1. **`generate-patch`**: runs the housekeeping command via the
+   [npm-script-patch][] action and uploads the changes as a patch artifact.
+   Unlike the `/fix` pipeline, the whole run is trusted: the schedule and
+   dispatch triggers only ever execute default-branch code. A failing command
+   fails the job, but any fixes it produced are still published, with a
+   partial-results warning in the PR body.
+2. **`publish-patch`**: calls the [`reusable-patch-pr.yml`][] workflow — the
+   sibling of [`reusable-apply-patch.yml`][] for callers without a PR context —
+   which force-pushes the patch to the stable `otelbot/housekeeping` branch,
+   recreated from `main` on every run, and opens a PR for it unless one is
+   already open. There is thus at most one housekeeping PR at a time, always
+   carrying the latest results. Any commits pushed to the branch — manual or via
+   `/fix` — are clobbered by the next run, so merge the PR promptly if you push
+   commits to it. Skipped when the command produced no changes, leaving any open
+   housekeeping PR as is. Auto-merge is safe to enable on housekeeping PRs
+   provided that stale approvals are dismissed when commits are pushed: required
+   reviews then remain the control over the machine- and internet-derived
+   content, even across force-pushes.
+3. **`report-failure`**: files a tracking issue on failure, via
+   [workflow failure reporting](#workflow-failure-reporting); when fixes were
+   published, the issue links to the housekeeping PR.
+
+> [!NOTE]
+>
+> The [`refcache-refresh.yml`][] workflow also runs daily and touches
+> `refcache.json`, so the two bot PRs can conflict depending on merge order.
+> Conflicts self-heal, since both branches sync from `main` on each run.
+> Migrating refcache-refresh onto the reusable patch actions — eliminating such
+> conflicts by construction — is tracked in the [project plan][].
+
+[#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
+[housekeeping]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/housekeeping.yml
+[project plan]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/2026/pr-fix-reusable-actions.plan.md
+[`refcache-refresh.yml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/refcache-refresh.yml
+[`reusable-patch-pr.yml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/reusable-patch-pr.yml
+
 ## Locale auto-merge
 
 The [locale-auto-merge.yml][] workflow lets a locale's maintainers enable
-[GitHub auto-merge][] on a locale-only PR by commenting `/auto-merge` (or
-`/auto-merge:disable`). It runs as the DOCS bot, which holds the privileges
-needed to flip the "merge when ready" switch under branch protection; CODEOWNERS
-and required checks remain the hard merge gate.
+[GitHub auto-merge][] on a locale-only PR through an `/auto-merge` (or
+`/auto-merge:enable` / `/auto-merge:disable`) comment directive — for placement
+rules, see the helper [README][locale-auto-merge-script]. It runs as the DOCS
+bot, which holds the privileges needed to flip the "merge when ready" switch
+under branch protection; CODEOWNERS and required checks remain the hard merge
+gate.
 
 The thin workflow delegates to the testable helper in
 [scripts/gh/locale-auto-merge/][locale-auto-merge-script], which enforces two
@@ -399,16 +451,21 @@ logic lives in [scripts/gh/report-failure/][report-failure-script]
 
 The repository includes several other workflows:
 
-| Workflow                   | Purpose                                       |
-| -------------------------- | --------------------------------------------- |
-| `check-links.yml`          | Sharded link checking using htmltest          |
-| `check-text.yml`           | Textlint terminology checks                   |
-| `check-i18n.yml`           | Localization front matter validation          |
-| `check-spelling.yml`       | Spell checking                                |
-| `test.yml`                 | Test (excludes `test:base`)                   |
-| `auto-update-registry.yml` | Auto-update registry package versions         |
-| `auto-update-versions.yml` | Auto-update OTel component versions           |
-| `build-dev.yml`            | Development build and preview                 |
-| `lint-scripts.yml`         | ShellCheck linting for `.github/scripts/`     |
-| `label-manager.yml`        | PR labels (component labels & approval flow)  |
-| `component-owners.yml`     | Assign reviewers based on component ownership |
+| Workflow                   | Purpose                                                                                |
+| -------------------------- | -------------------------------------------------------------------------------------- |
+| `check-links.yml`          | Sharded link checking using htmltest, plus a non-blocking [Lychee][lychee-pilot] pilot |
+| `check-text.yml`           | Textlint terminology checks                                                            |
+| `check-i18n.yml`           | Localization front matter validation                                                   |
+| `check-spelling.yml`       | Spell checking                                                                         |
+| `test.yml`                 | Test (excludes `test:base`)                                                            |
+| `auto-update-registry.yml` | Auto-update registry package versions                                                  |
+| `auto-update-versions.yml` | Auto-update OTel component versions                                                    |
+| `build-dev.yml`            | Development build and preview                                                          |
+| `lint-scripts.yml`         | ShellCheck linting for `.github/scripts/`                                              |
+| `label-manager.yml`        | PR labels (component labels & approval flow)                                           |
+| `component-owners.yml`     | Assign reviewers based on component ownership                                          |
+
+<!-- prettier-ignore-start -->
+[lychee-pilot]: ../npm-scripts/#notes
+[.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
+<!-- prettier-ignore-end -->

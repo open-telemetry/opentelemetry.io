@@ -20,6 +20,10 @@ procedures are defined in this section.
 
 As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 
+- [`/approve-registry-update [pr-number-or-url]`][approve-registry-update]:
+  assist reviewers deciding whether to merge an otelbot registry version-bump
+  PR; verify it's a clean bump and, on confirmation, approve it and add it to
+  the merge queue. With no argument, processes open registry auto-update PRs.
 - [`/draft-issue <issue-description>`][draft-issue]: draft a GitHub issue in the
   `opentelemetry.io` repository following issue templates, contributing
   guidelines, and the label taxonomy.
@@ -37,6 +41,10 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
   update the `drifted_from_default` front matter field for localized content,
   with optional arguments to limit which locales are processed and whether to
   open a PR automatically.
+- [`/update-old-blog-ignores`][update-old-blog-ignores]: advance the year range
+  of old blog posts excluded from lint/format checks and fix scripts.
+- [`/update-git-submodule <submodule>... <version|latest|HEAD>`][update-git-submodule]:
+  update one or more git submodules to a target version.
 
 Some agent chats let you invoke a skill by typing `/` followed by its name.
 
@@ -62,6 +70,8 @@ See the section index below.
 [`.claude/skills/`]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/.claude/skills
 [agentskills.io]: https://agentskills.io
+[approve-registry-update]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/approve-registry-update/SKILL.md
 [draft-issue]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/draft-issue/SKILL.md
 [refresh-refcache-pr-fix]:
@@ -74,6 +84,10 @@ See the section index below.
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-pull-request/SKILL.md
 [update-i18n-drift-status]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-i18n-drift-status/SKILL.md
+[update-old-blog-ignores]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-old-blog-ignores/SKILL.md
+[update-git-submodule]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-git-submodule/SKILL.md
 [hooks]: https://docs.claude.com/en/docs/claude-code/hooks
 [hooks-json]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/hooks/hooks.json

@@ -3,8 +3,7 @@ title: プルリクエストのチェックとテスト
 linkTitle: PR チェック & テスト
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: bb20a7fb593782fea0e05e988d1478831726f9f5
-drifted_from_default: true
+default_lang_commit: 8013aa5f0aae284fa343311981625be6dbb25e5b
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -18,7 +17,7 @@ PR のチェックは次のことを検証します。
 >
 > もし何らかの PR チェックが失敗していれば、最初にローカルで `npm run fix:all` を実行することで[内容の問題を修正](../pull-requests/#fix-issues)してください。
 >
-> PRに `/fix:all` というコメントを追加することもできます。
+> PRに `/fix` というコメントを追加することもできます。
 > これにより、OpenTelemetry ボットがかわりにそのコマンドを実行して、PR を更新します。
 > ローカルに変更をプルすることを忘れないでください。
 >
@@ -36,7 +35,15 @@ PR のチェックは次のことを検証します。
 
 コントリビューションが [スタイルガイド](../style-guide/) に従っていることを検証するために、スタイルガイドのルールを検証し、問題が見つかった場合に失敗する一連のチェックを実装しています。
 
-後述のリストでは、現在のチェック内容と、それに関連するエラーを修正する方法について説明します。
+以下のセクションでは、現在のチェック内容と、それに関連するエラーを修正する方法について説明します。
+
+> [!NOTE]
+>
+> チェックされるのは最近のブログ記事のみです。
+> 詳しくは[古いブログは更新されません][old-blogs]を参照してください。
+> 特に、古い記事はウェブサイトにレンダリングされますが、以下に記載するチェックは古いブログには適用されません。
+
+[old-blogs]: ../blog/#old-blogs-are-not-updated
 
 ### `TEXT linter` {#text-linter .notranslate lang=en}
 
@@ -171,6 +178,12 @@ OpenTelemetry ウェブサイト内のページをリンクする場合、外部
   [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
 
 </details>
+
+### `LOCALIZATION` guidelines {#localization .notranslate lang=en}
+
+このチェックは、[ローカリゼーションガイドライン](../localization/)のうち機械的に検証可能なルール（たとえば、ローカリゼーション間での[画像やその他のアセットのコピー禁止](../localization/#images)など）を、他のチェックでまだカバーされていないものについて適用します。
+
+このチェックが失敗した場合、`npm run fix:l10n` をローカルで実行し、新しいコミットで変更をプッシュしてください。
 
 ### `TEST (excluding test:base)` {#test-excluding-test-base .notranslate lang=en}
 
