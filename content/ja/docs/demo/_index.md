@@ -4,8 +4,7 @@ linkTitle: デモ
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-default_lang_commit: b51a1db58883aa963c461d34356aa86ac18d94b7
-drifted_from_default: true
+default_lang_commit: faacefc5407b59c9193caeb839616406cb8a5708
 ---
 
 [OpenTelemetryデモ](/ecosystem/demo/)のドキュメンテーションへようこそ。
@@ -29,7 +28,7 @@ drifted_from_default: true
 | Elixir     |                                                                                                           | [Flagd-UIサービス](services/flagd-ui/)                                                 |                                                                                                           |
 | Go         |                                                                                                           | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/)  | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/)                     |
 | Java       | [広告サービス](services/ad/)                                                                              |                                                                                        | [広告サービス](services/ad/)                                                                              |
-| JavaScript |                                                                                                           |                                                                                        | [支払いサービス](services/payment/)                                                                       |
+| JavaScript | [支払いサービス](services/payment/)                                                                       |                                                                                        | [支払いサービス](services/payment/)                                                                       |
 | TypeScript |                                                                                                           | [フロントエンド](services/frontend/), [React Nativeアプリ](services/react-native-app/) | [フロントエンド](services/frontend/)                                                                      |
 | Kotlin     |                                                                                                           | [不正検知サービス](services/fraud-detection/)                                          |                                                                                                           |
 | PHP        |                                                                                                           | [見積サービス](services/quote/)                                                        | [見積サービス](services/quote/)                                                                           |
@@ -54,7 +53,7 @@ drifted_from_default: true
 - [見積サービス](services/quote/)
 - [レコメンデーションサービス](services/recommendation/)
 - [配送サービス](services/shipping/)
-- [画像プロバイダーサービス](services/image-provider/?i18n-patch)
+- [画像プロバイダーサービス](services/image-provider/)
 - [React Native アプリケーション](services/react-native-app/)
 
 ## フィーチャーフラグシナリオ {#feature-flag-scenarios}
