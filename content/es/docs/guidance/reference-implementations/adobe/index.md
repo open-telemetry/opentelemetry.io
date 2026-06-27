@@ -26,7 +26,7 @@ basado en OpenTelemetry y diseñado para la simplicidad a escala masiva, con
 miles de Collectors ejecutándose por cada tipo de señal a lo largo de la
 infraestructura de la empresa.
 
-## Estructura organizativa
+## Estructura organizativa {#organizational-structure}
 
 El equipo central de observabilidad de Adobe es responsable de proporcionar la
 infraestructura de observabilidad en toda la empresa. Sin embargo, como explicó
@@ -41,7 +41,7 @@ las soluciones de monitorización existentes, diseñada principalmente para nuev
 aplicaciones y despliegues. La adopción es voluntaria, no obligatoria. Las
 aplicaciones existentes con monitorización establecida no se han migrado.
 
-## Adopción de OpenTelemetry
+## Adopción de OpenTelemetry {#opentelemetry-adoption}
 
 La decisión de adoptar OpenTelemetry vino impulsada por la alineación entre las
 capacidades del proyecto y los objetivos del equipo. El equipo de observabilidad
@@ -57,7 +57,7 @@ bloques de construcción para una oferta de observabilidad a nivel de plataforma
 que podía escalar sin requerir un profundo conocimiento de OpenTelemetry por
 parte de los equipos de servicio individuales.
 
-## Arquitectura: un pipeline de collectors de tres niveles
+## Arquitectura: un pipeline de collectors de tres niveles {#architecture-a-three-tier-collector-pipeline}
 
 La arquitectura de collectors de Adobe sigue un diseño de tres niveles: un Helm
 chart de cara al usuario que contiene dos collectors, un namespace gestionado y
@@ -66,7 +66,7 @@ observabilidad.
 
 ![Diagrama de arquitectura de Adobe](adobe-architecture.png)
 
-### Nivel 1: el Helm chart del usuario
+### Nivel 1: el Helm chart del usuario {#tier-1-the-user-helm-chart}
 
 El equipo de observabilidad proporciona un Helm chart que los equipos de
 servicio despliegan en sus propios namespaces. Este chart crea dos collectors:
@@ -86,7 +86,7 @@ los equipos de servicio pueden personalizar los exportadores y añadir nuevos
 destinos. Cuando cambia la configuración, solo se reinicia el collector de
 despliegue. El pod de la aplicación y su sidecar permanecen intactos.
 
-### Nivel 2: el namespace gestionado
+### Nivel 2: el namespace gestionado {#tier-2-the-managed-namespace}
 
 Los collectors de despliegue reenvían la telemetría a un namespace centralizado
 gestionado en su totalidad por el equipo de observabilidad. Una decisión
@@ -106,14 +106,14 @@ collectors del namespace gestionado usan esta cabecera con el
 [routing connector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/6aff35ab5351482a4664f29a7d5428cedcf61a92/connector/routingconnector?from_branch=main)
 para dirigir la telemetría al exportador correcto.
 
-### Nivel 3: los backends de observabilidad
+### Nivel 3: los backends de observabilidad {#tier-3-the-observability-backends}
 
 Los collectors del namespace gestionado exportan la telemetría a los destinos de
 backend gestionados por el equipo de observabilidad. Se admiten múltiples
 backends, y los equipos seleccionan su destino a través del archivo de valores
 del Helm chart.
 
-## Auto-instrumentación: dos líneas y funciona
+## Auto-instrumentación: dos líneas y funciona {#auto-instrumentation-two-lines-and-it-works}
 
 Adobe aprovecha el OpenTelemetry Operator para la auto-instrumentación en los
 lenguajes que admite OpenTelemetry. El Operator se despliega en cada clúster, y
@@ -139,7 +139,7 @@ Esta filosofía de diseño recorre toda la plataforma: hacer que la vía
 predeterminada requiera el menor esfuerzo posible, dejando al mismo tiempo la
 puerta abierta a casos de uso avanzados.
 
-## Distribución y componentes personalizados
+## Distribución y componentes personalizados {#custom-distribution-and-components}
 
 Adobe crea su propia distribución del OpenTelemetry Collector para incluir solo
 los componentes que utiliza, evitando dependencias innecesarias de Contrib. Esta
@@ -151,7 +151,7 @@ en la compilación personalizada.
 Adobe también mantiene componentes personalizados, en especial una extensión que
 aborda un reto fundamental de su arquitectura de collectors encadenados.
 
-### El problema de los collectors encadenados
+### El problema de los collectors encadenados {#the-chain-collector-problem}
 
 Cuando los collectors se encadenan, la visibilidad de los errores se convierte
 en un problema. La transacción OTLP entre el collector de despliegue del usuario
@@ -178,7 +178,7 @@ gustaría que el Collector incorporara un mecanismo de contrapresión
 (back-pressure) más general, en el que los fallos de los exportadores se
 propaguen aguas arriba a través de los collectors encadenados.
 
-## Despliegue y gestión del ciclo de vida
+## Despliegue y gestión del ciclo de vida {#deployment-and-lifecycle-management}
 
 El equipo de observabilidad actualiza su distribución del collector y el
 OpenTelemetry Operator con una cadencia trimestral. Los problemas en las
@@ -197,7 +197,7 @@ La solución es sencilla —actualizar el collector resuelve el problema—, per
 causado confusión a los equipos cuyos collectors se rompían de repente sin
 ningún cambio por su parte.
 
-### Cómo gestionar las deprecaciones de componentes
+### Cómo gestionar las deprecaciones de componentes {#navigating-component-deprecations}
 
 El despliegue de Adobe también ha tenido que sortear deprecaciones de
 componentes a medida que OpenTelemetry evoluciona. El equipo usaba originalmente
@@ -212,7 +212,7 @@ de trabajar con un proyecto en rápida evolución.
 > constantemente y los beneficios superan a los "problemas", si es que se puede
 > llamar problema a un desarrollo rápido», explicó Bogdan.
 
-## Lo que funciona bien
+## Lo que funciona bien {#what-works-well}
 
 La experiencia general ha sido positiva. El modelo de componentes del Collector,
 la experiencia de auto-instrumentación a través del Operator y el modelo de
@@ -221,7 +221,7 @@ naturaleza plug-and-play de la plataforma, en la que los equipos pasan de cero a
 una observabilidad completa con una configuración mínima, ha sido bien recibida
 por los equipos que la adoptan.
 
-## Consejos para otros
+## Consejos para otros {#advice-for-others}
 
 A partir de la experiencia de Adobe construyendo un pipeline de observabilidad a
 nivel de plataforma:
@@ -238,7 +238,7 @@ nivel de plataforma:
   una transacción OTLP no garantiza la entrega de extremo a extremo. Ten en
   cuenta cómo aparecerán los errores ante los usuarios.
 
-## Conclusiones
+## Conclusiones {#takeaways}
 
 La historia de Adobe ilustra cómo un equipo central de observabilidad puede
 ofrecer un pipeline de OpenTelemetry escalable y de autoservicio a lo largo de
