@@ -416,6 +416,8 @@ maintainers:
     teams:
       - arrow-approvers
       - arrow-triagers
+      - benchmarks-approvers
+      - benchmarks-maintainers
       - dotnet-approvers
       - dotnet-triagers
       - proto-approvers
@@ -1088,6 +1090,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/939550?v=4
   - name: martincostello
     teams:
+      - benchmarks-approvers
+      - benchmarks-maintainers
       - dotnet-approvers
       - dotnet-contrib-approvers
       - dotnet-contrib-maintainers
@@ -1664,6 +1668,13 @@ maintainers:
       - network-triagers
     html_url: https://github.com/yonch
     avatar_url: https://avatars.githubusercontent.com/u/3083478?v=4
+  - name: yordis
+    teams:
+      - erlang-approvers
+      - erlang-contrib-approvers
+      - erlang-contrib-maintainers
+    html_url: https://github.com/yordis
+    avatar_url: https://avatars.githubusercontent.com/u/4237280?v=4
   - name: zacharycmontoya
     teams:
       - dotnet-instrumentation-approvers
@@ -2279,12 +2290,6 @@ approvers:
       - docs-zh-approvers
     html_url: https://github.com/windsonsea
     avatar_url: https://avatars.githubusercontent.com/u/79828097?v=4
-  - name: yordis
-    teams:
-      - erlang-approvers
-      - erlang-contrib-approvers
-    html_url: https://github.com/yordis
-    avatar_url: https://avatars.githubusercontent.com/u/4237280?v=4
   - name: yuriolisa
     teams:
       - operator-approvers
