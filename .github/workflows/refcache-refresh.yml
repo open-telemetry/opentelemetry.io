@@ -12,7 +12,7 @@ name: Refcache refresh
 #
 on:
   schedule:
-    - cron: '33 9 * * *' # daily at 9:33 UTC
+    - cron: '33 5 * * *' # daily at 5:33 UTC
   workflow_dispatch:
     inputs:
       number_of_entries_to_refresh:

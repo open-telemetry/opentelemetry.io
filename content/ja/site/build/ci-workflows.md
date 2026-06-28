@@ -1,15 +1,12 @@
 ---
 title: CI ワークフロー
-linkTitle: CI ワークフロー
 description: >-
   PR のチェック、ラベル管理、その他の CI/CD プロセスを自動化する GitHub Actions ワークフロー。
 weight: 10
-default_lang_commit: 74ba66cadfe96161b3fa03fdf3d8ea4067b00849
-drifted_from_default: true
+default_lang_commit: b291d077d4c7aba2b43ec5a1648c02bb5c43f870
 ---
 
-すべてのワークフローファイルは
-[`.github/workflows/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/.github/workflows) 配下にあります。
+ワークフローと（ほとんどの）ヘルパースクリプトについては、[.github][] 配下の `workflow` フォルダと `scripts` フォルダを参照してください。
 
 ## PR 承認ラベル {#pr-approval-labels}
 
@@ -377,4 +374,7 @@ node scripts/gh/specs/pick-branch/cli.mjs --help
 | `label-manager.yml`        | PR ラベル（コンポーネントラベルと承認フロー）                                                     |
 | `component-owners.yml`     | コンポーネント所有権に基づくレビュアーの割り当て                                                  |
 
+<!-- prettier-ignore-start -->
 [lychee-pilot]: /site/build/npm-scripts/#notes
+[.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
+<!-- prettier-ignore-end -->
