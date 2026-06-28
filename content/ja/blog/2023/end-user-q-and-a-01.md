@@ -220,7 +220,7 @@ OpenTelemetry が実際にどのように実装されているかのストーリ
 ユーザーのフィードバックを大切にしており、すべてのユーザーの皆さんに体験を共有していただき、OpenTelemetry の改善を続けていくことを推奨しています❣️
 
 あなたの組織で OpenTelemetry をどのように使用しているかのストーリーを共有していただける方は、ぜひお聞かせください！
-共有方法:
+共有方法はこちらです。
 
 - [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf) の
   [#otel-endusers チャンネル](/community/end-user/slack-channel/)に参加する
