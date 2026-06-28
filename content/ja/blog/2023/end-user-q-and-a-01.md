@@ -166,7 +166,7 @@ J 氏とチームは OpenTelemetry を使用してメインフレームコード
 しかし残念ながら、PL/I（および [FORTRAN](https://en.wikipedia.org/wiki/Fortran) や [COBOL](https://en.wikipedia.org/wiki/COBOL) などの他のメインフレーム言語）向けの OpenTelemetry SDK は現在存在しません。
 チームはメインフレーム向けの OpenTelemetry を望んでいますが、そのような取り組みに十分な需要があるかどうかは不明です。
 
-**注:** メインフレーム向けの OpenTelemetry 実装に興味がある方、または作成された方は、ぜひご連絡ください！
+**NOTE:** メインフレーム向けの OpenTelemetry 実装に興味がある方、または作成された方は、ぜひご連絡ください！
 
 ## 課題と今後の展望 {#challengesmoving-forward}
 
