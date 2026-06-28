@@ -3,8 +3,7 @@ title: SDKの設定
 linkTitle: SDKの設定
 weight: 13
 aliases: [config]
-default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
-drifted_from_default: true
+default_lang_commit: 906771a74807a998613527841d296e49d3609a9f
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---
@@ -608,6 +607,6 @@ public class CustomTextMapPropagatorProvider implements ConfigurablePropagatorPr
 
 詳細については、以下のリソースを参照してください。
 
-- [使用ドキュメント](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#declarative-configuration)
-- [Javaエージェントでの例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#declarative-configuration)
+- [使用ドキュメント](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/declarative-config)
+- [Javaエージェントでの例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent-declarative-configuration)
 - [Javaエージェントなしでの例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/declarative-configuration)
