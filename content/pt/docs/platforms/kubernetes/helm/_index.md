@@ -6,7 +6,7 @@ default_lang_commit: 99a39c5e4e51daba968bfbb3eb078be4a14ad363
 
 ## Introdução
 
-[Helm](https://helm.sh/) é uma solução CLI para gerenciar aplicações Kubernetes.
+[Helm](https://helm.sh/) é uma solução de CLI para gerenciar aplicações Kubernetes.
 
 Se você optar por usar Helm, pode usar os
 [OpenTelemetry Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts)
