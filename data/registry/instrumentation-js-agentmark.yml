@@ -26,7 +26,7 @@ authors:
 package:
   name: '@agentmark-ai/sdk'
   registry: npm
-  version: 2.1.0
+  version: 2.1.5
 createdAt: '2026-06-04'
 isNative: false
 isFirstParty: false

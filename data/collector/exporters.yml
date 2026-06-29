@@ -404,6 +404,7 @@
     logs: beta
     metrics: beta
     traces: beta
+    profiles: development
 - name: stefexporter
   display_name: STEF Exporter
   repo: contrib
