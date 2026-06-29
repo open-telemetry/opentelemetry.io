@@ -20,4 +20,4 @@ package:
   version: 0.28.0
 isFirstParty: false
 deprecated:
-  reason: Upstream depenedency no longer maintained.
+  reason: Upstream dependency no longer maintained.

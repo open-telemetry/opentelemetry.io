@@ -1,3 +1,4 @@
+# cspell: ignore ottrace
 title: opentelemetry-propagator-ottrace
 registryType: propagator
 language: ruby
