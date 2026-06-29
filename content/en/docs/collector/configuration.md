@@ -277,7 +277,7 @@ receivers:
     endpoint: 0.0.0.0:8006
 
   # Data sources: metrics
-  hostmetrics:
+  host_metrics:
     scrapers:
       cpu:
       disk:

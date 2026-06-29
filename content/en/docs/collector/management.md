@@ -230,7 +230,7 @@ Click on the Collector in the server UI and paste the following content to the
 
 ```yaml
 receivers:
-  hostmetrics:
+  host_metrics:
     collection_interval: 10s
     scrapers:
       cpu:
@@ -243,7 +243,7 @@ exporters:
 service:
   pipelines:
     metrics:
-      receivers: [hostmetrics]
+      receivers: [host_metrics]
       exporters: [debug]
 ```
 
