@@ -91,7 +91,7 @@ through Docker Compose, `.env`, `.env.override`, or the local shell environment.
 
 ### Docker Compose configuration
 
-In `docker-compose.yml`, the service is named `chatbot` and is built from
+In `compose.agent.yaml`, the service is named `chatbot` and is built from
 `src/chatbot/Dockerfile`. It depends on the `agent` service. The frontend proxy
 receives `CHATBOT_HOST` and `CHATBOT_PORT`, so the chatbot can be exposed
 through the demo UI, usually under `/chatbot`.
