@@ -83,7 +83,7 @@ through Docker Compose, `.env`, `.env.override`, or the local shell environment.
 
 ### Docker Compose configuration
 
-In `docker-compose.yml`, the service is named `mcp` and is built from
+In `compose.agent.yaml`, the service is named `mcp` and is built from
 `src/mcp/Dockerfile`. It depends on the `agent` service. The `agent` service
 enables MCP usage via:
 
