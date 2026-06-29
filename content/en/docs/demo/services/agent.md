@@ -146,7 +146,7 @@ sensitive.
 
 ### Docker Compose configuration
 
-In `docker-compose.yml`, the service is named `agent` and is built from
+In `compose.agent.yaml`, the service is named `agent` and is built from
 `src/agent/Dockerfile`. The Compose configuration enables MCP by default for
 this service with:
 
