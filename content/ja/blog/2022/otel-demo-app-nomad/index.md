@@ -79,7 +79,7 @@ Traefik で公開されたサービス（および Traefik ダッシュボード
 
 > **NOTE:** 問題が発生した場合は、[Gotchas](https://github.com/avillela/hashiqube#gotchas) セクションを確認してください。
 
-すべてが起動して実行されると（これには数分かかります）、起動シーケンスの最後に以下のような表示が出て、準備完了を示します。
+すべてが起動して実行されると（これには数分かかります）、起動シーケンスの最後に以下のような表示が出て、準備完了となります。
 
 ![HashiQube 起動シーケンスの末尾のスクリーンキャプチャ。Nomad、Nomad ドキュメント、Traefik、Traefik ドキュメントの URL が表示されている](hashiqube-startup-sequence.png 'HashiQube 起動シーケンスの末尾のスクリーンキャプチャ')
 
@@ -223,7 +223,7 @@ tags = [        "traefik.http.routers.frontendproxy.rule=Host(`otel-demo.localho
 
 ![デモアプリのウェブストア UI のスクリーンキャプチャ](otel-demo-app-ui.jpg 'デモアプリのウェブストア UI のスクリーンキャプチャ')
 
-望遠鏡やアクセサリの素晴らしいラインナップを探索して、いくつか購入してみてください。😉🔭
+望遠鏡やアクセサリの素晴らしいラインナップを探索して、いくつか購入してみてください😉🔭
 
 **Jaeger UI:** <http://otel-demo.localhost/jaeger/ui/>
 
