@@ -188,6 +188,6 @@ de ponta a ponta.
       }
     }
 
-    renderAllChars(init()); // Start
+    renderAllChars(init()); // Iniciar
   })();
 </script>
