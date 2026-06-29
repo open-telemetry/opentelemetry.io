@@ -1,13 +1,10 @@
 // Medium-style click-to-zoom lightbox for content images
-// (see assets/js/imageZoom.js). Applies to images in the content body, except
-// linked images, which keep their normal pointer cursor.
+// (see assets/js/imageZoom.js). The zoom-in cursor is shown only on images the
+// script has marked as zoomable (`td-zoomable`); small images — badges, logos,
+// SDK icons — and linked images keep their normal cursor.
 
-.td-content img {
+.td-content img.td-zoomable {
   cursor: zoom-in;
-}
-
-.td-content a img {
-  cursor: pointer;
 }
 
 .td-zoom-overlay {

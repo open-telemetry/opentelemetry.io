@@ -1,16 +1,48 @@
-// Medium-style click-to-zoom lightbox for content images. Applies to every
-// image inside the `.td-content` body, except images that are themselves a
-// link (those should follow the link instead). Styles live in
-// assets/scss/_image_zoom.scss.
+// Medium-style click-to-zoom lightbox for content images. Applies to images
+// inside the `.td-content` body that are large enough to be worth zooming,
+// except images that are themselves a link (those should follow the link
+// instead). The size gate keeps small images — badges, logos, SDK icons — from
+// becoming zoomable. Styles live in assets/scss/_image_zoom.scss.
 
 (function () {
   // Content images, but not ones wrapped in a link.
   const SELECTOR = '.td-content img';
+  // Minimum intrinsic size (px) for an image to be zoomable. Images smaller
+  // than this in both dimensions are treated as icons/badges and skipped.
+  const MIN_SIZE = 200;
   let overlay = null;
 
-  // Checks that no ancestor of the image is a link
+  // True once the image has reported its intrinsic size and at least one
+  // dimension clears the threshold. naturalWidth/naturalHeight are 0 until the
+  // image loads, so callers should only rely on this for loaded images.
+  function isLargeEnough(img) {
+    return img.naturalWidth >= MIN_SIZE || img.naturalHeight >= MIN_SIZE;
+  }
+
+  // Checks that the image is content-body, not a link, and large enough.
   function isZoomable(img) {
-    return img.matches(SELECTOR) && !img.closest('a');
+    return img.matches(SELECTOR) && !img.closest('a') && isLargeEnough(img);
+  }
+
+  // Tags qualifying images with `td-zoomable` so the CSS can show the zoom-in
+  // cursor only on images that actually zoom. Intrinsic size is unknown until
+  // load, so defer the check for images that aren't loaded yet.
+  function markZoomable(img) {
+    if (isZoomable(img)) {
+      img.classList.add('td-zoomable');
+    }
+  }
+
+  function markAllZoomable() {
+    document.querySelectorAll(SELECTOR).forEach(function (img) {
+      if (img.complete) {
+        markZoomable(img);
+      } else {
+        img.addEventListener('load', function () {
+          markZoomable(img);
+        });
+      }
+    });
   }
 
   function buildOverlay() {
@@ -56,17 +88,12 @@
   });
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      close();
-      return;
-    }
-    if (
-      (e.key === 'Enter' || e.key === ' ') &&
-      e.target.tagName === 'IMG' &&
-      isZoomable(e.target)
-    ) {
-      e.preventDefault();
-      openFrom(e.target);
-    }
+    if (e.key === 'Escape') close();
   });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', markAllZoomable);
+  } else {
+    markAllZoomable();
+  }
 })();
