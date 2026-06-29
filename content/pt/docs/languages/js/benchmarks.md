@@ -154,7 +154,7 @@ de ponta a ponta.
             if (activeElems.length === 0) {
               return;
             }
-            // XXX: Undocumented. How can we know the index?
+            // XXX: Não documentado. Como podemos saber qual é o índice?
             const index = activeElems[0]._index;
             const url = dataset[index].commit.url;
             window.open(url, '_blank');
