@@ -57,7 +57,7 @@ jobs:
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           # Full history: the i18n fix/check scripts that the default command
           # runs diff localized pages against their `default_lang_commit`.
@@ -67,19 +67,15 @@ jobs:
       # Needed by the check:collector-sync scripts that the default command
       # runs; uv resolves the Python toolchain and project deps on first use.
       - name: Install uv
-        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
         with:
           enable-cache: true
 
       - name: Run housekeeping command and generate patch
         id: patch
-        # Unlike the `pr-actions.yml` caller, this runs default-branch code
-        # only (schedule and dispatch triggers), so the whole pipeline is
-        # trusted. The action tolerates a non-zero command exit so that
-        # fixes are still captured when residual check failures remain
-        # (the default command runs checks after fixes); such failures are
-        # surfaced by the report-failure job below. No post-command prune
-        # is needed: the default command's fix:refcache already prunes.
+        # Default-branch only (trusted; cf. pr-actions). Non-zero exit is OK—
+        # fixes still publish; residual failures fail in report-failure below.
+        # No post-command prune: fix:refcache in the default command handles it.
         uses: ./.github/actions/npm-script-patch
         with:
           command: ${{ inputs.command || 'fix-and-test:all' }}
