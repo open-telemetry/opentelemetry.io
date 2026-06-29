@@ -101,7 +101,7 @@ de ponta a ponta.
               label: name,
               data: dataset.map(d => d.bench.value),
               borderColor: color,
-              backgroundColor: color + '60', // Add alpha for #rrggbbaa,
+              backgroundColor: color + '60', // Adiciona alpha para #rrggbbaa,
               fill: false
             }
           ],
