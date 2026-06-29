@@ -98,7 +98,7 @@ MCP service instead of using its own built-in tools.
 
 ## Local development
 
-From the repository root, install dependencies. Because the service imports the
+From `src/mcp`, install dependencies. Because the service imports the
 shop tools from the shared source tree (the Dockerfile copies
 `src/shared/tools.py` into `src/mcp_server/`), make the same file available
 locally before running:
