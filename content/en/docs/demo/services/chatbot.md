@@ -98,7 +98,7 @@ through the demo UI, usually under `/chatbot`.
 
 ## Local development
 
-From the repository root, install dependencies. Run the Agent service first,
+From the `src/chatbot`, install dependencies. Run the Agent service first,
 then start the chatbot:
 
 ```sh
