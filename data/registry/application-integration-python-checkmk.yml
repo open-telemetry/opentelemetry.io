@@ -19,4 +19,4 @@ authors:
   - name: Checkmk GmbH
     email: community@checkmk.com
 createdAt: 2024-08-22
-isNative: True
+isNative: true
