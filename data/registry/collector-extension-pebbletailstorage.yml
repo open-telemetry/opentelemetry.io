@@ -20,4 +20,4 @@ createdAt: 2026-06-15
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/tailstorage/pebbletailstorageextension
-  version: v0.154.0
+  version: v0.155.0
