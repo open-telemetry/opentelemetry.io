@@ -16,7 +16,7 @@ out.
 
 ## Overview
 
-- Runtime: Python 3.11
+- Runtime: Python 3.14
 - MCP framework: [FastMCP](https://github.com/jlowin/fastmcp) (built on top of
   `mcp`)
 - Transport: HTTP streamable transport at `/mcp`
