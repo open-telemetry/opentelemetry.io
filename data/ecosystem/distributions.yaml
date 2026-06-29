@@ -200,8 +200,8 @@
   docsUrl: https://github.com/honeycombio/honeycomb-collector-distro/blob/main/README.md
   components: [Collector]
 - name: KM Agent - KloudMate's Distribution of OpenTelemetry Collector
-  url: https://github.com/kloudmate/km-agent
-  docsUrl: https://github.com/kloudmate/km-agent/blob/master/README.md
+  url: https://docs.kloudmate.com/kloudmate-agent/
+  docsUrl: https://docs.kloudmate.com/opentelemetry/using-opentelemetry-collector/
   components: [Collector]
 
 # OSS Collector Distros
