@@ -46,6 +46,7 @@ refiérelo
 reformatea
 renderizan
 semánticamente
+subcarpeta
 subproyecto
 subregión
 subsección
