@@ -2712,7 +2712,7 @@
     "LastSeen": "2026-06-24T10:39:37.79022352Z"
   },
   "https://dyte.io/blog/opentelemetry-at-dyte-part-i/": {
-    "StatusCode": 502,
+    "StatusCode": 206,
     "LastSeen": "2026-06-27T06:47:32.70630216Z"
   },
   "https://ebpf.io/": {
@@ -23916,11 +23916,11 @@
     "LastSeen": "2026-06-22T11:28:00.948472768Z"
   },
   "https://yaml.org/spec/1.2.2/": {
-    "StatusCode": 404,
+    "StatusCode": 206,
     "LastSeen": "2026-06-29T07:15:12.159523611Z"
   },
   "https://yaml.org/spec/1.2.2/#103-core-schema": {
-    "StatusCode": 404,
+    "StatusCode": 206,
     "LastSeen": "2026-06-29T07:15:13.715018403Z"
   },
   "https://youtu.be/5iM8n3uCo_U?si=PJ6tFYcYED3lhAcK": {
