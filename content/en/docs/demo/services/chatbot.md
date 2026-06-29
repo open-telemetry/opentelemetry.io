@@ -13,7 +13,7 @@ interface and forwards user messages to the [Agent service](../agent/).
 
 ## Overview
 
-- Runtime: Python 3.11
+- Runtime: Python 3.14
 - UI framework: Gradio
 - HTTP client: Requests
 - Observability: OpenTelemetry traces exported with OTLP/gRPC
