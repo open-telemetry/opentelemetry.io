@@ -202,7 +202,7 @@
     "cspell": "10.0.1",
     "gulp": "5.0.1",
     "hugo-extended": "0.163.2",
-    "js-yaml": "4.2.0",
+    "js-yaml": "5.1.0",
     "markdown-it": "14.2.0",
     "markdown-link-check": "3.14.2",
     "markdownlint": "0.41.0",
