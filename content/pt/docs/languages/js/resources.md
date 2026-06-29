@@ -209,7 +209,7 @@ const {
 } = require('@opentelemetry/resource-detector-container');
 const { envDetector, processDetector } = require('@opentelemetry/resources');
 
-// Para solução de problemas, defina o nível de log como DiagLogLevel.DEBUG
+// Para investigação de problemas, defina o nível de log como DiagLogLevel.DEBUG
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 
 const sdk = new opentelemetry.NodeSDK({
