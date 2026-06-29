@@ -197,7 +197,7 @@
     "ajv": "8.20.0",
     "ajv-errors": "3.0.0",
     "ajv-formats": "3.0.1",
-    "autoprefixer": "10.5.0",
+    "autoprefixer": "10.5.2",
     "code-excerpter": "0.2.0",
     "cspell": "10.0.1",
     "gulp": "5.0.1",
