@@ -75,7 +75,7 @@ de ponta a ponta.
         a.click();
       };
 
-      // Prepare data points for charts
+      // Prepara dados para gráficos
       return Object.keys(data.entries).map(name => ({
         name,
         dataSet: collectBenchesPerTestCase(data.entries[name]),
