@@ -68,7 +68,7 @@ variável de ambiente `OTEL_RESOURCE_ATTRIBUTES` para injetar o que for
 necessário. Além disso, você pode usar a variável de ambiente
 `OTEL_SERVICE_NAME` para definir o valor do atributo de recurso `service.name`.
 Por exemplo, o script a seguir adiciona atributos de recurso de
-[Serviço][service], [Host][host] e [SO][os]:
+[Serviço][service], [Host][host] e [Sistema Operacional][os]:
 
 ```console
 $ env OTEL_SERVICE_NAME="app.js" OTEL_RESOURCE_ATTRIBUTES="service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" \
