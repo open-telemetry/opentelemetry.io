@@ -16,7 +16,7 @@ MCP-provided tools to interact with the demo application.
 
 ## Overview
 
-- Runtime: Python 3.11
+- Runtime: Python 3.14
 - Web framework: FastAPI served by Uvicorn
 - Agent framework: LangChain and LangGraph prebuilt components
 - LLM client: `langchain_openai.ChatOpenAI`, with support for non-OpenAI models
