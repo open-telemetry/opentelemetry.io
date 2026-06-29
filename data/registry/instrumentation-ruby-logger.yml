@@ -1,0 +1,20 @@
+title: opentelemetry-instrumentation-logger
+registryType: instrumentation
+language: ruby
+tags:
+  - logger
+  - instrumentation
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-logger/v0.4.0/instrumentation/logger
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-logger/0.4.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
+license: Apache-2.0
+description: Logger instrumentation for the OpenTelemetry framework
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-06-29
+package:
+  registry: gems
+  name: opentelemetry-instrumentation-logger
+  version: 0.4.0

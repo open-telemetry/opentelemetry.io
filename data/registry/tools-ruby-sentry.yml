@@ -1,4 +1,4 @@
-title: Ruby Integration for Sentry
+title: sentry-opentelemetry
 registryType: utilities
 language: ruby
 tags:
@@ -9,16 +9,14 @@ tags:
   - sentry
   - error monitoring
 license: MIT
-description:
-  The Sentry OpenTelemetry Ruby integration provides a processor and propagator
-  to send data to Sentry and to associate traces/spans to Sentry errors. For
-  configuration details, see [OpenTelemetry
-  Support](https://docs.sentry.io/platforms/ruby/performance/instrumentation/opentelemetry/).
+description: A gem that provides OpenTelemetry integration for the Sentry error logger
 authors:
   - name: Sentry authors
     email: otel@sentry.io
 urls:
-  repo: https://github.com/getsentry/sentry-ruby/tree/master/sentry-opentelemetry
+  repo: https://github.com/getsentry/sentry-ruby/tree/6.6.2/sentry-opentelemetry
+  docs: http://www.rubydoc.info/gems/sentry-opentelemetry/6.6.2
+  website: https://github.com/getsentry/sentry-ruby/tree/6.6.2/sentry-opentelemetry
 createdAt: 2023-01-31
 package:
   registry: gems

@@ -1,0 +1,20 @@
+title: opentelemetry-propagator-vitess
+registryType: propagator
+language: ruby
+tags:
+  - vitess
+  - propagator
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-propagator-vitess/v0.5.0/propagator/vitess
+  docs: https://rubydoc.info/gems/opentelemetry-propagator-vitess/0.5.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
+license: Apache-2.0
+description: Vitess Context Propagation Extension for the OpenTelemetry framework
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-06-29
+package:
+  registry: gems
+  name: opentelemetry-propagator-vitess
+  version: 0.5.0

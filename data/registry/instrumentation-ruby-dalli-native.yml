@@ -22,4 +22,8 @@ authors:
     email: mperham@gmail.com
     url: https://github.com/mperham
 createdAt: '2026-02-17'
+package:
+  registry: gems
+  name: dalli
+  version: 5.0.5
 isNative: true

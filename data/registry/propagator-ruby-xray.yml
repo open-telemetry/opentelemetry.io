@@ -1,0 +1,20 @@
+title: opentelemetry-propagator-xray
+registryType: propagator
+language: ruby
+tags:
+  - xray
+  - propagator
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-propagator-xray/v0.27.0/propagator/xray
+  docs: https://rubydoc.info/gems/opentelemetry-propagator-xray/0.27.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
+license: Apache-2.0
+description: XRay Context Propagation Extension for the OpenTelemetry framework
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-06-29
+package:
+  registry: gems
+  name: opentelemetry-propagator-xray
+  version: 0.27.0

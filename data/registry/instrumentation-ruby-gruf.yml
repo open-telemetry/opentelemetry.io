@@ -1,5 +1,5 @@
 # cSpell:ignore gruf
-title: OpenTelemetry gruf Instrumentation
+title: opentelemetry-instrumentation-gruf
 registryType: instrumentation
 language: ruby
 tags:
@@ -7,12 +7,14 @@ tags:
   - grpc
   - instrumentation
   - ruby
-license: Apache 2.0
-description: Instrumentation for gruf (gRPC Ruby Framework).
+license: Apache-2.0
+description: Gruf instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/gruf
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-gruf/v0.6.1/instrumentation/gruf
+  docs: https://open-telemetry.github.io/opentelemetry-ruby-contrib/opentelemetry-instrumentation-gruf/v0.6.1
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems
