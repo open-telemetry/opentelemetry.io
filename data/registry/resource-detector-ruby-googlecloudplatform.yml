@@ -2,7 +2,7 @@ title: opentelemetry-resource-detector-google_cloud_platform
 registryType: resource-detector
 language: ruby
 tags:
-  - googlecloudplatform
+  - google-cloud
   - resource-detector
   - ruby
 urls:

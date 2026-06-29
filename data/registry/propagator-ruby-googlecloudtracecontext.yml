@@ -2,7 +2,8 @@ title: opentelemetry-propagator-google_cloud_trace_context
 registryType: propagator
 language: ruby
 tags:
-  - googlecloudtracecontext
+  - google-cloud
+  - google-cloud-trace-context
   - propagator
   - ruby
 urls:

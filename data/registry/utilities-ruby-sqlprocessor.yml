@@ -2,7 +2,7 @@ title: opentelemetry-helpers-sql-processor
 registryType: utilities
 language: ruby
 tags:
-  - sqlprocessor
+  - sql-processor
   - utilities
   - ruby
 urls:

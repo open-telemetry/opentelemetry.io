@@ -2,7 +2,7 @@ title: opentelemetry-helpers-sql-obfuscation
 registryType: utilities
 language: ruby
 tags:
-  - sqlobfuscation
+  - sql-obfuscation
   - utilities
   - ruby
 urls:

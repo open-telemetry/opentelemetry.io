@@ -1,3 +1,4 @@
+# cspell:ignore vitess
 title: opentelemetry-propagator-vitess
 registryType: propagator
 language: ruby

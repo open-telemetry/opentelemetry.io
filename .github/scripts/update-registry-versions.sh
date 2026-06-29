@@ -26,7 +26,7 @@ fi
 body=""
 
 for yaml_file in ${FILES}; do
-    echo $yaml_file
+    echo "$yaml_file"
     # Check if yq is installed
     if ! command -v yq &> /dev/null; then
         echo "yq could not be found, please install yq."
@@ -81,9 +81,9 @@ for yaml_file in ${FILES}; do
         case $registry in
             gems)
                 gem_json="$(curl -s "https://rubygems.org/api/v1/gems/${package_name}.json")"
-                ${UPDATE_YAML} ".title = \"$(jq -r '.name' <<< "$gem_json")"\" $yaml_file
-                ${UPDATE_YAML} ".description = \"$(jq -r '.info' <<< "$gem_json")"\" $yaml_file
-                ${UPDATE_YAML} ".license = \"$(jq -r '.licenses | join(", ")' <<< "$gem_json")"\" $yaml_file
+                ${UPDATE_YAML} ".title = \"$(jq -r '.name' <<< "$gem_json")"\" "$yaml_file"
+                ${UPDATE_YAML} ".description = \"$(jq -r '.info' <<< "$gem_json")"\" "$yaml_file"
+                ${UPDATE_YAML} ".license = \"$(jq -r '.licenses | join(", ")' <<< "$gem_json")"\" "$yaml_file"
                 url="$(jq -r '.documentation_uri' <<< "$gem_json")"
                 if [ -n "$url" ] && [ "$url" != "null" ]; then
                     ${UPDATE_YAML} ".urls.docs = \"$url\"" "$yaml_file"
@@ -121,7 +121,7 @@ for yaml_file in ${FILES}; do
         elif [ -z "$latest_version" ]; then
             echo "${yaml_file} ($registry): Could not get latest version from registry."
         elif [ -z "$current_version" ]; then
-            ${UPDATE_YAML} ".package.version = \"$latest_version\"" $yaml_file
+            ${UPDATE_YAML} ".package.version = \"$latest_version\"" "$yaml_file"
             update_metadata "$name" "$registry" "$yaml_file"
             row="${yaml_file} ($registry): Version field was missing. Populated with the latest version: $latest_version"
             echo "${row}"
