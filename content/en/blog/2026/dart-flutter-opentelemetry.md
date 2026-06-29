@@ -2,7 +2,6 @@
 title: 'Call for Contributors: OpenTelemetry for Dart and Flutter'
 linkTitle: 'CfC: OTel for Dart and Flutter'
 date: 2026-06-29
-draft: true # remove when published
 author: >-
   [Michael Bushe](https://github.com/michaelbushe) (Mindful
   Software/Dartastic.io)
