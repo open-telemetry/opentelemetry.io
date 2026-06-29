@@ -55,15 +55,6 @@ Response body:
 
 The exact response shape is produced by the LangGraph agent invocation.
 
-### Default requests
-
-To omit the requirement of LLM access, a limited number of requests have
-pre-defined responses. Requests users can try out are:
-
-1. Show all available products in the store.
-2. What currencies are supported by the Astronomy Shop?
-3. What current promotions are available on binoculars?
-
 ## Traces
 
 This service uses the [Traceloop SDK](https://www.traceloop.com/) layered on top
