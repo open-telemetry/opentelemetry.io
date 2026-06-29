@@ -28,7 +28,7 @@ de ambiente `OTEL_RESOURCE_ATTRIBUTES`. Você pode verificar o que ele detecta
 ativando o log de diagnóstico no seu arquivo de instrumentação:
 
 ```javascript
-// Para solução de problemas, defina o nível de log como DiagLogLevel.DEBUG
+// Para investigação de problemas, defina o nível de log como DiagLogLevel.DEBUG
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 ```
 
