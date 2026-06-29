@@ -1,0 +1,20 @@
+title: opentelemetry-exporter-otlp-logs
+registryType: exporter
+language: ruby
+tags:
+  - otlplogs
+  - exporter
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-exporter-otlp-logs/v0.5.1/exporter/otlp-logs
+  docs: https://rubydoc.info/gems/opentelemetry-exporter-otlp-logs/0.5.1
+  website: https://github.com/open-telemetry/opentelemetry-ruby
+license: Apache-2.0
+description: Experimental OTLP Logs exporter for the OpenTelemetry framework
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-06-29
+package:
+  registry: gems
+  name: opentelemetry-exporter-otlp-logs
+  version: 0.5.1

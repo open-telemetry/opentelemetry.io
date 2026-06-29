@@ -1,0 +1,20 @@
+title: opentelemetry-propagator-ottrace
+registryType: propagator
+language: ruby
+tags:
+  - ottrace
+  - propagator
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-propagator-ottrace/v0.25.0/propagator/ottrace
+  docs: https://rubydoc.info/gems/opentelemetry-propagator-ottrace/0.25.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
+license: Apache-2.0
+description: OTTrace Context Propagation Extension for the OpenTelemetry framework
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-06-29
+package:
+  registry: gems
+  name: opentelemetry-propagator-ottrace
+  version: 0.25.0

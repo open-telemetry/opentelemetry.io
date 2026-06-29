@@ -5,16 +5,18 @@ tags:
   - jaeger
   - exporter
   - ruby
-license: Apache 2.0
-description:
-  The opentelemetry-exporter-jaeger gem provides a Jaeger exporter for
-  OpenTelemetry Ruby
+license: Apache-2.0
+description: Jaeger trace exporter for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/exporter/jaeger
+  docs: https://open-telemetry.github.io/opentelemetry-ruby/opentelemetry-exporter-jaeger/v0.24.1
+  website: https://github.com/open-telemetry/opentelemetry-ruby
 createdAt: 2022-11-07
 package:
   registry: gems
   name: opentelemetry-exporter-jaeger
   version: 0.24.1
+deprecated:
+  reason: End of life.
