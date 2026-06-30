@@ -118,6 +118,10 @@ if [[ "$repo" == "opentelemetry-specification"
   )
 fi
 
+# Sync any code-excerpt directives that embed upstream files, so the build
+# doesn't fail if the new version changed an excerpted file.
+npm run fix:code-excerpts
+
 $GIT checkout -b "$branch"
 $GIT commit -a -m "$message"
 $GIT push --set-upstream origin "$branch"
