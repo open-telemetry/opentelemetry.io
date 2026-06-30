@@ -9,7 +9,8 @@ tags:
   - sentry
   - error monitoring
 license: MIT
-description: A gem that provides OpenTelemetry integration for the Sentry error logger
+description:
+  A gem that provides OpenTelemetry integration for the Sentry error logger
 authors:
   - name: Sentry authors
     email: otel@sentry.io

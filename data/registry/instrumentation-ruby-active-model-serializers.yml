@@ -5,7 +5,8 @@ tags:
   - ruby
   - instrumentation
 license: Apache-2.0
-description: Active Model Serializers instrumentation for the OpenTelemetry framework
+description:
+  Active Model Serializers instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
