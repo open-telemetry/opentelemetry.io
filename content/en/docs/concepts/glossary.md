@@ -57,9 +57,19 @@ relationship between events and services. See [baggage spec][baggage].
 
 The number of unique values for a given [Attribute](#attribute) or set of
 attributes. High cardinality means many unique values, which can impact the
-performance and storage requirements of telemetry backends. For example, a
-`user_id` attribute would have high cardinality, while a `status_code` attribute
-with values like "200", "404", "500" would have low cardinality.
+performance and storage requirements of telemetry backends, and the memory used
+by the [Metric](#metric) SDK. For example, a `user_id` attribute would have high
+cardinality, while a `status_code` attribute with values like "200", "404",
+"500" would have low cardinality.
+
+### Cardinality limit
+
+A configurable maximum on the number of unique attribute combinations a
+[Metric](#metric) SDK tracks for a single metric stream per collection cycle,
+used to bound memory usage. When the limit is reached, further combinations are
+aggregated into a single overflow data point identified by the
+`otel.metric.overflow=true` attribute. See
+[Cardinality limits](/docs/concepts/signals/metrics/#cardinality-limits).
 
 ### Client library
 
