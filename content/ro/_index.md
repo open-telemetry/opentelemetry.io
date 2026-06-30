@@ -85,13 +85,13 @@ OpenTelemetry [se integrează][] cu multe biblioteci și framework-uri, și supo
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry este un proiect [absolvit][] al [CNCF][]-ului**.<br> Format
+**OpenTelemetry este un proiect [matur][] al [CNCF][]-ului**.<br> Format
 printr-o fuziune ale proiectelor OpenTracing și OpenCensus.
 
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[absolvit]: https://www.cncf.io/projects/
+[matur]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}
