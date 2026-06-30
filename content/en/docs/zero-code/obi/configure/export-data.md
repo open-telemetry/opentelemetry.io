@@ -6,7 +6,7 @@ description:
   and OpenTelemetry traces
 weight: 10
 # prettier-ignore
-cSpell:ignore: AsterixDB Chroma couchbase genai gonic jackc libcudart memcached Milvus nats pgxpool Pinecone pyserver Qdrant Qwen rerank segmentio spanmetrics sunrpc SunRPC Weaviate Zilliz
+cSpell:ignore: AsterixDB Chroma couchbase genai gonic jackc libcudart memcached Milvus nats pgxpool Pinecone pyserver Qdrant Qwen rerank segmentio spanmetrics sunrpc Weaviate Zilliz
 ---
 
 OBI can export OpenTelemetry metrics and traces to a OTLP endpoint.
