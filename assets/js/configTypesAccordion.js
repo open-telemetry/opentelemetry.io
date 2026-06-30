@@ -59,7 +59,7 @@ function renderControls(types, i18n, schemaVersion, schemaSourceUrl) {
   const total = types.length;
   const rootType = types.find((t) => t.isRoot);
   const rootLinkHtml = rootType
-    ? `<p>The root schema type is <a href="#ct-item-${escapeAttr(rootType.id)}" data-ct-type-link="${escapeAttr(rootType.id)}">${escapeHtml(rootType.name)}</a>.</p>`
+    ? `<p>The root schema type is <a href="#type-${escapeAttr(rootType.id)}" data-ct-type-link="${escapeAttr(rootType.id)}">${escapeHtml(rootType.name)}</a>.</p>`
     : '';
   const versionHtml =
     schemaVersion && schemaSourceUrl
@@ -105,7 +105,7 @@ function renderTypeCell(prop, knownTypeIds) {
     return `<code class="ct-prop-type">${escapeHtml(prop.type)}</code>`;
   }
   const refId = escapeAttr(prop.typeRef.toLowerCase());
-  const linkHtml = `<a href="#ct-item-${refId}" data-ct-type-link="${refId}">${escapeHtml(prop.typeRef)}</a>`;
+  const linkHtml = `<a href="#type-${refId}" data-ct-type-link="${refId}">${escapeHtml(prop.typeRef)}</a>`;
   if (prop.type === prop.typeRef) {
     return `<code class="ct-prop-type">${linkHtml}</code>`;
   }
@@ -236,7 +236,7 @@ function renderUsages(type) {
   const items = type.usages
     .map(
       (u) =>
-        `<li><a href="#ct-item-${escapeAttr(u.typeId)}" data-ct-type-link="${escapeAttr(u.typeId)}">${escapeHtml(u.typeName)}</a>.<code>${escapeHtml(u.propertyName)}</code></li>`,
+        `<li><a href="#type-${escapeAttr(u.typeId)}" data-ct-type-link="${escapeAttr(u.typeId)}">${escapeHtml(u.typeName)}</a>.<code>${escapeHtml(u.propertyName)}</code></li>`,
     )
     .join('');
   return `
@@ -272,7 +272,7 @@ function renderTypeItem(type, i18n, knownTypeIds) {
 
   return `
 <div class="accordion-item"
-     id="ct-item-${escapeAttr(type.id)}"
+     id="type-${escapeAttr(type.id)}"
      data-type-id="${escapeAttr(type.id)}"
      data-is-experimental="${type.isExperimental}">
   <h3 class="accordion-header">
@@ -396,6 +396,13 @@ function wireControls(container, types, i18n) {
       state.filter = btn.dataset.ctFilter;
       applyFilters(container, types, state);
     });
+  });
+
+  // Update URL hash when an accordion item is expanded.
+  accordion.addEventListener('show.bs.collapse', (e) => {
+    const item = e.target.closest('.accordion-item');
+    if (!item?.dataset.typeId) return;
+    history.replaceState(null, '', `#type-${item.dataset.typeId}`);
   });
 
   // Expand / collapse all
