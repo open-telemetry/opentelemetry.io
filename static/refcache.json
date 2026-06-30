@@ -23132,8 +23132,8 @@
     "LastSeen": "2026-06-25T11:05:37.059Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/shim-opentracing": {
-    "StatusCode": 403,
-    "LastSeen": "2026-06-30T06:56:45.807970013Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T13:05:38.128Z"
   },
   "https://www.npmjs.com/search?q=%40cspell%2Fdict": {
     "StatusCode": 200,
