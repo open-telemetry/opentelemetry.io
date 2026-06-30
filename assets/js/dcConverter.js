@@ -1,4 +1,4 @@
-import yaml from 'js-yaml';
+import { load, dump } from 'js-yaml';
 
 // Property -> DC path (under instrumentation/development)
 // From ConfigPropertiesBackedDeclarativeConfigProperties.java SPECIAL_MAPPINGS
@@ -179,7 +179,7 @@ function flattenYaml(obj, prefix = '') {
 
 function parseYamlInput(text) {
   try {
-    const parsed = yaml.load(text);
+    const parsed = load(text);
     if (parsed == null || typeof parsed !== 'object') return [];
     return flattenYaml(parsed);
   } catch {
@@ -348,14 +348,14 @@ function buildDcYaml(properties, source, gettingStartedYaml) {
   const dumpOpts = {
     indent: 2,
     lineWidth: -1,
-    quotingType: "'",
+    quoteStyle: 'single',
     forceQuotes: false,
     noRefs: true,
     sortKeys: false,
   };
 
   function dumpClean(obj) {
-    return yaml.dump(obj, dumpOpts).replace(/: null$/gm, ':');
+    return dump(obj, dumpOpts).replace(/: null$/gm, ':');
   }
 
   // ── Getting-started skeleton from opentelemetry-configuration repo ──
@@ -368,7 +368,7 @@ function buildDcYaml(properties, source, gettingStartedYaml) {
   // Parse the skeleton to apply SDK overrides (propagators, resource attributes)
   let skeleton;
   try {
-    skeleton = yaml.load(skeletonYaml);
+    skeleton = load(skeletonYaml);
   } catch {
     skeleton = {};
   }
