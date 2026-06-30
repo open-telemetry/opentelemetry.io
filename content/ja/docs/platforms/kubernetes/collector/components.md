@@ -2,7 +2,6 @@
 title: Kubernetesのための重要なコンポーネント
 linkTitle: コンポーネント
 default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
-drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics k8sattributes kubelet kubeletstats replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---

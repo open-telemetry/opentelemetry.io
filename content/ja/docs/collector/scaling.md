@@ -2,7 +2,6 @@
 title: コレクターのスケーリング
 weight: 26
 default_lang_commit: e14614722d84ee9dc8e66e3287afb1ca714f3819
-drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: fluentd hostmetrics Linkerd loadbalancer loadbalancing statefulset
 ---

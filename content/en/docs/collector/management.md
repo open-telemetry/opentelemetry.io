@@ -2,7 +2,7 @@
 title: Management
 description: How to manage your OpenTelemetry Collector deployment at scale
 weight: 23
-cSpell:ignore: backpressure distro opampsupervisor
+cSpell:ignore: backpressure distro hostmetrics opampsupervisor
 ---
 
 This document describes how you can manage your OpenTelemetry Collector
