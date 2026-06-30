@@ -21,7 +21,7 @@ description: >-
   An OpenTelemetry Collector exporter that consumes agent traces and emits a
   per-trace, hash-chained, Ed25519-signed, independently verifiable audit log.
   Records governance/guardrail decisions already present in spans and ships a
-  standalone verifier CLI. Observability only — it does not enforce or block.
+  standalone verifier CLI.
 authors:
   - name: Surabhi Pradhan
     url: https://github.com/surpradhan
