@@ -416,6 +416,8 @@ maintainers:
     teams:
       - arrow-approvers
       - arrow-triagers
+      - benchmarks-approvers
+      - benchmarks-maintainers
       - dotnet-approvers
       - dotnet-triagers
       - proto-approvers
@@ -1088,6 +1090,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/939550?v=4
   - name: martincostello
     teams:
+      - benchmarks-approvers
+      - benchmarks-maintainers
       - dotnet-approvers
       - dotnet-contrib-approvers
       - dotnet-contrib-maintainers
@@ -1664,6 +1668,13 @@ maintainers:
       - network-triagers
     html_url: https://github.com/yonch
     avatar_url: https://avatars.githubusercontent.com/u/3083478?v=4
+  - name: yordis
+    teams:
+      - erlang-approvers
+      - erlang-contrib-approvers
+      - erlang-contrib-maintainers
+    html_url: https://github.com/yordis
+    avatar_url: https://avatars.githubusercontent.com/u/4237280?v=4
   - name: zacharycmontoya
     teams:
       - dotnet-instrumentation-approvers
@@ -2279,12 +2290,6 @@ approvers:
       - docs-zh-approvers
     html_url: https://github.com/windsonsea
     avatar_url: https://avatars.githubusercontent.com/u/79828097?v=4
-  - name: yordis
-    teams:
-      - erlang-approvers
-      - erlang-contrib-approvers
-    html_url: https://github.com/yordis
-    avatar_url: https://avatars.githubusercontent.com/u/4237280?v=4
   - name: yuriolisa
     teams:
       - operator-approvers
@@ -2443,6 +2448,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/sharadraju
     avatar_url: https://avatars.githubusercontent.com/u/86588332?v=4
+  - name: singhvibhanshu
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/singhvibhanshu
+    avatar_url: https://avatars.githubusercontent.com/u/135852806?v=4
   - name: sudarshan12s
     teams:
       - javascript-contrib-triagers
@@ -2649,9 +2659,6 @@ members:
   - name: gramidt
     html_url: https://github.com/gramidt
     avatar_url: https://avatars.githubusercontent.com/u/1246157?v=4
-  - name: gregkalapos
-    html_url: https://github.com/gregkalapos
-    avatar_url: https://avatars.githubusercontent.com/u/1091853?v=4
   - name: gruebel
     html_url: https://github.com/gruebel
     avatar_url: https://avatars.githubusercontent.com/u/33207684?v=4
@@ -2976,9 +2983,6 @@ members:
   - name: shivanshuraj1333
     html_url: https://github.com/shivanshuraj1333
     avatar_url: https://avatars.githubusercontent.com/u/26167974?v=4
-  - name: singhvibhanshu
-    html_url: https://github.com/singhvibhanshu
-    avatar_url: https://avatars.githubusercontent.com/u/135852806?v=4
   - name: sokoide
     html_url: https://github.com/sokoide
     avatar_url: https://avatars.githubusercontent.com/u/1452761?v=4

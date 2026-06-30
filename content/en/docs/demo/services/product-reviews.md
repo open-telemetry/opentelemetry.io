@@ -13,7 +13,7 @@ specific product.
 
 The product reviews are stored in the database (PostgreSQL).
 
-[Product Reviews service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/product-reviews/)
+[Product Reviews service source](https://github.com/open-telemetry/opentelemetry-demo/tree/db0d981326ee0161d706c949061686d7823d99a2/src/product-reviews)
 
 ## LLM Configuration
 
