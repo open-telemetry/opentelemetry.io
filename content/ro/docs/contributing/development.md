@@ -73,8 +73,8 @@ cd opentelemetry.io
 nvm install
 ```
 
-    Pentru [instalarea pe Windows][nodejs-win], utilizează [nvm-windows][]. Recomandăm
-    folosirea `cmd` și nu Windows PowerShell pentru comanda de mai jos:
+Pentru [instalarea pe Windows][nodejs-win], utilizează [nvm-windows][]. Recomandăm
+folosirea `cmd` și nu Windows PowerShell pentru comanda de mai jos:
 
 ```cmd
 nvm install lts && nvm use lts
@@ -240,11 +240,9 @@ npm run check:code-excerpts
 [code-excerpter]: https://github.com/chalin/code-excerpter
 
 <!-- prettier-ignore-start -->
-[clone]:
-https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+[clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
-[cs-devc]:
-https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
+[cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io
@@ -254,9 +252,8 @@ https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/add
 [localhost:8888]: http://localhost:8888
 [netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
-[nodejs-win]:
-https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
-[nvm]:
-https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+[nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
+[nvm-windows]: https://github.com/coreybutler/nvm-windows
+[nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [WSL]: https://learn.microsoft.com/en-us/windows/wsl/install
 <!-- prettier-ignore-end -->
