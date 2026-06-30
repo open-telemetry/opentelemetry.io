@@ -3,6 +3,7 @@ title: 广告服务
 linkTitle: 广告
 aliases: [adservice]
 default_lang_commit: 6588437286e916c2eb44a721161ce46c21f1706b
+drifted_from_default: true
 ---
 
 此服务根据上下文关键词为用户提供合适的广告。广告内容为商店中可用的商品。
