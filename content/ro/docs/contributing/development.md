@@ -73,8 +73,8 @@ cd opentelemetry.io
 nvm install
 ```
 
-Pentru [instalarea pe Windows][nodejs-win], utilizează [nvm-windows][]. Recomandăm
-folosirea `cmd` și nu Windows PowerShell pentru comanda de mai jos:
+Pentru [instalarea pe Windows][nodejs-win], utilizează [nvm-windows][].
+Recomandăm folosirea `cmd` și nu Windows PowerShell pentru comanda de mai jos:
 
 ```cmd
 nvm install lts && nvm use lts
