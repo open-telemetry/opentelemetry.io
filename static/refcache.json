@@ -11,6 +11,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-25T10:35:24.295061186Z"
   },
+  "http://www.rubydoc.info/gems/sentry-opentelemetry/6.6.2": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:50.163881214Z"
+  },
   "https://activej.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T15:22:42.146720023Z"
@@ -3491,6 +3495,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:35:30.019734822Z"
   },
+  "https://github.com/Datadog/dd-opentelemetry-exporter-ruby": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:13.908359719Z"
+  },
   "https://github.com/DavidAnson/markdownlint": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T15:22:28.714052398Z"
@@ -5163,6 +5171,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:36:33.197948594Z"
   },
+  "https://github.com/elastic/elasticsearch-ruby/tree/main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:26.576299691Z"
+  },
   "https://github.com/elastic/ottl-playground": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T15:32:53.832167878Z"
@@ -5362,6 +5374,10 @@
   "https://github.com/getsentry/sentry-python/tree/master/sentry_sdk/integrations/opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2026-06-24T10:46:59.270430492Z"
+  },
+  "https://github.com/getsentry/sentry-ruby/tree/6.6.2/sentry-opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:50.108324841Z"
   },
   "https://github.com/getsentry/sentry-ruby/tree/master/sentry-opentelemetry": {
     "StatusCode": 206,
@@ -13275,6 +13291,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-27T06:43:53.399295054Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:18.495268588Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/helpers/sql-obfuscation": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:52.254092364Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation": {
     "StatusCode": 206,
     "LastSeen": "2026-06-26T06:55:17.438351741Z"
@@ -13475,6 +13499,258 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-24T10:46:41.944833329Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-helpers-mysql/v0.6.0/helpers/mysql": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:50.633196544Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-helpers-sql-processor/v0.5.0/helpers/sql-processor": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:52.918446996Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-helpers-sql/v0.4.0/helpers/sql": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:51.348947886Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-action_mailer/v0.8.1/instrumentation/action_mailer": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:19.490198748Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-action_pack/v0.18.0/instrumentation/action_pack": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:17.984915031Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-action_view/v0.13.0/instrumentation/action_view": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:19.036093451Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-active_job/v0.13.0/instrumentation/active_job": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:19.922677304Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-active_model_serializers/v0.25.0/instrumentation/active_model_serializers": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:20.374029092Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-active_record/v0.13.0/instrumentation/active_record": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:20.890729253Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-active_storage/v0.5.1/instrumentation/active_storage": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:21.292406403Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-active_support/v0.12.0/instrumentation/active_support": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:21.821438119Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-all/v0.94.0/instrumentation/all": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:22.246583112Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-anthropic/v0.5.0/instrumentation/anthropic": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:22.715003442Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-aws_lambda/v0.7.0/instrumentation/aws_lambda": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:23.637913273Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-aws_sdk/v0.12.0/instrumentation/aws_sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:23.216570847Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-base/v0.26.1/instrumentation/base": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:24.125713558Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-bunny/v0.25.0/instrumentation/bunny": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:24.527881114Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-concurrent_ruby/v0.25.0/instrumentation/concurrent_ruby": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:24.931295896Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-dalli/v0.30.0/instrumentation/dalli": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:25.327107949Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-delayed_job/v0.26.0/instrumentation/delayed_job": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:25.94304157Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-ethon/v0.29.0/instrumentation/ethon": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:27.044844646Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-excon/v0.29.1/instrumentation/excon": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:27.393152482Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-factory_bot/v0.2.0/instrumentation/factory_bot": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:27.821926782Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-faraday/v0.33.0/instrumentation/faraday": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:28.274534486Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-grape/v0.7.0/instrumentation/grape": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:28.710358895Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-graphql/v0.32.0/instrumentation/graphql": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:29.217534295Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-grpc/v0.5.1/instrumentation/grpc": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:29.599937005Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-gruf/v0.6.1/instrumentation/gruf": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:30.016811903Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-http/v0.30.0/instrumentation/http": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:30.44181242Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-http_client/v0.29.0/instrumentation/http_client": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:30.894502899Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-httpx/v0.8.0/instrumentation/http": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:31.306170321Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-koala/v0.24.0/instrumentation/koala": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:31.735674501Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-lmdb/v0.26.0/instrumentation/lmdb": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:32.148977894Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-logger/v0.4.0/instrumentation/logger": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:32.545898766Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-mongo/v0.26.0/instrumentation/mongo": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:33.108586227Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-mysql2/v0.34.0/instrumentation/mysql2": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:33.485442105Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-net_http/v0.29.0/instrumentation/net_http": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:33.913340141Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-net_ldap/v0.2.0/instrumentation/net_ldap": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:34.275804616Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-pg/v0.36.0/instrumentation/pg": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:34.74216965Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-que/v0.13.0/instrumentation/que": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:35.166542429Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-racecar/v0.7.0/instrumentation/racecar": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:35.581896532Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-rack/v0.31.1/instrumentation/rack": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:36.023789031Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-rails/v0.42.0/instrumentation/rails": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:36.437907794Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-rake/v0.6.0/instrumentation/rake": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:36.82621602Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-rdkafka/v0.10.0/instrumentation/rdkafka": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:37.229732182Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-redis/v0.29.0/instrumentation/redis": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:37.741208866Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-resque/v0.9.0/instrumentation/resque": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:38.17349642Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-restclient/v0.28.0/instrumentation/restclient": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:38.688679416Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-rspec/v0.8.0/instrumentation/rspec": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:39.058442499Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-ruby_kafka/v0.25.0/instrumentation/ruby_kafka": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:39.510790074Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-sidekiq/v0.29.0/instrumentation/sidekiq": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:39.978302485Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-sinatra/v0.30.0/instrumentation/sinatra": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:40.365535591Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-trilogy/v0.69.0/instrumentation/trilogy": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:40.815253192Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-processor-baggage/v0.6.0/processor/baggage": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:43.039758409Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-propagator-google_cloud_trace_context/v0.4.0/propagator/google_cloud_trace_context": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:43.664741843Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-propagator-ottrace/v0.25.0/propagator/ottrace": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:44.24757882Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-propagator-vitess/v0.5.0/propagator/vitess": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:44.892711205Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-propagator-xray/v0.27.0/propagator/xray": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:45.64140697Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-resource-detector-aws/v0.7.0/resources/aws": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:46.320461577Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-resource-detector-azure/v0.4.0/resources/container": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:47.008690785Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-resource-detector-container/v0.4.0/resources/container": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:47.644511935Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-resource-detector-google_cloud_platform/v0.4.0/resources/container": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:48.508970607Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-sampler-xray/v0.3.0/sampler/xray": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:49.126087148Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-ruby/blob/main/README.md#compatibility": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:25:42.853329413Z"
@@ -13514,6 +13790,30 @@
   "https://github.com/open-telemetry/opentelemetry-ruby/tree/main/propagator": {
     "StatusCode": 206,
     "LastSeen": "2026-06-26T06:55:22.033434096Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-api/v1.10.0/api": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:41.322608787Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-exporter-otlp-logs/v0.5.1/exporter/otlp-logs": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:15.098481672Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-exporter-otlp-metrics/v0.10.0/exporter/otlp-metrics": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:15.867905292Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-exporter-otlp/v0.34.0/exporter/otlp": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:14.650999048Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-exporter-zipkin/v0.26.0/exporter/zipkin": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:16.584032768Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-sdk/v1.12.0/sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:42.211854264Z"
   },
   "https://github.com/open-telemetry/opentelemetry-rust": {
     "StatusCode": 206,
@@ -19179,6 +19479,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-29T15:22:11.796762736Z"
   },
+  "https://open-telemetry.github.io/opentelemetry-ruby/opentelemetry-exporter-jaeger/v0.24.1": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:14.246654189Z"
+  },
   "https://open-telemetry.github.io/otel-arrow/compare/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-22T11:32:16.083843066Z"
@@ -21331,9 +21635,273 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:27:55.183657471Z"
   },
+  "https://rubydoc.info/gems/opentelemetry-exporter-otlp-logs/0.5.1": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:15.171443037Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-exporter-otlp-metrics/0.10.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:15.904576027Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-helpers-mysql/0.6.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:50.676874319Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-helpers-sql-obfuscation/0.5.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:52.289711192Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-helpers-sql-processor/0.5.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:52.954146732Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-helpers-sql/0.4.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:51.379448052Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-action_mailer/0.8.1": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:19.525516078Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-action_pack/0.18.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:18.530033785Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-action_view/0.13.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:19.068379605Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-active_job/0.13.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:19.966465849Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-active_model_serializers/0.25.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:20.411559043Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-active_record/0.13.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:20.921220453Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-active_storage/0.5.1": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:21.325016406Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-active_support/0.12.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:21.85460492Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-all/0.94.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:22.286312206Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-anthropic/0.5.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:22.747801148Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-aws_lambda/0.7.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:23.676514242Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-aws_sdk/0.12.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:23.252163125Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-base/0.26.1": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:24.169040443Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-bunny/0.25.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:24.560512105Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-concurrent_ruby/0.25.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:24.973329838Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-dalli/0.30.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:25.36575564Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-delayed_job/0.26.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:25.981600964Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-ethon/0.29.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:27.082794299Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-excon/0.29.1": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:27.431820005Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-factory_bot/0.2.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:27.867857009Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-faraday/0.33.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:28.316295953Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-grape/0.7.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:28.746249732Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-graphql/0.32.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:29.262345815Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-http/0.30.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:30.476721204Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-http_client/0.29.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:30.942457588Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-httpx/0.8.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:31.346573077Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-koala/0.24.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:31.767487757Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-lmdb/0.26.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:32.180312523Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-logger/0.4.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:32.583530139Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-mongo/0.26.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:33.146600085Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-mysql2/0.34.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:33.520682753Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-net_http/0.29.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:33.948528071Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-net_ldap/0.2.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:34.320458385Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-pg/0.36.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:34.773853306Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-que/0.13.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:35.202556591Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-racecar/0.7.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:35.615179293Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-rack/0.31.1": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:36.058006755Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-rails/0.42.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:36.473021906Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-rake/0.6.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:36.860852936Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-rdkafka/0.10.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:37.267434959Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-redis/0.29.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:37.785161322Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-resque/0.9.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:38.212402279Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-restclient/0.28.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:38.721089776Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-rspec/0.8.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:39.094451852Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-ruby_kafka/0.25.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:39.546672192Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-sidekiq/0.29.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:40.020786992Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-sinatra/0.30.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:40.413081118Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-instrumentation-trilogy/0.69.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:40.848417329Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-processor-baggage/0.6.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:43.075032233Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-propagator-google_cloud_trace_context/0.4.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:43.704038365Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-propagator-ottrace/0.25.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:44.280810071Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-propagator-vitess/0.5.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:44.944087509Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-propagator-xray/0.27.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:45.672099103Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-resource-detector-aws/0.7.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:46.364676738Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-resource-detector-azure/0.4.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:47.041829504Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-resource-detector-container/0.4.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:47.677989734Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-resource-detector-google_cloud_platform/0.4.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:48.54256435Z"
+  },
+  "https://rubydoc.info/gems/opentelemetry-sampler-xray/0.3.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:49.160175977Z"
+  },
+  "https://rubygems.org/gems/dalli": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:25.563900693Z"
+  },
   "https://rubygems.org/gems/elasticsearch": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:36:33.293159062Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-api": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:41.813829381Z"
   },
   "https://rubygems.org/gems/opentelemetry-exporter-jaeger": {
     "StatusCode": 206,
@@ -21343,6 +21911,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:35:32.366161185Z"
   },
+  "https://rubygems.org/gems/opentelemetry-exporter-otlp-logs": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:15.47509148Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-exporter-otlp-metrics": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:16.17828428Z"
+  },
   "https://rubygems.org/gems/opentelemetry-exporter-zipkin": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:35:34.871143416Z"
@@ -21350,6 +21926,22 @@
   "https://rubygems.org/gems/opentelemetry-exporters-datadog": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:35:30.882917676Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-helpers-mysql": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:50.878180227Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-helpers-sql": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:51.865337286Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-helpers-sql-obfuscation": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:52.506618435Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-helpers-sql-processor": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:53.077130674Z"
   },
   "https://rubygems.org/gems/opentelemetry-instrumentation-action_mailer": {
     "StatusCode": 206,
@@ -21471,6 +22063,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-24T10:46:25.989767419Z"
   },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-logger": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:32.744792442Z"
+  },
   "https://rubygems.org/gems/opentelemetry-instrumentation-mongo": {
     "StatusCode": 206,
     "LastSeen": "2026-06-24T10:46:26.783034233Z"
@@ -21554,6 +22150,50 @@
   "https://rubygems.org/gems/opentelemetry-instrumentation-trilogy": {
     "StatusCode": 206,
     "LastSeen": "2026-06-24T10:46:42.276220361Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-processor-baggage": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:43.272518048Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-propagator-google_cloud_trace_context": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:43.899749821Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-propagator-ottrace": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:44.501704909Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-propagator-vitess": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:45.169699386Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-propagator-xray": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:45.888093332Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-resource-detector-aws": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:46.629230425Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-resource-detector-azure": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:47.234872134Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-resource-detector-container": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:48.132455528Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-resource-detector-google_cloud_platform": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:48.732051553Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-sampler-xray": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:49.349415524Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T12:39:42.636250714Z"
   },
   "https://rubygems.org/gems/rspec-otel": {
     "StatusCode": 206,
@@ -23655,6 +24295,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-24T10:39:22.592154479Z"
   },
+  "https://www.rubydoc.info/gems/opentelemetry-exporters-datadog/0.2.2": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:14.129952529Z"
+  },
   "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers": {
     "StatusCode": 200,
     "LastSeen": "2026-06-26T06:55:22.823222159Z"
@@ -23666,6 +24310,10 @@
   "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased": {
     "StatusCode": 200,
     "LastSeen": "2026-06-29T15:21:46.728459423Z"
+  },
+  "https://www.rubydoc.info/gems/rspec-otel/0.1.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T12:39:49.670307225Z"
   },
   "https://www.rust-lang.org/": {
     "StatusCode": 206,
