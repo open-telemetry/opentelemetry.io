@@ -11,7 +11,9 @@ urls:
   docs: https://rubydoc.info/gems/opentelemetry-propagator-google_cloud_trace_context/0.4.0
   website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 license: Apache-2.0
-description: Google Cloud Trace Context Propagation Extension for the OpenTelemetry framework
+description:
+  Google Cloud Trace Context Propagation Extension for the OpenTelemetry
+  framework
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2026-06-29

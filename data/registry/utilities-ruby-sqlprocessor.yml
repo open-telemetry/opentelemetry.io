@@ -10,7 +10,8 @@ urls:
   docs: https://rubydoc.info/gems/opentelemetry-helpers-sql-processor/0.5.0
   website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 license: Apache-2.0
-description: SQL Processing Instrumentation Helpers for the OpenTelemetry framework
+description:
+  SQL Processing Instrumentation Helpers for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2026-06-29

@@ -18,3 +18,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-logger
   version: 0.4.0
+isFirstParty: false

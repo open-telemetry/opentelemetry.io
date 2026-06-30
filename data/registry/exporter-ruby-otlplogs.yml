@@ -2,7 +2,8 @@ title: opentelemetry-exporter-otlp-logs
 registryType: exporter
 language: ruby
 tags:
-  - otlplogs
+  - otlp
+  - logs
   - exporter
   - ruby
 urls:
