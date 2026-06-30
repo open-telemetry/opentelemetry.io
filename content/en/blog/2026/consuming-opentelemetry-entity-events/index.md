@@ -150,7 +150,8 @@ came entirely from OTLP entity events.
 Inventory is half the story; **topology** is the other half — "this service
 _depends on_ that database," "this process _runs on_ that host." When this post
 was first drafted, relationships were still future work; since then the
-entity-events specification has been **merged** and models them directly — see
+entity-events specification has **shipped in the v1.58.0 spec release**
+(2026-06-22) and models them directly — see
 [Entity events](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/entities/entity-events.md)
 ([opentelemetry-specification#4836](https://github.com/open-telemetry/opentelemetry-specification/pull/4836)).
 
@@ -161,7 +162,7 @@ target entity (its `entity.type` and `entity.id`); direction is
 `contains`, …):
 
 ```text
-# Relationships ride inside an entity-state event (approved spec, #4836)
+# Relationships ride inside an entity-state event (spec #4836, shipped in v1.58.0)
 LogRecord
   attributes:
     otel.entity.event.type: entity_state
@@ -237,7 +238,8 @@ A consumer that wants to be a source of truth has to face some realities:
   in descriptive attributes so history survives change.
 - Expose the graph for both humans (GraphQL) and assistants (MCP); the
   natural-language query story is a strong reason to care.
-- Relationships now have an approved spec — embedded in each entity's state event.
+- Relationships are specified — embedded in each entity's state event — and
+  shipped in the v1.58.0 spec release.
 - Entities ride on the Resource, so the graph is a join key for your existing
   metrics, logs, and traces.
 
@@ -246,7 +248,7 @@ A consumer that wants to be a source of truth has to face some realities:
 - Read the [Entity Data Model](/docs/specs/otel/entities/data-model/) and
   [OTEP 0256](https://github.com/open-telemetry/oteps/blob/main/text/entities/0256-entities-data-model.md),
   then join the conversation in the OpenTelemetry **Entities SIG** and **Semantic
-  Conventions** — the entity-events and relationships work is approved and still
-  moving (identity scope and more are in flight).
+  Conventions** — the entity-events and relationships work shipped in v1.58.0
+  and is still moving (identity scope and more are in flight).
 
 _Thanks to the Entities SIG for the spec work this builds on._
