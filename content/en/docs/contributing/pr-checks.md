@@ -133,10 +133,11 @@ updates the reference cache. Push any changes to the refcache in a new commit.
 
 If you added or changed an external link, the link checker records it in the
 reference cache (`static/refcache.json`), and this check will fail until that
-cache is updated. If you're editing from the GitHub web UI or don't have a local
-setup, you don't need to update the cache by hand: comment
-[`/fix:refcache`](../pull-requests/#fixing-prs-in-github) on your PR and the
-OpenTelemetry bot will update it for you.
+cache is updated. The easiest way to update it is to comment
+[`/fix:refcache`](../pull-requests/#fixing-prs-in-github) on your PR — the
+OpenTelemetry bot updates `static/refcache.json` for you. This is usually
+simpler than running `npm run check:links` and committing the result yourself,
+even if you have a local clone.
 
 > [!NOTE]
 >
