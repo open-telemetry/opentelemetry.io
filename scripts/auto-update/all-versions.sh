@@ -32,6 +32,8 @@ function auto_update_versions() {
         semconv .gitmodules"
       "semantic-conventions-java
         semconv content/en/docs/languages/java/_index.md"
+      "opentelemetry-configuration
+        config .gitmodules"
   )
 
   for args in "${repo_and_files_to_update[@]}"; do
