@@ -21,8 +21,8 @@ aliases: [demo_features, features]
 
 ## Observability Solutions
 
-- **[Grafana](https://github.com/grafana/grafana)**: all metric dashboards are stored in
-  Grafana.
+- **[Grafana](https://github.com/grafana/grafana)**: all metric dashboards are
+  stored in Grafana.
 - **[Jaeger](https://www.jaegertracing.io/)**: all generated traces are being
   sent to Jaeger.
 - **[OpenSearch](https://opensearch.org/)**: all generated logs are sent to Data

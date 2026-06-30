@@ -5487,6 +5487,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-29T15:32:37.4750834Z"
   },
+  "https://github.com/grafana/grafana": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-29T15:32:32.611634515Z"
+  },
   "https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T15:32:32.086007388Z"
