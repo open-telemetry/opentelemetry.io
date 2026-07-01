@@ -3,6 +3,7 @@ title: Características de telemetría
 linkTitle: Características de telemetría
 aliases: [demo_features, features]
 default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
+drifted_from_default: true
 ---
 
 ## OpenTelemetry
