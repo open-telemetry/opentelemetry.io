@@ -1,0 +1,225 @@
+---
+title: Pull request checks and tests
+linkTitle: PR checks & tests
+description: Learn how to make your pull request successfully pass all checks
+weight: 40
+---
+
+When you raise a
+[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
+(PR) with the
+[opentelemetry.io repository](https://github.com/open-telemetry/opentelemetry.io)
+a set of checks are executed. The PR checks verify that:
+
+- You have signed the [CLA](#easy-cla)
+- Your PR successfully [deploys through Netlify](#netlify-deployment)
+- Your changes are compliant with our [style guide](#checks)
+
+> [!NOTE]
+>
+> If any of the PR checks fails, try to
+> [fix content issues](../pull-requests/#fix-issues) first by running
+> `npm run fix:all` locally.
+>
+> You can also add the comment `/fix` to your PR. This will trigger the
+> OpenTelemetry Bot to run that command on your behalf and update the PR. Make
+> sure that you pull those changes locally.
+>
+> Only if your issues persist, read below what the different checks do and how
+> you can recover from a failed state.
+
+## `Easy CLA` {.notranslate lang=en}
+
+This check fails if you haven't [signed the CLA](../prerequisites/#cla).
+
+## Netlify deployment
+
+If the [Netlify](https://www.netlify.com/) build fails, select **Details** for
+more information.
+
+## GitHub PR checks {#checks}
+
+To make sure that contributions follow our [style guide](../style-guide/) we
+have implemented a set of checks that verify style guide rules and fail if they
+find any issues.
+
+The sections below describe current checks and what you can do to fix related
+errors.
+
+> [!NOTE]
+>
+> Only recent blog posts are checked. For details, see [Old blogs are not
+> updated][old-blogs]. In particular, while old posts are rendered to the
+> website, the checks listed below do not apply to old blogs.
+
+[old-blogs]: ../blog/#old-blogs-are-not-updated
+
+### `TEXT linter` {.notranslate lang=en}
+
+This check verifies that
+[OpenTelemetry-specific terms and words are used consistently across the site](../style-guide/#opentelemetryio-word-list).
+
+If any issues are found, annotations are added to your files in the
+`files changed` view of your PR. Fix those to turn the check green. As an
+alternative, you can run `npm run check:text -- --fix` locally to fix most
+issues. Run `npm run check:text` again and manually fix the remaining issues.
+
+### `MARKDOWN linter` {.notranslate lang=en}
+
+This check verifies that
+[standards and consistency for Markdown files are enforced](../style-guide/#markdown-standards).
+
+If any issues are found, run `npm run fix:markdown` to fix most issues
+automatically. For any remaining issues, run `npm run check:markdown` and apply
+the suggested changes manually.
+
+### `SPELLING check` {.notranslate lang=en}
+
+This check verifies that [all words are spelled correctly][spell checking] in
+all locales.
+
+If the check fails, run `npm run check:spelling` locally to list issues. To add
+or change allowed words, see [Spell checking][] in the style guide.
+
+[Spell checking]: ../style-guide/#spell-checking
+
+### `CSPELL` check {.notranslate lang=en}
+
+This check verifies that cSpell `cSpell:ignore` lists in front matter are
+normalized and that `.cspell/*.txt` word lists are sorted (see
+`npm run fix:dict`).
+
+If this check fails, run `npm run fix:dict` locally and push the changes in a
+new commit.
+
+### `FILE FORMAT` {.notranslate lang=en}
+
+This check verifies that all files conform to
+[Prettier format rules](../style-guide/#file-format).
+
+If this check fails, run `npm run fix:format` locally and push the changes in a
+new commit.
+
+### `FILENAME check` {.notranslate lang=en}
+
+This check verifies that:
+
+- All [file names are in kebab-case](../style-guide/#file-names)
+- No obsolete files or folders exist in the repository (see list below)
+
+If this check fails, run `npm run fix:filenames` locally and push the changes in
+a new commit.
+
+> [!NOTE]
+>
+> `fix:filenames` may **delete** obsolete files or folders.
+
+#### Obsolete files and folders
+
+The following paths are flagged as obsolete and removed by `fix:filenames`. When
+present, an issue or PR number provides context for the change that made the
+path obsolete.
+
+- `tools/` - [Migrate code-excerpts tooling to npm package version #9638][#9638]
+
+[#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
+
+### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
+
+These two checks build the website and verify that all links are valid.
+
+To build and check links locally, run `npm run check:links`. This command also
+updates the reference cache. Push any changes to the refcache in a new commit.
+
+> [!NOTE]
+>
+> For information on warnings about site-local links, see
+> [Always use a path for site-local links](#avoid-external-site-local-links).
+
+#### Fix 404s
+
+You need to fix the URLs reported as **invalid** (HTTP status **404**), by the
+link checker.
+
+#### Handling valid external links
+
+The link checker will sometimes get an HTTP status other than 200 (success) by
+servers that block checkers. Such servers will often return an HTTP status in
+the 400 range other than 404, such as 401, 403, or 406, which are the most
+common. Some servers, link LinkedIn, report 999.
+
+If you have manually validated an external link that the checker isn't getting a
+success status for, you can add the following query parameter to your URL to
+have the link checker ignore it: `?link-check=no` or `&link-check=no` if there
+are other query parameters. For example, the following URLs will be ignored:
+
+- <https:/some-example.org?link-check=no>
+- <https:/some-example.org?other-param=value&link-check=no>
+
+> [!TIP] Maintainers tip
+>
+> Maintainers can run the following script immediately after having run the link
+> checker to have Puppeteer attempt to validate links with non-ok statuses:
+>
+> ```sh
+> ./scripts/double-check-refcache-4XX.mjs
+> ```
+>
+> Use the `-f` flag to also validate URL fragments (anchors) in external links,
+> which `htmltest` doesn't do. We don't currently run this often, so you will
+> probably want to limit the number of updated entries using the `-m N` flag.
+> For usage info, run with `-h`.
+
+### `WARNINGS in build log?` {.notranslate lang=en}
+
+If this check fails, review the `BUILD and CHECK LINKS` log, under the
+`npm run log:check:links` step, for any other potential issues. Ask maintainers
+for help, if you are unsure how to recover.
+
+#### Always use a path for site-local links {#avoid-external-site-local-links}
+
+When linking to pages within the OpenTelemetry website, use local paths instead
+of external links. The build will emit a warning if you don't.
+
+To address the build warning, keep only the path part of the full URL:
+
+| ❌ Don't use                              | ✅ Use instead    |
+| ----------------------------------------- | ----------------- |
+| `https://opentelemetry.io/docs/concepts/` | `/docs/concepts/` |
+| `https://www.opentelemetry.io/blog/...`   | `/blog/...`       |
+
+Using local paths ensures that:
+
+- Site-local pages open in the same browser tab: external links open in a new
+  tab, which is not the desired behavior for site-local navigation
+- Localization link processing works as expected: links are automatically
+  prefixed with the appropriate language code
+- Local paths are easier to link-check and don't unnecessarily fill the refcache
+
+<details>
+<summary>Note to maintainers</summary>
+
+The following code enforces the link requirement described in this section:
+
+- The render-link hook that emits this warning:
+  [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
+- The script that auto-converts full URLs to local paths:
+  [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
+
+</details>
+
+### `LOCALIZATION` guidelines {.notranslate lang=en #localization}
+
+This check enforces mechanically-verifiable
+[localization guidelines](../localization/), such as
+[not copying images and other assets](../localization/#images) across
+localizations, that are not already covered by other checks.
+
+If this check fails, run `npm run fix:l10n` locally and push the changes in a
+new commit.
+
+### `TEST (excluding test:base)` {.notranslate lang=en}
+
+Runs `npm run test:compound-tests`, which executes the compound `test:*-*` NPM
+scripts (for example, Netlify edge-function tests). It does **not** run
+`test:base`.
