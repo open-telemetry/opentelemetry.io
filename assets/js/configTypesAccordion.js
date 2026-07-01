@@ -310,7 +310,7 @@ function renderUsages(type, i18n, usagePathMap) {
         <button type="button"
                 class="ct-usage-copy"
                 data-usage-copy="${escapeAttr(plainPath)}"
-                aria-label="${escapeAttr(i18n.copy)} ${escapeHtml(plainPath)}">${escapeHtml(i18n.copy)}</button>
+                aria-label="${escapeAttr(i18n.copy)} ${escapeAttr(plainPath)}">${escapeHtml(i18n.copy)}</button>
       </li>`;
     })
     .join('');
@@ -436,11 +436,19 @@ function wireControls(container, types, i18n) {
 
   // Copy buttons (delegated, since the accordion is built in one innerHTML pass).
   // Handles both snippet copy buttons and inline usage-path copy buttons.
+  // WeakMap so rapid re-clicks don't capture a stale "Copied!" as the original
+  // label, which would leave the button stuck in the copied state.
+  const copyTimers = new WeakMap();
   function flashCopied(btn) {
-    const original = btn.textContent;
+    if (!copyTimers.has(btn)) {
+      copyTimers.set(btn, { original: btn.textContent.trim(), timer: null });
+    }
+    const state = copyTimers.get(btn);
+    clearTimeout(state.timer);
     btn.textContent = i18n.copied;
-    setTimeout(() => {
-      btn.textContent = original;
+    state.timer = setTimeout(() => {
+      btn.textContent = state.original;
+      copyTimers.delete(btn);
     }, 2000);
   }
 
