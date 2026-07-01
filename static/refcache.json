@@ -4911,6 +4911,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-27T06:48:19.33153547Z"
   },
+  "https://github.com/databufflabs/databuff/blob/master/docs/opentelemetry-otlp-ingestion_en.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T09:54:23.168155418Z"
+  },
   "https://github.com/datadog/orchestrion": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:30:06.885234831Z"
@@ -5114,6 +5118,18 @@
   "https://github.com/edsoncelio": {
     "StatusCode": 206,
     "LastSeen": "2026-06-26T07:04:12.87058324Z"
+  },
+  "https://github.com/eerzho": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T20:58:28.714098615Z"
+  },
+  "https://github.com/eerzho/opentelemetry-auto-class": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T20:58:28.248435969Z"
+  },
+  "https://github.com/eerzho/opentelemetry-auto-class/blob/main/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T20:58:29.457316172Z"
   },
   "https://github.com/elastic": {
     "StatusCode": 206,
@@ -10962,6 +10978,46 @@
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:30:17.476901077Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/database/sql": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-29T16:40:02.910493536+05:30"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/gin-gonic/gin": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-29T16:39:53.576719725+05:30"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/redis/go-redis/v9": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-29T16:39:54.840418552+05:30"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/sirupsen/logrus": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-29T16:39:59.070797058+05:30"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/go.mongodb.org/mongo-driver/mongo": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-29T16:40:00.441844169+05:30"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/google.golang.org/grpc": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-29T16:39:56.166047734+05:30"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/k8s.io/client-go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-29T16:39:52.273126834+05:30"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/log": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-29T16:39:57.824917555+05:30"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/log/slog": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-29T16:40:01.602648517+05:30"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/net/http": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-29T16:39:56.996838235+05:30"
   },
   "https://github.com/open-telemetry/opentelemetry-go-contrib": {
     "StatusCode": 206,
@@ -19363,6 +19419,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-29T15:32:05.058261254Z"
   },
+  "https://packagist.org/packages/eerzho/opentelemetry-auto-class": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T20:58:29.926915305Z"
+  },
   "https://packagist.org/packages/google/protobuf": {
     "StatusCode": 200,
     "LastSeen": "2026-06-29T15:22:06.100649578Z"
@@ -19546,6 +19606,10 @@
   "https://pkg.go.dev/github.com/dnwe/otelsarama": {
     "StatusCode": 200,
     "LastSeen": "2026-06-30T07:04:38.638082323Z"
+  },
+  "https://pkg.go.dev/github.com/gin-gonic/gin": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-29T16:39:53.96116507+05:30"
   },
   "https://pkg.go.dev/github.com/google/cadvisor@v0.56.2/info/v1#CpuUsage": {
     "StatusCode": 200,
@@ -20579,13 +20643,25 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-29T15:28:17.969852358Z"
   },
+  "https://pkg.go.dev/github.com/redis/go-redis/v9": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-29T16:39:55.348303282+05:30"
+  },
   "https://pkg.go.dev/github.com/segmentio/kafka-go": {
     "StatusCode": 200,
     "LastSeen": "2026-06-29T13:30:11.309045664Z"
   },
+  "https://pkg.go.dev/github.com/sirupsen/logrus": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-29T16:39:59.600588951+05:30"
+  },
   "https://pkg.go.dev/github.com/zalando/otelcol-lightstep-receiver": {
     "StatusCode": 200,
     "LastSeen": "2026-06-29T13:34:25.792198322Z"
+  },
+  "https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-29T16:40:00.815407109+05:30"
   },
   "https://pkg.go.dev/go.opentelemetry.io/auto/sdk": {
     "StatusCode": 200,
@@ -20859,6 +20935,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-29T15:24:57.662165948Z"
   },
+  "https://pkg.go.dev/k8s.io/client-go": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-29T16:39:52.65786821+05:30"
+  },
   "https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#ContainerStats": {
     "StatusCode": 200,
     "LastSeen": "2026-06-25T10:34:19.994460401Z"
@@ -20894,6 +20974,14 @@
   "https://pkg.go.dev/k8s.io/kubernetes@v1.19.16/pkg/kubelet/apis/stats/v1alpha1": {
     "StatusCode": 200,
     "LastSeen": "2026-06-25T10:37:21.063234754Z"
+  },
+  "https://pkg.go.dev/log": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-29T16:39:58.22086258+05:30"
+  },
+  "https://pkg.go.dev/log/slog": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-29T16:40:02.094673976+05:30"
   },
   "https://pkg.go.dev/net/http": {
     "StatusCode": 200,
