@@ -599,6 +599,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-26T06:57:17.124144464Z"
   },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-sofa-rpc-5.4": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-01T12:32:37.568533602Z"
+  },
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-spring-integration-4.1": {
     "StatusCode": 200,
     "LastSeen": "2026-06-26T06:57:56.919764729Z"
@@ -622,6 +626,10 @@
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-spring-webmvc-6.0": {
     "StatusCode": 200,
     "LastSeen": "2026-06-26T06:58:27.378148504Z"
+  },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-thrift-0.13": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-01T12:32:26.993081827Z"
   },
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-vibur-dbcp-11.0": {
     "StatusCode": 200,
@@ -16359,6 +16367,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-29T15:28:40.491211073Z"
   },
+  "https://github.com/sofastack/sofa-rpc/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-01T12:32:35.810136443Z"
+  },
   "https://github.com/sokoide": {
     "StatusCode": 206,
     "LastSeen": "2026-06-25T10:39:28.384404583Z"
@@ -21866,6 +21878,10 @@
   "https://thanos.io/tip/thanos/tracing.md/#opentelemetry-otlp": {
     "StatusCode": 206,
     "LastSeen": "2026-06-25T10:36:49.498474854Z"
+  },
+  "https://thrift.apache.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-01T12:32:26.736355607Z"
   },
   "https://tinygo.org/": {
     "StatusCode": 206,
