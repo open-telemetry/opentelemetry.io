@@ -122,8 +122,8 @@ such as user IDs or raw URL paths, can cause unbounded memory growth.
 
 To protect applications from this, the OpenTelemetry metrics SDK enforces a
 **cardinality limit**: a maximum number of unique attribute combinations tracked
-per metric stream, per collection cycle. The default is 2000 and can be
-overridden with a [View](#views).
+per metric stream. The default is 2000 and can be overridden with a
+[View](#views).
 
 When the limit is reached, additional attribute combinations are not dropped
 outright. Instead, their measurements are aggregated into a single **overflow
@@ -146,7 +146,7 @@ longer carry that attribute.
 This is easy to underestimate, because overflow replaces the **entire**
 attribute combination, not just its high-cardinality part. Suppose a request
 counter records `url.path` (high cardinality) together with `success` (a
-boolean). Once the instrument overflows, a measurement for
+boolean). Once the stream overflows, a measurement for
 `{url.path=/checkout, success=false}` is folded into the single overflow data
 point `{otel.metric.overflow=true}`, dropping `success` along with `url.path`. A
 query for `success=false` then misses that measurement, even though `success` on
@@ -176,9 +176,10 @@ overflow.
 
 ### Temporality and cardinality limits
 
-The limit applies per collection cycle. For synchronous instruments,
+For synchronous instruments,
 [aggregation temporality](/docs/specs/otel/metrics/data-model/#temporality)
-determines how forgiving it is:
+determines how quickly the SDK can reclaim aggregation state, and therefore how
+quickly the limit is reached:
 
 - With **delta** temporality, the SDK resets state after each cycle, so the
   limit bounds only the combinations active within a single cycle.
