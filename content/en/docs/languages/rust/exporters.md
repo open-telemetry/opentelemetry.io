@@ -39,7 +39,7 @@ use tokio::net::TcpListener;
 
 // ...
 
-fn init_tracer_provider() {
+fn init_tracer_provider() -> SdkTracerProvider {
     let exporter = SpanExporter::builder()
         .with_tonic()
         .build()
@@ -49,20 +49,25 @@ fn init_tracer_provider() {
         .with_batch_exporter(exporter)
         .build();
     global::set_text_map_propagator(TraceContextPropagator::new());
-    global::set_tracer_provider(provider);
+    global::set_tracer_provider(provider.clone());
+    provider
 }
 ```
 
-To try out the `OTLPTraceExporter` quickly, you can run Jaeger in a docker
-container. Jaeger natively supports OTLP, so you only need to expose the web UI
-(`16686`) and the OTLP gRPC endpoint (`4317`):
+To try out the OTLP exporter quickly, you can run Jaeger in a docker container.
+Jaeger natively supports OTLP, so you only need to expose the web UI (`16686`)
+and the OTLP gRPC endpoint (`4317`):
 
 ```shell
-docker run --rm --name jaeger \
+docker run -d --rm --name jaeger \
   -p 16686:16686 \
   -p 4317:4317 \
   jaegertracing/all-in-one:latest
 ```
+
+By default, the OTLP exporter sends data to `http://localhost:4317`, which
+matches the OTLP gRPC endpoint exposed by Jaeger above, so no additional
+endpoint configuration is needed.
 
 Make requests on
 [http://localhost:8080/rolldice](http://localhost:8080/rolldice), then view the
@@ -74,3 +79,9 @@ traces in Jaeger:
 
 Click a trace to open the trace details view, which shows the span hierarchy and
 timing as a Gantt chart.
+
+When you're done, stop the Jaeger container:
+
+```shell
+docker stop jaeger
+```
