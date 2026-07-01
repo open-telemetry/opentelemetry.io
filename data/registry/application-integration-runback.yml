@@ -1,0 +1,26 @@
+title: Runback
+registryType: application integration
+language: js
+tags:
+  - ai-agents
+  - governance
+  - audit
+  - compliance
+  - replay
+  - llm
+license: proprietary
+description:
+  Runback is a system of record for AI agent decisions. It accepts OpenTelemetry
+  traces natively and adds deterministic re-execution, policy simulation against
+  historical decisions, and tamper-evident hash-chained audit cassettes
+  (runback.cassette/v1). Designed for EU AI Act Article 12 compliance and APRA
+  CPS 230. Self-hostable in your own VPC.
+authors:
+  - name: Runback
+    url: https://github.com/letsRunback
+urls:
+  website: https://runback.dev
+  docs: https://runback.dev/how-it-works
+  spec: https://runback.dev/spec
+createdAt: '2026-07-01'
+isNative: false
