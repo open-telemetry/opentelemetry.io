@@ -5115,6 +5115,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-26T07:04:12.87058324Z"
   },
+  "https://github.com/eerzho": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T20:58:28.714098615Z"
+  },
+  "https://github.com/eerzho/opentelemetry-auto-class": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T20:58:28.248435969Z"
+  },
+  "https://github.com/eerzho/opentelemetry-auto-class/blob/main/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T20:58:29.457316172Z"
+  },
   "https://github.com/elastic": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:35:54.132459888Z"
@@ -19362,6 +19374,10 @@
   "https://packagist.org/packages/cmelius/opentelemetry-auto-twig": {
     "StatusCode": 200,
     "LastSeen": "2026-06-29T15:32:05.058261254Z"
+  },
+  "https://packagist.org/packages/eerzho/opentelemetry-auto-class": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-30T20:58:29.926915305Z"
   },
   "https://packagist.org/packages/google/protobuf": {
     "StatusCode": 200,
