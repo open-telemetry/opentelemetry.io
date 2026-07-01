@@ -24,9 +24,9 @@ cSpell:ignore: TOCSS
 Următoarele instrucțiuni explică pașii de configurare a un mediu de dezvoltare
 pentru acest site web.
 
-## Configurare Cloud-IDE
+## Configurare Cloud-IDE {#cloud-ide-setup}
 
-### Gitpod
+### Gitpod {#gitpod}
 
 Pentru a lucra prin [Gitpod.io][]:
 
@@ -44,7 +44,7 @@ Pentru a lucra prin [Gitpod.io][]:
 Gitpod instalează automat pachetele specifice repertoriului tău.
 {{% param what-next %}}
 
-### Codespaces
+### Codespaces {#codespaces}
 
 Pentru a lucra prin GitHub [Codespaces][]:
 
@@ -54,7 +54,7 @@ Pentru a lucra prin GitHub [Codespaces][]:
 Mediul de dezvoltare va fi inițializat prin configurația
 [DevContainer](#devcontainers). {{% param what-next %}}
 
-## Configurare locală
+## Configurare locală {#local-setup}
 
 1.  Fă un [Fork][] și apoi [clonați][clone] repertoriul site-ului web la
     <{{% param github_repo %}}>.
@@ -88,7 +88,7 @@ npm install
 
 Lansează IDE-ul preferat. {{% param what-next %}}
 
-### Build
+### Build {#build}
 
 Pentru a construi site-ul, rulează:
 
@@ -121,7 +121,7 @@ Fișierele generate ale site-ului se află în directorul `public`.
 > npm install
 > ```
 
-### Servire
+### Servire {#serve}
 
 Pentru a servi site-ul, rulează:
 
@@ -144,7 +144,7 @@ Dacă întâlnești o eroare de tipul `too many open files` sau `pipe failed` pe
 macOS, este posibil să fie nevoie să mărești limita descriptorilor de fișiere.
 Consultă [problema Hugo #6109](https://github.com/gohugoio/hugo/issues/6109).
 
-### Conținut și submodule
+### Conținut și submodule {#content-and-submodules}
 
 Site-ul web este construit din următoarele conținuturi:
 
@@ -159,7 +159,7 @@ Site-ul web este construit din următoarele conținuturi:
 [content-modules]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
-### Modificări ale submodulelor
+### Modificări ale submodulelor {#submodule-changes}
 
 Dacă modifici orice conținut dintr-un submodul [content-modules][], trebuie mai
 întâi să trimiți un PR (conținând modificările submodulului) către repertoriul
@@ -189,9 +189,9 @@ locale, precum (în ordine alfabetică):
 - [Gitpod](https://ona.com/docs/ona/configuration/devcontainer/overview)
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
-## Unelte
+## Unelte {#tools}
 
-### Code-excerpter
+### Code-excerpter {#code-excerpter}
 
 Utilizează [code-excerpter][] pentru fragmente de cod care ar trebui să fie
 sincronizate cu fișierele sursă din acest repertoriu. Pagini ale site-ului web
