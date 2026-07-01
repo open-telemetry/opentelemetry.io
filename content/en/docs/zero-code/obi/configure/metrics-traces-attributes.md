@@ -6,7 +6,7 @@ description:
   attributes reported, including instance ID decoration and metadata of
   instrumented Kubernetes pods.
 weight: 30
-cSpell:ignore: kube kubecache kubeconfig replicaset statefulset
+cSpell:ignore: kube kubecache kubeconfig OpenShift replicaset statefulset
 ---
 
 You can configure how OBI decorates attributes for metrics and traces. Use the
@@ -16,9 +16,8 @@ The [OBI exported metrics](../../metrics/) document lists the attributes you can
 report with each metric. OBI reports some attributes by default and hides others
 to control cardinality.
 
-For each metric, you control which attributes to see with the `select`
-subsection. This is a map where each key is the name of a metric either in its
-OpenTelemetry or Prometheus port, and each metric has two sub-properties:
+With the `select` subsection, you control metric attributes, optional trace
+attributes, and resource attributes. Each entry has two sub-properties:
 `include` and `exclude`.
 
 - `include` is a list of attributes to report. Each attribute can be a name or a
@@ -47,6 +46,9 @@ attributes:
     http_client_request_duration:
       # report the default attribute set but exclude the Kubernetes Pod information
       exclude: ['k8s.pod.*']
+    resource:
+      # keep the default resource set, except for these high-cardinality fields
+      exclude: ['k8s.pod.name', 'service.instance.id']
 ```
 
 Additionally, you can use wildcards as metric names to add and exclude
@@ -75,11 +77,23 @@ client metrics and `http_route` for HTTP server metrics.
 When a metric name matches multiple definitions using wildcards, exact matches
 take precedence over wildcard matches.
 
+## Resource selection {#resource-selection}
+
+Use the special `resource` key to filter resource attributes on OTLP resources
+and on the Prometheus `target_info` and `traces_target_info` metrics. When
+`include` is omitted, OBI preserves the default detected resource attributes and
+removes only matching `exclude` entries. Resource attributes discovered at
+runtime, including Kubernetes and `OTEL_RESOURCE_ATTRIBUTES` values, use the
+same selection. Selection only filters attributes that are otherwise eligible
+for export; for Prometheus attributes not known at startup, continue to use
+`prometheus_export.extra_resource_attributes`.
+
 ## Trace selection {#trace-selection}
 
 For exported OpenTelemetry traces, use the `traces` key (not a metric name)
-under `attributes.select`. It controls optional trace decoration such as
-`db.query.text`, `url.query`, GenAI payload attributes, and `db.response.error`.
+under `attributes.select`. It controls trace decoration such as `db.query.text`,
+`graphql.document`, `url.query`, GenAI payload attributes, and
+`db.response.error`.
 
 ```yaml
 attributes:
@@ -89,6 +103,32 @@ attributes:
         - db.query.text
         - db.response.error
 ```
+
+`url.query` is enabled by default when an HTTP request contains a query string.
+To omit it, add `url.query` to `attributes.select.traces.exclude`. OBI also
+preserves the query string in client-span `url.full` and automatically replaces
+values for known sensitive keys with `REDACTED`.
+
+Use `attributes.sensitive_query_params` to extend or narrow the case-sensitive
+built-in redaction list:
+
+```yaml
+attributes:
+  sensitive_query_params:
+    add: [tenant_secret]
+    remove: [session]
+```
+
+The equivalent environment variables are `OTEL_EBPF_SENSITIVE_QUERY_PARAMS_ADD`
+and `OTEL_EBPF_SENSITIVE_QUERY_PARAMS_REMOVE`, with comma-separated values. The
+built-in list covers common credentials, authentication tokens, passwords,
+payment identifiers, and signed AWS and Google Cloud URL parameters.
+
+MCP tool-call arguments and results are available as the optional
+`gen_ai.tool.call.arguments` and `gen_ai.tool.call.result` trace attributes.
+Because these values can contain sensitive payloads, they require an exact entry
+in `attributes.select.traces.include`; wildcard entries such as `gen_ai.*` don't
+enable them.
 
 ### `db.response.error` {#db-response-error}
 
@@ -148,8 +188,8 @@ Context propagation values:
 - `headers,tcp`: Enable both methods explicitly
 - `disabled`: Disable trace context propagation
 
-`http` is accepted as an alias for `headers`, but `headers` is the preferred
-name in examples and configuration.
+The former `http` alias has been removed. The deprecated `ip` value has no
+effect; use `tcp` for TCP-option propagation.
 
 To use this option in containerized environments (Kubernetes and Docker), you
 must:
@@ -159,7 +199,12 @@ must:
   path
 - Grant the `CAP_NET_ADMIN` capability to the OBI container
 
-gRPC and HTTP/2 are not supported for this network-level mode.
+Network-level propagation supports gRPC by injecting and parsing per-stream
+`traceparent` HPACK headers. TCP-option propagation is not used for gRPC because
+HTTP/2 multiplexes multiple trace contexts over one connection. Generic non-gRPC
+HTTP/2 context propagation remains limited to Go library instrumentation. For
+non-Go gRPC services, persistent connections established before OBI starts might
+not be recognized for propagation.
 
 For an example of how to configure distributed traces in Kubernetes, see our
 [Distributed traces with OBI](../../distributed-traces/) guide.
@@ -336,7 +381,8 @@ attributes:
 
 | YAML<br>environment variable                                                | Description                                                                                                                                                                                   | Type           | Default        |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- |
-| `enable`<br>`OTEL_EBPF_KUBE_METADATA_ENABLE`                                | Enable or disable Kubernetes metadata decoration. Set to `autodetect` to enable if running in Kubernetes. For more information, refer to the [enable Kubernetes section](#enable-kubernetes). | boolean/string | false          |
+| `enable`<br>`OTEL_EBPF_KUBE_METADATA_ENABLE`                                | Enable or disable Kubernetes metadata decoration. Set to `autodetect` to enable if running in Kubernetes. For more information, refer to the [enable Kubernetes section](#enable-kubernetes). | boolean/string | `autodetect`   |
+| `cluster_name`<br>`OTEL_EBPF_KUBE_CLUSTER_NAME`                             | Overrides the detected Kubernetes cluster name.                                                                                                                                               | string         | (empty)        |
 | `kubeconfig_path`<br>`KUBECONFIG`                                           | Path to the Kubernetes config file. For more information, refer to the [Kubernetes configuration path section](#kubernetes-configuration-path).                                               | string         | ~/.kube/config |
 | `disable_informers`<br>`OTEL_EBPF_KUBE_DISABLE_INFORMERS`                   | List of informers to disable (`node`, `service`). For more information, refer to the [disable informers section](#disable-informers).                                                         | string         | (empty)        |
 | `meta_restrict_local_node`<br>`OTEL_EBPF_KUBE_META_RESTRICT_LOCAL_NODE`     | Restrict metadata to local node only. For more information, refer to the [meta restrict local node section](#meta-restrict-local-node).                                                       | boolean        | false          |
@@ -363,6 +409,11 @@ traces and metrics with the standard OpenTelemetry labels:
 - `k8s.pod.start_time`
 - `k8s.cluster.name`
 - `k8s.owner.name`
+
+When `cluster_name` is empty, OBI tries Kubernetes node labels, the OpenShift
+Infrastructure custom resource, and cloud provider metadata for Amazon EC2,
+Google Cloud, and Microsoft Azure, in that order. The attribute remains empty if
+none of these sources provides a name.
 
 ### Kubernetes configuration path
 
@@ -515,25 +566,25 @@ The following table describes the default group attributes.
 
 And the following table describes the metrics and their associated groups.
 
-| Group          | OTel Metric                      | Prom Metric                            |
-| -------------- | -------------------------------- | -------------------------------------- |
-| `k8s_app_meta` | `process.cpu.utilization`        | `process_cpu_utilization_ratio`        |
-| `k8s_app_meta` | `process.cpu.time`               | `process_cpu_time_seconds_total`       |
-| `k8s_app_meta` | `process.memory.usage`           | `process_memory_usage_bytes`           |
-| `k8s_app_meta` | `process.memory.virtual`         | `process_memory_virtual_bytes`         |
-| `k8s_app_meta` | `process.disk.io`                | `process_disk_io_bytes_total`          |
-| `k8s_app_meta` | `messaging.publish.duration`     | `messaging_publish_duration_seconds`   |
-| `k8s_app_meta` | `messaging.process.duration`     | `messaging_process_duration_seconds`   |
-| `k8s_app_meta` | `http.server.request.duration`   | `http_server_request_duration_seconds` |
-| `k8s_app_meta` | `http.server.request.body.size`  | `http_server_request_body_size_bytes`  |
-| `k8s_app_meta` | `http.server.response.body.size` | `http_server_response_body_size_bytes` |
-| `k8s_app_meta` | `http.client.request.duration`   | `http_client_request_duration_seconds` |
-| `k8s_app_meta` | `http.client.request.body.size`  | `http_client_request_body_size_bytes`  |
-| `k8s_app_meta` | `http.client.response.body.size` | `http_client_response_body_size_bytes` |
-| `k8s_app_meta` | `rpc.client.duration`            | `rpc_client_duration_seconds`          |
-| `k8s_app_meta` | `rpc.server.duration`            | `rpc_server_duration_seconds`          |
-| `k8s_app_meta` | `db.client.operation.duration`   | `db_client_operation_duration_seconds` |
-| `k8s_app_meta` | `gpu.kernel.launch.calls`        | `gpu_kernel_launch_calls_total`        |
-| `k8s_app_meta` | `gpu.kernel.grid.size`           | `gpu_kernel_grid_size_total`           |
-| `k8s_app_meta` | `gpu.kernel.block.size`          | `gpu_kernel_block_size_total`          |
-| `k8s_app_meta` | `gpu.memory.allocations`         | `gpu_memory_allocations_bytes_total`   |
+| Group          | OTel Metric                           | Prom Metric                                   |
+| -------------- | ------------------------------------- | --------------------------------------------- |
+| `k8s_app_meta` | `process.cpu.utilization`             | `process_cpu_utilization_ratio`               |
+| `k8s_app_meta` | `process.cpu.time`                    | `process_cpu_time_seconds_total`              |
+| `k8s_app_meta` | `process.memory.usage`                | `process_memory_usage_bytes`                  |
+| `k8s_app_meta` | `process.memory.virtual`              | `process_memory_virtual_bytes`                |
+| `k8s_app_meta` | `process.disk.io`                     | `process_disk_io_bytes_total`                 |
+| `k8s_app_meta` | `messaging.client.operation.duration` | `messaging_client_operation_duration_seconds` |
+| `k8s_app_meta` | `messaging.process.duration`          | `messaging_process_duration_seconds`          |
+| `k8s_app_meta` | `http.server.request.duration`        | `http_server_request_duration_seconds`        |
+| `k8s_app_meta` | `http.server.request.body.size`       | `http_server_request_body_size_bytes`         |
+| `k8s_app_meta` | `http.server.response.body.size`      | `http_server_response_body_size_bytes`        |
+| `k8s_app_meta` | `http.client.request.duration`        | `http_client_request_duration_seconds`        |
+| `k8s_app_meta` | `http.client.request.body.size`       | `http_client_request_body_size_bytes`         |
+| `k8s_app_meta` | `http.client.response.body.size`      | `http_client_response_body_size_bytes`        |
+| `k8s_app_meta` | `rpc.client.call.duration`            | `rpc_client_call_duration_seconds`            |
+| `k8s_app_meta` | `rpc.server.call.duration`            | `rpc_server_call_duration_seconds`            |
+| `k8s_app_meta` | `db.client.operation.duration`        | `db_client_operation_duration_seconds`        |
+| `k8s_app_meta` | `gpu.kernel.launch.calls`             | `gpu_kernel_launch_calls_total`               |
+| `k8s_app_meta` | `gpu.kernel.grid.size`                | `gpu_kernel_grid_size_total`                  |
+| `k8s_app_meta` | `gpu.kernel.block.size`               | `gpu_kernel_block_size_total`                 |
+| `k8s_app_meta` | `gpu.memory.allocations`              | `gpu_memory_allocations_bytes_total`          |
