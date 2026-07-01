@@ -76,6 +76,11 @@
   contact: hello@bindplane.com
   oss: true
   commercial: true
+- name: Bronto
+  nativeOTLP: true
+  url: https://docs.bronto.io/agent-setup/open-telemetry
+  oss: false
+  commercial: false
 - name: BugSnag
   nativeOTLP: true
   url: https://docs.bugsnag.com/performance/distributed-tracing
