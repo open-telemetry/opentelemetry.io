@@ -3,6 +3,7 @@ title: 遥测特性
 linkTitle: 遥测特性
 aliases: [demo_features, features]
 default_lang_commit: 911b0a6b7752c125523a85fd2e58a49d1e459f34
+drifted_from_default: true
 ---
 
 ## OpenTelemetry

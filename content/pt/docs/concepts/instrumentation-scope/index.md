@@ -2,6 +2,7 @@
 title: Escopo de instrumentação
 weight: 80
 default_lang_commit: e9a74ead9ff9ee7c1df04241e916bdb606ba5e24
+drifted_from_default: true
 ---
 
 O [escopo de instrumentação](/docs/specs/otel/common/instrumentation-scope/)

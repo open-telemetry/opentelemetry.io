@@ -2,7 +2,7 @@
 title: Troubleshooting
 description: Troubleshooting OBI common issues and errors
 weight: 22
-cSpell:ignore: Clickhouse uprobe uprobes
+cSpell:ignore: Clickhouse uprobe uprobes userland
 ---
 
 On this page, you can learn how to diagnose and resolve common OBI errors and
@@ -173,6 +173,60 @@ You can either:
 - Run OBI as privileged.
 - Add `CAP_SYS_ADMIN` to the list of capabilities in your deployment security
   configuration.
+
+### Client metrics or spans attributed to the wrong service
+
+When OBI runs with access to the host PID namespace (for example, `pid: host` in
+Docker Compose or `hostPID: true` in Kubernetes) and you select services by
+[open port](../configure/service-discovery/#open-ports), you might see
+unexpected outgoing (client) metrics or spans attributed to one of your
+services. A common symptom is Docker Engine API calls, such as
+`GET /v1.43/containers/json`, reported as client requests with a meaningless
+`server.port` and `telemetry.sdk.language=go`, even when the target service
+isn't written in Go:
+
+```text
+http_client_request_body_size_bytes_sum{
+  http_request_method="GET",
+  http_route="/v1.43/containers/json",
+  server_address="docker", server_port="4",
+  service_name="python-service", telemetry_sdk_language="go", ...
+}
+```
+
+**Cause:**
+
+When you publish a container port (for example, Docker's `-p 7773:7773` or a
+Compose `ports:` entry), a host-side forwarder process listens on that port in
+the host network namespace. Depending on your container runtime this is
+`docker-proxy` (Docker with the userland proxy enabled) or an equivalent agent.
+
+Because OBI can see host processes, and the forwarder listens on the same port
+you selected, OBI matches the forwarder against your `open_ports` criteria and
+instruments it under your service's identity. Both the forwarder (in the host
+network namespace) and your real service (in its container network namespace)
+genuinely listen on that port, so they can't be told apart by the port alone.
+The forwarder is typically a Go binary, which is why the spans carry
+`telemetry.sdk.language=go`. Any traffic the forwarder itself generates — such
+as the Docker Engine API calls it makes over the Docker socket — is then
+attributed to your service.
+
+**Solutions:**
+
+Exclude the forwarder from instrumentation by its executable path:
+
+```yaml
+discovery:
+  exclude_instrument:
+    - exe_path: '{*/docker-proxy,*/scon-agent}'
+```
+
+Alternatively, select your services with a criterion more specific than the open
+port, so a host-side forwarder that happens to share the port isn't matched. For
+example, use the
+[executable path](../configure/service-discovery/#executable-path),
+[Kubernetes metadata](../configure/service-discovery/#k8s-namespace), or the
+[container name](../configure/service-discovery/#container-name) selector.
 
 ## Migration to v0.7.0: Network port guessing changes
 

@@ -9,6 +9,13 @@
     - contrib
   stability:
     metrics: beta
+- name: activedirectoryinvreceiver
+  display_name: activedirectoryinvreceiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
 - name: aerospikereceiver
   display_name: Aerospike Receiver
   repo: contrib
