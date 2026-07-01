@@ -11,6 +11,9 @@
   // than this in both dimensions are treated as icons/badges and skipped.
   const MIN_SIZE = 200;
   let overlay = null;
+  // The image whose overlay is currently open, so its aria-expanded can be
+  // reset when the overlay closes.
+  let activeImg = null;
 
   // True once the image has reported its intrinsic size and at least one
   // dimension clears the threshold. naturalWidth/naturalHeight are 0 until the
@@ -25,11 +28,17 @@
   }
 
   // Tags qualifying images with `td-zoomable` so the CSS can show the zoom-in
-  // cursor only on images that actually zoom. Intrinsic size is unknown until
-  // load, so defer the check for images that aren't loaded yet.
+  // cursor only on images that actually zoom, and makes them keyboard-operable:
+  // `tabindex` puts them in the tab order and `role="button"` tells assistive
+  // tech they're interactive, so the Enter/Space handler below can reach them.
+  // Intrinsic size is unknown until load, so defer the check for images that
+  // aren't loaded yet.
   function markZoomable(img) {
     if (isZoomable(img)) {
       img.classList.add('td-zoomable');
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      img.setAttribute('aria-expanded', 'false');
     }
   }
 
@@ -75,9 +84,15 @@
     overlay.classList.remove('is-open');
     overlay.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('td-zoom-open');
+    if (activeImg) {
+      activeImg.setAttribute('aria-expanded', 'false');
+      activeImg = null;
+    }
   }
 
   function openFrom(el) {
+    activeImg = el;
+    el.setAttribute('aria-expanded', 'true');
     open(el.currentSrc || el.src, el.alt);
   }
 
@@ -88,7 +103,18 @@
   });
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') close();
+    if (e.key === 'Escape') {
+      close();
+      return;
+    }
+    if (
+      (e.key === 'Enter' || e.key === ' ') &&
+      e.target.tagName === 'IMG' &&
+      isZoomable(e.target)
+    ) {
+      e.preventDefault(); // Space would otherwise scroll the page
+      openFrom(e.target);
+    }
   });
 
   if (document.readyState === 'loading') {
