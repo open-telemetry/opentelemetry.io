@@ -6,6 +6,7 @@ description: >-
 aliases: [/python, /python/metrics, /python/tracing]
 weight: 190
 default_lang_commit: d8f5ed285d009cc6baac6d7141bfde8d0956a756
+drifted_from_default: true
 ---
 
 {{% docs/languages/index-intro python /%}}
