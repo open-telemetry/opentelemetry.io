@@ -1,19 +1,19 @@
 ---
-title: Pull request checks and tests
-linkTitle: PR checks & tests
-description: Learn how to make your pull request successfully pass all checks
+title: Verificări și teste pentru pull request
+linkTitle: Verificări și teste de PR
+description: Învață cum să faci ca pull request-ul tău să treacă toate verificările
 weight: 40
 ---
 
-When you raise a
+Atunci când ridici un
 [pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
-(PR) with the
-[opentelemetry.io repository](https://github.com/open-telemetry/opentelemetry.io)
-a set of checks are executed. The PR checks verify that:
+(PR) cu
+[reperoriul opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io)
+sunt set de verificări sunt executate. Aceste verificări de PR se asigură că:
 
-- You have signed the [CLA](#easy-cla)
-- Your PR successfully [deploys through Netlify](#netlify-deployment)
-- Your changes are compliant with our [style guide](#checks)
+- Ai semnat [CLA-ul](#easy-cla)
+- PR-ul tău se [lansează prin Netlify](#netlify-deployment)
+- Modificările tale sunt conforme cu [ghidul de stil](#checks)
 
 > [!NOTE]
 >
