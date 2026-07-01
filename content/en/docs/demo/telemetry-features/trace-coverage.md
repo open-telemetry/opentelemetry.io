@@ -22,10 +22,9 @@ aliases: [trace_service_features, trace-features, ../trace-features]
 | Quote Service   | PHP        | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 | Recommendation  | Python     | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 | Shipping        | Rust       | ✅                        | ✅                   | ✅                   | ✅                      | 🔕         | 🔕      | ✅                 |
-| Agent       | Python       | ✅                        | 🔕                   | 🔕                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
-| MCP        | Python       | ✅                        | 🔕                   | 🔕                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
-| Chatbot    | Python       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
-
+| Agent           | Python     | ✅                        | 🔕                   | 🔕                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
+| MCP             | Python     | ✅                        | 🔕                   | 🔕                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
+| Chatbot         | Python     | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 
 Emoji Legend:
 

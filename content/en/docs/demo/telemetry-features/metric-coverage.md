@@ -26,7 +26,6 @@ aliases: [metric_service_features, metric-features, ../metric-features]
 | MCP             | Python     | ✅                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Chatbot         | Python     | ✅                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 
-
 Emoji Legend:
 
 - Completed: ✅

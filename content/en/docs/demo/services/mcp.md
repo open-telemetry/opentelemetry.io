@@ -2,7 +2,7 @@
 title: MCP Service
 linkTitle: MCP
 aliases: [mcpservice]
-cSpell:ignore: fastmcp traceloop httpx jlowin
+cSpell:ignore: fastmcp httpx jlowin
 ---
 
 The MCP service exposes the OpenTelemetry Astronomy Shop demo's tools over the
@@ -98,10 +98,9 @@ MCP service instead of using its own built-in tools.
 
 ## Local development
 
-From `src/mcp`, install dependencies. Because the service imports the
-shop tools from the shared source tree (the Dockerfile copies
-`src/shared/tools.py` into `src/mcp_server/`), make the same file available
-locally before running:
+From `src/mcp`, install dependencies. Because the service imports the shop tools
+from the shared source tree (the Dockerfile copies `src/shared/tools.py` into
+`src/mcp_server/`), make the same file available locally before running:
 
 ```sh
 pip install -r src/mcp/requirements.txt

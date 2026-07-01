@@ -98,8 +98,8 @@ through the demo UI, usually under `/chatbot`.
 
 ## Local development
 
-From the `src/chatbot`, install dependencies. Run the Agent service first,
-then start the chatbot:
+From the `src/chatbot`, install dependencies. Run the Agent service first, then
+start the chatbot:
 
 ```sh
 pip install -r src/chatbot/requirements.txt

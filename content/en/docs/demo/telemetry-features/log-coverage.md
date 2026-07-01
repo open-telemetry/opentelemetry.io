@@ -29,7 +29,6 @@ aliases: [log_service_features, logging-features, ../logging-features]
 | MCP             | Python     | 🚧        |
 | Chatbot         | Python     | 🚧        |
 
-
 Emoji Legend:
 
 - Completed: ✅
