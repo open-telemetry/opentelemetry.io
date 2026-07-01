@@ -43,7 +43,7 @@ SDK は、API によって収集されたデータの処理方法を設定する
 以下の Java コードスニペットでこのワークフローを示します。
 
 ```java
-OpenTelemetry openTelemetry = // declare OpenTelemetry instance
+OpenTelemetry openTelemetry = // OpenTelemetry インスタンスを宣言
 Meter meter = openTelemetry.getMeter("my-meter-scope");
 DoubleHistogram histogram =
     meter
