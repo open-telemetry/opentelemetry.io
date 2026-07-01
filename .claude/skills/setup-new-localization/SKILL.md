@@ -6,7 +6,7 @@ description: >-
   onboarding a localization team.
 argument-hint: '<kickoff-issue | lang-code>'
 allowed-tools: Bash Read Edit Write Grep Glob
-cSpell:ignore: endonym unstaffed
+cSpell:ignore: endonym gitkeep nowrap unstaffed
 ---
 
 # Set up a new localization
@@ -16,7 +16,9 @@ Wire a new language into the site end-to-end. Start from one of:
 - **A kickoff issue (preferred)** — its number or URL, e.g.
   [#9577][kickoff-example]. Read it with
   `gh issue view <n> -R open-telemetry/opentelemetry.io` and pull out:
-  - ISO 639-1 code → `<lang>`
+  - ISO 639-1 code → `<lang>` (required)
+  - Locale, if the issue specifies one → `<locale>` (optional), e.g. `pl-PL`,
+    `zh-CN` — otherwise decide in step (a)
   - Language name → `<native-label>`
   - Locale mentor + Contributors → the **approvers** (`data/locale-teams.yaml`)
 - **A bare `<lang>` ISO 639-1 code** when there's no issue yet. You then gather
@@ -24,11 +26,12 @@ Wire a new language into the site end-to-end. Start from one of:
 
 Either way, derive these; don't ask for them as separate arguments:
 
-- **Hugo locale** — derived in step (a).
+- **Hugo locale** — from the issue if it specifies one, otherwise decided in
+  step (a).
 - **`<native-label>`** — the endonym for that language (from the issue, or see
   gotchas for picking the right one).
 - **`<country>`** — the language's primary country, for the Slack channel / team
-  naming and the label color (step (e)).
+  naming and the label color (step (g)).
 
 [kickoff-example]:
   https://github.com/open-telemetry/opentelemetry.io/issues/9577
@@ -45,12 +48,14 @@ Either way, derive these; don't ask for them as separate arguments:
 
 First decide the locale:
 
-- If `<lang>` maps to a single common locale, **omit `locale:`**. Hugo defaults
-  it to `<lang>` (the ISO 639-1 code), as `bn`, `es`, `fr`, and `ja` do.
-- If `<lang>` has several regional variants in real use (e.g. `pt` → `pt-BR` /
-  `pt-PT`, `zh` → `zh-CN` / `zh-TW`, `en` → `en-US` / `en-GB`), **ask the user
-  which locale** with the `AskUserQuestion` tool (if available; otherwise ask in
-  plain text), then set `locale:` to their answer.
+- If the kickoff issue already specifies a `<locale>`, use it.
+- Otherwise, if `<lang>` maps to a single common locale, **omit `locale:`**.
+  Hugo defaults it to `<lang>` (the ISO 639-1 code), as `bn`, `es`, `fr`, and
+  `ja` do.
+- Otherwise, if `<lang>` has several regional variants in real use (e.g. `pt` →
+  `pt-BR` / `pt-PT`, `zh` → `zh-CN` / `zh-TW`, `en` → `en-US` / `en-GB`), **ask
+  the user which locale** with the `AskUserQuestion` tool (if available;
+  otherwise ask in plain text), then set `locale:` to their answer.
 
 Then add the block under `languages:`, in alphabetical order:
 
@@ -85,7 +90,25 @@ Copy the shape of an existing block (e.g. `## ja`), in alphabetical order:
     sites: *<lang>-matrix
 ```
 
-### c. `.cspell.yml` — custom word list
+### c. `content/<lang>/.gitkeep` — placeholder content dir
+
+The mount in step (b) points at `content/<lang>`, so the directory must exist.
+Create it empty — git won't track an empty folder, so the `.gitkeep` is the
+tracked file:
+
+```bash
+touch content/<lang>/.gitkeep
+```
+
+**Do NOT copy the English homepage into the setup PR.** The translated homepage
+lands in its own follow-up PR (e.g. [#10431][homepage-pr] for Korean). Copying
+`content/en/_index.md` here only creates merge conflicts with that PR and drags
+in a `default_lang_commit` you'd then have to manage. Keep the setup PR to the
+wiring; let `.gitkeep` hold the empty tree.
+
+[homepage-pr]: https://github.com/open-telemetry/opentelemetry.io/pull/10431
+
+### d. `.cspell.yml` — custom word list
 
 Add the custom list in **both** sections (alphabetical):
 
@@ -122,18 +145,33 @@ if the hyphen one 404s). Then wire it in three places:
 - `package.json` devDependency: `"@cspell/dict-pl_pl": "<version>"`
 
 **Korean has no folder**, so for `ko` add only the custom `ko-words` list and
-leave `package.json` unchanged.
+leave the `package.json` devDependencies unchanged.
 
 [cspell-dicts]:
   https://github.com/streetsidesoftware/cspell-dicts/tree/main/dictionaries
 
-### d. `.cspell/<lang>-words.txt` — empty custom list
+### e. `.cspell/<lang>-words.txt` — empty custom list
 
 ```bash
 touch .cspell/<lang>-words.txt
 ```
 
-### e. `lang:<lang>` label — labeler config **and** the GitHub label
+### f. `package.json` — Prettier nowrap group (ask a maintainer)
+
+Some locales break under Prettier's default prose wrapping; the
+`_check:format:nowrap` script runs those with `--prose-wrap preserve` instead.
+It currently lists `content/ja content/ko content/uk content/zh` (CJK plus
+Ukrainian), so there's no clean a-priori rule. **Confirm with a maintainer**
+whether `<lang>` belongs in this group. If it does, add `content/<lang>`
+(alphabetical) to the script:
+
+```json
+"_check:format:nowrap": "npm run __check:format:nowrap -- content/ja content/<lang> content/uk content/zh"
+```
+
+Then run `npm run check:format` to confirm the locale's content passes.
+
+### g. `lang:<lang>` label — labeler config **and** the GitHub label
 
 Wire the auto-labeler in `.github/component-label-map.yml`:
 
@@ -153,7 +191,7 @@ gh label create "lang:<lang>" -R open-telemetry/opentelemetry.io --color <hex>
 # flag color, no leading '#', e.g. ko=0047A0  pl=DC143C  pt=009739  uk=ffdd00
 ```
 
-### f. `data/locale-teams.yaml` — the CODEOWNERS source of truth
+### h. `data/locale-teams.yaml` — the CODEOWNERS source of truth
 
 Since #10295 this registry **generates** the locale section of CODEOWNERS. It
 records the expected membership of the `docs-<lang>-*` teams (created in the
@@ -166,10 +204,12 @@ admin repo — see [Out-of-repo](#out-of-repo-create-the-org-teams)). Under the
   approvers: [<mentor-and-contribs>] # issue's "Locale mentor" + "Contributors"
 ```
 
-Empty `maintainers` marks the locale **unstaffed**: its CODEOWNERS lines fall
-back to `@open-telemetry/docs-approvers`.
+Fill `approvers` with whatever roles are already known — even partial — rather
+than leaving it empty waiting to assess contributions. Empty `maintainers` marks
+the locale **unstaffed**: its CODEOWNERS lines fall back to
+`@open-telemetry/docs-approvers`.
 
-### g. Regenerate CODEOWNERS
+### i. Regenerate CODEOWNERS
 
 ```bash
 npm run fix:codeowners     # regenerates the BEGIN/END locale-owners block
@@ -178,7 +218,7 @@ npm run check:codeowners   # must report "up to date"
 
 **Never hand-edit** the generated block in `.github/CODEOWNERS`.
 
-### h. `projects/localization.md` — 5 alphabetical insertions
+### j. `projects/localization.md` — 5 alphabetical insertions
 
 1. Supported-languages list: `- [<native-label> - <Lang> (<lang>)][<lang>]`
    **and** its link ref `[<lang>]: https://opentelemetry.io/<lang>/`
@@ -194,11 +234,14 @@ npm run check:codeowners   # must report "up to date"
   added a `content/<lang>:` block there; #10295 removed **all** locale teams
   from that file. It now holds only non-locale component reviewers. Re-adding a
   locale duplicates ownership.
+- **Do NOT bundle the homepage.** The setup PR creates only
+  `content/<lang>/.gitkeep`; the translated `_index.md` is a separate PR — see
+  step (c).
 - **Do NOT hand-edit** the generated locale section of `.github/CODEOWNERS` —
-  see step (g).
+  see step (i).
 - **Pick the right endonym.** Korean is `한국어` (South Korea), not `조선말`
   (North Korea). Choose the endonym matching the language's primary country.
-- **Never assume an upstream cSpell dict exists** — see step (c).
+- **Never assume an upstream cSpell dict exists** — see step (d).
 
 ## Out-of-repo: create the org teams {#out-of-repo-create-the-org-teams}
 
@@ -234,6 +277,7 @@ this PR, but you can't merge it.
 
 ```bash
 npm run check:codeowners                  # "up to date"
+npm run check:format                      # passes (incl. nowrap group, if joined)
 git diff --name-only                      # exactly the files below, nothing more
 git diff --name-only | grep component-owners.yml && echo "BUG: do not touch" || echo OK
 gh label list -R open-telemetry/opentelemetry.io | grep "lang:<lang>"  # label exists
@@ -243,10 +287,12 @@ Expected changed/added paths:
 
 - `config/_default/hugo.yaml`
 - `config/_default/module-template.yaml`
+- `content/<lang>/.gitkeep` (new)
 - `.cspell.yml`
 - `.cspell/<lang>-words.txt` (new)
 - `.github/component-label-map.yml`
 - `.github/CODEOWNERS` (generated)
 - `data/locale-teams.yaml`
 - `projects/localization.md`
-- `package.json` **only if** an upstream `@cspell/dict-*` was added
+- `package.json` **only if** an upstream `@cspell/dict-*` was added (step d)
+  and/or `<lang>` was added to the nowrap group (step f)
