@@ -1,7 +1,7 @@
 ---
 title: 'CocoaPods Deprecation Notice for OpenTelemetry Swift'
 linkTitle: Otel Swift Cocoapods Deprecation # Mandatory, make sure that your short title.
-date: 2026-06-02 # Put the current date, we will keep the date updated until your PR is merged
+date: 2026-07-02 # Put the current date, we will keep the date updated until your PR is merged
 author: '[Ariel Demarco](https://github.com/ArielDemarco)'
 draft: true # TODO: remove this line once your post is ready to be published
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
@@ -67,13 +67,13 @@ The milestones are still under discussion, but will likely be as follows:
 
 1. Existing CocoaPods integrations will continue to function.
 1. Once CocoaPods support is officially discontinued:
-  a. Previously published versions will remain available.
-  b. No new SDK releases will be published to CocoaPods.
-   c. We’ll leave `.podspec` in the repositories until further notice.
-   d. New features, bug fixes, and security updates will only be available
-      through Swift Package Manager releases.
-   e. Contributors won't invest resources into investigating or resolving issues
-      that are specific to CocoaPods integration.
+    1. Previously published versions will remain available.
+    1. No new SDK releases will be published to CocoaPods.
+    1. We’ll leave `.podspec` in the repositories until further notice.
+    1. New features, bug fixes, and security updates will only be available
+       through Swift Package Manager releases.
+    1. Contributors won't invest resources into investigating or resolving issues
+       that are specific to CocoaPods integration.
 
 ## Recommended Migration Path
 
