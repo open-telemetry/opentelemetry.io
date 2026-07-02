@@ -5,29 +5,32 @@ date: 2026-06-23
 author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger) (Grafana Labs)
 sig: Java
+issue: 10563
 cSpell:ignore: Customizer Dotel petclinic relaxed substituters zeitlinger
 ---
 
-The OpenTelemetry Spring Boot starter gained declarative-configuration support
-starting in version 2.26.0 — the same YAML schema
-[the Java agent introduced in late 2025](/blog/2025/declarative-config/), now
-embedded inside `application.yaml`. This post traces what one env var,
+The OpenTelemetry
+[Spring Boot starter](/docs/zero-code/java/spring-boot-starter/) gained
+declarative-configuration support starting in version 2.26.0 — the same YAML
+schema [the Java agent introduced in late 2025](/blog/2025/declarative-config/),
+now embedded inside `application.yaml`. This post traces what one env var,
 `OTEL_SERVICE_NAME=petclinic`, does in that new world, and where the seams are.
 
-_In a hurry? Jump straight to the
-[Spring Boot starter declarative-config docs](/docs/zero-code/java/spring-boot-starter/declarative-configuration/),
-paste your `application.properties` into the
-[interactive converter](/docs/zero-code/java/spring-boot-starter/declarative-configuration/#convert-your-existing-configuration),
-or pick your SDK setup in the [Ecosystem Explorer](/ecosystem/) with the Spring
-Boot starter target selected. Come back for the story when you have a coffee._
-
----
+> [!TIP] In a hurry?
+>
+> Jump straight to the
+> [Spring Boot starter declarative-config docs](/docs/zero-code/java/spring-boot-starter/declarative-configuration/),
+> paste your `application.properties` into the
+> [interactive converter](/docs/zero-code/java/spring-boot-starter/declarative-configuration/#convert-your-existing-configuration),
+> or pick your SDK setup in the [Ecosystem Explorer](/ecosystem/) with the
+> Spring Boot starter target selected. Come back for the story when you have a
+> coffee.
 
 For years, environment variables (and their JVM `-D` cousins) were the only way
 to configure the OpenTelemetry SDK: every exporter, every sampler, every
 captured header, expressed as a flat list of `OTEL_*` variables.
 
-Since starter 2.26.0, that list has a sibling. The SDK
+Since starter 2.26.0, that list has a new sibling. The SDK
 [declarative-configuration schema](/docs/languages/sdk-configuration/declarative-configuration/)
 is a YAML tree that can describe an entire telemetry pipeline (every processor,
 every exporter, every nested option) in the same shape the SDK actually runs.
