@@ -25,6 +25,9 @@ aliases: [log_service_features, logging-features, ../logging-features]
 | Quote           | PHP        | ✅        |
 | Recommendation  | Python     | ✅        |
 | Shipping        | Rust       | ✅        |
+| Agent           | Python     | 🚧        |
+| MCP             | Python     | 🚧        |
+| Chatbot         | Python     | 🚧        |
 
 Emoji Legend:
 
