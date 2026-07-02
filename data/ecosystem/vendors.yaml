@@ -80,7 +80,7 @@
   nativeOTLP: true
   url: https://docs.bronto.io/agent-setup/open-telemetry
   oss: false
-  commercial: false
+  commercial: true
 - name: BugSnag
   nativeOTLP: true
   url: https://docs.bugsnag.com/performance/distributed-tracing
