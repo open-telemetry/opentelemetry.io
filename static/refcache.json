@@ -12483,6 +12483,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-30T07:06:22.197053933Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-propagator-env-carrier": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-23T20:31:00.733762212Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-jaeger": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:35:16.306504937Z"
