@@ -1719,6 +1719,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-30T07:07:03.234Z"
   },
+  "https://docs.bronto.io/agent-setup/open-telemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-01T20:29:17.532342385Z"
+  },
   "https://docs.bugsnag.com/performance/distributed-tracing": {
     "StatusCode": 206,
     "LastSeen": "2026-07-01T06:40:23.270722259Z"
