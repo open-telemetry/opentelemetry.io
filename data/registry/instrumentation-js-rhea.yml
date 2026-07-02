@@ -1,0 +1,23 @@
+title: OpenTelemetry Instrumentation for rhea
+registryType: instrumentation
+language: js
+tags:
+  - Node.js
+  - rhea
+  - amqp
+  - amqp-1.0
+  - azure-service-bus
+license: Apache-2.0
+description: Instrumentation library for rhea.
+authors:
+  - name: Valerio Bartolini
+    url: https://github.com/bartoval
+urls:
+  repo: https://github.com/bartoval/opentelemetry-instrumentation-rhea
+  docs: https://github.com/bartoval/opentelemetry-instrumentation-rhea#readme
+createdAt: 2024-06-07
+package:
+  registry: npm
+  name: opentelemetry-instrumentation-rhea
+  version: 1.1.0
+isFirstParty: false
