@@ -1,0 +1,30 @@
+# cSpell:ignore agentaudit ed25519 genai
+title: Agent Audit Exporter
+registryType: exporter
+language: collector
+tags:
+  - audit
+  - audit-log
+  - tamper-evident
+  - hash-chain
+  - ed25519
+  - signing
+  - genai
+  - agent
+  - guardrail
+  - governance
+urls:
+  repo: https://github.com/surpradhan/otel-agent-audit
+  docs: https://github.com/surpradhan/otel-agent-audit#readme
+license: MIT
+description: >-
+  An OpenTelemetry Collector exporter that consumes agent traces and emits a
+  per-trace, hash-chained, Ed25519-signed, independently verifiable audit log.
+  Records governance/guardrail decisions already present in spans and ships a
+  standalone verifier CLI.
+authors:
+  - name: Surabhi Pradhan
+    url: https://github.com/surpradhan
+createdAt: 2026-06-24
+isNative: false
+isFirstParty: false
