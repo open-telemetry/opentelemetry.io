@@ -9,7 +9,7 @@ author:
 draft: true # TODO: remove this line once your post is ready to be published
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
 body_class: otel-with-contributions-from # TODO: remove this line if there are no secondary contributing authors
-issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
+issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details (Required)
 sig: SIG Name # TODO: add the name of the SIG that sponsors this blog post (Required)
 ---
 

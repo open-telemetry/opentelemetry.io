@@ -31,7 +31,61 @@ function readI18n(container) {
     copy: d.i18nCopy,
     copied: d.i18nCopied,
     source: d.i18nSource,
+    viewSchema: d.i18nViewSchema,
+    schemaVersion: d.i18nSchemaVersion,
   };
+}
+
+// ── JSON path computation ───────────────────────────────────────────────────────
+
+// BFS from the root type to compute the JSON path chain for each usage edge.
+// Uses per-type expansion (each type expanded once, at its shortest path) so
+// cycles in the schema (e.g. Sampler ↔ ParentBasedSampler) cannot loop.
+//
+// Returns a Map keyed by "childTypeName|parentTypeName|propertyName" whose
+// value is a chain array of { text, typeId } segments, e.g.
+//   "SpanProcessor|TracerProvider|processors" →
+//     [ {text:'$', typeId:'opentelemetryconfiguration'},
+//       {text:'tracer_provider', typeId:'tracerprovider'},
+//       {text:'processors[*]', typeId:'spanprocessor'} ]
+//
+// Each segment's typeId is the type *referenced by* that segment, so links
+// navigate to the type a user would expect to land on when clicking that step.
+function computeUsageJsonPaths(types) {
+  const typesByName = new Map(types.map((t) => [t.name, t]));
+  const rootType = types.find((t) => t.isRoot);
+  if (!rootType) return new Map();
+
+  const usagePathMap = new Map();
+  const expandedTypes = new Set();
+  const rootChain = [{ text: '$', typeId: rootType.id }];
+  const queue = [[rootType.name, rootChain]];
+
+  while (queue.length > 0) {
+    const [typeName, chain] = queue.shift();
+    if (expandedTypes.has(typeName)) continue;
+    expandedTypes.add(typeName);
+
+    const type = typesByName.get(typeName);
+    if (!type) continue;
+
+    for (const prop of type.properties ?? []) {
+      if (!prop.typeRef) continue;
+      const childType = typesByName.get(prop.typeRef);
+      const childTypeId = childType?.id ?? prop.typeRef.toLowerCase();
+      const isArray = prop.type === 'array';
+      const segmentText = isArray ? `${prop.name}[*]` : prop.name;
+      const childChain = [...chain, { text: segmentText, typeId: childTypeId }];
+
+      usagePathMap.set(`${prop.typeRef}|${typeName}|${prop.name}`, childChain);
+
+      if (!expandedTypes.has(prop.typeRef)) {
+        queue.push([prop.typeRef, childChain]);
+      }
+    }
+  }
+
+  return usagePathMap;
 }
 
 // ── Rendering ─────────────────────────────────────────────────────────────────
@@ -51,17 +105,21 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;');
 }
 
-function renderControls(types, i18n) {
+function renderControls(types, i18n, schemaVersion, schemaSourceUrl) {
   const stableCount = types.filter((t) => !t.isExperimental).length;
   const expCount = types.filter((t) => t.isExperimental).length;
   const total = types.length;
   const rootType = types.find((t) => t.isRoot);
   const rootLinkHtml = rootType
-    ? `<p>The root schema type is <a href="#ct-item-${escapeAttr(rootType.id)}" data-ct-type-link="${escapeAttr(rootType.id)}">${escapeHtml(rootType.name)}</a>.</p>`
+    ? `<p>The root schema type is <a href="#type-${escapeAttr(rootType.id)}" data-ct-type-link="${escapeAttr(rootType.id)}">${escapeHtml(rootType.name)}</a>.</p>`
     : '';
+  const versionHtml =
+    schemaVersion && schemaSourceUrl
+      ? `<p>${escapeHtml(i18n.schemaVersion)}: <a href="${escapeAttr(schemaSourceUrl)}" target="_blank" rel="noopener">${escapeHtml(schemaVersion)}</a></p>`
+      : '';
 
   return `
-${rootLinkHtml}<div class="config-types-controls mb-3">
+${rootLinkHtml}${versionHtml}<div class="config-types-controls mb-3">
   <div class="row g-2 align-items-center">
     <div class="col-md-5">
       <input type="search"
@@ -99,7 +157,7 @@ function renderTypeCell(prop, knownTypeIds) {
     return `<code class="ct-prop-type">${escapeHtml(prop.type)}</code>`;
   }
   const refId = escapeAttr(prop.typeRef.toLowerCase());
-  const linkHtml = `<a href="#ct-item-${refId}" data-ct-type-link="${refId}">${escapeHtml(prop.typeRef)}</a>`;
+  const linkHtml = `<a href="#type-${refId}" data-ct-type-link="${refId}">${escapeHtml(prop.typeRef)}</a>`;
   if (prop.type === prop.typeRef) {
     return `<code class="ct-prop-type">${linkHtml}</code>`;
   }
@@ -225,13 +283,36 @@ function renderSnippets(type, i18n) {
 </div>`;
 }
 
-function renderUsages(type) {
+function renderUsages(type, i18n, usagePathMap) {
   if (!type.usages?.length) return '';
   const items = type.usages
-    .map(
-      (u) =>
-        `<li><a href="#ct-item-${escapeAttr(u.typeId)}" data-ct-type-link="${escapeAttr(u.typeId)}">${escapeHtml(u.typeName)}</a>.<code>${escapeHtml(u.propertyName)}</code></li>`,
-    )
+    .map((u) => {
+      const chain = usagePathMap?.get(
+        `${type.name}|${u.typeName}|${u.propertyName}`,
+      );
+      if (!chain) return ''; // guarded at build time; should never happen
+
+      // Plain string for the copy button (standard JSONPath).
+      const plainPath = chain
+        .map((s, i) => (i === 0 ? s.text : `.${s.text}`))
+        .join('');
+
+      // Each segment is a link to the type it references.
+      const pathHtml = chain
+        .map((s, i) => {
+          const dot = i === 0 ? '' : '.';
+          return `${dot}<a href="#type-${escapeAttr(s.typeId)}" data-ct-type-link="${escapeAttr(s.typeId)}">${escapeHtml(s.text)}</a>`;
+        })
+        .join('');
+
+      return `<li class="ct-usage-item">
+        <code class="ct-usage-path">${pathHtml}</code>
+        <button type="button"
+                class="ct-usage-copy"
+                data-usage-copy="${escapeAttr(plainPath)}"
+                aria-label="${escapeAttr(i18n.copy)} ${escapeAttr(plainPath)}">${escapeHtml(i18n.copy)}</button>
+      </li>`;
+    })
     .join('');
   return `
 <div class="ct-usages mt-3">
@@ -240,7 +321,24 @@ function renderUsages(type) {
 </div>`;
 }
 
-function renderTypeItem(type, i18n, knownTypeIds) {
+function renderRawSchema(type, i18n) {
+  if (!type.rawDef) return '';
+  const json = JSON.stringify(type.rawDef, null, 2);
+  const sourceLink = type.sourceUrl
+    ? `<a class="ct-snippet-source" href="${escapeAttr(type.sourceUrl)}"
+          target="_blank" rel="noopener">${escapeHtml(i18n.source)}</a>`
+    : '';
+  return `
+<details class="ct-schema-details mt-3">
+  <summary class="ct-schema-summary">${escapeHtml(i18n.viewSchema)}</summary>
+  <div class="ct-snippet mt-1">
+    ${sourceLink ? `<div class="ct-snippet-toolbar">${sourceLink}</div>` : ''}
+    <pre class="ct-snippet-pre"><code>${escapeHtml(json)}</code></pre>
+  </div>
+</details>`;
+}
+
+function renderTypeItem(type, i18n, knownTypeIds, usagePathMap) {
   const propCount = type.hasNoProperties ? 0 : (type.properties?.length ?? 0);
   const countText = propCount === 1 ? '1 property' : `${propCount} properties`;
   const constraintsHtml = type.constraints
@@ -249,7 +347,7 @@ function renderTypeItem(type, i18n, knownTypeIds) {
 
   return `
 <div class="accordion-item"
-     id="ct-item-${escapeAttr(type.id)}"
+     id="type-${escapeAttr(type.id)}"
      data-type-id="${escapeAttr(type.id)}"
      data-is-experimental="${type.isExperimental}">
   <h3 class="accordion-header">
@@ -268,15 +366,16 @@ function renderTypeItem(type, i18n, knownTypeIds) {
       ${renderPropertiesTable(type, i18n, knownTypeIds)}
       ${renderSnippets(type, i18n)}
       ${constraintsHtml}
-      ${renderUsages(type)}
+      ${renderUsages(type, i18n, usagePathMap)}
+      ${renderRawSchema(type, i18n)}
     </div>
   </div>
 </div>`;
 }
 
-function renderAccordion(types, i18n, knownTypeIds) {
+function renderAccordion(types, i18n, knownTypeIds, usagePathMap) {
   const items = types
-    .map((t) => renderTypeItem(t, i18n, knownTypeIds))
+    .map((t) => renderTypeItem(t, i18n, knownTypeIds, usagePathMap))
     .join('');
   return `
 <div id="${ACCORDION_ID}" class="accordion">
@@ -336,18 +435,40 @@ function wireControls(container, types, i18n) {
   let debounceTimer;
 
   // Copy buttons (delegated, since the accordion is built in one innerHTML pass).
+  // Handles both snippet copy buttons and inline usage-path copy buttons.
+  // WeakMap so rapid re-clicks don't capture a stale "Copied!" as the original
+  // label, which would leave the button stuck in the copied state.
+  const copyTimers = new WeakMap();
+  function flashCopied(btn) {
+    if (!copyTimers.has(btn)) {
+      copyTimers.set(btn, { original: btn.textContent.trim(), timer: null });
+    }
+    const state = copyTimers.get(btn);
+    clearTimeout(state.timer);
+    btn.textContent = i18n.copied;
+    state.timer = setTimeout(() => {
+      btn.textContent = state.original;
+      copyTimers.delete(btn);
+    }, 2000);
+  }
+
   container.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-snippet-copy]');
-    if (!btn) return;
-    const code = btn.closest('.ct-snippet')?.querySelector('pre code');
-    if (!code) return;
-    navigator.clipboard.writeText(code.textContent).then(() => {
-      const original = btn.textContent;
-      btn.textContent = i18n.copied;
-      setTimeout(() => {
-        btn.textContent = original;
-      }, 2000);
-    });
+    const usageBtn = e.target.closest('[data-usage-copy]');
+    if (usageBtn) {
+      navigator.clipboard
+        .writeText(usageBtn.dataset.usageCopy)
+        .then(() => flashCopied(usageBtn));
+      return;
+    }
+
+    const snippetBtn = e.target.closest('[data-snippet-copy]');
+    if (snippetBtn) {
+      const code = snippetBtn.closest('.ct-snippet')?.querySelector('pre code');
+      if (!code) return;
+      navigator.clipboard
+        .writeText(code.textContent)
+        .then(() => flashCopied(snippetBtn));
+    }
   });
 
   // Search
@@ -372,6 +493,15 @@ function wireControls(container, types, i18n) {
       state.filter = btn.dataset.ctFilter;
       applyFilters(container, types, state);
     });
+  });
+
+  // Update URL hash when an accordion item is expanded.
+  accordion.addEventListener('show.bs.collapse', (e) => {
+    const item = e.target.closest('.accordion-item');
+    if (!item?.dataset.typeId) return;
+    const newHash = `#type-${item.dataset.typeId}`;
+    if (location.hash === newHash) return;
+    history.pushState(null, '', newHash);
   });
 
   // Expand / collapse all
@@ -410,6 +540,19 @@ function expandItem(item) {
 }
 
 function wireTypeLinks(container, resetControls) {
+  window.addEventListener('popstate', () => {
+    if (!location.hash) return;
+    let item;
+    try {
+      item = container.querySelector(location.hash);
+    } catch {
+      return;
+    }
+    if (!item || !item.classList.contains('accordion-item')) return;
+    expandItem(item);
+    item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
   container.addEventListener('click', (e) => {
     const link = e.target.closest('a[data-ct-type-link]');
     if (!link) return;
@@ -420,8 +563,11 @@ function wireTypeLinks(container, resetControls) {
       `[data-type-id="${CSS.escape(typeId)}"]`,
     );
     if (item) {
+      const href = link.getAttribute('href');
       expandItem(item);
-      history.replaceState(null, '', link.getAttribute('href'));
+      // show.bs.collapse also pushes when the item wasn't already open; both
+      // sites dedupe on location.hash so we won't get a double entry.
+      if (location.hash !== href) history.pushState(null, '', href);
       item.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
@@ -458,11 +604,13 @@ async function init() {
     const res = await fetch(schemaUrl);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    const types = data.types;
+    const { types, schemaVersion, schemaSourceUrl } = data;
     const knownTypeIds = new Set(types.map((t) => t.id));
+    const usagePathMap = computeUsageJsonPaths(types);
 
     container.innerHTML =
-      renderControls(types, i18n) + renderAccordion(types, i18n, knownTypeIds);
+      renderControls(types, i18n, schemaVersion, schemaSourceUrl) +
+      renderAccordion(types, i18n, knownTypeIds, usagePathMap);
     injectDescriptions(container, types);
     const resetControls = wireControls(container, types, i18n);
     wireTypeLinks(container, resetControls);
