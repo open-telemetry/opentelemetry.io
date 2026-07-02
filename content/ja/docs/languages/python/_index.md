@@ -5,15 +5,14 @@ description: >-
   src="/img/logos/32x32/Python_SDK.svg" alt="Python"> PythonにおけるOpenTelemetryの言語固有の実装。
 aliases: [/python, /python/metrics, /python/tracing]
 weight: 190
-default_lang_commit: d8f5ed285d009cc6baac6d7141bfde8d0956a756
-drifted_from_default: true
+default_lang_commit: 59b3c1027112e951357f71d60c643317d3efeb48
 ---
 
 {{% docs/languages/index-intro python /%}}
 
 ## バージョンサポート {#version-support}
 
-OpenTelemetry-PythonはPython 3.9以上をサポートしています。
+OpenTelemetry-PythonはPython 3.10以上をサポートしています。
 
 ## インストール {#installation}
 

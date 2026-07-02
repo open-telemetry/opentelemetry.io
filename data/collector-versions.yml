@@ -1,5 +1,0 @@
-# OpenTelemetry Collector distribution versions
-# This file is automatically updated by scripts/collector-sync
-
-core: v0.155.0
-contrib: v0.155.0
