@@ -1,0 +1,113 @@
+{{ define "main" }}
+<div class="td-content">
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.description }}
+    <div class="lead">{{ . | markdownify }}</div>
+  {{ end }}
+  
+  <p>
+    This page lists all redirect rules configured in the site. It is automatically
+    generated during the build process and is used for link checking to ensure
+    that all redirect targets are valid.
+  </p>
+
+  <h2>Redirect Rules</h2>
+  
+  <p>Total redirects: <strong id="redirect-count">0</strong></p>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Check</th>
+        </tr>
+      </thead>
+      <tbody id="redirects-table">
+        {{/* Generate redirects from page aliases */}}
+        {{ range $p := .Site.Pages }}
+          {{ range $p.Params.redirects }}
+            {{ $from := cond (strings.HasPrefix .from "/")
+                .from
+                (print $p.RelPermalink .from) }}
+            {{ $to := cond (strings.HasPrefix .to "/")
+                .to
+                (print $p.RelPermalink .to) }}
+            <tr>
+              <td><code>{{ $from }}</code></td>
+              <td><a href="{{ $to }}">{{ $to }}</a></td>
+              <td><span class="badge badge-info">redirects param</span></td>
+            </tr>
+          {{ end }}
+
+          {{/* Process aliases */}}
+          {{ $p := . }}
+          {{ range $alias := $p.Aliases }}
+            {{ if not (hasPrefix $alias "/") }}
+              {{ $alias = partial "relative-redirects-alias"
+                  (dict
+                    "alias" $alias
+                    "p" (cond (hasPrefix $alias "./") $p $p.Parent)
+                  ) }}
+            {{ end }}
+            <tr>
+              <td><code>{{ $alias }}</code></td>
+              <td><a href="{{ $p.RelPermalink }}">{{ $p.RelPermalink }}</a></td>
+              <td><span class="badge badge-success">alias</span></td>
+            </tr>
+          {{ end }}
+
+          {{/* Process redirect param */}}
+          {{ with $p.Params.redirect }}
+            <tr>
+              <td><code>{{ $p.RelPermalink }}</code></td>
+              <td><a href="{{ . }}">{{ . }}</a></td>
+              <td><span class="badge badge-warning">redirect param</span></td>
+            </tr>
+          {{ end }}
+        {{ end }}
+
+        {{/* Add hardcoded redirects from index.redirects */}}
+        <tr>
+          <td><code>/docs/reference/specification</code></td>
+          <td><a href="/docs/specs/otel">/docs/specs/otel</a></td>
+          <td><span class="badge badge-secondary">hardcoded</span></td>
+        </tr>
+        <tr>
+          <td><code>/docs/reference/specification/*</code></td>
+          <td><a href="/docs/specs/otel/:splat">/docs/specs/otel/:splat</a></td>
+          <td><span class="badge badge-secondary">hardcoded (pattern)</span></td>
+        </tr>
+        <tr>
+          <td><code>/docs/specification/otel/*</code></td>
+          <td><a href="/docs/specs/otel/:splat">/docs/specs/otel/:splat</a></td>
+          <td><span class="badge badge-secondary">hardcoded (pattern)</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Count and display total redirects
+    document.addEventListener('DOMContentLoaded', function() {
+      const count = document.querySelectorAll('#redirects-table tr').length;
+      document.getElementById('redirect-count').textContent = count;
+    });
+  </script>
+</div>
+{{ end }}
+
+{{- define "partials/relative-redirects-alias" -}}
+  {{ $result := "" }}
+  {{ if hasPrefix .alias "../" }}
+    {{ $result = (partial "relative-redirects-alias"
+          (dict
+            "alias" (strings.TrimPrefix "../" .alias)
+            "p" .p.Parent ))
+    }}
+  {{ else }}
+    {{ $result = path.Join .p.RelPermalink .alias }}
+  {{ end }}
+  {{ return $result }}
+{{ end }}
