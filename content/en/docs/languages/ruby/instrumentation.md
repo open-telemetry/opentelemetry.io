@@ -117,6 +117,14 @@ def do_work
 end
 ```
 
+If an exception escapes the `in_span` block, the tracer records the exception on
+the span by default, sets the span status to `Error`, and re-raises the
+exception. You can disable automatic exception recording by passing
+`record_exception: false`.
+
+If you rescue an exception inside the block and don't re-raise it, set the span
+status and record the exception manually when appropriate.
+
 ### Creating nested spans
 
 If you have a distinct sub-operation you’d like to track as a part of another
