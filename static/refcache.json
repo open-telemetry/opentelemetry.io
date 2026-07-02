@@ -2595,6 +2595,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-29T15:22:41.629749645Z"
   },
+  "https://docs.spring.io/spring-boot/reference/features/external-config.html#features.external-config.typesafe-configuration-properties": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-24T16:36:56.212586683Z"
+  },
   "https://docs.spring.io/spring-boot/reference/using/auto-configuration.html": {
     "StatusCode": 200,
     "LastSeen": "2026-06-29T15:22:45.428826622Z"
@@ -10171,6 +10175,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-25T10:36:27.177142777Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0/snippets/Sampler_rule_based_kitchen_sink.yaml#L10-L53": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-25T11:54:27.255083395Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/issues/100": {
     "StatusCode": 206,
     "LastSeen": "2026-06-25T10:36:51.210373257Z"
@@ -11431,6 +11439,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-30T06:59:09.771249393Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v2.29.0/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/EmbeddedConfigFile.java#L66-L82": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-24T16:36:58.797690147Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T15:22:36.905560039Z"
@@ -11438,6 +11450,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/1060": {
     "StatusCode": 206,
     "LastSeen": "2026-07-01T06:40:09.808893588Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/14083": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-24T16:36:57.824117116Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7413": {
     "StatusCode": 206,
