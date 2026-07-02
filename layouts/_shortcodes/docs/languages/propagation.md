@@ -1,1 +1,0 @@
-{{ partial "docs/propagation.md" . }}

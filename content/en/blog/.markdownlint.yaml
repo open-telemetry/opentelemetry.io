@@ -1,2 +1,0 @@
-extends: ../../../.markdownlint.yaml
-gh-url-hash: true
