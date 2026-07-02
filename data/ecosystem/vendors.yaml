@@ -74,7 +74,7 @@
   nativeOTLP: true
   url: https://docs.bindplane.com
   contact: hello@bindplane.com
-  oss: true
+  oss: false
   commercial: true
 - name: Bronto
   nativeOTLP: true
