@@ -59,6 +59,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-29T13:29:17.981339514Z"
   },
+  "https://argoproj.github.io": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:53:48.321381748Z"
+  },
   "https://argoproj.github.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:29:14.396854303Z"
@@ -4727,6 +4731,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:25:40.779980489Z"
   },
+  "https://github.com/cncf/toc/issues/1739": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:54:01.852266881Z"
+  },
   "https://github.com/cnnradams": {
     "StatusCode": 206,
     "LastSeen": "2026-06-30T07:04:04.23712096Z"
@@ -6990,6 +6998,10 @@
   "https://github.com/open-telemetry/community/blob/main/community-membership.md": {
     "StatusCode": 206,
     "LastSeen": "2026-06-27T06:44:22.025145286Z"
+  },
+  "https://github.com/open-telemetry/community/blob/main/governance-charter.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-16T17:25:17.777050525Z"
   },
   "https://github.com/open-telemetry/community/blob/main/governance-charter.md#elections": {
     "StatusCode": 206,
@@ -12627,6 +12639,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-26T06:55:46.776584678Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-packaging": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-16T17:25:25.236795107Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-php": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T15:21:47.660294657Z"
@@ -17655,6 +17671,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-29T15:21:52.811633714Z"
   },
+  "https://kubernetes.io": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:53:46.963056613Z"
+  },
   "https://kubernetes.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-26T06:55:23.944068051Z"
@@ -19386,6 +19406,22 @@
   "https://opentelemetry.io": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:30:06.369763202Z"
+  },
+  "https://opentelemetry.io/blog/2024/profiling": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:53:52.855411208Z"
+  },
+  "https://opentelemetry.io/community/end-user/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:54:03.691357578Z"
+  },
+  "https://opentelemetry.io/docs/platforms/kubernetes/operator/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:53:57.71523943Z"
+  },
+  "https://opentelemetry.io/docs/specs/opamp/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:53:54.701765908Z"
   },
   "https://opentelemetry.io/docs/specs/otlp/": {
     "StatusCode": 206,
@@ -21719,6 +21755,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-30T06:58:15.724803877Z"
   },
+  "https://shorturl.at/ZxB5O": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-16T17:30:22.820176177Z"
+  },
   "https://signoz.io": {
     "StatusCode": 200,
     "LastSeen": "2026-07-01T06:39:32.684790859Z"
@@ -22347,6 +22387,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-29T13:29:57.297212598Z"
   },
+  "https://www.cncf.io/blog/2026/02/09/what-cncf-project-velocity-in-2025-reveals-about-cloud-natives-future/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-15T21:53:51.65354703Z"
+  },
   "https://www.cncf.io/case-studies/brz-migrated-the-austrian-business-service-portal-with-2m-users-to-keycloak/": {
     "StatusCode": 200,
     "LastSeen": "2026-07-01T06:39:11.863639386Z"
@@ -22379,9 +22423,17 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-25T10:36:41.355124315Z"
   },
+  "https://www.cncf.io/people/technical-oversight-committee/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-15T21:53:58.383915408Z"
+  },
   "https://www.cncf.io/projects/": {
     "StatusCode": 200,
     "LastSeen": "2026-06-27T06:48:10.686861152Z"
+  },
+  "https://www.cncf.io/projects/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-16T17:25:21.70670325Z"
   },
   "https://www.cncf.io/training/certification/": {
     "StatusCode": 200,
@@ -23078,6 +23130,10 @@
   "https://www.linkedin.com/company/opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2026-06-29T13:30:17.688818372Z"
+  },
+  "https://www.linkedin.com/feed/update/urn:li:activity:7459538615640010752/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-15T21:54:05.61664465Z"
   },
   "https://www.linkedin.com/in/reese-lee/": {
     "StatusCode": 200,
@@ -23995,6 +24051,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-30T06:57:41.560843267Z"
   },
+  "https://www.youtube.com/live/vB9_SiTV5CI?si=F3jRi2w83Gp1lp_F": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-16T17:25:13.815166902Z"
+  },
   "https://www.youtube.com/watch?v=LUsfZFRM4yo": {
     "StatusCode": 200,
     "LastSeen": "2026-06-27T06:44:40.072637943Z"
@@ -24050,6 +24110,10 @@
   "https://youtu.be/5iM8n3uCo_U?si=PJ6tFYcYED3lhAcK": {
     "StatusCode": 200,
     "LastSeen": "2026-07-01T06:39:23.814505414Z"
+  },
+  "https://youtu.be/9iaGG-YZw5I?si=YDjY8N4Z4zI4uKiV": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-16T17:25:16.382183333Z"
   },
   "https://youtu.be/HY3LZOQqdig": {
     "StatusCode": 200,
