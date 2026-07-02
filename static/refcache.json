@@ -1719,6 +1719,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-06-30T07:07:03.234Z"
   },
+  "https://docs.bronto.io/agent-setup/open-telemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-01T20:29:17.532342385Z"
+  },
   "https://docs.bugsnag.com/performance/distributed-tracing": {
     "StatusCode": 206,
     "LastSeen": "2026-07-01T06:40:23.270722259Z"
@@ -3103,6 +3107,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:30:13.627770267Z"
   },
+  "https://explorer.opentelemetry.io/java-agent/instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-01T12:47:42.933980064Z"
+  },
   "https://explorer.opentelemetry.io/java-agent/instrumentation/latest": {
     "StatusCode": 206,
     "LastSeen": "2026-06-29T13:30:17.568208971Z"
@@ -4134,10 +4142,6 @@
   "https://github.com/akahenry/dynatrace-otel-exporter/blob/main/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-06-30T07:03:25.636402873Z"
-  },
-  "https://github.com/akats7": {
-    "StatusCode": 206,
-    "LastSeen": "2026-06-29T15:29:15.927303657Z"
   },
   "https://github.com/alanwest": {
     "StatusCode": 206,
@@ -11358,6 +11362,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/RELEASING.md#release-cadence": {
     "StatusCode": 206,
     "LastSeen": "2026-06-26T06:56:07.823988064Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/declarative-config-bridge/src/main/java/io/opentelemetry/instrumentation/config/bridge/ConfigPropertiesBackedDeclarativeConfigProperties.java": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-24T15:53:09.687911811Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/contributing/javaagent-structure.md": {
     "StatusCode": 206,
