@@ -1,52 +1,94 @@
 ---
-title: 'Otel Swift Cocoapods Deprecation'
-linkTitle: ADD A SHORT TITLE HERE # Mandatory, make sure that your short title.
-date: { { dateFormat "2006-01-02" .Date } } # Put the current date, we will keep the date updated until your PR is merged
-author:
-  >- # If you have only one author, then add the single name on this line in quotes.
-  [Author1 Name](https://github.com/author1_GH_ID) (Organization Name 1), ...
-  [AuthorX Name](https://github.com/authorX_GH_ID) (Organization Name X)
+title: 'CocoaPods Deprecation Notice for OpenTelemetry Swift'
+linkTitle: Otel Swift Cocoapods Deprecation # Mandatory, make sure that your short title.
+date: { { dateFormat "2026-06-02" .Date } } # Put the current date, we will keep the date updated until your PR is merged
+author: '[Ariel Demarco](https://github.com/ArielDemarco)'
 draft: true # TODO: remove this line once your post is ready to be published
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
 body_class: otel-with-contributions-from # TODO: remove this line if there are no secondary contributing authors
-issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details (Required)
-sig: SIG Name # TODO: add the name of the SIG that sponsors this blog post (Required)
+issue: 10655 # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details (Required)
+sig: Swift # TODO: add the name of the SIG that sponsors this blog post (Required)
 ---
 
-<!-- If your post doesn't have secondary authors, then delete the following paragraph: -->
+## Summary 
+As it was announced ([here](https://blog.cocoapods.org/CocoaPods-Support-Plans/?ref=jsdelivr-blog.ghost.io) 
+and [here](https://blog.cocoapods.org/CocoaPods-Specs-Repo/)), CocoaPods is 
+transitioning their project to maintenance mode, and cocoapods trunk is going 
+to be read-only in a few months.
 
-With contributions from secondary-author-name-1, ..., and secondary-author-n.
+The OpenTelemetry Swift maintainers are planning to deprecate CocoaPods support 
+for all the pods published under `opentelemetry-swift` and 
+`opentelemetry-swift-core`.
 
-## Top-level heading
+Swift Package Manager (SPM) is now the recommended and preferred installation 
+method for all new integrations.
 
-Top-level headings start at **level 2**. This means, that your post should not
-include `# headings` for top-level headings but `## headings` instead.
+We encourage existing CocoaPods users to begin planning a migration to SPM.
 
-## Paragraphs
+## Why are we making this change?
 
-Wrap paragraph text at 80 characters, this helps make git diffs (which is line
-based) more useful. If you don't want to bother with that, then just run the
-markdown formatter (see below).
+Maintaining multiple package distribution systems increases the operational 
+burden on project maintainers and contributors.
 
-## Images
+Additionally, the CocoaPods ecosystem itself has announced significant changes 
+to its infrastructure and maintenance model, making long-term support 
+increasingly challenging for open source projects. In turn, recently, 
+maintaining all the podspecs, the intermittent upload issues, and other 
+CocoaPods related problems have made CocoaPods support anything but a 
+low-effort commitment on our end.
 
-If you use images, make sure that your blog post is located in its own
-directory. Put the images into the same directory.
+In recent years, Swift Package Manager has become the standard dependency 
+management solution in the Apple ecosystem and is the primary package manager 
+recommended by Apple.
 
-If you have an image stored at `content/en/blog/2026/imagename.png`, you
-can reference them like the following:
+By focusing our efforts on Swift Package Manager, we can:
+* Reduce release and maintenance complexity
+* Improve release reliability
+* Simplify contributor workflows
+* Better align with the direction of the Apple development ecosystem
+* Spend more contributor and maintainer time on SDK improvements rather than 
+  distribution tooling and triages
 
-![Provide a good image description for improved accessibility](imagename.png)
+## Timeline
+The milestones are still under discussion, but will likely be as 
+follows:
 
-## Markdown formatter
+| Milestone | Date |
+|----------|------|
+| Deprecation annoucement | July | 
+| Recommended migration period begins | August 31st, 2026 | 
+| Final release published to CocoaPods | No later than September 30th, 2026 |
+| CocoaPods support ends | December 2nd, 2026 | 
 
-Before submitting a new commit run the formatter over your file:
+## What does this mean for existing users?
+1. Existing CocoaPods integrations will continue to function.
+1. Once CocoaPods support is officially discontinued:
+    a. Previously published versions will remain available.
+    a. No new SDK releases will be published to CocoaPods.
+    a. We’ll leave `.podspec` in the repositories until further notice.
+    a. New features, bug fixes, and security updates will only be available 
+       through Swift Package Manager releases.
+    a. Contributors won't invest resources into investigating or resolving 
+       issues that are specific to CocoaPods integration.
 
-```sh
-npm run format
-```
+## Recommended Migration Path
+We recommend migrating to Swift Package Manager as soon as practical.
 
-Happy writing!
+Swift Package Manager is fully supported and will be the only distribution 
+mechanism moving forward.
 
-**Note:** If you view this page with the GitHub file viewer, you can safely
-ignore the `Error in user YAML` at the top of this page.
+Migration from CocoaPods to SPM is simple; there’re guides and documentation 
+out there in the community that can be used.
+
+## Feedback 
+We understand that some organizations still rely on CocoaPods-based workflows.
+
+Before finalizing the “Recommended migration period”, we would like to gather 
+feedback from the community regarding migration challenges, tooling gaps, and 
+operational concerns.
+
+Please share your feedback via 
+[GitHub Issues](https://github.com/open-telemetry/opentelemetry-swift/issues/new),
+ the CNCF Slack [#otel-swift](https://cloud-native.slack.com/archives/C01NCHR19SB) 
+ or join us in our weekly [SIG Meetings](https://groups.google.com/a/opentelemetry.io/g/calendar-swift).
+
