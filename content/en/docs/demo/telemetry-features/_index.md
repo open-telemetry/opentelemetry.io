@@ -18,6 +18,10 @@ aliases: [demo_features, features]
   and sending the generated traces and metrics to the OpenTelemetry Collector
   via gRPC. The received traces are then exported to the logs and to Jaeger;
   received metrics and exemplars are exported to logs and Prometheus.
+- **[OpAMP](/docs/specs/opamp/)**: the OpenTelemetry Collector reports health,
+  version, attributes, and effective configuration to the demo's OpAMP server.
+  You can view the reported status in the OpAMP UI at
+  <http://localhost:8080/opamp/>.
 
 ## Observability Solutions
 
