@@ -76,6 +76,11 @@
   contact: hello@bindplane.com
   oss: true
   commercial: true
+- name: Bronto
+  nativeOTLP: true
+  url: https://docs.bronto.io/agent-setup/open-telemetry
+  oss: false
+  commercial: true
 - name: BugSnag
   nativeOTLP: true
   url: https://docs.bugsnag.com/performance/distributed-tracing
@@ -138,6 +143,12 @@
   contact: hi@dash0.com
   oss: false
   commercial: true
+- name: DataBuff
+  nativeOTLP: true
+  url: https://github.com/databufflabs/databuff/blob/master/docs/opentelemetry-otlp-ingestion_en.md
+  contact: https://github.com/databufflabs
+  oss: true
+  commercial: false
 - name: DaoCloud
   nativeOTLP: true
   url: https://docs.daocloud.io/en/insight/quickstart/otel/otel/

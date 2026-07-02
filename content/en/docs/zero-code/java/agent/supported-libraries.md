@@ -11,6 +11,12 @@ application servers right out of the box. If you do not see the framework or
 technology you are looking for, consider
 [filing an issue](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues).
 
+> [!TIP]
+>
+> For more detailed information about individual instrumentation libraries and
+> their functionality and emitted telemetry, check out the
+> [Ecosystem Explorer](https://explorer.opentelemetry.io/java-agent/instrumentation).
+
 ## Libraries and Frameworks
 
 These are the supported libraries and frameworks. Versions listed are the

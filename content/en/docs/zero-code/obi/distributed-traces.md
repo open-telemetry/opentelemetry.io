@@ -22,6 +22,10 @@ requests. If an application already added `traceparent`, OBI uses that value
 instead of its own generated context. If OBI can't find incoming context, it
 generates one according to the W3C specification.
 
+For details about how OBI chooses the parent request when work moves across
+threads, goroutines, tasks, or event loops, see
+[trace context association](../context-propagation/).
+
 ## Compatibility
 
 OBI supports distributed tracing and context propagation in the following
@@ -31,7 +35,7 @@ configurations:
 | :----------------------------------- | :---------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Network-level HTTP/1 propagation     | Linux environments that meet the [OBI compatibility requirements](/docs/zero-code/obi/#compatibility) | Works across programming languages. For HTTPS, propagation is limited to other OBI-instrumented services and can be disrupted by proxies or L7 load balancers.                       |
 | Network-level gRPC propagation       | gRPC `1.0+` over HTTP/2                                                                               | Uses per-stream HPACK `traceparent` headers across languages. Non-Go persistent connections established before OBI starts might not be recognized.                                   |
-| Go library-level context propagation | Go `1.18+`                                                                                            | Supports goroutine context propagation up to 3 nested goroutine levels. This distributed tracing feature has a higher minimum version than general Go library-level instrumentation. |
+| Go library-level context propagation | Go `1.18+`                                                                                            | Supports goroutine context propagation up to 6 nested goroutine levels. This distributed tracing feature has a higher minimum version than general Go library-level instrumentation. |
 | Node.js async hooks                  | Node.js `8.0+`                                                                                        | Custom handling of `SIGUSR1` can interfere with context propagation.                                                                                                                 |
 | Ruby Puma                            | Ruby applications served by Puma `5.0+`                                                               | Context propagation support requires the Puma server.                                                                                                                                |
 | Java thread pools                    | JDK `8+`                                                                                              | No additional documented runtime constraints.                                                                                                                                        |
@@ -191,9 +195,11 @@ kernel includes the functionality but is lower than 5.17.
 
 This type of context propagation is only supported for Go applications and uses
 eBPF user memory write support (`bpf_probe_write_user`). The advantage of this
-approach is that it works for HTTP/HTTP2/HTTPS and gRPC with some limitations,
-however the use of `bpf_probe_write_user` requires the OBI is granted
-`CAP_SYS_ADMIN` or it's configured to run as `privileged` container.
+approach is that it works for HTTP and HTTPS. For HTTP/2 and gRPC, OBI can
+inject context only on new connections when HTTPS isn't used; reused HTTP/2/gRPC
+connections are not supported yet. The use of `bpf_probe_write_user` requires
+the OBI is granted `CAP_SYS_ADMIN` or it's configured to run as `privileged`
+container.
 
 #### Integration with Go manual instrumentation
 
