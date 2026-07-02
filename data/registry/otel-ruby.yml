@@ -1,12 +1,18 @@
-title: Ruby
+title: opentelemetry-api
 registryType: core
 language: ruby
 tags:
   - ruby
-license: Apache 2.0
-description: The OpenTelemetry API and SDK for Ruby.
+license: Apache-2.0
+description: A stats collection and distributed tracing framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby
+  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-api/v1.10.0/api
+  docs: https://open-telemetry.github.io/opentelemetry-ruby/opentelemetry-api/v1.10.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby
 createdAt: 2020-02-04
+package:
+  registry: gems
+  name: opentelemetry-api
+  version: 1.10.0

@@ -1,0 +1,20 @@
+title: opentelemetry-helpers-mysql
+registryType: utilities
+language: ruby
+tags:
+  - mysql
+  - utilities
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-helpers-mysql/v0.6.0/helpers/mysql
+  docs: https://rubydoc.info/gems/opentelemetry-helpers-mysql/0.6.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
+license: Apache-2.0
+description: MySQL Instrumentation Helpers for the OpenTelemetry framework
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-06-29
+package:
+  registry: gems
+  name: opentelemetry-helpers-mysql
+  version: 0.6.0

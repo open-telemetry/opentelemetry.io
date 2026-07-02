@@ -1,16 +1,18 @@
-title: Koala Instrumentation
+title: opentelemetry-instrumentation-koala
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
   - koala
-license: Apache 2.0
-description: Koala instrumentation for Ruby.
+license: Apache-2.0
+description: Koala instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/koala
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-koala/v0.24.0/instrumentation/koala
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-koala/0.24.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems
