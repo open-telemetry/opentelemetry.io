@@ -4,6 +4,7 @@ linkTitle: 分散トレース
 description: OBI の分散トレースサポートについて学びます。
 weight: 22
 default_lang_commit: 813498074d85258c7180d137ace9e272d0149353
+drifted_from_default: true
 cSpell:ignore: asyncio uvloop
 ---
 
