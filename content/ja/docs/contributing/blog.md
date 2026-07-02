@@ -2,8 +2,7 @@
 title: ブログ
 description: ブログ投稿する方法を学びます。
 weight: 30
-default_lang_commit: 8013aa5f0aae284fa343311981625be6dbb25e5b
-drifted_from_default: true
+default_lang_commit: 0009192ae1f96290e0b5ecc7e800c2947d209f69
 ---
 
 [OpenTelemetry ブログ](/blog/)は OpenTelemetry に関連する可能性のある、新機能、コミュニティレポートそしてニュースを発信します。
@@ -31,7 +30,7 @@ OpenTelemetry ウェブサイトのメンテナーと承認者はプロジェク
 
 [Social Media Guide]: https://github.com/open-telemetry/community/blob/main/social-media-guide.md
 
-### GitHub リポジトリへのリンク
+### GitHub リポジトリへのリンク {#linking-to-github-repositories}
 
 ブログ記事は、不安定な GitHub `blob`/`tree` リンクを防止するために [markdownlint によってチェック][checked by markdownlint]されます（`gh-url-hash`）。
 
@@ -55,17 +54,22 @@ OpenTelemetry ウェブサイトのメンテナーと承認者はプロジェク
 
 - ベンダー製品の宣伝
 
-もし、ブログ投稿がこの適切な内容のリストに沿っているのであれば、次の詳細と一緒に[イシューを起票](https://github.com/open-telemetry/opentelemetry.io/issues/new?title=New%20Blog%20Post:%20%3Ctitle%3E)してください。
+もし、ブログ投稿がこの適切な内容のリストに沿っているのであれば、**必ず**最初に次の詳細と一緒に[イシューを起票](https://github.com/open-telemetry/opentelemetry.io/issues/new?template=BLOG_POST.yml)してください。
 
 - ブログ投稿のタイトル
 - 簡潔な説明とブログ投稿の概要
 - 該当する場合、ブログ記事で使用する技術のリスト。すべてオープンソースであることを確認し、CNCF プロジェクトでないものより CNCF プロジェクトが好まれます（例：トレースの可視化には Jaeger、メトリクスの可視化には Prometheus を使用）
-- ブログ記事に関連する [SIG](https://github.com/open-telemetry/community/) の名前
-- PR のレビューを手伝う、SIG のスポンサー（メンテナーまたは承認者）の名前。理想的にはスポンサーは異なる企業であることが望ましい
+- ブログ記事のスポンサーを引き受けてくれる [SIG](https://github.com/open-telemetry/community/) の名前。
+  **SIG スポンサーは必須です。**
+- Comms SIG が記事をレビューする前に、最初のレビューを担当する、SIG のスポンサー（メンテナーまたは承認者）の名前。
+  スポンサーは記事の執筆者とは異なる企業であることが**必須です**。
+
+**プルリクエストを提出する前にイシューを起票することは必須です。**
+受理されたイシューなしに提出されたブログ記事のプルリクエストは、レビューなしにクローズされることがあります。
 
 SIG Communication のメンテナーがブログ記事が受け入れられるのに必要な要件を満たしていることを確認します。
-最初のイシューの詳細に、SIG やスポンサーの名前を書けない場合は、スポンサーを求めるために連絡できる適切な SIG を紹介します。
-スポンサーを持つことは任意ですが、スポンサーを持つことでブログポストをより早くレビューや承認を得る可能性が高まります。
+SIG スポンサーは、Comms SIG が記事を確認する前にレビューを完了しなければなりません。
+記事の執筆者は、ブログポストのスポンサーを見つける責任があります。
 
 もしイシューが必要としているものをすべて揃っている場合は、メンテナーが確認し次の手順に進めてブログ記事を投稿できることを通知します。
 
