@@ -1864,7 +1864,6 @@ approvers:
   - name: GregMefford
     teams:
       - erlang-approvers
-      - erlang-contrib-approvers
     html_url: https://github.com/GregMefford
     avatar_url: https://avatars.githubusercontent.com/u/69467?v=4
   - name: hannahramadan
@@ -2074,6 +2073,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/849039?v=4
   - name: osullivandonal
     teams:
+      - collector-contrib-triagers
       - demo-approvers
     html_url: https://github.com/osullivandonal
     avatar_url: https://avatars.githubusercontent.com/u/92297851?v=4
@@ -2316,11 +2316,6 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/abhee11
     avatar_url: https://avatars.githubusercontent.com/u/6670495?v=4
-  - name: akats7
-    teams:
-      - go-triagers
-    html_url: https://github.com/akats7
-    avatar_url: https://avatars.githubusercontent.com/u/56042997?v=4
   - name: blumamir
     teams:
       - javascript-contrib-triagers
