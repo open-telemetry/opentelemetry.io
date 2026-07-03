@@ -2,8 +2,7 @@
 title: ログ
 description: イベントの記録
 weight: 3
-default_lang_commit: 3b1656f719549d7c7081167ba6bdf98a4e45cf0c
-drifted_from_default: true
+default_lang_commit: 1143960b75c6faceb40eb64269e68390e3237671
 cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
 
@@ -180,19 +179,20 @@ OpenTelemetryでは、ログレコードには2種類のフィールドがあり
 
 トップレベルのフィールドは以下の通りです。
 
-| フィールド名         | 説明                                     |
-| -------------------- | ---------------------------------------- |
-| Timestamp            | イベントが発生した時刻                   |
-| ObservedTimestamp    | イベントが観測された時刻                 |
-| TraceId              | リクエストトレースID                     |
-| SpanId               | リクエストスパンID                       |
-| TraceFlags           | W3Cトレースフラグ                        |
-| SeverityText         | 重要度テキスト（ログレベルとも呼ばれる） |
-| SeverityNumber       | 重要度の数値                             |
-| Body                 | ログレコードの本文                       |
-| Resource             | ログのソース                             |
-| InstrumentationScope | ログを出力したスコープ                   |
-| Attributes           | イベントに関する追加情報                 |
+| フィールド名         | 説明                                       |
+| -------------------- | ------------------------------------------ |
+| Timestamp            | イベントが発生した時刻                     |
+| ObservedTimestamp    | イベントが観測された時刻                   |
+| TraceId              | リクエストトレースID                       |
+| SpanId               | リクエストスパンID                         |
+| TraceFlags           | W3Cトレースフラグ                          |
+| SeverityText         | 重要度テキスト（ログレベルとも呼ばれる）   |
+| SeverityNumber       | 重要度の数値                               |
+| Body                 | ログレコードの本文                         |
+| Resource             | ログのソース                               |
+| InstrumentationScope | ログを出力したスコープ                     |
+| Attributes           | イベントに関する追加情報                   |
+| EventName            | イベントのクラスまたはタイプを識別する名前 |
 
 ログレコードとログフィールドの詳細については、[ログデータモデル](/docs/specs/otel/logs/data-model/) を参照してください。
 
