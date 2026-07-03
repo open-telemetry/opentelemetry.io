@@ -196,13 +196,6 @@ maintainers:
       - swift-triagers
     html_url: https://github.com/ArielDemarco
     avatar_url: https://avatars.githubusercontent.com/u/25651947?v=4
-  - name: arielvalentin
-    teams:
-      - ruby-approvers
-      - ruby-contrib-approvers
-      - ruby-contrib-maintainers
-    html_url: https://github.com/arielvalentin
-    avatar_url: https://avatars.githubusercontent.com/u/82798?v=4
   - name: arminru
     teams:
       - proto-approvers
@@ -618,8 +611,6 @@ maintainers:
   - name: esigo
     teams:
       - cpp-approvers
-      - cpp-contrib-approvers
-      - cpp-contrib-maintainers
       - cpp-maintainers
     html_url: https://github.com/esigo
     avatar_url: https://avatars.githubusercontent.com/u/71217171?v=4
@@ -1215,9 +1206,6 @@ maintainers:
       - collector-releases-maintainers
       - collector-triagers
       - docs-es-approvers
-      - ecosystem-explorer-approvers
-      - ecosystem-explorer-maintainers
-      - semconv-k8s-approvers
       - semconv-system-approvers
       - shared-workflows-approvers
       - shared-workflows-maintainers
@@ -1718,6 +1706,11 @@ approvers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/amazingakai
     avatar_url: https://avatars.githubusercontent.com/u/93782497?v=4
+  - name: arielvalentin
+    teams:
+      - ruby-approvers
+    html_url: https://github.com/arielvalentin
+    avatar_url: https://avatars.githubusercontent.com/u/82798?v=4
   - name: ArthurSens
     teams:
       - collector-contrib-approvers
