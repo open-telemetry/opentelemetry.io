@@ -9,8 +9,7 @@ author: >-
 issue: 9943
 sig: Metrics
 # canonical_url: https://...   # add if cross-posted from another blog
-# prettier-ignore
-cSpell:ignore: Aspire cardinality Cijo cijothomas overflows undercount undercounting
+cSpell:ignore: Aspire cardinality Cijo cijothomas overflows
 ---
 
 You query your metrics for error count — it says **zero**. The error rate panel
@@ -43,10 +42,14 @@ stream overflows, both are dropped together — so a query filtering on
 low-cardinality as an attribute can get. **An error-rate alert built on
 `success=false` can silently stop firing.**
 
+Two more things are worth knowing before you size or monitor this yourself: who
+gets to keep their slot, and what the cap does and doesn't protect.
+
 Most SDKs fill the limit **first-come, first-served**, so whatever hits the
 instrument first — a startup burst, a security scanner probing routes — can
-occupy every slot for the process lifetime under cumulative temporality. And the
-SDK cap only bounds what one process holds in memory; it doesn't bound what
+occupy every slot for the process lifetime under cumulative temporality.
+
+The cap also only bounds what one process holds in memory; it doesn't bound what
 reaches your backend. With delta temporality, each collection cycle can export a
 _different_ set of combinations, so a fleet of 1000 pods with a 2000 cap can
 still produce up to 2 million backend series. **The SDK cap protects your
