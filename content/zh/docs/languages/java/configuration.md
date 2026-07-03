@@ -99,7 +99,7 @@ SDK 自动配置模块来自动配置 SDK ，并随之安装插桩组件。
 - 将名称转换为大写。
 - 用 `_` 替换所有的 `.` 和 `-`。
 
-例如，`otel.sdk.enabled` 系统属性等同于 `OTEL_SDK_ENABLED` 环境变量。
+例如，`otel.sdk.disabled` 系统属性等同于 `OTEL_SDK_DISABLED` 环境变量。
 
 如果某个属性同时定义为系统属性和环境变量，则系统属性优先。
 
