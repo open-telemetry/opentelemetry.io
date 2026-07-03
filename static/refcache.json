@@ -14863,6 +14863,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-01T06:40:01.240407197Z"
   },
+  "https://github.com/open-telemetry/otel-arrow/tree/main/rust/otap-dataflow/crates/contrib-nodes/src/receivers/etw_receiver": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-03T11:19:44.569622252Z"
+  },
   "https://github.com/open-telemetry/oteps/blob/main/text/0035-opentelemetry-protocol.md": {
     "StatusCode": 206,
     "LastSeen": "2026-07-01T06:38:06.82116796Z"
@@ -18447,6 +18451,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-07T06:55:47.767150526Z"
   },
+  "https://learn.microsoft.com/windows/win32/api/evntprov/ns-evntprov-event_descriptor": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-03T11:19:39.71053428Z"
+  },
   "https://learn.microsoft.com/windows/win32/api/winsock2/nf-winsock2-connect#return-value": {
     "StatusCode": 206,
     "LastSeen": "2026-07-07T06:55:57.643240912Z"
@@ -18462,6 +18470,10 @@
   "https://learn.microsoft.com/windows/win32/sysinfo/about-handles-and-objects": {
     "StatusCode": 206,
     "LastSeen": "2026-07-05T06:54:28.673911328Z"
+  },
+  "https://learn.microsoft.com/windows/win32/wes/defining-severity-levels": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-03T11:19:41.096496077Z"
   },
   "https://library.humio.com/falcon-logscale/log-shippers-opentelemetry.html": {
     "StatusCode": 200,
