@@ -9,8 +9,9 @@ author: >-
   Mathieu](https://github.com/dmathieu) (Elastic), [Bogdan
   Stancu](https://github.com/bogdan-st) (Adobe)
 sig: End-User
-cSpell:ignore: autoescalado contrapresión Öjeling reinicios sénior Sloughter
 default_lang_commit: 6751402db060c25800bb41c270dcaebb48aa7acb
+# prettier-ignore
+cSpell:ignore: autoescalado contrapresión reinicios Sloughter sénior Öjeling
 ---
 
 Por [Johanna Öjeling](https://github.com/johannaojeling) (Grafana Labs),
