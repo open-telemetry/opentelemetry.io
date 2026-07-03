@@ -23,188 +23,51 @@ This post is about a deliberate piece of the OpenTelemetry metrics SDK design �
 the **cardinality limit** — which may already be affecting one of your
 dashboards without you noticing.
 
-## What "cardinality" means, and why it matters
+## The short version
 
-Every time you record a metric measurement in OpenTelemetry, you can attach
-attributes — key-value pairs like `url.path=/home` or `success=true`. The SDK
-groups measurements by their unique attribute combinations: all measurements
-with the _same_ set of attribute values get aggregated into a single data point.
+Every metric measurement in OpenTelemetry can carry attributes — key-value pairs
+like `url.path=/home` or `success=true`. The SDK tracks a separate data point in
+memory for each unique combination of attribute values, so memory grows with the
+number of combinations, not with request volume. To keep that memory bounded,
+the SDK enforces a **cardinality limit** (default **2000** combinations per
+metric stream). Once the limit is reached, any further combination is folded
+into a single **overflow data point** marked `otel.metric.overflow=true`: the
+value is preserved, so totals stay correct, but the original attributes are
+gone.
 
-**Cardinality** is just the count of those unique combinations.
+That last part is what surprises people: overflow drops the **entire** attribute
+combination, not just the high-cardinality part. If a request counter records
+`url.path` (high cardinality) together with `success` (a boolean), once the
+stream overflows, both are dropped together — so a query filtering on
+`success=false` can return zero, even though `success` alone is about as
+low-cardinality as an attribute can get. **An error-rate alert built on
+`success=false` can silently stop firing.**
 
-Think of it like a spreadsheet. Each unique row of attribute values is one data
-point the SDK tracks in memory:
+Most SDKs fill the limit **first-come, first-served**, so whatever hits the
+instrument first — a startup burst, a security scanner probing routes — can
+occupy every slot for the process lifetime under cumulative temporality. And the
+SDK cap only bounds what one process holds in memory; it doesn't bound what
+reaches your backend. With delta temporality, each collection cycle can export a
+_different_ set of combinations, so a fleet of 1000 pods with a 2000 cap can
+still produce up to 2 million backend series. **The SDK cap protects your
+application from OOM, not your backend from high cardinality.**
 
-| `url.path` | `success` | Count |
-| ---------- | --------- | ----- |
-| `/home`    | `true`    | 130   |
-| `/home`    | `false`   | 2     |
-| `/about`   | `true`    | 50    |
-| `/about`   | `false`   | 1     |
-
-Four unique combinations, four rows — that's a cardinality of 4. Notice that the
-total cardinality is the **product** of each attribute's possible values: 2
-paths x 2 success values = 4. With 100 URL paths and a boolean `success`, the
-table grows to `100 x 2 = 200` rows. Each row costs memory, but 200 is fine.
-
-Now imagine you add a `user_id` attribute with 500,000 possible values. The
-table explodes to `100 x 2 x 500,000 = 100 million` rows. Each new attribute
-_multiplies_ the cardinality — that's what makes it dangerous.
-
-**Memory grows with cardinality, not with request volume.** This is what makes
-metrics fundamentally different from logs. With logs, sending 1 million requests
-means storing and exporting 1 million log records — cost scales with traffic.
-With metrics, those 1 million requests just increment existing counters in the
-200-row table. The memory cost is fixed and predictable — _unless_ cardinality
-grows unchecked. Then it's worse than logs, because 100 million rows of
-in-memory state can OOM-kill the process before anything is even exported.
-
-## How OpenTelemetry caps cardinality
-
-To prevent this, the OpenTelemetry metrics SDK enforces a **cardinality limit**
-— a maximum number of unique attribute combinations per metric stream. The
-default is **2000**, and SDKs let you override it when you need to.
-
-Here's what happens when the limit is reached. Say your counter
-`http.server.requests` has a limit of 2, and three distinct paths arrive in a
-collection cycle: `/home` with 10 requests, `/about` with 5, and `/login`
-with 3. The SDK exports:
-
-| Attributes                  | Value |
-| --------------------------- | ----- |
-| `url.path=/home`            | 10    |
-| `url.path=/about`           | 5     |
-| `otel.metric.overflow=true` | 3     |
-
-The first two combinations got tracked normally. `/login` arrived after the
-limit was reached, so the SDK dropped its attributes and folded its value (3)
-into a special **overflow data point** marked with `otel.metric.overflow=true`.
-
-The key properties of this design:
-
-- **No measurements are lost.** The value (3) is preserved — only the attribute
-  labels are dropped. Totals stay correct.
-- **No memory explosion.** The SDK never tracks more than the configured number
-  of combinations.
-- **Overflow is visible.** Every SDK uses the same `otel.metric.overflow=true`
-  marker, so you can write one query across your fleet to detect it, regardless
-  of language or backend.
-
-The trade-off is that **any query that filters or groups by an attribute on an
-overflowed metric will undercount** — which is the part that surprises people,
-and the part this post is about.
-
-## Three things that surprise people
-
-### 1. Filtered queries silently lose data; totals stay correct
-
-Let's make this concrete. Five distinct attribute combinations arrive in a
-collection cycle, but the cardinality limit is 3:
-
-| Combination                                                       | Count | What the SDK exported |
-| ----------------------------------------------------------------- | ----- | --------------------- |
-| `{url.path=/home, http.request.method=GET, success=true}`         | 130   | tracked → 130         |
-| `{url.path=/api/users, http.request.method=POST, success=true}`   | 50    | tracked → 50          |
-| `{url.path=/checkout, http.request.method=POST, success=true}`    | 80    | tracked → 80          |
-| `{url.path=/api/orders, http.request.method=POST, success=false}` | 15    | **overflow**          |
-| `{url.path=/api/status, http.request.method=GET, success=true}`   | 20    | **overflow**          |
-
-The SDK exports _four_ data points: three with their original attributes, plus
-one overflow data point at value 35 (15 + 20 folded together) carrying only
-`{otel.metric.overflow=true}`.
-
-Now look at what happens when you query:
-
-| Query                         | Expected | Actual | Status                      |
-| ----------------------------- | -------- | ------ | --------------------------- |
-| Total requests?               | 295      | 295    | OK                          |
-| Requests to `/api/orders`?    | 15       | 0      | endpoint invisible          |
-| How many `success=true`?      | 280      | 260    | off by 20                   |
-| **How many `success=false`?** | **15**   | **0**  | **error alert never fires** |
-
-The total stays correct because the overflow series preserves the values — just
-not the labels. But anything that _filters_ or _groups by_ a measurement
-attribute loses the data folded into overflow. The query "how many failures?"
-returns zero here, because the only failure landed in the overflow bucket and
-the overflow bucket carries no `success` attribute. **An error-rate alert built
-on `success=false` would never fire.**
-
-### 2. Even your safest attributes become unreliable when their _combination_ overflows
-
-`success` is a boolean — about as low-cardinality as an attribute can get — yet
-`success=false` returned zero above. Why? Because the overflow bucket replaces
-the **entire attribute combination**, not just the high-cardinality part. The
-boolean `success` is dropped alongside `url.path`.
-
-### 3. A background scanner can lock out your real customers
-
-Most SDK implementations use **first-come, first-served**: the first N distinct
-combinations get their own time series; everything after goes into overflow.
-
-The consequence: if a security scanner pings the service at startup with 2000
-unique URL paths, every named series slot belongs to the scanner. With
-**cumulative** temporality those slots persist for the lifetime of the process.
-Real customer routes land in overflow, and the dashboard shows zero for the
-traffic that actually matters — until the process restarts.
-
-## What's not capped, and why it matters
-
-The cardinality limit applies **only to attributes provided when reporting
-measurements via the metrics API**. It does _not_ apply to:
-
-- **Resource attributes** — `service.name`, `cloud.region`,
-  `service.instance.id`, and friends. These live on the resource, not on
-  individual data points.
-- **Meter-level attributes** (also called _instrumentation scope attributes_)
-  set at `Meter` construction time.
-- **The number of Meters or instruments** — you can create as many as needed
-  without hitting the cardinality limit.
-
-**Anything in Resource or Meter attributes can be reliably queried, even when
-overflow is happening.** An overflowing counter in `service.name="checkout"`,
-`cloud.region="us-west-2"` still reports those values intact on every data
-point, including the overflow one.
-
-Practical guidance:
-
-- **Ensure steady-state context is in Resource where it belongs.** Service name,
-  environment, region, cluster, instance — these describe the entity producing
-  telemetry, not individual measurements, so they belong in Resource by design.
-  As a bonus, they're always queryable regardless of overflow.
-- **Reserve measurement-time attributes for things that genuinely vary per
-  measurement** — route, status code, error category.
-
-One caveat: the SDK cap only limits what a single process holds in memory at any
-given time. It doesn't limit what reaches your backend. With delta temporality,
-the same process can export _different_ 2000-combination sets each cycle —
-accumulating far more distinct series over time. After a restart, the slate is
-wiped and 2000 new combinations can appear. And across a fleet, a 2000-cap
-counter exported by 1000 pods can produce up to 2 million backend series. **The
-SDK cap protects your application from OOM, not your backend from high
-cardinality.**
-
-## Temporality changes how forgiving the cap is
-
-The cap applies per **collection cycle**. For _synchronous_ instruments,
-temporality changes how forgiving that is:
-
-- With **delta temporality**, the SDK forgets state after each collection cycle.
-  The cap is "up to N distinct combinations _per cycle_". Across cycles, a
-  single process can export far more than N distinct combinations to the backend
-  over its lifetime — as long as no individual cycle exceeds the cap.
-
-- With **cumulative temporality**, the SDK keeps state across cycles for the
-  lifetime of the process. **Once you hit the limit, every subsequent new
-  combination goes into the overflow bucket — forever — until the application
-  restarts.** Even a brief traffic spike that pushes the active attribute set
-  above the limit has a permanent effect: combinations tracked first stay
-  tracked, and everything new (new routes, new customers, new error categories)
-  is folded into overflow until restart.
+For the full mechanics — the overflow bucket, what's exempt from the limit
+(Resource and instrumentation scope attributes), and how temporality changes how
+forgiving the cap is — see
+[Cardinality limits](/docs/concepts/signals/metrics/#cardinality-limits) in the
+metrics concept docs. The rest of this post is the operational playbook: how to
+size the limit, an advanced technique for high-cardinality attributes, and what
+to go do about it this week. If you just want to check whether you're already
+affected, skip ahead to
+[Action 1](#action-1-check-whether-youve-already-been-affected).
 
 ## Sizing the limit
 
 The default of 2000 covers most well-designed instruments. If you need to
-override it (via a View), the costs run in both directions:
+override it (via a [View](/docs/concepts/signals/metrics/#views), which lets you
+customize how an instrument's measurements are aggregated), the costs run in
+both directions:
 
 - **Limit too high**: some SDKs (notably .NET and Rust) preallocate memory based
   on the limit, so the excess is allocated upfront and sits unused. Other SDKs
@@ -224,9 +87,10 @@ A short heuristic, by temporality (synchronous instruments):
 ## When high-cardinality attributes are actually the right answer
 
 The conventional wisdom is "never put `user_id` or `tenant_id` in metric
-attributes." Good default advice, but not universal: **per-tenant SLOs** require
-tenant identity on the metric to answer questions like "what is tenant X's
-failure rate?" Aggregating it away defeats the purpose.
+attributes." Good default advice, but not universal: **per-tenant SLOs**
+(service-level objectives) require tenant identity on the metric to answer
+questions like "what is tenant X's failure rate?" Aggregating it away defeats
+the purpose.
 
 **Delta temporality makes this work.** Delta forgets state after each collection
 cycle, so the cap covers "active combinations _per cycle_", not "ever seen". As
@@ -265,7 +129,10 @@ process restarts.**
 ### Action 1: Check whether you've already been affected
 
 The overflow attribute value is the boolean `true`. Prometheus represents it as
-the string `"true"`; OTLP-native backends preserve the boolean type.
+the string `"true"`; OTLP-native backends preserve the boolean type. Also note
+that Prometheus sanitizes attribute names on ingestion, replacing dots with
+underscores, so `otel.metric.overflow` becomes the label `otel_metric_overflow`
+in PromQL — the queries below use the Prometheus form.
 
 **Prometheus / PromQL** — find every metric in your fleet that emitted an
 overflow data point within your retention window:
@@ -293,13 +160,15 @@ metric name and `service.name`.
    against fleet topology: is it isolated to one service, or showing up across
    many? To narrow down to a specific replica, group by `service.instance.id` as
    well.
-3. **Apply the fix.** Either drop the offending attribute via a View (cleanest
-   if the attribute isn't worth its cardinality cost), raise the limit
-   temporarily (buys time while a fix is in flight), or fix the attribute
-   upstream with templated routes, normalized error categories, etc. (the
-   long-term fix). On cumulative temporality, the process keeps folding new
-   combinations into overflow until it restarts — so a restart after the fix
-   ships is what gets the named series back.
+3. **Apply the fix.** Either drop the offending attribute via a
+   [View](/docs/concepts/signals/metrics/#views) (cleanest if the attribute
+   isn't worth its cardinality cost), raise the configured limit (a code or
+   config change requiring a redeploy — not a runtime toggle; buys time while a
+   fix is in flight), or fix the attribute upstream with templated routes,
+   normalized error categories, etc. (the long-term fix). On cumulative
+   temporality, the process keeps folding new combinations into overflow until
+   it restarts — so a restart after the fix ships is what gets the named series
+   back.
 
 If the query returns nothing within your retention window, either no instrument
 in your fleet has hit its cap in that window — a useful baseline — or your SDK
@@ -337,33 +206,22 @@ that quietly makes the same mistake.
 
 ## FAQ
 
-**Why not just put `service.name` on every measurement — it only has one value,
-so cardinality is the same?**
-
-Mathematically, yes — one value times the rest of the cross-product is the same
-number of combinations. But it still belongs in Resource, not on measurements.
-Once an instrument overflows, the entire measurement attribute set is replaced
-with `{otel.metric.overflow: true}` — a `service.name` recorded on the
-measurement would disappear from the overflow data point. The same value placed
-in Resource is preserved on every data point, including the overflow one, and
-queries that filter or group by `service.name` keep working. Anything constant
-for the lifetime of the process belongs in Resource.
-
-**Why first-come-first-served? Why not LRU eviction?** The spec doesn't mandate
-FCFS — it leaves the choice open and permits any subset for synchronous delta
-instruments. FCFS is what current implementations have converged on because it's
-simple and predictable: no per-combination timestamps, no per-cycle eviction
-work. LRU and other strategies are possible future directions, but the cap is
-best treated as a safety net regardless — the right answer is to not put
-unbounded attributes on metrics in the first place.
-
 **Does the cardinality limit only apply to counters?** No — it applies to every
 OpenTelemetry metric instrument: counters, histograms, gauges, and their
 asynchronous variants. This post used counters throughout for simplicity, but
 the overflow behavior is identical across all instrument types.
 
+**Why first-come, first-served instead of LRU eviction?** The spec permits
+either for synchronous delta instruments; FCFS is simply what implementations
+have converged on, since it's simple and predictable. Either way, the cap is a
+safety net — the real fix is not putting unbounded attributes on metrics in the
+first place.
+
 ## Further reading
 
+- [Cardinality limits](/docs/concepts/signals/metrics/#cardinality-limits) —
+  full concept documentation, including what's exempt from the limit and how
+  temporality affects it
 - [OpenTelemetry Metrics SDK specification — Cardinality
   Limits][spec-cardinality]
 - [opentelemetry-rust metrics guide — Cardinality Limits section](https://github.com/open-telemetry/opentelemetry-rust/blob/7214567041ac640a87608125470d0ad74703eaea/docs/metrics.md#cardinality-limits)
