@@ -8,6 +8,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
 default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
+drifted_from_default: true
 cSpell:ignore: Qwen
 ---
 
