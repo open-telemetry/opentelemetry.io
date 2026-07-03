@@ -120,10 +120,23 @@ end
 If an exception escapes the `in_span` block, the tracer records the exception on
 the span by default, sets the span status to `Error`, and re-raises the
 exception. You can disable automatic exception recording by passing
-`record_exception: false`.
+`record_exception: false` as an argument to the `in_span` method.
 
 If you rescue an exception inside the block and don't re-raise it, set the span
-status and record the exception manually when appropriate.
+status and record the exception manually when appropriate:
+
+```ruby
+MyAppTracer.in_span("do_work") do |span|
+  begin
+    # do work that may raise an exception
+  rescue StandardError => e
+    span.status = OpenTelemetry::Trace::Status.error(e.message)
+    span.record_exception(e)
+
+    # Handle the exception without re-raising it, such as returning a fallback.
+  end
+end
+```
 
 ### Creating nested spans
 
