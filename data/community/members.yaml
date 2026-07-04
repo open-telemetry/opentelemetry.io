@@ -1888,6 +1888,11 @@ approvers:
       - operator-triagers
     html_url: https://github.com/iblancasa
     avatar_url: https://avatars.githubusercontent.com/u/4806311?v=4
+  - name: immavalls
+    teams:
+      - docs-es-approvers
+    html_url: https://github.com/immavalls
+    avatar_url: https://avatars.githubusercontent.com/u/4788634?v=4
   - name: iNikem
     teams:
       - specs-trace-approvers
@@ -2665,6 +2670,9 @@ members:
   - name: haoqixu
     html_url: https://github.com/haoqixu
     avatar_url: https://avatars.githubusercontent.com/u/9400582?v=4
+  - name: harshitt13
+    html_url: https://github.com/harshitt13
+    avatar_url: https://avatars.githubusercontent.com/u/143245429?v=4
   - name: hauleth
     html_url: https://github.com/hauleth
     avatar_url: https://avatars.githubusercontent.com/u/291639?v=4
