@@ -5,7 +5,7 @@ date: 2023-03-20
 author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 body_class: otel-with-contributions-from
 default_lang_commit: 8ca9ac2ec763561222f00952cc0a4a8af5432a75
-cSpell:ignore: hackathons Uplight
+cSpell:ignore: Uplight
 ---
 
 [Rynn Mancuso](https://github.com/musingvirtual)（Honeycomb）と
