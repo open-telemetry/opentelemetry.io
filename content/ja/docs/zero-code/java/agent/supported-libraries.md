@@ -2,14 +2,17 @@
 title: サポートされているライブラリ
 linkTitle: サポートされているライブラリ
 weight: 11
-default_lang_commit: c6ba3e413b9c48ff4f4dc44b4e4f8e1eae1f330b
-drifted_from_default: true
+default_lang_commit: 6ef946a85afe66ba52174df13dad8345a3566d20
 # prettier-ignore
 cSpell:ignore: activej akka armeria avaje clickhouse couchbase dbcp dropwizard dubbo finatra helidon hikari hikaricp httpasyncclient httpclient hystrix javalin jedis jodd ktor logmanager mojarra mybatis myfaces nats okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson resteasy restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 Java エージェントは、多くのライブラリ、フレームワーク、アプリケーションサーバーをすぐに自動計装します。
 お探しのフレームワークやテクノロジーが見つからない場合は、[イシューの作成](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues)を検討してください。
+
+> [!TIP]
+>
+> 個々の計装ライブラリの詳細情報やその機能、出力されるテレメトリーについては、[Ecosystem Explorer](https://explorer.opentelemetry.io/java-agent/instrumentation) を確認してください。
 
 ## ライブラリとフレームワーク {#libraries-and-frameworks}
 
