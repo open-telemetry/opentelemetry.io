@@ -11,7 +11,7 @@ default_lang_commit: 9f86b9e383b08540b9b3478c24faa9e4b2565de6
 cSpell:ignore: Andrej Baeyens Contribfest devstats Kiripolský
 ---
 
-OpenTelemetry Contributor Experience SIG は[先日サーベイを実施し](../contribex-survey/)、プロジェクトへの貢献がどのようなものか、そしてコントリビューターエクスペリエンスを改善するために何ができるかをコミュニティから学びました。
+OpenTelemetry Contributor Experience SIG は[先日サーベイを実施し](/blog/2025/contribex-survey/)、プロジェクトへの貢献がどのようなものか、そしてコントリビューターエクスペリエンスを改善するために何ができるかをコミュニティから学びました。
 Contributor Experience Survey では、プロジェクトの組織体制、SIG への貢献、リーダーシップ委員会とのやり取り、イベントへの参加について、コントリビューターの意見を尋ねました。
 120件の[回答](https://github.com/open-telemetry/sig-end-user/tree/01bdcafbc787c0aa0b076ecd85432c24d50e62ac/end-user-surveys/contributor-experience?from_branch=main)が寄せられ、47すべての Special Interest Group（SIG）から声が届きました。
 このフィードバックを活用して、OpenTelemetry への貢献をより簡単で実りあるものにしていきます。
