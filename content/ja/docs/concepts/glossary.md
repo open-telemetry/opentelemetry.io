@@ -56,7 +56,7 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 [メトリクス](#metric) SDK が単一のメトリクスストリームに対して追跡する一意の属性の組み合わせの数に関する、設定可能な上限値で、メモリ使用量を制限するために使用されます。
 上限に達すると、それ以降の組み合わせは `otel.metric.overflow=true` 属性で識別される単一のオーバーフローデータポイントに集約されます。
-[カーディナリティの上限](/docs/concepts/signals/metrics/#cardinality-limits)を参照してください。
+[カーディナリティの上限](/en/docs/concepts/signals/metrics/#cardinality-limits)を参照してください。
 
 ### クライアントライブラリ {#client-library}
 
