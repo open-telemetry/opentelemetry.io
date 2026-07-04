@@ -19,7 +19,7 @@ application produces.
 | Command         | Purpose                                                              |
 | --------------- | -------------------------------------------------------------------- |
 | `otelc go …`    | Run a `go` command (such as `go build`) with instrumentation applied |
-| `otelc setup`   | Prepare the environment for instrumentation                          |
+| `otelc setup`   | Set up the environment for instrumentation                           |
 | `otelc cleanup` | Remove all artifacts created by the setup and build phases           |
 | `otelc version` | Print the tool version                                               |
 

@@ -65,10 +65,12 @@ the instrumentation recognizes.
 
 The repository ships demo applications and a complete observability stack
 (Collector, Jaeger, Prometheus, and Grafana) so you can see the produced
-telemetry end to end. From the repository root, run:
+telemetry end to end. The stack runs on [Docker](https://www.docker.com/), so
+make sure Docker is available first. From the repository root, run:
 
 ```sh
-make demo
+cd demo/infrastructure/docker-compose
+make start
 ```
 
 See the
