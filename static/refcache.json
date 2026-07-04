@@ -19167,9 +19167,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-29T15:22:34.269049494Z"
   },
-  "https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api._opentelemetry_api.ContextAPI.html": {
-    "StatusCode": 404,
-    "LastSeen": "2026-07-04T06:39:30.087065442Z"
+  "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.ContextAPI.html": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-04T06:39:33.664273-04:00"
   },
   "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.Tracer.html#startactivespan": {
     "StatusCode": 206,
