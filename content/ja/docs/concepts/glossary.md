@@ -2,8 +2,7 @@
 title: 用語集
 description: OpenTelemetry で使用されるテレメトリー用語の定義と規則
 weight: 200
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
-drifted_from_default: true
+default_lang_commit: 6ef946a85afe66ba52174df13dad8345a3566d20
 ---
 
 この用語集は、OpenTelemetry プロジェクトに対して新しい、用語と[概念](/docs/concepts/)を定義し、オブザーバビリティの分野で一般的に使われている OpenTelemetry 特有の使用法を明確にします。
@@ -50,8 +49,14 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 ### カーディナリティ {#cardinality}
 
 特定の[属性](#attribute)または属性のセットに対する一意の値の数。
-カーディナリティが高いということは、一意の値が多いことを意味しており、テレメトリーバックエンドのパフォーマンスやストレージ要件に影響を与える可能性があります。
+カーディナリティが高いということは、一意の値が多いことを意味しており、テレメトリーバックエンドのパフォーマンスやストレージ要件、および[メトリクス](#metric) SDK が使用するメモリに影響を与える可能性があります。
 たとえば、`user_id` 属性は高いカーディナリティを持ちますが、"200"、"404"、"500" などの値を持つ `status_code` 属性は低いカーディナリティを持ちます。
+
+### カーディナリティの上限 {#cardinality-limit}
+
+[メトリクス](#metric) SDK が単一のメトリクスストリームに対して追跡する一意の属性の組み合わせの数に関する、設定可能な上限値で、メモリ使用量を制限するために使用されます。
+上限に達すると、それ以降の組み合わせは `otel.metric.overflow=true` 属性で識別される単一のオーバーフローデータポイントに集約されます。
+[カーディナリティの上限](/docs/concepts/signals/metrics/?link-check=no#cardinality-limits)を参照してください。
 
 ### クライアントライブラリ {#client-library}
 
