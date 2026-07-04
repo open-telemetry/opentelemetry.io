@@ -2,7 +2,8 @@
 title: サポートされているライブラリ
 linkTitle: サポートされているライブラリ
 weight: 11
-default_lang_commit: 9e05a7e681aebc70c29a149a7bfa4e4ff01df619
+default_lang_commit: c6ba3e413b9c48ff4f4dc44b4e4f8e1eae1f330b
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: activej akka armeria avaje clickhouse couchbase dbcp dropwizard dubbo finatra helidon hikari hikaricp httpasyncclient httpclient hystrix javalin jedis jodd ktor logmanager mojarra mybatis myfaces nats okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson resteasy restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
@@ -202,7 +203,7 @@ Java エージェントは、多くのライブラリ、フレームワーク、
 [GraphQL Server Spans]: /docs/specs/semconv/graphql/graphql-spans/
 [FaaS Server Spans]: /docs/specs/semconv/faas/faas-spans/
 [GenAI Client Spans]: /docs/specs/semconv/gen-ai/gen-ai-spans/
-[GenAI Client Metrics]: /docs/specs/semconv/gen-ai/gen-ai-metrics/#generative-ai-client-metrics
+[GenAI Client Metrics]: /docs/specs/semconv/gen-ai/gen-ai-metrics/?link-check=no&see-issue=10153#generative-ai-client-metrics
 
 ## アプリケーションサーバー {#application-servers}
 

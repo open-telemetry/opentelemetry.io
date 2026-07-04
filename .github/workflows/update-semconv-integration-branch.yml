@@ -29,7 +29,7 @@ jobs:
           client-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           # this is needed to do the rebase below
           fetch-depth: 0
@@ -94,7 +94,7 @@ jobs:
             git push
           fi
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version-file: .nvmrc
 
@@ -120,6 +120,13 @@ jobs:
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
+            if [ -z "$(git rev-list origin/main..HEAD)" ]; then
+              # Bootstrap this long-lived integration branch with an empty
+              # commit so that PR creation succeeds (gh pr create fails when
+              # there are no commits between main and the branch).
+              git commit --allow-empty -m "Trigger PR creation for $BRANCH"
+              git push
+            fi
             gh pr create --title "DRAFT Update ${{ env.REPO }} to unreleased $VERSION-dev" \
                          --body "This is a draft PR used for identifying issues integrating the latest (unreleased) [${{ env.REPO }}](https://github.com/open-telemetry/${{ env.REPO }})." \
                          --draft

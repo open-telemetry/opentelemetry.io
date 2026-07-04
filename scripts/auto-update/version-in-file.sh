@@ -105,7 +105,8 @@ fi
 
 if [[ "$repo" == "opentelemetry-specification"
   || "$repo" == "opentelemetry-proto"
-  || "$repo" == "semantic-conventions" ]]; then
+  || "$repo" == "semantic-conventions"
+  || "$repo" == "opentelemetry-configuration" ]]; then
   echo "Switching to $repo at tag $latest_version"
   ( set -x;
     npm run get:submodule -- content-modules/$repo &&
@@ -116,6 +117,10 @@ if [[ "$repo" == "opentelemetry-specification"
     git switch --detach $latest_version
   )
 fi
+
+# Sync any code-excerpt directives that embed upstream files, so the build
+# doesn't fail if the new version changed an excerpted file.
+npm run fix:code-excerpts
 
 $GIT checkout -b "$branch"
 $GIT commit -a -m "$message"
