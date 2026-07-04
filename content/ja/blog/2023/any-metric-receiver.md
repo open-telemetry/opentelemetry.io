@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry Collector で任意のカスタムメトリクスを受信する
-linkTitle: Any Metric Receiver
+linkTitle: 任意のメトリクスのレシーバー
 date: 2023-11-30
 author: '[Severin Neumann](https://github.com/svrnm), Cisco'
 default_lang_commit: 0009192ae1f96290e0b5ecc7e800c2947d209f69
@@ -309,7 +309,7 @@ Transform Processor と OTTL は幅広い機能を提供します。
 
 これで、OpenTelemetry Collector で任意のカスタムメトリクスを受信する準備が整いました！
 
-## ボーナス: OTLP を使う！ {#bonus-use-otlp}
+## ボーナス: OTLP の使用 {#bonus-use-otlp}
 
 Carbon Receiver と Transform Processor の使用はカスタムメトリクスを収集するための確実な方法ですが、[OpenTelemetry Protocol](/docs/specs/otlp/)（OTLP）が必要なものをすべて提供しているのに、外部形式を使ってメトリクスを OpenTelemetry にインポートするのは少し変に思えるかもしれません。
 
