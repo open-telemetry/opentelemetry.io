@@ -7,7 +7,7 @@ author: >-
 issue: 9943
 sig: Metrics
 # canonical_url: https://...   # add if cross-posted from another blog
-cSpell:ignore: Aspire Cijo cijothomas max
+cSpell:ignore: Cijo cijothomas max
 ---
 
 OpenTelemetry metrics are designed to be safe to use in production. One part of
@@ -264,12 +264,6 @@ This post uses counters because they make the examples easier to read.
 in the overflow data point. What is lost is the original measurement attribute
 set, which is why filtered and grouped queries can undercount.
 
-**Can I solve this by putting more values in Resource attributes?** No. Resource
-attributes should describe the entity producing telemetry, such as service,
-region, or instance. They remain queryable during overflow because they are not
-measurement attributes, but they should not be used to hide measurement-level
-cardinality.
-
 ## Further reading
 
 - [Cardinality limits](/docs/concepts/signals/metrics/#cardinality-limits): full
@@ -277,16 +271,10 @@ cardinality.
   temporality affects it
 - [OpenTelemetry Metrics SDK specification: Cardinality
   Limits][spec-cardinality]
-- [opentelemetry-rust metrics guide: Cardinality Limits section](https://github.com/open-telemetry/opentelemetry-rust/blob/7214567041ac640a87608125470d0ad74703eaea/docs/metrics.md#cardinality-limits)
-  (deeper coverage of temporality interactions and sizing heuristics)
-- ["Metrics That Lie: OTel's Cardinality Capping Trap"](https://cijothomas.github.io/kubecon-eu-metriccardinality/)
-  (KubeCon EU 2026 Observability Day Lightning Talk, slides)
-- [opentelemetry-rust PR #2901: re-introducing configurable cardinality cap
-  (v0.30)][rust-pr-2901]
-- [Aspire dashboard issue #7520: surfacing overflow to operators][aspire-7520]
+- [Metrics That Lie: Understanding OpenTelemetry's Cardinality Capping and Its Implications](https://youtu.be/QTeA16I_hME),
+  my KubeCon EU 2026 lightning talk
 
 [aspire-7520]: https://github.com/microsoft/aspire/issues/7520
-[rust-pr-2901]: https://github.com/open-telemetry/opentelemetry-rust/pull/2901
 [spec-cardinality]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/6837311818b3cedcda4cad222804c4f98f1fe402/specification/metrics/sdk.md#cardinality-limits
 [spec-compliance]:
