@@ -1,7 +1,5 @@
 ---
-title: >-
-  Cardinality Limits in OpenTelemetry — When Your Metrics Lie, and What to Do
-  About It
+title: Cardinality Limits in OpenTelemetry Metrics
 linkTitle: Cardinality Limits in OpenTelemetry
 date: 2026-06-29
 author: >-
@@ -12,19 +10,18 @@ sig: Metrics
 cSpell:ignore: Aspire cardinality Cijo cijothomas overflows
 ---
 
-You query your metrics for error count — it says **zero**. The error rate panel
-is flat. The dashboard looks fine.
+The OpenTelemetry metrics SDK enforces a cardinality limit by design, to keep
+memory bounded. It has a consequence that's easy to miss: once a metric stream
+overflows, queries that filter or group by an attribute can silently undercount,
+even for an attribute as simple as a boolean `success` flag.
 
-But users are reporting failures. Logs confirm errors. Your application has been
-instrumented with OpenTelemetry the whole time. So where did the errors go?
-
-This post is about a deliberate piece of the OpenTelemetry metrics SDK design —
-the **cardinality limit** — which may already be affecting one of your
-dashboards without you noticing.
+This post covers what that means in practice: how to size the limit, an advanced
+technique for high-cardinality attributes, and what to check in your own
+deployment this week.
 
 ## The short version
 
-Every metric measurement in OpenTelemetry can carry attributes — key-value pairs
+Every metric measurement in OpenTelemetry can carry attributes: key-value pairs
 like `url.path=/home` or `success=true`. The SDK tracks a separate data point in
 memory for each unique combination of attribute values, so memory grows with the
 number of combinations, not with request volume. To keep that memory bounded,
@@ -37,27 +34,21 @@ gone.
 That last part is what surprises people: overflow drops the **entire** attribute
 combination, not just the high-cardinality part. If a request counter records
 `url.path` (high cardinality) together with `success` (a boolean), once the
-stream overflows, both are dropped together — so a query filtering on
+stream overflows, both are dropped together, so a query filtering on
 `success=false` can return zero, even though `success` alone is about as
 low-cardinality as an attribute can get. **An error-rate alert built on
 `success=false` can silently stop firing.**
 
-Two more things are worth knowing before you size or monitor this yourself: who
-gets to keep their slot, and what the cap does and doesn't protect.
-
-Most SDKs fill the limit **first-come, first-served**, so whatever hits the
-instrument first — a startup burst, a security scanner probing routes — can
-occupy every slot for the process lifetime under cumulative temporality.
-
-The cap also only bounds what one process holds in memory; it doesn't bound what
-reaches your backend. With delta temporality, each collection cycle can export a
+One more thing worth knowing before you size or monitor this yourself: the SDK
+cap only bounds what one process holds in memory; it doesn't bound what reaches
+your backend. With delta temporality, each collection cycle can export a
 _different_ set of combinations, so a fleet of 1000 pods with a 2000 cap can
 still produce up to 2 million backend series. **The SDK cap protects your
 application from OOM, not your backend from high cardinality.**
 
-For the full mechanics — the overflow bucket, what's exempt from the limit
-(Resource and instrumentation scope attributes), and how temporality changes how
-forgiving the cap is — see
+For the full mechanics, including the overflow bucket, what's exempt from the
+limit (Resource and instrumentation scope attributes), and how temporality
+changes how forgiving the cap is, see
 [Cardinality limits](/docs/concepts/signals/metrics/#cardinality-limits) in the
 metrics concept docs. The rest of this post is the operational playbook: how to
 size the limit, an advanced technique for high-cardinality attributes, and what
@@ -72,9 +63,11 @@ override it (via a [View](/docs/concepts/signals/metrics/#views), which lets you
 customize how an instrument's measurements are aggregated), the costs run in
 both directions:
 
-- **Limit too high**: some SDKs (notably .NET and Rust) preallocate memory based
-  on the limit, so the excess is allocated upfront and sits unused. Other SDKs
-  grow on demand.
+- **Limit too high**: weakens the safety net. A cardinality leak (an unbounded
+  attribute that slips in unnoticed) can grow much larger, in memory and in
+  backend series, before it triggers overflow and becomes visible. Some SDKs
+  also preallocate memory based on the limit, so a needlessly high limit can
+  waste memory even before any leak occurs.
 - **Limit too low**: measurements get folded into overflow, and filtered queries
   become unreliable.
 
@@ -83,17 +76,18 @@ A short heuristic, by temporality (synchronous instruments):
 | Temporality                               | How to size                                                                                                                                                                                                                                                                                                                                             |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Cumulative**                            | Estimate the _theoretical maximum_ combinations across the lifetime of the process. For example, an HTTP counter with 100 known routes x 5 methods x 2 success values = 1000. Set the limit slightly above. If certain combinations are physically impossible, subtract them.                                                                           |
-| **Delta** (low-cardinality attributes)    | Same as cumulative — per-cycle isolation doesn't help when the attribute set is already small.                                                                                                                                                                                                                                                          |
+| **Delta** (low-cardinality attributes)    | Same as cumulative: per-cycle isolation doesn't help when the attribute set is already small.                                                                                                                                                                                                                                                           |
 | **Delta** (high-cardinality attributes)   | Estimate the _active_ distinct combinations per cycle, not lifetime. Example: 1 million possible users x 2 success values gives 2 million possible combinations, but if only ~10,000 users are active per cycle the active set is ~20,000. Set the limit ~2x that for burst headroom (~40,000). This is where Delta makes a meaningful difference.      |
 | **Delta** (request-rate-bounded fallback) | When you can't estimate active users, use `max_requests_per_second x collection_interval_seconds` (the OTel collection/export interval) as a guaranteed upper bound. 500 req/sec x 60 sec = 30,000. Shortening the collection interval directly shrinks the per-cycle working set, so a shorter interval lets you safely use a lower cardinality limit. |
 
-## When high-cardinality attributes are actually the right answer
+### When high-cardinality attributes are the right call
 
 The conventional wisdom is "never put `user_id` or `tenant_id` in metric
 attributes." Good default advice, but not universal: **per-tenant SLOs**
 (service-level objectives) require tenant identity on the metric to answer
 questions like "what is tenant X's failure rate?" Aggregating it away defeats
-the purpose.
+the purpose. This is the delta high-cardinality row above, worked through end to
+end.
 
 **Delta temporality makes this work.** Delta forgets state after each collection
 cycle, so the cap covers "active combinations _per cycle_", not "ever seen". As
@@ -119,7 +113,7 @@ Three caveats:
    cause overflow** for that cycle. Set the limit with headroom for realistic
    bursts, and treat sustained overflow on these instruments as a real
    operational signal.
-3. **Shorter export intervals reduce the per-cycle working set** — halving the
+3. **Shorter export intervals reduce the per-cycle working set**: halving the
    interval can roughly halve the active combinations per cycle. The tradeoff is
    increased CPU and network overhead from more frequent exports.
 
@@ -135,9 +129,9 @@ The overflow attribute value is the boolean `true`. Prometheus represents it as
 the string `"true"`; OTLP-native backends preserve the boolean type. Also note
 that Prometheus sanitizes attribute names on ingestion, replacing dots with
 underscores, so `otel.metric.overflow` becomes the label `otel_metric_overflow`
-in PromQL — the queries below use the Prometheus form.
+in PromQL; the queries below use the Prometheus form.
 
-**Prometheus / PromQL** — find every metric in your fleet that emitted an
+**Prometheus / PromQL**: find every metric in your fleet that emitted an
 overflow data point within your retention window:
 
 ```promql
@@ -150,9 +144,9 @@ This returns the list of `(metric_name, service_name)` pairs where overflow has
 occurred. Adjust the grouping labels to match your deployment (e.g., add
 `cluster`, `namespace`).
 
-**Other backends** — write the equivalent query in your backend's query
-language: filter on the attribute `otel.metric.overflow = true` and group by
-metric name and `service.name`.
+**Other backends**: write the equivalent query in your backend's query language:
+filter on the attribute `otel.metric.overflow = true` and group by metric name
+and `service.name`.
 
 **For each metric the query returns:**
 
@@ -166,31 +160,31 @@ metric name and `service.name`.
 3. **Apply the fix.** Either drop the offending attribute via a
    [View](/docs/concepts/signals/metrics/#views) (cleanest if the attribute
    isn't worth its cardinality cost), raise the configured limit (a code or
-   config change requiring a redeploy — not a runtime toggle; buys time while a
+   config change requiring a redeploy, not a runtime toggle; buys time while a
    fix is in flight), or fix the attribute upstream with templated routes,
    normalized error categories, etc. (the long-term fix). On cumulative
    temporality, the process keeps folding new combinations into overflow until
-   it restarts — so a restart after the fix ships is what gets the named series
+   it restarts, so a restart after the fix ships is what gets the named series
    back.
 
 If the query returns nothing within your retention window, either no instrument
-in your fleet has hit its cap in that window — a useful baseline — or your SDK
+in your fleet has hit its cap in that window (a useful baseline), or your SDK
 doesn't implement cardinality limits yet. At the time of writing, .NET, C++, Go,
 Java, JavaScript, and Rust all implement the cap (default: 2000); check the
 [spec compliance matrix][spec-compliance] for your SDK. If your SDK doesn't
 support it, the process can hold unbounded state and OOM-kill under a
-cardinality leak — watch process memory carefully.
+cardinality leak; watch process memory carefully.
 
 ### Action 2: Monitor for overflow continuously
 
 Cardinality issues sneak in with deployments: a route template that wasn't
 applied, an instrumentation library upgrade that adds a new attribute, an
-attribute populated from new untrusted input. A one-time audit isn't enough —
-you want to know when overflow first appears, not on the next quarterly review.
+attribute populated from new untrusted input. A one-time audit isn't enough; you
+want to know when overflow first appears, not on the next quarterly review.
 
 Set up an alert that fires when _any_ metric in any service emits the overflow
-series. The PromQL form — adapt the time window, severity, and grouping labels
-to your fleet:
+series. The PromQL form (adapt the time window, severity, and grouping labels to
+your fleet):
 
 ```promql
 sum by (service_name, __name__) (
@@ -203,13 +197,12 @@ surfacing an overflow indicator on the chart itself, so filtered breakdowns can
 be trusted at a glance. [Aspire issue #7520][aspire-7520] discusses one shape
 this can take in a developer dashboard.
 
-Remember the dashboard that said zero errors? Now you know where those errors
-went, how to surface them across the fleet, and how to catch the next deployment
-that quietly makes the same mistake.
+Together, these two actions tell you where undercounting has already happened
+and catch the next deployment that quietly reintroduces it.
 
 ## FAQ
 
-**Does the cardinality limit only apply to counters?** No — it applies to every
+**Does the cardinality limit only apply to counters?** No, it applies to every
 OpenTelemetry metric instrument: counters, histograms, gauges, and their
 asynchronous variants. This post used counters throughout for simplicity, but
 the overflow behavior is identical across all instrument types.
@@ -217,23 +210,23 @@ the overflow behavior is identical across all instrument types.
 **Why first-come, first-served instead of LRU eviction?** The spec permits
 either for synchronous delta instruments; FCFS is simply what implementations
 have converged on, since it's simple and predictable. Either way, the cap is a
-safety net — the real fix is not putting unbounded attributes on metrics in the
+safety net; the real fix is not putting unbounded attributes on metrics in the
 first place.
 
 ## Further reading
 
-- [Cardinality limits](/docs/concepts/signals/metrics/#cardinality-limits) —
-  full concept documentation, including what's exempt from the limit and how
+- [Cardinality limits](/docs/concepts/signals/metrics/#cardinality-limits): full
+  concept documentation, including what's exempt from the limit and how
   temporality affects it
-- [OpenTelemetry Metrics SDK specification — Cardinality
+- [OpenTelemetry Metrics SDK specification: Cardinality
   Limits][spec-cardinality]
-- [opentelemetry-rust metrics guide — Cardinality Limits section](https://github.com/open-telemetry/opentelemetry-rust/blob/7214567041ac640a87608125470d0ad74703eaea/docs/metrics.md#cardinality-limits)
+- [opentelemetry-rust metrics guide: Cardinality Limits section](https://github.com/open-telemetry/opentelemetry-rust/blob/7214567041ac640a87608125470d0ad74703eaea/docs/metrics.md#cardinality-limits)
   (deeper coverage of temporality interactions and sizing heuristics)
 - ["Metrics That Lie: OTel's Cardinality Capping Trap"](https://cijothomas.github.io/kubecon-eu-metriccardinality/)
-  — KubeCon EU 2026 Observability Day Lightning Talk, slides
-- [opentelemetry-rust PR #2901 — re-introducing configurable cardinality cap
+  (KubeCon EU 2026 Observability Day Lightning Talk, slides)
+- [opentelemetry-rust PR #2901: re-introducing configurable cardinality cap
   (v0.30)][rust-pr-2901]
-- [Aspire dashboard issue #7520 — surfacing overflow to operators][aspire-7520]
+- [Aspire dashboard issue #7520: surfacing overflow to operators][aspire-7520]
 
 [aspire-7520]: https://github.com/microsoft/aspire/issues/7520
 [rust-pr-2901]: https://github.com/open-telemetry/opentelemetry-rust/pull/2901
