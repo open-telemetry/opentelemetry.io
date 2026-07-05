@@ -976,8 +976,8 @@
     "LastSeen": "2026-06-30T06:57:42.503359204Z"
   },
   "https://community.cncf.io/": {
-    "StatusCode": -30,
-    "LastSeen": "2026-07-05T06:58:12.063158391Z"
+    "StatusCode": 206,
+    "LastSeen": "2026-07-05T10:31:00Z"
   },
   "https://community.cncf.io/cloud-native-new-york-city/": {
     "StatusCode": 200,
@@ -2718,10 +2718,6 @@
   "https://dubbo.apache.org/en/overview/reference/protocols/triple-spec/#311-request": {
     "StatusCode": 206,
     "LastSeen": "2026-07-01T06:38:14.796000392Z"
-  },
-  "https://dyte.io/blog/opentelemetry-at-dyte-part-i/": {
-    "StatusCode": 502,
-    "LastSeen": "2026-07-05T06:55:11.834367417Z"
   },
   "https://ebpf.io/": {
     "StatusCode": 206,
@@ -20988,12 +20984,12 @@
     "LastSeen": "2026-07-05T06:51:43.592212656Z"
   },
   "https://projects.eclipse.org/projects/ee4j.metro": {
-    "StatusCode": -40,
-    "LastSeen": "2026-07-05T06:52:29.318706378Z"
+    "StatusCode": 206,
+    "LastSeen": "2026-07-05T10:31:00Z"
   },
   "https://projects.eclipse.org/projects/ee4j.mojarra": {
-    "StatusCode": -40,
-    "LastSeen": "2026-07-05T06:52:31.453518322Z"
+    "StatusCode": 206,
+    "LastSeen": "2026-07-05T10:31:00Z"
   },
   "https://prometheus-operator.dev/docs/developer/getting-started/#using-podmonitors": {
     "StatusCode": 206,
