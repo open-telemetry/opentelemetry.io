@@ -113,3 +113,5 @@ python run.py
 
 Open the UI at `http://localhost:7860`. If running behind the frontend proxy,
 set `CHATBOT_ROOT_PATH=/chatbot`.
+
+## [Troubleshooting](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/chatbot#troubleshooting)

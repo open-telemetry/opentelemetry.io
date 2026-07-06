@@ -27,6 +27,28 @@ MCP-provided tools to interact with the demo application.
 The service starts from `run.py`, initializes Traceloop instrumentation, creates
 an `Agent`, and launches a FastAPI server.
 
+## ReAct Agent
+
+The agent is built with LangGraph's prebuilt ReAct (Reasoning + Acting) agent,
+created via `langchain.agents import create_agent`. ReAct interleaves LLM
+reasoning steps with actions (tool calls), letting the model decide, turn by
+turn, whether it has enough information to answer or whether it needs to call a
+tool first. This makes the agent well suited to multi-step shop tasks such as
+"find a product, add it to my cart, and check out," where each step depends on
+the result of the previous one.
+
+```mermaid
+flowchart TD
+    START --> LLM
+    LLM --> Tools
+    Tools --> LLM
+    LLM --> END
+```
+
+Each pass through the LLM node is one iteration of the loop. The number of
+iterations is bounded by `GRAPH_RECURSION_LIMIT`. LangGraph stops the run once
+this limit is reached, which guards against infinite reasoning/action cycles.
+
 ## Service API
 
 ### `POST /prompt`
@@ -179,3 +201,5 @@ curl -X POST http://localhost:8010/prompt \
   -H 'Content-Type: application/json' \
   -d '{"message":"List products in the shop","history":[]}'
 ```
+
+## [Troubleshooting](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/agent#troubleshooting)
