@@ -984,8 +984,8 @@
     "LastSeen": "2026-07-03T06:51:15.416778017Z"
   },
   "https://community.cncf.io/events/details/cncf-cloud-native-community-japan-presents-japan-community-day-at-kubecon-cloudnativecon-japan-2025/": {
-    "StatusCode": -30,
-    "LastSeen": "2026-07-06T07:04:43.475578916Z"
+    "StatusCode": 206,
+    "LastSeen": "2026-07-06T09:12:05.201Z"
   },
   "https://community.cncf.io/merge-forward/": {
     "StatusCode": 200,
