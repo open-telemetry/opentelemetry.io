@@ -2003,9 +2003,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-01T06:44:09.47575105Z"
   },
-  "https://docs.kloudfuse.com/platform/latest/data-collection/agents/otel/overview/": {
-    "StatusCode": 404,
-    "LastSeen": "2026-07-06T07:04:06.829287094Z"
+  "https://docs.kloudfuse.com/platform/latest/data-collection/otel/overview/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-06T09:01:59.348480058Z"
   },
   "https://docs.kloudmate.com/opentelemetry/using-opentelemetry-collector/": {
     "StatusCode": 206,
