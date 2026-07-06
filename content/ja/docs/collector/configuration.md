@@ -34,7 +34,8 @@ otelcol --config=customconfig.yaml
 - **file** - ファイルから設定を読み込みます。たとえば `file:path/to/config.yaml` のように指定します。
 - **env** - 環境変数から設定を読み込みます。たとえば `env:MY_CONFIG_IN_AN_ENVVAR` のように指定します。
 - **yaml** - YAML 文字列から設定を読み込みます。サブパスは `::` で区切ります。
-たとえば `yaml:exporters::debug::verbosity: detailed` のように指定します。
+  たとえば `yaml:exporters::debug::verbosity: detailed` のように指定します。
+
 <!-- prettier-ignore-start -->
 - **http** - HTTP URI から設定を読み込みます。たとえば `http://www.example.com` のように指定します。
 - **https** - HTTPS URI から設定を読み込みます。たとえば
