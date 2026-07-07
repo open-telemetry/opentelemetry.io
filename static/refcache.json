@@ -227,6 +227,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-07-01T06:40:14.970828038Z"
   },
+  "https://bindplane.com/blog/what-are-connectors-in-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-07T07:41:09.798914154Z"
+  },
   "https://bio.site/adrianavillela": {
     "StatusCode": 206,
     "LastSeen": "2026-07-01T06:40:12.710347632Z"
@@ -10342,10 +10346,6 @@
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/kafka/": {
     "StatusCode": 206,
     "LastSeen": "2026-06-30T06:57:01.780861905Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/llm/": {
-    "StatusCode": 404,
-    "LastSeen": "2026-07-07T06:54:19.947956235Z"
   },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/load-generator/": {
     "StatusCode": 206,
