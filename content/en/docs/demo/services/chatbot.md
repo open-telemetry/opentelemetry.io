@@ -1,7 +1,6 @@
 ---
 title: Chatbot Service
 linkTitle: Chatbot
-aliases: [chatbotservice]
 cSpell:ignore: gradio httpx
 ---
 
