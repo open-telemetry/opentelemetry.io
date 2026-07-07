@@ -18832,12 +18832,12 @@
     "LastSeen": "2026-06-29T15:47:59.029Z"
   },
   "https://npmjs.com/package/@opentelemetry/baggage-log-record-processor": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-07T07:01:41.156584797Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-07T07:18:47.466Z"
   },
   "https://npmjs.com/package/@opentelemetry/baggage-span-processor": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-07T07:01:41.180694342Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-07T07:18:52.77Z"
   },
   "https://npmjs.com/package/@opentelemetry/exporter-jaeger": {
     "StatusCode": 200,
@@ -18852,8 +18852,8 @@
     "LastSeen": "2026-07-03T06:56:17.052Z"
   },
   "https://npmjs.com/package/@opentelemetry/host-metrics": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-07T07:01:01.777863546Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-07T07:18:58.169Z"
   },
   "https://npmjs.com/package/@opentelemetry/id-generator-aws-xray": {
     "StatusCode": 200,
@@ -18872,8 +18872,8 @@
     "LastSeen": "2026-06-29T15:48:10.861Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-browser-navigation": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-07T07:00:52.755002924Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-07T07:19:09.732Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-bunyan": {
     "StatusCode": 200,
@@ -19024,8 +19024,8 @@
     "LastSeen": "2026-06-29T15:49:46.668Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-undici": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-07T07:01:27.452834106Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-07T07:19:15.82Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-user-interaction": {
     "StatusCode": 200,
@@ -19092,8 +19092,8 @@
     "LastSeen": "2026-07-01T06:46:54.24Z"
   },
   "https://npmjs.com/package/@opentelemetry/sampler-aws-xray": {
-    "StatusCode": 429,
-    "LastSeen": "2026-07-07T07:01:41.309517295Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-07T07:19:21.221Z"
   },
   "https://npmjs.com/package/@prisma/instrumentation": {
     "StatusCode": 200,
