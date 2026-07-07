@@ -2,7 +2,7 @@
 title: Manage Telemetry with SDK
 weight: 12
 aliases: [exporters]
-cSpell:ignore: autoconfigured FQCNs Interceptable okhttp
+cSpell:ignore: autoconfigured data_point FQCNs inflight Interceptable okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -1365,6 +1365,44 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 ```
 
 ### OTLP exporters
+
+#### Exporter self-monitoring metrics
+
+OTLP exporters can emit self-monitoring metrics when a `MeterProvider` is
+configured for them. This happens automatically for exporters created by
+[zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure).
+For exporters built programmatically, call `setMeterProvider(...)` on the
+exporter builder.
+
+The metrics schema is selected by `InternalTelemetryVersion` on exporter
+builders, or by `otel.experimental.sdk.telemetry.version` when using zero-code
+SDK autoconfigure. The default value is `legacy`.
+
+Legacy OTLP exporter metrics:
+
+| Metric                   | Attributes                          | Description                                                        |
+| ------------------------ | ----------------------------------- | ------------------------------------------------------------------ |
+| `otlp.exporter.seen`     | `type=span\|metric\|log`            | Number of telemetry records passed to the exporter.                |
+| `otlp.exporter.exported` | `type=span\|metric\|log`, `success` | Number of telemetry records for which the export attempt finished. |
+
+When `latest` is selected, OTLP exporters use semantic-convention based names:
+
+| Metric                                         | Description                                                       |
+| ---------------------------------------------- | ----------------------------------------------------------------- |
+| `otel.sdk.exporter.span.inflight`              | Number of spans currently waiting for export result.              |
+| `otel.sdk.exporter.span.exported`              | Number of spans for which export finished.                        |
+| `otel.sdk.exporter.metric_data_point.inflight` | Number of metric data points currently waiting for export result. |
+| `otel.sdk.exporter.metric_data_point.exported` | Number of metric data points for which export finished.           |
+| `otel.sdk.exporter.log.inflight`               | Number of log records currently waiting for export result.        |
+| `otel.sdk.exporter.log.exported`               | Number of log records for which export finished.                  |
+| `otel.sdk.exporter.operation.duration`         | Duration of exporting a batch of telemetry records.               |
+
+The `latest` metrics include attributes such as `otel.component.type`,
+`otel.component.name`, and `error.type` when an export fails. The legacy metrics
+remain the default for SDK autoconfigure; this page does not define a removal
+schedule for them.
+
+#### OTLP exporter implementation details
 
 The [span exporter](#spanexporter), [metric exporter](#metricexporter), and
 [log exporter](#logrecordexporter) sections describe OTLP exporters of the form:

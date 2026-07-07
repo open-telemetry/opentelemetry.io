@@ -132,13 +132,18 @@ system property takes priority.
 
 Properties for disabling the [SDK](../sdk/#opentelemetrysdk):
 
-| System property     | Description                                       | Default |
-| ------------------- | ------------------------------------------------- | ------- |
-| `otel.sdk.disabled` | If `true`, disable the OpenTelemetry SDK. **[1]** | `false` |
+| System property                           | Description                                                                                                   | Default  |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------- | -------- |
+| `otel.sdk.disabled`                       | If `true`, disable the OpenTelemetry SDK. **[1]**                                                             | `false`  |
+| `otel.experimental.sdk.telemetry.version` | Select the schema used for SDK self-monitoring telemetry. Valid values are `legacy` and `latest`. See **[2]** | `legacy` |
 
 **[1]**: If disabled, `AutoConfiguredOpenTelemetrySdk#getOpenTelemetrySdk()`
 returns a minimally configured instance (for example,
 `OpenTelemetrySdk.builder().build()`).
+
+**[2]**: See
+[exporter self-monitoring metrics](../sdk/#exporter-self-monitoring-metrics) for
+the legacy and latest OTLP exporter metric names.
 
 Properties for attribute limits (see [span limits](../sdk/#spanlimits),
 [log limits](../sdk/#loglimits)):
