@@ -18,6 +18,7 @@ Dyla
 dyladan
 dynatrace
 ebpf
+eerzho
 EMEA
 errorf
 excerpter
@@ -130,5 +131,7 @@ Wayback
 webshop
 wordpress
 WSGI
+Yerkinbay
 zend
+Zhanbolat
 zipkin

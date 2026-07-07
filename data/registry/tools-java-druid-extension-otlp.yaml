@@ -19,7 +19,7 @@ description: This extension allows [Apache Druid](https://druid.apache.org/) to
 authors:
   - name: mishmash io
     email: opensourcemaintainers@mishmash.io
-    url: https://mishmash.io
+    url: https://github.com/mishmash-io
 urls:
   repo: https://github.com/mishmash-io/opentelemetry-server-embedded
   docs: https://github.com/mishmash-io/opentelemetry-server-embedded/tree/main/druid-otlp-format

@@ -57,7 +57,7 @@ jobs:
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           # Full history: the i18n fix/check scripts that the default command
           # runs diff localized pages against their `default_lang_commit`.
@@ -73,13 +73,9 @@ jobs:
 
       - name: Run housekeeping command and generate patch
         id: patch
-        # Unlike the `pr-actions.yml` caller, this runs default-branch code
-        # only (schedule and dispatch triggers), so the whole pipeline is
-        # trusted. The action tolerates a non-zero command exit so that
-        # fixes are still captured when residual check failures remain
-        # (the default command runs checks after fixes); such failures are
-        # surfaced by the report-failure job below. No post-command prune
-        # is needed: the default command's fix:refcache already prunes.
+        # Default-branch only (trusted; cf. pr-actions). Non-zero exit is OK—
+        # fixes still publish; residual failures fail in report-failure below.
+        # No post-command prune: fix:refcache in the default command handles it.
         uses: ./.github/actions/npm-script-patch
         with:
           command: ${{ inputs.command || 'fix-and-test:all' }}

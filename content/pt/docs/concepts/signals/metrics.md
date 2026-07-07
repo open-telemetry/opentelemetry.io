@@ -3,6 +3,7 @@ title: Métricas
 weight: 2
 description: Uma medição capturada em tempo de execução.
 default_lang_commit: 34f672f4afbc083423d5c03a03f97c308591d255
+drifted_from_default: true
 ---
 
 Uma métrica é uma medição de um serviço capturada em tempo de execução. O
