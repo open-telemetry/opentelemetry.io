@@ -11,8 +11,8 @@ license: Apache 2.0
 description:
   pytest plugin that asserts OpenTelemetry spans emitted by your code conform to
   the GenAI semantic conventions. Ships span compliance assertions plus a pytest
-  fixture that captures spans in memory, so you validate what your instrumentation
-  really emits from your own test suite.
+  fixture that captures spans in memory, so you validate what your
+  instrumentation really emits from your own test suite.
 authors:
   - name: Krishna Balusu
     url: https://github.com/Krishnachaitanyakc
