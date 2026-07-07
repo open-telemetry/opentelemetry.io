@@ -29,7 +29,7 @@ Flags are passed before the subcommand:
 | ------------------ | -------------------- | ---------------------------------------------------- |
 | `--rules <file>`   |                      | Use a custom instrumentation rules file              |
 | `--debug`, `-d`    | `OTELC_DEBUG=1`      | Enable debug logging for the build                   |
-| `--work-dir`, `-w` |                      | Directory for working files written during the build |
+| `--work-dir`, `-w` | `OTELC_WORK_DIR`     | Directory for working files written during the build |
 
 For example, to build with a custom rules file and debug output:
 
@@ -75,9 +75,13 @@ instrument_sql_exec:
         path: github.com/example/sqlinstr
 ```
 
-Pass a custom rules file to the build with `--rules`. Rules support several
-injection mechanisms beyond function hooks, including struct field injection,
-call-site wrapping, and file addition. For the complete schema and rule type
-reference, see the
+Pass a custom rules file to the build with `--rules`. Rules can also ship inside
+Go packages: a package declares instrumentation with an
+`otel.instrumentation.go` (or `otelc.tool.go`) file and provides its rules in
+`otelc.yml` or `*.otelc.yml` files next to the code, and the tool discovers and
+loads them when it instruments your application. Rules support several injection
+mechanisms beyond function hooks, including struct field injection, call-site
+wrapping, and file addition. For the complete schema and rule type reference,
+see the
 [instrumentation rules documentation](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/main/docs/rules.md)
 in the repository.
