@@ -1,7 +1,6 @@
 ---
 title: Agent Service
 linkTitle: Agent
-aliases: [agentservice]
 cSpell:ignore: cassettes ChatOpenAI langchain langgraph litellm uvicorn vcr
 ---
 
