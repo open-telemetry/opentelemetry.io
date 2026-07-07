@@ -67,13 +67,13 @@ The milestones are still under discussion, but will likely be as follows:
 
 1. Existing CocoaPods integrations will continue to function.
 1. Once CocoaPods support is officially discontinued:
-    1. Previously published versions will remain available.
-    1. No new SDK releases will be published to CocoaPods.
-    1. We’ll leave `.podspec` in the repositories until further notice.
-    1. New features, bug fixes, and security updates will only be available
-       through Swift Package Manager releases.
-    1. Contributors won't invest resources into investigating or resolving issues
-       that are specific to CocoaPods integration.
+   1. Previously published versions will remain available.
+   1. No new SDK releases will be published to CocoaPods.
+   1. We’ll leave `.podspec` in the repositories until further notice.
+   1. New features, bug fixes, and security updates will only be available
+      through Swift Package Manager releases.
+   1. Contributors won't invest resources into investigating or resolving issues
+      that are specific to CocoaPods integration.
 
 ## Recommended Migration Path
 
