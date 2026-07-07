@@ -72,22 +72,22 @@ Then add the block under `languages:`, in alphabetical order:
 Copy the shape of an existing block (e.g. `## ja`), in alphabetical order:
 
 ```yaml
-  ## <lang>
-  - source: content/<lang>
-    target: content
-    sites: &<lang>-matrix
-      matrix: { languages: [<lang>] }
-  # fallback pages
-  - source: content/en/_includes
-    target: content/_includes
-    sites: *<lang>-matrix
-  - source: content/en/announcements
-    target: content/announcements
-    sites: *<lang>-matrix
-  - source: content/en/docs
-    target: content/docs
-    files: ['! specs/**']
-    sites: *<lang>-matrix
+## <lang>
+- source: content/<lang>
+  target: content
+  sites: &<lang>-matrix
+    matrix: { languages: [<lang>] }
+# fallback pages
+- source: content/en/_includes
+  target: content/_includes
+  sites: *<lang>-matrix
+- source: content/en/announcements
+  target: content/announcements
+  sites: *<lang>-matrix
+- source: content/en/docs
+  target: content/docs
+  files: ['! specs/**']
+  sites: *<lang>-matrix
 ```
 
 ### c. `content/<lang>/.gitkeep` — placeholder content dir
