@@ -2,7 +2,7 @@
 title: ブログ
 description: ブログ投稿する方法を学びます。
 weight: 30
-default_lang_commit: 46b67485e928d406a3e5e74f024180d28583c84d
+default_lang_commit: 0009192ae1f96290e0b5ecc7e800c2947d209f69
 ---
 
 [OpenTelemetry ブログ](/blog/)は OpenTelemetry に関連する可能性のある、新機能、コミュニティレポートそしてニュースを発信します。
@@ -54,7 +54,7 @@ OpenTelemetry ウェブサイトのメンテナーと承認者はプロジェク
 
 - ベンダー製品の宣伝
 
-もし、ブログ投稿がこの適切な内容のリストに沿っているのであれば、次の詳細と一緒に[イシューを起票](https://github.com/open-telemetry/opentelemetry.io/issues/new?title=New%20Blog%20Post:%20%3Ctitle%3E)してください。
+もし、ブログ投稿がこの適切な内容のリストに沿っているのであれば、**必ず**最初に次の詳細と一緒に[イシューを起票](https://github.com/open-telemetry/opentelemetry.io/issues/new?template=BLOG_POST.yml)してください。
 
 - ブログ投稿のタイトル
 - 簡潔な説明とブログ投稿の概要
@@ -62,7 +62,10 @@ OpenTelemetry ウェブサイトのメンテナーと承認者はプロジェク
 - ブログ記事のスポンサーを引き受けてくれる [SIG](https://github.com/open-telemetry/community/) の名前。
   **SIG スポンサーは必須です。**
 - Comms SIG が記事をレビューする前に、最初のレビューを担当する、SIG のスポンサー（メンテナーまたは承認者）の名前。
-  スポンサーは記事の執筆者とは異なる企業であることが理想的です。
+  スポンサーは記事の執筆者とは異なる企業であることが**必須です**。
+
+**プルリクエストを提出する前にイシューを起票することは必須です。**
+受理されたイシューなしに提出されたブログ記事のプルリクエストは、レビューなしにクローズされることがあります。
 
 SIG Communication のメンテナーがブログ記事が受け入れられるのに必要な要件を満たしていることを確認します。
 SIG スポンサーは、Comms SIG が記事を確認する前にレビューを完了しなければなりません。
