@@ -219,8 +219,8 @@ reports values after the target completes a garbage-collection cycle, so a new
 process might not emit these metrics immediately. Changes to `GOGC`,
 `GOMEMLIMIT`, or `GOMAXPROCS` appear after the next completed cycle.
 
-JVM runtime metrics require both the `application_jvm` metrics feature and the
-JVM collector:
+JVM runtime metrics require both the `application_jvm` metrics feature and
+`jvm_runtime_metrics.enabled: true`:
 
 ```yaml
 metrics:
