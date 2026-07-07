@@ -2,8 +2,7 @@
 title: Agent Service
 linkTitle: Agent
 aliases: [agentservice]
-# prettier-ignore
-cSpell:ignore: cassettes ChatOpenAI fastmcp gradio langchain langgraph litellm uvicorn vcr
+cSpell:ignore: cassettes ChatOpenAI langchain langgraph litellm uvicorn vcr
 ---
 
 The Agent service provides an AI assistant for the OpenTelemetry Astronomy Shop
