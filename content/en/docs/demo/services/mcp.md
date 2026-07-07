@@ -1,7 +1,6 @@
 ---
 title: MCP Service
 linkTitle: MCP
-aliases: [mcpservice]
 cSpell:ignore: fastmcp httpx jlowin
 ---
 
