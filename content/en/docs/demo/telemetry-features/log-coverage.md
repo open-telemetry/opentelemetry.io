@@ -8,7 +8,9 @@ aliases: [log_service_features, logging-features, ../logging-features]
 | --------------- | ---------- | --------- |
 | Accounting      | .NET       | ✅        |
 | Ad              | Java       | ✅        |
+| Agent           | Python     | 🚧        |
 | Cart            | .NET       | ✅        |
+| Chatbot         | Python     | 🚧        |
 | Checkout        | Go         | 🚧        |
 | Currency        | C++        | ✅        |
 | Email           | Ruby       | 🚧        |
@@ -19,15 +21,13 @@ aliases: [log_service_features, logging-features, ../logging-features]
 | Frontend Proxy  | Envoy      | ✅        |
 | Image Provider  | NGINX      | 🚧        |
 | Load Generator  | Python     | ✅        |
+| MCP             | Python     | 🚧        |
 | Payment         | JavaScript | 🚧        |
 | Product Catalog | Go         | 🚧        |
 | Product Reviews | Python     | ✅        |
 | Quote           | PHP        | ✅        |
 | Recommendation  | Python     | ✅        |
 | Shipping        | Rust       | ✅        |
-| Agent           | Python     | 🚧        |
-| MCP             | Python     | 🚧        |
-| Chatbot         | Python     | 🚧        |
 
 Emoji Legend:
 
