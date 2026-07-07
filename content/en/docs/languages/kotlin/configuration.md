@@ -1,10 +1,8 @@
 ---
-title: Configure the SDK
+title: Configure OpenTelemetry Kotlin
 linkTitle: Configure the SDK
 weight: 13
 ---
-
-## Configuring OpenTelemetry Kotlin
 
 The OpenTelemetry Kotlin SDK is configured at initialization through its DSL
 parameter. Both `createOpenTelemetry` and `createCompatOpenTelemetry` use the
@@ -18,7 +16,7 @@ val otel: OpenTelemetry = createOpenTelemetry {
 
 The following sections show how to configure different aspects of the SDK's
 behavior. This is not an exhaustive list of ways to configure the SDK; rather it
-attempts to highlight the most common use-cases.
+attempts to highlight the most common use cases.
 
 ## Export
 
@@ -113,7 +111,7 @@ val otel: OpenTelemetry = createOpenTelemetry {
 
 ### Log Limits
 
-[Log Limits](/docs/specs/otel/logs/sdk/#logrecord-limits) act as in the
+[Log Limits](/docs/specs/otel/logs/sdk/#logrecord-limits) act similarly to the
 [attribute limits](#attribute-limits) section, but are local to log records:
 
 ```kotlin
