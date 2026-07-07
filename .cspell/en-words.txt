@@ -11,7 +11,6 @@ autoloaded
 autoloader
 autoloading
 backoff
-balusu
 blockquotes
 caml
 cartservice
@@ -29,7 +28,6 @@ extensionless
 featureflagservice
 frauddetectionservice
 frontendproxy
-genai
 initializers
 javadoc
 javadocs
@@ -43,7 +41,6 @@ parentbased
 paymentservice
 prepper
 productcatalogservice
-pytest
 quantile
 quantiles
 quoteservice

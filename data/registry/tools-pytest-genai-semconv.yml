@@ -1,3 +1,4 @@
+# cSpell:ignore Balusu, genai, pytest
 title: pytest-genai-semconv
 registryType: utilities
 language: python
