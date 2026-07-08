@@ -6,10 +6,17 @@ tags:
   - slowrendering
   - instrumentation
   - android
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/slowrendering
 license: Apache 2.0
 description:
+  Monitors frame rendering performance and reports slow renders (>16ms) and
+  frozen frames (>700ms) to help identify UI bottlenecks.
 authors:
   - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/slowrendering
+  docs: /docs/platforms/client-apps/android/#slow-and-frozen-frames
 createdAt: 2026-07-12
+package:
+  registry: maven
+  name: io.opentelemetry.android.instrumentation/slowrendering
+  version: 1.5.0
