@@ -32,6 +32,10 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - ^(/..)?/docs/languages/dotnet/(metrics-api|traces-api)/
   - ^((/..)?/docs/compatibility/migration/)?opencensus/$
   - ^/../docs/specs/?$ # non-default locale spec redirect
+  # Declarative config type anchors are rendered client-side (JS accordion); the
+  # #type-* fragments work in a browser but are absent from static HTML. Matches
+  # the exclude in opentelemetry-specification/.lychee.toml (spec PR #5192).
+  - ^(/..)?/docs/specs/otel-config/types/#type-
 
   - ^https://deploy-preview-\d+--opentelemetry.netlify.app/
   - ^https://www\.googletagmanager\.com

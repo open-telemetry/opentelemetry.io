@@ -37,6 +37,9 @@ exclude = [
   '/docs/languages/dotnet/(metrics-api|traces-api)/?',
   '/opencensus/?$',                                 # compatibility/migration redirect
   '/../docs/specs/?$',                             # non-default locale spec redirect
+  # JS accordion: #type-* anchors are client-side only (spec PR #5192).
+  # Optional slash: lychee resolves dir URLs to …/types#fragment (no slash).
+  '/docs/specs/otel-config/types/?#type-',
 
   # --- external host rules ---
   '^https://deploy-preview-\d+--opentelemetry\.netlify\.app/',
