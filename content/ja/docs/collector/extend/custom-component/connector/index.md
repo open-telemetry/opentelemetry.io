@@ -5,8 +5,7 @@ aliases:
   - /docs/collector/build-connector
   - /docs/collector/building/connector
 weight: 200
-default_lang_commit: 8013aa5f0aae284fa343311981625be6dbb25e5b # patched
-drifted_from_default: true
+default_lang_commit: ad6f8d1e5179464d22f7e9cdf9fe86bc53f550e5
 # prettier-ignore
 cSpell:ignore: debugexporter exampleconnector gomod gord Jaglowski mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
 ---
