@@ -6,9 +6,10 @@ linkTitle: Self-Observability Dashboard
 Operating an OpenTelemetry pipeline in production means the SDKs themselves
 become critical infrastructure: if a service's exporter is failing, its queue is
 saturated, or telemetry is being dropped, you want to see it. The OpenTelemetry
-SDKs can emit their own internal metrics (using the experimental `otel.sdk.*`
-semantic conventions) that describe how the SDK is behaving, and the demo's
-**Self-Observability** dashboard visualizes them.
+SDKs can emit their own internal metrics (using the experimental
+[`otel.sdk.*` semantic conventions](/docs/specs/semconv/otel/sdk-metrics/)) that
+describe how the SDK is behaving, and the demo's **Self-Observability**
+dashboard visualizes them.
 
 This dashboard demonstrates how to monitor the health of the OpenTelemetry SDKs
 running inside your instrumented services, so you can answer questions such as
