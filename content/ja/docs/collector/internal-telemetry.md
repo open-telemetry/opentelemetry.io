@@ -1,9 +1,8 @@
 ---
 title: 内部テレメトリー
 weight: 25
-default_lang_commit: 74ba66cadfe96161b3fa03fdf3d8ea4067b00849
-drifted_from_default: true
-cSpell:ignore: alloc batchprocessor journalctl otelgrpc
+default_lang_commit: 5085f8dbc5095f2fdde7de5aa3a37f49c0cf3edc
+cSpell:ignore: alloc batchprocessor journalctl lowmemory otelconf otelgrpc
 ---
 
 インスタンス自身の内部テレメトリーを確認することで、任意の OpenTelemetry コレクターのインスタンスの健全性を詳しく調べることができます。
@@ -57,6 +56,8 @@ service:
                 protocol: http/protobuf
                 endpoint: https://backend:4318
 ```
+
+利用可能なすべてのオプションについては、[OTLP エクスポーターオプション](#otlp-exporter-options) を参照してください。
 
 #### 内部メトリクス向けの Prometheus エンドポイント {#prometheus-endpoint-for-internal-metrics}
 
@@ -211,6 +212,8 @@ service:
                 endpoint: https://backend:4318
 ```
 
+利用可能なすべてのオプションについては、[OTLP エクスポーターオプション](#otlp-exporter-options) を参照してください。
+
 ### 内部トレースの設定 {#configure-internal-traces}
 
 コレクターはデフォルトではトレースを公開しませんが、公開するように設定できます。
@@ -235,8 +238,44 @@ service:
 
 追加のオプションについては、[設定例][kitchen-sink-config] を参照してください。
 `tracer_provider` セクションが、ここでの `traces` に対応していることに注意してください。
+OTLP エクスポーターオプションの詳細については、[以下](#otlp-exporter-options) を参照してください。
 
 [kitchen-sink-config]: https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml
+
+### OTLP エクスポーターオプション {#otlp-exporter-options}
+
+以下の[オプション](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L256)は、3 つのシグナルすべての OTLP エクスポーターで利用できます。
+[メトリクス向けの追加オプション](#otlp-exporter-options-metrics) もあります。
+
+- `metrics::readers[*]::periodic::exporter::otlp`
+- `logs::processors[*]::batch::exporter::otlp`
+- `traces::processors[*]::batch::exporter::otlp`
+
+| フィールド名         | デフォルト値                                              | 説明                                                                                                                                                                                                                                                                |
+| -------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `endpoint`           | `localhost:4317` (gRPC), `localhost:4318` (http/protobuf) | テレメトリーの送信先 URL。例: `https://backend:4318`。`http/protobuf` の場合、URL 内のパスはエクスポーターに転送されます。パスが指定されていない場合、デフォルトのシグナル固有のパスが使用されます（`/v1/traces`、`/v1/metrics`、または `/v1/logs`）。              |
+| `protocol`           | （必須）                                                  | トランスポートプロトコル。サポートされる値: `grpc`、`http/protobuf`。                                                                                                                                                                                               |
+| `compression`        |                                                           | 送信前に適用される圧縮アルゴリズム。サポートされる値: `gzip`、`none`。                                                                                                                                                                                              |
+| `timeout`            | `10000`                                                   | 各エクスポートの試行に対するタイムアウト（ミリ秒）。                                                                                                                                                                                                                |
+| `headers`            |                                                           | リクエストヘッダーとして送信されるキーと値のペアのリスト。各エントリーには `name` フィールドと `value` フィールドが必要です。                                                                                                                                       |
+| `headers_list`       |                                                           | [W3C Baggage](https://www.w3.org/TR/baggage/) 形式のヘッダー（例: `key1=value1,key2=value2`）。`headers` と `headers_list` の両方が設定されている場合、個々のヘッダー単位で `headers` が優先されます。                                                              |
+| `certificate`        |                                                           | サーバーの証明書を検証するために使用される PEM エンコードの CA 証明書ファイルのパス。                                                                                                                                                                               |
+| `client_certificate` |                                                           | mTLS 用の PEM エンコードのクライアント証明書ファイルのパス。`client_key` が設定されている場合に必須です。                                                                                                                                                           |
+| `client_key`         |                                                           | クライアント証明書の PEM エンコードの秘密鍵ファイルのパス。`client_certificate` が設定されている場合に必須です。                                                                                                                                                    |
+| `insecure`           | `false`                                                   | `grpc` プロトコルにのみ適用されます。`true` の場合、エンドポイントスキームが `http` でも `https` でもない gRPC 接続の TLS を無効にします。`http/protobuf` の場合、このオプションに関係なく、エンドポイントが `http` スキームを使用しない限り TLS が有効になります。 |
+
+> [!NOTE]
+>
+> 内部 OTLP エクスポーターはコレクターが使用する Go SDK で実装されています。
+> Go SDK は[環境変数ベースの設定](/docs/languages/sdk-configuration/otlp-exporter/) をサポートしていますが、コレクターによるプログラムでの設定が優先されるため、予期しない動作を避けるためにコレクターの YAML 設定を使用することを推奨します。
+
+#### メトリクス向けの追加オプション {#otlp-exporter-options-metrics}
+
+以下の[オプション](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L288)は、OTLP メトリクスエクスポーター（`metrics::readers[*].periodic.exporter.otlp`）にのみ適用されます。
+
+| フィールド名             | デフォルト値 | 説明                                                                                                                                                                                                                                                |
+| ------------------------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `temporality_preference` | `cumulative` | メトリクス計装の集約テンポラリティ。サポートされる値: `cumulative`（すべての計装）、`delta`（カウンター、ヒストグラム、Observable カウンターに delta、その他は cumulative）、`lowmemory`（カウンターとヒストグラムに delta、その他は cumulative）。 |
 
 ## 内部テレメトリーの種類 {#types-of-internal-telemetry}
 
