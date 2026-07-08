@@ -186,11 +186,26 @@ subgraph tdf[Telemetry Data Flow]
             oc-proc --> oc-spanmetrics
             oc-spanmetrics --> oc-prom
 
+            oc-opamp[/"OpAMP Extension"/]
+
         end
 
         oc-prom -->|"localhost:9090/api/v1/otlp"| pr-sc
         oc-otlp -->|gRPC| ja-col
         oc-opensearch -->|HTTP| os-http
+
+        subgraph op[OpAMP Server]
+            style op fill:#a6ce39,color:black;
+            op-srv["OpAMP Server"]
+            op-http[/"OpAMP HTTP<br/>listening on<br/>localhost:8080/opamp/"/]
+
+            op-srv --> op-http
+        end
+
+        oc-opamp -->|"reports status<br/>over WebSocket"| op-srv
+
+        op-b{{"Browser<br/>OpAMP UI"}}
+        op-http -->|"localhost:8080/opamp/"| op-b
 
         subgraph pr[Prometheus]
             style pr fill:#e75128,color:black;

@@ -22,6 +22,10 @@ aliases: [demo_features, features]
   version, attributes, and effective configuration to the demo's OpAMP server.
   You can view the reported status in the OpAMP UI at
   <http://localhost:8080/opamp/>.
+- **SDK Self-Observability**: select services opt in to the experimental
+  `otel.sdk.*` internal metrics emitted by the OpenTelemetry SDKs themselves,
+  visualized in the
+  [Self-Observability dashboard](/docs/demo/self-observability-dashboard/).
 
 ## Observability Solutions
 
