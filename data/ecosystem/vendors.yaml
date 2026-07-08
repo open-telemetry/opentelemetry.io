@@ -4,6 +4,12 @@
   contact:
   oss: false
   commercial: true
+- name: AgentMark
+  nativeOTLP: true
+  url: https://docs.agentmark.co/observe/overview
+  contact: ryan@agentmark.co
+  oss: false
+  commercial: true
 - name: AppDynamics (Cisco)
   nativeOTLP: true
   url: https://docs.appdynamics.com/latest/en/application-monitoring/splunk-appdynamics-for-opentelemetry
@@ -70,6 +76,11 @@
   contact: hello@bindplane.com
   oss: true
   commercial: true
+- name: Bronto
+  nativeOTLP: true
+  url: https://docs.bronto.io/agent-setup/open-telemetry
+  oss: false
+  commercial: true
 - name: BugSnag
   nativeOTLP: true
   url: https://docs.bugsnag.com/performance/distributed-tracing
@@ -132,6 +143,12 @@
   contact: hi@dash0.com
   oss: false
   commercial: true
+- name: DataBuff
+  nativeOTLP: true
+  url: https://github.com/databufflabs/databuff/blob/master/docs/opentelemetry-otlp-ingestion_en.md
+  contact: https://github.com/databufflabs
+  oss: true
+  commercial: false
 - name: DaoCloud
   nativeOTLP: true
   url: https://docs.daocloud.io/en/insight/quickstart/otel/otel/
@@ -218,7 +235,7 @@
   commercial: true
 - name: KloudFuse
   nativeOTLP: true
-  url: https://docs.kloudfuse.com/platform/latest/data-collection/agents/otel/overview/
+  url: https://docs.kloudfuse.com/platform/latest/data-collection/otel/overview/
   contact: support@kloudfuse.com
   oss: false
   commercial: true
