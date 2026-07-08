@@ -1,0 +1,21 @@
+# cSpell:ignore cardinalityguardianprocessor
+title: Cardinality Guardian
+registryType: processor
+language: collector
+tags:
+  - cardinalityguardian
+  - processor
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cardinalityguardianprocessor
+license: Apache 2.0
+description:
+  An OpenTelemetry Collector processor that catches metric cardinality explosions before they reach your TSDB.
+  It strips only the exploding label — not the entire data point. Your dashboards keep working while the cardinality explosion is neutralized.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-05-02
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/cardinalityguardianprocessor
+  version: v0.156.0
