@@ -10,7 +10,7 @@ cSpell:ignore: Aoqui Daniela entrypoints ffspostgres hashi hashiqube jobspec loa
 ---
 
 みなさん…ついに技術バケットリストの項目に取り組めたので、とても興奮しています。
-先週、[OpenTelemetry デモアプリ](/docs/demo/)の [Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/146b47dd310628c8a8d0b0a19ff1e813560b2599/charts/opentelemetry-demo?from_branch=main) を [HashiCorp](https://hashicorp.com) [Nomad][] のジョブスペックに変換する作業を始めました。
+先週、[OpenTelemetry デモアプリ](/docs/demo/)の [Helm チャート](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/146b47dd310628c8a8d0b0a19ff1e813560b2599/charts/opentelemetry-demo?from_branch=main) を [HashiCorp](https://hashicorp.com) [Nomad][] のジョブスペックに変換する作業を始めました。
 今日は、お気に入りの Hashi オールインワンツールである [HashiQube](https://rubiksqube.com/#/) を使って、OpenTelemetry デモアプリを Nomad で動かす方法についてお話しします。
 
 さあ、始めましょう！
