@@ -1,4 +1,4 @@
-# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip Kelkoo loveholidays HDFC Akbank
+# cSpell:ignore Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip Kelkoo loveholidays HDFC Akbank
 - name: Akbank
   url: https://www.akbank.com/
   components: [Collector, Operator, Java, .NET]
@@ -58,12 +58,6 @@
   components: [Ruby]
   reference: ''
   contact: ''
-- name: Dyte
-  url: https://dyte.io
-  components: [Go, JavaScript]
-  reference: 'https://dyte.io/blog/opentelemetry-at-dyte-part-i/'
-  referenceTitle: blog post
-  contact: https://github.com/ethicalmohit
 - name: eBay
   url: https://www.ebay.com
   components: [Collector, Java, JavaScript, Go]
