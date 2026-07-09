@@ -113,24 +113,11 @@ jobs:
             git push
           fi
 
-      - name: Create pull request if needed
+      - name: Create or finalize pull request
         env:
           # not using secrets.GITHUB_TOKEN since pull requests from that token do not run workflows
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
-        run: |
-          prs=$(gh pr list --state open --head $BRANCH)
-          if [ -z "$prs" ]; then
-            if [ -z "$(git rev-list origin/main..HEAD)" ]; then
-              # Bootstrap this long-lived integration branch with an empty
-              # commit so that PR creation succeeds (gh pr create fails when
-              # there are no commits between main and the branch).
-              git commit --allow-empty -m "Trigger PR creation for $BRANCH"
-              git push
-            fi
-            gh pr create --title "DRAFT Update ${{ env.REPO }} to unreleased $VERSION-dev" \
-                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) [${{ env.REPO }}](https://github.com/open-telemetry/${{ env.REPO }})." \
-                         --draft
-          fi
+        run: node scripts/gh/specs/ensure-pr/cli.mjs --spec=semconv
 
   report-failure:
     needs: update-semconv-integration-branch

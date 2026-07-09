@@ -8,6 +8,7 @@ import {
   bumpMinor,
   computeIntegrationVersion,
   extractVersionFromBranches,
+  parsePinnedVersion,
 } from './index.mjs';
 
 const PREFIX = 'otelbot/spec-integration';
@@ -66,6 +67,7 @@ describe('pick-branch: version pipeline', () => {
     const result = computeIntegrationVersion({
       branchPrefix: PREFIX,
       branchesOutput: '  origin/main\n',
+      pinnedVersion: 'v1.42.0',
       isReleased: () => {
         throw new Error('isReleased should not be called');
       },
@@ -73,6 +75,7 @@ describe('pick-branch: version pipeline', () => {
       log: noLog,
     });
     assert.deepEqual(result, {
+      mode: 'dev',
       version: 'v1.43.0',
       branch: `${PREFIX}-v1.43.0-dev`,
       warnings: [],
@@ -85,6 +88,7 @@ describe('pick-branch: version pipeline', () => {
     const result = computeIntegrationVersion({
       branchPrefix: PREFIX,
       branchesOutput: `  origin/${PREFIX}-v1.42.0-dev\n`,
+      pinnedVersion: 'v1.41.0',
       isReleased: (v) => {
         assert.equal(v, 'v1.42.0');
         return false;
@@ -97,6 +101,7 @@ describe('pick-branch: version pipeline', () => {
     });
     assert.equal(getLatestCalled, true);
     assert.deepEqual(result, {
+      mode: 'dev',
       version: 'v1.42.0',
       branch: `${PREFIX}-v1.42.0-dev`,
       warnings: [],
@@ -109,6 +114,7 @@ describe('pick-branch: version pipeline', () => {
     const result = computeIntegrationVersion({
       branchPrefix: PREFIX,
       branchesOutput: `  origin/${PREFIX}-v1.42.0-dev\n`,
+      pinnedVersion: 'v1.42.0',
       isReleased: (v) => v === 'v1.42.0',
       getLatestReleaseTag: () => {
         getLatestCalled = true;
@@ -118,6 +124,7 @@ describe('pick-branch: version pipeline', () => {
     });
     assert.equal(getLatestCalled, true);
     assert.deepEqual(result, {
+      mode: 'dev',
       version: 'v1.43.0',
       branch: `${PREFIX}-v1.43.0-dev`,
       warnings: [],
@@ -132,10 +139,12 @@ describe('pick-branch: version pipeline', () => {
   origin/${PREFIX}-v1.41.0-dev
   origin/${PREFIX}-v1.42.0-dev
 `,
+      pinnedVersion: 'v1.40.0',
       isReleased: () => false,
       getLatestReleaseTag: () => 'v1.40.0',
       log: noLog,
     });
+    assert.equal(result.mode, 'dev');
     assert.equal(result.version, 'v1.42.0');
     assert.equal(result.branch, `${PREFIX}-v1.42.0-dev`);
     assert.equal(result.warnings.length, 1);
@@ -153,6 +162,7 @@ describe('pick-branch: version pipeline', () => {
   origin/${PREFIX}-v1.41.0-dev
   origin/${PREFIX}-v1.42.0-dev
 `,
+      pinnedVersion: 'v1.40.0',
       isReleased: () => false,
       getLatestReleaseTag: () => 'v1.40.0',
       log: (m) => logs.push(m),
@@ -173,6 +183,7 @@ describe('pick-branch: version pipeline', () => {
         computeIntegrationVersion({
           branchPrefix: PREFIX,
           branchesOutput: '  origin/main\n',
+          pinnedVersion: 'v1.42.0',
           isReleased: () => false,
           getLatestReleaseTag: () => 'not-a-version',
           log: noLog,
@@ -188,6 +199,7 @@ describe('pick-branch: version pipeline', () => {
     computeIntegrationVersion({
       branchPrefix: PREFIX,
       branchesOutput: `  origin/${PREFIX}-v1.42.0-dev\n`,
+      pinnedVersion: 'v1.42.0',
       isReleased: () => false,
       getLatestReleaseTag: () => 'v1.42.0',
       log,
@@ -200,6 +212,7 @@ describe('pick-branch: version pipeline', () => {
     computeIntegrationVersion({
       branchPrefix: PREFIX,
       branchesOutput: `  origin/${PREFIX}-v1.42.0-dev\n`,
+      pinnedVersion: 'v1.42.0',
       isReleased: () => true,
       getLatestReleaseTag: () => 'v1.42.0',
       log,
@@ -207,5 +220,155 @@ describe('pick-branch: version pipeline', () => {
     assert.deepEqual(logs, [
       'Version v1.42.0 has already been released; bumping to v1.43.0.',
     ]);
+  });
+});
+
+describe('pick-branch: pinned-version parsing', () => {
+  test('parsePinnedVersion: plain tag pin', () => {
+    assert.equal(parsePinnedVersion('v1.58.0'), 'v1.58.0');
+  });
+
+  test('parsePinnedVersion: git-describe pin -> leading tag', () => {
+    assert.equal(parsePinnedVersion('v0.15.0-22-g3bcd6e7d'), 'v0.15.0');
+  });
+
+  test('parsePinnedVersion: throws on malformed pin', () => {
+    assert.throws(() => parsePinnedVersion('e9411ee'), /unexpected pin/);
+    assert.throws(() => parsePinnedVersion(''), /unexpected pin/);
+    assert.throws(() => parsePinnedVersion(undefined), /unexpected pin/);
+  });
+});
+
+describe('pick-branch: mode selection', () => {
+  const isReleasedUnexpected = () => {
+    throw new Error('isReleased should not be called in release mode');
+  };
+
+  test('release mode: pinned behind latest -> finalize existing branch', () => {
+    const result = computeIntegrationVersion({
+      branchPrefix: PREFIX,
+      branchesOutput: `  origin/${PREFIX}-v1.59.0-dev\n`,
+      pinnedVersion: 'v1.58.0',
+      isReleased: isReleasedUnexpected,
+      getLatestReleaseTag: () => 'v1.59.0',
+      log: noLog,
+    });
+    assert.deepEqual(result, {
+      mode: 'release',
+      version: 'v1.59.0',
+      branch: `${PREFIX}-v1.59.0-dev`,
+      warnings: [],
+      latestRelease: 'v1.59.0',
+    });
+  });
+
+  test('release mode: patch release keeps existing branch name', () => {
+    const result = computeIntegrationVersion({
+      branchPrefix: PREFIX,
+      branchesOutput: `  origin/${PREFIX}-v1.44.0-dev\n`,
+      pinnedVersion: 'v1.43.0',
+      isReleased: isReleasedUnexpected,
+      getLatestReleaseTag: () => 'v1.43.1',
+      log: noLog,
+    });
+    assert.equal(result.mode, 'release');
+    assert.equal(result.version, 'v1.43.1');
+    // Branch name mismatch (v1.44.0-dev vs v1.43.1) is cosmetic; keep it.
+    assert.equal(result.branch, `${PREFIX}-v1.44.0-dev`);
+  });
+
+  test('release mode: major bump', () => {
+    const result = computeIntegrationVersion({
+      branchPrefix: PREFIX,
+      branchesOutput: `  origin/${PREFIX}-v1.59.0-dev\n`,
+      pinnedVersion: 'v1.58.0',
+      isReleased: isReleasedUnexpected,
+      getLatestReleaseTag: () => 'v2.0.0',
+      log: noLog,
+    });
+    assert.equal(result.mode, 'release');
+    assert.equal(result.version, 'v2.0.0');
+    assert.equal(result.branch, `${PREFIX}-v1.59.0-dev`);
+  });
+
+  test('release mode: no branch -> create branch for latest release', () => {
+    const result = computeIntegrationVersion({
+      branchPrefix: PREFIX,
+      branchesOutput: '  origin/main\n',
+      pinnedVersion: 'v1.58.0',
+      isReleased: isReleasedUnexpected,
+      getLatestReleaseTag: () => 'v1.59.0',
+      log: noLog,
+    });
+    assert.deepEqual(result, {
+      mode: 'release',
+      version: 'v1.59.0',
+      branch: `${PREFIX}-v1.59.0-dev`,
+      warnings: [],
+      latestRelease: 'v1.59.0',
+    });
+  });
+
+  test('release mode: multiple branches still warn, latest wins', () => {
+    const result = computeIntegrationVersion({
+      branchPrefix: PREFIX,
+      branchesOutput: `
+  origin/${PREFIX}-v1.58.0-dev
+  origin/${PREFIX}-v1.59.0-dev
+`,
+      pinnedVersion: 'v1.58.0',
+      isReleased: isReleasedUnexpected,
+      getLatestReleaseTag: () => 'v1.59.0',
+      log: noLog,
+    });
+    assert.equal(result.mode, 'release');
+    assert.equal(result.version, 'v1.59.0');
+    assert.equal(result.branch, `${PREFIX}-v1.59.0-dev`);
+    assert.equal(result.warnings.length, 1);
+    assert.match(result.warnings[0], /Multiple integration branches found/);
+  });
+
+  test('release mode: log explains the mode decision', () => {
+    const logs = [];
+    computeIntegrationVersion({
+      branchPrefix: PREFIX,
+      branchesOutput: `  origin/${PREFIX}-v1.59.0-dev\n`,
+      pinnedVersion: 'v1.58.0',
+      isReleased: isReleasedUnexpected,
+      getLatestReleaseTag: () => 'v1.59.0',
+      log: (m) => logs.push(m),
+    });
+    assert.equal(logs.length, 1);
+    assert.match(logs[0], /release mode/i);
+    assert.match(logs[0], /v1\.59\.0/);
+    assert.match(logs[0], /v1\.58\.0/);
+  });
+
+  test('dev mode: git-describe pin not behind latest', () => {
+    const result = computeIntegrationVersion({
+      branchPrefix: PREFIX,
+      branchesOutput: '  origin/main\n',
+      pinnedVersion: 'v0.15.0-22-g3bcd6e7d',
+      isReleased: () => false,
+      getLatestReleaseTag: () => 'v0.15.0',
+      log: noLog,
+    });
+    assert.equal(result.mode, 'dev');
+    assert.equal(result.version, 'v0.16.0');
+  });
+
+  test('compute: bubbles up malformed pin', () => {
+    assert.throws(
+      () =>
+        computeIntegrationVersion({
+          branchPrefix: PREFIX,
+          branchesOutput: '  origin/main\n',
+          pinnedVersion: 'e9411ee',
+          isReleased: () => false,
+          getLatestReleaseTag: () => 'v1.59.0',
+          log: noLog,
+        }),
+      /unexpected pin/,
+    );
   });
 });
