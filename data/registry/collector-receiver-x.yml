@@ -1,0 +1,14 @@
+title: x
+registryType: receiver
+language: collector
+tags:
+    - x
+    - receiver
+    - collector
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/xreceiver
+license: Apache 2.0
+description: 
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

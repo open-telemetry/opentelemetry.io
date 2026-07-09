@@ -1,0 +1,14 @@
+title: OpenTelemetry Exporters HTTP Transport
+registryType: exporter
+language: python
+tags:
+    - httptransport
+    - exporter
+    - python
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-http-transport
+license: Apache 2.0
+description: This package provides shared HTTP transport abstractions used by OpenTelemetry exporters.
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

@@ -1,0 +1,14 @@
+title: OpenTelemetry Resource Detector for Instana
+registryType: resource-detector
+language: js
+tags:
+    - resourcedetectorinstana
+    - resource-detector
+    - js
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-instana
+license: Apache 2.0
+description: This resource detector will detect the Instana agent to register the Opentelemetry as a Node.js process. The created resource will be automatically merged with the existing resources and contains the real PID, which is returned from the Instana agent. This mechanism is needed to connect the Node.js Otel process with the incoming Opentelemetry spans.
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

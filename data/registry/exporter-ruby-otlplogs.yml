@@ -1,0 +1,14 @@
+title: opentelemetry-exporter-otlp-logs
+registryType: exporter
+language: ruby
+tags:
+    - otlplogs
+    - exporter
+    - ruby
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/exporter/otlp-logs
+license: Apache 2.0
+description: The `opentelemetry-exporter-otlp-logs` gem provides an [OTLP](https://github.com/open-telemetry/opentelemetry-proto) logs exporter for OpenTelemetry for Ruby. Using `opentelemetry-exporter-otlp-logs`, an application can configure OpenTelemetry to export collected log record data to [the OpenTelemetry Collector][opentelemetry-collector-home].
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

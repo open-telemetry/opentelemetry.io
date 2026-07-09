@@ -1,12 +1,12 @@
-title: OpenTelemetry Container Detector
-registryType: resource-detector
+title: OpenTelemetry TraceResponse Propagator
+registryType: propagator
 language: php
 tags:
-    - Container
-    - resource-detector
+    - TraceResponse
+    - propagator
     - php
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/ResourceDetectors/Container
+    repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Propagation/TraceResponse
 license: Apache 2.0
 description: This is a read-only subtree split of https://github.com/open-telemetry/opentelemetry-php-contrib.
 authors:

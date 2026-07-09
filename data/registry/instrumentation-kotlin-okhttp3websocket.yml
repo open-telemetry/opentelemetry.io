@@ -1,0 +1,14 @@
+title: Android Instrumentation for OkHttp Websocket version 3.0 and higher
+registryType: instrumentation
+language: kotlin
+tags:
+    - okhttp3websocket
+    - instrumentation
+    - kotlin
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/okhttp3-websocket
+license: Apache 2.0
+description: Status: development
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

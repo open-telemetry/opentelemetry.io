@@ -1,0 +1,14 @@
+title: OpenTelemetry Weaviate Client Instrumentation
+registryType: instrumentation
+language: python
+tags:
+    - genaiweaviateclient
+    - instrumentation
+    - python
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-python-genai/tree/main/instrumentation/opentelemetry-instrumentation-genai-weaviate-client
+license: Apache 2.0
+description: This library provides OpenTelemetry instrumentation for the
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

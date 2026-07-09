@@ -1,0 +1,14 @@
+title: OpenTelemetry Jaeger Propagator
+registryType: propagator
+language: python
+tags:
+    - jaeger
+    - propagator
+    - python
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/propagator/opentelemetry-propagator-jaeger
+license: Apache 2.0
+description: This library provides a propagator for the Jaeger format
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

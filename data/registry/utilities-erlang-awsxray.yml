@@ -1,0 +1,14 @@
+title: OpentelemetryXray
+registryType: utilities
+language: erlang
+tags:
+    - awsxray
+    - utilities
+    - erlang
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/utilities/opentelemetry_aws_xray
+license: Apache 2.0
+description: Implements an Id Generator compatible with [AWS X-Ray TraceId](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-sendingdata.html#xray-api-traceids)
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

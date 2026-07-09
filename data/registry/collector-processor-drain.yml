@@ -1,0 +1,14 @@
+title: Drain Processor
+registryType: processor
+language: collector
+tags:
+    - drain
+    - processor
+    - collector
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/drainprocessor
+license: Apache 2.0
+description: The Drain Processor applies the Drain log clustering algorithm to log records as they pass through the pipeline, deriving a template string (e.g. "user <*> logged in from <*>") and attaching it as an attribute on each record.
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

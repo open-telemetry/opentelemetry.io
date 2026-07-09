@@ -1,0 +1,14 @@
+title: AWS X-Ray Sampler
+registryType: sampler
+language: php
+tags:
+    - Xray
+    - sampler
+    - php
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Sampler/Xray
+license: Apache 2.0
+description: Provides a sampler which can get sampling configurations from AWS X-Ray to make sampling decisions. See: [AWS X-Ray Sampling](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-sampling)
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

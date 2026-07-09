@@ -1,0 +1,14 @@
+title: Dynamic Sampling Processor
+registryType: processor
+language: collector
+tags:
+    - dynamicsampling
+    - processor
+    - collector
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/dynamicsamplingprocessor
+license: Apache 2.0
+description: The Dynamic Sampling Processor performs adaptive trace sampling using first-match
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

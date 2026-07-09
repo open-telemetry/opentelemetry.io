@@ -1,0 +1,14 @@
+title: OpenTelemetry unhandled exceptions instrumentation
+registryType: instrumentation
+language: python
+tags:
+    - exceptions
+    - instrumentation
+    - python
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-exceptions
+license: Apache 2.0
+description: Installation
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

@@ -1,0 +1,14 @@
+title: OpenTelemetry Instrumentation Helpers: SQL Processor
+registryType: utilities
+language: ruby
+tags:
+    - sqlprocessor
+    - utilities
+    - ruby
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/helpers/sql-processor
+license: Apache 2.0
+description: This Ruby gem contains logic to process SQL, including obfuscation. It's intended for use by gem authors instrumenting SQL adapter libraries, such as mysql2, pg, and trilogy.
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

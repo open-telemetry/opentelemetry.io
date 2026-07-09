@@ -1,12 +1,12 @@
-title: OpenTelemetry Container Detector
-registryType: resource-detector
+title: OpenTelemetry Magento2 auto-instrumentation
+registryType: instrumentation
 language: php
 tags:
-    - Container
-    - resource-detector
+    - magento2
+    - instrumentation
     - php
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/ResourceDetectors/Container
+    repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Magento2
 license: Apache 2.0
 description: This is a read-only subtree split of https://github.com/open-telemetry/opentelemetry-php-contrib.
 authors:

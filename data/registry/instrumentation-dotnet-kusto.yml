@@ -1,0 +1,14 @@
+title: Kusto Instrumentation for OpenTelemetry
+registryType: instrumentation
+language: dotnet
+tags:
+    - kusto
+    - instrumentation
+    - dotnet
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.Kusto
+license: Apache 2.0
+description: This is an
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

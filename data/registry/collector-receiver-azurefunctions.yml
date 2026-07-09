@@ -1,0 +1,14 @@
+title: Azure Functions Receiver
+registryType: receiver
+language: collector
+tags:
+    - azurefunctions
+    - receiver
+    - collector
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/azurefunctionsreceiver
+license: Apache 2.0
+description: The Azure Functions receiver is an OpenTelemetry Collector receiver that integrates with Azure Functions as a custom handler. It receives logs from Azure Event Hubs via the Azure Functions runtime and converts them to OpenTelemetry format for further processing and export. The receiver is structured by trigger type (e.g. Event Hub); each trigger can expose multiple log bindings with different encodings.
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

@@ -1,0 +1,14 @@
+title: ## OpenTracingShim
+registryType: utilities
+language: swift
+tags:
+    - OpenTracingShim
+    - utilities
+    - swift
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Importers/OpenTracingShim
+license: Apache 2.0
+description: An OpenTracing implementation that delegates to the OpenTelemetry SDK. Use OpenTracingShim to create tracers using this implementation.
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

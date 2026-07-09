@@ -1,0 +1,14 @@
+title: Tower OpenTelemetry HTTP Instrumentation Middleware
+registryType: instrumentation
+language: rust
+tags:
+    - tower
+    - instrumentation
+    - rust
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-rust-contrib/tree/main/opentelemetry-instrumentation-tower
+license: Apache 2.0
+description: for [Tower](https://docs.rs/tower)-compatible Rust HTTP servers (Axum, Hyper,
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

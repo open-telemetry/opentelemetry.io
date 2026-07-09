@@ -1,0 +1,14 @@
+title: hbaseclient
+registryType: instrumentation
+language: java
+tags:
+    - hbaseclient
+    - instrumentation
+    - java
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/hbase-client-2.0
+license: Apache 2.0
+description: 
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

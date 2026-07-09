@@ -1,0 +1,14 @@
+title: OpenTelemetry OpenAI Instrumentation
+registryType: instrumentation
+language: python
+tags:
+    - genaiopenai
+    - instrumentation
+    - python
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-python-genai/tree/main/instrumentation/opentelemetry-instrumentation-genai-openai
+license: Apache 2.0
+description: This library allows tracing LLM requests and logging of messages made by the
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

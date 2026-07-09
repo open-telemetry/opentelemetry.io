@@ -1,0 +1,14 @@
+title: Android Log Instrumentation
+registryType: instrumentation
+language: kotlin
+tags:
+    - androidlog
+    - instrumentation
+    - kotlin
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/android-log
+license: Apache 2.0
+description: Status: development
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

@@ -1,16 +1,14 @@
-# cSpell:ignore oshi
-title: Oshi Instrumentation
+title: OSHI Instrumentation
 registryType: instrumentation
 language: java
 tags:
-  - oshi
-  - instrumentation
-  - java
-license: Apache 2.0
-description: This package provides an instrumentation library for Oshi
-authors:
-  - name: OpenTelemetry Authors
+    - oshi
+    - instrumentation
+    - java
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/oshi
-createdAt: 2020-03-25
-isFirstParty: false
+    repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/oshi-5.0
+license: Apache 2.0
+description: Download oshi-core jar from <https://central.sonatype.com/artifact/com.github.oshi/oshi-core> and place it on the class path. OpenTelemetry Java agent uses system class loader to load classes from the oshi-core jar that are used for the metrics.
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

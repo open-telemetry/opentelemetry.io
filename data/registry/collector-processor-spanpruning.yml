@@ -1,0 +1,14 @@
+title: Span Pruning Processor
+registryType: processor
+language: collector
+tags:
+    - spanpruning
+    - processor
+    - collector
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanpruningprocessor
+license: Apache 2.0
+description: The Span Pruning Processor identifies duplicate or similar leaf spans within a single trace, groups them, and replaces each group with a single aggregated summary span. When leaf spans are aggregated, the processor also recursively aggregates their parent spans if all children of those parents are being aggregated.
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09

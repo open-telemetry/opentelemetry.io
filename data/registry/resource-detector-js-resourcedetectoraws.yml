@@ -1,0 +1,14 @@
+title: OpenTelemetry Resource Detector for AWS
+registryType: resource-detector
+language: js
+tags:
+    - resourcedetectoraws
+    - resource-detector
+    - js
+urls:
+    repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-aws
+license: Apache 2.0
+description: Resource detector for Amazon Web Services.
+authors:
+    - name: OpenTelemetry Authors
+createdAt: 2026-07-09
