@@ -14475,9 +14475,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-04T06:39:33.596960222Z"
   },
-  "https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-spec-integration-branches.yml": {
+  "https://github.com/open-telemetry/opentelemetry.io/actions/workflows/specs-integration.yml": {
     "StatusCode": 206,
-    "LastSeen": "2026-07-09T18:00:00.000000000Z"
+    "LastSeen": "2026-07-09T18:00:00Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/248cc6f/.github/scripts/blog-publish-check.sh": {
     "StatusCode": 206,
@@ -14607,9 +14607,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-03T06:53:37.736209492Z"
   },
-  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branches.yml": {
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/specs-integration.yml": {
     "StatusCode": 206,
-    "LastSeen": "2026-07-09T18:00:00.000000000Z"
+    "LastSeen": "2026-07-09T18:00:00Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.gitmodules": {
     "StatusCode": 206,

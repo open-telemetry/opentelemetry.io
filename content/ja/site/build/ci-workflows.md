@@ -3,7 +3,7 @@ title: CI ワークフロー
 description: >-
   PR のチェック、ラベル管理、その他の CI/CD プロセスを自動化する GitHub Actions ワークフロー。
 weight: 10
-default_lang_commit: b291d077d4c7aba2b43ec5a1648c02bb5c43f870
+default_lang_commit: b291d077d4c7aba2b43ec5a1648c02bb5c43f870 # patched
 ---
 
 ワークフローと（ほとんどの）ヘルパースクリプトについては、[.github][] 配下の `workflow` フォルダと `scripts` フォルダを参照してください。
@@ -312,8 +312,8 @@ CODEOWNERS と必須チェックがハードマージゲートとして残りま
 | [update-spec-integration-branch.yml][]    | `opentelemetry-specification` | `spec`           |
 | [update-semconv-integration-branch.yml][] | `semantic-conventions`        | `semconv`        |
 
-[update-spec-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branches.yml
-[update-semconv-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branches.yml
+[update-spec-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/specs-integration.yml
+[update-semconv-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/specs-integration.yml
 
 両方のワークフローは「次のバージョン + ブランチを選択する」ステップを共有の Node ヘルパー [scripts/gh/specs/pick-branch/cli.mjs][] に委譲します。
 このヘルパーは:
