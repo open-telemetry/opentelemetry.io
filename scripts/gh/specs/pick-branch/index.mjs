@@ -1,5 +1,5 @@
 // Pure library for computing the MODE, VERSION, and BRANCH env vars for the
-// "Update <repo> integration branch" family of workflows.
+// "Specs integration" workflow.
 //
 // Side-effecting concerns (subprocess invocation, argv/env handling) live in
 // the command file, ../pick-branch.mjs.
@@ -10,11 +10,11 @@
  * Map from `--spec` flag value to the upstream repo configuration.
  * Add new specs here when wiring up additional workflows.
  *
- * @type {Readonly<Record<string, { repo: string, abbr: string }>>}
+ * @type {Readonly<Record<string, { repo: string, slug: string }>>}
  */
 export const SPECS = Object.freeze({
-  otel: { repo: 'opentelemetry-specification', abbr: 'spec' },
-  semconv: { repo: 'semantic-conventions', abbr: 'semconv' },
+  otel: { repo: 'opentelemetry-specification', slug: 'spec' },
+  semconv: { repo: 'semantic-conventions', slug: 'semconv' },
 });
 
 /**
@@ -211,12 +211,13 @@ export function formatGithubEnv({ mode, version, branch }) {
 /**
  * Build the body of the warning tracking issue.
  *
- * @param {{ warnings: string[], repo: string, abbr: string, runUrl?: string|null }} input
+ * @param {{ warnings: string[], repo: string, spec: string, runUrl?: string|null }} input
+ *   `spec` is the `SPECS` key, which is also the workflow's matrix-job name.
  * @returns {string}
  */
-export function buildIssueBody({ warnings, repo, abbr, runUrl = null }) {
+export function buildIssueBody({ warnings, repo, spec, runUrl = null }) {
   const lines = [
-    `The \`update-${abbr}-integration-branch\` workflow (for [\`${repo}\`](https://github.com/open-telemetry/${repo})) reported the following warning(s):`,
+    `The \`${spec}\` job of the \`specs-integration\` workflow (for [\`${repo}\`](https://github.com/open-telemetry/${repo})) reported the following warning(s):`,
     '',
     ...warnings.map((w) => `- ${w}`),
     '',

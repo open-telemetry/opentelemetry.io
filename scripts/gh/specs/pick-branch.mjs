@@ -30,7 +30,7 @@ function main() {
   }
 
   const { spec, dryRun, dryRunReason } = parsed;
-  const { repo, abbr } = SPECS[spec];
+  const { repo, slug } = SPECS[spec];
 
   const mode = dryRun ? 'DRY-RUN' : 'WRITE';
   console.log(`[mode] ${mode} (reason: ${dryRunReason}; spec=${spec})`);
@@ -51,7 +51,7 @@ function main() {
     );
   }
 
-  const branchPrefix = `otelbot/${abbr}-integration`;
+  const branchPrefix = `otelbot/${slug}-integration`;
   const repoUrl = `https://github.com/open-telemetry/${repo}`;
 
   const branchesOutput = execFileSync('git', ['branch', '-r'], {
@@ -65,7 +65,7 @@ function main() {
       'config',
       '-f',
       '.gitmodules',
-      `submodule.content-modules/${repo}.${abbr}-pin`,
+      `submodule.content-modules/${repo}.${slug}-pin`,
     ],
     { encoding: 'utf8' },
   ).trim();
@@ -120,8 +120,8 @@ function main() {
   if (warnings.length > 0) {
     ensureWarningIssueOpen({
       title: `${repo} integration workflow: warnings detected`,
-      label: `${abbr}-integration-warning`,
-      body: buildIssueBody({ warnings, repo, abbr, runUrl: actionsRunUrl() }),
+      label: `${slug}-integration-warning`,
+      body: buildIssueBody({ warnings, repo, spec, runUrl: actionsRunUrl() }),
       dryRun,
       runGh,
     });
