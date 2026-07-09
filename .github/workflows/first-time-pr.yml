@@ -7,9 +7,7 @@ on:
 permissions: {}
 
 jobs:
-  survey:
-    uses: open-telemetry/shared-workflows/.github/workflows/survey-on-merged-pr.yml@9cdb8625f2e5a1d160834bb7f7738d157f22a19c # v0.2.1
-    with:
-      client_id: ${{ vars.OTELBOT_CLIENT_ID }}
-    secrets:
-      private_key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+  welcome:
+    permissions:
+      pull-requests: write # required by the shared workflow to add a label and post the welcome comment
+    uses: open-telemetry/shared-workflows/.github/workflows/first-time-pr.yml@c47c16a6c5aac4b549e700ad055d070f6ac0d8f9 # v0.2.0
