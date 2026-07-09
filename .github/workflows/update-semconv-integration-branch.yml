@@ -39,7 +39,7 @@ jobs:
       - name: Pick integration branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node scripts/gh/specs/pick-branch/cli.mjs --spec=semconv
+        run: node scripts/gh/specs/pick-branch/cli.mjs --spec semconv
 
       - name: Checkout or create branch
         run: |

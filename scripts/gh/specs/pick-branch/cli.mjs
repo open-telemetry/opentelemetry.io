@@ -2,10 +2,10 @@
 // CLI entry point: pick the integration branch / version for a spec workflow.
 //
 // Usage:
-//   node scripts/gh/specs/pick-branch/cli.mjs [--spec=<id>] [--[no-]dry-run]
+//   node scripts/gh/specs/pick-branch/cli.mjs [--spec <id>] [--[no-]dry-run]
 //
 // Flags:
-//   -s, --spec=<id>   One of the keys defined in SPECS (e.g. `otel`,
+//   -s, --spec <id>   One of the keys defined in SPECS (e.g. `otel`,
 //                     `semconv`). Defaults to `otel`. Determines the upstream
 //                     repo and branch slug.
 //       --dry-run     Skip side-effecting operations: do NOT write to
