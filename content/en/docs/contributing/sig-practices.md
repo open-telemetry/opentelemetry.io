@@ -262,7 +262,8 @@ Just before cutting a release:
    previous section (e.g. `otelbot/spec-integration-v1.56.0-dev`).
 2. Open the associated PR (linked from the branch page).
 3. Trigger a fresh run of the [specs-integration.yml][] workflow to pick up your
-   latest changes.
+   latest changes. A manual run refreshes both integration branches: the jobs
+   are idempotent, so the job for the other spec is a no-op.
 4. If the PR checks are green, the spec is safe to release. If not, ping
    `@open-telemetry/docs-maintainers` so we can address breakage before the
    release goes out.
