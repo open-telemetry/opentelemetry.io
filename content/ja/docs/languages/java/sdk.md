@@ -2,8 +2,8 @@
 title: SDKによるテレメトリーの管理
 weight: 12
 aliases: [exporters]
-default_lang_commit: 4edfbfc2ff38123678ca63eca95de94ede457623
-cSpell:ignore: Interceptable Logback okhttp
+default_lang_commit: 25e82e1790ea1f673d11dee3ccc9094664d0ccd5
+cSpell:ignore: Interceptable okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -1377,8 +1377,94 @@ public class OtlpAuthenticationConfig {
 ```
 <!-- prettier-ignore-end -->
 
-### テスト {#testing}
+### ベンチマーク {#benchmarks}
 
-TODO: SDKのテストに利用可能なツールをドキュメント化
+SDKは [JMH](https://github.com/openjdk/jmh) のベンチマーク結果を [open-telemetry.github.io/opentelemetry-java/benchmarks/](https://open-telemetry.github.io/opentelemetry-java/benchmarks/) に公開しています。
+ベンチマークはノイズを最小化するために専用のベアメタルランナーを使用して、`main` への各コミットで実行されます。
+結果には、日付フィルタリングやシリーズ選択のためのツール、そしてベンチマークの対象と理由を Javadoc で詳しく説明しているベンチマークソースコードへのリンクが含まれています。
+
+現在のベンチマークは、3つのシグナルすべての **レコードパス** をカバーしています。
+これは、アプリケーションスレッドがスパンの開始/終了、メトリクスの計測、またはログの発行ごとに実行するホットパスです。
+
+| ベンチマーク                                 | ディメンション                                                |
+| -------------------------------------------- | ------------------------------------------------------------- |
+| [`SpanRecordBenchmark`][span-record-src]     | スパンサイズ、並行スレッド数                                  |
+| [`MetricRecordBenchmark`][metric-record-src] | 計装種別 + 集約、集約時間性、カーディナリティ、並行スレッド数 |
+| [`LogRecordBenchmark`][log-record-src]       | ログレコードサイズ、並行スレッド数                            |
+
+> [!NOTE]
+>
+> **エクスポートパス**（バッチプロセッサーのフラッシュ、エクスポーターの I/O など）のベンチマークは計画中ですが、エクスポートはホットパス外で発生するため優先度は低くなっています。
 
 [JSONファイルエンコーディング]: /docs/specs/otel/protocol/file-exporter/#json-file-serialization
+[span-record-src]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/SpanRecordBenchmark.java
+[metric-record-src]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/MetricRecordBenchmark.java
+[log-record-src]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/LogRecordBenchmark.java
+
+### テスト {#testing}
+
+`io.opentelemetry:opentelemetry-sdk-testing` アーティファクトは、バックエンドにデータをエクスポートすることなく、コードによって生成されたテレメトリーをアサートするためのユーティリティを提供します。
+
+以下のコンポーネントが利用可能です。
+
+| クラス                                                                                                                                                                                  | 説明                                                                                                                                                                                                                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [OpenTelemetryExtension](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit5/OpenTelemetryExtension.html)                  | インメモリエクスポーターと W3C トレースコンテキスト伝搬を使用して `OpenTelemetrySdk` をセットアップし、`GlobalOpenTelemetry` として登録し、各テスト前にキャプチャしたすべてのテレメトリーをリセットする JUnit 5 エクステンション。 |
+| [OpenTelemetryRule](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit4/OpenTelemetryRule.html)                            | `OpenTelemetryExtension` の JUnit 4 版。`@ClassRule` としては使用できません。                                                                                                                                                      |
+| [OpenTelemetryAssertions](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/assertj/OpenTelemetryAssertions.html)               | `SpanData`、`MetricData`、`LogRecordData`、`Attributes`、`EventData` に対する OTel 対応の `assertThat()` オーバーロードで AssertJ を拡張します。`import static ...OpenTelemetryAssertions.assertThat` 経由で使用します。           |
+| [InMemorySpanExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemorySpanExporter.html)                    | エクスポートされたスパンをメモリにキャプチャします。                                                                                                                                                                               |
+| [InMemoryMetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryMetricReader.html)                    | 集約されたメトリクスをメモリで読み取ります。                                                                                                                                                                                       |
+| [InMemoryLogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryLogRecordExporter.html)          | エクスポートされたログレコードをメモリにキャプチャします。                                                                                                                                                                         |
+| [TestClock](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/time/TestClock.html)                                              | テストで時間を制御するためのミュータブルな `Clock`。`SdkTracerProvider.builder().setClock(...)` に渡します。                                                                                                                       |
+| [TestSpanData](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/trace/TestSpanData.html)                                       | 実際の計装を実行せずにテストで `SpanData` インスタンスを構築するためのイミュータブルビルダー。                                                                                                                                     |
+| [TestLogRecordData](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/logs/TestLogRecordData.html)                              | テストで `LogRecordData` インスタンスを構築するためのイミュータブルビルダー。                                                                                                                                                      |
+| [SettableContextStorageProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/context/SettableContextStorageProvider.html) | 実行時に `ContextStorage` を交換できる `ContextStorageProvider`。コンテキスト伝搬の動作をテストするのに便利です。                                                                                                                  |
+
+#### JUnit 5 {#junit-5}
+
+`OpenTelemetryExtension` は JUnit 5 の推奨される開始ポイントです。
+
+```java
+class CoolTest {
+  @RegisterExtension
+  static final OpenTelemetryExtension otelTesting = OpenTelemetryExtension.create();
+
+  private final Tracer tracer = otelTesting.getOpenTelemetry().getTracer("test");
+
+  @Test
+  void test() {
+    tracer.spanBuilder("name").startSpan().end();
+    assertThat(otelTesting.getSpans())
+        .satisfiesExactly(span -> assertThat(span).hasName("name"));
+  }
+}
+```
+
+`getSpans()`、`getMetrics()`、`getLogRecords()` で生のテレメトリーにアクセスできます。
+`assertTraces()` を使用すると `TracesAssert` を介したフルーエントなトレースレベルのアサーションが可能です。
+テレメトリーは各テスト前に自動的にリセットされます。
+テスト途中でリセットする場合は `clearSpans()`、`clearMetrics()`、`clearLogRecords()` が利用可能です。
+
+#### JUnit 4 {#junit-4}
+
+`OpenTelemetryRule` は JUnit 4 向けに同じ API を提供します。
+
+```java
+public class CoolTest {
+  @Rule public OpenTelemetryRule otelTesting = OpenTelemetryRule.create();
+
+  private Tracer tracer;
+
+  @Before
+  public void setUp() {
+    tracer = otelTesting.getOpenTelemetry().getTracer("test");
+  }
+
+  @Test
+  public void test() {
+    tracer.spanBuilder("name").startSpan().end();
+    assertThat(otelTesting.getSpans())
+        .satisfiesExactly(span -> assertThat(span).hasName("name"));
+  }
+}
+```

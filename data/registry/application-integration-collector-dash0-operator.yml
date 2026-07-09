@@ -1,0 +1,23 @@
+# cSpell:ignore dash0
+title: Dash0 Kubernetes Operator
+registryType: application integration
+language: collector
+tags:
+  - collector
+  - kubernetes
+  - operator
+  - instrumentation
+license: Apache-2.0
+description:
+  Kubernetes Operator that deploys and manages an OpenTelemetry Collector in
+  your cluster, providing auto-instrumentation for Node.js, Java, .NET, and
+  Python workloads, log collection, and infrastructure metrics export via OTLP.
+authors:
+  - name: Dash0 Inc.
+    url: https://github.com/dash0hq
+urls:
+  website: https://dash0.com
+  repo: https://github.com/dash0hq/dash0-operator
+  docs: https://www.dash0.com/hub/integrations/int_dash0_operator/overview
+createdAt: '2026-06-05'
+isNative: true

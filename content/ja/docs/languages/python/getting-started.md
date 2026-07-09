@@ -1,15 +1,15 @@
 ---
-title: Getting Started
+title: Getting Started by Example
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
-default_lang_commit: aaffe18c9ef8f9f311b73d11f216061c3cd7c6cc
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 # prettier-ignore
 cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
 ---
 
 このページでは、PythonでOpenTelemetryを始める方法を説明します。
 
-シンプルなアプリケーションを自動的に計装する方法を学び、[トレース][traces]、[メトリクス][metrics]、および[ログ][logs]がコンソールに出力されるようにします。
+シンプルな Python アプリケーションを自動的に計装する方法を学び、[トレース][traces]、[メトリクス][metrics]、および[ログ][logs]がコンソールに出力されるようにします。
 
 ## 前提条件 {#prerequisites}
 

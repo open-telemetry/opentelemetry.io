@@ -1,7 +1,6 @@
 ---
 title: ターゲットアロケーター
-default_lang_commit: f02328f074d7cbd837dda6653754daee0c452a2a
-drifted_from_default: true
+default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
 cSpell:ignore: bleh targetallocator
 ---
 
@@ -94,10 +93,6 @@ spec:
               scrape_interval: 10s
               static_configs:
                 - targets: ['0.0.0.0:8888']
-
-    processors:
-      batch: {}
-
     exporters:
       debug:
         verbosity: detailed
@@ -106,15 +101,12 @@ spec:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: [batch]
           exporters: [debug]
         metrics:
           receivers: [otlp, prometheus]
-          processors: []
           exporters: [debug]
         logs:
           receivers: [otlp]
-          processors: [batch]
           exporters: [debug]
 ```
 
@@ -126,15 +118,13 @@ kubectl port-forward svc/otelcol-targetallocator -n opentelemetry 8080:80
 
 `otelcol-targetallocator` は `OpenTelemetryCollector` CRの `metadata.name` の値と `-targetallocator` 接尾辞を連結したもので、`opentelemetry` は `OpenTelemetryCollector` CRがデプロイされている名前空間です。
 
-{{% alert title="Tip" %}}
-
-次のコマンドを実行してサービス名を取得することもできます。
-
-```shell
-kubectl get svc -l app.kubernetes.io/component=opentelemetry-targetallocator -n <namespace>
-```
-
-{{% /alert %}}
+> [!TIP]
+>
+> 次のコマンドを実行してサービス名を取得することもできます。
+>
+> ```shell
+> kubectl get svc -l app.kubernetes.io/component=opentelemetry-targetallocator -n <namespace>
+> ```
 
 次に、ターゲットアロケーターに登録されているジョブのリストを取得します。
 
@@ -259,13 +249,11 @@ curl localhost:8080/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F0/targets
 }
 ```
 
-上記の出力の `_link` フィールドのクエリパラメータ `collector_id` は、これらのターゲットが `otelcol-collector-0` (`OpenTelemetryCollector` リソースのために作成された `StatefulSet` の名前) に関連することを示しています。
+上記の出力の `_link` フィールドのクエリパラメーター `collector_id` は、これらのターゲットが `otelcol-collector-0` (`OpenTelemetryCollector` リソースのために作成された `StatefulSet` の名前) に関連することを示しています。
 
-{{% alert title="Note" %}}
-
-`/jobs` エンドポイントのより詳細な情報については、[ターゲットアロケーターのREADME](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md?plain=1#L128-L134)を参照してください。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> `/jobs` エンドポイントのより詳細な情報については、[ターゲットアロケーターのREADME](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md?plain=1#L128-L134)を参照してください。
 
 ### ターゲットアロケーターは有効ですか？Prometheusのサービスディスカバリーは有効ですか？ {#is-the-target-allocator-enabled-is-prometheus-service-discovery-enabled}
 
@@ -340,12 +328,10 @@ spec:
 
 `ServiceMonitor` リソースにそのラベルがない場合、ターゲットアロケーターはその `ServiceMonitor` からスクレイプ対象を検出できません。
 
-{{% alert title="Tip" %}}
-
-[PodMonitor][]を使用している場合も同様です。
-その場合は、`serviceMonitorSelector` のかわりに [`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr)を使用します。
-
-{{% /alert %}}
+> [!TIP]
+>
+> [PodMonitor][]を使用している場合も同様です。
+> その場合は、`serviceMonitorSelector` のかわりに [`podMonitorSelector`][] を使用します。
 
 ### `serviceMonitorSelector` および/または `podMonitorSelector` の構成を完全に省略しましたか？ {#did-you-leave-out-the-servicemonitorselector-andor-podmonitorselector-configuration-altogether}
 
@@ -445,10 +431,9 @@ spec:
       port: 8080
 ```
 
-{{% alert title="Tip" %}}
+> [!TIP]
+>
+> `PodMonitor` を使用している場合も同様に、ラベル、名前空間、およびポート名で一致するKubernetesのPodを取得します。
 
-`PodMonitor` を使用している場合も同様に、ラベル、名前空間、およびポート名で一致するKubernetesのPodを取得します。
-
-{{% /alert %}}
-
+[`podMonitorSelector`]: https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr
 [PodMonitor]: https://prometheus-operator.dev/docs/developer/getting-started/#using-podmonitors

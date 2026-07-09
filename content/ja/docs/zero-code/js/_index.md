@@ -3,7 +3,7 @@ title: JavaScriptのゼロコード計装
 linkTitle: JavaScript
 description: ソースコードの変更なしでアプリケーションからテレメトリーをキャプチャする
 aliases: [/docs/languages/js/automatic]
-default_lang_commit: 55f8de69ad3cf54f24243c200f70cd0b3a608ad4
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
 ---
 
 JavaScriptのゼロコード計装は、コードを変更することなく、任意のNode.jsアプリケーションを計装し、多くの人気のあるライブラリやフレームワークからテレメトリーデータをキャプチャする方法を提供します。
@@ -65,11 +65,9 @@ node app.js
 
 デフォルトのレベルは `info` です。
 
-{{% alert title="Notes" %}}
-
-- 本番環境では、 `OTEL_LOG_LEVEL` を `info` に設定することを推奨します。
-- ログは常に `console` に送信され、環境やデバッグレベルに関係なく送信されます。
-- デバッグログは、非常に冗長でありアプリケーションのパフォーマンスに悪影響を与える可能性があります。
-  必要な場合にのみデバッグログを有効にしてください。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> - 本番環境では、 `OTEL_LOG_LEVEL` を `info` に設定することを推奨します。
+> - ログは常に `console` に送信され、環境やデバッグレベルに関係なく送信されます。
+> - デバッグログは、非常に冗長でありアプリケーションのパフォーマンスに悪影響を与える可能性があります。
+>   必要な場合にのみデバッグログを有効にしてください。

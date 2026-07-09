@@ -5,23 +5,20 @@ aliases:
   - manual
 weight: 30
 description: OpenTelemetry JavaScript の計装
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
-drifted_from_default: true
+default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
 cSpell:ignore: dicelib Millis rolldice
 ---
 
 {{% include instrumentation-intro.md %}}
 
-{{% alert title="注意" %}}
-
-このページでは、コードに _手動で_ トレース、メトリクス、ログを追加する方法を学びます。
-ただし、1種類の計装のみを使用することに制限されているわけではありません。
-[自動計装](/docs/zero-code/js/)を使用して開始し、必要に応じて手動計装でコードを充実させることができます。
-
-また、コードが依存するライブラリについては、自分で計装コードを書く必要はありません。
-OpenTelemetryが _ネイティブに_ 組み込まれている場合があるか、[計装ライブラリ](/docs/languages/js/libraries/)を利用できる場合があります。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> このページでは、コードに _手動で_ トレース、メトリクス、ログを追加する方法を学びます。
+> ただし、1種類の計装のみを使用することに制限されているわけではありません。
+> [自動計装](/docs/zero-code/js/)を使用して開始し、必要に応じて手動計装でコードを充実させることができます。
+>
+> また、コードが依存するライブラリについては、自分で計装コードを書く必要はありません。
+> OpenTelemetryが _ネイティブに_ 組み込まれている場合があるか、[計装ライブラリ](/docs/languages/js/libraries/)を利用できる場合があります。
 
 ## サンプルアプリケーションの準備 {#example-app}
 
@@ -29,6 +26,8 @@ OpenTelemetryが _ネイティブに_ 組み込まれている場合があるか
 
 サンプルアプリケーションを使用する必要はありません。
 独自のアプリケーションやライブラリを計装したい場合は、ここでの指示に従って、プロセスを独自のコードに適応させてください。
+
+{{% include esm-support-note.md %}}
 
 ### 依存関係 {#example-app-dependencies}
 
@@ -156,7 +155,7 @@ app.listen(PORT, () => {
 
 {{% /tab %}} {{< /tabpane >}}
 
-動作することを確認するには、次のコマンドでアプリケーションケーションを実行し、Webブラウザで<http://localhost:8080/rolldice?rolls=12>を開きます。
+動作することを確認するには、次のコマンドでアプリケーションを実行し、Webブラウザで<http://localhost:8080/rolldice?rolls=12>を開きます。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -186,19 +185,15 @@ npm install @opentelemetry/api @opentelemetry/resources @opentelemetry/semantic-
 
 ### SDKの初期化 {#initialize-the-sdk}
 
-{{% alert title="注意" %}}
+> [!NB] ライブラリを計装している場合は、**このステップをスキップしてください**。
 
-ライブラリを計装している場合は、**このステップをスキップしてください**。
-
-{{% /alert %}}
-
-Node.jsアプリケーションケーションを計装する場合は、[Node.js用OpenTelemetry SDK](https://www.npmjs.com/package/@opentelemetry/sdk-node)をインストールします。
+Node.jsアプリケーションを計装する場合は、[Node.js用OpenTelemetry SDK](https://www.npmjs.com/package/@opentelemetry/sdk-node)をインストールします。
 
 ```shell
 npm install @opentelemetry/sdk-node
 ```
 
-アプリケーションケーション内の他のモジュールがロードされる前に、SDKを初期化する必要があります。
+アプリケーション内の他のモジュールがロードされる前に、SDKを初期化する必要があります。
 SDKの初期化に失敗した場合、または遅すぎる場合、APIからトレーサーまたはメーターを取得するライブラリにはno-op実装が提供されます。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
@@ -272,12 +267,10 @@ sdk.start();
 
 コードを確認するには、ライブラリを要求してアプリケーションを実行します。
 
-{{% alert title="注意" %}}
-
-以下の`--import instrumentation.ts`（TypeScript）を使用した例は、Node.js v20以降が必要です。
-Node.js v18を使用している場合は、JavaScriptの例を使用してください。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> 以下の`--import instrumentation.ts`（TypeScript）を使用した例は、Node.js v20以降が必要です。
+> Node.js v18を使用している場合は、JavaScriptの例を使用してください。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -303,11 +296,7 @@ node --import ./instrumentation.mjs app.js
 
 ### トレーシングの初期化 {#initialize-tracing}
 
-{{% alert title="注意" %}}
-
-ライブラリを計装している場合は、**このステップをスキップしてください**。
-
-{{% /alert %}}
+> [!NB] ライブラリを計装している場合は、**このステップをスキップしてください**。
 
 アプリケーションで[トレーシング](/docs/concepts/signals/traces/)を有効にするには、[`Tracer`](/docs/concepts/signals/traces/#tracer)を作成できる初期化された[`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider)が必要です。
 
@@ -404,7 +393,7 @@ provider.register();
 
 {{% /tab %}} {{< /tabpane >}}
 
-このファイルをWebアプリケーションケーションにバンドルして、Webアプリケーションケーションの残りの部分でトレーシングを使用できるようにする必要があります。
+このファイルをWebアプリケーションにバンドルして、Webアプリケーションの残りの部分でトレーシングを使用できるようにする必要があります。
 
 これはまだアプリケーションに影響を与えません。アプリケーションからテレメトリーを発行するには、[スパンを作成](#create-spans)する必要があります。
 
@@ -412,7 +401,7 @@ provider.register();
 
 デフォルトでは、Node SDKは`BatchSpanProcessor`を使用し、Web SDKの例でもこのスパンプロセッサーが選択されています。
 `BatchSpanProcessor`は、エクスポートされる前にスパンをバッチで処理します。
-これは通常、アプリケーションケーションに使用する適切なプロセッサーです。
+これは通常、アプリケーションに使用する適切なプロセッサーです。
 
 対照的に、`SimpleSpanProcessor`はスパンが作成されると処理します。
 つまり、5つのスパンを作成した場合、それぞれがコードで次のスパンが作成される前に処理およびエクスポートされます。
@@ -424,7 +413,7 @@ provider.register();
 
 ### トレーサーの取得 {#acquiring-a-tracer}
 
-手動トレーシングコードを記述するアプリケーションケーション内のどこでも、`getTracer`を呼び出してトレーサーを取得する必要があります。
+手動トレーシングコードを記述するアプリケーション内のどこでも、`getTracer`を呼び出してトレーサーを取得する必要があります。
 例を挙げましょう。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
@@ -461,11 +450,11 @@ const tracer = opentelemetry.trace.getTracer(
 名前は必須ですが、バージョンはオプションであるにもかかわらず推奨されます。
 
 アプリケーションで必要なときに`getTracer`を呼び出すことが、`tracer`インスタンスをアプリケーションの残りの部分にエクスポートするよりも一般的に推奨されます。
-これは、他の必要な依存関係が関与している場合のより複雑なアプリケーションケーションロードの問題を回避するのに役立ちます。
+これは、他の必要な依存関係が関与している場合のより複雑なアプリケーションロードの問題を回避するのに役立ちます。
 
 [サンプルアプリケーション](#example-app)の場合、適切な計装スコープでトレーサーを取得できる場所が2つあります。
 
-まず、_アプリケーションケーションファイル_ `app.ts`（または`app.js`）で下記を実装します。
+まず、_アプリケーションファイル_ `app.ts`（または`app.js`）で下記を実装します。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -906,13 +895,13 @@ function rollTheDice(rolls, min, max) {
 HTTPやデータベース呼び出しなどの既知のプロトコルでの操作を表すスパンには、セマンティック規約があります。これらのスパンのセマンティック規約は、[トレースセマンティック規約](/docs/specs/semconv/general/trace/)の仕様で定義されています。
 このガイドのシンプルな例では、ソースコード属性を使用できます。
 
-まず、依存関係としてセマンティック規約をアプリケーションケーションに追加します。
+まず、依存関係としてセマンティック規約をアプリケーションに追加します。
 
 ```shell
 npm install --save @opentelemetry/semantic-conventions
 ```
 
-アプリケーションケーションファイルの先頭に次を追加します。
+アプリケーションファイルの先頭に次を追加します。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -1202,15 +1191,11 @@ const doWork = (parent, i) => {
 ## メトリクス {#metrics}
 
 [メトリクス](/docs/concepts/signals/metrics)は、個々の測定値を集計に結合し、システム負荷の関数として一定のデータを生成します。
-集計には、低レベルの問題を診断するために必要な詳細が欠けていますが、傾向を特定し、アプリケーションケーションランタイムのテレメトリーを提供することでスパンを補完します。
+集計には、低レベルの問題を診断するために必要な詳細が欠けていますが、傾向を特定し、アプリケーションランタイムのテレメトリーを提供することでスパンを補完します。
 
 ### メトリクスの初期化 {#initialize-metrics}
 
-{{% alert %}}
-
-ライブラリを計装している場合は、このステップをスキップしてください。
-
-{{% /alert %}}
+> [!NB] ライブラリを計装している場合は、**このステップをスキップしてください**。
 
 アプリケーションで[メトリクス](/docs/concepts/signals/metrics/)を有効にするには、[`Meter`](/docs/concepts/signals/metrics/#meter)を作成できる初期化された[`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider)が必要です。
 
@@ -1337,7 +1322,7 @@ node --import ./instrumentation.mjs app.js
 
 ### メーターの取得 {#acquiring-a-meter}
 
-手動で計装されたコードがあるアプリケーションケーションのどこでも、`getMeter`を呼び出してメーターを取得できます。
+手動で計装されたコードがあるアプリケーションのどこでも、`getMeter`を呼び出してメーターを取得できます。
 例を挙げましょう。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
@@ -1372,11 +1357,11 @@ const myMeter = opentelemetry.metrics.getMeter(
 名前は必須ですが、バージョンはオプションであるにもかかわらず推奨されます。
 
 アプリケーションで必要なときに`getMeter`を呼び出すことが、メーターインスタンスアプリケーションの残りの部分にエクスポートするよりも一般的に推奨されます。
-これは、他の必要な依存関係が関与している場合のより複雑なアプリケーションケーションロードの問題を回避するのに役立ちます。
+これは、他の必要な依存関係が関与している場合のより複雑なアプリケーションロードの問題を回避するのに役立ちます。
 
-[サンプルアプリケーション](#example-app)の場合、適切な計装スコープでトレーサーを取得できる場所が2つあります。
+[サンプルアプリケーション](#example-app)の場合、適切な計装スコープでメーターを取得できる場所が2つあります。
 
-まず、_アプリケーションケーションファイル_ `app.ts`（または`app.js`）を以下のように実装します。
+まず、_アプリケーションファイル_ `app.ts`（または`app.js`）を以下のように実装します。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -1717,7 +1702,7 @@ const limitAttributesView = {
 
 ```js
 const dropView = {
-  aggregation: { type: AggrgationType.DROP },
+  aggregation: { type: AggregationType.DROP },
   meterName: 'pubsub',
 };
 ```
