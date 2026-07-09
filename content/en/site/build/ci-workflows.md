@@ -383,24 +383,23 @@ usage lives in the [localization guide][localization-auto-merge].
 
 ## Spec integration branches {#spec-integration-branches}
 
-Two scheduled workflows own the site's update cycle for the upstream spec
-repositories (which `auto-update-versions.yml` therefore excludes): between
-releases, each workflow tracks unreleased upstream changes through a draft PR
-("integration branch"); once upstream releases, it finalizes that branch and PR
-into the release PR.
+The scheduled [update-spec-integration-branches.yml][] workflow owns the site's
+update cycle for the upstream spec repositories (which
+`auto-update-versions.yml` therefore excludes). It runs a matrix job with one
+leg per upstream repository: between releases, each leg tracks unreleased
+upstream changes through a draft PR ("integration branch"); once upstream
+releases, it finalizes that branch and PR into the release PR.
 
-| Workflow file                             | Upstream repository           | Branch slug |
-| ----------------------------------------- | ----------------------------- | ----------- |
-| [update-spec-integration-branch.yml][]    | `opentelemetry-specification` | `spec`      |
-| [update-semconv-integration-branch.yml][] | `semantic-conventions`        | `semconv`   |
+| Matrix leg | Upstream repository           | Branch slug |
+| ---------- | ----------------------------- | ----------- |
+| `otel`     | `opentelemetry-specification` | `spec`      |
+| `semconv`  | `semantic-conventions`        | `semconv`   |
 
-[update-spec-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branch.yml
-[update-semconv-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-semconv-integration-branch.yml
+[update-spec-integration-branches.yml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branches.yml
 
-Both workflows delegate the "pick the mode, version and branch" step to a shared
-Node helper, [scripts/gh/specs/pick-branch.mjs][]. The helper:
+Each leg delegates the "pick the mode, version and branch" step to a shared Node
+helper, [scripts/gh/specs/pick-branch.mjs][]. The helper:
 
 - Selects the run's `MODE`: `dev` while the version pinned on main is the latest
   upstream release, `release` once a newer release exists.

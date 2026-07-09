@@ -1,5 +1,5 @@
 // Pure library for computing the MODE, VERSION, and BRANCH env vars for the
-// "Update <repo> integration branch" family of workflows.
+// "Specs integration" workflow.
 //
 // Side-effecting concerns (subprocess invocation, argv/env handling) live in
 // the command file, ../pick-branch.mjs.
@@ -216,7 +216,7 @@ export function formatGithubEnv({ mode, version, branch }) {
  */
 export function buildIssueBody({ warnings, repo, abbr, runUrl = null }) {
   const lines = [
-    `The \`update-${abbr}-integration-branch\` workflow (for [\`${repo}\`](https://github.com/open-telemetry/${repo})) reported the following warning(s):`,
+    `The \`${abbr}\` leg of the \`specs-integration\` workflow (for [\`${repo}\`](https://github.com/open-telemetry/${repo})) reported the following warning(s):`,
     '',
     ...warnings.map((w) => `- ${w}`),
     '',

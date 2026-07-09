@@ -1,5 +1,5 @@
-// Pure library for creating or finalizing the pull request of an
-// "Update <repo> integration branch" workflow run, based on the MODE computed
+// Pure library for creating or finalizing the pull request of a
+// "Specs integration" workflow leg, based on the MODE computed
 // by ../pick-branch (dev vs release) and the current PR state.
 //
 // Side-effecting concerns (subprocess invocation, argv/env handling) live in

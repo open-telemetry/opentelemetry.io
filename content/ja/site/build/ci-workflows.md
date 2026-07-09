@@ -312,8 +312,8 @@ CODEOWNERS と必須チェックがハードマージゲートとして残りま
 | [update-spec-integration-branch.yml][]    | `opentelemetry-specification` | `spec`           |
 | [update-semconv-integration-branch.yml][] | `semantic-conventions`        | `semconv`        |
 
-[update-spec-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branch.yml
-[update-semconv-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-semconv-integration-branch.yml
+[update-spec-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branches.yml
+[update-semconv-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branches.yml
 
 両方のワークフローは「次のバージョン + ブランチを選択する」ステップを共有の Node ヘルパー [scripts/gh/specs/pick-branch/cli.mjs][] に委譲します。
 このヘルパーは:

@@ -1,4 +1,4 @@
-name: Update semconv integration branch
+name: Specs integration
 
 on:
   schedule:
@@ -12,15 +12,26 @@ permissions:
   # via gh when it detects problems (e.g. stale integration branches).
   issues: write
 
-env:
-  REPO: semantic-conventions
-  # Abbreviation of REPO used in branch and submodule names
-  ABBR: semconv
-
 jobs:
-  update-semconv-integration-branch:
+  update-integration-branch:
+    name: Update ${{ matrix.spec }} integration branch
     runs-on: ubuntu-latest
     if: github.repository == 'open-telemetry/opentelemetry.io'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - spec: otel
+            repo: opentelemetry-specification
+            abbr: spec
+          - spec: semconv
+            repo: semantic-conventions
+            abbr: semconv
+    env:
+      SPEC: ${{ matrix.spec }}
+      REPO: ${{ matrix.repo }}
+      # Abbreviation of REPO used in branch and submodule names
+      ABBR: ${{ matrix.abbr }}
     steps:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
@@ -39,7 +50,7 @@ jobs:
       - name: Pick integration branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: scripts/gh/specs/pick-branch.mjs --spec semconv
+        run: scripts/gh/specs/pick-branch.mjs --spec "$SPEC"
 
       - name: Checkout or create branch
         run: |
@@ -64,10 +75,10 @@ jobs:
             git push
           fi
 
-      - name: Update submodule and Hugo mounts
+      - name: Update submodule
         run: |
-          git submodule update --init content-modules/${{ env.REPO }}
-          cd content-modules/${{ env.REPO }}
+          git submodule update --init "content-modules/$REPO"
+          cd "content-modules/$REPO"
 
           if git ls-remote --exit-code --tags origin "$VERSION"; then
             git reset --hard "$VERSION"
@@ -79,18 +90,20 @@ jobs:
           commit_desc=$(git describe --tags)
           cd ../..
 
-          sed -i "s/^\t${{ env.ABBR }}-pin = .*/\t${{ env.ABBR }}-pin = $commit_desc/" .gitmodules
+          sed -i "s/^\t${ABBR}-pin = .*/\t${ABBR}-pin = $commit_desc/" .gitmodules
 
           if [ "$tag_exists" == "true" ]; then
-            sed -i "s/^\(\s *\)${{ env.ABBR }}: .*/\1${{ env.ABBR }}: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
+            sed -i "s/^\(\s *\)${ABBR}: .*/\1${ABBR}: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
           fi
 
-          ./scripts/update-semconv-mounts.pl
+          if [ "$SPEC" == "semconv" ]; then
+            ./scripts/update-semconv-mounts.pl
+          fi
 
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Update ${{ env.ABBR }} submodule to $commit_desc"
+            git commit -am "Update $ABBR submodule to $commit_desc"
             git push
           fi
 
@@ -117,10 +130,10 @@ jobs:
         env:
           # not using secrets.GITHUB_TOKEN since pull requests from that token do not run workflows
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
-        run: scripts/gh/specs/create-or-finalize-pr.mjs --spec semconv
+        run: scripts/gh/specs/create-or-finalize-pr.mjs --spec "$SPEC"
 
   report-failure:
-    needs: update-semconv-integration-branch
+    needs: update-integration-branch
     if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
     uses: ./.github/workflows/reusable-report-failure.yml
     permissions:

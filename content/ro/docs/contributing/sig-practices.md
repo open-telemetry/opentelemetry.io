@@ -302,6 +302,6 @@ din timp - câtă vreme setul de modificări din amonte (_upstream_) este încă
 redus - este mult mai ușoară decât stingerea incendiilor în ziua lansării.
 
 [update-spec-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-spec-integration-branch.yml
+  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-spec-integration-branches.yml
 [update-semconv-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-semconv-integration-branch.yml
+  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-spec-integration-branches.yml

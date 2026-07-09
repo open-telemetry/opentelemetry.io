@@ -261,10 +261,8 @@ Just before cutting a release:
 1. Find the latest integration branch for your spec at the links given in the
    previous section (e.g. `otelbot/spec-integration-v1.56.0-dev`).
 2. Open the associated PR (linked from the branch page).
-3. Trigger a fresh run of the corresponding workflow to pick up your latest
-   changes:
-   - [update-spec-integration-branch.yml][]
-   - [update-semconv-integration-branch.yml][]
+3. Trigger a fresh run of the [update-spec-integration-branches.yml][] workflow
+   to pick up your latest changes.
 4. If the PR checks are green, the spec is safe to release. If not, ping
    `@open-telemetry/docs-maintainers` so we can address breakage before the
    release goes out.
@@ -276,7 +274,5 @@ fixes to keep their CI checks green. Catching breakage early — while the
 upstream change set is still small — is much easier than firefighting on release
 day.
 
-[update-spec-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-spec-integration-branch.yml
-[update-semconv-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-semconv-integration-branch.yml
+[update-spec-integration-branches.yml]:
+  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-spec-integration-branches.yml
