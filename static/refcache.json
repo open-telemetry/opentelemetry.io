@@ -1728,8 +1728,8 @@
     "LastSeen": "2026-07-01T06:46:26.893Z"
   },
   "https://docs.bmc.com/docs/helixoperationsmanagement/244/en/metric-operation-management-endpoints-in-the-rest-api-1392780044.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-09T06:58:24.13307854Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-09T09:28:51.529Z"
   },
   "https://docs.bronto.io/agent-setup/open-telemetry": {
     "StatusCode": 200,
@@ -22628,8 +22628,8 @@
     "LastSeen": "2026-07-05T06:54:53.308563028Z"
   },
   "https://www.iso.org/iso-8601-date-and-time-format.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-09T06:55:55.970383326Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-09T09:28:59.423Z"
   },
   "https://www.itu.int/ITU-T/studygroups/com17/oid.html": {
     "StatusCode": 206,
@@ -23180,16 +23180,16 @@
     "LastSeen": "2026-07-03T06:57:04.997Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-node": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-09T06:54:11.658028673Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-09T09:29:08.758Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-trace-node": {
     "StatusCode": 200,
     "LastSeen": "2026-07-03T15:19:16.915Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/shim-opentracing": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-09T06:53:34.048858139Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-09T09:29:18.37Z"
   },
   "https://www.npmjs.com/search?q=%40cspell%2Fdict": {
     "StatusCode": 200,
