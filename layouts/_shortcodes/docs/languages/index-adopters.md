@@ -1,7 +1,7 @@
 {{ $lang := .Get 0 -}}
 {{ $Lang := $lang | humanize -}}
 {{ $howMany := .Get 1 | default 10 -}}
-{{ $adopters := where $.Site.Data.ecosystem.adopters ".components" "intersect" (slice $Lang) -}}
+{{ $adopters := where hugo.Data.ecosystem.adopters ".components" "intersect" (slice $Lang) -}}
 
 ## Who's using OpenTelemetry {{ $Lang }}?
 

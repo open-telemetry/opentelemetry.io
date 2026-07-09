@@ -19,7 +19,7 @@ Versions are dynamically read from data/collector-versions.yml
 {{- $subtype := .Get "subtype" -}}
 
 {{- $repoName := cond (eq $repo "core") "opentelemetry-collector" "opentelemetry-collector-contrib" -}}
-{{- $version := index .Site.Data "collector-versions" $repo -}}
+{{- $version := index hugo.Data "collector-versions" $repo -}}
 
 {{- $path := "" -}}
 {{- if $subtype -}}

@@ -3,7 +3,8 @@ title: HelmでKubernetesにOBIをデプロイする
 linkTitle: Helm チャート
 description: KubernetesにHelmチャートとしてOBIをデプロイする方法を学ぶ
 weight: 2
-default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
+default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
+drifted_from_default: true
 ---
 
 > [!NOTE]
@@ -24,7 +25,9 @@ default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
 - [Helm から OBI をデプロイする](#deploying-obi-from-helm)
 - [OBI の設定](#configuring-obi)
 - [OBI メタデータの設定](#configuring-obi-metadata)
+- [k8s-cache による Kubernetes メタデータの集約](#centralizing-kubernetes-metadata-with-k8s-cache)
 - [Helm 設定へのシークレットの提供](#providing-secrets-to-the-helm-configuration)
+
 <!-- TOC -->
 
 ## Helm から OBI をデプロイする {#deploying-obi-from-helm}
@@ -98,6 +101,29 @@ podAnnotations:
 
 同様に、Helm チャートでは、サービスアカウント、クラスターロール、セキュリティコンテキストなど、OBI のデプロイに関わる複数のリソースの名前、ラベル、アノテーションをオーバーライドできます。
 [OBI Helm チャートドキュメント](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-ebpf-instrumentation)には、各種設定オプションが記載されています。
+
+## k8s-cache による Kubernetes メタデータの集約 {#centralizing-kubernetes-metadata-with-k8s-cache}
+
+デフォルトでは、各 OBI Pod はローカルノードだけでなくクラスター全体の Pod、Node、Service メタデータを監視するため、Kubernetes API サーバーへの独自の接続を開きます。
+これはリクエストの送信元だけでなく、送信先の情報も充実させるためです（たとえば、送信 HTTP リクエストに対するサービス名を取得して [peer](/docs/specs/semconv/registry/attributes/service/#service-attributes-for-peer-services) 属性を追加したり、[サービスグラフ](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/servicegraphconnector)メトリクスの送信先を取得したりします）。
+大規模クラスターでは、各 OBI Pod からクラスター全体の Kubernetes メタデータをクエリすると、API サーバーに過負荷がかかり、クラスター全体に影響を与える可能性があります。
+
+これを回避するため、OBI Helm チャートは `k8s-cache` と呼ばれる小規模なコンパニオンサービスをデプロイできます。
+キャッシュはすべての OBI Pod にかわって Kubernetes API を一度だけ監視し、gRPC 経由でメタデータをストリーミングします。
+これにより、OBI の Pod ごとの informer トラフィックが API サーバーに送信されなくなり、API の負荷が大幅に軽減されます。
+
+有効にするには、`helm-obi.yml` で `k8sCache.replicas` をゼロ以外の値に設定します。
+
+```yaml
+k8sCache:
+  replicas: 1
+```
+
+通常、レプリカは 1 つで十分です。
+高可用性や非常に大規模なクラスターの場合は、レプリカ数を増やしてください。
+OBI Pod はキャッシュ `Service` を通じてレプリカ間でロードバランスし、障害時には正常なレプリカに再接続します。
+
+`k8sCache.replicas` が `0`（デフォルト）の場合、キャッシュはデプロイされず、各 OBI Pod は独自のローカル informer を使用します。
 
 ## Helm 設定へのシークレットの提供 {#providing-secrets-to-the-helm-configuration}
 
