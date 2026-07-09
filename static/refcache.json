@@ -14683,6 +14683,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-09T13:00:00Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/pick-branch.mjs": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-09T12:43:01.609549-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration": {
     "StatusCode": 206,
     "LastSeen": "2026-07-05T06:52:17.295664434Z"
