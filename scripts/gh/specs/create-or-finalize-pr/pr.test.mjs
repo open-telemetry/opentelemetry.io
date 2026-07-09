@@ -51,12 +51,31 @@ const INPUT = {
 
 const NO_PR = { 'pr list': { stdout: '[]', status: 0 } };
 const PR_URL = 'https://github.com/open-telemetry/opentelemetry.io/pull/12345';
-const OPEN_DRAFT_PR = {
-  'pr list': { stdout: '[{"number":10526,"isDraft":true}]', status: 0 },
-};
-const OPEN_READY_PR = {
-  'pr list': { stdout: '[{"number":10526,"isDraft":false}]', status: 0 },
-};
+
+// The titles and bodies the automation writes, as the live PRs carry them.
+const DRAFT_TITLE =
+  'DRAFT Update opentelemetry-specification to unreleased v1.59.0-dev';
+const DEV_BODY =
+  'This is a draft PR used for identifying issues integrating the latest (unreleased) [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification).';
+const RELEASE_TITLE = 'Update opentelemetry-specification version to v1.59.0';
+const RELEASE_BODY =
+  'Update opentelemetry-specification version to `v1.59.0`.\n\nSee https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.59.0.';
+
+/** Canned `gh pr list` response with a single open PR. */
+function openPr(fields) {
+  return {
+    'pr list': {
+      stdout: JSON.stringify([{ number: 10526, ...fields }]),
+      status: 0,
+    },
+  };
+}
+
+const OPEN_DRAFT_PR = openPr({
+  isDraft: true,
+  title: DRAFT_TITLE,
+  body: DEV_BODY,
+});
 
 describe('create-or-finalize-pr: dev mode', () => {
   test('PR already open: no-op', () => {
@@ -96,14 +115,8 @@ describe('create-or-finalize-pr: dev mode', () => {
     const create = findCall(gh.calls, 'pr', 'create');
     assert.ok(create, 'gh pr create is called');
     assert.ok(create.includes('--draft'), 'PR is created as draft');
-    assert.equal(
-      flagValue(create, '--title'),
-      'DRAFT Update opentelemetry-specification to unreleased v1.59.0-dev',
-    );
-    assert.match(
-      flagValue(create, '--body'),
-      /draft PR used for identifying issues integrating the latest \(unreleased\) \[opentelemetry-specification\]\(https:\/\/github\.com\/open-telemetry\/opentelemetry-specification\)/,
-    );
+    assert.equal(flagValue(create, '--title'), DRAFT_TITLE);
+    assert.equal(flagValue(create, '--body'), DEV_BODY);
     assert.ok(
       !findCall(git.calls, 'commit'),
       'a branch with commits skips the bootstrap commit',
@@ -144,8 +157,6 @@ describe('create-or-finalize-pr: dev mode', () => {
 });
 
 describe('create-or-finalize-pr: release mode', () => {
-  const RELEASE_TITLE = 'Update opentelemetry-specification version to v1.59.0';
-
   test('no PR: creates non-draft release PR', () => {
     const gh = makeFakeRunner({
       ...NO_PR,
@@ -168,16 +179,11 @@ describe('create-or-finalize-pr: release mode', () => {
     assert.ok(create, 'gh pr create is called');
     assert.ok(!create.includes('--draft'), 'release PR is not a draft');
     assert.equal(flagValue(create, '--title'), RELEASE_TITLE);
-    const body = flagValue(create, '--body');
-    assert.match(body, /`v1\.59\.0`/);
-    assert.match(
-      body,
-      /https:\/\/github\.com\/open-telemetry\/opentelemetry-specification\/releases\/tag\/v1\.59\.0/,
-    );
+    assert.equal(flagValue(create, '--body'), RELEASE_BODY);
     assert.ok(logs.includes(PR_URL), 'the created PR URL is logged');
   });
 
-  test('open draft PR: one-time finalization (title + body, then ready)', () => {
+  test('draft PR in dev form: finalized — title + body, then ready', () => {
     const gh = makeFakeRunner(OPEN_DRAFT_PR);
     const git = makeFakeRunner();
     const result = createOrFinalizePullRequest({
@@ -189,13 +195,19 @@ describe('create-or-finalize-pr: release mode', () => {
       log: noLog,
     });
     assert.equal(result, 'updated');
-    const ready = findCall(gh.calls, 'pr', 'ready');
-    assert.ok(ready, 'gh pr ready is called');
-    assert.ok(ready.includes(INPUT.branch), 'pr ready targets the branch');
+    const list = findCall(gh.calls, 'pr', 'list');
+    assert.equal(
+      flagValue(list, '--json'),
+      'number,isDraft,title,body',
+      'the PR query includes the fields the fixups inspect',
+    );
     const edit = findCall(gh.calls, 'pr', 'edit');
     assert.ok(edit, 'gh pr edit is called');
     assert.equal(flagValue(edit, '--title'), RELEASE_TITLE);
-    assert.ok(edit.includes('--body'), 'finalization writes the body once');
+    assert.equal(flagValue(edit, '--body'), RELEASE_BODY);
+    const ready = findCall(gh.calls, 'pr', 'ready');
+    assert.ok(ready, 'gh pr ready is called');
+    assert.ok(ready.includes(INPUT.branch), 'pr ready targets the branch');
     assert.ok(
       callIndex(gh.calls, 'pr', 'edit') < callIndex(gh.calls, 'pr', 'ready'),
       'title and body are written while the PR is still a draft',
@@ -203,8 +215,14 @@ describe('create-or-finalize-pr: release mode', () => {
     assert.equal(git.calls.length, 0, 'git is unused');
   });
 
-  test('open ready PR: re-syncs the title only', () => {
-    const gh = makeFakeRunner(OPEN_READY_PR);
+  test('draft PR with a maintainer-edited body: body is preserved', () => {
+    const gh = makeFakeRunner(
+      openPr({
+        isDraft: true,
+        title: DRAFT_TITLE,
+        body: 'Hold this until the FAQ is updated. — maintainer',
+      }),
+    );
     const git = makeFakeRunner();
     const result = createOrFinalizePullRequest({
       ...INPUT,
@@ -215,26 +233,91 @@ describe('create-or-finalize-pr: release mode', () => {
       log: noLog,
     });
     assert.equal(result, 'updated');
-    assert.ok(
-      !findCall(gh.calls, 'pr', 'ready'),
-      'an already-ready PR skips pr ready',
-    );
     const edit = findCall(gh.calls, 'pr', 'edit');
     assert.ok(edit, 'gh pr edit is called');
     assert.equal(flagValue(edit, '--title'), RELEASE_TITLE);
     assert.ok(
       !edit.includes('--body'),
-      'body is left alone to preserve maintainer notes',
+      'the maintainer-owned body is preserved',
+    );
+    assert.ok(findCall(gh.calls, 'pr', 'ready'), 'gh pr ready is called');
+  });
+
+  test('ready PR still in dev form: title and body are healed', () => {
+    // E.g. a maintainer marked the draft integration PR ready mid-cycle.
+    const gh = makeFakeRunner(
+      openPr({ isDraft: false, title: DRAFT_TITLE, body: DEV_BODY }),
+    );
+    const git = makeFakeRunner();
+    const result = createOrFinalizePullRequest({
+      ...INPUT,
+      mode: 'release',
+      dryRun: false,
+      runGh: gh.run,
+      runGit: git.run,
+      log: noLog,
+    });
+    assert.equal(result, 'updated');
+    const edit = findCall(gh.calls, 'pr', 'edit');
+    assert.ok(edit, 'gh pr edit is called');
+    assert.equal(flagValue(edit, '--title'), RELEASE_TITLE);
+    assert.equal(flagValue(edit, '--body'), RELEASE_BODY);
+    assert.ok(
+      !findCall(gh.calls, 'pr', 'ready'),
+      'an already-ready PR skips pr ready',
     );
   });
 
-  test('open ready PR with matching title: full no-op', () => {
-    const gh = makeFakeRunner({
-      'pr list': {
-        stdout: `[{"number":10526,"isDraft":false,"title":${JSON.stringify(RELEASE_TITLE)}}]`,
-        status: 0,
-      },
+  test('ready PR in the form of an older release: title and body re-synced', () => {
+    // A newer release landed while the release PR awaited merge.
+    const gh = makeFakeRunner(
+      openPr({
+        isDraft: false,
+        title: RELEASE_TITLE.replaceAll('v1.59.0', 'v1.58.0'),
+        body: RELEASE_BODY.replaceAll('v1.59.0', 'v1.58.0'),
+      }),
+    );
+    const git = makeFakeRunner();
+    const result = createOrFinalizePullRequest({
+      ...INPUT,
+      mode: 'release',
+      dryRun: false,
+      runGh: gh.run,
+      runGit: git.run,
+      log: noLog,
     });
+    assert.equal(result, 'updated');
+    const edit = findCall(gh.calls, 'pr', 'edit');
+    assert.ok(edit, 'gh pr edit is called');
+    assert.equal(flagValue(edit, '--title'), RELEASE_TITLE);
+    assert.equal(flagValue(edit, '--body'), RELEASE_BODY);
+  });
+
+  test('ready PR with maintainer-edited title and body: full no-op', () => {
+    const gh = makeFakeRunner(
+      openPr({
+        isDraft: false,
+        title: 'Update the spec to v1.59.0 (hold for FAQ)',
+        body: 'Blocked on #12346.',
+      }),
+    );
+    const git = makeFakeRunner();
+    const result = createOrFinalizePullRequest({
+      ...INPUT,
+      mode: 'release',
+      dryRun: false,
+      runGh: gh.run,
+      runGit: git.run,
+      log: noLog,
+    });
+    assert.equal(result, 'unchanged');
+    assert.equal(gh.calls.length, 1, 'only the pr-list call runs');
+  });
+
+  test('ready PR already in release form: full no-op', () => {
+    const gh = makeFakeRunner(
+      openPr({ isDraft: false, title: RELEASE_TITLE, body: RELEASE_BODY }),
+    );
     const git = makeFakeRunner();
     const result = createOrFinalizePullRequest({
       ...INPUT,

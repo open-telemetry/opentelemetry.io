@@ -21,9 +21,9 @@
  *   - `created`: a new PR was opened — the draft integration PR in dev mode
  *     (bootstrapping the branch with an empty commit when it had none), the
  *     release PR in release mode.
- *   - `updated`: the existing PR was modified — release-mode one-time
- *     finalization of the draft (ready + title + body), or a title re-sync of
- *     an already-final PR.
+ *   - `updated`: the existing PR was modified — in release mode, whichever
+ *     combination of title sync, body sync, and draft→ready promotion the PR
+ *     needed.
  *   - `unchanged`: the PR was already in the desired state.
  */
 
@@ -34,12 +34,14 @@
  * - **dev**: an open PR of any kind suffices; otherwise create the draft
  *   integration PR, bootstrapping the branch with an empty commit when it has
  *   no commits over main (`gh pr create` fails otherwise).
- * - **release**: no PR → create the non-draft release PR; draft PR → one-time
- *   finalization (title + body + `gh pr ready`); non-draft PR → re-sync the
- *   title only (e.g. a newer release while the PR awaits merge), preserving
- *   any notes maintainers may have added to the body.
+ * - **release**: no PR → create the non-draft release PR; open PR → apply
+ *   whichever fixups it needs: sync the title and the body to the release
+ *   form, and promote a draft to ready (edit before ready, so a failed run
+ *   leaves a draft that the next run re-finalizes).
  *
- * The body of the release PR is thus written only during finalization.
+ * The automation rewrites only text it itself wrote — the dev or release
+ * title/body, for any version. Once a maintainer edits the title or the body,
+ * that field is theirs and is left alone.
  *
  * In dry-run mode the read-only PR/branch state queries still run, but all
  * writes are skipped; log lines are prefixed with `[dry-run]`.
@@ -80,7 +82,7 @@ export function createOrFinalizePullRequest({
       '--head',
       branch,
       '--json',
-      'number,isDraft,title',
+      'number,isDraft,title,body',
     ]),
     'gh pr list',
   );
@@ -130,8 +132,7 @@ function createDevPrIfMissing({
   );
   const needsBootstrap = revList.stdout.trim() === '';
 
-  const title = `DRAFT Update ${repo} to unreleased ${version}-dev`;
-  const body = `This is a draft PR used for identifying issues integrating the latest (unreleased) [${repo}](https://github.com/open-telemetry/${repo}).`;
+  const { title, body } = devPrText(repo, version);
   const prefix = dryRun ? '[dry-run] ' : '';
 
   if (needsBootstrap) {
@@ -164,7 +165,7 @@ function createDevPrIfMissing({
   return 'created';
 }
 
-/** Release mode: create the release PR, or finalize/re-sync the existing one. */
+/** Release mode: create the release PR, or apply the fixups the open PR needs. */
 function createOrFinalizeReleasePr({
   pr,
   repo,
@@ -174,8 +175,7 @@ function createOrFinalizeReleasePr({
   runGh,
   log,
 }) {
-  const title = `Update ${repo} version to ${version}`;
-  const body = `Update ${repo} version to \`${version}\`.\n\nSee https://github.com/open-telemetry/${repo}/releases/tag/${version}.`;
+  const { title, body } = releasePrText(repo, version);
   const prefix = dryRun ? '[dry-run] ' : '';
 
   if (!pr) {
@@ -190,34 +190,119 @@ function createOrFinalizeReleasePr({
     return 'created';
   }
 
-  if (pr.isDraft) {
-    // One-time finalization of the dev-cycle draft PR; the body is written
-    // only here. Edit before ready: should `ready` fail, the PR remains a
-    // draft and the next run redoes the finalization.
-    log(`${prefix}Finalizing PR #${pr.number} as "${title}".`);
-    if (!dryRun) {
-      must(
-        runGh(['pr', 'edit', branch, '--title', title, '--body', body]),
-        'gh pr edit',
-      );
-      must(runGh(['pr', 'ready', branch]), 'gh pr ready');
-    }
-    return 'updated';
+  // Independent, idempotent fixups; see the ownership rule in the docs of
+  // createOrFinalizePullRequest.
+  const editArgs = [];
+  if (normalize(pr.title) !== title && isAutomationTitle(pr.title, repo)) {
+    editArgs.push('--title', title);
+  }
+  if (normalize(pr.body) !== body && isAutomationBody(pr.body, repo)) {
+    editArgs.push('--body', body);
   }
 
-  if (pr.title === title) {
-    log(`PR #${pr.number} is already finalized as "${title}"; nothing to do.`);
+  if (!editArgs.length && !pr.isDraft) {
+    log(`PR #${pr.number} is already finalized; nothing to do.`);
     return 'unchanged';
   }
 
-  // Already finalized under another title (e.g. a newer release while this
-  // PR awaits merge): re-sync the title, but leave the body alone to
-  // preserve notes that maintainers may have added.
-  log(`${prefix}Re-titling PR #${pr.number} to "${title}".`);
+  const fixes = [
+    editArgs.includes('--title') && 'title',
+    editArgs.includes('--body') && 'body',
+    pr.isDraft && 'ready',
+  ]
+    .filter(Boolean)
+    .join(' + ');
+  log(`${prefix}Finalizing PR #${pr.number} for ${version} (${fixes}).`);
+
   if (!dryRun) {
-    must(runGh(['pr', 'edit', branch, '--title', title]), 'gh pr edit');
+    // Edit before ready: should `ready` fail, the PR remains a draft and the
+    // next run redoes the finalization.
+    if (editArgs.length) {
+      must(runGh(['pr', 'edit', branch, ...editArgs]), 'gh pr edit');
+    }
+    if (pr.isDraft) {
+      must(runGh(['pr', 'ready', branch]), 'gh pr ready');
+    }
   }
   return 'updated';
+}
+
+/**
+ * Title and body of the dev-cycle draft integration PR.
+ *
+ * @param {string} repo @param {string} version
+ * @returns {{ title: string, body: string }}
+ */
+function devPrText(repo, version) {
+  return {
+    title: `DRAFT Update ${repo} to unreleased ${version}-dev`,
+    body: `This is a draft PR used for identifying issues integrating the latest (unreleased) [${repo}](https://github.com/open-telemetry/${repo}).`,
+  };
+}
+
+/**
+ * Title and body of the release PR.
+ *
+ * @param {string} repo @param {string} version
+ * @returns {{ title: string, body: string }}
+ */
+function releasePrText(repo, version) {
+  return {
+    title: `Update ${repo} version to ${version}`,
+    body: `Update ${repo} version to \`${version}\`.\n\nSee https://github.com/open-telemetry/${repo}/releases/tag/${version}.`,
+  };
+}
+
+/**
+ * Placeholder that {@link maskVersions} substitutes for version numbers.
+ * Templates instantiated with it compare equal to any-version instances.
+ */
+const VERSION_MASK = 'vX.Y.Z';
+
+/** @param {string} s @returns {string} */
+function maskVersions(s) {
+  return s.replace(/\bv\d+\.\d+\.\d+\b/g, VERSION_MASK);
+}
+
+/** @param {string} title @param {string} repo @returns {boolean} */
+function isAutomationTitle(title, repo) {
+  return isAutomationText(title, [
+    devPrText(repo, VERSION_MASK).title,
+    releasePrText(repo, VERSION_MASK).title,
+  ]);
+}
+
+/** @param {string} body @param {string} repo @returns {boolean} */
+function isAutomationBody(body, repo) {
+  return isAutomationText(body, [
+    devPrText(repo, VERSION_MASK).body,
+    releasePrText(repo, VERSION_MASK).body,
+  ]);
+}
+
+/**
+ * True iff `text` was written by the automation: equal, after normalization
+ * and version masking, to one of `templates` (instantiated with
+ * {@link VERSION_MASK}). Any other difference means a maintainer edited the
+ * text, making it theirs.
+ *
+ * @param {string|undefined} text
+ * @param {string[]} templates
+ * @returns {boolean}
+ */
+function isAutomationText(text, templates) {
+  const masked = maskVersions(normalize(text));
+  return templates.some((t) => masked === t);
+}
+
+/**
+ * Normalize line endings and outer whitespace before comparing PR text.
+ *
+ * @param {string|undefined} text
+ * @returns {string}
+ */
+function normalize(text) {
+  return (text ?? '').replace(/\r\n/g, '\n').trim();
 }
 
 /**

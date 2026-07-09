@@ -413,8 +413,9 @@ Node helper, [scripts/gh/specs/pick-branch/cli.mjs][]. The helper:
 
 The final step, [scripts/gh/specs/create-or-finalize-pr.mjs][], creates or
 finalizes the PR as `MODE` calls for: in dev mode it opens the draft integration
-PR if missing; in release mode it creates or finalizes the release PR,
-preserving any notes maintainers have added to the PR body.
+PR if missing; in release mode it creates or finalizes the release PR. It only
+rewrites PR text that the automation itself wrote: a maintainer-edited title or
+body is left alone.
 
 [scripts/gh/specs/create-or-finalize-pr.mjs]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/create-or-finalize-pr.mjs
