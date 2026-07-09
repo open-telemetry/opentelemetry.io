@@ -55,11 +55,11 @@ describe('pick-branch: format helpers', () => {
     const body = buildIssueBody({
       warnings: ['stale branches found', 'something else'],
       repo: 'opentelemetry-specification',
-      abbr: 'spec',
+      spec: 'otel',
       runUrl: 'https://github.com/o/r/actions/runs/123',
     });
     assert.match(body, /`specs-integration` workflow/);
-    assert.match(body, /`spec` job/);
+    assert.match(body, /`otel` job/);
     assert.match(
       body,
       /\[`opentelemetry-specification`\]\(https:\/\/github\.com\/open-telemetry\/opentelemetry-specification\)/,
@@ -76,7 +76,7 @@ describe('pick-branch: format helpers', () => {
     const body = buildIssueBody({
       warnings: ['x'],
       repo: 'semantic-conventions',
-      abbr: 'semconv',
+      spec: 'semconv',
     });
     assert.match(body, /`semconv` job/);
     assert.doesNotMatch(body, /Workflow run:/);

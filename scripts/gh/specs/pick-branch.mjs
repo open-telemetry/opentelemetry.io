@@ -121,7 +121,7 @@ function main() {
     ensureWarningIssueOpen({
       title: `${repo} integration workflow: warnings detected`,
       label: `${abbr}-integration-warning`,
-      body: buildIssueBody({ warnings, repo, abbr, runUrl: actionsRunUrl() }),
+      body: buildIssueBody({ warnings, repo, spec, runUrl: actionsRunUrl() }),
       dryRun,
       runGh,
     });

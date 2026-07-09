@@ -211,12 +211,13 @@ export function formatGithubEnv({ mode, version, branch }) {
 /**
  * Build the body of the warning tracking issue.
  *
- * @param {{ warnings: string[], repo: string, abbr: string, runUrl?: string|null }} input
+ * @param {{ warnings: string[], repo: string, spec: string, runUrl?: string|null }} input
+ *   `spec` is the `SPECS` key, which is also the workflow's matrix-job name.
  * @returns {string}
  */
-export function buildIssueBody({ warnings, repo, abbr, runUrl = null }) {
+export function buildIssueBody({ warnings, repo, spec, runUrl = null }) {
   const lines = [
-    `The \`${abbr}\` job of the \`specs-integration\` workflow (for [\`${repo}\`](https://github.com/open-telemetry/${repo})) reported the following warning(s):`,
+    `The \`${spec}\` job of the \`specs-integration\` workflow (for [\`${repo}\`](https://github.com/open-telemetry/${repo})) reported the following warning(s):`,
     '',
     ...warnings.map((w) => `- ${w}`),
     '',
