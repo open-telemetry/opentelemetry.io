@@ -1,36 +1,11 @@
 #!/usr/bin/env node
 // Create or finalize the integration-branch PR of a spec workflow, according
-// to the MODE picked by ./pick-branch.
-//
-// Usage:
-//   scripts/gh/specs/create-or-finalize-pr.mjs [--spec=<id>] [--[no-]dry-run]
-//
-// Flags:
-//   -s, --spec=<id>   One of the keys defined in SPECS (e.g. `otel`,
-//                     `semconv`). Defaults to `otel`. Determines the upstream
-//                     repo name used in PR titles and bodies.
-//       --dry-run     Skip side-effecting operations: no `git commit`/`git
-//                     push`, no `gh pr create`/`ready`/`edit`. Read-only
-//                     `git`/`gh` state queries still run.
-//       --no-dry-run  Force writes even when running locally.
-//                     Default: dry-run is ON unless GITHUB_ACTIONS=true.
-//   -h, --help        Print usage and exit.
-//
-// Required environment:
-//   MODE, VERSION, BRANCH   As written to $GITHUB_ENV by pick-branch; strictly
-//                           validated (set them manually for local runs).
-//   GH_TOKEN                Used by `gh`; needs PR write access when writes
-//                           are enabled.
-//
-// The integration branch is expected to be checked out (with origin/main
-// fetched) so that the bootstrap check `git rev-list origin/main..HEAD` is
-// meaningful.
+// to the MODE picked by ./pick-branch. Run with --help for usage.
 
 import { spawnSync } from 'node:child_process';
 
 import { parseCliArgs, SPECS } from './pick-branch/index.mjs';
 import {
-  cliUsage,
   createOrFinalizePullRequest,
   readEnvInputs,
 } from './create-or-finalize-pr/index.mjs';
@@ -99,4 +74,32 @@ function run(cmd, args) {
 function fatal(msg) {
   process.stderr.write(`${msg}\n`);
   process.exit(1);
+}
+
+/** Help text for `--help`. */
+function cliUsage() {
+  return [
+    'Create or finalize the pull request of an integration-branch workflow',
+    'run. In dev mode, open the draft integration PR if none exists; in',
+    'release mode, create the release PR, promote the existing draft, or',
+    're-sync the title of an already-final PR.',
+    '',
+    'Usage: scripts/gh/specs/create-or-finalize-pr.mjs \\',
+    '         [--spec <otel|semconv>] [--[no-]dry-run]',
+    '',
+    'Options:',
+    '  -s, --spec <otel|semconv>  Selects the upstream spec (default: otel).',
+    '      --dry-run              Skip writes (default when run locally).',
+    '      --no-dry-run           Perform writes (default under GitHub Actions).',
+    '  -h, --help                 Show this help.',
+    '',
+    'Environment:',
+    '  MODE, VERSION, BRANCH  As written to $GITHUB_ENV by pick-branch;',
+    '                         strictly validated (set manually for local runs).',
+    '  GH_TOKEN               Used by `gh`; needs PR write access when writes',
+    '                         are enabled.',
+    '',
+    'Expects the integration branch to be checked out, with origin/main',
+    'fetched (for the branch-has-commits check).',
+  ].join('\n');
 }

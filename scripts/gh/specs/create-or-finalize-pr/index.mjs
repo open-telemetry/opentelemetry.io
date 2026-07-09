@@ -258,30 +258,3 @@ export function readEnvInputs(env, { abbr }) {
   }
   return { mode, version, branch };
 }
-
-/**
- * Help text for `create-or-finalize-pr.mjs --help`.
- *
- * @returns {string}
- */
-export function cliUsage() {
-  return [
-    'Create or finalize the pull request of an integration-branch workflow',
-    'run. In dev mode, open the draft integration PR if none exists; in',
-    'release mode, create the release PR, promote the existing draft, or',
-    're-sync the title of an already-final PR.',
-    '',
-    'Reads MODE, VERSION and BRANCH from the environment (as written by',
-    'pick-branch via $GITHUB_ENV) and expects the integration branch to be',
-    'checked out.',
-    '',
-    'Usage: scripts/gh/specs/create-or-finalize-pr.mjs \\',
-    '         [--spec=<otel|semconv>] [--[no-]dry-run]',
-    '',
-    'Options:',
-    '  -s, --spec=<otel|semconv>  Selects the upstream spec (default: otel).',
-    '      --dry-run              Skip writes (default when run locally).',
-    '      --no-dry-run           Perform writes (default under GitHub Actions).',
-    '  -h, --help                 Show this help.',
-  ].join('\n');
-}

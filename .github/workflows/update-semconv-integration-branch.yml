@@ -117,7 +117,7 @@ jobs:
         env:
           # not using secrets.GITHUB_TOKEN since pull requests from that token do not run workflows
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
-        run: scripts/gh/specs/create-or-finalize-pr.mjs --spec=semconv
+        run: scripts/gh/specs/create-or-finalize-pr.mjs --spec semconv
 
   report-failure:
     needs: update-semconv-integration-branch
