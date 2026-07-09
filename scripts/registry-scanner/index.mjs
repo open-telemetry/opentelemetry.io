@@ -87,13 +87,6 @@ const scanners = {
     scanByLanguage('instrumentation', 'cpp', 'instrumentation');
     scanByLanguage('exporter', 'cpp', 'exporters');
     scanByLanguage('exporter', 'cpp', 'exporters', 'md', 'opentelemetry-cpp');
-    scanByLanguage(
-      'resource-detector',
-      'cpp',
-      'resource_detectors',
-      'md',
-      'opentelemetry-cpp',
-    );
   },
   js: () => {
     scanByLanguage(

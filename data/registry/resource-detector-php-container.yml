@@ -2,7 +2,7 @@ title: OpenTelemetry Container Detector
 registryType: resource-detector
 language: php
 tags:
-  - Container
+  - container
   - resource-detector
   - php
 urls:
@@ -13,4 +13,4 @@ description:
   https://github.com/open-telemetry/opentelemetry-php-contrib.
 authors:
   - name: OpenTelemetry Authors
-createdAt: 2026-07-09
+createdAt: 2023-11-05

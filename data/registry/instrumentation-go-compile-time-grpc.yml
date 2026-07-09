@@ -1,4 +1,4 @@
-title: >
+title:
   OpenTelemetry Go Compile-Time Auto-Instrumentation for
   `google.golang.org/grpc`
 registryType: instrumentation

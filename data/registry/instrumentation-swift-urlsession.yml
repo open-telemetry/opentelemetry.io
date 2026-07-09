@@ -1,7 +1,10 @@
-title: URL Session instrumentation
+title: URLSession instrumentation
 registryType: instrumentation
 language: swift
 tags:
+  - ios
+  - macOS
+  - tvOS
   - URLSession
   - instrumentation
   - swift
@@ -11,4 +14,5 @@ license: Apache 2.0
 description: This package captures the network calls produced by URLSession.
 authors:
   - name: OpenTelemetry Authors
-createdAt: 2026-07-09
+createdAt: 2021-06-22
+isFirstParty: false

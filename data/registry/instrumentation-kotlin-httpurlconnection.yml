@@ -1,5 +1,5 @@
 # cSpell:ignore httpurlconnection
-title: >
+title:
   Android Instrumentation for URLConnection, HttpURLConnection and
   HttpsURLConnection
 registryType: instrumentation

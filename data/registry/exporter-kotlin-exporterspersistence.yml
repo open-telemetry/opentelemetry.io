@@ -1,5 +1,5 @@
 # cSpell:ignore exporterspersistence
-title: exporters-core
+title: exporters-persistence
 registryType: exporter
 language: kotlin
 tags:

@@ -1,4 +1,4 @@
-title: >
+title:
   OpenTelemetry Go Compile-Time Auto-Instrumentation for `redis/go-redis/v9`
 registryType: instrumentation
 language: go
