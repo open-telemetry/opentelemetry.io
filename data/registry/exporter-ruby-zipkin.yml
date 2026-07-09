@@ -10,8 +10,8 @@ description: Zipkin trace exporter for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-exporter-zipkin/v0.26.0/exporter/zipkin
-  docs: https://open-telemetry.github.io/opentelemetry-ruby/opentelemetry-exporter-zipkin/v0.26.0
+  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-exporter-zipkin/v0.26.1/exporter/zipkin
+  docs: https://rubydoc.info/gems/opentelemetry-exporter-zipkin/0.26.1
   website: https://github.com/open-telemetry/opentelemetry-ruby
 createdAt: 2022-11-07
 package:

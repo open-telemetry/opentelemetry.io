@@ -12,8 +12,8 @@ description: Gruf instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-gruf/v0.6.1/instrumentation/gruf
-  docs: https://open-telemetry.github.io/opentelemetry-ruby-contrib/opentelemetry-instrumentation-gruf/v0.6.1
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-gruf/v0.6.2/instrumentation/gruf
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-gruf/0.6.2
   website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:

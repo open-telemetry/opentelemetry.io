@@ -11,7 +11,7 @@ authors:
   - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/exporter/jaeger
-  docs: https://open-telemetry.github.io/opentelemetry-ruby/opentelemetry-exporter-jaeger/v0.24.1
+  docs: https://rubydoc.info/gems/opentelemetry-exporter-jaeger/0.24.1
   website: https://github.com/open-telemetry/opentelemetry-ruby
 createdAt: 2022-11-07
 package:

@@ -9,8 +9,8 @@ description: gRPC instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-grpc/v0.5.1/instrumentation/grpc
-  docs: https://open-telemetry.github.io/opentelemetry-ruby-contrib/opentelemetry-instrumentation-grpc/v0.5.1
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-grpc/v0.5.2/instrumentation/grpc
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-grpc/0.5.2
   website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2025-03-26
 package:

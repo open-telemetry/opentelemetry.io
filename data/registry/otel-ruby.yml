@@ -9,7 +9,7 @@ authors:
   - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-api/v1.10.0/api
-  docs: https://open-telemetry.github.io/opentelemetry-ruby/opentelemetry-api/v1.10.0
+  docs: https://rubydoc.info/gems/opentelemetry-api/1.10.0
   website: https://github.com/open-telemetry/opentelemetry-ruby
 createdAt: 2020-02-04
 package:
