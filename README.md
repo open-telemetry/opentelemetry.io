@@ -60,13 +60,12 @@ Here is a list of community roles with current and previous members:
 
 These are the members of [@open-telemetry/docs-maintainers][] (members-only):
 
-- [Austin Parker](https://github.com/austinlparker), Honeycomb
 - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
 - [Jay DeLuca](https://github.com/jaydeluca), Grafana Labs
 - [Marylia Gutierrez](https://github.com/maryliag), Grafana Labs
 - [Patrice Chalin](https://github.com/chalin), CNCF
 - [Phillip Carter](https://github.com/cartermp), Salesforce
-- [Severin Neumann](https://github.com/svrnm), Causely
+- [Severin Neumann](https://github.com/svrnm), Bronto
 - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
 - [Vitor Vasconcellos](https://github.com/vitorvasc), DoorDash
 
@@ -98,6 +97,7 @@ For more information about the triager role, see the
 
 ### Emeritus
 
+- [Austin Parker](https://github.com/austinlparker), Maintainer
 - [jparsana](https://github.com/jparsana), Maintainer
 - [Kazunori Otani](https://github.com/katzchang), Triager
 - [Masaki Sugimoto](https://github.com/Msksgm), Triager

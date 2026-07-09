@@ -21,17 +21,13 @@ function auto_update_versions() {
         contrib content/en/docs/languages/java/_index.md"
       "opentelemetry-android
         ot-android content/en/docs/platforms/client-apps/android.md"
-      "opentelemetry-specification
-        spec scripts/content-modules/adjust-pages.pl
-        spec .gitmodules"
       "opentelemetry-proto
         otlp scripts/content-modules/adjust-pages.pl
         otlp .gitmodules"
-      "semantic-conventions
-        semconv scripts/content-modules/adjust-pages.pl
-        semconv .gitmodules"
       "semantic-conventions-java
         semconv content/en/docs/languages/java/_index.md"
+      "opentelemetry-configuration
+        config .gitmodules"
   )
 
   for args in "${repo_and_files_to_update[@]}"; do

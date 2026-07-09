@@ -29,7 +29,7 @@ jobs:
           client-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           # this is needed to do the rebase below
           fetch-depth: 0
@@ -38,15 +38,15 @@ jobs:
       - name: Pick integration branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node scripts/gh/specs/pick-branch/cli.mjs --spec=otel
+        run: node scripts/gh/specs/pick-branch/cli.mjs --spec otel
 
       - name: Checkout or create branch
         run: |
-          if ! git ls-remote --exit-code --heads origin $BRANCH; then
-            git checkout -b $BRANCH origin/main
-            git push -u origin $BRANCH
+          if ! git ls-remote --exit-code --heads origin "$BRANCH"; then
+            git checkout -b "$BRANCH" origin/main
+            git push -u origin "$BRANCH"
           else
-            git checkout $BRANCH
+            git checkout "$BRANCH"
           fi
 
       - name: Use CLA approved github bot
@@ -68,8 +68,8 @@ jobs:
           git submodule update --init content-modules/${{ env.REPO }}
           cd content-modules/${{ env.REPO }}
 
-          if git ls-remote --exit-code --tags origin $VERSION; then
-            git reset --hard $VERSION
+          if git ls-remote --exit-code --tags origin "$VERSION"; then
+            git reset --hard "$VERSION"
             tag_exists=true
           else
             git reset --hard origin/main
@@ -110,24 +110,11 @@ jobs:
             git push
           fi
 
-      - name: Create pull request if needed
+      - name: Create or finalize pull request
         env:
           # not using secrets.GITHUB_TOKEN since pull requests from that token do not run workflows
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
-        run: |
-          prs=$(gh pr list --state open --head $BRANCH)
-          if [ -z "$prs" ]; then
-            if [ -z "$(git rev-list origin/main..HEAD)" ]; then
-              # Bootstrap this long-lived integration branch with an empty
-              # commit so that PR creation succeeds (gh pr create fails when
-              # there are no commits between main and the branch).
-              git commit --allow-empty -m "Trigger PR creation for $BRANCH"
-              git push
-            fi
-            gh pr create --title "DRAFT Update ${{ env.REPO }} to unreleased $VERSION-dev" \
-                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) [${{ env.REPO }}](https://github.com/open-telemetry/${{ env.REPO }})." \
-                         --draft
-          fi
+        run: scripts/gh/specs/create-or-finalize-pr.mjs --spec otel
 
   report-failure:
     needs: update-integration-branch
