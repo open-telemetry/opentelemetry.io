@@ -66,7 +66,7 @@ function main() {
   );
   console.log(`[input] MODE: ${mode}; VERSION: ${version}; BRANCH: ${branch}`);
 
-  const { action } = createOrFinalizePullRequest({
+  const outcome = createOrFinalizePullRequest({
     mode,
     repo,
     version,
@@ -76,7 +76,7 @@ function main() {
     runGit: (args) => run('git', args),
   });
 
-  console.log(`[done] action: ${action}`);
+  console.log(`[done] outcome: ${outcome}${dryRun ? ' (dry-run)' : ''}`);
 }
 
 /**

@@ -59,7 +59,7 @@ describe('create-or-finalize-pr: dev mode', () => {
       runGit: git.run,
       log: noLog,
     });
-    assert.equal(result.action, 'none');
+    assert.equal(result, 'unchanged');
     assert.equal(gh.calls.length, 1, 'only the pr-list call runs');
     assert.equal(git.calls.length, 0, 'no git calls');
   });
@@ -77,7 +77,7 @@ describe('create-or-finalize-pr: dev mode', () => {
       runGit: git.run,
       log: noLog,
     });
-    assert.equal(result.action, 'created-draft');
+    assert.equal(result, 'created');
     const create = findCall(gh.calls, 'pr', 'create');
     assert.ok(create, 'gh pr create is called');
     assert.ok(create.includes('--draft'), 'PR is created as draft');
@@ -108,7 +108,7 @@ describe('create-or-finalize-pr: dev mode', () => {
       runGit: git.run,
       log: noLog,
     });
-    assert.equal(result.action, 'bootstrapped-and-created-draft');
+    assert.equal(result, 'created');
     const commit = findCall(git.calls, 'commit');
     assert.ok(commit, 'git commit is called');
     assert.ok(commit.includes('--allow-empty'), 'commit is empty');
@@ -142,7 +142,7 @@ describe('create-or-finalize-pr: release mode', () => {
       runGit: git.run,
       log: noLog,
     });
-    assert.equal(result.action, 'created-release');
+    assert.equal(result, 'created');
     const create = findCall(gh.calls, 'pr', 'create');
     assert.ok(create, 'gh pr create is called');
     assert.ok(!create.includes('--draft'), 'release PR is not a draft');
@@ -166,7 +166,7 @@ describe('create-or-finalize-pr: release mode', () => {
       runGit: git.run,
       log: noLog,
     });
-    assert.equal(result.action, 'finalized');
+    assert.equal(result, 'updated');
     const ready = findCall(gh.calls, 'pr', 'ready');
     assert.ok(ready, 'gh pr ready is called');
     assert.ok(ready.includes(INPUT.branch), 'pr ready targets the branch');
@@ -188,7 +188,7 @@ describe('create-or-finalize-pr: release mode', () => {
       runGit: git.run,
       log: noLog,
     });
-    assert.equal(result.action, 'title-synced');
+    assert.equal(result, 'updated');
     assert.ok(!findCall(gh.calls, 'pr', 'ready'), 'pr ready is not re-run');
     const edit = findCall(gh.calls, 'pr', 'edit');
     assert.ok(edit, 'gh pr edit is called');
@@ -215,7 +215,7 @@ describe('create-or-finalize-pr: release mode', () => {
       runGit: git.run,
       log: noLog,
     });
-    assert.equal(result.action, 'none');
+    assert.equal(result, 'unchanged');
     assert.equal(gh.calls.length, 1, 'only the pr-list call runs');
   });
 });
@@ -235,7 +235,7 @@ describe('create-or-finalize-pr: dry-run', () => {
       runGit: git.run,
       log: (m) => logs.push(m),
     });
-    assert.equal(result.action, 'would-bootstrap-and-create-draft');
+    assert.equal(result, 'created', 'outcome a write run would produce');
     assert.equal(gh.calls.length, 1, 'only the read-only pr-list call runs');
     assert.ok(
       !findCall(git.calls, 'commit') && !findCall(git.calls, 'push'),
@@ -258,7 +258,7 @@ describe('create-or-finalize-pr: dry-run', () => {
       runGit: git.run,
       log: noLog,
     });
-    assert.equal(result.action, 'would-finalize');
+    assert.equal(result, 'updated', 'outcome a write run would produce');
     assert.equal(gh.calls.length, 1, 'only the read-only pr-list call runs');
   });
 });

@@ -14,23 +14,17 @@
  */
 
 /**
- * @typedef {Object} PrActionResult
- * @property {'none'
- *   | 'created-draft' | 'bootstrapped-and-created-draft'
- *   | 'created-release' | 'finalized' | 'title-synced'
- *   | 'would-create-draft' | 'would-bootstrap-and-create-draft'
- *   | 'would-create-release' | 'would-finalize' | 'would-sync-title'
- * } action
- *   What was done (or, in dry-run mode, would have been done):
- *   - `none`: PR already in the desired state.
- *   - `created-draft` / `bootstrapped-and-created-draft`: dev mode opened the
- *     draft integration PR (bootstrapping with an empty commit when the
- *     branch had none).
- *   - `created-release`: release mode opened a new non-draft release PR.
- *   - `finalized`: release mode promoted the dev-cycle draft PR (ready +
- *     title + body).
- *   - `title-synced`: release mode re-synced the title of an already-final
- *     PR, leaving the body alone.
+ * Outcome of a {@link createOrFinalizePullRequest} run, from the PR's point of
+ * view. In dry-run mode, the outcome that a write run would have produced.
+ *
+ * @typedef {'created' | 'updated' | 'unchanged'} PrOutcome
+ *   - `created`: a new PR was opened — the draft integration PR in dev mode
+ *     (bootstrapping the branch with an empty commit when it had none), the
+ *     release PR in release mode.
+ *   - `updated`: the existing PR was modified — release-mode one-time
+ *     finalization of the draft (ready + title + body), or a title re-sync of
+ *     an already-final PR.
+ *   - `unchanged`: the PR was already in the desired state.
  */
 
 /**
@@ -48,7 +42,7 @@
  * The body of the release PR is thus written exactly once.
  *
  * In dry-run mode the read-only PR/branch state queries still run, but all
- * writes are skipped and reported via `would-*` actions.
+ * writes are skipped; log lines are prefixed with `[dry-run]`.
  *
  * @param {Object} input
  * @param {'dev'|'release'} input.mode
@@ -61,7 +55,7 @@
  * @param {(args: string[]) => RunResult} input.runGit
  *   Synchronous `git` runner. Receives the argv (without `git`).
  * @param {(msg: string) => void} [input.log]
- * @returns {PrActionResult}
+ * @returns {PrOutcome}
  */
 export function createOrFinalizePullRequest({
   mode,
@@ -127,7 +121,7 @@ function createDevPrIfMissing({
 }) {
   if (pr) {
     log(`PR #${pr.number} is already open for ${branch}; nothing to do.`);
-    return { action: 'none' };
+    return 'unchanged';
   }
 
   const revList = must(
@@ -138,43 +132,35 @@ function createDevPrIfMissing({
 
   const title = `DRAFT Update ${repo} to unreleased ${version}-dev`;
   const body = `This is a draft PR used for identifying issues integrating the latest (unreleased) [${repo}](https://github.com/open-telemetry/${repo}).`;
-
-  if (dryRun) {
-    log(
-      `[dry-run] Would create draft PR "${title}"${needsBootstrap ? ' after bootstrapping the branch with an empty commit' : ''}.`,
-    );
-    return {
-      action: needsBootstrap
-        ? 'would-bootstrap-and-create-draft'
-        : 'would-create-draft',
-    };
-  }
+  const prefix = dryRun ? '[dry-run] ' : '';
 
   if (needsBootstrap) {
     // Bootstrap this long-lived integration branch with an empty commit so
     // that PR creation succeeds (gh pr create fails when there are no
     // commits between main and the branch).
-    log(`Bootstrapping ${branch} with an empty commit.`);
-    must(
-      runGit([
-        'commit',
-        '--allow-empty',
-        '-m',
-        `Trigger PR creation for ${branch}`,
-      ]),
-      'git commit',
-    );
-    must(runGit(['push']), 'git push');
+    log(`${prefix}Bootstrapping ${branch} with an empty commit.`);
+    if (!dryRun) {
+      must(
+        runGit([
+          'commit',
+          '--allow-empty',
+          '-m',
+          `Trigger PR creation for ${branch}`,
+        ]),
+        'git commit',
+      );
+      must(runGit(['push']), 'git push');
+    }
   }
 
-  must(
-    runGh(['pr', 'create', '--title', title, '--body', body, '--draft']),
-    'gh pr create',
-  );
-  log(`Created draft PR "${title}".`);
-  return {
-    action: needsBootstrap ? 'bootstrapped-and-created-draft' : 'created-draft',
-  };
+  log(`${prefix}Creating draft PR "${title}".`);
+  if (!dryRun) {
+    must(
+      runGh(['pr', 'create', '--title', title, '--body', body, '--draft']),
+      'gh pr create',
+    );
+  }
+  return 'created';
 }
 
 /** Release mode: create the release PR, or finalize/re-sync the existing one. */
@@ -189,51 +175,46 @@ function createOrFinalizeReleasePr({
 }) {
   const title = `Update ${repo} version to ${version}`;
   const body = `Update ${repo} version to \`${version}\`.\n\nSee https://github.com/open-telemetry/${repo}/releases/tag/${version}.`;
+  const prefix = dryRun ? '[dry-run] ' : '';
 
   if (!pr) {
-    if (dryRun) {
-      log(`[dry-run] Would create release PR "${title}".`);
-      return { action: 'would-create-release' };
+    log(`${prefix}Creating release PR "${title}".`);
+    if (!dryRun) {
+      must(
+        runGh(['pr', 'create', '--title', title, '--body', body]),
+        'gh pr create',
+      );
     }
-    must(
-      runGh(['pr', 'create', '--title', title, '--body', body]),
-      'gh pr create',
-    );
-    log(`Created release PR "${title}".`);
-    return { action: 'created-release' };
+    return 'created';
   }
 
   if (pr.isDraft) {
     // One-time finalization of the dev-cycle draft PR; the body is written
     // here and never again.
-    if (dryRun) {
-      log(`[dry-run] Would finalize draft PR #${pr.number} as "${title}".`);
-      return { action: 'would-finalize' };
+    log(`${prefix}Finalizing PR #${pr.number} as "${title}".`);
+    if (!dryRun) {
+      must(runGh(['pr', 'ready', branch]), 'gh pr ready');
+      must(
+        runGh(['pr', 'edit', branch, '--title', title, '--body', body]),
+        'gh pr edit',
+      );
     }
-    must(runGh(['pr', 'ready', branch]), 'gh pr ready');
-    must(
-      runGh(['pr', 'edit', branch, '--title', title, '--body', body]),
-      'gh pr edit',
-    );
-    log(`Finalized PR #${pr.number} as "${title}".`);
-    return { action: 'finalized' };
+    return 'updated';
   }
 
   if (pr.title === title) {
     log(`PR #${pr.number} is already finalized as "${title}"; nothing to do.`);
-    return { action: 'none' };
+    return 'unchanged';
   }
 
   // Already finalized under another title (e.g. a newer release while this
   // PR awaits merge): re-sync the title, but leave the body alone to
   // preserve notes that maintainers may have added.
-  if (dryRun) {
-    log(`[dry-run] Would re-title PR #${pr.number} to "${title}".`);
-    return { action: 'would-sync-title' };
+  log(`${prefix}Re-titling PR #${pr.number} to "${title}".`);
+  if (!dryRun) {
+    must(runGh(['pr', 'edit', branch, '--title', title]), 'gh pr edit');
   }
-  must(runGh(['pr', 'edit', branch, '--title', title]), 'gh pr edit');
-  log(`Re-titled PR #${pr.number} to "${title}".`);
-  return { action: 'title-synced' };
+  return 'updated';
 }
 
 /**
