@@ -402,13 +402,8 @@ into the release PR.
 Both workflows delegate the "pick the mode, version and branch" step to a shared
 Node helper, [scripts/gh/specs/pick-branch/cli.mjs][]. The helper:
 
-- Selects the run's `MODE`:
-  - `dev` — the pinned version is the latest upstream release: track upstream
-    `main`, reusing the existing `otelbot/<slug>-integration-vX.Y.Z-dev` branch
-    when its version is unreleased, else bumping the latest release's minor
-    version.
-  - `release` — a newer upstream release exists: `VERSION` is its tag, which
-    downstream steps pin the submodule to.
+- Selects the run's `MODE`: `dev` while the version pinned on main is the latest
+  upstream release, `release` once a newer release exists.
 - Writes `MODE`, `VERSION` and `BRANCH` to `$GITHUB_ENV` for downstream steps.
 - Opens a tracking issue (label `<slug>-integration-warning`, deduplicated) when
   it detects problems such as multiple stale integration branches.
@@ -417,10 +412,9 @@ Node helper, [scripts/gh/specs/pick-branch/cli.mjs][]. The helper:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/specs/pick-branch
 
 The final step, [scripts/gh/specs/create-or-finalize-pr.mjs][], creates or
-finalizes the PR as `MODE` calls for: in dev mode, it opens the draft
-integration PR if none exists; in release mode, it creates the release PR,
-promotes the draft (ready + title + body), or re-syncs the title. The release
-body is written only once, so notes added by maintainers are preserved.
+finalizes the PR as `MODE` calls for: in dev mode it opens the draft integration
+PR if missing; in release mode it creates or finalizes the release PR,
+preserving any notes maintainers have added to the PR body.
 
 [scripts/gh/specs/create-or-finalize-pr.mjs]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/create-or-finalize-pr.mjs
