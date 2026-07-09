@@ -29,7 +29,8 @@ const ISSUE_INPUT = {
   body: 'body content',
 };
 
-const ISSUE_URL = 'https://github.com/open-telemetry/opentelemetry.io/issues/123';
+const ISSUE_URL =
+  'https://github.com/open-telemetry/opentelemetry.io/issues/123';
 
 describe('pick-branch: ensureWarningIssueOpen', () => {
   test('is a no-op when an issue is already open', () => {

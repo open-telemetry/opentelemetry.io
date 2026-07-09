@@ -400,7 +400,7 @@ into the release PR.
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-semconv-integration-branch.yml
 
 Both workflows delegate the "pick the mode, version and branch" step to a shared
-Node helper, [scripts/gh/specs/pick-branch/cli.mjs][]. The helper:
+Node helper, [scripts/gh/specs/pick-branch.mjs][]. The helper:
 
 - Selects the run's `MODE`: `dev` while the version pinned on main is the latest
   upstream release, `release` once a newer release exists.
@@ -408,8 +408,8 @@ Node helper, [scripts/gh/specs/pick-branch/cli.mjs][]. The helper:
 - Opens a tracking issue (label `<slug>-integration-warning`, deduplicated) when
   it detects problems such as multiple stale integration branches.
 
-[scripts/gh/specs/pick-branch/cli.mjs]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/specs/pick-branch
+[scripts/gh/specs/pick-branch.mjs]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/pick-branch.mjs
 
 The final step, [scripts/gh/specs/create-or-finalize-pr.mjs][], creates or
 finalizes the PR as `MODE` calls for: in dev mode it opens the draft integration
@@ -437,8 +437,8 @@ use your local `gh` credentials; if `GITHUB_ENV` is unset, pick-branch prints
 create-or-finalize-pr run. Try it:
 
 ```sh
-node scripts/gh/specs/pick-branch/cli.mjs --spec otel
-node scripts/gh/specs/pick-branch/cli.mjs --spec semconv --no-dry-run
+scripts/gh/specs/pick-branch.mjs --spec otel
+scripts/gh/specs/pick-branch.mjs --spec semconv --no-dry-run
 scripts/gh/specs/create-or-finalize-pr.mjs --help
 ```
 

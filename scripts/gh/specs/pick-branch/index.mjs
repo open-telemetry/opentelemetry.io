@@ -1,8 +1,8 @@
-// Pure library for computing the VERSION and BRANCH env vars for the
+// Pure library for computing the MODE, VERSION, and BRANCH env vars for the
 // "Update <repo> integration branch" family of workflows.
 //
-// Side-effecting concerns (subprocess invocation, $GITHUB_ENV writes, opening
-// issues, argv parsing) live in ./cli.mjs.
+// Side-effecting concerns (subprocess invocation, argv/env handling) live in
+// the command file, ../pick-branch.mjs.
 //
 // cSpell:ignore dedup
 
@@ -329,9 +329,9 @@ export function ensureWarningIssueOpen({
 }
 
 /**
- * Parse the CLI argv for `cli.mjs`. Pure: throws on invalid input rather than
- * calling `process.exit`, and reads the GitHub Actions signal from an injected
- * env object.
+ * Parse the CLI argv for the spec workflow commands. Pure: throws on invalid
+ * input rather than calling `process.exit`, and reads the GitHub Actions
+ * signal from an injected env object.
  *
  * @param {string[]} argv  Argv tail (i.e. without `node` and the script path).
  * @param {Record<string, string|undefined>} [env]  Defaults to `process.env`.
@@ -400,29 +400,4 @@ export function parseCliArgs(argv, env = process.env) {
   }
 
   return { spec, dryRun, dryRunReason, help };
-}
-
-/**
- * Help text for `cli.mjs --help`.
- *
- * @returns {string}
- */
-export function cliUsage() {
-  const allowed = Object.keys(SPECS).join('|');
-  return [
-    'Pick the integration-branch version and mode for a spec workflow and',
-    'write MODE/VERSION/BRANCH to $GITHUB_ENV (or stdout when GITHUB_ENV is',
-    'unset). MODE is `release` when the latest upstream release is newer than',
-    'the version pinned on main, else `dev`. Opens a tracking issue on',
-    'warnings.',
-    '',
-    'Usage: node scripts/gh/specs/pick-branch/cli.mjs \\',
-    `         [--spec <${allowed}>] [--[no-]dry-run]`,
-    '',
-    'Options:',
-    `  -s, --spec <${allowed}>  Selects the upstream spec (default: otel).`,
-    '      --dry-run            Skip writes (default when run locally).',
-    '      --no-dry-run         Perform writes (default under GitHub Actions).',
-    '  -h, --help               Show this help.',
-  ].join('\n');
 }
