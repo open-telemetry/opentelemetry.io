@@ -13,13 +13,11 @@ process and injecting instrumentation as your application is compiled, so the
 resulting binary contains the instrumentation code with no runtime agent
 required.
 
-{{% alert title="Note" %}}
-
-This project is under active development and is not yet ready for production
-use. To follow progress or get involved, visit the
-[opentelemetry-go-compile-instrumentation repository](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> This project is under active development and is not yet ready for production
+> use. To follow progress or get involved, visit the
+> [opentelemetry-go-compile-instrumentation repository](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation).
 
 ## How it works
 
