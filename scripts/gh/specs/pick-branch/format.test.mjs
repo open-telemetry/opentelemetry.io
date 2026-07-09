@@ -10,11 +10,11 @@ describe('pick-branch: format helpers', () => {
   test('SPECS: contains otel and semconv with expected repos', () => {
     assert.deepEqual(SPECS.otel, {
       repo: 'opentelemetry-specification',
-      abbr: 'spec',
+      slug: 'spec',
     });
     assert.deepEqual(SPECS.semconv, {
       repo: 'semantic-conventions',
-      abbr: 'semconv',
+      slug: 'semconv',
     });
   });
 

@@ -336,10 +336,10 @@ function must(result, what) {
  * that misconfiguration fails the workflow loudly.
  *
  * @param {Record<string, string|undefined>} env
- * @param {{ abbr: string }} spec  The spec entry (for the branch pattern).
+ * @param {{ slug: string }} spec  The spec entry (for the branch pattern).
  * @returns {{ mode: 'dev'|'release', version: string, branch: string }}
  */
-export function readEnvInputs(env, { abbr }) {
+export function readEnvInputs(env, { slug }) {
   const { MODE: mode, VERSION: version, BRANCH: branch } = env;
   if (mode !== 'dev' && mode !== 'release') {
     throw new Error(`unexpected MODE: ${mode} (expected dev or release)`);
@@ -348,11 +348,11 @@ export function readEnvInputs(env, { abbr }) {
     throw new Error(`unexpected VERSION: ${version} (expected vX.Y.Z)`);
   }
   const branchRe = new RegExp(
-    `^otelbot/${abbr}-integration-v\\d+\\.\\d+\\.\\d+-dev$`,
+    `^otelbot/${slug}-integration-v\\d+\\.\\d+\\.\\d+-dev$`,
   );
   if (!branchRe.test(branch ?? '')) {
     throw new Error(
-      `unexpected BRANCH: ${branch} (expected otelbot/${abbr}-integration-vX.Y.Z-dev)`,
+      `unexpected BRANCH: ${branch} (expected otelbot/${slug}-integration-vX.Y.Z-dev)`,
     );
   }
   return { mode, version, branch };

@@ -10,11 +10,11 @@
  * Map from `--spec` flag value to the upstream repo configuration.
  * Add new specs here when wiring up additional workflows.
  *
- * @type {Readonly<Record<string, { repo: string, abbr: string }>>}
+ * @type {Readonly<Record<string, { repo: string, slug: string }>>}
  */
 export const SPECS = Object.freeze({
-  otel: { repo: 'opentelemetry-specification', abbr: 'spec' },
-  semconv: { repo: 'semantic-conventions', abbr: 'semconv' },
+  otel: { repo: 'opentelemetry-specification', slug: 'spec' },
+  semconv: { repo: 'semantic-conventions', slug: 'semconv' },
 });
 
 /**

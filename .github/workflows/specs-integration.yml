@@ -23,15 +23,15 @@ jobs:
         include:
           - spec: otel
             repo: opentelemetry-specification
-            abbr: spec
+            slug: spec
           - spec: semconv
             repo: semantic-conventions
-            abbr: semconv
+            slug: semconv
     env:
       SPEC: ${{ matrix.spec }}
       REPO: ${{ matrix.repo }}
       # Abbreviation of REPO used in branch and submodule names
-      ABBR: ${{ matrix.abbr }}
+      SLUG: ${{ matrix.slug }}
     steps:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
@@ -90,10 +90,10 @@ jobs:
           commit_desc=$(git describe --tags)
           cd ../..
 
-          sed -i "s/^\t${ABBR}-pin = .*/\t${ABBR}-pin = $commit_desc/" .gitmodules
+          sed -i "s/^\t${SLUG}-pin = .*/\t${SLUG}-pin = $commit_desc/" .gitmodules
 
           if [ "$tag_exists" == "true" ]; then
-            sed -i "s/^\(\s *\)${ABBR}: .*/\1${ABBR}: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
+            sed -i "s/^\(\s *\)${SLUG}: .*/\1${SLUG}: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
           fi
 
           if [ "$SPEC" == "semconv" ]; then
@@ -103,7 +103,7 @@ jobs:
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Update $ABBR submodule to $commit_desc"
+            git commit -am "Update $SLUG submodule to $commit_desc"
             git push
           fi
 
