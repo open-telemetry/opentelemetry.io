@@ -59,7 +59,7 @@ describe('pick-branch: format helpers', () => {
       runUrl: 'https://github.com/o/r/actions/runs/123',
     });
     assert.match(body, /`specs-integration` workflow/);
-    assert.match(body, /`spec` leg/);
+    assert.match(body, /`spec` job/);
     assert.match(
       body,
       /\[`opentelemetry-specification`\]\(https:\/\/github\.com\/open-telemetry\/opentelemetry-specification\)/,
@@ -78,7 +78,7 @@ describe('pick-branch: format helpers', () => {
       repo: 'semantic-conventions',
       abbr: 'semconv',
     });
-    assert.match(body, /`semconv` leg/);
+    assert.match(body, /`semconv` job/);
     assert.doesNotMatch(body, /Workflow run:/);
   });
 });

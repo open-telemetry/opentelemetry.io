@@ -216,7 +216,7 @@ export function formatGithubEnv({ mode, version, branch }) {
  */
 export function buildIssueBody({ warnings, repo, abbr, runUrl = null }) {
   const lines = [
-    `The \`${abbr}\` leg of the \`specs-integration\` workflow (for [\`${repo}\`](https://github.com/open-telemetry/${repo})) reported the following warning(s):`,
+    `The \`${abbr}\` job of the \`specs-integration\` workflow (for [\`${repo}\`](https://github.com/open-telemetry/${repo})) reported the following warning(s):`,
     '',
     ...warnings.map((w) => `- ${w}`),
     '',

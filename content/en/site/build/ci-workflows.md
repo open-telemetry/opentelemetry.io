@@ -385,12 +385,12 @@ usage lives in the [localization guide][localization-auto-merge].
 
 The scheduled [specs-integration.yml][] workflow owns the site's update cycle
 for the upstream spec repositories (which `auto-update-versions.yml` therefore
-excludes). It runs a matrix job with one leg per upstream repository: between
-releases, each leg tracks unreleased upstream changes through a draft PR
-("integration branch"); once upstream releases, it finalizes that branch and PR
-into the release PR.
+excludes). It runs one matrix job per upstream repository: between releases,
+each job tracks unreleased upstream changes through a draft PR ("integration
+branch"); once upstream releases, it finalizes that branch and PR into the
+release PR.
 
-| Matrix leg | Upstream repository           | Branch slug |
+| Matrix job | Upstream repository           | Branch slug |
 | ---------- | ----------------------------- | ----------- |
 | `otel`     | `opentelemetry-specification` | `spec`      |
 | `semconv`  | `semantic-conventions`        | `semconv`   |
@@ -398,7 +398,7 @@ into the release PR.
 [specs-integration.yml]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/specs-integration.yml
 
-Each leg delegates the "pick the mode, version and branch" step to a shared Node
+Each job delegates the "pick the mode, version and branch" step to a shared
 helper, [scripts/gh/specs/pick-branch.mjs][]. The helper:
 
 - Selects the run's `MODE`: `dev` while the version pinned on main is the latest
