@@ -3,7 +3,7 @@ title: プルリクエストのチェックとテスト
 linkTitle: PR チェック & テスト
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: 8013aa5f0aae284fa343311981625be6dbb25e5b
+default_lang_commit: 1143960b75c6faceb40eb64269e68390e3237671
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -107,7 +107,13 @@ PR のチェックは次のことを検証します。
 
 これらの2つのチェックは、ウェブサイトをビルドしてすべてのリンクが有効であることを検証します。
 
-ローカルでビルドしてリンクをチェックするには、`npm run check:links` を実行してください。
+外部リンクを追加または変更した場合、リンクチェッカーはそのリンクを参照キャッシュ (`static/refcache.json`) に記録します。
+キャッシュが更新されるまでこのチェックは失敗します。
+
+キャッシュを更新する最も簡単な方法は、PR に [`/fix:refcache`](../pull-requests/#fixing-prs-in-github) とコメントすることです。
+OpenTelemetry ボットが `static/refcache.json` を更新してくれます。
+
+あるいは、`npm run check:links` を実行してローカルでビルドとリンクチェックを行うこともできます。
 このコマンドは参照キャッシュも更新します。
 refcache に変更があれば、新しいコミットでプッシュしてください。
 

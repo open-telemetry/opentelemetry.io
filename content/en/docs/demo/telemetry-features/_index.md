@@ -21,8 +21,8 @@ aliases: [demo_features, features]
 
 ## Observability Solutions
 
-- **[Grafana](https://grafana.com/)**: all metric dashboards are stored in
-  Grafana.
+- **[Grafana](https://github.com/grafana/grafana)**: all metric dashboards are
+  stored in Grafana.
 - **[Jaeger](https://www.jaegertracing.io/)**: all generated traces are being
   sent to Jaeger.
 - **[OpenSearch](https://opensearch.org/)**: all generated logs are sent to Data
@@ -55,7 +55,3 @@ aliases: [demo_features, features]
   that allows for the enabling and disabling of features in the application.
 - **[flagd](https://flagd.dev)**: a feature flagging daemon that is used to
   manage feature flags in the demo application.
-- **[llm](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/llm/)**:
-  a mock Large Language Model (LLM) that adheres to
-  [OpenAI's Chat Completions API](https://platform.openai.com/docs/api-reference/chat/create)
-  format and answers questions about a product.

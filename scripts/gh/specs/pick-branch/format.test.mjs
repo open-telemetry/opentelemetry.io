@@ -18,14 +18,15 @@ describe('pick-branch: format helpers', () => {
     });
   });
 
-  test('formatGithubEnv: emits VERSION and BRANCH lines with trailing newline', () => {
+  test('formatGithubEnv: emits MODE, VERSION and BRANCH lines with trailing newline', () => {
     const out = formatGithubEnv({
+      mode: 'dev',
       version: 'v1.42.0',
       branch: 'otelbot/spec-integration-v1.42.0-dev',
     });
     assert.equal(
       out,
-      'VERSION=v1.42.0\nBRANCH=otelbot/spec-integration-v1.42.0-dev\n',
+      'MODE=dev\nVERSION=v1.42.0\nBRANCH=otelbot/spec-integration-v1.42.0-dev\n',
     );
     // Ensure parsing back through `key=value` round-trips cleanly.
     const parsed = Object.fromEntries(
@@ -35,9 +36,19 @@ describe('pick-branch: format helpers', () => {
         .map((line) => line.split('=')),
     );
     assert.deepEqual(parsed, {
+      MODE: 'dev',
       VERSION: 'v1.42.0',
       BRANCH: 'otelbot/spec-integration-v1.42.0-dev',
     });
+  });
+
+  test('formatGithubEnv: release mode', () => {
+    const out = formatGithubEnv({
+      mode: 'release',
+      version: 'v1.59.0',
+      branch: 'otelbot/spec-integration-v1.59.0-dev',
+    });
+    assert.match(out, /^MODE=release\n/);
   });
 
   test('buildIssueBody: includes warnings, repo link, and run url when provided', () => {
