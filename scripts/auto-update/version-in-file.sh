@@ -103,9 +103,7 @@ else
   echo "None found."
 fi
 
-if [[ "$repo" == "opentelemetry-specification"
-  || "$repo" == "opentelemetry-proto"
-  || "$repo" == "semantic-conventions"
+if [[ "$repo" == "opentelemetry-proto"
   || "$repo" == "opentelemetry-configuration" ]]; then
   echo "Switching to $repo at tag $latest_version"
   ( set -x;
