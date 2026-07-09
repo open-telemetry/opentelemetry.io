@@ -2,10 +2,10 @@
 // CLI entry point: pick the integration branch / version for a spec workflow.
 //
 // Usage:
-//   node scripts/gh/specs/pick-branch/cli.mjs [--spec=<id>] [--[no-]dry-run]
+//   node scripts/gh/specs/pick-branch/cli.mjs [--spec <id>] [--[no-]dry-run]
 //
 // Flags:
-//   -s, --spec=<id>   One of the keys defined in SPECS (e.g. `otel`,
+//   -s, --spec <id>   One of the keys defined in SPECS (e.g. `otel`,
 //                     `semconv`). Defaults to `otel`. Determines the upstream
 //                     repo and branch slug.
 //       --dry-run     Skip side-effecting operations: do NOT write to
@@ -15,10 +15,12 @@
 //                     Default: dry-run is ON unless GITHUB_ACTIONS=true.
 //   -h, --help        Print usage and exit.
 //
+// Outputs MODE (dev|release), VERSION and BRANCH; see cliUsage() in index.mjs.
+//
 // Required environment when writes are enabled:
 //   GH_TOKEN          Used by `gh`; needs `issues: write` for issue creation.
 //   GITHUB_ENV        Path written by GitHub Actions. Optional locally; if
-//                     unset, VERSION/BRANCH are written to stdout only.
+//                     unset, MODE/VERSION/BRANCH are written to stdout only.
 
 import { execFileSync, spawnSync } from 'node:child_process';
 import { appendFileSync } from 'node:fs';
@@ -77,6 +79,18 @@ function main() {
     encoding: 'utf8',
   });
 
+  // Submodule pin on the current checkout (main), e.g. `spec-pin = v1.58.0`.
+  const pinnedVersion = execFileSync(
+    'git',
+    [
+      'config',
+      '-f',
+      '.gitmodules',
+      `submodule.content-modules/${repo}.${abbr}-pin`,
+    ],
+    { encoding: 'utf8' },
+  ).trim();
+
   const isReleased = (version) =>
     spawnSync('git', ['ls-remote', '--exit-code', '--tags', repoUrl, version], {
       stdio: 'ignore',
@@ -100,18 +114,27 @@ function main() {
     return out.trim();
   };
 
-  const { version, branch, warnings, latestRelease } =
-    computeIntegrationVersion({
-      branchPrefix,
-      branchesOutput,
-      isReleased,
-      getLatestReleaseTag,
-    });
+  const {
+    mode: pickMode,
+    version,
+    branch,
+    warnings,
+    latestRelease,
+  } = computeIntegrationVersion({
+    branchPrefix,
+    branchesOutput,
+    pinnedVersion,
+    isReleased,
+    getLatestReleaseTag,
+  });
 
   console.log(`[upstream] Latest released ${repo} version: ${latestRelease}`);
-  console.log(`[picked]   Next dev VERSION: ${version} (BRANCH: ${branch})`);
+  console.log(`[pinned]   Version pinned on main: ${pinnedVersion}`);
+  console.log(
+    `[picked]   MODE: ${pickMode}; VERSION: ${version} (BRANCH: ${branch})`,
+  );
 
-  const envLines = formatGithubEnv({ version, branch });
+  const envLines = formatGithubEnv({ mode: pickMode, version, branch });
   if (githubEnv) appendFileSync(githubEnv, envLines);
   process.stdout.write(envLines);
 
