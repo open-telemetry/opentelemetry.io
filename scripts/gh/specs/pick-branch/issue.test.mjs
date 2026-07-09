@@ -87,7 +87,7 @@ describe('pick-branch: ensureWarningIssueOpen', () => {
     );
     assert.ok(
       logs.some((m) => m.includes(ISSUE_URL)),
-      'the created issue URL is logged',
+      'created issue URL is logged',
     );
   });
 
@@ -103,15 +103,11 @@ describe('pick-branch: ensureWarningIssueOpen', () => {
       log: (m) => logs.push(m),
     });
     assert.equal(outcome, 'created');
-    assert.equal(
-      calls.length,
-      1,
-      'the read-only issue-list is the sole gh call',
-    );
+    assert.equal(calls.length, 1, 'read-only issue-list is the sole gh call');
     assert.deepEqual(calls[0].slice(0, 2), ['issue', 'list']);
     assert.ok(
       logs.some((m) => /\[dry-run\] Opening an issue/.test(m)),
-      'the dry-run log announces the issue that a write run would open',
+      'dry-run log announces the issue that a write run would open',
     );
   });
 
@@ -128,7 +124,7 @@ describe('pick-branch: ensureWarningIssueOpen', () => {
     });
     assert.equal(outcome, 'unchanged');
     assert.equal(calls.length, 1);
-    assert.equal(logs.length, 1, 'the no-op message is the sole log line');
+    assert.equal(logs.length, 1, 'no-op message is the sole log line');
     assert.match(logs[0], /already open; nothing to do/);
   });
 
