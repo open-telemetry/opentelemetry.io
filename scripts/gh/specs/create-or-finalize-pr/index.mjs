@@ -155,10 +155,11 @@ function createDevPrIfMissing({
 
   log(`${prefix}Creating draft PR "${title}".`);
   if (!dryRun) {
-    must(
+    const created = must(
       runGh(['pr', 'create', '--title', title, '--body', body, '--draft']),
       'gh pr create',
     );
+    logUrl(created, log);
   }
   return 'created';
 }
@@ -180,10 +181,11 @@ function createOrFinalizeReleasePr({
   if (!pr) {
     log(`${prefix}Creating release PR "${title}".`);
     if (!dryRun) {
-      must(
+      const created = must(
         runGh(['pr', 'create', '--title', title, '--body', body]),
         'gh pr create',
       );
+      logUrl(created, log);
     }
     return 'created';
   }
@@ -216,6 +218,17 @@ function createOrFinalizeReleasePr({
     must(runGh(['pr', 'edit', branch, '--title', title]), 'gh pr edit');
   }
   return 'updated';
+}
+
+/**
+ * Log a created PR's URL (`gh pr create` prints it on stdout).
+ *
+ * @param {RunResult} result
+ * @param {(msg: string) => void} log
+ */
+function logUrl(result, log) {
+  const url = result.stdout.trim();
+  if (url) log(url);
 }
 
 /**

@@ -50,6 +50,7 @@ const INPUT = {
 };
 
 const NO_PR = { 'pr list': { stdout: '[]', status: 0 } };
+const PR_URL = 'https://github.com/open-telemetry/opentelemetry.io/pull/12345';
 const OPEN_DRAFT_PR = {
   'pr list': { stdout: '[{"number":10526,"isDraft":true}]', status: 0 },
 };
@@ -75,17 +76,21 @@ describe('create-or-finalize-pr: dev mode', () => {
   });
 
   test('no PR, branch has commits: creates draft PR', () => {
-    const gh = makeFakeRunner(NO_PR);
+    const gh = makeFakeRunner({
+      ...NO_PR,
+      'pr create': { stdout: `${PR_URL}\n`, status: 0 },
+    });
     const git = makeFakeRunner({
       'rev-list origin/main..HEAD': { stdout: 'abc123\n', status: 0 },
     });
+    const logs = [];
     const result = createOrFinalizePullRequest({
       ...INPUT,
       mode: 'dev',
       dryRun: false,
       runGh: gh.run,
       runGit: git.run,
-      log: noLog,
+      log: (m) => logs.push(m),
     });
     assert.equal(result, 'created');
     const create = findCall(gh.calls, 'pr', 'create');
@@ -103,6 +108,7 @@ describe('create-or-finalize-pr: dev mode', () => {
       !findCall(git.calls, 'commit'),
       'a branch with commits skips the bootstrap commit',
     );
+    assert.ok(logs.includes(PR_URL), 'the created PR URL is logged');
   });
 
   test('no PR, branch even with main: bootstraps with an empty commit', () => {
@@ -141,17 +147,21 @@ describe('create-or-finalize-pr: release mode', () => {
   const RELEASE_TITLE = 'Update opentelemetry-specification version to v1.59.0';
 
   test('no PR: creates non-draft release PR', () => {
-    const gh = makeFakeRunner(NO_PR);
+    const gh = makeFakeRunner({
+      ...NO_PR,
+      'pr create': { stdout: `${PR_URL}\n`, status: 0 },
+    });
     const git = makeFakeRunner({
       'rev-list origin/main..HEAD': { stdout: 'abc123\n', status: 0 },
     });
+    const logs = [];
     const result = createOrFinalizePullRequest({
       ...INPUT,
       mode: 'release',
       dryRun: false,
       runGh: gh.run,
       runGit: git.run,
-      log: noLog,
+      log: (m) => logs.push(m),
     });
     assert.equal(result, 'created');
     const create = findCall(gh.calls, 'pr', 'create');
@@ -164,6 +174,7 @@ describe('create-or-finalize-pr: release mode', () => {
       body,
       /https:\/\/github\.com\/open-telemetry\/opentelemetry-specification\/releases\/tag\/v1\.59\.0/,
     );
+    assert.ok(logs.includes(PR_URL), 'the created PR URL is logged');
   });
 
   test('open draft PR: one-time finalization (title + body, then ready)', () => {
