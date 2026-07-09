@@ -11,12 +11,15 @@ const noLog = () => {};
 /**
  * Build a fake runner that records calls and serves canned responses keyed by
  * the first two argv tokens (e.g. `pr list`, `pr create`). Default response is
- * `{ stdout: '', status: 0 }`.
+ * `{ stdout: '', status: 0 }`. When given a shared `seq` array and a `tool`
+ * tag, each call is also appended to `seq` as `[tool, ...argv]` so that
+ * cross-runner call order can be asserted.
  */
-function makeFakeRunner(responses = {}) {
+function makeFakeRunner(responses = {}, seq = undefined, tool = '') {
   const calls = [];
   const run = (args) => {
     calls.push(args);
+    seq?.push([tool, ...args]);
     const key = args.slice(0, 2).join(' ');
     return responses[key] ?? { stdout: '', status: 0 };
   };
@@ -26,6 +29,13 @@ function makeFakeRunner(responses = {}) {
 /** Argv of the first recorded call whose leading tokens match `prefix`. */
 function findCall(calls, ...prefix) {
   return calls.find((args) => prefix.every((token, i) => args[i] === token));
+}
+
+/** Index in `calls` of the first call matching `prefix`; fails if absent. */
+function callIndex(calls, ...prefix) {
+  const i = calls.findIndex((args) => prefix.every((t, j) => args[j] === t));
+  assert.ok(i >= 0, `${prefix.join(' ')} is called`);
+  return i;
 }
 
 /** Value following `flag` in `args`. */
@@ -61,7 +71,7 @@ describe('create-or-finalize-pr: dev mode', () => {
     });
     assert.equal(result, 'unchanged');
     assert.equal(gh.calls.length, 1, 'only the pr-list call runs');
-    assert.equal(git.calls.length, 0, 'no git calls');
+    assert.equal(git.calls.length, 0, 'git is unused');
   });
 
   test('no PR, branch has commits: creates draft PR', () => {
@@ -91,15 +101,18 @@ describe('create-or-finalize-pr: dev mode', () => {
     );
     assert.ok(
       !findCall(git.calls, 'commit'),
-      'no bootstrap commit when branch has commits',
+      'a branch with commits skips the bootstrap commit',
     );
   });
 
   test('no PR, branch even with main: bootstraps with an empty commit', () => {
-    const gh = makeFakeRunner(NO_PR);
-    const git = makeFakeRunner({
-      'rev-list origin/main..HEAD': { stdout: '', status: 0 },
-    });
+    const seq = [];
+    const gh = makeFakeRunner(NO_PR, seq, 'gh');
+    const git = makeFakeRunner(
+      { 'rev-list origin/main..HEAD': { stdout: '', status: 0 } },
+      seq,
+      'git',
+    );
     const result = createOrFinalizePullRequest({
       ...INPUT,
       mode: 'dev',
@@ -117,11 +130,9 @@ describe('create-or-finalize-pr: dev mode', () => {
       `Trigger PR creation for ${INPUT.branch}`,
     );
     assert.ok(findCall(git.calls, 'push'), 'bootstrap commit is pushed');
-    assert.ok(findCall(gh.calls, 'pr', 'create'), 'draft PR is created');
-    // Bootstrap must happen before PR creation.
     assert.ok(
-      git.calls.length > 1,
-      'git bootstrap calls precede the gh pr create call',
+      callIndex(seq, 'git', 'push') < callIndex(seq, 'gh', 'pr', 'create'),
+      'bootstrap commit is pushed before gh pr create runs',
     );
   });
 });
@@ -155,7 +166,7 @@ describe('create-or-finalize-pr: release mode', () => {
     );
   });
 
-  test('open draft PR: one-time finalization (ready + title + body)', () => {
+  test('open draft PR: one-time finalization (title + body, then ready)', () => {
     const gh = makeFakeRunner(OPEN_DRAFT_PR);
     const git = makeFakeRunner();
     const result = createOrFinalizePullRequest({
@@ -174,7 +185,11 @@ describe('create-or-finalize-pr: release mode', () => {
     assert.ok(edit, 'gh pr edit is called');
     assert.equal(flagValue(edit, '--title'), RELEASE_TITLE);
     assert.ok(edit.includes('--body'), 'finalization writes the body once');
-    assert.equal(git.calls.length, 0, 'no git calls');
+    assert.ok(
+      callIndex(gh.calls, 'pr', 'edit') < callIndex(gh.calls, 'pr', 'ready'),
+      'title and body are written while the PR is still a draft',
+    );
+    assert.equal(git.calls.length, 0, 'git is unused');
   });
 
   test('open ready PR: re-syncs the title only', () => {
@@ -189,7 +204,10 @@ describe('create-or-finalize-pr: release mode', () => {
       log: noLog,
     });
     assert.equal(result, 'updated');
-    assert.ok(!findCall(gh.calls, 'pr', 'ready'), 'pr ready is not re-run');
+    assert.ok(
+      !findCall(gh.calls, 'pr', 'ready'),
+      'an already-ready PR skips pr ready',
+    );
     const edit = findCall(gh.calls, 'pr', 'edit');
     assert.ok(edit, 'gh pr edit is called');
     assert.equal(flagValue(edit, '--title'), RELEASE_TITLE);
@@ -239,7 +257,7 @@ describe('create-or-finalize-pr: dry-run', () => {
     assert.equal(gh.calls.length, 1, 'only the read-only pr-list call runs');
     assert.ok(
       !findCall(git.calls, 'commit') && !findCall(git.calls, 'push'),
-      'no git writes in dry-run',
+      'dry-run keeps git read-only',
     );
     assert.ok(
       logs.some((m) => /\[dry-run\]/.test(m)),
@@ -323,6 +341,31 @@ describe('create-or-finalize-pr: failure propagation', () => {
     );
   });
 
+  test('throws when gh pr edit fails during finalization, before pr ready', () => {
+    const gh = makeFakeRunner({
+      ...OPEN_DRAFT_PR,
+      'pr edit': { stdout: 'boom', status: 1 },
+    });
+    const git = makeFakeRunner();
+    assert.throws(
+      () =>
+        createOrFinalizePullRequest({
+          ...INPUT,
+          mode: 'release',
+          dryRun: false,
+          runGh: gh.run,
+          runGit: git.run,
+          log: noLog,
+        }),
+      /gh pr edit failed/,
+    );
+    // The PR must remain a draft so that the next run redoes the finalization.
+    assert.ok(
+      !findCall(gh.calls, 'pr', 'ready'),
+      'pr ready runs only after a successful edit',
+    );
+  });
+
   test('throws when git bootstrap commit fails', () => {
     const gh = makeFakeRunner(NO_PR);
     const git = makeFakeRunner({
@@ -358,6 +401,6 @@ describe('create-or-finalize-pr: failure propagation', () => {
         }),
       /unexpected mode: prod/,
     );
-    assert.equal(gh.calls.length, 0, 'no calls are made on invalid input');
+    assert.equal(gh.calls.length, 0, 'invalid mode fails before any call');
   });
 });

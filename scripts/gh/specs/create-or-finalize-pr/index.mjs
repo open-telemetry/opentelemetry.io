@@ -35,11 +35,11 @@
  *   integration PR, bootstrapping the branch with an empty commit when it has
  *   no commits over main (`gh pr create` fails otherwise).
  * - **release**: no PR → create the non-draft release PR; draft PR → one-time
- *   finalization (`gh pr ready` + title + body); non-draft PR → re-sync the
+ *   finalization (title + body + `gh pr ready`); non-draft PR → re-sync the
  *   title only (e.g. a newer release while the PR awaits merge), preserving
  *   any notes maintainers may have added to the body.
  *
- * The body of the release PR is thus written exactly once.
+ * The body of the release PR is thus written only during finalization.
  *
  * In dry-run mode the read-only PR/branch state queries still run, but all
  * writes are skipped; log lines are prefixed with `[dry-run]`.
@@ -190,14 +190,15 @@ function createOrFinalizeReleasePr({
 
   if (pr.isDraft) {
     // One-time finalization of the dev-cycle draft PR; the body is written
-    // here and never again.
+    // only here. Edit before ready: should `ready` fail, the PR remains a
+    // draft and the next run redoes the finalization.
     log(`${prefix}Finalizing PR #${pr.number} as "${title}".`);
     if (!dryRun) {
-      must(runGh(['pr', 'ready', branch]), 'gh pr ready');
       must(
         runGh(['pr', 'edit', branch, '--title', title, '--body', body]),
         'gh pr edit',
       );
+      must(runGh(['pr', 'ready', branch]), 'gh pr ready');
     }
     return 'updated';
   }
