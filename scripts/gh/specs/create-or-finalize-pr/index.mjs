@@ -3,7 +3,7 @@
 // by ../pick-branch (dev vs release) and the current PR state.
 //
 // Side-effecting concerns (subprocess invocation, argv/env handling) live in
-// ./cli.mjs.
+// the command file, ../create-or-finalize-pr.mjs.
 
 /**
  * Result of an injected `gh`/`git` invocation.
@@ -260,7 +260,7 @@ export function readEnvInputs(env, { abbr }) {
 }
 
 /**
- * Help text for `cli.mjs --help`.
+ * Help text for `create-or-finalize-pr.mjs --help`.
  *
  * @returns {string}
  */
@@ -275,7 +275,7 @@ export function cliUsage() {
     'pick-branch via $GITHUB_ENV) and expects the integration branch to be',
     'checked out.',
     '',
-    'Usage: node scripts/gh/specs/create-or-finalize-pr/cli.mjs \\',
+    'Usage: scripts/gh/specs/create-or-finalize-pr.mjs \\',
     '         [--spec=<otel|semconv>] [--[no-]dry-run]',
     '',
     'Options:',

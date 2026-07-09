@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// CLI entry point: create or finalize the integration-branch PR of a spec
-// workflow, according to the MODE picked by ../pick-branch.
+// Create or finalize the integration-branch PR of a spec workflow, according
+// to the MODE picked by ./pick-branch.
 //
 // Usage:
-//   node scripts/gh/specs/create-or-finalize-pr/cli.mjs [--spec=<id>] [--[no-]dry-run]
+//   scripts/gh/specs/create-or-finalize-pr.mjs [--spec=<id>] [--[no-]dry-run]
 //
 // Flags:
 //   -s, --spec=<id>   One of the keys defined in SPECS (e.g. `otel`,
@@ -28,12 +28,12 @@
 
 import { spawnSync } from 'node:child_process';
 
-import { parseCliArgs, SPECS } from '../pick-branch/index.mjs';
+import { parseCliArgs, SPECS } from './pick-branch/index.mjs';
 import {
   cliUsage,
   createOrFinalizePullRequest,
   readEnvInputs,
-} from './index.mjs';
+} from './create-or-finalize-pr/index.mjs';
 
 main();
 
