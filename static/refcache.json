@@ -14475,13 +14475,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-04T06:39:33.596960222Z"
   },
-  "https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-semconv-integration-branch.yml": {
+  "https://github.com/open-telemetry/opentelemetry.io/actions/workflows/specs-integration.yml": {
     "StatusCode": 206,
-    "LastSeen": "2026-07-05T06:52:18.404479339Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-spec-integration-branch.yml": {
-    "StatusCode": 206,
-    "LastSeen": "2026-07-05T06:52:17.863821339Z"
+    "LastSeen": "2026-07-09T18:00:00Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/248cc6f/.github/scripts/blog-publish-check.sh": {
     "StatusCode": 206,
@@ -14611,13 +14607,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-03T06:53:37.736209492Z"
   },
-  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-semconv-integration-branch.yml": {
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/specs-integration.yml": {
     "StatusCode": 206,
-    "LastSeen": "2026-07-06T07:07:46.714643956Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branch.yml": {
-    "StatusCode": 206,
-    "LastSeen": "2026-07-06T07:07:44.012632002Z"
+    "LastSeen": "2026-07-09T18:00:00Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.gitmodules": {
     "StatusCode": 206,
@@ -14678,6 +14670,14 @@
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/cp-pages.sh": {
     "StatusCode": 206,
     "LastSeen": "2026-07-04T06:46:14.895591302Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/create-or-finalize-pr.mjs": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-09T13:00:00Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/pick-branch.mjs": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-09T12:43:01.609549-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration": {
     "StatusCode": 206,
