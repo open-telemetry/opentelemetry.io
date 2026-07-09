@@ -14681,7 +14681,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/create-or-finalize-pr.mjs": {
     "StatusCode": 206,
-    "LastSeen": "2026-07-09T13:00:00.000000000Z"
+    "LastSeen": "2026-07-09T13:00:00Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration": {
     "StatusCode": 206,

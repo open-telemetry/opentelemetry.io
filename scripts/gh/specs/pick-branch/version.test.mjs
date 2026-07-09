@@ -291,6 +291,24 @@ describe('pick-branch: mode selection', () => {
     assert.equal(result.branch, `${PREFIX}-v1.59.0-dev`);
   });
 
+  test('release mode: rejects malformed latest release tag', () => {
+    // The tag flows into $GITHUB_ENV and thence into workflow shell steps
+    // (e.g. `git reset --hard $VERSION`), so a tag crafted as an option
+    // (`--upload-pack=...`) must never leave this function.
+    assert.throws(
+      () =>
+        computeIntegrationVersion({
+          branchPrefix: PREFIX,
+          branchesOutput: `  origin/${PREFIX}-v1.59.0-dev\n`,
+          pinnedVersion: 'v1.58.0',
+          isReleased: isReleasedUnexpected,
+          getLatestReleaseTag: () => 'v99.0.0--upload-pack=/tmp/x',
+          log: noLog,
+        }),
+      /unexpected version/,
+    );
+  });
+
   test('release mode: no branch -> create branch for latest release', () => {
     const result = computeIntegrationVersion({
       branchPrefix: PREFIX,

@@ -63,6 +63,14 @@ export function computeIntegrationVersion({
   };
 
   const latestRelease = getLatestReleaseTag();
+  // Reject malformed tags before latestRelease flows into $GITHUB_ENV, where
+  // workflow shell steps interpolate it (a tag crafted as a command option
+  // could otherwise reach, e.g., `git reset --hard $VERSION`).
+  if (!/^v\d+\.\d+\.\d+$/.test(latestRelease)) {
+    throw new Error(
+      `unexpected version: ${latestRelease} (expected vX.Y.Z as the latest release tag)`,
+    );
+  }
   const pinned = parsePinnedVersion(pinnedVersion);
 
   let version = extractVersionFromBranches(
