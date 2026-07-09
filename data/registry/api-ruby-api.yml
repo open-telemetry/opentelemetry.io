@@ -1,5 +1,5 @@
 title: opentelemetry-api
-registryType: core
+registryType: api
 language: ruby
 tags:
   - ruby
@@ -8,11 +8,11 @@ description: A stats collection and distributed tracing framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-api/v1.10.0/api
-  docs: https://rubydoc.info/gems/opentelemetry-api/1.10.0
+  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-api/v1.10.1/api
+  docs: https://rubydoc.info/gems/opentelemetry-api/1.10.1
   website: https://github.com/open-telemetry/opentelemetry-ruby
 createdAt: 2020-02-04
 package:
   registry: gems
   name: opentelemetry-api
-  version: 1.10.0
+  version: 1.10.1

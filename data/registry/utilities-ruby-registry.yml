@@ -1,0 +1,20 @@
+title: opentelemetry-registry
+registryType: utilities
+language: ruby
+tags:
+  - registry
+  - utilities
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-registry/v0.6.1/registry
+  docs: https://rubydoc.info/gems/opentelemetry-registry/0.6.1
+  website: https://github.com/open-telemetry/opentelemetry-ruby
+license: Apache-2.0
+description: Registry for the OpenTelemetry Instrumentation Libraries
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09
+package:
+  registry: gems
+  name: opentelemetry-registry
+  version: 0.6.1

@@ -1,0 +1,20 @@
+title: opentelemetry-metrics-api
+registryType: api
+language: ruby
+tags:
+  - metrics_api
+  - core
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-metrics-api/v0.6.1/metrics_api
+  docs: https://rubydoc.info/gems/opentelemetry-metrics-api/0.6.1
+  website: https://github.com/open-telemetry/opentelemetry-ruby
+license: Apache-2.0
+description: A stats collection and distributed tracing framework
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09
+package:
+  registry: gems
+  name: opentelemetry-metrics-api
+  version: 0.6.1

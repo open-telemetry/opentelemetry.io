@@ -1,5 +1,5 @@
 title: opentelemetry-sdk
-registryType: core
+registryType: sdk
 language: ruby
 tags:
   - ruby
