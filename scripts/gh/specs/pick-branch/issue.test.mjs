@@ -45,7 +45,7 @@ describe('pick-branch: ensureWarningIssueOpen', () => {
       log: (m) => logs.push(m),
     });
     assert.equal(outcome, 'unchanged');
-    assert.equal(calls.length, 1, 'only the issue-list call is made');
+    assert.equal(calls.length, 1, 'issue-list is the sole gh call');
     assert.deepEqual(calls[0].slice(0, 2), ['issue', 'list']);
     assert.match(logs[0], /already open; nothing to do/);
   });
@@ -103,7 +103,11 @@ describe('pick-branch: ensureWarningIssueOpen', () => {
       log: (m) => logs.push(m),
     });
     assert.equal(outcome, 'created');
-    assert.equal(calls.length, 1, 'only the read-only issue-list call runs');
+    assert.equal(
+      calls.length,
+      1,
+      'the read-only issue-list is the sole gh call',
+    );
     assert.deepEqual(calls[0].slice(0, 2), ['issue', 'list']);
     assert.ok(
       logs.some((m) => /\[dry-run\] Opening an issue/.test(m)),
@@ -124,7 +128,7 @@ describe('pick-branch: ensureWarningIssueOpen', () => {
     });
     assert.equal(outcome, 'unchanged');
     assert.equal(calls.length, 1);
-    assert.equal(logs.length, 1, 'only the no-op message is logged');
+    assert.equal(logs.length, 1, 'the no-op message is the sole log line');
     assert.match(logs[0], /already open; nothing to do/);
   });
 

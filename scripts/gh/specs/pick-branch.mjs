@@ -40,14 +40,14 @@ function main() {
     );
   } else {
     console.log(
-      '  Will append VERSION/BRANCH to $GITHUB_ENV (if set) and may create a tracking issue via `gh`. Pass --dry-run to skip writes.',
+      '  Will append MODE/VERSION/BRANCH to $GITHUB_ENV (if set) and may create a tracking issue via `gh`. Pass --dry-run to skip writes.',
     );
   }
 
   const githubEnv = dryRun ? null : process.env.GITHUB_ENV || null;
   if (!dryRun && !githubEnv) {
     console.log(
-      '[note] GITHUB_ENV is unset; VERSION/BRANCH will be printed to stdout only.',
+      '[note] GITHUB_ENV is unset; MODE/VERSION/BRANCH will be printed to stdout only.',
     );
   }
 
