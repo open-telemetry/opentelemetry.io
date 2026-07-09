@@ -1,14 +1,16 @@
+# cSpell:ignore awsxray
 title: OpenTelemetry Propagator for AWS X-Ray Service
 registryType: propagator
 language: python
 tags:
-    - awsxray
-    - propagator
-    - python
+  - awsxray
+  - propagator
+  - python
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/propagator/opentelemetry-propagator-aws-xray
+  repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/propagator/opentelemetry-propagator-aws-xray
 license: Apache 2.0
-description: This library provides the propagator necessary to inject or extract a tracing
+description:
+  This library provides the propagator necessary to inject or extract a tracing
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

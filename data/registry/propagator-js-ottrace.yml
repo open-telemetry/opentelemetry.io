@@ -1,14 +1,16 @@
+# cSpell:ignore ottrace
 title: OpenTelemetry OTTracePropagator
 registryType: propagator
 language: js
 tags:
-    - ottrace
-    - propagator
-    - js
+  - ottrace
+  - propagator
+  - js
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/propagator-ot-trace
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/propagator-ot-trace
 license: Apache 2.0
-description: The OT trace propagation format expects trace ids to be 64 bits. In order to
+description:
+  The OT trace propagation format expects trace IDs to be 64 bits. In order to
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

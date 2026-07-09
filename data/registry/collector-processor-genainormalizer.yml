@@ -1,14 +1,18 @@
+# cSpell:ignore genainormalizer
 title: GenAI Normalizer Processor
 registryType: processor
 language: collector
 tags:
-    - genainormalizer
-    - processor
-    - collector
+  - genainormalizer
+  - processor
+  - collector
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/genainormalizerprocessor
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/genainormalizerprocessor
 license: Apache 2.0
-description: The GenAI Normalizer Processor rewrites attributes on spans emitted by non-OTel GenAI instrumentation libraries into the [OTel GenAI Semantic Conventions](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/README.md).
+description:
+  The GenAI Normalizer Processor rewrites attributes on spans emitted by
+  non-OTel GenAI instrumentation libraries into the [OTel GenAI Semantic
+  Conventions](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/README.md).
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

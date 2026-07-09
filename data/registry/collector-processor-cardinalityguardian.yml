@@ -1,14 +1,17 @@
+# cSpell:ignore cardinalityguardian
 title: Cardinality Guardian Processor
 registryType: processor
 language: collector
 tags:
-    - cardinalityguardian
-    - processor
-    - collector
+  - cardinalityguardian
+  - processor
+  - collector
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cardinalityguardianprocessor
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cardinalityguardianprocessor
 license: Apache 2.0
-description: An OpenTelemetry Collector processor that catches metric cardinality explosions before they reach your TSDB.
+description:
+  An OpenTelemetry Collector processor that catches metric cardinality
+  explosions before they reach your TSDB.
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

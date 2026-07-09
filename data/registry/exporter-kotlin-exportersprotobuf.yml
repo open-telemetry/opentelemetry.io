@@ -1,14 +1,15 @@
+# cSpell:ignore exporterspersistence, exportersprotobuf
 title: exporters-protobuf
 registryType: exporter
 language: kotlin
 tags:
-    - exportersprotobuf
-    - exporter
-    - kotlin
+  - exportersprotobuf
+  - exporter
+  - kotlin
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-kotlin/tree/main/exporters-protobuf
+  repo: https://github.com/open-telemetry/opentelemetry-kotlin/tree/main/exporters-protobuf
 license: Apache 2.0
 description: This module contains the span/log exporter implementations.
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

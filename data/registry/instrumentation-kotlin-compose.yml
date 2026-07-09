@@ -2,13 +2,13 @@ title: compose
 registryType: instrumentation
 language: kotlin
 tags:
-    - compose
-    - instrumentation
-    - kotlin
+  - compose
+  - instrumentation
+  - kotlin
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/compose
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/compose
 license: Apache 2.0
-description: 
+description:
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

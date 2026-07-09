@@ -1,14 +1,17 @@
-title: Android Instrumentation for URLConnection, HttpURLConnection and HttpsURLConnection
+# cSpell:ignore httpurlconnection
+title: >
+  Android Instrumentation for URLConnection, HttpURLConnection and
+  HttpsURLConnection
 registryType: instrumentation
 language: kotlin
 tags:
-    - httpurlconnection
-    - instrumentation
-    - kotlin
+  - httpurlconnection
+  - instrumentation
+  - kotlin
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/httpurlconnection
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/httpurlconnection
 license: Apache 2.0
-description: Status: development
+description:
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

@@ -2,13 +2,13 @@ title: Fragment Instrumentation
 registryType: instrumentation
 language: kotlin
 tags:
-    - fragment
-    - instrumentation
-    - kotlin
+  - fragment
+  - instrumentation
+  - kotlin
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/fragment
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/fragment
 license: Apache 2.0
-description: Status: development
+description:
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

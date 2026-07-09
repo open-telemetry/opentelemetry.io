@@ -87,7 +87,13 @@ const scanners = {
     scanByLanguage('instrumentation', 'cpp', 'instrumentation');
     scanByLanguage('exporter', 'cpp', 'exporters');
     scanByLanguage('exporter', 'cpp', 'exporters', 'md', 'opentelemetry-cpp');
-    scanByLanguage('resource-detector', 'cpp', 'resource_detectors', 'md', 'opentelemetry-cpp');
+    scanByLanguage(
+      'resource-detector',
+      'cpp',
+      'resource_detectors',
+      'md',
+      'opentelemetry-cpp',
+    );
   },
   js: () => {
     scanByLanguage(
@@ -96,7 +102,7 @@ const scanners = {
       'packages',
       'md',
       'opentelemetry-js-contrib',
-      (item) => item.name.toLowerCase().startsWith('instrumentation')
+      (item) => item.name.toLowerCase().startsWith('instrumentation'),
     );
     scanByLanguage(
       'resource-detector',
@@ -104,7 +110,7 @@ const scanners = {
       'packages',
       'md',
       'opentelemetry-js-contrib',
-      (item) => item.name.toLowerCase().startsWith('resource-detector')
+      (item) => item.name.toLowerCase().startsWith('resource-detector'),
     );
     scanByLanguage(
       'propagator',
@@ -112,7 +118,7 @@ const scanners = {
       'packages',
       'md',
       'opentelemetry-js-contrib',
-      (item) => item.name.toLowerCase().startsWith('propagator')
+      (item) => item.name.toLowerCase().startsWith('propagator'),
     );
     scanByLanguage(
       'sampler',
@@ -120,7 +126,7 @@ const scanners = {
       'packages',
       'md',
       'opentelemetry-js-contrib',
-      (item) => item.name.toLowerCase().startsWith('sampler')
+      (item) => item.name.toLowerCase().startsWith('sampler'),
     );
     scanByLanguage(
       'sampler',
@@ -128,7 +134,7 @@ const scanners = {
       'packages',
       'md',
       'opentelemetry-js-contrib',
-      (item) => item.name.toLowerCase().startsWith('sampler')
+      (item) => item.name.toLowerCase().startsWith('sampler'),
     );
     scanByLanguage(
       'processor',
@@ -136,7 +142,7 @@ const scanners = {
       'packages',
       'md',
       'opentelemetry-js-contrib',
-      (item) => item.name.toLowerCase().endsWith('processor')
+      (item) => item.name.toLowerCase().endsWith('processor'),
     );
     scanByLanguage(
       'id-generator',
@@ -144,7 +150,7 @@ const scanners = {
       'packages',
       'md',
       'opentelemetry-js-contrib',
-      (item) => item.name.toLowerCase().startsWith('id-generator')
+      (item) => item.name.toLowerCase().startsWith('id-generator'),
     );
   },
   java: () => {
@@ -157,7 +163,13 @@ const scanners = {
     );
   },
   kotlin: () => {
-    scanByLanguage('instrumentation', 'kotlin', 'instrumentation', 'md', 'opentelemetry-android',);
+    scanByLanguage(
+      'instrumentation',
+      'kotlin',
+      'instrumentation',
+      'md',
+      'opentelemetry-android',
+    );
     scanByLanguage(
       'exporter',
       'kotlin',
@@ -183,7 +195,13 @@ const scanners = {
   },
   python: () => {
     scanByLanguage('instrumentation', 'python', 'instrumentation', 'rst');
-    scanByLanguage('instrumentation', 'python', 'instrumentation', 'rst', 'opentelemetry-python-genai');
+    scanByLanguage(
+      'instrumentation',
+      'python',
+      'instrumentation',
+      'rst',
+      'opentelemetry-python-genai',
+    );
     scanByLanguage(
       'exporter',
       'python',
@@ -234,7 +252,13 @@ const scanners = {
     );
     scanByLanguage('exporter', 'php', 'src/Exporter');
     scanByLanguage('propagator', 'php', 'src/Propagation');
-    scanByLanguage('propagator', 'php', 'src/Extension/Propagator', 'md', 'opentelemetry-php');
+    scanByLanguage(
+      'propagator',
+      'php',
+      'src/Extension/Propagator',
+      'md',
+      'opentelemetry-php',
+    );
     scanByLanguage('resource-detector', 'php', 'src/ResourceDetectors');
     scanByLanguage('sampler', 'php', 'src/Sampler');
   },
@@ -265,12 +289,48 @@ const scanners = {
     );
   },
   swift: () => {
-    scanByLanguage('log-bridge', 'swift', 'Sources/Bridges', 'md', 'opentelemetry-swift');
-    scanByLanguage('processor', 'swift', 'Sources/Contrib/Processors', 'md', 'opentelemetry-swift');
-    scanByLanguage('instrumentation', 'swift', 'Sources/Instrumentation', 'md', 'opentelemetry-swift');
-    scanByLanguage('exporter', 'swift', 'Sources/Exporters', 'md', 'opentelemetry-swift');
-    scanByLanguage('exporter', 'swift', 'Sources/Exporters', 'md', 'opentelemetry-swift-core');
-    scanByLanguage('utilities', 'swift', 'Sources/Importers', 'md', 'opentelemetry-swift');
+    scanByLanguage(
+      'log-bridge',
+      'swift',
+      'Sources/Bridges',
+      'md',
+      'opentelemetry-swift',
+    );
+    scanByLanguage(
+      'processor',
+      'swift',
+      'Sources/Contrib/Processors',
+      'md',
+      'opentelemetry-swift',
+    );
+    scanByLanguage(
+      'instrumentation',
+      'swift',
+      'Sources/Instrumentation',
+      'md',
+      'opentelemetry-swift',
+    );
+    scanByLanguage(
+      'exporter',
+      'swift',
+      'Sources/Exporters',
+      'md',
+      'opentelemetry-swift',
+    );
+    scanByLanguage(
+      'exporter',
+      'swift',
+      'Sources/Exporters',
+      'md',
+      'opentelemetry-swift-core',
+    );
+    scanByLanguage(
+      'utilities',
+      'swift',
+      'Sources/Importers',
+      'md',
+      'opentelemetry-swift',
+    );
   },
   all: () => {
     scanners.collector();

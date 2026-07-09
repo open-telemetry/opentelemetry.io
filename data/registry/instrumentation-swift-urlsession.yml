@@ -2,13 +2,13 @@ title: URL Session instrumentation
 registryType: instrumentation
 language: swift
 tags:
-    - URLSession
-    - instrumentation
-    - swift
+  - URLSession
+  - instrumentation
+  - swift
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/URLSession
+  repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/URLSession
 license: Apache 2.0
 description: This package captures the network calls produced by URLSession.
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

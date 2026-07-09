@@ -2,13 +2,13 @@ title: elasticsearch
 registryType: exporter
 language: cpp
 tags:
-    - elasticsearch
-    - exporter
-    - cpp
+  - elasticsearch
+  - exporter
+  - cpp
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-cpp/tree/main/exporters/elasticsearch
+  repo: https://github.com/open-telemetry/opentelemetry-cpp/tree/main/exporters/elasticsearch
 license: Apache 2.0
-description: 
+description:
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

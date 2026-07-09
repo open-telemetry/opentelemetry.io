@@ -2,13 +2,13 @@ title: Jaeger
 registryType: exporter
 language: swift
 tags:
-    - Jaeger
-    - exporter
-    - swift
+  - Jaeger
+  - exporter
+  - swift
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Exporters/Jaeger
+  repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Exporters/Jaeger
 license: Apache 2.0
-description: 
+description:
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

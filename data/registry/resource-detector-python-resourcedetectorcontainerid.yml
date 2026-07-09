@@ -1,14 +1,16 @@
+# cSpell:ignore resourcedetectorcontainerid
 title: OpenTelemetry Resource detectors for containers
 registryType: resource-detector
 language: python
 tags:
-    - resourcedetectorcontainerid
-    - resource-detector
-    - python
+  - resourcedetectorcontainerid
+  - resource-detector
+  - python
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/resource/opentelemetry-resource-detector-containerid
+  repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/resource/opentelemetry-resource-detector-containerid
 license: Apache 2.0
-description: This library provides custom resource detector for container platforms
+description:
+  This library provides custom resource detector for container platforms
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

@@ -2,13 +2,13 @@ title: x
 registryType: extension
 language: collector
 tags:
-    - x
-    - extension
-    - collector
+  - x
+  - extension
+  - collector
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/xextension
+  repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/xextension
 license: Apache 2.0
-description: 
+description:
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

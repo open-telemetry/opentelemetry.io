@@ -2,13 +2,14 @@ title: OpentelemetryTelemetry
 registryType: utilities
 language: erlang
 tags:
-    - telemetry
-    - utilities
-    - erlang
+  - telemetry
+  - utilities
+  - erlang
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/utilities/opentelemetry_telemetry
+  repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/utilities/opentelemetry_telemetry
 license: Apache 2.0
-description: A utility library for creating OpenTelemetry spans from telemetry events.
+description:
+  A utility library for creating OpenTelemetry spans from telemetry events.
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

@@ -1,14 +1,17 @@
+# cSpell:ignore exporterspersistence
 title: exporters-core
 registryType: exporter
 language: kotlin
 tags:
-    - exporterspersistence
-    - exporter
-    - kotlin
+  - exporterspersistence
+  - exporter
+  - kotlin
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-kotlin/tree/main/exporters-persistence
+  repo: https://github.com/open-telemetry/opentelemetry-kotlin/tree/main/exporters-persistence
 license: Apache 2.0
-description: This module contains exporters that persist telemetry before attempting to send it, thus avoiding
+description:
+  This module contains exporters that persist telemetry before attempting to
+  send it, thus avoiding
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

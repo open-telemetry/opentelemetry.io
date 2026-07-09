@@ -1,14 +1,15 @@
+# cSpell:ignore otelhttp
 title: otel_http
 registryType: utilities
 language: erlang
 tags:
-    - otelhttp
-    - utilities
-    - erlang
+  - otelhttp
+  - utilities
+  - erlang
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/utilities/otel_http
+  repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/utilities/otel_http
 license: Apache 2.0
 description: def deps do
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

@@ -2,13 +2,13 @@ title: Activity Instrumentation
 registryType: instrumentation
 language: kotlin
 tags:
-    - activity
-    - instrumentation
-    - kotlin
+  - activity
+  - instrumentation
+  - kotlin
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/activity
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/activity
 license: Apache 2.0
-description: Status: development
+description:
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

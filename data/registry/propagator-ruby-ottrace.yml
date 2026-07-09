@@ -1,14 +1,17 @@
+# cSpell:ignore ottrace
 title: opentelemetry-propagator-ottrace
 registryType: propagator
 language: ruby
 tags:
-    - ottrace
-    - propagator
-    - ruby
+  - ottrace
+  - propagator
+  - ruby
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/propagator/ottrace
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/propagator/ottrace
 license: Apache 2.0
-description: The `opentelemetry-propagator-ottrace` gem contains injectors and extractors for the
+description:
+  The `opentelemetry-propagator-ottrace` gem contains injectors and extractors
+  for the
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

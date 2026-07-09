@@ -1,14 +1,17 @@
+# cSpell:ignore exportersinmemory
 title: exporters-in-memory
 registryType: exporter
 language: kotlin
 tags:
-    - exportersinmemory
-    - exporter
-    - kotlin
+  - exportersinmemory
+  - exporter
+  - kotlin
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-kotlin/tree/main/exporters-in-memory
+  repo: https://github.com/open-telemetry/opentelemetry-kotlin/tree/main/exporters-in-memory
 license: Apache 2.0
-description: This module contains in-memory implementations of the span/log record exporters. These are intended
+description:
+  This module contains in-memory implementations of the span/log record
+  exporters. These are intended
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

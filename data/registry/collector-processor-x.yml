@@ -2,13 +2,13 @@ title: x
 registryType: processor
 language: collector
 tags:
-    - x
-    - processor
-    - collector
+  - x
+  - processor
+  - collector
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/xprocessor
+  repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/xprocessor
 license: Apache 2.0
-description: 
+description:
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

@@ -2,13 +2,13 @@ title: RuleBasedSampler
 registryType: sampler
 language: php
 tags:
-    - RuleBased
-    - sampler
-    - php
+  - RuleBased
+  - sampler
+  - php
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Sampler/RuleBased
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Sampler/RuleBased
 license: Apache 2.0
 description: Allows sampling based on a list of rule sets.
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

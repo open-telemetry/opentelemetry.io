@@ -1,14 +1,17 @@
+# cSpell:ignore googlecloudtracecontext
 title: opentelemetry-propagator-google_cloud_trace_context
 registryType: propagator
 language: ruby
 tags:
-    - googlecloudtracecontext
-    - propagator
-    - ruby
+  - googlecloudtracecontext
+  - propagator
+  - ruby
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/propagator/google_cloud_trace_context
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/propagator/google_cloud_trace_context
 license: Apache 2.0
-description: The `opentelemetry-propagator-google_cloud_trace_context` gem contains injectors and extractors for the
+description:
+  The `opentelemetry-propagator-google_cloud_trace_context` gem contains
+  injectors and extractors for the
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

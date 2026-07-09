@@ -2,13 +2,15 @@ title: Session Instrumentation
 registryType: instrumentation
 language: kotlin
 tags:
-    - sessions
-    - instrumentation
-    - kotlin
+  - sessions
+  - instrumentation
+  - kotlin
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/sessions
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/sessions
 license: Apache 2.0
-description: Out of the box, the `opentelemetry-android` agent will create and manage sessions. Sessions are associated
+description:
+  Out of the box, the `opentelemetry-android` agent will create and manage
+  sessions. Sessions are associated
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

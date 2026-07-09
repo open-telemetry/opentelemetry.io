@@ -2,13 +2,15 @@ title: SignPost Integration
 registryType: instrumentation
 language: swift
 tags:
-    - SignPostIntegration
-    - instrumentation
-    - swift
+  - SignPostIntegration
+  - instrumentation
+  - swift
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/SignPostIntegration
+  repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/SignPostIntegration
 license: Apache 2.0
-description: This package creates `os_signpost` `begin` and `end` calls when spans are started or ended. It allows automatic integration of applications
+description:
+  This package creates `os_signpost` `begin` and `end` calls when spans are
+  started or ended. It allows automatic integration of applications
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

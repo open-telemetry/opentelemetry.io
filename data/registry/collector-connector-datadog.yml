@@ -2,13 +2,17 @@ title: Datadog Connector
 registryType: connector
 language: collector
 tags:
-    - datadog
-    - connector
-    - collector
+  - datadog
+  - connector
+  - collector
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/datadogconnector
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/datadogconnector
 license: Apache 2.0
-description: The Datadog Connector is a connector component that derives APM statistics, in the form of metrics, from service traces, for display in the Datadog APM product. This component is *required* for trace-emitting services and their statistics to appear in Datadog APM.
+description:
+  The Datadog Connector is a connector component that derives APM statistics, in
+  the form of metrics, from service traces, for display in the Datadog
+  APM product. This component is *required* for trace-emitting services and
+  their statistics to appear in Datadog APM.
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

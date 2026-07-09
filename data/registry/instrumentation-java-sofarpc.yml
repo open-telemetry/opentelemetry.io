@@ -1,14 +1,15 @@
+# cSpell:ignore sofarpc
 title: sofarpc
 registryType: instrumentation
 language: java
 tags:
-    - sofarpc
-    - instrumentation
-    - java
+  - sofarpc
+  - instrumentation
+  - java
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/sofa-rpc-5.4
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/sofa-rpc-5.4
 license: Apache 2.0
-description: 
+description:
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

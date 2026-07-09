@@ -2,13 +2,14 @@ title: OpenTelemetry Resource Detectors
 registryType: resource-detector
 language: rust
 tags:
-    - resourcedetectors
-    - resource-detector
-    - rust
+  - resource-detector
+  - rust
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-rust-contrib/tree/main/opentelemetry-resource-detectors
+  repo: https://github.com/open-telemetry/opentelemetry-rust-contrib/tree/main/opentelemetry-resource-detectors
 license: Apache 2.0
-description: Community supported Resource detectors implementations for applications instrumented with [`OpenTelemetry`].
+description:
+  Community supported Resource detectors implementations for applications
+  instrumented with [`OpenTelemetry`].
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

@@ -2,13 +2,13 @@ title: NetworkStatus
 registryType: instrumentation
 language: swift
 tags:
-    - NetworkStatus
-    - instrumentation
-    - swift
+  - NetworkStatus
+  - instrumentation
+  - swift
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/NetworkStatus
+  repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/NetworkStatus
 license: Apache 2.0
-description: 
+description:
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

@@ -2,13 +2,15 @@ title: SDK Resource extension
 registryType: instrumentation
 language: swift
 tags:
-    - SDKResourceExtension
-    - instrumentation
-    - swift
+  - SDKResourceExtension
+  - instrumentation
+  - swift
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/SDKResourceExtension
+  repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/SDKResourceExtension
 license: Apache 2.0
-description: This package captures a number of key data points of an application and generates a Resource object that can be passed to a `TracerProvider`
+description:
+  This package captures a number of key data points of an application and
+  generates a Resource object that can be passed to a `TracerProvider`
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

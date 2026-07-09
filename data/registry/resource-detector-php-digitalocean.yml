@@ -2,13 +2,15 @@ title: OpenTelemetry DigitalOcean resource detector
 registryType: resource-detector
 language: php
 tags:
-    - DigitalOcean
-    - resource-detector
-    - php
+  - DigitalOcean
+  - resource-detector
+  - php
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/ResourceDetectors/DigitalOcean
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/ResourceDetectors/DigitalOcean
 license: Apache 2.0
-description: This is a read-only subtree split of https://github.com/open-telemetry/opentelemetry-php-contrib.
+description:
+  This is a read-only subtree split of
+  https://github.com/open-telemetry/opentelemetry-php-contrib.
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

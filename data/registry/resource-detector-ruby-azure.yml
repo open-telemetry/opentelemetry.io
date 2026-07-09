@@ -2,13 +2,15 @@ title: OpenTelemetry::Resource::Detector::Azure
 registryType: resource-detector
 language: ruby
 tags:
-    - azure
-    - resource-detector
-    - ruby
+  - azure
+  - resource-detector
+  - ruby
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/resources/azure
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/resources/azure
 license: Apache 2.0
-description: The `opentelemetry-resource-detector-azure` gem provides an Azure resource detector for OpenTelemetry.
+description:
+  The `opentelemetry-resource-detector-azure` gem provides an Azure resource
+  detector for OpenTelemetry.
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

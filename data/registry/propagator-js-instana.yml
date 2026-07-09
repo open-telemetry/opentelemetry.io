@@ -2,13 +2,15 @@ title: OpenTelemetry Instana Propagator
 registryType: propagator
 language: js
 tags:
-    - instana
-    - propagator
-    - js
+  - instana
+  - propagator
+  - js
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/propagator-instana
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/propagator-instana
 license: Apache 2.0
-description: The OpenTelemetry Propagator for Instana provides HTTP header propagation for systems that are using IBM Observability by Instana.
+description:
+  The OpenTelemetry Propagator for Instana provides HTTP header propagation for
+  systems that are using IBM Observability by Instana.
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

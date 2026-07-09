@@ -2,13 +2,13 @@ title: Prometheus
 registryType: exporter
 language: swift
 tags:
-    - Prometheus
-    - exporter
-    - swift
+  - Prometheus
+  - exporter
+  - swift
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Exporters/Prometheus
+  repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Exporters/Prometheus
 license: Apache 2.0
-description: 
+description:
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

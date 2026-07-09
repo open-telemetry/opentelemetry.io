@@ -1,14 +1,15 @@
+# cSpell:ignore exportersotlp
 title: exporters-otlp
 registryType: exporter
 language: kotlin
 tags:
-    - exportersotlp
-    - exporter
-    - kotlin
+  - exportersotlp
+  - exporter
+  - kotlin
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-kotlin/tree/main/exporters-otlp
+  repo: https://github.com/open-telemetry/opentelemetry-kotlin/tree/main/exporters-otlp
 license: Apache 2.0
 description: This module contains OTLP exporter implementations.
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

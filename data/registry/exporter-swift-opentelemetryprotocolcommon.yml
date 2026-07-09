@@ -2,13 +2,13 @@ title: OpenTelemetryProtocolCommon
 registryType: exporter
 language: swift
 tags:
-    - OpenTelemetryProtocolCommon
-    - exporter
-    - swift
+  - OpenTelemetryProtocolCommon
+  - exporter
+  - swift
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Exporters/OpenTelemetryProtocolCommon
+  repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Exporters/OpenTelemetryProtocolCommon
 license: Apache 2.0
-description: 
+description:
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

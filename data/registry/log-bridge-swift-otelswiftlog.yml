@@ -1,14 +1,14 @@
-title: ## How to use OTelLogHandler
+title: OTelSwiftLog
 registryType: log-bridge
 language: swift
 tags:
-    - OTelSwiftLog
-    - log-bridge
-    - swift
+  - OTelSwiftLog
+  - log-bridge
+  - swift
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Bridges/OTelSwiftLog
+  repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Bridges/OTelSwiftLog
 license: Apache 2.0
 description: import Foundation
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

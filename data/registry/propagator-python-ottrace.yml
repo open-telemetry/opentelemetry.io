@@ -1,14 +1,15 @@
+# cSpell:ignore ottrace
 title: OpenTelemetry OT Trace Propagator
 registryType: propagator
 language: python
 tags:
-    - ottrace
-    - propagator
-    - python
+  - ottrace
+  - propagator
+  - python
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/propagator/opentelemetry-propagator-ot-trace
+  repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/propagator/opentelemetry-propagator-ot-trace
 license: Apache 2.0
 description: Installation
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

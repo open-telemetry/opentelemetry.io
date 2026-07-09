@@ -1,14 +1,17 @@
+# cSpell:ignore awsxraylambda
 title: OpenTelemetry Propagator AWS X-Ray-Lambda
 registryType: propagator
 language: js
 tags:
-    - awsxraylambda
-    - propagator
-    - js
+  - awsxraylambda
+  - propagator
+  - js
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/propagator-aws-xray-lambda
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/propagator-aws-xray-lambda
 license: Apache 2.0
-description: The OpenTelemetry Propagator for AWS X-Ray Lambda provides propagation based on the X-Ray `_X_AMZN_TRACE_ID` environment
+description:
+  The OpenTelemetry Propagator for AWS X-Ray Lambda provides propagation based
+  on the X-Ray `_X_AMZN_TRACE_ID` environment
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09

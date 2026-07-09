@@ -2,13 +2,16 @@ title: OpenTelemetry Resource detectors for Azure
 registryType: resource-detector
 language: python
 tags:
-    - resourcedetectorazure
-    - resource-detector
-    - python
+  - azure
+  - resource-detector
+  - python
 urls:
-    repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/resource/opentelemetry-resource-detector-azure
+  repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/resource/opentelemetry-resource-detector-azure
 license: Apache 2.0
-description: This library contains OpenTelemetry `Resource Detectors <https://opentelemetry.io/docs/specs/otel/resource/sdk/#detecting-resource-information-from-the-environment>`_ for the following Azure resources:
+description:
+  This library contains OpenTelemetry `Resource Detectors
+  <https://opentelemetry.io/docs/specs/otel/resource/sdk/#detecting-resource-information-from-the-environment>`_
+  for Azure resources.
 authors:
-    - name: OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2026-07-09
