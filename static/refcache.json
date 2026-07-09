@@ -7355,6 +7355,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-09T06:58:19.549459419Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-browser/tree/main/packages/instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-09T09:14:24.407308059Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-browser/tree/main/packages/instrumentation/src": {
     "StatusCode": 206,
     "LastSeen": "2026-07-09T06:58:10.359372918Z"
@@ -10506,6 +10510,10 @@
   "https://github.com/open-telemetry/opentelemetry-cpp/tree/main/opentracing-shim": {
     "StatusCode": 206,
     "LastSeen": "2026-07-05T06:51:25.513574041Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-cpp/tree/main/resource_detectors/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-09T09:14:25.764526298Z"
   },
   "https://github.com/open-telemetry/opentelemetry-cpp/tree/main/resource_detectors/include": {
     "StatusCode": 206,
