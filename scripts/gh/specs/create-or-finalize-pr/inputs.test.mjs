@@ -1,5 +1,5 @@
 // Tests for readEnvInputs: strict validation of the MODE/VERSION/BRANCH
-// environment values that the ensure-pr CLI consumes.
+// environment values that the create-or-finalize-pr CLI consumes.
 
 import { describe, test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -14,7 +14,7 @@ const VALID_ENV = {
   BRANCH: 'otelbot/spec-integration-v1.59.0-dev',
 };
 
-describe('ensure-pr: readEnvInputs', () => {
+describe('create-or-finalize-pr: readEnvInputs', () => {
   test('accepts valid dev-mode inputs', () => {
     const inputs = readEnvInputs(VALID_ENV, SPEC);
     assert.deepEqual(inputs, {

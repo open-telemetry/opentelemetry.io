@@ -3,7 +3,7 @@
 // workflow, according to the MODE picked by ../pick-branch.
 //
 // Usage:
-//   node scripts/gh/specs/ensure-pr/cli.mjs [--spec=<id>] [--[no-]dry-run]
+//   node scripts/gh/specs/create-or-finalize-pr/cli.mjs [--spec=<id>] [--[no-]dry-run]
 //
 // Flags:
 //   -s, --spec=<id>   One of the keys defined in SPECS (e.g. `otel`,
@@ -29,7 +29,11 @@
 import { spawnSync } from 'node:child_process';
 
 import { parseCliArgs, SPECS } from '../pick-branch/index.mjs';
-import { cliUsage, ensurePullRequest, readEnvInputs } from './index.mjs';
+import {
+  cliUsage,
+  createOrFinalizePullRequest,
+  readEnvInputs,
+} from './index.mjs';
 
 main();
 
@@ -62,7 +66,7 @@ function main() {
   );
   console.log(`[input] MODE: ${mode}; VERSION: ${version}; BRANCH: ${branch}`);
 
-  const { action } = ensurePullRequest({
+  const { action } = createOrFinalizePullRequest({
     mode,
     repo,
     version,

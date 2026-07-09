@@ -1,10 +1,10 @@
-// State-table tests for ensurePullRequest: the mode-aware PR create/finalize
+// State-table tests for createOrFinalizePullRequest: the mode-aware PR create/finalize
 // helper driven by injected `gh` and `git` runners.
 
 import { describe, test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { ensurePullRequest } from './index.mjs';
+import { createOrFinalizePullRequest } from './index.mjs';
 
 const noLog = () => {};
 
@@ -47,11 +47,11 @@ const OPEN_READY_PR = {
   'pr list': { stdout: '[{"number":10526,"isDraft":false}]', status: 0 },
 };
 
-describe('ensure-pr: dev mode', () => {
+describe('create-or-finalize-pr: dev mode', () => {
   test('PR already open: no-op', () => {
     const gh = makeFakeRunner(OPEN_DRAFT_PR);
     const git = makeFakeRunner();
-    const result = ensurePullRequest({
+    const result = createOrFinalizePullRequest({
       ...INPUT,
       mode: 'dev',
       dryRun: false,
@@ -69,7 +69,7 @@ describe('ensure-pr: dev mode', () => {
     const git = makeFakeRunner({
       'rev-list origin/main..HEAD': { stdout: 'abc123\n', status: 0 },
     });
-    const result = ensurePullRequest({
+    const result = createOrFinalizePullRequest({
       ...INPUT,
       mode: 'dev',
       dryRun: false,
@@ -100,7 +100,7 @@ describe('ensure-pr: dev mode', () => {
     const git = makeFakeRunner({
       'rev-list origin/main..HEAD': { stdout: '', status: 0 },
     });
-    const result = ensurePullRequest({
+    const result = createOrFinalizePullRequest({
       ...INPUT,
       mode: 'dev',
       dryRun: false,
@@ -126,7 +126,7 @@ describe('ensure-pr: dev mode', () => {
   });
 });
 
-describe('ensure-pr: release mode', () => {
+describe('create-or-finalize-pr: release mode', () => {
   const RELEASE_TITLE = 'Update opentelemetry-specification version to v1.59.0';
 
   test('no PR: creates non-draft release PR', () => {
@@ -134,7 +134,7 @@ describe('ensure-pr: release mode', () => {
     const git = makeFakeRunner({
       'rev-list origin/main..HEAD': { stdout: 'abc123\n', status: 0 },
     });
-    const result = ensurePullRequest({
+    const result = createOrFinalizePullRequest({
       ...INPUT,
       mode: 'release',
       dryRun: false,
@@ -158,7 +158,7 @@ describe('ensure-pr: release mode', () => {
   test('open draft PR: one-time finalization (ready + title + body)', () => {
     const gh = makeFakeRunner(OPEN_DRAFT_PR);
     const git = makeFakeRunner();
-    const result = ensurePullRequest({
+    const result = createOrFinalizePullRequest({
       ...INPUT,
       mode: 'release',
       dryRun: false,
@@ -180,7 +180,7 @@ describe('ensure-pr: release mode', () => {
   test('open ready PR: re-syncs the title only', () => {
     const gh = makeFakeRunner(OPEN_READY_PR);
     const git = makeFakeRunner();
-    const result = ensurePullRequest({
+    const result = createOrFinalizePullRequest({
       ...INPUT,
       mode: 'release',
       dryRun: false,
@@ -207,7 +207,7 @@ describe('ensure-pr: release mode', () => {
       },
     });
     const git = makeFakeRunner();
-    const result = ensurePullRequest({
+    const result = createOrFinalizePullRequest({
       ...INPUT,
       mode: 'release',
       dryRun: false,
@@ -220,14 +220,14 @@ describe('ensure-pr: release mode', () => {
   });
 });
 
-describe('ensure-pr: dry-run', () => {
+describe('create-or-finalize-pr: dry-run', () => {
   test('dev mode: reads state but skips all writes', () => {
     const gh = makeFakeRunner(NO_PR);
     const git = makeFakeRunner({
       'rev-list origin/main..HEAD': { stdout: '', status: 0 },
     });
     const logs = [];
-    const result = ensurePullRequest({
+    const result = createOrFinalizePullRequest({
       ...INPUT,
       mode: 'dev',
       dryRun: true,
@@ -250,7 +250,7 @@ describe('ensure-pr: dry-run', () => {
   test('release mode with draft PR: skips finalize writes', () => {
     const gh = makeFakeRunner(OPEN_DRAFT_PR);
     const git = makeFakeRunner();
-    const result = ensurePullRequest({
+    const result = createOrFinalizePullRequest({
       ...INPUT,
       mode: 'release',
       dryRun: true,
@@ -263,13 +263,13 @@ describe('ensure-pr: dry-run', () => {
   });
 });
 
-describe('ensure-pr: failure propagation', () => {
+describe('create-or-finalize-pr: failure propagation', () => {
   test('throws when gh pr list fails', () => {
     const gh = makeFakeRunner({ 'pr list': { stdout: 'boom', status: 4 } });
     const git = makeFakeRunner();
     assert.throws(
       () =>
-        ensurePullRequest({
+        createOrFinalizePullRequest({
           ...INPUT,
           mode: 'dev',
           dryRun: false,
@@ -291,7 +291,7 @@ describe('ensure-pr: failure propagation', () => {
     });
     assert.throws(
       () =>
-        ensurePullRequest({
+        createOrFinalizePullRequest({
           ...INPUT,
           mode: 'dev',
           dryRun: false,
@@ -311,7 +311,7 @@ describe('ensure-pr: failure propagation', () => {
     const git = makeFakeRunner();
     assert.throws(
       () =>
-        ensurePullRequest({
+        createOrFinalizePullRequest({
           ...INPUT,
           mode: 'release',
           dryRun: false,
@@ -331,7 +331,7 @@ describe('ensure-pr: failure propagation', () => {
     });
     assert.throws(
       () =>
-        ensurePullRequest({
+        createOrFinalizePullRequest({
           ...INPUT,
           mode: 'dev',
           dryRun: false,
@@ -348,7 +348,7 @@ describe('ensure-pr: failure propagation', () => {
     const git = makeFakeRunner();
     assert.throws(
       () =>
-        ensurePullRequest({
+        createOrFinalizePullRequest({
           ...INPUT,
           mode: 'prod',
           dryRun: false,

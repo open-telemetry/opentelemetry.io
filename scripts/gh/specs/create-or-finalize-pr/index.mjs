@@ -14,7 +14,7 @@
  */
 
 /**
- * @typedef {Object} EnsurePrResult
+ * @typedef {Object} PrActionResult
  * @property {'none'
  *   | 'created-draft' | 'bootstrapped-and-created-draft'
  *   | 'created-release' | 'finalized' | 'title-synced'
@@ -34,8 +34,8 @@
  */
 
 /**
- * Ensure the integration branch has the pull request that the current MODE
- * calls for:
+ * Create or finalize the integration branch's pull request, as the current
+ * MODE calls for:
  *
  * - **dev**: an open PR of any kind suffices; otherwise create the draft
  *   integration PR, bootstrapping the branch with an empty commit when it has
@@ -61,9 +61,9 @@
  * @param {(args: string[]) => RunResult} input.runGit
  *   Synchronous `git` runner. Receives the argv (without `git`).
  * @param {(msg: string) => void} [input.log]
- * @returns {EnsurePrResult}
+ * @returns {PrActionResult}
  */
-export function ensurePullRequest({
+export function createOrFinalizePullRequest({
   mode,
   repo,
   version,
@@ -93,12 +93,29 @@ export function ensurePullRequest({
   const pr = JSON.parse(list.stdout || '[]')[0] ?? null;
 
   return mode === 'dev'
-    ? ensureDevPr({ pr, repo, version, branch, dryRun, runGh, runGit, log })
-    : ensureReleasePr({ pr, repo, version, branch, dryRun, runGh, log });
+    ? createDevPrIfMissing({
+        pr,
+        repo,
+        version,
+        branch,
+        dryRun,
+        runGh,
+        runGit,
+        log,
+      })
+    : createOrFinalizeReleasePr({
+        pr,
+        repo,
+        version,
+        branch,
+        dryRun,
+        runGh,
+        log,
+      });
 }
 
 /** Dev mode: make sure the draft integration PR exists. */
-function ensureDevPr({
+function createDevPrIfMissing({
   pr,
   repo,
   version,
@@ -161,7 +178,15 @@ function ensureDevPr({
 }
 
 /** Release mode: create the release PR, or finalize/re-sync the existing one. */
-function ensureReleasePr({ pr, repo, version, branch, dryRun, runGh, log }) {
+function createOrFinalizeReleasePr({
+  pr,
+  repo,
+  version,
+  branch,
+  dryRun,
+  runGh,
+  log,
+}) {
   const title = `Update ${repo} version to ${version}`;
   const body = `Update ${repo} version to \`${version}\`.\n\nSee https://github.com/open-telemetry/${repo}/releases/tag/${version}.`;
 
@@ -269,7 +294,7 @@ export function cliUsage() {
     'pick-branch via $GITHUB_ENV) and expects the integration branch to be',
     'checked out.',
     '',
-    'Usage: node scripts/gh/specs/ensure-pr/cli.mjs \\',
+    'Usage: node scripts/gh/specs/create-or-finalize-pr/cli.mjs \\',
     '         [--spec=<otel|semconv>] [--[no-]dry-run]',
     '',
     'Options:',
