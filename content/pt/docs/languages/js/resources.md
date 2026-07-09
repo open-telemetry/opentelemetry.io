@@ -58,8 +58,8 @@ ProcessDetector found resource. Resource {
 
 ## Adicionando recursos com variáveis de ambiente {#adding-resources-with-environment-variables}
 
-No exemplo acima, o SDK detectou o processo e também adicionou automaticamente
-o atributo `host.name=localhost` definido pela variável de ambiente.
+No exemplo acima, o SDK detectou o processo e também adicionou automaticamente o
+atributo `host.name=localhost` definido pela variável de ambiente.
 
 Abaixo você encontrará instruções para que os recursos sejam detectados
 automaticamente para você. No entanto, você pode se deparar com a situação em
