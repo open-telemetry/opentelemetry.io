@@ -1706,11 +1706,6 @@ approvers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/amazingakai
     avatar_url: https://avatars.githubusercontent.com/u/93782497?v=4
-  - name: arielvalentin
-    teams:
-      - ruby-approvers
-    html_url: https://github.com/arielvalentin
-    avatar_url: https://avatars.githubusercontent.com/u/82798?v=4
   - name: ArthurSens
     teams:
       - collector-contrib-approvers
@@ -1854,11 +1849,6 @@ approvers:
       - semconv-oracle-cloud-approvers
     html_url: https://github.com/geekdave
     avatar_url: https://avatars.githubusercontent.com/u/1438478?v=4
-  - name: GregMefford
-    teams:
-      - erlang-approvers
-    html_url: https://github.com/GregMefford
-    avatar_url: https://avatars.githubusercontent.com/u/69467?v=4
   - name: hannahramadan
     teams:
       - ruby-contrib-approvers
