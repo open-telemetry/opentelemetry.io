@@ -23,6 +23,9 @@ export const SPECS = Object.freeze({
  *   Branch prefix, e.g. `otelbot/spec-integration`.
  * @property {string} branchesOutput
  *   Raw output of `git branch -r` (one ref per line).
+ * @property {string} pinnedVersion
+ *   Raw submodule pin from `.gitmodules` on main (e.g. `v1.58.0`, or
+ *   `git describe` output such as `v0.15.0-22-g3bcd6e7d`).
  * @property {(version: string) => boolean} isReleased
  *   Returns true iff `version` is an existing tag in the upstream repo.
  * @property {() => string} getLatestReleaseTag
@@ -36,14 +39,18 @@ export const SPECS = Object.freeze({
 
 /**
  * @param {ComputeInput} input
- * @returns {{ version: string, branch: string, warnings: string[], latestRelease: string }}
- *   `version` is the next dev version to integrate (e.g. `v1.56.0`).
+ * @returns {{ mode: 'dev'|'release', version: string, branch: string, warnings: string[], latestRelease: string }}
+ *   `mode` is `release` when the latest upstream release is newer than the
+ *   version pinned on main — the integration branch should then finalize into
+ *   the release PR; otherwise `dev`.
+ *   `version` is the version to integrate (e.g. `v1.56.0`).
  *   `latestRelease` is the most recent published release tag of the upstream
  *   repo (e.g. `v1.55.0`), included for reporting.
  */
 export function computeIntegrationVersion({
   branchPrefix,
   branchesOutput,
+  pinnedVersion,
   isReleased,
   getLatestReleaseTag,
   log = console.log,
@@ -56,12 +63,37 @@ export function computeIntegrationVersion({
   };
 
   const latestRelease = getLatestReleaseTag();
+  // Reject malformed tags before latestRelease flows into $GITHUB_ENV, where
+  // workflow shell steps interpolate it (a tag crafted as a command option
+  // could otherwise reach, e.g., `git reset --hard $VERSION`).
+  if (!/^v\d+\.\d+\.\d+$/.test(latestRelease)) {
+    throw new Error(
+      `unexpected version: ${latestRelease} (expected vX.Y.Z as the latest release tag)`,
+    );
+  }
+  const pinned = parsePinnedVersion(pinnedVersion);
 
   let version = extractVersionFromBranches(
     branchesOutput,
     branchPrefix,
     collectWarning,
   );
+
+  if (isNewer(latestRelease, pinned)) {
+    log(
+      `Latest release ${latestRelease} is newer than the pinned version ${pinned}; release mode.`,
+    );
+    return {
+      mode: 'release',
+      version: latestRelease,
+      // Keep the existing integration branch if there is one, even when its
+      // embedded version differs (e.g. a patch release mid-cycle) — the
+      // mismatch is cosmetic and the branch carries accumulated work.
+      branch: `${branchPrefix}-${version || latestRelease}-dev`,
+      warnings,
+      latestRelease,
+    };
+  }
 
   if (version && isReleased(version)) {
     const bumped = bumpMinor(version);
@@ -76,6 +108,7 @@ export function computeIntegrationVersion({
   }
 
   return {
+    mode: 'dev',
     version,
     branch: `${branchPrefix}-${version}-dev`,
     warnings,
@@ -126,6 +159,26 @@ function compareVersionsDesc(a, b) {
   return bMajor - aMajor || bMinor - aMinor || bPatch - aPatch;
 }
 
+/** @param {string} a @param {string} b @returns {boolean} True iff `a` > `b`. */
+function isNewer(a, b) {
+  return compareVersionsDesc(a, b) < 0;
+}
+
+/**
+ * Extract the leading `vMAJOR.MINOR.PATCH` from a `.gitmodules` submodule pin.
+ * Pins are `git describe` output, so they may carry a `-N-gHASH` suffix
+ * (e.g. `v0.15.0-22-g3bcd6e7d`). Throws if no leading version tag is found
+ * (e.g. bare-hash pins).
+ *
+ * @param {string} pin
+ * @returns {string}
+ */
+export function parsePinnedVersion(pin) {
+  const m = (pin ?? '').match(/^(v\d+\.\d+\.\d+)(-|$)/);
+  if (!m) throw new Error(`unexpected pin: ${pin}`);
+  return m[1];
+}
+
 /**
  * Bump the minor component of a `vMAJOR.MINOR.PATCH[...]` tag, resetting
  * patch to 0. Throws if the tag does not match.
@@ -145,14 +198,14 @@ function escapeRegExp(s) {
 }
 
 /**
- * Format the lines that get appended to `$GITHUB_ENV` to expose VERSION and
- * BRANCH to subsequent workflow steps.
+ * Format the lines that get appended to `$GITHUB_ENV` to expose MODE, VERSION
+ * and BRANCH to subsequent workflow steps.
  *
- * @param {{ version: string, branch: string }} input
+ * @param {{ mode: 'dev'|'release', version: string, branch: string }} input
  * @returns {string}
  */
-export function formatGithubEnv({ version, branch }) {
-  return `VERSION=${version}\nBRANCH=${branch}\n`;
+export function formatGithubEnv({ mode, version, branch }) {
+  return `MODE=${mode}\nVERSION=${version}\nBRANCH=${branch}\n`;
 }
 
 /**
@@ -356,15 +409,17 @@ export function parseCliArgs(argv, env = process.env) {
 export function cliUsage() {
   const allowed = Object.keys(SPECS).join('|');
   return [
-    'Pick the next integration-branch version for a spec workflow and write',
-    'VERSION/BRANCH to $GITHUB_ENV (or stdout when GITHUB_ENV is unset).',
-    'Opens a tracking issue on warnings.',
+    'Pick the integration-branch version and mode for a spec workflow and',
+    'write MODE/VERSION/BRANCH to $GITHUB_ENV (or stdout when GITHUB_ENV is',
+    'unset). MODE is `release` when the latest upstream release is newer than',
+    'the version pinned on main, else `dev`. Opens a tracking issue on',
+    'warnings.',
     '',
     'Usage: node scripts/gh/specs/pick-branch/cli.mjs \\',
-    `         [--spec=<${allowed}>] [--[no-]dry-run]`,
+    `         [--spec <${allowed}>] [--[no-]dry-run]`,
     '',
     'Options:',
-    `  -s, --spec=<${allowed}>  Selects the upstream spec (default: otel).`,
+    `  -s, --spec <${allowed}>  Selects the upstream spec (default: otel).`,
     '      --dry-run            Skip writes (default when run locally).',
     '      --no-dry-run         Perform writes (default under GitHub Actions).',
     '  -h, --help               Show this help.',
