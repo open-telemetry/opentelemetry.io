@@ -2,8 +2,7 @@
 title: 設定
 weight: 20
 description: ニーズに合わせてコレクターを設定する方法を確認してください
-default_lang_commit: 869b2bb90ca9e54d8d98e7815e66111b577165eb
-drifted_from_default: true
+default_lang_commit: ad6f8d1e5179464d22f7e9cdf9fe86bc53f550e5
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey hostmetrics initca oidc pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
 ---
