@@ -3119,6 +3119,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-10T06:54:28.658360019Z"
   },
+  "https://explorer.opentelemetry.io/java-agent/configuration/builder": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-10T16:01:47.113443609Z"
+  },
   "https://explorer.opentelemetry.io/java-agent/instrumentation/latest": {
     "StatusCode": 206,
     "LastSeen": "2026-07-06T07:04:54.024913368Z"
