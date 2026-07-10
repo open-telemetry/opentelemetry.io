@@ -9,7 +9,7 @@
     "__find:md:not-old-blog": "sh -c 'find \"$@\" -name \"*.md\" -not -path \"content/en/blog/2019/*\" -not -path \"content/en/blog/202[0-4]/*\" -print0' --",
     "_build": "npm run _hugo -- --logLevel info -e dev --buildDrafts --buildFuture --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
     "_check:format:any": "npm run __check:format -- --check --ignore-path ''",
-    "_check:format:nowrap": "npm run __check:format:nowrap -- content/ja content/ko content/uk content/zh",
+    "_check:format:nowrap": "npm run __check:format:nowrap -- content/ja content/uk content/zh",
     "_check:format": "npm run __check:format -- --check .",
     "_check:links--md": "npx markdown-link-check --config .markdown-link-check.json *.md",
     "_check:links--warn": "npm run _check:links || (echo; echo 'WARNING: see link-checker output for issues.'; echo)",
