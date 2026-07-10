@@ -63,7 +63,7 @@ exclude = [
   '^https://www\.intersystems\.com',
   '^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=',
   '^https://github\.com/open-telemetry/opentelemetry\.io/discussions\?discussions_q=',
-  '^https://github\.com/search\?',
+  '^https://github\.com/search/?\?',
 
   # Docsy-generated GitHub edit/new/view-source links
   '^https?://github\.com/.*?/.*?/(new/|edit/|issues/new\?)',
