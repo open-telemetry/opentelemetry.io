@@ -16,7 +16,6 @@ authors:
     email: otel@sentry.io
 urls:
   repo: https://github.com/getsentry/sentry-ruby/tree/6.6.2/sentry-opentelemetry
-  docs: http://www.rubydoc.info/gems/sentry-opentelemetry/6.6.2
   website: https://github.com/getsentry/sentry-ruby/tree/6.6.2/sentry-opentelemetry
 createdAt: 2023-01-31
 package:

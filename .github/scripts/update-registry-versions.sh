@@ -84,21 +84,34 @@ for yaml_file in ${FILES}; do
                 ${UPDATE_YAML} ".title = \"$(jq -r '.name' <<< "$gem_json")"\" "$yaml_file"
                 ${UPDATE_YAML} ".description = \"$(jq -r '.info' <<< "$gem_json")"\" "$yaml_file"
                 ${UPDATE_YAML} ".license = \"$(jq -r '.licenses | join(", ")' <<< "$gem_json")"\" "$yaml_file"
-                url="$(jq -r '.documentation_uri' <<< "$gem_json")"
-                if [ -n "$url" ] && [ "$url" != "null" ]; then
-                    ${UPDATE_YAML} ".urls.docs = \"$url\"" "$yaml_file"
-                fi
-                url="$(jq -r '.source_code_uri' <<< "$gem_json")"
-                if [ -n "$url" ] && [ "$url" != "null" ]; then
-                    ${UPDATE_YAML} ".urls.repo = \"$url\"" "$yaml_file"
-                fi
-                url="$(jq -r '.homepage_uri' <<< "$gem_json")"
-                if [ -n "$url" ] && [ "$url" != "null" ]; then
-                    ${UPDATE_YAML} ".urls.website = \"$url\"" "$yaml_file"
-                fi
+                set_checked_url "$yaml_file" "$gem_json" '.documentation_uri' '.urls.docs'
+                set_checked_url "$yaml_file" "$gem_json" '.source_code_uri' '.urls.repo'
+                set_checked_url "$yaml_file" "$gem_json" '.homepage_uri' '.urls.website'
                 ;;
             *)
-                echo "Registry not supported for metadata update."
+                ;;
+        esac
+    }
+
+    set_checked_url() {
+        yaml_file=$1
+        json=$2
+        json_path=$3
+        setting_path=$4
+
+        url="$(jq -r "$json_path" <<< "$json")"
+
+        if [ -z "$url" ] || [ "$url" = "null" ]; then
+            return
+        fi
+
+        # Check HTTP status (no output, no body)
+        status="$(curl -s -o /dev/null -w '%{http_code}' "$url")"
+
+        # Only update when status is 2xx
+        case "$status" in
+            2??)
+                ${UPDATE_YAML} "${setting_path} = \"$url\"" "$yaml_file"
                 ;;
         esac
     }
