@@ -64,6 +64,9 @@ exclude = [
   '^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=',
   '^https://github\.com/open-telemetry/opentelemetry\.io/discussions\?discussions_q=',
 
+  # GitHub search is sign-in-gated (429 for anonymous clients)
+  '^https://github\.com/search\?',
+
   # Docsy-generated GitHub edit/new/view-source links
   '^https?://github\.com/.*?/.*?/(new/|edit/|issues/new\?)',
   '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/[^e]',

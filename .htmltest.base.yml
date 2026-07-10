@@ -77,6 +77,11 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - ^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=
   - ^https://github\.com/open-telemetry/opentelemetry\.io/discussions\?discussions_q=
 
+  # GitHub code/issue-search links: /search is effectively sign-in-gated (429
+  # Too Many Requests for anonymous clients), so results can't be link-checked.
+  # Upstream specs link message definitions etc. via such search queries.
+  - ^https://github\.com/search\?
+
   # Ignore Docsy-generated GitHub links for now, until
   # https://github.com/google/docsy/issues/1432 is fixed
   - ^https?://github\.com/.*?/.*?/(new/|edit/|issues/new\?) # view-page, edit-source etc
