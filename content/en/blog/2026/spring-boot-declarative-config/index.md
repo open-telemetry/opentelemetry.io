@@ -22,28 +22,31 @@ now embedded inside `application.yaml`. This post traces what one env var,
 > [Spring Boot starter declarative-config docs](/docs/zero-code/java/spring-boot-starter/declarative-configuration/),
 > paste your `application.properties` into the
 > [interactive converter](/docs/zero-code/java/spring-boot-starter/declarative-configuration/#convert-your-existing-configuration),
-> or pick your SDK setup in the [Ecosystem Explorer](/ecosystem/) with the
-> Spring Boot starter target selected. Come back for the story when you have a
-> coffee.
+> or pick your SDK setup in the
+> [Ecosystem Explorer](https://explorer.opentelemetry.io/java-agent/configuration/builder)
+> with the Spring Boot starter target selected. Come back for the story when you
+> have a coffee.
 
 For years, environment variables (and their JVM `-D` cousins) were the only way
 to configure the OpenTelemetry SDK: every exporter, every sampler, every
 captured header, expressed as a flat list of `OTEL_*` variables.
 
-Since starter 2.26.0, that list has a new sibling. The SDK
+Since version 2.26.0 of the OpenTelemetry Spring Boot starter, that list has a
+new sibling. The SDK
 [declarative-configuration schema](/docs/languages/sdk-configuration/declarative-configuration/)
 is a YAML tree that can describe an entire telemetry pipeline (every processor,
 every exporter, every nested option) in the same shape the SDK actually runs.
 
 For things the env var could not say, Spring starter users needed to write a
-`@Bean`. Java agent users had to write a full extension and package it in a
-separate jar to ship alongside the agent — which can be prohibitive.
+`@Bean`. Java agent users had to write a full
+[extension](/docs/zero-code/java/agent/extensions/) and package it in a separate
+jar to ship alongside the agent — which can be prohibitive.
 
-The schema moves into your `application.yaml`, under a single `otel:` key. Env
-vars still work, but in a narrower role: `OTEL_SERVICE_NAME` lands as a resource
-attribute because a service-name detector reads it at boot, and any
-`${VAR:default}` placeholder you write into the YAML pulls one in by name.
-Otherwise, the YAML is the source of truth.
+With these new changes, the schema moves into your `application.yaml`, under a
+single `otel:` key. Env vars still work, but in a narrower role:
+`OTEL_SERVICE_NAME` lands as a resource attribute because a service-name
+detector reads it at boot, and any `${VAR:default}` placeholder you write into
+the YAML pulls one in by name. Otherwise, the YAML is the source of truth.
 
 ## A YAML file inside your YAML file
 
@@ -75,15 +78,14 @@ any of it means.
 Env vars cover a fixed list of built-in choices: a
 [fixed set of samplers](/docs/languages/sdk-configuration/general/#otel_traces_sampler)
 via `OTEL_TRACES_SAMPLER`, the standard OTLP exporters via
-`OTEL_EXPORTER_OTLP_*`, the usual signal-toggle flags. Anything outside that
+`OTEL_EXPORTER_OTLP_*`, and the usual signal-toggle flags. Anything outside that
 catalog (a custom rule-based sampler, a second OTLP exporter on a debug
-pipeline, a baggage processor, any nested option the SDK exposes) meant writing
-a `@Bean` (Spring starter) or shipping a separate extension jar (Java agent).
-Declarative config unlocks the rest of the tree.
+pipeline, a baggage processor, any nested option the SDK exposes) was outside
+the env-var model. Declarative config unlocks the rest of the tree.
 
 The docs page for the starter has a small example most teams need on day one:
 [exclude actuator endpoints from tracing](/docs/zero-code/java/spring-boot-starter/programmatic-configuration/#exclude-actuator-endpoints-from-tracing).
-Yesterday that was a `@Configuration` class:
+Previously, that was handled via a `@Configuration` class:
 
 ```java
 @Configuration
@@ -192,7 +194,7 @@ Most `otel.*` env vars travel light. This one does not:
 OTEL_TRACER_PROVIDER_PROCESSORS_0_BATCH_EXPORTER_OTLP_HTTP_ENDPOINT=http://collector:4318/v1/traces
 ```
 
-It gets through, but only because sixteen lines deep inside the starter go
+It gets through, but only because sixteen lines deep inside the starter we go
 hunting for it by name. The diamond in the diagram above is where they live.
 
 > [!NOTE] Why the starter walks every property source
@@ -337,8 +339,9 @@ Two starting points, both already there:
 - **You already have an `application.properties`?** Paste it into the
   [interactive converter](/docs/zero-code/java/spring-boot-starter/declarative-configuration/#convert-your-existing-configuration)
   on the doc page. Out comes the YAML, ready to drop into `application.yaml`.
-- **Greenfield?** The [OpenTelemetry Ecosystem Explorer](/ecosystem/) generates
-  declarative-config YAML interactively: pick exporters, samplers,
+- **Greenfield?** The
+  [OpenTelemetry Ecosystem Explorer](https://explorer.opentelemetry.io/java-agent/configuration/builder)
+  generates declarative-config YAML interactively: pick exporters, samplers,
   instrumentations, and copy the result. A new Spring Boot starter target mode
   wraps the output under `otel:` and uses the right
   `distribution.spring_starter.*` keys.
