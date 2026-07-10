@@ -383,37 +383,46 @@ usage lives in the [localization guide][localization-auto-merge].
 
 ## Spec integration branches {#spec-integration-branches}
 
-Two scheduled workflows track unreleased changes from upstream spec repositories
-and keep a draft PR ("integration branch") current with the next development
-version:
+The scheduled [specs-integration.yml][] workflow owns the site's update cycle
+for the upstream spec repositories (which `auto-update-versions.yml` therefore
+excludes). It runs one matrix job per upstream repository: between releases,
+each job tracks unreleased upstream changes through a draft PR ("integration
+branch"); once upstream releases, it finalizes that branch and PR into the
+release PR.
 
-| Workflow file                             | Upstream repository           | Branch slug |
-| ----------------------------------------- | ----------------------------- | ----------- |
-| [update-spec-integration-branch.yml][]    | `opentelemetry-specification` | `spec`      |
-| [update-semconv-integration-branch.yml][] | `semantic-conventions`        | `semconv`   |
+| Matrix job | Upstream repository           | Branch slug |
+| ---------- | ----------------------------- | ----------- |
+| `otel`     | `opentelemetry-specification` | `spec`      |
+| `semconv`  | `semantic-conventions`        | `semconv`   |
 
-[update-spec-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branch.yml
-[update-semconv-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-semconv-integration-branch.yml
+[specs-integration.yml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/specs-integration.yml
 
-Both workflows delegate the "pick the next version + branch" step to a shared
-Node helper, [scripts/gh/specs/pick-branch/cli.mjs][]. The helper:
+Each job delegates the "pick the mode, version and branch" step to a shared
+helper, [scripts/gh/specs/pick-branch.mjs][]. The helper:
 
-- Reuses an existing `otelbot/<slug>-integration-vX.Y.Z-dev` branch when one
-  exists and the version has not yet been released; otherwise bumps the latest
-  release tag's minor version.
-- Writes `VERSION` and `BRANCH` to `$GITHUB_ENV` for downstream steps.
+- Selects the run's `MODE`: `dev` while the version pinned on main is the latest
+  upstream release, `release` once a newer release exists.
+- Writes `MODE`, `VERSION` and `BRANCH` to `$GITHUB_ENV` for downstream steps.
 - Opens a tracking issue (label `<slug>-integration-warning`, deduplicated) when
   it detects problems such as multiple stale integration branches.
 
-[scripts/gh/specs/pick-branch/cli.mjs]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/specs/pick-branch
+[scripts/gh/specs/pick-branch.mjs]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/pick-branch.mjs
+
+The final step, [scripts/gh/specs/create-or-finalize-pr.mjs][], creates or
+finalizes the PR as `MODE` calls for: in dev mode it opens the draft integration
+PR if missing; in release mode it creates or finalizes the release PR. It only
+rewrites PR text that the automation itself wrote: a maintainer-edited title or
+body is left alone.
+
+[scripts/gh/specs/create-or-finalize-pr.mjs]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/create-or-finalize-pr.mjs
 
 ### Run modes
 
-The helper auto-selects between dry-run and write mode and prints a `[mode]`
-banner explaining its choice:
+Both helpers auto-select between dry-run and write mode and print a `[mode]`
+banner explaining their choice:
 
 | Context               | Default behavior | Override            |
 | --------------------- | ---------------- | ------------------- |
@@ -421,18 +430,19 @@ banner explaining its choice:
 | Local (anywhere else) | dry-run          | pass `--no-dry-run` |
 
 Locally, dry-run still runs all read-only `git`/`gh` commands (so the issue
-deduplication check executes), but skips writes. With `--no-dry-run` the helper
-uses your local `gh` credentials; if `GITHUB_ENV` is unset, `VERSION`/`BRANCH`
-are printed to stdout only. Try it:
+deduplication check executes), but skips writes. With `--no-dry-run` the helpers
+use your local `gh` credentials; if `GITHUB_ENV` is unset, pick-branch prints
+`MODE`/`VERSION`/`BRANCH` to stdout only — export these to feed a local
+create-or-finalize-pr run. Try it:
 
 ```sh
-node scripts/gh/specs/pick-branch/cli.mjs --spec=otel
-node scripts/gh/specs/pick-branch/cli.mjs --spec=semconv --no-dry-run
-node scripts/gh/specs/pick-branch/cli.mjs --help
+scripts/gh/specs/pick-branch.mjs --spec otel
+scripts/gh/specs/pick-branch.mjs --spec semconv --no-dry-run
+scripts/gh/specs/create-or-finalize-pr.mjs --help
 ```
 
-Pure logic and CLI argument parsing live in `index.mjs` and are covered by
-`*.test.mjs` files in the same folder (`npm run test:local-tools` to run them).
+Pure logic lives in each helper's `index.mjs` and is covered by `*.test.mjs`
+files in the same folder (`npm run test:local-tools` to run them).
 
 ## Workflow failure reporting {#workflow-failure-reporting}
 
@@ -451,19 +461,19 @@ logic lives in [scripts/gh/report-failure/][report-failure-script]
 
 The repository includes several other workflows:
 
-| Workflow                   | Purpose                                                                                |
-| -------------------------- | -------------------------------------------------------------------------------------- |
-| `check-links.yml`          | Sharded link checking using htmltest, plus a non-blocking [Lychee][lychee-pilot] pilot |
-| `check-text.yml`           | Textlint terminology checks                                                            |
-| `check-i18n.yml`           | Localization front matter validation                                                   |
-| `check-spelling.yml`       | Spell checking                                                                         |
-| `test.yml`                 | Test (excludes `test:base`)                                                            |
-| `auto-update-registry.yml` | Auto-update registry package versions                                                  |
-| `auto-update-versions.yml` | Auto-update OTel component versions                                                    |
-| `build-dev.yml`            | Development build and preview                                                          |
-| `lint-scripts.yml`         | ShellCheck linting for `.github/scripts/`                                              |
-| `label-manager.yml`        | PR labels (component labels & approval flow)                                           |
-| `component-owners.yml`     | Assign reviewers based on component ownership                                          |
+| Workflow                   | Purpose                                                                                      |
+| -------------------------- | -------------------------------------------------------------------------------------------- |
+| `check-links.yml`          | Sharded link checking using htmltest, plus a non-blocking [Lychee][lychee-pilot] pilot       |
+| `check-text.yml`           | Textlint terminology checks                                                                  |
+| `check-i18n.yml`           | Localization front matter validation                                                         |
+| `check-spelling.yml`       | Spell checking                                                                               |
+| `test.yml`                 | Test (excludes `test:base`)                                                                  |
+| `auto-update-registry.yml` | Auto-update registry package versions                                                        |
+| `auto-update-versions.yml` | Auto-update OTel component versions (except [spec repositories](#spec-integration-branches)) |
+| `build-dev.yml`            | Development build and preview                                                                |
+| `lint-scripts.yml`         | ShellCheck linting for `.github/scripts/`                                                    |
+| `label-manager.yml`        | PR labels (component labels & approval flow)                                                 |
+| `component-owners.yml`     | Assign reviewers based on component ownership                                                |
 
 <!-- prettier-ignore-start -->
 [lychee-pilot]: ../npm-scripts/#notes
