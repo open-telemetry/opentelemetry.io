@@ -3,7 +3,7 @@ title: Site Observability
 custodian:
   - '[Patrice Chalin](https://github.com/chalin)'
   - '[Vitor Vasconcellos](https://github.com/vitorvasc)'
-cSpell:ignore: Vasconcellos secretless
+cSpell:ignore: secretless Vasconcellos
 ---
 
 ## Description
