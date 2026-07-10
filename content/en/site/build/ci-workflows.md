@@ -137,7 +137,7 @@ sequenceDiagram
 - **`pr-review-trigger`**: intentionally minimal — no secrets, no privileged
   permissions. Ignores `review.state == "commented"` since comments don't affect
   approvals.
-- **`pr-approval-labels`**: runs with a GitHub App token (`OTELBOT_DOCS_APP_ID`
+- **`pr-approval-labels`**: runs with a GitHub App token (`OTELBOT_DOCS_CLIENT_ID`
   / `OTELBOT_DOCS_PRIVATE_KEY`) that has permissions to read org/team membership
   and edit PR labels. Uses `pull_request_target` and `workflow_run` to ensure it
   always executes in the trusted base repository context.
