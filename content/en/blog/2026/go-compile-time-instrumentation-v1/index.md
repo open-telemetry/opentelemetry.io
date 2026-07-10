@@ -8,7 +8,7 @@ issue: 10670
 sig: Go Compile-Time Instrumentation
 draft: true # remove only when Comms schedules publication
 # prettier-ignore
-cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario GOFLAGS Haibin Martinez Momin otelc toolexec Xabier
+cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario GOFLAGS Haibin logrus Martinez Momin otelc slog toolexec Xabier
 ---
 
 <!-- PUBLISH GATE: v1 is not cut yet (latest tag is v0.5.0, repo README still
@@ -55,7 +55,8 @@ don't own.
 - **Third-party and standard-library coverage**: instrument dependencies and
   standard-library packages you don't own.
 - **Supported instrumentations in v1**: `net/http`, `database/sql`, gRPC, Redis,
-  and Go runtime metrics.
+  MongoDB, Gin, Kubernetes `client-go`, logging (`log`, `slog`, and logrus), and
+  Go runtime metrics.
 - **Rule-based and extensible**: add support for new libraries through the SIG's
   instrumentation-rule format. See the
   [instrumentation guide](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v0.5.0/docs/instrument-guide.md)
@@ -75,8 +76,11 @@ stays the same.
 
 <!-- AT V1: change the `@latest` in the install command below to the v1 tag
      (`@v1.0.0`) and flip the getting-started link from v0.5.0 to the v1 tag.
-     The instrumentation rules are embedded in the binary today, so `go install`
-     produces a working `otelc`; this is the intended install path. -->
+     `go install` is the intended install path. It requires the instrumentation
+     bundle to ship inside the published module (decoupling tracked in
+     open-telemetry/opentelemetry-go-compile-instrumentation#585); confirm that
+     fix has landed and `go install` yields a working `otelc` before publishing.
+     Do NOT fall back to a `make`-from-clone install per the author's decision. -->
 
 Install it with `go install`:
 
