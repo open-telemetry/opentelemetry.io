@@ -1,13 +1,27 @@
 ---
 title: Refresh-refcache PR fix
 description: >-
-  How to resolve outstanding non-2XX entries on the otelbot refcache-refresh PR.
+  How to resolve outstanding non-2XX refcache entries on an otelbot PR.
 ---
 
-Follow these steps to resolve non-2XX `static/refcache.json` entries in the
-`otelbot/refcache-refresh` PR. This process may involve updating or removing
+Follow these steps to resolve non-2XX `static/refcache.json` entries on the
+[target otelbot PR](#target-pr). This process may involve updating or removing
 dead links on the site, then refreshing the refcache again until no non-2XX
 entries remain.
+
+## Target PR
+
+Unless instructed otherwise, target the PR for the upstream
+`otelbot/refcache-refresh` branch. When asked to fix a **spec or semconv
+integration branch**, target the open PR whose head branch matches
+`otelbot/spec-integration-*` or `otelbot/semconv-integration-*`, respectively —
+at most one such PR is open at a time. To list open otelbot PRs:
+
+```sh
+gh pr list --search head:otelbot/
+```
+
+In the steps below, _`TARGET_BRANCH`_ is the head branch of the target PR.
 
 ## Preparation
 
@@ -15,19 +29,19 @@ These steps assume you have a local clone of the repository with the `upstream`
 remote configured to point to the main repository. Run these steps locally from
 the repository root.
 
-1. Determine the PR associated with upstream `otelbot/refcache-refresh`.
+1. Determine the PR associated with upstream _`TARGET_BRANCH`_.
 2. If none exists, stop.
-3. If a local `otelbot/refcache-refresh` branch already exists and contains
-   commits that are not in `upstream/otelbot/refcache-refresh`, back them up or
-   stop before resetting anything.
+3. If a local _`TARGET_BRANCH`_ branch already exists and contains commits that
+   are not in the upstream branch, back them up or stop before resetting
+   anything.
 4. Check out the PR branch with `gh pr checkout <num>`. If that fails because
    the local branch has diverged and you have already backed up any local-only
    commits, realign it with upstream:
 
    ```sh
    git fetch upstream
-   git checkout otelbot/refcache-refresh
-   git reset --hard upstream/otelbot/refcache-refresh
+   git checkout TARGET_BRANCH
+   git reset --hard upstream/TARGET_BRANCH
    ```
 
 5. If any content modules are out of date, run `npm run get:submodule`.
@@ -52,14 +66,16 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
    - Share the double-check summary: in your reply or PR comment (retried URLs,
      entries updated, final HTTP status counts, and “Processed N URLs” when
      shown).
-   - If `static/refcache.json` changed, commit and push to
-     `upstream/otelbot/refcache-refresh` (as of this step).
-   - Mark the PR ready for review: `gh pr ready <num>`.
-   - Enable auto-merge, so that the PR is merged once all approvals are in and
-     the checks pass: `gh pr merge <num> --auto`.
-   - **Remind a maintainer to approve** the PR so auto-merge can complete.
-     Provide a link to the PR:
-     `https://github.com/open-telemetry/opentelemetry.io/pull/<num>`.
+   - If `static/refcache.json` changed, commit and push to upstream
+     _`TARGET_BRANCH`_ (as of this step).
+   - For `otelbot/refcache-refresh` only — integration-branch PRs stay draft
+     until their workflow finalizes them at release time:
+     - Mark the PR ready for review: `gh pr ready <num>`.
+     - Enable auto-merge, so that the PR is merged once all approvals are in and
+       the checks pass: `gh pr merge <num> --auto`.
+     - **Remind a maintainer to approve** the PR so auto-merge can complete.
+       Provide a link to the PR:
+       `https://github.com/open-telemetry/opentelemetry.io/pull/<num>`.
 
    Then stop unless you are also leaving notes for reviewers.
 
@@ -94,6 +110,14 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
    - If any touched page is outside `content/en/`, follow
      [Localization](/docs/contributing/localization/#link-fixes-and-resource-updates)
      for that edit (e.g. `# patched` on `default_lang_commit`).
+
+   On an **integration branch**, only refcache changes belong in-branch:
+
+   - Link fixes to pages that exist on `main` go in a separate PR against
+     `main`; the integration branch picks them up at its next scheduled merge
+     from main.
+   - Broken links within the imported spec pages are fixed upstream in the spec
+     repository, not by editing the generated pages.
 
 7. Run `npm run fix:refcache` to refresh `static/refcache.json` after those
    source-link changes, then repeat the steps in this section (from step 1)
