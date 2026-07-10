@@ -8,7 +8,7 @@ issue: 10670
 sig: Go Compile-Time Instrumentation
 draft: true # remove only when Comms schedules publication
 # prettier-ignore
-cSpell:ignore: Akkoyun Castañé Dario GOFLAGS Haibin Martinez Momin otelc toolexec Xabier
+cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario GOFLAGS Haibin Martinez Momin otelc toolexec Xabier
 ---
 
 <!-- PUBLISH GATE: v1 is not cut yet (latest tag is v0.5.0, repo README still
