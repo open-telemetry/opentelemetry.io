@@ -1723,10 +1723,6 @@
     "StatusCode": 200,
     "LastSeen": "2026-07-05T06:55:28.160679932Z"
   },
-  "https://docs.bmc.com/docs/helixaiops/244/enabling-bmc-helix-applications-to-collect-service-traces-from-opentelemetry-1391498839.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-10T06:57:33.311835207Z"
-  },
   "https://docs.bmc.com/docs/helixoperationsmanagement/244/en/metric-operation-management-endpoints-in-the-rest-api-1392780044.html": {
     "StatusCode": 200,
     "LastSeen": "2026-07-09T09:28:51.529Z"
@@ -1970,6 +1966,10 @@
   "https://docs.groundcover.com/integrations/data-sources/opentelemetry/sending-from-an-opentelemetry-collector": {
     "StatusCode": 200,
     "LastSeen": "2026-07-03T06:50:25.9249198Z"
+  },
+  "https://docs.helixops.ai/bin/view/IT-Operations-Management/Operations-Management/BMC-Helix-AIOps/aiops254/Administering/Enabling-BMC-Helix-applications-to-collect-service-traces-from-OpenTelemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-10T11:54:33.503553-04:00"
   },
   "https://docs.honeycomb.io/getting-data-in/": {
     "StatusCode": 200,
@@ -2816,12 +2816,12 @@
     "LastSeen": "2026-07-09T06:57:36.762539435Z"
   },
   "https://en.cppreference.com/w/cpp/container/set.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-10T06:55:51.33552863Z"
+    "StatusCode": 206,
+    "LastSeen": "2026-07-10T11:54:35.604449-04:00"
   },
   "https://en.cppreference.com/w/cpp/container/vector.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-10T06:55:48.156916368Z"
+    "StatusCode": 206,
+    "LastSeen": "2026-07-10T11:54:35.149823-04:00"
   },
   "https://en.wikipedia.org": {
     "StatusCode": 200,
@@ -13171,10 +13171,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-05T06:51:41.350628529Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-elasticsearch": {
-    "StatusCode": 404,
-    "LastSeen": "2026-07-10T07:02:33.329969401Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-falcon": {
     "StatusCode": 206,
     "LastSeen": "2026-07-10T07:02:33.97698967Z"
@@ -19140,8 +19136,8 @@
     "LastSeen": "2026-07-10T07:04:34.145Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-github": {
-    "StatusCode": 429,
-    "LastSeen": "2026-07-10T07:03:32.312474996Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-10T15:54:53.084Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-instana": {
     "StatusCode": 200,
@@ -23240,8 +23236,8 @@
     "LastSeen": "2026-07-09T09:29:18.37Z"
   },
   "https://www.npmjs.com/search?q=%40cspell%2Fdict": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-10T06:54:07.550547069Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-10T11:54:33.050188-04:00"
   },
   "https://www.nuget.org/packages/Azure.Monitor.OpenTelemetry.Exporter": {
     "StatusCode": 200,
