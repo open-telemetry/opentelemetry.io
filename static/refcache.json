@@ -363,6 +363,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-07-09T06:58:30.423075271Z"
   },
+  "https://cdn.jsdelivr.net/npm/@manototh/do11y@latest/dist/do11y.min.js": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-10T14:20:26.83856+02:00"
+  },
   "https://cdn.jsdelivr.net/npm/chart.js@2.9.2/dist/Chart.min.js": {
     "StatusCode": 206,
     "LastSeen": "2026-07-03T06:46:13.168137851Z"

@@ -6,6 +6,7 @@ description:
   contribuțiile.
 weight: 999
 default_lang_commit: db8337edbbac824aebbb330acea18a7042b38806 # patched
+drifted_from_default: true
 cSpell:ignore: Comms contribfest hotfixes triager triagers
 ---
 
