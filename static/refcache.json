@@ -14847,6 +14847,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-08T06:26:35.610857284Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/data/spec-versions.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-08T18:40:16.987932-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html": {
     "StatusCode": 206,
     "LastSeen": "2026-07-08T06:26:16.876213446Z"
@@ -14874,6 +14878,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl": {
     "StatusCode": 206,
     "LastSeen": "2026-07-08T06:26:20.306473707Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages/patches.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-08T18:40:17.669478-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/cp-pages.sh": {
     "StatusCode": 206,
@@ -15026,6 +15034,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs": {
     "StatusCode": 206,
     "LastSeen": "2026-07-07T06:53:52.087828958Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-08T18:40:16.603811-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge": {
     "StatusCode": 206,
