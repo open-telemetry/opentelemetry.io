@@ -55,8 +55,8 @@ don't own.
 - **Third-party and standard-library coverage**: instrument dependencies and
   standard-library packages you don't own.
 - **Supported instrumentations in v1**: `net/http`, `database/sql`, gRPC, Redis,
-  MongoDB, Gin, Kubernetes `client-go`, logging (`log`, `slog`, and logrus), and
-  Go runtime metrics.
+  MongoDB, Gin, Kubernetes `client-go`, Kafka, the OpenAI Go client, logging
+  (`log`, `slog`, and logrus), and Go runtime metrics.
 - **Rule-based and extensible**: add support for new libraries through the SIG's
   instrumentation-rule format. See the
   [instrumentation guide](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v0.5.0/docs/instrument-guide.md)
