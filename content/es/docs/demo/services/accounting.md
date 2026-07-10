@@ -1,0 +1,34 @@
+---
+title: Servicio de contabilidad
+linkTitle: Accounting
+aliases: [accountingservice]
+default_lang_commit: bb23218b2ffc669eb538742e664dd7b52b55531e
+---
+
+Este servicio calcula el importe total de los productos vendidos. Este cálculo
+se simula actualmente y los pedidos recibidos se imprimen. Una vez que se
+recupera un registro de Kafka, se guarda en la base de datos (PostgreSQL).
+
+[Servicio de contabilidad](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/accounting/)
+
+## Instrumentación automática {#auto-instrumentation}
+
+Este servicio se basa en la instrumentación automática de OpenTelemetry para
+.NET para instrumentar automáticamente librerías como Kafka y configurar el SDK
+de OpenTelemetry. La instrumentación se agrega mediante el paquete NuGet
+[OpenTelemetry.AutoInstrumentation](https://www.nuget.org/packages/OpenTelemetry.AutoInstrumentation)
+y se activa mediante variables de entorno que se obtienen de `instrument.sh`.
+Este método de instalación también garantiza que todas las dependencias de
+instrumentación estén correctamente alineadas con la aplicación.
+
+## Publicación {#publishing}
+
+Add `--use-current-runtime` to the `dotnet publish` command to distribute
+appropriate native runtime components.
+
+Agrega `--use-current-runtime` al comando `dotnet publish` para distribuir los
+componentes de tiempo de ejecución nativos adecuados.
+
+```sh
+dotnet publish "./AccountingService.csproj" --use-current-runtime -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+```
