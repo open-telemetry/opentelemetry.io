@@ -14,8 +14,9 @@ entries remain.
 Unless instructed otherwise, target the PR for the upstream
 `otelbot/refcache-refresh` branch. When asked to fix a **spec or semconv
 integration branch**, target the open PR whose head branch matches
-`otelbot/spec-integration-*` or `otelbot/semconv-integration-*`, respectively —
-at most one such PR is open at a time. To list open otelbot PRs:
+`otelbot/spec-integration-*` or `otelbot/semconv-integration-*`, respectively.
+If more than one PR matches, ask which one is intended. To list open otelbot
+PRs:
 
 ```sh
 gh pr list --search head:otelbot/
@@ -100,6 +101,8 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
    - Where it originates from: provide links to files or pages.
    - A recommendation. For links into github.com, recommend a replacement link
      based on the last commit that contains the named resource.
+   - For an **integration branch**: where the fix belongs — in-branch, a
+     separate PR against `main`, or upstream in the spec repository.
 
    Pause for feedback from a reviewer.
 
@@ -110,14 +113,6 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
    - If any touched page is outside `content/en/`, follow
      [Localization](/docs/contributing/localization/#link-fixes-and-resource-updates)
      for that edit (e.g. `# patched` on `default_lang_commit`).
-
-   On an **integration branch**, only refcache changes belong in-branch:
-
-   - Link fixes to pages that exist on `main` go in a separate PR against
-     `main`; the integration branch picks them up at its next scheduled merge
-     from main.
-   - Broken links within the imported spec pages are fixed upstream in the spec
-     repository, not by editing the generated pages.
 
 7. Run `npm run fix:refcache` to refresh `static/refcache.json` after those
    source-link changes, then repeat the steps in this section (from step 1)
