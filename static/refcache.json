@@ -16191,10 +16191,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-06T07:08:58.362977554Z"
   },
-  "https://github.com/search?q=is%3Aissue+is%3Aopen+org%3Aopen-telemetry+&type=issues": {
-    "StatusCode": 206,
-    "LastSeen": "2026-07-05T06:58:07.013320241Z"
-  },
   "https://github.com/secustor": {
     "StatusCode": 206,
     "LastSeen": "2026-07-09T07:01:30.083554332Z"
