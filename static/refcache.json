@@ -21615,9 +21615,17 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-07T06:54:01.962907278Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.64.0-alpha/opentelemetry-bom-alpha-1.64.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-10T20:29:16.791226964Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.63.0/opentelemetry-bom-1.63.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2026-07-07T06:54:00.857471472Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.64.0/opentelemetry-bom-1.64.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-10T20:29:15.733273316Z"
   },
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "StatusCode": 206,
