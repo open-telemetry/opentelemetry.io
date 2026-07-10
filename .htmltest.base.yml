@@ -74,8 +74,8 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - ^https://www\.intersystems\.com
 
   # Ignore issue, discussion, and search links with query parameters, e.g.:
-  - ^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=
-  - ^https://github\.com/open-telemetry/opentelemetry\.io/discussions\?discussions_q=
+  - ^https://github\.com/open-telemetry/opentelemetry\.io/issues/?\?q=
+  - ^https://github\.com/open-telemetry/opentelemetry\.io/discussions/?\?discussions_q=
   - ^https://github\.com/search/?\?
 
   # Ignore Docsy-generated GitHub links for now, until
