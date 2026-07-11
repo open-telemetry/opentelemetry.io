@@ -9,7 +9,7 @@ weight: 40
 Atunci când ridici un
 [pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
 (PR) cu
-[reperoriul opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io)
+[repertoriul opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io)
 sunt set de verificări sunt executate. Aceste verificări de PR se asigură că:
 
 - Ai semnat [CLA-ul](#easy-cla)
@@ -135,7 +135,7 @@ schimbarea care a făcut acea cale să fie învechită.
 Aceste două verificări construiesc website-ul și verifică că toate link-urile
 sunt valide.
 
-Pentru a construii și verifica link-uri local, rulează `npm run check:links`.
+Pentru a construi și verifica link-uri local, rulează `npm run check:links`.
 Această comandă de asemenea actualizează și cache-ul de referință. Adaugă orice
 modificare la refcache într-un nou comit.
 
@@ -143,7 +143,7 @@ modificare la refcache într-un nou comit.
 >
 > For information on warnings about site-local links, see
 > [Always use a path for site-local links](#avoid-external-site-local-links).
-> Pentru mai multe informații despre avertizmente legate de link-uri site-local,
+> Pentru mai multe informații despre avertismente legate de link-uri site-local,
 > vezi
 > [Folosește mereu o cale pentru link-uri site-local](#avoid-external-site-local-links).
 
@@ -220,7 +220,7 @@ Using local paths ensures that: Utilizare căilor locale asigură că:
 
 - Hook-ul de render-link hook care emite acest avertisment:
   [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
-- Script-ul care autoconvertește URL-uri complete în căi locale:
+- Script-ul care convertește automat URL-uri complete în căi locale:
   [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
 
 </details>
