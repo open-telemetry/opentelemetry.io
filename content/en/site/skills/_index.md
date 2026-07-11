@@ -29,8 +29,8 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
   guidelines, and the label taxonomy.
 - [`/refresh-refcache-pr-fix`][refresh-refcache-pr-fix]: fetch, review and
   attempt to fix non-2XX URLs on an otelbot PR (by default
-  `otelbot/refcache-refresh`, or a spec/semconv integration branch when so
-  instructed).
+  `otelbot/refcache-refresh`, or a collector-docs or spec/semconv integration
+  branch when so instructed).
 - [`/resolve-refcache-conflicts <optional-pr-number>`][resolve-refcache-conflicts]:
   resolve `static/refcache.json` merge/rebase conflicts.
 - [`/review-blog-post <blog-post-path-or-pr-number>`][review-blog-post]: review

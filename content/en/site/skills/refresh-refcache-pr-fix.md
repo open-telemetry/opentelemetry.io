@@ -74,7 +74,8 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
      _`TARGET_BRANCH`_ (as of this step).
    - For all target branches, add an evidence / activity-log comment to the PR —
      skip this only when the skill invocation asks for no comment (e.g., it
-     includes “no comment” or “silent”). The comment consists of:
+     includes “no comment” or “silent”). Post it with
+     `gh pr comment <num> --body '…'`; the comment consists of:
      - The skill invocation command, as inline code.
      - A terse, one-or-two-line summary of the run.
 
