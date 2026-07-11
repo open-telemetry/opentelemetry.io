@@ -122,7 +122,7 @@ introdu modificările într-un nou commit.
 
 #### Fișiere și foldere învechite
 
-Următoarele căi sunt semnalizate ca fiind vechi și sunt înlăturare de
+Următoarele căi sunt semnalate ca fiind vechi și sunt înlăturare de
 `fix:filenames`. Când există, un issue sau număr de PR oferă context pentru
 schimbarea care a făcut acea cale să fie învechită.
 
