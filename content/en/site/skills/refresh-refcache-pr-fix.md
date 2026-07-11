@@ -71,12 +71,17 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
    - Share the double-check summary in your reply (retried URLs, entries
      updated, final HTTP status counts, and “Processed N URLs” when shown).
    - If `static/refcache.json` changed, commit and push to upstream
-     _`TARGET_BRANCH`_ (as of this step).
+     _`TARGET_BRANCH`_ (as of this step). Use the double-check summary as the
+     commit-message body (plain text; if the retried-URL list is long, include
+     only the counts): it remains visible in the PR's commit history even after
+     a squash merge.
    - For all target branches, add an evidence / activity-log comment to the PR —
      skip this only when the skill invocation asks for no comment (e.g., it
      includes “no comment” or “silent”). Post it with
      `gh pr comment <num> --body '…'`; the comment consists of:
-     - The skill invocation command, as inline code.
+     - The skill invocation, as inline code — reconstructed in minimal form
+       (skill name and target selection only). Never quote the surrounding
+       conversation, which may contain private or unrelated context.
      - A terse, one-or-two-line summary of the run.
 
      For example:
