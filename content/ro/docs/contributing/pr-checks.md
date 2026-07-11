@@ -17,209 +17,215 @@ sunt set de verificări sunt executate. Aceste verificări de PR se asigură că
 
 > [!NOTE]
 >
-> If any of the PR checks fails, try to
-> [fix content issues](../pull-requests/#fix-issues) first by running
-> `npm run fix:all` locally.
+> Dacă oricare dintre verificările PR-ului eșuează, încearcă să
+> [rezolvi problemele de conținut](../pull-requests/#fix-issues) începând prin a rula
+> `npm run fix:all` local.
 >
-> You can also add the comment `/fix` to your PR. This will trigger the
-> OpenTelemetry Bot to run that command on your behalf and update the PR. Make
-> sure that you pull those changes locally.
+> Poți de asemenea să adaugi comentariul `/fix` la PR-ul tău. Asta va porni
+> Bot-ul OpenTelemetry care o să ruleze acea comandă pentru tine pentru a actualiza PR-ul.
+> Fii sigur că tragi acele schimbări local.
 >
-> Only if your issues persist, read below what the different checks do and how
-> you can recover from a failed state.
+> Numai dacă problemele tale persistă, citește mai jos ce alte verificări fac și cum
+> poți să revii dintr-o stare de eșec.
 
 ## `Easy CLA` {.notranslate lang=en}
 
-This check fails if you haven't [signed the CLA](../prerequisites/#cla).
+Această verificare eșuează dacă nu ai [semnat CLA-ul](../prerequisites/#cla).
 
-## Netlify deployment
+## Deployment Netlify
 
-If the [Netlify](https://www.netlify.com/) build fails, select **Details** for
-more information.
+Dacă build-ul de [Netlify](https://www.netlify.com/) eșuează, selectează **Detaliile** pentru
+mai multe informații.
 
-## GitHub PR checks {#checks}
+## Verificările de GitHub PR {#checks}
 
-To make sure that contributions follow our [style guide](../style-guide/) we
-have implemented a set of checks that verify style guide rules and fail if they
-find any issues.
+Pentru a ne asigura că schimbările urmăresc [ghidu de stil](../style-guide/) am implementat
+un set de verificări care verifică regulile ghidului de stil și eșuează dacă
+găsesc vreo problemă.
 
-The sections below describe current checks and what you can do to fix related
-errors.
+Secțiunile de mai jos descriu verificările actuale și ce poți face
+pentru a remedia erorile aferente.
 
 > [!NOTE]
 >
-> Only recent blog posts are checked. For details, see [Old blogs are not
-> updated][old-blogs]. In particular, while old posts are rendered to the
-> website, the checks listed below do not apply to old blogs.
+> Numai post-urile de blog recente sunt verificate. Pentru detalii,
+> vezi [blog-urile vechi nu sunt actualizate][old-blogs]. În mod special, în timp ce
+> postările vechi sunt afișate pe website, verificările următoare nu se aplică lor.
 
 [old-blogs]: ../blog/#old-blogs-are-not-updated
 
-### `TEXT linter` {.notranslate lang=en}
+### `Linter-ul de TEXT` {.notranslate lang=en}
 
-This check verifies that
-[OpenTelemetry-specific terms and words are used consistently across the site](../style-guide/#opentelemetryio-word-list).
+Această verificare verifică faptul că
+[Termeni și cuvinte specifice OpenTelemetry sunt utilizate în mod constant pe tot site-ul](../style-guide/#opentelemetryio-word-list).
 
-If any issues are found, annotations are added to your files in the
-`files changed` view of your PR. Fix those to turn the check green. As an
-alternative, you can run `npm run check:text -- --fix` locally to fix most
-issues. Run `npm run check:text` again and manually fix the remaining issues.
+Dacă se constată probleme, se adaugă adnotări în fișierele tale din secțiunea `files changed` a
+PR-ului tău. Corectează-le pentru a trece verificările. Ca o alternativă, poți rula local
+`npm run check:text -- --fix` pentru a rezolva majoritate problemelor. Rulează
+`npm run check:text` din nou și rezolvă manual problemele rămase.
 
-### `MARKDOWN linter` {.notranslate lang=en}
+### `Linter-ul de MARKDOWN` {.notranslate lang=en}
 
-This check verifies that
-[standards and consistency for Markdown files are enforced](../style-guide/#markdown-standards).
+Această verificare verifică dacă
+[standardele și consecvența pentru fișierele Markdown sunt aplicate](../style-guide/#markdown-standards).
 
-If any issues are found, run `npm run fix:markdown` to fix most issues
-automatically. For any remaining issues, run `npm run check:markdown` and apply
-the suggested changes manually.
+Dacă se constată probleme, rulează `npm run fix:markdown` pentru a rezolva majoritate
+problemelor automat. Pentru orice problemă rămasă, rulează `npm run check:markdown` și aplică
+modificările sugerate manual.
 
-### `SPELLING check` {.notranslate lang=en}
+### `Verificare ortografică` {.notranslate lang=en}
 
-This check verifies that [all words are spelled correctly][spell checking] in
-all locales.
+Această verificare verifică dacă [toate cuvintele sunt scrise corect][spell checking] în toate
+localizările.
 
 If the check fails, run `npm run check:spelling` locally to list issues. To add
 or change allowed words, see [Spell checking][] in the style guide.
+Dacă această verificare eșuează, rulează `npm run check:spelling` local pentru a vedea problemele.
+Pentru a adăuga sau schimba cuvintele permise, vezi [verificare ortografică][Spell checking]
+în ghidul de stil.
 
 [Spell checking]: ../style-guide/#spell-checking
 
-### `CSPELL` check {.notranslate lang=en}
+### Verificarea `CSPELL` {.notranslate lang=en}
 
-This check verifies that cSpell `cSpell:ignore` lists in front matter are
-normalized and that `.cspell/*.txt` word lists are sorted (see
+Această verificare verifică dacă listele `cSpell:ignore` din front matter sunt
+normalizate și dacă listele de cuvinte `.cspell/*.txt` sunt sortate (vezi
 `npm run fix:dict`).
 
-If this check fails, run `npm run fix:dict` locally and push the changes in a
-new commit.
+Dacă această verificare eșuează, rulează `npm run fix:dict` local și introdu modificările
+într-un nou commit.
 
 ### `FILE FORMAT` {.notranslate lang=en}
 
-This check verifies that all files conform to
-[Prettier format rules](../style-guide/#file-format).
+Această verificare verifică dacă toate fișierele sunt conforme cu
+[Regulile de formatare Prettier](../style-guide/#file-format).
 
-If this check fails, run `npm run fix:format` locally and push the changes in a
-new commit.
+Dacă această verificare eșuează, rulează `npm run fix:format` local și introdu modificările
+într-un nou commit.
 
-### `FILENAME check` {.notranslate lang=en}
+### `Verificare FILENAME` {.notranslate lang=en}
 
-This check verifies that:
+Această verificare verifică dacă:
 
-- All [file names are in kebab-case](../style-guide/#file-names)
-- No obsolete files or folders exist in the repository (see list below)
+- Toate [numele de fișiere sunt kebab-case](../style-guide/#file-names)
+- Nu există fișiere sau foldere învechite în repertoriu (vezi lista de mai jos)
 
-If this check fails, run `npm run fix:filenames` locally and push the changes in
-a new commit.
+Dacă această verificare eșuează, rulează `npm run fix:filenames` local și introdu modificările
+într-un nou commit.
 
 > [!NOTE]
 >
-> `fix:filenames` may **delete** obsolete files or folders.
+> `fix:filenames` ar putea **șterge** fișiere sau foldere vechi.
 
-#### Obsolete files and folders
+#### Fișiere și foldere învechite
 
-The following paths are flagged as obsolete and removed by `fix:filenames`. When
-present, an issue or PR number provides context for the change that made the
-path obsolete.
+Următoarele căi sunt semnalizate ca fiind vechi și sunt înlăturare de `fix:filenames`.
+Când există, un issue sau număr de PR oferă context pentru schimbarea care a făcut acea
+cale să fie învechită.
 
 - `tools/` - [Migrate code-excerpts tooling to npm package version #9638][#9638]
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
 
-### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
+### `BUILD` și `CHECK LINKS` {.notranslate lang=en}
 
-These two checks build the website and verify that all links are valid.
+Aceste două verificări construiesc website-ul și verifică că toate link-urile sunt valide.
 
-To build and check links locally, run `npm run check:links`. This command also
-updates the reference cache. Push any changes to the refcache in a new commit.
+Pentru a construii și verifica link-uri local, rulează `npm run check:links`. Această comandă
+de asemenea actualizează și cache-ul de referință. Adaugă orice modificare la refcache
+într-un nou comit.
 
 > [!NOTE]
 >
 > For information on warnings about site-local links, see
 > [Always use a path for site-local links](#avoid-external-site-local-links).
+> Pentru mai multe informații despre avertizmente legate de link-uri site-local, vezi
+> [Folosește mereu o cale pentru link-uri site-local](#avoid-external-site-local-links).
 
-#### Fix 404s
+#### Rezolvă erorile 404
 
-You need to fix the URLs reported as **invalid** (HTTP status **404**), by the
-link checker.
+Trebuie să repari URL-urile semnalate ca și **invalide** (HTTP status **404**), de către
+verificarea de link-uri.
 
-#### Handling valid external links
+#### Gestionarea linkurilor externe valide
 
-The link checker will sometimes get an HTTP status other than 200 (success) by
-servers that block checkers. Such servers will often return an HTTP status in
-the 400 range other than 404, such as 401, 403, or 406, which are the most
-common. Some servers, link LinkedIn, report 999.
+Verificarea link-urilor va primi uneori alte status-uri HTTP decât 200 (succes) de la servere
+care blochează verificatoarele. Asemenea servere vor întoarce des un status HTTP în intervalul
+400 altele decât 404, precum 401, 403 sau 406, care sunt cele mai comune.
+Unele servere, link LinkedIn, întorc 999.
 
-If you have manually validated an external link that the checker isn't getting a
-success status for, you can add the following query parameter to your URL to
-have the link checker ignore it: `?link-check=no` or `&link-check=no` if there
-are other query parameters. For example, the following URLs will be ignored:
+Dacă ai validate manual un link extern pentru care verificatorul nu primește un status de succes,
+poți adăuga următorul parametru de interogare în URL-ul tău pentru a ajuta verificatorul de link-uri
+să-l ignore: `?link-check=no` sau `&link-check=no` dacă sunt și alți parametrii de interogare.
+De exemplu, următoarele URL-uri vor fi ignorate:
 
 - <https:/some-example.org?link-check=no>
 - <https:/some-example.org?other-param=value&link-check=no>
 
-> [!TIP] Maintainers tip
+> [!TIP] Sfat pentru întreținători
 >
-> Maintainers can run the following script immediately after having run the link
-> checker to have Puppeteer attempt to validate links with non-ok statuses:
+> Întreținătorii pot rula următorul script imediat după ce au rulat verificatorul de link-uri
+> pentru a face Puppeteer să încercă să valideze link-uri cu status-uri non-ok.
 >
 > ```sh
 > ./scripts/double-check-refcache-4XX.mjs
 > ```
 >
-> Use the `-f` flag to also validate URL fragments (anchors) in external links,
-> which `htmltest` doesn't do. We don't currently run this often, so you will
-> probably want to limit the number of updated entries using the `-m N` flag.
-> For usage info, run with `-h`.
+> Folosește indicatorul `-f` pentru a valida fragmente din URL (ancore) în link-uri externe,
+> validări pe care `htmltest` nu le face. Momentan nu rulăm acest lucru des, așadar vei dori să
+> limitezi numărul de actualizări ale intrărilor folosind indicatorul `-m N`.
+> Pentru informații de utilizare, rulează cu `-h`.
 
-### `WARNINGS in build log?` {.notranslate lang=en}
+### `Avertismente în log-ul build-ului?` {.notranslate lang=en}
 
-If this check fails, review the `BUILD and CHECK LINKS` log, under the
-`npm run log:check:links` step, for any other potential issues. Ask maintainers
-for help, if you are unsure how to recover.
+Dacă această verificare eșuează, revizuiește log-ul de `BUILD and CHECK LINKS`, sub
+pasul `npm run log:check:links`, pentru alte potențiale probleme.
+Întreabă întreținători pentru ajutor, dacă nu știi cum să rezolvi această problemă.
 
-#### Always use a path for site-local links {#avoid-external-site-local-links}
+#### Mereu folosește o cale pentru link-uri site-local {#avoid-external-site-local-links}
 
-When linking to pages within the OpenTelemetry website, use local paths instead
-of external links. The build will emit a warning if you don't.
+Atunci când facem link-uri către pagini din website-ul OpenTelemetry, folosește căi locale
+în loc de link-uri externe. Build-ul va emite un avertisment dacă nu faci asta.
 
-To address the build warning, keep only the path part of the full URL:
+Pentru a remedia avertismentul de build, păstrați doar partea cu calea din adresa URL completă:
 
-| ❌ Don't use                              | ✅ Use instead    |
-| ----------------------------------------- | ----------------- |
-| `https://opentelemetry.io/docs/concepts/` | `/docs/concepts/` |
-| `https://www.opentelemetry.io/blog/...`   | `/blog/...`       |
+| ❌ Nu folosi                               | ✅ Folosește în schimb |
+|-------------------------------------------|-----------------------|
+| `https://opentelemetry.io/docs/concepts/` | `/docs/concepts/`     |
+| `https://www.opentelemetry.io/blog/...`   | `/blog/...`           |
 
 Using local paths ensures that:
-
-- Site-local pages open in the same browser tab: external links open in a new
-  tab, which is not the desired behavior for site-local navigation
-- Localization link processing works as expected: links are automatically
-  prefixed with the appropriate language code
-- Local paths are easier to link-check and don't unnecessarily fill the refcache
+Utilizare căilor locale asigură că:
+- Paginile site-local se deschid în același tab de browser:
+  Link-urile externe se deschid într-un tab nou, comportament care nu este apreciat
+  în navigarea site-local.
+- Procesarea link-urile de localizare funcționează conform așteptărilor: link-urile
+  sunt prefixate automat cu codul de limbă aferent.
+- Căile locale sunt mai ușor de verificat și încarcă refcache-ul inutil.
 
 <details>
-<summary>Note to maintainers</summary>
+<summary>Notă către întreținători</summary>
 
-The following code enforces the link requirement described in this section:
+`Următorul cod impune cerințele pentru link-uri, descrise în această secțiune:`
 
-- The render-link hook that emits this warning:
+- Hook-ul de render-link hook care emite acest avertisment:
   [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
-- The script that auto-converts full URLs to local paths:
+- Script-ul care autoconvertește URL-uri complete în căi locale:
   [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
 
 </details>
 
-### `LOCALIZATION` guidelines {.notranslate lang=en #localization}
+### Ghidul de `LOCALIZARE` {.notranslate lang=en #localization}
 
-This check enforces mechanically-verifiable
-[localization guidelines](../localization/), such as
-[not copying images and other assets](../localization/#images) across
-localizations, that are not already covered by other checks.
+Această verificare impune verificarea mecanică a
+[ghidului de localizare](../localization/), precum
+a [nu copia imagini și alte asset-uri](../localization/#images) în alte localizări, care
+nu sunt deja acoperite de alte verificări
 
-If this check fails, run `npm run fix:l10n` locally and push the changes in a
-new commit.
+Dacă această verificare eșuează, rulează `npm run fix:l10n` local și adaugă modificările
+într-un nou commit.
 
 ### `TEST (excluding test:base)` {.notranslate lang=en}
 
-Runs `npm run test:compound-tests`, which executes the compound `test:*-*` NPM
-scripts (for example, Netlify edge-function tests). It does **not** run
-`test:base`.
+Rulează `npm run test:compound-tests`, care execută script-uri NPM compuse `test:*-*`
+(spre exemplu, teste Netlify edge-function). Această comandă **nu** rulează `test:base`.
