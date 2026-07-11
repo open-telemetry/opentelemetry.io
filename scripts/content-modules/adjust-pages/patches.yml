@@ -1,0 +1,21 @@
+# Data-driven list of spec patches, applied by adjust-pages (cli.mjs) at
+# cp:spec time. For the entry schema and workflow, see
+# content/en/site/build/content-module-patches.md.
+#
+# Example (a past patch):
+#
+# # cSpell:ignore rocketmq
+# - id: 2026-06-05-rocketmq-consumer-group-url
+#   module: semconv
+#   minVers: 1.41.0
+#   maxVers: 1.42.0
+#   file: ^tmp/semconv/docs/messaging/rocketmq\.md$
+#   search: '(?<pre>https://rocketmq\.apache\.org/docs/domainModel/)07(?<post>consumergroup)'
+#   replace: '$<pre>08$<post>/'
+#   flags: g
+#   notes: >-
+#     RocketMQ docs renumbered the consumer group page from 07 to 08.
+#     Upstreamed fix: open-telemetry/semantic-conventions#3771
+#
+# No patches at the moment. When adding the first entry, replace the `[]`:
+[]

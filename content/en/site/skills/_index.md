@@ -20,11 +20,17 @@ procedures are defined in this section.
 
 As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 
+- [`/approve-registry-update [pr-number-or-url]`][approve-registry-update]:
+  assist reviewers deciding whether to merge an otelbot registry version-bump
+  PR; verify it's a clean bump and, on confirmation, approve it and add it to
+  the merge queue. With no argument, processes open registry auto-update PRs.
 - [`/draft-issue <issue-description>`][draft-issue]: draft a GitHub issue in the
   `opentelemetry.io` repository following issue templates, contributing
   guidelines, and the label taxonomy.
 - [`/refresh-refcache-pr-fix`][refresh-refcache-pr-fix]: fetch, review and
-  attempt to fix non-2XX URLs on the upstream `otelbot/refcache-refresh` PR.
+  attempt to fix non-2XX URLs on an otelbot PR (by default
+  `otelbot/refcache-refresh`, or a spec/semconv integration branch when so
+  instructed).
 - [`/resolve-refcache-conflicts <optional-pr-number>`][resolve-refcache-conflicts]:
   resolve `static/refcache.json` merge/rebase conflicts.
 - [`/review-blog-post <blog-post-path-or-pr-number>`][review-blog-post]: review
@@ -66,6 +72,8 @@ See the section index below.
 [`.claude/skills/`]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/.claude/skills
 [agentskills.io]: https://agentskills.io
+[approve-registry-update]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/approve-registry-update/SKILL.md
 [draft-issue]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/draft-issue/SKILL.md
 [refresh-refcache-pr-fix]:
