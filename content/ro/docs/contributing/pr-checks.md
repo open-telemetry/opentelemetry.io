@@ -4,6 +4,8 @@ linkTitle: Verificări și teste de PR
 description:
   Învață cum să faci ca pull request-ul tău să treacă toate verificările
 weight: 40
+default_lang_commit: bd03f1126f53ee43b8eacc129b36e0d244ce43f4
+drifted_from_default: true
 ---
 
 Atunci când ridici un
