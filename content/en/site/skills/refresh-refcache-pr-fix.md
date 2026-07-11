@@ -12,9 +12,13 @@ entries remain.
 ## Target PR
 
 Unless instructed otherwise, target the PR for the upstream
-`otelbot/refcache-refresh` branch. When asked to fix a **spec or semconv
-integration branch**, target the open PR whose head branch matches
-`otelbot/spec-integration-*` or `otelbot/semconv-integration-*`, respectively.
+`otelbot/refcache-refresh` branch. When asked to fix one of the following kinds
+of branches instead, target the open PR whose head branch matches:
+
+- **Collector docs branch**: `otelbot/collector-docs-*`
+- **Spec or semconv integration branch**: `otelbot/spec-integration-*` or
+  `otelbot/semconv-integration-*`, respectively
+
 If more than one PR matches, ask which one is intended. To list open otelbot
 PRs:
 
@@ -64,13 +68,27 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
    `static/refcache.json`. See LinkedIn note below.
 2. Scan `static/refcache.json` for remaining non-2XX statuses.
 3. If none remain, that is, the double-check script succeeds:
-   - Share the double-check summary: in your reply or PR comment (retried URLs,
-     entries updated, final HTTP status counts, and “Processed N URLs” when
-     shown).
+   - Share the double-check summary in your reply (retried URLs, entries
+     updated, final HTTP status counts, and “Processed N URLs” when shown).
    - If `static/refcache.json` changed, commit and push to upstream
      _`TARGET_BRANCH`_ (as of this step).
-   - For `otelbot/refcache-refresh` only — integration-branch PRs stay draft
-     until their workflow finalizes them at release time:
+   - For all target branches, add an evidence / activity-log comment to the PR —
+     skip this only when the skill invocation asks for no comment (e.g., it
+     includes “no comment” or “silent”). The comment consists of:
+     - The skill invocation command, as inline code.
+     - A terse, one-or-two-line summary of the run.
+
+     For example:
+
+     ```text
+     Refcache update done using: `/refresh-refcache-pr-fix for the otelbot collector-docs branch`
+
+     Re-checked 12 cached 4XX/fragment URLs; all now 2XX — no non-2XX entries remain.
+     ```
+
+   - For `otelbot/refcache-refresh` and `otelbot/collector-docs-*` PRs —
+     integration-branch PRs stay draft until their workflow finalizes them at
+     release time:
      - Mark the PR ready for review: `gh pr ready <num>`.
      - Enable auto-merge, so that the PR is merged once all approvals are in and
        the checks pass: `gh pr merge <num> --auto`.
