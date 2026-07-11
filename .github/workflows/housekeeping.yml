@@ -117,7 +117,7 @@ jobs:
       user-name: otelbot
       user-email: 197425009+otelbot@users.noreply.github.com
       # the higher privileged docs app is needed to push branches and open PRs
-      app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+      client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
     secrets:
       app-private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
