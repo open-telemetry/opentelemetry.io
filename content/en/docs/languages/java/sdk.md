@@ -1368,15 +1368,29 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 
 #### Exporter self-monitoring metrics
 
-OTLP exporters can emit self-monitoring metrics when a `MeterProvider` is
-configured for them. This happens automatically for exporters created by
-[zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure).
-For exporters built programmatically, call `setMeterProvider(...)` on the
-exporter builder.
+OTLP exporter builders use `GlobalOpenTelemetry.getMeterProvider()` for
+self-monitoring by default. Call `setMeterProvider(...)` on a builder to use a
+different provider.
+[Zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure)
+supplies its configured SDK `MeterProvider` automatically.
 
-The metrics schema is selected by `InternalTelemetryVersion` on exporter
-builders, or by `otel.experimental.sdk.telemetry.version` when using zero-code
-SDK autoconfigure. The default value is `legacy`.
+For programmatically built exporters, call `setInternalTelemetryVersion(...)`
+with `InternalTelemetryVersion.LEGACY` or `InternalTelemetryVersion.LATEST` to
+select the metrics schema. With zero-code SDK autoconfigure, set
+`otel.experimental.sdk.telemetry.version` to `legacy` or `latest`; its default
+is `legacy`.
+
+With [declarative configuration](../configuration/#declarative-configuration),
+SDK self-monitoring telemetry is disabled by default. To enable it, set
+`instrumentation/development.java.otel_sdk.internal_telemetry_version` to
+`legacy` or `latest`:
+
+```yaml
+instrumentation/development:
+  java:
+    otel_sdk:
+      internal_telemetry_version: latest
+```
 
 Legacy OTLP exporter metrics:
 
@@ -1385,7 +1399,8 @@ Legacy OTLP exporter metrics:
 | `otlp.exporter.seen`     | `type=span\|metric\|log`            | Number of telemetry records passed to the exporter.                |
 | `otlp.exporter.exported` | `type=span\|metric\|log`, `success` | Number of telemetry records for which the export attempt finished. |
 
-When `latest` is selected, OTLP exporters use semantic-convention based names:
+When `latest` is selected, OTLP exporters use names defined by the
+[SDK metric semantic conventions](/docs/specs/semconv/otel/sdk-metrics/):
 
 | Metric                                         | Description                                                       |
 | ---------------------------------------------- | ----------------------------------------------------------------- |
@@ -1399,8 +1414,9 @@ When `latest` is selected, OTLP exporters use semantic-convention based names:
 
 The `latest` metrics include attributes such as `otel.component.type`,
 `otel.component.name`, and `error.type` when an export fails. The legacy metrics
-remain the default for SDK autoconfigure; this page does not define a removal
-schedule for them.
+predate the SDK metrics semantic conventions and remain the default for SDK
+autoconfigure to avoid breaking existing users. The Java SDK does not currently
+define a removal schedule for them.
 
 #### OTLP exporter implementation details
 
