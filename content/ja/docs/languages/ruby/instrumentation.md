@@ -8,6 +8,7 @@ aliases:
 weight: 20
 description: OpenTelemetry Ruby計装
 default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
+drifted_from_default: true
 cSpell:ignore: SIGHUP
 ---
 
