@@ -115,7 +115,7 @@ services:
   client:
     build:
       dockerfile: $PWD/Dockerfile
-      context: ../..\
+      context: ../..
     depends_on:
       mysql:
         condition: service_healthy
@@ -312,7 +312,7 @@ docker compose up client
 
 実装の観点からは、データベースドライバーやデータベースフレームワークがコンテキスト付きで `database/sql` を通じてデータベース（SQL データベースに限らず、あらゆるデータベース）とやり取りする限り、`otelsql` は問題なく動作するはずです。
 
-以下は、otelsql が Facebook のエンティティフレームワーク for Go と連携する方法を示す[サンプル](https://github.com/ent/ent/issues/1232#issuecomment-1200405070)です。
+以下は、otelsql が Facebook の Go 向けエンティティフレームワークと連携する方法を示す[サンプル](https://github.com/ent/ent/issues/1232#issuecomment-1200405070)です。
 
 ## その他の便利な機能 {#other-cool-features}
 
