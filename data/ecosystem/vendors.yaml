@@ -443,6 +443,12 @@
   contact:
   oss: false
   commercial: true
+- name: Spanlens
+  nativeOTLP: true
+  url: https://www.spanlens.io/docs/otel
+  contact: support@spanlens.io
+  oss: true
+  commercial: true
 - name: Splunk
   nativeOTLP: true
   url: https://docs.splunk.com/Observability/gdi/opentelemetry/opentelemetry.html
