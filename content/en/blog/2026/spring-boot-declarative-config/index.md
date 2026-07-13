@@ -1,7 +1,7 @@
 ---
 title: 'The Voyage of a Small Environment Variable'
 linkTitle: Spring Boot declarative config
-date: 2026-06-23
+date: 2026-07-13
 author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger) (Grafana Labs)
 sig: Java
