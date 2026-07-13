@@ -330,7 +330,7 @@ supports the environment variables from the
 otel_traces_export:
   endpoint: http://jaeger:4317
   protocol: grpc
-  instrumentations: ["http", "sql"]
+  instrumentations: ['http', 'sql']
 ```
 
 | YAML<br>environment variable                                                        | Description                                                                                                                                                                                                                                                          | Type            | Default                                                                                                      |
