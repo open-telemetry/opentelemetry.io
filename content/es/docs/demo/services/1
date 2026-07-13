@@ -14,9 +14,8 @@ recupera un registro de Kafka, se guarda en la base de datos (PostgreSQL).
 ## Instrumentación automática {#auto-instrumentation}
 
 Este servicio se basa en la instrumentación automática de OpenTelemetry para
-.NET con el fin de instrumentar automáticamente librerías como Kafka y
-configurar el SDK de OpenTelemetry. La instrumentación se agrega a través del
-paquete NuGet
+.NET con el fin de instrumentar automáticamente librerías como Kafka y configurar el SDK
+de OpenTelemetry. La instrumentación se agrega a través del paquete NuGet
 [OpenTelemetry.AutoInstrumentation](https://www.nuget.org/packages/OpenTelemetry.AutoInstrumentation)
 y se activa mediante variables de entorno que se obtienen de `instrument.sh`.
 Este método de instalación también garantiza que todas las dependencias de
