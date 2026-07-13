@@ -213,7 +213,7 @@ The following code enforces the link requirement described in this section:
 - The render-link hook that emits this warning:
   [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
 - The script that auto-converts full URLs to local paths:
-  [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
+  [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
 
 </details>
 
