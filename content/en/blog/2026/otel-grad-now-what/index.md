@@ -92,7 +92,7 @@ the following criteria:
    [Farfetch](https://youtu.be/9iaGG-YZw5I?si=YDjY8N4Z4zI4uKiV), run
    OpenTelemetry in production.
 2. **Robust governance.** OTel has a documented
-   [governance model](https://shorturl.at/ZxB5O) with clearly defined roles
+   [governance model](https://github.com/open-telemetry/community/blob/main/governance-charter.md) with clearly defined roles
    around election and retirement, along with transparent communication and
    decision-making.
 3. **Community health.** OpenTelemetry has an established process for PR review
