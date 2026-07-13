@@ -1,4 +1,4 @@
-name: Update specification integration branch
+name: Specs integration
 
 on:
   schedule:
@@ -12,41 +12,53 @@ permissions:
   # via gh when it detects problems (e.g. stale integration branches).
   issues: write
 
-env:
-  REPO: opentelemetry-specification
-  # Abbreviation of REPO used in branch and submodule names
-  ABBR: spec
-
 jobs:
   update-integration-branch:
+    name: Update ${{ matrix.spec }} integration branch
     runs-on: ubuntu-latest
     if: github.repository == 'open-telemetry/opentelemetry.io'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - spec: otel
+            repo: opentelemetry-specification
+            slug: spec
+          - spec: semconv
+            repo: semantic-conventions
+            slug: semconv
+    env:
+      SPEC: ${{ matrix.spec }}
+      REPO: ${{ matrix.repo }}
+      # Abbreviation of REPO used in branch and submodule names
+      SLUG: ${{ matrix.slug }}
     steps:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
           # the higher privileged docs token is needed to push commits to an existing PR
-          client-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           # this is needed to do the rebase below
           fetch-depth: 0
+          # this is needed to trigger workflows when pushing new commits to an existing PR
           token: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Pick integration branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node scripts/gh/specs/pick-branch/cli.mjs --spec=otel
+        run: scripts/gh/specs/pick-branch.mjs --spec "$SPEC"
 
       - name: Checkout or create branch
         run: |
-          if ! git ls-remote --exit-code --heads origin $BRANCH; then
-            git checkout -b $BRANCH origin/main
-            git push -u origin $BRANCH
+          if ! git ls-remote --exit-code --heads origin "$BRANCH"; then
+            git checkout -b "$BRANCH" origin/main
+            git push -u origin "$BRANCH"
           else
-            git checkout $BRANCH
+            git checkout "$BRANCH"
           fi
 
       - name: Use CLA approved github bot
@@ -65,11 +77,11 @@ jobs:
 
       - name: Update submodule
         run: |
-          git submodule update --init content-modules/${{ env.REPO }}
-          cd content-modules/${{ env.REPO }}
+          git submodule update --init "content-modules/$REPO"
+          cd "content-modules/$REPO"
 
-          if git ls-remote --exit-code --tags origin $VERSION; then
-            git reset --hard $VERSION
+          if git ls-remote --exit-code --tags origin "$VERSION"; then
+            git reset --hard "$VERSION"
             tag_exists=true
           else
             git reset --hard origin/main
@@ -78,16 +90,20 @@ jobs:
           commit_desc=$(git describe --tags)
           cd ../..
 
-          sed -i "s/^\t${{ env.ABBR }}-pin = .*/\t${{ env.ABBR }}-pin = $commit_desc/" .gitmodules
+          sed -i "s/^\t${SLUG}-pin = .*/\t${SLUG}-pin = $commit_desc/" .gitmodules
 
           if [ "$tag_exists" == "true" ]; then
-            sed -i "s/^\(\s *\)${{ env.ABBR }}: .*/\1${{ env.ABBR }}: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
+            sed -i "s/^${SLUG}: .*/${SLUG}: ${commit_desc#v}/" data/spec-versions.yml
+          fi
+
+          if [ "$SPEC" == "semconv" ]; then
+            ./scripts/update-semconv-mounts.pl
           fi
 
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Update ${{ env.ABBR }} submodule to $commit_desc"
+            git commit -am "Update $SLUG submodule to $commit_desc"
             git push
           fi
 
@@ -110,24 +126,11 @@ jobs:
             git push
           fi
 
-      - name: Create pull request if needed
+      - name: Create or finalize pull request
         env:
           # not using secrets.GITHUB_TOKEN since pull requests from that token do not run workflows
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
-        run: |
-          prs=$(gh pr list --state open --head $BRANCH)
-          if [ -z "$prs" ]; then
-            if [ -z "$(git rev-list origin/main..HEAD)" ]; then
-              # Bootstrap this long-lived integration branch with an empty
-              # commit so that PR creation succeeds (gh pr create fails when
-              # there are no commits between main and the branch).
-              git commit --allow-empty -m "Trigger PR creation for $BRANCH"
-              git push
-            fi
-            gh pr create --title "DRAFT Update ${{ env.REPO }} to unreleased $VERSION-dev" \
-                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) [${{ env.REPO }}](https://github.com/open-telemetry/${{ env.REPO }})." \
-                         --draft
-          fi
+        run: scripts/gh/specs/create-or-finalize-pr.mjs --spec "$SPEC"
 
   report-failure:
     needs: update-integration-branch
