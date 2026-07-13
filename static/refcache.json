@@ -11003,6 +11003,30 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-06T07:04:55.975240924Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/main/docs/instrument-guide.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-10T02:50:47.252424+05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/main/docs/rules.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-10T02:50:45.710706+05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/discussions": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-10T02:50:46.527321+05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-10T02:50:45.555623+05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/demo": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-10T02:50:45.718344+05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-10T02:50:45.736115+05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/database/sql": {
     "StatusCode": 206,
     "LastSeen": "2026-07-05T07:00:36.026736637Z"
