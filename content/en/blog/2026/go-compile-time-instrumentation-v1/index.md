@@ -54,9 +54,11 @@ don't own.
   built into the binary instead of attached at runtime.
 - **Third-party and standard-library coverage**: instrument dependencies and
   standard-library packages you don't own.
-- **Supported instrumentations in v1**: `net/http`, `database/sql`, gRPC, Redis,
-  MongoDB, Gin, Kubernetes `client-go`, Kafka, the OpenAI Go client, logging
-  (`log`, `slog`, and logrus), and Go runtime metrics.
+- **Supported instrumentations in v1**: common libraries and frameworks
+  including `net/http`, `database/sql`, gRPC, Redis, and Go runtime metrics,
+  with more added regularly. See the
+  [instrumentation packages](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/b9022153ab1236855b6ea251a62525683d1acd08/instrumentation)
+  for the full, current list.
 - **Rule-based and extensible**: add support for new libraries through the SIG's
   instrumentation-rule format. See the
   [instrumentation guide](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v0.5.0/docs/instrument-guide.md)
@@ -69,18 +71,15 @@ don't own.
 
 ## Getting started
 
-`otelc` is a drop-in wrapper around the Go toolchain. The change to your build
-is a single line: run `otelc go build` where you used to run `go build`.
-Everything after `go` is forwarded to the toolchain, so the rest of your build
-stays the same.
+The project ships a command-line tool called `otelc` that wraps the standard Go
+toolchain. The change to your build is a single line: run `otelc go build` where
+you used to run `go build`. Everything after `go` is forwarded to the toolchain,
+so the rest of your build stays the same.
 
 <!-- AT V1: change the `@latest` in the install command below to the v1 tag
-     (`@v1.0.0`) and flip the getting-started link from v0.5.0 to the v1 tag.
-     `go install` is the intended install path. It requires the instrumentation
-     bundle to ship inside the published module (decoupling tracked in
-     open-telemetry/opentelemetry-go-compile-instrumentation#585); confirm that
-     fix has landed and `go install` yields a working `otelc` before publishing.
-     Do NOT fall back to a `make`-from-clone install per the author's decision. -->
+     (`@v1.0.0`), and repin the v0.5.0 doc links + the pinned-SHA instrumentation
+     link above to the v1 tag. `go install` works now that the instrumentation
+     bundle ships in the module (open-telemetry/opentelemetry-go-compile-instrumentation#677). -->
 
 Install it with `go install`:
 
