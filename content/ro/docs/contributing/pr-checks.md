@@ -58,9 +58,9 @@ remedia erorile aferente.
 
 [old-blogs]: ../blog/#old-blogs-are-not-updated
 
-### `Linter-ul de TEXT` {.notranslate lang=en}
+### `TEXT linter` {.notranslate lang=en}
 
-Această verificare verifică faptul că
+Această verificare validează faptul că
 [Termeni și cuvinte specifice OpenTelemetry sunt utilizate în mod constant pe tot site-ul](../style-guide/#opentelemetryio-word-list).
 
 Dacă se constată probleme, se adaugă adnotări în fișierele tale din secțiunea
@@ -69,18 +69,18 @@ alternativă, poți rula local `npm run check:text -- --fix` pentru a rezolva
 majoritate problemelor. Rulează `npm run check:text` din nou și rezolvă manual
 problemele rămase.
 
-### `Linter-ul de MARKDOWN` {.notranslate lang=en}
+### `MARKDOWN linter` {.notranslate lang=en}
 
-Această verificare verifică dacă
+Această verificare validează dacă
 [standardele și consecvența pentru fișierele Markdown sunt aplicate](../style-guide/#markdown-standards).
 
 Dacă se constată probleme, rulează `npm run fix:markdown` pentru a rezolva
 majoritate problemelor automat. Pentru orice problemă rămasă, rulează
 `npm run check:markdown` și aplică modificările sugerate manual.
 
-### `Verificare ortografică` {.notranslate lang=en}
+### `SPELLING check` {.notranslate lang=en}
 
-Această verificare verifică dacă [toate cuvintele sunt scrise
+Această verificare validează dacă [toate cuvintele sunt scrise
 corect][spell checking] în toate localizările.
 
 If the check fails, run `npm run check:spelling` locally to list issues. To add
@@ -91,9 +91,9 @@ ortografică][Spell checking] în ghidul de stil.
 
 [Spell checking]: ../style-guide/#spell-checking
 
-### Verificarea `CSPELL` {.notranslate lang=en}
+### `CSPELL` check {.notranslate lang=en}
 
-Această verificare verifică dacă listele `cSpell:ignore` din front matter sunt
+Această verificare validează dacă listele `cSpell:ignore` din front matter sunt
 normalizate și dacă listele de cuvinte `.cspell/*.txt` sunt sortate (vezi
 `npm run fix:dict`).
 
@@ -102,15 +102,15 @@ modificările într-un nou commit.
 
 ### `FILE FORMAT` {.notranslate lang=en}
 
-Această verificare verifică dacă toate fișierele sunt conforme cu
+Această verificare validează dacă toate fișierele sunt conforme cu
 [Regulile de formatare Prettier](../style-guide/#file-format).
 
 Dacă această verificare eșuează, rulează `npm run fix:format` local și introdu
 modificările într-un nou commit.
 
-### `Verificare FILENAME` {.notranslate lang=en}
+### `FILENAME check` {.notranslate lang=en}
 
-Această verificare verifică dacă:
+Această verificare validează dacă:
 
 - Toate [numele de fișiere sunt kebab-case](../style-guide/#file-names)
 - Nu există fișiere sau foldere învechite în repertoriu (vezi lista de mai jos)
@@ -122,7 +122,7 @@ introdu modificările într-un nou commit.
 >
 > `fix:filenames` ar putea **șterge** fișiere sau foldere vechi.
 
-#### Fișiere și foldere învechite
+#### Fișiere și foldere învechite {obsolete-files-and-folders}
 
 Următoarele căi sunt semnalate ca fiind vechi și sunt înlăturare de
 `fix:filenames`. Când există, un issue sau număr de PR oferă context pentru
@@ -132,7 +132,7 @@ schimbarea care a făcut acea cale să fie învechită.
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
 
-### `BUILD` și `CHECK LINKS` {.notranslate lang=en}
+### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
 Aceste două verificări construiesc website-ul și verifică că toate link-urile
 sunt valide.
@@ -149,12 +149,12 @@ modificare la refcache într-un nou comit.
 > vezi
 > [Folosește mereu o cale pentru link-uri site-local](#avoid-external-site-local-links).
 
-#### Rezolvă erorile 404
+#### Rezolvă erorile 404 {#fix-404s}
 
 Trebuie să repari URL-urile semnalate ca și **invalide** (HTTP status **404**),
 de către verificarea de link-uri.
 
-#### Gestionarea linkurilor externe valide
+#### Gestionarea linkurilor externe valide {#handling-valid-external-links}
 
 Verificarea link-urilor va primi uneori alte status-uri HTTP decât 200 (succes)
 de la servere care blochează verificatoarele. Asemenea servere vor întoarce des
@@ -186,7 +186,7 @@ următoarele URL-uri vor fi ignorate:
 > intrărilor folosind indicatorul `-m N`. Pentru informații de utilizare,
 > rulează cu `-h`.
 
-### `Avertismente în log-ul build-ului?` {.notranslate lang=en}
+### `WARNINGS in build log?` {.notranslate lang=en}
 
 Dacă această verificare eșuează, revizuiește log-ul de `BUILD and CHECK LINKS`,
 sub pasul `npm run log:check:links`, pentru alte potențiale probleme. Întreabă
@@ -227,7 +227,7 @@ Using local paths ensures that: Utilizare căilor locale asigură că:
 
 </details>
 
-### Ghidul de `LOCALIZARE` {.notranslate lang=en #localization}
+### `LOCALIZATION` guidelines {.notranslate lang=en #localization}
 
 Această verificare impune verificarea mecanică a
 [ghidului de localizare](../localization/), precum a
