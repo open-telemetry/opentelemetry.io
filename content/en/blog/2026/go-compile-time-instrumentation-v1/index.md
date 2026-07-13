@@ -16,7 +16,15 @@ cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario GOFLAGS Haibin logrus Martin
      release, flip every v0.5.0 link below to the v1 tag, and re-verify the
      supported-instrumentation list and getting-started commands against v1. -->
 
-The OpenTelemetry community is announcing the first stable release of
+If you write Java, Python, Node.js, or .NET, you have been able to add
+OpenTelemetry to an application without editing its code for years: attach an
+agent at startup and telemetry starts flowing. Go has been the exception. A Go
+program compiles to a single static binary with no runtime to hook into at
+startup, so Go developers have had to instrument by hand or reach for an
+out-of-process eBPF agent.
+
+That gap is closing. The OpenTelemetry community is announcing the first stable
+release of
 [OpenTelemetry Go Compile-Time Instrumentation](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation).
 When we [announced this SIG](/blog/2025/go-compile-time-instrumentation/) at the
 start of 2025, Alibaba and Datadog joined forces to build one unified,
@@ -57,7 +65,7 @@ don't own.
 - **Supported instrumentations in v1**: common libraries and frameworks
   including `net/http`, `database/sql`, gRPC, Redis, and Go runtime metrics,
   with more added regularly. See the
-  [instrumentation packages](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/b9022153ab1236855b6ea251a62525683d1acd08/instrumentation)
+  [supported libraries](/docs/zero-code/go/compile-time/supported-libraries/)
   for the full, current list.
 - **Rule-based and extensible**: add support for new libraries through the SIG's
   instrumentation-rule format. See the
@@ -77,9 +85,11 @@ you used to run `go build`. Everything after `go` is forwarded to the toolchain,
 so the rest of your build stays the same.
 
 <!-- AT V1: change the `@latest` in the install command below to the v1 tag
-     (`@v1.0.0`), and repin the v0.5.0 doc links + the pinned-SHA instrumentation
-     link above to the v1 tag. `go install` works now that the instrumentation
-     bundle ships in the module (open-telemetry/opentelemetry-go-compile-instrumentation#677). -->
+     (`@v1.0.0`) and repin the remaining v0.5.0 repo doc links to the v1 tag.
+     Re-verify the linked /docs/zero-code/go/compile-time/ pages against v1;
+     the repo source is the source of truth once the release is cut.
+     `go install` works now that the instrumentation bundle ships in the module
+     (open-telemetry/opentelemetry-go-compile-instrumentation#677). -->
 
 Install it with `go install`:
 
@@ -116,7 +126,7 @@ instruments them automatically, with no configuration and no code changes. The
 same swap works in a container build: install `otelc` in your build stage and
 replace the `go build` line in your `Dockerfile` with `otelc go build`. For the
 full walkthrough, see the
-[getting-started guide](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v0.5.0/docs/getting-started.md).
+[compile-time instrumentation documentation](/docs/zero-code/go/compile-time/).
 
 ## When should you use it?
 
