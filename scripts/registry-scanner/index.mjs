@@ -155,14 +155,16 @@ const scanners = {
       'opentelemetry-java-instrumentation',
     );
   },
-  kotlin: () => {
+  android: () => {
     scanByLanguage(
       'instrumentation',
-      'kotlin',
+      'android',
       'instrumentation',
       'md',
       'opentelemetry-android',
     );
+  },
+  kotlin: () => {
     scanByLanguage(
       'exporter',
       'kotlin',
@@ -326,6 +328,7 @@ const scanners = {
     );
   },
   all: () => {
+    scanners.android();
     scanners.collector();
     scanners.cpp();
     scanners.js();

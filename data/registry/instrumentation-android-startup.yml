@@ -1,14 +1,14 @@
 title: Startup Instrumentation
 registryType: instrumentation
-language: kotlin
+language: android
 tags:
   - startup
   - instrumentation
-  - kotlin
+  - android
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/startup
 license: Apache 2.0
 description:
 authors:
   - name: OpenTelemetry Authors
-createdAt: 2026-07-09
+createdAt: 2026-07-12
