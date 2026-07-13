@@ -9,7 +9,7 @@ tags:
   - genai
   - python
 urls:
-  repo: https://github.com/agentmark-ai/agentmark
+  repo: https://github.com/agentmark-ai
   website: https://www.agentmark.co
   docs: https://docs.agentmark.co/observe/overview
 license: AGPL-3.0-or-later

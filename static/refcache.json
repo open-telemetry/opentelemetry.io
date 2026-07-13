@@ -47,6 +47,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-08T06:35:12.877731496Z"
   },
+  "https://app.highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-13T10:43:23.897923-04:00"
+  },
   "https://app.netlify.com/sites/opentelemetry/overview": {
     "StatusCode": 206,
     "LastSeen": "2026-07-12T06:26:59.680030973Z"
@@ -4126,10 +4130,6 @@
   "https://github.com/agentmark-ai": {
     "StatusCode": 206,
     "LastSeen": "2026-07-13T06:49:20.463584738Z"
-  },
-  "https://github.com/agentmark-ai/agentmark": {
-    "StatusCode": 404,
-    "LastSeen": "2026-07-13T06:49:20.184689832Z"
   },
   "https://github.com/akahenry": {
     "StatusCode": 206,
@@ -17451,10 +17451,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-08T06:27:44.886724587Z"
   },
-  "https://highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/": {
-    "StatusCode": -30,
-    "LastSeen": "2026-07-13T06:44:21.761495796Z"
-  },
   "https://hive.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2026-07-13T06:42:54.512030855Z"
@@ -18684,8 +18680,8 @@
     "LastSeen": "2026-07-11T06:32:33.56Z"
   },
   "https://maxdb.sap.com/": {
-    "StatusCode": -10,
-    "LastSeen": "2026-07-13T06:43:44.698546968Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-13T14:41:36.969Z"
   },
   "https://medium.com/@cijo.thomas/dont-wrap-opentelemetry-you-re-probably-hurting-more-than-helping-96795803abeb": {
     "StatusCode": 200,

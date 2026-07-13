@@ -193,7 +193,7 @@
   commercial: true
 - name: Highlight
   nativeOTLP: true
-  url: https://highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/
+  url: https://app.highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/
   contact: support@highlight.io
   oss: true
   commercial: true
