@@ -1216,7 +1216,7 @@ scaling considerations][62].
 [31]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor/README.md
 [32]:
-  https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/compatibility.md#compatibility-matrix
+  https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/getting-started/compatibility.md#compatibility-matrix
 [33]:
   https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection
 [34]: /docs/platforms/kubernetes/operator/
