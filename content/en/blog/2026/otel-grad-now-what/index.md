@@ -1,11 +1,10 @@
 ---
-title: OpenTelemetry Has Graduated…Now WHAT?
+title: OpenTelemetry Has Graduated… Now WHAT?
 linkTitle: OTel Graduated… Now What?
-date: 2026-06-15
+date: 2026-06-26
 author: >-
-  [Adriana Villela](https://github.com/avillela) (Dynatrace LLC), [AuthorX
-  Name](https://github.com/reese-lee) (New Relic)
-draft: true
+  [Adriana Villela](https://github.com/avillela) (Dynatrace LLC), [Reese 
+  Lee](https://github.com/reese-lee) (New Relic)
 sig: Governance Committee
 cSpell:ignore: Farfetch ICYMI shoutout
 ---
@@ -86,7 +85,7 @@ So what does it take to become a graduated CNCF project? Projects must fulfill
 the following criteria:
 
 1. **Production adoption.**
-   [Many different organizations](https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43),
+   [Many different organizations](https://opentelemetry.io/ecosystem/adopters/),
    such as
    [GitHub](https://www.youtube.com/live/vB9_SiTV5CI?si=F3jRi2w83Gp1lp_F) and
    [Farfetch](https://youtu.be/9iaGG-YZw5I?si=YDjY8N4Z4zI4uKiV), run
