@@ -146,10 +146,12 @@ CI/infra: # including config
   - changed-files:
       - any-glob-to-any-file:
           # Maintainer note: keep .github/CODEOWNERS in sync with this list.
-          # Entries are maintainer-owned unless indicated otherwise.
+          # Entries are maintainer-owned unless indicated otherwise. Word lists
+          # (.cspell/) and locale prose rules (prh/) are content-adjacent, so
+          # they are deliberately excluded from this list; the base checker
+          # config (.cspell.yml) is not.
           # cSpell:ignore gulpfile
           - .claude/**
-          - .cspell/** # owned by docs-approvers
           - .cspell.yml # owned by docs-approvers
           - .devcontainer/**
           - .editorconfig
@@ -171,7 +173,6 @@ CI/infra: # including config
           - Makefile
           - netlify/**
           - netlify.toml
-          - prh/**
           - scripts/**
           - tests/**
 
