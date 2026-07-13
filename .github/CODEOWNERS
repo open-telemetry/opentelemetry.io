@@ -19,9 +19,8 @@
 
 # CI/infra resources are owned by docs-maintainers, except for cspell files.
 # Keep this list in sync with the `CI/infra` label list in
-# .github/component-label-map.yml -- except for the cspell word lists
-# (/.cspell/) and locale prose rules (/prh/), which are content-adjacent and
-# intentionally excluded from that label. cSpell:ignore gulpfile
+# .github/component-label-map.yml (which notes intentional omissions).
+# cSpell:ignore gulpfile
 /.claude/**                     @open-telemetry/docs-maintainers
 /.cspell/**                     @open-telemetry/docs-approvers
 /.cspell.yml                    @open-telemetry/docs-approvers
