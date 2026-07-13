@@ -5,7 +5,6 @@ description:
   Learn how to route logs from a single ILogger to different OTLP destinations
   using a custom processor.
 weight: 55
-cSpell:ignore: Otlp
 ---
 
 This guide shows how to route logs from a **single `ILogger`** to different OTLP

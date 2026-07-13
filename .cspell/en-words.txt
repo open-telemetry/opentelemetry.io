@@ -44,6 +44,8 @@ productcatalogservice
 quantile
 quantiles
 quoteservice
+rearchitect
+rearchitecture
 recommendationservice
 runbook
 runbooks
@@ -51,11 +53,15 @@ servlet
 shippingservice
 stdoutmetric
 subresponse
+subtag
 sunsetting
 tabpane
 timeframe
 uids
 unconference
+undercount
+undercounting
+undercounts
 unitless
 unsampled
 unshallow

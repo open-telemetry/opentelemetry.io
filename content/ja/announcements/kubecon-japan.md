@@ -1,14 +1,14 @@
 ---
 title: KubeCon + CloudNativeCon Japan 2025
 linkTitle: KubeCon Japan 2025
-date: 2025-06-12 # Show once combined banner is hidden
-expiryDate: 2025-06-18 # keep
-build: { list: never, render: never } # Hide in favor of new Asia banner
-weight: 20250618
+date: 2025-06-12
+expiryDate: 2025-06-17 # keep
+weight: 20250617
 params:
-  eventUrl: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/
+  eventUrl: &eventUrl >-
+    https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/
   blogPostURL: /blog/2025/kubecon-japan/
-default_lang_commit: 9bc3c40e6e637b3d776281eb946a60ebf79a4cd5 # patched
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 ---
 
 [**{{% param title %}}**][LF]が **6月16・17日に東京で開催**

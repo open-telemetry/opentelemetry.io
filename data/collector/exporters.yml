@@ -109,6 +109,7 @@
     metrics: alpha
     logs: beta
     traces: beta
+    profiles: development
 - name: coralogixexporter
   display_name: Coralogix Exporter
   repo: contrib
@@ -220,13 +221,6 @@
     - contrib
   stability:
     metrics: beta
-- name: googlesecopsexporter
-  display_name: googlesecopsexporter
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    logs: development
 - name: honeycombmarkerexporter
   display_name: Honeycomb Marker Exporter
   repo: contrib
@@ -401,7 +395,7 @@
   stability:
     logs: beta
     metrics: beta
-    traces: beta
+    traces: deprecated
 - name: splunkhecexporter
   display_name: Splunk HTTP Event Collector (HEC) Exporter
   repo: contrib
@@ -411,6 +405,7 @@
     logs: beta
     metrics: beta
     traces: beta
+    profiles: development
 - name: stefexporter
   display_name: STEF Exporter
   repo: contrib

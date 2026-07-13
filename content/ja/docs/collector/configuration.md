@@ -2,10 +2,9 @@
 title: 設定
 weight: 20
 description: ニーズに合わせてコレクターを設定する方法を確認してください
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
-drifted_from_default: true
+default_lang_commit: ad6f8d1e5179464d22f7e9cdf9fe86bc53f550e5
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc pprof prodevent prometheusremotewrite spanevents upsert zpages
+cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey hostmetrics initca oidc pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -29,6 +28,20 @@ cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca o
 otelcol --config=customconfig.yaml
 ```
 
+`--config` フラグは、ファイルパス、または設定 URI `"<scheme>:<opaque_data>"` の形式の値のいずれかを受け取ります。
+現在、OpenTelemetry Collector は `scheme` として以下のプロバイダーをサポートしています。
+
+- **file** - ファイルから設定を読み込みます。たとえば `file:path/to/config.yaml` のように指定します。
+- **env** - 環境変数から設定を読み込みます。たとえば `env:MY_CONFIG_IN_AN_ENVVAR` のように指定します。
+- **yaml** - YAML 文字列から設定を読み込みます。サブパスは `::` で区切ります。
+  たとえば `yaml:exporters::debug::verbosity: detailed` のように指定します。
+
+<!-- prettier-ignore-start -->
+- **http** - HTTP URI から設定を読み込みます。たとえば `http://www.example.com` のように指定します。
+- **https** - HTTPS URI から設定を読み込みます。たとえば
+`https://www.example.com` のように指定します。
+<!-- prettier-ignore-end -->
+
 また、異なるパスにある複数のファイルを使用して、複数の設定を提供できます。
 各ファイルは完全な構成でも部分的な構成でもよく、ファイルは互いのコンポーネントを参照できます。
 ファイルの結合が完全な設定を構成しない場合、必要なコンポーネントがデフォルトで追加されないため、エラーとなります。
@@ -46,12 +59,10 @@ otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR --config=https://server/config.yaml
 otelcol --config="yaml:exporters::debug::verbosity: normal"
 ```
 
-{{% alert title="Tip" %}}
-
-YAML パスでネストされたキーを参照するとき、ドットを含む名前空間との混乱を避けるために、必ずダブルコロン (::) を使います。
-たとえば `receivers::docker_stats::metrics::container.cpu.utilization::enabled: false` などです。
-
-{{% /alert %}}
+> [!TIP]
+>
+> YAML パスでネストされたキーを参照するとき、ドットを含む名前空間との混乱を避けるために、必ずダブルコロン (`::`) を使います。
+> たとえば `receivers::docker_stats::metrics::container.cpu.utilization::enabled: false` などです。
 
 設定ファイルを検証するには、 `validate` コマンドを使用します。
 たとえば次のような形です。
@@ -64,10 +75,10 @@ otelcol validate --config=customconfig.yaml
 
 コレクターの設定ファイルの構造は、テレメトリーデータにアクセスするパイプラインコンポーネントの4つのクラスで構成されます。
 
-- [レシーバー](#receivers) <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Receivers.svg">
-- [プロセッサー](#processors) <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Processors.svg">
-- [エクスポーター](#exporters) <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Exporters.svg">
-- [コネクター](#connectors) <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg">
+- [レシーバー](#receivers) <img width="32" alt="" class="img-initial otel-icon" src="/img/logos/32x32/Receivers.svg">
+- [プロセッサー](#processors) <img width="32" alt="" class="img-initial otel-icon" src="/img/logos/32x32/Processors.svg">
+- [エクスポーター](#exporters) <img width="32" alt="" class="img-initial otel-icon" src="/img/logos/32x32/Exporters.svg">
+- [コネクター](#connectors) <img width="32" alt="" class="img-initial otel-icon" src="/img/logos/32x32/Load_Balancer.svg">
 
 各パイプラインコンポーネントを設定した後、設定ファイルの[service](#service)節内のパイプラインを使用して有効にする必要があります。
 
@@ -77,15 +88,13 @@ otelcol validate --config=customconfig.yaml
 
 <a id="endpoint-0.0.0.0-warning"></a>以下は、レシーバー、プロセッサー、エクスポーター、3つの拡張機能を持つコレクターの設定例です。
 
-{{% alert title="Important" color="warning" %}}
-
-一般に、すべてのクライアントがローカルの場合、エンドポイントを `localhost` にバインドするのが望ましいですが、この例の構成では便宜上「未指定」アドレス `0.0.0.0` を使用しています。
-コレクターのデフォルトは現在 `0.0.0.0` ですが、近い将来 `localhost` に変更される予定です。
-エンドポイント設定値としてのこれらの選択肢の詳細については、[サービス拒否攻撃への対策][Safeguards against denial of service attacks]を参照してください。
+> [!WARNING]
+>
+> 一般に、すべてのクライアントがローカルの場合、エンドポイントを `localhost` にバインドするのが望ましいですが、この例の構成では便宜上「未指定」アドレス `0.0.0.0` を使用しています。
+> コレクターのデフォルトは `localhost` です。
+> エンドポイント設定値としてのこれらの選択肢の詳細については、[サービス拒否攻撃への対策][Safeguards against denial of service attacks]を参照してください。
 
 [Safeguards against denial of service attacks]: https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md#safeguards-against-denial-of-service-attacks
-
-{{% /alert %}}
 
 ```yaml
 receivers:
@@ -95,12 +104,12 @@ receivers:
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
-processors:
-  batch:
 
 exporters:
   otlp_grpc:
     endpoint: otelcol:4317
+    sending_queue:
+      batch:
 
 extensions:
   health_check:
@@ -115,15 +124,12 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp_grpc]
     metrics:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp_grpc]
     logs:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp_grpc]
 ```
 
@@ -145,15 +151,15 @@ receivers:
       grpc:
         endpoint: 0.0.0.0:55690
 
-processors:
-  batch:
-  batch/test:
-
 exporters:
   otlp_grpc:
     endpoint: otelcol:4317
+    sending_queue:
+      batch:
   otlp_grpc/2:
     endpoint: otelcol2:4317
+    sending_queue:
+      batch:
 
 extensions:
   health_check:
@@ -168,19 +174,15 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp_grpc]
     traces/2:
       receivers: [otlp/2]
-      processors: [batch/test]
       exporters: [otlp_grpc/2]
     metrics:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp_grpc]
     logs:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp_grpc]
 ```
 
@@ -233,7 +235,7 @@ service:
       exporters: [otlp_grpc]
 ```
 
-## レシーバー <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Receivers.svg"> {#receivers}
+## レシーバー <img width="35" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Receivers.svg"> {#receivers}
 
 レシーバーは1つ以上のソースからテレメトリーを収集します。
 プルベースでもプッシュベースでもよく、1つ以上の[データソース](/docs/concepts/signals/)をサポートすることができます。
@@ -310,7 +312,7 @@ receivers:
 
 > 詳細なレシーバー設定については、[レシーバーのREADME](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md)を参照してください。
 
-## プロセッサー <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Processors.svg"> {#processors}
+## プロセッサー <img width="35" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Processors.svg"> {#processors}
 
 プロセッサーは、レシーバーによって収集されたデータを、エクスポーターに送信する前に修正または変換します。
 データ処理は、各プロセッサーに定義されたルールまたは設定にしたがって行われ、フィルタリング、ドロップ、名前の変更、テレメトリーの再計算などの処理が含まれます。
@@ -339,9 +341,6 @@ processors:
         action: delete
       - key: email
         action: hash
-
-  # データソース: トレース、メトリクス、ログ
-  batch:
 
   # データソース: メトリクス、トレース、ログ
   filter:
@@ -401,7 +400,7 @@ processors:
 
 > プロセッサー設定の詳細については、[プロセッサーのREADME](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md)を参照してください。
 
-## エクスポーター <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Exporters.svg"> {#exporters}
+## エクスポーター <img width="35" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Exporters.svg"> {#exporters}
 
 エクスポーターはデータを1つ以上のバックエンドや宛先に送信します。
 また、1つ以上の[データソース](/docs/concepts/signals/)をサポートすることもあります。
@@ -478,7 +477,7 @@ exporters:
 
 > エクスポーターの設定については、[エクスポーターのREADME.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md)を参照してください。
 
-## コネクター <img width="32" class="img-initial" alt="" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
+## コネクター <img width="32" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
 
 コネクターは2つのパイプラインを結合し、エクスポーターとレシーバーの両方の役割を果たします。
 コネクターは、あるパイプラインの終端でエクスポーターとしてデータを消費し、別のパイプラインの始端でレシーバーとしてデータを放出します。
@@ -592,11 +591,10 @@ service:
   pipelines:
     metrics:
       receivers: [opencensus, prometheus]
-      processors: [batch]
       exporters: [opencensus, prometheus]
     traces:
       receivers: [opencensus, jaeger]
-      processors: [batch, memory_limiter]
+      processors: [memory_limiter]
       exporters: [opencensus, zipkin]
 ```
 
@@ -611,7 +609,6 @@ service:
       # ...
     traces/2:
       receivers: [opencensus]
-      processors: [batch]
       exporters: [zipkin]
 ```
 
@@ -791,6 +788,107 @@ cfssl gencert -ca ca.pem -ca-key ca-key.pem csr.json | cfssljson -bare cert
 - `ca.pem` の "OpenTelemetry Example" 認証局（CA）とそれに紐づく `ca-key.pem` のキー
 - OpenTelemetry Example CA が署名した `cert.pem` のクライアント証明書、およびそれに紐づいた `cert-key.pem` のキー
 
+#### コレクターでの証明書の使用 {#using-certificates-in-the-collector}
+
+証明書を用意したら、コレクターがそれを使うように設定します。
+
+##### レシーバー（サーバー側）の TLS 設定 {#tls-configuration-for-receivers-server-side}
+
+着信接続を暗号化するには、レシーバーに TLS を設定します。
+サーバー証明書を指定するには `cert_file` と `key_file` を使用します。
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+        tls:
+          cert_file: /path/to/cert.pem
+          key_file: /path/to/cert-key.pem
+      http:
+        endpoint: 0.0.0.0:4318
+        tls:
+          cert_file: /path/to/cert.pem
+          key_file: /path/to/cert-key.pem
+```
+
+##### エクスポーター（クライアント側）の TLS 設定 {#tls-configuration-for-exporters-client-side}
+
+送信接続を暗号化するには、エクスポーターに TLS を設定します。
+サーバーの証明書を検証するために `ca_file` を使用します。
+
+```yaml
+exporters:
+  otlp_grpc:
+    endpoint: otelcol2:4317
+    tls:
+      ca_file: /path/to/ca.pem
+```
+
+サーバーにクライアント証明書を提示する必要がある場合は、次のようにします。
+
+```yaml
+exporters:
+  otlp_grpc:
+    endpoint: otelcol2:4317
+    tls:
+      ca_file: /path/to/ca.pem
+      cert_file: /path/to/cert.pem
+      key_file: /path/to/cert-key.pem
+```
+
+##### mTLS の設定（相互 TLS） {#mtls-configuration-mutual-tls}
+
+mTLS では、レシーバーとエクスポーターの両方が互いの証明書を検証します。
+レシーバーには、クライアント証明書を検証するために `client_ca_file` を追加します。
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+        tls:
+          cert_file: /path/to/server-cert.pem
+          key_file: /path/to/server-key.pem
+          client_ca_file: /path/to/ca.pem
+```
+
+エクスポーターには、サーバーを検証する CA とクライアント証明書の両方を指定します。
+
+```yaml
+exporters:
+  otlp_grpc:
+    endpoint: remote-collector:4317
+    tls:
+      ca_file: /path/to/ca.pem
+      cert_file: /path/to/client-cert.pem
+      key_file: /path/to/client-key.pem
+```
+
+##### TLS 共通設定 {#common-tls-settings}
+
+TLS 設定に利用できる項目は以下のとおりです。
+
+| 設定                   | 説明                                               |
+| ---------------------- | -------------------------------------------------- |
+| `ca_file`              | ピア証明書を検証するための CA 証明書のパス         |
+| `cert_file`            | TLS 証明書のパス                                   |
+| `key_file`             | TLS 秘密鍵のパス                                   |
+| `client_ca_file`       | クライアント証明書を検証するための CA 証明書のパス |
+| `insecure`             | TLS 検証を無効にする（本番環境では非推奨）         |
+| `insecure_skip_verify` | サーバー証明書の検証をスキップする（非推奨）       |
+| `min_version`          | 最小 TLS バージョン（たとえば `1.2` や `1.3`）     |
+| `max_version`          | 最大 TLS バージョン                                |
+| `reload_interval`      | 証明書を再読み込みするまでの期間                   |
+
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable MD034 -->
+> TLS 設定オプションの詳細については、[configtls のドキュメント](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/config/configtls/README.md)を参照してください。
+<!-- markdownlint-enable MD034 -->
+<!-- prettier-ignore-end -->
+
 [dcc]: /docs/concepts/components/#collector
 
 ## 設定を上書きする {#override-settings}
@@ -800,13 +898,140 @@ cfssl gencert -ca ca.pem -ca-key ca-key.pem csr.json | cfssljson -bare cert
 
 以下の例では、ネストされた節の内部で設定を上書きする方法を示します。
 
-```sh
-otelcol --set "exporters::debug::verbosity=detailed"
-otelcol --set "receivers::otlp::protocols::grpc={endpoint:localhost:4317, compression: gzip}"
+### シンプルなプロパティ {#simple-property}
+
+`--set` オプションは常に1つのキー/バリューのペアを受け取り、 `--set key=value` のように使います。
+これに相当する YAML は次のとおりです。
+
+```yaml
+key: value
 ```
 
-{{% alert title="Important" color="warning" %}}
+### 複雑なネストされたキー {#complex-nested-keys}
 
-`--set` オプションは、ドットまたは等号を含むキーの設定に対応していません。
+ネストされたマップの値を参照するには、ペアの名前のキー区切り文字として2つのコロン (`::`) を使います。
+たとえば、 `--set outer::inner=value` は次のように変換されます。
 
-{{% /alert %}}
+```yaml
+outer:
+  inner: value
+```
+
+### 複数の値 {#multiple-values}
+
+複数の値を設定するには、複数の `--set` フラグを指定します。
+したがって `--set a=b --set c=d` は次のようになります。
+
+```yaml
+a: b
+c: d
+```
+
+### 配列の値 {#array-values}
+
+配列は `[]` で値を囲んで表現できます。
+たとえば、 `--set "key=[a, b, c]"` は次のように変換されます。
+
+```yaml
+key:
+  - a
+  - b
+  - c
+```
+
+より複雑なデータ構造を表現する必要がある場合は、YAML の利用を強く推奨します。
+
+> [!CAUTION]
+>
+> `--set` オプションには以下の制約があります。
+>
+> 1. ドット `.` を含むキーの設定はサポートしていません。
+> 2. 等号 `=` を含むキーの設定はサポートしていません。
+> 3. プロパティの値の部分の設定キーの区切り文字は "::" です。
+>    たとえば `--set "name={a::b: c}"` は `--set name::a::b=c` と等価です。
+
+## 他の設定プロバイダーの埋め込み {#embedding-other-configuration-providers}
+
+ある設定プロバイダーから、次のように他の設定プロバイダーを参照できます。
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+
+exporters: ${file:otlp-exporter.yaml}
+
+service:
+  extensions: []
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: []
+      exporters: [otlp_grpc]
+```
+
+## ディストリビューションで利用できるコンポーネントを確認する方法 {#how-to-check-components-available-in-a-distribution}
+
+`build-info` サブコマンドを使用します。以下に例を示します。
+
+```bash
+otelcol components
+```
+
+出力例:
+
+```yaml
+buildinfo:
+  command: otelcol
+  description: OpenTelemetry Collector
+  version: 0.143.0
+receivers:
+  - otlp
+processors:
+  - memory_limiter
+exporters:
+  - otlp_grpc
+  - otlp_http
+  - debug
+extensions:
+  - zpages
+```
+
+## 最終的な設定を確認する方法 {#how-to-examine-the-final-configuration}
+
+> [!CAUTION]
+>
+> このコマンドは実験的な機能です。
+> 動作は予告なく変更される可能性があります。
+
+`print-config` をデフォルトモード (`--mode=redacted`) と `--feature-gates=otelcol.printInitialConfig` で使用します。
+
+```bash
+otelcol print-config --config=file:examples/local/otel-config.yaml
+```
+
+デフォルトでは、設定は有効な場合にのみ出力され、機密情報はマスクされます。
+有効でない可能性のある設定を出力するには、`--validate=false` を使用します。
+
+### 機密フィールドを表示する方法 {#how-to-view-sensitive-fields}
+
+`print-config` を `--mode=unredacted` と `--feature-gates=otelcol.printInitialConfig` で使用します。
+
+```bash
+otelcol print-config --mode=unredacted --config=file:examples/local/otel-config.yaml
+```
+
+### 最終的な設定を JSON 形式で出力する方法 {#how-to-print-the-final-configuration-in-json-format}
+
+> [!CAUTION]
+>
+> このコマンドは実験的な機能です。
+> 動作は予告なく変更される可能性があります。
+
+`print-config` を `--format=json` と `--feature-gates=otelcol.printInitialConfig` で使用します。
+JSON 形式は不安定とみなされていることに注意してください。
+
+```bash
+otelcol print-config --format=json --config=file:examples/local/otel-config.yaml
+```

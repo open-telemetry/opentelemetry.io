@@ -1,0 +1,230 @@
+name: Reusable - publish patch as PR
+
+# Reusable workflow that downloads a patch artifact produced earlier in the
+# caller's run, applies it to a stable branch recreated from `main`, and opens
+# a PR for that branch — or updates the existing open PR via force-push. The
+# sibling of `reusable-apply-patch.yml`, for callers without a PR context
+# (e.g. scheduled housekeeping). Call as a job:
+#
+#   publish-patch:
+#     needs: generate-patch
+#     uses: ./.github/workflows/reusable-patch-pr.yml
+#     with:
+#       patch-name: my-patch-${{ github.run_id }}
+#       branch: otelbot/housekeeping
+#       pr-title: Housekeeping fixes
+#       commit-message: Apply housekeeping fixes
+#       user-name: otelbot
+#       user-email: 197425009+otelbot@users.noreply.github.com
+#       client-id: ${{ vars.MY_CLIENT_ID }}
+#     secrets:
+#       app-private-key: ${{ secrets.MY_APP_PRIVATE_KEY }}
+#
+# Trusted: every step is defined inline here and only runs git/gh plumbing —
+# it never executes code from the patch. The branch is recreated from `main`
+# on every run (force-push), so each run's PR reflects exactly the latest
+# patch; there is at most one open PR per branch at a time.
+
+on:
+  workflow_call:
+    inputs:
+      patch-name:
+        description: >-
+          Name of the artifact containing the patch. The artifact must contain a
+          single `git diff` file named `site.patch`.
+        required: true
+        type: string
+      branch:
+        description: >-
+          Stable branch to (re)create from `main` and push the patch commit to.
+          Must start with `otelbot/`: this workflow force-pushes, so it refuses
+          branches outside the bot namespace.
+        required: true
+        type: string
+      pr-title:
+        description: Title for the PR, when one is created.
+        required: true
+        type: string
+      pr-body:
+        description: >-
+          Body for the PR, rendered as the first item of a Markdown list that
+          also carries a link to the latest run; it should be a single paragraph
+          (multiline Markdown would break out of the list item). An IMPORTANT
+          note about the per-run regeneration of the branch is appended. The
+          body is refreshed on every run, so it always links to the run that
+          produced the PR's current content.
+        required: false
+        type: string
+        default: ''
+      pr-body-footer:
+        description: >-
+          Optional line appended at the very end of the PR body, e.g. a `/cc
+          @user1 @user2` line.
+        required: false
+        type: string
+        default: ''
+      commit-message:
+        description: Commit message to use.
+        required: false
+        type: string
+        default: Apply patch
+      user-name:
+        description: Git user name for the commit.
+        required: true
+        type: string
+      user-email:
+        description: Git user email for the commit.
+        required: true
+        type: string
+      client-id:
+        description: >-
+          Client ID of the GitHub App used to push the branch and create the PR.
+          The app needs write access to this repository's contents and pull
+          requests.
+        required: true
+        type: string
+    secrets:
+      app-private-key:
+        description: Private key of the GitHub App.
+        required: true
+    outputs:
+      pr-url:
+        description: URL of the created or updated PR ('' if none).
+        value: ${{ jobs.publish.outputs.pr_url }}
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Apply patch and publish PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write # push the patch branch
+      pull-requests: write # create the PR
+    outputs:
+      pr_url: ${{ steps.pr.outputs.pr_url }}
+
+    steps:
+      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+
+      # This workflow force-pushes to the given branch; refuse anything
+      # outside the bot namespace so that a buggy caller can't target a
+      # protected or contributor branch.
+      - name: Validate branch name
+        env:
+          BRANCH: ${{ inputs.branch }}
+        run: |
+          if [[ "$BRANCH" != otelbot/* ]]; then
+            echo "Branch '$BRANCH' is not in the otelbot/ namespace; refusing to force-push."
+            exit 1
+          fi
+
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        id: app-token
+        with:
+          client-id: ${{ inputs.client-id }}
+          private-key: ${{ secrets.app-private-key }}
+          permission-contents: write # push the patch branch
+          permission-pull-requests: write # create the PR
+
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: main
+          persist-credentials: false
+
+      # Let git resolve credentials through the gh CLI (which reads GH_TOKEN
+      # from each step's env) instead of persisting the token in .git/config.
+      - run: gh auth setup-git
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+
+      - name: Download patch
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: ${{ inputs.patch-name }}
+
+      - name: Apply patch on a fresh branch
+        env:
+          BRANCH: ${{ inputs.branch }}
+        run: |
+          git checkout -b "$BRANCH"
+          if ! git apply --verbose site.patch; then
+            echo "Patch failed to apply. For details, see output above. To debug this locally,"
+            echo "get the patch file from the workflow summary artifact section."
+            exit 1
+          fi
+          rm site.patch
+
+      - name: Commit and push
+        id: commit
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          BRANCH: ${{ inputs.branch }}
+          USER_NAME: ${{ inputs.user-name }}
+          USER_EMAIL: ${{ inputs.user-email }}
+          COMMIT_MESSAGE: ${{ inputs.commit-message }}
+        run: |
+          git config --local user.email "$USER_EMAIL"
+          git config --local user.name "$USER_NAME"
+          # The patch is applied to main at publish time, which may be newer
+          # than the main it was generated against: tolerate an empty result.
+          if [[ $(git status --porcelain) ]]; then
+            git add -A
+            git commit -m "$COMMIT_MESSAGE"
+            # Recreate the branch from main on every run so the PR always
+            # reflects exactly the latest patch.
+            git push --force origin "HEAD:$BRANCH"
+            echo "committed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Patch applied cleanly but resulted in no changes"
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create PR, or refresh the open PR's body
+        id: pr
+        if: steps.commit.outputs.committed == 'true'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          BRANCH: ${{ inputs.branch }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          PR_TITLE: ${{ inputs.pr-title }}
+          PR_BODY: ${{ inputs.pr-body }}
+          PR_FOOTER: ${{ inputs.pr-body-footer }}
+          RUN_URL:
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{
+            github.run_id }}
+          PR_NOTE: >-
+            This branch is regenerated from `main` on every run: any commits
+            pushed to it (manually or via `/fix`) will be lost. If you push
+            commits to this PR, merge it before the next scheduled run.
+        run: |
+          note=$(printf '> [!IMPORTANT]\n> %s' "$PR_NOTE")
+          body="- Latest content generated by [this workflow run]($RUN_URL)."
+          if [[ -n "$PR_BODY" ]]; then
+            body=$(printf -- '- %s\n%s' "$PR_BODY" "$body")
+          fi
+          body=$(printf '%s\n\n%s' "$body" "$note")
+          if [[ -n "$PR_FOOTER" ]]; then
+            body=$(printf '%s\n\n%s' "$body" "$PR_FOOTER")
+          fi
+          # Restrict the lookup to same-repo heads: `--head` matches by ref
+          # name alone, which a PR from a fork's identically named branch
+          # could otherwise satisfy.
+          pr_url=$(gh pr list --head "$BRANCH" --state open \
+            --json url,headRepositoryOwner \
+            --jq '[.[] | select(.headRepositoryOwner.login == env.REPO_OWNER)][0].url // empty')
+          if [[ -z "$pr_url" ]]; then
+            pr_url=$(gh pr create --base main --head "$BRANCH" \
+              --title "$PR_TITLE" --body "$body")
+            echo "Created $pr_url"
+          else
+            # Refresh the body so its run link matches the content just pushed.
+            gh pr edit "$pr_url" --body "$body"
+            echo "Updated $pr_url"
+          fi
+          echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
+          echo ":rocket: Patch published: $pr_url" >> "$GITHUB_STEP_SUMMARY"

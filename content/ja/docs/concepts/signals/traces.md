@@ -2,7 +2,7 @@
 title: トレース
 weight: 1
 description: アプリケーションを通過するリクエストの経路
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+default_lang_commit: 3b760ff2489d64228dcbafc395c5bf751b7d67e6
 cSpell:ignore: Guten
 ---
 
@@ -11,11 +11,9 @@ cSpell:ignore: Guten
 
 [スパン](#spans)で表現される以下の3つのJSONデータで、これを探ってみましょう。
 
-{{% alert title="Note" %}}
-
-以下のJSONの例は、特定のフォーマット、特に[OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding)を表すものではありません。OTLP/JSONは、より冗長です。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> 以下のJSONの例は、特定のフォーマット、特に[OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding)を表すものではありません。OTLP/JSONは、より冗長です。
 
 `hello` スパンは次のとおりです。
 

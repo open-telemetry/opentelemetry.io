@@ -2,6 +2,7 @@
 title: Instrumentation supplémentaire
 weight: 60
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+drifted_from_default: true
 ---
 
 Le Spring Boot starter OpenTelemetry fournit une
