@@ -1,6 +1,6 @@
 ---
 title: Infrastructure and Processes in Non-K8s Environments
-cSpell:ignore: ciukaj lukasz rollouts
+cSpell:ignore: rollouts
 ---
 
 ## Summary

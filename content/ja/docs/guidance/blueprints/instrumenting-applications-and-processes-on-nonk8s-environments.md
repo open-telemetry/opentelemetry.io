@@ -1,7 +1,6 @@
 ---
 title: 非 Kubernetes 環境におけるインフラストラクチャとプロセス
 default_lang_commit: a481099dea6e789033d52a3238c0d9bcabcdc167
-cSpell:ignore: ciukaj lukasz
 ---
 
 ## 概要 {#summary}
