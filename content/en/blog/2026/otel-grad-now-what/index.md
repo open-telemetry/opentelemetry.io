@@ -3,7 +3,7 @@ title: OpenTelemetry Has Graduated… Now WHAT?
 linkTitle: OTel Graduated… Now What?
 date: 2026-06-26
 author: >-
-  [Adriana Villela](https://github.com/avillela) (Dynatrace LLC), [Reese 
+  [Adriana Villela](https://github.com/avillela) (Dynatrace LLC), [Reese
   Lee](https://github.com/reese-lee) (New Relic)
 sig: Governance Committee
 cSpell:ignore: Farfetch ICYMI shoutout
@@ -85,15 +85,15 @@ So what does it take to become a graduated CNCF project? Projects must fulfill
 the following criteria:
 
 1. **Production adoption.**
-   [Many different organizations](https://opentelemetry.io/ecosystem/adopters/),
+   [Many different organizations](/ecosystem/adopters/),
    such as
    [GitHub](https://www.youtube.com/live/vB9_SiTV5CI?si=F3jRi2w83Gp1lp_F) and
    [Farfetch](https://youtu.be/9iaGG-YZw5I?si=YDjY8N4Z4zI4uKiV), run
    OpenTelemetry in production.
 2. **Robust governance.** OTel has a documented
-   [governance model](https://github.com/open-telemetry/community/blob/main/governance-charter.md) with clearly defined roles
-   around election and retirement, along with transparent communication and
-   decision-making.
+   [governance model](https://github.com/open-telemetry/community/blob/96374af6e5b681664d80402bdc08d9a2d439a966/governance-charter.md)
+   with clearly defined roles around election and retirement, along with
+   transparent communication and decision-making.
 3. **Community health.** OpenTelemetry has an established process for PR review
    and management. The project has
    [a number of regular contributors across multiple organizations](https://www.cncf.io/projects/opentelemetry).

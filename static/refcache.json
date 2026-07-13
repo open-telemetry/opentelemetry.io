@@ -6979,6 +6979,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-13T06:44:24.108432889Z"
   },
+  "https://github.com/open-telemetry/community/blob/96374af6e5b681664d80402bdc08d9a2d439a966/governance-charter.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-13T19:45:01.625055849Z"
+  },
   "https://github.com/open-telemetry/community/blob/b35f0f6c9801bfbe894211fb3d95afa3157662ec/community-members.md?from_branch=main#governance-committee": {
     "StatusCode": 206,
     "LastSeen": "2026-07-11T06:27:30.726128133Z"
