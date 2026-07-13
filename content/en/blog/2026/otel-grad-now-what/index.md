@@ -6,7 +6,7 @@ author: >-
   [Adriana Villela](https://github.com/avillela) (Dynatrace LLC), [Reese
   Lee](https://github.com/reese-lee) (New Relic)
 sig: Governance Committee
-cSpell:ignore: Farfetch ICYMI shoutout
+cSpell:ignore: Farfetch shoutout
 ---
 
 In case you missed it:
@@ -85,8 +85,7 @@ So what does it take to become a graduated CNCF project? Projects must fulfill
 the following criteria:
 
 1. **Production adoption.**
-   [Many different organizations](/ecosystem/adopters/),
-   such as
+   [Many different organizations](/ecosystem/adopters/), such as
    [GitHub](https://www.youtube.com/live/vB9_SiTV5CI?si=F3jRi2w83Gp1lp_F) and
    [Farfetch](https://youtu.be/9iaGG-YZw5I?si=YDjY8N4Z4zI4uKiV), run
    OpenTelemetry in production.
