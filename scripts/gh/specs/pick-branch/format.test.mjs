@@ -10,11 +10,11 @@ describe('pick-branch: format helpers', () => {
   test('SPECS: contains otel and semconv with expected repos', () => {
     assert.deepEqual(SPECS.otel, {
       repo: 'opentelemetry-specification',
-      abbr: 'spec',
+      slug: 'spec',
     });
     assert.deepEqual(SPECS.semconv, {
       repo: 'semantic-conventions',
-      abbr: 'semconv',
+      slug: 'semconv',
     });
   });
 
@@ -55,10 +55,11 @@ describe('pick-branch: format helpers', () => {
     const body = buildIssueBody({
       warnings: ['stale branches found', 'something else'],
       repo: 'opentelemetry-specification',
-      abbr: 'spec',
+      spec: 'otel',
       runUrl: 'https://github.com/o/r/actions/runs/123',
     });
-    assert.match(body, /update-spec-integration-branch/);
+    assert.match(body, /`specs-integration` workflow/);
+    assert.match(body, /`otel` job/);
     assert.match(
       body,
       /\[`opentelemetry-specification`\]\(https:\/\/github\.com\/open-telemetry\/opentelemetry-specification\)/,
@@ -75,8 +76,9 @@ describe('pick-branch: format helpers', () => {
     const body = buildIssueBody({
       warnings: ['x'],
       repo: 'semantic-conventions',
-      abbr: 'semconv',
+      spec: 'semconv',
     });
+    assert.match(body, /`semconv` job/);
     assert.doesNotMatch(body, /Workflow run:/);
   });
 });

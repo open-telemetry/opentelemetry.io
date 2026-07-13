@@ -1,13 +1,28 @@
 ---
 title: Refresh-refcache PR fix
 description: >-
-  How to resolve outstanding non-2XX entries on the otelbot refcache-refresh PR.
+  How to resolve outstanding non-2XX refcache entries on an otelbot PR.
 ---
 
-Follow these steps to resolve non-2XX `static/refcache.json` entries in the
-`otelbot/refcache-refresh` PR. This process may involve updating or removing
+Follow these steps to resolve non-2XX `static/refcache.json` entries on the
+[target otelbot PR](#target-pr). This process may involve updating or removing
 dead links on the site, then refreshing the refcache again until no non-2XX
 entries remain.
+
+## Target PR
+
+Unless instructed otherwise, target the PR for the upstream
+`otelbot/refcache-refresh` branch. When asked to fix a **spec or semconv
+integration branch**, target the open PR whose head branch matches
+`otelbot/spec-integration-*` or `otelbot/semconv-integration-*`, respectively.
+If more than one PR matches, ask which one is intended. To list open otelbot
+PRs:
+
+```sh
+gh pr list --search head:otelbot/
+```
+
+In the steps below, _`TARGET_BRANCH`_ is the head branch of the target PR.
 
 ## Preparation
 
@@ -15,19 +30,19 @@ These steps assume you have a local clone of the repository with the `upstream`
 remote configured to point to the main repository. Run these steps locally from
 the repository root.
 
-1. Determine the PR associated with upstream `otelbot/refcache-refresh`.
+1. Determine the PR associated with upstream _`TARGET_BRANCH`_.
 2. If none exists, stop.
-3. If a local `otelbot/refcache-refresh` branch already exists and contains
-   commits that are not in `upstream/otelbot/refcache-refresh`, back them up or
-   stop before resetting anything.
+3. If a local _`TARGET_BRANCH`_ branch already exists and contains commits that
+   are not in the upstream branch, back them up or stop before resetting
+   anything.
 4. Check out the PR branch with `gh pr checkout <num>`. If that fails because
    the local branch has diverged and you have already backed up any local-only
    commits, realign it with upstream:
 
    ```sh
    git fetch upstream
-   git checkout otelbot/refcache-refresh
-   git reset --hard upstream/otelbot/refcache-refresh
+   git checkout TARGET_BRANCH
+   git reset --hard upstream/TARGET_BRANCH
    ```
 
 5. If any content modules are out of date, run `npm run get:submodule`.
@@ -52,14 +67,16 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
    - Share the double-check summary: in your reply or PR comment (retried URLs,
      entries updated, final HTTP status counts, and “Processed N URLs” when
      shown).
-   - If `static/refcache.json` changed, commit and push to
-     `upstream/otelbot/refcache-refresh` (as of this step).
-   - Mark the PR ready for review: `gh pr ready <num>`.
-   - Enable auto-merge, so that the PR is merged once all approvals are in and
-     the checks pass: `gh pr merge <num> --auto`.
-   - **Remind a maintainer to approve** the PR so auto-merge can complete.
-     Provide a link to the PR:
-     `https://github.com/open-telemetry/opentelemetry.io/pull/<num>`.
+   - If `static/refcache.json` changed, commit and push to upstream
+     _`TARGET_BRANCH`_ (as of this step).
+   - For `otelbot/refcache-refresh` only — integration-branch PRs stay draft
+     until their workflow finalizes them at release time:
+     - Mark the PR ready for review: `gh pr ready <num>`.
+     - Enable auto-merge, so that the PR is merged once all approvals are in and
+       the checks pass: `gh pr merge <num> --auto`.
+     - **Remind a maintainer to approve** the PR so auto-merge can complete.
+       Provide a link to the PR:
+       `https://github.com/open-telemetry/opentelemetry.io/pull/<num>`.
 
    Then stop unless you are also leaving notes for reviewers.
 
@@ -84,6 +101,8 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
    - Where it originates from: provide links to files or pages.
    - A recommendation. For links into github.com, recommend a replacement link
      based on the last commit that contains the named resource.
+   - For an **integration branch**: where the fix belongs — in-branch, a
+     separate PR against `main`, or upstream in the spec repository.
 
    Pause for feedback from a reviewer.
 
