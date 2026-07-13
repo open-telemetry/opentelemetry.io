@@ -1,13 +1,6 @@
 ---
 title: 'Mastodon: 小さなチームで本番環境の OpenTelemetry Collector を運用する'
 linkTitle: Mastodon
-author: >-
-  [Juliano Costa](https://github.com/julianocosta89) (Datadog), [Tristan
-  Sloughter](https://github.com/tsloughter) (community), [Johanna
-  Öjeling](https://github.com/johannaojeling) (Grafana Labs), [Damien
-  Mathieu](https://github.com/dmathieu) (Elastic), [Tim
-  Campbell](https://github.com/timetinytim) (Mastodon)
-sig: End-User
 default_lang_commit: 92dfdd7f60d865cdc9a73ae1a469f991b523670f
 cSpell:ignore: otelbin Sidekiq Sloughter Öjeling
 ---

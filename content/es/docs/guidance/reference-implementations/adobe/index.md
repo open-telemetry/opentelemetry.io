@@ -2,13 +2,6 @@
 title:
   'Adobe: un pipeline de OpenTelemetry diseñado para la simplicidad a escala'
 linkTitle: Adobe
-author: >-
-  [Johanna Öjeling](https://github.com/johannaojeling) (Grafana Labs), [Juliano
-  Costa](https://github.com/julianocosta89) (Datadog), [Tristan
-  Sloughter](https://github.com/tsloughter) (community), [Damien
-  Mathieu](https://github.com/dmathieu) (Elastic), [Bogdan
-  Stancu](https://github.com/bogdan-st) (Adobe)
-sig: End-User
 default_lang_commit: 6751402db060c25800bb41c270dcaebb48aa7acb
 # prettier-ignore
 cSpell:ignore: autoescalado contrapresión reinicios Sloughter sénior Öjeling

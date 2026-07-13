@@ -1,7 +1,5 @@
 ---
 title: Infrastructure and Processes in Non-K8s Environments
-date: 2026-06-03
-author: Lukasz Ciukaj (Splunk)
 cSpell:ignore: ciukaj lukasz rollouts
 ---
 
