@@ -2,7 +2,6 @@ title: android
 registryType: instrumentation
 language: android
 tags:
-  - android
   - instrumentation
   - android
 urls:

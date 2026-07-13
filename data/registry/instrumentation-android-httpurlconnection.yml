@@ -1,3 +1,4 @@
+# cspell:ignore httpurlconnection
 title:
   Android Instrumentation for URLConnection, HttpURLConnection and
   HttpsURLConnection

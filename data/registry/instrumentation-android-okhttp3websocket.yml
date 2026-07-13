@@ -1,3 +1,4 @@
+# cspell:ignore okhttp
 title: Android Instrumentation for OkHttp Websocket version 3.0 and higher
 registryType: instrumentation
 language: android

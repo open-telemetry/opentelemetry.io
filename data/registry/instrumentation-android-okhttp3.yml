@@ -1,3 +1,4 @@
+# cspell:ignore okhttp
 title: Android Instrumentation for OkHttp version 3.0 and higher
 registryType: instrumentation
 language: android
