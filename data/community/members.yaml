@@ -232,9 +232,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: austinlparker
     teams:
-      - docs-approvers
-      - docs-maintainers
-      - docs-triagers
       - semconv-log-approvers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
@@ -1718,11 +1715,6 @@ approvers:
       - semconv-feature-flag-approvers
     html_url: https://github.com/askpt
     avatar_url: https://avatars.githubusercontent.com/u/2493377?v=4
-  - name: athre0z
-    teams:
-      - ebpf-profiler-approvers
-    html_url: https://github.com/athre0z
-    avatar_url: https://avatars.githubusercontent.com/u/6553158?v=4
   - name: axw
     teams:
       - collector-approvers
@@ -1746,11 +1738,6 @@ approvers:
       - semconv-feature-flag-approvers
     html_url: https://github.com/beeme1mr
     avatar_url: https://avatars.githubusercontent.com/u/682996?v=4
-  - name: BenoitZugmeyer
-    teams:
-      - browser-approvers
-    html_url: https://github.com/BenoitZugmeyer
-    avatar_url: https://avatars.githubusercontent.com/u/61787?v=4
   - name: bertysentry
     teams:
       - docs-fr-approvers
@@ -2259,11 +2246,6 @@ approvers:
       - sqlcommenter-approvers
     html_url: https://github.com/weyert
     avatar_url: https://avatars.githubusercontent.com/u/7049?v=4
-  - name: whatyouhide
-    teams:
-      - erlang-contrib-approvers
-    html_url: https://github.com/whatyouhide
-    avatar_url: https://avatars.githubusercontent.com/u/3890250?v=4
   - name: williazz
     teams:
       - swift-approvers
@@ -2378,7 +2360,6 @@ triagers:
   - name: naseemkullah
     teams:
       - javascript-contrib-triagers
-      - javascript-triagers
     html_url: https://github.com/naseemkullah
     avatar_url: https://avatars.githubusercontent.com/u/24660299?v=4
   - name: neilime
@@ -2516,6 +2497,9 @@ members:
   - name: asuresh4
     html_url: https://github.com/asuresh4
     avatar_url: https://avatars.githubusercontent.com/u/17557526?v=4
+  - name: athre0z
+    html_url: https://github.com/athre0z
+    avatar_url: https://avatars.githubusercontent.com/u/6553158?v=4
   - name: Austin-Tan
     html_url: https://github.com/Austin-Tan
     avatar_url: https://avatars.githubusercontent.com/u/29290481?v=4
@@ -3038,6 +3022,9 @@ members:
   - name: vyagh
     html_url: https://github.com/vyagh
     avatar_url: https://avatars.githubusercontent.com/u/115340955?v=4
+  - name: wehzzz
+    html_url: https://github.com/wehzzz
+    avatar_url: https://avatars.githubusercontent.com/u/113706003?v=4
   - name: wgliang
     html_url: https://github.com/wgliang
     avatar_url: https://avatars.githubusercontent.com/u/8739301?v=4
