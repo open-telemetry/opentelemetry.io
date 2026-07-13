@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Has Graduated… Now WHAT?
 linkTitle: OTel Graduated… Now What?
-date: 2026-06-26
+date: 2026-07-15
 author: >-
   [Adriana Villela](https://github.com/avillela) (Dynatrace LLC), [Reese
   Lee](https://github.com/reese-lee) (New Relic)
