@@ -10,7 +10,7 @@ sig: Governance Committee
 cSpell:ignore: Farfetch ICYMI shoutout
 ---
 
-ICYMI:
+In case you missed it:
 [OpenTelemetry (OTel) has officially achieved CNCF graduated status](https://www.cncf.io/announcements/2026/05/21/cloud-native-computing-foundation-announces-opentelemetrys-graduation-solidifying-status-as-the-de-facto-observability-standard/)!
 It now stands proudly alongside amazing open source projects such as
 [Kubernetes](https://kubernetes.io) and [Prometheus](https://prometheus.io/), to
