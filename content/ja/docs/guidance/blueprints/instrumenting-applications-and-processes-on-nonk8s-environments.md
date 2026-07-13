@@ -1,5 +1,7 @@
 ---
 title: 非 Kubernetes 環境におけるインフラストラクチャとプロセス
+date: 2026-06-03
+author: Lukasz Ciukaj (Splunk)
 default_lang_commit: a481099dea6e789033d52a3238c0d9bcabcdc167
 ---
 
