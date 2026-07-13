@@ -204,6 +204,11 @@ if (logger.Enabled(...)) {
 }
 ```
 
+Only guard expressions that are free of side effects, since the guarded code
+runs only when logging is enabled. Guarding code that has side effects, or that
+other logic depends on, makes your application's behavior depend on the logging
+configuration, which is usually a source of subtle bugs.
+
 Even then, keep in mind that the result of `Enabled` is not static: it can
 change over time as configuration changes, so it should be evaluated per log
 record and not cached.
