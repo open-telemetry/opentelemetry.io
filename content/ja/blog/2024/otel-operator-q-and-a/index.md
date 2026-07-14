@@ -128,7 +128,7 @@ spec:
 
 プライベートコンテナレジストリから Collector イメージをプルする場合は、[`imagePullSecrets`](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/) を使用する必要があることに注意してください。
 プライベートコンテナレジストリは認証が必要なため、これによりそのプライベートレジストリに対して認証できるようになります。
-Collector イメージで `imagePullSecrets` を使用する方法の詳細については、[手順](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets)を参照してください。
+Collector イメージで `imagePullSecrets` を使用する方法の詳細については、[手順](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/collector/image-pull-secrets.md)を参照してください。
 
 詳細については、[OpenTelemetryCollector CR API ドキュメント](https://github.com/open-telemetry/opentelemetry-operator/blob/f6b0d947a4c48444a0483b3b0dcaf1e60c4458d6/docs/api/opentelemetrycollectors.md?from_branch=main)をご覧ください。
 
@@ -204,7 +204,7 @@ spec:
 1つのユースケースは、[セキュリティ上の理由で、Target Allocator のイメージのミラーを独自のプライベートコンテナレジストリにホストする必要がある場合](https://cloud-native.slack.com/archives/C033BJ8BASU/p1713894678225579)です。
 
 プライベートレジストリから Target Allocator イメージを参照する必要がある場合は、`imagePullSecrets` を使用する必要があります。
-詳細については、[手順](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets)を参照してください。
+詳細については、[手順](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/collector/image-pull-secrets.md)を参照してください。
 自分でサービスアカウントを作成しない場合は自動的に作成されるため、Target Allocator 用の `serviceAccount` を作成する必要はないことに注意してください（[Q7](#q7-do-i-need-to-create-a-service-account-to-use-the-target-allocator) を参照）。
 
 詳細については、[Target Allocator API ドキュメント](https://github.com/open-telemetry/opentelemetry-operator/blob/20d055590028d991e2cd241cbf21723e5609d842/docs/api/targetallocators.md?from_branch=main)をご覧ください。
