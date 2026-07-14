@@ -76,7 +76,7 @@ The safest way to validate is to emit **both** the old and new telemetry at the
 same time, so your existing dashboards keep working while you build and check
 the new ones side by side. Append `/dup` to any domain:
 
-```
+```text
 OTEL_SEMCONV_STABILITY_OPT_IN=database/dup,code/dup
 ```
 
