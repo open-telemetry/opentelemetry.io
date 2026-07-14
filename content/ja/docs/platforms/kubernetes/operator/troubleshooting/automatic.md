@@ -254,7 +254,7 @@ annotations:
 
 ここでの `opentelemetry` は `Instrumentation` リソースの名前空間で、`my-instrumentation` は `Instrumentation` リソースの名前です。
 
-[アノテーションに利用できる値は次のとおりです](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md?plain=1#L151-L156)。
+[アノテーションに利用できる値は次のとおりです](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/sidecar-injection.md?plain=1#L54-L59)。
 
 - "true" - 名前空間から `OpenTelemetryCollector` リソースを挿入する。
 - "sidecar-for-my-app" - 現在の名前空間内の `OpenTelemetryCollector` カスタムリソースインスタンスの名前。

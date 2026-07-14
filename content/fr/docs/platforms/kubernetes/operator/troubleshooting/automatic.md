@@ -282,7 +282,7 @@ annotations:
 Où `opentelemetry` est le namespace de la ressource `Instrumentation`, et
 `my-instrumentation` est le nom de la ressource `Instrumentation`.
 
-[Les valeurs possibles pour l'annotation peuvent être](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md?plain=1#L151-L156)
+[Les valeurs possibles pour l'annotation peuvent être](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/sidecar-injection.md?plain=1#L54-L59)
 :
 
 - "true" - injecter la ressource `OpenTelemetryCollector` du namespace.
