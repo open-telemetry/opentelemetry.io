@@ -11515,6 +11515,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-07T06:54:06.182373026Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-14T19:02:53.502696953Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/activej-http-6.0": {
     "StatusCode": 206,
     "LastSeen": "2026-07-06T07:10:04.341121966Z"
