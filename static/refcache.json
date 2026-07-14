@@ -2607,6 +2607,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-07-07T06:54:08.234952311Z"
   },
+  "https://docs.spring.io/spring-boot/reference/features/external-config.html#features.external-config.typesafe-configuration-properties": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-24T16:36:56.212586683Z"
+  },
   "https://docs.spring.io/spring-boot/reference/using/auto-configuration.html": {
     "StatusCode": 200,
     "LastSeen": "2026-07-07T06:54:14.811827584Z"
@@ -3110,6 +3114,10 @@
   "https://explorer.opentelemetry.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-07-13T06:44:41.283108859Z"
+  },
+  "https://explorer.opentelemetry.io/java-agent/configuration/builder": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-10T16:01:47.113443609Z"
   },
   "https://explorer.opentelemetry.io/java-agent/instrumentation": {
     "StatusCode": 206,
@@ -10139,6 +10147,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-11T06:27:20.113067247Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0/snippets/Sampler_rule_based_kitchen_sink.yaml#L10-L53": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-25T11:54:27.255083395Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/issues/100": {
     "StatusCode": 206,
     "LastSeen": "2026-07-11T06:27:47.44239161Z"
@@ -11467,6 +11479,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-08T06:28:06.496184221Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v2.29.0/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/EmbeddedConfigFile.java#L66-L82": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-24T16:36:58.797690147Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues": {
     "StatusCode": 206,
     "LastSeen": "2026-07-07T06:53:54.606016941Z"
@@ -11474,6 +11490,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/1060": {
     "StatusCode": 206,
     "LastSeen": "2026-07-10T06:57:58.890535208Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/14083": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-24T16:36:57.824117116Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7413": {
     "StatusCode": 206,
