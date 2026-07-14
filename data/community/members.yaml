@@ -2246,11 +2246,6 @@ approvers:
       - sqlcommenter-approvers
     html_url: https://github.com/weyert
     avatar_url: https://avatars.githubusercontent.com/u/7049?v=4
-  - name: whatyouhide
-    teams:
-      - erlang-contrib-approvers
-    html_url: https://github.com/whatyouhide
-    avatar_url: https://avatars.githubusercontent.com/u/3890250?v=4
   - name: williazz
     teams:
       - swift-approvers
