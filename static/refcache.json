@@ -7451,6 +7451,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-11T06:27:28.072431064Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/45740": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-14T06:25:32.081995-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/35139": {
     "StatusCode": 206,
     "LastSeen": "2026-07-11T06:28:05.727185807Z"
@@ -8314,10 +8318,6 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jaegerreceiver": {
     "StatusCode": 206,
     "LastSeen": "2026-07-14T06:28:46.250281168Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jmxreceiver": {
-    "StatusCode": 404,
-    "LastSeen": "2026-07-14T06:28:53.18715481Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/journaldreceiver": {
     "StatusCode": 206,
