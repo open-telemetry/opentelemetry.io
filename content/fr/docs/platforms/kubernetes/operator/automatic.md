@@ -52,7 +52,7 @@ L'opérateur fournit une
 qui est utilisée pour créer une instance du collecteur que l'opérateur gère.
 L'exemple suivant déploie le collecteur en tant que déploiement (par défaut),
 mais il y a d'autres
-[modes de déploiement](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes)
+[modes de déploiement](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/deployment-modes.md)
 qui peuvent être utilisés.
 
 Lorsque vous utilisez le mode `Deployment`, l'opérateur créera également un
