@@ -31,7 +31,7 @@ easier. It does the following:
 - Injects and configures
   [autoinstrumentation](https://www.honeycomb.io/blog/what-is-auto-instrumentation)
   into your pods, supported by the
-  [`Instrumentation`](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#opentelemetry-auto-instrumentation-injection)
+  [`Instrumentation`](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/auto-instrumentation/README.md)
   custom resource.
 
 I've had a chance to use the Operator in the last year, and learned some pretty
