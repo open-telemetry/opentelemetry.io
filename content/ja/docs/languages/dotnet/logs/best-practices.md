@@ -32,9 +32,9 @@ default_lang_commit: 346b2912021b98de4349f80753c829d9223a1f25
 一般的なルールとして、以下のようになります。
 
 - [依存性注入（DI）](https://learn.microsoft.com/dotnet/core/extensions/dependency-injection)を使用するアプリケーション（たとえば [ASP.NET Core](https://learn.microsoft.com/aspnet/core) や [.NET Worker](https://learn.microsoft.com/dotnet/core/extensions/workers)）を構築している場合、ほとんどのケースでは DI が提供するロガーを使用するべきですが、DI のロギングパイプラインが利用可能になる前や、破棄された後にログを記録したい特殊なケースもあります。
-  詳しくは [.NET 公式ドキュメント](https://learn.microsoft.com/dotnet/core/extensions/logging#integration-with-hosts-and-dependency-injection)と [OpenTelemetry .NET ログを5分で始める - ASP.NET Core アプリケーション](/docs/languages/dotnet/logs/getting-started-aspnetcore/)チュートリアルを参照してください。
+  詳しくは [.NET 公式ドキュメント](https://learn.microsoft.com/dotnet/core/extensions/logging#integration-with-hosts-and-dependency-injection)と [5分で始める OpenTelemetry .NET ログ - ASP.NET Core アプリケーション](/docs/languages/dotnet/logs/getting-started-aspnetcore/)チュートリアルを参照してください。
 - DI を使用しないアプリケーションを構築している場合は、[LoggerFactory](#loggerfactory) インスタンスを作成し、OpenTelemetry がそれと連携するように設定してください。
-  詳しくは [OpenTelemetry .NET ログを5分で始める - コンソールアプリケーション](/docs/languages/dotnet/logs/getting-started-console/)チュートリアルを参照してください。
+  詳しくは [5分で始める OpenTelemetry .NET ログ - コンソールアプリケーション](/docs/languages/dotnet/logs/getting-started-console/)チュートリアルを参照してください。
 
 ログカテゴリ名にはドット区切りの [UpperCamelCase](https://en.wikipedia.org/wiki/Camel_case) を使用すると、[ログのフィルタリング](#log-filtering)に便利です。
 一般的な方法は完全修飾クラス名を使用することであり、さらに分類が必要な場合はサブカテゴリ名を追加します。
@@ -193,7 +193,7 @@ internal static partial class LoggerExtensions
 >
 > コンパイル時ソースジェネレーターを使用する場合、検出された最初の `Exception` パラメーターには自動的に特別な処理が適用されます。
 > これはメッセージテンプレートの一部にすべきでは**ありません**。
-> 詳しくは [Log method anatomy](https://learn.microsoft.com/dotnet/core/extensions/logger-message-generator#log-method-anatomy) を参照してください。
+> 詳しくは [ログメソッドの構造](https://learn.microsoft.com/dotnet/core/extensions/logger-message-generator#log-method-anatomy) を参照してください。
 
 ロギング拡張メソッドを使用する場合は、例外をログに記録するための専用オーバーロードを使用するべきです。
 
