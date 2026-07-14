@@ -197,7 +197,7 @@ In fact, the Operator creates two new
 (CR) types in Kubernetes to support this functionality: the
 [OpenTelemetry Collector CR](https://github.com/open-telemetry/opentelemetry-operator#getting-started),
 and the
-[Autoinstrumentation CR](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection).
+[Autoinstrumentation CR](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/auto-instrumentation/README.md).
 
 Today, we will be focusing on the Target Allocator. The TA is an optional
 component of the Operator’s OTel Collector management capabilities.

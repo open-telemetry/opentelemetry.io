@@ -19,7 +19,7 @@ cSpell:ignore: mycollector
   [`OpAMPBridge`](https://github.com/open-telemetry/opentelemetry-operator/blob/6022a4fef5b60f8812069a54bac44e631ef5ec8c/docs/api/opampbridges.md?from_branch=main) カスタムリソースによってサポートされています。
 - [Prometheus Operator の `PodMonitor` および `ServiceMonitor` CR との統合](https://github.com/open-telemetry/opentelemetry-operator/tree/de81a64ae8d7d2f4f48945049d8ef9ad3509f89e/cmd/otel-allocator?from_branch=main)を提供します。
 - [自動計装](https://www.honeycomb.io/blog/what-is-auto-instrumentation)を Pod にインジェクションして設定します。
-  [`Instrumentation`](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#opentelemetry-auto-instrumentation-injection) カスタムリソースによってサポートされています。
+  [`Instrumentation`](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/auto-instrumentation/README.md) カスタムリソースによってサポートされています。
 
 この1年で Operator を使う機会があり、いくつかのクールなことを学んだので、Q&A の形式で、OTel Operator に関するちょっとした豆知識を共有するのが役立つと思いました。
 

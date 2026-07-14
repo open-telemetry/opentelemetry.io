@@ -128,7 +128,7 @@ Target Allocator は OTel Operator の一部です。
 - Pod への[自動計装](https://www.honeycomb.io/blog/what-is-auto-instrumentation)の注入と設定
 
 実際に、Operator はこの機能をサポートするために、Kubernetes に2つの新しい[カスタムリソース](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)（CR）タイプを作成します。
-[OpenTelemetry Collector CR](https://github.com/open-telemetry/opentelemetry-operator#getting-started) と [Autoinstrumentation CR](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection) です。
+[OpenTelemetry Collector CR](https://github.com/open-telemetry/opentelemetry-operator#getting-started) と [Autoinstrumentation CR](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/auto-instrumentation/README.md) です。
 
 今回は Target Allocator に焦点を当てます。
 TA は、Operator の OTel Collector 管理機能のオプションコンポーネントです。
