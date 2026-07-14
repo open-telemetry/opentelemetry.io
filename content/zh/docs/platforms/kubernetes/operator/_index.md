@@ -23,7 +23,7 @@ drifted_from_default: true
 Operator 管理以下内容：
 
 - [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector)
-- [使用 OpenTelemetry 插桩库对工作负载进行自动插桩](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection)
+- [使用 OpenTelemetry 插桩库对工作负载进行自动插桩](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)
 
 ## 入门指南 {#getting-started}
 

@@ -28,7 +28,7 @@ El operador gestiona:
 - El
   [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector)
 - La
-  [auto-instrumentación de las cargas de trabajo usando librerías de instrumentación de OpenTelemetry](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection)
+  [auto-instrumentación de las cargas de trabajo usando librerías de instrumentación de OpenTelemetry](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)
 
 ## Primeros pasos {#getting-started}
 
