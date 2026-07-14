@@ -191,12 +191,6 @@
   contact: 'https://www.heroku.com/contact/'
   oss: false
   commercial: true
-- name: Highlight
-  nativeOTLP: true
-  url: https://highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/
-  contact: support@highlight.io
-  oss: true
-  commercial: true
 - name: Honeycomb
   nativeOTLP: true
   url: https://docs.honeycomb.io/getting-data-in/
