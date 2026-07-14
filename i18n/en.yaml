@@ -62,3 +62,9 @@ config_types_copied: Copied!
 config_types_source: Source
 config_types_view_schema: View JSON schema
 config_types_schema_version: Schema version
+
+js_benchmarks_download_json:
+  other: Download data as JSON
+
+js_benchmarks_powered_by:
+  other: Powered by
