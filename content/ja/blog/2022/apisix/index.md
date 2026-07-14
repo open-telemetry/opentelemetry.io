@@ -158,7 +158,7 @@ curl -X PUT -H `x-custom-ot-key: test-ot-val` http://127.0.0.1:9080/put
 ![Jaeger UI](jaeger-ui-1.png)
 
 `additional_attributes` の設定は、Apache APISIX および NGINX の変数から `attribute` の値として取得するように設定されているため、`additional_attributes` は有効な Apache APISIX または NGINX の変数である必要があることに注意してください。
-HTTP Header も含まれますが、http*header を取得する場合は、変数名の接頭辞として `http*` を追加する必要があります。
+HTTP ヘッダーも含まれますが、http*header を取得する場合は、変数名の接頭辞として `http*` を追加する必要があります。
 変数が存在しない場合、`tag` は表示されません。
 
 ## 例 {#example}
