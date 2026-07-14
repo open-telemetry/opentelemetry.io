@@ -290,7 +290,7 @@ ci-dessus indique que ces cibles concernent `otelcol-collector-0` (le nom du
 {{% alert title="Note" %}}
 
 Voir le fichier
-[readme de l'allocateur de cibles](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md?plain=1#L128-L134)
+[readme de l'allocateur de cibles](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#endpoints)
 pour plus d'informations sur le point de terminaison `/jobs`.
 
 {{% /alert %}}
