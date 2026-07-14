@@ -587,7 +587,7 @@ Les valeurs possibles pour l'annotation peuvent être
 Alternativement, l'annotation peut être ajoutée à un namespace, ce qui
 entraînera tous les services de ce namespace à opter pour l'instrumentation
 automatique. Voir la
-[documentation d'auto-instrumentation avec l'opérateur](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)
+[documentation d'auto-instrumentation avec l'opérateur](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)
 pour plus de détails.
 
 ### Opter pour un service Go {#opt-in-a-go-service}
