@@ -86,9 +86,9 @@ OpenTelemetry は多くの連携するパーツを持つ包括的なエコシス
 - OTLP リソースモデルが更新され、効率的な情報共有が可能になりました。
   Collector もプロファイルシグナルに対してこの最適化を透過的にサポートするよう更新されました。
 
-## はじめに {#getting-started}
+## はじめてみる {#getting-started}
 
-OpenTelemetry プロファイルの詳細については、OpenTelemetry [ドキュメント](/docs/)の[プロファイルの概念](/docs/concepts/signals/profiles)ページをご覧ください。
+OpenTelemetry プロファイルの詳細については、OpenTelemetry [ドキュメント](/docs/)の[プロファイルの概念](/docs/concepts/signals/profiles)ページを参照してください。
 
 実際のデプロイメントを始める最も簡単な方法は、OpenTelemetry の [eBPF プロファイラー](https://github.com/open-telemetry/opentelemetry-ebpf-profiler)を OTLP プロファイルをサポートするバックエンドと組み合わせて使用することです。
 シグナルはまだ開発中のため、本番対応のバックエンドはまだ登場していませんが、複数のベンダーが OpenTelemetry プロファイルのサポートに取り組んでいます。
