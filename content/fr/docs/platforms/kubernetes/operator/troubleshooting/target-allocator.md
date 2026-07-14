@@ -305,7 +305,7 @@ Une chose à se rappeler est que juste parce que vous incluez la section
 `targetAllocator` dans la ressource `OpenTelemetryCollector` ne signifie pas
 qu'elle est activée. Vous devez l'activer explicitement. De plus, si vous voulez
 utiliser
-[la découverte de service Prometheus](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md#discovery-of-prometheus-custom-resources),
+[la découverte de service Prometheus](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#discovery-of-prometheus-custom-resources),
 vous devez l'activer explicitement:
 
 - Définir `spec.targetAllocator.enabled` à `true`
