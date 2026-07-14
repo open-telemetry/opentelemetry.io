@@ -577,7 +577,7 @@ The possible values for the annotation can be
 
 Alternatively, the annotation can be added to a namespace, which will result in
 all services in that namespace to opt-in to automatic instrumentation. See the
-[Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)
+[Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)
 for more details.
 
 ### Opt-in a Go Service
