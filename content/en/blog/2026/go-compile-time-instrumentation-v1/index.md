@@ -79,7 +79,7 @@ so the rest of your build stays the same.
 Install it with `go install`:
 
 ```sh
-go install go.opentelemetry.io/otelc/tool/cmd/otelc@v1.0.0
+go install go.opentelemetry.io/otelc/tool/cmd/otelc@latest
 ```
 
 Then build your application through it:
