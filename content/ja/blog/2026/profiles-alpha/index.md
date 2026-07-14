@@ -65,7 +65,7 @@ Elastic による [eBPF プロファイリングエージェント](https://gith
 アルファリリースでは多くの重要な改善が利用可能です。
 
 - eBPF エージェントが OpenTelemetry Collector レシーバーとして動作するようになり、メトリクスと K8s メタデータの既存の OpenTelemetry 処理パイプラインを活用し、公式の [Collector ディストリビューション](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/4c40558ecfad1e7ae8b535013ef3cd14ae763ff9/distributions/otelcol-ebpf-profiler?from_branch=main)として配布されます。
-- Go 実行ファイルのターゲット上自動シンボル化
+- Go 実行ファイルのターゲット上での自動シンボル化
 - Node.js V8 の ARM64 サポート
 - BEAM（Erlang/Elixir）の初期サポート
 - .NET 9 および 10 のサポート
@@ -93,7 +93,7 @@ OpenTelemetry プロファイルの詳細については、OpenTelemetry [ドキ
 実際のデプロイメントを始める最も簡単な方法は、OpenTelemetry の [eBPF プロファイラー](https://github.com/open-telemetry/opentelemetry-ebpf-profiler)を OTLP プロファイルをサポートするバックエンドと組み合わせて使用することです。
 シグナルはまだ開発中のため、本番対応のバックエンドはまだ登場していませんが、複数のベンダーが OpenTelemetry プロファイルのサポートに取り組んでいます。
 
-開発とテストを加速するために、Elastic はバックエンド（収集、データストレージ、シンボル化、UI）の部分を再実装した [devfiler](https://github.com/elastic/devfiler) というデスクトップアプリケーションをオープンソースとして公開しました。
+開発とテストを加速するために、Elastic は eBPF プロファイラーのバックエンド（収集、データストレージ、シンボル化、UI）部分を再実装した [devfiler](https://github.com/elastic/devfiler) というデスクトップアプリケーションをオープンソースとして公開しました。
 devfiler は本番バックエンドではなく、そのように使用すべきではないことに注意してください。
 詳細な手順については、eBPF プロファイラーの[リポジトリ](https://github.com/open-telemetry/opentelemetry-ebpf-profiler)を参照してください。
 
