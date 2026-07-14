@@ -214,7 +214,7 @@ PodMonitor と ServiceMonitor は Pod からのメトリクス収集に限定さ
 
 主なコンポーネントは以下のとおりです：
 
-- **mode:** [Operator がサポートする4つの OTel Collector デプロイメントモード](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#deployment-modes)の1つです：Sidecar、Deployment、StatefulSet、DaemonSet。
+- **mode:** [Operator がサポートする4つの OTel Collector デプロイメントモード](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/collector/deployment-modes.md)の1つです：Sidecar、Deployment、StatefulSet、DaemonSet。
 - **targetallocator:** Target Allocator を設定する場所です。なお、[Target Allocator は Deployment、DaemonSet、StatefulSet モードでのみ動作します](https://www.youtube.com/watch?v=Uwq4EPaMJFM)。
 - **config:** OTel Collector の設定 YAML を構成する場所です。
 

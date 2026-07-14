@@ -305,7 +305,7 @@ whatever namespace you like.
 The main components are:
 
 - **mode:** This is one of four
-  [OTel Collector deployment modes supported by the Operator](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#deployment-modes):
+  [OTel Collector deployment modes supported by the Operator](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/collector/deployment-modes.md):
   Sidecar, Deployment, StatefulSet and DaemonSet.
 - **targetallocator:** This is where you configure the Target Allocator. Note
   that the
