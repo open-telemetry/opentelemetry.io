@@ -121,6 +121,8 @@ Feature-specific support details are documented in these guides:
 
 - [Distributed traces](distributed-traces/): context propagation support,
   runtime-specific requirements, and distributed tracing limitations
+- [Trace context association](context-propagation/): parent-child association
+  support for asynchronous and threaded request handling
 - [Export data](configure/export-data/): protocol, database, messaging, GenAI,
   GPU, and Go library instrumentation support
 

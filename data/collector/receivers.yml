@@ -9,6 +9,13 @@
     - contrib
   stability:
     metrics: beta
+- name: activedirectoryinvreceiver
+  display_name: activedirectoryinvreceiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
 - name: aerospikereceiver
   display_name: Aerospike Receiver
   repo: contrib
@@ -457,6 +464,7 @@
     - contrib
   stability:
     metrics: beta
+    logs: development
 - name: mysqlreceiver
   display_name: MySQL Receiver
   repo: contrib
@@ -680,7 +688,8 @@
   distributions:
     - contrib
   stability:
-    metrics: beta
+    metrics: unmaintained
+  unmaintained: true
 - name: skywalkingreceiver
   display_name: SkyWalking Receiver
   repo: contrib

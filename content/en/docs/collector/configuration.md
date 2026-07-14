@@ -39,7 +39,8 @@ the following providers for `scheme`:
 - **env** - Reads configuration from an environment variable. E.g.
   `env:MY_CONFIG_IN_AN_ENVVAR`.
 - **yaml** - Reads configuration from a YAML string, with `::` delimiting
-subpaths. E.g. `yaml:exporters::debug::verbosity: detailed`.
+  subpaths. E.g. `yaml:exporters::debug::verbosity: detailed`.
+
 <!-- prettier-ignore-start -->
 - **http** - Reads configuration from an HTTP URI. E.g. `http://www.example.com`
 - **https** - Reads configuration from an HTTPS URI. E.g.
