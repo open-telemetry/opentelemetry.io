@@ -2,7 +2,7 @@
 title: >-
   Announcing v1 of OpenTelemetry Go Compile-Time Instrumentation
 linkTitle: Go Compile-Time Instrumentation v1
-date: 2026-12-31 # PLACEHOLDER: set to the v1 release day before publishing
+date: 2026-07-14
 author: '[Kemal Akkoyun](https://github.com/kakkoyun) (Datadog)'
 issue: 10670
 sig: Go Compile-Time Instrumentation
@@ -10,11 +10,6 @@ draft: true # remove only when Comms schedules publication
 # prettier-ignore
 cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario GOFLAGS Haibin Martinez Momin otelc toolexec Xabier
 ---
-
-<!-- PUBLISH GATE: v1 is not cut yet (latest tag is v0.5.0, repo README still
-     reads "Status: Development"). Before removing draft:true, confirm the v1
-     release, flip every v0.5.0 link below to the v1 tag, and re-verify the
-     supported-instrumentation list and getting-started commands against v1. -->
 
 If you write Java, Python, Node.js, or .NET, you have been able to add
 OpenTelemetry to an application without editing its code for years: attach an
@@ -53,9 +48,6 @@ don't own.
 
 ## Key capabilities in v1
 
-<!-- Re-confirm this list against the v1 release notes before publishing.
-     Current supported set is taken from pkg/instrumentation at v0.5.0. -->
-
 - **Zero-code instrumentation**: instrument an application and its dependencies
   without manual code changes.
 - **Compile-time injection, no added runtime overhead**: instrumentation is
@@ -69,9 +61,9 @@ don't own.
   for the full, current list.
 - **Rule-based and extensible**: add support for new libraries through the SIG's
   instrumentation-rule format. See the
-  [instrumentation guide](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v0.5.0/docs/instrument-guide.md)
+  [instrumentation guide](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v1.0.0/docs/instrument-guide.md)
   and the
-  [rules reference](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v0.5.0/docs/rules.md).
+  [rules reference](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v1.0.0/docs/rules.md).
 - **Semantic-convention compliance**: emitted telemetry follows current
   OpenTelemetry semantic conventions.
 - **CI/CD friendly**: run the tool at development time or drop it into your
@@ -84,17 +76,10 @@ toolchain. The change to your build is a single line: run `otelc go build` where
 you used to run `go build`. Everything after `go` is forwarded to the toolchain,
 so the rest of your build stays the same.
 
-<!-- AT V1: change the `@latest` in the install command below to the v1 tag
-     (`@v1.0.0`) and repin the remaining v0.5.0 repo doc links to the v1 tag.
-     Re-verify the linked /docs/zero-code/go/compile-time/ pages against v1;
-     the repo source is the source of truth once the release is cut.
-     `go install` works now that the instrumentation bundle ships in the module
-     (open-telemetry/opentelemetry-go-compile-instrumentation#677). -->
-
 Install it with `go install`:
 
 ```sh
-go install go.opentelemetry.io/otelc/tool/cmd/otelc@latest
+go install go.opentelemetry.io/otelc/tool/cmd/otelc@v1.0.0
 ```
 
 Then build your application through it:
@@ -106,14 +91,6 @@ otelc go build -o myapp .
 If you'd rather not change your build command, run `otelc setup` once to prepare
 the module, then point the Go toolchain at `otelc` through `GOFLAGS` and keep
 running `go build` as usual:
-
-<!-- PENDING FIX (issue #671): this setup + GOFLAGS drop-in is the chosen
-     approach (the comment's "Case 2") and is being fixed for v1; today the
-     toolexec step still mis-locates its work directory in the module cache.
-     A setup-less drop-in (bare -toolexec, "Case 1") needs a larger refactor
-     and is deferred. Re-test at v1 and remove this block if the fix hasn't
-     landed by release.
-     https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues/671 -->
 
 ```sh
 otelc setup
