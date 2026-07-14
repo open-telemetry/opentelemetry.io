@@ -47,14 +47,14 @@ There are two ways to start previewing 3.0 behavior today:
 The **umbrella** flag turns on all the upcoming 3.0 behavior at once, giving you
 the closest thing to running 3.0 before the release:
 
-```
+```text
 OTEL_INSTRUMENTATION_COMMON_V3_PREVIEW=true
 ```
 
 Or opt in **per domain** with a comma-separated list, so you can preview one
 area at a time:
 
-```
+```text
 OTEL_SEMCONV_STABILITY_OPT_IN=database,code
 ```
 
@@ -90,11 +90,12 @@ instrumentation/development:
 
 With `/dup` on, a JDBC client span carries both naming schemes at once:
 
-```
-# emitted today (2.x)              # emitted in 3.0 (stable)
-db.system    = "postgresql"        db.system.name = "postgresql"
-db.name      = "orders"            db.namespace   = "orders"
-db.statement = "SELECT * FROM ..." db.query.text  = "SELECT * FROM ..."
+```markdown
+# emitted today (2.x) # emitted in 3.0 (stable)
+
+db.system = "postgresql" db.system.name = "postgresql" db.name = "orders"
+db.namespace = "orders" db.statement = "SELECT * FROM ..." db.query.text =
+"SELECT * FROM ..."
 ```
 
 Build and confirm your 3.0 dashboards against the new names, then drop `/dup` to
@@ -129,47 +130,55 @@ get back a mapping scoped to _your_ stack plus a draft set of rewritten queries.
 
 Here's an example prompt to get started. Swap in your own files:
 
-```
-I'm previewing the OpenTelemetry Java agent's upcoming 3.0 semantic conventions before
-they become the default, and I need to update my dashboards and alerts. Do not guess at
-attribute or metric names or values; ground every change in one of the two sources below.
+```markdown
+I'm previewing the OpenTelemetry Java agent's upcoming 3.0 semantic conventions
+before they become the default, and I need to update my dashboards and alerts.
+Do not guess at attribute or metric names or values; ground every change in one
+of the two sources below.
 
-Source 1 - the OpenTelemetry Ecosystem Explorer (https://explorer.opentelemetry.io/).
-For each instrumentation it records the condition under which each telemetry field is
-emitted. 3.0 isn't released, so there is no "3.0" version; instead, for a given
-instrumentation compare:
-  - telemetry emitted by default (today's 2.x behavior), against
-  - telemetry emitted under an "otel.semconv-stability.opt-in" condition.
-The opt-in form is what becomes the 3.0 default, so the difference between the two is the
-migration. Read the actual opt-in token(s) per instrumentation from the Explorer; they
-vary (database, rpc, service.peer, ...) and can be compound (e.g. database,service.peer),
-so don't assume a single token. The Explorer records attribute/metric NAMES, TYPES, and
-UNITS, not attribute values. If an instrumentation has no opt-in block, treat it as "no
-semconv change here" and say so rather than inventing one.
+Source 1 - the OpenTelemetry Ecosystem Explorer
+(https://explorer.opentelemetry.io/). For each instrumentation it records the
+condition under which each telemetry field is emitted. 3.0 isn't released, so
+there is no "3.0" version; instead, for a given instrumentation compare:
+
+- telemetry emitted by default (today's 2.x behavior), against
+- telemetry emitted under an "otel.semconv-stability.opt-in" condition. The
+  opt-in form is what becomes the 3.0 default, so the difference between the two
+  is the migration. Read the actual opt-in token(s) per instrumentation from the
+  Explorer; they vary (database, rpc, service.peer, ...) and can be compound
+  (e.g. database,service.peer), so don't assume a single token. The Explorer
+  records attribute/metric NAMES, TYPES, and UNITS, not attribute values. If an
+  instrumentation has no opt-in block, treat it as "no semconv change here" and
+  say so rather than inventing one.
 
 Source 2 - my live dual-emitted telemetry. I'm running with
-OTEL_SEMCONV_STABILITY_OPT_IN=database/dup,code/dup, so the old and new attributes appear
-on the same span/metric. Use this to resolve the value-level changes the Explorer can't
-carry: read the concrete value remaps (e.g. db.system vs db.system.name on the same span)
-and the code.namespace + code.function -> code.function.name consolidation from my data.
+OTEL_SEMCONV_STABILITY_OPT_IN=database/dup,code/dup, so the old and new
+attributes appear on the same span/metric. Use this to resolve the value-level
+changes the Explorer can't carry: read the concrete value remaps (e.g. db.system
+vs db.system.name on the same span) and the code.namespace + code.function ->
+code.function.name consolidation from my data.
 
-My stack: <e.g. Spring Boot + HikariCP + JDBC/PostgreSQL + gRPC>.
-My dashboards and alerts are in: <paths or pasted JSON/YAML>.
-My captured dual-emit telemetry is in: <path or pasted sample>.
+My stack: <e.g. Spring Boot + HikariCP + JDBC/PostgreSQL + gRPC>. My dashboards
+and alerts are in: <paths or pasted JSON/YAML>. My captured dual-emit telemetry
+is in: <path or pasted sample>.
 
 Please:
-1. For each instrumentation my config touches, get the name/type/unit changes from the
-   Explorer (default vs opt-in) and the value-level changes from my dual-emit sample.
-   Note: connection-pool metrics come from the pool instrumentation (HikariCP, Tomcat
-   JDBC, ...), not the jdbc instrumentation.
-2. Produce a mapping table (old -> new) covering names, units, types, values, and any
-   dropped attributes, with a column citing which source each row came from.
-3. Rewrite my queries and alert conditions to the stabilized form, preserving intent.
-   Watch for numeric comparisons that break when a value becomes a string, and thresholds
-   baked in ms that must change with a ms->s unit switch. If my query language names
-   attributes differently from the dotted OpenTelemetry form, treat that normalization as
-   an assumption to verify, not something to guess.
-4. For anything you can't ground in either source, output a VERIFY item instead of a guess.
+
+1. For each instrumentation my config touches, get the name/type/unit changes
+   from the Explorer (default vs opt-in) and the value-level changes from my
+   dual-emit sample. Note: connection-pool metrics come from the pool
+   instrumentation (HikariCP, Tomcat JDBC, ...), not the jdbc instrumentation.
+2. Produce a mapping table (old -> new) covering names, units, types, values,
+   and any dropped attributes, with a column citing which source each row came
+   from.
+3. Rewrite my queries and alert conditions to the stabilized form, preserving
+   intent. Watch for numeric comparisons that break when a value becomes a
+   string, and thresholds baked in ms that must change with a ms->s unit switch.
+   If my query language names attributes differently from the dotted
+   OpenTelemetry form, treat that normalization as an assumption to verify, not
+   something to guess.
+4. For anything you can't ground in either source, output a VERIFY item instead
+   of a guess.
 ```
 
 Both sources speak dotted OpenTelemetry names, but your query language might
@@ -187,5 +196,4 @@ changes.
 Give the preview a try, validate your dashboards and alerts against it, and tell
 us what you find before 3.0 ships in August.
 
-[decl-config]:
-  /docs/zero-code/java/agent/declarative-configuration/
+[decl-config]: /docs/zero-code/java/agent/declarative-configuration/
