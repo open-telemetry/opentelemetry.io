@@ -224,7 +224,7 @@ to the Prometheus Receiver (lift and shift).
 
 They also plan to collect OTLP metrics from Kubernetes. This is facilitated by
 the Prometheus Receiver’s support for the
-[OTel Operator’s Target Allocator](https://github.com/open-telemetry/opentelemetry-operator#target-allocator).
+[OTel Operator’s Target Allocator](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/target-allocator/README.md).
 
 Prometheus is also still currently used for metrics collection in other areas,
 and will probably remain this way, especially when collecting metrics from
