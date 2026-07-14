@@ -121,7 +121,7 @@ graduation happen, and especially to
 Committee member and former Community Manager, who led the graduation effort
 with the CNCF.
 
-## Why should I care?
+## What this means for you
 
 So what does OpenTelemetry graduation mean for you, dear reader?
 
@@ -129,7 +129,7 @@ Dan Gomez Blanco, one of the maintainers of the
 [OTel End User SIG](/community/end-user/) put it perfectly
 [in a recent LinkedIn post](https://www.linkedin.com/feed/update/urn:li:activity:7459538615640010752/):
 
-    “For end users, this graduation signals that OTel is far from being an "emerging standard". Its contributor health, security and quality standards, governance processes, and wide adoption have been evaluated to be at the level required by any enterprise, of any scale. So, if you're in the 25% of skeptics not using OTel, there's really no excuse anymore. There has never been a better time to adopt it!”
+> For end users, this graduation signals that OTel is far from being an "emerging standard". Its contributor health, security and quality standards, governance processes, and wide adoption have been evaluated to be at the level required by any enterprise, of any scale. So, if you're in the 25% of skeptics not using OTel, there's really no excuse anymore. There has never been a better time to adopt it!
 
 In a nutshell: OpenTelemetry is production-ready, and fully open for business.
 If your organization was holding out on using OpenTelemetry, you have no more
