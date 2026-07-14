@@ -134,7 +134,7 @@ Doug 氏のアドバイスは、始めるために必要な最低限のことを
 
 Uplight には現在いくつかの異なる Collector 構成があります。
 
-- [サイドカー](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes)としてスタンドアロンで動作する Collector
+- [サイドカー](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/collector/deployment-modes.md)としてスタンドアロンで動作する Collector
 - 大規模な Kubernetes クラスターでは、[各クラスターで Collector を実行](/docs/collector/installation/#kubernetes)
 - 開発者が[Docker でローカルに](/docs/collector/installation/#docker)独自の Collector を実行
 
