@@ -31,7 +31,7 @@ chart Helm, il y a une option pour générer un certificat auto-signé à la pla
 
 > Si vous souhaitez utiliser l'auto-instrumentation Go, vous devez expressément
 > activer la fonctionnalité. Voir
-> [Contrôle des capacités d'instrumentation](https://github.com/open-telemetry/opentelemetry-operator#controlling-instrumentation-capabilities)
+> [Contrôle des capacités d'instrumentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/reference/feature-gates.md)
 > pour plus de détails.
 
 ## Créer un collecteur OpenTelemetry (Optionnel) {#create-an-opentelemetry-collector-optional}
