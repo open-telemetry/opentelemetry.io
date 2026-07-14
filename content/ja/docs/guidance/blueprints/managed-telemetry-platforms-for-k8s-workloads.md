@@ -795,7 +795,7 @@ OTLP エクスポーター設定と同様に、オペレーターはデータの
 [28]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md
 [31]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor/README.md
 [32]: https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/getting-started/compatibility.md#compatibility-matrix
-[33]: https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection
+[33]: https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md
 [34]: /docs/platforms/kubernetes/operator/
 [35]: /docs/platforms/kubernetes/operator/automatic/
 [36]: /docs/zero-code/

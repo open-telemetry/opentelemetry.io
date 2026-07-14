@@ -26,7 +26,7 @@ est une implémentation d'un
 L'opérateur gère :
 
 - [Collecteur OpenTelemetry](https://github.com/open-telemetry/opentelemetry-collector)
-- [auto-instrumentation des charges de travail en utilisant les bibliothèques d'instrumentation OpenTelemetry](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection)
+- [auto-instrumentation des charges de travail en utilisant les bibliothèques d'instrumentation OpenTelemetry](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)
 
 ## Démarrage {#getting-started}
 

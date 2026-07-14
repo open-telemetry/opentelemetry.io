@@ -20,7 +20,7 @@ default_lang_commit: 8db50c269e4c19d13ff6e32e2cf16a872e45402a
 Operatorは以下を管理します。
 
 - [OpenTelemetryコレクター](https://github.com/open-telemetry/opentelemetry-collector)
-- [OpenTelemetryの計装ライブラリを使用したワークロードの自動計装](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection)
+- [OpenTelemetryの計装ライブラリを使用したワークロードの自動計装](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)
 
 ## Getting started {#getting-started}
 
