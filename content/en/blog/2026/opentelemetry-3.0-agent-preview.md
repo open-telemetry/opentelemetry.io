@@ -6,11 +6,10 @@ draft: true
 author: >-
   [Jay DeLuca](https://github.com/jaydeluca) (Grafana Labs)
 sig: SIG Java
-cSpell:ignore:
 ---
 
 The **`v2.30.0`** release of the
-[OpenTelemetry java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
+[OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 is out — the last v2 minor and effectively the release candidate for 3.0.
 Everything that 3.0 will change is available right now, behind a preview flag.
 The 3.0 release itself is scheduled for next month (August 2026).
@@ -189,4 +188,4 @@ Give the preview a try, validate your dashboards and alerts against it, and tell
 us what you find before 3.0 ships in August.
 
 [decl-config]:
-  https://opentelemetry.io/docs/zero-code/java/agent/declarative-configuration/
+  /docs/zero-code/java/agent/declarative-configuration/
