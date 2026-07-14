@@ -17,7 +17,7 @@ default_lang_commit: d03483e1d5cc696a5541f8bcc8ff97170f2f2ca1
 サービス間の接続の理解やレイテンシーの問題の診断など、多くの理由で非常に実用的です。
 分散トレーシングが初めてのトピックであれば、分散トレーシングとサンプリングに関するこちらの記事を必ず読んでください。
 
-しかし、リクエストの大部分が成功した 200 で、レイテンシーやエラーなく完了しているなら、そのすべてのデータが本当に必要でしょうか。
+しかし、リクエストの大部分が HTTP 200 で成功し、レイテンシーやエラーなく完了しているなら、そのすべてのデータが本当に必要でしょうか。
 重要なのは、適切なインサイトを得るために大量のデータが常に必要というわけではないということです。
 _必要なのは、適切にサンプリングされたデータです。_
 
@@ -45,7 +45,7 @@ _必要なのは、適切にサンプリングされたデータです。_
 
 ## OpenTelemetry Collector でテイルサンプリングを実装する方法 {#how-to-implement-tail-sampling-in-the-opentelemetry-collector}
 
-OpenTelemetry でテイルサンプリングを使用するには、[tail sampling プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/tailsamplingprocessor?from_branch=main)というコンポーネントを実装する必要があります。
+OpenTelemetry でテイルサンプリングを使用するには、[テイルサンプリングプロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/tailsamplingprocessor?from_branch=main)というコンポーネントを実装する必要があります。
 このコンポーネントは、選択して定義できる一連のポリシーに基づいてトレースをサンプリングします。
 **まず、すべてのスパンを確実にキャプチャするために、SDK ではデフォルトのサンプラーまたは AlwaysOn サンプラーを使用してください。**
 
