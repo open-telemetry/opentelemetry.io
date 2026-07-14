@@ -11015,6 +11015,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-10T02:50:45.710706+05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v1.0.0/docs/instrument-guide.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-14T09:28:13.869725997Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v1.0.0/docs/rules.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-14T09:28:15.807783794Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/discussions": {
     "StatusCode": 206,
     "LastSeen": "2026-07-10T02:50:46.527321+05:00"
@@ -18754,6 +18762,10 @@
   "https://mentorship.lfx.linuxfoundation.org/project/36e3f336-ce78-4074-b833-012015eb59be": {
     "StatusCode": 200,
     "LastSeen": "2026-07-07T06:57:41.407187675Z"
+  },
+  "https://mentorship.lfx.linuxfoundation.org/project/3e530f5c-12f3-4321-836a-39de799a4d15": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-14T09:28:18.710222333Z"
   },
   "https://mermaid.js.org": {
     "StatusCode": 206,
