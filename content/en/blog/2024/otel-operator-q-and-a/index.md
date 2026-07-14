@@ -199,7 +199,7 @@ registry, you'll need to use
 Since private container registries require authentication, this will enable you
 to authenticate against that private registry. For more info on how to use
 `imagePullSecrets` for your Collector image, see
-[the instructions](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
+[the instructions](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/collector/image-pull-secrets.md).
 
 For more info, check out the
 [OpenTelemetryCollector CR API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/f6b0d947a4c48444a0483b3b0dcaf1e60c4458d6/docs/api/opentelemetrycollectors.md?from_branch=main).
@@ -315,7 +315,7 @@ One use case might be
 
 If you do need to reference a Target Allocator image from a private registry,
 you’ll need to use `imagePullSecrets`. For details, see
-[the instructions](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
+[the instructions](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/collector/image-pull-secrets.md).
 Note that you don’t need to create a `serviceAccount` for the Target Allocator,
 since once is already created for you automagically if you don’t create one
 yourself (see
