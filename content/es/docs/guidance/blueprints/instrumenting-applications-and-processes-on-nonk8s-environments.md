@@ -25,8 +25,8 @@ lograr los siguientes resultados:
   se ejecutan en entornos no Kubernetes, incluidos los contenedores gestionados
   directamente.
 - Gestión coherente del ciclo de vida de los agentes de OpenTelemetry, junto con
-  patrones estandarizados de inicialización y configuración para la instrumentación
-  basada en SDK.
+  patrones estandarizados de inicialización y configuración para la
+  instrumentación basada en SDK.
 - Observabilidad unificada en infraestructuras mixtas: VMs, bare metal y
   contenedores sin orquestador.
 - Mejor gobernanza sobre la calidad de las señales de telemetría, el
@@ -48,12 +48,12 @@ forma estandarizada de gestionar, configurar y monitorizar de forma remota los
 agentes de OpenTelemetry en infraestructuras diversas donde esté soportado. En
 el momento de escribir esto, la especificación de OpAMP está en fase Beta, por
 lo que las organizaciones deben evaluar la madurez de la implementación y el
-soporte operativo antes de estandarizar en torno a una solución concreta. Cuando
-OpAMP aún no sea adecuado, las bibliotecas compartidas, las imágenes
-preconstruidas, los artefactos de configuración mantenidos de forma centralizada
-y las herramientas existentes de despliegue o gestión de configuración pueden
-seguir proporcionando una gestión coherente del ciclo de vida para la
-instrumentación basada en SDK y en agentes.
+soporte operativo antes de estandarizar una solución concreta. Cuando OpAMP aún
+no sea adecuado, las bibliotecas compartidas, las imágenes preconstruidas, los
+artefactos de configuración mantenidos de forma centralizada y las herramientas
+existentes de despliegue o gestión de configuración pueden seguir proporcionando
+una gestión coherente del ciclo de vida para la instrumentación basada en SDK y
+en agentes.
 
 ## Retos comunes {#common-challenges}
 
@@ -73,9 +73,9 @@ centralizada de políticas.
 La instrumentación y el despliegue de agentes en VMs, bare metal y contenedores
 gestionados directamente suele ser manual o basado en scripts, y la
 configuración continua es difícil de gestionar a escala. Este enfoque
-descentralizado y ad hoc suele requerir que los operadores o desarrolladores
-instale, configuren y actualicen los agentes de OpenTelemetry individualmente
-en cada host o carga de trabajo.
+descentralizado y ad hoc suele requerir que el personal de operaciones o de
+desarrollo instale, configuren y actualicen los agentes de OpenTelemetry
+individualmente en cada host o carga de trabajo.
 
 Esto conduce a:
 
@@ -278,7 +278,7 @@ través de bloques de construcción reutilizables como:
 - Binarios o distribuciones estandarizadas de OpenTelemetry Collector.
 - Bibliotecas compartidas o paquetes iniciales para la instrumentación basada en
   SDK.
-- Envoltorios de inicialización estándar o convenciones de variables de entorno.
+- Wrappers de inicialización estándar o convenciones de variables de entorno.
 - Fragmentos o plantillas de configuración mantenidos de forma centralizada.
 
 El modelo de recursos recomendado para entornos no Kubernetes debe alinearse con
@@ -498,7 +498,7 @@ manual mínima.
 Los patrones de empaquetado comunes incluyen paquetes de servicio de sistema
 estándar para agentes basados en host, imágenes de contenedor preconstruidas
 para despliegues de Collector o agente, y artefactos de inicialización de SDK
-compartidos como paquetes iniciales o envoltorios de arranque. Por ejemplo:
+compartidos como paquetes iniciales o wrappers de inicialización. Por ejemplo:
 
 - Un Collector basado en host puede instalarse como un servicio de sistema
   estándar con un archivo de configuración y un archivo de entorno gestionados
@@ -506,7 +506,7 @@ compartidos como paquetes iniciales o envoltorios de arranque. Por ejemplo:
 - Un despliegue en contenedores puede usar una imagen preconstruida que incluya
   el binario del Collector aprobado, las extensiones y la configuración
   predeterminada.
-- La instrumentación basada en SDK puede distribuirse a través de envoltorios de
+- La instrumentación basada en SDK puede distribuirse a través de wrappers de
   inicialización compartidos, [agentes de lenguaje](/docs/zero-code/) o paquetes
   iniciales que apliquen automáticamente los valores predeterminados aprobados
   por la organización.
@@ -516,11 +516,11 @@ Lista de verificación:
 - Empaqueta los agentes basados en host como servicios de sistema estándar.
 - Proporciona imágenes preconstruidas o definiciones de contenedores de servicio
   para los despliegues en contenedores.
-- Publica bibliotecas compartidas, paquetes iniciales o envoltorios de arranque
-  para los lenguajes de SDK soportados.
+- Publica bibliotecas compartidas, paquetes iniciales o wrappers de
+  inicialización para los lenguajes de SDK soportados.
 - Prefiere la configuración declarativa del SDK cuando esté soportada, y de lo
-  contrario estandariza las convenciones de variables de entorno, inicialización y
-  archivos de configuración en todos los entornos.
+  contrario estandariza las convenciones de variables de entorno, inicialización
+  y archivos de configuración en todos los entornos.
 - Valida que las nuevas cargas de trabajo hereden la configuración base de forma
   predeterminada.
 
@@ -623,7 +623,7 @@ Lista de verificación:
 - Asegúrate de que la telemetría de la aplicación incluya suficiente contexto de
   infraestructura para la correlación, como `host.id` o `host.name` cuando
   corresponda, por ejemplo mediante configuración de SDK, agentes de lenguaje,
-  envoltorios de arranque o detección automática de recursos cuando esté
+  wrappers de inicialización o detección automática de recursos cuando esté
   soportada.
 - Habilita y valida los detectores de recursos siempre que estén soportados,
   para que los metadatos de host, SO, proceso, runtime y contenedor se completen
