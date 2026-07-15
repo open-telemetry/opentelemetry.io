@@ -497,7 +497,7 @@ manual mínima.
 
 Los patrones de empaquetado comunes incluyen paquetes de servicio de sistema
 estándar para agentes basados en host, imágenes de contenedor preconstruidas
-para despliegues de Collector o agente, y artefactos de arranque de SDK
+para despliegues de Collector o agente, y artefactos de inicialización de SDK
 compartidos como paquetes iniciales o wrappers de arranque. Por ejemplo:
 
 - Un Collector basado en host puede instalarse como un servicio de sistema
