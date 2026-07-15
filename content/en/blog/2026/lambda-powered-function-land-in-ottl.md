@@ -1,7 +1,7 @@
 ---
 title: Lambda-powered functions land in OTTL
 linkTitle: Lambda-powered functions land in OTTL
-date: 2026-07-12
+date: 2026-07-21
 author: '[Edmo Vamerlatti Costa](https://github.com/edmocosta) (Elastic)'
 issue: 10848
 sig: Collector SIG
