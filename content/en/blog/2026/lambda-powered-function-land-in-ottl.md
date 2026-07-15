@@ -139,8 +139,8 @@ Combined, these functions cover a wide range of transformations.
 
 ## Trying it out
 
-All eight functions are **experimental** and available in OpenTelemetry Collector
-Contrib `v0.157.0` behind a feature gate:
+All eight functions are **experimental** and available in OpenTelemetry
+Collector Contrib `v0.157.0` behind a feature gate:
 
 ```yaml
 --feature-gates=ottlfuncs.enableLambdaFunctions
