@@ -14,7 +14,8 @@ entries remain.
 By default, sweep all open otelbot PRs — those whose head branch matches
 `otelbot/*`. When instructed, narrow the sweep to the named branch or group of
 branches (for example, `otelbot/refcache-refresh`, or the spec/semconv
-integration branches); ask if the instruction is ambiguous.
+integration branches); ask if the instruction is ambiguous. This skill operates
+on PRs: if a named branch has no open PR, report that and stop.
 
 1. List the open otelbot PRs:
 
@@ -81,23 +82,17 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
    > 4XX links, instead let a maintainer manually run
    > `./scripts/double-check-refcache-4XX.mjs --retry-404` locally first.
 
-5. **Analyze and recommend**. For each URL from the previous step, produce a
-   numbered or bulleted list that includes at least:
+5. **Analyze and recommend**. For each URL from the previous step, report:
    - The URL and HTTP status.
    - Where it originates from: provide links to files or pages.
-   - A recommendation, with **evidence** that any replacement URL is a proper
-     replacement: the fetched page must name or otherwise match the resource
-     being linked — a 2XX status alone proves nothing, since SPA catch-alls and
-     login pages return 200 for any path. For links into github.com, base the
-     replacement on the last commit that contains the named resource.
-   - When the linked project appears defunct, absorbed, or otherwise no longer
-     meets its listing criteria, recommend retiring the registry or ecosystem
-     entry instead of updating its links — see
-     [Keeping registry and list information current](/ecosystem/registry/updating/)
-     — and cc the entry's original submitter in the PR comment.
-   - Where the fix belongs — in-branch; in a separate PR against `main` (for
-     example, when the same dead link also affects `main` or several target
-     PRs); or upstream in the source repository, for integration branches.
+   - A recommendation — update or remove the link, or retire the entry — with
+     supporting evidence; see
+     [Recommendation guidance](#recommendation-guidance).
+   - Where the fix belongs, for example:
+     - In-branch
+     - In a separate PR against `main`, when the same dead link also affects
+       `main` or several target PRs
+     - Upstream in the source repository, for integration branches
 
    Stop and wait for reviewer approval — never self-approve recommendations.
 
@@ -147,3 +142,17 @@ Once no non-2XX entries remain on the PR being processed:
    time), or other failing checks.
 
 Then continue with the next target PR, if any.
+
+## Recommendation guidance
+
+Ground each recommendation in evidence:
+
+- **Replacement URL** — show that the fetched page names or otherwise matches
+  the linked resource: a 2XX status alone proves nothing, since SPA catch-alls
+  and login pages return 200 for any path. For links into github.com, base the
+  replacement on the last commit that contains the named resource.
+- **Entry retirement** — when the linked project appears defunct, absorbed, or
+  otherwise no longer meets its listing criteria, retire the registry or
+  ecosystem entry instead of updating its links, and cc the entry's original
+  submitter in the PR comment. For the policy, see
+  [Keeping registry and list information current](/ecosystem/registry/updating/).
