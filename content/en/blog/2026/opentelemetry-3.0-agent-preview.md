@@ -42,6 +42,11 @@ published closer to the 3.0 release.
 
 ## Preview 3.0 today
 
+This is also a preview for maintainers of **extensions and distributions**:
+features slated for removal in 3.0 are already turned off in preview mode
+(except deprecated methods), so you can validate that your extension or distro
+still works against 3.0 behavior today.
+
 There are two ways to start previewing 3.0 behavior today:
 
 The **umbrella** flag turns on all the upcoming 3.0 behavior at once, giving you
@@ -97,6 +102,11 @@ db.system = "postgresql" db.system.name = "postgresql" db.name = "orders"
 db.namespace = "orders" db.statement = "SELECT * FROM ..." db.query.text =
 "SELECT * FROM ..."
 ```
+
+`/dup` works for attributes and metrics, where the old and new can sit side by
+side. Some telemetry can only hold one value — a span's name, for example — and
+there `/dup` can't emit both, so the **stable (3.0) convention takes
+precedence**. Keep that in mind when validating anything keyed off span names.
 
 Build and confirm your 3.0 dashboards against the new names, then drop `/dup` to
 go stable-only when you're ready.
@@ -182,11 +192,11 @@ Please:
 ```
 
 Both sources speak dotted OpenTelemetry names, but your query language might
-not. If you query through Prometheus, for example, dots become underscores and
-metrics pick up unit suffixes (`db.client.connection.count` becomes
-`db_client_connection_count`, and a seconds histogram gets a `_seconds` suffix).
-If that applies to you, add a line to the prompt spelling out your naming
-convention so the agent rewrites queries in the right form.
+not. If you query through Prometheus, for example, dots usually become
+underscores and metrics pick up unit suffixes (`db.client.connection.count`
+becomes `db_client_connection_count`, and a seconds histogram gets a `_seconds`
+suffix). If that applies to you, add a line to the prompt spelling out your
+naming convention so the agent rewrites queries in the right form.
 
 We're also building a
 [release diff view](https://explorer.opentelemetry.io/java-agent/releases)
