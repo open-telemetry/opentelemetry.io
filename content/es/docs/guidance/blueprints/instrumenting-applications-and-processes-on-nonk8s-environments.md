@@ -480,7 +480,7 @@ Documentación:
 - [Guía de introducción a OpAMP](/docs/collector/management/)
 - [Configuración del OpenTelemetry Collector](/docs/collector/configuration/)
 
-### 3. Empaquetar y desplegar agentes estandarizados y artefactos de arranque de SDK {#3-package-and-deploy-standardized-agents-and-sdk-bootstrap-artifacts}
+### 3. Empaquetar y desplegar agentes estandarizados y artefactos de inicialización de SDK {#3-package-and-deploy-standardized-agents-and-sdk-bootstrap-artifacts}
 
 **Directrices respaldadas:** 1, 3
 
