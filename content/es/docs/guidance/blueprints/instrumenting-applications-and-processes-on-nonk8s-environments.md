@@ -216,7 +216,7 @@ patrones, según la escala y el modelo operativo, entre ellos:
 - Un grupo (_pool_) de servicios detrás de un balanceador de carga.
 - Servicios de gateway en contenedores que se ejecutan en cómputo de propósito
   general.
-- Gateways regionales o locales al sitio para entornos distribuidos.
+- Gateways regionales o propios del sitio para entornos distribuidos.
 
 El siguiente diagrama muestra el nivel de gateway con sus patrones de despliegue
 alternativos. Cada recuadro representa una forma distinta de implementar el rol
