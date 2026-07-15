@@ -489,7 +489,7 @@ componentes de telemetría soportados de forma coherente en hosts y cargas de
 trabajo en contenedores. Prefiere la
 [configuración declarativa](/docs/specs/otel/configuration/#declarative-configuration)
 para la instrumentación basada en SDK cuando esté soportada. Cuando no esté
-disponible, estandariza las variables de entorno, las opciones de arranque o los
+disponible, estandariza las variables de entorno, las opciones de inicialización o los
 patrones de
 [configuración específica del SDK](/docs/languages/sdk-configuration/) para que
 los equipos hereden valores predeterminados coherentes con una configuración
