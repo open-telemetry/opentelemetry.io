@@ -155,13 +155,15 @@ Ground every recommendation in evidence, and match the fix to the situation:
 
 ### Evidence for a replacement URL
 
-Show that the fetched page names or otherwise matches the linked resource -- a
-2XX status alone proves nothing, since SPA catch-alls and login pages return 200
-for any path. For links into github.com, base the replacement on the last commit
-that contains the named resource. The
-[Wayback Machine](https://web.archive.org/) can reveal what a dead URL used to
-serve or where it moved; check it briefly, but don't dig deep unless asked --
-the archive is slow.
+Show that the fetched page names or otherwise matches the linked resource:
+
+- A 2XX status alone proves nothing: SPA catch-alls and login pages return 200
+  for any path.
+- For links into github.com, base the replacement on the last commit that
+  contains the named resource.
+- The [Wayback Machine](https://web.archive.org/) can reveal what a dead URL
+  used to serve or where it moved; check it briefly, but don't dig deep unless
+  asked -- the archive is slow.
 
 ### Retiring an entry
 
