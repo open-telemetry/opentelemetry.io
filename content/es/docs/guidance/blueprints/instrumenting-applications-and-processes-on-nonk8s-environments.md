@@ -519,7 +519,7 @@ Lista de verificación:
 - Publica bibliotecas compartidas, paquetes iniciales o envoltorios de arranque
   para los lenguajes de SDK soportados.
 - Prefiere la configuración declarativa del SDK cuando esté soportada, y de lo
-  contrario estandariza las convenciones de variables de entorno, arranque y
+  contrario estandariza las convenciones de variables de entorno, inicialización y
   archivos de configuración en todos los entornos.
 - Valida que las nuevas cargas de trabajo hereden la configuración base de forma
   predeterminada.
