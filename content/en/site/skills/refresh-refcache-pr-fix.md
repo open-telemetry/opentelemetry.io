@@ -96,10 +96,8 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
    Stop and wait for reviewer approval -- never self-approve recommendations.
 
 6. **Apply approved fixes.** Perform the maintainer-approved fix and follow-up
-   actions — and only those. If any touched page is outside `content/en/`,
-   follow
-   [Localization](/docs/contributing/localization/#link-fixes-and-resource-updates)
-   for that edit (e.g. `# patched` on `default_lang_commit`).
+   actions, and only those. Follow [Localization][] for gating requirements on
+   any edits outside `content/en/`, and conventions (e.g. `# patched` tags).
 
 7. Run `npm run fix:refcache` to refresh `static/refcache.json` after those
    source-link changes, then repeat the steps in this section (from step 1)
@@ -169,3 +167,7 @@ archive is slow.
 
 Remove the entry, and cc the entry's original submitter in the PR comment, per
 [Keeping registry and list information current](/ecosystem/registry/updating/).
+
+<!-- prettier-ignore-start -->
+[Localization]: /docs/contributing/localization/#link-fixes-and-resource-updates
+<!-- prettier-ignore-end -->
