@@ -1,11 +1,12 @@
 ---
-title: OpenTelemetry Has Graduated… Now WHAT?
+title: OpenTelemetry Has Graduated… Now what?
 linkTitle: OTel Graduated… Now What?
 date: 2026-07-15
 author: >-
   [Adriana Villela](https://github.com/avillela) (Dynatrace LLC), [Reese
   Lee](https://github.com/reese-lee) (New Relic)
 sig: Governance Committee
+issue: 10432
 cSpell:ignore: Farfetch shoutout
 ---
 
@@ -26,7 +27,7 @@ huge problem: If you wanted to switch vendors, you had to strip out the previous
 vendor’s libraries from your code and replace them with the new vendor’s
 libraries. As a result, switching vendors was a nontrivial task.
 
-In addition, the three core telemetry signals–traces, logs, and metrics–were
+In addition, the three core telemetry signals -- traces, logs, and metrics -- were
 treated as separate, so there was no easy way to correlate them. Because of
 this, the observability story was incomplete.
 
@@ -47,8 +48,8 @@ specific implementations of these APIs, in addition to the
 Both OpenCensus and OpenTracing are now officially archived. OpenTracing was
 archived in January 2022, and OpenCensus was archived in July 2023.
 
-With the backing of all major Observability vendors, and an active developer and
-end user community, OpenTelemetry became the de-facto open standard for
+With the backing of all major observability vendors, and an active developer and
+end user community, OpenTelemetry became the de facto open standard for
 telemetry.
 
 ## Growth
@@ -98,8 +99,8 @@ the following criteria:
    [a number of regular contributors across multiple organizations](https://www.cncf.io/projects/opentelemetry).
    Reviewers are responsive, ensuring that issues and fixes are addressed in a
    timely manner.
-4. **Security.** OTel has gone through least one independent security audit, and
-   all critical issues identified must be remediated.
+4. **Security.** OTel has undergone at least one independent security audit,
+   and all critical issues identified have been remediated.
 5. **API stability.** APIs are stable, properly versioned, and released at a
    regular cadence, with backwards compatibility ensured so as to not break
    existing implementations.
@@ -111,11 +112,11 @@ the following criteria:
    You can check out
    [OTel’s submission](https://github.com/cncf/toc/issues/1739).
 
-As you can see, a LOT of work was done behind the scenes by many dedicated
+As you can see, a _lot_ of work was done behind the scenes by many dedicated
 folks, ranging from OTel maintainers, to end users, to CNCF TOC members to make
 this happen.
 
-We’d like to give a HUGE shoutout to all in the OpenTelemetry community who made
+We’d like to give a **huge** shoutout to all in the OpenTelemetry community who made
 graduation happen, and especially to
 [Austin Parker](https://github.com/austinlparker), OpenTelemetry Governance
 Committee member and former Community Manager, who led the graduation effort
@@ -147,18 +148,18 @@ continue to grow and evolve: from the specification to the API & SDK to the
 Collector, and beyond.
 
 Looking ahead, we see a strong need for observability around new types of
-workloads, such as agentic workflows (the
-[GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai),
-for instance). We're also tackling challenges in areas that we hadn't focused on
-as much previously, such as browser and mobile observability.
+workloads, such as agentic workflows, an area covered by the emerging
+[generative AI semantic conventions](/docs/specs/semconv/gen-ai/). We're also
+tackling challenges in areas that we hadn't focused on as much previously,
+such as browser and mobile observability.
 
 More mature teams are looking for guidance on using OpenTelemetry at scale.
-That's where governance tools such as
-[Weaver](https://github.com/open-telemetry/weaver), come into play, and by
-supporting organizations by doing things like packaging diverse OTel components
-into installable modules, through projects like
-[OpenTelemetry Packaging](https://github.com/open-telemetry/opentelemetry-packaging)
-and the
+That's where tools like [Weaver](https://github.com/open-telemetry/weaver),
+which helps teams define and govern their telemetry schemas, come into play.
+We're also making OTel easier to roll out by packaging
+components into installable modules through
+[OpenTelemetry Packaging](https://github.com/open-telemetry/opentelemetry-packaging),
+and by enabling zero-code instrumentation with the
 [OpenTelemetry Injector](https://github.com/open-telemetry/opentelemetry-injector).
 
 OpenTelemetry has a long future ahead of it, but we also know that it’s only
