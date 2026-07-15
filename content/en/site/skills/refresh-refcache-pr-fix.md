@@ -149,9 +149,12 @@ Ground every recommendation in evidence, and match the fix to the situation:
   the component, product, or company behind the entry is defunct, absorbed, or
   otherwise no longer actively supports OpenTelemetry,
   [retire the entry](#retiring-an-entry) instead of updating its links.
-- **Linked page gone, no equivalent**: as a last resort, a **maintainer** may
-  remove the link and rework the surrounding prose, flagging the appropriate SIG
-  approvers. Agents must not apply this fix; defer to a maintainer.
+- **Linked page gone, no equivalent**: Agents must not apply this fix; defer to
+  a maintainer. As a last resort, a **maintainer** may remove the link and
+  rework the surrounding prose. Cc the GitHub handles of the following as
+  appropriate:
+  - Authors of the PRs that introduced the content
+  - SIG docs approvers through their GitHub team handle
 
 ### Evidence for a replacement URL
 
@@ -167,8 +170,10 @@ Show that the fetched page names or otherwise matches the linked resource:
 
 ### Retiring an entry
 
-Remove the entry, and cc the entry's original submitter in the PR comment, per
-[Keeping registry and list information current](/ecosystem/registry/updating/).
+- Remove the entry
+- Cc in a PR comment the GitHub handles of the entry's original submitter and/or
+  any authors who updated the entry, per
+  [Keeping registry and list information current](/ecosystem/registry/updating/).
 
 <!-- prettier-ignore-start -->
 [Localization]: /docs/contributing/localization/#link-fixes-and-resource-updates
