@@ -24,7 +24,7 @@ supported platforms and their prerequisites are listed below:
 
 {{% alert title="Note" %}}
 
-iOS and JavaScript must use the same version of Kotlin that opentelemetry-kotlin was built with. See
+iOS and JavaScript must use a version of Kotlin that is greater or equal to the version opentelemetry-kotlin was built with. See
 [KT-76131](https://youtrack.jetbrains.com/issue/KT-76131) for details on this language restriction.
 
 {{% /alert %}}
