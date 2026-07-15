@@ -93,15 +93,13 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
        `main` or several target PRs
      - Upstream in the source repository, for integration branches
 
-   Stop and wait for reviewer approval — never self-approve recommendations.
+   Stop and wait for reviewer approval -- never self-approve recommendations.
 
-6. **Apply approved fixes.** After approval, edit the suggested sources:
-   - For a **404**, update or remove the referring link where you identified it.
-   - For **other non-2XX** statuses, apply the reviewed recommendation (manual
-     inspection may still be required for ambiguous cases).
-   - If any touched page is outside `content/en/`, follow
-     [Localization](/docs/contributing/localization/#link-fixes-and-resource-updates)
-     for that edit (e.g. `# patched` on `default_lang_commit`).
+6. **Apply approved fixes.** Perform the maintainer-approved fix and follow-up
+   actions — and only those. If any touched page is outside `content/en/`,
+   follow
+   [Localization](/docs/contributing/localization/#link-fixes-and-resource-updates)
+   for that edit (e.g. `# patched` on `default_lang_commit`).
 
 7. Run `npm run fix:refcache` to refresh `static/refcache.json` after those
    source-link changes, then repeat the steps in this section (from step 1)
