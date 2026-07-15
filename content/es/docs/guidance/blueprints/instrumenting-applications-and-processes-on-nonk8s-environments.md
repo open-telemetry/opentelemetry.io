@@ -302,7 +302,7 @@ detectados automáticamente cuando estén soportados:
 En lugar de mantener manualmente todos los atributos correspondientes, las
 organizaciones deben preferir la instrumentación existente y la detección de
 recursos para los metadatos de host, proceso, runtime, SO y contenedor, y usar
-configuración compartida o artefactos de arranque para mantener esa detección
+configuración compartida o artefactos de inicialización para mantener esa detección
 habilitada de forma coherente.
 
 El área que suele requerir la estandarización más deliberada es la **identidad
