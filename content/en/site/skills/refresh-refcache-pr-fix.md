@@ -144,14 +144,30 @@ Then continue with the next target PR, if any.
 
 ## Recommending a fix for non-2XX URLs
 
-Ground each recommendation in evidence:
+Ground every recommendation in evidence, and match the fix to the situation:
 
-- **Replacement URL** — show that the fetched page names or otherwise matches
-  the linked resource: a 2XX status alone proves nothing, since SPA catch-alls
-  and login pages return 200 for any path. For links into github.com, base the
-  replacement on the last commit that contains the named resource.
-- **Entry retirement** — when the linked project appears defunct, absorbed, or
-  otherwise no longer meets its listing criteria, retire the registry or
-  ecosystem entry instead of updating its links, and cc the entry's original
-  submitter in the PR comment. For the policy, see
-  [Keeping registry and list information current](/ecosystem/registry/updating/).
+- **Linked page moved**: update the link, with
+  [evidence](#evidence-for-a-replacement-url) that the replacement matches.
+- **Entry subject gone**: when the link originates from a registry or
+  ecosystem-list entry — adopters, distributions, integrations, vendors — and
+  the component, product, or company behind the entry is defunct, absorbed, or
+  otherwise no longer actively supports OpenTelemetry,
+  [retire the entry](#retiring-an-entry) instead of updating its links.
+- **Linked page gone, no equivalent**: as a last resort, a **maintainer** may
+  remove the link and rework the surrounding prose, flagging the appropriate SIG
+  approvers. Agents must not apply this fix; defer to a maintainer.
+
+### Evidence for a replacement URL
+
+Show that the fetched page names or otherwise matches the linked resource — a
+2XX status alone proves nothing, since SPA catch-alls and login pages return 200
+for any path. For links into github.com, base the replacement on the last commit
+that contains the named resource. The
+[Wayback Machine](https://web.archive.org/) can reveal what a dead URL used to
+serve or where it moved; check it briefly, but don't dig deep unless asked — the
+archive is slow.
+
+### Retiring an entry
+
+Remove the entry, and cc the entry's original submitter in the PR comment, per
+[Keeping registry and list information current](/ecosystem/registry/updating/).
