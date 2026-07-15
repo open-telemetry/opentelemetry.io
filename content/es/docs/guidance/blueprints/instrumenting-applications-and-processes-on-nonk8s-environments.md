@@ -84,7 +84,7 @@ Esto conduce a:
 - **Ciclos lentos de despliegue y actualización:** las actualizaciones de la
   instrumentación o la configuración son lentas y difíciles de propagar en toda
   la flota.
-- **Riesgo operativo:** las reversiones, el control de versiones y la
+- **Riesgo operativo:** los retornos a versiones anteriores, el control de versiones y la
   monitorización del estado son más difíciles de realizar de forma coherente en
   toda la infraestructura.
 
