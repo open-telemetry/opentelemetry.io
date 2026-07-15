@@ -27,8 +27,8 @@ huge problem: If you wanted to switch vendors, you had to strip out the previous
 vendor’s libraries from your code and replace them with the new vendor’s
 libraries. As a result, switching vendors was a nontrivial task.
 
-In addition, the three core telemetry signals -- traces, logs, and metrics -- were
-treated as separate, so there was no easy way to correlate them. Because of
+In addition, the three core telemetry signals -- traces, logs, and metrics --
+were treated as separate, so there was no easy way to correlate them. Because of
 this, the observability story was incomplete.
 
 Previous attempts had been made at standardization: the
@@ -99,8 +99,8 @@ the following criteria:
    [a number of regular contributors across multiple organizations](https://www.cncf.io/projects/opentelemetry).
    Reviewers are responsive, ensuring that issues and fixes are addressed in a
    timely manner.
-4. **Security.** OTel has undergone at least one independent security audit,
-   and all critical issues identified have been remediated.
+4. **Security.** OTel has undergone at least one independent security audit, and
+   all critical issues identified have been remediated.
 5. **API stability.** APIs are stable, properly versioned, and released at a
    regular cadence, with backwards compatibility ensured so as to not break
    existing implementations.
@@ -116,8 +116,8 @@ As you can see, a _lot_ of work was done behind the scenes by many dedicated
 folks, ranging from OTel maintainers, to end users, to CNCF TOC members to make
 this happen.
 
-We’d like to give a **huge** shoutout to all in the OpenTelemetry community who made
-graduation happen, and especially to
+We’d like to give a **huge** shoutout to all in the OpenTelemetry community who
+made graduation happen, and especially to
 [Austin Parker](https://github.com/austinlparker), OpenTelemetry Governance
 Committee member and former Community Manager, who led the graduation effort
 with the CNCF.
@@ -150,14 +150,14 @@ Collector, and beyond.
 Looking ahead, we see a strong need for observability around new types of
 workloads, such as agentic workflows, an area covered by the emerging
 [generative AI semantic conventions](/docs/specs/semconv/gen-ai/). We're also
-tackling challenges in areas that we hadn't focused on as much previously,
-such as browser and mobile observability.
+tackling challenges in areas that we hadn't focused on as much previously, such
+as browser and mobile observability.
 
 More mature teams are looking for guidance on using OpenTelemetry at scale.
 That's where tools like [Weaver](https://github.com/open-telemetry/weaver),
 which helps teams define and govern their telemetry schemas, come into play.
-We're also making OTel easier to roll out by packaging
-components into installable modules through
+We're also making OTel easier to roll out by packaging components into
+installable modules through
 [OpenTelemetry Packaging](https://github.com/open-telemetry/opentelemetry-packaging),
 and by enabling zero-code instrumentation with the
 [OpenTelemetry Injector](https://github.com/open-telemetry/opentelemetry-injector).
