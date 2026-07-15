@@ -23,11 +23,13 @@ integration branches); ask if the instruction is ambiguous.
    ```
 
 2. Determine which of them have failing link checks — checks of the `Links`
-   workflow (`gh pr checks <num>`) — and report the full list: PR number, head
-   branch, draft status, and whether it will be processed.
-3. Process each PR that has link-check failures in turn, following the sections
-   below. In those steps, _`TARGET_BRANCH`_ is the head branch of the PR being
-   processed.
+   workflow (`gh pr checks <num>`).
+3. Report the sweep assessment **before processing any PR**: one line per PR —
+   number, head branch, draft status, and whether it will be processed (with the
+   reason when skipped).
+4. Process each qualifying PR in turn, following the sections below, naming the
+   PR as you start on it. In those steps, _`TARGET_BRANCH`_ is the head branch
+   of the PR being processed.
 
 ## Preparation
 
@@ -83,13 +85,21 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
    numbered or bulleted list that includes at least:
    - The URL and HTTP status.
    - Where it originates from: provide links to files or pages.
-   - A recommendation. For links into github.com, recommend a replacement link
-     based on the last commit that contains the named resource.
+   - A recommendation, with **evidence** that any replacement URL is a proper
+     replacement: the fetched page must name or otherwise match the resource
+     being linked — a 2XX status alone proves nothing, since SPA catch-alls and
+     login pages return 200 for any path. For links into github.com, base the
+     replacement on the last commit that contains the named resource.
+   - When the linked project appears defunct, absorbed, or otherwise no longer
+     meets its listing criteria, recommend retiring the registry or ecosystem
+     entry instead of updating its links — see
+     [Keeping registry and list information current](/ecosystem/registry/updating/)
+     — and cc the entry's original submitter in the PR comment.
    - Where the fix belongs — in-branch; in a separate PR against `main` (for
      example, when the same dead link also affects `main` or several target
      PRs); or upstream in the source repository, for integration branches.
 
-   Pause for feedback from a reviewer.
+   Stop and wait for reviewer approval — never self-approve recommendations.
 
 6. **Apply approved fixes.** After approval, edit the suggested sources:
    - For a **404**, update or remove the referring link where you identified it.
