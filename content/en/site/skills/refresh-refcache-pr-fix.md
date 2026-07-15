@@ -93,11 +93,11 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
        `main` or several target PRs
      - Upstream in the source repository, for integration branches
 
-   Stop and wait for reviewer approval -- never self-approve recommendations.
+   Stop and wait for reviewer approval — never self-approve recommendations.
 
 6. **Apply approved fixes.** Perform the maintainer-approved fix and follow-up
-   actions, and only those. Follow [Localization][] for gating requirements on
-   any edits outside `content/en/`, and conventions (e.g. `# patched` tags).
+   actions, and only those. For edits outside `content/en/`, follow
+   [Localization][] gating requirements and conventions (e.g. `# patched` tags).
 
 7. Run `npm run fix:refcache` to refresh `static/refcache.json` after those
    source-link changes, then repeat the steps in this section (from step 1)
