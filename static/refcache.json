@@ -22099,6 +22099,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-08T06:36:02.919392255Z"
   },
+  "https://web.archive.org/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-15T09:34:16.445324-04:00"
+  },
   "https://web.archive.org/web/20180321091318/http://www.onlamp.com/pub/a/linux/2000/11/16/LinuxAdmin.html": {
     "StatusCode": 200,
     "LastSeen": "2026-07-09T06:55:58.093984438Z"
