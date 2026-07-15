@@ -84,9 +84,9 @@ Esto conduce a:
 - **Ciclos lentos de despliegue y actualización:** las actualizaciones de la
   instrumentación o la configuración son lentas y difíciles de propagar en toda
   la flota.
-- **Riesgo operativo:** los retornos a versiones anteriores, el control de versiones y la
-  monitorización del estado son más difíciles de realizar de forma coherente en
-  toda la infraestructura.
+- **Riesgo operativo:** los retornos a versiones anteriores, el control de
+  versiones y la monitorización del estado son más difíciles de realizar de
+  forma coherente en toda la infraestructura.
 
 Esta brecha de automatización también sienta las bases para la fragmentación
 descrita en el Reto 2: cuando cada host o carga de trabajo se configura
@@ -111,8 +111,8 @@ Esto conduce a:
   la detección de recursos o la exportación, lo que produce una calidad de
   telemetría desigual.
 - **Desviación de configuración manual:** los agentes basados en hosts y en
-  contenedores suelen requerir configuración manual, lo que provoca derivas
-  y un mayor riesgo de errores.
+  contenedores suelen requerir configuración manual, lo que provoca derivas y un
+  mayor riesgo de errores.
 
 ### 3. Procesamiento y exportación de datos aislados {#3-siloed-data-processing-and-export}
 
@@ -278,7 +278,7 @@ través de bloques de construcción reutilizables como:
 - Binarios o distribuciones estandarizadas de OpenTelemetry Collector.
 - Bibliotecas compartidas o paquetes iniciales para la instrumentación basada en
   SDK.
-- Wrappers de inicialización estándar o convenciones de variables de entorno.
+- Envoltorios de inicialización estándar o convenciones de variables de entorno.
 - Fragmentos o plantillas de configuración mantenidos de forma centralizada.
 
 El modelo de recursos recomendado para entornos no Kubernetes debe alinearse con
@@ -302,8 +302,8 @@ detectados automáticamente cuando estén soportados:
 En lugar de mantener manualmente todos los atributos correspondientes, las
 organizaciones deben preferir la instrumentación existente y la detección de
 recursos para los metadatos de host, proceso, runtime, SO y contenedor, y usar
-configuración compartida o artefactos de inicialización para mantener esa detección
-habilitada de forma coherente.
+configuración compartida o artefactos de inicialización para mantener esa
+detección habilitada de forma coherente.
 
 El área que suele requerir la estandarización más deliberada es la **identidad
 del servicio**. Las organizaciones deben asegurarse de que la telemetría del
@@ -489,8 +489,8 @@ componentes de telemetría soportados de forma coherente en hosts y cargas de
 trabajo en contenedores. Prefiere la
 [configuración declarativa](/docs/specs/otel/configuration/#declarative-configuration)
 para la instrumentación basada en SDK cuando esté soportada. Cuando no esté
-disponible, estandariza las variables de entorno, las opciones de inicialización o los
-patrones de
+disponible, estandariza las variables de entorno, las opciones de inicialización
+o los patrones de
 [configuración específica del SDK](/docs/languages/sdk-configuration/) para que
 los equipos hereden valores predeterminados coherentes con una configuración
 manual mínima.
@@ -498,7 +498,7 @@ manual mínima.
 Los patrones de empaquetado comunes incluyen paquetes de servicio de sistema
 estándar para agentes basados en host, imágenes de contenedor preconstruidas
 para despliegues de Collector o agente, y artefactos de inicialización de SDK
-compartidos como paquetes iniciales o wrappers de arranque. Por ejemplo:
+compartidos como paquetes iniciales o envoltorios de arranque. Por ejemplo:
 
 - Un Collector basado en host puede instalarse como un servicio de sistema
   estándar con un archivo de configuración y un archivo de entorno gestionados
@@ -506,7 +506,7 @@ compartidos como paquetes iniciales o wrappers de arranque. Por ejemplo:
 - Un despliegue en contenedores puede usar una imagen preconstruida que incluya
   el binario del Collector aprobado, las extensiones y la configuración
   predeterminada.
-- La instrumentación basada en SDK puede distribuirse a través de wrappers de
+- La instrumentación basada en SDK puede distribuirse a través de envoltorios de
   arranque compartidos, [agentes de lenguaje](/docs/zero-code/) o paquetes
   iniciales que apliquen automáticamente los valores predeterminados aprobados
   por la organización.
@@ -516,7 +516,7 @@ Lista de verificación:
 - Empaqueta los agentes basados en host como servicios de sistema estándar.
 - Proporciona imágenes preconstruidas o definiciones de contenedores de servicio
   para los despliegues en contenedores.
-- Publica bibliotecas compartidas, paquetes iniciales o wrappers de arranque
+- Publica bibliotecas compartidas, paquetes iniciales o envoltorios de arranque
   para los lenguajes de SDK soportados.
 - Prefiere la configuración declarativa del SDK cuando esté soportada, y de lo
   contrario estandariza las convenciones de variables de entorno, arranque y
@@ -623,7 +623,8 @@ Lista de verificación:
 - Asegúrate de que la telemetría de la aplicación incluya suficiente contexto de
   infraestructura para la correlación, como `host.id` o `host.name` cuando
   corresponda, por ejemplo mediante configuración de SDK, agentes de lenguaje,
-  wrappers de arranque o detección automática de recursos cuando esté soportada.
+  envoltorios de arranque o detección automática de recursos cuando esté
+  soportada.
 - Habilita y valida los detectores de recursos siempre que estén soportados,
   para que los metadatos de host, SO, proceso, runtime y contenedor se completen
   de forma automática y coherente, y complementa la salida de los detectores con
