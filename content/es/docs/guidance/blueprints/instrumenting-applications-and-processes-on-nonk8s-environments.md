@@ -507,7 +507,7 @@ compartidos como paquetes iniciales o envoltorios de arranque. Por ejemplo:
   el binario del Collector aprobado, las extensiones y la configuración
   predeterminada.
 - La instrumentación basada en SDK puede distribuirse a través de envoltorios de
-  arranque compartidos, [agentes de lenguaje](/docs/zero-code/) o paquetes
+  inicialización compartidos, [agentes de lenguaje](/docs/zero-code/) o paquetes
   iniciales que apliquen automáticamente los valores predeterminados aprobados
   por la organización.
 
