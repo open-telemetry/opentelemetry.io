@@ -85,9 +85,8 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
 5. **Analyze and recommend**. For each URL from the previous step, report:
    - The URL and HTTP status.
    - Where it originates from: provide links to files or pages.
-   - A recommendation — update or remove the link, or retire the entry — with
-     supporting evidence; see
-     [Recommendation guidance](#recommendation-guidance).
+   - A recommended fix or follow-up action; see
+     [Recommending a fix for non-2XX URLs](#recommending-a-fix-for-non-2xx-urls).
    - Where the fix belongs, for example:
      - In-branch
      - In a separate PR against `main`, when the same dead link also affects
@@ -143,7 +142,7 @@ Once no non-2XX entries remain on the PR being processed:
 
 Then continue with the next target PR, if any.
 
-## Recommendation guidance
+## Recommending a fix for non-2XX URLs
 
 Ground each recommendation in evidence:
 
