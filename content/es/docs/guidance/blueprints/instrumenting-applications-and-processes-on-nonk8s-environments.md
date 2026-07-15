@@ -111,7 +111,7 @@ Esto conduce a:
   la detección de recursos o la exportación, lo que produce una calidad de
   telemetría desigual.
 - **Desviación de configuración manual:** los agentes basados en hosts y en
-  contenedores suelen requerir configuración manual, lo que provoca desviaciones
+  contenedores suelen requerir configuración manual, lo que provoca derivas
   y un mayor riesgo de errores.
 
 ### 3. Procesamiento y exportación de datos aislados {#3-siloed-data-processing-and-export}
