@@ -316,7 +316,7 @@ adecuadas, con atributos como `service.name` y, cuando sea relevante,
 Qué atributos de servicio deben estar presentes depende de cómo se despliegan e
 identifican las cargas de trabajo en el entorno. Por ejemplo,
 `service.namespace` puede ser útil para distinguir servicios entre límites
-organizativos o de plataforma, mientras que `service.instance.id` puede ser
+organizacionales o de plataforma, mientras que `service.instance.id` puede ser
 necesario para distinguir instancias replicadas del mismo servicio.
 
 La telemetría de la aplicación debe incluir suficiente contexto de servicio e
