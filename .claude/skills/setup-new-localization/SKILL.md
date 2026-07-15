@@ -6,7 +6,7 @@ description: >-
   onboarding a localization team.
 argument-hint: '<kickoff-issue | lang-code>'
 allowed-tools: Bash Read Edit Write Grep Glob
-cSpell:ignore: endonym gitkeep nowrap unstaffed
+cSpell:ignore: endonym unstaffed
 ---
 
 # Set up a new localization
@@ -38,9 +38,10 @@ Either way, derive these; don't ask for them as separate arguments:
 
 > [!NOTE]
 >
-> All list entries below stay in **alphabetical order by `<lang>`** (English
-> `en` stays first as the default). Match the placement of an existing neighbor
-> (e.g. insert `ko` between `ja` and `pl`).
+> Most lists below are ordered alphabetically by `<lang>` (English `en` stays
+> first). Some aren't — `projects/localization.md`'s "Current language teams"
+> section is ordered by English name. At each insertion point, match the
+> ordering of the existing entries rather than assuming one global rule.
 
 ## Steps
 
@@ -97,7 +98,7 @@ Create it empty — git won't track an empty folder, so the `.gitkeep` is the
 tracked file:
 
 ```bash
-touch content/<lang>/.gitkeep
+mkdir -p content/<lang> && touch content/<lang>/.gitkeep
 ```
 
 **Do NOT copy the English homepage into the setup PR.** The translated homepage
@@ -126,12 +127,9 @@ published package names are inconsistent (`dict-es-es` with a hyphen vs
 `dict-pl_pl` with an underscore), but the [dictionary folders][cspell-dicts]
 follow one rule: `<lang>` (e.g. `bn`) or `<lang>_<REGION>` (e.g. `es_ES`,
 `pl_PL`, `pt_BR`, `uk_UA`). A matching folder means a dict exists; no folder (no
-`ko`, `ja`, `zh`) means there isn't one.
-
-```bash
-gh api repos/streetsidesoftware/cspell-dicts/contents/dictionaries \
-  --jq '.[].name' | grep -i '^<lang>'
-```
+`ko`, `ja`, `zh`) means there isn't one. Read the [dictionary
+folders][cspell-dicts] directly — a folder-name match is the source of truth,
+not a guessed npm name.
 
 The **dictionary id** is the folder name lowercased with `_` → `-` (`pl_PL` →
 `pl-pl`). For the exact **package name** and version, read them from npm
@@ -156,20 +154,22 @@ leave the `package.json` devDependencies unchanged.
 touch .cspell/<lang>-words.txt
 ```
 
-### f. `package.json` — Prettier nowrap group (ask a maintainer)
+### f. Prettier prose-wrapping — default: leave it alone
 
-Some locales break under Prettier's default prose wrapping; the
-`_check:format:nowrap` script runs those with `--prose-wrap preserve` instead.
-It currently lists `content/ja content/ko content/uk content/zh` (CJK plus
-Ukrainian), so there's no clean a-priori rule. **Confirm with a maintainer**
-whether `<lang>` belongs in this group. If it does, add `content/<lang>`
-(alphabetical) to the script:
+**Default: no Prettier changes for a new locale.** Per `localization.md`,
+prose-wrap exceptions exist only for languages Prettier mishandles; a locale
+opts in later, when its team hits the problem — not at setup time.
 
-```json
-"_check:format:nowrap": "npm run __check:format:nowrap -- content/ja content/<lang> content/uk content/zh"
-```
+If the team does opt in, it's **two coupled edits**, and one without the other
+is a silent no-op:
 
-Then run `npm run check:format` to confirm the locale's content passes.
+- a `/content/<lang>` line in `.prettierignore` (exempts the dir from the
+  default `proseWrap: always` pass), **and**
+- `content/<lang>` in the `_check:format:nowrap` script in `package.json`
+  (re-checks it with `--prose-wrap preserve`).
+
+Read `.prettierignore` and that script for the current members rather than
+trusting a snapshot here.
 
 ### g. `lang:<lang>` label — labeler config **and** the GitHub label
 
@@ -218,12 +218,13 @@ npm run check:codeowners   # must report "up to date"
 
 **Never hand-edit** the generated block in `.github/CODEOWNERS`.
 
-### j. `projects/localization.md` — 5 alphabetical insertions
+### j. `projects/localization.md` — 5 insertions (match neighbor ordering)
 
 1. Supported-languages list: `- [<native-label> - <Lang> (<lang>)][<lang>]`
    **and** its link ref `[<lang>]: https://opentelemetry.io/<lang>/`
 2. "Current language teams" section block (Website / Slack / Maintainers /
-   Approvers, mirroring a sibling)
+   Approvers, mirroring a sibling) — this section is ordered by **English
+   name**, not `<lang>`
 3. Labels list: `` - [`lang:<lang>`][issues-lang-<lang>] - <Lang> localization``
 4. Slack channel ref: `[otel-localization-<lang>]: <channel-url>`
 5. Issues label ref: `[issues-lang-<lang>]: <issues-search-url>`
@@ -277,7 +278,7 @@ this PR, but you can't merge it.
 
 ```bash
 npm run check:codeowners                  # "up to date"
-npm run check:format                      # passes (incl. nowrap group, if joined)
+npm run check:format                      # passes
 git diff --name-only                      # exactly the files below, nothing more
 git diff --name-only | grep component-owners.yml && echo "BUG: do not touch" || echo OK
 gh label list -R open-telemetry/opentelemetry.io | grep "lang:<lang>"  # label exists
@@ -295,4 +296,3 @@ Expected changed/added paths:
 - `data/locale-teams.yaml`
 - `projects/localization.md`
 - `package.json` **only if** an upstream `@cspell/dict-*` was added (step d)
-  and/or `<lang>` was added to the nowrap group (step f)
