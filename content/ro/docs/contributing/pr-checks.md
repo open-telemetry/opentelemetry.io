@@ -53,7 +53,8 @@ remedia erorile aferente.
 >
 > Numai post-urile de blog recente sunt verificate. Pentru detalii, vezi
 > [blog-urile vechi nu sunt actualizate][old-blogs]. În mod special, în timp ce
-> postările vechi sunt afișate pe website, verificările următoare nu li se aplică.
+> postările vechi sunt afișate pe website, verificările următoare nu li se
+> aplică.
 
 [old-blogs]: ../blog/#old-blogs-are-not-updated
 
