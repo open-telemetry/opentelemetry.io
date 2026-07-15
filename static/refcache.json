@@ -59,6 +59,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-07-13T06:44:02.295841355Z"
   },
+  "https://argoproj.github.io": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:53:48.321381748Z"
+  },
   "https://argoproj.github.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-07-13T06:43:59.047750209Z"
@@ -4723,6 +4727,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-12T06:26:18.092260688Z"
   },
+  "https://github.com/cncf/toc/issues/1739": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:54:01.852266881Z"
+  },
   "https://github.com/cnnradams": {
     "StatusCode": 206,
     "LastSeen": "2026-07-09T07:00:03.040647698Z"
@@ -6971,6 +6979,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-13T06:44:24.108432889Z"
   },
+  "https://github.com/open-telemetry/community/blob/96374af6e5b681664d80402bdc08d9a2d439a966/governance-charter.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-13T19:45:01.625055849Z"
+  },
   "https://github.com/open-telemetry/community/blob/b35f0f6c9801bfbe894211fb3d95afa3157662ec/community-members.md?from_branch=main#governance-committee": {
     "StatusCode": 206,
     "LastSeen": "2026-07-11T06:27:30.726128133Z"
@@ -6994,6 +7006,10 @@
   "https://github.com/open-telemetry/community/blob/main/community-membership.md": {
     "StatusCode": 206,
     "LastSeen": "2026-07-11T06:23:26.626140933Z"
+  },
+  "https://github.com/open-telemetry/community/blob/main/governance-charter.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-16T17:25:17.777050525Z"
   },
   "https://github.com/open-telemetry/community/blob/main/governance-charter.md#elections": {
     "StatusCode": 206,
@@ -12651,6 +12667,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-10T06:53:58.114799537Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-packaging": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-16T17:25:25.236795107Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-php": {
     "StatusCode": 206,
     "LastSeen": "2026-07-14T06:22:46.992111573Z"
@@ -17683,6 +17703,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-14T06:22:43.630507674Z"
   },
+  "https://kubernetes.io": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:53:46.963056613Z"
+  },
   "https://kubernetes.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-07-10T06:53:31.968842815Z"
@@ -19418,6 +19442,22 @@
   "https://opentelemetry.io": {
     "StatusCode": 206,
     "LastSeen": "2026-07-13T06:44:35.565133044Z"
+  },
+  "https://opentelemetry.io/blog/2024/profiling": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:53:52.855411208Z"
+  },
+  "https://opentelemetry.io/community/end-user/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:54:03.691357578Z"
+  },
+  "https://opentelemetry.io/docs/platforms/kubernetes/operator/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:53:57.71523943Z"
+  },
+  "https://opentelemetry.io/docs/specs/opamp/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-15T21:53:54.701765908Z"
   },
   "https://opentelemetry.io/docs/specs/otlp/": {
     "StatusCode": 206,
@@ -21763,6 +21803,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-15T06:24:37.530286886Z"
   },
+  "https://shorturl.at/ZxB5O": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-16T17:30:22.820176177Z"
+  },
   "https://signoz.io": {
     "StatusCode": 200,
     "LastSeen": "2026-07-09T06:57:34.881671172Z"
@@ -22399,6 +22443,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-07-13T06:44:27.115736575Z"
   },
+  "https://www.cncf.io/blog/2026/02/09/what-cncf-project-velocity-in-2025-reveals-about-cloud-natives-future/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-15T21:53:51.65354703Z"
+  },
   "https://www.cncf.io/case-studies/brz-migrated-the-austrian-business-service-portal-with-2m-users-to-keycloak/": {
     "StatusCode": 200,
     "LastSeen": "2026-07-09T06:57:01.806886762Z"
@@ -22431,9 +22479,17 @@
     "StatusCode": 200,
     "LastSeen": "2026-07-11T06:27:31.804897185Z"
   },
+  "https://www.cncf.io/people/technical-oversight-committee/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-15T21:53:58.383915408Z"
+  },
   "https://www.cncf.io/projects/": {
     "StatusCode": 200,
     "LastSeen": "2026-07-13T06:44:16.493126359Z"
+  },
+  "https://www.cncf.io/projects/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-16T17:25:21.70670325Z"
   },
   "https://www.cncf.io/training/certification/": {
     "StatusCode": 200,
@@ -23130,6 +23186,10 @@
   "https://www.linkedin.com/company/opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2026-07-13T06:44:45.629441267Z"
+  },
+  "https://www.linkedin.com/feed/update/urn:li:activity:7459538615640010752/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-15T21:54:05.61664465Z"
   },
   "https://www.linkedin.com/in/reese-lee/": {
     "StatusCode": 200,
@@ -24047,6 +24107,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-07-15T06:24:02.625617749Z"
   },
+  "https://www.youtube.com/live/vB9_SiTV5CI?si=F3jRi2w83Gp1lp_F": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-16T17:25:13.815166902Z"
+  },
   "https://www.youtube.com/watch?v=LUsfZFRM4yo": {
     "StatusCode": 200,
     "LastSeen": "2026-07-11T06:24:01.731199093Z"
@@ -24102,6 +24166,10 @@
   "https://youtu.be/5iM8n3uCo_U?si=PJ6tFYcYED3lhAcK": {
     "StatusCode": 200,
     "LastSeen": "2026-07-09T06:57:13.574883848Z"
+  },
+  "https://youtu.be/9iaGG-YZw5I?si=YDjY8N4Z4zI4uKiV": {
+    "StatusCode": 200,
+    "LastSeen": "2026-06-16T17:25:16.382183333Z"
   },
   "https://youtu.be/HY3LZOQqdig": {
     "StatusCode": 200,
