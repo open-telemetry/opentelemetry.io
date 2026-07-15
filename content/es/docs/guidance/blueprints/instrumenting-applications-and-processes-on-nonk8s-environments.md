@@ -25,7 +25,7 @@ lograr los siguientes resultados:
   se ejecutan en entornos no Kubernetes, incluidos los contenedores gestionados
   directamente.
 - Gestión coherente del ciclo de vida de los agentes de OpenTelemetry, junto con
-  patrones estandarizados de arranque y configuración para la instrumentación
+  patrones estandarizados de inicialización y configuración para la instrumentación
   basada en SDK.
 - Observabilidad unificada en infraestructuras mixtas: VMs, bare metal y
   contenedores sin orquestador.
