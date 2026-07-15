@@ -213,7 +213,7 @@ En entornos no Kubernetes, estos gateways pueden desplegarse usando varios
 patrones, según la escala y el modelo operativo, entre ellos:
 
 - VMs o hosts bare metal dedicados.
-- Un pool de servicios detrás de un balanceador de carga.
+- Un grupo (_pool_) de servicios detrás de un balanceador de carga.
 - Servicios de gateway en contenedores que se ejecutan en cómputo de propósito
   general.
 - Gateways regionales o locales al sitio para entornos distribuidos.
