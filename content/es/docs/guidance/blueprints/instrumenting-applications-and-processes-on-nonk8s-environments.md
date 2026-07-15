@@ -278,7 +278,7 @@ través de bloques de construcción reutilizables como:
 - Binarios o distribuciones estandarizadas de OpenTelemetry Collector.
 - Bibliotecas compartidas o paquetes iniciales para la instrumentación basada en
   SDK.
-- Wrappers de arranque estándar o convenciones de variables de entorno.
+- Wrappers de inicialización estándar o convenciones de variables de entorno.
 - Fragmentos o plantillas de configuración mantenidos de forma centralizada.
 
 El modelo de recursos recomendado para entornos no Kubernetes debe alinearse con
