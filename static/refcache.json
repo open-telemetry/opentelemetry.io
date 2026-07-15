@@ -12655,6 +12655,22 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-12T06:26:41.491842597Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-15T13:35:57.947141743+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/resource-attributes.md#how-resource-attributes-are-calculated-from-the-pods-metadata": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-15T13:35:58.603565802+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/deployment-modes.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-15T13:35:58.376444914+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/sidecar-injection.md?plain=1#L54-L59": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-15T13:35:59.47281986+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/compatibility.md#compatibility-matrix": {
     "StatusCode": 206,
     "LastSeen": "2026-07-09T06:53:53.51199562Z"
@@ -12662,6 +12678,14 @@
   "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/getting-started/compatibility.md#compatibility-matrix": {
     "StatusCode": 206,
     "LastSeen": "2026-07-13T05:50:12.712255544Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#discovery-of-prometheus-custom-resources": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-15T13:35:58.708774404+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#endpoints": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-15T13:35:59.350408909+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-operator/issues/1393": {
     "StatusCode": 206,
