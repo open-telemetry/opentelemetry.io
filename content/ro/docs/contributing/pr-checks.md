@@ -26,7 +26,7 @@ sunt set de verificări sunt executate. Aceste verificări de PR se asigură că
 >
 > Poți de asemenea să adaugi comentariul `/fix` la PR-ul tău. Asta va porni
 > Bot-ul OpenTelemetry care o să ruleze acea comandă pentru tine pentru a
-> actualiza PR-ul. Fii sigur că tragi acele schimbări local.
+> actualiza PR-ul. Asigură-te că tragi acele schimbări local.
 >
 > Numai dacă problemele tale persistă, citește mai jos ce alte verificări fac și
 > cum poți să revii dintr-o stare de eșec.
@@ -38,12 +38,12 @@ Această verificare eșuează dacă nu ai [semnat CLA-ul](../prerequisites/#cla)
 ## Deployment Netlify
 
 Dacă build-ul de [Netlify](https://www.netlify.com/) eșuează, selectează
-**Detaliile** pentru mai multe informații.
+**Detalii** pentru mai multe informații.
 
 ## Verificările de GitHub PR {#checks}
 
-Pentru a ne asigura că schimbările urmăresc [ghidu de stil](../style-guide/) am
-implementat un set de verificări care verifică regulile ghidului de stil și
+Pentru a ne asigura că schimbările urmăresc [ghidul de stil](../style-guide/) am
+implementat un set de verificări care validează regulile ghidului de stil și
 eșuează dacă găsesc vreo problemă.
 
 Secțiunile de mai jos descriu verificările actuale și ce poți face pentru a
@@ -53,8 +53,7 @@ remedia erorile aferente.
 >
 > Numai post-urile de blog recente sunt verificate. Pentru detalii, vezi
 > [blog-urile vechi nu sunt actualizate][old-blogs]. În mod special, în timp ce
-> postările vechi sunt afișate pe website, verificările următoare nu se aplică
-> lor.
+> postările vechi sunt afișate pe website, verificările următoare nu li se aplică.
 
 [old-blogs]: ../blog/#old-blogs-are-not-updated
 
@@ -182,15 +181,15 @@ următoarele URL-uri vor fi ignorate:
 >
 > Folosește indicatorul `-f` pentru a valida fragmente din URL (ancore) în
 > link-uri externe, validări pe care `htmltest` nu le face. Momentan nu rulăm
-> acest lucru des, așadar vei dori să limitezi numărul de actualizări ale
+> acest lucru des, prin urmare vei dori să limitezi numărul de actualizări ale
 > intrărilor folosind indicatorul `-m N`. Pentru informații de utilizare,
 > rulează cu `-h`.
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 
 Dacă această verificare eșuează, revizuiește log-ul de `BUILD and CHECK LINKS`,
-sub pasul `npm run log:check:links`, pentru alte potențiale probleme. Întreabă
-întreținători pentru ajutor, dacă nu știi cum să rezolvi această problemă.
+sub pasul `npm run log:check:links`, pentru alte potențiale probleme. Solicită
+sprijin de la întreținători, dacă nu știi cum să rezolvi această problemă.
 
 #### Mereu folosește o cale pentru link-uri site-local {#avoid-external-site-local-links}
 
@@ -198,7 +197,7 @@ Atunci când facem link-uri către pagini din website-ul OpenTelemetry, foloseș
 căi locale în loc de link-uri externe. Build-ul va emite un avertisment dacă nu
 faci asta.
 
-Pentru a remedia avertismentul de build, păstrați doar partea cu calea din
+Pentru a remedia avertismentul de build, păstrează doar partea cu calea din
 adresa URL completă:
 
 | ❌ Nu folosi                              | ✅ Folosește în schimb |
@@ -206,12 +205,12 @@ adresa URL completă:
 | `https://opentelemetry.io/docs/concepts/` | `/docs/concepts/`      |
 | `https://www.opentelemetry.io/blog/...`   | `/blog/...`            |
 
-Using local paths ensures that: Utilizare căilor locale asigură că:
+Using local paths ensures that: Utilizarea căilor locale asigură că:
 
 - Paginile site-local se deschid în același tab de browser: Link-urile externe
   se deschid într-un tab nou, comportament care nu este apreciat în navigarea
   site-local.
-- Procesarea link-urile de localizare funcționează conform așteptărilor:
+- Procesarea link-urilor de localizare funcționează conform așteptărilor:
   link-urile sunt prefixate automat cu codul de limbă aferent.
 - Căile locale sunt mai ușor de verificat și încarcă refcache-ul inutil.
 
