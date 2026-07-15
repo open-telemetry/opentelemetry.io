@@ -143,6 +143,23 @@ v1 covers the core of the compile-time approach. Our priorities from here:
 - **Adoption and awareness**: invest in docs, examples, and outreach so teams
   know the tool exists and how to fit it into their build.
 
+## Get involved
+
+Compile-time instrumentation is v1, and the best way to shape where it goes next
+is to use it and get involved.
+
+- **Try it and tell us how it went.** Add `otelc` to a build and share what
+  worked and what didn't in the project's
+  [GitHub discussions and issues](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation).
+  Real-world feedback drives the roadmap.
+- **Instrument a library you use.** Coverage grows through the SIG's rule
+  format; the
+  [instrumentation guide](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v1.0.0/docs/instrument-guide.md)
+  walks through adding one.
+- **Join the SIG.** Find us in
+  [#otel-go-compile-instrumentation](https://cloud-native.slack.com/archives/C088D8GSSSF)
+  on the CNCF Slack and at our SIG meetings.
+
 ## Acknowledgments
 
 Reaching v1 is a milestone for the whole Go Compile-Time Instrumentation SIG.
@@ -157,9 +174,3 @@ A special thank-you to [Azhar Momin](https://github.com/amazingakai), who joined
 the project through the
 [LFX Mentorship program](https://mentorship.lfx.linuxfoundation.org/project/3e530f5c-12f3-4321-836a-39de799a4d15)
 and has become one of its most active contributors and an approver.
-
-Want to get involved? Find us on the
-[GitHub repository](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation),
-in
-[#otel-go-compile-instrumentation](https://cloud-native.slack.com/archives/C088D8GSSSF)
-on the CNCF Slack, and at our SIG meetings.
