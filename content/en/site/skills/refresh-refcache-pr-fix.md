@@ -11,7 +11,7 @@ entries remain.
 
 ## Target PRs
 
-By default, sweep all open otelbot PRs — those whose head branch matches
+By default, sweep all open otelbot PRs -- those whose head branch matches
 `otelbot/*`. When instructed, narrow the sweep to the named branch or group of
 branches (for example, `otelbot/refcache-refresh`, or the spec/semconv
 integration branches); ask if the instruction is ambiguous. This skill operates
@@ -23,9 +23,9 @@ on PRs: if a named branch has no open PR, report that and stop.
    gh pr list --search head:otelbot/ --json number,title,headRefName,isDraft
    ```
 
-2. Determine which of them have failing link checks — checks of the `Links`
+2. Determine which of them have failing link checks -- checks of the `Links`
    workflow (`gh pr checks <num>`).
-3. Report the sweep assessment **before processing any PR**: one line per PR —
+3. Report the sweep assessment **before processing any PR**: one line per PR --
    number, head branch, draft status, and whether it will be processed (with the
    reason when skipped).
 4. Process each qualifying PR in turn, following the sections below, naming the
@@ -93,7 +93,7 @@ multiple runs over time and you have confirmed the URL is not otherwise healthy.
        `main` or several target PRs
      - Upstream in the source repository, for integration branches
 
-   Stop and wait for reviewer approval — never self-approve recommendations.
+   Stop and wait for reviewer approval -- never self-approve recommendations.
 
 6. **Apply approved fixes.** Perform the maintainer-approved fix and follow-up
    actions, and only those. For edits outside `content/en/`, follow
@@ -116,9 +116,9 @@ Once no non-2XX entries remain on the PR being processed:
 3. Unless the skill invocation asks for no comment (e.g., it includes “no
    comment” or “silent”), add a comment to the PR
    (`gh pr comment <num> --body '…'`) consisting of:
-   - The skill invocation, as inline code — reconstructed in minimal form (skill
-     name and target selection only). Never quote the surrounding conversation,
-     which may contain private or unrelated context.
+   - The skill invocation, as inline code -- reconstructed in minimal form
+     (skill name and target selection only). Never quote the surrounding
+     conversation, which may contain private or unrelated context.
    - A terse, one-or-two-line summary of the run.
 
    For example:
@@ -126,7 +126,7 @@ Once no non-2XX entries remain on the PR being processed:
    ```text
    Refcache update done using: `/refresh-refcache-pr-fix for the collector-docs branch`
 
-   Re-checked 12 cached 4XX/fragment URLs; all now 2XX — no non-2XX entries remain.
+   Re-checked 12 cached 4XX/fragment URLs; all now 2XX -- no non-2XX entries remain.
    ```
 
 4. If the PR is **not** a draft and the link check was its only failing check,
@@ -145,7 +145,7 @@ Ground every recommendation in evidence, and match the fix to the situation:
 - **Linked page moved**: update the link, with
   [evidence](#evidence-for-a-replacement-url) that the replacement matches.
 - **Entry subject gone**: when the link originates from a registry or
-  ecosystem-list entry — adopters, distributions, integrations, vendors — and
+  ecosystem-list entry -- adopters, distributions, integrations, vendors -- and
   the component, product, or company behind the entry is defunct, absorbed, or
   otherwise no longer actively supports OpenTelemetry,
   [retire the entry](#retiring-an-entry) instead of updating its links.
@@ -155,13 +155,13 @@ Ground every recommendation in evidence, and match the fix to the situation:
 
 ### Evidence for a replacement URL
 
-Show that the fetched page names or otherwise matches the linked resource — a
+Show that the fetched page names or otherwise matches the linked resource -- a
 2XX status alone proves nothing, since SPA catch-alls and login pages return 200
 for any path. For links into github.com, base the replacement on the last commit
 that contains the named resource. The
 [Wayback Machine](https://web.archive.org/) can reveal what a dead URL used to
-serve or where it moved; check it briefly, but don't dig deep unless asked — the
-archive is slow.
+serve or where it moved; check it briefly, but don't dig deep unless asked --
+the archive is slow.
 
 ### Retiring an entry
 
