@@ -3,7 +3,7 @@ title: Lambda-powered functions land in OTTL
 linkTitle: Lambda-powered functions land in OTTL
 date: 2026-07-12
 author: '[Edmo Vamerlatti Costa](https://github.com/edmocosta) (Elastic)'
-issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details (Required)
+issue: 10848
 sig: Collector SIG
 cSpell:ignore: OTTL Vamerlatti
 ---
