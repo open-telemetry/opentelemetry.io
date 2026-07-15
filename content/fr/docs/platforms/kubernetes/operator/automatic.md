@@ -31,7 +31,7 @@ chart Helm, il y a une option pour générer un certificat auto-signé à la pla
 
 > Si vous souhaitez utiliser l'auto-instrumentation Go, vous devez expressément
 > activer la fonctionnalité. Voir
-> [Contrôle des capacités d'instrumentation](https://github.com/open-telemetry/opentelemetry-operator#controlling-instrumentation-capabilities)
+> [Contrôle des capacités d'instrumentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/reference/feature-gates.md)
 > pour plus de détails.
 
 ## Créer un collecteur OpenTelemetry (Optionnel) {#create-an-opentelemetry-collector-optional}
@@ -52,7 +52,7 @@ L'opérateur fournit une
 qui est utilisée pour créer une instance du collecteur que l'opérateur gère.
 L'exemple suivant déploie le collecteur en tant que déploiement (par défaut),
 mais il y a d'autres
-[modes de déploiement](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes)
+[modes de déploiement](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/deployment-modes.md)
 qui peuvent être utilisés.
 
 Lorsque vous utilisez le mode `Deployment`, l'opérateur créera également un
@@ -587,7 +587,7 @@ Les valeurs possibles pour l'annotation peuvent être
 Alternativement, l'annotation peut être ajoutée à un namespace, ce qui
 entraînera tous les services de ce namespace à opter pour l'instrumentation
 automatique. Voir la
-[documentation d'auto-instrumentation avec l'opérateur](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)
+[documentation d'auto-instrumentation avec l'opérateur](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)
 pour plus de détails.
 
 ### Opter pour un service Go {#opt-in-a-go-service}

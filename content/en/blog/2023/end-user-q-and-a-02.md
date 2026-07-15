@@ -190,7 +190,7 @@ of that is up to you. Doug’s advice is to do the minimum you need to get start
 Uplight currently has a few different Collector configurations:
 
 - Collectors running standalone as some
-  [sidecars](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes)
+  [sidecars](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/collector/deployment-modes.md)
 - For larger Kubernetes clusters, there’s a
   [Collector running in each cluster](/docs/collector/installation/#kubernetes)
 - Developers running their own Collectors
