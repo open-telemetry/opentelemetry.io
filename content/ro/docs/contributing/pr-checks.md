@@ -35,7 +35,7 @@ sunt set de verificări sunt executate. Aceste verificări de PR se asigură că
 
 Această verificare eșuează dacă nu ai [semnat CLA-ul](../prerequisites/#cla).
 
-## Deployment Netlify
+## Deployment Netlify {netlify-deployment}
 
 Dacă build-ul de [Netlify](https://www.netlify.com/) eșuează, selectează
 **Detalii** pentru mai multe informații.
