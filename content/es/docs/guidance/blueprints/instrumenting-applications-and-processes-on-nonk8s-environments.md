@@ -619,7 +619,7 @@ Lista de verificación:
 - Define qué recursos de host, proceso, runtime, sistema operativo y contenedor
   deben detectarse y correlacionarse, y habilita la detección automática de
   recursos de forma coherente para ellos mediante configuración compartida,
-  artefactos de arranque o plantillas mantenidas de forma centralizada.
+  artefactos de inicialización o plantillas mantenidas de forma centralizada.
 - Asegúrate de que la telemetría de la aplicación incluya suficiente contexto de
   infraestructura para la correlación, como `host.id` o `host.name` cuando
   corresponda, por ejemplo mediante configuración de SDK, agentes de lenguaje,
