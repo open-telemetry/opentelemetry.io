@@ -1,19 +1,19 @@
 ---
-title: Submitting content
+title: Trimiterea de conținut
 description:
-  Learn how to submit new or changed content using the GitHub UI or from a local
-  fork.
+  Învață cum să trimiți conținut now sau schimbat folosind interfața Github sau
+  de pe un fork local
 aliases: [new-content]
 weight: 15
 ---
 
-To contribute new or improve existing documentation, submit a [pull request][PR]
-(PR):
+Pentru a contribui cu conținut sau să îmbunătățești documentația existentă, trimite un [pull request][PR]
+(PR)
 
-- If your change is small, or you're unfamiliar with [Git][], see
-  [Using GitHub](#changes-using-github) to learn how to edit a page.
-- Otherwise, see [Work from a local fork](#fork-the-repo) to learn how to make
-  changes in your own local development environment.
+- Dacă schimbarea ta este mică, sau ești nefamiliarizat cu [Git][], vezi cum se
+  [Folosește GitHub](#changes-using-github) pentru a învăța cum să editezi o pagină.
+- Altfel, vezi cum se [Lucreză de pe un fork local](#fork-the-repo) pentru a învăța cum
+  să faci schimbări în mediul tău local de dezvoltare.
 
 ## Generative AI contribution policy {#using-ai}
 
