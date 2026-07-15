@@ -74,7 +74,7 @@ La instrumentación y el despliegue de agentes en VMs, bare metal y contenedores
 gestionados directamente suele ser manual o basado en scripts, y la
 configuración continua es difícil de gestionar a escala. Este enfoque
 descentralizado y ad hoc suele requerir que los operadores o desarrolladores
-instalen, configuren y actualicen los agentes de OpenTelemetry individualmente
+instale, configuren y actualicen los agentes de OpenTelemetry individualmente
 en cada host o carga de trabajo.
 
 Esto conduce a:
