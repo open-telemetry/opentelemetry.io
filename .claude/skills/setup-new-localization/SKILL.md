@@ -70,7 +70,10 @@ Then add the block under `languages:`, in alphabetical order:
 
 ### b. `config/_default/module-template.yaml` — content mounts
 
-Copy the shape of an existing block (e.g. `## ja`), in alphabetical order:
+Copy the `## <lang>` block from an existing language (e.g. `## ja`) into
+alphabetical position. The per-locale edits are just the language code and the
+YAML anchor name: the primary mount defines `&<lang>-matrix`, and the fallback
+mounts (`_includes`, `announcements`, `docs`) reference it as `*<lang>-matrix`.
 
 ```yaml
 ## <lang>
@@ -78,17 +81,7 @@ Copy the shape of an existing block (e.g. `## ja`), in alphabetical order:
   target: content
   sites: &<lang>-matrix
     matrix: { languages: [<lang>] }
-# fallback pages
-- source: content/en/_includes
-  target: content/_includes
-  sites: *<lang>-matrix
-- source: content/en/announcements
-  target: content/announcements
-  sites: *<lang>-matrix
-- source: content/en/docs
-  target: content/docs
-  files: ['! specs/**']
-  sites: *<lang>-matrix
+# …then the fallback mounts, identical to the sibling block
 ```
 
 ### c. `content/<lang>/.gitkeep` — placeholder content dir
@@ -127,9 +120,8 @@ published package names are inconsistent (`dict-es-es` with a hyphen vs
 `dict-pl_pl` with an underscore), but the [dictionary folders][cspell-dicts]
 follow one rule: `<lang>` (e.g. `bn`) or `<lang>_<REGION>` (e.g. `es_ES`,
 `pl_PL`, `pt_BR`, `uk_UA`). A matching folder means a dict exists; no folder (no
-`ko`, `ja`, `zh`) means there isn't one. Read the [dictionary
-folders][cspell-dicts] directly — a folder-name match is the source of truth,
-not a guessed npm name.
+`ko`, `ja`, `zh`) means there isn't one — the folder listing is the source of
+truth.
 
 The **dictionary id** is the folder name lowercased with `_` → `-` (`pl_PL` →
 `pl-pl`). For the exact **package name** and version, read them from npm
