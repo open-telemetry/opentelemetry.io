@@ -17,6 +17,7 @@ cartservice
 cassandra
 checkoutservice
 classpath
+coacoapods
 configurator
 cooldown
 currencyservice
@@ -39,6 +40,7 @@ multiplatform
 pageinfo
 parentbased
 paymentservice
+podspec
 prepper
 productcatalogservice
 quantile

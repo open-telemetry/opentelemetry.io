@@ -58,7 +58,7 @@ The milestones are still under discussion, but will likely be as follows:
 
 | Milestone                            | Date                               |
 | ------------------------------------ | ---------------------------------- |
-| Deprecation annoucement              | July                               |
+| Deprecation announcement             | July                               |
 | Recommended migration period begins  | August 31st, 2026                  |
 | Final release published to CocoaPods | No later than September 30th, 2026 |
 | CocoaPods support ends               | December 2nd, 2026                 |
