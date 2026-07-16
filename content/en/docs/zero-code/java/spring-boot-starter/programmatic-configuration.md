@@ -131,6 +131,10 @@ bean, whether you configured it via `application.properties` /
 `ConfigProvider` bean directly if you need to read an instrumentation
 configuration value from your own code:
 
+When declarative configuration is enabled, the `otelProperties`
+(`ConfigProperties`) bean is provided only as a compatibility bridge. It is
+deprecated and will be removed in 3.0; use `ConfigProvider` instead.
+
 ```java
 package otel;
 
