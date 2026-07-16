@@ -153,7 +153,7 @@ different attribute combinations in a single callback invocation:
 using System.Diagnostics.Metrics;
 
 // Create a meter
-var meter = new Meter("MyCompany.MyProduct", "1.0.0");
+using var meter = new Meter("MyCompany.MyProduct", "1.0.0");
 
 // Observable counter reporting multiple measurements per collection
 meter.CreateObservableCounter<long>(
