@@ -156,7 +156,7 @@ using System.Diagnostics.Metrics;
 using var meter = new Meter("MyCompany.MyProduct", "1.0.0");
 
 // Observable counter reporting multiple measurements per collection
-meter.CreateObservableCounter<long>(
+meter.CreateObservableCounter(
     "my_observable_counter",
     () => new[]
     {
