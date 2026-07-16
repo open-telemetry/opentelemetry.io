@@ -1967,6 +1967,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-07-11T06:26:51.852473075Z"
   },
+  "https://docs.guance.com/en/integrations/opentelemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-15T04:32:05.153718774Z"
+  },
   "https://docs.helixops.ai/bin/view/IT-Operations-Management/Operations-Management/BMC-Helix-AIOps/aiops254/Administering/Enabling-BMC-Helix-applications-to-collect-service-traces-from-OpenTelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2026-07-10T11:54:33.503553-04:00"
