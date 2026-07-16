@@ -3,7 +3,7 @@ title: CI ワークフロー
 description: >-
   PR のチェック、ラベル管理、その他の CI/CD プロセスを自動化する GitHub Actions ワークフロー。
 weight: 10
-default_lang_commit: b291d077d4c7aba2b43ec5a1648c02bb5c43f870 # patched
+default_lang_commit: 92d8ba0247275d76296813c07f9add562e473163
 ---
 
 ワークフローと（ほとんどの）ヘルパースクリプトについては、[.github][] 配下の `workflow` フォルダと `scripts` フォルダを参照してください。
@@ -113,7 +113,7 @@ sequenceDiagram
 
 - **`pr-review-trigger`**: 意図的に最小限 — シークレットなし、特権パーミッションなし。
   コメントは承認に影響しないため、`review.state == "commented"` を無視します。
-- **`pr-approval-labels`**: GitHub App トークン（`OTELBOT_DOCS_APP_ID` / `OTELBOT_DOCS_PRIVATE_KEY`）で実行され、org/team メンバーシップの読み取りと PR ラベルの編集の権限を持ちます。
+- **`pr-approval-labels`**: GitHub App トークン（`OTELBOT_DOCS_CLIENT_ID` / `OTELBOT_DOCS_PRIVATE_KEY`）で実行され、org/team メンバーシップの読み取りと PR ラベルの編集の権限を持ちます。
   `pull_request_target` と `workflow_run` を使用して、常に信頼されたベースリポジトリのコンテキストで実行されます。
 - **`blog-publish-labels`**: GitHub App トークンと `SLACK_WEBHOOK_URL` シークレットを使用してスケジュールで実行されます。
   常に信頼されたベースリポジトリのコンテキストで実行されます（スケジュールイベントにはフォークバリアントがありません）。
@@ -305,29 +305,33 @@ CODEOWNERS と必須チェックがハードマージゲートとして残りま
 
 ## Spec インテグレーションブランチ {#spec-integration-branches}
 
-2 つのスケジュールワークフローが上流の spec リポジトリの未リリースの変更を追跡し、ドラフト PR（「インテグレーションブランチ」）を次の開発バージョンに合わせて最新に保ちます。
+スケジュール実行の [specs-integration.yml][] ワークフローは、上流の spec リポジトリのサイト更新サイクルを管理します（そのため `auto-update-versions.yml` はこれらを除外します）。
+上流リポジトリごとに 1 つのマトリックスジョブを実行します。リリース間では、各ジョブがドラフト PR（「インテグレーションブランチ」）を通じて上流の未リリースの変更を追跡し、上流がリリースされると、そのブランチと PR をリリース PR に仕上げます。
 
-| ワークフローファイル                      | 上流リポジトリ                | ブランチスラッグ |
-| ----------------------------------------- | ----------------------------- | ---------------- |
-| [update-spec-integration-branch.yml][]    | `opentelemetry-specification` | `spec`           |
-| [update-semconv-integration-branch.yml][] | `semantic-conventions`        | `semconv`        |
+| マトリックスジョブ | 上流リポジトリ                | ブランチスラッグ |
+| ------------------ | ----------------------------- | ---------------- |
+| `otel`             | `opentelemetry-specification` | `spec`           |
+| `semconv`          | `semantic-conventions`        | `semconv`        |
 
-[update-spec-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/specs-integration.yml
-[update-semconv-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/specs-integration.yml
+[specs-integration.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/specs-integration.yml
 
-両方のワークフローは「次のバージョン + ブランチを選択する」ステップを共有の Node ヘルパー [scripts/gh/specs/pick-branch/cli.mjs][] に委譲します。
+各ジョブは「モード、バージョン、ブランチを選択する」ステップを共有のヘルパー [scripts/gh/specs/pick-branch.mjs][] に委譲します。
 このヘルパーは:
 
-- 既存の `otelbot/<slug>-integration-vX.Y.Z-dev` ブランチがあり、バージョンがまだリリースされていない場合はそれを再利用します。
-  それ以外の場合は、最新のリリースタグのマイナーバージョンをバンプします。
-- `VERSION` と `BRANCH` を `$GITHUB_ENV` に書き込み、下流のステップで使用できるようにします。
+- 実行の `MODE` を選択します。main にピン留めされたバージョンが最新の上流リリースである間は `dev`、より新しいリリースが存在する場合は `release` になります。
+- `MODE`、`VERSION`、`BRANCH` を `$GITHUB_ENV` に書き込み、下流のステップで使用できるようにします。
 - 古いインテグレーションブランチが複数あるなどの問題を検出した場合、トラッキングイシューをオープンします（ラベル `<slug>-integration-warning`、重複排除済み）。
 
-[scripts/gh/specs/pick-branch/cli.mjs]: https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/specs/pick-branch
+[scripts/gh/specs/pick-branch.mjs]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/pick-branch.mjs
+
+最後のステップである [scripts/gh/specs/create-or-finalize-pr.mjs][] は、`MODE` に応じて PR を作成または仕上げます。dev モードではドラフトのインテグレーション PR がない場合に作成し、release モードではリリース PR を作成または仕上げます。
+自動化自身が書いた PR テキストのみを書き換え、メンテナーが編集したタイトルや本文はそのまま残します。
+
+[scripts/gh/specs/create-or-finalize-pr.mjs]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/create-or-finalize-pr.mjs
 
 ### 実行モード {#run-modes}
 
-ヘルパーはドライランと書き込みモードを自動的に選択し、`[mode]` バナーを出力してその選択を説明します。
+両方のヘルパーはドライランと書き込みモードを自動的に選択し、`[mode]` バナーを出力してその選択を説明します。
 
 | コンテキスト       | デフォルト動作 | オーバーライド        |
 | ------------------ | -------------- | --------------------- |
@@ -336,16 +340,17 @@ CODEOWNERS と必須チェックがハードマージゲートとして残りま
 
 ローカルでは、ドライランでもすべての読み取り専用の `git`/`gh` コマンドは実行されます（そのためイシュー重複排除チェックは実行されます）が、書き込みはスキップされます。
 `--no-dry-run` を使用すると、ヘルパーはローカルの `gh` 資格情報を使用します。
-`GITHUB_ENV` が未設定の場合、`VERSION`/`BRANCH` は標準出力にのみ出力されます。
+`GITHUB_ENV` が未設定の場合、pick-branch は `MODE`/`VERSION`/`BRANCH` を標準出力にのみ出力します。
+これらをエクスポートすると、ローカルの create-or-finalize-pr の実行に渡せます。
 試してみましょう:
 
 ```sh
-node scripts/gh/specs/pick-branch/cli.mjs --spec=otel
-node scripts/gh/specs/pick-branch/cli.mjs --spec=semconv --no-dry-run
-node scripts/gh/specs/pick-branch/cli.mjs --help
+scripts/gh/specs/pick-branch.mjs --spec otel
+scripts/gh/specs/pick-branch.mjs --spec semconv --no-dry-run
+scripts/gh/specs/create-or-finalize-pr.mjs --help
 ```
 
-純粋なロジックと CLI 引数のパースは `index.mjs` にあり、同じフォルダ内の `*.test.mjs` ファイルでカバーされています（`npm run test:local-tools` で実行）。
+純粋なロジックは各ヘルパーの `index.mjs` にあり、同じフォルダ内の `*.test.mjs` ファイルでカバーされています（`npm run test:local-tools` で実行）。
 
 ## ワークフロー失敗レポート {#workflow-failure-reporting}
 
@@ -368,7 +373,7 @@ node scripts/gh/specs/pick-branch/cli.mjs --help
 | `check-spelling.yml`       | スペルチェック                                                                                    |
 | `test.yml`                 | テスト（`test:base` を除く）                                                                      |
 | `auto-update-registry.yml` | レジストリパッケージバージョンの自動更新                                                          |
-| `auto-update-versions.yml` | OTel コンポーネントバージョンの自動更新                                                           |
+| `auto-update-versions.yml` | OTel コンポーネントバージョンの自動更新（[spec リポジトリ](#spec-integration-branches)を除く）    |
 | `build-dev.yml`            | 開発ビルドとプレビュー                                                                            |
 | `lint-scripts.yml`         | `.github/scripts/` の ShellCheck リンティング                                                     |
 | `label-manager.yml`        | PR ラベル（コンポーネントラベルと承認フロー）                                                     |
