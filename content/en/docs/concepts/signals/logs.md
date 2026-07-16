@@ -180,7 +180,7 @@ fully useful for downstream analysis.
 A common question is whether application code should check if logging is enabled
 before emitting a log record, for example:
 
-```
+```text
 if (logger.Enabled(...)) {
   logger.Info("Hello {name}", name);
 }
@@ -198,7 +198,7 @@ expensive, and you want to avoid that cost when the record would be dropped. For
 example, if the body or an attribute must be fetched from a database or computed
 through an expensive operation:
 
-```
+```text
 if (logger.Enabled(...)) {
   logger.Info("Order total {total}", ComputeExpensiveTotal());
 }
