@@ -1,4 +1,4 @@
-# cSpell:ignore DProvenanceKit DProvenanceOTel Langfuse foundationmodels genai otlp semconv
+# cSpell:ignore DProvenanceKit DProvenanceOTel Langfuse foundationmodels genai otlp semconv diffable Therealdk
 title: DProvenanceKit
 registryType: instrumentation
 language: swift
