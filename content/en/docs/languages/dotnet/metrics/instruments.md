@@ -167,7 +167,7 @@ meter.CreateObservableCounter(
     "Total number of processed items by product type");
 
 // Observable gauge reporting multiple measurements per collection
-meter.CreateObservableGauge<double>(
+meter.CreateObservableGauge(
     "my_observable_gauge",
     () => new[]
     {
