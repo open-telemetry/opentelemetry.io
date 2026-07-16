@@ -5,6 +5,7 @@ date: '2026-06-24'
 author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
 sig: End-User
 default_lang_commit: 8c95bffcf7243a916f79a0d525cf55b6a3d34ad7
+drifted_from_default: true
 cSpell:ignore: Autoscaler kube OTTL SDLC Skyscanner statefulset
 ---
 
