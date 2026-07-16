@@ -9,7 +9,7 @@ body_class: otel-with-contributions-from # TODO: remove this line if there are n
 issue: 10655 # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details (Required)
 sig: Swift # TODO: add the name of the SIG that sponsors this blog post (Required)
 ---
-
+// cSpell:ignore cocoapods, podspecs
 ## Summary
 
 As it was announced:
