@@ -2,11 +2,10 @@
 title: >-
   Announcing v1 of OpenTelemetry Go Compile-Time Instrumentation
 linkTitle: Go Compile-Time Instrumentation v1
-date: 2026-07-14
+date: 2026-07-16
 author: '[Kemal Akkoyun](https://github.com/kakkoyun) (Datadog)'
 issue: 10670
 sig: Go Compile-Time Instrumentation
-draft: true # remove only when Comms schedules publication
 # prettier-ignore
 cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario GOFLAGS Haibin Martinez Momin otelc toolexec Xabier
 ---
