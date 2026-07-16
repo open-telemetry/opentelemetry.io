@@ -188,7 +188,7 @@
 - name: Guance
   nativeOTLP: true
   url: https://docs.guance.com/en/integrations/opentelemetry/
-  contact: 
+  contact:
   oss: false
   commercial: true
 - name: Heroku
