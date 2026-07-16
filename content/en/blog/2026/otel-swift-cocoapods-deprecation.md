@@ -14,9 +14,9 @@ sig: Swift # TODO: add the name of the SIG that sponsors this blog post (Require
 
 As it was announced:
 ([CocoaPods Support Plan](https://blog.cocoapods.org/CocoaPods-Support-Plans/?ref=jsdelivr-blog.ghost.io)
-and [CocoaPods Spec Repo](https://blog.cocoapods.org/CocoaPods-Specs-Repo/)), CocoaPods is
-transitioning their project to maintenance mode, and cocoapods trunk is going to
-be read-only in a few months.
+and [CocoaPods Spec Repo](https://blog.cocoapods.org/CocoaPods-Specs-Repo/)),
+CocoaPods is transitioning their project to maintenance mode, and cocoapods
+trunk is going to be read-only in a few months.
 
 The OpenTelemetry Swift maintainers are planning to deprecate CocoaPods support
 for all the pods published under `opentelemetry-swift` and
