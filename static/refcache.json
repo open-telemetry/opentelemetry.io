@@ -243,6 +243,14 @@
     "StatusCode": 200,
     "LastSeen": "2026-07-12T06:28:43.12634865Z"
   },
+  "https://blog.cocoapods.org/CocoaPods-Specs-Repo/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-16T19:01:03.585661-07:00"
+  },
+  "https://blog.cocoapods.org/CocoaPods-Support-Plans/?ref=jsdelivr-blog.ghost.io": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-16T19:01:03.282565-07:00"
+  },
   "https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/": {
     "StatusCode": 200,
     "LastSeen": "2026-07-16T06:34:20.963Z"
@@ -698,6 +706,10 @@
   "https://cloud-native.slack.com/archives/C01N7PP1THC": {
     "StatusCode": 200,
     "LastSeen": "2026-07-12T06:28:25.673888756Z"
+  },
+  "https://cloud-native.slack.com/archives/C01NCHR19SB": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-16T19:01:06.461365-07:00"
   },
   "https://cloud-native.slack.com/archives/C01NFPCV44V": {
     "StatusCode": 200,
@@ -14495,6 +14507,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-10T06:53:28.944952691Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-swift/issues/new": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-16T19:01:04.494912-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-swift/releases": {
     "StatusCode": 206,
     "LastSeen": "2026-07-10T06:53:31.139061866Z"
@@ -17302,6 +17318,10 @@
   "https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting": {
     "StatusCode": 200,
     "LastSeen": "2026-07-11T06:23:25.150856481Z"
+  },
+  "https://groups.google.com/a/opentelemetry.io/g/calendar-swift": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-16T19:01:06.977534-07:00"
   },
   "https://grpc.github.io/grpc/core/md_doc_naming.html": {
     "StatusCode": 206,
