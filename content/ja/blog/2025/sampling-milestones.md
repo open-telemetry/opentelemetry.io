@@ -1,6 +1,6 @@
 ---
-title: OpenTelemetry Sampling の最新情報
-linkTitle: OpenTelemetry Sampling の最新情報
+title: OpenTelemetryにおけるサンプリングの最新情報
+linkTitle: OpenTelemetryにおけるサンプリングの最新情報
 date: 2025-10-15
 author: >-
   [Joshua MacDonald](https://github.com/jmacd) (Microsoft), [Kent
