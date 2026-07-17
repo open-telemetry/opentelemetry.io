@@ -35,7 +35,7 @@ OpenTelemetry を導入する決定は、プロジェクトの機能とチーム
 
 > 「私たちが求めていたすべてと合致していました」と Bogdan は語りました。
 
-[OpenTelemetry Operator](/docs/platforms/kubernetes/operator/)、Collector のコンポーネントモデル、そしてコミュニティの Helm チャートが、個々のサービスチームに深い OpenTelemetry の専門知識を要求せずにスケールできる、プラットフォームレベルのオブザーバビリティ製品の構成要素を提供しました。
+[OpenTelemetry Operator](/docs/platforms/kubernetes/operator/)、Collector のコンポーネントモデル、そしてコミュニティの Helm チャートが、個々のサービスチームに深い OpenTelemetry の専門知識を要求せずにスケールできる、プラットフォームレベルのオブザーバビリティ基盤の構成要素を提供しました。
 
 ## アーキテクチャ: 3層の Collector パイプライン {#architecture-a-three-tier-collector-pipeline}
 
