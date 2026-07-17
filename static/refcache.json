@@ -2824,12 +2824,12 @@
     "LastSeen": "2026-07-16T06:27:22.897633864Z"
   },
   "https://en.cppreference.com/w/cpp/container/set.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-17T10:44:02.821660285Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-17T11:03:51.705Z"
   },
   "https://en.cppreference.com/w/cpp/container/vector.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-17T10:44:00.549783778Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-17T11:03:54.774Z"
   },
   "https://en.wikipedia.org": {
     "StatusCode": 200,
@@ -19172,16 +19172,16 @@
     "LastSeen": "2026-07-17T10:48:28.07Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-aws": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-17T10:47:03.980076748Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-17T11:03:58.368Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-azure": {
-    "StatusCode": 429,
-    "LastSeen": "2026-07-17T10:47:03.987755595Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-17T11:04:01.693Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-container": {
-    "StatusCode": 429,
-    "LastSeen": "2026-07-17T10:47:04.004710637Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-17T11:04:05.289Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-gcp": {
     "StatusCode": 200,
@@ -19208,8 +19208,8 @@
     "LastSeen": "2026-07-16T06:36:35.353Z"
   },
   "https://npmjs.com/package/@waitingliou/tsc-otel-instrumentation": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-17T10:45:43.143806129Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-17T11:04:11.355Z"
   },
   "https://npmjs.com/package/opentelemetry-instrumentation-remix": {
     "StatusCode": 200,
@@ -22332,8 +22332,8 @@
     "LastSeen": "2026-07-17T06:27:33.406381498Z"
   },
   "https://www.britannica.com/dictionary/pipeline": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-17T10:43:05.18884385Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-17T11:04:38.168Z"
   },
   "https://www.buoyant.io/mtls-guide": {
     "StatusCode": 200,
@@ -23300,16 +23300,16 @@
     "LastSeen": "2026-07-17T10:00:13.334Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-trace-node": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-17T10:37:39.261898819Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-17T11:04:41.556Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/shim-opentracing": {
     "StatusCode": 200,
     "LastSeen": "2026-07-17T10:00:16.727Z"
   },
   "https://www.npmjs.com/search?q=%40cspell%2Fdict": {
-    "StatusCode": 403,
-    "LastSeen": "2026-07-17T10:38:11.663324868Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-07-17T11:04:44.492Z"
   },
   "https://www.nuget.org/packages/Azure.Monitor.OpenTelemetry.Exporter": {
     "StatusCode": 200,
