@@ -116,7 +116,7 @@ cSpell:ignore: lycheecache
 
 [^categories]:
     これらのスクリプトはテストスクリプトの命名規則に従います。
-    [テストカテゴリ](../../testing/#test-categories)を参照してください。
+    [テストカテゴリ](/site/testing/#test-categories)を参照してください。
 
 [^fat]:
     ハウスキーピングのデフォルト: コンテンツ修正の後に `fix:refcache`（プルーンしてからリンクチェック）を実行します。
@@ -142,7 +142,7 @@ cSpell:ignore: lycheecache
 ## 注記 {#notes}
 
 - **refcache のメンテナンス**は htmltest 固有です。
-  詳細は [Refcache](../link-checking/#refcache) を参照してください。
+  詳細は [Refcache](/site/build/link-checking/#refcache) を参照してください。
 - **Lychee リンクチェック（パイロット）。**
   `:lychee` と `:diff` スクリプトは、htmltest のより高速な代替として [Lychee](https://github.com/lycheeverse/lychee) を実行し、そのカバレッジを反映します。
   `lychee.toml` を生成し、refcache から `.lycheecache` を自動的に（再）シードします。
@@ -153,6 +153,6 @@ cSpell:ignore: lycheecache
   リンクチェック CI ジョブは lychee をインストールし、このスクリプトを実行して実際にテストを実行します。
 - **`all`** はリスト内のスクリプトを1つが失敗してもすべて実行し、いずれかが失敗した場合は非ゼロステータスで終了します。
 
-[build kinds]: ../#build-kinds
+[build kinds]: /site/build/#build-kinds
 [fn]: /docs/contributing/pr-checks/#filename-check
 [locale-auto-merge]: ../ci-workflows/#locale-auto-merge
