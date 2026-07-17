@@ -51,8 +51,8 @@ Three sources feed the Collector, rolled out in phases:
   together on the same infrastructure.
 - Only the Collector is exposed for writes; backends are never directly
   reachable for ingestion.
-- The current infrastructure candidate is the OpenTelemetry Cloudflare account
-  ([community#3368][]).
+- The infrastructure is the OpenTelemetry Cloudflare account
+  ([community#3368][]); the Collector runs on Cloudflare Containers.
 - The design must remain portable across providers. Container-based deployment
   using IaC allows easy maintenance and deployment on other providers, if
   needed.
@@ -90,22 +90,49 @@ Observability][] setup and takes no position on it.
 
 | Phase | Deliverable                                                                               |
 | ----- | ----------------------------------------------------------------------------------------- |
-| 1     | Public Collector deployed with abuse protections and a minimal validation source          |
+| 1     | Public Collector deployed with abuse protections, validated manually                      |
 | 2     | Prometheus, Jaeger, and OpenSearch deployed with public read-only query access            |
 | 3     | Source rollout: browser instrumentation on both sites, Edge Functions OTLP, and log drain |
 
 ## Open Questions
 
 - **Configuration and IaC home**: where the Collector configuration and stack
-  IaC live, for example, `open-telemetry/admin` or a dedicated repository
-- **Data retention**: retention periods per backend are deferred until the
-  infrastructure and its storage constraints are known.
+  IaC live is a community decision scheduled for phase 1. A dedicated
+  repository is the custodians' preference, with `open-telemetry/admin` as the
+  alternative.
+- **Data retention**: retention periods per backend are deferred until the phase
+  2 persistence spike establishes each backend's storage constraints.
 
 ## Timeline
 
-This proposal intentionally does not include a detailed timeline: phase 1 is
-blocked on infrastructure access ([community#3368][]). Once access is granted,
-milestones will be defined for the phases above.
+Access to the infrastructure was granted in July 2026 ([community#3368][]).
+Milestones are listed in dependency order and carry no dates: the project is
+volunteer-driven and depends on external decisions.
+
+### Phase 1: Public Collector
+
+1. Inventory the access granted to the Cloudflare account: roles, enabled
+   products, and platform limits.
+2. Decide with the community where the Collector configuration and stack IaC
+   live (see [Open Questions](#open-questions)).
+3. Deploy the Collector to Cloudflare Containers, with abuse protections and
+   privacy scrubbing in place from the first deployment, and validate the OTLP
+   endpoint manually.
+
+### Phase 2: Backends
+
+1. Persistence spike: container disk on the platform is ephemeral, so evaluate
+   and decide a persistence strategy per backend. The outcome also settles data
+   retention.
+2. Deploy Prometheus, Jaeger, and OpenSearch with public read-only query access.
+
+### Phase 3: Telemetry sources
+
+Each source is an independent milestone, in rollout order:
+
+1. Browser instrumentation on both sites
+2. Server-side spans and metrics from Netlify Edge Functions
+3. Netlify log drain
 
 ## Discussion
 
