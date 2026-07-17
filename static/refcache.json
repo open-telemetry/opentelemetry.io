@@ -14555,6 +14555,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-13T06:47:31.641532867Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/setup-new-localization/SKILL.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-15T06:33:20.173726585Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-git-submodule/SKILL.md": {
     "StatusCode": 206,
     "LastSeen": "2026-07-13T06:47:41.485235997Z"
