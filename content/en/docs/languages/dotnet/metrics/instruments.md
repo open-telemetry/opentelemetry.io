@@ -143,40 +143,6 @@ meter.CreateObservableGauge("cpu_usage", () =>
 }, "%", "Current CPU usage percentage");
 ```
 
-## Batching observable measurements
-
-Each observable instrument accepts a callback that can return multiple
-measurements at once. This is useful when you want to report values for
-different attribute combinations in a single callback invocation:
-
-```csharp
-using System.Diagnostics.Metrics;
-
-// Create a meter
-using var meter = new Meter("MyCompany.MyProduct", "1.0.0");
-
-// Observable counter reporting multiple measurements per collection
-meter.CreateObservableCounter(
-    "my_observable_counter",
-    () => new[]
-    {
-        new Measurement<long>(42, new KeyValuePair<string, object?>("type", "product_a")),
-        new Measurement<long>(17, new KeyValuePair<string, object?>("type", "product_b")),
-    },
-    "items",
-    "Total number of processed items by product type");
-
-// Observable gauge reporting multiple measurements per collection
-meter.CreateObservableGauge(
-    "my_observable_gauge",
-    () => new[]
-    {
-        new Measurement<double>(12.3, new KeyValuePair<string, object?>("resource", "cpu")),
-        new Measurement<double>(45.6, new KeyValuePair<string, object?>("resource", "memory")),
-    },
-    "%",
-    "Current resource usage percentage by resource type");
-```
 
 ## Unit and description
 
