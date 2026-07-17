@@ -7351,9 +7351,17 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-12T06:28:16.052192534Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-17T11:02:31.839468825Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md#production-deployment-guide": {
     "StatusCode": 206,
     "LastSeen": "2026-07-15T06:23:09.709694556Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md#semantic-conventions-compatibility": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-17T11:02:34.839553268Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md": {
     "StatusCode": 206,
@@ -15311,6 +15319,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-15T06:26:37.425044124Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2130": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-17T11:02:33.984366306Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2166": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-17T11:02:34.809839732Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/2178": {
     "StatusCode": 206,
     "LastSeen": "2026-07-15T06:26:16.342513394Z"
@@ -15414,6 +15430,10 @@
   "https://github.com/open-telemetry/semantic-conventions/pull/3646": {
     "StatusCode": 206,
     "LastSeen": "2026-07-15T06:26:29.513310429Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/625": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-17T11:02:32.789479491Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/981": {
     "StatusCode": 206,
