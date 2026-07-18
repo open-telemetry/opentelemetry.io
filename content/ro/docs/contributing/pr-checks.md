@@ -83,9 +83,9 @@ majoritate problemelor automat. Pentru orice problemă rămasă, rulează
 Această verificare validează dacă [toate cuvintele sunt scrise
 corect][spell checking] în toate localizările.
 
-Dacă această verificare eșuează, rulează `npm run check:spelling` local pentru a vedea
-problemele. Pentru a adăuga sau schimba cuvintele permise, vezi [verificare
-ortografică][Spell checking] în ghidul de stil.
+Dacă această verificare eșuează, rulează `npm run check:spelling` local pentru a
+vedea problemele. Pentru a adăuga sau schimba cuvintele permise, vezi
+[verificare ortografică][Spell checking] în ghidul de stil.
 
 [Spell checking]: ../style-guide/#spell-checking
 
