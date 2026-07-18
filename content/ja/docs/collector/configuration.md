@@ -2,7 +2,8 @@
 title: 設定
 weight: 20
 description: ニーズに合わせてコレクターを設定する方法を確認してください
-default_lang_commit: 869b2bb90ca9e54d8d98e7815e66111b577165eb
+default_lang_commit: ad6f8d1e5179464d22f7e9cdf9fe86bc53f550e5
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey hostmetrics initca oidc pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
 ---
@@ -34,7 +35,8 @@ otelcol --config=customconfig.yaml
 - **file** - ファイルから設定を読み込みます。たとえば `file:path/to/config.yaml` のように指定します。
 - **env** - 環境変数から設定を読み込みます。たとえば `env:MY_CONFIG_IN_AN_ENVVAR` のように指定します。
 - **yaml** - YAML 文字列から設定を読み込みます。サブパスは `::` で区切ります。
-たとえば `yaml:exporters::debug::verbosity: detailed` のように指定します。
+  たとえば `yaml:exporters::debug::verbosity: detailed` のように指定します。
+
 <!-- prettier-ignore-start -->
 - **http** - HTTP URI から設定を読み込みます。たとえば `http://www.example.com` のように指定します。
 - **https** - HTTPS URI から設定を読み込みます。たとえば

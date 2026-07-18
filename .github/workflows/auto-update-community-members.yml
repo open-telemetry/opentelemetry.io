@@ -17,7 +17,7 @@ jobs:
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - name: Checkout
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with: { persist-credentials: false }
 
       - name: Set up Node.js
@@ -33,7 +33,7 @@ jobs:
         id: otelbot-token
         with:
           # the higher privileged docs token is needed to push commits to an existing PR
-          client-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
       - name: Run script
@@ -62,6 +62,7 @@ jobs:
           committer: otelbot <197425009+otelbot@users.noreply.github.com>
           token: ${{ steps.otelbot-token.outputs.token }}
           branch: otelbot/update-community-members
+          delete-branch: true
           title: Update community members
           body: |
             This pull request contains automated updates to files by the GitHub Action.

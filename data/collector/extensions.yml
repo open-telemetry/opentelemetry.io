@@ -54,7 +54,7 @@
   distributions:
     - contrib
   stability:
-    extension: alpha
+    extension: beta
 - name: azureencodingextension
   display_name: Azure Logs/Traces/Metrics Encoding Extension
   repo: contrib

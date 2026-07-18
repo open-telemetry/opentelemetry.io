@@ -8,6 +8,7 @@ import {
   resolveType,
   buildConstraints,
   cleanDescription,
+  extractTypeRef,
   processProperty,
   buildTypeConstraints,
   processType,
@@ -16,6 +17,31 @@ import {
   escapeHtml,
   linkifyUrls,
 } from './configSchemaTransform.mjs';
+
+describe('extractTypeRef', () => {
+  test('returns type name for direct $ref', () => {
+    assert.equal(
+      extractTypeRef({ $ref: '#/$defs/ExemplarFilter' }),
+      'ExemplarFilter',
+    );
+  });
+
+  test('returns type name for items $ref', () => {
+    assert.equal(
+      extractTypeRef({
+        type: 'array',
+        items: { $ref: '#/$defs/LogRecordProcessor' },
+      }),
+      'LogRecordProcessor',
+    );
+  });
+
+  test('returns null for scalar types', () => {
+    assert.equal(extractTypeRef({ type: 'string' }), null);
+    assert.equal(extractTypeRef({ type: ['string', 'null'] }), null);
+    assert.equal(extractTypeRef({ type: 'array' }), null);
+  });
+});
 
 describe('resolveType', () => {
   test('resolves types correctly', () => {
@@ -171,9 +197,28 @@ describe('processProperty', () => {
 
     assert.equal(result.name, 'level');
     assert.equal(result.type, 'string');
+    assert.equal(result.typeRef, null);
     assert.equal(result.default, 'info');
     assert.equal(result.constraints, 'enum: [debug, info, warn, error]');
     assert.equal(result.description, 'The log level');
+  });
+
+  test('includes typeRef for $ref property', () => {
+    const result = processProperty('exporter', {
+      $ref: '#/$defs/LogRecordExporter',
+      description: 'Configure exporter.',
+    });
+    assert.equal(result.type, 'LogRecordExporter');
+    assert.equal(result.typeRef, 'LogRecordExporter');
+  });
+
+  test('includes typeRef for array items $ref property', () => {
+    const result = processProperty('processors', {
+      type: 'array',
+      items: { $ref: '#/$defs/LogRecordProcessor' },
+    });
+    assert.equal(result.type, 'array');
+    assert.equal(result.typeRef, 'LogRecordProcessor');
   });
 });
 
@@ -282,6 +327,26 @@ describe('extractTypes', () => {
     });
   });
 
+  test('includes root schema as a type when it has a title and properties', () => {
+    const schema = {
+      title: 'OpenTelemetryConfiguration',
+      properties: {
+        tracer_provider: { $ref: '#/$defs/TracerProvider' },
+      },
+      $defs: {
+        TracerProvider: { properties: {} },
+      },
+    };
+
+    const result = extractTypes(schema);
+
+    assert.equal(result.length, 2);
+    const root = result.find((t) => t.name === 'OpenTelemetryConfiguration');
+    assert.ok(root, 'root type should be present');
+    assert.equal(root.id, 'opentelemetryconfiguration');
+    assert.equal(root.isRoot, true);
+  });
+
   test('filters out private types starting with underscore', () => {
     const schema = {
       $defs: {
@@ -326,6 +391,81 @@ describe('transformSchema', () => {
     // Types are sorted alphabetically
     assert.equal(result.types[0].name, 'LoggerProvider');
     assert.equal(result.types[1].name, 'LogRecordProcessor');
+  });
+
+  test('computes usages for referenced types', () => {
+    const rawSchema = {
+      $defs: {
+        MeterProvider: {
+          properties: {
+            exemplar_filter: { $ref: '#/$defs/ExemplarFilter' },
+          },
+        },
+        ExemplarFilter: {
+          properties: { type: { type: 'string' } },
+        },
+      },
+    };
+
+    const result = transformSchema(rawSchema);
+    const exemplarFilter = result.types.find(
+      (t) => t.name === 'ExemplarFilter',
+    );
+    assert.equal(exemplarFilter.usages.length, 1);
+    assert.equal(exemplarFilter.usages[0].typeName, 'MeterProvider');
+    assert.equal(exemplarFilter.usages[0].typeId, 'meterprovider');
+    assert.equal(exemplarFilter.usages[0].propertyName, 'exemplar_filter');
+  });
+
+  test('computes usages for array items $ref', () => {
+    const rawSchema = {
+      $defs: {
+        LoggerProvider: {
+          properties: {
+            processors: {
+              type: 'array',
+              items: { $ref: '#/$defs/LogRecordProcessor' },
+            },
+          },
+        },
+        LogRecordProcessor: { properties: {} },
+      },
+    };
+
+    const result = transformSchema(rawSchema);
+    const processor = result.types.find((t) => t.name === 'LogRecordProcessor');
+    assert.equal(processor.usages.length, 1);
+    assert.equal(processor.usages[0].typeName, 'LoggerProvider');
+    assert.equal(processor.usages[0].propertyName, 'processors');
+  });
+
+  test('types with no inbound refs have empty usages', () => {
+    const rawSchema = {
+      $defs: {
+        Standalone: { properties: { name: { type: 'string' } } },
+      },
+    };
+
+    const result = transformSchema(rawSchema);
+    assert.deepEqual(result.types[0].usages, []);
+  });
+
+  test('computes usages for types referenced from root schema properties', () => {
+    const rawSchema = {
+      title: 'OpenTelemetryConfiguration',
+      properties: {
+        attribute_limits: { $ref: '#/$defs/AttributeLimits' },
+      },
+      $defs: {
+        AttributeLimits: { properties: { max: { type: 'integer' } } },
+      },
+    };
+
+    const result = transformSchema(rawSchema);
+    const attrLimits = result.types.find((t) => t.name === 'AttributeLimits');
+    assert.equal(attrLimits.usages.length, 1);
+    assert.equal(attrLimits.usages[0].typeName, 'OpenTelemetryConfiguration');
+    assert.equal(attrLimits.usages[0].propertyName, 'attribute_limits');
   });
 
   test('throws error for invalid schema', () => {
