@@ -1500,8 +1500,8 @@
     "LastSeen": "2026-07-17T10:40:27.251949394Z"
   },
   "https://docs.agentmark.co/observe/overview": {
-    "StatusCode": 404,
-    "LastSeen": "2026-07-18T06:24:21.384824539Z"
+    "StatusCode": 206,
+    "LastSeen": "2026-07-18T11:24:00Z"
   },
   "https://docs.alauda.io/container_platform/4.2/observability/tracing/concept#opentelemetry": {
     "StatusCode": 206,
