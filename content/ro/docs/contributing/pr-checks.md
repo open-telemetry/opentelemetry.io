@@ -83,9 +83,7 @@ majoritate problemelor automat. Pentru orice problemă rămasă, rulează
 Această verificare validează dacă [toate cuvintele sunt scrise
 corect][spell checking] în toate localizările.
 
-If the check fails, run `npm run check:spelling` locally to list issues. To add
-or change allowed words, see [Spell checking][] in the style guide. Dacă această
-verificare eșuează, rulează `npm run check:spelling` local pentru a vedea
+Dacă această verificare eșuează, rulează `npm run check:spelling` local pentru a vedea
 problemele. Pentru a adăuga sau schimba cuvintele permise, vezi [verificare
 ortografică][Spell checking] în ghidul de stil.
 
@@ -143,8 +141,6 @@ modificare la refcache într-un nou comit.
 
 > [!NOTE]
 >
-> For information on warnings about site-local links, see
-> [Always use a path for site-local links](#avoid-external-site-local-links).
 > Pentru mai multe informații despre avertismente legate de link-uri site-local,
 > vezi
 > [Folosește mereu o cale pentru link-uri site-local](#avoid-external-site-local-links).
@@ -161,7 +157,7 @@ de la servere care blochează verificatoarele. Asemenea servere vor întoarce de
 un status HTTP în intervalul 400 altele decât 404, precum 401, 403 sau 406, care
 sunt cele mai comune. Unele servere, link LinkedIn, întorc 999.
 
-Dacă ai validate manual un link extern pentru care verificatorul nu primește un
+Dacă ai validat manual un link extern pentru care verificatorul nu primește un
 status de succes, poți adăuga următorul parametru de interogare în URL-ul tău
 pentru a ajuta verificatorul de link-uri să-l ignore: `?link-check=no` sau
 `&link-check=no` dacă sunt și alți parametrii de interogare. De exemplu,
@@ -173,7 +169,7 @@ următoarele URL-uri vor fi ignorate:
 > [!TIP] Sfat pentru întreținători
 >
 > Întreținătorii pot rula următorul script imediat după ce au rulat
-> verificatorul de link-uri pentru a face Puppeteer să încercă să valideze
+> verificatorul de link-uri pentru a face Puppeteer să încerce să valideze
 > link-uri cu status-uri non-ok.
 >
 > ```sh
