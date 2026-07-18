@@ -1717,14 +1717,6 @@ approvers:
       - semconv-feature-flag-approvers
     html_url: https://github.com/askpt
     avatar_url: https://avatars.githubusercontent.com/u/2493377?v=4
-  - name: axw
-    teams:
-      - collector-approvers
-      - collector-contrib-approvers
-      - collector-contrib-triagers
-      - collector-triagers
-    html_url: https://github.com/axw
-    avatar_url: https://avatars.githubusercontent.com/u/843579?v=4
   - name: badhon495
     teams:
       - docs-bn-approvers
@@ -2017,6 +2009,11 @@ approvers:
       - semconv-security-approvers
     html_url: https://github.com/mjwolf
     avatar_url: https://avatars.githubusercontent.com/u/2590169?v=4
+  - name: mquentin
+    teams:
+      - browser-approvers
+    html_url: https://github.com/mquentin
+    avatar_url: https://avatars.githubusercontent.com/u/6943103?v=4
   - name: MSNev
     teams:
       - semconv-browser-approvers
