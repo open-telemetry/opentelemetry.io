@@ -7455,6 +7455,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-17T10:40:24.334181771Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.150.0/receiver/kubeletstatsreceiver/documentation.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-18T10:51:40.620414158Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/17418": {
     "StatusCode": 206,
     "LastSeen": "2026-07-13T06:44:38.501161976Z"
@@ -15434,6 +15438,10 @@
   "https://github.com/open-telemetry/semantic-conventions/pull/3646": {
     "StatusCode": 206,
     "LastSeen": "2026-07-15T06:26:29.513310429Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3889": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-18T10:51:41.63399131Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/625": {
     "StatusCode": 206,
