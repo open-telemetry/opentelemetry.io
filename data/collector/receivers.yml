@@ -464,6 +464,7 @@
     - contrib
   stability:
     metrics: beta
+    logs: development
 - name: mysqlreceiver
   display_name: MySQL Receiver
   repo: contrib
@@ -687,7 +688,8 @@
   distributions:
     - contrib
   stability:
-    metrics: beta
+    metrics: unmaintained
+  unmaintained: true
 - name: skywalkingreceiver
   display_name: SkyWalking Receiver
   repo: contrib

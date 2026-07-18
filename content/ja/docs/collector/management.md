@@ -3,6 +3,7 @@ title: 管理
 description: OpenTelemetry Collectorのデプロイメントを大規模に管理する方法
 weight: 23
 default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
+drifted_from_default: true
 cSpell:ignore: hostmetrics opampsupervisor
 ---
 
