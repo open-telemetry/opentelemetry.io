@@ -4,6 +4,7 @@ linkTitle: エージェントからゲートウェイへのパターン
 description: エージェントとゲートウェイを組み合わせた Collector デプロイメントの作成方法とその理由
 weight: 100
 default_lang_commit: 1143960b75c6faceb40eb64269e68390e3237671
+drifted_from_default: true
 cSpell:ignore: cumulativetodelta loadbalancingexporter
 ---
 

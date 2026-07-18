@@ -16,6 +16,11 @@ procedure) a set of steps that an agent or maintainer can follow to accomplish a
 specific task. Agent skills are defined in [`.claude/skills/`][]. Maintainer
 procedures are defined in this section.
 
+In skill and procedure steps, the prose states the intent of each action; a
+command given in parentheses is a suggested way to fulfill the step, not the
+only valid one. Skills written before this convention was adopted might not yet
+follow it.
+
 ## Agent skills
 
 As mentioned above, skills are defined in [`.claude/skills/`][], they are:
@@ -28,9 +33,8 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
   `opentelemetry.io` repository following issue templates, contributing
   guidelines, and the label taxonomy.
 - [`/refresh-refcache-pr-fix`][refresh-refcache-pr-fix]: fetch, review and
-  attempt to fix non-2XX URLs on an otelbot PR (by default
-  `otelbot/refcache-refresh`, or a spec/semconv integration branch when so
-  instructed).
+  attempt to fix non-2XX URLs on otelbot PRs (by default, all open `otelbot/*`
+  PRs with failing link checks, or specific branches when so instructed).
 - [`/resolve-refcache-conflicts <optional-pr-number>`][resolve-refcache-conflicts]:
   resolve `static/refcache.json` merge/rebase conflicts.
 - [`/review-blog-post <blog-post-path-or-pr-number>`][review-blog-post]: review
@@ -39,6 +43,11 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 - [`/review-pull-request <pr-number-or-url>`][review-pull-request]: review a
   pull request for CI check semantics, CLA and approval-label workflow, refcache
   handling, locale rules, and content quality.
+- [`/setup-new-localization <kickoff-issue | lang-code>`][setup-new-localization]:
+  set up a new website localization end-to-end — Hugo language block, content
+  mounts, cSpell word list, `lang:<lang>` labeler config and label,
+  `locale-teams.yaml` with CODEOWNERS regeneration, and the `localization.md`
+  entries.
 - [`/update-i18n-drift-status [--locale locale,...] [--create-pr]`][update-i18n-drift-status]:
   update the `drifted_from_default` front matter field for localized content,
   with optional arguments to limit which locales are processed and whether to
@@ -84,6 +93,8 @@ See the section index below.
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-blog-post/SKILL.md
 [review-pull-request]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-pull-request/SKILL.md
+[setup-new-localization]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/setup-new-localization/SKILL.md
 [update-i18n-drift-status]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-i18n-drift-status/SKILL.md
 [update-old-blog-ignores]:

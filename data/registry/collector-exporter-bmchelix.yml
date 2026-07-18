@@ -12,7 +12,7 @@ license: Apache 2.0
 description:
   This exporter supports sending metrics to BMC Helix Operations Management
   through its [metric ingestion REST
-  API](https://docs.bmc.com/docs/helixoperationsmanagement/244/en/metric-operation-management-endpoints-in-the-rest-api-1392780044.html).
+  API](https://docs.bmc.com/xwiki/bin/view/Main/Search?text=metric+ingestion+REST+API).
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2025-09-19
