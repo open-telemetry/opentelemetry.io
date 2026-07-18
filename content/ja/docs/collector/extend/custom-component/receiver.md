@@ -61,11 +61,10 @@ OpenTelemetry は[分散トレーシング](/docs/concepts/glossary/#distributed
 
 ```sh
 docker run -d --name jaeger \
-  -e COLLECTOR_OTLP_ENABLED=true \
   -p 16686:16686 \
   -p 14317:4317 \
   -p 14318:4318 \
-  jaegertracing/all-in-one:1.41
+  jaegertracing/jaeger:1.41
 ```
 
 コンテナが起動して実行されたら、次の URL から Jaeger UI にアクセスできます。

@@ -11,12 +11,11 @@ default_lang_commit: 2f850a610b5f7da5730265b32c25c9226dc09e5f
 
 ```shell
 docker run --rm \
-  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
   -p 16686:16686 \
   -p 4317:4317 \
   -p 4318:4318 \
   -p 9411:9411 \
-  jaegertracing/all-in-one:latest
+  jaegertracing/jaeger:latest
 ```
 
 ### 使用方法 {#jaeger-usage}
