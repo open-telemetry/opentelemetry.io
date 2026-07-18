@@ -35,7 +35,7 @@ const args = process.argv.slice(2);
 const doBuild = !args.some((a) => a === '--no-build' || a === '-n');
 const lean = args.includes('--lean');
 const KIND = lean ? 'lean' : 'regular';
-const BUILD_ENV = lean ? { HUGOxPARAMSxTDxLEAN_RENDER: 'remove' } : {};
+const BUILD_ENV = lean ? { HUGO_PARAMS_TD_CHROME: 'shared' } : {};
 
 const sh = (cmd, opts = {}) =>
   execSync(cmd, { cwd: ROOT, stdio: ['ignore', 'pipe', 'pipe'], ...opts });
