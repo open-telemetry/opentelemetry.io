@@ -26,6 +26,10 @@
 
 {{- end -}}
 
+{{ if os.FileExists "static/site.webmanifest" -}}
+<link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+{{ end -}}
+
 {{ partial "script.html" (dict "src" "js/kapa-footer-yield.js") }}
 <script
   async

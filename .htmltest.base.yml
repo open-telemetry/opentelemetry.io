@@ -18,6 +18,12 @@ RedirectLimit: 3
 IgnoreDirs:
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexes of paths or URLs to be ignored
+  # KEEP IN SYNC with the `exclude` array in `lychee.base.toml` (the lychee
+  # link-check pilot ports these rules — see #10449). Mirror changes there, but
+  # NOT verbatim: the internal-path rules differ by tool. htmltest matches
+  # against site-absolute paths (anchored `^/…`, with `(/..)?`/`\.\.` covering
+  # locale prefixes); lychee matches resolved `file://` URIs, so those become
+  # unanchored `/docs/…` substrings. External-host rules do carry over verbatim.
   - /index.xml$ # Ignore rel="alternative" links to RSS feeds
   - '[?&]link-check=no' # Query param to ignore link checking
   - ^/api/?$
@@ -26,9 +32,10 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - ^(/..)?/docs/languages/dotnet/(metrics-api|traces-api)/
   - ^((/..)?/docs/compatibility/migration/)?opencensus/$
   - ^/../docs/specs/?$ # non-default locale spec redirect
-  # Temporary until the following is fixed and Docsy is updated:
-  # https://github.com/google/docsy/issues/2595
-  - ^/favicons
+  # Declarative config type anchors are rendered client-side (JS accordion); the
+  # #type-* fragments work in a browser but are absent from static HTML. Matches
+  # the exclude in opentelemetry-specification/.lychee.toml (spec PR #5192).
+  - ^(/..)?/docs/specs/otel-config/types/#type-
 
   - ^https://deploy-preview-\d+--opentelemetry.netlify.app/
   - ^https://www\.googletagmanager\.com
@@ -70,9 +77,10 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   # https://github.com/open-telemetry/semantic-conventions/pull/2069
   - ^https://www\.intersystems\.com
 
-  # Ignore issues and discussions with query parameters, e.g.:
-  - ^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=
-  - ^https://github\.com/open-telemetry/opentelemetry\.io/discussions\?discussions_q=
+  # Ignore issue, discussion, and search links with query parameters, e.g.:
+  - ^https://github\.com/open-telemetry/opentelemetry\.io/issues/?\?q=
+  - ^https://github\.com/open-telemetry/opentelemetry\.io/discussions/?\?discussions_q=
+  - ^https://github\.com/search/?\?
 
   # Ignore Docsy-generated GitHub links for now, until
   # https://github.com/google/docsy/issues/1432 is fixed

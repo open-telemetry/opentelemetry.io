@@ -3,8 +3,7 @@ title: プルリクエストのチェックとテスト
 linkTitle: PR チェック & テスト
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: bb20a7fb593782fea0e05e988d1478831726f9f5
-drifted_from_default: true
+default_lang_commit: eb1e39f771d32be4756dc94885d1ac3940de6de7
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -18,7 +17,7 @@ PR のチェックは次のことを検証します。
 >
 > もし何らかの PR チェックが失敗していれば、最初にローカルで `npm run fix:all` を実行することで[内容の問題を修正](../pull-requests/#fix-issues)してください。
 >
-> PRに `/fix:all` というコメントを追加することもできます。
+> PRに `/fix` というコメントを追加することもできます。
 > これにより、OpenTelemetry ボットがかわりにそのコマンドを実行して、PR を更新します。
 > ローカルに変更をプルすることを忘れないでください。
 >
@@ -36,7 +35,15 @@ PR のチェックは次のことを検証します。
 
 コントリビューションが [スタイルガイド](../style-guide/) に従っていることを検証するために、スタイルガイドのルールを検証し、問題が見つかった場合に失敗する一連のチェックを実装しています。
 
-後述のリストでは、現在のチェック内容と、それに関連するエラーを修正する方法について説明します。
+以下のセクションでは、現在のチェック内容と、それに関連するエラーを修正する方法について説明します。
+
+> [!NOTE]
+>
+> チェックされるのは最近のブログ記事のみです。
+> 詳しくは[古いブログは更新されません][old-blogs]を参照してください。
+> 特に、古い記事はウェブサイトにレンダリングされますが、以下に記載するチェックは古いブログには適用されません。
+
+[old-blogs]: ../blog/#old-blogs-are-not-updated
 
 ### `TEXT linter` {#text-linter .notranslate lang=en}
 
@@ -100,7 +107,13 @@ PR のチェックは次のことを検証します。
 
 これらの2つのチェックは、ウェブサイトをビルドしてすべてのリンクが有効であることを検証します。
 
-ローカルでビルドしてリンクをチェックするには、`npm run check:links` を実行してください。
+外部リンクを追加または変更した場合、リンクチェッカーはそのリンクを参照キャッシュ (`static/refcache.json`) に記録します。
+キャッシュが更新されるまでこのチェックは失敗します。
+
+キャッシュを更新する最も簡単な方法は、PR に [`/fix:refcache`](../pull-requests/#fixing-prs-in-github) とコメントすることです。
+OpenTelemetry ボットが `static/refcache.json` を更新してくれます。
+
+あるいは、`npm run check:links` を実行してローカルでビルドとリンクチェックを行うこともできます。
 このコマンドは参照キャッシュも更新します。
 refcache に変更があれば、新しいコミットでプッシュしてください。
 
@@ -168,9 +181,15 @@ OpenTelemetry ウェブサイト内のページをリンクする場合、外部
 - この警告を表示するレンダーリンクフック:
   [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
 - 完全な URL をローカルパスに自動的に変換するスクリプト:
-  [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
+  [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
 
 </details>
+
+### `LOCALIZATION` guidelines {#localization .notranslate lang=en}
+
+このチェックは、[ローカリゼーションガイドライン](../localization/)のうち機械的に検証可能なルール（たとえば、ローカリゼーション間での[画像やその他のアセットのコピー禁止](../localization/#images)など）を、他のチェックでまだカバーされていないものについて適用します。
+
+このチェックが失敗した場合、`npm run fix:l10n` をローカルで実行し、新しいコミットで変更をプッシュしてください。
 
 ### `TEST (excluding test:base)` {#test-excluding-test-base .notranslate lang=en}
 

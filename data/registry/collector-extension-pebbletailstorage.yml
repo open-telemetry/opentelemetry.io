@@ -1,0 +1,23 @@
+# cSpell:ignore pebbletailstorage, pebbletailstorageextension, tailstorage
+title: Pebble Tail Storage Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+  - tail-sampling
+license: Apache 2.0
+description:
+  The Pebble Tail Storage Extension stores pending trace data for tail sampling
+  in a local Pebble database, keeping collector memory usage bounded under high
+  load.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/tailstorage/pebbletailstorageextension
+createdAt: 2026-06-15
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/tailstorage/pebbletailstorageextension
+  version: v0.156.0

@@ -1,9 +1,8 @@
 ---
 title: 内部テレメトリー
 weight: 25
-default_lang_commit: 548ae50123bba6fd70cb0b080c68294b8239769a
-drifted_from_default: true
-cSpell:ignore: alloc batchprocessor journalctl
+default_lang_commit: 5085f8dbc5095f2fdde7de5aa3a37f49c0cf3edc
+cSpell:ignore: alloc batchprocessor journalctl lowmemory otelconf otelgrpc
 ---
 
 インスタンス自身の内部テレメトリーを確認することで、任意の OpenTelemetry コレクターのインスタンスの健全性を詳しく調べることができます。
@@ -57,6 +56,8 @@ service:
                 protocol: http/protobuf
                 endpoint: https://backend:4318
 ```
+
+利用可能なすべてのオプションについては、[OTLP エクスポーターオプション](#otlp-exporter-options) を参照してください。
 
 #### 内部メトリクス向けの Prometheus エンドポイント {#prometheus-endpoint-for-internal-metrics}
 
@@ -211,6 +212,8 @@ service:
                 endpoint: https://backend:4318
 ```
 
+利用可能なすべてのオプションについては、[OTLP エクスポーターオプション](#otlp-exporter-options) を参照してください。
+
 ### 内部トレースの設定 {#configure-internal-traces}
 
 コレクターはデフォルトではトレースを公開しませんが、公開するように設定できます。
@@ -235,8 +238,44 @@ service:
 
 追加のオプションについては、[設定例][kitchen-sink-config] を参照してください。
 `tracer_provider` セクションが、ここでの `traces` に対応していることに注意してください。
+OTLP エクスポーターオプションの詳細については、[以下](#otlp-exporter-options) を参照してください。
 
 [kitchen-sink-config]: https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml
+
+### OTLP エクスポーターオプション {#otlp-exporter-options}
+
+以下の[オプション](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L256)は、3 つのシグナルすべての OTLP エクスポーターで利用できます。
+[メトリクス向けの追加オプション](#otlp-exporter-options-metrics) もあります。
+
+- `metrics::readers[*]::periodic::exporter::otlp`
+- `logs::processors[*]::batch::exporter::otlp`
+- `traces::processors[*]::batch::exporter::otlp`
+
+| フィールド名         | デフォルト値                                              | 説明                                                                                                                                                                                                                                                                |
+| -------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `endpoint`           | `localhost:4317` (gRPC), `localhost:4318` (http/protobuf) | テレメトリーの送信先 URL。例: `https://backend:4318`。`http/protobuf` の場合、URL 内のパスはエクスポーターに転送されます。パスが指定されていない場合、デフォルトのシグナル固有のパスが使用されます（`/v1/traces`、`/v1/metrics`、または `/v1/logs`）。              |
+| `protocol`           | （必須）                                                  | トランスポートプロトコル。サポートされる値: `grpc`、`http/protobuf`。                                                                                                                                                                                               |
+| `compression`        |                                                           | 送信前に適用される圧縮アルゴリズム。サポートされる値: `gzip`、`none`。                                                                                                                                                                                              |
+| `timeout`            | `10000`                                                   | 各エクスポートの試行に対するタイムアウト（ミリ秒）。                                                                                                                                                                                                                |
+| `headers`            |                                                           | リクエストヘッダーとして送信されるキーと値のペアのリスト。各エントリーには `name` フィールドと `value` フィールドが必要です。                                                                                                                                       |
+| `headers_list`       |                                                           | [W3C Baggage](https://www.w3.org/TR/baggage/) 形式のヘッダー（例: `key1=value1,key2=value2`）。`headers` と `headers_list` の両方が設定されている場合、個々のヘッダー単位で `headers` が優先されます。                                                              |
+| `certificate`        |                                                           | サーバーの証明書を検証するために使用される PEM エンコードの CA 証明書ファイルのパス。                                                                                                                                                                               |
+| `client_certificate` |                                                           | mTLS 用の PEM エンコードのクライアント証明書ファイルのパス。`client_key` が設定されている場合に必須です。                                                                                                                                                           |
+| `client_key`         |                                                           | クライアント証明書の PEM エンコードの秘密鍵ファイルのパス。`client_certificate` が設定されている場合に必須です。                                                                                                                                                    |
+| `insecure`           | `false`                                                   | `grpc` プロトコルにのみ適用されます。`true` の場合、エンドポイントスキームが `http` でも `https` でもない gRPC 接続の TLS を無効にします。`http/protobuf` の場合、このオプションに関係なく、エンドポイントが `http` スキームを使用しない限り TLS が有効になります。 |
+
+> [!NOTE]
+>
+> 内部 OTLP エクスポーターはコレクターが使用する Go SDK で実装されています。
+> Go SDK は[環境変数ベースの設定](/docs/languages/sdk-configuration/otlp-exporter/) をサポートしていますが、コレクターによるプログラムでの設定が優先されるため、予期しない動作を避けるためにコレクターの YAML 設定を使用することを推奨します。
+
+#### メトリクス向けの追加オプション {#otlp-exporter-options-metrics}
+
+以下の[オプション](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L288)は、OTLP メトリクスエクスポーター（`metrics::readers[*].periodic.exporter.otlp`）にのみ適用されます。
+
+| フィールド名             | デフォルト値 | 説明                                                                                                                                                                                                                                                |
+| ------------------------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `temporality_preference` | `cumulative` | メトリクス計装の集約テンポラリティ。サポートされる値: `cumulative`（すべての計装）、`delta`（カウンター、ヒストグラム、Observable カウンターに delta、その他は cumulative）、`lowmemory`（カウンターとヒストグラムに delta、その他は cumulative）。 |
 
 ## 内部テレメトリーの種類 {#types-of-internal-telemetry}
 
@@ -320,7 +359,7 @@ service:
 コレクター v0.120.0 より前では、Prometheus で公開される内部メトリクスは、Prometheus の命名規則に合わせるためにドット（`.`）をアンダースコア（`_`）に変更していました。その結果、`rpc_server_duration`のようなメトリクス名になっていました。
 
 コレクターの 0.120.0 以降のバージョンでは Prometheus 3.0 スクレーパーを使用するため、ドットを含む元の `http*` および `rpc*` メトリクス名が保持されます。
-このページの[内部メトリクス](#lists-of-internal-metrics) は、`rpc.server.duration` のような元の形式で一覧化されています。
+このページの[内部メトリクス](#lists-of-internal-metrics) は、`rpc.server.call.duration` のような元の形式で一覧化されています。
 詳細については、[コレクター v0.120.0 リリースノート](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CHANGELOG.md#v01200)を参照してください。
 
 ### 内部メトリクスの一覧 {#lists-of-internal-metrics}
@@ -342,35 +381,36 @@ service:
 
 #### `basic` レベルのメトリクス {#basic-level-metrics}
 
-| メトリクス名                                           | 説明                                                                                            | 種別    |
-| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | ------- |
-| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | エクスポーターがキュー投入に失敗したログの数。                                                  | Counter |
-| `otelcol_exporter_enqueue_failed_`<br>`metric_points`  | エクスポーターがキュー投入に失敗したメトリクスポイントの数。                                    | Counter |
-| `otelcol_exporter_enqueue_failed_`<br>`spans`          | エクスポーターがキュー投入に失敗したスパンの数。                                                | Counter |
-| `otelcol_exporter_queue_capacity`                      | 送信キューの固定容量（バッチ単位）。                                                            | Gauge   |
-| `otelcol_exporter_queue_size`                          | 送信キューの現在サイズ（バッチ単位）。                                                          | Gauge   |
-| `otelcol_exporter_send_failed_`<br>`log_records`       | エクスポーターが宛先への送信に失敗したログの数。                                                | Counter |
-| `otelcol_exporter_send_failed_`<br>`metric_points`     | エクスポーターが宛先への送信に失敗したメトリクスポイントの数。                                  | Counter |
-| `otelcol_exporter_send_failed_`<br>`spans`             | エクスポーターが宛先への送信に失敗したスパンの数。                                              | Counter |
-| `otelcol_exporter_sent_log_records`                    | 宛先に正常に送信されたログの数。                                                                | Counter |
-| `otelcol_exporter_sent_metric_points`                  | 宛先に正常に送信されたメトリクスポイントの数。                                                  | Counter |
-| `otelcol_exporter_sent_spans`                          | 宛先に正常に送信されたスパンの数。                                                              | Counter |
-| `otelcol_process_cpu_seconds`                          | CPU のユーザー時間とシステム時間の合計（秒）。                                                  | Counter |
-| `otelcol_process_memory_rss`                           | 物理メモリーの合計（RSS: resident set size）（バイト）。                                        | Gauge   |
-| `otelcol_process_runtime_heap_`<br>`alloc_bytes`       | 割り当て済みヒープオブジェクトのバイト数（`go doc runtime.MemStats.HeapAlloc` を参照）。        | Gauge   |
-| `otelcol_process_runtime_total_`<br>`alloc_bytes`      | ヒープオブジェクトに割り当てられた累積バイト数（`go doc runtime.MemStats.TotalAlloc` を参照）。 | Counter |
-| `otelcol_process_runtime_total_`<br>`sys_memory_bytes` | OS から取得したメモリー総バイト数（`go doc runtime.MemStats.Sys` を参照）。                     | Gauge   |
-| `otelcol_process_uptime`                               | プロセスの稼働時間（秒）。                                                                      | Counter |
-| `otelcol_processor_incoming_items`                     | processor に渡された項目数。                                                                    | Counter |
-| `otelcol_processor_outgoing_items`                     | processor から出力された項目数。                                                                | Counter |
-| `otelcol_receiver_accepted_`<br>`log_records`          | 正常に取り込まれ、パイプラインへプッシュされたログの数。                                        | Counter |
-| `otelcol_receiver_accepted_`<br>`metric_points`        | 正常に取り込まれ、パイプラインへプッシュされたメトリクスポイントの数。                          | Counter |
-| `otelcol_receiver_accepted_spans`                      | 正常に取り込まれ、パイプラインへプッシュされたスパンの数。                                      | Counter |
-| `otelcol_receiver_refused_`<br>`log_records`           | パイプラインへプッシュできなかったログの数。                                                    | Counter |
-| `otelcol_receiver_refused_`<br>`metric_points`         | パイプラインへプッシュできなかったメトリクスポイントの数。                                      | Counter |
-| `otelcol_receiver_refused_spans`                       | パイプラインへプッシュできなかったスパンの数。                                                  | Counter |
-| `otelcol_scraper_errored_`<br>`metric_points`          | コレクターがスクレイプに失敗したメトリクスポイントの数。                                        | Counter |
-| `otelcol_scraper_scraped_`<br>`metric_points`          | コレクターがスクレイプしたメトリクスポイントの数。                                              | Counter |
+| メトリクス名                                           | 説明                                                                                            | 種別          |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | ------------- |
+| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | エクスポーターがキュー投入に失敗したログの数。                                                  | Counter       |
+| `otelcol_exporter_enqueue_failed_`<br>`metric_points`  | エクスポーターがキュー投入に失敗したメトリクスポイントの数。                                    | Counter       |
+| `otelcol_exporter_enqueue_failed_`<br>`spans`          | エクスポーターがキュー投入に失敗したスパンの数。                                                | Counter       |
+| `otelcol_exporter_in_flight_requests`                  | 再試行バックオフを含む、現在処理中のエクスポートリクエスト数。                                  | UpDownCounter |
+| `otelcol_exporter_queue_capacity`                      | 送信キューの固定容量（バッチ単位）。                                                            | Gauge         |
+| `otelcol_exporter_queue_size`                          | 送信キューの現在サイズ（バッチ単位）。                                                          | Gauge         |
+| `otelcol_exporter_send_failed_`<br>`log_records`       | エクスポーターが宛先への送信に失敗したログの数。                                                | Counter       |
+| `otelcol_exporter_send_failed_`<br>`metric_points`     | エクスポーターが宛先への送信に失敗したメトリクスポイントの数。                                  | Counter       |
+| `otelcol_exporter_send_failed_`<br>`spans`             | エクスポーターが宛先への送信に失敗したスパンの数。                                              | Counter       |
+| `otelcol_exporter_sent_log_records`                    | 宛先に正常に送信されたログの数。                                                                | Counter       |
+| `otelcol_exporter_sent_metric_points`                  | 宛先に正常に送信されたメトリクスポイントの数。                                                  | Counter       |
+| `otelcol_exporter_sent_spans`                          | 宛先に正常に送信されたスパンの数。                                                              | Counter       |
+| `otelcol_process_cpu_seconds`                          | CPU のユーザー時間とシステム時間の合計（秒）。                                                  | Counter       |
+| `otelcol_process_memory_rss`                           | 物理メモリーの合計（RSS: resident set size）（バイト）。                                        | Gauge         |
+| `otelcol_process_runtime_heap_`<br>`alloc_bytes`       | 割り当て済みヒープオブジェクトのバイト数（`go doc runtime.MemStats.HeapAlloc` を参照）。        | Gauge         |
+| `otelcol_process_runtime_total_`<br>`alloc_bytes`      | ヒープオブジェクトに割り当てられた累積バイト数（`go doc runtime.MemStats.TotalAlloc` を参照）。 | Counter       |
+| `otelcol_process_runtime_total_`<br>`sys_memory_bytes` | OS から取得したメモリー総バイト数（`go doc runtime.MemStats.Sys` を参照）。                     | Gauge         |
+| `otelcol_process_uptime`                               | プロセスの稼働時間（秒）。                                                                      | Counter       |
+| `otelcol_processor_incoming_items`                     | processor に渡された項目数。                                                                    | Counter       |
+| `otelcol_processor_outgoing_items`                     | processor から出力された項目数。                                                                | Counter       |
+| `otelcol_receiver_accepted_`<br>`log_records`          | 正常に取り込まれ、パイプラインへプッシュされたログの数。                                        | Counter       |
+| `otelcol_receiver_accepted_`<br>`metric_points`        | 正常に取り込まれ、パイプラインへプッシュされたメトリクスポイントの数。                          | Counter       |
+| `otelcol_receiver_accepted_spans`                      | 正常に取り込まれ、パイプラインへプッシュされたスパンの数。                                      | Counter       |
+| `otelcol_receiver_refused_`<br>`log_records`           | パイプラインへプッシュできなかったログの数。                                                    | Counter       |
+| `otelcol_receiver_refused_`<br>`metric_points`         | パイプラインへプッシュできなかったメトリクスポイントの数。                                      | Counter       |
+| `otelcol_receiver_refused_spans`                       | パイプラインへプッシュできなかったスパンの数。                                                  | Counter       |
+| `otelcol_scraper_errored_`<br>`metric_points`          | コレクターがスクレイプに失敗したメトリクスポイントの数。                                        | Counter       |
+| `otelcol_scraper_scraped_`<br>`metric_points`          | コレクターがスクレイプしたメトリクスポイントの数。                                              | Counter       |
 
 #### 追加の `normal` レベルのメトリクス {#additional-normal-level-metrics}
 
@@ -390,33 +430,47 @@ service:
 
 #### 追加の `detailed` レベルのメトリクス {#additional-detailed-level-metrics}
 
-| メトリクス名                                          | 説明                                                                                                     | 種別      |
-| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | --------- |
-| `http.client.request.body.size`                       | HTTP クライアントリクエストボディーのサイズを測定します。                                                | Counter   |
-| `http.client.request.duration`                        | HTTP クライアントリクエストの継続時間を測定します。                                                      | Histogram |
-| `http.server.request.body.size`                       | HTTP サーバーリクエストボディーのサイズを測定します。                                                    | Counter   |
-| `http.server.request.duration`                        | HTTP サーバーリクエストの継続時間を測定します。                                                          | Histogram |
-| `http.server.response.body.size`                      | HTTP サーバーレスポンスボディーのサイズを測定します。                                                    | Counter   |
-| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | 送信されたバッチ内のバイト数。                                                                           | Histogram |
-| `rpc.client.duration`                                 | アウトバウンド RPC の継続時間を測定します。                                                              | Histogram |
-| `rpc.client.request.size`                             | RPC リクエストメッセージ（非圧縮）のサイズを測定します。                                                 | Histogram |
-| `rpc.client.requests_per_rpc`                         | RPC ごとに受信されたメッセージ数を測定します。すべての非ストリーミング RPC では 1 になる必要があります。 | Histogram |
-| `rpc.client.response.size`                            | RPC レスポンスメッセージ（非圧縮）のサイズを測定します。                                                 | Histogram |
-| `rpc.client.responses_per_rpc`                        | RPC ごとに送信されたメッセージ数を測定します。すべての非ストリーミング RPC では 1 になる必要があります。 | Histogram |
-| `rpc.server.duration`                                 | インバウンド RPC の継続時間を測定します。                                                                | Histogram |
-| `rpc.server.request.size`                             | RPC リクエストメッセージ（非圧縮）のサイズを測定します。                                                 | Histogram |
-| `rpc.server.requests_per_rpc`                         | RPC ごとに受信されたメッセージ数を測定します。すべての非ストリーミング RPC では 1 になる必要があります。 | Histogram |
-| `rpc.server.response.size`                            | RPC レスポンスメッセージ（非圧縮）のサイズを測定します。                                                 | Histogram |
-| `rpc.server.responses_per_rpc`                        | RPC ごとに送信されたメッセージ数を測定します。すべての非ストリーミング RPC では 1 になる必要があります。 | Histogram |
+| メトリクス名                                          | 説明                                                      | 種別      |
+| ----------------------------------------------------- | --------------------------------------------------------- | --------- |
+| `http.client.request.body.size`                       | HTTP クライアントリクエストボディーのサイズを測定します。 | Counter   |
+| `http.client.request.duration`                        | HTTP クライアントリクエストの継続時間を測定します。       | Histogram |
+| `http.server.request.body.size`                       | HTTP サーバーリクエストボディーのサイズを測定します。     | Counter   |
+| `http.server.request.duration`                        | HTTP サーバーリクエストの継続時間を測定します。           | Histogram |
+| `http.server.response.body.size`                      | HTTP サーバーレスポンスボディーのサイズを測定します。     | Counter   |
+| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | 送信されたバッチ内のバイト数。                            | Histogram |
+| `rpc.client.call.duration`                            | アウトバウンド RPC の継続時間を測定します。               | Histogram |
+| `rpc.server.call.duration`                            | インバウンド RPC の継続時間を測定します。                 | Histogram |
 
-> [!NOTE]
->
-> `http*` と `rpc*` のメトリクスは、コレクター SIG の管理下にないため、以下の成熟度レベルの対象外になります。
->
-> `otelcol_processor_batch_` メトリクスは `batchprocessor` 固有です。
->
-> `otelcol_receiver_`、`otelcol_scraper_`、`otelcol_processor_`、および `otelcol_exporter_` のメトリクスは、それぞれ対応する `helper` パッケージに由来します。
-> そのため、これらのパッケージを使用していないいくつかのコンポーネントは、それらを出力しない可能性があります。
+#### 出力されるメトリクスのオーナーシップ {#ownership-of-emitted-metrics}
+
+一部のメトリクスはコレクター SIG が管理しておらず、また一部は特定のコンポーネントに限定されています。
+
+**`http*` および `rpc` メトリクス**
+
+これらのメトリクスはコレクター SIG の管理下にないため、以下の成熟度レベルの対象外になります。
+
+**`rpc` メトリクス**
+
+コレクターの内部 RPC メトリクスは、上流の [`otelgrpc`](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/google.golang.org/grpc/otelgrpc) 計装から取得されており、[OpenTelemetry RPC セマンティック規約](/docs/specs/semconv/rpc/rpc-metrics/) を追跡しています。
+コレクターが出力する RPC メトリクスのセットは、リリースごとに変更されています。
+
+| コレクターバージョン | 出力される RPC メトリクス                                                                                                                                         |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| v0.146.x 以前        | `rpc.client.duration`, `rpc.server.duration`, `rpc.*.request.size`, `rpc.*.response.size`, `rpc.*.requests_per_rpc`, `rpc.*.responses_per_rpc`                    |
+| v0.147.0             | `rpc.client.call.duration`, `rpc.server.call.duration`, `rpc.*.request.size`, `rpc.*.response.size`（`*_per_rpc` メトリクスは非推奨となり出力されなくなりました） |
+| v0.148.0 以降        | `rpc.client.call.duration`, `rpc.server.call.duration` のみ                                                                                                       |
+
+RPC サイズメトリクスはコレクター v0.148.0 以降では出力されません。
+[RPC セマンティック規約 v1.40.0](https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.40.0) は、定義の曖昧さと実装の不整合を理由にそれらを非推奨としました。
+
+**`otelcol_processor_batch_*` メトリクス**
+
+これらのメトリクスは `batchprocessor` 固有です。
+
+**`helper` パッケージのメトリクス**
+
+`otelcol_receiver_`、`otelcol_scraper_`、`otelcol_processor_`、および `otelcol_exporter_` のメトリクスは、それぞれ対応する `helper` パッケージに由来します。
+そのため、これらのパッケージを使用していないいくつかのコンポーネントは、それらを出力しない可能性があります。
 
 ### 内部ログで観測可能なイベント {#events-observable-with-internal-logs}
 

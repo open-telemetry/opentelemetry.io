@@ -37,6 +37,11 @@ languages:
         docker-compose-v2: |
           `docker-compose` は非推奨です. 詳細は、
           [Migrate to Compose V2](https://docs.docker.com/compose/) を確認してください。
+  ko:
+    label: 한국어
+    locale: ko-KR
+    params:
+      description: OpenTelemetry 프로젝트 사이트
   pl:
     label: Polski
     locale: pl-PL

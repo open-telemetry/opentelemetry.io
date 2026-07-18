@@ -128,8 +128,17 @@ path obsolete.
 
 These two checks build the website and verify that all links are valid.
 
-To build and check links locally, run `npm run check:links`. This command also
-updates the reference cache. Push any changes to the refcache in a new commit.
+If you added or changed an external link, the link checker records it in the
+reference cache (`static/refcache.json`), and this check will fail until that
+cache is updated.
+
+The easiest way to update it is to comment
+[`/fix:refcache`](../pull-requests/#fixing-prs-in-github) on your PR — the
+OpenTelemetry bot updates `static/refcache.json` for you.
+
+Alternatively, you can build and check links locally, by running
+`npm run check:links`. This command also updates the reference cache. Push any
+changes to the refcache in a new commit.
 
 > [!NOTE]
 >
@@ -204,7 +213,7 @@ The following code enforces the link requirement described in this section:
 - The render-link hook that emits this warning:
   [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
 - The script that auto-converts full URLs to local paths:
-  [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
+  [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
 
 </details>
 
