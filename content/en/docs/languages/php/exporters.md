@@ -137,8 +137,6 @@ To try out the example above, you can run
 
 ```shell
 docker run -d --name jaeger \
-  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
-  -e COLLECTOR_OTLP_ENABLED=true \
   -p 6831:6831/udp \
   -p 6832:6832/udp \
   -p 5778:5778 \
@@ -149,7 +147,7 @@ docker run -d --name jaeger \
   -p 14268:14268 \
   -p 14269:14269 \
   -p 9411:9411 \
-  jaegertracing/all-in-one:latest
+  jaegertracing/jaeger:latest
 ```
 
 ## Zipkin
