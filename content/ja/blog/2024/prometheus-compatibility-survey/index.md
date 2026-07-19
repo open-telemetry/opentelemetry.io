@@ -49,7 +49,7 @@ Prometheus は [2024年ロードマップ](https://prometheus.io/blog/2024/03/14
 
 ## ドットとアンダースコア {#dots-and-underscores}
 
-OpenTelemetry は、名前空間デリミタとしてドットを使用し、「マルチワード・ドットデリミタコンポーネント」間のデリミタとしてアンダースコアを使用すべきと[規定](/docs/specs/semconv/general/naming/)しています（例: `http.response.status_code`）。
+OpenTelemetry は、名前空間デリミタとしてドットを使用し、「複数単語・ドット区切りのコンポーネント」間のデリミタとしてアンダースコアを使用すべきと[規定](/docs/specs/semconv/general/naming/)しています（例: `http.response.status_code`）。
 一方、Prometheus はデリミタとして[アンダースコアを使用](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels)しています。
 
 現在、OpenTelemetry SDK から Prometheus 形式でエクスポートする際、Prometheus の要件に準拠するためにすべてのドットがアンダースコアに変更されます。
