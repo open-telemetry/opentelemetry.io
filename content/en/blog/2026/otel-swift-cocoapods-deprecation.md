@@ -1,6 +1,6 @@
 ---
 title: 'CocoaPods Deprecation Notice for OpenTelemetry Swift'
-linkTitle: Otel Swift Cocoapods Deprecation # Mandatory, make sure that your short title.
+linkTitle: Deprecation of OTel Swift CocoaPods
 date: 2026-07-20
 author: '[Ariel Demarco](https://github.com/ArielDemarco)'
 draft: true # TODO: remove this line once your post is ready to be published
