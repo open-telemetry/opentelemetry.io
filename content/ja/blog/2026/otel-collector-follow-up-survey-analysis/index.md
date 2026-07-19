@@ -27,7 +27,7 @@ cSpell:ignore: Attributesprocessor awscloudwatchmetricsreceiver Baeyens datadogc
 - 独自の Collector をビルドするユーザーがさらに13%増加し、OTel ユーザーの61%は [OpenTelemetry Collector Builder](/docs/collector/extend/ocb/) が使いやすいとは認められませんでした。
 - 大規模な組織（100台超の Collector）はより多くのメトリクスとログを収集しています。
   一方、小規模な組織（100台未満の Collector）はより多くのトレースを収集しています。
-- Otlphttpexporter、datadogexporter、filelogreceiver、k8sclusterreceiver、k8sclusterreceiver、filereceiver、Attributesprocessor、transformprocessor、Routingconnector、datadogconnector、Storage、zpages、filestorage の利用が増加し、Memorylimiterprocessor は減少しました。
+- otlphttpexporter、datadogexporter、filelogreceiver、k8sclusterreceiver、k8sclusterreceiver、filereceiver、attributesprocessor、transformprocessor、routingconnector、datadogconnector、storage、zpages、filestorage の利用が増加し、memorylimiterprocessor は減少しました。
 - 設定管理と解決、安定性、Collector のオブザーバビリティが、改善要望の上位を占めています。
 
 ## 詳細な分析 {#detailed-insights}
@@ -88,11 +88,11 @@ Collector のモニタリングについて、約23%（昨年から-6%）が Col
 2025年と前年の間でコンポーネントの採用がどのように変化したかを比較するため、上位10コンポーネント（2025年のサーベイを使用）の割合の差分を計算しました。
 以下のコンポーネントの利用が90%信頼水準で有意に変化しました。
 
-- **レシーバー**: Filelogreceiver、k8sclusterreceiver、filereceiver が増加
-- **プロセッサー**: Attributesprocessor と transformprocessor が増加し、Memorylimiterprocessor が減少
-- **エクスポーター**: Otlphttpexporter と Datadogexporter が増加し、lokiexporter が減少
-- **コネクター**: Routingconnector と datadogconnector が増加
-- **エクステンション**: Storage、zpages、filestorage が増加
+- **レシーバー**: filelogreceiver、k8sclusterreceiver、filereceiver が増加
+- **プロセッサー**: attributesprocessor と transformprocessor が増加し、memorylimiterprocessor が減少
+- **エクスポーター**: otlphttpexporter と datadogexporter が増加し、lokiexporter が減少
+- **コネクター**: routingconnector と datadogconnector が増加
+- **エクステンション**: storage、zpages、filestorage が増加
 
 ![image13](receivers.png) ![image14](processors.png) ![image12](exporters.png)
 ![image15](connectors.png) ![image16](extensions.png)
