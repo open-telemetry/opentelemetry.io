@@ -3,8 +3,6 @@ title: 'CocoaPods Deprecation Notice for OpenTelemetry Swift'
 linkTitle: Deprecation of OTel Swift CocoaPods
 date: 2026-07-20
 author: '[Ariel Demarco](https://github.com/ArielDemarco)'
-# canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
-body_class: otel-with-contributions-from # TODO: remove this line if there are no secondary contributing authors
 issue: 10655 # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details (Required)
 sig: Swift # TODO: add the name of the SIG that sponsors this blog post (Required)
 ---
