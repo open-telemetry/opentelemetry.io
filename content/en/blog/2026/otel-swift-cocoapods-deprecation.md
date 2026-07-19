@@ -7,7 +7,6 @@ issue: 10655 # TODO: See https://opentelemetry.io/docs/contributing/blog/ for de
 sig: Swift # TODO: add the name of the SIG that sponsors this blog post (Required)
 cSpell:ignore: cocoapods, podspecs, podspec
 ---
-## Summary
 
 As it was announced:
 ([CocoaPods Support Plan](https://blog.cocoapods.org/CocoaPods-Support-Plans/?ref=jsdelivr-blog.ghost.io)
