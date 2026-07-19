@@ -64,7 +64,7 @@ docker run -d --name jaeger \
   -p 16686:16686 \
   -p 14317:4317 \
   -p 14318:4318 \
-  jaegertracing/jaeger:1.41
+  jaegertracing/jaeger:latest
 ```
 
 コンテナが起動して実行されたら、次の URL から Jaeger UI にアクセスできます。
