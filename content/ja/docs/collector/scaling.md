@@ -1,10 +1,8 @@
 ---
 title: コレクターのスケーリング
 weight: 26
-default_lang_commit: e14614722d84ee9dc8e66e3287afb1ca714f3819
-drifted_from_default: true
-# prettier-ignore
-cSpell:ignore: fluentd hostmetrics Linkerd loadbalancer loadbalancing statefulset
+default_lang_commit: 453013b113080a48166f412215176d345d2bf958
+cSpell:ignore: fluentd Linkerd loadbalancer loadbalancing statefulset
 ---
 
 OpenTelemetry Collectorを使用してオブザーバビリティパイプラインを計画する場合は、テレメトリー収集の増加に合わせてパイプラインをスケールする方法を検討する必要があります。
@@ -190,7 +188,7 @@ spec:
 
 ### スクレイパーのスケーリング {#scaling-the-scrapers}
 
-一部のレシーバーは、hostmetricsやprometheusレシーバーのように、パイプラインに配置するために積極的にテレメトリーデータを取得しています。
+一部のレシーバーは、host_metricsやprometheusレシーバーのように、パイプラインに配置するために積極的にテレメトリーデータを取得しています。
 ホストメトリクスの取得は通常スケールアップするものではありませんが、Prometheusレシーバーのために何千ものエンドポイントをスクレイプするジョブを分割する必要があるかもしれません。
 また、同じ構成でインスタンスを追加することもできません。
 なぜなら、各コレクターがクラスター内の他のすべてのコレクターと同じエンドポイントをスクレイプしようとし、サンプルの順序が乱れるなど、さらに多くの問題を引き起こすからです。
