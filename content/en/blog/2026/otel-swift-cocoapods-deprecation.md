@@ -5,10 +5,8 @@ date: 2026-07-20
 author: '[Ariel Demarco](https://github.com/ArielDemarco)'
 issue: 10655 # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details (Required)
 sig: Swift # TODO: add the name of the SIG that sponsors this blog post (Required)
+cSpell:ignore: cocoapods, podspecs, podspec
 ---
-
-// cSpell:ignore cocoapods, podspecs, podspec
-
 ## Summary
 
 As it was announced:
