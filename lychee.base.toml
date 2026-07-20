@@ -16,7 +16,7 @@ no_progress = true
 extensions = ["html"]       # skip the llms *.md outputs
 timeout = 15
 max_retries = 0
-include_fragments = "full"  # check anchors too (0.24.2: enum, not bool)
+include_fragments = "full"  # check anchors too; this setting is an enum, not a boolean
 index_files = ["index.html"]  # resolve Hugo pretty-URL dir links to index.html for fragment checks
 
 exclude = [

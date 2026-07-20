@@ -7,9 +7,11 @@ description: How the site's links are checked, locally and in CI.
 The site is link-checked with **[Lychee][]**, backed by a committed cache of
 external-link results (see [Link cache](#refcache)).
 
-> [!NB] :warning: You must [install Lychee][lychee-install] locally first. CI
-> installs its own pinned copy (see the `.github/actions/install-lychee`
-> action); keep your local version reasonably close to it.
+> [!NB] Installing Lychee locally is optional: CI link-checks every PR, and the
+> bot can update the [link cache](#refcache) for you. To run checks locally,
+> [install Lychee][lychee-install]; CI installs its own pinned copy (see the
+> `.github/actions/install-lychee` action), so keep your local version
+> reasonably close to it.
 
 ## Check links
 
@@ -28,7 +30,8 @@ npm run check:links
 | `check:links:diff`     | Changed files only                                                    |
 | `fix:refcache`         | Alias of `check:links`; use it to refresh the [link cache](#refcache) |
 
-The `check:links` and `check:links:*` scripts run over a build of `BUILD_KIND`.
+The `check:links` and `check:links:internal` scripts run over a build of
+`BUILD_KIND`; `check:links:diff` checks files from the existing `public/` build.
 For details, see [Build kinds: full and lean][].
 
 [Build kinds: full and lean]: ../#build-kinds
@@ -64,9 +67,9 @@ a **full** build:
 | Refcache refresh                  | `fix:refcache:refresh` |
 | Housekeeping (`fix-and-test:all`) | `fix:refcache`         |
 
-Refcache refresh prunes the oldest cache entries (800 by default) and re-runs
-the link check, which refreshes the cache entries for the pruned URLs that are
-still used in the site.
+Refcache refresh prunes the oldest cache entries (the count is a workflow input)
+and re-runs the link check, which refreshes the cache entries for the pruned
+URLs that are still used in the site.
 
 The [housekeeping workflow][housekeeping] runs `fix-and-test:all`, which calls
 `fix:refcache` and deliberately skips `check:links` so links are checked exactly

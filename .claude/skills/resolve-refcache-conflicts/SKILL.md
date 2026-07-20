@@ -61,9 +61,9 @@ At this point, we are ready to resolve the conflicts in the active branch:
    on that stop, run Preparation step 4 first.
 
 4. Run `npm run fix:refcache` once, after the entire rebase/merge completes.
-   Note: this runs a full Hugo build and link check — requires network,
-   installed npm dependencies, and populated submodules; can take several
-   minutes.
+   Note: this runs a Hugo build (lean by default) and link check — requires
+   network, installed npm dependencies, and populated submodules; can take
+   several minutes.
 
 5. Commit the changes, if any:
 
