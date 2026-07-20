@@ -219,3 +219,7 @@ new commit.
 Runs `npm run test:compound-tests`, which executes the compound `test:*-*` NPM
 scripts (for example, Netlify edge-function tests). It does **not** run
 `test:base`.
+
+<!-- TEMP(red-first proof): REMOVE BEFORE MERGE -->
+
+Temporary red-first CI proof: [external 404](https://www.iana.org/help/no-such-page-lychee-red-proof) and [GitHub 404](https://github.com/open-telemetry/opentelemetry.io/blob/main/no-such-file-lychee-red-proof.md).
