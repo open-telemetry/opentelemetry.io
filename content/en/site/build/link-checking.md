@@ -8,9 +8,8 @@ The site is link-checked with **[Lychee][]**, backed by a committed cache of
 external-link results (see [Link cache](#refcache)).
 
 > [!NB] :warning: You must [install Lychee][lychee-install] locally first. CI
-> installs its own pinned copy (see
-> [`install-lychee`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/actions/install-lychee/action.yml));
-> keep your local version reasonably close to it.
+> installs its own pinned copy (see the `.github/actions/install-lychee`
+> action); keep your local version reasonably close to it.
 
 ## Check links
 
