@@ -222,4 +222,6 @@ scripts (for example, Netlify edge-function tests). It does **not** run
 
 <!-- TEMP(red-first proof): REMOVE BEFORE MERGE -->
 
-Temporary red-first CI proof: [external 404](https://www.iana.org/help/no-such-page-lychee-red-proof) and [GitHub 404](https://github.com/open-telemetry/opentelemetry.io/blob/main/no-such-file-lychee-red-proof.md).
+Temporary staleness-guard proof: a valid
+[uncached link](https://www.iana.org/help/example-domains) whose cache entry is
+deliberately not committed.
