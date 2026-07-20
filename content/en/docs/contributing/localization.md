@@ -550,7 +550,7 @@ When an _external link_ to a **moved** (but otherwise semantically
 **unchanged**) resource (such as a GitHub file) results in a link-check failure,
 consider:
 
-- Removing the broken link from the refcache
+- Removing the broken link's entry from the link cache (`.lycheecache`)
 - Updating the link across all locales using the method described earlier in
   this section.
 

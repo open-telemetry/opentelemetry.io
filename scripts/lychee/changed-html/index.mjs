@@ -8,7 +8,7 @@
 // `_index.md`/`index.md` -> `.../index.html`) and keep only paths that
 // actually exist in the build. This is best-effort: front-matter `url`/`slug`
 // overrides, aliases, and drafts may not map — those are reported on stderr, so
-// fall back to `npm run check:links:lychee` for guaranteed full coverage.
+// fall back to `npm run check:links` for guaranteed full coverage.
 //
 // cSpell:ignore unmappable unbuilt
 
@@ -106,7 +106,7 @@ export function mappedHtmlFiles(root = process.cwd()) {
   if (skipped.length) {
     console.error(
       `Note: ${skipped.length} changed file(s) not covered by the diff check ` +
-        `(run \`npm run check:links:lychee\` for full coverage):`,
+        `(run \`npm run check:links\` for full coverage):`,
     );
     for (const [f, why] of skipped) console.error(`  - ${f}  (${why})`);
   }
