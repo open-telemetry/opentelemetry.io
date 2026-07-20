@@ -1,10 +1,7 @@
 ---
 title: 'Kubernetes ワークロード向けマネージドテレメトリープラットフォーム'
 linkTitle: 'K8s ワークロード向けマネージドテレメトリープラットフォーム'
-date: '2026-06-24'
-author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
-sig: End-User
-default_lang_commit: 8c95bffcf7243a916f79a0d525cf55b6a3d34ad7
+default_lang_commit: 87b4cea0e74dccab17d61601c4bd80e15dc95d08
 cSpell:ignore: Autoscaler kube OTTL SDLC Skyscanner statefulset
 ---
 

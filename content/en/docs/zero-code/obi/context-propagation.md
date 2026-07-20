@@ -35,11 +35,10 @@ signals.
 
 The association step is separate from the step that writes the outgoing
 `traceparent` value. For example, language-agnostic network-level context
-propagation can associate HTTP/1.x requests across languages, but it does not
-write context for gRPC or HTTP/2 traffic. Go library-level context propagation
-can write context for HTTP/2 and gRPC only on new, non-HTTPS connections; reused
-HTTP/2/gRPC connections are not supported yet. Other limitations are documented
-in
+propagation supports HTTP/1.x and gRPC over HTTP/2, but generic non-gRPC HTTP/2
+traffic isn't supported. Go library-level context propagation can write context
+for HTTP/2 and gRPC only on new, non-HTTPS connections; reused HTTP/2/gRPC
+connections are not supported yet. Other limitations are documented in
 [distributed traces](../distributed-traces/#go-context-propagation-by-instrumenting-at-library-level).
 
 ## Runtime-specific association
@@ -105,7 +104,7 @@ way OBI cannot observe. Common cases include:
   no supported runtime-specific mechanism to identify the active logical task.
 - The active context propagation method cannot write trace context for the
   outgoing protocol. In particular, language-agnostic network-level propagation
-  does not support gRPC or HTTP/2.
+  does not support generic non-gRPC HTTP/2 traffic.
 
 When parent association fails, OBI can still report spans for the observed
 incoming and outgoing requests, but the outgoing request might start a new trace
