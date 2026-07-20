@@ -1,7 +1,7 @@
 ---
 title: Load Generator
 aliases: [loadgenerator]
-cSpell:ignore: loadgenerator xk6 traceparent baggage otelHeaders goroutines
+cSpell:ignore: baggage goroutines loadgenerator otelHeaders xk6
 ---
 
 The load generator is based on the JavaScript load testing framework

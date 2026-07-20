@@ -5483,6 +5483,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-06-19T11:17:37.185795934Z"
   },
+  "https://github.com/grafana/xk6": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-20T17:16:35.266137000Z"
+  },
   "https://github.com/gramidt": {
     "StatusCode": 206,
     "LastSeen": "2026-06-22T11:35:59.047803728Z"
@@ -17478,6 +17482,14 @@
   "https://k0sproject.io": {
     "StatusCode": 206,
     "LastSeen": "2026-06-19T11:08:30.128926896Z"
+  },
+  "https://k6.io": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-20T17:16:35.266137000Z"
+  },
+  "https://k6.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-20T17:16:35.266137000Z"
   },
   "https://kafka.apache.org/": {
     "StatusCode": 206,
