@@ -202,7 +202,7 @@ adresa URL completă:
 | `https://opentelemetry.io/docs/concepts/` | `/docs/concepts/`      |
 | `https://www.opentelemetry.io/blog/...`   | `/blog/...`            |
 
-Using local paths ensures that: Utilizarea căilor locale asigură că:
+Utilizarea căilor locale asigură că:
 
 - Paginile site-local se deschid în același tab de browser: Link-urile externe
   se deschid într-un tab nou, comportament care nu este apreciat în navigarea
