@@ -219,9 +219,3 @@ new commit.
 Runs `npm run test:compound-tests`, which executes the compound `test:*-*` NPM
 scripts (for example, Netlify edge-function tests). It does **not** run
 `test:base`.
-
-<!-- TEMP(red-first proof): REMOVE BEFORE MERGE -->
-
-Temporary staleness-guard proof: a valid
-[uncached link](https://www.iana.org/help/example-domains) whose cache entry is
-deliberately not committed.
