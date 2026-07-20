@@ -1,0 +1,23 @@
+# cSpell:ignore linodego
+title: OpenTelemetry Go Compile-Time Auto-Instrumentation for `linode/linodego`
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - instrumentation
+  - compile-time
+  - auto-instrumentation
+  - linode
+  - linodego
+  - cloud
+license: Apache 2.0
+description: >
+  Go compile-time auto-instrumentation plugin for the [`linode/linodego/v2`
+  package](https://pkg.go.dev/github.com/linode/linodego/v2), the official Go
+  client for the Linode API.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/linode/linodego/v2
+  docs: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/main/instrumentation/github.com/linode/linodego/v2/README.md
+createdAt: 2026-07-20
