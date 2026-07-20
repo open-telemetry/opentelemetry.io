@@ -143,7 +143,7 @@ All eight functions are **experimental** and available in OpenTelemetry
 Collector Contrib `v0.157.0` behind a feature gate:
 
 ```yaml
---feature-gates=ottlfuncs.enableLambdaFunctions
+--feature-gates=ottl.functions.enableLambda
 ```
 
 As we wrap up, we encourage users to explore this new functionality and take
