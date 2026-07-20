@@ -106,7 +106,7 @@
     "fix:l10n:do-not-copy-images-etc": "npm run check:l10n:do-not-copy-images-etc -- --fix",
     "fix:l10n": "npm run seq -- fix:l10n:do-not-copy-images-etc",
     "fix:markdown": "npm run check:markdown -- --fix && echo '\nTrimming trailing whitespace' && npm run _fix:trailing-spaces",
-    "fix:refcache:refresh": "npx refcache --prune ${PRUNE_N:-128} && npm run fix:refcache",
+    "fix:refcache:refresh": "npx refcache --prune ${PRUNE_N:-800} && npm run fix:refcache",
     "fix:refcache": "npm run check:links",
     "fix:submodule": "npm run pin:submodule",
     "fix:text": "npm run check:text -- --fix",

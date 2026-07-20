@@ -1,0 +1,22 @@
+name: install-lychee
+description:
+  Install the pinned lychee binary onto the runner's PATH. Single home for the
+  lychee version pin used across workflows.
+
+# We install the pinned binary ourselves because lychee-action's installer
+# can't handle the versioned release-tarball layout (the binary sits under
+# lychee-<target>/, not at the archive root), so its `install` fails.
+
+runs:
+  using: composite
+  steps:
+    - name: Install lychee
+      shell: bash
+      env:
+        LYCHEE_VERSION: v0.24.2 # cSpell:ignore lycheeverse
+      run: |
+        tmp="$(mktemp -d)"
+        curl -sfL "https://github.com/lycheeverse/lychee/releases/download/lychee-${LYCHEE_VERSION}/lychee-x86_64-unknown-linux-gnu.tar.gz" \
+          | tar -xz -C "$tmp"
+        install -D "$(find "$tmp" -type f -name lychee | head -n1)" "$HOME/.local/bin/lychee"
+        echo "$HOME/.local/bin" >> "$GITHUB_PATH"
