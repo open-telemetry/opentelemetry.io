@@ -5,10 +5,8 @@ date: 2026-07-27
 author: >-
   [Juliano Costa](https://github.com/julianocosta89) (Datadog)
 sig: OpenTelemetry Demo
-cSpell:ignore:
-  Agentic agentic fali007 Dónal O'Sullivan osullivandonal Lehner florianl
-  Thwaites martinjt Bourgey fbourgey Tessier puckpuck Shenoy Pratik ps48 Cijo
-  cijothomas Wimpelberg mwimpelberg28 Kielek Kiełkowicz
+# prettier-ignore
+cSpell:ignore: agentic Bourgey Cijo cijothomas Dónal fali007 fbourgey firepit florianl Kielek Kiełkowicz Lehner martinjt mwimpelberg28 O'Sullivan osullivandonal Pratik ps48 Shenoy Thwaites Wimpelberg
 ---
 
 If you've been running the Demo for some time, you may have seen a couple of
@@ -48,7 +46,7 @@ across all services. But why?
 When we started the OTel Demo back in 2022 `app.*` wasn't a reserved attribute
 and we built all our custom attributes and metrics with that namespace. Time has
 passed and in 2023 `app.*` was added to the project to
-[describe attributes related to client-side applications (e.g., web apps or mobile apps)](https://opentelemetry.io/docs/specs/semconv/registry/attributes/app/).
+[describe attributes related to client-side applications (e.g., web apps or mobile apps)](/docs/specs/semconv/registry/attributes/app/).
 
 But if that was introduced in 2023, why was the Demo still using it?
 
