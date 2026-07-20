@@ -8,7 +8,8 @@ sig: Swift # TODO: add the name of the SIG that sponsors this blog post (Require
 cSpell:ignore: cocoapods podspec podspecs
 ---
 
-As it was announced via [CocoaPods Support Plan](https://blog.cocoapods.org/CocoaPods-Support-Plans/?ref=jsdelivr-blog.ghost.io)
+As it was announced via
+[CocoaPods Support Plan](https://blog.cocoapods.org/CocoaPods-Support-Plans/?ref=jsdelivr-blog.ghost.io)
 and via
 [CocoaPods Spec Repository](https://blog.cocoapods.org/CocoaPods-Specs-Repo/),
 CocoaPods is transitioning their project to maintenance mode, and cocoapods
