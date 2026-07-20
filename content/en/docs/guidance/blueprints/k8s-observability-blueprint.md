@@ -16,6 +16,33 @@ By implementing the patterns in this blueprint, organizations can expect to achi
 - Uniform metadata enrichment using OTel semantic conventions, enabling correlated investigation across metrics, logs, and traces.
 - Self-monitoring of the telemetry collection infrastructure so silent data gaps are detected before they affect incident response.
 
+### When to use OpenTelemetry-native receivers vs. Prometheus scraping
+
+Use this decision tree to choose a collection method for any signal source in the
+cluster. The guiding principle: prefer OTel-native receivers for workload,
+host, and cluster-state metrics, and fall back to Prometheus scraping (via the
+Target Allocator) for third-party components that only expose a `/metrics`
+endpoint.
+
+```mermaid
+flowchart TD
+  Start(["`What are you trying to observe?`"]) -->|"`Kubernetes object/state<br/>(pod phase, restarts, replica/node conditions)`"| Cluster["`**k8s_cluster receiver**<br/>(clusterMetrics preset)<br/>replaces kube-state-metrics`"]
+  Start -->|"`Host/node OS metrics<br/>(CPU, memory, disk, network)`"| Host["`**hostmetrics receiver**<br/>(hostMetrics preset)<br/>replaces node-exporter`"]
+  Start -->|"`Pod/container resource usage<br/>(throttling, OOM, per-container CPU/mem)`"| Kubelet["`**kubeletstats receiver**<br/>(kubeletMetrics preset)<br/>replaces cAdvisor/kubelet`"]
+  Start -->|"`Third-party/critical component<br/>(CoreDNS, CNI, Ingress, KEDA, cert-manager)`"| Q3{"`Exposes a<br/>Prometheus<br/>/metrics<br/>endpoint?`"}
+  style Q3 font-size:11px
+
+  Q3 -->|"`Yes, with a PodMonitor/ServiceMonitor CR`"| TAcr["`**Prometheus receiver + Target Allocator**<br/>matching PodMonitor/ServiceMonitor CRs`"]
+  Q3 -->|"`Yes, no CR available`"| TAann["`**Prometheus receiver + Target Allocator**<br/>via kubernetes_sd_configs + annotations`"]
+  Q3 -->|No| Native["`Use the component's native OTel receiver if one exists,<br/>otherwise export via an OTLP-capable adapter`"]
+
+  Cluster --> Enrich["`Enrich all signals with the **kubernetesAttributes** preset<br/>(OTel k8s semantic conventions)`"]
+  Host --> Enrich
+  Kubelet --> Enrich
+  TAcr --> Enrich
+  TAann --> Enrich
+```
+
 ## Background
 
 Kubernetes clusters host two classes of observable entities:
