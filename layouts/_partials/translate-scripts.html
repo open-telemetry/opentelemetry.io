@@ -1,6 +1,6 @@
 {{/* cSpell:ignore goog */ -}}
 {{ $pageProseLang := (partial "i18n/lang.html" .).Lang -}}
-{{ $siteLang := .Site.Language.Lang -}}
+{{ $siteLang := .Site.Language.Name -}}
 
 {{ if ne $siteLang $pageProseLang -}}
 {{ $locales := partialCached "func/locales-for-google-translate.html" . -}}
