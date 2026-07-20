@@ -80,13 +80,10 @@ exclude = [
   '^https://github\.com/open-telemetry/semantic-conventions/tree/main',
 
   # --- data-proofer-ignore parity (element-level skip, ported to URL) ---
-  # Docsy "last modified" page-meta links: htmltest skips these via the
+  # Docsy "last modified" page-meta links: htmltest skipped these via the
   # `data-proofer-ignore` attribute (its IgnoreTagAttribute), which Lychee has
-  # no equivalent for. They're never in refcache (htmltest never checks them)
-  # and can't be cache-seeded, so exclude by URL to match htmltest's skip.
-  # Derived from the on-page `data-proofer-ignore` elements; regenerate/verify
-  # the set with:
-  #   node scripts/lychee/data-proofer-ignore-to-lychee/index.mjs
+  # no equivalent for; exclude by URL instead. Derived from the on-page
+  # `data-proofer-ignore` elements (Docsy page-meta partials).
   '^https://github\.com/open-telemetry/opentelemetry\.io/commit/',
   # `compare/` is restricted to the page-meta SHA-range form (`<sha>..<sha>`):
   # the year-in-review posts link real, checked `compare/<tag>...<tag>` URLs
