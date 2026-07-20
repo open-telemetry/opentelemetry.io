@@ -16,7 +16,7 @@ name: Reusable - publish patch as PR
 #       commit-message: Apply housekeeping fixes
 #       user-name: otelbot
 #       user-email: 197425009+otelbot@users.noreply.github.com
-#       app-id: ${{ vars.MY_APP_ID }}
+#       client-id: ${{ vars.MY_CLIENT_ID }}
 #     secrets:
 #       app-private-key: ${{ secrets.MY_APP_PRIVATE_KEY }}
 #
@@ -76,7 +76,7 @@ on:
         description: Git user email for the commit.
         required: true
         type: string
-      app-id:
+      client-id:
         description: >-
           Client ID of the GitHub App used to push the branch and create the PR.
           The app needs write access to this repository's contents and pull
@@ -85,7 +85,7 @@ on:
         type: string
     secrets:
       app-private-key:
-        description: Private key of the GitHub App identified by `app-id`.
+        description: Private key of the GitHub App.
         required: true
     outputs:
       pr-url:
@@ -107,7 +107,7 @@ jobs:
       pr_url: ${{ steps.pr.outputs.pr_url }}
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
@@ -126,12 +126,12 @@ jobs:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: app-token
         with:
-          client-id: ${{ inputs.app-id }}
+          client-id: ${{ inputs.client-id }}
           private-key: ${{ secrets.app-private-key }}
           permission-contents: write # push the patch branch
           permission-pull-requests: write # create the PR
 
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: main
           persist-credentials: false

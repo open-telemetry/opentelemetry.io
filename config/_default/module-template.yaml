@@ -101,6 +101,23 @@ mounts:
     files: ['! specs/**']
     sites: *ja-matrix
 
+  ## ko
+  - source: content/ko
+    target: content
+    sites: &ko-matrix
+      matrix: { languages: [ko] }
+    # fallback pages
+  - source: content/en/_includes
+    target: content/_includes
+    sites: *ko-matrix
+  - source: content/en/announcements
+    target: content/announcements
+    sites: *ko-matrix
+  - source: content/en/docs
+    target: content/docs
+    files: ['! specs/**']
+    sites: *ko-matrix
+
   ## ro
   - source: content/ro
     target: content
@@ -190,11 +207,7 @@ mounts:
     sites: *pt-matrix
 
   ## static
-  - files: ['! favicons/**']
-    source: static
-    target: static
-  # Mount favicons to the site root where they are expected
-  - source: static/favicons
+  - source: static
     target: static
   - source: content-modules/semantic-conventions/schemas
     target: static/schemas
