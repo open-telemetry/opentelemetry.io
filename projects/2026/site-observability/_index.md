@@ -97,9 +97,8 @@ Observability][] setup and takes no position on it.
 ## Open Questions
 
 - **Configuration and IaC home**: where the Collector configuration and stack
-  IaC live is a community decision scheduled for phase 1. A dedicated
-  repository is the custodians' preference, with `open-telemetry/admin` as the
-  alternative.
+  IaC live is a community decision scheduled for phase 1. A dedicated repository
+  is the custodians' preference, with `open-telemetry/admin` as the alternative.
 - **Data retention**: retention periods per backend are deferred until the phase
   2 persistence spike establishes each backend's storage constraints.
 
