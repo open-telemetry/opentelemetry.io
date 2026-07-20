@@ -1,5 +1,5 @@
 {{/* cSpell:ignore goog */ -}}
-{{ $pageProseLang := (partial "i18n/lang.html" .).Lang -}}
+{{ $pageProseLang := (partial "i18n/lang.html" .).Name -}}
 {{ $siteLang := .Site.Language.Name -}}
 
 {{ if ne $siteLang $pageProseLang -}}
