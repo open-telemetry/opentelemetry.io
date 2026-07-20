@@ -51,7 +51,7 @@
     "_lychee": "LINK_CHECKER=lychee npm run",
     "_pin:submodule": "scripts/pin-submodules.pl",
     "_prebuild": "npm run seq -- get:submodule cp:spec generate:config-types",
-    "_prepare:docsy": "cd themes/docsy && npm install",
+    "_prepare:docsy": "cd themes/docsy && npm run postinstall",
     "_prettier:any": "npx prettier --ignore-path ''",
     "_refcache:prune": "npx gulp prune",
     "_rename-to-kebab-case": "find assets content static -name '*_*' ! -name '[_.]*' -exec sh -c 'mv \"$1\" \"${1//_/-}\"' _ {} \\;",
