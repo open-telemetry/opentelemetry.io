@@ -4915,6 +4915,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-18T06:23:41.553860567Z"
   },
+  "https://github.com/dash0hq/dash0-operator": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-21T10:44:35.319227+02:00"
+  },
   "https://github.com/dash0hq/otelbin": {
     "StatusCode": 206,
     "LastSeen": "2026-07-17T10:47:12.436731108Z"
@@ -22522,6 +22526,10 @@
   "https://www.dash0.com/": {
     "StatusCode": 200,
     "LastSeen": "2026-07-17T10:40:04.521862887Z"
+  },
+  "https://www.dash0.com/hub/integrations/int_dash0_operator/overview": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-21T10:44:35.188033+02:00"
   },
   "https://www.docker.com/": {
     "StatusCode": 206,
