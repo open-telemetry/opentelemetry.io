@@ -47,6 +47,34 @@ Three sources feed the Collector, rolled out in phases:
 
 ### Architecture
 
+```text
+┌──────────────────────────────────────────────────┐
+│ Sources                                            │
+│  browser (OTel JS) · Edge Functions · log drain    │
+└─────────────────────────┬──────────────────────────┘
+                          │  OTLP · write-only endpoint
+                          ▼
+             ┌─────────────────────────┐
+             │ Public edge             │
+             │  rate limit · CORS      │
+             └────────────┬────────────┘
+                          ▼
+             ┌─────────────────────────┐
+             │ Collector               │
+             │  limits · sampling      │
+             │  scrub sensitive fields │
+             └────────────┬────────────┘
+                          │  export (backends never take writes directly)
+         ┌────────────────┼────────────────┐
+         ▼                ▼                ▼
+      Jaeger         Prometheus       OpenSearch
+     (traces)        (metrics)         (logs)
+         │                │                │
+         └────────────────┼────────────────┘
+                          ▼
+              public read-only query UIs
+```
+
 - A single co-located stack: the Collector and the three backends are deployed
   together on the same infrastructure.
 - Only the Collector is exposed for writes; backends are never directly
