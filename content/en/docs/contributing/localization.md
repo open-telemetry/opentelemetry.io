@@ -552,13 +552,15 @@ non-English locales. This happens when documentation pages are moved or deleted.
 
 When an English page is **moved**, first ensure that the page declares an
 [alias][aliases] for its old path. The alias keeps previously published links to
-the page working, including those from localized pages, without any locale file
-needing to be touched.
+the page working, but only for site visitors: aliases are published as
+server-side redirects, and the link checker resolves links against the built
+site's canonical page paths. Links to the old path therefore still need fixing.
+A moved or deleted page's localized copies themselves don't need to be touched:
+[drift tracking](#track-changes) flags them for their locale teams.
 
-When an alias can't help (for example, the page was deleted), make the following
-updates to each non-English page that has a path that fails link checking
-(drifted pages are skipped by the link checker, so this typically applies to
-in-sync pages):
+Make the following updates to each non-English page that has a path that fails
+link checking (drifted pages are skipped by the link checker, so this typically
+applies to in-sync pages):
 
 - Update the link reference to the new page path.
 - Add the `# patched` YAML comment at the end of the line for the
