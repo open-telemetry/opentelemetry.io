@@ -62,10 +62,10 @@ If you add or change external links, the check updates the cache; commit the
 The following workflows are scheduled daily and run a link checking command over
 a **full** build:
 
-| Workflow                          | Link-check command     |
-| --------------------------------- | ---------------------- |
-| Refcache refresh                  | `fix:refcache:refresh` |
-| Housekeeping (`fix-and-test:all`) | `fix:refcache`         |
+| Workflow                          | Link-check command             |
+| --------------------------------- | ------------------------------ |
+| Refcache refresh                  | `fix:refcache` (after pruning) |
+| Housekeeping (`fix-and-test:all`) | `fix:refcache`                 |
 
 Refcache refresh prunes the oldest cache entries (the count is a workflow input)
 and re-runs the link check, which refreshes the cache entries for the pruned
