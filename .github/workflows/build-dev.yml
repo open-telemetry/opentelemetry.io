@@ -44,6 +44,8 @@ jobs:
         env:
           CMD_SKIP: i18n|registry
           GET: no # For details, see: https://opentelemetry.io/docs/contributing/development/#submodule-changes
+          # Authenticated github.com link checks (rate limits) in fix:refcache
+          GITHUB_TOKEN: ${{ github.token }}
           PIN_SKIP: ${{ inputs.submodule_path_regex }}
 
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

@@ -114,6 +114,9 @@ jobs:
       - uses: ./.github/actions/install-lychee
 
       - name: Update refcache
+        env:
+          # Authenticated github.com link checks (rate limits)
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           npm install --omit=optional
           # Ignore link-check failures so we can still commit refcache updates
