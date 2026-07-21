@@ -3711,6 +3711,7 @@ https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/,206,178
 https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md,206,1784284662
 https://github.com/open-telemetry/opentelemetry.io/tree/main/config,206,1784096629
 https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules,206,1784096632
+https://github.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/specs/otel-config/types.md,200,1784594224
 https://github.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/specs/status.md,206,1784285016
 https://github.com/open-telemetry/opentelemetry.io/tree/main/data/collector,206,1784355925
 https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem,206,1784355801
@@ -4370,6 +4371,7 @@ https://hsqldb.org/,206,1784356093
 https://http.jodd.org/,200,1784183073
 https://hub.docker.com/r/otel/ebpf-instrument,200,1784284620
 https://hub.docker.com/r/otel/weaver,200,1784269414
+https://hydrolix.io/,200,1784594220
 https://hyper.rs/,200,1784442365
 https://iceberg.apache.org/,206,1784096673
 https://icinga.com/docs/icinga-2/latest/doc/14-features/#otlpmetrics-writer,206,1784355845
@@ -6008,6 +6010,9 @@ https://www.youtube.com/embed/eZ3OrhxUAmU?autoplay=0&controls=1&end=0&loop=0&mut
 https://www.youtube.com/embed/fgbB0HhVBq8?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0,200,1784284788
 https://www.youtube.com/embed/iEEIabOha8U?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0,200,1784096642
 https://www.youtube.com/live/vB9_SiTV5CI?si=F3jRi2w83Gp1lp_F,200,1784183216
+https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43,200,1784594229
+https://www.youtube.com/playlist?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x,200,1784594229
+https://www.youtube.com/playlist?list=PLVYDBkQ1TdyyWjeWJSjXYUaJFVhplRtvN,200,1784594220
 https://www.youtube.com/watch?v=LUsfZFRM4yo,200,1784284667
 https://www.youtube.com/watch?v=N18z2dOJSd8,200,1784284657
 https://www.youtube.com/watch?v=TUiVX-44S9s,200,1784284622
