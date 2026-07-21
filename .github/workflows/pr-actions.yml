@@ -120,8 +120,7 @@ jobs:
       - name: Run PR action and generate patch
         id: patch
         # Untrusted: runs the resolved npm script and captures any changes as a
-        # patch artifact. Has no write permissions or secrets. The `_refcache:prune`
-        # post-command drops 404 entries so refcache updates stay clean.
+        # patch artifact. Has no write permissions or secrets.
         # NOTE: after `gh pr checkout` above, this local action's definition
         # resolves from the PR branch — treat the action itself as untrusted;
         # never add secrets or write permissions to this job.
@@ -130,7 +129,6 @@ jobs:
           command: ${{ steps.extract.outputs.command }}
           patch-name: pr-fix-${{ github.run_id }}
           max-patch-size-kb: ${{ env.MAX_PATCH_SIZE_KB }}
-          post-command: _refcache:prune
 
   apply-patch:
     name: Apply and push patch (trusted)

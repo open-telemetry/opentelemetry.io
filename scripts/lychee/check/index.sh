@@ -15,6 +15,15 @@ command -v lychee >/dev/null || {
   exit 1
 }
 
+# Authenticated github.com checks (rate limits): bridge a token from a local
+# `gh` login when GITHUB_TOKEN is unset — same as lychee-norm-cache; CI sets
+# GITHUB_TOKEN directly.
+if [[ -z "${GITHUB_TOKEN:-}" ]] && command -v gh >/dev/null; then
+  if token=$(gh auth token 2>/dev/null) && [[ -n "$token" ]]; then
+    export GITHUB_TOKEN="$token"
+  fi
+fi
+
 PUBLIC="$PWD/public"
 test -d "$PUBLIC" || {
   echo "[help] $PUBLIC not found. Build the site first: npm run build" >&2

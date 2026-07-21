@@ -4,91 +4,90 @@ weight: 12
 description: How the site's links are checked, locally and in CI.
 ---
 
-The site is link-checked with two tools:
+The site is link-checked with **[Lychee][]**, backed by a committed cache of
+external-link results (see [Link cache](#refcache)).
 
-- **[htmltest][]** — the original checker and current **default**, run by
-  `check:links`. It is installed automatically on first run, if necessary, so no
-  setup is needed. It also backs the scripts and workflows related to the
-  [refcache](#refcache).
-- **[Lychee][]** — a faster alternative that contributors can test drive.
-  > [!NB] :warning: You must [install Lychee][lychee-install] locally first.
+> [!NB] Installing Lychee locally is optional: CI link-checks every PR, and the
+> bot can update the [link cache](#refcache) for you. To run checks locally,
+> [install Lychee][lychee-install]; CI installs its own pinned copy (see the
+> `.github/actions/install-lychee` action), so keep your local version
+> reasonably close to it.
 
 ## Check links
 
-To check links locally (using htmltest), run:
+To check links locally, run:
 
 ```sh
 npm run check:links
 ```
 
-Or to try Lychee run the following after installing it:
-
-```sh
-npm run _lychee -- check:links
-```
-
-> [!TIP] Pro tip
->
-> Want to use Lychee instead? Once you've [installed it][lychee-install], either
-> prefix a one-off run:
->
-> ```sh
-> npm run _lychee -- check:links
-> ```
->
-> or set the following environment variable to have all npm scripts that rely on
-> it (directly or indirectly, such as `check:links`, `check`, etc.) use Lychee:
->
-> ```sh
-> export LINK_CHECKER=lychee
-> ```
-
 ## Common commands
 
-| Command                | Checking scope     | Checker                           |
-| ---------------------- | ------------------ | --------------------------------- |
-| `check:links`          | Whole site         | `LINK_CHECKER` (default htmltest) |
-| `check:links:htmltest` | Whole site         | htmltest                          |
-| `check:links:lychee`   | Whole site         | Lychee                            |
-| `check:links:diff`     | Changed files only | Lychee                            |
+| Command                | Checking scope                                                        |
+| ---------------------- | --------------------------------------------------------------------- |
+| `check:links`          | Whole site                                                            |
+| `check:links:internal` | Whole site, offline (no external links)                               |
+| `check:links:diff`     | Changed files only                                                    |
+| `fix:refcache`         | Alias of `check:links`; use it to refresh the [link cache](#refcache) |
 
-The `check:links` and `check:links:*` scripts run over a build of `BUILD_KIND`.
-For details, see [Build kinds: full and lean][]
+The `check:links` and `check:links:internal` scripts run over a build of
+`BUILD_KIND`; `check:links:diff` checks files from the existing `public/` build.
+For details, see [Build kinds: full and lean][].
 
 [Build kinds: full and lean]: ../#build-kinds
 
-## Refcache
+## Configuration
 
-The site has an external-link cache (refcache) under version control. It is
-created and updated by htmltest. Lychee is not currently setup to refresh the
-refcache. To refresh the refcache, run either `fix:refcache` or check links with
-htmltest.
+Lychee runs over the built site (`public/`) using the generated, git-ignored
+`lychee.toml`. The `generate:config:links` script derives it from
+[`lychee.base.toml`][] plus an `exclude_path` block computed from page front
+matter: pages marked `drifted_from_default: true`, and path patterns listed
+under the `link_check_exclude_path` front-matter key (see, for example,
+[`content/en/blog/_index.md`][blog-index]).
 
-## Refcache refresh and housekeeping workflows {#workflows}
+## Link cache {#refcache}
 
-The following workflows are scheduled daily and run a link checking command:
+External-link check results are cached in `.lycheecache`, which is under version
+control so that checks only fetch URLs that are new or whose cache entries have
+expired. Lychee caches successful results only, so failures are retried on every
+run.
 
-| Workflow                          | Checker  | Build    |
-| --------------------------------- | -------- | -------- |
-| Refcache refresh (`fix:refcache`) | htmltest | **full** |
-| Housekeeping (`fix-and-test:all`) | htmltest | **full** |
+If you add or change external links, the check updates the cache; commit the
+`.lycheecache` changes along with your content changes, or comment
+`/fix:refcache` on your PR to have the bot do it. For details, see [`BUILD` and
+`CHECK LINKS`][pr-checks].
 
-Refcache refresh prunes the refcache and runs `check:links:htmltest`, which
-refreshes the refcache for the pruned entries, if they are still used in the
-docs.
+## Cache refresh and housekeeping workflows {#workflows}
+
+The following workflows are scheduled daily and run a link checking command over
+a **full** build:
+
+| Workflow                          | Link-check command             |
+| --------------------------------- | ------------------------------ |
+| Refcache refresh                  | `fix:refcache` (after pruning) |
+| Housekeeping (`fix-and-test:all`) | `fix:refcache`                 |
+
+Refcache refresh prunes the oldest cache entries (the count is a workflow input)
+and re-runs the link check, which refreshes the cache entries for the pruned
+URLs that are still used in the site.
 
 The [housekeeping workflow][housekeeping] runs `fix-and-test:all`, which calls
 `fix:refcache` and deliberately skips `check:links` so links are checked exactly
-once (via htmltest, refreshing the refcache).
+once.
 
 ## In CI
 
 The [`check-links.yml` workflow][ci] builds the site once (lean) and shares that
-artifact across the htmltest shards and the Lychee check, so local runs and CI
-check the same build.
+artifact with the `CHECK LINKS` job, so local runs and CI check the same build.
+The job fails if any link check fails, or if the run leaves the committed
+`.lycheecache` stale.
 
+[blog-index]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
 [ci]: ../ci-workflows/
 [housekeeping]: ../ci-workflows/#housekeeping
-[htmltest]: https://github.com/wjdp/htmltest
 [Lychee]: https://lychee.cli.rs/
+[`lychee.base.toml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/lychee.base.toml
 [lychee-install]: https://lychee.cli.rs/guides/getting-started/
+[pr-checks]: /docs/contributing/pr-checks/#build-and-check-links

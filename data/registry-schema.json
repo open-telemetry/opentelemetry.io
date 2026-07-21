@@ -17,17 +17,22 @@
       "description": "The type of the entry. See https://opentelemetry.io/ecosystem/registry/adding/#registry-types for detailed definitions and usage guidelines for each type.",
       "enum": [
         "application integration",
+        "api",
         "connector",
         "core",
         "exporter",
         "extension",
+        "id-generator",
         "instrumentation",
         "log-bridge",
+        "metric-producer",
         "processor",
         "propagator",
         "provider",
         "receiver",
         "resource-detector",
+        "sdk",
+        "semantic-convention",
         "sampler",
         "utilities"
       ]
@@ -36,6 +41,7 @@
       "type": "string",
       "description": "The programming language of the entry",
       "enum": [
+        "android",
         "collector",
         "cpp",
         "crystal",
