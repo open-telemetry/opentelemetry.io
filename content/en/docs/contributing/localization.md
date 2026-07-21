@@ -311,8 +311,11 @@ link after an English page was moved. Mark each localized page fixed in this way
 as **patched**:
 
 - Make only the edits that the fix requires — no other changes to the page.
-- Append the `# patched` YAML comment to the page's `default_lang_commit` line,
-  like this: `default_lang_commit: abc4567... # patched`.
+- Append the `# patched` YAML comment to the page's `default_lang_commit` line:
+
+  ```yaml
+  default_lang_commit: abc4567... # patched
+  ```
 
 The marker tells the page's locale team that the page was mechanically fixed
 without being synced: the hash still records the last sync point. The marker is
@@ -576,35 +579,36 @@ adding a new glossary term.
 
 Changes to the English documentation can result in link-check failures for
 non-English locales. This happens when documentation pages, or sections within
-them, are moved or deleted.
+them, are moved or deleted; links to moved external resources can fail
+similarly. A moved or deleted page's localized copies themselves don't need to
+be touched: [drift tracking](#track-changes) flags them for their locale teams.
+What may need fixing are the localized pages that **link** to such targets.
+Proceed according to the fate of the link target:
 
-When an English page is **moved**, first ensure that the page declares an
-[alias][aliases] for its old path. The alias keeps previously published links to
-the page working, but only for site visitors: aliases are published as
-server-side redirects, and the link checker resolves links against the built
-site's canonical page paths. Links to the old path therefore still need fixing.
-A moved or deleted page's localized copies themselves don't need to be touched:
-[drift tracking](#track-changes) flags them for their locale teams.
+- **A page or section was moved**:
 
-When the link target was **moved**, update the link to the new page path on each
-non-English page that fails link checking, and mark each edited page as
-[patched](#patched). ([Drifted](#track-changes) pages are skipped by the link
-checker, so this typically applies to in-sync pages.)
+  1. Ensure that the moved English page declares an [alias][aliases] for its old
+     path. The alias keeps previously published links to the page working, but
+     only for site visitors: aliases are published as server-side redirects, and
+     the link checker resolves links against the built site's canonical page
+     paths. Links to the old path therefore still need fixing.
+  2. Update the link to the new path on each non-English page that fails link
+     checking, and mark each edited page as [patched](#patched).
+     ([Drifted](#track-changes) pages are skipped by the link checker, so this
+     typically applies to in-sync pages.)
 
-When the link target was **deleted** — the English page, or the section that the
-link points to, is gone — choosing a replacement or dropping the reference is a
-[semantic change](#semantic-changes) for each affected locale, so don't patch
-such links. Instead, mark each affected localized page as
-[drifted](#track-changes) by setting `drifted_from_default: true` in its front
-matter, and leave the reconciliation to the page's locale team.
+- **A page or section was deleted**: choosing a replacement or dropping the
+  reference is a [semantic change](#semantic-changes) for each affected locale,
+  so don't patch such links. Instead, mark each affected localized page as
+  [drifted](#track-changes) by setting `drifted_from_default: true` in its front
+  matter, and leave the reconciliation to the page's locale team.
 
-In either case, rerun `npm run check:links` and ensure that no link failures
+- **An external resource was moved**, but is otherwise semantically unchanged
+  (such as a relocated GitHub file): update the link across all locales, marking
+  each edited localized page as [patched](#patched).
+
+In all cases, rerun `npm run check:links` and confirm that no link failures
 remain.
-
-When an _external link_ to a **moved** (but otherwise semantically
-**unchanged**) resource (such as a GitHub file) results in a link-check failure,
-update the link across all locales using the method described earlier in this
-section.
 
 [aliases]: https://gohugo.io/content-management/urls/#aliases
 [front matter]: https://gohugo.io/content-management/front-matter/
