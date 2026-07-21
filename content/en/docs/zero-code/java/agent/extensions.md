@@ -5,7 +5,7 @@ description:
   Extensions add capabilities to the agent without having to create a separate
   distribution.
 weight: 300
-cSpell:ignore: Customizer Dotel myextension
+cSpell:ignore: Customizer Dotel instrumenters myextension
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -807,6 +807,277 @@ public class DemoResourceProvider implements ResourceProvider {
 }
 ```
 <!-- prettier-ignore-end -->
+
+## Writing custom instrumentation
+
+Custom instrumentation allows you to inject bytecode into specific methods to
+add observability to libraries not currently supported by the agent, or to
+augment existing instrumentation.
+
+### When to use custom instrumentation
+
+Use custom instrumentation when you need to:
+
+- Add tracing, metrics, logs, or events to a library or framework not supported
+  by the agent
+- Run your code before or after specific methods execute
+- Modify the behavior of existing instrumentation using the `order()` method
+
+For simpler use cases (modifying span attributes, custom samplers, etc.), use
+SDK customizations (`SpanProcessor`, `Sampler`) as shown earlier in this guide.
+
+### Components of custom instrumentation
+
+Custom instrumentation is usually comprised of the following components:
+
+1. **InstrumentationModule** - Defines what to instrument and when
+2. **TypeInstrumentation** - Specifies which classes and methods to target
+3. **Advice** - Contains the code to inject (runs before/after target methods)
+4. **Instrumenter** - Manages span creation, context propagation, and attributes
+
+### Required dependencies
+
+Custom instrumentation requires **all** the dependencies for writing extensions,
+plus additional dependencies for bytecode manipulation.
+
+If you haven't already reviewed the
+[Project setup and dependencies](#project-setup-and-dependencies) section, start
+there to understand dependency scopes (`compileOnly` vs `implementation`).
+
+For custom instrumentation specifically, ensure your `build.gradle.kts`
+includes:
+
+```kotlin
+plugins {
+  id("java")
+  id("com.gradleup.shadow") version "9.2.2"
+
+  // Muzzle plugins - required for all custom instrumentation
+  id("io.opentelemetry.instrumentation.muzzle-generation")
+  id("io.opentelemetry.instrumentation.muzzle-check")
+}
+
+dependencies {
+  // Use BOM to manage versions (recommended)
+  compileOnly(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))
+
+  // Core extension dependencies (provided by agent at runtime)
+  compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi")
+  compileOnly("io.opentelemetry:opentelemetry-sdk")
+  compileOnly("io.opentelemetry:opentelemetry-api")
+
+  // Additional dependencies for custom instrumentation
+  compileOnly("io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api:{{% param vers.instrumentation %}}-alpha")
+  compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator:{{% param vers.instrumentation %}}-alpha")
+  compileOnly("net.bytebuddy:byte-buddy:1.15.10")
+
+  // Auto-service for @AutoService annotation
+  compileOnly("com.google.auto.service:auto-service:1.1.1")
+  annotationProcessor("com.google.auto.service:auto-service:1.1.1")
+
+  // Target library you're instrumenting (example)
+  compileOnly("javax.servlet:javax.servlet-api:3.0.1")
+}
+
+// Muzzle configuration - specify the library versions your instrumentation
+// is compatible with
+muzzle {
+  pass {
+    group.set("javax.servlet")
+    module.set("javax.servlet-api")
+    versions.set("[3.0,)")
+    assertInverse.set(true)
+  }
+}
+```
+
+### The Instrumenter API
+
+The OpenTelemetry Java Instrumentation project provides an `Instrumenter` API
+that simplifies creating custom instrumentation. The `Instrumenter` encapsulates
+the logic for:
+
+- Creating and managing spans
+- Extracting and applying span attributes
+- Propagating context (for distributed tracing)
+- Recording operation metrics
+- Handling span status and error conditions
+
+#### Creating multiple instrumenters
+
+A single instrumentation module may create multiple `Instrumenter` instances
+when different operations require different telemetry handling. Common patterns
+include:
+
+- **Different operations**: For example, JDBC creates separate instrumenters for
+  statement execution and transaction management
+- **Different messaging patterns**: For example, many messaging instrumentations
+  use separate instrumenters for producing messages, receiving messages, and
+  processing messages
+- **Different span kinds**: Use `buildClientInstrumenter()`,
+  `buildServerInstrumenter()`, `buildProducerInstrumenter()`, or
+  `buildConsumerInstrumenter()` to create instrumenters that generate CLIENT,
+  SERVER, PRODUCER, or CONSUMER spans respectively
+
+### Custom instrumentation basic structure
+
+#### Create an InstrumentationModule
+
+An `InstrumentationModule` groups related `TypeInstrumentation` implementations
+together. It must be registered using `@AutoService`:
+
+```java
+@AutoService(InstrumentationModule.class)
+public class MyCustomInstrumentationModule extends InstrumentationModule {
+
+  public MyCustomInstrumentationModule() {
+    super("my-custom-library");
+  }
+
+  @Override
+  public List<TypeInstrumentation> typeInstrumentations() {
+    return Collections.singletonList(new MyTypeInstrumentation());
+  }
+}
+```
+
+#### Create a TypeInstrumentation
+
+A `TypeInstrumentation` defines which classes to instrument and what
+transformations to apply:
+
+```java
+public class MyTypeInstrumentation implements TypeInstrumentation {
+
+  @Override
+  public ElementMatcher<TypeDescription> typeMatcher() {
+    return named("com.example.MyClass");
+  }
+
+  @Override
+  public void transform(TypeTransformer transformer) {
+    transformer.applyAdviceToMethod(
+      named("myMethod")
+        .and(isPublic())
+        .and(takesArguments(1)),
+      this.getClass().getName() + "$MyMethodAdvice");
+  }
+}
+```
+
+The second argument to `applyAdviceToMethod()` is the fully qualified name of
+the Advice class. The `$MyMethodAdvice` suffix refers to a nested class, which
+you define in [Create an Advice class](#create-an-advice-class).
+
+#### Create an Instrumenter
+
+Create a singleton `Instrumenter` instance. The `Instrumenter` is parameterized
+with `REQUEST` and `RESPONSE` types.
+
+- `REQUEST` - Represents the operation input (e.g., HTTP request, database
+  query)
+- `RESPONSE` - Represents the operation output (e.g., HTTP response, query
+  result). Use `Void` when there is no meaningful response object to capture
+
+```java
+public final class MySingletons {
+
+  private static final Instrumenter<MyRequest, MyResponse> INSTRUMENTER;
+
+  static {
+    INSTRUMENTER = Instrumenter.<MyRequest, MyResponse>builder(
+        GlobalOpenTelemetry.get(),
+        "io.opentelemetry.my-custom-library",
+        request -> request.getOperationName())
+      .addAttributesExtractor(new MyAttributesExtractor())
+      .buildInstrumenter(); // Creates INTERNAL spans
+  }
+
+  public static Instrumenter<MyRequest, MyResponse> instrumenter() {
+    return INSTRUMENTER;
+  }
+
+  private MySingletons() {}
+}
+```
+
+#### Create an Advice class
+
+The Advice class contains the code that is inlined into the target method. It is
+where you actually invoke the `Instrumenter`: start a span (and make its context
+current) when the method is entered, and end the span when the method exits. Add
+it as a nested class of the `TypeInstrumentation` so that the `$MyMethodAdvice`
+reference from `applyAdviceToMethod()` resolves.
+
+Advice methods are annotated with Byte Buddy's `@Advice.OnMethodEnter` and
+`@Advice.OnMethodExit`. Values are passed between the enter and exit methods
+using `@Advice.Local` fields:
+
+<!-- prettier-ignore-start -->
+```java
+public class MyTypeInstrumentation implements TypeInstrumentation {
+
+  // typeMatcher() and transform() as shown above
+
+  @SuppressWarnings("unused")
+  public static class MyMethodAdvice {
+
+    @Advice.OnMethodEnter(suppress = Throwable.class)
+    public static void onEnter(
+        @Advice.Argument(0) Object argument,
+        @Advice.Local("otelRequest") MyRequest request,
+        @Advice.Local("otelContext") Context context,
+        @Advice.Local("otelScope") Scope scope) {
+
+      // Use Java8BytecodeBridge instead of Context.current() so the advice
+      // works on applications running Java 8.
+      Context parentContext = Java8BytecodeBridge.currentContext();
+      request = new MyRequest(argument);
+
+      if (!instrumenter().shouldStart(parentContext, request)) {
+        return;
+      }
+
+      context = instrumenter().start(parentContext, request);
+      scope = context.makeCurrent();
+    }
+
+    @Advice.OnMethodExit(onThrowable = Throwable.class, suppress = Throwable.class)
+    public static void onExit(
+        @Advice.Return Object returnValue,
+        @Advice.Thrown Throwable throwable,
+        @Advice.Local("otelRequest") MyRequest request,
+        @Advice.Local("otelContext") Context context,
+        @Advice.Local("otelScope") Scope scope) {
+
+      if (scope == null) {
+        // shouldStart() returned false, so nothing was started.
+        return;
+      }
+      scope.close();
+
+      MyResponse response = new MyResponse(returnValue);
+      instrumenter().end(context, request, response, throwable);
+    }
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+Because `instrumenter()` is a static import of `MySingletons.instrumenter()`,
+the same singleton `Instrumenter` created above is reused for every invocation
+of the instrumented method.
+
+> [!NOTE]
+>
+> Advice code is copied (inlined) into the target class rather than called as a
+> normal method, so it has several restrictions: use `Java8BytecodeBridge`
+> instead of `Context.current()`/`Span.current()`, keep the logic minimal, and
+> delegate any non-trivial work to helper classes such as your `Instrumenter`.
+> For a complete, runnable instrumentation, see the
+> [`InstrumentationModule` example](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension)
+> and the many instrumentations in the
+> [instrumentation library](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation).
 
 ## Extension examples
 
