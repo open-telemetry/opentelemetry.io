@@ -667,6 +667,7 @@ https://docs.spring.io/spring-security/reference/servlet/authorization/architect
 https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/scheduling/package-summary.html,206,1784284937
 https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/reactive/package-summary.html,206,1784284953
 https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/servlet/mvc/package-summary.html,206,1784284939
+https://docs.thecontextcompany.com/integrations/opentelemetry,200,1784625647
 https://docs.thousandeyes.com/product-documentation/integration-guides/opentelemetry/,200,1784183217
 https://docs.tracetest.io/configuration/connecting-to-data-stores/opentelemetry-collector,206,1784355858
 https://docs.vmware.com/en/vRealize-Log-Insight/8.10/com.vmware.log-insight.agent.admin.doc/GUID-40C13E10-1554-4F1B-B832-69CEBF85E7A0.html,200,1784183519
@@ -1492,6 +1493,7 @@ https://github.com/jjatria/mojolicious-plugin-opentelemetry,206,1784285143
 https://github.com/jjatria/perl-opentelemetry,206,1784183607
 https://github.com/jjatria/perl-opentelemetry-exporter-otlp,206,1784285131
 https://github.com/jjatria/perl-opentelemetry-sdk,206,1784285219
+https://github.com/jkoronaAtCisco,200,1784625650
 https://github.com/jkwatson,206,1784284910
 https://github.com/jmacd,206,1784355596
 https://github.com/jmw51798,206,1784284914
@@ -2749,6 +2751,7 @@ https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issue
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/demo,206,1784269414
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation,206,1784269413
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/database/sql,206,1784442929
+https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/anthropics/anthropic-sdk-go,200,1784625647
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/gin-gonic/gin,206,1784442921
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/redis/go-redis/v9,206,1784442922
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/sirupsen/logrus,206,1784442927
@@ -4912,6 +4915,7 @@ https://pkg.go.dev/github.com/Cyprinus12138/otelgin,200,1784356183
 https://pkg.go.dev/github.com/Jamstah/k8ssaauthextension,200,1784356093
 https://pkg.go.dev/github.com/Moby/Moby@v28.5.2+incompatible/api/types/container#CPUUsage,200,1784096748
 https://pkg.go.dev/github.com/XSAM/otelsql,200,1784183574
+https://pkg.go.dev/github.com/anthropics/anthropic-sdk-go,200,1784625653
 https://pkg.go.dev/github.com/dnwe/otelsarama,200,1784269904
 https://pkg.go.dev/github.com/gin-gonic/gin,200,1784442921
 https://pkg.go.dev/github.com/google/cadvisor@v0.56.2/info/v1#CpuUsage,200,1784096755
