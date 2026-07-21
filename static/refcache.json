@@ -5991,6 +5991,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-17T10:41:50.992783385Z"
   },
+  "https://github.com/jlowin/fastmcp": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-01T14:27:38.175673+05:30"
+  },
   "https://github.com/jmacd": {
     "StatusCode": 206,
     "LastSeen": "2026-07-18T06:19:56.876985803Z"
@@ -10255,9 +10259,17 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-17T10:37:18.397400785Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/agent/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-01T14:27:38.405602+05:30"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/cart/": {
     "StatusCode": 206,
     "LastSeen": "2026-07-17T06:24:03.83428245Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/chatbot/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-01T14:27:38.172755+05:30"
   },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/checkout/": {
     "StatusCode": 206,
@@ -10303,6 +10315,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-17T10:37:18.852979843Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/mcp/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-01T14:27:39.177827+05:30"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-07-19T06:26:35.265255531Z"
@@ -10338,6 +10354,14 @@
   "https://github.com/open-telemetry/opentelemetry-demo/tree/db0d981326ee0161d706c949061686d7823d99a2/src/product-reviews": {
     "StatusCode": 206,
     "LastSeen": "2026-07-15T06:23:26.073253638Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/agent#troubleshooting": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-06T19:42:02.532665+05:30"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/chatbot#troubleshooting": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-06T19:42:02.604556+05:30"
   },
   "https://github.com/open-telemetry/opentelemetry-demo/tree/main/test": {
     "StatusCode": 206,
@@ -18807,6 +18831,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-07-18T06:27:39.877993928Z"
   },
+  "https://modelcontextprotocol.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-01T14:27:36.92108+05:30"
+  },
   "https://modelcontextprotocol.io/specification/2025-06-18/basic/transports#session-management": {
     "StatusCode": 200,
     "LastSeen": "2026-07-18T06:27:47.81369154Z"
@@ -22671,6 +22699,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-15T06:26:18.465275806Z"
   },
+  "https://www.gradio.app/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-01T14:27:35.274948+05:30"
+  },
   "https://www.graphql-java.com/": {
     "StatusCode": 200,
     "LastSeen": "2026-07-17T10:40:35.585882374Z"
@@ -23950,6 +23982,10 @@
   "https://www.traceloop.com": {
     "StatusCode": 200,
     "LastSeen": "2026-07-17T10:41:14.835117656Z"
+  },
+  "https://www.traceloop.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-01T14:27:39.651119+05:30"
   },
   "https://www.typescriptlang.org/download": {
     "StatusCode": 206,

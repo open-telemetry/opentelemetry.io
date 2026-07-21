@@ -8,7 +8,9 @@ aliases: [trace_service_features, trace-features, ../trace-features]
 | --------------- | ---------- | ------------------------- | -------------------- | -------------------- | ----------------------- | ---------- | ------- | ------------------ |
 | Accounting      | .NET       | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | ✅                 |
 | Ad              | Java       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
+| Agent           | Python     | ✅                        | 🔕                   | 🔕                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 | Cart            | .NET       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | ✅                 |
+| Chatbot         | Python     | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 | Checkout        | Go         | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | ✅                 |
 | Currency        | C++        | 🔕                        | ✅                   | ✅                   | ✅                      | 🔕         | 🔕      | 🚧                 |
 | Email           | Ruby       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
@@ -16,6 +18,7 @@ aliases: [trace_service_features, trace-features, ../trace-features]
 | Fraud Detection | Kotlin     | ✅                        | 🚧                   | 🚧                   | 🚧                      | ✅         | 🚧      | 🚧                 |
 | Frontend        | TypeScript | ✅                        | ✅                   | ✅                   | 🔕                      | ✅         | ✅      | ✅                 |
 | Load Generator  | Python     | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | 🚧                 |
+| MCP             | Python     | ✅                        | 🔕                   | 🔕                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 | Payment         | JavaScript | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | ✅      | ✅                 |
 | Product Catalog | Go         | ✅                        | 🔕                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 | Product Reviews | Python     | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
