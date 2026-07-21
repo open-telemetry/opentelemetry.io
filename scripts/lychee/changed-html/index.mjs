@@ -18,14 +18,19 @@ import path from 'node:path';
 
 const DEFAULT_BRANCH = 'main';
 
-function git(...args) {
+// Run a git command and return its stdout. Strict by default: a failure
+// throws (naming the command), since misreading it as empty output would
+// silently shrink the diff scope. Pass `{ mayFail: true }` only where failure
+// legitimately means "no result" (e.g. no merge base).
+function git(args, { mayFail = false } = {}) {
   try {
     return execFileSync('git', args, {
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'ignore'],
     });
-  } catch {
-    return '';
+  } catch (err) {
+    if (mayFail) return '';
+    throw new Error(`git ${args.join(' ')} failed`, { cause: err });
   }
 }
 
@@ -42,7 +47,7 @@ function splitLines(out) {
 // mistyped LYCHEE_DIFF_BASE): a silent empty diff would false-green the check.
 export function changedFiles() {
   const baseRef = process.env.LYCHEE_DIFF_BASE || DEFAULT_BRANCH;
-  const base = git('merge-base', baseRef, 'HEAD').trim();
+  const base = git(['merge-base', baseRef, 'HEAD'], { mayFail: true }).trim();
   if (!base) {
     throw new Error(
       `cannot resolve the diff base '${baseRef}': ensure that it exists ` +
@@ -51,12 +56,12 @@ export function changedFiles() {
     );
   }
   const files = new Set();
-  splitLines(git('diff', '--name-only', base)).forEach((f) => files.add(f));
-  splitLines(git('diff', '--name-only')).forEach((f) => files.add(f));
-  splitLines(git('diff', '--name-only', '--cached')).forEach((f) =>
+  splitLines(git(['diff', '--name-only', base])).forEach((f) => files.add(f));
+  splitLines(git(['diff', '--name-only'])).forEach((f) => files.add(f));
+  splitLines(git(['diff', '--name-only', '--cached'])).forEach((f) =>
     files.add(f),
   );
-  splitLines(git('ls-files', '--others', '--exclude-standard')).forEach((f) =>
+  splitLines(git(['ls-files', '--others', '--exclude-standard'])).forEach((f) =>
     files.add(f),
   );
   return [...files];
