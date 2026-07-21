@@ -65,6 +65,22 @@ describe('excludePathPatternsOf()', () => {
       /f\.md.*non-empty list/,
     );
   });
+
+  // A blank pattern would translate to `/public/`, excluding every page and
+  // false-greening the whole check.
+  test('throws on an empty-string pattern', () => {
+    assert.throws(
+      () => excludePathPatternsOf(`${FRONT_MATTER_KEY}: ['']`, 'f.md'),
+      /f\.md.*non-blank/,
+    );
+  });
+
+  test('throws on a whitespace-only pattern', () => {
+    assert.throws(
+      () => excludePathPatternsOf(`${FRONT_MATTER_KEY}: ['  ']`, 'f.md'),
+      /f\.md.*non-blank/,
+    );
+  });
 });
 
 describe('driftedIgnoreDirOf()', () => {

@@ -55,10 +55,10 @@ export function excludePathPatternsOf(frontMatter, filePath) {
   if (
     !Array.isArray(patterns) ||
     patterns.length === 0 ||
-    !patterns.every((p) => typeof p === 'string')
+    !patterns.every((p) => typeof p === 'string' && /\S/.test(p))
   ) {
     throw new Error(
-      `${filePath}: front-matter '${FRONT_MATTER_KEY}' must be a non-empty list of regex strings`,
+      `${filePath}: front-matter '${FRONT_MATTER_KEY}' must be a non-empty list of non-blank regex strings`,
     );
   }
   return patterns;
