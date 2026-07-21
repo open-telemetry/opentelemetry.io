@@ -7,7 +7,7 @@ body_class: otel-mermaid-max-width
 
 **OpenTelemetry Demo** is composed of microservices written in different
 programming languages that talk to each other over gRPC and HTTP; and a load
-generator which uses [Locust](https://locust.io/) to fake user traffic.
+generator which uses [k6](https://k6.io/) to fake user traffic.
 
 ```mermaid
 graph TD
@@ -26,7 +26,7 @@ frontend(Frontend):::typescript
 frontend-proxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
 image-provider(Image Provider <br/>&#40nginx&#41):::cpp
 llm(LLM):::python
-load-generator([Load Generator]):::python
+load-generator([Load Generator]):::javascript
 payment(Payment):::javascript
 product-catalog(Product Catalog):::golang
 product-reviews(Product Reviews):::python
