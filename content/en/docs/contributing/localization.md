@@ -308,7 +308,9 @@ npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 Run `npm run fix:i18n:status` to set the `drifted_from_default` front-matter
 field on those target localization pages that have drifted. This field displays
 an "outdated" banner at the top of the page, and causes the link checker to skip
-the page, so that stale links on drifted pages don't fail CI.
+the page, so that stale links on drifted pages don't fail CI. For details about
+how the link checker handles drifted pages, see
+[Link checking](/site/build/link-checking/).
 
 ### Script help
 
@@ -548,7 +550,8 @@ adding a new glossary term.
 #### Link fixes and resource updates {#link-fixes-and-resource-updates}
 
 Changes to the English documentation can result in link-check failures for
-non-English locales. This happens when documentation pages are moved or deleted.
+non-English locales. This happens when documentation pages, or sections within
+them, are moved or deleted.
 
 When an English page is **moved**, first ensure that the page declares an
 [alias][aliases] for its old path. The alias keeps previously published links to
@@ -558,15 +561,25 @@ site's canonical page paths. Links to the old path therefore still need fixing.
 A moved or deleted page's localized copies themselves don't need to be touched:
 [drift tracking](#track-changes) flags them for their locale teams.
 
-Make the following updates to each non-English page that has a path that fails
-link checking (drifted pages are skipped by the link checker, so this typically
-applies to in-sync pages):
+When the link target was **moved**, make the following updates to each
+non-English page that has a path that fails link checking
+([drifted](#track-changes) pages are skipped by the link checker, so this
+typically applies to in-sync pages):
 
 - Update the link reference to the new page path.
 - Add the `# patched` YAML comment at the end of the line for the
   `default_lang_commit` front matter line.
 - Make no other changes to the file.
-- Rerun `npm run check:links` and ensure that no link failures remain.
+
+When the link target was **deleted** — the English page, or the section that the
+link points to, is gone — choosing a replacement or dropping the reference is a
+[semantic change](#prs-should-not-span-locales) for each affected locale, so
+don't patch such links. Instead, mark each affected localized page as
+[drifted](#track-changes) by setting `drifted_from_default: true` in its front
+matter, and leave the reconciliation to the page's locale team.
+
+In either case, rerun `npm run check:links` and ensure that no link failures
+remain.
 
 When an _external link_ to a **moved** (but otherwise semantically
 **unchanged**) resource (such as a GitHub file) results in a link-check failure,
