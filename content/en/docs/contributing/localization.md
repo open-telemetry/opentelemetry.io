@@ -586,7 +586,7 @@ be touched: [drift tracking](#track-changes) flags them for their locale teams.
 What may need fixing are the localized pages that **link** to such targets.
 Proceed according to the fate of the link target:
 
-- **A page or section was moved**:
+- **A page was moved**:
 
   1. Ensure that the moved English page declares an [alias][aliases] for its old
      path. The alias keeps previously published links to the page working, but
@@ -598,15 +598,25 @@ Proceed according to the fate of the link target:
      ([Drifted](#track-changes) pages are skipped by the link checker, so this
      typically applies to in-sync pages.)
 
+- **A section was moved**: aliases can't help in this case, since they redirect
+  page paths, not fragments. If the section moved within its page, preserve its
+  [heading ID](#headings) so that links to the section keep working. Otherwise,
+  update links to the section on each page that fails link checking, and mark
+  each edited localized page as [patched](#patched).
+
 - **A page or section was deleted**: choosing a replacement or dropping the
   reference is a [semantic change](#semantic-changes) for each affected locale,
-  so don't patch such links. Instead, mark each affected localized page as
-  [drifted](#track-changes) by setting `drifted_from_default: true` in its front
-  matter, and leave the reconciliation to the page's locale team.
+  so don't patch such links. Fixing the English pages that linked to the deleted
+  target makes their localized copies drift: once your English edits are
+  committed, run `npm run fix:i18n:status -- <PATHS-TO-LOCALIZED-COPIES>` to
+  refresh the [drift status](#drift-status) of those copies. The link checker
+  then skips those pages, and reconciliation is left to each page's locale team.
+  In the rare case where a failing link exists only in a localized page,
+  coordinate a fix with its locale team.
 
 - **An external resource was moved**, but is otherwise semantically unchanged
-  (such as a relocated GitHub file): update the link across all locales, marking
-  each edited localized page as [patched](#patched).
+  (such as a relocated GitHub file): update the link on each page that fails
+  link checking, marking each edited localized page as [patched](#patched).
 
 In all cases, rerun `npm run check:links` and confirm that no link failures
 remain.
