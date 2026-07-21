@@ -387,8 +387,8 @@ with the task list given below:
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
      - [ ] Create org-level teams for `LANG_ID` approvers and maintainers
-     - [ ] Register the locale in `data/locale-teams.yaml` and regenerate
-           CODEOWNERS
+     - [ ] Add the locale to `data/locale-teams.yaml` and run
+           `npm run fix:codeowners`
    - [ ] Create an issue to track the localization of the **glossary**. Add the
          issue number here. For details, see
          [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
@@ -478,7 +478,7 @@ when **Spelling** has no natural-language dictionary to add.
 
 #### Teams and code owners
 
-Register the new locale in [`data/locale-teams.yaml`][locale-teams] and run
+Add the new locale to [`data/locale-teams.yaml`][locale-teams] and run
 `npm run fix:codeowners` to regenerate the locale section of CODEOWNERS. Include
 these changes in the locale's first PR: CI requires the registry to agree with
 the locale directories under `content/`. A new locale usually starts
@@ -516,10 +516,11 @@ review and unblock the locale's PRs. A docs maintainer then merges such PRs
 manually, since [auto-merge](#auto-merge) requires locale maintainers.
 
 When an unstaffed locale gains maintainers, submit a registry PR that records
-them and regenerates CODEOWNERS (`npm run fix:codeowners`). This drops the
-`docs-approvers` fallback from the locale's lines, and the locale team gates its
-own PRs from then on: the locale has **graduated**. If a locale team later
-becomes dormant, the inverse registry change restores the fallback.
+them and regenerates the locale section of CODEOWNERS
+(`npm run fix:codeowners`). This drops the `docs-approvers` fallback from the
+locale's lines, and the locale team gates its own PRs from then on: the locale
+has **graduated**. If a locale team later becomes dormant, the inverse registry
+change restores the fallback.
 
 [code owner]:
   https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
