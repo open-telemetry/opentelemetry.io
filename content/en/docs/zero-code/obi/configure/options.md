@@ -3,6 +3,7 @@ title: OBI global configuration properties
 linkTitle: Global properties
 description: Configure global configuration properties that apply to OBI core.
 weight: 2
+cSpell:ignore: healthz
 ---
 
 OBI can be configured via environment variables or via a YAML configuration file
@@ -56,6 +57,25 @@ channel_buffer_len: 33
 | `log_format`<br>`OTEL_EBPF_LOG_FORMAT`             | Sets logger output format. Valid values: `text`, `json`.                                                                                   | string                  | `text`     |
 | `trace_printer`<br>`OTEL_EBPF_TRACE_PRINTER`       | Prints instrumented traces to stdout in a specified format, refer to [trace printer formats](#trace-printer-formats).                      | string                  | `disabled` |
 | `enforce_sys_caps`<br>`OTEL_EBPF_ENFORCE_SYS_CAPS` | Controls how OBI handles missing system capabilities at startup.                                                                           | boolean                 | `false`    |
+
+## Health check endpoint
+
+OBI can expose `/healthz` over TCP or a Unix domain socket. The JSON response
+reports the schema version, current Unix time, and process uptime. The endpoint
+is disabled by default.
+
+```yaml
+health_check:
+  port: 8080
+```
+
+| YAML<br>environment variable                                                 | Description                                                                                                             | Type   | Default |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
+| `health_check.port`<br>`OTEL_EBPF_HEALTH_CHECK_PORT`                         | Opens the health endpoint on the specified TCP port. `0` disables TCP health checks.                                    | int    | `0`     |
+| `health_check.unix_socket_path`<br>`OTEL_EBPF_HEALTH_CHECK_UNIX_SOCKET_PATH` | Binds the health endpoint to an absolute filesystem path or `@`-prefixed abstract socket. Takes precedence over `port`. | string | (unset) |
+
+For example, `unix_socket_path: /var/run/obi-health.sock` creates a filesystem
+socket, while `unix_socket_path: '@obi-health'` uses an abstract socket.
 
 ## Executable name matching
 

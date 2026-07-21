@@ -268,8 +268,6 @@ maintainers:
       - php-approvers
       - php-contrib-approvers
       - php-contrib-maintainers
-      - php-distro-approvers
-      - php-distro-maintainers
       - php-maintainers
       - php-triagers
     html_url: https://github.com/bobstrecansky
@@ -316,8 +314,6 @@ maintainers:
       - php-approvers
       - php-contrib-approvers
       - php-contrib-maintainers
-      - php-distro-approvers
-      - php-distro-maintainers
       - php-maintainers
       - php-triagers
     html_url: https://github.com/brettmc
@@ -957,6 +953,12 @@ maintainers:
       - zig-maintainers
     html_url: https://github.com/kmos
     avatar_url: https://avatars.githubusercontent.com/u/8403734?v=4
+  - name: kohbis
+    teams:
+      - docs-ja-approvers
+      - docs-ja-maintainers
+    html_url: https://github.com/kohbis
+    avatar_url: https://avatars.githubusercontent.com/u/18735471?v=4
   - name: lalitb
     teams:
       - arrow-approvers
@@ -1715,14 +1717,6 @@ approvers:
       - semconv-feature-flag-approvers
     html_url: https://github.com/askpt
     avatar_url: https://avatars.githubusercontent.com/u/2493377?v=4
-  - name: axw
-    teams:
-      - collector-approvers
-      - collector-contrib-approvers
-      - collector-contrib-triagers
-      - collector-triagers
-    html_url: https://github.com/axw
-    avatar_url: https://avatars.githubusercontent.com/u/843579?v=4
   - name: badhon495
     teams:
       - docs-bn-approvers
@@ -1946,11 +1940,6 @@ approvers:
       - semconv-feature-flag-approvers
     html_url: https://github.com/kinyoklion
     avatar_url: https://avatars.githubusercontent.com/u/4955475?v=4
-  - name: kohbis
-    teams:
-      - docs-ja-approvers
-    html_url: https://github.com/kohbis
-    avatar_url: https://avatars.githubusercontent.com/u/18735471?v=4
   - name: kota-sakuma
     teams:
       - docs-ja-approvers
@@ -2020,6 +2009,11 @@ approvers:
       - semconv-security-approvers
     html_url: https://github.com/mjwolf
     avatar_url: https://avatars.githubusercontent.com/u/2590169?v=4
+  - name: mquentin
+    teams:
+      - browser-approvers
+    html_url: https://github.com/mquentin
+    avatar_url: https://avatars.githubusercontent.com/u/6943103?v=4
   - name: MSNev
     teams:
       - semconv-browser-approvers
@@ -2698,6 +2692,9 @@ members:
   - name: jiekun
     html_url: https://github.com/jiekun
     avatar_url: https://avatars.githubusercontent.com/u/30280396?v=4
+  - name: jkoronaAtCisco
+    html_url: https://github.com/jkoronaAtCisco
+    avatar_url: https://avatars.githubusercontent.com/u/201937218?v=4
   - name: johnbley
     html_url: https://github.com/johnbley
     avatar_url: https://avatars.githubusercontent.com/u/5139839?v=4
