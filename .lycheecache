@@ -483,6 +483,7 @@ https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorp
 https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request,206,1784355802
 https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork,206,1784442350
 https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository,206,1784442340
+https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners,200,1784649104
 https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w,200,1784183191
 https://docs.google.com/document/d/1LPhVRSFkGNSuU1fBd81ulhsCPR4hkSZyyBj1SZ8fWOM/edit#heading=h.3p42p5s8n0ui,200,1784285023
 https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY,200,1784284842
@@ -3676,6 +3677,7 @@ https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml,206
 https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml,206,1784355595
 https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md,206,1784096635
 https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md,200,1784583090
+https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml,200,1784649104
 https://github.com/open-telemetry/opentelemetry.io/blob/main/data/spec-versions.yml,206,1784183314
 https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html,206,1784096617
 https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_shortcodes/collector-component-rows.html,206,1784355929
@@ -3726,6 +3728,7 @@ https://github.com/open-telemetry/opentelemetry.io/tree/main/i18n,206,1784355935
 https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs,206,1784442367
 https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages,206,1784183004
 https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge,206,1784183006
+https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-codeowners,200,1784649104
 https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/patch-report,206,1784355601
 https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/pr-fix,206,1784355597
 https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/report-failure,206,1784284692
