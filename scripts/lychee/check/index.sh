@@ -3,8 +3,8 @@
 # Run lychee over the built site (or over an explicit list of HTML files passed
 # as arguments, used by the diff-scoped check). Always passes an ABSOLUTE
 # `public/` path: lychee matches `exclude_path` against the input path as given,
-# and the IgnoreDirs port is anchored on `/public/...`, so a relative path would
-# silently disable every `exclude_path` entry.
+# and the generated `exclude_path` patterns are anchored on `/public/...`, so a
+# relative path would silently disable every `exclude_path` entry.
 #
 # Usage: scripts/lychee/check/index.sh [html-file ...]
 set -euo pipefail
