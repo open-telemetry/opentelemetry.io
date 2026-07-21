@@ -243,6 +243,14 @@
     "StatusCode": 200,
     "LastSeen": "2026-07-17T10:43:12.537489108Z"
   },
+  "https://blog.cocoapods.org/CocoaPods-Specs-Repo/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-16T19:01:03.585661-07:00"
+  },
+  "https://blog.cocoapods.org/CocoaPods-Support-Plans/?ref=jsdelivr-blog.ghost.io": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-16T19:01:03.282565-07:00"
+  },
   "https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/": {
     "StatusCode": 200,
     "LastSeen": "2026-07-16T06:34:20.963Z"
@@ -698,6 +706,10 @@
   "https://cloud-native.slack.com/archives/C01N7PP1THC": {
     "StatusCode": 200,
     "LastSeen": "2026-07-17T10:39:41.012089333Z"
+  },
+  "https://cloud-native.slack.com/archives/C01NCHR19SB": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-16T19:01:06.461365-07:00"
   },
   "https://cloud-native.slack.com/archives/C01NFPCV44V": {
     "StatusCode": 200,
@@ -2662,6 +2674,10 @@
   "https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/servlet/mvc/package-summary.html": {
     "StatusCode": 206,
     "LastSeen": "2026-07-17T10:42:19.81057219Z"
+  },
+  "https://docs.thecontextcompany.com/integrations/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-16T06:26:19.880939345Z"
   },
   "https://docs.thousandeyes.com/product-documentation/integration-guides/opentelemetry/": {
     "StatusCode": 200,
@@ -5974,6 +5990,10 @@
   "https://github.com/jjatria/perl-opentelemetry-sdk": {
     "StatusCode": 206,
     "LastSeen": "2026-07-17T10:46:59.826658851Z"
+  },
+  "https://github.com/jkoronaAtCisco": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-21T04:48:20.89828332Z"
   },
   "https://github.com/jkwatson": {
     "StatusCode": 206,
@@ -10763,6 +10783,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-17T10:37:03.824742709Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.10.0": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T09:46:41.733266123-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.7.0": {
     "StatusCode": 206,
     "LastSeen": "2026-07-17T06:27:11.152927962Z"
@@ -10782,6 +10806,14 @@
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/f6deabc4387de1e0bf4b2acdbc674f7601d4c7f2/internal/test/integration?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-07-16T06:26:43.433641305Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.10.0/examples/apache": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T09:46:44.92169332-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.10.0/examples/nginx": {
+    "StatusCode": 206,
+    "LastSeen": "2026-06-30T09:46:45.673992478-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.9.0/examples/apache": {
     "StatusCode": 206,
@@ -10990,6 +11022,10 @@
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/database/sql": {
     "StatusCode": 206,
     "LastSeen": "2026-07-19T06:35:29.638199127Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/anthropics/anthropic-sdk-go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-20T18:48:35.801588565Z"
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/gin-gonic/gin": {
     "StatusCode": 206,
@@ -14479,6 +14515,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-17T06:24:10.575691814Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-swift/issues/new": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-16T19:01:04.494912-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-swift/releases": {
     "StatusCode": 206,
     "LastSeen": "2026-07-17T06:24:05.347213133Z"
@@ -17291,6 +17331,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-07-17T10:37:20.033081728Z"
   },
+  "https://groups.google.com/a/opentelemetry.io/g/calendar-swift": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-16T19:01:06.977534-07:00"
+  },
   "https://grpc.github.io/grpc/core/md_doc_naming.html": {
     "StatusCode": 206,
     "LastSeen": "2026-07-18T06:27:56.591173621Z"
@@ -19654,6 +19698,10 @@
   "https://pkg.go.dev/github.com/XSAM/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2026-07-16T06:32:54.148786222Z"
+  },
+  "https://pkg.go.dev/github.com/anthropics/anthropic-sdk-go": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-20T18:48:36.060900084Z"
   },
   "https://pkg.go.dev/github.com/dnwe/otelsarama": {
     "StatusCode": 200,

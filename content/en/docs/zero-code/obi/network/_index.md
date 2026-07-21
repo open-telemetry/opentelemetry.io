@@ -3,7 +3,7 @@ title: Network metrics
 linkTitle: Network
 description: Configuring OBI to observe point-to-point network metrics.
 weight: 8
-cSpell:ignore: replicaset statefulset
+cSpell:ignore: OpenShift replicaset statefulset
 ---
 
 OpenTelemetry eBPF Instrumentation can be configured to provide network metrics
@@ -18,7 +18,7 @@ consult the [configuration documentation](config/).
 
 ## Network metrics
 
-OBI provides two families of network metrics:
+OBI provides byte and packet flow metrics, plus an inter-zone byte metric:
 
 **Flow metrics**: capture the bytes sent and received between different
 endpoints, from the application point of view.
@@ -28,13 +28,20 @@ endpoints, from the application point of view.
 - To enable it, add the `network` option to the
   [OTEL_EBPF_METRICS_FEATURES](../configure/export-data/) configuration option.
 
+**Flow packet metrics**: count the packets sent and received between endpoints.
+
+- `obi.network.flow.packets`, if exported via OpenTelemetry.
+- `obi_network_flow_packets_total`, if exported by a Prometheus endpoint.
+- To enable it, add the `network_flow_packets` option to
+  [OTEL_EBPF_METRICS_FEATURES](../configure/export-data/).
+
 **Inter-zone metrics**: capture the bytes sent and received between different
 availability zones, from the application point of view.
 
 - `obi.network.inter.zone.bytes`, if it is exported via OpenTelemetry.
 - `obi_network_inter_zone_bytes_total`, if it is exported by a Prometheus
   endpoint.
-- To enable it, add the `network` option to the
+- To enable it, add the `network_inter_zone` option to the
   [OTEL_EBPF_METRICS_FEATURES](../configure/export-data/) configuration option.
 
 > [!NOTE]
@@ -62,7 +69,7 @@ Network metrics are labeled with the following attributes:
 | `dst.port`                                        | Destination port (remote for egress, local for ingress)                                                                                                                               |
 | `dst.zone` / `dst_zone`                           | Name of the destination cloud availability zone                                                                                                                                       |
 | `iface`                                           | Network interface name                                                                                                                                                                |
-| `k8s.cluster.name` / `k8s_cluster_name`           | Name of the Kubernetes cluster. OBI can auto-detect it on Google Cloud, Microsoft Azure, and Amazon Web Services. For other providers, set the `OTEL_EBPF_KUBE_CLUSTER_NAME` property |
+| `k8s.cluster.name` / `k8s_cluster_name`           | Name of the Kubernetes cluster. OBI checks node labels, OpenShift infrastructure metadata, Google Cloud, Microsoft Azure, and Amazon Web Services. To override detection, set `OTEL_EBPF_KUBE_CLUSTER_NAME`. |
 | `k8s.dst.name` / `k8s_dst_name`                   | Destination pod name                                                                                                                                                                  |
 | `k8s.dst.namespace` / `k8s_dst_namespace`         | Destination namespace name                                                                                                                                                            |
 | `k8s.dst.node.ip` / `k8s_dst_node_ip`             | Destination node IP address                                                                                                                                                           |

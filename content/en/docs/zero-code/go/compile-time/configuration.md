@@ -16,12 +16,13 @@ application produces.
 
 `otelc` wraps the Go toolchain. Its subcommands:
 
-| Command         | Purpose                                                              |
-| --------------- | -------------------------------------------------------------------- |
-| `otelc go …`    | Run a `go` command (such as `go build`) with instrumentation applied |
-| `otelc setup`   | Set up the environment for instrumentation                           |
-| `otelc cleanup` | Remove all artifacts created by the setup and build phases           |
-| `otelc version` | Print the tool version                                               |
+| Command         | Purpose                                                                                             |
+| --------------- | --------------------------------------------------------------------------------------------------- |
+| `otelc go …`    | Run a `go` command (such as `go build`) with instrumentation applied                                |
+| `otelc setup`   | Set up the environment for instrumentation                                                          |
+| `otelc pin`     | Generate or update `otel.instrumentation.go` to pin instrumentation packages for the current module |
+| `otelc cleanup` | Remove all artifacts created by the setup and build phases                                          |
+| `otelc version` | Print the tool version                                                                              |
 
 Flags are passed before the subcommand:
 

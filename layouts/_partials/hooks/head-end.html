@@ -7,7 +7,7 @@
   {{ $canonicalURL := .Permalink -}}
 
   {{ $defaultLang := "en" -}}
-  {{ if and (ne .Language.Lang $defaultLang) .File -}}
+  {{ if and (ne .Language.Name $defaultLang) .File -}}
     {{/* This page is in a non-default-language section */ -}}
     {{ $pagePath := strings.TrimPrefix (add hugo.WorkingDir "/content/") .File.Filename -}}
     {{ if hasPrefix $pagePath $defaultLang -}}
