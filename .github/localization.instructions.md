@@ -134,12 +134,15 @@ default_lang_commit: <commit-hash-of-english-page>
 3. Update `default_lang_commit` to latest hash:
    `npm run check:i18n -- -c HEAD content/xx/path/to/page`
 
-**Targeted Updates (Advanced):**
+**Patching (build and check fixes only):**
 
-- For small additions to drifted files, you can make targeted updates
-- Add `# patched` comment to `default_lang_commit` line in front matter
-- Document rationale in PR description
-- Example use cases: Adding new glossary terms, fixing broken links
+- Fixes strictly required to keep the site build and its checks green (link
+  fixes, build fixes) may edit localized pages without syncing them
+- Make only the edits the fix requires, and add the `# patched` comment to the
+  `default_lang_commit` line in front matter
+- Any other change to a localized page — including targeted content additions to
+  drifted pages, such as new glossary terms — is a semantic change for that
+  locale and belongs in a locale-specific PR
 
 ### Starting New Localizations
 

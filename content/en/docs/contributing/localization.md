@@ -303,6 +303,22 @@ npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 > `main` at HEAD in your **local environment**. Make sure that you fetch and
 > pull `main`, if you want HEAD to correspond to `main` in GitHub.
 
+### Patching localized pages {#patched}
+
+Some [locale-spanning fixes](#keep-checks-green) require editing a localized
+page without syncing it to its English counterpart — for example, retargeting a
+link after an English page was moved. Mark each localized page fixed in this way
+as **patched**:
+
+- Make only the edits that the fix requires — no other changes to the page.
+- Append the `# patched` YAML comment to the page's `default_lang_commit` line,
+  like this: `default_lang_commit: abc4567... # patched`.
+
+The marker tells the page's locale team that the page was mechanically fixed
+without being synced: the hash still records the last sync point. The marker is
+dropped the next time the page's hash is
+[updated](#updating-default_lang_commit-for-existing-pages).
+
 ### Drift status
 
 Run `npm run fix:i18n:status` to set the `drifted_from_default` front-matter
@@ -513,6 +529,11 @@ README][].
 
 ### PRs should not span locales {#prs-should-not-span-locales}
 
+As a general rule, a PR should not span locales, that is, it should change the
+pages of at most one locale. The only exceptions are described in this section.
+
+#### Semantic changes {#semantic-changes}
+
 Approvers should ensure that [PRs][] making **semantic** changes to doc pages do
 not span multiple locales. A semantic change is one that impacts the _meaning_
 of the page content — what readers understand and act on. Code blocks, commands,
@@ -523,6 +544,16 @@ review the English-language edits to determine if the changes are appropriate
 for their locale, and how best to incorporate them into their locale. If changes
 are necessary, the locale approvers will make them via their own locale-specific
 PRs.
+
+> [!NOTE] Content-neutral maintenance
+>
+> The locale-span rule governs page **content**. Maintainers sometimes submit
+> content-neutral changes that necessarily span locales: site-wide tooling,
+> configuration, front-matter, or markup updates, including the automated
+> [drift-status](#track-changes) bookkeeping PRs. Such changes don't alter the
+> meaning of localized pages.
+
+#### Keeping the build and checks green {#keep-checks-green}
 
 A PR may span multiple locales **only** when that is strictly required to keep
 the site build and its checks green:
@@ -535,17 +566,11 @@ the site build and its checks green:
   page's [drift status](#track-changes) only shields it from link checking, not
   from the Hugo build.
 
+In both cases, mark every localized page that you fix as [patched](#patched).
+
 Treat any other change to a localized page as a **semantic** change for that
 locale. This includes targeted content additions to drifted pages, such as
 adding a new glossary term.
-
-> [!NOTE] Content-neutral maintenance
->
-> The rule above governs page **content**. Maintainers sometimes submit
-> content-neutral changes that necessarily span locales: site-wide tooling,
-> configuration, front-matter, or markup updates, including the automated
-> [drift-status](#track-changes) bookkeeping PRs. Such changes don't alter the
-> meaning of localized pages.
 
 #### Link fixes and resource updates {#link-fixes-and-resource-updates}
 
@@ -561,20 +586,15 @@ site's canonical page paths. Links to the old path therefore still need fixing.
 A moved or deleted page's localized copies themselves don't need to be touched:
 [drift tracking](#track-changes) flags them for their locale teams.
 
-When the link target was **moved**, make the following updates to each
-non-English page that has a path that fails link checking
-([drifted](#track-changes) pages are skipped by the link checker, so this
-typically applies to in-sync pages):
-
-- Update the link reference to the new page path.
-- Add the `# patched` YAML comment at the end of the line for the
-  `default_lang_commit` front matter line.
-- Make no other changes to the file.
+When the link target was **moved**, update the link to the new page path on each
+non-English page that fails link checking, and mark each edited page as
+[patched](#patched). ([Drifted](#track-changes) pages are skipped by the link
+checker, so this typically applies to in-sync pages.)
 
 When the link target was **deleted** — the English page, or the section that the
 link points to, is gone — choosing a replacement or dropping the reference is a
-[semantic change](#prs-should-not-span-locales) for each affected locale, so
-don't patch such links. Instead, mark each affected localized page as
+[semantic change](#semantic-changes) for each affected locale, so don't patch
+such links. Instead, mark each affected localized page as
 [drifted](#track-changes) by setting `drifted_from_default: true` in its front
 matter, and leave the reconciliation to the page's locale team.
 
