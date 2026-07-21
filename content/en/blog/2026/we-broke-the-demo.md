@@ -187,10 +187,10 @@ a real OTel span for each task, injects a `W3C traceparent` into every outgoing
 request, and propagates the same baggage the old Locust hooks did, so the load
 generator's traffic still looks like the previous one.
 
-There are two main pluses though. K6's own built-in test metrics (Virtual
-Users (VUs), request duration, and so on) are shipped out via OTLP, which means
-that now both "how the test performed" and "what the test produced" land in the
-same pipeline. And the most impressive one is memory consumption. The new load
+There are two main pluses though. K6's own built-in test metrics (Virtual Users
+(VUs), request duration, and so on) are shipped out via OTLP, which means that
+now both "how the test performed" and "what the test produced" land in the same
+pipeline. And the most impressive one is memory consumption. The new load
 generator is now shipped with a memory limit of 512 Mb where Locust used to use
 1,500 Mb.
 
