@@ -132,7 +132,7 @@ logs, and profiles, all flowing through the same pipeline.
 
 ### OpAMP server
 
-Everything on the Demo sends signals to a single Collector instance, but real
+Everything in the Demo sends signals to a single Collector instance, but real
 deployments don't run one Collector. They run tens of them, sometimes thousands,
 spread across services, regions, and teams. And once you're at that scale, a new
 question shows up: How do you actually know what configuration each of those
@@ -188,7 +188,7 @@ request, and propagates the same baggage the old Locust hooks did, so the load
 generator's traffic still looks like the previous one.
 
 There are two main pluses though. K6's own built-in test metrics (Virtual
-Users-VUs, request duration, and so on) are shipped out via OTLP, which means
+Users (VUs), request duration, and so on) are shipped out via OTLP, which means
 that now both "how the test performed" and "what the test produced" land in the
 same pipeline. And the most impressive one is memory consumption. The new load
 generator is now shipped with a memory limit of 512 Mb where Locust used to use
