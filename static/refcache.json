@@ -11019,6 +11019,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-19T06:35:29.638199127Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/anthropics/anthropic-sdk-go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-20T18:48:35.801588565Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/gin-gonic/gin": {
     "StatusCode": 206,
     "LastSeen": "2026-07-19T06:35:21.313573385Z"
@@ -19690,6 +19694,10 @@
   "https://pkg.go.dev/github.com/XSAM/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2026-07-16T06:32:54.148786222Z"
+  },
+  "https://pkg.go.dev/github.com/anthropics/anthropic-sdk-go": {
+    "StatusCode": 200,
+    "LastSeen": "2026-07-20T18:48:36.060900084Z"
   },
   "https://pkg.go.dev/github.com/dnwe/otelsarama": {
     "StatusCode": 200,
