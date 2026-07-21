@@ -3143,6 +3143,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-18T06:20:00.848069578Z"
   },
+  "https://explorer.opentelemetry.io/java-agent/releases": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-14T17:27:34.397585513Z"
+  },
   "https://expressjs.com/": {
     "StatusCode": 206,
     "LastSeen": "2026-07-19T06:25:59.161625484Z"
