@@ -191,8 +191,8 @@ There are two main pluses though. K6's own built-in test metrics (Virtual Users
 (VUs), request duration, and so on) are shipped out via OTLP, which means that
 now both "how the test performed" and "what the test produced" land in the same
 pipeline. And the most impressive one is memory consumption. The new load
-generator is now shipped with a memory limit of 512 Mb where Locust used to use
-1,500 Mb.
+generator is now shipped with a memory limit of 512 MiB where Locust used to use
+1,500 MiB.
 
 ### A new test suite
 
