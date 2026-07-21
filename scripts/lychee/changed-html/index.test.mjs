@@ -5,7 +5,7 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { contentToPublic, confineToPublic } from './index.mjs';
+import { contentToPublic, confineToPublic, changedFiles } from './index.mjs';
 
 describe('contentToPublic()', () => {
   test('an EN section index drops the locale prefix', () => {
@@ -82,5 +82,17 @@ describe('confineToPublic()', () => {
 
   test('a null input stays null', () => {
     assert.equal(confineToPublic(null, root), null);
+  });
+});
+
+describe('changedFiles()', () => {
+  test('an unresolvable diff base is reported as an error', () => {
+    // A silent empty result here would false-green the diff-scoped check.
+    process.env.LYCHEE_DIFF_BASE = 'definitely-not-a-git-ref';
+    try {
+      assert.throws(() => changedFiles(), /cannot resolve the diff base/i);
+    } finally {
+      delete process.env.LYCHEE_DIFF_BASE;
+    }
   });
 });

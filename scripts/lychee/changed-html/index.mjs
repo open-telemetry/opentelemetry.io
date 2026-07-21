@@ -16,7 +16,7 @@ import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 
-const DEFAULT_BRANCH = process.env.LYCHEE_DIFF_BASE || 'main';
+const DEFAULT_BRANCH = 'main';
 
 function git(...args) {
   try {
@@ -37,12 +37,21 @@ function splitLines(out) {
 }
 
 // Changed files vs the merge-base with the default branch, union working-tree
-// (staged + unstaged) and untracked files. De-duplicated.
+// (staged + unstaged) and untracked files. De-duplicated. Throws when the diff
+// base cannot be resolved (missing branch, shallow/single-branch clone, or a
+// mistyped LYCHEE_DIFF_BASE): a silent empty diff would false-green the check.
 export function changedFiles() {
+  const baseRef = process.env.LYCHEE_DIFF_BASE || DEFAULT_BRANCH;
+  const base = git('merge-base', baseRef, 'HEAD').trim();
+  if (!base) {
+    throw new Error(
+      `cannot resolve the diff base '${baseRef}': ensure that it exists ` +
+        `locally (in shallow or single-branch clones, fetch it first), or ` +
+        `set LYCHEE_DIFF_BASE to a valid ref`,
+    );
+  }
   const files = new Set();
-  const base = git('merge-base', DEFAULT_BRANCH, 'HEAD').trim();
-  if (base)
-    splitLines(git('diff', '--name-only', base)).forEach((f) => files.add(f));
+  splitLines(git('diff', '--name-only', base)).forEach((f) => files.add(f));
   splitLines(git('diff', '--name-only')).forEach((f) => files.add(f));
   splitLines(git('diff', '--name-only', '--cached')).forEach((f) =>
     files.add(f),

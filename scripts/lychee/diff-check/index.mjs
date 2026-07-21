@@ -13,7 +13,14 @@ import { sortCacheText } from 'link-cache/check/index.mjs';
 import { mappedHtmlFiles } from '../changed-html/index.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const files = mappedHtmlFiles();
+
+let files;
+try {
+  files = mappedHtmlFiles();
+} catch (e) {
+  console.error(`[help] ${e.message}`);
+  process.exit(1);
+}
 
 if (files.length === 0) {
   console.log('No changed content pages map to built HTML; nothing to check.');
