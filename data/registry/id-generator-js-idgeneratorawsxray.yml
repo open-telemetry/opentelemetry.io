@@ -6,12 +6,18 @@ tags:
   - idgeneratorawsxray
   - id-generator
   - js
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/id-generator-aws-xray
 license: Apache 2.0
 description:
   The OpenTelemetry IdGenerator for AWS X-Ray generates trace IDs with its first
-  four bytes set to the start time of the
+  four bytes set to the start time of the trace followed by a unique identifier
+  consisting of 12 bytes of randomly generated numbers.
 authors:
   - name: OpenTelemetry Authors
-createdAt: 2026-07-09
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/id-generator-aws-xray
+createdAt: 2025-03-26
+package:
+  registry: npm
+  name: '@opentelemetry/id-generator-aws-xray'
+  version: 2.1.0
+isFirstParty: false

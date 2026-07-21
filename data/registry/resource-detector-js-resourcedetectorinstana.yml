@@ -5,8 +5,6 @@ tags:
   - instana
   - resource-detector
   - js
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-instana
 license: Apache 2.0
 description:
   This resource detector will detect the Instana agent to register the
@@ -16,4 +14,10 @@ description:
   Node.js OTel process with the incoming OpenTelemetry spans.
 authors:
   - name: OpenTelemetry Authors
-createdAt: 2026-07-09
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-instana
+createdAt: 2022-12-07
+package:
+  registry: npm
+  name: '@opentelemetry/resource-detector-instana'
+  version: 0.39.0

@@ -5,10 +5,14 @@ tags:
   - azure
   - resource-detector
   - js
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-azure
 license: Apache 2.0
 description: Resource detector for Azure.
 authors:
   - name: OpenTelemetry Authors
-createdAt: 2026-07-09
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-azure
+createdAt: 2022-12-07
+package:
+  registry: npm
+  name: '@opentelemetry/resource-detector-azure'
+  version: 0.28.0

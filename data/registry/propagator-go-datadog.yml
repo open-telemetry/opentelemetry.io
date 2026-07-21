@@ -1,5 +1,5 @@
 title: OpenTelemetry context propagation for Datadog
-registryType: utilities
+registryType: propagator
 language: go
 tags:
   - go

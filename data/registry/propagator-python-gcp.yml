@@ -1,5 +1,5 @@
 title: Google Cloud Tools
-registryType: utilities
+registryType: propagator
 language: python
 tags:
   - python

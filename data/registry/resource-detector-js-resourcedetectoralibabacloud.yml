@@ -6,10 +6,14 @@ tags:
   - alibabacloud
   - resource-detector
   - js
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-alibaba-cloud
 license: Apache 2.0
 description: Resource detector for Alibaba Cloud.
 authors:
   - name: OpenTelemetry Authors
-createdAt: 2026-07-09
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-alibaba-cloud
+createdAt: 2022-12-07
+package:
+  registry: npm
+  name: '@opentelemetry/resource-detector-alibaba-cloud'
+  version: 0.35.0

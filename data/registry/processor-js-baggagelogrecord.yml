@@ -6,8 +6,6 @@ tags:
   - baggagelogrecord
   - processor
   - js
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/baggage-log-record-processor
 license: Apache 2.0
 description:
   The BaggageLogRecordProcessor reads entries stored in Baggage from the parent
@@ -16,4 +14,11 @@ description:
   keys and
 authors:
   - name: OpenTelemetry Authors
-createdAt: 2026-07-09
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/baggage-log-record-processor
+createdAt: 2025-03-26
+package:
+  registry: npm
+  name: '@opentelemetry/baggage-log-record-processor'
+  version: 0.21.0
+isFirstParty: false

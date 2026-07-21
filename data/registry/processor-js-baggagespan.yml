@@ -6,8 +6,6 @@ tags:
   - baggagespan
   - processor
   - js
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/baggage-span-processor
 license: Apache 2.0
 description:
   The BaggageSpanProcessor reads entries stored in Baggage from the parent
@@ -16,4 +14,11 @@ description:
   keys and
 authors:
   - name: OpenTelemetry Authors
-createdAt: 2026-07-09
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/baggage-span-processor
+createdAt: 2025-03-26
+package:
+  registry: npm
+  name: '@opentelemetry/baggage-span-processor'
+  version: 0.5.0
+isFirstParty: false
