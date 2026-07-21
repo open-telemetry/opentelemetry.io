@@ -90,8 +90,7 @@ export function confineToPublic(rel, root = process.cwd()) {
   return abs === pubRoot || abs.startsWith(pubRoot + path.sep) ? abs : null;
 }
 
-// Mapped, existing, absolute public HTML files for the current diff. Reports
-// unmappable / unbuilt changes on stderr.
+// Mapped, existing, absolute public HTML files for the current diff.
 export function mappedHtmlFiles(root = process.cwd()) {
   const mapped = [];
   const skipped = [];
