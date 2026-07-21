@@ -53,9 +53,13 @@ Three sources feed the Collector, rolled out in phases:
   reachable for ingestion.
 - The infrastructure is the OpenTelemetry Cloudflare account
   ([community#3368][]); the Collector runs on Cloudflare Containers.
-- The design must remain portable across providers. Container-based deployment
-  using IaC allows easy maintenance and deployment on other providers, if
-  needed.
+- Deployment splits by concern: the Collector runs from a custom-built image
+  deployed with the platform's native container tooling, while edge
+  configuration (DNS, abuse-protection rules) and supporting resources are
+  managed as IaC.
+- The design must remain portable across providers. The Collector image and its
+  configuration stay portable; a thin, provider-specific deployment layer is the
+  accepted trade-off for running on a managed container platform.
 
 ### Abuse protection
 
@@ -96,9 +100,15 @@ Observability][] setup and takes no position on it.
 
 ## Open Questions
 
-- **Configuration and IaC home**: where the Collector configuration and stack
-  IaC live is a community decision scheduled for phase 1. A dedicated repository
-  is the custodians' preference, with `open-telemetry/admin` as the alternative.
+- **Configuration and IaC home**: the Collector configuration and stack IaC are
+  kept together and public; where they live is a community decision scheduled
+  for phase 1. Two options are on the table: reuse `open-telemetry/admin`, or
+  create a dedicated public repository. A dedicated repository is favored on
+  three counts: it isolates the infrastructure credential and deploy pipeline in
+  a small, purpose-scoped repo; it can double as a public blueprint others study
+  and adapt (built out only after the deployment works); and it keeps
+  live-infrastructure provisioning out of `admin`, whose scope is GitHub-org
+  configuration with a single provider and unmanaged secrets.
 - **Data retention**: retention periods per backend are deferred until the phase
   2 persistence spike establishes each backend's storage constraints.
 
