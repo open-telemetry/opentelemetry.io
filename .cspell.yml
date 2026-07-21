@@ -20,7 +20,7 @@ ignorePaths:
   - data/ecosystem/vendors.yaml
   - data/collector
   - public/_redirects
-  - static/refcache.json
+  - .lycheecache
 patterns:
   - name: CodeBlock
     pattern: |

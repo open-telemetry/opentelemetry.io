@@ -1,34 +1,29 @@
-# Experimental lychee config for the link-check-lychee pilot (BASE FILE).
+# Lychee link-checker configuration (BASE FILE).
 #
-# `lychee.toml` is GENERATED from this file plus an `exclude_path` block (the
-# IgnoreDirs port). Edit THIS base; do not edit the generated `lychee.toml`
-# (gitignored). Regenerate with: npm run generate:config:links:lychee
+# `lychee.toml` is GENERATED from this file plus an `exclude_path` block
+# computed from page front matter. Edit THIS base; do not edit the generated
+# `lychee.toml` (gitignored). Regenerate with: npm run generate:config:links
 #
-# Ports `.htmltest.base.yml` `IgnoreURLs` -> lychee `exclude`. Internal-path
-# rules are written without a leading `^/` so they match lychee's resolved
-# `file://` URIs (built with `--root-dir public`).
+# Internal-path rules in `exclude` are written without a leading `^/` so they
+# match lychee's resolved `file://` URIs (built with `--root-dir public`).
 #
 # cSpell:disable
 
 cache = true
-max_cache_age = "554d"      # ~18 months, matching htmltest CacheExpires
-cache_exclude_status = "400..599"  # don't persist transient/bot-wall failures (htmltest only caches 2xx)
+max_cache_age = "554d"      # ~18 months
+cache_exclude_status = "400..599"  # don't persist transient/bot-wall failures
 no_progress = true
-extensions = ["html"]       # parity with htmltest FileExtension: .html (skip the llms *.md outputs)
+extensions = ["html"]       # skip the llms *.md outputs
 timeout = 15
 max_retries = 0
-include_fragments = "full"  # parity with htmltest anchor checking (0.24.2: enum, not bool)
+include_fragments = "full"  # check anchors too; this setting is an enum, not a boolean
 index_files = ["index.html"]  # resolve Hugo pretty-URL dir links to index.html for fragment checks
 
 exclude = [
-  # KEEP IN SYNC with `IgnoreURLs` in `.htmltest.base.yml`: this array ports
-  # those rules for the lychee pilot (see #10449). Mirror changes between the
-  # two, but the internal-path rules are NOT 1:1 copies. To port an htmltest
-  # internal rule: drop the leading `^/` anchor and the `(/..)?`/`\.\.` locale
-  # alternatives (lychee matches the resolved `file://` URI, so an unanchored
-  # `/docs/…` substring covers every locale); escape literal dots. External-host
-  # rules (those starting `^https?://`) carry over verbatim.
-  # --- internal path rules (htmltest IgnoreURLs, internal) ---
+  # Rule-writing notes: internal-path rules match lychee's resolved `file://`
+  # URI, so write them UNANCHORED (a `/docs/…` substring covers every locale)
+  # and escape literal dots. External-host rules start with `^https?://`.
+  # --- internal path rules ---
   '/index\.xml$',                                   # RSS alternate links
   '[?&]link-check=no',                              # opt-out query param
   '/api/?$',                                        # ^/api/?$
@@ -50,9 +45,7 @@ exclude = [
   '^https?://(otel-demo|traefik)\.localhost',
   '^https://pdf\.sciencedirectassets\.com/280203/',
   '^https://platform\.openai\.com',
-  '^https://star-history\.com',
   '^https://twitter\.com',
-  '^https://www\.youtube\.com/playlist\?list=',
   '^https://x\.com',
   '^https://x\.ai',
   '^https://www\.deepseek\.com',
@@ -61,7 +54,6 @@ exclude = [
   '^https://.*\.sched\.com',
   '^https://wiki\.osdev\.org',
   '^https://www\.merriam-webster\.com',
-  '^https://hydrolix\.io/',
   '^https://oatpp\.io',
   '^https://www\.intersystems\.com',
   '^https://github\.com/open-telemetry/opentelemetry\.io/issues/?\?q=',
@@ -76,17 +68,12 @@ exclude = [
   '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/[^d]',
   '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/docs/[^s]',
   '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/docs/security',
-  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/docs/specs/otel-config/',
   '^https://github\.com/open-telemetry/semantic-conventions/tree/main',
 
-  # --- data-proofer-ignore parity (element-level skip, ported to URL) ---
-  # Docsy "last modified" page-meta links: htmltest skips these via the
-  # `data-proofer-ignore` attribute (its IgnoreTagAttribute), which Lychee has
-  # no equivalent for. They're never in refcache (htmltest never checks them)
-  # and can't be cache-seeded, so exclude by URL to match htmltest's skip.
-  # Derived from the on-page `data-proofer-ignore` elements; regenerate/verify
-  # the set with:
-  #   node scripts/lychee/data-proofer-ignore-to-lychee/index.mjs
+  # --- element-level skips, expressed as URL excludes ---
+  # Docsy "last modified" page-meta links: these carry a `data-proofer-ignore`
+  # attribute on the page, which Lychee has no equivalent for; exclude by URL
+  # instead (Docsy page-meta partials).
   '^https://github\.com/open-telemetry/opentelemetry\.io/commit/',
   # `compare/` is restricted to the page-meta SHA-range form (`<sha>..<sha>`):
   # the year-in-review posts link real, checked `compare/<tag>...<tag>` URLs
