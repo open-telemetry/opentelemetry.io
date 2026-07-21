@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Diff-scoped lychee check: run lychee only over the built HTML for content
-// files changed in this PR / working tree. No-op (exit 0) when nothing maps, so
-// it's cheap to run on docs-free changes. Delegates to scripts/lychee/check/index.sh
-// so the absolute `--root-dir public` handling stays in one place.
+// files changed in this PR / working tree; no-op (exit 0) when nothing maps.
+// Delegates to scripts/lychee/check/index.sh so the absolute
+// `--root-dir public` handling stays in one place.
 
 import { spawnSync } from 'node:child_process';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';

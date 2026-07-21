@@ -41,9 +41,17 @@ For details, see [Build kinds: full and lean][].
 Lychee runs over the built site (`public/`) using the generated, git-ignored
 `lychee.toml`. The `generate:config:links` script derives it from
 [`lychee.base.toml`][] plus an `exclude_path` block computed from page front
-matter: pages marked `drifted_from_default: true`, and path patterns listed
-under the `link_check_exclude_path` front-matter key (see, for example,
-[`content/en/blog/_index.md`][blog-index]).
+matter, which has two sources:
+
+- **`link_check_exclude_path`** — a list of site-relative path regexes for pages
+  the link checker must skip, such as blog pagination and old blog posts; see
+  [`content/en/blog/_index.md`][blog-index]. Start a pattern with `^(../)?` to
+  have it cover every locale: the optional `../` matches a two-letter locale
+  path segment such as `ja/`.
+- **`drifted_from_default: true`** — [drifted localized pages][drifted]. Links
+  _from_ a drifted page aren't checked, since they may be stale, but the page
+  remains a valid link target: inbound links from in-sync pages, including
+  fragments, are still validated.
 
 ## Link cache {#refcache}
 
@@ -85,6 +93,7 @@ The job fails if any link check fails, or if the run leaves the committed
 [blog-index]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
 [ci]: ../ci-workflows/
+[drifted]: /docs/contributing/localization/#track-changes
 [housekeeping]: ../ci-workflows/#housekeeping
 [Lychee]: https://lychee.cli.rs/
 [`lychee.base.toml`]:

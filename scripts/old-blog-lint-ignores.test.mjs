@@ -2,9 +2,7 @@
 // file seeded with violations is created in an old blog folder (must be
 // ignored) and in a recent one (must be flagged). For the policy, tool list,
 // and config details, see:
-//
-// - https://opentelemetry.io/site/skills/update-old-blog-ignores/
-// - content/en/site/skills/update-old-blog-ignores.md
+// https://opentelemetry.io/site/skills/update-old-blog-ignores/
 //
 // Link checking is not covered (requires a site build); validate it manually
 // via `npm run check:links`.
