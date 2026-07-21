@@ -532,11 +532,19 @@ the site build and its checks green:
   page's [drift status](#track-changes) only shields it from link checking, not
   from the Hugo build.
 
-<a id="targeted-content-additions"></a> Any other change to a localized page is
-a **semantic** change for that locale. This includes targeted content additions
-to drifted pages, such as adding a new glossary term. As explained in the
-[previous section](#prs-should-not-span-locales), leave such changes to each
+<a id="targeted-content-additions"></a> Treat any other change to a localized
+page as a **semantic** change for that locale. This includes targeted content
+additions to drifted pages, such as adding a new glossary term. As explained in
+the [previous section](#prs-should-not-span-locales), leave such changes to each
 locale team to incorporate through its own locale-specific PRs.
+
+> [!NOTE] Content-neutral maintenance
+>
+> The rule above governs page **content**. Maintainers sometimes submit
+> content-neutral changes that necessarily span locales: site-wide tooling,
+> configuration, front-matter, or markup updates, including the automated
+> [drift-status](#track-changes) bookkeeping PRs. Such changes don't alter the
+> meaning of localized pages.
 
 #### Link fixes and resource updates {#link-fixes-and-resource-updates}
 
