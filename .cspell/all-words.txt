@@ -17,6 +17,7 @@ dotnet
 Dyla
 dynatrace
 ebpf
+eerzho
 EMEA
 errorf
 excerpter
@@ -28,6 +29,7 @@ gitpod
 goldmark
 grafana
 Hausenblas
+Hrabusa
 htmltest
 hugo
 instana
@@ -51,6 +53,7 @@ lightstep
 llms
 Loffay
 logback
+lycheecache
 Mancuso
 Marylia
 melius
@@ -120,11 +123,14 @@ Trask
 UpDown
 Valkey
 Villela
+vitorvasc
 warnf
 warnidf
 Wayback
 webshop
 wordpress
 WSGI
+Yerkinbay
 zend
+Zhanbolat
 zipkin

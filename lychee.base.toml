@@ -1,0 +1,86 @@
+# Lychee link-checker configuration (BASE FILE).
+#
+# `lychee.toml` is GENERATED from this file plus an `exclude_path` block
+# computed from page front matter. Edit THIS base; do not edit the generated
+# `lychee.toml` (gitignored). Regenerate with: npm run generate:config:links
+#
+# Internal-path rules in `exclude` are written without a leading `^/` so they
+# match lychee's resolved `file://` URIs (built with `--root-dir public`).
+#
+# cSpell:disable
+
+cache = true
+max_cache_age = "554d"      # ~18 months
+cache_exclude_status = "400..599"  # don't persist transient/bot-wall failures
+no_progress = true
+extensions = ["html"]       # skip the llms *.md outputs
+timeout = 15
+max_retries = 0
+include_fragments = "full"  # check anchors too; this setting is an enum, not a boolean
+index_files = ["index.html"]  # resolve Hugo pretty-URL dir links to index.html for fragment checks
+
+exclude = [
+  # Rule-writing notes: internal-path rules match lychee's resolved `file://`
+  # URI, so write them UNANCHORED (a `/docs/…` substring covers every locale)
+  # and escape literal dots. External-host rules start with `^https?://`.
+  # --- internal path rules ---
+  '/index\.xml$',                                   # RSS alternate links
+  '[?&]link-check=no',                              # opt-out query param
+  '/api/?$',                                        # ^/api/?$
+  '/docs/languages/\w+/(api|examples|registry)/?$',
+  '/docs/collector/registry/?$',
+  '/docs/languages/dotnet/(metrics-api|traces-api)/?',
+  '/opencensus/?$',                                 # compatibility/migration redirect
+  '/../docs/specs/?$',                             # non-default locale spec redirect
+  # JS accordion: #type-* anchors are client-side only (spec PR #5192).
+  # Optional slash: lychee resolves dir URLs to …/types#fragment (no slash).
+  '/docs/specs/otel-config/types/?#type-',
+
+  # --- external host rules ---
+  '^https://deploy-preview-\d+--opentelemetry\.netlify\.app/',
+  '^https://www\.googletagmanager\.com',
+  '^(https:)?//translate\.google\.com',
+  '^https?://localhost(:([^1]|16*)|(/.*)?$)',
+  '^https?://127\.0\.0\.1\b',
+  '^https?://(otel-demo|traefik)\.localhost',
+  '^https://pdf\.sciencedirectassets\.com/280203/',
+  '^https://platform\.openai\.com',
+  '^https://twitter\.com',
+  '^https://x\.com',
+  '^https://x\.ai',
+  '^https://www\.deepseek\.com',
+  '^https://www\.perplexity\.ai',
+  '^https://sched\.co',
+  '^https://.*\.sched\.com',
+  '^https://wiki\.osdev\.org',
+  '^https://www\.merriam-webster\.com',
+  '^https://oatpp\.io',
+  '^https://www\.intersystems\.com',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/issues/?\?q=',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/discussions/?\?discussions_q=',
+  '^https://github\.com/search/?\?',
+
+  # Docsy-generated GitHub edit/new/view-source links
+  '^https?://github\.com/.*?/.*?/(new/|edit/|issues/new\?)',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/[^e]',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/es',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/.*?/_index\.md$',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/[^d]',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/docs/[^s]',
+  '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/en/docs/security',
+  '^https://github\.com/open-telemetry/semantic-conventions/tree/main',
+
+  # --- element-level skips, expressed as URL excludes ---
+  # Docsy "last modified" page-meta links: these carry a `data-proofer-ignore`
+  # attribute on the page, which Lychee has no equivalent for; exclude by URL
+  # instead (Docsy page-meta partials).
+  '^https://github\.com/open-telemetry/opentelemetry\.io/commit/',
+  # `compare/` is restricted to the page-meta SHA-range form (`<sha>..<sha>`):
+  # the year-in-review posts link real, checked `compare/<tag>...<tag>` URLs
+  # that are NOT under data-proofer-ignore, so a bare `compare/` would wrongly
+  # skip them.
+  '^https://github\.com/open-telemetry/opentelemetry\.io/compare/[0-9a-f]{7,40}\.\.[0-9a-f]{7,40}',
+
+  '^https://www\.whatsmyua\.info',
+  '^https://v1-30\.docs\.kubernetes\.io/',
+]
