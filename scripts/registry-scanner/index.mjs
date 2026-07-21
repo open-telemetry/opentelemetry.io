@@ -53,6 +53,7 @@ if (process.argv.length < 3) {
       process.argv[1],
     )} <list>
     <list> is a comma separated list of the following options: 
+        - android
         - collector
         - cpp
         - python
@@ -64,8 +65,8 @@ if (process.argv.length < 3) {
         - dotnet
         - php
         - go
-        - swift
         - rust
+        - swift
     Use 'all' if you want to run all of them (except go).
     
     Example: ${path.basename(process.argv[0])} ${path.basename(
