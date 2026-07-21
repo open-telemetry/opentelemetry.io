@@ -60,10 +60,12 @@ control so that checks only fetch URLs that are new or whose cache entries have
 expired. Lychee caches successful results only, so failures are retried on every
 run.
 
-If you add or change external links, the check updates the cache; commit the
-`.lycheecache` changes along with your content changes, or comment
-`/fix:refcache` on your PR to have the bot do it. For details, see [`BUILD` and
-`CHECK LINKS`][pr-checks].
+If you add or change external links, run `npm run check:links` **before
+submitting your PR** — it's quick since all other links are cached — and commit
+the updated `.lycheecache` along with your content changes. Otherwise the
+`CHECK LINKS` job will fail on a stale cache; if that happens, run the command
+and push, or comment `/fix:refcache` on your PR to have the bot do it. For
+details, see [`BUILD` and `CHECK LINKS`][pr-checks].
 
 ## Cache refresh and housekeeping workflows {#workflows}
 
