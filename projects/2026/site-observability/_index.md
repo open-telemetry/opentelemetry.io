@@ -3,7 +3,7 @@ title: Site Observability
 custodian:
   - '[Patrice Chalin](https://github.com/chalin)'
   - '[Vitor Vasconcellos](https://github.com/vitorvasc)'
-cSpell:ignore: secretless Vasconcellos
+cSpell:ignore: Do11y secretless Vasconcellos
 ---
 
 ## Description
@@ -75,8 +75,8 @@ Three sources feed the Collector, rolled out in phases:
               public read-only query UIs
 ```
 
-- A single co-located stack: the Collector and the three backends are deployed
-  together on the same infrastructure.
+- One stack, co-located on the same infrastructure (account and region), with
+  the Collector and the three backends running as separate services.
 - Only the Collector is exposed for writes; backends are never directly
   reachable for ingestion.
 - The infrastructure is the OpenTelemetry Cloudflare account
@@ -171,6 +171,10 @@ Each source is an independent milestone, in rollout order:
 2. Server-side spans and metrics from Netlify Edge Functions
 3. Netlify log drain
 
+The browser-instrumentation tooling for the sites is a separate, website-side
+decision; [opentelemetry.io#10758][] (Do11y) is an early candidate and a first
+consumer of the OTLP endpoint.
+
 ## Discussion
 
 - GitHub Issue: [Address site observability and data access
@@ -187,6 +191,8 @@ Each source is an independent milestone, in rollout order:
 - [opentelemetry.io#9559][] — Address site observability and data access
 - [community#3368][] — Infrastructure to host an OTel Collector for
   opentelemetry.io
+- [opentelemetry.io#10758][] — Add Do11y script (candidate
+  browser-instrumentation source, first consumer of the OTLP endpoint)
 
 [opentelemetry.io]: https://opentelemetry.io
 [explorer.opentelemetry.io]: https://explorer.opentelemetry.io
@@ -195,6 +201,8 @@ Each source is an independent milestone, in rollout order:
 [OpenSearch]: https://opensearch.org/
 [opentelemetry.io#9559]:
   https://github.com/open-telemetry/opentelemetry.io/issues/9559
+[opentelemetry.io#10758]:
+  https://github.com/open-telemetry/opentelemetry.io/pull/10758
 [community#3368]: https://github.com/open-telemetry/community/issues/3368
 [Netlify Observability]:
   https://docs.netlify.com/manage/monitoring/observability/overview
