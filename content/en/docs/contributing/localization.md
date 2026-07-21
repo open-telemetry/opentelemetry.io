@@ -509,7 +509,7 @@ README][].
 [helper README]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
 
-### PRs with semantic changes should not span locales {#prs-should-not-span-locales}
+### PRs should not span locales {#prs-should-not-span-locales}
 
 Approvers should ensure that [PRs][] making **semantic** changes to doc pages do
 not span multiple locales. A semantic change is one that impacts the _meaning_
@@ -518,8 +518,6 @@ approvers will, in time, review the English-language edits to determine if the
 changes are appropriate for their locale, and how best to incorporate them into
 their locale. If changes are necessary, the locale approvers will make them via
 their own locale-specific PRs.
-
-### Multi-locale PRs are only for keeping checks green {#patch-locale-links}
 
 A PR may span multiple locales **only** when that is strictly required to keep
 the site build and its checks green:
@@ -532,11 +530,9 @@ the site build and its checks green:
   page's [drift status](#track-changes) only shields it from link checking, not
   from the Hugo build.
 
-<a id="targeted-content-additions"></a> Treat any other change to a localized
-page as a **semantic** change for that locale. This includes targeted content
-additions to drifted pages, such as adding a new glossary term. As explained in
-the [previous section](#prs-should-not-span-locales), leave such changes to each
-locale team to incorporate through its own locale-specific PRs.
+Treat any other change to a localized page as a **semantic** change for that
+locale. This includes targeted content additions to drifted pages, such as
+adding a new glossary term.
 
 > [!NOTE] Content-neutral maintenance
 >

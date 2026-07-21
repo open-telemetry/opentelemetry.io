@@ -82,10 +82,9 @@ validates and the local fix command. Caveats:
 
 - Submodules: non-maintainer PRs should not touch them; a maintainer fixes
   before merge — [`sig-practices.md#general`][general].
-- Locale span: semantic changes are per-locale; editorial cross-locale edits are
-  OK and append `# patched` to `default_lang_commit` —
-  [`localization.md#prs-should-not-span-locales`][locale-span] and
-  [`#patch-locale-links`][patch-locale].
+- Locale span: semantic changes are per-locale; a PR may span locales only to
+  keep checks green (link fixes append `# patched` to `default_lang_commit`) —
+  [`localization.md#prs-should-not-span-locales`][locale-span].
 
 **Branch state**
 
@@ -123,8 +122,8 @@ Walk this checklist before writing the review:
 - [ ] Netlify preview builds.
 - [ ] Each failing `check-*` assessed against [`pr-checks.md#checks`][checks].
 - [ ] Linked issue is `triage:accepted` (or this is an auto/hotfix PR).
-- [ ] Does not span locales with semantic changes — or uses `# patched` for
-      editorial cross-locale edits.
+- [ ] Does not span locales — or does so only to keep checks green (link fixes
+      use `# patched`).
 - [ ] First-time-contributor AI checklist in the PR description is filled in and
       looks human-written.
 - [ ] No unrelated changes bundled.
@@ -205,5 +204,3 @@ Source-of-truth files — read on demand:
 [general]: ../../../content/en/docs/contributing/sig-practices.md#general
 [locale-span]:
   ../../../content/en/docs/contributing/localization.md#prs-should-not-span-locales
-[patch-locale]:
-  ../../../content/en/docs/contributing/localization.md#patch-locale-links

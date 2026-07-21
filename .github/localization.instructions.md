@@ -214,8 +214,8 @@ default_lang_commit: <commit-hash-of-english-page>
 **Single-Language PRs:**
 
 - Semantic changes should affect only one language per PR
-- Exception: Pure editorial changes (link fixes, resource updates) can span
-  locales
+- Exception: changes strictly required to keep the site build and its checks
+  green (link fixes, build fixes) can span locales
 
 **PR Description Requirements:**
 
