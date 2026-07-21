@@ -2,7 +2,7 @@
 title: Características de telemetría
 linkTitle: Características de telemetría
 aliases: [demo_features, features]
-default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
+default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5 # patched
 drifted_from_default: true
 ---
 
@@ -62,7 +62,3 @@ drifted_from_default: true
   que permite habilitar y deshabilitar características en la aplicación.
 - **[flagd](https://flagd.dev)**: un daemon de feature flagging que se utiliza
   para gestionar feature flags en la aplicación de demostración.
-- **[llm](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/llm/)**:
-  un Large Language Model (LLM) simulado que sigue el formato de la
-  [API de Chat Completions de OpenAI](https://platform.openai.com/docs/api-reference/chat/create)
-  y responde preguntas sobre un producto.

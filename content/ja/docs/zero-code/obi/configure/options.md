@@ -4,6 +4,7 @@ linkTitle: グローバルプロパティ
 description: OBI コアに適用されるグローバル設定プロパティを設定する
 weight: 2
 default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
+drifted_from_default: true
 ---
 
 OBI は、環境変数またはコマンドライン引数 `-config` か環境変数 `OTEL_EBPF_CONFIG_PATH` を使用して渡す YAML 設定ファイルを通じて設定できます。

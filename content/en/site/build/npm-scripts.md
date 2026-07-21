@@ -134,13 +134,12 @@ are internal helpers and are not intended to be run directly.
 | `seq`                          | Run given script names in sequence; exit on first failure.     |
 | `all`                          | Run all given scripts, then exit with failure if any failed.   |
 | `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).  |
-| `prepare`                      | Install step: `get:submodule`, then Docsy theme npm install.   |
+| `prepare`                      | Install step: `get:submodule`, then Docsy theme `postinstall`. |
 | `prebuild:*`                   | Pre-`build*` hooks; each runs `_prebuild`.                     |
 | `update:hugo`                  | Install latest hugo-extended.                                  |
 | `update:packages`              | Run npm-check-updates to bump deps.                            |
 | `generate:config:links`        | Generate git-ignored `.htmltest.yml` from `.htmltest.base.yml` |
 | `generate:config:links:lychee` | Generate git-ignored `lychee.toml` from `lychee.base.toml`.    |
-| `lychee:reseed`                | Rebuild `.lycheecache` from the refcache.                      |
 | `log:build`, `log:check:links` | Run the corresponding script and tee output to `tmp/`.         |
 
 ## Notes
@@ -149,9 +148,8 @@ are internal helpers and are not intended to be run directly.
   [Refcache](../link-checking/#refcache).
 - **Lychee link check (pilot).** The `:lychee` and `:diff` scripts run
   [Lychee](https://github.com/lycheeverse/lychee) as a faster alternative to
-  htmltest, mirroring its coverage. They generate `lychee.toml` and seed
-  `.lycheecache` from the refcache automatically; `lychee:reseed` refreshes that
-  cache. Lychee runs as a non-blocking
+  htmltest, mirroring its coverage. They generate `lychee.toml` and (re)seed
+  `.lycheecache` from the refcache automatically. Lychee runs as a non-blocking
   [CI pilot](../ci-workflows/#other-workflows) while it's evaluated in
   [#10449](https://github.com/open-telemetry/opentelemetry.io/issues/10449).
 - **`test:local-tools:lychee`** is the subset of `test:local-tools` that needs

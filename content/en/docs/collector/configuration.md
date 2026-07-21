@@ -3,7 +3,7 @@ title: Configuration
 weight: 20
 description: Learn how to configure the Collector to suit your needs
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey hostmetrics initca oidc pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
+cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey initca oidc pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -39,7 +39,8 @@ the following providers for `scheme`:
 - **env** - Reads configuration from an environment variable. E.g.
   `env:MY_CONFIG_IN_AN_ENVVAR`.
 - **yaml** - Reads configuration from a YAML string, with `::` delimiting
-subpaths. E.g. `yaml:exporters::debug::verbosity: detailed`.
+  subpaths. E.g. `yaml:exporters::debug::verbosity: detailed`.
+
 <!-- prettier-ignore-start -->
 - **http** - Reads configuration from an HTTP URI. E.g. `http://www.example.com`
 - **https** - Reads configuration from an HTTPS URI. E.g.
@@ -277,7 +278,7 @@ receivers:
     endpoint: 0.0.0.0:8006
 
   # Data sources: metrics
-  hostmetrics:
+  host_metrics:
     scrapers:
       cpu:
       disk:

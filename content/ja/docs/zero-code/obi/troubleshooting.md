@@ -2,9 +2,9 @@
 title: トラブルシューティング
 description: OBI の一般的な問題やエラーのトラブルシューティング
 weight: 22
-default_lang_commit: 4aa05a4d65591e780952439f45415c597f3047dd
+default_lang_commit: 94498a7529f6d456201faebba59716baccf79bf8
 drifted_from_default: true
-cSpell:ignore: Clickhouse uprobe
+cSpell:ignore: Clickhouse uprobe userland
 ---
 
 このページでは、OBI で発生する一般的なエラーや問題を診断し、解決する方法を学びます。
@@ -144,6 +144,44 @@ OBI のデプロイ時のセキュリティ設定で特権操作（たとえば 
 
 - OBI を特権モードで実行する。
 - デプロイ時のセキュリティ設定のケーパビリティリストに `CAP_SYS_ADMIN` を追加する。
+
+### クライアントメトリクスやスパンが誤ったサービスに帰属する {#client-metrics-or-spans-attributed-to-the-wrong-service}
+
+OBI がホスト PID 名前空間にアクセスできる状態で実行されており（たとえば Docker Compose の `pid: host` や Kubernetes の `hostPID: true`）、[オープンポート](../configure/service-discovery/#open-ports)でサービスを選択している場合、予期しない送信（クライアント）メトリクスやスパンが自分のサービスに帰属されることがあります。
+よくある症状は、`GET /v1.43/containers/json` のような Docker Engine API 呼び出しが、意味のない `server.port` と `telemetry.sdk.language=go` を持つクライアントリクエストとして報告されることです。
+対象のサービスが Go で書かれていない場合でもこの現象が発生します。
+
+```text
+http_client_request_body_size_bytes_sum{
+  http_request_method="GET",
+  http_route="/v1.43/containers/json",
+  server_address="docker", server_port="4",
+  service_name="python-service", telemetry_sdk_language="go", ...
+}
+```
+
+**原因:**
+
+コンテナポートを公開すると（たとえば Docker の `-p 7773:7773` や Compose の `ports:` エントリ）、ホスト側のフォワーダープロセスがホストネットワーク名前空間でそのポートをリッスンします。
+コンテナランタイムに応じて、これは `docker-proxy`（userland プロキシが有効な Docker の場合）または同等のエージェントです。
+
+OBI はホストプロセスを参照できるため、フォワーダーが選択したポートと同じポートをリッスンしている場合、OBI はフォワーダーを `open_ports` 条件に一致させ、自分のサービスの ID で計装します。
+フォワーダー（ホストネットワーク名前空間内）と実際のサービス（コンテナネットワーク名前空間内）はどちらも同じポートをリッスンしているため、ポートだけでは区別できません。
+フォワーダーは通常 Go バイナリであり、スパンに `telemetry.sdk.language=go` が付与される理由はこれです。
+フォワーダー自体が生成するトラフィック（Docker ソケット経由の Docker Engine API 呼び出しなど）は、自分のサービスに帰属されます。
+
+**解決策:**
+
+実行ファイルパスを指定してフォワーダーを計装対象から除外します。
+
+```yaml
+discovery:
+  exclude_instrument:
+    - exe_path: '{*/docker-proxy,*/scon-agent}'
+```
+
+あるいは、オープンポートよりも具体的な条件でサービスを選択すると、同じポートを共有するホスト側フォワーダーが一致しなくなります。
+たとえば、[実行ファイルパス](../configure/service-discovery/#executable-path)、[Kubernetes メタデータ](../configure/service-discovery/#k8s-namespace)、または[コンテナ名](../configure/service-discovery/#container-name)セレクターを使用します。
 
 ## v0.7.0 への移行: ネットワークポート推測の変更 {#migration-to-v070-network-port-guessing-changes}
 

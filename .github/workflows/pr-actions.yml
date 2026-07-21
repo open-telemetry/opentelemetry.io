@@ -43,7 +43,7 @@ jobs:
       comment_id: ${{ steps.ack.outputs.comment_id }}
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
@@ -57,7 +57,7 @@ jobs:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
-          client-id: ${{ vars.OTELBOT_APP_ID }}
+          client-id: ${{ vars.OTELBOT_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
           # PR comments authorize via the pull-requests permission (even
           # though they're posted through the issues API endpoint).
@@ -98,7 +98,7 @@ jobs:
       patch_skipped: ${{ steps.patch.outputs.patch_skipped }}
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
@@ -151,7 +151,7 @@ jobs:
       user-name: otelbot
       user-email: 197425009+otelbot@users.noreply.github.com
       # the higher privileged docs app is needed to push commits to an existing PR
-      app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+      client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
     secrets:
       app-private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
@@ -173,7 +173,7 @@ jobs:
       contents: read # checkout
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
@@ -187,7 +187,7 @@ jobs:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
-          client-id: ${{ vars.OTELBOT_APP_ID }}
+          client-id: ${{ vars.OTELBOT_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
           # PR comments authorize via the pull-requests permission (even
           # though they're posted through the issues API endpoint). The
