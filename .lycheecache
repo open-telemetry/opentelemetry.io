@@ -3256,6 +3256,14 @@ https://github.com/open-telemetry/opentelemetry-proto/tree/v1.10.0/opentelemetry
 https://github.com/open-telemetry/opentelemetry-proto/tree/v1.10.0/opentelemetry/proto/collector/metrics/v1/metrics_service.proto,206,1784096743
 https://github.com/open-telemetry/opentelemetry-proto/tree/v1.10.0/opentelemetry/proto/collector/profiles/v1development/profiles_service.proto,206,1784183509
 https://github.com/open-telemetry/opentelemetry-proto/tree/v1.10.0/opentelemetry/proto/collector/trace/v1/trace_service.proto,206,1784183503
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/README.md#maturity-level,200,1784658437
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/examples/README.md,200,1784658437
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/opentelemetry/proto,200,1784658436
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/opentelemetry/proto/collector,200,1784658436
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/opentelemetry/proto/collector/logs/v1/logs_service.proto,200,1784658437
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/opentelemetry/proto/collector/metrics/v1/metrics_service.proto,200,1784658437
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/opentelemetry/proto/collector/profiles/v1development/profiles_service.proto,200,1784658437
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/opentelemetry/proto/collector/trace/v1/trace_service.proto,200,1784658436
 https://github.com/open-telemetry/opentelemetry-python,206,1784096597
 https://github.com/open-telemetry/opentelemetry-python-contrib,206,1784269464
 https://github.com/open-telemetry/opentelemetry-python-contrib/blob/main/opentelemetry-instrumentation/README.rst#programmatic-auto-instrumentation,206,1784269419
