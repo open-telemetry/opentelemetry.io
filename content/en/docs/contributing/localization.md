@@ -305,10 +305,10 @@ npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 
 ### Patching localized pages {#patched}
 
-Some [locale-spanning fixes](#keep-checks-green) require editing a localized
-page without syncing it to its English counterpart — for example, retargeting a
-link after an English page was moved. Mark each localized page fixed in this way
-as **patched**:
+[Build and check fixes](#keep-checks-green) sometimes require editing a
+localized page without syncing it to its English counterpart — for example,
+retargeting a link after an English page was moved. Mark each localized page
+fixed in this way as **patched**, whether or not the fix spans locales:
 
 - Make only the edits that the fix requires — no other changes to the page.
 - Append the `# patched` YAML comment to the page's `default_lang_commit` line:
@@ -317,9 +317,10 @@ as **patched**:
   default_lang_commit: abc4567... # patched
   ```
 
-The marker tells the page's locale team that the page was mechanically fixed
-without being synced: the hash still records the last sync point. The marker is
-dropped the next time the page's hash is
+The marker is reserved for such mechanical fixes —
+[semantic changes](#semantic-changes) never use it. The marker tells the page's
+locale team that the page was fixed without being synced: the hash still records
+the last sync point. The marker is dropped the next time the page's hash is
 [updated](#updating-default_lang_commit-for-existing-pages).
 
 ### Drift status
@@ -558,8 +559,8 @@ PRs.
 
 #### Keeping the build and checks green {#keep-checks-green}
 
-A PR may span multiple locales **only** when that is strictly required to keep
-the site build and its checks green:
+A PR that changes localized page **content** may span multiple locales only when
+that is strictly required to keep the site build and its checks green:
 
 - **Link fixes**: repairing link-check failures on localized pages after an
   English page is moved or deleted, or an external resource has moved. See
@@ -571,8 +572,8 @@ the site build and its checks green:
 
 In both cases, mark every localized page that you fix as [patched](#patched).
 
-Treat any other change to a localized page as a **semantic** change for that
-locale. This includes targeted content additions to drifted pages, such as
+Treat any other change to localized page content as a **semantic** change for
+that locale. This includes targeted content additions to drifted pages, such as
 adding a new glossary term.
 
 #### Link fixes and resource updates {#link-fixes-and-resource-updates}

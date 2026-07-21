@@ -82,8 +82,9 @@ validates and the local fix command. Caveats:
 
 - Submodules: non-maintainer PRs should not touch them; a maintainer fixes
   before merge — [`sig-practices.md#general`][general].
-- Locale span: semantic changes are per-locale; a PR may span locales only to
-  keep checks green (such fixes append `# patched` to `default_lang_commit`) —
+- Locale span: semantic changes are per-locale; page-content changes may span
+  locales only to keep checks green (such fixes append `# patched` to
+  `default_lang_commit`); content-neutral maintenance is exempt —
   [`localization.md#prs-should-not-span-locales`][locale-span].
 
 **Branch state**
@@ -122,8 +123,8 @@ Walk this checklist before writing the review:
 - [ ] Netlify preview builds.
 - [ ] Each failing `check-*` assessed against [`pr-checks.md#checks`][checks].
 - [ ] Linked issue is `triage:accepted` (or this is an auto/hotfix PR).
-- [ ] Does not span locales — or does so only to keep checks green (such fixes
-      use `# patched`).
+- [ ] Does not span locales — or does so only for checks-green fixes (marked
+      `# patched`) or content-neutral maintenance.
 - [ ] First-time-contributor AI checklist in the PR description is filled in and
       looks human-written.
 - [ ] No unrelated changes bundled.
