@@ -5,7 +5,7 @@ description: >-
 weight: 20
 todo: Keep table entries sorted
 default_lang_commit: e87b1c4543d287bc4509225d102588c0f2670eae
-cSpell:ignore: lycheecache
+drifted_from_default: true
 ---
 
 スクリプトの定義はリポジトリルートの [`package.json`](https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json) にあります。

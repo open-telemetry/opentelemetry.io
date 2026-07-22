@@ -3,6 +3,7 @@ title: SDKによるテレメトリーの管理
 weight: 12
 aliases: [exporters]
 default_lang_commit: 25e82e1790ea1f673d11dee3ccc9094664d0ccd5 # patched
+drifted_from_default: true
 cSpell:ignore: Interceptable okhttp
 ---
 
