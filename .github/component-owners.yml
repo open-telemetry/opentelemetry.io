@@ -73,6 +73,8 @@ components:
   content/en/docs/zero-code/go:
     - open-telemetry/go-approvers
     - open-telemetry/go-instrumentation-approvers
+  content/en/docs/zero-code/go/compile-time:
+    - open-telemetry/go-compile-instrumentation-approvers
   content/en/docs/zero-code/java:
     - open-telemetry/java-approvers
     - open-telemetry/java-instrumentation-approvers
