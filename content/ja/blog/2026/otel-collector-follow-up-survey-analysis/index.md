@@ -22,7 +22,7 @@ cSpell:ignore: Attributesprocessor awscloudwatchmetricsreceiver Baeyens datadogc
 
 ## 主な要点 {#key-takeaways}
 
-- Collector のデプロイは引き続き拡大しており（65% が10台以上の Collector を運用）、Kubernetes が依然として主流（81%）である一方、仮想マシン（VM）の利用は33%から51%へと大幅に増加しました。
+- Collector のデプロイは引き続き拡大しており（65% が10台超の Collector を運用）、Kubernetes が依然として主流（81%）である一方、仮想マシン（VM）の利用は33%から51%へと大幅に増加しました。
 - 比較的小規模なデプロイのユーザーの4分の1、および大規模なデプロイのユーザーの約半数が、Kubernetes と VM の両方を使用しています。
 - 独自の Collector をビルドするユーザーがさらに13%増加し、OTel ユーザーの61%は [OpenTelemetry Collector Builder](/docs/collector/extend/ocb/) が使いやすいとは認められませんでした。
 - 大規模な組織（100台超の Collector）はより多くのメトリクスとログを収集しています。
@@ -35,8 +35,8 @@ cSpell:ignore: Attributesprocessor awscloudwatchmetricsreceiver Baeyens datadogc
 ### デプロイの規模と環境 {#deployment-scale-and-environment}
 
 昨年は、ユーザーが本番環境で運用している Collector の台数に関する質問のカテゴリ分けが今年とは異なっていました。
-これは、2024年のサーベイで多くの人が10台以上の Collector を本番環境で運用していると報告したため、2025年のサーベイではカテゴリをより細かい段階に分けたことによるものです。
-比較のために、2025年のカテゴリを縮小したところ、65%（+10%）が10台以上の Collector を持ち、15%（-7%）が2台から5台の Collector を持ち、1台の Collector と6〜10台の Collector を持つユーザーの数には変化がないことがわかりました。
+これは、2024年のサーベイで多くの人が10台超の Collector を本番環境で運用していると報告したため、2025年のサーベイではカテゴリをより細かい段階に分けたことによるものです。
+比較のために、2025年のカテゴリを縮小したところ、65%（+10%）が10台超の Collector を持ち、15%（-7%）が2台から5台の Collector を持ち、1台の Collector と6〜10台の Collector を持つユーザーの数には変化がないことがわかりました。
 
 デプロイ先について、OTel ユーザーは依然として Kubernetes を強く好んでおり（81%、前年と同じ）、51%（+18%）が VM を使用していると報告し、18%（+7%）がベアメタルを使用しています。
 2025年のサーベイでは、デプロイ先として HashiCorp Nomad を選択した回答者はいませんでした。
