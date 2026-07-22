@@ -58,8 +58,8 @@ For each failing check, match `<workflow-name> / <job-name>` against
 [`pr-checks.md`][pr-checks] — every check has a section describing what it
 validates and the local fix command. Caveats:
 
-- A `CHECK LINKS` failure can be a stale `.lycheecache` rather than a broken
-  link — read the failure (see [Link cache](#refcache)).
+- A `CHECK LINKS and CACHE` failure can be a stale `.lycheecache` rather than a
+  broken link — read the failure (see [Link cache](#refcache)).
 - Fork PRs can hit token-scope limits that look like check failures but are
   permissions artifacts. Read the log before concluding.
 - `Netlify Deploy Preview` failures: open **Details** for the build log before
@@ -165,8 +165,8 @@ Then structure the review as:
 `.lycheecache` is the committed cache of successful external-link checks.
 `npm run check:links` updates it as a side effect — authors commit the updated
 file themselves ([`pr-checks.md#build-and-check-links`][build-checks]). The
-`Links / CHECK LINKS` job fails if the on-branch cache is stale relative to what
-the link check produced.
+`Links / CHECK LINKS and CACHE` job fails if the on-branch cache is stale
+relative to what the link check produced.
 
 Do not hand-edit `.lycheecache`. If a URL returns a non-200 for server reasons
 (blocked bot, LinkedIn 999, …), append `?link-check=no` (or `&link-check=no`) to

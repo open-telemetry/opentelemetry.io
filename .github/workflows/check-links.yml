@@ -63,7 +63,7 @@ jobs:
             tmp/package*.json
 
   check-links:
-    name: CHECK LINKS
+    name: CHECK LINKS and CACHE
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -108,9 +108,24 @@ jobs:
 
       - name: All checked links are in the cache?
         run: |
-          echo "If the diff check below fails, run 'npm run check:links' and commit the"
-          echo "updated .lycheecache."
-          git diff --exit-code -- .lycheecache
+          if git diff --quiet -- .lycheecache; then
+            echo "Link cache is up to date."
+            exit 0
+          fi
+          git --no-pager diff --stat -- .lycheecache
+          echo "::error title=Link cache is stale::All links check out, but this PR leaves the committed link cache (.lycheecache) stale. Comment /fix:link-cache on this PR to have the bot update it, or run 'npm run check:links' locally and commit the modified .lycheecache."
+          {
+            echo "## Link cache is stale"
+            echo
+            echo "All links check out ✅ — but this PR leaves the committed link cache"
+            echo "(\`.lycheecache\`) stale. To fix, either:"
+            echo
+            echo "- Comment \`/fix:link-cache\` on this PR — the bot updates the cache for you; or"
+            echo "- Run \`npm run check:links\` locally, then commit the modified \`.lycheecache\`."
+            echo
+            echo "For details, see [\`BUILD\` and \`CHECK LINKS and CACHE\`](https://opentelemetry.io/docs/contributing/pr-checks/#build-and-check-links)."
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 1
 
       - name: Lychee summary
         if: always()
