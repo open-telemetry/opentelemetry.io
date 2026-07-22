@@ -15,6 +15,17 @@ export const INVALID_DIRECTIVE_MESSAGE = `❌ Invalid fix directive. ${DIRECTIVE
 export const FIX_ALL_COMPAT_MESSAGE =
   'ℹ️ INFO: Running `/fix` for `/fix:all` (compat mode). Use `/fix` moving forward.';
 
+// Why the pipeline declines to run fix scripts on PR branches cut before the
+// Lychee link-checker switch (#10911): the scripts run from the PR head, so on
+// such branches they would update the deleted `static/refcache.json` instead
+// of `.lycheecache`, leaving link checks red. Surfaced by the report job when
+// the workflow's stale-branch guard fires; remove along with that guard once
+// pre-switch branches age out.
+export const STALE_BRANCH_MESSAGE =
+  'this PR branch predates the Lychee link-checker switch (#10911), so its ' +
+  'fix scripts would update the old link cache. Update the branch from ' +
+  '`main`, then re-run `/fix`.';
+
 // The first line of the comment must be exactly `/fix` optionally followed by
 // one or more `:segment` parts, where a segment is one or more of `-_0-9a-zA-Z`.
 // Any following lines are ignored.

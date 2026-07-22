@@ -30,6 +30,9 @@ Options:
       --label <name>           The action as requested (e.g. the command).
       --pr-state <state>       PR state: 'open' or 'closed' ('' acts as open).
       --pr-merged <bool>       'true' when the PR is merged.
+      --not-run-reason <text>  Reason the pipeline deliberately declined to
+                               run the action; when set, it is relayed instead
+                               of a generation/apply outcome.
       --generate-result <r>    Result of the patch-generation job.
       --patch-skipped <bool>   'true' when generation produced no changes.
       --command-exit-status <n> Exit status of the patch-producing command.
@@ -52,6 +55,7 @@ const { values } = parseArgs({
     label: { type: 'string', default: '' },
     'pr-state': { type: 'string', default: '' },
     'pr-merged': { type: 'string', default: '' },
+    'not-run-reason': { type: 'string', default: '' },
     'generate-result': { type: 'string', default: '' },
     'patch-skipped': { type: 'string', default: '' },
     'command-exit-status': { type: 'string', default: '' },
@@ -90,6 +94,7 @@ const body = values.ack
       label: values.label,
       prState: values['pr-state'],
       prMerged: values['pr-merged'],
+      notRunReason: values['not-run-reason'],
       generateResult: values['generate-result'],
       patchSkipped: values['patch-skipped'],
       commandExitStatus: values['command-exit-status'],
