@@ -1838,6 +1838,8 @@ https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exte
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md,206,1784269439
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/sampling/README.md,206,1784285029
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md#production-deployment-guide,200,1784701475
+https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md#semantic-conventions-compatibility,200,1784729082
+https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md,200,1784729083
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md,206,1784284646
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/filelogreceiver/README.md#operators,206,1784285017
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/k8sclusterreceiver/documentation.md,206,1784284660
@@ -1861,6 +1863,7 @@ https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/internal/kubelet/cpu.go#L25-L26,206,1784284807
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.147.0/processor/k8sattributesprocessor/README.md#semantic-conventions-compatibility,206,1784284829
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.147.0/processor/k8sattributesprocessor/documentation.md#feature-gates,206,1784284824
+https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.150.0/receiver/kubeletstatsreceiver/documentation.md,200,1784729083
 https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/17418,206,1784355805
 https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/27885,206,1784284866
 https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/34427,206,1784355811
@@ -3488,6 +3491,9 @@ https://github.com/open-telemetry/opentelemetry-specification/blob/v1.58.0/speci
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.58.0/specification/trace/api.md#span,206,1784284995
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.58.0/specification/trace/api.md#spankind,206,1784284996
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.58.0/specification/trace/sdk.md#span-processor,206,1784285008
+https://github.com/open-telemetry/opentelemetry-specification/blob/v1.59.0/oteps/0232-maturity-of-otel.md,200,1784729083
+https://github.com/open-telemetry/opentelemetry-specification/blob/v1.59.0/spec-compliance-matrix.md#logs,200,1784729083
+https://github.com/open-telemetry/opentelemetry-specification/blob/v1.59.0/specification/logs/api.md#logger,200,1784729082
 https://github.com/open-telemetry/opentelemetry-specification/issues/1413,206,1784284617
 https://github.com/open-telemetry/opentelemetry-specification/issues/3967,206,1784284790
 https://github.com/open-telemetry/opentelemetry-specification/issues/4126,206,1784284646
@@ -3832,6 +3838,8 @@ https://github.com/open-telemetry/semantic-conventions/issues/new,200,1784701515
 https://github.com/open-telemetry/semantic-conventions/pull/1075,206,1784284665
 https://github.com/open-telemetry/semantic-conventions/pull/1383,206,1784284715
 https://github.com/open-telemetry/semantic-conventions/pull/2113,200,1784701521
+https://github.com/open-telemetry/semantic-conventions/pull/2130,200,1784729084
+https://github.com/open-telemetry/semantic-conventions/pull/2166,200,1784729084
 https://github.com/open-telemetry/semantic-conventions/pull/2178,200,1784701520
 https://github.com/open-telemetry/semantic-conventions/pull/2319,206,1784183485
 https://github.com/open-telemetry/semantic-conventions/pull/2392,200,1784701520
@@ -3858,6 +3866,8 @@ https://github.com/open-telemetry/semantic-conventions/pull/3488,200,1784701518
 https://github.com/open-telemetry/semantic-conventions/pull/3491,206,1784284813
 https://github.com/open-telemetry/semantic-conventions/pull/3559,200,1784701519
 https://github.com/open-telemetry/semantic-conventions/pull/3646,200,1784701519
+https://github.com/open-telemetry/semantic-conventions/pull/3889,200,1784729085
+https://github.com/open-telemetry/semantic-conventions/pull/625,200,1784729084
 https://github.com/open-telemetry/semantic-conventions/pull/981,206,1784355805
 https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.33.0,206,1784183469
 https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.40.0,206,1784284665
