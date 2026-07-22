@@ -771,8 +771,11 @@ https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-even
 https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/features-add-ons/maintainer-summit/,200,1784355599
 https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/,200,1784269413
 https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=blog,200,1784269415
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/,200,1784656945
 https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/?utm_source=opentelemetry&utm_medium=website&utm_content=blog,200,1784269408
 https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=website&utm_content=blog,200,1784269413
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=website&utm_content=community-events,200,1784656948
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner,200,1784656946
 https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=blog,200,1784183203
 https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/observability-day/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=blog,200,1784284617
 https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/features-add-ons/maintainer-summit/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=blog,200,1784284615
@@ -3256,6 +3259,14 @@ https://github.com/open-telemetry/opentelemetry-proto/tree/v1.10.0/opentelemetry
 https://github.com/open-telemetry/opentelemetry-proto/tree/v1.10.0/opentelemetry/proto/collector/metrics/v1/metrics_service.proto,206,1784096743
 https://github.com/open-telemetry/opentelemetry-proto/tree/v1.10.0/opentelemetry/proto/collector/profiles/v1development/profiles_service.proto,206,1784183509
 https://github.com/open-telemetry/opentelemetry-proto/tree/v1.10.0/opentelemetry/proto/collector/trace/v1/trace_service.proto,206,1784183503
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/README.md#maturity-level,200,1784658437
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/examples/README.md,200,1784658437
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/opentelemetry/proto,200,1784658436
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/opentelemetry/proto/collector,200,1784658436
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/opentelemetry/proto/collector/logs/v1/logs_service.proto,200,1784658437
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/opentelemetry/proto/collector/metrics/v1/metrics_service.proto,200,1784658437
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/opentelemetry/proto/collector/profiles/v1development/profiles_service.proto,200,1784658437
+https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.0/opentelemetry/proto/collector/trace/v1/trace_service.proto,200,1784658436
 https://github.com/open-telemetry/opentelemetry-python,206,1784096597
 https://github.com/open-telemetry/opentelemetry-python-contrib,206,1784269464
 https://github.com/open-telemetry/opentelemetry-python-contrib/blob/main/opentelemetry-instrumentation/README.rst#programmatic-auto-instrumentation,206,1784269419

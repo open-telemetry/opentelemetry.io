@@ -76,6 +76,10 @@ jobs:
         # Default-branch only (trusted; cf. pr-actions). Non-zero exit is OK—
         # fixes still publish; residual failures fail in report-failure below.
         uses: ./.github/actions/npm-script-patch
+        env:
+          # Authenticated github.com link checks (rate limits) in fix:refcache;
+          # step-level env reaches the composite action's steps.
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           command: ${{ inputs.command || 'fix-and-test:all' }}
           patch-name: housekeeping-${{ github.run_id }}

@@ -1,6 +1,6 @@
-// Unit tests for the front-matter -> lychee `exclude_path` generator. Guards
-// the key parity property: the `(../)?` locale prefix is preserved, so a single
-// pattern keeps excluding old blog posts in every locale, not just EN.
+// Unit tests for the front-matter -> lychee `exclude_path` generator
+// (./index.mjs), including preservation of the `(../)?` locale prefix that
+// lets a single pattern cover every locale.
 
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
@@ -40,8 +40,6 @@ describe('excludePathPatternsOf()', () => {
   });
 
   test('extracts a flow-style (one-line) list', () => {
-    // The htmltest-era extractor silently dropped this form; see the generator
-    // header comment.
     const fm = `${FRONT_MATTER_KEY}: [/en/docs/contributing/blog/]`;
     assert.deepEqual(excludePathPatternsOf(fm, 'f.md'), [
       '/en/docs/contributing/blog/',
@@ -63,6 +61,22 @@ describe('excludePathPatternsOf()', () => {
     assert.throws(
       () => excludePathPatternsOf(`${FRONT_MATTER_KEY}: []`, 'f.md'),
       /f\.md.*non-empty list/,
+    );
+  });
+
+  // A blank pattern would translate to `/public/`, excluding every page and
+  // false-greening the whole check.
+  test('throws on an empty-string pattern', () => {
+    assert.throws(
+      () => excludePathPatternsOf(`${FRONT_MATTER_KEY}: ['']`, 'f.md'),
+      /f\.md.*non-blank/,
+    );
+  });
+
+  test('throws on a whitespace-only pattern', () => {
+    assert.throws(
+      () => excludePathPatternsOf(`${FRONT_MATTER_KEY}: ['  ']`, 'f.md'),
+      /f\.md.*non-blank/,
     );
   });
 });

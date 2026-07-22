@@ -1,34 +1,20 @@
 #!/usr/bin/env node
-// Generate `lychee.toml` = `lychee.base.toml` + an `exclude_path` block derived
-// from content front matter. The base is hand-maintained and committed;
-// `lychee.toml` is generated and gitignored. Two front-matter sources feed the
-// block:
+// Generate `lychee.toml` = `lychee.base.toml` (hand-maintained, committed) +
+// an `exclude_path` block derived from page front matter
+// (`link_check_exclude_path` patterns and `drifted_from_default` pages). For
+// the configuration model and front-matter semantics, see:
+// https://opentelemetry.io/site/build/link-checking/#configuration
 //
-// - `link_check_exclude_path` — a list of site-relative regexes for pages the
-//   link checker must skip (e.g. blog pagination, old blog posts); see
-//   content/en/blog/_index.md.
-// - `drifted_from_default: true` — drifted localized pages. Link checking
-//   originating from drifted pages is skipped (their links may be stale), but
-//   the pages remain resolvable as anchor targets, so inbound links from
-//   non-drifted pages keep being validated.
-//
-// Both express paths relative to the site root (`public/`), while lychee's
+// Front matter expresses paths relative to the site root, while lychee's
 // `exclude_path` matches the absolute path of each input file it scans. So
-// every pattern is re-anchored onto the `/public/` path segment, accounting for
-// Hugo's pretty-URL `index.html` page files:
+// every pattern is re-anchored (verbatim — they are regexes) onto the
+// `/public/` path segment, accounting for Hugo's pretty-URL `index.html` page
+// files:
 //
-//   `^bn/docs/demo/$`             (a single page)   -> /public/bn/docs/demo/index\.html$
-//   `^(../)?blog/20(19|2.)/`      (a whole subtree) -> /public/(../)?blog/20(19|2.)/
-//   `^(../)?blog/(\d+/)?page/\d+` (substring)       -> /public/(../)?blog/(\d+/)?page/\d+
+//   `^bn/docs/demo/$`        (a single page)   -> /public/bn/docs/demo/index\.html$
+//   `^(../)?blog/20(19|2.)/` (a whole subtree) -> /public/(../)?blog/20(19|2.)/
 //
-// The `(../)?` prefix is regex (the `.`s are wildcards): it optionally matches
-// *any two characters + slash* — i.e. a 2-letter locale segment such as `ja/`,
-// `es/`, `pt/`. That is how a single pattern skips old blog posts in every
-// locale, not just EN. It is preserved verbatim; dropping it would only exclude
-// EN and leave localized old-blog externals to be (wrongly) scanned.
-//
-// Usage: node scripts/lychee/config/index.mjs
-// Run via `npm run generate:config:links`.
+// Usage: node scripts/lychee/config/index.mjs (npm run generate:config:links)
 
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -55,10 +41,10 @@ export function excludePathPatternsOf(frontMatter, filePath) {
   if (
     !Array.isArray(patterns) ||
     patterns.length === 0 ||
-    !patterns.every((p) => typeof p === 'string')
+    !patterns.every((p) => typeof p === 'string' && /\S/.test(p))
   ) {
     throw new Error(
-      `${filePath}: front-matter '${FRONT_MATTER_KEY}' must be a non-empty list of regex strings`,
+      `${filePath}: front-matter '${FRONT_MATTER_KEY}' must be a non-empty list of non-blank regex strings`,
     );
   }
   return patterns;
