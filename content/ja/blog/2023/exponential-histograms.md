@@ -146,6 +146,6 @@ _この記事は、著者のブログに[もともと投稿された][originally
 [Using OpenTelemetry’s Exponential Histograms in Prometheus]: https://www.youtube.com/watch?v=W2_TpDcess8
 [OTEP 149]: https://github.com/open-telemetry/oteps/blob/976c9395e4cbb3ea933d3b51589eba94b87a17bd/text/0149-exponential-histogram.md
 [specification for exponential histogram aggregations]: /docs/specs/otel/metrics/sdk/#base2-exponential-bucket-histogram-aggregation
-[Why Histograms?]: ../why-histograms/
-[Histograms vs Summaries]: ../histograms-vs-summaries/
+[Why Histograms?]: /blog/2023/why-histograms/
+[Histograms vs Summaries]: /blog/2023/histograms-vs-summaries/
 [originally posted]: <{{% param canonical_url %}}>
