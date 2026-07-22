@@ -40,4 +40,5 @@
   notes: >-
     Azure reworked the manage-connections page: the #static-clients section is
     now #reuse-client-instances, and docs.microsoft.com redirects to
-    learn.microsoft.com. Upstreamed fix: open-telemetry/semantic-conventions#3917
+    learn.microsoft.com. Upstreamed fix:
+    open-telemetry/semantic-conventions#3917
