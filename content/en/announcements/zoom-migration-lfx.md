@@ -9,8 +9,8 @@ cSpell:ignore: lfx
 ---
 
 All Zoom meetings are moving to the **[LFX Project Control
-Center][issue]**.<span class="d-none d-sm-inline"> Having issues?</span>
-[Leave a comment][issue] or ask on
+Center][issue]**.<span class="d-none d-sm-inline"> Having issues?</span> [Leave
+a comment][issue] or ask on
 [Slack](https://slack.cncf.io/)<span class="d-none d-sm-inline"> in
 `#opentelemetry`</span>.
 
