@@ -24,9 +24,10 @@ const root = path.join(
   '..',
 );
 
-// The bin behind the `_check:links` npm script; invoked directly so this
-// wrapper observes its exit status. Output is captured (and echoed) so that
-// failures can be parsed for dead links.
+// The bin behind the `_check:links` npm script; invoked directly so that
+// output is captured npm-noise-free and the exit status observed; failures
+// are parsed for dead links. Kept in sync with package.json by the wiring
+// drift guard in ./index.test.mjs.
 const bin = path.join(root, 'node_modules', '.bin', 'lychee-norm-cache');
 const run = spawnSync(bin, process.argv.slice(2), {
   cwd: root,
