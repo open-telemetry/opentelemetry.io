@@ -14,8 +14,10 @@ graph TD
 subgraph Service Diagram
 accounting(Accounting):::dotnet
 ad(Ad):::java
+agent(Agent):::python
 cache[(Cache<br/>&#40Valkey&#41)]
 cart(Cart):::dotnet
+chatbot(Chatbot):::python
 checkout(Checkout):::golang
 currency(Currency):::cpp
 email(Email):::ruby
@@ -27,6 +29,7 @@ frontend-proxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
 image-provider(Image Provider <br/>&#40nginx&#41):::cpp
 llm(LLM):::python
 load-generator([Load Generator]):::python
+mcp(MCP):::python
 payment(Payment):::javascript
 product-catalog(Product Catalog):::golang
 product-reviews(Product Reviews):::python
@@ -68,6 +71,11 @@ frontend-proxy -->|gRPC| flagd
 frontend-proxy -->|HTTP| frontend
 frontend-proxy -->|HTTP| flagd-ui
 frontend-proxy -->|HTTP| image-provider
+frontend-proxy -->|HTTP| chatbot
+
+chatbot -->|HTTP| agent
+agent -->|HTTP| mcp
+mcp -->|HTTP| frontend
 
 llm -->|gRPC| flagd
 llm ---> product-reviews
