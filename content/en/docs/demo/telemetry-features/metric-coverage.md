@@ -18,7 +18,6 @@ aliases: [metric_service_features, metric-features, ../metric-features]
 | Load Generator  | Python     | 🚧                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Payment         | JavaScript | 🚧                        | ✅                     | 🚧                   | 🚧    | 🚧                | ✅                 | 🚧        |
 | Product Catalog | Go         | 🚧                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
-| Product Reviews | Python     | ✅                        | ✅                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Quote           | PHP        | 🚧                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Recommendation  | Python     | ✅                        | ✅                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Shipping        | Rust       | ✅                        | ✅                     | 🚧                   | 🚧    | 🚧                | ✅                 | 🚧        |
