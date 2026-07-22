@@ -55,8 +55,8 @@ Supported PHP versions: `8.1` to `8.5`.
 
 ## Included auto-instrumentation packages
 
-| Name              | Included from distro version | Package                                                                                                                     |
-| ----------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Name                | Included from distro version | Package                                                                                                                     |
+| ------------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `curl`              | 1.0                          | [open-telemetry/opentelemetry-auto-curl](https://packagist.org/packages/open-telemetry/opentelemetry-auto-curl)             |
 | `http-async-client` | 1.0                          | [open-telemetry/opentelemetry-auto-http-async](https://packagist.org/packages/open-telemetry/opentelemetry-auto-http-async) |
 | `laravel`           | 1.0                          | [open-telemetry/opentelemetry-auto-laravel](https://packagist.org/packages/open-telemetry/opentelemetry-auto-laravel)       |
