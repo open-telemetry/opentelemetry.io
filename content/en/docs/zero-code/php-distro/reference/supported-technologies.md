@@ -57,14 +57,14 @@ Supported PHP versions: `8.1` to `8.5`.
 
 | Name              | Included from distro version | Package                                                                                                                     |
 | ----------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| curl              | 1.0                          | [open-telemetry/opentelemetry-auto-curl](https://packagist.org/packages/open-telemetry/opentelemetry-auto-curl)             |
-| http-async-client | 1.0                          | [open-telemetry/opentelemetry-auto-http-async](https://packagist.org/packages/open-telemetry/opentelemetry-auto-http-async) |
-| laravel           | 1.0                          | [open-telemetry/opentelemetry-auto-laravel](https://packagist.org/packages/open-telemetry/opentelemetry-auto-laravel)       |
-| mysqli            | 1.0                          | [open-telemetry/opentelemetry-auto-mysqli](https://packagist.org/packages/open-telemetry/opentelemetry-auto-mysqli)         |
-| pdo               | 1.0                          | [open-telemetry/opentelemetry-auto-pdo](https://packagist.org/packages/open-telemetry/opentelemetry-auto-pdo)               |
-| postgresql        | 1.2                          | [open-telemetry/opentelemetry-auto-postgresql](https://packagist.org/packages/open-telemetry/opentelemetry-auto-postgresql) |
-| psr18             | 0.5                          | [open-telemetry/opentelemetry-auto-psr18](https://packagist.org/packages/open-telemetry/opentelemetry-auto-psr18)           |
-| slim              | 1.0                          | [open-telemetry/opentelemetry-auto-slim](https://packagist.org/packages/open-telemetry/opentelemetry-auto-slim)             |
+| `curl`              | 1.0                          | [open-telemetry/opentelemetry-auto-curl](https://packagist.org/packages/open-telemetry/opentelemetry-auto-curl)             |
+| `http-async-client` | 1.0                          | [open-telemetry/opentelemetry-auto-http-async](https://packagist.org/packages/open-telemetry/opentelemetry-auto-http-async) |
+| `laravel`           | 1.0                          | [open-telemetry/opentelemetry-auto-laravel](https://packagist.org/packages/open-telemetry/opentelemetry-auto-laravel)       |
+| `mysqli`            | 1.0                          | [open-telemetry/opentelemetry-auto-mysqli](https://packagist.org/packages/open-telemetry/opentelemetry-auto-mysqli)         |
+| `pdo`               | 1.0                          | [open-telemetry/opentelemetry-auto-pdo](https://packagist.org/packages/open-telemetry/opentelemetry-auto-pdo)               |
+| `postgresql`        | 1.2                          | [open-telemetry/opentelemetry-auto-postgresql](https://packagist.org/packages/open-telemetry/opentelemetry-auto-postgresql) |
+| `psr18`             | 0.5                          | [open-telemetry/opentelemetry-auto-psr18](https://packagist.org/packages/open-telemetry/opentelemetry-auto-psr18)           |
+| `slim`              | 1.0                          | [open-telemetry/opentelemetry-auto-slim](https://packagist.org/packages/open-telemetry/opentelemetry-auto-slim)             |
 
 ## Included metrics packages
 
