@@ -60,10 +60,12 @@ control so that checks only fetch URLs that are new or whose cache entries have
 expired. Lychee caches successful results only, so failures are retried on every
 run.
 
-If you add or change external links, the check updates the cache; commit the
-`.lycheecache` changes along with your content changes, or comment
-`/fix:link-cache` on your PR to have the bot do it. For details, see [`BUILD`
-and `CHECK LINKS`][pr-checks].
+If you add or change external links, run `npm run check:links` **before
+submitting your PR** — it's quick since all other links are cached — and commit
+the updated `.lycheecache` along with your content changes. Otherwise the
+`CHECK LINKS and CACHE` job will fail on a stale cache; if that happens, run the
+command and push, or comment `/fix:link-cache` on your PR to have the bot do it.
+For details, see [`BUILD` and `CHECK LINKS and CACHE`][pr-checks].
 
 ## Cache refresh and housekeeping workflows {#workflows}
 
@@ -86,9 +88,9 @@ exactly once.
 ## In CI
 
 The [`check-links.yml` workflow][ci] builds the site once (lean) and shares that
-artifact with the `CHECK LINKS` job, so local runs and CI check the same build.
-The job fails if any link check fails, or if the run leaves the committed
-`.lycheecache` stale.
+artifact with the `CHECK LINKS and CACHE` job, so local runs and CI check the
+same build. The job fails if any link check fails, or if the run leaves the
+committed `.lycheecache` stale.
 
 [blog-index]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md

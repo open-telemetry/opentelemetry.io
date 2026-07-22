@@ -67,7 +67,7 @@ failing URLs are re-fetched on every run.
    `.lycheecache`. See LinkedIn note below.
 2. If the check passes, [wrap up the PR](#wrap-up).
 3. **Otherwise**, list the failing URLs and their statuses from the check output
-   (for the CI run, see the PR's failing `CHECK LINKS` job log).
+   (for the CI run, see the PR's failing `CHECK LINKS and CACHE` job log).
 
    > [!NOTE] LinkedIn URLs
    >

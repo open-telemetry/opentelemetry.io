@@ -126,7 +126,7 @@ The check flags these obsolete paths:
 [#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
 [#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
 
-### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
+### `BUILD` and `CHECK LINKS and CACHE` {#build-and-check-links .notranslate lang=en}
 
 These two checks build the website and verify that all links are valid.
 
