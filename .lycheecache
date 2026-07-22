@@ -791,6 +791,7 @@ https://explorer.opentelemetry.io/java-agent/instrumentation/latest,206,17843556
 https://expressjs.com/,206,1784442359
 https://failsafe.dev/,200,1784701475
 https://farfetch.github.io/kafkaflow/docs/guides/open-telemetry,206,1784285133
+https://fastapi.tiangolo.com/,200,1784749298
 https://fastapi.tiangolo.com/tutorial/handling-errors/#use-httpexception,200,1784356048
 https://firebase.google.com/docs/projects/manage-installations,200,1784701516
 https://flagd.dev/,206,1784269623
@@ -1498,6 +1499,7 @@ https://github.com/jjatria/perl-opentelemetry-exporter-otlp,206,1784285131
 https://github.com/jjatria/perl-opentelemetry-sdk,206,1784285219
 https://github.com/jkoronaAtCisco,200,1784625650
 https://github.com/jkwatson,206,1784284910
+https://github.com/jlowin/fastmcp,200,1784749298
 https://github.com/jmacd,206,1784355596
 https://github.com/jmw51798,206,1784284914
 https://github.com/joaopgrassi,206,1784284917
@@ -2611,7 +2613,9 @@ https://github.com/open-telemetry/opentelemetry-demo,206,1784442353
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/README.md?plain=1,206,1784442357
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/accounting/,206,1784442349
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/ad/,206,1784284638
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/agent/,200,1784749298
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/cart/,206,1784269443
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/chatbot/,200,1784749298
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/checkout/,206,1784442350
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/currency/,206,1784284638
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/email/,206,1784284640
@@ -2623,6 +2627,8 @@ https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/,206
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/image-provider/,206,1784284647
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/kafka/,200,1784701477
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/load-generator/,206,1784284638
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/mcp/,200,1784749298
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/opamp-server/,200,1784749298
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml,206,1784442395
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml,200,1784701477
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/payment/,206,1784442353
@@ -2631,6 +2637,7 @@ https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quote/,206,17
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/react-native-app/,206,1784442352
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendation/,206,1784269447
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/,206,1784442350
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/telemetry-docs/,200,1784749298
 https://github.com/open-telemetry/opentelemetry-demo/tree/db0d981326ee0161d706c949061686d7823d99a2/src/product-reviews,200,1784701477
 https://github.com/open-telemetry/opentelemetry-demo/tree/main/test,206,1784442358
 https://github.com/open-telemetry/opentelemetry-dotnet,206,1784269452
@@ -5800,6 +5807,7 @@ https://www.flipt.io/docs/configuration/observability#tracing,200,1784701494
 https://www.freedesktop.org/software/systemd/man/latest/machine-id.html,206,1784284997
 https://www.fulcrumapp.com/,200,1784269455
 https://www.gnupg.org/gph/en/manual/x135.html#AEN160,200,1784701520
+https://www.gradio.app/,200,1784749298
 https://www.graphql-java.com/,200,1784284835
 https://www.gwtproject.org/,206,1784442405
 https://www.heroku.com/,200,1784701493
@@ -5923,6 +5931,7 @@ https://www.keycloak.org/observability/telemetry,200,1784701493
 https://www.konghq.com/,206,1784355883
 https://www.krakend.io/,206,1784183252
 https://www.krakend.io/docs/telemetry/opentelemetry/,200,1784270078
+https://www.langchain.com/,200,1784749298
 https://www.langchain.com/langgraph,200,1784701474
 https://www.lfasiallc.com/kubecon-cloudnativecon-openinfra-summit-pytorch-conference-china/?utm_source=opentelemetry&utm_medium=website&utm_content=blog,200,1784269630
 https://www.linkedin.com/company/opentelemetry/,200,1784355604
@@ -5946,6 +5955,7 @@ https://www.meetup.com/opentelemetry-in-practice-meetup-group/,200,1784701489
 https://www.metricshub.com/docs/latest/,206,1784183224
 https://www.microsoft.com/,206,1784356185
 https://www.microsoft.com/sql-server,200,1784285360
+https://www.mkdocs.org/,200,1784749298
 https://www.mongodb.com/,200,1784701516
 https://www.mongodb.com/docs/manual/reference/command/,200,1784285004
 https://www.mongodb.com/docs/manual/reference/error-codes/,200,1784701518
@@ -6118,6 +6128,7 @@ https://www.thousandeyes.com/,200,1784285383
 https://www.tinybird.co/,200,1784183361
 https://www.tinybird.co/docs/api-reference/events-api,200,1784183365
 https://www.traceloop.com/,200,1784284874
+https://www.traceloop.com/docs/openllmetry,200,1784749298
 https://www.typescriptlang.org/download,206,1784284659
 https://www.uber.com/blog/flipr/,200,1784285385
 https://www.velodb.io/solutions/use-cases/observability,200,1784269683
