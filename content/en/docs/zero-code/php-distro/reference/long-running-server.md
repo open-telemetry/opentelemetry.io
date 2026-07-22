@@ -4,10 +4,8 @@ description: >-
   Configure OpenTelemetry PHP Distro for Laravel Octane (Swoole, RoadRunner) and
   other persistent PHP server processes.
 weight: 5
-cSpell:ignore:
-  Swoole RoadRunner FPM php-fpm artisan fpm-fcgi apache2handler
-  BatchSpanProcessor SimpleSpanProcessor HttpTransportAsync SIGTERM SIGKILL
-  onEnd
+# prettier-ignore
+cSpell:ignore: apache2handler artisan BatchSpanProcessor FPM fpm-fcgi HttpTransportAsync onEnd php-fpm RoadRunner SIGKILL SIGTERM SimpleSpanProcessor Swoole
 ---
 
 PHP frameworks such as **Laravel Octane** (with Swoole or RoadRunner) run PHP as

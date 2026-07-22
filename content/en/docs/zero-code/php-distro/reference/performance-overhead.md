@@ -4,7 +4,7 @@ description: >-
   Performance benchmark results and guidance for minimizing overhead when using
   OpenTelemetry PHP Distro.
 weight: 3
-cSpell:ignore: aimeos php-fpm nginx protobuf colocating
+cSpell:ignore: aimeos colocating php-fpm
 ---
 
 This page outlines performance implications of using OpenTelemetry PHP Distro

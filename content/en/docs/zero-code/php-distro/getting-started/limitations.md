@@ -2,8 +2,8 @@
 title: Limitations
 description: Known limitations and constraints of OpenTelemetry PHP Distro.
 weight: 2
-cSpell:ignore:
-  xdebug basedir passenv opentelemetry-php-contrib ComponentProvider OpAMP
+# prettier-ignore
+cSpell:ignore: basedir ComponentProvider opentelemetry-php-contrib passenv xdebug
 ---
 
 This page describes known limitations and constraints of OpenTelemetry PHP

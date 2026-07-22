@@ -4,7 +4,7 @@ description: >-
   Automatically create spans using PHP 8 attributes with OpenTelemetry PHP
   Distro.
 weight: 4
-cSpell:ignore: WithSpan SpanAttribute
+cSpell:ignore: SpanAttribute WithSpan
 ---
 
 OpenTelemetry PHP Distro supports automatic span creation using PHP 8

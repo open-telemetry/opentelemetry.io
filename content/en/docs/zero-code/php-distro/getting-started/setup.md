@@ -4,7 +4,7 @@ description: >-
   Learn how to install and configure OpenTelemetry PHP Distro to start sending
   telemetry data from your PHP application.
 weight: 1
-cSpell:ignore: apk dpkg fpm Swoole RoadRunner
+cSpell:ignore: apk dpkg fpm RoadRunner Swoole
 ---
 
 Learn how to instrument your PHP application with OpenTelemetry PHP Distro and

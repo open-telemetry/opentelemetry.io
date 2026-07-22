@@ -5,7 +5,7 @@ description: >-
   Production-ready, zero-code OpenTelemetry instrumentation for PHP, delivered
   as native Linux packages.
 weight: 35
-cSpell:ignore: apk rpm dpkg fpm
+cSpell:ignore: apk rpm
 ---
 
 OpenTelemetry PHP Distro is a production-focused distribution for instrumenting

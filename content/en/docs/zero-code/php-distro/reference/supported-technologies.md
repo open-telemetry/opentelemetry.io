@@ -4,7 +4,7 @@ description: >-
   Supported PHP versions, SAPIs, operating systems, frameworks, and libraries
   for OpenTelemetry PHP Distro.
 weight: 2
-cSpell:ignore: httplug musl apk mysqli packagist psr
+cSpell:ignore: apk httplug musl mysqli psr
 ---
 
 OpenTelemetry PHP Distro is a distribution of OpenTelemetry PHP. It inherits

@@ -2,9 +2,8 @@
 title: Configuration
 description: Configuration options for OpenTelemetry PHP Distro.
 weight: 1
-cSpell:ignore:
-  keypass opamp syslog stderr protobuf yaml opentelemetry-php-contrib
-  ComponentProvider
+# prettier-ignore
+cSpell:ignore: ComponentProvider keypass opentelemetry-php-contrib stderr syslog yaml
 ---
 
 OpenTelemetry PHP Distro supports standard OpenTelemetry SDK configuration and
