@@ -31,8 +31,9 @@ Options:
       --pr-state <state>       PR state: 'open' or 'closed' ('' acts as open).
       --pr-merged <bool>       'true' when the PR is merged.
       --not-run-reason <text>  Reason the pipeline deliberately declined to
-                               run the action; when set, it is relayed instead
-                               of a generation/apply outcome.
+                               run the action, as standalone sentence(s); when
+                               set, it is relayed instead of a generation/apply
+                               outcome.
       --generate-result <r>    Result of the patch-generation job.
       --patch-skipped <bool>   'true' when generation produced no changes.
       --command-exit-status <n> Exit status of the patch-producing command.

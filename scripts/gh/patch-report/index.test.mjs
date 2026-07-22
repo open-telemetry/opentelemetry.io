@@ -124,26 +124,26 @@ describe('buildOutcomeComment', () => {
   });
 
   test('not-run reason: pipeline declined to run the action', () => {
-    const body = build({ notRunReason: 'the branch is stale.' });
+    const body = build({ notRunReason: 'The branch is stale.' });
     assert.equal(
       body,
-      `⚠️ \`fix:refcache\` was not run: the branch is stale. ${LOGS}`,
+      `⚠️ \`fix:refcache\` was not run. The branch is stale. ${LOGS}`,
     );
   });
 
   test('not-run reason takes precedence over generation and apply outcomes', () => {
     const body = build({
-      notRunReason: 'the branch is stale.',
+      notRunReason: 'The branch is stale.',
       generateResult: 'failure',
       applyResult: 'skipped',
     });
-    assert.match(body, /was not run: the branch is stale\./);
+    assert.match(body, /was not run\. The branch is stale\./);
   });
 
   test('closed PR takes precedence over a not-run reason', () => {
     const body = build({
       prState: 'closed',
-      notRunReason: 'the branch is stale.',
+      notRunReason: 'The branch is stale.',
     });
     assert.match(body, /^❌ This PR is closed/);
   });
@@ -182,7 +182,7 @@ describe('buildOutcomeComment', () => {
               for (const hint of ['Any hint text.', '']) {
                 for (const prState of ['open', 'closed', '']) {
                   for (const directiveUrl of ['d', '']) {
-                    for (const notRunReason of ['a reason.', '']) {
+                    for (const notRunReason of ['A reason.', '']) {
                       const body = buildOutcomeComment({
                         label,
                         prState,

@@ -23,9 +23,8 @@
  * @property {string} [prMerged]         'true' when the PR is merged.
  * @property {string} [notRunReason]     When set, the pipeline deliberately
  *                                       declined to run the action; the reason
- *                                       to relay. Spliced mid-sentence into the
- *                                       composed message, so it should start
- *                                       lowercase and end with a period.
+ *                                       to relay, as one or more standalone
+ *                                       sentences.
  * @property {string} generateResult     Result of the patch-generation job:
  *                                       'success' | 'failure' | 'cancelled'.
  * @property {string} patchSkipped       'true' when generation produced no
@@ -107,7 +106,7 @@ export function buildOutcomeComment({
 
   // 1. The pipeline deliberately declined to run the action.
   if (notRunReason) {
-    return `⚠️ ${what} was not run: ${notRunReason} ${logs}`;
+    return `⚠️ ${what} was not run. ${notRunReason} ${logs}`;
   }
 
   // 2. Patch generation did not succeed: no changes were ever captured.

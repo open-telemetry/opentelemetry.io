@@ -123,11 +123,10 @@ jobs:
         # PR branches cut before the Lychee link-checker switch (#10911) still
         # carry the old refcache wiring, and the patch step runs the head's fix
         # scripts — which would update the deleted `static/refcache.json`
-        # instead of `.lycheecache`, leaving link checks red. Detect such
-        # branches by the presence of the old cache file, skip the fix scripts,
-        # and let the report job tell the author to update from main.
-        # TODO(2026-08): remove this guard once pre-switch branches (cut before
-        # 2026-07-21) have aged out.
+        # instead of `.lycheecache`, leaving link checks red.
+        # TODO(2026-08): remove this guard (and the report job's stale-branch
+        # handling) once pre-switch branches (cut before 2026-07-21) have aged
+        # out.
         run: |
           if [[ -f static/refcache.json ]]; then
             echo "stale_branch=true" >> "$GITHUB_OUTPUT"
@@ -230,17 +229,23 @@ jobs:
           GENERATE_RESULT: ${{ needs.generate-patch.result }}
           PATCH_SKIPPED: ${{ needs.generate-patch.outputs.patch_skipped }}
           STALE_BRANCH: ${{ needs.generate-patch.outputs.stale_branch }}
+          # Why the stale-branch guard declined to run the fix scripts; see the
+          # guard step in the generate-patch job, and remove along with it.
+          STALE_BRANCH_MESSAGE: >-
+            This PR branch predates the Lychee link-checker switch (#10911), so
+            its fix scripts would update the old link cache. Update the branch
+            from `main`, then re-run `/fix`.
           COMMAND_EXIT_STATUS:
             ${{ needs.generate-patch.outputs.action_exit_status }}
           APPLY_RESULT: ${{ needs.apply-patch.result }}
-        # The hint and stale-branch reason are owned by the directive parser
-        # (single source of truth with its invalid-directive message); this
-        # checkout is of the default branch, so the imported text is trusted.
+        # The hint is owned by the directive parser (single source of truth
+        # with its invalid-directive message); this checkout is of the default
+        # branch, so the imported text is trusted.
         run: |
           hint=$(node -e 'import("./scripts/gh/pr-fix/index.mjs").then((m) => console.log(m.DIRECTIVE_HINT))')
           not_run_reason=''
           if [[ "$STALE_BRANCH" == 'true' ]]; then
-            not_run_reason=$(node -e 'import("./scripts/gh/pr-fix/index.mjs").then((m) => console.log(m.STALE_BRANCH_MESSAGE))')
+            not_run_reason="$STALE_BRANCH_MESSAGE"
           fi
           node scripts/gh/patch-report/cli.mjs \
             --pr "$PR_NUM" \
