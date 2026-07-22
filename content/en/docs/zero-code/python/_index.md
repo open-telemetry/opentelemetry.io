@@ -1,7 +1,7 @@
 ---
 title: Python zero-code instrumentation
 linkTitle: Python
-weight: 30
+weight: 40
 aliases: [/docs/languages/python/automatic]
 cascade:
   collector_vers: 0.156.0
