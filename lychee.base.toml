@@ -83,4 +83,16 @@ exclude = [
 
   '^https://www\.whatsmyua\.info',
   '^https://v1-30\.docs\.kubernetes\.io/',
+
+  # --- client-side-rendered fragments (lychee can't verify JS-injected anchors) ---
+  # GitHub renders inline-comment, review-thread, and per-file diff anchors in
+  # its React UI; they never appear in the server-sent HTML, so a fragment check
+  # always fails even when the page and comment exist.
+  '^https://github\.com/.+#(issuecomment-|discussion_r|diff-)',
+  # kafka.apache.org/documentation is a single-page app: every in-page anchor is
+  # injected client-side, so any fragment on it is unverifiable.
+  '^https://kafka\.apache\.org/documentation/?#',
+  # otelbin.io encodes the collector config in the URL fragment (`#config=…`);
+  # it is a payload, not a document anchor.
+  '^https://www\.otelbin\.io/\?#',
 ]
