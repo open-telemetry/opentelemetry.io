@@ -29,3 +29,15 @@
     method anchors for grpc status.Status (it is a type alias, so WithDetails is
     documented on the internal/status page). Upstreamed fix:
     open-telemetry/opentelemetry-proto#832
+
+- id: 2026-07-22-azure-functions-static-clients-anchor
+  module: semconv
+  minVers: 1.43.0
+  file: ^tmp/semconv/docs/faas/faas-spans\.md$
+  search: 'https://docs\.microsoft\.com/azure/azure-functions/manage-connections#static-clients'
+  replace: 'https://learn.microsoft.com/azure/azure-functions/manage-connections#reuse-client-instances'
+  flags: g
+  notes: >-
+    Azure reworked the manage-connections page: the #static-clients section is
+    now #reuse-client-instances, and docs.microsoft.com redirects to
+    learn.microsoft.com. Upstreamed fix: open-telemetry/semantic-conventions#3917
