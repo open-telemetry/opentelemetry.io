@@ -177,7 +177,7 @@ address a specific failure:
 /fix:i18n
 /fix:l10n
 /fix:markdown
-/fix:refcache
+/fix:link-cache
 /fix:submodule
 /fix:text
 ```

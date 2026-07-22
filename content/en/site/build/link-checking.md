@@ -28,7 +28,7 @@ npm run check:links
 | `check:links`          | Whole site                                                            |
 | `check:links:internal` | Whole site, offline (no external links)                               |
 | `check:links:diff`     | Changed files only                                                    |
-| `fix:refcache`         | Alias of `check:links`; use it to refresh the [link cache](#refcache) |
+| `fix:link-cache`       | Alias of `check:links`; use it to refresh the [link cache](#refcache) |
 
 The `check:links` and `check:links:internal` scripts run over a build of
 `BUILD_KIND`; `check:links:diff` checks files from the existing `public/` build.
@@ -62,26 +62,26 @@ run.
 
 If you add or change external links, the check updates the cache; commit the
 `.lycheecache` changes along with your content changes, or comment
-`/fix:refcache` on your PR to have the bot do it. For details, see [`BUILD` and
-`CHECK LINKS`][pr-checks].
+`/fix:link-cache` on your PR to have the bot do it. For details, see [`BUILD`
+and `CHECK LINKS`][pr-checks].
 
 ## Cache refresh and housekeeping workflows {#workflows}
 
 The following workflows are scheduled daily and run a link checking command over
 a **full** build:
 
-| Workflow                          | Link-check command             |
-| --------------------------------- | ------------------------------ |
-| Refcache refresh                  | `fix:refcache` (after pruning) |
-| Housekeeping (`fix-and-test:all`) | `fix:refcache`                 |
+| Workflow                          | Link-check command               |
+| --------------------------------- | -------------------------------- |
+| Refcache refresh                  | `fix:link-cache` (after pruning) |
+| Housekeeping (`fix-and-test:all`) | `fix:link-cache`                 |
 
 Refcache refresh prunes the oldest cache entries (the count is a workflow input)
 and re-runs the link check, which refreshes the cache entries for the pruned
 URLs that are still used in the site.
 
 The [housekeeping workflow][housekeeping] runs `fix-and-test:all`, which calls
-`fix:refcache` and deliberately skips `check:links` so links are checked exactly
-once.
+`fix:link-cache` and deliberately skips `check:links` so links are checked
+exactly once.
 
 ## In CI
 

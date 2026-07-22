@@ -42,7 +42,7 @@ runs:
       with:
         node-version-file: ${{ inputs.node-version-file }}
 
-    # Link-check-capable scripts (fix:refcache and the fix-and-test:all family)
+    # Link-check-capable scripts (fix:link-cache and the fix-and-test:all family)
     # need the lychee binary on PATH.
     - uses: ./.github/actions/install-lychee
 

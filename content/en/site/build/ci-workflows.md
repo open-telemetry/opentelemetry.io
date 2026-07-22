@@ -341,8 +341,8 @@ It runs as a three-stage pipeline:
 > The [`refcache-refresh.yml`][] workflow also runs daily and touches
 > `.lycheecache`, so the two bot PRs can conflict depending on merge order.
 > Conflicts self-heal, since both branches sync from `main` on each run.
-> Migrating refcache-refresh onto the reusable patch actions — eliminating such
-> conflicts by construction — is tracked in the [project plan][].
+> Migrating it onto the reusable patch actions — eliminating such conflicts by
+> construction — is tracked in the [project plan][].
 
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 [housekeeping]:
