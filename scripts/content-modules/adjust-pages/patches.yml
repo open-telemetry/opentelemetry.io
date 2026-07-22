@@ -17,5 +17,15 @@
 #     RocketMQ docs renumbered the consumer group page from 07 to 08.
 #     Upstreamed fix: open-telemetry/semantic-conventions#3771
 #
-# No patches at the moment. When adding the first entry, replace the `[]`:
-[]
+- id: 2026-07-22-grpc-status-godoc-to-pkg-go-dev
+  module: otlp
+  minVers: 1.11.0
+  file: ^tmp/otlp/docs/specification\.md$
+  search: 'https://godoc\.org/google\.golang\.org/grpc/status#Status\.WithDetails'
+  replace: 'https://pkg.go.dev/google.golang.org/grpc/internal/status#Status.WithDetails'
+  flags: g
+  notes: >-
+    godoc.org is deprecated and redirects to pkg.go.dev, which does not render
+    method anchors for grpc status.Status (it is a type alias, so WithDetails is
+    documented on the internal/status page). Upstreamed fix:
+    open-telemetry/opentelemetry-proto#832

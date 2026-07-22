@@ -4699,6 +4699,7 @@ https://mongodb.github.io/mongo-java-driver/,206,1784183129
 https://mybatis.org/mybatis-3/,206,1784183135
 https://myfaces.apache.org/,206,1784284639
 https://mypy-lang.org/,206,1784183036
+https://mypy.readthedocs.io/en/stable/command_line.html#cmdoption-mypy-no-namespace-packages,200,1784724330
 https://nais.io/blog/posts/otel-from-0-to-100/,206,1784183229
 https://neo4j.com/,206,1784356120
 https://netlify.com/,200,1784701475
@@ -4825,6 +4826,7 @@ https://open-telemetry.github.io/otel-arrow/compare/,206,1784269429
 https://openai.com/,200,1784285322
 https://opencensus.io/,200,1784701475
 https://openfeature.dev/,200,1784701476
+https://openfeature.dev/specification/glossary/#flag-set,200,1784723396
 https://openfga.dev/,200,1784701493
 https://openfga.dev/docs/getting-started/setup-openfga/configure-openfga#telemetry,206,1784284791
 https://openliberty.io/,200,1784285044
@@ -4901,6 +4903,7 @@ https://particular.net/,206,1784355820
 https://pecl.php.net/,200,1784269455
 https://pekko.apache.org/,206,1784284645
 https://perfwiki.github.io/,206,1784285020
+https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs,200,1784724330
 https://pkg.go.dev/cmd/go#hdr-Environment_variables,200,1784442350
 https://pkg.go.dev/database/sql,200,1784355800
 https://pkg.go.dev/github.com/Cyprinus12138/otelgin,200,1784356183
@@ -5239,6 +5242,7 @@ https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#WithSampler,200,1784269440
 https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.38.0,200,1784442366
 https://pkg.go.dev/google.golang.org/grpc,200,1784355802
 https://pkg.go.dev/google.golang.org/grpc/credentials#PerRPCCredentials,200,1784269459
+https://pkg.go.dev/google.golang.org/grpc/internal/status#Status.WithDetails,200,1784726117
 https://pkg.go.dev/gorm.io/plugin/opentelemetry,200,1784442930
 https://pkg.go.dev/k8s.io/api@v0.31.3/core/v1#NamespacePhase,200,1784701525
 https://pkg.go.dev/k8s.io/client-go,200,1784442920
