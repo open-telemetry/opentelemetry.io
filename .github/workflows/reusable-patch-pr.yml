@@ -135,10 +135,10 @@ jobs:
         with:
           ref: main
           persist-credentials: false
-          # Enough history to cover commits that land on main while the
-          # caller's run is in flight: the 3-way apply below needs the
-          # pre-image blobs of the main that the patch was generated against.
-          fetch-depth: 50
+          # Full history so that the 3-way apply below always has the
+          # pre-image blobs of the main that the patch was generated against,
+          # even when commits land on main while the caller's run is in flight.
+          fetch-depth: 0
 
       # Let git resolve credentials through the gh CLI (which reads GH_TOKEN
       # from each step's env) instead of persisting the token in .git/config.
