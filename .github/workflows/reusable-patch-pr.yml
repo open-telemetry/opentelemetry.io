@@ -135,6 +135,10 @@ jobs:
         with:
           ref: main
           persist-credentials: false
+          # Enough history to cover commits that land on main while the
+          # caller's run is in flight: the 3-way apply below needs the
+          # pre-image blobs of the main that the patch was generated against.
+          fetch-depth: 50
 
       # Let git resolve credentials through the gh CLI (which reads GH_TOKEN
       # from each step's env) instead of persisting the token in .git/config.
@@ -152,7 +156,10 @@ jobs:
           BRANCH: ${{ inputs.branch }}
         run: |
           git checkout -b "$BRANCH"
-          if ! git apply --verbose site.patch; then
+          # Main may have moved since the patch was generated. Fall back to a
+          # 3-way merge (--3way) so that context drift and already-applied
+          # hunks don't fail the apply; a true conflict still fails loudly.
+          if ! git apply --3way --verbose site.patch; then
             echo "Patch failed to apply. For details, see output above. To debug this locally,"
             echo "get the patch file from the workflow summary artifact section."
             exit 1
