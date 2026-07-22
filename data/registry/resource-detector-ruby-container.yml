@@ -1,0 +1,16 @@
+title: OpenTelemetry::Resource::Detector::Container
+registryType: resource-detector
+language: ruby
+tags:
+  - container
+  - resource-detector
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/resources/container
+license: Apache 2.0
+description:
+  The `opentelemetry-resource-detector-container` gem provides a container
+  resource detector for OpenTelemetry.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

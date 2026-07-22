@@ -36,7 +36,7 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
   attempt to fix non-2XX URLs on otelbot PRs (by default, all open `otelbot/*`
   PRs with failing link checks, or specific branches when so instructed).
 - [`/resolve-refcache-conflicts <optional-pr-number>`][resolve-refcache-conflicts]:
-  resolve `static/refcache.json` merge/rebase conflicts.
+  resolve `.lycheecache` merge/rebase conflicts.
 - [`/review-blog-post <blog-post-path-or-pr-number>`][review-blog-post]: review
   an OpenTelemetry blog post for front matter compliance, content conventions,
   GitHub link stability (`gh-url-hash`), spelling, and OTel terminology.

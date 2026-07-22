@@ -2,6 +2,6 @@
 # See content/en/site/build/content-module-patches.md.
 
 spec: 1.59.0
-otlp: 1.10.0
+otlp: 1.11.0
 semconv: 1.43.0
 opamp: 0.17.0
