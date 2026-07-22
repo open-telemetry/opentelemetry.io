@@ -77,7 +77,7 @@ Supported PHP versions: `8.1` to `8.5`.
 - Automatic root span creation
 - Root span URL grouping
 - Inferred spans
-- [Attribute-based instrumentation](/docs/zero-code/php-distro/reference/attribute-instrumentation/)
+- [Attribute-based instrumentation](/docs/zero-code/php/distro/reference/attribute-instrumentation/)
   (`#[WithSpan]`, `#[SpanAttribute]`)
 - Background telemetry sending
 - PHP runtime metrics (memory, GC — exported automatically via the native async

@@ -4,7 +4,8 @@ linkTitle: PHP Distro
 description: >-
   Production-ready, zero-code OpenTelemetry instrumentation for PHP, delivered
   as native Linux packages.
-weight: 35
+weight: 30
+aliases: [/docs/zero-code/php-distro/]
 cSpell:ignore: apk rpm
 ---
 

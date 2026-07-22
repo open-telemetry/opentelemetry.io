@@ -38,7 +38,7 @@ When using file-based (declarative) configuration:
   section.
 - The distro ships a built-in `distro` detector for `telemetry.distro.name` and
   `telemetry.distro.version` attributes. See
-  [Configuration](/docs/zero-code/php-distro/reference/configuration/#distro-resource-detector)
+  [Configuration](/docs/zero-code/php/distro/reference/configuration/#distro-resource-detector)
   for usage.
 - Environment variable substitution (`${VAR_NAME}`) in YAML files relies on
   `$_SERVER` to read values. In web server contexts (Apache, nginx+FPM), process

@@ -98,7 +98,7 @@ opentelemetry_distro.enabled=true
 
 | Option                        | Default | Accepted values   | Description                                                                                                                                                                       |
 | ----------------------------- | ------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `OTEL_PHP_ATTR_HOOKS_ENABLED` | `false` | `true` or `false` | Enables `#[WithSpan]` / `#[SpanAttribute]` attribute-based span creation. See [Attribute-based instrumentation](/docs/zero-code/php-distro/reference/attribute-instrumentation/). |
+| `OTEL_PHP_ATTR_HOOKS_ENABLED` | `false` | `true` or `false` | Enables `#[WithSpan]` / `#[SpanAttribute]` attribute-based span creation. See [Attribute-based instrumentation](/docs/zero-code/php/distro/reference/attribute-instrumentation/). |
 
 ### Scoped dependencies bridge
 

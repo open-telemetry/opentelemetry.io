@@ -17,12 +17,12 @@ send telemetry data to an OTLP-compatible backend.
 - Do not run another PHP APM or OpenTelemetry agent in the same process.
 
 For supported operating systems and PHP versions, see
-[Supported technologies](/docs/zero-code/php-distro/reference/supported-technologies/).
+[Supported technologies](/docs/zero-code/php/distro/reference/supported-technologies/).
 
 ## Limitations
 
 Known runtime and compatibility limitations are described in
-[Limitations](/docs/zero-code/php-distro/getting-started/limitations/).
+[Limitations](/docs/zero-code/php/distro/getting-started/limitations/).
 
 ## Download and install packages
 
@@ -76,8 +76,8 @@ After installation and configuration, restart PHP processes (for example
 ## Troubleshooting
 
 - Verify configuration options in
-  [Configuration](/docs/zero-code/php-distro/reference/configuration/).
+  [Configuration](/docs/zero-code/php/distro/reference/configuration/).
 - Check known constraints in
-  [Limitations](/docs/zero-code/php-distro/getting-started/limitations/).
+  [Limitations](/docs/zero-code/php/distro/getting-started/limitations/).
 - If using Laravel Octane (Swoole or RoadRunner), see
-  [Long-running PHP servers](/docs/zero-code/php-distro/reference/long-running-server/).
+  [Long-running PHP servers](/docs/zero-code/php/distro/reference/long-running-server/).
