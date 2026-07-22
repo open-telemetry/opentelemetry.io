@@ -73,7 +73,7 @@
     "check:l10n": "npm run seq -- check:l10n:do-not-copy-images-etc",
     "check:links:diff": "node scripts/lychee/diff-check/index.mjs",
     "check:links:internal": "npm run _check:links -- --offline",
-    "check:links": "npm run _check:links --",
+    "check:links": "node scripts/lychee/check-report/cli.mjs",
     "check:markdown:specs": "npx markdownlint-cli2 'tmp/(otel|otlp|semconv)/**/*.md'",
     "check:markdown": "npx markdownlint-cli2 '*.md' '{content,projects}/**/*.md'",
     "check:registry": "npm run _check:registry -- ",
