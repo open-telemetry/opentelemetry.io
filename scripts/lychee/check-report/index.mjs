@@ -16,3 +16,37 @@ export function cacheUpdatedNotice() {
     RULE,
   ].join('\n');
 }
+
+// Failed links from lychee output: `[STATUS] URL (at L:C) | reason` lines,
+// one entry per unique URL. STATUS is an HTTP status code or a lychee marker
+// such as TIMEOUT or ERROR.
+export function failedUrlsOf(output) {
+  const failures = [];
+  const seen = new Set();
+  for (const [, status, url] of output.matchAll(/^\[([A-Z0-9]+)\] (\S+)/gm)) {
+    if (seen.has(url)) continue;
+    seen.add(url);
+    failures.push({ status, url });
+  }
+  return failures;
+}
+
+// Report for a failed check whose links are genuinely dead: names the count,
+// lists each URL with its status, and points at the fixes — repair or remove
+// the link, or mark a checker-hostile URL with `?link-check=no`.
+export function deadLinksReport(failures) {
+  if (failures.length === 0) return '';
+  const count =
+    failures.length === 1 ? '1 link is' : `${failures.length} links are`;
+  return [
+    RULE,
+    `ERROR: ${count} genuinely unreachable — nothing cache-side to fix:`,
+    '',
+    ...failures.map(({ status, url }) => `  [${status}] ${url}`),
+    '',
+    'Fix or remove these links. For a URL that you have verified manually',
+    'but that blocks link checkers, append `?link-check=no` -- see',
+    'https://opentelemetry.io/docs/contributing/pr-checks/#handling-valid-external-links',
+    RULE,
+  ].join('\n');
+}
