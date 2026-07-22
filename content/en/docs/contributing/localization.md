@@ -548,11 +548,8 @@ so this typically applies to in-sync pages):
 
 When an _external link_ to a **moved** (but otherwise semantically
 **unchanged**) resource (such as a GitHub file) results in a link-check failure,
-consider:
-
-- Removing the broken link from the refcache
-- Updating the link across all locales using the method described earlier in
-  this section.
+update the link across all locales using the method described earlier in this
+section.
 
 #### Targeted content additions to drifted files {#targeted-content-additions}
 
