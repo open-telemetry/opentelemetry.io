@@ -7139,6 +7139,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-07-17T06:23:35.124314733Z"
   },
+  "https://github.com/open-telemetry/community/issues/3548": {
+    "StatusCode": 206,
+    "LastSeen": "2026-07-22T10:14:06.883376853Z"
+  },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
     "LastSeen": "2026-07-19T06:26:09.421842745Z"
