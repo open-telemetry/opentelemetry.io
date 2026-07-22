@@ -13,9 +13,8 @@ params:
 ---
 
 [**{{% param title %}}**][LF], **<span class="text-nowrap">July 28–30,</span>
-Yokohama**. <span class="d-none d-md-inline"><br></span> Come [collaborate,
-learn, and share][blog]<span class="d-none d-sm-inline"> with the Cloud Native
-community</span>!
+Yokohama**. Come [collaborate, learn, and share][blog]<span
+class="d-none d-sm-inline"> with the Cloud Native community</span>!
 
 [blog]: <{{% param blogPostURL %}}>
 [LF]: <{{% param eventUrl %}}register/?{{% _param utmParam %}}>
