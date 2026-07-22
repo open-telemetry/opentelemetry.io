@@ -71,9 +71,9 @@ are internal helpers and are not intended to be run directly.
 | `fix:format:staged`       | Format only staged files.                                      |
 | `fix:i18n`                | Add/fix i18n front matter (`fix:i18n:new`, `fix:i18n:status`). |
 | `fix:l10n`                | Apply localization fixes.                                      |
+| `fix:link-cache`          | Check links, updating the committed `.lycheecache`.            |
+| `fix:link-cache:refresh`  | Prune the oldest cache entries, then `fix:link-cache`.         |
 | `fix:markdown`            | Fix Markdown lint issues and trailing spaces.                  |
-| `fix:refcache`            | Check links, updating the committed `.lycheecache`.            |
-| `fix:refcache:refresh`    | Prune the oldest cache entries, then `fix:refcache`.           |
 | `fix:submodule`           | Pin submodule revisions (same as `pin:submodule`).             |
 | `fix:filenames`           | [Rename files & remove obsolete files/folders][fn].            |
 | `fix:dict`                | Sort cspell word lists and normalize front matter.             |
@@ -95,34 +95,34 @@ are internal helpers and are not intended to be run directly.
 
 ## Test and CI
 
-| Script                     | Description                                                       |
-| -------------------------- | ----------------------------------------------------------------- |
-| `diff:check`               | Warn if working tree has uncommitted changes.                     |
-| `diff:fail`                | Fail if working tree has changes (e.g. after build).              |
-| `fix-and-test:all`         | All fixes (incl. i18n), then checks; links checked once.[^fat]    |
-| `netlify-build:preview`    | `build:preview` then `diff:check`.                                |
-| `netlify-build:production` | `build:production` then `diff:check`.                             |
-| `test-and-fix`             | Run fix scripts (excluding i18n/refcache/submodule), then checks. |
-| `test:all`                 | Runs `test:base` then `test:compound-tests`.                      |
-| `test:base`                | Base tests (same as `check`).                                     |
-| `test:collector-sync`      | Collector-sync tests.                                             |
-| `test:compound-tests`      | Runs compound `test:*-*` scripts.[^categories]                    |
-| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.               |
-| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.      |
-| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^categories]        |
-| `test:local-tools:lychee`  | Lychee-binary slice of `test:local-tools` (see Notes).            |
-| `test:public`              | Runs the `tests/public/` checks over the built site.[^categories] |
-| `test`                     | Run the most commonly needed tests.                               |
+| Script                     | Description                                                         |
+| -------------------------- | ------------------------------------------------------------------- |
+| `diff:check`               | Warn if working tree has uncommitted changes.                       |
+| `diff:fail`                | Fail if working tree has changes (e.g. after build).                |
+| `fix-and-test:all`         | All fixes (incl. i18n), then checks; links checked once.[^fat]      |
+| `netlify-build:preview`    | `build:preview` then `diff:check`.                                  |
+| `netlify-build:production` | `build:production` then `diff:check`.                               |
+| `test-and-fix`             | Run fix scripts (excluding i18n/link-cache/submodule), then checks. |
+| `test:all`                 | Runs `test:base` then `test:compound-tests`.                        |
+| `test:base`                | Base tests (same as `check`).                                       |
+| `test:collector-sync`      | Collector-sync tests.                                               |
+| `test:compound-tests`      | Runs compound `test:*-*` scripts.[^categories]                      |
+| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.                 |
+| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.        |
+| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^categories]          |
+| `test:local-tools:lychee`  | Lychee-binary slice of `test:local-tools` (see Notes).              |
+| `test:public`              | Runs the `tests/public/` checks over the built site.[^categories]   |
+| `test`                     | Run the most commonly needed tests.                                 |
 
 [^categories]:
     These scripts follow the test-script naming conventions; see
     [Test categories](../../testing/#test-categories).
 
 [^fat]:
-    The housekeeping default: runs `fix:refcache` (link check, refreshing the
+    The housekeeping default: runs `fix:link-cache` (link check, refreshing the
     link cache) after the content fixes; uses the keep-going `all` runner so
     every fix is captured. The check phase excludes `check:links`
-    (`fix:refcache` covers it) and `check:i18n` (redundant after `fix:i18n`
+    (`fix:link-cache` covers it) and `check:i18n` (redundant after `fix:i18n`
     records drift status). See [Housekeeping](../ci-workflows/#housekeeping).
 
 ## Utilities
@@ -142,8 +142,7 @@ are internal helpers and are not intended to be run directly.
 ## Notes
 
 - **Link cache.** The link-check scripts read and update the committed
-  `.lycheecache`; the `fix:refcache*` scripts keep their historical names. For
-  details, see [Link checking](../link-checking/).
+  `.lycheecache`. For details, see [Link checking](../link-checking/).
 - **`test:local-tools:lychee`** is the subset of `test:local-tools` that needs
   the `lychee` binary (behavioral fragment- and config-checking tests). Those
   tests skip when the binary is absent, so `test:local-tools` already covers

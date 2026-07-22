@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import {
   DIRECTIVE_HINT,
   FIX_ALL_COMPAT_MESSAGE,
+  FIX_REFCACHE_COMPAT_MESSAGE,
   INVALID_DIRECTIVE_MESSAGE,
   parseFixDirective,
 } from './index.mjs';
@@ -24,10 +25,10 @@ describe('parseFixDirective', () => {
   });
 
   test('/fix:<name> runs the matching script', () => {
-    assert.deepEqual(parseFixDirective('/fix:refcache'), {
+    assert.deepEqual(parseFixDirective('/fix:link-cache'), {
       valid: true,
-      actionName: 'fix:refcache',
-      command: 'fix:refcache',
+      actionName: 'fix:link-cache',
+      command: 'fix:link-cache',
     });
   });
 
@@ -53,6 +54,15 @@ describe('parseFixDirective', () => {
       valid: true,
       actionName: 'fix:ALL',
       command: 'fix:all',
+    });
+  });
+
+  test('/fix:refcache maps to fix:link-cache with a compat message', () => {
+    assert.deepEqual(parseFixDirective('/fix:refcache'), {
+      valid: true,
+      actionName: 'fix:refcache',
+      command: 'fix:link-cache',
+      info: FIX_REFCACHE_COMPAT_MESSAGE,
     });
   });
 

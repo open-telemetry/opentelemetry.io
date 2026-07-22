@@ -2,8 +2,8 @@
 name: review-pull-request
 description: >-
   Review pull requests for opentelemetry.io: CI check semantics, CLA and
-  approval-label workflow, refcache handling, locale rules, and content quality.
-  Use when reviewing a PR or debugging a CI failure in
+  approval-label workflow, link-cache handling, locale rules, and content
+  quality. Use when reviewing a PR or debugging a CI failure in
   open-telemetry/opentelemetry.io.
 argument-hint: '<PR number or URL>'
 allowed-tools: Bash Read Grep Glob
@@ -59,7 +59,7 @@ For each failing check, match `<workflow-name> / <job-name>` against
 validates and the local fix command. Caveats:
 
 - A `CHECK LINKS` failure can be a stale `.lycheecache` rather than a broken
-  link — read the failure (see [Refcache](#refcache)).
+  link — read the failure (see [Link cache](#refcache)).
 - Fork PRs can hit token-scope limits that look like check failures but are
   permissions artifacts. Read the log before concluding.
 - `Netlify Deploy Preview` failures: open **Details** for the build log before
@@ -143,12 +143,12 @@ Walk this checklist before writing the review:
       have alt text; internal links use paths or Hugo refs (not
       `opentelemetry.io` URLs); no shortcut-form reference links.
 
-**Refcache and links**
+**Link cache and links**
 
 - [ ] `.lycheecache` updates (if any) committed in the PR.
 - [ ] No hand-edits to `.lycheecache`.
 - [ ] Unreachable-but-valid URLs use `?link-check=no` (see
-      [Refcache](#refcache)).
+      [Link cache](#refcache)).
 
 Then structure the review as:
 
@@ -160,7 +160,7 @@ Then structure the review as:
   opportunities, phrasing.
 - **Positive Feedback** — short but present.
 
-## Refcache {#refcache}
+## Link cache {#refcache}
 
 `.lycheecache` is the committed cache of successful external-link checks.
 `npm run check:links` updates it as a side effect — authors commit the updated
@@ -173,7 +173,7 @@ Do not hand-edit `.lycheecache`. If a URL returns a non-200 for server reasons
 the URL — [`pr-checks.md#handling-valid-external-links`][handling-links].
 
 For resolving merge/rebase conflicts in `.lycheecache`, see the
-`resolve-refcache-conflicts` skill.
+`resolve-link-cache-conflicts` skill.
 
 ## References
 

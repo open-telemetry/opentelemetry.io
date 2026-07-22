@@ -135,7 +135,7 @@ link cache (`.lycheecache`), and this check will fail until that cache is
 updated.
 
 The easiest way to update it is to comment
-[`/fix:refcache`](../pull-requests/#fixing-prs-in-github) on your PR — the
+[`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) on your PR — the
 OpenTelemetry bot updates the cache for you.
 
 Alternatively, you can build and check links locally, by running

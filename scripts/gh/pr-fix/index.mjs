@@ -1,7 +1,7 @@
 // Pure library for parsing `/fix` PR-comment directives.
 //
 // The `pr-actions` workflow turns a maintainer comment such as `/fix` or
-// `/fix:refcache` into the npm script it should run. This module isolates that
+// `/fix:link-cache` into the npm script it should run. This module isolates that
 // parsing and the backward-compatibility mapping so the logic is unit-testable;
 // see ./cli.mjs for the workflow wiring and ./index.test.mjs for the tests.
 
@@ -14,6 +14,9 @@ export const INVALID_DIRECTIVE_MESSAGE = `❌ Invalid fix directive. ${DIRECTIVE
 
 export const FIX_ALL_COMPAT_MESSAGE =
   'ℹ️ INFO: Running `/fix` for `/fix:all` (compat mode). Use `/fix` moving forward.';
+
+export const FIX_REFCACHE_COMPAT_MESSAGE =
+  'ℹ️ INFO: Running `/fix:link-cache` for `/fix:refcache` (compat mode). Use `/fix:link-cache` moving forward.';
 
 // The first line of the comment must be exactly `/fix` optionally followed by
 // one or more `:segment` parts, where a segment is one or more of `-_0-9a-zA-Z`.
@@ -42,6 +45,8 @@ const DIRECTIVE_RE = /^\/(fix(?::[-_0-9A-Za-z]+)*)$/;
  * The compat mapping preserves historical behavior:
  *  - `/fix:all` runs `fix` (the modern command), with an info message.
  *  - `/fix:ALL` lets maintainers still run the literal `fix:all` script.
+ *  - `/fix:refcache` runs `fix:link-cache` (the script's modern name), with
+ *    an info message.
  *
  * @param {string} commentBody
  * @returns {FixDirective}
@@ -66,6 +71,15 @@ export function parseFixDirective(commentBody) {
 
   if (actionName === 'fix:ALL') {
     return { valid: true, actionName, command: 'fix:all' };
+  }
+
+  if (actionName === 'fix:refcache') {
+    return {
+      valid: true,
+      actionName,
+      command: 'fix:link-cache',
+      info: FIX_REFCACHE_COMPAT_MESSAGE,
+    };
   }
 
   return { valid: true, actionName, command: actionName };

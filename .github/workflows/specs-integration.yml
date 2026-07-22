@@ -113,19 +113,19 @@ jobs:
 
       - uses: ./.github/actions/install-lychee
 
-      - name: Update refcache
+      - name: Update link cache
         env:
           # Authenticated github.com link checks (rate limits)
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           npm install --omit=optional
-          # Ignore link-check failures so we can still commit refcache updates
-          npm run fix:refcache || true
+          # Ignore link-check failures so we can still commit link-cache updates
+          npm run fix:link-cache || true
 
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Update refcache"
+            git commit -am "Update link cache"
             git push
           fi
 
