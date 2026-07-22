@@ -13,7 +13,7 @@ params:
 ---
 
 [**{{% param title %}}**][LF], **<span class="text-nowrap">July 28–30,</span>
-Yokohama**. [Details][blog].
+Yokohama**. [Details][blog]
 
 [blog]: <{{% param blogPostURL %}}>
 [LF]: <{{% param eventUrl %}}register/?{{% _param utmParam %}}>
