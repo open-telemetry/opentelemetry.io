@@ -1,0 +1,72 @@
+name: Reusable - report workflow failure
+
+# Reusable workflow that opens (or comments on an existing) GitHub issue when a
+# caller workflow fails. Call it as a final job gated with `if: failure()`:
+#
+#   report-failure:
+#     needs: [my-job]
+#     if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
+#     uses: ./.github/workflows/reusable-report-failure.yml
+#     permissions:
+#       issues: write  # Pass through for failure tracking issues
+#       contents: read
+#
+# In a called workflow the `github` context refers to the caller, so the
+# workflow name, branch, commit, and run URL are derived automatically and don't
+# need to be passed in. Optional inputs (label, issue-type, issue-prefix,
+# pr-url) are declared below. The issue logic lives in
+# scripts/gh/report-failure/ (with unit tests).
+
+on:
+  workflow_call:
+    inputs:
+      label:
+        required: false
+        type: string
+        default: CI/infra
+      issue-type: # Must match an issue type defined for the org (Task, Bug, Feature).
+        required: false
+        type: string
+        default: Bug
+      issue-prefix:
+        required: false
+        type: string
+        default: Workflow failed
+      pr-url:
+        description: >-
+          Optional URL of a PR related to the failure (e.g. the PR publishing
+          partial results); linked from the issue body or comment.
+        required: false
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    name: Report failure
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write # Create or comment on failure tracking issues via gh
+      contents: read
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Create or update issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          WORKFLOW_NAME: ${{ github.workflow }}
+          WORKFLOW_URL:
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{
+            github.run_id }}
+          HEAD_BRANCH: ${{ github.ref_name }}
+          HEAD_SHA: ${{ github.sha }}
+          LABEL: ${{ inputs.label }}
+          ISSUE_TYPE: ${{ inputs.issue-type }}
+          ISSUE_PREFIX: ${{ inputs.issue-prefix }}
+          PR_URL: ${{ inputs.pr-url }}
+        run: node scripts/gh/report-failure/cli.mjs

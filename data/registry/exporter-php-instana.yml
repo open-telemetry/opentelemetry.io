@@ -1,0 +1,16 @@
+title: Instana OpenTelemetry PHP Exporter
+registryType: exporter
+language: php
+tags:
+  - Instana
+  - exporter
+  - php
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Exporter/Instana
+license: Apache 2.0
+description:
+  This is a read-only subtree split of
+  https://github.com/open-telemetry/opentelemetry-php-contrib.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

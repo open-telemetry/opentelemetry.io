@@ -8,16 +8,16 @@
   seems to want only the primary subtag.
 
   References:
-  - https://gohugo.io/methods/site/language/
+  - https://gohugo.io/configuration/languages/
   - https://datatracker.ietf.org/doc/html/rfc5646
 
   */ -}}
 
 {{ $locales := slice -}}
-{{ range site.Languages -}}
-  {{ $langCode := .LanguageCode -}}
+{{ range hugo.Sites -}}
+  {{ $langCode := .Language.Locale -}}
   {{ $primaryTag := index (split $langCode "-") 0 -}}
-  {{ $localeTagForGT := cond (eq .Lang "zh") .LanguageCode $primaryTag -}}
+  {{ $localeTagForGT := cond (eq .Language.Name "zh") $langCode $primaryTag -}}
   {{ $locales = $locales | append $localeTagForGT -}}
 {{ end -}}
 {{ return $locales -}}
