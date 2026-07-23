@@ -962,6 +962,7 @@ maintainers:
   - name: lalitb
     teams:
       - arrow-approvers
+      - arrow-maintainers
       - arrow-triagers
       - cpp-approvers
       - cpp-contrib-approvers
@@ -2162,6 +2163,12 @@ approvers:
       - specs-triagers
     html_url: https://github.com/smith
     avatar_url: https://avatars.githubusercontent.com/u/9912?v=4
+  - name: sophiesage
+    teams:
+      - sig-end-user-approvers
+      - sig-end-user-triagers
+    html_url: https://github.com/sophiesage
+    avatar_url: https://avatars.githubusercontent.com/u/206159240?v=4
   - name: sourabh1007
     teams:
       - semconv-db-approvers
@@ -2299,6 +2306,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/d4nyll
     avatar_url: https://avatars.githubusercontent.com/u/9997953?v=4
+  - name: dyl10s
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/dyl10s
+    avatar_url: https://avatars.githubusercontent.com/u/12243691?v=4
   - name: facostaembrace
     teams:
       - javascript-contrib-triagers
@@ -2927,6 +2939,9 @@ members:
   - name: sanketmehta28
     html_url: https://github.com/sanketmehta28
     avatar_url: https://avatars.githubusercontent.com/u/20374164?v=4
+  - name: scbjans
+    html_url: https://github.com/scbjans
+    avatar_url: https://avatars.githubusercontent.com/u/27202540?v=4
   - name: scorpionknifes
     html_url: https://github.com/scorpionknifes
     avatar_url: https://avatars.githubusercontent.com/u/23299540?v=4
