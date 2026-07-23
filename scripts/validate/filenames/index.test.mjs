@@ -1,6 +1,6 @@
 // Unit tests for the filename checks, plus repo-wide sanity and drift guards.
 
-import { describe, test, before, after } from 'node:test';
+import { describe, test, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -11,6 +11,7 @@ import {
   OBSOLETE_PATHS,
   SCAN_DIRS,
   escapeAnnotation,
+  escapeAnnotationProperty,
   findBadFilenames,
   findObsoletePaths,
   fixViolations,
@@ -40,7 +41,8 @@ describe('isBadName', () => {
 describe('temp-fixture checks', () => {
   let cwd;
 
-  before(() => {
+  // A fresh fixture per test keeps the tests below order-independent.
+  beforeEach(() => {
     cwd = fs.mkdtempSync(path.join(os.tmpdir(), 'filenames-test-'));
     fs.mkdirSync(path.join(cwd, 'content/a_b'), { recursive: true });
     fs.writeFileSync(path.join(cwd, 'content/a_b/c_d.md'), '');
@@ -51,7 +53,7 @@ describe('temp-fixture checks', () => {
     fs.writeFileSync(path.join(cwd, 'tools/x.txt'), '');
   });
 
-  after(() => {
+  afterEach(() => {
     fs.rmSync(cwd, { recursive: true, force: true });
   });
 
@@ -88,14 +90,43 @@ describe('temp-fixture checks', () => {
       log: (message) => logs.push(message),
     });
 
+    assert.ok(!fs.existsSync(path.join(cwd, 'tools')));
     assert.ok(!fs.existsSync(path.join(cwd, 'static/refcache.json')));
     assert.ok(fs.existsSync(path.join(cwd, 'content/a-b/c-d.md')));
     assert.ok(fs.existsSync(path.join(cwd, 'content/a-b/_index.md')));
     assert.ok(!fs.existsSync(path.join(cwd, 'content/a_b')));
-    assert.equal(logs.length, 3, 'one log line per fixed violation');
+    assert.equal(logs.length, 4, 'one log line per fixed violation');
 
     assert.deepEqual(findBadFilenames(['content'], { cwd }), []);
     assert.deepEqual(findObsoletePaths(OBSOLETE_PATHS, { cwd }), []);
+  });
+
+  test('fixViolations refuses a rename over an existing path', () => {
+    fs.writeFileSync(path.join(cwd, 'content/a_b/c-d.md'), 'occupied');
+
+    assert.throws(
+      () =>
+        fixViolations({
+          badNames: findBadFilenames(['content'], { cwd }),
+          cwd,
+          log: () => {},
+        }),
+      /refusing to rename content\/a_b\/c_d\.md: content\/a_b\/c-d\.md already exists/,
+    );
+    assert.ok(fs.existsSync(path.join(cwd, 'content/a_b/c_d.md')));
+    assert.equal(
+      fs.readFileSync(path.join(cwd, 'content/a_b/c-d.md'), 'utf8'),
+      'occupied',
+    );
+  });
+
+  test('findObsoletePaths reports a dangling symlink', () => {
+    fs.rmSync(path.join(cwd, 'static/refcache.json'));
+    fs.symlinkSync('no-such-target', path.join(cwd, 'static/refcache.json'));
+    assert.deepEqual(
+      findObsoletePaths(OBSOLETE_PATHS, { cwd }).map((entry) => entry.path),
+      ['tools', 'static/refcache.json'],
+    );
   });
 });
 
@@ -107,6 +138,10 @@ describe('escapeAnnotation', () => {
   test('leaves URLs intact', () => {
     const url = 'https://github.com/open-telemetry/opentelemetry.io/issues/1';
     assert.equal(escapeAnnotation(url), url);
+  });
+
+  test('property form also escapes : and ,', () => {
+    assert.equal(escapeAnnotationProperty('a:b,c%d'), 'a%3Ab%2Cc%25d');
   });
 });
 
@@ -122,7 +157,7 @@ describe('repo-wide sanity', () => {
   });
 
   test('every obsolete-path entry carries guidance', () => {
-    assert.ok(OBSOLETE_PATHS.length > 0, 'obsolete-path list is non-empty');
+    assert.ok(OBSOLETE_PATHS.length > 0, 'obsolete-path list has entries');
     for (const { path: p, message } of OBSOLETE_PATHS) {
       assert.ok(p && !p.startsWith('/'), `path is repo-relative: ${p}`);
       assert.match(

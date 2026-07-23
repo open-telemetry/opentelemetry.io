@@ -108,10 +108,10 @@ This check verifies that:
 - No obsolete files or folders exist in the repository (see list below)
 
 Each violation is reported as an error annotation in the check output, with
-guidance for that specific file or folder.
-
-If this check fails, run `npm run fix:filenames` locally and push the changes in
-a new commit.
+guidance for that specific file or folder. Follow that guidance first — for
+example, an obsolete file reintroduced by a stale branch is best resolved by
+merging in `main`. To fix kebab-case violations and delete obsolete paths
+locally, run `npm run fix:filenames` and push the changes in a new commit.
 
 > [!NOTE]
 >

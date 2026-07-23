@@ -92,20 +92,27 @@ export function findObsoletePaths(
   obsolete = OBSOLETE_PATHS,
   { cwd = '.' } = {},
 ) {
-  return obsolete.filter((entry) => fs.existsSync(path.join(cwd, entry.path)));
+  return obsolete.filter((entry) => pathExists(path.join(cwd, entry.path)));
+}
+
+// True when the path exists, even as a dangling symlink (which fs.existsSync
+// follows and so misses).
+function pathExists(p) {
+  return !!fs.lstatSync(p, { throwIfNoEntry: false });
 }
 
 /**
  * Deletes obsolete paths and renames kebab-case violations (underscores to
  * dashes). Renames are applied deepest-first so that renaming a directory
- * doesn't invalidate the paths of violations nested inside it.
+ * doesn't invalidate the paths of violations nested inside it. Throws instead
+ * of overwriting when a rename destination already exists.
  *
  * @param {{
  *   badNames?: string[],
  *   obsolete?: typeof OBSOLETE_PATHS,
  *   cwd?: string,
  *   log?: (message: string) => void,
- * }} options
+ * }} [options]
  */
 export function fixViolations({
   badNames = [],
@@ -121,11 +128,14 @@ export function fixViolations({
     (a, b) => b.split('/').length - a.split('/').length,
   );
   for (const p of deepestFirst) {
-    if (!fs.existsSync(path.join(cwd, p))) continue; // gone with an obsolete path
+    if (!pathExists(path.join(cwd, p))) continue; // gone with an obsolete path
     const to = path.posix.join(
       path.posix.dirname(p),
       path.posix.basename(p).replaceAll('_', '-'),
     );
+    if (pathExists(path.join(cwd, to))) {
+      throw new Error(`refusing to rename ${p}: ${to} already exists`);
+    }
     log(`Renaming: ${p} -> ${to}`);
     fs.renameSync(path.join(cwd, p), path.join(cwd, to));
   }
@@ -138,6 +148,12 @@ export function escapeAnnotation(message) {
     .replaceAll('%', '%25')
     .replaceAll('\r', '%0D')
     .replaceAll('\n', '%0A');
+}
+
+// Escapes annotation property data (the file=, title=, ... parameters), whose
+// values additionally terminate on `:` and `,`.
+export function escapeAnnotationProperty(value) {
+  return escapeAnnotation(value).replaceAll(':', '%3A').replaceAll(',', '%2C');
 }
 
 function main() {
@@ -179,14 +195,21 @@ function main() {
     console.log(`  ${p}\n    └─ ${message}`);
     if (process.env.GITHUB_ACTIONS === 'true') {
       console.log(
-        `::error file=${p},title=${title}::${escapeAnnotation(message)}`,
+        `::error file=${escapeAnnotationProperty(p)},` +
+          `title=${escapeAnnotationProperty(title)}::` +
+          escapeAnnotation(message),
       );
     }
   }
 
   if (fix) {
     console.log('');
-    fixViolations({ badNames, obsolete });
+    try {
+      fixViolations({ badNames, obsolete });
+    } catch (error) {
+      console.error(`ERROR: ${error.message}`);
+      return 1;
+    }
     console.log(`\n✓ Fixed ${violations.length} violation(s).`);
     return 0;
   }
