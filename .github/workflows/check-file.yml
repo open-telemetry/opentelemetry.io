@@ -50,3 +50,30 @@ jobs:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with: { persist-credentials: false }
       - uses: ./.github/actions/fail-if-branch-is-main
+
+  check-stale-branch:
+    name: STALE BRANCH check
+    # Checks out and inspects the PR head: the merge preview that other jobs
+    # check out resolves main's deletion of the flagged file on cleanly merging
+    # PRs, which would mask the staleness. Skipped in merge groups, which have
+    # no PR head.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Fail if the branch predates the Lychee switch
+        # PR branches cut before the link-checker switch (#10911) still carry
+        # `static/refcache.json`, which that PR deleted; such branches fail
+        # link checks in ways unrelated to their own changes. Give authors a
+        # named, actionable failure instead.
+        # TODO(2026-08): remove this job once pre-switch branches (cut before
+        # 2026-07-21) have aged out.
+        run: |
+          if [[ -f static/refcache.json ]]; then
+            echo "::error title=Stale PR branch::This branch predates the Lychee link-checker switch (#10911) — it still has static/refcache.json. Update your branch over main, accepting main's deletion of that file. For step-by-step instructions, see https://github.com/open-telemetry/opentelemetry.io/issues/10990."
+            exit 1
+          fi
+          echo "Branch postdates the Lychee switch (no static/refcache.json)."
