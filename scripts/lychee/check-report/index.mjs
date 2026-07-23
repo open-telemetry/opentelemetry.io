@@ -33,7 +33,8 @@ export function failedUrlsOf(output) {
 
 // Report for a failed check whose links are genuinely dead: names the count,
 // lists each URL with its status, and points at the fixes — repair or remove
-// the link, or mark a checker-hostile URL with `?link-check=no`.
+// the link, or mark a checker-hostile URL with `?link-check=no` — while noting
+// that TIMEOUT/ERROR/5xx statuses can be transient.
 export function deadLinksReport(failures) {
   if (failures.length === 0) return '';
   const count =
@@ -43,6 +44,9 @@ export function deadLinksReport(failures) {
     `ERROR: ${count} genuinely unreachable — nothing cache-side to fix:`,
     '',
     ...failures.map(({ status, url }) => `  [${status}] ${url}`),
+    '',
+    'Note: TIMEOUT, ERROR, and 5xx statuses can be transient -- if in doubt,',
+    'rerun the check before fixing.',
     '',
     'Fix or remove these links. For a URL that you have verified manually',
     'but that blocks link checkers, append `?link-check=no` -- see',

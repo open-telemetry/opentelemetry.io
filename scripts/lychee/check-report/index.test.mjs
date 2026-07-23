@@ -51,6 +51,7 @@ suite('deadLinksReport', () => {
     ]);
     assert.match(report, /2 links? are genuinely unreachable/);
     assert.match(report, /nothing cache-side to fix/);
+    assert.match(report, /can be transient/);
     assert.match(report, /\[404\] https:\/\/gone\.test\//);
     assert.match(report, /\[410\] https:\/\/also-gone\.test\//);
     assert.match(report, /link-check=no/);
