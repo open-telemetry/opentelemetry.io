@@ -63,7 +63,7 @@ jobs:
             tmp/package*.json
 
   check-links:
-    name: CHECK LINKS and CACHE
+    name: CHECK LINKS
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -106,8 +106,40 @@ jobs:
           set -o pipefail
           npm run _check:links 2>&1 | tee lychee-out.txt
 
-      - name: All checked links are in the cache?
+      # The link check refreshes the local `.lycheecache`; hand it to the
+      # `CACHE updates committed?` job for comparison with the committed cache.
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: link-cache
+          path: .lycheecache
+          include-hidden-files: true
+          if-no-files-found: error
+
+      - name: Lychee summary
+        if: always()
         run: |
+          {
+            echo '## Lychee link check'
+            echo
+            echo '```text'
+            tail -n 40 lychee-out.txt 2>/dev/null || echo '(no lychee output captured)'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  check-link-cache:
+    name: CACHE updates committed?
+    needs: check-links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with: { persist-credentials: false }
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with: { name: link-cache, path: tmp/link-cache }
+
+      - name: All link-cache updates committed?
+        run: |
+          # The cp fails the job when the artifact is missing -- no false green.
+          cp tmp/link-cache/.lycheecache .lycheecache
           if git diff --quiet -- .lycheecache; then
             echo "Link cache is up to date."
             exit 0
@@ -123,20 +155,9 @@ jobs:
             echo "- Comment \`/fix:link-cache\` on this PR — the bot updates the cache for you; or"
             echo "- Run \`npm run check:links\` locally, then commit the modified \`.lycheecache\`."
             echo
-            echo "For details, see [\`BUILD\` and \`CHECK LINKS and CACHE\`](https://opentelemetry.io/docs/contributing/pr-checks/#build-and-check-links)."
+            echo "For details, see [\`CACHE updates committed?\`](https://opentelemetry.io/docs/contributing/pr-checks/#cache-updates-committed)."
           } >> "$GITHUB_STEP_SUMMARY"
           exit 1
-
-      - name: Lychee summary
-        if: always()
-        run: |
-          {
-            echo '## Lychee link check'
-            echo
-            echo '```text'
-            tail -n 40 lychee-out.txt 2>/dev/null || echo '(no lychee output captured)'
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
 
   check-build-log-for-issues:
     name: WARNINGS in build log?

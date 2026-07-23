@@ -58,8 +58,8 @@ For each failing check, match `<workflow-name> / <job-name>` against
 [`pr-checks.md`][pr-checks] — every check has a section describing what it
 validates and the local fix command. Caveats:
 
-- A `CHECK LINKS and CACHE` failure can be a stale `.lycheecache` rather than a
-  broken link — read the failure (see [Link cache](#refcache)).
+- A stale `.lycheecache` fails `CACHE updates committed?`, not `CHECK LINKS`
+  (see [Link cache](#refcache)).
 - Fork PRs can hit token-scope limits that look like check failures but are
   permissions artifacts. Read the log before concluding.
 - `Netlify Deploy Preview` failures: open **Details** for the build log before
@@ -164,8 +164,8 @@ Then structure the review as:
 
 `.lycheecache` is the committed cache of successful external-link checks.
 `npm run check:links` updates it as a side effect — authors commit the updated
-file themselves ([`pr-checks.md#build-and-check-links`][build-checks]). The
-`Links / CHECK LINKS and CACHE` job fails if the on-branch cache is stale
+file themselves ([`pr-checks.md#cache-updates-committed`][cache-check]). The
+`Links / CACHE updates committed?` job fails if the on-branch cache is stale
 relative to what the link check produced.
 
 Do not hand-edit `.lycheecache`. If a URL returns a non-200 for server reasons
@@ -189,8 +189,8 @@ Source-of-truth files — read on demand:
 [pr-checks]: ../../../content/en/docs/contributing/pr-checks.md
 [checks]: ../../../content/en/docs/contributing/pr-checks.md#checks
 [cla]: ../../../content/en/docs/contributing/pr-checks.md#easy-cla
-[build-checks]:
-  ../../../content/en/docs/contributing/pr-checks.md#build-and-check-links
+[cache-check]:
+  ../../../content/en/docs/contributing/pr-checks.md#cache-updates-committed
 [handling-links]:
   ../../../content/en/docs/contributing/pr-checks.md#handling-valid-external-links
 [npm-scripts]: ../../../content/en/site/build/npm-scripts.md
