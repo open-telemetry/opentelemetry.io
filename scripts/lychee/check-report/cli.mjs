@@ -50,7 +50,9 @@ if (status === 0) {
     appendToStepSummary(report);
   }
 }
-process.exit(status);
+// Not process.exit(status): a hard exit can drop buffered stdout/stderr
+// (e.g. a large dead-links report when output is piped, as under npm/tee).
+process.exitCode = status;
 
 // In CI (e.g., a bot `fix:link-cache` run), surface the report in the
 // workflow step summary as well.
