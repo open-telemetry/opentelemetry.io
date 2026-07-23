@@ -1,0 +1,17 @@
+# cSpell:ignore sqlobfuscation
+title: OpenTelemetry Instrumentation Helpers SQL Obfuscation
+registryType: utilities
+language: ruby
+tags:
+  - sqlobfuscation
+  - utilities
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/helpers/sql-obfuscation
+license: Apache 2.0
+description:
+  This Ruby gem contains logic to obfuscate SQL. It's intended for use by gem
+  authors instrumenting SQL adapter libraries, such as mysql2, pg, and trilogy.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

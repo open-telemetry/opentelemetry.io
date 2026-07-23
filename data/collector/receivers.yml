@@ -9,6 +9,13 @@
     - contrib
   stability:
     metrics: beta
+- name: activedirectoryinvreceiver
+  display_name: Windows Active Directory Inventory Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
 - name: aerospikereceiver
   display_name: Aerospike Receiver
   repo: contrib
@@ -37,6 +44,7 @@
     - contrib
   stability:
     logs: alpha
+    metrics: alpha
 - name: awscontainerinsightreceiver
   display_name: AWS Container Insights Receiver
   repo: contrib
@@ -246,7 +254,7 @@
     - contrib
   stability:
     metrics: alpha
-    traces: development
+    traces: alpha
 - name: gitlabreceiver
   display_name: GitLab Receiver
   repo: contrib
@@ -346,13 +354,6 @@
     - k8s
   stability:
     traces: beta
-- name: jmxreceiver
-  display_name: JMX Receiver
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    metrics: deprecated
 - name: journaldreceiver
   display_name: Journald Receiver
   repo: contrib
@@ -456,6 +457,7 @@
     - contrib
   stability:
     metrics: beta
+    logs: development
 - name: mysqlreceiver
   display_name: MySQL Receiver
   repo: contrib
@@ -524,7 +526,7 @@
   distributions:
     - contrib
   stability:
-    logs: development
+    logs: alpha
 - name: otelarrowreceiver
   display_name: Apache Arrow OTLP Receiver
   repo: contrib
@@ -634,6 +636,7 @@
     - k8s
   stability:
     logs: alpha
+    profiles: alpha
     traces: alpha
     metrics: beta
 - name: redfishreceiver
@@ -678,7 +681,8 @@
   distributions:
     - contrib
   stability:
-    metrics: beta
+    metrics: unmaintained
+  unmaintained: true
 - name: skywalkingreceiver
   display_name: SkyWalking Receiver
   repo: contrib
@@ -782,7 +786,7 @@
   stability:
     metrics: alpha
 - name: tcplogreceiver
-  display_name: TCP Receiver
+  display_name: TCP Log Receiver
   repo: contrib
   distributions:
     - contrib
@@ -796,7 +800,7 @@
   stability:
     metrics: alpha
 - name: udplogreceiver
-  display_name: UDP Receiver
+  display_name: UDP Log Receiver
   repo: contrib
   distributions:
     - contrib
@@ -853,7 +857,7 @@
   distributions:
     - contrib
   stability:
-    metrics: development
+    metrics: alpha
 - name: yanggrpcreceiver
   display_name: YANG gRPC Receiver
   repo: contrib

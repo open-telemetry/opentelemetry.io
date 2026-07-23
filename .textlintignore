@@ -1,0 +1,6 @@
+# Old blog posts are no longer checked
+content/en/blog/2019/**
+content/en/blog/202[0-4]/**
+
+# Machine data (module slugs + versions), no prose
+data/spec-versions.yml

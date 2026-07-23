@@ -13,6 +13,16 @@
     logs: beta
     metrics: beta
     traces: beta
+- name: awsecsattributesprocessor
+  display_name: AWS ECS Attributes Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+    metrics: development
+    profiles: development
+    traces: development
 - name: batchprocessor
   display_name: Batch Processor
   repo: core
@@ -24,6 +34,13 @@
     logs: beta
     metrics: beta
     traces: beta
+- name: cardinalityguardianprocessor
+  display_name: Cardinality Guardian Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
 - name: coralogixprocessor
   display_name: Coralogix Processor
   repo: contrib
@@ -55,14 +72,20 @@
     - k8s
   stability:
     metrics: alpha
-- name: dnslookupprocessor
-  display_name: DNS Lookup Processor
+- name: drainprocessor
+  display_name: Drain Processor
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: alpha
+- name: dynamicsamplingprocessor
+  display_name: Dynamic Sampling Processor
   repo: contrib
   distributions:
     - contrib
   stability:
-    logs: development
-    metrics: development
     traces: development
 - name: filterprocessor
   display_name: Filter Processor
@@ -76,6 +99,13 @@
     metrics: alpha
     traces: alpha
     profiles: development
+- name: genainormalizerprocessor
+  display_name: GenAI Normalizer Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: alpha
 - name: geoipprocessor
   display_name: GeoIP Processor
   repo: contrib
@@ -153,6 +183,8 @@
     - contrib
   stability:
     logs: development
+    metrics: development
+    traces: development
 - name: memorylimiterprocessor
   display_name: Memory Limiter Processor
   repo: core
@@ -246,15 +278,22 @@
   distributions:
     - contrib
   stability:
-    logs: development
-    metrics: development
-    traces: development
+    logs: alpha
+    metrics: alpha
+    traces: alpha
 - name: spanprocessor
   display_name: Span Processor
   repo: contrib
   distributions:
     - contrib
     - core
+  stability:
+    traces: alpha
+- name: spanpruningprocessor
+  display_name: Span Pruning Processor
+  repo: contrib
+  distributions:
+    - contrib
   stability:
     traces: alpha
 - name: sumologicprocessor

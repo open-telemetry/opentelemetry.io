@@ -1,7 +1,7 @@
 ---
 title: Internal telemetry
 weight: 25
-cSpell:ignore: alloc batchprocessor journalctl
+cSpell:ignore: alloc batchprocessor journalctl lowmemory otelconf otelgrpc
 ---
 
 You can inspect the health of any OpenTelemetry Collector instance by checking
@@ -72,6 +72,8 @@ service:
                 protocol: http/protobuf
                 endpoint: https://backend:4318
 ```
+
+For all available options, see [OTLP exporter options](#otlp-exporter-options).
 
 #### Prometheus endpoint for internal metrics
 
@@ -241,6 +243,8 @@ service:
                 endpoint: https://backend:4318
 ```
 
+For all available options, see [OTLP exporter options](#otlp-exporter-options).
+
 ### Configure internal traces
 
 The Collector does not expose traces by default, but it can be configured to.
@@ -265,11 +269,57 @@ service:
                 endpoint: https://backend:4318
 ```
 
-See the [example configuration][kitchen-sink-config] for additional options.
-Note that the `tracer_provider` section there corresponds to `traces` here.
+See the [example configuration][kitchen-sink-config] for additional options;
+note that the `tracer_provider` section there corresponds to `traces` here. For
+details about the OTLP exporter options specifically, see
+[below](#otlp-exporter-options).
 
 [kitchen-sink-config]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml
+
+### OTLP exporter options {#otlp-exporter-options}
+
+The following
+[options](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L256)
+are available for the OTLP exporter for all three signals. Some additional
+options are available [for metrics](#otlp-exporter-options-metrics).
+
+- `metrics::readers[*]::periodic::exporter::otlp`
+- `logs::processors[*]::batch::exporter::otlp`
+- `traces::processors[*]::batch::exporter::otlp`
+
+| Field name           | Default value                                             | Description                                                                                                                                                                                                                                                 |
+| -------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `endpoint`           | `localhost:4317` (gRPC), `localhost:4318` (http/protobuf) | Target URL to send telemetry to, for example `https://backend:4318`. For `http/protobuf`, any path in the URL is forwarded to the exporter; if no path is specified, the default signal-specific path is used (`/v1/traces`, `/v1/metrics`, or `/v1/logs`). |
+| `protocol`           | (required)                                                | Transport protocol. Supported values: `grpc`, `http/protobuf`.                                                                                                                                                                                              |
+| `compression`        |                                                           | Compression algorithm applied before sending. Supported values: `gzip`, `none`.                                                                                                                                                                             |
+| `timeout`            | `10000`                                                   | Timeout in milliseconds for each export attempt.                                                                                                                                                                                                            |
+| `headers`            |                                                           | List of key-value pairs sent as request headers. Each entry requires a `name` field and a `value` field.                                                                                                                                                    |
+| `headers_list`       |                                                           | Headers in [W3C Baggage](https://www.w3.org/TR/baggage/) format (for example, `key1=value1,key2=value2`). When both `headers` and `headers_list` are set, `headers` takes precedence on an individual header basis.                                         |
+| `certificate`        |                                                           | Path to a PEM-encoded CA certificate file used to verify the server's certificate.                                                                                                                                                                          |
+| `client_certificate` |                                                           | Path to a PEM-encoded client certificate file for mTLS. Required when `client_key` is set.                                                                                                                                                                  |
+| `client_key`         |                                                           | Path to a PEM-encoded private key file for the client certificate. Required when `client_certificate` is set.                                                                                                                                               |
+| `insecure`           | `false`                                                   | Only applies to the `grpc` protocol. When `true`, disables TLS for gRPC connections where the endpoint scheme is not `http` or `https`. For `http/protobuf`, TLS will be enabled unless the endpoint uses the `http` scheme, independently of this option.  |
+
+> [!NOTE]
+>
+> The internal OTLP exporter is implemented in the Go SDK used by the Collector.
+> While the Go SDK supports
+> [environment variable-based configuration](/docs/languages/sdk-configuration/otlp-exporter/),
+> programmatic configuration by the collector takes precedence, so it is
+> recommended to use the collector's YAML configuration to avoid unexpected
+> behavior.
+
+#### Additional options for metrics {#otlp-exporter-options-metrics}
+
+The following
+[options](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/otelconf/v0.23.0/otelconf/v0.3.0/generated_config.go#L288)
+apply only to the OTLP metric exporter
+(`metrics::readers[*].periodic.exporter.otlp`).
+
+| Field name               | Default value | Description                                                                                                                                                                                                                                                                 |
+| ------------------------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `temporality_preference` | `cumulative`  | Aggregation temporality for metric instruments. Supported values: `cumulative` (all instruments), `delta` (delta for counters, histograms, and observable counters; cumulative for all others), `lowmemory` (delta for counters and histograms; cumulative for all others). |
 
 ## Types of internal telemetry
 
@@ -375,7 +425,7 @@ naming conventions, resulting in metric names that looked like
 Versions 0.120.0 and later of the Collector use Prometheus 3.0 scrapers, so the
 original `http*` and `rpc*` metric names with dots are preserved. The
 [internal metrics](#lists-of-internal-metrics) on this page are listed in their
-original form, such as`rpc.server.duration`. For more information, see the
+original form, such as `rpc.server.call.duration`. For more information, see the
 [Collector v0.120.0 release notes](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CHANGELOG.md#v01200).
 
 ### Lists of internal metrics
@@ -401,35 +451,36 @@ files in the repository.
 
 #### `basic`-level metrics
 
-| Metric name                                            | Description                                                                             | Type    |
-| ------------------------------------------------------ | --------------------------------------------------------------------------------------- | ------- |
-| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | Number of logs that exporter(s) failed to enqueue.                                      | Counter |
-| `otelcol_exporter_enqueue_failed_`<br>`metric_points`  | Number of metric points that exporter(s) failed to enqueue.                             | Counter |
-| `otelcol_exporter_enqueue_failed_`<br>`spans`          | Number of spans that exporter(s) failed to enqueue.                                     | Counter |
-| `otelcol_exporter_queue_capacity`                      | Fixed capacity of the sending queue, in batches.                                        | Gauge   |
-| `otelcol_exporter_queue_size`                          | Current size of the sending queue, in batches.                                          | Gauge   |
-| `otelcol_exporter_send_failed_`<br>`log_records`       | Number of logs that exporter(s) failed to send to destination.                          | Counter |
-| `otelcol_exporter_send_failed_`<br>`metric_points`     | Number of metric points that exporter(s) failed to send to destination.                 | Counter |
-| `otelcol_exporter_send_failed_`<br>`spans`             | Number of spans that exporter(s) failed to send to destination.                         | Counter |
-| `otelcol_exporter_sent_log_records`                    | Number of logs successfully sent to destination.                                        | Counter |
-| `otelcol_exporter_sent_metric_points`                  | Number of metric points successfully sent to destination.                               | Counter |
-| `otelcol_exporter_sent_spans`                          | Number of spans successfully sent to destination.                                       | Counter |
-| `otelcol_process_cpu_seconds`                          | Total CPU user and system time in seconds.                                              | Counter |
-| `otelcol_process_memory_rss`                           | Total physical memory (resident set size) in bytes.                                     | Gauge   |
-| `otelcol_process_runtime_heap_`<br>`alloc_bytes`       | Bytes of allocated heap objects (see 'go doc runtime.MemStats.HeapAlloc').              | Gauge   |
-| `otelcol_process_runtime_total_`<br>`alloc_bytes`      | Cumulative bytes allocated for heap objects (see 'go doc runtime.MemStats.TotalAlloc'). | Counter |
-| `otelcol_process_runtime_total_`<br>`sys_memory_bytes` | Total bytes of memory obtained from the OS (see 'go doc runtime.MemStats.Sys').         | Gauge   |
-| `otelcol_process_uptime`                               | Uptime of the process in seconds.                                                       | Counter |
-| `otelcol_processor_incoming_items`                     | Number of items passed to the processor.                                                | Counter |
-| `otelcol_processor_outgoing_items`                     | Number of items emitted from the processor.                                             | Counter |
-| `otelcol_receiver_accepted_`<br>`log_records`          | Number of logs successfully ingested and pushed into the pipeline.                      | Counter |
-| `otelcol_receiver_accepted_`<br>`metric_points`        | Number of metric points successfully ingested and pushed into the pipeline.             | Counter |
-| `otelcol_receiver_accepted_spans`                      | Number of spans successfully ingested and pushed into the pipeline.                     | Counter |
-| `otelcol_receiver_refused_`<br>`log_records`           | Number of logs that could not be pushed into the pipeline.                              | Counter |
-| `otelcol_receiver_refused_`<br>`metric_points`         | Number of metric points that could not be pushed into the pipeline.                     | Counter |
-| `otelcol_receiver_refused_spans`                       | Number of spans that could not be pushed into the pipeline.                             | Counter |
-| `otelcol_scraper_errored_`<br>`metric_points`          | Number of metric points the Collector failed to scrape.                                 | Counter |
-| `otelcol_scraper_scraped_`<br>`metric_points`          | Number of metric points scraped by the Collector.                                       | Counter |
+| Metric name                                            | Description                                                                             | Type          |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------- | ------------- |
+| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | Number of logs that exporter(s) failed to enqueue.                                      | Counter       |
+| `otelcol_exporter_enqueue_failed_`<br>`metric_points`  | Number of metric points that exporter(s) failed to enqueue.                             | Counter       |
+| `otelcol_exporter_enqueue_failed_`<br>`spans`          | Number of spans that exporter(s) failed to enqueue.                                     | Counter       |
+| `otelcol_exporter_in_flight_requests`                  | Number of export requests currently in flight, including retry backoff.                 | UpDownCounter |
+| `otelcol_exporter_queue_capacity`                      | Fixed capacity of the sending queue, in batches.                                        | Gauge         |
+| `otelcol_exporter_queue_size`                          | Current size of the sending queue, in batches.                                          | Gauge         |
+| `otelcol_exporter_send_failed_`<br>`log_records`       | Number of logs that exporter(s) failed to send to destination.                          | Counter       |
+| `otelcol_exporter_send_failed_`<br>`metric_points`     | Number of metric points that exporter(s) failed to send to destination.                 | Counter       |
+| `otelcol_exporter_send_failed_`<br>`spans`             | Number of spans that exporter(s) failed to send to destination.                         | Counter       |
+| `otelcol_exporter_sent_log_records`                    | Number of logs successfully sent to destination.                                        | Counter       |
+| `otelcol_exporter_sent_metric_points`                  | Number of metric points successfully sent to destination.                               | Counter       |
+| `otelcol_exporter_sent_spans`                          | Number of spans successfully sent to destination.                                       | Counter       |
+| `otelcol_process_cpu_seconds`                          | Total CPU user and system time in seconds.                                              | Counter       |
+| `otelcol_process_memory_rss`                           | Total physical memory (resident set size) in bytes.                                     | Gauge         |
+| `otelcol_process_runtime_heap_`<br>`alloc_bytes`       | Bytes of allocated heap objects (see 'go doc runtime.MemStats.HeapAlloc').              | Gauge         |
+| `otelcol_process_runtime_total_`<br>`alloc_bytes`      | Cumulative bytes allocated for heap objects (see 'go doc runtime.MemStats.TotalAlloc'). | Counter       |
+| `otelcol_process_runtime_total_`<br>`sys_memory_bytes` | Total bytes of memory obtained from the OS (see 'go doc runtime.MemStats.Sys').         | Gauge         |
+| `otelcol_process_uptime`                               | Uptime of the process in seconds.                                                       | Counter       |
+| `otelcol_processor_incoming_items`                     | Number of items passed to the processor.                                                | Counter       |
+| `otelcol_processor_outgoing_items`                     | Number of items emitted from the processor.                                             | Counter       |
+| `otelcol_receiver_accepted_`<br>`log_records`          | Number of logs successfully ingested and pushed into the pipeline.                      | Counter       |
+| `otelcol_receiver_accepted_`<br>`metric_points`        | Number of metric points successfully ingested and pushed into the pipeline.             | Counter       |
+| `otelcol_receiver_accepted_spans`                      | Number of spans successfully ingested and pushed into the pipeline.                     | Counter       |
+| `otelcol_receiver_refused_`<br>`log_records`           | Number of logs that could not be pushed into the pipeline.                              | Counter       |
+| `otelcol_receiver_refused_`<br>`metric_points`         | Number of metric points that could not be pushed into the pipeline.                     | Counter       |
+| `otelcol_receiver_refused_spans`                       | Number of spans that could not be pushed into the pipeline.                             | Counter       |
+| `otelcol_scraper_errored_`<br>`metric_points`          | Number of metric points the Collector failed to scrape.                                 | Counter       |
+| `otelcol_scraper_scraped_`<br>`metric_points`          | Number of metric points scraped by the Collector.                                       | Counter       |
 
 #### Additional `normal`-level metrics
 
@@ -453,35 +504,54 @@ files in the repository.
 
 #### Additional `detailed`-level metrics
 
-| Metric name                                           | Description                                                                               | Type      |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------------------- | --------- |
-| `http.client.request.body.size`                       | Measures the size of HTTP client request bodies.                                          | Counter   |
-| `http.client.request.duration`                        | Measures the duration of HTTP client requests.                                            | Histogram |
-| `http.server.request.body.size`                       | Measures the size of HTTP server request bodies.                                          | Counter   |
-| `http.server.request.duration`                        | Measures the duration of HTTP server requests.                                            | Histogram |
-| `http.server.response.body.size`                      | Measures the size of HTTP server response bodies.                                         | Counter   |
-| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | Number of bytes in the batch that was sent.                                               | Histogram |
-| `rpc.client.duration`                                 | Measures the duration of outbound RPC.                                                    | Histogram |
-| `rpc.client.request.size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
-| `rpc.client.requests_per_rpc`                         | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
-| `rpc.client.response.size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
-| `rpc.client.responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
-| `rpc.server.duration`                                 | Measures the duration of inbound RPC.                                                     | Histogram |
-| `rpc.server.request.size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
-| `rpc.server.requests_per_rpc`                         | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
-| `rpc.server.response.size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
-| `rpc.server.responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
+| Metric name                                           | Description                                                     | Type      |
+| ----------------------------------------------------- | --------------------------------------------------------------- | --------- |
+| `http.client.request.body.size`                       | Measures the size of HTTP client request bodies.                | Counter   |
+| `http.client.request.duration`                        | Measures the duration of HTTP client requests.                  | Histogram |
+| `http.server.request.body.size`                       | Measures the size of HTTP server request bodies.                | Counter   |
+| `http.server.request.duration`                        | Measures the duration of HTTP server requests.                  | Histogram |
+| `http.server.response.body.size`                      | Measures the size of HTTP server response bodies.               | Counter   |
+| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | Number of bytes in the batch that was sent.                     | Histogram |
+| `rpc.client.call.duration`                            | Measures the duration of outbound remote procedure calls (RPC). | Histogram |
+| `rpc.server.call.duration`                            | Measures the duration of inbound remote procedure calls (RPC).  | Histogram |
 
-> [!NOTE]
->
-> The `http*` and `rpc*` metrics are not covered by the maturity levels below
-> since they are not under the Collector SIG control.
->
-> The `otelcol_processor_batch_` metrics are unique to the `batchprocessor`.
->
-> The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
-> `otelcol_exporter_` metrics come from their respective `helper` packages. As
-> such, some components not using those packages might not emit them.
+#### Ownership of emitted metrics
+
+Some metrics are not owned by the Collector SIG and some are limited to certain
+components.
+
+**`http*`and `rpc` metrics**
+
+These metrics are not under the Collector SIG's control, and as such, are not
+covered by the maturity levels below.
+
+**`rpc` metrics**
+
+The Collector's internal RPC metrics come from the upstream
+[`otelgrpc`](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/google.golang.org/grpc/otelgrpc)
+instrumentation, which tracks the
+[OpenTelemetry RPC semantic conventions](/docs/specs/semconv/rpc/rpc-metrics/).
+The set of RPC metrics emitted by the Collector has changed across releases:
+
+| Collector version    | Emitted RPC metrics                                                                                                                                                |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| v0.146.x and earlier | `rpc.client.duration`, `rpc.server.duration`, `rpc.*.request.size`, `rpc.*.response.size`, `rpc.*.requests_per_rpc`, `rpc.*.responses_per_rpc`                     |
+| v0.147.0             | `rpc.client.call.duration`, `rpc.server.call.duration`, `rpc.*.request.size`, `rpc.*.response.size` (the `*_per_rpc` metrics are deprecated and no longer emitted) |
+| v0.148.0 and later   | `rpc.client.call.duration`, `rpc.server.call.duration` only                                                                                                        |
+
+RPC size metrics are not emitted by Collector v0.148.0 or later. The
+[RPC semantic conventions v1.40.0](https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.40.0)
+deprecated them due to ambiguous definitions and inconsistent implementation.
+
+**`otelcol_processor_batch_*` metrics**
+
+These metrics are unique to the `batchprocessor`.
+
+**`helper` package metrics**
+
+The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
+`otelcol_exporter_` metrics come from their respective `helper` packages. As
+such, some components not using those packages might not emit them.
 
 ### Events observable with internal logs
 

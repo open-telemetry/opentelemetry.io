@@ -1,4 +1,6 @@
-# This file is used to define the owners of the content modules in the OpenTelemetry repository.
+# This file defines suggested reviewers for component-owned files.
+# For required reviewers, see .github/CODEOWNERS.
+
 components:
   content-modules:
     - open-telemetry/docs-maintainers
@@ -86,31 +88,6 @@ components:
   content/en/docs/zero-code/python:
     - open-telemetry/python-approvers
 
-  ## Localization Teams
-  content/bn:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-bn-approvers
-  content/es:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-es-approvers
-  content/fr:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-fr-approvers
-  content/ja:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-ja-approvers
-  content/pl:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-pl-approvers
-  content/pt:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-pt-approvers
-  content/ro:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-ro-approvers
-  content/uk:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-uk-approvers
-  content/zh:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-zh-approvers
+  # No-owner files:
+  .lycheecache:
+    - open-telemetry/docs-approvers

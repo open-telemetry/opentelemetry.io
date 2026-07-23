@@ -57,9 +57,19 @@ relationship between events and services. See [baggage spec][baggage].
 
 The number of unique values for a given [Attribute](#attribute) or set of
 attributes. High cardinality means many unique values, which can impact the
-performance and storage requirements of telemetry backends. For example, a
-`user_id` attribute would have high cardinality, while a `status_code` attribute
-with values like "200", "404", "500" would have low cardinality.
+performance and storage requirements of telemetry backends, and the memory used
+by the [Metric](#metric) SDK. For example, a `user_id` attribute would have high
+cardinality, while a `status_code` attribute with values like "200", "404",
+"500" would have low cardinality.
+
+### Cardinality limit
+
+A configurable maximum on the number of unique attribute combinations a
+[Metric](#metric) SDK tracks for a single metric stream, used to bound memory
+usage. When the limit is reached, further combinations are aggregated into a
+single overflow data point identified by the `otel.metric.overflow=true`
+attribute. See
+[Cardinality limits](/docs/concepts/signals/metrics/#cardinality-limits).
 
 ### Client library
 
@@ -403,10 +413,10 @@ on web pages when requested. See [zPages][].
 [Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
 [log record]: /docs/specs/otel/glossary#log-record
-[log]: /docs/specs/otel/glossary#log
+[log]: /docs/concepts/signals/logs/
 [metric]: ../signals/metrics/
 [opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
-[propagators]: /docs/languages/go/instrumentation/#propagators-and-context
+[propagators]: /docs/specs/otel/context/api-propagators/
 [Prometheus]: https://prometheus.io/
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer

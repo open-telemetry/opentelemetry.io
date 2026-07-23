@@ -54,7 +54,9 @@ while (my $current_file = shift @ARGV) {
     }
 
     if (@words && (!$has_front_matter || !$in_front_matter)) {
-      @words = grep { !/^\s*(cSpell:ignore|spelling):?\s*$/ && !$dictionary{$_} } @words;
+      # Drop words already covered site-wide; compare case-insensitively because
+      # cSpell lower-case entries match all capitalized forms of the word.
+      @words = grep { !/^\s*(cSpell:ignore|spelling):?\s*$/ && !$dictionary{lc $_} } @words;
       my %duplicates;
       # Ensure all words are unique (case-insensitive), drop duplicates
       @words = grep { !$duplicates{lc $_}++ } @words;
@@ -101,6 +103,10 @@ sub getSiteWideDictWords {
   my $textlintrc_file = shift;
 
   my %dictionary = readYmlOrPlainListOfWords('', $dictionary_file);
+  if (-f '.cspell/all-words.txt') {
+    my %allWordsDictionary = readYmlOrPlainListOfWords('', '.cspell/all-words.txt');
+    @dictionary{keys %allWordsDictionary} = values %allWordsDictionary;
+  }
   my %textlintDictionary = readYmlOrPlainListOfWords('terms', $textlintrc_file);
   @dictionary{keys %textlintDictionary} = values %textlintDictionary;
 

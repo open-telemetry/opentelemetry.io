@@ -3,7 +3,7 @@ title: 网关
 description: 为什么以及如何将信号发送到单个 OTLP 端点，并从 OTLP 端点发送到后端
 weight: 3
 default_lang_commit: 219d54eb41a768f8fa6058616177e58032d089b5 # patched
-drifted_from_default: true
+drifted_from_default: file not found
 # prettier-ignore
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---
@@ -192,7 +192,7 @@ service:
   从主机上运行的服务以及主机遥测（如主机指标和日志抓取）中收集遥测数据。
 - 使用网关部署模式运行的 Collector 来处理数据，如过滤、采样以及导出到后端等。
 
-![gateway](/docs/collector/deploy/gateway/otel-gateway-arch.svg)
+![gateway](/docs/collector/deploy/other/agent-to-gateway/otel-gateway-arch.svg)
 
 这种组合部署模式在以下情况下是必要的：当 Collector 中使用的组件需要在每台主机上唯一，
 或者需要获取仅在应用运行的同一主机上可用的信息时：

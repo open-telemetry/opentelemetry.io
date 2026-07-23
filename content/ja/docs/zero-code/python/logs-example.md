@@ -2,8 +2,7 @@
 title: ログ自動計装の例
 linkTitle: Logs Example
 weight: 20
-default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
-drifted_from_default: true
+default_lang_commit: 4ed6dc80de862696701831ebc0ad3defbea70e31
 ---
 
 このページでは、OpenTelemetry で Python ログを自動計装する方法を説明します。
@@ -67,12 +66,13 @@ source python_logs_example/bin/activate
 ```sh
 pip install opentelemetry-distro
 pip install opentelemetry-exporter-otlp
+pip install opentelemetry-instrumentation-logging
 ```
 
 この後の例では、計装結果をコンソールに送信します。
 コレクターのような他の送信先にテレメトリーを送信するための [OpenTelemetry Distro](/docs/languages/python/distro) のインストールと設定については、ドキュメントを参照してください。
 
-> **注**: `opentelemetry-instrument`による自動計装を使用するには、
+> **Note**: `opentelemetry-instrument`による自動計装を使用するには、
 > 環境変数またはコマンドラインで設定する必要があります。
 > エージェントはテレメトリーパイプラインを作成するので、これらの手段以外では変更できません。
 > テレメトリーパイプラインのカスタマイズが必要な場合は、エージェントを使用せず、 OpenTelemetry SDK と計装ライブラリをコードにインポートし、そこで設定する必要があります。
@@ -89,7 +89,7 @@ pip install opentelemetry-exporter-otlp
 docker run -it --rm -p 4317:4317 -p 4318:4318 \
   -v $(pwd)/otel-collector-config.yaml:/etc/otelcol-config.yml \
   --name otelcol \
-  otel/opentelemetry-collector-contrib:0.76.1 \
+  otel/opentelemetry-collector:{{% param collector_vers %}} \
   "--config=/etc/otelcol-config.yml"
 ```
 
@@ -98,7 +98,6 @@ docker run -it --rm -p 4317:4317 -p 4318:4318 \
 ```sh
 source python_logs_example/bin/activate
 
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument \
   --traces_exporter console,otlp \
   --metrics_exporter console,otlp \
@@ -106,6 +105,8 @@ opentelemetry-instrument \
   --service_name python-logs-example \
   python $(pwd)/example.py
 ```
+
+> OpenTelemetry Python 1.40.0 より前は、`export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true` でログ計装を有効化する必要がありました。
 
 サンプル出力は次のとおりです。
 

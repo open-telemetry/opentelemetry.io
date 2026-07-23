@@ -2,7 +2,7 @@
 title: Troubleshooting
 description: Troubleshooting OBI common issues and errors
 weight: 22
-cSpell:ignore: Clickhouse uprobe uprobes
+cSpell:ignore: Clickhouse uprobe uprobes userland
 ---
 
 On this page, you can learn how to diagnose and resolve common OBI errors and
@@ -102,8 +102,8 @@ Span #0
     Status message :
 Attributes:
      -> rpc.method: Str(/opentelemetry.proto.collector.metrics.v1.MetricsService/Export)
-     -> rpc.system: Str(grpc)
-     -> rpc.grpc.status_code: Int(0)
+     -> rpc.system.name: Str(grpc)
+     -> rpc.response.status_code: Str(OK)
      -> server.address: Str(otel-collector.default)
      -> peer.service: Str(otel-collector.default)
      -> server.port: Int(4317)
@@ -123,37 +123,6 @@ This is an advanced use case and typically not required.
 ## Common OBI issues
 
 This section covers how to resolve common OBI issues.
-
-### Node.js services crash or become unresponsive when OBI is running
-
-To enable better context propagation in Node.js applications, OBI injects custom
-code to track the current execution context. It does so using the Node.js
-inspector protocol and sends the `SIGUSR1` signal to the Node process to open
-the inspector.
-
-However, if the application defines its own `SIGUSR1` signal handler, it handles
-OBI's signal in a custom way, which may cause crashes or unresponsiveness of the
-targeted application. For example:
-
-```javascript
-process.on('SIGUSR1', () => {
-  process.exit(0);
-});
-```
-
-Or by using Node.js flags that register their own signal handling, such as:
-
-```commandline
-node --heapsnapshot-signal=SIGUSR1
-```
-
-**Solutions:**
-
-- Use the `discovery` configuration to exclude specific Node.js applications
-  from OBI tracking, preventing OBI from sending `SIGUSR1`.
-- Disable Node.js context propagation entirely by setting `nodejs.enabled:false`
-  in configuration file or environment variable
-  `OTEL_EBPF_NODEJS_ENABLED=false`.
 
 ### ClickHouse instances crash when OBI is running
 
@@ -204,3 +173,105 @@ You can either:
 - Run OBI as privileged.
 - Add `CAP_SYS_ADMIN` to the list of capabilities in your deployment security
   configuration.
+
+### Client metrics or spans attributed to the wrong service
+
+When OBI runs with access to the host PID namespace (for example, `pid: host` in
+Docker Compose or `hostPID: true` in Kubernetes) and you select services by
+[open port](../configure/service-discovery/#open-ports), you might see
+unexpected outgoing (client) metrics or spans attributed to one of your
+services. A common symptom is Docker Engine API calls, such as
+`GET /v1.43/containers/json`, reported as client requests with a meaningless
+`server.port` and `telemetry.sdk.language=go`, even when the target service
+isn't written in Go:
+
+```text
+http_client_request_body_size_bytes_sum{
+  http_request_method="GET",
+  http_route="/v1.43/containers/json",
+  server_address="docker", server_port="4",
+  service_name="python-service", telemetry_sdk_language="go", ...
+}
+```
+
+**Cause:**
+
+When you publish a container port (for example, Docker's `-p 7773:7773` or a
+Compose `ports:` entry), a host-side forwarder process listens on that port in
+the host network namespace. Depending on your container runtime this is
+`docker-proxy` (Docker with the userland proxy enabled) or an equivalent agent.
+
+Because OBI can see host processes, and the forwarder listens on the same port
+you selected, OBI matches the forwarder against your `open_ports` criteria and
+instruments it under your service's identity. Both the forwarder (in the host
+network namespace) and your real service (in its container network namespace)
+genuinely listen on that port, so they can't be told apart by the port alone.
+The forwarder is typically a Go binary, which is why the spans carry
+`telemetry.sdk.language=go`. Any traffic the forwarder itself generates — such
+as the Docker Engine API calls it makes over the Docker socket — is then
+attributed to your service.
+
+**Solutions:**
+
+Exclude the forwarder from instrumentation by its executable path:
+
+```yaml
+discovery:
+  exclude_instrument:
+    - exe_path: '{*/docker-proxy,*/scon-agent}'
+```
+
+Alternatively, select your services with a criterion more specific than the open
+port, so a host-side forwarder that happens to share the port isn't matched. For
+example, use the
+[executable path](../configure/service-discovery/#executable-path),
+[Kubernetes metadata](../configure/service-discovery/#k8s-namespace), or the
+[container name](../configure/service-discovery/#container-name) selector.
+
+## Migration to v0.7.0: Network port guessing changes
+
+OBI v0.7.0 introduces a breaking change: **network port guessing is now disabled
+by default**. This change improves network metrics accuracy by not making
+assumptions about unknown initiators in network flows.
+
+### What changed
+
+In v0.6.0 and earlier, OBI would attempt to guess which endpoint was the client
+and which was the server in network flows where the initiator couldn't be
+determined. This guessing was based on ordinal heuristics (typically assuming
+the lower port number was the server and the higher port number was the client).
+
+In v0.7.0, this guessing is disabled by default, which means:
+
+- `client.port` and `server.port` attributes may be empty for flows where OBI
+  cannot determine the initiator
+- Network metrics will be more accurate but may lose information for unknown
+  flows
+
+### How to migrate
+
+If you depend on the old behavior and want `client.port` and `server.port` to be
+inferred even when the initiator is unknown, re-enable port guessing with
+ordinal heuristics:
+
+**YAML configuration:**
+
+```yaml
+network:
+  guess_ports: ordinal
+```
+
+**Environment variable:**
+
+```sh
+OTEL_EBPF_NETWORK_GUESS_PORTS=ordinal
+```
+
+For more details, see the
+[network configuration documentation](../network/config/).
+
+### Recommendation
+
+We recommend leaving port guessing disabled unless you have a specific use case
+that requires it. The default behavior provides cleaner, more accurate network
+metrics that are less prone to misclassification.

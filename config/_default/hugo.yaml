@@ -1,10 +1,11 @@
-# cSpell:ignore bluesky cicd docsy goldmark linkify netlify wordmark noopener
+# cSpell:ignore bluesky cicd docsy goldmark linkify netlify wordmark noopener llms
 baseURL: https://opentelemetry.io
 title: OpenTelemetry
 disableKinds: [taxonomy]
-theme: [docsy]
+theme: [docsy/theme]
 disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
+enableRobotsTXT: true
 ignoreLogs: []
 
 # Language settings
@@ -12,53 +13,58 @@ defaultContentLanguage: en
 
 languages:
   en:
-    languageName: English
-    languageCode: en-US
+    label: English
+    locale: en-US
     params:
       description: The OpenTelemetry Project Site
   bn:
-    languageName: বাংলা (Bengali)
+    label: বাংলা
     params:
       description: ওপেনটেলিমেট্রি প্রকল্পের সাইট
   es:
-    languageName: Español
+    label: Español
     params:
       description: Sitio del proyecto OpenTelemetry
   fr:
-    languageName: Français
+    label: Français
     params:
       description: Site du projet OpenTelemetry
   ja:
-    languageName: 日本語 (Japanese)
+    label: 日本語
     params:
       description: OpenTelemetryプロジェクト公式サイト
       notes:
         docker-compose-v2: |
           `docker-compose` は非推奨です. 詳細は、
           [Migrate to Compose V2](https://docs.docker.com/compose/) を確認してください。
+  ko:
+    label: 한국어
+    locale: ko-KR
+    params:
+      description: OpenTelemetry 프로젝트 사이트
   pl:
-    languageName: Polski (Polish)
-    languageCode: pl-PL
+    label: Polski
+    locale: pl-PL
     params:
       description: Strona projektu OpenTelemetry
   pt:
-    languageName: Português
-    languageCode: pt-BR
+    label: Português
+    locale: pt-BR
     params:
       description: Site do Projeto OpenTelemetry
   ro:
-    languageName: Română (Romanian)
-    languageCode: ro-RO
+    label: Română
+    locale: ro-RO
     params:
       description: Site-ul proiectului OpenTelemetry
   uk:
-    languageName: Українська (Ukrainian)
-    languageCode: uk-UA
+    label: Українська
+    locale: uk-UA
     params:
       description: Сайт проєкту OpenTelemetry
   zh:
-    languageName: 中文 (Chinese)
-    languageCode: zh-CN
+    label: 中文
+    locale: zh-CN
     params:
       description: OpenTelemetry 项目网站
 
@@ -66,8 +72,6 @@ enableEmoji: true
 
 imaging:
   resampleFilter: CatmullRom # cspell:disable-line
-  quality: 75
-  anchor: smart
 
 markup:
   tableOfContents:
@@ -89,21 +93,38 @@ mediaTypes:
   text/netlify: {}
 
 outputFormats:
-  REDIRECTS:
+  redirects:
     mediaType: text/netlify
     baseName: _redirects
     notAlternative: true
 
 outputs:
-  home: [HTML, RSS]
-  section: [HTML]
+  home: [HTML, markdown, RSS]
+  page: [HTML, markdown]
+  section: [HTML, markdown]
 
 services:
   rss: { limit: 20 }
 
 cascade:
-  build: { list: never, publishResources: false, render: never }
-  _target: { path: '{,/**}/_includes{,/**}' }
+  - build: { list: never, publishResources: false, render: never }
+    target: { path: '{,/**}/_includes{,/**}' }
+
+  # Enable redirects for site root (and not locales)
+  - outputs:
+      # This must match the equivalent of [outputs.home, LLMS, redirects]
+      [HTML, markdown, RSS, LLMS, redirects]
+    target:
+      kind: home
+      sites: { matrix: { languages: [en] } }
+
+  # Enable RSS for blog section
+  - outputs:
+      # This must match the equivalent of [outputs.section, RSS]
+      [HTML, markdown, RSS]
+    target:
+      kind: section
+      path: '/blog'
 
 params:
   copyright:
@@ -179,13 +200,18 @@ params:
         url: https://github.com/open-telemetry
         icon: fab fa-github
         desc: Find us on GitHub.
+      - name: 'Slack #opentelemetry-new-contributors'
+        url: https://cloud-native.slack.com/archives/C09H3MNMBQV
+        icon: fab fa-slack
+        desc: >-
+          Ask beginner questions and learn contribution etiquette. Sign up via
+          [slack.cncf.io](https://slack.cncf.io).
       - name: 'Slack #opentelemetry'
         url: https://cloud-native.slack.com/archives/CJFCJHG4Q
         icon: fab fa-slack
         desc: >-
-          Chat with other project developers. Sign up via
-          [slack.cncf.io](https://slack.cncf.io). Also see other channels
-          starting with a `#otel-` prefix.
+          Follow project-wide developments. To chat about a specific subproject,
+          check out the other channels starting with `#otel-`.
       - name: CNCF DevStats
         url: https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m
         icon: fas fa-chart-area

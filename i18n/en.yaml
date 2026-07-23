@@ -19,11 +19,9 @@ community_guideline: Contributing
 ui_search_ai_modal_title: OpenTelemetry's AI Assistant
 
 ui_search_ai_modal_disclaimer: >-
-  This **experimental feature** uses AI to answer questions based on the site's
-  documentation, OpenTelemetry GitHub, Stack Overflow, and other resources. The
-  AI may not always provide accurate or relevant information. Share your
-  thoughts by providing
-  [feedback](https://github.com/open-telemetry/opentelemetry.io/discussions/6802).
+  Get answers based on the site docs, OpenTelemetry GitHub, Stack Overflow, and
+  other resources. [Share
+  feedback](https://github.com/open-telemetry/opentelemetry.io/discussions/6802).
 ui_search_ai_popover_content: >-
   <a id='ask-ai-trigger' href='#'>Ask AI</a> (&#x2318;-K)
 
@@ -44,3 +42,23 @@ collector_component_stability_footnote: >-
   For details about component stability levels, see the [OpenTelemetry Collector
   component stability
   definitions](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
+
+# Config types accordion
+config_types_search_label: Search types and properties
+config_types_filter_all: All
+config_types_filter_stable: Stable
+config_types_filter_experimental: Experimental
+config_types_expand_all: Expand all
+config_types_collapse_all: Collapse all
+config_types_no_results: No types match your search.
+config_types_loading: Loading configuration types…
+config_types_col_name: Name
+config_types_col_type: Type
+config_types_col_constraints: Constraints
+config_types_col_description: Description
+config_types_examples_heading: Examples
+config_types_copy: Copy
+config_types_copied: Copied!
+config_types_source: Source
+config_types_view_schema: View JSON schema
+config_types_schema_version: Schema version

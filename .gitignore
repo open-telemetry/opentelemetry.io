@@ -1,3 +1,8 @@
+# cSpell:ignore worktrees venv mypy pytest lycheecache
+
+/.claude/worktrees
+/.claude/settings.local.json
+
 # Hugo-generated assets
 .hugo_build.lock
 /public
@@ -7,8 +12,6 @@
 node_modules/
 package-lock.json
 pnpm-lock.yaml
-
-# Link checker
 tmp/
 
 # macOS
@@ -17,6 +20,7 @@ tmp/
 # Misc
 scripts/collector.yaml
 assets/jsconfig.json
+/lychee.toml
 /.netlify
 
 # IntelliJ
@@ -28,11 +32,9 @@ assets/jsconfig.json
 # WebStorm
 **/.idea/**
 
-.dart_tool
-pubspec.lock
-
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.venv/
 *.pyc
-*tmp_repos/
 *uv.lock
-
-# cSpell:ignore pubspec

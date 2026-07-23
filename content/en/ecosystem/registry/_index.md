@@ -15,16 +15,12 @@ weight: 20
 # =============================================================================
 
 aliases: [/registry/*]
-outputs: [html, json]
+outputs: [HTML, markdown, JSON]
 
-# The redirects and aliases implement catch-all rules for old registry entries;
-# we don't publish individual entry pages anymore.
-#
-# We can't use the catch-all `/ecosystem/registry/*`, because that creates a
-# self-loop with `/ecosystem/registry/index.html`. So we use the following
-# redirect rule to avoid the loop, as suggested by Netlify support
-# (email support ID 159489):
-redirects: [{ from: /ecosystem/registry*, to: '/ecosystem/registry?' }]
+# TODO(chalin): move the following comment into the site docs, then add a link
+# to it here. Old /ecosystem/registry/<component> URLs are handled by the
+# `registry-component-redirect` Netlify Edge Function (replaces the Hugo
+# catch-all redirect; see https://github.com/open-telemetry/opentelemetry.io/issues/9633).
 ---
 
 {{% blocks/lead color="dark" %}}

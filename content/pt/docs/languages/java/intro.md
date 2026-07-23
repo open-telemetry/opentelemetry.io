@@ -3,6 +3,7 @@ title: Introdução ao OpenTelemetry Java
 description: Introdução ao ecossistema OpenTelemetry Java
 weight: 9
 default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
+drifted_from_default: true
 cSpell:ignore: boms
 ---
 

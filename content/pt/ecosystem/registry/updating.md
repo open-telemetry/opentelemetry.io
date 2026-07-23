@@ -2,6 +2,7 @@
 title: Mantendo as informações do registro e da lista atualizadas
 linkTitle: Atualizar
 default_lang_commit: 8a15d0d668c516ccb255cd0a92e0bcd442e83b4d # patched
+drifted_from_default: true
 ---
 
 Revisamos periodicamente as entradas do [registro](..) e os [dados da lista][],

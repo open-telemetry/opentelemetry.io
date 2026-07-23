@@ -10,7 +10,7 @@ on:
 permissions: read-all
 
 jobs:
-  auto-update-versions:
+  auto-update:
     name: Auto-update registry versions
     runs-on: ubuntu-latest
     permissions:
@@ -19,17 +19,17 @@ jobs:
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Use CLA approved github bot
         run: |
           git config user.name otelbot
           git config user.email 197425009+otelbot@users.noreply.github.com
 
-      - uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
-          app-id: ${{ vars.OTELBOT_APP_ID }}
+          client-id: ${{ vars.OTELBOT_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
 
       - name: Auto-update
@@ -38,3 +38,11 @@ jobs:
         env:
           # change to ${{ secrets.GITHUB_TOKEN }} and comment out the step above when testing against a fork
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+
+  report-failure:
+    needs: auto-update
+    if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
+    uses: ./.github/workflows/reusable-report-failure.yml
+    permissions:
+      issues: write # Pass through for failure tracking issues
+      contents: read

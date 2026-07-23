@@ -14,9 +14,13 @@ description:
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jmxreceiver
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.156.0/receiver/jmxreceiver
 createdAt: 2021-02-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/jmxreceiver
-  version: v0.149.0
+  version: v0.156.0
+deprecated:
+  reason:
+    This receiver was removed from collector-contrib main in v0.157.0. See
+    [opentelemetry-collector-contrib#45740](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/45740).

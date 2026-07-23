@@ -3,7 +3,7 @@ title: Configuration
 weight: 20
 description: Learn how to configure the Collector to suit your needs
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey hostmetrics initca oidc pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
+cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey initca oidc pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -39,7 +39,8 @@ the following providers for `scheme`:
 - **env** - Reads configuration from an environment variable. E.g.
   `env:MY_CONFIG_IN_AN_ENVVAR`.
 - **yaml** - Reads configuration from a YAML string, with `::` delimiting
-subpaths. E.g. `yaml:exporters::debug::verbosity: detailed`.
+  subpaths. E.g. `yaml:exporters::debug::verbosity: detailed`.
+
 <!-- prettier-ignore-start -->
 - **http** - Reads configuration from an HTTP URI. E.g. `http://www.example.com`
 - **https** - Reads configuration from an HTTPS URI. E.g.
@@ -106,8 +107,7 @@ configuration with a receiver, a processor, an exporter, and three extensions.
 >
 > While it is generally preferable to bind endpoints to `localhost` when all
 > clients are local, our example configurations use the "unspecified" address
-> `0.0.0.0` as a convenience. The Collector currently defaults to `0.0.0.0`, but
-> the default will be changed to `localhost` in the near future. For details
+> `0.0.0.0` as a convenience. The Collector defaults to `localhost`. For details
 > concerning either of these choices as endpoint configuration value, see
 > [Safeguards against denial of service attacks][].
 
@@ -278,7 +278,7 @@ receivers:
     endpoint: 0.0.0.0:8006
 
   # Data sources: metrics
-  hostmetrics:
+  host_metrics:
     scrapers:
       cpu:
       disk:
@@ -371,7 +371,7 @@ processors:
       - key: email
         action: hash
 
-  # Data sources: metrics, metrics, logs
+  # Data sources: traces, metrics, logs
   filter:
     error_mode: ignore
     traces:

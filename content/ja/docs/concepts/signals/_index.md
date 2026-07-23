@@ -2,7 +2,7 @@
 title: シグナル
 description: OpenTelemetryがサポートするテレメトリーのカテゴリについて学ぶ
 weight: 11
-default_lang_commit: 43ecc19b51fd86d5b2f30c638f6d734ee8b94932
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
 ---
 
 OpenTelemetryの目的は、**[シグナル][signals]** を収集、処理、エクスポートすることです。
@@ -20,9 +20,8 @@ OpenTelemetry は現在、下記をサポートしています。
 同様に、下記は開発中または[提案][proposal]の段階です。
 
 - [イベント][Events]は、特定の[ログ](logs)のタイプです。
-- [プロファイル][Profiles] は、Profiling Working Group によって現在策定中です。
+- [プロファイル](profiles)
 
 [Events]: /docs/specs/otel/logs/data-model/#events
-[Profiles]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md
 [proposal]: https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme
 [signals]: /docs/specs/otel/glossary/#signals

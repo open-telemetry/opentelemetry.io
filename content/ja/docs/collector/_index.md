@@ -1,10 +1,12 @@
 ---
 title: コレクター
 description: テレメトリーデータを受信、処理、エクスポートするためのベンダー非依存な方法
+aliases: [collector/about]
+sidebar_root_for: children
 cascade:
-  vers: 0.149.0
+  vers: 0.156.0
 weight: 270
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+default_lang_commit: 0b7375082d1799e37a3063aa2f918f2a8546c6ac
 drifted_from_default: true
 ---
 
