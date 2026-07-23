@@ -1,0 +1,15 @@
+# cSpell:ignore otlpjsoncommon
+title: OpenTelemetry JSON Encoding
+registryType: exporter
+language: python
+tags:
+  - otlpjsoncommon
+  - exporter
+  - python
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-otlp-json-common
+license: Apache 2.0
+description: This library is provided as a convenience to encode to OTLP JSON.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

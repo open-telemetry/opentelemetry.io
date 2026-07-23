@@ -1,0 +1,15 @@
+# cSpell:ignore glog
+title: glog OpenTelemetry sink
+registryType: instrumentation
+language: cpp
+tags:
+  - glog
+  - instrumentation
+  - cpp
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/glog
+license: Apache 2.0
+description:
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

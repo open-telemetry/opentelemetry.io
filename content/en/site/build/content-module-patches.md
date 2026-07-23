@@ -129,7 +129,7 @@ problematic content to confirm it was rewritten. For link-related patches, also
 run:
 
 ```sh
-npm run fix:refcache  # Prunes stale refcache entries, then checks links
+npm run fix:refcache  # Checks links, updating the link cache
 npm test              # Full test run including link checking
 ```
 
@@ -137,10 +137,10 @@ npm test              # Full test run including link checking
 
 If your patch was created while fixing a refcache PR (e.g., the
 `otelbot/refcache-refresh` branch), commit the changes to `patches.yml` together
-with the updated `refcache.json`, then force-push with lease:
+with the updated `.lycheecache`, then force-push with lease:
 
 ```sh
-git add scripts/content-modules/adjust-pages/patches.yml static/refcache.json
+git add scripts/content-modules/adjust-pages/patches.yml .lycheecache
 git commit -m "Patch content modules and refresh refcache"
 git push --force-with-lease
 ```

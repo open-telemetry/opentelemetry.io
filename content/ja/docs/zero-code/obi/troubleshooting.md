@@ -3,6 +3,7 @@ title: トラブルシューティング
 description: OBI の一般的な問題やエラーのトラブルシューティング
 weight: 22
 default_lang_commit: 94498a7529f6d456201faebba59716baccf79bf8
+drifted_from_default: true
 cSpell:ignore: Clickhouse uprobe userland
 ---
 
