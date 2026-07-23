@@ -2807,7 +2807,9 @@ https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/database/sql,206,1784442929
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/anthropics/anthropic-sdk-go,200,1784625647
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/gin-gonic/gin,206,1784442921
+https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/openai/openai-go,200,1784791245
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/redis/go-redis/v9,206,1784442922
+https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/segmentio/kafka-go,200,1784791245
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/sirupsen/logrus,206,1784442927
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/go.mongodb.org/mongo-driver/mongo,206,1784442928
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/google.golang.org/grpc,206,1784442926
@@ -5314,6 +5316,7 @@ https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/rec
 https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/yanggrpcreceiver,200,1784356178
 https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver,200,1784442867
 https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zookeeperreceiver,200,1784442867
+https://pkg.go.dev/github.com/openai/openai-go,200,1784791245
 https://pkg.go.dev/github.com/openclarity/apiclarity/plugins/otel-collector/apiclarityexporter,200,1784285061
 https://pkg.go.dev/github.com/opencontainers/cgroups@v0.0.6#CpuUsage,200,1784701518
 https://pkg.go.dev/github.com/r0mdau/fluentforwardexporter,200,1784183331
