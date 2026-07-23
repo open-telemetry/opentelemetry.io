@@ -7,6 +7,8 @@ author: >-
 sig: OpenTelemetry Demo
 # prettier-ignore
 cSpell:ignore: agentic Bourgey Cijo cijothomas Dónal fali007 fbourgey firepit florianl Kielek Kiełkowicz Lehner martinjt mwimpelberg28 O'Sullivan osullivandonal Pratik ps48 Shenoy Thwaites Wimpelberg
+sig: demo
+issue: 10921
 ---
 
 If you've been running the Demo for some time, you may have seen a couple of
