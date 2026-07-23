@@ -2,6 +2,7 @@
 title: Usando o mypy
 weight: 120
 default_lang_commit: 1a135ec4b7a14bddd14b7d70dbf2986695b7a93d # patched
+drifted_from_default: true
 cSpell:ignore: mypy
 ---
 
