@@ -2,6 +2,7 @@
 
 import { describe, test } from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 
 import {
   DIRECTIVE_HINT,
@@ -57,13 +58,25 @@ describe('parseFixDirective', () => {
     });
   });
 
-  test('/fix:refcache maps to fix:link-cache with a compat message', () => {
+  test('/fix:refcache still runs the fix:refcache script, with a deprecation notice', () => {
+    // The command stays `fix:refcache` (not `fix:link-cache`) because the
+    // resolved script runs on the PR head, and pre-rename heads only have
+    // `fix:refcache`; post-rename package.json keeps a forwarding alias.
     assert.deepEqual(parseFixDirective('/fix:refcache'), {
       valid: true,
       actionName: 'fix:refcache',
-      command: 'fix:link-cache',
+      command: 'fix:refcache',
       info: FIX_REFCACHE_COMPAT_MESSAGE,
     });
+  });
+
+  test('the fix:refcache forwarding alias survives in package.json', () => {
+    // Guards the pair: as long as the directive above resolves to the
+    // deprecated script name, package.json must keep forwarding it.
+    const pkg = JSON.parse(
+      fs.readFileSync(new URL('../../../package.json', import.meta.url)),
+    );
+    assert.equal(pkg.scripts['fix:refcache'], 'npm run fix:link-cache');
   });
 
   test('directive on the first line may be followed by free-form text', () => {
