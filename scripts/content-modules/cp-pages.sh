@@ -19,7 +19,7 @@ find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_in
 # To exclude a file use, e.g.: -not -path '*/specification/_index.md'
 FILES=$(find $DEST -name "*.md")
 
-$SCRIPT_DIR/adjust-pages.pl $FILES
+node $SCRIPT_DIR/adjust-pages/cli.mjs $FILES
 # if [[ -z $NO_GIT_RESTORE ]]; then (cd $SRC/.. && git restore .); fi
 
 echo "OTEL SPEC pages: copied and processed"
@@ -38,7 +38,7 @@ find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_in
 # To exclude a file use, e.g.: -not -path '*/docs/_index.md'
 FILES=$(find $DEST -name "*.md")
 
-$SCRIPT_DIR/adjust-pages.pl $FILES
+node $SCRIPT_DIR/adjust-pages/cli.mjs $FILES
 
 echo "OTLP SPEC pages: copied and processed"
 
@@ -65,7 +65,7 @@ find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_in
 # To exclude a file use, e.g.: -not -path '*/community/_index.md'
 FILES=$(find $DEST -name mission-vision-values.md -o -name roadmap.md)
 
-$SCRIPT_DIR/adjust-pages.pl $FILES
+node $SCRIPT_DIR/adjust-pages/cli.mjs $FILES
 
 echo "COMMUNITY pages: copied and processed"
 
@@ -83,7 +83,7 @@ cp -R $SRC/* $DEST/
 # To exclude a file use, e.g.: -not -path '*/specification/_index.md'
 FILES=$(find $DEST -name "*.md")
 
-$SCRIPT_DIR/adjust-pages.pl $FILES
+node $SCRIPT_DIR/adjust-pages/cli.mjs $FILES
 
 echo "SEM CONV  pages: copied and processed"
 
@@ -100,6 +100,6 @@ cp $SRC/specification.md $DEST/index.md
 # To exclude a file use, e.g.: -not -path '*/specification/_index.md'
 FILES=$(find $DEST -name "*.md")
 
-$SCRIPT_DIR/adjust-pages.pl $FILES
+node $SCRIPT_DIR/adjust-pages/cli.mjs $FILES
 
 echo "OpAMP SPEC page: copied and processed"

@@ -58,8 +58,8 @@ For each failing check, match `<workflow-name> / <job-name>` against
 [`pr-checks.md`][pr-checks] — every check has a section describing what it
 validates and the local fix command. Caveats:
 
-- Link checking is sharded (`en` / `locales-A-to-M` / `locales-N-to-Z`); a
-  single failing shard does not necessarily block merge — read the failure.
+- A `CHECK LINKS` failure can be a stale `.lycheecache` rather than a broken
+  link — read the failure (see [Refcache](#refcache)).
 - Fork PRs can hit token-scope limits that look like check failures but are
   permissions artifacts. Read the log before concluding.
 - `Netlify Deploy Preview` failures: open **Details** for the build log before
@@ -82,10 +82,10 @@ validates and the local fix command. Caveats:
 
 - Submodules: non-maintainer PRs should not touch them; a maintainer fixes
   before merge — [`sig-practices.md#general`][general].
-- Locale span: semantic changes are per-locale; editorial cross-locale edits are
-  OK and append `# patched` to `default_lang_commit` —
-  [`localization.md#prs-should-not-span-locales`][locale-span] and
-  [`#patch-locale-links`][patch-locale].
+- Locale span: semantic changes are per-locale; page-content changes may span
+  locales only to keep checks green (such fixes append `# patched` to
+  `default_lang_commit`); content-neutral maintenance is exempt —
+  [`localization.md#prs-should-not-span-locales`][locale-span].
 
 **Branch state**
 
@@ -123,8 +123,8 @@ Walk this checklist before writing the review:
 - [ ] Netlify preview builds.
 - [ ] Each failing `check-*` assessed against [`pr-checks.md#checks`][checks].
 - [ ] Linked issue is `triage:accepted` (or this is an auto/hotfix PR).
-- [ ] Does not span locales with semantic changes — or uses `# patched` for
-      editorial cross-locale edits.
+- [ ] Does not span locales — or does so only for checks-green fixes (marked
+      `# patched`) or content-neutral maintenance.
 - [ ] First-time-contributor AI checklist in the PR description is filled in and
       looks human-written.
 - [ ] No unrelated changes bundled.
@@ -145,8 +145,8 @@ Walk this checklist before writing the review:
 
 **Refcache and links**
 
-- [ ] `refcache.json` updates (if any) committed in the PR.
-- [ ] No hand-edits to `refcache.json`.
+- [ ] `.lycheecache` updates (if any) committed in the PR.
+- [ ] No hand-edits to `.lycheecache`.
 - [ ] Unreachable-but-valid URLs use `?link-check=no` (see
       [Refcache](#refcache)).
 
@@ -162,19 +162,17 @@ Then structure the review as:
 
 ## Refcache {#refcache}
 
-`static/refcache.json` is a 1MB+ cache of external-link status codes.
+`.lycheecache` is the committed cache of successful external-link checks.
 `npm run check:links` updates it as a side effect — authors commit the updated
 file themselves ([`pr-checks.md#build-and-check-links`][build-checks]). The
-`Links / REFCACHE updates?` job fails if the on-branch cache is stale relative
-to what the link check produced.
+`Links / CHECK LINKS` job fails if the on-branch cache is stale relative to what
+the link check produced.
 
-Do not hand-edit `refcache.json`. If a URL returns a non-200 for server reasons
+Do not hand-edit `.lycheecache`. If a URL returns a non-200 for server reasons
 (blocked bot, LinkedIn 999, …), append `?link-check=no` (or `&link-check=no`) to
 the URL — [`pr-checks.md#handling-valid-external-links`][handling-links].
-Maintainers can validate 4xx entries via
-`./scripts/double-check-refcache-4XX.mjs`.
 
-For resolving merge/rebase conflicts in `refcache.json`, see the
+For resolving merge/rebase conflicts in `.lycheecache`, see the
 `resolve-refcache-conflicts` skill.
 
 ## References
@@ -207,5 +205,3 @@ Source-of-truth files — read on demand:
 [general]: ../../../content/en/docs/contributing/sig-practices.md#general
 [locale-span]:
   ../../../content/en/docs/contributing/localization.md#prs-should-not-span-locales
-[patch-locale]:
-  ../../../content/en/docs/contributing/localization.md#patch-locale-links
