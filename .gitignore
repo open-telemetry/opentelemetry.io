@@ -20,8 +20,6 @@ tmp/
 # Misc
 scripts/collector.yaml
 assets/jsconfig.json
-/.htmltest.yml
-/.lycheecache
 /lychee.toml
 /.netlify
 
