@@ -962,6 +962,7 @@ maintainers:
   - name: lalitb
     teams:
       - arrow-approvers
+      - arrow-maintainers
       - arrow-triagers
       - cpp-approvers
       - cpp-contrib-approvers
@@ -1366,15 +1367,6 @@ maintainers:
       - ruby-maintainers
     html_url: https://github.com/robertlaurin
     avatar_url: https://avatars.githubusercontent.com/u/23463253?v=4
-  - name: rogercoll
-    teams:
-      - collector-contrib-triagers
-      - demo-approvers
-      - demo-maintainers
-      - ebpf-profiler-approvers
-      - semconv-system-approvers
-    html_url: https://github.com/rogercoll
-    avatar_url: https://avatars.githubusercontent.com/u/33873530?v=4
   - name: RonFed
     teams:
       - go-instrumentation-approvers
@@ -2126,6 +2118,13 @@ approvers:
       - dotnet-instrumentation-triagers
     html_url: https://github.com/RassK
     avatar_url: https://avatars.githubusercontent.com/u/4929112?v=4
+  - name: rogercoll
+    teams:
+      - collector-contrib-triagers
+      - ebpf-profiler-approvers
+      - semconv-system-approvers
+    html_url: https://github.com/rogercoll
+    avatar_url: https://avatars.githubusercontent.com/u/33873530?v=4
   - name: sajibAdhi
     teams:
       - docs-bn-approvers
@@ -2164,6 +2163,12 @@ approvers:
       - specs-triagers
     html_url: https://github.com/smith
     avatar_url: https://avatars.githubusercontent.com/u/9912?v=4
+  - name: sophiesage
+    teams:
+      - sig-end-user-approvers
+      - sig-end-user-triagers
+    html_url: https://github.com/sophiesage
+    avatar_url: https://avatars.githubusercontent.com/u/206159240?v=4
   - name: sourabh1007
     teams:
       - semconv-db-approvers
@@ -2301,6 +2306,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/d4nyll
     avatar_url: https://avatars.githubusercontent.com/u/9997953?v=4
+  - name: dyl10s
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/dyl10s
+    avatar_url: https://avatars.githubusercontent.com/u/12243691?v=4
   - name: facostaembrace
     teams:
       - javascript-contrib-triagers
@@ -2692,6 +2702,9 @@ members:
   - name: jiekun
     html_url: https://github.com/jiekun
     avatar_url: https://avatars.githubusercontent.com/u/30280396?v=4
+  - name: jkoronaAtCisco
+    html_url: https://github.com/jkoronaAtCisco
+    avatar_url: https://avatars.githubusercontent.com/u/201937218?v=4
   - name: johnbley
     html_url: https://github.com/johnbley
     avatar_url: https://avatars.githubusercontent.com/u/5139839?v=4
@@ -2926,6 +2939,9 @@ members:
   - name: sanketmehta28
     html_url: https://github.com/sanketmehta28
     avatar_url: https://avatars.githubusercontent.com/u/20374164?v=4
+  - name: scbjans
+    html_url: https://github.com/scbjans
+    avatar_url: https://avatars.githubusercontent.com/u/27202540?v=4
   - name: scorpionknifes
     html_url: https://github.com/scorpionknifes
     avatar_url: https://avatars.githubusercontent.com/u/23299540?v=4

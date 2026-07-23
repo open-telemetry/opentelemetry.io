@@ -1,0 +1,14 @@
+title: Crash Instrumentation
+registryType: instrumentation
+language: android
+tags:
+  - crash
+  - instrumentation
+  - android
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/crash
+license: Apache 2.0
+description:
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-12
