@@ -1,0 +1,17 @@
+title: SwiftMetricsShim
+registryType: utilities
+language: swift
+tags:
+  - SwiftMetricsShim
+  - utilities
+  - swift
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Importers/SwiftMetricsShim
+license: Apache 2.0
+description:
+  Apple have created their own metrics API which has been adopted by a number of
+  other packages including, but not limited to, Vapor - a prominent Server Side
+  Swift platform.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

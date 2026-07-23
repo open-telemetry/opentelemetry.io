@@ -51,7 +51,7 @@ implementations, etc., visit the [Registry](/ecosystem/registry/?s=python).
 There is some functionality that has not yet been released to PyPI. In that
 situation, you may want to install the packages directly from the repository.
 This can be done by cloning the repository and doing an
-[editable install](https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs):
+[editable install](https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs):
 
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-python.git

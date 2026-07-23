@@ -88,7 +88,7 @@ still-open concern (ideally self-service, e.g. via a bot) explored in
 - **No-owner form (shared high-churn files).** A pattern with _no_ owner clears
   the global `*` rule for that path, leaving it with no required code owner
   (it's still subject to the branch's general approval requirement). Used for
-  `/static/refcache.json`, the auto-maintained link cache, so it doesn't drag
+  `/.lycheecache`, the auto-maintained link cache, so it doesn't drag
   `docs-approvers` into locale PRs that happen to update it.
 - Scope-drift is mostly closed by strategy 1: when a locale team self-serves,
   any later commit that escapes into other-owned files adds a required reviewer
@@ -114,8 +114,8 @@ still-open concern (ideally self-service, e.g. via a bot) explored in
   auto-requests that team on locale PRs natively. The per-locale entries were
   therefore **removed** from `component-owners.yml` as redundant; it now carries
   only non-locale component mappings (language SIGs, content modules) and the
-  no-owner `static/refcache.json` marker. CODEOWNERS is the single source of
-  truth for locale ownership.
+  no-owner `.lycheecache` marker. CODEOWNERS is the single source of truth for
+  locale ownership.
 
 [`.github/CODEOWNERS`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
@@ -185,9 +185,9 @@ maintainers, ideally via a `/auto-merge:enable`-style comment handled by a bot.
 - **Implementation.** `.github/workflows/locale-auto-merge.yml` (thin trigger)
   delegates to `scripts/gh/locale-auto-merge/` (testable helper + CLI). A locale
   team member comments `/auto-merge` (or `:enable` / `:disable`). The helper
-  checks: (1) every changed file is locale-owned (or `static/refcache.json`);
-  (2) the commenter is a member of `docs-<loc>-maintainers` for **every** locale
-  touched (so a mixed ja+pt PR needs authority over both). It then runs
+  checks: (1) every changed file is locale-owned (or `.lycheecache`); (2) the
+  commenter is a member of `docs-<loc>-maintainers` for **every** locale touched
+  (so a mixed ja+pt PR needs authority over both). It then runs
   `gh pr merge --auto --squash` as the DOCS bot. The CLI's `--user` flag
   evaluates the verdict _as if_ a given user commented (dry-run by default), for
   testing the authorization gate before going live.

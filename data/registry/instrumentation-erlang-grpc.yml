@@ -1,0 +1,16 @@
+title: OpentelemetryGrpc
+registryType: instrumentation
+language: erlang
+tags:
+  - grpc
+  - instrumentation
+  - erlang
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_grpc
+license: Apache 2.0
+description:
+  OpenTelemetry instrumentation for gRPC clients and servers in Elixir, enabling
+  distributed tracing, error tracking, and context propagation across services.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09
