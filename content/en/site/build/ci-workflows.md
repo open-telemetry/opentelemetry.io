@@ -137,10 +137,11 @@ sequenceDiagram
 - **`pr-review-trigger`**: intentionally minimal — no secrets, no privileged
   permissions. Ignores `review.state == "commented"` since comments don't affect
   approvals.
-- **`pr-approval-labels`**: runs with a GitHub App token (`OTELBOT_DOCS_APP_ID`
-  / `OTELBOT_DOCS_PRIVATE_KEY`) that has permissions to read org/team membership
-  and edit PR labels. Uses `pull_request_target` and `workflow_run` to ensure it
-  always executes in the trusted base repository context.
+- **`pr-approval-labels`**: runs with a GitHub App token
+  (`OTELBOT_DOCS_CLIENT_ID` / `OTELBOT_DOCS_PRIVATE_KEY`) that has permissions
+  to read org/team membership and edit PR labels. Uses `pull_request_target` and
+  `workflow_run` to ensure it always executes in the trusted base repository
+  context.
 - **`blog-publish-labels`**: runs on a schedule with a GitHub App token and the
   `SLACK_WEBHOOK_URL` secret. Always executes in the trusted base repository
   context (schedule events have no fork variant).
@@ -260,8 +261,7 @@ It runs as a four-stage pipeline:
 1. **`ack`** (trusted): as soon as a directive is received, replies with a 🔄
    in-progress comment that links to the directive comment and to the run.
 2. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
-   command, prunes the link refcache, and uploads a patch artifact
-   (`site.patch`), up to 1024 KB.
+   command, and uploads a patch artifact (`site.patch`), up to 1024 KB.
 3. **`apply-patch`** (trusted): calls the [`reusable-apply-patch.yml`][]
    workflow — resolved from the default branch, never from the PR — which
    applies the patch with a GitHub App token and pushes a commit to the PR
@@ -339,7 +339,7 @@ It runs as a three-stage pipeline:
 > [!NOTE]
 >
 > The [`refcache-refresh.yml`][] workflow also runs daily and touches
-> `refcache.json`, so the two bot PRs can conflict depending on merge order.
+> `.lycheecache`, so the two bot PRs can conflict depending on merge order.
 > Conflicts self-heal, since both branches sync from `main` on each run.
 > Migrating refcache-refresh onto the reusable patch actions — eliminating such
 > conflicts by construction — is tracked in the [project plan][].
@@ -383,24 +383,23 @@ usage lives in the [localization guide][localization-auto-merge].
 
 ## Spec integration branches {#spec-integration-branches}
 
-Two scheduled workflows own the site's update cycle for the upstream spec
-repositories (which `auto-update-versions.yml` therefore excludes): between
-releases, each workflow tracks unreleased upstream changes through a draft PR
-("integration branch"); once upstream releases, it finalizes that branch and PR
-into the release PR.
+The scheduled [specs-integration.yml][] workflow owns the site's update cycle
+for the upstream spec repositories (which `auto-update-versions.yml` therefore
+excludes). It runs one matrix job per upstream repository: between releases,
+each job tracks unreleased upstream changes through a draft PR ("integration
+branch"); once upstream releases, it finalizes that branch and PR into the
+release PR.
 
-| Workflow file                             | Upstream repository           | Branch slug |
-| ----------------------------------------- | ----------------------------- | ----------- |
-| [update-spec-integration-branch.yml][]    | `opentelemetry-specification` | `spec`      |
-| [update-semconv-integration-branch.yml][] | `semantic-conventions`        | `semconv`   |
+| Matrix job | Upstream repository           | Branch slug |
+| ---------- | ----------------------------- | ----------- |
+| `otel`     | `opentelemetry-specification` | `spec`      |
+| `semconv`  | `semantic-conventions`        | `semconv`   |
 
-[update-spec-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branch.yml
-[update-semconv-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-semconv-integration-branch.yml
+[specs-integration.yml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/specs-integration.yml
 
-Both workflows delegate the "pick the mode, version and branch" step to a shared
-Node helper, [scripts/gh/specs/pick-branch/cli.mjs][]. The helper:
+Each job delegates the "pick the mode, version and branch" step to a shared
+helper, [scripts/gh/specs/pick-branch.mjs][]. The helper:
 
 - Selects the run's `MODE`: `dev` while the version pinned on main is the latest
   upstream release, `release` once a newer release exists.
@@ -408,8 +407,8 @@ Node helper, [scripts/gh/specs/pick-branch/cli.mjs][]. The helper:
 - Opens a tracking issue (label `<slug>-integration-warning`, deduplicated) when
   it detects problems such as multiple stale integration branches.
 
-[scripts/gh/specs/pick-branch/cli.mjs]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/specs/pick-branch
+[scripts/gh/specs/pick-branch.mjs]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/pick-branch.mjs
 
 The final step, [scripts/gh/specs/create-or-finalize-pr.mjs][], creates or
 finalizes the PR as `MODE` calls for: in dev mode it opens the draft integration
@@ -437,8 +436,8 @@ use your local `gh` credentials; if `GITHUB_ENV` is unset, pick-branch prints
 create-or-finalize-pr run. Try it:
 
 ```sh
-node scripts/gh/specs/pick-branch/cli.mjs --spec otel
-node scripts/gh/specs/pick-branch/cli.mjs --spec semconv --no-dry-run
+scripts/gh/specs/pick-branch.mjs --spec otel
+scripts/gh/specs/pick-branch.mjs --spec semconv --no-dry-run
 scripts/gh/specs/create-or-finalize-pr.mjs --help
 ```
 
@@ -464,7 +463,7 @@ The repository includes several other workflows:
 
 | Workflow                   | Purpose                                                                                      |
 | -------------------------- | -------------------------------------------------------------------------------------------- |
-| `check-links.yml`          | Sharded link checking using htmltest, plus a non-blocking [Lychee][lychee-pilot] pilot       |
+| `check-links.yml`          | Site build and [link checking][] with Lychee                                                 |
 | `check-text.yml`           | Textlint terminology checks                                                                  |
 | `check-i18n.yml`           | Localization front matter validation                                                         |
 | `check-spelling.yml`       | Spell checking                                                                               |
@@ -477,6 +476,6 @@ The repository includes several other workflows:
 | `component-owners.yml`     | Assign reviewers based on component ownership                                                |
 
 <!-- prettier-ignore-start -->
-[lychee-pilot]: ../npm-scripts/#notes
+[link checking]: ../link-checking/
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
 <!-- prettier-ignore-end -->

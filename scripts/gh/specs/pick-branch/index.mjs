@@ -1,8 +1,8 @@
-// Pure library for computing the VERSION and BRANCH env vars for the
-// "Update <repo> integration branch" family of workflows.
+// Pure library for computing the MODE, VERSION, and BRANCH env vars for the
+// "Specs integration" workflow.
 //
-// Side-effecting concerns (subprocess invocation, $GITHUB_ENV writes, opening
-// issues, argv parsing) live in ./cli.mjs.
+// Side-effecting concerns (subprocess invocation, argv/env handling) live in
+// the command file, ../pick-branch.mjs.
 //
 // cSpell:ignore dedup
 
@@ -10,11 +10,11 @@
  * Map from `--spec` flag value to the upstream repo configuration.
  * Add new specs here when wiring up additional workflows.
  *
- * @type {Readonly<Record<string, { repo: string, abbr: string }>>}
+ * @type {Readonly<Record<string, { repo: string, slug: string }>>}
  */
 export const SPECS = Object.freeze({
-  otel: { repo: 'opentelemetry-specification', abbr: 'spec' },
-  semconv: { repo: 'semantic-conventions', abbr: 'semconv' },
+  otel: { repo: 'opentelemetry-specification', slug: 'spec' },
+  semconv: { repo: 'semantic-conventions', slug: 'semconv' },
 });
 
 /**
@@ -211,12 +211,13 @@ export function formatGithubEnv({ mode, version, branch }) {
 /**
  * Build the body of the warning tracking issue.
  *
- * @param {{ warnings: string[], repo: string, abbr: string, runUrl?: string|null }} input
+ * @param {{ warnings: string[], repo: string, spec: string, runUrl?: string|null }} input
+ *   `spec` is the `SPECS` key, which is also the workflow's matrix-job name.
  * @returns {string}
  */
-export function buildIssueBody({ warnings, repo, abbr, runUrl = null }) {
+export function buildIssueBody({ warnings, repo, spec, runUrl = null }) {
   const lines = [
-    `The \`update-${abbr}-integration-branch\` workflow (for [\`${repo}\`](https://github.com/open-telemetry/${repo})) reported the following warning(s):`,
+    `The \`${spec}\` job of the \`specs-integration\` workflow (for [\`${repo}\`](https://github.com/open-telemetry/${repo})) reported the following warning(s):`,
     '',
     ...warnings.map((w) => `- ${w}`),
     '',
@@ -235,11 +236,12 @@ export function buildIssueBody({ warnings, repo, abbr, runUrl = null }) {
  */
 
 /**
- * @typedef {Object} EnsureIssueResult
- * @property {'skipped-existing' | 'created' | 'would-create'} action
- *   - `skipped-existing`: an open issue with the label already exists.
- *   - `created`: a new issue was created.
- *   - `would-create`: dry-run; no issue created.
+ * Outcome of an {@link ensureWarningIssueOpen} run. In dry-run mode, the
+ * outcome that a write run would have produced.
+ *
+ * @typedef {'created' | 'unchanged'} IssueOutcome
+ *   - `created`: a new issue was opened (with its label ensured first).
+ *   - `unchanged`: an open issue with the label already exists.
  */
 
 /**
@@ -257,7 +259,7 @@ export function buildIssueBody({ warnings, repo, abbr, runUrl = null }) {
  *   Synchronous `gh` runner. Receives the argv (without `gh`) and returns
  *   `{ stdout, status }`.
  * @param {(msg: string) => void} [input.log]
- * @returns {EnsureIssueResult}
+ * @returns {IssueOutcome}
  */
 export function ensureWarningIssueOpen({
   title,
@@ -285,17 +287,15 @@ export function ensureWarningIssueOpen({
     );
   }
   if (JSON.parse(list.stdout || '[]').length > 0) {
-    log(`Warning issue with label "${label}" already open; skipping.`);
-    return { action: 'skipped-existing' };
+    log(`Warning issue with label "${label}" is already open; nothing to do.`);
+    return 'unchanged';
   }
 
+  const prefix = dryRun ? '[dry-run] ' : '';
+  log(`${prefix}Opening an issue titled "${title}".`);
   if (dryRun) {
-    log(
-      `[dry-run] Would open an issue with label "${label}" (no existing open issue found).`,
-    );
-    log(`[dry-run] Title: ${title}`);
     log(`[dry-run] Body:\n${body}`);
-    return { action: 'would-create' };
+    return 'created';
   }
 
   // Make sure the label exists; ignore failure if it already does.
@@ -324,13 +324,15 @@ export function ensureWarningIssueOpen({
       `gh issue create failed (status ${create.status}): ${create.stdout}`,
     );
   }
-  return { action: 'created' };
+  const url = create.stdout.trim();
+  if (url) log(url);
+  return 'created';
 }
 
 /**
- * Parse the CLI argv for `cli.mjs`. Pure: throws on invalid input rather than
- * calling `process.exit`, and reads the GitHub Actions signal from an injected
- * env object.
+ * Parse the CLI argv for the spec workflow commands. Pure: throws on invalid
+ * input rather than calling `process.exit`, and reads the GitHub Actions
+ * signal from an injected env object.
  *
  * @param {string[]} argv  Argv tail (i.e. without `node` and the script path).
  * @param {Record<string, string|undefined>} [env]  Defaults to `process.env`.
@@ -399,29 +401,4 @@ export function parseCliArgs(argv, env = process.env) {
   }
 
   return { spec, dryRun, dryRunReason, help };
-}
-
-/**
- * Help text for `cli.mjs --help`.
- *
- * @returns {string}
- */
-export function cliUsage() {
-  const allowed = Object.keys(SPECS).join('|');
-  return [
-    'Pick the integration-branch version and mode for a spec workflow and',
-    'write MODE/VERSION/BRANCH to $GITHUB_ENV (or stdout when GITHUB_ENV is',
-    'unset). MODE is `release` when the latest upstream release is newer than',
-    'the version pinned on main, else `dev`. Opens a tracking issue on',
-    'warnings.',
-    '',
-    'Usage: node scripts/gh/specs/pick-branch/cli.mjs \\',
-    `         [--spec <${allowed}>] [--[no-]dry-run]`,
-    '',
-    'Options:',
-    `  -s, --spec <${allowed}>  Selects the upstream spec (default: otel).`,
-    '      --dry-run            Skip writes (default when run locally).',
-    '      --no-dry-run         Perform writes (default under GitHub Actions).',
-    '  -h, --help               Show this help.',
-  ].join('\n');
 }

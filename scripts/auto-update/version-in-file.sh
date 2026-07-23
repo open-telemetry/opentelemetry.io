@@ -68,10 +68,12 @@ function process_file() {
   fi
 }
 
+pin_updated=false
 while [[ $# -gt 0 ]]; do
   variable_name=$1; shift;
   file_name=$1; shift;
   process_file $variable_name $file_name
+  if [[ "$file_name" == ".gitmodules" ]]; then pin_updated=true; fi
 done
 
 if git diff --quiet "${file_names[@]}"; then
@@ -103,10 +105,10 @@ else
   echo "None found."
 fi
 
-if [[ "$repo" == "opentelemetry-specification"
-  || "$repo" == "opentelemetry-proto"
-  || "$repo" == "semantic-conventions"
-  || "$repo" == "opentelemetry-configuration" ]]; then
+# When the repo's submodule pin was updated, switch the submodule's working
+# tree to the new tag so that code excerpts regenerate against the new tree,
+# and the commit below records a gitlink consistent with the pin.
+if [[ "$pin_updated" == "true" ]]; then
   echo "Switching to $repo at tag $latest_version"
   ( set -x;
     npm run get:submodule -- content-modules/$repo &&
