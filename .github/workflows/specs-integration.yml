@@ -111,13 +111,16 @@ jobs:
         with:
           node-version-file: .nvmrc
 
+      - uses: ./.github/actions/install-lychee
+
       - name: Update refcache
+        env:
+          # Authenticated github.com link checks (rate limits)
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           npm install --omit=optional
           # Ignore link-check failures so we can still commit refcache updates
           npm run fix:refcache || true
-          # Prune 404 entries, if any
-          npm run _refcache:prune
 
           git add -A
 

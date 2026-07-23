@@ -11,7 +11,7 @@
 {{ $defaultLang := "" -}}
 {{ with hugo.Sites.Default -}}
   {{ if eq .LanguagePrefix "" -}}
-    {{ with .Language.Lang -}}
+    {{ with .Language.Name -}}
       {{ $defaultLang = . -}}
       /{{ . }}    /
       /{{ . }}/*  /:splat
@@ -23,7 +23,7 @@
 
 {{ range hugo.Sites -}}
 
-  {{ $siteLang := .Language.Lang -}}
+  {{ $siteLang := .Language.Name -}}
 
   {{ if eq $defaultLang $siteLang }}{{ continue }}{{ end -}}
 
