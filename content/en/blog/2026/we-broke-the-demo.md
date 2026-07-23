@@ -5,9 +5,9 @@ date: 2026-07-27
 author: >-
   [Juliano Costa](https://github.com/julianocosta89) (Datadog)
 sig: Demo
+issue: 10921
 # prettier-ignore
 cSpell:ignore: agentic Bourgey Cijo cijothomas Dónal fali007 fbourgey firepit florianl Kielek Kiełkowicz Lehner martinjt mwimpelberg28 O'Sullivan osullivandonal Pratik ps48 Shenoy Thwaites Wimpelberg
-issue: 10921
 ---
 
 If you've been running the Demo for some time, you may have seen a couple of
