@@ -14,7 +14,7 @@
     metrics: beta
     traces: beta
 - name: awsecsattributesprocessor
-  display_name: awsecsattributesprocessor
+  display_name: AWS ECS Attributes Processor
   repo: contrib
   distributions:
     - contrib
@@ -35,7 +35,7 @@
     metrics: beta
     traces: beta
 - name: cardinalityguardianprocessor
-  display_name: cardinalityguardianprocessor
+  display_name: Cardinality Guardian Processor
   repo: contrib
   distributions:
     - contrib

@@ -1,0 +1,16 @@
+title: OpenTelemetry Extension
+registryType: propagator
+language: php
+tags:
+  - CloudTrace
+  - propagator
+  - php
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Extension/Propagator/CloudTrace
+license: Apache 2.0
+description:
+  CloudTrace is a propagator that supports the specification for the header
+  "x-cloud-trace-context" used for trace context propagation across
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

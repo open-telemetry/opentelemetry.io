@@ -1,0 +1,16 @@
+# cSpell:ignore otlpjsonfile
+title: OpenTelemetry JSON File Exporter
+registryType: exporter
+language: python
+tags:
+  - otlpjsonfile
+  - exporter
+  - python
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-otlp-json-file
+license: Apache 2.0
+description:
+  This library exports telemetry as OTLP JSON to a file-like text stream, such
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09
