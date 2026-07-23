@@ -1,18 +1,6 @@
 #!/usr/bin/env node
-// File and directory name checks backing the `FILENAME check` PR check; see
-// https://opentelemetry.io/docs/contributing/pr-checks/#filename-check
-//
-// Rules:
-//
-//   - kebab-case: names under the scanned directories must not contain
-//     underscores; `_`- and `.`-prefixed names (Hugo `_index.md` files,
-//     dotfiles) are exempt.
-//   - obsolete paths: paths deleted from `main` that PRs occasionally
-//     reintroduce, usually the sign of a stale branch. Each entry carries its
-//     own guidance message.
-//
-// Under GitHub Actions, every violation is also emitted as an error
-// annotation so that PR authors get per-file guidance in the check output.
+// File and directory name checks backing the `FILENAME check` PR check. For
+// what the check enforces and contributor-facing guidance, see DOC_URL below.
 //
 // Usage:
 //   node scripts/validate/filenames/index.mjs [--fix]
@@ -31,13 +19,17 @@ const DOC_URL =
 // Directories scanned for kebab-case violations.
 export const SCAN_DIRS = ['assets', 'content', 'static'];
 
+// Violation messages must be self-contained: under GitHub Actions each one is
+// emitted as a per-file error annotation, read without the surrounding output.
+
 export const KEBAB_CASE_MESSAGE =
   'File and directory names must be in kebab-case: rename it, or run `npm run fix:filenames`. ' +
   'See https://opentelemetry.io/docs/contributing/style-guide/#file-names';
 
-// Paths deleted from `main` that PRs occasionally reintroduce. Keep this list
-// in sync with the "Obsolete files and folders" section of
-// content/en/docs/contributing/pr-checks.md.
+// Paths deleted from `main` that PRs occasionally reintroduce, usually the
+// sign of a stale branch. This table is canonical; the "Obsolete files and
+// folders" list of content/en/docs/contributing/pr-checks.md mirrors it for
+// contributors (drift-guarded by index.test.mjs).
 export const OBSOLETE_PATHS = [
   {
     path: 'tools',
@@ -55,6 +47,7 @@ export const OBSOLETE_PATHS = [
 ];
 
 // True when a file or directory basename violates the kebab-case convention.
+// `_`- and `.`-prefixed names (Hugo `_index.md` files, dotfiles) are exempt.
 export function isBadName(name) {
   return name.includes('_') && !name.startsWith('_') && !name.startsWith('.');
 }
@@ -198,10 +191,7 @@ function main() {
     return 0;
   }
 
-  console.log(
-    '\nTo fix, run: npm run fix:filenames — note that obsolete paths get ' +
-      `DELETED. For details, see ${DOC_URL}`,
-  );
+  console.log(`\nFor details, see ${DOC_URL}`);
   return 1;
 }
 

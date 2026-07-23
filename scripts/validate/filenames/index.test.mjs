@@ -1,6 +1,4 @@
-// Unit tests for the filename checks, plus repo-wide sanity guards: the
-// scanned directories must exist (so the check can't silently pass by
-// scanning nothing) and every obsolete-path entry must carry guidance.
+// Unit tests for the filename checks, plus repo-wide sanity and drift guards.
 
 import { describe, test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
@@ -113,6 +111,7 @@ describe('escapeAnnotation', () => {
 });
 
 describe('repo-wide sanity', () => {
+  // Guards against a false-green check that silently scans nothing.
   test('every scanned directory exists at the repo root', () => {
     for (const dir of SCAN_DIRS) {
       assert.ok(
@@ -131,6 +130,23 @@ describe('repo-wide sanity', () => {
         /#\d+|https:\/\//,
         `message for ${p} references an issue, PR, or URL`,
       );
+    }
+  });
+
+  // OBSOLETE_PATHS is canonical; the docs page mirrors it for contributors.
+  test('the docs page mirrors every obsolete-path entry', () => {
+    const docsPage = fs.readFileSync(
+      path.join(repoRoot, 'content/en/docs/contributing/pr-checks.md'),
+      'utf8',
+    );
+    for (const { path: p, message } of OBSOLETE_PATHS) {
+      assert.ok(docsPage.includes(`\`${p}`), `docs list the path ${p}`);
+      for (const ref of message.match(/#\d+/g) ?? []) {
+        assert.ok(
+          docsPage.includes(ref),
+          `docs cite ${ref}, referenced by the message for ${p}`,
+        );
+      }
     }
   });
 });

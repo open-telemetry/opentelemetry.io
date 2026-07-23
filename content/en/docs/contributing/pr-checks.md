@@ -119,9 +119,8 @@ a new commit.
 
 #### Obsolete files and folders
 
-The following paths are flagged as obsolete and removed by `fix:filenames`. When
-present, an issue or PR number provides context for the change that made the
-path obsolete.
+The following paths are flagged as obsolete. When present, an issue or PR number
+provides context for the change that made the path obsolete.
 
 - `tools/` - [Migrate code-excerpts tooling to npm package version #9638][#9638]
 - `static/refcache.json` - [Switch link checking from htmltest to Lychee
