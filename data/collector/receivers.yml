@@ -10,7 +10,7 @@
   stability:
     metrics: beta
 - name: activedirectoryinvreceiver
-  display_name: activedirectoryinvreceiver
+  display_name: Windows Active Directory Inventory Receiver
   repo: contrib
   distributions:
     - contrib
@@ -354,13 +354,6 @@
     - k8s
   stability:
     traces: beta
-- name: jmxreceiver
-  display_name: JMX Receiver
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    metrics: deprecated
 - name: journaldreceiver
   display_name: Journald Receiver
   repo: contrib
