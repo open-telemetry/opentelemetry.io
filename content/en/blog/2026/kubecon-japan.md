@@ -27,7 +27,7 @@ community sessions.
 - **[OpenTelemetry Past and Future][session-1261567]**<br> by Ted Young,
   Grafana<br> Tuesday, July 28 • 14:40-15:10
 - **[Building AI Agent Observability with OpenTelemetry][session-1278454]**<br>
-  by Yuzuru Ohira, Observability<br> Tuesday, July 28 • 15:15-15:45
+  by Yuzuru Ohira, LayerX Inc.<br> Tuesday, July 28 • 15:15-15:45
 
 ## KubeCon talks
 
