@@ -16,7 +16,7 @@ export const FIX_ALL_COMPAT_MESSAGE =
   'ℹ️ INFO: Running `/fix` for `/fix:all` (compat mode). Use `/fix` moving forward.';
 
 export const FIX_REFCACHE_COMPAT_MESSAGE =
-  'ℹ️ INFO: Running `/fix:link-cache` for `/fix:refcache` (compat mode). Use `/fix:link-cache` moving forward.';
+  'ℹ️ INFO: `/fix:refcache` is deprecated. Use `/fix:link-cache` moving forward.';
 
 // The first line of the comment must be exactly `/fix` optionally followed by
 // one or more `:segment` parts, where a segment is one or more of `-_0-9a-zA-Z`.
@@ -45,8 +45,10 @@ const DIRECTIVE_RE = /^\/(fix(?::[-_0-9A-Za-z]+)*)$/;
  * The compat mapping preserves historical behavior:
  *  - `/fix:all` runs `fix` (the modern command), with an info message.
  *  - `/fix:ALL` lets maintainers still run the literal `fix:all` script.
- *  - `/fix:refcache` runs `fix:link-cache` (the script's modern name), with
- *    an info message.
+ *  - `/fix:refcache` still runs the `fix:refcache` script, with a deprecation
+ *    notice. The resolved script runs on the PR head, and pre-rename heads
+ *    only have `fix:refcache`; post-rename package.json forwards it to
+ *    `fix:link-cache`.
  *
  * @param {string} commentBody
  * @returns {FixDirective}
@@ -77,7 +79,7 @@ export function parseFixDirective(commentBody) {
     return {
       valid: true,
       actionName,
-      command: 'fix:link-cache',
+      command: actionName,
       info: FIX_REFCACHE_COMPAT_MESSAGE,
     };
   }
