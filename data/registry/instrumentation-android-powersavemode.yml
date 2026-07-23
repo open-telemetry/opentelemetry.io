@@ -1,0 +1,15 @@
+# cspell:ignore powersavemode
+title: Power Save Mode Instrumentation
+registryType: instrumentation
+language: android
+tags:
+  - powersavemode
+  - instrumentation
+  - android
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/power-save-mode
+license: Apache 2.0
+description:
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-12

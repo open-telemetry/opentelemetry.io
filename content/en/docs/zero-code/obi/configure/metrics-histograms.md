@@ -35,8 +35,10 @@ Set the bucket boundaries for metrics related to request duration. Specifically:
   (Prometheus)
 - `http.client.request.duration` (OTel) / `http_client_request_duration_seconds`
   (Prometheus)
-- `rpc.server.duration` (OTel) / `rpc_server_duration_seconds` (Prometheus)
-- `rpc.client.duration` (OTel) / `rpc_client_duration_seconds` (Prometheus)
+- `rpc.server.call.duration` (OTel) / `rpc_server_call_duration_seconds`
+  (Prometheus)
+- `rpc.client.call.duration` (OTel) / `rpc_client_call_duration_seconds`
+  (Prometheus)
 
 If you leave the value unset, OBI uses the default bucket boundaries from the
 [OpenTelemetry semantic conventions](/docs/specs/semconv/http/http-metrics/):
@@ -78,6 +80,26 @@ If you leave the value unset, OBI uses these default bucket boundaries:
 
 These default values are UNSTABLE and may change if Prometheus or OpenTelemetry
 semantic conventions recommend different bucket boundaries.
+
+### TCP RTT histogram
+
+Use `stat_tcp_rtt_histogram` under either exporter's `buckets` section to set
+the explicit boundaries for `obi.stat.tcp.rtt` / `obi_stat_tcp_rtt_seconds`:
+
+```yaml
+otel_metrics_export:
+  buckets:
+    stat_tcp_rtt_histogram: [0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1]
+```
+
+The default boundaries, in seconds, are:
+
+```text
+0.0005, 0.001, 0.002, 0.005, 0.010, 0.025, 0.050, 0.100, 0.250, 0.500, 1.0
+```
+
+The OpenTelemetry exporter ignores explicit boundaries when
+`histogram_aggregation` is `base2_exponential_bucket_histogram`.
 
 ## Use native histograms and exponential histograms
 

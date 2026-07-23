@@ -1,0 +1,24 @@
+# cSpell:ignore anthropics genai
+title:
+  OpenTelemetry Go Compile-Time Auto-Instrumentation for
+  `anthropics/anthropic-sdk-go`
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - instrumentation
+  - compile-time
+  - auto-instrumentation
+  - genai
+  - llm
+  - anthropic
+license: Apache 2.0
+description: >
+  Go compile-time auto-instrumentation plugin for the [`anthropic-sdk-go`
+  package](https://pkg.go.dev/github.com/anthropics/anthropic-sdk-go), producing
+  GenAI client spans that follow the `gen_ai.*` semantic conventions.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/anthropics/anthropic-sdk-go
+createdAt: 2026-07-20

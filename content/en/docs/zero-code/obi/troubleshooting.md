@@ -102,8 +102,8 @@ Span #0
     Status message :
 Attributes:
      -> rpc.method: Str(/opentelemetry.proto.collector.metrics.v1.MetricsService/Export)
-     -> rpc.system: Str(grpc)
-     -> rpc.grpc.status_code: Int(0)
+     -> rpc.system.name: Str(grpc)
+     -> rpc.response.status_code: Str(OK)
      -> server.address: Str(otel-collector.default)
      -> peer.service: Str(otel-collector.default)
      -> server.port: Int(4317)
