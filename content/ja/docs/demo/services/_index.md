@@ -2,6 +2,7 @@
 title: サービス
 aliases: [service_table, service-table]
 default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
+drifted_from_default: true
 ---
 
 リクエストフローを可視化するには、[サービスのダイアグラム](../architecture/)を確認してください。
