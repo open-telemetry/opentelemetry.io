@@ -2,7 +2,7 @@
 title: Management
 description: How to manage your OpenTelemetry Collector deployment at scale
 weight: 23
-cSpell:ignore: backpressure distro hostmetrics opampsupervisor
+cSpell:ignore: backpressure distro opampsupervisor
 ---
 
 This document describes how you can manage your OpenTelemetry Collector
@@ -230,7 +230,7 @@ Click on the Collector in the server UI and paste the following content to the
 
 ```yaml
 receivers:
-  hostmetrics:
+  host_metrics:
     collection_interval: 10s
     scrapers:
       cpu:
@@ -243,7 +243,7 @@ exporters:
 service:
   pipelines:
     metrics:
-      receivers: [hostmetrics]
+      receivers: [host_metrics]
       exporters: [debug]
 ```
 

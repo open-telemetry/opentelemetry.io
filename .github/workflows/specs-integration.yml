@@ -37,7 +37,7 @@ jobs:
         id: otelbot-token
         with:
           # the higher privileged docs token is needed to push commits to an existing PR
-          client-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -93,7 +93,7 @@ jobs:
           sed -i "s/^\t${SLUG}-pin = .*/\t${SLUG}-pin = $commit_desc/" .gitmodules
 
           if [ "$tag_exists" == "true" ]; then
-            sed -i "s/^\(\s *\)${SLUG}: .*/\1${SLUG}: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
+            sed -i "s/^${SLUG}: .*/${SLUG}: ${commit_desc#v}/" data/spec-versions.yml
           fi
 
           if [ "$SPEC" == "semconv" ]; then
@@ -111,13 +111,16 @@ jobs:
         with:
           node-version-file: .nvmrc
 
+      - uses: ./.github/actions/install-lychee
+
       - name: Update refcache
+        env:
+          # Authenticated github.com link checks (rate limits)
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           npm install --omit=optional
           # Ignore link-check failures so we can still commit refcache updates
           npm run fix:refcache || true
-          # Prune 404 entries, if any
-          npm run _refcache:prune
 
           git add -A
 

@@ -22,7 +22,7 @@ function auto_update_versions() {
       "opentelemetry-android
         ot-android content/en/docs/platforms/client-apps/android.md"
       "opentelemetry-proto
-        otlp scripts/content-modules/adjust-pages.pl
+        otlp data/spec-versions.yml
         otlp .gitmodules"
       "semantic-conventions-java
         semconv content/en/docs/languages/java/_index.md"
