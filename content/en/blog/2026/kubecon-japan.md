@@ -31,6 +31,8 @@ community sessions.
 
 ## KubeCon talks
 
+These sessions are part of the main conference program, July 29-30:
+
 - **[Project Lightning Talk: New Frontiers for OpenTelemetry - A Roadmap for the
   Future][session-1283896]**<br> by Ted Young, Grafana<br> Wednesday, July 29 •
   12:38-12:43
