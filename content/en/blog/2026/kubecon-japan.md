@@ -5,13 +5,14 @@ date: 2026-07-23
 author: '[Reese Lee, New Relic](https://github.com/reese-lee)'
 sig: Comms
 # prettier-ignore
-cSpell:ignore: CNCJ Dheeraj Disha Endozo Farzad Fujikane Gabitzsch Hoeven Inoue Ohira Ryota Tsuchiya Tsuzuki Vazirnia Yonekura Yoshiki Yuzuru Zouhar
+cSpell:ignore: CNCJ Endozo Farzad Fujikane Gabitzsch Hoeven Inoue Ohira Ryota Tsuchiya Tsuzuki Vazirnia Yonekura Yoshiki Yuzuru Zouhar
 ---
 
 [KubeCon + CloudNativeCon Japan][kubecon-japan] is happening July 28-30, 2026 in
 Yokohama, Japan! [Register][] today to join us! We’ve collected all the
-OpenTelemetry-related sessions in this post. Check back for updates before the
-start of the conference!
+OpenTelemetry-related sessions in this post; they are up to date at the time of
+writing. Session details can change, so confirm dates and times in the [official
+schedule][schedule].
 
 ## Community Day
 
@@ -42,9 +43,6 @@ community sessions.
 - **[Standardizing Industrial IoT observability with
   OpenTelemetry][session-1186424]**<br> by Alolita Sharma, Apple & Florian
   Zouhar, Apple & Justin Gabitzsch, Apple<br> Thursday, July 30 • 11:30-12:00
-- **[From Chaos to Control: Achieving 70% GPU Cost Reduction Through AI-Native
-  Observability on K8s][session-1133816]**<br> by Disha Babla, Amazon Web
-  Services & Dheeraj Kumar, MongoDB<br> Thursday, July 30 • 11:30-12:00
 - **[From StatsD to OpenTelemetry: Atlassian's Metrics Platform Migration at
   Scale][session-1191835]**<br> by Iris Grace Endozo, Atlassian & Farzad
   Vazirnia, Atlassian<br> Thursday, July 30 • 12:10-12:40
@@ -70,7 +68,7 @@ you in Yokohama!
 [community-day-schedule]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/co-located-events/japan-community-day-schedule/
 [kubecon-japan]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/
 [register]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/
-[session-1133816]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/?id=1133816
+[schedule]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/
 [session-1186424]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/?id=1186424
 [session-1189149]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/?id=1189149
 [session-1191835]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/?id=1191835
