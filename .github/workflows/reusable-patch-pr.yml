@@ -107,7 +107,7 @@ jobs:
       pr_url: ${{ steps.pr.outputs.pr_url }}
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
@@ -135,6 +135,9 @@ jobs:
         with:
           ref: main
           persist-credentials: false
+          # Full history so that the 3-way apply below always has the
+          # pre-image blobs of the main that the patch was generated against.
+          fetch-depth: 0
 
       # Let git resolve credentials through the gh CLI (which reads GH_TOKEN
       # from each step's env) instead of persisting the token in .git/config.
@@ -152,7 +155,9 @@ jobs:
           BRANCH: ${{ inputs.branch }}
         run: |
           git checkout -b "$BRANCH"
-          if ! git apply --verbose site.patch; then
+          # 3-way so that the patch still applies when commits land on main
+          # while the caller's run is in flight.
+          if ! git apply --3way --verbose site.patch; then
             echo "Patch failed to apply. For details, see output above. To debug this locally,"
             echo "get the patch file from the workflow summary artifact section."
             exit 1

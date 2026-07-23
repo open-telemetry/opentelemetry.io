@@ -1,7 +1,7 @@
 {{ $pageProseLang := partial "i18n/lang.html" . -}}
 {{ $siteLang := .Site.Language -}}
 
-{{ if ne .Language.Lang "en" -}}
+{{ if ne .Language.Name "en" -}}
   {{ if .Params.drifted_from_default -}}
     {{ with partial "_inline/ot-page-drifted-banner.html" . -}}
       {{ . -}}
@@ -74,7 +74,7 @@
   {{ with $page -}}
     {{ .Content }}
   {{ else -}}
-    {{ $lang := .Page.Language.Lang -}}
+    {{ $lang := .Page.Language.Name -}}
     {{ warnf "_inline/ot-page-not-found-banner: '%s' not found from page %s (%s)" $path .Page.Path $lang -}}
   {{ end -}}
 {{ end -}}
