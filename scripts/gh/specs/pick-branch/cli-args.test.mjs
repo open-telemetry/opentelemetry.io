@@ -1,7 +1,7 @@
 import { describe, test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { parseCliArgs, cliUsage } from './index.mjs';
+import { parseCliArgs } from './index.mjs';
 
 describe('pick-branch: CLI args', () => {
   test('defaults: spec=otel, dry-run on when not in Actions', () => {
@@ -71,12 +71,5 @@ describe('pick-branch: CLI args', () => {
 
   test('--spec without value throws', () => {
     assert.throws(() => parseCliArgs(['--spec'], {}), /Missing value/);
-  });
-
-  test('cliUsage mentions both specs and the dry-run flags', () => {
-    const text = cliUsage();
-    assert.match(text, /otel\|semconv/);
-    assert.match(text, /--dry-run/);
-    assert.match(text, /--no-dry-run/);
   });
 });

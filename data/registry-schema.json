@@ -22,8 +22,10 @@
         "core",
         "exporter",
         "extension",
+        "id-generator",
         "instrumentation",
         "log-bridge",
+        "metric-producer",
         "processor",
         "propagator",
         "provider",
@@ -39,6 +41,7 @@
       "type": "string",
       "description": "The programming language of the entry",
       "enum": [
+        "android",
         "collector",
         "cpp",
         "crystal",

@@ -129,16 +129,16 @@ path obsolete.
 These two checks build the website and verify that all links are valid.
 
 If you added or changed an external link, the link checker records it in the
-reference cache (`static/refcache.json`), and this check will fail until that
-cache is updated.
+link cache (`.lycheecache`), and this check will fail until that cache is
+updated.
 
 The easiest way to update it is to comment
 [`/fix:refcache`](../pull-requests/#fixing-prs-in-github) on your PR — the
-OpenTelemetry bot updates `static/refcache.json` for you.
+OpenTelemetry bot updates the cache for you.
 
 Alternatively, you can build and check links locally, by running
-`npm run check:links`. This command also updates the reference cache. Push any
-changes to the refcache in a new commit.
+`npm run check:links`. This command also updates the link cache. Push any
+changes to the cache in a new commit.
 
 > [!NOTE]
 >
@@ -165,25 +165,11 @@ are other query parameters. For example, the following URLs will be ignored:
 - <https:/some-example.org?link-check=no>
 - <https:/some-example.org?other-param=value&link-check=no>
 
-> [!TIP] Maintainers tip
->
-> Maintainers can run the following script immediately after having run the link
-> checker to have Puppeteer attempt to validate links with non-ok statuses:
->
-> ```sh
-> ./scripts/double-check-refcache-4XX.mjs
-> ```
->
-> Use the `-f` flag to also validate URL fragments (anchors) in external links,
-> which `htmltest` doesn't do. We don't currently run this often, so you will
-> probably want to limit the number of updated entries using the `-m N` flag.
-> For usage info, run with `-h`.
-
 ### `WARNINGS in build log?` {.notranslate lang=en}
 
-If this check fails, review the `BUILD and CHECK LINKS` log, under the
-`npm run log:check:links` step, for any other potential issues. Ask maintainers
-for help, if you are unsure how to recover.
+If this check fails, review the `BUILD` log, under the `npm run log:build` step,
+for any other potential issues. Ask maintainers for help, if you are unsure how
+to recover.
 
 #### Always use a path for site-local links {#avoid-external-site-local-links}
 
@@ -203,7 +189,8 @@ Using local paths ensures that:
   tab, which is not the desired behavior for site-local navigation
 - Localization link processing works as expected: links are automatically
   prefixed with the appropriate language code
-- Local paths are easier to link-check and don't unnecessarily fill the refcache
+- Local paths are easier to link-check and don't unnecessarily fill the link
+  cache
 
 <details>
 <summary>Note to maintainers</summary>
@@ -213,7 +200,7 @@ The following code enforces the link requirement described in this section:
 - The render-link hook that emits this warning:
   [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
 - The script that auto-converts full URLs to local paths:
-  [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
+  [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
 
 </details>
 

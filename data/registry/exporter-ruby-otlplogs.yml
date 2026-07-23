@@ -1,3 +1,4 @@
+# cSpell:ignore otlplogs
 title: opentelemetry-exporter-otlp-logs
 registryType: exporter
 language: ruby
