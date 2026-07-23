@@ -351,6 +351,7 @@ https://developer.android.com/training/articles/user-data-ids,200,1784701516
 https://developer.apple.com/documentation/uikit/uiapplicationdelegate,200,1784356061
 https://developer.apple.com/documentation/uikit/uidevice/identifierforvendor,200,1784284982
 https://developer.cisco.com/docs/nso/observability-exporter/,206,1784269666
+https://developer.mozilla.org/docs/Web/API/PerformanceNavigationTiming/type,200,1784805103
 https://developer.mozilla.org/docs/Web/HTTP/Headers/Forwarded#for,200,1784701517
 https://developer.mozilla.org/docs/Web/HTTP/Headers/Forwarded#host,200,1784701517
 https://developer.mozilla.org/docs/Web/HTTP/Headers/Forwarded#proto,200,1784701517
@@ -5952,9 +5953,11 @@ https://web.archive.org/web/20240223142649/https://kofo.dev/how-to-mtls-in-golan
 https://web.archive.org/web/20250000000000*/https://github.com/open-telemetry/opentelemetry-android,200,1784284818
 https://web.archive.org/web/20250624231058/https://www.bmc.com/blogs/opentracing-opencensus-openmetrics/,200,1784284648
 https://web.dev/articles/cls,200,1784701518
+https://web.dev/articles/fcp,200,1784805104
 https://web.dev/articles/fid,200,1784701518
 https://web.dev/articles/inp,200,1784701518
 https://web.dev/articles/lcp,200,1784701518
+https://web.dev/articles/ttfb,200,1784805103
 https://web.dev/vitals,200,1784356075
 https://wicg.github.io/ua-client-hints/#interface,206,1784284980
 https://wicg.github.io/ua-client-hints/#sec-ch-ua-platform,200,1784701515
