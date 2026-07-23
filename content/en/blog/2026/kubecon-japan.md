@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry @ KubeCon + CloudNativeCon Japan 2026
-linkTitle: KubeCon Japan 2026
+linkTitle: KubeCon Japan '26
 date: 2026-07-23
 author: '[Reese Lee, New Relic](https://github.com/reese-lee)'
 sig: Comms
@@ -9,9 +9,10 @@ cSpell:ignore: CNCJ Dheeraj Disha Endozo Farzad Fujikane Gabitzsch Hoeven Inoue 
 ---
 
 [KubeCon + CloudNativeCon Japan](https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/)
-is happening July 28-30, 2026 in Yokohama, Japan! We’ve collected all the
-OpenTelemetry-related sessions in this post. Check back for updates before the
-start of the conference!
+is happening July 28-30, 2026 in Yokohama, Japan!
+[Register](https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/)
+today to join us! We’ve collected all the OpenTelemetry-related sessions in this
+post. Check back for updates before the start of the conference!
 
 ## Community Day
 
@@ -58,4 +59,7 @@ for the entire list of community sessions.
   by Kyle Eckhart, Grafana Labs & Arthur Sens, Grafana Labs<br> Thursday, July
   30 • 16:30-17:00
 
-We look forward to seeing you there!
+## Join us
+
+Come listen, learn, and get involved in OpenTelemetry. We look forward to seeing
+you in Yokohama!
