@@ -8,7 +8,7 @@ author: >-
 issue: 10115
 sig: "Specification: Entities" # verified against open-telemetry/community SIG list
 draft: true
-# cSpell:ignore Noirbusson Toise Pebble gqlgen bitemporal semconv kvlist
+# cSpell:ignore Noirbusson bitemporal semconv kvlist
 ---
 
 Metrics, logs, and traces tell you how your systems _behave_. They are much
@@ -25,12 +25,11 @@ isn't only "how do I emit them?" — it's **"what do I do once they arrive?"**
 This post walks through one answer, using an open-source consumer as a worked
 example.
 
-> **Disclosure:** I work on [Toise](https://toise.dev), an Apache-2.0 project
-> used below as a concrete example. Everything here is about the general shape of
-> consuming entity events; the lessons apply to any consumer. The entity data
-> model and its conventions are still **in development** (not yet stable) and
-> evolving — treat the exact attribute names below as illustrative and check them
-> against the current spec.
+> **Note:** The entity data model and its conventions are still **in
+> development** (not yet stable) and evolving — treat the exact attribute names
+> below as illustrative and check them against the current spec. Everything here
+> is about the general shape of consuming entity events; the lessons apply to any
+> consumer.
 
 ## A 60-second primer on entity events
 
