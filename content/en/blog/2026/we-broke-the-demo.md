@@ -4,10 +4,9 @@ linkTitle: We broke the demo
 date: 2026-07-27
 author: >-
   [Juliano Costa](https://github.com/julianocosta89) (Datadog)
-sig: OpenTelemetry Demo
+sig: Demo
 # prettier-ignore
 cSpell:ignore: agentic Bourgey Cijo cijothomas Dónal fali007 fbourgey firepit florianl Kielek Kiełkowicz Lehner martinjt mwimpelberg28 O'Sullivan osullivandonal Pratik ps48 Shenoy Thwaites Wimpelberg
-sig: demo
 issue: 10921
 ---
 
