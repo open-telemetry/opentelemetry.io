@@ -147,6 +147,13 @@ The collector is configured in
 [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml),
 alternative exporters can be configured here.
 
+When running with the observability stack, the Collector also connects to the
+demo's OpAMP server through the
+[OpAMP extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/opampextension)
+and reports its health, version, attributes, and effective configuration. Open
+the OpAMP UI at <http://localhost:8080/opamp/> and select the Collector instance
+to view the reported status.
+
 ```mermaid
 graph TB
 subgraph tdf[Telemetry Data Flow]
@@ -179,11 +186,26 @@ subgraph tdf[Telemetry Data Flow]
             oc-proc --> oc-spanmetrics
             oc-spanmetrics --> oc-prom
 
+            oc-opamp[/"OpAMP Extension"/]
+
         end
 
         oc-prom -->|"localhost:9090/api/v1/otlp"| pr-sc
         oc-otlp -->|gRPC| ja-col
         oc-opensearch -->|HTTP| os-http
+
+        subgraph op[OpAMP Server]
+            style op fill:#a6ce39,color:black;
+            op-srv["OpAMP Server"]
+            op-http[/"OpAMP HTTP<br/>listening on<br/>localhost:8080/opamp/"/]
+
+            op-srv --> op-http
+        end
+
+        oc-opamp -->|"reports status<br/>over WebSocket"| op-srv
+
+        op-b{{"Browser<br/>OpAMP UI"}}
+        op-http -->|"localhost:8080/opamp/"| op-b
 
         subgraph pr[Prometheus]
             style pr fill:#e75128,color:black;
