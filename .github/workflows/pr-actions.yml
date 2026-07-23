@@ -43,7 +43,7 @@ jobs:
       comment_id: ${{ steps.ack.outputs.comment_id }}
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
@@ -96,9 +96,10 @@ jobs:
       action_exit_status: ${{ steps.patch.outputs.action_exit_status }}
       patch_name: pr-fix-${{ github.run_id }}
       patch_skipped: ${{ steps.patch.outputs.patch_skipped }}
+      stale_branch: ${{ steps.stale-branch-guard.outputs.stale_branch }}
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
@@ -117,11 +118,28 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
+      - name: Guard against pre-Lychee-switch branches
+        id: stale-branch-guard
+        # PR branches cut before the Lychee link-checker switch (#10911) still
+        # carry the old refcache wiring, and the patch step runs the head's fix
+        # scripts — which would update the deleted `static/refcache.json`
+        # instead of `.lycheecache`, leaving link checks red.
+        # TODO(2026-08): remove this guard (and the report job's stale-branch
+        # handling) once pre-switch branches (cut before 2026-07-21) have aged
+        # out.
+        run: |
+          if [[ -f static/refcache.json ]]; then
+            echo "stale_branch=true" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Stale PR branch::Head predates the Lychee switch (#10911); skipping fix scripts."
+          else
+            echo "stale_branch=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Run PR action and generate patch
         id: patch
+        if: steps.stale-branch-guard.outputs.stale_branch != 'true'
         # Untrusted: runs the resolved npm script and captures any changes as a
-        # patch artifact. Has no write permissions or secrets. The `_refcache:prune`
-        # post-command drops 404 entries so refcache updates stay clean.
+        # patch artifact. Has no write permissions or secrets.
         # NOTE: after `gh pr checkout` above, this local action's definition
         # resolves from the PR branch — treat the action itself as untrusted;
         # never add secrets or write permissions to this job.
@@ -130,7 +148,6 @@ jobs:
           command: ${{ steps.extract.outputs.command }}
           patch-name: pr-fix-${{ github.run_id }}
           max-patch-size-kb: ${{ env.MAX_PATCH_SIZE_KB }}
-          post-command: _refcache:prune
 
   apply-patch:
     name: Apply and push patch (trusted)
@@ -173,7 +190,7 @@ jobs:
       contents: read # checkout
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
@@ -211,6 +228,13 @@ jobs:
           PR_MERGED: ${{ github.event.issue.pull_request.merged_at != null }}
           GENERATE_RESULT: ${{ needs.generate-patch.result }}
           PATCH_SKIPPED: ${{ needs.generate-patch.outputs.patch_skipped }}
+          STALE_BRANCH: ${{ needs.generate-patch.outputs.stale_branch }}
+          # Why the stale-branch guard declined to run the fix scripts; see the
+          # guard step in the generate-patch job, and remove along with it.
+          STALE_BRANCH_MESSAGE: >-
+            This PR branch predates the Lychee link-checker switch (#10911), so
+            its fix scripts would update the old link cache. Update the branch
+            from `main`, then re-run `/fix`.
           COMMAND_EXIT_STATUS:
             ${{ needs.generate-patch.outputs.action_exit_status }}
           APPLY_RESULT: ${{ needs.apply-patch.result }}
@@ -219,6 +243,10 @@ jobs:
         # branch, so the imported text is trusted.
         run: |
           hint=$(node -e 'import("./scripts/gh/pr-fix/index.mjs").then((m) => console.log(m.DIRECTIVE_HINT))')
+          not_run_reason=''
+          if [[ "$STALE_BRANCH" == 'true' ]]; then
+            not_run_reason="$STALE_BRANCH_MESSAGE"
+          fi
           node scripts/gh/patch-report/cli.mjs \
             --pr "$PR_NUM" \
             --comment-id "$ACK_COMMENT_ID" \
@@ -226,6 +254,7 @@ jobs:
             --label "$LABEL" \
             --pr-state "$PR_STATE" \
             --pr-merged "$PR_MERGED" \
+            --not-run-reason "$not_run_reason" \
             --generate-result "$GENERATE_RESULT" \
             --patch-skipped "$PATCH_SKIPPED" \
             --command-exit-status "$COMMAND_EXIT_STATUS" \
