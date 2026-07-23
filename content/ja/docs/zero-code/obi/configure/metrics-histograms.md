@@ -3,8 +3,7 @@ title: OBI の Prometheus と OpenTelemetry メトリクスヒストグラムを
 linkTitle: メトリクスヒストグラム
 description: Prometheus と OpenTelemetry のメトリクスヒストグラムを設定し、ネイティブヒストグラムおよび指数ヒストグラムを使用するかを設定します。
 weight: 60
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
-drifted_from_default: true
+default_lang_commit: 2728c8fbf4f09cf3b8257a1b628a7631fc77d639
 ---
 
 OBI の Prometheus および OpenTelemetry メトリクスヒストグラムを設定できます。
@@ -33,8 +32,10 @@ otel_metrics_export:
 
 - `http.server.request.duration` (OTel) / `http_server_request_duration_seconds` (Prometheus)
 - `http.client.request.duration` (OTel) / `http_client_request_duration_seconds` (Prometheus)
-- `rpc.server.duration` (OTel) / `rpc_server_duration_seconds` (Prometheus)
-- `rpc.client.duration` (OTel) / `rpc_client_duration_seconds` (Prometheus)
+- `rpc.server.call.duration` (OTel) / `rpc_server_call_duration_seconds`
+  (Prometheus)
+- `rpc.client.call.duration` (OTel) / `rpc_client_call_duration_seconds`
+  (Prometheus)
 
 値を未設定のままにした場合、OBI は [OpenTelemetry セマンティック規約](/docs/specs/semconv/http/http-metrics/) のデフォルトのバケット境界を使用します。
 
@@ -70,6 +71,24 @@ prometheus_export:
 ```
 
 これらのデフォルト値は UNSTABLE であり、Prometheus または OpenTelemetry セマンティック規約が異なるバケット境界を推奨するようになった場合、変更される可能性があります。
+
+### TCP RTT ヒストグラム {#tcp-rtt-histogram}
+
+いずれかのエクスポーターの `buckets` セクション内の `stat_tcp_rtt_histogram` を使用して、`obi.stat.tcp.rtt` / `obi_stat_tcp_rtt_seconds` の明示的な境界を設定します。
+
+```yaml
+otel_metrics_export:
+  buckets:
+    stat_tcp_rtt_histogram: [0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1]
+```
+
+デフォルトの境界（秒単位）は次のとおりです。
+
+```text
+0.0005, 0.001, 0.002, 0.005, 0.010, 0.025, 0.050, 0.100, 0.250, 0.500, 1.0
+```
+
+`histogram_aggregation` が `base2_exponential_bucket_histogram` の場合、OpenTelemetry エクスポーターは明示的な境界を無視します。
 
 ## ネイティブヒストグラムと指数ヒストグラムを使用する {#use-native-histograms-and-exponential-histograms}
 
