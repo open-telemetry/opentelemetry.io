@@ -1,9 +1,8 @@
 ---
 title: OpenTelemetry @ KubeCon + CloudNativeCon Japan 2026
 linkTitle: KubeCon Japan 2026
-date: 2026-07-22
+date: 2026-07-23
 author: '[Reese Lee, New Relic](https://github.com/reese-lee)'
-draft: true # TODO: remove this line once your post is ready to be published
 sig: Comms
 # prettier-ignore
 cSpell:ignore: CNCJ Dheeraj Disha Endozo Farzad Fujikane Gabitzsch Hoeven Inoue Ohira Ryota Tsuchiya Tsuzuki Vazirnia Yonekura Yoshiki Yuzuru Zouhar
