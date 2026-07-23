@@ -103,9 +103,11 @@ function pathExists(p) {
 
 /**
  * Deletes obsolete paths and renames kebab-case violations (underscores to
- * dashes). Renames are applied deepest-first so that renaming a directory
- * doesn't invalidate the paths of violations nested inside it. Throws instead
- * of overwriting when a rename destination already exists.
+ * dashes). The full rename plan is validated before anything is deleted or
+ * renamed, so a collision — with an existing path or between two planned
+ * renames — throws while the tree is still untouched. Renames are applied
+ * deepest-first so that renaming a directory doesn't invalidate the paths of
+ * violations nested inside it.
  *
  * @param {{
  *   badNames?: string[],
@@ -120,24 +122,38 @@ export function fixViolations({
   cwd = '.',
   log = console.log,
 } = {}) {
+  const deepestFirst = [...badNames].sort(
+    (a, b) => b.split('/').length - a.split('/').length,
+  );
+  const renames = deepestFirst.map((from) => ({
+    from,
+    to: path.posix.join(
+      path.posix.dirname(from),
+      path.posix.basename(from).replaceAll('_', '-'),
+    ),
+  }));
+
+  const plannedDestinations = new Set();
+  for (const { from, to } of renames) {
+    if (pathExists(path.join(cwd, to))) {
+      throw new Error(`refusing to rename ${from}: ${to} already exists`);
+    }
+    if (plannedDestinations.has(to)) {
+      throw new Error(
+        `refusing to rename ${from}: ${to} is also the rename destination of another path`,
+      );
+    }
+    plannedDestinations.add(to);
+  }
+
   for (const { path: p } of obsolete) {
     log(`Removing obsolete path: ${p}`);
     fs.rmSync(path.join(cwd, p), { recursive: true, force: true });
   }
-  const deepestFirst = [...badNames].sort(
-    (a, b) => b.split('/').length - a.split('/').length,
-  );
-  for (const p of deepestFirst) {
-    if (!pathExists(path.join(cwd, p))) continue; // gone with an obsolete path
-    const to = path.posix.join(
-      path.posix.dirname(p),
-      path.posix.basename(p).replaceAll('_', '-'),
-    );
-    if (pathExists(path.join(cwd, to))) {
-      throw new Error(`refusing to rename ${p}: ${to} already exists`);
-    }
-    log(`Renaming: ${p} -> ${to}`);
-    fs.renameSync(path.join(cwd, p), path.join(cwd, to));
+  for (const { from, to } of renames) {
+    if (!pathExists(path.join(cwd, from))) continue; // gone with an obsolete path
+    log(`Renaming: ${from} -> ${to}`);
+    fs.renameSync(path.join(cwd, from), path.join(cwd, to));
   }
 }
 

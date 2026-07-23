@@ -27,14 +27,22 @@ describe('isBadName', () => {
   });
 
   test('allows kebab-case names', () => {
-    assert.ok(!isBadName('getting-started.md'));
-    assert.ok(!isBadName('img.png'));
+    assert.equal(
+      isBadName('getting-started.md'),
+      false,
+      'kebab-case name is accepted',
+    );
+    assert.equal(isBadName('img.png'), false, 'kebab-case name is accepted');
   });
 
   test('allows _- and .-prefixed names', () => {
-    assert.ok(!isBadName('_index.md'));
-    assert.ok(!isBadName('__init__.py'));
-    assert.ok(!isBadName('.git_ignore-ish'));
+    assert.equal(isBadName('_index.md'), false, '_-prefixed name is exempt');
+    assert.equal(isBadName('__init__.py'), false, '_-prefixed name is exempt');
+    assert.equal(
+      isBadName('.git_ignore-ish'),
+      false,
+      '.-prefixed name is exempt',
+    );
   });
 });
 
@@ -90,33 +98,91 @@ describe('temp-fixture checks', () => {
       log: (message) => logs.push(message),
     });
 
-    assert.ok(!fs.existsSync(path.join(cwd, 'tools')));
-    assert.ok(!fs.existsSync(path.join(cwd, 'static/refcache.json')));
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'tools')),
+      false,
+      'obsolete tools/ is removed',
+    );
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'static/refcache.json')),
+      false,
+      'obsolete refcache.json is removed',
+    );
     assert.ok(fs.existsSync(path.join(cwd, 'content/a-b/c-d.md')));
     assert.ok(fs.existsSync(path.join(cwd, 'content/a-b/_index.md')));
-    assert.ok(!fs.existsSync(path.join(cwd, 'content/a_b')));
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'content/a_b')),
+      false,
+      'a_b directory is renamed away',
+    );
     assert.equal(logs.length, 4, 'one log line per fixed violation');
 
     assert.deepEqual(findBadFilenames(['content'], { cwd }), []);
     assert.deepEqual(findObsoletePaths(OBSOLETE_PATHS, { cwd }), []);
   });
 
-  test('fixViolations refuses a rename over an existing path', () => {
+  test('fixViolations refuses a rename over an existing path, mutating nothing', () => {
     fs.writeFileSync(path.join(cwd, 'content/a_b/c-d.md'), 'occupied');
 
     assert.throws(
       () =>
         fixViolations({
           badNames: findBadFilenames(['content'], { cwd }),
+          obsolete: findObsoletePaths(OBSOLETE_PATHS, { cwd }),
           cwd,
           log: () => {},
         }),
       /refusing to rename content\/a_b\/c_d\.md: content\/a_b\/c-d\.md already exists/,
     );
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'tools')),
+      true,
+      'obsolete tools/ is untouched',
+    );
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'static/refcache.json')),
+      true,
+      'obsolete refcache.json is untouched',
+    );
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'content/a-b')),
+      false,
+      'a_b directory keeps its name',
+    );
     assert.ok(fs.existsSync(path.join(cwd, 'content/a_b/c_d.md')));
     assert.equal(
       fs.readFileSync(path.join(cwd, 'content/a_b/c-d.md'), 'utf8'),
       'occupied',
+    );
+  });
+
+  test('fixViolations refuses two renames onto the same destination', () => {
+    fs.writeFileSync(path.join(cwd, 'content/a_b-c.md'), 'first');
+    fs.writeFileSync(path.join(cwd, 'content/a-b_c.md'), 'second');
+
+    assert.throws(
+      () =>
+        fixViolations({
+          badNames: ['content/a_b-c.md', 'content/a-b_c.md'],
+          cwd,
+          log: () => {},
+        }),
+      /refusing to rename content\/a-b_c\.md: content\/a-b-c\.md is also the rename destination of another path/,
+    );
+    assert.equal(
+      fs.readFileSync(path.join(cwd, 'content/a_b-c.md'), 'utf8'),
+      'first',
+      'first source is untouched',
+    );
+    assert.equal(
+      fs.readFileSync(path.join(cwd, 'content/a-b_c.md'), 'utf8'),
+      'second',
+      'second source is untouched',
+    );
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'content/a-b-c.md')),
+      false,
+      'no rename is applied',
     );
   });
 
@@ -159,7 +225,11 @@ describe('repo-wide sanity', () => {
   test('every obsolete-path entry carries guidance', () => {
     assert.ok(OBSOLETE_PATHS.length > 0, 'obsolete-path list has entries');
     for (const { path: p, message } of OBSOLETE_PATHS) {
-      assert.ok(p && !p.startsWith('/'), `path is repo-relative: ${p}`);
+      assert.equal(path.posix.normalize(p), p, `path is normalized: ${p}`);
+      assert.ok(
+        p && !path.posix.isAbsolute(p) && p !== '..' && !p.startsWith('../'),
+        `path stays within the repository: ${p}`,
+      );
       assert.match(
         message,
         /#\d+|https:\/\//,
