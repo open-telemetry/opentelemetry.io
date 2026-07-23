@@ -185,6 +185,12 @@
   contact: https://github.com/jpkrohling/
   oss: true
   commercial: true
+- name: Guance
+  nativeOTLP: true
+  url: https://docs.guance.com/en/integrations/opentelemetry/
+  contact:
+  oss: false
+  commercial: true
 - name: Heroku
   nativeOTLP: true
   url: https://devcenter.heroku.com/articles/heroku-telemetry
@@ -453,6 +459,12 @@
   nativeOTLP: true
   url: https://app.telemetryhub.com/docs
   contact:
+  oss: false
+  commercial: true
+- name: The Context Company
+  nativeOTLP: true
+  url: https://docs.thecontextcompany.com/integrations/opentelemetry
+  contact: founders@thecontextcompany.com
   oss: false
   commercial: true
 - name: Traceloop
