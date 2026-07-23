@@ -1,7 +1,7 @@
 ---
 title: One-command OpenTelemetry setup on Linux hosts
 linkTitle: One-command OpenTelemetry setup on Linux hosts
-date: 2026-07-20
+date: 2026-07-23
 author: >-
   [Antoine Toulme](https://github.com/atoulme) (Splunk), [Michele
   Mancioppi](https://github.com/mmanciop) (Dash0)
