@@ -380,6 +380,6 @@ scripts/gh/specs/create-or-finalize-pr.mjs --help
 | `component-owners.yml`     | コンポーネント所有権に基づくレビュアーの割り当て                                               |
 
 <!-- prettier-ignore-start -->
-[link checking]: ../link-checking/
+[link checking]: /site/build/link-checking/
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
 <!-- prettier-ignore-end -->
