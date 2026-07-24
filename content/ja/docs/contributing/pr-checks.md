@@ -3,8 +3,7 @@ title: プルリクエストのチェックとテスト
 linkTitle: PR チェック & テスト
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: eb1e39f771d32be4756dc94885d1ac3940de6de7
-drifted_from_default: true
+default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -108,15 +107,15 @@ PR のチェックは次のことを検証します。
 
 これらの2つのチェックは、ウェブサイトをビルドしてすべてのリンクが有効であることを検証します。
 
-外部リンクを追加または変更した場合、リンクチェッカーはそのリンクを参照キャッシュ (`static/refcache.json`) に記録します。
+外部リンクを追加または変更した場合、リンクチェッカーはそのリンクをリンクキャッシュ (`.lycheecache`) に記録します。
 キャッシュが更新されるまでこのチェックは失敗します。
 
 キャッシュを更新する最も簡単な方法は、PR に [`/fix:refcache`](../pull-requests/#fixing-prs-in-github) とコメントすることです。
-OpenTelemetry ボットが `static/refcache.json` を更新してくれます。
+OpenTelemetry ボットがキャッシュを更新してくれます。
 
 あるいは、`npm run check:links` を実行してローカルでビルドとリンクチェックを行うこともできます。
-このコマンドは参照キャッシュも更新します。
-refcache に変更があれば、新しいコミットでプッシュしてください。
+このコマンドはリンクキャッシュも更新します。
+キャッシュに変更があれば、新しいコミットでプッシュしてください。
 
 > [!NOTE]
 >
@@ -138,22 +137,9 @@ LinkedIn などの一部のサーバーは 999 を報告します。
 - <https:/some-example.org?link-check=no>
 - <https:/some-example.org?other-param=value&link-check=no>
 
-> [!TIP] メンテナーのヒント
->
-> メンテナーは、リンクチェッカーを実行した直後に次のスクリプトを実行して、Puppeteer にOKでないステータスのリンクの検証を試みさせることができます。
->
-> ```sh
-> ./scripts/double-check-refcache-4XX.mjs
-> ```
->
-> 外部リンクのURLフラグメント（アンカー）も検証するには`-f`フラグを使用してください。
-> これは`htmltest`が行わない検証です。
-> 現在これを頻繁に実行していないため、`-m N`フラグを使用して更新されるエントリ数を制限することをお勧めします。
-> 使用方法については、`-h`で実行してください。
-
 ### `WARNINGS in build log?` {#warnings-in-build-log .notranslate lang=en}
 
-このチェックが失敗した場合、`npm run log:check:links` ステップの `BUILD and CHECK LINKS` ログを確認して、他の潜在的な問題を特定してください。
+このチェックが失敗した場合、`npm run log:build` ステップの `BUILD` ログを確認して、他の潜在的な問題を特定してください。
 復旧方法がわからない場合は、メンテナーに助けを求めてください。
 
 #### 常にサイト内リンクを使用する {#avoid-external-site-local-links}
@@ -172,7 +158,7 @@ OpenTelemetry ウェブサイト内のページをリンクする場合、外部
 
 - サイト内ページが同じブラウザタブで開く: 外部リンクは新しいタブで開くため、サイト内ナビゲーションの望ましい動作ではありません
 - ローカリゼーションリンク処理が期待通りに動作する: リンクパスの先頭に、適切な言語コードが自動で付与されます
-- ローカルパスはリンクチェックが容易で、refcache を不必要に肥大化させません
+- ローカルパスはリンクチェックが容易で、リンクキャッシュを不必要に肥大化させません
 
 <details>
 <summary>メンテナーへの注意</summary>
