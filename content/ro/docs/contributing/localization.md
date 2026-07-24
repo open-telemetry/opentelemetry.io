@@ -1,20 +1,22 @@
 ---
 title: Localizarea site-ului
-description: Crearea și menținerea paginilor site-ului în localizări non englezești.
+description:
+  Crearea și menținerea paginilor site-ului în localizări non englezești.
 linkTitle: Localizare
 weight: 25
 cSpell:ignore: Dowair shortcodes
 ---
 
-Website-ul OTel folosește [framework-ul multilingvist][] al lui Hugo pentru a susține localizările
-paginilor. Engleza este limba implicită, având Engleză US ca localizarea implicită. Un număr în
-creștere de alte localizări sunt disponibile, cum se poate vedea în lista de limbi din bara de
-navigație din antet.
+Website-ul OTel folosește [framework-ul multilingvist][] al lui Hugo pentru a
+susține localizările paginilor. Engleza este limba implicită, având Engleză US
+ca localizarea implicită. Un număr în creștere de alte localizări sunt
+disponibile, cum se poate vedea în lista de limbi din bara de navigație din
+antet.
 
 ## Îndrumări pentru traducere
 
-Când traduceți pagini web din Engleză, recomandăm să urmezi
-îndrumările oferite în această secțiune
+Când traduceți pagini web din Engleză, recomandăm să urmezi îndrumările oferite
+în această secțiune
 
 ### Sumar
 
@@ -26,7 +28,8 @@ Când traduceți pagini web din Engleză, recomandăm să urmezi
   - Conținutul paginii, incluzând:
     - Câmpuri text din [diagrame](#images) Mermaid
     - Comentarii de cod din excepții de cod (opțional)
-  - [Front matter][] valorile câmpurilor pentru `title`, `linkTitle`, și `description`
+  - [Front matter][] valorile câmpurilor pentru `title`, `linkTitle`, și
+    `description`
   - **Tot** conținutul paginii și front matter dacă nu se specifică altfel
 - **Păstrați** _conținutul_, _înțelesul_, și _stilul_ textului original
 - **Trimiteți schimbări _incrementale_** via [pull request-uri mici](#small-prs)
@@ -44,16 +47,16 @@ Când traduceți pagini web din Engleză, recomandăm să urmezi
 <div class="border-start border-warning bg-warning-subtle">
 
 - **Traduce**:
-  - [Tipuri de alerte](../style-guide/#alerts) cum ar fi `TIP`, `WARNING`, etc. Acest lucru este
-    impus de o regulă [`MARKDOWN` linter][].
+  - [Tipuri de alerte](../style-guide/#alerts) cum ar fi `TIP`, `WARNING`, etc.
+    Acest lucru este impus de o regulă [`MARKDOWN` linter][].
   - Cod, incluzând blocuri de cod sau cod inline (precum acest
     `exemplu de cod inline`)
   - Nume de **Fișier sau director** al resurselor din acest repertoriu
-  - Câmpuri [Front matter][], altele decât cele enumerate în [Ce se face](#do). În special,
-    nu traduce `aliasuri`. Când ai dubii, întreabă maintainers.
+  - Câmpuri [Front matter][], altele decât cele enumerate în [Ce se face](#do).
+    În special, nu traduce `aliasuri`. Când ai dubii, întreabă maintainers.
   - [Linkuri](#links), asta include și [id-urile titlurilor](#headings) [^*]
-  - Elemente markdown marcate ca și `notranslate` (deobicei ca o clasă CSS), în special
-    pentru [titluri](#headings)
+  - Elemente Markdown marcate ca și `notranslate` (deobicei ca o clasă CSS), în
+    special pentru [titluri](#headings)
 - Create **copies of images and other assets**, unless you
   [localize text in them](#images)
 - Add new or change:
@@ -69,18 +72,20 @@ Când traduceți pagini web din Engleză, recomandăm să urmezi
 
 #### Utilizarea instrumentelor de inteligență artificială {#ai-tools}
 
-Dacă folosești instrumente de inteligență artificială generativă (precum ChatGPT, Gemini, sau similare)
-pentru a te ajuta cu traducerea, trebuie să respecți [Politica OpenTelemetry privind contribuția
-folosind IA generativ][genai-policy] și [Politica Linux Foundation privind contribuția
+Dacă folosești instrumente de inteligență artificială generativă (precum
+ChatGPT, Gemini, sau similare) pentru a te ajuta cu traducerea, trebuie să
+respecți [Politica OpenTelemetry privind contribuția folosind IA
+generativ][genai-policy] și [Politica Linux Foundation privind contribuția
 folosind IA generativ][lf-ai-policy]. În mod special:
 
-- **Dezvăluie** că ai folosit IA bifând căsuța corespunzătoare din [șablonul pull request-ului][pull request template].
-- **Revizuiește și validează** toate traducerile generate de IA pentru precizie. Tu ești responsabil
-  pentru conținutul pe care-l trimiți.
-- **Nu trimite** traduceri generate de IA pe care tu însuți nu le poți revizui și verifica
-  (ex: traduceri în limbi pe care nu le stăpânești). Acest lucru creează
-  un blocaj semnificativ în ceea ce privește revizuirile iar PR-ul tău poate fi închis
-  pentru a proteja volumul de muncă al mentenanței.
+- **Dezvăluie** că ai folosit IA bifând căsuța corespunzătoare din [șablonul
+  pull request-ului][pull request template].
+- **Revizuiește și validează** toate traducerile generate de IA pentru precizie.
+  Tu ești responsabil pentru conținutul pe care-l trimiți.
+- **Nu trimite** traduceri generate de IA pe care tu însuți nu le poți revizui
+  și verifica (ex: traduceri în limbi pe care nu le stăpânești). Acest lucru
+  creează un blocaj semnificativ în ceea ce privește revizuirile iar PR-ul tău
+  poate fi închis pentru a proteja volumul de muncă al mentenanței.
 
 [genai-policy]:
   https://github.com/open-telemetry/community/blob/main/policies/genai.md
@@ -90,41 +95,44 @@ folosind IA generativ][lf-ai-policy]. În mod special:
 
 ### ID-urile titlurilor {#headings}
 
-Pentru a asigura uniformitatea ancorelor de titlu în toate localizările,
-atunci când se traduc titlurile:
+Pentru a asigura uniformitatea ancorelor de titlu în toate localizările, atunci
+când se traduc titlurile:
 
-- Păstrează ID-ul explicit al titlului dacă are unul. [Sintaxa ID-ului de titlu][Heading ID syntax] este scrisă după textul
-  titlului folosind sintaxa `{ #some-id }`.
-- Altfel, declară explicit un ID de titlu care să corespundă ID-ului
-  autogenerat al titlului original în Engleză
+- Păstrează ID-ul explicit al titlului dacă are unul. [Sintaxa ID-ului de
+  titlu][Heading ID syntax] este scrisă după textul titlului folosind sintaxa
+  `{ #some-id }`.
+- Altfel, declară explicit un ID de titlu care să corespundă ID-ului autogenerat
+  al titlului original în Engleză
 
 [Heading ID syntax]:
   https://github.com/yuin/goldmark/blob/master/README.md#headings
 
 ### Links {#links}
 
-**Nu** traduce referințele link-urilor. Acest lucru se aplică la link-uri externe, căi către
-pagini ale website-ului și resurse locale din secțiuni cum ar fi
-[imagini și alte resurse](#images).
+**Nu** traduce referințele link-urilor. Acest lucru se aplică la link-uri
+externe, căi către pagini ale website-ului și resurse locale din secțiuni cum ar
+fi [imagini și alte resurse](#images).
 
-Singura excepție este pentru link-uri către pagini externe (precum <https://en.wikipedia.org>)
-care au o versiune specifică a localizării tale. Des acest lucru implică schimbarea
-`en`-ului din URL la codul de limbă al localizării tale.
+Singura excepție este pentru link-uri către pagini externe (precum
+<https://en.wikipedia.org>) care au o versiune specifică a localizării tale. Des
+acest lucru implică schimbarea `en`-ului din URL la codul de limbă al
+localizării tale.
 
 > [!NOTE]
 >
-> Repertoriul Website-ului OTel are un hook personalizat de randare pe care Hugo îl folosește
-> să transforme căi absolute de link care fac referire la pagini de documentație.
-> **Link-uri de forma `/docs/some-page` sunt făcute să fie specifice localizării**
-> prin prefixarea căii cu codul de limbă atunci când se randează link-ul.
-> Spre exemplu, calea precedentă ar deveni `/ja/docs/some-page` când este randată
-> dintr-o pagină în Japoneză.
+> Repertoriul Website-ului OTel are un hook personalizat de randare pe care Hugo
+> îl folosește să transforme căi absolute de link care fac referire la pagini de
+> documentație. **Link-uri de forma `/docs/some-page` sunt făcute să fie
+> specifice localizării** prin prefixarea căii cu codul de limbă atunci când se
+> randează link-ul. Spre exemplu, calea precedentă ar deveni
+> `/ja/docs/some-page` când este randată dintr-o pagină în Japoneză.
 
 ### Etichete pentru definițiile link-urilor {#link-labels}
 
-Autorii de traduceri regionale pot sau nu să aleagă să traducă [etichete][labels]
-pentru [definițiile link-urilor][link definitions] din Markdown. Dacă alegi să păstrezi eticheta în Engleză, atunci
-urmărește ghidul dat în această secțiune.
+Autorii de traduceri regionale pot sau nu să aleagă să traducă
+[etichete][labels] pentru [definițiile link-urilor][link definitions] din
+Markdown. Dacă alegi să păstrezi eticheta în Engleză, atunci urmărește ghidul
+dat în această secțiune.
 
 Ia în considerare următorul exemplu de Markdown:
 
@@ -151,11 +159,13 @@ Acest ar fi tradus în Francează ca și:
 ### Images and other assets {#images}
 
 - **Nu** face copii ale fișierelor de imagine, videoclipuri sau alte elemente
-   care nu reprezintă conținut decât dacă traduci textul din fișier.
-  - Hugo este deștept în felul în care randează fișiere de imagine care sunt partajate
-    între traducerile din site. Astfel că, Hugo va produce un _singur_ fișier de imagine și-l va
-    împărții între traduceri. Pentru detalii, vezi [Page bundles][].
-  - Acest lucru este impus de o verificare a îndeplinirii [instrucțiunilor de `LOCALIZARE`][l10n-check]
+  care nu reprezintă conținut decât dacă traduci textul din fișier.
+  - Hugo este deștept în felul în care randează fișiere de imagine care sunt
+    partajate între traducerile din site. Astfel că, Hugo va produce un _singur_
+    fișier de imagine și-l va împărții între traduceri. Pentru detalii, vezi
+    [Page bundles][].
+  - Acest lucru este impus de o verificare a îndeplinirii [instrucțiunilor de
+    `LOCALIZARE`][l10n-check]
 
 - **Nu** traduce text în diagrame [Mermaid][].
 
@@ -165,24 +175,24 @@ Acest ar fi tradus în Francează ca și:
 
 ### Includerea de fișiere {#includes}
 
-**Tradu** fragmente de pagini găsite în directoarele `_includes` la fel ca și cum ai
-traducere orice alt conținut de pagină.
+**Tradu** fragmente de pagini găsite în directoarele `_includes` la fel ca și
+cum ai traducere orice alt conținut de pagină.
 
 ### Shortcodes
 
 > [!NOTE]
 >
 > Din Februarie 2025, suntem în procesul de migrare de la shortcodes la
-> [includeri de fișiere](#includes) ca un mijloc de partajare a conținutului între pagini.
+> [includeri de fișiere](#includes) ca un mijloc de partajare a conținutului
+> între pagini.
 
+Unele dintre shortcode-urile de bază conțin text în limba Engleză pe care s-ar
+putea să fie nevoie să-l traduci. -- acest lucru este în mod special adevărat
+pentru acele conținute în [layouts/_shortcodes/docs][].
 
-Unele dintre shortcode-urile de bază conțin text în limba Engleză pe care s-ar putea să fie nevoie
-să-l traduci.
--- acest lucru este în mod special adevărat pentru acele conținute în [layouts/_shortcodes/docs][].
-
-Dacă ai nevoie să creezi o versiune tradusă a unui shortcode, pune-l în `layouts/_shortcodes/xx`,
-unde `xx` este codul de limbă al traducerii tale. De acolo, folosește aceeași cale relativă ca și
-shortcode-ul original de bază.
+Dacă ai nevoie să creezi o versiune tradusă a unui shortcode, pune-l în
+`layouts/_shortcodes/xx`, unde `xx` este codul de limbă al traducerii tale. De
+acolo, folosește aceeași cale relativă ca și shortcode-ul original de bază.
 
 [layouts/_shortcodes/docs]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
@@ -206,7 +216,7 @@ follows:
 ---
 title: Your localized page title
 # ...
-default_lang_commit: <most-recent-commit-hash-of-default-language-page>
+default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
 ---
 ```
 
@@ -583,7 +593,6 @@ synchronization with the English version.
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
-[multilingual framework]: https://gohugo.io/content-management/multilingual/
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
 [PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/
