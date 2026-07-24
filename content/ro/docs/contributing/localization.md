@@ -7,11 +7,11 @@ weight: 25
 cSpell:ignore: Dowair shortcodes
 ---
 
-Website-ul OTel folosește [framework-ul multilingvist][multilingual framework] al lui Hugo pentru a
-susține localizările paginilor. Engleza este limba implicită, având Engleză US
-ca localizarea implicită. Un număr în creștere de alte localizări sunt
-disponibile, cum se poate vedea în lista de limbi din bara de navigație din
-antet.
+Website-ul OTel folosește [framework-ul multilingvist][multilingual framework]
+al lui Hugo pentru a susține localizările paginilor. Engleza este limba
+implicită, având Engleză US ca localizarea implicită. Un număr în creștere de
+alte localizări sunt disponibile, cum se poate vedea în lista de limbi din bara
+de navigație din antet.
 
 ## Îndrumări pentru traducere
 
