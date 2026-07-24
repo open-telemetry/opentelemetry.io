@@ -197,7 +197,7 @@ func setupOTelSDK(ctx context.Context) (func(context.Context) error, error) {
     loggerProvider, err := newLoggerProvider()
     if err != nil {
         handleErr(err)
-        return
+        return shutdown, err
     }
     shutdownFuncs = append(shutdownFuncs, loggerProvider.Shutdown)
     global.SetLoggerProvider(loggerProvider)
