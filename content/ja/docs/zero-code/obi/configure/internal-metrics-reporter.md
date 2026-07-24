@@ -61,11 +61,11 @@ Prometheus メトリクスを取得するための HTTP クエリパスを設定
 
 [`prometheus_export.port`](../export-data/#prometheus-exporter-component) と `internal_metrics.prometheus.port` が同じ値を使用する場合、`internal_metrics.prometheus.path` を `prometheus_export.path` とは異なる値に設定してメトリクスファミリーを分離するか、同じ値を使用して両方のメトリクスファミリーを同じスクレイプエンドポイントにまとめることができます。
 
-## avoided-services のカーディナリティー {#avoided-services-cardinality}
+## avoided-services のカーディナリティ {#avoided-services-cardinality}
 
 `obi.avoided.services` OTLP メトリクス(Prometheus では `obi_avoided_services`)は、サービスが直接 OpenTelemetry データをエクスポートしていることを検出した後、OBI がテレメトリーの重複を回避したサービスをレポートします。
-系列にはサービス名、サービス名前空間、回避したシグナル(`metrics` または `traces`)が含まれますが、高カーディナリティーのサービスインスタンス ID は含まれません。
+系列にはサービス名、サービス名前空間、回避したシグナル(`metrics` または `traces`)が含まれますが、高カーディナリティのサービスインスタンス ID は含まれません。
 
 `avoided_services.limit` は系列数の上限を設定します。
 上限を超えたサービスは `otel.metric.overflow=true`(Prometheus: `otel_metric_overflow="true"`) の系列にまとめられます。
-OpenTelemetry SDK のデフォルトのメトリクスカーディナリティー制限を使用するには `0` に設定し、このメトリクスを省略するには `disabled: true` に設定します。
+OpenTelemetry SDK のデフォルトのメトリクスカーディナリティ制限を使用するには `0` に設定し、このメトリクスを省略するには `disabled: true` に設定します。
