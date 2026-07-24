@@ -36,6 +36,8 @@ Options:
       --apply-result <r>       Result of the apply job.
       --hint <text>            Guidance shown when the request could not be
                                identified (e.g. how to phrase it correctly).
+      --info <text>            Informational notice appended as the comment's
+                               final paragraph (e.g. a deprecation notice).
   -n, --dry-run                Print the comment without posting it.
   -h, --help                   Show this help.
 
@@ -57,6 +59,7 @@ const { values } = parseArgs({
     'command-exit-status': { type: 'string', default: '' },
     'apply-result': { type: 'string', default: '' },
     hint: { type: 'string', default: '' },
+    info: { type: 'string', default: '' },
     'dry-run': { type: 'boolean', short: 'n', default: false },
     help: { type: 'boolean', short: 'h' },
   },
@@ -98,6 +101,7 @@ const body = values.ack
       runUrl,
       directiveUrl,
       hint: values.hint,
+      info: values.info,
     });
 
 const commentId = values['comment-id'];

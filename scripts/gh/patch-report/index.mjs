@@ -38,6 +38,10 @@
  * @property {string} [hint]             Optional caller-supplied guidance shown
  *                                       when the request could not be identified
  *                                       (e.g. how to phrase it correctly).
+ * @property {string} [info]             Optional informational notice appended
+ *                                       as the comment's final paragraph (e.g.
+ *                                       a deprecation notice for the requested
+ *                                       action).
  */
 
 /**
@@ -77,7 +81,13 @@ export function buildAckComment({ directiveUrl, runId, runUrl }) {
  * @param {OutcomeInput} input
  * @returns {string} The comment body.
  */
-export function buildOutcomeComment({
+export function buildOutcomeComment(input) {
+  const body = selectOutcome(input);
+  return input.info ? `${body}\n\n${input.info}` : body;
+}
+
+/** Select the outcome message for the run described by the input. */
+function selectOutcome({
   label,
   prState,
   prMerged,

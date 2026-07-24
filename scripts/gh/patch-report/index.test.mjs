@@ -134,6 +134,26 @@ describe('buildOutcomeComment', () => {
     );
   });
 
+  test('appends a caller-supplied info notice as its own final paragraph', () => {
+    const info = 'ℹ️ INFO: `/fix:refcache` is deprecated.';
+    const body = build({ label: 'fix:refcache', info });
+    assert.match(body, /^✅ `fix:refcache` applied successfully/);
+    assert.ok(
+      body.endsWith(`\n\n${info}`),
+      'info notice is the final paragraph',
+    );
+  });
+
+  test('info notice is appended to non-success outcomes too', () => {
+    const info = 'ℹ️ INFO: compat notice.';
+    const body = build({ generateResult: 'failure', info });
+    assert.match(body, /^❌/);
+    assert.ok(
+      body.endsWith(`\n\n${info}`),
+      'info notice is the final paragraph',
+    );
+  });
+
   test('unidentified request links to the directive comment', () => {
     const body = build({
       generateResult: 'failure',
@@ -160,31 +180,41 @@ describe('buildOutcomeComment', () => {
               for (const hint of ['Any hint text.', '']) {
                 for (const prState of ['open', 'closed', '']) {
                   for (const directiveUrl of ['d', '']) {
-                    const body = buildOutcomeComment({
-                      label,
-                      prState,
-                      generateResult,
-                      patchSkipped,
-                      commandExitStatus,
-                      applyResult,
-                      runId: '1',
-                      runUrl: 'u',
-                      directiveUrl,
-                      hint,
-                    });
-                    assert.ok(
-                      typeof body === 'string' && body.length > 0,
-                      'comment should be a non-empty string',
-                    );
-                    assert.ok(
-                      body.endsWith('See [run 1](u).'),
-                      `comment should end with the run link: ${body}`,
-                    );
-                    if (directiveUrl) {
+                    for (const info of ['ℹ️ A notice.', '']) {
+                      const body = buildOutcomeComment({
+                        label,
+                        prState,
+                        generateResult,
+                        patchSkipped,
+                        commandExitStatus,
+                        applyResult,
+                        runId: '1',
+                        runUrl: 'u',
+                        directiveUrl,
+                        hint,
+                        info,
+                      });
                       assert.ok(
-                        body.includes('](d)'),
-                        `comment should link the directive: ${body}`,
+                        typeof body === 'string' && body.length > 0,
+                        'comment should be a non-empty string',
                       );
+                      assert.ok(
+                        body.includes('See [run 1](u).'),
+                        `comment should include the run link: ${body}`,
+                      );
+                      const tail = info
+                        ? `See [run 1](u).\n\n${info}`
+                        : 'See [run 1](u).';
+                      assert.ok(
+                        body.endsWith(tail),
+                        `comment should end with the run link (followed only by the info notice, when given): ${body}`,
+                      );
+                      if (directiveUrl) {
+                        assert.ok(
+                          body.includes('](d)'),
+                          `comment should link the directive: ${body}`,
+                        );
+                      }
                     }
                   }
                 }
