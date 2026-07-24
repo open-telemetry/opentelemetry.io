@@ -130,7 +130,7 @@ describe('buildOutcomeComment', () => {
     const body = build({ notRunReason: 'The branch is stale.' });
     assert.equal(
       body,
-      `⚠️ \`fix:refcache\` was not run. The branch is stale. ${LOGS}`,
+      `⚠️ \`fix:link-cache\` was not run. The branch is stale. ${LOGS}`,
     );
   });
 
