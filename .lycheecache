@@ -204,6 +204,7 @@ https://cloud-native.slack.com/archives/C08P9L4FPKJ,200,1784284784
 https://cloud-native.slack.com/archives/C091NUGP5KN,200,1784355799
 https://cloud-native.slack.com/archives/C09H3MNMBQV,200,1784701474
 https://cloud-native.slack.com/archives/C09N6DDGSPQ,200,1784355642
+https://cloud-native.slack.com/archives/C0AD17NMBLZ,200,1784696231
 https://cloud-native.slack.com/archives/CJFCJHG4Q,200,1784269422
 https://cloud-native.slack.com/team/U02EUCBFK8A,200,1784701489
 https://cloud-native.slack.com/team/U03UARAJ405,200,1784355753
@@ -774,6 +775,20 @@ https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/,200,1
 https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=blog,200,1784269415
 https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/,200,1784656945
 https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/?utm_source=opentelemetry&utm_medium=website&utm_content=blog,200,1784269408
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/co-located-events/japan-community-day-schedule/,200,1784824511
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/co-located-events/japan-community-day-schedule/?id=1261567,200,1784824511
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/co-located-events/japan-community-day-schedule/?id=1278454,200,1784824511
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/,200,1784824511
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/?id=1186424,200,1784824511
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/?id=1189149,200,1784824511
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/?id=1191835,200,1784824511
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/?id=1192171,200,1784824511
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/?id=1194684,200,1784824511
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/?id=1194861,200,1784824511
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/?id=1283189,200,1784824511
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/?id=1283245,200,1784824511
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/program/schedule/?id=1283896,200,1784824511
+https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/,200,1784824511
 https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=website&utm_content=blog,200,1784269413
 https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=website&utm_content=community-events,200,1784656948
 https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner,200,1784656946
@@ -812,6 +827,7 @@ https://gateway-api.sigs.k8s.io/reference/api-types/referencegrant/,206,17842846
 https://gcc.gnu.org/frontends.html,206,1784269895
 https://geminicli.com/,206,1784183221
 https://geminicli.com/docs/cli/telemetry/#observability-with-opentelemetry,206,1784183229
+https://geminicli.com/docs/cli/telemetry/#opentelemetry-integration,200,1784905873
 https://geode.apache.org/,200,1784701475
 https://getcomposer.org/,200,1784442359
 https://getcomposer.org/doc/01-basic-usage.md#autoloading,200,1784442335
@@ -1480,6 +1496,7 @@ https://github.com/jbr,206,1784183599
 https://github.com/jcocchi,206,1784442566
 https://github.com/jdbi,206,1784183575
 https://github.com/jdbi/jdbi,206,1784183574
+https://github.com/jdvr,200,1784868488
 https://github.com/jeanbisutti,206,1784285047
 https://github.com/jeffhostetler,206,1784356168
 https://github.com/jenkinsci,206,1784442937
@@ -1722,6 +1739,7 @@ https://github.com/open-telemetry/build-tools/blob/v0.25.0/semantic-conventions/
 https://github.com/open-telemetry/community#calendar,206,1784284654
 https://github.com/open-telemetry/community#mailing-lists,206,1784442330
 https://github.com/open-telemetry/community#sig-browser,206,1784284647
+https://github.com/open-telemetry/community#sig-packaging,200,1784696231
 https://github.com/open-telemetry/community#special-interest-groups,206,1784284747
 https://github.com/open-telemetry/community,206,1784442477
 https://github.com/open-telemetry/community/#sig-cicd,206,1784284743
@@ -1749,6 +1767,7 @@ https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70
 https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main,206,1784284784
 https://github.com/open-telemetry/community/blob/706839937eb5886bb07da6bd9d63245839e3cc2f/guides/maintainer/popular-issues.md?from_branch=main#recommended-footnote-on-issue-templates,206,1784355810
 https://github.com/open-telemetry/community/blob/706839937eb5886bb07da6bd9d63245839e3cc2f/guides/maintainer/popular-issues.md?from_branch=main,206,1784355806
+https://github.com/open-telemetry/community/blob/898a6d5b4030a806883717dff3382c06d3dbd324/projects/packaging.md,200,1784696231
 https://github.com/open-telemetry/community/blob/96374af6e5b681664d80402bdc08d9a2d439a966/governance-charter.md,206,1784442537
 https://github.com/open-telemetry/community/blob/b35f0f6c9801bfbe894211fb3d95afa3157662ec/community-members.md?from_branch=main#governance-committee,206,1784284793
 https://github.com/open-telemetry/community/blob/b35f0f6c9801bfbe894211fb3d95afa3157662ec/community-members.md?from_branch=main#technical-committee,206,1784269623
@@ -2704,6 +2723,7 @@ https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/dis
 https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-k8s/README.md,206,1784284668
 https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-otlp/README.md,206,1784284682
 https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol/README.md,206,1784442359
+https://github.com/open-telemetry/opentelemetry-collector-releases/issues/1561,200,1784696231
 https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector,206,1784442359
 https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib,206,1784284643
 https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s,206,1784442366
@@ -3135,6 +3155,7 @@ https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/ope
 https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator#opentelemetry-operator-helm-chart,206,1784269437
 https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator,206,1784442347
 https://github.com/open-telemetry/opentelemetry-injector,206,1784269418
+https://github.com/open-telemetry/opentelemetry-injector/issues/367,200,1784696231
 https://github.com/open-telemetry/opentelemetry-java,206,1784269421
 https://github.com/open-telemetry/opentelemetry-java-contrib,206,1784284619
 https://github.com/open-telemetry/opentelemetry-java-contrib/blob/main/RELEASING.md#release-cadence,206,1784284666
@@ -3495,7 +3516,10 @@ https://github.com/open-telemetry/opentelemetry-operator/issues/1814,206,1784284
 https://github.com/open-telemetry/opentelemetry-operator/issues/1884,206,1784284645
 https://github.com/open-telemetry/opentelemetry-operator/tree/main/autoinstrumentation,206,1784442389
 https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator,206,1784269434
+https://github.com/open-telemetry/opentelemetry-packaging#installing,200,1784696231
 https://github.com/open-telemetry/opentelemetry-packaging,206,1784183236
+https://github.com/open-telemetry/opentelemetry-packaging/issues/23,200,1784696231
+https://github.com/open-telemetry/opentelemetry-packaging/issues/4,200,1784696231
 https://github.com/open-telemetry/opentelemetry-php,206,1784442357
 https://github.com/open-telemetry/opentelemetry-php-contrib,206,1784285146
 https://github.com/open-telemetry/opentelemetry-php-contrib/tree/2b6a02f67d85f7f94ebc285d2c08c3523d26e093/src/Instrumentation?from_branch=main,206,1784355610
@@ -4103,10 +4127,12 @@ https://github.com/open-telemetry/opentelemetry.io/discussions,206,1784284835
 https://github.com/open-telemetry/opentelemetry.io/fork,206,1784442343
 https://github.com/open-telemetry/opentelemetry.io/issues,206,1784269413
 https://github.com/open-telemetry/opentelemetry.io/issues/10449,206,1784355925
+https://github.com/open-telemetry/opentelemetry.io/issues/10990,200,1784830547
 https://github.com/open-telemetry/opentelemetry.io/issues/6592,206,1784355605
 https://github.com/open-telemetry/opentelemetry.io/issues/9449,206,1784284878
 https://github.com/open-telemetry/opentelemetry.io/issues/new,200,1784701477
 https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing,206,1784442341
+https://github.com/open-telemetry/opentelemetry.io/pull/10911,200,1784830547
 https://github.com/open-telemetry/opentelemetry.io/pull/5891,206,1784284879
 https://github.com/open-telemetry/opentelemetry.io/pull/9291,206,1784284669
 https://github.com/open-telemetry/opentelemetry.io/pull/9638,206,1784284657
