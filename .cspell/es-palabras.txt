@@ -3,9 +3,12 @@ agregable
 asíncrona
 asincrónica
 aspiracional
+Auditabilidad
+autoescalado
 autogenerado
 autoinstrumentación
 cardinalidad
+Cíñete
 configurarlo
 correlacionan
 correlacionarse
@@ -19,6 +22,7 @@ extensibilidad
 formateador
 inicialización
 interoperabilidad
+interoperan
 invócalo
 mentoría
 microservicios
@@ -29,6 +33,7 @@ muestreado
 muestreador
 muestreadores
 muestreados
+muestrean
 muestrear
 muestrearse
 muestreen
@@ -48,6 +53,7 @@ redireccionar
 redirecciones
 refiérelo
 reformatea
+reinicios
 renderizan
 semánticamente
 subcarpeta
