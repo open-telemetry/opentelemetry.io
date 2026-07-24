@@ -6,6 +6,7 @@ author: '[Kemal Akkoyun](https://github.com/kakkoyun) (Datadog)'
 issue: 10670
 sig: Go Compile-Time Instrumentation
 default_lang_commit: d88ab6df454cbc6de0b0ae5a4de4684e1154cea4
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario GOFLAGS Haibin Martinez Momin otelc toolexec Xabier
 ---

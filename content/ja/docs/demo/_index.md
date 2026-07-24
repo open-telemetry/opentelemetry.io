@@ -4,7 +4,8 @@ linkTitle: デモ
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-default_lang_commit: 906771a74807a998613527841d296e49d3609a9f
+default_lang_commit: 906771a74807a998613527841d296e49d3609a9f # patched
+drifted_from_default: true
 ---
 
 [OpenTelemetryデモ](/ecosystem/demo/)のドキュメンテーションへようこそ。
