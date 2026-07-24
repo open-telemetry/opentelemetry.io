@@ -7,7 +7,7 @@ import { buildAckComment, buildOutcomeComment } from './index.mjs';
 
 describe('buildOutcomeComment', () => {
   const BASE = {
-    label: 'fix:refcache',
+    label: 'fix:link-cache',
     generateResult: 'success',
     patchSkipped: 'false',
     commandExitStatus: '0',
@@ -22,7 +22,7 @@ describe('buildOutcomeComment', () => {
 
   test('success: command applied cleanly', () => {
     const body = build({});
-    assert.match(body, /^✅ `fix:refcache` applied successfully/);
+    assert.match(body, /^✅ `fix:link-cache` applied successfully/);
   });
 
   test('strips Markdown metacharacters from a forgeable label', () => {
@@ -40,20 +40,20 @@ describe('buildOutcomeComment', () => {
   test('no-op: generation produced no changes', () => {
     assert.equal(
       build({ patchSkipped: 'true' }),
-      `ℹ️ \`fix:refcache\` made no changes; nothing to commit. ${LOGS}`,
+      `ℹ️ \`fix:link-cache\` made no changes; nothing to commit. ${LOGS}`,
     );
   });
 
   test('no-op with unknown (empty) exit status is not reported as a failure', () => {
     assert.equal(
       build({ patchSkipped: 'true', commandExitStatus: '' }),
-      `ℹ️ \`fix:refcache\` made no changes; nothing to commit. ${LOGS}`,
+      `ℹ️ \`fix:link-cache\` made no changes; nothing to commit. ${LOGS}`,
     );
   });
 
   test('command failed and produced no changes', () => {
     const body = build({ patchSkipped: 'true', commandExitStatus: '2' });
-    assert.match(body, /^❌ `fix:refcache` failed \(exit status 2\)/);
+    assert.match(body, /^❌ `fix:link-cache` failed \(exit status 2\)/);
     assert.match(body, /made no changes/);
   });
 
@@ -61,7 +61,7 @@ describe('buildOutcomeComment', () => {
     const body = build({ commandExitStatus: '1' });
     assert.match(
       body,
-      /^⚠️ `fix:refcache` exited with a non-zero status \(1\)/,
+      /^⚠️ `fix:link-cache` exited with a non-zero status \(1\)/,
     );
     assert.match(body, /the resulting changes were applied/);
   });
@@ -82,12 +82,12 @@ describe('buildOutcomeComment', () => {
 
   test('generation failed for a known command (e.g. oversized patch)', () => {
     const body = build({ generateResult: 'failure' });
-    assert.match(body, /^❌ `fix:refcache` could not be run/);
+    assert.match(body, /^❌ `fix:link-cache` could not be run/);
   });
 
   test('generation cancelled', () => {
     const body = build({ generateResult: 'cancelled' });
-    assert.match(body, /^⚠️ `fix:refcache` was cancelled/);
+    assert.match(body, /^⚠️ `fix:link-cache` was cancelled/);
   });
 
   test('apply failed after changes were produced', () => {
@@ -107,7 +107,10 @@ describe('buildOutcomeComment', () => {
 
   test('closed PR: nothing ran', () => {
     const body = build({ prState: 'closed' });
-    assert.match(body, /^❌ This PR is closed, so `fix:refcache` was not run/);
+    assert.match(
+      body,
+      /^❌ This PR is closed, so `fix:link-cache` was not run/,
+    );
     assert.match(body, /only apply to open PRs/);
   });
 
@@ -127,7 +130,7 @@ describe('buildOutcomeComment', () => {
     const body = build({ notRunReason: 'The branch is stale.' });
     assert.equal(
       body,
-      `⚠️ \`fix:refcache\` was not run. The branch is stale. ${LOGS}`,
+      `⚠️ \`fix:link-cache\` was not run. The branch is stale. ${LOGS}`,
     );
   });
 
@@ -152,7 +155,7 @@ describe('buildOutcomeComment', () => {
     const body = build({ directiveUrl: 'https://example.test/c/1' });
     assert.match(
       body,
-      /^✅ \[`fix:refcache`\]\(https:\/\/example\.test\/c\/1\) applied successfully/,
+      /^✅ \[`fix:link-cache`\]\(https:\/\/example\.test\/c\/1\) applied successfully/,
     );
   });
 

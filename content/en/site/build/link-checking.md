@@ -28,7 +28,7 @@ npm run check:links
 | `check:links`          | Whole site                                                            |
 | `check:links:internal` | Whole site, offline (no external links)                               |
 | `check:links:diff`     | Changed files only                                                    |
-| `fix:refcache`         | Alias of `check:links`; use it to refresh the [link cache](#refcache) |
+| `fix:link-cache`       | Alias of `check:links`; use it to refresh the [link cache](#refcache) |
 
 The `check:links` and `check:links:internal` scripts run over a build of
 `BUILD_KIND`; `check:links:diff` checks files from the existing `public/` build.
@@ -60,34 +60,37 @@ control so that checks only fetch URLs that are new or whose cache entries have
 expired. Lychee caches successful results only, so failures are retried on every
 run.
 
-If you add or change external links, the check updates the cache; commit the
-`.lycheecache` changes along with your content changes, or comment
-`/fix:refcache` on your PR to have the bot do it. For details, see [`BUILD` and
-`CHECK LINKS`][pr-checks].
+If you add or change external links, run `npm run check:links` **before
+submitting your PR** — the link check itself is quick since all other links are
+cached — and commit the updated `.lycheecache` along with your content changes.
+Otherwise the `CACHE updates committed?` check will fail; if that happens, run
+the command and push, or comment `/fix:link-cache` on your PR to have the bot do
+it. For details, see [`CACHE updates committed?`][pr-checks].
 
 ## Cache refresh and housekeeping workflows {#workflows}
 
 The following workflows are scheduled daily and run a link checking command over
 a **full** build:
 
-| Workflow                          | Link-check command             |
-| --------------------------------- | ------------------------------ |
-| Refcache refresh                  | `fix:refcache` (after pruning) |
-| Housekeeping (`fix-and-test:all`) | `fix:refcache`                 |
+| Workflow                          | Link-check command               |
+| --------------------------------- | -------------------------------- |
+| Refcache refresh                  | `fix:link-cache` (after pruning) |
+| Housekeeping (`fix-and-test:all`) | `fix:link-cache`                 |
 
 Refcache refresh prunes the oldest cache entries (the count is a workflow input)
 and re-runs the link check, which refreshes the cache entries for the pruned
 URLs that are still used in the site.
 
 The [housekeeping workflow][housekeeping] runs `fix-and-test:all`, which calls
-`fix:refcache` and deliberately skips `check:links` so links are checked exactly
-once.
+`fix:link-cache` and deliberately skips `check:links` so links are checked
+exactly once.
 
 ## In CI
 
 The [`check-links.yml` workflow][ci] builds the site once (lean) and shares that
 artifact with the `CHECK LINKS` job, so local runs and CI check the same build.
-The job fails if any link check fails, or if the run leaves the committed
+That job fails if any link check fails, and hands the cache it refreshed to the
+`CACHE updates committed?` job, which fails if the run left the committed
 `.lycheecache` stale.
 
 [blog-index]:
@@ -99,4 +102,4 @@ The job fails if any link check fails, or if the run leaves the committed
 [`lychee.base.toml`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/lychee.base.toml
 [lychee-install]: https://lychee.cli.rs/guides/getting-started/
-[pr-checks]: /docs/contributing/pr-checks/#build-and-check-links
+[pr-checks]: /docs/contributing/pr-checks/#cache-updates-committed

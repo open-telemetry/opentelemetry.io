@@ -1,5 +1,5 @@
 ---
-name: resolve-refcache-conflicts
+name: resolve-link-cache-conflicts
 description:
   Skill for resolving .lycheecache merge or rebase conflicts in the current
   branch or a specified PR.
@@ -8,7 +8,7 @@ argument-hint: '[optional-pr-number]'
 
 `.lycheecache` is an auto-generated file. Resolving conflicts requires first
 taking the integration branch's side, finishing the merge/rebase, then running
-`npm run fix:refcache` to restore any URLs unique to the active branch.
+`npm run fix:link-cache` to restore any URLs unique to the active branch.
 
 ## Prerequisites
 
@@ -60,7 +60,7 @@ At this point, we are ready to resolve the conflicts in the active branch:
    `.lycheecache`, repeat Resolve steps 1–2. If other paths are also conflicted
    on that stop, run Preparation step 4 first.
 
-4. Run `npm run fix:refcache` once, after the entire rebase/merge completes.
+4. Run `npm run fix:link-cache` once, after the entire rebase/merge completes.
    Note: this runs a Hugo build (lean by default) and link check — requires
    network, installed npm dependencies, and populated submodules; can take
    several minutes.
@@ -70,7 +70,7 @@ At this point, we are ready to resolve the conflicts in the active branch:
    ```sh
    git add .lycheecache
    git diff --cached --quiet .lycheecache || \
-      git commit -m "Refresh refcache after resolving conflicts"
+      git commit -m "Refresh link cache after resolving conflicts"
    ```
 
 6. Push:

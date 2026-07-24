@@ -130,18 +130,6 @@ The check flags these obsolete paths:
 
 These two checks build the website and verify that all links are valid.
 
-If you added or changed an external link, the link checker records it in the
-link cache (`.lycheecache`), and this check will fail until that cache is
-updated.
-
-The easiest way to update it is to comment
-[`/fix:refcache`](../pull-requests/#fixing-prs-in-github) on your PR — the
-OpenTelemetry bot updates the cache for you.
-
-Alternatively, you can build and check links locally, by running
-`npm run check:links`. This command also updates the link cache. Push any
-changes to the cache in a new commit.
-
 > [!NOTE]
 >
 > For information on warnings about site-local links, see
@@ -152,7 +140,7 @@ changes to the cache in a new commit.
 You need to fix the URLs reported as **invalid** (HTTP status **404**), by the
 link checker.
 
-#### Handling valid external links
+#### Handling valid external links {#handling-valid-external-links}
 
 The link checker will sometimes get an HTTP status other than 200 (success) by
 servers that block checkers. Such servers will often return an HTTP status in
@@ -166,6 +154,20 @@ are other query parameters. For example, the following URLs will be ignored:
 
 - <https:/some-example.org?link-check=no>
 - <https:/some-example.org?other-param=value&link-check=no>
+
+### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
+
+If you added or changed an external link, the link checker records it in the
+link cache (`.lycheecache`), and this check fails until the updated cache is
+committed.
+
+The easiest way to update it is to comment
+[`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) on your PR — the
+OpenTelemetry bot updates the cache for you.
+
+Alternatively, you can build and check links locally, by running
+`npm run check:links`. This command also updates the link cache. Push any
+changes to the cache in a new commit.
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 

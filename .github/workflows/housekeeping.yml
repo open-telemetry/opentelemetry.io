@@ -2,7 +2,7 @@ name: Housekeeping
 
 # Scheduled housekeeping: runs an approved fix command (default
 # `fix-and-test:all`: all fixes then all checks, with links checked exactly
-# once via fix:refcache) and publishes any resulting changes as a PR. The
+# once via fix:link-cache) and publishes any resulting changes as a PR. The
 # second caller of the reusable patch actions (after `pr-actions.yml`), and
 # the scheduled-maintenance flow that motivated
 # https://github.com/open-telemetry/opentelemetry.io/issues/6592.
@@ -77,7 +77,7 @@ jobs:
         # fixes still publish; residual failures fail in report-failure below.
         uses: ./.github/actions/npm-script-patch
         env:
-          # Authenticated github.com link checks (rate limits) in fix:refcache;
+          # Authenticated github.com link checks (rate limits) in fix:link-cache;
           # step-level env reaches the composite action's steps.
           GITHUB_TOKEN: ${{ github.token }}
         with:
