@@ -3,8 +3,7 @@ title: OBI ルートデコレーターを設定する
 linkTitle: ルートデコレーター
 description: OBI がパイプラインの次のステージにデータを送信する前に、ルートデコレーターコンポーネントを設定します。
 weight: 50
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
-drifted_from_default: true
+default_lang_commit: 2728c8fbf4f09cf3b8257a1b628a7631fc77d639
 ---
 
 YAML セクション: `routes`
@@ -26,13 +25,14 @@ routes:
   ignore_mode: traces
 ```
 
-| YAML               | 説明                                                                                                                                                   | 型             | デフォルト |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- | ---------- |
-| `patterns`         | マッチさせて `http.route` プロパティを設定する URL パスパターンのリスト。[パターン](#patterns) を参照してください。                                    | 文字列のリスト | 未設定     |
-| `ignored_patterns` | 無視する URL パスパターンのリスト。マッチした場合、トレース/メトリクスイベントを破棄します。[無視するパターン](#ignored-patterns) を参照してください。 | 文字列のリスト | 未設定     |
-| `ignore_mode`      | `ignored_patterns` を使用する際に、どの種類のイベントを無視するかを細かく指定します。[無視モード](#ignore-mode) を参照してください。                   | string         | all        |
-| `unmatched`        | トレースの HTTP パスが `patterns` のエントリのいずれにもマッチしない場合の動作を指定します。[マッチしない場合](#unmatched) を参照してください。        | string         | heuristic  |
-| `wildcard_char`    | ヒューリスティックモードによって置き換えられるパスコンポーネントに使用する文字。[ワイルドカード文字](#wildcard-char) を参照してください。              | string         | `*`        |
+| YAML                           | 説明                                                                                                                                                                                 | 型             | デフォルト |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- | ---------- |
+| `patterns`                     | マッチさせて `http.route` プロパティを設定する URL パスパターンのリスト。[パターン](#patterns) を参照してください。                                                                  | 文字列のリスト | 未設定     |
+| `ignored_patterns`             | 無視する URL パスパターンのリスト。マッチした場合、トレース/メトリクスイベントを破棄します。[無視するパターン](#ignored-patterns) を参照してください。                               | 文字列のリスト | 未設定     |
+| `ignore_mode`                  | `ignored_patterns` を使用する際に、どの種類のイベントを無視するかを細かく指定します。[無視モード](#ignore-mode) を参照してください。                                                 | string         | all        |
+| `unmatched`                    | トレースの HTTP パスが `patterns` のエントリのいずれにもマッチしない場合の動作を指定します。[マッチしない場合](#unmatched) を参照してください。                                      | string         | heuristic  |
+| `wildcard_char`                | ヒューリスティックモードによって置き換えられるパスコンポーネントに使用する文字。[ワイルドカード文字](#wildcard-char) を参照してください。                                            | string         | `*`        |
+| `max_path_segment_cardinality` | `low-cardinality` モードにおけるパスセグメントおよびサービスごとの最大ユニーク値数。`0` で制限を無効にします。[低カーディナリティモード](#low-cardinality-mode) を参照してください。 | integer        | `10`       |
 
 ## パターン {#patterns}
 
@@ -125,9 +125,13 @@ routes:
 - `unset` は、`http.route` プロパティを未設定のままにします
 - `path` は、`http.route` フィールドプロパティをパス値にコピーします。このオプションは、取り込み側でカーディナリティ爆発を引き起こす可能性があります
 - `wildcard` は、`http.route` フィールドプロパティを汎用的なアスタリスクベースの `/**` 値に設定します
+- `low-cardinality` は、ヒューリスティックルールを適用した上で、`max_path_segment_cardinality` を使用してサービスごとのパスセグメントのユニーク値数を制限します
 - `heuristic` は、次のルールに基づいて、パス値から `http.route` フィールドプロパティを自動的に導出します。
   - 数字や ASCII アルファベット（または `-` と `_`）以外の文字を含むパスコンポーネントは、`wildcard_char` に置き換えられます
   - 単語のように見えないアルファベットのコンポーネントは、`wildcard_char` に置き換えられます
+
+`unmatched: ''` を明示的に設定した場合、OBI は空の値を `wildcard` として扱います。
+`unmatched` を省略した場合、OBI のデフォルト設定は `heuristic` を使用します。
 
 ## ワイルドカード文字 {#wildcard-char}
 
@@ -156,3 +160,9 @@ document/d/C2fMkAGb3E_aivhFyd5EpaRafP123uGWbmHfG/edit
 ```text
 document/d/*/edit
 ```
+
+## 低カーディナリティモード {#low-cardinality-mode}
+
+`unmatched: low-cardinality` は、まずヒューリスティック分類器を適用し、次にサービスごとにパスセグメントのユニーク値を追跡します。
+セグメントが `max_path_segment_cardinality` に達すると、OBI は新しいユニーク値を `wildcard_char` に置き換えます。
+このカーディナリティ制限を無効にするには、値を `0` に設定してください。
