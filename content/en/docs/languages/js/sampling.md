@@ -38,26 +38,26 @@ for Node.js:
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import { TraceIdRatioBasedSampler } from '@opentelemetry/sdk-trace-node';
+import { createTraceIdRatioBasedSampler } from '@opentelemetry/sdk-trace';
 
 const samplePercentage = 0.1;
 
 const sdk = new NodeSDK({
   // Other SDK configuration parameters go here
-  sampler: new TraceIdRatioBasedSampler(samplePercentage),
+  sampler: createTraceIdRatioBasedSampler(samplePercentage),
 });
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const { TraceIdRatioBasedSampler } = require('@opentelemetry/sdk-trace-node');
+const { createTraceIdRatioBasedSampler } = require('@opentelemetry/sdk-trace');
 
 const samplePercentage = 0.1;
 
 const sdk = new NodeSDK({
   // Other SDK configuration parameters go here
-  sampler: new TraceIdRatioBasedSampler(samplePercentage),
+  sampler: createTraceIdRatioBasedSampler(samplePercentage),
 });
 ```
 
@@ -72,14 +72,14 @@ for browser apps:
 
 ```ts
 import {
-  WebTracerProvider,
-  TraceIdRatioBasedSampler,
-} from '@opentelemetry/sdk-trace-web';
+  createTraceIdRatioBasedSampler,
+  TracerProvider,
+} from '@opentelemetry/sdk-trace';
 
 const samplePercentage = 0.1;
 
-const provider = new WebTracerProvider({
-  sampler: new TraceIdRatioBasedSampler(samplePercentage),
+const provider = new TracerProvider({
+  sampler: createTraceIdRatioBasedSampler(samplePercentage),
 });
 ```
 
@@ -87,14 +87,14 @@ const provider = new WebTracerProvider({
 
 ```js
 const {
-  WebTracerProvider,
-  TraceIdRatioBasedSampler,
-} = require('@opentelemetry/sdk-trace-web');
+  createTraceIdRatioBasedSampler,
+  TracerProvider,
+} = require('@opentelemetry/sdk-trace');
 
 const samplePercentage = 0.1;
 
-const provider = new WebTracerProvider({
-  sampler: new TraceIdRatioBasedSampler(samplePercentage),
+const provider = new TracerProvider({
+  sampler: createTraceIdRatioBasedSampler(samplePercentage),
 });
 ```
 
