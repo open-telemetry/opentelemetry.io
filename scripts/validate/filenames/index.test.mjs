@@ -244,11 +244,27 @@ describe('repo-wide sanity', () => {
       path.join(repoRoot, 'content/en/docs/contributing/pr-checks.md'),
       'utf8',
     );
+    // Scope the checks to the section that mirrors the table, up to the
+    // next h3; it includes the entry list and its link definitions.
+    const section = docsPage
+      .split('#### Obsolete files and folders')[1]
+      ?.split('\n### ')[0];
+    assert.ok(section, 'docs have an "Obsolete files and folders" section');
     for (const { path: p, message } of OBSOLETE_PATHS) {
-      assert.ok(docsPage.includes(`\`${p}`), `docs list the path ${p}`);
-      for (const ref of message.match(/#\d+/g) ?? []) {
+      assert.ok(
+        section.includes(`\`${p}\``) || section.includes(`\`${p}/\``),
+        `docs list the path ${p}`,
+      );
+      // Issue/PR references appear as `#N` or as GitHub issue/pull URLs.
+      const refs = new Set([
+        ...(message.match(/#\d+/g) ?? []),
+        ...[...message.matchAll(/\/(?:issues|pull)\/(\d+)/g)].map(
+          (m) => `#${m[1]}`,
+        ),
+      ]);
+      for (const ref of refs) {
         assert.ok(
-          docsPage.includes(ref),
+          section.includes(ref),
           `docs cite ${ref}, referenced by the message for ${p}`,
         );
       }

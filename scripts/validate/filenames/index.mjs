@@ -184,6 +184,13 @@ function main() {
     return 1;
   }
 
+  // A no-op scan must not masquerade as success (e.g. after a bad config
+  // edit): both tables must have entries for the verdict to mean anything.
+  if (SCAN_DIRS.length === 0 || OBSOLETE_PATHS.length === 0) {
+    console.error('ERROR: SCAN_DIRS and OBSOLETE_PATHS must be nonempty.');
+    return 1;
+  }
+
   const badNames = findBadFilenames();
   const obsolete = findObsoletePaths();
   const violations = [
