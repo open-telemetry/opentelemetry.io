@@ -190,10 +190,6 @@ describe('buildOutcomeComment', () => {
                       typeof body === 'string' && body.length > 0,
                       'comment should be a non-empty string',
                     );
-                    assert.ok(
-                      body.includes('See [run 1](u).'),
-                      `comment should include the run link: ${body}`,
-                    );
                     const tail = note
                       ? `See [run 1](u).\n\n${note}`
                       : 'See [run 1](u).';

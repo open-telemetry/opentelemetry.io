@@ -130,7 +130,7 @@ run:
 
 ```sh
 npm run fix:link-cache  # Checks links, updating the link cache
-npm test              # Full test run including link checking
+npm test                # Full test run including link checking
 ```
 
 ### 3. Commit and push

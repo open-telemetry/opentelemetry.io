@@ -7,9 +7,8 @@
 // - Failure with genuinely dead links: name them and say that nothing
 //   cache-side can fix them (also in the step summary when run in CI).
 //
-// Used by `check:links` — local runs and the bot's `fix:link-cache`. CI
-// doesn't use this wrapper: its jobs invoke `_check:links` directly (see
-// .github/workflows/check-links.yml).
+// Used by `check:links` — locally and in CI. The check-links.yml PR checks
+// are the exception: they invoke `_check:links` directly.
 
 import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -48,6 +47,10 @@ child.stderr.on('data', (chunk) => {
   process.stderr.write(chunk);
   output += chunk;
 });
+child.on('error', (err) => {
+  console.error(err.message);
+  process.exitCode = 1;
+});
 child.on('close', (code) => {
   const status = code ?? 1;
   if (status === 0) {
@@ -75,7 +78,8 @@ function appendToStepSummary(report) {
   );
 }
 
-// True when the working-tree .lycheecache differs from the committed one.
+// True when .lycheecache has unstaged changes — the same `git diff` the CI
+// `CACHE updates committed?` job runs (see .github/workflows/check-links.yml).
 function cacheModified() {
   const r = spawnSync('git', ['diff', '--quiet', '--', '.lycheecache'], {
     cwd: root,

@@ -45,11 +45,11 @@ export function deadLinksReport(failures) {
     '',
     ...failures.map(({ status, url }) => `  [${status}] ${url}`),
     '',
-    'Note: TIMEOUT, ERROR, and 5xx statuses can be transient -- if in doubt,',
+    'Note: TIMEOUT, ERROR, and 5xx statuses can be transient — if in doubt,',
     'rerun the check before fixing.',
     '',
     'Fix or remove these links. For a URL that you have verified manually',
-    'but that blocks link checkers, append `?link-check=no` -- see',
+    'but that blocks link checkers, append `?link-check=no` — see',
     'https://opentelemetry.io/docs/contributing/pr-checks/#handling-valid-external-links',
     RULE,
   ].join('\n');
