@@ -36,9 +36,6 @@ Most checks that force a fresh build first, such as link-checking, use
 `BUILD_KIND`. For details about the link checking scripts, see
 [Link checking](./link-checking/).
 
-If you're curious about the size and performance of the different build kinds,
-run `npm run metrics:build` (full) or `npm run metrics:build -- --lean`.
-
 <!-- prettier-ignore-start -->
 [Chrome build modes]: https://github.com/google/docsy/blob/main/docsy.dev/content/en/docs/deployment/chrome.md
 <!-- prettier-ignore-end -->
