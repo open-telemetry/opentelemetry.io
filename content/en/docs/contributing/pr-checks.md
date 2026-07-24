@@ -140,7 +140,7 @@ These two checks build the website and verify that all links are valid.
 You need to fix the URLs reported as **invalid** (HTTP status **404**), by the
 link checker.
 
-#### Handling valid external links
+#### Handling valid external links {#handling-valid-external-links}
 
 The link checker will sometimes get an HTTP status other than 200 (success) by
 servers that block checkers. Such servers will often return an HTTP status in
