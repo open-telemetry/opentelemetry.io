@@ -3,8 +3,7 @@ title: OBI メトリクスのカーディナリティ
 linkTitle: メトリクスのカーディナリティ
 description: 計装される環境のサイズと複雑さを考慮した、デフォルトの OBI インストールで生成されるメトリクスのカーディナリティの算出方法の概要。
 weight: 24
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
-drifted_from_default: true
+default_lang_commit: 84d7cf19e9f7f44ea889f8e148b37bc71116ef31
 cSpell:ignore: kube-system spanmetrics
 ---
 
@@ -51,15 +50,14 @@ cSpell:ignore: kube-system spanmetrics
 - クライアント側メトリクス（OBI が他のアプリケーションへリクエストを行うアプリケーションを計装する場合）:
   - `http.client.request.duration`
   - `http.client.request.body.size`
-  - `rpc.client.duration`
-  - `sql.client.duration`
-  - `redis.client.duration`
-  - `messaging.publish.duration`
+  - `rpc.client.call.duration`
+  - `db.client.operation.duration`
+  - `messaging.client.operation.duration`
   - `messaging.process.duration`
 - サーバー側メトリクス（OBI が他のアプリケーションからのリクエストをディスパッチするアプリケーションを計装する場合）:
   - `http.server.request.duration`
   - `http.server.request.body.size`
-  - `rpc.server.duration`
+  - `rpc.server.call.duration`
 - **HistogramBuckets** は、すべてのアプリケーションレベルのメトリクスがヒストグラムであるため、各メトリクスに対して考慮し、乗算する必要があります。バケットは OBI で設定可能ですが、デフォルトの数は duration メトリクスで 15 個、body size メトリクスで 11 個に、さらに 2 つのメトリクス（ヒストグラムの sum と count）が加わります。
 - **Operations** は呼び出された機能と同等です。HTTP サービスでは HTTP メソッドと HTTP ルートをグループ化したものであり、RPC では RPC メソッド名です。
 - **Endpoints** はサーバーアドレスとポートの数です。
@@ -96,13 +94,13 @@ cSpell:ignore: kube-system spanmetrics
 - 2 インスタンス（クライアントとバックエンド）
 - 役割とプロトコルに応じた 5 種類のメトリクス:
   - クライアント
-    - `rpc.client.duration`
+    - `rpc.client.call.duration`
   - RPC サーバーとしてのバックエンド
-    - `rpc.server.duration`
+    - `rpc.server.call.duration`
   - SQL と HTTP クライアントとしてのバックエンド
     - `http.client.request.duration`
     - `http.client.request.body.size`
-    - `sql.client.duration`
+    - `db.client.operation.duration`
 - 17 個のヒストグラムメトリクス（ほとんどのメトリクスが duration ベースであるため）
 - 7 つの操作: RPC Add/List/Delete、HTTP PUT、SQL Insert/Select/Delete
 - 3 つのエンドポイント: バックエンド、Identity プロバイダー、DB
@@ -116,30 +114,30 @@ cSpell:ignore: kube-system spanmetrics
 
 | #   | インスタンス | メトリクス                      | エンドポイント | 操作       | コード |
 | --- | ------------ | ------------------------------- | -------------- | ---------- | ------ |
-| 1   | クライアント | `rpc.client.duration`           | バックエンド   | Add        | OK     |
-| 2   | クライアント | `rpc.client.duration`           | バックエンド   | Add        | Err    |
-| 3   | クライアント | `rpc.client.duration`           | バックエンド   | List       | OK     |
-| 4   | クライアント | `rpc.client.duration`           | バックエンド   | List       | Err    |
-| 5   | クライアント | `rpc.client.duration`           | バックエンド   | Delete     | OK     |
-| 6   | クライアント | `rpc.client.duration`           | バックエンド   | Delete     | Err    |
-| 7   | バックエンド | `rpc.server.duration`           |                | Add        | OK     |
-| 8   | バックエンド | `rpc.server.duration`           |                | Add        | Err    |
-| 9   | バックエンド | `rpc.server.duration`           |                | List       | OK     |
-| 10  | バックエンド | `rpc.server.duration`           |                | List       | Err    |
-| 11  | バックエンド | `rpc.server.duration`           |                | Delete     | OK     |
-| 12  | バックエンド | `rpc.server.duration`           |                | Delete     | Err    |
+| 1   | クライアント | `rpc.client.call.duration`      | バックエンド   | Add        | OK     |
+| 2   | クライアント | `rpc.client.call.duration`      | バックエンド   | Add        | Err    |
+| 3   | クライアント | `rpc.client.call.duration`      | バックエンド   | List       | OK     |
+| 4   | クライアント | `rpc.client.call.duration`      | バックエンド   | List       | Err    |
+| 5   | クライアント | `rpc.client.call.duration`      | バックエンド   | Delete     | OK     |
+| 6   | クライアント | `rpc.client.call.duration`      | バックエンド   | Delete     | Err    |
+| 7   | バックエンド | `rpc.server.call.duration`      |                | Add        | OK     |
+| 8   | バックエンド | `rpc.server.call.duration`      |                | Add        | Err    |
+| 9   | バックエンド | `rpc.server.call.duration`      |                | List       | OK     |
+| 10  | バックエンド | `rpc.server.call.duration`      |                | List       | Err    |
+| 11  | バックエンド | `rpc.server.call.duration`      |                | Delete     | OK     |
+| 12  | バックエンド | `rpc.server.call.duration`      |                | Delete     | Err    |
 | 13  | バックエンド | `http.client.request.duration`  | Identity Prov  | PUT /login | 200    |
 | 14  | バックエンド | `http.client.request.duration`  | Identity Prov  | PUT /login | 401    |
 | 15  | バックエンド | `http.client.request.duration`  | Identity Prov  | PUT /login | 500    |
 | 16  | バックエンド | `http.client.request.body.size` | Identity Prov  | PUT /login | 200    |
 | 17  | バックエンド | `http.client.request.body.size` | Identity Prov  | PUT /login | 401    |
 | 18  | バックエンド | `http.client.request.body.size` | Identity Prov  | PUT /login | 500    |
-| 19  | バックエンド | `sql.client.duration`           | DB             | Insert     | OK     |
-| 20  | バックエンド | `sql.client.duration`           | DB             | Insert     | Err    |
-| 21  | バックエンド | `sql.client.duration`           | DB             | Select     | OK     |
-| 22  | バックエンド | `sql.client.duration`           | DB             | Select     | Err    |
-| 23  | バックエンド | `sql.client.duration`           | DB             | Delete     | OK     |
-| 24  | バックエンド | `sql.client.duration`           | DB             | Delete     | Err    |
+| 19  | バックエンド | `db.client.operation.duration`  | DB             | Insert     | OK     |
+| 20  | バックエンド | `db.client.operation.duration`  | DB             | Insert     | Err    |
+| 21  | バックエンド | `db.client.operation.duration`  | DB             | Select     | OK     |
+| 22  | バックエンド | `db.client.operation.duration`  | DB             | Select     | Err    |
+| 23  | バックエンド | `db.client.operation.duration`  | DB             | Delete     | OK     |
+| 24  | バックエンド | `db.client.operation.duration`  | DB             | Delete     | Err    |
 
 簡潔さのために、ヒストグラムバケットはカウントしていません。
 次にメトリクスインスタンスをヒストグラムバケット、それにヒストグラムの `_count` と `_sum` で乗算します。

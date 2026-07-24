@@ -107,8 +107,8 @@ This check verifies that:
 - All [file names are in kebab-case](../style-guide/#file-names)
 - No obsolete files or folders exist in the repository (see list below)
 
-If this check fails, run `npm run fix:filenames` locally and push the changes in
-a new commit.
+Follow the guidance in each error annotation. To apply fixes locally, run
+`npm run fix:filenames` and push the changes in a new commit.
 
 > [!NOTE]
 >
@@ -116,13 +116,15 @@ a new commit.
 
 #### Obsolete files and folders
 
-The following paths are flagged as obsolete and removed by `fix:filenames`. When
-present, an issue or PR number provides context for the change that made the
-path obsolete.
+The check flags these obsolete paths:
 
-- `tools/` - [Migrate code-excerpts tooling to npm package version #9638][#9638]
+- `tools/` - removed when [code-excerpts tooling moved to an npm package][#9638]
+- `static/refcache.json` - removed in the [switch to Lychee][#10911]. If your
+  branch restores it, follow the [stale-branch update instructions][#10990].
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
+[#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
+[#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
