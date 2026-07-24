@@ -7,7 +7,7 @@ weight: 25
 cSpell:ignore: Dowair shortcodes
 ---
 
-Website-ul OTel folosește [framework-ul multilingvist][] al lui Hugo pentru a
+Website-ul OTel folosește [framework-ul multilingvist][multilingual framework] al lui Hugo pentru a
 susține localizările paginilor. Engleza este limba implicită, având Engleză US
 ca localizarea implicită. Un număr în creștere de alte localizări sunt
 disponibile, cum se poate vedea în lista de limbi din bara de navigație din
@@ -143,7 +143,7 @@ Ia în considerare următorul exemplu de Markdown:
 [OTel website]: https://opentelemetry.io
 ```
 
-Acest ar fi tradus în Francează ca și:
+Acest ar fi tradus în Franceză ca și:
 
 ```markdown
 [Bonjour][hello], le monde! Bienvenue sur le [site OTel][OTel website].

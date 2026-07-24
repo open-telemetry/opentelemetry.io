@@ -6,6 +6,8 @@ aprobatorii
 aprobatorilor
 aprobatorul
 aspirațional
+autogenerat
+bifând
 calificatori
 colaboreze
 colectezi
@@ -29,6 +31,7 @@ enumerează
 explorezi
 exportatorilor
 forțezi
+Franceză
 gestionezi
 informatica
 informatică
@@ -47,6 +50,7 @@ mărești
 microservicii
 migrare
 migrezi
+multilingvist
 nedeterministe
 nelansate
 nespecificate
@@ -57,6 +61,8 @@ observabilității
 partajezi
 postând
 prepopulată
+randată
+randează
 receptoarelor
 remediează
 reobține
@@ -73,6 +79,8 @@ submodulului
 sugerezi
 telemetrice
 telemetrie
+traducă
+traduci
 tranzacţie
 urmǎrirea
 valideze
