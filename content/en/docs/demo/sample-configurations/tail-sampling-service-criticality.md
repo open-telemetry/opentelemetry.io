@@ -15,7 +15,7 @@ classifying them by operational importance:
 | ----------- | ------------- | ------------------------------------------------------------------------------------------ |
 | `critical`  | 100%          | payment, checkout, frontend, frontend-proxy                                                |
 | `high`      | 50%           | cart, product-catalog, currency, shipping                                                  |
-| `medium`    | 10%           | recommendation, ad, product-reviews, email                                                 |
+| `medium`    | 10%           | recommendation, ad, email                                                                  |
 | `low`       | 1%            | accounting, fraud-detection, image-provider, load-generator, quote, flagd, flagd-ui, Kafka |
 
 ## Collector Configuration
