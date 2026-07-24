@@ -596,3 +596,4 @@ synchronization with the English version.
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
 [PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/
+[multilingual framework]: https://gohugo.io/content-management/multilingual/
