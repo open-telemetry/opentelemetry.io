@@ -1,5 +1,6 @@
 import { describe, test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 // cspell:ignore mallory
 
@@ -11,6 +12,7 @@ import {
   authorizeForLocales,
   resolveVerdict,
   runAutoMergeCommand,
+  NO_OWNER_PATHS,
 } from './index.mjs';
 
 const LOCALES = discoverLocales();
@@ -26,7 +28,8 @@ describe('locale-auto-merge: discoverLocales', () => {
 describe('locale-auto-merge: parseCommand', () => {
   test('bare /auto-merge means enable', () => {
     assert.equal(parseCommand('/auto-merge'), 'enable');
-    assert.equal(parseCommand('  /auto-merge  '), 'enable');
+    assert.equal(parseCommand('/auto-merge  '), 'enable');
+    assert.equal(parseCommand('/auto-merge\r\n'), 'enable');
   });
 
   test('explicit enable/disable', () => {
@@ -34,8 +37,41 @@ describe('locale-auto-merge: parseCommand', () => {
     assert.equal(parseCommand('/auto-merge:disable'), 'disable');
   });
 
-  test('rejects surrounding text and unknown verbs', () => {
+  test('directive as last line after text', () => {
+    assert.equal(parseCommand('LGTM\n/auto-merge'), 'enable');
+    assert.equal(
+      parseCommand('LGTM!\nThanks.\n\n/auto-merge:disable\n'),
+      'disable',
+    );
+  });
+
+  test('directive as first line before text', () => {
+    assert.equal(parseCommand('/auto-merge\nLGTM, merging.'), 'enable');
+    assert.equal(parseCommand('\n/auto-merge\n\nLGTM.'), 'enable');
+  });
+
+  test('rejects a directive that is neither first nor last non-blank line', () => {
+    assert.equal(parseCommand('LGTM\n/auto-merge\nthanks'), null);
+    assert.equal(parseCommand('```\n/auto-merge\n```'), null);
+  });
+
+  test('rejects leading whitespace, quotes, and inline text', () => {
+    assert.equal(parseCommand('  /auto-merge'), null);
+    assert.equal(parseCommand('> /auto-merge'), null);
     assert.equal(parseCommand('please /auto-merge'), null);
+    assert.equal(parseCommand('LGTM\n  /auto-merge'), null);
+  });
+
+  test('rejects multiple directives', () => {
+    assert.equal(parseCommand('/auto-merge\n/auto-merge'), null);
+    assert.equal(
+      parseCommand('/auto-merge:enable\nhmm\n/auto-merge:disable'),
+      null,
+    );
+  });
+
+  test('stays silent on mid-sentence mentions and unknown verbs', () => {
+    assert.equal(parseCommand('Use /auto-merge to merge.'), null);
     assert.equal(parseCommand('/auto-merge now'), null);
     assert.equal(parseCommand('/auto-merge:later'), null);
     assert.equal(parseCommand('/automerge'), null);
@@ -68,8 +104,45 @@ describe('locale-auto-merge: localeForPath', () => {
 
   test('returns null for paths outside the locale-owned set', () => {
     assert.equal(localeForPath('layouts/partials/head.html', LOCALES), null);
-    assert.equal(localeForPath('static/refcache.json', LOCALES), null);
+    assert.equal(localeForPath('.lycheecache', LOCALES), null);
     assert.equal(localeForPath('content/ja', LOCALES), null);
+  });
+});
+
+describe('locale-auto-merge: no-owner paths agree with CODEOWNERS', () => {
+  // .github/CODEOWNERS is the canonical home of the no-owner policy: a
+  // pattern listed without an owner team. NO_OWNER_PATHS is the runtime copy.
+  const codeownersNoOwnerPaths = () => {
+    const text = readFileSync(
+      new URL('../../../.github/CODEOWNERS', import.meta.url),
+      'utf8',
+    );
+    return new Set(
+      text
+        .split('\n')
+        .map((line) => line.trim())
+        .filter((line) => line && !line.startsWith('#'))
+        .filter((line) => !line.includes('@'))
+        .map((pattern) => pattern.replace(/^\//, '')),
+    );
+  };
+
+  test('NO_OWNER_PATHS matches the ownerless CODEOWNERS entries', () => {
+    assert.deepEqual(NO_OWNER_PATHS, codeownersNoOwnerPaths());
+  });
+
+  test('each no-owner path has a component-owners.yml fallback entry', () => {
+    const text = readFileSync(
+      new URL('../../../.github/component-owners.yml', import.meta.url),
+      'utf8',
+    );
+    for (const p of NO_OWNER_PATHS) {
+      assert.match(
+        text,
+        new RegExp(`^ {2}${p.replaceAll('.', '\\.')}:$`, 'm'),
+        `component-owners.yml assigns a fallback team to ${p}`,
+      );
+    }
   });
 });
 
@@ -96,16 +169,13 @@ describe('locale-auto-merge: evaluateEligibility', () => {
     });
   });
 
-  test('no-owner refcache.json does not block, but is not a locale', () => {
-    const r = evaluateEligibility(
-      ['content/ja/a.md', 'static/refcache.json'],
-      known,
-    );
+  test('no-owner .lycheecache does not block, but is not a locale', () => {
+    const r = evaluateEligibility(['content/ja/a.md', '.lycheecache'], known);
     assert.deepEqual(r, { eligible: true, locales: ['ja'], offending: [] });
   });
 
-  test('refcache.json alone is ineligible (no locale touched)', () => {
-    const r = evaluateEligibility(['static/refcache.json'], known);
+  test('.lycheecache alone is ineligible (no locale touched)', () => {
+    const r = evaluateEligibility(['.lycheecache'], known);
     assert.equal(r.eligible, false);
     assert.deepEqual(r.locales, []);
     assert.deepEqual(r.offending, []);
@@ -133,13 +203,13 @@ describe('locale-auto-merge: evaluateEligibility', () => {
   test('onFile callback classifies each path', () => {
     const seen = [];
     evaluateEligibility(
-      ['content/ja/a.md', 'static/refcache.json', 'layouts/x.html'],
+      ['content/ja/a.md', '.lycheecache', 'layouts/x.html'],
       known,
       (f) => seen.push(f),
     );
     assert.deepEqual(seen, [
       { path: 'content/ja/a.md', kind: 'locale', locale: 'ja' },
-      { path: 'static/refcache.json', kind: 'shared', locale: null },
+      { path: '.lycheecache', kind: 'shared', locale: null },
       { path: 'layouts/x.html', kind: 'offending', locale: null },
     ]);
   });
@@ -392,6 +462,20 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     assert.equal(calls.length, 0); // never even fetched the PR
   });
 
+  test('mid-sentence /auto-merge mention stays a silent no-op', () => {
+    const calls = [];
+    const r = runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 1,
+      commentAuthor: 'alice',
+      commentBody: 'You can use /auto-merge to merge locale PRs.',
+      knownLocales: KNOWN,
+      runGh: makeRunGh({ pr: {}, calls }),
+    });
+    assert.equal(r.outcome, 'no-command');
+    assert.equal(calls.length, 0); // no PR fetch, no feedback comment
+  });
+
   test('malformed /auto-merge attempt posts an unrecognized-command reply', () => {
     const calls = [];
     const r = runAutoMergeCommand({
@@ -410,6 +494,68 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     assert.ok(comment, 'expected a feedback comment');
     const body = comment[comment.indexOf('--body') + 1];
     assert.match(body, /Unrecognized auto-merge command/);
+  });
+
+  test('mid-comment or duplicated directives get an unrecognized-command reply', () => {
+    for (const body of [
+      'LGTM\n/auto-merge\nthanks', // buried mid-comment
+      '/auto-merge\nhmm\n/auto-merge:disable', // more than one directive
+      'LGTM\n  /auto-merge', // mis-indented directive
+    ]) {
+      const calls = [];
+      const r = runAutoMergeCommand({
+        repo: 'open-telemetry/opentelemetry.io',
+        prNum: 5,
+        commentAuthor: 'alice',
+        commentBody: body,
+        knownLocales: KNOWN,
+        runGh: makeRunGh({ pr: {}, calls }),
+      });
+      assert.equal(r.outcome, 'no-command');
+      const comment = calls.find((a) => a[0] === 'pr' && a[1] === 'comment');
+      assert.ok(comment, `expected a feedback comment for: ${body}`);
+      const replyBody = comment[comment.indexOf('--body') + 1];
+      assert.match(replyBody, /first or last non-blank line/);
+    }
+  });
+
+  test('blockquoted directive is a citation, not an attempt: silent no-op', () => {
+    const calls = [];
+    const r = runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 5,
+      commentAuthor: 'alice',
+      commentBody: '> /auto-merge\n\nWho ran this?',
+      knownLocales: KNOWN,
+      runGh: makeRunGh({ pr: {}, calls }),
+    });
+    assert.equal(r.outcome, 'no-command');
+    assert.equal(calls.length, 0);
+  });
+
+  test('LGTM followed by /auto-merge on the last line enables auto-merge', () => {
+    const calls = [];
+    const r = runAutoMergeCommand({
+      repo: 'open-telemetry/opentelemetry.io',
+      prNum: 43,
+      commentAuthor: 'alice',
+      commentBody: 'LGTM\n/auto-merge',
+      knownLocales: KNOWN,
+      runGh: makeRunGh({
+        pr: {
+          state: 'OPEN',
+          files: [{ path: 'content/ja/a.md' }],
+          autoMergeRequest: null,
+        },
+        teams: { 'docs-ja-maintainers': ['alice'] },
+        calls,
+      }),
+    });
+    assert.equal(r.outcome, 'apply');
+    assert.equal(r.exitCode, 0);
+    const merge = calls.find((a) => a[0] === 'pr' && a[1] === 'merge');
+    assert.ok(merge, 'expected a gh pr merge call');
+    assert.ok(merge.includes('--auto'));
   });
 
   test('eligible + authorized enable issues gh pr merge --auto', () => {
@@ -482,7 +628,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           files: [
             { path: 'content/ja/a.md' },
             { path: 'content/pt/b.md' },
-            { path: 'static/refcache.json' },
+            { path: '.lycheecache' },
           ],
           autoMergeRequest: null,
         },
@@ -675,7 +821,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           files: [
             { path: 'content/ja/a.md' },
             { path: 'content/pt/b.md' },
-            { path: 'static/refcache.json' },
+            { path: '.lycheecache' },
           ],
           autoMergeRequest: null,
         },
@@ -693,9 +839,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
       logs.some((m) => m === '[file] ✓ locale-owned (pt): content/pt/b.md'),
     );
     assert.ok(
-      logs.some(
-        (m) => m === '[file] ✓ shared (no owner): static/refcache.json',
-      ),
+      logs.some((m) => m === '[file] ✓ shared (no owner): .lycheecache'),
     );
     assert.ok(
       logs.some((m) =>

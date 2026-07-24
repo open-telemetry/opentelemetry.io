@@ -2,7 +2,8 @@ name: Locale auto-merge
 
 # Lets a locale team member enable (or disable) GitHub-native auto-merge on a
 # locale-only PR by commenting `/auto-merge` (or `/auto-merge:enable` /
-# `:disable`). The DOCS bot (which has the permissions needed to enable
+# `:disable`) on its own line, as the first or last non-blank line of the
+# comment. The DOCS bot (which has the permissions needed to enable
 # auto-merge) performs the action;
 # branch protection + CODEOWNERS remain the hard gate — the PR still won't
 # merge until all required reviews and checks pass. The eligibility and
@@ -22,16 +23,18 @@ jobs:
     concurrency:
       group: locale-auto-merge-${{ github.event.issue.number }}
       cancel-in-progress: false
-    # Only a broad prefix match on the comment body here. The helper does the
-    # exact parsing and posts "Unrecognized command" when the comment is
-    # malformed.
+    # Only a broad substring match on the comment body here (intentional: the
+    # directive may sit below review text, so a prefix match is not enough; an
+    # incidental mention just costs one short no-op job). The helper does the
+    # exact (line-anchored) parsing and posts "Unrecognized command" when
+    # the comment looks like an attempt but is malformed.
     if: |
       github.repository_owner == 'open-telemetry' &&
       github.event.issue.pull_request != null &&
-      startsWith(github.event.comment.body, '/auto-merge')
+      contains(github.event.comment.body, '/auto-merge')
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
@@ -46,14 +49,14 @@ jobs:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
-          client-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
           permission-contents: write
           permission-pull-requests: write
           permission-members: read
 
       # Full checkout so the helper can enumerate locales from content/.
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with: { persist-credentials: false }
 
       - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
