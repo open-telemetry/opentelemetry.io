@@ -3,6 +3,7 @@ title: OTLP Exporter Configuration
 linkTitle: OTLP Exporter
 weight: 20
 aliases: [otlp-exporter-configuration]
+cSpell:ignore: lowmemory
 ---
 
 {{% include "env-var-note.md" %}}
@@ -283,3 +284,41 @@ Valid values are:
 - `grpc` to use OTLP/gRPC
 - `http/protobuf` to use OTLP/HTTP + protobuf
 - `http/json` to use OTLP/HTTP + JSON
+
+## Metrics configuration
+
+The following environment variables configure OTLP metrics exporter behaviors.
+
+### `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`
+
+Configures the exporter's aggregation temporality preference on the basis of
+instrument kind.
+
+**Default value:** `cumulative`
+
+**Example:** `export OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE=delta`
+
+Valid values are:
+
+- `cumulative` to use cumulative aggregation temporality for all instrument
+  kinds.
+- `delta` to use delta aggregation temporality for Counter, Asynchronous
+  Counter, and Histogram, and cumulative for UpDownCounter and Asynchronous
+  UpDownCounter.
+- `lowmemory` to use delta aggregation temporality for Synchronous Counter and
+  Histogram, and cumulative for others.
+
+### `OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION`
+
+Configures the exporter's default aggregation for the Histogram instrument kind.
+
+**Default value:** `explicit_bucket_histogram`
+
+**Example:**
+`export OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION=base2_exponential_bucket_histogram`
+
+Valid values are:
+
+- `explicit_bucket_histogram` to use explicit bucket histogram aggregation.
+- `base2_exponential_bucket_histogram` to use base2 exponential bucket histogram
+  aggregation.
