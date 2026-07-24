@@ -78,8 +78,8 @@ function appendToStepSummary(report) {
   );
 }
 
-// True when .lycheecache has unstaged changes — the same `git diff` the CI
-// `CACHE updates committed?` job runs (see .github/workflows/check-links.yml).
+// True when .lycheecache has unstaged changes — the local analogue of the CI
+// `CACHE updates committed?` verdict (see .github/workflows/check-links.yml).
 function cacheModified() {
   const r = spawnSync('git', ['diff', '--quiet', '--', '.lycheecache'], {
     cwd: root,

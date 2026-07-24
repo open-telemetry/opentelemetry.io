@@ -136,13 +136,20 @@ jobs:
 
       - name: All link-cache updates committed?
         run: |
-          # The cp fails the job when the artifact is missing -- no false green.
-          cp tmp/link-cache/.lycheecache .lycheecache
-          if git diff --quiet -- .lycheecache; then
+          committed=.lycheecache
+          generated=tmp/link-cache/.lycheecache
+          # Accept only regular files: fails when the artifact is missing (no
+          # false green) and never writes through a PR-controlled symlink.
+          if [[ -L "$committed" || -L "$generated" ||
+                ! -f "$committed" || ! -f "$generated" ]]; then
+            echo "::error title=Invalid link cache::Expected regular .lycheecache files."
+            exit 1
+          fi
+          if cmp --silent "$committed" "$generated"; then
             echo "Link cache is up to date."
             exit 0
           fi
-          git --no-pager diff --stat -- .lycheecache
+          git --no-pager diff --no-index --stat "$committed" "$generated" || true
           echo "::error title=Link cache is stale::All links check out, but this PR leaves the committed link cache (.lycheecache) stale. For recovery steps, see the step summary."
           {
             echo "## Link cache is stale"
