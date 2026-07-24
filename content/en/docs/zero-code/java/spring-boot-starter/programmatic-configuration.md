@@ -3,7 +3,7 @@ title: Programmatic configuration
 weight: 35
 vers:
   contrib: 1.54.0
-cSpell:ignore: customizer
+cSpell:ignore: customizer fileconfig
 ---
 
 <?code-excerpt path-base="examples/java/spring-starter"?>
@@ -135,13 +135,18 @@ When declarative configuration is enabled, the `otelProperties`
 (`ConfigProperties`) bean is provided only as a compatibility bridge. It is
 deprecated and will be removed in 3.0; use `ConfigProvider` instead.
 
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/spring-declarative-configuration"?>
+
+<?code-excerpt "src/main/java/io/opentelemetry/examples/fileconfig/ReadInstrumentationConfig.java" from="package"?>
+
 ```java
-package otel;
+package io.opentelemetry.examples.fileconfig;
 
 import io.opentelemetry.api.incubator.config.ConfigProvider;
 import io.opentelemetry.api.incubator.config.DeclarativeConfigProperties;
 import org.springframework.stereotype.Component;
 
+/** Example of reading instrumentation configuration from application code. */
 @Component
 public class ReadInstrumentationConfig {
 
@@ -155,10 +160,10 @@ public class ReadInstrumentationConfig {
     DeclarativeConfigProperties dbConfig =
         configProvider
             .getInstrumentationConfig()
-            .getStructured("java")
-            .getStructured("common")
-            .getStructured("db")
-            .getStructured("query_sanitization");
+            .get("java")
+            .get("common")
+            .get("db")
+            .get("query_sanitization");
     return dbConfig.getBoolean("enabled", true);
   }
 }
