@@ -1,0 +1,23 @@
+# cSpell:ignore vmstore tintri Tintri tgc VMstore
+title: Tintri Receiver
+registryType: receiver
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+license: Apache 2.0
+description:
+  This receiver collects metrics from Tintri VMstore appliances and Tintri
+  Global Center (TGC), covering datastore, virtual machine, and virtual disk
+  realtime, capacity, replication, and health telemetry.
+authors:
+  - name: IntegrationPlumbers
+    url: https://github.com/IntegrationPlumbers
+urls:
+  repo: https://github.com/IntegrationPlumbers/tintri
+createdAt: 2026-05-28
+package:
+  registry: go-collector
+  name: github.com/IntegrationPlumbers/tintri
+  version: v0.3.0
