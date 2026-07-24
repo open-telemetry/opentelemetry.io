@@ -1,0 +1,26 @@
+# cSpell:ignore qryn gigapipe loki pyroscope
+title: gigapipe exporter
+registryType: exporter
+language: collector
+tags:
+  - go
+  - exporter
+  - gigapipe
+  - qryn
+  - clickhouse
+  - loki
+  - prometheus
+  - tempo
+  - pyroscope
+license: Apache 2.0
+description:
+  This exporter supports sending OpenTelemetry logs, metrics, traces and
+  profiles to ClickHouse using the Gigapipe (formerly qryn) polyglot format.
+authors:
+  - name: Rita Lopes
+    email: rita@gigapipe.com
+  - name: Lorenzo Mangani
+    email: lorenzo@gigapipe.com
+urls:
+  repo: https://github.com/metrico/otel-collector
+createdAt: 2023-10-17
