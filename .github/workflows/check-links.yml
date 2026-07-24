@@ -106,8 +106,7 @@ jobs:
           set -o pipefail
           npm run _check:links 2>&1 | tee lychee-out.txt
 
-      # The link check refreshes the local `.lycheecache`; hand it to the
-      # `CACHE updates committed?` job for comparison with the committed cache.
+      # Hand the refreshed `.lycheecache` to the check-link-cache job.
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: link-cache
