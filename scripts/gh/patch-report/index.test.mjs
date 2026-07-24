@@ -71,13 +71,13 @@ describe('buildOutcomeComment', () => {
     assert.match(body, /^❌ The request could not be processed\./);
   });
 
-  test('unidentified request includes a caller-supplied hint', () => {
-    // The hint is an opaque caller-supplied string (this reporter is generic,
+  test('unidentified request: note carries the caller-supplied guidance', () => {
+    // The note is an opaque caller-supplied string (this reporter is generic,
     // not /fix-specific), so any text works here.
-    const hint = 'See the docs for how to phrase a request.';
-    const body = build({ generateResult: 'failure', label: '', hint });
+    const note = 'See the docs for how to phrase a request.';
+    const body = build({ generateResult: 'failure', label: '', note });
     assert.match(body, /^❌ The request could not be processed\./);
-    assert.ok(body.includes(hint));
+    assert.ok(body.endsWith(`\n\n${note}`), 'note is the final paragraph');
   });
 
   test('generation failed for a known command (e.g. oversized patch)', () => {
@@ -134,24 +134,18 @@ describe('buildOutcomeComment', () => {
     );
   });
 
-  test('appends a caller-supplied info notice as its own final paragraph', () => {
-    const info = 'ℹ️ INFO: `/fix:refcache` is deprecated.';
-    const body = build({ label: 'fix:refcache', info });
+  test('appends a caller-supplied note as its own final paragraph', () => {
+    const note = 'ℹ️ INFO: `/fix:refcache` is deprecated.';
+    const body = build({ label: 'fix:refcache', note });
     assert.match(body, /^✅ `fix:refcache` applied successfully/);
-    assert.ok(
-      body.endsWith(`\n\n${info}`),
-      'info notice is the final paragraph',
-    );
+    assert.ok(body.endsWith(`\n\n${note}`), 'note is the final paragraph');
   });
 
-  test('info notice is appended to non-success outcomes too', () => {
-    const info = 'ℹ️ INFO: compat notice.';
-    const body = build({ generateResult: 'failure', info });
+  test('note is appended to non-success outcomes too', () => {
+    const note = 'ℹ️ INFO: compat notice.';
+    const body = build({ generateResult: 'failure', note });
     assert.match(body, /^❌/);
-    assert.ok(
-      body.endsWith(`\n\n${info}`),
-      'info notice is the final paragraph',
-    );
+    assert.ok(body.endsWith(`\n\n${note}`), 'note is the final paragraph');
   });
 
   test('unidentified request links to the directive comment', () => {
@@ -177,44 +171,41 @@ describe('buildOutcomeComment', () => {
         ]) {
           for (const commandExitStatus of ['0', '1', '']) {
             for (const label of ['fix', '']) {
-              for (const hint of ['Any hint text.', '']) {
-                for (const prState of ['open', 'closed', '']) {
-                  for (const directiveUrl of ['d', '']) {
-                    for (const info of ['ℹ️ A notice.', '']) {
-                      const body = buildOutcomeComment({
-                        label,
-                        prState,
-                        generateResult,
-                        patchSkipped,
-                        commandExitStatus,
-                        applyResult,
-                        runId: '1',
-                        runUrl: 'u',
-                        directiveUrl,
-                        hint,
-                        info,
-                      });
+              for (const prState of ['open', 'closed', '']) {
+                for (const directiveUrl of ['d', '']) {
+                  for (const note of ['ℹ️ A notice.', '']) {
+                    const body = buildOutcomeComment({
+                      label,
+                      prState,
+                      generateResult,
+                      patchSkipped,
+                      commandExitStatus,
+                      applyResult,
+                      runId: '1',
+                      runUrl: 'u',
+                      directiveUrl,
+                      note,
+                    });
+                    assert.ok(
+                      typeof body === 'string' && body.length > 0,
+                      'comment should be a non-empty string',
+                    );
+                    assert.ok(
+                      body.includes('See [run 1](u).'),
+                      `comment should include the run link: ${body}`,
+                    );
+                    const tail = note
+                      ? `See [run 1](u).\n\n${note}`
+                      : 'See [run 1](u).';
+                    assert.ok(
+                      body.endsWith(tail),
+                      `comment should end with the run link (followed only by the note, when given): ${body}`,
+                    );
+                    if (directiveUrl) {
                       assert.ok(
-                        typeof body === 'string' && body.length > 0,
-                        'comment should be a non-empty string',
+                        body.includes('](d)'),
+                        `comment should link the directive: ${body}`,
                       );
-                      assert.ok(
-                        body.includes('See [run 1](u).'),
-                        `comment should include the run link: ${body}`,
-                      );
-                      const tail = info
-                        ? `See [run 1](u).\n\n${info}`
-                        : 'See [run 1](u).';
-                      assert.ok(
-                        body.endsWith(tail),
-                        `comment should end with the run link (followed only by the info notice, when given): ${body}`,
-                      );
-                      if (directiveUrl) {
-                        assert.ok(
-                          body.includes('](d)'),
-                          `comment should link the directive: ${body}`,
-                        );
-                      }
                     }
                   }
                 }

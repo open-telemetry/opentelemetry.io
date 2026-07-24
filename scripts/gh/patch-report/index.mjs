@@ -35,13 +35,11 @@
  *                                       action; when given, the action label
  *                                       links back to it so the outcome can be
  *                                       traced to its request.
- * @property {string} [hint]             Optional caller-supplied guidance shown
- *                                       when the request could not be identified
- *                                       (e.g. how to phrase it correctly).
- * @property {string} [info]             Optional informational notice appended
- *                                       as the comment's final paragraph (e.g.
- *                                       a deprecation notice for the requested
- *                                       action).
+ * @property {string} [note]             Optional caller-supplied notice
+ *                                       appended as the comment's final
+ *                                       paragraph (e.g. a deprecation notice
+ *                                       for the requested action, or guidance
+ *                                       on phrasing a request).
  */
 
 /**
@@ -83,7 +81,7 @@ export function buildAckComment({ directiveUrl, runId, runUrl }) {
  */
 export function buildOutcomeComment(input) {
   const body = selectOutcome(input);
-  return input.info ? `${body}\n\n${input.info}` : body;
+  return input.note ? `${body}\n\n${input.note}` : body;
 }
 
 /** Select the outcome message for the run described by the input. */
@@ -98,7 +96,6 @@ function selectOutcome({
   runId,
   runUrl,
   directiveUrl,
-  hint,
 }) {
   const what = renderWhat(label, directiveUrl);
   const logs = `See [run ${runId}](${runUrl}).`;
@@ -115,9 +112,8 @@ function selectOutcome({
   }
   if (generateResult !== 'success') {
     if (!label) {
-      const guidance = hint ? ` ${hint}` : '';
       const req = renderWhat('', directiveUrl, 'The request');
-      return `❌ ${req} could not be processed.${guidance} ${logs}`;
+      return `❌ ${req} could not be processed. ${logs}`;
     }
     return `❌ ${what} could not be run, or its changes could not be captured. ${logs}`;
   }

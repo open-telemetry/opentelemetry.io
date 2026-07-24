@@ -108,7 +108,7 @@ describe('patch-report CLI', () => {
     assert.match(stderr, /mutually exclusive/);
   });
 
-  test('--info notice is included in the outcome body', () => {
+  test('--note is included in the outcome body', () => {
     const { ghArgs, status } = runCli([
       '--pr',
       '42',
@@ -122,7 +122,7 @@ describe('patch-report CLI', () => {
       'false',
       '--apply-result',
       'success',
-      '--info',
+      '--note',
       'ℹ️ INFO: `/fix:refcache` is deprecated.',
     ]);
     assert.equal(status, 0);

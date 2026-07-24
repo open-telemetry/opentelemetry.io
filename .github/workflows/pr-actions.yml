@@ -212,13 +212,17 @@ jobs:
           COMMAND_EXIT_STATUS:
             ${{ needs.generate-patch.outputs.action_exit_status }}
           APPLY_RESULT: ${{ needs.apply-patch.result }}
-        # The hint and info notice are owned by the directive parser (single
-        # source of truth with its invalid-directive message); this checkout is
-        # of the default branch, so the derived text is trusted (the parser
-        # only ever returns its own constants, never comment text).
+        # The note is owned by the directive parser (single source of truth
+        # with its invalid-directive message); this checkout is of the default
+        # branch, so the derived text is trusted (the parser only ever returns
+        # its own constants, never comment text). A parsed directive may carry
+        # a notice (e.g. deprecation); an unparseable one gets the phrasing
+        # hint.
         run: |
-          hint=$(node -e 'import("./scripts/gh/pr-fix/index.mjs").then((m) => console.log(m.DIRECTIVE_HINT))')
-          info=$(node -e 'import("./scripts/gh/pr-fix/index.mjs").then((m) => console.log(m.parseFixDirective(process.env.COMMENT).info ?? ""))')
+          note=$(node -e 'import("./scripts/gh/pr-fix/index.mjs").then((m) => {
+            const d = m.parseFixDirective(process.env.COMMENT);
+            console.log(d.valid ? (d.info ?? "") : m.DIRECTIVE_HINT);
+          })')
           node scripts/gh/patch-report/cli.mjs \
             --pr "$PR_NUM" \
             --comment-id "$ACK_COMMENT_ID" \
@@ -230,5 +234,4 @@ jobs:
             --patch-skipped "$PATCH_SKIPPED" \
             --command-exit-status "$COMMAND_EXIT_STATUS" \
             --apply-result "$APPLY_RESULT" \
-            --hint "$hint" \
-            --info "$info"
+            --note "$note"
