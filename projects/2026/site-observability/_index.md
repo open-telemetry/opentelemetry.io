@@ -128,15 +128,6 @@ Observability][] setup and takes no position on it.
 
 ## Open Questions
 
-- **Configuration and IaC home**: the Collector configuration and stack IaC are
-  kept together and public; where they live is a community decision scheduled
-  for phase 1. Two options are on the table: reuse `open-telemetry/admin`, or
-  create a dedicated public repository. A dedicated repository is favored on
-  three counts: it isolates the infrastructure credential and deploy pipeline in
-  a small, purpose-scoped repo; it can double as a public blueprint others study
-  and adapt (built out only after the deployment works); and it keeps
-  live-infrastructure provisioning out of `admin`, whose scope is GitHub-org
-  configuration with a single provider and unmanaged secrets.
 - **Data retention**: retention periods per backend are deferred until the phase
   2 persistence spike establishes each backend's storage constraints.
 
@@ -150,8 +141,11 @@ volunteer-driven and depends on external decisions.
 
 1. Inventory the access granted to the Cloudflare account: roles, enabled
    products, and platform limits.
-2. Decide with the community where the Collector configuration and stack IaC
-   live (see [Open Questions](#open-questions)).
+2. Home for the Collector configuration and stack IaC: a dedicated public
+   repository, chosen over reusing `open-telemetry/admin` — it isolates the
+   infrastructure credential and deploy pipeline, doubles as a public blueprint,
+   and keeps live-infrastructure provisioning out of `admin`. Creation requested
+   in [community#3596][].
 3. Deploy the Collector to Cloudflare Containers, with abuse protections and
    privacy scrubbing in place from the first deployment, and validate the OTLP
    endpoint manually.
@@ -191,6 +185,8 @@ consumer of the OTLP endpoint.
 - [opentelemetry.io#9559][] — Address site observability and data access
 - [community#3368][] — Infrastructure to host an OTel Collector for
   opentelemetry.io
+- [community#3596][] — Request to create the dedicated repository
+  (`opentelemetry-for-opentelemetry`)
 - [opentelemetry.io#10758][] — Add Do11y script (candidate
   browser-instrumentation source, first consumer of the OTLP endpoint)
 
@@ -204,6 +200,7 @@ consumer of the OTLP endpoint.
 [opentelemetry.io#10758]:
   https://github.com/open-telemetry/opentelemetry.io/pull/10758
 [community#3368]: https://github.com/open-telemetry/community/issues/3368
+[community#3596]: https://github.com/open-telemetry/community/issues/3596
 [Netlify Observability]:
   https://docs.netlify.com/manage/monitoring/observability/overview
 [#otel-comms]: https://cloud-native.slack.com/archives/C02UN96HZH6
