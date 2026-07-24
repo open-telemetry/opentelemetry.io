@@ -1,7 +1,7 @@
 ---
 title: Servicios
 aliases: [service_table, service-table]
-default_lang_commit: 4d367048a304df51f35b33ca51cfb0d3703de230
+default_lang_commit: 4d367048a304df51f35b33ca51cfb0d3703de230 # patched
 drifted_from_default: true
 ---
 
