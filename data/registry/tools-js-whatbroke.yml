@@ -1,0 +1,27 @@
+# cSpell:ignore whatbroke arthi arumugam
+title: whatbroke
+registryType: utilities
+language: js
+tags:
+  - traces
+  - diff
+  - genai
+  - llm
+  - agents
+  - cli
+  - regression
+  - otlp
+urls:
+  repo: https://github.com/arthi-arumugam-git/whatbroke
+  docs: https://github.com/arthi-arumugam-git/whatbroke#readme
+license: MIT
+description:
+  CLI that diffs an AI agent's behavior between two runs. Imports OTLP JSON span
+  exports that use the GenAI semantic conventions and reports tool call,
+  argument, cost, and latency changes.
+authors:
+  - name: Arthi Arumugam
+    url: https://github.com/arthi-arumugam-git
+createdAt: 2026-07-24
+isNative: false
+isFirstParty: false
