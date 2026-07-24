@@ -1,7 +1,7 @@
 ---
 title: mypyの使用
 weight: 120
-default_lang_commit: c3365f297f394baf10f5dba3473e13621ade4461 # patched
+default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
 cSpell:ignore: mypy
 ---
 
