@@ -46,8 +46,9 @@ export const OBSOLETE_PATHS = [
   },
 ];
 
-// True when a file or directory basename violates the kebab-case convention.
-// `_`- and `.`-prefixed names (Hugo `_index.md` files, dotfiles) are exempt.
+// True when a basename contains an underscore (the kebab-case violation this
+// check enforces). `_`- and `.`-prefixed names (Hugo `_index.md` files,
+// dotfiles) are exempt.
 export function isBadName(name) {
   return name.includes('_') && !name.startsWith('_') && !name.startsWith('.');
 }

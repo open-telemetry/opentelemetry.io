@@ -269,5 +269,17 @@ describe('repo-wide sanity', () => {
         );
       }
     }
+    // Reverse direction: every docs list item must correspond to an
+    // OBSOLETE_PATHS entry, so stale docs items don't linger after removal.
+    const knownPaths = new Set(OBSOLETE_PATHS.map(({ path: p }) => p));
+    const docsPaths = [...section.matchAll(/^- `([^`]+)`/gm)].map((m) =>
+      m[1].replace(/\/$/, ''),
+    );
+    for (const dp of docsPaths) {
+      assert.ok(
+        knownPaths.has(dp),
+        `docs list item \`${dp}\` corresponds to an OBSOLETE_PATHS entry`,
+      );
+    }
   });
 });
