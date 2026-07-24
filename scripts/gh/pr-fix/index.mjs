@@ -6,7 +6,7 @@
 // see ./cli.mjs for the workflow wiring and ./index.test.mjs for the tests.
 
 // Single source of truth for how to phrase a directive; also surfaced by the
-// report job as a hint when a request could not be identified.
+// report job (via `--note`) when a request could not be identified.
 export const DIRECTIVE_HINT =
   'Start your comment with `/fix` or `/fix:<name>` on a line of its own.';
 

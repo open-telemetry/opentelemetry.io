@@ -79,9 +79,9 @@ suite('cacheUpdatedNotice', () => {
 
 suite('wiring drift guard', () => {
   test('_check:links still is the bin that cli.mjs invokes directly', () => {
-    // cli.mjs bypasses npm and spawns node_modules/.bin/lychee-norm-cache to
-    // capture output npm-noise-free; this guard fails if the canonical
-    // _check:links script moves off that bare bin, forcing reconciliation.
+    // cli.mjs spawns node_modules/.bin/lychee-norm-cache directly (see its
+    // bin comment for why); this guard fails if the canonical _check:links
+    // script moves off that bare bin, forcing reconciliation.
     const pkg = JSON.parse(
       fs.readFileSync(new URL('../../../package.json', import.meta.url)),
     );

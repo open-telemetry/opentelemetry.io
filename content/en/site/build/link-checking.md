@@ -61,9 +61,8 @@ expired. Lychee caches successful results only, so failures are retried on every
 run.
 
 If you add or change external links, run `npm run check:links` **before
-submitting your PR** — the link check itself is quick since all other links are
-cached (the site build dominates the run time) — and commit the updated
-`.lycheecache` along with your content changes. Otherwise the
+submitting your PR** — the site build dominates the run time — and commit the
+updated `.lycheecache` along with your content changes. Otherwise the
 `CACHE updates committed?` check will fail; for recovery steps, see
 [`CACHE updates committed?`][pr-checks].
 
@@ -72,18 +71,14 @@ cached (the site build dominates the run time) — and commit the updated
 The following workflows are scheduled daily and run a link checking command over
 a **full** build:
 
-| Workflow                          | Link-check command               |
-| --------------------------------- | -------------------------------- |
-| Refcache refresh                  | `fix:link-cache` (after pruning) |
-| Housekeeping (`fix-and-test:all`) | `fix:link-cache`                 |
+| Workflow                                          | Link-check command               |
+| ------------------------------------------------- | -------------------------------- |
+| Refcache refresh                                  | `fix:link-cache` (after pruning) |
+| [Housekeeping][housekeeping] (`fix-and-test:all`) | `fix:link-cache`                 |
 
 Refcache refresh prunes the oldest cache entries (the count is a workflow input)
 and re-runs the link check, which refreshes the cache entries for the pruned
 URLs that are still used in the site.
-
-The [housekeeping workflow][housekeeping] runs `fix-and-test:all`, which calls
-`fix:link-cache` and deliberately skips `check:links` so links are checked
-exactly once.
 
 ## In CI
 

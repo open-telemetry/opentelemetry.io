@@ -10,6 +10,9 @@ name: Refcache refresh
 # To force further pruning of the existing PR branch, invoke with
 # `prune_more_in_same_PR` is true.
 #
+# The workflow and its PR branch (otelbot/refcache-refresh) keep their
+# historical refcache names; scripts and docs now say "link cache".
+#
 on:
   schedule:
     - cron: '33 5 * * *' # daily at 5:33 UTC

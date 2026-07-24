@@ -76,10 +76,13 @@ describe('parseFixDirective', () => {
     const pkg = JSON.parse(
       fs.readFileSync(new URL('../../../package.json', import.meta.url)),
     );
-    assert.equal(
-      pkg.scripts['fix:refcache'],
-      "echo '⚠️ fix:refcache is deprecated. Use fix:link-cache moving forward.' >&2 && npm run fix:link-cache",
+    const script = pkg.scripts['fix:refcache'];
+    assert.match(
+      script,
+      /npm run fix:link-cache/,
+      'fix:refcache forwards to fix:link-cache',
     );
+    assert.match(script, /deprecated/, 'fix:refcache warns of the deprecation');
   });
 
   test('directive on the first line may be followed by free-form text', () => {

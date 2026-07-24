@@ -148,12 +148,8 @@ jobs:
             echo "## Link cache is stale"
             echo
             echo "All links check out ✅ — but this PR leaves the committed link cache"
-            echo "(\`.lycheecache\`) stale. To fix, either:"
-            echo
-            echo "- Comment \`/fix:link-cache\` on this PR — the bot updates the cache for you; or"
-            echo "- Run \`npm run check:links\` locally, then commit the modified \`.lycheecache\`."
-            echo
-            echo "For details, see [\`CACHE updates committed?\`](https://opentelemetry.io/docs/contributing/pr-checks/#cache-updates-committed)."
+            echo "(\`.lycheecache\`) stale. For recovery steps, see"
+            echo "[\`CACHE updates committed?\`](https://opentelemetry.io/docs/contributing/pr-checks/#cache-updates-committed)."
           } >> "$GITHUB_STEP_SUMMARY"
           exit 1
 

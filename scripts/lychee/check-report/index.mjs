@@ -5,8 +5,7 @@
 const RULE = '='.repeat(74);
 
 // Loud end-of-run notice for a successful check that modified the committed
-// link cache: the cache change must land with the PR, or the CI
-// `CACHE updates committed?` job fails (see .github/workflows/check-links.yml).
+// link cache.
 export function cacheUpdatedNotice() {
   return [
     RULE,
@@ -31,10 +30,8 @@ export function failedUrlsOf(output) {
   return failures;
 }
 
-// Report for a failed check whose links are genuinely dead: names the count,
-// lists each URL with its status, and points at the fixes — repair or remove
-// the link, or mark a checker-hostile URL with `?link-check=no` — while noting
-// that TIMEOUT/ERROR/5xx statuses can be transient.
+// Report for a failed check whose links are genuinely dead; empty when there
+// are no failures.
 export function deadLinksReport(failures) {
   if (failures.length === 0) return '';
   const count =
