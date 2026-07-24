@@ -1340,9 +1340,11 @@ https://github.com/exaring,206,1784183573
 https://github.com/exaring/otelpgx,206,1784183572
 https://github.com/fabled,206,1784284652
 https://github.com/facostaembrace,206,1784285052
+https://github.com/fali007,200,1784790672
 https://github.com/fastify,206,1784285140
 https://github.com/fastify/otel,206,1784285140
 https://github.com/fbogsany,206,1784284896
+https://github.com/fbourgey,200,1784790672
 https://github.com/federicobond,206,1784269720
 https://github.com/felixge,206,1784284623
 https://github.com/fengshunli,206,1784269723
@@ -1351,6 +1353,7 @@ https://github.com/flc1125,206,1784285045
 https://github.com/flipt-io,206,1784284820
 https://github.com/flipt-io/flipt,206,1784284815
 https://github.com/florianl,200,1784701475
+https://github.com/florianl/firepit,200,1784790672
 https://github.com/fluentci-io,206,1784284995
 https://github.com/fluentci-io/fluentci-engine#-opentelemetry-tracing,200,1784701494
 https://github.com/fluentci-io/fluentci-engine,206,1784355865
@@ -1690,6 +1693,7 @@ https://github.com/mtwo,206,1784183208
 https://github.com/muhammad-othman,206,1784285067
 https://github.com/mviitane,206,1784269421
 https://github.com/mwear,206,1784284981
+https://github.com/mwimpelberg28,200,1784790672
 https://github.com/mx-psi,200,1784701474
 https://github.com/mxiamxia,206,1784285068
 https://github.com/my-git9,206,1784442608
@@ -2891,6 +2895,7 @@ https://github.com/open-telemetry/opentelemetry-cpp/tree/main/exporters/promethe
 https://github.com/open-telemetry/opentelemetry-cpp/tree/main/exporters/zipkin,206,1784269462
 https://github.com/open-telemetry/opentelemetry-cpp/tree/main/opentracing-shim,206,1784284647
 https://github.com/open-telemetry/opentelemetry-cpp/tree/main/resource_detectors/,200,1784730608
+https://github.com/open-telemetry/opentelemetry-demo#demos-featuring-the-astronomy-shop,200,1784790672
 https://github.com/open-telemetry/opentelemetry-demo,206,1784442353
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/README.md?plain=1,206,1784442357
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/accounting/,206,1784442349
@@ -2915,6 +2920,9 @@ https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quote/,206,17
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/react-native-app/,206,1784442352
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendation/,206,1784269447
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/,206,1784442350
+https://github.com/open-telemetry/opentelemetry-demo/issues/1601,200,1784790673
+https://github.com/open-telemetry/opentelemetry-demo/issues/3720,200,1784790672
+https://github.com/open-telemetry/opentelemetry-demo/pull/3604,200,1784790673
 https://github.com/open-telemetry/opentelemetry-demo/tree/db0d981326ee0161d706c949061686d7823d99a2/src/product-reviews,200,1784701477
 https://github.com/open-telemetry/opentelemetry-demo/tree/main/test,206,1784442358
 https://github.com/open-telemetry/opentelemetry-dotnet,206,1784269452
@@ -4840,6 +4848,7 @@ https://json-schema.org/,200,1784701519
 https://json-schema.org/understanding-json-schema/reference/annotations,200,1784183485
 https://jsonlines.org/,200,1784285008
 https://k0sproject.io/,206,1784442361
+https://k6.io/,200,1784790672
 https://kafka.apache.org/,206,1784285003
 https://kafka.apache.org/documentation/#connect,206,1784442379
 https://kafka.apache.org/documentation/streams/,206,1784284632
@@ -6035,6 +6044,7 @@ https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/,206
 https://www.cncf.io/blog/2024/11/04/opentelemetry-is-expanding-into-ci-cd-observability/,200,1784182993
 https://www.cncf.io/blog/2025/06/16/cncf-slack-workspace-changes-coming-on-friday-june-20/,200,1784355795
 https://www.cncf.io/blog/2026/02/09/what-cncf-project-velocity-in-2025-reveals-about-cloud-natives-future/,200,1784183213
+https://www.cncf.io/blog/2026/03/31/sustaining-opentelemetry-moving-from-dependency-management-to-stewardship/,200,1784790672
 https://www.cncf.io/case-studies/brz-migrated-the-austrian-business-service-portal-with-2m-users-to-keycloak/,206,1784183211
 https://www.cncf.io/case-studies/defacto/,206,1784183213
 https://www.cncf.io/case-studies/hdfc-bank/,206,1784183216
