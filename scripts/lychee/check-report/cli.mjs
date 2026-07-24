@@ -7,11 +7,11 @@
 // - Failure with genuinely dead links: name them and say that nothing
 //   cache-side can fix them (also in the step summary when run in CI).
 //
-// Used by `check:links` — local runs and the bot's `fix:link-cache`. The CI
-// `CHECK LINKS and CACHE` job invokes `_check:links` directly and reports
-// cache staleness itself (see .github/workflows/check-links.yml).
+// Used by `check:links` — local runs and the bot's `fix:link-cache`. CI
+// doesn't use this wrapper: its jobs invoke `_check:links` directly (see
+// .github/workflows/check-links.yml).
 
-import { spawnSync } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -28,31 +28,41 @@ const root = path.join(
 // output is captured npm-noise-free and the exit status observed; failures
 // are parsed for dead links. Kept in sync with package.json by the wiring
 // drift guard in ./index.test.mjs.
+//
+// Output streams through as it arrives — the run takes minutes (site build +
+// link check), so buffering it until exit would leave the terminal frozen —
+// while a copy accumulates for the dead-link parse.
 const bin = path.join(root, 'node_modules', '.bin', 'lychee-norm-cache');
-const run = spawnSync(bin, process.argv.slice(2), {
+const child = spawn(bin, process.argv.slice(2), {
   cwd: root,
-  encoding: 'utf8',
-  maxBuffer: 64 * 1024 * 1024,
   stdio: ['inherit', 'pipe', 'pipe'],
 });
-const status = run.status ?? 1;
-process.stdout.write(run.stdout ?? '');
-process.stderr.write(run.stderr ?? '');
-
-if (status === 0) {
-  if (cacheModified()) console.log(cacheUpdatedNotice());
-} else {
-  const report = deadLinksReport(
-    failedUrlsOf((run.stdout ?? '') + (run.stderr ?? '')),
-  );
-  if (report) {
-    console.log(report);
-    appendToStepSummary(report);
+let output = '';
+child.stdout.setEncoding('utf8');
+child.stderr.setEncoding('utf8');
+child.stdout.on('data', (chunk) => {
+  process.stdout.write(chunk);
+  output += chunk;
+});
+child.stderr.on('data', (chunk) => {
+  process.stderr.write(chunk);
+  output += chunk;
+});
+child.on('close', (code) => {
+  const status = code ?? 1;
+  if (status === 0) {
+    if (cacheModified()) console.log(cacheUpdatedNotice());
+  } else {
+    const report = deadLinksReport(failedUrlsOf(output));
+    if (report) {
+      console.log(report);
+      appendToStepSummary(report);
+    }
   }
-}
-// Not process.exit(status): a hard exit can drop buffered stdout/stderr
-// (e.g. a large dead-links report when output is piped, as under npm/tee).
-process.exitCode = status;
+  // Not process.exit(status): a hard exit can drop buffered stdout/stderr
+  // (e.g. a large dead-links report when output is piped, as under npm/tee).
+  process.exitCode = status;
+});
 
 // In CI (e.g., a bot `fix:link-cache` run), surface the report in the
 // workflow step summary as well.
