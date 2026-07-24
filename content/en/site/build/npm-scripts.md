@@ -5,7 +5,6 @@ description: >-
   OpenTelemetry website.
 weight: 20
 todo: Keep table entries sorted
-cSpell:ignore: lycheecache
 ---
 
 Script definitions live in the repository root
@@ -39,27 +38,26 @@ are internal helpers and are not intended to be run directly.
 
 ## Checking
 
-| Script                 | Description                                                    |
-| ---------------------- | -------------------------------------------------------------- |
-| `check:all`            | Run all check scripts in sequence.                             |
-| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                   |
-| `check:codeowners`     | Verify CODEOWNERS locale section matches the registry.         |
-| `check:collector-sync` | Run collector-sync checks.                                     |
-| `check:expired`        | List expired content (by front matter).                        |
-| `check:filenames`      | [Validate file naming & detect obsolete files/folders][fn].    |
-| `check:format`         | Prettier and prose-wrap checks.                                |
-| `check:i18n`           | Validate localization front matter (`default_lang_commit`).    |
-| `check:l10n`           | Run localization checks.                                       |
-| `check:links:diff`     | Lychee link check of changed files only (pilot).               |
-| `check:links:htmltest` | Link check the whole site with htmltest; lean build first.     |
-| `check:links:lychee`   | Lychee link check of the whole site; lean build first.         |
-| `check:links`          | Link check the whole site (htmltest, default); lean build 1st. |
-| `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                    |
-| `check:markdown`       | Markdown lint (content and projects).                          |
-| `check:registry`       | Validate registry YAML under `data/registry/`.                 |
-| `check:spelling`       | cspell over content, data, and layout Markdown.                |
-| `check:text`           | textlint over content and data.                                |
-| `check`                | Run the most commonly needed check scripts in sequence.        |
+| Script                 | Description                                                 |
+| ---------------------- | ----------------------------------------------------------- |
+| `check:all`            | Run all check scripts in sequence.                          |
+| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                |
+| `check:codeowners`     | Verify CODEOWNERS locale section matches the registry.      |
+| `check:collector-sync` | Run collector-sync checks.                                  |
+| `check:expired`        | List expired content (by front matter).                     |
+| `check:filenames`      | [Validate file naming & detect obsolete files/folders][fn]. |
+| `check:format`         | Prettier and prose-wrap checks.                             |
+| `check:i18n`           | Validate localization front matter (`default_lang_commit`). |
+| `check:l10n`           | Run localization checks.                                    |
+| `check:links:diff`     | Lychee link check of changed files only.                    |
+| `check:links:internal` | Offline link check (internal links only); lean build first. |
+| `check:links`          | Link check the whole site with Lychee; lean build first.    |
+| `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                 |
+| `check:markdown`       | Markdown lint (content and projects).                       |
+| `check:registry`       | Validate registry YAML under `data/registry/`.              |
+| `check:spelling`       | cspell over content, data, and layout Markdown.             |
+| `check:text`           | textlint over content and data.                             |
+| `check`                | Run the most commonly needed check scripts in sequence.     |
 
 ## Fixing
 
@@ -74,8 +72,8 @@ are internal helpers and are not intended to be run directly.
 | `fix:i18n`                | Add/fix i18n front matter (`fix:i18n:new`, `fix:i18n:status`). |
 | `fix:l10n`                | Apply localization fixes.                                      |
 | `fix:markdown`            | Fix Markdown lint issues and trailing spaces.                  |
-| `fix:refcache`            | Prune refcache and re-run link check (updates refcache).       |
-| `fix:refcache:refresh`    | Prune refcache by count.                                       |
+| `fix:refcache`            | Check links, updating the committed `.lycheecache`.            |
+| `fix:refcache:refresh`    | Prune the oldest cache entries, then `fix:refcache`.           |
 | `fix:submodule`           | Pin submodule revisions (same as `pin:submodule`).             |
 | `fix:filenames`           | [Rename files & remove obsolete files/folders][fn].            |
 | `fix:dict`                | Sort cspell word lists and normalize front matter.             |
@@ -121,39 +119,31 @@ are internal helpers and are not intended to be run directly.
     [Test categories](../../testing/#test-categories).
 
 [^fat]:
-    The housekeeping default: runs `fix:refcache` (prune, then link check) after
-    the content fixes; uses the keep-going `all` runner so every fix is
-    captured. The check phase excludes `check:links` (`fix:refcache` covers it)
-    and `check:i18n` (redundant after `fix:i18n` records drift status). See
-    [Housekeeping](../ci-workflows/#housekeeping).
+    The housekeeping default: runs `fix:refcache` (link check, refreshing the
+    link cache) after the content fixes; uses the keep-going `all` runner so
+    every fix is captured. The check phase excludes `check:links`
+    (`fix:refcache` covers it) and `check:i18n` (redundant after `fix:i18n`
+    records drift status). See [Housekeeping](../ci-workflows/#housekeeping).
 
 ## Utilities
 
-| Script                         | Description                                                    |
-| ------------------------------ | -------------------------------------------------------------- |
-| `seq`                          | Run given script names in sequence; exit on first failure.     |
-| `all`                          | Run all given scripts, then exit with failure if any failed.   |
-| `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).  |
-| `prepare`                      | Install step: `get:submodule`, then Docsy theme npm install.   |
-| `prebuild:*`                   | Pre-`build*` hooks; each runs `_prebuild`.                     |
-| `update:hugo`                  | Install latest hugo-extended.                                  |
-| `update:packages`              | Run npm-check-updates to bump deps.                            |
-| `generate:config:links`        | Generate git-ignored `.htmltest.yml` from `.htmltest.base.yml` |
-| `generate:config:links:lychee` | Generate git-ignored `lychee.toml` from `lychee.base.toml`.    |
-| `lychee:reseed`                | Rebuild `.lycheecache` from the refcache.                      |
-| `log:build`, `log:check:links` | Run the corresponding script and tee output to `tmp/`.         |
+| Script                         | Description                                                                     |
+| ------------------------------ | ------------------------------------------------------------------------------- |
+| `seq`                          | Run given script names in sequence; exit on first failure.                      |
+| `all`                          | Run all given scripts, then exit with failure if any failed.                    |
+| `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                   |
+| `prepare`                      | Install step: `get:submodule`, then Docsy theme `postinstall`.                  |
+| `prebuild:*`                   | Pre-`build*` hooks; each runs `_prebuild`.                                      |
+| `update:hugo`                  | Install latest hugo-extended.                                                   |
+| `update:packages`              | Run npm-check-updates to bump deps.                                             |
+| `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter. |
+| `log:build`, `log:check:links` | Run the corresponding script and tee output to `tmp/`.                          |
 
 ## Notes
 
-- **Refcache maintenance** is htmltest-specific. For details, see
-  [Refcache](../link-checking/#refcache).
-- **Lychee link check (pilot).** The `:lychee` and `:diff` scripts run
-  [Lychee](https://github.com/lycheeverse/lychee) as a faster alternative to
-  htmltest, mirroring its coverage. They generate `lychee.toml` and seed
-  `.lycheecache` from the refcache automatically; `lychee:reseed` refreshes that
-  cache. Lychee runs as a non-blocking
-  [CI pilot](../ci-workflows/#other-workflows) while it's evaluated in
-  [#10449](https://github.com/open-telemetry/opentelemetry.io/issues/10449).
+- **Link cache.** The link-check scripts read and update the committed
+  `.lycheecache`; the `fix:refcache*` scripts keep their historical names. For
+  details, see [Link checking](../link-checking/).
 - **`test:local-tools:lychee`** is the subset of `test:local-tools` that needs
   the `lychee` binary (behavioral fragment- and config-checking tests). Those
   tests skip when the binary is absent, so `test:local-tools` already covers

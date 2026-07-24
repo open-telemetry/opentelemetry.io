@@ -1,10 +1,10 @@
 name: Refcache refresh
-# cSpell:ignore chalin pushd
 
-# Creates (or updates) the PR that refreshes a number of the oldest refcache
-# entries. We say "the PR", because there can be at most one such PR at a time.
-# We refresh by first pruning the oldest N entries, then running the link
-# checker to update the refcache. N is set via the workflow_dispatch input.
+# Creates (or updates) the PR that refreshes a number of the oldest entries in
+# the link-check response cache (.lycheecache, aka the refcache). We say "the
+# PR", because there can be at most one such PR at a time. We refresh by first
+# pruning the oldest N entries, then running the link checker to update the
+# cache. N is set via the workflow_dispatch input.
 #
 # If the PR branch already exists, then by default we only rebase from `main`.
 # To force further pruning of the existing PR branch, invoke with
@@ -48,7 +48,7 @@ jobs:
         id: otelbot-token
         with:
           # the higher privileged docs token is needed to push commits to an existing PR
-          client-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -110,60 +110,28 @@ jobs:
 
       - run: npm install --omit=optional
 
-      - uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6.4.0
-
-      - name: Install htmltest
-        run: |
-          HTMLTEST_REPO=github.com/chalin/htmltest
-          BRANCH=dev/main
-          COMMIT_OR_TAG=0e53941b991235e0ef2686a5bb8dfa70895a652e # v0.17.0-43-g0e53941-chalin-dev
-          REPO_DIR=tmp/htmltest
-          git clone --branch $BRANCH https://$HTMLTEST_REPO.git $REPO_DIR
-          pushd $REPO_DIR
-          git checkout $COMMIT_OR_TAG
-          make build
-          HTMLTEST=$REPO_DIR/bin/htmltest
-          echo "HTMLTEST=$HTMLTEST" >> $GITHUB_ENV
+      - uses: ./.github/actions/install-lychee
 
       - name: Prune refcache
         if: ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' }}
         run: |
-          echo "List the oldest entry before pruning:"
-          npm run _refcache:prune -- --list -n 1
-          echo "Pruning $REFRESH_COUNT oldest refcache entries:"
-          npm run _refcache:prune -- -n $REFRESH_COUNT
+          echo "Oldest entry before pruning, then pruning $REFRESH_COUNT oldest refcache entries:"
+          npm run refcache -- --list 1 --prune $REFRESH_COUNT
 
       - name: List oldest entry after pruning
         run: |
-          OLDEST_ENTRY=$(npm run _refcache:prune -- --list -n 1 | grep '^\s')
+          OLDEST_ENTRY=$(npm run refcache -- --list 1 | grep '^\s')
           echo "Oldest entry after pruning: $OLDEST_ENTRY"
           echo "OLDEST_ENTRY=$OLDEST_ENTRY" >> $GITHUB_ENV
 
       - name: Build site and update refcache
+        env:
+          # Authenticated github.com checks (rate limits)
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
-          $HTMLTEST -v
+          lychee --version
           # Ignore link-check failures so we can still commit refcache updates
           npm run full:build -- fix:refcache || true
-          ./scripts/clean-refcache.sh
-
-          REFCACHE_NUM_STATUS_4XX=$(grep '"StatusCode": 4' static/refcache.json | wc -l | xargs)
-          echo "REFCACHE_NUM_STATUS_4XX=$REFCACHE_NUM_STATUS_4XX" >> $GITHUB_ENV
-
-      - uses: browser-actions/setup-chrome@2e1d749697dd1612b833dba4a722266286fbefcd # v2.1.2
-        id: setup-chrome
-        if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
-        with:
-          chrome-version: stable
-          install-dependencies: true # pulls required Linux libs
-
-      - name: Try to resolve status 4XX URLs if any
-        if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
-        env:
-          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
-        run: |
-          echo "Chrome path: $CHROME_PATH"
-          $CHROME_PATH --version
-          ./scripts/double-check-refcache-4XX.mjs --verbose
 
       - name: Commit refcache updates and push changes if any
         run: |
@@ -199,7 +167,7 @@ jobs:
           fi
 
           if gh pr create --title "Refresh refcache" \
-              --body "$PR_BODY" --draft;
+              --body "$PR_BODY";
           then
             PR_URL=$(gh pr view --json url --jq '.url')
             printf "PR created: %s\n" "$PR_URL"

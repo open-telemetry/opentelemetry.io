@@ -226,13 +226,13 @@ approvers and bounds it for Phase 1.
 
 ### Shared caveats
 
-- **`.htmltest.yml` is now CI-generated, not committed.** Since [#10260][] the
-  link-checker config is gitignored and generated in CI from
-  `.htmltest.base.yml` (on both `pull_request` and `merge_group` runs), so it no
-  longer appears in a PR's changed files; the helper treats any stray committed
-  copy as a non-locale-owned path (declines auto-merge). This also removed the
-  maintainer's old branch-update/regenerate steps — the merge queue test-merges
-  with `main` and regenerates the config.
+- **`lychee.toml` is CI-generated, not committed.** Since [#10260][] the
+  link-checker config is gitignored and generated in CI (now from
+  `lychee.base.toml` + content front matter, on both `pull_request` and
+  `merge_group` runs), so it no longer appears in a PR's changed files; the
+  helper treats any stray committed copy as a non-locale-owned path (declines
+  auto-merge). This also removed the maintainer's old branch-update/regenerate
+  steps — the merge queue test-merges with `main` and regenerates the config.
 - **Merge-queue assumption — verified (2026-06-06).** A merge queue _is_ active
   on `main`: a bare `gh pr merge --auto` (no strategy) on an eligible PR returns
   "will be added to the merge queue for main when ready". The helper's
