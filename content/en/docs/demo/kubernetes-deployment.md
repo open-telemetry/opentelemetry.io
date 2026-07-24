@@ -2,7 +2,7 @@
 title: Kubernetes deployment
 linkTitle: Kubernetes
 aliases: [kubernetes_deployment]
-cSpell:ignore: loadgen otlphttp spanmetrics
+cSpell:ignore: loadgen
 ---
 
 We provide a
@@ -180,21 +180,22 @@ your own exporters to the desired pipeline(s):
 opentelemetry-collector:
   config:
     exporters:
-      otlphttp/example:
+      otlp_http/example:
         endpoint: <your-endpoint-url>
 
     service:
       pipelines:
         traces:
-          exporters: [spanmetrics, otlphttp/example]
+          exporters: [otlp_grpc/jaeger, debug, span_metrics, otlp_http/example]
 ```
 
 > [!NOTE]
 >
 > When merging YAML values with Helm, objects are merged and arrays are
-> replaced. The `spanmetrics` exporter must be included in the array of
-> exporters for the `traces` pipeline if overridden. Not including this exporter
-> will result in an error.
+> replaced. Repeat the exporters from the chart's default configuration, such as
+> `otlp_grpc/jaeger` and `debug`, to keep them active. The `span_metrics`
+> connector must be included in the array of exporters for the `traces` pipeline
+> if overridden. Not including it will result in an error.
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require

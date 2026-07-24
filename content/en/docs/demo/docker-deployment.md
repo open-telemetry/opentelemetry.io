@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
+cSpell:ignore: tracetest tracetesting
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
@@ -129,11 +129,18 @@ backend you already have (e.g., an existing instance of Jaeger, Zipkin, or one
 of the [vendors of your choice](/ecosystem/vendors/)).
 
 OpenTelemetry Collector can be used to export telemetry data to multiple
-backends. By default, the collector in the demo application will merge the
-configuration from two files:
+backends. The collector in the demo application layers its configuration from up
+to four files, each merged on top of the previous one:
 
-- `otelcol-config.yml`
-- `otelcol-config-extras.yml`
+- `otelcol-config.yml`: the base receivers, processors, connectors, and
+  pipelines. It exports to the `debug` exporter only.
+- `otelcol-config-full.yml`: adds the Kafka metrics receiver, loaded with
+  `compose.full.yaml`.
+- `otelcol-config-observability.yml`: adds the Jaeger, Prometheus, OpenSearch,
+  and profiling exporters, plus OpAMP status reporting. Loaded with
+  `compose.observability.yaml`.
+- `otelcol-config-extras.yml`: your own customizations. It is empty by default
+  and always loaded last.
 
 To add your backend, open the file
 [src/otel-collector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml)
@@ -144,7 +151,7 @@ with an editor.
 
   ```yaml
   exporters:
-    otlphttp/example:
+    otlp_http/example:
       endpoint: <your-endpoint-url>
   ```
 
@@ -155,15 +162,16 @@ with an editor.
   service:
     pipelines:
       traces:
-        exporters: [spanmetrics, otlphttp/example]
+        exporters: [otlp_grpc/jaeger, debug, span_metrics, otlp_http/example]
   ```
 
 > [!NOTE]
 >
 > When merging YAML values with the Collector, objects are merged and arrays are
-> replaced. The `spanmetrics` exporter must be included in the array of
-> exporters for the `traces` pipeline if overridden. Not including this exporter
-> will result in an error.
+> replaced. Repeat the exporters from the earlier configuration layers, such as
+> `otlp_grpc/jaeger` and `debug`, to keep them active. The `span_metrics`
+> connector must be included in the array of exporters for the `traces` pipeline
+> if overridden. Not including it will result in an error.
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require
