@@ -59,9 +59,8 @@ describe('parseFixDirective', () => {
   });
 
   test('/fix:refcache still runs the fix:refcache script, with a deprecation notice', () => {
-    // The command stays `fix:refcache` (not `fix:link-cache`) because the
-    // resolved script runs on the PR head, and pre-rename heads only have
-    // `fix:refcache`; post-rename package.json keeps a forwarding alias.
+    // Why the command stays `fix:refcache`: see the compat-mapping note on
+    // parseFixDirective in ./index.mjs.
     assert.deepEqual(parseFixDirective('/fix:refcache'), {
       valid: true,
       actionName: 'fix:refcache',

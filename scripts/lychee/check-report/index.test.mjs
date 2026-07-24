@@ -87,4 +87,52 @@ suite('wiring drift guard', () => {
     );
     assert.equal(pkg.scripts['_check:links'], 'lychee-norm-cache');
   });
+
+  test('the job that cacheUpdatedNotice() cites exists in check-links.yml', () => {
+    // The notice names a CI job. Workflow YAML and terminal strings never
+    // enter the built site, so lychee can't catch drift between the two —
+    // this guard does.
+    const jobName = 'CACHE updates committed?';
+    assert.ok(
+      cacheUpdatedNotice().includes(jobName),
+      `notice cites the '${jobName}' job`,
+    );
+    const workflow = fs.readFileSync(
+      new URL('../../../.github/workflows/check-links.yml', import.meta.url),
+      'utf8',
+    );
+    assert.ok(
+      workflow.includes(`name: ${jobName}`),
+      `check-links.yml defines a job named '${jobName}'`,
+    );
+  });
+
+  test('pr-checks anchors cited outside built HTML exist in pr-checks.md', () => {
+    // check-links.yml and deadLinksReport() hardcode production pr-checks
+    // URLs that lychee never sees (YAML / terminal surfaces); guard their
+    // anchors against explicit {#…} heading ids in pr-checks.md. Cited
+    // headings carry explicit ids so rewording can't break the URLs.
+    const workflow = fs.readFileSync(
+      new URL('../../../.github/workflows/check-links.yml', import.meta.url),
+      'utf8',
+    );
+    const report = deadLinksReport([{ status: '404', url: 'https://x.test/' }]);
+    const anchors = [
+      ...(workflow + report).matchAll(/pr-checks\/#([a-z0-9-]+)/g),
+    ].map((m) => m[1]);
+    assert.ok(anchors.length > 0, 'at least one pr-checks anchor is cited');
+    const doc = fs.readFileSync(
+      new URL(
+        '../../../content/en/docs/contributing/pr-checks.md',
+        import.meta.url,
+      ),
+      'utf8',
+    );
+    for (const anchor of anchors) {
+      assert.ok(
+        doc.includes(`{#${anchor}`),
+        `pr-checks.md declares the {#${anchor}} anchor`,
+      );
+    }
+  });
 });

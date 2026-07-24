@@ -61,11 +61,11 @@ expired. Lychee caches successful results only, so failures are retried on every
 run.
 
 If you add or change external links, run `npm run check:links` **before
-submitting your PR** — it's quick since all other links are cached — and commit
-the updated `.lycheecache` along with your content changes. Otherwise the
-`CACHE updates committed?` check will fail; if that happens, run the command and
-push, or comment `/fix:link-cache` on your PR to have the bot do it. For
-details, see [`CACHE updates committed?`][pr-checks].
+submitting your PR** — the link check itself is quick since all other links are
+cached — and commit the updated `.lycheecache` along with your content changes.
+Otherwise the `CACHE updates committed?` check will fail; if that happens, run
+the command and push, or comment `/fix:link-cache` on your PR to have the bot do
+it. For details, see [`CACHE updates committed?`][pr-checks].
 
 ## Cache refresh and housekeeping workflows {#workflows}
 
