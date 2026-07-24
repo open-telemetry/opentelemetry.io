@@ -26,7 +26,7 @@ fi
 body=""
 
 for yaml_file in ${FILES}; do
-    echo $yaml_file
+    echo "$yaml_file"
     # Check if yq is installed
     if ! command -v yq &> /dev/null; then
         echo "yq could not be found, please install yq."
@@ -73,6 +73,49 @@ for yaml_file in ${FILES}; do
         esac
     }
 
+    update_metadata() {
+        package_name=$1
+        registry=$2
+        yaml_file=$3
+
+        case $registry in
+            gems)
+                gem_json="$(curl -s "https://rubygems.org/api/v1/gems/${package_name}.json")"
+                ${UPDATE_YAML} ".title = \"$(jq -r '.name' <<< "$gem_json")"\" "$yaml_file"
+                ${UPDATE_YAML} ".description = \"$(jq -r '.info' <<< "$gem_json")"\" "$yaml_file"
+                ${UPDATE_YAML} ".license = \"$(jq -r '.licenses | join(", ")' <<< "$gem_json")"\" "$yaml_file"
+                set_checked_url "$yaml_file" "$gem_json" '.documentation_uri' '.urls.docs'
+                set_checked_url "$yaml_file" "$gem_json" '.source_code_uri' '.urls.repo'
+                set_checked_url "$yaml_file" "$gem_json" '.homepage_uri' '.urls.website'
+                ;;
+            *)
+                ;;
+        esac
+    }
+
+    set_checked_url() {
+        yaml_file=$1
+        json=$2
+        json_path=$3
+        setting_path=$4
+
+        url="$(jq -r "$json_path" <<< "$json")"
+
+        if [ -z "$url" ] || [ "$url" = "null" ]; then
+            return
+        fi
+
+        # Check HTTP status (no output, no body)
+        status="$(curl -s -o /dev/null -w '%{http_code}' "$url")"
+
+        # Only update when status is 2xx
+        case "$status" in
+            2??)
+                ${UPDATE_YAML} "${setting_path} = \"$url\"" "$yaml_file"
+                ;;
+        esac
+    }
+
     # Read package details
     name=$(yq eval '.package.name' "$yaml_file")
     registry=$(yq eval '.package.registry' "$yaml_file")
@@ -91,12 +134,14 @@ for yaml_file in ${FILES}; do
         elif [ -z "$latest_version" ]; then
             echo "${yaml_file} ($registry): Could not get latest version from registry."
         elif [ -z "$current_version" ]; then
-            ${UPDATE_YAML} ".package.version = \"$latest_version\"" $yaml_file
+            ${UPDATE_YAML} ".package.version = \"$latest_version\"" "$yaml_file"
+            update_metadata "$name" "$registry" "$yaml_file"
             row="${yaml_file} ($registry): Version field was missing. Populated with the latest version: $latest_version"
             echo "${row}"
             body="${body}\n- ${row}"
         elif [ "$latest_version" != "$current_version" ]; then
             ${UPDATE_YAML} ".package.version = \"$latest_version\"" "$yaml_file"
+            update_metadata "$name" "$registry" "$yaml_file"
             row="($registry): Updated version from $current_version to $latest_version in $yaml_file"
             echo "${yaml_file} ${row}"
             body="${body}\n- ${row}"

@@ -1,4 +1,4 @@
-title: PG Instrumentation
+title: opentelemetry-instrumentation-pg
 registryType: instrumentation
 language: ruby
 tags:
@@ -6,12 +6,14 @@ tags:
   - instrumentation
   - pg
   - postgresql
-license: Apache 2.0
-description: PG instrumentation for Ruby.
+license: Apache-2.0
+description: PG (PostgreSQL) instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/pg
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-pg/v0.36.0/instrumentation/pg
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-pg/0.36.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems

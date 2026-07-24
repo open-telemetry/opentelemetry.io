@@ -1,0 +1,18 @@
+title: opentelemetry-sdk
+registryType: sdk
+language: ruby
+tags:
+  - ruby
+license: Apache-2.0
+description: A stats collection and distributed tracing framework
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-sdk/v1.12.1/sdk
+  docs: https://rubydoc.info/gems/opentelemetry-sdk/1.12.1
+  website: https://github.com/open-telemetry/opentelemetry-ruby
+createdAt: 2020-02-04
+package:
+  registry: gems
+  name: opentelemetry-sdk
+  version: 1.12.1

@@ -31,9 +31,9 @@
         "provider",
         "receiver",
         "resource-detector",
+        "sampler",
         "sdk",
         "semantic-convention",
-        "sampler",
         "utilities"
       ]
     },
