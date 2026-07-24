@@ -1,0 +1,21 @@
+# cSpell:ignore taleseal
+title: Taleseal
+registryType: application integration
+language: js
+tags:
+  - ai
+  - genai
+license: proprietary
+description:
+  Taleseal is an OTLP/HTTP sink for AI agent runs. Point an OpenTelemetry
+  exporter emitting GenAI (gen_ai.*) spans at it, and each run is composed into
+  a shareable narrative page — beats, tool receipts, token counts and a span
+  timeline — reachable at one short link.
+authors:
+  - name: Taleseal
+    url: https://taleseal.com
+urls:
+  website: https://taleseal.com
+  repo: https://github.com/Taleseal/taleseal
+createdAt: '2026-07-13'
+isNative: true
