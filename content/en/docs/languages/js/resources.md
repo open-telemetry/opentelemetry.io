@@ -56,6 +56,13 @@ ProcessDetector found resource. Resource {
 
 ## Adding resources with environment variables
 
+> [!NOTE]
+>
+> This environment-variable configuration applies to Node.js. Browser
+> applications don't automatically read `OTEL_*` properties from `window`; set
+> resource attributes in code as shown in the
+> [Browser getting started guide](../getting-started/browser/#creating-a-tracer-provider).
+
 In the above example, the SDK detected the process and also added the
 `host.name=localhost` attribute set via the environment variable automatically.
 

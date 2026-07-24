@@ -62,6 +62,8 @@ and the instrumentation `@opentelemetry/instrumentation-document-load`:
 ```shell
 npm init -y
 npm install @opentelemetry/api \
+  @opentelemetry/resources \
+  @opentelemetry/semantic-conventions \
   @opentelemetry/sdk-trace-web \
   @opentelemetry/instrumentation-document-load \
   @opentelemetry/context-zone
@@ -110,12 +112,25 @@ which brings the instrumentation to trace document load:
 
 ```js
 /* document-load.ts|js file - the code snippet is the same for both the languages */
+import {
+  defaultResource,
+  resourceFromAttributes,
+} from '@opentelemetry/resources';
+import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 
-const provider = new WebTracerProvider();
+const resource = defaultResource().merge(
+  resourceFromAttributes({
+    [ATTR_SERVICE_NAME]: 'document-load-app',
+  }),
+);
+
+const provider = new WebTracerProvider({
+  resource,
+});
 
 provider.register({
   // Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional
@@ -127,6 +142,10 @@ registerInstrumentations({
   instrumentations: [new DocumentLoadInstrumentation()],
 });
 ```
+
+Browser applications don't automatically read OpenTelemetry environment
+variables or properties such as `window.OTEL_SERVICE_NAME`. Set `service.name`
+explicitly on the provider's resource as shown above.
 
 Now build the app with parcel:
 
@@ -160,12 +179,24 @@ import {
   ConsoleSpanExporter,
   SimpleSpanProcessor,
 } from '@opentelemetry/sdk-trace-base';
+import {
+  defaultResource,
+  resourceFromAttributes,
+} from '@opentelemetry/resources';
+import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 
+const resource = defaultResource().merge(
+  resourceFromAttributes({
+    [ATTR_SERVICE_NAME]: 'document-load-app',
+  }),
+);
+
 const provider = new WebTracerProvider({
+  resource,
   spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
 });
 
