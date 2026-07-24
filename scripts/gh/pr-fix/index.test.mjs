@@ -71,11 +71,15 @@ describe('parseFixDirective', () => {
 
   test('the fix:refcache forwarding alias survives in package.json', () => {
     // Guards the pair: as long as the directive above resolves to the
-    // deprecated script name, package.json must keep forwarding it.
+    // deprecated script name, package.json must keep forwarding it (and
+    // warning local users off the deprecated name).
     const pkg = JSON.parse(
       fs.readFileSync(new URL('../../../package.json', import.meta.url)),
     );
-    assert.equal(pkg.scripts['fix:refcache'], 'npm run fix:link-cache');
+    assert.equal(
+      pkg.scripts['fix:refcache'],
+      "echo '⚠️ fix:refcache is deprecated. Use fix:link-cache moving forward.' >&2 && npm run fix:link-cache",
+    );
   });
 
   test('directive on the first line may be followed by free-form text', () => {

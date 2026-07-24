@@ -104,7 +104,7 @@
     "fix:link-cache:refresh": "refcache --prune ${PRUNE_N:-800} && npm run fix:link-cache",
     "fix:link-cache": "npm run check:links",
     "fix:markdown": "npm run check:markdown -- --fix && echo '\nTrimming trailing whitespace' && npm run _fix:trailing-spaces",
-    "fix:refcache": "npm run fix:link-cache",
+    "fix:refcache": "echo '⚠️ fix:refcache is deprecated. Use fix:link-cache moving forward.' >&2 && npm run fix:link-cache",
     "fix:submodule": "npm run pin:submodule",
     "fix:text": "npm run check:text -- --fix",
     "fix": "CMD_SKIP=i18n npm run fix:all",
