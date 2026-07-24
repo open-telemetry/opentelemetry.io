@@ -123,31 +123,6 @@ describe('buildOutcomeComment', () => {
     assert.equal(build({ prState: 'open' }), build({}));
   });
 
-  test('not-run reason: pipeline declined to run the action', () => {
-    const body = build({ notRunReason: 'The branch is stale.' });
-    assert.equal(
-      body,
-      `⚠️ \`fix:refcache\` was not run. The branch is stale. ${LOGS}`,
-    );
-  });
-
-  test('not-run reason takes precedence over generation and apply outcomes', () => {
-    const body = build({
-      notRunReason: 'The branch is stale.',
-      generateResult: 'failure',
-      applyResult: 'skipped',
-    });
-    assert.match(body, /was not run\. The branch is stale\./);
-  });
-
-  test('closed PR takes precedence over a not-run reason', () => {
-    const body = build({
-      prState: 'closed',
-      notRunReason: 'The branch is stale.',
-    });
-    assert.match(body, /^❌ This PR is closed/);
-  });
-
   test('label links to the directive comment when its URL is given', () => {
     const body = build({ directiveUrl: 'https://example.test/c/1' });
     assert.match(
@@ -182,34 +157,31 @@ describe('buildOutcomeComment', () => {
               for (const hint of ['Any hint text.', '']) {
                 for (const prState of ['open', 'closed', '']) {
                   for (const directiveUrl of ['d', '']) {
-                    for (const notRunReason of ['A reason.', '']) {
-                      const body = buildOutcomeComment({
-                        label,
-                        prState,
-                        notRunReason,
-                        generateResult,
-                        patchSkipped,
-                        commandExitStatus,
-                        applyResult,
-                        runId: '1',
-                        runUrl: 'u',
-                        directiveUrl,
-                        hint,
-                      });
+                    const body = buildOutcomeComment({
+                      label,
+                      prState,
+                      generateResult,
+                      patchSkipped,
+                      commandExitStatus,
+                      applyResult,
+                      runId: '1',
+                      runUrl: 'u',
+                      directiveUrl,
+                      hint,
+                    });
+                    assert.ok(
+                      typeof body === 'string' && body.length > 0,
+                      'comment should be a non-empty string',
+                    );
+                    assert.ok(
+                      body.endsWith('See [run 1](u).'),
+                      `comment should end with the run link: ${body}`,
+                    );
+                    if (directiveUrl) {
                       assert.ok(
-                        typeof body === 'string' && body.length > 0,
-                        'comment should be a non-empty string',
+                        body.includes('](d)'),
+                        `comment should link the directive: ${body}`,
                       );
-                      assert.ok(
-                        body.endsWith('See [run 1](u).'),
-                        `comment should end with the run link: ${body}`,
-                      );
-                      if (directiveUrl) {
-                        assert.ok(
-                          body.includes('](d)'),
-                          `comment should link the directive: ${body}`,
-                        );
-                      }
                     }
                   }
                 }
