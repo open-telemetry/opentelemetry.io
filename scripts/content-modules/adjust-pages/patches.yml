@@ -1,0 +1,44 @@
+# Data-driven list of spec patches, applied by adjust-pages (cli.mjs) at
+# cp:spec time. For the entry schema and workflow, see
+# content/en/site/build/content-module-patches.md.
+#
+# Example (a past patch):
+#
+# # cSpell:ignore rocketmq
+# - id: 2026-06-05-rocketmq-consumer-group-url
+#   module: semconv
+#   minVers: 1.41.0
+#   maxVers: 1.42.0
+#   file: ^tmp/semconv/docs/messaging/rocketmq\.md$
+#   search: '(?<pre>https://rocketmq\.apache\.org/docs/domainModel/)07(?<post>consumergroup)'
+#   replace: '$<pre>08$<post>/'
+#   flags: g
+#   notes: >-
+#     RocketMQ docs renumbered the consumer group page from 07 to 08.
+#     Upstreamed fix: open-telemetry/semantic-conventions#3771
+#
+- id: 2026-07-22-grpc-status-godoc-to-pkg-go-dev
+  module: otlp
+  minVers: 1.11.0
+  file: ^tmp/otlp/docs/specification\.md$
+  search: 'https://godoc\.org/google\.golang\.org/grpc/status#Status\.WithDetails'
+  replace: 'https://pkg.go.dev/google.golang.org/grpc/internal/status#Status.WithDetails'
+  flags: g
+  notes: >-
+    godoc.org is deprecated and redirects to pkg.go.dev, which does not render
+    method anchors for grpc status.Status (it is a type alias, so WithDetails is
+    documented on the internal/status page). Upstreamed fix:
+    open-telemetry/opentelemetry-proto#832
+
+- id: 2026-07-22-azure-functions-static-clients-anchor
+  module: semconv
+  minVers: 1.43.0
+  file: ^tmp/semconv/docs/faas/faas-spans\.md$
+  search: 'https://docs\.microsoft\.com/azure/azure-functions/manage-connections#static-clients'
+  replace: 'https://learn.microsoft.com/azure/azure-functions/manage-connections#reuse-client-instances'
+  flags: g
+  notes: >-
+    Azure reworked the manage-connections page: the #static-clients section is
+    now #reuse-client-instances, and docs.microsoft.com redirects to
+    learn.microsoft.com. Upstreamed fix:
+    open-telemetry/semantic-conventions#3917

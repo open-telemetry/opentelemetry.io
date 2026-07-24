@@ -1,5 +1,5 @@
 # cSpell:ignore azureblob azureblobexporter
-title: Apache Blob Exporter
+title: Azure Blob Exporter
 registryType: exporter
 language: collector
 tags:
@@ -19,4 +19,4 @@ createdAt: 2025-04-11
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/azureblobexporter
-  version: v0.154.0
+  version: v0.157.0

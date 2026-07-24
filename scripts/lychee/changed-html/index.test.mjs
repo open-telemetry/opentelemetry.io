@@ -4,8 +4,11 @@
 
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
+import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, delimiter } from 'node:path';
 
-import { contentToPublic, confineToPublic } from './index.mjs';
+import { contentToPublic, confineToPublic, changedFiles } from './index.mjs';
 
 describe('contentToPublic()', () => {
   test('an EN section index drops the locale prefix', () => {
@@ -83,4 +86,39 @@ describe('confineToPublic()', () => {
   test('a null input stays null', () => {
     assert.equal(confineToPublic(null, root), null);
   });
+});
+
+describe('changedFiles()', () => {
+  test('an unresolvable diff base is reported as an error', () => {
+    // A silent empty result here would false-green the diff-scoped check.
+    process.env.LYCHEE_DIFF_BASE = 'definitely-not-a-git-ref';
+    try {
+      assert.throws(() => changedFiles(), /cannot resolve the diff base/i);
+    } finally {
+      delete process.env.LYCHEE_DIFF_BASE;
+    }
+  });
+
+  test(
+    'a required git command failing after a valid merge base is an error',
+    { skip: process.platform === 'win32' && 'the git shim is a POSIX script' },
+    () => {
+      // Shim git so merge-base succeeds but diff fails: the failure must
+      // propagate rather than read as "no changed files" (a false green).
+      const dir = mkdtempSync(join(tmpdir(), 'changed-html-'));
+      const origPath = process.env.PATH;
+      try {
+        writeFileSync(
+          join(dir, 'git'),
+          '#!/bin/sh\ncase "$1" in merge-base) echo abc123;; *) exit 1;; esac\n',
+          { mode: 0o755 },
+        );
+        process.env.PATH = `${dir}${delimiter}${origPath}`;
+        assert.throws(() => changedFiles(), /git diff/);
+      } finally {
+        process.env.PATH = origPath;
+        rmSync(dir, { recursive: true, force: true });
+      }
+    },
+  );
 });

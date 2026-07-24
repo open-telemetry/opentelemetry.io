@@ -16,23 +16,38 @@ procedure) a set of steps that an agent or maintainer can follow to accomplish a
 specific task. Agent skills are defined in [`.claude/skills/`][]. Maintainer
 procedures are defined in this section.
 
+In skill and procedure steps, the prose states the intent of each action; a
+command given in parentheses is a suggested way to fulfill the step, not the
+only valid one. Skills written before this convention was adopted might not yet
+follow it.
+
 ## Agent skills
 
 As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 
+- [`/approve-registry-update [pr-number-or-url]`][approve-registry-update]:
+  assist reviewers deciding whether to merge an otelbot registry version-bump
+  PR; verify it's a clean bump and, on confirmation, approve it and add it to
+  the merge queue. With no argument, processes open registry auto-update PRs.
 - [`/draft-issue <issue-description>`][draft-issue]: draft a GitHub issue in the
   `opentelemetry.io` repository following issue templates, contributing
   guidelines, and the label taxonomy.
 - [`/refresh-refcache-pr-fix`][refresh-refcache-pr-fix]: fetch, review and
-  attempt to fix non-2XX URLs on the upstream `otelbot/refcache-refresh` PR.
+  attempt to fix non-2XX URLs on otelbot PRs (by default, all open `otelbot/*`
+  PRs with failing link checks, or specific branches when so instructed).
 - [`/resolve-refcache-conflicts <optional-pr-number>`][resolve-refcache-conflicts]:
-  resolve `static/refcache.json` merge/rebase conflicts.
+  resolve `.lycheecache` merge/rebase conflicts.
 - [`/review-blog-post <blog-post-path-or-pr-number>`][review-blog-post]: review
   an OpenTelemetry blog post for front matter compliance, content conventions,
   GitHub link stability (`gh-url-hash`), spelling, and OTel terminology.
 - [`/review-pull-request <pr-number-or-url>`][review-pull-request]: review a
   pull request for CI check semantics, CLA and approval-label workflow, refcache
   handling, locale rules, and content quality.
+- [`/setup-new-localization <kickoff-issue | lang-code>`][setup-new-localization]:
+  set up a new website localization end-to-end — Hugo language block, content
+  mounts, cSpell word list, `lang:<lang>` labeler config and label,
+  `locale-teams.yaml` with CODEOWNERS regeneration, and the `localization.md`
+  entries.
 - [`/update-i18n-drift-status [--locale locale,...] [--create-pr]`][update-i18n-drift-status]:
   update the `drifted_from_default` front matter field for localized content,
   with optional arguments to limit which locales are processed and whether to
@@ -66,6 +81,8 @@ See the section index below.
 [`.claude/skills/`]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/.claude/skills
 [agentskills.io]: https://agentskills.io
+[approve-registry-update]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/approve-registry-update/SKILL.md
 [draft-issue]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/draft-issue/SKILL.md
 [refresh-refcache-pr-fix]:
@@ -76,6 +93,8 @@ See the section index below.
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-blog-post/SKILL.md
 [review-pull-request]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-pull-request/SKILL.md
+[setup-new-localization]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/setup-new-localization/SKILL.md
 [update-i18n-drift-status]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-i18n-drift-status/SKILL.md
 [update-old-blog-ignores]:
