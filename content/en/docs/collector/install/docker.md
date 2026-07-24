@@ -43,7 +43,7 @@ docker run -v $(pwd)/config.yaml:/etc/otelcol/config.yaml ghcr.io/open-telemetry
 ## Docker Compose
 
 You can also add the OpenTelemetry Collector to your existing
-`docker-compose.yaml` file:
+`compose.yaml` file:
 
 ```yaml
 otel-collector:
