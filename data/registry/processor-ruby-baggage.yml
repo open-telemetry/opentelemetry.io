@@ -1,0 +1,19 @@
+title: Baggage Span Processor
+registryType: processor
+language: ruby
+tags:
+  - baggage
+  - processor
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/processor/baggage
+license: Apache 2.0
+description:
+  This is an OpenTelemetry [span
+  processor](https://opentelemetry.io/docs/specs/otel/trace/sdk/#span-processor)
+  that reads key/values stored in
+  [Baggage](https://opentelemetry.io/docs/specs/otel/baggage/api/) in the
+  starting span's parent context and adds them as attributes to the span.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

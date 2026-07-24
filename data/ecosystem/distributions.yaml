@@ -1,4 +1,4 @@
-# cSpell:ignore Splunk AWS ADOT Grafana Bindplane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT KM KloudMate
+# cSpell:ignore Splunk AWS ADOT Grafana Bindplane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT dash0
 - name: Splunk Distribution of OpenTelemetry Collector
   url: https://github.com/signalfx/splunk-otel-collector
   docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
@@ -199,10 +199,10 @@
   url: https://github.com/honeycombio/honeycomb-collector-distro
   docsUrl: https://github.com/honeycombio/honeycomb-collector-distro/blob/main/README.md
   components: [Collector]
-- name: KM Agent - KloudMate's Distribution of OpenTelemetry Collector
-  url: https://github.com/kloudmate/km-agent
-  docsUrl: https://github.com/kloudmate/km-agent/blob/master/README.md
-  components: [Collector]
+- name: Dash0 Operator for Kubernetes
+  url: https://github.com/dash0hq/dash0-operator
+  docsUrl: https://www.dash0.com/hub/integrations/int_dash0_operator/overview
+  components: [Collector, Node, Java, .NET, Python]
 
 # OSS Collector Distros
 - name: OpenTelemetry Collector Core Distro

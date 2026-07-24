@@ -1,10 +1,7 @@
 ---
 title: 'Kubernetes ワークロード向けマネージドテレメトリープラットフォーム'
 linkTitle: 'K8s ワークロード向けマネージドテレメトリープラットフォーム'
-date: '2026-06-24'
-author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
-sig: End-User
-default_lang_commit: 90678a748050ca7fb9614c39c1c077a248e9a279
+default_lang_commit: 87b4cea0e74dccab17d61601c4bd80e15dc95d08
 cSpell:ignore: Autoscaler kube OTTL SDLC Skyscanner statefulset
 ---
 
@@ -794,7 +791,7 @@ OTLP エクスポーター設定と同様に、オペレーターはデータの
 [27]: /docs/specs/otel/metrics/sdk/#exemplar
 [28]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md
 [31]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor/README.md
-[32]: https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/compatibility.md#compatibility-matrix
+[32]: https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/getting-started/compatibility.md#compatibility-matrix
 [33]: https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection
 [34]: /docs/platforms/kubernetes/operator/
 [35]: /docs/platforms/kubernetes/operator/automatic/
