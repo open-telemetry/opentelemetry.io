@@ -175,6 +175,47 @@ Example of a semistructured log:
 Semistructured logs may require mapping and type coercion during ingestion to be
 fully useful for downstream analysis.
 
+## Emitting logs efficiently
+
+A common question is whether application code should check if logging is enabled
+before emitting a log record, for example:
+
+```text
+if (logger.Enabled(...)) {
+  logger.Info("Hello {name}", name);
+}
+```
+
+In most cases this check is unnecessary. OpenTelemetry SDKs are designed so that
+emitting a log record is inexpensive when the record would be dropped, for
+example because its severity is below the configured level or because no
+processor is interested in it. Adding an `Enabled` check around every log
+statement gives no meaningful performance benefit and makes your code harder to
+read.
+
+The `Enabled` API is useful only when _constructing_ the log record is itself
+expensive, and you want to avoid that cost when the record would be dropped. For
+example, if the body or an attribute must be fetched from a database or computed
+through an expensive operation:
+
+```text
+if (logger.Enabled(...)) {
+  logger.Info("Order total {total}", ComputeExpensiveTotal());
+}
+```
+
+Only guard expressions that are free of side effects, since the guarded code
+runs only when logging is enabled. Guarding code that has side effects, or that
+other logic depends on, makes your application's behavior depend on the logging
+configuration, which is usually a source of subtle bugs.
+
+Even then, keep in mind that the result of `Enabled` is not static: it can
+change over time as configuration changes, so it should be evaluated per log
+record and not cached.
+
+For the normative API guidance, see the
+[Logs API specification](/docs/specs/otel/logs/api/#enabled).
+
 ## OpenTelemetry logging components
 
 The following lists of concepts and components power OpenTelemetry's logging
