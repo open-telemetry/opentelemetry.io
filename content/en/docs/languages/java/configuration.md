@@ -140,6 +140,16 @@ Properties for disabling the [SDK](../sdk/#opentelemetrysdk):
 returns a minimally configured instance (for example,
 `OpenTelemetrySdk.builder().build()`).
 
+Properties for SDK self-monitoring telemetry:
+
+| System property                           | Description                                                                                      | Default  |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------ | -------- |
+| `otel.experimental.sdk.telemetry.version` | Select the self-monitoring telemetry schema. Valid values are `legacy` and `latest`. See **[1]** | `legacy` |
+
+**[1]**: See
+[exporter self-monitoring metrics](../sdk/#exporter-self-monitoring-metrics) for
+configuration details and the legacy and latest OTLP exporter metric names.
+
 Properties for attribute limits (see [span limits](../sdk/#spanlimits),
 [log limits](../sdk/#loglimits)):
 
