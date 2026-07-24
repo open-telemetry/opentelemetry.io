@@ -5,10 +5,17 @@ tags:
   - fragment
   - instrumentation
   - android
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/fragment
 license: Apache 2.0
 description:
+  Captures spans for Fragment lifecycle events, useful for tracking navigation
+  within single-activity architectures.
 authors:
   - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/fragment
+  docs: /docs/platforms/client-apps/android/#fragment-lifecycle
 createdAt: 2026-07-12
+package:
+  registry: maven
+  name: io.opentelemetry.android.instrumentation/fragment
+  version: 1.5.0
