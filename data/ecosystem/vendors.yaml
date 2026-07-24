@@ -467,6 +467,12 @@
   contact: founders@thecontextcompany.com
   oss: false
   commercial: true
+- name: Trace0
+  nativeOTLP: true
+  url: https://docs.trace0hq.com
+  contact: hello@trace0hq.com
+  oss: false
+  commercial: true
 - name: Traceloop
   nativeOTLP: true
   url: https://www.traceloop.com
