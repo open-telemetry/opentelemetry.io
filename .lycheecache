@@ -2852,6 +2852,7 @@ https://github.com/open-telemetry/opentelemetry-configuration/blob/main/CONTRIBU
 https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md,200,1784701520
 https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-config.yaml,200,1784701520
 https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-migration-config.yaml,206,1784269414
+https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md,200,1784725666
 https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/View_kitchen_sink.yaml,206,1784442350
 https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml,206,1784442356
 https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0-rc.1/examples/kitchen-sink.yaml,206,1784269441
@@ -3563,6 +3564,7 @@ https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Resour
 https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Sampler/RuleBased,200,1784730609
 https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Sampler/Xray,200,1784730609
 https://github.com/open-telemetry/opentelemetry-php-distro,206,1784269637
+https://github.com/open-telemetry/opentelemetry-php-distro/releases,200,1784725666
 https://github.com/open-telemetry/opentelemetry-php-instrumentation,206,1784442329
 https://github.com/open-telemetry/opentelemetry-php/releases,206,1784269452
 https://github.com/open-telemetry/opentelemetry-php/releases/latest,206,1784269447
@@ -5314,8 +5316,10 @@ https://packagist.org/packages/open-telemetry/opentelemetry-auto-http-async,200,
 https://packagist.org/packages/open-telemetry/opentelemetry-auto-io,200,1784183585
 https://packagist.org/packages/open-telemetry/opentelemetry-auto-laravel,200,1784284622
 https://packagist.org/packages/open-telemetry/opentelemetry-auto-mongodb,200,1784183585
+https://packagist.org/packages/open-telemetry/opentelemetry-auto-mysqli,200,1784725666
 https://packagist.org/packages/open-telemetry/opentelemetry-auto-openai-php,200,1784285145
 https://packagist.org/packages/open-telemetry/opentelemetry-auto-pdo,200,1784183585
+https://packagist.org/packages/open-telemetry/opentelemetry-auto-postgresql,200,1784725666
 https://packagist.org/packages/open-telemetry/opentelemetry-auto-psr14,200,1784183585
 https://packagist.org/packages/open-telemetry/opentelemetry-auto-psr15,200,1784183586
 https://packagist.org/packages/open-telemetry/opentelemetry-auto-psr16,200,1784442957
@@ -5327,6 +5331,7 @@ https://packagist.org/packages/open-telemetry/opentelemetry-auto-symfony,200,178
 https://packagist.org/packages/open-telemetry/opentelemetry-auto-wordpress,200,1784183588
 https://packagist.org/packages/open-telemetry/opentelemetry-auto-yii,200,1784183588
 https://packagist.org/packages/open-telemetry/opentelemetry-logger-monolog,200,1784269446
+https://packagist.org/packages/open-telemetry/opentelemetry-metrics-runtime,200,1784725666
 https://packagist.org/packages/open-telemetry/sdk,200,1784442344
 https://packagist.org/packages/openai-php/client,200,1784285144
 https://packagist.org/packages/traceway/opentelemetry-symfony,200,1784285152
