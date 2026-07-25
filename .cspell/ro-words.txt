@@ -25,6 +25,7 @@ deții
 dezvoltatori
 dezvoltatorii
 discutǎ
+editezi
 enumerează
 explorezi
 exportatorilor
@@ -36,6 +37,7 @@ instrumenteze
 interlingvistice
 intervaluri
 intervalurilor
+îmbunătățești
 încorporezi
 întâmpini
 întreab
@@ -60,6 +62,7 @@ prepopulată
 receptoarelor
 remediează
 reobține
+repetoriului
 semnalizate
 semneazǎ
 setează

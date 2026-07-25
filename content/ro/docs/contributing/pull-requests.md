@@ -1,19 +1,20 @@
 ---
 title: Trimiterea de conținut
 description:
-  Învață cum să trimiți conținut now sau schimbat folosind interfața Github sau
+  Învață cum să trimiți conținut now sau schimbat folosind interfața GitHub sau
   de pe un fork local
 aliases: [new-content]
 weight: 15
 ---
 
-Pentru a contribui cu conținut sau să îmbunătățești documentația existentă, trimite un [pull request][PR]
-(PR)
+Pentru a contribui cu conținut sau să îmbunătățești documentația existentă,
+trimite un [pull request][PR] (PR)
 
 - Dacă schimbarea ta este mică, sau ești nefamiliarizat cu [Git][], vezi cum se
-  [Folosește GitHub](#changes-using-github) pentru a învăța cum să editezi o pagină.
-- Altfel, vezi cum se [Lucreză de pe un fork local](#fork-the-repo) pentru a învăța cum
-  să faci schimbări în mediul tău local de dezvoltare.
+  [Folosește GitHub](#changes-using-github) pentru a învăța cum să editezi o
+  pagină.
+- Altfel, vezi cum se [Lucreză de pe un fork local](#fork-the-repo) pentru a
+  învăța cum să faci schimbări în mediul tău local de dezvoltare.
 
 ## Generative AI contribution policy {#using-ai}
 
@@ -21,27 +22,32 @@ Pentru a contribui cu conținut sau să îmbunătățești documentația existen
 >
 > Dacă ești un [contribuitor nou][first-time contributor], te rog ia aminte:
 >
-> Primele 3 contribuții către repertoriul nostru trebuie în principal să fie scrise de oameni,
-> permisă doar o asistență minoră din partea inteligenței artificiale.
-> ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)). Asta înseamnă că tot
-> codul tău ar trebui scris de mână, dar IA-ul ar putea ajuta cu completări de cod,
-> formatare, linting și urmărirea bunelor practici. Descrierea PR-ului tău trebuie fie
-> în întregime scrisă de un om, fără vreo implicare din partea IA-ului (AIL0).
+> Primele 3 contribuții către repertoriul nostru trebuie în principal să fie
+> scrise de oameni, permisă doar o asistență minoră din partea inteligenței
+> artificiale. ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)).
+> Asta înseamnă că tot codul tău ar trebui scris de mână, dar IA-ul ar putea
+> ajuta cu completări de cod, formatare, linting și urmărirea bunelor practici.
+> Descrierea PR-ului tău trebuie fie în întregime scrisă de un om, fără vreo
+> implicare din partea IA-ului (AIL0).
 >
-> Bineînțeles, poți folosi unelte de IA pentru a adresa întrebări și pentru a învăța
-> despre repertoriul nostru, proiectul nostru, cum să contribui și multe altele.
+> Bineînțeles, poți folosi unelte de IA pentru a adresa întrebări și pentru a
+> învăța despre repertoriul nostru, proiectul nostru, cum să contribui și multe
+> altele.
 >
-> Am pus în aplicare această cerință pentru a te ajuta să înveți în timp ce contribui și pentru
-> a ajuta întreținătorii și aprobatorii să-și protejeze timpul și capacitatea de lucru, care sunt
-> o resursă limitată.
+> Am pus în aplicare această cerință pentru a te ajuta să înveți în timp ce
+> contribui și pentru a ajuta întreținătorii și aprobatorii să-și protejeze
+> timpul și capacitatea de lucru, care sunt o resursă limitată.
 >
-> Întreținătorii pot face o excepție, dacă este clar faptul că ce ai contribuit este "drive-by"
-> și poate fi adăugat fără prea mult efort adițional din partea lor.
+> Întreținătorii pot face o excepție, dacă este clar faptul că ce ai contribuit
+> este "drive-by" și poate fi adăugat fără prea mult efort adițional din partea
+> lor.
 
-IA-ul generativ este permis, dar **tu ești responsabil** for **revizuirea și _validarea_** întregului
-conținut generat de IA &mdash; Dacă nu-l înțelegi, nu-l trimite!
+IA-ul generativ este permis, dar **tu ești responsabil** for **revizuirea și
+_validarea_** întregului conținut generat de IA &mdash; Dacă nu-l înțelegi, nu-l
+trimite!
 
-Pentru detalii, vezi [Politica de contribuție folosind IA generativ][Generative AI Contribution Policy].
+Pentru detalii, vezi [Politica de contribuție folosind IA
+generativ][Generative AI Contribution Policy].
 
 [first-time contributor]: ../#first-time-contributing
 [Generative AI Contribution Policy]:
@@ -56,7 +62,7 @@ flowchart LR
     subgraph first[Cum să contribui]
     direction TB
        T[ ] -.-
-       B[Creează un fork al repertoriului în Github] --- C[Scrie documente în markdown<br> și construiește site-ul cu Hugo]
+       B[Creează un fork al repertoriului în GitHub] --- C[Scrie documente în markdown<br> și construiește site-ul cu Hugo]
        C --- D[Împinge sursele la fork]
        D --- E[Deschide un pull request]
        E --- F[Semnează <a href="../prerequisites/#cla">CLA-ul CNCF</a>]
@@ -74,18 +80,18 @@ _Figura 1. Contribuții cu conținut nou._
 
 > [!TIP]
 >
-> Setează statusul pull request-ului tău la **Draft** pentru a înștiința întreținătorii că
-> respectivul conținut nu este încă gata pentru revizuire. Întreținătorii pot în continuare să
-> lase comentarii sau revizuiri, deși nu vor revizui conținutul în întregime până când nu
-> eliminați statutul de draft.
+> Setează statusul pull request-ului tău la **Draft** pentru a înștiința
+> întreținătorii că respectivul conținut nu este încă gata pentru revizuire.
+> Întreținătorii pot în continuare să lase comentarii sau revizuiri, deși nu vor
+> revizui conținutul în întregime până când nu eliminați statutul de draft.
 
 ## Utilizarea GitHub {#changes-using-github}
 
 ### Modifică și trimite schimbări din browser-ul tău {#page-edit-from-browser}
 
-Dacă nu ești foarte experimentat cu fluxurile de lucru cu Git, aici se regăsește o metodă
-mai ușoară de pregătire și deschidere a unui nou pull request (PR). Figura 2 ilustrează pașii
-și detaliile urmează.
+Dacă nu ești foarte experimentat cu fluxurile de lucru cu Git, aici se regăsește
+o metodă mai ușoară de pregătire și deschidere a unui nou pull request (PR).
+Figura 2 ilustrează pașii și detaliile urmează.
 
 ```mermaid
 flowchart LR
@@ -93,7 +99,7 @@ A([fa:fa-user Contribuitor<br>Nou]) --- id1[(open-telemetry/opentelemetry.io<br>
 subgraph tasks[Modificări folosind GitHub]
 direction TB
     0[ ] -.-
-    1[1\. Modifică această pagină] --> 2[2\. Folosește editorul de markdown<br>din Github pentru a face schimbări]
+    1[1\. Modifică această pagină] --> 2[2\. Folosește editorul de markdown<br>din GitHub pentru a face schimbări]
     2 --> 3[3\. Completează în Propose file change]
 
 end
@@ -115,15 +121,15 @@ class tasks,tasks2 white
 class id1 k8s
 ```
 
-_Figura 2. Pașii pentru deschiderea unui PR folosind Github._
+_Figura 2. Pașii pentru deschiderea unui PR folosind GitHub._
 
-1. Pe pagina unde vezi issue-ul, selectează opțiunea **Edit this page** din panoul de navigare
-   din partea dreaptă.
+1. Pe pagina unde vezi issue-ul, selectează opțiunea **Edit this page** din
+   panoul de navigare din partea dreaptă.
 
-1. Dacă nu ești un membru al proiectului, GitHub oferă opțiunea de creare a unui fork al
-  repetoriului. Selectează **Fork this repository**.
+1. Dacă nu ești un membru al proiectului, GitHub oferă opțiunea de creare a unui
+   fork al repetoriului. Selectează **Fork this repository**.
 
-1. Efectuează schimbările în editorul din Github.
+1. Efectuează schimbările în editorul din GitHub.
 
 1. Completează formularul **Propose file change**.
 
@@ -131,22 +137,24 @@ _Figura 2. Pașii pentru deschiderea unui PR folosind Github._
 
 1. Selectează **Create pull request**.
 
-1. Va apărea ecranul **Open a pull request**. Descrierea ta îi ajută pe cei ce revizuiesc
-   să înțeleagă schimbările tale
+1. Va apărea ecranul **Open a pull request**. Descrierea ta îi ajută pe cei ce
+   revizuiesc să înțeleagă schimbările tale
 
 1. Selectează **Create pull request**.
 
-Înainte de a îmbina un pull request, membrii comunității OpenTelemetry îl revizuiesc și-l aprobă
+Înainte de a îmbina un pull request, membrii comunității OpenTelemetry îl
+revizuiesc și-l aprobă
 
 Dacă un recenzent solicită să faci modificări:
 
 1. Du-te la tab-ul **Files changed**.
-1. Selectează iconița creion (de editare) în oricare fișier schimbat din pull request.
+1. Selectează iconița creion (de editare) în oricare fișier schimbat din pull
+   request.
 1. Aplică schimbările cerute. Dacă există o sugestie de cod, aplic-o.
 1. Trimite schimbările.
 
-Când revizuirea este completă, un recenzent va adăuga schimbările din PR-ul tău, care
-se vor putea vedea câteva minute mai târziu.
+Când revizuirea este completă, un recenzent va adăuga schimbările din PR-ul tău,
+care se vor putea vedea câteva minute mai târziu.
 
 ### Fixing PR check failures {#fixing-prs-in-github}
 
