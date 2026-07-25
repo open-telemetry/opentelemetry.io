@@ -79,28 +79,28 @@ _Figura 1. Contribuții cu conținut nou._
 > lase comentarii sau revizuiri, deși nu vor revizui conținutul în întregime până când nu
 > eliminați statutul de draft.
 
-## Using GitHub {#changes-using-github}
+## Utilizarea GitHub {#changes-using-github}
 
-### Edit and submit changes from your browser {#page-edit-from-browser}
+### Modifică și trimite schimbări din browser-ul tău {#page-edit-from-browser}
 
-If you're less experienced with Git workflows, here's an easier method of
-preparing and opening a new pull request (PR). Figure 2 outlines the steps and
-the details follow.
+Dacă nu ești foarte experimentat cu fluxurile de lucru cu Git, aici se regăsește o metodă
+mai ușoară de pregătire și deschidere a unui nou pull request (PR). Figura 2 ilustrează pașii
+și detaliile urmează.
 
 ```mermaid
 flowchart LR
-A([fa:fa-user New<br>Contributor]) --- id1[(open-telemetry/opentelemetry.io<br>GitHub)]
-subgraph tasks[Changes using GitHub]
+A([fa:fa-user Contribuitor<br>Nou]) --- id1[(open-telemetry/opentelemetry.io<br>GitHub)]
+subgraph tasks[Modificări folosind GitHub]
 direction TB
     0[ ] -.-
-    1[1\. Edit this page] --> 2[2\. Use GitHub markdown<br>editor to make changes]
-    2 --> 3[3\. Fill in Propose file change]
+    1[1\. Modifică această pagină] --> 2[2\. Folosește editorul de markdown<br>din Github pentru a face schimbări]
+    2 --> 3[3\. Completează în Propose file change]
 
 end
 subgraph tasks2[ ]
 direction TB
-4[4\. Select Propose file change] --> 5[5\. Select Create pull request] --> 6[6\. Fill in Open a pull request]
-6 --> 7[7\. Select Create pull request]
+4[4\. Selectează Propose file change] --> 5[5\. Selectează Create pull request] --> 6[6\. Completează în Open a pull request]
+6 --> 7[7\. Selectează Create pull request]
 end
 
 id1 --> tasks --> tasks2
@@ -115,39 +115,38 @@ class tasks,tasks2 white
 class id1 k8s
 ```
 
-_Figure 2. Steps for opening a PR using GitHub._
+_Figura 2. Pașii pentru deschiderea unui PR folosind Github._
 
-1. On the page where you see the issue, select the **Edit this page** option in
-   the right-hand side navigation panel.
+1. Pe pagina unde vezi issue-ul, selectează opțiunea **Edit this page** din panoul de navigare
+   din partea dreaptă.
 
-1. If you're not a member of the project, GitHub offers to create a fork of the
-   repository. Select **Fork this repository**.
+1. Dacă nu ești un membru al proiectului, GitHub oferă opțiunea de creare a unui fork al
+  repetoriului. Selectează **Fork this repository**.
 
-1. Make your changes in the GitHub editor.
+1. Efectuează schimbările în editorul din Github.
 
-1. Fill in the **Propose file change** form.
+1. Completează formularul **Propose file change**.
 
-1. Select **Propose file change**.
+1. Selectează **Propose file change**.
 
-1. Select **Create pull request**.
+1. Selectează **Create pull request**.
 
-1. The **Open a pull request** screen appears. Your description helps reviewers
-   understand your change.
+1. Va apărea ecranul **Open a pull request**. Descrierea ta îi ajută pe cei ce revizuiesc
+   să înțeleagă schimbările tale
 
-1. Select **Create pull request**.
+1. Selectează **Create pull request**.
 
-Before merging a pull request, OpenTelemetry community members review and
-approve it.
+Înainte de a îmbina un pull request, membrii comunității OpenTelemetry îl revizuiesc și-l aprobă
 
-If a reviewer asks you to make changes:
+Dacă un recenzent solicită să faci modificări:
 
-1. Go to the **Files changed** tab.
-1. Select the pencil (edit) icon on any files changed by the pull request.
-1. Make the changes requested. If there's a code suggestion, apply it.
-1. Commit the changes.
+1. Du-te la tab-ul **Files changed**.
+1. Selectează iconița creion (de editare) în oricare fișier schimbat din pull request.
+1. Aplică schimbările cerute. Dacă există o sugestie de cod, aplic-o.
+1. Trimite schimbările.
 
-When your review is complete, a reviewer merges your PR and your changes goes
-live a few minutes later.
+Când revizuirea este completă, un recenzent va adăuga schimbările din PR-ul tău, care
+se vor putea vedea câteva minute mai târziu.
 
 ### Fixing PR check failures {#fixing-prs-in-github}
 
