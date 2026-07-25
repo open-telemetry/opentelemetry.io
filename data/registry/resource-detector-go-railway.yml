@@ -1,0 +1,21 @@
+title: Railway Resource Detector for OpenTelemetry Go
+registryType: resource-detector
+language: go
+tags:
+  - go
+  - resource-detector
+  - railway
+  - cloud
+license: MIT
+description:
+  A Go resource detector that populates OpenTelemetry resource attributes
+  (cloud, service, deployment, and VCS) from Railway's provider-injected
+  environment variables.
+authors:
+  - name: Kartik Gola
+    url: https://github.com/kartikgola
+urls:
+  repo: https://github.com/kartikgola/opentelemetry-resource-detector-railway
+createdAt: 2026-07-02
+isNative: false
+isFirstParty: false
