@@ -1,4 +1,4 @@
-title: Railway Resource Detector for OpenTelemetry Go
+title: OpenTelemetry Resource Detector for Railway.com
 registryType: resource-detector
 language: go
 tags:
@@ -9,7 +9,7 @@ tags:
 license: MIT
 description:
   A Go resource detector that populates OpenTelemetry resource attributes
-  (cloud, service, deployment, and VCS) from Railway's provider-injected
+  (cloud, service, deployment, and VCS) from Railway.com's provider-injected
   environment variables.
 authors:
   - name: Kartik Gola
