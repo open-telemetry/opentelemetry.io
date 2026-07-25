@@ -5,6 +5,7 @@ description:
   de pe un fork local
 aliases: [new-content]
 weight: 15
+default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
 ---
 
 Pentru a contribui cu conținut sau să îmbunătățești documentația existentă,
@@ -156,22 +157,23 @@ Dacă un recenzent solicită să faci modificări:
 Când revizuirea este completă, un recenzent va adăuga schimbările din PR-ul tău,
 care se vor putea vedea câteva minute mai târziu.
 
-### Fixing PR check failures {#fixing-prs-in-github}
+### Rezolvarea problemelor semnalate de verificările PR-ului {#fixing-prs-in-github}
 
-After you've submitted a PR, GitHub runs some build checks. Certain check
-failures, like formatting issues, can be fixed automatically.
+După ce ai trimis un PR, GitHub rulează niște verificări ale build-ului. Anumite
+verificări ce eșuează, precum probleme de formatare, pot fi rezolvate automat.
 
-Add the following comment to your PR:
+Add the following comment to your PR: Adaugă următorul comentariu în PR-ul tău
 
 ```text
 /fix
 ```
 
-This will trigger the OpenTelemetry bot to try to fix build issues. The bot
-replies with a progress comment that links back to your fix command, then
-updates that same comment with the result — so each fix command you issue gets
-its own bot comment. Or you can issue one of the following fix commands to
-address a specific failure:
+Acesta va declanșa ca bot-ul OpenTelemetry să încerce să rezolve problemele de
+build. Bot-ul răspunde cu un comentariu despre progres care face referire la
+comandata de rezolvare, apoi actualizează același comentariu cu rezultatul -
+altfel că fiecare comandă de rezolvare pe care o emiți primește propriul
+comentariu de la bot. Sau poți emite una dintre următoarele comenzi de rezolvare
+pentru a trata o problemă specifică:
 
 ```text
 /fix:code-excerpts
@@ -187,15 +189,16 @@ address a specific failure:
 /fix:text
 ```
 
-The fix command must be the first line of your comment; you can add explanatory
-text on the lines that follow. Issuing a new fix command while one is already
-running cancels the in-progress run so that the latest command wins; when
-possible, the cancelled run's bot comment is updated to note the cancellation.
+Comanda de rezolvare trebuie să fie prima line a comentariului tău; poți adăuga
+text explicativ în liniile ce urmează. Emiterea unei noi comenzi de rezolvare în
+timp ce una rulează deja o anulează pe cea ce rulează astfel că cea mai recentă
+comandă câștigă; atunci când se poate, comentariul bot-ului asociat acțiunii
+anulate este actualizat pentru a nota despre anulare.
 
 > [!TIP] Pro tip
 >
-> You can also run the `fix` commands locally. For the complete list of fix
-> commands, run `npm run -s '_list:fix:*'`.
+> Poți de asemenea să rulezi comenzi `fix` local. Pentru lista completă the
+> comenzi de rezolvare, rulează `npm run -s '_list:fix:*'`.
 
 ## Working locally {#fork-the-repo}
 
