@@ -2,6 +2,7 @@
 title: 宣言的設定
 weight: 25
 default_lang_commit: 0bfcaf7e0a3d58dfa7db4f4e22f965e5de758e69
+drifted_from_default: true
 cSpell:ignore: Customizer Dotel genai sqlcommenter
 ---
 
