@@ -17,33 +17,31 @@ Pentru a contribui cu conținut sau să îmbunătățești documentația existen
 
 ## Generative AI contribution policy {#using-ai}
 
-> [!WARNING] **First time contributors** take note!
+> [!WARNING] **Contribuitori noi** țineți cont!
 >
-> If you are a [first-time contributor][], please note the following:
+> Dacă ești un [contribuitor nou][first-time contributor], te rog ia aminte:
 >
-> Your first 3 contributions to our repository must be primarily human-written,
-> with only minor AI assistance allowed
-> ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)). This means
-> your code should be written by hand, but AI may assist with code completion,
-> formatting, linting, and following best practices. Your PR description must be
-> entirely human-written, with no AI involvement (AIL0).
+> Primele 3 contribuții către repertoriul nostru trebuie în principal să fie scrise de oameni,
+> permisă doar o asistență minoră din partea inteligenței artificiale.
+> ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)). Asta înseamnă că tot
+> codul tău ar trebui scris de mână, dar IA-ul ar putea ajuta cu completări de cod,
+> formatare, linting și urmărirea bunelor practici. Descrierea PR-ului tău trebuie fie
+> în întregime scrisă de un om, fără vreo implicare din partea IA-ului (AIL0).
 >
-> Of course, you can use AI tools to ask questions and learn about our
-> repository, our project, how to contribute, and more.
+> Bineînțeles, poți folosi unelte de IA pentru a adresa întrebări și pentru a învăța
+> despre repertoriul nostru, proiectul nostru, cum să contribui și multe altele.
 >
-> We put this requirement in place to help you learn while contributing and to
-> help maintainers and approvers to protect their time and bandwidth, which is a
-> scarce resource.
+> Am pus în aplicare această cerință pentru a te ajuta să înveți în timp ce contribui și pentru
+> a ajuta întreținătorii și aprobatorii să-și protejeze timpul și capacitatea de lucru, care sunt
+> o resursă limitată.
 >
-> Maintainers may make an exception, if it is clear that your contribution is
-> "drive-by" and can be merged without a lot of additional effort from their
-> side.
+> Întreținătorii pot face o excepție, dacă este clar faptul că ce ai contribuit este "drive-by"
+> și poate fi adăugat fără prea mult efort adițional din partea lor.
 
-Generative AI is allowed, but **you are responsible** for **reviewing and
-_validating_** all AI-generated content &mdash; if you don't understand it,
-don't submit it!
+IA-ul generativ este permis, dar **tu ești responsabil** for **revizuirea și _validarea_** întregului
+conținut generat de IA &mdash; Dacă nu-l înțelegi, nu-l trimite!
 
-For details, see our [Generative AI Contribution Policy][].
+Pentru detalii, vezi [Politica de contribuție folosind IA generativ][Generative AI Contribution Policy].
 
 [first-time contributor]: ../#first-time-contributing
 [Generative AI Contribution Policy]:
