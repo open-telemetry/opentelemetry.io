@@ -1,4 +1,4 @@
-# cSpell:ignore agentaudit ed25519 genai
+# cSpell:ignore agentaudit ed25519 genai Surabhi Pradhan
 title: Agent Audit Exporter
 registryType: exporter
 language: collector
