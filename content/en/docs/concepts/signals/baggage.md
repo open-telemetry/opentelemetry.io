@@ -47,16 +47,38 @@ log data.
 
 ## Baggage security considerations
 
-Sensitive Baggage items can be shared with unintended resources, like
-third-party APIs. This is because automatic instrumentation includes Baggage in
-most of your service’s network requests. Specifically, Baggage and other parts
-of trace context are sent in HTTP headers, making it visible to anyone
-inspecting your network traffic. If traffic is restricted within your network,
-then this risk may not apply, but keep in mind that downstream services could
-propagate Baggage outside your network.
+Baggage is application-controlled data that can cross service and process
+boundaries. When W3C Baggage propagation is enabled, configured propagators and
+instrumentation serialize baggage into the `baggage` HTTP header and carry it to
+downstream requests. Each outbound call can therefore expose entries to another
+service or a third-party endpoint.
 
-Also, there are no built-in integrity checks to ensure that Baggage items are
-yours, so exercise caution when reading them.
+Treat incoming baggage as untrusted input. Baggage does not prove who created or
+modified an entry, so do not use a baggage value to make authorization or other
+security decisions. Limit what you add and what you forward at every trust
+boundary.
+
+### When producing baggage
+
+- Do not put credentials, authorization tokens, secrets, or personal data that
+  is not intended for every downstream recipient into baggage.
+- Prefer opaque, non-sensitive identifiers and add only the entries that
+  downstream services need.
+- Before a request leaves your trust boundary, remove its baggage or rebuild it
+  from an allowlist of entries that the intended recipient may receive.
+
+### When consuming baggage
+
+- Validate recognized keys, value formats, and sizes before using incoming
+  entries.
+- Copy only allowlisted entries into local baggage, and discard unexpected or
+  invalid entries.
+- Remove entries that should not cross the next trust boundary before making
+  downstream requests.
+
+For more guidance, see the W3C Baggage [security
+considerations][w3c-baggage-security] and [privacy
+considerations][w3c-baggage-privacy].
 
 ## Baggage is not the same as attributes
 
@@ -75,3 +97,5 @@ creation.
 > For more information, see the [baggage specification][].
 
 [baggage specification]: /docs/specs/otel/overview/#baggage-signal
+[w3c-baggage-privacy]: https://www.w3.org/TR/baggage/#privacy-considerations
+[w3c-baggage-security]: https://www.w3.org/TR/baggage/#security-considerations
