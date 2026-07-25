@@ -16,8 +16,8 @@ cSpell:ignore: attributesprocessor basicauthextension batchprocessor bearertoken
 ## 主なポイント {#key-takeaways}
 
 - 企業は一般的に、中規模から大規模な Collector のデプロイを行っています。
-  - 5台以上の Collector: 125/186
-  - 10台以上の Collector: 100/186
+  - 5台超の Collector: 125/186
+  - 10台超の Collector: 100/186
 - Collector のカスタムバイナリやディストリビューションのビルドは予想以上に普及しており（61/186）、そのほとんどが
   [OTel Collector Builder](https://github.com/open-telemetry/opentelemetry-collector-builder)
   を使用しています（49/61）。
@@ -29,7 +29,7 @@ cSpell:ignore: attributesprocessor basicauthextension batchprocessor bearertoken
 ### デプロイ規模と環境 {#deployment-scale-and-environment}
 
 調査結果から、OTel Collector が大規模に利用されていることがわかりました。
-回答者の53.8%（100/186）が10台以上の Collector をデプロイしており、13.4%（25/186）が5台から10台、22%（41/186）が2台から5台を運用しています。
+回答者の53.8%（100/186）が10台超の Collector をデプロイしており、13.4%（25/186）が5台から10台、22%（41/186）が2台から5台を運用しています。
 
 ![組織内で何台の OTel Collector を実行しているかを示すグラフ](deployment-scale.png)
 
@@ -57,7 +57,7 @@ OCB を活用している49人の回答者のほとんどは使い方を理解�
 ### 監視とオブザーバビリティ {#monitoring-and-observability}
 
 Collector の監視については、回答者の大多数が Collector のメトリクスとログに依存しており（81.7%）、Collector をまったく監視していないユーザーはわずかでした（16.6%）。
-データをさらに詳しく分析すると、5台以上の Collector を運用している125人の回答者のうち、Collector を監視していないのは15人のみであり、10台以上の Collector を運用している100人の回答者のうち監視していないのは9人のみでした。
+データをさらに詳しく分析すると、5台超の Collector を運用している125人の回答者のうち、Collector を監視していないのは15人のみであり、10台超の Collector を運用している100人の回答者のうち監視していないのは9人のみでした。
 このことから、Collector のデプロイが一定の成熟度に達すると、ユーザーは Collector の監視を真剣に行うようになることがうかがえます。
 
 ![OTel Collector の監視方法を示すグラフ](monitoring.png)
