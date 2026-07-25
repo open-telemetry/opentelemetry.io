@@ -15,7 +15,6 @@ tags:
   - governance
 urls:
   repo: https://github.com/surpradhan/otel-agent-audit
-  docs: https://github.com/surpradhan/otel-agent-audit#readme
 license: MIT
 description: >-
   An OpenTelemetry Collector exporter that consumes agent traces and emits a
