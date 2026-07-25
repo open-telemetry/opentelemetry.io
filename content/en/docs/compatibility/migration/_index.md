@@ -5,6 +5,13 @@ aliases: [/docs/migration/]
 weight: 300
 ---
 
+## SDK upgrades
+
+When you upgrade an OpenTelemetry SDK across a major version, follow its
+language-specific migration guide:
+
+- [Upgrade to OpenTelemetry JS SDK 2.x](opentelemetry-js-sdk-2/)
+
 ## OpenTracing and OpenCensus
 
 OpenTelemetry was created as a merger of OpenTracing and OpenCensus. From the
