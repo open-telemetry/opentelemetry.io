@@ -47,19 +47,19 @@ Pentru detalii, vezi [Politica de contribuție folosind IA generativ][Generative
 [Generative AI Contribution Policy]:
   https://github.com/open-telemetry/community/blob/main/policies/genai.md
 
-## How to contribute
+## Cum să contribui
 
-The following figure illustrates how to contribute new documentation.
+Figura următoare ilustrează cum să contribui cu documentație nouă.
 
 ```mermaid
 flowchart LR
-    subgraph first[How to contribute]
+    subgraph first[Cum să contribui]
     direction TB
        T[ ] -.-
-       B[Fork the repo in GitHub] --- C[Write docs in markdown<br>and build site with Hugo]
-       C --- D[Push source to the fork]
-       D --- E[Open a pull request]
-       E --- F[Sign the <a href="../prerequisites/#cla">CNCF CLA</a>]
+       B[Creează un fork al repertoriului în Github] --- C[Scrie documente în markdown<br> și construiește site-ul cu Hugo]
+       C --- D[Împinge sursele la fork]
+       D --- E[Deschide un pull request]
+       E --- F[Semnează <a href="../prerequisites/#cla">CLA-ul CNCF</a>]
     end
 
 classDef grey fill:#dddddd,stroke:#ffffff,stroke-width:px,color:#000000, font-size:15px;
@@ -70,14 +70,14 @@ class S,T spacewhite
 class first,second white
 ```
 
-_Figure 1. Contributing new content._
+_Figura 1. Contribuții cu conținut nou._
 
 > [!TIP]
 >
-> Set the status of your pull request to **Draft** to let maintainers know that
-> the content isn't ready for review yet. Maintainers may still comment or do
-> high-level reviews, though they won't review the content in full until you
-> remove the draft status.
+> Setează statusul pull request-ului tău la **Draft** pentru a înștiința întreținătorii că
+> respectivul conținut nu este încă gata pentru revizuire. Întreținătorii pot în continuare să
+> lase comentarii sau revizuiri, deși nu vor revizui conținutul în întregime până când nu
+> eliminați statutul de draft.
 
 ## Using GitHub {#changes-using-github}
 
