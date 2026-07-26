@@ -207,8 +207,8 @@ użyj dodatkowych określeń, na przykład `rekord logu`. Zobacz [Log][].
 ### Rekord logu {#log-record}
 
 Zapis danych ze znacznikiem czasu i stopniem ważności. Może również zawierać
-identyfikatory [trasy](#trace) i [odcinka](#span), gdy jest skorelowany z
-trasą. Zobacz [rekord logu][log record].
+identyfikatory [trasy](#trace) i [odcinka](#span), gdy jest skorelowany z trasą.
+Zobacz [rekord logu][log record].
 
 ### Metadane {#metadata}
 
