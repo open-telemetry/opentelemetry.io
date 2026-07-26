@@ -1,8 +1,7 @@
 ---
 title: service.criticality を使用したテイルベースサンプリング
 linkTitle: テイルサンプリング
-default_lang_commit: d503571bbd711e05b9e6f85966fed6f0e00ba910
-drifted_from_default: true
+default_lang_commit: 8fd99e125e5510385b18b541d97c283e28f76ef2
 ---
 
 この例では、OpenTelemetry Collector においてインテリジェントなテイルベースのサンプリング決定を行うために、リソース属性 [`service.criticality`](/docs/specs/semconv/resource/service/#service) を使用する方法を示します。
@@ -13,7 +12,7 @@ drifted_from_default: true
 | ---------- | ------------------ | ---------------------------------------------------------------------------- |
 | `critical` | 100%               | 支払い、チェックアウト、フロントエンド、フロントエンドプロキシ               |
 | `high`     | 50%                | カート、商品カタログ、通貨換算、配送                                         |
-| `medium`   | 10%                | レコメンデーション、広告、商品レビュー、メール                               |
+| `medium`   | 10%                | レコメンデーション、広告、メール                                             |
 | `low`      | 1%                 | 会計、不正検知、画像プロバイダー、負荷生成、見積もり、flagd、flagd-ui、Kafka |
 
 ## コレクター設定 {#collector-configuration}
