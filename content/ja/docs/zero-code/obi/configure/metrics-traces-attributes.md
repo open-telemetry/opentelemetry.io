@@ -38,7 +38,7 @@ attributes:
       # デフォルトの属性セットを報告しますが、Kubernetes Pod 情報は除外します
       exclude: ['k8s.pod.*']
     resource:
-      # keep the default resource set, except for these high-cardinality fields
+      # これらの高カーディナリティフィールドを除き、デフォルトのリソースセットを維持します
       exclude: ['k8s.pod.name', 'service.instance.id']
 ```
 
