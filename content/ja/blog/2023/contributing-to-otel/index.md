@@ -56,12 +56,12 @@ OTel の世界にまだ深く入り込んでいないからこそ、新しい人
 2. OTel のドキュメントに貢献します。
    例として、[Include docs about Python logs auto-instrumentation](https://github.com/open-telemetry/opentelemetry.io/pull/3195)、[Add troubleshooting guidance to OTel Operator auto-instrumentation docs](https://github.com/open-telemetry/opentelemetry.io/pull/3098)、[Update Python auto-instrumentation docs](https://github.com/open-telemetry/opentelemetry.io/pull/2130) をご覧ください。
 
-> ✨ **注意:** ✨ 2番目は「特に」重要です。
+> ✨ **NOTE:** ✨ 2番目は「特に」重要です。
 > なぜなら、OTel ドキュメントがすべての OTel 情報の信頼できる情報源（Source of Truth）<sup>TM</sup>であるためにもっともよい方法は、私たちのような人がギャップを見つけたときにドキュメントにコントリビューションすることだからです。
 
 OTel ドキュメントへの[コントリビューション](/docs/contributing/)について、詳しくはこちらをご覧ください。
 
-> ✨ **注意:** ✨ OTel ドキュメントのコントリビューションガイドラインがわかりにくかったり、間違いがあったりする場合、それを改善するのもすばらしい貢献の方法です！
+> ✨ **NOTE:** ✨ OTel ドキュメントのコントリビューションガイドラインがわかりにくかったり、間違いがあったりする場合、それを改善するのもすばらしい貢献の方法です！
 > 😉
 
 ### OTel ブログに記事を書く {#write-a-post-on-the-otel-blog}
