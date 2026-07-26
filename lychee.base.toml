@@ -36,6 +36,9 @@ exclude = [
   # Optional slash: lychee resolves dir URLs to …/types#fragment (no slash).
   '/docs/specs/otel-config/types/?#type-',
 
+  # Temporary: javadoc.io /doc/ wrappers omit method anchors (#11037).
+  '^https://javadoc\.io/doc/com\.azure/azure-cosmos/.+#executeBulkOperations',
+
   # --- external host rules ---
   '^https://deploy-preview-\d+--opentelemetry\.netlify\.app/',
   '^https://www\.googletagmanager\.com',
