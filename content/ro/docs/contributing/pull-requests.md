@@ -127,21 +127,21 @@ _Figura 2. Pașii pentru deschiderea unui PR folosind GitHub._
 1. Pe pagina unde vezi issue-ul, selectează opțiunea **Edit this page** din
    panoul de navigare din partea dreaptă.
 
-1. Dacă nu ești un membru al proiectului, GitHub oferă opțiunea de creare a unui
+2. Dacă nu ești un membru al proiectului, GitHub oferă opțiunea de creare a unui
    fork al repetoriului. Selectează **Fork this repository**.
 
-1. Efectuează schimbările în editorul din GitHub.
+3. Efectuează schimbările în editorul din GitHub.
 
-1. Completează formularul **Propose file change**.
+4. Completează formularul **Propose file change**.
 
-1. Selectează **Propose file change**.
+5. Selectează **Propose file change**.
 
-1. Selectează **Create pull request**.
+6. Selectează **Create pull request**.
 
-1. Va apărea ecranul **Open a pull request**. Descrierea ta îi ajută pe cei ce
+7. Va apărea ecranul **Open a pull request**. Descrierea ta îi ajută pe cei ce
    revizuiesc să înțeleagă schimbările tale
 
-1. Selectează **Create pull request**.
+8. Selectează **Create pull request**.
 
 Înainte de a îmbina un pull request, membrii comunității OpenTelemetry îl
 revizuiesc și-l aprobă
@@ -149,10 +149,10 @@ revizuiesc și-l aprobă
 Dacă un recenzent solicită să faci modificări:
 
 1. Du-te la tab-ul **Files changed**.
-1. Selectează iconița creion (de editare) în oricare fișier schimbat din pull
+2. Selectează iconița creion (de editare) în oricare fișier schimbat din pull
    request.
-1. Aplică schimbările cerute. Dacă există o sugestie de cod, aplic-o.
-1. Trimite schimbările.
+3. Aplică schimbările cerute. Dacă există o sugestie de cod, aplic-o.
+4. Trimite schimbările.
 
 Când revizuirea este completă, un recenzent va adăuga schimbările din PR-ul tău,
 care se vor putea vedea câteva minute mai târziu.
@@ -238,84 +238,86 @@ class changes,changes2 white
 
 _Figura 3. Lucrul de pe un fork local pentru a face schimbările tale._
 
-### Fork the repository
+### Fă un fork al repertoriului
 
-1. Navigate to the
-   [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/)
-   repository.
-1. Select **Fork**.
+1. Navighează la repertoriul
+   [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/).
+2. Selectează **Fork**.
 
-### Clone and set upstream
+### Clonează și setează upstream-ul
 
-1. In a terminal window, clone your fork and install the requirements:
+1. Într-o fereastră de terminal, clonează fork-ul tău și instalează dependințele
+   necesare:
 
    ```shell
-   git clone git@github.com:<your_github_username>/opentelemetry.io.git
+   git clone git@github.com:<utilizatorul_tau_github>/opentelemetry.io.git
    cd opentelemetry.io
    npm install
    ```
 
-1. Set the `open-telemetry/opentelemetry.io` repository as the `upstream`
+2. Setează repertoriul `open-telemetry/opentelemetry.io` ca `upstream`-ul
    remote:
 
    ```shell
    git remote add upstream https://github.com/open-telemetry/opentelemetry.io.git
    ```
 
-1. Confirm your `origin` and `upstream` repositories:
+3. Confirmă repertoriile pentru `origin` și `upstream`:
 
    ```shell
    git remote -v
    ```
 
-   Output is similar to:
+   Rezultatul este similar cu:
 
    ```none
-   origin	git@github.com:<your_github_username>/opentelemetry.io.git (fetch)
-   origin	git@github.com:<your_github_username>/opentelemetry.io.git (push)
+   origin	git@github.com:<utilizatorul_tau_github>/opentelemetry.io.git (fetch)
+   origin	git@github.com:<utilizatorul_tau_github>/opentelemetry.io.git (push)
    upstream	https://github.com/open-telemetry/opentelemetry.io.git (fetch)
    upstream	https://github.com/open-telemetry/opentelemetry.io.git (push)
    ```
 
-1. Fetch commits from your fork's `origin/main` and
-   `open-telemetry/opentelemetry.io`'s `upstream/main`:
+4. Preia commit-uri de pe ramura `origin/main` a fork-ului și de pe
+   `upstream/main` al `open-telemetry/opentelemetry.io`:
 
    ```shell
    git fetch origin
    git fetch upstream
    ```
 
-   This makes sure your local repository is up to date before you start making
-   changes. Push changes from upstream to origin regularly to keep your fork in
-   sync with upstream.
+   Acest lucru te asigură că repertoriul tău local este la zi înainte să începi
+   să faci modificări. Împinge schimbările de pe upstream la origin regulat
+   pentru a păstra fork-ul sincronizat cu upstream-ul
 
-### Create a branch
+### Creează o ramură
 
-1. Create a new branch. This example assumes the base branch is `upstream/main`:
+1. Creează o ramură. Acest exemplu presupune că ramura de bază este
+   `upstream/main`:
 
    ```shell
-   git checkout -b <my_new_branch> upstream/main
+   git checkout -b <ramura_mea_noua> upstream/main
    ```
 
-1. Make your changes using a code or text editor.
+2. Fă schimbările tale folosind un editor de cod sau text.
 
-At any time, use the `git status` command to see what files you've changed.
+La orice moment, folosește comanda `git status` pentru a vedea ce fișiere ai
+modificat.
 
-### Commit your changes
+### Trimite schimbările tale
 
-When you are ready to submit a pull request, commit your changes.
+Când ești gata să trimiți un pull request, urcă schimbările tale.
 
-1. In your local repository, check which files you need to commit:
+1. În repertoriul tău local, verifică ce fișiere trebuie să urci:
 
    ```shell
    git status
    ```
 
-   Output is similar to:
+   Rezultatul este similar cu:
 
    ```none
-   On branch <my_new_branch>
-   Your branch is up to date with 'origin/<my_new_branch>'.
+   On branch <ramura_mea_noua>
+   Your branch is up to date with 'origin/<ramura_mea_noua>'.
 
    Changes not staged for commit:
    (use "git add <file>..." to update what will be committed)
@@ -326,27 +328,29 @@ When you are ready to submit a pull request, commit your changes.
    no changes added to commit (use "git add" and/or "git commit -a")
    ```
 
-1. Add the files listed under **Changes not staged for commit** to the commit:
+2. Adaugă fișierele listate sub **Changes not staged for commit** la setul de
+   schimbări:
 
    ```shell
    git add <your_file_name>
    ```
 
-   Repeat this for each file.
+   Repetă asta pentru fiecare fișier.
 
-1. After adding all the files, create a commit:
-
-   ```shell
-   git commit -m "Your commit message"
-   ```
-
-1. Push your local branch and its new commit to your remote fork:
+3. După ce ai adăugat toate fișierele, creează un commit:
 
    ```shell
-   git push origin <my_new_branch>
+   git commit -m "Mesajul tău de commit"
    ```
 
-1. Once the changes are pushed, GitHub lets you know that you can create a PR.
+4. Împinge ramura ta locală cu commit-ul nou la fork-ul tău:
+
+   ```shell
+   git push origin <ramura_mea_noua>
+   ```
+
+5. Odată ce schimbările sunt trimise, GitHub te înștiințează că poți creea un
+   PR.
 
 ### Open a new PR {#open-a-pr}
 
