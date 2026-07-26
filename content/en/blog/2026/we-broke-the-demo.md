@@ -1,5 +1,5 @@
 ---
-title: We broke the demo
+title: We broke the OTel demo
 linkTitle: We broke the demo
 date: 2026-07-27
 author: >-
