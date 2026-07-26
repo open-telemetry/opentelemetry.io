@@ -116,14 +116,14 @@ Zobacz [Sygnał](#signal).
 Termin używany wyłącznie w kontekście [metryk](#metric). Zobacz
 [Atrybut](#attribute).
 
-### Śledzenie rozproszone {#distributed-tracing}
+### Trasowanie rozproszone {#distributed-tracing}
 
-Śledzenie rozproszone śledzi przebieg pojedynczego [żądania](#request), zwanego
-[śladem](#trace), w miarę jak jest obsługiwane przez [usługi](#service)
+Trasowanie rozproszone śledzi przebieg pojedynczego [żądania](#request), zwanego
+[trasą](#trace), w miarę jak jest obsługiwane przez [usługi](#service)
 składające się na [aplikację](#application). Przekracza granice procesów, sieci
 i zabezpieczeń.
 
-Zobacz [Śledzenie rozproszone][distributed tracing].
+Zobacz [Trasowanie rozproszone][distributed tracing].
 
 ### Dystrybucja {#distribution}
 
@@ -153,7 +153,7 @@ działać w trybie wysyłania (push) lub udostępniania (pull).
 Termin używany specyficznie przez [rekordy logów](#log-record).
 [Metadane](#metadata) można dodać przez zdefiniowane pola, w tym
 [atrybuty](#attribute) i [zasób](#resource). Inne pola również mogą być
-traktowane jako metadane, w tym stopień ważności i informacje o śladzie. Zobacz
+traktowane jako metadane, w tym stopień ważności i informacje o trasie. Zobacz
 [specyfikację pól][field].
 
 ### gRPC {#grpc}
@@ -168,7 +168,7 @@ Skrót od [Hypertext Transfer Protocol][http].
 ### Biblioteka instrumentowana {#instrumented-library}
 
 Oznacza [bibliotekę](#library), dla której zbierane są sygnały telemetryczne
-([ślady](#trace), [metryki](#metric), [logi](#log)). Zobacz [bibliotekę
+([trasy](#trace), [metryki](#metric), [logi](#log)). Zobacz [bibliotekę
 instrumentowaną][instrumented library].
 
 ### Biblioteka instrumentacji {#instrumentation-library}
@@ -207,8 +207,8 @@ użyj dodatkowych określeń, na przykład `rekord logu`. Zobacz [Log][].
 ### Rekord logu {#log-record}
 
 Zapis danych ze znacznikiem czasu i stopniem ważności. Może również zawierać
-identyfikatory [śladu](#trace) i [odcinka](#span), gdy jest skorelowany ze
-śladem. Zobacz [rekord logu][log record].
+identyfikatory [trasy](#trace) i [odcinka](#span), gdy jest skorelowany z
+trasą. Zobacz [rekord logu][log record].
 
 ### Metadane {#metadata}
 
@@ -259,7 +259,7 @@ których można użyć do [instrumentacji](/docs/concepts/instrumentation/),
 generowania, [zbierania](/docs/concepts/components/#collector) i
 [eksportowania](/docs/concepts/components/#exporters)
 [danych telemetrycznych](/docs/concepts/signals/) takich jak [metryki](#metric),
-[logi](#log) i [ślady](#trace).
+[logi](#log) i [trasy](#trace).
 
 > **Pisownia**: OpenTelemetry powinno być zawsze jednym słowem bez łącznika i
 > pisane z wielkiej litery.
@@ -317,7 +317,7 @@ trybie wysyłania (push) lub udostępniania (pull). Zobacz [Receiver][].
 
 ### Żądanie {#request}
 
-Zobacz [Śledzenie rozproszone](#distributed-tracing).
+Zobacz [Trasowanie rozproszone](#distributed-tracing).
 
 ### Zasób {#resource}
 
@@ -335,7 +335,7 @@ Skrót od [Remote Procedure Call][rpc].
 ### Próbkowanie {#sampling}
 
 Mechanizm kontroli ilości eksportowanych danych. Najczęściej używany ze
-[źródłem danych](#data-source) typu [ślad](#trace). Zobacz
+[źródłem danych](#data-source) typu [trasa](#trace). Zobacz
 [Próbkowanie][sampling].
 
 ### SDK {#sdk}
@@ -356,12 +356,12 @@ może być wdrożona w wielu lokalizacjach.
 
 ### Sygnał {#signal}
 
-Jedno ze [Ślady](#trace), [Metryki](#metric) lub [Logi](#log). Zobacz
+Jedno z [Trasy](#trace), [Metryki](#metric) lub [Logi](#log). Zobacz
 [Sygnały][signals].
 
 ### Odcinek {#span}
 
-Reprezentuje pojedynczą operację w ramach [śladu](#trace). Zobacz
+Reprezentuje pojedynczą operację w ramach [trasy](#trace). Zobacz
 [Odcinek][span].
 
 ### Powiązanie między odcinkami {#span-link}
@@ -385,23 +385,23 @@ Wynik operacji. Zazwyczaj używany do wskazania, czy wystąpił błąd. Zobacz
 
 Zobacz [Metadane](#metadata).
 
-### Ślad {#trace}
+### Trasa {#trace}
 
 [DAG](#dag) [odcinków](#span), gdzie krawędzie między [odcinkami](#span) są
-zdefiniowane jako relacja rodzic-dziecko. Zobacz [Ślady][traces].
+zdefiniowane jako relacja rodzic-dziecko. Zobacz [Trasy][traces].
 
-### Tracer {#tracer}
+### Traser {#tracer}
 
 Odpowiedzialny za tworzenie [odcinków](#span). Zobacz [Tracer][].
 
 ### Transakcja {#transaction}
 
-Zobacz [Śledzenie rozproszone](#distributed-tracing).
+Zobacz [Trasowanie rozproszone](#distributed-tracing).
 
 ### zPages {#zpages}
 
 Alternatywa wewnątrzprocesowa dla zewnętrznych Eksporterów. Po dołączeniu
-zbierają i agregują informacje o śledzeniu i metrykach w tle; dane te są
+zbierają i agregują informacje o trasowaniu i metrykach w tle; dane te są
 serwowane na stronach internetowych na żądanie. Zobacz [zPages][].
 
 [attribute]: /docs/specs/otel/common/#attributes
