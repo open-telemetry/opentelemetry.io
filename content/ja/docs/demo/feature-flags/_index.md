@@ -5,9 +5,8 @@ aliases:
   - scenarios
   - services/feature-flag
   - services/featureflagservice
-default_lang_commit: 924424b3aad888ee3ddb745eaed063021a5ef8d9
-drifted_from_default: true
-cSpell:ignore: L9ECAV7KIM loadgenerator OLJCESPC7Z
+default_lang_commit: 8fd99e125e5510385b18b541d97c283e28f76ef2
+cSpell:ignore: loadgenerator OLJCESPC7Z
 ---
 
 デモは、異なるシナリオのシミュレートするために利用可能ないくつかのフィーチャーフラグを提供しています。
@@ -30,8 +29,6 @@ cSpell:ignore: L9ECAV7KIM loadgenerator OLJCESPC7Z
 | `adServiceHighCpu`                  | 広告               | 広告サービスで CPU を高負荷にします。 CPU スロットリングをデモしたい場合は、CPUリソース制限を設定します                                |
 | `cartServiceFailure`                | カート             | `EmptyCart` が呼び出されるたびにエラーを生成します                                                                                     |
 | `emailMemoryLeak`                   | Eメール            | `email` サービスでメモリリークをシミュレートします                                                                                     |
-| `llmInaccurateResponse`             | LLM                | 商品 ID `L9ECAV7KIM` について、モック LLM サービスは不正確な商品レビューの要約を返します                                               |
-| `llmRateLimitError`                 | LLM                | モック LLM サービスは HTTP ステータスコード 429 の RateLimitError を断続的に返します                                                   |
 | `productCatalogFailure`             | 商品カタログ       | 商品 ID: `OLJCESPC7Z` の `GetProduct` リクエストに対してエラーを生成します                                                             |
 | `recommendationServiceCacheFailure` | レコメンデーション | 指数関数的に増大するキャッシュによりメモリリークが発生します。 1.4 倍のペースで増加し、リクエストの 50% がその増加を引き起こします     |
 | `paymentServiceFailure`             | 支払い             | `charge` メソッドを呼び出すときに、エラーを発生させます                                                                                |
