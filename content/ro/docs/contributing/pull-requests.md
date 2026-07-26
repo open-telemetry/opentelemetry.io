@@ -200,29 +200,29 @@ anulate este actualizat pentru a nota despre anulare.
 > Poți de asemenea să rulezi comenzi `fix` local. Pentru lista completă the
 > comenzi de rezolvare, rulează `npm run -s '_list:fix:*'`.
 
-## Working locally {#fork-the-repo}
+## Dezvoltare pe mediul local {#fork-the-repo}
 
-If you're more experienced with Git, or if your changes are larger than a few
-lines, work from a local fork.
+Dacă ești mai experimentat cu Git sau dacă schimbările tale sunt mai mare decât
+câteva linii, lucrează de pe un fork local.
 
-Make sure you have [`git` installed][] on your computer. You can also use a user
-interface for Git.
+Asigură-te că ai [`git` instalat][`git` installed] pe calculatorul tău. Poți de
+asemenea să folosești o interfață pentru Git.
 
-Figure 3 shows the steps to follow when you work from a local fork. The details
-for each step follow.
+Figura 3 arată pașii de urmat atunci când lucrezi de pe un fork local. Detaliile
+pentru fiecare pas urmează.
 
 ```mermaid
 flowchart LR
-1[Fork the open-telemetry/opentelemetry<br>repository] --> 2[Create local clone<br>and set upstream]
-subgraph changes[Your changes]
+1[Fă un fork al repertoriului<br>open-telemetry/opentelemetry.io] --> 2[Creează o clonă locală<br>și setează upstream-ul]
+subgraph changes[Schimbările tale]
 direction TB
 S[ ] -.-
-3[Create a branch<br>example: my_new_branch] --> 3a[Make changes using<br>a text editor] --> 4["Preview your changes<br>locally using Hugo<br>(localhost:1313)"]
+3[Creează o ramură<br>de exemplu: ramura_mea_noua] --> 3a[Modifică folosind<br>un editor de text] --> 4["Previzualizează schimbările tale<br>local folosind Hugo<br>(localhost:1313)"]
 end
 subgraph changes2[Commit / Push]
 direction TB
 T[ ] -.-
-5[Commit your changes] --> 6[Push commit to<br>origin/my_new_branch]
+5[Trimite schimbările tale] --> 6[Împinge commit-ul la<br>origin/ramura_mea_noua]
 end
 
 2 --> changes --> changes2
@@ -236,7 +236,7 @@ class S,T spacewhite
 class changes,changes2 white
 ```
 
-_Figure 3. Working from a local fork to make your changes._
+_Figura 3. Lucrul de pe un fork local pentru a face schimbările tale._
 
 ### Fork the repository
 
