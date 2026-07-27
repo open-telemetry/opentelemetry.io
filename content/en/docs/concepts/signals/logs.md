@@ -175,10 +175,10 @@ Example of a semistructured log:
 Semistructured logs may require mapping and type coercion during ingestion to be
 fully useful for downstream analysis.
 
-## Emitting logs efficiently
+## Checking whether logging is enabled
 
 A common question is whether application code should check if logging is enabled
-before emitting a log record, for example:
+before making a logging call, for example:
 
 ```text
 if (logger.Enabled(...)) {
@@ -186,17 +186,16 @@ if (logger.Enabled(...)) {
 }
 ```
 
-In most cases this check is unnecessary. OpenTelemetry SDKs are designed so that
-emitting a log record is inexpensive when the record would be dropped, for
-example because its severity is below the configured level or because no
-processor is interested in it. Adding an `Enabled` check around every log
-statement gives no meaningful performance benefit and makes your code harder to
-read.
+In most cases this check is unnecessary and not recommended. OpenTelemetry SDKs
+are designed to be efficient - the invocation of the logging API has minimum
+overhead when the logger is not enabled. Making an extra call to
+`logger.Enabled` would actually decrease the performance and makes your code
+harder to read.
 
-The `Enabled` API is useful only when _constructing_ the log record is itself
-expensive, and you want to avoid that cost when the record would be dropped. For
-example, if the body or an attribute must be fetched from a database or computed
-through an expensive operation:
+The `Enabled` API is useful only when _evaluating the arguments_ passed to the
+logging call is itself expensive, and you want to avoid that cost when the
+logger is not enabled. For example, if the body or an attribute must be fetched
+from a database or computed through an expensive operation:
 
 ```text
 if (logger.Enabled(...)) {
