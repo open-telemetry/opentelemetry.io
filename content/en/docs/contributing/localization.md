@@ -221,8 +221,9 @@ command:
 
 ```console
 $ npm run check:i18n
-1       1       content/en/docs/platforms/kubernetes/_index.md - content/zh/docs/platforms/kubernetes/_index.md
+> Drifted file: content/zh/docs/platforms/kubernetes/_index.md
 ...
+DRIFTED files: 361 out of 990
 ```
 
 You can restrict the target pages to one or more localizations by providing
@@ -235,11 +236,12 @@ npm run check:i18n -- content/zh
 ### Viewing change details
 
 For any given localized pages that need updating, you can see the diff details
-of the corresponding English language pages by using the `-d` flag and providing
-the paths to your localized pages, or omit the paths to see all. For example:
+of the corresponding English language pages by using the `diff` subcommand and
+providing the paths to your localized pages. For example:
 
 ```console
-$ npm run check:i18n -- -d content/zh/docs/platforms/kubernetes
+$ npm run check:i18n -- diff content/zh/docs/platforms/kubernetes
+# content/zh/docs/platforms/kubernetes/_index.md: drifted from 1ca30b4d
 diff --git a/content/en/docs/platforms/kubernetes/_index.md b/content/en/docs/platforms/kubernetes/_index.md
 index 3592df5d..c7980653 100644
 --- a/content/en/docs/platforms/kubernetes/_index.md
@@ -265,14 +267,14 @@ page file's front matter using the commit `<hash>`. You can specify `HEAD` as an
 argument if your pages are now synced with `main` at `HEAD`. For example:
 
 ```sh
-npm run check:i18n -- -n -c 1ca30b4d content/ja
-npm run check:i18n -- -n -c HEAD content/zh/docs/concepts
+npm run check:i18n -- commit 1ca30b4d --new content/ja
+npm run check:i18n -- commit HEAD --new content/zh/docs/concepts
 ```
 
 To list localization page files with missing hash keys, run:
 
 ```sh
-npm run check:i18n -- -n
+npm run check:i18n -- --new
 ```
 
 ### Updating `default_lang_commit` for existing pages
@@ -284,17 +286,18 @@ commit hash.
 > [!TIP]
 >
 > If your localized page now corresponds to the English language version in
-> `main` at `HEAD`, then erase the commit hash value in the front matter, and
-> run the **add** command given in the previous section to automatically refresh
-> the `default_lang_commit` field value.
+> `main` at `HEAD`, then run
+> `npm run check:i18n -- commit HEAD <PATH-TO-YOUR-PAGE>`: the
+> `default_lang_commit` hash is refreshed and the page's
+> [drift status](#drift-status) is cleared in the same write.
 
 If you have batch updated all of your localization pages that had drifted, you
-can update the commit hash of these files using the `-c` flag followed by a
-commit hash or 'HEAD' to use `main@HEAD`.
+can update the commit hash of these files using the `commit` subcommand followed
+by a commit hash or 'HEAD' to use `main@HEAD`.
 
 ```sh
-npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
-npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
+npm run check:i18n -- commit <hash> <PATH-TO-YOUR-UPDATED-FILES>
+npm run check:i18n -- commit HEAD <PATH-TO-YOUR-UPDATED-FILES>
 ```
 
 > [!IMPORTANT]

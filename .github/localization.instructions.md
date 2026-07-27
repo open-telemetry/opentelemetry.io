@@ -45,17 +45,17 @@ info here.
 **Check Drift Status:**
 
 ```bash
-npm run check:i18n                    # Check all localizations for drift
-npm run check:i18n -- content/zh      # Check specific localization
-npm run check:i18n -- -d content/zh   # Show detailed diff for drift
+npm run check:i18n                     # Check all localizations for drift
+npm run check:i18n -- content/zh       # Check specific localization
+npm run check:i18n -- diff content/zh  # Show detailed diff for drift
 ```
 
 **Update Localization Tracking:**
 
 ```bash
-npm run check:i18n -- -n -c HEAD content/zh        # Add default_lang_commit to new pages
-npm run check:i18n -- -c <hash> content/zh         # Update existing pages commit hash
-npm run fix:i18n:status                            # Add drift markers to drifted pages
+npm run check:i18n -- commit HEAD --new content/zh # Add default_lang_commit to new pages
+npm run check:i18n -- commit <hash> content/zh     # Update existing pages commit hash (also syncs drift status)
+npm run fix:i18n:status                            # Sync drift status of all pages
 ```
 
 **Validation for Localized Content:**
@@ -129,10 +129,10 @@ default_lang_commit: <commit-hash-of-english-page>
 
 **Handling Drifted Content:**
 
-1. Review changes: `npm run check:i18n -- -d content/xx/path/to/page`
+1. Review changes: `npm run check:i18n -- diff content/xx/path/to/page`
 2. Update your localized page to match new English content
-3. Update `default_lang_commit` to latest hash:
-   `npm run check:i18n -- -c HEAD content/xx/path/to/page`
+3. Update `default_lang_commit` to latest hash (this also clears the page's
+   drift status): `npm run check:i18n -- commit HEAD content/xx/path/to/page`
 
 **Patching (build and check fixes only):**
 
@@ -246,7 +246,7 @@ npm run check:i18n
 npm run fix:i18n:status
 
 # Batch update commit hashes after updating multiple files
-npm run check:i18n -- -c HEAD content/xx/
+npm run check:i18n -- commit HEAD content/xx/
 
 # Help and options
 npm run check:i18n -- -h
