@@ -33,7 +33,7 @@ jobs:
             package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -72,7 +72,7 @@ jobs:
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with: { name: build-artifacts }
 
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -106,11 +106,12 @@ jobs:
           set -o pipefail
           npm run _check:links 2>&1 | tee lychee-out.txt
 
-      - name: All checked links are in the cache?
-        run: |
-          echo "If the diff check below fails, run 'npm run check:links' and commit the"
-          echo "updated .lycheecache."
-          git diff --exit-code -- .lycheecache
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: link-cache
+          path: .lycheecache
+          include-hidden-files: true
+          if-no-files-found: error
 
       - name: Lychee summary
         if: always()
@@ -122,6 +123,46 @@ jobs:
             tail -n 40 lychee-out.txt 2>/dev/null || echo '(no lychee output captured)'
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+
+  check-link-cache:
+    name: CACHE updates committed?
+    needs: check-links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with: { persist-credentials: false }
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with: { name: link-cache, path: tmp/link-cache }
+
+      - name: All link-cache updates committed?
+        run: |
+          committed=.lycheecache
+          generated=tmp/link-cache/.lycheecache
+          # Accept only regular files: fails when the artifact is missing (no
+          # false green) and never writes through a PR-controlled symlink.
+          if [[ -L "$committed" || -L "$generated" ||
+                ! -f "$committed" || ! -f "$generated" ]]; then
+            echo "::error title=Invalid link cache::Expected regular .lycheecache files."
+            exit 1
+          fi
+          if cmp --silent "$committed" "$generated"; then
+            echo "Link cache is up to date."
+            exit 0
+          fi
+          git --no-pager diff --no-index --stat "$committed" "$generated" || true
+          echo "::error title=Link cache is stale::All links check out, but this PR leaves the committed link cache (.lycheecache) stale. For recovery steps, see the step summary."
+          {
+            echo "## Link cache is stale"
+            echo
+            echo "All links check out ✅ — but this PR leaves the committed link cache"
+            echo "(\`.lycheecache\`) stale. To fix, either:"
+            echo
+            echo "- Comment \`/fix:link-cache\` on this PR — the bot updates the cache for you; or"
+            echo "- Run \`npm run check:links\` locally, then commit the modified \`.lycheecache\`."
+            echo
+            echo "For details, see [\`CACHE updates committed?\`](https://opentelemetry.io/docs/contributing/pr-checks/#cache-updates-committed)."
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 1
 
   check-build-log-for-issues:
     name: WARNINGS in build log?
@@ -144,7 +185,7 @@ jobs:
         with: { persist-credentials: false }
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with: { name: build-artifacts }
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
       - run: npm run test:public
