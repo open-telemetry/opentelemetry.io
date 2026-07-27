@@ -1,7 +1,7 @@
 ---
 title: Kubernetesのための重要なコンポーネント
 linkTitle: コンポーネント
-default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
+default_lang_commit: 77207ae357ec6a3296c28aae8bf4378181f25eb2
 # prettier-ignore
 cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics k8sattributes kubelet kubeletstats replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---
@@ -640,7 +640,7 @@ spec:
 
 ```yaml
 receivers:
-  hostmetrics:
+  host_metrics:
     root_path: /hostfs
     collection_interval: 10s
     scrapers:

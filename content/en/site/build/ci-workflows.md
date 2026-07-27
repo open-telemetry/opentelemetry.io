@@ -246,6 +246,8 @@ scripts by commenting on a PR:
 - **`/fix:all`** is mapped to `/fix` since the command semantics changed
   ([#9291][]).
 - **`/fix:ALL`** is mapped to `fix:all` so that maintainers can run `fix:all`.
+- **`/fix:refcache`** (deprecated) still runs, via the `fix:refcache` compat
+  alias; the outcome comment points to `/fix:link-cache`.
 
 The directive must be the first line of the comment; any following lines are
 ignored, so you can add an explanation after it. The workflow itself triggers on
@@ -261,8 +263,7 @@ It runs as a four-stage pipeline:
 1. **`ack`** (trusted): as soon as a directive is received, replies with a 🔄
    in-progress comment that links to the directive comment and to the run.
 2. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
-   command, prunes the link refcache, and uploads a patch artifact
-   (`site.patch`), up to 1024 KB.
+   command, and uploads a patch artifact (`site.patch`), up to 1024 KB.
 3. **`apply-patch`** (trusted): calls the [`reusable-apply-patch.yml`][]
    workflow — resolved from the default branch, never from the PR — which
    applies the patch with a GitHub App token and pushes a commit to the PR
@@ -340,10 +341,10 @@ It runs as a three-stage pipeline:
 > [!NOTE]
 >
 > The [`refcache-refresh.yml`][] workflow also runs daily and touches
-> `refcache.json`, so the two bot PRs can conflict depending on merge order.
+> `.lycheecache`, so the two bot PRs can conflict depending on merge order.
 > Conflicts self-heal, since both branches sync from `main` on each run.
-> Migrating refcache-refresh onto the reusable patch actions — eliminating such
-> conflicts by construction — is tracked in the [project plan][].
+> Migrating `refcache-refresh` onto the reusable patch actions — eliminating
+> such conflicts by construction — is tracked in the [project plan][].
 
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 [housekeeping]:
@@ -464,7 +465,7 @@ The repository includes several other workflows:
 
 | Workflow                   | Purpose                                                                                      |
 | -------------------------- | -------------------------------------------------------------------------------------------- |
-| `check-links.yml`          | Sharded link checking using htmltest, plus a non-blocking [Lychee][lychee-pilot] pilot       |
+| `check-links.yml`          | Site build and [link checking][] with Lychee                                                 |
 | `check-text.yml`           | Textlint terminology checks                                                                  |
 | `check-i18n.yml`           | Localization front matter validation                                                         |
 | `check-spelling.yml`       | Spell checking                                                                               |
@@ -477,6 +478,6 @@ The repository includes several other workflows:
 | `component-owners.yml`     | Assign reviewers based on component ownership                                                |
 
 <!-- prettier-ignore-start -->
-[lychee-pilot]: ../npm-scripts/#notes
+[link checking]: ../link-checking/
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
 <!-- prettier-ignore-end -->

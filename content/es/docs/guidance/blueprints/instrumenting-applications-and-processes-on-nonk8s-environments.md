@@ -3,6 +3,7 @@ title: Infraestructura y procesos en entornos no K8s
 date: 2026-06-03
 author: Lukasz Ciukaj (Splunk)
 default_lang_commit: cb8364effee3fd3f2dc33c15da7c47bde0432122
+drifted_from_default: true
 cSpell:ignore: ciukaj lukasz
 ---
 

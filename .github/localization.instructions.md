@@ -134,12 +134,19 @@ default_lang_commit: <commit-hash-of-english-page>
 3. Update `default_lang_commit` to latest hash:
    `npm run check:i18n -- -c HEAD content/xx/path/to/page`
 
-**Targeted Updates (Advanced):**
+**Patching (build and check fixes only):**
 
-- For small additions to drifted files, you can make targeted updates
-- Add `# patched` comment to `default_lang_commit` line in front matter
-- Document rationale in PR description
-- Example use cases: Adding new glossary terms, fixing broken links
+- Fixes strictly required to keep the site build and its checks green (link
+  fixes, build fixes) may edit localized pages without syncing them
+- Make only the edits the fix requires, and add the `# patched` comment to the
+  `default_lang_commit` line in front matter
+- Any other change to localized page content — including targeted content
+  additions to drifted pages, such as new glossary terms — is a semantic change
+  for that locale and belongs in a locale-specific PR
+- Content-neutral maintenance (site-wide tooling, configuration, front-matter,
+  or markup updates, including drift-status bookkeeping) may also span locales;
+  for the full policy, see
+  `content/en/docs/contributing/localization.md#prs-should-not-span-locales`
 
 ### Starting New Localizations
 
@@ -214,14 +221,17 @@ default_lang_commit: <commit-hash-of-english-page>
 **Single-Language PRs:**
 
 - Semantic changes should affect only one language per PR
-- Exception: Pure editorial changes (link fixes, resource updates) can span
-  locales
+- Exception: changes strictly required to keep the site build and its checks
+  green (link fixes, build fixes) can span locales
+- Exception: content-neutral maintenance (site-wide tooling, configuration,
+  front-matter, or markup updates) can span locales; for the full policy, see
+  `content/en/docs/contributing/localization.md#prs-should-not-span-locales`
 
 **PR Description Requirements:**
 
 - Specify which pages were translated/updated
 - Note any drift status changes
-- Document any targeted updates to drifted files
+- List any pages you patched (`# patched`) and why
 - Include screenshots for UI-affecting changes
 
 ### Maintenance Commands

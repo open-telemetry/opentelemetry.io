@@ -18,8 +18,9 @@ required code owner has approved and all checks pass.
 The helper adds two guards of its own:
 
 1. **Eligibility** — every changed file must be locale-owned (`content/<loc>/`,
-   `.cspell/<loc>-*.txt`, `prh/<loc>.yml`) or a recognized no-owner file
-   (`static/refcache.json`). A PR may touch more than one locale.
+   `.cspell/<loc>-*.txt`, `prh/<loc>.yml`) or one of the no-owner paths declared
+   in `.github/CODEOWNERS` (e.g. `.lycheecache`). A PR may touch more than one
+   locale.
 2. **Authorization** — the commenter must be a member of
    `@open-telemetry/docs-<loc>-maintainers` for **every** locale the PR touches.
 

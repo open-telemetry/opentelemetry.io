@@ -3,8 +3,8 @@ title: トレースとログの相関
 linkTitle: トレースとログの相関
 weight: 35
 description: より迅速なデバッグとトラブルシューティングのために、OBI がアプリケーションログを分散トレースとどのように相関付けるかを学びます。
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
-cSpell:ignore: BPFFS PYTHONUNBUFFERED
+default_lang_commit: 2728c8fbf4f09cf3b8257a1b628a7631fc77d639
+cSpell:ignore: BPFFS NUL PYTHONUNBUFFERED
 ---
 
 OpenTelemetry eBPF 計装 (OBI) は、JSON ログをトレースコンテキストで補強することで、アプリケーションログを分散トレースと相関付けます。
@@ -42,6 +42,10 @@ OBI はアプリケーションバイナリを変更することなく、カー�
 - カーネルの eBPF プローブを使用して write 操作をインターセプトします
 - パフォーマンスのためにファイルディスクリプタのキャッシュを維持します
 - JSON ログを出力する任意のロギングフレームワークと連携します
+
+OBI は JSON にすでに存在する `trace_id` および `span_id` フィールドを保持します。
+OpenTelemetry トレースを直接エクスポートしていると検出されたサービスに対して、OBI は `trace_id` のみを注入します。
+OBI が生成する eBPF ベースのスパン ID では SDK のスパンを特定できないためです。
 
 ## 設定 {#configuration}
 
@@ -114,6 +118,8 @@ OBI は JSON ログオブジェクトに `trace_id` および `span_id` フィ�
 - Docker 上の Python では `PYTHONUNBUFFERED=1` が一般的に必要です
 - .NET の `Console.Out` は、標準出力がパイプの場合、デフォルトでバッファリングされます。`AutoFlush = true` の `StreamWriter` を使用してください
 - ASP.NET Core のデフォルトの `Microsoft.Extensions.Logging.AddConsole()` パイプラインは、バックグラウンドスレッドから書き込むため互換性がありません
+- Java の仮想スレッドのログは、キャリアカーネルスレッドが複数の仮想スレッドからの処理を実行できるため補強されません。
+  プラットフォームスレッドの補強は影響を受けません。
 
 ### 2. トレースのエクスポートとログ補強の有効化 {#2-trace-export-and-log-enrichment-enabled}
 
@@ -199,6 +205,25 @@ logger.info({ duration_ms: 125 }, 'Request processed');
 OBI はログをその場で補強します。
 既存のログフォワーダーや Collector を使用して、ログをバックエンドに転送してください。
 
+OBI が元の行を抑制すると、コンテナログファイルにはその行のかわりに NUL バイトの行が含まれます。
+8 KiB 以下の書き込みの場合、`^[\x00\s]*$` を使用してこれらのプレースホルダー行を下流でフィルタリングしてください。
+たとえば、OpenTelemetry Collector の `filelog` レシーバーの場合は次のようにします。
+
+```yaml
+receivers:
+  filelog:
+    include:
+      - /var/log/pods/*/*/*.log
+    start_at: end
+    operators:
+      - type: container
+      - type: filter
+        expr: 'body matches "^[\\x00\\s]*$"'
+```
+
+CRI および Docker の JSON ログエンベロープは NUL を `\u0000` としてエンコードします。
+`container` オペレーターはフィルターが実行される前にボディをデコードします。
+
 ## パフォーマンスに関する考慮事項 {#performance-considerations}
 
 - **最小限のオーバーヘッド**: 相関付けには、効率的なファイルディスクリプタキャッシュを持つ eBPF カーネルプローブを使用します
@@ -209,7 +234,11 @@ OBI はログをその場で補強します。
 
 - **JSON のみ**: プレーンテキストのログはトレースコンテキストで補強されません
 - **ファイルディスクリプタキャッシュ**: パフォーマンスのためにキャッシュされ、設定可能な TTL（デフォルト: 30 分）を持ちます
-- **スパン整合のみ**: ログはスパンがアクティブな間のみ補強されます。スパンのスコープ外のログは補強されません。
+- **スパン整合のみ**: ログはスパンがアクティブな間のみ補強されます。
+  スパンのスコープ外のログは補強されません。
+- **書き込みあたり 8 KiB の制限**: OBI は単一の `write()` または `writev()` の最初の 8 KiB のみを補強および抑制します。
+  残りのバイトは補強されずにそのまま通過し、プレースホルダー行フィルターにマッチしません。
+- **Java 仮想スレッド**: 仮想スレッドから書き込まれたログは補強されません。
 
 ## トラブルシューティング {#troubleshooting}
 
