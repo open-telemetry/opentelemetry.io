@@ -349,7 +349,7 @@ OBI は Kubernetes クラスター内のすべてのサービスを監視する�
 
 ## サービス名と名前空間の上書き {#override-service-name-and-namespace}
 
-OpenTelemetry または Prometheus を介して計装データをエクスポートする場合、OBI は他の計装ソリューションとの相互運用性を向上させるために、[OpenTelemetry operator のサービス名規約](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#how-resource-attributes-are-calculated-from-the-pods-metadata) に従います。
+OpenTelemetry または Prometheus を介して計装データをエクスポートする場合、OBI は他の計装ソリューションとの相互運用性を向上させるために、[OpenTelemetry operator のサービス名規約](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/resource-attributes.md#how-resource-attributes-are-calculated-from-the-pods-metadata) に従います。
 
 OBI は、サービス名と名前空間を自動的に設定するために、次の条件をこの順序で使用します。
 
