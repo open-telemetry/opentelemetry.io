@@ -5151,6 +5151,7 @@ https://npmjs.com/package/@fastify/otel,200,1784285304
 https://npmjs.com/package/@google-cloud/opentelemetry-cloud-monitoring-exporter,200,1785137269
 https://npmjs.com/package/@google-cloud/opentelemetry-cloud-trace-exporter,200,1785137270
 https://npmjs.com/package/@instana/opentelemetry-exporter,206,1785064057
+https://npmjs.com/package/@jenniferplusplus/opentelemetry-instrumentation-bullmq,200,1785144414
 https://npmjs.com/package/@jufab/opentelemetry-angular-interceptor,206,1785064057
 https://npmjs.com/package/@opentelemetry/baggage-log-record-processor,206,1785064057
 https://npmjs.com/package/@opentelemetry/baggage-span-processor,206,1785064057
@@ -5172,12 +5173,15 @@ https://npmjs.com/package/@opentelemetry/instrumentation-dns,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-document-load,200,1785137283
 https://npmjs.com/package/@opentelemetry/instrumentation-express,200,1785137436
 https://npmjs.com/package/@opentelemetry/instrumentation-fetch,206,1785064057
+https://npmjs.com/package/@opentelemetry/instrumentation-fs,200,1785144416
 https://npmjs.com/package/@opentelemetry/instrumentation-generic-pool,200,1785137288
 https://npmjs.com/package/@opentelemetry/instrumentation-graphql,206,1785064057
+https://npmjs.com/package/@opentelemetry/instrumentation-grpc,200,1785144415
 https://npmjs.com/package/@opentelemetry/instrumentation-hapi,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-http,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-ioredis,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-knex,200,1785143024
+https://npmjs.com/package/@opentelemetry/instrumentation-koa,200,1785144417
 https://npmjs.com/package/@opentelemetry/instrumentation-long-task,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-lru-memoizer,200,1785143022
 https://npmjs.com/package/@opentelemetry/instrumentation-memcached,200,1785137172
@@ -5187,6 +5191,7 @@ https://npmjs.com/package/@opentelemetry/instrumentation-mysql,200,1785137181
 https://npmjs.com/package/@opentelemetry/instrumentation-mysql2,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-nestjs-core,200,1785137196
 https://npmjs.com/package/@opentelemetry/instrumentation-net,206,1785064057
+https://npmjs.com/package/@opentelemetry/instrumentation-oracledb,200,1785144419
 https://npmjs.com/package/@opentelemetry/instrumentation-pg,200,1785143030
 https://npmjs.com/package/@opentelemetry/instrumentation-pino,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-redis,200,1785137454
@@ -6219,6 +6224,7 @@ https://www.mysql.com/,200,1784285361
 https://www.netlify.com/,206,1784284649
 https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/,206,1784284685
 https://www.npgsql.org/doc/diagnostics/metrics.html,200,1784960532
+https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node,200,1785144419
 https://www.npmjs.com/package/@opentelemetry/exporter-prometheus,200,1784285363
 https://www.npmjs.com/package/@opentelemetry/exporter-zipkin,200,1784285365
 https://www.npmjs.com/package/@opentelemetry/instrumentation-aws-lambda,200,1784270081

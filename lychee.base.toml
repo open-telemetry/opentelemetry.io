@@ -65,6 +65,10 @@ exclude = [
   '^https://www\.merriam-webster\.com',
   '^https://oatpp\.io',
   '^https://www\.intersystems\.com',
+  # Bot wall on the product-page tree: 403s lychee's user agent (and a browser
+  # one) while serving 200 to a plain curl user agent. The pages are live, and
+  # `www.cisco.com/` itself is reachable, so scope the rule to `/c/…/products/`.
+  '^https://www\.cisco\.com/c/en/us/products/',
   '^https://github\.com/open-telemetry/opentelemetry\.io/issues/?\?q=',
   '^https://github\.com/open-telemetry/opentelemetry\.io/discussions/?\?discussions_q=',
   '^https://github\.com/search/?\?',
