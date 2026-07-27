@@ -2,10 +2,13 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+  classifyCliArgs,
   driftReport,
   enCounterpartOf,
   groupByPin,
   parsePin,
+  setPinInText,
+  setStatusInText,
 } from './drift.mjs';
 
 describe('parsePin()', () => {
@@ -161,5 +164,246 @@ describe('driftReport()', () => {
     assert.equal(report.get('content/ja/a.md').status, 'error');
     assert.equal(report.get('content/es/a.md').status, 'error');
     assert.equal(report.get('content/ja/b.md').status, 'in-sync');
+  });
+});
+
+describe('setPinInText()', () => {
+  const fm = (body) => `---\ntitle: X\n${body}---\n\nBody.\n`;
+
+  it('updates an existing pin in place', () => {
+    const { text, action } = setPinInText(
+      fm('default_lang_commit: 1111111\n'),
+      '2222222',
+    );
+    assert.equal(text, fm('default_lang_commit: 2222222\n'));
+    assert.equal(action, 'UPDATED');
+  });
+
+  it('drops a "# patched" marker on update (re-pin supersedes the patch)', () => {
+    const { text } = setPinInText(
+      fm('default_lang_commit: 1111111 # patched\n'),
+      '2222222',
+    );
+    assert.equal(text, fm('default_lang_commit: 2222222\n'));
+  });
+
+  it('adds the pin at the end of the front matter when missing', () => {
+    const { text, action } = setPinInText(fm(''), '2222222');
+    assert.equal(text, fm('default_lang_commit: 2222222\n'));
+    assert.equal(action, 'ADDED');
+  });
+
+  it('is a no-op when the pin already matches', () => {
+    const input = fm('default_lang_commit: 2222222\n');
+    const { text, action } = setPinInText(input, '2222222');
+    assert.equal(text, input);
+    assert.equal(action, null);
+  });
+});
+
+describe('setStatusInText()', () => {
+  const fm = (body) => `---\ntitle: X\n${body}---\n\nBody.\n`;
+  const pinned = (rest = '') => fm(`default_lang_commit: 1111111\n${rest}`);
+
+  it('inserts the status right after the pin line when absent', () => {
+    const { text, action } = setStatusInText(pinned(), 'true');
+    assert.equal(text, pinned('drifted_from_default: true\n'));
+    assert.equal(action, 'ADDED');
+  });
+
+  it('preserves a "# patched" pin marker on insertion', () => {
+    const input = fm('default_lang_commit: 1111111 # patched\n');
+    const { text } = setStatusInText(input, 'file not found');
+    assert.equal(
+      text,
+      fm(
+        'default_lang_commit: 1111111 # patched\ndrifted_from_default: file not found\n',
+      ),
+    );
+  });
+
+  it('updates an existing status value in place', () => {
+    const { text, action } = setStatusInText(
+      pinned('drifted_from_default: file not found\n'),
+      'true',
+    );
+    assert.equal(text, pinned('drifted_from_default: true\n'));
+    assert.equal(action, 'UPDATED');
+  });
+
+  it('removes the status line when the page is in sync', () => {
+    const { text, action } = setStatusInText(
+      pinned('drifted_from_default: true\n'),
+      false,
+    );
+    assert.equal(text, pinned());
+    assert.equal(action, 'REMOVED');
+  });
+
+  it('is a no-op when in sync and no status is present', () => {
+    const input = pinned();
+    const { text, action } = setStatusInText(input, false);
+    assert.equal(text, input);
+    assert.equal(action, null);
+  });
+
+  it('is a no-op when the status already matches', () => {
+    const input = pinned('drifted_from_default: true\n');
+    const { text, action } = setStatusInText(input, 'true');
+    assert.equal(text, input);
+    assert.equal(action, null);
+  });
+
+  it('throws when adding a status to a page without a pin', () => {
+    assert.throws(() => setStatusInText(fm(''), 'true'), /default_lang_commit/);
+  });
+});
+
+describe('classifyCliArgs()', () => {
+  it('defaults to a bare status read', () => {
+    const cli = classifyCliArgs([]);
+    assert.equal(cli.noun, 'status');
+    assert.equal(cli.write, false);
+    assert.deepEqual(cli.paths, []);
+  });
+
+  it('treats positional args of a bare invocation as paths', () => {
+    const cli = classifyCliArgs(['content/ja']);
+    assert.equal(cli.noun, 'status');
+    assert.deepEqual(cli.paths, ['content/ja']);
+  });
+
+  it('parses status flags', () => {
+    const cli = classifyCliArgs(['status', '--new', '--check', '-q']);
+    assert.deepEqual(
+      { noun: cli.noun, list: cli.list, check: cli.check, quiet: cli.quiet },
+      { noun: 'status', list: 'new', check: true, quiet: true },
+    );
+  });
+
+  it('parses status --write', () => {
+    const cli = classifyCliArgs(['status', '--write']);
+    assert.equal(cli.write, true);
+  });
+
+  it('rejects --check with --write', () => {
+    assert.throws(() => classifyCliArgs(['status', '--write', '--check']));
+  });
+
+  it('requires paths for diff', () => {
+    assert.throws(() => classifyCliArgs(['diff']), /path/i);
+    const cli = classifyCliArgs(['diff', 'content/ja/a.md']);
+    assert.equal(cli.noun, 'diff');
+    assert.deepEqual(cli.paths, ['content/ja/a.md']);
+  });
+
+  it('classifies a bare commit as a read', () => {
+    const cli = classifyCliArgs(['commit', 'content/ja']);
+    assert.equal(cli.noun, 'commit');
+    assert.equal(cli.write, false);
+    assert.deepEqual(cli.paths, ['content/ja']);
+  });
+
+  it('classifies a hash first-positional as a write', () => {
+    const cli = classifyCliArgs(['commit', 'abc1234', 'content/ja/a.md']);
+    assert.deepEqual(
+      { write: cli.write, hash: cli.hash, paths: cli.paths },
+      { write: true, hash: 'abc1234', paths: ['content/ja/a.md'] },
+    );
+  });
+
+  it('accepts the literal HEAD as the pin payload', () => {
+    const cli = classifyCliArgs(['commit', 'HEAD', '--new']);
+    assert.deepEqual(
+      { write: cli.write, hash: cli.hash, list: cli.list },
+      {
+        write: true,
+        hash: 'HEAD',
+        list: 'new',
+      },
+    );
+  });
+
+  it('rejects a tree-wide pin write (no paths, no --new/--all)', () => {
+    assert.throws(() => classifyCliArgs(['commit', 'HEAD']), /tree-wide/i);
+  });
+
+  it('treats post-"--" args as paths, even hash-shaped ones', () => {
+    const cli = classifyCliArgs(['commit', '--', 'HEAD']);
+    assert.equal(cli.write, false);
+    assert.deepEqual(cli.paths, ['HEAD']);
+  });
+
+  it('rejects unknown flags', () => {
+    assert.throws(() => classifyCliArgs(['status', '--bogus']), /--bogus/);
+  });
+
+  it('rejects --write on nouns other than status', () => {
+    assert.throws(() => classifyCliArgs(['commit', '--write']));
+  });
+});
+
+describe('front-matter scoping of write transforms', () => {
+  // A page can cite the keys in its body (e.g. the localization guide's
+  // examples); writers must only ever touch the front-matter block. The
+  // legacy bash writer gets this wrong (per-line perl -pe clobbers body
+  // occurrences too) — module behavior is the fix.
+  const page = `---
+title: X
+default_lang_commit: 1111111
+drifted_from_default: true
+---
+
+Example:
+
+\`\`\`yaml
+default_lang_commit: 2222222
+drifted_from_default: true
+\`\`\`
+`;
+
+  it('setPinInText() leaves body occurrences of the key alone', () => {
+    const { text } = setPinInText(page, '3333333');
+    assert.match(text, /^default_lang_commit: 3333333$/m);
+    assert.match(text, /^default_lang_commit: 2222222$/m);
+  });
+
+  it('setStatusInText() updates only the front-matter status', () => {
+    const { text } = setStatusInText(page, 'file not found');
+    assert.match(text, /^drifted_from_default: file not found$/m);
+    assert.match(text, /^drifted_from_default: true$/m);
+  });
+
+  it('setStatusInText() removes only the front-matter status', () => {
+    const { text } = setStatusInText(page, false);
+    assert.doesNotMatch(text, /^drifted_from_default: true\ndrifted/m);
+    assert.match(text, /^drifted_from_default: true$/m);
+  });
+});
+
+describe('body-only key occurrences', () => {
+  const page = `---
+title: X
+default_lang_commit: 1111111
+---
+
+\`\`\`yaml
+drifted_from_default: true
+\`\`\`
+`;
+
+  it('setStatusInText() adds to the front matter, not before the body match', () => {
+    const { text, action } = setStatusInText(page, 'true');
+    assert.equal(action, 'ADDED');
+    assert.match(
+      text,
+      /^default_lang_commit: 1111111\ndrifted_from_default: true$/m,
+      'status is inserted right after the front-matter pin',
+    );
+  });
+
+  it('setStatusInText() treats a body-only status as absent on removal', () => {
+    const { action } = setStatusInText(page, false);
+    assert.equal(action, null);
   });
 });
