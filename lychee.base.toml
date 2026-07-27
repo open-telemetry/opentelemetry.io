@@ -19,6 +19,12 @@ max_retries = 0
 include_fragments = "full"  # check anchors too; this setting is an enum, not a boolean
 index_files = ["index.html"]  # resolve Hugo pretty-URL dir links to index.html for fragment checks
 
+# npmjs 429s at lychee's default pacing. Registry data links both host forms,
+# and lychee matches hostnames exactly. Dotted keys: a [hosts] table header
+# would capture the generated exclude_path appended to this file.
+hosts."npmjs.com" = { concurrency = 1, request_interval = "1s" }
+hosts."www.npmjs.com" = { concurrency = 1, request_interval = "1s" }
+
 exclude = [
   # Rule-writing notes: internal-path rules match lychee's resolved `file://`
   # URI, so write them UNANCHORED (a `/docs/…` substring covers every locale)
@@ -35,6 +41,9 @@ exclude = [
   # JS accordion: #type-* anchors are client-side only (spec PR #5192).
   # Optional slash: lychee resolves dir URLs to …/types#fragment (no slash).
   '/docs/specs/otel-config/types/?#type-',
+
+  # Temporary: javadoc.io /doc/ wrappers omit method anchors (#11037).
+  '^https://javadoc\.io/doc/com\.azure/azure-cosmos/.+#executeBulkOperations',
 
   # --- external host rules ---
   '^https://deploy-preview-\d+--opentelemetry\.netlify\.app/',

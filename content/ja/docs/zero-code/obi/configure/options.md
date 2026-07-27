@@ -3,8 +3,8 @@ title: OBI グローバル設定プロパティ
 linkTitle: グローバルプロパティ
 description: OBI コアに適用されるグローバル設定プロパティを設定する
 weight: 2
-default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
-drifted_from_default: true
+default_lang_commit: 4c8d57fea0147ce76633951315c40a27c55fad2e
+cSpell:ignore: healthz
 ---
 
 OBI は、環境変数またはコマンドライン引数 `-config` か環境変数 `OTEL_EBPF_CONFIG_PATH` を使用して渡す YAML 設定ファイルを通じて設定できます。
@@ -52,6 +52,24 @@ channel_buffer_len: 33
 | `log_format`<br>`OTEL_EBPF_LOG_FORMAT`             | ロガーの出力形式を設定します。有効な値は `text`、`json`　です。                                                                              | string                          | `text`     |
 | `trace_printer`<br>`OTEL_EBPF_TRACE_PRINTER`       | 計装されたトレースを指定された形式で標準出力に出力します。[トレースプリンター形式](#trace-printer-formats)を参照してください。               | string                          | `disabled` |
 | `enforce_sys_caps`<br>`OTEL_EBPF_ENFORCE_SYS_CAPS` | 起動時にシステムケーパビリティが不足している場合の OBI の処理方法を制御します。                                                              | boolean                         | `false`    |
+
+## ヘルスチェックエンドポイント {#health-check-endpoint}
+
+OBI は TCP または Unix ドメインソケットを介して `/healthz` を公開できます。
+JSON レスポンスにはスキーマバージョン、現在の Unix 時刻、プロセスのアップタイムが含まれます。
+このエンドポイントはデフォルトで無効です。
+
+```yaml
+health_check:
+  port: 8080
+```
+
+| YAML<br>環境変数                                                             | 説明                                                                                                                       | 型     | デフォルト |
+| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------ | ---------- |
+| `health_check.port`<br>`OTEL_EBPF_HEALTH_CHECK_PORT`                         | 指定された TCP ポートでヘルスエンドポイントを開きます。`0` にすると TCP ヘルスチェックが無効になります。                   | int    | `0`        |
+| `health_check.unix_socket_path`<br>`OTEL_EBPF_HEALTH_CHECK_UNIX_SOCKET_PATH` | ヘルスエンドポイントを絶対ファイルシステムパスまたは `@` 接頭辞付き抽象ソケットにバインドします。`port` より優先されます。 | string | 未設定     |
+
+たとえば、`unix_socket_path: /var/run/obi-health.sock` はファイルシステムソケットを作成し、`unix_socket_path: '@obi-health'` は抽象ソケットを使用します。
 
 ## 実行可能ファイル名のマッチング {#executable-name-matching}
 
