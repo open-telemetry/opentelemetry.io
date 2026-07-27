@@ -97,6 +97,12 @@ jobs:
       - name: Lychee sanity tests
         run: npm run test:local-tools:lychee
 
+      # The drift-pending overlay diffs content/en against the drift-status
+      # baseline; a depth-1 fetch of that commit is all the (shallow) clone
+      # needs. Config generation fails if the baseline can't be resolved.
+      - name: Deepen history to the drift-status baseline
+        run: git fetch --depth=1 origin "$(cat data/i18n/status-baseline.txt)"
+
       - run: npm run generate:config:links
 
       - name: Check links
