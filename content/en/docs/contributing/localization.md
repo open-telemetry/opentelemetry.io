@@ -553,9 +553,10 @@ PRs.
 >
 > The locale-span rule governs page **content**. Maintainers sometimes submit
 > content-neutral changes that necessarily span locales: site-wide tooling,
-> configuration, front-matter, or markup updates, including the automated
-> [drift-status](#track-changes) bookkeeping PRs. Such changes don't alter the
-> meaning of localized pages.
+> configuration, front-matter, or markup updates, including
+> [drift-status](#track-changes) bookkeeping — the automated PRs and manual
+> status-only edits alike. Such changes don't alter the meaning of localized
+> pages.
 
 #### Keeping the build and checks green {#keep-checks-green}
 
@@ -574,9 +575,9 @@ In both cases, mark every localized page that you fix as [patched](#patched).
 
 The check-green minimum applies to drift-status bookkeeping too: when a failing
 check calls for refreshing `drifted_from_default` (see the deleted-page case
-below), update only the pages that the failing check reports -- the nightly
-Housekeeping run completes the rest. Status-only edits are content-neutral
-maintenance and don't make a PR span locales.
+below), update only the pages that the failing check reports — the daily
+[Housekeeping run](/site/build/ci-workflows/#housekeeping) completes the rest.
+Status-only edits are [content-neutral maintenance](#semantic-changes).
 
 Treat any other change to localized page content as a **semantic** change for
 that locale. This includes targeted content additions to drifted pages, such as
@@ -617,7 +618,7 @@ Proceed according to the fate of the link target:
   committed, refresh the [drift status](#drift-status) of just the localized
   pages that fail link checking:
   `npm run fix:i18n:status -- <PATHS-TO-FAILING-LOCALIZED-PAGES>`. The link
-  checker then skips those pages; the nightly Housekeeping run refreshes the
+  checker then skips those pages; the daily Housekeeping run refreshes the
   status of the remaining copies. Reconciliation is left to each page's locale
   team. In the rare case where a failing link exists only in a localized page,
   coordinate a fix with its locale team.
