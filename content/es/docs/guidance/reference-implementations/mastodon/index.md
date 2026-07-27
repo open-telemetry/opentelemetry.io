@@ -33,8 +33,8 @@ protocolos estandarizados como ActivityPub. Al igual que ocurre con el correo
 electrónico, los usuarios pueden comunicarse entre instancias independientemente
 de quién las opere.
 
-Esta filosofía no solo condiciona las decisiones de producto de Mastodon,
-sino también su enfoque de la observabilidad.
+Esta filosofía no solo condiciona las decisiones de producto de Mastodon, sino
+también su enfoque de la observabilidad.
 
 ### Estructura organizativa {#organizational-structure}
 
@@ -436,8 +436,8 @@ A partir de la experiencia de Mastodon, destacan algunas lecciones:
 - **Mantén la arquitectura simple**: un único Collector puede llegar muy lejos
 - **Confía en los operadores de Kubernetes** para la gestión del ciclo de vida
 - **Usa el muestreo** para controlar los costes
-- **Cíñete a las convenciones semánticas** para evitar la dependencia de proveedor (lock-in) a
-  largo plazo
+- **Cíñete a las convenciones semánticas** para evitar la dependencia de
+  proveedor (lock-in) a largo plazo
 - **Actualiza con frecuencia** para reducir el impacto de los cambios
   incompatibles
 

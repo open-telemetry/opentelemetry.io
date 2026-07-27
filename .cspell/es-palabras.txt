@@ -19,6 +19,7 @@ desincronizado
 discútelo
 empoderarlos
 extensibilidad
+fediverso
 formateador
 inicialización
 interoperabilidad
