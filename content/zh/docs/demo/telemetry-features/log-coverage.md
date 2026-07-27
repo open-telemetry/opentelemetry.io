@@ -3,6 +3,7 @@ title: 各服务的日志覆盖情况
 linkTitle: 日志覆盖
 aliases: [log_service_features, logging-features, ../logging-features]
 default_lang_commit: 911b0a6b7752c125523a85fd2e58a49d1e459f34
+drifted_from_default: true
 ---
 
 | 服务            | 语言       | OTLP 日志 |
