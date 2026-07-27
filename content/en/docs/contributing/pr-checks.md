@@ -19,7 +19,7 @@ a set of checks are executed. The PR checks verify that:
 >
 > If any of the PR checks fails, try to
 > [fix content issues](../pull-requests/#fix-issues) first by running
-> `npm run fix:all` locally.
+> `npm run fix` locally.
 >
 > You can also add the comment `/fix` to your PR. This will trigger the
 > OpenTelemetry Bot to run that command on your behalf and update the PR. Make
@@ -107,8 +107,8 @@ This check verifies that:
 - All [file names are in kebab-case](../style-guide/#file-names)
 - No obsolete files or folders exist in the repository (see list below)
 
-If this check fails, run `npm run fix:filenames` locally and push the changes in
-a new commit.
+Follow the guidance in each error annotation. To apply fixes locally, run
+`npm run fix:filenames` and push the changes in a new commit.
 
 > [!NOTE]
 >
@@ -116,29 +116,19 @@ a new commit.
 
 #### Obsolete files and folders
 
-The following paths are flagged as obsolete and removed by `fix:filenames`. When
-present, an issue or PR number provides context for the change that made the
-path obsolete.
+The check flags these obsolete paths:
 
-- `tools/` - [Migrate code-excerpts tooling to npm package version #9638][#9638]
+- `tools/` - removed when [code-excerpts tooling moved to an npm package][#9638]
+- `static/refcache.json` - removed in the [switch to Lychee][#10911]. If your
+  branch restores it, follow the [stale-branch update instructions][#10990].
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
+[#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
+[#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
 These two checks build the website and verify that all links are valid.
-
-If you added or changed an external link, the link checker records it in the
-link cache (`.lycheecache`), and this check will fail until that cache is
-updated.
-
-The easiest way to update it is to comment
-[`/fix:refcache`](../pull-requests/#fixing-prs-in-github) on your PR — the
-OpenTelemetry bot updates the cache for you.
-
-Alternatively, you can build and check links locally, by running
-`npm run check:links`. This command also updates the link cache. Push any
-changes to the cache in a new commit.
 
 > [!NOTE]
 >
@@ -150,7 +140,7 @@ changes to the cache in a new commit.
 You need to fix the URLs reported as **invalid** (HTTP status **404**), by the
 link checker.
 
-#### Handling valid external links
+#### Handling valid external links {#handling-valid-external-links}
 
 The link checker will sometimes get an HTTP status other than 200 (success) by
 servers that block checkers. Such servers will often return an HTTP status in
@@ -164,6 +154,20 @@ are other query parameters. For example, the following URLs will be ignored:
 
 - <https:/some-example.org?link-check=no>
 - <https:/some-example.org?other-param=value&link-check=no>
+
+### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
+
+If you added or changed an external link, the link checker records it in the
+link cache (`.lycheecache`), and this check fails until the updated cache is
+committed.
+
+The easiest way to update it is to comment
+[`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) on your PR — the
+OpenTelemetry bot updates the cache for you.
+
+Alternatively, you can build and check links locally, by running
+`npm run check:links`. This command also updates the link cache. Push any
+changes to the cache in a new commit.
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 
