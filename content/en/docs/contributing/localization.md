@@ -261,9 +261,9 @@ index 3592df5d..c7980653 100644
 As you create pages for your localization, remember to add `default_lang_commit`
 to the page front matter along with an appropriate commit hash from `main`.
 
-If your page translation is based on an English page in `main` at `<hash>`, then
+If your page translation is based on an English page in `main` at `<HASH>`, then
 run the following command to automatically add `default_lang_commit` to your
-page file's front matter using the commit `<hash>`. You can specify `HEAD` as an
+page file's front matter using the commit `<HASH>`. You can specify `HEAD` as an
 argument if your pages are now synced with `main` at `HEAD`. For example:
 
 ```sh
@@ -296,7 +296,7 @@ can update the commit hash of these files using the `commit` subcommand followed
 by a commit hash or 'HEAD' to use `main@HEAD`.
 
 ```sh
-npm run check:i18n -- commit <hash> <PATH-TO-YOUR-UPDATED-FILES>
+npm run check:i18n -- commit <HASH> <PATH-TO-YOUR-UPDATED-FILES>
 npm run check:i18n -- commit HEAD <PATH-TO-YOUR-UPDATED-FILES>
 ```
 
@@ -328,11 +328,16 @@ the last sync point. The marker is dropped the next time the page's hash is
 
 ### Drift status
 
-Run `npm run fix:i18n:status` to set the `drifted_from_default` front-matter
-field on those target localization pages that have drifted. This field displays
-an "outdated" banner at the top of the page, and causes the link checker to skip
-the page, so that stale links on drifted pages don't fail CI. For details about
-how the link checker handles drifted pages, see
+Run `npm run fix:i18n:status -- <PATHS>` to set the `drifted_from_default`
+front-matter field on those of the given localization pages that have drifted.
+In a PR, pass only the pages that a failing check reports; tree-wide runs belong
+to the daily Housekeeping workflow. For the check-green minimum that governs
+such status updates, see
+[Keeping the build and checks green](#keep-checks-green).
+
+This field displays an "outdated" banner at the top of the page, and causes the
+link checker to skip the page, so that stale links on drifted pages don't fail
+CI. For details about how the link checker handles drifted pages, see
 [Link checking](/site/build/link-checking/).
 
 ### Script help
