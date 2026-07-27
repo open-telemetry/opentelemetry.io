@@ -74,13 +74,13 @@ const FRONT_MATTER_RE = /^---\r?\n[\s\S]*?\n---\r?\n/;
 // touched. (The legacy bash writer's per-line perl gets this wrong.)
 function inFrontMatter(text, fn) {
   const m = FRONT_MATTER_RE.exec(text);
-  const scope = m ? m[0] : text;
+  if (!m) throw new Error('page has no front-matter block');
+  const scope = m[0];
   const { text: newScope, action } = fn(scope);
   if (!action) return { text, action };
   return {
-    text: m
-      ? text.slice(0, m.index) + newScope + text.slice(m.index + scope.length)
-      : newScope,
+    text:
+      text.slice(0, m.index) + newScope + text.slice(m.index + scope.length),
     action,
   };
 }
@@ -175,8 +175,14 @@ export function classifyCliArgs(args) {
 
   if (cli.noun === 'commit' && positionals.length) {
     const first = positionals[0];
-    if (first === 'HEAD' || HASH_RE.test(first)) {
-      cli.hash = positionals.shift();
+    // Normalize case, as bash did: accept `head`, lowercase hex hashes
+    // (git object names are lowercase, uppercase would fail rev-parse).
+    if (/^head$/i.test(first)) {
+      cli.hash = 'HEAD';
+      positionals.shift();
+    } else if (HASH_RE.test(first)) {
+      cli.hash = first.toLowerCase();
+      positionals.shift();
     }
   }
   if (writeFlag && cli.noun !== 'status') {
@@ -185,6 +191,14 @@ export function classifyCliArgs(args) {
   cli.write = writeFlag || !!cli.hash;
   if (writeFlag && cli.check) {
     throw new Error(`--check is a read-mode flag; drop it with --write`);
+  }
+  if (writeFlag && cli.list !== 'drifted') {
+    throw new Error(
+      `--new/--all have no effect with --write: status --write always syncs the full report`,
+    );
+  }
+  if (cli.check && cli.noun !== 'status') {
+    throw new Error(`--check applies to the status noun only`);
   }
 
   cli.paths = [...positionals, ...escapedPaths];
@@ -309,7 +323,9 @@ export async function driftReportForRepo(rootDir, targets) {
 
 // Persists the report's statuses (status --write, was -D): drifted -> true,
 // missing EN -> "file not found", in-sync or unpinned-in-sync -> status
-// removed. Pages whose pin errored are left untouched.
+// removed. Pages whose pin errored are left untouched, as are unpinned
+// pages whose EN counterpart is gone (no pin line to anchor the status —
+// pin them first, e.g. with `commit HEAD --new`).
 export function writeStatuses(rootDir, report) {
   const statusOf = {
     drifted: 'true',
@@ -318,8 +334,15 @@ export function writeStatuses(rootDir, report) {
     new: false,
   };
   const actions = [];
-  for (const [page, { status }] of report) {
+  for (const [page, { status, sha }] of report) {
     if (!(status in statusOf)) continue; // 'error': don't touch the page
+    if (status === 'file not found' && !sha) {
+      console.error(
+        `WARNING: ${page} has no ${I18N_DLC_KEY} key to anchor its ` +
+          `'file not found' status; pin the page first (commit HEAD --new)`,
+      );
+      continue;
+    }
     const abs = path.join(rootDir, page);
     const { text, action } = setStatusInText(
       readFileSync(abs, 'utf8'),
@@ -340,9 +363,16 @@ async function git(rootDir, ...args) {
   return stdout.trim();
 }
 
+// A page with no pin: `new`, or `file not found` when its EN counterpart is
+// gone too (bash's `-n` list kind selected both — pin presence alone).
+export function isUnpinned({ status, sha }) {
+  return status === 'new' || (status === 'file not found' && !sha);
+}
+
 // Upserts pins (commit HASH|HEAD, was -c) on the pages the report and list
-// kind select: `new` -> unpinned pages only; `drifted` (default) -> drifted
-// and unpinned pages, as in bash; `all` -> every page. As in bash, a pin
+// kind select: `new` -> unpinned pages only (as bash `-n`, EN counterpart or
+// not); `drifted` (default) -> drifted and unpinned-with-EN pages, as in
+// bash; `all` -> every page. As in bash, a pin
 // *update* requires the hash to be on main (adds are unchecked), and `HEAD`
 // means main's HEAD, not the checked-out commit. Unlike bash, the hash is
 // resolved to its full-sha pin form, and each written page's drift status is
@@ -355,12 +385,12 @@ export async function writePins(rootDir, report, { hash, list }) {
     hash === 'HEAD' ? 'main' : `${hash}^{commit}`,
   );
 
-  const selected = [...report].filter(([, { status }]) =>
+  const selected = [...report].filter(([, r]) =>
     list === 'all'
-      ? status !== 'error'
+      ? r.status !== 'error'
       : list === 'new'
-        ? status === 'new'
-        : ['drifted', 'new'].includes(status),
+        ? isUnpinned(r)
+        : ['drifted', 'new'].includes(r.status),
   );
 
   const needsOnMainCheck = selected.some(([, { sha }]) => sha);
@@ -415,9 +445,9 @@ bare nouns read, a write always carries its payload.
       --check                         exit 1 if anything is listed (CI)
       -q, --quiet                     counts only
       --json                          full report as JSON
-      --write                       Persist statuses: sets drifted_from_default
-                                    to true or "file not found", removes it
-                                    from in-sync pages
+      --write                         persist statuses: sets
+                                      drifted_from_default to true or "file not
+                                      found", removes it from in-sync pages
   drift.mjs diff PATHS...           Read: EN changes since each page's pin
   drift.mjs commit [PATHS...]       Read: print pinned commits
   drift.mjs commit HASH|HEAD PATHS  Write: upsert default_lang_commit to HASH
@@ -428,18 +458,16 @@ bare nouns read, a write always carries its payload.
 PATHS are localized page files or directories; the default is 'content'.
 A tree-wide pin write requires PATHS, --new, or an explicit --all.`;
 
-function printStatusLine(page, status, list) {
-  if (status === 'drifted') console.log(`> Drifted file: ${page}`);
+function printStatusLine(page, r, list) {
+  const { status } = r;
+  if (list === 'new' && isUnpinned(r))
+    console.log(`${page} - has no ${I18N_DLC_KEY} front-matter key`);
+  else if (status === 'drifted') console.log(`> Drifted file: ${page}`);
   else if (status === 'file not found')
     console.log(
       `File not found:\t${page} - ${DEFAULT_LANG} page was removed or renamed`,
     );
-  else if (status === 'new')
-    console.log(
-      list === 'new'
-        ? `${page} - has no ${I18N_DLC_KEY} front-matter key`
-        : `New i18n file - ${page}`,
-    );
+  else if (status === 'new') console.log(`New i18n file - ${page}`);
   else console.log(`ERROR\t${page}: git diff error or invalid hash`);
 }
 
@@ -451,34 +479,29 @@ async function statusCLI(rootDir, cli, report) {
         console.log(`${page} ${I18N_DLD_KEY} ${action}`);
     }
     console.log(`Status writes: ${actions.length} out of ${report.size}`);
-    process.exitCode = [...report.values()].some((r) => r.status === 'error')
-      ? 2
-      : 0;
     return;
   }
 
-  if (cli.json) {
-    console.log(JSON.stringify(Object.fromEntries(report), null, 2));
-    return;
-  }
-
-  const counts = {};
   let listed = 0;
-  for (const [page, { status, sha }] of report) {
-    counts[status] = (counts[status] ?? 0) + 1;
+  for (const [page, r] of report) {
     const inList =
       cli.list === 'all' ||
-      (cli.list === 'new' ? status === 'new' : status !== 'in-sync');
+      (cli.list === 'new' ? isUnpinned(r) : r.status !== 'in-sync');
     if (!inList) continue;
     listed++;
-    if (cli.quiet) continue;
-    if (status === 'in-sync') console.log(`File is in sync\t${page} - ${sha}`);
-    else printStatusLine(page, status, cli.list);
+    if (cli.quiet || cli.json) continue;
+    if (r.status === 'in-sync')
+      console.log(`File is in sync\t${page} - ${r.sha}`);
+    else printStatusLine(page, r, cli.list);
   }
-  console.log(
-    `${cli.list.toUpperCase()} files: ${listed} out of ${report.size}`,
-  );
-  process.exitCode = counts.error ? 2 : cli.check && listed ? 1 : 0;
+  if (cli.json) {
+    console.log(JSON.stringify(Object.fromEntries(report), null, 2));
+  } else {
+    console.log(
+      `${cli.list.toUpperCase()} files: ${listed} out of ${report.size}`,
+    );
+  }
+  process.exitCode = cli.check && listed ? 1 : 0;
 }
 
 async function diffCLI(rootDir, cli, report) {
@@ -497,9 +520,6 @@ async function diffCLI(rootDir, cli, report) {
     );
     console.log(diff);
   }
-  process.exitCode = [...report.values()].some((r) => r.status === 'error')
-    ? 2
-    : 0;
 }
 
 async function commitCLI(rootDir, cli, report) {
@@ -511,7 +531,13 @@ async function commitCLI(rootDir, cli, report) {
     if (!cli.quiet) {
       for (const [page, action] of actions) console.log(`${page} ${action}`);
     }
-    console.log(`Pin writes: ${actions.length} out of ${report.size}`);
+    // Pin writes and their status syncs are distinct action streams; report
+    // them separately so the pin count stays comparable to the report size.
+    const syncs = actions.filter(([, a]) => a.startsWith('status ')).length;
+    console.log(
+      `Pin writes: ${actions.length - syncs} out of ${report.size}` +
+        `; status syncs: ${syncs}`,
+    );
     return;
   }
   for (const [page, { sha, patched }] of report) {
@@ -552,9 +578,20 @@ async function mainCLI() {
     return;
   }
 
-  if (cli.noun === 'diff') await diffCLI(rootDir, cli, report);
-  else if (cli.noun === 'commit') await commitCLI(rootDir, cli, report);
-  else await statusCLI(rootDir, cli, report);
+  try {
+    if (cli.noun === 'diff') await diffCLI(rootDir, cli, report);
+    else if (cli.noun === 'commit') await commitCLI(rootDir, cli, report);
+    else await statusCLI(rootDir, cli, report);
+  } catch (e) {
+    console.error(`ERROR: ${e.message}`);
+    process.exitCode = 2;
+    return;
+  }
+
+  // Invalid pins always exit non-zero, whatever the noun or mode.
+  if ([...report.values()].some((r) => r.status === 'error')) {
+    process.exitCode = 2;
+  }
 }
 
 // Robust under symlinked invocation paths (worktrees): compare real paths.

@@ -1,14 +1,19 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
+import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import * as path from 'node:path';
 
 import {
   classifyCliArgs,
   driftReport,
   enCounterpartOf,
   groupByPin,
+  isUnpinned,
   parsePin,
   setPinInText,
   setStatusInText,
+  writeStatuses,
 } from './drift.mjs';
 
 describe('parsePin()', () => {
@@ -259,6 +264,75 @@ describe('setStatusInText()', () => {
   });
 });
 
+describe('pages without a front-matter block', () => {
+  it('setPinInText() fails loudly instead of reporting a false ADDED', () => {
+    assert.throws(
+      () => setPinInText('Body only.\n', '1111111'),
+      /front.matter/i,
+    );
+  });
+
+  it('setStatusInText() fails loudly too', () => {
+    assert.throws(
+      () => setStatusInText('Body only.\n', 'true'),
+      /front.matter/i,
+    );
+  });
+});
+
+describe('isUnpinned()', () => {
+  it('selects new pages and pin-less deleted-EN pages, as bash -n did', () => {
+    assert.equal(isUnpinned({ status: 'new' }), true);
+    assert.equal(isUnpinned({ status: 'file not found' }), true);
+    assert.equal(
+      isUnpinned({ status: 'file not found', sha: '1111111' }),
+      false,
+    );
+    assert.equal(isUnpinned({ status: 'drifted', sha: '1111111' }), false);
+  });
+});
+
+describe('writeStatuses()', () => {
+  const fixture = (files) => {
+    const root = mkdtempSync(path.join(tmpdir(), 'drift-test-'));
+    for (const [p, text] of Object.entries(files)) {
+      writeFileSync(path.join(root, p), text);
+    }
+    return root;
+  };
+  const pinnedPage = (rest = '') =>
+    `---\ntitle: X\ndefault_lang_commit: 1111111\n${rest}---\n\nBody.\n`;
+
+  it('skips a pin-less "file not found" page with a warning, no throw', () => {
+    const root = fixture({ 'gone.md': '---\ntitle: X\n---\n\nBody.\n' });
+    const report = new Map([
+      ['gone.md', { status: 'file not found' }],
+      ['drifted.md', { status: 'drifted', sha: '1111111' }],
+    ]);
+    writeFileSync(path.join(root, 'drifted.md'), pinnedPage());
+    const actions = writeStatuses(root, report);
+    assert.deepEqual(actions, [['drifted.md', 'ADDED']], 'pinned page written');
+    assert.equal(
+      readFileSync(path.join(root, 'gone.md'), 'utf8'),
+      '---\ntitle: X\n---\n\nBody.\n',
+      'pin-less page is left untouched',
+    );
+  });
+
+  it('writes "file not found" for a pinned page whose EN is gone', () => {
+    const root = fixture({ 'gone.md': pinnedPage() });
+    const actions = writeStatuses(
+      root,
+      new Map([['gone.md', { status: 'file not found', sha: '1111111' }]]),
+    );
+    assert.deepEqual(actions, [['gone.md', 'ADDED']]);
+    assert.match(
+      readFileSync(path.join(root, 'gone.md'), 'utf8'),
+      /^drifted_from_default: file not found$/m,
+    );
+  });
+});
+
 describe('classifyCliArgs()', () => {
   it('defaults to a bare status read', () => {
     const cli = classifyCliArgs([]);
@@ -324,6 +398,14 @@ describe('classifyCliArgs()', () => {
     );
   });
 
+  it('normalizes hash-argument case, as bash did', () => {
+    assert.equal(classifyCliArgs(['commit', 'head', '--new']).hash, 'HEAD');
+    assert.equal(
+      classifyCliArgs(['commit', 'ABC1234', 'content/ja/a.md']).hash,
+      'abc1234',
+    );
+  });
+
   it('rejects a tree-wide pin write (no paths, no --new/--all)', () => {
     assert.throws(() => classifyCliArgs(['commit', 'HEAD']), /tree-wide/i);
   });
@@ -340,6 +422,21 @@ describe('classifyCliArgs()', () => {
 
   it('rejects --write on nouns other than status', () => {
     assert.throws(() => classifyCliArgs(['commit', '--write']));
+  });
+
+  it('rejects flags that would silently no-op', () => {
+    assert.throws(
+      () => classifyCliArgs(['status', '--write', '--new']),
+      /no effect/,
+    );
+    assert.throws(
+      () => classifyCliArgs(['status', '--write', '--all']),
+      /no effect/,
+    );
+    assert.throws(
+      () => classifyCliArgs(['commit', '--check']),
+      /status noun only/,
+    );
   });
 });
 

@@ -4,8 +4,9 @@
 // `scripts/check-i18n.sh -D` and the module's `status --write` over the same
 // perturbed working tree and compares the resulting `git diff -- content`
 // byte for byte; then compares pin writes (`-c HEAD` vs `commit HEAD`) on a
-// sample locale, where the module's status sync is an expected, spec'd
-// divergence (drift-status-home § drift.mjs CLI surface): after stripping
+// sample locale, where the module's status sync is an intended divergence
+// (a pin write recomputes and syncs the page's drift status — see the
+// writePins doc comment in drift.mjs): after stripping
 // drifted_from_default line edits from both diffs, the rest must match, and
 // the module-only residue must consist of drifted_from_default removals.
 //
