@@ -11,7 +11,7 @@ La instrumentación sin código para JavaScript ofrece una forma de instrumentar
 cualquier aplicación Node.js y capturar datos de telemetría de muchas librerías
 y frameworks populares sin ningún cambio en el código.
 
-## Instalación
+## Instalación {#setup}
 
 Ejecuta los siguientes comandos para instalar los paquetes correspondientes.
 
@@ -23,7 +23,7 @@ npm install --save @opentelemetry/auto-instrumentations-node
 Los paquetes `@opentelemetry/api` y `@opentelemetry/auto-instrumentations-node`
 instalan la API, el SDK y las herramientas de instrumentación.
 
-## Configuración del módulo
+## Configuración del módulo {#configuring-the-module}
 
 El módulo es altamente configurable.
 
@@ -54,13 +54,13 @@ detectores o para deshabilitar su uso por completo.
 Para ver todas las opciones de configuración, consulta la
 [Configuración del módulo](configuration).
 
-## Librerías y frameworks compatibles
+## Librerías y frameworks compatibles {#supported-libraries-and-frameworks}
 
 Varias librerías populares de Node.js se instrumentan automáticamente. Para ver
 la lista completa, consulta las
 [instrumentaciones compatibles](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/auto-instrumentations-node#supported-instrumentations).
 
-## Solución de problemas
+## Solución de problemas {#troubleshooting}
 
 Puedes establecer el nivel de registro configurando la variable de entorno
 `OTEL_LOG_LEVEL` con uno de los siguientes valores:
