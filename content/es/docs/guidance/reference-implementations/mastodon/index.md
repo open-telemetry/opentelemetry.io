@@ -436,7 +436,7 @@ A partir de la experiencia de Mastodon, destacan algunas lecciones:
 - **Mantén la arquitectura simple**: un único Collector puede llegar muy lejos
 - **Confía en los operadores de Kubernetes** para la gestión del ciclo de vida
 - **Usa el muestreo** para controlar los costes
-- **Cíñete a las convenciones semánticas** para evitar el bloqueo (lock-in) a
+- **Cíñete a las convenciones semánticas** para evitar la dependencia de proveedor (lock-in) a
   largo plazo
 - **Actualiza con frecuencia** para reducir el impacto de los cambios
   incompatibles
