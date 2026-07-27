@@ -3,7 +3,7 @@ title: OBI サービスディスカバリーの設定
 linkTitle: サービスディスカバリー
 description: OBI のサービスディスカバリーコンポーネントが計装対象のプロセスを検索する方法を設定します。
 weight: 20
-default_lang_commit: e17943afc3a71a67fcdd3a69dcd428c3e45b306d
+default_lang_commit: e17943afc3a71a67fcdd3a69dcd428c3e45b306d # patched
 # prettier-ignore
 cSpell:ignore: filestorecsi kube-node-lease kube-system rdns replicaset statefulset testserver volumepopulator
 ---
@@ -348,7 +348,7 @@ OBI は Kubernetes クラスター内のすべてのサービスを監視する�
 
 ## サービス名と名前空間の上書き {#override-service-name-and-namespace}
 
-OpenTelemetry または Prometheus を介して計装データをエクスポートする場合、OBI は他の計装ソリューションとの相互運用性を向上させるために、[OpenTelemetry operator のサービス名規約](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#how-resource-attributes-are-calculated-from-the-pods-metadata) に従います。
+OpenTelemetry または Prometheus を介して計装データをエクスポートする場合、OBI は他の計装ソリューションとの相互運用性を向上させるために、[OpenTelemetry operator のサービス名規約](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/resource-attributes.md#how-resource-attributes-are-calculated-from-the-pods-metadata) に従います。
 
 OBI は、サービス名と名前空間を自動的に設定するために、次の条件をこの順序で使用します。
 

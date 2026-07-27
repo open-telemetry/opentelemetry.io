@@ -156,7 +156,6 @@ CI/infra: # including config
           - .editorconfig
           - .github/**
           - .gitpod.yml
-          - .htmltest.base.yml
           - .markdown*.*
           - content/**/.markdownlint.yaml
           - .nvmrc
@@ -169,6 +168,7 @@ CI/infra: # including config
           - content/en/site/**
           - gulp-src/**
           - gulpfile.js
+          - lychee.base.toml
           - Makefile
           - netlify/**
           - netlify.toml

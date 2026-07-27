@@ -28,13 +28,14 @@ routes:
   ignore_mode: traces
 ```
 
-| YAML               | Description                                                                                                                   | Type            | Default   |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------- | --------------- | --------- |
-| `patterns`         | List of URL path patterns to match and set the `http.route` property. Refer to [patterns](#patterns).                         | list of strings | (unset)   |
-| `ignored_patterns` | List of URL path patterns to ignore. Discards trace/metric events if matched. Refer to [ignored patterns](#ignored-patterns). | list of strings | (unset)   |
-| `ignore_mode`      | Refines which type of events are ignored when using `ignored_patterns`. Refer to [ignore mode](#ignore-mode).                 | string          | all       |
-| `unmatched`        | Specifies what to do when a trace HTTP path doesn't match any `patterns` entries. Refer to [unmatched](#unmatched).           | string          | heuristic |
-| `wildcard_char`    | Character to use for path components replaced by the heuristic mode. Refer to [wildcard char](#wildcard-char).                | string          | `*`       |
+| YAML                           | Description                                                                                                                                                     | Type            | Default   |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | --------- |
+| `patterns`                     | List of URL path patterns to match and set the `http.route` property. Refer to [patterns](#patterns).                                                           | list of strings | (unset)   |
+| `ignored_patterns`             | List of URL path patterns to ignore. Discards trace/metric events if matched. Refer to [ignored patterns](#ignored-patterns).                                   | list of strings | (unset)   |
+| `ignore_mode`                  | Refines which type of events are ignored when using `ignored_patterns`. Refer to [ignore mode](#ignore-mode).                                                   | string          | all       |
+| `unmatched`                    | Specifies what to do when a trace HTTP path doesn't match any `patterns` entries. Refer to [unmatched](#unmatched).                                             | string          | heuristic |
+| `wildcard_char`                | Character to use for path components replaced by the heuristic mode. Refer to [wildcard char](#wildcard-char).                                                  | string          | `*`       |
+| `max_path_segment_cardinality` | Maximum distinct values per path segment and service in `low-cardinality` mode. `0` disables the limit. Refer to [low-cardinality mode](#low-cardinality-mode). | integer         | `10`      |
 
 ## Patterns
 
@@ -141,12 +142,17 @@ Possible values for the `unmatched` property are:
   can lead to cardinality explosion at the ingestion side
 - `wildcard` sets the `http.route` field property to a generic asterisk-based
   `/**` value
+- `low-cardinality` applies the heuristic rules and also caps distinct path
+  segment values per service using `max_path_segment_cardinality`
 - `heuristic` automatically derives the `http.route` field property from the
   path value, based on these rules:
   - Any path components with numbers or characters outside of the ASCII alphabet
     (or `-` and `_`) are replaced by `wildcard_char`
   - Any alphabetical components that don't look like words are replaced by
     `wildcard_char`
+
+If you explicitly set `unmatched: ''`, OBI treats the empty value as `wildcard`.
+When `unmatched` is omitted, OBI's default configuration uses `heuristic`.
 
 ## Wildcard char
 
@@ -181,3 +187,10 @@ are converted to a low cardinality route (using the default `wildcard_char`):
 ```text
 document/d/*/edit
 ```
+
+## Low-cardinality mode
+
+`unmatched: low-cardinality` first applies the heuristic classifier, then tracks
+distinct values for each path segment per service. After a segment reaches
+`max_path_segment_cardinality`, OBI replaces new distinct values with
+`wildcard_char`. Set the limit to `0` to disable this cardinality cap.

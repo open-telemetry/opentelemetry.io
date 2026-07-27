@@ -1,0 +1,17 @@
+# cSpell:ignore vitess
+title: opentelemetry-propagator-vitess
+registryType: propagator
+language: ruby
+tags:
+  - vitess
+  - propagator
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/propagator/vitess
+license: Apache 2.0
+description:
+  The `opentelemetry-propagator-vitess` gem contains injectors and extractors
+  for the
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

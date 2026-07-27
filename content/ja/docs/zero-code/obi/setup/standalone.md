@@ -3,7 +3,7 @@ title: OBIをスタンドアロンプロセスとして実行する
 linkTitle: スタンドアロン
 description: OBIをLinuxのスタンドアロンプロセスとしてセットアップして実行する方法を学びます。
 weight: 5
-default_lang_commit: 331c76c3500213c83ace2e30a407218ddedda628
+default_lang_commit: aea54f0fb2574c21a52fb1dc1bb64af38ed7b948
 cSpell:ignore: cyclonedx
 ---
 
@@ -31,7 +31,7 @@ OBIは Linux（amd64 および arm64）向けのビルド済みバイナリを�
 ```sh
 # 希望するバージョンを設定（最新版は
 # https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases を参照）
-VERSION=0.9.0
+VERSION=0.10.0
 
 # アーキテクチャを指定
 # Intel/AMD 64ビットの場合: amd64
