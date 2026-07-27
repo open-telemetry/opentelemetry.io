@@ -5202,6 +5202,7 @@ https://npmjs.com/package/@opentelemetry/instrumentation-runtime-node,206,178506
 https://npmjs.com/package/@opentelemetry/instrumentation-socket.io,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-tedious,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-undici,206,1785064057
+https://npmjs.com/package/@opentelemetry/instrumentation-user-interaction,200,1785145323
 https://npmjs.com/package/@opentelemetry/instrumentation-web-exception,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-winston,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-xml-http-request,206,1785064057
@@ -6225,7 +6226,11 @@ https://www.netlify.com/,206,1784284649
 https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/,206,1784284685
 https://www.npgsql.org/doc/diagnostics/metrics.html,200,1784960532
 https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node,200,1785144419
+https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web,200,1785146154
 https://www.npmjs.com/package/@opentelemetry/exporter-prometheus,200,1784285363
+https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc,200,1785146154
+https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http,200,1785146154
+https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto,200,1785146154
 https://www.npmjs.com/package/@opentelemetry/exporter-zipkin,200,1784285365
 https://www.npmjs.com/package/@opentelemetry/instrumentation-aws-lambda,200,1784270081
 https://www.npmjs.com/package/@opentelemetry/instrumentation-express,200,1784270083
