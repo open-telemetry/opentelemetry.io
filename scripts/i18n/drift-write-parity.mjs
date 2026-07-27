@@ -160,6 +160,7 @@ await run('node', [
   path.join(rootDir, 'scripts/i18n/drift.mjs'),
   'status',
   '--write',
+  '--all',
   '-q',
 ]);
 const moduleStatusDiff = await contentDiff();

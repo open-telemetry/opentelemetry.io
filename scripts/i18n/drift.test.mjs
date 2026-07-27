@@ -355,13 +355,26 @@ describe('classifyCliArgs()', () => {
     );
   });
 
-  it('parses status --write', () => {
-    const cli = classifyCliArgs(['status', '--write']);
-    assert.equal(cli.write, true);
+  it('parses status --write with paths or --all', () => {
+    assert.equal(
+      classifyCliArgs(['status', '--write', 'content/ja']).write,
+      true,
+    );
+    const cli = classifyCliArgs(['status', '--write', '--all']);
+    assert.deepEqual(
+      { write: cli.write, list: cli.list },
+      { write: true, list: 'all' },
+    );
+  });
+
+  it('refuses a tree-wide status write (no paths, no --all)', () => {
+    assert.throws(() => classifyCliArgs(['status', '--write']), /tree-wide/i);
   });
 
   it('rejects --check with --write', () => {
-    assert.throws(() => classifyCliArgs(['status', '--write', '--check']));
+    assert.throws(() =>
+      classifyCliArgs(['status', '--write', '--check', 'content/ja']),
+    );
   });
 
   it('requires paths for diff', () => {
@@ -427,10 +440,6 @@ describe('classifyCliArgs()', () => {
   it('rejects flags that would silently no-op', () => {
     assert.throws(
       () => classifyCliArgs(['status', '--write', '--new']),
-      /no effect/,
-    );
-    assert.throws(
-      () => classifyCliArgs(['status', '--write', '--all']),
       /no effect/,
     );
     assert.throws(

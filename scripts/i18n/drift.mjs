@@ -192,9 +192,9 @@ export function classifyCliArgs(args) {
   if (writeFlag && cli.check) {
     throw new Error(`--check is a read-mode flag; drop it with --write`);
   }
-  if (writeFlag && cli.list !== 'drifted') {
+  if (writeFlag && cli.list === 'new') {
     throw new Error(
-      `--new/--all have no effect with --write: status --write always syncs the full report`,
+      `--new has no effect with --write: status --write always syncs the full report`,
     );
   }
   if (cli.check && cli.noun !== 'status') {
@@ -209,6 +209,11 @@ export function classifyCliArgs(args) {
   if (cli.hash && !cli.paths.length && cli.list === 'drifted') {
     throw new Error(
       'Tree-wide pin write refused: pass PATHS, --new, or an explicit --all',
+    );
+  }
+  if (writeFlag && !cli.paths.length && cli.list !== 'all') {
+    throw new Error(
+      'Tree-wide status write refused: pass PATHS or an explicit --all',
     );
   }
 
@@ -456,7 +461,8 @@ bare nouns read, a write always carries its payload.
       --new                           add-only: pages missing the key
 
 PATHS are localized page files or directories; the default is 'content'.
-A tree-wide pin write requires PATHS, --new, or an explicit --all.`;
+Tree-wide writes require PATHS or an explicit --all (pin writes accept --new
+too).`;
 
 function printStatusLine(page, r, list) {
   const { status } = r;

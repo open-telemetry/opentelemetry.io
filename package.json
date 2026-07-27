@@ -98,7 +98,7 @@
     "fix:format": "npm run format; npm run _fix:trailing-spaces",
     "fix:i18n:new": "node scripts/i18n/drift.mjs commit HEAD --new",
     "fix:i18n:status": "node scripts/i18n/drift.mjs status --write",
-    "fix:i18n": "npm run seq -- fix:i18n:new fix:i18n:status",
+    "fix:i18n": "npm run fix:i18n:new && npm run fix:i18n:status -- --all",
     "fix:l10n:do-not-copy-images-etc": "npm run check:l10n:do-not-copy-images-etc -- --fix",
     "fix:l10n": "npm run seq -- fix:l10n:do-not-copy-images-etc",
     "fix:link-cache:refresh": "refcache --prune ${PRUNE_N:-800} && npm run fix:link-cache",
