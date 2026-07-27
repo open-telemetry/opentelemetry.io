@@ -167,7 +167,7 @@ personalizadas.
 
 La configuración se centra en:
 
-- Ingesta de OTLP para todas las señales
+- Ingesta OTLP para todas las señales
 - Enriquecimiento de metadatos de Kubernetes
 - Detección de recursos
 - Muestreo basado en la cola (tail-based sampling)
