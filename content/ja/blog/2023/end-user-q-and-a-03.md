@@ -158,7 +158,7 @@ Farfetch には膨大な量のログ（トレースよりも多い）がある�
 [レシーバーのスクレイプ設定](https://github.com/prometheus/prometheus/blob/v2.28.1/docs/configuration/configuration.md#scrape_config)は Prometheus と同じであるため、Prometheus から Prometheus レシーバーへの移行（リフト・アンド・シフト）は比較的容易でした。
 
 また、Kubernetes から OTLP メトリクスを収集する計画もあります。
-これは Prometheus レシーバーが [OTel Operator の Target Allocator](https://github.com/open-telemetry/opentelemetry-operator/blob/d980048f185202f9f8d736410b20be541371c2bc/docs/target-allocator/README.md) をサポートしていることで容易になります。
+これは Prometheus レシーバーが [OTel Operator の Target Allocator](https://github.com/open-telemetry/opentelemetry-operator#target-allocator) をサポートしていることで容易になります。
 
 Prometheus はその他の領域でもメトリクス収集に引き続き使用されており、特に仮想マシンからメトリクスを収集する場合はおそらくこのまま使われ続けるでしょう。
 
