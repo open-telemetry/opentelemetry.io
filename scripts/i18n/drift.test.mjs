@@ -1,18 +1,26 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import * as path from 'node:path';
 
 import {
+  STATUS_BASELINE_PATH,
   classifyCliArgs,
+  driftPendingPages,
+  driftPendingForRepo,
   driftReport,
   enCounterpartOf,
   groupByPin,
+  isDriftedStatus,
   isUnpinned,
   parsePin,
+  parseStatus,
+  readBaseline,
   setPinInText,
   setStatusInText,
+  writeBaseline,
   writeStatuses,
 } from './drift.mjs';
 
@@ -511,5 +519,176 @@ drifted_from_default: true
   it('setStatusInText() treats a body-only status as absent on removal', () => {
     const { action } = setStatusInText(page, false);
     assert.equal(action, null);
+  });
+});
+
+describe('parseStatus() / isDriftedStatus()', () => {
+  const page = (status) => `---
+title: X
+default_lang_commit: 1111111
+${status ? `drifted_from_default: ${status}\n` : ''}---
+
+Body.
+`;
+
+  it('returns the stored status value', () => {
+    assert.equal(parseStatus(page('true')), 'true');
+    assert.equal(parseStatus(page('file not found')), 'file not found');
+  });
+
+  it('returns null when the status is absent', () => {
+    assert.equal(parseStatus(page()), null);
+  });
+
+  it('ignores body-only occurrences of the key', () => {
+    const text = `---
+title: X
+---
+
+\`\`\`yaml
+drifted_from_default: true
+\`\`\`
+`;
+    assert.equal(parseStatus(text), null);
+  });
+
+  it('one predicate covers drifted and deleted-EN pages alike', () => {
+    assert.equal(isDriftedStatus('true'), true);
+    assert.equal(isDriftedStatus('file not found'), true);
+    assert.equal(isDriftedStatus(null), false);
+  });
+});
+
+describe('driftPendingPages()', () => {
+  const locales = ['bn', 'ja', 'zh'];
+  const existing = new Set([
+    'content/ja/docs/demo/index.md',
+    'content/zh/docs/demo/index.md',
+    'content/ja/docs/collector.md',
+  ]);
+  const pageExists = (p) => existing.has(p);
+
+  it('maps changed EN pages to their existing locale copies', () => {
+    assert.deepEqual(
+      driftPendingPages(['content/en/docs/demo/index.md'], locales, pageExists),
+      ['content/ja/docs/demo/index.md', 'content/zh/docs/demo/index.md'],
+    );
+  });
+
+  it('a deleted EN page still covers its existing locale copies', () => {
+    // The EN page no longer exists; only the locale copies do.
+    assert.deepEqual(
+      driftPendingPages(['content/en/docs/collector.md'], locales, pageExists),
+      ['content/ja/docs/collector.md'],
+    );
+  });
+
+  it('a locale copy itself changed since the baseline stays checked', () => {
+    // Activity exemption: someone is working on the copy (same-PR edit or a
+    // catch-up merged since the baseline) — the checker must not skip it.
+    assert.deepEqual(
+      driftPendingPages(
+        ['content/en/docs/demo/index.md'],
+        locales,
+        pageExists,
+        new Set(['content/ja/docs/demo/index.md']),
+      ),
+      ['content/zh/docs/demo/index.md'],
+    );
+  });
+
+  it('ignores non-EN and non-page paths', () => {
+    assert.deepEqual(
+      driftPendingPages(
+        [
+          'content/ja/docs/demo/index.md', // not under content/en/
+          'content/en/docs/img/diagram.png', // not a page
+        ],
+        locales,
+        pageExists,
+      ),
+      [],
+    );
+  });
+});
+
+describe('status baseline (loud-failure paths)', () => {
+  const gitRepo = () => {
+    const root = mkdtempSync(path.join(tmpdir(), 'drift-baseline-test-'));
+    const git = (...args) =>
+      execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
+    git('init', '-q', '-b', 'main');
+    git('config', 'user.email', 'test@example.invalid');
+    git('config', 'user.name', 'Test');
+    mkdirSync(path.join(root, 'content/en/docs'), { recursive: true });
+    writeFileSync(path.join(root, 'content/en/docs/a.md'), '# a\n');
+    git('add', '.');
+    git('commit', '-q', '-m', 'init');
+    return { root, git };
+  };
+  const writeBaselineFile = (root, sha) => {
+    mkdirSync(path.dirname(path.join(root, STATUS_BASELINE_PATH)), {
+      recursive: true,
+    });
+    writeFileSync(path.join(root, STATUS_BASELINE_PATH), `${sha}\n`);
+  };
+
+  it('readBaseline() throws when the baseline file is missing', () => {
+    const { root } = gitRepo();
+    assert.throws(() => readBaseline(root), new RegExp(STATUS_BASELINE_PATH));
+  });
+
+  it('readBaseline() throws on a malformed baseline value', () => {
+    const { root } = gitRepo();
+    writeBaselineFile(root, 'not-a-sha');
+    assert.throws(() => readBaseline(root), /baseline/i);
+  });
+
+  it('readBaseline() returns the recorded SHA', () => {
+    const { root, git } = gitRepo();
+    const sha = git('rev-parse', 'HEAD');
+    writeBaselineFile(root, sha);
+    assert.equal(readBaseline(root), sha);
+  });
+
+  it('driftPendingForRepo() throws on an unresolvable baseline SHA', async () => {
+    // A too-shallow clone must fail the config generation loudly: a silent
+    // empty overlay would false-green drift-pending pages.
+    const { root } = gitRepo();
+    writeBaselineFile(root, 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeef');
+    await assert.rejects(driftPendingForRepo(root));
+  });
+
+  it('driftPendingForRepo() reports locale copies of EN pages changed since the baseline', async () => {
+    const { root, git } = gitRepo();
+    mkdirSync(path.join(root, 'content/ja/docs'), { recursive: true });
+    writeFileSync(path.join(root, 'content/ja/docs/a.md'), '# a-ja\n');
+    git('add', '.');
+    git('commit', '-q', '-m', 'add ja copy');
+    writeBaselineFile(root, git('rev-parse', 'HEAD'));
+    writeFileSync(path.join(root, 'content/en/docs/a.md'), '# a v2\n');
+    assert.deepEqual(await driftPendingForRepo(root), ['content/ja/docs/a.md']);
+  });
+
+  it("writeBaseline() records main's HEAD in the baseline file", async () => {
+    const { root, git } = gitRepo();
+    mkdirSync(path.dirname(path.join(root, STATUS_BASELINE_PATH)), {
+      recursive: true,
+    });
+    const sha = await writeBaseline(root);
+    assert.equal(sha, git('rev-parse', 'main'));
+    assert.equal(readBaseline(root), sha);
+  });
+
+  it('driftPendingForRepo() exempts locale copies changed since the baseline', async () => {
+    const { root, git } = gitRepo();
+    mkdirSync(path.join(root, 'content/ja/docs'), { recursive: true });
+    writeFileSync(path.join(root, 'content/ja/docs/a.md'), '# a-ja\n');
+    git('add', '.');
+    git('commit', '-q', '-m', 'add ja copy');
+    writeBaselineFile(root, git('rev-parse', 'HEAD'));
+    writeFileSync(path.join(root, 'content/en/docs/a.md'), '# a v2\n');
+    writeFileSync(path.join(root, 'content/ja/docs/a.md'), '# a-ja v2\n');
+    assert.deepEqual(await driftPendingForRepo(root), []);
   });
 });

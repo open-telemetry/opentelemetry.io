@@ -41,6 +41,24 @@ export function parsePin(fileText) {
   return { sha: m[1], patched: !!m.groups.patched };
 }
 
+// Stored drift status of a page: the front-matter `drifted_from_default`
+// value, or null when absent. Body occurrences of the key (e.g. the
+// localization guide's own examples) are ignored.
+export function parseStatus(fileText) {
+  const fm = FRONT_MATTER_RE.exec(fileText)?.[0];
+  if (!fm) return null;
+  const m = new RegExp(`^${I18N_DLD_KEY}:\\s*(.*?)\\s*$`, 'im').exec(fm);
+  return m ? m[1] : null;
+}
+
+// The one stored-status skip predicate, shared by the status writer and the
+// link-check config generation: a `true` or `file not found` status means
+// the page is presumed out of sync with EN (its EN counterpart changed or
+// was deleted), so its outbound links are not checked.
+export function isDriftedStatus(status) {
+  return status === 'true' || status === 'file not found';
+}
+
 export function enCounterpartOf(pagePath) {
   return pagePath.replace(
     new RegExp(`^${CONTENT_DIR}/[^/]{2,5}/`),
@@ -323,6 +341,107 @@ export async function driftReportForRepo(rootDir, targets) {
   });
 }
 
+// --- Drift-pending overlay (baseline mode) ----------------------------------
+//
+// Shallow CI checkouts can't run the precise per-pin report; instead, the
+// link-check config generation overlays the pages *presumed* drifted since
+// the status baseline: the commit that the last tree-wide status write (the
+// nightly Housekeeping run) computed the stored statuses against. Locale
+// copies of EN pages changed (or deleted) since then get skipped, unless the
+// copy itself changed too (activity exemption: someone is working on it, and
+// stored-status semantics check unmarked pages anyway).
+
+export const STATUS_BASELINE_PATH = 'data/i18n/status-baseline.txt';
+
+const SHA_RE = /^[0-9a-f]{40}$/;
+
+// Read the drift-status baseline SHA. Throws when the file is missing or
+// malformed: a silent empty overlay would false-green drift-pending pages.
+export function readBaseline(rootDir) {
+  const file = path.join(rootDir, STATUS_BASELINE_PATH);
+  if (!existsSync(file)) {
+    throw new Error(
+      `drift-status baseline file is missing: ${STATUS_BASELINE_PATH}; ` +
+        `it is written by tree-wide status syncs (npm run fix:i18n)`,
+    );
+  }
+  const sha = readFileSync(file, 'utf8').trim();
+  if (!SHA_RE.test(sha)) {
+    throw new Error(
+      `malformed drift-status baseline in ${STATUS_BASELINE_PATH}: '${sha}'`,
+    );
+  }
+  return sha;
+}
+
+// Record `main` as the drift-status baseline: statuses just written are
+// accurate as of it. (In the Housekeeping checkout HEAD == main; a local
+// run's diverged main only makes the baseline older, which widens the
+// overlay — under-checking, never a spurious red.)
+export async function writeBaseline(rootDir) {
+  const sha = await git(rootDir, 'rev-parse', 'main');
+  writeFileSync(path.join(rootDir, STATUS_BASELINE_PATH), `${sha}\n`);
+  return sha;
+}
+
+// Pure core: locale copies presumed drifted, given the EN pages changed
+// since the baseline. Deleted EN pages are covered too: their locale copies
+// still exist and are what gets reported. Copies in `changedLocalePages` are
+// exempt (activity exemption). `pageExists` is injected for testability.
+export function driftPendingPages(
+  changedEnPages,
+  locales,
+  pageExists,
+  changedLocalePages = new Set(),
+) {
+  const pages = [];
+  const enPrefix = `${CONTENT_DIR}/${DEFAULT_LANG}/`;
+  for (const enPath of changedEnPages) {
+    if (!enPath.startsWith(enPrefix) || !enPath.endsWith('.md')) continue;
+    const subPath = enPath.slice(enPrefix.length);
+    for (const locale of locales) {
+      const localePath = `${CONTENT_DIR}/${locale}/${subPath}`;
+      if (!pageExists(localePath)) continue;
+      if (changedLocalePages.has(localePath)) continue;
+      pages.push(localePath);
+    }
+  }
+  return pages.sort();
+}
+
+// Repo adapter: one git diff of `content` against the baseline (two-dot,
+// vs the working tree — no merge-base needed, so a baseline-deepened
+// shallow clone suffices), split EN / non-EN. Throws when the baseline
+// isn't resolvable (e.g. too-shallow clone).
+export async function driftPendingForRepo(rootDir, baseline) {
+  baseline ??= readBaseline(rootDir);
+  const changed = (
+    await git(
+      rootDir,
+      'diff',
+      '--name-only',
+      '--no-renames',
+      baseline,
+      '--',
+      CONTENT_DIR,
+    )
+  )
+    .split('\n')
+    .filter(Boolean);
+  const locales = readdirSync(path.join(rootDir, CONTENT_DIR), {
+    withFileTypes: true,
+  })
+    .filter((e) => e.isDirectory() && e.name !== DEFAULT_LANG)
+    .map((e) => e.name);
+  const enPrefix = `${CONTENT_DIR}/${DEFAULT_LANG}/`;
+  return driftPendingPages(
+    changed.filter((p) => p.startsWith(enPrefix)),
+    locales,
+    (p) => existsSync(path.join(rootDir, p)),
+    new Set(changed.filter((p) => !p.startsWith(enPrefix))),
+  );
+}
+
 // Write operations. Both return the per-page actions they performed
 // ([page, action] with action ADDED | UPDATED | REMOVED), skipping no-ops.
 
@@ -485,6 +604,13 @@ async function statusCLI(rootDir, cli, report) {
         console.log(`${page} ${I18N_DLD_KEY} ${action}`);
     }
     console.log(`Status writes: ${actions.length} out of ${report.size}`);
+    // A tree-wide sync leaves every stored status accurate as of main:
+    // record that commit as the drift-status baseline (see the overlay
+    // section above).
+    if (cli.list === 'all') {
+      const sha = await writeBaseline(rootDir);
+      console.log(`Status baseline: ${sha} -> ${STATUS_BASELINE_PATH}`);
+    }
     return;
   }
 
