@@ -5177,13 +5177,17 @@ https://npmjs.com/package/@opentelemetry/instrumentation-graphql,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-hapi,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-http,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-ioredis,206,1785064057
+https://npmjs.com/package/@opentelemetry/instrumentation-knex,200,1785143024
 https://npmjs.com/package/@opentelemetry/instrumentation-long-task,206,1785064057
+https://npmjs.com/package/@opentelemetry/instrumentation-lru-memoizer,200,1785143022
 https://npmjs.com/package/@opentelemetry/instrumentation-memcached,200,1785137172
 https://npmjs.com/package/@opentelemetry/instrumentation-mongodb,206,1785064057
+https://npmjs.com/package/@opentelemetry/instrumentation-mongoose,200,1785143025
 https://npmjs.com/package/@opentelemetry/instrumentation-mysql,200,1785137181
 https://npmjs.com/package/@opentelemetry/instrumentation-mysql2,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-nestjs-core,200,1785137196
 https://npmjs.com/package/@opentelemetry/instrumentation-net,206,1785064057
+https://npmjs.com/package/@opentelemetry/instrumentation-pg,200,1785143030
 https://npmjs.com/package/@opentelemetry/instrumentation-pino,206,1785064057
 https://npmjs.com/package/@opentelemetry/instrumentation-redis,200,1785137454
 https://npmjs.com/package/@opentelemetry/instrumentation-redis-4,206,1785064057

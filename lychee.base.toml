@@ -103,5 +103,8 @@ exclude = [
   '^https://kafka\.apache\.org/documentation/?#',
   # otelbin.io encodes the collector config in the URL fragment (`#config=…`);
   # it is a payload, not a document anchor.
-  '^https://www\.otelbin\.io/\?#',
+  '^https://www\.otelbin\.io/\??#',
+  # docs.alauda.io serves an empty JS-shell document; all content, including
+  # headings, is client-rendered, so any fragment on it is unverifiable.
+  '^https://docs\.alauda\.io/.*#',
 ]
