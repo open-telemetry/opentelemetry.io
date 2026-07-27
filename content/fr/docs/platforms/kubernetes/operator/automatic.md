@@ -52,7 +52,7 @@ L'opérateur fournit une
 qui est utilisée pour créer une instance du collecteur que l'opérateur gère.
 L'exemple suivant déploie le collecteur en tant que déploiement (par défaut),
 mais il y a d'autres
-[modes de déploiement](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/deployment-modes.md)
+[modes de déploiement](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes)
 qui peuvent être utilisés.
 
 Lorsque vous utilisez le mode `Deployment`, l'opérateur créera également un
@@ -587,7 +587,7 @@ Les valeurs possibles pour l'annotation peuvent être
 Alternativement, l'annotation peut être ajoutée à un namespace, ce qui
 entraînera tous les services de ce namespace à opter pour l'instrumentation
 automatique. Voir la
-[documentation d'auto-instrumentation avec l'opérateur](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)
+[documentation d'auto-instrumentation avec l'opérateur](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)
 pour plus de détails.
 
 ### Opter pour un service Go {#opt-in-a-go-service}

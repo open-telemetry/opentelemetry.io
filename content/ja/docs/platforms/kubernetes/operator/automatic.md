@@ -29,7 +29,7 @@ Helmチャートを使用する場合は、自己証明書を生成するオプ�
 コレクターを使用しない場合、次のセクションに進んでください。
 
 オペレーターは、オペレーターが管理するコレクターのインスタンスを作成するために使用される[OpenTelemetryコレクターのカスタムリソース定義 (CRD)](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md)です。
-次の例では、コレクターをDeploymentとしてデプロイします（デフォルト）が、他の[deploymentモード](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/deployment-modes.md)も使用できます。
+次の例では、コレクターをDeploymentとしてデプロイします（デフォルト）が、他の[deploymentモード](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes)も使用できます。
 
 `Deployment` モードを使用する場合、オペレーターはコレクターと対話に使用できるサービスも作成します。
 サービス名は `OpenTelemetryCollector` リソース名に `-collector` を付与したものです。
@@ -480,7 +480,7 @@ Instrumentationオブジェクトが作成されたので、クラスターは�
 - `"false"` - 注入しません。
 
 あるいは、名前空間にアノテーションを追加することで、その名前空間内のすべてのサービスが自動計装をオプトインすることもできます。
-より詳細については、[オペレーターの自動計装ドキュメント](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)を参照してください。
+より詳細については、[オペレーターの自動計装ドキュメント](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)を参照してください。
 
 ### Goサービスのオプトイン {#opt-in-a-go-service}
 
