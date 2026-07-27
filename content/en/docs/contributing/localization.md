@@ -572,6 +572,12 @@ that is strictly required to keep the site build and its checks green:
 
 In both cases, mark every localized page that you fix as [patched](#patched).
 
+The check-green minimum applies to drift-status bookkeeping too: when a failing
+check calls for refreshing `drifted_from_default` (see the deleted-page case
+below), update only the pages that the failing check reports -- the nightly
+Housekeeping run completes the rest. Status-only edits are content-neutral
+maintenance and don't make a PR span locales.
+
 Treat any other change to localized page content as a **semantic** change for
 that locale. This includes targeted content additions to drifted pages, such as
 adding a new glossary term.
@@ -608,10 +614,12 @@ Proceed according to the fate of the link target:
   reference is a [semantic change](#semantic-changes) for each affected locale,
   so don't patch such links. Fixing the English pages that linked to the deleted
   target makes their localized copies drift: once your English edits are
-  committed, run `npm run fix:i18n:status -- <PATHS-TO-LOCALIZED-COPIES>` to
-  refresh the [drift status](#drift-status) of those copies. The link checker
-  then skips those pages, and reconciliation is left to each page's locale team.
-  In the rare case where a failing link exists only in a localized page,
+  committed, refresh the [drift status](#drift-status) of just the localized
+  pages that fail link checking:
+  `npm run fix:i18n:status -- <PATHS-TO-FAILING-LOCALIZED-PAGES>`. The link
+  checker then skips those pages; the nightly Housekeeping run refreshes the
+  status of the remaining copies. Reconciliation is left to each page's locale
+  team. In the rare case where a failing link exists only in a localized page,
   coordinate a fix with its locale team.
 
 - **An external resource was moved**, but is otherwise semantically unchanged
