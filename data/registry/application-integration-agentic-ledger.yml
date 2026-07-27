@@ -1,0 +1,23 @@
+title: Agentic Ledger
+registryType: application integration
+language: python
+tags:
+  - ai
+  - agents
+  - genai
+  - llm
+license: MIT
+description:
+  Agentic Ledger is a local-first flight recorder for AI agents, a transparent
+  LLM proxy that records every call, tool use, cost, and loop. It natively
+  ingests OTLP/HTTP (JSON) GenAI spans and log events at /v1/traces and
+  /v1/logs, and exports its own captures as OTLP GenAI spans to any collector.
+authors:
+  - name: Shekhar Bhardwaj
+    url: https://github.com/ShekharBhardwaj
+urls:
+  repo: https://github.com/ShekharBhardwaj/AgenticLedger
+  website: https://agentic-ledger.dev
+  docs: https://github.com/ShekharBhardwaj/AgenticLedger/tree/main/docs/integrations
+createdAt: '2026-07-27'
+isNative: true
