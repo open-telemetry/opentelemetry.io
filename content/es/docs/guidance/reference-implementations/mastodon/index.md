@@ -33,7 +33,7 @@ protocolos estandarizados como ActivityPub. Al igual que ocurre con el correo
 electrónico, los usuarios pueden comunicarse entre instancias independientemente
 de quién las opere.
 
-Esta filosofía condiciona no solo las decisiones de funcionalidades de Mastodon,
+Esta filosofía no solo condiciona las decisiones de producto de Mastodon,
 sino también su enfoque de la observabilidad.
 
 ### Estructura organizativa {#organizational-structure}
