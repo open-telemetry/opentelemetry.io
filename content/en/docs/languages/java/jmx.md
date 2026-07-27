@@ -110,7 +110,7 @@ java -javaagent:opentelemetry-javaagent.jar \
 
 For a complete list of available target systems, see:
 
-- [Java agent predefined target systems](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metric-sets)
+- [Java agent predefined target systems](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metrics)
 - [JMX Scraper predefined target systems](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#predefined-metric-sets)
 
 You can specify multiple target systems by separating them with commas.

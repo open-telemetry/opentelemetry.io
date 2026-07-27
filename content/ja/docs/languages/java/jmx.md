@@ -2,7 +2,7 @@
 title: JMX メトリクス
 weight: 14
 description: OpenTelemetry を使用して JMX MBean からメトリクスを収集します
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
+default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a # patched
 cSpell:ignore: jconsole jmxremote mbean visualvm wildfly
 ---
 
@@ -95,7 +95,7 @@ java -javaagent:opentelemetry-javaagent.jar \
 
 利用可能なターゲットシステムの完全なリストは次を参照してください。
 
-- [Java エージェントの定義済みターゲットシステム](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metric-sets)
+- [Java エージェントの定義済みターゲットシステム](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metrics)
 - [JMX Scraper の定義済みターゲットシステム](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#predefined-metric-sets)
 
 複数のターゲットシステムをカンマで区切って指定できます。

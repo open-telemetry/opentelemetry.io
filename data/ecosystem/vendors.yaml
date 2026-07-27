@@ -427,7 +427,7 @@
   commercial: true
 - name: ServicePilot
   nativeOTLP: true
-  url: https://www.servicepilot.com/en/doc/apm#opentelemetry
+  url: https://www.servicepilot.com/en/doc/apm
   contact:
   oss: false
   commercial: true
