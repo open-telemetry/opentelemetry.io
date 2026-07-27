@@ -2,8 +2,8 @@
 name: review-pull-request
 description: >-
   Review pull requests for opentelemetry.io: CI check semantics, CLA and
-  approval-label workflow, refcache handling, locale rules, and content quality.
-  Use when reviewing a PR or debugging a CI failure in
+  approval-label workflow, link-cache handling, locale rules, and content
+  quality. Use when reviewing a PR or debugging a CI failure in
   open-telemetry/opentelemetry.io.
 argument-hint: '<PR number or URL>'
 allowed-tools: Bash Read Grep Glob
@@ -58,8 +58,8 @@ For each failing check, match `<workflow-name> / <job-name>` against
 [`pr-checks.md`][pr-checks] — every check has a section describing what it
 validates and the local fix command. Caveats:
 
-- A `CHECK LINKS` failure can be a stale `.lycheecache` rather than a broken
-  link — read the failure (see [Refcache](#refcache)).
+- A stale `.lycheecache` fails `CACHE updates committed?`, not `CHECK LINKS`
+  (see [Link cache](#refcache)).
 - Fork PRs can hit token-scope limits that look like check failures but are
   permissions artifacts. Read the log before concluding.
 - `Netlify Deploy Preview` failures: open **Details** for the build log before
@@ -143,12 +143,12 @@ Walk this checklist before writing the review:
       have alt text; internal links use paths or Hugo refs (not
       `opentelemetry.io` URLs); no shortcut-form reference links.
 
-**Refcache and links**
+**Link cache and links**
 
 - [ ] `.lycheecache` updates (if any) committed in the PR.
 - [ ] No hand-edits to `.lycheecache`.
 - [ ] Unreachable-but-valid URLs use `?link-check=no` (see
-      [Refcache](#refcache)).
+      [Link cache](#refcache)).
 
 Then structure the review as:
 
@@ -160,20 +160,20 @@ Then structure the review as:
   opportunities, phrasing.
 - **Positive Feedback** — short but present.
 
-## Refcache {#refcache}
+## Link cache {#refcache}
 
 `.lycheecache` is the committed cache of successful external-link checks.
 `npm run check:links` updates it as a side effect — authors commit the updated
-file themselves ([`pr-checks.md#build-and-check-links`][build-checks]). The
-`Links / CHECK LINKS` job fails if the on-branch cache is stale relative to what
-the link check produced.
+file themselves ([`pr-checks.md#cache-updates-committed`][cache-check]). The
+`Links / CACHE updates committed?` job fails if the on-branch cache is stale
+relative to what the link check produced.
 
 Do not hand-edit `.lycheecache`. If a URL returns a non-200 for server reasons
 (blocked bot, LinkedIn 999, …), append `?link-check=no` (or `&link-check=no`) to
 the URL — [`pr-checks.md#handling-valid-external-links`][handling-links].
 
 For resolving merge/rebase conflicts in `.lycheecache`, see the
-`resolve-refcache-conflicts` skill.
+`resolve-link-cache-conflicts` skill.
 
 ## References
 
@@ -189,8 +189,8 @@ Source-of-truth files — read on demand:
 [pr-checks]: ../../../content/en/docs/contributing/pr-checks.md
 [checks]: ../../../content/en/docs/contributing/pr-checks.md#checks
 [cla]: ../../../content/en/docs/contributing/pr-checks.md#easy-cla
-[build-checks]:
-  ../../../content/en/docs/contributing/pr-checks.md#build-and-check-links
+[cache-check]:
+  ../../../content/en/docs/contributing/pr-checks.md#cache-updates-committed
 [handling-links]:
   ../../../content/en/docs/contributing/pr-checks.md#handling-valid-external-links
 [npm-scripts]: ../../../content/en/site/build/npm-scripts.md
