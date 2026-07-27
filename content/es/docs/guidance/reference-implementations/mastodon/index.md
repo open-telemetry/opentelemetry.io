@@ -27,7 +27,7 @@ La descentralización no es aquí un término de marketing, sino un principio
 arquitectónico central. Cualquiera puede
 [ejecutar su propio servidor de Mastodon](https://docs.joinmastodon.org/user/run-your-own/),
 y esos servidores operados de forma independiente interoperan mediante
-protocolos abiertos como parte de lo que se conoce como el _Fediverse_: una red
+protocolos abiertos como parte de lo que se conoce como el fediverso: una red
 federada de plataformas sociales independientes que se comunican entre sí usando
 protocolos estandarizados como ActivityPub. Al igual que ocurre con el correo
 electrónico, los usuarios pueden comunicarse entre instancias independientemente
