@@ -4089,6 +4089,7 @@ https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml,206
 https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml,206,1784355595
 https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md,200,1784701477
 https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md,200,1784583090
+https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry-schema.json,200,1785154173
 https://github.com/open-telemetry/opentelemetry.io/blob/main/data/spec-versions.yml,200,1784960537
 https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html,200,1784701477
 https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_shortcodes/collector-component-rows.html,206,1784355929
@@ -4101,6 +4102,7 @@ https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-mod
 https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/cp-pages.sh,206,1784284877
 https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/create-or-finalize-pr.mjs,200,1785134667
 https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/pick-branch.mjs,200,1785134668
+https://github.com/open-telemetry/opentelemetry.io/blob/main/templates/registry-entry.yml,200,1785154173
 https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration,206,1784284695
 https://github.com/open-telemetry/opentelemetry.io/branches/all?query=spec-integration,206,1784284686
 https://github.com/open-telemetry/opentelemetry.io/commits/main/,200,1784701477
