@@ -92,7 +92,7 @@ Este enfoque evita los modelos de datos específicos de proveedor y garantiza la
 compatibilidad con el ecosistema más amplio de OpenTelemetry, sin que Mastodon
 tenga que mantener sus propias convenciones.
 
-## Arquitectura del Collector: uno por namespace, y no más {#collector-architecture-one-per-namespace-no-more}
+## Arquitectura del Collector: uno solo por namespace {#collector-architecture-one-per-namespace-no-more}
 
 La arquitectura de Collector de Mastodon es intencionadamente minimalista.
 
