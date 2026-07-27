@@ -4,7 +4,7 @@ description: >-
   OpenTelemetry ウェブサイトのビルド、配信、検証、メンテナンスのための NPM スクリプト。
 weight: 20
 todo: Keep table entries sorted
-default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
+default_lang_commit: 1ff7122fa7e1fd78714d7540b93ec70a3e72d84c
 ---
 
 スクリプトの定義はリポジトリルートの [`package.json`](https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json) にあります。
@@ -69,9 +69,10 @@ default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
 | `fix:format:staged`       | ステージングされたファイルのみをフォーマットします。                        |
 | `fix:i18n`                | i18n フロントマターを追加/修正します（`fix:i18n:new`、`fix:i18n:status`）。 |
 | `fix:l10n`                | ローカリゼーションの修正を適用します。                                      |
+| `fix:link-cache`          | リンクチェックを実行し、コミット済みの `.lycheecache` を更新します。        |
+| `fix:link-cache:double-check` | [ブラウザプローブで失敗したリンクを再検証します][dc]。                  |
+| `fix:link-cache:refresh`  | もっとも古いキャッシュエントリをプルーンし、`fix:link-cache` を実行します。 |
 | `fix:markdown`            | Markdown lint の問題と末尾の空白を修正します。                              |
-| `fix:refcache`            | リンクチェックを実行し、コミット済みの `.lycheecache` を更新します。        |
-| `fix:refcache:refresh`    | もっとも古いキャッシュエントリをプルーンし、`fix:refcache` を実行します。   |
 | `fix:submodule`           | サブモジュールのリビジョンをピンします（`pin:submodule` と同じ）。          |
 | `fix:filenames`           | [ファイルのリネームと廃止されたファイル/フォルダの削除][fn]。               |
 | `fix:dict`                | cspell ワードリストをソートし、フロントマターを正規化します。               |
@@ -100,11 +101,12 @@ default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
 | `fix-and-test:all`         | すべての修正（i18n を含む）を実行し、その後チェック。リンクチェックは1回。[^fat] |
 | `netlify-build:preview`    | `build:preview` を実行し、その後 `diff:check`。                                  |
 | `netlify-build:production` | `build:production` を実行し、その後 `diff:check`。                               |
-| `test-and-fix`             | 修正スクリプト（i18n/refcache/submodule を除く）を実行し、その後チェック。       |
+| `test-and-fix`             | 修正スクリプト（i18n/link-cache/submodule を除く）を実行し、その後チェック。     |
 | `test:all`                 | `test:base` を実行し、その後 `test:compound-tests`。                             |
 | `test:base`                | 基本テスト（`check` と同じ）。                                                   |
 | `test:collector-sync`      | collector-sync テスト。                                                          |
 | `test:compound-tests`      | 複合 `test:*-*` スクリプトを実行します。[^categories]                            |
+| `test:double-check:live`   | [double-check プローブ][dc]のライブスモークチェック。                            |
 | `test:edge-functions:live` | 任意の `node:test` ライブスイート。`--help` をサポート。                         |
 | `test:edge-functions`      | `netlify/edge-functions/**/*.test.ts` に対する Node テストランナー。             |
 | `test:local-tools`         | `scripts/**/*.test.mjs` に対する Node テストランナー。[^categories]              |
@@ -117,9 +119,9 @@ default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
     [テストカテゴリ](/site/testing/#test-categories)を参照してください。
 
 [^fat]:
-    ハウスキーピングのデフォルト: コンテンツ修正の後に `fix:refcache`（リンクチェックを実行し、リンクキャッシュを更新）を実行します。
+    ハウスキーピングのデフォルト: コンテンツ修正の後に `fix:link-cache`（リンクチェックを実行し、リンクキャッシュを更新）を実行します。
     keep-going `all` ランナーを使用してすべての修正を記録します。
-    チェックフェーズは `check:links`（`fix:refcache` がカバー）と `check:i18n`（`fix:i18n` がドリフトステータスを記録した後は冗長）を除外します。
+    チェックフェーズは `check:links`（`fix:link-cache` がカバー）と `check:i18n`（`fix:i18n` がドリフトステータスを記録した後は冗長）を除外します。
     [ハウスキーピング](../ci-workflows/#housekeeping)を参照してください。
 
 ## ユーティリティ {#utilities}
@@ -140,14 +142,14 @@ default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
 
 - **リンクキャッシュ。**
   リンクチェックスクリプトはコミット済みの `.lycheecache` を読み書きします。
-  `fix:refcache*` スクリプトは歴史的な名前を維持しています。
-  詳細は[リンクチェック](../link-checking/)を参照してください。
-- **`test:local-tools:lychee`** は `test:local-tools` のうち `lychee` バイナリを必要とするサブセット（動作フラグメントおよび設定チェックテスト）です。
+  詳細は[リンクチェック](/site/build/link-checking/)を参照してください。
+- **`test:local-tools:lychee`** は `test:local-tools` のうち `lychee` バイナリを必要とするサブセット（動作フラグメントおよび設定チェックテスト、およびエンドツーエンドのドリフトオーバーレイシナリオ）です。
   バイナリが存在しない場合はそれらのテストはスキップされるため、`test:local-tools` は一般的なテストジョブですでにカバーしています。
   末尾の `:lychee` はこのスクリプトを `test:compound-tests`（`test:*-*` にマッチ）から除外し、スイートが2回実行されないようにします。
   リンクチェック CI ジョブは lychee をインストールし、このスクリプトを実行して実際にテストを実行します。
 - **`all`** はリスト内のスクリプトを1つが失敗してもすべて実行し、いずれかが失敗した場合は非ゼロステータスで終了します。
 
-[build kinds]: ../#build-kinds
+[build kinds]: /site/build/#build-kinds
+[dc]: /site/build/link-checking/#double-check
 [fn]: /docs/contributing/pr-checks/#filename-check
 [locale-auto-merge]: ../ci-workflows/#locale-auto-merge
