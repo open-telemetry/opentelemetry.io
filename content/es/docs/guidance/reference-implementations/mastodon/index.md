@@ -145,7 +145,7 @@ insignificante en comparación con el resto de la plataforma.
 ## Gestión del tráfico mediante el muestreo {#traffic-management-through-sampling}
 
 En lugar de basarse en límites de recursos, Mastodon controla la sobrecarga de
-observabilidad principalmente mediante el muestreo basado en la cola (tail-based
+observabilidad principalmente mediante el muestreo basado en cola (tail-based
 sampling).
 
 - En mastodon.social, las trazas exitosas se muestrean aproximadamente al 0,1 %,
