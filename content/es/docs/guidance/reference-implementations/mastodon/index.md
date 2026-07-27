@@ -4,7 +4,7 @@ title:
   equipo pequeño'
 linkTitle: Mastodon
 default_lang_commit: 11753c0e99bbc1b62606d4c819736c777dfb0e98
-cSpell:ignore: Fediverse otelbin Sidekiq Sloughter Öjeling
+cSpell:ignore: otelbin Sidekiq Sloughter Öjeling
 ---
 
 Por [Juliano Costa](https://github.com/julianocosta89) (Datadog),
