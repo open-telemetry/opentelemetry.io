@@ -1,3 +1,4 @@
+# cSpell:ignore amqp Bartolini
 title: OpenTelemetry Instrumentation for rhea
 registryType: instrumentation
 language: js
