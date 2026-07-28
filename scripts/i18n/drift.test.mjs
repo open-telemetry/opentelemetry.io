@@ -13,6 +13,8 @@ import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import {
+  BASELINE_REFRESH_DAYS,
+  STALE_BASELINE_DAYS,
   STATUS_BASELINE_PATH,
   classifyCliArgs,
   driftPendingPages,
@@ -752,6 +754,33 @@ describe('status baseline (loud-failure paths)', () => {
       err.mock.calls.some((c) => /baseline.*days old/.test(c.arguments[0])),
       'stale-baseline warning is emitted',
     );
+  });
+
+  it('a stale baseline surfaces as a ::warning annotation in CI', async (t) => {
+    const { root, git } = gitRepo();
+    const backdated = { GIT_COMMITTER_DATE: '2000-01-01T00:00:00Z' };
+    execFileSync('git', ['commit', '-q', '--allow-empty', '-m', 'old'], {
+      cwd: root,
+      env: { ...process.env, ...backdated },
+    });
+    writeBaselineFile(root, git('rev-parse', 'HEAD'));
+    t.mock.method(console, 'error', () => {});
+    const log = t.mock.method(console, 'log', () => {});
+    process.env.GITHUB_ACTIONS = 'true';
+    t.after(() => delete process.env.GITHUB_ACTIONS);
+    await driftPendingForRepo(root);
+    assert.ok(
+      log.mock.calls.some((c) =>
+        c.arguments[0].startsWith(`::warning file=${STATUS_BASELINE_PATH}::`),
+      ),
+      'workflow annotation is emitted',
+    );
+  });
+
+  it('the refresh heartbeat stays below the staleness warning', () => {
+    // Coupled thresholds: a healthy heartbeat-refreshed baseline must never
+    // trip the staleness warning.
+    assert.ok(BASELINE_REFRESH_DAYS < STALE_BASELINE_DAYS);
   });
 
   it('driftPendingForRepo() stays quiet on a fresh baseline', async (t) => {
