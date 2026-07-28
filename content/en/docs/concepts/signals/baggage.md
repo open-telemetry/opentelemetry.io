@@ -48,10 +48,9 @@ log data.
 ## Baggage security considerations
 
 Baggage is application-controlled data that can cross service and process
-boundaries. When W3C Baggage propagation is enabled, configured propagators and
-instrumentation serialize baggage into the `baggage` HTTP header and carry it to
-downstream requests. Each outbound call can therefore expose entries to another
-service or a third-party endpoint.
+boundaries. Configured propagators can carry baggage to downstream requests, so
+an outbound call can expose entries to another service or a third-party
+endpoint.
 
 Treat incoming baggage as untrusted input. Baggage does not prove who created or
 modified an entry, so do not use a baggage value to make authorization or other
@@ -62,15 +61,13 @@ boundary.
 
 - Do not put credentials, authorization tokens, secrets, or personal data that
   is not intended for every downstream recipient into baggage.
-- Prefer opaque, non-sensitive identifiers and add only the entries that
-  downstream services need.
+- Add only non-sensitive entries that downstream services need.
 - Before a request leaves your trust boundary, remove its baggage or rebuild it
   from an allowlist of entries that the intended recipient may receive.
 
 ### When consuming baggage
 
-- Validate recognized keys, value formats, and sizes before using incoming
-  entries.
+- Validate recognized keys and value formats before using incoming entries.
 - Copy only allowlisted entries into local baggage, and discard unexpected or
   invalid entries.
 - Remove entries that should not cross the next trust boundary before making
