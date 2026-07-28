@@ -3507,9 +3507,13 @@ https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/open
 https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md,206,1784284642
 https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr,206,1784442343
 https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscrservicemonitorselector,206,1784284633
+https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md,200,1785161377
 https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/resource-attributes.md#how-resource-attributes-are-calculated-from-the-pods-metadata,200,1785137269
+https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/deployment-modes.md,200,1785161377
+https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/sidecar-injection.md?plain=1#L54-L59,200,1785161377
 https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/getting-started/compatibility.md#compatibility-matrix,206,1784355616
 https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#discovery-of-prometheus-custom-resources,200,1785137269
+https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#endpoints,200,1785161376
 https://github.com/open-telemetry/opentelemetry-operator/issues/1393,206,1784284651
 https://github.com/open-telemetry/opentelemetry-operator/issues/1814,206,1784284638
 https://github.com/open-telemetry/opentelemetry-operator/issues/1884,206,1784284645
