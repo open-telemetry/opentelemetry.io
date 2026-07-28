@@ -4,6 +4,7 @@ http://logback.qos.ch/?http_ok,200,1784960533
 http://www.powerjob.tech/?http_ok,200,1784960533
 https://activej.io/,206,1784442341
 https://actix.rs/,206,1784284639
+https://agentic-ledger.dev/,200,1785247934
 https://agentskills.io/,200,1784355925
 https://ai.google.dev/api/generate-content,200,1784356062
 https://ai.pydantic.dev/,200,1785134689
@@ -1008,6 +1009,9 @@ https://github.com/Seldaek/monolog/blob/3.4.0/doc/01-usage.md#leveraging-channel
 https://github.com/SergeyKanzhelev,206,1784285080
 https://github.com/SergeyKleyman,206,1784355844
 https://github.com/ShaanveerS,206,1784442747
+https://github.com/ShekharBhardwaj,200,1785247934
+https://github.com/ShekharBhardwaj/AgenticLedger,200,1785247934
+https://github.com/ShekharBhardwaj/AgenticLedger/tree/main/docs/integrations,200,1785247934
 https://github.com/SpencerTorres,206,1784285082
 https://github.com/SumoLogic/sumologic-otel-collector,206,1784442400
 https://github.com/SylvainJuge,200,1784960559
