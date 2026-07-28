@@ -135,6 +135,9 @@ jobs:
         with:
           ref: main
           persist-credentials: false
+          # Full history so that the 3-way apply below always has the
+          # pre-image blobs of the main that the patch was generated against.
+          fetch-depth: 0
 
       # Let git resolve credentials through the gh CLI (which reads GH_TOKEN
       # from each step's env) instead of persisting the token in .git/config.
@@ -152,7 +155,9 @@ jobs:
           BRANCH: ${{ inputs.branch }}
         run: |
           git checkout -b "$BRANCH"
-          if ! git apply --verbose site.patch; then
+          # 3-way so that the patch still applies when commits land on main
+          # while the caller's run is in flight.
+          if ! git apply --3way --verbose site.patch; then
             echo "Patch failed to apply. For details, see output above. To debug this locally,"
             echo "get the patch file from the workflow summary artifact section."
             exit 1

@@ -1,0 +1,15 @@
+# cSpell:ignore structlog
+title: OpenTelemetry structlog integration
+registryType: instrumentation
+language: python
+tags:
+  - structlog
+  - instrumentation
+  - python
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-structlog
+license: Apache 2.0
+description: Installation
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09
