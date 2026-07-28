@@ -1,6 +1,6 @@
 ---
 title: ターゲットアロケーター
-default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
+default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea # patched
 cSpell:ignore: bleh targetallocator
 ---
 
@@ -261,7 +261,7 @@ curl localhost:8080/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F0/targets
 
 留意すべきことは、`OpenTelemetryCollector` CRに `targetAllocator` セクションを含めたからといって、それが有効になるわけではないということです。
 ターゲットアロケーターは明示的に有効化する必要があります。
-さらに、[Prometheusのサービスディスカバリー](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md#discovery-of-prometheus-custom-resources)を使用する場合は、明示的に有効化する必要があります。
+さらに、[Prometheusのサービスディスカバリー](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#discovery-of-prometheus-custom-resources)を使用する場合は、明示的に有効化する必要があります。
 
 - `spec.targetAllocator.enabled` を `true` に設定する
 - `spec.targetAllocator.prometheusCR.enabled` を `true` に設定する

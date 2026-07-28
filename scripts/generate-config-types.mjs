@@ -119,6 +119,46 @@ for (const type of result.types) {
   type.snippets = snippets;
 }
 
+// Guard against schema changes that would leave usage edges unreachable from
+// the root type. The accordion renders JSON paths for every usage, so any
+// missing edge would silently produce a broken entry at render time.
+function assertAllUsagesReachable(types) {
+  const typesByName = new Map(types.map((t) => [t.name, t]));
+  const rootType = types.find((t) => t.isRoot);
+  if (!rootType) throw new Error('No root type found in schema.');
+
+  const reachable = new Set();
+  const expanded = new Set();
+  const queue = [rootType.name];
+  while (queue.length > 0) {
+    const typeName = queue.shift();
+    if (expanded.has(typeName)) continue;
+    expanded.add(typeName);
+    const type = typesByName.get(typeName);
+    if (!type) continue;
+    for (const prop of type.properties ?? []) {
+      if (!prop.typeRef) continue;
+      reachable.add(`${prop.typeRef}|${typeName}|${prop.name}`);
+      if (!expanded.has(prop.typeRef)) queue.push(prop.typeRef);
+    }
+  }
+
+  const missing = [];
+  for (const type of types) {
+    for (const u of type.usages ?? []) {
+      const key = `${type.name}|${u.typeName}|${u.propertyName}`;
+      if (!reachable.has(key)) missing.push(key);
+    }
+  }
+  if (missing.length > 0) {
+    throw new Error(
+      'Usage edge(s) not reachable from root — JSON paths cannot be computed:\n' +
+        missing.map((k) => `  ${k}`).join('\n'),
+    );
+  }
+}
+assertAllUsagesReachable(result.types);
+
 // Guard against a snippet whose filename prefix isn't a real schema type.
 const knownTypes = new Set(result.types.map((t) => t.name));
 const orphans = Object.keys(snippetsByType).filter((t) => !knownTypes.has(t));

@@ -24,6 +24,7 @@ Contents:
 - [Configuring OBI metadata](#configuring-obi-metadata)
 - [Centralizing Kubernetes metadata with k8s-cache](#centralizing-kubernetes-metadata-with-k8s-cache)
 - [Providing secrets to the Helm configuration](#providing-secrets-to-the-helm-configuration)
+
 <!-- TOC -->
 
 ## Deploying OBI from helm

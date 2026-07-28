@@ -13,8 +13,8 @@ power the OpenTelemetry website's build, deployment, and maintenance processes.
 
 In addition to **full** (regular) Hugo website builds, Docsy supports **lean
 builds** that, among other things, allow for much faster link checking while
-still maintaining full check coverage. For details, see [Link checking][] in the
-Docsy docs.
+still maintaining full check coverage. For details, see [Chrome build modes][]
+in the Docsy docs.
 
 Some build npm scripts always build the same kind of site (full or lean). Others
 use the value of the `BUILD_KIND` environment variable and default to `lean`
@@ -36,10 +36,6 @@ Most checks that force a fresh build first, such as link-checking, use
 `BUILD_KIND`. For details about the link checking scripts, see
 [Link checking](./link-checking/).
 
-If you're curious about the size and performance of the different build kinds,
-run `npm run metrics:build` (full) or `npm run metrics:build -- --lean`.
-
 <!-- prettier-ignore-start -->
-<!-- TODO: change to www.docsy.dev once Docsy 0.16.0 is released -->
-[Link checking]: https://main--docsydocs.netlify.app/docs/best-practices/link-checking/
+[Chrome build modes]: https://github.com/google/docsy/blob/main/docsy.dev/content/en/docs/deployment/chrome.md
 <!-- prettier-ignore-end -->

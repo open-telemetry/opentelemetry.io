@@ -39,7 +39,7 @@ use tokio::net::TcpListener;
 
 // ...
 
-fn init_tracer_provider() {
+fn init_tracer_provider() -> SdkTracerProvider {
     let exporter = SpanExporter::builder()
         .with_tonic()
         .build()
@@ -49,30 +49,39 @@ fn init_tracer_provider() {
         .with_batch_exporter(exporter)
         .build();
     global::set_text_map_propagator(TraceContextPropagator::new());
-    global::set_tracer_provider(provider);
+    global::set_tracer_provider(provider.clone());
+    provider
 }
 ```
 
-To try out the `OTLPTraceExporter` quickly, you can run Jaeger in a docker
-container:
+To try out the OTLP exporter quickly, you can run Jaeger in a docker container.
+Jaeger natively supports OTLP, so you only need to expose the web UI (`16686`)
+and the OTLP gRPC endpoint (`4317`):
 
 ```shell
-docker run -d --name jaeger \
-  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
-  -e COLLECTOR_OTLP_ENABLED=true \
-  -p 6831:6831/udp \
-  -p 6832:6832/udp \
-  -p 5778:5778 \
+docker run -d --rm --name jaeger \
   -p 16686:16686 \
   -p 4317:4317 \
-  -p 4318:4318 \
-  -p 14250:14250 \
-  -p 14268:14268 \
-  -p 14269:14269 \
-  -p 9411:9411 \
   jaegertracing/all-in-one:latest
 ```
 
+By default, the OTLP exporter sends data to `http://localhost:4317`, which
+matches the OTLP gRPC endpoint exposed by Jaeger above, so no additional
+endpoint configuration is needed.
+
 Make requests on
-[http://localhost:8080/rolldice](http://localhost:8080/rolldice) and check the
-traces on Jaeger on [http://localhost:16686](http://localhost:16686)
+[http://localhost:8080/rolldice](http://localhost:8080/rolldice), then view the
+traces in Jaeger:
+
+1. Open [http://localhost:16686](http://localhost:16686) and refresh.
+2. Select `dice_server` from the **Service** dropdown.
+3. Click **Find Traces**.
+
+Click a trace to open the trace details view, which shows the span hierarchy and
+timing as a Gantt chart.
+
+When you're done, stop the Jaeger container:
+
+```shell
+docker stop jaeger
+```

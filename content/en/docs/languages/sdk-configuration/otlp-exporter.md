@@ -36,6 +36,11 @@ and logs, the following URLs are constructed from the example above:
 - Metrics: `"http://my-api-endpoint/v1/metrics"`
 - Logs: `"http://my-api-endpoint/v1/logs"`
 
+For OTLP/gRPC, endpoint values are gRPC targets. Do not append OTLP/HTTP signal
+paths such as `/v1/traces`, `/v1/metrics`, or `/v1/logs` to gRPC endpoint
+values; gRPC exporters use the OTLP protobuf service method for each signal
+after connecting to the configured target.
+
 ### `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`
 
 Endpoint URL for trace data only, with an optionally-specified port number.

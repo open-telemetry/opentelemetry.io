@@ -72,7 +72,7 @@ docker compose -f docker-compose.minimal.yml up --force-recreate --remove-orphan
     - `flagd-ui`
     - `kafka`
 
-4.  (Optional) Enable API observability-driven testing[^1]:
+4. (Optional) Enable API observability-driven testing[^1]:
 
     {{< tabpane text=true >}} {{% tab Make %}}
 

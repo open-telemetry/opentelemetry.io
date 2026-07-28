@@ -20,8 +20,9 @@ The project currently supports the following languages in addition to English:
 - [বাংলা - Bengali (bn)][bn]
 - [Español - Spanish (es)][es]
 - [Français - French (fr)][fr]
-- [한국어 - Korean (ko)][ko]
 - [日本語 - Japanese (ja)][ja]
+- [한국어 - Korean (ko)][ko]
+- [Polski - Polish (pl)][pl]
 - [Português - Portuguese (pt)][pt]
 - [Română - Romanian (ro)][ro]
 - [Українська - Ukrainian (uk)][uk]
@@ -38,6 +39,7 @@ fostering broader adoption and contribution to the project.
 [fr]: https://opentelemetry.io/fr/
 [ja]: https://opentelemetry.io/ja/
 [ko]: https://opentelemetry.io/ko/
+[pl]: https://opentelemetry.io/pl/
 [pt]: https://opentelemetry.io/pt/
 [ro]: https://opentelemetry.io/ro/
 [uk]: https://opentelemetry.io/uk/

@@ -140,6 +140,51 @@
     }
   }
 
+  // "Used by" usage entries: path + copy button on one line.
+  .ct-usage-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Linked JSONPath shown for each usage. Links inside use the standard link
+  // colour so they're clearly navigable, but inherit the monospace font.
+  .ct-usage-path {
+    font-size: 0.8125rem;
+
+    a {
+      color: var(--bs-link-color);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // Inline copy button next to each usage path.
+  .ct-usage-copy {
+    flex-shrink: 0;
+    padding: 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--bs-tertiary-color);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--bs-secondary-color);
+    }
+  }
+
   // Type-level constraints note at the bottom of each accordion body.
   .ct-type-constraints {
     font-size: 0.8125rem;

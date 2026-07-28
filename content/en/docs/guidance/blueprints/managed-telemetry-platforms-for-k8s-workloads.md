@@ -1,9 +1,6 @@
 ---
 title: 'Managed Telemetry Platforms for Kubernetes Workloads'
 linkTitle: 'Managed Telemetry Platforms for K8s Workloads'
-date: '2026-06-24'
-author: '[Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)'
-sig: End-User
 # prettier-ignore
 cSpell:ignore: actioned Autoscaler kube OTTL overprovision rollouts SDLC Skyscanner statefulset
 ---
@@ -1216,7 +1213,7 @@ scaling considerations][62].
 [31]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor/README.md
 [32]:
-  https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/compatibility.md#compatibility-matrix
+  https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/getting-started/compatibility.md#compatibility-matrix
 [33]:
   https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection
 [34]: /docs/platforms/kubernetes/operator/

@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 import { parseArgs } from 'node:util';
 
-import yaml from 'js-yaml';
+import { load } from 'js-yaml';
 
 import {
   genLocaleSection,
@@ -45,7 +45,7 @@ function main() {
     return;
   }
 
-  const registry = yaml.load(fs.readFileSync(REGISTRY, 'utf8'));
+  const registry = load(fs.readFileSync(REGISTRY, 'utf8'));
   const localeDirs = fs
     .readdirSync('content', { withFileTypes: true })
     .filter((e) => e.isDirectory() && e.name !== 'en')

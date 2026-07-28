@@ -47,7 +47,7 @@ docker compose up --force-recreate --remove-orphans --detach
 
     {{% /tab %}} {{< /tabpane >}}
 
-4.  (Opcional) Habilita las pruebas basadas en observabilidad de API[^1]:
+4. (Opcional) Habilita las pruebas basadas en observabilidad de API[^1]:
 
     {{< tabpane text=true >}} {{% tab Make %}}
 

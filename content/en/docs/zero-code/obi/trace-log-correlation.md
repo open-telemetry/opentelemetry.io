@@ -5,7 +5,7 @@ weight: 35
 description:
   Learn how OBI correlates application logs with distributed traces for faster
   debugging and troubleshooting.
-cSpell:ignore: BPFFS PYTHONUNBUFFERED ringbuffer
+cSpell:ignore: BPFFS NUL PYTHONUNBUFFERED ringbuffer
 ---
 
 OpenTelemetry eBPF Instrumentation (OBI) correlates application logs with
@@ -52,6 +52,10 @@ binaries:
 - Uses kernel eBPF probes to intercept write operations
 - Maintains file descriptor caching for performance
 - Works with any logging framework that writes JSON logs
+
+OBI preserves `trace_id` and `span_id` fields that already exist in the JSON.
+For a service detected as exporting OpenTelemetry traces directly, OBI injects
+only `trace_id`: its eBPF-generated span ID would not identify the SDK span.
 
 ## Configuration
 
@@ -130,6 +134,9 @@ this assumption.
   `StreamWriter` with `AutoFlush = true`
 - ASP.NET Core's default `Microsoft.Extensions.Logging.AddConsole()` pipeline is
   not compatible because it writes from a background thread
+- Java virtual-thread logs aren't enriched because a carrier kernel thread can
+  execute work from multiple virtual threads; platform-thread enrichment is
+  unaffected
 
 ### 2. Trace export and log enrichment enabled
 
@@ -215,6 +222,26 @@ logger.info({ duration_ms: 125 }, 'Request processed');
 OBI enriches logs in-place. Use your existing log forwarder or collector to ship
 logs to your backend.
 
+When OBI suppresses the original line, container log files contain a line of NUL
+bytes in its place. For writes up to 8 KiB, filter these placeholder lines
+downstream with `^[\x00\s]*$`. For example, with the OpenTelemetry Collector
+`filelog` receiver:
+
+```yaml
+receivers:
+  filelog:
+    include:
+      - /var/log/pods/*/*/*.log
+    start_at: end
+    operators:
+      - type: container
+      - type: filter
+        expr: 'body matches "^[\\x00\\s]*$"'
+```
+
+CRI and Docker JSON log envelopes encode NUL as `\u0000`; the `container`
+operator decodes the body before the filter runs.
+
 ## Performance considerations
 
 - **Minimal overhead**: Correlation uses eBPF kernel probes with efficient file
@@ -231,6 +258,10 @@ logs to your backend.
   (default: 30 minutes)
 - **Span-aligned only**: Logs enriched only while a span is active; logs outside
   span scope are not enriched.
+- **8 KiB per-write limit**: OBI enriches and suppresses at most the first 8 KiB
+  of a single `write()` or `writev()`. Any remaining bytes pass through
+  un-enriched and don't match the placeholder-line filter.
+- **Java virtual threads**: Logs written from virtual threads aren't enriched.
 
 ## Troubleshooting
 

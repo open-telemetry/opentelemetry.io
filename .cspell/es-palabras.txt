@@ -35,7 +35,11 @@ muestreen
 muestreo
 multilenguaje
 observabilidad
+orquestador
+orquestadores
 precargada
+preconstruida
+preconstruidas
 prerrellenada
 previsualiza
 previsualizar
@@ -46,6 +50,7 @@ refiérelo
 reformatea
 renderizan
 semánticamente
+subcarpeta
 subproyecto
 subregión
 subsección
