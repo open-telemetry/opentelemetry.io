@@ -110,8 +110,8 @@ java -javaagent:opentelemetry-javaagent.jar \
 
 For a complete list of available target systems, see:
 
-- [Java agent predefined target systems](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metric-sets)
-- [JMX Scraper predefined target systems](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#predefined-metric-sets)
+- [Java agent predefined target systems](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metrics)
+- [JMX Scraper predefined target systems](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference)
 
 You can specify multiple target systems by separating them with commas.
 
@@ -254,7 +254,7 @@ java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://myapp.example.com:9999
   Migrating from the deprecated JMX Metric Gatherer
 - [JMX Metrics (Java agent)](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md) -
   Java agent JMX metrics documentation
-- [Predefined Target Systems](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#predefined-metric-sets) -
+- [Predefined Target Systems](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference) -
   Built-in metric sets for popular frameworks
 - [Java agent Documentation](/docs/zero-code/java/agent/) - General Java agent
   configuration
