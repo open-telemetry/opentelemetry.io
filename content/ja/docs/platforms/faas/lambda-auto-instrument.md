@@ -3,6 +3,7 @@ title: Lambda 自動計装
 weight: 11
 description: あなたのLambdaをOpenTelemetryで自動的に計装する
 default_lang_commit: dd98ac8ecbbb60996860f62ec1f9eeb63a408a34 # patched
+drifted_from_default: true
 cSpell:ignore: Corretto
 ---
 
