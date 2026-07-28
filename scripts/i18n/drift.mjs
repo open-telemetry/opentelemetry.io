@@ -381,7 +381,7 @@ export function readBaseline(rootDir) {
   if (!match) {
     throw new Error(
       `malformed drift-status baseline in ${STATUS_BASELINE_PATH}: ` +
-        `expected a 'commit: <full-sha>' line`,
+        `expected a 'commit: FULL_SHA' line`,
     );
   }
   return match[1];

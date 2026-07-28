@@ -788,7 +788,7 @@ describe('status baseline (loud-failure paths)', () => {
     writeBaselineFile(root, git('rev-parse', 'HEAD'));
     const err = t.mock.method(console, 'error', () => {});
     await driftPendingForRepo(root);
-    assert.equal(err.mock.callCount(), 0, 'console.error is not called');
+    assert.equal(err.mock.callCount(), 0, 'console.error call count');
   });
 
   // CLI wiring of the baseline write (`status --write`): only a tree-wide
