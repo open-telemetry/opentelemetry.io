@@ -181,8 +181,6 @@ The `k8s_cluster` receiver provides object state (pod phase, restart counts, rep
 
 Because the receiver gathers cluster-wide telemetry, run it in a **single-replica Deployment** Collector. Multiple replicas produce duplicate data. Use the `opentelemetry-collector` Helm chart with the `clusterMetrics` preset, which adds the `k8s_cluster` receiver and the required RBAC automatically:
 
-// TODO: Add deployment diagram
-
 This emits OTel-native equivalents such as `k8s.pod.phase`, `k8s.container.restarts`, `k8s.deployment.available`/`k8s.deployment.desired`, `k8s.node.condition_ready`, and quota/replica state.
 
 Documentation: [Cluster Metrics preset](https://opentelemetry.io/docs/platforms/kubernetes/helm/collector/#cluster-metrics-preset), [Kubernetes Cluster Receiver](https://opentelemetry.io/docs/platforms/kubernetes/collector/components/#kubernetes-cluster-receiver)
@@ -191,8 +189,6 @@ Documentation: [Cluster Metrics preset](https://opentelemetry.io/docs/platforms/
 <small>Guidelines Supported: 1, 2</small>
 
 Host/node OS metrics (the node-exporter replacement) come from the `hostmetrics` receiver, and node/pod/container resource consumption (the cAdvisor/kubelet replacement) comes from the `kubeletstats` receiver. Both must run **once per node**, so deploy them together in a single **DaemonSet** Collector with both presets enabled:
-
-// TODO: Add Daemonset diagram
 
 The `hostMetrics` preset enables the `cpu`, `load`, `memory`, `disk`, `filesystem`, and `network` scrapers and mounts the host root filesystem at `/hostfs`. The `kubeletMetrics` preset adds the `kubeletstats` receiver (with `metric_groups: [node, pod, container]`) and its RBAC. Both presets add the necessary volumes/RBAC automatically and require a Collector image that includes the receivers (such as the Contrib distribution).
 
