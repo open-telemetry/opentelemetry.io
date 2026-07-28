@@ -3,8 +3,7 @@ title: Exemple d'auto-instrumentation des journaux
 linkTitle: Exemple de journaux
 weight: 20
 aliases: [/docs/languages/python/automatic/logs-example]
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-drifted_from_default: true
+default_lang_commit: 7a39e1b95f51cf97fe203ef98a1011d3be33d77e
 cSpell:ignore: distro mkdir virtualenv
 ---
 
@@ -81,6 +80,7 @@ instrumenter automatiquement un programme.
 ```sh
 pip install opentelemetry-distro
 pip install opentelemetry-exporter-otlp
+pip install opentelemetry-instrumentation-logging
 ```
 
 Les exemples qui suivent envoient les résultats de l'instrumentation à la
@@ -107,9 +107,9 @@ Ouvrez une nouvelle fenêtre de terminal et démarrez le Collecteur OTel :
 
 ```sh
 docker run -it --rm -p 4317:4317 -p 4318:4318 \
-  -v $(pwd)/otel-collector-config.yml:/etc/otelcol-config.yml \
+  -v $(pwd)/otel-collector-config.yaml:/etc/otelcol-config.yml \
   --name otelcol \
-  otel/opentelemetry-collector-contrib:0.76.1 \
+  otel/opentelemetry-collector:{{% param collector_vers %}} \
   "--config=/etc/otelcol-config.yml"
 ```
 
@@ -118,7 +118,6 @@ Ouvrez un autre terminal et exécutez le programme Python :
 ```sh
 source python_logs_example/bin/activate
 
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument \
   --traces_exporter console,otlp \
   --metrics_exporter console,otlp \
@@ -126,6 +125,9 @@ opentelemetry-instrument \
   --service_name python-logs-example \
   python $(pwd)/example.py
 ```
+
+> Avant OpenTelemetry Python 1.40.0, il fallait activer l'instrumentation des
+> journaux avec `export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true`
 
 Exemple de sortie :
 

@@ -5,9 +5,9 @@ weight: 10
 aliases:
   - /docs/languages/python/automatic/configuration
   - /docs/languages/python/automatic/agent-config
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-drifted_from_default: true
-cSpell:ignore: healthcheck instrumentor pyproject Starlette urllib
+default_lang_commit: 7a39e1b95f51cf97fe203ef98a1011d3be33d77e
+# prettier-ignore
+cSpell:ignore: gevent healthcheck instrumentor monkeypatch pyproject Starlette urllib
 ---
 
 L'agent est hautement configurable, soit par :
@@ -124,10 +124,13 @@ qui sont générés.
   format de journalisation personnalisé
 - `OTEL_PYTHON_LOG_LEVEL` : pour définir un niveau de journalisation
   personnalisé (info, error, debug, warning)
-- `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` : pour activer
-  l'auto-instrumentation des journaux. Attache le gestionnaire OTLP au logger
-  racine de Python. Pour un exemple, voir
-  [Auto-instrumentation des journaux](/docs/zero-code/python/logs-example/).
+- `OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION` : contrôle si le gestionnaire de
+  journalisation est configuré automatiquement (true, false), activé par défaut.
+  Voir
+  [Auto-instrumentation des journaux](/docs/zero-code/python/logs-example/)
+- `OTEL_PYTHON_LOG_CODE_ATTRIBUTES` : pour activer l'ajout des attributs `code`
+  (`code.file.path`, `code.function.name`, `code.line.number`) aux journaux
+  (true, false)
 
 Exemples :
 
@@ -135,8 +138,14 @@ Exemples :
 export OTEL_PYTHON_LOG_CORRELATION=true
 export OTEL_PYTHON_LOG_FORMAT="%(msg)s [span_id=%(span_id)s]"
 export OTEL_PYTHON_LOG_LEVEL=debug
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
+export OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION=false
+export OTEL_PYTHON_LOG_CODE_ATTRIBUTES=true
 ```
+
+> Avant OpenTelemetry Python 1.40.0, l'auto-instrumentation des journaux était
+> désactivée par défaut et implémentée dans le paquet `opentelemetry-sdk`.
+> Mettre `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` à `true` l'aurait
+> activée.
 
 ### Autre {#other}
 
@@ -154,6 +163,9 @@ n'entrent pas dans une catégorie spécifique.
   le fournisseur global de traces
 - `OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS` : pour activer l'offuscation des
   valeurs dans les requêtes
+- `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH` : mettre à
+  `patch_all` pour appeler la méthode monkeypatch `patch_all` de gevent avant
+  d'initialiser le SDK
 
 Exemples :
 
@@ -163,6 +175,7 @@ export OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX=mon-prefixe-personnalise
 export OTEL_PYTHON_GRPC_EXCLUDED_SERVICES="GRPCTestServer,GRPCHealthServer"
 export OTEL_PYTHON_ID_GENERATOR=xray
 export OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS=true
+export OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH=patch_all
 ```
 
 ## Désactivation d'instrumentations spécifiques {#disabling-specific-instrumentations}

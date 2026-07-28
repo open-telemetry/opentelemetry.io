@@ -3,8 +3,9 @@ title: Instrumentation sans code Python
 linkTitle: Python
 weight: 30
 aliases: [/docs/languages/python/automatic]
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-drifted_from_default: true
+cascade:
+  collector_vers: 0.157.0
+default_lang_commit: b4bfa8864292198d11860470a1ef22a539553845
 cSpell:ignore: distro
 ---
 
@@ -27,15 +28,13 @@ opentelemetry-bootstrap -a install
 Le paquet `opentelemetry-distro` installe l'API, le SDK, et les outils
 `opentelemetry-bootstrap` et `opentelemetry-instrument`.
 
-{{% alert title="Note" %}}
-
-Vous devez installer un paquet de distribution (distro) pour que
-l'instrumentation automatique fonctionne. Le paquet `opentelemetry-distro`
-contient la distribution par défaut pour configurer automatiquement certaines
-des options communes pour les utilisateurs. Pour plus d'informations, voir
-[Distribution OpenTelemetry](/docs/languages/python/distro/).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Vous devez installer un paquet de distribution (distro) pour que
+> l'instrumentation automatique fonctionne. Le paquet `opentelemetry-distro`
+> contient la distribution par défaut pour configurer automatiquement certaines
+> des options communes pour les utilisateurs. Pour plus d'informations, voir
+> [Distribution OpenTelemetry](/docs/languages/python/distro/).
 
 La commande `opentelemetry-bootstrap -a install` parcourt la liste des paquets
 installés dans votre dossier `site-packages` actif, et installe les
@@ -50,11 +49,12 @@ L'exécution de `opentelemetry-bootstrap` sans arguments liste les bibliothèque
 d'instrumentation recommandées à installer. Pour plus d'informations, voir
 [`opentelemetry-bootstrap`](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation#opentelemetry-bootstrap).
 
-{{% alert title="Vous utilisez <code>uv</code> ?" color="warning" %}} Si vous
-utilisez le gestionnaire de paquets [uv](https://docs.astral.sh/uv/), vous
-pourriez rencontrer des difficultés lors de l'exécution de
-`opentelemetry-bootstrap -a install`. Pour plus de détails, voir
-[Bootstrap avec uv](troubleshooting/#bootstrap-using-uv). {{% /alert %}}
+> [!WARNING] Vous utilisez `uv` ?
+>
+> Si vous utilisez le gestionnaire de paquets [uv](https://docs.astral.sh/uv/),
+> vous pourriez rencontrer des difficultés lors de l'exécution de
+> `opentelemetry-bootstrap -a install`. Pour plus de détails, voir
+> [Bootstrap avec uv](troubleshooting/#bootstrap-using-uv).
 
 {#configuring-the-agent}
 

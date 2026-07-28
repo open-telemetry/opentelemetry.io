@@ -3,9 +3,9 @@ title: Exemple d'auto-instrumentation
 linkTitle: Exemple
 weight: 20
 aliases: [/docs/languages/python/automatic/example]
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
-drifted_from_default: true
-cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette venv
+default_lang_commit: 6b9bf7eee2c4dc94f254e9a32909b58952f3f442
+# prettier-ignore
+cSpell:ignore: Aiohttp ASGI distro instrumentor mkdir MSIE Referer Starlette venv
 ---
 
 Cette page montre comment utiliser l'auto-instrumentation Python dans
@@ -147,7 +147,7 @@ python server_manual.py
 
 ```sh
 source ./venv/bin/activate
-python client.py testing
+python client.py
 ```
 
 La console exécutant `server_manual.py` affichera les spans générés par
@@ -203,7 +203,7 @@ Dans la console où vous avez précédemment exécuté `client.py`, exécutez à
 nouveau la commande suivante :
 
 ```sh
-python client.py testing
+python client.py
 ```
 
 La console exécutant `server_automatic.py` affichera les spans générés par
@@ -272,7 +272,7 @@ python server_programmatic.py
 
 ```sh
 source ./venv/bin/activate
-python client.py testing
+python client.py
 ```
 
 Les résultats devraient être les mêmes que lors de l'exécution avec
@@ -338,9 +338,12 @@ opentelemetry-instrument --traces_exporter console --metrics_exporter none --log
 Ces options de configuration sont prises en charge par les instrumentations HTTP
 suivantes :
 
+- Aiohttp-server
+- ASGI
 - Django
 - Falcon
 - FastAPI
+- Flask
 - Pyramid
 - Starlette
 - Tornado
@@ -360,6 +363,25 @@ Si ces en-têtes sont disponibles, ils seront inclus dans votre span :
   }
 }
 ```
+
+### Assainissement des en-têtes capturés {#sanitization-of-captured-headers}
+
+Afin d'éviter de stocker des données sensibles telles que des informations
+personnelles identifiables (PII), des clés de session, des mots de passe, etc.,
+définissez la variable d'environnement
+`OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS` avec une liste,
+séparée par des virgules, des noms d'en-têtes HTTP à assainir. Les expressions
+régulières sont acceptées, et tous les noms d'en-têtes sont comparés sans
+distinction de casse.
+
+Par exemple,
+
+```sh
+export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS=".*session.*,set-cookie"
+```
+
+remplacera la valeur d'en-têtes tels que `session-id` et `set-cookie` par
+`[REDACTED]` dans le span.
 
 [convention sémantique]: /docs/specs/semconv/http/http-spans/
 [référence de l'API]:

@@ -4,9 +4,8 @@ title:
 linkTitle: Opérateur
 aliases: [/docs/languages/python/automatic/operator]
 weight: 30
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
-drifted_from_default: true
-cSpell:ignore: django-applications grpcio psutil PYTHONPATH
+default_lang_commit: 5d68eec62bc16a5558678eae6d2f8c5083113823
+cSpell:ignore: django-applications gevent grpcio monkeypatch psutil PYTHONPATH
 ---
 
 Si vous exécutez votre service Python dans Kubernetes, vous pouvez tirer parti
@@ -46,3 +45,11 @@ d'environnement :
   Django, par exemple "/app"
 - `DJANGO_SETTINGS_MODULE`, avec le nom du module de paramètres Django, par
   exemple "myapp.settings"
+
+### Applications gevent {#gevent-applications}
+
+Depuis la version 1.37.0/0.58b0 d'OpenTelemetry Python, si vous définissez dans
+votre fichier de déploiement la variable d'environnement
+`OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH` à `patch_all`, le
+code d'auto-instrumentation appellera la méthode monkeypatch de gevent portant
+le même nom avant de s'initialiser.
