@@ -1,7 +1,7 @@
 ---
 title: We broke the OTel demo
 linkTitle: We broke the demo
-date: 2026-07-27
+date: 2026-07-28
 author: >-
   [Juliano Costa](https://github.com/julianocosta89) (Datadog)
 sig: Demo
