@@ -1,8 +1,7 @@
 ---
 title: Démarrage rapide
 weight: 1
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-drifted_from_default: true
+default_lang_commit: 5d68eec62bc16a5558678eae6d2f8c5083113823
 cSpell:ignore: Dotel
 ---
 
@@ -28,6 +27,17 @@ cSpell:ignore: Dotel
       export OTEL_SERVICE_NAME="your-service-name"
       java -jar myapp.jar
       ```
+
+## Configuration déclarative {#declarative-configuration}
+
+La configuration déclarative utilise un fichier YAML plutôt que des variables
+d'environnement ou des propriétés système. C'est utile lorsque vous avez de
+nombreuses options de configuration à définir, ou si vous souhaitez utiliser des
+options qui ne sont pas disponibles sous forme de variables d'environnement ou
+de propriétés système.
+
+Consultez la page
+[Configuration déclarative](../declarative-configuration) pour plus de détails.
 
 ## Configuration de l'agent {#configuring-the-agent}
 

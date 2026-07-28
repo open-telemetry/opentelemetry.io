@@ -1,11 +1,10 @@
 ---
 title: Suppression d'instrumentation spécifique
 linkTitle: Suppression d'instrumentation
-weight: 11
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
-drifted_from_default: true
+weight: 12
+default_lang_commit: 368f811f81c27798a031b4c92024ecdd65cddc19
 # prettier-ignore
-cSpell:ignore: akka armeria clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logmanager mojarra mybatis myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp Dotel dropwizard dubbo elasticjob finatra helidon hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jfinal jodd kotlinx ktor logmanager mojarra mybatis myfaces nats okhttp openai oshi payara pekko powerjob rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## Désactivation complète de l'agent {#disabling-the-agent-entirely}
@@ -31,12 +30,14 @@ Définissez à `false` pour désactiver toute l'instrumentation dans l'agent.
 `true` pour activer chaque instrumentation souhaitée individuellement.
 {{% /config_option %}}
 
-{{% alert title="Note" color="warning" %}} Certaines instrumentations dépendent
-d'autres instrumentations pour fonctionner correctement. Lors de l'activation
-sélective de l'instrumentation, assurez-vous d'activer également les dépendances
-transitives. La détermination de cette relation de dépendance est laissée à
-l'utilisateur. Ceci est considéré comme une utilisation avancée et n'est pas
-recommandé pour la plupart des utilisateurs. {{% /alert %}}
+> [!WARNING]
+>
+> Certaines instrumentations dépendent d'autres instrumentations pour
+> fonctionner correctement. Lors de l'activation sélective de l'instrumentation,
+> assurez-vous d'activer également les dépendances transitives. La détermination
+> de cette relation de dépendance est laissée à l'utilisateur. Ceci est
+> considéré comme une utilisation avancée et n'est pas recommandé pour la
+> plupart des utilisateurs.
 
 ## Activer uniquement l'instrumentation manuelle {#enable-manual-instrumentation-only}
 
@@ -59,17 +60,22 @@ spécifiques, où `[name]` est le nom d'instrumentation correspondant :
 | ------------------------------------------------ | ------------------------------------------- |
 | Traces de méthodes supplémentaires               | `methods`                                   |
 | Annotations supplémentaires des traces           | `external-annotations`                      |
+| Activej HTTP                                     | `activej-http`                              |
+| Avaje Jex                                        | `avaje-jex`                                 |
 | Akka Actor                                       | `akka-actor`                                |
 | Akka HTTP                                        | `akka-http`                                 |
+| Alibaba Druid                                    | `alibaba-druid`                             |
 | Apache Axis2                                     | `axis2`                                     |
 | Apache Camel                                     | `camel`                                     |
 | Apache Cassandra                                 | `cassandra`                                 |
 | Apache CXF                                       | `cxf`                                       |
 | Apache DBCP                                      | `apache-dbcp`                               |
 | Apache Dubbo                                     | `apache-dubbo`                              |
+| Apache ElasticJob                                | `apache-elasticjob`                         |
 | Apache Geode                                     | `geode`                                     |
 | Apache HttpAsyncClient                           | `apache-httpasyncclient`                    |
 | Apache HttpClient                                | `apache-httpclient`                         |
+| Apache Iceberg                                   | `iceberg`                                   |
 | Apache Kafka                                     | `kafka`                                     |
 | Apache MyFaces                                   | `jsf-myfaces`                               |
 | Apache Pekko Actor                               | `pekko-actor`                               |
@@ -103,8 +109,10 @@ spécifiques, où `[name]` est le nom d'instrumentation correspondant :
 | Eclipse Vert.x RxJava                            | `vertx-rx-java`                             |
 | Eclipse Vert.x SQL Client                        | `vertx-sql-client`                          |
 | Eclipse Vert.x Web                               | `vertx-web`                                 |
+| Elasticsearch API client                         | `elasticsearch-api-client`                  |
 | Elasticsearch client                             | `elasticsearch-transport`                   |
 | Elasticsearch REST client                        | `elasticsearch-rest`                        |
+| Failsafe                                         | `failsafe`                                  |
 | Finagle                                          | `finagle-http`                              |
 | Google Guava                                     | `guava`                                     |
 | Google HTTP client                               | `google-http-client`                        |
@@ -112,11 +120,13 @@ spécifiques, où `[name]` est le nom d'instrumentation correspondant :
 | Grails                                           | `grails`                                    |
 | GraphQL Java                                     | `graphql-java`                              |
 | GRPC                                             | `grpc`                                      |
+| Helidon                                          | `helidon`                                   |
 | Hibernate                                        | `hibernate`                                 |
 | Hibernate Reactive                               | `hibernate-reactive`                        |
 | HikariCP                                         | `hikaricp`                                  |
 | InfluxDB                                         | `influxdb`                                  |
 | Java HTTP Client                                 | `java-http-client`                          |
+| Java HTTP Server                                 | `java-http-server`                          |
 | Java `HttpURLConnection`                         | `http-url-connection`                       |
 | Java JDBC                                        | `jdbc`                                      |
 | Java JDBC `DataSource`                           | `jdbc-datasource`                           |
@@ -131,6 +141,7 @@ spécifiques, où `[name]` est le nom d'instrumentation correspondant :
 | JAX-WS                                           | `jaxws`                                     |
 | JBoss Logging Appender                           | `jboss-logmanager-appender`                 |
 | JBoss Logging MDC                                | `jboss-logmanager-mdc`                      |
+| JFinal                                           | `jfinal`                                    |
 | JMS                                              | `jms`                                       |
 | Jodd HTTP                                        | `jodd-http`                                 |
 | JSP                                              | `jsp`                                       |
@@ -145,17 +156,23 @@ spécifiques, où `[name]` est le nom d'instrumentation correspondant :
 | Micrometer                                       | `micrometer`                                |
 | MongoDB                                          | `mongo`                                     |
 | MyBatis                                          | `mybatis`                                   |
+| NATS Client                                      | `nats`                                      |
 | Netflix Hystrix                                  | `hystrix`                                   |
 | Netty                                            | `netty`                                     |
 | OkHttp                                           | `okhttp`                                    |
 | OpenLiberty                                      | `liberty`                                   |
-| Annotations de l'extension OpenTelemetry         | `opentelemetry-extension-annotations`       |
-| Annotations de l'instrumentation OpenTelemetry   | `opentelemetry-instrumentation-annotations` |
+| OpenAI                                           | `openai`                                    |
+| OpenSearch Java                                  | `opensearch-java`                           |
+| OpenSearch REST                                  | `opensearch-rest`                           |
+| OpenTelemetry Extension Annotations              | `opentelemetry-extension-annotations`       |
+| OpenTelemetry Instrumentation Annotations        | `opentelemetry-instrumentation-annotations` |
 | OpenTelemetry API                                | `opentelemetry-api`                         |
 | Oracle UCP                                       | `oracle-ucp`                                |
 | OSHI (Operating System and Hardware Information) | `oshi`                                      |
+| Payara                                           | `payara`                                    |
 | Play Framework                                   | `play`                                      |
 | Play WS HTTP Client                              | `play-ws`                                   |
+| Powerjob                                         | `powerjob`                                  |
 | Quarkus                                          | `quarkus`                                   |
 | Quartz                                           | `quartz`                                    |
 | R2DBC                                            | `r2dbc`                                     |
@@ -173,14 +190,19 @@ spécifiques, où `[name]` est le nom d'instrumentation correspondant :
 | Scala ForkJoinPool                               | `scala-fork-join`                           |
 | Spark Web Framework                              | `spark`                                     |
 | Spring Batch                                     | `spring-batch`                              |
+| Spring Boot Actuator Autoconfigure               | `spring-boot-actuator-autoconfigure`        |
+| Spring Cloud AWS                                 | `spring-cloud-aws`                          |
+| Spring Cloud Gateway                             | `spring-cloud-gateway`                      |
 | Spring Core                                      | `spring-core`                               |
 | Spring Data                                      | `spring-data`                               |
 | Spring JMS                                       | `spring-jms`                                |
 | Spring Integration                               | `spring-integration`                        |
 | Spring Kafka                                     | `spring-kafka`                              |
+| Spring Pulsar                                    | `spring-pulsar`                             |
 | Spring RabbitMQ                                  | `spring-rabbit`                             |
 | Spring RMI                                       | `spring-rmi`                                |
 | Spring Scheduling                                | `spring-scheduling`                         |
+| Spring Security Config                           | `spring-security-config`                    |
 | Spring Web                                       | `spring-web`                                |
 | Spring WebFlux                                   | `spring-webflux`                            |
 | Spring Web MVC                                   | `spring-webmvc`                             |

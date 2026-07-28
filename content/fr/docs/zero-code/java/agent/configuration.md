@@ -2,15 +2,16 @@
 title: Configuration
 weight: 10
 aliases: [agent-config]
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-drifted_from_default: true
+default_lang_commit: 5d68eec62bc16a5558678eae6d2f8c5083113823
 cSpell:ignore: classloader customizer
 ---
 
-{{% alert title="Pour plus d'informations" %}} Cette page décrit les différentes
-manières dont la configuration peut être fournie à l'agent Java. Pour des
-informations sur les options de configuration elles-mêmes, consultez
-[Configurer le SDK](/docs/languages/java/configuration). {{% /alert %}}
+> [!NOTE] Pour plus d'informations
+>
+> Cette page décrit les différentes manières dont la configuration peut être
+> fournie à l'agent Java. Pour des informations sur les options de configuration
+> elles-mêmes, consultez
+> [Configurer le SDK](/docs/languages/java/configuration).
 
 ## Configuration de l'agent {#agent-configuration}
 
@@ -94,13 +95,11 @@ de l'agent. Lisez la [documentation](/docs/languages/java/configuration) pour
 trouver des paramètres tels que la configuration de l'exportation ou de
 l'échantillonnage.
 
-{{% alert title="Important" color="warning" %}}
-
-Contrairement à l'autoconfiguration du SDK, les versions 2.0+ de l'agent Java et
-du Spring Boot Starter OpenTelemetry utilisent `http/protobuf` comme protocole
-par défaut, et non `grpc`.
-
-{{% /alert %}}
+> [!IMPORTANT]
+>
+> Contrairement à l'autoconfiguration du SDK, les versions 2.0+ de l'agent Java
+> et du Spring Boot Starter OpenTelemetry utilisent `http/protobuf` comme
+> protocole par défaut, et non `grpc`.
 
 ## Activer les fournisseurs de ressources qui sont désactivés par défaut {#enable-resource-providers-that-are-disabled-by-default}
 

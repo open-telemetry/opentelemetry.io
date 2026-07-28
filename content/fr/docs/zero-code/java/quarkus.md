@@ -1,8 +1,7 @@
 ---
 title: Instrumentation Quarkus
 linkTitle: Quarkus
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-drifted_from_default: true
+default_lang_commit: 6bf06ddb9fc057dd6e8092f26d988ffe7b1af5ed
 ---
 
 [Quarkus](https://quarkus.io/) est un framework open source conçu pour aider les
@@ -22,13 +21,11 @@ fournit :
 - Les mêmes instrumentations peuvent être utilisées avec les images natives
   Quarkus, qui ne sont pas supportées par l'agent Java OpenTelemetry.
 
-{{% alert title="Note" color="secondary" %}}
-
-L'instrumentation Quarkus OpenTelemetry est maintenue et supportée par Quarkus.
-Pour plus de détails, consultez
-[Support communautaire Quarkus](https://quarkus.io/support/).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> L'instrumentation Quarkus OpenTelemetry est maintenue et supportée par
+> Quarkus. Pour plus de détails, consultez
+> [Support communautaire Quarkus](https://quarkus.io/support/).
 
 Quarkus peut également être instrumenté avec
 l'[agent Java OpenTelemetry](../agent/) si vous n'exécutez pas une application

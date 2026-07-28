@@ -3,8 +3,7 @@ title: Performance
 description: Informations sur la performance pour l'agent Java OpenTelemetry
 weight: 400
 aliases: [/docs/languages/java/performance]
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
-drifted_from_default: true
+default_lang_commit: 6cebc46de450dd44481a8a6f17c9b3d6f04aa0f2
 cSpell:ignore: Dotel
 ---
 
@@ -103,14 +102,12 @@ Certaines instrumentations, par exemple JDBC ou Redis, produisent des volumes
 la façon de désactiver les instrumentations inutiles, voir
 [Désactiver des instrumentations spécifiques](#turn-off-specific-instrumentations).
 
-{{% alert title="Note" %}}
-
-Les fonctionnalités expérimentales de l'agent Java peuvent augmenter l'impact de
-l'agent en raison de l'accent mis sur le développement des fonctionnalités
-plutôt que sur les performances de celles-ci. Les fonctionnalités stables sont
-plus sûres en termes de performance de l'agent.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Les fonctionnalités expérimentales de l'agent Java peuvent augmenter l'impact
+> de l'agent en raison de l'accent mis sur le développement des fonctionnalités
+> plutôt que sur les performances de celles-ci. Les fonctionnalités stables sont
+> plus sûres en termes de performance de l'agent.
 
 ## Dépannage des problèmes de l'impact de l'agent {#troubleshooting-agent-overhead-issues}
 
@@ -198,14 +195,12 @@ représentatif. Incluez des scénarios d'erreur dans vos données de test. Simul
 un taux d'erreur similaire à celui d'une charge de travail normale, généralement
 entre 2 % et 10 %.
 
-{{% alert title="Note" %}}
-
-Les tests peuvent augmenter les coûts lorsqu'ils ciblent des backends
-d'observabilité et d'autres services commerciaux. Planifiez vos tests en
-conséquence ou envisagez d'utiliser des solutions alternatives, telles que des
-backends auto-hébergés ou exécutés localement.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Les tests peuvent augmenter les coûts lorsqu'ils ciblent des backends
+> d'observabilité et d'autres services commerciaux. Planifiez vos tests en
+> conséquence ou envisagez d'utiliser des solutions alternatives, telles que des
+> backends auto-hébergés ou exécutés localement.
 
 ### Collectez des mesures comparables {#collect-comparable-measurements}
 

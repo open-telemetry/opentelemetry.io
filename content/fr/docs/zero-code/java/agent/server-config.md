@@ -4,9 +4,8 @@ linkTitle: Configuration du serveur d'application
 description:
   Apprenez à définir les chemins d'agent pour les serveurs d'applications Java
 weight: 215
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-drifted_from_default: true
-cSpell:ignore: asadmin Glassfish Payara setenv
+default_lang_commit: 6bf06ddb9fc057dd6e8092f26d988ffe7b1af5ed
+cSpell:ignore: asadmin Glassfish Payara setenv wildfly
 ---
 
 Lors de l'instrumentation d'une application qui s'exécute sur un serveur
@@ -95,7 +94,18 @@ une entrée `<jmv-options>` pour l'agent.
 
 ## Tomcat / TomEE {#tomcat--tomee}
 
-Ajoutez le chemin vers l'agent Java à votre script de démarrage :
+Ajoutez le chemin vers l'agent Java à votre script de démarrage. La méthode de
+configuration dépend de votre installation :
+
+**Pour les installations gérées par paquets** (apt-get/yum), ajoutez dans
+`/etc/tomcat*/tomcat*.conf` :
+
+```sh
+JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
+```
+
+**Pour les installations téléchargées**, créez ou modifiez
+`<tomcat>/bin/setenv.sh` (Linux) ou `<tomcat>/bin/setenv.bat` (Windows) :
 
 {{< tabpane text=true persist=lang >}}
 
@@ -114,6 +124,11 @@ set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:"<Drive>:\path\to\opentelemetry-jav
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+**Pour les installations en service Windows**, utilisez
+`<tomcat>/bin/tomcat*w.exe` pour ajouter
+`-javaagent:<Drive>:\path\to\opentelemetry-javaagent.jar` aux options Java, sous
+l'onglet Java.
 
 ## WebLogic {#weblogic}
 
@@ -165,3 +180,33 @@ Ouvrez la console d'administration de WebSphere et suivez ces étapes :
 5.  Dans **Generic JVM arguments**, entrez le chemin vers l'agent :
     `-javaagent:/path/to/opentelemetry-javaagent.jar`.
 6.  Enregistrez la configuration et redémarrez le serveur.
+
+## Activer les métriques JMX prédéfinies {#enable-predefined-jmx-metrics}
+
+L'agent Java embarque des configurations de métriques JMX prédéfinies pour
+plusieurs serveurs d'applications répandus, mais elles ne sont pas activées par
+défaut. Pour activer la collecte de ces métriques, indiquez une liste de cibles
+comme valeur de la propriété système `otel.jmx.target.system`. Par exemple :
+
+```bash
+$ java -javaagent:path/to/opentelemetry-javaagent.jar \
+     -Dotel.jmx.target.system=jetty,tomcat \
+     ... \
+     -jar myapp.jar
+```
+
+Voici les valeurs connues de serveurs d'applications pour
+`otel.jmx.target.system` :
+
+- [`jetty`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/jetty.md)
+- [`tomcat`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/tomcat.md)
+- [`wildfly`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/wildfly.md)
+
+> [!NOTE]
+>
+> Cette liste n'est pas exhaustive, et d'autres systèmes cibles JMX sont pris en
+> charge.
+
+Pour connaître la liste des métriques extraites de chaque serveur
+d'applications, sélectionnez le nom correspondant ci-dessus, ou consultez
+[Détails supplémentaires et possibilités de personnalisation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics#predefined-metrics).
