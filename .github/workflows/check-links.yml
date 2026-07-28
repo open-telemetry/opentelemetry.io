@@ -100,10 +100,18 @@ jobs:
       # The drift-pending overlay diffs content/en against the drift-status
       # baseline; a depth-1 fetch of that commit is all the (shallow) clone
       # needs. Config generation fails if the baseline can't be resolved.
+      # The extraction enforces the same 'commit: <full-sha>' shape as
+      # BASELINE_COMMIT_RE in scripts/i18n/drift.mjs; keep the two in sync.
+      # Kill switch: exporting DRIFT_BASELINE=HEAD on the config-generation
+      # step below empties the overlay, restoring pre-overlay behavior.
       - name: Deepen history to the drift-status baseline
         run: |
-          git fetch --depth=1 origin \
-            "$(sed -n 's/^commit: //p' data/l10n-drift.yaml)"
+          sha=$(sed -n 's/^commit: \([0-9a-f]\{40\}\)$/\1/p' data/l10n-drift.yaml)
+          if [[ ! "$sha" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error file=data/l10n-drift.yaml::Expected a single 'commit: <full-sha>' line."
+            exit 1
+          fi
+          git fetch --depth=1 origin --end-of-options "$sha"
 
       - run: npm run generate:config:links
 
