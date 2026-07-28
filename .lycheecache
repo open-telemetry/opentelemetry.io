@@ -3074,6 +3074,7 @@ https://github.com/open-telemetry/opentelemetry-go,200,1785134681
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation,206,1784355603
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/main/docs/instrument-guide.md,200,1785134665
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/main/docs/rules.md,200,1785134665
+https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/main/instrumentation/github.com/linode/linodego/v2/README.md,200,1785216268
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v1.0.0/docs/instrument-guide.md,200,1784701475
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v1.0.0/docs/rules.md,200,1784701475
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/discussions,200,1785134665
@@ -3083,6 +3084,7 @@ https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/database/sql,206,1784442929
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/anthropics/anthropic-sdk-go,200,1784625647
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/gin-gonic/gin,206,1784442921
+https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/linode/linodego/v2,200,1785216268
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/openai/openai-go,200,1784791245
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/redis/go-redis/v9,206,1784442922
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/segmentio/kafka-go,200,1784791245
