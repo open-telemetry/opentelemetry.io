@@ -3,7 +3,7 @@ title: Dépannage des problèmes d'instrumentation automatique de Python
 linkTitle: Dépannage
 weight: 40
 default_lang_commit: 182bcc0bb62c5359157142153804d22f0ee60242
-cSpell:ignore: ASGI gunicorn uvicorn
+cSpell:ignore: ASGI gunicorn interblocages uvicorn
 ---
 
 ## Problèmes d'installation {#installation-issues}
@@ -122,8 +122,8 @@ chaque enfant. Voir également les forks et interblocages décrits dans le
 
 Il existe des contournements pour les serveurs pre-fork avec OpenTelemetry. Le
 tableau suivant résume la prise en charge actuelle de l'export des signaux par
-les différentes piles de passerelle web auto-instrumentées et pre-forkées avec
-plusieurs workers. Voir ci-dessous pour plus de détails et d'options :
+les différentes piles de passerelle web auto-instrumentées, lancées en pre-fork
+avec plusieurs workers. Voir ci-dessous pour plus de détails et d'options :
 
 | Pile avec plusieurs workers | Traces | Métriques | Journaux |
 | --------------------------- | ------ | --------- | -------- |
