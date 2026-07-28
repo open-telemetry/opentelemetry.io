@@ -6,8 +6,7 @@ description:
   étendre la télémétrie générée automatiquement avec des spans et des métriques
   personnalisés
 weight: 21
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
-drifted_from_default: true
+default_lang_commit: 4b5381a2e9f129651ab8658357ab846bd4c965f2
 ---
 
 ## Introduction {#introduction}
@@ -29,13 +28,11 @@ composants Spring.
 
 ## Span {#span}
 
-{{% alert title="Note" %}}
-
-Pour les cas d'usage les plus courants, utilisez l'annotation `@WithSpan` au
-lieu de l'instrumentation manuelle. Consultez [Annotations](../annotations) pour
-plus d'informations.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Pour les cas d'usage les plus courants, utilisez l'annotation `@WithSpan` au
+> lieu de l'instrumentation manuelle. Consultez
+> [Annotations](../annotations) pour plus d'informations.
 
 ```java
 import io.opentelemetry.api.OpenTelemetry;

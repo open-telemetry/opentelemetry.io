@@ -1,8 +1,7 @@
 ---
 title: Autre auto-configuration Spring
 weight: 70
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-drifted_from_default: true
+default_lang_commit: 2d89b60b2e09d42ba96757b0afdbc31f54a2b0e7
 cSpell:ignore: autoconfigurations
 ---
 
@@ -52,6 +51,32 @@ dependencies {
 
 ### Configurations {#configurations}
 
-| Propriété                      | Valeur par défaut | ConditionalOnClass   |
-| ------------------------------ | ----------------- | -------------------- |
-| `otel.exporter.zipkin.enabled` | true              | `ZipkinSpanExporter` |
+{{< tabpane text=true >}} {{% tab "Properties" %}}
+
+Active l'exportateur Zipkin (nécessite `ZipkinSpanExporter` dans le classpath) :
+
+```yaml
+otel:
+  exporter:
+    zipkin:
+      enabled: true # défaut : true
+```
+
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+Avec la [configuration déclarative](../declarative-configuration/),
+l'exportateur Zipkin se configure dans le
+[schéma standard de configuration déclarative](/docs/languages/sdk-configuration/declarative-configuration/),
+sous `tracer_provider.processors` :
+
+```yaml
+otel:
+  tracer_provider:
+    processors:
+      - batch:
+          exporter:
+            zipkin:
+              endpoint: http://localhost:9411/api/v2/spans
+```
+
+{{% /tab %}} {{< /tabpane >}}

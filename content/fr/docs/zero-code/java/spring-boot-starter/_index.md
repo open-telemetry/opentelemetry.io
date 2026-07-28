@@ -1,11 +1,11 @@
 ---
 title: Spring Boot starter
 aliases:
+  - /docs/languages/java/spring-boot
   - /docs/languages/java/automatic/spring-boot
   - /docs/zero-code/java/agent/spring-boot
   - /docs/zero-code/java/spring-boot
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-drifted_from_default: true
+default_lang_commit: 2d89b60b2e09d42ba96757b0afdbc31f54a2b0e7
 ---
 
 Vous pouvez utiliser deux options pour instrumenter les applications
@@ -27,3 +27,5 @@ Vous pouvez utiliser deux options pour instrumenter les applications
    - Les **fichiers de configuration Spring Boot** pour configurer le Spring
      Boot starter OpenTelemetry (`application.properties`, `application.yml`)
      qui ne fonctionne pas avec l'agent Java OpenTelemetry
+   - La **[configuration déclarative](declarative-configuration/)**, qui utilise
+     un format YAML structuré au sein d'`application.yaml`

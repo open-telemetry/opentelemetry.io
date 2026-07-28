@@ -1,8 +1,7 @@
 ---
 title: Instrumentation supplémentaire
 weight: 60
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-drifted_from_default: true
+default_lang_commit: 2d89b60b2e09d42ba96757b0afdbc31f54a2b0e7
 ---
 
 Le Spring Boot starter OpenTelemetry fournit une
@@ -31,9 +30,33 @@ Vous pouvez trouver plus d'options de configuration pour l'appender
 OpenTelemetry dans la bibliothèque d'instrumentation
 [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md).
 
-| Propriété système                             | Type    | Défaut | Description                                                                                  |
-| --------------------------------------------- | ------- | ------ | -------------------------------------------------------------------------------------------- |
-| `otel.instrumentation.log4j-appender.enabled` | Boolean | true   | Active la configuration de l'appender Log4j OpenTelemetry avec une instance `OpenTelemetry`. |
+{{< tabpane text=true >}} {{% tab "Properties" %}}
+
+Active la configuration de l'appender Log4j OpenTelemetry avec une instance
+`OpenTelemetry` :
+
+```yaml
+otel:
+  instrumentation:
+    log4j-appender:
+      enabled: true # défaut : true
+```
+
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+En [configuration déclarative](../declarative-configuration/), utilisez les
+listes d'instrumentations centralisées pour activer ou désactiver Log4j :
+
+```yaml
+otel:
+  distribution:
+    spring_starter:
+      instrumentation:
+        disabled:
+          - log4j_appender
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ## Bibliothèques d'instrumentation {#instrumentation-libraries}
 

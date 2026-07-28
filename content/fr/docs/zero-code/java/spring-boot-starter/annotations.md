@@ -1,8 +1,7 @@
 ---
 title: Annotations
 weight: 50
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-drifted_from_default: true
+default_lang_commit: 2d89b60b2e09d42ba96757b0afdbc31f54a2b0e7
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -46,37 +45,45 @@ public class TracedClass {
   @WithSpan(kind = SpanKind.CLIENT)
   public void tracedClientSpan() {}
 
+  @WithSpan
   public void tracedMethodWithAttribute(@SpanAttribute("attributeName") String parameter) {}
 }
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert title="Note" %}} Les annotations OpenTelemetry utilisent Spring AOP
-basé sur des proxys.
+> [!NOTE]
+>
+> Les annotations OpenTelemetry utilisent Spring AOP basé sur des proxys.
+>
+> Ces annotations ne fonctionnent que pour les méthodes du proxy. Vous pouvez en
+> apprendre plus dans la
+> [documentation Spring](https://docs.spring.io/spring-framework/reference/core/aop/proxying.html).
+>
+> Dans l'exemple suivant, l'annotation `WithSpan` ne fera rien lorsque le point
+> de terminaison GET est appelé :
+>
+> ```java
+> @RestController
+> public class MyControllerManagedBySpring {
+>
+>     @GetMapping("/ping")
+>     public void aMethod() {
+>         anotherMethod();
+>     }
+>
+>     @WithSpan
+>     public void anotherMethod() {
+>     }
+> }
+> ```
 
-Ces annotations ne fonctionnent que pour les méthodes du proxy. Vous pouvez en
-apprendre plus dans la
-[documentation Spring](https://docs.spring.io/spring-framework/reference/core/aop/proxying.html).
+{{< comment >}} Note that we have to use the alert shortcode because it contains
+tab panes.
 
-Dans l'exemple suivant, l'annotation `WithSpan` ne fera rien lorsque le point de
-terminaison GET est appelé :
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable prefer-blockquote-vs-docsy-alerts -->
 
-```java
-@RestController
-public class MyControllerManagedBySpring {
-
-    @GetMapping("/ping")
-    public void aMethod() {
-        anotherMethod();
-    }
-
-    @WithSpan
-    public void anotherMethod() {
-    }
-}
-```
-
-{{% /alert %}}
+{{< /comment >}}
 
 {{% alert title="Note" %}}
 
@@ -106,8 +113,22 @@ dependencies {
 
 {{% /alert %}}
 
+<!-- markdownlint-restore -->
+
 Vous pouvez désactiver les annotations OpenTelemetry en définissant la propriété
 `otel.instrumentation.annotations.enabled` à `false`.
+
+En [configuration déclarative](../declarative-configuration/), utilisez plutôt
+les listes d'instrumentations centralisées :
+
+```yaml
+otel:
+  distribution:
+    spring_starter:
+      instrumentation:
+        disabled:
+          - annotations
+```
 
 Vous pouvez personnaliser le span en utilisant les éléments de l'annotation
 `WithSpan` :

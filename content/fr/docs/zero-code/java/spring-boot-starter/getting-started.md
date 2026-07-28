@@ -1,18 +1,15 @@
 ---
 title: Démarrage rapide
 weight: 20
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
-drifted_from_default: true
+default_lang_commit: 6bf06ddb9fc057dd6e8092f26d988ffe7b1af5ed
 cSpell:ignore: springboot
 ---
 
-{{% alert title="Note" %}}
-
-Vous pouvez également utiliser l'[agent Java](../../agent) pour instrumenter
-votre application Spring Boot. Pour les avantages et les inconvénients,
-consultez [Instrumentation Java Zero-code](..).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Vous pouvez également utiliser l'[agent Java](../../agent) pour instrumenter
+> votre application Spring Boot. Pour les avantages et les inconvénients,
+> consultez [Instrumentation Java Zero-code](..).
 
 ## Compatibilité {#compatibility}
 
@@ -33,19 +30,17 @@ OpenTelemetry, vous devez importer la nomenclature
 `opentelemetry-instrumentation-bom` lors de l'utilisation du starter
 OpenTelemetry.
 
-{{% alert title="Note" %}}
-
-Lors de l'utilisation de Maven, importez les nomenclatures OpenTelemetry avant
-toute autre dans votre projet. Par exemple, si vous importez la nomenclature
-`spring-boot-dependencies`, vous devez la déclarer après les nomenclatures
-OpenTelemetry.
-
-Gradle sélectionne la
-[dernière version](https://docs.gradle.org/current/userguide/dependency_resolution.html#2_perform_conflict_resolution)
-d'une dépendance lorsque plusieurs nomenclatures sont utilisées, donc l'ordre
-des nomenclatures n'est pas important.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Lors de l'utilisation de Maven, importez les nomenclatures OpenTelemetry avant
+> toute autre dans votre projet. Par exemple, si vous importez la nomenclature
+> `spring-boot-dependencies`, vous devez la déclarer après les nomenclatures
+> OpenTelemetry.
+>
+> Gradle sélectionne la
+> [dernière version](https://docs.gradle.org/current/userguide/dependency_resolution.html#2_perform_conflict_resolution)
+> d'une dépendance lorsque plusieurs nomenclatures sont utilisées, donc l'ordre
+> des nomenclatures n'est pas important.
 
 L'exemple suivant montre comment importer les nomenclatures OpenTelemetry en
 utilisant Maven :
@@ -101,14 +96,12 @@ dependencyManagement {
 }
 ```
 
-{{% alert title="Note" %}}
-
-Faites attention à ne pas mélanger les différentes manières de configurer les
-choses avec Gradle. Par exemple, n'utilisez pas
-`implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))`
-avec le plugin `io.spring.dependency-management`.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Faites attention à ne pas mélanger les différentes manières de configurer les
+> choses avec Gradle. Par exemple, n'utilisez pas
+> `implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))`
+> avec le plugin `io.spring.dependency-management`.
 
 ### Dépendance du starter OpenTelemetry {#opentelemetry-starter-dependency}
 
