@@ -13,7 +13,7 @@ tags:
   - otlp
 urls:
   repo: https://github.com/arthi-arumugam-git/whatbroke
-  docs: https://github.com/arthi-arumugam-git/whatbroke#readme
+  docs: https://github.com/arthi-arumugam-git/whatbroke/blob/main/README.md
 license: MIT
 description:
   CLI that diffs an AI agent's behavior between two runs. Imports OTLP JSON span
