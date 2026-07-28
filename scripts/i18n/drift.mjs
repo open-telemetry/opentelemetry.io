@@ -414,6 +414,9 @@ export function driftPendingPages(
   const pages = [];
   const enPrefix = `${CONTENT_DIR}/${DEFAULT_LANG}/`;
   for (const enPath of changedEnPages) {
+    // `.md` only: no localized `.html` pages exist in the content tree; if
+    // that ever changes, align this filter with pageIgnoreDirOf's
+    // `.md`/`.html` mapping in scripts/lychee/config/index.mjs.
     if (!enPath.startsWith(enPrefix) || !enPath.endsWith('.md')) continue;
     const subPath = enPath.slice(enPrefix.length);
     for (const locale of locales) {
@@ -457,6 +460,23 @@ export async function driftPendingForRepo(rootDir, baseline) {
     );
   }
   const changed = diffOut.split('\n').filter(Boolean);
+
+  // A stale baseline is silent coverage loss: the overlay only widens, so a
+  // stalled Housekeeping cycle never turns anything red. Surface it.
+  const STALE_BASELINE_DAYS = 14;
+  const commitTime = Number(
+    await git(rootDir, 'log', '-1', '--format=%ct', baseline),
+  );
+  const ageDays = (Date.now() / 1000 - commitTime) / 86400;
+  if (ageDays > STALE_BASELINE_DAYS) {
+    console.error(
+      `WARNING: the drift-status baseline (from ${source}) is ` +
+        `${Math.floor(ageDays)} days old; ever more localized pages are ` +
+        `being skipped by link checking. Is the nightly Housekeeping ` +
+        `sync running and getting merged?`,
+    );
+  }
+
   const locales = readdirSync(path.join(rootDir, CONTENT_DIR), {
     withFileTypes: true,
   })

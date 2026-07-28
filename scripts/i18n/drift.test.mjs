@@ -734,6 +734,30 @@ describe('status baseline (loud-failure paths)', () => {
     assert.deepEqual(await driftPendingForRepo(root), []);
   });
 
+  it('driftPendingForRepo() warns when the baseline is stale', async (t) => {
+    const { root, git } = gitRepo();
+    const backdated = { GIT_COMMITTER_DATE: '2000-01-01T00:00:00Z' };
+    execFileSync('git', ['commit', '-q', '--allow-empty', '-m', 'old'], {
+      cwd: root,
+      env: { ...process.env, ...backdated },
+    });
+    writeBaselineFile(root, git('rev-parse', 'HEAD'));
+    const err = t.mock.method(console, 'error', () => {});
+    await driftPendingForRepo(root);
+    assert.ok(
+      err.mock.calls.some((c) => /baseline.*days old/.test(c.arguments[0])),
+      'stale-baseline warning is emitted',
+    );
+  });
+
+  it('driftPendingForRepo() stays quiet on a fresh baseline', async (t) => {
+    const { root, git } = gitRepo();
+    writeBaselineFile(root, git('rev-parse', 'HEAD'));
+    const err = t.mock.method(console, 'error', () => {});
+    await driftPendingForRepo(root);
+    assert.equal(err.mock.callCount(), 0, 'console.error is not called');
+  });
+
   // CLI wiring of the baseline write (`status --write`): only a tree-wide
   // sync (--all without PATHS) records the baseline.
   const DRIFT_MJS = fileURLToPath(new URL('./drift.mjs', import.meta.url));
