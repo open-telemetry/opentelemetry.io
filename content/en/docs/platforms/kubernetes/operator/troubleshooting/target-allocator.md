@@ -278,7 +278,7 @@ the `StatefulSet` created for the `OpenTelemetryCollector` resource).
 > [!NOTE]
 >
 > See the
-> [Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md?plain=1#L128-L134)
+> [Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#endpoints)
 > for more information on the `/jobs` endpoint.
 
 ### Is the Target Allocator enabled? Is Prometheus service discovery enabled?
