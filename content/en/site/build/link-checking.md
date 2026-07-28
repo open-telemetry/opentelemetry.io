@@ -58,11 +58,11 @@ Stored drift statuses are only as fresh as the last nightly
 [Housekeeping][housekeeping] status sync, so the generator also skips
 **drift-pending** pages: locale copies of English pages changed (or deleted)
 since the **drift-status baseline**, the main-branch commit recorded in
-`data/l10n-drift.yaml` by tree-wide status syncs (`npm run fix:i18n`).
-A copy that itself changed since the baseline stays checked: someone is working
-on it. Config generation fails when the baseline is missing or can't be
-resolved; in CI, the `CHECK LINKS` job first deepens its shallow clone to the
-baseline commit.
+`data/l10n-drift.yaml` by tree-wide status syncs (`npm run fix:i18n`). A copy
+that itself changed since the baseline stays checked: someone is working on it.
+Config generation fails when the baseline is missing or can't be resolved; in
+CI, the `CHECK LINKS` job first deepens its shallow clone to the baseline
+commit.
 
 ## Link cache {#refcache}
 
