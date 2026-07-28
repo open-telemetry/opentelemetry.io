@@ -74,7 +74,7 @@
   nativeOTLP: true
   url: https://docs.bindplane.com
   contact: hello@bindplane.com
-  oss: true
+  oss: false
   commercial: true
 - name: Bronto
   nativeOTLP: true
@@ -427,7 +427,7 @@
   commercial: true
 - name: ServicePilot
   nativeOTLP: true
-  url: https://www.servicepilot.com/en/doc/apm#opentelemetry
+  url: https://www.servicepilot.com/en/doc/apm
   contact:
   oss: false
   commercial: true

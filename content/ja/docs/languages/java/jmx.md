@@ -2,7 +2,8 @@
 title: JMX メトリクス
 weight: 14
 description: OpenTelemetry を使用して JMX MBean からメトリクスを収集します
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
+default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a # patched
+drifted_from_default: true
 cSpell:ignore: jconsole jmxremote mbean visualvm wildfly
 ---
 
@@ -95,8 +96,8 @@ java -javaagent:opentelemetry-javaagent.jar \
 
 利用可能なターゲットシステムの完全なリストは次を参照してください。
 
-- [Java エージェントの定義済みターゲットシステム](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metric-sets)
-- [JMX Scraper の定義済みターゲットシステム](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#predefined-metric-sets)
+- [Java エージェントの定義済みターゲットシステム](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metrics)
+- [JMX Scraper の定義済みターゲットシステム](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference)
 
 複数のターゲットシステムをカンマで区切って指定できます。
 
@@ -223,7 +224,7 @@ java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://myapp.example.com:9999
 - [JMX Scraper ドキュメント](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper) - 完全な設定リファレンスと例
 - [JMX Scraper 移行ガイド](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migrating-from-jmx-metric-gatherer) - 非推奨となった JMX Metric Gatherer からの移行
 - [JMX メトリクス（Java エージェント）](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md) - Java エージェントの JMX メトリクスドキュメント
-- [定義済みターゲットシステム](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#predefined-metric-sets) - 人気のあるフレームワーク向けの組み込みメトリクスセット
+- [定義済みターゲットシステム](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference) - 人気のあるフレームワーク向けの組み込みメトリクスセット
 - [Java エージェントドキュメント](/docs/zero-code/java/agent/) - 一般的な Java エージェントの設定
 - [設定ガイド](../configuration/) - OpenTelemetry SDK 設定オプション
 
