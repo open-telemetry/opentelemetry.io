@@ -31,6 +31,10 @@ default_lang_commit: 1f6a173c26d1e194696ba77e95b6c3af40234952
 | --------------------------------------------- | ------------------------------------- |
 | ![Grafana-Prometheus](grafana-prometheus.png) | ![Grafana-jaeger](grafana-jaeger.png) |
 
+## UI del Generador de Carga
+
+![load-generator-ui](load-generator-ui.png)
+
 ## Configurador de Flagd
 
 | Vista básica                                         | Vista avanzada                                             |
