@@ -3,7 +3,8 @@ title: CI ワークフロー
 description: >-
   PR のチェック、ラベル管理、その他の CI/CD プロセスを自動化する GitHub Actions ワークフロー。
 weight: 10
-default_lang_commit: 92d8ba0247275d76296813c07f9add562e473163
+default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
+drifted_from_default: true
 ---
 
 ワークフローと（ほとんどの）ヘルパースクリプトについては、[.github][] 配下の `workflow` フォルダと `scripts` フォルダを参照してください。
@@ -222,7 +223,7 @@ sequenceDiagram
 4 段階のパイプラインとして実行されます。
 
 1. **`ack`**（信頼済み）: ディレクティブを受信するとすぐに、ディレクティブコメントとランへのリンクを含む 🔄 進行中コメントを返信します。
-2. **`generate-patch`**（非信頼）: PR ブランチをチェックアウトし、fix コマンドを実行し、リンク refcache をプルーニングし、パッチアーティファクト（`site.patch`）をアップロードします（最大 1024 KB）。
+2. **`generate-patch`**（非信頼）: PR ブランチをチェックアウトし、fix コマンドを実行し、パッチアーティファクト（`site.patch`）をアップロードします（最大 1024 KB）。
 3. **`apply-patch`**（信頼済み）: [`reusable-apply-patch.yml`][] ワークフローを呼び出します。
    これはデフォルトブランチから解決され、PR からは解決されません。
    GitHub App トークンでパッチを適用し、PR ブランチにコミットをプッシュします。
@@ -275,7 +276,7 @@ PR での新しい `/fix` コメントは、その PR の実行中のランを�
 
 > [!NOTE]
 >
-> [`refcache-refresh.yml`][] ワークフローも毎日実行され `refcache.json` を変更するため、マージ順序によっては 2 つのボット PR が競合する可能性があります。
+> [`refcache-refresh.yml`][] ワークフローも毎日実行され `.lycheecache` を変更するため、マージ順序によっては 2 つのボット PR が競合する可能性があります。
 > 両方のブランチが毎回の実行時に `main` から同期するため、競合は自然に解消されます。
 > refcache-refresh を再利用可能なパッチアクションに移行することで、設計上このような競合を排除することが [プロジェクト計画][project plan]で追跡されています。
 
@@ -365,21 +366,21 @@ scripts/gh/specs/create-or-finalize-pr.mjs --help
 
 リポジトリには他にもいくつかのワークフローがあります。
 
-| ワークフロー               | 目的                                                                                              |
-| -------------------------- | ------------------------------------------------------------------------------------------------- |
-| `check-links.yml`          | htmltest を使用したシャードリンクチェックと、ノンブロッキングの [Lychee][lychee-pilot] パイロット |
-| `check-text.yml`           | textlint の用語チェック                                                                           |
-| `check-i18n.yml`           | ローカリゼーションのフロントマター検証                                                            |
-| `check-spelling.yml`       | スペルチェック                                                                                    |
-| `test.yml`                 | テスト（`test:base` を除く）                                                                      |
-| `auto-update-registry.yml` | レジストリパッケージバージョンの自動更新                                                          |
-| `auto-update-versions.yml` | OTel コンポーネントバージョンの自動更新（[spec リポジトリ](#spec-integration-branches)を除く）    |
-| `build-dev.yml`            | 開発ビルドとプレビュー                                                                            |
-| `lint-scripts.yml`         | `.github/scripts/` の ShellCheck リンティング                                                     |
-| `label-manager.yml`        | PR ラベル（コンポーネントラベルと承認フロー）                                                     |
-| `component-owners.yml`     | コンポーネント所有権に基づくレビュアーの割り当て                                                  |
+| ワークフロー               | 目的                                                                                           |
+| -------------------------- | ---------------------------------------------------------------------------------------------- |
+| `check-links.yml`          | サイトビルドと Lychee による[リンクチェック][link checking]                                    |
+| `check-text.yml`           | textlint の用語チェック                                                                        |
+| `check-i18n.yml`           | ローカリゼーションのフロントマター検証                                                         |
+| `check-spelling.yml`       | スペルチェック                                                                                 |
+| `test.yml`                 | テスト（`test:base` を除く）                                                                   |
+| `auto-update-registry.yml` | レジストリパッケージバージョンの自動更新                                                       |
+| `auto-update-versions.yml` | OTel コンポーネントバージョンの自動更新（[spec リポジトリ](#spec-integration-branches)を除く） |
+| `build-dev.yml`            | 開発ビルドとプレビュー                                                                         |
+| `lint-scripts.yml`         | `.github/scripts/` の ShellCheck リンティング                                                  |
+| `label-manager.yml`        | PR ラベル（コンポーネントラベルと承認フロー）                                                  |
+| `component-owners.yml`     | コンポーネント所有権に基づくレビュアーの割り当て                                               |
 
 <!-- prettier-ignore-start -->
-[lychee-pilot]: /site/build/npm-scripts/#notes
+[link checking]: /site/build/link-checking/
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
 <!-- prettier-ignore-end -->

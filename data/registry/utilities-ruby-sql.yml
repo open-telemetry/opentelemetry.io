@@ -1,0 +1,17 @@
+title: OpenTelemetry SQL Helpers
+registryType: utilities
+language: ruby
+tags:
+  - sql
+  - utilities
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/helpers/sql
+license: Apache 2.0
+description:
+  This gem is intended to be used by the instrumentation libraries to provide a
+  common set of helpers for SQL-related spans. It is not intended to be used
+  directly by applications.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

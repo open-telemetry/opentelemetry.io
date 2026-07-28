@@ -5,7 +5,7 @@ cSpell:ignore: mypy
 ---
 
 If you're using [mypy](https://mypy-lang.org/), you'll need to turn on
-[namespace packages](https://mypy.readthedocs.io/en/stable/command_line.html#cmdoption-mypy-namespace-packages),
+[namespace packages](https://mypy.readthedocs.io/en/stable/command_line.html#cmdoption-mypy-no-namespace-packages),
 otherwise `mypy` won't be able to run correctly.
 
 To turn on namespace packages, do one of the following:
