@@ -361,6 +361,12 @@ export const STATUS_BASELINE_PATH = 'data/l10n-drift.yaml';
 // extracts the same line.
 const BASELINE_COMMIT_RE = /^commit: ([0-9a-f]{40})$/m;
 
+// Baseline lifecycle thresholds (coupled: the refresh heartbeat must stay
+// well below the staleness warning, so a healthy system — statuses changing
+// most nights, a heartbeat bump otherwise — never trips the warning).
+export const BASELINE_REFRESH_DAYS = 7;
+export const STALE_BASELINE_DAYS = 14;
+
 // Read the drift-status baseline SHA. Throws when the file is missing or
 // malformed: a silent empty overlay would false-green drift-pending pages.
 export function readBaseline(rootDir) {
@@ -379,6 +385,34 @@ export function readBaseline(rootDir) {
     );
   }
   return match[1];
+}
+
+// Age in days of the given commit (its committer time vs now).
+export async function baselineAgeDays(rootDir, sha) {
+  const commitTime = Number(
+    await git(rootDir, 'log', '-1', '--format=%ct', sha),
+  );
+  return (Date.now() / 1000 - commitTime) / 86400;
+}
+
+// Whether a tree-wide sync that changed no statuses should refresh the
+// baseline anyway: yes when the committed baseline is missing, malformed,
+// unresolvable, or older than the refresh heartbeat. (Any status-relevant EN
+// change flips a status on the next sweep and refreshes the baseline through
+// the statuses-changed arm, so a quiet stretch leaves nothing new to skip;
+// the heartbeat is a freshness bound, not a correctness need.)
+export async function baselineNeedsRefresh(rootDir) {
+  let sha;
+  try {
+    sha = readBaseline(rootDir);
+  } catch {
+    return true; // missing or malformed: (re)seed it
+  }
+  try {
+    return (await baselineAgeDays(rootDir, sha)) > BASELINE_REFRESH_DAYS;
+  } catch {
+    return true; // unresolvable: replace it with a resolvable one
+  }
 }
 
 // Record the drift-status baseline: the commit the statuses just written are
@@ -462,19 +496,18 @@ export async function driftPendingForRepo(rootDir, baseline) {
   const changed = diffOut.split('\n').filter(Boolean);
 
   // A stale baseline is silent coverage loss: the overlay only widens, so a
-  // stalled Housekeeping cycle never turns anything red. Surface it.
-  const STALE_BASELINE_DAYS = 14;
-  const commitTime = Number(
-    await git(rootDir, 'log', '-1', '--format=%ct', baseline),
-  );
-  const ageDays = (Date.now() / 1000 - commitTime) / 86400;
+  // stalled Housekeeping cycle never turns anything red. Surface it — in CI
+  // also as a workflow annotation, since nobody reads a green job's log.
+  const ageDays = await baselineAgeDays(rootDir, baseline);
   if (ageDays > STALE_BASELINE_DAYS) {
-    console.error(
-      `WARNING: the drift-status baseline (from ${source}) is ` +
-        `${Math.floor(ageDays)} days old; ever more localized pages are ` +
-        `being skipped by link checking. Is the nightly Housekeeping ` +
-        `sync running and getting merged?`,
-    );
+    const msg =
+      `the drift-status baseline (from ${source}) is ` +
+      `${Math.floor(ageDays)} days old; ever more localized pages are ` +
+      `being skipped by link checking. Is the nightly Housekeeping ` +
+      `sync running and getting merged?`;
+    console.error(`WARNING: ${msg}`);
+    if (process.env.GITHUB_ACTIONS)
+      console.log(`::warning file=${STATUS_BASELINE_PATH}::${msg}`);
   }
 
   const locales = readdirSync(path.join(rootDir, CONTENT_DIR), {
@@ -657,10 +690,21 @@ async function statusCLI(rootDir, cli, report) {
     // checkout's merge-base with main: record that commit as the
     // drift-status baseline (see the overlay section above). Scoped syncs
     // (`--all` with PATHS included) refresh only the listed pages, so they
-    // must not advance the tree-wide baseline.
+    // must not advance the tree-wide baseline. Quiet nights don't rewrite it
+    // either (#decision @chalin 2026-07-28, 3-POV CI-3): a bump-only rewrite
+    // would make every nightly Housekeeping PR non-empty, and a no-change
+    // sweep leaves nothing new for the overlay to cover — so the write is
+    // gated on a status change, with a BASELINE_REFRESH_DAYS heartbeat as
+    // the freshness bound.
     if (cli.list === 'all' && !cli.paths.length) {
-      const sha = await writeBaseline(rootDir);
-      console.log(`Status baseline: ${sha} -> ${STATUS_BASELINE_PATH}`);
+      if (actions.length || (await baselineNeedsRefresh(rootDir))) {
+        const sha = await writeBaseline(rootDir);
+        console.log(`Status baseline: ${sha} -> ${STATUS_BASELINE_PATH}`);
+      } else {
+        console.log(
+          `Status baseline: fresh and no status changed; not rewritten`,
+        );
+      }
     }
     return;
   }

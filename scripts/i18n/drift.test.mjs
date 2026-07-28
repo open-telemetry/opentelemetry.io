@@ -620,10 +620,14 @@ describe('driftPendingPages()', () => {
 });
 
 describe('status baseline (loud-failure paths)', () => {
-  const gitRepo = () => {
+  const gitRepo = (env = {}) => {
     const root = mkdtempSync(path.join(tmpdir(), 'drift-baseline-test-'));
     const git = (...args) =>
-      execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
+      execFileSync('git', args, {
+        cwd: root,
+        encoding: 'utf8',
+        env: { ...process.env, ...env },
+      }).trim();
     git('init', '-q', '-b', 'main');
     git('config', 'user.email', 'test@example.invalid');
     git('config', 'user.name', 'Test');
@@ -761,8 +765,8 @@ describe('status baseline (loud-failure paths)', () => {
   // CLI wiring of the baseline write (`status --write`): only a tree-wide
   // sync (--all without PATHS) records the baseline.
   const DRIFT_MJS = fileURLToPath(new URL('./drift.mjs', import.meta.url));
-  const cliRepo = () => {
-    const { root, git } = gitRepo();
+  const cliRepo = (env = {}) => {
+    const { root, git } = gitRepo(env);
     mkdirSync(path.join(root, 'content/ja/docs'), { recursive: true });
     mkdirSync(path.join(root, 'data'));
     writeFileSync(
@@ -795,5 +799,45 @@ describe('status baseline (loud-failure paths)', () => {
     const { root } = cliRepo();
     runCLI(root, 'status', '--write', '--all', '--', 'content/ja');
     assert.equal(existsSync(path.join(root, STATUS_BASELINE_PATH)), false);
+  });
+
+  // The baseline-write gate (CI-3): a quiet tree-wide sweep (no status
+  // changed) leaves a fresh baseline alone, so no-change nights produce no
+  // Housekeeping diff; it still refreshes a stale one (the heartbeat).
+
+  it('CLI quiet tree-wide sweep leaves a fresh baseline unrewritten', () => {
+    const { root, git } = cliRepo();
+    const older = git('rev-parse', 'HEAD~1');
+    writeBaselineFile(root, older); // fresh in time, older in history
+    runCLI(root, 'status', '--write', '--all');
+    assert.equal(readBaseline(root), older, 'baseline is untouched');
+  });
+
+  it('CLI quiet tree-wide sweep refreshes a stale baseline (heartbeat)', () => {
+    // Backdated commits make the recorded baseline older than the heartbeat.
+    const { root, git } = cliRepo({
+      GIT_COMMITTER_DATE: '2000-01-01T00:00:00Z',
+    });
+    writeBaselineFile(root, git('rev-parse', 'HEAD~1'));
+    runCLI(root, 'status', '--write', '--all');
+    assert.equal(
+      readBaseline(root),
+      git('rev-parse', 'main'),
+      'stale baseline is refreshed to main',
+    );
+  });
+
+  it('CLI tree-wide sweep that changes a status rewrites the baseline', () => {
+    const { root, git } = cliRepo();
+    const older = git('rev-parse', 'HEAD~1');
+    writeFileSync(path.join(root, 'content/en/docs/a.md'), '# a v2\n');
+    git('commit', '-qam', 'EN drifts');
+    writeBaselineFile(root, older); // fresh in time
+    runCLI(root, 'status', '--write', '--all'); // marks the ja copy drifted
+    assert.equal(
+      readBaseline(root),
+      git('rev-parse', 'main'),
+      'baseline advances with the status write',
+    );
   });
 });
