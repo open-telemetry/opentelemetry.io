@@ -3,6 +3,9 @@
 // Fires on Write/Edit tool calls targeting content/en/blog/**/*.md files.
 // Reads TOOL_INPUT from stdin (JSON with file_path and content/new_string).
 
+import { realpathSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
+
 const BLOG_PATH_RE = /content\/en\/blog\/.*\.md$/;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const AUTHOR_LINK_RE = /^["']?\[[^\]]+\]\(https?:\/\/[^)]+\)["']?$/;
@@ -104,7 +107,11 @@ async function main() {
   process.exit(1);
 }
 
-// Run only when invoked directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Run only when invoked directly. Compare via pathToFileURL so spaces and
+// non-ASCII path segments (percent-encoded in import.meta.url) still match.
+const isMain =
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href;
+if (isMain) {
   main();
 }

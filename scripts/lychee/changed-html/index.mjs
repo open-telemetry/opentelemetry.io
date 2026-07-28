@@ -7,8 +7,9 @@
 // cSpell:ignore unmappable unbuilt
 
 import { execFileSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { existsSync, realpathSync } from 'node:fs';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const DEFAULT_BRANCH = 'main';
 
@@ -123,6 +124,11 @@ export function mappedHtmlFiles(root = process.cwd()) {
   return unique;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Compare via pathToFileURL so spaces and non-ASCII path segments (percent-
+// encoded in import.meta.url) still match process.argv[1].
+const isMain =
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href;
+if (isMain) {
   for (const f of mappedHtmlFiles()) console.log(f);
 }

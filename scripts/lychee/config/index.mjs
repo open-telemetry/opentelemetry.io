@@ -16,9 +16,14 @@
 //
 // Usage: node scripts/lychee/config/index.mjs (npm run generate:config:links)
 
-import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import {
+  readdirSync,
+  readFileSync,
+  realpathSync,
+  writeFileSync,
+} from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { load as yamlLoad } from 'js-yaml';
 
 export const FRONT_MATTER_KEY = 'link_check_exclude_path';
@@ -145,4 +150,9 @@ function mainCLI() {
   console.error('Generated lychee.toml.');
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) mainCLI();
+// Compare via pathToFileURL so spaces and non-ASCII path segments (percent-
+// encoded in import.meta.url) still match process.argv[1].
+const isMain =
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href;
+if (isMain) mainCLI();

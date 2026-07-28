@@ -3076,6 +3076,7 @@ https://github.com/open-telemetry/opentelemetry-go,206,1784269614
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation,206,1784355603
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/main/docs/instrument-guide.md,206,1784269415
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/main/docs/rules.md,206,1784269412
+https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/main/instrumentation/github.com/linode/linodego/v2/README.md,200,1785216133
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v1.0.0/docs/instrument-guide.md,200,1784701475
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/v1.0.0/docs/rules.md,200,1784701475
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/discussions,206,1784269414
@@ -3085,6 +3086,7 @@ https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/database/sql,206,1784442929
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/anthropics/anthropic-sdk-go,200,1784625647
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/gin-gonic/gin,206,1784442921
+https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/linode/linodego/v2,200,1785216133
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/redis/go-redis/v9,206,1784442922
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/sirupsen/logrus,206,1784442927
 https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/go.mongodb.org/mongo-driver/mongo,206,1784442928
@@ -5343,6 +5345,7 @@ https://pkg.go.dev/github.com/goyek/x/otelgoyek,200,1784442930
 https://pkg.go.dev/github.com/hertz-contrib/obs-opentelemetry,200,1784442919
 https://pkg.go.dev/github.com/hydrolix/hydrolix-exporter,200,1784285075
 https://pkg.go.dev/github.com/jurabek/otelkafka,200,1784960541
+https://pkg.go.dev/github.com/linode/linodego/v2,200,1785216135
 https://pkg.go.dev/github.com/mitchellh/mapstructure,200,1784442343
 https://pkg.go.dev/github.com/olgasafonova/mcp-otel-go/mcpotel,200,1784960541
 https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/cmd/opampsupervisor,200,1784285023
