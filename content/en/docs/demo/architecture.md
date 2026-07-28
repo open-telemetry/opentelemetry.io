@@ -25,7 +25,7 @@ fraud-detection(Fraud Detection):::kotlin
 frontend(Frontend):::typescript
 frontend-proxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
 image-provider(Image Provider <br/>&#40nginx&#41):::cpp
-load-generator([Load Generator]):::javascript
+load-generator([Load Generator]):::golang
 payment(Payment):::javascript
 product-catalog(Product Catalog):::golang
 quote(Quote):::php

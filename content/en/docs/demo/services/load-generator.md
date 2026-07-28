@@ -4,9 +4,11 @@ aliases: [loadgenerator]
 cSpell:ignore: baggage goroutines loadgenerator otelHeaders xk6
 ---
 
-The load generator is based on the JavaScript load testing framework
-[k6](https://k6.io). By default it will simulate users requesting several
-different routes from the frontend.
+The load generator is based on [k6](https://k6.io), a Go load testing tool that
+runs test scenarios written in JavaScript. By default it will simulate users
+requesting several different routes from the frontend. All of its OpenTelemetry
+instrumentation comes from the Go SDK, embedded in the k6 binary by the
+`xk6-otel` extension described below.
 
 [Load generator source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/load-generator/)
 
@@ -92,5 +94,11 @@ function otelHeaders(traceParent, extra) {
 }
 ```
 
-Backend services read the `synthetic_request=true` baggage value to distinguish
-load-generator traffic from real user traffic.
+Baggage on its own doesn't mark the telemetry. Each backend service reads the
+`synthetic_request` entry out of the incoming baggage and copies it onto its own
+spans and log records as an attribute, and it is that attribute which records
+whether the telemetry came from a synthetic flow. The frontend sets
+`demo.synthetic_request`, while the checkout and payment services set
+`user_agent.synthetic.type` to `test`. Because the marker ends up on the
+telemetry itself, you can filter load-generator traffic in or out of any query
+in your observability backend.
