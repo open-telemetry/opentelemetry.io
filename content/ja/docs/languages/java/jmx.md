@@ -3,6 +3,7 @@ title: JMX メトリクス
 weight: 14
 description: OpenTelemetry を使用して JMX MBean からメトリクスを収集します
 default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a # patched
+drifted_from_default: true
 cSpell:ignore: jconsole jmxremote mbean visualvm wildfly
 ---
 
