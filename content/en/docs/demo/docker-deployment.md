@@ -83,7 +83,7 @@ make run-tracetesting
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose -f docker-compose-tests.yml run traceBasedTests
+docker compose -f compose.tests.yaml run traceBasedTests
 ```
 
     {{% /tab %}} {{< /tabpane >}}
