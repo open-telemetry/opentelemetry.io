@@ -154,8 +154,7 @@ async function mainCLI() {
   );
 
   // Presumed-drifted locale copies since the status baseline (drift-pending).
-  // Throws when the baseline is missing or unresolvable (e.g. too-shallow CI
-  // clone): a silent empty overlay would false-green drift-pending pages.
+  // Throws when the baseline is missing or unresolvable (see readBaseline).
   const baseline = process.env.DRIFT_BASELINE;
   const driftPendingDirs = (await driftPendingForRepo(rootDir, baseline))
     .map(pageIgnoreDirOf)

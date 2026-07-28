@@ -59,14 +59,13 @@ Stored drift statuses are only as fresh as the last nightly
 day), so the generator also skips **drift-pending** pages: locale copies of
 English pages changed (or deleted) since the **drift-status baseline**, the
 main-branch commit recorded in `data/l10n-drift.yaml` by tree-wide status syncs
-(`npm run fix:i18n`; leave local rewrites of that file uncommitted — tree-wide
-syncs belong to Housekeeping, and a locally recorded commit might not exist
-upstream). A copy that itself changed since the baseline stays checked: someone
-is working on it. Config generation fails when the baseline is missing or can't
-be resolved; in CI, the `CHECK LINKS` job first deepens its shallow clone to the
-baseline commit; locally, fetch the missing history (`git fetch upstream main`)
-or override the baseline: `DRIFT_BASELINE=HEAD npm run check:links` empties the
-overlay (stored-status skips still apply).
+(`npm run fix:i18n`). A copy that itself changed since the baseline stays
+checked: someone is working on it. Config generation fails when the baseline is
+missing or can't be resolved; in CI, the `CHECK LINKS` job first deepens its
+shallow clone to the baseline commit; locally, fetch the missing history
+(`git fetch upstream main`) or override the baseline:
+`DRIFT_BASELINE=HEAD npm run check:links` empties the overlay (stored-status
+skips still apply).
 
 ## Link cache {#refcache}
 
