@@ -356,7 +356,9 @@ export const STATUS_BASELINE_PATH = 'data/l10n-drift.yaml';
 // `commit:` line of the baseline file. The file lives under data/, where Hugo
 // parses everything as site data, so it must stay valid YAML; this scoped
 // regex keeps drift.mjs dependency-free (the file is bot-written, and
-// anything unexpected must fail loudly anyway).
+// anything unexpected must fail loudly anyway). Keep the accepted shape in
+// sync with the deepen step in .github/workflows/check-links.yml, which
+// extracts the same line.
 const BASELINE_COMMIT_RE = /^commit: ([0-9a-f]{40})$/m;
 
 // Read the drift-status baseline SHA. Throws when the file is missing or
@@ -379,12 +381,17 @@ export function readBaseline(rootDir) {
   return match[1];
 }
 
-// Record `main` as the drift-status baseline: statuses just written are
-// accurate as of it. (In the Housekeeping checkout HEAD == main; a local
-// run's diverged main only makes the baseline older, which widens the
-// overlay — under-checking, never a spurious red.)
+// Record the drift-status baseline: the commit the statuses just written are
+// accurate as of. That's the merge-base of HEAD and main: in the Housekeeping
+// checkout (HEAD == main) it is main's HEAD; on any checkout behind main
+// (older branch, PR run) it errs older, which only widens the overlay —
+// under-checking, never a spurious red. Recording `main` itself would be
+// wrong there: a baseline newer than the tree the statuses were computed
+// against leaves the EN changes in between covered by neither the stored
+// statuses nor the overlay. As an ancestor of main, the recorded SHA is also
+// always fetchable from the canonical repo (the CHECK LINKS deepen step).
 export async function writeBaseline(rootDir) {
-  const sha = await git(rootDir, 'rev-parse', 'main');
+  const sha = await git(rootDir, 'merge-base', 'HEAD', 'main');
   const content =
     '# DO NOT EDIT — written by tree-wide drift-status syncs (npm run fix:i18n).\n' +
     '# The `main` commit that stored drift statuses are accurate as of; the\n' +
@@ -424,9 +431,13 @@ export function driftPendingPages(
 // shallow clone suffices), split EN / non-EN. Throws when the baseline
 // isn't resolvable (e.g. too-shallow clone).
 export async function driftPendingForRepo(rootDir, baseline) {
+  const source = baseline
+    ? 'the DRIFT_BASELINE override'
+    : STATUS_BASELINE_PATH;
   baseline ??= readBaseline(rootDir);
-  const changed = (
-    await git(
+  let diffOut;
+  try {
+    diffOut = await git(
       rootDir,
       'diff',
       '--name-only',
@@ -434,10 +445,18 @@ export async function driftPendingForRepo(rootDir, baseline) {
       baseline,
       '--',
       CONTENT_DIR,
-    )
-  )
-    .split('\n')
-    .filter(Boolean);
+    );
+  } catch (e) {
+    // Rethrow with the baseline's provenance and the local remedies; the raw
+    // git error (`fatal: bad object …`) says nothing actionable.
+    throw new Error(
+      `cannot diff against the drift-status baseline '${baseline}' ` +
+        `(from ${source}). If your clone is shallow or predates the ` +
+        `baseline, fetch it (e.g. \`git fetch upstream main\`) or override ` +
+        `it with DRIFT_BASELINE=HEAD. Underlying error: ${e.message.trim()}`,
+    );
+  }
+  const changed = diffOut.split('\n').filter(Boolean);
   const locales = readdirSync(path.join(rootDir, CONTENT_DIR), {
     withFileTypes: true,
   })
@@ -614,10 +633,12 @@ async function statusCLI(rootDir, cli, report) {
         console.log(`${page} ${I18N_DLD_KEY} ${action}`);
     }
     console.log(`Status writes: ${actions.length} out of ${report.size}`);
-    // A tree-wide sync leaves every stored status accurate as of main:
-    // record that commit as the drift-status baseline (see the overlay
-    // section above).
-    if (cli.list === 'all') {
+    // A tree-wide sync leaves every stored status accurate as of the
+    // checkout's merge-base with main: record that commit as the
+    // drift-status baseline (see the overlay section above). Scoped syncs
+    // (`--all` with PATHS included) refresh only the listed pages, so they
+    // must not advance the tree-wide baseline.
+    if (cli.list === 'all' && !cli.paths.length) {
       const sha = await writeBaseline(rootDir);
       console.log(`Status baseline: ${sha} -> ${STATUS_BASELINE_PATH}`);
     }

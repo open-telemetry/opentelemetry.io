@@ -1,9 +1,16 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import {
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  writeFileSync,
+} from 'node:fs';
 import { tmpdir } from 'node:os';
 import * as path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import {
   STATUS_BASELINE_PATH,
@@ -659,10 +666,24 @@ describe('status baseline (loud-failure paths)', () => {
 
   it('driftPendingForRepo() throws on an unresolvable baseline SHA', async () => {
     // A too-shallow clone must fail the config generation loudly: a silent
-    // empty overlay would false-green drift-pending pages.
+    // empty overlay would false-green drift-pending pages. The error names
+    // the baseline's provenance and the local remedies, not just git's
+    // `bad object`.
     const { root } = gitRepo();
     writeBaselineFile(root, 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeef');
-    await assert.rejects(driftPendingForRepo(root));
+    await assert.rejects(
+      driftPendingForRepo(root),
+      new RegExp(`${STATUS_BASELINE_PATH}[\\s\\S]*DRIFT_BASELINE`),
+    );
+  });
+
+  it('driftPendingForRepo() names the override as the SHA source when given one', async () => {
+    const { root, git } = gitRepo();
+    writeBaselineFile(root, git('rev-parse', 'HEAD'));
+    await assert.rejects(
+      driftPendingForRepo(root, 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeef'),
+      /DRIFT_BASELINE override/,
+    );
   });
 
   it('driftPendingForRepo() reports locale copies of EN pages changed since the baseline', async () => {
@@ -676,7 +697,7 @@ describe('status baseline (loud-failure paths)', () => {
     assert.deepEqual(await driftPendingForRepo(root), ['content/ja/docs/a.md']);
   });
 
-  it("writeBaseline() records main's HEAD in the baseline file", async () => {
+  it("writeBaseline() records main's HEAD when the checkout is main", async () => {
     const { root, git } = gitRepo();
     mkdirSync(path.dirname(path.join(root, STATUS_BASELINE_PATH)), {
       recursive: true,
@@ -684,6 +705,21 @@ describe('status baseline (loud-failure paths)', () => {
     const sha = await writeBaseline(root);
     assert.equal(sha, git('rev-parse', 'main'));
     assert.equal(readBaseline(root), sha);
+  });
+
+  it('writeBaseline() records the merge-base on a checkout behind main', async () => {
+    // Statuses computed on a tree behind main are accurate only as of the
+    // branch point; recording main's newer HEAD would leave the EN changes
+    // in between covered by neither stored statuses nor the overlay.
+    const { root, git } = gitRepo();
+    const branchPoint = git('rev-parse', 'HEAD');
+    writeFileSync(path.join(root, 'content/en/docs/a.md'), '# a v2\n');
+    git('commit', '-qam', 'advance main');
+    git('checkout', '-q', branchPoint);
+    mkdirSync(path.dirname(path.join(root, STATUS_BASELINE_PATH)), {
+      recursive: true,
+    });
+    assert.equal(await writeBaseline(root), branchPoint);
   });
 
   it('driftPendingForRepo() exempts locale copies changed since the baseline', async () => {
@@ -696,5 +732,44 @@ describe('status baseline (loud-failure paths)', () => {
     writeFileSync(path.join(root, 'content/en/docs/a.md'), '# a v2\n');
     writeFileSync(path.join(root, 'content/ja/docs/a.md'), '# a-ja v2\n');
     assert.deepEqual(await driftPendingForRepo(root), []);
+  });
+
+  // CLI wiring of the baseline write (`status --write`): only a tree-wide
+  // sync (--all without PATHS) records the baseline.
+  const DRIFT_MJS = fileURLToPath(new URL('./drift.mjs', import.meta.url));
+  const cliRepo = () => {
+    const { root, git } = gitRepo();
+    mkdirSync(path.join(root, 'content/ja/docs'), { recursive: true });
+    mkdirSync(path.join(root, 'data'));
+    writeFileSync(
+      path.join(root, 'content/ja/docs/a.md'),
+      `---\ntitle: a\ndefault_lang_commit: ${git('rev-parse', 'HEAD')}\n---\n# a-ja\n`,
+    );
+    git('add', '.');
+    git('commit', '-q', '-m', 'add ja copy');
+    return { root, git };
+  };
+  const runCLI = (root, ...args) =>
+    execFileSync('node', [DRIFT_MJS, ...args], { cwd: root, encoding: 'utf8' });
+
+  it('CLI status --write --all writes the baseline', () => {
+    const { root, git } = cliRepo();
+    runCLI(root, 'status', '--write', '--all');
+    assert.equal(readBaseline(root), git('rev-parse', 'main'));
+  });
+
+  it('CLI scoped status --write leaves the baseline unwritten', () => {
+    const { root } = cliRepo();
+    runCLI(root, 'status', '--write', '--', 'content/ja');
+    assert.equal(existsSync(path.join(root, STATUS_BASELINE_PATH)), false);
+  });
+
+  it('CLI status --write --all with PATHS leaves the baseline unwritten', () => {
+    // A scoped sweep refreshes only the listed pages' statuses; advancing
+    // the tree-wide baseline would push the overlay window past every
+    // unscoped page's accuracy point.
+    const { root } = cliRepo();
+    runCLI(root, 'status', '--write', '--all', '--', 'content/ja');
+    assert.equal(existsSync(path.join(root, STATUS_BASELINE_PATH)), false);
   });
 });
