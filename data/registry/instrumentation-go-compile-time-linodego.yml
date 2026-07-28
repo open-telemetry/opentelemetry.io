@@ -1,4 +1,4 @@
-# cSpell:ignore linodego
+# cSpell:ignore linode linodego
 title: OpenTelemetry Go Compile-Time Auto-Instrumentation for `linode/linodego`
 registryType: instrumentation
 language: go
