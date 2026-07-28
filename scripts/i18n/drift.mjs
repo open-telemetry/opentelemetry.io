@@ -351,9 +351,13 @@ export async function driftReportForRepo(rootDir, targets) {
 // copy itself changed too (activity exemption: someone is working on it, and
 // stored-status semantics check unmarked pages anyway).
 
-export const STATUS_BASELINE_PATH = 'data/i18n/status-baseline.txt';
+export const STATUS_BASELINE_PATH = 'data/l10n-drift.yaml';
 
-const SHA_RE = /^[0-9a-f]{40}$/;
+// `commit:` line of the baseline file. The file lives under data/, where Hugo
+// parses everything as site data, so it must stay valid YAML; this scoped
+// regex keeps drift.mjs dependency-free (the file is bot-written, and
+// anything unexpected must fail loudly anyway).
+const BASELINE_COMMIT_RE = /^commit: ([0-9a-f]{40})$/m;
 
 // Read the drift-status baseline SHA. Throws when the file is missing or
 // malformed: a silent empty overlay would false-green drift-pending pages.
@@ -365,13 +369,14 @@ export function readBaseline(rootDir) {
         `it is written by tree-wide status syncs (npm run fix:i18n)`,
     );
   }
-  const sha = readFileSync(file, 'utf8').trim();
-  if (!SHA_RE.test(sha)) {
+  const match = readFileSync(file, 'utf8').match(BASELINE_COMMIT_RE);
+  if (!match) {
     throw new Error(
-      `malformed drift-status baseline in ${STATUS_BASELINE_PATH}: '${sha}'`,
+      `malformed drift-status baseline in ${STATUS_BASELINE_PATH}: ` +
+        `expected a 'commit: <full-sha>' line`,
     );
   }
-  return sha;
+  return match[1];
 }
 
 // Record `main` as the drift-status baseline: statuses just written are
@@ -380,7 +385,12 @@ export function readBaseline(rootDir) {
 // overlay — under-checking, never a spurious red.)
 export async function writeBaseline(rootDir) {
   const sha = await git(rootDir, 'rev-parse', 'main');
-  writeFileSync(path.join(rootDir, STATUS_BASELINE_PATH), `${sha}\n`);
+  const content =
+    '# DO NOT EDIT — written by tree-wide drift-status syncs (npm run fix:i18n).\n' +
+    '# The `main` commit that stored drift statuses are accurate as of; the\n' +
+    "# link-check config's drift-pending overlay starts its window here.\n" +
+    `commit: ${sha}\n`;
+  writeFileSync(path.join(rootDir, STATUS_BASELINE_PATH), content);
   return sha;
 }
 

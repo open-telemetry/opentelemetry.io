@@ -101,7 +101,9 @@ jobs:
       # baseline; a depth-1 fetch of that commit is all the (shallow) clone
       # needs. Config generation fails if the baseline can't be resolved.
       - name: Deepen history to the drift-status baseline
-        run: git fetch --depth=1 origin "$(cat data/i18n/status-baseline.txt)"
+        run: |
+          git fetch --depth=1 origin \
+            "$(sed -n 's/^commit: //p' data/l10n-drift.yaml)"
 
       - run: npm run generate:config:links
 

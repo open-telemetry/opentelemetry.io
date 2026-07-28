@@ -630,7 +630,7 @@ describe('status baseline (loud-failure paths)', () => {
     mkdirSync(path.dirname(path.join(root, STATUS_BASELINE_PATH)), {
       recursive: true,
     });
-    writeFileSync(path.join(root, STATUS_BASELINE_PATH), `${sha}\n`);
+    writeFileSync(path.join(root, STATUS_BASELINE_PATH), `commit: ${sha}\n`);
   };
 
   it('readBaseline() throws when the baseline file is missing', () => {
@@ -642,6 +642,12 @@ describe('status baseline (loud-failure paths)', () => {
     const { root } = gitRepo();
     writeBaselineFile(root, 'not-a-sha');
     assert.throws(() => readBaseline(root), /baseline/i);
+  });
+
+  it('the baseline file is named for the l10n-drift concern and is YAML', () => {
+    // Hugo parses every file under data/ as site data: the path must be
+    // a format Hugo can unmarshal (a bare-SHA .txt fails the site build).
+    assert.match(STATUS_BASELINE_PATH, /^data\/l10n-drift\.yaml$/);
   });
 
   it('readBaseline() returns the recorded SHA', () => {
