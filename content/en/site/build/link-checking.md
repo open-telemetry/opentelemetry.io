@@ -48,10 +48,24 @@ matter, which has two sources:
   [`content/en/blog/_index.md`][blog-index]. Start a pattern with `^(../)?` to
   have it cover every locale: the optional `../` matches a two-letter locale
   path segment such as `ja/`.
-- **`drifted_from_default: true`** — [drifted localized pages][drifted]. Links
-  _from_ a drifted page aren't checked, since they may be stale, but the page
+- **`drifted_from_default`** — [drifted localized pages][drifted], status `true`
+  (EN counterpart changed) or `file not found` (EN counterpart deleted). Links
+  _from_ such a page aren't checked, since they may be stale, but the page
   remains a valid link target: inbound links from in-sync pages, including
   fragments, are still validated.
+
+Stored drift statuses are only as fresh as the last nightly
+[Housekeeping][housekeeping] status sync (as merged, so the window can exceed a
+day), so the generator also skips **drift-pending** pages: locale copies of
+English pages changed (or deleted) since the **drift-status baseline**, the
+main-branch commit recorded in `data/l10n-drift.yaml` by tree-wide status syncs
+(`npm run fix:i18n`). A copy that itself changed since the baseline stays
+checked: someone is working on it. Config generation fails when the baseline is
+missing or can't be resolved; in CI, the `CHECK LINKS` job first deepens its
+shallow clone to the baseline commit; locally, fetch the missing history
+(`git fetch upstream main`) or override the baseline:
+`DRIFT_BASELINE=HEAD npm run check:links` empties the overlay (stored-status
+skips still apply).
 
 ## Link cache {#refcache}
 
