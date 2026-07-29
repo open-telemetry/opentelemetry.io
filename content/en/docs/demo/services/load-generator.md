@@ -49,7 +49,7 @@ function browseProduct() {
 }
 ```
 
-The `startSpan(name, attrs?)` method starts a new client-span and returns an
+The `startSpan(name, attrs?)` method starts a new client span and returns an
 object with three methods:
 
 - `traceParent()` — returns the W3C `traceparent` header value for the span,
