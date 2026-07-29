@@ -3,7 +3,6 @@ title: Capturas de Pantalla de la Demo
 linkTitle: Capturas de Pantalla
 aliases: [demo_screenshots]
 default_lang_commit: 1f6a173c26d1e194696ba77e95b6c3af40234952
-drifted_from_default: true
 ---
 
 ## Tienda web
