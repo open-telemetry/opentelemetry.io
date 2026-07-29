@@ -125,12 +125,12 @@ all:
 If the attributes are intentional, size the limit based on the combinations you
 expect the SDK to hold at the same time.
 
-| Situation                                                      | How to estimate the limit                                                                                                                                                                                                                                              |
-| -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Synchronous cumulative temporality**                         | Estimate the maximum number of combinations the process can see during its lifetime. For example, 100 known routes x 5 methods x 2 success values = 1000 combinations. Set the limit above that, with headroom.                                                        |
-| **Synchronous delta temporality, bounded dimensions**          | Use the same estimate as cumulative. Delta collection does not help much when the total set is already small and bounded.                                                                                                                                              |
-| **Synchronous delta temporality, high-cardinality dimensions** | Estimate the active combinations per collection cycle, not the total possible population. For example, 1 million possible tenants x 2 success values is too large as a lifetime set, but 5000 active tenants in a 60-second cycle is about 10,000 active combinations. |
-| **Unknown active set**                                         | Use request rate as an upper bound: `max_requests_per_second x collection_interval_seconds`, then multiply by the bounded dimensions you keep. This is crude, but useful when you cannot estimate the active key set directly.                                         |
+| Situation                                                      | How to estimate the limit                                                                                                                                                                                                      |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Synchronous cumulative temporality**                         | Estimate the maximum number of combinations the process can see during its lifetime. For example, 100 known routes × 5 methods × 2 success values = 1000 combinations. Set the limit above that, with headroom.                |
+| **Synchronous delta temporality, bounded dimensions**          | Use the same estimate as cumulative. Delta collection does not help much when the total set is already small and bounded.                                                                                                      |
+| **Synchronous delta temporality, high-cardinality dimensions** | Estimate the active combinations per collection cycle, not the total possible population. See the tenant example below for a worked case.                                                                                      |
+| **Unknown active set**                                         | Use request rate as an upper bound: `max_requests_per_second × collection_interval_seconds`, then multiply by the bounded dimensions you keep. This is crude, but useful when you cannot estimate the active key set directly. |
 
 A limit that is too low causes overflow for valid dimensions, which makes
 filtered queries unreliable. A limit that is too high weakens the safety net. A
@@ -142,14 +142,14 @@ also allocate more memory as the configured limit increases.
 The default advice is to avoid high-cardinality metric attributes. That advice
 is correct for most metrics, but not all of them.
 
-For example, a service with per-tenant SLOs (service-level objectives) may need
-`tenant_id` on a metric to answer "what is tenant X's failure rate?" Removing
-the tenant dimension would make the metric cheaper, but also less useful.
+For example, a service with per-tenant SLOs may need `tenant_id` on a metric to
+answer "what is tenant X's failure rate?" Removing the tenant dimension would
+make the metric cheaper, but also less useful.
 
 Delta temporality can make this case practical when the active set is bounded.
 Suppose you have 1 million tenants, but only 5000 tenants are active in a
 60-second collection cycle. If the metric records `tenant_id` and `success`, the
-active set is about `5000 x 2 = 10,000` combinations per cycle. A limit slightly
+active set is about `5000 × 2 = 10,000` combinations per cycle. A limit slightly
 above that, with burst headroom, can be reasonable for delta temporality.
 
 The same setup with cumulative temporality is very different. The process keeps
@@ -176,8 +176,8 @@ count by (__name__, job) (
 )
 ```
 
-This returns metric and service pairs where overflow occurred. For Prometheus
-native OTLP ingestion, `service.name` is commonly represented by the `job`
+This returns metric and service pairs where overflow occurred. For OTLP-native
+ingestion in Prometheus, `service.name` is commonly represented by the `job`
 label. If your setup promotes `service.name` as a resource attribute, use
 `service_name` instead. Adjust the grouping labels to match your environment.
 For example, add `cluster`, `namespace`, or `service_instance_id` if those
@@ -234,7 +234,7 @@ That tells readers whether the breakdown is complete or whether some values were
 folded into overflow. [Aspire issue #7520][aspire-7520] shows one possible shape
 for this in a developer dashboard.
 
-## What to do when overflow appears
+## How to respond when overflow appears
 
 Treat overflow as a signal to inspect the metric, not as an automatic reason to
 raise the limit.
