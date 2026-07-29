@@ -2,7 +2,7 @@
 title: Kubernetes deployment
 linkTitle: Kubernetes
 aliases: [kubernetes_deployment]
-cSpell:ignore: otlphttp spanmetrics
+cSpell:ignore: otlphttp
 ---
 
 We provide a
@@ -185,15 +185,15 @@ opentelemetry-collector:
     service:
       pipelines:
         traces:
-          exporters: [spanmetrics, otlphttp/example]
+          exporters: [span_metrics, otlphttp/example]
 ```
 
 > [!NOTE]
 >
 > When merging YAML values with Helm, objects are merged and arrays are
-> replaced. The `spanmetrics` exporter must be included in the array of
-> exporters for the `traces` pipeline if overridden. Not including this exporter
-> will result in an error.
+> replaced. The `span_metrics` connector must be included in the array of
+> exporters for the `traces` pipeline if overridden, since the `metrics`
+> pipeline consumes it as a receiver. Leaving it out will result in an error.
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require
