@@ -13,8 +13,10 @@
 // The tree is perturbed identically before each run (a stored status removed
 // from one drifted page, a spurious one added to an in-sync page) so that a
 // no-op sweep can't masquerade as parity; the content tree must start clean
-// and is restored after each run. Keep green while both implementations
-// coexist; retire with the bash script.
+// and is restored after each run. The module's tree-wide write also records
+// the drift-status baseline (data/l10n-drift.yaml), which lives outside
+// content/ and is not restored: discard that change after a run. Keep green
+// while both implementations coexist; retire with the bash script.
 //
 // Usage: node scripts/i18n/drift-write-parity.mjs [--repo DIR]
 
