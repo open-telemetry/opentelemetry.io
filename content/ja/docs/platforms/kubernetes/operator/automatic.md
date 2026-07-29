@@ -4,6 +4,7 @@ linkTitle: 自動計装
 weight: 11
 description: OpenTelemetryオペレーターを使用した自動計装の実装。
 default_lang_commit: 869b2bb90ca9e54d8d98e7815e66111b577165eb
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA replicaset statefulset
 ---
