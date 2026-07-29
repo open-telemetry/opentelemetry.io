@@ -8,11 +8,11 @@ author: >-
 sig: SIG Java
 ---
 
-The **`v2.30.0`** release of the
+The **`v2.31.0`** release of the
 [OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 is out — the last v2 minor and effectively the release candidate for 3.0.
 Everything that 3.0 will change is available right now, behind a preview flag.
-The 3.0 release itself is scheduled for next month (August 2026).
+The 3.0 release itself is scheduled for next month (September 2026).
 
 Turn it on now and validate your telemetry against 3.0 behavior before it
 becomes the default. If something looks off in your dashboards, alerts, or
@@ -95,13 +95,11 @@ instrumentation/development:
 
 With `/dup` on, a JDBC client span carries both naming schemes at once:
 
-```markdown
-# emitted today (2.x) # emitted in 3.0 (stable)
-
-db.system = "postgresql" db.system.name = "postgresql" db.name = "orders"
-db.namespace = "orders" db.statement = "SELECT * FROM ..." db.query.text =
-"SELECT * FROM ..."
-```
+| Emitted today (2.x)                    | Emitted in 3.0 (stable)                 |
+| -------------------------------------- | --------------------------------------- |
+| `db.system: "postgresql"`              | `db.system.name: "postgresql"`          |
+| `db.name: "orders"`                    | `db.namespace: "orders"`                |
+| `db.statement: "SELECT * FROM orders"` | `db.query.text: "SELECT * FROM orders"` |
 
 `/dup` works for attributes and metrics, where the old and new can sit side by
 side. Some telemetry can only hold one value — a span's name, for example — and
