@@ -1,4 +1,4 @@
-# cSpell:ignore qryn gigapipe loki pyroscope
+# cSpell:ignore qryn gigapipe loki pyroscope clickhouse Mangani
 title: gigapipe exporter
 registryType: exporter
 language: collector
