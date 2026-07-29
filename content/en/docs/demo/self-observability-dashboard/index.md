@@ -13,11 +13,11 @@ span, log, and metric pipelines.
 
 ## Enabling SDK self-observability
 
-SDK self-observability is opt-in and still experimental. OpenTelemetry Java
-services enable it by setting `OTEL_EXPERIMENTAL_SDK_TELEMETRY_VERSION=latest`.
-In the demo, the Java services (`ad`, `fraud-detection`, and `kafka`) opt in
-this way. The dashboard is driven by a `Service` template variable, so any
-additional service that opts in appears automatically.
+SDK self-observability is opt-in and still experimental, and is enabled through
+SDK configuration on a per-service basis. In the demo, the `ad`,
+`fraud-detection`, and `kafka` services opt in. The dashboard is driven by a
+`Service` template variable, so any additional service that opts in appears
+automatically.
 
 ## Accessing the dashboard
 
