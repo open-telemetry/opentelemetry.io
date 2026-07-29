@@ -11,6 +11,7 @@ params:
   # blogPostURL: /blog/2026/kubecon-japan/
   blogPostURL: *eventUrl
 default_lang_commit: f34ea47f2795ab7823c24968f7e6874ee9381cf6
+drifted_from_default: true
 ---
 
 [**{{% param title %}}**][LF]が **7月28日から30日に横浜で開催**
