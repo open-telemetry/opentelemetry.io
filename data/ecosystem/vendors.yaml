@@ -637,3 +637,9 @@
   contact: frank@respan.ai
   oss: false
   commercial: true
+- name: telemetry.dev
+  nativeOTLP: true
+  url: https://telemetry.dev/integrations/opentelemetry
+  contact: https://github.com/ephraimduncan
+  oss: false
+  commercial: true
