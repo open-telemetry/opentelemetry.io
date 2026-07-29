@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
+cSpell:ignore: otlphttp tracetest tracetesting
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
@@ -128,11 +128,21 @@ backend you already have (e.g., an existing instance of Jaeger, Zipkin, or one
 of the [vendors of your choice](/ecosystem/vendors/)).
 
 OpenTelemetry Collector can be used to export telemetry data to multiple
-backends. By default, the collector in the demo application will merge the
-configuration from two files:
+backends. The collector in the demo application layers its configuration from
+several files, each merged on top of the previous one. Which files are loaded
+depends on how you start the demo:
 
-- `otelcol-config.yml`
-- `otelcol-config-extras.yml`
+- `otelcol-config.yml` — the base configuration, always loaded
+- `otelcol-config-full.yml` — adds the receivers for services that only run in
+  the full demo, such as Kafka
+- `otelcol-config-observability.yml` — wires up the bundled backends (Jaeger,
+  Prometheus, and OpenSearch)
+- `otelcol-config-extras.yml` — your own additions, always loaded last
+
+`make start` and `make start-minimal` load all four files. Starting the demo
+without the observability stack loads fewer of them, but
+`otelcol-config-extras.yml` is always applied last, so your changes take
+precedence in every mode.
 
 To add your backend, open the file
 [src/otel-collector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml)
@@ -154,15 +164,15 @@ with an editor.
   service:
     pipelines:
       traces:
-        exporters: [spanmetrics, otlphttp/example]
+        exporters: [span_metrics, otlphttp/example]
   ```
 
 > [!NOTE]
 >
 > When merging YAML values with the Collector, objects are merged and arrays are
-> replaced. The `spanmetrics` exporter must be included in the array of
-> exporters for the `traces` pipeline if overridden. Not including this exporter
-> will result in an error.
+> replaced. The `span_metrics` connector must be included in the array of
+> exporters for the `traces` pipeline if overridden, since the `metrics`
+> pipeline consumes it as a receiver. Leaving it out will result in an error.
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require
