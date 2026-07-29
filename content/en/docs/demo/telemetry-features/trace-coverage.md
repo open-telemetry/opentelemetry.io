@@ -8,14 +8,17 @@ aliases: [trace_service_features, trace-features, ../trace-features]
 | --------------- | ---------- | ------------------------- | -------------------- | -------------------- | ----------------------- | ---------- | ------- | ------------------ |
 | Accounting      | .NET       | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | ✅                 |
 | Ad              | Java       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
+| Agent           | Python     | ✅                        | 🚧                   | 🚧                   | 🔕                      | 🚧         | 🚧      | 🚧                 |
 | Cart            | .NET       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | ✅                 |
+| Chatbot         | Python     | ✅                        | 🚧                   | 🚧                   | 🔕                      | 🚧         | 🚧      | 🚧                 |
 | Checkout        | Go         | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | ✅                 |
 | Currency        | C++        | 🔕                        | ✅                   | ✅                   | ✅                      | 🔕         | 🔕      | 🚧                 |
 | Email           | Ruby       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
-| Flagd-ui        | TypeScript | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | 🚧                 |
+| Flagd-ui        | Elixir     | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | 🚧                 |
 | Fraud Detection | Kotlin     | ✅                        | 🚧                   | 🚧                   | 🚧                      | ✅         | 🚧      | 🚧                 |
 | Frontend        | TypeScript | ✅                        | ✅                   | ✅                   | 🔕                      | ✅         | ✅      | ✅                 |
-| Load Generator  | Python     | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | 🚧                 |
+| Load Generator  | Go/k6      | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | 🚧                 |
+| MCP             | Python     | ✅                        | 🚧                   | 🚧                   | 🔕                      | 🚧         | 🚧      | 🚧                 |
 | Payment         | JavaScript | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | ✅      | ✅                 |
 | Product Catalog | Go         | ✅                        | 🔕                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 | Quote Service   | PHP        | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
