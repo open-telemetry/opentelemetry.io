@@ -2,7 +2,7 @@
 title: SDKによるテレメトリーの管理
 weight: 12
 aliases: [exporters]
-default_lang_commit: 25e82e1790ea1f673d11dee3ccc9094664d0ccd5
+default_lang_commit: 4c8d57fea0147ce76633951315c40a27c55fad2e
 cSpell:ignore: Interceptable okhttp
 ---
 
@@ -1257,7 +1257,7 @@ OTLPエクスポーターは、HTTPおよびgRPCリクエストを実行する�
 Javaエコシステムのすべての使用例を満たす単一のHTTP / gRPCクライアントライブラリはありません。
 
 - Java 11+は組み込みの`java.net.http.HttpClient`を提供しますが、`opentelemetry-java`はJava 8+ユーザーをサポートする必要があり、トレーラーヘッダーのサポートがないため`gRPC`経由でエクスポートするために使用できません
-- [OkHttp](https://square.github.io/okhttp/)はトレーラーヘッダーをサポートする強力なHTTPクライアントを提供しますが、kotlin標準ライブラリに依存しています
+- [OkHttp](https://lysine.dev/okhttp/)はトレーラーヘッダーをサポートする強力なHTTPクライアントを提供しますが、kotlin標準ライブラリに依存しています
 - [grpc-java](https://github.com/grpc/grpc-java)は、さまざまな[トランスポート実装](https://github.com/grpc/grpc-java#transport)を持つ独自の`ManagedChannel`抽象化を提供しますが、`http/protobuf`には適していません
 
 さまざまな使用例に対応するため、`opentelemetry-exporter-otlp`は内部の「sender」抽象化を使用し、アプリケーションの制約を反映するさまざまな実装を提供しています。

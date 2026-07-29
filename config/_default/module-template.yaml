@@ -3,7 +3,7 @@
 
 hugoVersion:
   extended: true
-  min: 0.155.3
+  min: 0.160.1
 mounts:
   ## en
   - source: content/en
