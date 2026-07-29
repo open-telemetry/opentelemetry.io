@@ -7,15 +7,11 @@ weight: 20260730
 params:
   eventUrl: &eventUrl >-
     https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/
-  # Use this when the blog post is ready:
-  # blogPostURL: /blog/2026/kubecon-japan/
-  blogPostURL: *eventUrl
+  blogPostURL: /blog/2026/kubecon-japan/
 ---
 
 [**{{% param title %}}**][LF], **<span class="text-nowrap">July 28–30,</span>
-Yokohama**. <span class="d-none d-md-inline"><br></span> Come [collaborate,
-learn, and share][blog]<span class="d-none d-sm-inline"> with the Cloud Native
-community</span>!
+Yokohama**. [Details][blog]
 
 [blog]: <{{% param blogPostURL %}}>
 [LF]: <{{% param eventUrl %}}register/?{{% _param utmParam %}}>
