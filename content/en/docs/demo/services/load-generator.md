@@ -74,7 +74,6 @@ The load generator emits two kinds of metrics:
 
 Log records are emitted by calling `span.log(message)` on any active span. The
 `xk6-otel` extension injects the span's trace and span IDs into each log record.
-so that logs are correlated with their parent span in the collector.
 
 ## Baggage
 
