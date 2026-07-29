@@ -221,8 +221,9 @@ command:
 
 ```console
 $ npm run check:i18n
-1       1       content/en/docs/platforms/kubernetes/_index.md - content/zh/docs/platforms/kubernetes/_index.md
+> Drifted file: content/zh/docs/platforms/kubernetes/_index.md
 ...
+DRIFTED files: 361 out of 990
 ```
 
 You can restrict the target pages to one or more localizations by providing
@@ -235,11 +236,12 @@ npm run check:i18n -- content/zh
 ### Viewing change details
 
 For any given localized pages that need updating, you can see the diff details
-of the corresponding English language pages by using the `-d` flag and providing
-the paths to your localized pages, or omit the paths to see all. For example:
+of the corresponding English language pages by using the `diff` subcommand and
+providing the paths to your localized pages. For example:
 
 ```console
-$ npm run check:i18n -- -d content/zh/docs/platforms/kubernetes
+$ npm run check:i18n -- diff content/zh/docs/platforms/kubernetes
+# content/zh/docs/platforms/kubernetes/_index.md: drifted from 1ca30b4d
 diff --git a/content/en/docs/platforms/kubernetes/_index.md b/content/en/docs/platforms/kubernetes/_index.md
 index 3592df5d..c7980653 100644
 --- a/content/en/docs/platforms/kubernetes/_index.md
@@ -259,20 +261,20 @@ index 3592df5d..c7980653 100644
 As you create pages for your localization, remember to add `default_lang_commit`
 to the page front matter along with an appropriate commit hash from `main`.
 
-If your page translation is based on an English page in `main` at `<hash>`, then
+If your page translation is based on an English page in `main` at `<HASH>`, then
 run the following command to automatically add `default_lang_commit` to your
-page file's front matter using the commit `<hash>`. You can specify `HEAD` as an
+page file's front matter using the commit `<HASH>`. You can specify `HEAD` as an
 argument if your pages are now synced with `main` at `HEAD`. For example:
 
 ```sh
-npm run check:i18n -- -n -c 1ca30b4d content/ja
-npm run check:i18n -- -n -c HEAD content/zh/docs/concepts
+npm run check:i18n -- commit 1ca30b4d --new content/ja
+npm run check:i18n -- commit HEAD --new content/zh/docs/concepts
 ```
 
 To list localization page files with missing hash keys, run:
 
 ```sh
-npm run check:i18n -- -n
+npm run check:i18n -- --new
 ```
 
 ### Updating `default_lang_commit` for existing pages
@@ -284,17 +286,18 @@ commit hash.
 > [!TIP]
 >
 > If your localized page now corresponds to the English language version in
-> `main` at `HEAD`, then erase the commit hash value in the front matter, and
-> run the **add** command given in the previous section to automatically refresh
-> the `default_lang_commit` field value.
+> `main` at `HEAD`, then run
+> `npm run check:i18n -- commit HEAD <PATH-TO-YOUR-PAGE>`: the
+> `default_lang_commit` hash is refreshed and the page's
+> [drift status](#drift-status) is cleared in the same write.
 
 If you have batch updated all of your localization pages that had drifted, you
-can update the commit hash of these files using the `-c` flag followed by a
-commit hash or 'HEAD' to use `main@HEAD`.
+can update the commit hash of these files using the `commit` subcommand followed
+by a commit hash or 'HEAD' to use `main@HEAD`.
 
 ```sh
-npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
-npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
+npm run check:i18n -- commit <HASH> <PATH-TO-YOUR-UPDATED-FILES>
+npm run check:i18n -- commit HEAD <PATH-TO-YOUR-UPDATED-FILES>
 ```
 
 > [!IMPORTANT]
@@ -325,11 +328,16 @@ the last sync point. The marker is dropped the next time the page's hash is
 
 ### Drift status
 
-Run `npm run fix:i18n:status` to set the `drifted_from_default` front-matter
-field on those target localization pages that have drifted. This field displays
-an "outdated" banner at the top of the page, and causes the link checker to skip
-the page, so that stale links on drifted pages don't fail CI. For details about
-how the link checker handles drifted pages, see
+Run `npm run fix:i18n:status -- <PATHS>` to set the `drifted_from_default`
+front-matter field on those of the given localization pages that have drifted.
+In a PR, pass only the pages that a failing check reports; tree-wide runs belong
+to the daily Housekeeping workflow. For the check-green minimum that governs
+such status updates, see
+[Keeping the build and checks green](#keep-checks-green).
+
+This field displays an "outdated" banner at the top of the page, and causes the
+link checker to skip the page, so that stale links on drifted pages don't fail
+CI. For details about how the link checker handles drifted pages, see
 [Link checking](/site/build/link-checking/).
 
 ### Script help
@@ -553,9 +561,10 @@ PRs.
 >
 > The locale-span rule governs page **content**. Maintainers sometimes submit
 > content-neutral changes that necessarily span locales: site-wide tooling,
-> configuration, front-matter, or markup updates, including the automated
-> [drift-status](#track-changes) bookkeeping PRs. Such changes don't alter the
-> meaning of localized pages.
+> configuration, front-matter, or markup updates, including
+> [drift-status](#track-changes) bookkeeping — the automated PRs and manual
+> status-only edits alike. Such changes don't alter the meaning of localized
+> pages.
 
 #### Keeping the build and checks green {#keep-checks-green}
 
@@ -571,6 +580,12 @@ that is strictly required to keep the site build and its checks green:
   from the Hugo build.
 
 In both cases, mark every localized page that you fix as [patched](#patched).
+
+The check-green minimum applies to drift-status bookkeeping too: when a failing
+check calls for refreshing `drifted_from_default` (see the deleted-page case
+below), update only the pages that the failing check reports — the daily
+[Housekeeping run](/site/build/ci-workflows/#housekeeping) completes the rest.
+Status-only edits are [content-neutral maintenance](#semantic-changes).
 
 Treat any other change to localized page content as a **semantic** change for
 that locale. This includes targeted content additions to drifted pages, such as
@@ -608,10 +623,12 @@ Proceed according to the fate of the link target:
   reference is a [semantic change](#semantic-changes) for each affected locale,
   so don't patch such links. Fixing the English pages that linked to the deleted
   target makes their localized copies drift: once your English edits are
-  committed, run `npm run fix:i18n:status -- <PATHS-TO-LOCALIZED-COPIES>` to
-  refresh the [drift status](#drift-status) of those copies. The link checker
-  then skips those pages, and reconciliation is left to each page's locale team.
-  In the rare case where a failing link exists only in a localized page,
+  committed, refresh the [drift status](#drift-status) of just the localized
+  pages that fail link checking:
+  `npm run fix:i18n:status -- <PATHS-TO-FAILING-LOCALIZED-PAGES>`. The link
+  checker then skips those pages; the daily Housekeeping run refreshes the
+  status of the remaining copies. Reconciliation is left to each page's locale
+  team. In the rare case where a failing link exists only in a localized page,
   coordinate a fix with its locale team.
 
 - **An external resource was moved**, but is otherwise semantically unchanged

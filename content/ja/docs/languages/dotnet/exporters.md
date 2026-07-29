@@ -1,7 +1,8 @@
 ---
 title: エクスポーター
 weight: 50
-default_lang_commit: bb23218b2ffc669eb538742e664dd7b52b55531e
+default_lang_commit: bb23218b2ffc669eb538742e664dd7b52b55531e # patched
+drifted_from_default: true
 ---
 
 {{% docs/languages/exporters/intro %}}
@@ -193,7 +194,7 @@ var loggerFactory = LoggerFactory.Create(builder =>
 メトリクスを Prometheus にエクスポートするには2つのアプローチがあります。
 
 1. **OTLP エクスポーターの使用（プッシュ）**: OTLP プロトコルを使用してメトリクスを Prometheus にプッシュします。
-   これには [Prometheus の OTLP レシーバー](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver)を有効にする必要があります。
+   これには [Prometheus の OTLP レシーバー](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver)を有効にする必要があります。
    このアプローチはエグゼンプラーをサポートし、安定しているため、本番環境に推奨されます。
 
 2. **Prometheus エクスポーターの使用（プル/スクレイプ）**: アプリケーションに Prometheus がスクレイプできるスクレイピングエンドポイントを公開します。

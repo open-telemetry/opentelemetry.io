@@ -5,10 +5,9 @@ date: 2026-07-16
 author: '[Kemal Akkoyun](https://github.com/kakkoyun) (Datadog)'
 issue: 10670
 sig: Go Compile-Time Instrumentation
-default_lang_commit: d88ab6df454cbc6de0b0ae5a4de4684e1154cea4
-drifted_from_default: true
+default_lang_commit: ec870712704ae037419e4e420b7fa3be04e10297
 # prettier-ignore
-cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario GOFLAGS Haibin Martinez Momin otelc toolexec Xabier
+cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario Haibin Martinez Momin otelc toolexec Xabier
 ---
 
 Java、Python、Node.js、.NETで開発している場合、コードを編集せずにOpenTelemetryをアプリケーションへ追加することが長年可能で、起動時にエージェントをアタッチすれば、テレメトリーの送信が始まります。
@@ -49,30 +48,11 @@ Goは単一の静的バイナリにコンパイルされるため、長い間、
 このプロジェクトは、標準のGoツールチェーンをラップする`otelc`というコマンドラインツールを提供します。
 ビルドの変更は1行だけで、以前 `go build` を実行していた場所で `otelc go build` を実行します。
 `go` の後に続くすべての引数はツールチェーンに転送されるため、ビルドの残りの部分は変わりません。
-
-`go install` でインストールします。
-
-```sh
-go install go.opentelemetry.io/otelc/tool/cmd/otelc@latest
-```
-
-次に、これを介してアプリケーションをビルドします。
-
-```sh
-otelc go build -o myapp .
-```
-
-ビルドコマンドを変更したくない場合は、モジュールを準備するために一度 `otelc setup` を実行し、続いて、`GOFLAGS`を通じてGoツールチェーンを`otelc`に向け、通常どおり`go build`を実行します。
-
-```sh
-otelc setup
-export GOFLAGS="${GOFLAGS} '-toolexec=otelc toolexec'"
-go build -o myapp .
-```
-
+同じ置き換えはコンテナビルドでも機能します。
 デフォルトでは、`otelc` はモジュール内のサポート対象ライブラリを検出し、設定やコード変更なしで自動的に計装します。
-同じ置き換えはコンテナビルドでも機能し、ビルドステージに `otelc` をインストールして、`Dockerfile` の `go build` 行を `otelc go build` に置き換えます。
-完全な手順は、[コンパイル時の計装のドキュメント](/docs/zero-code/go/compile-time/)を参照してください。
+
+`otelc` のインストール、アプリケーションのビルド、生成されるテレメトリーの確認については、[入門ガイド](/docs/zero-code/go/compile-time/getting-started/)に従ってください。
+設定、サポートされるライブラリ、トラブルシューティングなどについては、[コンパイル時の計装のドキュメント](/docs/zero-code/go/compile-time/)を参照してください。
 
 ## どのような場合に使うべきか {#when-should-you-use-it}
 
