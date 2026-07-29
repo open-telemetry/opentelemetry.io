@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otlphttp tracetest tracetesting
+cSpell:ignore: firepit otlphttp
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
@@ -41,10 +41,25 @@ make start
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose up --force-recreate --remove-orphans --detach
+docker compose -f compose.yaml -f compose.full.yaml -f compose.observability.yaml -f compose.extras.yaml up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
+
+    The demo is split across layered Compose files, and `make start` combines
+    four of them:
+
+    - `compose.yaml` — the core web store services
+    - `compose.full.yaml` — Kafka and the services that depend on it
+    - `compose.observability.yaml` — Jaeger, Prometheus, Grafana, and OpenSearch
+    - `compose.extras.yaml` — a placeholder for your own additions
+
+    > [!NOTE]
+    >
+    > A bare `docker compose up` loads only `compose.yaml`. That starts the web
+    > store, but without Kafka or any of the observability backends, so there is
+    > nowhere to view the telemetry. Pass the files explicitly, as shown above,
+    > or use `make start`.
 
     ### Run in minimal mode
 
@@ -60,33 +75,87 @@ make start-minimal
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose -f docker-compose.minimal.yml up --force-recreate --remove-orphans --detach
+docker compose -f compose.yaml -f compose.observability.yaml -f compose.extras.yaml up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
 
-    The following services are **not** included in minimal mode:
+    Minimal mode drops `compose.full.yaml`, so the following services are
+    **not** included:
 
     - `accounting`
     - `fraud-detection`
-    - `flagd-ui`
     - `kafka`
 
-4. (Optional) Enable API observability-driven testing[^1]:
+    ### Run with the AI agent
+
+    The agent, MCP server, and chatbot are not started by default. To add
+    them[^1]:
 
     {{< tabpane text=true >}} {{% tab Make %}}
 
 ```shell
-make run-tracetesting
+make start-agentic
 ```
 
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose -f docker-compose-tests.yml run traceBasedTests
+docker compose -f compose.yaml -f compose.full.yaml -f compose.observability.yaml -f compose.extras.yaml -f compose.agent.yaml up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
+
+    This adds the Chatbot UI at <http://localhost:8080/chatbot/>. By default the
+    agent replays recorded LLM responses (`USE_VCR=True`), so no API key is
+    required. To talk to a real LLM, set `LLM_BASE_URL`, `LLM_MODEL`, and
+    `API_KEY` in `.env.override`.
+
+    ### Run with continuous profiling
+
+    To add the eBPF profiler and the Firepit profiling UI[^1]:
+
+    {{< tabpane text=true >}} {{% tab Make %}}
+
+```shell
+make start-profiling
+```
+
+    {{% /tab %}} {{% tab Docker %}}
+
+```shell
+docker compose -f compose.yaml -f compose.full.yaml -f compose.observability.yaml -f compose.profiling.yaml -f compose.extras.yaml up --force-recreate --remove-orphans --detach
+```
+
+    {{% /tab %}} {{< /tabpane >}}
+
+    Profiles are then available at <http://localhost:8080/profiles/>.
+
+4. (Optional) Run the end-to-end tests[^1]:
+
+    The Cypress frontend tests run against a demo that is already up:
+
+    {{< tabpane text=true >}} {{% tab Make %}}
+
+```shell
+make run-frontend-tests
+```
+
+    {{% /tab %}} {{% tab Docker %}}
+
+```shell
+docker compose -f compose.yaml -f compose.full.yaml -f compose.observability.yaml -f compose.extras.yaml -f compose.tests.yaml run frontendTests
+```
+
+    {{% /tab %}} {{< /tabpane >}}
+
+    The telemetry tests instead assert that each service emits the expected
+    traces, metrics, and logs. This target starts the demo itself and stops it
+    again when the run finishes, so run it with the demo stopped:
+
+    ```shell
+    make run-telemetry-tests
+    ```
 
 ## Verify the web store and Telemetry
 
@@ -95,9 +164,12 @@ Once the images are built and containers are started you can access:
 - Web store: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
-- Tracetest UI: <http://localhost:11633/>, only when using
-  `make run-tracetesting`
 - Flagd configurator UI: <http://localhost:8080/feature>
+- Telemetry documentation: <http://localhost:8080/telemetry/>
+- Chatbot UI: <http://localhost:8080/chatbot/>, only when using
+  `make start-agentic`
+- Firepit profiling UI: <http://localhost:8080/profiles/>, only when using
+  `make start-profiling`
 
 ## Changing the demo's primary port number
 
@@ -116,7 +188,7 @@ ENVOY_PORT=8081 make start
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-ENVOY_PORT=8081 docker compose up --force-recreate --remove-orphans --detach
+ENVOY_PORT=8081 docker compose -f compose.yaml -f compose.full.yaml -f compose.observability.yaml -f compose.extras.yaml up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
