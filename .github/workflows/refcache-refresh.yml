@@ -10,7 +10,10 @@ name: Refcache refresh
 # To force further pruning of the existing PR branch, invoke with
 # `prune_more_in_same_PR` set to true. If the branch exists but has no open PR
 # (e.g., the PR was closed without deleting the branch), the branch is reset
-# to `origin/main` and treated as new, so that pruning happens again.
+# to `origin/main` and treated as a new branch, so that pruning runs.
+#
+# When pruning ran but the run ends with no commits to open a PR from, the
+# run fails: an empty refresh after pruning means the workflow is broken.
 #
 # The workflow and its PR branch (otelbot/refcache-refresh) keep their
 # historical refcache names; scripts and docs now say "link cache".
@@ -87,8 +90,8 @@ jobs:
             if [[ -n "$PR_URL" ]]; then
               echo "Branch PR: $PR_URL"
             else
-              echo "Branch has no open PR, so it is stale." \
-                "Resetting it to origin/main and treating it as new."
+              echo "Branch has no open PR: resetting it to origin/main" \
+                "and treating it as a new branch."
               echo "IS_NEW_BRANCH=true" >> $GITHUB_ENV
               git reset --hard origin/main
               git push --force-with-lease origin $BRANCH
@@ -187,6 +190,7 @@ jobs:
           else
             echo "::error::Failed to create PR, likely because there are no" \
               "commits on $BRANCH. When pruning ran this run, the link-cache" \
-              "refresh should have produced changes."
+              "refresh should have produced changes. See the workflow header" \
+              "comment."
             exit 1
           fi
