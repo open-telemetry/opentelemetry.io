@@ -3,6 +3,7 @@ title: エクスポーター
 aliases: [exporting_data]
 weight: 50
 default_lang_commit: 813498074d85258c7180d137ace9e272d0149353
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: autoexport otlplog otlploggrpc otlploghttp otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp sdkmetric sdktrace stdoutlog stdouttrace
 ---
