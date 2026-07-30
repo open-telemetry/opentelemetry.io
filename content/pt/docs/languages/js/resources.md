@@ -132,7 +132,7 @@ EXPOSE 8080
 CMD [ "node", "--import", "./instrumentation.mjs", "app.js" ]
 ```
 
-Para garantir que você consiga parar seu contêiner Docker com <kbd>Ctrl +
+Para garantir que o contêiner Docker possa ser interrompido com <kbd>Ctrl +
 C</kbd> (`SIGINT`), adicione o seguinte ao final do `app.js`:
 
 ```javascript
