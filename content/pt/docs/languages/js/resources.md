@@ -61,11 +61,11 @@ ProcessDetector found resource. Resource {
 No exemplo acima, o SDK detectou o processo e também adicionou automaticamente o
 atributo `host.name=localhost` definido pela variável de ambiente.
 
-Abaixo você encontrará instruções para que os recursos sejam detectados
-automaticamente para você. No entanto, você pode se deparar com a situação em
-que nenhum detector existe para o recurso que você precisa. Nesse caso, use a
+Abaixo estão instruções para que os recursos sejam detectados
+automaticamente. No entanto, pode acontecer de não existir um 
+detector para o recurso necessário. Nesse caso, use a
 variável de ambiente `OTEL_RESOURCE_ATTRIBUTES` para injetar o que for
-necessário. Além disso, você pode usar a variável de ambiente
+preciso. Além disso, é possível usar a variável de ambiente
 `OTEL_SERVICE_NAME` para definir o valor do atributo de recurso `service.name`.
 Por exemplo, o script a seguir adiciona atributos de recurso de
 [Serviço][service], [Host][host] e [Sistema Operacional][os]:
