@@ -148,7 +148,7 @@ seguinte dependência adicional:
 npm install @opentelemetry/resource-detector-container
 ```
 
-Em seguida, atualize seu `instrumentation.mjs` com o seguinte código:
+Em seguida, atualize o `instrumentation.mjs` como a seguir:
 
 ```javascript
 const opentelemetry = require('@opentelemetry/sdk-node');
