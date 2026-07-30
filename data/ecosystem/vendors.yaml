@@ -469,7 +469,7 @@
   commercial: true
 - name: Trace0
   nativeOTLP: true
-  url: https://docs.trace0hq.com
+  url: https://docs.trace0hq.com/getting-started/overview
   contact: hello@trace0hq.com
   oss: false
   commercial: true
