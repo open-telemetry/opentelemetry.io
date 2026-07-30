@@ -26,11 +26,11 @@ function main() {
   }
 
   const { spec, dryRun, dryRunReason } = parsed;
-  const { repo, abbr } = SPECS[spec];
+  const { repo, slug } = SPECS[spec];
 
   let inputs;
   try {
-    inputs = readEnvInputs(process.env, { abbr });
+    inputs = readEnvInputs(process.env, { slug });
   } catch (err) {
     fatal(`${err.message}\n\n${cliUsage()}`);
   }

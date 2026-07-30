@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 
 import { readEnvInputs } from './index.mjs';
 
-const SPEC = { repo: 'opentelemetry-specification', abbr: 'spec' };
+const SPEC = { repo: 'opentelemetry-specification', slug: 'spec' };
 
 const VALID_ENV = {
   MODE: 'dev',
@@ -37,7 +37,7 @@ describe('create-or-finalize-pr: readEnvInputs', () => {
         VERSION: 'v1.43.1',
         BRANCH: 'otelbot/semconv-integration-v1.44.0-dev',
       },
-      { repo: 'semantic-conventions', abbr: 'semconv' },
+      { repo: 'semantic-conventions', slug: 'semconv' },
     );
     assert.equal(inputs.branch, 'otelbot/semconv-integration-v1.44.0-dev');
   });
@@ -82,7 +82,7 @@ describe('create-or-finalize-pr: readEnvInputs', () => {
     );
   });
 
-  test("rejects a BRANCH for a different spec's abbreviation", () => {
+  test("rejects a BRANCH for a different spec's slug", () => {
     assert.throws(
       () =>
         readEnvInputs(

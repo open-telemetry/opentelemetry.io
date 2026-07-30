@@ -1,8 +1,7 @@
 ---
 title: Scaling the Collector
 weight: 26
-# prettier-ignore
-cSpell:ignore: fluentd hostmetrics Linkerd loadbalancer loadbalancing sharded statefulset
+cSpell:ignore: fluentd Linkerd loadbalancer loadbalancing sharded statefulset
 ---
 
 When planning your observability pipeline with the OpenTelemetry Collector, you
@@ -249,7 +248,7 @@ spec:
 ### Scaling the Scrapers
 
 Some receivers are actively obtaining telemetry data to place in the pipeline,
-like the hostmetrics and prometheus receivers. While getting host metrics isn’t
+like the host_metrics and prometheus receivers. While getting host metrics isn’t
 something we’d typically scale up, we might need to split the job of scraping
 thousands of endpoints for the Prometheus receiver. And we can’t simply add more
 instances with the same configuration, as each Collector would try to scrape the

@@ -14,10 +14,10 @@ year range in the configuration of each tool listed below.
 
 ## Configuration to update {#configuration}
 
-Each entry encodes the same policy: currently ignoring 2019 and `202[0-4]`.
-htmltest and link extraction omit 2020 since there are no posts in that year
-(the glob-based tools harmlessly include it). Adjust the year ignore
-glob/pattern as needed for each tool:
+Each entry encodes the same policy: currently ignoring 2019 and `202[0-4]`. The
+link checker omits 2020 since there are no posts in that year (the glob-based
+tools harmlessly include it). Adjust the year ignore glob/pattern as needed for
+each tool:
 
 | Tool                        | Configuration                                           |
 | --------------------------- | ------------------------------------------------------- |
@@ -26,8 +26,7 @@ glob/pattern as needed for each tool:
 | prettier                    | `.prettierignore`                                       |
 | textlint                    | `.textlintignore` (note: requires `**` glob suffixes)   |
 | `fix:dict`, trailing spaces | `package.json` → `__find:md:not-old-blog` script        |
-| htmltest (link checker)     | `content/en/blog/_index.md` → `htmltest.IgnoreDirs`     |
-| link extraction             | `scripts/_extract-external-links.js` (mirrors htmltest) |
+| link checker (Lychee)       | `content/en/blog/_index.md` → `link_check_exclude_path` |
 
 ## Verify {#verify}
 
