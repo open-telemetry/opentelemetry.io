@@ -68,8 +68,8 @@ shallow clone to the baseline commit; locally, fetch the missing history
 skips still apply).
 
 A local tree-wide status sync (`npm run fix:i18n`) can rewrite
-`data/l10n-drift.yaml`; leave that rewrite uncommitted — tree-wide syncs belong
-to Housekeeping, and a locally recorded commit might not exist upstream.
+`data/l10n-drift.yaml`; leave that rewrite uncommitted — a locally recorded
+commit might not exist upstream.
 
 ## Link cache {#refcache}
 

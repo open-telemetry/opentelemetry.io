@@ -4,7 +4,8 @@
 # must leave the PR with an accurate drift state — synced (pin current, status
 # cleared) or explicitly marked drifted. Runs the drift-status writer over the
 # changed pages only and fails when it changes anything; tree-wide status syncs
-# belong to the nightly Housekeeping run. Policy:
+# belong to the nightly Housekeeping run. Run on a clean working tree: the
+# fail check diffs the whole tree. Policy:
 # https://opentelemetry.io/docs/contributing/localization/#drift-status
 #
 # Usage: check-i18n-status-guard.sh [BASE_REF]   (default: origin/main)

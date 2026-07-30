@@ -22,7 +22,5 @@ jobs:
           .github/scripts/check-i18n-helper.sh
       - name: Any files with invalid hash keys?
         run: scripts/check-i18n.sh -v
-      - name: Drifted status needs updating?
-        run: |
-          scripts/check-i18n.sh -D
-        # npm run _diff:fail
+      - name: Changed pages leave an accurate drift state?
+        run: .github/scripts/check-i18n-status-guard.sh

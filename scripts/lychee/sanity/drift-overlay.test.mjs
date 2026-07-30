@@ -104,7 +104,7 @@ const baselineFiles = {
     `${pin}\n`,
   ),
   // Stored-status case: EN counterpart long gone, status already persisted by
-  // a tree-wide sync (goal #9: same predicate as `true` in config gen).
+  // a tree-wide sync (same skip predicate as `true` in config gen).
   'content/xx/docs/stored-fnf.md': contentPage(
     'Copy whose EN is long gone',
     `${pin}\ndrifted_from_default: file not found\n`,
