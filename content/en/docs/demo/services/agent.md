@@ -1,7 +1,7 @@
 ---
 title: Agent Service
 linkTitle: Agent
-cSpell:ignore: cassettes ChatOpenAI langchain langgraph litellm uvicorn vcr
+cSpell:ignore: cassettes ChatOpenAI langchain langgraph litellm openai uvicorn vcr
 ---
 
 The Agent service provides an AI assistant for the OpenTelemetry Astronomy Shop

@@ -1,7 +1,7 @@
 ---
 title: MCP Service
 linkTitle: MCP
-cSpell:ignore: fastmcp httpx jlowin
+cSpell:ignore: fastmcp httpx Instrumentor jlowin langchain
 ---
 
 The MCP service exposes the OpenTelemetry Astronomy Shop demo's tools over the
