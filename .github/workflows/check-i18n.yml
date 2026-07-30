@@ -23,4 +23,4 @@ jobs:
       - name: Any files with invalid hash keys?
         run: scripts/check-i18n.sh -v
       - name: Changed pages leave an accurate drift state?
-        run: .github/scripts/check-i18n-status-guard.sh
+        run: node scripts/i18n/drift-pr-guard.mjs
