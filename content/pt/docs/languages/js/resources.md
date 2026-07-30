@@ -14,8 +14,8 @@ com o SDK do Node.js.
 
 ## Configuração {#setup}
 
-Siga as instruções em [Primeiros Passos - Node.js][getting started - node.js],
-para que você tenha os arquivos `package.json`, `app.js` (ou `app.ts`) e
+Siga as instruções em [Primeiros Passos - Node.js][getting started - node.js]
+para ter os arquivos `package.json`, `app.js` (ou `app.ts`) e
 `instrumentation.mjs` (ou `instrumentation.ts`).
 
 {{% include esm-support-note.md %}}
