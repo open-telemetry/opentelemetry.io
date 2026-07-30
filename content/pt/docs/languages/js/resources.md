@@ -91,9 +91,9 @@ EnvDetector found resource. Resource {
 
 ## Adicionando recursos no código {#adding-resources-in-code}
 
-Recursos personalizados também podem ser configurados no seu código. O `NodeSDK`
-oferece uma opção de configuração onde você pode defini-los. Por exemplo, você
-pode atualizar o seu arquivo de instrumentação da seguinte forma para definir os
+Também é possível configurar recursos personalizados no código. O `NodeSDK`
+oferece uma opção de configuração para defini-los. Por exemplo, atualize
+o arquivo de instrumentação como no exemplo a seguir para definir os
 atributos `service.*`:
 
 ```javascript
