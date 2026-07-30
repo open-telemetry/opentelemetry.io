@@ -201,8 +201,14 @@ describe(
 
     after(() => rmSync(dir, { recursive: true, force: true }));
 
-    test('sanity: the run scanned pages and verified links', () => {
-      assert.ok(result.total > 0, 'lychee checked at least one link');
+    test('sanity: exactly the non-excluded pages are scanned', () => {
+      // 3 = the two checked broken-link pages (both-edited, control) + the
+      // EN control's valid link. Pinning the exact count distinguishes
+      // "excluded by the overlay" from "accidentally not scanned": a page
+      // dropped from the input set for any other reason would change it.
+      // (exclude_path removes files from lychee's input set, so path-excluded
+      // pages never surface in excluded_map — the count is the observable.)
+      assert.equal(result.total, 3, 'link count matches the checked pages');
       assert.equal(
         findError(result, '/en/docs/target/#known-anchor'),
         null,

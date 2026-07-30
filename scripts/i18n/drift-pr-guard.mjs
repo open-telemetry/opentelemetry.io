@@ -104,7 +104,9 @@ or record the remaining drift,
 
     npm run fix:i18n:status -- PATHS
 
-then commit the result. For details, see
+then commit the result. (Pins can only point at commits on main: a page
+synced to English changes made in this same PR still records drift until
+those changes merge — use the second command.) For details, see
 https://opentelemetry.io/docs/contributing/localization/#drift-status`);
   process.exitCode = 1;
 }
