@@ -172,7 +172,7 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 ```
 
-Crie sua imagem Docker:
+Crie a imagem Docker:
 
 ```sh
 docker build . -t nodejs-otel-getting-started
