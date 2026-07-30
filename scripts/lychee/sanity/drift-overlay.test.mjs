@@ -103,8 +103,14 @@ const baselineFiles = {
     'Copy of both-edited, also edited after baseline',
     `${pin}\n`,
   ),
-  // Stored-status case: EN counterpart long gone, status already persisted by
-  // a tree-wide sync (same skip predicate as `true` in config gen).
+  // Stored-status cases, both isDriftedStatus values, already persisted by a
+  // tree-wide sync: `true` (EN present but changed before the baseline) and
+  // `file not found` (EN counterpart long gone).
+  'content/en/docs/stored-true.md': contentPage('EN, unchanged since baseline'),
+  'content/xx/docs/stored-true.md': contentPage(
+    'Copy marked drifted before the baseline',
+    `${pin}\ndrifted_from_default: true\n`,
+  ),
   'content/xx/docs/stored-fnf.md': contentPage(
     'Copy whose EN is long gone',
     `${pin}\ndrifted_from_default: file not found\n`,
@@ -121,6 +127,7 @@ const publicFiles = {
   'public/xx/docs/en-edited/index.html': brokenHtml('missing-en-edited'),
   'public/xx/docs/en-deleted/index.html': brokenHtml('missing-en-deleted'),
   'public/xx/docs/both-edited/index.html': brokenHtml('missing-both-edited'),
+  'public/xx/docs/stored-true/index.html': brokenHtml('missing-stored-true'),
   'public/xx/docs/stored-fnf/index.html': brokenHtml('missing-stored-fnf'),
   'public/xx/docs/control/index.html': brokenHtml('missing-control'),
   'public/en/docs/control/index.html': validHtml,
@@ -216,7 +223,12 @@ describe(
     });
 
     test('generated config excludes exactly the drifted/pending copies', () => {
-      for (const page of ['en-edited', 'en-deleted', 'stored-fnf']) {
+      for (const page of [
+        'en-edited',
+        'en-deleted',
+        'stored-true',
+        'stored-fnf',
+      ]) {
         assert.ok(
           lycheeToml.includes(`/public/xx/docs/${page}/index\\.html$`),
           `exclude_path covers xx/docs/${page}`,
@@ -251,6 +263,14 @@ describe(
         findError(result, 'missing-both-edited') ?? '',
         /File not found/,
         'the exempted copy is scanned and its broken link is red',
+      );
+    });
+
+    test('stored `true` status: broken locale copy is excluded', () => {
+      assert.equal(
+        findError(result, 'missing-stored-true'),
+        null,
+        'the stored-status drifted copy is skipped',
       );
     });
 
