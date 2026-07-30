@@ -8,7 +8,7 @@ name: Refcache refresh
 #
 # If the PR branch already exists, then by default we only rebase from `main`.
 # To force further pruning of the existing PR branch, invoke with
-# `prune_more_in_same_PR` is true. If the branch exists but has no open PR
+# `prune_more_in_same_PR` set to true. If the branch exists but has no open PR
 # (e.g., the PR was closed without deleting the branch), the branch is reset
 # to `main` and treated as new, so that pruning happens again.
 #
@@ -185,8 +185,8 @@ jobs:
             PR_URL=$(gh pr view --json url --jq '.url')
             printf "PR created: %s\n" "$PR_URL"
           else
-            echo "::error::Failed to create PR." \
-              "There are no commits on $BRANCH, but entries were pruned this" \
-              "run, so the link-cache refresh should have produced changes."
+            echo "::error::Failed to create PR, likely because there are no" \
+              "commits on $BRANCH. Entries were pruned this run, so the" \
+              "link-cache refresh should have produced changes."
             exit 1
           fi
