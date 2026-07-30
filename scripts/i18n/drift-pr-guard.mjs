@@ -7,6 +7,9 @@
 // anything; tree-wide status syncs belong to the nightly Housekeeping run.
 // Needs history down to the changed pages' pins (CI uses fetch-depth: 0).
 // Dependency-free, like drift.mjs: the workflow runs it without npm install.
+// Known benign race: in a merge_group, the diff can include another queued
+// PR's EN edits, flagging a copy this PR didn't touch — the failure output
+// names the page and remedy, and the next queue run clears it.
 // Policy:
 // https://opentelemetry.io/docs/contributing/localization/#drift-status
 //
@@ -15,7 +18,7 @@
 import { execFile } from 'node:child_process';
 import * as path from 'node:path';
 import { realpathSync } from 'node:fs';
-import { pathToFileURL } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 import { driftReportForRepo, writeStatuses } from './drift.mjs';
@@ -60,7 +63,7 @@ export async function guardDriftState(rootDir, baseRef) {
 
 async function mainCLI() {
   const rootDir = path.resolve(
-    path.dirname(new URL(import.meta.url).pathname),
+    path.dirname(fileURLToPath(import.meta.url)),
     '../..',
   );
   const { pages, actions } = await guardDriftState(
