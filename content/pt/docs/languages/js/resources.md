@@ -114,8 +114,8 @@ const sdk = new opentelemetry.NodeSDK({
 
 > [!NOTE]
 >
-> Se você definir seus atributos de recurso via variável de ambiente e código,
-> os valores definidos pela variável de ambiente têm precedência.
+> Caso os atributos de recurso sejam definidos por variável de ambiente e por
+> código, os valores definidos pela variável de ambiente têm precedência.
 
 ## Detecção de recursos de contêiner {#container-resource-detection}
 
