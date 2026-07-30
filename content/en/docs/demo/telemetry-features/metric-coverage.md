@@ -10,7 +10,7 @@ aliases: [metric_service_features, metric-features, ../metric-features]
 | Ad              | Java       | ✅                        | ✅                     | 🚧                   | 🚧    | ✅                | ✅                 | ✅        |
 | Agent           | Python     | ✅                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Cart            | .NET       | ✅                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | ✅        |
-| Chatbot         | Python     | ✅                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
+| Chatbot         | Python     | 🚧                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Checkout        | Go         | ✅                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Currency        | C++        | 🔕                        | ✅                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Email           | Ruby       | 🚧                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |

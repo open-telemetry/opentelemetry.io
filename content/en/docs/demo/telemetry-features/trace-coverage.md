@@ -8,9 +8,9 @@ aliases: [trace_service_features, trace-features, ../trace-features]
 | --------------- | ---------- | ------------------------- | -------------------- | -------------------- | ----------------------- | ---------- | ------- | ------------------ |
 | Accounting      | .NET       | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | ✅                 |
 | Ad              | Java       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
-| Agent           | Python     | ✅                        | 🔕                   | 🔕                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
+| Agent           | Python     | ✅                        | ✅                   | 🔕                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 | Cart            | .NET       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | ✅                 |
-| Chatbot         | Python     | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
+| Chatbot         | Python     | ✅                        | 🚧                   | 🚧                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 | Checkout        | Go         | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | ✅                 |
 | Currency        | C++        | 🔕                        | ✅                   | ✅                   | ✅                      | 🔕         | 🔕      | 🚧                 |
 | Email           | Ruby       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |

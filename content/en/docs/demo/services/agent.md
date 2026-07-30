@@ -1,203 +1,136 @@
 ---
 title: Agent Service
 linkTitle: Agent
-cSpell:ignore: cassettes ChatOpenAI langchain langgraph litellm openai uvicorn vcr
+cSpell:ignore: fastapi httpx langchain langgraph litellm openai
 ---
 
-The Agent service provides an AI assistant for the OpenTelemetry Astronomy Shop
-demo. It exposes a FastAPI HTTP endpoint that accepts user prompts, routes them
-through a LangGraph ReAct agent, and uses either built-in shop tools or
-MCP-provided tools to interact with the demo application.
+This service provides the AI assistant for the demo. It exposes a FastAPI
+endpoint that accepts a user prompt, routes it through a LangGraph ReAct agent,
+and calls the shop's APIs through built-in tools or through tools loaded from
+the [MCP service](../mcp/).
 
 [Agent service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/agent/)
 
-## Overview
+## LLM Configuration
 
-- Runtime: Python 3.14
-- Web framework: FastAPI served by Uvicorn
-- Agent framework: LangChain and LangGraph prebuilt components
-- LLM client: `langchain_openai.ChatOpenAI`, with support for non-OpenAI models
-  via the LiteLLM client
-- Observability: Traceloop SDK and OpenTelemetry OTLP export
-- Optional tool source: Model Context Protocol (MCP)
-- Default port: `8010`
+By default, this service replays recorded LLM responses so that the demo runs
+without a live model. To use a real OpenAI-compatible LLM, populate the
+following environment variables in the `.env.override` file:
 
-The service starts from `run.py`, initializes Traceloop instrumentation, creates
-an `Agent`, and launches a FastAPI server.
-
-## ReAct Agent
-
-The agent is built with LangGraph's prebuilt ReAct (Reasoning + Acting) agent,
-created via `langchain.agents import create_agent`. ReAct interleaves LLM
-reasoning steps with actions (tool calls), letting the model decide, turn by
-turn, whether it has enough information to answer or whether it needs to call a
-tool first. This makes the agent well suited to multi-step shop tasks such as
-"find a product, add it to my cart, and check out," where each step depends on
-the result of the previous one.
-
-```mermaid
-flowchart TD
-    START --> LLM
-    LLM --> Tools
-    Tools --> LLM
-    LLM --> END
+```text
+LLM_BASE_URL=https://api.openai.com/v1
+LLM_MODEL=gpt-4o-mini
+API_KEY=<replace with API key>
+USE_VCR=False
 ```
 
-Each pass through the LLM node is one iteration of the loop. The number of
-iterations is bounded by `GRAPH_RECURSION_LIMIT`. LangGraph stops the run once
-this limit is reached, which guards against infinite reasoning/action cycles.
+## Instrumentation libraries
 
-## Service API
+This service is not started through the `opentelemetry-instrument` wrapper. The
+`Dockerfile` runs the script directly, and instrumentation is set up in code:
 
-### `POST /prompt`
-
-Submits a prompt to the agent.
-
-Request body:
-
-```json
-{
-  "message": "List available products",
-  "history": []
-}
+```dockerfile
+CMD ["python", "run.py"]
 ```
 
-Response body:
+In `run.py`, the [Traceloop SDK](https://www.traceloop.com/) initializes the
+OpenTelemetry SDK and enables its bundle of generative-AI instrumentation
+libraries. The HTTPX instrumentation is then enabled explicitly:
 
-```json
-{
-  "response": {
-    "messages": []
-  }
-}
+```python
+Traceloop.init(
+    app_name=os.getenv("OTEL_SERVICE_NAME", "agent"),
+)
+
+HTTPXClientInstrumentor().instrument()
 ```
 
-The exact response shape is produced by the LangGraph agent invocation.
+The FastAPI instrumentation is applied once the application object exists, in
+`start_servers`:
+
+```python
+FastAPIInstrumentor.instrument_app(agent.app)
+```
+
+Together these produce spans without any manual span creation:
+
+- `opentelemetry-instrumentation-fastapi` — server spans for requests to
+  `POST /prompt`.
+- `opentelemetry-instrumentation-httpx` — client spans for outbound calls, both
+  to the LLM API and to the frontend API used by the shop tools.
+- Traceloop's bundle, in particular `opentelemetry-instrumentation-langchain`,
+  `opentelemetry-instrumentation-openai` and `opentelemetry-instrumentation-mcp`
+  — spans for the LangChain and LangGraph steps, the LLM invocations, and MCP
+  tool calls when `MCP_ENABLED=True`.
 
 ## Traces
 
-This service uses the [Traceloop SDK](https://www.traceloop.com/) layered on top
-of OpenTelemetry to instrument the agent's LLM and tool calls. `run.py`
-initializes Traceloop with the application name `agent` and the OTLP endpoint
-from `OTEL_EXPORTER_OTLP_ENDPOINT` (defaulting to `localhost:4317`).
+### Initializing Tracing
 
-The `run_agent` method is decorated as a Traceloop workflow, which produces a
-span named:
+`Traceloop.init()` creates a tracer provider with a batch span processor and an
+OTLP exporter, and registers it as the global tracer provider. The
+instrumentation libraries above therefore share a single export pipeline.
 
-```text
-astronomy_shop_agent_workflow
+The export endpoint is taken from `TRACELOOP_BASE_URL` rather than
+`OTEL_EXPORTER_OTLP_ENDPOINT`, and Traceloop appends `/v1/traces` to it. In
+Docker Compose this points at the OpenTelemetry Collector's OTLP/HTTP port. The
+`app_name` argument becomes the `service.name` resource attribute, and
+additional resource attributes are read from `OTEL_RESOURCE_ATTRIBUTES`.
+
+### Create new spans
+
+The `run_agent` method is wrapped in Traceloop's `@workflow` decorator, which
+starts a span for the whole agent run. The LLM and tool spans created by the
+instrumentation libraries become children of it:
+
+```python
+@workflow(name="astronomy_shop_agent_workflow")
+async def run_agent(self, input_prompt, history: List[Dict] | None = None):
 ```
 
-Traceloop automatically captures spans for LLM invocations and tool executions
-within the workflow. Export endpoints, resource attributes, and service name are
-set through OpenTelemetry environment variables. In Docker Compose, telemetry is
-sent to the local OpenTelemetry Collector and the service name is set to
-`agent`.
+This produces a span named `astronomy_shop_agent_workflow`. Because a single
+prompt can trigger several reasoning and tool-calling turns, this span is what
+groups one end-to-end agent run together.
 
-## Tools
+Beyond this decorator, the service does not use the OpenTelemetry tracing API
+directly: it does not create spans with `start_as_current_span`, and it does not
+enrich spans using `set_attribute`.
 
-### Built-in tools
+### Prompt and completion content
 
-When `MCP_ENABLED` is `False`, the agent uses built-in tools from
-`src/shared/tools.py`:
+The bundled generative-AI instrumentations follow the OpenTelemetry
+[generative AI semantic conventions](/docs/specs/semconv/gen-ai/) and record
+prompts and completions as span attributes, `gen_ai.input.messages` and
+`gen_ai.output.messages`. Set `TRACELOOP_TRACE_CONTENT=false` to keep prompt and
+completion content out of the exported spans.
 
-- `get_ads(category)` - fetches promotional ads.
-- `list_products()` - lists available products.
-- `get_product(product_id)` - gets product details.
-- `add_to_cart(user_id, product_id, quantity)` - adds an item to a user's cart.
-- `get_cart(user_id)` - retrieves a user's cart.
-- `empty_cart(user_id)` - empties a user's cart.
-- `checkout(checkout_person)` - performs checkout for a user's cart.
-- `get_supported_currencies()` - lists supported currencies.
-- `get_recommendations(product_id)` - gets product recommendations.
-- `get_shipping_quote(items, currency_code, address)` - gets a shipping quote.
+## Metrics
 
-These tools call the frontend API through `APPLICATION_ENDPOINT`.
+### Initializing Metrics
 
-### MCP tool mode
+`Traceloop.init()` also configures metrics, unless
+`TRACELOOP_METRICS_ENABLED=false` is set. It creates a meter provider with a
+periodic exporting metric reader and registers it globally, so the metrics
+emitted by the FastAPI and HTTPX instrumentation libraries are exported.
 
-When `MCP_ENABLED=True`, the service connects to the [MCP service](../mcp/) at:
+### Custom metrics
 
-```text
-http://${MCP_ENDPOINT}:${MCP_PORT}/mcp
+This service does not define custom metrics. It does not obtain a meter or
+create any instruments of its own.
+
+## Logs
+
+The service configures the Python standard library logger only:
+
+```python
+logging.basicConfig(level=logging.INFO)
 ```
 
-Tools are loaded dynamically using
-`langchain_mcp_adapters.tools.load_mcp_tools`. In this mode, the built-in tools
-are not used.
+Traceloop's log export is disabled by default, and the service does not set up a
+`LoggerProvider` or a `LoggingHandler`. Log records are written to stdout and
+collected by the container runtime instead of being exported over OTLP, so they
+are not correlated with traces. See the
+[log coverage matrix](../../telemetry-features/log-coverage/).
 
-## Configuration
-
-The service is configured with environment variables. Values can be supplied
-through Docker Compose, `.env`, `.env.override`, or the local shell environment.
-
-| Variable                      | Default                             | Description                                                                                                        |
-| ----------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `AGENT_PORT`                  | `8010`                              | Port used by the FastAPI/Uvicorn server.                                                                           |
-| `AGENT_ENDPOINT`              | `agent` in Compose                  | Service hostname used by other demo services.                                                                      |
-| `GRAPH_RECURSION_LIMIT`       | `25`                                | Recursion limit read by the agent implementation.                                                                  |
-| `APPLICATION_ENDPOINT`        | `localhost:8080`                    | Frontend/API endpoint used by built-in shop tools. In Compose this is usually `frontend:8080`.                     |
-| `LLM_BASE_URL`                | unset                               | Base URL for the OpenAI-compatible LLM API.                                                                        |
-| `LLM_MODEL`                   | `default`                           | Model name passed to the LLM client.                                                                               |
-| `API_KEY`                     | unset                               | API key for the configured LLM provider.                                                                           |
-| `LLM_TLS_VERIFY`              | `True`                              | Enables TLS certificate verification for LLM HTTP calls. Set to `False` only for trusted development environments. |
-| `USE_VCR`                     | `False`                             | Enables replay/recording through VCR cassettes for LLM requests.                                                   |
-| `MCP_ENABLED`                 | `False`                             | Enables tool loading from the MCP service when set to `True`.                                                      |
-| `MCP_ENDPOINT`                | `0.0.0.0` in code, `mcp` in Compose | Hostname for the MCP service.                                                                                      |
-| `MCP_PORT`                    | `8011`                              | Port for the MCP service.                                                                                          |
-| `OTEL_EXPORTER_OTLP_ENDPOINT` | `localhost:4317`                    | OTLP endpoint used by Traceloop/OpenTelemetry. In Compose this points to the OpenTelemetry Collector.              |
-| `OTEL_EXPORTER_OTLP_INSECURE` | unset                               | Set to `true` in Compose for insecure local OTLP export.                                                           |
-| `OTEL_RESOURCE_ATTRIBUTES`    | inherited                           | Additional OpenTelemetry resource attributes.                                                                      |
-| `OTEL_SERVICE_NAME`           | `AstronomyShopAgent`                | Service name used in telemetry.                                                                                    |
-
-Do not commit real API keys. Prefer local overrides or secret management for
-`API_KEY`. Note that the VCR file is created using `LLM_MODEL` and is case
-sensitive.
-
-### Docker Compose configuration
-
-In `compose.agent.yaml`, the service is named `agent` and is built from
-`src/agent/Dockerfile`. The Compose configuration enables MCP by default for
-this service with:
-
-```text
-MCP_ENABLED=True
-MCP_ENDPOINT=mcp
-MCP_PORT=8011
-```
-
-## VCR fixtures
-
-The `fixtures/vcr_cassettes` directory is used when `USE_VCR=True`. Cassette
-names are derived from the configured model name by replacing `/` with `_` and
-appending `_cassette.yaml`. This mode is useful for deterministic development
-and tests that should not call the live LLM API.
-
-## Local development
-
-From the repository root, install dependencies and run the service:
-
-```sh
-pip install -r src/agent/requirements.txt
-
-cd src/agent
-AGENT_PORT=8010 \
-APPLICATION_ENDPOINT=localhost:8080 \
-LLM_BASE_URL=<llm-base-url> \
-LLM_MODEL=<model-name> \
-API_KEY=<api-key> \
-python run.py
-```
-
-To run the agent in MCP mode with `MCP_ENABLED=True`, see the
-[MCP service](../mcp/) documentation.
-
-You can test the endpoint with:
-
-```sh
-curl -X POST http://localhost:8010/prompt \
-  -H 'Content-Type: application/json' \
-  -d '{"message":"List products in the shop","history":[]}'
-```
-
-## [Troubleshooting](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/agent#troubleshooting)
+For the full list of environment variables and troubleshooting steps, see the
+[service README](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/agent#readme).

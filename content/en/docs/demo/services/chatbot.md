@@ -4,113 +4,100 @@ linkTitle: Chatbot
 cSpell:ignore: gradio httpx
 ---
 
-The Chatbot service provides a browser-based chat UI for the OpenTelemetry
-Astronomy Shop demo. It uses [Gradio](https://www.gradio.app/) to render the
-interface and forwards user messages to the [Agent service](../agent/).
+This service provides the chat interface for the demo's AI assistant. It serves
+a [Gradio](https://www.gradio.app/) web UI, forwards each user message to the
+[Agent service](../agent/) over HTTP, and renders the reply. It is exposed
+through the frontend proxy at `/chatbot`.
 
 [Chatbot service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/chatbot/)
 
-## Overview
+## Instrumentation libraries
 
-- Runtime: Python 3.14
-- UI framework: Gradio
-- HTTP client: Requests
-- Observability: OpenTelemetry traces exported with OTLP/gRPC
-- Default port: `7860`, exposed outside Docker at
-  `http://localhost:8080/chatbot/`
+This service is not started through the `opentelemetry-instrument` wrapper. The
+`Dockerfile` runs the script directly, and instrumentation is set up in code:
 
-The service starts from `run.py`, configures OpenTelemetry tracing, creates a
-`ChatAgentUI`, and launches a Gradio `ChatInterface`. When running, the chatbot
-UI is available at
-[http://localhost:8080/chatbot/](http://localhost:8080/chatbot/).
-
-## How it works
-
-1. A user submits a message in the Gradio chat UI.
-2. The chatbot sends a request to the Agent service at:
-
-   ```text
-   http://${AGENT_ENDPOINT}:${AGENT_PORT}/prompt
-   ```
-
-3. The Agent service returns a response object.
-4. The chatbot displays the final message from the response in the UI.
-
-Request body sent to the Agent service:
-
-```json
-{
-  "message": "List available products",
-  "session_id": "<gradio-session-id>",
-  "history": []
-}
+```dockerfile
+CMD ["python", "run.py"]
 ```
 
-The `history` field carries past interactions with the agent in the same
-session, and is an empty list for the first request.
+Unlike the [Agent](../agent/) and [MCP](../mcp/) services, this service uses the
+OpenTelemetry SDK directly rather than the Traceloop SDK. Two HTTP client
+instrumentation libraries are enabled:
 
-### Default requests
+```python
+RequestsInstrumentor().instrument()
+HTTPXClientInstrumentor().instrument()
+```
 
-To omit the requirement of LLM access, a limited number of requests have
-pre-defined responses. Requests users can try out are:
+The call to the agent is made with `requests`, so
+`opentelemetry-instrumentation-requests` produces the client span for it and
+injects the trace context into the outgoing request. This is what links the chat
+interface to the agent, and in turn to the LLM and tool calls the agent makes.
 
-1. Show all available products in the store.
-2. What currencies are supported by the Astronomy Shop?
-3. What current promotions are available on binoculars?
+The Gradio server itself is not instrumented, so incoming browser requests do
+not produce server spans. Traces from this service begin at the outbound call to
+the agent.
 
 ## Traces
 
-`run.py` configures a `TracerProvider` with the service name from
-`OTEL_SERVICE_NAME`, defaulting to `chatbot`. Export endpoints and resource
-attributes are set through OpenTelemetry environment variables.
+### Initializing Tracing
 
-The service instruments outbound HTTP calls made with `requests` and `httpx`, so
-calls from the chatbot to the Agent service are captured as spans. Spans are
-exported through `opentelemetry-exporter-otlp-proto-grpc` to the configured OTLP
-endpoint. In Docker Compose, telemetry is sent to the local OpenTelemetry
-Collector.
+Tracing is configured explicitly in `_configure_tracing`, which `run.py` calls
+at import time. The code creates a tracer provider, adds a batch span processor
+with an OTLP exporter, and registers the provider globally so that the
+instrumentation libraries use it:
 
-## Configuration
+```python
+def _configure_tracing() -> None:
+    provider = TracerProvider()
+    provider.add_span_processor(BatchSpanProcessor(OTLPSpanExporter()))
+    trace.set_tracer_provider(provider)
 
-The service is configured with environment variables. Values can be supplied
-through Docker Compose, `.env`, `.env.override`, or the local shell environment.
-
-| Variable                       | Default                              | Description                                                                                              |
-| ------------------------------ | ------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| `CHATBOT_ENDPOINT`             | `0.0.0.0`                            | Host/interface where the Gradio server binds.                                                            |
-| `CHATBOT_HOST`                 | `chatbot` in `.env`                  | Hostname used by other services, such as the frontend proxy.                                             |
-| `CHATBOT_PORT`                 | `7860`                               | Port used by the Gradio server.                                                                          |
-| `CHATBOT_ROOT_PATH`            | empty, `/chatbot` in `.env`          | Root path used when the UI is served behind the frontend proxy.                                          |
-| `AGENT_ENDPOINT`               | `0.0.0.0` in code, `agent` in `.env` | Hostname of the Agent service.                                                                           |
-| `AGENT_PORT`                   | `8010`                               | Port of the Agent service.                                                                               |
-| `AGENT_CHAT_INTERFACE_TIMEOUT` | `300`                                | Timeout, in seconds, for calls from the chatbot to the Agent service.                                    |
-| `OTEL_SERVICE_NAME`            | `chatbot` in Compose                 | Service name used in telemetry.                                                                          |
-| `OTEL_EXPORTER_OTLP_ENDPOINT`  | `otel-collector`                     | OTLP endpoint used by the OpenTelemetry exporter. In Compose this points to the OpenTelemetry Collector. |
-| `OTEL_RESOURCE_ATTRIBUTES`     | inherited                            | Additional OpenTelemetry resource attributes.                                                            |
-
-### Docker Compose configuration
-
-In `compose.agent.yaml`, the service is named `chatbot` and is built from
-`src/chatbot/Dockerfile`. It depends on the `agent` service. The frontend proxy
-receives `CHATBOT_HOST` and `CHATBOT_PORT`, so the chatbot can be exposed
-through the demo UI, usually under `/chatbot`.
-
-## Local development
-
-From the `src/chatbot`, install dependencies. Run the Agent service first, then
-start the chatbot:
-
-```sh
-pip install -r src/chatbot/requirements.txt
-
-cd src/chatbot
-CHATBOT_PORT=7860 \
-AGENT_ENDPOINT=localhost \
-AGENT_PORT=8010 \
-python run.py
+    RequestsInstrumentor().instrument()
+    HTTPXClientInstrumentor().instrument()
 ```
 
-Open the UI at `http://localhost:7860`. If running behind the frontend proxy,
-set `CHATBOT_ROOT_PATH=/chatbot`.
+The exporter is imported from
+`opentelemetry.exporter.otlp.proto.http.trace_exporter`, so this service exports
+over OTLP/HTTP. Docker Compose sets `OTEL_EXPORTER_OTLP_ENDPOINT` to the
+OpenTelemetry Collector's OTLP/HTTP port for this service, whereas most other
+demo services export over gRPC. Export endpoint, resource attributes, and
+service name are all taken from the standard OpenTelemetry environment
+variables.
 
-## [Troubleshooting](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/chatbot#troubleshooting)
+### Create new spans
+
+This service creates no spans of its own. It does not obtain a tracer, does not
+call `start_as_current_span`, and does not enrich spans using `set_attribute`.
+All of its spans come from the `requests` and HTTPX instrumentation libraries.
+
+## Metrics
+
+No meter provider is configured. The service imports only the trace exporter and
+never calls `metrics.set_meter_provider`, so the metrics that the `requests` and
+HTTPX instrumentation libraries can emit have nowhere to go and are not
+exported. See the
+[metric coverage matrix](../../telemetry-features/metric-coverage/).
+
+## Logs
+
+The service configures the Python standard library logger only:
+
+```python
+logging.basicConfig(level=logging.INFO)
+```
+
+Requests to the agent, and any errors, are logged through it in
+`chat_with_agent`:
+
+```python
+logging.info(f"Sending request {payload} to Agent")
+```
+
+Because no `LoggerProvider` or `LoggingHandler` is set up, these records go to
+stdout and are collected by the container runtime instead of being exported over
+OTLP, so they are not correlated with traces. See the
+[log coverage matrix](../../telemetry-features/log-coverage/).
+
+For the full list of environment variables and troubleshooting steps, see the
+[service README](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/chatbot#readme).
