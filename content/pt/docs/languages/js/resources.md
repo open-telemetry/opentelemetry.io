@@ -222,7 +222,7 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 ```
 
-Reconstrua sua imagem e execute o contêiner mais uma vez:
+Reconstrua a imagem e execute o contêiner mais uma vez:
 
 ```shell
 docker run --rm -p 8080:8080 nodejs-otel-getting-started
