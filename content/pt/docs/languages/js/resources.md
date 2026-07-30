@@ -141,7 +141,7 @@ process.on('SIGINT', function () {
 });
 ```
 
-Para que o ID do seu contêiner seja detectado automaticamente, instale a
+Para que o ID do contêiner seja detectado automaticamente, instale a
 seguinte dependência adicional:
 
 ```sh
