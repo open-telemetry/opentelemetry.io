@@ -625,6 +625,7 @@ https://docs.particular.net/nservicebus/operations/opentelemetry,200,1785134661
 https://docs.particular.net/samples/open-telemetry/prometheus-grafana/#reporting-metric-values,200,1784960532
 https://docs.payara.fish/community/docs/Technical%20Documentation/MicroProfile/OpenTelemetry%20and%20OpenTracing.html,206,1784284798
 https://docs.php-http.org/en/latest/clients.html,200,1784284647
+https://docs.pytest.org/,200,1785433132
 https://docs.python.org/3/library/gc.html#gc.get_stats,206,1784356048
 https://docs.python.org/3/library/sys.html#sys.implementation,200,1784701517
 https://docs.python.org/3/library/sys.html#sys.version,200,1784701517
@@ -2922,11 +2923,13 @@ https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quote/,206,17
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/react-native-app/,206,1784442352
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendation/,200,1785134660
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/,206,1784442350
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/test/telemetry/services.py,200,1785433133
 https://github.com/open-telemetry/opentelemetry-demo/issues/1601,200,1785227700
 https://github.com/open-telemetry/opentelemetry-demo/issues/3720,200,1785227699
 https://github.com/open-telemetry/opentelemetry-demo/pull/3604,200,1785227700
 https://github.com/open-telemetry/opentelemetry-demo/tree/db0d981326ee0161d706c949061686d7823d99a2/src/product-reviews,200,1784701477
 https://github.com/open-telemetry/opentelemetry-demo/tree/main/test,206,1784442358
+https://github.com/open-telemetry/opentelemetry-demo/tree/main/test/telemetry,200,1785433133
 https://github.com/open-telemetry/opentelemetry-dotnet,200,1785134663
 https://github.com/open-telemetry/opentelemetry-dotnet-contrib,206,1784284658
 https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.AspNet-1.16.0/src/OpenTelemetry.Instrumentation.AspNet/README.md#list-of-metrics-produced,200,1784960532
