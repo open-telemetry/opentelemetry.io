@@ -178,7 +178,7 @@ Crie sua imagem Docker:
 docker build . -t nodejs-otel-getting-started
 ```
 
-Execute seu contêiner:
+Execute o contêiner:
 
 ```sh
 $ docker run --rm -p 8080:8080 nodejs-otel-getting-started
