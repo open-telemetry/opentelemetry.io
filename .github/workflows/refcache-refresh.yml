@@ -6,11 +6,11 @@ name: Refcache refresh
 # pruning the oldest N entries, then running the link checker to update the
 # cache. N is set via the workflow_dispatch input.
 #
-# If the PR branch already exists, then by default we only rebase from `main`.
+# If the PR branch already exists, then by default we only merge from `main`.
 # To force further pruning of the existing PR branch, invoke with
 # `prune_more_in_same_PR` set to true. If the branch exists but has no open PR
 # (e.g., the PR was closed without deleting the branch), the branch is reset
-# to `main` and treated as new, so that pruning happens again.
+# to `origin/main` and treated as new, so that pruning happens again.
 #
 # The workflow and its PR branch (otelbot/refcache-refresh) keep their
 # historical refcache names; scripts and docs now say "link cache".
@@ -66,8 +66,8 @@ jobs:
         run: |
           if [[ -z "$REFRESH_COUNT" ]]; then
             echo "REFRESH_COUNT=$DEFAULT_REFRESH_COUNT" >> $GITHUB_ENV
-          elif [[ ! "$REFRESH_COUNT" =~ ^[0-9]+$ ]]; then
-            echo "Error: REFRESH_COUNT must be a non-negative number, got: $REFRESH_COUNT"
+          elif [[ ! "$REFRESH_COUNT" =~ ^[0-9]+$ || "$REFRESH_COUNT" -eq 0 ]]; then
+            echo "Error: REFRESH_COUNT must be a positive number, got: $REFRESH_COUNT"
             exit 1
           fi
 
@@ -186,7 +186,7 @@ jobs:
             printf "PR created: %s\n" "$PR_URL"
           else
             echo "::error::Failed to create PR, likely because there are no" \
-              "commits on $BRANCH. Entries were pruned this run, so the" \
-              "link-cache refresh should have produced changes."
+              "commits on $BRANCH. When pruning ran this run, the link-cache" \
+              "refresh should have produced changes."
             exit 1
           fi
