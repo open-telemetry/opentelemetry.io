@@ -144,7 +144,7 @@ receivers:
         endpoint: 0.0.0.0:4317
 
   # Collect host metrics
-  hostmetrics:
+  host_metrics:
     scrapers:
       cpu:
       memory:
@@ -180,7 +180,7 @@ service:
       processors: [memory_limiter, resourcedetection]
       exporters: [otlp]
     metrics:
-      receivers: [otlp, hostmetrics]
+      receivers: [otlp, host_metrics]
       processors: [memory_limiter, resourcedetection]
       exporters: [otlp]
     logs:

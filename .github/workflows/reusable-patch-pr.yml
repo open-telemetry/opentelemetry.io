@@ -16,7 +16,7 @@ name: Reusable - publish patch as PR
 #       commit-message: Apply housekeeping fixes
 #       user-name: otelbot
 #       user-email: 197425009+otelbot@users.noreply.github.com
-#       app-id: ${{ vars.MY_APP_ID }}
+#       client-id: ${{ vars.MY_CLIENT_ID }}
 #     secrets:
 #       app-private-key: ${{ secrets.MY_APP_PRIVATE_KEY }}
 #
@@ -76,7 +76,7 @@ on:
         description: Git user email for the commit.
         required: true
         type: string
-      app-id:
+      client-id:
         description: >-
           Client ID of the GitHub App used to push the branch and create the PR.
           The app needs write access to this repository's contents and pull
@@ -85,7 +85,7 @@ on:
         type: string
     secrets:
       app-private-key:
-        description: Private key of the GitHub App identified by `app-id`.
+        description: Private key of the GitHub App.
         required: true
     outputs:
       pr-url:
@@ -107,7 +107,7 @@ jobs:
       pr_url: ${{ steps.pr.outputs.pr_url }}
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
@@ -126,7 +126,7 @@ jobs:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: app-token
         with:
-          client-id: ${{ inputs.app-id }}
+          client-id: ${{ inputs.client-id }}
           private-key: ${{ secrets.app-private-key }}
           permission-contents: write # push the patch branch
           permission-pull-requests: write # create the PR
@@ -135,6 +135,9 @@ jobs:
         with:
           ref: main
           persist-credentials: false
+          # Full history so that the 3-way apply below always has the
+          # pre-image blobs of the main that the patch was generated against.
+          fetch-depth: 0
 
       # Let git resolve credentials through the gh CLI (which reads GH_TOKEN
       # from each step's env) instead of persisting the token in .git/config.
@@ -152,7 +155,9 @@ jobs:
           BRANCH: ${{ inputs.branch }}
         run: |
           git checkout -b "$BRANCH"
-          if ! git apply --verbose site.patch; then
+          # 3-way so that the patch still applies when commits land on main
+          # while the caller's run is in flight.
+          if ! git apply --3way --verbose site.patch; then
             echo "Patch failed to apply. For details, see output above. To debug this locally,"
             echo "get the patch file from the workflow summary artifact section."
             exit 1

@@ -1,0 +1,14 @@
+title: Stdout
+registryType: exporter
+language: swift
+tags:
+  - Stdout
+  - exporter
+  - swift
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-swift-core/tree/main/Sources/Exporters/Stdout
+license: Apache 2.0
+description:
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

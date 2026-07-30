@@ -1,0 +1,24 @@
+# cSpell:ignore baggagespan
+title: OpenTelemetry Baggage Span Processor for Node.js
+registryType: processor
+language: js
+tags:
+  - baggagespan
+  - processor
+  - js
+license: Apache 2.0
+description:
+  The BaggageSpanProcessor reads entries stored in Baggage from the parent
+  context and adds the
+  [baggage](https://opentelemetry.io/docs/concepts/signals/baggage) entries'
+  keys and
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/baggage-span-processor
+createdAt: 2025-03-26
+package:
+  registry: npm
+  name: '@opentelemetry/baggage-span-processor'
+  version: 0.5.0
+isFirstParty: false

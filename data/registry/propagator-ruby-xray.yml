@@ -1,0 +1,16 @@
+title: opentelemetry-propagator-xray
+registryType: propagator
+language: ruby
+tags:
+  - xray
+  - propagator
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/propagator/xray
+license: Apache 2.0
+description:
+  The `opentelemetry-propagator-xray` gem contains injectors and extractors for
+  the
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

@@ -2,8 +2,6 @@
 title: Blog
 description: Află cum să trimiți o postare pe blog.
 weight: 30
-# NOTE: once this translation is updated, remove the following htmltest config:
-htmltest: { IgnoreDirs: [/en/docs/contributing/blog/] }
 default_lang_commit: 09d3687760884bda721b6ddb9f3b91e2ddfb1021 #patched
 drifted_from_default: true
 ---

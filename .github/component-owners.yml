@@ -89,5 +89,5 @@ components:
     - open-telemetry/python-approvers
 
   # No-owner files:
-  static/refcache.json:
+  .lycheecache:
     - open-telemetry/docs-approvers

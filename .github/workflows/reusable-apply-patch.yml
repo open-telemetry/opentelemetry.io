@@ -17,7 +17,7 @@ name: Reusable - apply patch to PR
 #       commit-message: Apply patch
 #       user-name: otelbot
 #       user-email: 197425009+otelbot@users.noreply.github.com
-#       app-id: ${{ vars.MY_APP_ID }}
+#       client-id: ${{ vars.MY_CLIENT_ID }}
 #     secrets:
 #       app-private-key: ${{ secrets.MY_APP_PRIVATE_KEY }}
 
@@ -47,7 +47,7 @@ on:
         description: Git user email for the commit.
         required: true
         type: string
-      app-id:
+      client-id:
         description: >-
           Client ID of the GitHub App used to push to the PR branch. The app
           needs write access to this repository's contents.
@@ -55,7 +55,7 @@ on:
         type: string
     secrets:
       app-private-key:
-        description: Private key of the GitHub App identified by `app-id`.
+        description: Private key of the GitHub App.
         required: true
     outputs:
       committed:
@@ -80,14 +80,14 @@ jobs:
       committed: ${{ steps.commit.outputs.committed }}
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: app-token
         with:
-          client-id: ${{ inputs.app-id }}
+          client-id: ${{ inputs.client-id }}
           private-key: ${{ secrets.app-private-key }}
           permission-contents: write # apply/push the patch commit
           permission-pull-requests: read # gh pr checkout

@@ -109,6 +109,7 @@
     metrics: alpha
     logs: beta
     traces: beta
+    profiles: development
 - name: coralogixexporter
   display_name: Coralogix Exporter
   repo: contrib

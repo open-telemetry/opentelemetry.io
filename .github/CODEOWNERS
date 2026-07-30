@@ -19,7 +19,8 @@
 
 # CI/infra resources are owned by docs-maintainers, except for cspell files.
 # Keep this list in sync with the `CI/infra` label list in
-# .github/component-label-map.yml. cSpell:ignore gulpfile
+# .github/component-label-map.yml (which notes intentional omissions).
+# cSpell:ignore gulpfile
 /.claude/**                     @open-telemetry/docs-maintainers
 /.cspell/**                     @open-telemetry/docs-approvers
 /.cspell.yml                    @open-telemetry/docs-approvers
@@ -27,7 +28,6 @@
 /.editorconfig                  @open-telemetry/docs-maintainers
 /.github/**                     @open-telemetry/docs-maintainers
 /.gitpod.yml                    @open-telemetry/docs-maintainers
-/.htmltest.base.yml             @open-telemetry/docs-maintainers
 /.markdown*.*                   @open-telemetry/docs-maintainers
 /content/**/.markdownlint.yaml  @open-telemetry/docs-maintainers
 /.nvmrc                         @open-telemetry/docs-maintainers
@@ -40,6 +40,7 @@
 /content/en/site/**             @open-telemetry/docs-maintainers
 /gulp-src/**                    @open-telemetry/docs-maintainers
 /gulpfile.js                    @open-telemetry/docs-maintainers
+/lychee.base.toml               @open-telemetry/docs-maintainers
 /Makefile                       @open-telemetry/docs-maintainers
 /netlify/**                     @open-telemetry/docs-maintainers
 /netlify.toml                   @open-telemetry/docs-maintainers
@@ -49,7 +50,7 @@
 
 # No-owner files. Keep this list in sync with the `no-owner-files` list in
 # .github/component-owners.yml.
-/static/refcache.json
+/.lycheecache
 
 # ------------------------------------------------------------
 # Localization teams own their locale's files.

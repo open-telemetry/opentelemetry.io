@@ -10,6 +10,7 @@ author: >-
   Stancu](https://github.com/bogdan-st) (Adobe)
 sig: End-User
 default_lang_commit: 6751402db060c25800bb41c270dcaebb48aa7acb
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: autoescalado contrapresión reinicios Sloughter sénior Öjeling
 ---
