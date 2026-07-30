@@ -7,9 +7,9 @@
 // anything; tree-wide status syncs belong to the nightly Housekeeping run.
 // Needs history down to the changed pages' pins (CI uses fetch-depth: 0).
 // Dependency-free, like drift.mjs: the workflow runs it without npm install.
-// Known benign race: in a merge_group, the diff can include another queued
-// PR's EN edits, flagging a copy this PR didn't touch — the failure output
-// names the page and remedy, and the next queue run clears it.
+// Known merge_group effect: the group diff can include a co-queued PR's
+// EN edits, flagging a queued PR's copy early — the drift is real once
+// that edit merges, and the failure output names the page and remedy.
 // Policy:
 // https://opentelemetry.io/docs/contributing/localization/#drift-status
 //
@@ -21,16 +21,23 @@ import { realpathSync } from 'node:fs';
 import { pathToFileURL, fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
-import { driftReportForRepo, writeStatuses } from './drift.mjs';
+import {
+  CONTENT_DIR,
+  DEFAULT_LANG,
+  driftReportForRepo,
+  writeStatuses,
+} from './drift.mjs';
 
 const execFileP = promisify(execFile);
 
 // Localized (non-EN) content pages among the given repo-relative paths.
 export function selectLocalizedPages(paths) {
+  const contentPrefix = `${CONTENT_DIR}/`;
+  const enPrefix = `${CONTENT_DIR}/${DEFAULT_LANG}/`;
   return paths.filter(
     (p) =>
-      p.startsWith('content/') &&
-      !p.startsWith('content/en/') &&
+      p.startsWith(contentPrefix) &&
+      !p.startsWith(enPrefix) &&
       p.endsWith('.md'),
   );
 }
@@ -53,7 +60,7 @@ export async function guardDriftState(rootDir, baseRef) {
     base,
     'HEAD',
     '--',
-    'content',
+    CONTENT_DIR,
   );
   const pages = selectLocalizedPages(diffOut.split('\n').filter(Boolean));
   if (!pages.length) return { pages, actions: [] };
