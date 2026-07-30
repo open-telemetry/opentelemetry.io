@@ -699,12 +699,6 @@ maintainers:
       - semconv-mainframe-maintainers
     html_url: https://github.com/gshriver
     avatar_url: https://avatars.githubusercontent.com/u/5203552?v=4
-  - name: hdost
-    teams:
-      - rust-approvers
-      - rust-maintainers
-    html_url: https://github.com/hdost
-    avatar_url: https://avatars.githubusercontent.com/u/643846?v=4
   - name: inge4pres
     teams:
       - zig-approvers
