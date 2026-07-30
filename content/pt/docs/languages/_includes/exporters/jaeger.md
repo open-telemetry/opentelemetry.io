@@ -13,11 +13,12 @@ Docker com uma UI acessível através da porta 16686 e OTLP habilitados nas port
 
 ```shell
 docker run --rm \
+  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
   -p 16686:16686 \
   -p 4317:4317 \
   -p 4318:4318 \
   -p 9411:9411 \
-  jaegertracing/jaeger:latest
+  jaegertracing/all-in-one:latest
 ```
 
 ### Uso {#jaeger-usage}

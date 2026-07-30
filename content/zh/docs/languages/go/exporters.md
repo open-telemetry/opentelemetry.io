@@ -51,10 +51,11 @@ Jaeger >= v1.35.0），你需要配置一个 OTLP 导出器，将数据发送到
 
 ```shell
 docker run -d --name jaeger \
+  -e COLLECTOR_OTLP_ENABLED=true \
   -p 16686:16686 \
   -p 4317:4317 \
   -p 4318:4318 \
-  jaegertracing/jaeger:latest
+  jaegertracing/all-in-one:latest
 ```
 
 ### 基于 HTTP 的 OTLP 指标{#otlp-metrics-over-http}
