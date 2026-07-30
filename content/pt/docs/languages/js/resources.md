@@ -192,10 +192,10 @@ DockerCGroupV1Detector found resource. Resource {
 }
 ```
 
-O detector extraiu o `container.id` para você. No entanto, você pode perceber
-que neste exemplo os atributos de processo e os atributos definidos por uma
-variável de ambiente estão faltando! Para resolver isso, ao definir a lista
-`resourceDetectors`, você também precisa especificar os detectores `envDetector`
+O detector extraiu o `container.id`. No entanto, note que,
+neste exemplo, os atributos de processo e os atributos definidos por
+variável de ambiente estão ausentes! Para resolver isso, ao definir a lista
+`resourceDetectors`, é necessário também especificar os detectores `envDetector`
 e `processDetector`:
 
 ```javascript
