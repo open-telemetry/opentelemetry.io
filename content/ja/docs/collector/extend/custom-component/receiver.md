@@ -6,6 +6,7 @@ aliases:
   - /docs/collector/trace-receiver
   - /docs/collector/building/receiver
 default_lang_commit: 2af96e42fca16c64f346a174d62a9d53f43545b3
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: backendsystem crand debugexporter mapstructure pcommon pdata ptrace rcvr resourcespans struct tailtracer telemetrygen uber
 ---
