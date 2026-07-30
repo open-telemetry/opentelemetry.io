@@ -215,7 +215,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
   instrumentations: [getNodeAutoInstrumentations()],
-  // Certifique-se de adicionar aqui todos os detectores que você precisa!
+  // Certifique-se de adicionar aqui todos os detectores necessários!
   resourceDetectors: [envDetector, processDetector, containerDetector],
 });
 
