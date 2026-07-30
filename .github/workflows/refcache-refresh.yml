@@ -8,7 +8,9 @@ name: Refcache refresh
 #
 # If the PR branch already exists, then by default we only rebase from `main`.
 # To force further pruning of the existing PR branch, invoke with
-# `prune_more_in_same_PR` is true.
+# `prune_more_in_same_PR` is true. If the branch exists but has no open PR
+# (e.g., the PR was closed without deleting the branch), the branch is reset
+# to `main` and treated as new, so that pruning happens again.
 #
 # The workflow and its PR branch (otelbot/refcache-refresh) keep their
 # historical refcache names; scripts and docs now say "link cache".
@@ -81,8 +83,16 @@ jobs:
             echo "Branch $BRANCH already exists, doing checkout."
             git checkout $BRANCH
 
-            PR_URL=$(gh pr view --json url --jq '.url')
-            echo "Branch PR: $PR_URL"
+            PR_URL=$(gh pr list --state open --head $BRANCH --json url --jq '.[].url')
+            if [[ -n "$PR_URL" ]]; then
+              echo "Branch PR: $PR_URL"
+            else
+              echo "Branch has no open PR, so it is stale." \
+                "Resetting it to origin/main and treating it as new."
+              echo "IS_NEW_BRANCH=true" >> $GITHUB_ENV
+              git reset --hard origin/main
+              git push --force-with-lease origin $BRANCH
+            fi
           fi
 
       - name: Use CLA approved github bot
@@ -175,6 +185,8 @@ jobs:
             PR_URL=$(gh pr view --json url --jq '.url')
             printf "PR created: %s\n" "$PR_URL"
           else
-            echo "Failed to create PR - likely no commits to create PR from"
-            exit 0  # Don't fail the workflow, just skip PR creation
+            echo "::error::Failed to create PR." \
+              "There are no commits on $BRANCH, but entries were pruned this" \
+              "run, so the link-cache refresh should have produced changes."
+            exit 1
           fi
