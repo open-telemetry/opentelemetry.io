@@ -343,8 +343,8 @@ its English counterpart and
 [refresh its pin](#updating-default_lang_commit-for-existing-pages) — the status
 is cleared in the same write — or record the remaining drift with
 `npm run fix:i18n:status -- <PATHS>`. Pins can only point at commits on `main`,
-so a page synced to English changes made in the same PR takes the second form —
-recorded drift — until those changes merge.
+so a page synced to English changes made in the same PR records the remaining
+drift until those changes merge.
 
 ### Script help
 
