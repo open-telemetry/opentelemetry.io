@@ -24,8 +24,8 @@ para ter os arquivos `package.json`, `app.js` (ou `app.ts`) e
 
 Por padrão, o SDK do Node.js detecta [recursos de processo e do _runtime_ de
 processo][process and process runtime resources] e obtém atributos da variável
-de ambiente `OTEL_RESOURCE_ATTRIBUTES`. Você pode verificar o que ele detecta
-ativando o log de diagnóstico no seu arquivo de instrumentação:
+de ambiente `OTEL_RESOURCE_ATTRIBUTES`. É possível verificar o que é detectado
+ativando o registro de diagnóstico no arquivo de instrumentação:
 
 ```javascript
 // Para investigação de problemas, defina o nível de log como DiagLogLevel.DEBUG
