@@ -18,7 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-        with: { persist-credentials: false }
+        with:
+          persist-credentials: false
+          # Full history: fix:link-cache needs the drift-status baseline commit
+          fetch-depth: 0
 
       - name: Create NPM cache-hash input file
         run: |
