@@ -328,17 +328,23 @@ the last sync point. The marker is dropped the next time the page's hash is
 
 ### Drift status
 
-Run `npm run fix:i18n:status -- <PATHS>` to set the `drifted_from_default`
-front-matter field on those of the given localization pages that have drifted.
-In a PR, pass only the pages that a failing check reports; tree-wide runs belong
-to the daily Housekeeping workflow. For the check-green minimum that governs
-such status updates, see
-[Keeping the build and checks green](#keep-checks-green).
+The `drifted_from_default` front-matter field marks a localized page as drifted:
+the page displays an "outdated" banner, and the link checker skips it, so that
+stale links on drifted pages don't fail CI. The link checker doesn't wait for
+the field: locale copies of English pages changed since the last tree-wide
+status sync are skipped as well, as
+[drift pending](/site/build/link-checking/#configuration).
 
-This field displays an "outdated" banner at the top of the page, and causes the
-link checker to skip the page, so that stale links on drifted pages don't fail
-CI. For details about how the link checker handles drifted pages, see
-[Link checking](/site/build/link-checking/).
+The daily [Housekeeping run](/site/build/ci-workflows/#housekeeping) keeps the
+field in sync tree wide; PRs don't update the status of pages they don't
+otherwise change. Each page that a PR **does** change must leave the PR with an
+accurate drift state, as the `I18N check` enforces: either sync the page with
+its English counterpart and
+[refresh its pin](#updating-default_lang_commit-for-existing-pages) — the status
+is cleared in the same write — or record the remaining drift with
+`npm run fix:i18n:status -- <PATHS>`. Pins can only point at commits on `main`,
+so a page synced to English changes made in the same PR records the remaining
+drift until those changes merge.
 
 ### Script help
 
@@ -562,7 +568,7 @@ PRs.
 > The locale-span rule governs page **content**. Maintainers sometimes submit
 > content-neutral changes that necessarily span locales: site-wide tooling,
 > configuration, front-matter, or markup updates, including
-> [drift-status](#track-changes) bookkeeping — the automated PRs and manual
+> [drift-status](#drift-status) bookkeeping — the automated PRs and manual
 > status-only edits alike. Such changes don't alter the meaning of localized
 > pages.
 
@@ -576,7 +582,7 @@ that is strictly required to keep the site build and its checks green:
   [Link fixes and resource updates](#link-fixes-and-resource-updates).
 - **Build fixes**: repairing site-build breakage on localized pages, for
   example, after a shared shortcode, include file, or data source changes. A
-  page's [drift status](#track-changes) only shields it from link checking, not
+  page's [drift status](#drift-status) only shields it from link checking, not
   from the Hugo build.
 
 In both cases, mark every localized page that you fix as [patched](#patched).
@@ -610,7 +616,7 @@ Proceed according to the fate of the link target:
      paths. Links to the old path therefore still need fixing.
   2. Update the link to the new path on each non-English page that fails link
      checking, and mark each edited page as [patched](#patched).
-     ([Drifted](#track-changes) pages are skipped by the link checker, so this
+     ([Drifted](#drift-status) pages are skipped by the link checker, so this
      typically applies to in-sync pages.)
 
 - **A section was moved**: aliases can't help in this case, since they redirect
@@ -622,14 +628,14 @@ Proceed according to the fate of the link target:
 - **A page or section was deleted**: choosing a replacement or dropping the
   reference is a [semantic change](#semantic-changes) for each affected locale,
   so don't patch such links. Fixing the English pages that linked to the deleted
-  target makes their localized copies drift: once your English edits are
-  committed, refresh the [drift status](#drift-status) of just the localized
-  pages that fail link checking:
-  `npm run fix:i18n:status -- <PATHS-TO-FAILING-LOCALIZED-PAGES>`. The link
-  checker then skips those pages; the daily Housekeeping run refreshes the
-  status of the remaining copies. Reconciliation is left to each page's locale
-  team. In the rare case where a failing link exists only in a localized page,
-  coordinate a fix with its locale team.
+  target makes their localized copies drift; the link checker already skips such
+  copies as [drift pending](#drift-status), and the daily Housekeeping run
+  persists their status. If a localized page still fails link checking, refresh
+  its [drift status](#drift-status) directly:
+  `npm run fix:i18n:status -- <PATHS-TO-FAILING-LOCALIZED-PAGES>`.
+  Reconciliation is left to each page's locale team. In the rare case where a
+  failing link exists only in a localized page, coordinate a fix with its locale
+  team.
 
 - **An external resource was moved**, but is otherwise semantically unchanged
   (such as a relocated GitHub file): update the link on each page that fails
