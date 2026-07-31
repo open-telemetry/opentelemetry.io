@@ -67,6 +67,10 @@ shallow clone to the baseline commit; locally, fetch the missing history
 `DRIFT_BASELINE=HEAD npm run check:links` empties the overlay (stored-status
 skips still apply).
 
+A local tree-wide status sync (`npm run fix:i18n`) can rewrite
+`data/l10n-drift.yaml`; leave that rewrite uncommitted — a locally recorded
+commit might not exist upstream.
+
 ## Link cache {#refcache}
 
 External-link check results are cached in `.lycheecache`, which is under version
