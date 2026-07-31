@@ -181,7 +181,8 @@ uvicorn main:app --workers 2
 
 If using Gunicorn, then you can initialize OpenTelemetry with
 [programmatic auto-instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/blob/main/opentelemetry-instrumentation/README.rst#programmatic-auto-instrumentation)
-as part of your post-fork hooks, instead of with `opentelemetry-instrument`. For example, in a file `gunicorn_config.py` that is alongside `your_app.py`:
+as part of your post-fork hooks, instead of with `opentelemetry-instrument`. For
+example, in a file `gunicorn_config.py` that is alongside `your_app.py`:
 
 ```python
 from opentelemetry.instrumentation.auto_instrumentation import initialize
