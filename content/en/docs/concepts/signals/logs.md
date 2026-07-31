@@ -189,8 +189,7 @@ if (logger.Enabled(...)) {
 In most cases this check is unnecessary and not recommended. OpenTelemetry SDKs
 are designed to be efficient -- the invocation of the logging API has minimum
 overhead when the logger is not enabled. Making an extra call to
-`logger.Enabled` would actually decrease the performance and makes your code
-harder to read.
+`logger.Enabled` decreases performance and makes your code harder.
 
 The `Enabled` API is useful only when _evaluating the arguments_ passed to the
 logging call is itself expensive, and you want to avoid that cost when the
