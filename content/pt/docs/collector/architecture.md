@@ -1,8 +1,8 @@
 ---
 title: Arquitetura
 weight: 28
-default_lang_commit: 31df6bb8bbb7ed53732ea30ed366179dc37d0aab
-drifted_from_default: true
+default_lang_commit: 714d6cc9c14f0cc2ef26397587388644b0e5d12f
+drifted_from_default: false
 cSpell:ignore: fanoutconsumer otlp probabilisticsampler zpages
 ---
 
@@ -18,7 +18,7 @@ O recebimento, o processamento e a exportação de dados são feitos usando
 [pipelines](#pipelines). Você pode configurar o Collector com um ou mais
 pipelines.
 
-Cada pipeline inclui:
+Cada _pipeline_ inclui:
 
 - Um conjunto de [receptores](#receivers) que coletam os dados.
 - Uma série de [processadores](#processors) opcionais que recebem os dados dos
@@ -77,8 +77,8 @@ Uma configuração de pipeline normalmente se parece com isto:
 
 ```yaml
 service:
-  pipelines: # section that can contain multiple subsections, one per pipeline
-    traces: # type of the pipeline
+  pipelines: # seção que pode conter várias subseções, uma por pipeline
+    traces: # tipo do pipeline
       receivers: [otlp, zipkin]
       processors: [memory_limiter]
       exporters: [otlp, zipkin]
@@ -105,11 +105,11 @@ receivers:
 
 service:
   pipelines:
-    traces: # a pipeline of “traces” type
+    traces: # um pipeline do tipo "traces"
       receivers: [otlp]
       processors: [memory_limiter]
       exporters: [otlp]
-    traces/2: # another pipeline of “traces” type
+    traces/2: # outro pipeline do tipo "traces"
       receivers: [otlp]
       processors: [transform]
       exporters: [otlp]
@@ -175,11 +175,11 @@ exporters:
 
 service:
   pipelines:
-    traces: # a pipeline of “traces” type
+    traces: # um pipeline do tipo "traces"
       receivers: [zipkin]
       processors: [memory_limiter]
       exporters: [otlp]
-    traces/2: # another pipeline of “traces” type
+    traces/2: # outro pipeline do tipo "traces"
       receivers: [otlp]
       processors: [transform]
       exporters: [otlp]
@@ -232,11 +232,11 @@ processors:
 
 service:
   pipelines:
-    traces: # a pipeline of “traces” type
+    traces: # um pipeline do tipo "traces"
       receivers: [zipkin]
       processors: [transform]
       exporters: [otlp]
-    traces/2: # another pipeline of “traces” type
+    traces/2: # outro pipeline do tipo "traces"
       receivers: [otlp]
       processors: [transform]
       exporters: [otlp]
