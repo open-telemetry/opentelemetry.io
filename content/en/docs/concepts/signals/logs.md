@@ -211,7 +211,7 @@ Even then, keep in mind that the result of `Enabled` is not static: it can
 change over time as configuration changes, so it should be evaluated per log
 record and not cached.
 
-For the normative API guidance, see the
+For normative API guidance, see
 [Logs API specification](/docs/specs/otel/logs/api/#enabled).
 
 ## OpenTelemetry logging components
