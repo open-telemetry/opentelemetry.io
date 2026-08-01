@@ -1296,14 +1296,6 @@ maintainers:
       - javascript-triagers
     html_url: https://github.com/pichlermarc
     avatar_url: https://avatars.githubusercontent.com/u/22105064?v=4
-  - name: puckpuck
-    teams:
-      - demo-approvers
-      - demo-maintainers
-      - helm-approvers
-      - helm-triagers
-    html_url: https://github.com/puckpuck
-    avatar_url: https://avatars.githubusercontent.com/u/1296118?v=4
   - name: rafaelroquetto
     teams:
       - ebpf-instrumentation-approvers
@@ -2407,6 +2399,11 @@ triagers:
       - docs-triagers
     html_url: https://github.com/pratik-mahalle
     avatar_url: https://avatars.githubusercontent.com/u/124587957?v=4
+  - name: puckpuck
+    teams:
+      - helm-triagers
+    html_url: https://github.com/puckpuck
+    avatar_url: https://avatars.githubusercontent.com/u/1296118?v=4
   - name: punya
     teams:
       - javascript-contrib-triagers
