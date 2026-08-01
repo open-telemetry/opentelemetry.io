@@ -6,6 +6,7 @@ description:
 aliases: [new-content]
 weight: 15
 default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
+drifted_from_default: true
 ---
 
 Pentru a contribui cu conținut sau să îmbunătățești documentația existentă,
@@ -367,9 +368,9 @@ direction TB
 end
 subgraph second [ ]
 direction TB
-5[5\. Select your branch from<br>the compare drop-down menu] --> 6[6\. Select Create Pull Request]
-6 --> 7[7\. Add a description<br>to your PR]
-7 --> 8[8\. Select Create pull request]
+5[5\. Selectează ramura ta din<br>meniul drop-down de comparație] --> 6[6\. Selectează Create Pull Request]
+6 --> 7[7\. Adaugă o descriere<br>la PR-ul tău]
+7 --> 8[8\. Selectează Create pull request]
 end
 
 first --> second
@@ -380,41 +381,43 @@ class 1,2,3,4,5,6,7,8 grey
 class first,second white
 ```
 
-_Figure 4. Steps to open a PR from your fork to_
+_Figura 4. Pașii pentru a deschide un PR din fork-ul tău la_
 [opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io).
 
-1. In a web browser, go to the
-   [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io)
-   repository.
-1. Select **New Pull Request**.
-1. Select **compare across forks**.
-1. From the **head repository** drop-down menu, select your fork.
-1. From the **compare** drop-down menu, select your branch.
-1. Select **Create Pull Request**.
-1. Add a description for your pull request:
-   - **Title** (50 characters or less): Summarize the intent of the change.
-   - **Description**: Describe the change in more detail.
-     - If there is a related GitHub issue, include `Fixes #12345` or
-       `Closes #12345` in the description so that GitHub's automation closes the
-       mentioned issue after merging the PR. If there are other related PRs,
-       link those as well.
-     - If you want advice on something specific, include any questions you'd
-       like reviewers to think about in your description.
+1. Într-un browser web, navighează la repertoriul
+   [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io).
+1. Selectează **New Pull Request**.
+1. Selectează **compare across forks**.
+1. Din meniul drop-down pentru **repertoriul head** , selectează fork-ul tău.
+1. Din meniul drop-down **compare**, selectează ramura ta.
+1. Selectează **Create Pull Request**.
+1. Adaugă o descriere pentru pull request-ul tău:
+   - **Title** (50 de caractere sau mai puțin): Creează un rezumat al intenției
+     schimbărilor.
+   - **Description**: Descrie schimbările în detaliu.
+     - Dacă există un GitHub issue de care se leagă, include `Fixes #12345` sau
+       `Closes #12345` în descriere astfel ca automatizările din GitHub să
+       închidă issue-ul menționat după ce PR-ul a fost unit. Dacă există și alte
+       PR-uri conexe, fă mențiune și de acelea.
+     - Dacă dorești sfaturi despre ceva specific, include în descriere orice
+       întrebare la care ai vrea ca revizuitorii să se gândească
 
-1. Select the **Create pull request** button.
+1. Selectează butonul **Create pull request**.
 
-Your pull request is available in
+Pull request-ul tău este disponibil în secțiunea
 [Pull requests](https://github.com/open-telemetry/opentelemetry.io/pulls).
 
-After opening a PR, GitHub runs automated tests and tries to deploy a preview
-using [Netlify](https://www.netlify.com/).
+După deschiderea unui PR, GitHub rulează teste automate and încearcă să lanseze
+o previzualizare folosind [Netlify](https://www.netlify.com/).
 
-- If the Netlify build fails, select **Details** for more information.
-- If the Netlify build succeeds, select **Details** to open a staged version of
-  the OpenTelemetry website with your changes applied. This is how reviewers
-  check your changes.
+- Dacă build-ul de Netlify eșuează, selectează **Details** pentru mai multe
+  informații.
+- Dacă build-ul de Netlify reușește, selectează **Details** pentru a deschide o
+  versiune intermediară a website-ului OpenTelemetry cu schimbările tale
+  aplicate. Așa verifică revizuitorii schimbările tale.
 
-Other checks might also fail. See the [list of all PR checks](../pr-checks).
+Alter verifică ar putea să eșueze. Vezi
+[lista cu toate verificările de PR](../pr-checks).
 
 ### Fix issues {#fix-issues}
 
