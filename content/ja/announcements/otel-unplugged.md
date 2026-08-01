@@ -7,8 +7,8 @@ weight: 20260202
 params:
   blogPostURL: /blog/2025/otel-unplugged-fosdem/
   eventUrl: https://events.humanitix.com/otelunplugged-eu2026
-cSpell:ignore: fosdem
 default_lang_commit: 88988ddd65fffa386db3f05196ca688faf03170e
+cSpell:ignore: fosdem
 ---
 
 [**OTel Unplugged EU**][event] が **ブリュッセルにて
