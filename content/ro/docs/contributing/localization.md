@@ -9,13 +9,13 @@ cSpell:ignore: Dowair shortcodes
 
 Website-ul OTel folosește [framework-ul multilingvist][multilingual framework]
 al lui Hugo pentru a susține localizările paginilor. Engleza este limba
-implicită, având Engleză US ca localizarea implicită. Un număr în creștere de
-alte localizări sunt disponibile, cum se poate vedea în lista de limbi din bara
+implicită, având Engleză US ca localizare standard. Numărul localizărilor disponibile
+este în continuă creștere, cum se poate vedea în lista de limbi din bara
 de navigație din antet.
 
 ## Îndrumări pentru traducere
 
-Când traduceți pagini web din Engleză, recomandăm să urmezi îndrumările oferite
+Când traduci pagini web din engleză, recomandăm să urmezi îndrumările oferite
 în această secțiune
 
 ### Sumar
@@ -31,9 +31,9 @@ Când traduceți pagini web din Engleză, recomandăm să urmezi îndrumările o
   - [Front matter][] valorile câmpurilor pentru `title`, `linkTitle`, și
     `description`
   - **Tot** conținutul paginii și front matter dacă nu se specifică altfel
-- **Păstrați** _conținutul_, _înțelesul_, și _stilul_ textului original
-- **Trimiteți schimbări _incrementale_** via [pull request-uri mici](#small-prs)
-- **Întrebați** [maintainers][] dacă aveți dubii sau întrebări prin:
+- **Păstrează** _conținutul_, _înțelesul_, și _stilul_ textului original
+- **Trimite schimbări _incrementale_** via [pull request-uri mici](#small-prs)
+- **Întreabă** [administratori][maintainers] dacă aveți dubii sau întrebări prin:
   - [Slack][] Canalele `#otel-docs-localization` sau `#otel-comms`
   - [Discuție][Discussion], issue, sau comentariu pe PR
 
@@ -53,18 +53,18 @@ Când traduceți pagini web din Engleză, recomandăm să urmezi îndrumările o
     `exemplu de cod inline`)
   - Nume de **Fișier sau director** al resurselor din acest repertoriu
   - Câmpuri [Front matter][], altele decât cele enumerate în [Ce se face](#do).
-    În special, nu traduce `aliasuri`. Când ai dubii, întreabă maintainers.
+    În special, nu traduce `aliasuri`. Când ai dubii, întreabă administratori.
   - [Linkuri](#links), asta include și [id-urile titlurilor](#headings) [^*]
   - Elemente Markdown marcate ca și `notranslate` (deobicei ca o clasă CSS), în
     special pentru [titluri](#headings)
-- Create **copies of images and other assets**, unless you
-  [localize text in them](#images)
-- Add new or change:
-  - **Content** that would be different from the originally intended meaning
-  - Presentation **style**, including: _formatting_, _layout_, and _design_
-    style (typography, letter case, and spacing for example).
+- Creează **copii de imagini și alte fișiere**, decât dacă
+  [traduci text din ele](#images)
+- Adaugă sau schimbă:
+  - **Conținut** care ar avea un sens diferit față de cel inițial dorit
+  - **Stilul** de prezentare, incluzând: _formatare_, _aspect_, și stilul de
+    _design_ (font, scrierea cu literă mică sau mare și spațierea spre exemplu).
 
-[^*]: For a possible exception, see [Links](#links).
+[^*]: Pentru o posibilă excepție, vezi [Links](#links).
 
 [`MARKDOWN` linter]: ../pr-checks/#markdown-linter
 
@@ -75,8 +75,8 @@ Când traduceți pagini web din Engleză, recomandăm să urmezi îndrumările o
 Dacă folosești instrumente de inteligență artificială generativă (precum
 ChatGPT, Gemini, sau similare) pentru a te ajuta cu traducerea, trebuie să
 respecți [Politica OpenTelemetry privind contribuția folosind IA
-generativ][genai-policy] și [Politica Linux Foundation privind contribuția
-folosind IA generativ][lf-ai-policy]. În mod special:
+generativă][genai-policy] și [Politica Linux Foundation privind contribuția
+folosind IA generativă][lf-ai-policy]. În mod special:
 
 - **Dezvăluie** că ai folosit IA bifând căsuța corespunzătoare din [șablonul
   pull request-ului][pull request template].
@@ -114,7 +114,7 @@ externe, căi către pagini ale website-ului și resurse locale din secțiuni cu
 fi [imagini și alte resurse](#images).
 
 Singura excepție este pentru link-uri către pagini externe (precum
-<https://en.wikipedia.org>) care au o versiune specifică a localizării tale. Des
+<https://en.wikipedia.org>) care au o versiune specifică a localizării tale. În mod frecvent
 acest lucru implică schimbarea `en`-ului din URL la codul de limbă al
 localizării tale.
 
@@ -125,13 +125,13 @@ localizării tale.
 > documentație. **Link-uri de forma `/docs/some-page` sunt făcute să fie
 > specifice localizării** prin prefixarea căii cu codul de limbă atunci când se
 > randează link-ul. Spre exemplu, calea precedentă ar deveni
-> `/ja/docs/some-page` când este randată dintr-o pagină în Japoneză.
+> `/ja/docs/some-page` când este randată dintr-o pagină în japoneză.
 
 ### Etichete pentru definițiile link-urilor {#link-labels}
 
 Autorii de traduceri regionale pot sau nu să aleagă să traducă
 [etichete][labels] pentru [definițiile link-urilor][link definitions] din
-Markdown. Dacă alegi să păstrezi eticheta în Engleză, atunci urmărește ghidul
+Markdown. Dacă alegi să păstrezi eticheta în engleză, atunci urmărește ghidul
 dat în această secțiune.
 
 Ia în considerare următorul exemplu de Markdown:
@@ -143,7 +143,7 @@ Ia în considerare următorul exemplu de Markdown:
 [OTel website]: https://opentelemetry.io
 ```
 
-Acest ar fi tradus în Franceză ca și:
+Acesta ar fi tradus în franceză ca și:
 
 ```markdown
 [Bonjour][hello], le monde! Bienvenue sur le [site OTel][OTel website].
@@ -161,8 +161,8 @@ Acest ar fi tradus în Franceză ca și:
 - **Nu** face copii ale fișierelor de imagine, videoclipuri sau alte elemente
   care nu reprezintă conținut decât dacă traduci textul din fișier.
   - Hugo este deștept în felul în care randează fișiere de imagine care sunt
-    partajate între traducerile din site. Astfel că, Hugo va produce un _singur_
-    fișier de imagine și-l va împărții între traduceri. Pentru detalii, vezi
+    partajate între traducerile din site. Prin urmare, Hugo va produce un _singur_
+    fișier de imagine și-l va împărți între traduceri. Pentru detalii, vezi
     [Page bundles][].
   - Acest lucru este impus de o verificare a îndeplinirii [instrucțiunilor de
     `LOCALIZARE`][l10n-check]
@@ -183,12 +183,12 @@ cum ai traducere orice alt conținut de pagină.
 > [!NOTE]
 >
 > Din Februarie 2025, suntem în procesul de migrare de la shortcodes la
-> [includeri de fișiere](#includes) ca un mijloc de partajare a conținutului
+> [includeri de fișiere](#includes) ca modalitate de partajare a conținutului
 > între pagini.
 
-Unele dintre shortcode-urile de bază conțin text în limba Engleză pe care s-ar
+Unele dintre shortcode-urile de bază conțin text în limba engleză pe care s-ar
 putea să fie nevoie să-l traduci. -- acest lucru este în mod special adevărat
-pentru acele conținute în [layouts/_shortcodes/docs][].
+pentru cele conținute în [layouts/_shortcodes/docs][].
 
 Dacă ai nevoie să creezi o versiune tradusă a unui shortcode, pune-l în
 `layouts/_shortcodes/xx`, unde `xx` este codul de limbă al traducerii tale. De
