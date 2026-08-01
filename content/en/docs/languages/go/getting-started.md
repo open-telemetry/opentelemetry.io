@@ -1,5 +1,6 @@
 ---
-title: Getting Started
+title: Getting Started by Example
+description: Get telemetry for your app in less than 5 minutes!
 weight: 10
 # prettier-ignore
 cSpell:ignore: autoexport chan fatalln funcs intn itoa otelhttp rolldice stdouttrace strconv
