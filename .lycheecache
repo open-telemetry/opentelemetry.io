@@ -432,6 +432,7 @@ https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concept
 https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html,200,1785134665
 https://docs.base14.io/category/opentelemetry-collector-setup,200,1784701493
 https://docs.bindplane.com/,200,1784355821
+https://docs.bmc.com/xwiki/bin/view/Main/Search?text=metric+ingestion+REST+API,206,1785624961
 https://docs.bronto.io/agent-setup/open-telemetry,200,1785134672
 https://docs.bugsnag.com/performance/distributed-tracing,200,1785134672
 https://docs.centreon.com/pp/integrations/plugin-packs/getting-started/how-to-guides/telegraf/,206,1784355825
@@ -631,6 +632,7 @@ https://docs.python.org/3/library/traceback.html#traceback.format_exc,200,178470
 https://docs.python.org/3/tutorial/datastructures.html#more-on-lists,200,1784701520
 https://docs.python.org/3/tutorial/datastructures.html#sets,200,1784701520
 https://docs.randoli.io/troubleshooting-observability/config/open-telemetry/,200,1784701493
+https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/red_hat_build_of_opentelemetry/,206,1785624961
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#clusterresourcequota-quota-openshift-io-v1,206,1785064057
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#status-total,206,1785064057
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1,206,1785064057
@@ -6255,8 +6257,11 @@ https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc,200,178514
 https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http,200,1785146154
 https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto,200,1785146154
 https://www.npmjs.com/package/@opentelemetry/exporter-zipkin,200,1784285365
+https://www.npmjs.com/package/@opentelemetry/instrumentation-express,206,1785624961
 https://www.npmjs.com/package/@opentelemetry/sdk-metrics,200,1784285366
+https://www.npmjs.com/package/@opentelemetry/sdk-node,206,1785624961
 https://www.npmjs.com/package/@opentelemetry/sdk-trace-node,200,1784286281
+https://www.npmjs.com/package/@opentelemetry/shim-opentracing,206,1785624961
 https://www.npmjs.com/search?q=%40cspell%2Fdict,200,1784286284
 https://www.nuget.org/packages/Azure.Monitor.OpenTelemetry.Exporter,200,1784356178
 https://www.nuget.org/packages/Confluent.Kafka,200,1784701475
