@@ -29,11 +29,22 @@ export function csvField(url) {
   return `"${url.replaceAll('"', '""')}"`;
 }
 
-// Cache text with the new lines merged in, normalized the way
-// lychee-norm-cache leaves the file (C-locale sort, trailing newline).
+// The (possibly quoted) URL field of a cache line, in its as-written form.
+function lineUrlField(line) {
+  const match = line.match(/^"(?:[^"]|"")*"|^[^,]*/);
+  return match[0];
+}
+
+// Cache text with the new lines merged in -- an existing entry for the same
+// URL is replaced -- normalized the way lychee-norm-cache leaves the file
+// (C-locale sort, trailing newline).
 export function mergedCacheText(cacheText, newLines) {
   if (newLines.length === 0) return cacheText;
-  return sortCacheText(cacheText + newLines.join('\n') + '\n');
+  const newUrls = new Set(newLines.map(lineUrlField));
+  const keptLines = cacheText
+    .split('\n')
+    .filter((line) => line !== '' && !newUrls.has(lineUrlField(line)));
+  return sortCacheText([...keptLines, ...newLines].join('\n') + '\n');
 }
 
 // False-green guard: the Lychee summary line declares an error count; if it

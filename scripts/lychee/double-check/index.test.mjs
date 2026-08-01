@@ -78,6 +78,18 @@ suite('mergedCacheText', () => {
     const cache = 'https://a.test/,200,1\n';
     assert.equal(mergedCacheText(cache, []), cache);
   });
+
+  test('replaces an existing entry for the same URL', () => {
+    const cache = 'https://a.test/,404,1\nhttps://b.test/,200,2\n';
+    const merged = mergedCacheText(cache, ['https://a.test/,206,3']);
+    assert.equal(merged, 'https://a.test/,206,3\nhttps://b.test/,200,2\n');
+  });
+
+  test('replaces an existing entry for the same quoted URL', () => {
+    const cache = '"https://a.test/x,y",404,1\n';
+    const merged = mergedCacheText(cache, ['"https://a.test/x,y",206,3']);
+    assert.equal(merged, '"https://a.test/x,y",206,3\n');
+  });
 });
 
 suite('checkReportConsistency', () => {
