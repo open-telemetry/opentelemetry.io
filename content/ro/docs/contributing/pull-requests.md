@@ -128,21 +128,21 @@ _Figura 2. Pașii pentru deschiderea unui PR folosind GitHub._
 1. Pe pagina unde vezi issue-ul, selectează opțiunea **Edit this page** din
    panoul de navigare din partea dreaptă.
 
-2. Dacă nu ești un membru al proiectului, GitHub oferă opțiunea de creare a unui
+1. Dacă nu ești un membru al proiectului, GitHub oferă opțiunea de creare a unui
    fork al repetoriului. Selectează **Fork this repository**.
 
-3. Efectuează schimbările în editorul din GitHub.
+1. Efectuează schimbările în editorul din GitHub.
 
-4. Completează formularul **Propose file change**.
+1. Completează formularul **Propose file change**.
 
-5. Selectează **Propose file change**.
+1. Selectează **Propose file change**.
 
-6. Selectează **Create pull request**.
+1. Selectează **Create pull request**.
 
-7. Va apărea ecranul **Open a pull request**. Descrierea ta îi ajută pe cei ce
+1. Va apărea ecranul **Open a pull request**. Descrierea ta îi ajută pe cei ce
    revizuiesc să înțeleagă schimbările tale
 
-8. Selectează **Create pull request**.
+1. Selectează **Create pull request**.
 
 Înainte de a îmbina un pull request, membrii comunității OpenTelemetry îl
 revizuiesc și-l aprobă
@@ -150,10 +150,10 @@ revizuiesc și-l aprobă
 Dacă un recenzent solicită să faci modificări:
 
 1. Du-te la tab-ul **Files changed**.
-2. Selectează iconița creion (de editare) în oricare fișier schimbat din pull
+1. Selectează iconița creion (de editare) în oricare fișier schimbat din pull
    request.
-3. Aplică schimbările cerute. Dacă există o sugestie de cod, aplic-o.
-4. Trimite schimbările.
+1. Aplică schimbările cerute. Dacă există o sugestie de cod, aplic-o.
+1. Trimite schimbările.
 
 Când revizuirea este completă, un recenzent va adăuga schimbările din PR-ul tău,
 care se vor putea vedea câteva minute mai târziu.
@@ -243,7 +243,7 @@ _Figura 3. Lucrul de pe un fork local pentru a face schimbările tale._
 
 1. Navighează la repertoriul
    [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/).
-2. Selectează **Fork**.
+1. Selectează **Fork**.
 
 ### Clonează și setează upstream-ul
 
@@ -256,14 +256,14 @@ _Figura 3. Lucrul de pe un fork local pentru a face schimbările tale._
    npm install
    ```
 
-2. Setează repertoriul `open-telemetry/opentelemetry.io` ca `upstream`-ul
+1. Setează repertoriul `open-telemetry/opentelemetry.io` ca `upstream`-ul
    remote:
 
    ```shell
    git remote add upstream https://github.com/open-telemetry/opentelemetry.io.git
    ```
 
-3. Confirmă repertoriile pentru `origin` și `upstream`:
+1. Confirmă repertoriile pentru `origin` și `upstream`:
 
    ```shell
    git remote -v
@@ -278,7 +278,7 @@ _Figura 3. Lucrul de pe un fork local pentru a face schimbările tale._
    upstream	https://github.com/open-telemetry/opentelemetry.io.git (push)
    ```
 
-4. Preia commit-uri de pe ramura `origin/main` a fork-ului și de pe
+1. Preia commit-uri de pe ramura `origin/main` a fork-ului și de pe
    `upstream/main` al `open-telemetry/opentelemetry.io`:
 
    ```shell
@@ -299,7 +299,7 @@ _Figura 3. Lucrul de pe un fork local pentru a face schimbările tale._
    git checkout -b <ramura_mea_noua> upstream/main
    ```
 
-2. Fă schimbările tale folosind un editor de cod sau text.
+1. Fă schimbările tale folosind un editor de cod sau text.
 
 La orice moment, folosește comanda `git status` pentru a vedea ce fișiere ai
 modificat.
@@ -329,7 +329,7 @@ Când ești gata să trimiți un pull request, urcă schimbările tale.
    no changes added to commit (use "git add" and/or "git commit -a")
    ```
 
-2. Adaugă fișierele listate sub **Changes not staged for commit** la setul de
+1. Adaugă fișierele listate sub **Changes not staged for commit** la setul de
    schimbări:
 
    ```shell
@@ -338,19 +338,19 @@ Când ești gata să trimiți un pull request, urcă schimbările tale.
 
    Repetă asta pentru fiecare fișier.
 
-3. După ce ai adăugat toate fișierele, creează un commit:
+1. După ce ai adăugat toate fișierele, creează un commit:
 
    ```shell
    git commit -m "Mesajul tău de commit"
    ```
 
-4. Împinge ramura ta locală cu commit-ul nou la fork-ul tău:
+1. Împinge ramura ta locală cu commit-ul nou la fork-ul tău:
 
    ```shell
    git push origin <ramura_mea_noua>
    ```
 
-5. Odată ce schimbările sunt trimise, GitHub te înștiințează că poți creea un
+1. Odată ce schimbările sunt trimise, GitHub te înștiințează că poți creea un
    PR.
 
 ### Deschide un PR nou {#open-a-pr}
@@ -419,172 +419,171 @@ o previzualizare folosind [Netlify](https://www.netlify.com/).
 Alter verifică ar putea să eșueze. Vezi
 [lista cu toate verificările de PR](../pr-checks).
 
-### Fix issues {#fix-issues}
+### Rezolvă problemele {#fix-issues}
 
-Before submitting a change to the repository, run the following command and (i)
-address any reported issues, (ii) commit any files changed by the script:
+Înainte să trimiți o schimbare la repertoriu, rulează următoarea comandă și (i)
+adresează orice problemă semnalată, (ii) trimite orice fișier schimbat de către script:
 
 ```sh
 npm run test-and-fix
 ```
 
-To separately test and fix all issues with your files, run:
+Pentru a testa și repara separat toate probleme din fișierele tale, rulează:
 
 ```sh
 npm run test # Checks but does not update any files
 npm run fix  # May update files
 ```
 
-To list available NPM scripts, run `npm run`. See [PR checks](../pr-checks) for
-more information on pull request checks and how to fix errors automatically.
+Pentru a lista toate script-urile NPM disponibile, rulează `npm run`. Vezi [PR checks](../pr-checks) pentru
+mai multe informații despre verificările de pull request și cum să repari erorile automat.
 
-### Preview your changes {#preview-locally}
+### Vizualizează schimbările tale {#preview-locally}
 
-Preview your changes locally before pushing them or opening a pull request. A
-preview lets you catch build errors or Markdown formatting problems.
 
-To build and serve the site locally with Hugo, run the following command:
+Vizualizează schimbările local înainte să le trimiți sau să deschizi un pull request.
+O previzualizare îți permite să identifici erorile de build sau de formatare Markdown.
+
+Pentru a construi și servii site-ul pe mediul local folosind Hugo, rulează următoarea comandă:
 
 ```shell
 npm run serve
 ```
 
-Navigate to <http://localhost:1313> in your web browser to see the local
-preview. Hugo watches for changes and rebuilds the site as needed.
+Navighează la <http://localhost:1313> în browser-ul tău web pentru a vedea versiunea locală.
+Hugo urmărește pentru schimbări și reconstruiește site-ul după caz.
 
-To stop the local Hugo instance, go back to the terminal and type `Ctrl+C`, or
-close the terminal window.
+Pentru a oprii instanța locală de Hugo, mergi înapoi în terminal și tastează `Ctrl+C`, sau închide
+fereastra de terminal.
 
-### Site deploys and PR previews
+### Lansări ale site-ului și previzualizări din PR
 
-If you submit a PR, Netlify creates a [deploy preview][] so that you can review
-your changes. Once your PR is merged, Netlify deploys the updated site to the
-production server.
+Dacă trimiți un PR, Netlify [lansează o previzualizare][deploy preview] astfel că poți revizuii
+schimbările tale. Odată ce schimbările din PR-ul sunt trimise, Netlify lansează versiunea actualizată
+a site-ului pe server-ul de producție.
 
-> **Note**: PR previews include _draft pages_, but production builds do not.
+> **Notă**: Previzualizările din PR includ _pagini draft_, dar build-urile de producție nu.
 
-To see deploy logs and more, visit the project's [dashboard][] -- Netlify login
-required.
+Pentru a vedea log-uri despre deploy și mai multe, vizitează [panoul][dashboard] proiectului -- Necesită
+un login pe Netlify.
 
-### PR guidelines
+### Îndrumări pentru PR
 
-Before a PR gets merged, it sometimes requires a few iterations of
-review-and-edit. To help us and yourself make this process as easy as possible,
-we ask that you adhere to the following:
+Înainte ca schimbările dintr-un PR să fie integrate, uneori este necesar să se treacă prin câteva
+iterații de revizuire-și-editare. Pentru a face acest proces cât mai facil pentru noi cât și pentru tine,
+te rugăm să aderi la următoarele:
 
-- If your PR isn't a quick fix, then **work from a fork**: Click the
-  [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) button at the
-  top of the repository and clone the fork locally. When you are ready, raise a
-  PR with the upstream repository.
-- **Do not work from the `main`** branch of your fork, but create a PR-specific
-  branch.
-- Ensure that maintainers are
-  [allowed to apply changes to your pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
+- Dacă PR-ul tău nu este un fix rapid, atunci **lucrează de pe un fork**: Apasă butonul
+  [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) din antetul repertoriului și clonează fork-ul local. Când ești gata, trimite un PR
+  către repertoriul upstream.
+- **Nu lucra pe ramura `main`** a fork-ului tău, creează o
+  ramură specifică pentru PR.
+- Asigură-te că administratorii
+  [au dreptul să modifice schimbările din pull request-ul tău](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
 
-### Changes from reviewers
+### Schimbări de la revizuitori
 
-Sometimes reviewers commit to your pull request. Before making any other
-changes, fetch those commits.
+Uneori revizuitorii trimit schimbări la pull request-ul tău. Înainte de a face orice altă schimbare,
+preia acele schimbări.
 
-1. Fetch commits from your remote fork and rebase your working branch:
-
-   ```shell
-   git fetch origin
-   git rebase origin/<your-branch-name>
-   ```
-
-1. After rebasing, force-push new changes to your fork:
-
-   ```shell
-   git push --force-with-lease origin <your-branch-name>
-   ```
-
-You can also solve merge conflicts from the GitHub UI.
-
-### Merge conflicts and rebasing
-
-If another contributor commits changes to the same file in another PR, it can
-create a merge conflict. You must resolve all merge conflicts in your PR.
-
-1. Update your fork and rebase your local branch:
+1. Preia schimbări de pe fork-ul tău remote și aplică un rebase pe ramura ta de lucru:
 
    ```shell
    git fetch origin
-   git rebase origin/<your-branch-name>
+   git rebase origin/<ramura-ta>
    ```
 
-   Then force-push the changes to your fork:
+1. După rebase, trimite schimbările noi către fork-ul tău folosind force-push:
 
    ```shell
-   git push --force-with-lease origin <your-branch-name>
+   git push --force-with-lease origin <ramura-ta>
    ```
 
-1. Fetch changes from `open-telemetry/opentelemetry.io`'s `upstream/main` and
-   rebase your branch:
+Poți de asemenea să rezolvi din interfața Github conflictele datorate integrării schimbărilor .
+
+### Conflictele datorate integrării schimbărilor și rebase
+
+Dacă alt contribuitor trimite schimbări la același fișier în alt PR, poate genera un conflict de integrare
+a schimbărilor. Trebuie să rezolvi toate aceste conflicte în PR-ul tău.
+
+1. Actualizează fork-ul tău și integrează schimbările în ramura ta locală folosind rebase:
+
+   ```shell
+   git fetch origin
+   git rebase origin/<ramura-ta>
+   ```
+
+   Apoi trimite schimbările la fork-ul tău folosind force-push:
+
+   ```shell
+   git push --force-with-lease origin <ramura-ta>
+   ```
+
+1. Preia schimbările de pe ramura `upstream/main` a repertoriului `open-telemetry/opentelemetry.io`
+   și integrează-le în ramura ta folosind rebase:
 
    ```shell
    git fetch upstream
    git rebase upstream/main
    ```
 
-1. Inspect the results of the rebase:
+1. Inspectează rezultatele după rebase:
 
    ```shell
    git status
    ```
 
-   This results in a number of files marked as conflicted.
+   Acest lucru duce la o serie de fișiere marcate ca fiind în conflict.
 
-1. Open each conflicted file and look for the conflict markers: `>>>`, `<<<`,
-   and `===`. Resolve the conflict and delete the conflict marker.
+1. Deschide fiecare fișier în conflict și caută marcajele de conflict: `>>>`, `<<<`,
+   și `===`. Rezolvă conflictele și apoi șterge marcajul de conflict.
 
-   For more information, see
-   [How conflicts are presented](https://git-scm.com/docs/git-merge#_how_conflicts_are_presented).
+   Pentru mai multe informații, vezi
+   [Cum sunt prezentate conflictele](https://git-scm.com/docs/git-merge#_how_conflicts_are_presented).
 
-1. Add the files to the changeset:
+1. Adaugă fișierele în setul de schimbări:
 
    ```shell
-   git add <filename>
+   git add <numele-fișierului>
    ```
 
-1. Continue the rebase:
+1. Continuă rebase-ul:
 
    ```shell
    git rebase --continue
    ```
 
-1. Repeat steps 2 to 5 as needed.
+1. Repetă pașii 2 până la 5 după caz.
 
-   After applying all commits, the `git status` command shows that the rebase is
-   complete.
+   După aplicarea tuturor schimbărilor, comanda `git status` arată că procesul de rebase este
+   complet.
 
-1. Force-push the branch to your fork:
+1. Trimite schimbările din ramura ta către fork-ul tău folosind force-push:
 
    ```shell
-   git push --force-with-lease origin <your-branch-name>
+   git push --force-with-lease origin <ramura-ta>
    ```
 
-   The pull request no longer shows any conflicts.
+   Pull request-ul nu va mai arăta vreun conflict.
 
-### Merge requirements
+### Cerințe pentru integrarea schimbărilor
 
-Pull requests are merged when they comply with the following criteria:
+Schimbările din pull request sunt integrate atunci când sunt conforme cu următoarele criterii:
 
-- All reviews by approvers, maintainers, technical committee members, or subject
-  matter experts have the status "Approved".
-- No unresolved conversations.
-- Approved by at least one approver.
-- No failing PR checks.
-- PR branch is up-to-date with the base branch.
-- Doc page changes [do not span locales][].
+- Toate revizuirile făcute de aprobatori, administratori, membrii ai comitetului tehnic sau
+  experți au statusul "Approved".
+- Nici o conversație nerezolvată.
+- Să fie aprobat de către cel puțin un aprobator.
+- Nici o verificare de PR care să eșueze.
+- Ramura PR-ului este la zi cu ramura de bază.
+- Schimbările paginilor de documentație [nu acoperă traducerile][do not span locales].
 
 [do not span locales]: ../localization/#prs-should-not-span-locales
 
 > **Important**
 >
-> Do not worry too much about failing PR checks. Community members will help you
-> to get them fixed, by either providing you with instructions how to fix them
-> or by fixing them on your behalf.
+> Nu te îngrijora prea mult despre verificările de PR care eșuează. Membrii ai comunității te vor ajuta
+> să le rezolvi, fie oferindu-ți instrucțiuni despre cum să le repari, fie reparându-le pentru tine.
 
 [dashboard]: https://app.netlify.com/sites/opentelemetry/overview
 [deploy preview]:
