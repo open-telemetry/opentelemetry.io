@@ -5,6 +5,7 @@ description:
 linkTitle: Localizare
 weight: 25
 cSpell:ignore: Dowair shortcodes
+default_lang_commit: 8711ecf72d25cdd723a0f7b6d41641df04eafb60
 ---
 
 Website-ul OTel folosește [framework-ul multilingvist][multilingual framework]
@@ -198,60 +199,61 @@ acolo, folosește aceeași cale relativă ca și shortcode-ul original de bază.
 [layouts/_shortcodes/docs]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
 
-## Keeping track of localized-page drift {#track-changes}
+## Urmărirea diferențelor dintre paginile localizate {#track-changes}
 
-One of the main challenges of maintaining localized pages, is identifying when
-the corresponding English language pages have been updated. This section
-explains how we handle this.
+Una dintre principalele provocări ale menținerii paginilor localizate este
+identificarea momentului în care versiunile corespunzătoare în limba engleză au
+fost actualizate. Această secțiune explică modul în care tratăm acest lucru.
 
-### The `default_lang_commit` front-matter field
+### Câmpul `default_lang_commit` din front matter
 
-When a localized page is written, such as `content/zh/<some-path>/page.md`, this
-translation is based on a specific [`main` branch commit][main] of the
-corresponding English language version of the page at
-`content/en/<some-path>/page.md`. In this repository, every localized page
-identifies the English page commit in the localized page's front matter as
-follows:
+Atunci când se creează o pagină localizată, precum
+`content/zh/<some-path>/page.md`, traducerea se bazează pe un anumit
+[commit din branch-ul `main`][main] al versiunii în limba engleză a paginii,
+aflată la `content/en/<some-path>/page.md`. În acest repertoriu, fiecare pagină
+localizată identifică în front matter commit-ul paginii în limba engleză,
+astfel:
 
 ```markdown
 ---
-title: Your localized page title
+title: Titlul paginii localizate
 # ...
-default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
+default_lang_commit: <hash-ul celui mai recent commit al paginii în limba implicită>
 ---
 ```
 
-The front matter above would be in `content/zh/<some-path>/page.md`. The commit
-hash would correspond to the latest commit of `content/en/<some-path>/page.md`
-from the `main` branch.
+Front matter-ul de mai sus s-ar afla în `content/zh/<some-path>/page.md`.
+Hash-ul commit-ului corespunde celui mai recent commit al paginii
+`content/en/<some-path>/page.md` din branch-ul `main`.
 
-### Tracking changes to English pages
+### Urmărirea modificărilor aduse paginilor în limba engleză
 
-As updates are made to English language pages, you can keep track of the
-corresponding localized pages that need updating by running the following
-command:
+Pe măsură ce paginile în limba engleză sunt actualizate, poți urmări paginile
+localizate corespunzătoare care necesită actualizare rulând următoarea comandă:
 
 ```console
 $ npm run check:i18n
-1       1       content/en/docs/platforms/kubernetes/_index.md - content/zh/docs/platforms/kubernetes/_index.md
+> Drifted file: content/zh/docs/platforms/kubernetes/_index.md
 ...
+DRIFTED files: 361 out of 990
 ```
 
-You can restrict the target pages to one or more localizations by providing
-path(s) like this:
+Poți restrânge paginile țintă la una sau mai multe localizări furnizând una sau
+mai multe căi, astfel:
 
 ```sh
 npm run check:i18n -- content/zh
 ```
 
-### Viewing change details
+### Vizualizarea detaliilor modificărilor
 
-For any given localized pages that need updating, you can see the diff details
-of the corresponding English language pages by using the `-d` flag and providing
-the paths to your localized pages, or omit the paths to see all. For example:
+Pentru orice pagină localizată care necesită actualizare, poți vedea detaliile
+diferențelor față de pagina corespunzătoare în limba engleză folosind subcomanda
+`diff` și indicând calea către pagina localizată. De exemplu:
 
 ```console
-$ npm run check:i18n -- -d content/zh/docs/platforms/kubernetes
+$ npm run check:i18n -- diff content/zh/docs/platforms/kubernetes
+# content/zh/docs/platforms/kubernetes/_index.md: drifted from 1ca30b4d
 diff --git a/content/en/docs/platforms/kubernetes/_index.md b/content/en/docs/platforms/kubernetes/_index.md
 index 3592df5d..c7980653 100644
 --- a/content/en/docs/platforms/kubernetes/_index.md
@@ -266,65 +268,114 @@ index 3592df5d..c7980653 100644
  ---
 ```
 
-### Adding `default_lang_commit` to new pages
+### Adăugarea câmpului `default_lang_commit` la paginile noi
 
-As you create pages for your localization, remember to add `default_lang_commit`
-to the page front matter along with an appropriate commit hash from `main`.
+Pe măsură ce creezi pagini pentru localizarea ta, nu uita să adaugi
+`default_lang_commit` în front matter-ul paginii, împreună cu un hash de commit
+corespunzător din `main`.
 
-If your page translation is based on an English page in `main` at `<hash>`, then
-run the following command to automatically add `default_lang_commit` to your
-page file's front matter using the commit `<hash>`. You can specify `HEAD` as an
-argument if your pages are now synced with `main` at `HEAD`. For example:
-
-```sh
-npm run check:i18n -- -n -c 1ca30b4d content/ja
-npm run check:i18n -- -n -c HEAD content/zh/docs/concepts
-```
-
-To list localization page files with missing hash keys, run:
+Dacă traducerea paginii tale se bazează pe o pagină în limba engleză din `main`
+la commit-ul `<HASH>`, rulează următoarea comandă pentru a adăuga automat
+`default_lang_commit` în front matter-ul fișierului paginii, folosind commit-ul
+`<HASH>`. Poți specifica `HEAD` ca argument dacă paginile tale sunt acum
+sincronizate cu `main` la `HEAD`. De exemplu:
 
 ```sh
-npm run check:i18n -- -n
+npm run check:i18n -- commit 1ca30b4d --new content/ja
+npm run check:i18n -- commit HEAD --new content/zh/docs/concepts
 ```
 
-### Updating `default_lang_commit` for existing pages
+Pentru a lista fișierele paginilor localizate cărora le lipsește cheia hash,
+rulează:
 
-As you update your localized pages to match changes made to the corresponding
-English language page, ensure that you also update the `default_lang_commit`
-commit hash.
+```sh
+npm run check:i18n -- --new
+```
+
+### Actualizarea câmpului `default_lang_commit` pentru paginile existente {#updating-default_lang_commit-for-existing-pages}
+
+Pe măsură ce îți actualizezi paginile localizate pentru a reflecta
+modificările aduse paginii corespunzătoare în limba engleză, asigură-te că
+actualizezi și hash-ul commit-ului din `default_lang_commit`.
 
 > [!TIP]
 >
-> If your localized page now corresponds to the English language version in
-> `main` at `HEAD`, then erase the commit hash value in the front matter, and
-> run the **add** command given in the previous section to automatically refresh
-> the `default_lang_commit` field value.
+> Dacă pagina ta localizată corespunde acum versiunii în limba engleză din
+> `main` la `HEAD`, rulează
+> `npm run check:i18n -- commit HEAD <CALEA-CĂTRE-PAGINA-TA>`: hash-ul
+> `default_lang_commit` este actualizat, iar
+> [starea diferențelor](#drift-status) paginii este eliminată în cadrul
+> aceleiași operațiuni de scriere.
 
-If you have batch updated all of your localization pages that had drifted, you
-can update the commit hash of these files using the `-c` flag followed by a
-commit hash or 'HEAD' to use `main@HEAD`.
+Dacă ai actualizat în bloc toate paginile localizate care prezentau diferențe,
+poți actualiza hash-ul commit-ului acestor fișiere folosind subcomanda
+`commit`, urmată de un hash de commit sau de `HEAD` pentru a utiliza
+`main@HEAD`.
 
 ```sh
-npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
-npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
+npm run check:i18n -- commit <HASH> <CALEA-CĂTRE-FIȘIERELE-ACTUALIZATE>
+npm run check:i18n -- commit HEAD <CALEA-CĂTRE-FIȘIERELE-ACTUALIZATE>
 ```
 
 > [!IMPORTANT]
 >
-> When you use `HEAD` as a hash specifier, the script will use the hash of
-> `main` at HEAD in your **local environment**. Make sure that you fetch and
-> pull `main`, if you want HEAD to correspond to `main` in GitHub.
+> Atunci când folosești `HEAD` ca specificator de hash, scriptul va utiliza
+> hash-ul branch-ului `main` la `HEAD` din **mediul tău local**. Asigură-te că
+> ai rulat `fetch` și `pull` pentru `main`, dacă vrei ca `HEAD` să corespundă
+> cu `main` de pe GitHub.
 
-### Drift status
+### Aplicarea de corecții paginilor localizate {#patched}
 
-Run `npm run fix:i18n:status` to set the `drifted_from_default` front-matter
-field on those target localization pages that have drifted. This field displays
-an "outdated" banner at the top of the page, and causes the link checker to skip
-the page, so that stale links on drifted pages don't fail CI.
+[Corecțiile de build și verificări](#keep-checks-green) necesită uneori
+editarea unei pagini localizate fără sincronizarea acesteia cu pagina
+corespunzătoare în limba engleză — de exemplu, actualizarea unui link după ce o
+pagină în limba engleză a fost mutată. Marchează fiecare pagină localizată
+corectată în acest mod ca **patched**, indiferent dacă respectiva corecție se
+aplică uneia sau mai multor localizări:
 
-### Script help
+- Fă doar modificările necesare pentru aplicarea corecției — fără alte
+  modificări în pagină.
+- Adaugă comentariul YAML `# patched` la sfârșitul liniei
+  `default_lang_commit` din pagină:
 
-For more details about the script, run `npm run check:i18n -- -h`.
+  ```yaml
+  default_lang_commit: abc4567... # patched
+  ```
+
+Marcajul este rezervat exclusiv pentru astfel de corecții mecanice —
+[modificările semantice](#semantic-changes) nu îl folosesc niciodată. Marcajul
+indică echipei de localizare că pagina a fost corectată fără a fi sincronizată:
+hash-ul continuă să indice ultimul punct de sincronizare. Marcajul este eliminat
+la următoarea [actualizare](#updating-default_lang_commit-for-existing-pages) a
+hash-ului paginii.
+
+### Starea diferențelor {#drift-status}
+
+Câmpul `drifted_from_default` din front matter marchează o pagină localizată ca
+fiind diferită de original: pagina afișează un banner „învechit”, iar
+verificatorul de link-uri o omite, astfel încât link-urile expirate din paginile
+care diferă să nu ducă la eșecul CI. Verificatorul de link-uri nu așteaptă
+prezența acestui câmp: copiile localizate ale paginilor în limba engleză
+modificate de la ultima sincronizare a stării la nivelul întregului arbore sunt
+de asemenea omise, ca
+[diferențe în așteptare](/site/build/link-checking/#configuration).
+
+[Rularea zilnică Housekeeping](/site/build/ci-workflows/#housekeeping) menține
+câmpul sincronizat la nivelul întregului arbore; pull request-urile nu
+actualizează starea paginilor pe care nu le modifică în alt mod. Fiecare pagină
+pe care un pull request **o modifică** trebuie să rămână cu o stare a
+diferențelor corectă, așa cum impune verificarea `I18N check`: fie sincronizezi
+pagina cu pagina corespunzătoare în limba engleză și îi
+[actualizezi referința](#updating-default_lang_commit-for-existing-pages) —
+starea este eliminată în cadrul aceleiași operațiuni de scriere — fie
+înregistrezi diferențele rămase cu `npm run fix:i18n:status -- <CĂI>`.
+Referințele pot indica numai commit-uri din `main`, așa că o pagină sincronizată
+cu modificări în limba engleză făcute în același pull request înregistrează
+diferențele rămase până când acele modificări sunt integrate.
+
+### Ajutor pentru script
+
+Pentru mai multe detalii despre script, rulează `npm run check:i18n -- -h`.
 
 ## New localizations
 
