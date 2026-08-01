@@ -144,12 +144,12 @@ are internal helpers and are not intended to be run directly.
 - **Link cache.** The link-check scripts read and update the committed
   `.lycheecache`. For details, see [Link checking](../link-checking/).
 - **`test:local-tools:lychee`** is the subset of `test:local-tools` that needs
-  the `lychee` binary (behavioral fragment- and config-checking tests). Those
-  tests skip when the binary is absent, so `test:local-tools` already covers
-  them in the general test job; the trailing `:lychee` keeps this script out of
-  `test:compound-tests` (which matches `test:*-*`) so the suite isn't run twice.
-  The link-check CI job installs lychee and runs this script to exercise them
-  for real.
+  the `lychee` binary (behavioral fragment- and config-checking tests, plus an
+  end-to-end drift-overlay scenario). Those tests skip when the binary is
+  absent, so `test:local-tools` already covers them in the general test job; the
+  trailing `:lychee` keeps this script out of `test:compound-tests` (which
+  matches `test:*-*`) so the suite isn't run twice. The link-check CI job
+  installs lychee and runs this script to exercise them for real.
 - **`all`** runs every listed script even when one fails, then exits with a
   non-zero status if any failed.
 
