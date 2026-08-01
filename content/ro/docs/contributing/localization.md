@@ -9,14 +9,14 @@ cSpell:ignore: Dowair shortcodes
 
 Website-ul OTel folosește [framework-ul multilingvist][multilingual framework]
 al lui Hugo pentru a susține localizările paginilor. Engleza este limba
-implicită, având Engleză US ca localizare standard. Numărul localizărilor disponibile
-este în continuă creștere, cum se poate vedea în lista de limbi din bara
-de navigație din antet.
+implicită, având Engleză US ca localizare standard. Numărul localizărilor
+disponibile este în continuă creștere, cum se poate vedea în lista de limbi din
+bara de navigație din antet.
 
 ## Îndrumări pentru traducere
 
-Când traduci pagini web din engleză, recomandăm să urmezi îndrumările oferite
-în această secțiune
+Când traduci pagini web din engleză, recomandăm să urmezi îndrumările oferite în
+această secțiune
 
 ### Sumar
 
@@ -33,7 +33,8 @@ Când traduci pagini web din engleză, recomandăm să urmezi îndrumările ofer
   - **Tot** conținutul paginii și front matter dacă nu se specifică altfel
 - **Păstrează** _conținutul_, _înțelesul_, și _stilul_ textului original
 - **Trimite schimbări _incrementale_** via [pull request-uri mici](#small-prs)
-- **Întreabă** [administratori][maintainers] dacă aveți dubii sau întrebări prin:
+- **Întreabă** [administratori][maintainers] dacă aveți dubii sau întrebări
+  prin:
   - [Slack][] Canalele `#otel-docs-localization` sau `#otel-comms`
   - [Discuție][Discussion], issue, sau comentariu pe PR
 
@@ -114,9 +115,9 @@ externe, căi către pagini ale website-ului și resurse locale din secțiuni cu
 fi [imagini și alte resurse](#images).
 
 Singura excepție este pentru link-uri către pagini externe (precum
-<https://en.wikipedia.org>) care au o versiune specifică a localizării tale. În mod frecvent
-acest lucru implică schimbarea `en`-ului din URL la codul de limbă al
-localizării tale.
+<https://en.wikipedia.org>) care au o versiune specifică a localizării tale. În
+mod frecvent acest lucru implică schimbarea `en`-ului din URL la codul de limbă
+al localizării tale.
 
 > [!NOTE]
 >
@@ -161,9 +162,9 @@ Acesta ar fi tradus în franceză ca și:
 - **Nu** face copii ale fișierelor de imagine, videoclipuri sau alte elemente
   care nu reprezintă conținut decât dacă traduci textul din fișier.
   - Hugo este deștept în felul în care randează fișiere de imagine care sunt
-    partajate între traducerile din site. Prin urmare, Hugo va produce un _singur_
-    fișier de imagine și-l va împărți între traduceri. Pentru detalii, vezi
-    [Page bundles][].
+    partajate între traducerile din site. Prin urmare, Hugo va produce un
+    _singur_ fișier de imagine și-l va împărți între traduceri. Pentru detalii,
+    vezi [Page bundles][].
   - Acest lucru este impus de o verificare a îndeplinirii [instrucțiunilor de
     `LOCALIZARE`][l10n-check]
 
