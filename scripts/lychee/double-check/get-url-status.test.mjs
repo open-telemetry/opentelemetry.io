@@ -1,5 +1,5 @@
 // Characterization tests for the recovered probe's pure parts: pin the
-// battle-tested behavior as-is (no red-green cycle -- the code predates the
+// existing behavior as-is (no red-green cycle -- the code predates the
 // tests). Browser-dependent paths are covered by the opt-in live smoke check
 // (./live-check.mjs), not here.
 

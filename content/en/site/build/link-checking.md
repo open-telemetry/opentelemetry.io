@@ -101,9 +101,9 @@ URLs that are still used in the site.
 ### Double-check of failing links {#double-check}
 
 Some URLs are valid but block plain HTTP clients like Lychee (bot walls,
-crates.io's unconditional 404s, npmjs.com signin redirects). Because Lychee
-never caches failures, such URLs would otherwise fail the link check on every
-run once their cache entries expire.
+crates.io's unconditional 404s, npmjs.com signin redirects). Since
+[failures are never cached](#refcache), such URLs would otherwise fail the link
+check on every run once their cache entries expire.
 
 The **double-check** tooling ([tracking issue][#11042]) re-verifies
 Lychee-reported failures through a browser-grade probe (headless Chrome via

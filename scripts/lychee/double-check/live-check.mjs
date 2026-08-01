@@ -7,7 +7,7 @@
 import { getUrlStatus, isHttp2XX } from './get-url-status.mjs';
 
 // URLs that Lychee's plain client cannot verify, with the probe outcome we
-// expect. 206 = "OK by analysis" (crates.io body analysis, npm CLI fallback).
+// expect.
 const cases = [
   { url: 'https://crates.io/crates/opentelemetry', expect: [206] },
   { url: 'https://www.npmjs.com/package/@opentelemetry/api', expect: '2xx' },

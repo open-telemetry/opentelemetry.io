@@ -1,11 +1,8 @@
 // Pure logic for the double-check driver: turn probe results for
-// Lychee-reported link failures into committed link-cache entries. Process
-// wiring lives in ./cli.mjs; tests in ./index.test.mjs.
-//
-// A probed URL that resolves (2xx-class status from the browser probe) is
-// recorded in .lycheecache with the synthetic status 206 -- "OK by analysis",
-// meaning verified by the browser-grade probe rather than by Lychee's plain
-// HTTP client. See ./get-url-status.mjs for the probe itself.
+// Lychee-reported link failures into committed link-cache entries with the
+// synthetic status 206 -- "OK by analysis", meaning verified by the
+// browser-grade probe (./get-url-status.mjs) rather than by Lychee's plain
+// HTTP client. Process wiring lives in ./cli.mjs; tests in ./index.test.mjs.
 
 import { sortCacheText } from 'link-cache/check/index.mjs';
 import { isHttp2XX } from './get-url-status.mjs';

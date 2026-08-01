@@ -8,9 +8,8 @@
 //
 // Beyond the plain HTTP status, the probe verifies URL fragments against the
 // rendered page (including GitHub `-ov-file` and line-range anchors), and
-// special-cases hosts whose responses are misleading to plain HTTP clients:
-// crates.io (body analysis) and npmjs.com (signin-redirect detection, with an
-// `npm view` CLI fallback). Synthetic statuses:
+// special-cases hosts whose responses are misleading to plain HTTP clients
+// (crates.io, npmjs.com). Synthetic statuses:
 //
 // - 206 ("OK by analysis"): resolved by inspection rather than HTTP status
 // - 422: page fetched OK, but the URL fragment was not found
@@ -38,15 +37,6 @@ const NPMJS_URL_REGEX = regexX(String.raw`
 // but strict enough to exclude shell metacharacters and malformed scopes.
 const NPM_PACKAGE_NAME_REGEX = /^(@[a-zA-Z0-9\-._~]+\/)?[a-zA-Z0-9\-._~]+$/;
 
-// NOTE about crates.io
-// --------------------
-// The crates.io server always returns 404. For details,
-// see: https://github.com/rust-lang/crates.io/issues/788. To determine if a
-// link into crates.io is valid, we need to inspect the response body. So, we'll
-// assume that a 404 from crates.io is not a real 404.
-//
-// (Actually, you can get it to always return 200, even for invalid paths, by
-// doing requests with 'Accept: text/html'.)
 const cratesIoURL = 'https://crates.io/';
 
 let verbose = false;
@@ -85,19 +75,16 @@ async function checkForFragment(url, page, status) {
 
 async function anchorExistsInGitHub(page, fragmentID) {
   if (/L\d+(-L\d+)?/.test(fragmentID)) {
-    // Handle line references in GitHub repos.
-    return await page.evaluate((name) => {
-      // Look for references to the fragment in the page, possibly with an
-      // `-ov-file` suffix (used as anchors of tabs in repo landing pages).
+    // Line references: GitHub marks the targeted lines as highlighted.
+    return await page.evaluate(() => {
       return !!document.querySelector('div.highlighted-line');
-    }, fragmentID);
+    });
   }
 
-  // Handle other fragment references in GitHub repos, link references
-  // to files (such as README), or to headings inside of displayed markdown.
+  // Other fragments (README tabs, headings in rendered markdown): look for a
+  // link to the fragment, possibly with the `-ov-file` suffix that GitHub
+  // uses as anchors of tabs on repo landing pages.
   return await page.evaluate((name) => {
-    // Look for references to the fragment in the page, possibly with an
-    // `-ov-file` suffix (used as anchors of tabs in repo landing pages).
     const elt = document.querySelector(
       `a[href="#${name}"], a[href="#${name}-ov-file"]`,
     );
@@ -146,9 +133,9 @@ async function getUrlHeadless(url) {
     log(`${status}; page title: '${title}'; checking page content: `);
 
     if (url.startsWith(cratesIoURL)) {
-      // Ignore status code, and check body. For details, see "Note about
-      // crates.io" above. If response body contains "... not found" return
-      // 404, otherwise assume OK.
+      // The crates.io server returns 404 for HTML page requests even when the
+      // page exists (https://github.com/rust-lang/crates.io/issues/788), so
+      // ignore the status and check the body instead.
       const bodyText = await page.content();
       status = /(Page|Crate ["\w\-]+) not found/i.test(bodyText)
         ? 404
@@ -261,11 +248,7 @@ async function mainCLI() {
 // Only run if script is executed directly (CLI)
 if (import.meta.url === `file://${process.argv[1]}`) await mainCLI();
 
-// ================================
-// Utility functions
-
-// Extract package name from URL
-// Handle scoped packages: @scope/package or regular packages: package
+// Extract the package name (@scope/package or package) from an npmjs.com URL.
 export function npmPackageNameFromUrl(url) {
   const match = url.match(NPMJS_URL_REGEX);
   if (!match) return null;
@@ -332,8 +315,8 @@ function getChromePath() {
   );
 }
 
-// Returns true iff status is 404 and URL is assumed Not Found. See "Note about
-// crates.io" for an explanation of the special handling of crates.io.
+// Returns true iff status is a 404 that we trust: crates.io 404s are
+// unreliable (see the body-analysis branch in getUrlHeadless).
 export function isStatusNotFound(status, url = '') {
   if (url && url.startsWith(cratesIoURL)) return false;
   return status === 404;

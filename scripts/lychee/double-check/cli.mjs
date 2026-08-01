@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 // Double-check driver: re-verify Lychee-reported link failures with the
 // browser-grade probe, and record each resolved URL in the committed link
-// cache (.lycheecache) as a synthetic-206 entry, so that Lychee -- which
-// never caches failures -- stops re-failing URLs that only block plain HTTP
-// clients. Context: https://github.com/open-telemetry/opentelemetry.io/issues/11042
+// cache (.lycheecache) as a synthetic-206 entry. Rationale and usage:
+// content/en/site/build/link-checking.md, "Double-check of failing links".
 //
 // Usage: cli.mjs [--verbose] [--expect-failures] [LYCHEE_LOG_FILE]
 //
