@@ -352,18 +352,18 @@ Când ești gata să trimiți un pull request, urcă schimbările tale.
 5. Odată ce schimbările sunt trimise, GitHub te înștiințează că poți creea un
    PR.
 
-### Open a new PR {#open-a-pr}
+### Deschide un PR nou {#open-a-pr}
 
-Figure 4 shows the steps to open a PR from your fork to
+Figura 4 arată pașii pentru a deschide un PR din fork-ul tău pe
 [opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io).
 
 ```mermaid
 flowchart LR
 subgraph first[ ]
 direction TB
-1[1\. Go to opentelemetry.io repository] --> 2[2\. Select New Pull Request]
-2 --> 3[3\. Select compare across forks]
-3 --> 4[4\. Select your fork from<br>head repository drop-down menu]
+1[1\. Mergi la repertoriul opentelemetry.io] --> 2[2\. Selectează 'New Pull Request']
+2 --> 3[3\. Selectează 'compare across forks']
+3 --> 4[4\. Selectează fork-ul tău din<br>meniul drop-down de selecție al repertoriului head]
 end
 subgraph second [ ]
 direction TB

@@ -18,6 +18,7 @@ contribuitoare
 contribuitori
 contribuitorii
 corecteazǎ
+creea
 creeazǎ
 depanezi
 descriptorilor
@@ -78,6 +79,7 @@ sugerezi
 telemetrice
 telemetrie
 tranzacţie
+urci
 urmǎrirea
 valideze
 verificatoarele
