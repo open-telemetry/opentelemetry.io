@@ -98,6 +98,29 @@ Refcache refresh prunes the oldest cache entries (the count is a workflow input)
 and re-runs the link check, which refreshes the cache entries for the pruned
 URLs that are still used in the site.
 
+### Double-check of failing links {#double-check}
+
+Some URLs are valid but block plain HTTP clients like Lychee (bot walls,
+crates.io's unconditional 404s, npmjs.com signin redirects). Because Lychee
+never caches failures, such URLs would otherwise fail the link check on every
+run once their cache entries expire.
+
+The **double-check** tooling ([tracking issue][#11042]) re-verifies
+Lychee-reported failures through a browser-grade probe (headless Chrome via
+Puppeteer, with fragment verification and per-host special cases). URLs that the
+probe resolves are recorded in `.lycheecache` with the synthetic status `206`
+("OK by analysis"). The Refcache refresh workflow runs it after the link check;
+to run it locally over a captured log:
+
+```sh
+npm run log:check:links
+npm run fix:link-cache:double-check
+```
+
+The probe requires Chrome: either set `CHROME_PATH`, or let the tooling install
+a Puppeteer-managed copy. An opt-in live smoke check of the probe is available
+as `npm run test:double-check:live`.
+
 ## In CI
 
 The [`check-links.yml` workflow][ci] builds the site once (lean) and shares that
@@ -106,6 +129,7 @@ That job fails if any link check fails, and hands the cache it refreshed to the
 `CACHE updates committed?` job, which fails if the run left the committed
 `.lycheecache` stale.
 
+[#11042]: https://github.com/open-telemetry/opentelemetry.io/issues/11042
 [blog-index]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
 [ci]: ../ci-workflows/

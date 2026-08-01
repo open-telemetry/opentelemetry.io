@@ -146,8 +146,30 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           lychee --version
-          # Ignore link-check failures so we can still commit link-cache updates
-          npm run full:build -- fix:link-cache || true
+          mkdir -p tmp
+          # Ignore link-check failures: the double-check step re-verifies
+          # them, and we still want to commit the link-cache updates.
+          npm run full:build -- fix:link-cache 2>&1 \
+            | tee tmp/check-links-log.txt || true
+          if grep -qE '^\[[A-Z0-9]+\] ' tmp/check-links-log.txt; then
+            echo "DOUBLE_CHECK_NEEDED=true" >> $GITHUB_ENV
+          fi
+
+      - uses: browser-actions/setup-chrome@2e1d749697dd1612b833dba4a722266286fbefcd # v2.1.2
+        id: setup-chrome
+        if: ${{ env.DOUBLE_CHECK_NEEDED == 'true' }}
+        with:
+          chrome-version: stable
+          install-dependencies: true # pulls required Linux libs
+
+      - name: Double-check failing links with the browser probe
+        if: ${{ env.DOUBLE_CHECK_NEEDED == 'true' }}
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+        run: |
+          echo "Chrome path: $CHROME_PATH"
+          "$CHROME_PATH" --version
+          npm run fix:link-cache:double-check -- --verbose
 
       - name: Commit link-cache updates and push changes if any
         run: |
