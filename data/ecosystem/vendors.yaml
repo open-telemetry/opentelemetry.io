@@ -74,7 +74,7 @@
   nativeOTLP: true
   url: https://docs.bindplane.com
   contact: hello@bindplane.com
-  oss: true
+  oss: false
   commercial: true
 - name: Bronto
   nativeOTLP: true
@@ -189,6 +189,12 @@
   nativeOTLP: true
   url: https://docs.guance.com/en/integrations/opentelemetry/
   contact:
+  oss: false
+  commercial: true
+- name: TrueWatch
+  nativeOTLP: true
+  url: https://docs.truewatch.com/integrations/opentelemetry
+  contact: ops@truewatch.com
   oss: false
   commercial: true
 - name: Heroku
@@ -427,7 +433,7 @@
   commercial: true
 - name: ServicePilot
   nativeOTLP: true
-  url: https://www.servicepilot.com/en/doc/apm#opentelemetry
+  url: https://www.servicepilot.com/en/doc/apm
   contact:
   oss: false
   commercial: true
