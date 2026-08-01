@@ -115,6 +115,41 @@ suite('checkReportConsistency', () => {
   test('accepts a log without a summary line (e.g. aborted run)', () => {
     checkReportConsistency('some build output, no lychee summary\n', []);
   });
+
+  // Exit-status cross-check: the workflow invokes the CLI whenever the link
+  // check exits nonzero. In that mode, "nothing parsed" is never OK -- it
+  // means either parser drift or a failure unrelated to links -- so the
+  // nonzero status must not be suppressed.
+  test('with expectFailures, throws when no failure lines parsed', () => {
+    const malformed = '🔍 9 Total (in 3s) 🔗 5 Unique ✅ 7 OK 🚫 2 Errors\n';
+    assert.throws(
+      () => checkReportConsistency(malformed, [], { expectFailures: true }),
+      /2 error/i,
+    );
+  });
+
+  test('with expectFailures, throws even without a summary line', () => {
+    assert.throws(
+      () =>
+        checkReportConsistency('build output, no lychee summary\n', [], {
+          expectFailures: true,
+        }),
+      /no failure lines/i,
+    );
+  });
+
+  test('with expectFailures, accepts a report whose failures were parsed', () => {
+    const out =
+      '[404] https://gone.test/ (at 3:1) | Rejected status code: 404\n' +
+      '🔍 2 Total (in 1s) 🔗 2 Unique ✅ 1 OK 🚫 1 Error\n';
+    checkReportConsistency(
+      out,
+      [{ status: '404', url: 'https://gone.test/' }],
+      {
+        expectFailures: true,
+      },
+    );
+  });
 });
 
 suite('summaryReport', () => {

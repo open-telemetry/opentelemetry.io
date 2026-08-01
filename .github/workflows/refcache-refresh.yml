@@ -147,11 +147,15 @@ jobs:
         run: |
           lychee --version
           mkdir -p tmp
-          # Ignore link-check failures: the double-check step re-verifies
-          # them, and we still want to commit the link-cache updates.
+          # Capture the link-check exit status rather than failing here: when
+          # it is nonzero, the double-check step re-verifies the failures, and
+          # only suppresses the failure once it is attributed to ordinary,
+          # parsed link failures. We still want to commit link-cache updates.
           npm run full:build -- fix:link-cache 2>&1 \
-            | tee tmp/check-links-log.txt || true
-          if grep -qE '^\[[A-Z0-9]+\] ' tmp/check-links-log.txt; then
+            | tee tmp/check-links-log.txt
+          LINK_CHECK_STATUS=${PIPESTATUS[0]}
+          echo "Link check exit status: $LINK_CHECK_STATUS"
+          if [[ $LINK_CHECK_STATUS -ne 0 ]]; then
             echo "DOUBLE_CHECK_NEEDED=true" >> $GITHUB_ENV
           fi
 
@@ -169,7 +173,7 @@ jobs:
         run: |
           echo "Chrome path: $CHROME_PATH"
           "$CHROME_PATH" --version
-          npm run fix:link-cache:double-check -- --verbose
+          npm run fix:link-cache:double-check -- --verbose --expect-failures
 
       - name: Commit link-cache updates and push changes if any
         run: |

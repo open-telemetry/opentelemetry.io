@@ -5,7 +5,12 @@
 // never caches failures -- stops re-failing URLs that only block plain HTTP
 // clients. Context: https://github.com/open-telemetry/opentelemetry.io/issues/11042
 //
-// Usage: cli.mjs [--verbose] [LYCHEE_LOG_FILE]
+// Usage: cli.mjs [--verbose] [--expect-failures] [LYCHEE_LOG_FILE]
+//
+// --expect-failures: fail unless at least one failure line was parsed from
+// the log. Set by the workflow when the link check exited nonzero, so a
+// nonzero status is only suppressed once it is attributed to ordinary,
+// parsed link failures.
 //
 // LYCHEE_LOG_FILE is a captured `check:links` log (default:
 // tmp/check-links-log.txt, where `log:check:links` tees it). Pure logic in
@@ -33,6 +38,7 @@ const cachePath = path.join(root, '.lycheecache');
 
 const args = process.argv.slice(2);
 const verbose = args.includes('--verbose');
+const expectFailures = args.includes('--expect-failures');
 const logFile =
   args.find((a) => !a.startsWith('-')) ??
   path.join(root, 'tmp', 'check-links-log.txt');
@@ -45,7 +51,7 @@ if (!fs.existsSync(logFile)) {
 
 const output = fs.readFileSync(logFile, 'utf8');
 const failures = failedUrlsOf(output);
-checkReportConsistency(output, failures);
+checkReportConsistency(output, failures, { expectFailures });
 
 if (failures.length === 0) {
   console.log('Double-check: no link failures to re-verify.');

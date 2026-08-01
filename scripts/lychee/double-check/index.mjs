@@ -50,14 +50,28 @@ export function mergedCacheText(cacheText, newLines) {
 // False-green guard: the Lychee summary line declares an error count; if it
 // is positive but the failure parse found nothing, the report format has
 // drifted and silently probing nothing would masquerade as success.
-export function checkReportConsistency(output, failures) {
+//
+// With `expectFailures` (set when the caller knows the link check exited
+// nonzero), "nothing parsed" is never OK -- it means parser drift or a
+// failure unrelated to links -- so throw even without a summary line.
+export function checkReportConsistency(
+  output,
+  failures,
+  { expectFailures = false } = {},
+) {
   const summary = output.match(/🚫 (\d+) Errors?/);
-  if (!summary) return; // no summary line: nothing to cross-check
-  const declared = Number(summary[1]);
+  const declared = summary ? Number(summary[1]) : 0;
   if (declared > 0 && failures.length === 0) {
     throw new Error(
       `Lychee reports ${declared} error(s) but no failure lines were parsed; ` +
         'the report format may have changed.',
+    );
+  }
+  if (expectFailures && failures.length === 0) {
+    throw new Error(
+      'The link check failed, but no failure lines were parsed from its ' +
+        'log; the failure may be unrelated to links, or the report format ' +
+        'may have changed.',
     );
   }
 }
