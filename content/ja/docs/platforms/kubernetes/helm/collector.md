@@ -1,9 +1,9 @@
 ---
 title: OpenTelemetryコレクターチャート
 linkTitle: コレクターチャート
-default_lang_commit: e8f18928513b726068be250802ebe7ece25e8851
+default_lang_commit: 80f1878ba5e02e1ac98daab3397999078dc67179
 # prettier-ignore
-cSpell:ignore: debugexporter filelog filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
+cSpell:ignore: filelog filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlp_http sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
 ---
 
 ## はじめに {#introduction}
@@ -20,7 +20,7 @@ Kubernetesへのコレクターのデプロイメントを容易にし、管理�
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 helm install my-opentelemetry-collector open-telemetry/opentelemetry-collector \
    --set image.repository="otel/opentelemetry-collector-k8s" \
-   --set mode=<daemonset|deployment|statefulset> \
+   --set mode=<daemonset|deployment|statefulset>
 ```
 
 ### 設定 {#configuration}
@@ -172,13 +172,13 @@ presets:
     enabled: true
 ```
 
-チャートのデフォルトのログパイプラインは `debugexporter` を使用します。
+チャートのデフォルトのログパイプラインは `debug` エクスポーターを使用します。
 `logsCollection` プリセットの `filelogreceiver` と組み合わせると、エクスポートしたログを誤ってコレクターに戻してしまい、「ログの爆発」を引き起こす可能性があります。
 
 ループを防止するために、レシーバーのデフォルト設定ではコレクター自身のログを除外しています。
 コレクターのログを含めたい場合は、 `debug` エクスポーターをコレクターの標準出力にログを送信しないエクスポーターに置き換えてください。
 
-以下は `values.yaml` の例で、`logs` パイプラインのデフォルトの `debug` エクスポーターを、コンテナのログを `https://example.com:55681` エンドポイントに送信する `otlphttp` エクスポーターに置き換えたものです。
+以下は `values.yaml` の例で、`logs` パイプラインのデフォルトの `debug` エクスポーターを、コンテナのログを `https://example.com:55681` エンドポイントに送信する `otlp_http` エクスポーターに置き換えたものです。
 また、`presets.logsCollection.includeCollectorLogs` を使用して、コレクターのログの収集を有効にするようにプリセットに指示します。
 
 ```yaml
@@ -191,13 +191,13 @@ presets:
 
 config:
   exporters:
-    otlphttp:
+    otlp_http:
       endpoint: https://example.com:55681
   service:
     pipelines:
       logs:
         exporters:
-          - otlphttp
+          - otlp_http
 ```
 
 #### Kubernetes属性プリセット {#kubernetes-attributes-preset}
@@ -325,4 +325,4 @@ presets:
     enabled: true
 ```
 
-[^1] `kubeletMetrics` プリセットと重複する部分があるため、デフォルトでは一部のファイルシステムタイプとマウントポイントは除外されています。
+[^1]: `kubeletMetrics` プリセットと重複する部分があるため、デフォルトでは一部のファイルシステムタイプとマウントポイントは除外されています。

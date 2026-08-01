@@ -4,14 +4,12 @@ weight: 20
 cSpell:ignore: springboot
 ---
 
-{{% alert title="Note" %}}
+> [!NOTE]
+>
+> You can also use the [Java agent](../../agent) to instrument your Spring Boot
+> application. For the pros and cons, see [Java zero-code instrumentation](..).
 
-You can also use the [Java agent](../../agent) to instrument your Spring Boot
-application. For the pros and cons, see [Java zero-code instrumentation](..).
-
-{{% /alert %}}
-
-### Compatibility
+## Compatibility
 
 The OpenTelemetry Spring Boot starter works with Spring Boot 2.6+ and 3.1+, and
 Spring Boot native image applications. The
@@ -19,7 +17,7 @@ Spring Boot native image applications. The
 repository contains an example of a Spring Boot Native image application
 instrumented using the OpenTelemetry Spring Boot starter.
 
-### Dependency management
+## Dependency management
 
 A Bill of Material
 ([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
@@ -29,17 +27,15 @@ To ensure version alignment across all OpenTelemetry dependencies, you must
 import the `opentelemetry-instrumentation-bom` BOM when using the OpenTelemetry
 starter.
 
-{{% alert title="Note" %}}
-
-When using Maven, import the OpenTelemetry BOMs before any other BOMs in your
-project. For example, if you import the `spring-boot-dependencies` BOM, you have
-to declare it after the OpenTelemetry BOMs.
-
-Gradle selects the
-[latest version](https://docs.gradle.org/current/userguide/dependency_resolution.html#2_perform_conflict_resolution)
-of a dependency when multiple BOMs, so the order of BOMs is not important.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> When using Maven, import the OpenTelemetry BOMs before any other BOMs in your
+> project. For example, if you import the `spring-boot-dependencies` BOM, you
+> have to declare it after the OpenTelemetry BOMs.
+>
+> Gradle selects the
+> [latest version](https://docs.gradle.org/current/userguide/dependency_resolution.html#2_perform_conflict_resolution)
+> of a dependency when multiple BOMs, so the order of BOMs is not important.
 
 The following example shows how to import the OpenTelemetry BOMs using Maven:
 
@@ -92,16 +88,14 @@ dependencyManagement {
 }
 ```
 
-{{% alert title="Note" %}}
+> [!NOTE]
+>
+> Be careful not to mix up the different ways of configuring things with Gradle.
+> For example, don't use
+> `implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))`
+> with the `io.spring.dependency-management` plugin.
 
-Be careful not to mix up the different ways of configuring things with Gradle.
-For example, don't use
-`implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))`
-with the `io.spring.dependency-management` plugin.
-
-{{% /alert %}}
-
-#### OpenTelemetry Starter dependency
+### OpenTelemetry Starter dependency
 
 Add the dependency given below to enable the OpenTelemetry starter.
 

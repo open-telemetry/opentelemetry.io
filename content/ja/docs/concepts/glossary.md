@@ -2,7 +2,7 @@
 title: 用語集
 description: OpenTelemetry で使用されるテレメトリー用語の定義と規則
 weight: 200
-default_lang_commit: 530c8fd130c93dd95e9638c8919518dbbc9c6b0a
+default_lang_commit: 6ef946a85afe66ba52174df13dad8345a3566d20
 ---
 
 この用語集は、OpenTelemetry プロジェクトに対して新しい、用語と[概念](/docs/concepts/)を定義し、オブザーバビリティの分野で一般的に使われている OpenTelemetry 特有の使用法を明確にします。
@@ -18,7 +18,7 @@ default_lang_commit: 530c8fd130c93dd95e9638c8919518dbbc9c6b0a
 
 ### API {#api}
 
-アプリケーション・プログラミング・インターフェース。
+アプリケーション・プログラミング・インターフェイス。
 OpenTelemetryプロジェクトでは、[データソース](#data-source)ごとにどのようにテレメトリーデータを生成するかを定義するために使用されます。
 
 ### アプリケーション {#application}
@@ -49,8 +49,14 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 ### カーディナリティ {#cardinality}
 
 特定の[属性](#attribute)または属性のセットに対する一意の値の数。
-カーディナリティが高いということは、一意の値が多いことを意味しており、テレメトリーバックエンドのパフォーマンスやストレージ要件に影響を与える可能性があります。
+カーディナリティが高いということは、一意の値が多いことを意味しており、テレメトリーバックエンドのパフォーマンスやストレージ要件、および[メトリクス](#metric) SDK が使用するメモリに影響を与える可能性があります。
 たとえば、`user_id` 属性は高いカーディナリティを持ちますが、"200"、"404"、"500" などの値を持つ `status_code` 属性は低いカーディナリティを持ちます。
+
+### カーディナリティの上限 {#cardinality-limit}
+
+[メトリクス](#metric) SDK が単一のメトリクスストリームに対して追跡する一意の属性の組み合わせの数に関する、設定可能な上限値で、メモリ使用量を制限するために使用されます。
+上限に達すると、それ以降の組み合わせは `otel.metric.overflow=true` 属性で識別される単一のオーバーフローデータポイントに集約されます。
+[カーディナリティの上限](/docs/concepts/signals/metrics/?link-check=no#cardinality-limits)を参照してください。
 
 ### クライアントライブラリ {#client-library}
 
@@ -66,7 +72,7 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 [OpenTelemetry コレクター][OpenTelemetry Collector]または短くしてコレクターは、テレメトリーデータの受信、処理、エクスポート方法に関するベンダー非依存の実装です。
 エージェントまたはゲートウェイとしてデプロイ可能な単一のバイナリです。
 
-> OpenTelemetry コレクターを指す場合は、常に「コレクター」と大文字で記載してください。「コレクター」を形容詞として使用する場合（例：「コレクターの設定」）も、「コレクター」と記載してください（英語では大文字で Collector と書くことを示しているが、日本語の場合はコレクターと記述する）。
+> **スペル**: [OpenTelemetry コレクター][OpenTelemetry Collector]を指す場合は、常に「コレクター」と大文字で記載してください。「コレクター」を形容詞として使用する場合（例：「コレクターの設定」）も、「コレクター」と記載してください（英語では大文字で Collector と書くことを示しているが、日本語の場合はコレクターと記述する）。
 
 [OpenTelemetry Collector]: /docs/collector/
 
@@ -104,6 +110,12 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 ディストリビューションとは、アップストリームのOpenTelemetryリポジトリのラッパーで、いくつかのカスタマイズが施されています。
 詳細は[ディストリビューション][Distributions]を参照してください。
+
+### エンティティ {#entity}
+
+物理的または論理的なオブジェクトを識別および説明する[属性](#attribute)のコレクション。
+エンティティは通常、テレメトリーに関連づけられます。
+たとえば、CPUエンティティは物理的なCPUを説明し、サービスエンティティはHTTPまたはその他のサービスを構成するプロセスの論理的なグループ化を説明します
 
 ### イベント {#event}
 
@@ -190,19 +202,19 @@ OpenTelemetryはこれらのペアを[属性](#attribute)と呼びます。
 ### オブザーバビリティバックエンド {#observability-backend}
 
 テレメトリーデータの受信、処理、保存、クエリを担うオブザーバビリティプラットフォームのコンポーネントです。
-商用製品だけではなく、たとえば [Jaeger] や [Prometheus] のようなオープンソースツールも含みます。
+商用製品だけではなく、たとえば [Jaeger][] や [Prometheus][] のようなオープンソースツールも含みます。
 OpenTelemetry はオブザーバビリティバックエンドではありません。
 
 ### オブザーバビリティフロントエンド {#observability-frontend}
 
-テレメトリーデータの可視化と分析のためのユーザーインターフェースを提供するオブザーバビリティプラットフォームのコンポーネントです。
+テレメトリーデータの可視化と分析のためのユーザーインターフェイスを提供するオブザーバビリティプラットフォームのコンポーネントです。
 特に商用製品を検討すると、オブザーバビリティバックエンドの一部である場合がしばしばあります。
 
 ### OpAMP {#opamp}
 
 [Open Agent Management Protocol](/docs/collector/management/#opamp) の省略形。
 
-> **スペル** 説明または指示においては `OPAMP` や `opamp` でもなく OpAMP と書いてください。
+> **スペル**: 説明または指示においては `OPAMP` や `opamp` でもなく OpAMP と書いてください。
 
 ### OpenCensus {#opencensus}
 
@@ -213,7 +225,7 @@ OpenTelemetry の前身です。詳細については、[歴史](/docs/what-is-o
 OpenTelemetry は、[OpenTracing](#opentracing) と [OpenCensus](#opencensus) プロジェクトの[統合][merger]によって生まれました。
 OpenTelemetry &mdash; 本サイトの主題である &mdash;は、[API](#api)、[SDK](#sdk)、および各種ツールの集合体であり、[計装](/docs/concepts/instrumentation/)を行い、[メトリクス](#metric)、[ログ](#log)、[トレース](#trace)などの[テレメトリーデータ](/docs/concepts/signals/)を生成、[収集](/docs/concepts/components/#collector)、および[エクスポート](/docs/concepts/components/#exporters)するために使用できます。
 
-> **スペル** OpenTelemetry は常にハイフンなしの一語で記述し、例のように大文字で表記してください。
+> **スペル**: OpenTelemetry は常にハイフンなしの一語で記述し、例のように大文字で表記してください。
 
 [merger]: /docs/what-is-opentelemetry/#history
 
@@ -230,7 +242,7 @@ OpenTelemetry の前身です。
 
 [OpenTelemetry](/docs/what-is-opentelemetry/)の略称。
 
-> **スペル** OTel と書いてください。`OTEL` ではありません。
+> **スペル**: OTel と書いてください。`OTEL` ではありません。
 
 ### OTelCol {#otelcol}
 
@@ -238,9 +250,9 @@ OpenTelemetry の前身です。
 
 ### OTEP {#otep}
 
-[OpenTelemetry Enhancement Proposal] の頭字語。
+[OpenTelemetry Enhancement Proposal][] の頭字語。
 
-> **Spelling**: "OTEPs" は複数形で記述してください。
+> **スペル**: "OTEPs" は複数形で記述してください。
 > 説明で `OTep` または `otep` と書かないでください。
 
 [OpenTelemetry Enhancement Proposal]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/README.md
@@ -256,7 +268,7 @@ OpenTelemetry の前身です。
 
 ### Proto {#proto}
 
-言語に依存しないインターフェイス型。[opentelemetry-proto]を参照してください。
+言語に依存しないインターフェイス型。[opentelemetry-proto][]を参照してください。
 
 ### レシーバー {#receiver}
 
@@ -270,9 +282,7 @@ OpenTelemetry の前身です。
 
 ### リソース {#resource}
 
-テレメトリーを生成するエンティティに関する情報を[属性](#attribute)として捕捉します。
-たとえば、Kubernetes 上のコンテナで実行されているテレメトリーを生成するプロセスには、プロセス名、ポッド名、名前空間、そして場合によってはデプロイメント名があります。
-これらすべての属性を `Resource` に含めることができます。
+テレメトリーを生成する物理的または論理的なオブジェクトを識別または説明する[エンティティ](#entity)または[属性](#attribute)のコレクション。
 
 ### REST {#rest}
 
@@ -351,7 +361,7 @@ OpenTelemetryにおいては[トレース](#trace)、[メトリクス](#metric)�
 
 外部エクスポーターにかわるプロセス内エクスポーター。
 これを使うと、トレースとメトリクスの情報をバックグラウンドで収集し、集約できます。
-詳細は[zPages]を参照してください。
+詳細は[zPages][]を参照してください。
 
 [attribute]: /docs/specs/otel/common/#attributes
 [baggage]: /docs/specs/otel/baggage/api/
@@ -365,10 +375,10 @@ OpenTelemetryにおいては[トレース](#trace)、[メトリクス](#metric)�
 [Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
 [log record]: /docs/specs/otel/glossary#log-record
-[log]: /docs/specs/otel/glossary#log
+[log]: /docs/concepts/signals/logs/
 [metric]: ../signals/metrics/
 [opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
-[propagators]: /docs/languages/go/instrumentation/#propagators-and-context
+[propagators]: /docs/specs/otel/context/api-propagators/
 [Prometheus]: https://prometheus.io/
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer

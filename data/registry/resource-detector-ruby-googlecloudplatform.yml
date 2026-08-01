@@ -1,0 +1,17 @@
+# cSpell:ignore googlecloudplatform
+title: OpenTelemetry::Resource::Detector::GoogleCloudPlatform
+registryType: resource-detector
+language: ruby
+tags:
+  - googlecloudplatform
+  - resource-detector
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/resources/google_cloud_platform
+license: Apache 2.0
+description:
+  The `opentelemetry-resource-detector-google_cloud_platform` gem provides a
+  Google Cloud Platform resource detector for OpenTelemetry.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

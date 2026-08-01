@@ -2,12 +2,13 @@
 title: 开始
 weight: 10
 default_lang_commit: 3512b0ae11f72d3a954d86da59ad7f98d064bdad # patched
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/go/dice"?>
+<?code-excerpt path-base="examples/go/dice/instrumented"?>
 
 本页面将向你展示如何在 Go 中开始使用 OpenTelemetry。
 
@@ -333,20 +334,9 @@ func run() error {
 func newHTTPHandler() http.Handler {
     mux := http.NewServeMux()
 
-
-    // handleFunc 是对 mux.HandleFunc 的封装，
-    // 它将 handler 注册到指定路径 pattern（如 "/rolldice/"）上，
-    // 并在 OpenTelemetry 中记录该路径作为 http.route 插桩标签，用于丰富 HTTP 插桩信息。
-    handleFunc := func(pattern string, handlerFunc func(http.ResponseWriter, *http.Request)) {
-        // 为 HTTP 插桩配置 "http.route" 标签。
-        handler := otelhttp.WithRouteTag(pattern, http.HandlerFunc(handlerFunc))
-        // 这里是真正的处理函数。
-        mux.Handle(pattern, handler)
-    }
-
     // 注册 Handler。
-    handleFunc("/rolldice/", rolldice)
-    handleFunc("/rolldice/{player}", rolldice)
+    mux.Handle("/rolldice/", rolldice)
+    mux.Handle("/rolldice/{player}", rolldice)
 
     // 为整个服务器添加 HTTP 插桩处理器。
     handler := otelhttp.NewHandler(mux, "/")
@@ -414,7 +404,7 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
     }
     logger.InfoContext(ctx, msg, "result", roll)
 
-    // 为这个指标定义一个熟悉，表示是骰子点数值。
+    // 为这个指标定义一个属性，表示是骰子点数值。
     rollValueAttr := attribute.Int("roll.value", roll)
     span.SetAttributes(rollValueAttr)
     rollCnt.Add(ctx, 1, metric.WithAttributes(rollValueAttr))

@@ -17,7 +17,7 @@ allows users to configure telemetry pipelines that are customized to their use
 case.
 
 The
-[collector-builder tool](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)
+[collector-builder tool](https://github.com/open-telemetry/opentelemetry-collector/tree/d25efc7e2f31a3ba5347d0725a22d7bed1b4015d/cmd/builder?from_branch=main)
 takes that customizability a step further, offering a way to easily compile a
 Collector binary built with only certain ingestion and export components. In
 contrast with publicly available binary releases (which bundle in a number of
@@ -34,7 +34,7 @@ extend it to meet your use-cases.
 This repository will help you:
 
 - **Compile a custom Collector designed for GCP with the**
-  [**collector-builder**](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder).
+  [**collector-builder**](https://github.com/open-telemetry/opentelemetry-collector/tree/d25efc7e2f31a3ba5347d0725a22d7bed1b4015d/cmd/builder?from_branch=main).
   Low-overhead Collector builds are possible with the upstream collector-builder
   tool, so we’ve provided the setup files for building a lightweight collector
   with GCP services in mind. This is GCP's recommended base set of components to
@@ -62,18 +62,18 @@ While there are
 [public Docker images for the Collector](https://hub.docker.com/r/otel/opentelemetry-collector-contrib/tags)
 published by the OpenTelemetry community, these images can be as large as 40MB.
 This is due to all of the
-[receivers](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver),
-[processors](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor),
+[receivers](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/944d4a82c408d58f9d8ba1a1d4783094301af0de/receiver?from_branch=main),
+[processors](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/7c7beffbf95ce2d3ea7159cc4c48ecde8a73c82a/processor?from_branch=main),
 and
-[exporters](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter)
+[exporters](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/8d0362c4a63f6b4e6f106f007977b6d75e4bd272/exporter?from_branch=main)
 that are bundled into the image by default. With all of these default
 components, there is also the potential for security issues to arise, part of
 the reason why the
-[Collector maintainers recommend only enabling necessary components](https://github.com/open-telemetry/opentelemetry-collector/blob/5ab00fc/docs/security.md)
+[Collector maintainers recommend only enabling necessary components](https://github.com/open-telemetry/opentelemetry-collector/blob/5ab00fcf51bd74acbc3ac95946e38adb8cfa25e5/docs/security.md)
 in your Collector.
 
 The
-[collector-builder tool](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)
+[collector-builder tool](https://github.com/open-telemetry/opentelemetry-collector/tree/d25efc7e2f31a3ba5347d0725a22d7bed1b4015d/cmd/builder?from_branch=main)
 accelerates compiling stripped-down Collector images with a simple YAML config
 file. This file declares which components to include in the build, and
 collector-builder includes only those components (and nothing else). This is in
@@ -105,7 +105,7 @@ exporters:
 ```
 
 Edit
-[this file](https://github.com/GoogleCloudPlatform/opentelemetry-collector-builder-sample/blob/main/build/local/builder-config.yaml)
+[this file](https://github.com/GoogleCloudPlatform/opentelemetry-collector-builder-sample/blob/3bd48267a6d0e4a84da913a0b15434bc59f95426/build/local/builder-config.yaml?from_branch=main)
 in the repository and run `make build` to automatically generate a local binary,
 or `make docker-build` to compile a container image.
 
@@ -113,7 +113,7 @@ or `make docker-build` to compile a container image.
 
 For convenience, this repository includes the minimum Kubernetes manifests used
 to deploy the Collector in a GKE cluster, with a compatible
-[runtime configuration](https://github.com/GoogleCloudPlatform/opentelemetry-collector-builder-sample/blob/main/deploy/gke/simple/otel-config.yaml)
+[runtime configuration](https://github.com/GoogleCloudPlatform/opentelemetry-collector-builder-sample/blob/3bd48267a6d0e4a84da913a0b15434bc59f95426/deploy/gke/simple/otel-config.yaml?from_branch=main)
 for the sample collector-builder components built by default. When used
 together, the Make commands provided to build and push an image to Artifact
 Registry will automatically update those manifests in the repository to use the
@@ -129,7 +129,7 @@ can be sent to an observability backend of your choice. It then opens up
 flexibility to process and export your other telemetry signals to any backend.
 
 With the
-[provided Kubernetes manifests](https://github.com/GoogleCloudPlatform/opentelemetry-collector-builder-sample/blob/main/deploy/gke/simple/manifest.yaml),
+[provided Kubernetes manifests](https://github.com/GoogleCloudPlatform/opentelemetry-collector-builder-sample/blob/11493d29e986695710ac265d08f4d6b59f503494/deploy/gke/simple/manifest.yaml?from_branch=main),
 you only need one `kubectl` command to deploy the Collector:
 
 ```shell
@@ -197,15 +197,15 @@ After restarting the Collector pod (such as with `kubectl delete` or by applying
 a new manifest, as we’ll show below), the new config changes will take effect.
 This workflow can be used to enable or disable any OpenTelemetry exporter, with
 exporters available for
-[many popular observability backends](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter).
+[many popular observability backends](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/8d0362c4a63f6b4e6f106f007977b6d75e4bd272/exporter?from_branch=main).
 
 ### Adding a receiver and processor
 
 You can add more components and follow the same process as above to build and
 deploy a new Collector image. For example, you can enable the
-[Zipkin exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/zipkinexporter)
+[Zipkin exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/exporter/zipkinexporter?from_branch=main)
 (for sending traces to a [Zipkin](https://zipkin.io/) backend service) and the
-[batch processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor)
+[batch processor](https://github.com/open-telemetry/opentelemetry-collector/tree/811b5147d3ae2da9610f85265305dd46c79de179/processor/batchprocessor?from_branch=main)
 by editing your builder config from earlier like so:
 
 ```yaml
@@ -232,7 +232,7 @@ Running `make docker-build` then compiles a new version of your Collector image.
 If you have an Artifact Registry set up for hosting Collector images, you can
 also run `make docker-push` with environment variables set to make the image
 available in your GKE cluster (setup steps for this are documented in the
-[README](https://github.com/GoogleCloudPlatform/opentelemetry-collector-builder-sample/tree/main/build/cloudbuild#building-with-cloud-build)).
+[README](https://github.com/GoogleCloudPlatform/opentelemetry-collector-builder-sample/tree/3bd48267a6d0e4a84da913a0b15434bc59f95426/build/cloudbuild?from_branch=main#building-with-cloud-build)).
 
 Enabling the new receiver and processor also follows the same steps as above,
 starting with editing your local Collector config:

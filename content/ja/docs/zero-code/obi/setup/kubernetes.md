@@ -2,19 +2,17 @@
 title: KubernetesにOBIをデプロイする
 linkTitle: Kubernetes
 description: KubernetesにOBIをデプロイする方法を学びます。
-weight: 3
-default_lang_commit: 19ca575e83b5d058ed02dea12c7c6770b477aa71
+weight: 4
+default_lang_commit: b99f2517225610f456997fac229f46e4aa7e7d10
 # prettier-ignore
 cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefulset
 ---
 
-{{% alert type="note" %}}
-
-このドキュメントでは、必要なエンティティをすべて自分で設定して、KubernetesにOBIを手動でデプロイする方法について説明します。
-
-<!-- Helmを使用してKubernetesにOBIをデプロイする](../kubernetes-helm/)ドキュメントを参照することをお勧めします。 -->
-
-{{% /alert %}}
+> [!NOTE]
+>
+> このドキュメントでは、必要なエンティティをすべて自分で設定して、KubernetesにOBIを手動でデプロイする方法について説明します。
+>
+> <!-- Helmを使用してKubernetesにOBIをデプロイする](../kubernetes-helm/)ドキュメントを参照することをお勧めします。 -->
 
 ## Kubernetesメタデータデコレーションを構成する {#configuring-kubernetes-metadata-decoration}
 
@@ -91,7 +89,7 @@ Kubernetesには、2つの異なる方法でOBIをデプロイできます。
 
 サイドカーコンテナとしてOBIをデプロイするには、次の構成要件があります。
 
-- プロセスの名前異空間はPod内のすべてのコンテナで共有されている必要があります(Podの `shareProcessNamespace: true` 変数)。
+- プロセスの名前空間はPod内のすべてのコンテナで共有されている必要があります(Podの `shareProcessNamespace: true` 変数)。
 - 自動計装コンテナは、特権モード(コンテナ構成の`securityContext.privileged:true` プロパティ)で実行する必要があります。
   - 一部のKubernetesインストールでは次の `securityContext` 構成が許可されますが、一部のコンテナランタイム構成ではコンテナを制限して一部の権限を削除するため、すべてのコンテナランタイム構成で機能するとは限りません。
 
@@ -104,7 +102,67 @@ Kubernetesには、2つの異なる方法でOBIをデプロイできます。
           - SYS_RESOURCE # カーネル 5.11+では不要
     ```
 
-以下の例では、OBIをコンテナ(`otel/ebpf-instrument:latest` で利用可能なイメージ)としてアタッチすることで `goblog` Podを計装します。
+#### Pod内のすべてのプロセスを計装する(推奨) {#instrumenting-all-processes-in-a-pod-recommended}
+
+OBIが `shareProcessNamespace: true` でサイドカーコンテナとして実行されている場合、OBIはPodのPID名前空間を共有するため、そのPod内のプロセスのみを参照できます。
+つまり、個別の実行可能ファイル名やポートを指定しなくても、`OTEL_EBPF_AUTO_TARGET_EXE=*` を使うことでPod内のすべてのプロセスを計装できます。
+
+これはサイドカーデプロイメントで推奨されるアプローチであり、変更を加えなくてもさまざまなPodで動作する、シンプルで再利用可能な構成が得られます。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goblog
+  labels:
+    app: goblog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: goblog
+  template:
+    metadata:
+      labels:
+        app: goblog
+    spec:
+      # サイドカー計装ツールがサービスプロセスにアクセスできるようにするために必要
+      shareProcessNamespace: true
+      serviceAccountName: obi # Kubernetesメタデータデコレーションが必要な場合
+      containers:
+        # 計装されたサービスのコンテナ
+        - name: goblog
+          image: mariomac/goblog:dev
+          imagePullPolicy: IfNotPresent
+          command: ['/goblog']
+          ports:
+            - containerPort: 8443
+              name: https
+        # OBIのサイドカーコンテナ - eBPF自動計装ツール
+        - name: obi
+          image: otel/ebpf-instrument:main
+          securityContext: # eBPFプローブのインストールには特権が必要
+            privileged: true
+          env:
+            # Pod内のすべてのプロセスを計装する(ワイルドカード)
+            - name: OTEL_EBPF_AUTO_TARGET_EXE
+              value: '*'
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: 'http://otelcol:4318'
+            # Kubernetesメタデータデコレーションが必要な場合
+            - name: OTEL_EBPF_KUBE_METADATA_ENABLE
+              value: 'true'
+```
+
+ワイルドカードを使うアプローチは、個別の実行可能ファイル名やポートを指定するよりエラーが少なくなります。
+Podに新しいサービスを追加してもOBIの構成を更新する必要がないためです。
+OBIは(共有されたPID名前空間のため)同じPod内のプロセスにしかアクセスできないので、Pod外のプロセスを誤って計装するリスクはありません。
+
+#### Pod内の特定のプロセスを計装する {#instrumenting-specific-processes-in-a-pod}
+
+Pod内で計装するプロセスをより細かく制御する必要がある場合は、ワイルドカードのかわりに実行可能ファイル名やオープンポートを指定できます。
+
+以下の例では、OBIをコンテナ(`otel/ebpf-instrument:main` で利用可能なイメージ)としてアタッチすることで `goblog` Podを計装します。
 自動計装ツールは、同じ名前空間の `otelcol` サービスの背後にあるアクセス可能なOpenTelemetryコレクターにメトリクスとトレースを転送するように構成されています。
 
 ```yaml
@@ -138,7 +196,7 @@ spec:
               name: https
         # OBIのサイドカーコンテナ - eBPF自動計装ツール
         - name: obi
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           securityContext: # eBPFプローブのインストールには特権が必要
             privileged: true
           env:
@@ -189,7 +247,7 @@ spec:
       serviceAccountName: obi # Kubernetesメタデータデコレーションが必要な場合
       containers:
         - name: autoinstrument
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           securityContext:
             privileged: true
           env:
@@ -221,7 +279,7 @@ OBIに必要なケーパビリティの包括的なリストは、[セキュリ�
 ただし、システムレベルでは、パフォーマンスイベントへのアクセスは `kernel.perf_event_paranoid` 設定によって制限され、`sysctl` を使用するか `/proc/sys/kernel/perf_event_paranoid` ファイルを変更することで読み書きできます。
 `kernel.perf_event_paranoid` のデフォルト設定は通常 `2` であり、これは[カーネルのドキュメント](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt)の `perf_event_paranoid` セクションで説明されています。
 一部のLinuxディストリビューションでは、`kernel.perf_event_paranoid` に対してより高いレベルを定義しています。
-たとえばDebianベースのディストリビューションでは、 `kernel.perf_event_paranoid=3` も使用しており、これにより `CAP_SYS_ADMIN` なしでの `perf_event_open()` へのアクセスは拒否されます。
+たとえばDebianベースのディストリビューションでは、`kernel.perf_event_paranoid=3` を[使用しており](https://lwn.net/Articles/696216/)、これにより `CAP_SYS_ADMIN` なしでの `perf_event_open()` へのアクセスは拒否されます。
 `kernel.perf_event_paranoid` 設定が `2` より高いディストリビューションで実行している場合は、構成を変更して `2` に下げるか、`CAP_PERFMON` のかわりに `CAP_SYS_ADMIN` を使用できます。
 
 OBIの非特権コンテナ構成の例を以下に示します。
@@ -246,52 +304,52 @@ spec:
         k8s-app: obi
     spec:
       serviceAccount: obi
-      hostPID: true           # <-- 重要。DeamonSetモードではOBIがすべての監視対象プロセスを検出できるようにするために必要
+      hostPID: true           # <-- 重要。DaemonSetモードではOBIがすべての監視対象プロセスを検出できるようにするために必要
       containers:
-      - name: obi
-        terminationMessagePolicy: FallbackToLogsOnError
-        image: otel/ebpf-instrument:latest
-        env:
-          - name: OTEL_EBPF_TRACE_PRINTER
-            value: "text"
-          - name: OTEL_EBPF_KUBE_METADATA_ENABLE
-            value: "autodetect"
-          - name: KUBE_NAMESPACE
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.namespace
-          ...
-        securityContext:
-          runAsUser: 0
-          readOnlyRootFilesystem: true
-          capabilities:
-            add:
-              - BPF                 # <-- 重要。ほとんどのeBPFプローブが正しく機能するために必要。
-              - SYS_PTRACE          # <-- 重要。OBIがコンテナの名前空間にアクセスして実行可能ファイルを検査することを許可。
-              - NET_RAW             # <-- 重要。OBIがHTTPリクエストのソケットフィルターを使用することを許可。
-              - CHECKPOINT_RESTORE  # <-- 重要。OBIがELFファイルを開くことを許可。
-              - DAC_READ_SEARCH     # <-- 重要。OBIがELFファイルを開くことを許可。
-              - PERFMON             # <-- 重要。OBIがBPFプログラムをロードすることを許可。
-              #- SYS_RESOURCE       # <-- 5.11より前のバージョンのみ。OBIがロックされたメモリの量を増やすことを許可。
-              #- SYS_ADMIN          # <-- Goアプリケーションのトレースコンテキスト伝搬、またはDebianディストリビューションで
-            drop:
-              - ALL
-        volumeMounts:
-        - name: var-run-obi
-          mountPath: /var/run/obi
-        - name: cgroup
-          mountPath: /sys/fs/cgroup
+        - name: obi
+          terminationMessagePolicy: FallbackToLogsOnError
+          image: otel/ebpf-instrument:main
+          env:
+            - name: OTEL_EBPF_TRACE_PRINTER
+              value: "text"
+            - name: OTEL_EBPF_KUBE_METADATA_ENABLE
+              value: "autodetect"
+            - name: KUBE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            ...
+          securityContext:
+            runAsUser: 0
+            readOnlyRootFilesystem: true
+            capabilities:
+              add:
+                - BPF                 # <-- 重要。ほとんどのeBPFプローブが正しく機能するために必要。
+                - SYS_PTRACE          # <-- 重要。OBIがコンテナの名前空間にアクセスして実行可能ファイルを検査することを許可。
+                - NET_RAW             # <-- 重要。OBIがHTTPリクエストのソケットフィルターを使用することを許可。
+                - CHECKPOINT_RESTORE  # <-- 重要。OBIがELFファイルを開くことを許可。
+                - DAC_READ_SEARCH     # <-- 重要。OBIがELFファイルを開くことを許可。
+                - PERFMON             # <-- 重要。OBIがBPFプログラムをロードすることを許可。
+                #- SYS_RESOURCE       # <-- 5.11より前のバージョンのみ。OBIがロックされたメモリの量を増やすことを許可。
+                #- SYS_ADMIN          # <-- Goアプリケーションのトレースコンテキスト伝搬、またはDebianディストリビューションで
+              drop:
+                - ALL
+          volumeMounts:
+            - name: var-run-obi
+              mountPath: /var/run/obi
+            - name: cgroup
+              mountPath: /sys/fs/cgroup
       tolerations:
-      - effect: NoSchedule
-        operator: Exists
-      - effect: NoExecute
-        operator: Exists
+        - effect: NoSchedule
+          operator: Exists
+        - effect: NoExecute
+          operator: Exists
       volumes:
-      - name: var-run-obi
-        emptyDir: {}
-      - name: cgroup
-        hostPath:
-          path: /sys/fs/cgroup
+        - name: var-run-obi
+          emptyDir: { }
+        - name: cgroup
+          hostPath:
+            path: /sys/fs/cgroup
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -302,12 +360,93 @@ metadata:
 ---
 ```
 
+## k8s-cache によるKubernetesメタデータの集約 {#centralizing-kubernetes-metadata-with-k8s-cache}
+
+OBI を DaemonSet として実行する場合、各 OBI Pod はメトリクスとトレースのデコレートに必要なメタデータを取得するために、Kubernetes API サーバーに対して独自の `list` と `watch` 接続を開きます。
+これはローカルノードのメタデータだけでなく、クラスタ全体のメタデータを取得します。
+これは、ローカルノード外の情報を補完するために行われます。
+たとえば、クラスタ内のノード間でリクエストを行うスパンに[ピア](/docs/specs/semconv/registry/attributes/service/#service-attributes-for-peer-services)属性を追加する場合などです。
+大規模なクラスタでは、このファンアウトが API サーバーに大きな負荷をかけ、クラスタ全体に影響を与える可能性があります。
+
+これを避けるために、OBI は `k8s-cache` というオプションのコンパニオンサービスを提供しています。
+これは小規模な Deployment として実行され、すべての OBI Pod にかわって Kubernetes API を一度だけ監視し、gRPC 経由で OBI インスタンスにメタデータをストリーミングします。
+これにより、API サーバーへの OBI の Pod ごとのインフォーマートラフィックが排除され、API 負荷が大幅に削減されます。
+ただし、OBI はノードとクラスタのメタデータに対して限定的な直接 Kubernetes API ルックアップを行う場合があります。
+
+`k8s-cache` の使用は常に推奨されますが、特に以下の場合に有効です。
+
+- 大規模なクラスタで OBI を DaemonSet として実行している場合。
+- 同じクラスタで多くの OBI レプリカ（大規模な `Deployment`、複数のサイドカーなど）を実行している場合。
+- Kubernetes API サーバーが負荷を受けているか、レートリミットされている場合。
+
+キャッシュアドレスを構成しない場合、各 OBI インスタンスは独自のローカルインプロセスインフォーマーを保持します。
+小規模なクラスタではこれで問題ありません。
+
+`k8s-cache` は OBI を Kubernetes で実行する場合にのみ関連し、スタンドアロンや Docker セットアップでは効果がありません。
+
+キャッシュを使用するには、デプロイして `OTEL_EBPF_KUBE_META_CACHE_ADDRESS` 環境変数（または YAML の `attributes.kubernetes.meta_cache_address`）で OBI に `Service` アドレスを指定します。
+最も簡単な方法は OBI Helm チャートを使用することです。
+`k8sCache.replicas` をゼロ以外の値に設定すると、`Deployment`、`Service`、および OBI の接続設定が自動的にセットアップされます。
+
+手動でデプロイする場合、キャッシュは `ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache` コンテナイメージとして公開されています。
+最小限のマニフェストは次のようになります。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-cache
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-cache
+  template:
+    metadata:
+      labels:
+        app: k8s-cache
+    spec:
+      serviceAccountName: obi # Pod、Node、Serviceに対するlist/watch権限が必要
+      containers:
+        - name: k8s-cache
+          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:latest
+          ports:
+            - containerPort: 50055
+              name: grpc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-cache
+spec:
+  selector:
+    app: k8s-cache
+  ports:
+    - port: 50055
+      name: grpc
+      protocol: TCP
+```
+
+次に、DaemonSet から OBI にキャッシュを指定します。
+
+```yaml
+env:
+  - name: OTEL_EBPF_KUBE_METADATA_ENABLE
+    value: 'true'
+  - name: OTEL_EBPF_KUBE_META_CACHE_ADDRESS
+    value: 'k8s-cache.default.svc:50055'
+```
+
+通常はレプリカ1つで十分です。
+高可用性を確保するには、同じ `Service` の背後で複数のレプリカを実行します。
+各 OBI Pod は1つに接続し、障害時には別のレプリカに再接続します。
+
 ## 外部構成ファイルの提供 {#providing-an-external-configuration-file}
 
 前述の例では、OBIは環境変数を介して構成されていました。
 しかし、(このページの[構成](../../configure/options/)セクションのドキュメントのように)外部のYAMLファイルを介して構成することもできます。
 
-構成をファイルとして提供するには、意図した構成のCOnfigMapをデプロイし、そのConfigMapをOBI Podにマウントし、`OTEL_EBPF_CONFIG_PATH` 環境変数で参照する方法が推奨されています。
+構成をファイルとして提供するには、意図した構成のConfigMapをデプロイし、そのConfigMapをOBI Podにマウントし、`OTEL_EBPF_CONFIG_PATH` 環境変数で参照する方法が推奨されています。
 
 OBIのYAMLドキュメントを使用したConfigMapの例です。
 
@@ -349,7 +488,7 @@ spec:
       hostPID: true # 重要！
       containers:
         - name: obi
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true
@@ -390,7 +529,7 @@ stringData:
 ```
 
 これにより、環境変数として秘密情報の値にアクセスできます。
-前述のDeamonSetの例を用いて、OBIコンテナに次の `env` セクションを追加することで実現できます。
+前述のDaemonSetの例を用いて、OBIコンテナに次の `env` セクションを追加することで実現できます。
 
 ```yaml
 env:

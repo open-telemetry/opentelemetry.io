@@ -1,16 +1,22 @@
 ---
-title: KubeCon + CloudNativeCon Japan 2025
-linkTitle: KubeCon Japan 2025
-date: 2025-06-12 # Show once combined banner is hidden
-expiryDate: 2025-06-18 # keep
-build: { list: never, render: never } # Hide in favor of new Asia banner
-weight: 20250616
-default_lang_commit: 9bc3c40e6e637b3d776281eb946a60ebf79a4cd5
+title: KubeCon + CloudNativeCon Japan 2026
+linkTitle: KubeCon Japan 2026
+date: 2026-07-21
+expiryDate: 2026-07-30 # keep
+weight: 20260730
+params:
+  eventUrl: &eventUrl >-
+    https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/
+  # Use this when the blog post is ready:
+  # blogPostURL: /blog/2026/kubecon-japan/
+  blogPostURL: *eventUrl
+default_lang_commit: f34ea47f2795ab7823c24968f7e6874ee9381cf6
+drifted_from_default: true
 ---
 
-<i class="fas fa-bullhorn"></i> [**{{% param title %}}**][LF]が **6月16・17日に東京で開催**
+[**{{% param title %}}**][LF]が **7月28日から30日に横浜で開催**
 <span class="d-none d-md-inline"><br></span>
 <span class="d-none d-sm-inline"> Cloud Nativeコミュニティと一緒に</span>、[協力し、学び、共有しましょう][blog]！
 
-[blog]: /blog/2025/kubecon-japan/
-[LF]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-Japan-2025&utm_content=slim-banner
+[blog]: <{{% param blogPostURL %}}>
+[LF]: <{{% param eventUrl %}}register/?{{% _param utmParam %}}>

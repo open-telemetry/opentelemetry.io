@@ -7,17 +7,14 @@ weight: 100
 
 ## YAML file example
 
-An example OBI YAML configuration file to send OTLP data to an OpenTelemetry
-Collector endpoint:
-
 ```yaml
 discovery:
   instrument:
-    - open_ports: 443
+    - open_ports: 8443
 log_level: DEBUG
 
 ebpf:
-  wakeup_len: 100
+  context_propagation: all
 
 otel_traces_export:
   endpoint: http://localhost:4318
@@ -26,3 +23,13 @@ prometheus_export:
   port: 8999
   path: /metrics
 ```
+
+This configuration includes the following options:
+
+- `discovery.instrument.open_ports`: instruments services listening on port 8443
+- `log_level`: sets logging verbosity to `DEBUG`
+- `ebpf.context_propagation`: enables context propagation using all supported
+  carriers
+- `otel_traces_export.endpoint`: sends traces to the OpenTelemetry Collector at
+  `http://localhost:4318`
+- `prometheus_export`: exposes metrics at `http://localhost:8999/metrics`

@@ -10,28 +10,46 @@ weight: 15
 To contribute new or improve existing documentation, submit a [pull request][PR]
 (PR):
 
-- If your change is small, or you're unfamiliar with [Git], see
+- If your change is small, or you're unfamiliar with [Git][], see
   [Using GitHub](#changes-using-github) to learn how to edit a page.
 - Otherwise, see [Work from a local fork](#fork-the-repo) to learn how to make
   changes in your own local development environment.
 
-{{% alert title="Contributor License Agreement (CLA)" color=warning %}}
+## Generative AI contribution policy {#using-ai}
 
-All contributors are required to [sign a Contributor License Agreement
-(CLA)][CLA] before changes can be reviewed and merged.
+> [!WARNING] **First time contributors** take note!
+>
+> If you are a [first-time contributor][], please note the following:
+>
+> Your first 3 contributions to our repository must be primarily human-written,
+> with only minor AI assistance allowed
+> ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)). This means
+> your code should be written by hand, but AI may assist with code completion,
+> formatting, linting, and following best practices. Your PR description must be
+> entirely human-written, with no AI involvement (AIL0).
+>
+> Of course, you can use AI tools to ask questions and learn about our
+> repository, our project, how to contribute, and more.
+>
+> We put this requirement in place to help you learn while contributing and to
+> help maintainers and approvers to protect their time and bandwidth, which is a
+> scarce resource.
+>
+> Maintainers may make an exception, if it is clear that your contribution is
+> "drive-by" and can be merged without a lot of additional effort from their
+> side.
 
-[CLA]: ../prerequisites/#cla
+Generative AI is allowed, but **you are responsible** for **reviewing and
+_validating_** all AI-generated content &mdash; if you don't understand it,
+don't submit it!
 
-{{% /alert %}}
+For details, see our [Generative AI Contribution Policy][].
 
-{{% alert title="Tip: Draft status" %}}
+[first-time contributor]: ../#first-time-contributing
+[Generative AI Contribution Policy]:
+  https://github.com/open-telemetry/community/blob/main/policies/genai.md
 
-Set the status of your pull request to **Draft** to let maintainers know that
-the content isn't ready for review yet. Maintainers may still comment or do
-high-level reviews, though they won't review the content in full until you
-remove the draft status.
-
-{{% /alert %}}
+## How to contribute
 
 The following figure illustrates how to contribute new documentation.
 
@@ -43,7 +61,7 @@ flowchart LR
        B[Fork the repo in GitHub] --- C[Write docs in markdown<br>and build site with Hugo]
        C --- D[Push source to the fork]
        D --- E[Open a pull request]
-       E --- F[Sign the CNCF CLA]
+       E --- F[Sign the <a href="../prerequisites/#cla">CNCF CLA</a>]
     end
 
 classDef grey fill:#dddddd,stroke:#ffffff,stroke-width:px,color:#000000, font-size:15px;
@@ -55,6 +73,13 @@ class first,second white
 ```
 
 _Figure 1. Contributing new content._
+
+> [!TIP]
+>
+> Set the status of your pull request to **Draft** to let maintainers know that
+> the content isn't ready for review yet. Maintainers may still comment or do
+> high-level reviews, though they won't review the content in full until you
+> remove the draft status.
 
 ## Using GitHub {#changes-using-github}
 
@@ -134,38 +159,45 @@ failures, like formatting issues, can be fixed automatically.
 Add the following comment to your PR:
 
 ```text
-/fix:all
+/fix
 ```
 
-This will trigger the OpenTelemetry bot to try to fix build issues. Or you can
-issue one of the following fix commands to address a specific failure:
+This will trigger the OpenTelemetry bot to try to fix build issues. The bot
+replies with a progress comment that links back to your fix command, then
+updates that same comment with the result — so each fix command you issue gets
+its own bot comment. Or you can issue one of the following fix commands to
+address a specific failure:
 
 ```text
-fix:dict
-fix:expired
-fix:filenames
-fix:format
-fix:htmltest-config
-fix:i18n
-fix:markdown
-fix:refcache
-fix:submodule
-fix:text
+/fix:code-excerpts
+/fix:dict
+/fix:expired
+/fix:filenames
+/fix:format
+/fix:i18n
+/fix:l10n
+/fix:link-cache
+/fix:markdown
+/fix:submodule
+/fix:text
 ```
 
-{{% alert title="Pro tip" %}}
+The fix command must be the first line of your comment; you can add explanatory
+text on the lines that follow. Issuing a new fix command while one is already
+running cancels the in-progress run so that the latest command wins; when
+possible, the cancelled run's bot comment is updated to note the cancellation.
 
-You can also run the `fix` commands locally. For the complete list of fix
-commands, run `npm run -s '_list:fix:*'`.
-
-{{% /alert %}}
+> [!TIP] Pro tip
+>
+> You can also run the `fix` commands locally. For the complete list of fix
+> commands, run `npm run -s '_list:fix:*'`.
 
 ## Working locally {#fork-the-repo}
 
 If you're more experienced with Git, or if your changes are larger than a few
 lines, work from a local fork.
 
-Make sure you have [`git` installed] on your computer. You can also use a user
+Make sure you have [`git` installed][] on your computer. You can also use a user
 interface for Git.
 
 Figure 3 shows the steps to follow when you work from a local fork. The details
@@ -384,8 +416,8 @@ npm run test-and-fix
 To separately test and fix all issues with your files, run:
 
 ```sh
-npm run test    # Checks but does not update any files
-npm run fix:all # May update files
+npm run test # Checks but does not update any files
+npm run fix  # May update files
 ```
 
 To list available NPM scripts, run `npm run`. See [PR checks](../pr-checks) for

@@ -1,4 +1,5 @@
 <!-- cSpell:ignore Chalin Ferri Benedetti Hrabusa jparsana -->
+<!-- markdownlint-disable no-otel-io-external-urls -->
 
 # <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry.io
 
@@ -24,7 +25,7 @@ missing [let us know][].
 For guidance on how to write and submit a blog post, see
 [Submit a blog post](https://opentelemetry.io/docs/contributing/blog/).
 
-### Add a project to the OpenTelemetry [Registry]
+### Add a project to the OpenTelemetry [Registry][]
 
 For details on how to add a project to the OpenTelemetry Registry, see [Adding
 to the registry][].
@@ -44,7 +45,7 @@ before opening an issue.
 
 ## Meetings
 
-We, the OTel Communications SIG, meet every two weeks on Monday at 10:00 PT.
+We, the OTel Communications SIG, meet every two weeks on Tuesday at 9:00 AM PT.
 Check out the [OpenTelemetry community calendar][] for the Zoom link and any
 updates to this schedule.
 
@@ -57,41 +58,55 @@ Here is a list of community roles with current and previous members:
 
 ### Maintainers
 
-These are the members of [@open-telemetry/docs-maintainers]:
+These are the members of [@open-telemetry/docs-maintainers][] (members-only):
 
-- [Austin Parker](https://github.com/austinlparker), Honeycomb
 - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
+- [Jay DeLuca](https://github.com/jaydeluca), Grafana Labs
+- [Marylia Gutierrez](https://github.com/maryliag), Grafana Labs
 - [Patrice Chalin](https://github.com/chalin), CNCF
 - [Phillip Carter](https://github.com/cartermp), Salesforce
-- [Severin Neumann](https://github.com/svrnm)
+- [Severin Neumann](https://github.com/svrnm), Bronto
 - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
+- [Vitor Vasconcellos](https://github.com/vitorvasc), DoorDash
 
 For more information about the maintainer role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
 
 ### Approvers
 
-These are the members of [@open-telemetry/docs-approvers]:
+These are the members of [@open-telemetry/docs-approvers][] (members-only):
 
-- [Michael Hausenblas](https://github.com/mhausenblas), Amazon
-- [Ted Young](https://github.com/tedsuo), Grafana Labs
-- [Vitor Vasconcellos](https://github.com/vitorvasc), MercadoLibre, Inc.
+-
 
 For more information about the approver role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
 
-### Emeritus maintainers
+### Triagers
 
-- [jparsana](https://github.com/jparsana)
-- [Morgan McLean](https://github.com/mtwo)
-- [Steve Flanders](https://github.com/flands)
+These are the members of [@open-telemetry/docs-triagers][] (members-only):
 
-For more information about the emeritus role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
+- [Diana Todea](https://github.com/didiViking), VictoriaMetrics
+- [Emídio Neto](https://github.com/emdneto)
+- [Ezzio Moreira](https://github.com/EzzioMoreira)
+- [Michael Yao](https://github.com/windsonsea), DaoCloud
+- [Pratik Mahalle](https://github.com/pratik-mahalle), DrDroid
+- [Yoshi Yamaguchi](https://github.com/ymotongpoo), Grafana Labs
 
-### Emeritus approvers
+For more information about the triager role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#triager).
 
-- [Paul Bruce](https://github.com/paulsbruce)
+### Emeritus
+
+- [Austin Parker](https://github.com/austinlparker), Maintainer
+- [jparsana](https://github.com/jparsana), Maintainer
+- [Kazunori Otani](https://github.com/katzchang), Triager
+- [Masaki Sugimoto](https://github.com/Msksgm), Triager
+- [Michael Hausenblas](https://github.com/mhausenblas), Approver
+- [Morgan McLean](https://github.com/mtwo), Maintainer
+- [Paul Bruce](https://github.com/paulsbruce), Approver
+- [Sergey Kanzhelev](https://github.com/SergeyKanzhelev), Approver
+- [Steve Flanders](https://github.com/flands), Maintainer
+- [Ted Young](https://github.com/tedsuo), Approver
 
 For more information about the emeritus role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
@@ -109,6 +124,8 @@ already contributed][contributors]!
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [@open-telemetry/docs-approvers]:
   https://github.com/orgs/open-telemetry/teams/docs-approvers
+[@open-telemetry/docs-triagers]:
+  https://github.com/orgs/open-telemetry/teams/docs-triagers
 [@open-telemetry/docs-maintainers]:
   https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [community repository]:
@@ -120,7 +137,7 @@ already contributed][contributors]!
 [OpenTelemetry.io Analytics]: https://lookerstudio.google.com/s/jsDZ05i_YIo
 [registry]: https://opentelemetry.io/ecosystem/registry/
 [opentelemetry community calendar]:
-  https://calendar.google.com/calendar/embed?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com
+  https://calendar.google.com/calendar/u/0/embed?src=c_2bf73e3b6b530da4babd444e72b76a6ad893a5c3f43cf40467abc7a9a897f977@group.calendar.google.com
 [google doc]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY/edit?usp=sharing
 [slack]: https://slack.cncf.io/

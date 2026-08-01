@@ -25,7 +25,7 @@ To enable network metrics, set the following option in your OBI configuration:
 Environment variables:
 
 ```bash
-export OBI_NETWORK_METRICS=true
+export OTEL_EBPF_NETWORK_METRICS=true
 ```
 
 Network metrics requires metrics to be decorated with Kubernetes metadata. To
@@ -34,7 +34,7 @@ enable this feature, set the following option in your OBI configuration:
 Environment variables:
 
 ```bash
-export OBI_KUBE_METADATA_ENABLE=true
+export OTEL_EBPF_KUBE_METADATA_ENABLE=true
 ```
 
 For more configuration options, refer to the
@@ -92,21 +92,21 @@ spec:
           configMap:
             name: obi-config
         - name: obi
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           securityContext:
             privileged: true
           volumeMounts:
             - mountPath: /config
               name: obi-config
           env:
-            - name: OBI_CONFIG_PATH
+            - name: OTEL_EBPF_CONFIG_PATH
               value: '/config/obi-config.yml'
 ```
 
 Some observations about this configuration:
 
 - The container image uses the latest under-development
-  `otel/ebpf-instrument:latest` image.
+  `otel/ebpf-instrument:main` image.
 - OBI needs to run as a DaemonSet, as it is requires only one OBI instance per
   node
 - To listen to network packets on the host, OBI requires the `hostNetwork: true`
@@ -182,8 +182,8 @@ You can configure OBI to also break down metrics by CIDR ranges. This is useful
 for tracking traffic to specific network ranges, such as cloud provider IP
 ranges, or internal/external traffic.
 
-The `cidrs` YAML subsection in `network` (or the `OBI_NETWORK_CIDRS` environment
-variable) accepts a list of CIDR ranges, and the corresponding name.
+The `cidrs` YAML subsection in `network` (or the `OTEL_EBPF_NETWORK_CIDRS`
+environment variable) accepts a list of CIDR ranges, and the corresponding name.
 
 For example, to track metrics by predefined networks:
 

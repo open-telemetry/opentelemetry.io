@@ -3,10 +3,10 @@ title: Site localization
 description: Creating and maintaining site pages in non-English localizations.
 linkTitle: Localization
 weight: 25
-cSpell:ignore: shortcodes
+cSpell:ignore: Dowair shortcodes
 ---
 
-The OTel website uses Hugo's [multilingual framework] to support page
+The OTel website uses Hugo's [multilingual framework][] to support page
 localizations. English is the default language, with US English as the default
 (implicit) localization. A growing number of other localizations are supported,
 as can be seen from the languages dropdown menu in the top nav.
@@ -29,9 +29,10 @@ guidance offered in this section.
   - [Front matter][] field values for `title`, `linkTitle`, and `description`
   - **All** page content and front matter unless indicated otherwise
 - **Preserve** the _content_, _meaning_, and _style_ of the original text
-- **Ask** [maintainers] if you have any doubts or questions through:
-  - [Slack] `#otel-docs-localization` or `#otel-comms` channels
-  - [Discussion], issue, or PR comment
+- **Submit work _incrementally_** via [small pull requests](#small-prs)
+- **Ask** [maintainers][] if you have any doubts or questions through:
+  - [Slack][] `#otel-docs-localization` or `#otel-comms` channels
+  - [Discussion][], issue, or PR comment
 
 [Discussion]:
   https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
@@ -43,15 +44,18 @@ guidance offered in this section.
 <div class="border-start border-warning bg-warning-subtle">
 
 - **Translate**:
+  - [Alert types](../style-guide/#alerts) such as `TIP`, `WARNING`, etc. This is
+    enforced by a [`MARKDOWN` linter][] rule.
+  - Code, including code blocks and inline code (like this
+    `inline code example`)
   - **File or directory** names of resources in this repository
-  - [Links](#links), this includes [heading IDs](#headings) [^*]
-  - Inline code-spans like these: `inline code example`
-  - Markdown elements marked as `notranslate` (usually as a CSS class), in
-    particular for [headings](#headings)
   - [Front matter][] fields other than those listed in [Do](#do). In particular,
     do not translate `aliases`. When in doubt, ask maintainers.
-  - Code
-- Create **copies of images**, unless you [localize text in the images](#images)
+  - [Links](#links), this includes [heading IDs](#headings) [^*]
+  - Markdown elements marked as `notranslate` (usually as a CSS class), in
+    particular for [headings](#headings)
+- Create **copies of images and other assets**, unless you
+  [localize text in them](#images)
 - Add new or change:
   - **Content** that would be different from the originally intended meaning
   - Presentation **style**, including: _formatting_, _layout_, and _design_
@@ -59,7 +63,31 @@ guidance offered in this section.
 
 [^*]: For a possible exception, see [Links](#links).
 
+[`MARKDOWN` linter]: ../pr-checks/#markdown-linter
+
 </div>
+
+#### Use of AI tools {#ai-tools}
+
+If you use generative AI tools (such as ChatGPT, Gemini, or similar) to assist
+with translations, you must follow the OpenTelemetry [Generative AI Contribution
+Policy][genai-policy] and the Linux Foundation [Generative AI
+Policy][lf-ai-policy]. In particular:
+
+- **Disclose** that you used AI by checking the appropriate box in the [pull
+  request template][].
+- **Review and validate** all AI-generated translations for accuracy. You are
+  responsible for the content you submit.
+- **Do not submit** AI-generated translations that you cannot review and verify
+  yourself (e.g., submissions in languages you are not proficient in). This
+  creates a significant review bottleneck, and your PR may be closed to protect
+  maintainer bandwidth.
+
+[genai-policy]:
+  https://github.com/open-telemetry/community/blob/main/policies/genai.md
+[lf-ai-policy]: https://www.linuxfoundation.org/legal/generative-ai
+[pull request template]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/PULL_REQUEST_TEMPLATE.md
 
 ### Heading IDs {#headings}
 
@@ -77,25 +105,25 @@ translating headings:
 ### Links {#links}
 
 Do **not** translate link references. This holds true for external links, and
-paths to website pages and section-local resources such as [images](#images).
+paths to website pages and section-local resources such as
+[images and other assets](#images).
 
 The only exception is for links to external pages (such as
 <https://en.wikipedia.org>) that have a version specific to your local. Often
 this means replacing the `en` in the URL by your locale's language code.
 
-{{% alert title="Note" %}}
-
-The OTel website repository has a custom render-link hook that Hugo uses to
-convert absolute link paths referring to documentation pages. **Links of the
-form `/docs/some-page` are made locale specific** by prefixing the path with the
-page language code when rendering the link. For example, the previous sample
-path would become `/ja/docs/some-page` when rendered from a Japanese page.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> The OTel website repository has a custom render-link hook that Hugo uses to
+> convert absolute link paths referring to documentation pages. **Links of the
+> form `/docs/some-page` are made locale specific** by prefixing the path with
+> the page language code when rendering the link. For example, the previous
+> sample path would become `/ja/docs/some-page` when rendered from a Japanese
+> page.
 
 ### Link definition labels {#link-labels}
 
-Locale authors can choose or not to translate [labels] of Markdown [link
+Locale authors can choose or not to translate [labels][] of Markdown [link
 definitions][]. If you choose to keep the English label, then follow the
 guidance given in this section.
 
@@ -121,19 +149,20 @@ This would be translated in French as:
 [link definitions]:
   https://spec.commonmark.org/0.31.2/#link-reference-definitions
 
-### Images and diagrams {#images}
+### Images and other assets {#images}
 
-Do **not** make copies of image files unless you localize text in the image
-itself[^shared-images].
-
-**Do** translate text in [Mermaid][] diagrams.
-
-[^shared-images]:
-    Hugo is smart about the way that it renders image files that are shared
+- Do **not** make copies of image, video, or other non-content asset files
+  unless you localize text in the file itself.
+  - Hugo is smart about the way that it renders image files that are shared
     across site localizations. That is, Hugo will output a _single_ image file
-    and share it across locales.
+    and share it across locales. For details, see [Page bundles][].
+  - This is enforced by a [`LOCALIZATION` guidelines][l10n-check] check.
 
+- **Do** translate text in [Mermaid][] diagrams.
+
+[l10n-check]: ../pr-checks/#localization
 [Mermaid]: https://mermaid.js.org
+[Page bundles]: https://gohugo.io/content-management/multilingual/#page-bundles
 
 ### Include files {#includes}
 
@@ -142,15 +171,13 @@ would translate any other page content.
 
 ### Shortcodes
 
-{{% alert title="Note" %}}
-
-As of February 2025, we are in the process of migrating from shortcodes to
-[include files](#includes) as a means of supporting shared-page content.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> As of February 2025, we are in the process of migrating from shortcodes to
+> [include files](#includes) as a means of supporting shared-page content.
 
 Some of the base shortcodes contain English text that you might need to localize
--- this is particularly true of those contained in [layouts/_shortcodes/docs].
+-- this is particularly true of those contained in [layouts/_shortcodes/docs][].
 
 If you need to create a localized version of a shortcode, place it under
 `layouts/_shortcodes/xx`, where `xx` is your localization's language code. From
@@ -194,8 +221,9 @@ command:
 
 ```console
 $ npm run check:i18n
-1       1       content/en/docs/platforms/kubernetes/_index.md - content/zh/docs/platforms/kubernetes/_index.md
+> Drifted file: content/zh/docs/platforms/kubernetes/_index.md
 ...
+DRIFTED files: 361 out of 990
 ```
 
 You can restrict the target pages to one or more localizations by providing
@@ -208,11 +236,12 @@ npm run check:i18n -- content/zh
 ### Viewing change details
 
 For any given localized pages that need updating, you can see the diff details
-of the corresponding English language pages by using the `-d` flag and providing
-the paths to your localized pages, or omit the paths to see all. For example:
+of the corresponding English language pages by using the `diff` subcommand and
+providing the paths to your localized pages. For example:
 
 ```console
-$ npm run check:i18n -- -d content/zh/docs/platforms/kubernetes
+$ npm run check:i18n -- diff content/zh/docs/platforms/kubernetes
+# content/zh/docs/platforms/kubernetes/_index.md: drifted from 1ca30b4d
 diff --git a/content/en/docs/platforms/kubernetes/_index.md b/content/en/docs/platforms/kubernetes/_index.md
 index 3592df5d..c7980653 100644
 --- a/content/en/docs/platforms/kubernetes/_index.md
@@ -232,20 +261,20 @@ index 3592df5d..c7980653 100644
 As you create pages for your localization, remember to add `default_lang_commit`
 to the page front matter along with an appropriate commit hash from `main`.
 
-If your page translation is based on an English page in `main` at `<hash>`, then
+If your page translation is based on an English page in `main` at `<HASH>`, then
 run the following command to automatically add `default_lang_commit` to your
-page file's front matter using the commit `<hash>`. You can specify `HEAD` as an
+page file's front matter using the commit `<HASH>`. You can specify `HEAD` as an
 argument if your pages are now synced with `main` at `HEAD`. For example:
 
 ```sh
-npm run check:i18n -- -n -c 1ca30b4d content/ja
-npm run check:i18n -- -n -c HEAD content/zh/docs/concepts
+npm run check:i18n -- commit 1ca30b4d --new content/ja
+npm run check:i18n -- commit HEAD --new content/zh/docs/concepts
 ```
 
 To list localization page files with missing hash keys, run:
 
 ```sh
-npm run check:i18n -- -n
+npm run check:i18n -- --new
 ```
 
 ### Updating `default_lang_commit` for existing pages
@@ -254,38 +283,68 @@ As you update your localized pages to match changes made to the corresponding
 English language page, ensure that you also update the `default_lang_commit`
 commit hash.
 
-{{% alert title="Tip" %}}
-
-If your localized page now corresponds to the English language version in `main`
-at `HEAD`, then erase the commit hash value in the front matter, and run the
-**add** command given in the previous section to automatically refresh the
-`default_lang_commit` field value.
-
-{{% /alert %}}
+> [!TIP]
+>
+> If your localized page now corresponds to the English language version in
+> `main` at `HEAD`, then run
+> `npm run check:i18n -- commit HEAD <PATH-TO-YOUR-PAGE>`: the
+> `default_lang_commit` hash is refreshed and the page's
+> [drift status](#drift-status) is cleared in the same write.
 
 If you have batch updated all of your localization pages that had drifted, you
-can update the commit hash of these files using the `-c` flag followed by a
-commit hash or 'HEAD' to use `main@HEAD`.
+can update the commit hash of these files using the `commit` subcommand followed
+by a commit hash or 'HEAD' to use `main@HEAD`.
 
 ```sh
-npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
-npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
+npm run check:i18n -- commit <HASH> <PATH-TO-YOUR-UPDATED-FILES>
+npm run check:i18n -- commit HEAD <PATH-TO-YOUR-UPDATED-FILES>
 ```
 
-{{% alert title="Important" %}}
+> [!IMPORTANT]
+>
+> When you use `HEAD` as a hash specifier, the script will use the hash of
+> `main` at HEAD in your **local environment**. Make sure that you fetch and
+> pull `main`, if you want HEAD to correspond to `main` in GitHub.
 
-When you use `HEAD` as a hash specifier, the script will use the hash of `main`
-at HEAD in your **local environment**. Make sure that you fetch and pull `main`,
-if you want HEAD to correspond to `main` in GitHub.
+### Patching localized pages {#patched}
 
-{{% /alert %}}
+[Build and check fixes](#keep-checks-green) sometimes require editing a
+localized page without syncing it to its English counterpart — for example,
+retargeting a link after an English page was moved. Mark each localized page
+fixed in this way as **patched**, whether or not the fix spans locales:
+
+- Make only the edits that the fix requires — no other changes to the page.
+- Append the `# patched` YAML comment to the page's `default_lang_commit` line:
+
+  ```yaml
+  default_lang_commit: abc4567... # patched
+  ```
+
+The marker is reserved for such mechanical fixes —
+[semantic changes](#semantic-changes) never use it. The marker tells the page's
+locale team that the page was fixed without being synced: the hash still records
+the last sync point. The marker is dropped the next time the page's hash is
+[updated](#updating-default_lang_commit-for-existing-pages).
 
 ### Drift status
 
-Run `npm run fix:i18n:status` to add a front-matter field `drifted_from_default`
-to those target localization pages that have drifted. This field will soon be
-used to display a banner at the top of pages that have drifted relative to their
-English counterparts.
+The `drifted_from_default` front-matter field marks a localized page as drifted:
+the page displays an "outdated" banner, and the link checker skips it, so that
+stale links on drifted pages don't fail CI. The link checker doesn't wait for
+the field: locale copies of English pages changed since the last tree-wide
+status sync are skipped as well, as
+[drift pending](/site/build/link-checking/#configuration).
+
+The daily [Housekeeping run](/site/build/ci-workflows/#housekeeping) keeps the
+field in sync tree wide; PRs don't update the status of pages they don't
+otherwise change. Each page that a PR **does** change must leave the PR with an
+accurate drift state, as the `I18N check` enforces: either sync the page with
+its English counterpart and
+[refresh its pin](#updating-default_lang_commit-for-existing-pages) — the status
+is cleared in the same write — or record the remaining drift with
+`npm run fix:i18n:status -- <PATHS>`. Pins can only point at commits on `main`,
+so a page synced to English changes made in the same PR records the remaining
+drift until those changes merge.
 
 ### Script help
 
@@ -293,29 +352,58 @@ For more details about the script, run `npm run check:i18n -- -h`.
 
 ## New localizations
 
-### New localization team
+Interested in starting a new localization for the OTel website? Reach out to
+maintainers to express your interest, for example through a GitHub discussion or
+via the Slack `#otel-docs-localization` channel. This section explains the steps
+involved in starting a new localization.
 
-To start a new localization for the OpenTelemetry website you need:
+> [!NOTE]
+>
+> You don't have to be an existing contributor to the OpenTelemetry project to
+> start a new localization. However, you cannot be added as a member of the
+> [OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as
+> a member of the approvers group for your localization until you satisfy the
+> requirements for becoming an established member and approver as outlined in
+> the [membership guidelines][].
+>
+> Before you earn approver status, you can indicate your approval of a
+> localization PR by adding an "LGTM" (Looks Good To Me) comment. During this
+> startup phase, maintainers will treat your reviews as if you are an approver
+> already.
+
+[membership guidelines]:
+  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+
+### 1. Assemble a localization team {#team}
+
+Creating a localization is about growing an active and supportive community. To
+start a new localization for the OpenTelemetry website you need:
 
 1. A **localization mentor** who is familiar with your language, such as an
-   [active approver][] of the [CNCF Glossary][], or the [Kubernetes website][].
+   [active approver][] of the [CNCF Glossary][] or the [Kubernetes website][].
 2. At least two potential contributors.
 
 [active approver]: https://github.com/cncf/glossary/blob/main/CODEOWNERS
 [CNCF Glossary]: https://glossary.cncf.io/
 [Kubernetes website]: https://github.com/kubernetes/website
 
-Once you are ready:
+### 2. Localization kickoff: create an issue {#kickoff}
 
-1. Create a [new issue][] to share your interest to contribute.
+With a [localization team](#team) in place or coming together, create an issue
+with the task list given below:
 
-2. Add the GitHub handles of the mentor and potential contributors.
-
-3. Look up the official [ISO 639-1 code][] for the language you want to add.
+1. Look up the official [ISO 639-1 code][] for the language you want to add.
    We'll refer to this language code as `LANG_ID` in the remainder of this
-   section.
+   section. If you have doubts about which tag to use, especially when it comes
+   to choosing a subregion, ask maintainers.
 
-4. Add the following task list to your issue's opening comment:
+   [ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
+
+2. Identify the GitHub handles of the
+   [mentor and potential contributors](#team).
+
+3. Create a [new issue][] containing the following task list in the opening
+   comment:
 
    ```markdown
    - [ ] Language info:
@@ -327,53 +415,69 @@ Once you are ready:
    - [ ] Read through
          [Localization](https://opentelemetry.io/docs/contributing/localization/)
          and all other pages in the Contributing section
-   - [ ] Localize site homepage to YOUR_LANGUAGE_NAME
+   - [ ] Localize site homepage (only) to YOUR_LANGUAGE_NAME and submit a PR.
+         For details, see
+         [Localize the homepage](https://opentelemetry.io/docs/contributing/localization/#homepage).
    - [ ] OTel maintainers:
-     - [ ] Update `hugo.yaml`
+     - [ ] Update Hugo config for `LANG_ID`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
      - [ ] Create org-level group for `LANG_ID` approvers
      - [ ] Update components owners for `content/LANG_ID`
+   - [ ] Create an issue to track the localization of the **glossary**. Add the
+         issue number here. For details, see
+         [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
    ```
 
-5. [Submit a pull request](../pull-requests/) with a translation of the website
-   [homepage], and _nothing else_, in the file `content/LANG_ID/_index.md`.
-   Ensure that maintainers have the necessary permissions to edit your PR, since
-   they will add additional changes to your PR that are required to get your
-   localization project started.
+### 3. Localize the homepage {#homepage}
 
-[ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
+[Submit a pull request](../pull-requests/) with a translation of the website
+[homepage][], and _nothing else_, in the file `content/LANG_ID/_index.md`.
+Ensure that maintainers have the necessary permissions to edit your PR, since
+they will add additional changes to your PR that are required to get your
+localization project started.
+
 [homepage]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
 After your first PR is merged, maintainers will set up the issue label, the
 org-level group and the component owners.
 
-{{% alert title="Note" %}}
+### 4. Localize the glossary {#glossary}
 
-You don't have to be an existing contributor to the OpenTelemetry project, to
-start a new localization. However, you will not be added as a member of the
-[OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as a
-member of the approvers group for your localization. You will need to satisfy
-the requirements for becoming an established member and approver as outlined in
-the
-[membership guidelines](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
+The second page to localize is the [Glossary](/docs/concepts/glossary/). This is
+a **critical** page for localized readers, since it defines the key terms used
+in observability and OpenTelemetry in particular. This is especially critical if
+no such terms exist in your language.
 
-When starting the localization project, maintainers will treat your reviews as
-if you are an approver already.
+For guidance, see the [video][ali-d-youtube] of Ali Dowair's talk at Write the
+Docs 2024: [The art of translation: How to localize technical
+content][ali-dowair-2024].
 
-{{% /alert %}}
+[ali-dowair-2024]:
+  https://www.writethedocs.org/conf/atlantic/2024/speakers/#speaker-ali-dowair-what-s-in-a-word-lessons-from-localizing-kubernetes-documentation-to-arabic-ali-dowair
+[ali-d-youtube]: https://youtu.be/HY3LZOQqdig
+
+### 5. Localize remaining site pages in small increments {#rest}
+
+With terminology established, you can now localize the remaining site pages.
+
+> [!IMPORTANT] Submit small PRs <a id="small-prs"></a>
+>
+> Localization teams should submit their work in **small increments**. That is,
+> keep [PRs][] small, preferably limited to one or a few small files. Smaller
+> PRs are easier to review and so typically get merged more quickly.
 
 ### OTel maintainer checklist
 
 #### Hugo
 
-Update `hugo.yaml`. Add appropriate entries for `LANG_ID` under:
+Update Hugo config for `LANG_ID`. Add appropriate entries for `LANG_ID` under:
 
-- `languages`
-- `module.mounts`. At a minimum, add a single `source`-`target` entry for
-  `content`. Consider adding entries for `en` fallback pages only once the
-  locale has enough content.
+- `languages` in `config/_default/hugo.yaml`
+- `module.mounts` via `config/_default/module-template.yaml`. At a minimum, add
+  a single `source`-`target` entry for `content`. Consider adding entries for
+  `en` fallback pages only once the locale has enough content.
 
 #### Spelling
 
@@ -381,20 +485,31 @@ Look for [cSpell dictionaries][] available as NPM packages
 [@cspell/dict-LANG_ID][]. If a dictionary isn't available for your dialect or
 region, choose the closest region.
 
-If no dictionary is available, then skip the rest of this subsection. Otherwise:
-
-- Add the NPM package as a dev dependency, for example:
-  `npm install --save-dev @cspell/dict-bn`.
-- Create `.cspell/LANG_ID-words.txt` as the site-local dictionary words for
-  `LANG_ID`.
-- In `.cspell.yml`, add entries for:
-  - `import`
-  - `dictionaryDefinitions`
-  - `dictionaries`: add two entries here, one for `LANG_ID` and one for
-    `LANG_ID-words.txt`
+- **If a dictionary is available**:
+  - Add the NPM package as a dev dependency, for example:
+    `npm install --save-dev @cspell/dict-bn`.
+  - In [`.cspell.yml`][], add the package's `cspell-ext.json` under `import:`,
+    and add the dictionary's ID (for example `bn`, `es-es`, `pl_pl`) under
+    `dictionaries:`.
+- **If no dictionary is available** for the language, do not add an `import` for
+  it. Add `content/LANG_ID` to the `ignorePaths` list in [`.cspell.yml`][] so
+  cSpell does not try to spell-check that locale's Markdown as English.
 
 [cSpell dictionaries]: https://github.com/streetsidesoftware/cspell-dicts
 [@cspell/dict-LANG_ID]: https://www.npmjs.com/search?q=%40cspell%2Fdict
+[`.cspell.yml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml
+
+#### Word list
+
+Create `.cspell/LANG_ID-words.txt` for every new locale (empty at first), even
+when **Spelling** has no natural-language dictionary to add.
+
+- In [`.cspell.yml`][], register the file and enable it:
+  - Under `dictionaryDefinitions`, add an entry with `name` (for example
+    `LANG_ID-words`) and `path` (for example `.cspell/LANG_ID-words.txt`).
+  - Under `dictionaries`, add the same `name` value as in the step above (not
+    the file path).
 
 #### Other tooling support
 
@@ -403,78 +518,137 @@ If no dictionary is available, then skip the rest of this subsection. Otherwise:
 
 ## Approver and maintainer guidance
 
-### PRs with semantic changes should not span locales {#prs-should-not-span-locales}
+### Enabling auto-merge on locale-only PRs {#auto-merge}
 
-Approvers should ensure that PRs making **semantic** changes to doc pages do not
-span multiple locales. A semantic change is one that impacts the _meaning_ of
-the page content. Our docs [localization process](.) ensures that locale
-approvers will, in time, review the English-language edits to determine if the
-changes are appropriate for their locale, and how best to incorporate them into
-their locale. If changes are necessary, the locale approvers will make them via
-their own locale-specific PRs.
+Members of a locale's maintainers team can enable [GitHub auto-merge][] on a
+locale-only PR by commenting `/auto-merge` (or `/auto-merge:enable`; use
+`/auto-merge:disable` to turn it off). The directive must be on its own line,
+with no leading text or whitespace, as the first or last non-blank line of the
+comment. It may appear at most once. For example, you can write:
 
-### Purely editorial changes across locales are OK {#patch-locale-links}
+```text
+LGTM
+/auto-merge
+```
 
-**Purely editorial** page updates are changes that **do not** affect the
-existing content and can span multiple locales. These include:
+This lets established localization teams land their own PRs without waiting on a
+docs maintainer. GitHub, branch protection, and CODEOWNERS rules still gate the
+merge: the PR only merges once all required reviews are in and checks pass.
 
-- **Link maintenance**: Fixing broken link paths when pages are moved or
-  deleted.
-- **Resource updates**: Updating links to moved external resources.
-- **Targeted content additions**: Adding specific new definitions or sections to
-  files that have drifted, when updating the entire file isn't feasible.
+An auto-merge comment is honored only when every changed file is owned by a
+locale you maintain, so it can't be used to make changes to shared or English
+content. For the eligibility rules and command details, see the [helper
+README][].
+
+[GitHub auto-merge]:
+  https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
+[helper README]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
+
+### PRs should not span locales {#prs-should-not-span-locales}
+
+As a general rule, a PR should not span locales, that is, it should change the
+pages of at most one locale. The only exceptions are described in this section.
+
+#### Semantic changes {#semantic-changes}
+
+Approvers should ensure that [PRs][] making **semantic** changes to doc pages do
+not span multiple locales. A semantic change is one that impacts the _meaning_
+of the page content — what readers understand and act on. Code blocks, commands,
+and configuration samples are part of that content: they aren't
+[translated](#do-not), but edits to them are semantic changes all the same. Our
+docs [localization process](.) ensures that locale approvers will, in time,
+review the English-language edits to determine if the changes are appropriate
+for their locale, and how best to incorporate them into their locale. If changes
+are necessary, the locale approvers will make them via their own locale-specific
+PRs.
+
+> [!NOTE] Content-neutral maintenance
+>
+> The locale-span rule governs page **content**. Maintainers sometimes submit
+> content-neutral changes that necessarily span locales: site-wide tooling,
+> configuration, front-matter, or markup updates, including
+> [drift-status](#drift-status) bookkeeping — the automated PRs and manual
+> status-only edits alike. Such changes don't alter the meaning of localized
+> pages.
+
+#### Keeping the build and checks green {#keep-checks-green}
+
+A PR that changes localized page **content** may span multiple locales only when
+that is strictly required to keep the site build and its checks green:
+
+- **Link fixes**: repairing link-check failures on localized pages after an
+  English page is moved or deleted, or an external resource has moved. See
+  [Link fixes and resource updates](#link-fixes-and-resource-updates).
+- **Build fixes**: repairing site-build breakage on localized pages, for
+  example, after a shared shortcode, include file, or data source changes. A
+  page's [drift status](#drift-status) only shields it from link checking, not
+  from the Hugo build.
+
+In both cases, mark every localized page that you fix as [patched](#patched).
+
+The check-green minimum applies to drift-status bookkeeping too: when a failing
+check calls for refreshing `drifted_from_default` (see the deleted-page case
+below), update only the pages that the failing check reports — the daily
+[Housekeeping run](/site/build/ci-workflows/#housekeeping) completes the rest.
+Status-only edits are [content-neutral maintenance](#semantic-changes).
+
+Treat any other change to localized page content as a **semantic** change for
+that locale. This includes targeted content additions to drifted pages, such as
+adding a new glossary term.
 
 #### Link fixes and resource updates {#link-fixes-and-resource-updates}
 
-For example, sometimes changes to English language documentation can result in
-link-check failures for non-English locales. This happens when documentation
-pages are moved or deleted.
+Changes to the English documentation can result in link-check failures for
+non-English locales. This happens when documentation pages, or sections within
+them, are moved or deleted; links to moved external resources can fail
+similarly. A moved or deleted page's localized copies themselves don't need to
+be touched: [drift tracking](#track-changes) flags them for their locale teams.
+What may need fixing are the localized pages that **link** to such targets.
+Proceed according to the fate of the link target:
 
-In such situations, make the following updates to each non-English page that has
-a path that fails link checking:
+- **A page was moved**:
 
-- Update the link reference to the new page path.
-- Add the `# patched` YAML comment at the end of the line for the
-  `default_lang_commit` front matter line.
-- Make no other changes to the file.
-- Rerun `npm run check:links` and ensure that no link failures remain.
+  1. Ensure that the moved English page declares an [alias][aliases] for its old
+     path. The alias keeps previously published links to the page working, but
+     only for site visitors: aliases are published as server-side redirects, and
+     the link checker resolves links against the built site's canonical page
+     paths. Links to the old path therefore still need fixing.
+  2. Update the link to the new path on each non-English page that fails link
+     checking, and mark each edited page as [patched](#patched).
+     ([Drifted](#drift-status) pages are skipped by the link checker, so this
+     typically applies to in-sync pages.)
 
-When an _external link_ to a **moved** (but otherwise semantically
-**unchanged**) resource (such as a GitHub file) results in a link-check failure,
-consider:
+- **A section was moved**: aliases can't help in this case, since they redirect
+  page paths, not fragments. If the section moved within its page, preserve its
+  [heading ID](#headings) so that links to the section keep working. Otherwise,
+  update links to the section on each page that fails link checking, and mark
+  each edited localized page as [patched](#patched).
 
-- Removing the broken link from the refcache
-- Updating the link across all locales using the method described earlier in
-  this section.
+- **A page or section was deleted**: choosing a replacement or dropping the
+  reference is a [semantic change](#semantic-changes) for each affected locale,
+  so don't patch such links. Fixing the English pages that linked to the deleted
+  target makes their localized copies drift; the link checker already skips such
+  copies as [drift pending](#drift-status), and the daily Housekeeping run
+  persists their status. If a localized page still fails link checking, refresh
+  its [drift status](#drift-status) directly:
+  `npm run fix:i18n:status -- <PATHS-TO-FAILING-LOCALIZED-PAGES>`.
+  Reconciliation is left to each page's locale team. In the rare case where a
+  failing link exists only in a localized page, coordinate a fix with its locale
+  team.
 
-#### Targeted content additions to drifted files {#targeted-content-additions}
+- **An external resource was moved**, but is otherwise semantically unchanged
+  (such as a relocated GitHub file): update the link on each page that fails
+  link checking, marking each edited localized page as [patched](#patched).
 
-When adding specific new content to a localized file that has drifted from the
-English version, you may choose to make a targeted update rather than updating
-the entire file. For example, when a new glossary term such as "cardinality" is
-added to the English glossary, you can add just that term to the localized
-glossary without addressing other drifted content.
+In all cases, rerun `npm run check:links` and confirm that no link failures
+remain.
 
-Here's an example of the workflow for this targeted update:
-
-- Add only the "cardinality" definition block to the localized glossary file
-- Update the front matter by adding `# patched` as a comment at the end of the
-  `default_lang_commit` line
-- Leave all other existing content unchanged
-- In the PR description, clearly document:
-  - The specific content added ("cardinality" definition)
-  - That the file remains drifted for other content
-  - The rationale for the targeted update (e.g., "Providing critical new
-    terminology to localized readers without requiring full file
-    synchronization")
-
-This approach enables incremental improvements to localized content while
-maintaining awareness that the file still requires future attention for complete
-synchronization with the English version.
-
+[aliases]: https://gohugo.io/content-management/urls/#aliases
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
+[PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/

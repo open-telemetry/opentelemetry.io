@@ -21,8 +21,8 @@ source product for their customers.
 
 ## Adding your organization {#how-to-add}
 
-To have your organization listed, [submit a PR] with an entry added to the
-[vendors list]. The entry should include the following:
+To have your organization listed, [submit a PR][] with an entry added to the
+[vendors list][]. The entry should include the following:
 
 - Link to the documentation that details how your offering consumes
   OpenTelemetry natively via [OTLP](/docs/specs/otlp/).

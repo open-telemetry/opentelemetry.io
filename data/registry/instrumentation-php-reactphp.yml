@@ -1,0 +1,16 @@
+title: OpenTelemetry ReactPHP HTTP Browser auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - php
+  - instrumentation
+license: Apache 2.0
+description:
+  OpenTelemetry auto-instrumentation package for the ReactPHP HTTP library.
+  Currently only the Browser (client) component is instrumented.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/ReactPHP
+createdAt: 2025-03-26
+isFirstParty: false

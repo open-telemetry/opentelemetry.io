@@ -3,7 +3,7 @@ title: SDKの設定
 linkTitle: SDKの設定
 weight: 13
 aliases: [config]
-default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
+default_lang_commit: 906771a74807a998613527841d296e49d3609a9f
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---
@@ -20,26 +20,16 @@ cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKC
 
 [ゼロコードSDK自動設定](#zero-code-sdk-autoconfigure)モジュールは、システムプロパティまたは環境変数を通じてSDKコンポーネントを設定し、プロパティが不十分な場合のさまざまな拡張ポイントを提供します。
 
-{{% alert %}}
-
-[ゼロコードSDK自動設定](#zero-code-sdk-autoconfigure)モジュールの使用を推奨します。
-これにより定型コードが削減され、コードの書き直しやアプリケーションの再コンパイルなしに再設定が可能になり、言語の相互運用性があります。
-
-{{% /alert %}}
-
-{{% alert %}}
-
-[Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。
-
-すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
-
-{{% /alert %}}
+> [!NOTE] **Notes**
+>
+> - [ゼロコードSDK自動設定](#zero-code-sdk-autoconfigure)モジュールの使用を推奨します。これにより定型コードが削減され、コードの書き直しやアプリケーションの再コンパイルなしに再設定が可能になり、言語の相互運用性があります。
+> - [Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
 
 ## プログラム設定 {#programmatic-configuration}
 
-プログラム設定インターフェースは、[SDK](../sdk/)コンポーネントを構築するためのAPIのセットです。
+プログラム設定インターフェイスは、[SDK](../sdk/)コンポーネントを構築するためのAPIのセットです。
 すべてのSDKコンポーネントにはプログラム設定APIがあり、他のすべての設定メカニズムはこのAPIの上に構築されています。
-たとえば、[自動設定環境変数とシステムプロパティ](#environment-variables-and-system-properties)設定インターフェースは、よく知られた環境変数とシステムプロパティをプログラム設定APIへの一連の呼び出しに解釈します。
+たとえば、[自動設定環境変数とシステムプロパティ](#environment-variables-and-system-properties)設定インターフェイスは、よく知られた環境変数とシステムプロパティをプログラム設定APIへの一連の呼び出しに解釈します。
 
 他の設定メカニズムはより便利ですが、必要な正確な設定を表現するコードを書くことの柔軟性を提供するものはありません。
 特定の機能が上位の設定メカニズムでサポートされていない場合、プログラム設定を使用するしかない場合があります。
@@ -49,7 +39,7 @@ cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKC
 
 ## ゼロコードSDK自動設定 {#zero-code-sdk-autoconfigure}
 
-自動設定モジュール（アーティファクト`io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`）は、[プログラム設定インターフェース](#programmatic-configuration)の上に構築された設定インターフェースで、[SDKコンポーネント](../sdk/#sdk-components)をゼロコードで設定します。
+自動設定モジュール（アーティファクト`io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`）は、[プログラム設定インターフェース](#programmatic-configuration)の上に構築された設定インターフェイスで、[SDKコンポーネント](../sdk/#sdk-components)をゼロコードで設定します。
 2つの異なる自動設定ワークフローがあります。
 
 - [環境変数とシステムプロパティ](#environment-variables-and-system-properties)は、環境変数とシステムプロパティを解釈してSDKコンポーネントを作成し、プログラム設定をオーバーレイするためのさまざまなカスタマイゼーションポイントを含みます
@@ -73,22 +63,10 @@ public class AutoConfiguredSdk {
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert %}}
-
-[Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。
-すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
-
-{{% /alert %}}
-
-{{% alert %}}
-
-自動設定モジュールは、適切なときにSDKをシャットダウンするためにJavaシャットダウンフックを登録します。
-OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#internal-logging)するため、シャットダウンフック中に一部のログが抑制される可能性があります。
-これはJDK自体のバグであり、OpenTelemetry Javaの制御下にあるものではありません。
-シャットダウンフック中にログが必要な場合は、シャットダウンフック内で自身をシャットダウンしてログメッセージを抑制する可能性があるログフレームワークではなく、`System.out`の使用を検討してください。
-詳細については、この[JDKバグ](https://bugs.openjdk.java.net/browse/JDK-8161253)を参照してください。
-
-{{% /alert %}}
+> [!NOTE] **Notes**
+>
+> - [Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
+> - 自動設定モジュールは、適切なときにSDKをシャットダウンするためにJavaシャットダウンフックを登録します。OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#internal-logging)するため、シャットダウンフック中に一部のログが抑制される可能性があります。これはJDK自体のバグであり、OpenTelemetry Javaの制御下にあるものではありません。シャットダウンフック中にログが必要な場合は、シャットダウンフック内で自身をシャットダウンしてログメッセージを抑制する可能性があるログフレームワークではなく、`System.out`の使用を検討してください。詳細については、この[JDKバグ](https://bugs.openjdk.java.net/browse/JDK-8161253)を参照してください。
 
 ### 環境変数とシステムプロパティ {#environment-variables-and-system-properties}
 
@@ -100,7 +78,7 @@ OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#inter
 - 名前を大文字に変換します
 - すべての`.`と`-`文字を`_`に置き換えます
 
-たとえば、`otel.sdk.enabled`システムプロパティは`OTEL_SDK_ENABLED`環境変数と同等です。
+たとえば、`otel.sdk.disabled`システムプロパティは`OTEL_SDK_DISABLED`環境変数と同等です。
 
 プロパティがシステムプロパティと環境変数の両方として定義されている場合、システムプロパティが優先されます。
 
@@ -228,7 +206,7 @@ OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#inter
 | システムプロパティ               | 目的                                                                                                                                                                                          | デフォルト      |
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | `otel.traces.exporter`           | スパンエクスポーターのカンマ区切りリスト。既知の値には`otlp`、`zipkin`、`console`、`logging-otlp`、`none`が含まれます。**[1]**                                                                | `otlp`          |
-| `otel.metrics.exporter`          | メトリクスエクスポーターのカンマ区切りリスト。既知の値には`otlp`、`prometheus`、`none`が含まれます。**[1]**                                                                                   | `otlp`          |
+| `otel.metrics.exporter`          | メトリクスエクスポーターのカンマ区切りリスト。既知の値には`otlp`、`prometheus`、`console`、`none`が含まれます。**[1]**                                                                        | `otlp`          |
 | `otel.logs.exporter`             | ログレコードエクスポーターのカンマ区切りリスト。既知の値には`otlp`、`console`、`logging-otlp`、`none`が含まれます。**[1]**                                                                    | `otlp`          |
 | `otel.java.exporter.memory_mode` | `reusable_data`の場合、アロケーションを削減するために（サポートするエクスポーターで）再利用可能メモリモードを有効にします。既知の値には`reusable_data`、`immutable_data`が含まれます。**[2]** | `reusable_data` |
 
@@ -376,7 +354,7 @@ SDKに組み込まれ、`opentelemetry-java-contrib`でコミュニティによ�
 | `io.opentelemetry.contrib.aws.resource.EksResourceProvider`                 | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Amazon EKSランタイム環境リソース属性を提供します。                                              |
 | `io.opentelemetry.contrib.aws.resource.LambdaResourceProvider`              | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | AWS Lambdaランタイム環境リソース属性を提供します。                                              |
 
-リソース自動設定に参加するには、`ResourceProvider`インターフェースを実装してください。
+リソース自動設定に参加するには、`ResourceProvider`インターフェイスを実装してください。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -407,7 +385,7 @@ public class CustomResourceProvider implements ResourceProvider {
 
 ##### AutoConfigurationCustomizerProvider {#autoconfigurationcustomizerprovider}
 
-[AutoConfigurationCustomizerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.html)インターフェースを実装して、さまざまな自動設定されたSDKコンポーネントをカスタマイズします。
+[AutoConfigurationCustomizerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.html)インターフェイスを実装して、さまざまな自動設定されたSDKコンポーネントをカスタマイズします。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -464,7 +442,7 @@ public class CustomizerProvider implements AutoConfigurationCustomizerProvider {
 
 ##### ConfigurableSpanExporterProvider {#configurablespanexporterprovider}
 
-[ConfigurableSpanExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSpanExporterProvider.html)インターフェースを実装して、カスタムスパンエクスポーターが自動設定に参加できるようにします。
+[ConfigurableSpanExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSpanExporterProvider.html)インターフェイスを実装して、カスタムスパンエクスポーターが自動設定に参加できるようにします。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -494,7 +472,7 @@ public class CustomSpanExporterProvider implements ConfigurableSpanExporterProvi
 
 ##### ConfigurableMetricExporterProvider {#configurablemetricexporterprovider}
 
-[ConfigurableMetricExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/metrics/ConfigurableMetricExporterProvider.html)インターフェースを実装して、カスタムメトリクスエクスポーターが自動設定に参加できるようにします。
+[ConfigurableMetricExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/metrics/ConfigurableMetricExporterProvider.html)インターフェイスを実装して、カスタムメトリクスエクスポーターが自動設定に参加できるようにします。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -524,7 +502,7 @@ public class CustomMetricExporterProvider implements ConfigurableMetricExporterP
 
 ##### ConfigurableLogRecordExporterProvider {#configurablelogrecordexporterprovider}
 
-[ConfigurableLogRecordExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/logs/ConfigurableLogRecordExporterProvider.html)インターフェースを実装して、カスタムログレコードエクスポーターが自動設定に参加できるようにします。
+[ConfigurableLogRecordExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/logs/ConfigurableLogRecordExporterProvider.html)インターフェイスを実装して、カスタムログレコードエクスポーターが自動設定に参加できるようにします。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -554,7 +532,7 @@ public class CustomLogRecordExporterProvider implements ConfigurableLogRecordExp
 
 ##### ConfigurableSamplerProvider {#configurablesamplerprovider}
 
-[ConfigurableSamplerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSamplerProvider.html)インターフェースを実装して、カスタムサンプラーが自動設定に参加できるようにします。
+[ConfigurableSamplerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSamplerProvider.html)インターフェイスを実装して、カスタムサンプラーが自動設定に参加できるようにします。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -584,7 +562,7 @@ public class CustomSamplerProvider implements ConfigurableSamplerProvider {
 
 ##### ConfigurablePropagatorProvider {#configurablepropagatorprovider}
 
-[ConfigurablePropagatorProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/ConfigurablePropagatorProvider.html)インターフェースを実装して、カスタムプロパゲーターが自動設定に参加できるようにします。
+[ConfigurablePropagatorProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/ConfigurablePropagatorProvider.html)インターフェイスを実装して、カスタムプロパゲーターが自動設定に参加できるようにします。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -622,15 +600,13 @@ public class CustomTextMapPropagatorProvider implements ConfigurablePropagatorPr
 | ------------------------------- | ----------------------- | ---------- |
 | `otel.experimental.config.file` | SDK設定ファイルのパス。 | 未設定     |
 
-{{% alert title="注意" color="warning" %}}
-
-設定ファイルが指定された場合、[環境変数とシステムプロパティ](#environment-variables-and-system-properties)は無視され、[プログラムカスタマイゼーション](#programmatic-customization)と[SPIs](#spi-service-provider-interface)はスキップされます。
-ファイルの内容のみがSDK設定を決定します。
-
-{{% /alert %}}
+> [!WARNING]
+>
+> 設定ファイルが指定された場合、[環境変数とシステムプロパティ](#environment-variables-and-system-properties)は無視され、[プログラムカスタマイゼーション](#programmatic-customization)と[SPIs](#spi-service-provider-interface)はスキップされます。
+> ファイルの内容のみがSDK設定を決定します。
 
 詳細については、以下のリソースを参照してください。
 
-- [使用ドキュメント](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#declarative-configuration)
-- [Javaエージェントでの例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#declarative-configuration)
+- [使用ドキュメント](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/declarative-config)
+- [Javaエージェントでの例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent-declarative-configuration)
 - [Javaエージェントなしでの例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/declarative-configuration)

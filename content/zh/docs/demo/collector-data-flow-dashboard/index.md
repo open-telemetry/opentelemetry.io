@@ -1,6 +1,7 @@
 ---
 title: Collector 数据流仪表盘
 default_lang_commit: d1d5bbbbab9f7c6a485e3a9e0d0137bc0f5f4f94
+drifted_from_default: true
 ---
 
 监控 OpenTelemetry Collector 中的数据流具有多重重要意义。

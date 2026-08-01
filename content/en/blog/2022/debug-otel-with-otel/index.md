@@ -6,8 +6,7 @@ author: >-
   [Kumar Pratyush](https://github.com/kpratyus),  [Sanket
   Mehta](https://github.com/sanketmehta28), [Severin
   Neumann](https://github.com/svrnm) (Cisco)
-# prettier-ignore
-cSpell:ignore: distro Kumar Mehta Pratyush Sanket tracestate webserver WORKDIR xvfz
+cSpell:ignore: distro Kumar Mehta Pratyush Sanket webserver WORKDIR xvfz
 ---
 
 OpenTelemetry is here to help us find the root cause of issues in our software

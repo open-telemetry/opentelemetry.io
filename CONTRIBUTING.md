@@ -1,5 +1,7 @@
 # Contributing to OpenTelemetry.io
 
+<!-- markdownlint-disable no-otel-io-external-urls -->
+
 **Thanks for your interest in contributing to
 [OpenTelemetry.io](https://opentelemetry.io/)!**
 

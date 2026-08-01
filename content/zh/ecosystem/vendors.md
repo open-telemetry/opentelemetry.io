@@ -3,6 +3,7 @@ title: 厂商
 description: 原生支持 OpenTelemetry 的厂商
 aliases: [/vendors]
 default_lang_commit: b13d5dd3a9f288ab64d2af98c0b4ec1694499ef3
+drifted_from_default: true
 ---
 
 以下是部分通过 [OTLP](/docs/specs/otlp/) 原生接入 OpenTelemetry

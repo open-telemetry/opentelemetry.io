@@ -14,8 +14,8 @@ include functionality:
 
 */ -}}
 
-{{ $path := ._path -}}
 {{ $args := . -}}
+{{ $path := ._path -}}
 {{ $page := ._page |
     default (partial "func/find-include.html"  (dict "path" $path "page" ._dot.Page)) -}}
 {{ with $page -}}
@@ -42,7 +42,7 @@ include functionality:
 {{ else -}}
   {{ $msg := printf
       "Can't include '%s': file not found in page or ancestor contexts of page %s."
-      $path .Page.Path -}}
+      $path ._dot.Page -}}
   {{ warnf $msg -}}
 
   <div class="alert alert-warning">

@@ -405,21 +405,19 @@ log records that OpenTelemetry can process.
 ```python
 import logging
 from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
-from opentelemetry.sdk._logs.export import BatchLogRecordProcessor, ConsoleLogExporter
-from opentelemetry._logs import set_logger_provider, get_logger
+from opentelemetry.sdk._logs.export import BatchLogRecordProcessor, ConsoleLogRecordExporter # ConsoleLogExporter on versions earlier than 1.39.0
+from opentelemetry._logs import set_logger_provider
 
 provider = LoggerProvider()
-processor = BatchLogRecordProcessor(ConsoleLogExporter())
+processor = BatchLogRecordProcessor(ConsoleLogRecordExporter())
 provider.add_log_record_processor(processor)
 # Sets the global default logger provider
 set_logger_provider(provider)
 
-logger = get_logger(__name__)
-
 handler = LoggingHandler(level=logging.INFO, logger_provider=provider)
 logging.basicConfig(handlers=[handler], level=logging.INFO)
 
-logging.info("This is an OpenTelemetry log record!")
+logging.getLogger(__name__).info("This is an OpenTelemetry log record!")
 ```
 
 ### Further Reading

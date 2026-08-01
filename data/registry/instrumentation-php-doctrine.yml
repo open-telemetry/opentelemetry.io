@@ -1,0 +1,16 @@
+title: OpenTelemetry Doctrine auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - php
+  - instrumentation
+license: Apache 2.0
+description:
+  This package provides auto-instrumentation for the Doctrine DBAL and ORM
+  libraries.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Doctrine
+createdAt: 2025-03-26
+isFirstParty: false

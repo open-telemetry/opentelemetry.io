@@ -1,0 +1,19 @@
+# Config for linting specs: tmp/otel, tmp/otlp, tmp/semconv.
+#
+# This gets copied to $REPO_ROOT/tmp so that mdl-cli2 can find it. For each file
+# it walks up the directory chain to find the closest .markdownlint.yml and
+# uses that as the rule config (this file extends the root config for the
+# link-rule definitions).
+#
+# For spec linting we disable all built-in and other custom rules, except for
+# the link-pattern rules.
+
+extends: ../.markdownlint.yaml # Path is relative to $REPO_ROOT/tmp
+
+# Disable all built-in rules:
+default: false
+
+# Disable custom rules we don't want to run on specs:
+no-trailing-spaces: false
+trim-code-blank-lines: false
+unindent-code-blocks: false

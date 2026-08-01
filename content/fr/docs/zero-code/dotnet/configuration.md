@@ -3,7 +3,8 @@ title: Configuration et paramètres
 linkTitle: Configuration
 aliases: [/docs/languages/net/automatic/config]
 weight: 20
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: AZUREAPPSERVICE CLSID CORECLR dylib NETFX OPERATINGSYSTEM PROCESSRUNTIME UNHANDLEDEXCEPTION
 ---
@@ -329,7 +330,7 @@ quand l'application redémarre.
 
 Le CLR utilise les variables d'environnement suivantes pour configurer le
 profileur. Voir
-[.NET Runtime Profiler Loading](https://github.com/dotnet/runtime/blob/main/docs/design/coreclr/profiling/Profiler%20Loading.md)
+[.NET Runtime Profiler Loading](https://github.com/dotnet/runtime/blob/d8302cef7946be82775ba5b94a88ad8eee800714/docs/design/coreclr/profiling/Profiler%20Loading.md)
 pour plus d'informations.
 
 | Variable d'environnement .NET Framework | Variable d'environnement .NET | Description                                                                                                           | Valeur requise                                                                                                                                                                                                                                                     | Statut                                                    |

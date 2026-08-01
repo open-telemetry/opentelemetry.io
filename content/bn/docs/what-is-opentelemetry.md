@@ -3,7 +3,8 @@ title: OpenTelemetry কী?
 description: Opentelemetry কী এবং কী নয়, তার সংক্ষিপ্ত ব্যাখ্যা।
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
 weight: 150
-default_lang_commit: fb38bda3b4b9ae69c99b8d70543d0df37872aeac
+default_lang_commit: fb38bda3b4b9ae69c99b8d70543d0df37872aeac # patched
+drifted_from_default: true
 cSpell:ignore: youtube
 ---
 
@@ -17,7 +18,7 @@ OpenTelemetry হলো:
 
   কাজগুলোকে সহজ করে তুলতে তৈরি করা হয়েছে।
 
-- **ওপেন সোর্স** এবং **ভেন্ডর ও টুল নিরপেক্ষ** হওয়ায় এটি বিভিন্ন ধরনের অবজার্ভেবিলিটি ব্যাকএন্ডে ব্যবহার করা যায়, ওপেন সোর্স টুলে ব্যবহার করা যায় যেমন [Jaeger], [Prometheus], তেমনি যেকোনো কমার্শিয়াল সলিউশনের সঙ্গেও।\
+- **ওপেন সোর্স** এবং **ভেন্ডর ও টুল নিরপেক্ষ** হওয়ায় এটি বিভিন্ন ধরনের অবজার্ভেবিলিটি ব্যাকএন্ডে ব্যবহার করা যায়, ওপেন সোর্স টুলে ব্যবহার করা যায় যেমন [Jaeger][], [Prometheus][], তেমনি যেকোনো কমার্শিয়াল সলিউশনের সঙ্গেও।\
 তবে OpenTelemetry নিজে কোনো অবজার্ভেবিলিটি ব্যাকএন্ড **নয়**।
 
 OpenTelemetry-এর অন্যতম প্রধান লক্ষ্য হলো বিভিন্ন প্রোগ্রামিং ল্যাংগুয়েজ, ইনফ্রাস্ট্রাকচার ও রানটাইম এনভারমেন্ট নির্বিশেষে অ্যাপ্লিকেশন ও সিস্টেমগুলিকে সহজে ইন্সট্রুমেন্ট (instrumentation) করা।
@@ -83,7 +84,7 @@ OpenTelemetry ডিজাইন করা হয়েছে এক্সটে
 
 OpenTelemetry হলো [Cloud Native Computing Foundation][] (CNCF)-এর একটি প্রজেক্ট, যা [OpenTracing](https://opentracing.io) ও [OpenCensus](https://opencensus.io) নামক দুটি পূর্ববর্তী প্রজেক্টের [একীভূতকরণের][merger] ফলে গঠিত হয়েছে। এই দুইটি প্রজেক্টের জন্ম হয়েছিলো কোড কীভাবে ইন্সট্রুমেন্ট করতে হবে এবং অবজার্ভেবিলিটি ব্যাকএন্ডে টেলিমেট্রি ডেটা কীভাবে পাঠাতে হবে, সে বিষয়ে কোনো নির্দিষ্ট কোনো স্ট্যান্ডার্ড না থাকায়। তবে কোনো প্রজেক্টই এককভাবে স্ট্যান্ডার্ড তৈরিতে সফল না হওয়ায়, তারা একত্রিত হয়ে OpenTelemetry তৈরি করে এবং একটি একক সমাধান নিয়ে আসে।
 
-আপনি যদি বর্তমানে OpenTracing বা OpenCensus ব্যবহার করেন, তাহলে [মাইগ্রেশন গাইড](../migration/) থেকে OpenTelemetry-তে কীভাবে মাইগ্রেট করবেন তা জেনে নিতে পারেন।
+আপনি যদি বর্তমানে OpenTracing বা OpenCensus ব্যবহার করেন, তাহলে [মাইগ্রেশন গাইড](../compatibility/migration/) থেকে OpenTelemetry-তে কীভাবে মাইগ্রেট করবেন তা জেনে নিতে পারেন।
 
 [merger]: https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
 
@@ -91,7 +92,7 @@ OpenTelemetry হলো [Cloud Native Computing Foundation][] (CNCF)-এর এ�
 
 - [শুরু করুন](../getting-started/) —  OpenTelemetry ব্যবহার শুরু করুন সহজেই।
 - [OpenTelemetry এর কনসেপ্টগুলো](../concepts/)  সম্পর্কে জানুন।
-- [ভিডিও দেখুন][watch videos] — [OTel for beginners] ও অন্যান্য [প্লেলিস্ট][playlists] থেকে।
+- [ভিডিও দেখুন][watch videos] — [OTel for beginners][] ও অন্যান্য [প্লেলিস্ট][playlists] থেকে।
 - সাইন আপ করুন [ট্রেনিং](/training) এর জন্য এবং পেয়ে যান [Getting started with OpenTelemetry](/training/#courses) কোর্সটি একদম বিনামূল্যে।
 
 [Cloud Native Computing Foundation]: https://www.cncf.io

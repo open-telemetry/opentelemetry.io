@@ -269,6 +269,12 @@ other component in your pipeline, it’s important to verify the following:
 - How is the next hop configured?
 - Are there any network policies that prevent data from getting in or out?
 
+## Troubleshooting in Kubernetes environments
+
+When running the OpenTelemetry Collector on Kubernetes, you can use
+[ephemeral debug containers](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/#ephemeral-container)
+to investigate Collector-related issues.
+
 ## Common Collector issues
 
 This section covers how to resolve common Collector issues.
@@ -286,10 +292,9 @@ The Collector might drop data for a variety of reasons, but the most common are:
 - The exporter destination is unavailable or accepting the data too slowly.
 
 To mitigate drops, configure the
-[`batch` processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md).
-In addition, it might be necessary to configure the
 [queued retry options](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#configuration)
-on enabled exporters.
+on enabled exporters, in particular the
+[Sending queue batch settings](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#sending-queue-batch-settings).
 
 #### Collector is not receiving data
 

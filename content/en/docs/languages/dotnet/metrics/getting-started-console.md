@@ -53,7 +53,7 @@ private static readonly Meter MyMeter = new("MyCompany.MyProduct.MyLibrary", "1.
 private static readonly Counter<long> MyFruitCounter = MyMeter.CreateCounter<long>("MyFruitCounter", "fruit", "Counts fruit by name and color");
 
 // Configure the OpenTelemetry MeterProvider
-using var meterProvider = Sdk.CreateMeterProviderBuilder()
+var meterProvider = Sdk.CreateMeterProviderBuilder()
     .AddMeter("MyCompany.MyProduct.MyLibrary")
     .AddConsoleExporter()
     .Build();
@@ -68,6 +68,10 @@ MyFruitCounter.Add(4, new("name", "lemon"), new("color", "yellow"));
 
 Console.WriteLine("Press any key to exit");
 Console.ReadKey();
+
+// Dispose meter provider before the application ends.
+// This will flush the remaining metrics and shutdown the metrics pipeline.
+meterProvider.Dispose();
 ```
 
 Run the application again (using `dotnet run`) and you should see the metric

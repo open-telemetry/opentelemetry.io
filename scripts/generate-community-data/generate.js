@@ -1,7 +1,7 @@
 import { config } from 'dotenv';
 import { Octokit } from '@octokit/rest';
 import fs from 'fs';
-import yaml from 'js-yaml';
+import { dump } from 'js-yaml';
 
 config(); // Load .env file contents into process.env
 
@@ -171,7 +171,7 @@ async function collectDetails() {
   const plainResult = JSON.parse(JSON.stringify(sortedResult));
 
   // Convert result to YAML and write to file
-  const yamlResult = yaml.dump(plainResult, { lineWidth: -1 });
+  const yamlResult = dump(plainResult, { lineWidth: -1 });
   fs.writeFileSync(outputPath, yamlResult, 'utf8');
 
   console.log(`Output written to ${outputPath}`);

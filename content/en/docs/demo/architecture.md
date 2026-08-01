@@ -7,7 +7,7 @@ body_class: otel-mermaid-max-width
 
 **OpenTelemetry Demo** is composed of microservices written in different
 programming languages that talk to each other over gRPC and HTTP; and a load
-generator which uses [Locust](https://locust.io/) to fake user traffic.
+generator which uses [k6](https://k6.io/) to fake user traffic.
 
 ```mermaid
 graph TD
@@ -20,12 +20,12 @@ checkout(Checkout):::golang
 currency(Currency):::cpp
 email(Email):::ruby
 flagd(Flagd):::golang
-flagd-ui(Flagd-ui):::typescript
+flagd-ui(Flagd-ui):::elixir
 fraud-detection(Fraud Detection):::kotlin
 frontend(Frontend):::typescript
 frontend-proxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
 image-provider(Image Provider <br/>&#40nginx&#41):::cpp
-load-generator([Load Generator]):::python
+load-generator([Load Generator]):::golang
 payment(Payment):::javascript
 product-catalog(Product Catalog):::golang
 quote(Quote):::php
@@ -33,6 +33,9 @@ recommendation(Recommendation):::python
 shipping(Shipping):::rust
 queue[(queue<br/>&#40Kafka&#41)]:::java
 react-native-app(React Native App):::typescript
+postgresql[(Database<br/>&#40PostgreSQL&#41)]
+
+accounting ---> postgresql
 
 ad ---->|gRPC| flagd
 
@@ -80,6 +83,7 @@ end
 
 classDef dotnet fill:#178600,color:white;
 classDef cpp fill:#f34b7d,color:white;
+classDef elixir fill:#b294bb,color:black;
 classDef golang fill:#00add8,color:black;
 classDef java fill:#b07219,color:white;
 classDef javascript fill:#f1e05a,color:black;
@@ -92,10 +96,11 @@ classDef typescript fill:#e98516,color:black;
 ```
 
 ```mermaid
-graph TD
+graph LR
 subgraph Service Legend
   dotnetsvc(.NET):::dotnet
   cppsvc(C++):::cpp
+  elixirsvc(Elixir):::elixir
   golangsvc(Go):::golang
   javasvc(Java):::java
   javascriptsvc(JavaScript):::javascript
@@ -109,6 +114,7 @@ end
 
 classDef dotnet fill:#178600,color:white;
 classDef cpp fill:#f34b7d,color:white;
+classDef elixir fill:#b294bb,color:black;
 classDef golang fill:#00add8,color:black;
 classDef java fill:#b07219,color:white;
 classDef javascript fill:#f1e05a,color:black;

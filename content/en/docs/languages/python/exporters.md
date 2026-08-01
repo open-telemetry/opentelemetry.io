@@ -5,11 +5,9 @@ description: Process and export your telemetry data
 cSpell:ignore: LOWMEMORY
 ---
 
-<!-- markdownlint-disable no-duplicate-heading -->
-
 {{% docs/languages/exporters/intro %}}
 
-### Dependencies {#otlp-dependencies}
+## Dependencies {#otlp-dependencies}
 
 If you want to send telemetry data to an OTLP endpoint (like the
 [OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) or
@@ -36,7 +34,7 @@ pip install opentelemetry-exporter-otlp-proto-grpc
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Usage
+## Usage
 
 Next, configure the exporter to point at an OTLP endpoint in your code.
 
@@ -142,57 +140,53 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% alert title="Note" %}}
-
-There are temporality presets for each instrumentation kind. These presets can
-be set with the environment variable
-`OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE`, for example:
-
-```sh
-export OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE="DELTA"
-```
-
-The default value for `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` is
-`"CUMULATIVE"`.
-
-The available values and their corresponding settings for this environment
-variable are:
-
-- `CUMULATIVE`
-  - `Counter`: `CUMULATIVE`
-  - `UpDownCounter`: `CUMULATIVE`
-  - `Histogram`: `CUMULATIVE`
-  - `ObservableCounter`: `CUMULATIVE`
-  - `ObservableUpDownCounter`: `CUMULATIVE`
-  - `ObservableGauge`: `CUMULATIVE`
-
-- `DELTA`
-  - `Counter`: `DELTA`
-  - `UpDownCounter`: `CUMULATIVE`
-  - `Histogram`: `DELTA`
-  - `ObservableCounter`: `DELTA`
-  - `ObservableUpDownCounter`: `CUMULATIVE`
-  - `ObservableGauge`: `CUMULATIVE`
-
-- `LOWMEMORY`
-  - `Counter`: `DELTA`
-  - `UpDownCounter`: `CUMULATIVE`
-  - `Histogram`: `DELTA`
-  - `ObservableCounter`: `CUMULATIVE`
-  - `ObservableUpDownCounter`: `CUMULATIVE`
-  - `ObservableGauge`: `CUMULATIVE`
-
-Setting `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` to any other value than
-`CUMULATIVE`, `DELTA` or `LOWMEMORY` will log a warning and set this environment
-variable to `CUMULATIVE`.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> There are temporality presets for each instrumentation kind. These presets can
+> be set with the environment variable
+> `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`, for example:
+>
+> ```sh
+> export OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE="DELTA"
+> ```
+>
+> The default value for `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` is
+> `"CUMULATIVE"`.
+>
+> The available values and their corresponding settings for this environment
+> variable are:
+>
+> - `CUMULATIVE`
+>   - `Counter`: `CUMULATIVE`
+>   - `UpDownCounter`: `CUMULATIVE`
+>   - `Histogram`: `CUMULATIVE`
+>   - `ObservableCounter`: `CUMULATIVE`
+>   - `ObservableUpDownCounter`: `CUMULATIVE`
+>   - `ObservableGauge`: `CUMULATIVE`
+> - `DELTA`
+>   - `Counter`: `DELTA`
+>   - `UpDownCounter`: `CUMULATIVE`
+>   - `Histogram`: `DELTA`
+>   - `ObservableCounter`: `DELTA`
+>   - `ObservableUpDownCounter`: `CUMULATIVE`
+>   - `ObservableGauge`: `CUMULATIVE`
+> - `LOWMEMORY`
+>   - `Counter`: `DELTA`
+>   - `UpDownCounter`: `CUMULATIVE`
+>   - `Histogram`: `DELTA`
+>   - `ObservableCounter`: `CUMULATIVE`
+>   - `ObservableUpDownCounter`: `CUMULATIVE`
+>   - `ObservableGauge`: `CUMULATIVE`
+>
+> Setting `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` to any other value
+> than `CUMULATIVE`, `DELTA` or `LOWMEMORY` will log a warning and set this
+> environment variable to `CUMULATIVE`.
 
 {{% include "exporters/jaeger.md" %}}
 
 {{% include "exporters/prometheus-setup.md" %}}
 
-### Dependencies {#prometheus-dependencies}
+## Dependencies {#prometheus-dependencies}
 
 Install the
 [exporter package](https://pypi.org/project/opentelemetry-exporter-prometheus/)
@@ -233,7 +227,7 @@ the metrics from this endpoint.
 
 {{% include "exporters/zipkin-setup.md" %}}
 
-### Dependencies {#zipkin-dependencies}
+## Dependencies {#zipkin-dependencies}
 
 To send your trace data to [Zipkin](https://zipkin.io/), you can choose between
 two different protocols to transport your data:

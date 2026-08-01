@@ -3,9 +3,10 @@ title: 自動計装の注入
 linkTitle: 自動計装
 weight: 11
 description: OpenTelemetryオペレーターを使用した自動計装の実装。
-default_lang_commit: a1ae4e3a4e759db02c32bc86fc53321ebf611f92
+default_lang_commit: 869b2bb90ca9e54d8d98e7815e66111b577165eb
+drifted_from_default: true
 # prettier-ignore
-cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA
+cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA replicaset statefulset
 ---
 
 OpenTelemetryオペレーターは、.NET、Java、Node.js、Python、およびGoのサービスについて、自動計装ライブラリの注入と構成をサポートしています。
@@ -20,11 +21,12 @@ OpenTelemetryオペレーターは、.NET、Java、Node.js、Python、およびG
 Helmチャートを使用する場合は、自己証明書を生成するオプションがあります。
 
 > Goの自動計装を使用したい場合、フィーチャーゲートを有効にする必要があります。
-> 詳細は[Controlling Instrumentation Capabilities](https://github.com/open-telemetry/opentelemetry-operator#controlling-instrumentation-capabilities)を参照してください。
+> 詳細は[Controlling Instrumentation Capabilities](#controlling-instrumentation-capabilities)を参照してください。
 
 ## OpenTelemetryコレクターの作成（オプション） {#create-an-opentelemetry-collector-optional}
 
-コレクターによって、シークレット管理が簡素化され、データエクスポートの問題（リトライが必要な場合など）がアプリから分離され、[k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)などを使用してテレメトリーにデータを追加できます。
+コンテナからテレメトリーをバックエンドに直接送信するのではなく、[OpenTelemetryコレクター](/docs/platforms/kubernetes/collector/)に送信するのがベストプラクティスです
+コレクターによって、シークレット管理が簡素化され、データエクスポートの問題（リトライが必要な場合など）がアプリから分離され、[k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)コンポーネントなどを使用してテレメトリーにデータを追加できます。
 コレクターを使用しない場合、次のセクションに進んでください。
 
 オペレーターは、オペレーターが管理するコレクターのインスタンスを作成するために使用される[OpenTelemetryコレクターのカスタムリソース定義 (CRD)](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md)です。
@@ -54,9 +56,6 @@ spec:
         check_interval: 1s
         limit_percentage: 75
         spike_limit_percentage: 15
-      batch:
-        send_batch_size: 10000
-        timeout: 10s
     exporters:
       debug:
         verbosity: basic
@@ -65,15 +64,15 @@ spec:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: [memory_limiter, batch]
+          processors: [memory_limiter]
           exporters: [debug]
         metrics:
           receivers: [otlp]
-          processors: [memory_limiter, batch]
+          processors: [memory_limiter]
           exporters: [debug]
         logs:
           receivers: [otlp]
-          processors: [memory_limiter, batch]
+          processors: [memory_limiter]
           exporters: [debug]
 EOF
 ```
@@ -142,6 +141,18 @@ spec:
         value: false
 ```
 
+.NETの自動計装は、.NETの[Runtime Identifier (RID)](https://learn.microsoft.com/en-us/dotnet/core/rid-catalog)を設定するためのランタイムアノテーションもサポートしています。
+現在は `linux-x64` (デフォルト) と `linux-musl-x64` がサポートされています。
+
+```bash
+instrumentation.opentelemetry.io/inject-dotnet: "true"
+instrumentation.opentelemetry.io/otel-dotnet-auto-runtime: "linux-x64"   # デフォルト、省略可能
+instrumentation.opentelemetry.io/otel-dotnet-auto-runtime: "linux-musl-x64"  # muslベースのイメージ用
+```
+
+> **Note:** デフォルトでは、オペレーターは `OTEL_DOTNET_AUTO_TRACES_ENABLED_INSTRUMENTATIONS` を、使用している `opentelemetry-dotnet-instrumentation` リリースでサポートされる利用可能なすべての計装(たとえば `AspNet,HttpClient,SqlClient`)に設定します。
+> この値は、環境変数を明示的に設定することで上書きできます。
+
 #### もっと詳しく {#dotnet-learn-more}
 
 より詳細については、[.NET自動計装ドキュメント](/docs/zero-code/dotnet/)を参照してください。
@@ -178,14 +189,12 @@ Denoプロセスは、`OTEL_DENO=true` 環境変数とともに起動される�
 つまり、構成されたエンドポイントは `http/proto` 経由でOTLPを受信できる必要があります。
 したがって、この例では `http://demo-collector:4318` を使用し、前のステップで作成されたコレクターの `otlpreceiver` の `http/proto` ポートに接続します。
 
-{{% alert title="Note" %}}
-
-[DenoのOpenTelemetry統合][deno-docs]はまだ安定版ではありません。
-そのため、Denoで実装されたすべてのワークロードでは、Denoプロセスの起動時に `--unstable-otel` フラグを設定する必要があります。
-
-[deno-docs]: https://docs.deno.com/runtime/fundamentals/open_telemetry/
-
-{{% /alert %}}
+> [!NOTE]
+>
+> [DenoのOpenTelemetry統合][deno-docs]はまだ安定版ではありません。
+> そのため、Denoで実装されたすべてのワークロードでは、Denoプロセスの起動時に `--unstable-otel` フラグを設定する必要があります。
+>
+> [deno-docs]: https://docs.deno.com/runtime/fundamentals/open_telemetry/
 
 #### 構成オプション {#deno-configuration-options}
 
@@ -350,12 +359,10 @@ spec:
         value: fs,grpc # `@opentelemetry/instrumentation-` 接頭辞を除いた計装パッケージ名のカンマ区切りのリスト
 ```
 
-{{% alert title="Note" %}}
-
-両方の環境変数が設定されている場合、`OTEL_NODE_ENABLED_INSTRUMENTATIONS` が最初に適用され、次にそのリストに `OTEL_NODE_DISABLED_INSTRUMENTATIONS` が適用されます。
-したがって、同じ計装が両方のリストに含まれている場合、その計装は無効になります。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> 両方の環境変数が設定されている場合、`OTEL_NODE_ENABLED_INSTRUMENTATIONS` が最初に適用され、次にそのリストに `OTEL_NODE_DISABLED_INSTRUMENTATIONS` が適用されます。
+> したがって、同じ計装が両方のリストに含まれている場合、その計装は無効になります。
 
 #### もっと詳しく {#js-learn-more}
 
@@ -511,6 +518,360 @@ instrumentation.opentelemetry.io/otel-python-platform: "glibc"
 # Linux muslベースのイメージ
 instrumentation.opentelemetry.io/otel-python-platform: "musl"
 ```
+
+## マルチコンテナのPod {#multi-container-pods}
+
+### 単一の計装 {#single-instrumentation}
+
+特に指定がない場合、計装はPod仕様で最初に見つかったコンテナ (`.spec.containers` から取得、initコンテナは対象外) に対して実行されます。
+たとえばIstioのサイドカーがインジェクトされている場合など、どのコンテナに対して注入を行うかを指定する必要がある場合があります。
+
+`instrumentation.opentelemetry.io/container-names` アノテーションを使うと、注入対象とする1つ以上のコンテナ名 (`.spec.containers.name` または `.spec.initContainers.name` から取得) を指定できます。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment-with-multiple-containers
+spec:
+  selector:
+    matchLabels:
+      app: my-pod-with-multiple-containers
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-pod-with-multiple-containers
+      annotations:
+        instrumentation.opentelemetry.io/inject-java: 'true'
+        instrumentation.opentelemetry.io/container-names: 'myapp,myapp2'
+    spec:
+      containers:
+        - name: myapp
+          image: myImage1
+        - name: myapp2
+          image: myImage2
+        - name: myapp3
+          image: myImage3
+```
+
+上記の場合、`myapp` と `myapp2` のコンテナが計装され、`myapp3` は計装されません。
+
+> **NOTE**: Goの自動計装は、マルチコンテナのPodを**サポートしていません**。
+> Goの自動計装をインジェクトする場合、計装したいコンテナを最初のコンテナとして配置する必要があります。
+
+### initコンテナの計装 {#instrumenting-init-containers}
+
+initコンテナは、その名前を `container-names` アノテーションに含めることで計装できます。
+initコンテナが計装対象になると、オペレーターは、計装エージェントファイルが対象のinitコンテナ実行時に利用可能になるように、Podのinitコンテナ列内で対象のinitコンテナの**直前**に計装用のinitコンテナを自動的に挿入します。
+
+initコンテナでサポートされる計装: Java、Python、Node.js、.NET、SDK のみのインジェクション。
+
+initコンテナで未サポート: Go (マルチコンテナのPodをサポートしない)、Apache HTTPD、NGINX。
+
+> **Note**: Kubernetesは、Pod仕様内の `initContainers` リストと `containers` リスト全体でコンテナ名が一意であることを保証します。
+> これにより、オペレーターはあるコンテナ名がinitコンテナを指すのか通常コンテナを指すのかを曖昧さなく識別できます。
+
+initコンテナと通常コンテナの両方を計装する例:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment-with-init-container
+spec:
+  selector:
+    matchLabels:
+      app: my-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-app
+      annotations:
+        instrumentation.opentelemetry.io/inject-python: 'true'
+        instrumentation.opentelemetry.io/container-names: 'my-init-job,myapp'
+    spec:
+      initContainers:
+        - name: my-init-job
+          image: my-python-init-image
+      containers:
+        - name: myapp
+          image: my-python-app-image
+```
+
+この例では、`my-init-job` (initコンテナ) と `myapp` (通常コンテナ) の両方が Python の自動計装で計装されます。
+
+### 複数の計装 {#multiple-instrumentations}
+
+複数計装は、 `enable-multi-instrumentation` フィーチャーフラグが `true` に設定されている場合にのみ機能します。
+有効にした場合、各コンテナにどの計装を適用するかを指定するために、言語固有の `container-names` アノテーションを使用します。
+
+言語固有のコンテナ名が指定されていない場合、Pod 仕様で最初に見つかった通常コンテナに対してのみ計装が実行されます (単一計装インジェクションが設定されている場合に限ります)。
+
+同じ Pod 内のコンテナが異なる技術スタックを使う場合があります。
+このような場合、言語固有のコンテナ名アノテーションを用いて、注入対象とする1つ以上のコンテナ名 (`.spec.containers.name` または `.spec.initContainers.name` から取得) を指定します。
+
+| 言語         | アノテーション                                                  |
+| ------------ | --------------------------------------------------------------- |
+| Java         | `instrumentation.opentelemetry.io/java-container-names`         |
+| Node.js      | `instrumentation.opentelemetry.io/nodejs-container-names`       |
+| Python       | `instrumentation.opentelemetry.io/python-container-names`       |
+| .NET         | `instrumentation.opentelemetry.io/dotnet-container-names`       |
+| Go           | `instrumentation.opentelemetry.io/go-container-names`           |
+| Apache HTTPD | `instrumentation.opentelemetry.io/apache-httpd-container-names` |
+| NGINX        | `instrumentation.opentelemetry.io/nginx-container-names`        |
+| SDK のみ     | `instrumentation.opentelemetry.io/sdk-container-names`          |
+
+異なるコンテナで Java と Python を動かす例:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment-with-multi-containers-multi-instrumentations
+spec:
+  selector:
+    matchLabels:
+      app: my-pod-with-multi-containers-multi-instrumentations
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-pod-with-multi-containers-multi-instrumentations
+      annotations:
+        instrumentation.opentelemetry.io/inject-java: 'true'
+        instrumentation.opentelemetry.io/java-container-names: 'myapp,myapp2'
+        instrumentation.opentelemetry.io/inject-python: 'true'
+        instrumentation.opentelemetry.io/python-container-names: 'myapp3'
+    spec:
+      containers:
+        - name: myapp
+          image: myImage1
+        - name: myapp2
+          image: myImage2
+        - name: myapp3
+          image: myImage3
+```
+
+上記の場合、`myapp` と `myapp2` は Java で、`myapp3` は Python で計装されます。
+
+> **NOTE**: Goの自動計装は、マルチコンテナのPodを**サポートしていません**。
+> **NOTE**: 1つのコンテナを複数言語の計装で計装することはできません。
+> **NOTE**: `instrumentation.opentelemetry.io/container-names` アノテーションはこの機能では使用されません。
+
+## カスタマイズ済みまたはベンダー製の計装を使う {#using-customized-or-vendor-instrumentation}
+
+デフォルトでは、オペレーターはアップストリームの自動計装ライブラリを使用します。
+カスタムの自動計装イメージは、`Instrumentation` CR の `image` フィールドを上書きすることで設定できます。
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: my-instrumentation
+spec:
+  java:
+    image: your-customized-auto-instrumentation-image:java
+  nodejs:
+    image: your-customized-auto-instrumentation-image:nodejs
+  python:
+    image: your-customized-auto-instrumentation-image:python
+  dotnet:
+    image: your-customized-auto-instrumentation-image:dotnet
+  go:
+    image: your-customized-auto-instrumentation-image:go
+  apacheHttpd:
+    image: your-customized-auto-instrumentation-image:apache-httpd
+  nginx:
+    image: your-customized-auto-instrumentation-image:nginx
+```
+
+自動計装の Dockerfile は [autoinstrumentation ディレクトリ](https://github.com/open-telemetry/opentelemetry-operator/tree/main/autoinstrumentation) にあります。
+カスタムのコンテナイメージのビルド方法については、Dockerfile の手順にしたがってください。
+
+## Apache HTTPDの自動計装を使う {#using-apache-httpd-auto-instrumentation}
+
+Apache HTTPDの自動計装では、オペレーターはデフォルトで HTTPD バージョン 2.4 と設定ディレクトリ `/usr/local/apache2/conf` を想定しています (公式の `httpd` イメージで使われているもの)。
+バージョン 2.2、別の設定ディレクトリ、またはカスタムエージェント属性が必要な場合は、次の例を参考にしてください。
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: my-instrumentation
+spec:
+  apacheHttpd:
+    image: your-customized-auto-instrumentation-image:apache-httpd
+    version: '2.2'
+    configPath: /your-custom-config-path
+    attrs:
+      - name: ApacheModuleOtelMaxQueueSize
+        value: '4096'
+```
+
+利用可能な属性の一覧は [otel-webserver-module](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module) で確認できます。
+
+## NGINX の自動計装を使う {#using-nginx-auto-instrumentation}
+
+NGINX の自動計装では、NGINX バージョン 1.22.0、1.23.0、1.23.1 がサポートされています。
+NGINX 設定ファイルはデフォルトで `/etc/nginx/nginx.conf` と想定されています。
+また、計装は設定ファイルと同じディレクトリに `conf.d` ディレクトリがあり、 `http { ... }` セクションの中に `include <config-file-dir-path>/conf.d/*.conf;` ディレクティブがあることを期待しています。
+OpenTelemetry SDK の属性も調整できます。
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: my-instrumentation
+spec:
+  nginx:
+    image: your-customized-auto-instrumentation-image:nginx
+    configFile: /my/custom-dir/custom-nginx.conf
+    attrs:
+      - name: NginxModuleOtelMaxQueueSize
+        value: '4096'
+```
+
+利用可能な属性の一覧は [otel-webserver-module](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module) で確認できます。
+
+## OpenTelemetry SDK の環境変数のみを注入する {#inject-opentelemetry-sdk-environment-variables-only}
+
+現在自動計装できないアプリケーション向けに、`inject-python` や `inject-java` のかわりに `inject-sdk` を使って OpenTelemetry SDK を構成できます。
+これにより、 `Instrumentation` リソースで設定した `OTEL_RESOURCE_ATTRIBUTES`、`OTEL_TRACES_SAMPLER`、`OTEL_EXPORTER_OTLP_ENDPOINT` といった環境変数が注入されますが、SDK 自体は注入されません。
+
+```bash
+instrumentation.opentelemetry.io/inject-sdk: "true"
+```
+
+## 計装機能の制御 {#controlling-instrumentation-capabilities}
+
+オペレーターでは、フィーチャーフラグを使って `Instrumentation` リソースが計装できる言語を指定できます。
+デフォルトで有効な言語は、無効化したい場合にのみフィーチャーゲートの指定が必要です。
+言語のサポートを無効にするには、フラグに `false` を渡します。
+
+| 言語         | フィーチャーゲート                    | デフォルト値 |
+| ------------ | ------------------------------------- | ------------ |
+| Java         | `enable-java-instrumentation`         | `true`       |
+| Node.js      | `enable-nodejs-instrumentation`       | `true`       |
+| Python       | `enable-python-instrumentation`       | `true`       |
+| .NET         | `enable-dotnet-instrumentation`       | `true`       |
+| Apache HTTPD | `enable-apache-httpd-instrumentation` | `true`       |
+| Go           | `enable-go-instrumentation`           | `false`      |
+| NGINX        | `enable-nginx-instrumentation`        | `false`      |
+
+複数計装 (同じ Pod 内で複数の言語) は `enable-multi-instrumentation` フラグで有効にでき、デフォルトは `false` です。
+複数計装機能の詳細については、[複数計装によるマルチコンテナの Pod](#multiple-instrumentations) を参照してください。
+
+## リソース属性の設定 {#configure-resource-attributes}
+
+OpenTelemetry オペレーターは、[OpenTelemetry Semantic Conventions](/docs/specs/semconv/non-normative/k8s-attributes/) に定義されているリソース属性を自動的に設定できます。
+
+### アノテーションによるリソース属性の設定 {#configure-resource-attributes-with-annotations}
+
+OpenTelemetry の計装で生成されるデータにリソース属性を追加するには、`resource.opentelemetry.io/` というアノテーション接頭辞を使用します。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod
+  annotations:
+    resource.opentelemetry.io/service.name: 'my-service'
+    resource.opentelemetry.io/service.version: '1.0.0'
+    resource.opentelemetry.io/deployment.environment.name: 'production'
+spec:
+  containers:
+    - name: main-container
+      image: your-image:tag
+```
+
+### ラベルによるリソース属性の設定 {#configure-resource-attributes-with-labels}
+
+リソース属性を設定するために、一般的な Kubernetes のラベルも使用できます (最初に見つかったエントリが採用されます)。
+以下のラベルがサポートされています。
+
+- `app.kubernetes.io/instance` → `service.name`
+- `app.kubernetes.io/name` → `service.name`
+- `app.kubernetes.io/version` → `service.version`
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod
+  labels:
+    app.kubernetes.io/name: 'my-service'
+    app.kubernetes.io/version: '1.0.0'
+    app.kubernetes.io/part-of: 'shop'
+spec:
+  containers:
+    - name: main-container
+      image: your-image:tag
+```
+
+これには、`Instrumentation` CR で明示的にオプトインする必要があります。
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: my-instrumentation
+spec:
+  defaults:
+    useLabelsForResourceAttributes: true
+```
+
+### リソース属性の設定優先順位 {#priority-for-setting-resource-attributes}
+
+リソース属性の設定優先順位は次のとおりです (最初に見つかったものが採用されます)。
+
+1. `OTEL_RESOURCE_ATTRIBUTES` および `OTEL_SERVICE_NAME` 環境変数
+2. `resource.opentelemetry.io/` 接頭辞を持つアノテーション
+3. `defaults.useLabelsForResourceAttributes=true` のときの、ラベル (たとえば `app.kubernetes.io/name`)
+4. Pod のメタデータから計算されたリソース属性 (たとえば `k8s.pod.name`)
+5. `Instrumentation` CR の `spec.resource.resourceAttributes` に設定されたリソース属性
+
+この優先順位は属性ごとに個別に適用されるため、ある属性をアノテーションで、別の属性をラベルで設定するということもできます。
+
+### Pod のメタデータからリソース属性が計算される方法 {#how-resource-attributes-are-calculated-from-pod-metadata}
+
+#### `service.name` が計算される方法 {#how-servicename-is-calculated}
+
+以下の順序で最初に見つかった値が使用されます。
+
+1. `pod.annotation[resource.opentelemetry.io/service.name]`
+2. `pod.label[app.kubernetes.io/name]` (`useLabelsForResourceAttributes=true` の場合)
+3. `k8s.deployment.name`
+4. `k8s.replicaset.name`
+5. `k8s.statefulset.name`
+6. `k8s.daemonset.name`
+7. `k8s.cronjob.name`
+8. `k8s.job.name`
+9. `k8s.pod.name`
+10. `k8s.container.name`
+
+#### `service.version` が計算される方法 {#how-serviceversion-is-calculated}
+
+以下の順序で最初に見つかった値が使用されます。
+
+1. `pod.annotation[resource.opentelemetry.io/service.version]`
+2. `pod.label[app.kubernetes.io/version]` (`useLabelsForResourceAttributes=true` の場合)
+3. コンテナの Docker イメージタグ (タグが `/` を含まない場合のみ)
+
+#### `service.instance.id` が計算される方法 {#how-serviceinstanceid-is-calculated}
+
+以下の順序で最初に見つかった値が使用されます。
+
+1. `pod.annotation[resource.opentelemetry.io/service.instance.id]`
+2. `k8s.namespace.name`、`k8s.pod.name`、`k8s.container.name` を `.` で連結したもの
+
+#### `service.namespace` が計算される方法 {#how-servicenamespace-is-calculated}
+
+以下の順序で最初に見つかった値が使用されます。
+
+1. `pod.annotation[resource.opentelemetry.io/service.namespace]`
+2. `k8s.namespace.name`
 
 ## トラブルシューティング　{#troubleshooting}
 

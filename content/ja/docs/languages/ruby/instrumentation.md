@@ -7,7 +7,7 @@ aliases:
   - /docs/languages/ruby/context-propagation
 weight: 20
 description: OpenTelemetry Ruby計装
-default_lang_commit: c651bbf2a61f1ea643ae1d2ae89d496c58dbb56d
+default_lang_commit: d03483e1d5cc696a5541f8bcc8ff97170f2f2ca1
 cSpell:ignore: SIGHUP
 ---
 
@@ -22,7 +22,29 @@ gem install opentelemetry-sdk
 ```
 
 次に、プログラムの初期化時に実行される、設定コードを記述します。
-サービス名を設定して、`service.name` が設定されていることを確認してください。
+サービス名を設定して（たとえば `OTEL_SERVICE_NAME` 環境変数を使って）、`service.name` が設定されていることを確認してください。
+
+各計装を個別に有効にせずに、多くの一般的なライブラリを計装するには、`opentelemetry-instrumentation-all` を使用します。
+
+```sh
+gem install opentelemetry-instrumentation-all
+```
+
+次に、利用可能な計装を有効にするように SDK を設定します。
+
+```ruby
+require 'opentelemetry/sdk'
+OpenTelemetry::SDK.configure do |c|
+  c.use_all
+end
+```
+
+> [!TIP]
+>
+> Ruby on Rails アプリでは、この設定を `config/initializers/opentelemetry.rb` に配置できます。
+
+このアプローチにより、サポートされているライブラリの計装が自動的に有効になります（そのため、通常は以下の[トレース](#traces)セクションにある個別の計装手順に従う必要はありません）。
+デプロイメントに適したエクスポーターと環境変数の設定は、別途必要になる場合があります。
 
 ## トレース {#traces}
 
@@ -80,6 +102,24 @@ require "opentelemetry/sdk"
 def do_work
   MyAppTracer.in_span("do_work") do |span|
     # `do_work`スパンが追跡する何らかの処理を実行
+  end
+end
+```
+
+`in_span` ブロックから例外がエスケープした場合、トレーサーはデフォルトでスパンに例外を記録し、スパンステータスを `Error` に設定して、例外を再度発生させます。
+`in_span` メソッドの引数として `record_exception: false` を渡すことで、自動例外記録を無効にできます。
+
+ブロック内で例外をレスキューし、再度発生させない場合は、必要に応じてスパンステータスの設定と例外の記録を手動で行います。
+
+```ruby
+MyAppTracer.in_span("do_work") do |span|
+  begin
+    # 例外を発生させる可能性のある処理を実行
+  rescue StandardError => e
+    span.status = OpenTelemetry::Trace::Status.error(e.message)
+    span.record_exception(e)
+
+    # フォールバックを返すなど、再度発生させずに例外を処理する
   end
 end
 ```
@@ -316,6 +356,15 @@ gem 'opentelemetry-propagator-b3'
 ## ログ {#logs}
 
 ログAPIとSDKは現在開発中です。
+
+Ruby の標準 `Logger` で出力されるアプリケーションログをキャプチャするには、logger 計装パッケージをインストールします。
+
+```sh
+gem install opentelemetry-instrumentation-logger
+```
+
+インストール後、ログをサポートするエクスポーター/エンドポイントが設定されていることを確認してください。
+たとえば、次のセクションで参照されるエクスポーター設定を使用します。
 
 ## 次のステップ {#next-steps}
 

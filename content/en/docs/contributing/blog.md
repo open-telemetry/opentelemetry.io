@@ -19,12 +19,35 @@ Note, that the focus of maintainers and approvers of the OpenTelemetry Website
 is to improve the documentation of the project, so your blog post will have a
 lower priority for review.
 
+## Social Media Content Request
+
+To request publication on OpenTelemetry's social media channels instead of the
+blog, [submit a social media request][].
+
+[submit a social media request]:
+  https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml
+
 ## Before submitting a blog post
 
 Blog posts should not be commercial in nature and should consist of original
 content that applies broadly to the OpenTelemetry community. Blog posts should
-follow the policies outlined in the
-[Social Media Guide](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
+follow the policies outlined in the [Social Media Guide][].
+
+[Social Media Guide]:
+  https://github.com/open-telemetry/community/blob/main/social-media-guide.md
+
+### Linking to GitHub repositories
+
+Blog posts are [checked by markdownlint][] (`gh-url-hash`) to prevent unstable
+GitHub `blob`/`tree` links.
+
+If the check reports an issue:
+
+- Replace default-branch refs (for example `main`/`master`) with a tag/release
+  or a commit hash.
+- Use a full 40-character commit hash (short hashes are flagged).
+- Run `npm run fix:markdown` to auto-fix what it can, then fix any remaining
+  reported links manually.
 
 Verify that your intended content broadly applies to the OpenTelemetry Community
 . Appropriate content includes:
@@ -34,13 +57,14 @@ Verify that your intended content broadly applies to the OpenTelemetry Community
 - Updates from Special Interest Groups
 - Tutorials and walkthroughs
 - OpenTelemetry Integrations
+- [Call for Contributors](#call-for-contributors)
 
 Unsuitable content includes:
 
 - Vendor product pitches
 
-If your blog post fits into the list of appropriate content,
-[raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/new?title=New%20Blog%20Post:%20%3Ctitle%3E)
+If your blog post fits into the list of appropriate content, you **must** first
+[raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/new?template=BLOG_POST.yml)
 with the following details:
 
 - Title of the blog post
@@ -49,20 +73,35 @@ with the following details:
   all of them are open source, and prefer CNCF projects over non-CNCF projects
   (e.g. use Jaeger for trace visualization, and Prometheus for metric
   visualization)
-- Name of a [SIG](https://github.com/open-telemetry/community/), which is
-  related to this blog post
-- Name of a sponsor (maintainer or approver) from this SIG, who will help to
-  review that PR. That sponsor should ideally be from a different company.
+- Name of a [SIG](https://github.com/open-telemetry/community/) willing to
+  sponsor your blog post. **A SIG sponsor is required.**
+- Name of a sponsor (maintainer or approver) from that SIG, who will do the
+  first round of review before the Comms SIG reviews the post. That sponsor
+  **must** be from a different company than the author.
 
-Maintainers of SIG Communication will verify, that your blog post satisfies all
-the requirements for being accepted. If you cannot name a SIG/sponsor in your
-initial issue details, they will also point you to an appropriate SIG, you can
-reach out to for sponsorship. Having a sponsor is optional, but having one
-increases the chance of having your blog post reviewed and approved more
-quickly.
+**Opening an issue before submitting a pull request is mandatory.** Pull
+requests for blog posts that were not preceded by an accepted issue can be
+closed without further review.
+
+Maintainers of SIG Communication will verify that your blog post satisfies all
+the requirements for being accepted. The SIG sponsor must complete their review
+before the Comms SIG will look at the post. The author of the blog post is
+responsible for finding a Sponsor.
 
 If your issue has everything needed, a maintainer will verify that you can go
 ahead and submit your blog post.
+
+### Call for Contributors
+
+If you are proposing the creation of a new project or SIG, or if you are
+offering a donation to the OpenTelemetry project, you will need additional
+contributors to be successful with your proposal. To help you with that, you can
+propose a blog post that is a "Call for Contributors" (CfC).
+
+This requires, that you follow the processes for
+[new projects](https://github.com/open-telemetry/community/blob/main/project-management.md)
+and
+[donations](https://github.com/open-telemetry/community/blob/main/guides/contributor/donations.md).
 
 ## Submit a blog post
 
@@ -79,22 +118,22 @@ Follow these steps to create a post from the template:
 1. Run the following command from the repository root:
 
    ```sh
-   npx hugo new content/en/blog/2024/short-name-for-post.md
+   npx hugo new content/en/blog/$(date +%Y)/short-name-for-post.md
    ```
 
    If your post has images or other assets, run the following command:
 
    ```sh
-   npx hugo new content/en/blog/2024/short-name-for-post/index.md
+   npx hugo new content/en/blog/$(date +%Y)/short-name-for-post/index.md
    ```
 
-1. Edit the Markdown file at the path you provided in the previous command. The
+2. Edit the Markdown file at the path you provided in the previous command. The
    file is initialized from the blog-post starter under
    [archetypes](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/).
 
-1. Put assets, like images or other files, into the folder you've created.
+3. Put assets, like images or other files, into the folder you've created.
 
-1. When your post is ready, submit it through a pull request.
+4. When your post is ready, submit it through a pull request.
 
 ### Use the GitHub UI
 
@@ -110,8 +149,9 @@ new post. Follow these steps to add a post using the UI:
 
 1.  Paste the content from the template you copied in the first step.
 
-1.  Name your file, for example
-    `content/en/blog/2022/short-name-for-your-blog-post/index.md`.
+1.  Name your file, for example (`YYYY` is the current year):
+
+    `content/en/blog/YYYY/short-name-for-your-blog-post/index.md`.
 
 1.  Edit the Markdown file in GitHub.
 
@@ -143,3 +183,15 @@ welcome to do so. Just keep the following in mind:
 
 This helps ensure proper attribution, supports SEO best practices, and avoids
 content duplication.
+
+## Old blogs are not updated
+
+Blog posts are considered historical and not updated after a year or so (except
+for essential changes that ensure that the site builds). Old blog posts have a
+banner at the top warning the reader that the content may be outdated and some
+links may be invalid.
+
+Also note that old posts are neither [linted nor link checked][pr-checks].
+
+[pr-checks]: ../pr-checks/#checks
+[checked by markdownlint]: ../pr-checks/#markdown-linter

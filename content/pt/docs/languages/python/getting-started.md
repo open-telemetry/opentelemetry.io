@@ -2,7 +2,7 @@
 title: Primeiros Passos
 description: Obtenha telemetria para sua aplicação em menos de 5 minutos!
 weight: 10
-default_lang_commit: 43e2cb3b4d0dd513b436add73236503a8d592b39
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
@@ -466,7 +466,7 @@ def roll_dice():
         # Isso adiciona 1 ao contador para o valor de jogada dado
         roll_counter.add(1, {"roll.value": result})
         if player:
-            logger.warn("{} esta jogando os dados: {}", player, result)
+            logger.warn("%s esta jogando os dados: %s", player, result)
         else:
             logger.warn("Jogador anonimo esta jogando os dados: %s", result)
         return result
@@ -678,22 +678,17 @@ exporters:
   # NOTA: Antes da v0.86.0 use `logging` em vez de `debug`.
   debug:
     verbosity: detailed
-processors:
-  batch:
 service:
   pipelines:
     traces:
       receivers: [otlp]
       exporters: [debug]
-      processors: [batch]
     metrics:
       receivers: [otlp]
       exporters: [debug]
-      processors: [batch]
     logs:
       receivers: [otlp]
       exporters: [debug]
-      processors: [batch]
 ```
 
 Em seguida, execute o comando docker para adquirir e executar o Collector com

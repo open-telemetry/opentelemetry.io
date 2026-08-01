@@ -2,7 +2,9 @@
 title: 自動計装の例
 linkTitle: Example
 weight: 20
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
+# prettier-ignore
+cSpell:ignore: Aiohttp ASGI distro instrumentor mkdir MSIE Referer Starlette venv
 ---
 
 このページでは、OpenTelemetry で Python 自動計装を使う方法を示します。
@@ -26,7 +28,7 @@ default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
 これにより、OpenTelemetry をアプリケーションコードに統合するのに必要な作業量を減らせます。
 以下に、手動、自動、プログラムで計装された Flask ルートの違いを示します。
 
-### 手動計測サーバー {#manually-instrumented-server}
+## 手動計測サーバー {#manually-instrumented-server}
 
 `server_manual.py`
 
@@ -43,7 +45,7 @@ def server_request():
         return "served"
 ```
 
-### 自動計装サーバー {#automatically-instrumented-server}
+## 自動計装サーバー {#automatically-instrumented-server}
 
 `server_automatic.py`
 
@@ -54,7 +56,7 @@ def server_request():
     return "served"
 ```
 
-### プログラム計測サーバー {#programmatically-instrumented-server}
+## プログラム計測サーバー {#programmatically-instrumented-server}
 
 `server_programmatic.py`
 
@@ -102,7 +104,7 @@ opentelemetry-bootstrap -a install
 この後の例では、計装結果をコンソールに送信します。
 コレクターのような他の送信先にテレメトリーを送信するための [OpenTelemetry Distro](/docs/languages/python/distro) のインストールと設定については、こちらを参照してください。
 
-> **注**: `opentelemetry-instrument` による自動計装を使用するには、
+> **Note**: `opentelemetry-instrument` による自動計装を使用するには、
 > 環境変数またはコマンドラインで設定する必要があります。
 > エージェントはテレメトリーパイプラインを作成するので、
 > これらの手段以外では変更できません。
@@ -115,7 +117,7 @@ opentelemetry-bootstrap -a install
 
 この節では、サーバーの計装を手動で行うプロセスと、自動的に計装されたサーバーを実行するプロセスについて説明します。
 
-### 手動で計測したサーバーを実行する {#execute-the-manually-instrumented-server}
+## 手動で計測したサーバーを実行する {#execute-the-manually-instrumented-server}
 
 この例を構成するスクリプトをそれぞれ実行するために、2つの別々のコンソールでサーバーを実行します。
 
@@ -168,7 +170,7 @@ python client.py
 }
 ```
 
-### 自動計装サーバーの実行 {#execute-the-automatically-instrumented-server}
+## 自動計装サーバーの実行 {#execute-the-automatically-instrumented-server}
 
 <kbd>Control+C</kbd> を押して `server_manual.py` の実行を停止し、かわりに以下のコマンドを実行します。
 
@@ -227,7 +229,7 @@ python client.py
 
 自動計装は手動計測とまったく同じことをするので、両方の出力が同じであることがわかります。
 
-### プログラムで計装されたサーバーを実行する {#execute-the-programmatically-instrumented-server}
+## プログラムで計装されたサーバーを実行する {#execute-the-programmatically-instrumented-server}
 
 計装ライブラリ（`opentelemetry-instrumentation-flask` など）を単独で使うことも可能で、オプションをカスタマイズできるという利点があります。
 しかし、これを選択することは、 `opentelemetry-instrument` を使ってアプリケーションを起動することによる自動計装を見送ることを意味します。
@@ -246,7 +248,7 @@ python client.py
 
 結果は、手動の計装を使った場合と同じになるはずです。
 
-#### プログラムによる計装機能の使用 {#using-programmatic-instrumentation-features}
+### プログラムによる計装機能の使用 {#using-programmatic-instrumentation-features}
 
 計装ライブラリの中には、プログラムで計装を行う際に、より精密な制御を可能にする機能を備えているものがあり、Flask用の計装ライブラリもその1つです。
 
@@ -260,7 +262,7 @@ instrumentor.instrument_app(app, excluded_urls="/server_request")
 この例を再度実行すると、サーバー側には計装が表示されなくなります。
 これは `instrument_app` に渡された `excluded_urls` オプションのためで、`server_request` 関数の URL が `excluded_urls` に渡された正規表現にマッチするため、効果的に計装が行われなくなります。
 
-### デバッグ中の計装 {#instrumentation-while-debugging}
+## デバッグ中の計装 {#instrumentation-while-debugging}
 
 デバッグモードは、Flaskアプリで次のように有効にできます。
 
@@ -281,7 +283,7 @@ if __name__ == "__main__":
 
 自動計装は、環境変数から設定を読み込めます。
 
-### HTTP リクエストとレスポンスヘッダーをキャプチャする {#capture-http-request-and-response-headers}
+## HTTP リクエストとレスポンスヘッダーをキャプチャする {#capture-http-request-and-response-headers}
 
 [セマンティック規約][semantic convention]にしたがって、定義済みのHTTPヘッダーをスパン属性として取り込めます。
 
@@ -297,9 +299,12 @@ opentelemetry-instrument --traces_exporter console --metrics_exporter none --log
 
 これらの設定オプションは、以下のHTTP計装でサポートされています。
 
+- Aiohttp-server
+- ASGI
 - Django
 - Falcon
 - FastAPI
+- Flask
 - Pyramid
 - Starlette
 - Tornado
@@ -319,6 +324,19 @@ opentelemetry-instrument --traces_exporter console --metrics_exporter none --log
   }
 }
 ```
+
+### 取得したヘッダーのサニタイズ {#sanitization-of-captured-headers}
+
+個人を特定できる情報 (PII)、セッションキー、パスワードなどの機密データの保存を防ぐために、環境変数 `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS` にサニタイズ対象とする HTTP ヘッダー名のカンマ区切りリストを設定してください。
+正規表現を使用でき、ヘッダー名はすべて大文字小文字を区別せずにマッチングされます。
+
+たとえば、次のように指定します。
+
+```sh
+export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS=".*session.*,set-cookie"
+```
+
+すると、`session-id` や `set-cookie` などのヘッダーの値は、スパン内では `[REDACTED]` に置き換えられます。
 
 [semantic convention]: /docs/specs/semconv/http/http-spans/
 [api reference]: https://opentelemetry-python.readthedocs.io/en/latest/index.html

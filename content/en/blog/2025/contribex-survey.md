@@ -8,12 +8,10 @@ sig: Contributor Experience
 cSpell:ignore: Baeyens Outreachy
 ---
 
-{{% alert title="TL;DR" color="secondary" %}}
-
-Take our [OpenTelemetry Contributor Survey][6] and help us **enhance the
-contributor experience**. We appreciate your time and feedback!
-
-{{% /alert %}}
+> [!NOTE] TL;DR
+>
+> Take our [OpenTelemetry Contributor Survey][6] and help us **enhance the
+> contributor experience**. We appreciate your time and feedback!
 
 Since its founding, OpenTelemetry has had [thousands of contributors][3] from
 around the world, including end users, vendors, and students. [Last summer][1]

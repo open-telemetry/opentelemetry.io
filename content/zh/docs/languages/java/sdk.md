@@ -2,8 +2,9 @@
 title: 使用 SDK 管理遥测数据
 weight: 12
 aliases: [exporters]
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
-cSpell:ignore: Interceptable Logback okhttp
+default_lang_commit: 6652551fda266f2edff5c60456a59e3bfcb5989f # patched
+drifted_from_default: true
+cSpell:ignore: Interceptable okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -689,14 +690,14 @@ public class CustomMetricReader implements MetricReader {
 
 SDK 内置的以及社区在 `opentelemetry-java-contrib` 中维护的指标导出器包括：
 
-| Class                            | Artifact                                                                             | 描述                                                             |
-| -------------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
-| `OtlpHttpMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | 通过 OTLP `http/protobuf` 导出指标。                             |
-| `OtlpGrpcMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | 通过 OTLP `grpc` 导出指标。                                      |
-| `LoggingMetricExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | 将指标以 Debug 格式记录到 JUL 中。                               |
-| `OtlpJsonLoggingMetricExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | 将指标以 OTLP JSON 格式记录到 JUL 中。                           |
-| `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | 将指标以 OTLP [JSON 文件编码]（实验性） 记录到 `System.out` 中。 |
-| `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | 在导出前将度量数据传递给灵活的拦截器。                           |
+| Class                            | Artifact                                                                             | 描述                                                               |
+| -------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `OtlpHttpMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | 通过 OTLP `http/protobuf` 导出指标。                               |
+| `OtlpGrpcMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | 通过 OTLP `grpc` 导出指标。                                        |
+| `LoggingMetricExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | 将指标以 Debug 格式记录到 JUL 中。                                 |
+| `OtlpJsonLoggingMetricExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | 将指标以 OTLP JSON 格式记录到 JUL 中。                             |
+| `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | 将指标以 OTLP [JSON 文件编码][]（实验性） 记录到 `System.out` 中。 |
+| `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | 在导出前将度量数据传递给灵活的拦截器。                             |
 
 **[1]**: 实现细节请见 [OTLP 导出器](#otlp-exporters)。
 
@@ -1276,7 +1277,7 @@ Java 生态系统中没有单一的 HTTP / gRPC 客户端库能够满足所有�
 
 - Java 11+ 引入了内置的 `java.net.http.HttpClient`，但 `opentelemetry-java` 需要支持 Java 8+ 用户，
   并且由于不支持尾部头（trailer headers），因此无法通过 `gRPC` 进行导出。
-- [OkHttp](https://square.github.io/okhttp/) 提供了一个功能强大的 HTTP 客户端，支持尾部头（trailer headers），
+- [OkHttp](https://lysine.dev/okhttp/) 提供了一个功能强大的 HTTP 客户端，支持尾部头（trailer headers），
   但是依赖 kotlin 标准库。
 - [grpc-java](https://github.com/grpc/grpc-java) 提供了自己的 `ManagedChannel` 抽象，
   并且支持各种[传输实现](https://github.com/grpc/grpc-java#transport)，

@@ -1,0 +1,267 @@
+---
+applyTo:
+  - "content/*/**",
+  - "!content/en/**"
+---
+
+# OpenTelemetry.io Localization Instructions
+
+Always reference these instructions first and fallback to search or bash
+commands only when you encounter unexpected information that does not match the
+info here.
+
+## Working with Localization
+
+### Environment Setup
+
+- Follow the main development setup in `.github/copilot-instructions.md`
+- Install Node.js 22.x and run `npm install` with `PUPPETEER_SKIP_DOWNLOAD=true`
+- Ensure all submodules are initialized: `npm run get:submodule`
+
+### Translation Guidelines
+
+**✅ DO Translate:**
+
+- Page content including mermaid diagram text fields
+- Code comments from code excerpts (optional)
+- Front matter fields: `title`, `linkTitle`, and `description`
+- All page content and front matter unless indicated otherwise
+- Text in Mermaid diagrams
+- Page fragments under `_includes` directories
+
+**❌ DO NOT Translate:**
+
+- File or directory names of resources
+- Links (internal or external paths)
+- Heading IDs marked with `{#some-id}` syntax
+- Inline code spans like `inline code example`
+- Markdown elements marked as `notranslate`
+- Front matter fields other than `title`, `linkTitle`, `description`
+- Code blocks
+- Image file names (unless localizing text within images)
+
+### Key Localization Commands
+
+**Check Drift Status:**
+
+```bash
+npm run check:i18n                     # Check all localizations for drift
+npm run check:i18n -- content/zh       # Check specific localization
+npm run check:i18n -- diff content/zh  # Show detailed diff for drift
+```
+
+**Update Localization Tracking:**
+
+```bash
+npm run check:i18n -- commit HEAD --new content/zh # Add default_lang_commit to new pages
+npm run check:i18n -- commit <HASH> content/zh     # Update existing pages commit hash (also syncs drift status)
+npm run fix:i18n:status -- <PATHS>                 # Sync drift status; in PRs, pass only the pages a failing check reports (tree-wide runs are Housekeeping's)
+```
+
+**Validation for Localized Content:**
+
+```bash
+npm run check:spelling                # Spell check (configure cSpell for your language)
+npm run check:format                  # Format check (may need Prettier ignore rules)
+npm run check:markdown                # Markdown validation
+npm run build && npm run serve        # Test localized site
+```
+
+### Directory Structure for Localizations
+
+```
+content/
+├── en/           # English (default)
+├── ja/           # Japanese
+├── zh/           # Chinese
+├── es/           # Spanish
+├── fr/           # French
+├── pt/           # Portuguese
+├── bn/           # Bengali
+├── ro/           # Romanian
+└── uk/           # Ukrainian
+```
+
+### Required Front Matter for Localized Pages
+
+```yaml
+---
+title: Your localized page title
+linkTitle: Short title (if different)
+description: Localized page description
+# CRITICAL: Track the English page version this translation is based on
+default_lang_commit: <commit-hash-of-english-page>
+---
+```
+
+### Working with Links and Heading IDs
+
+**Heading ID Preservation:**
+
+- Keep explicit IDs: `## My Heading {#my-heading}`
+- Add IDs for translated headings to match English auto-generated IDs
+- This ensures anchor links work consistently across languages
+
+**Link Handling:**
+
+- Keep all internal links unchanged (Hugo automatically prefixes with language
+  code)
+- External links: Only change `en` to your language code for localized versions
+- Example: `https://en.wikipedia.org/wiki/Example` →
+  `https://ja.wikipedia.org/wiki/Example`
+
+### Shortcodes and Includes
+
+**Custom Shortcodes for Localization:**
+
+- Place localized shortcodes in `layouts/_shortcodes/xx/` (where xx = language
+  code)
+- Use same relative path as original English shortcode
+- Translate shortcode content while preserving functionality
+
+### Drift Management
+
+**Understanding Drift:**
+
+- Drift occurs when English pages are updated after localization
+- Use `default_lang_commit` to track which English version was translated
+- Check drift regularly with `npm run check:i18n`
+
+**Handling Drifted Content:**
+
+1. Review changes: `npm run check:i18n -- diff content/xx/path/to/page`
+2. Update your localized page to match new English content
+3. Update `default_lang_commit` to latest hash (this also clears the page's
+   drift status): `npm run check:i18n -- commit HEAD content/xx/path/to/page`
+
+**Patching (build and check fixes only):**
+
+- Fixes strictly required to keep the site build and its checks green (link
+  fixes, build fixes) may edit localized pages without syncing them
+- Make only the edits the fix requires, and add the `# patched` comment to the
+  `default_lang_commit` line in front matter
+- Any other change to localized page content — including targeted content
+  additions to drifted pages, such as new glossary terms — is a semantic change
+  for that locale and belongs in a locale-specific PR
+- Content-neutral maintenance (site-wide tooling, configuration, front-matter,
+  or markup updates, including drift-status bookkeeping) may also span locales;
+  for the full policy, see
+  `content/en/docs/contributing/localization.md#prs-should-not-span-locales`
+
+### Starting New Localizations
+
+**Requirements:**
+
+- Localization mentor (familiar with your language)
+- At least 2 potential contributors
+- ISO 639-1 language code for your language
+
+**Process:**
+
+1. Create issue with localization request
+2. Translate homepage only: `content/LANG_ID/_index.md`
+3. Maintainers will update Hugo config, cSpell configuration, and create
+   language-specific tools
+
+### Language-Specific Tooling
+
+**Spell Checking:**
+
+- Language dictionaries: Look for `@cspell/dict-LANG_ID` packages
+- Site-local dictionary: `.cspell/LANG_ID-words.txt`
+- Configure in `.cspell.yml` under `import`, `dictionaryDefinitions`, and
+  `dictionaries`
+
+**Formatting:**
+
+- Some languages may need Prettier ignore rules in `.prettierignore`
+- Test formatting: `npm run check:format`
+
+### Validation Workflow for Localization
+
+**Before Submitting:**
+
+1. `npm run check:i18n -- content/xx` - Verify no unexpected drift
+2. `npm run check:format` - Ensure proper formatting
+3. `npm run check:spelling` - Validate spelling (if language dictionary
+   available)
+4. `npm run build` - Test build with your changes
+5. `npm run serve` - Verify rendered site looks correct
+
+**Testing Localized Changes:**
+
+- Navigate to `http://localhost:1313/xx/` (replace xx with your language code)
+- Test language switcher in navigation
+- Verify all translated content renders correctly
+- Check that links work properly (internal and external)
+
+### Common Localization Tasks
+
+**Translating Blog Posts:**
+
+- Create in `content/xx/blog/YYYY/post-name.md`
+- Preserve original publication date and author information
+- Add `default_lang_commit` referencing original English post
+
+**Translating Documentation:**
+
+- Follow English structure: `content/xx/docs/section/page.md`
+- Maintain navigation hierarchy
+- Preserve code examples (translate comments only)
+- Keep technical terms consistent within language
+
+**Registry and Data Files:**
+
+- Registry entries in `data/registry/*.yml` are shared across languages
+- Do not create language-specific registry files
+- Contribute translations through the original projects
+
+### PR Guidelines for Localization
+
+**Single-Language PRs:**
+
+- Semantic changes should affect only one language per PR
+- Exception: changes strictly required to keep the site build and its checks
+  green (link fixes, build fixes) can span locales
+- Exception: content-neutral maintenance (site-wide tooling, configuration,
+  front-matter, or markup updates) can span locales; for the full policy, see
+  `content/en/docs/contributing/localization.md#prs-should-not-span-locales`
+
+**PR Description Requirements:**
+
+- Specify which pages were translated/updated
+- Note any drift status changes
+- List any pages you patched (`# patched`) and why
+- Include screenshots for UI-affecting changes
+
+### Maintenance Commands
+
+**Regular Maintenance:**
+
+```bash
+# Check all localizations for drift
+npm run check:i18n
+
+# Update drift status — see "Update Localization Tracking" above
+npm run fix:i18n:status -- <PATHS>
+
+# Batch update commit hashes after updating multiple files
+npm run check:i18n -- commit HEAD content/xx/
+
+# Help and options
+npm run check:i18n -- -h
+```
+
+**Time Expectations:**
+
+- Localization checks: ~5-10 seconds
+- Build with multiple languages: ~2-3 minutes
+- Full drift analysis: ~15-30 seconds depending on content volume
+
+**Critical Notes:**
+
+- Always preserve the meaning and style of original English content
+- Ask maintainers via Slack (#otel-docs-localization) or GitHub discussions when
+  in doubt
+- Use `default_lang_commit` consistently to enable proper drift tracking
+- Test localized changes in both your target language and English for comparison

@@ -257,11 +257,11 @@ writing this blog, support for other architectures is not provided.
 [^1]: {{% param notes.docker-compose-v2 %}}
 
 [docker-compose.yml]:
-  https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/main/instrumentation/otel-webserver-module/docker-compose.yml
+  https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/f6d29426ee9b4d6b476c09ca3cb9bed3cf23906f/instrumentation/otel-webserver-module/docker-compose.yml?from_branch=main
 [localhost:9004]: http://localhost:9004
 [localhost:9004/index.html]: http://localhost:9004/index.html
 [localhost:9411]: http://localhost:9411
 [opentelemetry_module.conf]:
-  https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/main/instrumentation/otel-webserver-module/opentelemetry_module.conf
+  https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/715bab89e061b23ad95856d5a50e72f3ac9a42cb/instrumentation/otel-webserver-module/opentelemetry_module.conf?from_branch=main
 [opentelemetry module for apache http server]:
-  https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module
+  https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/5009fb7c0428ab7e3c18dd8eb283482ac77de932/instrumentation/otel-webserver-module?from_branch=main

@@ -1,0 +1,7 @@
+// Dark-mode color contrast adjustments
+
+@include color-mode(dark) {
+  .otel-icon {
+    filter: brightness(0) invert(1);
+  }
+}

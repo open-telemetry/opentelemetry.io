@@ -2,16 +2,14 @@
 title: Exporters
 weight: 50
 description: Processar e exportar seus dados de telemetria
-default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 drifted_from_default: true
 cSpell:ignore: LOWMEMORY
 ---
 
-<!-- markdownlint-disable no-duplicate-heading -->
-
 {{% docs/languages/exporters/intro %}}
 
-### Dependências {#otlp-dependencies}
+## Dependências {#otlp-dependencies}
 
 Se você deseja enviar dados de telemetria para um endpoint OTLP (como o
 [OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) ou
@@ -38,7 +36,7 @@ pip install opentelemetry-exporter-otlp-proto-grpc
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Uso {#usage}
+## Uso {#usage}
 
 Em seguida, configure o exporter para apontar para um endpoint OTLP no seu
 código.
@@ -149,13 +147,13 @@ metrics.set_meter_provider(meterProvider)
 
 Existem predefinições de temporalidade para cada tipo de instrumentação. Essas
 predefinições podem ser definidas com a variável de ambiente
-`OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE`, por exemplo:
+`OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`, por exemplo:
 
 ```sh
-export OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE="DELTA"
+export OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE="DELTA"
 ```
 
-O valor padrão para `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` é
+O valor padrão para `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` é
 `"CUMULATIVE"`.
 
 Os valores disponíveis e suas configurações correspondentes para esta variável
@@ -185,7 +183,7 @@ de ambiente são:
   - `ObservableUpDownCounter`: `CUMULATIVE`
   - `ObservableGauge`: `CUMULATIVE`
 
-Definir `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` para qualquer valor
+Definir `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` para qualquer valor
 diferente de `CUMULATIVE`, `DELTA` ou `LOWMEMORY` registrará um aviso e definirá
 esta variável de ambiente como `CUMULATIVE`.
 
@@ -195,7 +193,7 @@ esta variável de ambiente como `CUMULATIVE`.
 
 {{% include "exporters/prometheus-setup.md" %}}
 
-### Dependências {#prometheus-dependencies}
+## Dependências {#prometheus-dependencies}
 
 Instale o
 [pacote de exporter](https://pypi.org/project/opentelemetry-exporter-prometheus/)
@@ -236,7 +234,7 @@ o receptor Prometheus pode extrair as métricas deste endpoint.
 
 {{% include "exporters/zipkin-setup.md" %}}
 
-### Dependências {#zipkin-dependencies}
+## Dependências {#zipkin-dependencies}
 
 Para enviar seus dados de rastro para o [Zipkin](https://zipkin.io/), você pode
 escolher entre dois protocolos diferentes para transportar seus dados:

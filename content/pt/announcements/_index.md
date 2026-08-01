@@ -1,9 +1,7 @@
 ---
 title: Anúncios
-cascade:
-  type: docs
-  params:
-    hide_feedback: true
-default_lang_commit: 2291fd884421f8a0bb47c72327c0681fdf116225
+# cascade is omitted because it is for the en locale only.
+redirects: [{ from: '*', to: '?' }]
+default_lang_commit: 44f65fba75140343c67a182b2904efa9b632da9f # patched
 drifted_from_default: true
 ---

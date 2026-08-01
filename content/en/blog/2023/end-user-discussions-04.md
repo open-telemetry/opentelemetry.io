@@ -13,7 +13,7 @@ regions again in May.
 The discussions take place using a
 [Lean Coffee format](https://agilecoffee.com/leancoffee/), whereby folks are
 invited to post their topics to the
-[Agile Coffee board like this one](http://agile.coffee/?disable_http_check#2f83c1c1-918c-4c78-8671-194b2e9d8e54),
+[Agile Coffee board like this one](http://agile.coffee/?http_ok#2f83c1c1-918c-4c78-8671-194b2e9d8e54),
 and everyone in attendance votes on what they want to talk about.
 
 ## What we talked about
@@ -79,10 +79,10 @@ auto-instrumentation support. Seeing value from small changes can build more
 confidence in the team to go deeper into OpenTelemetry adoption.
 
 There are also several OpenTelemetry receivers
-[available](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver).
+[available](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/944d4a82c408d58f9d8ba1a1d4783094301af0de/receiver?from_branch=main).
 These receivers help to collect the telemetry end-users already have. For
 example,
-[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md)
+[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/c9585747e97d1ba5a0aae3bee72eaf76438951f4/receiver/prometheusreceiver/README.md?from_branch=main)
 can help you receive metrics data in Prometheus format. Using these receivers,
 you can start sending telemetry data from different components of your
 application.

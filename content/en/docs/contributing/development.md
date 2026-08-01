@@ -5,18 +5,17 @@ description: Learn how to set up a development environment for this website.
 what-next: >
   You're now ready to [build](#build), [serve](#serve), and make updates to
   website files. For details on how to submit changes, see [Submitting
-  content][].
+  content](../pull-requests).
 weight: 60
+cSpell:ignore: TOCSS
 ---
 
-{{% alert title="Supported build environments" color=warning %}}
-
-Builds are officially supported on Linux-based environments and macOS. Other
-environments, such as [DevContainers](#devcontainers), are supported on a
-best-effort basis. For builds on Windows, you can follow steps similar to those
-for Linux using Windows Subsystem for Linux command line [WSL][windows-wsl].
-
-{{% /alert %}}
+> [!WARNING] Supported build environments
+>
+> Builds are officially supported on Linux-based environments and macOS. Other
+> environments, such as [DevContainers](#devcontainers), are supported on a
+> best-effort basis. For builds on Windows, you can follow steps similar to
+> those for Linux using Windows Subsystem for Linux command line [WSL][].
 
 The following instructions explain how to set up a development environment for
 this website.
@@ -25,10 +24,10 @@ this website.
 
 ### Gitpod
 
-To work via [Gitpod.io]:
+To work via [Gitpod.io][]:
 
 1.  Fork this repository. For help, see [Fork a repository][fork].
-2.  From [gitpod.io/workspaces], create a new workspace (do this only once) or
+2.  From [gitpod.io/workspaces][], create a new workspace (do this only once) or
     open an existing workspace over your fork. You can also visit a link of the
     form:
     `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`.
@@ -42,9 +41,9 @@ Gitpod automatically installs the repo-specific packages for you.
 
 ### Codespaces
 
-To work via GitHub [Codespaces]:
+To work via GitHub [Codespaces][]:
 
-1. [Fork] the website repository.
+1. [Fork][] the website repository.
 2. Open a Codespace from your fork.
 
 Your development environment will be initialized via the
@@ -52,7 +51,7 @@ Your development environment will be initialized via the
 
 ## Local setup
 
-1.  [Fork] and then [clone] the website repository at
+1.  [Fork][] and then [clone][] the website repository at
     <{{% param github_repo %}}>.
 2.  Go to the repository directory:
 
@@ -61,15 +60,15 @@ Your development environment will be initialized via the
     ```
 
 3.  Install or upgrade to the [**active LTS** release][nodejs-rel] of Node.js.
-    We recommend using [nvm] to manage your Node installation. Under Linux, run
-    the following command, which will install and upgrade to the version
+    We recommend using [nvm][] to manage your Node installation. Under Linux,
+    run the following command, which will install and upgrade to the version
     specified in the .nvmrc file:
 
     ```sh
     nvm install
     ```
 
-    To [install under Windows][nodejs-win], use [nvm-windows]. We recommend
+    To [install under Windows][nodejs-win], use [nvm-windows][]. We recommend
     using `cmd` and not Windows PowerShell for the command below:
 
     ```cmd
@@ -94,6 +93,27 @@ npm run build
 
 The generated site files are under `public`.
 
+> [!IMPORTANT]
+>
+> If you see build or serve command **errors** similar to the following:
+>
+> ```log
+> ERROR error building site: ...[long message]... TOCSS: failed to transform "/scss/main.scss" (text/x-scss)
+> ```
+>
+> Or:
+>
+> ```log
+> ERROR failed to load modules: module "github.com/FortAwesome/Font-Awesome" not found
+> ```
+>
+> This is usually because you didn't complete all the steps in the
+> [local setup](#local-setup). In particular, (re)run this command:
+>
+> ```sh
+> npm install
+> ```
+
 ### Serve
 
 To serve the site run:
@@ -102,10 +122,10 @@ To serve the site run:
 npm run serve
 ```
 
-The site is served at [localhost:1313].
+The site is served at [localhost:1313][].
 
-If you need to test [Netlify] redirects, use the following command and visit the
-site at [localhost:8888]:
+If you need to test [Netlify][] redirects, use the following command and visit
+the site at [localhost:8888][]:
 
 ```sh
 npm run serve:netlify
@@ -121,20 +141,20 @@ might need to increase the file descriptor limit. See
 
 The website is built from the following content:
 
-- Files under `content/`, `static/`, etc. per [Hugo] defaults.
-- Mount points, defined in [hugo.yaml] under `mounts`. Mounts are either
-  directly from git submodules under [content-modules], or preprocessed content
-  from `content-modules` (placed under `tmp/`), and no where else.
+- Files under `content/`, `static/`, etc. per [Hugo][] defaults.
+- Mount points, defined by Hugo [config][] in
+  `config/_default/module-template.yaml`. Mounts are either directly from git
+  submodules under [content-modules][], or preprocessed content from
+  `content-modules` (placed under `tmp/`), and no where else.
 
-[hugo.yaml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/hugo.yaml
+[config]: https://github.com/open-telemetry/opentelemetry.io/tree/main/config
 [content-modules]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
 ### Submodule changes
 
-If you change any content inside of a [content-modules] submodule, then you need
-to first submit a PR (containing the submodule changes) to the submodule's
+If you change any content inside of a [content-modules][] submodule, then you
+need to first submit a PR (containing the submodule changes) to the submodule's
 repository. Only after the submodule PR has been accepted, can you update the
 submodule and have the changes appear in this website.
 
@@ -157,14 +177,61 @@ such as (in alphabetical order):
 
 - [Codespaces][cs-devc]
 - [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
-- [Gitpod](https://www.gitpod.io/docs/flex/configuration/devcontainer/overview)
+- [Gitpod](https://ona.com/docs/ona/configuration/devcontainer/overview)
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
-[clone]:
-  https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+## Tools
+
+### Code-excerpter
+
+Use [code-excerpter][] for code snippets that should stay in sync with source
+files in this repository. Site pages in any locale can contain code excerpts,
+but original content that uses them is authored in English under `content/en`
+and then updated by localization teams to their own locales.
+
+In the English source page, place a file excerpt directive immediately before
+the fenced code block that it updates:
+
+````md
+<?code-excerpt path-base="examples/java/getting-started"?>
+
+<?code-excerpt "src/main/java/otel/DiceApplication.java" from="@SpringBootApplication"?>
+
+```java
+@SpringBootApplication
+public class DiceApplication {
+  public static void main(String[] args) {
+    SpringApplication app = new SpringApplication(DiceApplication.class);
+    app.setBannerMode(Banner.Mode.OFF);
+    app.run(args);
+  }
+}
+```
+````
+
+Use an optional `path-base` directive once near the top of the page when several
+excerpts come from the same directory. For details concerning the `code-excerpt`
+directive syntax, see the [code-excerpter][] readme.
+
+Edit the source file or the directive, **not the fenced code**. Then run the
+following [npm script](/site/build/npm-scripts/):
+
+```sh
+npm run fix:code-excerpts
+```
+
+To check is code-excerpts are up to date, run:
+
+```sh
+npm run check:code-excerpts
+```
+
+[code-excerpter]: https://github.com/chalin/code-excerpter
+
+<!-- prettier-ignore-start -->
+[clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
-[cs-devc]:
-  https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
+[cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io
@@ -174,13 +241,8 @@ such as (in alphabetical order):
 [localhost:8888]: http://localhost:8888
 [netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
-[nodejs-win]:
-  https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
-[nvm]:
-  https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+[nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
-[windows-wsl]: https://learn.microsoft.com/en-us/windows/wsl/install
-
-<!-- markdownlint-disable link-image-reference-definitions -->
-
-[Submitting content]: ../pull-requests/
+[nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+[WSL]: https://learn.microsoft.com/en-us/windows/wsl/install
+<!-- prettier-ignore-end -->

@@ -5,7 +5,8 @@ weight: 10
 aliases:
   - /docs/languages/python/automatic/configuration
   - /docs/languages/python/automatic/agent-config
-cSpell:ignore: healthcheck instrumentor myapp pyproject Starlette urllib
+# prettier-ignore
+cSpell:ignore: gevent healthcheck instrumentor monkeypatch pyproject Starlette urllib
 ---
 
 The agent is highly configurable, either by:
@@ -118,10 +119,12 @@ outputted.
   logging format
 - `OTEL_PYTHON_LOG_LEVEL`: to set a custom log level (info, error, debug,
   warning)
-- `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED`: to enable
-  auto-instrumentation of logs. Attaches OTLP handler to Python root logger. For
-  an example, see
-  [Logs Auto-Instrumentation](/docs/zero-code/python/logs-example/).
+- `OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION`: controls whether the logging handler
+  is configured automatically (true, false), enabled by default. Refer to
+  [Logs Auto-Instrumentation](/docs/zero-code/python/logs-example/)
+- `OTEL_PYTHON_LOG_CODE_ATTRIBUTES`: to enable addition of `code` attributes
+  (`code.file.path`, `code.function.name`, `code.line.number`) to the logs
+  (true, false)
 
 Examples:
 
@@ -129,8 +132,14 @@ Examples:
 export OTEL_PYTHON_LOG_CORRELATION=true
 export OTEL_PYTHON_LOG_FORMAT="%(msg)s [span_id=%(span_id)s]"
 export OTEL_PYTHON_LOG_LEVEL=debug
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
+export OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION=false
+export OTEL_PYTHON_LOG_CODE_ATTRIBUTES=true
 ```
+
+> Before OpenTelemetry Python 1.40.0 logs auto instrumentation was disabled by
+> default and implemented in the `opentelemetry-sdk` package. Setting
+> `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` to `true` would have
+> enabled it.
 
 ### Other
 
@@ -146,6 +155,9 @@ specific category.
 - `OTEL_PYTHON_ID_GENERATOR`: to specify which IDs generator to use for the
   global Tracer Provider
 - `OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS`: to enable query sanitization
+- `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH`: set to
+  `patch_all` to call gevent monkeypatch `patch_all` method before initializing
+  the SDK
 
 Examples:
 
@@ -155,6 +167,7 @@ export OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX=my-custom-prefix
 export OTEL_PYTHON_GRPC_EXCLUDED_SERVICES="GRPCTestServer,GRPCHealthServer"
 export OTEL_PYTHON_ID_GENERATOR=xray
 export OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS=true
+export OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH=patch_all
 ```
 
 ## Disabling Specific Instrumentations

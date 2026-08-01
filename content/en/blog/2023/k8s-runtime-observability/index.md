@@ -24,9 +24,9 @@ Here is a brief synopsis of the recent activity in the Kubernetes ecosystem:
   [implementing instrumentation](https://github.com/Monkeyanator/kubernetes/pull/15).
 - A KEP (Kubernetes Enhancement Proposal) was created in January 2020 and later
   scoped to API Server
-  ([KEP 647 - API Server Tracing](https://github.com/kubernetes/enhancements/tree/master/keps/sig-instrumentation/647-apiserver-tracing)),
+  ([KEP 647 - API Server Tracing](https://github.com/kubernetes/enhancements/tree/f52255413e79b6905fd074370611c0841cb8effe/keps/sig-instrumentation/647-apiserver-tracing?from_branch=master)),
   while a new KEP for Kubelet was proposed in July 2021
-  ([KEP 2831 Kubelet Tracing](https://github.com/kubernetes/enhancements/tree/master/keps/sig-instrumentation/2831-kubelet-tracing)).
+  ([KEP 2831 Kubelet Tracing](https://github.com/kubernetes/enhancements/tree/f52255413e79b6905fd074370611c0841cb8effe/keps/sig-instrumentation/2831-kubelet-tracing?from_branch=master)).
 - [etcd](https://github.com/etcd-io/etcd) (Kubernetes uses it as an internal
   datastore) started to discuss tracing in November 2020
   ([Add Distributed Tracing using OpenTelemetry](https://github.com/etcd-io/etcd/issues/12460))
@@ -38,14 +38,14 @@ Here is a brief synopsis of the recent activity in the Kubernetes ecosystem:
   ([April 2021 for CRI-O](https://github.com/cri-o/cri-o/issues/4734) and
   [August 2021 for containerd](https://github.com/containerd/containerd/pull/5731)).
 - API Server tracing was released as
-  [alpha in v1.22](https://github.com/kubernetes/enhancements/blob/master/keps/sig-instrumentation/647-apiserver-tracing/kep.yaml#L26)
+  [alpha in v1.22](https://github.com/kubernetes/enhancements/blob/f52255413e79b6905fd074370611c0841cb8effe/keps/sig-instrumentation/647-apiserver-tracing/kep.yaml?from_branch=master#L26)
   (Aug. 2021) and
-  [beta in v1.27](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.27.md)
+  [beta in v1.27](https://github.com/kubernetes/kubernetes/blob/29e4f5a893bf47c608aa8593ae6e67d20b0fd775/CHANGELOG/CHANGELOG-1.27.md?from_branch=master)
   (Apr. 2023).
 - Kubelet tracing was released as
-  [alpha in v1.25](https://github.com/kubernetes/enhancements/blob/master/keps/sig-instrumentation/2831-kubelet-tracing/kep.yaml#L29)
+  [alpha in v1.25](https://github.com/kubernetes/enhancements/blob/f52255413e79b6905fd074370611c0841cb8effe/keps/sig-instrumentation/2831-kubelet-tracing/kep.yaml?from_branch=master#L29)
   (Aug. 2022) and
-  [beta in v1.27](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.27.md)
+  [beta in v1.27](https://github.com/kubernetes/kubernetes/blob/29e4f5a893bf47c608aa8593ae6e67d20b0fd775/CHANGELOG/CHANGELOG-1.27.md?from_branch=master)
   (Apr. 2023).
 
 In investigating the current state of tracing with Kubernetes, we found very few
@@ -82,7 +82,7 @@ traces and lets you query them.
 
 On your machine, create a directory called `kubetracing` and create a file
 called
-[otel-collector.yaml](https://github.com/kubeshop/tracetest/blob/main/examples/tracetesting-kubernetes/kubetracing/otel-collector.yaml),
+[otel-collector.yaml](https://github.com/kubeshop/tracetest/blob/33151f8df4bf708856ab9c564d849486eb45bbe2/examples/tracetesting-kubernetes/kubetracing/otel-collector.yaml?from_branch=main),
 copy the contents of the following snippet, and save it in a folder of your
 preference.
 
@@ -117,7 +117,7 @@ service:
 ```
 
 After that, in the same folder, create a
-[docker-compose.yaml](https://github.com/kubeshop/tracetest/blob/main/examples/tracetesting-kubernetes/kubetracing/docker-compose.yaml)
+[docker-compose.yaml](https://github.com/kubeshop/tracetest/blob/87c20b32e8cb0447e922037ba659ef487fc88369/examples/tracetesting-kubernetes/kubetracing/docker-compose.yaml?from_branch=main)
 file that will have two containers, one for Jaeger and another for the
 OpenTelemetry Collector.
 
@@ -172,7 +172,7 @@ Inside the `kubetracing` folder, create a subfolder called `config` that will
 have the following two files.
 
 First, the
-[apiserver-tracing.yaml](https://github.com/kubeshop/tracetest/blob/main/examples/tracetesting-kubernetes/kubetracing/config/apiserver-tracing.yaml),
+[apiserver-tracing.yaml](https://github.com/kubeshop/tracetest/blob/efb642fd82fb4187a8c14522bbcfc01d7f5739a6/examples/tracetesting-kubernetes/kubetracing/config/apiserver-tracing.yaml?from_branch=main),
 which contains the tracing configuration used by `kube-apiserver` to export
 traces containing execution data of the Kubernetes API. In this configuration,
 set the API to send 100% of the traces with the `samplingRatePerMillion` config.
@@ -188,7 +188,7 @@ samplingRatePerMillion: 1000000 # 100%
 ```
 
 The second file is
-[kubelet-tracing.yaml](https://github.com/kubeshop/tracetest/blob/main/examples/tracetesting-kubernetes/kubetracing/config/kubelet-tracing.yaml),
+[kubelet-tracing.yaml](https://github.com/kubeshop/tracetest/blob/efb642fd82fb4187a8c14522bbcfc01d7f5739a6/examples/tracetesting-kubernetes/kubetracing/config/kubelet-tracing.yaml?from_branch=main),
 which provides additional configuration for `kubelet`. Here you’ll enable the
 feature flag `KubeletTracing` (a beta feature in Kubernetes 1.27, the current
 version when this article was written) and set the same tracing settings that
@@ -205,7 +205,7 @@ tracing:
 ```
 
 Returning to the `kubetracing` folder, create the last file,
-[config.toml.tmpl](https://github.com/kubeshop/tracetest/blob/main/examples/tracetesting-kubernetes/kubetracing/config.toml.tmpl),
+[config.toml.tmpl](https://github.com/kubeshop/tracetest/blob/33151f8df4bf708856ab9c564d849486eb45bbe2/examples/tracetesting-kubernetes/kubetracing/config.toml.tmpl?from_branch=main),
 which is a template file used by `k3s` to configure `containerd`. This file is
 similar to the default configuration that `k3s` uses, with two more sections at
 the end of the file that configures `containerd` to send traces.
@@ -440,9 +440,9 @@ Expanding one trace, you’ll see the operations that created this pod:
 ## Conclusion
 
 Even in beta, both traces for
-[kubelet](https://github.com/kubernetes/enhancements/tree/master/keps/sig-instrumentation/2831-kubelet-tracing)
+[kubelet](https://github.com/kubernetes/enhancements/tree/f52255413e79b6905fd074370611c0841cb8effe/keps/sig-instrumentation/2831-kubelet-tracing?from_branch=master)
 and
-[apiserver](https://github.com/kubernetes/enhancements/tree/master/keps/sig-instrumentation/647-apiserver-tracing)
+[apiserver](https://github.com/kubernetes/enhancements/tree/f52255413e79b6905fd074370611c0841cb8effe/keps/sig-instrumentation/647-apiserver-tracing?from_branch=master)
 can help a developer understand what’s happening under the hood in Kubernetes
 and start debugging issues.
 
@@ -462,15 +462,15 @@ It works with any OTel compatible system and enables trace–based tests to be
 created. Check it out at <https://github.com/kubeshop/tracetest>.
 
 The
-[example sources](https://github.com/kubeshop/tracetest/tree/main/examples/tracetesting-kubernetes/kubetracing)
+[example sources](https://github.com/kubeshop/tracetest/tree/87c20b32e8cb0447e922037ba659ef487fc88369/examples/tracetesting-kubernetes/kubetracing?from_branch=main)
 used in this article, and
-[setup instructions](https://github.com/kubeshop/tracetest/blob/main/examples/tracetesting-kubernetes/setup-k8s-with-k3d.md)
+[setup instructions](https://github.com/kubeshop/tracetest/blob/33151f8df4bf708856ab9c564d849486eb45bbe2/examples/tracetesting-kubernetes/setup-k8s-with-k3d.md?from_branch=main)
 are available from the Tracetest repository.
 
 ## References
 
 - [Traces For Kubernetes System Components](https://kubernetes.io/docs/concepts/cluster-administration/system-traces/)
-- [Tracing on ContainerD](https://github.com/containerd/containerd/blob/main/docs/tracing.md)
+- [Tracing on ContainerD](https://github.com/containerd/containerd/blob/459a95287ba66a0cde820435e9883bc3b0d0ab17/docs/tracing.md?from_branch=main)
 - [Kubernetes: Tools for Monitoring Resources](https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-usage-monitoring/)
 - [OTel Collector quick start](/docs/collector/quick-start/)
 - [Boosting Kubernetes container runtime observability with OpenTelemetry](https://kubernetes.io/blog/2022/12/01/runtime-observability-opentelemetry/)

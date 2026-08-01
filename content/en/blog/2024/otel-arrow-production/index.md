@@ -11,9 +11,9 @@ cSpell:ignore: Querel Zstd
 ---
 
 The OpenTelemetry Protocol with Apache Arrow (OTel-Arrow) project's
-[exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/otelarrowexporter)
+[exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/exporter/otelarrowexporter?from_branch=main)
 and
-[receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/otelarrowreceiver)
+[receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/otelarrowreceiver?from_branch=main)
 components for the OpenTelemetry Collector are now included in OpenTelemetry
 Collector-Contrib releases. This is a case study of our experience deploying
 OpenTelemetry Collectors using OTel-Arrow components as the primary ingestion
@@ -54,7 +54,7 @@ The compression bridge consists of two OpenTelemetry Collectors labeled exporter
 and receiver, or they could equally be two pools of load-balanced collectors.
 
 As described in the
-[OTEP 0156 design document](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0156-columnar-encoding.md#mapping-otel-entities-to-arrow-records),
+[OTEP 0156 design document](https://github.com/open-telemetry/opentelemetry-specification/blob/5239912e97a4df50b206f5fa8241dd6cd8d2dbf8/oteps/0156-columnar-encoding.md?from_branch=main#mapping-otel-entities-to-arrow-records),
 the exporter converts arbitrary OpenTelemetry data into an Arrow record batch.
 The Arrow record batch is a block of memory, with a standardized layout, making
 it possible to exchange data across address spaces and virtual process
@@ -224,7 +224,7 @@ service operator a chance to auto-scale the number of instances to handle the
 increase in load based on memory utilization.
 
 For details, see the
-[documentation on batching and back-pressure](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/otelarrowexporter/README.md#batching-configuration)
+[documentation on batching and back-pressure](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/f4661d486acbbef5c4fb071adafe5818035d2512/exporter/otelarrowexporter/README.md?from_branch=main#batching-configuration)
 for the OTel-Arrow exporter.
 
 ## Performance

@@ -21,7 +21,34 @@ gem install opentelemetry-sdk
 ```
 
 Then include configuration code that runs when your program initializes. Make
-sure that `service.name` is set by configuring a service name.
+sure that `service.name` is set by configuring a service name (for example via
+the `OTEL_SERVICE_NAME` environment variable).
+
+To instrument many common libraries without enabling each instrumentation
+individually, use `opentelemetry-instrumentation-all`:
+
+```sh
+gem install opentelemetry-instrumentation-all
+```
+
+Then configure the SDK to enable available instrumentations:
+
+```ruby
+require 'opentelemetry/sdk'
+OpenTelemetry::SDK.configure do |c|
+  c.use_all
+end
+```
+
+> [!TIP]
+>
+> In a Ruby on Rails app, you can place this configuration in
+> `config/initializers/opentelemetry.rb`.
+
+This approach automatically enables supported library instrumentations (so you
+typically don’t need to follow the per-instrumentation steps in the
+[Traces](#traces) section below). You may still need to configure an exporter
+and environment variables appropriate for your deployment.
 
 ## Traces
 
@@ -86,6 +113,27 @@ require "opentelemetry/sdk"
 def do_work
   MyAppTracer.in_span("do_work") do |span|
     # do some work that the 'do_work' span tracks!
+  end
+end
+```
+
+If an exception escapes the `in_span` block, the tracer records the exception on
+the span by default, sets the span status to `Error`, and re-raises the
+exception. You can disable automatic exception recording by passing
+`record_exception: false` as an argument to the `in_span` method.
+
+If you rescue an exception inside the block and don't re-raise it, set the span
+status and record the exception manually when appropriate:
+
+```ruby
+MyAppTracer.in_span("do_work") do |span|
+  begin
+    # do work that may raise an exception
+  rescue StandardError => e
+    span.status = OpenTelemetry::Trace::Status.error(e.message)
+    span.record_exception(e)
+
+    # Handle the exception without re-raising it, such as returning a fallback.
   end
 end
 ```
@@ -350,6 +398,16 @@ The metrics API & SDK are currently under development.
 ## Logs
 
 The logs API & SDK are currently under development.
+
+To capture application logs emitted via Ruby’s standard `Logger`, install the
+logger instrumentation package:
+
+```sh
+gem install opentelemetry-instrumentation-logger
+```
+
+After installing, ensure you have configured an exporter/endpoint that supports
+logs for example, via the exporter configuration referenced in the next section.
 
 ## Next Steps
 

@@ -12,29 +12,23 @@ jobs:
     name: SPELLING check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
-      - run: npm run _install:dict --ignore-scripts
-      - uses: streetsidesoftware/cspell-action@v7
-        with:
-          # Files should be consistent with check:spelling files
-          files: |
-            content
-            data
-            layouts/**/*.md
-          config: .cspell.yml
-          incremental_files_only: false
-          suggestions: true
+      - run: npm run _install:cspell --ignore-scripts
+      - run: npm run check:spelling
 
   dict-check:
-    name: CSPELL page-local word list check
+    name: CSPELL word lists check
     runs-on: ubuntu-latest
     env:
       FIX_CMD: fix:dict
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with: { persist-credentials: false }
+      # Note: FIX_CMD runs fine without setup-node
       - run: npm run ${{ env.FIX_CMD }}
       - name: Any changed files?
         run: |
@@ -45,5 +39,5 @@ jobs:
             echo "$CHANGES"
             exit 1
           else
-            echo "All page-local dictionaries are well formatted."
+            echo "cSpell front-matter ignore lists and .cspell/*.txt word lists are normalized and sorted."
           fi

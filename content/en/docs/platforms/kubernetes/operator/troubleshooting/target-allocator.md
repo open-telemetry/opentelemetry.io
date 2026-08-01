@@ -23,7 +23,7 @@ Kubernetes cluster.
 After you've deployed all of your resources to Kubernetes, make sure that the
 Target Allocator is discovering scrape targets from your
 [`ServiceMonitor`](https://prometheus-operator.dev/docs/getting-started/design/#servicemonitor)(s)
-or [PodMonitor]s.
+or [PodMonitor][]s.
 
 Suppose that you have this `ServiceMonitor` definition:
 
@@ -101,10 +101,6 @@ spec:
               scrape_interval: 10s
               static_configs:
                 - targets: ['0.0.0.0:8888']
-
-    processors:
-      batch: {}
-
     exporters:
       debug:
         verbosity: detailed
@@ -113,15 +109,12 @@ spec:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: [batch]
           exporters: [debug]
         metrics:
           receivers: [otlp, prometheus]
-          processors: []
           exporters: [debug]
         logs:
           receivers: [otlp]
-          processors: [batch]
           exporters: [debug]
 ```
 
@@ -137,15 +130,13 @@ Where `otelcol-targetallocator` is the value of `metadata.name` in your
 `opentelemetry` is the namespace to which the `OpenTelemetryCollector` CR is
 deployed.
 
-{{% alert title="Tip" %}}
-
-You can also get the service name by running
-
-```shell
-kubectl get svc -l app.kubernetes.io/component=opentelemetry-targetallocator -n <namespace>
-```
-
-{{% /alert %}}
+> [!TIP]
+>
+> You can also get the service name by running
+>
+> ```shell
+> kubectl get svc -l app.kubernetes.io/component=opentelemetry-targetallocator -n <namespace>
+> ```
 
 Next, get a list of jobs registered with the Target Allocator:
 
@@ -284,13 +275,11 @@ The query parameter `collector_id` in the `_link` field of the above output
 states that these are the targets pertain to `otelcol-collector-0` (the name of
 the `StatefulSet` created for the `OpenTelemetryCollector` resource).
 
-{{% alert title="Note" %}}
-
-See the
-[Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md?plain=1#L128-L134)
-for more information on the `/jobs` endpoint.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> See the
+> [Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#endpoints)
+> for more information on the `/jobs` endpoint.
 
 ### Is the Target Allocator enabled? Is Prometheus service discovery enabled?
 
@@ -301,7 +290,7 @@ are turned on.
 One thing to remember is that just because you include the `targetAllocator`
 section in the `OpenTelemetryCollector` CR doesn't mean that it's enabled. You
 need to explicitly enable it. Furthermore, if you want to use
-[Prometheus service discovery](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md#discovery-of-prometheus-custom-resources),
+[Prometheus service discovery](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#discovery-of-prometheus-custom-resources),
 you must explicitly enable it:
 
 - Set `spec.targetAllocator.enabled` to `true`
@@ -384,13 +373,10 @@ example.
 If your `ServiceMonitor` resource is missing that label, then the Target
 Allocator will fail to discover scrape targets from that `ServiceMonitor`.
 
-{{% alert title="Tip" %}}
-
-The same applies if you're using a [PodMonitor]. In that case, you would use a
-[`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr)
-instead of a `serviceMonitorSelector`.
-
-{{% /alert %}}
+> [!TIP]
+>
+> The same applies if you're using a [PodMonitor][]. In that case, you would use
+> a [`podMonitorSelector`][] instead of a `serviceMonitorSelector`.
 
 ### Did you leave out the serviceMonitorSelector and/or podMonitorSelector configuration altogether?
 
@@ -505,12 +491,12 @@ spec:
       port: 8080
 ```
 
-{{% alert title="Tip" %}}
+> [!TIP]
+>
+> If you're using `PodMonitor`, the same applies, except that it picks up
+> Kubernetes pods that match on labels, namespaces, and named ports.
 
-If you're using `PodMonitor`, the same applies, except that it picks up
-Kubernetes pods that match on labels, namespaces, and named ports.
-
-{{% /alert %}}
-
+[`podMonitorSelector`]:
+  https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr
 [PodMonitor]:
   https://prometheus-operator.dev/docs/developer/getting-started/#using-podmonitors

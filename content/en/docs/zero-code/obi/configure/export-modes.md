@@ -20,7 +20,7 @@ the OTLP endpoint authentication credentials with these environment variables:
 To run in Direct mode using the Prometheus scrape endpoint, see the
 [configuration documentation](../options/).
 
-### Configure and run OBI
+## Configure and run OBI
 
 This tutorial assumes OBI and OTel Collector are running natively on the same
 host, so there is no need to secure the traffic nor provide authentication in
@@ -55,11 +55,11 @@ properties to export metrics, traces, or both.
 Run OBI with a named configuration file:
 
 ```shell
-ebpf-instrument -config instrument-config.yml
+obi -config instrument-config.yml
 ```
 
 or
 
 ```shell
-OTEL_EBF_CONFIG_PATH=instrument-config.yml ebpf-instrument
+OTEL_EBPF_CONFIG_PATH=instrument-config.yml obi
 ```

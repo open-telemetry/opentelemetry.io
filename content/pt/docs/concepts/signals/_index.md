@@ -5,6 +5,7 @@ description:
 weight: 11
 aliases: [data-sources, otel-concepts]
 default_lang_commit: c370886c9926e6cab3738ababbf6ff5692899bbd
+drifted_from_default: true
 ---
 
 O propósito do OpenTelemetry é coletar, processar e exportar [sinais][signals].

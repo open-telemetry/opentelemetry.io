@@ -7,8 +7,7 @@ author: >
   Bisutti](https://github.com/jeanbisutti) (Microsoft)
 issue: https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/11581
 sig: Java
-# prettier-ignore
-cSpell:ignore: Bisutti Customizer customizers Gregor logback petclinic Zeitlinger
+cSpell:ignore: Bisutti Customizer customizers Gregor petclinic Zeitlinger
 ---
 
 We're proud to announce that the OpenTelemetry Spring Boot starter is now
@@ -44,7 +43,7 @@ Here are some scenarios where you might want to use the Spring Starter:
   doesn't work with the OpenTelemetry Java agent
 - **Programmatic configuration** of the OpenTelemetry Spring Boot starter, such
   as
-  [dynamic auth headers](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#configure-the-exporter-programmatically),
+  [dynamic auth headers](/docs/zero-code/java/spring-boot-starter/programmatic-configuration/#configure-the-exporter-programmatically),
   using Spring beans (the OpenTelemetry Java agent requires an
   [extension](/docs/zero-code/java/agent/extensions/) for this)
 - **Uses code dependencies**: You don't need to add any JVM options (e.g. in
@@ -79,7 +78,7 @@ Note that the Spring Starter uses some semantic conventions that are not stable,
 which are still evolving and may change in the future.
 [HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/) are stable
 and will not change.
-[Database semantic conventions](/docs/specs/semconv/database/database-metrics/)
+[Database semantic conventions](https://github.com/open-telemetry/semantic-conventions/blob/v1.38.0/docs/database/database-metrics.md)
 are still experimental and may change. However, they are expected to become
 stable at the end of 2024.
 
@@ -129,7 +128,7 @@ OpenTelemetry Java agent, so that the same properties could be used for both.
 
 The SDK autoconfiguration did not support Spring Boot configuration files,
 however, so we had implement the
-[ConfigProperties](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/ConfigProperties.java)
+[ConfigProperties](https://github.com/open-telemetry/opentelemetry-java/blob/78a917da2e8f4bc3645f4fb10361e3e844aab9fb/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/ConfigProperties.java?from_branch=main)
 interface with the logic to look up Spring configuration values from a Spring
 [Environment](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/env/Environment.html).
 
@@ -156,7 +155,7 @@ that allows you to register Spring beans that will be loaded by the
 OpenTelemetry SDK autoconfiguration.
 
 The
-[Spring Starter implementation of the ComponentLoader interface](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java#L162-L181)
+[Spring Starter implementation of the ComponentLoader interface](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/f7cba3b86167946b3783fb8e575f1c169aec6972/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java?from_branch=main#L162-L181)
 uses Spring's `ApplicationContext` to find all beans of a certain type.
 
 This allows you to register your own customizers, and other SDK components as

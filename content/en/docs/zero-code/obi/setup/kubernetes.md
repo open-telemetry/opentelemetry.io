@@ -2,20 +2,18 @@
 title: Deploy OBI in Kubernetes
 linkTitle: Kubernetes
 description: Learn how to deploy OBI in Kubernetes.
-weight: 3
+weight: 4
 # prettier-ignore
 cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefulset
 ---
 
-{{% alert type="note" %}}
-
-This document explains how to manually deploy OBI in Kubernetes, setting up all
-the required entities by yourself.
-
-<!-- You might prefer to follow the
-[Deploy OBI in Kubernetes with Helm](../kubernetes-helm/) documentation instead. -->
-
-{{% /alert %}}
+> [!NOTE]
+>
+> This document explains how to manually deploy OBI in Kubernetes, setting up
+> all the required entities by yourself.
+>
+> <!-- You might prefer to follow the
+> [Deploy OBI in Kubernetes with Helm](../kubernetes-helm/) documentation instead. -->
 
 ## Configuring Kubernetes metadata decoration
 
@@ -121,8 +119,76 @@ requirements:
           - SYS_RESOURCE # not required for kernels 5.11+
     ```
 
+#### Instrumenting all processes in a pod (recommended)
+
+When OBI runs as a sidecar container with `shareProcessNamespace: true`, it
+shares the Pod's PID namespace and can only see processes within that Pod. This
+means you can use `OTEL_EBPF_AUTO_TARGET_EXE=*` to instrument all processes in
+the pod without needing to specify individual executable names or ports.
+
+This is the recommended approach for sidecar deployments, as it provides a
+simple, reusable configuration that works across different pods without
+modification:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goblog
+  labels:
+    app: goblog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: goblog
+  template:
+    metadata:
+      labels:
+        app: goblog
+    spec:
+      # Required so the sidecar instrument tool can access the service process
+      shareProcessNamespace: true
+      serviceAccountName: obi # required if you want kubernetes metadata decoration
+      containers:
+        # Container for the instrumented service
+        - name: goblog
+          image: mariomac/goblog:dev
+          imagePullPolicy: IfNotPresent
+          command: ['/goblog']
+          ports:
+            - containerPort: 8443
+              name: https
+        # Sidecar container with OBI - the eBPF auto-instrumentation tool
+        - name: obi
+          image: otel/ebpf-instrument:main
+          securityContext: # Privileges are required to install the eBPF probes
+            privileged: true
+          env:
+            # Instrument all processes in the pod (wildcard)
+            - name: OTEL_EBPF_AUTO_TARGET_EXE
+              value: '*'
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: 'http://otelcol:4318'
+            # required if you want kubernetes metadata decoration
+            - name: OTEL_EBPF_KUBE_METADATA_ENABLE
+              value: 'true'
+```
+
+Using the wildcard approach is less error prone than specifying individual
+executable names or ports, since you don't need to update the OBI configuration
+when adding new services to the pod. OBI can only access processes within the
+same Pod (due to the shared PID namespace), so there is no risk of accidentally
+instrumenting processes outside your pod.
+
+#### Instrumenting specific processes in a pod
+
+If you need more granular control over which processes to instrument within a
+pod, you can specify the executable name or open port instead of using the
+wildcard.
+
 The following example instruments the `goblog` pod by attaching OBI as a
-container (image available at `otel/ebpf-instrument:latest`). The
+container (image available at `otel/ebpf-instrument:main`). The
 auto-instrumentation tool is configured to forward metrics and traces to
 OpenTelemetry Collector, which is accessible behind the `otelcol` service in the
 same namespace:
@@ -158,7 +224,7 @@ spec:
               name: https
         # Sidecar container with OBI - the eBPF auto-instrumentation tool
         - name: obi
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           securityContext: # Privileges are required to install the eBPF probes
             privileged: true
           env:
@@ -214,7 +280,7 @@ spec:
       serviceAccountName: obi # required if you want kubernetes metadata decoration
       containers:
         - name: autoinstrument
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           securityContext:
             privileged: true
           env:
@@ -292,50 +358,50 @@ spec:
       serviceAccount: obi
       hostPID: true           # <-- Important. Required in Daemonset mode so OBI can discover all monitored processes
       containers:
-      - name: obi
-        terminationMessagePolicy: FallbackToLogsOnError
-        image: otel/ebpf-instrument:latest
-        env:
-          - name: OTEL_EBPF_TRACE_PRINTER
-            value: "text"
-          - name: OTEL_EBPF_KUBE_METADATA_ENABLE
-            value: "autodetect"
-          - name: KUBE_NAMESPACE
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.namespace
-          ...
-        securityContext:
-          runAsUser: 0
-          readOnlyRootFilesystem: true
-          capabilities:
-            add:
-              - BPF                 # <-- Important. Required for most eBPF probes to function correctly.
-              - SYS_PTRACE          # <-- Important. Allows OBI to access the container namespaces and inspect executables.
-              - NET_RAW             # <-- Important. Allows OBI to use socket filters for http requests.
-              - CHECKPOINT_RESTORE  # <-- Important. Allows OBI to open ELF files.
-              - DAC_READ_SEARCH     # <-- Important. Allows OBI to open ELF files.
-              - PERFMON             # <-- Important. Allows OBI to load BPF programs.
-              #- SYS_RESOURCE       # <-- pre 5.11 only. Allows OBI to increase the amount of locked memory.
-              #- SYS_ADMIN          # <-- Required for Go application trace context propagation, or if kernel.perf_event_paranoid >= 3 on Debian distributions.
-            drop:
-              - ALL
-        volumeMounts:
-        - name: var-run-obi
-          mountPath: /var/run/obi
-        - name: cgroup
-          mountPath: /sys/fs/cgroup
+        - name: obi
+          terminationMessagePolicy: FallbackToLogsOnError
+          image: otel/ebpf-instrument:main
+          env:
+            - name: OTEL_EBPF_TRACE_PRINTER
+              value: "text"
+            - name: OTEL_EBPF_KUBE_METADATA_ENABLE
+              value: "autodetect"
+            - name: KUBE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            ...
+          securityContext:
+            runAsUser: 0
+            readOnlyRootFilesystem: true
+            capabilities:
+              add:
+                - BPF                 # <-- Important. Required for most eBPF probes to function correctly.
+                - SYS_PTRACE          # <-- Important. Allows OBI to access the container namespaces and inspect executables.
+                - NET_RAW             # <-- Important. Allows OBI to use socket filters for http requests.
+                - CHECKPOINT_RESTORE  # <-- Important. Allows OBI to open ELF files.
+                - DAC_READ_SEARCH     # <-- Important. Allows OBI to open ELF files.
+                - PERFMON             # <-- Important. Allows OBI to load BPF programs.
+                #- SYS_RESOURCE       # <-- pre 5.11 only. Allows OBI to increase the amount of locked memory.
+                #- SYS_ADMIN          # <-- Required for Go application trace context propagation, or if kernel.perf_event_paranoid >= 3 on Debian distributions.
+              drop:
+                - ALL
+          volumeMounts:
+            - name: var-run-obi
+              mountPath: /var/run/obi
+            - name: cgroup
+              mountPath: /sys/fs/cgroup
       tolerations:
-      - effect: NoSchedule
-        operator: Exists
-      - effect: NoExecute
-        operator: Exists
+        - effect: NoSchedule
+          operator: Exists
+        - effect: NoExecute
+          operator: Exists
       volumes:
-      - name: var-run-obi
-        emptyDir: {}
-      - name: cgroup
-        hostPath:
-          path: /sys/fs/cgroup
+        - name: var-run-obi
+          emptyDir: { }
+        - name: cgroup
+          hostPath:
+            path: /sys/fs/cgroup
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -345,6 +411,98 @@ metadata:
   ...
 ---
 ```
+
+## Centralizing Kubernetes metadata with k8s-cache
+
+When OBI runs as a DaemonSet, every OBI Pod opens its own `list` and `watch`
+connections against the Kubernetes API server to fetch the metadata it needs to
+decorate metrics and traces, not only the local node metadata, but metadata from
+the entire cluster. This is done to enrich information outside of the local
+node, for example to add
+[peer](/docs/specs/semconv/registry/attributes/service/#service-attributes-for-peer-services)
+attributes to spans making requests between nodes on the cluster. On large
+clusters this fan-out can put significant load on the API server, to the point
+where it can affect the whole cluster.
+
+To avoid that, OBI ships an optional companion service called `k8s-cache`. It
+runs as a small Deployment, watches the Kubernetes API once on behalf of every
+OBI Pod, and streams the metadata to OBI instances over gRPC. This removes OBI's
+per-Pod informer traffic to the API server and greatly reduces API load, though
+OBI may still perform limited direct Kubernetes API lookups for node and cluster
+metadata.
+
+Use of `k8s-cache` is always recommended, but especially if:
+
+- You run OBI as a DaemonSet on a large cluster.
+- You run many OBI replicas (large `Deployment`, multiple sidecars, etc.) on the
+  same cluster.
+- The Kubernetes API server is under pressure or rate-limited.
+
+If you do not configure a cache address, each OBI instance keeps its own local
+in-process informers, which is fine for small clusters.
+
+`k8s-cache` is only relevant when running OBI on Kubernetes; it has no effect in
+the standalone or Docker setups.
+
+To use the cache, deploy it and point OBI at its `Service` address with the
+`OTEL_EBPF_KUBE_META_CACHE_ADDRESS` environment variable (or
+`attributes.kubernetes.meta_cache_address` in YAML). The easiest way is to use
+the OBI Helm chart, which sets up the `Deployment`, `Service`, and OBI wiring
+for you when you set `k8sCache.replicas` to a non-zero value.
+
+If you prefer to deploy it manually, the cache is published as the
+`ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache`
+container image. A minimal manifest looks like:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-cache
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-cache
+  template:
+    metadata:
+      labels:
+        app: k8s-cache
+    spec:
+      serviceAccountName: obi # needs list/watch on pods, nodes, services
+      containers:
+        - name: k8s-cache
+          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:latest
+          ports:
+            - containerPort: 50055
+              name: grpc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-cache
+spec:
+  selector:
+    app: k8s-cache
+  ports:
+    - port: 50055
+      name: grpc
+      protocol: TCP
+```
+
+Then point OBI at it from the DaemonSet:
+
+```yaml
+env:
+  - name: OTEL_EBPF_KUBE_METADATA_ENABLE
+    value: 'true'
+  - name: OTEL_EBPF_KUBE_META_CACHE_ADDRESS
+    value: 'k8s-cache.default.svc:50055'
+```
+
+A single replica is usually enough. For high availability, run multiple replicas
+behind the same `Service` — each OBI Pod connects to one and reconnects to
+another on failure.
 
 ## Providing an external configuration file
 
@@ -397,7 +555,7 @@ spec:
       hostPID: true #important!
       containers:
         - name: obi
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true

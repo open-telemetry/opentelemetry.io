@@ -2,7 +2,7 @@
 title: Blog
 description: Saiba como enviar uma publicação para o blog.
 weight: 30
-default_lang_commit: 6c676267409eefc15a28c0e2fdd60b26a4687f74
+default_lang_commit: 379d6a08472e421fda5d1aeb9246796371e7bb84
 drifted_from_default: true
 ---
 
@@ -23,12 +23,28 @@ Observe que o foco dos mantenedores e aprovadores do site do OpenTelemetry é
 melhorar a documentação do projeto, então sua publicação terá menor prioridade
 de revisão.
 
+## Solicitação de conteúdo para redes sociais {#social-media-content-request}
+
+Se você deseja solicitar a publicação de conteúdo nos canais de redes sociais do
+projeto OpenTelemetry, e que não seja uma publicação do blog,
+[utilize este formulário](https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml).
+
 ## Antes de enviar um post no blog {#before-submitting-a-blog-post}
 
 As publicações no _blog_ não devem ter caráter comercial e devem conter conteúdo
 original que seja amplamente relevante para a comunidade OpenTelemetry. As
 publicações devem seguir as políticas descritas no
 [Guia de Mídias Sociais](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
+
+### Criando links para repositórios do GitHub
+
+Ao criar links para o código-fonte em repositórios do GitHub, não utilize a
+_branch_ `main` (ou outra _branch_ padrão). Em vez disso, utilize um **commit
+específico** ou uma **versão marcada** que reflita o estado do código no momento
+em que a postagem do blog foi escrita.
+
+Isso garante que as postagens do blog permaneçam estáveis ​​e não apresentem
+problemas no futuro, conforme os repositórios evoluem.
 
 Verifique se o conteúdo pretendido se aplica amplamente à comunidade
 OpenTelemetry. Exemplos de conteúdos adequados incluem:
@@ -38,6 +54,7 @@ OpenTelemetry. Exemplos de conteúdos adequados incluem:
 - Atualizações de Grupos de Interesse Especial (SIGs)
 - Tutoriais e guias passo a passo
 - Integrações com OpenTelemetry
+- [Chamadas para contribuidores](#call-for-contributors)
 
 Conteúdos inadequados incluem:
 
@@ -69,6 +86,19 @@ revisada e aprovada mais rapidamente.
 Caso sua _issue_ tenha todas as informações necessárias, um mantenedor irá
 autorizar a submissão do conteúdo.
 
+### Chamadas para contribuidores {#call-for-contributors}
+
+Caso você esteja propondo a criação de um novo projeto ou SIG, ou se está
+oferecendo uma doação ao projeto OpenTelemetry, você precisará de contribuidores
+adicionais para que sua proposta tenha sucesso. Para isso, você pode propor uma
+publicação no blog do tipo "Chamada para Contribuidores" (CfC, _Call for
+Contributors_).
+
+Isso requer que você siga os processos para
+[novos projetos](https://github.com/open-telemetry/community/blob/main/project-management.md)
+e
+[doações](https://github.com/open-telemetry/community/blob/main/guides/contributor/donations.md).
+
 ## Enviar um post no blog {#submit-a-blog-post}
 
 Você pode enviar um _post_ no _blog_ criando um _fork_ do repositório e
@@ -84,22 +114,22 @@ um modelo. Siga estes passos para criar um _post_ a partir do modelo:
 1. Execute o seguinte comando a partir da raiz do repositório:
 
    ```sh
-   npx hugo new content/pt/blog/2025/nome-curto-da-publicação.md
+   npx hugo new content/pt/blog/$(date +%Y)/nome-curto-da-publicação.md
    ```
 
    Caso seu _post_ tenha imagens ou outros arquivos, execute o seguinte comando:
 
    ```sh
-   npx hugo new content/pt/blog/2025/nome-curto-da-publicação/index.md
+   npx hugo new content/pt/blog/$(date +%Y)/nome-curto-da-publicação/index.md
    ```
 
-1. Edite o arquivo Markdown no caminho informado no comando anterior. O arquivo
+2. Edite o arquivo Markdown no caminho informado no comando anterior. O arquivo
    é inicializado a partir do modelo de _post_ no _blog_ localizado em
    [archetypes](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/).
 
-1. Adicione imagens ou outros arquivos na pasta criada.
+3. Adicione imagens ou outros arquivos na pasta criada.
 
-1. Quando a publicação estiver pronta, envie-a através de um _pull request_.
+4. Quando a publicação estiver pronta, envie-a através de um _pull request_.
 
 ### Usando a interface do GitHub {#use-the-github-ui}
 
@@ -117,8 +147,8 @@ utilizando a interface do GitHub:
 
 1.  Cole o conteúdo do modelo copiado no primeiro passo.
 
-1.  Nomeie seu arquivo, por exemplo
-    `content/pt/blog/2025/nome-curto-da-publicação/index.md`.
+1.  Nomeie seu arquivo, por exemplo (`YYYY` sendo o ano atual)
+    `content/pt/blog/YYYY/nome-curto-da-publicação/index.md`.
 
 1.  Edite o arquivo Markdown diretamente no GitHub.
 
@@ -135,3 +165,20 @@ significa que:
   garantir que a publicação ocorra antes ou em uma determinada data.
 - Alguns _posts_ no _blog_ (anúncios importantes) podem ter prioridade e serem
   publicados antes do seu.
+
+## Republicação em outras plataformas {#cross-posting-blog-content}
+
+Se você deseja compartilhar sua publicação no _blog_ do OpenTelemetry em outras
+plataformas, é permitido fazê-lo. Apenas tenha em mente o seguinte:
+
+- Decida qual versão será a publicação canônica (normalmente, a publicação
+  original no _blog_ do OpenTelemetry).
+- Outras versões da publicação devem:
+  - Mencionar claramente que o _post_ original foi no publicado no _blog_ do
+    OpenTelemetry.
+  - Incluir um _link_ para a publicação original no topo ou no rodapé da página.
+  - Adicionar a _tag_ de URL canônica apontando para a publicação do _blog_ do
+    OpenTelemetry, se a plataforma suportar.
+
+Isso auxilia a garantir a atribuição adequada, suporta as melhores práticas de
+SEO e evita a duplicação de conteúdo.

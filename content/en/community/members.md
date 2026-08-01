@@ -1,8 +1,7 @@
 ---
 title: Members of the OpenTelemetry Project
 linkTitle: Members
-weight: 30
-cSpell:ignore: subproject triagers
+weight: 50
 ---
 
 The OpenTelemetry community consists of many individuals from different

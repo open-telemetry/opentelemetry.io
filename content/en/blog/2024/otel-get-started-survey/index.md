@@ -87,7 +87,7 @@ them.
 ## Learn more
 
 For a more detailed look at the survey results, you can check out the
-[results](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/getting-started).
+[results](https://github.com/open-telemetry/sig-end-user/tree/e834e9da4494b626d1e4a4936fba31563b37b607/end-user-surveys/getting-started?from_branch=main).
 
 ## Keep in touch
 

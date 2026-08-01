@@ -141,7 +141,7 @@ aligning OpenTelemetry more closely with modern data pipelines that are
 increasingly pivoting towards Apache Arrow.
 
 See the specification for this protocol
-[OTEP 0156](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0156-columnar-encoding.md).
+[OTEP 0156](https://github.com/open-telemetry/opentelemetry-specification/blob/5239912e97a4df50b206f5fa8241dd6cd8d2dbf8/oteps/0156-columnar-encoding.md?from_branch=main).
 A reference implementation of the encoding/decoding function can be seen in
 [open-telemetry/otel-arrow](https://github.com/open-telemetry/otel-arrow).
 
@@ -159,7 +159,7 @@ the exporter and the receiver between the two collectors need to be
 reconfigured. The immediate benefit will be a reduction in network bandwidth,
 leading to direct savings on network costs (up to 7x for metrics, 2x for logs,
 and traces). For a comprehensive breakdown of this deployment, click here
-[Building the collector](https://github.com/open-telemetry/otel-arrow/blob/main/collector/BUILDING.md).
+[Building the collector](https://github.com/open-telemetry/otel-arrow/blob/7e6a02a7dc83fabb627dcb5f0f9131cc936dab8a/collector/BUILDING.md?from_branch=main).
 
 ![Internet Traffic Reduction](./traffic-reduction.png)
 
@@ -270,10 +270,10 @@ invaluable assistance.
 ## Links
 
 - OpenTelemetry Protocol with Apache Arrow Specification -
-  [OTEP 0156](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0156-columnar-encoding.md)
+  [OTEP 0156](https://github.com/open-telemetry/opentelemetry-specification/blob/5239912e97a4df50b206f5fa8241dd6cd8d2dbf8/oteps/0156-columnar-encoding.md?from_branch=main)
 - OpenTelemetry Protocol with Apache Arrow (encoder/decoder)
   [repository](https://github.com/open-telemetry/otel-arrow).
 - Receiver
-  [documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/otelarrowreceiver/README.md).
+  [documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/8087a16245f48f5648994e02fa6d0659d55dfafb/receiver/otelarrowreceiver/README.md?from_branch=main).
 - Exporter
-  [documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/otelarrowexporter/README.md).
+  [documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/f4661d486acbbef5c4fb071adafe5818035d2512/exporter/otelarrowexporter/README.md?from_branch=main).

@@ -3,6 +3,7 @@ title: Trazas
 weight: 1
 description: La ruta de una solicitud a través de tu aplicación
 default_lang_commit: 860f51415c48bf7d743d4280398de0631702c335
+drifted_from_default: true
 ---
 
 Las **trazas** nos dan una visión general de lo que ocurre cuando se hace una

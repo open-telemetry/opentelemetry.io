@@ -1,5 +1,5 @@
 ---
-default_lang_commit: 7d0c3f247ee77671d1135b0af535a2aca05fe359 # patched
+default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4 # patched
 drifted_from_default: true
 ---
 
@@ -7,7 +7,7 @@ drifted_from_default: true
 
 Para enviar dados de métricas para o [Prometheus](https://prometheus.io/), você
 pode
-[ativar o OTLP Receiver do Prometheus](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver)
+[ativar o OTLP Receiver do Prometheus](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver)
 e utilizar o [exportador OTLP](#otlp) ou você pode utilizar o exportador do
 Prometheus, um `MetricReader` que inicia um servidor HTTP e coleta métricas,
 serializando para o formato de texto do Prometheus sob demanda.
@@ -41,7 +41,7 @@ Em seguida, execute o Prometheus em um contêiner Docker que ficará acessível 
 porta `9090` através do seguinte comando:
 
 ```shell
-docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
+docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --web.enable-otlp-receiver
 ```
 
 {{% alert title=Nota %}}

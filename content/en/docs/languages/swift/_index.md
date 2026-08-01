@@ -1,9 +1,9 @@
 ---
 title: Swift
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/Swift.svg"
+  <img width="35" class="img-initial otel-icon" src="/img/logos/32x32/Swift.svg"
   alt="Swift"> A language-specific implementation of OpenTelemetry in Swift.
-weight: 28
+weight: 220
 ---
 
 {{% docs/languages/index-intro swift /%}}

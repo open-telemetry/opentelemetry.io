@@ -1,9 +1,9 @@
 ---
 title: はじめに
 weight: 1
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+default_lang_commit: e17943afc3a71a67fcdd3a69dcd428c3e45b306d
 # prettier-ignore
-cSpell:ignore: filelog kubelet kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
+cSpell:ignore: filelog kubelet kubeletstats kubeletstatsreceiver sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
 ---
 
 このページでは、OpenTelemetry を使って Kubernetes クラスターの監視を始める最速の方法を説明します。
@@ -24,7 +24,7 @@ Kubernetesは多くの重要なテレメトリーをさまざまな方法で公�
 コレクターは、このデータを効率的に収集し、意味のある方法で強化できる、自由に使えるさまざまなツールを備えています。
 
 すべてのデータを収集するには、コレクターを2つの方法でインストールする必要があります。
-1つは[デーモンセット](/docs/collector/deployment/agent/)として、もう1つは[デプロイメント](/docs/collector/deployment/gateway/)としてです。
+1つは[デーモンセット](/docs/collector/deploy/agent/)として、もう1つは[デプロイメント](/docs/collector/deploy/gateway/)としてです。
 コレクターのデーモンセットインストールは、ノード、ポッド、コンテナのサービス、ログ、メトリクスが発するテレメトリーを収集するために使用されます。
 コレクターのデプロイメントインストールは、クラスタのメトリクスとイベントの収集に使用されます。
 
@@ -120,8 +120,8 @@ presets:
   # ファイルログレシーバーを有効にし、ログパイプラインに追加します
   logsCollection:
     enabled: true
-## チャートにはデフォルトでloggingexporterしか含まれていません
-## データをどこかに送りたい場合は、otlpexporterのようなエクスポーターを設定する必要があります
+## チャートにはデフォルトでdebugexporterしか含まれていません
+## データをどこかに送りたい場合は、otlp exporterのようなエクスポーターを設定する必要があります
 # config:
 #   exporters:
 #     otlp:
@@ -193,8 +193,8 @@ presets:
   # k8sobjectsreceiverがイベントのみを収集するようにし、ログパイプラインに追加します
   kubernetesEvents:
     enabled: true
-## チャートにはデフォルトでloggingexporterしか含まれていません
-## データをどこかに送りたい場合は、otlpexporterのようなエクスポーターを設定する必要があります
+## チャートにはデフォルトでdebugexporterしか含まれていません
+## データをどこかに送りたい場合は、otlp exporterのようなエクスポーターを設定する必要があります
 # config:
 # exporters:
 #   otlp:

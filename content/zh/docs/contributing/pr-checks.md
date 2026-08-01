@@ -2,7 +2,7 @@
 title: PR 检查
 description: 了解如何使你的 PR 成功通过所有检查
 weight: 40
-default_lang_commit: e04e8da1f4527d65c162af9a670eb3be8e7e7fb9
+default_lang_commit: e04e8da1f4527d65c162af9a670eb3be8e7e7fb9 # patched
 drifted_from_default: true
 ---
 
@@ -94,8 +94,8 @@ drifted_from_default: true
 像 LinkedIn 这些服务器会返回 999。
 
 如果你已经手动验证某个外部链接是有效的，但检查器未能获得成功状态，你可以在 URL 后添加查询参数
-`?no-link-check` 来让检查器忽略该链接。例如，
-[https:/some-example.org?no-link-check](https:/some-example.org?no-link-check) 会被检查器忽略。
+`?link-check=no` 来让检查器忽略该链接。例如，
+[https:/some-example.org?link-check=no](https:/some-example.org?link-check=no) 会被检查器忽略。
 
 {{% alert title="维护者提示" %}}
 

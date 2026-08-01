@@ -3,7 +3,8 @@ title: Auto-Instrumentation Example
 linkTitle: Example
 weight: 20
 aliases: [/docs/languages/python/automatic/example]
-cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette venv
+# prettier-ignore
+cSpell:ignore: Aiohttp ASGI distro instrumentor mkdir MSIE Referer Starlette venv
 ---
 
 This page demonstrates how to use Python auto-instrumentation in OpenTelemetry.
@@ -35,7 +36,7 @@ integrate OpenTelemetry into your application code. Below, you will see the
 difference between a Flask route instrumented manually, automatically and
 programmatically.
 
-### Manually instrumented server
+## Manually instrumented server
 
 `server_manual.py`
 
@@ -52,7 +53,7 @@ def server_request():
         return "served"
 ```
 
-### Automatically-instrumented server
+## Automatically-instrumented server
 
 `server_automatic.py`
 
@@ -63,7 +64,7 @@ def server_request():
     return "served"
 ```
 
-### Programmatically-instrumented server
+## Programmatically-instrumented server
 
 `server_programmatic.py`
 
@@ -129,7 +130,7 @@ destinations, like an OpenTelemetry Collector.
 This section guides you through the manual process of instrumenting a server as
 well as the process of executing an automatically instrumented server.
 
-### Execute the manually instrumented server
+## Execute the manually instrumented server
 
 Execute the server in two separate consoles, one to run each of the scripts that
 make up this example:
@@ -184,7 +185,7 @@ example:
 }
 ```
 
-### Execute the automatically-instrumented server
+## Execute the automatically-instrumented server
 
 Stop the execution of `server_manual.py` by pressing <kbd>Control+C</kbd> and
 run the following command instead:
@@ -247,7 +248,7 @@ example:
 You can see that both outputs are the same because automatic instrumentation
 does exactly what manual instrumentation does.
 
-### Execute the programmatically-instrumented server
+## Execute the programmatically-instrumented server
 
 It is also possible to use the instrumentation libraries (such as
 `opentelemetry-instrumentation-flask`) by themselves which may have an advantage
@@ -270,7 +271,7 @@ python client.py
 
 The results should be the same as running with manual instrumentation.
 
-#### Using programmatic-instrumentation features
+### Using programmatic-instrumentation features
 
 Some instrumentation libraries include features that allow for more precise
 control while instrumenting programmatically, the instrumentation library for
@@ -288,7 +289,7 @@ side. This is because of the `excluded_urls` option passed to `instrument_app`
 that effectively stops the `server_request` function from being instrumented as
 its URL matches the regular expression passed to `excluded_urls`.
 
-### Instrumentation while debugging
+## Instrumentation while debugging
 
 The debug mode can be enabled in the Flask app like this:
 
@@ -310,7 +311,7 @@ if __name__ == "__main__":
 
 The auto instrumentation can consume configuration from environment variables.
 
-### Capture HTTP request and response headers
+## Capture HTTP request and response headers
 
 You can capture predefined HTTP headers as span attributes, according to the
 [semantic convention][].
@@ -329,9 +330,12 @@ opentelemetry-instrument --traces_exporter console --metrics_exporter none --log
 These configuration options are supported by the following HTTP
 instrumentations:
 
+- Aiohttp-server
+- ASGI
 - Django
 - Falcon
 - FastAPI
+- Flask
 - Pyramid
 - Starlette
 - Tornado
@@ -351,6 +355,23 @@ If those headers are available, they will be included in your span:
   }
 }
 ```
+
+### Sanitization of captured headers
+
+In order to prevent storing sensitive data such as personally identifiable
+information (PII), session keys, passwords, etc, set the environment variable
+`OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS` to a comma delimited
+list of HTTP header names to be sanitized. Regexes may be used, and all header
+names will be matched in a case-insensitive manner.
+
+For example,
+
+```sh
+export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS=".*session.*,set-cookie"
+```
+
+will replace the value of headers such as `session-id` and `set-cookie` with
+`[REDACTED]` in the span.
 
 [semantic convention]: /docs/specs/semconv/http/http-spans/
 [api reference]:

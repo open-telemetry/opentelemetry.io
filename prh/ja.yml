@@ -47,3 +47,34 @@ rules:
   - expected: フィーチャーフラグ
     patterns:
       - フューチャーフラグ
+  - expected: 接頭辞
+    patterns:
+      - プレフィックス
+  - expected: 接尾辞
+    patterns:
+      - サフィックス
+  - expected: インターフェイス
+    patterns:
+      - インターフェース
+      - インタフェース
+  - expected: アノテーション
+    patterns:
+      - 注釈
+  - expected: コンテナ
+    patterns:
+      - コンテナー
+  - expected: バイナリ
+    patterns:
+      - バイナリー
+  - expected: ライブラリ
+    patterns:
+      - ライブラリー
+  - expected: ユーザー
+    patterns:
+      - /ユーザ(?!ー)/
+  - expected: サーバー
+    patterns:
+      - /サーバ(?!ー)/
+  - expected: パラメーター
+    patterns:
+      - /パラメータ(?!ー)/

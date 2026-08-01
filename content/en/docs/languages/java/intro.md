@@ -16,11 +16,11 @@ guide to [navigating the docs](#navigating-the-docs), a list of
 
 The API is a set of classes and interfaces for recording telemetry across key
 observability signals. It supports multiple implementations, with a low-overhead
-minimalist Noop (i.e. pronounced "no-op") and SDK reference implementation
-provided out of the box. It is designed to be taken as a direct dependency by
-libraries, frameworks, and application owners looking to add instrumentation. It
-comes with strong backwards compatibility guarantees, zero transitive
-dependencies, and supports Java 8+.
+minimalist no-op and SDK reference implementation provided out of the box. It is
+designed to be taken as a direct dependency by libraries, frameworks, and
+application owners looking to add instrumentation. It comes with strong
+backwards compatibility guarantees, zero transitive dependencies, and supports
+Java 8+.
 
 The SDK is the built-in reference implementation of the API, processing and
 exporting telemetry produced by instrumentation API calls. Configuring the SDK
@@ -112,9 +112,11 @@ dependencies aligned. OpenTelemetry Java publishes several BOMs catering to
 different use cases, listed below in order of increasing scope. We highly
 recommend using a BOM.
 
-{{% alert %}} Because the BOMs are hierarchical, adding dependencies on multiple
-BOMs is not recommended, as it is redundant and can lead unintuitive dependency
-version resolution. {{% /alert %}}
+> [!NOTE]
+>
+> Because the BOMs are hierarchical, adding dependencies on multiple BOMs is not
+> recommended, as it is redundant and can lead unintuitive dependency version
+> resolution.
 
 Click the link in the "Managed Dependencies" column to see a list of the
 artifacts managed by the BOM.

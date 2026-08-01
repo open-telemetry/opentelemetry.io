@@ -5,7 +5,7 @@ aliases:
   - scenarios
   - services/feature-flag
   - services/featureflagservice
-cSpell:ignore: OLJCESPC7Z
+cSpell:ignore: loadgenerator OLJCESPC7Z
 ---
 
 The demo provides several feature flags that you can use to simulate different
@@ -32,19 +32,21 @@ user interface:
 
 ## Implemented feature flags
 
-| Feature Flag                        | Service(s)      | Description                                                                                               |
-| ----------------------------------- | --------------- | --------------------------------------------------------------------------------------------------------- |
-| `adServiceFailure`                  | Ad              | Generate an error for `GetAds` 1/10th of the time                                                         |
-| `adServiceManualGc`                 | Ad              | Trigger full manual garbage collections in the ad service                                                 |
-| `adServiceHighCpu`                  | Ad              | Trigger high cpu load in the ad service. If you want to demo cpu throttling, set cpu resource limits      |
-| `cartServiceFailure`                | Cart            | Generate an error whenever `EmptyCart` is called                                                          |
-| `productCatalogFailure`             | Product Catalog | Generate an error for `GetProduct` requests with product ID: `OLJCESPC7Z`                                 |
-| `recommendationServiceCacheFailure` | Recommendation  | Create a memory leak due to an exponentially growing cache. 1.4x growth, 50% of requests trigger growth.  |
-| `paymentServiceFailure`             | Payment         | Generate an error when calling the `charge` method.                                                       |
-| `paymentServiceUnreachable`         | Checkout        | Use a bad address when calling the PaymentService to make it seem like the PaymentService is unavailable. |
-| `loadgeneratorFloodHomepage`        | Load Generator  | Start flooding the homepage with a huge amount of requests, configurable by changing flagd JSON on state. |
-| `kafkaQueueProblems`                | Kafka           | Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike.      |
-| `imageSlowLoad`                     | Frontend        | Utilizes envoy fault injection, produces a delay in loading of product images in the frontend.            |
+| Feature Flag                        | Service(s)      | Description                                                                                                                                 |
+| ----------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `adServiceFailure`                  | Ad              | Generate an error for `GetAds` 1/10th of the time                                                                                           |
+| `adServiceManualGc`                 | Ad              | Trigger full manual garbage collections in the ad service                                                                                   |
+| `adServiceHighCpu`                  | Ad              | Trigger high cpu load in the ad service. If you want to demo cpu throttling, set cpu resource limits                                        |
+| `cartServiceFailure`                | Cart            | Generate an error whenever `EmptyCart` is called                                                                                            |
+| `emailMemoryLeak`                   | Email           | Simulate a memory leak in the `email` service.                                                                                              |
+| `productCatalogFailure`             | Product Catalog | Generate an error for `GetProduct` requests with product ID: `OLJCESPC7Z`                                                                   |
+| `recommendationServiceCacheFailure` | Recommendation  | Create a memory leak due to an exponentially growing cache. 1.4x growth, 50% of requests trigger growth.                                    |
+| `paymentServiceFailure`             | Payment         | Generate an error when calling the `charge` method.                                                                                         |
+| `paymentServiceUnreachable`         | Checkout        | Use a bad address when calling the PaymentService to make it seem like the PaymentService is unavailable.                                   |
+| `loadgeneratorFloodHomepage`        | Load Generator  | Start flooding the homepage with a huge amount of requests, configurable by changing flagd JSON on state.                                   |
+| `kafkaQueueProblems`                | Kafka           | Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike.                                        |
+| `imageSlowLoad`                     | Frontend        | Utilizes envoy fault injection, produces a delay in loading of product images in the frontend.                                              |
+| `failedReadinessProbe`              | Cart            | Force the readiness probe to fail with unhealthy status, simulating a pod "NotReady" condition. Applicable for Kubernetes deployments only. |
 
 ## Guided Debugging Scenario
 

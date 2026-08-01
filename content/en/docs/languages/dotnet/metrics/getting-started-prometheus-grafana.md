@@ -4,7 +4,7 @@ linkTitle: Export to Prometheus
 description:
   Learn how to export metrics to Prometheus and visualize them in Grafana
 weight: 30
-cSpell:ignore: OTLP promlabs PromQL
+cSpell:ignore: promlabs PromQL
 ---
 
 This guide will show you how to export OpenTelemetry metrics to Prometheus and
@@ -54,7 +54,7 @@ var myMeter = new Meter("MyCompany.MyProduct.MyLibrary", "1.0");
 var myFruitCounter = myMeter.CreateCounter<long>("MyFruitCounter");
 
 // Configure the OpenTelemetry MeterProvider with OTLP export
-using var meterProvider = Sdk.CreateMeterProviderBuilder()
+var meterProvider = Sdk.CreateMeterProviderBuilder()
     .AddMeter("MyCompany.MyProduct.MyLibrary")
     .AddOtlpExporter((exporterOptions, metricReaderOptions) =>
     {
@@ -103,9 +103,10 @@ store metrics.
 ./prometheus --web.enable-otlp-receiver
 ```
 
-{{% alert title="Note" %}} The `--web.enable-otlp-receiver` flag enables
-Prometheus to receive metrics through the OpenTelemetry Protocol (OTLP).
-{{% /alert %}}
+> [!NOTE]
+>
+> The `--web.enable-otlp-receiver` flag enables Prometheus to receive metrics
+> through the OpenTelemetry Protocol (OTLP).
 
 ### Viewing metrics in Prometheus
 

@@ -3,7 +3,8 @@ title: শব্দকোষ
 description:
   OpenTelemetry-তে ব্যবহৃত টেলিমেট্রি টার্মস-এর সংজ্ঞা এবং প্রচলিত নিয়ম।
 weight: 200
-default_lang_commit: 1ef7e909832c9c1cbf97aa15af0516f1d5b6bde5
+default_lang_commit: 1ef7e909832c9c1cbf97aa15af0516f1d5b6bde5 # patched
+drifted_from_default: true
 ---
 এই শব্দকোষ OpenTelemetry প্রজেক্টে নতুন টার্মস
 এবং ধারণাগুলো ([concepts](/docs/concepts/)) সংজ্ঞায়িত করে, এবং
@@ -18,8 +19,7 @@ default_lang_commit: 1ef7e909832c9c1cbf97aa15af0516f1d5b6bde5
 
 একটি নির্দিষ্ট সময়ের ব্যবধানে, প্রোগ্রাম এক্সিকিউশনের সময় ঘটে যাওয়া
 পরিমাপগুলোর সম্পর্কে সুনির্দিষ্ট বা অনুমানভিত্তিক পরিসংখ্যানে একাধিক
-পরিমাপকে একত্রিত করার প্রক্রিয়া। [Metric](#metric) [Data source]
-(#data-source) দ্বারা ব্যবহৃত।
+পরিমাপকে একত্রিত করার প্রক্রিয়া। [Metric](#metric) [Data source](#data-source) দ্বারা ব্যবহৃত।
 
 ### API {#api}
 
@@ -65,11 +65,11 @@ Application Performance Monitoring হল সফটওয়্যার অ্�
 
 ### কালেক্টর (Collector) {#collector}
 
-[OpenTelemetry Collector], বা সংক্ষেপে Collector, হল টেলিমেট্রি ডেটা গ্রহণ, প্রক্রিয়াকরণ এবং
+[OpenTelemetry Collector][], বা সংক্ষেপে Collector, হল টেলিমেট্রি ডেটা গ্রহণ, প্রক্রিয়াকরণ এবং
 রপ্তানির একটি ভেন্ডর-এগ্নস্টিক (vendor-agnostic) বাস্তবায়ন। এটি একটি একক বাইনারি যা agent বা
 gateway হিসেবে ডিপ্লয় (deploy) করা যায়।
 
-> **বানান**: [OpenTelemetry Collector] উল্লেখ করার সময়, সর্বদা Collector
+> **বানান**: [OpenTelemetry Collector][] উল্লেখ করার সময়, সর্বদা Collector
 > বড় অক্ষরে লিখুন। আপনি যদি Collector-কে বিশেষণ হিসেবে ব্যবহার করেন তাহলে শুধু "Collector"
 > ব্যবহার করুন &mdash; উদাহরণস্বরূপ, "Collector configuration"।
 
@@ -112,7 +112,7 @@ mechanism শেয়ার করে নেওয়ার অনুমতি 
 ### ডিস্ট্রিবিউশন (Distribution) {#distribution}
 
 একটি distribution হল কিছু কাস্টমাইজেশন সহ একটি upstream OpenTelemetry repository-এর চারপাশে
-একটি wrapper। [Distributions] দেখুন।
+একটি wrapper। [Distributions][] দেখুন।
 
 ### (ইভেন্ট) Event {#event}
 
@@ -177,7 +177,7 @@ Programming Language।
 কখনও কখনও [Log records](#log-record)-এর একটি সংগ্রহ বোঝাতে ব্যবহৃত হয়। অস্পষ্ট হতে পারে কারণ
 লোকেরা কখনও কখনও একটি একক [Log record](#log-record) বোঝাতেও [Log](#log) ব্যবহার করে।
 যেখানে অস্পষ্টতা সম্ভব,
-অতিরিক্ত qualifier ব্যবহার করুন, উদাহরণস্বরূপ, `Log record`। [Log] দেখুন।
+অতিরিক্ত qualifier ব্যবহার করুন, উদাহরণস্বরূপ, `Log record`। [Log][] দেখুন।
 
 ### লগ রেকর্ড (Log record) {#log-record}
 
@@ -195,7 +195,7 @@ OpenTelemetry এই জোড়াগুলোকে [Attributes](#attribute) 
 ### মেট্রিক (Metric) {#metric}
 
 [Metadata](#metadata) সহ time series হিসেবে একটি ডেটা পয়েন্ট রেকর্ড করে, raw measurements বা
-predefined aggregation হিসেবে। [Metric] দেখুন।
+predefined aggregation হিসেবে। [Metric][] দেখুন।
 
 ### OC {#oc}
 
@@ -204,8 +204,8 @@ predefined aggregation হিসেবে। [Metric] দেখুন।
 ### অবজারভেবিলিটি ব্যাকএন্ড (Observability backend) {#observability-backend}
 
 একটি observability platform-এর কম্পোনেন্ট যা টেলিমেট্রি ডেটা গ্রহণ, প্রক্রিয়াকরণ, সংরক্ষণ এবং কোয়েরি (query) করার
-জন্য দায়ী। উদাহরণের মধ্যে [Jaeger]
-এবং [Prometheus]-এর মতো ওপেন সোর্স টুলস,
+জন্য দায়ী। উদাহরণের মধ্যে [Jaeger][]
+এবং [Prometheus][]-এর মতো ওপেন সোর্স টুলস,
 পাশাপাশি বাণিজ্যিক অফারিংও রয়েছে। OpenTelemetry একটি observability backend নয়।
 
 ### অবজারভেবিলিটি ফ্রন্টএন্ড (Observability frontend) {#observability-frontend}
@@ -229,7 +229,7 @@ OpenTelemetry-এর পূর্বসূরি। বিস্তারিত 
 
 ### OpenTelemetry {#opentelemetry}
 
-[OpenTracing](#opentracing) এবং [OpenCensus](#opencensus) প্রকল্পের [merger] এর মাধ্যমে গঠিত, OpenTelemetry &mdash; এই
+[OpenTracing](#opentracing) এবং [OpenCensus](#opencensus) প্রকল্পের [merger][] এর মাধ্যমে গঠিত, OpenTelemetry &mdash; এই
 ওয়েবসাইটের বিষয় হল [APIs](#api), [SDKs](#sdk), এবং
 টুলসগুলোর একটি কালেকশন যা আপনি [instrument](/docs/concepts/instrumentation/),
 generate, [collect](/docs/concepts/components/#collector),
@@ -264,7 +264,7 @@ OpenTelemetry-এর পূর্বসূরি। বিস্তারিত 
 
 ### OTEP {#otep}
 
-[OpenTelemetry Enhancement Proposal]-এর একটি সংক্ষিপ্ত রূপ।
+[OpenTelemetry Enhancement Proposal][]-এর একটি সংক্ষিপ্ত রূপ।
 
 > **বানান**: বহুবচন হিসেবে "OTEPs" লিখুন। বর্ণনায় `OTep` বা `otep`
 > লিখবেন না।
@@ -279,17 +279,17 @@ OpenTelemetry-এর পূর্বসূরি। বিস্তারিত 
 ### প্রপাগেটরস (Propagators)
 
 span context এবং [Spans](#span)-এ [Baggage](#baggage)-এর মতো টেলিমেট্রি ডেটার নির্দিষ্ট অংশগুলো serialize এবং deserialize করতে ব্যবহৃত হয়।
-[Propagators] দেখুন।
+[Propagators][] দেখুন।
 
 ### Proto {#proto}
 
-ভাষা নিরপেক্ষ ইন্টারফেস টাইপ। [opentelemetry-proto] দেখুন।
+ভাষা নিরপেক্ষ ইন্টারফেস টাইপ। [opentelemetry-proto][] দেখুন।
 
 ### গ্রাহক (Receiver) {#receiver}
 
 পরিভাষা টেলিমেট্রি ডেটা কীভাবে গৃহীত হয় তা সংজ্ঞায়িত
 করতে [Collector](/docs/collector/configuration/#receivers) দ্বারা ব্যবহৃত হয়।
-Receivers push- বা pull-based হতে পারে। [Receiver] দেখুন।
+Receivers push- বা pull-based হতে পারে। [Receiver][] দেখুন।
 
 ### অনুরোধ (Request) {#request}
 
@@ -314,7 +314,7 @@ Receivers push- বা pull-based হতে পারে। [Receiver] দেখ
 ### Sampling {#sampling}
 
 রপ্তানি করা ডেটার পরিমাণ নিয়ন্ত্রণের একটি মেকানিজম।
-সবচেয়ে সাধারণভাবে [Tracing](#trace) [Data Source](#data-source)-এর সাথে ব্যবহৃত। [Sampling] দেখুন।
+সবচেয়ে সাধারণভাবে [Tracing](#trace) [Data Source](#data-source)-এর সাথে ব্যবহৃত। [Sampling][] দেখুন।
 
 ### SDK {#sdk}
 
@@ -334,11 +334,11 @@ instances ডিপ্লয় করা হয়। একটি [Service](#s
 
 ### সিগন্যাল (Signal) {#signal}
 
-[Traces](#trace), [Metrics](#metric) বা [Logs](#log)-এর মধ্যে একটি। [Signals] দেখুন।
+[Traces](#trace), [Metrics](#metric) বা [Logs](#log)-এর মধ্যে একটি। [Signals][] দেখুন।
 
 ### স্প্যান (Span) {#span}
 
-একটি [Trace](#trace)-এর মধ্যে একটি একক অপারেশন প্রতিনিধিত্ব করে। [Span] দেখুন।
+একটি [Trace](#trace)-এর মধ্যে একটি একক অপারেশন প্রতিনিধিত্ব করে। [Span][] দেখুন।
 
 ### স্প্যান লিঙ্ক (Span link) {#span-link}
 
@@ -349,12 +349,12 @@ instances ডিপ্লয় করা হয়। একটি [Service](#s
 ### স্পেসিফিকেশন (Specification) {#specification}
 
 সমস্ত বাস্তবায়নের জন্য ক্রস-ল্যাঙ্গুয়েজ প্রয়োজনীয়তা এবং
-প্রত্যাশা বর্ণনা করে। [Specification] দেখুন।
+প্রত্যাশা বর্ণনা করে। [Specification][] দেখুন।
 
 ### স্ট্যাটাস (Status) {#status}
 
 অপারেশনের ফলাফল। সাধারণত একটি ত্রুটি ঘটেছে কিনা
-তা নির্দেশ করতে ব্যবহৃত। [Status] দেখুন।
+তা নির্দেশ করতে ব্যবহৃত। [Status][] দেখুন।
 
 ### ট্যাগ (Tag) {#tag}
 
@@ -363,11 +363,11 @@ instances ডিপ্লয় করা হয়। একটি [Service](#s
 ### ট্রেস (Trace) {#trace}
 
 [Spans](#span)-এর একটি [DAG](#dag), যেখানে [Spans](#span)-এর
-মধ্যে edges parent-child সম্পর্ক হিসেবে সংজ্ঞায়িত। [Traces] দেখুন।
+মধ্যে edges parent-child সম্পর্ক হিসেবে সংজ্ঞায়িত। [Traces][] দেখুন।
 
 ### ট্রেসার (Tracer) {#tracer}
 
-[Spans](#span) তৈরির জন্য দায়ী। [Tracer] দেখুন।
+[Spans](#span) তৈরির জন্য দায়ী। [Tracer][] দেখুন।
 
 ### ট্রানজেকশন (Transaction) {#transaction}
 
@@ -377,7 +377,7 @@ instances ডিপ্লয় করা হয়। একটি [Service](#s
 
 external exporters-এর একটি in-process বিকল্প।
 অন্তর্ভুক্ত করা হলে, তারা
-পটভূমিতে tracing এবং metrics তথ্য সংগ্রহ এবং একত্রিত করে; অনুরোধ করা হলে এই ডেটা ওয়েব পৃষ্ঠাগুলোতে পরিবেশিত হয়। [zPages] দেখুন।
+পটভূমিতে tracing এবং metrics তথ্য সংগ্রহ এবং একত্রিত করে; অনুরোধ করা হলে এই ডেটা ওয়েব পৃষ্ঠাগুলোতে পরিবেশিত হয়। [zPages][] দেখুন।
 
 [attribute]: /docs/specs/otel/common/#attributes
 [baggage]: /docs/specs/otel/baggage/api/

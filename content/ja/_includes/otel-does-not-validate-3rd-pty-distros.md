@@ -1,10 +1,8 @@
 ---
-default_lang_commit: dcd079d98e749febcefd4d7bb1da361770ec8ed3
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 ---
 
-{{% alert title="免責事項" color="warning" %}}
-
-OpenTelemetryは、以下に記載されているサードパーティディストリビューションを**検証または承認していません**。
-このリストはコミュニティの便宜のために提供されています。
-
-{{% /alert %}}
+> [!WARNING] 免責事項
+>
+> OpenTelemetryは、以下に記載されているサードパーティディストリビューションを**検証または承認していません**。
+> このリストはコミュニティの便宜のために提供されています。

@@ -1,17 +1,18 @@
 ---
 title: Python
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/Python_SDK.svg"
-  alt="Python"> A language-specific implementation of OpenTelemetry in Python.
+  <img width="35" class="img-initial otel-icon"
+  src="/img/logos/32x32/Python_SDK.svg" alt="Python"> A language-specific
+  implementation of OpenTelemetry in Python.
 aliases: [/python, /python/metrics, /python/tracing]
-weight: 22
+weight: 190
 ---
 
 {{% docs/languages/index-intro python /%}}
 
 ## Version support
 
-OpenTelemetry-Python supports Python 3.9 and higher.
+OpenTelemetry-Python supports Python 3.10 and higher.
 
 ## Installation
 
@@ -50,7 +51,7 @@ implementations, etc., visit the [Registry](/ecosystem/registry/?s=python).
 There is some functionality that has not yet been released to PyPI. In that
 situation, you may want to install the packages directly from the repository.
 This can be done by cloning the repository and doing an
-[editable install](https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs):
+[editable install](https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs):
 
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-python.git

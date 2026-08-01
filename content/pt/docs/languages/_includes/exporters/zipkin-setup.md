@@ -1,5 +1,5 @@
 ---
-default_lang_commit: 7d0c3f247ee77671d1135b0af535a2aca05fe359 # patched
+default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4 # patched
 drifted_from_default: true
 ---
 
@@ -15,8 +15,8 @@ poderá pular esta seção e configurar as
 
 {{% /alert %}}
 
-É possível executar o [Zipkin][Zipkin](https://zipkin.io/) em um contêiner
-Docker através do seguinte comando:
+É possível executar o [Zipkin](https://zipkin.io/) em um contêiner Docker
+através do seguinte comando:
 
 ```shell
 docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin

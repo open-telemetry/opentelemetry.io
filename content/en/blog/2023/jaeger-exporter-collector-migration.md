@@ -51,7 +51,7 @@ Versions of Jaeger until v1.46.0, need the following environment variable set
 
 If switching to the OTLP exporter isn't an option, an alternative is to build a
 custom Collector that includes the Jaeger exporter. See
-[Building a custom collector](/docs/collector/custom-collector/). Your manifest
+[Building a custom collector](/docs/collector/extend/ocb/). Your manifest
 file will need to include the following line to add the Jaeger exporter:
 
 ```yaml
@@ -63,7 +63,7 @@ exporters:
 
 Further example of manifest files for existing Collector distributions can be
 found in the
-[opentelemetry-collector-releases](https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol)
+[opentelemetry-collector-releases](https://github.com/open-telemetry/opentelemetry-collector-releases/blob/b590e8bc74a5aacca1236f02b10bafeb4959dd96/distributions/otelcol?from_branch=main)
 repository.
 
 If either of these options do not work for your use-case, please reach out to

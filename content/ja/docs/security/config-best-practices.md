@@ -2,7 +2,7 @@
 title: コレクターの設定のベストプラクティス
 linkTitle: コレクターの設定
 weight: 112
-default_lang_commit: 179f03bf118e1e8a3cc195ab56fc09d85c476394
+default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
 cSpell:ignore: exporterhelper
 ---
 
@@ -33,7 +33,7 @@ OTelコレクターの設定には暗号化と認証を利用するべきです�
 コレクターの設定で、必要なコンポーネントのみに制限することを推奨します。
 コンポーネントを最小化することは攻撃対象を最小限に抑えることにもなります。
 
-- 必要最小限のコンポーネントを利用したコレクターの作成には [OpenTelemetry Collector Builder (`ocb`)](/docs/collector/custom-collector)を利用してください
+- 必要最小限のコンポーネントを利用したコレクターの作成には [OpenTelemetry Collector Builder (`ocb`)](/docs/collector/extend/ocb/)を利用してください
 - 使用しないコンポーネントの設定は削除してください。
 
 ### 慎重に設定する {#configure-with-care}
@@ -68,7 +68,7 @@ rootユーザーでの実行は避けてください。ただし、いくつか�
 PodのIPや、`0.0.0.0`のかわりに`localhost`など、常に特定のインターフェイスを使用するようにしてください。
 詳しくは [CWE-1327: Binding to an Unrestricted IP Address](https://cwe.mitre.org/data/definitions/1327.html) を参照してください。
 
-コレクターv0.110.0以降、コレクターコンポーネントのすべてのサーバのデフォルトホストは `localhost` です。
+コレクターv0.110.0以降、コレクターコンポーネントのすべてのサーバーのデフォルトホストは `localhost` です。
 以前のバージョンのコレクターでは、`component.UseLocalHostAsDefaultHost`の[feature gate](https://github.com/open-telemetry/opentelemetry-collector/tree/main/featuregate) を有効にすることで、すべてのコンポーネントでのデフォルトエンドポイントを `0.0.0.0` から `localhost` に変更してください。
 
 DNSの設定によって`localhost`が別のIPに解決される場合は、IPv4の場合は `127.0.0.1`、IPv6の場合は `::1` のように、ループバックIPを明示的に使用してください。

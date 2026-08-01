@@ -1,13 +1,10 @@
 ---
 ---
 
-{{% alert title=Warning color=warning %}}
+> [!WARNING]
+>
+> Client instrumentation for the browser is **experimental** and mostly
+> **unspecified**. If you are interested in helping out, get in touch with the
+> [Browser SIG][].
 
-Client instrumentation for the browser is **experimental** and mostly
-**unspecified**. If you are interested in helping out, get in touch with the
-[Client Instrumentation SIG][sig].
-
-[sig]:
-  https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w
-
-{{% /alert %}}
+[Browser SIG]: https://github.com/open-telemetry/community#sig-browser

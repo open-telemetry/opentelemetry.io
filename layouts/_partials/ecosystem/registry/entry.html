@@ -65,7 +65,7 @@
         {{ $package = merge .package (index $remoteRegistries .package.registry) -}}
         {{ $package = merge $package (dict "type" .registryType) -}}
     {{ end -}}
-    {{ $highlightStyle := "border-default" -}}
+    {{ $highlightStyle := "" -}}
     {{ if $isNew -}}
         {{ $highlightStyle = "border-info" -}}
     {{ end -}}
@@ -117,22 +117,22 @@
             <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-star"></i> new</span>
             {{ end -}}
             {{ if $isNative -}}
-            <a href="{{ $registryUrl }}/?flag=native" class="badge rounded-pill text-bg-success text-white" title="Click to filter by native flag">
+            <a href="{{ $registryUrl }}/?flag=native" class="badge rounded-pill text-bg-success" title="Click to filter by native flag">
             <i class="fa-solid fa-puzzle-piece"></i> native</a>
             {{ end -}}
             {{ if $isFirstParty -}}
-            <a href="{{ $registryUrl }}/?flag=first_party" class="badge rounded-pill text-bg-success text-white" title="Click to filter by first party flag">
+            <a href="{{ $registryUrl }}/?flag=first_party" class="badge rounded-pill text-bg-success" title="Click to filter by first party flag">
             <i class="fa-solid fa-heart"></i> first party integration</a>
             {{ end -}}
             {{ if $usedInDemo -}}
-            <span class="badge rounded-pill text-bg-secondary text-white" title="This package is used in the OpenTelemetry Demo!"><i class="fa-solid fa-shapes"></i> OTel Demo</span>
+            <span class="badge rounded-pill text-bg-secondary" title="This package is used in the OpenTelemetry Demo!"><i class="fa-solid fa-shapes"></i> OTel Demo</span>
             {{ end -}}
             {{ if $deprecated -}}
-            <a href="{{ $registryUrl }}/?flag=deprecated" class="badge rounded-pill text-bg-danger text-white" title="Click to filter by deprecated flag">
+            <a href="{{ $registryUrl }}/?flag=deprecated" class="badge rounded-pill text-bg-danger" title="Click to filter by deprecated flag">
             <i class="fa-solid fa-ban"></i> deprecated</a>
             {{ end -}}
             {{ if .cncfProjectLevel -}}
-            <span class="badge rounded-pill text-bg-primary text-white" title="CNCF {{ .cncfProjectLevel}} Project">
+            <span class="badge rounded-pill text-bg-primary" title="CNCF {{ .cncfProjectLevel}} Project">
                 <img alt="CNCF" style="display: inline-block; width: 14px; height: 14px; border: none; margin:0px; padding: 0; vertical-align:middle" src="/img/cncf-icon-white.svg"> {{ .cncfProjectLevel }}
             </span>
             {{ end -}}
@@ -166,13 +166,11 @@
                     {{- .description | markdownify -}}
                 </div>
 
-                <!-- New Tags section -->
                 <div class="tags mb-2">
                     {{ if .tags }}
                         <div>
                             {{ range .tags }}
-                                {{ $tag := . }} <!-- Store the tag in a variable -->
-                                <a href="{{ $registryUrl }}/?s={{ $tag | urlize }}" class="badge bg-light me-1">{{ $tag }}</a>
+                                <a href="{{ $registryUrl }}/?s={{ . | urlize }}" class="badge text-bg-primary me-1">{{ . }}</a>
                             {{ end }}
                         </div>
                     {{ end }}

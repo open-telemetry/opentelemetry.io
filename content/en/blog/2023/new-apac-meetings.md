@@ -2,7 +2,7 @@
 title: New APAC Collector-SIG meetings
 date: 2023-02-27
 author: '[Sean Marciniak](https://github.com/MovieStoreGuy) (Atlassian)'
-aliases: [additional-collector-sig/]
+aliases: [additional-collector-sig]
 cSpell:ignore: Marciniak
 ---
 

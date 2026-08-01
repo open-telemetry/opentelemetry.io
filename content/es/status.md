@@ -3,9 +3,9 @@ title: Estado
 menu: { main: { weight: 30 } }
 aliases: [/project-status, /releases]
 description: Nivel de madurez de los principales componentes de OpenTelemetry
-cascade: { type: docs }
+type: docs
 body_class: td-no-left-sidebar
-default_lang_commit: f9a0439ac56dba1515283e1a1cb6d6a90634a20f
+default_lang_commit: 8252c194ab8d214f2bad084ab283986b3f3d7a6c
 ---
 
 OpenTelemetry está compuesto por

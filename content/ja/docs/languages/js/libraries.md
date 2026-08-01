@@ -2,8 +2,8 @@
 title: 計装ライブラリの使用
 linkTitle: ライブラリ
 weight: 40
-description: アプリが依存するライブラリをインストルメントする方法
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+description: アプリが依存するライブラリを計装する方法
+default_lang_commit: 119208cc7b365e78d78be27a7c2d507650c73f7d
 ---
 
 {{% docs/languages/libraries-intro "js" %}}
@@ -13,6 +13,8 @@ default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ライブラリがOpenTelemetryを最初から組み込んでいない場合、ライブラリやフレームワークのテレメトリーデータを生成するために[計装ライブラリ](/docs/specs/otel/glossary/#instrumentation-library)を使用できます。
 
 たとえば、[Expressの計装ライブラリ](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)は、インバウンドHTTPリクエストに基づいて自動的に[スパン](/docs/concepts/signals/traces/#spans)を作成します。
+
+{{% include esm-support-note.md %}}
 
 ### セットアップ {#setup}
 
@@ -188,7 +190,7 @@ const sdk = new NodeSDK({
 
 一部の計装ライブラリは追加の設定オプションを提供しています。
 
-たとえば、[Express計装](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options)は、指定されたミドルウェアを無視したり、リクエストフックで自動的に作成されるスパンを強化したりする方法を提供しています。
+たとえば、[Express計装](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-express#express-instrumentation-options)は、指定されたミドルウェアを無視したり、リクエストフックで自動的に作成されるスパンを強化したりする方法を提供しています。
 
 {{< tabpane text=true >}}
 
@@ -197,8 +199,8 @@ const sdk = new NodeSDK({
 ```typescript
 import { Span } from '@opentelemetry/api';
 import {
-  SEMATTRS_HTTP_METHOD,
-  SEMATTRS_HTTP_URL,
+  ATTR_HTTP_REQUEST_METHOD,
+  ATTR_URL_FULL,
 } from '@opentelemetry/semantic-conventions';
 import {
   ExpressInstrumentation,
@@ -209,8 +211,8 @@ import {
 const expressInstrumentation = new ExpressInstrumentation({
   requestHook: function (span: Span, info: ExpressRequestInfo) {
     if (info.layerType === ExpressLayerType.REQUEST_HANDLER) {
-      span.setAttribute(SEMATTRS_HTTP_METHOD, info.request.method);
-      span.setAttribute(SEMATTRS_HTTP_URL, info.request.baseUrl);
+      span.setAttribute(ATTR_HTTP_REQUEST_METHOD, info.request.method);
+      span.setAttribute(ATTR_URL_FULL, info.request.baseUrl);
     }
   },
 });
@@ -223,8 +225,8 @@ const expressInstrumentation = new ExpressInstrumentation({
 ```javascript
 /*instrumentation.js*/
 const {
-  SEMATTRS_HTTP_METHOD,
-  SEMATTRS_HTTP_URL,
+  ATTR_HTTP_REQUEST_METHOD,
+  ATTR_URL_FULL,
 } = require('@opentelemetry/semantic-conventions');
 const {
   ExpressInstrumentation,
@@ -234,8 +236,8 @@ const {
 const expressInstrumentation = new ExpressInstrumentation({
   requestHook: function (span, info) {
     if (info.layerType === ExpressLayerType.REQUEST_HANDLER) {
-      span.setAttribute(SEMATTRS_HTTP_METHOD, info.request.method);
-      span.setAttribute(SEMATTRS_HTTP_URL, info.request.baseUrl);
+      span.setAttribute(ATTR_HTTP_REQUEST_METHOD, info.request.method);
+      span.setAttribute(ATTR_URL_FULL, info.request.baseUrl);
     }
   },
 });
@@ -262,6 +264,6 @@ const expressInstrumentation = new ExpressInstrumentation({
 ## 計装ライブラリの作成 {#create-an-instrumentation-library}
 
 アプリケーションのための最初から最後までのオブザーバビリティを持つことが望ましい方法ですが、これが常に可能または望ましいとは限りません。
-そのような場合は、インターフェースのラッピング、ライブラリ固有のコールバックの購読、既存のテレメトリーのOpenTelemetryモデルへの変換などのメカニズムを使用して計装呼び出しを注入する計装ライブラリを作成できます。
+そのような場合は、インターフェイスのラッピング、ライブラリ固有のコールバックの購読、既存のテレメトリーのOpenTelemetryモデルへの変換などのメカニズムを使用して計装呼び出しを注入する計装ライブラリを作成できます。
 
 そのようなライブラリを作成するには、Node.jsとブラウザ向けの[Instrumentation Implementation Guide](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/GUIDELINES.md)に従ってください。

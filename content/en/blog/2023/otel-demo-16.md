@@ -22,7 +22,7 @@ infrastructure, and over the next few releases, we plan to enhance this story by
 collecting Kubernetes, Envoy, and other logs relevant to the demo.
 
 If this sounds like an interesting problem, we'd love to have you as a
-[contributor](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CONTRIBUTING.md)!
+[contributor](https://github.com/open-telemetry/opentelemetry-demo/blob/59c9b2ca32be41e464fedc1eed6dcf4ad1503c3d/CONTRIBUTING.md?from_branch=main)!
 We'd also appreciate any feedback you might have on how our support for logging
 can improve.
 

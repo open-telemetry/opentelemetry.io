@@ -3,7 +3,7 @@ title: Join us for OpenTelemetry Talks and Activities at Kubecon NA 2022
 linkTitle: Kubecon NA '22
 author: '[Alolita Sharma](https://github.com/alolita)'
 date: 2022-10-10
-cSpell:ignore: Kowall Logz Pothulapati unconference Vineeth
+cSpell:ignore: Kowall Logz Pothulapati Vineeth
 ---
 
 The OpenTelemetry project maintainers, and members of the governance committee

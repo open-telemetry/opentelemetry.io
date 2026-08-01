@@ -25,14 +25,14 @@ easy to miss new features. In the
 [v0.63.0 release](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.63.0),
 the [OTel Collector](/docs/collector/) added support for synthetic HTTP checks
 via a receiver called the
-[HTTP Check Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/httpcheckreceiver).
+[HTTP Check Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/httpcheckreceiver?from_branch=main).
 This component sends a request via HTTP or HTTPS and produces metrics to capture
 the duration of the request and record the returned status code. You can now
 deploy an agent to your preferred environment to test public OR private
 endpoints without the need to whitelist IPs in your firewall and transfer the
 tests between your preferred destination like any other piece of OTel data.
 
-### Deploy your first OTel Synthetic ping test(s)
+## Deploy your first OTel Synthetic ping test(s)
 
 Getting started with OTel synthetics is simple. You configure your Collector
 like usual and add the HTTP Check receiver with your chosen endpoints, HTTP
@@ -68,7 +68,7 @@ service:
       #exporters: [your-exporter]
 ```
 
-### Synthetic Test Output
+## Synthetic Test Output
 
 The receiver generates 3 metrics by default: `httpcheck.duration`
 `httpcheck.status` and `httpcheck.error`. The metrics can be used in
@@ -76,15 +76,15 @@ visualizations or to define alerts. If no errors occur then the
 `httpcheck.error` chart won’t be populated. Here are some example screenshots
 from the `httpcheck.duration` and `httpcheck.status` metrics.
 
-#### Duration Check
+### Duration Check
 
 ![Synthetic duration check result](httpcheck-duration.png 'Synthetic duration check result')
 
-#### Status Check
+### Status Check
 
 ![Synthetic status check result](httpcheck-status.png 'Synthetic status check result')
 
-### What's Next?
+## What's Next?
 
 Synthetic testing is an exciting new capability for OTel that the community
 hopes to evolve over time. If you have any specific requests around new

@@ -50,6 +50,32 @@ dependencies {
 
 ### Configurations
 
-| Property                       | Default Value | ConditionalOnClass   |
-| ------------------------------ | ------------- | -------------------- |
-| `otel.exporter.zipkin.enabled` | true          | `ZipkinSpanExporter` |
+{{< tabpane text=true >}} {{% tab "Properties" %}}
+
+Enables the Zipkin exporter (requires `ZipkinSpanExporter` on the classpath):
+
+```yaml
+otel:
+  exporter:
+    zipkin:
+      enabled: true # default: true
+```
+
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+With [declarative configuration](../declarative-configuration/), the Zipkin
+exporter is configured as part of the standard
+[declarative configuration schema](/docs/languages/sdk-configuration/declarative-configuration/)
+under `tracer_provider.processors`:
+
+```yaml
+otel:
+  tracer_provider:
+    processors:
+      - batch:
+          exporter:
+            zipkin:
+              endpoint: http://localhost:9411/api/v2/spans
+```
+
+{{% /tab %}} {{< /tabpane >}}

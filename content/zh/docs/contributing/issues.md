@@ -36,7 +36,7 @@ drifted_from_default: true
 
 1. 浏览 [Issue 列表]({{% param _issues %}})。
 
-2. 选择你想要解决的 Issue，最好是可以在较短时间内完成的。<a name="first-issue"></a>
+2. 选择你想要解决的 Issue，最好是可以在较短时间内完成的。<a id="first-issue"></a>
    {{% alert title="首次贡献？" color="primary alert--first-timer" %}}
 
    可以选择带有以下标签的 Issue：

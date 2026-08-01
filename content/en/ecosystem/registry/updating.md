@@ -3,7 +3,7 @@ title: Keeping registry and list information current
 linkTitle: Updating
 ---
 
-We periodically review [registry](..) entry and [list data], such as external
+We periodically review [registry](..) entry and [list data][], such as external
 links, to ensure that only [adopters](../../adopters/),
 [distributions](../../distributions/),
 [integrations, libraries](../../integrations/), and [vendors](../../vendors/)

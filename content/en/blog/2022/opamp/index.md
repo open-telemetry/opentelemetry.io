@@ -25,7 +25,7 @@ telemetry without those barriers? Thanks to
 behind it, I believe that the answer is about to change.
 
 OpAMP stands for
-[Open Agent Management Protocol](https://github.com/open-telemetry/opamp-spec/blob/main/specification.md).
+[Open Agent Management Protocol](https://github.com/open-telemetry/opamp-spec/blob/49860fd67177e4f80d9778831472ab106e4ae951/specification.md?from_branch=main).
 It aims at managing large fleets of data collection agents, and its GoLang
 [implementation](https://github.com/open-telemetry/opamp-go/) is at the Beta
 stage. It allows configuration changes as well as package downloads. It defines

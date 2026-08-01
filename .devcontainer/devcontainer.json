@@ -1,6 +1,6 @@
 {
   "name": "default",
-  "image": "mcr.microsoft.com/devcontainers/base:dev-bullseye",
+  "image": "mcr.microsoft.com/devcontainers/base:dev-bookworm",
   "features": {
     "ghcr.io/devcontainers/features/node:1": {}
   },

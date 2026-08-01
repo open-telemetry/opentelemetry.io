@@ -16,7 +16,7 @@ authors:
 urls:
   website: https://keda.sh/
   repo: https://github.com/kedacore/keda
-  docs: https://keda.sh/docs/latest/operate/opentelemetry/
-createdAt: '2024-08-06'
+  docs: https://keda.sh/docs/latest/integrations/opentelemetry/
+createdAt: 2024-08-06
 cncfProjectLevel: graduated
 isNative: true

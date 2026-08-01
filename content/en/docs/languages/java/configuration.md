@@ -26,16 +26,17 @@ configures SDK components through system properties or environment variables,
 with various extension points for instances where the properties are
 insufficient.
 
-{{% alert %}} We recommend using the
-[zero-code SDK autoconfigure](#zero-code-sdk-autoconfigure) module since it
-reduces boilerplate code, allows reconfiguration without rewriting code or
-recompiling the application, and has language interoperability. {{% /alert %}}
-
-{{% alert %}} The [Java agent](/docs/zero-code/java/agent/) and
-[Spring starter](/docs/zero-code/java/spring-boot-starter/) automatically
-configure the SDK using the zero-code SDK autoconfigure module, and install
-instrumentation with it. All autoconfigure content is applicable to Java agent
-and Spring starter users. {{% /alert %}}
+> [!NOTE] **Notes**
+>
+> - We recommend using the
+>   [zero-code SDK autoconfigure](#zero-code-sdk-autoconfigure) module since it
+>   reduces boilerplate code, allows reconfiguration without rewriting code or
+>   recompiling the application, and has language interoperability.
+> - The [Java agent](/docs/zero-code/java/agent/) and
+>   [Spring starter](/docs/zero-code/java/spring-boot-starter/) automatically
+>   configure the SDK using the zero-code SDK autoconfigure module, and install
+>   instrumentation with it. All autoconfigure content is applicable to Java
+>   agent and Spring starter users.
 
 ## Programmatic configuration
 
@@ -91,21 +92,22 @@ public class AutoConfiguredSdk {
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert %}} The [Java agent](/docs/zero-code/java/agent/) and
-[Spring starter](/docs/zero-code/java/spring-boot-starter/) automatically
-configure the SDK using the zero-code SDK autoconfigure module, and install
-instrumentation with it. All autoconfigure content is applicable to Java agent
-and Spring starter users. {{% /alert %}}
-
-{{% alert %}} The autoconfigure module registers Java shutdown hooks to shut
-down the SDK when appropriate. Because OpenTelemetry Java
-[uses `java.util.logging` for internal logging](../sdk/#internal-logging), some
-logging might be suppressed during shutdown hooks. This is a bug in the JDK
-itself, and not something under the control of OpenTelemetry Java. If you
-require logging during shutdown hooks, consider using `System.out` rather than a
-logging framework which might shut itself down in a shutdown hook, thus
-suppressing your log messages. For more details, see this
-[JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253). {{% /alert %}}
+> [!NOTE] **Notes**
+>
+> - The [Java agent](/docs/zero-code/java/agent/) and
+>   [Spring starter](/docs/zero-code/java/spring-boot-starter/) automatically
+>   configure the SDK using the zero-code SDK autoconfigure module, and install
+>   instrumentation with it. All autoconfigure content is applicable to Java
+>   agent and Spring starter users.
+> - The autoconfigure module registers Java shutdown hooks to shut down the SDK
+>   when appropriate. Because OpenTelemetry Java
+>   [uses `java.util.logging` for internal logging](../sdk/#internal-logging),
+>   some logging might be suppressed during shutdown hooks. This is a bug in the
+>   JDK itself, and not something under the control of OpenTelemetry Java. If
+>   you require logging during shutdown hooks, consider using `System.out`
+>   rather than a logging framework which might shut itself down in a shutdown
+>   hook, thus suppressing your log messages. For more details, see this
+>   [JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253).
 
 ### Environment variables and system properties
 
@@ -120,8 +122,8 @@ property to an environment variable:
 - Convert the name to uppercase.
 - Replace all `.` and `-` characters with `_`.
 
-For example, the `otel.sdk.enabled` system property is equivalent to the
-`OTEL_SDK_ENABLED` environment variable.
+For example, the `otel.sdk.disabled` system property is equivalent to the
+`OTEL_SDK_DISABLED` environment variable.
 
 If a property is defined as both a system property and environment variable, the
 system property takes priority.
@@ -253,7 +255,7 @@ Properties for cardinality limits:
 
 #### Properties: logs
 
-Properties for [log record processor(s)](../sdk/#logrecordprocessor) pared with
+Properties for [log record processor(s)](../sdk/#logrecordprocessor) paired with
 exporters via `otel.logs.exporter`:
 
 | System property                   | Description                                                           | Default |
@@ -270,7 +272,7 @@ Properties for setting exporters:
 | System property                  | Purpose                                                                                                                                                                | Default         |
 | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | `otel.traces.exporter`           | Comma-separated list of span exporters. Known values include `otlp`, `zipkin`, `console`, `logging-otlp`, `none`. **[1]**                                              | `otlp`          |
-| `otel.metrics.exporter`          | Comma-separated list of metric exporters. Known values include `otlp`, `prometheus`, `none`. **[1]**                                                                   | `otlp`          |
+| `otel.metrics.exporter`          | Comma-separated list of metric exporters. Known values include `otlp`, `prometheus`, `console`, `none`. **[1]**                                                        | `otlp`          |
 | `otel.logs.exporter`             | Comma-separated list of log record exporters. Known values include `otlp`, `console`, `logging-otlp`, `none`. **[1]**                                                  | `otlp`          |
 | `otel.java.exporter.memory_mode` | If `reusable_data`, enable reusable memory mode (on exporters which support it) to reduce allocations. Known values include `reusable_data`, `immutable_data`. **[2]** | `reusable_data` |
 
@@ -315,7 +317,7 @@ Properties for `otlp` span, metric, and log exporters:
 | `otel.exporter.otlp.{signal}.timeout`                      | The maximum waiting time, in milliseconds, allowed to send each OTLP {signal} batch.                                                                                                                                                                                                                                                                                                                                                 | `10000`                                                                                                                    |
 | `otel.exporter.otlp.metrics.temporality.preference`        | The preferred output aggregation temporality. Options include `DELTA`, `LOWMEMORY`, and `CUMULATIVE`. If `CUMULATIVE`, all instruments will have cumulative temporality. If `DELTA`, counter (sync and async) and histograms will be delta, up down counters (sync and async) will be cumulative. If `LOWMEMORY`, sync counter and histograms will be delta, async counter and up down counters (sync and async) will be cumulative. | `CUMULATIVE`                                                                                                               |
 | `otel.exporter.otlp.metrics.default.histogram.aggregation` | The preferred default histogram aggregation. Options include `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM` and `EXPLICIT_BUCKET_HISTOGRAM`.                                                                                                                                                                                                                                                                                                   | `EXPLICIT_BUCKET_HISTOGRAM`                                                                                                |
-| `otel.java.exporter.otlp.retry.disabled`                   | If `false`, retry on when transient errors occur. **[2]**                                                                                                                                                                                                                                                                                                                                                                            | `false`                                                                                                                    |
+| `otel.java.exporter.otlp.retry.disabled`                   | If `false`, retry when transient errors occur. **[2]**                                                                                                                                                                                                                                                                                                                                                                               | `false`                                                                                                                    |
 
 **NOTE:** The text placeholder `{signal}` refers to the supported
 [OpenTelemetry Signal](/docs/concepts/signals/). Valid values include `traces`,
@@ -705,14 +707,16 @@ and specify the path to the config file as described in the table below.
 | ------------------------------- | --------------------------------------- | ------- |
 | `otel.experimental.config.file` | The path to the SDK configuration file. | Unset   |
 
-{{% alert title="Note" color="warning" %}} When a config file is specified,
-[environment variables and system properties](#environment-variables-and-system-properties)
-are ignored, [programmatic customization](#programmatic-customization) and
-[SPIs](#spi-service-provider-interface) are skipped. The contents of the file
-alone dictate SDK configuration. {{% /alert %}}
+> [!WARNING]
+>
+> When a config file is specified,
+> [environment variables and system properties](#environment-variables-and-system-properties)
+> are ignored, [programmatic customization](#programmatic-customization) and
+> [SPIs](#spi-service-provider-interface) are skipped. The contents of the file
+> alone dictate SDK configuration.
 
 For additional details, consult the following resources:
 
-- [Usage documentation](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#declarative-configuration)
-- [Example with Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#declarative-configuration)
+- [Usage documentation](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/declarative-config)
+- [Example with Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent-declarative-configuration)
 - [Example without Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/declarative-configuration)

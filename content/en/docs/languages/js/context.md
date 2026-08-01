@@ -14,7 +14,7 @@ the OpenTelemetry context API for JavaScript and how it is used.
 More information:
 
 - [Context specification](/docs/specs/otel/context/)
-- [Context API reference](https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api.ContextAPI.html)
+- [Context API reference](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.ContextAPI.html)
 
 ## Context Manager
 
@@ -104,7 +104,7 @@ const ctx = api.ROOT_CONTEXT;
 const ctx2 = ctx.setValue(key, 'context 2');
 
 // remove the entry
-const ctx3 = ctx.deleteValue(key);
+const ctx3 = ctx2.deleteValue(key);
 
 // ctx3 does not contain the entry
 console.log(ctx3.getValue(key)); // undefined

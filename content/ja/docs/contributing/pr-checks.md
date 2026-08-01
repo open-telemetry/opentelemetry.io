@@ -1,8 +1,10 @@
 ---
-title: プルリクエストのチェック
+title: プルリクエストのチェックとテスト
+linkTitle: PR チェック & テスト
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
+drifted_from_default: true
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -12,17 +14,15 @@ PR のチェックは次のことを検証します。
 - PR が[Netlify を通じてデプロイ](#netlify-deployment)に成功しているか
 - [スタイルガイド](#checks)に変更が従っているか
 
-{{% alert title="Note" %}}
-
-もし何らかの PR チェックが失敗していれば、最初にローカルで `npm run fix:all` を実行することで[内容の問題を修正](../pull-requests/#fix-issues)してください。
-
-PRに `/fix:all` というコメントを追加することもできます。
-これにより、OpenTelemetry ボットがかわりにそのコマンドを実行して、PR を更新します。
-ローカルに変更をプルすることを忘れないでください。
-
-問題が残り続けている場合のみ、以下を読んで様々なチェックの内容と、失敗した状態からの修正する方法を確認してください。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> もし何らかの PR チェックが失敗していれば、最初にローカルで `npm run fix:all` を実行することで[内容の問題を修正](../pull-requests/#fix-issues)してください。
+>
+> PRに `/fix` というコメントを追加することもできます。
+> これにより、OpenTelemetry ボットがかわりにそのコマンドを実行して、PR を更新します。
+> ローカルに変更をプルすることを忘れないでください。
+>
+> 問題が残り続けている場合のみ、以下を読んで様々なチェックの内容と、失敗した状態からの修正する方法を確認してください。
 
 ## `Easy CLA` {#easy-cla .notranslate lang=en}
 
@@ -36,7 +36,15 @@ PRに `/fix:all` というコメントを追加することもできます。
 
 コントリビューションが [スタイルガイド](../style-guide/) に従っていることを検証するために、スタイルガイドのルールを検証し、問題が見つかった場合に失敗する一連のチェックを実装しています。
 
-後述のリストでは、現在のチェック内容と、それに関連するエラーを修正する方法について説明します。
+以下のセクションでは、現在のチェック内容と、それに関連するエラーを修正する方法について説明します。
+
+> [!NOTE]
+>
+> チェックされるのは最近のブログ記事のみです。
+> 詳しくは[古いブログは更新されません][old-blogs]を参照してください。
+> 特に、古い記事はウェブサイトにレンダリングされますが、以下に記載するチェックは古いブログには適用されません。
+
+[old-blogs]: ../blog/#old-blogs-are-not-updated
 
 ### `TEXT linter` {#text-linter .notranslate lang=en}
 
@@ -55,36 +63,64 @@ PRに `/fix:all` というコメントを追加することもできます。
 
 ### `SPELLING check` {#spelling-check .notranslate lang=en}
 
-このチェックは、[すべての単語が正しく綴られていること](../style-guide/#spell-checking) を検証します。
+このチェックは、[すべての単語が正しく綴られていること][spell-checking]をすべてのロケールで検証します。
 
-このチェックが失敗した場合、`npm run check:spelling` をローカルで実行して、スペルミスのある単語を確認してください。
-単語のスペルが正しい場合は、ファイルのフロントマターの `cSpell:ignore` セクションに追加する必要があるかもしれません。
+このチェックが失敗した場合、`npm run check:spelling` をローカルで実行して、問題を確認してください。
+許可された単語を追加または変更するには、スタイルガイドの[スペルチェック][spell-checking]を参照してください。
+
+[spell-checking]: ../style-guide/#spell-checking
 
 ### `CSPELL` check {#cspell-check .notranslate lang=en}
 
-このチェックは、cSpell の ignore リストに含まれるすべての単語が正規化されていることを検証します。
+このチェックは、フロントマターにある cSpell の `cSpell:ignore` リストが正規化されていること、および `.cspell/*.txt` 単語リストがソートされていることを検証します (`npm run fix:dict` を参照してください)。
 
 このチェックが失敗した場合、`npm run fix:dict` をローカルで実行し、新しいコミットの変更をプッシュしてください。
 
-### `FILENAME check` {#filename-check .notranslate lang=en}
+### `FILE FORMAT` {#file-format .notranslate lang=en}
 
-このチェックは、[すべてのファイルが Prettier によってフォーマットされていること](../style-guide/#file-format) を検証します。
+このチェックは、すべてのファイルが [Prettier フォーマットルール](../style-guide/#file-format)に従っているかを検証します。
 
 このチェックが失敗した場合、`npm run fix:format` をローカルで実行し、新しいコミットで変更をプッシュしてください。
 
-### `FILE FORMAT` {#file-format .notranslate lang=en}
+### `FILENAME check` {#filename-check .notranslate lang=en}
 
-このチェックは、[すべてのファイル名が kebab-case になっていること](../style-guide/#file-names) を検証します。
+このチェックは以下の項目を検証します。
+
+- すべての[ファイル名が kebab-case になっていること](../style-guide/#file-names)
+- 古いファイルやフォルダがリポジトリに存在しないこと (以下のリストを参照してください)
 
 このチェックが失敗した場合、`npm run fix:filenames` をローカルで実行し、新しいコミットで変更をプッシュしてください。
 
-### `BUILD and CHECK LINKS` {#build-and-check-links .notranslate lang=en}
+> [!NOTE]
+>
+> `fix:filenames` は古いファイルやフォルダを**削除**することがあります。
 
-このチェックは、ウェブサイトをビルドしてすべてのリンクが有効であることを検証します。
+#### 古いファイルやフォルダ
 
-ローカルでリンクをチェックするには、`npm run check:links` を実行してください。
-このコマンドは参照キャッシュも更新します。
-refcache に変更があれば、新しいコミットでプッシュしてください。
+以下のパスは古いものとしてフラグが付き、`fix:filenames` によって削除されます。
+イシューまたは PR 番号が存在する場合、そのパスが古くなった変更の経緯を示しています。
+
+- `tools/` - [Migrate code-excerpts tooling to npm package version #9638][#9638]
+
+[#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
+
+### `BUILD` and `CHECK LINKS` {#build-and-check-links .notranslate lang=en}
+
+これらの2つのチェックは、ウェブサイトをビルドしてすべてのリンクが有効であることを検証します。
+
+外部リンクを追加または変更した場合、リンクチェッカーはそのリンクをリンクキャッシュ (`.lycheecache`) に記録します。
+キャッシュが更新されるまでこのチェックは失敗します。
+
+キャッシュを更新する最も簡単な方法は、PR に [`/fix:refcache`](../pull-requests/#fixing-prs-in-github) とコメントすることです。
+OpenTelemetry ボットがキャッシュを更新してくれます。
+
+あるいは、`npm run check:links` を実行してローカルでビルドとリンクチェックを行うこともできます。
+このコマンドはリンクキャッシュも更新します。
+キャッシュに変更があれば、新しいコミットでプッシュしてください。
+
+> [!NOTE]
+>
+> サイト内リンクの警告については、[常にサイト内リンクを使用する](#avoid-external-site-local-links)を参照してください。
 
 #### 404 エラーの修正 {#fix-404s}
 
@@ -96,22 +132,55 @@ refcache に変更があれば、新しいコミットでプッシュしてく�
 このようなサーバーは、404 以外の 400 番台の HTTP ステータス（401、403、406 が最も一般的）を返すことがよくあります。
 LinkedIn などの一部のサーバーは 999 を報告します。
 
-チェッカーが成功ステータスを取得できない外部リンクを手動で検証した場合は、URL にクエリパラメーター`?no-link-check`を追加して、リンクチェッカーに無視させることができます。
-たとえば、<https:/some-example.org?no-link-check> はリンクチェッカーによって無視されます。
+チェッカーが成功ステータスを取得できない外部リンクを手動で検証した場合は、URL にクエリパラメーター `?link-check=no` を追加して、リンクチェッカーに無視させることができます。ほかのクエリパラメーターがすでにある場合は `&link-check=no` を追加してください。
+たとえば、以下の URL は無視されます。
 
-{{% alert title="メンテナーのヒント" %}}
-
-メンテナーは、リンクチェッカーを実行した直後に次のスクリプトを実行して、Puppeteer に成功ステータスでないリンクの検証を試みさせることができます。
-
-```sh
-./scripts/double-check-refcache-400s.mjs -f --max-num-to-update 99
-```
-
-このスクリプトは、リンクチェッカーが実行しない URL フラグメントも検証します。
-
-{{% /alert %}}
+- <https:/some-example.org?link-check=no>
+- <https:/some-example.org?other-param=value&link-check=no>
 
 ### `WARNINGS in build log?` {#warnings-in-build-log .notranslate lang=en}
 
-このチェックが失敗した場合、`npm run log:check:links` ステップの `BUILD and CHECK LINKS` ログを確認して、他の潜在的な問題を特定してください。
+このチェックが失敗した場合、`npm run log:build` ステップの `BUILD` ログを確認して、他の潜在的な問題を特定してください。
 復旧方法がわからない場合は、メンテナーに助けを求めてください。
+
+#### 常にサイト内リンクを使用する {#avoid-external-site-local-links}
+
+OpenTelemetry ウェブサイト内のページをリンクする場合、外部リンクではなくローカルパスを使用してください。
+使用しない場合、ビルド時に警告が表示されます。
+
+ビルドの警告を解消するには、完全な URL のパス部分のみを保持してください。
+
+| ❌ 間違った使い方                         | ✅ 正しい使い方   |
+| ----------------------------------------- | ----------------- |
+| `https://opentelemetry.io/docs/concepts/` | `/docs/concepts/` |
+| `https://www.opentelemetry.io/blog/...`   | `/blog/...`       |
+
+ローカルパスを使用することで、以下のことが保証されます。
+
+- サイト内ページが同じブラウザタブで開く: 外部リンクは新しいタブで開くため、サイト内ナビゲーションの望ましい動作ではありません
+- ローカリゼーションリンク処理が期待通りに動作する: リンクパスの先頭に、適切な言語コードが自動で付与されます
+- ローカルパスはリンクチェックが容易で、リンクキャッシュを不必要に肥大化させません
+
+<details>
+<summary>メンテナーへの注意</summary>
+
+以下のコードはこのセクションで説明したリンク要件を強制します。
+
+- この警告を表示するレンダーリンクフック:
+  [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
+- 完全な URL をローカルパスに自動的に変換するスクリプト:
+  [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
+
+</details>
+
+### `LOCALIZATION` guidelines {#localization .notranslate lang=en}
+
+このチェックは、[ローカリゼーションガイドライン](../localization/)のうち機械的に検証可能なルール（たとえば、ローカリゼーション間での[画像やその他のアセットのコピー禁止](../localization/#images)など）を、他のチェックでまだカバーされていないものについて適用します。
+
+このチェックが失敗した場合、`npm run fix:l10n` をローカルで実行し、新しいコミットで変更をプッシュしてください。
+
+### `TEST (excluding test:base)` {#test-excluding-test-base .notranslate lang=en}
+
+このチェックは、`npm run test:compound-tests` を実行します。
+これは、たとえば Netlify edge-function テストのような `test:*-*` 形式の NPM スクリプトを実行します。
+このチェックは `test:base` を**実行しません**。

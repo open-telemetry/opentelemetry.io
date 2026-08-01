@@ -75,6 +75,7 @@ which provides several commands that help automatically instrument a program.
 ```sh
 pip install opentelemetry-distro
 pip install opentelemetry-exporter-otlp
+pip install opentelemetry-instrumentation-logging
 ```
 
 The examples that follow send instrumentation results to the console. Learn more
@@ -102,7 +103,7 @@ Open up a new terminal window and start the OTel Collector:
 docker run -it --rm -p 4317:4317 -p 4318:4318 \
   -v $(pwd)/otel-collector-config.yaml:/etc/otelcol-config.yml \
   --name otelcol \
-  otel/opentelemetry-collector-contrib:0.76.1 \
+  otel/opentelemetry-collector:{{% param collector_vers %}} \
   "--config=/etc/otelcol-config.yml"
 ```
 
@@ -111,7 +112,6 @@ Open up another terminal and run the Python program:
 ```sh
 source python_logs_example/bin/activate
 
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument \
   --traces_exporter console,otlp \
   --metrics_exporter console,otlp \
@@ -119,6 +119,9 @@ opentelemetry-instrument \
   --service_name python-logs-example \
   python $(pwd)/example.py
 ```
+
+> Prior to OpenTelemetry Python 1.40.0 you had to enable log instrumentation
+> with `export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true`
 
 Sample output:
 

@@ -3,7 +3,7 @@ title: コンテキスト
 description: OpenTelemetry JavaScript Context API ドキュメント
 aliases: [api/context]
 weight: 60
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 1604e4a539552aea3cd5caff67e7c476d26ab7d6
 ---
 
 OpenTelemetryが動作するためには、重要なテレメトリーデータを保存し、伝搬する必要があります。
@@ -14,7 +14,7 @@ OpenTelemetryが動作するためには、重要なテレメトリーデータ�
 詳細は以下を確認してください。
 
 - [Context仕様](/docs/specs/otel/context/)
-- [Context APIリファレンス](https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api.ContextAPI.html)
+- [Context APIリファレンス](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.ContextAPI.html)
 
 ## コンテキストマネージャー {#context-manager}
 
@@ -101,7 +101,7 @@ const ctx = api.ROOT_CONTEXT;
 const ctx2 = ctx.setValue(key, 'context 2');
 
 // エントリを削除
-const ctx3 = ctx.deleteValue(key);
+const ctx3 = ctx2.deleteValue(key);
 
 // ctx3にはエントリが含まれない
 console.log(ctx3.getValue(key)); // undefined

@@ -21,16 +21,16 @@ At this point, there is a
 describing how to convert between the
 [OpenTelemetry metrics data model](/docs/specs/otel/metrics/data-model/#opentelemetry-protocol-data-model)
 and
-[Prometheus metric formats](https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md).
+[Prometheus metric formats](https://github.com/prometheus/docs/blob/aafad80cf0520b646ccfcb39bbe5c4946d0e7922/docs/instrumenting/exposition_formats.md?from_branch=main).
 It has been used to implement Prometheus
 [(pull) exporters for OpenTelemetry SDKs](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/prometheus),
 [OTLP export from Prometheus libraries](https://prometheus.github.io/client_java/otel/otlp/),
 [OTLP ingestion for the Prometheus server](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver),
 and the OpenTelemetry Collector's
-[Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver),
-[Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusremotewriteexporter),
+[Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/dbdb56d285d860849323346d58c83b14c1ed6c62/receiver/prometheusreceiver?from_branch=main),
+[Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/b7fedfd4c04c78503c0cac618298a044e04d4b07/exporter/prometheusremotewriteexporter?from_branch=main),
 and
-[Prometheus (pull) exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter).
+[Prometheus (pull) exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/exporter/prometheusexporter?from_branch=main).
 
 One of the most challenging areas to reconcile is that OpenTelemetry metric
 names are changed when exporting to Prometheus. Today, the OpenTelemetry
@@ -47,13 +47,13 @@ its
 which potentially allows preserving dots in metric names. To better understand
 what users want their Prometheus query experience to look like,
 [the OTel x Prometheus Working Group](https://cloud-native.slack.com/archives/C01LSCJBXDZ)
-[ran a survey](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/otel-prom-interoperability)
+[ran a survey](https://github.com/open-telemetry/sig-end-user/tree/e834e9da4494b626d1e4a4936fba31563b37b607/end-user-surveys/otel-prom-interoperability?from_branch=main)
 with the help of the [OpenTelemetry End User SIG](/community/end-user/).
 Deciding on the default translation approach is one of the last remaining
 blockers for stabilizing the compatibility specification.
 
 The
-[survey received 86 responses (and 5 spam)](https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-prom-interoperability/otel-prom-interoperability-survey.csv),
+[survey received 86 responses (and 5 spam)](https://github.com/open-telemetry/sig-end-user/blob/b5cb097ca529cea62809d5078ef8e30a54ad86b9/end-user-surveys/otel-prom-interoperability/otel-prom-interoperability-survey.csv?from_branch=main),
 and contained many helpful pieces of feedback. Thank you to everyone that
 participated!
 

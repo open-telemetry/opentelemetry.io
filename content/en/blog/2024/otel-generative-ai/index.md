@@ -37,7 +37,7 @@ The
 is being developed within the
 [OpenTelemetry Python Contrib](https://github.com/open-telemetry/opentelemetry-python-contrib)
 under
-[instrumentation-genai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai)
+[instrumentation-genai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/5560324cff80148de07324715aef5efa1e6242c1/instrumentation-genai?from_branch=main)
 project to automate telemetry collection for generative AI applications. The
 first release is a Python library for instrumenting OpenAI client calls. This
 library captures spans and events, gathering essential data like model inputs,
@@ -75,19 +75,17 @@ model responses, providing a granular view of model interactions. These insights
 are invaluable for debugging and optimizing AI applications where unexpected
 behaviors may arise.
 
-{{% alert title="Note" %}}
-
-Note that we decided to use [events emitted] with the
-[Logs API](/docs/specs/otel/logs/api/) specification in the Semantic Conventions
-for Generative AI. Events allows for us to define specific
-[semantic conventions](/docs/specs/semconv/general/events/) for the user prompts
-and model responses that we capture. This addition to the API is in development
-and considered unstable.
+> [!NOTE]
+>
+> Note that we decided to use [events emitted][] with the
+> [Logs API](/docs/specs/otel/logs/api/) specification in the Semantic
+> Conventions for Generative AI. Events allows for us to define specific
+> [semantic conventions](/docs/specs/semconv/general/events/) for the user
+> prompts and model responses that we capture. This addition to the API is in
+> development and considered unstable.
 
 [events emitted]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/logs/api.md#emit-an-event
-
-{{% /alert %}}
 
 ### Extending Observability with Vendor-Specific Attributes
 
@@ -133,7 +131,6 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
 OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 OTEL_SERVICE_NAME=python-opentelemetry-openai
 OTEL_LOGS_EXPORTER=otlp_proto_http
-OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 # Set to false or remove to disable log events
 OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT=true
 ```
@@ -171,7 +168,7 @@ opentelemetry-instrument --traces_exporter console --metrics_exporter console py
 ```
 
 There is a complete example
-[available here](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-openai-v2/examples/).
+[available here](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/fecd8afac9ecc3fdc0d581fbaad2e063a2f8018d/instrumentation-genai/opentelemetry-instrumentation-openai-v2/examples?from_branch=main).
 
 With this simple instrumentation, one can begin capture traces from their
 generative AI application. Here is an example from the
@@ -188,7 +185,7 @@ docker run --rm -it -d -p 18888:18888 -p 4317:18889 -p 4318:18890 --name aspire-
 ![Chat trace in Aspire Dashboard](aspire-dashboard-trace.png)
 
 Here is a similar trace captured in
-[Jaeger](https://www.jaegertracing.io/docs/1.63/getting-started/#all-in-one).
+[Jaeger](https://www.jaegertracing.io/docs/getting-started/#all-in-one).
 
 To start Jaeger, run the following `docker` command and open your web browser
 the `localhost:16686`.
@@ -227,7 +224,7 @@ We now have contributors from [Amazon](https://aws.amazon.com/),
 and more!
 
 You are welcome to join the community! More information can be found at the
-[Generative AI Observability project page](https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md).
+[Generative AI Observability project page](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main).
 
 _A version of this article also [appears on the CNCF blog][]._
 

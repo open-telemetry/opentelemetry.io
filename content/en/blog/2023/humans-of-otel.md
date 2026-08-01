@@ -96,9 +96,9 @@ project improve their security response process.
 **BOGDAN DRUTU:** My name is Bogdan. I took a break for parental leave so I'm
 just jumping back. Okay, what were you doing before? I done a lot of things,
 including member of
-[TC](https://github.com/open-telemetry/community/blob/main/tech-committee-charter.md),
+[TC](https://github.com/open-telemetry/community/blob/a1cf837e5516294ce1b5023095467b24a7ff6f44/tech-committee-charter.md?from_branch=main),
 member of
-[GC](https://github.com/open-telemetry/community/blob/main/governance-charter.md),
+[GC](https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main),
 maintainer of
 [Collector](https://github.com/open-telemetry/opentelemetry-collector). I was a
 former maintainer of

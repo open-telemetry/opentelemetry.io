@@ -1,0 +1,157 @@
+name: Reusable - apply patch to PR
+
+# Reusable workflow that downloads a patch artifact produced earlier in the
+# caller's run, applies it to a PR's branch, commits, and pushes.
+#
+# Trusted: this workflow is resolved from the caller's commit (the default
+# branch for `issue_comment`-triggered callers), and every step is defined
+# inline here — it never executes code from the PR being patched. It only runs
+# `git apply`, `git commit`, `git push`, and related plumbing. Call as a job:
+#
+#   apply-patch:
+#     needs: generate-patch
+#     uses: ./.github/workflows/reusable-apply-patch.yml
+#     with:
+#       pr-number: ${{ github.event.issue.number }}
+#       patch-name: my-patch-${{ github.run_id }}
+#       commit-message: Apply patch
+#       user-name: otelbot
+#       user-email: 197425009+otelbot@users.noreply.github.com
+#       client-id: ${{ vars.MY_CLIENT_ID }}
+#     secrets:
+#       app-private-key: ${{ secrets.MY_APP_PRIVATE_KEY }}
+
+on:
+  workflow_call:
+    inputs:
+      pr-number:
+        description: Number of the PR to apply the patch to.
+        required: true
+        type: string
+      patch-name:
+        description: >-
+          Name of the artifact containing the patch. The artifact must contain a
+          single `git diff` file named `site.patch`.
+        required: true
+        type: string
+      commit-message:
+        description: Commit message to use when there are changes to commit.
+        required: false
+        type: string
+        default: Apply patch
+      user-name:
+        description: Git user name for the commit.
+        required: true
+        type: string
+      user-email:
+        description: Git user email for the commit.
+        required: true
+        type: string
+      client-id:
+        description: >-
+          Client ID of the GitHub App used to push to the PR branch. The app
+          needs write access to this repository's contents.
+        required: true
+        type: string
+    secrets:
+      app-private-key:
+        description: Private key of the GitHub App.
+        required: true
+    outputs:
+      committed:
+        description: Whether a commit was created ('true' or 'false').
+        value: ${{ jobs.apply.outputs.committed }}
+
+permissions:
+  contents: read
+
+jobs:
+  apply:
+    name: Apply and push patch
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # NOTE: the steps below authenticate with the app token, not GITHUB_TOKEN,
+    # so these GITHUB_TOKEN grants may be trimmable. Verify in a live run
+    # (e.g. the artifact download) before tightening.
+    permissions:
+      contents: write # push the applied patch to the PR branch
+      pull-requests: write # gh pr checkout
+    outputs:
+      committed: ${{ steps.commit.outputs.committed }}
+
+    steps:
+      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        id: app-token
+        with:
+          client-id: ${{ inputs.client-id }}
+          private-key: ${{ secrets.app-private-key }}
+          permission-contents: write # apply/push the patch commit
+          permission-pull-requests: read # gh pr checkout
+
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          fetch-depth: 999
+          token: ${{ steps.app-token.outputs.token }}
+          persist-credentials: false
+
+      # Let git resolve credentials through the gh CLI (which reads GH_TOKEN
+      # from each step's env) instead of persisting the token in .git/config.
+      - run: gh auth setup-git
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+
+      - run: gh pr checkout "$PR_NUM" -b "pr-action-${RANDOM}"
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PR_NUM: ${{ inputs.pr-number }}
+
+      - name: Download patch
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: ${{ inputs.patch-name }}
+
+      - name: Apply patch
+        run: |
+          if ! git apply --verbose site.patch; then
+            echo "Patch failed to apply. For details, see output above. To debug this locally,"
+            echo "get the patch file from the workflow summary artifact section."
+            exit 1
+          fi
+          rm site.patch
+
+      - name: Commit changes, if any
+        id: commit
+        env:
+          USER_NAME: ${{ inputs.user-name }}
+          USER_EMAIL: ${{ inputs.user-email }}
+          COMMIT_MESSAGE: ${{ inputs.commit-message }}
+        run: |
+          git config --local user.email "$USER_EMAIL"
+          git config --local user.name "$USER_NAME"
+          if [[ $(git status --porcelain) ]]; then
+            git add -A
+            git commit -m "$COMMIT_MESSAGE"
+            echo "committed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No changes to commit"
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Push changes, if any
+        if: steps.commit.outputs.committed == 'true'
+        run: |
+          current_branch=$(git rev-parse --abbrev-ref HEAD)
+          echo current_branch=$current_branch
+          # gh pr checkout sets some git configs that we can use to make sure
+          # we push to the right repo & to the right branch
+          remote_repo=$(git config --get branch.${current_branch}.remote)
+          echo remote_repo=$remote_repo
+          remote_branch=$(git config --get branch.${current_branch}.merge)
+          echo remote_branch=$remote_branch
+          git push ${remote_repo} HEAD:${remote_branch}
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}

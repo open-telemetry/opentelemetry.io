@@ -1,9 +1,9 @@
 ---
 title: Suppressing specific instrumentation
 linkTitle: Suppressing instrumentation
-weight: 11
+weight: 12
 # prettier-ignore
-cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp Dotel dropwizard dubbo elasticjob finatra helidon hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jfinal jodd kotlinx ktor logmanager mojarra mybatis myfaces nats okhttp openai oshi payara pekko powerjob rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## Disabling the agent entirely
@@ -26,11 +26,13 @@ to have more control of which instrumentation is applied.
 {{% config_option name="otel.instrumentation.[name].enabled" %}} Set to `true`
 to enable each desired instrumentation individually. {{% /config_option %}}
 
-{{% alert title="Note" color="warning" %}} Some instrumentation relies on other
-instrumentation to function properly. When selectively enabling instrumentation,
-be sure to enable the transitive dependencies too. Determining this dependency
-relationship is left as an exercise to the user. This is considered advanced
-usage and is not recommended for most users. {{% /alert %}}
+> [!WARNING]
+>
+> Some instrumentation relies on other instrumentation to function properly.
+> When selectively enabling instrumentation, be sure to enable the transitive
+> dependencies too. Determining this dependency relationship is left as an
+> exercise to the user. This is considered advanced usage and is not recommended
+> for most users.
 
 ## Enable manual instrumentation only
 
@@ -43,7 +45,7 @@ instrumentation with `@WithSpan` and normal API interactions by using
 You can suppress agent instrumentation of specific libraries.
 
 {{% config_option name="otel.instrumentation.[name].enabled" %}} Set to `false`
-to suppress agent instrumentation of specific libraries, where [name] is the
+to suppress agent instrumentation of specific libraries, where `[name]` is the
 corresponding instrumentation name: {{% /config_option %}}
 
 | Library/Framework                                | Instrumentation name                        |
@@ -61,9 +63,11 @@ corresponding instrumentation name: {{% /config_option %}}
 | Apache CXF                                       | `cxf`                                       |
 | Apache DBCP                                      | `apache-dbcp`                               |
 | Apache Dubbo                                     | `apache-dubbo`                              |
+| Apache ElasticJob                                | `apache-elasticjob`                         |
 | Apache Geode                                     | `geode`                                     |
 | Apache HttpAsyncClient                           | `apache-httpasyncclient`                    |
 | Apache HttpClient                                | `apache-httpclient`                         |
+| Apache Iceberg                                   | `iceberg`                                   |
 | Apache Kafka                                     | `kafka`                                     |
 | Apache MyFaces                                   | `jsf-myfaces`                               |
 | Apache Pekko Actor                               | `pekko-actor`                               |
@@ -100,6 +104,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | Elasticsearch API client                         | `elasticsearch-api-client`                  |
 | Elasticsearch client                             | `elasticsearch-transport`                   |
 | Elasticsearch REST client                        | `elasticsearch-rest`                        |
+| Failsafe                                         | `failsafe`                                  |
 | Finagle                                          | `finagle-http`                              |
 | Google Guava                                     | `guava`                                     |
 | Google HTTP client                               | `google-http-client`                        |
@@ -107,6 +112,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | Grails                                           | `grails`                                    |
 | GraphQL Java                                     | `graphql-java`                              |
 | GRPC                                             | `grpc`                                      |
+| Helidon                                          | `helidon`                                   |
 | Hibernate                                        | `hibernate`                                 |
 | Hibernate Reactive                               | `hibernate-reactive`                        |
 | HikariCP                                         | `hikaricp`                                  |
@@ -127,6 +133,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | JAX-WS                                           | `jaxws`                                     |
 | JBoss Logging Appender                           | `jboss-logmanager-appender`                 |
 | JBoss Logging MDC                                | `jboss-logmanager-mdc`                      |
+| JFinal                                           | `jfinal`                                    |
 | JMS                                              | `jms`                                       |
 | Jodd HTTP                                        | `jodd-http`                                 |
 | JSP                                              | `jsp`                                       |
@@ -141,11 +148,13 @@ corresponding instrumentation name: {{% /config_option %}}
 | Micrometer                                       | `micrometer`                                |
 | MongoDB                                          | `mongo`                                     |
 | MyBatis                                          | `mybatis`                                   |
+| NATS Client                                      | `nats`                                      |
 | Netflix Hystrix                                  | `hystrix`                                   |
 | Netty                                            | `netty`                                     |
 | OkHttp                                           | `okhttp`                                    |
 | OpenLiberty                                      | `liberty`                                   |
 | OpenAI                                           | `openai`                                    |
+| OpenSearch Java                                  | `opensearch-java`                           |
 | OpenSearch REST                                  | `opensearch-rest`                           |
 | OpenTelemetry Extension Annotations              | `opentelemetry-extension-annotations`       |
 | OpenTelemetry Instrumentation Annotations        | `opentelemetry-instrumentation-annotations` |

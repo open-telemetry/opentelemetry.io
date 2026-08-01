@@ -7,7 +7,7 @@ cSpell:ignore: Baeyens
 ---
 
 We are delighted to announce the results of the
-[2024 OpenTelemetry Governance Committee Election](https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-election.md)!
+[2024 OpenTelemetry Governance Committee Election](https://github.com/open-telemetry/community/blob/0ec5d72c67357a8739bcd29852016e59e4189f8a/elections/2024/governance-committee-election.md?from_branch=main)!
 
 The OpenTelemetry project continues to bring together an exceptionally vibrant
 community, who are shaping the future of observability with their contributions.

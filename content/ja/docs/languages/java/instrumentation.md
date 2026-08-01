@@ -8,8 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: OpenTelemetry Javaにおける計装エコシステム
-default_lang_commit: f9a0439ac56dba1515283e1a1cb6d6a90634a20f
-cSpell:ignore: logback
+default_lang_commit: a790e3cf91025305c683047b181120ab6bbae3de
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -21,11 +20,12 @@ cSpell:ignore: logback
 - [コンテキスト伝播](#context-propagation)は、トレース、メトリクス、およびログ間の相関を提供し、シグナルが互いに補完し合えるようにします。
 - [セマンティック規約](#semantic-conventions)は、標準操作のテレメトリーを生成する方法を定義します。
 - [ログ計装](#log-instrumentation)は、既存のJavaロギングフレームワークからOpenTelemetryにログを取得するために使用されます。
+- [JMXメトリクス](../jmx/)は、JMX MBean経由でJVMおよびアプリケーションのメトリクスを監視するために使用されます。
 
-{{% alert %}}
-[計装カテゴリ](#instrumentation-categories)はアプリケーションを計装するためのいくつかのオプションを列挙していますが、ユーザーには[Javaエージェント](#zero-code-java-agent)から始めることをお勧めします。
-Javaエージェントには簡単なインストールプロセスがあり、大規模なライブラリから計装を自動的に検出してインストールします。
-{{% /alert %}}
+> [!NOTE]
+>
+> [計装カテゴリ](#instrumentation-categories)はアプリケーションを計装するためのいくつかのオプションを列挙していますが、ユーザーには[Javaエージェント](#zero-code-java-agent)から始めることをお勧めします。
+> Javaエージェントには簡単なインストールプロセスがあり、大規模なライブラリから計装を自動的に検出してインストールします。
 
 ## 計装カテゴリ {#instrumentation-categories}
 
@@ -68,11 +68,23 @@ Spring Bootスターターは、Springの自動構成を活用して[ライブ�
 OpenTelemetryは、[API](../api/)を使用してネイティブ計装を追加することをライブラリ作成者に推奨しています。
 長期的には、ネイティブ計装が標準になることを期待しており、[opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)でOpenTelemetryによって維持される計装は、ギャップを埋める一時的な手段と見なしています。
 
+ネイティブ計装は、OpenTelemetry Javaエージェントと次のように連携する必要があります。
+起動時に、Javaエージェントは[OpenTelemetry](../api/#opentelemetry)インスタンスを初期化し、[ゼロコード](#zero-code-java-agent)計装をインストールします。
+ネイティブ計装を追加するライブラリは、使用される `OpenTelemetry` インスタンスをユーザーがカスタマイズできるようにする必要がありますが、(存在する場合は)Javaエージェントによって初期化されたインスタンスを自動的に使用する必要があります。
+これを実現する方法のガイダンスについては、[GlobalOpenTelemetry](../api/#globalopentelemetry)を参照してください。
+
 {{% docs/languages/native-libraries %}}
 
 ### 手動計装 {#manual-instrumentation}
 
 [手動計装](/docs/specs/otel/glossary/#manual-instrumentation)は、アプリケーション作成者によって記述され、通常はアプリケーションドメインに固有です。
+
+手動計装は、OpenTelemetry Javaエージェントと次のように連携する必要があります。
+起動時に、Javaエージェントは[OpenTelemetry](../api/#opentelemetry)インスタンスを初期化し、`GlobalOpenTelemetry`を介してアプリケーションの手動計装からアクセスできるようにします。
+ただし、アプリケーションオーナーは、Javaエージェントが常にインストールされていることを前提にできるとは限りません。
+たとえば、ローカル開発環境やテスト環境ではJavaエージェントがインストールされていないことがあり、デバッグの理由でJavaエージェントを取り外す特殊なケースもあります。
+手動計装は、(存在する場合は)Javaエージェントによって初期化された[OpenTelemetry](../api/#opentelemetry)インスタンスを使用する必要がありますが、Javaエージェントが存在しない場合にはそれを検出し、必要に応じてフォールバックの `OpenTelemetry` インスタンスをセットアップできる必要があります。
+これを実現する方法のガイダンスについては、[GlobalOpenTelemetry](../api/#globalopentelemetry)を参照してください。
 
 ### シム {#shims}
 
@@ -80,18 +92,19 @@ OpenTelemetryは、[API](../api/)を使用してネイティブ計装を追加�
 
 OpenTelemetry Javaエコシステムで維持されているシム。
 
-| 説明                                                                                                         | ドキュメント                                                                                                                                                                    | シグナル             | アーティファクト                                                                                                                |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| [OpenTracing](https://opentracing.io/)をOpenTelemetryにブリッジ                                              | [README](https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim)                                                                                       | トレース             | `io.opentelemetry:opentelemetry-opentracing-shim:{{% param vers.otel %}}`                                                       |
-| [Opencensus](https://opencensus.io/)をOpenTelemetryにブリッジ                                                | [README](https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim)                                                                                        | トレース、メトリクス | `io.opentelemetry:opentelemetry-opencensus-shim:{{% param vers.otel %}}-alpha`                                                  |
-| [Micrometer](https://micrometer.io/)をOpenTelemetryにブリッジ                                                | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/micrometer/micrometer-1.5/library)                                      | メトリクス           | `io.opentelemetry.instrumentation:opentelemetry-micrometer-1.5:{{% param vers.instrumentation %}}-alpha`                        |
-| [JMX](https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html)をOpenTelemetryにブリッジ | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md)                                                  | メトリクス           | `io.opentelemetry.instrumentation:opentelemetry-jmx-metrics:{{% param vers.instrumentation %}}-alpha`                           |
-| OpenTelemetryを[Prometheus Javaクライアント](https://github.com/prometheus/client_java)にブリッジ            | [README](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/prometheus-client-bridge)                                                                       | メトリクス           | `io.opentelemetry.contrib:opentelemetry-prometheus-client-bridge:{{% param vers.contrib %}}-alpha`                              |
-| OpenTelemetryを[Micrometer](https://micrometer.io/)にブリッジ                                                | [README](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/micrometer-meter-provider)                                                                      | メトリクス           | `io.opentelemetry.contrib:opentelemetry-micrometer-meter-provider:{{% param vers.contrib %}}-alpha`                             |
-| [Log4j](https://logging.apache.org/log4j/2.x/index.html)をOpenTelemetryにブリッジ                            | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library)                                      | ログ                 | `io.opentelemetry.instrumentation:opentelemetry-log4j-appender-2.17:{{% param vers.instrumentation %}}-alpha`                   |
-| [Logback](https://logback.qos.ch/)をOpenTelemetryにブリッジ                                                  | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/library)                                   | ログ                 | `io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0:{{% param vers.instrumentation %}}-alpha`                  |
-| OpenTelemetryコンテキストを[Log4j](https://logging.apache.org/log4j/2.x/index.html)にブリッジ                | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure) | コンテキスト         | `io.opentelemetry.instrumentation:opentelemetry-log4j-context-data-2.17-autoconfigure:{{% param vers.instrumentation %}}-alpha` |
-| OpenTelemetryコンテキストを[Logback](https://logback.qos.ch/)にブリッジ                                      | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-mdc-1.0/library)                                        | コンテキスト         | `io.opentelemetry.instrumentation:opentelemetry-logback-mdc-1.0:{{% param vers.instrumentation %}}-alpha`                       |
+| 説明                                                                                                                 | ドキュメント                                                                                                                                                                            | シグナル             | アーティファクト                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| [OpenTracing](https://opentracing.io/)をOpenTelemetryにブリッジ                                                      | [README](https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim)                                                                                               | トレース             | `io.opentelemetry:opentelemetry-opentracing-shim:{{% param vers.otel %}}`                                                       |
+| [Opencensus](https://opencensus.io/)をOpenTelemetryにブリッジ                                                        | [README](https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim)                                                                                                | トレース、メトリクス | `io.opentelemetry:opentelemetry-opencensus-shim:{{% param vers.otel %}}-alpha`                                                  |
+| [Micrometer](https://micrometer.io/)をOpenTelemetryにブリッジ                                                        | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/micrometer/micrometer-1.5/library)                                              | メトリクス           | `io.opentelemetry.instrumentation:opentelemetry-micrometer-1.5:{{% param vers.instrumentation %}}-alpha`                        |
+| [JMX](https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html)をOpenTelemetryにブリッジ         | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md), [JMXメトリクスガイド](../jmx/)                          | メトリクス           | `io.opentelemetry.instrumentation:opentelemetry-jmx-metrics:{{% param vers.instrumentation %}}-alpha`                           |
+| OpenTelemetryを[Prometheus Java SimpleClient](https://github.com/prometheus/client_java/tree/simpleclient)にブリッジ | [README](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/prometheus-client-bridge)                                                                               | メトリクス           | `io.opentelemetry.contrib:opentelemetry-prometheus-client-bridge:{{% param vers.contrib %}}-alpha`                              |
+| OpenTelemetryを[Prometheus Java PrometheusRegistry](https://github.com/prometheus/client_java)にブリッジ             | [PrometheusMetricReader Javadoc](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-prometheus/latest/io/opentelemetry/exporter/prometheus/PrometheusMetricReader.html) | メトリクス           | `io.opentelemetry:opentelemetry-exporter-prometheus:{{% param vers.otel %}}-alpha`                                              |
+| OpenTelemetryを[Micrometer](https://micrometer.io/)にブリッジ                                                        | [README](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/micrometer-meter-provider)                                                                              | メトリクス           | `io.opentelemetry.contrib:opentelemetry-micrometer-meter-provider:{{% param vers.contrib %}}-alpha`                             |
+| [Log4j](https://logging.apache.org/log4j/2.x/index.html)をOpenTelemetryにブリッジ                                    | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library)                                              | ログ                 | `io.opentelemetry.instrumentation:opentelemetry-log4j-appender-2.17:{{% param vers.instrumentation %}}-alpha`                   |
+| [Logback](https://logback.qos.ch/)をOpenTelemetryにブリッジ                                                          | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/library)                                           | ログ                 | `io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0:{{% param vers.instrumentation %}}-alpha`                  |
+| OpenTelemetryコンテキストを[Log4j](https://logging.apache.org/log4j/2.x/index.html)にブリッジ                        | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure)         | コンテキスト         | `io.opentelemetry.instrumentation:opentelemetry-log4j-context-data-2.17-autoconfigure:{{% param vers.instrumentation %}}-alpha` |
+| OpenTelemetryコンテキストを[Logback](https://logback.qos.ch/)にブリッジ                                              | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-mdc-1.0/library)                                                | コンテキスト         | `io.opentelemetry.instrumentation:opentelemetry-logback-mdc-1.0:{{% param vers.instrumentation %}}-alpha`                       |
 
 ## コンテキスト伝搬 {#context-propagation}
 
@@ -151,8 +164,6 @@ OpenTelemetryでログ計装を使用するための2つの典型的なワーク
 
 トレースとのログ相関は、OpenTelemetryコンテキストをログフレームワークにブリッジする[シム](#shims)をインストールすることで利用できます。「OpenTelemetryコンテキストをLog4jにブリッジ」、「OpenTelemetryコンテキストをLogbackにブリッジ」のエントリを参照してください。
 
-{{% alert title="注意" %}}
-
-標準出力を使用したログ計装のエンドツーエンドの例は、[Javaサンプルリポジトリ](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md)で入手できます。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> 標準出力を使用したログ計装のエンドツーエンドの例は、[Javaサンプルリポジトリ](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md)で入手できます。

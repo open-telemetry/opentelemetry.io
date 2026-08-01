@@ -10,19 +10,17 @@ cSpell:ignore: dicelib Millis rolldice
 
 {{% include instrumentation-intro.md %}}
 
-{{% alert title="Note" %}}
-
-On this page you will learn how you can add traces, metrics and logs to your
-code _manually_. But, you are not limited to only use one kind of
-instrumentation: use [automatic instrumentation](/docs/zero-code/js/) to get
-started and then enrich your code with manual instrumentation as needed.
-
-Also, for libraries your code depends on, you don't have to write
-instrumentation code yourself, since they might come with OpenTelemetry built-in
-_natively_ or you can make use of
-[instrumentation libraries](/docs/languages/js/libraries/).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> On this page you will learn how you can add traces, metrics and logs to your
+> code _manually_. But, you are not limited to only use one kind of
+> instrumentation: use [automatic instrumentation](/docs/zero-code/js/) to get
+> started and then enrich your code with manual instrumentation as needed.
+>
+> Also, for libraries your code depends on, you don't have to write
+> instrumentation code yourself, since they might come with OpenTelemetry
+> built-in _natively_ or you can make use of
+> [instrumentation libraries](/docs/languages/js/libraries/).
 
 ## Example app preparation {#example-app}
 
@@ -32,6 +30,8 @@ about manual instrumentation.
 
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
+
+{{% include esm-support-note.md %}}
 
 ### Dependencies {#example-app-dependencies}
 
@@ -193,8 +193,7 @@ npm install @opentelemetry/api @opentelemetry/resources @opentelemetry/semantic-
 
 ### Initialize the SDK
 
-{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
-step**. {{% /alert %}}
+> [!NB] If you’re instrumenting a library, **skip this step**.
 
 If you instrument a Node.js application install the
 [OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node):
@@ -284,9 +283,11 @@ API or implementation.
 Alternative methods exist for setting up resource attributes. For more
 information, see [Resources](/docs/languages/js/resources/).
 
-{{% alert title="Note" %}} The following examples using
-`--import instrumentation.ts` (TypeScript) require Node.js v20 or later. If you
-are using Node.js v18, please use the JavaScript example. {{% /alert %}}
+> [!NOTE]
+>
+> The following examples using `--import instrumentation.ts` (TypeScript)
+> require Node.js v20 or later. If you are using Node.js v18, please use the
+> JavaScript example.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -313,8 +314,7 @@ information, see [Libraries](/docs/languages/js/libraries/).
 
 ### Initialize Tracing
 
-{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
-step**. {{% /alert %}}
+> [!NB] If you’re instrumenting a library, **skip this step**.
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized
@@ -495,7 +495,7 @@ First, in the _application file_ `app.ts` (or `app.js`):
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
-```ts
+```ts {hl_lines=[6]}
 /*app.ts*/
 import { trace } from '@opentelemetry/api';
 import express, { type Express } from 'express';
@@ -524,7 +524,7 @@ app.listen(PORT, () => {
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-```js
+```js {hl_lines=[6]}
 /*app.js*/
 const { trace } = require('@opentelemetry/api');
 const express = require('express');
@@ -557,7 +557,7 @@ And second, in the _library file_ `dice.ts` (or `dice.js`):
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
-```ts
+```ts {hl_lines=[4]}
 /*dice.ts*/
 import { trace } from '@opentelemetry/api';
 
@@ -578,7 +578,7 @@ export function rollTheDice(rolls: number, min: number, max: number) {
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-```js
+```js {hl_lines=[4]}
 /*dice.js*/
 const { trace } = require('@opentelemetry/api');
 
@@ -609,9 +609,9 @@ you can create [spans](/docs/concepts/signals/traces/#spans).
 The API of OpenTelemetry JavaScript exposes two methods that allow you to create
 spans:
 
-- [`tracer.startSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startSpan):
+- [`tracer.startSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.Tracer.html#startspan):
   Starts a new span without setting it on context.
-- [`tracer.startActiveSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startActiveSpan):
+- [`tracer.startActiveSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.Tracer.html#startactivespan):
   Starts a new span and calls the given callback function passing it the created
   span as first argument. The new span gets set in context and this context is
   activated for the duration of the function call.
@@ -1265,7 +1265,7 @@ spans by helping to identify trends and providing application runtime telemetry.
 
 ### Initialize Metrics
 
-{{% alert %}} If you’re instrumenting a library, skip this step. {{% /alert %}}
+> [!NB] If you’re instrumenting a library, **skip this step**.
 
 To enable [metrics](/docs/concepts/signals/metrics/) in your app, you'll need to
 have an initialized
@@ -1445,7 +1445,7 @@ avoid trickier application load issues when other required dependencies are
 involved.
 
 In the case of the [example app](#example-app), there are two places where a
-tracer may be acquired with an appropriate Instrumentation Scope:
+meter may be acquired with an appropriate Instrumentation Scope:
 
 First, in the _application file_ `app.ts` (or `app.js`):
 
@@ -1561,7 +1561,7 @@ module.exports = { rollTheDice };
 
 {{% /tab %}} {{< /tabpane >}}
 
-Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
+Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized,
 you can create
 [metric instruments](/docs/concepts/signals/metrics/#metric-instruments).
 
@@ -1801,7 +1801,7 @@ Drop all instruments with the meter name `pubsub`:
 
 ```js
 const dropView = {
-  aggregation: { type: AggrgationType.DROP },
+  aggregation: { type: AggregationType.DROP },
   meterName: 'pubsub',
 };
 ```

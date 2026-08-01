@@ -2,17 +2,17 @@
 title: OpenTelemetryとは
 description: OpenTelemetryが何であり、何でないかについての簡潔な説明。
 weight: 150
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+default_lang_commit: c1e141558ab36cc1ab9f864728e4665e272ac131
 ---
 
 OpenTelemetry とは、次のようなものです。
 
-- **[オブザーバビリティ](/docs/concepts/observability-primer/#what-is-observability)フレームワークでありツールキット**です。[トレース][traces]、[メトリクス][metrics]、[ログ][logs]のような[テレメトリーデータ][telemetry data] の次の処理を容易にするために設計されています
+- **[オブザーバビリティ][observability]フレームワークでありツールキット**です。[トレース][traces]、[メトリクス][metrics]、[ログ][logs]のような[テレメトリーデータ][telemetry data] の次の処理を容易にするために設計されています
   - [生成][instr]
   - エクスポート
   - [収集](../concepts/components/#collector)
 
-- **オープンソース**であり、**ベンダーやツールにとらわれません**。つまり、[Jaeger]や[Prometheus]のようなオープンソースツールや、商用製品を含む、さまざまなオブザーバビリティバックエンドで使用できるということです。OpenTelemetry はオブザーバビリティバックエンドでは**ありません**。
+- **オープンソース**であり、**ベンダーやツールにとらわれません**。つまり、[Jaeger][]や[Prometheus][]のようなオープンソースツールや、商用製品を含む、さまざまなオブザーバビリティバックエンドで使用できるということです。OpenTelemetry はオブザーバビリティバックエンドでは**ありません**。
 
 OpenTelemetryの主な目的は、あなたのアプリケーションやシステムを、その言語、インフラ、ランタイム環境に関係なく、簡単に計装できるようにすることです。
 
@@ -27,7 +27,8 @@ OpenTelemetryの主な目的は、あなたのアプリケーションやシス�
 ## オブザーバビリティとはなにか {#what-is-observability}
 
 [オブザーバビリティ][observability]とは、システムの出力を調べることによって、システムの内部状態を理解する能力のことです。
-ソフトウェアの文脈では、これは、トレース、メトリクス、ログを含むテレメトリーデータを調べることによって、システムの内部状態を理解できることを意味します。
+
+ソフトウェアでは、一般にトレース、メトリクス、ログなどのテレメトリーデータを分析することで実現します。
 
 システムをオブザーバビリティがある状態にするには、[計装されて][instr]いなければなりません。
 つまり、コードが[トレース][traces]、[メトリクス][metrics]、または[ログ][logs]を出力しなければなりません。
@@ -78,11 +79,11 @@ OpenTelemetryは拡張できるように設計されています。どのよう�
 
 ## 歴史 {#history}
 
-OpenTelemetryは、[Cloud Native Computing Foundation][](CNCF)プロジェクトであり、[OpenTracing](https://opentracing.io)と[OpenCensus](https://opencensus.io)の2つのプロジェクトが[統合された]成果物です。
+OpenTelemetryは、[Cloud Native Computing Foundation][](CNCF)プロジェクトであり、[OpenTracing](https://opentracing.io)と[OpenCensus](https://opencensus.io)の2つのプロジェクトが[統合された][]成果物です。
 これらのプロジェクトはどちらも、コードを計装し、オブザーバビリティバックエンドにテレメトリーデータを送信する方法の標準がないという問題を解決するために作られました。
 どちらのプロジェクトも、独立してこの問題を完全には解決できなかったので、協力するためにOpenTelemetryプロジェクトとして合併し、単一のソリューションを提供しながら、それぞれの強みを組み合わせました。
 
-現在OpenTracingまたはOpenCensusを使っている場合は、[移行ガイド](../migration/)でOpenTelemetryへの移行方法を確認してください。
+現在OpenTracingまたはOpenCensusを使っている場合は、[移行ガイド](../compatibility/migration/)でOpenTelemetryへの移行方法を確認してください。
 
 [統合された]: https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
 
@@ -90,7 +91,7 @@ OpenTelemetryは、[Cloud Native Computing Foundation][](CNCF)プロジェクト
 
 - [Getting started](../getting-started/) &mdash; 早速始めてみましょう！
 - [OpenTelemetryの概念](../concepts/)について学ぶ
-- [Watch videos][] from the [OTel for beginners][] or other [playlists].
+- [Watch videos][] from the [OTel for beginners][] or other [playlists][].
 - Sign up for [training](/training), including the **free course** [Getting started with OpenTelemetry](/training/#courses).
 
 [Cloud Native Computing Foundation]: https://www.cncf.io

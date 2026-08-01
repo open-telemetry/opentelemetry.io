@@ -1,20 +1,22 @@
 ---
 title: サーバーレス
 weight: 100
-description: OpenTelemetry JavaScriptでサーバーレス関数をインストルメント
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+description: OpenTelemetry JavaScriptでサーバーレス関数を計装
+default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
 cSpell:ignore: otelwrapper
 ---
 
 このガイドでは、OpenTelemetry計装ライブラリを使用してサーバーレス関数のトレーシングを開始する方法を説明します。
 
+> [!NOTE]
+>
+> OpenTelemetry のドキュメントでは、コンパイル済みアプリケーションは [CommonJS](https://nodejs.org/api/modules.html#modules-commonjs-modules) として実行されることを想定しています。
+
 ## AWS Lambda {#aws-lambda}
 
-{{% alert title="注意" %}}
-
-[コミュニティ提供のLambdaレイヤー](/docs/platforms/faas/lambda-auto-instrument/)を使用してAWS Lambda関数を自動的に計装することもできます。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> [コミュニティ提供のLambdaレイヤー](/docs/platforms/faas/lambda-auto-instrument/)を使用してAWS Lambda関数を自動的に計装することもできます。
 
 以下では、OpenTelemetryでLambdaラッパーを使用してAWS Lambda関数を手動で計装し、設定されたバックエンドにトレースを送信する方法を示します。
 
@@ -182,7 +184,7 @@ Lambda関数からOpenTelemetryによって生成されたトレースをバッ�
 
 ## GCP function {#gcp-function}
 
-以下では、Google Cloud Platform（GCP）UIを使用して[HTTPトリガー関数](https://cloud.google.com/functions/docs/writing/write-http-functions)を計装する方法を示します。
+以下では、Google Cloud Platform（GCP）UIを使用して[HTTPトリガー関数](https://docs.cloud.google.com/run/docs/write-functions)を計装する方法を示します。
 
 ### 関数の作成 {#creating-function}
 
@@ -211,9 +213,7 @@ GCPにログインして、関数を配置するプロジェクトを作成ま�
 /* otelwrapper.js */
 
 const { resourceFromAttributes } = require('@opentelemetry/resources');
-const {
-  SEMRESATTRS_SERVICE_NAME,
-} = require('@opentelemetry/semantic-conventions');
+const { ATTR_SERVICE_NAME } = require('@opentelemetry/semantic-conventions');
 const api = require('@opentelemetry/api');
 const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
 const {
@@ -233,7 +233,7 @@ const collectorOptions = {
 
 const provider = new NodeTracerProvider({
   resource: resourceFromAttributes({
-    [SEMRESATTRS_SERVICE_NAME]: '<your function name>',
+    [ATTR_SERVICE_NAME]: '<your function name>',
   }),
   spanProcessors: [
     new BatchSpanProcessor(new OTLPTraceExporter(collectorOptions)),

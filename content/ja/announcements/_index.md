@@ -1,9 +1,6 @@
 ---
 title: お知らせ
-cascade:
-  type: docs
-  params:
-    hide_feedback: true
-redirects: [{ from: '*', to: '?' }]
-default_lang_commit: 86cff3e582771d0b035c14bc85266c34ebc6b2d4
+# cascade is omitted because it is for the en locale only.
+redirects: [{ from: '*', to: '? 302' }]
+default_lang_commit: b51a1db58883aa963c461d34356aa86ac18d94b7
 ---

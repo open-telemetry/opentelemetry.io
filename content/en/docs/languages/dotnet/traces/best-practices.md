@@ -72,8 +72,9 @@ statement, which is recommended. You can also explicitly call
 or
 [Activity.Stop](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity.stop).
 
-{{% alert title="Note" %}} Activities which are not yet finished/stopped will
-not be exported. {{% /alert %}}
+> [!NOTE]
+>
+> Activities which are not yet finished/stopped will not be exported.
 
 Avoid calling
 [Activity.AddEvent](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity.addevent)
@@ -83,9 +84,10 @@ events, a better model is to use
 [Activity.Links](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity.links).
 For example:
 
-{{% alert title="Warning" color="warning" %}} The following code is not modeling
-`Activity.Events` correctly, and is very likely to have usability and
-performance problems. {{% /alert %}}
+> [!WARNING]
+>
+> The following code is not modeling `Activity.Events` correctly, and is very
+> likely to have usability and performance problems.
 
 ```csharp
 private static async Task Test()

@@ -1,0 +1,42 @@
+# Docsy overrides
+
+ui_search: 询问 AI 或搜索…
+
+# Community
+
+community_introduce: >-
+  {{ .Site.Title }}
+  是一个开源项目，社区中的任何人都可以使用、改进和享受。我们希望你能加入我们！
+
+community_contribute: >-
+  要了解如何为 {{ .Site.Title }}
+  文档做出贡献，请参阅[贡献指南](/docs/contributing/)。其他有用的链接：
+
+community_how_to: 有关我们的文档风格指南等更多信息，请参阅
+community_guideline: 贡献指南
+
+# Search AI
+ui_search_ai_modal_title: OpenTelemetry 的 AI 助手
+
+ui_search_ai_modal_disclaimer: >-
+  根据本站文档、OpenTelemetry GitHub、Stack Overflow 等资源获取解答。
+  [提供反馈](https://github.com/open-telemetry/opentelemetry.io/discussions/6802)。
+ui_search_ai_popover_content: >-
+  <a id='ask-ai-trigger' href='#'>询问 AI</a> (&#x2318;-K)
+
+# Collector component table headers
+collector_component_table_header_name: 名称
+collector_component_table_header_distributions: 发行版
+collector_component_table_header_traces: 链路
+collector_component_table_header_metrics: 指标
+collector_component_table_header_logs: 日志
+collector_component_table_header_stability: 稳定性
+
+# Footnotes
+collector_component_distributions_footnote: >-
+  显示哪些[发行版](/docs/collector/distributions/)（core、contrib、K8s
+  等）包含此组件。
+
+collector_component_stability_footnote: >-
+  有关组件稳定性级别的详细信息，请参阅 [OpenTelemetry Collector
+  组件稳定性定义](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md)。

@@ -2,7 +2,8 @@
 title: エージェント設定
 linkTitle: Configuration
 weight: 10
-default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
+cSpell:ignore: gevent healthcheck instrumentor pyproject Starlette urllib
 ---
 
 エージェントは次のいずれかの方法で高度に設定可能です。
@@ -48,7 +49,7 @@ opentelemetry-instrument \
 以下の手順を適用して、目的の構成プロパティの正しい名前マッピングを決定できます。
 
 - 設定プロパティを大文字に変換します。
-- 環境変数のプレフィックスを `OTEL_` にします。
+- 環境変数の接頭辞を `OTEL_` にします。
 
 たとえば、`exporter_otlp_endpoint` は `OTEL_EXPORTER_OTLP_ENDPOINT` に変換されます。
 
@@ -96,9 +97,9 @@ export OTEL_PYTHON_TORNADO_TRACED_REQUEST_ATTRS='uri,query'
 - `OTEL_PYTHON_LOG_CORRELATION`: ログへのトレースコンテキストの注入を有効にする (true、false)。
 - `OTEL_PYTHON_LOG_FORMAT`: カスタムログフォーマットを使うように設定します。
 - `OTEL_PYTHON_LOG_LEVEL`: カスタムのログレベル (情報、エラー、デバッグ、警告) を設定します。
-- `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED`: ログの自動計装を有効にします。
-  Pythonルートロガーに OTLP ハンドラーをアタッチします。
-  例については、[ログの自動計装](/docs/zero-code/python/logs-example/) を参照してください。
+- `OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION`: ログハンドラーを自動的に設定するかどうかを制御します（true、false）。デフォルトで有効です。
+  [ログの自動計装](/docs/zero-code/python/logs-example/)を参照してください。
+- `OTEL_PYTHON_LOG_CODE_ATTRIBUTES`: ログに `code` 属性（`code.file.path`、`code.function.name`、`code.line.number`）を追加する機能を有効にします（true、false）。
 
 例を挙げましょう。
 
@@ -106,18 +107,23 @@ export OTEL_PYTHON_TORNADO_TRACED_REQUEST_ATTRS='uri,query'
 export OTEL_PYTHON_LOG_CORRELATION=true
 export OTEL_PYTHON_LOG_FORMAT="%(msg)s [span_id=%(span_id)s]"
 export OTEL_PYTHON_LOG_LEVEL=debug
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
+export OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION=false
+export OTEL_PYTHON_LOG_CODE_ATTRIBUTES=true
 ```
+
+> OpenTelemetry Python 1.40.0 より前のバージョンでは、ログの自動計装はデフォルトで無効であり、`opentelemetry-sdk` パッケージに実装されていました。
+> `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` を `true` に設定すると有効になりました。
 
 ### その他 {#other}
 
 特定のカテゴリーに分類されない設定オプションもいくつかあります。
 
 - `OTEL_PYTHON_DJANGO_INSTRUMENT`: Django 計装のデフォルトの有効状態を無効にするために `false` を設定します。
-- `OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX`: Elasticsearch の操作名のデフォルトのプレフィックスを "Elasticsearch" からここで設定したものに変更します。
+- `OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX`: Elasticsearch の操作名のデフォルトの接頭辞を "Elasticsearch" からここで設定したものに変更します。
 - `OTEL_PYTHON_GRPC_EXCLUDED_SERVICES`: gRPC 計装から除外するサービスをカンマ区切りで指定します。
 - `OTEL_PYTHON_ID_GENERATOR`: グローバルトレーサプロバイダーに使用する ID ジェネレータを指定します。
 - `OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS`: クエリーのサニタイズ処理を有効にします。
+- `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH`: SDKを初期化する前にgeventモンキーパッチの `patch_all` メソッドを呼び出すために `patch_all` に設定します。
 
 例を挙げましょう。
 
@@ -127,6 +133,7 @@ export OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX=my-custom-prefix
 export OTEL_PYTHON_GRPC_EXCLUDED_SERVICES="GRPCTestServer,GRPCHealthServer"
 export OTEL_PYTHON_ID_GENERATOR=xray
 export OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS=true
+export OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH=patch_all
 ```
 
 ## 特定の計装を無効にする {#disabling-specific-instrumentations}

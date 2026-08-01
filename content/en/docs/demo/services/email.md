@@ -74,8 +74,75 @@ end
 
 ## Metrics
 
-TBD
+### Initializing Metrics
+
+The OpenTelemetry Metrics SDK and OTLP metrics exporter are initialized at root
+level in the `email_server.rb` file. You first need the `require` statements to
+access them.
+
+```ruby
+require "opentelemetry-metrics-sdk"
+require "opentelemetry-exporter-otlp-metrics"
+```
+
+The Ruby SDK uses OpenTelemetry standard environment variables to configure OTLP
+export, resource attributes, and service name automatically. When initializing
+the OpenTelemetry Metrics SDK, you also need to configure a meter provider and a
+metric reader.
+
+```ruby
+otlp_metric_exporter = OpenTelemetry::Exporter::OTLP::Metrics::MetricsExporter.new
+OpenTelemetry.meter_provider.add_metric_reader(otlp_metric_exporter)
+meter = OpenTelemetry.meter_provider.meter("email")
+```
+
+With the meter provider you now have access to the meter, which can be used to
+create a global metric (ie: `counter`).
+
+```ruby
+$confirmation_counter = meter.create_counter("app.confirmation.counter", unit: "1", description: "Counts the number of order confirmation emails sent")
+```
+
+### Custom metrics
+
+The following custom metric is currently available:
+
+- `app.confirmation.counter`: Cumulative count of number of order confirmation
+  emails sent
 
 ## Logs
 
-TBD
+### Initializing logs
+
+The OpenTelemetry Logs SDK and OTLP logs exporter are initialized at root level
+in the `email_server.rb` file. You first need the `require` statements to access
+them.
+
+```ruby
+require "opentelemetry-logs-sdk"
+require "opentelemetry-exporter-otlp-logs"
+```
+
+The Ruby SDK uses OpenTelemetry standard environment variables to configure OTLP
+export, resource attributes, and service name automatically. When initializing
+the OpenTelemetry Logs SDK, you need a logger provider to create a global
+logger.
+
+```ruby
+$logger = OpenTelemetry.logger_provider.logger(name: "email")
+```
+
+### Emitting structured logs
+
+You can use the logger’s `on_emit` method to write structured logs. Include
+`severity_text` (e.g., `INFO`, `ERROR`), a human-readable `body`, and
+`app.email.recipient` attribute that may help querying the logs later.
+
+```ruby
+$logger.on_emit(
+  timestamp: Time.now,
+  severity_text: "INFO",
+  body: "Order confirmation email sent",
+  attributes: { "app.email.recipient" => data.email }
+)
+```

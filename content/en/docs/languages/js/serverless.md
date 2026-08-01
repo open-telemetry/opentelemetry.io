@@ -8,14 +8,17 @@ cSpell:ignore: otelwrapper
 This guide shows how to get started with tracing serverless functions using
 OpenTelemetry instrumentation libraries.
 
+> [!NOTE]
+>
+> The OpenTelemetry documentation assume that the compiled application is run as
+> [CommonJS](https://nodejs.org/api/modules.html#modules-commonjs-modules).
+
 ## AWS Lambda
 
-{{% alert title="Note" %}}
-
-You can also automatically instrument your AWS Lambda functions by using the
-[community provided Lambda layers](/docs/platforms/faas/lambda-auto-instrument/).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> You can also automatically instrument your AWS Lambda functions by using the
+> [community provided Lambda layers](/docs/platforms/faas/lambda-auto-instrument/).
 
 The following show how to use Lambda wrappers with OpenTelemetry to instrument
 AWS Lambda functions manually and send traces to a configured backend.
@@ -192,7 +195,7 @@ function in the backend!
 ## GCP function
 
 The following shows how to instrument
-[HTTP triggered function](https://cloud.google.com/functions/docs/writing/write-http-functions)
+[HTTP triggered function](https://docs.cloud.google.com/run/docs/write-functions)
 using the Google Cloud Platform (GCP) UI.
 
 ### Creating function
@@ -227,9 +230,7 @@ service. Please make sure that you provide a `SERVICE_NAME` and that you set the
 /* otelwrapper.js */
 
 const { resourceFromAttributes } = require('@opentelemetry/resources');
-const {
-  SEMRESATTRS_SERVICE_NAME,
-} = require('@opentelemetry/semantic-conventions');
+const { ATTR_SERVICE_NAME } = require('@opentelemetry/semantic-conventions');
 const api = require('@opentelemetry/api');
 const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
 const {
@@ -249,7 +250,7 @@ const collectorOptions = {
 
 const provider = new NodeTracerProvider({
   resource: resourceFromAttributes({
-    [SEMRESATTRS_SERVICE_NAME]: '<your function name>',
+    [ATTR_SERVICE_NAME]: '<your function name>',
   }),
   spanProcessors: [
     new BatchSpanProcessor(new OTLPTraceExporter(collectorOptions)),

@@ -40,9 +40,8 @@ We recommend limiting the set of components in your Collector configuration to
 only those you need. Minimizing the number of components you use minimizes the
 attack surface exposed.
 
-- Use the
-  [OpenTelemetry Collector Builder (`ocb`)](/docs/collector/custom-collector) to
-  create a Collector distribution that uses only the components you need.
+- Use the [OpenTelemetry Collector Builder (`ocb`)](/docs/collector/extend/ocb/)
+  to create a Collector distribution that uses only the components you need.
 - Remove unused components from your configuration.
 
 ### Configure with care

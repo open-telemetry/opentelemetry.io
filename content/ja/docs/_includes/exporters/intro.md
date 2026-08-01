@@ -1,5 +1,5 @@
 ---
-default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
+default_lang_commit: c87c4cd1a007500700746c184918add6456175c3
 ---
 
 [OpenTelemetryコレクター](/docs/collector/)にテレメトリーを送信し、正しくエクスポートされることを確認してください。
@@ -22,7 +22,7 @@ default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
 {{ end }}
 
 エクスポーターの中でも、[OpenTelemetry Protocol (OTLP)][OTLP]エクスポーターは、OpenTelemetryのデータモデルを考慮して設計されており、OTelデータを情報の損失なく出力します。
-さらに、多くのテレメトリーデータを扱うツールがOTLPに対応しており（たとえば、[Prometheus]、[Jaeger]やほとんどの[ベンダー][vendors]）、必要なときに高い柔軟性を提供します。
+さらに、多くのテレメトリーデータを扱うツールがOTLPに対応しており（たとえば、[Prometheus][]、[Jaeger][]やほとんどの[ベンダー][vendors]）、必要なときに高い柔軟性を提供します。
 OTLPについて詳細に学習したい場合は、[OTLP仕様][OTLP]を参照してください。
 
 [Jaeger]: /blog/2022/jaeger-native-otlp/
@@ -39,11 +39,9 @@ OTLPについて詳細に学習したい場合は、[OTLP仕様][OTLP]を参照�
 
 {{ if $zeroConfigPageExists }}
 
-{{% alert title=Note %}}
-
-[ゼロコード計装](/docs/zero-code/{{ $l }})を使用している場合は、[設定ガイド](/docs/zero-code/{{ $l }}/configuration/)に従ってエクスポーターの設定方法を学ぶことができます。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> [ゼロコード計装](</docs/zero-code/{{ $langIdAsPath }}>)を使用している場合は、[設定ガイド](</docs/zero-code/{{ $langIdAsPath }}/configuration/>)に従ってエクスポーターの設定方法を学ぶことができます。
 
 {{ end }}
 
@@ -53,11 +51,9 @@ OTLPについて詳細に学習したい場合は、[OTLP仕様][OTLP]を参照�
 
 ### コレクターのセットアップ {#collector-setup}
 
-{{% alert title=Note %}}
-
-OTLPコレクターまたはバックエンドがすでにセットアップされている場合は、このセクションをスキップして、アプリケーション用の[OTLPエクスポーター依存関係のセットアップ](#otlp-dependencies)に進むことができます。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> OTLPコレクターまたはバックエンドがすでにセットアップされている場合は、このセクションをスキップして、アプリケーション用の[OTLPエクスポーター依存関係のセットアップ](#otlp-dependencies)に進むことができます。
 
 OTLPエクスポーターを試し、検証するために、テレメトリーを直接コンソールに書き込むDockerコンテナでコレクターを実行できます。
 空のディレクトリで、以下の内容で`collector-config.yaml`というファイルを作成します。

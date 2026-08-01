@@ -5,14 +5,18 @@ title:
 linkTitle: KubeCon EU '25
 date: 2025-03-04
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
+eventUrl: &eventUrl >-
+  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/
+queryParams: >-
+  utm_source=opentelemetry&utm_medium=website&utm_content=blog
 # prettier-ignore
-cSpell:ignore: Adevinta Aftab Arianna Baeyens Bartłomiej Boulineau Celalettin Cgroupv Chauhan codecentric Contribfest Cosmonic Geisendoerfer Guangya Hoeven Horovits Hrabusa Jiří Juraj Kalyanaraman Karemba Karthik Kasper Kathiresan kedify Keycloak Kimpel Kluwer Kokilavani Kovalenko Kowall Kremser Kruthika Liatrio Mancioppi Marylia Michálek MTTD Nilson Nissen Norimatsu Oberaigner observ Olly OTTL Paessler Pahlke Prasanna Płotka Querel Roubalik SCRM Simha Skyscanner Suereth Tanaka Vamerlatti Vespri Vijay Wolters Zbynek
+cSpell:ignore: Adevinta Aftab Arianna Baeyens Bartłomiej Boulineau Celalettin Cgroupv Chauhan codecentric Contribfest Cosmonic Geisendoerfer Guangya Hoeven Horovits Jiří Juraj Kalyanaraman Karemba Karthik Kasper Kathiresan kedify Keycloak Kimpel Kluwer Kokilavani Kovalenko Kowall Kremser Kruthika Liatrio Mancioppi Michálek MTTD Nilson Nissen Norimatsu Oberaigner observ Olly OTTL Paessler Pahlke Prasanna Płotka Querel Roubalik SCRM Simha Skyscanner Suereth Tanaka Vamerlatti Vespri Vijay Wolters Zbynek
 ---
 
 The OpenTelemetry governance and technical committees, along with the project's
 maintainers, invite you to join them and other members of the OpenTelemetry
-community at [KubeCon + CloudNativeCon Europe][] ([registration]) and at the
-co-located [Observability Day] in London from April 1 to 4, 2025.
+community at [KubeCon + CloudNativeCon Europe][] ([registration][]) and at the
+co-located [Observability Day][] in London from April 1 to 4, 2025.
 
 This post covers all currently scheduled activities related to OpenTelemetry
 that are happening during KubeCon. Check back for updates before the start of
@@ -108,17 +112,15 @@ and guidance from maintainers in these project areas to help you get started.
 
 ## Observability Day
 
-[Observability Day] fosters collaboration, discussion, and knowledge sharing of
-cloud native observability projects. This event will be held on Tuesday, April
-1, 2025, from 9:00 - 17:25. There will be several sessions on OpenTelemetry as
-well.
+[Observability Day][] fosters collaboration, discussion, and knowledge sharing
+of cloud native observability projects. This event will be held on Tuesday,
+April 1, 2025, from 9:00 - 17:25. There will be several sessions on
+OpenTelemetry as well.
 
-{{% alert title="Important access note" color="danger" %}}
-
-You need an _all-access_ pass to attend **Observability Day**. For details, see
-[KubeCon registration][registration].
-
-{{% /alert %}}
+> [!IMPORTANT] Important access note
+>
+> You need an _all-access_ pass to attend **Observability Day**. For details,
+> see [KubeCon registration][registration].
 
 - **[Sponsored Keynote: The Future of Observability: Trends, AI, and New Relic’s Vision for a Smarter Stack](https://sched.co/1u5jm)**<br>
   by Harry Kimpel, New Relic<br> Tuesday, April 1 • 10:00 - 10:05
@@ -161,7 +163,7 @@ You need an _all-access_ pass to attend **Observability Day**. For details, see
 ## OpenTelemetry Observatory Booth {#opentelemetry-observatory}
 
 Drop by and say _"Hi!"_ at **OpenTelemetry Observatory booth** in the Expo
-Hall[^1], courtesy of [Splunk]. This will be a place for informal chats,
+Hall[^1], courtesy of [Splunk][]. This will be a place for informal chats,
 meetups, and other discussions led by OpenTelemetry community members and
 maintainers.
 
@@ -176,7 +178,7 @@ like to participate or lead a discussion or short presentation, reach out to the
 You can also help us improve OTel by sharing your thoughts and feedback about
 your OpenTelemetry adoption, implementation, and usage experiences. We will
 create action items from your comments as appropriate, and post results to
-[#otel-sig-end-user] after the conference.
+[#otel-sig-end-user][] after the conference.
 
 {{< comment >}}
 
@@ -220,13 +222,12 @@ Come listen, learn, and get involved in OpenTelemetry. See you in London!
 
 [#otel-sig-end-user]: https://cloud-native.slack.com/archives/C01RT3MSWGZ
 [KubeCon + CloudNativeCon Europe]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog
+  <{{% param eventUrl %}}?{{% param queryParams %}}>
 [Observability Day]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/
+  <{{% param eventUrl %}}co-located-events/observability-day/>
 [OpenTelemetry End User Working Group]:
   https://cloud-native.slack.com/archives/C01RT3MSWGZ
 [OTel Observatory Calendar]:
   https://calendar.google.com/calendar/embed?src=c_6b6b343737cc9bbf0393ba40c101d6b017514751e66951c9890d089eedd78a37@group.calendar.google.com&mode=WEEK&dates=20250331/20250406
-[registration]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog
+[registration]: <{{% param eventUrl %}}register/?{{% param queryParams %}}>
 [Splunk]: https://www.splunk.com/

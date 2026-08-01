@@ -1,4 +1,4 @@
-# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT
+# cSpell:ignore Splunk AWS ADOT Grafana Bindplane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT dash0
 - name: Splunk Distribution of OpenTelemetry Collector
   url: https://github.com/signalfx/splunk-otel-collector
   docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
@@ -45,15 +45,15 @@
   components: [Collector]
 - name: Grafana Distribution of OpenTelemetry for .NET
   url: https://github.com/grafana/grafana-opentelemetry-dotnet
-  docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/dotnet/
+  docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/
   components: [.NET]
 - name: Grafana Distribution of OpenTelemetry for Java
   url: https://github.com/grafana/grafana-opentelemetry-java
-  docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/java/
+  docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/
   components: [Java]
-- name: observIQ BindPlane Agent
-  url: https://github.com/observIQ/observiq-otel-collector
-  docsUrl: https://github.com/observIQ/bindplane-agent/tree/main/docs
+- name: Bindplane Distro for OpenTelemetry Collector
+  url: https://github.com/observIQ/bindplane-otel-collector
+  docsUrl: https://github.com/observIQ/bindplane-otel-collector/tree/main/docs
   components: [Collector]
 - name: RedHat RHOSDT OpenTelemetry Collector Distribution
   url: https://github.com/os-observability/redhat-opentelemetry-collector
@@ -179,6 +179,30 @@
   url: https://github.com/newrelic/nrdot-collector-releases
   docsUrl: https://docs.newrelic.com/docs/opentelemetry/nrdot/nrdot-collector/
   components: [Collector]
+- name: Honeycomb’s OpenTelemetry Web SDK distribution
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-web
+  docsUrl: https://docs.honeycomb.io/send-data/javascript-browser/
+  components: [Javascript, Browser]
+- name: Honeycomb's OpenTelemetry Android SDK distribution
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-android
+  docsUrl: https://docs.honeycomb.io/send-data/android/
+  components: [Android]
+- name: Honeycomb's OpenTelemetry Swift SDK distribution
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-swift
+  docsUrl: https://docs.honeycomb.io/send-data/ios/
+  components: [Swift]
+- name: Honeycomb's OpenTelemetry React Native SDK distribution
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-react-native
+  docsUrl: https://docs.honeycomb.io/send-data/react-native/
+  components: [React Native, Javascript]
+- name: Honeycomb's OpenTelemetry Collector Distribution
+  url: https://github.com/honeycombio/honeycomb-collector-distro
+  docsUrl: https://github.com/honeycombio/honeycomb-collector-distro/blob/main/README.md
+  components: [Collector]
+- name: Dash0 Operator for Kubernetes
+  url: https://github.com/dash0hq/dash0-operator
+  docsUrl: https://www.dash0.com/hub/integrations/int_dash0_operator/overview
+  components: [Collector, Node, Java, .NET, Python]
 
 # OSS Collector Distros
 - name: OpenTelemetry Collector Core Distro

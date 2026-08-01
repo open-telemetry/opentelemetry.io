@@ -1,8 +1,9 @@
 ---
 title: 构建认证器扩展
 weight: 40
-aliases: [/docs/collector/custom-auth/]
-default_lang_commit: c6df1ca98613ce886d3ea5ecb7ea50d02a31f18a
+aliases: [/docs/collector/custom-auth]
+default_lang_commit: c6df1ca98613ce886d3ea5ecb7ea50d02a31f18a # patched
+drifted_from_default: file not found
 cSpell:ignore: configauth oidc
 ---
 
@@ -141,6 +142,6 @@ service:
 
 [authenticators]: https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth
 [builder]: https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
-[client authenticators]: https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
-[extensions]: ../../configuration/#extensions
+[client authenticators]: https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#readme-client-authenticators
+[extensions]: /docs/collector/configuration/#extensions
 [sa]: https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators

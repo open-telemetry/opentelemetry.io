@@ -4,6 +4,7 @@ linkTitle: 状态
 aliases: [otel/status]
 weight: -10
 default_lang_commit: 880560388fab20d661f7c093df08ae36ea453203
+drifted_from_default: true
 ---
 
 OpenTelemetry 是基于各种信号逐一开发的。链路追踪、指标、Baggage 和日志都是一种信号。

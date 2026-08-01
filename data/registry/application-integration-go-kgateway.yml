@@ -1,0 +1,24 @@
+# cSpell:ignore: kgateway
+title: kgateway
+registryType: application integration
+language: go
+tags:
+  - go
+  - kgateway
+  - gateway-api
+  - ingress
+  - envoy
+license: Apache-2.0
+description:
+  kgateway supports OTLP export for traces and logs, with Prometheus-native
+  metrics collection.
+authors:
+  - name: kgateway Authors
+    url: https://github.com/kgateway-dev
+urls:
+  website: https://kgateway.dev/
+  repo: https://github.com/kgateway-dev/kgateway
+  docs: https://kgateway.dev/docs/envoy/latest/observability/otel-stack/
+createdAt: '2026-02-11'
+cncfProjectLevel: sandbox
+isNative: true

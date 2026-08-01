@@ -1,16 +1,14 @@
 ---
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 ---
 
 ## Zipkin {#zipkin}
 
 ### バックエンドのセットアップ {#zipkin-setup}
 
-{{% alert title=注意 %}}
-
-すでにZipkinまたはZipkin互換のバックエンドをセットアップしている場合は、このセクションをスキップして、アプリケーション用の[Zipkinエクスポーターの依存関係](#zipkin-dependencies)をセットアップしてください。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> すでにZipkinまたはZipkin互換のバックエンドをセットアップしている場合は、このセクションをスキップして、アプリケーション用の[Zipkinエクスポーターの依存関係](#zipkin-dependencies)をセットアップしてください。
 
 以下のコマンドを実行して、[Zipkin](https://zipkin.io/)をDockerコンテナで実行できます。
 

@@ -39,7 +39,7 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.40.0"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -91,6 +91,13 @@ func main() {
 ```
 
 You can now access `tracer` to manually instrument your code.
+
+> [!WARNING]
+>
+> If you are adding manual spans in conjunction with eBPF-based
+> [Go zero-code instrumentation](/docs/zero-code/go), such as with
+> [OBI](/docs/zero-code/obi), do not set a global Tracer Provider. See the
+> [Auto SDK](/docs/zero-code/go/autosdk) docs for more information.
 
 ### Creating Spans
 
@@ -188,7 +195,7 @@ Semantic Attributes are attributes that are defined by the [OpenTelemetry
 Specification][] in order to provide a shared set of attribute keys across
 multiple languages, frameworks, and runtimes for common concepts like HTTP
 methods, status codes, user agents, and more. These attributes are available in
-the `go.opentelemetry.io/otel/semconv/v1.37.0` package.
+the `go.opentelemetry.io/otel/semconv/v1.40.0` package.
 
 For details, see [Trace semantic conventions][].
 
@@ -325,7 +332,7 @@ Here you can find more detailed package documentation for:
 
 ### Initialize Metrics
 
-{{% alert %}} If you’re instrumenting a library, skip this step. {{% /alert %}}
+> [!NB] If you’re instrumenting a library, **skip this step**.
 
 To enable [metrics](/docs/concepts/signals/metrics/) in your app, you'll need to
 have an initialized
@@ -365,7 +372,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.40.0"
 )
 
 func main() {
@@ -467,6 +474,22 @@ In cases like these, it's often better to observe a cumulative value directly,
 rather than aggregate a series of deltas in post-processing (the synchronous
 example).
 
+### Performance Optimization for Synchronous Instruments
+
+For synchronous instruments, you can use the `Enabled` method to check if the
+instrument is enabled before performing expensive operations to compute
+attributes or values.
+
+```go
+if apiCounter.Enabled(ctx) {
+    // compute attributes or values
+    apiCounter.Add(ctx, 1, metric.WithAttributes(attributes...))
+}
+```
+
+This ensures your instrumentation doesn't pay a performance penalty when no
+MeterProvider is configured, or when a view is configured to drop the metric.
+
 ### Using Counters
 
 Counters can be used to measure a non-negative, increasing value.
@@ -490,7 +513,9 @@ func init() {
 		panic(err)
 	}
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		apiCounter.Add(r.Context(), 1)
+		if apiCounter.Enabled(r.Context()) {
+			apiCounter.Add(r.Context(), 1)
+		}
 
 		// do some work in an API call
 	})
@@ -528,13 +553,19 @@ func init() {
 func addItem() {
 	// code that adds an item to the collection
 
-	itemsCounter.Add(context.Background(), 1)
+	ctx := context.Background()
+	if itemsCounter.Enabled(ctx) {
+		itemsCounter.Add(ctx, 1)
+	}
 }
 
 func removeItem() {
 	// code that removes an item from the collection
 
-	itemsCounter.Add(context.Background(), -1)
+	ctx := context.Background()
+	if itemsCounter.Enabled(ctx) {
+		itemsCounter.Add(ctx, -1)
+	}
 }
 ```
 
@@ -590,7 +621,9 @@ func init() {
 func recordFanSpeed() {
 	ctx := context.Background()
 	for fanSpeed := range fanSpeedSubscription {
-		speedGauge.Record(ctx, fanSpeed)
+		if speedGauge.Enabled(ctx) {
+			speedGauge.Record(ctx, fanSpeed)
+		}
 	}
 }
 ```
@@ -625,7 +658,9 @@ func init() {
 		// do some work in an API call
 
 		duration := time.Since(start)
-		histogram.Record(r.Context(), duration.Seconds())
+		if histogram.Enabled(r.Context()) {
+			histogram.Record(r.Context(), duration.Seconds())
+		}
 	})
 }
 ```
@@ -761,7 +796,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.40.0"
 )
 
 func init() {
@@ -1009,7 +1044,7 @@ import (
 	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.40.0"
 )
 
 func main() {

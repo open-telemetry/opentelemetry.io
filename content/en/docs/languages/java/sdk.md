@@ -2,7 +2,7 @@
 title: Manage Telemetry with SDK
 weight: 12
 aliases: [exporters]
-cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
+cSpell:ignore: autoconfigured FQCNs Interceptable okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -121,11 +121,13 @@ is a set of attributes defining the telemetry source. An application should
 associate the same resource with [SdkTracerProvider](#sdktracerprovider),
 [SdkMeterProvider](#sdkmeterprovider), [SdkLoggerProvider](#sdkloggerprovider).
 
-{{% alert %}} [ResourceProviders](../configuration/#resourceprovider) contribute
-contextual information to the
-[autoconfigured](../configuration/#zero-code-sdk-autoconfigure) resource based
-on the environment. See documentation for list of available `ResourceProvider`s.
-{{% /alert %}}
+> [!NOTE]
+>
+> [ResourceProviders](../configuration/#resourceprovider) contribute contextual
+> information to the
+> [autoconfigured](../configuration/#zero-code-sdk-autoconfigure) resource based
+> on the environment. See documentation for list of available
+> `ResourceProvider`s.
 
 The following code snippet demonstrates `Resource` programmatic configuration:
 
@@ -195,10 +197,12 @@ A
 is a [plugin extension interface](#sdk-plugin-extension-interfaces) responsible
 for determining which spans are recorded and sampled.
 
-{{% alert %}} By default `SdkTracerProvider` is configured with the
-`ParentBased(root=AlwaysOn)` sampler. This results in 100% of spans being
-sampled if unless a calling application performs sampling. If this is too noisy
-/ expensive, change the sampler. {{% /alert %}}
+> [!NOTE]
+>
+> By default `SdkTracerProvider` is configured with the
+> `ParentBased(root=AlwaysOn)` sampler. This results in 100% of spans being
+> sampled unless a calling application performs sampling. If this is too noisy /
+> expensive, change the sampler.
 
 Samplers built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
@@ -888,14 +892,16 @@ allow metric streams to be customized, including changing metric names, metric
 descriptions, metric aggregations (i.e. histogram bucket boundaries), the set of
 attribute keys to retain, cardinality limit, etc.
 
-{{% alert %}} Views have somewhat unintuitive behavior when multiple match a
-particular instrument. If one matching view changes the metric name and another
-changes the metric aggregation, you might expect the name and aggregation are
-changed, but this is not the case. Instead, two metric streams are produced: one
-with the configured metric name and the default aggregation, and another with
-the original metric name and the configured aggregation. In other words,
-matching views _do not merge_. For best results, configure views with narrow
-selection criteria (i.e. select a single specific instrument). {{% /alert %}}
+> [!NOTE]
+>
+> Views have somewhat unintuitive behavior when multiple match a particular
+> instrument. If one matching view changes the metric name and another changes
+> the metric aggregation, you might expect the name and aggregation are changed,
+> but this is not the case. Instead, two metric streams are produced: one with
+> the configured metric name and the default aggregation, and another with the
+> original metric name and the configured aggregation. In other words, matching
+> views _do not merge_. For best results, configure views with narrow selection
+> criteria (i.e. select a single specific instrument).
 
 The following code snippet demonstrates `View` programmatic configuration:
 
@@ -1385,8 +1391,8 @@ cases in the Java ecosystem:
 - Java 11+ brings the built-in `java.net.http.HttpClient`, but
   `opentelemetry-java` needs to support Java 8+ users, and this can't be used to
   export via `gRPC` because there is no support for trailer headers.
-- [OkHttp](https://square.github.io/okhttp/) provides a powerful HTTP client
-  with support for trailer headers, but depends on the kotlin standard library.
+- [OkHttp](https://lysine.dev/okhttp/) provides a powerful HTTP client with
+  support for trailer headers, but depends on the kotlin standard library.
 - [grpc-java](https://github.com/grpc/grpc-java) provides its own
   `ManagedChannel` abstraction with various
   [transport implementations](https://github.com/grpc/grpc-java#transport), but
@@ -1520,9 +1526,105 @@ public class OtlpAuthenticationConfig {
 ```
 <!-- prettier-ignore-end -->
 
-### Testing
+### Benchmarks
 
-TODO: document tools available for testing the SDK
+The SDK publishes [JMH](https://github.com/openjdk/jmh) benchmark results to
+[open-telemetry.github.io/opentelemetry-java/benchmarks/](https://open-telemetry.github.io/opentelemetry-java/benchmarks/).
+Benchmarks run on every commit to `main` using a dedicated bare-metal runner to
+minimize noise. The results include tools for date filtering and series
+selection, along with links to the benchmark source code where Javadoc
+elaborates on what is benchmarked and why.
+
+Current benchmarks cover the **record path** for all three signals — the hot
+path that application threads exercise on every span start/end, metric
+measurement, or log emit:
+
+| Benchmark                                    | Dimensions                                                                              |
+| -------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [`SpanRecordBenchmark`][span-record-src]     | span size, concurrent threads                                                           |
+| [`MetricRecordBenchmark`][metric-record-src] | instrument type + aggregation, aggregation temporality, cardinality, concurrent threads |
+| [`LogRecordBenchmark`][log-record-src]       | log record size, concurrent threads                                                     |
+
+> [!NOTE]
+>
+> Benchmarks for the **export path** (batch processor flush, exporter I/O, etc.)
+> are planned but lower priority, since export occurs off the hot path.
 
 [JSON file encoding]:
   /docs/specs/otel/protocol/file-exporter/#json-file-serialization
+[span-record-src]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/SpanRecordBenchmark.java
+[metric-record-src]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/MetricRecordBenchmark.java
+[log-record-src]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/LogRecordBenchmark.java
+
+### Testing
+
+The `io.opentelemetry:opentelemetry-sdk-testing` artifact provides utilities for
+asserting on telemetry produced by your code, without exporting data to any
+backend.
+
+The following components are available:
+
+| Class                                                                                                                                                                                   | Description                                                                                                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [OpenTelemetryExtension](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit5/OpenTelemetryExtension.html)                  | JUnit 5 extension that sets up an `OpenTelemetrySdk` with in-memory exporters and W3C trace context propagation, registers it as `GlobalOpenTelemetry`, and resets all captured telemetry before each test. |
+| [OpenTelemetryRule](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit4/OpenTelemetryRule.html)                            | JUnit 4 equivalent of `OpenTelemetryExtension`. Cannot be used as `@ClassRule`.                                                                                                                             |
+| [OpenTelemetryAssertions](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/assertj/OpenTelemetryAssertions.html)               | Extends AssertJ with OTel-aware `assertThat()` overloads for `SpanData`, `MetricData`, `LogRecordData`, `Attributes`, and `EventData`. Use via `import static ...OpenTelemetryAssertions.assertThat`.       |
+| [InMemorySpanExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemorySpanExporter.html)                    | Captures exported spans in memory.                                                                                                                                                                          |
+| [InMemoryMetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryMetricReader.html)                    | Reads aggregated metrics in memory.                                                                                                                                                                         |
+| [InMemoryLogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryLogRecordExporter.html)          | Captures exported log records in memory.                                                                                                                                                                    |
+| [TestClock](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/time/TestClock.html)                                              | Mutable `Clock` for controlling time in tests. Pass to `SdkTracerProvider.builder().setClock(...)`.                                                                                                         |
+| [TestSpanData](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/trace/TestSpanData.html)                                       | Immutable builder for constructing `SpanData` instances in tests without running real instrumentation.                                                                                                      |
+| [TestLogRecordData](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/logs/TestLogRecordData.html)                              | Immutable builder for constructing `LogRecordData` instances in tests.                                                                                                                                      |
+| [SettableContextStorageProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/context/SettableContextStorageProvider.html) | `ContextStorageProvider` that lets you swap `ContextStorage` at runtime; useful for testing context propagation behavior.                                                                                   |
+
+#### JUnit 5
+
+`OpenTelemetryExtension` is the recommended starting point for JUnit 5.
+
+```java
+class CoolTest {
+  @RegisterExtension
+  static final OpenTelemetryExtension otelTesting = OpenTelemetryExtension.create();
+
+  private final Tracer tracer = otelTesting.getOpenTelemetry().getTracer("test");
+
+  @Test
+  void test() {
+    tracer.spanBuilder("name").startSpan().end();
+    assertThat(otelTesting.getSpans())
+        .satisfiesExactly(span -> assertThat(span).hasName("name"));
+  }
+}
+```
+
+Access raw telemetry with `getSpans()`, `getMetrics()`, and `getLogRecords()`.
+Use `assertTraces()` for fluent trace-level assertions via `TracesAssert`.
+Telemetry is automatically reset before each test; `clearSpans()`,
+`clearMetrics()`, and `clearLogRecords()` are available for mid-test resets.
+
+#### JUnit 4
+
+`OpenTelemetryRule` provides the same API for JUnit 4:
+
+```java
+public class CoolTest {
+  @Rule public OpenTelemetryRule otelTesting = OpenTelemetryRule.create();
+
+  private Tracer tracer;
+
+  @Before
+  public void setUp() {
+    tracer = otelTesting.getOpenTelemetry().getTracer("test");
+  }
+
+  @Test
+  public void test() {
+    tracer.spanBuilder("name").startSpan().end();
+    assertThat(otelTesting.getSpans())
+        .satisfiesExactly(span -> assertThat(span).hasName("name"));
+  }
+}
+```

@@ -1,0 +1,19 @@
+title: Claude Code
+registryType: application integration
+language: js
+tags:
+  - ai
+license: proprietary
+description:
+  Claude Code supports OpenTelemetry (OTel) metrics and events for monitoring
+  and observability. All metrics are time series data exported via
+  OpenTelemetry’s standard metrics protocol, and events are exported via
+  OpenTelemetry’s logs/events protocol.
+authors:
+  - name: Anthropic PBC
+    url: https://github.com/anthropics
+urls:
+  website: https://code.claude.com/docs
+  docs: https://code.claude.com/docs/en/monitoring-usage
+createdAt: '2024-08-06'
+isNative: true

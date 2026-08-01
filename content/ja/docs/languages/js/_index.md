@@ -1,11 +1,14 @@
 ---
 title: JavaScript
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/JS_SDK.svg"
-  alt="JavaScript"> JavaScript（Node.jsとブラウザ向け）でのOpenTelemetryの言語固有実装。
-aliases: [/js, /js/metrics, /js/tracing]
-weight: 20
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+  <img width="35" class="img-initial otel-icon"
+  src="/img/logos/32x32/JS_SDK.svg" alt="JavaScript"> JavaScript（Node.jsとブラウザ向け）でのOpenTelemetryの言語固有実装。
+aliases: [/js/metrics, /js/tracing, nodejs]
+redirects:
+  - { from: /js/*, to: ':splat' }
+  - { from: /docs/js/*, to: ':splat' }
+weight: 160
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
 ---
 
 {{% docs/languages/index-intro js /%}}
@@ -34,6 +37,6 @@ OpenTelemetry JavaScriptは以下のリポジトリで構成されています�
 
 ## ヘルプまたはフィードバック {#help-or-feedback}
 
-OpenTelemetry JavaScriptについて質問がある場合は、[GitHub Discussions](https://github.com/open-telemetry/opentelemetry-js/discussions)または[CNCF Slack](https://slack.cncf.io/)の[#otel-js]チャンネルまでお問い合わせください。
+OpenTelemetry JavaScriptについて質問がある場合は、[GitHub Discussions](https://github.com/open-telemetry/opentelemetry-js/discussions)または[CNCF Slack](https://slack.cncf.io/)の`#otel-js`チャンネルまでお問い合わせください。
 
 OpenTelemetry JavaScriptに貢献したい場合は、[貢献手順](https://github.com/open-telemetry/opentelemetry-js/blob/main/CONTRIBUTING.md)を参照してください。

@@ -11,10 +11,11 @@ This page will show you how to get started with OpenTelemetry in Node.js.
 You will learn how to instrument both [traces][] and [metrics][] and log them to
 the console.
 
-{{% alert title="Note" %}} The logging library for OpenTelemetry for Node.js is
-still under development hence an example for it is not provided below. For
-status details, see
-[Status and Releases](/docs/languages/js/#status-and-releases). {{% /alert %}}
+> [!NOTE]
+>
+> The logging library for OpenTelemetry for Node.js is still under development
+> hence an example for it is not provided below. For status details, see
+> [Status and Releases](/docs/languages/js/#status-and-releases).
 
 ## Prerequisites
 
@@ -166,9 +167,11 @@ application code. One tool commonly used for this task is the
 Create a file named `instrumentation.ts` (or `instrumentation.mjs` if not using
 TypeScript), which will contain your instrumentation setup code.
 
-{{% alert title="Note" %}} The following examples using
-`--import instrumentation.ts` (TypeScript) require Node.js v.20 or later. If you
-are using Node.js v.18, please use the JavaScript example. {{% /alert %}}
+> [!NOTE]
+>
+> The following examples using `--import instrumentation.ts` (TypeScript)
+> require Node.js v.20 or later. If you are using Node.js v.18, please use the
+> JavaScript example.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -241,6 +244,14 @@ Listening for requests on http://localhost:8080
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+(Note: If your application is written in JavaScript as ECMAScript Modules (ESM),
+or compiled to ESM from TypeScript, then a loader hook is required to properly
+support instrumentation. Use
+`node --experimental-loader=@opentelemetry/instrumentation/hook.mjs --require ./instrumentation.js app.js`.
+See
+[ESM support docs](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/esm-support.md)
+for details on ESM support in OpenTelemetry.)
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a
 few times. After a while you should see the spans printed in the console by the
@@ -549,6 +560,8 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+{{% include esm-support-note.md %}}
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

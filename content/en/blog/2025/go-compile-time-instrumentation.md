@@ -57,7 +57,7 @@ The most exciting part of this announcement is that it won't be Alibaba's or
 Datadog's solution that "wins". In the true spirit of open source collaboration,
 these two organizations have decided to join forces and commit the necessary
 resources to bootstrap a new
-[Go Compile-Time Instrumentation SIG](https://github.com/open-telemetry/community/blob/main/projects/go-compile-instrumentation.md),
+[Go Compile-Time Instrumentation SIG](https://github.com/open-telemetry/community/blob/c5047e230dcd918218de73a05ffdc52db158dc1a/projects/go-compile-instrumentation.md?from_branch=main),
 with the intention of providing a unified, vendor-neutral approach that picks
 the best aspects of each solution and benefits the community as a whole. They
 will be supported with further contributions from Quesma, bringing in experience

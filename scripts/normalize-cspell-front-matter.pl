@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 #
-# cSpell:ignore textlintrc
+# cSpell:ignore getlines
 
 use strict;
 use warnings;
@@ -54,7 +54,9 @@ while (my $current_file = shift @ARGV) {
     }
 
     if (@words && (!$has_front_matter || !$in_front_matter)) {
-      @words = grep { !/^\s*(cSpell:ignore|spelling):?\s*$/ && !$dictionary{$_} } @words;
+      # Drop words already covered site-wide; compare case-insensitively because
+      # cSpell lower-case entries match all capitalized forms of the word.
+      @words = grep { !/^\s*(cSpell:ignore|spelling):?\s*$/ && !$dictionary{lc $_} } @words;
       my %duplicates;
       # Ensure all words are unique (case-insensitive), drop duplicates
       @words = grep { !$duplicates{lc $_}++ } @words;
@@ -101,17 +103,30 @@ sub getSiteWideDictWords {
   my $textlintrc_file = shift;
 
   my %dictionary = readYmlOrPlainListOfWords('', $dictionary_file);
+  if (-f '.cspell/all-words.txt') {
+    my %allWordsDictionary = readYmlOrPlainListOfWords('', '.cspell/all-words.txt');
+    @dictionary{keys %allWordsDictionary} = values %allWordsDictionary;
+  }
   my %textlintDictionary = readYmlOrPlainListOfWords('terms', $textlintrc_file);
-  # Merge dictionaries
   @dictionary{keys %textlintDictionary} = values %textlintDictionary;
+
+  # Merge words from .cspell.yml
+  if (-f '.cspell.yml') {
+    my %cspellYmlWords = readYmlOrPlainListOfWords('words', '.cspell.yml', 1);
+    @dictionary{keys %cspellYmlWords} = values %cspellYmlWords;
+  }
 
   return %dictionary;
 }
 
-sub readYmlOrPlainListOfWords {
-  # Read plain list of words if $wordsFieldName is empty
-  my $wordsFieldName = shift;
-  my $file_path = shift;
+sub readYmlOrPlainListOfWords($$;$) {
+  # Read plain list of words if $wordsFieldName is empty.
+  my (
+    $wordsFieldName,
+    $file_path,
+    $allow_empty # return empty hash instead of dying when no words found
+  ) = @_;
+  $allow_empty //= 0;
   my $fh = FileHandle->new($file_path, "r") or die "Could not open file '$file_path': $!";
   my @lines = $fh->getlines();
   $fh->close();
@@ -139,7 +154,7 @@ sub readYmlOrPlainListOfWords {
     }
   }
 
-  die "ERROR: no words read from '$file_path'!" unless %dictionary; # sanity check
+  die "ERROR: no words read from '$file_path'!" unless $allow_empty || %dictionary;
 
   return %dictionary;
 }

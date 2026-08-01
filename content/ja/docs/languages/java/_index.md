@@ -1,17 +1,20 @@
 ---
 title: Java
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/Java_SDK.svg"
+  <img width="35" class="img-initial otel-icon" src="/img/logos/32x32/Java_SDK.svg"
   alt="Java"> JavaにおけるOpenTelemetryの言語固有の実装。
-aliases: [/java, /java/metrics, /java/tracing]
+aliases: [/java/metrics, /java/tracing]
+redirects:
+  - { from: /java/*, to: ':splat' }
+  - { from: /docs/java/*, to: ':splat' }
 cascade:
   vers:
-    instrumentation: 2.19.0
-    otel: 1.53.0
-    contrib: 1.48.0
-    semconv: 1.34.0
-weight: 18
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+    instrumentation: 2.30.0
+    otel: 1.64.0
+    contrib: 1.59.0
+    semconv: 1.43.0
+weight: 150
+default_lang_commit: ec870712704ae037419e4e420b7fa3be04e10297
 ---
 
 {{% docs/languages/index-intro java /%}}

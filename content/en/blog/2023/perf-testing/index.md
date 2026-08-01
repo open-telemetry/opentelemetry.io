@@ -12,7 +12,7 @@ OpenTelemetry will have on their application performance. In this blog post I
 will discuss a few recent improvements in tooling around performance
 benchmarking.
 
-### Measuring performance overhead
+## Measuring performance overhead
 
 Instrumentation is not free. It intercepts an application's operations and
 collects (often) a large amount of data, which takes additional CPU and memory.
@@ -31,7 +31,7 @@ With that said a number of OpenTelemetry components include performance tests
 that help catch regressions and can be used to provide some idea of their
 performance characteristics.
 
-### OpenTelemetry Collector
+## OpenTelemetry Collector
 
 The [OpenTelemetry Collector](/docs/collector/) runs
 [end-to-end load tests](https://github.com/open-telemetry/opentelemetry-collector-contrib/actions/workflows/load-tests.yml)
@@ -45,15 +45,15 @@ workflow:
    [complete test results](https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/)
    are available as well.
 
-### Language SDKs
+## Language SDKs
 
 A number of OpenTelemetry SDKs already include existing micro-benchmark tests,
 for example:
 
-- [SpanBenchmark.java](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/jmh/java/io/opentelemetry/sdk/trace/SpanBenchmark.java)
-- [test_benchmark_trace.py](https://github.com/open-telemetry/opentelemetry-python/blob/main/opentelemetry-sdk/tests/performance/benchmarks/trace/test_benchmark_trace.py)
-- [benchmark_test.go](https://github.com/open-telemetry/opentelemetry-go/blob/main/sdk/trace/benchmark_test.go)
-- [benchmark/span.js](https://github.com/open-telemetry/opentelemetry-js/blob/main/packages/opentelemetry-sdk-trace-base/test/performance/benchmark/span.js)
+- [SpanBenchmark.java](https://github.com/open-telemetry/opentelemetry-java/blob/bf3c4f3085d631b08d2cd210c1ddc3cd86182a53/sdk/trace/src/jmh/java/io/opentelemetry/sdk/trace/SpanBenchmark.java?from_branch=main)
+- [test_benchmark_trace.py](https://github.com/open-telemetry/opentelemetry-python/blob/b3ab961b375298791274296099cb45136df0132f/opentelemetry-sdk/tests/performance/benchmarks/trace/test_benchmark_trace.py?from_branch=main)
+- [benchmark_test.go](https://github.com/open-telemetry/opentelemetry-go/blob/80cb9097743d4fe0443cbf9465d01bf8e56cc175/sdk/trace/benchmark_test.go?from_branch=main)
+- [benchmark/span.js](https://github.com/open-telemetry/opentelemetry-js/blob/e5f2d4234e2c172ec7290f140f29a39062087fe3/packages/opentelemetry-sdk-trace-base/test/performance/benchmark/span.js?from_branch=main)
 
 These tests were run only on demand in the past. With the recent tooling
 improvements, Java and JavaScript tests are now run automatically on every merge
@@ -73,7 +73,7 @@ results are as consistent as possible.
 
 There is work in progress to make the same updates for Python and Go.
 
-### Conclusion
+## Conclusion
 
 Performance optimization is often considered only as an afterthought, but it
 does not have to be. We are making improvements to automated tooling and

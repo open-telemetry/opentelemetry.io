@@ -25,7 +25,7 @@ is an implementation of a
 The operator manages:
 
 - [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector)
-- [auto-instrumentation of the workloads using OpenTelemetry instrumentation libraries](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection)
+- [auto-instrumentation of the workloads using OpenTelemetry instrumentation libraries](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)
 
 ## Getting started
 
@@ -59,9 +59,6 @@ spec:
         check_interval: 1s
         limit_percentage: 75
         spike_limit_percentage: 15
-      batch:
-        send_batch_size: 10000
-        timeout: 10s
 
     exporters:
       # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
@@ -71,22 +68,20 @@ spec:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: [memory_limiter, batch]
+          processors: [memory_limiter]
           exporters: [debug]
 EOF
 ```
 
-{{% alert title="Note" %}}
-
-By default, `opentelemetry-operator` uses the
-[`opentelemetry-collector` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector).
-When the operator is installed using
-[Helm charts](/docs/platforms/kubernetes/helm/), the
-[`opentelemetry-collector-k8s` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s)
-is used. If you need a component not found in these releases, you may need to
-[build your own collector](/docs/collector/custom-collector/).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> By default, `opentelemetry-operator` uses the
+> [`opentelemetry-collector` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector).
+> When the operator is installed using
+> [Helm charts](/docs/platforms/kubernetes/helm/), the
+> [`opentelemetry-collector-k8s` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s)
+> is used. If you need a component not found in these releases, you may need to
+> [build your own collector](/docs/collector/extend/ocb/).
 
 For more configuration options and for setting up the injection of
 auto-instrumentation of the workloads using OpenTelemetry instrumentation

@@ -69,22 +69,20 @@ Before we start, ensure you have the following:
     [CLI](https://github.com/openssl/openssl/wiki/Binaries) for generating
     certificates.
 
-{{% alert title="API stability note" color=warning %}}
-
-Since certain parts of the Gateway API are still in alpha/beta phase, the
-support for specific aspects may vary or may not be enabled by default. Please
-refer to the documentation of the Gateway implementation that you are using. For
-example, at the time of writing, if you are using Istio, ensure that
-`PILOT_ENABLE_ALPHA_GATEWAY_API` is enabled during the install.
-
-{{% /alert %}}
+> [!WARNING] API stability note
+>
+> Since certain parts of the Gateway API are still in alpha/beta phase, the
+> support for specific aspects may vary or may not be enabled by default. Refer
+> to the documentation of the Gateway implementation that you are using. For
+> example, at the time of writing, if you are using Istio, ensure that
+> `PILOT_ENABLE_ALPHA_GATEWAY_API` is enabled during the install.
 
 ## What is the Kubernetes Gateway API?
 
 The [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io/) is an evolution
 of the older Ingress API. It provides a more expressive, role-oriented, and
 flexible way to manage inbound traffic to your cluster. The
-[GAMMA initiative](https://gateway-api.sigs.k8s.io/mesh/gamma/) defines the
+[GAMMA initiative](https://gateway-api.sigs.k8s.io/concepts/gamma/) defines the
 Gateway API implementation. It was introduced for the following reasons:
 
 - **Limitations of Ingress:** The Ingress API, while useful, became limiting. It
@@ -199,16 +197,15 @@ openssl req -newkey rsa:4096 -nodes -keyout client.key -out client.csr -subj "${
 openssl x509 -req -in client.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out client.crt -days 365 -sha256
 ```
 
-{{% alert title="Warning" color=warning %}}
-
-For production, never use self-signed certificates for external-facing endpoints
-accessible from the public internet. Use certificates issued by a trusted public
-CA (e.g., Let's Encrypt through cert-manager) or a managed internal PKI system.
-The process of obtaining certs would differ, but the concepts of using them in
-Kubernetes remain similar. Ensure the server certificate's Common Name (CN) or
-Subject Alternative Name (SAN) matches the hostname clients use to connect.
-
-{{% /alert %}}
+> [!WARNING]
+>
+> For production, never use self-signed certificates for external-facing
+> endpoints accessible from the public internet. Use certificates issued by a
+> trusted public CA (e.g., Let's Encrypt through cert-manager) or a managed
+> internal PKI system. The process of obtaining certs would differ, but the
+> concepts of using them in Kubernetes remain similar. Ensure the server
+> certificate's Common Name (CN) or Subject Alternative Name (SAN) matches the
+> hostname clients use to connect.
 
 ### Step 3: Create `otel-collector` namespace
 
@@ -411,11 +408,13 @@ spec:
   configure the backend to which the route forwards the requests. In this case,
   to the `otel-collector-server-svc`.
 
-{{% alert title="Note" %}} We make use of `options` in the gateway for
-implementation-specific configuration of mTLS. Currently, the gateway API does
-not explicitly have `Mutual TLS`
-[mode](https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype). Refer to
-the latest documentation of Gateway API for updates. {{% /alert %}}
+> [!NOTE]
+>
+> We make use of `options` in the gateway for implementation-specific
+> configuration of mTLS. Currently, the gateway API does not explicitly have
+> `Mutual TLS`
+> [mode](https://gateway-api.sigs.k8s.io/reference/api-spec/1.5/spec/#tlsmodetype).
+> Refer to the latest documentation of Gateway API for updates.
 
 Apply the Gateway configuration:
 
@@ -591,7 +590,7 @@ of when configuring this setup during production:
 - When working with routes and gateways in multiple namespaces, you may need
   references of resources such as backend `services`, and other configurations
   from other namespaces. For details, refer to Gateway
-  [ReferenceGrant](https://gateway-api.sigs.k8s.io/api-types/referencegrant/).
+  [ReferenceGrant](https://gateway-api.sigs.k8s.io/reference/api-types/referencegrant/).
 
 ## Alternative Gateway Implementations
 

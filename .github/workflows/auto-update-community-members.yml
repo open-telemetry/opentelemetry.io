@@ -10,53 +10,75 @@ permissions:
   contents: read
 
 jobs:
-  auto-update-versions:
+  auto-update:
     name: Auto-update community members page
     runs-on: ubuntu-latest
     # Remove the if statement below when testing against a fork
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+          # Full history: fix:link-cache needs the drift-status baseline commit
+          fetch-depth: 0
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: '22'
+          node-version-file: .nvmrc
 
       - name: Install dependencies
         working-directory: ./scripts/generate-community-data
         run: npm install
 
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        id: otelbot-token
+        with:
+          # the higher privileged docs token is needed to push commits to an existing PR
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
       - name: Run script
         working-directory: ./scripts/generate-community-data
         run: node generate.js ../../data/community/members.yaml
         env:
-          GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
-      - name: Fix refcache
+      - name: Use CLA approved github bot
         run: |
-          npm run fix:refcache
+          git config user.name otelbot
+          git config user.email 197425009+otelbot@users.noreply.github.com
 
-          git add -A
+      - uses: ./.github/actions/install-lychee
 
-          if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Fix refcache"
-            git push
-          fi
+      - name: Fix link cache
+        env:
+          # Authenticated github.com link checks (rate limits)
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          npm install --omit=optional
+          npm run fix:link-cache
 
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
-          add-paths: 'data/community/members.yaml'
-          author:
-            opentelemetrybot
-            <107717825+opentelemetrybot@users.noreply.github.com>
-          committer:
-            opentelemetrybot
-            <107717825+opentelemetrybot@users.noreply.github.com>
-          token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
-          branch: update-community-members
+          add-paths: |
+            data/community/members.yaml
+            .lycheecache
+          author: otelbot <197425009+otelbot@users.noreply.github.com>
+          committer: otelbot <197425009+otelbot@users.noreply.github.com>
+          token: ${{ steps.otelbot-token.outputs.token }}
+          branch: otelbot/update-community-members
+          delete-branch: true
           title: Update community members
           body: |
             This pull request contains automated updates to files by the GitHub Action.
+
+  report-failure:
+    needs: auto-update
+    if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
+    uses: ./.github/workflows/reusable-report-failure.yml
+    permissions:
+      issues: write # Pass through for failure tracking issues
+      contents: read

@@ -1,0 +1,32 @@
+// Java-SDK page content styles
+
+.config-option {
+  padding-inline-start: 1.5em;
+
+  .label {
+    font-weight: bold;
+  }
+
+  details {
+    background-color: var(--bs-tertiary-bg);
+    margin-bottom: 0.5em;
+
+    summary {
+      display: block;
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::after {
+        color: $secondary;
+        @extend .fas;
+        content: fa-content($nbsp + $fa-var-plus-circle);
+      }
+    }
+
+    &[open] summary::after {
+      @extend .fas;
+      content: fa-content($nbsp + $fa-var-minus-circle);
+    }
+  }
+}

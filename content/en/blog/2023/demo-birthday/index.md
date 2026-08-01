@@ -12,7 +12,7 @@ It's hard to believe as we prepare our 1.4.0 release but the
 since we declared general availability with our
 [1.0.0 release](/blog/2022/announcing-opentelemetry-demo-release/).
 
-### Project Milestones
+## Project Milestones
 
 The demo has achieved remarkable milestones in its first year, with more than
 **70 contributors, 20 official vendor forks, 780 GitHub stars, and 180K Docker
@@ -23,7 +23,7 @@ in new languages, and 7 brand new components / services_.
 Time flies when you're stabilizing semantic conventions. But what's actually
 changed between our 1.0.0 and 1.4.0 releases? Quite a lot actually.
 
-### The Highlights
+## The Highlights
 
 - **2x build time improvements despite adding additional services**
 - _Support added for arm64 architectures (M1 and M2 Macs)_
@@ -35,7 +35,7 @@ changed between our 1.0.0 and 1.4.0 releases? Quite a lot actually.
   [Collector Data Flow Dashboard](/docs/demo/collector-data-flow-dashboard/)**
 - **A myriad of frontend bugfixes**
 - _Our first
-  [Connector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md)
+  [Connector](https://github.com/open-telemetry/opentelemetry-collector/blob/9fd84668bb02d15e0b055516b7eaefc988e0b33a/connector/README.md?from_branch=main)
   in the Collector to demonstrate how telemetry pipelines can be linked_
 - **New OTel SDKs like the Java logging SDK and JavaScript / Go Metric SDK**
 - _New manual metric instruments in the Ad, Currency, Product Catalog services_
@@ -49,13 +49,13 @@ changed between our 1.0.0 and 1.4.0 releases? Quite a lot actually.
 For detailed changes, check out our in depth
 [release notes](https://github.com/open-telemetry/opentelemetry-demo/releases)
 or
-[changelog](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CHANGELOG.md).
+[changelog](https://github.com/open-telemetry/opentelemetry-demo/blob/06d55710725a6d3a3adcbc0f336c472c7ac4a69d/CHANGELOG.md?from_branch=main).
 
-### Get Involved
+## Get Involved
 
 Our contributors are essential to all of this and the project team can't thank
 them enough. New development is constantly ongoing as we add new capabilities
 and the community's tools evolve. If you'd like to help, check out our
-[contributing guidance](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CONTRIBUTING.md)
+[contributing guidance](https://github.com/open-telemetry/opentelemetry-demo/blob/59c9b2ca32be41e464fedc1eed6dcf4ad1503c3d/CONTRIBUTING.md?from_branch=main)
 or join our
 [Slack channel](https://cloud-native.slack.com/archives/C03B4CWV4DA).

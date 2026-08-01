@@ -3,29 +3,40 @@ title: コンテンツの提出
 description: GitHub UI 利用して、またはローカルのフォークから、新しいコンテンツまたはコンテンツの変更を提出する方法を学びます
 aliases: [new-content]
 weight: 15
-default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
+default_lang_commit: 8013aa5f0aae284fa343311981625be6dbb25e5b
+drifted_from_default: true
 ---
 
 新しいドキュメントの内容を追加や改善するには、[プルリクエスト][PR] （PR）を提出してください。
 
-- もし変更が小さかったり、自身が [Git] に慣れていなかったら、[GitHub を使用](#changes-using-github)を参照しページの編集方法を学んでください。
+- もし変更が小さかったり、自身が [Git][] に慣れていなかったら、[GitHub を使用](#changes-using-github)を参照しページの編集方法を学んでください。
 - もしくは、[ローカルのフォークから作業する](#fork-the-repo)を参照し、ローカルのコンピュータから変更を行う方法を学んでください。
 
-{{% alert title="Contributor License Agreement (CLA)" color=warning %}}
+## 生成 AI コントリビューションポリシー {#using-ai}
 
-All contributors are required to [sign a Contributor License Agreement
-(CLA)][CLA] before changes can be reviewed and merged.
+> [!WARNING] **初めてのコントリビューター** は注意してください！
+>
+> [初めてのコントリビューター][first-time contributor]の場合は、以下に注意してください。
+>
+> このリポジトリへの最初の 3 つのコントリビューションは、主に人間が書いたものでなければならず、軽微な AI 支援のみが許可されます（[AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)）。
+> つまり、コードは手作業で書く必要がありますが、AI はコード補完、フォーマット、リンティング、ベストプラクティスへの準拠を支援できます。
+> PR の説明は、AI の関与なしで、完全に人間が書いたものでなければなりません（AIL0）。
+>
+> もちろん、AI ツールを使用して、リポジトリ、プロジェクト、コントリビューション方法などについて質問し、学ぶことはできます。
+>
+> この要件は、コントリビューションしながら学習することを支援し、メンテナーと承認者が限られた時間と帯域を守れるようにするために設けています。
+>
+> コントリビューションが「drive-by」であり、メンテナー側で多くの追加作業をしなくてもマージできることが明らかな場合、メンテナーは例外を認めることがあります。
 
-[CLA]: ../prerequisites/#cla
+生成 AI は許可されていますが、AI が生成したすべてのコンテンツを**レビュー**し、***検証***することは、**あなたの責任**です。
+理解できない場合は、提出しないでください！
 
-{{% /alert %}}
+詳細は、[生成 AI コントリビューションポリシー][Generative AI Contribution Policy]を参照してください。
 
-{{% alert title="ヒント: Draft ステータス" %}}
+[first-time contributor]: ../#first-time-contributing
+[Generative AI Contribution Policy]: https://github.com/open-telemetry/community/blob/main/policies/genai.md
 
-コンテンツがレビューの準備ができていないことをメンテナーに知らせるために、プルリクエストのステータスを **Draft** にしてください。
-メンテナーは、Draft ステータスを解除するまでコンテンツを完全なレビューはしませんが、コメントや高レベルのレビューを行うことがあります。
-
-{{% /alert %}}
+## コントリビューション方法 {#how-to-contribute}
 
 以下の図は新しいドキュメントにコントリビュートする方法を示しています。
 
@@ -34,10 +45,10 @@ flowchart LR
     subgraph first[コントリビュートする方法]
     direction TB
        T[ ] -.-
-       B[GitHub でフォークする] --- C[Markdownでドキュメントを作成する<br>Hugo でサイトをビルドする]
+       B[GitHub でフォークする] --- C[Markdownでドキュメントを作成し、Hugo でサイトをビルドする]
        C --- D[フォーク先にソースコードを push する]
        D --- E[プルリクエストを公開する]
-       E --- F[CNCF CLA に署名する]
+       E --- F[<a href="../prerequisites/#cla">CNCF CLA</a> に署名する]
     end
 
 classDef grey fill:#dddddd,stroke:#ffffff,stroke-width:px,color:#000000, font-size:15px;
@@ -49,6 +60,11 @@ class first,second white
 ```
 
 _図 1. 新しいコンテンツにコントリビュートする。_
+
+> [!TIP]
+>
+> コンテンツがレビューの準備ができていないことをメンテナーに知らせるために、プルリクエストのステータスを **Draft** にしてください。
+> メンテナーは、Draft ステータスを解除するまでコンテンツを完全にレビューしませんが、コメントや高レベルのレビューを行うことがあります。
 
 ## GitHub を使用 {#changes-using-github}
 
@@ -109,12 +125,12 @@ _図 2. GitHub を利用した PR の公開手順。_
 
 1. **File changed**タブに移動してください。
 1. プルリクエストによって変更されたファイルのいずれかで、鉛筆（編集）アイコンを選択します。
-1. 求めら得た変更を加えください。 コードの提案があれば、適用してください。
+1. 求められた変更を加えください。 コードの提案があれば、適用してください。
 1. 変更をコミットしてください。
 
 レビューが完了したら、レビュアーは PR をマージして変更が数分後に反映されます。
 
-### Fixing PR check failures {#fixing-prs-in-github}
+### PR チェックの失敗を修正する {#fixing-prs-in-github}
 
 PR を提出した後に、GitHub はいくつかのビルドチェックを実行します。
 フォーマットの問題といった、特定のチェックの失敗は自動的に修正できます。
@@ -122,38 +138,44 @@ PR を提出した後に、GitHub はいくつかのビルドチェックを実�
 以下のコメントを PR に追加してください。
 
 ```text
-/fix:all
+/fix
 ```
 
 これは、OpenTelemetry bot がビルドの問題を修正しようとします。
-もしくは、特定の失敗に対処するために、次の修正コマンドの 1 つを実行できます。
+bot は修正コマンドへのリンクを含む進捗コメントで応答し、結果が出るとそのコメントを更新します。
+つまり、発行した各修正コマンドごとに bot のコメントが作成されます。
+もしくは、特定の失敗に対処するために、次の修正コマンドから適切なものを実行してもよいでしょう。
 
 ```text
-fix:dict
-fix:expired
-fix:filenames
-fix:format
-fix:htmltest-config
-fix:i18n
-fix:markdown
-fix:refcache
-fix:submodule
-fix:text
+/fix:code-excerpts
+/fix:dict
+/fix:expired
+/fix:filenames
+/fix:format
+/fix:i18n
+/fix:l10n
+/fix:markdown
+/fix:refcache
+/fix:submodule
+/fix:text
 ```
 
-{{% alert title="Pro Tip" %}}
+修正コマンドはコメントの最初の行に記述する必要があります。
+その後の行に説明文を追加できます。
+別の修正コマンドが実行中に新しい修正コマンドを発行すると、実行中のものがキャンセルされ、最新のコマンドが優先されます。
+可能な場合、キャンセルされた実行の bot コメントはキャンセルされた旨を示すように更新されます。
 
-`fix` コマンドをローカルで実行できます。
-修正コマンドの全リストは、`npm run -s '_list:fix:*'` を実行してください。
-
-{{% /alert %}}
+> [!TIP] Pro tip
+>
+> `fix` コマンドをローカルで実行できます。
+> 修正コマンドの全リストを確認するには、`npm run -s '_list:fix:*'` を実行してください。
 
 ## ローカルで作業する {#fork-the-repo}
 
 Git に慣れている場合もしくは、変更が数行以上の場合は、ローカルのフォークから作業してください。
 
 パソコンに [git がインストール済み][`git` installed]であることを確認してください。
-Git のユーザーインターフェースも利用できます。
+Git のユーザーインターフェイスも利用できます。
 
 図 3 は、ローカルのフォークから作業するときに従う手順を示しています。詳細はそれぞれの手順に従ってください。
 
@@ -353,7 +375,7 @@ npm run test-and-fix
 
 ```sh
 npm run test    # ファイルを更新せずにチェックのみを実行します
-npm run fix:all # ファイルを更新する場合があります。
+npm run fix     # ファイルを更新する場合があります。
 ```
 
 利用可能な NPM スクリプトのリストを表示するには、`npm run` を実行してください。
@@ -391,8 +413,8 @@ PR がマージされる前に、レビューと編集を数回繰り返すこ�
 このプロセスをできるだけ簡単にするために、以下のガイドラインに従ってください。
 
 - もしあなたの PR が簡単な修正でない場合は、**フォークから作業**してください。 リポジトリの上部にある [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) ボタンをクリックし、フォークをローカルにクローンしてください。準備ができたら、アップストリームリポジトリに PR を作成してください。
-- あたなたのフォークの **`main` ブランチから作業をせずに**、PR 専用のブランチを作成してください。
-- メンテナーが[あなたのプルリクエストに変更を加えられること](https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)を確認してください。
+- あなたのフォークの **`main` ブランチから作業をせずに**、PR 専用のブランチを作成してください。
+- メンテナーが[あなたのプルリクエストに変更を加えられること](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)を確認してください。
 
 ### レビュアーからの変更 {#changes-from-reviewers}
 

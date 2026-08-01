@@ -1,0 +1,20 @@
+title: Oracle Database Metrics Exporter
+registryType: utilities
+language: go
+tags:
+  - oracle
+  - database
+  - exporter
+  - collector
+urls:
+  repo: https://github.com/oracle/oracle-db-appdev-monitoring
+  docs: https://oracle.github.io/oracle-db-appdev-monitoring/
+license: UPL
+description: OpenTelemetry metrics collection for your Oracle Database instances
+authors:
+  - name: Oracle
+    url: https://github.com/oracle
+    email: opensource_ww_grp@oracle.com
+createdAt: 2025-09-17
+isNative: false
+isFirstParty: false

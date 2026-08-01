@@ -1,4 +1,6 @@
-# This file is used to define the owners of the content modules in the OpenTelemetry repository.
+# This file defines suggested reviewers for component-owned files.
+# For required reviewers, see .github/CODEOWNERS.
+
 components:
   content-modules:
     - open-telemetry/docs-maintainers
@@ -32,6 +34,10 @@ components:
     - open-telemetry/operator-approvers
   content/en/docs/platforms/client-apps/android:
     - open-telemetry/android-approvers
+  content/en/docs/platforms/client-apps/ios:
+    - open-telemetry/swift-approvers
+  content/en/docs/platforms/client-apps/web:
+    - open-telemetry/browser-approvers
   content/en/docs/platforms/faas:
     - open-telemetry/lambda-extension-approvers
   content/en/docs/languages/cpp:
@@ -46,7 +52,7 @@ components:
     - open-telemetry/java-instrumentation-approvers
   content/en/docs/languages/js:
     - open-telemetry/javascript-approvers
-  content/en/docs/languages/net:
+  content/en/docs/languages/dotnet:
     - open-telemetry/dotnet-approvers
     - open-telemetry/dotnet-instrumentation-approvers
   content/en/docs/languages/php:
@@ -64,36 +70,24 @@ components:
     - open-telemetry/sig-security-maintainers
   content/en/docs/specs:
     - open-telemetry/specs-approvers
+  content/en/docs/zero-code/go:
+    - open-telemetry/go-approvers
+    - open-telemetry/go-instrumentation-approvers
   content/en/docs/zero-code/java:
     - open-telemetry/java-approvers
     - open-telemetry/java-instrumentation-approvers
   content/en/docs/zero-code/js:
     - open-telemetry/javascript-approvers
-  content/en/docs/zero-code/net:
+  content/en/docs/zero-code/dotnet:
     - open-telemetry/dotnet-approvers
     - open-telemetry/dotnet-instrumentation-approvers
   content/en/docs/zero-code/obi:
     - open-telemetry/ebpf-instrumentation-approvers
-  content/en/ecosystem/demo:
-    - open-telemetry/demo-approvers
-  content/zh:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-zh-approvers
-  content/ja:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-ja-approvers
-  content/pt:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-pt-approvers
-  content/es:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-es-approvers
-  content/fr:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-fr-approvers
-  content/bn:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-bn-approvers
-  content/uk:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-uk-approvers
+  content/en/docs/zero-code/php:
+    - open-telemetry/php-approvers
+  content/en/docs/zero-code/python:
+    - open-telemetry/python-approvers
+
+  # No-owner files:
+  .lycheecache:
+    - open-telemetry/docs-approvers

@@ -15,7 +15,7 @@ In addition, the project continued to grow the number of contributors, being the
 second most active project in the CNCF for a second year in a row, behind
 Kubernetes.
 
-### What's Contribfest?
+## What's Contribfest?
 
 In an effort to bring more contributors to the table, OpenTelemetry maintainers
 hosted the project’s first [Contribfest](https://sched.co/1R2rQ) at KubeCon
@@ -33,7 +33,7 @@ items that would be appropriate to tackle in that time. Some slides were also
 prepared, to give attendees an overview of the project, help them navigate the
 repositories, and explain the process of submitting code.
 
-### The event
+## The event
 
 When the day of the event arrived, the room was completely full. After a few
 minutes to cover the content in the slides, contributors were ready to write

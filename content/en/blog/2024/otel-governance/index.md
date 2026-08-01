@@ -12,18 +12,18 @@ recent security audit, and building bridges between people with similar ideas �
 all with the ultimate goal of helping the OTel community, as a whole, succeed.
 
 For nearly three years now, I’ve also been a member of the
-[OpenTelemetry Governance Committee (GC)](https://github.com/open-telemetry/community/blob/main/community-members.md#governance-committee).
+[OpenTelemetry Governance Committee (GC)](https://github.com/open-telemetry/community/blob/b35f0f6c9801bfbe894211fb3d95afa3157662ec/community-members.md?from_branch=main#governance-committee).
 I was first elected in October 2021, and then re-elected in October 2023 for
 another two-year term. OpenTelemetry’s GC members, along with the
-[Technical Committee (TC)](https://github.com/open-telemetry/community/blob/main/community-members.md#technical-committee),
+[Technical Committee (TC)](https://github.com/open-telemetry/community/blob/b35f0f6c9801bfbe894211fb3d95afa3157662ec/community-members.md?from_branch=main#technical-committee),
 serve as the official maintainers of the project from the perspective of the
 CNCF.
 
 While the TC
-[focuses on technical matters](https://github.com/open-telemetry/community/blob/main/tech-committee-charter.md)
+[focuses on technical matters](https://github.com/open-telemetry/community/blob/a1cf837e5516294ce1b5023095467b24a7ff6f44/tech-committee-charter.md?from_branch=main)
 — such as determining acceptable changes to the specifications, deciding on code
 donations, and resolving technical disagreements — the GC
-[takes on a more strategic role](https://github.com/open-telemetry/community/blob/main/governance-charter.md).
+[takes on a more strategic role](https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main).
 This involves defining the project’s overall roadmap and ensuring its continued
 success from all perspectives, including our original goal of providing a
 vendor-neutral instrumentation and collection framework.
@@ -70,7 +70,7 @@ our current policies, drafting new ones when necessary, and updating existing
 ones to reflect the evolving needs of the project.
 
 Two key areas I’ve worked on are our
-[community values](https://github.com/open-telemetry/community/blob/main/mission-vision-values.md)
+[community values](https://github.com/open-telemetry/community/blob/e9411eec532047b73e68acb492ff7dd3e2b91256/mission-vision-values.md?from_branch=main)
 and naming policy recommendations for external projects and components.
 Reviewing our values ensures we promote desired behaviors and discourage
 negative ones, fostering a collaborative and respectful environment.
@@ -81,9 +81,9 @@ coherence of the OpenTelemetry project.
 
 ## Sponsoring SIGs
 
-[Anyone can propose](https://github.com/open-telemetry/community/blob/main/project-management.md)
+[Anyone can propose](https://github.com/open-telemetry/community/blob/d90e0a58c738b3287f11aeb738b49eb2d63b6047/project-management.md?from_branch=main)
 a new
-[SIG (Special Interest Group)](https://github.com/open-telemetry/community/blob/main/README.md#special-interest-groups)
+[SIG (Special Interest Group)](https://github.com/open-telemetry/community/blob/eee7126994dd85e1257f663969e8a84f8bd4a8f4/README.md?from_branch=main#special-interest-groups)
 in OpenTelemetry. These groups are dedicated to advancing a specific part of the
 OTel project, such as new signals, language SDKs/APIs, or semantic conventions.
 Proposals need two sponsors: one from the TC and one from the GC. Being a GC
@@ -103,7 +103,7 @@ in recruiting team members or implementation.
 ## Check-ins with SIG maintainers
 
 A relatively new process in the OpenTelemetry community is the
-[GC monthly check-in](https://github.com/open-telemetry/community/blob/main/gc-check-ins.md)
+[GC monthly check-in](https://github.com/open-telemetry/community/blob/fe12ecb89802550b4d3daa9a30646157c540b391/gc-check-ins.md?from_branch=main)
 with SIG maintainers. Each GC member was asked to pick about 4 SIGs, and then
 act as a liaison between those SIGs and the GC. Once a month, I ask SIG
 maintainers from Collector, Operator, Security, and Go Autoinstrumentation

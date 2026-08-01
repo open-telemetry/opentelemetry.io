@@ -7,4 +7,4 @@ canonical_url: https://medium.com/opentelemetry/ADD-REST-OF-PATH-HERE # TODO
 
 TODO: INTRO SENTENCE GOES HERE. For all the details, see the [original post][].
 
-[original post]: {{% param canonical_url %}}
+[original post]: <{{% param canonical_url %}}>

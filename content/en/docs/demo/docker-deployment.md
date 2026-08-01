@@ -12,7 +12,9 @@ cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 - Docker
 - [Docker Compose](https://docs.docker.com/compose/install/) v2.0.0+
 - Make (optional)
-- 6 GB of RAM for the application
+- 6 GB of RAM for the application (or ~3 GB using
+  [minimal mode](#run-in-minimal-mode))
+- 14 GB of disk space
 
 ## Get and run the demo
 
@@ -44,7 +46,33 @@ docker compose up --force-recreate --remove-orphans --detach
 
     {{% /tab %}} {{< /tabpane >}}
 
-4.  (Optional) Enable API observability-driven testing[^1]:
+    ### Run in minimal mode
+
+    If you have limited resources, you can start the demo without Kafka and its
+    dependent services, reducing memory usage to approximately 3 GB of RAM:
+
+    {{< tabpane text=true >}} {{% tab Make %}}
+
+```shell
+make start-minimal
+```
+
+    {{% /tab %}} {{% tab Docker %}}
+
+```shell
+docker compose -f docker-compose.minimal.yml up --force-recreate --remove-orphans --detach
+```
+
+    {{% /tab %}} {{< /tabpane >}}
+
+    The following services are **not** included in minimal mode:
+
+    - `accounting`
+    - `fraud-detection`
+    - `flagd-ui`
+    - `kafka`
+
+4. (Optional) Enable API observability-driven testing[^1]:
 
     {{< tabpane text=true >}} {{% tab Make %}}
 
@@ -66,7 +94,6 @@ Once the images are built and containers are started you can access:
 
 - Web store: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
-- Load Generator UI: <http://localhost:8080/loadgen/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
 - Tracetest UI: <http://localhost:11633/>, only when using
   `make run-tracetesting`
@@ -130,10 +157,12 @@ with an editor.
         exporters: [spanmetrics, otlphttp/example]
   ```
 
-{{% alert title="Note" %}} When merging YAML values with the Collector, objects
-are merged and arrays are replaced. The `spanmetrics` exporter must be included
-in the array of exporters for the `traces` pipeline if overridden. Not including
-this exporter will result in an error. {{% /alert %}}
+> [!NOTE]
+>
+> When merging YAML values with the Collector, objects are merged and arrays are
+> replaced. The `spanmetrics` exporter must be included in the array of
+> exporters for the `traces` pipeline if overridden. Not including this exporter
+> will result in an error.
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require

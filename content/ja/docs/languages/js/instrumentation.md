@@ -5,22 +5,20 @@ aliases:
   - manual
 weight: 30
 description: OpenTelemetry JavaScript の計装
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
 cSpell:ignore: dicelib Millis rolldice
 ---
 
 {{% include instrumentation-intro.md %}}
 
-{{% alert title="注意" %}}
-
-このページでは、コードに _手動で_ トレース、メトリクス、ログを追加する方法を学びます。
-ただし、1種類の計装のみを使用することに制限されているわけではありません。
-[自動計装](/docs/zero-code/js/)を使用して開始し、必要に応じて手動計装でコードを充実させることができます。
-
-また、コードが依存するライブラリについては、自分で計装コードを書く必要はありません。
-OpenTelemetryが _ネイティブに_ 組み込まれている場合があるか、[計装ライブラリ](/docs/languages/js/libraries/)を利用できる場合があります。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> このページでは、コードに _手動で_ トレース、メトリクス、ログを追加する方法を学びます。
+> ただし、1種類の計装のみを使用することに制限されているわけではありません。
+> [自動計装](/docs/zero-code/js/)を使用して開始し、必要に応じて手動計装でコードを充実させることができます。
+>
+> また、コードが依存するライブラリについては、自分で計装コードを書く必要はありません。
+> OpenTelemetryが _ネイティブに_ 組み込まれている場合があるか、[計装ライブラリ](/docs/languages/js/libraries/)を利用できる場合があります。
 
 ## サンプルアプリケーションの準備 {#example-app}
 
@@ -28,6 +26,8 @@ OpenTelemetryが _ネイティブに_ 組み込まれている場合があるか
 
 サンプルアプリケーションを使用する必要はありません。
 独自のアプリケーションやライブラリを計装したい場合は、ここでの指示に従って、プロセスを独自のコードに適応させてください。
+
+{{% include esm-support-note.md %}}
 
 ### 依存関係 {#example-app-dependencies}
 
@@ -42,11 +42,8 @@ npm init -y
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
-npm install typescript \
-  ts-node \
-  @types/node \
-  express \
-  @types/express
+npm install express @types/express
+npm install -D tsx  # TypeScript (.ts)ファイルをnodeで直接実行するためのツール
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -108,7 +105,7 @@ module.exports = { rollTheDice };
 
 ```ts
 /*app.ts*/
-import express, { Express } from 'express';
+import express, { type Express } from 'express';
 import { rollTheDice } from './dice';
 
 const PORT: number = parseInt(process.env.PORT || '8080');
@@ -158,12 +155,12 @@ app.listen(PORT, () => {
 
 {{% /tab %}} {{< /tabpane >}}
 
-動作することを確認するには、次のコマンドでアプリケーションケーションを実行し、Webブラウザで<http://localhost:8080/rolldice?rolls=12>を開きます。
+動作することを確認するには、次のコマンドでアプリケーションを実行し、Webブラウザで<http://localhost:8080/rolldice?rolls=12>を開きます。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
-$ npx ts-node app.ts
+$ npx tsx app.ts
 Listening for requests on http://localhost:8080
 ```
 
@@ -188,19 +185,15 @@ npm install @opentelemetry/api @opentelemetry/resources @opentelemetry/semantic-
 
 ### SDKの初期化 {#initialize-the-sdk}
 
-{{% alert title="注意" %}}
+> [!NB] ライブラリを計装している場合は、**このステップをスキップしてください**。
 
-ライブラリを計装している場合は、**このステップをスキップしてください**。
-
-{{% /alert %}}
-
-Node.jsアプリケーションケーションを計装する場合は、[Node.js用OpenTelemetry SDK](https://www.npmjs.com/package/@opentelemetry/sdk-node)をインストールします。
+Node.jsアプリケーションを計装する場合は、[Node.js用OpenTelemetry SDK](https://www.npmjs.com/package/@opentelemetry/sdk-node)をインストールします。
 
 ```shell
 npm install @opentelemetry/sdk-node
 ```
 
-アプリケーションケーション内の他のモジュールがロードされる前に、SDKを初期化する必要があります。
+アプリケーション内の他のモジュールがロードされる前に、SDKを初期化する必要があります。
 SDKの初期化に失敗した場合、または遅すぎる場合、APIからトレーサーまたはメーターを取得するライブラリにはno-op実装が提供されます。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
@@ -236,18 +229,18 @@ sdk.start();
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-/*instrumentation.js*/
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
-const {
+/*instrumentation.mjs*/
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
-} = require('@opentelemetry/sdk-metrics');
-const { resourceFromAttributes } = require('@opentelemetry/resources');
-const {
+} from '@opentelemetry/sdk-metrics';
+import { resourceFromAttributes } from '@opentelemetry/resources';
+import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
-} = require('@opentelemetry/semantic-conventions');
+} from '@opentelemetry/semantic-conventions';
 
 const sdk = new NodeSDK({
   resource: resourceFromAttributes({
@@ -274,16 +267,21 @@ sdk.start();
 
 コードを確認するには、ライブラリを要求してアプリケーションを実行します。
 
+> [!NOTE]
+>
+> 以下の`--import instrumentation.ts`（TypeScript）を使用した例は、Node.js v20以降が必要です。
+> Node.js v18を使用している場合は、JavaScriptの例を使用してください。
+
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
-npx ts-node --require ./instrumentation.ts app.ts
+npx tsx --import ./instrumentation.ts app.ts
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
-node --require ./instrumentation.js app.js
+node --import ./instrumentation.mjs app.js
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -298,11 +296,7 @@ node --require ./instrumentation.js app.js
 
 ### トレーシングの初期化 {#initialize-tracing}
 
-{{% alert title="注意" %}}
-
-ライブラリを計装している場合は、**このステップをスキップしてください**。
-
-{{% /alert %}}
+> [!NB] ライブラリを計装している場合は、**このステップをスキップしてください**。
 
 アプリケーションで[トレーシング](/docs/concepts/signals/traces/)を有効にするには、[`Tracer`](/docs/concepts/signals/traces/#tracer)を作成できる初期化された[`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider)が必要です。
 
@@ -399,7 +393,7 @@ provider.register();
 
 {{% /tab %}} {{< /tabpane >}}
 
-このファイルをWebアプリケーションケーションにバンドルして、Webアプリケーションケーションの残りの部分でトレーシングを使用できるようにする必要があります。
+このファイルをWebアプリケーションにバンドルして、Webアプリケーションの残りの部分でトレーシングを使用できるようにする必要があります。
 
 これはまだアプリケーションに影響を与えません。アプリケーションからテレメトリーを発行するには、[スパンを作成](#create-spans)する必要があります。
 
@@ -407,7 +401,7 @@ provider.register();
 
 デフォルトでは、Node SDKは`BatchSpanProcessor`を使用し、Web SDKの例でもこのスパンプロセッサーが選択されています。
 `BatchSpanProcessor`は、エクスポートされる前にスパンをバッチで処理します。
-これは通常、アプリケーションケーションに使用する適切なプロセッサーです。
+これは通常、アプリケーションに使用する適切なプロセッサーです。
 
 対照的に、`SimpleSpanProcessor`はスパンが作成されると処理します。
 つまり、5つのスパンを作成した場合、それぞれがコードで次のスパンが作成される前に処理およびエクスポートされます。
@@ -419,7 +413,7 @@ provider.register();
 
 ### トレーサーの取得 {#acquiring-a-tracer}
 
-手動トレーシングコードを記述するアプリケーションケーション内のどこでも、`getTracer`を呼び出してトレーサーを取得する必要があります。
+手動トレーシングコードを記述するアプリケーション内のどこでも、`getTracer`を呼び出してトレーサーを取得する必要があります。
 例を挙げましょう。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
@@ -456,18 +450,18 @@ const tracer = opentelemetry.trace.getTracer(
 名前は必須ですが、バージョンはオプションであるにもかかわらず推奨されます。
 
 アプリケーションで必要なときに`getTracer`を呼び出すことが、`tracer`インスタンスをアプリケーションの残りの部分にエクスポートするよりも一般的に推奨されます。
-これは、他の必要な依存関係が関与している場合のより複雑なアプリケーションケーションロードの問題を回避するのに役立ちます。
+これは、他の必要な依存関係が関与している場合のより複雑なアプリケーションロードの問題を回避するのに役立ちます。
 
 [サンプルアプリケーション](#example-app)の場合、適切な計装スコープでトレーサーを取得できる場所が2つあります。
 
-まず、_アプリケーションケーションファイル_ `app.ts`（または`app.js`）で下記を実装します。
+まず、_アプリケーションファイル_ `app.ts`（または`app.js`）で下記を実装します。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
-```ts
+```ts {hl_lines=[6]}
 /*app.ts*/
 import { trace } from '@opentelemetry/api';
-import express, { Express } from 'express';
+import express, { type Express } from 'express';
 import { rollTheDice } from './dice';
 
 const tracer = trace.getTracer('dice-server', '0.1.0');
@@ -493,7 +487,7 @@ app.listen(PORT, () => {
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-```js
+```js {hl_lines=[6]}
 /*app.js*/
 const { trace } = require('@opentelemetry/api');
 const express = require('express');
@@ -526,7 +520,7 @@ app.listen(PORT, () => {
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
-```ts
+```ts {hl_lines=[4]}
 /*dice.ts*/
 import { trace } from '@opentelemetry/api';
 
@@ -547,7 +541,7 @@ export function rollTheDice(rolls: number, min: number, max: number) {
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-```js
+```js {hl_lines=[4]}
 /*dice.js*/
 const { trace } = require('@opentelemetry/api');
 
@@ -576,8 +570,8 @@ module.exports = { rollTheDice };
 
 OpenTelemetry JavaScript APIは、スパンを作成できる2つのメソッドを公開しています。
 
-- [`tracer.startSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startSpan)：コンテキストに設定せずに新しいスパンを開始します。
-- [`tracer.startActiveSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startActiveSpan)：新しいスパンを開始し、作成されたスパンを最初の引数として渡す特定のコールバック関数を呼び出します。新しいスパンはコンテキストに設定され、このコンテキストは関数呼び出しの期間中アクティブになります。
+- [`tracer.startSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.Tracer.html#startspan)：コンテキストに設定せずに新しいスパンを開始します。
+- [`tracer.startActiveSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.Tracer.html#startactivespan)：新しいスパンを開始し、作成されたスパンを最初の引数として渡す特定のコールバック関数を呼び出します。新しいスパンはコンテキストに設定され、このコンテキストは関数呼び出しの期間中アクティブになります。
 
 ほとんどの場合、スパンとそのコンテキストをアクティブに設定するため、後者（`tracer.startActiveSpan`）を使用することをお勧めします。
 
@@ -586,7 +580,7 @@ OpenTelemetry JavaScript APIは、スパンを作成できる2つのメソッド
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import { trace, Span } from '@opentelemetry/api';
+import { trace, type Span } from '@opentelemetry/api';
 
 /* ... */
 
@@ -631,13 +625,13 @@ function rollTheDice(rolls, min, max) {
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
-ts-node --require ./instrumentation.ts app.ts
+npx tsx --import ./instrumentation.ts app.ts
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
-node --require ./instrumentation.js app.js
+node --import ./instrumentation.mjs app.js
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -645,19 +639,28 @@ node --require ./instrumentation.js app.js
 しばらくすると、`ConsoleSpanExporter`によってコンソールにスパンが出力されるのが表示されるはずです。
 次のようなものです。
 
-```json
+```js
 {
-  "traceId": "6cc927a05e7f573e63f806a2e9bb7da8",
-  "parentId": undefined,
-  "name": "rollTheDice",
-  "id": "117d98e8add5dc80",
-  "kind": 0,
-  "timestamp": 1688386291908349,
-  "duration": 501,
-  "attributes": {},
-  "status": { "code": 0 },
-  "events": [],
-  "links": []
+  resource: {
+    attributes: {
+      'service.name': 'dice-server',
+      'service.version': '0.1.0',
+      // ...
+    }
+  },
+  instrumentationScope: { name: 'dice-lib', version: undefined, schemaUrl: undefined },
+  traceId: '30d32251088ba9d9bca67b09c43dace0',
+  parentSpanContext: undefined,
+  traceState: undefined,
+  name: 'rollTheDice',
+  id: 'cc8a67c2d4840402',
+  kind: 0,
+  timestamp: 1756165206470000,
+  duration: 35.584,
+  attributes: {},
+  status: { code: 0 },
+  events: [],
+  links: []
 }
 ```
 
@@ -721,32 +724,41 @@ function rollTheDice(rolls, min, max) {
 
 このコードは、各 _ロール_ に対して、`parentSpan`のIDを親IDとして持つ子スパンを作成します。
 
-```json
+```js
 {
-  "traceId": "ff1d39e648a3dc53ba710e1bf1b86e06",
-  "parentId": "9214ff209e6a8267",
-  "name": "rollOnce:4",
-  "id": "7eccf70703e2bccd",
-  "kind": 0,
-  "timestamp": 1688387049511591,
-  "duration": 22,
-  "attributes": {},
-  "status": { "code": 0 },
-  "events": [],
-  "links": []
+  traceId: '6469e115dc1562dd768c999da0509615',
+  parentSpanContext: {
+    traceId: '6469e115dc1562dd768c999da0509615',
+    spanId: '38691692d6bc3395',
+    // ...
+  },
+  name: 'rollOnce:0',
+  id: '36423bc1ce7532b0',
+  timestamp: 1756165362215000,
+  duration: 85.667,
+  // ...
 }
 {
-  "traceId": "ff1d39e648a3dc53ba710e1bf1b86e06",
-  "parentId": undefined,
-  "name": "rollTheDice",
-  "id": "9214ff209e6a8267",
-  "kind": 0,
-  "timestamp": 1688387049510303,
-  "duration": 1314,
-  "attributes": {},
-  "status": { "code": 0 },
-  "events": [],
-  "links": []
+  traceId: '6469e115dc1562dd768c999da0509615',
+  parentSpanContext: {
+    traceId: '6469e115dc1562dd768c999da0509615',
+    spanId: '38691692d6bc3395',
+    // ...
+  },
+  name: 'rollOnce:1',
+  id: 'ed9bbba2264d6872',
+  timestamp: 1756165362215000,
+  duration: 16.834,
+  // ...
+}
+{
+  traceId: '6469e115dc1562dd768c999da0509615',
+  parentSpanContext: undefined,
+  name: 'rollTheDice',
+  id: '38691692d6bc3395',
+  timestamp: 1756165362214000,
+  duration: 1022.209,
+  // ...
 }
 ```
 
@@ -755,7 +767,7 @@ function rollTheDice(rolls, min, max) {
 前の例では、アクティブなスパンを作成する方法を示しました。
 場合によっては、ネストされているのではなく、互いに兄弟である非アクティブなスパンを作成したいことがあります。
 
-```javascript
+```js
 const doWork = () => {
   const span1 = tracer.startSpan('work-1');
   // 何かの作業
@@ -883,20 +895,20 @@ function rollTheDice(rolls, min, max) {
 HTTPやデータベース呼び出しなどの既知のプロトコルでの操作を表すスパンには、セマンティック規約があります。これらのスパンのセマンティック規約は、[トレースセマンティック規約](/docs/specs/semconv/general/trace/)の仕様で定義されています。
 このガイドのシンプルな例では、ソースコード属性を使用できます。
 
-まず、依存関係としてセマンティック規約をアプリケーションケーションに追加します。
+まず、依存関係としてセマンティック規約をアプリケーションに追加します。
 
 ```shell
 npm install --save @opentelemetry/semantic-conventions
 ```
 
-アプリケーションケーションファイルの先頭に次を追加します。
+アプリケーションファイルの先頭に次を追加します。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import {
-  SEMATTRS_CODE_FUNCTION,
-  SEMATTRS_CODE_FILEPATH,
+  ATTR_CODE_FUNCTION_NAME,
+  ATTR_CODE_FILE_PATH,
 } from '@opentelemetry/semantic-conventions';
 ```
 
@@ -904,8 +916,8 @@ import {
 
 ```js
 const {
-  SEMATTRS_CODE_FUNCTION,
-  SEMATTRS_CODE_FILEPATH,
+  ATTR_CODE_FUNCTION_NAME,
+  ATTR_CODE_FILE_PATH,
 } = require('@opentelemetry/semantic-conventions');
 ```
 
@@ -913,11 +925,11 @@ const {
 
 最後に、セマンティック属性を含めるようにファイルを更新できます。
 
-```javascript
+```js
 const doWork = () => {
   tracer.startActiveSpan('app.doWork', (span) => {
-    span.setAttribute(SEMATTRS_CODE_FUNCTION, 'doWork');
-    span.setAttribute(SEMATTRS_CODE_FILEPATH, __filename);
+    span.setAttribute(ATTR_CODE_FUNCTION_NAME, 'doWork');
+    span.setAttribute(ATTR_CODE_FILE_PATH, __filename);
 
     // 何かの作業を行う...
 
@@ -1179,15 +1191,11 @@ const doWork = (parent, i) => {
 ## メトリクス {#metrics}
 
 [メトリクス](/docs/concepts/signals/metrics)は、個々の測定値を集計に結合し、システム負荷の関数として一定のデータを生成します。
-集計には、低レベルの問題を診断するために必要な詳細が欠けていますが、傾向を特定し、アプリケーションケーションランタイムのテレメトリーを提供することでスパンを補完します。
+集計には、低レベルの問題を診断するために必要な詳細が欠けていますが、傾向を特定し、アプリケーションランタイムのテレメトリーを提供することでスパンを補完します。
 
 ### メトリクスの初期化 {#initialize-metrics}
 
-{{% alert %}}
-
-ライブラリを計装している場合は、このステップをスキップしてください。
-
-{{% /alert %}}
+> [!NB] ライブラリを計装している場合は、**このステップをスキップしてください**。
 
 アプリケーションで[メトリクス](/docs/concepts/signals/metrics/)を有効にするには、[`Meter`](/docs/concepts/signals/metrics/#meter)を作成できる初期化された[`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider)が必要です。
 
@@ -1294,18 +1302,18 @@ opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
 
 {{% /tab %}} {{< /tabpane >}}
 
-アプリケーションを実行するときに、このファイルを`--require`する必要があります。
+アプリケーションを実行するときに、このファイルを`--import`する必要があります。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
-ts-node --require ./instrumentation.ts app.ts
+npx tsx --import ./instrumentation.ts app.ts
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
-node --require ./instrumentation.js app.js
+node --import ./instrumentation.mjs app.js
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -1314,7 +1322,7 @@ node --require ./instrumentation.js app.js
 
 ### メーターの取得 {#acquiring-a-meter}
 
-手動で計装されたコードがあるアプリケーションケーションのどこでも、`getMeter`を呼び出してメーターを取得できます。
+手動で計装されたコードがあるアプリケーションのどこでも、`getMeter`を呼び出してメーターを取得できます。
 例を挙げましょう。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
@@ -1349,18 +1357,18 @@ const myMeter = opentelemetry.metrics.getMeter(
 名前は必須ですが、バージョンはオプションであるにもかかわらず推奨されます。
 
 アプリケーションで必要なときに`getMeter`を呼び出すことが、メーターインスタンスアプリケーションの残りの部分にエクスポートするよりも一般的に推奨されます。
-これは、他の必要な依存関係が関与している場合のより複雑なアプリケーションケーションロードの問題を回避するのに役立ちます。
+これは、他の必要な依存関係が関与している場合のより複雑なアプリケーションロードの問題を回避するのに役立ちます。
 
-[サンプルアプリケーション](#example-app)の場合、適切な計装スコープでトレーサーを取得できる場所が2つあります。
+[サンプルアプリケーション](#example-app)の場合、適切な計装スコープでメーターを取得できる場所が2つあります。
 
-まず、_アプリケーションケーションファイル_ `app.ts`（または`app.js`）を以下のように実装します。
+まず、_アプリケーションファイル_ `app.ts`（または`app.js`）を以下のように実装します。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*app.ts*/
 import { metrics, trace } from '@opentelemetry/api';
-import express, { Express } from 'express';
+import express, { type Express } from 'express';
 import { rollTheDice } from './dice';
 
 const tracer = trace.getTracer('dice-server', '0.1.0');
@@ -1694,7 +1702,7 @@ const limitAttributesView = {
 
 ```js
 const dropView = {
-  aggregation: { type: AggrgationType.DROP },
+  aggregation: { type: AggregationType.DROP },
   meterName: 'pubsub',
 };
 ```

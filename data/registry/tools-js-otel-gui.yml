@@ -1,0 +1,26 @@
+# cSpell:ignore marguerie
+title: otel-gui
+registryType: utilities
+language: js
+tags:
+  - otel
+  - gui
+  - traces
+  - viewer
+  - otlp
+  - local
+  - development
+  - debugging
+urls:
+  repo: https://github.com/metafab/otel-gui
+  docs: https://github.com/metafab/otel-gui#readme
+license: MIT
+description:
+  Lightweight, zero-config OpenTelemetry trace viewer for local development with
+  real-time updates, search, and service map visualization.
+authors:
+  - name: Fabrice Marguerie
+    url: https://github.com/metafab
+createdAt: 2026-03-15
+isNative: false
+isFirstParty: false

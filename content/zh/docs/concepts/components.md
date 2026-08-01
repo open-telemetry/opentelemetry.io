@@ -17,8 +17,8 @@ OpenTelemetry 项目目前由以下几个主要部分构成：
   - [零代码插桩](#zero-code-instrumentation)
   - [资源检测器](#resource-detectors)
   - [跨服务传播器](#cross-service-propagators)
-  - [采样器](#sampler)
-- [K8s Operator](#k8s-operator)
+  - [采样器](#samplers)
+- [K8s Operator](#kubernetes-operator)
 - [函数即服务（FaaS）资产](#function-as-a-service-assets)
 
 OpenTelemetry 让你无需使用特定供应商的 SDK 和工具就能生成和导出遥测数据。
@@ -51,9 +51,9 @@ OpenTelemetry 还提供语言 SDK，允许你使用所选语言的 OpenTelemetry
 ### 插桩库 {#instrumentation-libraries}
 
 OpenTelemetry 支持通过大量组件来为所支持的语言根据流行的库和框架生成相关遥测数据。
-例如，来自 HTTP 库的入站和出站 HTTP 请求将生成有关这些请求的数据。
+例如，来自 HTTP 库的入站和出站 HTTP 请求生成有关这些请求的数据。
 
-让流行的库能够开箱即用地进行观测而无需拉入独立的组件中是一个长期目标。
+OpenTelemetry 的一个远景目标是，使所有流行的库默认即可被观测，从而无需额外依赖。
 
 更多信息，请参见[插桩库](/docs/concepts/instrumentation/libraries/)。
 
@@ -63,9 +63,9 @@ OpenTelemetry 支持通过大量组件来为所支持的语言根据流行的库
 
 ### 零代码插桩 {#zero-code-instrumentation}
 
-如果适用，OpenTelemetry 的特定语言实现将提供一种无需修改源代码即可对应用程序进行插桩的方法。
-虽然底层机制取决于使用的语言，但至少会将 OpenTelemetry API 和 SDK 能力添加到你的应用程序中。
-此外，它们还可能添加一组插桩库和导出器依赖项。
+如果适用，OpenTelemetry 的特定语言实现提供一种无需修改源代码即可对应用程序进行插桩的方法。
+虽然底层机制取决于使用的语言，零代码插桩将 OpenTelemetry API 和 SDK 能力添加到你的应用程序中。
+此外，零代码插桩还可以添加一组插桩库和导出器依赖项。
 
 更多信息，请参见[零代码插桩](/docs/concepts/instrumentation/zero-code/)。
 
@@ -73,7 +73,7 @@ OpenTelemetry 支持通过大量组件来为所支持的语言根据流行的库
 
 [资源](/docs/concepts/resources/)以资源属性表示生成遥测数据的实体。
 例如，在 Kubernetes 上运行的容器中生成遥测数据的进程具有 Pod 名称、命名空间和可能的 Deployment 名称。
-这三个属性都可以包含在资源中。
+你可以将所有这些属性包含在资源中。
 
 OpenTelemetry 的特定语言实现提供了从环境变量 `OTEL_RESOURCE_ATTRIBUTES`
 和许多常见实体（如进程运行时、服务、主机或操作系统）中检测资源的功能。
@@ -83,20 +83,20 @@ OpenTelemetry 的特定语言实现提供了从环境变量 `OTEL_RESOURCE_ATTRI
 ### 跨服务传播器 {#cross-service-propagators}
 
 传播是一种用于跨服务和进程边界传递信息的机制。
-虽然不限于跟踪，但它是允许跟踪在跨越进程和网络边界的服务中建立系统因果关系的信息。
+虽然不限于跟踪，但传播允许跟踪在跨越进程和网络边界的服务中建立系统因果关系的信息。
 
 对于绝大多数场景，上下文传播是通过插桩库为你完成的。
-但如果需要，你可以自己使用 `Propagators` 来序列化和反序列化跨领域的关注点，
-例如 span 的上下文和 [baggage](/docs/concepts/signals/baggage/)。
+如果有必要，你可以自己使用自定义的传播器来序列化和反序列化跨领域的关注点，
+例如 Span 的上下文和 [baggage](/docs/concepts/signals/baggage/)。
 
-### 采样器 {#sampler}
+### 采样器 {#samplers}
 
 采样是限制系统生成跟踪数量的过程。
-特定语言的实现提供了几种[头部采样器](/docs/concepts/sampling/#head-sampling)。
+OpenTelemetry 每个特定语言的实现都提供了几种[标头采样器](/docs/concepts/sampling/#head-sampling)。
 
 更多信息，请参见[采样](/docs/concepts/sampling)。
 
-## K8s Operator
+## Kubernetes Operator
 
 OpenTelemetry Operator 是 Kubernetes Operator 的一种实现。
 Operator 管理 OpenTelemetry Collector 以及使用 OpenTelemetry 对工作负载进行自动插桩。

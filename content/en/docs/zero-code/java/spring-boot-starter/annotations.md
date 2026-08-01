@@ -43,37 +43,45 @@ public class TracedClass {
   @WithSpan(kind = SpanKind.CLIENT)
   public void tracedClientSpan() {}
 
+  @WithSpan
   public void tracedMethodWithAttribute(@SpanAttribute("attributeName") String parameter) {}
 }
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert title="Note" %}} The OpenTelemetry annotations use Spring AOP based on
-proxies.
+> [!NOTE]
+>
+> The OpenTelemetry annotations use Spring AOP based on proxies.
+>
+> These annotations work only for the methods of the proxy. You can learn more
+> in the
+> [Spring documentation](https://docs.spring.io/spring-framework/reference/core/aop/proxying.html).
+>
+> In the following example, the `WithSpan` annotation won't do anything when the
+> GET endpoint is called:
+>
+> ```java
+> @RestController
+> public class MyControllerManagedBySpring {
+>
+>     @GetMapping("/ping")
+>     public void aMethod() {
+>         anotherMethod();
+>     }
+>
+>     @WithSpan
+>     public void anotherMethod() {
+>     }
+> }
+> ```
 
-These annotations work only for the methods of the proxy. You can learn more in
-the
-[Spring documentation](https://docs.spring.io/spring-framework/reference/core/aop/proxying.html).
+{{< comment >}} Note that we have to use the alert shortcode because it contains
+tab panes.
 
-In the following example, the `WithSpan` annotation won't do anything when the
-GET endpoint is called:
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable prefer-blockquote-vs-docsy-alerts -->
 
-```java
-@RestController
-public class MyControllerManagedBySpring {
-
-    @GetMapping("/ping")
-    public void aMethod() {
-        anotherMethod();
-    }
-
-    @WithSpan
-    public void anotherMethod() {
-    }
-}
-```
-
-{{% /alert %}}
+{{< /comment >}}
 
 {{% alert title="Note" %}}
 
@@ -103,8 +111,22 @@ dependencies {
 
 {{% /alert %}}
 
+<!-- markdownlint-restore -->
+
 You can disable the OpenTelemetry annotations by setting the
 `otel.instrumentation.annotations.enabled` property to `false`.
+
+In [declarative configuration](../declarative-configuration/), use the
+centralized instrumentation lists instead:
+
+```yaml
+otel:
+  distribution:
+    spring_starter:
+      instrumentation:
+        disabled:
+          - annotations
+```
 
 You can customize the span by using the elements of the `WithSpan` annotation:
 

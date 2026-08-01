@@ -2,7 +2,7 @@
 title: リソース
 weight: 70
 description: アプリケーションの環境に関する詳細情報をテレメトリに追加する
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
 cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 ---
 
@@ -12,12 +12,14 @@ cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 
 ## セットアップ {#setup}
 
-[Getting Started - Node.js][]の手順に従って、`package.json`、`app.js`、`tracing.js`ファイルを用意してください。
+[Getting Started - Node.js][]の手順に従って、`package.json`、`app.js`（または `app.ts`）、`instrumentation.mjs`（または `instrumentation.ts`）ファイルを用意してください。
+
+{{% include esm-support-note.md %}}
 
 ## プロセスおよび環境リソースの検出 {#process--environment-resource-detection}
 
 Node.js SDKは、初期設定で[プロセスとプロセスランタイムリソース][process and process runtime resources]を検出し、環境変数`OTEL_RESOURCE_ATTRIBUTES`から属性を取得します。
-`tracing.js`で診断ログを有効にすることで、何が検出されているかを確認できます。
+計装ファイルで診断ログを有効にすることで、何が検出されているかを確認できます。
 
 ```javascript
 // トラブルシューティングのため、ログレベルをDiagLogLevel.DEBUGに設定
@@ -29,7 +31,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 
 ```console
 $ env OTEL_RESOURCE_ATTRIBUTES="host.name=localhost" \
-  node --require ./tracing.js app.js
+  node --import ./instrumentation.mjs app.js
 @opentelemetry/api: Registered a global for diag v1.2.0.
 ...
 Listening for requests on http://localhost:8080
@@ -60,7 +62,7 @@ ProcessDetector found resource. Resource {
 
 ```console
 $ env OTEL_SERVICE_NAME="app.js" OTEL_RESOURCE_ATTRIBUTES="service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" \
-  node --require ./tracing.js app.js
+  node --import ./instrumentation.mjs app.js
 ...
 EnvDetector found resource. Resource {
   attributes: {
@@ -81,7 +83,7 @@ EnvDetector found resource. Resource {
 
 カスタムリソースはコードでも設定できます。
 `NodeSDK`では設定オプションが提供されており、ここでリソースを設定できます。
-たとえば、以下のように`tracing.js`を更新して`service.*`属性を設定できます。
+たとえば、以下のように計装ファイルを更新して`service.*`属性を設定できます。
 
 ```javascript
 ...
@@ -99,15 +101,13 @@ const sdk = new opentelemetry.NodeSDK({
 ...
 ```
 
-{{% alert title="注意" class="info" %}}
-
-環境変数とコードの両方でリソース属性を設定した場合、環境変数で設定された値が優先されます。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> 環境変数とコードの両方でリソース属性を設定した場合、環境変数で設定された値が優先されます。
 
 ## コンテナリソースの検出 {#container-resource-detection}
 
-同じセットアップ（`package.json`、`app.js`、デバッグを有効にした`tracing.js`）を使用し、同じディレクトリに以下の内容の`Dockerfile`を作成します。
+同じセットアップ（`package.json`、`app.js`、デバッグを有効にした`instrumentation.mjs`）を使用し、同じディレクトリに以下の内容の`Dockerfile`を作成します。
 
 ```Dockerfile
 FROM node:latest
@@ -116,7 +116,7 @@ COPY package.json ./
 RUN npm install
 COPY . .
 EXPOSE 8080
-CMD [ "node", "--require", "./tracing.js", "app.js" ]
+CMD [ "node", "--import", "./instrumentation.mjs", "app.js" ]
 ```
 
 <kbd>Ctrl + C</kbd>（`SIGINT`）でDockerコンテナを停止できるようにするため、`app.js`の最後に以下を追加します。
@@ -130,10 +130,10 @@ process.on('SIGINT', function () {
 コンテナのIDを自動検出するため、以下の追加依存関係をインストールします。
 
 ```sh
-npm install @opentelemetry/resource-detector-docker
+npm install @opentelemetry/resource-detector-container
 ```
 
-次に、`tracing.js`を以下のように更新します。
+次に、`instrumentation.mjs`を以下のように更新します。
 
 ```javascript
 const opentelemetry = require('@opentelemetry/sdk-node');
@@ -142,8 +142,8 @@ const {
 } = require('@opentelemetry/auto-instrumentations-node');
 const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 const {
-  dockerCGroupV1Detector,
-} = require('@opentelemetry/resource-detector-docker');
+  containerDetector,
+} = require('@opentelemetry/resource-detector-container');
 
 // トラブルシューティングのため、ログレベルをDiagLogLevel.DEBUGに設定
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
@@ -151,7 +151,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
   instrumentations: [getNodeAutoInstrumentations()],
-  resourceDetectors: [dockerCGroupV1Detector],
+  resourceDetectors: [containerDetector],
 });
 
 sdk.start();
@@ -188,8 +188,8 @@ const {
 } = require('@opentelemetry/auto-instrumentations-node');
 const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 const {
-  dockerCGroupV1Detector,
-} = require('@opentelemetry/resource-detector-docker');
+  containerDetector,
+} = require('@opentelemetry/resource-detector-container');
 const { envDetector, processDetector } = require('@opentelemetry/resources');
 
 // トラブルシューティングのため、ログレベルをDiagLogLevel.DEBUGに設定
@@ -199,7 +199,7 @@ const sdk = new opentelemetry.NodeSDK({
   traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
   instrumentations: [getNodeAutoInstrumentations()],
   // 必要なすべての検出器をここに追加してください！
-  resourceDetectors: [envDetector, processDetector, dockerCGroupV1Detector],
+  resourceDetectors: [envDetector, processDetector, containerDetector],
 });
 
 sdk.start();
@@ -235,8 +235,8 @@ DockerCGroupV1Detector found resource. Resource {
 ## 次のステップ {#next-steps}
 
 設定に追加できるリソース検出器は他にもあります。
-たとえば、[Cloud]環境や[Deployment]の詳細を取得するものがあります。
-詳細については、[検出器の完全なリスト](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node)を参照してください。
+たとえば、[Cloud][]環境や[Deployment][]の詳細を取得するものがあります。
+詳細については、[opentelemetry-js-contribリポジトリの`resource-detector-*`という名前のパッケージ](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages)を参照してください。
 
 [getting started - node.js]: /docs/languages/js/getting-started/nodejs/
 [process and process runtime resources]: /docs/specs/semconv/resource/process/

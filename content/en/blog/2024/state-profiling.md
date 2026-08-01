@@ -64,7 +64,7 @@ the OpenTelemetry Collector is able to receive, process and export profiling
 data, and has support for profile ingestion and export using OTLP.
 
 You can try it out by enabling the `service.profilesSupport`
-[feature gate](https://github.com/open-telemetry/opentelemetry-collector/blob/main/featuregate/README.md#controlling-gates)
+[feature gate](https://github.com/open-telemetry/opentelemetry-collector/blob/9b978f74f37af17e18896b297dd7d929b362674b/featuregate/README.md?from_branch=main#controlling-gates)
 in your collector, followed by a configuration similar to the following, which
 ingests and exports data using OTLP:
 

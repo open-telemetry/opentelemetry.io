@@ -475,7 +475,7 @@ high cardinality and with strict performance SLAs.
 If you’re reading this and considering Java metric systems, I hope you chose
 [OpenTelemetry Java][]. It’s a powerful and highly performant tool on its own,
 but comes with APIs for other key observability signals, a
-[rich instrumentation ecosystem](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md),
+[rich instrumentation ecosystem](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/9b99a549b7e1f4b180625a2771706d7170a7e949/docs/supported-libraries.md?from_branch=main),
 [implementations in a variety of other languages](/docs/languages/), and a
 well-supported
 [open governance structure](https://github.com/open-telemetry/community).

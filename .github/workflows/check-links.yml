@@ -1,6 +1,6 @@
 name: Links
 
-# cSpell:ignore nvmrc opentelemetrybot
+# cSpell:ignore minisearch lycheecache lycheeverse
 on:
   merge_group:
   pull_request:
@@ -8,18 +8,14 @@ on:
 permissions:
   contents: read
 
-env:
-  CHANGED_FILES:
-  PR_NUM: ${{ github.event.pull_request.number }}
-  USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
-  USER_NAME: opentelemetrybot
-
 jobs:
-  build-and-check-links:
-    name: BUILD and CHECK LINKS
+  # Build site first because lychee checks the generated HTML files
+  build:
+    name: BUILD
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with: { persist-credentials: false }
 
       - name: Create NPM cache-hash input file
         run: |
@@ -29,7 +25,7 @@ jobs:
       - name: Create and use reduced-dependencies package.json
         run: |
           jq '.devDependencies |= with_entries(
-                  select(.key | test("prefix|hugo|css"))
+                  select(.key | test("prefix|hugo|css|js-yaml"))
                 )
                 | .dependencies |= with_entries(
                   select(.key | test("minisearch")))
@@ -37,7 +33,7 @@ jobs:
             package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -54,80 +50,158 @@ jobs:
           echo "submodule(s); or undo the submodule update(s) if it happened by mistake."
           npm run _diff:fail
 
-      - run: |
-          npm run log:check:links
-          CHANGED_FILES=$(git status --porcelain)
-          echo "CHANGED_FILES=$CHANGED_FILES" >> "$GITHUB_ENV"
+      - name: Build the site
+        run: npm run log:build
         continue-on-error: true
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: build-log-etc
+          name: build-artifacts
           path: |
+            public/
             tmp/build-log.txt
             tmp/package*.json
-            static/refcache.json
 
-      - name: Push changes if any, and fail check
-        if: ${{ env.CHANGED_FILES }}
-        run: |
-          echo "Changes detected in the refcache etc:"
-          git status --short
-
-          echo 'cmd: gh pr checkout $PR_NUM -b "pr-check-links-${RANDOM}"'
-        #   git branch -v
-
-        #   git config --local user.email "$USER_EMAIL"
-        #   git config --local user.name "$USER_NAME"
-        #   git add -A
-        #   git commit -m "Updates from build-and-check-links workflow"
-
-        #   echo "\nPushing changes to PR."
-        #   current_branch=$(git rev-parse --abbrev-ref HEAD)
-        #   echo current_branch=$current_branch
-        #   # gh pr checkout sets some git configs that we can use to make sure
-        #   # we push to the right repo & to the right branch
-        #   remote_repo=$(git config --get branch.${current_branch}.remote)
-        #   echo remote_repo=$remote_repo
-        #   remote_branch=$(git config --get branch.${current_branch}.merge)
-        #   echo remote_branch=$remote_branch
-        #   git push ${remote_repo} HEAD:${remote_branch}
-
-        #   echo "Failing workflow so that changes can be reviewed, and checks rerun."
-        #   exit 1
-        # env:
-        #   GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
-
-  check-refcache:
-    name: REFCACHE updates?
-    needs: build-and-check-links
+  check-links:
+    name: CHECK LINKS
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/download-artifact@v5
-        with: { name: build-log-etc }
-      - name: Fail when refcache contains entries with HTTP status 4XX
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with: { persist-credentials: false }
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with: { name: build-artifacts }
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
+
+      - name: Create and use reduced-dependencies package.json
         run: |
-          if grep -B 1 -e '"StatusCode": 4' static/refcache.json; then
-            echo "Run 'npm run _refcache:prune' to remove 404 entries from refcache.json,"
-            echo "or run './scripts/double-check-refcache-400s.mjs' locally to address"
-            echo "other 400-status entries."
+          jq '.devDependencies |= with_entries(
+                  select(.key | test("js-yaml|link-cache"))
+                )
+                | del(.dependencies, .optionalDependencies)' \
+            package.json > tmp/package-min-links.json
+          cp tmp/package-min-links.json package.json
+
+      - run: |
+          npm install --omit=optional --ignore-scripts
+          git restore package.json
+
+      # Run the lychee-binary tests for real here; the general test job only
+      # has the sources, so it skips them.
+      - uses: ./.github/actions/install-lychee
+      - name: Lychee sanity tests
+        run: npm run test:local-tools:lychee
+
+      # The drift-pending overlay diffs content/en against the drift-status
+      # baseline; a depth-1 fetch of that commit is all the (shallow) clone
+      # needs. Config generation fails if the baseline can't be resolved.
+      # The extraction enforces the same 'commit: FULL_SHA' shape as
+      # BASELINE_COMMIT_RE in scripts/i18n/drift.mjs; keep the two in sync.
+      # Kill switch: exporting DRIFT_BASELINE=HEAD on the config-generation
+      # step below empties the overlay, restoring pre-overlay behavior.
+      - name: Deepen history to the drift-status baseline
+        run: |
+          sha=$(sed -n 's/^commit: \([0-9a-f]\{40\}\)$/\1/p' data/l10n-drift.yaml)
+          if [[ ! "$sha" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error file=data/l10n-drift.yaml::Expected a single 'commit: FULL_SHA' line."
             exit 1
           fi
-      - name: Does the refcache need updating?
+          git fetch --depth=1 origin --end-of-options "$sha"
+
+      - run: npm run generate:config:links
+
+      - name: Check links
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
-          echo "If the diff check below fails, then update static/refcache.json by"
-          echo "running 'npm run fix:refcache' locally and committing the changes"
-          echo "or adding the comment '/fix:refcache' to your PR in GitHub."
-          npm run _diff:fail
+          set -o pipefail
+          npm run _check:links 2>&1 | tee lychee-out.txt
+
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: link-cache
+          path: .lycheecache
+          include-hidden-files: true
+          if-no-files-found: error
+
+      - name: Lychee summary
+        if: always()
+        run: |
+          {
+            echo '## Lychee link check'
+            echo
+            echo '```text'
+            tail -n 40 lychee-out.txt 2>/dev/null || echo '(no lychee output captured)'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  check-link-cache:
+    name: CACHE updates committed?
+    needs: check-links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with: { persist-credentials: false }
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with: { name: link-cache, path: tmp/link-cache }
+
+      - name: All link-cache updates committed?
+        run: |
+          committed=.lycheecache
+          generated=tmp/link-cache/.lycheecache
+          # Accept only regular files: fails when the artifact is missing (no
+          # false green) and never writes through a PR-controlled symlink.
+          if [[ -L "$committed" || -L "$generated" ||
+                ! -f "$committed" || ! -f "$generated" ]]; then
+            echo "::error title=Invalid link cache::Expected regular .lycheecache files."
+            exit 1
+          fi
+          if cmp --silent "$committed" "$generated"; then
+            echo "Link cache is up to date."
+            exit 0
+          fi
+          git --no-pager diff --no-index --stat "$committed" "$generated" || true
+          echo "::error title=Link cache is stale::All links check out, but this PR leaves the committed link cache (.lycheecache) stale. For recovery steps, see the step summary."
+          {
+            echo "## Link cache is stale"
+            echo
+            echo "All links check out ✅ — but this PR leaves the committed link cache"
+            echo "(\`.lycheecache\`) stale. To fix, either:"
+            echo
+            echo "- Comment \`/fix:link-cache\` on this PR — the bot updates the cache for you; or"
+            echo "- Run \`npm run check:links\` locally, then commit the modified \`.lycheecache\`."
+            echo
+            echo "For details, see [\`CACHE updates committed?\`](https://opentelemetry.io/docs/contributing/pr-checks/#cache-updates-committed)."
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 1
 
   check-build-log-for-issues:
     name: WARNINGS in build log?
-    needs: build-and-check-links
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/download-artifact@v5
-        with: { name: build-log-etc }
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with: { persist-credentials: false }
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with: { name: build-artifacts }
       - run: cat tmp/build-log.txt
       - run: scripts/check-build-log.sh
+
+  test-public:
+    name: TEST (built-site · public)
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with: { persist-credentials: false }
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with: { name: build-artifacts }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+      - run: npm run test:public
