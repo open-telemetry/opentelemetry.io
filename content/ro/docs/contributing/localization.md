@@ -4,8 +4,8 @@ description:
   Crearea și menținerea paginilor site-ului în localizări non englezești.
 linkTitle: Localizare
 weight: 25
-cSpell:ignore: Dowair shortcodes
 default_lang_commit: 8711ecf72d25cdd723a0f7b6d41641df04eafb60
+cSpell:ignore: Dowair shortcodes
 ---
 
 Website-ul OTel folosește [framework-ul multilingvist][multilingual framework]
