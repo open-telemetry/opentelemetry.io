@@ -1763,6 +1763,7 @@ https://github.com/open-telemetry/community/?tab=readme-ov-file#implementation-s
 https://github.com/open-telemetry/community/?tab=readme-ov-file#sig-mainframes,200,1785134690
 https://github.com/open-telemetry/community/blob/184336e3d39010eb22496d97a01cc2120763c929/projects/k8s-semconv.md,206,1784355811
 https://github.com/open-telemetry/community/blob/1b7d0d85924677149593a18639ce0b897ed4751f/elections/2025/governance-committee-candidates.md?from_branch=main,206,1784355797
+https://github.com/open-telemetry/community/blob/25f027532a6e9b503d6eb4dd3db0a98eb3b5f1cb/guides/contributor/membership.md#member,200,1785626273
 https://github.com/open-telemetry/community/blob/25f027532a6e9b503d6eb4dd3db0a98eb3b5f1cb/guides/contributor/membership.md?from_branch=main#member,200,1785134690
 https://github.com/open-telemetry/community/blob/25f027532a6e9b503d6eb4dd3db0a98eb3b5f1cb/guides/contributor/membership.md?from_branch=main,206,1784284788
 https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md,206,1784355609
@@ -4417,6 +4418,7 @@ https://github.com/pratik-mahalle,206,1784442692
 https://github.com/pratik50,206,1784355616
 https://github.com/prestonvasquez,206,1784285075
 https://github.com/priettt,206,1784442635
+https://github.com/prisma/prisma/tree/7.9.1/packages/instrumentation,200,1785626273
 https://github.com/projectcontour,200,1784960540
 https://github.com/projectcontour/contour,200,1784960540
 https://github.com/prometheus-community/ux-research/blob/acc0194a79aa0f2ee1c6eb93462c9488d236a275/prom-otel-research/survey-results.csv?from_branch=main,200,1785134689
@@ -5907,6 +5909,7 @@ https://spring.io/projects/spring-kafka,200,1784284918
 https://spring.io/projects/spring-pulsar,200,1784284924
 https://spring.io/projects/spring-ws,200,1784284950
 https://stackoverflow.com/questions/5626193/what-is-monkey-patching,200,1784284639
+https://stackoverflow.com/questions/tagged/open-telemetry,206,1785626231
 https://standards.ieee.org/wp-content/uploads/import/documents/tutorials/eui.pdf,206,1784356054
 https://strimzi.io/,206,1784284804
 https://strimzi.io/docs/operators/latest/deploying#assembly-distributed-tracing-str,206,1784284810
@@ -6257,7 +6260,9 @@ https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc,200,178514
 https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http,200,1785146154
 https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto,200,1785146154
 https://www.npmjs.com/package/@opentelemetry/exporter-zipkin,200,1784285365
+https://www.npmjs.com/package/@opentelemetry/instrumentation-aws-lambda,206,1785626231
 https://www.npmjs.com/package/@opentelemetry/instrumentation-express,206,1785624961
+https://www.npmjs.com/package/@opentelemetry/instrumentation-http,206,1785626231
 https://www.npmjs.com/package/@opentelemetry/sdk-metrics,200,1784285366
 https://www.npmjs.com/package/@opentelemetry/sdk-node,206,1785624961
 https://www.npmjs.com/package/@opentelemetry/sdk-trace-node,200,1784286281
