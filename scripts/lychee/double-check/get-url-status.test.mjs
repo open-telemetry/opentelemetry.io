@@ -23,6 +23,15 @@ suite('npmPackageNameFromUrl', () => {
     ['https://www.npmjs.com/package/@scope/pkg#readme', '@scope/pkg'],
     ['https://www.npmjs.com/package/@scope/pkg/', '@scope/pkg'],
     ['https://example.com/package/foo', null],
+    // Shell metacharacters and malformed names are rejected: the extracted
+    // name reaches an npm CLI invocation, so it must be a syntactically
+    // valid package name and nothing else.
+    ['https://www.npmjs.com/package/foo;echo_INJECTED', null],
+    ['https://www.npmjs.com/package/foo`id`', null],
+    ['https://www.npmjs.com/package/$(id)', null],
+    ['https://www.npmjs.com/package/foo|bar', null],
+    ['https://www.npmjs.com/package/@scope', null],
+    ['https://www.npmjs.com/package/@/pkg', null],
   ];
 
   for (const [url, expected] of cases) {

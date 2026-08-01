@@ -17,7 +17,7 @@
 
 import puppeteer from 'puppeteer-core';
 import { URL } from 'url';
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 
 const STATUS_OK_BUT_FRAG_NOT_FOUND = 422;
 const STATUS_OK_BY_ANALYSIS = 206; // Partial Content
@@ -32,6 +32,11 @@ const NPMJS_URL_REGEX = regexX(String.raw`
   )                    # End package name capture group
   (?:\/|#|\?|$)        # End with /, #, ?, or end of string
 `);
+
+// Syntactically valid scoped or unscoped npm package name. Slightly looser
+// than npm's rules for new packages (legacy names may contain uppercase),
+// but strict enough to exclude shell metacharacters and malformed scopes.
+const NPM_PACKAGE_NAME_REGEX = /^(@[a-zA-Z0-9\-._~]+\/)?[a-zA-Z0-9\-._~]+$/;
 
 // NOTE about crates.io
 // --------------------
@@ -265,8 +270,11 @@ export function npmPackageNameFromUrl(url) {
   const match = url.match(NPMJS_URL_REGEX);
   if (!match) return null;
 
-  // Group 1 is the full package name (@scope/package or package)
-  return match[1];
+  // Group 1 is the full package name (@scope/package or package). Reject
+  // anything that isn't a syntactically valid package name: the result is
+  // passed to the npm CLI.
+  const name = match[1];
+  return NPM_PACKAGE_NAME_REGEX.test(name) ? name : null;
 }
 
 // Check if an npm package exists using npm CLI
@@ -279,7 +287,8 @@ function checkNpmPackageUrlViaCLI(url) {
   }
 
   try {
-    execSync(`npm view ${packageName} name`, {
+    // execFileSync with an argument array: no shell, no interpolation.
+    execFileSync('npm', ['view', packageName, 'name'], {
       encoding: 'utf-8',
       stdio: ['pipe', 'pipe', 'pipe'],
     });
