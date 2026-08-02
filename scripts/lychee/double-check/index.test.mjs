@@ -93,8 +93,7 @@ suite('mergedCacheText', () => {
 });
 
 suite('checkReportConsistency', () => {
-  // False-green guard: a Lychee report that declares failures which the
-  // parser cannot see must fail loudly, never silently probe nothing.
+  // False-green guard: see checkReportConsistency in index.mjs.
   test('throws when the report counts errors but no failure lines parsed', () => {
     const malformed = '🔍 9 Total (in 3s) 🔗 5 Unique ✅ 7 OK 🚫 2 Errors\n';
     assert.throws(() => checkReportConsistency(malformed, []), /2 error/i);
@@ -116,10 +115,7 @@ suite('checkReportConsistency', () => {
     checkReportConsistency('some build output, no lychee summary\n', []);
   });
 
-  // Exit-status cross-check: the workflow invokes the CLI whenever the link
-  // check exits nonzero. In that mode, "nothing parsed" is never OK -- it
-  // means either parser drift or a failure unrelated to links -- so the
-  // nonzero status must not be suppressed.
+  // expectFailures semantics: see checkReportConsistency in index.mjs.
   test('with expectFailures, throws when no failure lines parsed', () => {
     const malformed = '🔍 9 Total (in 3s) 🔗 5 Unique ✅ 7 OK 🚫 2 Errors\n';
     assert.throws(

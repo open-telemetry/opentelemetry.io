@@ -13,6 +13,8 @@
 //
 // - 206 ("OK by analysis"): resolved by inspection rather than HTTP status
 // - 422: page fetched OK, but the URL fragment was not found
+//
+// cSpell:ignore networkidle
 
 import puppeteer from 'puppeteer-core';
 import { URL } from 'url';
@@ -49,22 +51,16 @@ async function checkForFragment(url, page, status) {
     fragmentID = decodeURIComponent(fragmentID);
 
     let anchorExists =
-      //
-      // Look for ID attribute in the page.
-      //
+      // Element with matching ID
       (await page.evaluate((id) => {
         return !!document.getElementById(id);
       }, fragmentID)) ||
-      //
-      // Look for named anchors
-      //
+      // Named anchor
       (await page.evaluate((name) => {
         const elt = document.querySelector(`a[name="${name}"]`);
         return !!elt;
       }, fragmentID)) ||
-      //
       // Github.com repo special cases
-      //
       (url.startsWith('https://github.com/') &&
         (await anchorExistsInGitHub(page, fragmentID)));
 
@@ -92,10 +88,9 @@ async function anchorExistsInGitHub(page, fragmentID) {
   }, fragmentID);
 }
 
+// Fetch the URL through headless Chrome, trying our best to avoid triggering
+// bot-rejection from some servers. Returns the HTTP status code.
 async function getUrlHeadless(url) {
-  // Get the URL, headless, while trying our best to avoid triggering
-  // bot-rejection from some servers. Returns the HTTP status code.
-
   log(`Fetch ${url} headless ... `);
 
   let browser;
@@ -245,7 +240,6 @@ async function mainCLI() {
   process.exit(isHttp2XX(status) ? 0 : 1);
 }
 
-// Only run if script is executed directly (CLI)
 if (import.meta.url === `file://${process.argv[1]}`) await mainCLI();
 
 // Extract the package name (@scope/package or package) from an npmjs.com URL.
@@ -260,7 +254,6 @@ export function npmPackageNameFromUrl(url) {
   return NPM_PACKAGE_NAME_REGEX.test(name) ? name : null;
 }
 
-// Check if an npm package exists using npm CLI
 function checkNpmPackageUrlViaCLI(url) {
   const packageName = npmPackageNameFromUrl(url);
 
@@ -283,7 +276,6 @@ function checkNpmPackageUrlViaCLI(url) {
   }
 }
 
-// Get Chrome executable path
 function getChromePath() {
   // Use path set by GitHub workflow if available
   if (process.env.CHROME_PATH) {
@@ -292,22 +284,25 @@ function getChromePath() {
 
   try {
     // Install Chrome if not present, or just return the path if already
-    // installed. Output is of the form: chrome@<buildID> <path>. Uses the
-    // dependency-provided puppeteer bin (`npm exec --no` never falls back to
-    // the public registry).
-    const output = execSync('npm exec --no puppeteer browsers install chrome', {
-      encoding: 'utf-8',
-      stdio: ['pipe', 'pipe', 'ignore'],
-    }).trim();
+    // installed. Uses the dependency-provided puppeteer bin (`npm exec --no`
+    // never falls back to the public registry).
+    const output = execFileSync(
+      'npm',
+      ['exec', '--no', 'puppeteer', 'browsers', 'install', 'chrome'],
+      {
+        encoding: 'utf-8',
+        stdio: ['pipe', 'pipe', 'ignore'],
+      },
+    ).trim();
 
-    // Parse output, for example: chrome@141.0.7390.54 /path/to/chrome
+    // Output is of the form: chrome@<buildID> <path>
     const spaceIndex = output.indexOf(' ');
     if (spaceIndex !== -1) {
       const path = output.substring(spaceIndex + 1);
       return path;
     }
   } catch (error) {
-    // Continue to next attempt
+    // Fall through to the throw below
   }
 
   throw new Error(
@@ -334,9 +329,8 @@ export function log(...args) {
 
 // Helper to create verbose regex (like Perl's /x flag)
 function regexX(pattern, flags = '') {
-  // Remove whitespace and comments from the pattern
   const cleaned = pattern
-    .replace(/\s+#.*$/gm, '') // Remove comments (space + # to end of line)
-    .replace(/\s+/g, ''); // Remove all whitespace
+    .replace(/\s+#.*$/gm, '') // strip `#` comments
+    .replace(/\s+/g, '');
   return new RegExp(cleaned, flags);
 }
