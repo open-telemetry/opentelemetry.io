@@ -104,9 +104,9 @@ async function getUrlHeadless(url) {
     const cleanUA = defaultUA.replace(/Headless(Chrome)?/gi, 'Chrome');
 
     const page = await browser.newPage();
-    await page.setUserAgent({ userAgent: cleanUA });
-    await page.setExtraHTTPHeaders({
-      'Accept-Language': 'en-US,en;q=0.9',
+    await page.setUserAgent({
+      userAgent: cleanUA,
+      acceptLanguage: 'en-US,en;q=0.9',
     });
 
     const response = await page.goto(url, {
