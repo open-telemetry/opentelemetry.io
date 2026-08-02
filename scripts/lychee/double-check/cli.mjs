@@ -3,8 +3,8 @@
 // browser-grade probe, and record each resolved URL in the committed link
 // cache (.lycheecache) as a synthetic-206 entry. Rationale:
 // content/en/site/build/link-checking.md, "Double-check of failing links".
-// Options and arguments: run with --help. Pure logic in ./index.mjs; probe
-// in ./get-url-status.mjs.
+// Options and arguments: run with --help. File map and probe behavior:
+// ./README.md.
 
 import fs from 'node:fs';
 import path from 'node:path';

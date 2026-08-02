@@ -4,15 +4,8 @@
 // with bot-evasion measures, and report an HTTP-like status. Recovered
 // (mostly verbatim) from the pre-Lychee double-check tooling removed in
 // 89fe70663 (#10911); for the driver that feeds it Lychee failures, see
-// ./cli.mjs.
-//
-// Beyond the plain HTTP status, the probe verifies URL fragments against the
-// rendered page (including GitHub `-ov-file` and line-range anchors), and
-// special-cases hosts whose responses are misleading to plain HTTP clients
-// (crates.io, npmjs.com). Synthetic statuses:
-//
-// - 206 ("OK by analysis"): resolved by inspection rather than HTTP status
-// - 422: page fetched OK, but the URL fragment was not found
+// ./cli.mjs. Fragment verification, per-host special cases, and synthetic
+// statuses (206, 422): see ./README.md.
 //
 // cSpell:ignore networkidle
 

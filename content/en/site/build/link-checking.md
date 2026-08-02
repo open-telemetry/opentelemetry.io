@@ -105,23 +105,18 @@ Lychee (bot walls, crates.io's unconditional 404s, npmjs.com signin redirects).
 Since [failures are never cached](#refcache), links to such sites would
 otherwise fail the link check on every run once their cache entries expire.
 
-The **double-check** tooling ([tracking issue][#11042]) re-verifies
-Lychee-reported failures through a browser-grade probe (headless Chrome via
-Puppeteer, with fragment verification and per-host special cases). URLs that the
-probe resolves are recorded in `.lycheecache` with the synthetic status `206`
-("OK by analysis"). The Refcache refresh workflow runs it after the link check;
-to run it locally over a captured log:
+The **double-check** tooling re-verifies Lychee-reported failures through a
+browser-grade probe. URLs that the probe resolves are recorded in `.lycheecache`
+with the synthetic status `206` ("OK by analysis"). The Refcache refresh
+workflow runs it after the link check; to run it locally over a captured log:
 
 ```sh
 npm run log:check:links
 npm run fix:link-cache:double-check
 ```
 
-For options, run `npm run fix:link-cache:double-check -- --help`.
-
-The probe requires Chrome: either set `CHROME_PATH`, or let the tooling install
-a Puppeteer-managed copy. An opt-in live smoke check of the probe is available
-as `npm run test:double-check:live`.
+For options, run `npm run fix:link-cache:double-check -- --help`. For probe
+behavior and setup, see the [double-check README][].
 
 ## In CI
 
@@ -131,10 +126,11 @@ That job fails if any link check fails, and hands the cache it refreshed to the
 `CACHE updates committed?` job, which fails if the run left the committed
 `.lycheecache` stale.
 
-[#11042]: https://github.com/open-telemetry/opentelemetry.io/issues/11042
 [blog-index]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
 [ci]: ../ci-workflows/
+[double-check README]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/lychee/double-check/README.md
 [drifted]: /docs/contributing/localization/#track-changes
 [housekeeping]: ../ci-workflows/#housekeeping
 [Lychee]: https://lychee.cli.rs/
