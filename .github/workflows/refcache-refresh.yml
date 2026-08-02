@@ -147,8 +147,6 @@ jobs:
         run: |
           lychee --version
           mkdir -p tmp
-          # Capture the exit status; the double-check step decides via
-          # --expect-failures whether to suppress it.
           npm run full:build -- fix:link-cache 2>&1 \
             | tee tmp/check-links-log.txt
           LINK_CHECK_STATUS=${PIPESTATUS[0]}
