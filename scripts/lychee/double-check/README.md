@@ -8,13 +8,13 @@ to run it locally, see [Double-check of failing links][docs].
 
 ## Files
 
-- `cli.mjs` -- driver: parses a captured `check:links` log and probes each
+- `cli.mjs`: driver. Parses a captured `check:links` log and probes each
   reported failure. Run with `--help` for options.
-- `index.mjs` -- pure logic: report-consistency checks, cache-line synthesis and
-  merging.
-- `get-url-status.mjs` -- the probe; also runnable directly:
+- `index.mjs`: pure logic (report-consistency checks, cache-line synthesis and
+  merging).
+- `get-url-status.mjs`: the probe; also runnable directly as
   `node scripts/lychee/double-check/get-url-status.mjs URL`.
-- `live-check.mjs` -- opt-in live smoke check of the probe:
+- `live-check.mjs`: opt-in live smoke check of the probe, run via
   `npm run test:double-check:live`.
 
 Offline unit tests (`*.test.mjs`) run as part of `npm run test:local-tools`.

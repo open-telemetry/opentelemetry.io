@@ -261,10 +261,10 @@ function checkNpmPackageUrlViaCLI(url) {
       encoding: 'utf-8',
       stdio: ['pipe', 'pipe', 'pipe'],
     });
-    log(`> npm view '${packageName}' successful - package exists`);
+    log(`> npm view '${packageName}' successful: package exists`);
     return STATUS_OK_BY_ANALYSIS;
   } catch (error) {
-    log(`> npm view '${packageName}' failed - package not found`);
+    log(`> npm view '${packageName}' failed: package not found`);
     return 404;
   }
 }
