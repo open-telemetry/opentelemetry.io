@@ -38,8 +38,8 @@ Synthetic statuses:
   is the status the driver records in `.lycheecache`.
 - `422`: page fetched, but the URL fragment was not found.
 
-In local (non-CI) runs, URLs that remain unresolved are retried in a visible
-browser window.
+When neither `CI` nor `CHROME_PATH` is set, URLs that remain unresolved are
+retried in a visible browser window.
 
 ## Chrome
 
