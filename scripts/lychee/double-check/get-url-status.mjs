@@ -21,7 +21,7 @@ import { URL } from 'url';
 import { execFileSync } from 'child_process';
 
 const STATUS_OK_BUT_FRAG_NOT_FOUND = 422;
-const STATUS_OK_BY_ANALYSIS = 206; // Partial Content
+export const STATUS_OK_BY_ANALYSIS = 206; // Partial Content
 
 const NPMJS_URL_REGEX = regexX(String.raw`
   ^https://            # Protocol
@@ -43,7 +43,6 @@ const cratesIoURL = 'https://crates.io/';
 
 let verbose = false;
 
-// Check for fragment and corresponding anchor ID in page.
 async function checkForFragment(url, page, status) {
   const parsedUrl = new URL(url);
   if (parsedUrl.hash) {
@@ -89,7 +88,8 @@ async function anchorExistsInGitHub(page, fragmentID) {
 }
 
 // Fetch the URL through headless Chrome, trying our best to avoid triggering
-// bot-rejection from some servers. Returns the HTTP status code.
+// bot-rejection from some servers. Returns the HTTP status code, a synthetic
+// status (206, 422), or null when the fetch errored out.
 async function getUrlHeadless(url) {
   log(`Fetch ${url} headless ... `);
 
@@ -210,13 +210,13 @@ export async function getUrlStatus(url, _verbose = false) {
     return status;
   }
 
-  // Try to validate npmjs.com package URLs via CLI
+  // npmjs.com 403s are a bot wall; ask the npm CLI instead.
   if (status === 403 && NPMJS_URL_REGEX.test(url)) {
     let _status = checkNpmPackageUrlViaCLI(url);
     if (isHttp2XX(_status)) return _status;
   }
 
-  // Headless fetch failed, try in browser (local only)
+  // Retry in a visible browser (local runs only).
   const isCI = !!process.env.CI || !!process.env.CHROME_PATH;
   if (isCI) return status;
 
@@ -277,7 +277,6 @@ function checkNpmPackageUrlViaCLI(url) {
 }
 
 function getChromePath() {
-  // Use path set by GitHub workflow if available
   if (process.env.CHROME_PATH) {
     return process.env.CHROME_PATH;
   }
@@ -327,7 +326,7 @@ export function log(...args) {
   }
 }
 
-// Helper to create verbose regex (like Perl's /x flag)
+// Verbose regex (like Perl's /x flag): whitespace and `#` comments stripped.
 function regexX(pattern, flags = '') {
   const cleaned = pattern
     .replace(/\s+#.*$/gm, '') // strip `#` comments

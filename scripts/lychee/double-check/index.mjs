@@ -1,12 +1,11 @@
 // Pure logic for the double-check driver: turn probe results for
 // Lychee-reported link failures into committed link-cache entries with the
 // synthetic status 206, "OK by analysis": verified by the browser-grade
-// probe (./get-url-status.mjs) rather than by Lychee's plain HTTP client. Process wiring lives in ./cli.mjs; tests in ./index.test.mjs.
+// probe (./get-url-status.mjs) rather than by Lychee's plain HTTP client.
+// Process wiring lives in ./cli.mjs.
 
 import { sortCacheText } from 'link-cache/check/index.mjs';
-import { isHttp2XX } from './get-url-status.mjs';
-
-export const STATUS_OK_BY_ANALYSIS = 206;
+import { STATUS_OK_BY_ANALYSIS, isHttp2XX } from './get-url-status.mjs';
 
 // Probe status marker for URLs whose probe errored out (null status).
 export const UNVERIFIED = 'UNVERIFIED';
@@ -47,9 +46,8 @@ export function mergedCacheText(cacheText, newLines) {
 // is positive but the failure parse found nothing, the report format has
 // drifted and silently probing nothing would masquerade as success.
 //
-// With `expectFailures` (set when the caller knows the link check exited
-// nonzero), "nothing parsed" means parser drift or a failure unrelated to
-// links, so throw even without a summary line.
+// With `expectFailures`, "nothing parsed" means parser drift or a failure
+// unrelated to links, so throw even without a summary line.
 export function checkReportConsistency(
   output,
   failures,

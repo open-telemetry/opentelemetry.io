@@ -147,10 +147,8 @@ jobs:
         run: |
           lychee --version
           mkdir -p tmp
-          # Capture the link-check exit status rather than failing here: when
-          # it is nonzero, the double-check step re-verifies the failures, and
-          # only suppresses the failure once it is attributed to ordinary,
-          # parsed link failures. We still want to commit link-cache updates.
+          # Capture the exit status; the double-check step decides via
+          # --expect-failures whether to suppress it.
           npm run full:build -- fix:link-cache 2>&1 \
             | tee tmp/check-links-log.txt
           LINK_CHECK_STATUS=${PIPESTATUS[0]}
