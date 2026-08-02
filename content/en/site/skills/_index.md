@@ -43,6 +43,11 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 - [`/review-pull-request <pr-number-or-url>`][review-pull-request]: review a
   pull request for CI check semantics, CLA and approval-label workflow,
   link-cache handling, locale rules, and content quality.
+- [`/review-registry-pr [pr-number-or-url]`][review-registry-pr]: review
+  registry entry (`data/registry/`) and ecosystem list (`data/ecosystem/`) PRs
+  for schema gaps that CI misses, placement, license and naming rules, and
+  common merge blockers. With no argument, sweeps all open registry and
+  ecosystem PRs.
 - [`/setup-new-localization <kickoff-issue | lang-code>`][setup-new-localization]:
   set up a new website localization end-to-end — Hugo language block, content
   mounts, cSpell word list, `lang:<lang>` labeler config and label,
@@ -93,6 +98,8 @@ See the section index below.
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-blog-post/SKILL.md
 [review-pull-request]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-pull-request/SKILL.md
+[review-registry-pr]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-registry-pr/SKILL.md
 [setup-new-localization]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/setup-new-localization/SKILL.md
 [update-i18n-drift-status]:
