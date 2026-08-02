@@ -11,7 +11,10 @@ import { getUrlStatus, isHttp2XX } from './get-url-status.mjs';
 const cases = [
   { url: 'https://crates.io/crates/opentelemetry', expect: [206] },
   { url: 'https://www.npmjs.com/package/@opentelemetry/api', expect: '2xx' },
-  { url: 'https://opentelemetry.io/#what-is-opentelemetry', expect: '2xx' },
+  {
+    url: 'https://opentelemetry.io/docs/what-is-opentelemetry/#what-is-observability',
+    expect: '2xx',
+  },
 ];
 
 let failures = 0;
