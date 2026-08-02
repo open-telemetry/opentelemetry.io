@@ -1,8 +1,7 @@
 // Pure logic for the double-check driver: turn probe results for
 // Lychee-reported link failures into committed link-cache entries with the
-// synthetic status 206 -- "OK by analysis", meaning verified by the
-// browser-grade probe (./get-url-status.mjs) rather than by Lychee's plain
-// HTTP client. Process wiring lives in ./cli.mjs; tests in ./index.test.mjs.
+// synthetic status 206, "OK by analysis": verified by the browser-grade
+// probe (./get-url-status.mjs) rather than by Lychee's plain HTTP client. Process wiring lives in ./cli.mjs; tests in ./index.test.mjs.
 
 import { sortCacheText } from 'link-cache/check/index.mjs';
 import { isHttp2XX } from './get-url-status.mjs';
@@ -32,8 +31,8 @@ function lineUrlField(line) {
   return match[0];
 }
 
-// Cache text with the new lines merged in -- an existing entry for the same
-// URL is replaced -- normalized the way lychee-norm-cache leaves the file
+// Cache text with the new lines merged in (an existing entry for the same
+// URL is replaced), normalized the way lychee-norm-cache leaves the file
 // (C-locale sort, trailing newline).
 export function mergedCacheText(cacheText, newLines) {
   if (newLines.length === 0) return cacheText;
@@ -49,8 +48,8 @@ export function mergedCacheText(cacheText, newLines) {
 // drifted and silently probing nothing would masquerade as success.
 //
 // With `expectFailures` (set when the caller knows the link check exited
-// nonzero), "nothing parsed" is never OK -- it means parser drift or a
-// failure unrelated to links -- so throw even without a summary line.
+// nonzero), "nothing parsed" means parser drift or a failure unrelated to
+// links, so throw even without a summary line.
 export function checkReportConsistency(
   output,
   failures,
