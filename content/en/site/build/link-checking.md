@@ -5,13 +5,14 @@ description: How the site's links are checked, locally and in CI.
 ---
 
 The site is link-checked with **[Lychee][]**, backed by a committed cache of
-external-link results (see [Link cache](#refcache)).
+external-link results (see [Link cache](#link-cache)).
 
-> [!NB] Installing Lychee locally is optional: CI link-checks every PR, and the
-> bot can update the [link cache](#refcache) for you. To run checks locally,
-> [install Lychee][lychee-install]; CI installs its own pinned copy (see the
-> `.github/actions/install-lychee` action), so keep your local version
-> reasonably close to it.
+> [!NOTE] Installing Lychee locally is optional
+>
+> CI link-checks every PR, and the bot can update the [link cache](#link-cache)
+> for you. To run checks locally, [install Lychee][lychee-install]; CI installs
+> its own pinned copy (see the `.github/actions/install-lychee` action), so keep
+> your local version reasonably close to it.
 
 ## Check links
 
@@ -23,12 +24,12 @@ npm run check:links
 
 ## Common commands
 
-| Command                | Checking scope                                                        |
-| ---------------------- | --------------------------------------------------------------------- |
-| `check:links`          | Whole site                                                            |
-| `check:links:internal` | Whole site, offline (no external links)                               |
-| `check:links:diff`     | Changed files only                                                    |
-| `fix:link-cache`       | Alias of `check:links`; use it to refresh the [link cache](#refcache) |
+| Command                | Checking scope                                                          |
+| ---------------------- | ----------------------------------------------------------------------- |
+| `check:links`          | Whole site                                                              |
+| `check:links:internal` | Whole site, offline (no external links)                                 |
+| `check:links:diff`     | Changed files only                                                      |
+| `fix:link-cache`       | Alias of `check:links`; use it to refresh the [link cache](#link-cache) |
 
 The `check:links` and `check:links:internal` scripts run over a build of
 `BUILD_KIND`; `check:links:diff` checks files from the existing `public/` build.
@@ -71,7 +72,7 @@ A local tree-wide status sync (`npm run fix:i18n`) can rewrite
 `data/l10n-drift.yaml`; leave that rewrite uncommitted — a locally recorded
 commit might not exist upstream.
 
-## Link cache {#refcache}
+## Link cache <a id="refcache"></a>
 
 External-link check results are cached in `.lycheecache`, which is under version
 control so that checks only fetch URLs that are new or whose cache entries have
@@ -102,7 +103,7 @@ URLs that are still used in the site.
 
 Some sites serve valid pages to browsers but turn away plain HTTP clients like
 Lychee (bot walls, crates.io's unconditional 404s, npmjs.com signin redirects).
-Since [failures are never cached](#refcache), links to such sites would
+Since [failures are never cached](#link-cache), links to such sites would
 otherwise fail the link check on every run once their cache entries expire.
 
 The **double-check** tooling re-verifies Lychee-reported failures through a
