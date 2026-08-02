@@ -1,22 +1,14 @@
 #!/usr/bin/env node
 // Double-check driver: re-verify Lychee-reported link failures with the
 // browser-grade probe, and record each resolved URL in the committed link
-// cache (.lycheecache) as a synthetic-206 entry. Rationale and usage:
+// cache (.lycheecache) as a synthetic-206 entry. Rationale:
 // content/en/site/build/link-checking.md, "Double-check of failing links".
-//
-// Usage: cli.mjs [--verbose] [--expect-failures] [LYCHEE_LOG_FILE]
-//
-// --expect-failures: fail unless at least one failure line was parsed from
-// the log. Set by the workflow when the link check exited nonzero, so a
-// nonzero status is only suppressed once it is attributed to ordinary,
-// parsed link failures.
-//
-// LYCHEE_LOG_FILE is a captured `check:links` log (default:
-// tmp/check-links-log.txt, where `log:check:links` tees it). Pure logic in
-// ./index.mjs; probe in ./get-url-status.mjs.
+// Options and arguments: run with --help. Pure logic in ./index.mjs; probe
+// in ./get-url-status.mjs.
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { failedUrlsOf } from '../check-report/index.mjs';
 import { getUrlStatus } from './get-url-status.mjs';
@@ -35,12 +27,49 @@ const root = path.join(
 );
 const cachePath = path.join(root, '.lycheecache');
 
-const args = process.argv.slice(2);
-const verbose = args.includes('--verbose');
-const expectFailures = args.includes('--expect-failures');
-const logFile =
-  args.find((a) => !a.startsWith('-')) ??
-  path.join(root, 'tmp', 'check-links-log.txt');
+const defaultLogFile = path.join('tmp', 'check-links-log.txt');
+const usage = `Usage: cli.mjs [options] [LYCHEE_LOG_FILE]
+
+Re-verify the link failures reported in LYCHEE_LOG_FILE, a captured
+\`check:links\` log (default: ${defaultLogFile}, where \`log:check:links\`
+tees it), and record each resolved URL in .lycheecache.
+
+Options:
+  --expect-failures  Fail unless at least one failure line was parsed from
+                     the log. Set by the workflow when the link check exited
+                     nonzero, so a nonzero status is only suppressed once it
+                     is attributed to ordinary, parsed link failures.
+  -h, --help         Print this usage text and exit.
+  --verbose          Log probe activity per URL.`;
+
+let cliArgs;
+try {
+  cliArgs = parseArgs({
+    options: {
+      'expect-failures': { type: 'boolean' },
+      help: { type: 'boolean', short: 'h' },
+      verbose: { type: 'boolean' },
+    },
+    allowPositionals: true,
+  });
+  if (cliArgs.positionals.length > 1) {
+    throw new Error(
+      `Unexpected extra argument(s): ${cliArgs.positionals.slice(1).join(' ')}`,
+    );
+  }
+} catch (e) {
+  console.error(`Error: ${e.message}\n\n${usage}`);
+  process.exit(1);
+}
+
+if (cliArgs.values.help) {
+  console.log(usage);
+  process.exit(0);
+}
+
+const verbose = !!cliArgs.values.verbose;
+const expectFailures = !!cliArgs.values['expect-failures'];
+const logFile = cliArgs.positionals[0] ?? path.join(root, defaultLogFile);
 
 if (!fs.existsSync(logFile)) {
   console.error(`Error: link-check log not found: ${logFile}`);

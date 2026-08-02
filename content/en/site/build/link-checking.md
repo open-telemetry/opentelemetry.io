@@ -117,6 +117,8 @@ npm run log:check:links
 npm run fix:link-cache:double-check
 ```
 
+For options, run `npm run fix:link-cache:double-check -- --help`.
+
 The probe requires Chrome: either set `CHROME_PATH`, or let the tooling install
 a Puppeteer-managed copy. An opt-in live smoke check of the probe is available
 as `npm run test:double-check:live`.
