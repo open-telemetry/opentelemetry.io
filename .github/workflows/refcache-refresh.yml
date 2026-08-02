@@ -47,6 +47,7 @@ jobs:
     env:
       BRANCH: otelbot/refcache-refresh
       DEFAULT_REFRESH_COUNT: *default_refresh_count
+      DOUBLE_CHECK_NEEDED: 'false'
       IS_NEW_BRANCH: 'false'
       REFRESH_COUNT: ${{ github.event.inputs.number_of_entries_to_refresh }}
       PRUNE_MORE: ${{ github.event.inputs.prune_more_in_same_PR }}
