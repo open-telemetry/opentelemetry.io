@@ -2,6 +2,7 @@ import { test, suite } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   cacheLinesFor,
+  checkProbeResults,
   checkReportConsistency,
   csvField,
   mergedCacheText,
@@ -145,6 +146,31 @@ suite('checkReportConsistency', () => {
         expectFailures: true,
       },
     );
+  });
+});
+
+suite('checkProbeResults', () => {
+  // Probe-infrastructure guard: see checkProbeResults in index.mjs.
+  test('throws when every probe errored out', () => {
+    assert.throws(
+      () =>
+        checkProbeResults([
+          { url: 'https://a.test/', status: null },
+          { url: 'https://b.test/', status: null },
+        ]),
+      /every probe/i,
+    );
+  });
+
+  test('accepts results where at least one probe completed', () => {
+    checkProbeResults([
+      { url: 'https://a.test/', status: null },
+      { url: 'https://gone.test/', status: 404 },
+    ]);
+  });
+
+  test('accepts an empty result list', () => {
+    checkProbeResults([]);
   });
 });
 

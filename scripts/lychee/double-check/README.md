@@ -35,7 +35,8 @@ plain HTTP status, it:
 Synthetic statuses:
 
 - `206` ("OK by analysis"): resolved by inspection rather than HTTP status. This
-  is the status the driver records in `.lycheecache`.
+  is the status the driver records in `.lycheecache`; such entries age out
+  through the refresh workflow's normal pruning, like any other entry.
 - `422`: page fetched, but the URL fragment was not found.
 
 When neither `CI` nor `CHROME_PATH` is set, URLs that remain unresolved are

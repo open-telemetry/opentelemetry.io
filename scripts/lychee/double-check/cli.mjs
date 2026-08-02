@@ -14,6 +14,7 @@ import { failedUrlsOf } from '../check-report/index.mjs';
 import { getUrlStatus } from './get-url-status.mjs';
 import {
   cacheLinesFor,
+  checkProbeResults,
   checkReportConsistency,
   mergedCacheText,
   summaryReport,
@@ -95,6 +96,7 @@ for (const { status, url } of failures) {
   console.log(`    -> probe status: ${probed}`);
   results.push({ url, status: probed });
 }
+checkProbeResults(results);
 
 const lines = cacheLinesFor(results, Math.floor(Date.now() / 1000));
 if (lines.length > 0) {

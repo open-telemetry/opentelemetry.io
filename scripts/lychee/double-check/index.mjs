@@ -1,8 +1,6 @@
 // Pure logic for the double-check driver: turn probe results for
-// Lychee-reported link failures into committed link-cache entries with the
-// synthetic status 206, "OK by analysis": verified by the browser-grade
-// probe (./get-url-status.mjs) rather than by Lychee's plain HTTP client.
-// Process wiring lives in ./cli.mjs.
+// Lychee-reported link failures into committed link-cache entries. Process
+// wiring lives in ./cli.mjs; probe and cache-entry semantics in ./README.md.
 
 import { sortCacheText } from 'link-cache/check/index.mjs';
 import { STATUS_OK_BY_ANALYSIS, isHttp2XX } from './get-url-status.mjs';
@@ -66,6 +64,19 @@ export function checkReportConsistency(
       'The link check failed, but no failure lines were parsed from its ' +
         'log; the failure may be unrelated to links, or the report format ' +
         'may have changed.',
+    );
+  }
+}
+
+// Probe-infrastructure guard: a null status means the probe itself errored
+// out; if every probe did, the probe infrastructure is broken (e.g., Chrome
+// failed to launch) and exiting normally would masquerade as a completed run.
+export function checkProbeResults(results) {
+  if (results.length > 0 && results.every(({ status }) => status === null)) {
+    throw new Error(
+      `Every probe (${results.length}) errored out; the probe ` +
+        'infrastructure is likely broken (Chrome launch failure?). ' +
+        'See the probe log lines above for details.',
     );
   }
 }
