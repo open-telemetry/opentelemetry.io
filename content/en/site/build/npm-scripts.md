@@ -155,7 +155,9 @@ are internal helpers and are not intended to be run directly.
 - **`all`** runs every listed script even when one fails, then exits with a
   non-zero status if any failed.
 
+<!-- prettier-ignore-start -->
 [build kinds]: ../#build-kinds
 [dc]: ../link-checking/#double-check
 [fn]: /docs/contributing/pr-checks/#filename-check
 [locale-auto-merge]: ../ci-workflows/#locale-auto-merge
+<!-- prettier-ignore-end -->
