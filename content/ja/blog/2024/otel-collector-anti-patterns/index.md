@@ -37,7 +37,7 @@ Collector のデプロイモードにはエージェントモードとゲート�
 
 ![OTel Collector エージェントモード](otel-collector-agent.png)
 
-[ゲートウェイモード](/docs/collector/deploy/gateway/)では、テレメトリーデータがロードバランサーに送信され、ロードバランサーが Collector のプール間で負荷を分散します。
+[ゲートウェイモード](/docs/collector/deploy/gateway/)では、テレメトリーデータがロードバランサーに送信され、ロードバランサーがプール内の各 Collector に負荷を分散します。
 Collector のプールがあるため、プール内の1つの Collector が障害を起こしても、プール内の他の Collector が引き継ぐことができます。
 これにより、中断なくデータが宛先に流れ続けます。
 ゲートウェイモードは通常、クラスター、データセンター、またはリージョンごとにデプロイされます。
