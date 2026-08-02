@@ -8,9 +8,8 @@ to run it locally, see [Double-check of failing links][docs].
 
 ## Files
 
-- `cli.mjs` -- driver: parses a captured `check:links` log, probes each reported
-  failure, and merges resolved URLs into `.lycheecache`. Run with `--help` for
-  options.
+- `cli.mjs` -- driver: parses a captured `check:links` log and probes each
+  reported failure. Run with `--help` for options.
 - `index.mjs` -- pure logic: report-consistency checks, cache-line synthesis and
   merging.
 - `get-url-status.mjs` -- the probe; also runnable directly:
