@@ -61,7 +61,10 @@ confirmed the URL is not otherwise healthy.
 ## Resolve failing links
 
 The link checker (Lychee) only caches successful results in `.lycheecache`, so
-failing URLs are re-fetched on every run.
+failing URLs are re-fetched on every run. For failures that look like
+bot-blocking rather than dead links, `npm run fix:link-cache:double-check`
+re-verifies them through a real browser; see
+[Double-check of failing links](/site/build/link-checking/#double-check).
 
 1. Build the site and check links: `npm run fix:link-cache`. This also updates
    `.lycheecache`. See LinkedIn note below.
