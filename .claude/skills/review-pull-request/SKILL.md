@@ -15,7 +15,7 @@ effort: medium
 
 Review workflow for pull requests in `open-telemetry/opentelemetry.io`. The
 contributing guide and the per-check decoder in [`pr-checks.md`][pr-checks] are
-the authoritative sources — when this skill drifts from them, trust them.
+the authoritative sources; when this skill drifts from them, trust them.
 
 For blog-specific rules (`gh-url-hash`, author front matter, publish-date
 gating), defer to the sibling `review-blog-post` skill. For label drafting
@@ -187,26 +187,22 @@ Source-of-truth files — read on demand:
   [`localization.md`][localization], [`issues.md`][issues] — process rules
   deep-linked above.
 
-[pr-checks]: ../../../content/en/docs/contributing/pr-checks.md
+<!-- prettier-ignore-start -->
+[cache-check]: ../../../content/en/docs/contributing/pr-checks.md#cache-updates-committed
 [checks]: ../../../content/en/docs/contributing/pr-checks.md#checks
 [cla]: ../../../content/en/docs/contributing/pr-checks.md#easy-cla
-[cache-check]:
-  ../../../content/en/docs/contributing/pr-checks.md#cache-updates-committed
-[handling-links]:
-  ../../../content/en/docs/contributing/pr-checks.md#handling-valid-external-links
+[co-owned]: ../../../content/en/docs/contributing/sig-practices.md#co-owned-prs
+[general]: ../../../content/en/docs/contributing/sig-practices.md#general
+[handling-links]: ../../../content/en/docs/contributing/pr-checks.md#handling-valid-external-links
+[issues]: ../../../content/en/docs/contributing/issues.md
+[keep-green]: ../../../content/en/docs/contributing/localization.md#keep-checks-green
+[link-fixes]: ../../../content/en/docs/contributing/localization.md#link-fixes-and-resource-updates
+[locale-span]: ../../../content/en/docs/contributing/localization.md#prs-should-not-span-locales
+[localization]: ../../../content/en/docs/contributing/localization.md
 [npm-scripts]: ../../../content/en/site/build/npm-scripts.md
+[pr-checks]: ../../../content/en/docs/contributing/pr-checks.md
+[prs]: ../../../content/en/docs/contributing/sig-practices.md#prs
 [pull-requests]: ../../../content/en/docs/contributing/pull-requests.md
 [sig-practices]: ../../../content/en/docs/contributing/sig-practices.md
-[localization]: ../../../content/en/docs/contributing/localization.md
-[issues]: ../../../content/en/docs/contributing/issues.md
-[prs]: ../../../content/en/docs/contributing/sig-practices.md#prs
-[co-owned]: ../../../content/en/docs/contributing/sig-practices.md#co-owned-prs
-[translation]:
-  ../../../content/en/docs/contributing/sig-practices.md#translation-prs
-[general]: ../../../content/en/docs/contributing/sig-practices.md#general
-[locale-span]:
-  ../../../content/en/docs/contributing/localization.md#prs-should-not-span-locales
-[keep-green]:
-  ../../../content/en/docs/contributing/localization.md#keep-checks-green
-[link-fixes]:
-  ../../../content/en/docs/contributing/localization.md#link-fixes-and-resource-updates
+[translation]: ../../../content/en/docs/contributing/sig-practices.md#translation-prs
+<!-- prettier-ignore-end -->
