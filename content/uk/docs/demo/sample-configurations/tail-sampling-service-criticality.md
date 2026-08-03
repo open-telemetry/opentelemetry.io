@@ -1,7 +1,7 @@
 ---
 title: Вибірка наприкінці з `service.criticality`
 linkTitle: Вибірка наприкінці
-default_lang_commit: a30c5375b2471b40e86aace1fe150b5093ef1ded
+default_lang_commit: 212fd3ead19d20d10975e270e840066902e82233
 ---
 
 Цей приклад демонструє, як використовувати атрибут ресурсу [`service.criticality`](/docs/specs/semconv/resource/service/#service) для інтелектуальних рішень щодо вибірки наприкінці в OpenTelemetry Collector.
