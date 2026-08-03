@@ -661,6 +661,7 @@ https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframe
 https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/client/package-summary.html,200,1785739338
 https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/server/ResponseStatusException.html,206,1784356052
 https://docs.spring.io/spring-framework/reference/core/aop/proxying.html,200,1785621146
+https://docs.spring.io/spring-framework/reference/integration/jms.html,200,1785741275
 https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities,200,1785713002
 https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/scheduling/package-summary.html,200,1785739338
 https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/reactive/package-summary.html,200,1785739338
@@ -4508,6 +4509,7 @@ https://gohugo.io/content-management/urls/#aliases,200,1784649104
 https://gohugo.io/documentation/,200,1785713003
 https://gohugo.io/methods/site/regularpages/,200,1785134663
 https://gohugo.io/quick-reference/emojis/,200,1785739339
+https://gohugo.io/quick-reference/glossary/#default-sort-order,200,1785741276
 https://gohugo.io/templates/introduction/#whitespace,206,1784355917
 https://google.aip.dev/122#full-resource-names,206,1784356053
 https://google.github.io/sqlcommenter/,206,1784442364
@@ -4820,6 +4822,7 @@ https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentatio
 https://learn.microsoft.com/en-us/dotnet/core/rid-catalog,206,1784442349
 https://learn.microsoft.com/en-us/nuget/resources/check-project-format#check-the-project-format,206,1784442341
 https://learn.microsoft.com/en-us/windows/wsl/install,200,1785674119
+https://learn.microsoft.com/fr-fr/dotnet/core/deploying/#publish-as-self-contained,200,1785741277
 https://learn.microsoft.com/fr-fr/dotnet/core/deploying/,200,1785739354
 https://learn.microsoft.com/fr-fr/dotnet/core/rid-catalog,200,1785739354
 https://learn.microsoft.com/fr-fr/nuget/resources/check-project-format#check-the-project-format,200,1785739354
