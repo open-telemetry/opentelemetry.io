@@ -708,6 +708,8 @@ https://embrace.io/docs/web/getting-started/,200,1785739347
 https://embrace.io/opentelemetry-for-mobile/,206,1784355834
 https://emissary-ingress.dev/,200,1784960539
 https://emissary-ingress.dev/docs/3.10/howtos/dist-tracing/,200,1784960539
+https://en.cppreference.com/w/cpp/container/set.html,200,1785786739
+https://en.cppreference.com/w/cpp/container/vector.html,200,1785786740
 https://en.wikipedia.org/,200,1785739338
 https://en.wikipedia.org/wiki/Abstract_syntax_tree,200,1785713021
 https://en.wikipedia.org/wiki/Aggregate_function#Decomposable_aggregate_functions,200,1785785936
@@ -5763,6 +5765,7 @@ https://shenyu.apache.org/,200,1784701474
 https://signoz.io/,200,1784960539
 https://skywalking.apache.org/docs/main/latest/en/setup/backend/otlp-trace/,200,1784960539
 https://slack.cncf.io/,200,1785621142
+https://slsa.dev/attestation-model,200,1785786739
 https://slsa.dev/spec/v1.0/about,200,1785739338
 https://slsa.dev/spec/v1.0/distributing-provenance#relationship-between-artifacts-and-attestations,206,1784442782
 https://slsa.dev/spec/v1.0/terminology#package-model,206,1784356060
@@ -5899,6 +5902,7 @@ https://www.alibabacloud.com/help/en/arms/tracing-analysis/get-started-with-trac
 https://www.anthropic.com/,200,1784701516
 https://www.anthropic.com/research/building-effective-agents,200,1784355621
 https://www.aspecto.io/,200,1785134672
+https://www.britannica.com/dictionary/pipeline,206,1785786819
 https://www.buoyant.io/mtls-guide,200,1785134689
 https://www.causely.ai/blog/demystifying-automatic-instrumentation,200,1784960554
 https://www.causely.ai/blog/using-opentelemetry-and-the-otel-collector-for-logs-metrics-and-traces,200,1784355887
