@@ -585,7 +585,7 @@ Link-check failures on localized pages are **not** such a case; for how to
 resolve them, see
 [Link fixes and resource updates](#link-fixes-and-resource-updates).
 
-The check-green minimum applies to drift-status bookkeeping too: when a failing
+The same minimum-fix rule applies to drift-status bookkeeping: when a failing
 check calls for refreshing `drifted_from_default`, update only the pages that
 the failing check reports; the daily
 [Housekeeping run](/site/build/ci-workflows/#housekeeping) completes the rest.
