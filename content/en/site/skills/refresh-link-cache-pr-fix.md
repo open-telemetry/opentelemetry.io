@@ -93,8 +93,18 @@ re-verifies them through a real browser; see
    Stop and wait for reviewer approval -- never self-approve recommendations.
 
 5. **Apply approved fixes.** Perform the maintainer-approved fix and follow-up
-   actions, and only those. For edits outside `content/en/`, follow
-   [Localization][] gating requirements and conventions (e.g. `# patched` tags).
+   actions, and only those. Restrict content edits to English pages under
+   `content/en/`: **never edit localized page content**. When a localized page
+   fails link checking, refresh its [drift status][] instead:
+
+   ```sh
+   npm run fix:i18n:status -- PATHS_TO_FAILING_LOCALIZED_PAGES
+   ```
+
+   The link checker skips drifted pages, and reconciliation is left to each
+   page's locale team. In the rare case where a failing link exists only in a
+   localized page, report it and defer to a maintainer to coordinate a fix with
+   the locale team.
 
 6. Run `npm run fix:link-cache` to re-check links (and refresh `.lycheecache`)
    after those source-link changes, then repeat the steps in this section (from
@@ -173,5 +183,5 @@ Show that the fetched page names or otherwise matches the linked resource:
   [Keeping registry and list information current](/ecosystem/registry/updating/).
 
 <!-- prettier-ignore-start -->
-[Localization]: /docs/contributing/localization/#link-fixes-and-resource-updates
+[drift status]: /docs/contributing/localization/#drift-status
 <!-- prettier-ignore-end -->
