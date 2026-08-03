@@ -137,9 +137,10 @@ default_lang_commit: <commit-hash-of-english-page>
 **Patching (build fixes only):**
 
 - Fixes strictly required to keep the site build green (build fixes) may edit
-  localized pages without syncing them; link-check failures are instead resolved
-  through drift-status updates (`npm run fix:i18n:status -- <PATHS>`) — never
-  edit localized page content to fix links
+  localized pages without syncing them
+- Never edit localized page content to fix links: resolve link-check failures on
+  localized pages through drift-status updates
+  (`npm run fix:i18n:status -- <PATHS>`)
 - Make only the edits the fix requires, and add the `# patched` comment to the
   `default_lang_commit` line in front matter
 - Any other change to localized page content — including targeted content
@@ -224,8 +225,8 @@ default_lang_commit: <commit-hash-of-english-page>
 
 - Semantic changes should affect only one language per PR
 - Exception: changes strictly required to keep the site build green (build
-  fixes) can span locales; link-check failures on localized pages are resolved
-  through drift-status updates instead, never content edits
+  fixes) can span locales; link-check failures never qualify — see "Patching"
+  above
 - Exception: content-neutral maintenance (site-wide tooling, configuration,
   front-matter, or markup updates) can span locales; for the full policy, see
   `content/en/docs/contributing/localization.md#prs-should-not-span-locales`

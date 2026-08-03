@@ -583,9 +583,8 @@ that is strictly required to keep the site build and its checks green:
   from the Hugo build. Mark every localized page that you fix as
   [patched](#patched).
 
-Link-check failures on localized pages are **not** such a case: resolve them
-through [drift status](#drift-status) updates, never through edits to localized
-page content. See
+Link-check failures on localized pages are **not** such a case; for how to
+resolve them, see
 [Link fixes and resource updates](#link-fixes-and-resource-updates).
 
 The check-green minimum applies to drift-status bookkeeping too: when a failing
@@ -608,7 +607,8 @@ content to fix links**. [Drift tracking](#track-changes) flags outdated
 localized copies for their locale teams, and reconciliation — link fixes
 included — is left to each team.
 
-First, contain the fallout on the English side:
+First, contain the fallout on the English side by fixing the failing links. Some
+target fates offer additional mitigations:
 
 - **A page was moved**: ensure that the moved English page declares an
   [alias][aliases] for its old path. The alias keeps previously published links
@@ -620,11 +620,14 @@ First, contain the fallout on the English side:
   so that links to the section keep working. (Aliases can't help in this case,
   since they redirect page paths, not fragments.)
 
-Then let drift handling cover the localized pages. Fixing the English pages that
-linked to a moved or deleted target makes their localized copies drift; the link
-checker already skips such copies as [drift pending](#drift-status), and the
-daily Housekeeping run persists their status. If a localized page still fails
-link checking, refresh its [drift status](#drift-status) directly:
+Other fates — a section moved to a different page, a moved external resource, or
+a deleted target — have no such mitigation: fixing the English links is the
+whole English-side fix.
+
+Then let drift handling cover the localized pages: fixing the English pages
+makes their localized copies drift, and the link checker skips drifted copies —
+see [Drift status](#drift-status). If a localized page still fails link
+checking, refresh its drift status directly:
 
 ```sh
 npm run fix:i18n:status -- <PATHS-TO-FAILING-LOCALIZED-PAGES>
