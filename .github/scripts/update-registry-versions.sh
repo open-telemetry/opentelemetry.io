@@ -81,7 +81,7 @@ for yaml_file in ${FILES}; do
         case $registry in
             gems)
                 gem_json="$(curl -sf "https://rubygems.org/api/v1/gems/${package_name}.json")" || return
-                VALUE="$(jq -r '.nama' <<< "$gem_json")"
+                VALUE="$(jq -r '.name' <<< "$gem_json")"
                 ${UPDATE_YAML} '.title = strenv(VALUE)' "$yaml_file"
                 VALUE="$(jq -r '.info' <<< "$gem_json")"
                 ${UPDATE_YAML} '.description = strenv(VALUE)' "$yaml_file"
