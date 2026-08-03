@@ -3152,6 +3152,7 @@ https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/baggage-p
 https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-auth-extension,206,1784442340
 https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources,206,1784442360
 https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference,200,1785134664
+https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migration-from-jmx-gatherer,200,1785715504
 https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper,200,1785713002
 https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/micrometer-meter-provider,206,1784284705
 https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/prometheus-client-bridge,206,1784284700
