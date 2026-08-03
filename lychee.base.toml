@@ -44,6 +44,8 @@ exclude = [
 
   # Temporary: javadoc.io /doc/ wrappers omit method anchors (#11037).
   '^https://javadoc\.io/doc/com\.azure/azure-cosmos/.+#executeBulkOperations',
+  # Temporary: gitpod.io redirects to an Ona login page (#11144).
+  '^https://gitpod\.io',
 
   # --- external host rules ---
   '^https://deploy-preview-\d+--opentelemetry\.netlify\.app/',
@@ -111,4 +113,6 @@ exclude = [
   # docs.alauda.io serves an empty JS-shell document; all content, including
   # headings, is client-rendered, so any fragment on it is unverifiable.
   '^https://docs\.alauda\.io/.*#',
+  # Google Docs heading anchors (`#heading=h.…`) are client-rendered.
+  '^https://docs\.google\.com/document/d/.+#',
 ]
