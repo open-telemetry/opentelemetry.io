@@ -136,7 +136,7 @@ java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://tomcat.example.com:999
 Для отримання додаткової інформації див. [документацію JMX Scraper](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper).
 
 > [!NOTE] Якщо ви переходите з застарілого JMX Metric Gatherer,
-> див. [посібник з міграції](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migrating-from-jmx-metric-gatherer).
+> див. [посібник з міграції](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migration-from-jmx-gatherer).
 
 ## Зіставлення власних метрик {#custom-metric-mappings}
 
@@ -218,7 +218,7 @@ java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://myapp.example.com:9999
 ## Додаткові ресурси {#additional-resources}
 
 - [Документація JMX Scraper](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper) — Повний довідник з конфігурації та приклади
-- [Посібник з міграції JMX Scraper](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migrating-from-jmx-metric-gatherer) — Міграція з застарілого JMX Metric Gatherer
+- [Посібник з міграції JMX Scraper](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migration-from-jmx-gatherer) — Міграція з застарілого JMX Metric Gatherer
 - [Метрики JMX (Java агент)](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md) — Документація з метрик JMX для Java агента
 - [Попередньо визначені цільові системи](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference) — Вбудовані набори метрик для популярних фреймворків
 - [Документація Java агента](/docs/zero-code/java/agent/) — Загальна конфігурація Java агента
