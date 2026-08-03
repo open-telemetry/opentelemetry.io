@@ -189,7 +189,7 @@
     "markdown-it": "15.0.0",
     "markdown-link-check": "3.14.2",
     "markdownlint": "0.41.1",
-    "markdownlint-cli2": "0.23.1",
+    "markdownlint-cli2": "0.23.2",
     "markdownlint-rule-helpers": "0.31.0",
     "markdownlint-rule-link-pattern": "github:chalin/markdownlint-rule-link-pattern#semver:0.2.0",
     "markdownlint-rule-no-shortcut-ref-link": "github:chalin/markdownlint-rule-no-shortcut-ref-link#v0.3.1",
