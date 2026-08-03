@@ -137,6 +137,10 @@ params:
   github_branch: main
   gcs_engine_id: 015faf7de29c34606
 
+  # Pin the Mermaid version Docsy loads via jsDelivr
+  mermaid:
+    version: "11.16.0"
+
   ## Social media image path, such as Open Graph's og:image
   #
   # IMPORTANT: if you change the image but not the path, also increment the

@@ -30,4 +30,16 @@
       enabled: false,
     },
   ],
+  customManagers: [
+    {
+      // Track the Mermaid version pinned for Docsy's Mermaid partial.
+      customType: 'regex',
+      managerFilePatterns: ['/^config/_default/hugo\\.yaml$/'],
+      matchStrings: [
+        'mermaid:\\s*\\n\\s*version:\\s*[\'"](?<currentValue>[^\'"]+)[\'"]',
+      ],
+      depNameTemplate: 'mermaid',
+      datasourceTemplate: 'npm',
+    },
+  ],
 }
