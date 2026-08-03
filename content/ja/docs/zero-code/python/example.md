@@ -3,6 +3,7 @@ title: 自動計装の例
 linkTitle: Example
 weight: 20
 default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: Aiohttp ASGI distro instrumentor mkdir MSIE Referer Starlette venv
 ---
