@@ -140,7 +140,9 @@ default_lang_commit: <commit-hash-of-english-page>
   localized pages without syncing them
 - Never edit localized page content to fix links: resolve link-check failures on
   localized pages through drift-status updates
-  (`npm run fix:i18n:status -- <PATHS>`)
+  (`npm run fix:i18n:status -- PATHS`); in the rare case where a failing link
+  exists only in a localized page, report it and coordinate a fix with its
+  locale team
 - Make only the edits the fix requires, and add the `# patched` comment to the
   `default_lang_commit` line in front matter
 - Any other change to localized page content — including targeted content

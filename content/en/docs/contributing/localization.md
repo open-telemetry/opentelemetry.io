@@ -600,7 +600,7 @@ adding a new glossary term.
 Changes to the English documentation can result in link-check failures for
 non-English locales. This happens when documentation pages, or sections within
 them, are moved or deleted; links to moved external resources can fail
-similarly. Fix such failures on English pages only — **never edit localized page
+similarly. Fix such failures on English pages only; **never edit localized page
 content to fix links**. [Drift tracking](#track-changes) flags outdated
 localized copies for their locale teams, and reconciliation, link fixes
 included, is left to each team.
@@ -629,7 +629,7 @@ drifted copies. If a localized page still fails link checking, refresh its drift
 status directly:
 
 ```sh
-npm run fix:i18n:status -- <PATHS-TO-FAILING-LOCALIZED-PAGES>
+npm run fix:i18n:status -- PATHS_TO_FAILING_LOCALIZED_PAGES
 ```
 
 In the rare case where a failing link exists only in a localized page, report it

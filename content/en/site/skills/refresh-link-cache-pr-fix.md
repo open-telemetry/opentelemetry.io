@@ -93,8 +93,8 @@ re-verifies them through a real browser; see
    Stop and wait for reviewer approval -- never self-approve recommendations.
 
 5. **Apply approved fixes.** Perform the maintainer-approved fix and follow-up
-   actions, and only those. Restrict content edits to English pages under
-   `content/en/`: **never edit localized page content**.
+   actions, and only those. For page content under `content/`, edit English
+   pages only: **never edit localized page content**.
 
 6. Run `npm run fix:link-cache` to re-check links and refresh `.lycheecache`
    after those source-link changes. If a localized page still fails, refresh its
@@ -104,8 +104,10 @@ re-verifies them through a real browser; see
    npm run fix:i18n:status -- PATHS_TO_FAILING_LOCALIZED_PAGES
    ```
 
-   For more details, see [Link fixes and resource updates][]. Repeat the steps
-   in this section (from step 1) until the check passes.
+   In the rare case where a failing link exists only in a localized page, report
+   it and coordinate a fix with its locale team. For more details, see [Link
+   fixes and resource updates][]. Repeat the steps in this section (from step 1)
+   until the check passes.
 
 ## Wrap up
 
