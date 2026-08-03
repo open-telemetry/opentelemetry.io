@@ -6,6 +6,7 @@ aliases:
   - /docs/collector/trace-receiver
   - /docs/collector/building/receiver
 default_lang_commit: 2af96e42fca16c64f346a174d62a9d53f43545b3
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: backendsystem crand debugexporter mapstructure pcommon pdata ptrace rcvr resourcespans struct tailtracer telemetrygen uber
 ---
@@ -61,11 +62,10 @@ OpenTelemetry は[分散トレーシング](/docs/concepts/glossary/#distributed
 
 ```sh
 docker run -d --name jaeger \
-  -e COLLECTOR_OTLP_ENABLED=true \
   -p 16686:16686 \
   -p 14317:4317 \
   -p 14318:4318 \
-  jaegertracing/all-in-one:1.41
+  jaegertracing/jaeger:latest
 ```
 
 コンテナが起動して実行されたら、次の URL から Jaeger UI にアクセスできます。

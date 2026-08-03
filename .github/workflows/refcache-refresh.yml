@@ -1,14 +1,22 @@
 name: Refcache refresh
 
 # Creates (or updates) the PR that refreshes a number of the oldest entries in
-# the link-check response cache (.lycheecache, aka the refcache). We say "the
+# the link-check response cache (.lycheecache, aka the link cache). We say "the
 # PR", because there can be at most one such PR at a time. We refresh by first
 # pruning the oldest N entries, then running the link checker to update the
 # cache. N is set via the workflow_dispatch input.
 #
-# If the PR branch already exists, then by default we only rebase from `main`.
+# If the PR branch already exists, then by default we only merge from `main`.
 # To force further pruning of the existing PR branch, invoke with
-# `prune_more_in_same_PR` is true.
+# `prune_more_in_same_PR` set to true. If the branch exists but has no open PR
+# (e.g., the PR was closed without deleting the branch), the branch is reset
+# to `origin/main` and treated as a new branch, so that pruning runs.
+#
+# When pruning ran but the run ends with no commits to open a PR from, the
+# run fails: an empty refresh after pruning means the workflow is broken.
+#
+# The workflow and its PR branch (otelbot/refcache-refresh) keep their
+# historical refcache names; scripts and docs now say "link cache".
 #
 on:
   schedule:
@@ -16,7 +24,7 @@ on:
   workflow_dispatch:
     inputs:
       number_of_entries_to_refresh:
-        description: Number of (oldest) refcache entries to refresh.
+        description: Number of (oldest) link-cache entries to refresh.
         default: &default_refresh_count 800
         type: number
       prune_more_in_same_PR:
@@ -39,6 +47,7 @@ jobs:
     env:
       BRANCH: otelbot/refcache-refresh
       DEFAULT_REFRESH_COUNT: *default_refresh_count
+      DOUBLE_CHECK_NEEDED: 'false'
       IS_NEW_BRANCH: 'false'
       REFRESH_COUNT: ${{ github.event.inputs.number_of_entries_to_refresh }}
       PRUNE_MORE: ${{ github.event.inputs.prune_more_in_same_PR }}
@@ -51,7 +60,7 @@ jobs:
           client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           # Needed to trigger workflows when pushing new commits to an existing PR
@@ -61,8 +70,8 @@ jobs:
         run: |
           if [[ -z "$REFRESH_COUNT" ]]; then
             echo "REFRESH_COUNT=$DEFAULT_REFRESH_COUNT" >> $GITHUB_ENV
-          elif [[ ! "$REFRESH_COUNT" =~ ^[0-9]+$ ]]; then
-            echo "Error: REFRESH_COUNT must be a non-negative number, got: $REFRESH_COUNT"
+          elif [[ ! "$REFRESH_COUNT" =~ ^[0-9]+$ || "$REFRESH_COUNT" -eq 0 ]]; then
+            echo "Error: REFRESH_COUNT must be a positive number, got: $REFRESH_COUNT"
             exit 1
           fi
 
@@ -78,8 +87,16 @@ jobs:
             echo "Branch $BRANCH already exists, doing checkout."
             git checkout $BRANCH
 
-            PR_URL=$(gh pr view --json url --jq '.url')
-            echo "Branch PR: $PR_URL"
+            PR_URL=$(gh pr list --state open --head $BRANCH --json url --jq '.[].url')
+            if [[ -n "$PR_URL" ]]; then
+              echo "Branch PR: $PR_URL"
+            else
+              echo "Branch has no open PR: resetting it to origin/main" \
+                "and treating it as a new branch."
+              echo "IS_NEW_BRANCH=true" >> $GITHUB_ENV
+              git reset --hard origin/main
+              git push --force-with-lease origin $BRANCH
+            fi
           fi
 
       - name: Use CLA approved github bot
@@ -100,47 +117,73 @@ jobs:
           git $merge_or_rebase origin/main
           if [ "$(git rev-parse HEAD)" != "$previous" ]; then
             DELAYED_PUSH_CMD="git push $push_args origin $BRANCH"
-            echo "We'll push later, after committing the refcache updates."
+            echo "We'll push later, after committing the link-cache updates."
             echo "DELAYED_PUSH_CMD=$DELAYED_PUSH_CMD"
             echo "DELAYED_PUSH_CMD=$DELAYED_PUSH_CMD" >> $GITHUB_ENV
           fi
 
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with: { node-version-file: .nvmrc }
 
       - run: npm install --omit=optional
 
       - uses: ./.github/actions/install-lychee
 
-      - name: Prune refcache
+      - name: Prune link cache
         if: ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' }}
         run: |
-          echo "Oldest entry before pruning, then pruning $REFRESH_COUNT oldest refcache entries:"
-          npm run refcache -- --list 1 --prune $REFRESH_COUNT
+          echo "Oldest entry before pruning, then pruning $REFRESH_COUNT oldest link-cache entries:"
+          npm run link-cache -- --list 1 --prune $REFRESH_COUNT
 
       - name: List oldest entry after pruning
         run: |
-          OLDEST_ENTRY=$(npm run refcache -- --list 1 | grep '^\s')
+          OLDEST_ENTRY=$(npm run link-cache -- --list 1 | grep '^\s')
           echo "Oldest entry after pruning: $OLDEST_ENTRY"
           echo "OLDEST_ENTRY=$OLDEST_ENTRY" >> $GITHUB_ENV
 
-      - name: Build site and update refcache
+      - name: Build site and update link cache
         env:
           # Authenticated github.com checks (rate limits)
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           lychee --version
-          # Ignore link-check failures so we can still commit refcache updates
-          npm run full:build -- fix:refcache || true
+          mkdir -p tmp
+          # pipefail makes the pipeline status reflect the link check, not
+          # `tee`; the `||` capture keeps a failure from aborting the step
+          # under errexit.
+          set -o pipefail
+          LINK_CHECK_STATUS=0
+          npm run full:build -- fix:link-cache 2>&1 \
+            | tee tmp/check-links-log.txt || LINK_CHECK_STATUS=$?
+          echo "Link check exit status: $LINK_CHECK_STATUS"
+          if [[ $LINK_CHECK_STATUS -ne 0 ]]; then
+            echo "DOUBLE_CHECK_NEEDED=true" >> $GITHUB_ENV
+          fi
 
-      - name: Commit refcache updates and push changes if any
+      - uses: browser-actions/setup-chrome@2e1d749697dd1612b833dba4a722266286fbefcd # v2.1.2
+        id: setup-chrome
+        if: ${{ env.DOUBLE_CHECK_NEEDED == 'true' }}
+        with:
+          chrome-version: stable
+          install-dependencies: true # pulls required Linux libs
+
+      - name: Double-check failing links with the browser probe
+        if: ${{ env.DOUBLE_CHECK_NEEDED == 'true' }}
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+        run: |
+          echo "Chrome path: $CHROME_PATH"
+          "$CHROME_PATH" --version
+          npm run fix:link-cache:double-check -- --verbose --expect-failures
+
+      - name: Commit link-cache updates and push changes if any
         run: |
           git add -A
           if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Update refcache"
+            git commit -am "Update link cache"
           fi
 
-          # Push if we have any commits to push (refcache updates or sync from main)
+          # Push if we have any commits to push (link-cache updates or sync from main)
           if [[ -n "$DELAYED_PUSH_CMD" ]]; then
             echo "Executing: $DELAYED_PUSH_CMD"
             $DELAYED_PUSH_CMD
@@ -152,7 +195,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           PR_BODY: |-
-            - Refreshes the oldest ${{ env.REFRESH_COUNT }} refcache entries.
+            - Refreshes the oldest ${{ env.REFRESH_COUNT }} link-cache entries.
             - Oldest entry after pruning:
             ${{ env.OLDEST_ENTRY }}
 
@@ -166,12 +209,15 @@ jobs:
             exit 0
           fi
 
-          if gh pr create --title "Refresh refcache" \
+          if gh pr create --title "Refresh link cache" \
               --body "$PR_BODY";
           then
             PR_URL=$(gh pr view --json url --jq '.url')
             printf "PR created: %s\n" "$PR_URL"
           else
-            echo "Failed to create PR - likely no commits to create PR from"
-            exit 0  # Don't fail the workflow, just skip PR creation
+            echo "::error::Failed to create PR, likely because there are no" \
+              "commits on $BRANCH. When pruning ran this run, the link-cache" \
+              "refresh should have produced changes. See the workflow header" \
+              "comment."
+            exit 1
           fi

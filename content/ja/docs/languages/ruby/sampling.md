@@ -2,6 +2,7 @@
 title: サンプリング
 weight: 80
 default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57
+drifted_from_default: true
 ---
 
 [サンプリング](/docs/concepts/sampling/)は、システムによって生成されるトレース量を制限するプロセスです。
