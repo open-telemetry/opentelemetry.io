@@ -42,3 +42,15 @@
     now #reuse-client-instances, and docs.microsoft.com redirects to
     learn.microsoft.com. Upstreamed fix:
     open-telemetry/semantic-conventions#3917
+
+- id: 2026-08-03-kubelet-column-range-anchors
+  module: semconv
+  minVers: 1.43.0
+  file: ^tmp/semconv/docs/system/k8s-metrics\.md$
+  search: '#L(?<line>\d+)C\d+-L\d+C\d+'
+  replace: '#L$<line>'
+  flags: g
+  notes: >-
+    GitHub column-range anchors (#LnCm-LnCm) are client-rendered, so the link
+    check cannot verify them; the plain #Ln form works. Not yet upstreamed to
+    open-telemetry/semantic-conventions (model/k8s/metrics.yaml).

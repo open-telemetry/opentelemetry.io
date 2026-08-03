@@ -164,6 +164,7 @@ https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelem
 https://cerbos.dev/,200,1785785905
 https://cert-manager.io/docs/,200,1785674117
 https://cert-manager.io/docs/installation/,200,1785788160
+https://cert-manager.io/docs/installation/kubernetes/,200,1785790959
 https://checkmk.com/,200,1784960539
 https://checkmk.com/werk/16565,200,1784960541
 https://clickhouse.com/,200,1785788175
@@ -485,6 +486,7 @@ https://docs.google.com/forms/d/e/1FAIpQLScoG279ZhRuMu8J_8BebGEVtMOS8BgD9cpQUJ6x
 https://docs.google.com/presentation/d/1iyR2HhYaAl1DMFl0992atj76mu0wqY6M/,200,1785739358
 https://docs.google.com/spreadsheets/d/1Kk6io9V6Q1nluq6H05zGjwvWlXwxh9IwjiThBGJP1Rw/edit?usp=sharing,200,1785621166
 https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s,200,1785134659
+https://docs.gradle.org/current/userguide/dependency_constraints_conflicts.html#sub:resolving-version-conflicts,200,1785794535
 https://docs.greptime.com/user-guide/ingest-data/for-observability/opentelemetry/,200,1785788175
 https://docs.groundcover.com/integrations/data-sources/opentelemetry/sending-from-an-opentelemetry-collector,200,1785739347
 https://docs.guance.com/en/integrations/opentelemetry/,200,1785788176
@@ -1584,6 +1586,7 @@ https://github.com/kubernetes,200,1785739349
 https://github.com/kubernetes-client/java,200,1784960534
 https://github.com/kubernetes-sigs/metrics-server,200,1785134660
 https://github.com/kubernetes/cri-api/blob/c75ef5b473bbe2d0a4fc92f82235efd665ea8e9f/pkg/apis/runtime/v1/api.proto#L1237-L1238,200,1785788289
+https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L157,200,1785794536
 https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L233,200,1785788289
 https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L236,200,1784701519
 https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L252,200,1784701519
@@ -3102,6 +3105,7 @@ https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/prometh
 https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim,200,1785713005
 https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim,200,1785134659
 https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/declarative-config,200,1785739343
+https://github.com/open-telemetry/opentelemetry-java/tree/v1.64.0/exporters/zipkin,200,1785794535
 https://github.com/open-telemetry/opentelemetry-js#supported-runtimes,200,1785713005
 https://github.com/open-telemetry/opentelemetry-js,200,1785788162
 https://github.com/open-telemetry/opentelemetry-js-contrib,200,1785788172
@@ -4793,6 +4797,7 @@ https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogge
 https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.activitysource,200,1784960545
 https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.metrics,200,1784960545
 https://learn.microsoft.com/en-us/dotnet/api/system.reflection.assembly.getentryassembly?view=net-7.0,200,1785621145
+https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-as-self-contained,200,1785794536
 https://learn.microsoft.com/en-us/dotnet/core/deploying/,200,1785788163
 https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation,200,1785788162
 https://learn.microsoft.com/en-us/dotnet/core/rid-catalog,200,1785788160
@@ -5363,6 +5368,7 @@ https://pkg.go.dev/go.opentelemetry.io/auto/sdk,200,1785621145
 https://pkg.go.dev/go.opentelemetry.io/collector/cmd/builder,200,1784960539
 https://pkg.go.dev/go.opentelemetry.io/collector/component#Component,200,1785134660
 https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#readme-client-authenticators,200,1785137269
+https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#readme-server-authenticators,200,1785794535
 https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth,200,1785788161
 https://pkg.go.dev/go.opentelemetry.io/collector/config/configtls,200,1785134689
 https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/envprovider,200,1785785902
@@ -5734,6 +5740,8 @@ https://skywalking.apache.org/docs/main/latest/en/setup/backend/otlp-trace/,200,
 https://slack.cncf.io/,200,1785621142
 https://slsa.dev/attestation-model,200,1785786739
 https://slsa.dev/spec/v1.0/about,200,1785739338
+https://slsa.dev/spec/v1.0/distributing-provenance#relationship-between-artifacts-and-attestations,200,1785790959
+https://slsa.dev/spec/v1.0/terminology#package-model,200,1785790959
 https://slsa.dev/spec/v1.0/terminology#software-supply-chain,200,1784960568
 https://slsa.dev/spec/v1.0/threats,200,1785739338
 https://spec.commonmark.org/0.31.2/#link-label,200,1785739338

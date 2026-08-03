@@ -71,6 +71,10 @@ exclude = [
   # one) while serving 200 to a plain curl user agent. The pages are live, and
   # `www.cisco.com/` itself is reachable, so scope the rule to `/c/…/products/`.
   '^https://www\.cisco\.com/c/en/us/products/',
+  # Bot wall (403 to lychee and the browser probe); the answer exists, verified
+  # via the Stack Exchange API (answer 980821, score 106). Linked from the
+  # semconv system-metrics spec page.
+  '^https://superuser\.com/a/980821',
   '^https://github\.com/open-telemetry/opentelemetry\.io/issues/?\?q=',
   '^https://github\.com/open-telemetry/opentelemetry\.io/discussions/?\?discussions_q=',
   '^https://github\.com/search/?\?',
