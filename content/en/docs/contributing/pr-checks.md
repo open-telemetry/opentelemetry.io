@@ -152,8 +152,13 @@ success status for, you can add the following query parameter to your URL to
 have the link checker ignore it: `?link-check=no` or `&link-check=no` if there
 are other query parameters. For example, the following URLs will be ignored:
 
-- <https:/some-example.org?link-check=no>
-- <https:/some-example.org?other-param=value&link-check=no>
+- `https:/some-example.org?link-check=no`
+- `https:/some-example.org?other-param=value&link-check=no`
+
+When you add `link-check=no`, record the date of your manual validation by also
+appending a `last-validated=YYYY-MM-DD` parameter, for example:
+
+- `https:/some-example.org?link-check=no&last-validated=2026-08-02`
 
 ### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
 
