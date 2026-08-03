@@ -96,7 +96,7 @@ re-verifies them through a real browser; see
    actions, and only those. Restrict content edits to English pages under
    `content/en/`: **never edit localized page content**.
 
-6. Run `npm run fix:link-cache` to re-check links (and refresh `.lycheecache`)
+6. Run `npm run fix:link-cache` to re-check links and refresh `.lycheecache`
    after those source-link changes. If a localized page still fails, refresh its
    [drift status][] instead of editing it:
 
@@ -104,9 +104,8 @@ re-verifies them through a real browser; see
    npm run fix:i18n:status -- PATHS_TO_FAILING_LOCALIZED_PAGES
    ```
 
-   For the policy behind this, including the rare case of a link that exists
-   only in a localized page, see [Link fixes and resource updates][]. Repeat the
-   steps in this section (from step 1) until the check passes.
+   For more details, see [Link fixes and resource updates][]. Repeat the steps
+   in this section (from step 1) until the check passes.
 
 ## Wrap up
 
