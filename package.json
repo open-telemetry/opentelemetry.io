@@ -186,7 +186,7 @@
     "hugo-extended": "0.164.0",
     "js-yaml": "5.2.2",
     "link-cache": "0.3.0",
-    "markdown-it": "14.3.0",
+    "markdown-it": "15.0.0",
     "markdown-link-check": "3.14.2",
     "markdownlint": "0.41.1",
     "markdownlint-cli2": "0.23.1",
