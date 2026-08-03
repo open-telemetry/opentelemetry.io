@@ -81,12 +81,12 @@ for yaml_file in ${FILES}; do
         case $registry in
             gems)
                 gem_json="$(curl -sf "https://rubygems.org/api/v1/gems/${package_name}.json")" || return
-                VALUE="$(jq -r '.name' <<< "$gem_json")"
-                yq eval -i '.title = strenv(VALUE)' "$yaml_file"
-                VALUE="$(jq -r '.info' <<< "$gem_json")"
-                yq eval -i '.description = strenv(VALUE)' "$yaml_file"
-                VALUE="$(jq -r '(.licenses // []) | join(", ")' <<< "$gem_json")"
-                yq eval -i '.license = strenv(VALUE)' "$yaml_file"
+                export TITLE="$(jq -r '.name' <<< "$gem_json")"
+                ${UPDATE_YAML} '.title = strenv(TITLE)' "$yaml_file"
+                export DESCRIPTION="$(jq -r '.info' <<< "$gem_json")"
+                ${UPDATE_YAML} '.description = strenv(DESCRIPTION)' "$yaml_file"
+                export LICENSE="$(jq -r '(.licenses // []) | join(", ")' <<< "$gem_json")"
+                ${UPDATE_YAML} '.license = strenv(LICENSE)' "$yaml_file"
                 set_checked_url "$yaml_file" "$gem_json" '.documentation_uri' '.urls.docs'
                 set_checked_url "$yaml_file" "$gem_json" '.source_code_uri' '.urls.repo'
                 set_checked_url "$yaml_file" "$gem_json" '.homepage_uri' '.urls.website'
