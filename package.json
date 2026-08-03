@@ -187,7 +187,7 @@
     "js-yaml": "5.2.2",
     "link-cache": "0.3.0",
     "markdown-it": "15.0.0",
-    "markdown-link-check": "3.14.2",
+    "markdown-link-check": "3.15.0",
     "markdownlint": "0.41.1",
     "markdownlint-cli2": "0.23.2",
     "markdownlint-rule-helpers": "0.31.0",
@@ -202,7 +202,7 @@
     "textlint-filter-rule-comments": "1.3.0",
     "textlint-rule-prh": "6.1.0",
     "textlint-rule-terminology": "5.2.16",
-    "yargs": "18.0.0"
+    "yargs": "18.1.0"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.1",
