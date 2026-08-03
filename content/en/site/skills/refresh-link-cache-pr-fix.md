@@ -1,5 +1,6 @@
 ---
-title: Refresh-refcache PR fix
+title: Refresh-link-cache PR fix
+aliases: [refresh-refcache-pr-fix]
 description: >-
   How to resolve failing link checks on otelbot PRs.
 ---
@@ -53,16 +54,19 @@ pointing at the main repository.
 Status 5XX responses are usually transient. If the link check reports status 5XX
 for a URL, treat it as likely temporary (origin down, gateway errors, overload).
 **Do not** change site content or links solely to work around a 5XX; prefer
-re-running `npm run fix:refcache` later. Only investigate a 5XX like a real
+re-running `npm run fix:link-cache` later. Only investigate a 5XX like a real
 defect if it **keeps** failing across multiple runs over time and you have
 confirmed the URL is not otherwise healthy.
 
 ## Resolve failing links
 
 The link checker (Lychee) only caches successful results in `.lycheecache`, so
-failing URLs are re-fetched on every run.
+failing URLs are re-fetched on every run. For failures that look like
+bot-blocking rather than dead links, `npm run fix:link-cache:double-check`
+re-verifies them through a real browser; see
+[Double-check of failing links](/site/build/link-checking/#double-check).
 
-1. Build the site and check links: `npm run fix:refcache`. This also updates
+1. Build the site and check links: `npm run fix:link-cache`. This also updates
    `.lycheecache`. See LinkedIn note below.
 2. If the check passes, [wrap up the PR](#wrap-up).
 3. **Otherwise**, list the failing URLs and their statuses from the check output
@@ -92,7 +96,7 @@ failing URLs are re-fetched on every run.
    actions, and only those. For edits outside `content/en/`, follow
    [Localization][] gating requirements and conventions (e.g. `# patched` tags).
 
-6. Run `npm run fix:refcache` to re-check links (and refresh `.lycheecache`)
+6. Run `npm run fix:link-cache` to re-check links (and refresh `.lycheecache`)
    after those source-link changes, then repeat the steps in this section (from
    step 1) until the check passes.
 
@@ -117,7 +121,7 @@ Once the link check passes on the PR being processed:
    For example:
 
    ```text
-   Refcache update done using: `/refresh-refcache-pr-fix for the collector-docs branch`
+   Link-cache update done using: `/refresh-link-cache-pr-fix for the collector-docs branch`
 
    Re-checked the failing URLs; all now resolve -- the link check passes.
    ```
