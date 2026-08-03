@@ -113,4 +113,6 @@ exclude = [
   # docs.alauda.io serves an empty JS-shell document; all content, including
   # headings, is client-rendered, so any fragment on it is unverifiable.
   '^https://docs\.alauda\.io/.*#',
+  # Google Docs heading anchors (`#heading=h.…`) are client-rendered.
+  '^https://docs\.google\.com/document/d/.+#',
 ]
