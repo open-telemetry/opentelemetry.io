@@ -615,17 +615,18 @@ target fates offer additional mitigations:
   site's canonical page paths. Links to the old path therefore still need fixing
   on English pages.
 - **A section was moved within its page**: preserve its [heading ID](#headings)
-  so that links to the section keep working. (Aliases can't help in this case,
-  since they redirect page paths, not fragments.)
+  so that links to the section keep working. Aliases can't help in this case:
+  they redirect page paths, not fragments.
 
-Other fates (a section moved to a different page, a moved external resource, or
-a deleted target) have no such mitigation: fixing the English links is the whole
-English-side fix.
+The other fates have no such mitigation: a section moved to a different page, a
+moved external resource, or a deleted target. Fixing the English links is the
+whole English-side fix; for a deleted target, that means choosing a replacement
+target or dropping the reference on each linking page.
 
 Then let drift handling cover the localized pages: fixing the English pages
-makes their localized copies drift, and the link checker skips drifted copies
-(see [Drift status](#drift-status)). If a localized page still fails link
-checking, refresh its drift status directly:
+makes their localized copies [drift](#drift-status), and the link checker skips
+drifted copies. If a localized page still fails link checking, refresh its drift
+status directly:
 
 ```sh
 npm run fix:i18n:status -- <PATHS-TO-FAILING-LOCALIZED-PAGES>
