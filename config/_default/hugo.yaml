@@ -139,7 +139,7 @@ params:
 
   # Pin the Mermaid version Docsy loads via jsDelivr
   mermaid:
-    version: "11.16.0"
+    version: '11.16.0'
 
   ## Social media image path, such as Open Graph's og:image
   #
