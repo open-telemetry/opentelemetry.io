@@ -2339,6 +2339,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/jpmunz
     avatar_url: https://avatars.githubusercontent.com/u/322136?v=4
+  - name: khushijain21
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/khushijain21
+    avatar_url: https://avatars.githubusercontent.com/u/57278642?v=4
   - name: kirrg001
     teams:
       - javascript-contrib-triagers
