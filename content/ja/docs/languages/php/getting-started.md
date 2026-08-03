@@ -107,7 +107,7 @@ php -S localhost:8080
 
    > [!NOTE]
    >
-   > エクステンションのインストール方法の代替手段については、[ゼロコード計装](/docs/zero-code/php/#install-the-opentelemetry-extension)で詳しく説明しています。
+   > エクステンションのインストール方法の代替手段については、[ゼロコード計装](/docs/zero-code/php/auto/#install-the-opentelemetry-extension)で詳しく説明しています。
 
 3. `php.ini` ファイルにエクステンションを追加します。
 
