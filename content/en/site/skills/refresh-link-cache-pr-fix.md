@@ -104,11 +104,9 @@ re-verifies them through a real browser; see
    npm run fix:i18n:status -- PATHS_TO_FAILING_LOCALIZED_PAGES
    ```
 
-   The link checker skips drifted pages, and reconciliation is left to each
-   page's locale team. In the rare case where a failing link exists only in a
-   localized page, report it and defer to a maintainer to coordinate a fix with
-   the locale team. Repeat the steps in this section (from step 1) until the
-   check passes.
+   For the policy behind this, including the rare case of a link that exists
+   only in a localized page, see [Link fixes and resource updates][]. Repeat the
+   steps in this section (from step 1) until the check passes.
 
 ## Wrap up
 
@@ -184,4 +182,6 @@ Show that the fetched page names or otherwise matches the linked resource:
 
 <!-- prettier-ignore-start -->
 [drift status]: /docs/contributing/localization/#drift-status
+[link fixes and resource updates]:
+  /docs/contributing/localization/#link-fixes-and-resource-updates
 <!-- prettier-ignore-end -->
