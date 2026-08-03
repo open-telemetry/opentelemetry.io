@@ -61,26 +61,27 @@ are internal helpers and are not intended to be run directly.
 
 ## Fixing
 
-| Script                    | Description                                                    |
-| ------------------------- | -------------------------------------------------------------- |
-| `fix`                     | Run the most commonly needed fix scripts.                      |
-| `fix:code-excerpts`       | Refresh code excerpts.                                         |
-| `fix:codeowners`          | Regenerate CODEOWNERS locale section from the registry.        |
-| `fix:all`                 | Run all fix scripts.                                           |
-| `fix:format`              | Apply Prettier and trim trailing spaces.                       |
-| `fix:format:staged`       | Format only staged files.                                      |
-| `fix:i18n`                | Add/fix i18n front matter (`fix:i18n:new`, `fix:i18n:status`). |
-| `fix:l10n`                | Apply localization fixes.                                      |
-| `fix:link-cache`          | Check links, updating the committed `.lycheecache`.            |
-| `fix:link-cache:refresh`  | Prune the oldest cache entries, then `fix:link-cache`.         |
-| `fix:markdown`            | Fix Markdown lint issues and trailing spaces.                  |
-| `fix:submodule`           | Pin submodule revisions (same as `pin:submodule`).             |
-| `fix:filenames`           | [Rename files & remove obsolete files/folders][fn].            |
-| `fix:dict`                | Sort cspell word lists and normalize front matter.             |
-| `fix:expired`             | Delete files reported by `check:expired`.                      |
-| `fix:text`                | Run textlint with --fix.                                       |
-| `fix:collector-sync:lint` | Run ruff with --fix in collector-sync.                         |
-| `format`                  | Alias for Prettier write (content and nowrap paths).           |
+| Script                        | Description                                                    |
+| ----------------------------- | -------------------------------------------------------------- |
+| `fix`                         | Run the most commonly needed fix scripts.                      |
+| `fix:code-excerpts`           | Refresh code excerpts.                                         |
+| `fix:codeowners`              | Regenerate CODEOWNERS locale section from the registry.        |
+| `fix:all`                     | Run all fix scripts.                                           |
+| `fix:format`                  | Apply Prettier and trim trailing spaces.                       |
+| `fix:format:staged`           | Format only staged files.                                      |
+| `fix:i18n`                    | Add/fix i18n front matter (`fix:i18n:new`, `fix:i18n:status`). |
+| `fix:l10n`                    | Apply localization fixes.                                      |
+| `fix:link-cache`              | Check links, updating the committed `.lycheecache`.            |
+| `fix:link-cache:double-check` | [Re-verify failing links with the browser probe][dc].          |
+| `fix:link-cache:refresh`      | Prune the oldest cache entries, then `fix:link-cache`.         |
+| `fix:markdown`                | Fix Markdown lint issues and trailing spaces.                  |
+| `fix:submodule`               | Pin submodule revisions (same as `pin:submodule`).             |
+| `fix:filenames`               | [Rename files & remove obsolete files/folders][fn].            |
+| `fix:dict`                    | Sort cspell word lists and normalize front matter.             |
+| `fix:expired`                 | Delete files reported by `check:expired`.                      |
+| `fix:text`                    | Run textlint with --fix.                                       |
+| `fix:collector-sync:lint`     | Run ruff with --fix in collector-sync.                         |
+| `format`                      | Alias for Prettier write (content and nowrap paths).           |
 
 ## Submodules and content
 
@@ -107,6 +108,7 @@ are internal helpers and are not intended to be run directly.
 | `test:base`                | Base tests (same as `check`).                                       |
 | `test:collector-sync`      | Collector-sync tests.                                               |
 | `test:compound-tests`      | Runs compound `test:*-*` scripts.[^categories]                      |
+| `test:double-check:live`   | Live smoke check of the [double-check probe][dc].                   |
 | `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.                 |
 | `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.        |
 | `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^categories]          |
@@ -144,15 +146,18 @@ are internal helpers and are not intended to be run directly.
 - **Link cache.** The link-check scripts read and update the committed
   `.lycheecache`. For details, see [Link checking](../link-checking/).
 - **`test:local-tools:lychee`** is the subset of `test:local-tools` that needs
-  the `lychee` binary (behavioral fragment- and config-checking tests). Those
-  tests skip when the binary is absent, so `test:local-tools` already covers
-  them in the general test job; the trailing `:lychee` keeps this script out of
-  `test:compound-tests` (which matches `test:*-*`) so the suite isn't run twice.
-  The link-check CI job installs lychee and runs this script to exercise them
-  for real.
+  the `lychee` binary (behavioral fragment- and config-checking tests, plus an
+  end-to-end drift-overlay scenario). Those tests skip when the binary is
+  absent, so `test:local-tools` already covers them in the general test job; the
+  trailing `:lychee` keeps this script out of `test:compound-tests` (which
+  matches `test:*-*`) so the suite isn't run twice. The link-check CI job
+  installs lychee and runs this script to exercise them for real.
 - **`all`** runs every listed script even when one fails, then exits with a
   non-zero status if any failed.
 
+<!-- prettier-ignore-start -->
 [build kinds]: ../#build-kinds
+[dc]: ../link-checking/#double-check
 [fn]: /docs/contributing/pr-checks/#filename-check
 [locale-auto-merge]: ../ci-workflows/#locale-auto-merge
+<!-- prettier-ignore-end -->

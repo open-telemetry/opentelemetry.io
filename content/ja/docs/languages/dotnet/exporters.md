@@ -1,7 +1,7 @@
 ---
 title: エクスポーター
 weight: 50
-default_lang_commit: bb23218b2ffc669eb538742e664dd7b52b55531e # patched
+default_lang_commit: e76ca67d0f5b6906f7a9c90cde82380fc31e6e85
 ---
 
 {{% docs/languages/exporters/intro %}}

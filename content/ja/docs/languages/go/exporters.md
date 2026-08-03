@@ -3,6 +3,7 @@ title: エクスポーター
 aliases: [exporting_data]
 weight: 50
 default_lang_commit: 813498074d85258c7180d137ace9e272d0149353
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: autoexport otlplog otlploggrpc otlploghttp otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp sdkmetric sdktrace stdoutlog stdouttrace
 ---
@@ -109,11 +110,10 @@ OTLPエクスポーターを試すために、v1.35.0以降では[Jaeger](https:
 
 ```shell
 docker run -d --name jaeger \
-  -e COLLECTOR_OTLP_ENABLED=true \
   -p 16686:16686 \
   -p 4317:4317 \
   -p 4318:4318 \
-  jaegertracing/all-in-one:latest
+  jaegertracing/jaeger:latest
 ```
 
 ### HTTP経由のOTLPメトリクス {#otlp-metrics-over-http}
