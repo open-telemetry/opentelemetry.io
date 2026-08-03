@@ -1,16 +1,18 @@
-title: RSpec Instrumentation
+title: opentelemetry-instrumentation-rspec
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
   - rspec
-license: Apache 2.0
-description: RSpec instrumentation for Ruby.
+license: Apache-2.0
+description: Rspec instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/rspec
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-rspec/v0.8.0/instrumentation/rspec
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-rspec/0.8.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems
