@@ -3,7 +3,7 @@ title: Розгортання OBI в Kubernetes
 linkTitle: Kubernetes
 description: Дізнайтеся, як розгорнути OBI в Kubernetes.
 weight: 4
-default_lang_commit: a30c5375b2471b40e86aace1fe150b5093ef1ded
+default_lang_commit: 212fd3ead19d20d10975e270e840066902e82233
 # prettier-ignore
 cSpell:ignore: cap_perfmon confuration containerd goblog kubeadm microk8s podʼі replicaset statefulset
 ---
