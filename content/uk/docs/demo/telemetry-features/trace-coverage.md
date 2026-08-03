@@ -2,7 +2,7 @@
 title: Покриття трасування за сервісом
 linkTitle: Покриття Трасування
 aliases: [trace_service_features, trace-features, ../trace-features]
-default_lang_commit: a30c5375b2471b40e86aace1fe150b5093ef1ded
+default_lang_commit: 212fd3ead19d20d10975e270e840066902e82233
 ---
 
 | Сервіс                 | Мова       | Бібліотеки інструментування | Ручне створення відрізків | Збагачення даних Відрізків | Поширення контексту RPC | Посилання на відрізки | Baggage | Виявлення ресурсів |
