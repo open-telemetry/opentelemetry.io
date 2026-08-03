@@ -52,4 +52,4 @@ default_lang_commit: 212fd3ead19d20d10975e270e840066902e82233
 - Hugo автоматично виключає сторінки, термін дії яких минув, на основі `expiryDate`.
 - Сторінки сортуються за [стандартним порядком сторінок Hugo][default page order], який спочатку сортує за зростанням `weight`. Оскільки `weight` встановлено як ціле число дати закінчення у форматі `yyyymmdd` (див. вище), анонс, який закінчується найближчим часом, зʼявляється зверху.
 
-[default page order]: https://gohugo.io/methods/page/regularpages/#default-sort-order
+[default page order]: https://gohugo.io/quick-reference/glossary/#default-sort-order
