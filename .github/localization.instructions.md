@@ -225,7 +225,7 @@ default_lang_commit: <commit-hash-of-english-page>
 
 - Semantic changes should affect only one language per PR
 - Exception: changes strictly required to keep the site build green (build
-  fixes) can span locales; link-check failures never qualify — see "Patching"
+  fixes) can span locales; link-check failures never qualify; see "Patching"
   above
 - Exception: content-neutral maintenance (site-wide tooling, configuration,
   front-matter, or markup updates) can span locales; for the full policy, see

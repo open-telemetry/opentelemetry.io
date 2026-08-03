@@ -309,7 +309,7 @@ npm run check:i18n -- commit HEAD <PATH-TO-YOUR-UPDATED-FILES>
 ### Patching localized pages {#patched}
 
 [Build fixes](#keep-checks-green) sometimes require editing a localized page
-without syncing it to its English counterpart — for example, repairing a
+without syncing it to its English counterpart: for example, repairing a
 shortcode invocation after the shared shortcode changed. Mark each localized
 page fixed in this way as **patched**, whether or not the fix spans locales:
 
@@ -587,7 +587,7 @@ resolve them, see
 
 The check-green minimum applies to drift-status bookkeeping too: when a failing
 check calls for refreshing `drifted_from_default`, update only the pages that
-the failing check reports — the daily
+the failing check reports; the daily
 [Housekeeping run](/site/build/ci-workflows/#housekeeping) completes the rest.
 Status-only edits are [content-neutral maintenance](#semantic-changes).
 
@@ -602,8 +602,8 @@ non-English locales. This happens when documentation pages, or sections within
 them, are moved or deleted; links to moved external resources can fail
 similarly. Fix such failures on English pages only — **never edit localized page
 content to fix links**. [Drift tracking](#track-changes) flags outdated
-localized copies for their locale teams, and reconciliation — link fixes
-included — is left to each team.
+localized copies for their locale teams, and reconciliation, link fixes
+included, is left to each team.
 
 First, contain the fallout on the English side by fixing the failing links. Some
 target fates offer additional mitigations:
@@ -618,13 +618,13 @@ target fates offer additional mitigations:
   so that links to the section keep working. (Aliases can't help in this case,
   since they redirect page paths, not fragments.)
 
-Other fates — a section moved to a different page, a moved external resource, or
-a deleted target — have no such mitigation: fixing the English links is the
-whole English-side fix.
+Other fates (a section moved to a different page, a moved external resource, or
+a deleted target) have no such mitigation: fixing the English links is the whole
+English-side fix.
 
 Then let drift handling cover the localized pages: fixing the English pages
-makes their localized copies drift, and the link checker skips drifted copies —
-see [Drift status](#drift-status). If a localized page still fails link
+makes their localized copies drift, and the link checker skips drifted copies
+(see [Drift status](#drift-status)). If a localized page still fails link
 checking, refresh its drift status directly:
 
 ```sh
