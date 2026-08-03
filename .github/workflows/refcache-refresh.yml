@@ -148,13 +148,11 @@ jobs:
         run: |
           lychee --version
           mkdir -p tmp
-          # pipefail makes the pipeline status reflect the link check, not
-          # `tee`; the `||` capture keeps a failure from aborting the step
-          # under errexit.
-          set -o pipefail
+          # `log:check:links` tees to tmp/check-links-log.txt (read by the
+          # double-check step) and propagates the check's exit code; the `||`
+          # capture keeps a failure from aborting the step under errexit.
           LINK_CHECK_STATUS=0
-          npm run full:build -- fix:link-cache 2>&1 \
-            | tee tmp/check-links-log.txt || LINK_CHECK_STATUS=$?
+          npm run full:build -- log:check:links || LINK_CHECK_STATUS=$?
           echo "Link check exit status: $LINK_CHECK_STATUS"
           if [[ $LINK_CHECK_STATUS -ne 0 ]]; then
             echo "DOUBLE_CHECK_NEEDED=true" >> $GITHUB_ENV
