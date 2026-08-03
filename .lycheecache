@@ -6346,10 +6346,12 @@ https://www.rfc-editor.org/rfc/rfc9110.html#name-uri-origin,200,1784701518
 https://www.rfc-editor.org/rfc/rfc9110.html,200,1785134660
 https://www.rfc-editor.org/rfc/rfc9112.html#name-request-target,200,1784701517
 https://www.rfc-editor.org/rfc/rfc9112.html#section-3.2.2,200,1784960567
+https://www.rubydoc.info/gems/opentelemetry-exporters-datadog/0.2.2,200,1785762336
 https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers,200,1785134661
 https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/ParentBased,200,1785134661
 https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased,200,1784442357
 https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/SpanProcessor,200,1784754840
+https://www.rubydoc.info/gems/rspec-otel/0.1.0,200,1785762336
 https://www.rust-lang.org/,200,1785713001
 https://www.sap.com/products/technology-platform/hana/what-is-sap-hana.html,200,1784285379
 https://www.scala-lang.org/api/2.12.0/scala/concurrent/forkjoin/package$$ForkJoinPool$.html,200,1785739340
