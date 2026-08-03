@@ -572,16 +572,14 @@ PRs.
 > status-only edits alike. Such changes don't alter the meaning of localized
 > pages.
 
-#### Keeping the build and checks green {#keep-checks-green}
+#### Keeping the build green {#keep-checks-green}
 
 A PR that changes localized page **content** may span multiple locales only when
-that is strictly required to keep the site build and its checks green:
-
-- **Build fixes**: repairing site-build breakage on localized pages, for
-  example, after a shared shortcode, include file, or data source changes. A
-  page's [drift status](#drift-status) only shields it from link checking, not
-  from the Hugo build. Mark every localized page that you fix as
-  [patched](#patched).
+that is strictly required to keep the site build green. Such **build fixes**
+repair site-build breakage on localized pages, for example, after a shared
+shortcode, include file, or data source changes. A page's
+[drift status](#drift-status) only shields it from link checking, not from the
+Hugo build. Mark every localized page that you fix as [patched](#patched).
 
 Link-check failures on localized pages are **not** such a case; for how to
 resolve them, see
