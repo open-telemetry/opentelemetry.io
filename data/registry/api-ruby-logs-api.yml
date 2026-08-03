@@ -1,0 +1,20 @@
+title: opentelemetry-logs-api
+registryType: api
+language: ruby
+tags:
+  - logs_api
+  - core
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-logs-api/v0.4.1/logs_api
+  docs: https://rubydoc.info/gems/opentelemetry-logs-api/0.4.1
+  website: https://github.com/open-telemetry/opentelemetry-ruby
+license: Apache-2.0
+description: Logs API implementation for OpenTelemetry
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09
+package:
+  registry: gems
+  name: opentelemetry-logs-api
+  version: 0.4.1

@@ -1,15 +1,18 @@
-title: Active Model Serializers Instrumentation
+title: opentelemetry-instrumentation-active_model_serializers
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
-license: Apache 2.0
-description: Active Model Serializers instrumentation for Ruby.
+license: Apache-2.0
+description:
+  Active Model Serializers instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/active_model_serializers
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-active_model_serializers/v0.25.0/instrumentation/active_model_serializers
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-active_model_serializers/0.25.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems
