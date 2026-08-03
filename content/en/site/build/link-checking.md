@@ -5,13 +5,14 @@ description: How the site's links are checked, locally and in CI.
 ---
 
 The site is link-checked with **[Lychee][]**, backed by a committed cache of
-external-link results (see [Link cache](#refcache)).
+external-link results (see [Link cache][]).
 
-> [!NB] Installing Lychee locally is optional: CI link-checks every PR, and the
-> bot can update the [link cache](#refcache) for you. To run checks locally,
-> [install Lychee][lychee-install]; CI installs its own pinned copy (see the
-> `.github/actions/install-lychee` action), so keep your local version
-> reasonably close to it.
+> [!NOTE] Installing Lychee locally is optional
+>
+> CI link-checks every PR, and the bot can update the [link cache](#link-cache)
+> for you. To run checks locally, [install Lychee][lychee-install]; CI installs
+> its own pinned copy (see the `.github/actions/install-lychee` action), so keep
+> your local version reasonably close to it.
 
 ## Check links
 
@@ -23,18 +24,16 @@ npm run check:links
 
 ## Common commands
 
-| Command                | Checking scope                                                        |
-| ---------------------- | --------------------------------------------------------------------- |
-| `check:links`          | Whole site                                                            |
-| `check:links:internal` | Whole site, offline (no external links)                               |
-| `check:links:diff`     | Changed files only                                                    |
-| `fix:link-cache`       | Alias of `check:links`; use it to refresh the [link cache](#refcache) |
+| Command                | Checking scope                                               |
+| ---------------------- | ------------------------------------------------------------ |
+| `check:links`          | Whole site                                                   |
+| `check:links:internal` | Whole site, offline (no external links)                      |
+| `check:links:diff`     | Changed files only                                           |
+| `fix:link-cache`       | Alias of `check:links`; use it to refresh the [link cache][] |
 
 The `check:links` and `check:links:internal` scripts run over a build of
 `BUILD_KIND`; `check:links:diff` checks files from the existing `public/` build.
 For details, see [Build kinds: full and lean][].
-
-[Build kinds: full and lean]: ../#build-kinds
 
 ## Configuration
 
@@ -54,20 +53,23 @@ matter, which has two sources:
   remains a valid link target: inbound links from in-sync pages, including
   fragments, are still validated.
 
-Stored drift statuses are only as fresh as the last nightly
-[Housekeeping][housekeeping] status sync (as merged, so the window can exceed a
-day), so the generator also skips **drift-pending** pages: locale copies of
-English pages changed (or deleted) since the **drift-status baseline**, the
-main-branch commit recorded in `data/l10n-drift.yaml` by tree-wide status syncs
-(`npm run fix:i18n`). A copy that itself changed since the baseline stays
-checked: someone is working on it. Config generation fails when the baseline is
-missing or can't be resolved; in CI, the `CHECK LINKS` job first deepens its
-shallow clone to the baseline commit; locally, fetch the missing history
-(`git fetch upstream main`) or override the baseline:
-`DRIFT_BASELINE=HEAD npm run check:links` empties the overlay (stored-status
-skips still apply).
+Stored drift statuses are only as fresh as the last nightly [Housekeeping][]
+status sync (as merged, so the window can exceed a day), so the generator also
+skips **drift-pending** pages: locale copies of English pages changed (or
+deleted) since the **drift-status baseline**, the main-branch commit recorded in
+`data/l10n-drift.yaml` by tree-wide status syncs (`npm run fix:i18n`). A copy
+that itself changed since the baseline stays checked: someone is working on it.
+Config generation fails when the baseline is missing or can't be resolved; in
+CI, the `CHECK LINKS` job first deepens its shallow clone to the baseline
+commit; locally, fetch the missing history (`git fetch upstream main`) or
+override the baseline: `DRIFT_BASELINE=HEAD npm run check:links` empties the
+overlay (stored-status skips still apply).
 
-## Link cache {#refcache}
+A local tree-wide status sync (`npm run fix:i18n`) can rewrite
+`data/l10n-drift.yaml`; leave that rewrite uncommitted — a locally recorded
+commit might not exist upstream.
+
+## Link cache <a id="refcache"></a>
 
 External-link check results are cached in `.lycheecache`, which is under version
 control so that checks only fetch URLs that are new or whose cache entries have
@@ -85,14 +87,34 @@ updated `.lycheecache` along with your content changes. Otherwise the
 The following workflows are scheduled daily and run a link checking command over
 a **full** build:
 
-| Workflow                                          | Link-check command               |
-| ------------------------------------------------- | -------------------------------- |
-| Refcache refresh                                  | `fix:link-cache` (after pruning) |
-| [Housekeeping][housekeeping] (`fix-and-test:all`) | `fix:link-cache`                 |
+| Workflow                              | Link-check command               |
+| ------------------------------------- | -------------------------------- |
+| Refcache refresh                      | `fix:link-cache` (after pruning) |
+| [Housekeeping][] (`fix-and-test:all`) | `fix:link-cache`                 |
 
 Refcache refresh prunes the oldest cache entries (the count is a workflow input)
 and re-runs the link check, which refreshes the cache entries for the pruned
 URLs that are still used in the site.
+
+### Double-check of failing links {#double-check}
+
+Some sites serve valid pages to browsers but turn away plain HTTP clients like
+Lychee (bot walls, crates.io's unconditional 404s, npmjs.com signin redirects).
+Since [failures are never cached](#link-cache), links to such sites would
+otherwise fail the link check on every run once their cache entries expire.
+
+The **double-check** tooling re-verifies Lychee-reported failures through a
+browser-grade probe. URLs that the probe resolves are recorded in `.lycheecache`
+with the synthetic status `206` ("OK by analysis"). The Refcache refresh
+workflow runs it after the link check; to run it locally over a captured log:
+
+```sh
+npm run log:check:links
+npm run fix:link-cache:double-check
+```
+
+For options, run `npm run fix:link-cache:double-check -- --help`. For probe
+behavior and setup, see the [double-check README][].
 
 ## In CI
 
@@ -102,13 +124,16 @@ That job fails if any link check fails, and hands the cache it refreshed to the
 `CACHE updates committed?` job, which fails if the run left the committed
 `.lycheecache` stale.
 
-[blog-index]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
+<!-- prettier-ignore-start -->
+[blog-index]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
+[Build kinds: full and lean]: ../#build-kinds
 [ci]: ../ci-workflows/
+[double-check README]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/lychee/double-check/README.md
 [drifted]: /docs/contributing/localization/#track-changes
-[housekeeping]: ../ci-workflows/#housekeeping
+[Housekeeping]: ../ci-workflows/#housekeeping
+[link cache]: #link-cache
 [Lychee]: https://lychee.cli.rs/
-[`lychee.base.toml`]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/lychee.base.toml
 [lychee-install]: https://lychee.cli.rs/guides/getting-started/
+[`lychee.base.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/lychee.base.toml
 [pr-checks]: /docs/contributing/pr-checks/#cache-updates-committed
+<!-- prettier-ignore-end -->
