@@ -1,5 +1,6 @@
 actualizeaz
 actualizeazǎ
+actualizezi
 adaugǎ
 agnostice
 aprobatorii
@@ -40,6 +41,7 @@ interlingvistice
 intervaluri
 intervalurilor
 încorporezi
+înregistrezi
 întâmpini
 întreab
 întreab-o
@@ -70,7 +72,9 @@ semnalizate
 semneazǎ
 setează
 sincronizate
+sincronizezi
 soliciți
+subcomanda
 submodul
 submodulele
 submodulelor
