@@ -208,17 +208,17 @@ fost actualizate. Această secțiune explică modul în care tratăm acest lucru
 ### Câmpul `default_lang_commit` din front matter
 
 Atunci când se creează o pagină localizată, precum
-`content/zh/<some-path>/page.md`, traducerea se bazează pe un anumit
-[commit din branch-ul `main`][main] al versiunii în limba engleză a paginii,
-aflată la `content/en/<some-path>/page.md`. În acest repertoriu, fiecare pagină
-localizată identifică în front matter commit-ul paginii în limba engleză,
-astfel:
+`content/zh/<some-path>/page.md`, traducerea se bazează pe un anumit [commit din
+branch-ul `main`][main] al versiunii în limba engleză a paginii, aflată la
+`content/en/<some-path>/page.md`. În acest repertoriu, fiecare pagină localizată
+identifică în front matter commit-ul paginii în limba engleză, astfel:
 
 ```markdown
 ---
 title: Titlul paginii localizate
 # ...
-default_lang_commit: <hash-ul celui mai recent commit al paginii în limba implicită>
+default_lang_commit:
+  <hash-ul celui mai recent commit al paginii în limba implicită>
 ---
 ```
 
@@ -294,9 +294,9 @@ npm run check:i18n -- --new
 
 ### Actualizarea câmpului `default_lang_commit` pentru paginile existente {#updating-default_lang_commit-for-existing-pages}
 
-Pe măsură ce îți actualizezi paginile localizate pentru a reflecta
-modificările aduse paginii corespunzătoare în limba engleză, asigură-te că
-actualizezi și hash-ul commit-ului din `default_lang_commit`.
+Pe măsură ce îți actualizezi paginile localizate pentru a reflecta modificările
+aduse paginii corespunzătoare în limba engleză, asigură-te că actualizezi și
+hash-ul commit-ului din `default_lang_commit`.
 
 > [!TIP]
 >
@@ -308,9 +308,8 @@ actualizezi și hash-ul commit-ului din `default_lang_commit`.
 > aceleiași operațiuni de scriere.
 
 Dacă ai actualizat în bloc toate paginile localizate care prezentau diferențe,
-poți actualiza hash-ul commit-ului acestor fișiere folosind subcomanda
-`commit`, urmată de un hash de commit sau de `HEAD` pentru a utiliza
-`main@HEAD`.
+poți actualiza hash-ul commit-ului acestor fișiere folosind subcomanda `commit`,
+urmată de un hash de commit sau de `HEAD` pentru a utiliza `main@HEAD`.
 
 ```sh
 npm run check:i18n -- commit <HASH> <CALEA-CĂTRE-FIȘIERELE-ACTUALIZATE>
@@ -321,22 +320,22 @@ npm run check:i18n -- commit HEAD <CALEA-CĂTRE-FIȘIERELE-ACTUALIZATE>
 >
 > Atunci când folosești `HEAD` ca specificator de hash, scriptul va utiliza
 > hash-ul branch-ului `main` la `HEAD` din **mediul tău local**. Asigură-te că
-> ai rulat `fetch` și `pull` pentru `main`, dacă vrei ca `HEAD` să corespundă
-> cu `main` de pe GitHub.
+> ai rulat `fetch` și `pull` pentru `main`, dacă vrei ca `HEAD` să corespundă cu
+> `main` de pe GitHub.
 
 ### Aplicarea de corecții paginilor localizate {#patched}
 
-[Corecțiile de build și verificări](#keep-checks-green) necesită uneori
-editarea unei pagini localizate fără sincronizarea acesteia cu pagina
-corespunzătoare în limba engleză — de exemplu, actualizarea unui link după ce o
-pagină în limba engleză a fost mutată. Marchează fiecare pagină localizată
-corectată în acest mod ca **patched**, indiferent dacă respectiva corecție se
-aplică uneia sau mai multor localizări:
+[Corecțiile de build și verificări](#keep-checks-green) necesită uneori editarea
+unei pagini localizate fără sincronizarea acesteia cu pagina corespunzătoare în
+limba engleză — de exemplu, actualizarea unui link după ce o pagină în limba
+engleză a fost mutată. Marchează fiecare pagină localizată corectată în acest
+mod ca **patched**, indiferent dacă respectiva corecție se aplică uneia sau mai
+multor localizări:
 
 - Fă doar modificările necesare pentru aplicarea corecției — fără alte
   modificări în pagină.
-- Adaugă comentariul YAML `# patched` la sfârșitul liniei
-  `default_lang_commit` din pagină:
+- Adaugă comentariul YAML `# patched` la sfârșitul liniei `default_lang_commit`
+  din pagină:
 
   ```yaml
   default_lang_commit: abc4567... # patched
