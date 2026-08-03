@@ -293,10 +293,11 @@ https://crates.io/crates/tracing,200,1786028669
 https://crates.io/crates/tracing-opentelemetry,200,1786028706
 https://crates.io/crates/trillium-opentelemetry,200,1786028706
 https://creativecommons.org/licenses/by/4.0,200,1785621142
-https://cri-o.io/,200,1786028699
-https://cwe.mitre.org/data/definitions/1327.html,200,1785868405
-https://cxf.apache.org/,200,1785868409
-https://cyclonedx.org/,200,1785868409
+https://creativecommons.org/licenses/by/4.0/deed.uk,200,1785767389
+https://cri-o.io/,200,1784960539
+https://cwe.mitre.org/data/definitions/1327.html,200,1784442352
+https://cxf.apache.org/,200,1784701475
+https://cyclonedx.org/,200,1784442331
 https://danielmiessler.com/blog/ai-influence-level-ail,200,1785713003
 https://dapr.io/,200,1785868420
 https://dart.dev/,200,1785868515
@@ -4086,6 +4087,7 @@ https://github.com/open-telemetry/opentelemetry.io,200,1785674120
 https://github.com/open-telemetry/opentelemetry.io/,200,1785713003
 https://github.com/open-telemetry/opentelemetry.io/actions/workflows/specs-integration.yml,200,1785134666
 https://github.com/open-telemetry/opentelemetry.io/blob/248cc6f/.github/scripts/blog-publish-check.sh,200,1785713007
+https://github.com/open-telemetry/opentelemetry.io/blob/9bd13bd/projects/landing-page-redesign.md?from_branch=main,200,1785767390
 https://github.com/open-telemetry/opentelemetry.io/blob/9bd13bd7b3ecd76093fa980c44dc10b5611b4ee0/projects/landing-page-redesign.md?from_branch=main,200,1785739363
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/hooks/hooks.json,200,1785868418
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/approve-registry-update/SKILL.md,200,1785739344
@@ -4799,6 +4801,9 @@ https://helidon.io/,200,1785868410
 https://helm.sh/,200,1785134659
 https://helm.sh/docs/,200,1785712999
 https://helm.sh/docs/intro/install/,200,1785674117
+https://helm.sh/uk/,200,1785767389
+https://helm.sh/uk/docs/,200,1785767389
+https://helm.sh/uk/docs/intro/install/,200,1785767389
 https://help.obsidian.md/callouts,200,1785739339
 https://help.splunk.com/en/appdynamics-saas/application-performance-monitoring/26.7.0/splunk-appdynamics-for-opentelemetry,200,1785054411
 https://help.sumologic.com/docs/send-data/opentelemetry-collector/,200,1785868420
@@ -6066,8 +6071,10 @@ https://tyk.io/,200,1786028699
 https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/,200,1786028700
 https://uaparser.dev/#demo,200,1785868537
 https://ucum.org/,200,1785134706
-https://ucum.org/ucum,200,1786028735
-https://ucum.org/ucum.html#para-curly,200,1785911060
+https://ucum.org/ucum,200,1784960564
+https://ucum.org/ucum.html#para-curly,200,1784701517
+https://uk.wikipedia.org/wiki/%D0%9C%D0%B0%D0%B2%D0%BF%D0%BE%D0%BB%D0%B0%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F,200,1785767389
+https://uk.wikipedia.org/wiki/%D0%A1%D0%BF%D1%80%D1%8F%D0%BC%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9_%D0%B0%D1%86%D0%B8%D0%BA%D0%BB%D1%96%D1%87%D0%BD%D0%B8%D0%B9_%D0%B3%D1%80%D0%B0%D1%84,200,1785767389
 https://undertow.io/,200,1785739338
 https://undici.nodejs.org/,200,1785868500
 https://uplight.com/,200,1785713001
