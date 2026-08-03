@@ -6,7 +6,7 @@ author: >-
   [Vitor Vasconcellos](https://github.com/vitorvasc) (Mercado Libre), [Tiffany
   Hrabusa](https://github.com/tiffany76) (Grafana Labs)
 sig: Comms
-default_lang_commit: a30c5375b2471b40e86aace1fe150b5093ef1ded
+default_lang_commit: 212fd3ead19d20d10975e270e840066902e82233
 # prettier-ignore
 cSpell:ignore: jaydeluca Msksgm Vasconcellos windsonsea Васконселос Вітор Майкл Масакі Патріс Сугімото Шалін Яо коміти комітів рефакторинг
 ---
