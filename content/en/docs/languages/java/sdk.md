@@ -1391,8 +1391,8 @@ cases in the Java ecosystem:
 - Java 11+ brings the built-in `java.net.http.HttpClient`, but
   `opentelemetry-java` needs to support Java 8+ users, and this can't be used to
   export via `gRPC` because there is no support for trailer headers.
-- [OkHttp](https://square.github.io/okhttp/) provides a powerful HTTP client
-  with support for trailer headers, but depends on the kotlin standard library.
+- [OkHttp](https://lysine.dev/okhttp/) provides a powerful HTTP client with
+  support for trailer headers, but depends on the kotlin standard library.
 - [grpc-java](https://github.com/grpc/grpc-java) provides its own
   `ManagedChannel` abstraction with various
   [transport implementations](https://github.com/grpc/grpc-java#transport), but

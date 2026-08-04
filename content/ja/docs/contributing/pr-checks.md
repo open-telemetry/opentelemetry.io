@@ -3,8 +3,7 @@ title: プルリクエストのチェックとテスト
 linkTitle: PR チェック & テスト
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: bb20a7fb593782fea0e05e988d1478831726f9f5
-drifted_from_default: true
+default_lang_commit: 1ff7122fa7e1fd78714d7540b93ec70a3e72d84c
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -16,9 +15,9 @@ PR のチェックは次のことを検証します。
 
 > [!NOTE]
 >
-> もし何らかの PR チェックが失敗していれば、最初にローカルで `npm run fix:all` を実行することで[内容の問題を修正](../pull-requests/#fix-issues)してください。
+> もし何らかの PR チェックが失敗していれば、最初にローカルで `npm run fix` を実行することで[内容の問題を修正](../pull-requests/#fix-issues)してください。
 >
-> PRに `/fix:all` というコメントを追加することもできます。
+> PRに `/fix` というコメントを追加することもできます。
 > これにより、OpenTelemetry ボットがかわりにそのコマンドを実行して、PR を更新します。
 > ローカルに変更をプルすることを忘れないでください。
 >
@@ -36,7 +35,15 @@ PR のチェックは次のことを検証します。
 
 コントリビューションが [スタイルガイド](../style-guide/) に従っていることを検証するために、スタイルガイドのルールを検証し、問題が見つかった場合に失敗する一連のチェックを実装しています。
 
-後述のリストでは、現在のチェック内容と、それに関連するエラーを修正する方法について説明します。
+以下のセクションでは、現在のチェック内容と、それに関連するエラーを修正する方法について説明します。
+
+> [!NOTE]
+>
+> チェックされるのは最近のブログ記事のみです。
+> 詳しくは[古いブログは更新されません][old-blogs]を参照してください。
+> 特に、古い記事はウェブサイトにレンダリングされますが、以下に記載するチェックは古いブログには適用されません。
+
+[old-blogs]: ../blog/#old-blogs-are-not-updated
 
 ### `TEXT linter` {#text-linter .notranslate lang=en}
 
@@ -81,7 +88,8 @@ PR のチェックは次のことを検証します。
 - すべての[ファイル名が kebab-case になっていること](../style-guide/#file-names)
 - 古いファイルやフォルダがリポジトリに存在しないこと (以下のリストを参照してください)
 
-このチェックが失敗した場合、`npm run fix:filenames` をローカルで実行し、新しいコミットで変更をプッシュしてください。
+各エラーアノテーションのガイダンスに従ってください。
+ローカルで修正を適用するには、`npm run fix:filenames` を実行し、新しいコミットで変更をプッシュしてください。
 
 > [!NOTE]
 >
@@ -89,20 +97,19 @@ PR のチェックは次のことを検証します。
 
 #### 古いファイルやフォルダ
 
-以下のパスは古いものとしてフラグが付き、`fix:filenames` によって削除されます。
-イシューまたは PR 番号が存在する場合、そのパスが古くなった変更の経緯を示しています。
+このチェックは以下の古いパスにフラグを付けます。
 
-- `tools/` - [Migrate code-excerpts tooling to npm package version #9638][#9638]
+- `tools/` - [code-excerpts ツールが npm パッケージに移行][#9638]されたときに削除
+- `static/refcache.json` - [Lychee への切り替え][#10911]で削除。
+  ブランチがこのファイルを復元する場合は、[古いブランチの更新手順][#10990]に従ってください。
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
+[#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
+[#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
 
 ### `BUILD` and `CHECK LINKS` {#build-and-check-links .notranslate lang=en}
 
 これらの2つのチェックは、ウェブサイトをビルドしてすべてのリンクが有効であることを検証します。
-
-ローカルでビルドしてリンクをチェックするには、`npm run check:links` を実行してください。
-このコマンドは参照キャッシュも更新します。
-refcache に変更があれば、新しいコミットでプッシュしてください。
 
 > [!NOTE]
 >
@@ -121,25 +128,29 @@ LinkedIn などの一部のサーバーは 999 を報告します。
 チェッカーが成功ステータスを取得できない外部リンクを手動で検証した場合は、URL にクエリパラメーター `?link-check=no` を追加して、リンクチェッカーに無視させることができます。ほかのクエリパラメーターがすでにある場合は `&link-check=no` を追加してください。
 たとえば、以下の URL は無視されます。
 
-- <https:/some-example.org?link-check=no>
-- <https:/some-example.org?other-param=value&link-check=no>
+- `https:/some-example.org?link-check=no`
+- `https:/some-example.org?other-param=value&link-check=no`
 
-> [!TIP] メンテナーのヒント
->
-> メンテナーは、リンクチェッカーを実行した直後に次のスクリプトを実行して、Puppeteer にOKでないステータスのリンクの検証を試みさせることができます。
->
-> ```sh
-> ./scripts/double-check-refcache-4XX.mjs
-> ```
->
-> 外部リンクのURLフラグメント（アンカー）も検証するには`-f`フラグを使用してください。
-> これは`htmltest`が行わない検証です。
-> 現在これを頻繁に実行していないため、`-m N`フラグを使用して更新されるエントリ数を制限することをお勧めします。
-> 使用方法については、`-h`で実行してください。
+`link-check=no` を追加した場合は、`last-validated=YYYY-MM-DD` パラメーターもあわせて追加して、手動で検証した日付を記録してください。
+たとえば以下のようになります。
+
+- `https:/some-example.org?link-check=no&last-validated=2026-08-02`
+
+### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
+
+外部リンクを追加または変更した場合、リンクチェッカーはそのリンクをリンクキャッシュ (`.lycheecache`) に記録します。
+更新されたキャッシュがコミットされるまでこのチェックは失敗します。
+
+キャッシュを更新する最も簡単な方法は、PR に [`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) とコメントすることです。
+OpenTelemetry ボットがキャッシュを更新してくれます。
+
+あるいは、`npm run check:links` を実行してローカルでビルドとリンクチェックを行うこともできます。
+このコマンドはリンクキャッシュも更新します。
+キャッシュに変更があれば、新しいコミットでプッシュしてください。
 
 ### `WARNINGS in build log?` {#warnings-in-build-log .notranslate lang=en}
 
-このチェックが失敗した場合、`npm run log:check:links` ステップの `BUILD and CHECK LINKS` ログを確認して、他の潜在的な問題を特定してください。
+このチェックが失敗した場合、`npm run log:build` ステップの `BUILD` ログを確認して、他の潜在的な問題を特定してください。
 復旧方法がわからない場合は、メンテナーに助けを求めてください。
 
 #### 常にサイト内リンクを使用する {#avoid-external-site-local-links}
@@ -158,7 +169,7 @@ OpenTelemetry ウェブサイト内のページをリンクする場合、外部
 
 - サイト内ページが同じブラウザタブで開く: 外部リンクは新しいタブで開くため、サイト内ナビゲーションの望ましい動作ではありません
 - ローカリゼーションリンク処理が期待通りに動作する: リンクパスの先頭に、適切な言語コードが自動で付与されます
-- ローカルパスはリンクチェックが容易で、refcache を不必要に肥大化させません
+- ローカルパスはリンクチェックが容易で、リンクキャッシュを不必要に肥大化させません
 
 <details>
 <summary>メンテナーへの注意</summary>
@@ -168,9 +179,15 @@ OpenTelemetry ウェブサイト内のページをリンクする場合、外部
 - この警告を表示するレンダーリンクフック:
   [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
 - 完全な URL をローカルパスに自動的に変換するスクリプト:
-  [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
+  [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
 
 </details>
+
+### `LOCALIZATION` guidelines {#localization .notranslate lang=en}
+
+このチェックは、[ローカリゼーションガイドライン](../localization/)のうち機械的に検証可能なルール（たとえば、ローカリゼーション間での[画像やその他のアセットのコピー禁止](../localization/#images)など）を、他のチェックでまだカバーされていないものについて適用します。
+
+このチェックが失敗した場合、`npm run fix:l10n` をローカルで実行し、新しいコミットで変更をプッシュしてください。
 
 ### `TEST (excluding test:base)` {#test-excluding-test-base .notranslate lang=en}
 

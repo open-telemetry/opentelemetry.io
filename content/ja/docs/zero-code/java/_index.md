@@ -6,11 +6,10 @@ aliases:
   - /docs/languages/java/automatic_instrumentation
 cascade:
   vers:
-    instrumentation: 2.28.1
-    otel: 1.62.0
+    instrumentation: 2.30.0
+    otel: 1.64.0
     contrib: 1.54.0
-default_lang_commit: c1e141558ab36cc1ab9f864728e4665e272ac131
-drifted_from_default: true
+default_lang_commit: 867f1ba6a44275ce3bc7d8708765a78baaa0287f
 ---
 
 Javaでゼロコード計装を行う一般的なオプションには、Java エージェント JAR、Spring Boot Starter、Quarkus OpenTelemetry Extension があります。

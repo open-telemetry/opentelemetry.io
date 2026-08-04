@@ -5,10 +5,10 @@
 -}}
 {{ $howMany := .Get 1 | default 10 -}}
 
-{{ $langData := index $.Site.Data.instrumentation $langIndex -}}
+{{ $langData := index hugo.Data.instrumentation $langIndex -}}
 {{ $integrations := slice -}}
 
-{{ range $entry := $.Site.Data.registry -}}
+{{ range $entry := hugo.Data.registry -}}
   {{ if and (and (eq $entry.language $langIndex) (eq $entry.isNative true)) (eq $entry.registryType "instrumentation") -}}
     {{ $integrations = $integrations | append $entry -}}
   {{ end -}}

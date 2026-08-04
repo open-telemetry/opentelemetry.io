@@ -1,13 +1,7 @@
 ---
 title: 'Skyscanner: 24 の本番クラスターにまたがる OpenTelemetry Collector の管理'
 linkTitle: Skyscanner
-author: >-
-  [Johanna Öjeling](https://github.com/johannaojeling) (Grafana Labs), [Juliano
-  Costa](https://github.com/julianocosta89) (Datadog), [Tristan
-  Sloughter](https://github.com/tsloughter) (community), [Neil
-  Fordyce](https://github.com/neilfordyce) (Skyscanner)
-sig: End-User
-default_lang_commit: ce5058cd71a2fc6be2f9b90d4704520fff981dfe
+default_lang_commit: d88ab6df454cbc6de0b0ae5a4de4684e1154cea4
 cSpell:ignore: Fordyce kube kubelet rollouts Skyscanner Sloughter Öjeling
 ---
 

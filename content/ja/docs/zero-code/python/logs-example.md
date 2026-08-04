@@ -72,7 +72,7 @@ pip install opentelemetry-instrumentation-logging
 この後の例では、計装結果をコンソールに送信します。
 コレクターのような他の送信先にテレメトリーを送信するための [OpenTelemetry Distro](/docs/languages/python/distro) のインストールと設定については、ドキュメントを参照してください。
 
-> **注**: `opentelemetry-instrument`による自動計装を使用するには、
+> **Note**: `opentelemetry-instrument`による自動計装を使用するには、
 > 環境変数またはコマンドラインで設定する必要があります。
 > エージェントはテレメトリーパイプラインを作成するので、これらの手段以外では変更できません。
 > テレメトリーパイプラインのカスタマイズが必要な場合は、エージェントを使用せず、 OpenTelemetry SDK と計装ライブラリをコードにインポートし、そこで設定する必要があります。

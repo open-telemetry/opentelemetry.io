@@ -31,6 +31,7 @@ otelcol --config=customconfig.yaml
 - **file** - 从文件读取配置。例如 `file:path/to/config.yaml`。
 - **env** - 从环境变量读取配置。例如 `env:MY_CONFIG_IN_AN_ENVVAR`。
 - **yaml** - 从 YAML 字符串读取配置，使用 `::` 分隔子路径。例如 `yaml:exporters::debug::verbosity: detailed`。
+
 <!-- prettier-ignore-start -->
 - **http** - 从 HTTP URI 读取配置。例如 `http://www.example.com`。
 - **https** - 从 HTTPS URI 读取配置。例如 `https://www.example.com`。

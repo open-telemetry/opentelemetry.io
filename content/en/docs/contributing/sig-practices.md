@@ -103,7 +103,7 @@ Additional valuable resources to review are
     - issue type `enhancement` for feature requests
     - label `type:question` for questions
     - label `type:copyedit` for copy edits
-    - move an the issue to "discussions" if it seems to be a non workable
+    - move the issue to "discussions" if it seems to be a non workable
       open-ended conversation
   - Optional: An estimate label if applicable:
     - `e0-minutes`
@@ -261,10 +261,8 @@ Just before cutting a release:
 1. Find the latest integration branch for your spec at the links given in the
    previous section (e.g. `otelbot/spec-integration-v1.56.0-dev`).
 2. Open the associated PR (linked from the branch page).
-3. Trigger a fresh run of the corresponding workflow to pick up your latest
-   changes:
-   - [update-spec-integration-branch.yml][]
-   - [update-semconv-integration-branch.yml][]
+3. Trigger a fresh run of the [specs-integration.yml][] workflow to pick up your
+   latest changes.
 4. If the PR checks are green, the spec is safe to release. If not, ping
    `@open-telemetry/docs-maintainers` so we can address breakage before the
    release goes out.
@@ -276,7 +274,5 @@ fixes to keep their CI checks green. Catching breakage early — while the
 upstream change set is still small — is much easier than firefighting on release
 day.
 
-[update-spec-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-spec-integration-branch.yml
-[update-semconv-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-semconv-integration-branch.yml
+[specs-integration.yml]:
+  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/specs-integration.yml

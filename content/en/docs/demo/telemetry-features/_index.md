@@ -21,8 +21,8 @@ aliases: [demo_features, features]
 
 ## Observability Solutions
 
-- **[Grafana](https://grafana.com/)**: all metric dashboards are stored in
-  Grafana.
+- **[Grafana](https://github.com/grafana/grafana)**: all metric dashboards are
+  stored in Grafana.
 - **[Jaeger](https://www.jaegertracing.io/)**: all generated traces are being
   sent to Jaeger.
 - **[OpenSearch](https://opensearch.org/)**: all generated logs are sent to Data
@@ -47,15 +47,10 @@ aliases: [demo_features, features]
 ## Other Components
 
 - **[Envoy](https://www.envoyproxy.io/)**: Envoy is used as a reverse proxy for
-  user-facing web interfaces such as the frontend, load generator, and feature
-  flag service.
-- **[Locust](https://locust.io)**: a background job that creates realistic usage
+  user-facing web interfaces such as the frontend and feature flag service.
+- **[k6](https://k6.io)**: a background job that creates realistic usage
   patterns on the website using a synthetic load generator.
 - **[OpenFeature](https://openfeature.dev)**: a feature flagging API and SDK
   that allows for the enabling and disabling of features in the application.
 - **[flagd](https://flagd.dev)**: a feature flagging daemon that is used to
   manage feature flags in the demo application.
-- **[llm](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/llm/)**:
-  a mock Large Language Model (LLM) that adheres to
-  [OpenAI's Chat Completions API](https://platform.openai.com/docs/api-reference/chat/create)
-  format and answers questions about a product.

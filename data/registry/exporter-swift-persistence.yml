@@ -1,0 +1,19 @@
+title: Persistence Exporter
+registryType: exporter
+language: swift
+tags:
+  - Persistence
+  - exporter
+  - swift
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Exporters/Persistence
+license: Apache 2.0
+description:
+  The Persistence Exporter is not an actual exporter by itself, but an exporter
+  decorator. It decorates a given exporter by persisting the exported data to
+  the disk first, and then proceeds to forward it to the decorated exporter. The
+  goal is to allow dealing with situations where telemetry data is generated in
+  an environment that can't guarantee stable export.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

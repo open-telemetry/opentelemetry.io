@@ -1,6 +1,6 @@
 name: Links
 
-# cSpell:ignore minisearch
+# cSpell:ignore minisearch lycheecache lycheeverse
 on:
   merge_group:
   pull_request:
@@ -8,18 +8,13 @@ on:
 permissions:
   contents: read
 
-env:
-  PR_NUM: ${{ github.event.pull_request.number }}
-  USER_EMAIL: 197425009+otelbot@users.noreply.github.com
-  USER_NAME: otelbot
-
 jobs:
-  # Build site first because htmltest checks the generated HTML files
+  # Build site first because lychee checks the generated HTML files
   build:
     name: BUILD
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { persist-credentials: false }
 
       - name: Create NPM cache-hash input file
@@ -38,7 +33,7 @@ jobs:
             package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -55,8 +50,6 @@ jobs:
           echo "submodule(s); or undo the submodule update(s) if it happened by mistake."
           npm run _diff:fail
 
-      - run: npm run generate:config:links
-
       - name: Build the site
         run: npm run log:build
         continue-on-error: true
@@ -64,81 +57,151 @@ jobs:
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: build-artifacts
-          include-hidden-files: true
           path: |
             public/
-            .htmltest.yml
             tmp/build-log.txt
             tmp/package*.json
 
   check-links:
-    name: CHECK LINKS (${{ matrix.shard.id }})
+    name: CHECK LINKS
     needs: build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        shard:
-          # Each entry in this list is a shard, with:
-          #  id: identifier for the shard (used in job name and artifact name)
-          #  regex: regex to add to IgnoreDirs in .htmltest.yml for this shard
-          #
-          # Each shard ignores a subset of locale directories, so that all shards
-          # together cover all locale directories but each shard checks fewer links.
-          - id: en
-            regex: '^../' # Ignore all locale directories. This works because
-            # English docs folders have more than two characters in their names
-          - id: locales-A-to-M
-            # Regex to ignore English doc folders and locales n to z.
-            regex: '^(..[^/]|[n-z]./)'
-          - id: locales-N-to-Z
-            # Regex to ignore English doc folders and locales a to m.
-            regex: '^(..[^/]|[a-m]./)'
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { persist-credentials: false }
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with: { name: build-artifacts }
 
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - name: Check links for shard
+      - name: Create and use reduced-dependencies package.json
         run: |
-          .github/scripts/check-links-shard.sh '${{ matrix.shard.id }}' '${{ matrix.shard.regex }}'
+          jq '.devDependencies |= with_entries(
+                  select(.key | test("js-yaml|link-cache"))
+                )
+                | del(.dependencies, .optionalDependencies)' \
+            package.json > tmp/package-min-links.json
+          cp tmp/package-min-links.json package.json
+
+      - run: |
+          npm install --omit=optional --ignore-scripts
+          git restore package.json
+
+      # Run the lychee-binary tests for real here; the general test job only
+      # has the sources, so it skips them.
+      - uses: ./.github/actions/install-lychee
+      - name: Lychee sanity tests
+        run: npm run test:local-tools:lychee
+
+      # The drift-pending overlay diffs content/en against the drift-status
+      # baseline; a depth-1 fetch of that commit is all the (shallow) clone
+      # needs. Config generation fails if the baseline can't be resolved.
+      # The extraction enforces the same 'commit: FULL_SHA' shape as
+      # BASELINE_COMMIT_RE in scripts/i18n/drift.mjs; keep the two in sync.
+      # Kill switch: exporting DRIFT_BASELINE=HEAD on the config-generation
+      # step below empties the overlay, restoring pre-overlay behavior.
+      - name: Deepen history to the drift-status baseline
+        run: |
+          sha=$(sed -n 's/^commit: \([0-9a-f]\{40\}\)$/\1/p' data/l10n-drift.yaml)
+          if [[ ! "$sha" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error file=data/l10n-drift.yaml::Expected a single 'commit: FULL_SHA' line."
+            exit 1
+          fi
+          git fetch --depth=1 origin --end-of-options "$sha"
+
+      - run: npm run generate:config:links
+
+      - name: Check links
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          npm run _check:links 2>&1 | tee lychee-out.txt
 
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: refcache-${{ matrix.shard.id }}
-          path: |
-            static/refcache.json
-            tmp/*log.txt
+          name: link-cache
+          path: .lycheecache
+          include-hidden-files: true
+          if-no-files-found: error
 
-  check-refcache:
-    name: REFCACHE updates?
+      - name: Lychee summary
+        if: always()
+        run: |
+          {
+            echo '## Lychee link check'
+            echo
+            echo '```text'
+            tail -n 40 lychee-out.txt 2>/dev/null || echo '(no lychee output captured)'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  check-link-cache:
+    name: CACHE updates committed?
     needs: check-links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { persist-credentials: false }
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
-        with:
-          pattern: refcache-*
-          path: tmp/check-refcache
-      - run: ls -lR tmp
-      - name: Does the refcache need updating?
-        run: .github/scripts/check-refcache.sh
+        with: { name: link-cache, path: tmp/link-cache }
+
+      - name: All link-cache updates committed?
+        run: |
+          committed=.lycheecache
+          generated=tmp/link-cache/.lycheecache
+          # Accept only regular files: fails when the artifact is missing (no
+          # false green) and never writes through a PR-controlled symlink.
+          if [[ -L "$committed" || -L "$generated" ||
+                ! -f "$committed" || ! -f "$generated" ]]; then
+            echo "::error title=Invalid link cache::Expected regular .lycheecache files."
+            exit 1
+          fi
+          if cmp --silent "$committed" "$generated"; then
+            echo "Link cache is up to date."
+            exit 0
+          fi
+          git --no-pager diff --no-index --stat "$committed" "$generated" || true
+          echo "::error title=Link cache is stale::All links check out, but this PR leaves the committed link cache (.lycheecache) stale. For recovery steps, see the step summary."
+          {
+            echo "## Link cache is stale"
+            echo
+            echo "All links check out ✅ — but this PR leaves the committed link cache"
+            echo "(\`.lycheecache\`) stale. To fix, either:"
+            echo
+            echo "- Comment \`/fix:link-cache\` on this PR — the bot updates the cache for you; or"
+            echo "- Run \`npm run check:links\` locally, then commit the modified \`.lycheecache\`."
+            echo
+            echo "For details, see [\`CACHE updates committed?\`](https://opentelemetry.io/docs/contributing/pr-checks/#cache-updates-committed)."
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 1
 
   check-build-log-for-issues:
     name: WARNINGS in build log?
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { persist-credentials: false }
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with: { name: build-artifacts }
       - run: cat tmp/build-log.txt
       - run: scripts/check-build-log.sh
+
+  test-public:
+    name: TEST (built-site · public)
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with: { name: build-artifacts }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+      - run: npm run test:public

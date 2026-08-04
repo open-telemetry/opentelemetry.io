@@ -2,6 +2,7 @@
 title: OpenTelemetryデモチャート
 linkTitle: デモチャート
 default_lang_commit: e8f18928513b726068be250802ebe7ece25e8851
+drifted_from_default: true
 ---
 
 [OpenTelemetry Demo](/docs/demo/) は、実世界に近い環境での OpenTelemetry の実装を説明することを意図した、マイクロサービスベースの分散システムです。

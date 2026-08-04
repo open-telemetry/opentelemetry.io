@@ -3,6 +3,12 @@
 {{ $image := .Get "image" -}}
 {{ $url := .Get "url" -}}
 
+{{ $url = partial "func/render-link-href.html" (dict
+    "Destination" $url
+    "PageInner" .Page
+    "Text" $name)
+-}}
+
 <a href="{{ $url }}" class="signal-card">
   <div class="signal-card__icon">
     {{- if $image -}}

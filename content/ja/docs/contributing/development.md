@@ -29,7 +29,7 @@ cSpell:ignore: TOCSS
     また、次の形式のリンクを開くこともできます。
     `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`
 
-    > **注記**: このリポジトリで作業するための権限がある場合や、単に内容を確認したい場合は、
+    > **Note**: このリポジトリで作業するための権限がある場合や、単に内容を確認したい場合は、
     > <https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io> を開いてください。
 
 Gitpod はリポジトリ固有のパッケージを自動的にインストールします。

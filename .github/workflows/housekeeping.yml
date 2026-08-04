@@ -2,7 +2,7 @@ name: Housekeeping
 
 # Scheduled housekeeping: runs an approved fix command (default
 # `fix-and-test:all`: all fixes then all checks, with links checked exactly
-# once via fix:refcache) and publishes any resulting changes as a PR. The
+# once via fix:link-cache) and publishes any resulting changes as a PR. The
 # second caller of the reusable patch actions (after `pr-actions.yml`), and
 # the scheduled-maintenance flow that motivated
 # https://github.com/open-telemetry/opentelemetry.io/issues/6592.
@@ -53,11 +53,11 @@ jobs:
       command_exit_status: ${{ steps.patch.outputs.action_exit_status }}
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           # Full history: the i18n fix/check scripts that the default command
           # runs diff localized pages against their `default_lang_commit`.
@@ -67,20 +67,19 @@ jobs:
       # Needed by the check:collector-sync scripts that the default command
       # runs; uv resolves the Python toolchain and project deps on first use.
       - name: Install uv
-        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
           enable-cache: true
 
       - name: Run housekeeping command and generate patch
         id: patch
-        # Unlike the `pr-actions.yml` caller, this runs default-branch code
-        # only (schedule and dispatch triggers), so the whole pipeline is
-        # trusted. The action tolerates a non-zero command exit so that
-        # fixes are still captured when residual check failures remain
-        # (the default command runs checks after fixes); such failures are
-        # surfaced by the report-failure job below. No post-command prune
-        # is needed: the default command's fix:refcache already prunes.
+        # Default-branch only (trusted; cf. pr-actions). Non-zero exit is OK—
+        # fixes still publish; residual failures fail in report-failure below.
         uses: ./.github/actions/npm-script-patch
+        env:
+          # Authenticated github.com link checks (rate limits) in fix:link-cache;
+          # step-level env reaches the composite action's steps.
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           command: ${{ inputs.command || 'fix-and-test:all' }}
           patch-name: housekeeping-${{ github.run_id }}
@@ -121,7 +120,7 @@ jobs:
       user-name: otelbot
       user-email: 197425009+otelbot@users.noreply.github.com
       # the higher privileged docs app is needed to push branches and open PRs
-      app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+      client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
     secrets:
       app-private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 

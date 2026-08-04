@@ -155,10 +155,12 @@ function process_CLI_args() {
     echo "Processing paths: $TARGET_PATHS"
   fi
 
-  if [[ -f "TARGET_PATHS" && ! -e "$TARGET_PATHS" ]] ; then
-    echo -e "ERROR: path not found: '$TARGET_PATHS'\n" >&2
-    exit 2
-  fi
+  for path in $TARGET_PATHS; do
+    if [[ ! -e $path ]]; then
+      echo -e "ERROR: path not found: '$path'\n" >&2
+      exit 2
+    fi
+  done
 }
 
 validate_hash() {

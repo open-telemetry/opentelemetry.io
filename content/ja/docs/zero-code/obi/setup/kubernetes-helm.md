@@ -3,7 +3,7 @@ title: HelmでKubernetesにOBIをデプロイする
 linkTitle: Helm チャート
 description: KubernetesにHelmチャートとしてOBIをデプロイする方法を学ぶ
 weight: 2
-default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
+default_lang_commit: ad6f8d1e5179464d22f7e9cdf9fe86bc53f550e5
 ---
 
 > [!NOTE]
@@ -26,6 +26,7 @@ default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
 - [OBI メタデータの設定](#configuring-obi-metadata)
 - [k8s-cache による Kubernetes メタデータの集約](#centralizing-kubernetes-metadata-with-k8s-cache)
 - [Helm 設定へのシークレットの提供](#providing-secrets-to-the-helm-configuration)
+
 <!-- TOC -->
 
 ## Helm から OBI をデプロイする {#deploying-obi-from-helm}
