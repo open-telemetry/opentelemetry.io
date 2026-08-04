@@ -47,7 +47,7 @@ For example, this request counter has four unique combinations:
 | `/cart`    | `false`   | 1     |
 
 That is cardinality 4 for this metric stream. If you add a high-cardinality
-attribute such as `user_id`, the number of combinations can grow very quickly.
+attribute such as `tenant_id`, the number of combinations can grow very quickly.
 That is why the SDK enforces a limit. The default aggregation cardinality limit
 is 2000 combinations per metric stream.
 
@@ -231,8 +231,7 @@ may want separate severities:
 Dashboards should also make overflow visible. If a chart filters or groups by a
 measurement attribute, consider adding an overflow indicator beside the chart.
 That tells readers whether the breakdown is complete or whether some values were
-folded into overflow. [Aspire issue #7520][aspire-7520] shows one possible shape
-for this in a developer dashboard.
+folded into overflow.
 
 ## How to respond when overflow appears
 
@@ -274,7 +273,6 @@ set, which is why filtered and grouped queries can undercount.
 - [Metrics That Lie: Understanding OpenTelemetry's Cardinality Capping and Its Implications](https://youtu.be/QTeA16I_hME),
   my KubeCon EU 2026 lightning talk
 
-[aspire-7520]: https://github.com/microsoft/aspire/issues/7520
 [spec-cardinality]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/6837311818b3cedcda4cad222804c4f98f1fe402/specification/metrics/sdk.md#cardinality-limits
 [spec-compliance]:
