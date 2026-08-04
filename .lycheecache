@@ -5483,6 +5483,7 @@ https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver,200,17
 https://prometheus.io/docs/guides/opentelemetry/#promoting-resource-attributes,200,1785134689
 https://prometheus.io/docs/instrumenting/clientlibs/,200,1785134659
 https://prometheus.io/docs/instrumenting/content_negotiation/,200,1785785936
+https://prometheus.io/docs/instrumenting/escaping_schemes/,200,1785875437
 https://prometheus.io/docs/instrumenting/exposition_formats/#basic-info,200,1784701520
 https://prometheus.io/docs/instrumenting/exposition_formats/#comments-help-text-and-type-information,200,1785785936
 https://prometheus.io/docs/instrumenting/writing_clientlibs/#overall-structure,200,1785785936
