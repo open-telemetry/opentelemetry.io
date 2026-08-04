@@ -13,17 +13,16 @@ draft: true
 
 Metrics, logs, and traces tell you how your systems _behave_. They are much
 quieter about what actually _exists_: which hosts, interfaces, switches,
-services, and volumes are out there right now, how they connect, and — crucially
-— how that picture changed over the last hour, day, or quarter. That living
-inventory and topology has stayed a blind spot in the open observability stack.
+services, and volumes are out there right now, and, crucially, how that picture
+changed over the last hour, day, or quarter. That living inventory has stayed a
+blind spot in the open observability stack.
 
 OpenTelemetry's **entity events**, coming out of the Entities SIG and described
 in the
 [Entity Data Model](/docs/specs/otel/entities/data-model/), are the piece that
-starts to close it. But entity events are a _stream_. The interesting question
-isn't only "how do I emit them?" — it's **"what do I do once they arrive?"**
-This post walks through one answer, using an open-source consumer as a worked
-example.
+starts to close it. Entity events are a _stream_. The interesting question is
+**"what do I do once they arrive?"** This post walks through one answer, using
+an open source consumer as a worked example.
 
 > **Note:** The entity data model and its conventions are still **in
 > development** (not yet stable) and evolving — treat the exact attribute names
@@ -33,12 +32,11 @@ example.
 
 ## A 60-second primer on entity events
 
-An entity is a thing worth tracking on its own: a host, a process, a network
-interface, a database. OpenTelemetry carries _entity events_ as **OTLP log
-records** annotated with the entity semantic conventions. Each event carries the
-entity's type, its identifying attributes, its descriptive attributes, and an
-event type describing its lifecycle. A consumer can classify a record purely by
-the presence of `otel.entity.event.type`:
+OpenTelemetry carries _entity events_ as **OTLP log records** annotated with the
+entity semantic conventions. Each event carries the entity's type, its
+identifying attributes, its descriptive attributes, and an event type describing
+its lifecycle. A consumer can classify a record purely by the presence of
+`otel.entity.event.type`:
 
 ```text
 # An entity-event log record (illustrative)
@@ -74,7 +72,7 @@ The payoff: current state is one read away, and **history is never lost**.
 
 ## Step 2 — Be bi-temporal on purpose
 
-Two timestamps matter, and they are not the same:
+Two timestamps matter:
 
 - **Event time** — when something happened in reality. Take it from the
   `LogRecord` timestamp.
@@ -84,8 +82,7 @@ Two timestamps matter, and they are not the same:
 Keeping both lets you answer two genuinely different questions:
 
 - _Reality view:_ "How was `db-07` wired last Tuesday?"
-- _Audit view:_ "What did we **know** about `db-07` at 09:00 — not what we know
-  now?"
+- _Audit view:_ "What did we **know** about `db-07` at 09:00?"
 
 That second question is the one that matters during an incident review, and you
 can only answer it if you never collapsed the two timelines. Designing for
@@ -118,7 +115,7 @@ differing by one identifying value as the same entity quietly merges distinct
 entities — two databases on a host differing only by port collapse into one. For
 a source of truth, a silent collision is a worse failure than a lost heuristic.
 
-## Step 4 — Make it queryable, including by an LLM
+## Step 4 — Make it queryable
 
 A temporal graph is only useful if people (and machines) can ask it things.
 Exposing it twice covers both audiences:
