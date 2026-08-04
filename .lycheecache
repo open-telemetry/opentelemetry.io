@@ -486,6 +486,7 @@ https://docs.google.com/forms/d/e/1FAIpQLScoG279ZhRuMu8J_8BebGEVtMOS8BgD9cpQUJ6x
 https://docs.google.com/presentation/d/1iyR2HhYaAl1DMFl0992atj76mu0wqY6M/,200,1785739358
 https://docs.google.com/spreadsheets/d/1Kk6io9V6Q1nluq6H05zGjwvWlXwxh9IwjiThBGJP1Rw/edit?usp=sharing,200,1785621166
 https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s,200,1785134659
+https://docs.gradle.org/current/userguide/dependency_constraints_conflicts.html#sub:resolving-version-conflicts,200,1785870527
 https://docs.greptime.com/user-guide/ingest-data/for-observability/opentelemetry/,200,1785868420
 https://docs.groundcover.com/integrations/data-sources/opentelemetry/sending-from-an-opentelemetry-collector,200,1785739347
 https://docs.guance.com/en/integrations/opentelemetry/,200,1785868421
@@ -1587,6 +1588,7 @@ https://github.com/kubernetes,200,1785739349
 https://github.com/kubernetes-client/java,200,1784960534
 https://github.com/kubernetes-sigs/metrics-server,200,1785134660
 https://github.com/kubernetes/cri-api/blob/c75ef5b473bbe2d0a4fc92f82235efd665ea8e9f/pkg/apis/runtime/v1/api.proto#L1237-L1238,200,1785868537
+https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L157C6-L157C20,206,1785870757
 https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L233,200,1785868536
 https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L236,200,1784701519
 https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L252,200,1784701519
@@ -2574,6 +2576,7 @@ https://github.com/open-telemetry/opentelemetry-collector/tree/v0.97.0/receiver/
 https://github.com/open-telemetry/opentelemetry-configuration,200,1785134661
 https://github.com/open-telemetry/opentelemetry-configuration/blob/0a18b0c19ba656c22aa2a8dab65d03380fcc2802/VERSIONING.md?from_branch=main#experimental-features,200,1785868518
 https://github.com/open-telemetry/opentelemetry-configuration/blob/1905936912045de1cb6ef04d13afe912f462dbe2/CONTRIBUTING.md?from_branch=main#project-tooling,200,1785739360
+https://github.com/open-telemetry/opentelemetry-configuration/blob/28784d4ea2054f95affe3912189ccd51ee6aea3a/schema-docs.md?from_branch=main#opentelemetryconfiguration,206,1785870582
 https://github.com/open-telemetry/opentelemetry-configuration/blob/28784d4ea2054f95affe3912189ccd51ee6aea3a/schema-docs.md?from_branch=main,200,1785621167
 https://github.com/open-telemetry/opentelemetry-configuration/blob/670901762dd5cce1eecee423b8660e69f71ef4be/examples/kitchen-sink.yaml#L438-L439,200,1785739372
 https://github.com/open-telemetry/opentelemetry-configuration/blob/854f201660436d0e66f73785b7b310e4f8d46c6e/language-support-status.md,200,1785868519
@@ -3104,6 +3107,7 @@ https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/prometh
 https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim,200,1785713005
 https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim,200,1785134659
 https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/declarative-config,200,1785739343
+https://github.com/open-telemetry/opentelemetry-java/tree/v1.64.0/exporters/zipkin,200,1785870527
 https://github.com/open-telemetry/opentelemetry-js#supported-runtimes,200,1785713005
 https://github.com/open-telemetry/opentelemetry-js,200,1785868407
 https://github.com/open-telemetry/opentelemetry-js-contrib,200,1785868417
@@ -4797,6 +4801,7 @@ https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogge
 https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.activitysource,200,1784960545
 https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.metrics,200,1784960545
 https://learn.microsoft.com/en-us/dotnet/api/system.reflection.assembly.getentryassembly?view=net-7.0,200,1785621145
+https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-as-self-contained,200,1785870527
 https://learn.microsoft.com/en-us/dotnet/core/deploying/,200,1785868407
 https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation,200,1785868406
 https://learn.microsoft.com/en-us/dotnet/core/rid-catalog,200,1785868405
@@ -5367,6 +5372,7 @@ https://pkg.go.dev/go.opentelemetry.io/auto/sdk,200,1785621145
 https://pkg.go.dev/go.opentelemetry.io/collector/cmd/builder,200,1784960539
 https://pkg.go.dev/go.opentelemetry.io/collector/component#Component,200,1785134660
 https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#readme-client-authenticators,200,1785137269
+https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#readme-server-authenticators,200,1785870527
 https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth,200,1785868406
 https://pkg.go.dev/go.opentelemetry.io/collector/config/configtls,200,1785134689
 https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/envprovider,200,1785785902
@@ -5821,6 +5827,7 @@ https://web.archive.org/,200,1784960536
 https://web.archive.org/web/20180321091318/http://www.onlamp.com/pub/a/linux/2000/11/16/LinuxAdmin.html,200,1784960568
 https://web.archive.org/web/20240223142649/https://kofo.dev/how-to-mtls-in-golang,200,1784960565
 https://web.archive.org/web/20250000000000*/https://github.com/open-telemetry/opentelemetry-android,200,1785739358
+https://web.archive.org/web/20250102120553/https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms,200,1785870530
 https://web.archive.org/web/20250624231058/https://www.bmc.com/blogs/opentracing-opencensus-openmetrics/,200,1785713001
 https://web.dev/articles/cls,200,1784701518
 https://web.dev/articles/fid,200,1784701518
