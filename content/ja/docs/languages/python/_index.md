@@ -5,7 +5,7 @@ description: >-
   src="/img/logos/32x32/Python_SDK.svg" alt="Python"> PythonにおけるOpenTelemetryの言語固有の実装。
 aliases: [/python, /python/metrics, /python/tracing]
 weight: 190
-default_lang_commit: 1143960b75c6faceb40eb64269e68390e3237671 # patched
+default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
 ---
 
 {{% docs/languages/index-intro python /%}}
