@@ -1472,6 +1472,7 @@ https://github.com/imandra-ai/ocaml-opentelemetry/,200,1784960546
 https://github.com/immanuelfodor,200,1785739349
 https://github.com/immavalls,200,1785785930
 https://github.com/in-toto/attestation/tree/main/spec,206,1784356063
+https://github.com/inetand,200,1785818809
 https://github.com/influxdata/influxdb-java,200,1784701476
 https://github.com/inge4pres,206,1784355827
 https://github.com/instana/,206,1784442877
@@ -1496,6 +1497,7 @@ https://github.com/jaegertracing/jaeger-idl/blob/main/proto/api_v2/sampling.prot
 https://github.com/james-bebbington,200,1785134702
 https://github.com/jamesmoessis,200,1784960560
 https://github.com/jamesnk,200,1785785922
+https://github.com/jan-xyz,200,1785818809
 https://github.com/jaronoff97,200,1785621156
 https://github.com/jaronoff97/tails,200,1784960547
 https://github.com/jaydeluca,200,1785134692
@@ -3583,7 +3585,9 @@ https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-metrics-
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-propagator-b3/v0.24.1/propagator/b3,200,1784884394
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-propagator-jaeger/v0.25.1/propagator/jaeger,200,1784884395
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-registry/v0.6.1/registry,200,1784884395
+https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-registry/v0.6.3/registry,200,1785839629
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-sdk/v1.12.1/sdk,200,1784884395
+https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-sdk/v1.13.0/sdk,200,1785839628
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-semantic_conventions/v1.43.0/semantic_conventions,200,1784884395
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-test-helpers/v0.9.1/test_helpers,200,1784884396
 https://github.com/open-telemetry/opentelemetry-rust#overview-of-crates,200,1785713002
@@ -5580,6 +5584,7 @@ https://roadrunner.dev/,200,1784701494
 https://rocketmq.apache.org/,206,1784442384
 https://rocketmq.apache.org/docs/domainModel/08consumergroup/,200,1785785939
 https://rubydoc.info/gems/opentelemetry-api/1.10.1,200,1784884392
+https://rubydoc.info/gems/opentelemetry-api/1.11.0,200,1785839628
 https://rubydoc.info/gems/opentelemetry-common/0.25.1,200,1784884394
 https://rubydoc.info/gems/opentelemetry-exporter-jaeger/0.24.1,200,1784884395
 https://rubydoc.info/gems/opentelemetry-exporter-otlp-logs/0.5.1,200,1784884395
@@ -5652,12 +5657,14 @@ https://rubydoc.info/gems/opentelemetry-propagator-ottrace/0.25.0,200,1784884395
 https://rubydoc.info/gems/opentelemetry-propagator-vitess/0.5.0,200,1784884394
 https://rubydoc.info/gems/opentelemetry-propagator-xray/0.27.0,200,1784884394
 https://rubydoc.info/gems/opentelemetry-registry/0.6.1,200,1784884394
+https://rubydoc.info/gems/opentelemetry-registry/0.6.3,200,1785839628
 https://rubydoc.info/gems/opentelemetry-resource-detector-aws/0.7.0,200,1784884394
 https://rubydoc.info/gems/opentelemetry-resource-detector-azure/0.4.0,200,1784884394
 https://rubydoc.info/gems/opentelemetry-resource-detector-container/0.4.0,200,1784884394
 https://rubydoc.info/gems/opentelemetry-resource-detector-google_cloud_platform/0.4.0,200,1784884394
 https://rubydoc.info/gems/opentelemetry-sampler-xray/0.3.0,200,1784884394
 https://rubydoc.info/gems/opentelemetry-sdk/1.12.1,200,1784884394
+https://rubydoc.info/gems/opentelemetry-sdk/1.13.0,200,1785839628
 https://rubydoc.info/gems/opentelemetry-semantic_conventions/1.43.0,200,1784884394
 https://rubydoc.info/gems/opentelemetry-test-helpers/0.9.1,200,1784884395
 https://rubygems.org/gems/dalli,200,1784884391
