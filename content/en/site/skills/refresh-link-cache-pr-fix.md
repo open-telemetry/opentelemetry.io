@@ -60,12 +60,9 @@ confirmed the URL is not otherwise healthy.
 
 ## Resolve failing links
 
-The link checker (Lychee) only caches successful results in `.lycheecache`, so
-failing URLs are re-fetched on every run.
-
 1. Build the site and check links: `npm run log:check:links`. This also updates
-   `.lycheecache`, and captures the check output in `tmp/check-links-log.txt`
-   for the double-check step below. See LinkedIn note below.
+   `.lycheecache` and captures the check log that the double-check step below
+   reads. See LinkedIn note below.
 2. If the check passes, [wrap up the PR](#wrap-up).
 3. **Otherwise**, list the failing URLs and their statuses from the check output
    (for the CI run, see the PR's failing `CHECK LINKS` job log).
