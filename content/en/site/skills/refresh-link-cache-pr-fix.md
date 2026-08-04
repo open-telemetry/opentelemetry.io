@@ -1,5 +1,6 @@
 ---
-title: Refresh-refcache PR fix
+title: Refresh-link-cache PR fix
+aliases: [refresh-refcache-pr-fix]
 description: >-
   How to resolve failing link checks on otelbot PRs.
 ---
@@ -53,17 +54,15 @@ pointing at the main repository.
 Status 5XX responses are usually transient. If the link check reports status 5XX
 for a URL, treat it as likely temporary (origin down, gateway errors, overload).
 **Do not** change site content or links solely to work around a 5XX; prefer
-re-running `npm run fix:refcache` later. Only investigate a 5XX like a real
+re-running `npm run log:check:links` later. Only investigate a 5XX like a real
 defect if it **keeps** failing across multiple runs over time and you have
 confirmed the URL is not otherwise healthy.
 
 ## Resolve failing links
 
-The link checker (Lychee) only caches successful results in `.lycheecache`, so
-failing URLs are re-fetched on every run.
-
-1. Build the site and check links: `npm run fix:refcache`. This also updates
-   `.lycheecache`. See LinkedIn note below.
+1. Build the site and check links: `npm run log:check:links`. This also updates
+   `.lycheecache` and captures the check log that the double-check step below
+   reads. See LinkedIn note below.
 2. If the check passes, [wrap up the PR](#wrap-up).
 3. **Otherwise**, list the failing URLs and their statuses from the check output
    (for the CI run, see the PR's failing `CHECK LINKS` job log).
@@ -75,7 +74,20 @@ failing URLs are re-fetched on every run.
    > LinkedIn links over such statuses; instead let a maintainer manually
    > validate them.
 
-4. **Analyze and recommend**. For each failing URL, report:
+4. For failures that look like bot-blocking rather than dead links (for example,
+   403/429/999 from sites that load fine in a browser), re-verify them through a
+   real browser before analyzing them:
+
+   ```sh
+   npm run fix:link-cache:double-check
+   ```
+
+   The probe reads the log captured in step 1. URLs that the probe clears are
+   cached; repeat from step 1 and analyze only the failures that remain. For
+   details, see
+   [Double-check of failing links](/site/build/link-checking/#double-check).
+
+5. **Analyze and recommend**. For each failing URL, report:
    - The URL and HTTP status.
    - Where it originates from: provide links to files or pages.
    - A recommended fix or follow-up action; see
@@ -88,13 +100,22 @@ failing URLs are re-fetched on every run.
 
    Stop and wait for reviewer approval -- never self-approve recommendations.
 
-5. **Apply approved fixes.** Perform the maintainer-approved fix and follow-up
-   actions, and only those. For edits outside `content/en/`, follow
-   [Localization][] gating requirements and conventions (e.g. `# patched` tags).
+6. **Apply approved fixes.** Perform the maintainer-approved fix and follow-up
+   actions, and only those. For page content under `content/`, edit English
+   pages only: **never edit localized page content**.
 
-6. Run `npm run fix:refcache` to re-check links (and refresh `.lycheecache`)
-   after those source-link changes, then repeat the steps in this section (from
-   step 1) until the check passes.
+7. Run `npm run log:check:links` to re-check links and refresh `.lycheecache`
+   after those source-link changes. If a localized page still fails, refresh its
+   [drift status][] instead of editing it:
+
+   ```sh
+   npm run fix:i18n:status -- PATHS_TO_FAILING_LOCALIZED_PAGES
+   ```
+
+   In the rare case where a failing link exists only in a localized page, report
+   it and coordinate a fix with its locale team. For more details, see [Link
+   fixes and resource updates][]. Repeat the steps in this section (from step 2)
+   until the check passes.
 
 ## Wrap up
 
@@ -117,7 +138,7 @@ Once the link check passes on the PR being processed:
    For example:
 
    ```text
-   Refcache update done using: `/refresh-refcache-pr-fix for the collector-docs branch`
+   Link-cache update done using: `/refresh-link-cache-pr-fix for the collector-docs branch`
 
    Re-checked the failing URLs; all now resolve -- the link check passes.
    ```
@@ -169,5 +190,7 @@ Show that the fetched page names or otherwise matches the linked resource:
   [Keeping registry and list information current](/ecosystem/registry/updating/).
 
 <!-- prettier-ignore-start -->
-[Localization]: /docs/contributing/localization/#link-fixes-and-resource-updates
+[drift status]: /docs/contributing/localization/#drift-status
+[link fixes and resource updates]:
+  /docs/contributing/localization/#link-fixes-and-resource-updates
 <!-- prettier-ignore-end -->
