@@ -146,9 +146,11 @@ Properties for SDK self-monitoring telemetry:
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------ | -------- |
 | `otel.experimental.sdk.telemetry.version` | Select the self-monitoring telemetry schema. Valid values are `legacy` and `latest`. See **[1]** | `legacy` |
 
-**[1]**: See
+**[1]**: Selects the schema for all SDK self-monitoring telemetry. Span and log
+record processors, the periodic metric reader, and the tracer and logger
+providers honor the same setting. See
 [exporter self-monitoring metrics](../sdk/#exporter-self-monitoring-metrics) for
-configuration details and the legacy and latest OTLP exporter metric names.
+configuration details and for the legacy and latest OTLP exporter metric names.
 
 Properties for attribute limits (see [span limits](../sdk/#spanlimits),
 [log limits](../sdk/#loglimits)):

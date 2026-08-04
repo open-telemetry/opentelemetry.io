@@ -1366,60 +1366,6 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 
 ### OTLP exporters
 
-#### Exporter self-monitoring metrics
-
-OTLP exporter builders use `GlobalOpenTelemetry.getMeterProvider()` for
-self-monitoring by default. Call `setMeterProvider(...)` on a builder to use a
-different provider.
-[Zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure)
-supplies its configured SDK `MeterProvider` automatically.
-
-For programmatically built exporters, call `setInternalTelemetryVersion(...)`
-with `InternalTelemetryVersion.LEGACY` or `InternalTelemetryVersion.LATEST` to
-select the metrics schema. With zero-code SDK autoconfigure, set
-`otel.experimental.sdk.telemetry.version` to `legacy` or `latest`; its default
-is `legacy`.
-
-With [declarative configuration](../configuration/#declarative-configuration),
-SDK self-monitoring telemetry is disabled by default. To enable it, set
-`instrumentation/development.java.otel_sdk.internal_telemetry_version` to
-`legacy` or `latest`:
-
-```yaml
-instrumentation/development:
-  java:
-    otel_sdk:
-      internal_telemetry_version: latest
-```
-
-Legacy OTLP exporter metrics:
-
-| Metric                   | Attributes                          | Description                                                        |
-| ------------------------ | ----------------------------------- | ------------------------------------------------------------------ |
-| `otlp.exporter.seen`     | `type=span\|metric\|log`            | Number of telemetry records passed to the exporter.                |
-| `otlp.exporter.exported` | `type=span\|metric\|log`, `success` | Number of telemetry records for which the export attempt finished. |
-
-When `latest` is selected, OTLP exporters use names defined by the
-[SDK metric semantic conventions](/docs/specs/semconv/otel/sdk-metrics/):
-
-| Metric                                         | Description                                                       |
-| ---------------------------------------------- | ----------------------------------------------------------------- |
-| `otel.sdk.exporter.span.inflight`              | Number of spans currently waiting for export result.              |
-| `otel.sdk.exporter.span.exported`              | Number of spans for which export finished.                        |
-| `otel.sdk.exporter.metric_data_point.inflight` | Number of metric data points currently waiting for export result. |
-| `otel.sdk.exporter.metric_data_point.exported` | Number of metric data points for which export finished.           |
-| `otel.sdk.exporter.log.inflight`               | Number of log records currently waiting for export result.        |
-| `otel.sdk.exporter.log.exported`               | Number of log records for which export finished.                  |
-| `otel.sdk.exporter.operation.duration`         | Duration of exporting a batch of telemetry records.               |
-
-The `latest` metrics include attributes such as `otel.component.type`,
-`otel.component.name`, and `error.type` when an export fails. The legacy metrics
-predate the SDK metrics semantic conventions and remain the default for SDK
-autoconfigure to avoid breaking existing users. The Java SDK does not currently
-define a removal schedule for them.
-
-#### OTLP exporter implementation details
-
 The [span exporter](#spanexporter), [metric exporter](#metricexporter), and
 [log exporter](#logrecordexporter) sections describe OTLP exporters of the form:
 
@@ -1435,6 +1381,8 @@ concepts:
 - [Senders](#senders): an abstraction for a different HTTP / gRPC client
   libraries.
 - [Authentication](#authentication) options for OTLP exporters.
+- [SDK self-monitoring metrics](#exporter-self-monitoring-metrics) emitted by
+  exporters and other SDK components.
 
 #### Senders
 
@@ -1579,6 +1527,56 @@ public class OtlpAuthenticationConfig {
 }
 ```
 <!-- prettier-ignore-end -->
+
+#### SDK self-monitoring metrics {#exporter-self-monitoring-metrics}
+
+The Java SDK can emit self-monitoring metrics for exporters, span and log record
+processors, tracer and logger providers, and the periodic metric reader. The
+selected schema applies to all of these components.
+
+OTLP exporter builders use `GlobalOpenTelemetry.getMeterProvider()` for
+self-monitoring by default. Call `setMeterProvider(...)` on a builder to use a
+different provider.
+[Zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure)
+supplies its configured SDK `MeterProvider` automatically.
+
+For programmatically built exporters, call `setInternalTelemetryVersion(...)`
+with `InternalTelemetryVersion.LEGACY` or `InternalTelemetryVersion.LATEST` to
+select the metrics schema. With zero-code SDK autoconfigure, set
+`otel.experimental.sdk.telemetry.version` to `legacy` or `latest`; its default
+is `legacy`.
+
+With [declarative configuration](../configuration/#declarative-configuration),
+SDK self-monitoring telemetry is disabled by default. To enable it, set
+`instrumentation/development.java.otel_sdk.internal_telemetry_version` to
+`legacy` or `latest`:
+
+```yaml
+instrumentation/development:
+  java:
+    otel_sdk:
+      internal_telemetry_version: latest
+```
+
+The following table summarizes the metric names emitted by each component. A
+dash indicates that the schema does not define a metric for that component.
+
+| Component              | `legacy`                                                                                                                                                                                                                                                            | `latest`                                                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| OTLP exporters         | [`otlp.exporter.seen`, `otlp.exporter.exported`](https://github.com/open-telemetry/opentelemetry-java/blob/09d6c17f31bf4e6bafa619cdde4f75d9fb583c35/exporters/common/src/main/java/io/opentelemetry/exporter/internal/metrics/LegacyExporterMetrics.java#L148-L161) | [`otel.sdk.exporter.{span\|metric_data_point\|log}.{inflight\|exported}`, `otel.sdk.exporter.operation.duration`](https://github.com/open-telemetry/opentelemetry-java/blob/09d6c17f31bf4e6bafa619cdde4f75d9fb583c35/exporters/common/src/main/java/io/opentelemetry/exporter/internal/metrics/SemConvExporterMetrics.java#L79-L125) |
+| Span processors        | [`queueSize`, `processedSpans`](https://github.com/open-telemetry/opentelemetry-java/blob/09d6c17f31bf4e6bafa619cdde4f75d9fb583c35/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/export/LegacySpanProcessorInstrumentation.java#L72-L92)                       | [`otel.sdk.processor.span.queue.capacity\|queue.size\|processed`](https://github.com/open-telemetry/opentelemetry-java/blob/09d6c17f31bf4e6bafa619cdde4f75d9fb583c35/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/export/SemConvSpanProcessorInstrumentation.java#L78-L99)                                                     |
+| Log record processors  | [`queueSize`, `processedLogs`](https://github.com/open-telemetry/opentelemetry-java/blob/09d6c17f31bf4e6bafa619cdde4f75d9fb583c35/sdk/logs/src/main/java/io/opentelemetry/sdk/logs/export/LegacyLogRecordProcessorInstrumentation.java#L64-L83)                     | [`otel.sdk.processor.log.*`](https://github.com/open-telemetry/opentelemetry-java/blob/09d6c17f31bf4e6bafa619cdde4f75d9fb583c35/sdk/logs/src/main/java/io/opentelemetry/sdk/logs/export/SemConvLogRecordProcessorInstrumentation.java#L78-L99)                                                                                       |
+| `SdkTracerProvider`    | —                                                                                                                                                                                                                                                                   | [`otel.sdk.span.started`, `otel.sdk.span.live`](https://github.com/open-telemetry/opentelemetry-java/blob/09d6c17f31bf4e6bafa619cdde4f75d9fb583c35/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/SdkTracerInstrumentation.java#L170-L189)                                                                                       |
+| `SdkLoggerProvider`    | —                                                                                                                                                                                                                                                                   | [`otel.sdk.log.created`](https://github.com/open-telemetry/opentelemetry-java/blob/09d6c17f31bf4e6bafa619cdde4f75d9fb583c35/sdk/logs/src/main/java/io/opentelemetry/sdk/logs/SdkLoggerInstrumentation.java#L43)                                                                                                                      |
+| `PeriodicMetricReader` | —                                                                                                                                                                                                                                                                   | [`otel.sdk.metric_reader.collection.duration`](https://github.com/open-telemetry/opentelemetry-java/blob/09d6c17f31bf4e6bafa619cdde4f75d9fb583c35/sdk/metrics/src/main/java/io/opentelemetry/sdk/metrics/export/MetricReaderInstrumentation.java#L34)                                                                                |
+
+The `latest` names follow the
+[SDK metric semantic conventions](/docs/specs/semconv/otel/sdk-metrics/).
+Exporter metrics include attributes such as `otel.component.type`,
+`otel.component.name`, and `error.type` when an export fails. The legacy metrics
+predate the SDK metrics semantic conventions and remain the default for SDK
+autoconfigure to avoid breaking existing users. The Java SDK does not currently
+define a removal schedule for them.
 
 ### Benchmarks
 
