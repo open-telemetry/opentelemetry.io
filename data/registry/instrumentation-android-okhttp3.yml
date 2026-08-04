@@ -1,0 +1,15 @@
+# cspell:ignore okhttp
+title: Android Instrumentation for OkHttp version 3.0 and higher
+registryType: instrumentation
+language: android
+tags:
+  - okhttp3
+  - instrumentation
+  - android
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/okhttp3
+license: Apache 2.0
+description:
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-12

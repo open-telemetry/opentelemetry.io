@@ -8,9 +8,11 @@
 
 import { readdirSync } from 'node:fs';
 
-// Files with no code owner (see .github/CODEOWNERS) that may appear in an
-// otherwise locale-only PR without making it ineligible.
-const NO_OWNER_PATHS = new Set(['.lycheecache']);
+// Files with no code owner that may appear in an otherwise locale-only PR
+// without making it ineligible. Canonical home: the no-owner block of
+// .github/CODEOWNERS (patterns listed without an owner); the agreement is
+// guarded by a test.
+export const NO_OWNER_PATHS = new Set(['.lycheecache']);
 
 // The default content language. `content/en/` is the source English content,
 // owned by docs maintainers — not a translation locale — so it is excluded from

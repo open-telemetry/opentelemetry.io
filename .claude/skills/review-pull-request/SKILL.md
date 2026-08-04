@@ -2,8 +2,8 @@
 name: review-pull-request
 description: >-
   Review pull requests for opentelemetry.io: CI check semantics, CLA and
-  approval-label workflow, refcache handling, locale rules, and content quality.
-  Use when reviewing a PR or debugging a CI failure in
+  approval-label workflow, link-cache handling, locale rules, and content
+  quality. Use when reviewing a PR or debugging a CI failure in
   open-telemetry/opentelemetry.io.
 argument-hint: '<PR number or URL>'
 allowed-tools: Bash Read Grep Glob
@@ -15,7 +15,7 @@ effort: medium
 
 Review workflow for pull requests in `open-telemetry/opentelemetry.io`. The
 contributing guide and the per-check decoder in [`pr-checks.md`][pr-checks] are
-the authoritative sources — when this skill drifts from them, trust them.
+the authoritative sources; when this skill drifts from them, trust them.
 
 For blog-specific rules (`gh-url-hash`, author front matter, publish-date
 gating), defer to the sibling `review-blog-post` skill. For label drafting
@@ -58,8 +58,8 @@ For each failing check, match `<workflow-name> / <job-name>` against
 [`pr-checks.md`][pr-checks] — every check has a section describing what it
 validates and the local fix command. Caveats:
 
-- A `CHECK LINKS` failure can be a stale `.lycheecache` rather than a broken
-  link — read the failure (see [Refcache](#refcache)).
+- A stale `.lycheecache` fails `CACHE updates committed?`, not `CHECK LINKS`
+  (see [Link cache](#refcache)).
 - Fork PRs can hit token-scope limits that look like check failures but are
   permissions artifacts. Read the log before concluding.
 - `Netlify Deploy Preview` failures: open **Details** for the build log before
@@ -82,10 +82,11 @@ validates and the local fix command. Caveats:
 
 - Submodules: non-maintainer PRs should not touch them; a maintainer fixes
   before merge — [`sig-practices.md#general`][general].
-- Locale span: semantic changes are per-locale; editorial cross-locale edits are
-  OK and append `# patched` to `default_lang_commit` —
-  [`localization.md#prs-should-not-span-locales`][locale-span] and
-  [`#patch-locale-links`][patch-locale].
+- Locale span: semantic changes are per-locale; page-content changes may span
+  locales only as [build fixes][keep-green] (marked `# patched`); link-check
+  failures on localized pages never qualify and take a [drift-status
+  refresh][link-fixes] instead. Content-neutral maintenance is exempt —
+  [`localization.md#prs-should-not-span-locales`][locale-span].
 
 **Branch state**
 
@@ -123,8 +124,8 @@ Walk this checklist before writing the review:
 - [ ] Netlify preview builds.
 - [ ] Each failing `check-*` assessed against [`pr-checks.md#checks`][checks].
 - [ ] Linked issue is `triage:accepted` (or this is an auto/hotfix PR).
-- [ ] Does not span locales with semantic changes — or uses `# patched` for
-      editorial cross-locale edits.
+- [ ] Does not span locales — or does so only for [build fixes][keep-green]
+      (marked `# patched`) or content-neutral maintenance.
 - [ ] First-time-contributor AI checklist in the PR description is filled in and
       looks human-written.
 - [ ] No unrelated changes bundled.
@@ -143,12 +144,12 @@ Walk this checklist before writing the review:
       have alt text; internal links use paths or Hugo refs (not
       `opentelemetry.io` URLs); no shortcut-form reference links.
 
-**Refcache and links**
+**Link cache and links**
 
 - [ ] `.lycheecache` updates (if any) committed in the PR.
 - [ ] No hand-edits to `.lycheecache`.
 - [ ] Unreachable-but-valid URLs use `?link-check=no` (see
-      [Refcache](#refcache)).
+      [Link cache](#refcache)).
 
 Then structure the review as:
 
@@ -160,20 +161,20 @@ Then structure the review as:
   opportunities, phrasing.
 - **Positive Feedback** — short but present.
 
-## Refcache {#refcache}
+## Link cache {#refcache}
 
 `.lycheecache` is the committed cache of successful external-link checks.
 `npm run check:links` updates it as a side effect — authors commit the updated
-file themselves ([`pr-checks.md#build-and-check-links`][build-checks]). The
-`Links / CHECK LINKS` job fails if the on-branch cache is stale relative to what
-the link check produced.
+file themselves ([`pr-checks.md#cache-updates-committed`][cache-check]). The
+`Links / CACHE updates committed?` job fails if the on-branch cache is stale
+relative to what the link check produced.
 
 Do not hand-edit `.lycheecache`. If a URL returns a non-200 for server reasons
 (blocked bot, LinkedIn 999, …), append `?link-check=no` (or `&link-check=no`) to
 the URL — [`pr-checks.md#handling-valid-external-links`][handling-links].
 
 For resolving merge/rebase conflicts in `.lycheecache`, see the
-`resolve-refcache-conflicts` skill.
+`resolve-link-cache-conflicts` skill.
 
 ## References
 
@@ -186,24 +187,22 @@ Source-of-truth files — read on demand:
   [`localization.md`][localization], [`issues.md`][issues] — process rules
   deep-linked above.
 
-[pr-checks]: ../../../content/en/docs/contributing/pr-checks.md
+<!-- prettier-ignore-start -->
+[cache-check]: ../../../content/en/docs/contributing/pr-checks.md#cache-updates-committed
 [checks]: ../../../content/en/docs/contributing/pr-checks.md#checks
 [cla]: ../../../content/en/docs/contributing/pr-checks.md#easy-cla
-[build-checks]:
-  ../../../content/en/docs/contributing/pr-checks.md#build-and-check-links
-[handling-links]:
-  ../../../content/en/docs/contributing/pr-checks.md#handling-valid-external-links
+[co-owned]: ../../../content/en/docs/contributing/sig-practices.md#co-owned-prs
+[general]: ../../../content/en/docs/contributing/sig-practices.md#general
+[handling-links]: ../../../content/en/docs/contributing/pr-checks.md#handling-valid-external-links
+[issues]: ../../../content/en/docs/contributing/issues.md
+[keep-green]: ../../../content/en/docs/contributing/localization.md#keep-checks-green
+[link-fixes]: ../../../content/en/docs/contributing/localization.md#link-fixes-and-resource-updates
+[locale-span]: ../../../content/en/docs/contributing/localization.md#prs-should-not-span-locales
+[localization]: ../../../content/en/docs/contributing/localization.md
 [npm-scripts]: ../../../content/en/site/build/npm-scripts.md
+[pr-checks]: ../../../content/en/docs/contributing/pr-checks.md
+[prs]: ../../../content/en/docs/contributing/sig-practices.md#prs
 [pull-requests]: ../../../content/en/docs/contributing/pull-requests.md
 [sig-practices]: ../../../content/en/docs/contributing/sig-practices.md
-[localization]: ../../../content/en/docs/contributing/localization.md
-[issues]: ../../../content/en/docs/contributing/issues.md
-[prs]: ../../../content/en/docs/contributing/sig-practices.md#prs
-[co-owned]: ../../../content/en/docs/contributing/sig-practices.md#co-owned-prs
-[translation]:
-  ../../../content/en/docs/contributing/sig-practices.md#translation-prs
-[general]: ../../../content/en/docs/contributing/sig-practices.md#general
-[locale-span]:
-  ../../../content/en/docs/contributing/localization.md#prs-should-not-span-locales
-[patch-locale]:
-  ../../../content/en/docs/contributing/localization.md#patch-locale-links
+[translation]: ../../../content/en/docs/contributing/sig-practices.md#translation-prs
+<!-- prettier-ignore-end -->

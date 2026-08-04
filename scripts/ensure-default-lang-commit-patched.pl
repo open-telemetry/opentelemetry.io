@@ -1,12 +1,8 @@
 #!/usr/bin/env perl
 #
 # Ensures that each changed non-en locale file has its default_lang_commit front
-# matter field ending in "# patched".
-#
-# When making targeted changes to localized pages (e.g., link fixes, resource
-# updates, or content additions) without fully syncing with the English version,
-# add "# patched" as a YAML comment at the end of the default_lang_commit line.
-# See content/en/docs/contributing/localization.md for details.
+# matter field ending in "# patched". For when to mark a page as patched, see
+# content/en/docs/contributing/localization.md#patched.
 #
 # Usage:
 #   ./scripts/ensure-default-lang-commit-patched.pl [--dry-run]

@@ -1,39 +1,44 @@
 #!/usr/bin/env node
-// Generate `lychee.toml` = `lychee.base.toml` + an `exclude_path` block derived
-// from content front matter. The base is hand-maintained and committed;
-// `lychee.toml` is generated and gitignored. Two front-matter sources feed the
-// block:
+// Generate `lychee.toml` = `lychee.base.toml` (hand-maintained, committed) +
+// an `exclude_path` block derived from page front matter
+// (`link_check_exclude_path` patterns and `drifted_from_default` pages). For
+// the configuration model and front-matter semantics, see:
+// https://opentelemetry.io/site/build/link-checking/#configuration
 //
-// - `link_check_exclude_path` — a list of site-relative regexes for pages the
-//   link checker must skip (e.g. blog pagination, old blog posts); see
-//   content/en/blog/_index.md.
-// - `drifted_from_default: true` — drifted localized pages. Link checking
-//   originating from drifted pages is skipped (their links may be stale), but
-//   the pages remain resolvable as anchor targets, so inbound links from
-//   non-drifted pages keep being validated.
+// Stored drift statuses are only as fresh as the last nightly Housekeeping
+// sync, so the generator also excludes the locale copies of English pages
+// changed since the recorded status baseline ("drift pending" — the pages
+// that the next nightly sync will mark drifted). Drift semantics, the
+// baseline, and the activity exemption live in scripts/i18n/drift.mjs; this
+// script only maps the resulting pages to lychee exclude patterns.
 //
-// Both express paths relative to the site root (`public/`), while lychee's
+// Front matter expresses paths relative to the site root, while lychee's
 // `exclude_path` matches the absolute path of each input file it scans. So
-// every pattern is re-anchored onto the `/public/` path segment, accounting for
-// Hugo's pretty-URL `index.html` page files:
+// every pattern is re-anchored (verbatim — they are regexes) onto the
+// `/public/` path segment, accounting for Hugo's pretty-URL `index.html` page
+// files:
 //
-//   `^bn/docs/demo/$`             (a single page)   -> /public/bn/docs/demo/index\.html$
-//   `^(../)?blog/20(19|2.)/`      (a whole subtree) -> /public/(../)?blog/20(19|2.)/
-//   `^(../)?blog/(\d+/)?page/\d+` (substring)       -> /public/(../)?blog/(\d+/)?page/\d+
+//   `^bn/docs/demo/$`        (a single page)   -> /public/bn/docs/demo/index\.html$
+//   `^(../)?blog/20(19|2.)/` (a whole subtree) -> /public/(../)?blog/20(19|2.)/
 //
-// The `(../)?` prefix is regex (the `.`s are wildcards): it optionally matches
-// *any two characters + slash* — i.e. a 2-letter locale segment such as `ja/`,
-// `es/`, `pt/`. That is how a single pattern skips old blog posts in every
-// locale, not just EN. It is preserved verbatim; dropping it would only exclude
-// EN and leave localized old-blog externals to be (wrongly) scanned.
-//
-// Usage: node scripts/lychee/config/index.mjs
-// Run via `npm run generate:config:links`.
+// Usage: node scripts/lychee/config/index.mjs (npm run generate:config:links)
+//        DRIFT_BASELINE=<commit> overrides the committed baseline (local use)
 
-import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import {
+  readdirSync,
+  readFileSync,
+  realpathSync,
+  writeFileSync,
+} from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { load as yamlLoad } from 'js-yaml';
+
+import {
+  driftPendingForRepo,
+  isDriftedStatus,
+  parseStatus,
+} from '../../i18n/drift.mjs';
 
 export const FRONT_MATTER_KEY = 'link_check_exclude_path';
 
@@ -55,21 +60,28 @@ export function excludePathPatternsOf(frontMatter, filePath) {
   if (
     !Array.isArray(patterns) ||
     patterns.length === 0 ||
-    !patterns.every((p) => typeof p === 'string')
+    !patterns.every((p) => typeof p === 'string' && /\S/.test(p))
   ) {
     throw new Error(
-      `${filePath}: front-matter '${FRONT_MATTER_KEY}' must be a non-empty list of regex strings`,
+      `${filePath}: front-matter '${FRONT_MATTER_KEY}' must be a non-empty list of non-blank regex strings`,
     );
   }
   return patterns;
 }
 
-// If the page is a drifted localized page (`drifted_from_default: true`),
-// return an end-anchored regex for its output directory relative to `public/`;
-// otherwise return undefined.
-export function driftedIgnoreDirOf(frontMatter, filePath) {
-  if (!/^drifted_from_default:\s*true\s*$/m.test(frontMatter)) return;
+// If the page is a stored-drifted localized page (`drifted_from_default`
+// status `true` or `file not found` — the shared predicate in drift.mjs),
+// return an end-anchored regex for its output directory relative to
+// `public/`; otherwise return undefined.
+export function driftedIgnoreDirOf(pageText, filePath) {
+  if (!isDriftedStatus(parseStatus(pageText))) return;
+  return pageIgnoreDirOf(filePath);
+}
 
+// Map a content page path to an end-anchored regex for its output directory
+// relative to `public/`, or undefined for paths that aren't standalone output
+// pages (fragments, non-content paths).
+export function pageIgnoreDirOf(filePath) {
   // Strip the leading 'content/' source prefix.
   let p = filePath.replace(/^\.\//, '');
   if (!p.startsWith('content/')) return;
@@ -101,21 +113,25 @@ export function translate(pattern) {
 }
 
 // Collect and translate the exclude_path entries for the given pages, given as
-// [filePath, fileText] pairs: front-matter patterns first (in file order), then
-// drifted-page directories (sorted); de-duplicated, first-seen order.
-export function toExcludePaths(pages) {
+// [filePath, fileText] pairs, plus any drift-pending ignore dirs: front-matter
+// patterns first (in file order), then drifted-page directories (sorted), then
+// drift-pending directories (sorted); de-duplicated, first-seen order.
+export function toExcludePaths(pages, driftPendingDirs = []) {
   const patterns = [];
   const drifted = [];
   for (const [filePath, text] of pages) {
     const fm = frontMatterOf(text);
     if (fm === undefined) continue;
     patterns.push(...excludePathPatternsOf(fm, filePath));
-    const dir = driftedIgnoreDirOf(fm, filePath);
+    const dir = driftedIgnoreDirOf(text, filePath);
     if (dir) drifted.push(dir);
   }
   drifted.sort();
-  const entries = [...new Set([...patterns, ...drifted].map(translate))];
-  return { patterns, drifted, entries };
+  const driftPending = [...driftPendingDirs].sort();
+  const entries = [
+    ...new Set([...patterns, ...drifted, ...driftPending].map(translate)),
+  ];
+  return { patterns, drifted, driftPending, entries };
 }
 
 // --- generation --------------------------------------------------------------
@@ -131,12 +147,23 @@ function* contentPages(rootDir) {
   }
 }
 
-function mainCLI() {
+async function mainCLI() {
   const rootDir = path.resolve(
     path.dirname(fileURLToPath(import.meta.url)),
     '../../..',
   );
-  const { patterns, drifted, entries } = toExcludePaths(contentPages(rootDir));
+
+  // Presumed-drifted locale copies since the status baseline (drift-pending).
+  // Throws when the baseline is missing or unresolvable (see readBaseline).
+  const baseline = process.env.DRIFT_BASELINE;
+  const driftPendingDirs = (await driftPendingForRepo(rootDir, baseline))
+    .map(pageIgnoreDirOf)
+    .filter(Boolean);
+
+  const { patterns, drifted, driftPending, entries } = toExcludePaths(
+    contentPages(rootDir),
+    driftPendingDirs,
+  );
 
   const lines = [
     readFileSync(path.join(rootDir, 'lychee.base.toml'), 'utf8'),
@@ -154,9 +181,16 @@ function mainCLI() {
 
   console.error(
     `Translated ${patterns.length} front-matter + ${drifted.length} drifted-page ` +
-      `patterns -> ${entries.length} exclude_path entries.`,
+      `+ ${driftPending.length} drift-pending patterns -> ` +
+      `${entries.length} exclude_path entries.`,
   );
   console.error('Generated lychee.toml.');
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) mainCLI();
+// Robust under symlinked invocation paths (worktrees): compare real paths.
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href
+) {
+  await mainCLI();
+}

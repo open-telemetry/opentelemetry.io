@@ -1,5 +1,6 @@
 import { describe, test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 // cspell:ignore mallory
 
@@ -11,6 +12,7 @@ import {
   authorizeForLocales,
   resolveVerdict,
   runAutoMergeCommand,
+  NO_OWNER_PATHS,
 } from './index.mjs';
 
 const LOCALES = discoverLocales();
@@ -104,6 +106,43 @@ describe('locale-auto-merge: localeForPath', () => {
     assert.equal(localeForPath('layouts/partials/head.html', LOCALES), null);
     assert.equal(localeForPath('.lycheecache', LOCALES), null);
     assert.equal(localeForPath('content/ja', LOCALES), null);
+  });
+});
+
+describe('locale-auto-merge: no-owner paths agree with CODEOWNERS', () => {
+  // .github/CODEOWNERS is the canonical home of the no-owner policy: a
+  // pattern listed without an owner team. NO_OWNER_PATHS is the runtime copy.
+  const codeownersNoOwnerPaths = () => {
+    const text = readFileSync(
+      new URL('../../../.github/CODEOWNERS', import.meta.url),
+      'utf8',
+    );
+    return new Set(
+      text
+        .split('\n')
+        .map((line) => line.trim())
+        .filter((line) => line && !line.startsWith('#'))
+        .filter((line) => !line.includes('@'))
+        .map((pattern) => pattern.replace(/^\//, '')),
+    );
+  };
+
+  test('NO_OWNER_PATHS matches the ownerless CODEOWNERS entries', () => {
+    assert.deepEqual(NO_OWNER_PATHS, codeownersNoOwnerPaths());
+  });
+
+  test('each no-owner path has a component-owners.yml fallback entry', () => {
+    const text = readFileSync(
+      new URL('../../../.github/component-owners.yml', import.meta.url),
+      'utf8',
+    );
+    for (const p of NO_OWNER_PATHS) {
+      assert.match(
+        text,
+        new RegExp(`^ {2}${p.replaceAll('.', '\\.')}:$`, 'm'),
+        `component-owners.yml assigns a fallback team to ${p}`,
+      );
+    }
   });
 });
 

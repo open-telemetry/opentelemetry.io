@@ -1,6 +1,6 @@
-// Unit tests for the front-matter -> lychee `exclude_path` generator. Guards
-// the key parity property: the `(../)?` locale prefix is preserved, so a single
-// pattern keeps excluding old blog posts in every locale, not just EN.
+// Unit tests for the front-matter -> lychee `exclude_path` generator
+// (./index.mjs), including preservation of the `(../)?` locale prefix that
+// lets a single pattern cover every locale.
 
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
@@ -10,6 +10,7 @@ import {
   driftedIgnoreDirOf,
   excludePathPatternsOf,
   frontMatterOf,
+  pageIgnoreDirOf,
   toExcludePaths,
   translate,
 } from './index.mjs';
@@ -40,8 +41,6 @@ describe('excludePathPatternsOf()', () => {
   });
 
   test('extracts a flow-style (one-line) list', () => {
-    // The htmltest-era extractor silently dropped this form; see the generator
-    // header comment.
     const fm = `${FRONT_MATTER_KEY}: [/en/docs/contributing/blog/]`;
     assert.deepEqual(excludePathPatternsOf(fm, 'f.md'), [
       '/en/docs/contributing/blog/',
@@ -65,10 +64,27 @@ describe('excludePathPatternsOf()', () => {
       /f\.md.*non-empty list/,
     );
   });
+
+  // A blank pattern would translate to `/public/`, excluding every page and
+  // false-greening the whole check.
+  test('throws on an empty-string pattern', () => {
+    assert.throws(
+      () => excludePathPatternsOf(`${FRONT_MATTER_KEY}: ['']`, 'f.md'),
+      /f\.md.*non-blank/,
+    );
+  });
+
+  test('throws on a whitespace-only pattern', () => {
+    assert.throws(
+      () => excludePathPatternsOf(`${FRONT_MATTER_KEY}: ['  ']`, 'f.md'),
+      /f\.md.*non-blank/,
+    );
+  });
 });
 
 describe('driftedIgnoreDirOf()', () => {
-  const drifted = 'title: Hi\ndrifted_from_default: true';
+  const page = (fm) => `---\n${fm}\n---\n\nBody.\n`;
+  const drifted = page('title: Hi\ndrifted_from_default: true');
 
   test('a section or leaf-bundle page maps to its directory', () => {
     assert.equal(
@@ -88,6 +104,16 @@ describe('driftedIgnoreDirOf()', () => {
     );
   });
 
+  test('a deleted-EN page ("file not found" status) is covered too', () => {
+    assert.equal(
+      driftedIgnoreDirOf(
+        page('title: Hi\ndrifted_from_default: file not found'),
+        'content/bn/docs/demo/index.md',
+      ),
+      '^bn/docs/demo/$',
+    );
+  });
+
   test('underscore-directory fragments are skipped', () => {
     assert.equal(
       driftedIgnoreDirOf(drifted, 'content/ja/docs/_includes/foo.md'),
@@ -97,9 +123,37 @@ describe('driftedIgnoreDirOf()', () => {
 
   test('non-drifted pages are skipped', () => {
     assert.equal(
-      driftedIgnoreDirOf('title: Hi', 'content/bn/docs/demo/index.md'),
+      driftedIgnoreDirOf(page('title: Hi'), 'content/bn/docs/demo/index.md'),
       undefined,
     );
+  });
+
+  test('a body-only status does not mark the page', () => {
+    assert.equal(
+      driftedIgnoreDirOf(
+        `---\ntitle: Hi\n---\n\n\`\`\`yaml\ndrifted_from_default: true\n\`\`\`\n`,
+        'content/bn/docs/demo/index.md',
+      ),
+      undefined,
+    );
+  });
+});
+
+describe('pageIgnoreDirOf()', () => {
+  test('maps bundle and leaf pages, skips fragments and non-content paths', () => {
+    assert.equal(
+      pageIgnoreDirOf('content/ja/docs/concepts/_index.md'),
+      '^ja/docs/concepts/$',
+    );
+    assert.equal(
+      pageIgnoreDirOf('content/zh/docs/kubernetes/collector.md'),
+      '^zh/docs/kubernetes/collector/$',
+    );
+    assert.equal(
+      pageIgnoreDirOf('content/ja/docs/_includes/foo.md'),
+      undefined,
+    );
+    assert.equal(pageIgnoreDirOf('scripts/foo.md'), undefined);
   });
 });
 
@@ -190,5 +244,21 @@ describe('toExcludePaths()', () => {
     const { patterns, entries } = toExcludePaths(pages);
     assert.equal(patterns.length, 2, 'both source patterns parsed');
     assert.deepEqual(entries, ['/public/(../)?blog/2019/'], 'output deduped');
+  });
+
+  test('merges drift-pending dirs, deduped against stored-drifted ones', () => {
+    const pages = [
+      ['content/zh/docs/demo/index.md', page('drifted_from_default: true')],
+    ];
+    const { drifted, driftPending, entries } = toExcludePaths(pages, [
+      '^zh/docs/demo/$', // already stored-drifted
+      '^ja/docs/demo/$',
+    ]);
+    assert.deepEqual(drifted, ['^zh/docs/demo/$']);
+    assert.deepEqual(driftPending, ['^ja/docs/demo/$', '^zh/docs/demo/$']);
+    assert.deepEqual(entries, [
+      '/public/zh/docs/demo/index\\.html$',
+      '/public/ja/docs/demo/index\\.html$',
+    ]);
   });
 });
