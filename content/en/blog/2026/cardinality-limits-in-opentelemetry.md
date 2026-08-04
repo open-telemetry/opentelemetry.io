@@ -32,19 +32,19 @@ production.
 ## The basic model
 
 When you record a metric measurement, you can attach attributes such as
-`url.path=/checkout`, `http.request.method=GET`, or `success=false`. The SDK
+`http.route=/checkout`, `http.request.method=GET`, or `success=false`. The SDK
 aggregates measurements by the full set of attribute values. Each unique
 attribute combination becomes a separate data point that the SDK tracks in
 memory.
 
 For example, this request counter has four unique combinations:
 
-| `url.path` | `success` | Count |
-| ---------- | --------- | ----- |
-| `/home`    | `true`    | 130   |
-| `/home`    | `false`   | 2     |
-| `/cart`    | `true`    | 50    |
-| `/cart`    | `false`   | 1     |
+| `http.route` | `success` | Count |
+| ------------ | --------- | ----- |
+| `/home`      | `true`    | 130   |
+| `/home`      | `false`   | 2     |
+| `/cart`      | `true`    | 50    |
+| `/cart`      | `false`   | 1     |
 
 That is cardinality 4 for this metric stream. If you add a high-cardinality
 attribute such as `tenant_id`, the number of combinations can grow very quickly.
@@ -59,7 +59,7 @@ measurement attributes are removed from the overflow data point.
 So if this measurement overflows:
 
 ```text
-{url.path=/checkout, success=false} 1
+{http.route=/checkout, success=false} 1
 ```
 
 the exported value becomes part of:
@@ -168,11 +168,11 @@ The overflow data point is marked with the attribute
 dots in attribute names with underscores for label compatibility, so this is
 usually exposed as the label `otel_metric_overflow="true"`.
 
-To find metrics that emitted an overflow data point in the last 30 days:
+To find metrics that emitted an overflow data point in the last day:
 
 ```promql
 count by (__name__, job) (
-  last_over_time({otel_metric_overflow="true"}[30d])
+  last_over_time({otel_metric_overflow="true"}[1d])
 )
 ```
 
@@ -181,7 +181,11 @@ ingestion in Prometheus, `service.name` is commonly represented by the `job`
 label. If your setup promotes `service.name` as a resource attribute, use
 `service_name` instead. Adjust the grouping labels to match your environment.
 For example, add `cluster`, `namespace`, or `service_instance_id` if those
-labels are present and useful.
+labels are present and useful. You can widen the range to catch overflow that
+only happens occasionally, but be aware that the selector is unscoped, so a long
+window such as `[30d]` scans every matching series and can get expensive on a
+large fleet. Add label matchers to narrow the selector if you need to look back
+further.
 
 For OTLP-native backends, write the equivalent query in the backend's query
 language: filter on `otel.metric.overflow = true`, then group by metric name and
