@@ -25,15 +25,19 @@ application.
 
 ## Status and Releases
 
-The current status of the major functional components for OpenTelemetry is as
-follows:
+The current [status][spec-status] of the major functional components for
+OpenTelemetry is as follows. For definitions of status levels such as
+Experimental, Stable, and Deprecated, see
+[Component Lifecycle][spec-status-lifecycle].
 
 > [!WARNING]
 >
 > Regardless of an API/SDK's status, if your instrumentation relies on [semantic
 > conventions][semconv] that are marked as [Experimental][] in the [semantic
 > conventions specification][semconv-spec], your data flow might be subject to
-> **breaking changes**.
+> **breaking changes**. Each page in the [semantic conventions
+> specification][semconv-spec] lists its status at the top, so you can check
+> whether the conventions you depend on are Experimental or Stable.
 >
 > [semconv]: /docs/concepts/semantic-conventions/
 > [Experimental]: /docs/specs/otel/document-status/
@@ -56,3 +60,5 @@ references are available:
 [zero-code]: /docs/platforms/kubernetes/operator/automatic/
 [instrumentation]: /docs/concepts/instrumentation/
 [otel-op]: /docs/platforms/kubernetes/operator/
+[spec-status]: /docs/specs/status/
+[spec-status-lifecycle]: /docs/specs/status/#component-lifecycle
