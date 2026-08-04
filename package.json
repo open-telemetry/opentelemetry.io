@@ -101,6 +101,7 @@
     "fix:i18n": "npm run fix:i18n:new && npm run fix:i18n:status -- --all",
     "fix:l10n:do-not-copy-images-etc": "npm run check:l10n:do-not-copy-images-etc -- --fix",
     "fix:l10n": "npm run seq -- fix:l10n:do-not-copy-images-etc",
+    "fix:link-cache:double-check": "node scripts/lychee/double-check/cli.mjs",
     "fix:link-cache:refresh": "refcache --prune ${PRUNE_N:-800} && npm run fix:link-cache",
     "fix:link-cache": "npm run check:links",
     "fix:markdown": "npm run check:markdown -- --fix && echo '\nTrimming trailing whitespace' && npm run _fix:trailing-spaces",
@@ -116,8 +117,8 @@
     "link-cache": "refcache",
     "locale-auto-merge": "node scripts/gh/locale-auto-merge/cli.mjs",
     "locale-team-cleanup": "node scripts/gh/locale-team-cleanup/cli.mjs",
-    "log:build": "npm run build 2>&1 | tee tmp/build-log.txt",
-    "log:check:links": "npm run check:links 2>&1 | tee tmp/check-links-log.txt",
+    "log:build": "bash -o pipefail -c 'npm run build 2>&1 | tee tmp/build-log.txt'",
+    "log:check:links": "bash -o pipefail -c 'npm run check:links 2>&1 | tee tmp/check-links-log.txt'",
     "make:public": "make public ls-public",
     "netlify-build:preview": "npm run seq -- build:preview diff:check",
     "netlify-build:production": "npm run seq -- build:production diff:check",
@@ -154,6 +155,7 @@
     "test:collector-sync": "npm run check:collector-sync && npm run check:collector-sync:types && npm run check:collector-sync:lint",
     "test:compound-tests": "npm run seq -- check:code-excerpts $(CMD_SKIP=collector-sync npm -s run _list:test:compound-tests)",
     "test:config-schema-tests": "node --test \"assets/js/**/*.test.mjs\"",
+    "test:double-check:live": "node scripts/lychee/double-check/live-check.mjs",
     "test:edge-functions:live": "npm run _test:ef:live --",
     "test:edge-functions": "node --test \"netlify/edge-functions/**/*.test.ts\"",
     "test:local-tools:lychee": "echo 'Running the lychee slice of local-tools tests (needs the lychee binary)' && node --test \"scripts/lychee/sanity/**/*.test.mjs\"",
@@ -184,21 +186,23 @@
     "hugo-extended": "0.164.0",
     "js-yaml": "5.2.2",
     "link-cache": "0.3.0",
-    "markdown-it": "14.3.0",
-    "markdown-link-check": "3.14.2",
+    "markdown-it": "15.0.0",
+    "markdown-link-check": "3.15.0",
     "markdownlint": "0.41.1",
-    "markdownlint-cli2": "0.23.1",
+    "markdownlint-cli2": "0.23.2",
     "markdownlint-rule-helpers": "0.31.0",
     "markdownlint-rule-link-pattern": "github:chalin/markdownlint-rule-link-pattern#semver:0.2.0",
     "markdownlint-rule-no-shortcut-ref-link": "github:chalin/markdownlint-rule-no-shortcut-ref-link#v0.3.1",
     "prettier": "3.9.6",
+    "puppeteer": "25.4.0",
+    "puppeteer-core": "25.4.0",
     "require-dir": "1.2.0",
     "textlint": "15.7.1",
     "textlint-filter-rule-allowlist": "4.0.0",
     "textlint-filter-rule-comments": "1.3.0",
     "textlint-rule-prh": "6.1.0",
     "textlint-rule-terminology": "5.2.16",
-    "yargs": "18.0.0"
+    "yargs": "18.1.0"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.1",
@@ -215,8 +219,8 @@
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^26.0.0",
-    "npm-check-updates": "^22.0.1"
+    "netlify-cli": "^27.0.0",
+    "npm-check-updates": "^23.0.0"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
