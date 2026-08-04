@@ -8,9 +8,11 @@
 
 import { readdirSync } from 'node:fs';
 
-// Files with no code owner (see .github/CODEOWNERS) that may appear in an
-// otherwise locale-only PR without making it ineligible.
-const NO_OWNER_PATHS = new Set(['static/refcache.json']);
+// Files with no code owner that may appear in an otherwise locale-only PR
+// without making it ineligible. Canonical home: the no-owner block of
+// .github/CODEOWNERS (patterns listed without an owner); the agreement is
+// guarded by a test.
+export const NO_OWNER_PATHS = new Set(['.lycheecache']);
 
 // The default content language. `content/en/` is the source English content,
 // owned by docs maintainers — not a translation locale — so it is excluded from
@@ -41,18 +43,30 @@ export function discoverLocales(contentDir = 'content') {
 /**
  * Parse a PR comment body into an auto-merge action.
  *
- * Strict matcher: the trimmed comment must be exactly `/auto-merge`,
- * `/auto-merge:enable`, or `/auto-merge:disable` with no surrounding text.
- * Bare `/auto-merge` is shorthand for `enable`.
+ * Line-anchored matcher: the comment must contain exactly one directive line —
+ * `/auto-merge`, `/auto-merge:enable`, or `/auto-merge:disable` — with no
+ * leading text or whitespace (so indented code and `>` quotes can't trigger
+ * it), and that line must be the first or last non-blank line of the comment
+ * (which also rules out directives inside fenced code blocks, since a fence
+ * needs lines above and below). Bare `/auto-merge` is shorthand for `enable`.
  *
  * @param {unknown} body Raw comment body.
  * @returns {'enable'|'disable'|null}
  */
 export function parseCommand(body) {
   if (typeof body !== 'string') return null;
-  const match = body.trim().match(/^\/auto-merge(?::(enable|disable))?$/);
-  if (!match) return null;
-  return match[1] ?? 'enable';
+  const directiveRe = /^\/auto-merge(?::(enable|disable))?$/;
+  const lines = body.split('\n').map((line) => line.trimEnd());
+  const directiveIndices = lines.flatMap((line, i) =>
+    directiveRe.test(line) ? [i] : [],
+  );
+  if (directiveIndices.length !== 1) return null;
+
+  const [i] = directiveIndices;
+  const nonBlankIndices = lines.flatMap((line, j) => (line ? [j] : []));
+  if (i !== nonBlankIndices[0] && i !== nonBlankIndices.at(-1)) return null;
+
+  return lines[i].match(directiveRe)[1] ?? 'enable';
 }
 
 /**
@@ -443,12 +457,18 @@ export function runAutoMergeCommand({
   details.command = action;
   if (action === null) {
     // Stay a silent no-op for comments that aren't auto-merge attempts at all.
-    // But the workflow triggers on any `/auto-merge`-prefixed comment, so a
-    // malformed variant (e.g. `/auto-merge please` or `/auto-merge:foo`) should
-    // get feedback rather than a silent, seemingly-successful run.
+    // But the workflow triggers on any comment mentioning `/auto-merge`, so a
+    // failed attempt — a line starting with `/auto-merge`, possibly indented,
+    // that is malformed (e.g. `/auto-merge please`, `/auto-merge:foo`,
+    // `  /auto-merge`), buried mid-comment, or duplicated — should get
+    // feedback rather than a silent run. Blockquoted directives
+    // (`> /auto-merge`) stay silent: quoting a command is a citation, not an
+    // attempt.
     const looksLikeAttempt =
       typeof commentBody === 'string' &&
-      commentBody.trim().startsWith('/auto-merge');
+      commentBody
+        .split('\n')
+        .some((line) => line.trimStart().startsWith('/auto-merge'));
     if (!looksLikeAttempt) {
       log('No recognized /auto-merge command; nothing to do.');
       return { outcome: 'no-command', exitCode: 0, details };
@@ -456,7 +476,9 @@ export function runAutoMergeCommand({
     const message =
       `❓ Unrecognized auto-merge command. Use \`/auto-merge\` (or ` +
       `\`/auto-merge:enable\`) to enable auto-merge, or \`/auto-merge:disable\` ` +
-      `to turn it off.`;
+      `to turn it off. The directive must be on its own line, with no ` +
+      `leading text or whitespace, as the first or last non-blank line of ` +
+      `the comment. It may appear at most once.`;
     details.message = message;
     mutatingRunGh([
       'pr',

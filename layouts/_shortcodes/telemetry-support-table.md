@@ -1,4 +1,4 @@
-{{ $data := $.Site.Data.instrumentation }}
+{{ $data := hugo.Data.instrumentation }}
 {{ $maturityLink := dict "stable" "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0232-maturity-of-otel.md#stable" "beta" "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0232-maturity-of-otel.md#beta" "development" "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0232-maturity-of-otel.md#development" }}
 
 Language | Traces | Metrics | Logs | Profiles |

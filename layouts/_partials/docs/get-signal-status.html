@@ -12,7 +12,7 @@
 {{ $status := "-" -}}
 {{ $signal := .signal -}}
 
-{{ with index site.Data.instrumentation .lang -}}
+{{ with index hugo.Data.instrumentation .lang -}}
   {{ with index .status $signal -}}
     {{ $statusWeCanLinkTo := "stable development" -}}
     {{ $status = cond (or (eq "experimental" .) (eq "in development" .)) "development" . -}}
@@ -25,7 +25,7 @@
     -}}
   {{ end -}}
 {{ else -}}
-  {{ errorf "The site.Data.instrumentation map has no language key '%s'." .lang -}}
+  {{ errorf "The hugo.Data.instrumentation map has no language key '%s'." .lang -}}
 {{ end -}}
 
 {{ return $status -}}

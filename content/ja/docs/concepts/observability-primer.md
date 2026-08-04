@@ -1,5 +1,5 @@
 ---
-title: Observability入門
+title: オブザーバビリティ入門
 description: 重要なオブザーバビリティに関する概念
 weight: 9
 default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db

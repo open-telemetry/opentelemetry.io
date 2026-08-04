@@ -52,7 +52,7 @@ deprecated in recent releases and are replaced by the connectors.
 
 Additional details about the connector's full capabilities can be found at the
 following links:
-[What are Connectors in OpenTelemetry?](https://observiq.com/blog/what-are-connectors-in-opentelemetry/),
+[What are Connectors in OpenTelemetry?](https://bindplane.com/blog/what-are-connectors-in-opentelemetry),
 [OpenTelemetry Connector Configurations](/docs/collector/configuration/#connectors)
 
 ### The Old Architecture:

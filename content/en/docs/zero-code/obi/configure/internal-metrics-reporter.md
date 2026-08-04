@@ -32,11 +32,13 @@ internal_metrics:
 
 ## Configuration summary
 
-| YAML              | Environment Variable                         | Type   | Default             | Summary                                                              |
-| ----------------- | -------------------------------------------- | ------ | ------------------- | -------------------------------------------------------------------- |
-| `exporter`        | `OTEL_EBPF_INTERNAL_METRICS_EXPORTER`        | string | `disabled`          | [Selects the internal metrics exporter.](#internal-metrics-exporter) |
-| `prometheus.port` | `OTEL_EBPF_INTERNAL_METRICS_PROMETHEUS_PORT` | int    | (unset)             | [HTTP port for Prometheus scrape endpoint.](#prometheus-port)        |
-| `prometheus.path` | `OTEL_EBPF_INTERNAL_METRICS_PROMETHEUS_PATH` | string | `/internal/metrics` | [HTTP query path for Prometheus metrics.](#prometheus-path)          |
+| YAML                        | Environment Variable                                   | Type    | Default             | Summary                                                              |
+| --------------------------- | ------------------------------------------------------ | ------- | ------------------- | -------------------------------------------------------------------- |
+| `exporter`                  | `OTEL_EBPF_INTERNAL_METRICS_EXPORTER`                  | string  | `disabled`          | [Selects the internal metrics exporter.](#internal-metrics-exporter) |
+| `prometheus.port`           | `OTEL_EBPF_INTERNAL_METRICS_PROMETHEUS_PORT`           | int     | (unset)             | [HTTP port for Prometheus scrape endpoint.](#prometheus-port)        |
+| `prometheus.path`           | `OTEL_EBPF_INTERNAL_METRICS_PROMETHEUS_PATH`           | string  | `/internal/metrics` | [HTTP query path for Prometheus metrics.](#prometheus-path)          |
+| `avoided_services.disabled` | `OTEL_EBPF_INTERNAL_METRICS_AVOIDED_SERVICES_DISABLED` | boolean | `false`             | Disables the avoided-services metric.                                |
+| `avoided_services.limit`    | `OTEL_EBPF_INTERNAL_METRICS_AVOIDED_SERVICES_LIMIT`    | int     | `2000`              | Limits avoided-services series, including the overflow series.       |
 
 ---
 
@@ -68,3 +70,17 @@ If [`prometheus_export.port`](../export-data/#prometheus-exporter-component) and
 `internal_metrics.prometheus.path` to a different value than
 `prometheus_export.path` to keep the metric families separate, or use the same
 value to list both metric families in the same scrape endpoint.
+
+## Avoided-services cardinality
+
+The `obi.avoided.services` OTLP metric (`obi_avoided_services` in Prometheus)
+reports services for which OBI avoided duplicate telemetry after detecting that
+the service exports OpenTelemetry data directly. Series include service name,
+service namespace, and the avoided signal (`metrics` or `traces`), but not the
+high-cardinality service instance ID.
+
+`avoided_services.limit` bounds the number of series. Additional services are
+combined into a series with `otel.metric.overflow=true` (Prometheus:
+`otel_metric_overflow="true"`). Set the limit to `0` to use the OpenTelemetry
+SDK's default metric cardinality limit, or set `disabled: true` to omit this
+metric.

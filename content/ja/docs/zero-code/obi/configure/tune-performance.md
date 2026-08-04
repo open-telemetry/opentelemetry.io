@@ -3,7 +3,7 @@ title: OBI のパフォーマンスを設定する
 linkTitle: パフォーマンスチューニング
 description: eBPF トレーサーコンポーネントが外部プロセスの HTTP および GRPC サービスを計装し、パイプラインの次のステージに転送するトレースを作成する方法を設定します。
 weight: 90
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
+default_lang_commit: 4c8d57fea0147ce76633951315c40a27c55fad2e
 cSpell:ignore: qdisc
 ---
 
@@ -11,13 +11,14 @@ eBPF トレーサーを使用して、OBI のパフォーマンスを細かく�
 
 このコンポーネントは、YAML 設定ファイルの `ebpf` セクション、または環境変数を使用して設定できます。
 
-| YAML<br>環境変数                                                  | 説明                                                                                                                                                                                                           | 型      | デフォルト |
-| ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ---------- |
-| `wakeup_len`<p>`OTEL_EBPF_BPF_WAKEUP_LEN`</p>                     | ユーザー空間へのウェイクアップ要求を送信する前に、OBI が eBPF リングバッファに蓄積するメッセージ数を設定します。[ウェイクアップ長](#wake-up-length) を参照してください。                                       | int     | 500        |
-| `traffic_control_backend`<p>`OTEL_EBPF_BPF_TC_BACKEND`</p>        | トラフィック制御プローブをアタッチするためのバックエンドを選択します。詳細は [トラフィック制御バックエンド](#traffic-control-backend) セクションを参照してください。                                           | string  | `auto`     |
-| `http_request_timeout`<p>`OTEL_EBPF_BPF_HTTP_REQUEST_TIMEOUT`</p> | OBI が HTTP リクエストをタイムアウトと判断するまでの時間間隔を設定します。詳細は [HTTP リクエストタイムアウト](#http-request-timeout) セクションを参照してください。                                           | string  | (0ms)      |
-| `high_request_volume`<p>`OTEL_EBPF_BPF_HIGH_REQUEST_VOLUME`</p>   | OBI がレスポンスを検出したらすぐにテレメトリーイベントを送信します。詳細は [高リクエストボリューム](#high-request-volume) セクションを参照してください。                                                       | boolean | (false)    |
-| `maps_config.global_scale_factor`                                 | eBPF マップのサイズを 2 のべき乗でスケーリングします。正の値はマップサイズを拡大し、負の値はマップサイズを縮小し、0 はデフォルトを維持します。[eBPF マップのリサイズ](#ebpf-map-resizing) を参照してください。 | int     | 0          |
+| YAML<br>環境変数                                                    | 説明                                                                                                                                                                                                           | 型      | デフォルト |
+| ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ---------- |
+| `wakeup_len`<p>`OTEL_EBPF_BPF_WAKEUP_LEN`</p>                       | ユーザー空間へのウェイクアップ要求を送信する前に、OBI が eBPF リングバッファに蓄積するメッセージ数を設定します。[ウェイクアップ長](#wake-up-length) を参照してください。                                       | int     | 500        |
+| `stats_wakeup_data_bytes`<p>`OTEL_EBPF_STATS_WAKEUP_DATA_BYTES`</p> | TCP 統計リングバッファがユーザー空間のコンシューマーを起動する前にキューに入る最小バイト数を設定します。詳細は [統計ウェイクアップ閾値](#stats-wake-up-threshold) を参照してください。                         | int     | 4096       |
+| `traffic_control_backend`<p>`OTEL_EBPF_BPF_TC_BACKEND`</p>          | トラフィック制御プローブをアタッチするためのバックエンドを選択します。詳細は [トラフィック制御バックエンド](#traffic-control-backend) セクションを参照してください。                                           | string  | `auto`     |
+| `http_request_timeout`<p>`OTEL_EBPF_BPF_HTTP_REQUEST_TIMEOUT`</p>   | OBI が HTTP リクエストをタイムアウトと判断するまでの時間間隔を設定します。詳細は [HTTP リクエストタイムアウト](#http-request-timeout) セクションを参照してください。                                           | string  | (0ms)      |
+| `high_request_volume`<p>`OTEL_EBPF_BPF_HIGH_REQUEST_VOLUME`</p>     | OBI がレスポンスを検出したらすぐにテレメトリーイベントを送信します。詳細は [高リクエストボリューム](#high-request-volume) セクションを参照してください。                                                       | boolean | (false)    |
+| `maps_config.global_scale_factor`                                   | eBPF マップのサイズを 2 のべき乗でスケーリングします。正の値はマップサイズを拡大し、負の値はマップサイズを縮小し、0 はデフォルトを維持します。[eBPF マップのリサイズ](#ebpf-map-resizing) を参照してください。 | int     | 0          |
 
 ## ウェイクアップ長 {#wake-up-length}
 
@@ -26,6 +27,13 @@ OBI は eBPF リングバッファにメッセージを蓄積し、この値に�
 高負荷のサービスでは、CPU オーバーヘッドを削減するためにこのオプションを高めに設定してください。
 
 低負荷のサービスでは、高い値は OBI がメトリクスを送信して可視化されるタイミングを遅延させる可能性があります。
+
+## 統計ウェイクアップ閾値 {#stats-wake-up-threshold}
+
+`stats_wakeup_data_bytes` は `wakeup_len` とは独立して TCP 統計リングバッファを制御します。
+値を大きくすると、負荷時のユーザー空間のウェイクアップが減少しますが、メトリクス配信のレイテンシーが増加します。
+すべての送信イベントでコンシューマーを起動するには `0` に設定してください。
+キューに入ったイベントがバッファが満杯になる前にドレインされるよう、リングバッファのサイズよりも十分に小さい値にしてください。
 
 ## トラフィック制御バックエンド {#traffic-control-backend}
 

@@ -4,6 +4,7 @@ linkTitle: 自動計装
 weight: 11
 description: OpenTelemetryオペレーターを使用した自動計装の実装。
 default_lang_commit: 869b2bb90ca9e54d8d98e7815e66111b577165eb
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA replicaset statefulset
 ---
@@ -556,7 +557,7 @@ spec:
 
 上記の場合、`myapp` と `myapp2` のコンテナが計装され、`myapp3` は計装されません。
 
-> **注記**: Goの自動計装は、マルチコンテナのPodを**サポートしていません**。
+> **NOTE**: Goの自動計装は、マルチコンテナのPodを**サポートしていません**。
 > Goの自動計装をインジェクトする場合、計装したいコンテナを最初のコンテナとして配置する必要があります。
 
 ### initコンテナの計装 {#instrumenting-init-containers}
@@ -655,9 +656,9 @@ spec:
 
 上記の場合、`myapp` と `myapp2` は Java で、`myapp3` は Python で計装されます。
 
-> **注記**: Goの自動計装は、マルチコンテナのPodを**サポートしていません**。
-> **注記**: 1つのコンテナを複数言語の計装で計装することはできません。
-> **注記**: `instrumentation.opentelemetry.io/container-names` アノテーションはこの機能では使用されません。
+> **NOTE**: Goの自動計装は、マルチコンテナのPodを**サポートしていません**。
+> **NOTE**: 1つのコンテナを複数言語の計装で計装することはできません。
+> **NOTE**: `instrumentation.opentelemetry.io/container-names` アノテーションはこの機能では使用されません。
 
 ## カスタマイズ済みまたはベンダー製の計装を使う {#using-customized-or-vendor-instrumentation}
 

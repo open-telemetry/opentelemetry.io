@@ -50,7 +50,7 @@ Recommended configuration file:
 # For schema documentation, including required properties, semantics, default behavior, etc,
 # see: https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md
 
-file_format: "1.0"
+file_format: "1.1"
 
 resource:
   # Read resource attributes from the OTEL_RESOURCE_ATTRIBUTES environment variable.

@@ -732,7 +732,7 @@ and then configure the Host Metrics Receiver to use the `volumeMount`:
 
 ```yaml
 receivers:
-  hostmetrics:
+  host_metrics:
     root_path: /hostfs
     collection_interval: 10s
     scrapers:

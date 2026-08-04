@@ -1,0 +1,20 @@
+title:
+  OpenTelemetry Go Compile-Time Auto-Instrumentation for
+  `google.golang.org/grpc`
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - instrumentation
+  - compile-time
+  - auto-instrumentation
+  - grpc
+license: Apache 2.0
+description: >
+  Go compile-time auto-instrumentation plugin for the [`google.golang.org/grpc`
+  package](https://pkg.go.dev/google.golang.org/grpc).
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/google.golang.org/grpc
+createdAt: 2026-06-29

@@ -17,6 +17,7 @@ dotnet
 Dyla
 dynatrace
 ebpf
+eerzho
 EMEA
 errorf
 excerpter
@@ -52,6 +53,7 @@ lightstep
 llms
 Loffay
 logback
+lycheecache
 Mancuso
 Marylia
 melius
@@ -128,5 +130,7 @@ Wayback
 webshop
 wordpress
 WSGI
+Yerkinbay
 zend
+Zhanbolat
 zipkin

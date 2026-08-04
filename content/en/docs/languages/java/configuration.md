@@ -717,6 +717,6 @@ and specify the path to the config file as described in the table below.
 
 For additional details, consult the following resources:
 
-- [Usage documentation](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#declarative-configuration)
-- [Example with Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#declarative-configuration)
+- [Usage documentation](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/declarative-config)
+- [Example with Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent-declarative-configuration)
 - [Example without Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/declarative-configuration)

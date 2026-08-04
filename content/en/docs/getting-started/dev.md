@@ -25,7 +25,7 @@ natively:
 If you are looking for a set of applications to try things out, you will find
 our official [OpenTelemetry demo](/ecosystem/demo/) useful.
 
-Next, you can deep dive into the documentations for the
+Next, you can deep dive into the documentation for the
 [language](../../languages/) you are using:
 
 - [C++](../../languages/cpp/)

@@ -4,9 +4,15 @@
   contact:
   oss: false
   commercial: true
+- name: AgentMark
+  nativeOTLP: true
+  url: https://docs.agentmark.co/observe/overview
+  contact: ryan@agentmark.co
+  oss: false
+  commercial: true
 - name: AppDynamics (Cisco)
   nativeOTLP: true
-  url: https://docs.appdynamics.com/latest/en/application-monitoring/splunk-appdynamics-for-opentelemetry
+  url: https://help.splunk.com/en/appdynamics-saas/application-performance-monitoring/26.7.0/splunk-appdynamics-for-opentelemetry
   contact:
   oss: false
   commercial: true
@@ -68,7 +74,12 @@
   nativeOTLP: true
   url: https://docs.bindplane.com
   contact: hello@bindplane.com
-  oss: true
+  oss: false
+  commercial: true
+- name: Bronto
+  nativeOTLP: true
+  url: https://docs.bronto.io/agent-setup/open-telemetry
+  oss: false
   commercial: true
 - name: BugSnag
   nativeOTLP: true
@@ -132,6 +143,12 @@
   contact: hi@dash0.com
   oss: false
   commercial: true
+- name: DataBuff
+  nativeOTLP: true
+  url: https://github.com/databufflabs/databuff/blob/master/docs/opentelemetry-otlp-ingestion_en.md
+  contact: https://github.com/databufflabs
+  oss: true
+  commercial: false
 - name: DaoCloud
   nativeOTLP: true
   url: https://docs.daocloud.io/en/insight/quickstart/otel/otel/
@@ -168,17 +185,23 @@
   contact: https://github.com/jpkrohling/
   oss: true
   commercial: true
+- name: Guance
+  nativeOTLP: true
+  url: https://docs.guance.com/en/integrations/opentelemetry/
+  contact:
+  oss: false
+  commercial: true
+- name: TrueWatch
+  nativeOTLP: true
+  url: https://docs.truewatch.com/integrations/opentelemetry
+  contact: ops@truewatch.com
+  oss: false
+  commercial: true
 - name: Heroku
   nativeOTLP: true
   url: https://devcenter.heroku.com/articles/heroku-telemetry
   contact: 'https://www.heroku.com/contact/'
   oss: false
-  commercial: true
-- name: Highlight
-  nativeOTLP: true
-  url: https://highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/
-  contact: support@highlight.io
-  oss: true
   commercial: true
 - name: Honeycomb
   nativeOTLP: true
@@ -218,7 +241,7 @@
   commercial: true
 - name: KloudFuse
   nativeOTLP: true
-  url: https://docs.kloudfuse.com/platform/latest/data-collection/agents/otel/overview/
+  url: https://docs.kloudfuse.com/platform/latest/data-collection/otel/overview/
   contact: support@kloudfuse.com
   oss: false
   commercial: true
@@ -368,7 +391,7 @@
   commercial: true
 - name: qryn
   nativeOTLP: true
-  url: https://qryn.metrico.in/#/support?id=tempo-api
+  url: https://qryn.metrico.in/#/support?id=tempo-api&link-check=no
   contact: https://github.com/lmangani
   oss: true
   commercial: true
@@ -410,7 +433,7 @@
   commercial: true
 - name: ServicePilot
   nativeOTLP: true
-  url: https://www.servicepilot.com/en/doc/apm#opentelemetry
+  url: https://www.servicepilot.com/en/doc/apm
   contact:
   oss: false
   commercial: true
@@ -442,6 +465,12 @@
   nativeOTLP: true
   url: https://app.telemetryhub.com/docs
   contact:
+  oss: false
+  commercial: true
+- name: The Context Company
+  nativeOTLP: true
+  url: https://docs.thecontextcompany.com/integrations/opentelemetry
+  contact: founders@thecontextcompany.com
   oss: false
   commercial: true
 - name: Traceloop
@@ -524,7 +553,7 @@
   commercial: true
 - name: BMC Helix
   nativeOTLP: true
-  url: https://docs.bmc.com/docs/helixaiops/244/enabling-bmc-helix-applications-to-collect-service-traces-from-opentelemetry-1391498839.html
+  url: https://docs.helixops.ai/bin/view/IT-Operations-Management/Operations-Management/BMC-Helix-AIOps/aiops254/Administering/Enabling-BMC-Helix-applications-to-collect-service-traces-from-OpenTelemetry/
   contact: customer_care@bmc.com
   oss: false
   commercial: true

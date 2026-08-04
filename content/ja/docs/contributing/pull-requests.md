@@ -3,7 +3,7 @@ title: コンテンツの提出
 description: GitHub UI 利用して、またはローカルのフォークから、新しいコンテンツまたはコンテンツの変更を提出する方法を学びます
 aliases: [new-content]
 weight: 15
-default_lang_commit: b51a1db58883aa963c461d34356aa86ac18d94b7
+default_lang_commit: 8013aa5f0aae284fa343311981625be6dbb25e5b
 drifted_from_default: true
 ---
 
@@ -125,7 +125,7 @@ _図 2. GitHub を利用した PR の公開手順。_
 
 1. **File changed**タブに移動してください。
 1. プルリクエストによって変更されたファイルのいずれかで、鉛筆（編集）アイコンを選択します。
-1. 求めら得た変更を加えください。 コードの提案があれば、適用してください。
+1. 求められた変更を加えください。 コードの提案があれば、適用してください。
 1. 変更をコミットしてください。
 
 レビューが完了したら、レビュアーは PR をマージして変更が数分後に反映されます。
@@ -138,24 +138,32 @@ PR を提出した後に、GitHub はいくつかのビルドチェックを実�
 以下のコメントを PR に追加してください。
 
 ```text
-/fix:all
+/fix
 ```
 
 これは、OpenTelemetry bot がビルドの問題を修正しようとします。
+bot は修正コマンドへのリンクを含む進捗コメントで応答し、結果が出るとそのコメントを更新します。
+つまり、発行した各修正コマンドごとに bot のコメントが作成されます。
 もしくは、特定の失敗に対処するために、次の修正コマンドから適切なものを実行してもよいでしょう。
 
 ```text
-fix:dict
-fix:expired
-fix:filenames
-fix:format
-fix:htmltest-config
-fix:i18n
-fix:markdown
-fix:refcache
-fix:submodule
-fix:text
+/fix:code-excerpts
+/fix:dict
+/fix:expired
+/fix:filenames
+/fix:format
+/fix:i18n
+/fix:l10n
+/fix:markdown
+/fix:refcache
+/fix:submodule
+/fix:text
 ```
+
+修正コマンドはコメントの最初の行に記述する必要があります。
+その後の行に説明文を追加できます。
+別の修正コマンドが実行中に新しい修正コマンドを発行すると、実行中のものがキャンセルされ、最新のコマンドが優先されます。
+可能な場合、キャンセルされた実行の bot コメントはキャンセルされた旨を示すように更新されます。
 
 > [!TIP] Pro tip
 >
@@ -405,8 +413,8 @@ PR がマージされる前に、レビューと編集を数回繰り返すこ�
 このプロセスをできるだけ簡単にするために、以下のガイドラインに従ってください。
 
 - もしあなたの PR が簡単な修正でない場合は、**フォークから作業**してください。 リポジトリの上部にある [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) ボタンをクリックし、フォークをローカルにクローンしてください。準備ができたら、アップストリームリポジトリに PR を作成してください。
-- あたなたのフォークの **`main` ブランチから作業をせずに**、PR 専用のブランチを作成してください。
-- メンテナーが[あなたのプルリクエストに変更を加えられること](https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)を確認してください。
+- あなたのフォークの **`main` ブランチから作業をせずに**、PR 専用のブランチを作成してください。
+- メンテナーが[あなたのプルリクエストに変更を加えられること](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)を確認してください。
 
 ### レビュアーからの変更 {#changes-from-reviewers}
 

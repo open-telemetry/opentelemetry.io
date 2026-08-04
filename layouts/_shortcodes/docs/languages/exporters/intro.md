@@ -37,7 +37,7 @@ it up from the language section index file.
 
 {{ $name := "" -}}
 {{ if $lang -}}
-  {{ $name = (index $.Site.Data.instrumentation $lang).name -}}
+  {{ $name = (index hugo.Data.instrumentation $lang).name -}}
   {{ if not $name -}}
     {{ warnf "No name for language '%s' in `instrumentation` data file." $lang -}}
   {{ end -}}

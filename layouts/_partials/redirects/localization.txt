@@ -1,4 +1,4 @@
-{{/* Generate Netlify redirect rules for non-default .Site.Sites */ -}}
+{{/* Generate Netlify redirect rules for non-default hugo.Sites */ -}}
 {{/* cSpell:ignore cond */ -}}
 
 {{/*
@@ -9,9 +9,9 @@
   wildcard. */ -}}
 
 {{ $defaultLang := "" -}}
-{{ with .Site.Sites.Default -}}
+{{ with hugo.Sites.Default -}}
   {{ if eq .LanguagePrefix "" -}}
-    {{ with .Language.Lang -}}
+    {{ with .Language.Name -}}
       {{ $defaultLang = . -}}
       /{{ . }}    /
       /{{ . }}/*  /:splat
@@ -21,9 +21,9 @@
 
 {{/* Add redirect rules for non-default languages. */ -}}
 
-{{ range .Sites -}}
+{{ range hugo.Sites -}}
 
-  {{ $siteLang := .Language.Lang -}}
+  {{ $siteLang := .Language.Name -}}
 
   {{ if eq $defaultLang $siteLang }}{{ continue }}{{ end -}}
 

@@ -9,6 +9,7 @@ Start at [content/en/site/][]. Useful subsections:
 - [Build][] — npm scripts, workflows, patches, localization
 - [Testing][]
 - [Design][]
+- [Implementation][] — Hugo template and code-level style conventions
 - [Skills][]
 
 The **Docsy** theme is a git submodule. For theme-specific agent notes, see
@@ -21,4 +22,5 @@ Repo-wide contribution context: [CONTRIBUTING.md](CONTRIBUTING.md),
 [Build]: content/en/site/build/_index.md
 [Testing]: content/en/site/testing/_index.md
 [Design]: content/en/site/design/_index.md
+[Implementation]: content/en/site/implementation/_index.md
 [Skills]: content/en/site/skills/_index.md
