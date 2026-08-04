@@ -1,11 +1,13 @@
 ---
 title: Upgrade to OpenTelemetry JS SDK 2.x
-linkTitle: JavaScript SDK 2.x
+linkTitle: Migration
 description:
   Migrate JavaScript applications and libraries from OpenTelemetry JS SDK 1.x to
   2.x
-aliases: [/docs/migration/opentelemetry-js-sdk-2/]
-weight: 300
+aliases:
+  - /docs/compatibility/migration/opentelemetry-js-sdk-2/
+  - /docs/migration/opentelemetry-js-sdk-2/
+weight: 110
 ---
 
 In late February 2025, the OpenTelemetry JavaScript project released the first
