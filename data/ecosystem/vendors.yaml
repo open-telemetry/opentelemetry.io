@@ -155,6 +155,12 @@
   contact:
   oss: false
   commercial: true
+- name: Dartastic.io
+  nativeOTLP: true
+  url: https://dartastic.io/help
+  contact: michael@mindfulsoftware.com
+  oss: false
+  commercial: true
 - name: Datadog
   nativeOTLP: true
   url: https://docs.datadoghq.com/opentelemetry/
