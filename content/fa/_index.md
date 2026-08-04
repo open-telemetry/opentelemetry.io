@@ -37,12 +37,11 @@ default_lang_commit: 3aa0f7a25cd2f7878cad1665e67937c5e9c70694
 {{% homepage/intro-section image="/img/homepage/collector-pipeline.svg" imageAlt="نمای کلی OpenTelemetry" %}}
 
 **OpenTelemetry** یک چارچوب مشاهده پذیری متن باز برای نرم افزارهای بومی ابری
-است. این چارچوب مجموعه ای یکپارچه از APIها، کتابخانه ها، عامل ها و سرویس های
-جمع آوری کننده را برای ثبت ردگیری های توزیع شده و متریک های برنامه شما فراهم
-می کند.
+است. این چارچوب مجموعه ای یکپارچه از APIها، کتابخانه ها، عامل ها و سرویس های جمع
+آوری کننده را برای ثبت ردگیری های توزیع شده و متریک های برنامه شما فراهم می کند.
 
-OpenTelemetry بر پایه سال ها تجربه پروژه های OpenTracing و OpenCensus و با
-ترکیب بهترین ایده ها و شیوه های جامعه شکل گرفته است.
+OpenTelemetry بر پایه سال ها تجربه پروژه های OpenTracing و OpenCensus و با ترکیب
+بهترین ایده ها و شیوه های جامعه شکل گرفته است.
 
 {{% /homepage/intro-section %}}
 
@@ -66,8 +65,8 @@ OpenTelemetry بر پایه سال ها تجربه پروژه های OpenTracing
       imagePosition="right" %}}
 
 ردگیری ها، متریک ها و لاگ ها را با زمینه مشترکی که در سراسر مسیر درخواست جریان
-دارد، به یکدیگر مرتبط کنید. تصویری کامل از رفتار برنامه خود در تمام اجزا و
-سرویس ها به دست آورید.
+دارد، به یکدیگر مرتبط کنید. تصویری کامل از رفتار برنامه خود در تمام اجزا و سرویس
+ها به دست آورید.
 
 {{% /homepage/main-feature %}}
 
@@ -108,9 +107,9 @@ OpenTelemetry کاملاً متن باز و مستقل از ارائه دهند�
 با بیش از ۲۰۰ مؤلفه دریافت، پردازش و صادر کند. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-observability.svg" title="انتشار زمینه" url="/docs/concepts/context-propagation/" >}}
-ردگیری ها را به طور خودکار در مرز سرویس ها به یکدیگر مرتبط کنید. زمینه
-توزیع شده در سراسر مسیر درخواست جریان می یابد و لاگ ها، متریک ها و ردگیری ها را
-در نمایی یکپارچه به هم متصل می کند. {{< /homepage/otel-feature >}}
+ردگیری ها را به طور خودکار در مرز سرویس ها به یکدیگر مرتبط کنید. زمینه توزیع شده
+در سراسر مسیر درخواست جریان می یابد و لاگ ها، متریک ها و ردگیری ها را در نمایی
+یکپارچه به هم متصل می کند. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-multi-language.svg" title="پشتیبانی از چند زبان" url="/docs/languages/" >}}
 SDKهای بومی برای بیش از ۱۲ زبان، از جمله Java، Kotlin، Python، Go، JavaScript،
@@ -124,8 +123,8 @@ OpenTelemetry را در محیط عملیاتی اجرا می کنند. CNCF و 
 
 {{< homepage/otel-feature image="/img/homepage/feature-openness.svg" title="مشخصات باز" url="/docs/specs/status/" >}}
 این پروژه بر مشخصات باز و مستقل از ارائه دهنده برای APIها، SDKها و پروتکل انتقال
-داده (OTLP) بنا شده است. حاکمیت شفاف زیر نظر CNCF، پایداری بلندمدت و تکامل
-جامعه محور پروژه را تضمین می کند. {{< /homepage/otel-feature >}}
+داده (OTLP) بنا شده است. حاکمیت شفاف زیر نظر CNCF، پایداری بلندمدت و تکامل جامعه
+محور پروژه را تضمین می کند. {{< /homepage/otel-feature >}}
 
 {{< /homepage/otel-features >}}
 
