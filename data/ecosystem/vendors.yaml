@@ -157,8 +157,8 @@
   commercial: true
 - name: Dartastic.io
   nativeOTLP: true
-  url: https://dartastic.io/help
-  contact: michael@mindfulsoftware.com
+  url: https://dartastic.io/
+  contact: support@dartastic.io
   oss: false
   commercial: true
 - name: Datadog
