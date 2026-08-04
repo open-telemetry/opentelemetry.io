@@ -106,7 +106,7 @@ The OpenTelemetry exporter ignores explicit boundaries when
 For Prometheus, you enable
 [native histograms](https://prometheus.io/docs/concepts/metric_types/#histogram)
 by
-[enabling the `native-histograms` feature in your Prometheus collector](https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms).
+[enabling the `native-histograms` feature in your Prometheus collector](https://web.archive.org/web/20250102120553/https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms).
 
 For OpenTelemetry, you can use
 [exponential histograms](/docs/specs/otel/metrics/data-model/#exponentialhistogram)
