@@ -2,7 +2,8 @@
 title: 'Metric cardinality limits in OpenTelemetry: a practical guide'
 linkTitle: Metric cardinality limits
 date: 2026-08-05
-author: [Cijo Thomas](https://github.com/cijothomas) (Microsoft)
+author: >-
+  [Cijo Thomas](https://github.com/cijothomas) (Microsoft)
 issue: 9943
 sig: Metrics
 # canonical_url: https://...   # add if cross-posted from another blog
