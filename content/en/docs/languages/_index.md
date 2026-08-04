@@ -56,4 +56,3 @@ references are available:
 [zero-code]: /docs/platforms/kubernetes/operator/automatic/
 [instrumentation]: /docs/concepts/instrumentation/
 [otel-op]: /docs/platforms/kubernetes/operator/
-[status]: /docs/specs/otel/versioning-and-stability/ 
