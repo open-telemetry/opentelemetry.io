@@ -3,12 +3,11 @@ title: What can you do with OpenTelemetry entity events?
 linkTitle: Consuming entity events
 date: 2026-06-15
 author: >-
-  [Matthieu Noirbusson](https://github.com/MatthieuNoirbusson) (Sensor
-  Factory)
+  [Matthieu Noirbusson](https://github.com/MatthieuNoirbusson) (Sensor Factory)
 issue: 10115
-sig: "Specification: Entities" # verified against open-telemetry/community SIG list
+sig: 'Specification: Entities' # verified against open-telemetry/community SIG list
 draft: true
-# cSpell:ignore Noirbusson bitemporal semconv kvlist
+# cSpell:ignore Noirbusson bitemporal semconv kvlist upserts
 ---
 
 Metrics, logs, and traces tell you how your systems _behave_. They are much
@@ -18,17 +17,16 @@ changed over the last hour, day, or quarter. That living inventory has stayed a
 blind spot in the open observability stack.
 
 OpenTelemetry's **entity events**, coming out of the Entities SIG and described
-in the
-[Entity Data Model](/docs/specs/otel/entities/data-model/), are the piece that
-starts to close it. Entity events are a _stream_. The interesting question is
-**"what do I do once they arrive?"** This post walks through one answer, using
-an open source consumer as a worked example.
+in the [Entity Data Model](/docs/specs/otel/entities/data-model/), are the piece
+that starts to close it. Entity events are a _stream_. The interesting question
+is **"what do I do once they arrive?"** This post walks through one answer,
+using an open source consumer as a worked example.
 
 > **Note:** The entity data model and its conventions are still **in
 > development** (not yet stable) and evolving — treat the exact attribute names
 > below as illustrative and check them against the current spec. Everything here
-> is about the general shape of consuming entity events; the lessons apply to any
-> consumer.
+> is about the general shape of consuming entity events; the lessons apply to
+> any consumer.
 
 ## A 60-second primer on entity events
 
@@ -60,12 +58,13 @@ The rest of this post is the four steps in that pipeline.
 ## Step 1 — Don't store state, store the stream
 
 The instinct is to keep a table of "current entities" and update rows in place.
-That throws away exactly what makes infrastructure hard: **time**. The moment you
-overwrite `web-server-1`'s address, you lose the fact that it changed and when.
+That throws away exactly what makes infrastructure hard: **time**. The moment
+you overwrite `web-server-1`'s address, you lose the fact that it changed and
+when.
 
 A better default is **event sourcing**: append every entity event to a durable,
-ordered log and treat that log as the system of record. The current graph is then
-a _projection_ — replay the log into an in-memory model of entities and
+ordered log and treat that log as the system of record. The current graph is
+then a _projection_ — replay the log into an in-memory model of entities and
 relationships. Rebuilding the whole graph from scratch is just a replay.
 
 The payoff: current state is one read away, and **history is never lost**.
@@ -90,25 +89,25 @@ bi-temporality from day one is far cheaper than retrofitting it.
 
 ## Step 3 — Give entities an immutable identity
 
-OpenTelemetry treats an entity's **Id as immutable**, and that turns out to be
+OpenTelemetry treats an entity's **ID as immutable**, and that turns out to be
 the right discipline for a graph that wants to be a source of truth. Match
-identity **exactly**: an observation is either a known entity (same Id) or a
+identity **exactly**: an observation is either a known entity (same ID) or a
 different one.
 
 The trap is putting a value that _changes_ into the identity. If a host's
-identity includes its current leased IP, a DHCP renewal forks it into a brand-new
-entity. Pick attributes that stay stable for the entity's lifetime, and let
-everything that legitimately changes — current address, resource usage, last-seen
-state — be a _descriptive_ attribute. Then a re-address is an attribute update on
-the _same_ entity, and a genuine identity change is correctly a _new_ entity
-rather than a silent merge of two different things.
+identity includes its current leased IP, a DHCP renewal forks it into a
+brand-new entity. Pick attributes that stay stable for the entity's lifetime,
+and let everything that legitimately changes — current address, resource usage,
+last-seen state — be a _descriptive_ attribute. Then a re-address is an
+attribute update on the _same_ entity, and a genuine identity change is
+correctly a _new_ entity rather than a silent merge of two different things.
 
 When a single value is reused over time, the fix isn't to drop it but to pair it
 with a discriminator. OpenTelemetry's
-[`process` entity](https://opentelemetry.io/docs/specs/semconv/registry/entities/process/#process)
-is a good model: a PID can be recycled, so a process is identified by
-`process.pid` **and** `process.creation.time` together — stable for that
-process's lifetime — while its changing facts stay descriptive.
+[`process` entity](/docs/specs/semconv/registry/entities/process/#process) is a
+good model: a PID can be recycled, so a process is identified by `process.pid`
+**and** `process.creation.time` together — stable for that process's lifetime —
+while its changing facts stay descriptive.
 
 This is worth getting right early: a "tolerant" match that treats an observation
 differing by one identifying value as the same entity quietly merges distinct
@@ -148,14 +147,14 @@ _depends on_ that database," "this process _runs on_ that host." When this post
 was first drafted, relationships were still future work; since then the
 entity-events specification has **shipped in the v1.58.0 spec release**
 (2026-06-22) and models them directly — see
-[Entity events](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/entities/entity-events.md)
+[Entity events](/docs/specs/otel/entities/entity-events/)
 ([opentelemetry-specification#4836](https://github.com/open-telemetry/opentelemetry-specification/pull/4836)).
 
 Relationships are **embedded in an entity's state event** as an
-`entity.relationships` array. Each descriptor names a relationship `type` and the
-target entity (its `entity.type` and `entity.id`); direction is
-`source --[type]--> target`, and the types are an open enumeration (`depends_on`,
-`contains`, …):
+`entity.relationships` array. Each descriptor names a relationship `type` and
+the target entity (its `entity.type` and `entity.id`); direction is
+`source --[type]--> target`, and the types are an open enumeration
+(`depends_on`, `contains`, …):
 
 ```text
 # Relationships ride inside an entity-state event (spec #4836, shipped in v1.58.0)
@@ -170,56 +169,56 @@ LogRecord
         entity.id:   { service.instance.id: payments-1 }
 ```
 
-The edges travel with the entity that owns them, not as separate events: removing
-a relationship is just the source re-emitting its state without that descriptor. A
-consumer building a temporal graph reads each state event, upserts the entity, and
-reconciles its outgoing edges — gaining and losing relationships as the array
-changes over time, which slots into the same change taxonomy as attribute updates.
+The edges travel with the entity that owns them, not as separate events:
+removing a relationship is just the source re-emitting its state without that
+descriptor. A consumer building a temporal graph reads each state event, upserts
+the entity, and reconciles its outgoing edges — gaining and losing relationships
+as the array changes over time, which slots into the same change taxonomy as
+attribute updates.
 
 ## Why a graph: it joins your other signals
 
 The point of all this isn't a standalone inventory — it's leverage on the
 telemetry you already have. OpenTelemetry carries entities on the
-[**Resource**](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/data-model.md),
-so the same entities you're tracking are already attached to your metrics, logs,
-and traces. The inventory and topology graph becomes the **join key** across
-them:
+[**Resource**](/docs/specs/otel/resource/data-model/), so the same entities
+you're tracking are already attached to your metrics, logs, and traces. The
+inventory and topology graph becomes the **join key** across them:
 
 - **Scope, not scrape.** Use the graph to decide _which_ signals to pull — the
-  entities and the slice of topology you actually care about — instead of querying
-  blindly.
-- **Correlate by entity.** Tie a metric spike, a log line, and a trace to the same
-  host, process, or service because they share an entity identity, not because you
-  hand-matched labels.
+  entities and the slice of topology you actually care about — instead of
+  querying blindly.
+- **Correlate by entity.** Tie a metric spike, a log line, and a trace to the
+  same host, process, or service because they share an entity identity, not
+  because you hand-matched labels.
 - **Follow the edges.** Relationships (`depends_on`, `runs_on`) turn correlation
-  into blast-radius reasoning: when `db-07` degrades, the graph points you at the
-  upstream services whose traces and metrics to look at first.
+  into blast-radius reasoning: when `db-07` degrades, the graph points you at
+  the upstream services whose traces and metrics to look at first.
 
 A live, time-aware graph of what exists and how it connects is what lets you ask
-those questions of the rest of your observability data — and answer them as of any
-point in time.
+those questions of the rest of your observability data — and answer them as of
+any point in time.
 
 ## Keep the producer side generic
 
 A consumer should ingest from **any** OpenTelemetry producer and speak the
-standard, not a proprietary protocol — it runs no collectors of its own and polls
-no devices directly. Emitting entity events from hosts, network gear, or cloud
-APIs is the producers' job. Keeping the producer side generic is what keeps the
-ecosystem open.
+standard, not a proprietary protocol — it runs no collectors of its own and
+polls no devices directly. Emitting entity events from hosts, network gear, or
+cloud APIs is the producers' job. Keeping the producer side generic is what
+keeps the ecosystem open.
 
 ## A few operational notes
 
 A consumer that wants to be a source of truth has to face some realities:
 
-- **Clock skew.** Event time comes from producers, whose clocks drift relative to
-  each other. Don't assume a single global order across producers; reason on
+- **Clock skew.** Event time comes from producers, whose clocks drift relative
+  to each other. Don't assume a single global order across producers; reason on
   per-entity timelines, and keep your own recorded time as the tiebreaker for
   "what did we know, and when."
 - **Volume and heartbeats.** Producers re-assert entities periodically, so most
-  events say "nothing changed." Coalesce consecutive unchanged observations (keep
-  the first and last of a run) so steady-state traffic doesn't balloon the log —
-  while keeping structural changes, like a relationship appearing or disappearing,
-  verbatim.
+  events say "nothing changed." Coalesce consecutive unchanged observations
+  (keep the first and last of a run) so steady-state traffic doesn't balloon the
+  log — while keeping structural changes, like a relationship appearing or
+  disappearing, verbatim.
 - **Silent merges.** The flip side of exact identity: if two distinct entities
   accidentally share an identifying key, they collapse into one. Treat identity
   keys as a contract with producers, and prefer failing loudly — a rejected or
@@ -230,7 +229,7 @@ A consumer that wants to be a source of truth has to face some realities:
 - Entity events turn "what exists and how it connects" into first-class
   OpenTelemetry data.
 - Consume them as an **event-sourced, bi-temporal** stream, not a mutable table.
-- Treat the entity **Id as immutable** and match it exactly — put volatile facts
+- Treat the entity **ID as immutable** and match it exactly — put volatile facts
   in descriptive attributes so history survives change.
 - Expose the graph for both humans (GraphQL) and assistants (MCP); the
   natural-language query story is a strong reason to care.
@@ -242,9 +241,9 @@ A consumer that wants to be a source of truth has to face some realities:
 ## Get involved
 
 - Read the [Entity Data Model](/docs/specs/otel/entities/data-model/) and
-  [OTEP 0256](https://github.com/open-telemetry/oteps/blob/main/text/entities/0256-entities-data-model.md),
-  then join the conversation in the OpenTelemetry **Entities SIG** and **Semantic
-  Conventions** — the entity-events and relationships work shipped in v1.58.0
-  and is still moving (identity scope and more are in flight).
+  [OTEP 0256](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.58.0/oteps/entities/0256-entities-data-model.md),
+  then join the conversation in the OpenTelemetry **Entities SIG** and
+  **Semantic Conventions** — the entity-events and relationships work shipped in
+  v1.58.0 and is still moving (identity scope and more are in flight).
 
 _Thanks to the Entities SIG for the spec work this builds on._
