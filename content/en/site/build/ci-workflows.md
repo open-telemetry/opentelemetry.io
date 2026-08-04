@@ -246,6 +246,8 @@ scripts by commenting on a PR:
 - **`/fix:all`** is mapped to `/fix` since the command semantics changed
   ([#9291][]).
 - **`/fix:ALL`** is mapped to `fix:all` so that maintainers can run `fix:all`.
+- **`/fix:refcache`** (deprecated) still runs, via the `fix:refcache` compat
+  alias; the outcome comment points to `/fix:link-cache`.
 
 The directive must be the first line of the comment; any following lines are
 ignored, so you can add an explanation after it. The workflow itself triggers on
@@ -341,8 +343,8 @@ It runs as a three-stage pipeline:
 > The [`refcache-refresh.yml`][] workflow also runs daily and touches
 > `.lycheecache`, so the two bot PRs can conflict depending on merge order.
 > Conflicts self-heal, since both branches sync from `main` on each run.
-> Migrating refcache-refresh onto the reusable patch actions — eliminating such
-> conflicts by construction — is tracked in the [project plan][].
+> Migrating `refcache-refresh` onto the reusable patch actions — eliminating
+> such conflicts by construction — is tracked in the [project plan][].
 
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 [housekeeping]:

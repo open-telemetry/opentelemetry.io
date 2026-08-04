@@ -1,0 +1,19 @@
+title: opentelemetry-semantic_conventions
+registryType: semantic-convention
+language: ruby
+tags:
+  - semantic-convention
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-semantic_conventions/v1.43.0/semantic_conventions
+  docs: https://rubydoc.info/gems/opentelemetry-semantic_conventions/1.43.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby
+license: Apache-2.0
+description: Semantic Convention definitions for OpenTelemetry
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09
+package:
+  registry: gems
+  name: opentelemetry-semantic_conventions
+  version: 1.43.0
