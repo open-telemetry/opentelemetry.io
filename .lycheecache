@@ -970,6 +970,7 @@ https://github.com/Mandark-droid,206,1784442962
 https://github.com/Mandark-droid/genai_otel_instrument,206,1784442961
 https://github.com/MassTransit,206,1784442915
 https://github.com/MassTransit/MassTransit,206,1784442915
+https://github.com/MatthieuNoirbusson,200,1785856175
 https://github.com/MetinSeylan/Nestjs-OpenTelemetry,200,1784960545
 https://github.com/MikeGoldsmith,200,1785134693
 https://github.com/MindfulSoftwareLLC/dartastic_opentelemetry,206,1784355821
@@ -3647,6 +3648,7 @@ https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/oteps
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/spec-compliance-matrix.md,206,1784355813
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.55.0/oteps/0232-maturity-of-otel.md#alpha,200,1785134690
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.58.0/oteps/0232-maturity-of-otel.md,200,1785739373
+https://github.com/open-telemetry/opentelemetry-specification/blob/v1.58.0/oteps/entities/0256-entities-data-model.md,200,1785856176
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.58.0/spec-compliance-matrix.md#logs,200,1785785939
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.58.0/specification/common/README.md#attribute,200,1785739374
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.58.0/specification/compatibility/prometheus_and_openmetrics.md,200,1785739373
@@ -3684,6 +3686,7 @@ https://github.com/open-telemetry/opentelemetry-specification/pull/1938,200,1784
 https://github.com/open-telemetry/opentelemetry-specification/pull/4715,206,1784355603
 https://github.com/open-telemetry/opentelemetry-specification/pull/4719,200,1785134696
 https://github.com/open-telemetry/opentelemetry-specification/pull/4738,206,1784355821
+https://github.com/open-telemetry/opentelemetry-specification/pull/4836,200,1785856177
 https://github.com/open-telemetry/opentelemetry-specification/pull/4855,200,1785134695
 https://github.com/open-telemetry/opentelemetry-specification/pull/4938,206,1784355601
 https://github.com/open-telemetry/opentelemetry-specification/pull/4947,200,1785134695
