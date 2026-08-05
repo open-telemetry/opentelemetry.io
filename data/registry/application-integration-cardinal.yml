@@ -1,0 +1,23 @@
+# cSpell:ignore cardinalhq
+title: Cardinal
+registryType: application integration
+language: collector
+tags:
+  - cardinal
+  - observability
+  - backend
+license: proprietary
+description:
+  Cardinal is an observability backend that natively ingests OpenTelemetry
+  logs, metrics, and traces. Data lands in your own S3-compatible object
+  store as Apache Parquet and is queryable through the Cardinal Grafana
+  app. Cardinal also ships an OpenTelemetry Collector distribution with
+  processors that reduce cardinality and cost before egress.
+authors:
+  - name: CardinalHQ, Inc.
+    url: https://github.com/cardinalhq
+urls:
+  website: https://cardinalhq.io
+  docs: https://docs.cardinalhq.io
+createdAt: '2026-08-05'
+isNative: true
