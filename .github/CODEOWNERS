@@ -44,7 +44,6 @@
 /Makefile                       @open-telemetry/docs-maintainers
 /netlify/**                     @open-telemetry/docs-maintainers
 /netlify.toml                   @open-telemetry/docs-maintainers
-**/package-lock.json            @open-telemetry/docs-maintainers
 /prh/**                         @open-telemetry/docs-maintainers
 /scripts/**                     @open-telemetry/docs-maintainers
 /tests/**                       @open-telemetry/docs-maintainers
@@ -111,3 +110,7 @@
 /content/zh/      @open-telemetry/docs-zh-approvers @open-telemetry/docs-approvers
 
 # END locale-owners
+
+# Last match wins: this rule follows the locale section so that lock files are
+# maintainer-owned at any depth, including under content/.
+**/package-lock.json @open-telemetry/docs-maintainers
