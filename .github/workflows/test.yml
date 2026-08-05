@@ -27,7 +27,8 @@ jobs:
 
       - run: npm ci --ignore-scripts --omit=optional
 
-      # code-excerpter needs submodules
+      # code-excerpter needs submodules; no prepare:ci, since the compound
+      # tests build no site (Hugo binary and Docsy prep unused)
       - run: npm run get:submodule
 
       - run: npm run test:compound-tests

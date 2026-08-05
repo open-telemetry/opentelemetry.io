@@ -16,8 +16,10 @@ running `npm ci --ignore-scripts --omit=optional`: every job gets the same
 locked dependency graph, no lifecycle scripts run, and the install fails if
 `package.json` and the lock file are out of sync. Jobs that build the site
 follow the install with `npm run prepare:ci`, which explicitly runs the setup
-that the inert install skips. For details, see [npm scripts](../npm-scripts/).
-The devcontainer uses the same install contract.
+that the inert install skips (the only lifecycle script it re-enables is
+`hugo-extended`'s pinned-binary fetch). For details, see
+[npm scripts](../npm-scripts/). The devcontainer uses the same install
+contract.
 
 ## PR approval labels {#pr-approval-labels}
 
