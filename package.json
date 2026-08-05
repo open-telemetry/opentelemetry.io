@@ -1,8 +1,5 @@
 {
   "name": "opentelemetry.io",
-  "Notes": [
-    "The 'all' runs _all_ named scripts in sequence, even if one fails; and exits with failure in that case."
-  ],
   "scripts": {
     "__check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve",
     "__check:format": "./scripts/npx-helper.sh prettier --ignore-unknown",
