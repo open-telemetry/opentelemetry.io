@@ -29,7 +29,7 @@
     "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 999}",
     "_hugo": "hugo --cleanDestinationDir",
     "_install:cspell": "npm install -D $(npm run -s _list:cspell)",
-    "_install:netlify-cli": "npm list netlify-cli || npm install -O netlify-cli",
+    "_install:netlify-cli": "npm list netlify-cli || (echo '[help] netlify-cli is not installed (it is an optional dependency). Run: npm ci --ignore-scripts && npm run prepare:ci'; exit 1)",
     "_list:check:*": "npm run --loglevel=warn | grep -Ee '^\\s*check:[^:]+$' | grep -Ev \"check:all|${CMD_SKIP:-noop}\"",
     "_list:check:for-test-and-fix": "npm -s run _list:check:* | grep -Ev \"collector-sync|i18n\"",
     "_list:cspell": "jq -r '.devDependencies | keys[] | select(. == \"cspell\" or startswith(\"@cspell/\"))' package.json | xargs",
@@ -167,7 +167,7 @@
     "test": "CMD_SKIP=collector-sync npm run test:base",
     "update:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
     "update:packages:no-hugo": "npm run update:packages -- -x hugo-extended",
-    "update:packages": "npx npm-check-updates --dep 'prod,dev,optional,peer' -u",
+    "update:packages": "npm exec --no -- npm-check-updates --dep 'prod,dev,optional,peer' -u",
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 999} && git submodule foreach 'git fetch $(git remote | tail -1) --tags'",
     "zzz": "echo 'bogus script used to help keep the script collection sorted'"
   },
