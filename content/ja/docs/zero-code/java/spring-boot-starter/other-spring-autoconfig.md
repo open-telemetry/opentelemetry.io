@@ -2,6 +2,7 @@
 title: その他のSpring自動設定
 weight: 70
 default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
+drifted_from_default: true
 cSpell:ignore: autoconfigurations
 ---
 
