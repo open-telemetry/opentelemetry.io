@@ -18,7 +18,8 @@ locked dependency graph, no lifecycle scripts run, and the install fails if
 follow the install with `npm run prepare:ci`, which explicitly runs the setup
 that the inert install skips (the only lifecycle script it re-enables is
 `hugo-extended`'s pinned-binary fetch). For details, see
-[npm scripts](../npm-scripts/). The devcontainer uses the same install contract.
+[npm scripts](../npm-scripts/). The devcontainer uses the same install contract,
+but keeps optional dependencies: they carry local tools such as `netlify-cli`.
 
 ## PR approval labels {#pr-approval-labels}
 

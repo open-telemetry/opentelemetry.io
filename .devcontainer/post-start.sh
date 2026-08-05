@@ -1,5 +1,6 @@
 #!/bin/bash
 
 nvm install
-npm ci --ignore-scripts --omit=optional
+# Unlike CI, keep optional deps: they carry local tools such as netlify-cli.
+npm ci --ignore-scripts
 npm run prepare:ci
