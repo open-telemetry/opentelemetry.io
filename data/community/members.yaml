@@ -1296,6 +1296,12 @@ maintainers:
       - javascript-triagers
     html_url: https://github.com/pichlermarc
     avatar_url: https://avatars.githubusercontent.com/u/22105064?v=4
+  - name: ps48
+    teams:
+      - demo-approvers
+      - demo-maintainers
+    html_url: https://github.com/ps48
+    avatar_url: https://avatars.githubusercontent.com/u/4348487?v=4
   - name: rafaelroquetto
     teams:
       - ebpf-instrumentation-approvers
@@ -2076,11 +2082,6 @@ approvers:
       - kotlin-triagers
     html_url: https://github.com/priettt
     avatar_url: https://avatars.githubusercontent.com/u/26326883?v=4
-  - name: ps48
-    teams:
-      - demo-approvers
-    html_url: https://github.com/ps48
-    avatar_url: https://avatars.githubusercontent.com/u/4348487?v=4
   - name: psx95
     teams:
       - java-approvers
@@ -2319,6 +2320,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/henrinormak
     avatar_url: https://avatars.githubusercontent.com/u/1248491?v=4
+  - name: inetand
+    teams:
+      - kotlin-triagers
+    html_url: https://github.com/inetand
+    avatar_url: https://avatars.githubusercontent.com/u/11909986?v=4
   - name: jamesmoessis
     teams:
       - collector-contrib-triagers
@@ -2704,6 +2710,9 @@ members:
   - name: james-bebbington
     html_url: https://github.com/james-bebbington
     avatar_url: https://avatars.githubusercontent.com/u/568630?v=4
+  - name: jan-xyz
+    html_url: https://github.com/jan-xyz
+    avatar_url: https://avatars.githubusercontent.com/u/5249233?v=4
   - name: JasonXZLiu
     html_url: https://github.com/JasonXZLiu
     avatar_url: https://avatars.githubusercontent.com/u/22501142?v=4
@@ -2830,6 +2839,9 @@ members:
   - name: melbgirl
     html_url: https://github.com/melbgirl
     avatar_url: https://avatars.githubusercontent.com/u/50597305?v=4
+  - name: meldegwi
+    html_url: https://github.com/meldegwi
+    avatar_url: https://avatars.githubusercontent.com/u/148949668?v=4
   - name: mhausenblas
     html_url: https://github.com/mhausenblas
     avatar_url: https://avatars.githubusercontent.com/u/52594?v=4
