@@ -81,6 +81,16 @@ Your development environment will be initialized via the
     npm install
     ```
 
+    The install uses the dependency versions pinned in the committed
+    `package-lock.json`. If you change dependencies in `package.json`,
+    regenerate the lock file and commit both files:
+
+    ```sh
+    npm install --package-lock-only --ignore-scripts
+    ```
+
+    Broader lock-file maintenance is handled by site maintainers and approvers.
+
 Launch your favorite IDE. {{% param what-next %}}
 
 ### Build

@@ -1,4 +1,4 @@
 #!/bin/bash
 
 nvm install
-npm install
+npm ci

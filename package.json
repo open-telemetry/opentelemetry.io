@@ -141,6 +141,7 @@
     "prefix:collector-sync:lint": "npm run -s _check:uv",
     "prefix:submodule": "npm run update:submodule",
     "prepare": "npm run seq -- get:submodule _prepare:docsy",
+    "prepare:ci": "npm rebuild hugo-extended && npm run prepare",
     "preserve:hugo": "npm run _prebuild",
     "preserve:netlify": "npm run seq -- _prebuild _install:netlify-cli",
     "schemas:update": "npm run update:submodule -- content-modules/opentelemetry-specification",
@@ -226,7 +227,6 @@
   "engines": {
     "node": ">=24"
   },
-  "gitHubActionCacheKey": "2023-07-13 - change this key to force cache refresh",
   "private": true,
   "prettier": {
     "proseWrap": "always",

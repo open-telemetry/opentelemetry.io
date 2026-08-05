@@ -1,5 +1,4 @@
 name: Dev build
-# cSpell:ignore minisearch
 
 on:
   workflow_dispatch:
@@ -23,23 +22,13 @@ jobs:
           # Full history: fix:link-cache needs the drift-status baseline commit
           fetch-depth: 0
 
-      - name: Create NPM cache-hash input file
-        run: |
-          mkdir -p tmp
-          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
-
-      - name: Create and use reduced-dependencies package.json
-        run: |
-          jq '.dependencies |= {minisearch: .minisearch} | del(.optionalDependencies)' package.json > tmp/package-min.json
-          cp tmp/package-min.json package.json
-
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
           cache: npm
-          cache-dependency-path: tmp/package-ci.json
 
-      - run: npm install --omit=optional
+      - run: npm ci --ignore-scripts --omit=optional
+      - run: npm run prepare:ci
 
       - uses: ./.github/actions/install-lychee
 
@@ -57,7 +46,6 @@ jobs:
           include-hidden-files: true # for .lycheecache
           path: |
             tmp/build-log.txt
-            tmp/package*.json
             .lycheecache
 
   check-link-cache:

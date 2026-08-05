@@ -135,6 +135,7 @@ are internal helpers and are not intended to be run directly.
 | `all`                          | Run all given scripts, then exit with failure if any failed.                              |
 | `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                             |
 | `prepare`                      | Install step: `get:submodule`, then Docsy theme `postinstall`.                            |
+| `prepare:ci`                   | Post-`npm ci --ignore-scripts` setup: fetch the pinned Hugo binary, then `prepare`.       |
 | `prebuild:*`                   | Pre-`build*` hooks; each runs `_prebuild`.                                                |
 | `update:hugo`                  | Install latest hugo-extended.                                                             |
 | `update:packages`              | Run npm-check-updates to bump deps.                                                       |
