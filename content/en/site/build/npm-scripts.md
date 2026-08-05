@@ -131,17 +131,18 @@ are internal helpers and are not intended to be run directly.
 
 | Script                         | Description                                                                               |
 | ------------------------------ | ----------------------------------------------------------------------------------------- |
-| `seq`                          | Run given script names in sequence; exit on first failure.                                |
 | `all`                          | Run all given scripts, then exit with failure if any failed.                              |
-| `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                             |
-| `prepare`                      | Install step: `get:submodule`, then Docsy theme `postinstall`.                            |
 | `ci:min`                       | Lock-exact inert install: `npm ci --ignore-scripts --omit=optional`.                      |
 | `ci:prepare`                   | Post-`ci:min` setup: fetch the pinned Hugo binary, then `prepare`.                        |
+| `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter.           |
 | `install:safe`                 | Lock-exact inert install keeping optional deps, then `ci:prepare`.                        |
+| `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                             |
+| `log:build`, `log:check:links` | Run the corresponding script, tee output to `tmp/`, and propagate the script's exit code. |
 | `prebuild:*`                   | Pre-`build*` hooks; each runs `_prebuild`.                                                |
+| `prepare`                      | Install step: `get:submodule`, then Docsy theme `postinstall`.                            |
+| `seq`                          | Run given script names in sequence; exit on first failure.                                |
 | `update:hugo`                  | Install latest hugo-extended.                                                             |
 | `update:packages`              | Run npm-check-updates to bump deps.                                                       |
-| `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter.           |
 | `log:build`, `log:check:links` | Run the corresponding script, tee output to `tmp/`, and propagate the script's exit code. |
 
 ## Notes
