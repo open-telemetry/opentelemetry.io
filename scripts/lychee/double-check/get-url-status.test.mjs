@@ -9,6 +9,7 @@ import {
   isHttp2XX,
   isStatusNotFound,
   npmPackageNameFromUrl,
+  parseGitHubLineRef,
 } from './get-url-status.mjs';
 
 suite('npmPackageNameFromUrl', () => {
@@ -37,6 +38,34 @@ suite('npmPackageNameFromUrl', () => {
   for (const [url, expected] of cases) {
     test(`${url} -> ${expected}`, () => {
       assert.equal(npmPackageNameFromUrl(url), expected);
+    });
+  }
+});
+
+suite('parseGitHubLineRef', () => {
+  const cases = [
+    // Valid forms: single line, ranges, column forms, mixed sides.
+    ['L5', 5],
+    ['L10-L20', 20],
+    ['L157C6-L157C20', 157],
+    ['L5C1-L10', 10],
+    ['L20-L10', 20], // reversed range: GitHub still selects it
+    // Not line references: rejected (fall through to the anchor-link check).
+    ['L0', null], // lines are 1-based
+    ['L5C0', null], // columns are 1-based
+    ['L05', null], // no leading zeros
+    ['l5', null], // GitHub fragments are uppercase L
+    ['L', null],
+    ['L5-', null],
+    ['L5C', null],
+    ['L5x', null],
+    ['readme-server-authenticators', null],
+    ['', null],
+  ];
+
+  for (const [fragment, expected] of cases) {
+    test(`${JSON.stringify(fragment)} -> ${expected}`, () => {
+      assert.equal(parseGitHubLineRef(fragment), expected);
     });
   }
 });

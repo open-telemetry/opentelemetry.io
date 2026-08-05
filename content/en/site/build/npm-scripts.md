@@ -129,17 +129,17 @@ are internal helpers and are not intended to be run directly.
 
 ## Utilities
 
-| Script                         | Description                                                                     |
-| ------------------------------ | ------------------------------------------------------------------------------- |
-| `seq`                          | Run given script names in sequence; exit on first failure.                      |
-| `all`                          | Run all given scripts, then exit with failure if any failed.                    |
-| `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                   |
-| `prepare`                      | Install step: `get:submodule`, then Docsy theme `postinstall`.                  |
-| `prebuild:*`                   | Pre-`build*` hooks; each runs `_prebuild`.                                      |
-| `update:hugo`                  | Install latest hugo-extended.                                                   |
-| `update:packages`              | Run npm-check-updates to bump deps.                                             |
-| `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter. |
-| `log:build`, `log:check:links` | Run the corresponding script and tee output to `tmp/`.                          |
+| Script                         | Description                                                                               |
+| ------------------------------ | ----------------------------------------------------------------------------------------- |
+| `seq`                          | Run given script names in sequence; exit on first failure.                                |
+| `all`                          | Run all given scripts, then exit with failure if any failed.                              |
+| `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                             |
+| `prepare`                      | Install step: `get:submodule`, then Docsy theme `postinstall`.                            |
+| `prebuild:*`                   | Pre-`build*` hooks; each runs `_prebuild`.                                                |
+| `update:hugo`                  | Install latest hugo-extended.                                                             |
+| `update:packages`              | Run npm-check-updates to bump deps.                                                       |
+| `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter.           |
+| `log:build`, `log:check:links` | Run the corresponding script, tee output to `tmp/`, and propagate the script's exit code. |
 
 ## Notes
 
