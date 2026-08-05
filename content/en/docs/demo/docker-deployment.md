@@ -236,7 +236,7 @@ with an editor.
   service:
     pipelines:
       traces:
-        exporters: [span_metrics, otlphttp/example]
+        exporters: [span_metrics, otlp_http/example]
   ```
 
 > [!NOTE]
