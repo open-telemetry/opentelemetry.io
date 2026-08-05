@@ -207,22 +207,22 @@
     "yargs": "18.1.0"
   },
   "dependencies": {
-    "@opentelemetry/api": "^1.9.1",
-    "@opentelemetry/auto-instrumentations-web": "^0.66.0",
-    "@opentelemetry/context-zone": "^2.7.0",
-    "@opentelemetry/core": "^2.7.0",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.221.0",
-    "@opentelemetry/instrumentation": "^0.221.0",
-    "@opentelemetry/resources": "^2.7.0",
-    "@opentelemetry/sdk-trace-base": "^2.7.0",
-    "@opentelemetry/sdk-trace-web": "^2.7.0",
-    "@opentelemetry/semantic-conventions": "^1.40.0",
-    "minisearch": "^7.2.0",
-    "path": "^0.12.7"
+    "@opentelemetry/api": "1.9.1",
+    "@opentelemetry/auto-instrumentations-web": "0.66.0",
+    "@opentelemetry/context-zone": "2.10.0",
+    "@opentelemetry/core": "2.10.0",
+    "@opentelemetry/exporter-trace-otlp-http": "0.221.0",
+    "@opentelemetry/instrumentation": "0.221.0",
+    "@opentelemetry/resources": "2.10.0",
+    "@opentelemetry/sdk-trace-base": "2.10.0",
+    "@opentelemetry/sdk-trace-web": "2.10.0",
+    "@opentelemetry/semantic-conventions": "1.43.0",
+    "minisearch": "7.2.0",
+    "path": "0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^27.0.0",
-    "npm-check-updates": "^23.0.0"
+    "netlify-cli": "27.1.0",
+    "npm-check-updates": "23.0.1"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
