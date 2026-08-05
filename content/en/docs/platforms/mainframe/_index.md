@@ -38,7 +38,7 @@ and the Collector.
 
 Mainframes are data servers that are designed to process billions of
 transactions daily with the highest levels of security and reliability. For a
-more detailed overview, please visit:
+more detailed overview, see 
 [What is a mainframe?](https://www.ibm.com/think/topics/mainframe) By
 “mainframe” we generally mean:
 
