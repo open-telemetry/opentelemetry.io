@@ -1,6 +1,6 @@
 #!/bin/bash
 
 nvm install
-# Unlike CI, keep optional deps: they carry local tools such as netlify-cli.
-npm ci --ignore-scripts
-npm run prepare:ci
+# install:safe rather than ci:min: unlike CI, keep optional deps, which carry
+# local tools such as netlify-cli.
+npm run install:safe

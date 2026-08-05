@@ -27,7 +27,7 @@ jobs:
           cache: npm
 
       # No prepare:ci: the version-update scripts fetch the submodules they need.
-      - run: npm ci --ignore-scripts --omit=optional
+      - run: npm run ci:min
 
       - name: Use CLA approved github bot
         run: |

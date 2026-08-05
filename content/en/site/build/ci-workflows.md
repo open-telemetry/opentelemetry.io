@@ -12,13 +12,14 @@ For workflows and (most of) their helper scripts, see the `workflow` and
 ## Dependency installation {#dependency-installation}
 
 CI jobs install npm dependencies from the committed `package-lock.json` by
-running `npm ci --ignore-scripts --omit=optional`: every job gets the same
-locked dependency graph, no lifecycle scripts run, and the install fails if
-`package.json` and the lock file are out of sync. Jobs that build the site
-follow the install with `npm run prepare:ci`, which rebuilds `hugo-extended`
-(the only dependency hook re-enabled) and then runs the repository's own
-`prepare` setup. For details, see [npm scripts](../npm-scripts/). The
-devcontainer uses the same install contract, but keeps optional dependencies:
+running `npm run ci:min` (`npm ci --ignore-scripts --omit=optional`): every job
+gets the same locked dependency graph, no lifecycle scripts run, and the
+install fails if `package.json` and the lock file are out of sync. Jobs that
+build the site follow the install with `npm run prepare:ci`, which rebuilds
+`hugo-extended` (the only dependency hook re-enabled) and then runs the
+repository's own `prepare` setup. For details, see
+[npm scripts](../npm-scripts/). The devcontainer instead uses
+`npm run install:safe`, the same contract but keeping optional dependencies:
 they carry local tools such as `netlify-cli`.
 
 ## PR approval labels {#pr-approval-labels}

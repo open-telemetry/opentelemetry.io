@@ -119,7 +119,7 @@ jobs:
           # Authenticated github.com link checks (rate limits)
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          npm ci --ignore-scripts --omit=optional
+          npm run ci:min
           npm run prepare:ci
           # Ignore link-check failures so we can still commit link-cache updates
           npm run fix:link-cache || true

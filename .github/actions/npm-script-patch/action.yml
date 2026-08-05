@@ -46,7 +46,7 @@ runs:
     # need the lychee binary on PATH.
     - uses: ./.github/actions/install-lychee
 
-    - run: npm ci --ignore-scripts --omit=optional
+    - run: npm run ci:min
       shell: bash
 
     - run: npm run prepare:ci

@@ -62,7 +62,7 @@ jobs:
           # Authenticated github.com link checks (rate limits)
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          npm ci --ignore-scripts --omit=optional
+          npm run ci:min
           npm run prepare:ci
           npm run fix:link-cache
 

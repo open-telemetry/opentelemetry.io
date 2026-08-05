@@ -20,7 +20,7 @@ fi
 echo "Starting collector component documentation sync"
 
 echo "Installing Node.js dependencies..."
-npm ci --ignore-scripts --omit=optional
+npm run ci:min
 npm run prepare:ci
 
 echo "Installing Python dependencies..."

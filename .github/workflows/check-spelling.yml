@@ -18,7 +18,7 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
-      - run: npm ci --ignore-scripts --omit=optional
+      - run: npm run ci:min
       - run: npm run check:spelling
 
   dict-check:

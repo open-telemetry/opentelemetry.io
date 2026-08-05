@@ -25,7 +25,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
-      - run: npm ci --ignore-scripts --omit=optional
+      - run: npm run ci:min
 
       # code-excerpter needs submodules; no prepare:ci, since the compound
       # tests build no site

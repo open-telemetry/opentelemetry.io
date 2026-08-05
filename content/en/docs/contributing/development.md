@@ -96,6 +96,10 @@ Your development environment will be initialized via the
     than committing the rewrite. Site maintainers own other lock-file
     maintenance.
 
+    For a lock-exact setup that runs no third-party install scripts (the same
+    contract CI and the devcontainer use), run `npm run install:safe` instead
+    of `npm install`.
+
 Launch your favorite IDE. {{% param what-next %}}
 
 ### Build
