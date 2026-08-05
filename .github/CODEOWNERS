@@ -17,10 +17,12 @@
 # By default, docs-approvers own all files unless overridden below.
 * @open-telemetry/docs-approvers
 
-# cspell files are docs-approver content, except that locale word lists get
-# their locale team as owner via the (later-matching) locale section below.
+# cspell files are docs-approver content, and prh files are locale content;
+# locale word lists and prh rule files get their locale team as owner via the
+# (later-matching) locale section below.
 /.cspell/**                     @open-telemetry/docs-approvers
 /.cspell.yml                    @open-telemetry/docs-approvers
+/prh/**                         @open-telemetry/docs-maintainers
 
 # No-owner files. Keep this list in sync with the `no-owner-files` list in
 # .github/component-owners.yml.
@@ -112,6 +114,9 @@
 /netlify/**                     @open-telemetry/docs-maintainers
 /netlify.toml                   @open-telemetry/docs-maintainers
 **/package-lock.json            @open-telemetry/docs-maintainers
-/prh/**                         @open-telemetry/docs-maintainers
+# The scripts map defines the CI install contract (ci:min, ci:prepare), so the
+# root manifest needs maintainer review; dependency changes already were
+# maintainer-gated via the lock rule above.
+/package.json                   @open-telemetry/docs-maintainers
 /scripts/**                     @open-telemetry/docs-maintainers
 /tests/**                       @open-telemetry/docs-maintainers

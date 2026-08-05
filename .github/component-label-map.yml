@@ -173,6 +173,7 @@ CI/infra: # including config
           - netlify/**
           - netlify.toml
           - '**/package-lock.json'
+          - package.json # scripts map defines the CI install contract
           - scripts/**
           - tests/**
 

@@ -81,8 +81,9 @@ Your development environment will be initialized via the
     npm install
     ```
 
-    Or, for a lock-exact setup that runs no third-party install scripts (the
-    same contract [CI and the devcontainer use][ci-install]):
+    Or, for a lock-exact setup that suppresses automatic dependency install
+    scripts, explicitly restoring the pinned Hugo binary (the same contract
+    [CI and the devcontainer use][ci-install]):
 
     ```sh
     npm run install:safe
