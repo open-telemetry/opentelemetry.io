@@ -52,10 +52,10 @@ to ultimately making your contribution to the official documentation.
 > [!NOTE]
 >
 > Please submit a proposal issue first in
-> [End User SIG repository](https://github.com/open-telemetry/sig-end-user)
-> repository and wait for it to be reviewed and approved before opening a
-> documentation pull request against
-> [OpenTelemetry.io repository](https://github.com/open-telemetry/opentelemetry.io)
+> [End User SIG repository](https://github.com/open-telemetry/sig-end-user) and
+> wait for it to be reviewed and approved before opening a documentation pull
+> request against
+> [opentelemetry.io repository](https://github.com/open-telemetry/opentelemetry.io)
 > repository. The full contribution workflow — from proposal to publication — is
 > described in the
 > [Blueprints and Reference Implementations contribution process](https://github.com/open-telemetry/sig-end-user/blob/main/architecture/README.md).
