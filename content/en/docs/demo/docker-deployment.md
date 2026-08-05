@@ -225,7 +225,7 @@ with an editor.
 
   ```yaml
   exporters:
-    otlphttp/example:
+    otlp_http/example:
       endpoint: <your-endpoint-url>
   ```
 
