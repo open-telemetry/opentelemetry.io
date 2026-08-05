@@ -127,6 +127,7 @@
     "post_hugo": "scripts/strip-hugo-ctx.sh public",
     "postfix:submodule": "git submodule",
     "postget:submodule": "git submodule && echo && scripts/update-semconv-mounts.pl",
+    "postinstall": "git diff --quiet -- package-lock.json || echo '⚠️ This install modified package-lock.json. If you changed dependencies, commit the lock together with package.json; otherwise restore the lock and investigate before committing.'",
     "pre_build": "echo \"BUILD_KIND=$BUILD_KIND\nHUGO_PARAMS_TD_CHROME=$HUGO_PARAMS_TD_CHROME\"",
     "prebuild:full": "npm run _prebuild",
     "prebuild:lean": "npm run _prebuild",
