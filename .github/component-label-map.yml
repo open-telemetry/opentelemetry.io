@@ -172,6 +172,7 @@ CI/infra: # including config
           - Makefile
           - netlify/**
           - netlify.toml
+          - package-lock.json
           - scripts/**
           - tests/**
 
