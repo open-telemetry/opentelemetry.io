@@ -22,21 +22,21 @@ this website.
 
 ## Cloud-IDE setup
 
-### Gitpod
+### Ona
 
-To work via [Gitpod.io][]:
+To work via [Ona][]:
 
 1.  Fork this repository. For help, see [Fork a repository][fork].
-2.  From [gitpod.io/workspaces][], create a new workspace (do this only once) or
+2.  From [Ona][], create a new workspace (do this only once) or
     open an existing workspace over your fork. You can also visit a link of the
     form:
-    `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`.
+    `https://app.ona.com/#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`.
 
     > **Note**: If you have the necessary permissions to work from this
     > repository, or just want to look around, open
-    > <https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io>.
+    > <https://app.ona.com/#https://github.com/open-telemetry/opentelemetry.io>.
 
-Gitpod automatically installs the repo-specific packages for you.
+Ona automatically initializes the development environment for you.
 {{% param what-next %}}
 
 ### Codespaces
@@ -177,7 +177,7 @@ such as (in alphabetical order):
 
 - [Codespaces][cs-devc]
 - [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
-- [Gitpod](https://ona.com/docs/ona/configuration/devcontainer/overview)
+- [Ona](https://ona.com/docs/ona/configuration/devcontainer/overview)
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
 ## Tools
@@ -234,8 +234,8 @@ npm run check:code-excerpts
 [cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
-[gitpod.io]: https://gitpod.io
-[gitpod.io/workspaces]: https://gitpod.io/workspaces
+[Ona]: https://app.ona.com
+[Ona]: https://app.ona.com
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
 [localhost:8888]: http://localhost:8888
