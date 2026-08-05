@@ -82,8 +82,8 @@ Your development environment will be initialized via the
     ```
 
     Or, for a lock-exact setup that suppresses automatic dependency install
-    scripts, explicitly restoring the pinned Hugo binary (the same contract
-    [CI and the devcontainer use][ci-install]):
+    scripts, explicitly restoring the pinned Hugo binary (the same contract [CI
+    and the devcontainer use][ci-install]):
 
     ```sh
     npm run install:safe
