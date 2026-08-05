@@ -22,7 +22,7 @@ Fluent Bit, etc.) sending to one or more open source or commercial backends.
 
 - _Usability_: Reasonable default configuration, supports popular protocols,
   runs and collects out of the box.
-- _Performance: Designed to remain stable and performant under varying workloads and deployment configurations.
+- _Performance_: Designed to remain stable and performant under varying workloads and deployment configurations.
 - _Observability_: An exemplar of an observable service.
 - _Extensibility_: Customizable without touching the core code.
 - _Unification_: Single codebase, deployable as an agent or collector with
