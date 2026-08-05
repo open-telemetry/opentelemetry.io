@@ -39,10 +39,9 @@ and the Collector.
 Mainframes are data servers that are designed to process billions of
 transactions daily with the highest levels of security and reliability. For a
 more detailed overview, see 
-[What is a mainframe?](https://www.ibm.com/think/topics/mainframe) By
-“mainframe” we generally mean:
+[What is a mainframe?](https://www.ibm.com/think/topics/mainframe).
 
-IBM Z systems with the z/OS operating system that host host:
+ An example of a mainframe is an IBM Z system that hosts:
 
 - Transaction processing (e.g., CICS®, IMS™ and similar subsystems)
 - Batch processing (JCL-driven jobs, schedulers)
