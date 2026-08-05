@@ -10,7 +10,7 @@ info here.
 
 **Environment Setup:**
 
-- Install Node.js LTS (currently v22.x): Use `nvm install` or
+- Install the Node.js LTS version given by `.nvmrc`: Use `nvm install` or
   `nvm install lts && nvm use lts`
 - If Puppeteer download fails due to network issues: Set
   `export PUPPETEER_SKIP_DOWNLOAD=true`
