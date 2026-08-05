@@ -235,7 +235,6 @@ npm run check:code-excerpts
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [Ona]: https://app.ona.com
-[Ona]: https://app.ona.com
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
 [localhost:8888]: http://localhost:8888
