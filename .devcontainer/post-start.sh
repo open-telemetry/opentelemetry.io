@@ -1,4 +1,5 @@
 #!/bin/bash
 
 nvm install
-npm ci
+npm ci --ignore-scripts --omit=optional
+npm run prepare:ci
