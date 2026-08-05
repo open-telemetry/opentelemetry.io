@@ -16,6 +16,7 @@ info here.
 
 - Follow the main development setup in `.github/copilot-instructions.md`
 - Install Node.js 22.x and run `npm install` with `PUPPETEER_SKIP_DOWNLOAD=true`
+  (dependency versions come from the committed `package-lock.json`)
 - Ensure all submodules are initialized: `npm run get:submodule`
 
 ### Translation Guidelines

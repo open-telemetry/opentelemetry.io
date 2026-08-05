@@ -1,4 +1,5 @@
 {
+  "name": "opentelemetry.io",
   "Notes": [
     "The 'all' runs _all_ named scripts in sequence, even if one fails; and exits with failure in that case."
   ],

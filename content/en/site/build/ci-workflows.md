@@ -18,6 +18,9 @@ locked dependency graph, no lifecycle scripts run, and the install fails if
 follow the install with `npm run prepare:ci`, which explicitly runs the setup
 that the inert install skips. For details, see [npm scripts](../npm-scripts/).
 
+The devcontainer is the one exception: it runs a plain `npm ci`, keeping
+lifecycle scripts for the same local setup that `npm install` gives developers.
+
 ## PR approval labels {#pr-approval-labels}
 
 The following workflows work together to automatically manage approval-related

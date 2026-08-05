@@ -28,6 +28,10 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+          # This job installs from both package roots
+          cache-dependency-path: |
+            package-lock.json
+            scripts/generate-community-data/package-lock.json
 
       - name: Install dependencies
         working-directory: ./scripts/generate-community-data

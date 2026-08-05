@@ -89,7 +89,9 @@ Your development environment will be initialized via the
     npm install --package-lock-only --ignore-scripts
     ```
 
-    Site maintainers and approvers own other lock-file maintenance.
+    If your PR hits a merge conflict on `package-lock.json`, take the `main`
+    version of the lock file and rerun the command above. Site maintainers and
+    approvers own other lock-file maintenance.
 
 Launch your favorite IDE. {{% param what-next %}}
 
