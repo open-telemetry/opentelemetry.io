@@ -48,6 +48,11 @@
 /scripts/**                     @open-telemetry/docs-maintainers
 /tests/**                       @open-telemetry/docs-maintainers
 
+# The npm dependency lock is maintainer-owned (labeled `dependencies`, not
+# `CI/infra`, in component-label-map.yml). The nested
+# scripts/generate-community-data lock is covered by /scripts/** above.
+/package-lock.json              @open-telemetry/docs-maintainers
+
 # No-owner files. Keep this list in sync with the `no-owner-files` list in
 # .github/component-owners.yml.
 /.lycheecache

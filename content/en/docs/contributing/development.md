@@ -93,7 +93,7 @@ Your development environment will be initialized via the
     version of the lock file and rerun the command above. If `npm install`
     modifies the lock file when you didn't change dependencies, that signals
     drift: restore the lock and investigate rather than committing the rewrite.
-    Site maintainers and approvers own other lock-file maintenance.
+    Site maintainers own other lock-file maintenance.
 
 Launch your favorite IDE. {{% param what-next %}}
 
