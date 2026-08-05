@@ -89,7 +89,7 @@ Your development environment will be initialized via the
     npm install --package-lock-only --ignore-scripts
     ```
 
-    Broader lock-file maintenance is handled by site maintainers and approvers.
+    Site maintainers and approvers own other lock-file maintenance.
 
 Launch your favorite IDE. {{% param what-next %}}
 

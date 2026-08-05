@@ -26,7 +26,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
-      # Inert install; all-versions.sh fetches the submodules that it needs.
+      # No prepare:ci: all-versions.sh fetches the submodules it needs.
       - run: npm ci --ignore-scripts --omit=optional
 
       - name: Use CLA approved github bot

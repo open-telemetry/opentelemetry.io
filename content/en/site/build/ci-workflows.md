@@ -13,11 +13,10 @@ For workflows and (most of) their helper scripts, see the `workflow` and
 
 CI jobs install npm dependencies from the committed `package-lock.json` by
 running `npm ci --ignore-scripts --omit=optional`: every job gets the same
-locked dependency graph, no lifecycle scripts run during installation, and the
-install fails if `package.json` and the lock file are out of sync. Jobs that
-build the site follow the install with `npm run prepare:ci`, which explicitly
-runs the setup that the inert install skips — see
-[npm scripts](../npm-scripts/).
+locked dependency graph, no lifecycle scripts run, and the install fails if
+`package.json` and the lock file are out of sync. Jobs that build the site
+follow the install with `npm run prepare:ci`, which explicitly runs the setup
+that the inert install skips. For details, see [npm scripts](../npm-scripts/).
 
 ## PR approval labels {#pr-approval-labels}
 
