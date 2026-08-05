@@ -32,7 +32,9 @@ jobs:
 
       - uses: ./.github/actions/install-lychee
 
-      - run: npm run fix-and-test:all 2>&1 | tee tmp/build-log.txt
+      - run: |
+          mkdir -p tmp
+          npm run fix-and-test:all 2>&1 | tee tmp/build-log.txt
         env:
           CMD_SKIP: i18n|registry
           GET: no # For details, see: https://opentelemetry.io/docs/contributing/development/#submodule-changes
