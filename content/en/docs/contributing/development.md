@@ -90,10 +90,10 @@ Your development environment will be initialized via the
     ```
 
     If your PR hits a merge conflict on `package-lock.json`, take the `main`
-    version and rerun the command above. If `npm install`
-    modifies the lock file when you didn't change dependencies, that signals
-    drift: restore the lock and investigate rather than committing the rewrite.
-    Site maintainers own other lock-file maintenance.
+    version and rerun the command above. If `npm install` modifies the lock file
+    when you didn't change dependencies, that signals drift: restore the lock
+    and investigate rather than committing the rewrite. Site maintainers own
+    other lock-file maintenance.
 
 Launch your favorite IDE. {{% param what-next %}}
 
