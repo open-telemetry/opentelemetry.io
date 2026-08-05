@@ -23,7 +23,7 @@ jobs:
           cache: npm
 
       - run: npm run ci:min
-      - run: npm run prepare:ci
+      - run: npm run ci:prepare
 
       - name: Git submodules properly pinned?
         run: |

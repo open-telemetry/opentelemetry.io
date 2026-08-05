@@ -26,7 +26,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
-      # No prepare:ci: the version-update scripts fetch the submodules they need.
+      # No ci:prepare: the version-update scripts fetch the submodules they need.
       - run: npm run ci:min
 
       - name: Use CLA approved github bot

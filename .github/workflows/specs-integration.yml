@@ -120,7 +120,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           npm run ci:min
-          npm run prepare:ci
+          npm run ci:prepare
           # Ignore link-check failures so we can still commit link-cache updates
           npm run fix:link-cache || true
 

@@ -49,7 +49,7 @@ runs:
     - run: npm run ci:min
       shell: bash
 
-    - run: npm run prepare:ci
+    - run: npm run ci:prepare
       shell: bash
 
     - name: Run npm script

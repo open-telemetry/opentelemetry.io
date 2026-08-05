@@ -63,7 +63,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           npm run ci:min
-          npm run prepare:ci
+          npm run ci:prepare
           npm run fix:link-cache
 
       - name: Create pull request

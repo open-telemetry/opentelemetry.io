@@ -27,7 +27,7 @@ jobs:
 
       - run: npm run ci:min
 
-      # code-excerpter needs submodules; no prepare:ci, since the compound
+      # code-excerpter needs submodules; no ci:prepare, since the compound
       # tests build no site
       - run: npm run get:submodule
 

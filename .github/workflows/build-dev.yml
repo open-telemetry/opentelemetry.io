@@ -28,7 +28,7 @@ jobs:
           cache: npm
 
       - run: npm run ci:min
-      - run: npm run prepare:ci
+      - run: npm run ci:prepare
 
       - uses: ./.github/actions/install-lychee
 

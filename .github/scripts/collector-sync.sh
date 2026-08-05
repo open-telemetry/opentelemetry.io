@@ -21,7 +21,7 @@ echo "Starting collector component documentation sync"
 
 echo "Installing Node.js dependencies..."
 npm run ci:min
-npm run prepare:ci
+npm run ci:prepare
 
 echo "Installing Python dependencies..."
 cd scripts/collector-sync || { echo "Error: Failed to change to scripts/collector-sync directory"; exit 1; }
