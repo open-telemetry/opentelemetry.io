@@ -22,8 +22,7 @@ Fluent Bit, etc.) sending to one or more open source or commercial backends.
 
 - _Usability_: Reasonable default configuration, supports popular protocols,
   runs and collects out of the box.
-- _Performance_: Highly stable and performant under varying loads and
-  configurations.
+- _Performance: Designed to remain stable and performant under varying workloads and deployment configurations.
 - _Observability_: An exemplar of an observable service.
 - _Extensibility_: Customizable without touching the core code.
 - _Unification_: Single codebase, deployable as an agent or collector with
@@ -47,7 +46,7 @@ it allows your service to offload data quickly and the collector can take care
 of additional handling like retries, batching, encryption or even sensitive data
 filtering.
 
-It is also easier to [setup a collector](quick-start) than you might think: the
+It is also easier to [set up a collector](quick-start) than you might think: the
 default OTLP exporters in each language assume a local collector endpoint, so if
 you launch a collector it will automatically start receiving telemetry.
 
