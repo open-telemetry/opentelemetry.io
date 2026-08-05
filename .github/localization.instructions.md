@@ -16,8 +16,7 @@ info here.
 
 - Follow the main development setup in `.github/copilot-instructions.md`
 - Install the Node.js version given by `.nvmrc` (e.g. `nvm install`) and run
-  `npm install` with `PUPPETEER_SKIP_DOWNLOAD=true` (dependency versions come
-  from the committed `package-lock.json`)
+  `npm install` with `PUPPETEER_SKIP_DOWNLOAD=true`
 - Ensure all submodules are initialized: `npm run get:submodule`
 
 ### Translation Guidelines

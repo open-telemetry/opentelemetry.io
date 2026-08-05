@@ -20,8 +20,7 @@ info here.
 **Initial Setup and Dependencies:**
 
 - `npm install` -- takes ~45 seconds. NEVER CANCEL. Set timeout to 2+ minutes.
-  Installs the versions pinned in the committed `package-lock.json`; use
-  `npm ci --ignore-scripts` for a clean, script-free install
+  Installs the versions pinned in the committed `package-lock.json`
 - Initial setup automatically runs: `npm run prepare` which executes
   `get:submodule` and `_prepare:docsy`
 - Submodules are essential - they contain OpenTelemetry specifications,
