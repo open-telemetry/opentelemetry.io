@@ -59,27 +59,27 @@ default_lang_commit: 1ff7122fa7e1fd78714d7540b93ec70a3e72d84c
 
 ## 修正 {#fixing}
 
-| スクリプト                | 説明                                                                        |
-| ------------------------- | --------------------------------------------------------------------------- |
-| `fix`                     | もっとも一般的に必要な修正スクリプトを実行します。                          |
-| `fix:code-excerpts`       | コード抜粋を更新します。                                                    |
-| `fix:codeowners`          | レジストリから CODEOWNERS ロケールセクションを再生成します。                |
-| `fix:all`                 | すべての修正スクリプトを実行します。                                        |
-| `fix:format`              | Prettier を適用し、末尾の空白を削除します。                                 |
-| `fix:format:staged`       | ステージングされたファイルのみをフォーマットします。                        |
-| `fix:i18n`                | i18n フロントマターを追加/修正します（`fix:i18n:new`、`fix:i18n:status`）。 |
-| `fix:l10n`                | ローカリゼーションの修正を適用します。                                      |
-| `fix:link-cache`          | リンクチェックを実行し、コミット済みの `.lycheecache` を更新します。        |
-| `fix:link-cache:double-check` | [ブラウザプローブで失敗したリンクを再検証します][dc]。                  |
-| `fix:link-cache:refresh`  | もっとも古いキャッシュエントリをプルーンし、`fix:link-cache` を実行します。 |
-| `fix:markdown`            | Markdown lint の問題と末尾の空白を修正します。                              |
-| `fix:submodule`           | サブモジュールのリビジョンをピンします（`pin:submodule` と同じ）。          |
-| `fix:filenames`           | [ファイルのリネームと廃止されたファイル/フォルダの削除][fn]。               |
-| `fix:dict`                | cspell ワードリストをソートし、フロントマターを正規化します。               |
-| `fix:expired`             | `check:expired` で報告されたファイルを削除します。                          |
-| `fix:text`                | --fix 付きで textlint を実行します。                                        |
-| `fix:collector-sync:lint` | --fix 付きで collector-sync 内の ruff を実行します。                        |
-| `format`                  | Prettier write のエイリアス（コンテンツおよび nowrap パス）。               |
+| スクリプト                    | 説明                                                                        |
+| ----------------------------- | --------------------------------------------------------------------------- |
+| `fix`                         | もっとも一般的に必要な修正スクリプトを実行します。                          |
+| `fix:code-excerpts`           | コード抜粋を更新します。                                                    |
+| `fix:codeowners`              | レジストリから CODEOWNERS ロケールセクションを再生成します。                |
+| `fix:all`                     | すべての修正スクリプトを実行します。                                        |
+| `fix:format`                  | Prettier を適用し、末尾の空白を削除します。                                 |
+| `fix:format:staged`           | ステージングされたファイルのみをフォーマットします。                        |
+| `fix:i18n`                    | i18n フロントマターを追加/修正します（`fix:i18n:new`、`fix:i18n:status`）。 |
+| `fix:l10n`                    | ローカリゼーションの修正を適用します。                                      |
+| `fix:link-cache`              | リンクチェックを実行し、コミット済みの `.lycheecache` を更新します。        |
+| `fix:link-cache:double-check` | [ブラウザプローブで失敗したリンクを再検証します][dc]。                      |
+| `fix:link-cache:refresh`      | もっとも古いキャッシュエントリをプルーンし、`fix:link-cache` を実行します。 |
+| `fix:markdown`                | Markdown lint の問題と末尾の空白を修正します。                              |
+| `fix:submodule`               | サブモジュールのリビジョンをピンします（`pin:submodule` と同じ）。          |
+| `fix:filenames`               | [ファイルのリネームと廃止されたファイル/フォルダの削除][fn]。               |
+| `fix:dict`                    | cspell ワードリストをソートし、フロントマターを正規化します。               |
+| `fix:expired`                 | `check:expired` で報告されたファイルを削除します。                          |
+| `fix:text`                    | --fix 付きで textlint を実行します。                                        |
+| `fix:collector-sync:lint`     | --fix 付きで collector-sync 内の ruff を実行します。                        |
+| `format`                      | Prettier write のエイリアス（コンテンツおよび nowrap パス）。               |
 
 ## サブモジュールとコンテンツ {#submodules-and-content}
 
