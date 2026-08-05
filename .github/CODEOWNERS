@@ -44,7 +44,7 @@
 /Makefile                       @open-telemetry/docs-maintainers
 /netlify/**                     @open-telemetry/docs-maintainers
 /netlify.toml                   @open-telemetry/docs-maintainers
-/package-lock.json              @open-telemetry/docs-maintainers
+**/package-lock.json            @open-telemetry/docs-maintainers
 /prh/**                         @open-telemetry/docs-maintainers
 /scripts/**                     @open-telemetry/docs-maintainers
 /tests/**                       @open-telemetry/docs-maintainers
