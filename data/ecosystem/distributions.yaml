@@ -1,4 +1,4 @@
-# cSpell:ignore Splunk AWS ADOT Grafana Bindplane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT dash0
+# cSpell:ignore Splunk AWS ADOT Grafana Bindplane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT dash0 CardinalHQ
 - name: Splunk Distribution of OpenTelemetry Collector
   url: https://github.com/signalfx/splunk-otel-collector
   docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
@@ -203,6 +203,10 @@
   url: https://github.com/dash0hq/dash0-operator
   docsUrl: https://www.dash0.com/hub/integrations/int_dash0_operator/overview
   components: [Collector, Node, Java, .NET, Python]
+- name: CardinalHQ Distribution of OpenTelemetry Collector
+  url: https://github.com/cardinalhq/cardinalhq-otel-collector
+  docsUrl: https://docs.cardinalhq.io
+  components: [Collector]
 
 # OSS Collector Distros
 - name: OpenTelemetry Collector Core Distro

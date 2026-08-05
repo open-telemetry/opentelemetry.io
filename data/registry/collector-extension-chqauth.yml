@@ -1,0 +1,26 @@
+# cSpell:ignore chqauth chqauthextension cardinalhq
+title: CardinalHQ Auth Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+  - auth
+license: Apache 2.0
+description:
+  Client and server authenticator extension for CardinalHQ-issued API keys.
+  On the client side it attaches the configured credential to outgoing
+  OTLP requests; on the server side it validates incoming requests and
+  populates auth context so downstream components can enforce per-tenant
+  policy.
+authors:
+  - name: CardinalHQ, Inc.
+    url: https://github.com/cardinalhq
+urls:
+  repo: https://github.com/cardinalhq/cardinalhq-otel-collector/tree/main/extension/chqauthextension
+createdAt: '2026-08-05'
+package:
+  registry: go-collector
+  name: github.com/cardinalhq/cardinalhq-otel-collector/extension/chqauthextension
+  version: v1.10.0

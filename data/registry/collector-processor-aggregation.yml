@@ -1,0 +1,28 @@
+# cSpell:ignore aggregationprocessor cardinalhq
+title: Aggregation Processor
+registryType: processor
+language: collector
+tags:
+  - go
+  - processor
+  - collector
+  - aggregation
+  - cardinality
+license: Apache 2.0
+description:
+  Combines metric datapoints that share the same type, timestamp, and
+  attributes into a single aggregate. Intended to be paired with an upstream
+  processor that drops high-cardinality attributes — this processor then
+  merges the datapoints that collapse together, producing a single
+  well-formed datapoint per (timestamp, attribute-set) even when aggregation
+  runs across multiple collector pods.
+authors:
+  - name: CardinalHQ, Inc.
+    url: https://github.com/cardinalhq
+urls:
+  repo: https://github.com/cardinalhq/cardinalhq-otel-collector/tree/main/processor/aggregationprocessor
+createdAt: '2026-08-05'
+package:
+  registry: go-collector
+  name: github.com/cardinalhq/cardinalhq-otel-collector/processor/aggregationprocessor
+  version: v1.10.0
