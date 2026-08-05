@@ -47,13 +47,6 @@ more detailed overview, see
 - Batch processing (JCL-driven jobs, schedulers)
 - High-value systems of record (databases and files that are the “source of
   truth”)
-  > Platforms such as **IBM z/OS® mainframes** and compatible environments that
-  > host:
-  >
-  > - Transaction processing (e.g., CICS®, IMS™ and similar subsystems)
-  > - Batch processing (JCL-driven jobs, schedulers)
-  > - High-value systems of record (databases and files that are the “source of
-  > - Large **high-volume transaction processing** and **batch workloads**.
 
 While the details vary by vendor and product, most mainframe environments share
 characteristics that affect observability:
