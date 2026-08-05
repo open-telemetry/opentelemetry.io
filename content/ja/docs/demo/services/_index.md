@@ -1,7 +1,8 @@
 ---
 title: サービス
 aliases: [service_table, service-table]
-default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
+default_lang_commit: 0916db501b8b2562b21e2fb56dea97aab38d3266
+drifted_from_default: true
 ---
 
 リクエストフローを可視化するには、[サービスのダイアグラム](../architecture/)を確認してください。
@@ -20,7 +21,6 @@ default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
 | [負荷生成](load-generator/)             | Python/Locust | 実際のユーザー購買フローを模したリクエストを、フロントエンドに継続的に送信します。                                                            |
 | [支払い](payment/)                      | JavaScript    | 指定されたクレジットカード情報（モック）に対して、指定された金額を請求し、トランザクションのIDを返却します。                                  |
 | [商品カタログ](product-catalog/)        | Go            | JSONファイルに基づく商品のカタログと、商品検索機能及び個別商品の取得機能を提供します。                                                        |
-| [商品レビュー](product-reviews/)        | Python        | 商品の説明とレビューに基づいて、商品のレビューを返却し、特定の商品に関する質問に回答します。                                                  |
 | [見積もり](quote/)                      | PHP           | 発送される商品の点数に基づいて、送料を計算します。                                                                                            |
 | [レコメンデーション](recommendation/)   | Python        | カートの内容に基づいて、他の商品をレコメンドします。                                                                                          |
 | [配送](shipping/)                       | Rust          | ショッピングカートに基づいて送料の見積もりを提示します。指定された住所に商品を配送します（モック）。                                          |

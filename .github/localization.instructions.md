@@ -45,17 +45,17 @@ info here.
 **Check Drift Status:**
 
 ```bash
-npm run check:i18n                    # Check all localizations for drift
-npm run check:i18n -- content/zh      # Check specific localization
-npm run check:i18n -- -d content/zh   # Show detailed diff for drift
+npm run check:i18n                     # Check all localizations for drift
+npm run check:i18n -- content/zh       # Check specific localization
+npm run check:i18n -- diff content/zh  # Show detailed diff for drift
 ```
 
 **Update Localization Tracking:**
 
 ```bash
-npm run check:i18n -- -n -c HEAD content/zh        # Add default_lang_commit to new pages
-npm run check:i18n -- -c <hash> content/zh         # Update existing pages commit hash
-npm run fix:i18n:status                            # Add drift markers to drifted pages
+npm run check:i18n -- commit HEAD --new content/zh # Add default_lang_commit to new pages
+npm run check:i18n -- commit <HASH> content/zh     # Update existing pages commit hash (also syncs drift status)
+npm run fix:i18n:status -- <PATHS>                 # Sync drift status; in PRs, pass only the pages a failing check reports (tree-wide runs are Housekeeping's)
 ```
 
 **Validation for Localized Content:**
@@ -129,15 +129,21 @@ default_lang_commit: <commit-hash-of-english-page>
 
 **Handling Drifted Content:**
 
-1. Review changes: `npm run check:i18n -- -d content/xx/path/to/page`
+1. Review changes: `npm run check:i18n -- diff content/xx/path/to/page`
 2. Update your localized page to match new English content
-3. Update `default_lang_commit` to latest hash:
-   `npm run check:i18n -- -c HEAD content/xx/path/to/page`
+3. Update `default_lang_commit` to latest hash (this also clears the page's
+   drift status): `npm run check:i18n -- commit HEAD content/xx/path/to/page`
 
-**Patching (build and check fixes only):**
+**Patching (build fixes only):**
 
-- Fixes strictly required to keep the site build and its checks green (link
-  fixes, build fixes) may edit localized pages without syncing them
+- Fixes strictly required to keep the site build green (build fixes) may edit
+  localized pages without syncing them
+- Never edit localized page content to fix links: resolve link-check failures on
+  localized pages through drift-status updates
+  (`npm run fix:i18n:status -- <PATHS>`); in the rare case where a failing link
+  exists only in a localized page, report it and coordinate a fix with its
+  locale team; for the full policy, see
+  `content/en/docs/contributing/localization.md#link-fixes-and-resource-updates`
 - Make only the edits the fix requires, and add the `# patched` comment to the
   `default_lang_commit` line in front matter
 - Any other change to localized page content — including targeted content
@@ -221,8 +227,9 @@ default_lang_commit: <commit-hash-of-english-page>
 **Single-Language PRs:**
 
 - Semantic changes should affect only one language per PR
-- Exception: changes strictly required to keep the site build and its checks
-  green (link fixes, build fixes) can span locales
+- Exception: changes strictly required to keep the site build green (build
+  fixes) can span locales; link-check failures never qualify; see "Patching"
+  above
 - Exception: content-neutral maintenance (site-wide tooling, configuration,
   front-matter, or markup updates) can span locales; for the full policy, see
   `content/en/docs/contributing/localization.md#prs-should-not-span-locales`
@@ -242,11 +249,11 @@ default_lang_commit: <commit-hash-of-english-page>
 # Check all localizations for drift
 npm run check:i18n
 
-# Update drift status markers
-npm run fix:i18n:status
+# Update drift status — see "Update Localization Tracking" above
+npm run fix:i18n:status -- <PATHS>
 
 # Batch update commit hashes after updating multiple files
-npm run check:i18n -- -c HEAD content/xx/
+npm run check:i18n -- commit HEAD content/xx/
 
 # Help and options
 npm run check:i18n -- -h
