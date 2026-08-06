@@ -136,7 +136,7 @@ default_lang_commit: 0aff0aab149003b5592edfe186c193047e40c766
 | `update:hugo`                  | 最新の hugo-extended をインストールします。                                               |
 | `update:packages`              | npm-check-updates を実行して依存関係を更新します。                                        |
 | `generate:config:links`        | `lychee.base.toml` とページフロントマターから git 無視の `lychee.toml` を生成します。     |
-| `log:build`、`log:check:links` | 対応するスクリプトを実行し、出力を `tmp/` に tee し、スクリプトの終了コードを伝播します。 |
+| `log:build`、`log:check:links` | 対応するスクリプトを実行し、出力を `tmp/` に tee し、スクリプトの終了コードを伝搬します。 |
 
 ## 注記 {#notes}
 
