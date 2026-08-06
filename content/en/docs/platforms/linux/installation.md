@@ -4,7 +4,7 @@ weight: 10
 description:
   Add the OpenTelemetry package repository and install the system packages on
   Debian, Ubuntu, Fedora, or RHEL and derivatives.
-cSpell:ignore: COPR metapackage
+cSpell:ignore: metapackage
 ---
 
 The OpenTelemetry system packages are published to an APT repository for
@@ -47,9 +47,6 @@ EOF
 sudo dnf install opentelemetry
 ```
 
-Fedora users can alternatively install the packages from
-[Fedora COPR](https://copr.fedorainfracloud.org/).
-
 ## Verify the installation
 
 Restart an application written in a supported language, or start a new one, and
@@ -63,10 +60,12 @@ the data.
 
 The `opentelemetry` metapackage installs the injector together with the
 auto-instrumentation for all supported languages. If you only need a subset, you
-can install the language-specific packages on their own, for example just the
-Python or the Java instrumentation. See the
-[opentelemetry-packaging](https://github.com/open-telemetry/opentelemetry-packaging)
-repository for the current list of published packages.
+can install the language-specific packages on their own:
+
+- `opentelemetry-java`
+- `opentelemetry-nodejs`
+- `opentelemetry-dotnet`
+- `opentelemetry-python`
 
 ## Next steps
 

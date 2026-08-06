@@ -25,14 +25,14 @@ instrumented and start emitting telemetry.
 
 ## How it works
 
-The `opentelemetry` package is a metapackage that bundles:
+The `opentelemetry` package is a metapackage that depends on:
 
 - The
   [OpenTelemetry Injector](https://github.com/open-telemetry/opentelemetry-injector),
   which configures the dynamic linker so that supported runtimes load the
   matching auto-instrumentation when a process starts.
-- The OpenTelemetry SDKs and auto-instrumentation for Java, .NET, Node.js, and
-  Python.
+- The language-specific auto-instrumentation packages for Java, .NET, Node.js,
+  and Python.
 
 Once installed, the injector adds the auto-instrumentation to every new process
 of a supported runtime on the host. Applications that were already running are
@@ -40,6 +40,10 @@ instrumented after they are restarted. By default, telemetry is exported using
 OTLP to `localhost` on ports `4317` (gRPC) and `4318` (HTTP), so you typically
 run a local [OpenTelemetry Collector](/docs/collector/) to receive and forward
 it.
+
+The Packaging and OBI SIGs also plan to deliver
+[OpenTelemetry eBPF Instrumentation](/docs/zero-code/obi/) as a system package,
+extending zero-code instrumentation to additional runtimes such as Go.
 
 ## Get started
 
