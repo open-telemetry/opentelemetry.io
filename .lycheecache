@@ -1371,6 +1371,7 @@ https://github.com/getsentry/sentry-dotnet/tree/main/src/Sentry.OpenTelemetry,20
 https://github.com/getsentry/sentry-java/tree/main/sentry-opentelemetry,200,1785785914
 https://github.com/getsentry/sentry-python/tree/master/sentry_sdk/integrations/opentelemetry,200,1785785915
 https://github.com/getsentry/sentry-ruby/tree/6.6.2/sentry-opentelemetry,200,1784884395
+https://github.com/getsentry/sentry-ruby/tree/6.7.0/sentry-opentelemetry,200,1786025512
 https://github.com/git-ecosystem/trace2receiver,200,1785785907
 https://github.com/gnurizen,200,1785134693
 https://github.com/go-gorm/opentelemetry,200,1785785907
@@ -3758,6 +3759,7 @@ https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-active_storage/v0.5.1/instrumentation/active_storage,200,1784884392
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-active_support/v0.12.0/instrumentation/active_support,200,1784884392
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-all/v0.94.0/instrumentation/all,200,1784884392
+https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-all/v0.95.0/instrumentation/all,200,1786025512
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-anthropic/v0.5.0/instrumentation/anthropic,200,1784884392
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-aws_lambda/v0.7.0/instrumentation/aws_lambda,200,1784884392
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-aws_sdk/v0.12.0/instrumentation/aws_sdk,200,1784884392
@@ -3785,6 +3787,7 @@ https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-net_http/v0.29.0/instrumentation/net_http,200,1784884394
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-net_ldap/v0.2.0/instrumentation/net_ldap,200,1784884394
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-pg/v0.36.0/instrumentation/pg,200,1784884394
+https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-pg/v0.37.0/instrumentation/pg,200,1786025512
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-que/v0.13.0/instrumentation/que,200,1784884394
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-racecar/v0.7.0/instrumentation/racecar,200,1784884394
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-rack/v0.31.1/instrumentation/rack,200,1784884394
@@ -3824,7 +3827,9 @@ https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-exporter
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-logs-api/v0.4.1/logs_api,200,1784884391
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-logs-sdk/v0.6.1/logs_sdk,200,1784884395
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-metrics-api/v0.6.1/metrics_api,200,1784884391
+https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-metrics-api/v0.7.0/metrics_api,200,1786025512
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-metrics-sdk/v0.15.0/metrics_sdk,200,1784884395
+https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-metrics-sdk/v0.16.0/metrics_sdk,200,1786025512
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-propagator-b3/v0.24.1/propagator/b3,200,1784884394
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-propagator-jaeger/v0.25.1/propagator/jaeger,200,1784884395
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-registry/v0.6.1/registry,200,1784884395
@@ -5846,6 +5851,7 @@ https://rubydoc.info/gems/opentelemetry-instrumentation-active_record/0.13.0,200
 https://rubydoc.info/gems/opentelemetry-instrumentation-active_storage/0.5.1,200,1784884391
 https://rubydoc.info/gems/opentelemetry-instrumentation-active_support/0.12.0,200,1784884391
 https://rubydoc.info/gems/opentelemetry-instrumentation-all/0.94.0,200,1784884391
+https://rubydoc.info/gems/opentelemetry-instrumentation-all/0.95.0,200,1786025511
 https://rubydoc.info/gems/opentelemetry-instrumentation-anthropic/0.5.0,200,1784884391
 https://rubydoc.info/gems/opentelemetry-instrumentation-aws_lambda/0.7.0,200,1784884391
 https://rubydoc.info/gems/opentelemetry-instrumentation-aws_sdk/0.12.0,200,1784884391
@@ -5873,6 +5879,7 @@ https://rubydoc.info/gems/opentelemetry-instrumentation-mysql2/0.34.0,200,178488
 https://rubydoc.info/gems/opentelemetry-instrumentation-net_http/0.29.0,200,1784884393
 https://rubydoc.info/gems/opentelemetry-instrumentation-net_ldap/0.2.0,200,1784884393
 https://rubydoc.info/gems/opentelemetry-instrumentation-pg/0.36.0,200,1784884394
+https://rubydoc.info/gems/opentelemetry-instrumentation-pg/0.37.0,200,1786025512
 https://rubydoc.info/gems/opentelemetry-instrumentation-que/0.13.0,200,1784884393
 https://rubydoc.info/gems/opentelemetry-instrumentation-racecar/0.7.0,200,1784884393
 https://rubydoc.info/gems/opentelemetry-instrumentation-rack/0.31.1,200,1784884393
@@ -5890,7 +5897,9 @@ https://rubydoc.info/gems/opentelemetry-instrumentation-trilogy/0.69.0,200,17848
 https://rubydoc.info/gems/opentelemetry-logs-api/0.4.1,200,1784884391
 https://rubydoc.info/gems/opentelemetry-logs-sdk/0.6.1,200,1784884394
 https://rubydoc.info/gems/opentelemetry-metrics-api/0.6.1,200,1784884391
+https://rubydoc.info/gems/opentelemetry-metrics-api/0.7.0,200,1786025511
 https://rubydoc.info/gems/opentelemetry-metrics-sdk/0.15.0,200,1784884395
+https://rubydoc.info/gems/opentelemetry-metrics-sdk/0.16.0,200,1786025512
 https://rubydoc.info/gems/opentelemetry-processor-baggage/0.6.0,200,1784884395
 https://rubydoc.info/gems/opentelemetry-propagator-b3/0.24.1,200,1784884393
 https://rubydoc.info/gems/opentelemetry-propagator-google_cloud_trace_context/0.4.0,200,1784884393
