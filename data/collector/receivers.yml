@@ -181,6 +181,13 @@
     logs: alpha
     metrics: alpha
     traces: alpha
+- name: dnscheckreceiver
+  display_name: DNS Check Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: development
 - name: dockerstatsreceiver
   display_name: Docker Stats Receiver
   repo: contrib
