@@ -9,15 +9,15 @@ cSpell:ignore: metapackage
 
 After [installing](../installation/) the system packages, the
 [OpenTelemetry Injector](https://github.com/open-telemetry/opentelemetry-injector)
-instruments supported applications with sensible defaults. This page describes
-how to change where telemetry is sent and how to adjust the injected
+instruments supported applications and exports telemetry using OTLP to
+`localhost` on ports `4317` (gRPC) and `4318` (HTTP) by default. This page
+describes how to change where telemetry is sent and how to adjust the injected
 configuration.
 
 ## Set the export destination
 
-By default, the injected instrumentation exports telemetry using OTLP to
-`localhost` on ports `4317` (gRPC) and `4318` (HTTP). The recommended setup is
-to run a local [OpenTelemetry Collector](/docs/collector/) that receives this
+The recommended setup is to run a local
+[OpenTelemetry Collector](/docs/collector/) on the host that receives this
 telemetry and forwards it to your backend.
 
 To send telemetry somewhere else, edit the injector environment file at
@@ -40,14 +40,25 @@ Restart your applications for configuration changes to take effect.
 
 ## Use a configuration file
 
-For richer setups you can point the instrumentation at a
+For richer setups you can drive the instrumentation with a
 [declarative configuration](/docs/languages/sdk-configuration/declarative-configuration/)
-file with the `OTEL_CONFIG_FILE` environment variable in
-`/etc/opentelemetry/injector/default_env.conf`:
+file instead of individual environment variables. You rarely need to write one
+from scratch: each language package ships a ready-to-use reference file at
+`/etc/opentelemetry/<language>/otel-config.yaml` that wires up the exporter
+endpoint, headers, and service name through environment-variable interpolation.
+
+Copy or adapt that file to a location of your choice, then activate it by
+setting `OTEL_CONFIG_FILE` in `/etc/opentelemetry/injector/default_env.conf`:
 
 ```conf
 OTEL_CONFIG_FILE=/etc/opentelemetry/config.yaml
 ```
+
+> [!NOTE]
+>
+> For .NET, file-based configuration also requires
+> `OTEL_EXPERIMENTAL_FILE_BASED_CONFIGURATION_ENABLED=true`. Without it, the
+> configuration file is silently ignored.
 
 ## Run a local Collector
 
