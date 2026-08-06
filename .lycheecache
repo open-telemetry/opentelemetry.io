@@ -3591,6 +3591,8 @@ https://github.com/open-telemetry/opentelemetry-specification/#license,200,17857
 https://github.com/open-telemetry/opentelemetry-specification/#project-timeline,200,1785785937
 https://github.com/open-telemetry/opentelemetry-specification/#versioning-the-specification,200,1785785937
 https://github.com/open-telemetry/opentelemetry-specification/blob/02531b063da09bca753070d8071180ca2c287117/oteps/trace/0235-sampling-threshold-in-trace-state.md?from_branch=main,200,1785868518
+https://github.com/open-telemetry/opentelemetry-specification/blob/6837311818b3cedcda4cad222804c4f98f1fe402/spec-compliance-matrix.md,200,1785885400
+https://github.com/open-telemetry/opentelemetry-specification/blob/6837311818b3cedcda4cad222804c4f98f1fe402/specification/metrics/sdk.md#cardinality-limits,200,1785885399
 https://github.com/open-telemetry/opentelemetry-specification/blob/97c826b70e2f89cfdf655d5150791f3f0c2bae19/oteps/trace/0168-sampling-propagation.md?from_branch=main,200,1785134692
 https://github.com/open-telemetry/opentelemetry-specification/blob/97c826b70e2f89cfdf655d5150791f3f0c2bae19/oteps/trace/0170-sampling-probability.md?from_branch=main,200,1785868518
 https://github.com/open-telemetry/opentelemetry-specification/blob/9a946352ecdec2565520e9c65d635f6e68d6cdfb/spec-compliance-matrix.md#declarative-configuration,200,1785868515
@@ -6332,6 +6334,7 @@ https://youtrack.jetbrains.com/issue/KT-76131,200,1785911021
 https://youtu.be/5iM8n3uCo_U?si=PJ6tFYcYED3lhAcK,200,1784960530
 https://youtu.be/9iaGG-YZw5I?si=YDjY8N4Z4zI4uKiV,200,1784960554
 https://youtu.be/HY3LZOQqdig,200,1784960532
+https://youtu.be/QTeA16I_hME,200,1785885399
 https://youtube.com/@otel-official,200,1785868404
 https://zio.dev/,200,1785785894
 https://ziohttp.com/,200,1785785900
