@@ -1,7 +1,5 @@
 {
-  "Notes": [
-    "The 'all' runs _all_ named scripts in sequence, even if one fails; and exits with failure in that case."
-  ],
+  "name": "opentelemetry.io",
   "scripts": {
     "__check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve",
     "__check:format": "./scripts/npx-helper.sh prettier --ignore-unknown",
@@ -28,7 +26,7 @@
     "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 999}",
     "_hugo": "hugo --cleanDestinationDir",
     "_install:cspell": "npm install -D $(npm run -s _list:cspell)",
-    "_install:netlify-cli": "npm list netlify-cli || npm install -O netlify-cli",
+    "_install:netlify-cli": "npm list netlify-cli || (echo '[help] netlify-cli is not installed. To add the optional deps from the lock, run: npm run install:safe'; exit 1)",
     "_list:check:*": "npm run --loglevel=warn | grep -Ee '^\\s*check:[^:]+$' | grep -Ev \"check:all|${CMD_SKIP:-noop}\"",
     "_list:check:for-test-and-fix": "npm -s run _list:check:* | grep -Ev \"collector-sync|i18n\"",
     "_list:cspell": "jq -r '.devDependencies | keys[] | select(. == \"cspell\" or startswith(\"@cspell/\"))' package.json | xargs",
@@ -80,6 +78,8 @@
     "check:spelling": "npx cspell --no-progress -c .cspell.yml content data 'layouts/**/*.md' projects/**/*.md",
     "check:text": "npm run _check:text -- ",
     "check": "CMD_SKIP=collector-sync npm run check:all",
+    "ci:min": "npm ci --ignore-scripts --omit=optional",
+    "ci:prepare": "npm rebuild hugo-extended && npm run prepare",
     "clean": "make clean",
     "code-excerpts": "node -e 'console.error(\"\\x1b[31mWARNING: THIS IS A DEPRECATED ALIAS, instead use: `fix:code-excerpts` or `check:code-excerpts`\\x1b[0m\")' && npm run fix:code-excerpts --",
     "cp:spec": "scripts/content-modules/cp-pages.sh",
@@ -113,12 +113,13 @@
     "generate:config-types": "node scripts/generate-config-types.mjs",
     "generate:config:links": "node scripts/lychee/config/index.mjs",
     "get:submodule": "npm run _get:${GET:-submodule} --",
+    "install:safe": "npm ci --ignore-scripts && npm run ci:prepare",
     "lean": "HUGO_PARAMS_TD_CHROME=shared npm run",
     "link-cache": "refcache",
     "locale-auto-merge": "node scripts/gh/locale-auto-merge/cli.mjs",
     "locale-team-cleanup": "node scripts/gh/locale-team-cleanup/cli.mjs",
-    "log:build": "bash -o pipefail -c 'npm run build 2>&1 | tee tmp/build-log.txt'",
-    "log:check:links": "bash -o pipefail -c 'npm run check:links 2>&1 | tee tmp/check-links-log.txt'",
+    "log:build": "bash -o pipefail -c 'mkdir -p tmp && npm run build 2>&1 | tee tmp/build-log.txt'",
+    "log:check:links": "bash -o pipefail -c 'mkdir -p tmp && npm run check:links 2>&1 | tee tmp/check-links-log.txt'",
     "make:public": "make public ls-public",
     "netlify-build:preview": "npm run seq -- build:preview diff:check",
     "netlify-build:production": "npm run seq -- build:production diff:check",
@@ -126,6 +127,7 @@
     "post_hugo": "scripts/strip-hugo-ctx.sh public",
     "postfix:submodule": "git submodule",
     "postget:submodule": "git submodule && echo && scripts/update-semconv-mounts.pl",
+    "postinstall": "git diff --quiet -- package-lock.json || echo '⚠️ package-lock.json differs after this install. If you changed dependencies, commit the lock together with package.json; otherwise restore the lock and investigate before committing.'",
     "pre_build": "echo \"BUILD_KIND=$BUILD_KIND\nHUGO_PARAMS_TD_CHROME=$HUGO_PARAMS_TD_CHROME\"",
     "prebuild:full": "npm run _prebuild",
     "prebuild:lean": "npm run _prebuild",
@@ -165,7 +167,7 @@
     "test": "CMD_SKIP=collector-sync npm run test:base",
     "update:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
     "update:packages:no-hugo": "npm run update:packages -- -x hugo-extended",
-    "update:packages": "npx npm-check-updates --dep 'prod,dev,optional,peer' -u",
+    "update:packages": "npm exec --no -- npm-check-updates --dep 'prod,dev,optional,peer' -u",
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 999} && git submodule foreach 'git fetch $(git remote | tail -1) --tags'",
     "zzz": "echo 'bogus script used to help keep the script collection sorted'"
   },
@@ -205,28 +207,27 @@
     "yargs": "18.1.0"
   },
   "dependencies": {
-    "@opentelemetry/api": "^1.9.1",
-    "@opentelemetry/auto-instrumentations-web": "^0.66.0",
-    "@opentelemetry/context-zone": "^2.7.0",
-    "@opentelemetry/core": "^2.7.0",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.221.0",
-    "@opentelemetry/instrumentation": "^0.221.0",
-    "@opentelemetry/resources": "^2.7.0",
-    "@opentelemetry/sdk-trace-base": "^2.7.0",
-    "@opentelemetry/sdk-trace-web": "^2.7.0",
-    "@opentelemetry/semantic-conventions": "^1.40.0",
-    "minisearch": "^7.2.0",
-    "path": "^0.12.7"
+    "@opentelemetry/api": "1.9.1",
+    "@opentelemetry/auto-instrumentations-web": "0.66.0",
+    "@opentelemetry/context-zone": "2.10.0",
+    "@opentelemetry/core": "2.10.0",
+    "@opentelemetry/exporter-trace-otlp-http": "0.221.0",
+    "@opentelemetry/instrumentation": "0.221.0",
+    "@opentelemetry/resources": "2.10.0",
+    "@opentelemetry/sdk-trace-base": "2.10.0",
+    "@opentelemetry/sdk-trace-web": "2.10.0",
+    "@opentelemetry/semantic-conventions": "1.43.0",
+    "minisearch": "7.2.0",
+    "path": "0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^27.0.0",
-    "npm-check-updates": "^23.0.0"
+    "netlify-cli": "27.1.0",
+    "npm-check-updates": "23.0.1"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
     "node": ">=24"
   },
-  "gitHubActionCacheKey": "2023-07-13 - change this key to force cache refresh",
   "private": true,
   "prettier": {
     "proseWrap": "always",
