@@ -6,6 +6,7 @@ aliases: [/docs/instrumentation]
 redirects:
   - { from: 'net/*', to: 'dotnet/:splat' }
 default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
+drifted_from_default: true
 ---
 
 OpenTelemetryのコード[計装][instrumentation]は、以下の[ステータスとリリース](#status-and-releases)の表に記載されている言語でサポートされています。
