@@ -15,8 +15,6 @@ info here.
 ### Environment Setup
 
 - Follow the main development setup in `.github/copilot-instructions.md`
-- Install Node.js 22.x and run `npm install` with `PUPPETEER_SKIP_DOWNLOAD=true`
-- Ensure all submodules are initialized: `npm run get:submodule`
 
 ### Translation Guidelines
 

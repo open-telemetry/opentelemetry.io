@@ -6,6 +6,7 @@ aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
 default_lang_commit: d03483e1d5cc696a5541f8bcc8ff97170f2f2ca1
+drifted_from_default: true
 cSpell:ignore: coreutils HKLM iisreset Sonoma
 ---
 
