@@ -23,8 +23,12 @@ jobs:
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
+          cache: npm
 
-      # Don't --ignore-scripts: code-excerpter needs submodules
-      - run: npm install --omit=optional
+      - run: npm run ci:min
+
+      # code-excerpter needs submodules; no ci:prepare, since the compound
+      # tests build no site
+      - run: npm run get:submodule
 
       - run: npm run test:compound-tests
