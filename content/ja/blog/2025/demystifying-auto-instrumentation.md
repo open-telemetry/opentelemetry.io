@@ -8,6 +8,7 @@ canonical_url: https://www.causely.ai/blog/demystifying-automatic-instrumentatio
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/7810
 sig: Comms
 default_lang_commit: b291d077d4c7aba2b43ec5a1648c02bb5c43f870
+drifted_from_default: true
 cspell:ignore: Beyla bpftrace Causely libbpf premain uprobes
 ---
 

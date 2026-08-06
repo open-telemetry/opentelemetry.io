@@ -4,9 +4,6 @@
 # computed from page front matter. Edit THIS base; do not edit the generated
 # `lychee.toml` (gitignored). Regenerate with: npm run generate:config:links
 #
-# Internal-path rules in `exclude` are written without a leading `^/` so they
-# match lychee's resolved `file://` URIs (built with `--root-dir public`).
-#
 # cSpell:disable
 
 cache = true
@@ -32,7 +29,7 @@ exclude = [
   # --- internal path rules ---
   '/index\.xml$',                                   # RSS alternate links
   '[?&]link-check=no',                              # opt-out query param
-  '/api/?$',                                        # ^/api/?$
+  '/api/?$',
   '/docs/languages/\w+/(api|examples|registry)/?$',
   '/docs/collector/registry/?$',
   '/docs/languages/dotnet/(metrics-api|traces-api)/?',
@@ -44,6 +41,8 @@ exclude = [
 
   # Temporary: javadoc.io /doc/ wrappers omit method anchors (#11037).
   '^https://javadoc\.io/doc/com\.azure/azure-cosmos/.+#executeBulkOperations',
+  # Temporary: gitpod.io redirects to an Ona login page (#11144).
+  '^https://gitpod\.io',
 
   # --- external host rules ---
   '^https://deploy-preview-\d+--opentelemetry\.netlify\.app/',
@@ -73,7 +72,9 @@ exclude = [
   '^https://github\.com/open-telemetry/opentelemetry\.io/discussions/?\?discussions_q=',
   '^https://github\.com/search/?\?',
 
-  # Docsy-generated GitHub edit/new/view-source links
+  # Docsy-generated GitHub edit/new/view-source links. The negative character
+  # classes below narrow the view-source skips: all locales, sections, and
+  # section indexes are skipped except content/en/docs/s* minus security.
   '^https?://github\.com/.*?/.*?/(new/|edit/|issues/new\?)',
   '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/[^e]',
   '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/es',
@@ -111,4 +112,6 @@ exclude = [
   # docs.alauda.io serves an empty JS-shell document; all content, including
   # headings, is client-rendered, so any fragment on it is unverifiable.
   '^https://docs\.alauda\.io/.*#',
+  # Google Docs heading anchors (`#heading=h.…`) are client-rendered.
+  '^https://docs\.google\.com/document/d/.+#',
 ]

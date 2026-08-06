@@ -81,6 +81,31 @@ Your development environment will be initialized via the
     npm install
     ```
 
+    Or, for the [lock-exact, script-suppressing setup][ci-install] that CI and
+    the devcontainer use:
+
+    ```sh
+    npm run install:safe
+    ```
+
+    Either install uses the dependency versions pinned in the committed
+    `package-lock.json`. Lock-file cases:
+
+    - **You changed dependencies**: regenerate the lock file and commit it
+      together with `package.json`:
+
+      ```sh
+      npm install --package-lock-only --ignore-scripts
+      ```
+
+    - **Merge conflict on the lock file**: take the `main` version and rerun the
+      command above.
+    - **The lock file changed, but you didn't change dependencies** (a
+      `postinstall` check warns when an install does this): that signals drift;
+      restore the lock and investigate rather than committing the rewrite.
+
+    Site maintainers own [other lock-file maintenance][ci-install].
+
 Launch your favorite IDE. {{% param what-next %}}
 
 ### Build
@@ -229,6 +254,7 @@ npm run check:code-excerpts
 [code-excerpter]: https://github.com/chalin/code-excerpter
 
 <!-- prettier-ignore-start -->
+[ci-install]: /site/build/ci-workflows/#dependency-installation
 [clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
 [cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers

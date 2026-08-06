@@ -1,15 +1,17 @@
-title: ConcurrentRuby Instrumentation
+title: opentelemetry-instrumentation-concurrent_ruby
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
-license: Apache 2.0
-description: ConcurrentRuby instrumentation for Ruby.
+license: Apache-2.0
+description: ConcurrentRuby instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/concurrent_ruby
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-concurrent_ruby/v0.25.0/instrumentation/concurrent_ruby
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-concurrent_ruby/0.25.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems
