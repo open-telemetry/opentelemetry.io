@@ -38,10 +38,10 @@ and the Collector.
 
 Mainframes are data servers that are designed to process billions of
 transactions daily with the highest levels of security and reliability. For a
-more detailed overview, see 
+more detailed overview, see
 [What is a mainframe?](https://www.ibm.com/think/topics/mainframe).
 
- An example of a mainframe is an IBM Z system that hosts:
+An example of a mainframe is an IBM Z system that hosts:
 
 - Transaction processing (e.g., CICS®, IMS™ and similar subsystems)
 - Batch processing (JCL-driven jobs, schedulers)
@@ -146,8 +146,8 @@ IBM, which supplies the operating system and subsystem software for the most
 pervasively used mainframe systems, is currently in the process of including
 native OpenTelemetry support into its services.
 
-Many independent mainframe software vendors (ISVs) are also transitioning
-their observability support to favor the OpenTelemetry vendor-neutral approach.
+Many independent mainframe software vendors (ISVs) are also transitioning their
+observability support to favor the OpenTelemetry vendor-neutral approach.
 
 Of course, this successful transition depends upon common terminology and
 semantics.
