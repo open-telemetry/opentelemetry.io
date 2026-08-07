@@ -20,15 +20,17 @@ trimite un [pull request][PR] (PR)
 
 ## Generative AI contribution policy {#using-ai}
 
-> [!WARNING] **Contribuitori noi** țineți cont!
+> [!WARNING] **Contribuitori noi** atenție!
 >
-> Dacă ești un [contribuitor nou][first-time contributor], te rog ia aminte:
+> Dacă ești un [contribuitor nou][first-time contributor], te rugăm să ții cont
+> de următoarele:
 >
 > Primele 3 contribuții către repertoriul nostru trebuie în principal să fie
-> scrise de oameni, permisă doar o asistență minoră din partea inteligenței
-> artificiale. ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)).
-> Asta înseamnă că tot codul tău ar trebui scris de mână, dar IA-ul ar putea
-> ajuta cu completări de cod, formatare, linting și urmărirea bunelor practici.
+> scrise de oameni, fiind permisă doar o asistență minoră din partea
+> inteligenței artificiale.
+> ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)). Asta
+> înseamnă că tot codul tău ar trebui scris de mână, dar IA-ul ar putea ajuta cu
+> completări de cod, formatare, linting și urmărirea bunelor practici.
 > Descrierea PR-ului tău trebuie fie în întregime scrisă de un om, fără vreo
 > implicare din partea IA-ului (AIL0).
 >
@@ -36,20 +38,19 @@ trimite un [pull request][PR] (PR)
 > învăța despre repertoriul nostru, proiectul nostru, cum să contribui și multe
 > altele.
 >
-> Am pus în aplicare această cerință pentru a te ajuta să înveți în timp ce
+> Am implementat această cerință pentru a te ajuta să înveți în timp ce
 > contribui și pentru a ajuta întreținătorii și aprobatorii să-și protejeze
-> timpul și capacitatea de lucru, care sunt o resursă limitată.
+> timpul și capacitatea de lucru, care reprezintă o resursă limitată.
 >
-> Întreținătorii pot face o excepție, dacă este clar faptul că ce ai contribuit
-> este "drive-by" și poate fi adăugat fără prea mult efort adițional din partea
-> lor.
+> Întreținătorii pot face o excepție, când contribuția ta este "drive-by" și
+> poate fi adăugată fără prea mult efort adițional din partea lor.
 
 IA-ul generativ este permis, dar **tu ești responsabil** for **revizuirea și
 _validarea_** întregului conținut generat de IA &mdash; Dacă nu-l înțelegi, nu-l
 trimite!
 
 Pentru detalii, vezi [Politica de contribuție folosind IA
-generativ][Generative AI Contribution Policy].
+generativă][Generative AI Contribution Policy].
 
 [first-time contributor]: ../#first-time-contributing
 [Generative AI Contribution Policy]:
@@ -85,7 +86,7 @@ _Figura 1. Contribuții cu conținut nou._
 > Setează statusul pull request-ului tău la **Draft** pentru a înștiința
 > întreținătorii că respectivul conținut nu este încă gata pentru revizuire.
 > Întreținătorii pot în continuare să lase comentarii sau revizuiri, deși nu vor
-> revizui conținutul în întregime până când nu eliminați statutul de draft.
+> revizui conținutul în întregime până când nu elimini statutul de draft.
 
 ## Utilizarea GitHub {#changes-using-github}
 
@@ -163,7 +164,7 @@ care se vor putea vedea câteva minute mai târziu.
 După ce ai trimis un PR, GitHub rulează niște verificări ale build-ului. Anumite
 verificări ce eșuează, precum probleme de formatare, pot fi rezolvate automat.
 
-Add the following comment to your PR: Adaugă următorul comentariu în PR-ul tău
+Adaugă următorul comentariu în PR-ul tău:
 
 ```text
 /fix
@@ -171,7 +172,7 @@ Add the following comment to your PR: Adaugă următorul comentariu în PR-ul t�
 
 Acesta va declanșa ca bot-ul OpenTelemetry să încerce să rezolve problemele de
 build. Bot-ul răspunde cu un comentariu despre progres care face referire la
-comandata de rezolvare, apoi actualizează același comentariu cu rezultatul -
+comanda de rezolvare, apoi actualizează același comentariu cu rezultatul -
 altfel că fiecare comandă de rezolvare pe care o emiți primește propriul
 comentariu de la bot. Sau poți emite una dintre următoarele comenzi de rezolvare
 pentru a trata o problemă specifică:
