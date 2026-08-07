@@ -5,6 +5,7 @@ description: >-
 weight: 20
 todo: Keep table entries sorted
 default_lang_commit: 0aff0aab149003b5592edfe186c193047e40c766
+drifted_from_default: true
 ---
 
 スクリプトの定義はリポジトリルートの [`package.json`](https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json) にあります。
