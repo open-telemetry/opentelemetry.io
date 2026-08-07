@@ -1,6 +1,5 @@
 ---
 title: Self-Observability Dashboard
-linkTitle: Self-Observability Dashboard
 ---
 
 The OpenTelemetry SDKs can emit their own internal metrics (using the
