@@ -3,7 +3,6 @@ title:
   'Skyscanner: gestión de OpenTelemetry Collectors en 24 clústeres de producción'
 linkTitle: Skyscanner
 default_lang_commit: 11753c0e99bbc1b62606d4c819736c777dfb0e98
-# prettier-ignore
 cSpell:ignore: Fordyce kube kubelet rollouts Skyscanner Sloughter Öjeling
 ---
 
