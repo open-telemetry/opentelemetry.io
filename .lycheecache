@@ -3035,6 +3035,11 @@ https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1137
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1139,200,1785739362
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1140,200,1785739363
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1157,200,1785739362
+https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2793,200,1786140070
+https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2794,200,1786140069
+https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2932,200,1786140069
+https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2958,200,1786140070
+https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2959,200,1786140069
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22goal%3A%202026%22%20label%3Aepic,200,1785739361
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues?q=is%3Aissue+is%3Aopen+label%3A%22goal%3A+2026%22,200,1785739362
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkgs/container/opentelemetry-ebpf-instrumentation%2Febpf-instrument,200,1785868413
