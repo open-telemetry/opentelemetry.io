@@ -2,6 +2,7 @@
 title: OpenTelemetry Operator Chart
 linkTitle: Operator Chart
 default_lang_commit: c8c0a255c51e0ba22f89601f81842944a4d673bf
+drifted_from_default: true
 ---
 
 ## 介绍 {#introduction}

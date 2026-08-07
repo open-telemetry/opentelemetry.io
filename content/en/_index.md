@@ -141,13 +141,13 @@ stability and community-driven evolution. {{< /homepage/otel-feature >}}
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry is a [CNCF][] [incubating][] project**.<br> Formed through a
+**OpenTelemetry is a [CNCF][] [graduated][] project**.<br> Formed through a
 merger of the OpenTracing and OpenCensus projects.
 
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[incubating]: https://www.cncf.io/projects/
+[graduated]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}

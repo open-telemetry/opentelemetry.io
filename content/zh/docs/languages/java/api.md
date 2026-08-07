@@ -9,7 +9,7 @@ logBridgeWarning: >
   它们并非供终端用户用作 Log4j、SLF4J、Logback 等日志框架的替代品。
 default_lang_commit: 7c6d317a1ed969bd03f0aa8297f068ca29c2b459 # patched
 drifted_from_default: true
-cSpell:ignore: Dotel kotlint Logback updowncounter
+cSpell:ignore: Dotel kotlint updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

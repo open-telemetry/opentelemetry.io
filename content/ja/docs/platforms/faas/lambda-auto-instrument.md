@@ -2,8 +2,7 @@
 title: Lambda 自動計装
 weight: 11
 description: あなたのLambdaをOpenTelemetryで自動的に計装する
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad # patched
-drifted_from_default: true
+default_lang_commit: 21d692eb10d49a29a2cdecd51c753a202341c83c
 cSpell:ignore: Corretto
 ---
 
@@ -59,7 +58,7 @@ Lambdaレイヤーは、Node.js v18+のLambdaランタイムをサポートし�
 {{% /tab %}} {{% tab Python %}}
 
 LambdaレイヤーはPython 3.9+のLambdaランタイムをサポートしています。
-サポートされているPythonのバージョンについては、[OpenTelemetry Pythonドキュメント](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#supported-runtimes) と [PyPi](https://pypi.org/project/opentelemetry-api/) のパッケージを参照してください。
+サポートされているPythonのバージョンについては、[OpenTelemetry Pythonドキュメント](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#python-version-support) と [PyPi](https://pypi.org/project/opentelemetry-api/) のパッケージを参照してください。
 
 {{% /tab %}} {{% tab Ruby %}}
 

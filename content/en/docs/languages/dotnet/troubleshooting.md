@@ -2,7 +2,7 @@
 title: Troubleshooting
 description: Learn how to troubleshoot OpenTelemetry .NET
 weight: 100
-cSpell:ignore: eventsource OTEL
+cSpell:ignore: eventsource
 ---
 
 All the components shipped from the OpenTelemetry .NET repositories

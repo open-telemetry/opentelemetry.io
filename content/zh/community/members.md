@@ -3,6 +3,7 @@ title: OpenTelemetry 项目的成员
 linkTitle: 成员
 weight: 30
 default_lang_commit: b13d5dd3a9f288ab64d2af98c0b4ec1694499ef3
+drifted_from_default: true
 cSpell:ignore: triagers
 ---
 

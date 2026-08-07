@@ -1,0 +1,24 @@
+title: opentelemetry-helpers-sql-obfuscation
+registryType: utilities
+language: ruby
+tags:
+  - sql-obfuscation
+  - utilities
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/helpers/sql-obfuscation
+  docs: https://rubydoc.info/gems/opentelemetry-helpers-sql-obfuscation/0.5.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
+license: Apache-2.0
+description:
+  This gem is deprecated and no longer maintained. It has been replaced by
+  opentelemetry-helpers-sql-processor.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-06-29
+package:
+  registry: gems
+  name: opentelemetry-helpers-sql-obfuscation
+  version: 0.5.0
+deprecated:
+  reason: Renamed to opentelemetry-helpers-sql-processor

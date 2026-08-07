@@ -2,7 +2,7 @@
 title: Pythonの自動計装に関する問題のトラブルシューティング
 linkTitle: Troubleshooting
 weight: 40
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 cSpell:ignore: ASGI gunicorn uvicorn
 ---
 

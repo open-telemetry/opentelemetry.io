@@ -5,6 +5,7 @@ description: シグナルを単一のOTLPエンドポイントに送信し、そ
 aliases: [/docs/collector/deployment/gateway]
 weight: 300
 default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197 # patched
+drifted_from_default: file not found
 # prettier-ignore
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---

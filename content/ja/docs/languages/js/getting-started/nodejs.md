@@ -3,7 +3,7 @@ title: Node.js
 description: 5分未満でアプリのテレメトリーを取得しましょう！
 aliases: [/docs/js/getting_started/nodejs]
 weight: 10
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 cSpell:ignore: autoinstrumentations rolldice
 ---
 
@@ -11,12 +11,10 @@ cSpell:ignore: autoinstrumentations rolldice
 
 [トレース][traces]と[メトリクス][metrics]の両方を計装し、コンソールにログ出力する方法を学びます。
 
-{{% alert title="注意" %}}
-
-Node.js用のOpenTelemetryのロギングライブラリはまだ開発中のため、以下では例を提供していません。
-ステータスの詳細については、[ステータスとリリース](/docs/languages/js/#status-and-releases)を参照してください。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Node.js用のOpenTelemetryのロギングライブラリはまだ開発中のため、以下では例を提供していません。
+> ステータスの詳細については、[ステータスとリリース](/docs/languages/js/#status-and-releases)を参照してください。
 
 ## 前提条件 {#prerequisites}
 
@@ -157,10 +155,10 @@ npm install @opentelemetry/sdk-node \
 
 計装セットアップコードを含む`instrumentation.ts`（TypeScriptを使用しない場合は`instrumentation.mjs`）という名前のファイルを作成します。
 
-{{% alert title="注意" %}}
-以下の`--import instrumentation.ts`（TypeScript）を使用した例は、Node.js v.20以降が必要です。
-Node.js v.18を使用している場合は、JavaScriptの例を使用してください。
-{{% /alert %}}
+> [!NOTE]
+>
+> 以下の `--import instrumentation.ts`（TypeScript）を使用した例は、Node.js v.20以降が必要です。
+> Node.js v.18を使用している場合は、JavaScriptの例を使用してください。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -230,6 +228,10 @@ Listening for requests on http://localhost:8080
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+（注意: アプリケーションが JavaScript の ECMAScript Modules（ESM）で記述されている場合、またはTypeScript から ESM にコンパイルされている場合は、計装を適切にサポートするためにローダーフックが必要です。
+`node --experimental-loader=@opentelemetry/instrumentation/hook.mjs --require ./instrumentation.js app.js` を使用してください。
+OpenTelemetry における ESM サポートの詳細については、[ESM サポートドキュメント](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/esm-support.md)を参照してください。）
 
 Webブラウザで<http://localhost:8080/rolldice>を開き、ページを数回リロードします。
 しばらくすると、`ConsoleSpanExporter`によってコンソールにスパンが出力されるのが表示されるはずです。
@@ -531,6 +533,8 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+{{% include esm-support-note.md %}}
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

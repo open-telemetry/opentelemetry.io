@@ -1,5 +1,6 @@
 ---
 default_lang_commit: 2f850a610b5f7da5730265b32c25c9226dc09e5f # patched
+drifted_from_default: true
 ---
 
 这是 OpenTelemetry {{ $name }} 的文档。 OpenTelemetry 是一个可观测性框架，这个框架提供了

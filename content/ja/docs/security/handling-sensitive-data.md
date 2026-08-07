@@ -2,7 +2,7 @@
 title: 機微データの取り扱い
 description: OpenTelemetryにおける機微データの取り扱いに関するベストプラクティスとガイダンス
 weight: 100
-default_lang_commit: 5b82e8f9c057d4d4961d41091a4bc75fc9b5b37c
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 ---
 
 OpenTelemetryを計装する際には、機密データの取り扱いに注意することが重要です。
@@ -86,11 +86,9 @@ transform:
         - delete_key(attributes, "user.id")
 ```
 
-{{% alert title="匿名化のためのハッシュ化のリスクと限界" color="warning" %}}
-
-入力スペースが小さく予測可能(たとえば数値のユーザーID)である場合、ハッシュは実際には逆変換可能であるため、ユーザーのIDや名前をハッシュ化しても必要なレベルの匿名化にはならない可能性があります。
-
-{{% /alert %}}
+> [!WARNING] 匿名化のためのハッシュ化のリスクと限界
+>
+> 入力スペースが小さく予測可能（たとえば数値のユーザー ID）である場合、ハッシュは実際には逆変換可能であるため、ユーザーの ID や名前をハッシュ化しても必要なレベルの匿名化にはならない可能性があります。
 
 ### IPアドレスの切り捨て {#truncating-ip-addresses}
 

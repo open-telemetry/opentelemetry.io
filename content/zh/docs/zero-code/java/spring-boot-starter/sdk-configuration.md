@@ -1,6 +1,7 @@
 ---
 title: SDK 配置
 default_lang_commit: 1e69c8f94a605ce5624c6b6657080d98f633ac7b
+drifted_from_default: true
 weight: 30
 cSpell:ignore: customizer distro
 ---

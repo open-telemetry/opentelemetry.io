@@ -79,6 +79,10 @@ This page focuses on specifics for the
 For the Spring Boot starter, see
 [Spring Boot starter declarative configuration](/docs/zero-code/java/spring-boot-starter/declarative-configuration/).
 
+## Convert your existing configuration
+
+{{< dc-converter source="agent" >}}
+
 ## Mapping of configuration options
 
 When you want to map your existing environment variables or system properties
@@ -109,12 +113,6 @@ configuration to declarative configuration, use the following rules:
 ```yaml
 instrumentation/development:
   general:
-    peer:
-      service_mapping: # was "otel.instrumentation.common.peer-service-mapping"
-        - peer: 1.2.3.4
-          service: FooService
-        - peer: 2.3.4.5
-          service: BarService
     http:
       client:
         request_captured_headers: # was otel.instrumentation.http.client.capture-request-headers
@@ -130,7 +128,15 @@ instrumentation/development:
         response_captured_headers: # was otel.instrumentation.http.server.capture-response-headers
           - Content-Type
           - Content-Encoding
+
   java:
+    common:
+      service_mapping: # was "otel.instrumentation.common.peer-service-mapping"
+        - peer: 1.2.3.4
+          service_name: FooService
+        - peer: 2.3.4.5
+          service_name: BarService
+
     agent:
       # was otel.instrumentation.common.default-enabled
       # instrumentation_mode: none  # was false

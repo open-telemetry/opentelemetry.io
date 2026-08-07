@@ -3,9 +3,10 @@ title: 言語API & SDK
 description: OpenTelemetryのコード計装は、多くの一般的なプログラミング言語でサポートされています。
 weight: 250
 aliases: [/docs/instrumentation]
-default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
 redirects:
   - { from: 'net/*', to: 'dotnet/:splat' }
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
+drifted_from_default: true
 ---
 
 OpenTelemetryのコード[計装][instrumentation]は、以下の[ステータスとリリース](#status-and-releases)の表に記載されている言語でサポートされています。
@@ -20,15 +21,13 @@ Kubernetesを使用している場合は、[OpenTelemetry Operator for Kubernete
 
 OpenTelemetryの主要な機能コンポーネントの現在のステータスは以下の通りです。
 
-{{% alert title="重要" color="warning" %}}
-
-APIやSDKのステータスに関わらず、使用している計装が[セマンティック規約仕様][semantic conventions]で[試験的][Experimental]とされている[セマンティック規約][semantic conventions specification]に依存している場合、データフローに**破壊的変更**が生じる可能性があります。
-
-[semantic conventions]: /docs/concepts/semantic-conventions/
-[Experimental]: /docs/specs/otel/document-status/
-[semantic conventions specification]: /docs/specs/semconv/
-
-{{% /alert %}}
+> [!WARNING]
+>
+> APIやSDKのステータスに関わらず、使用している計装が[セマンティック規約仕様][semconv]で[試験的][Experimental]とされている[セマンティック規約][semconv-spec]に依存している場合、データフローに**破壊的変更**が生じる可能性があります。
+>
+> [semconv]: /docs/concepts/semantic-conventions/
+> [Experimental]: /docs/specs/otel/document-status/
+> [semconv-spec]: /docs/specs/semconv/
 
 {{% telemetry-support-table " " %}}
 
@@ -39,11 +38,9 @@ APIやSDKのステータスに関わらず、使用している計装が[セマ�
 
 {{% apidocs %}}
 
-{{% alert title="Note" %}}
-
-上記のリストは[`/api`](/api)へのエイリアスです。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> 上記のリストは[`/api`](/api)へのエイリアスです。
 
 [zero-code]: /docs/platforms/kubernetes/operator/automatic/
 [instrumentation]: /docs/concepts/instrumentation/

@@ -1,6 +1,7 @@
 ---
 title: 功能标志
 default_lang_commit: cb6352e01bcdbf8cc400aa663fa82d2835718e6e
+drifted_from_default: true
 aliases:
   - feature_flags
   - scenarios

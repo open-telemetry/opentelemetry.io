@@ -9,6 +9,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
+cSpell:ignore: Milvus Qdrant Qwen rerank SunRPC Zilliz
 ---
 
 OpenTelemetry libraries provide telemetry collection for popular programming
@@ -39,48 +40,50 @@ OBI offers the following features:
 - **Visibility into encrypted communications**: Capture transactions over
   TLS/SSL without decryption
 - **Context propagation**: Propagate trace context across services automatically
-- **Protocol support**: HTTP/S, gRPC, gRPC-Web, JSON-RPC, MQTT, Memcached, and
-  more
-- **Database instrumentation**: PostgreSQL (including pgx driver), MySQL,
+- **Protocol support**: HTTP/S, gRPC, gRPC-Web, JSON-RPC, MQTT, NATS, AMQP 1.0,
+  Memcached, and more
+- **Database instrumentation**: PostgreSQL (including pgx driver), MySQL, MSSQL,
   MongoDB, Redis, Couchbase (N1QL/SQL++ and KV protocol)
 - **GenAI instrumentation**: Trace and metrics for OpenAI, Anthropic Claude,
-  Google AI Studio (Gemini), and AWS Bedrock API calls with automatic payload
-  extraction
+  Google AI Studio (Gemini), AWS Bedrock, Qwen (DashScope), MCP over JSON-RPC,
+  embedding and rerank APIs, and vector retrieval systems
 - **Low cardinality metrics**: Prometheus-compatible metrics with low
   cardinality for cost reduction
-- **Network observability**: Capture network flows between services with
-  host-level TCP RTT statistics
+- **Network observability**: Capture network flows between services with byte
+  and packet counters, TCP RTT, retransmit, connection, and socket I/O metrics
 - **Enhanced service discovery**: Improved service name lookup with DNS
   resolution
 - **Collector integration**: Run OBI as an OpenTelemetry Collector receiver
   component
 
-## Recent highlights (v0.8.0)
+## Recent highlights (v0.10.0)
 
-OBI v0.8.0 expands protocol coverage, payload extraction, and deployment
-documentation:
+OBI v0.10.0 expands distributed tracing, runtime telemetry, protocol coverage,
+and operational controls:
 
-- **Generic Go tracing improvements**: Added generic Go protocol support,
-  including context propagation for generic requests
-- **Expanded protocol coverage**: Added JSON-RPC support across all languages
-- **Deeper HTTP payload extraction**: Added full HTTP body extraction, with
-  bounded decompression for response bodies
-- **Broader GenAI coverage**: Added Google AI Studio (Gemini) and AWS Bedrock
-  payload extraction, and fixed Vertex AI Gemini support
-- **Named CIDR labels**: Network metrics can now label configured CIDR ranges
-  with human-readable names
-- **New example scenario**: Added an Apache HTTP Server example alongside the
-  existing NGINX walkthroughs
-- **Support documentation**: Added a project support matrix for release
-  artifacts and supported environments
+- **gRPC context propagation**: Added language-agnostic network-level
+  `traceparent` propagation for gRPC over HTTP/2
+- **Runtime metrics**: Added Go runtime metrics and opt-in HotSpot JVM memory
+  metrics without requiring SDK changes in the target application
+- **More network telemetry**: Added network packet, TCP retransmit, and TCP
+  socket I/O metrics
+- **SunRPC support**: Added traces and metrics for ONC RPC protocols over TCP,
+  including NFS-related programs
+- **Asynchronous Go causality**: Added experimental span links for supported Go
+  channel handoffs
+- **Safer operations and export**: Added health endpoints, Unix domain socket
+  support for health checks and OTLP export, resource-attribute selection, and
+  automatic redaction of sensitive URL query parameters
+- **Broader GenAI coverage**: Added vector retrieval telemetry for Pinecone,
+  Qdrant, Milvus, Zilliz, Chroma, and Weaviate
 
 For a complete list of changes and upgrade notes, see the
-[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.8.0).
+[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.10.0).
 
 If you want to explore the upstream examples, see the
-[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/nginx)
+[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.10.0/examples/nginx)
 and the
-[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.8.0/examples/apache).
+[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.10.0/examples/apache).
 
 ## How OBI works
 
@@ -120,6 +123,8 @@ Feature-specific support details are documented in these guides:
 
 - [Distributed traces](distributed-traces/): context propagation support,
   runtime-specific requirements, and distributed tracing limitations
+- [Trace context association](context-propagation/): parent-child association
+  support for asynchronous and threaded request handling
 - [Export data](configure/export-data/): protocol, database, messaging, GenAI,
   GPU, and Go library instrumentation support
 

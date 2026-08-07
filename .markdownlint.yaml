@@ -54,7 +54,8 @@ no-shortcut-ref-link:
   # - OTel spec informal footnotes like [1], [2]
   # - SemConf number ranges like [0..1], [0..n-1], [0.0, 1.0]
   # - Ellipsis like [...]
-  ignore_pattern: '^([-+,n\d\.\s]+)$|^\.\.\.$'
+  # - GFM task-list markers like [x] and unchecked [ ] (space matches \s)
+  ignore_pattern: '^([-+,n\d\.\s]+)$|^\.\.\.$|^x$'
 
 # -----------------------------------------------------------------------------
 # Link-validation rules (from scripts/_md-rules/link-rules.mjs)

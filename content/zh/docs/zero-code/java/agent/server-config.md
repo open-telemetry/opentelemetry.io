@@ -3,6 +3,7 @@ title: 应用服务器配置
 linkTitle: 应用服务器配置
 description: 如何为 Java 应用服务器定义代理路径
 default_lang_commit: 086442fd859d3a316aac2b33aa7c97a4ac92079c
+drifted_from_default: true
 weight: 215
 cSpell:ignore: asadmin Glassfish Payara setenv
 ---

@@ -13,6 +13,6 @@ description: This library provides instrumentation for Quarkus RESTEasy Reactive
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/quarkus-resteasy-reactive
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/quarkus-resteasy-reactive-1.11
 createdAt: 2020-11-05
 isFirstParty: false

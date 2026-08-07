@@ -2,6 +2,7 @@
 title: 使用插桩库
 linkTitle: 库
 default_lang_commit: 8dad29e2443b7c8739f3be322e5d5eec3baf999f
+drifted_from_default: true
 weight: 40
 description: 如何为应用所依赖的库进行插桩
 ---

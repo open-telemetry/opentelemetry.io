@@ -1,0 +1,40 @@
+name: zizmor scan
+
+on:
+  pull_request:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+permissions: {}
+
+env:
+  FORCE_COLOR: 3
+  TERM: xterm
+
+jobs:
+  zizmor:
+    name: zizmor
+    timeout-minutes: 20
+    runs-on: ubuntu-24.04
+
+    concurrency:
+      group:
+        ${{ github.workflow }}-${{ github.event.pull_request.number ||
+        github.ref }}
+      cancel-in-progress: false
+
+    permissions:
+      security-events: write # Store results in the Security tab
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          show-progress: false
+
+      - name: Scan workflows with zizmor
+        uses: zizmorcore/zizmor-action@6fc4b006235f201fdab3722e17240ab420d580e5 # v0.6.1
+        with:
+          persona: pedantic

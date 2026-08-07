@@ -2,10 +2,8 @@
 title: macOSでコレクターをインストールする
 linkTitle: macOS
 weight: 200
-default_lang_commit: ec1657d18d8e1c63bf353049e8a7bf7e65c3e9cb
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 ---
-
-## macOS {#macos}
 
 macOS向けの [リリース][releases] は Intel および ARM システムで利用可能です。
 リリースはgzip圧縮されたtarball (`.tar.gz`) としてパッケージ化されています。
@@ -27,6 +25,6 @@ tar -xvf otelcol_{{% param vers %}}_darwin_arm64.tar.gz
 
 {{% /tab %}} {{< /tabpane >}}
 
-すべてのコレクターのリリースには、解凍後に実行できる `otelcol` 実行ファイルが含まれています。
+すべての Collector リリースには、解凍して実行できる実行ファイルが含まれています。
 
 [releases]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases

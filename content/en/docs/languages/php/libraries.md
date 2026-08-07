@@ -2,7 +2,6 @@
 title: Using instrumentation libraries
 linkTitle: Libraries
 weight: 40
-cSpell:ignore: Packagist
 ---
 
 {{% docs/languages/libraries-intro "php" %}}

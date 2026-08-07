@@ -2,6 +2,7 @@
 title: Débuter pour les développeurs
 linkTitle: Dev
 default_lang_commit: 3512b0ae11f72d3a954d86da59ad7f98d064bdad
+drifted_from_default: true
 ---
 
 Cette page à propos de [comment bien débuter](..) est faite pour vous si :

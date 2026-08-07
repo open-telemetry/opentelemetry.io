@@ -1,7 +1,7 @@
 ---
 title: リソース
 weight: 70
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
 ---
 
 ## はじめに {#introduction}

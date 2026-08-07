@@ -13,12 +13,14 @@ import:
 caseSensitive: true
 ignorePaths:
   - '*.svg'
+  - content/en/blog/2019/**/*.md
+  - content/en/blog/202[0-4]/**/*.md
   - content/{ja,zh}
   - data/community/members.yaml
   - data/ecosystem/vendors.yaml
   - data/collector
   - public/_redirects
-  - static/refcache.json
+  - .lycheecache
 patterns:
   - name: CodeBlock
     pattern: |
@@ -46,6 +48,8 @@ dictionaryDefinitions:
     path: .cspell/es-palabras.txt
   - name: fr-mots
     path: .cspell/fr-mots.txt
+  - name: ko-words
+    path: .cspell/ko-words.txt
   - name: pl-words
     path: .cspell/pl-words.txt
   - name: pt-palavras
@@ -69,6 +73,7 @@ dictionaries:
   - en-words
   - es-palabras
   - fr-mots
+  - ko-words
   - pl-words
   - pt-palavras
   - ro-words

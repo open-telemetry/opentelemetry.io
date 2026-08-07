@@ -2,8 +2,10 @@
 title: Pythonゼロコード・計装
 linkTitle: Python
 weight: 30
-default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
-drifted_from_default: true
+cascade:
+  collector_vers: 0.158.0
+default_lang_commit: 21add8ce39004043e871566b88ce97ad0eba3435
+cSpell:ignore: distro
 ---
 
 Pythonによる自動計装は、任意のPythonアプリケーションにアタッチ可能なPythonエージェントを使用します。
@@ -20,11 +22,11 @@ opentelemetry-bootstrap -a install
 
 `opentelemetry-distro` パッケージは API、SDK、`opentelemetry-bootstrap` と `opentelemetry-instrument` ツールをインストールします。
 
-{{% alert title="Note" %}}
-自動計装を動作させるには、distro パッケージをインストールする必要があります。
-`opentelemetry-distro` パッケージには、デフォルトの distro が含まれており、いくつかの一般的なオプションを自動的に設定できます。
-詳しくは、[OpenTelemetry distro](/docs/languages/python/distro/) を参照してください。
-{{% /alert %}}
+> [!NOTE]
+>
+> 自動計装を動作させるには、distro パッケージをインストールする必要があります。
+> `opentelemetry-distro` パッケージには、デフォルトの distro が含まれており、いくつかの一般的なオプションを自動的に設定できます。
+> 詳しくは、[OpenTelemetry distro](/docs/languages/python/distro/) を参照してください。
 
 `opentelemetry-bootstrap -a install` コマンドは、アクティブな `site-packages` フォルダにインストールされているパッケージのリストを読み込んで、該当するパッケージがあれば、対応する計装ライブラリをインストールします。
 たとえば、既に `flask` パッケージをインストールしている場合、 `opentelemetry-bootstrap -a install` を実行すると、かわりに `opentelemetry-instrumentation-flask` がインストールされます。
@@ -33,10 +35,10 @@ OpenTelemetry Python エージェントはモンキーパッチを使って、�
 引数なしで `opentelemetry-bootstrap` を実行すると、インストールされる推奨計装ライブラリが一覧表示されます。
 詳細については、[`opentelemetry-bootstrap`](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation#opentelemetry-bootstrap) を参照してください。
 
-{{% alert title="<code>uv</code>を使いますか?" color="warning" %}}
-[uv](https://docs.astral.sh/uv/)パッケージマネージャーを使用している場合、`opentelemetry-bootstrap -a install` を実行する際に何らかの困難に直面するかもしれません。
-詳しくは[uvを使ったブートストラップ](troubleshooting/#bootstrap-using-uv)を参照してください。
-{{% /alert %}}
+> [!WARNING] `uv` を使いますか？
+>
+> [uv](https://docs.astral.sh/uv/)パッケージマネージャーを使用している場合、`opentelemetry-bootstrap -a install` を実行する際に何らかの困難に直面するかもしれません。
+> 詳しくは[uvを使ったブートストラップ](troubleshooting/#bootstrap-using-uv)を参照してください。
 
 ## エージェントの設定 {#configuring-the-agent}
 

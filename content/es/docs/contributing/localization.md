@@ -6,6 +6,7 @@ description:
 linkTitle: Localización
 weight: 25
 default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
+drifted_from_default: true
 cSpell:ignore: Dowair shortcodes
 ---
 

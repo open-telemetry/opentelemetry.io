@@ -19,8 +19,11 @@ For detailed use of the OpenTelemetry Operator visit its
 To install the chart with the release name `my-opentelemetry-operator`, run the
 following commands:
 
-```console
+```shell
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+```
+
+```shell
 helm install my-opentelemetry-operator open-telemetry/opentelemetry-operator \
   --set "manager.collectorImage.repository=otel/opentelemetry-collector-k8s" \
   --set admissionWebhooks.certManager.enabled=false \

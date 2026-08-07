@@ -3,6 +3,7 @@ title: 处理敏感数据
 description: 在 OpenTelemetry 中处理敏感数据的最佳实践与指导
 weight: 100
 default_lang_commit: cd3aec37475c3eb59b6d77d8e726d49cc8ba0e58
+drifted_from_default: true
 ---
 
 在实现 OpenTelemetry 时，必须高度关注敏感数据的处理。

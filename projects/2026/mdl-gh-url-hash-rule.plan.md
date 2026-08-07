@@ -1,7 +1,6 @@
 ---
 title: Markdownlint2 rule to fix GitHub URL hashes
 custodian: [Patrice Chalin](https://github.com/chalin)
-cSpell:ignore: cooldown chalin
 ---
 
 The goal is to write a markdownlint2 (mdl2) rule that does the following:

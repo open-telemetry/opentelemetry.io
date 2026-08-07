@@ -2,6 +2,7 @@
 title: Amostragem
 weight: 80
 default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
+drifted_from_default: true
 ---
 
 A [Amostragem](/docs/concepts/sampling/) é um processo que restringe a

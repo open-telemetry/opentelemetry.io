@@ -1,13 +1,36 @@
 ---
 title: コミュニティインシデント対応ガイドライン
 weight: 102
-default_lang_commit: 4285e9500a42e673c587c02a4a79fb4910b4a8dc
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 ---
 
 セキュリティ上の脆弱性は、迅速に、そして場合によっては非公開で対応する必要があります。
 このプロセスの主な目的は、既知の攻撃手法に対してユーザーが脆弱な状態にある総時間を減らすことです。
 
 関連する OpenTelemetry リポジトリのメンテナーは、セキュリティ SIG および OpenTelemetry Technical Committee (TC) の支援のもと、内部コミュニケーションと外部への開示を含むインシデント対応に責任を負います。
+
+## セキュリティモデル {#security-model}
+
+<!--
+    This section is mirrored from the authoritative source at:
+    https://github.com/open-telemetry/sig-security/blob/main/security-response.md#security-model
+
+    Any changes should be made there first, then synced back here.
+-->
+
+セキュリティ修正の緊急性と重要性を評価する際、すべての OpenTelemetry ソフトウェア成果物において、機密性と完全性が最も重要な関心事です。
+
+一方で、OpenTelemetry ソフトウェア成果物のデフォルト設定が可用性攻撃に対して安全であるとはみなしていません。
+実現可能な場合は、安全でないデフォルト設定を使用しないことを強く推奨します。
+可用性を確保するために、ユーザーは[ウェブサイトのセキュリティセクション](/docs/security/)のガイダンスに従って、エンドポイント通信に認証を要求する必要があります。
+
+さらに、OpenTelemetry プロジェクトは以下をセキュリティ上の脆弱性とはみなしません。
+
+- 適切に認証されたクライアントによるサービス拒否攻撃
+- 適切に認証されたクライアントによるエンドポイントへの可用性関連の攻撃
+
+これらはバグとみなされる可能性があり、ユーザーはバグとして報告できます。
+可用性関連の影響を評価する際、メンテナーはそれらのプロジェクトとの互換性を提供するコンポーネントに対する脆弱性を評価するにあたり、他のプロジェクト（例：Prometheus）のセキュリティポリシーや、攻撃が利用するリソース使用量の非対称性の度合いも考慮します。
 
 ## サポート対象バージョン {#supported-versions}
 

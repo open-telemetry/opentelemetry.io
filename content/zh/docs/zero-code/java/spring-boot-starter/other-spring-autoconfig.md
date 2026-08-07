@@ -1,6 +1,7 @@
 ---
 title: 其他 Spring 自动配置
 default_lang_commit: f92dd4fbd069d7f6884b54b5a7961562bb40d656
+drifted_from_default: true
 weight: 70
 cSpell:ignore: autoconfigurations
 ---

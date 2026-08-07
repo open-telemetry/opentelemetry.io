@@ -54,7 +54,7 @@
   distributions:
     - contrib
   stability:
-    extension: alpha
+    extension: beta
 - name: azureencodingextension
   display_name: Azure Logs/Traces/Metrics Encoding Extension
   repo: contrib
@@ -236,15 +236,22 @@
   distributions:
     - contrib
   stability:
-    extension: alpha
+    extension: deprecated
   subtype: observer
+- name: mcp
+  display_name: MCP Server
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: development
 - name: memorylimiterextension
   display_name: Memory Limiter Extension
   repo: core
   distributions:
     - core
   stability:
-    extension: development
+    extension: beta
 - name: oauth2clientauthextension
   display_name: OAuth2 Client Credentials Authenticator Extension
   repo: contrib

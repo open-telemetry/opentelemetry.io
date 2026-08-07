@@ -1,6 +1,7 @@
 ---
 title: Eventos
 default_lang_commit: 6f926672a0a4cb03c0899d9990f4851d872cf685 # patched
+drifted_from_default: true
 weight: 30
 ---
 
@@ -26,8 +27,7 @@ retos y éxitos de la implementación en el mundo real. Estos eventos incluyen:
 - Sesiones de preguntas y respuestas con la comunidad
 
 Encuentra todos los eventos virtuales para usuarios finales de SIG y únete a la
-comunidad en
-[community.cncf.io/opentelemetry/](https://community.cncf.io/opentelemetry/).
+comunidad en [Open Community Groups](https://ocgroups.dev/cncf/group/xkrw4uk).
 
 ### KubeCon + CloudNativeCon
 

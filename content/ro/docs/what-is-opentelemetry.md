@@ -4,6 +4,7 @@ description: O scurtă explicație despre ce este și ce nu este OpenTelemetry.
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
 weight: 150
 default_lang_commit: abb36857b0a8c6b09e379a96bf26d08af8d8f99c # patched
+drifted_from_default: true
 cSpell:ignore: youtube
 ---
 

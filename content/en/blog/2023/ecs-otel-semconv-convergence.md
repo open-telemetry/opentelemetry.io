@@ -5,7 +5,7 @@ title:
 linkTitle: ECS and OTel SemConv Convergence
 date: 2023-04-17
 author: '[Reiley Yang](https://github.com/reyang)'
-cSpell:ignore: ECS Reiley SemConv Yang
+cSpell:ignore: ECS Reiley Yang
 ---
 
 Today, we're very excited to make a joint announcement with

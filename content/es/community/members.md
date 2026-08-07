@@ -3,6 +3,7 @@ title: Miembros del proyecto OpenTelemetry
 linkTitle: Miembros
 weight: 30
 default_lang_commit: 54b262d6b6703e304f6c42b41805a715d7ebee20
+drifted_from_default: true
 cSpell:ignore: triagers
 ---
 

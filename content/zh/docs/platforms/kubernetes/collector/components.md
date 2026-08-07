@@ -2,6 +2,7 @@
 title: Kubernetes 的重要组件
 linkTitle: 组件
 default_lang_commit: 5273b533bd6dcf1aa1a4b8f57295320dc001a4a4
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics k8sattributes kubelet kubeletstats replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---

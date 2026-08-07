@@ -3,6 +3,7 @@ title: Perfis
 weight: 5
 description: Um registro do uso de recursos no nível do código.
 default_lang_commit: 274bf95abd0cbad3ad9f95b4426f282466cdaade
+drifted_from_default: true
 ---
 
 **Status**: [Em desenvolvimento](/docs/specs/otel/document-status/)

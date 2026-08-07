@@ -48,7 +48,7 @@ todos:
     status: completed
 isProject: false
 custodian: Patrice Chalin
-cSpell:ignore: distinguisher subresponse gtag
+cSpell:ignore: distinguisher gtag
 ---
 
 # Registry component redirect edge function (revised)

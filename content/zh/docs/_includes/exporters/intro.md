@@ -1,5 +1,6 @@
 ---
 default_lang_commit: 8a5b880c16d49257a147c2c3ec4a6ef6fcee8e20 # patched
+drifted_from_default: true
 ---
 
 将遥测数据发送到 [OpenTelemetry Collector](/docs/collector/)，以确保其被正确导出。

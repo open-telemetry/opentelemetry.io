@@ -10,7 +10,7 @@ logBridgeWarning: >-
   bridge logs recorded through other log APIs / frameworks into OpenTelemetry.
   They are not intended for end user use as a replacement for Log4j / SLF4J /
   Logback / etc.
-cSpell:ignore: kotlint Logback updowncounter
+cSpell:ignore: kotlint updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

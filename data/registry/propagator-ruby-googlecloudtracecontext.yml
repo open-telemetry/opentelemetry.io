@@ -1,0 +1,23 @@
+title: opentelemetry-propagator-google_cloud_trace_context
+registryType: propagator
+language: ruby
+tags:
+  - google-cloud
+  - google-cloud-trace-context
+  - propagator
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-propagator-google_cloud_trace_context/v0.4.0/propagator/google_cloud_trace_context
+  docs: https://rubydoc.info/gems/opentelemetry-propagator-google_cloud_trace_context/0.4.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
+license: Apache-2.0
+description:
+  Google Cloud Trace Context Propagation Extension for the OpenTelemetry
+  framework
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-06-29
+package:
+  registry: gems
+  name: opentelemetry-propagator-google_cloud_trace_context
+  version: 0.4.0

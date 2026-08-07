@@ -4,7 +4,7 @@ description: El estándar abierto para telemetría
 developer_note:
   La macro para los bloques/portada usa como imagen de fondo cualquier archivo
   de imagen que contenga la palabra "background" en su nombre.
-default_lang_commit: 48f579c733f727417a51edb81a294151e5878d4d # patched
+default_lang_commit: 3aa0f7a25cd2f7878cad1665e67937c5e9c70694
 params:
   btn-lg: class="btn btn-lg btn-{1}" role="button"
   show_banner: true
@@ -147,13 +147,13 @@ comunidad. {{< /homepage/otel-feature >}}
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry es un proyecto [CNCF][] [en incubación][]**.<br> Se formó a
+**OpenTelemetry es un proyecto [graduado][] de la [CNCF][]**.<br> Se formó a
 partir de la fusión de los proyectos OpenTracing y OpenCensus.
 
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[en incubación]: https://www.cncf.io/projects/
+[graduado]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}

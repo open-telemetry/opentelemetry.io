@@ -38,18 +38,23 @@ Add an entry for the new language in `config/_default/hugo.yaml` under the
 
 ```yaml
 LANG_ID:
-  languageName: NativeName (English name)
-  languageCode: LANG_ID-REGION
+  label: NativeName
+  locale: LANG_ID-REGION # optional; see note below
   params:
     description: <site description translated into the new language>
 ```
 
-For example, the Polish entry looks like:
+The `locale` field is optional: use it when the site should emit a regional
+language tag, such as `en-US`, `pl-PL`, or `zh-CN`, in RSS feeds, for example;
+otherwise the language ID is used. Google Translate needs the full `zh-CN` tag
+for Chinese, while most other languages use the primary subtag.
+
+As an example, the Polish entry looks like:
 
 ```yaml
 pl:
-  languageName: Polski (Polish)
-  languageCode: pl-PL
+  label: Polski
+  locale: pl-PL
   params:
     description: Strona projektu OpenTelemetry
 ```
@@ -227,19 +232,15 @@ lang:LANG_ID:
           - content/LANG_ID/**
 ```
 
-### Component owners
+Keep the entries in alphabetical order.
 
-In [`.github/component-owners.yml`][], add an entry that requires review from
-the locale's approvers team and the docs maintainers:
+### Code owners
 
-```yaml
-content/LANG_ID:
-  - open-telemetry/docs-maintainers
-  - open-telemetry/docs-LANG_ID-approvers
-```
-
-Both files maintain alphabetical ordering by language code within their
-respective locale sections.
+- In [`.github/CODEOWNERS`][], give the locale team **sole** ownership of its
+  files. Follow the guidance given in the file.
+- Keep the entries in alphabetical order.
+- **Do not** add any entries to the [`.github/component-owners.yml`][]; changes
+  to this file are no longer required as of June 2026.
 
 ## Step 6 — GitHub org-level setup {#gh-org}
 
@@ -324,8 +325,8 @@ requesting a review:
       `ignorePaths`), custom word list created at `.cspell/LANG_ID-words.txt`,
       and `.cspell.yml` updated
 - [ ] **Step 4** — `.prettierignore` updated (if applicable for the script)
-- [ ] **Step 5** — `.github/component-label-map.yml` and
-      `.github/component-owners.yml` updated with the `lang:LANG_ID` entries
+- [ ] **Step 5** — `.github/component-label-map.yml` (label entry) and
+      `.github/CODEOWNERS` (sole-ownership block) updated for the locale
 - [ ] **Step 6** — Team PR opened against `open-telemetry/admin`; team members
       added manually
 - [ ] **Step 7** — Slack channel `#otel-localization-LANG_ID` created;
@@ -352,6 +353,8 @@ correct:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.prettierignore
 [`.github/component-label-map.yml`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml
+[`.github/CODEOWNERS`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
 [`.github/component-owners.yml`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
 [`projects/localization.md`]:

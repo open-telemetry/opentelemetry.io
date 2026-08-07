@@ -46,10 +46,10 @@ docker compose up --force-recreate --remove-orphans --detach
 
     {{% /tab %}} {{< /tabpane >}}
 
-### Run in minimal mode
+    ### Run in minimal mode
 
-If you have limited resources, you can start the demo without Kafka and its
-dependent services, reducing memory usage to approximately 3 GB of RAM:
+    If you have limited resources, you can start the demo without Kafka and its
+    dependent services, reducing memory usage to approximately 3 GB of RAM:
 
     {{< tabpane text=true >}} {{% tab Make %}}
 
@@ -65,14 +65,14 @@ docker compose -f docker-compose.minimal.yml up --force-recreate --remove-orphan
 
     {{% /tab %}} {{< /tabpane >}}
 
-The following services are **not** included in minimal mode:
+    The following services are **not** included in minimal mode:
 
-- `accounting`
-- `fraud-detection`
-- `flagd-ui`
-- `kafka`
+    - `accounting`
+    - `fraud-detection`
+    - `flagd-ui`
+    - `kafka`
 
-4.  (Optional) Enable API observability-driven testing[^1]:
+4. (Optional) Enable API observability-driven testing[^1]:
 
     {{< tabpane text=true >}} {{% tab Make %}}
 
@@ -94,8 +94,8 @@ Once the images are built and containers are started you can access:
 
 - Web store: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
-- Load Generator UI: <http://localhost:8080/loadgen/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
+- OpAMP UI: <http://localhost:8080/opamp/>
 - Tracetest UI: <http://localhost:11633/>, only when using
   `make run-tracetesting`
 - Flagd configurator UI: <http://localhost:8080/feature>

@@ -88,16 +88,15 @@ However, here is a list of factors that can influence the overall cardinality:
   to other applications:
   - `http.client.request.duration`
   - `http.client.request.body.size`
-  - `rpc.client.duration`
-  - `sql.client.duration`
-  - `redis.client.duration`
-  - `messaging.publish.duration`
+  - `rpc.client.call.duration`
+  - `db.client.operation.duration`
+  - `messaging.client.operation.duration`
   - `messaging.process.duration`
 - Server-side metrics, when OBI instruments application that dispatches requests
   from other applications:
   - `http.server.request.duration`
   - `http.server.request.body.size`
-  - `rpc.server.duration`
+  - `rpc.server.call.duration`
 - **HistogramBuckets** need to be accounted and multiply each metric, as every
   Application-level metric is an histogram. The buckets are configurable in OBI,
   but the default number is 15 for duration metrics and 11 for body size
@@ -143,13 +142,13 @@ The numbers taken as reference:
 - 2 instances, client and backend
 - 5 metric types, according to their role and protocols:
   - Client
-    - `rpc.client.duration`
+    - `rpc.client.call.duration`
   - Backend as a RPC server
-    - `rpc.server.duration`
+    - `rpc.server.call.duration`
   - Backend as an SQL and HTTP client
     - `http.client.request.duration`
     - `http.client.request.body.size`
-    - `sql.client.duration`
+    - `db.client.operation.duration`
 - 17 histogram metrics, as most metrics are duration-based
 - 7 operations: RPC Add/List/Delete, HTTP PUT, SQL Insert/Select/Delete
 - 3 endpoints: backend, Identity provider, and DB
@@ -165,30 +164,30 @@ In this simple scenario, we can manually count more the maximum cardinality to
 
 | #   | Instance | Metric                          | Endpoint      | Operation  | Code |
 | --- | -------- | ------------------------------- | ------------- | ---------- | ---- |
-| 1   | Client   | `rpc.client.duration`           | Backend       | Add        | OK   |
-| 2   | Client   | `rpc.client.duration`           | Backend       | Add        | Err  |
-| 3   | Client   | `rpc.client.duration`           | Backend       | List       | OK   |
-| 4   | Client   | `rpc.client.duration`           | Backend       | List       | Err  |
-| 5   | Client   | `rpc.client.duration`           | Backend       | Delete     | OK   |
-| 6   | Client   | `rpc.client.duration`           | Backend       | Delete     | Err  |
-| 7   | Backend  | `rpc.server.duration`           |               | Add        | OK   |
-| 8   | Backend  | `rpc.server.duration`           |               | Add        | Err  |
-| 9   | Backend  | `rpc.server.duration`           |               | List       | OK   |
-| 10  | Backend  | `rpc.server.duration`           |               | List       | Err  |
-| 11  | Backend  | `rpc.server.duration`           |               | Delete     | OK   |
-| 12  | Backend  | `rpc.server.duration`           |               | Delete     | Err  |
+| 1   | Client   | `rpc.client.call.duration`      | Backend       | Add        | OK   |
+| 2   | Client   | `rpc.client.call.duration`      | Backend       | Add        | Err  |
+| 3   | Client   | `rpc.client.call.duration`      | Backend       | List       | OK   |
+| 4   | Client   | `rpc.client.call.duration`      | Backend       | List       | Err  |
+| 5   | Client   | `rpc.client.call.duration`      | Backend       | Delete     | OK   |
+| 6   | Client   | `rpc.client.call.duration`      | Backend       | Delete     | Err  |
+| 7   | Backend  | `rpc.server.call.duration`      |               | Add        | OK   |
+| 8   | Backend  | `rpc.server.call.duration`      |               | Add        | Err  |
+| 9   | Backend  | `rpc.server.call.duration`      |               | List       | OK   |
+| 10  | Backend  | `rpc.server.call.duration`      |               | List       | Err  |
+| 11  | Backend  | `rpc.server.call.duration`      |               | Delete     | OK   |
+| 12  | Backend  | `rpc.server.call.duration`      |               | Delete     | Err  |
 | 13  | Backend  | `http.client.request.duration`  | Identity Prov | PUT /login | 200  |
 | 14  | Backend  | `http.client.request.duration`  | Identity Prov | PUT /login | 401  |
 | 15  | Backend  | `http.client.request.duration`  | Identity Prov | PUT /login | 500  |
 | 16  | Backend  | `http.client.request.body.size` | Identity Prov | PUT /login | 200  |
 | 17  | Backend  | `http.client.request.body.size` | Identity Prov | PUT /login | 401  |
 | 18  | Backend  | `http.client.request.body.size` | Identity Prov | PUT /login | 500  |
-| 19  | Backend  | `sql.client.duration`           | DB            | Insert     | OK   |
-| 20  | Backend  | `sql.client.duration`           | DB            | Insert     | Err  |
-| 21  | Backend  | `sql.client.duration`           | DB            | Select     | OK   |
-| 22  | Backend  | `sql.client.duration`           | DB            | Select     | Err  |
-| 23  | Backend  | `sql.client.duration`           | DB            | Delete     | OK   |
-| 24  | Backend  | `sql.client.duration`           | DB            | Delete     | Err  |
+| 19  | Backend  | `db.client.operation.duration`  | DB            | Insert     | OK   |
+| 20  | Backend  | `db.client.operation.duration`  | DB            | Insert     | Err  |
+| 21  | Backend  | `db.client.operation.duration`  | DB            | Select     | OK   |
+| 22  | Backend  | `db.client.operation.duration`  | DB            | Select     | Err  |
+| 23  | Backend  | `db.client.operation.duration`  | DB            | Delete     | OK   |
+| 24  | Backend  | `db.client.operation.duration`  | DB            | Delete     | Err  |
 
 For the sake of brevity, we haven't counted the histogram buckets. Next we
 multiply the metrics instances by the histogram buckets, plus histogram `_count`

@@ -4,7 +4,7 @@ description: O padrão aberto para telemetria
 developer_note:
   O shortcode blocks/cover (usado abaixo) vai servir como imagem de background
   para qualquer arquivo de imagem que contenha "background" no nome.
-default_lang_commit: 48f579c733f727417a51edb81a294151e5878d4d # patched
+default_lang_commit: 3aa0f7a25cd2f7878cad1665e67937c5e9c70694
 params:
   btn-lg: class="btn btn-lg btn-{1}" role="button"
   show_banner: true
@@ -148,13 +148,13 @@ garante estabilidade a longo prazo e evolução orientada pela comunidade.
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry é um projeto em [incubação][incubating] da [CNCF][]**.<br>
-Formado por meio de uma junção dos projetos OpenTracing e OpenCensus.
+**OpenTelemetry é um projeto [graduado][graduated] da [CNCF][]**.<br> Formado
+por meio de uma junção dos projetos OpenTracing e OpenCensus.
 
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[incubating]: https://www.cncf.io/projects/
+[graduated]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}

@@ -3,6 +3,7 @@ title: Anúncios
 description: Crie anúncios ou banners para eventos especiais.
 weight: 50
 default_lang_commit: aab27c8f1bb4c72c4ba94920396ef1fd6de1434e
+drifted_from_default: true
 ---
 
 Um anúncio é uma _regular page_ do Hugo, contida no diretório `announcements` de
