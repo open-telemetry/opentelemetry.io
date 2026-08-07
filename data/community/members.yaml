@@ -779,6 +779,8 @@ maintainers:
       - java-instrumentation-approvers
       - java-instrumentation-triagers
       - java-triagers
+      - semconv-conformance-approvers
+      - semconv-conformance-maintainers
     html_url: https://github.com/jaydeluca
     avatar_url: https://avatars.githubusercontent.com/u/7630696?v=4
   - name: jerbly
@@ -869,6 +871,8 @@ maintainers:
       - proto-maintainers
       - proto-triagers
       - semconv-cicd-approvers
+      - semconv-conformance-approvers
+      - semconv-conformance-maintainers
       - semconv-gcp-approvers
       - semconv-security-approvers
       - semconv-service-and-deployment-approvers
@@ -907,6 +911,8 @@ maintainers:
   - name: kamphaus
     teams:
       - semconv-cicd-approvers
+      - semconv-conformance-approvers
+      - semconv-conformance-maintainers
       - specs-semconv-approvers
       - specs-semconv-maintainers
     html_url: https://github.com/kamphaus
@@ -1008,6 +1014,8 @@ maintainers:
       - python-approvers
       - python-genai-approvers
       - python-genai-maintainers
+      - semconv-conformance-approvers
+      - semconv-conformance-maintainers
       - semconv-db-approvers
       - semconv-genai-approvers
       - semconv-genai-maintainers
@@ -1492,6 +1500,8 @@ maintainers:
       - java-triagers
       - python-genai-approvers
       - python-genai-maintainers
+      - semconv-conformance-approvers
+      - semconv-conformance-maintainers
       - semconv-db-approvers
       - semconv-genai-approvers
       - semconv-genai-maintainers
