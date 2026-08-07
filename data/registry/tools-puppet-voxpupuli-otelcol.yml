@@ -1,0 +1,19 @@
+# cSpell:ignore voxpupuli otelcol
+title: Puppet module for OpenTelemetry Collector
+registryType: utilities
+language: puppet
+tags:
+  - collector
+  - puppet
+  - puppet-module
+license: Apache-2.0
+description:
+  Puppet module by Vox Pupuli to install and manage OpenTelemetry Collector
+  across multiple machines
+authors:
+  - name: Vox Pupuli
+    url: https://github.com/voxpupuli/
+urls:
+  repo: https://github.com/voxpupuli/puppet-otelcol
+  docs: https://forge.puppet.com/modules/puppet/otelcol
+createdAt: 2026-07-08
