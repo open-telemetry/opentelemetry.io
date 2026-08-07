@@ -27,6 +27,7 @@ dezvoltatori
 dezvoltatorii
 discutǎ
 editezi
+elimini
 emiți
 enumerează
 explorezi
