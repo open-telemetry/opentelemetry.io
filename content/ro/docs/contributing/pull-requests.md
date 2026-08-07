@@ -173,7 +173,7 @@ Adaugă următorul comentariu în PR-ul tău:
 Acesta va declanșa ca bot-ul OpenTelemetry să încerce să rezolve problemele de
 build. Bot-ul răspunde cu un comentariu despre progres care face referire la
 comanda de rezolvare, apoi actualizează același comentariu cu rezultatul -
-altfel că fiecare comandă de rezolvare pe care o emiți primește propriul
+astfel că fiecare comandă de rezolvare pe care o emiți primește propriul
 comentariu de la bot. Sau poți emite una dintre următoarele comenzi de rezolvare
 pentru a trata o problemă specifică:
 
@@ -191,7 +191,7 @@ pentru a trata o problemă specifică:
 /fix:text
 ```
 
-Comanda de rezolvare trebuie să fie prima line a comentariului tău; poți adăuga
+Comanda de rezolvare trebuie să fie prima linie a comentariului tău; poți adăuga
 text explicativ în liniile ce urmează. Emiterea unei noi comenzi de rezolvare în
 timp ce una rulează deja o anulează pe cea ce rulează astfel că cea mai recentă
 comandă câștigă; atunci când se poate, comentariul bot-ului asociat acțiunii
@@ -204,7 +204,7 @@ anulate este actualizat pentru a nota despre anulare.
 
 ## Dezvoltare pe mediul local {#fork-the-repo}
 
-Dacă ești mai experimentat cu Git sau dacă schimbările tale sunt mai mare decât
+Dacă ești mai experimentat cu Git sau dacă schimbările tale sunt mai mari decât
 câteva linii, lucrează de pe un fork local.
 
 Asigură-te că ai [`git` instalat][`git` installed] pe calculatorul tău. Poți de
@@ -238,7 +238,7 @@ class S,T spacewhite
 class changes,changes2 white
 ```
 
-_Figura 3. Lucrul de pe un fork local pentru a face schimbările tale._
+_Figura 3. Lucrul de pe un fork local pentru a aplica modificările._
 
 ### Fă un fork al repertoriului
 
@@ -302,7 +302,7 @@ _Figura 3. Lucrul de pe un fork local pentru a face schimbările tale._
 
 1. Fă schimbările tale folosind un editor de cod sau text.
 
-La orice moment, folosește comanda `git status` pentru a vedea ce fișiere ai
+În orice moment, folosește comanda `git status` pentru a vedea ce fișiere ai
 modificat.
 
 ### Trimite schimbările tale
@@ -399,7 +399,7 @@ _Figura 4. Pașii pentru a deschide un PR din fork-ul tău la_
      - Dacă există un GitHub issue de care se leagă, include `Fixes #12345` sau
        `Closes #12345` în descriere astfel ca automatizările din GitHub să
        închidă issue-ul menționat după ce PR-ul a fost unit. Dacă există și alte
-       PR-uri conexe, fă mențiune și de acelea.
+       PR-uri conexe, menționează‑le și pe acelea.
      - Dacă dorești sfaturi despre ceva specific, include în descriere orice
        întrebare la care ai vrea ca revizuitorii să se gândească
 
@@ -417,7 +417,7 @@ o previzualizare folosind [Netlify](https://www.netlify.com/).
   versiune intermediară a website-ului OpenTelemetry cu schimbările tale
   aplicate. Așa verifică revizuitorii schimbările tale.
 
-Alter verifică ar putea să eșueze. Vezi
+Și alte verificări pot eșua. Vezi
 [lista cu toate verificările de PR](../pr-checks).
 
 ### Rezolvă problemele {#fix-issues}
@@ -447,7 +447,7 @@ Vizualizează schimbările local înainte să le trimiți sau să deschizi un pu
 request. O previzualizare îți permite să identifici erorile de build sau de
 formatare Markdown.
 
-Pentru a construi și servii site-ul pe mediul local folosind Hugo, rulează
+Pentru a construi și servi site-ul pe mediul local folosind Hugo, rulează
 următoarea comandă:
 
 ```shell
@@ -455,16 +455,16 @@ npm run serve
 ```
 
 Navighează la <http://localhost:1313> în browser-ul tău web pentru a vedea
-versiunea locală. Hugo urmărește pentru schimbări și reconstruiește site-ul după
+versiunea locală. Hugo monitorizează modificările și reconstruiește site-ul după
 caz.
 
-Pentru a oprii instanța locală de Hugo, mergi înapoi în terminal și tastează
+Pentru a opri instanța locală de Hugo, mergi înapoi în terminal și tastează
 `Ctrl+C`, sau închide fereastra de terminal.
 
 ### Lansări ale site-ului și previzualizări din PR
 
 Dacă trimiți un PR, Netlify [lansează o previzualizare][deploy preview] astfel
-că poți revizuii schimbările tale. Odată ce schimbările din PR-ul sunt trimise,
+că poți revizui schimbările tale. Odată ce schimbările din PR-ul sunt trimise,
 Netlify lansează versiunea actualizată a site-ului pe server-ul de producție.
 
 > **Notă**: Previzualizările din PR includ _pagini draft_, dar build-urile de
@@ -596,7 +596,7 @@ următoarele criterii:
 
 > **Important**
 >
-> Nu te îngrijora prea mult despre verificările de PR care eșuează. Membrii ai
+> Nu te îngrijora prea mult despre verificările de PR care eșuează. Membrii
 > comunității te vor ajuta să le rezolvi, fie oferindu-ți instrucțiuni despre
 > cum să le repari, fie reparându-le pentru tine.
 
