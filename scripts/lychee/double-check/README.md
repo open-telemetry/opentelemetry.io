@@ -25,8 +25,8 @@ The probe fetches the URL through headless Chrome ([puppeteer-core][]) with
 bot-evasion measures (browser user agent, `Accept-Language` header). Beyond the
 plain HTTP status, it:
 
-- **Verifies URL fragments** against the rendered page, including GitHub
-  line-range (`#L10-L20`) and `-ov-file` tab anchors.
+- **Verifies URL fragments** against the rendered page, including GitHub line
+  references (all `#L…` forms) and `-ov-file` tab anchors.
 - **Special-cases misleading hosts**: crates.io serves 404 for page requests
   even when the page exists, so the page body is analyzed instead; npmjs.com can
   redirect to a signin page for nonexistent packages and bot-wall (403) valid

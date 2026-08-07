@@ -87,10 +87,10 @@ updated `.lycheecache` along with your content changes. Otherwise the
 The following workflows are scheduled daily and run a link checking command over
 a **full** build:
 
-| Workflow                              | Link-check command               |
-| ------------------------------------- | -------------------------------- |
-| Refcache refresh                      | `fix:link-cache` (after pruning) |
-| [Housekeeping][] (`fix-and-test:all`) | `fix:link-cache`                 |
+| Workflow                              | Link-check command                |
+| ------------------------------------- | --------------------------------- |
+| Refcache refresh                      | `log:check:links` (after pruning) |
+| [Housekeeping][] (`fix-and-test:all`) | `fix:link-cache`                  |
 
 Refcache refresh prunes the oldest cache entries (the count is a workflow input)
 and re-runs the link check, which refreshes the cache entries for the pruned

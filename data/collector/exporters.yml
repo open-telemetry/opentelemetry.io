@@ -280,7 +280,7 @@
   distributions:
     - contrib
   stability:
-    logs: beta
+    logs: deprecated
 - name: nopexporter
   display_name: No-op Exporter
   repo: core
