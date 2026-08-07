@@ -61,17 +61,42 @@ async function checkForFragment(url, page, status) {
   return status;
 }
 
+// GitHub line-reference fragment (#L10, #L10-L20, column forms like
+// #L10C6-L10C20): returns the highest referenced line number, or null when
+// the fragment is not a line reference. Line and column numbers are 1-based;
+// zero or leading-zero values are rejected.
+export function parseGitHubLineRef(fragmentID) {
+  const m = fragmentID.match(
+    /^L([1-9]\d*)(?:C[1-9]\d*)?(?:-L([1-9]\d*)(?:C[1-9]\d*)?)?$/,
+  );
+  return m ? Math.max(+m[1], +(m[2] ?? 0)) : null;
+}
+
+// GitHub-specific fragment checks. GitHub renders anchors client-side, so
+// what "exists" means depends on the fragment form:
+//
+// - Line references (see parseGitHubLineRef): no target element ever appears
+//   in the DOM; instead, verify that the file has at least that many lines,
+//   via the code view's read-only textarea. Columns are accepted but not
+//   verified: GitHub clamps out-of-range columns to the line end.
+// - Anything else (headings in rendered markdown, repo-landing-page tabs):
+//   look for a link to the fragment, accepting GitHub's `-ov-file` tab-anchor
+//   suffix.
+//
+// Both probes are coupled to GitHub UI internals and can rot silently when
+// the UI changes: the textarea selector replaced a `div.highlighted-line`
+// check that GitHub's React code view stopped rendering. The live smoke
+// check (./live-check.mjs) exercises both a valid and an out-of-range line
+// reference so such drift is observable.
 async function anchorExistsInGitHub(page, fragmentID) {
-  if (/L\d+(-L\d+)?/.test(fragmentID)) {
-    // Line references: GitHub marks the targeted lines as highlighted.
-    return await page.evaluate(() => {
-      return !!document.querySelector('div.highlighted-line');
-    });
+  const maxLine = parseGitHubLineRef(fragmentID);
+  if (maxLine !== null) {
+    return await page.evaluate((max) => {
+      const ta = document.querySelector('textarea#read-only-cursor-text-area');
+      return !!ta && ta.value.split('\n').length >= max;
+    }, maxLine);
   }
 
-  // Other fragments (README tabs, headings in rendered markdown): look for a
-  // link to the fragment, possibly with the `-ov-file` suffix that GitHub
-  // uses as anchors of tabs on repo landing pages.
   return await page.evaluate((name) => {
     const elt = document.querySelector(
       `a[href="#${name}"], a[href="#${name}-ov-file"]`,

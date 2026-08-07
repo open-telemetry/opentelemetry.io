@@ -15,6 +15,17 @@ const cases = [
     url: 'https://opentelemetry.io/docs/what-is-opentelemetry/#what-is-observability',
     expect: '2xx',
   },
+  // GitHub line references are verified against the code view's read-only
+  // textarea (see anchorExistsInGitHub); these two probes catch drift in
+  // that GitHub UI dependency.
+  {
+    url: 'https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json#L2C3-L2C9',
+    expect: '2xx',
+  },
+  {
+    url: 'https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json#L99999',
+    expect: [422],
+  },
 ];
 
 let failures = 0;
