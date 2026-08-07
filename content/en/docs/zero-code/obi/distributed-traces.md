@@ -215,9 +215,9 @@ must not install a provider itself, including by calling
 `otel.SetTracerProvider(auto.TracerProvider())`, for this automatic path.
 
 See the
-[runnable OBI Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/examples/go-trace-api)
+[runnable OBI Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/examples/go-trace-api?link-check=no&last-validated=2026-08-07)
 for setup and troubleshooting. OBI's
-[support matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/main/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation)
+[support matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/main/SUPPORT_MATRIX.md?link-check=no&last-validated=2026-08-07#go-global-trace-api-and-auto-sdk-activation)
 documents the exact v0.11.0 version allowlists, canonical checksum requirements,
 supported architectures, required-symbol and offset gating, and
 `bpf_probe_write_user` permission conditions. OBI fails closed when a gate is
