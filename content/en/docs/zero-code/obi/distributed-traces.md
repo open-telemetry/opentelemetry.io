@@ -223,17 +223,19 @@ supported architectures, required-symbol and offset gating, and
 `bpf_probe_write_user` permission conditions. OBI fails closed when a gate is
 not satisfied.
 
-For an otherwise no-SDK application, the API spans remain non-recording without
-rich Auto SDK activation, and OBI may emit only its reduced-fidelity synthetic
-spans. Synthetic fallback does not preserve the complete application-authored
-scope, events, kind, attributes, or parenting semantics and is not equivalent to
-rich activation. If the application has registered an SDK delegate, OBI defers
-to that SDK instead of activating the Auto SDK or creating a competing synthetic
-span.
+For an otherwise no-SDK application, the API spans remain non-recording when OBI
+cannot activate the Auto SDK. OBI may still construct synthetic spans from
+ordinary Go probes. A synthetic span may contain the span name, parent
+relationship, status, and some primitive attributes, but it does not contain the
+instrumentation scope, events, or requested span kind. It is not a substitute
+for the application-authored span. If the application has registered an SDK
+delegate, OBI defers to that SDK instead of activating the Auto SDK or creating
+a competing synthetic span.
 
-In v0.11.0, each rich serialized span payload is limited to 16 KiB. Larger
-payloads are not emitted, and there is no operator-visible oversized-payload
-drop metric or warning. Other known limitations cover
+The Auto SDK serializes each application-authored span as OTLP JSON. In v0.11.0,
+OBI accepts payloads up to 16 KiB and does not emit larger payloads. There is no
+operator-visible drop metric or warning for this condition. Other known
+limitations cover
 [sampling](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2793),
 [context handoffs](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2794),
 [external and remote parents and `TraceState`](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2959),
