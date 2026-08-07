@@ -10,7 +10,7 @@ info here.
 
 **Environment Setup:**
 
-- Install Node.js LTS (currently v22.x): Use `nvm install` or
+- Install the Node.js LTS version given by `.nvmrc`: Use `nvm install` or
   `nvm install lts && nvm use lts`
 - If Puppeteer download fails due to network issues: Set
   `export PUPPETEER_SKIP_DOWNLOAD=true`
@@ -20,6 +20,7 @@ info here.
 **Initial Setup and Dependencies:**
 
 - `npm install` -- takes ~45 seconds. NEVER CANCEL. Set timeout to 2+ minutes.
+  Installs the versions pinned in the committed `package-lock.json`
 - Initial setup automatically runs: `npm run prepare` which executes
   `get:submodule` and `_prepare:docsy`
 - Submodules are essential - they contain OpenTelemetry specifications,

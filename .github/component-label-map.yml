@@ -172,6 +172,8 @@ CI/infra: # including config
           - Makefile
           - netlify/**
           - netlify.toml
+          - '**/package-lock.json'
+          - package.json # scripts map defines the CI install contract
           - scripts/**
           - tests/**
 
@@ -179,5 +181,6 @@ dependencies:
   - changed-files:
       - any-glob-to-any-file:
           - package.json
+          - '**/package-lock.json'
           - .gitmodules
           - content-modules/**
