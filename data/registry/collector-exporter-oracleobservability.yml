@@ -1,0 +1,27 @@
+# cSpell:ignore loganalytics oracleobservability oracleobservabilityexporter
+title: Oracle Observability Collector Exporter
+registryType: exporter
+language: collector
+tags:
+  - go
+  - exporter
+  - collector
+  - oracle
+  - oci
+  - logs
+  - log-analytics
+license: UPL-1.0 OR Apache-2.0
+description:
+  Sends OpenTelemetry logs from the OpenTelemetry Collector to OCI Log Analytics
+  using the UploadOtlpLogs API.
+authors:
+  - name: Oracle
+    url: https://github.com/oracle-samples
+urls:
+  repo: https://github.com/oracle-samples/otel-collector-exporter-oracleobservability
+  docs: https://github.com/oracle-samples/otel-collector-exporter-oracleobservability#readme
+createdAt: 2026-07-30
+package:
+  registry: go-collector
+  name: github.com/oracle-samples/otel-collector-exporter-oracleobservability/oracleobservabilityexporter
+  version: v0.153.0
