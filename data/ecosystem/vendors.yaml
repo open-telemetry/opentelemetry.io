@@ -149,6 +149,12 @@
   contact:
   oss: false
   commercial: true
+- name: Dartastic.io
+  nativeOTLP: true
+  url: https://dartastic.io/
+  contact: support@dartastic.io
+  oss: false
+  commercial: true
 - name: Datadog
   nativeOTLP: true
   url: https://docs.datadoghq.com/opentelemetry/
