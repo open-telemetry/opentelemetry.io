@@ -102,16 +102,17 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: "4.83.1"),
-        .package(url: "https://github.com/open-telemetry/opentelemetry-swift", from: "1.0.0"),
+        .package(url: "https://github.com/open-telemetry/opentelemetry-swift-core.git", from: "2.4.1"),
+        .package(url: "https://github.com/open-telemetry/opentelemetry-swift.git", from: "2.4.1"),
     ],
     targets: [
         .executableTarget(
             name: "DiceApp",
             dependencies: [
                 .product(name: "Vapor", package: "vapor"),
-                .product(name: "OpenTelemetryApi", package: "opentelemetry-swift"),
-                .product(name: "OpenTelemetrySdk", package: "opentelemetry-swift"),
-                .product(name: "StdoutExporter", package: "opentelemetry-swift"),
+                .product(name: "OpenTelemetryApi", package: "opentelemetry-swift-core"),
+                .product(name: "OpenTelemetrySdk", package: "opentelemetry-swift-core"),
+                .product(name: "StdoutExporter", package: "opentelemetry-swift-core"),
                 .product(name: "ResourceExtension", package: "opentelemetry-swift"),
             ],
             path: "."
@@ -134,7 +135,7 @@ import ResourceExtension
 enum Entrypoint {
     static func main() async throws {
 
-        let spanExporter = StdoutExporter();
+        let spanExporter = StdoutSpanExporter()
         let spanProcessor = SimpleSpanProcessor(spanExporter: spanExporter)
         let resources = DefaultResources().get()
 
