@@ -1,10 +1,10 @@
 # cSpell:ignore jjatria
 title: OpenTelemetry SDK for Perl
-registryType: instrumentation
+registryType: sdk
 language: perl
 tags:
   - perl
-  - instrumentation
+  - sdk
 license: Artistic-1.0-Perl
 description: An unofficial implementation of the OpenTelemetry SDK in Perl.
 authors:

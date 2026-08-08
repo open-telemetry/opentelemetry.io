@@ -1,9 +1,9 @@
 title: OpenTelemetry.jl
-registryType: instrumentation
+registryType: sdk
 language: julia
 tags:
   - julia
-  - instrumentation
+  - sdk
 license: Apache 2.0
 description: An unofficial implementation of OpenTelemetry in Julia.
 authors:

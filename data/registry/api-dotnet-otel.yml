@@ -1,5 +1,5 @@
-title: .NET
-registryType: core
+title: OpenTelemetry .NET API
+registryType: api
 language: dotnet
 tags:
   - c#
@@ -9,5 +9,5 @@ description: The OpenTelemetry API and SDK for .NET (C#, F#)
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-dotnet
+  repo: https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Api
 createdAt: 2020-02-04
