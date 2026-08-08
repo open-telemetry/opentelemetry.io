@@ -13,7 +13,7 @@ default_lang_commit: 296501fa29ca5eb8fdb88af10ae69fdf661c3daf
 cSpell:ignore: otca
 ---
 
-このページでは、OpenTelemetry に関するトレーニングリソースを紹介しています。
+このページでは、OpenTelemetry に関する拡充されつつあるトレーニングリソースを紹介しています。
 最新情報を随時確認してください。
 
 ## 認定資格 {#certifications}
