@@ -82,7 +82,13 @@ need to adjust the command syntax.
      otel/opentelemetry-collector:{{% param vers %}} \
      2>&1 | tee collector-output.txt
    ```
-
+      > **Note**
+   >
+   > On Windows, port `55679` may be reserved by the operating system (for example,
+   > because of Hyper-V). If Docker reports a port binding error, update the
+   > Collector configuration to use another available port (for example, `9999`)
+   > and change the Docker port mapping to match.
+   
    The previous command runs the Collector locally and opens three ports:
    - `4317` — OTLP over gRPC, the default for most SDKs
    - `4318` — OTLP over HTTP, for clients that don't support gRPC
