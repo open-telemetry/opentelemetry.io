@@ -1,0 +1,21 @@
+title: Alfred
+registryType: utilities
+language: python
+tags:
+  - genai
+  - agents
+  - traces
+  - audit
+  - mandate
+urls:
+  repo: https://github.com/adriencr81/Check-Alfred
+  website: https://adriencr81.github.io/Check-Alfred/
+  docs: https://adriencr81.github.io/Check-Alfred/
+license: Apache 2.0
+description: Reads the OpenTelemetry GenAI spans emitted by an AI agent and computes a daily digest of what the agent did, checked against a mandate declared in YAML. Every statement in the digest is anchored to a trace event ID.
+authors:
+  - name: Adrien Deleuil
+    url: https://github.com/adriencr81
+createdAt: 2026-07-31
+isNative: false
+isFirstParty: false
