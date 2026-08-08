@@ -112,7 +112,7 @@ SDK exists.
   attributes to the span like the value of `rolls`, `code.*`, ...
 - There should be a span created for the inner function in `library`. The span
   tracks the time of the function. It adds the random number it generated as an
-  attribue to the span.
+  attribute to the span.
 - In the `library` file the following metrics should be created:
   - a counter for the calls of the outer function
   - a histogram for the distribution of the outcomes (1-6)
