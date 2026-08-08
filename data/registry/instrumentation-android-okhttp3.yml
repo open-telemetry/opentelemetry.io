@@ -6,10 +6,17 @@ tags:
   - okhttp3
   - instrumentation
   - android
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/okhttp3
 license: Apache 2.0
 description:
+  OkHttp client telemetry instrumentation for OpenTelemetry Android, tracing
+  outgoing HTTP network requests.
 authors:
   - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/okhttp3
+  docs: /docs/platforms/client-apps/android/#http-client-instrumentation
 createdAt: 2026-07-12
+package:
+  registry: maven
+  name: io.opentelemetry.android.instrumentation/okhttp3-library
+  version: 1.5.0

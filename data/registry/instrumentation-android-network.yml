@@ -5,10 +5,17 @@ tags:
   - network
   - instrumentation
   - android
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/network
 license: Apache 2.0
 description:
+  Detects network state changes and adds connectivity information to Android
+  telemetry.
 authors:
   - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/network
+  docs: /docs/platforms/client-apps/android/#network-monitoring
 createdAt: 2026-07-12
+package:
+  registry: maven
+  name: io.opentelemetry.android.instrumentation/network
+  version: 1.5.0

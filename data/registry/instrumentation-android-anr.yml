@@ -5,10 +5,17 @@ tags:
   - anr
   - instrumentation
   - android
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/anr
 license: Apache 2.0
 description:
+  Detects Application Not Responding (ANR) conditions in Android applications
+  and reports them as spans.
 authors:
   - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/anr
+  docs: /docs/platforms/client-apps/android/#anr-detection
 createdAt: 2026-07-12
+package:
+  registry: maven
+  name: io.opentelemetry.android.instrumentation/anr
+  version: 1.5.0
