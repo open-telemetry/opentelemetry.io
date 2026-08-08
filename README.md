@@ -76,7 +76,7 @@ For more information about the maintainer role, see the
 
 These are the members of [@open-telemetry/docs-approvers][] (members-only):
 
--
+- [Diana Todea](https://github.com/didiViking), VictoriaMetrics
 
 For more information about the approver role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
@@ -85,7 +85,6 @@ For more information about the approver role, see the
 
 These are the members of [@open-telemetry/docs-triagers][] (members-only):
 
-- [Diana Todea](https://github.com/didiViking), VictoriaMetrics
 - [Emídio Neto](https://github.com/emdneto)
 - [Ezzio Moreira](https://github.com/EzzioMoreira)
 - [Michael Yao](https://github.com/windsonsea), DaoCloud
