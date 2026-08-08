@@ -16,6 +16,9 @@ To visualize request flows, see the [Service Diagram](../architecture/).
 | [flagd-ui](flagd-ui/)                 | Elixir     | Allows toggling and editing of feature flags.                                                                                        |
 | [fraud-detection](fraud-detection/)   | Kotlin     | Analyzes incoming orders and detects fraud attempts (mock/).                                                                         |
 | [frontend](frontend/)                 | TypeScript | Exposes an HTTP server to serve the website. Does not require sign up / login and generates session IDs for all users automatically. |
+| [frontend-proxy](frontend-proxy/)     | Envoy      | Reverse proxy that fronts the web store and the observability UIs on a single port.                                                  |
+| [image-provider](image-provider/)     | NGINX      | Statically hosts the product images used by the frontend.                                                                            |
+| [Kafka](kafka/)                       | Java       | Message queue connecting the checkout service to the accounting and fraud detection services.                                        |
 | [load-generator](load-generator/)     | Go/k6      | Continuously sends requests imitating realistic user shopping flows to the frontend.                                                 |
 | [payment](payment/)                   | JavaScript | Charges the given credit card info (mock/) with the given amount and returns a transaction ID.                                       |
 | [product-catalog](product-catalog/)   | Go         | Provides the list of products from a JSON file and ability to search products and get individual products.                           |
