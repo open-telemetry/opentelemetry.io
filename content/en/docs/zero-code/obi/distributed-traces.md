@@ -210,32 +210,33 @@ more.
 Starting with OBI v0.11.0, an application can create spans through the global
 `otel.Tracer` API without configuring an SDK, `TracerProvider`, span processor,
 exporter, or other application-side telemetry pipeline. OBI activates the Auto
-SDK path only when every compatibility and safety gate passes. The application
+SDK only when the application and host meet all requirements. The application
 must not install a provider itself, including by calling
-`otel.SetTracerProvider(auto.TracerProvider())`, for this automatic path.
+`otel.SetTracerProvider(auto.TracerProvider())`, for OBI to activate the Auto
+SDK.
 
 See the
-[runnable OBI Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/examples/go-trace-api?link-check=no&last-validated=2026-08-07)
+[runnable OBI Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/examples/go-trace-api)
 for setup and troubleshooting. OBI's
-[support matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/main/SUPPORT_MATRIX.md?link-check=no&last-validated=2026-08-07#go-global-trace-api-and-auto-sdk-activation)
-documents the exact v0.11.0 version allowlists, canonical checksum requirements,
-supported architectures, required-symbol and offset gating, and
-`bpf_probe_write_user` permission conditions. OBI fails closed when a gate is
-not satisfied.
+[support matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/main/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation)
+documents the exact v0.11.0 module versions and checksum requirements, supported
+architectures, executable requirements, and `bpf_probe_write_user` permission
+conditions. If any requirement is not met, OBI leaves the Auto SDK inactive.
 
-For an otherwise no-SDK application, the API spans remain non-recording when OBI
-cannot activate the Auto SDK. OBI may still construct synthetic spans from
-ordinary Go probes. A synthetic span may contain the span name, parent
-relationship, status, and some primitive attributes, but it does not contain the
-instrumentation scope, events, or requested span kind. It is not a substitute
-for the application-authored span. If the application has registered an SDK
-delegate, OBI defers to that SDK instead of activating the Auto SDK or creating
-a competing synthetic span.
+For an application that has not configured an SDK, the API spans remain
+non-recording when OBI cannot activate the Auto SDK. When OBI can observe calls
+to the global Trace API, it may still construct synthetic spans. A synthetic
+span may contain the span name, parent relationship, status, and some primitive
+attributes, but it does not contain the instrumentation scope, events, or
+requested span kind. It is not a substitute for the application-authored span.
+If the application has registered an SDK `TracerProvider`, OBI defers to that
+provider instead of activating the Auto SDK or creating a competing synthetic
+span.
 
-The Auto SDK serializes each application-authored span as OTLP JSON. In v0.11.0,
-OBI accepts payloads up to 16 KiB and does not emit larger payloads. There is no
-operator-visible drop metric or warning for this condition. Other known
-limitations cover
+In v0.11.0, each application-authored span must fit within a 16 KiB encoded
+payload. Spans whose payloads exceed this limit are not exported. v0.11.0 does
+not log a warning or publish a metric when this happens. Other known limitations
+cover
 [sampling](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2793),
 [context handoffs](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2794),
 [external and remote parents and `TraceState`](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2959),
