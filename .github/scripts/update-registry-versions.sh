@@ -172,6 +172,7 @@ fi
 if [[ -n $(git status --porcelain) ]]; then
     echo "Versions have been updated, formatting and pushing changes."
 
+    $NPM run fix:link-cache
     $NPM run fix:format
 
     $GIT checkout -b "$branch"
