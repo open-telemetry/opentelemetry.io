@@ -3,11 +3,20 @@ title: CI ワークフロー
 description: >-
   PR のチェック、ラベル管理、その他の CI/CD プロセスを自動化する GitHub Actions ワークフロー。
 weight: 10
-default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
-drifted_from_default: true
+default_lang_commit: bf0881aa9c57519b487bf6b5c469ca7f188dceed
 ---
 
 ワークフローと（ほとんどの）ヘルパースクリプトについては、[.github][] 配下の `workflow` フォルダと `scripts` フォルダを参照してください。
+
+## 依存関係のインストール {#dependency-installation}
+
+CI ジョブはコミット済みの `package-lock.json` から npm の依存関係をインストールします。
+
+- `npm run ci:min` はロックされた依存関係グラフをインストールします。ライフサイクルスクリプトは実行されず、`package.json` とロックファイルが同期していない場合はインストールが失敗します。
+- サイトをビルドするジョブは、インストールの後に `npm run ci:prepare` を実行します。これは `hugo-extended`（再有効化された唯一の依存関係フック）をリビルドし、リポジトリ独自の `prepare` セットアップを実行します。
+- devcontainer はかわりに `npm run install:safe` を使用します。同じ契約ですが、`netlify-cli` などのローカルツールを含むオプショナルな依存関係を保持します。
+
+スクリプトの詳細については、[npm スクリプト](../npm-scripts/)を参照してください。
 
 ## PR 承認ラベル {#pr-approval-labels}
 
@@ -213,6 +222,7 @@ sequenceDiagram
 - **`/fix:<name>`** は `npm run fix:<name>` を実行します（例: `/fix:format`）。
 - **`/fix:all`** はコマンドのセマンティクスが変更されたため `/fix` にマッピングされます（[#9291][]）。
 - **`/fix:ALL`** は `fix:all` にマッピングされ、メンテナーが `fix:all` を実行できるようにします。
+- **`/fix:refcache`**（非推奨）は `fix:refcache` 互換エイリアスを介して引き続き実行されます。結果のコメントは `/fix:link-cache` を案内します。
 
 ディレクティブはコメントの最初の行でなければなりません。
 それ以降の行は無視されるため、その後に説明を追加できます。
@@ -278,7 +288,7 @@ PR での新しい `/fix` コメントは、その PR の実行中のランを�
 >
 > [`refcache-refresh.yml`][] ワークフローも毎日実行され `.lycheecache` を変更するため、マージ順序によっては 2 つのボット PR が競合する可能性があります。
 > 両方のブランチが毎回の実行時に `main` から同期するため、競合は自然に解消されます。
-> refcache-refresh を再利用可能なパッチアクションに移行することで、設計上このような競合を排除することが [プロジェクト計画][project plan]で追跡されています。
+> `refcache-refresh` を再利用可能なパッチアクションに移行することで、設計上このような競合を排除することが [プロジェクト計画][project plan]で追跡されています。
 
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 [housekeeping]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/housekeeping.yml
