@@ -55,7 +55,7 @@ characteristics that affect observability:
 - Long-lived applications and data formats
 - Strong security and compliance constraints
 
-## How mainframes show up in OTel architectures
+## How mainframes show up in OpenTelemetry architectures
 
 From an OpenTelemetry perspective, mainframes are usually part of a **larger,
 hybrid system**:
@@ -95,8 +95,8 @@ When you bring OpenTelemetry into a mainframe context, you will often encounter:
   - subsystem logs
   - job logs
   - performance monitors
-  - (The above need parsing and mapping into **traces, metrics, and logs** as
-    defined by OpenTelemetry)
+  - These sources often need to be parsed and mapped into traces, metrics,
+    and logs as defined by OpenTelemetry
 - **Access and change constraints**
   - Production mainframes often have strict change control and limited ability
     to modify application code.
@@ -130,27 +130,20 @@ on Linux servers or containers) and acts as a **bridge** between:
 
 ## Current status
 
-Foundational OpenTelemetry instrumentation for mainframe environments is
-available today, with ongoing enhancements to expand the platform support.
+Foundational OpenTelemetry instrumentation is available for mainframe
+environments, and platform support continues to expand.
 
-Historically, much of this mainframe-specific instrumentation has been vendor
-supplied. Many observability backend vendors provide vendor-specific extensions
-or agents to package and ship mainframe telemetry to their observability
-backend.
+Historically, most mainframe instrumentation has been vendor supplied: many
+observability backend vendors provide their own extensions or agents to
+package and ship mainframe telemetry to their backends.
 
-However, as more and more mainframe customers are requesting OpenTelemetry
-support, this landscape is quickly changing -- with customers preferring more
-vendor-neutral approaches. Vendors are responding in kind.
+In response to customer demand for vendor-neutral telemetry, IBM, which
+supplies the operating system and subsystem software for the most widely used
+mainframe systems, and many independent mainframe software vendors (ISVs) are
+adding native OpenTelemetry support to their products.
 
-IBM, which supplies the operating system and subsystem software for the most
-pervasively used mainframe systems, is currently in the process of including
-native OpenTelemetry support into its services.
-
-Many independent mainframe software vendors (ISVs) are also transitioning their
-observability support to favor the OpenTelemetry vendor-neutral approach.
-
-Of course, this successful transition depends upon common terminology and
-semantics.
+This transition depends on common terminology and semantics, which the
+working group described in the next section is helping to define.
 
 ## Working group and community
 
