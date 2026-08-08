@@ -9,6 +9,7 @@ autogenerado
 autoinstrumentación
 cardinalidad
 Cíñete
+configúralo
 configurarlo
 correlacionan
 correlacionarse
@@ -44,6 +45,7 @@ observabilidad
 orquestador
 orquestadores
 precargada
+preconfigurado
 preconstruida
 preconstruidas
 prerrellenada
@@ -57,6 +59,8 @@ reformatea
 reinicios
 renderizan
 semánticamente
+sobredimensiones
+sobrescribirlos
 subcarpeta
 subproyecto
 subregión
