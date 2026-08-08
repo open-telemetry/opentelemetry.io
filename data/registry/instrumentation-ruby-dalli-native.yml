@@ -23,5 +23,5 @@ createdAt: '2026-02-17'
 package:
   registry: gems
   name: dalli
-  version: 5.0.5
+  version: 5.0.6
 isNative: true
