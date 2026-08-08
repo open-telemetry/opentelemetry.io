@@ -9,6 +9,21 @@ weight: 10
 For workflows and (most of) their helper scripts, see the `workflow` and
 `scripts` folder under [.github][]
 
+## Dependency installation {#dependency-installation}
+
+CI jobs install npm dependencies from the committed `package-lock.json`:
+
+- `npm run ci:min` installs the locked dependency graph: no lifecycle scripts
+  run, and the install fails if `package.json` and the lock file are out of
+  sync.
+- Jobs that build the site follow the install with `npm run ci:prepare`, which
+  rebuilds `hugo-extended` (the only dependency hook re-enabled) and then runs
+  the repository's own `prepare` setup.
+- The devcontainer instead uses `npm run install:safe`: the same contract, but
+  keeping optional dependencies, which carry local tools such as `netlify-cli`.
+
+For script details, see [npm scripts](../npm-scripts/).
+
 ## PR approval labels {#pr-approval-labels}
 
 The following workflows work together to automatically manage approval-related
@@ -246,6 +261,8 @@ scripts by commenting on a PR:
 - **`/fix:all`** is mapped to `/fix` since the command semantics changed
   ([#9291][]).
 - **`/fix:ALL`** is mapped to `fix:all` so that maintainers can run `fix:all`.
+- **`/fix:refcache`** (deprecated) still runs, via the `fix:refcache` compat
+  alias; the outcome comment points to `/fix:link-cache`.
 
 The directive must be the first line of the comment; any following lines are
 ignored, so you can add an explanation after it. The workflow itself triggers on
@@ -341,8 +358,8 @@ It runs as a three-stage pipeline:
 > The [`refcache-refresh.yml`][] workflow also runs daily and touches
 > `.lycheecache`, so the two bot PRs can conflict depending on merge order.
 > Conflicts self-heal, since both branches sync from `main` on each run.
-> Migrating refcache-refresh onto the reusable patch actions — eliminating such
-> conflicts by construction — is tracked in the [project plan][].
+> Migrating `refcache-refresh` onto the reusable patch actions — eliminating
+> such conflicts by construction — is tracked in the [project plan][].
 
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 [housekeeping]:

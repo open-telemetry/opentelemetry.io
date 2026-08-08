@@ -4,9 +4,6 @@
 # computed from page front matter. Edit THIS base; do not edit the generated
 # `lychee.toml` (gitignored). Regenerate with: npm run generate:config:links
 #
-# Internal-path rules in `exclude` are written without a leading `^/` so they
-# match lychee's resolved `file://` URIs (built with `--root-dir public`).
-#
 # cSpell:disable
 
 cache = true
@@ -19,6 +16,12 @@ max_retries = 0
 include_fragments = "full"  # check anchors too; this setting is an enum, not a boolean
 index_files = ["index.html"]  # resolve Hugo pretty-URL dir links to index.html for fragment checks
 
+# npmjs 429s at lychee's default pacing. Registry data links both host forms,
+# and lychee matches hostnames exactly. Dotted keys: a [hosts] table header
+# would capture the generated exclude_path appended to this file.
+hosts."npmjs.com" = { concurrency = 1, request_interval = "1s" }
+hosts."www.npmjs.com" = { concurrency = 1, request_interval = "1s" }
+
 exclude = [
   # Rule-writing notes: internal-path rules match lychee's resolved `file://`
   # URI, so write them UNANCHORED (a `/docs/…` substring covers every locale)
@@ -26,7 +29,7 @@ exclude = [
   # --- internal path rules ---
   '/index\.xml$',                                   # RSS alternate links
   '[?&]link-check=no',                              # opt-out query param
-  '/api/?$',                                        # ^/api/?$
+  '/api/?$',
   '/docs/languages/\w+/(api|examples|registry)/?$',
   '/docs/collector/registry/?$',
   '/docs/languages/dotnet/(metrics-api|traces-api)/?',
@@ -35,6 +38,11 @@ exclude = [
   # JS accordion: #type-* anchors are client-side only (spec PR #5192).
   # Optional slash: lychee resolves dir URLs to …/types#fragment (no slash).
   '/docs/specs/otel-config/types/?#type-',
+
+  # Temporary: javadoc.io /doc/ wrappers omit method anchors (#11037).
+  '^https://javadoc\.io/doc/com\.azure/azure-cosmos/.+#executeBulkOperations',
+  # Temporary: gitpod.io redirects to an Ona login page (#11144).
+  '^https://gitpod\.io',
 
   # --- external host rules ---
   '^https://deploy-preview-\d+--opentelemetry\.netlify\.app/',
@@ -56,11 +64,17 @@ exclude = [
   '^https://www\.merriam-webster\.com',
   '^https://oatpp\.io',
   '^https://www\.intersystems\.com',
+  # Bot wall on the product-page tree: 403s lychee's user agent (and a browser
+  # one) while serving 200 to a plain curl user agent. The pages are live, and
+  # `www.cisco.com/` itself is reachable, so scope the rule to `/c/…/products/`.
+  '^https://www\.cisco\.com/c/en/us/products/',
   '^https://github\.com/open-telemetry/opentelemetry\.io/issues/?\?q=',
   '^https://github\.com/open-telemetry/opentelemetry\.io/discussions/?\?discussions_q=',
   '^https://github\.com/search/?\?',
 
-  # Docsy-generated GitHub edit/new/view-source links
+  # Docsy-generated GitHub edit/new/view-source links. The negative character
+  # classes below narrow the view-source skips: all locales, sections, and
+  # section indexes are skipped except content/en/docs/s* minus security.
   '^https?://github\.com/.*?/.*?/(new/|edit/|issues/new\?)',
   '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/[^e]',
   '^https://github\.com/open-telemetry/opentelemetry\.io/tree/main/content/es',
@@ -94,5 +108,10 @@ exclude = [
   '^https://kafka\.apache\.org/documentation/?#',
   # otelbin.io encodes the collector config in the URL fragment (`#config=…`);
   # it is a payload, not a document anchor.
-  '^https://www\.otelbin\.io/\?#',
+  '^https://www\.otelbin\.io/\??#',
+  # docs.alauda.io serves an empty JS-shell document; all content, including
+  # headings, is client-rendered, so any fragment on it is unverifiable.
+  '^https://docs\.alauda\.io/.*#',
+  # Google Docs heading anchors (`#heading=h.…`) are client-rendered.
+  '^https://docs\.google\.com/document/d/.+#',
 ]

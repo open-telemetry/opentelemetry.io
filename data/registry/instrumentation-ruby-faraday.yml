@@ -1,16 +1,18 @@
 # cSpell:ignore faraday
-title: Faraday Instrumentation
+title: opentelemetry-instrumentation-faraday
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
-license: Apache 2.0
-description: Faraday instrumentation for Ruby.
+license: Apache-2.0
+description: Faraday instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/faraday
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-faraday/v0.33.0/instrumentation/faraday
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-faraday/0.33.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems
