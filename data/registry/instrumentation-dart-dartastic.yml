@@ -1,0 +1,23 @@
+# cSpell:ignore Dartastic Bushe
+title: Dartastic OpenTelemetry SDK for Dart
+registryType: instrumentation
+language: dart
+tags:
+  - dart
+  - flutter
+  - sdk
+license: Apache 2.0
+description:
+  An OpenTelemetry SDK for Dart and Flutter supporting traces, metrics, and logs
+  on all Dart platforms — server, mobile, desktop, and web (dart2js and
+  WebAssembly) — with OTLP gRPC and HTTP exporters, W3C trace context and
+  baggage propagation, and configuration via the standard OTEL_* environment
+  variables.
+authors:
+  - name: Michael Bushe
+    url: https://github.com/michaelbushe
+urls:
+  repo: https://github.com/MindfulSoftwareLLC/dartastic_opentelemetry
+  website: https://pub.dev/packages/dartastic_opentelemetry
+  docs: https://pub.dev/documentation/dartastic_opentelemetry/latest/
+createdAt: 2026-08-04
