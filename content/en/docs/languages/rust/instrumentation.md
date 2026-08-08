@@ -39,8 +39,8 @@ For setup details and related APIs, see the
 Use a meter to create instruments and record measurements from your code. In a
 Rust application, this usually means:
 
-1. Initializing a `MeterProvider`
-2. Acquiring a `Meter`
+1. Acquiring a `MeterProvider` from the global provider
+2. Creating a `Meter` from that provider
 3. Creating instruments and recording measurements
 
 For the current metrics APIs, see the
