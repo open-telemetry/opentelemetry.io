@@ -207,13 +207,10 @@ OBI integrates automatically with manual spans using the
 [Auto SDK](/docs/zero-code/go/autosdk). See the docs on the Auto SDK to learn
 more.
 
-Starting with OBI v0.11.0, an application can create spans through the global
-`otel.Tracer` API without configuring an SDK, `TracerProvider`, span processor,
-exporter, or other application-side telemetry pipeline. OBI activates the Auto
-SDK only when the application and host meet all requirements. The application
-must not install a provider itself, including by calling
-`otel.SetTracerProvider(auto.TracerProvider())`, for OBI to activate the Auto
-SDK.
+Starting with OBI v0.11.0, OBI can activate the Auto SDK for spans created
+through the global `otel.Tracer` API when no `TracerProvider` is registered and
+the application and host meet all requirements. Calling
+`otel.SetTracerProvider(auto.TracerProvider())` prevents this activation.
 
 See the
 [runnable OBI Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/examples/go-trace-api)
