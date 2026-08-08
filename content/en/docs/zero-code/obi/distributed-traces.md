@@ -207,6 +207,40 @@ OBI integrates automatically with manual spans using the
 [Auto SDK](/docs/zero-code/go/autosdk). See the docs on the Auto SDK to learn
 more.
 
+Starting with OBI v0.11.0, OBI can activate the Auto SDK for spans created
+through the global `otel.Tracer` API when no `TracerProvider` is registered and
+the application and host meet all requirements. Calling
+`otel.SetTracerProvider(auto.TracerProvider())` prevents this activation.
+
+See the
+[runnable OBI Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/examples/go-trace-api)
+for setup and troubleshooting. OBI's
+[support matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/main/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation)
+documents the exact v0.11.0 module versions and checksum requirements, supported
+architectures, executable requirements, and `bpf_probe_write_user` permission
+conditions. If any requirement is not met, OBI leaves the Auto SDK inactive.
+
+For an application that has not configured an SDK, the API spans remain
+non-recording when OBI cannot activate the Auto SDK. When OBI can observe calls
+to the global Trace API, it may still construct synthetic spans. A synthetic
+span may contain the span name, parent relationship, status, and some primitive
+attributes, but it does not contain the instrumentation scope, events, or
+requested span kind. It is not a substitute for the application-authored span.
+If the application has registered an SDK `TracerProvider`, OBI defers to that
+provider instead of activating the Auto SDK or creating a competing synthetic
+span.
+
+In v0.11.0, each application-authored span must fit within a 16 KiB encoded
+payload. Spans whose payloads exceed this limit are not exported. v0.11.0 does
+not log a warning or publish a metric when this happens. Other known limitations
+cover
+[sampling](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2793),
+[context handoffs](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2794),
+[external and remote parents and `TraceState`](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2959),
+[larger payloads and drop observability](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2958),
+and
+[log enrichment](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2932).
+
 #### Kernel integrity mode limitations
 
 In order to write the `traceparent` value in outgoing HTTP/gRPC request headers,
