@@ -9,6 +9,7 @@ DEFAULT_TARGET="$DEFAULT_CONTENT"
 EXIT_STATUS=0
 EXTRA_DIFF_ARGS="--numstat"
 FLAG_CHANGE_OR_ADD=0
+FLAG_CHANGE_FROM_EN_LAST_COMMIT=0
 FLAG_COMPLETENESS=0
 FLAG_DIFF_DETAILS=0
 FLAG_DRIFTED_STATUS=0
@@ -50,6 +51,9 @@ Options:
            TIP: first fetch and pull the upstream 'main' if you want to use the
                 remote HEAD hash.
 
+  -e       Change or add the '$I18N_DLC_KEY' key value to the latest commit SHA
+           of the corresponding English page for each selected localization page.
+
   -C       Report completeness: percentage of English pages that have a translation
            for each language under TARGET_PATH. Use with -v to list missing pages.
 
@@ -74,7 +78,7 @@ function usage() {
 }
 
 function process_CLI_args() {
-  while getopts ":ac:CdDhinqvx" opt; do
+  while getopts ":ac:CdDehinqvx" opt; do
     case $opt in
       a)
         LIST_KIND="ALL";;
@@ -86,6 +90,8 @@ function process_CLI_args() {
       d)
         FLAG_DIFF_DETAILS=1
         EXTRA_DIFF_ARGS="";;
+      e)
+        FLAG_CHANGE_FROM_EN_LAST_COMMIT=1;;
       D)
         FLAG_DRIFTED_STATUS=1;;
       h)
@@ -114,8 +120,8 @@ function process_CLI_args() {
     validate_hash $COMMIT_HASH_ARG
   fi
 
-  if (( FLAG_CHANGE_OR_ADD + FLAG_COMPLETENESS + FLAG_DIFF_DETAILS + FLAG_DRIFTED_STATUS > 1 )); then
-    echo -e "ERROR: you can't use -c, -C, -d, and -D at the same time; choose one. For help use -h.\n"
+  if (( FLAG_CHANGE_OR_ADD + FLAG_CHANGE_FROM_EN_LAST_COMMIT + FLAG_COMPLETENESS + FLAG_DIFF_DETAILS + FLAG_DRIFTED_STATUS > 1 )); then
+    echo -e "ERROR: you can't use -c, -e, -C, -d, and -D at the same time; choose one. For help use -h.\n"
     exit 1
   fi
 
@@ -212,6 +218,11 @@ function set_file_i18n_hash() {
   if [[ -z $FLAG_QUIET ]]; then
     echo -e "$pre_msg\t$f $HASH $post_msg"
   fi
+}
+
+function get_last_commit_hash_for_file() {
+  local f="$1"
+  git log -1 --format=%H -- "$f"
 }
 
 function update_file_i18n_hash() {
@@ -339,8 +350,8 @@ function main() {
     # if [[ -n $FLAG_VERBOSE ]]; then echo -e "All targets: $TARGETS"; fi
   fi
 
-  local LASTCOMMIT_FF=""       # commit From File (FF), i.e., $f in the loop below
-  local LASTCOMMIT_GIT=""      # last commit of `en` version of $f from git
+  local PIN_COMMIT_FROM_FILE="" # commit from front matter pin in the current target file
+  local SOURCE_LAST_COMMIT=""   # latest commit of source-language version of target file
   local FILE_COUNT=0           # Number of TLP
   local FILE_PROCESSED_COUNT=0 # Number of TLP actually listed
 
@@ -352,20 +363,44 @@ function main() {
   for f in $TARGETS; do
     ((FILE_COUNT++))
 
-    LASTCOMMIT_FF=$(perl -ne "print \"\$1\" if /^$I18N_DLC_KEY:\\s*([a-f0-9]+)/i" "$f")
-    LASTCOMMIT="$LASTCOMMIT_FF"
+    PIN_COMMIT_FROM_FILE=$(perl -ne "print \"\$1\" if /^$I18N_DLC_KEY:\\s*([a-f0-9]+)/i" "$f")
+    PIN_COMMIT="$PIN_COMMIT_FROM_FILE"
 
-    if [[ $LIST_KIND == "ALL" && -n $COMMIT_HASH_ARG ]]; then
+    SOURCE_PATH=$(echo "$f" | sed "s/$DEFAULT_CONTENT\/.\{2,5\}\//$DEFAULT_CONTENT\/$DEFAULT_LANG\//g")
+    SOURCE_LAST_COMMIT=""
+    if [[ -e "$SOURCE_PATH" ]]; then
+      SOURCE_LAST_COMMIT=$(get_last_commit_hash_for_file "$SOURCE_PATH")
+    fi
+
+    if [[ $LIST_KIND == "ALL" && (-n $COMMIT_HASH_ARG || $FLAG_CHANGE_FROM_EN_LAST_COMMIT != 0) ]]; then
         ((FILE_PROCESSED_COUNT++))
-        set_file_i18n_hash "$f" "$COMMIT_HASH_ARG"
+        if [[ $FLAG_CHANGE_FROM_EN_LAST_COMMIT != 0 ]]; then
+          if [[ ! -e "$SOURCE_PATH" || -z "$SOURCE_LAST_COMMIT" ]]; then
+            echo "ERROR: cannot determine latest commit for default-language file: $f -> $SOURCE_PATH" >&2
+            EXIT_STATUS=1
+            continue
+          fi
+          set_file_i18n_hash "$f" "$SOURCE_LAST_COMMIT"
+        else
+          set_file_i18n_hash "$f" "$COMMIT_HASH_ARG"
+        fi
         continue
     fi
 
     if [[ $LIST_KIND == "NEW" ]]; then
-      if [[ -n $LASTCOMMIT_FF ]]; then continue; fi
+      if [[ -n $PIN_COMMIT_FROM_FILE ]]; then continue; fi
       ((FILE_PROCESSED_COUNT++))
-      if [[ -n $COMMIT_HASH_ARG ]]; then
-        set_file_i18n_hash "$f" "$COMMIT_HASH_ARG" "" "key ADDED"
+      if [[ -n $COMMIT_HASH_ARG || $FLAG_CHANGE_FROM_EN_LAST_COMMIT != 0 ]]; then
+        if [[ $FLAG_CHANGE_FROM_EN_LAST_COMMIT != 0 ]]; then
+          if [[ ! -e "$SOURCE_PATH" || -z "$SOURCE_LAST_COMMIT" ]]; then
+            echo "ERROR: cannot determine latest commit for default-language file: $f -> $SOURCE_PATH" >&2
+            EXIT_STATUS=1
+            continue
+          fi
+          set_file_i18n_hash "$f" "$SOURCE_LAST_COMMIT" "" "key ADDED"
+        else
+          set_file_i18n_hash "$f" "$COMMIT_HASH_ARG" "" "key ADDED"
+        fi
       elif [[ -z $FLAG_QUIET ]]; then
         echo "$f - has no $I18N_DLC_KEY front-matter key"
       fi
@@ -375,8 +410,7 @@ function main() {
     ## Processing $LIST_KIND DRIFTED
 
     # Does $f have an default-language version?
-    EN_VERSION=$(echo "$f" | sed "s/$DEFAULT_CONTENT\/.\{2,5\}\//$DEFAULT_CONTENT\/$DEFAULT_LANG\//g")
-    if [[ ! -e "$EN_VERSION" ]]; then
+    if [[ ! -e "$SOURCE_PATH" ]]; then
       ((FILE_PROCESSED_COUNT++))
       if [[ -z $FLAG_QUIET ]]; then
         echo -e "File not found:\t$f - $DEFAULT_LANG page was removed or renamed"
@@ -386,37 +420,51 @@ function main() {
     fi
 
     # Check default-language version for changes
-    DIFF=$(git diff --exit-code $EXTRA_DIFF_ARGS $LASTCOMMIT...HEAD "$EN_VERSION" 2>&1)
-    DIFF_STATUS=$?
+    SOURCE_DIFF=$(git diff --exit-code $EXTRA_DIFF_ARGS $PIN_COMMIT...HEAD "$SOURCE_PATH" 2>&1)
+    SOURCE_DIFF_STATUS=$?
     DRIFTED_STATUS="false"
-    if [ $DIFF_STATUS -gt 1 ]; then
+    if [ $SOURCE_DIFF_STATUS -gt 1 ]; then
       ((FILE_PROCESSED_COUNT++))
-      EXIT_STATUS=$DIFF_STATUS
-      echo -e "HASH\tERROR\t$f: git diff error ($DIFF_STATUS) or invalid hash $LASTCOMMIT. For details, use -v."
-      if [[ -n $FLAG_VERBOSE ]]; then echo "$DIFF"; fi
+      EXIT_STATUS=$SOURCE_DIFF_STATUS
+      echo -e "HASH\tERROR\t$f: git diff error ($SOURCE_DIFF_STATUS) or invalid hash $PIN_COMMIT. For details, use -v."
+      if [[ -n $FLAG_VERBOSE ]]; then echo "$SOURCE_DIFF"; fi
       continue
-    elif [[ -n "$DIFF" ]]; then
+    elif [[ -n "$SOURCE_DIFF" ]]; then
       ((FILE_PROCESSED_COUNT++))
       DRIFTED_STATUS="true"
       if [[ $FLAG_DIFF_DETAILS != 0 ]]; then
-        echo "$DIFF"
+        echo "$SOURCE_DIFF"
       elif [[ -n $COMMIT_HASH_ARG ]]; then
-        update_file_i18n_hash "$f" "$COMMIT_HASH_ARG" "$DIFF"
+        update_file_i18n_hash "$f" "$COMMIT_HASH_ARG" "$SOURCE_DIFF"
+      elif [[ $FLAG_CHANGE_FROM_EN_LAST_COMMIT != 0 ]]; then
+        if [[ -z "$SOURCE_LAST_COMMIT" ]]; then
+          echo "ERROR: cannot determine latest commit for default-language file: $f -> $SOURCE_PATH" >&2
+          EXIT_STATUS=1
+          continue
+        fi
+        set_file_i18n_hash "$f" "$SOURCE_LAST_COMMIT" "$SOURCE_DIFF"
       elif [[ -z $FLAG_QUIET ]]; then
         echo -n "> Drifted file: $f"
-        if [[ -n $FLAG_VERBOSE ]]; then echo "; diff summary: $DIFF"; else echo; fi
+        if [[ -n $FLAG_VERBOSE ]]; then echo "; diff summary: $SOURCE_DIFF"; else echo; fi
       fi
-    elif [[ -z $LASTCOMMIT ]]; then
+    elif [[ -z $PIN_COMMIT ]]; then
       ((FILE_PROCESSED_COUNT++))
       local msg="New i18n file"
       if [[ -n $COMMIT_HASH_ARG ]]; then
         set_file_i18n_hash "$f" "$COMMIT_HASH_ARG" "$msg" "key ADDED"
+      elif [[ $FLAG_CHANGE_FROM_EN_LAST_COMMIT != 0 ]]; then
+        if [[ -z "$SOURCE_LAST_COMMIT" ]]; then
+          echo "ERROR: cannot determine latest commit for default-language file: $f -> $SOURCE_PATH" >&2
+          EXIT_STATUS=1
+          continue
+        fi
+        set_file_i18n_hash "$f" "$SOURCE_LAST_COMMIT" "$msg" "key ADDED"
       elif [[ -z $FLAG_QUIET ]]; then
         echo "$msg - $f"
       fi
     elif [[ $LIST_KIND == "ALL" || -n $FLAG_VERBOSE ]]; then
       ((FILE_PROCESSED_COUNT++))
-      echo -e "File is in sync\t$f - $LASTCOMMIT"
+      echo -e "File is in sync\t$f - $PIN_COMMIT"
     fi
     set_file_drifted_status "$f" $DRIFTED_STATUS
   done
@@ -425,7 +473,7 @@ function main() {
     echo "$LIST_KIND files: $FILE_PROCESSED_COUNT out of $FILE_COUNT"
   fi
 
-  if [[ $FILE_PROCESSED_COUNT -gt 0 && -z $COMMIT_HASH_ARG ]]; then
+  if [[ $FILE_PROCESSED_COUNT -gt 0 && -z $COMMIT_HASH_ARG && $FLAG_CHANGE_FROM_EN_LAST_COMMIT == 0 ]]; then
     EXIT_STATUS=$((EXIT_STATUS || FLAG_FAIL_ON_LIST_OR_MISSING))
   fi
   exit $EXIT_STATUS

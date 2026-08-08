@@ -268,7 +268,7 @@ argument if your pages are now synced with `main` at `HEAD`. For example:
 
 ```sh
 npm run check:i18n -- commit 1ca30b4d --new content/ja
-npm run check:i18n -- commit HEAD --new content/zh/docs/concepts
+npm run check:i18n -- --from-src-latest --new content/zh/docs/concepts
 ```
 
 To list localization page files with missing hash keys, run:
@@ -287,17 +287,20 @@ commit hash.
 >
 > If your localized page now corresponds to the English language version in
 > `main` at `HEAD`, then run
-> `npm run check:i18n -- commit HEAD <PATH-TO-YOUR-PAGE>`: the
+> `npm run check:i18n -- commit HEAD <PATH-TO-YOUR-PAGE>` or
+> `npm run check:i18n -- --from-src-latest <PATH-TO-YOUR-PAGE>`: the
 > `default_lang_commit` hash is refreshed and the page's
 > [drift status](#drift-status) is cleared in the same write.
 
 If you have batch updated all of your localization pages that had drifted, you
-can update the commit hash of these files using the `commit` subcommand followed
-by a commit hash or 'HEAD' to use `main@HEAD`.
+can update the commit hash of these files using the `commit` subcommand. Pass a
+commit hash for a specific source commit, or use `HEAD` as a legitimate shortcut
+for `main@HEAD`.
 
 ```sh
 npm run check:i18n -- commit <HASH> <PATH-TO-YOUR-UPDATED-FILES>
 npm run check:i18n -- commit HEAD <PATH-TO-YOUR-UPDATED-FILES>
+npm run check:i18n -- --from-src-latest <PATH-TO-YOUR-UPDATED-FILES>
 ```
 
 > [!IMPORTANT]
