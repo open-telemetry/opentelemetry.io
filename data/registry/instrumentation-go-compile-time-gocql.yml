@@ -1,0 +1,20 @@
+title:
+  OpenTelemetry Go Compile-Time Auto-Instrumentation for `gocql/gocql`
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - instrumentation
+  - compile-time
+  - auto-instrumentation
+  - cassandra
+  - database
+license: Apache 2.0
+description: >
+  Go compile-time auto-instrumentation plugin for the [`gocql/gocql` Cassandra
+  driver](https://pkg.go.dev/github.com/gocql/gocql).
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/gocql/gocql
+createdAt: 2026-07-27
