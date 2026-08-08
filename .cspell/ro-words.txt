@@ -18,6 +18,7 @@ contribuitoare
 contribuitori
 contribuitorii
 corecteazǎ
+creea
 creeazǎ
 depanezi
 descriptorilor
@@ -25,6 +26,9 @@ deții
 dezvoltatori
 dezvoltatorii
 discutǎ
+editezi
+elimini
+emiți
 enumerează
 explorezi
 exportatorilor
@@ -36,6 +40,7 @@ instrumenteze
 interlingvistice
 intervaluri
 intervalurilor
+îmbunătățești
 încorporezi
 întâmpini
 întreab
@@ -54,14 +59,21 @@ nestandard
 observabilitate
 observabilitatea
 observabilității
+oprii
 partajezi
 postând
 prepopulată
 receptoarelor
+reconstruiește
 remediează
 reobține
+repetoriului
+revizuii
+revizuitori
+revizuitorii
 semnalizate
 semneazǎ
+servii
 setează
 sincronizate
 soliciți
@@ -74,6 +86,7 @@ sugerezi
 telemetrice
 telemetrie
 tranzacţie
+urci
 urmǎrirea
 valideze
 verificatoarele
