@@ -14,7 +14,7 @@ CI ジョブはコミット済みの `package-lock.json` から npm の依存関
 
 - `npm run ci:min` はロックされた依存関係グラフをインストールします。ライフサイクルスクリプトは実行されず、`package.json` とロックファイルが同期していない場合はインストールが失敗します。
 - サイトをビルドするジョブは、インストールの後に `npm run ci:prepare` を実行します。これは `hugo-extended`（再有効化された唯一の依存関係フック）をリビルドし、リポジトリ独自の `prepare` セットアップを実行します。
-- devcontainer はかわりに `npm run install:safe` を使用します。同じ契約ですが、`netlify-cli` などのローカルツールを含むオプショナルな依存関係を保持します。
+- devcontainer はかわりに `npm run install:safe` を使用します。同じ動作を保証しますが、`netlify-cli` などのローカルツールを含むオプショナルな依存関係を保持します。
 
 スクリプトの詳細については、[npm スクリプト](../npm-scripts/)を参照してください。
 
