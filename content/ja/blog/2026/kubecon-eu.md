@@ -3,8 +3,7 @@ title: KubeCon + CloudNativeCon Europe 2026
 linkTitle: KubeCon EU '26
 date: 2026-02-02
 author: '[Zhu Jiekun](https://github.com/jiekun) (VictoriaMetrics)'
-default_lang_commit: 66215f27a11cce93dc823a34713dc89cc5d96ca7
-drifted_from_default: true
+default_lang_commit: 11fecfb1d12e8682c9619b3a477eccb21c736b99
 # prettier-ignore
 cSpell:ignore: Altinity Amaechi Anoshin Aravena baeyens Benedetti Benedikt Bhatnagar Bongartz Bunino Cail Cijo Danielson Dapr Diagrid Dmitrii dyrmishi Ferri Geisendörfer Grcevski Guiton Haeussler Hantzaras helmuth Jernigan jiekun kasper Khavronenko Kluwer Kovalenko Kunju Kuntzer Lahouel Lehner Llinares Menderico Mikhailov Milind nissen Observablity Okorie Onyedikachi OTTL Pająk Perath Rabenhorst Roman Schrottner Skyscanner Spanimals Srivastava tacular Therrien Timelthaler Toulme Travaglini Ujuk Vamerlatti Wolters yash
 ---
@@ -245,5 +244,5 @@ OpenTelemetry のトークを聴き、学び、そしてプロジェクトに参
 [kubecon registration]: https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/
 [summit schedule]: https://maintainersummiteu2026.sched.com/
 [maintainer summit]: https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/features-add-ons/maintainer-summit/
-[membership]: https://github.com/open-telemetry/community/blob/25f027532a6e9b503d6eb4dd3db0a98eb3b5f1cb/guides/contributor/membership.md#member?from_branch=main
+[membership]: https://github.com/open-telemetry/community/blob/25f027532a6e9b503d6eb4dd3db0a98eb3b5f1cb/guides/contributor/membership.md#member
 [obs-day-sched]: https://colocatedeventseu2026.sched.com/overview/type/Observability+Day
