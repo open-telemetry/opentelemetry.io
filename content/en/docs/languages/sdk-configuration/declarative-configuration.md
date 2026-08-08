@@ -26,6 +26,7 @@ This approach is useful when:
 The following OpenTelemetry SDKs support declarative configuration:
 
 - [Java](/docs/zero-code/java/agent/declarative-configuration/)
+- [Python](/docs/languages/python/configuration/)
 
 For details, refer to the
 [Compliance Matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#declarative-configuration)
