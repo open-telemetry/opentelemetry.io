@@ -1,0 +1,18 @@
+title: Vartio Mobile Telemetry for iOS
+registryType: instrumentation
+language: swift
+tags:
+  - ios
+  - mobile
+  - instrumentation
+  - crash-reporting
+  - swift
+urls:
+  repo: https://github.com/vartio-dev/vartio-swift
+license: Apache 2.0
+description: Mobile instrumentation for iOS apps — sessions, crashes, screen loads, navigation, flow spans and app memory over OTLP/HTTP to any OpenTelemetry backend.
+authors:
+  - name: Vartio
+    url: https://vartio.dev
+createdAt: 2026-08-05
+isFirstParty: false

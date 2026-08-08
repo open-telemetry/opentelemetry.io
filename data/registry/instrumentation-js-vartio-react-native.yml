@@ -1,0 +1,21 @@
+title: Vartio Mobile Telemetry for React Native
+registryType: instrumentation
+language: js
+tags:
+  - react-native
+  - mobile
+  - instrumentation
+  - crash-reporting
+urls:
+  repo: https://github.com/vartio-dev/vartio-react-native
+license: Apache 2.0
+description: Mobile instrumentation for React Native apps — sessions, JavaScript crashes, screen loads, navigation, fetch spans and app memory over OTLP/HTTP to any OpenTelemetry backend.
+authors:
+  - name: Vartio
+    url: https://vartio.dev
+createdAt: 2026-08-05
+isFirstParty: false
+package:
+  registry: npm
+  name: '@vartio/react-native'
+  version: 0.1.0
