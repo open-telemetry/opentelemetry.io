@@ -95,8 +95,8 @@ When you bring OpenTelemetry into a mainframe context, you will often encounter:
   - subsystem logs
   - job logs
   - performance monitors
-  - These sources often need to be parsed and mapped into traces, metrics,
-    and logs as defined by OpenTelemetry
+  - These sources often need to be parsed and mapped into traces, metrics, and
+    logs as defined by OpenTelemetry
 - **Access and change constraints**
   - Production mainframes often have strict change control and limited ability
     to modify application code.
@@ -134,16 +134,16 @@ Foundational OpenTelemetry instrumentation is available for mainframe
 environments, and platform support continues to expand.
 
 Historically, most mainframe instrumentation has been vendor supplied: many
-observability backend vendors provide their own extensions or agents to
-package and ship mainframe telemetry to their backends.
+observability backend vendors provide their own extensions or agents to package
+and ship mainframe telemetry to their backends.
 
-In response to customer demand for vendor-neutral telemetry, IBM, which
-supplies the operating system and subsystem software for the most widely used
-mainframe systems, and many independent mainframe software vendors (ISVs) are
-adding native OpenTelemetry support to their products.
+In response to customer demand for vendor-neutral telemetry, IBM, which supplies
+the operating system and subsystem software for the most widely used mainframe
+systems, and many independent mainframe software vendors (ISVs) are adding
+native OpenTelemetry support to their products.
 
-This transition depends on common terminology and semantics, which the
-working group described in the next section is helping to define.
+This transition depends on common terminology and semantics, which the working
+group described in the next section is helping to define.
 
 ## Working group and community
 
