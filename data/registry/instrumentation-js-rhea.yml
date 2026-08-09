@@ -16,7 +16,7 @@ authors:
 urls:
   repo: https://github.com/bartoval/opentelemetry-instrumentation-rhea
   docs: https://github.com/bartoval/opentelemetry-instrumentation-rhea#readme
-createdAt: 2024-06-07
+createdAt: 2026-06-07
 package:
   registry: npm
   name: opentelemetry-instrumentation-rhea
