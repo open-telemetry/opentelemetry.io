@@ -325,12 +325,12 @@ npm run check:i18n -- commit HEAD <CALEA-CĂTRE-FIȘIERELE-ACTUALIZATE>
 
 ### Aplicarea de corecții paginilor localizate {#patched}
 
-[Corecțiile de build și verificări](#keep-checks-green) necesită uneori editarea
-unei pagini localizate fără sincronizarea acesteia cu pagina corespunzătoare în
-limba engleză — de exemplu, actualizarea unui link după ce o pagină în limba
-engleză a fost mutată. Marchează fiecare pagină localizată corectată în acest
-mod ca **patched**, indiferent dacă respectiva corecție se aplică uneia sau mai
-multor localizări:
+[Corecțiile de build](#keep-checks-green) necesită uneori editarea unei pagini
+localizate fără sincronizarea acesteia cu versiunea sa în limba engleză: de
+exemplu, repararea apelului unui shortcode după ce shortcode-ul comun s-a
+modificat. Marchează fiecare pagină localizată corectată în acest mod ca
+**patched**, indiferent dacă această corecție vizează una sau mai multe
+localizări:
 
 - Fă doar modificările necesare pentru aplicarea corecției — fără alte
   modificări în pagină.
@@ -376,60 +376,64 @@ diferențele rămase până când acele modificări sunt integrate.
 
 Pentru mai multe detalii despre script, rulează `npm run check:i18n -- -h`.
 
-## New localizations
+## Localizări noi {#new-localizations}
 
-Interested in starting a new localization for the OTel website? Reach out to
-maintainers to express your interest, for example through a GitHub discussion or
-via the Slack `#otel-docs-localization` channel. This section explains the steps
-involved in starting a new localization.
+Te interesează să începi o nouă localizare pentru site-ul OTel? Contactează
+responsabilii proiectului pentru a-ți exprima interesul, de exemplu printr-o
+discuție pe GitHub sau pe canalul Slack `#otel-docs-localization`. Această
+secțiune explică pașii necesari pentru începerea unei noi localizări.
 
 > [!NOTE]
 >
-> You don't have to be an existing contributor to the OpenTelemetry project to
-> start a new localization. However, you cannot be added as a member of the
-> [OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as
-> a member of the approvers group for your localization until you satisfy the
-> requirements for becoming an established member and approver as outlined in
-> the [membership guidelines][].
+> Nu trebuie să fii deja contribuitor la proiectul OpenTelemetry pentru a începe
+> o nouă localizare. Totuși, nu poți fi adăugat ca membru al
+> [organizației OpenTelemetry de pe GitHub](https://github.com/open-telemetry/)
+> sau ca membru al grupului de aprobatori pentru localizarea ta până când nu
+> îndeplinești cerințele pentru a deveni membru cu drepturi depline și aprobator,
+> așa cum sunt descrise în
+> [îndrumările privind statutul de membru][membership guidelines].
 >
-> Before you earn approver status, you can indicate your approval of a
-> localization PR by adding an "LGTM" (Looks Good To Me) comment. During this
-> startup phase, maintainers will treat your reviews as if you are an approver
-> already.
+> Înainte de a obține statutul de aprobator, îți poți exprima aprobarea pentru un
+> PR de localizare adăugând un comentariu „LGTM” (Looks Good To Me). În această
+> etapă inițială, responsabilii proiectului vor trata revizuirile tale ca și cum
+> ai fi deja aprobator.
 
 [membership guidelines]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
 
-### 1. Assemble a localization team {#team}
+### 1. Formarea unei echipe de localizare {#team}
 
-Creating a localization is about growing an active and supportive community. To
-start a new localization for the OpenTelemetry website you need:
+Crearea unei localizări înseamnă dezvoltarea unei comunități active și
+solidare. Pentru a începe o nouă localizare pentru site-ul OpenTelemetry, ai
+nevoie de:
 
-1. A **localization mentor** who is familiar with your language, such as an
-   [active approver][] of the [CNCF Glossary][] or the [Kubernetes website][].
-2. At least two potential contributors.
+1. Un **mentor de localizare** familiarizat cu limba ta, cum ar fi un
+   [aprobator activ][active approver] al [Glosarului CNCF][CNCF Glossary] sau al
+   [site-ului Kubernetes][Kubernetes website].
+2. Cel puțin doi potențiali contribuitori.
 
 [active approver]: https://github.com/cncf/glossary/blob/main/CODEOWNERS
 [CNCF Glossary]: https://glossary.cncf.io/
 [Kubernetes website]: https://github.com/kubernetes/website
 
-### 2. Localization kickoff: create an issue {#kickoff}
+### 2. Demararea localizării: crearea unui issue {#kickoff}
 
-With a [localization team](#team) in place or coming together, create an issue
-with the task list given below:
+Cu o [echipă de localizare](#team) formată sau în curs de formare, creează un
+issue cu lista de sarcini de mai jos:
 
-1. Look up the official [ISO 639-1 code][] for the language you want to add.
-   We'll refer to this language code as `LANG_ID` in the remainder of this
-   section. If you have doubts about which tag to use, especially when it comes
-   to choosing a subregion, ask maintainers.
+1. Caută [codul ISO 639-1][ISO 639-1 code] oficial pentru limba pe care vrei să
+   o adaugi. Ne vom referi la acest cod de limbă ca `LANG_ID` în restul acestei
+   secțiuni. Dacă ai dubii cu privire la eticheta pe care să o folosești, în
+   special când vine vorba de alegerea unei subregiuni, întreabă
+   administratorii.
 
    [ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
 
-2. Identify the GitHub handles of the
-   [mentor and potential contributors](#team).
+2. Identifică identificatorii GitHub ai
+   [mentorului și potențialilor contribuitori](#team).
 
-3. Create a [new issue][] containing the following task list in the opening
-   comment:
+3. Creează un [issue nou][new issue] care conține următoarea listă de sarcini în
+   comentariul de deschidere:
 
    ```markdown
    - [ ] Language info:
@@ -455,44 +459,46 @@ with the task list given below:
          [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
    ```
 
-### 3. Localize the homepage {#homepage}
+### 3. Localizarea paginii principale {#homepage}
 
-[Submit a pull request](../pull-requests/) with a translation of the website
-[homepage][], and _nothing else_, in the file `content/LANG_ID/_index.md`.
-Ensure that maintainers have the necessary permissions to edit your PR, since
-they will add additional changes to your PR that are required to get your
-localization project started.
+[Trimite un pull request](../pull-requests/) cu traducerea
+[paginii principale][homepage], și _nimic altceva_, în fișierul
+`content/LANG_ID/_index.md`. Asigură-te că administratorii au permisiunile
+necesare pentru a-ți edita pull request-ul, deoarece vor adăuga modificări
+suplimentare la acesta, necesare pentru demararea proiectului tău de
+localizare.
 
 [homepage]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
-After your first PR is merged, maintainers will set up the issue label, the
-org-level group and the component owners.
+După ce primul tău pull request este integrat, administratorii vor configura
+eticheta de issue, grupul la nivel de organizație și responsabilii componentelor.
 
-### 4. Localize the glossary {#glossary}
+### 4. Localizarea glosarului {#glossary}
 
-The second page to localize is the [Glossary](/docs/concepts/glossary/). This is
-a **critical** page for localized readers, since it defines the key terms used
-in observability and OpenTelemetry in particular. This is especially critical if
-no such terms exist in your language.
+A doua pagină de localizat este [Glosarul](/docs/concepts/glossary/). Este o
+pagină **critică** pentru cititorii localizării, deoarece definește termenii
+cheie folosiți în observabilitate și în OpenTelemetry în particular. Acest lucru
+este cu atât mai important dacă astfel de termeni nu există în limba ta.
 
-For guidance, see the [video][ali-d-youtube] of Ali Dowair's talk at Write the
-Docs 2024: [The art of translation: How to localize technical
-content][ali-dowair-2024].
+Pentru îndrumare, vezi [înregistrarea video][ali-d-youtube] a prezentării
+susținute de Ali Dowair la Write the Docs 2024: [The art of translation: How to
+localize technical content][ali-dowair-2024].
 
 [ali-dowair-2024]:
   https://www.writethedocs.org/conf/atlantic/2024/speakers/#speaker-ali-dowair-what-s-in-a-word-lessons-from-localizing-kubernetes-documentation-to-arabic-ali-dowair
 [ali-d-youtube]: https://youtu.be/HY3LZOQqdig
 
-### 5. Localize remaining site pages in small increments {#rest}
+### 5. Localizarea paginilor rămase din site, în etape mici {#rest}
 
-With terminology established, you can now localize the remaining site pages.
+Cu terminologia stabilită, poți localiza acum paginile rămase din site.
 
-> [!IMPORTANT] Submit small PRs <a id="small-prs"></a>
+> [!IMPORTANT] Trimite pull request-uri mici <a id="small-prs"></a>
 >
-> Localization teams should submit their work in **small increments**. That is,
-> keep [PRs][] small, preferably limited to one or a few small files. Smaller
-> PRs are easier to review and so typically get merged more quickly.
+> Echipele de localizare ar trebui să-și trimită munca în **etape mici**. Adică,
+> păstrează [pull request-urile][PRs] mici, de preferință limitate la unul sau
+> câteva fișiere mici. Pull request-urile mai mici sunt mai ușor de revizuit și,
+> prin urmare, sunt de obicei integrate mai rapid.
 
 ### OTel maintainer checklist
 
