@@ -34,6 +34,7 @@ exportatorilor
 forțezi
 Franceză
 gestionezi
+identificatorii
 informatica
 informatică
 instrumenteze
@@ -41,6 +42,7 @@ interlingvistice
 intervaluri
 intervalurilor
 încorporezi
+îndeplinești
 înregistrezi
 întâmpini
 întreab
@@ -80,6 +82,7 @@ submodulele
 submodulelor
 submodulul
 submodulului
+subregiuni
 sugerezi
 telemetrice
 telemetrie
