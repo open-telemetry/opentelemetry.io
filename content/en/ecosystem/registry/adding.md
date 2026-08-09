@@ -155,8 +155,7 @@ that automatically detects and adds resource information to telemetry.
 
 ### `sdk`
 
-**Use for**: Packages that implement the OpenTelemetry SDK for a language,
-including alternative implementations of the API.
+**Use for**: Packages that implement the OpenTelemetry SDK for a language.
 
 **Examples**: The Ruby `opentelemetry-sdk`, `opentelemetry-metrics-sdk`, and
 `opentelemetry-logs-sdk` gems.
