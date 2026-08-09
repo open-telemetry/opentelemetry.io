@@ -111,9 +111,9 @@ când se traduc titlurile:
 
 ### Links {#links}
 
-**Nu** traduce referințele linkurilor. Acest lucru se aplică la linkuri
-externe, căi către pagini ale website-ului și resurse locale din secțiuni cum ar
-fi [imagini și alte resurse](#images).
+**Nu** traduce referințele linkurilor. Acest lucru se aplică la linkuri externe,
+căi către pagini ale website-ului și resurse locale din secțiuni cum ar fi
+[imagini și alte resurse](#images).
 
 Singura excepție este pentru linkuri către pagini externe (precum
 <https://en.wikipedia.org>) care au o versiune specifică a localizării tale. În
@@ -126,8 +126,8 @@ al localizării tale.
 > îl folosește să transforme căi absolute de link care fac referire la pagini de
 > documentație. **Linkuri de forma `/docs/some-page` sunt făcute să fie
 > specifice localizării** prin prefixarea căii cu codul de limbă atunci când se
-> randează linkul. Spre exemplu, calea precedentă ar deveni
-> `/ja/docs/some-page` când este randată dintr-o pagină în japoneză.
+> randează linkul. Spre exemplu, calea precedentă ar deveni `/ja/docs/some-page`
+> când este randată dintr-o pagină în japoneză.
 
 ### Etichete pentru definițiile linkurilor {#link-labels}
 
@@ -389,27 +389,26 @@ secțiune explică pașii necesari pentru începerea unei noi localizări.
 > o nouă localizare. Totuși, nu poți fi adăugat ca membru al
 > [organizației OpenTelemetry de pe GitHub](https://github.com/open-telemetry/)
 > sau ca membru al grupului de aprobatori pentru localizarea ta până când nu
-> îndeplinești cerințele pentru a deveni membru cu drepturi depline și aprobator,
-> așa cum sunt descrise în
-> [îndrumările privind statutul de membru][membership guidelines].
+> îndeplinești cerințele pentru a deveni membru cu drepturi depline și
+> aprobator, așa cum sunt descrise în [îndrumările privind statutul de
+> membru][membership guidelines].
 >
-> Înainte de a obține statutul de aprobator, îți poți exprima aprobarea pentru un
-> PR de localizare adăugând un comentariu „LGTM” (Looks Good To Me). În această
-> etapă inițială, responsabilii proiectului vor trata revizuirile tale ca și cum
-> ai fi deja aprobator.
+> Înainte de a obține statutul de aprobator, îți poți exprima aprobarea pentru
+> un PR de localizare adăugând un comentariu „LGTM” (Looks Good To Me). În
+> această etapă inițială, responsabilii proiectului vor trata revizuirile tale
+> ca și cum ai fi deja aprobator.
 
 [membership guidelines]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
 
 ### 1. Formarea unei echipe de localizare {#team}
 
-Crearea unei localizări înseamnă dezvoltarea unei comunități active și
-solidare. Pentru a începe o nouă localizare pentru site-ul OpenTelemetry, ai
-nevoie de:
+Crearea unei localizări înseamnă dezvoltarea unei comunități active și solidare.
+Pentru a începe o nouă localizare pentru site-ul OpenTelemetry, ai nevoie de:
 
-1. Un **mentor de localizare** familiarizat cu limba ta, cum ar fi un
-   [aprobator activ][active approver] al [Glosarului CNCF][CNCF Glossary] sau al
-   [site-ului Kubernetes][Kubernetes website].
+1. Un **mentor de localizare** familiarizat cu limba ta, cum ar fi un [aprobator
+   activ][active approver] al [Glosarului CNCF][CNCF Glossary] sau al [site-ului
+   Kubernetes][Kubernetes website].
 2. Cel puțin doi potențiali contribuitori.
 
 [active approver]: https://github.com/cncf/glossary/blob/main/CODEOWNERS
@@ -461,18 +460,18 @@ issue cu lista de sarcini de mai jos:
 
 ### 3. Localizarea paginii principale {#homepage}
 
-[Trimite un pull request](../pull-requests/) cu traducerea
-[paginii principale][homepage], și _nimic altceva_, în fișierul
+[Trimite un pull request](../pull-requests/) cu traducerea [paginii
+principale][homepage], și _nimic altceva_, în fișierul
 `content/LANG_ID/_index.md`. Asigură-te că administratorii au permisiunile
 necesare pentru a-ți edita pull request-ul, deoarece vor adăuga modificări
-suplimentare la acesta, necesare pentru demararea proiectului tău de
-localizare.
+suplimentare la acesta, necesare pentru demararea proiectului tău de localizare.
 
 [homepage]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
 După ce primul tău pull request este integrat, administratorii vor configura
-eticheta de issue, grupul la nivel de organizație și responsabilii componentelor.
+eticheta de issue, grupul la nivel de organizație și responsabilii
+componentelor.
 
 ### 4. Localizarea glosarului {#glossary}
 
@@ -526,10 +525,12 @@ sau regiunea ta, alege regiunea cea mai apropiată.
   - În [`.cspell.yml`][], adaugă fișierul `cspell-ext.json` al pachetului la
     `import:` și adaugă ID-ul dicționarului (de exemplu `bn`, `es-es`, `pl_pl`)
     la `dictionaries:`.
-- **Dacă nu este disponibil niciun dicționar** pentru limba respectivă, nu adăuga un
-  `import` pentru acesta. Adaugă `content/LANG_ID` în lista `ignorePaths` din
-  [`.cspell.yml`][], astfel încât cSpell să nu încerce să verifice ortografia
-  fișierelor Markdown ale acelei localizări ca și cum ar fi în engleză.
+
+- **Dacă nu este disponibil niciun dicționar** pentru limba respectivă, nu
+  adăuga un `import` pentru acesta. Adaugă `content/LANG_ID` în lista
+  `ignorePaths` din [`.cspell.yml`][], astfel încât cSpell să nu încerce să
+  verifice ortografia fișierelor Markdown ale acelei localizări ca și cum ar fi
+  în engleză.
 
 [cSpell dictionaries]: https://github.com/streetsidesoftware/cspell-dicts
 [@cspell/dict-LANG_ID]: https://www.npmjs.com/search?q=%40cspell%2Fdict
@@ -579,8 +580,8 @@ necesare și toate verificările sunt finalizate cu succes.
 Un comentariu auto-merge este luat în considerare doar atunci când fiecare
 fișier modificat aparține unei localizări pe care o administrezi, așa că nu
 poate fi folosit pentru a modifica conținutul partajat sau conținutul în limba
-engleză. Pentru regulile de eligibilitate și detaliile comenzii, vezi
-[README-ul de ajutor][helper README].
+engleză. Pentru regulile de eligibilitate și detaliile comenzii, vezi [README-ul
+de ajutor][helper README].
 
 [GitHub auto-merge]:
   https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
@@ -590,8 +591,8 @@ engleză. Pentru regulile de eligibilitate și detaliile comenzii, vezi
 ### PR-urile nu ar trebui să includă mai multe localizări {#prs-should-not-span-locales}
 
 Ca regulă generală, un PR nu ar trebui să includă mai multe localizări, adică ar
-trebui să modifice paginile a cel mult unei localizări. Singurele excepții
-sunt descrise în această secțiune.
+trebui să modifice paginile a cel mult unei localizări. Singurele excepții sunt
+descrise în această secțiune.
 
 #### Modificări semantice {#semantic-changes}
 
@@ -624,9 +625,9 @@ localizări doar atunci când acest lucru este strict necesar pentru a menține
 build-ul site-ului funcțional. Astfel de **corecții de build** remediază
 defecțiunile build-ului site-ului în paginile localizate, de exemplu, după
 modificarea unui shortcode comun, a unui fișier inclus sau a unei surse de date.
-[Starea diferențelor](#drift-status) unei pagini o protejează doar de verificarea
-linkurilor, nu și de build-ul Hugo. Marchează fiecare pagină localizată pe care
-o corectezi ca [patched](#patched).
+[Starea diferențelor](#drift-status) unei pagini o protejează doar de
+verificarea linkurilor, nu și de build-ul Hugo. Marchează fiecare pagină
+localizată pe care o corectezi ca [patched](#patched).
 
 Eșecurile verificării linkurilor în paginile localizate **nu** constituie un
 astfel de caz; pentru modul de rezolvare a acestora, vezi
@@ -634,10 +635,10 @@ astfel de caz; pentru modul de rezolvare a acestora, vezi
 
 Aceeași regulă a corecției minime se aplică și evidenței stării diferențelor:
 când o verificare eșuată impune actualizarea câmpului `drifted_from_default`,
-actualizează numai paginile raportate de verificarea eșuată; [rularea zilnică
-Housekeeping](/site/build/ci-workflows/#housekeeping) le completează pe
-celelalte. Modificările care vizează doar starea sunt [mentenanță neutră față de
-conținut](#semantic-changes).
+actualizează numai paginile raportate de verificarea eșuată;
+[rularea zilnică Housekeeping](/site/build/ci-workflows/#housekeeping) le
+completează pe celelalte. Modificările care vizează doar starea sunt
+[mentenanță neutră față de conținut](#semantic-changes).
 
 Tratează orice altă modificare a conținutului paginilor localizate ca pe o
 modificare **semantică** pentru acea localizare. Aceasta include adăugările
@@ -650,11 +651,11 @@ Modificările aduse documentației în limba engleză pot duce la eșecuri ale
 verificării linkurilor pentru localizările în alte limbi decât engleza. Acest
 lucru se întâmplă atunci când paginile de documentație sau secțiuni din acestea
 sunt mutate sau șterse; linkurile către resurse externe mutate pot eșua în mod
-similar. Corectează astfel de eșecuri numai în paginile în limba engleză;
-**nu edita niciodată conținutul paginilor localizate pentru a corecta
-linkurile**. [Urmărirea diferențelor](#track-changes) semnalează echipelor
-fiecărei localizări copiile localizate învechite, iar reconcilierea, inclusiv
-corectarea linkurilor, este lăsată în sarcina fiecărei echipe.
+similar. Corectează astfel de eșecuri numai în paginile în limba engleză; **nu
+edita niciodată conținutul paginilor localizate pentru a corecta linkurile**.
+[Urmărirea diferențelor](#track-changes) semnalează echipelor fiecărei
+localizări copiile localizate învechite, iar reconcilierea, inclusiv corectarea
+linkurilor, este lăsată în sarcina fiecărei echipe.
 
 Mai întâi, limitează efectele în partea în limba engleză prin corectarea
 linkurilor care eșuează. Unele situații ale resurselor țintă permit măsuri
@@ -689,7 +690,8 @@ npm run fix:i18n:status -- PATHS_TO_FAILING_LOCALIZED_PAGES
 ```
 
 În cazul rar în care un link care eșuează există numai într-o pagină localizată,
-raportează-l și coordonează corectarea acestuia cu echipa localizării respective.
+raportează-l și coordonează corectarea acestuia cu echipa localizării
+respective.
 
 În final, rulează din nou `npm run check:links` și confirmă că nu mai există
 eșecuri ale verificării linkurilor.
