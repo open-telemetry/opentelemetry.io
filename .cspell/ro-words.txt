@@ -21,6 +21,7 @@ contribuitoare
 contribuitori
 contribuitorii
 corecteazǎ
+corectezi
 creeazǎ
 depanezi
 descriptorilor
@@ -41,6 +42,7 @@ instrumenteze
 interlingvistice
 intervaluri
 intervalurilor
+încorporeze
 încorporezi
 îndeplinești
 înregistrezi
@@ -70,6 +72,7 @@ randează
 receptoarelor
 remediează
 reobține
+semantică
 semnalizate
 semneazǎ
 setează
