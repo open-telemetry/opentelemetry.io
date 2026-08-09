@@ -39,7 +39,7 @@
     },
     "language": {
       "type": "string",
-      "description": "The programming language of the entry. Use js for TypeScript projects.",
+      "description": "The programming language of the entry; use js for TypeScript projects",
       "enum": [
         "android",
         "collector",
