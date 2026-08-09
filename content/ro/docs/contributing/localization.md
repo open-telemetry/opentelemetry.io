@@ -111,11 +111,11 @@ când se traduc titlurile:
 
 ### Links {#links}
 
-**Nu** traduce referințele link-urilor. Acest lucru se aplică la link-uri
+**Nu** traduce referințele linkurilor. Acest lucru se aplică la linkuri
 externe, căi către pagini ale website-ului și resurse locale din secțiuni cum ar
 fi [imagini și alte resurse](#images).
 
-Singura excepție este pentru link-uri către pagini externe (precum
+Singura excepție este pentru linkuri către pagini externe (precum
 <https://en.wikipedia.org>) care au o versiune specifică a localizării tale. În
 mod frecvent acest lucru implică schimbarea `en`-ului din URL la codul de limbă
 al localizării tale.
@@ -124,15 +124,15 @@ al localizării tale.
 >
 > Repertoriul Website-ului OTel are un hook personalizat de randare pe care Hugo
 > îl folosește să transforme căi absolute de link care fac referire la pagini de
-> documentație. **Link-uri de forma `/docs/some-page` sunt făcute să fie
+> documentație. **Linkuri de forma `/docs/some-page` sunt făcute să fie
 > specifice localizării** prin prefixarea căii cu codul de limbă atunci când se
-> randează link-ul. Spre exemplu, calea precedentă ar deveni
+> randează linkul. Spre exemplu, calea precedentă ar deveni
 > `/ja/docs/some-page` când este randată dintr-o pagină în japoneză.
 
-### Etichete pentru definițiile link-urilor {#link-labels}
+### Etichete pentru definițiile linkurilor {#link-labels}
 
 Autorii de traduceri regionale pot sau nu să aleagă să traducă
-[etichete][labels] pentru [definițiile link-urilor][link definitions] din
+[etichete][labels] pentru [definițiile linkurilor][link definitions] din
 Markdown. Dacă alegi să păstrezi eticheta în engleză, atunci urmărește ghidul
 dat în această secțiune.
 
@@ -352,8 +352,8 @@ hash-ului paginii.
 
 Câmpul `drifted_from_default` din front matter marchează o pagină localizată ca
 fiind diferită de original: pagina afișează un banner „învechit”, iar
-verificatorul de link-uri o omite, astfel încât link-urile expirate din paginile
-care diferă să nu ducă la eșecul CI. Verificatorul de link-uri nu așteaptă
+verificatorul de linkuri o omite, astfel încât linkurile expirate din paginile
+care diferă să nu ducă la eșecul CI. Verificatorul de linkuri nu așteaptă
 prezența acestui câmp: copiile localizate ale paginilor în limba engleză
 modificate de la ultima sincronizare a stării la nivelul întregului arbore sunt
 de asemenea omise, ca
@@ -500,174 +500,199 @@ Cu terminologia stabilită, poți localiza acum paginile rămase din site.
 > câteva fișiere mici. Pull request-urile mai mici sunt mai ușor de revizuit și,
 > prin urmare, sunt de obicei integrate mai rapid.
 
-### OTel maintainer checklist
+### Listă de verificare pentru administratorii OTel {#otel-maintainer-checklist}
 
-#### Hugo
+#### Hugo {#hugo}
 
-Update Hugo config for `LANG_ID`. Add appropriate entries for `LANG_ID` under:
+Actualizează configurația Hugo pentru `LANG_ID`. Adaugă intrările
+corespunzătoare pentru `LANG_ID` în:
 
-- `languages` in `config/_default/hugo.yaml`
-- `module.mounts` via `config/_default/module-template.yaml`. At a minimum, add
-  a single `source`-`target` entry for `content`. Consider adding entries for
-  `en` fallback pages only once the locale has enough content.
+- `languages` din `config/_default/hugo.yaml`
+- `module.mounts` prin `config/_default/module-template.yaml`. Adaugă cel puțin
+  o singură intrare `source`-`target` pentru `content`. Ia în considerare
+  adăugarea de intrări pentru paginile de rezervă în `en` doar după ce
+  localizarea are suficient conținut.
 
-#### Spelling
+#### Ortografie {#spelling}
 
-Look for [cSpell dictionaries][] available as NPM packages
-[@cspell/dict-LANG_ID][]. If a dictionary isn't available for your dialect or
-region, choose the closest region.
+Caută [dicționare cSpell][cSpell dictionaries] disponibile ca pachete NPM
+[@cspell/dict-LANG_ID][]. Dacă nu este disponibil un dicționar pentru dialectul
+sau regiunea ta, alege regiunea cea mai apropiată.
 
-- **If a dictionary is available**:
-  - Add the NPM package as a dev dependency, for example:
+- **Dacă este disponibil un dicționar**:
+
+  - Adaugă pachetul NPM ca dependență de dezvoltare, de exemplu:
     `npm install --save-dev @cspell/dict-bn`.
-  - In [`.cspell.yml`][], add the package's `cspell-ext.json` under `import:`,
-    and add the dictionary's ID (for example `bn`, `es-es`, `pl_pl`) under
-    `dictionaries:`.
-- **If no dictionary is available** for the language, do not add an `import` for
-  it. Add `content/LANG_ID` to the `ignorePaths` list in [`.cspell.yml`][] so
-  cSpell does not try to spell-check that locale's Markdown as English.
+  - În [`.cspell.yml`][], adaugă fișierul `cspell-ext.json` al pachetului la
+    `import:` și adaugă ID-ul dicționarului (de exemplu `bn`, `es-es`, `pl_pl`)
+    la `dictionaries:`.
+- **Dacă nu este disponibil niciun dicționar** pentru limba respectivă, nu adăuga un
+  `import` pentru acesta. Adaugă `content/LANG_ID` în lista `ignorePaths` din
+  [`.cspell.yml`][], astfel încât cSpell să nu încerce să verifice ortografia
+  fișierelor Markdown ale acelei localizări ca și cum ar fi în engleză.
 
 [cSpell dictionaries]: https://github.com/streetsidesoftware/cspell-dicts
 [@cspell/dict-LANG_ID]: https://www.npmjs.com/search?q=%40cspell%2Fdict
 [`.cspell.yml`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml
 
-#### Word list
+#### Listă de cuvinte {#word-list}
 
-Create `.cspell/LANG_ID-words.txt` for every new locale (empty at first), even
-when **Spelling** has no natural-language dictionary to add.
+Creează `.cspell/LANG_ID-words.txt` pentru fiecare localizare nouă (gol la
+început), chiar și atunci când la pasul **Ortografie** nu există un dicționar de
+limbă naturală de adăugat.
 
-- In [`.cspell.yml`][], register the file and enable it:
-  - Under `dictionaryDefinitions`, add an entry with `name` (for example
-    `LANG_ID-words`) and `path` (for example `.cspell/LANG_ID-words.txt`).
-  - Under `dictionaries`, add the same `name` value as in the step above (not
-    the file path).
+- În [`.cspell.yml`][], înregistrează fișierul și activează-l:
 
-#### Other tooling support
+  - La `dictionaryDefinitions`, adaugă o intrare cu `name` (de exemplu
+    `LANG_ID-words`) și `path` (de exemplu `.cspell/LANG_ID-words.txt`).
+  - La `dictionaries`, adaugă aceeași valoare `name` ca la pasul anterior (nu
+    calea fișierului).
 
-- Prettier support: if `LANG_ID` isn't well supported by Prettier, add ignore
-  rules to `.prettierignore`
+#### Suport pentru alte instrumente {#other-tooling-support}
 
-## Approver and maintainer guidance
+- Suport Prettier: dacă `LANG_ID` nu este bine susținut de Prettier, adaugă
+  reguli de ignorare în `.prettierignore`.
 
-### Enabling auto-merge on locale-only PRs {#auto-merge}
+## Îndrumări pentru aprobatori și administratori {#approver-and-maintainer-guidance}
 
-Members of a locale's maintainers team can enable [GitHub auto-merge][] on a
-locale-only PR by commenting `/auto-merge` (or `/auto-merge:enable`; use
-`/auto-merge:disable` to turn it off). The directive must be on its own line,
-with no leading text or whitespace, as the first or last non-blank line of the
-comment. It may appear at most once. For example, you can write:
+### Activarea auto-merge pentru PR-uri specifice unei localizări {#auto-merge}
+
+Membrii echipei de administratori a unei localizări pot activa [auto-merge pe
+GitHub][GitHub auto-merge] pentru un PR specific acelei localizări, comentând
+`/auto-merge` (sau `/auto-merge:enable`; folosește `/auto-merge:disable` pentru
+a-l dezactiva). Directiva trebuie să fie pe o linie separată, fără text sau
+spații înaintea ei, ca prima sau ultima linie care nu este goală din comentariu.
+Poate apărea cel mult o dată. De exemplu, poți scrie:
 
 ```text
 LGTM
 /auto-merge
 ```
 
-This lets established localization teams land their own PRs without waiting on a
-docs maintainer. GitHub, branch protection, and CODEOWNERS rules still gate the
-merge: the PR only merges once all required reviews are in and checks pass.
+Acest lucru permite echipelor de localizare deja stabilite să își integreze
+propriile PR-uri fără să aștepte un administrator al documentației. Regulile
+GitHub, cele de protecție a branch-ului și CODEOWNERS controlează în continuare
+integrarea: PR-ul este integrat doar după ce sunt obținute toate revizuirile
+necesare și toate verificările sunt finalizate cu succes.
 
-An auto-merge comment is honored only when every changed file is owned by a
-locale you maintain, so it can't be used to make changes to shared or English
-content. For the eligibility rules and command details, see the [helper
-README][].
+Un comentariu auto-merge este luat în considerare doar atunci când fiecare
+fișier modificat aparține unei localizări pe care o administrezi, așa că nu
+poate fi folosit pentru a modifica conținutul partajat sau conținutul în limba
+engleză. Pentru regulile de eligibilitate și detaliile comenzii, vezi
+[README-ul de ajutor][helper README].
 
 [GitHub auto-merge]:
   https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
 [helper README]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
 
-### PRs should not span locales {#prs-should-not-span-locales}
+### PR-urile nu ar trebui să includă mai multe localizări {#prs-should-not-span-locales}
 
-As a general rule, a PR should not span locales, that is, it should change the
-pages of at most one locale. The only exceptions are described in this section.
+Ca regulă generală, un PR nu ar trebui să includă mai multe localizări, adică ar
+trebui să modifice paginile a cel mult unei localizări. Singurele excepții
+sunt descrise în această secțiune.
 
-#### Semantic changes {#semantic-changes}
+#### Modificări semantice {#semantic-changes}
 
-Approvers should ensure that [PRs][] making **semantic** changes to doc pages do
-not span multiple locales. A semantic change is one that impacts the _meaning_
-of the page content — what readers understand and act on. Code blocks, commands,
-and configuration samples are part of that content: they aren't
-[translated](#do-not), but edits to them are semantic changes all the same. Our
-docs [localization process](.) ensures that locale approvers will, in time,
-review the English-language edits to determine if the changes are appropriate
-for their locale, and how best to incorporate them into their locale. If changes
-are necessary, the locale approvers will make them via their own locale-specific
-PRs.
+Aprobatorii ar trebui să se asigure că [PR-urile][PRs] care aduc modificări
+**semantice** paginilor de documentație nu includ mai multe localizări. O
+modificare semantică este una care afectează _înțelesul_ conținutului paginii —
+ceea ce cititorii înțeleg și pun în practică. Blocurile de cod, comenzile și
+exemplele de configurare fac parte din acest conținut: acestea nu sunt
+[traduse](#do-not), dar modificările aduse lor sunt, în aceeași măsură,
+modificări semantice. [Procesul de localizare](.) al documentației noastre
+asigură că aprobatorii localizărilor vor revizui, în timp, modificările în limba
+engleză pentru a stabili dacă acestea sunt potrivite pentru localizarea lor și
+cum să le încorporeze cel mai bine în aceasta. Dacă sunt necesare modificări,
+aprobatorii localizării le vor face prin propriile PR-uri specifice localizării.
 
-> [!NOTE] Content-neutral maintenance
+> [!NOTE] Mentenanță neutră față de conținut
 >
-> The locale-span rule governs page **content**. Maintainers sometimes submit
-> content-neutral changes that necessarily span locales: site-wide tooling,
-> configuration, front-matter, or markup updates, including
-> [drift-status](#drift-status) bookkeeping — the automated PRs and manual
-> status-only edits alike. Such changes don't alter the meaning of localized
-> pages.
+> Regula privind includerea mai multor localizări se aplică **conținutului**
+> paginilor. Administratorii trimit uneori modificări neutre față de conținut
+> care includ în mod necesar mai multe localizări: actualizări la nivelul
+> întregului site ale instrumentelor, configurației, front matter-ului sau
+> marcajului, inclusiv evidența [stării diferențelor](#drift-status) — atât
+> PR-urile automate, cât și modificările manuale care vizează doar starea.
+> Astfel de modificări nu schimbă înțelesul paginilor localizate.
 
-#### Keeping the build green {#keep-checks-green}
+#### Menținerea build-ului funcțional {#keep-checks-green}
 
-A PR that changes localized page **content** may span multiple locales only when
-that is strictly required to keep the site build green. Such **build fixes**
-repair site-build breakage on localized pages, for example, after a shared
-shortcode, include file, or data source changes. A page's
-[drift status](#drift-status) only shields it from link checking, not from the
-Hugo build. Mark every localized page that you fix as [patched](#patched).
+Un PR care modifică **conținutul** paginilor localizate poate include mai multe
+localizări doar atunci când acest lucru este strict necesar pentru a menține
+build-ul site-ului funcțional. Astfel de **corecții de build** remediază
+defecțiunile build-ului site-ului în paginile localizate, de exemplu, după
+modificarea unui shortcode comun, a unui fișier inclus sau a unei surse de date.
+[Starea diferențelor](#drift-status) unei pagini o protejează doar de verificarea
+linkurilor, nu și de build-ul Hugo. Marchează fiecare pagină localizată pe care
+o corectezi ca [patched](#patched).
 
-Link-check failures on localized pages are **not** such a case; for how to
-resolve them, see
-[Link fixes and resource updates](#link-fixes-and-resource-updates).
+Eșecurile verificării linkurilor în paginile localizate **nu** constituie un
+astfel de caz; pentru modul de rezolvare a acestora, vezi
+[Corectarea linkurilor și actualizarea resurselor](#link-fixes-and-resource-updates).
 
-The same minimum-fix rule applies to drift-status bookkeeping: when a failing
-check calls for refreshing `drifted_from_default`, update only the pages that
-the failing check reports; the daily
-[Housekeeping run](/site/build/ci-workflows/#housekeeping) completes the rest.
-Status-only edits are [content-neutral maintenance](#semantic-changes).
+Aceeași regulă a corecției minime se aplică și evidenței stării diferențelor:
+când o verificare eșuată impune actualizarea câmpului `drifted_from_default`,
+actualizează numai paginile raportate de verificarea eșuată; [rularea zilnică
+Housekeeping](/site/build/ci-workflows/#housekeeping) le completează pe
+celelalte. Modificările care vizează doar starea sunt [mentenanță neutră față de
+conținut](#semantic-changes).
 
-Treat any other change to localized page content as a **semantic** change for
-that locale. This includes targeted content additions to drifted pages, such as
-adding a new glossary term.
+Tratează orice altă modificare a conținutului paginilor localizate ca pe o
+modificare **semantică** pentru acea localizare. Aceasta include adăugările
+punctuale de conținut în paginile care diferă, cum ar fi adăugarea unui nou
+termen în glosar.
 
-#### Link fixes and resource updates {#link-fixes-and-resource-updates}
+#### Corectarea linkurilor și actualizarea resurselor {#link-fixes-and-resource-updates}
 
-Changes to the English documentation can result in link-check failures for
-non-English locales. This happens when documentation pages, or sections within
-them, are moved or deleted; links to moved external resources can fail
-similarly. Fix such failures on English pages only; **never edit localized page
-content to fix links**. [Drift tracking](#track-changes) flags outdated
-localized copies for their locale teams, and reconciliation, link fixes
-included, is left to each team.
+Modificările aduse documentației în limba engleză pot duce la eșecuri ale
+verificării linkurilor pentru localizările în alte limbi decât engleza. Acest
+lucru se întâmplă atunci când paginile de documentație sau secțiuni din acestea
+sunt mutate sau șterse; linkurile către resurse externe mutate pot eșua în mod
+similar. Corectează astfel de eșecuri numai în paginile în limba engleză;
+**nu edita niciodată conținutul paginilor localizate pentru a corecta
+linkurile**. [Urmărirea diferențelor](#track-changes) semnalează echipelor
+fiecărei localizări copiile localizate învechite, iar reconcilierea, inclusiv
+corectarea linkurilor, este lăsată în sarcina fiecărei echipe.
 
-First, contain the fallout on the English side by fixing the failing links. Some
-target fates offer additional mitigations:
+Mai întâi, limitează efectele în partea în limba engleză prin corectarea
+linkurilor care eșuează. Unele situații ale resurselor țintă permit măsuri
+suplimentare:
 
-- **A page was moved**: ensure that the moved English page declares an
-  [alias][aliases] for its old path. The alias keeps previously published links
-  to the page working, but only for site visitors: aliases are published as
-  server-side redirects, and the link checker resolves links against the built
-  site's canonical page paths. Links to the old path therefore still need fixing
-  on English pages.
-- **A section was moved within its page**: preserve its [heading ID](#headings)
-  so that links to the section keep working. Aliases can't help in this case:
-  they redirect page paths, not fragments.
+- **O pagină a fost mutată**: asigură-te că pagina mutată în limba engleză
+  declară un [alias][aliases] pentru calea sa veche. Aliasul menține funcționale
+  linkurile publicate anterior către pagină, dar numai pentru vizitatorii
+  site-ului: aliasurile sunt publicate ca redirecționări pe server, iar
+  verificatorul de linkuri rezolvă linkurile în raport cu căile canonice ale
+  paginilor din site-ul generat. Prin urmare, linkurile către calea veche
+  trebuie totuși corectate în paginile în limba engleză.
+- **O secțiune a fost mutată în cadrul paginii sale**: păstrează-i
+  [ID-ul titlului](#headings), astfel încât linkurile către secțiune să rămână
+  funcționale. Aliasurile nu sunt de ajutor în acest caz: ele redirecționează
+  căile paginilor, nu fragmentele.
 
-The other fates have no such mitigation: a section moved to a different page, a
-moved external resource, or a deleted target. Fixing the English links is the
-whole English-side fix; for a deleted target, that means choosing a replacement
-target or dropping the reference on each linking page.
+Celelalte situații nu permit astfel de măsuri: o secțiune mutată pe o altă
+pagină, o resursă externă mutată sau o țintă ștearsă. Corectarea linkurilor în
+limba engleză reprezintă întreaga corecție necesară pe partea în limba engleză;
+pentru o țintă ștearsă, aceasta înseamnă alegerea unei ținte înlocuitoare sau
+eliminarea referinței din fiecare pagină care conține un link către aceasta.
 
-Then let drift handling cover the localized pages: fixing the English pages
-makes their localized copies [drift](#drift-status), and the link checker skips
-drifted copies. If a localized page still fails link checking, refresh its drift
-status directly:
+Apoi, lasă gestionarea diferențelor să acopere paginile localizate: corectarea
+paginilor în limba engleză face ca respectivele copii localizate să fie
+[marcate ca diferite](#drift-status), iar verificatorul de linkuri omite copiile
+marcate astfel. Dacă o pagină localizată continuă să eșueze la verificarea
+linkurilor, actualizează-i direct starea diferențelor:
 
 ```sh
 npm run fix:i18n:status -- PATHS_TO_FAILING_LOCALIZED_PAGES
 ```
 
-In the rare case where a failing link exists only in a localized page, report it
-and coordinate a fix with its locale team.
+În cazul rar în care un link care eșuează există numai într-o pagină localizată,
+raportează-l și coordonează corectarea acestuia cu echipa localizării respective.
 
-Finally, rerun `npm run check:links` and confirm that no link failures remain.
+În final, rulează din nou `npm run check:links` și confirmă că nu mai există
+eșecuri ale verificării linkurilor.
 
 [aliases]: https://gohugo.io/content-management/urls/#aliases
 [front matter]: https://gohugo.io/content-management/front-matter/
