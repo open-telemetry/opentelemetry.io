@@ -221,6 +221,7 @@
     "npm-check-updates": "23.0.1"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
+  "enginesNpmComment": "Bump engines.npm to >=11.18.0 (allowScripts enforcement-gap fixes, npm/cli#9652) once Node LTS bundles npm >= 11.18; Netlify already pins a newer npm",
   "engines": {
     "node": ">=24",
     "npm": ">=11.16.0"

@@ -25,7 +25,8 @@ Configuration: `min-release-age` in `.npmrc`.
 
 Installs run a package's lifecycle scripts only when its exact name and version
 is allowlisted. An entry set to `false` records a reviewed denial: the package
-installs, its script is skipped. Installs with `--ignore-scripts` run none,
+installs, its script is skipped. Denials grant nothing, so they cover the
+package by name, across versions. Installs with `--ignore-scripts` run none,
 allowlisted or not.
 
 Configuration: `strict-allow-scripts` in `.npmrc`; the `allowScripts` map in
@@ -59,7 +60,9 @@ disabled:
   dependencies.
 - **Netlify**: `npm run install:safe`, run by the build command after the inert
   auto-install, between clean-working-tree checks; lock drift or any other
-  Git-visible change fails the build.
+  Git-visible change fails the build. If the check fails on residue from a
+  retired path — Netlify's build cache restores it — clear the deploy context's
+  build cache and retry rather than ignoring the path.
 - **Local**: `npm install`, or `npm run install:safe` for the automated
   contract; see [local setup][].
 
@@ -83,8 +86,8 @@ npm install --package-lock-only --ignore-scripts
 When updating a package that has an `allowScripts` entry:
 
 1. Review the new version's lifecycle scripts.
-2. Update the entry's exact version together with the dependency: `true` if the
-   script is needed, `false` to record a reviewed denial.
+2. If the script is needed, update the entry's exact version together with the
+   dependency. A denial (`false`) is name-level and needs no update.
 
 ### Lock-file maintenance
 

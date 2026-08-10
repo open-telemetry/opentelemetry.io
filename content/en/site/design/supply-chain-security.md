@@ -67,9 +67,10 @@ package: a compromised patch release can't inherit its predecessor's approval.
 
 Review records both outcomes: a needed script is approved, and an unnecessary
 one (a shipped prebuilt binary suffices) gets an explicit denial, so silence
-always means unreviewed, and unreviewed fails the install. Exceptions are named
-and re-enabled inline at the point of use, never by weakening the default
-posture.
+always means unreviewed, and unreviewed fails the install. Approvals are
+version-exact; denials, which grant nothing, cover the package by name.
+Exceptions are named and re-enabled inline at the point of use, never by
+weakening the default posture.
 
 ### Fail closed on old npm
 
