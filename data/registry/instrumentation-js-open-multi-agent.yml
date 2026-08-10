@@ -1,0 +1,25 @@
+title: Open Multi-Agent OpenTelemetry Adapter
+registryType: instrumentation
+language: js
+tags:
+  - TypeScript
+  - Node.js
+  - multi-agent
+  - tracing
+urls:
+  repo: https://github.com/open-multi-agent/open-multi-agent
+  docs: https://github.com/open-multi-agent/open-multi-agent/tree/main/packages/otel
+license: MIT
+description: >-
+  Adapter that converts Open Multi-Agent TraceRecord v2 batches into spans on an
+  application-owned OpenTelemetry tracer or TracerProvider.
+authors:
+  - name: open-multi-agent
+    url: https://github.com/open-multi-agent
+createdAt: 2026-08-10
+package:
+  registry: npm
+  name: '@open-multi-agent/otel'
+  version: 0.1.1
+isNative: false
+isFirstParty: true
