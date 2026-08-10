@@ -75,6 +75,9 @@ Your development environment will be initialized via the
     nvm install lts && nvm use lts
     ```
 
+    The project requires npm 11.16.0 or later. The active Node.js LTS includes a
+    compatible version.
+
 4.  Get npm packages and other prerequisites:
 
     ```sh
@@ -150,6 +153,8 @@ npm run serve
 The site is served at [localhost:1313][].
 
 The serve command serves files from memory, not from disk.
+
+To test Netlify redirects, use the [deploy preview][] for your PR.
 
 If you see an error like `too many open files` or `pipe failed` under macOS, you
 might need to increase the file descriptor limit. See
@@ -251,6 +256,7 @@ npm run check:code-excerpts
 [clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
 [cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
+[deploy preview]: ../pull-requests/#site-deploys-and-pr-previews
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io

@@ -17,10 +17,14 @@ CI jobs install npm dependencies from the committed `package-lock.json`:
   run, and the install fails if `package.json` and the lock file are out of
   sync.
 - Jobs that build the site follow the install with `npm run ci:prepare`, which
-  rebuilds `hugo-extended` (the only dependency hook re-enabled) and then runs
-  the repository's own `prepare` setup.
+  explicitly enables the reviewed `hugo-extended` hook to fetch the pinned Hugo
+  binary, then runs the repository's own `prepare` setup.
 - The devcontainer instead uses `npm run install:safe`: the same contract, but
   keeping optional dependencies.
+- Netlify constrains its automatic install to a dry run with scripts disabled,
+  then runs `install:safe` between clean-working-tree checks. This catches lock
+  drift and other changes visible to Git. See [`netlify.toml`][] for the
+  controls.
 
 For script details, see [npm scripts](../npm-scripts/).
 
@@ -495,4 +499,5 @@ The repository includes several other workflows:
 <!-- prettier-ignore-start -->
 [link checking]: ../link-checking/
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
+[`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 <!-- prettier-ignore-end -->

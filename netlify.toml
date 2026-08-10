@@ -3,9 +3,10 @@ publish = "public"
 command = "npm run netlify-build:preview"
 
 [build.environment]
-# Constrain Netlify's automatic npm install to resolution only: no tree writes,
-# no bin linking, and no lifecycle scripts. If Netlify stops honoring NPM_FLAGS,
-# the clean-tree checks around install:safe fail on its tree writes or lock drift.
+# Keep Netlify's automatic npm install inert: no dependency-tree writes, bin
+# linking, or lifecycle scripts. If Netlify stops honoring NPM_FLAGS, .npmrc
+# still gates scripts, and the clean-tree checks around install:safe catch lock
+# drift and other changes visible to Git.
 # Pin npm above the package engines floor before the automatic install runs.
 NPM_VERSION = "11.17.0"
 NPM_FLAGS = "--dry-run --ignore-scripts"

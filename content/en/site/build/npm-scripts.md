@@ -95,25 +95,25 @@ are internal helpers and are not intended to be run directly.
 
 ## Test and CI
 
-| Script                     | Description                                                         |
-| -------------------------- | ------------------------------------------------------------------- |
-| `diff:check`               | Warn if working tree has uncommitted changes.                       |
-| `diff:fail`                | Fail if working tree has changes (e.g. after build).                |
-| `fix-and-test:all`         | All fixes (incl. i18n), then checks; links checked once.[^fat]      |
-| `netlify-build:preview`    | `build:preview` then `diff:check`.                                  |
-| `netlify-build:production` | `build:production` then `diff:check`.                               |
-| `test-and-fix`             | Run fix scripts (excluding i18n/link-cache/submodule), then checks. |
-| `test:all`                 | Runs `test:base` then `test:compound-tests`.                        |
-| `test:base`                | Base tests (same as `check`).                                       |
-| `test:collector-sync`      | Collector-sync tests.                                               |
-| `test:compound-tests`      | Runs compound `test:*-*` scripts.[^categories]                      |
-| `test:double-check:live`   | Live smoke check of the [double-check probe][dc].                   |
-| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.                 |
-| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.        |
-| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^categories]          |
-| `test:local-tools:lychee`  | Lychee-binary slice of `test:local-tools` (see Notes).              |
-| `test:public`              | Runs the `tests/public/` checks over the built site.[^categories]   |
-| `test`                     | Run the most commonly needed tests.                                 |
+| Script                     | Description                                                                   |
+| -------------------------- | ----------------------------------------------------------------------------- |
+| `diff:check`               | Warn if working tree has uncommitted changes.                                 |
+| `diff:fail`                | Fail if working tree has changes (e.g. after build).                          |
+| `fix-and-test:all`         | All fixes (incl. i18n), then checks; links checked once.[^fat]                |
+| `netlify-build:preview`    | Netlify entry point: guarded install, preview build, working-tree warning.    |
+| `netlify-build:production` | Netlify entry point: guarded install, production build, working-tree warning. |
+| `test-and-fix`             | Run fix scripts (excluding i18n/link-cache/submodule), then checks.           |
+| `test:all`                 | Runs `test:base` then `test:compound-tests`.                                  |
+| `test:base`                | Base tests (same as `check`).                                                 |
+| `test:collector-sync`      | Collector-sync tests.                                                         |
+| `test:compound-tests`      | Runs compound `test:*-*` scripts.[^categories]                                |
+| `test:double-check:live`   | Live smoke check of the [double-check probe][dc].                             |
+| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.                           |
+| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.                  |
+| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^categories]                    |
+| `test:local-tools:lychee`  | Lychee-binary slice of `test:local-tools` (see Notes).                        |
+| `test:public`              | Runs the `tests/public/` checks over the built site.[^categories]             |
+| `test`                     | Run the most commonly needed tests.                                           |
 
 [^categories]:
     These scripts follow the test-script naming conventions; see
@@ -135,7 +135,7 @@ are internal helpers and are not intended to be run directly.
 | `ci:prepare`                   | Post-`ci:min` setup: fetch the pinned Hugo binary, then `prepare`.                        |
 | `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter.           |
 | `install:safe`                 | Lock-exact local setup: inert install keeping optional deps, then `ci:prepare`.           |
-| `is:clean`                     | Fail if the Git working tree contains tracked or untracked changes.                       |
+| `is:clean`                     | Fail if the Git working tree has changes, including untracked files.                      |
 | `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                             |
 | `log:build`, `log:check:links` | Run the corresponding script, tee output to `tmp/`, and propagate the script's exit code. |
 | `prebuild:*`                   | Pre-`build*` hooks; each runs `_prebuild`.                                                |
@@ -153,6 +153,10 @@ are internal helpers and are not intended to be run directly.
   published at least 3 days earlier. This gives registry-side takedowns of
   malicious releases time to land. `npm ci` installs from the lock without
   resolving, so the cooldown doesn't affect it.
+- **Lifecycle scripts.** The committed `.npmrc` runs package lifecycle scripts
+  only when `package.json` allows its exact name and version. When updating a
+  script-bearing package, update its `allowScripts` entry too. Installs with
+  `--ignore-scripts` run no lifecycle scripts and don't exercise the allowlist.
 - **Link cache.** The link-check scripts read and update the committed
   `.lycheecache`. For details, see [Link checking](../link-checking/).
 - **`test:local-tools:lychee`** is the subset of `test:local-tools` that needs
