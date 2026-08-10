@@ -6,7 +6,6 @@ author: >-
   [Matthieu Noirbusson](https://github.com/MatthieuNoirbusson) (Sensor Factory)
 issue: 10115
 sig: 'Specification: Entities' # verified against open-telemetry/community SIG list
-draft: true
 # cSpell:ignore Noirbusson bitemporal semconv kvlist upserts
 ---
 
