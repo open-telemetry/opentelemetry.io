@@ -138,7 +138,6 @@ are internal helpers and are not intended to be run directly.
 | `is:clean`                     | Fail if the Git working tree has changes, including untracked files.                      |
 | `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                             |
 | `log:build`, `log:check:links` | Run the corresponding script, tee output to `tmp/`, and propagate the script's exit code. |
-| `prebuild:*`                   | Pre-`build*` hooks; each runs `_prebuild`.                                                |
 | `prepare`                      | Install step: `get:submodule`, then Docsy's lock-exact theme dependency install.          |
 | `seq`                          | Run given script names in sequence; exit on first failure.                                |
 | `update:hugo`                  | Install latest hugo-extended.                                                             |
