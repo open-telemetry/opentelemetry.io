@@ -205,11 +205,13 @@ with an editor.
 > [!NOTE]
 >
 > When merging YAML values with the Collector, objects are merged and arrays are
-> replaced. The upstream exporter names must be repeated in the `exporters`
-> array when overriding a pipeline; omitting them removes the corresponding
-> exporters. The upstream exporter names are:
+> replaced. The `span_metrics` connector bridges traces to metrics, so it must
+> be retained on traces `exporters` and metrics `receivers` when overriding
+> those pipelines — omitting it causes the collector to crash. All other
+> exporters are optional: omitting one simply stops data from being sent to that
+> backend. The upstream exporter names are:
 >
-> - **traces**: `debug`, `otlp_grpc/jaeger`, `span_metrics`
+> - **traces**: `debug`, `otlp_grpc/jaeger`, `span_metrics` _(required)_
 > - **metrics**: `debug`, `otlp_http/prometheus`
 > - **logs**: `debug`, `opensearch`
 
