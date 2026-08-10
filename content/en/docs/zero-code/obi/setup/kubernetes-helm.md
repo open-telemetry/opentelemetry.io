@@ -143,6 +143,11 @@ through the cache `Service` and reconnect to a healthy replica on failure.
 When `k8sCache.replicas` is `0` (the default), the cache is not deployed and
 each OBI Pod uses its own local informers.
 
+For more background on what `k8s-cache` is and when to use it, see the
+[Kubernetes setup guide](../kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache).
+For cache configuration options, see [Kubernetes decorator](../../configure/metrics-traces-attributes/#kubernetes-decorator).
+
+
 ## Providing secrets to the Helm configuration
 
 If you are submitting directly the metrics and traces to your observability
