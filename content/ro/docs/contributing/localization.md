@@ -10,14 +10,14 @@ cSpell:ignore: Dowair shortcodes
 
 Website-ul OTel folosește [framework-ul multilingvist][multilingual framework]
 al lui Hugo pentru a susține localizările paginilor. Engleza este limba
-implicită, având Engleză US ca localizare standard. Numărul localizărilor
+implicită, având engleză US ca localizare standard. Numărul localizărilor
 disponibile este în continuă creștere, cum se poate vedea în lista de limbi din
 bara de navigație din antet.
 
-## Îndrumări pentru traducere
+## Îndrumări pentru traducere {#translation-guidance}
 
 Când traduci pagini web din engleză, recomandăm să urmezi îndrumările oferite în
-această secțiune
+această secțiune.
 
 ### Sumar
 
@@ -59,7 +59,7 @@ această secțiune
   - [Linkuri](#links), asta include și [id-urile titlurilor](#headings) [^*]
   - Elemente Markdown marcate ca și `notranslate` (deobicei ca o clasă CSS), în
     special pentru [titluri](#headings)
-- Creează **copii de imagini și alte fișiere**, decât dacă
+- Creează **copii de imagini și alte fișiere**, cu excepția cazului în care
   [traduci text din ele](#images)
 - Adaugă sau schimbă:
   - **Conținut** care ar avea un sens diferit față de cel inițial dorit
@@ -75,8 +75,8 @@ această secțiune
 #### Utilizarea instrumentelor de inteligență artificială {#ai-tools}
 
 Dacă folosești instrumente de inteligență artificială generativă (precum
-ChatGPT, Gemini, sau similare) pentru a te ajuta cu traducerea, trebuie să
-respecți [Politica OpenTelemetry privind contribuția folosind IA
+ChatGPT, Gemini, sau altele similare) pentru a te ajuta cu traducerea, trebuie
+să respecți [Politica OpenTelemetry privind contribuția folosind IA
 generativă][genai-policy] și [Politica Linux Foundation privind contribuția
 folosind IA generativă][lf-ai-policy]. În mod special:
 
@@ -104,7 +104,7 @@ când se traduc titlurile:
   titlu][Heading ID syntax] este scrisă după textul titlului folosind sintaxa
   `{ #some-id }`.
 - Altfel, declară explicit un ID de titlu care să corespundă ID-ului autogenerat
-  al titlului original în Engleză
+  al titlului original în engleză.
 
 [Heading ID syntax]:
   https://github.com/yuin/goldmark/blob/master/README.md#headings
@@ -161,7 +161,8 @@ Acesta ar fi tradus în franceză ca și:
 ### Images and other assets {#images}
 
 - **Nu** face copii ale fișierelor de imagine, videoclipuri sau alte elemente
-  care nu reprezintă conținut decât dacă traduci textul din fișier.
+  care nu reprezintă conținut cu excepția cazului în care traduci textul din
+  fișier.
   - Hugo este deștept în felul în care randează fișiere de imagine care sunt
     partajate între traducerile din site. Prin urmare, Hugo va produce un
     _singur_ fișier de imagine și-l va împărți între traduceri. Pentru detalii,
@@ -205,7 +206,7 @@ Una dintre principalele provocări ale menținerii paginilor localizate este
 identificarea momentului în care versiunile corespunzătoare în limba engleză au
 fost actualizate. Această secțiune explică modul în care tratăm acest lucru.
 
-### Câmpul `default_lang_commit` din front matter
+### Câmpul `default_lang_commit` din front matter {#the-default_lang_commit-front-matter-field}
 
 Atunci când se creează o pagină localizată, precum
 `content/zh/<some-path>/page.md`, traducerea se bazează pe un anumit [commit din
@@ -226,7 +227,7 @@ Front matter-ul de mai sus s-ar afla în `content/zh/<some-path>/page.md`.
 Hash-ul commit-ului corespunde celui mai recent commit al paginii
 `content/en/<some-path>/page.md` din branch-ul `main`.
 
-### Urmărirea modificărilor aduse paginilor în limba engleză
+### Urmărirea modificărilor aduse paginilor în limba engleză {#tracking-changes-to-english-pages}
 
 Pe măsură ce paginile în limba engleză sunt actualizate, poți urmări paginile
 localizate corespunzătoare care necesită actualizare rulând următoarea comandă:
@@ -245,7 +246,7 @@ mai multe căi, astfel:
 npm run check:i18n -- content/zh
 ```
 
-### Vizualizarea detaliilor modificărilor
+### Vizualizarea detaliilor modificărilor {#viewing-change-details}
 
 Pentru orice pagină localizată care necesită actualizare, poți vedea detaliile
 diferențelor față de pagina corespunzătoare în limba engleză folosind subcomanda
@@ -268,7 +269,7 @@ index 3592df5d..c7980653 100644
  ---
 ```
 
-### Adăugarea câmpului `default_lang_commit` la paginile noi
+### Adăugarea câmpului `default_lang_commit` la paginile noi {#adding-default_lang_commit-to-new-pages}
 
 Pe măsură ce creezi pagini pentru localizarea ta, nu uita să adaugi
 `default_lang_commit` în front matter-ul paginii, împreună cu un hash de commit
@@ -372,7 +373,7 @@ Referințele pot indica numai commit-uri din `main`, așa că o pagină sincroni
 cu modificări în limba engleză făcute în același pull request înregistrează
 diferențele rămase până când acele modificări sunt integrate.
 
-### Ajutor pentru script
+### Ajutor pentru script {#script-help}
 
 Pentru mai multe detalii despre script, rulează `npm run check:i18n -- -h`.
 
