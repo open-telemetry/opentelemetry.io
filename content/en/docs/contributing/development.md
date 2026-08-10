@@ -81,8 +81,8 @@ Your development environment will be initialized via the
     npm install
     ```
 
-    Or, for the [lock-exact, script-suppressing setup][ci-install] that CI and
-    the devcontainer use:
+    Or, for the [lock-exact, script-suppressing setup][ci-install] that the
+    devcontainer uses:
 
     ```sh
     npm run install:safe

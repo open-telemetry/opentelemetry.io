@@ -5,10 +5,10 @@ description: >-
 weight: 11
 ---
 
-npm dependencies are pinned by the committed `package-lock.json`; every install
-path reproduces that lock exactly, with lifecycle scripts disabled except for a
-reviewed allowlist. For the threat model and rationale behind these controls,
-see [Supply-chain security](../../design/supply-chain-security/).
+npm dependencies are pinned by the committed `package-lock.json`: automated
+installs reproduce the lock exactly, and lifecycle scripts are disabled except
+for a reviewed allowlist. For the threat model and rationale behind these
+controls, see [Supply-chain security](../../design/supply-chain-security/).
 
 ## Supply-chain controls {#controls}
 
@@ -49,8 +49,9 @@ Configuration: `NPM_VERSION` and `NPM_FLAGS` in `netlify.toml`.
 
 Automated environments install lock-exact and script-free, then explicitly
 re-enable the one reviewed hook: the `hugo-extended` rebuild that fetches the
-pinned Hugo binary. Local installs are lock-pinned too, with lifecycle scripts
-gated by the allowlist rather than disabled:
+pinned Hugo binary. Local installs follow the lock while it agrees with
+`package.json`, with lifecycle scripts gated by the allowlist rather than
+disabled:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.
@@ -59,8 +60,8 @@ gated by the allowlist rather than disabled:
 - **Netlify**: `npm run install:safe`, run by the build command after the inert
   auto-install, between clean-working-tree checks; lock drift or any other
   Git-visible change fails the build.
-- **Local**: `npm install` (lock-pinned) or `npm run install:safe`; see [local
-  setup][].
+- **Local**: `npm install`, or `npm run install:safe` for the automated
+  contract; see [local setup][].
 
 The nested Docsy theme setup follows the same contract: the `prepare` step
 invokes Docsy's own lock-exact, script-free theme-dependency install.
@@ -69,8 +70,13 @@ invokes Docsy's own lock-exact, script-free theme-dependency install.
 
 ### Routine updates
 
-`npm run update:packages` bumps `package.json` and the lock file. The release
-cooldown applies: versions still inside the cooldown window are not offered.
+`npm run update:packages` bumps `package.json` only. The release cooldown
+applies: versions still inside the cooldown window are not offered. Then
+regenerate the lock and commit both files together:
+
+```sh
+npm install --package-lock-only --ignore-scripts
+```
 
 ### Script-bearing packages
 

@@ -12,8 +12,8 @@ For workflows and (most of) their helper scripts, see the `workflow` and
 ## Dependency installation {#dependency-installation}
 
 CI jobs install npm dependencies following the site-wide
-[install contracts](../dependencies/#install-contracts): lock-exact, with
-lifecycle scripts disabled.
+[install contracts](../dependencies/#install-contracts): lock-exact and
+script-free, with build jobs re-enabling only the reviewed Hugo rebuild.
 
 ## PR approval labels {#pr-approval-labels}
 

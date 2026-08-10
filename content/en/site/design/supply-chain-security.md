@@ -45,9 +45,11 @@ cut the packages bearing install scripts from seven to three.
 
 ### Install from the lock; resolve deliberately
 
-Every install path is lock-exact: it reproduces the committed, reviewed
-`package-lock.json` and never resolves version ranges. Resolution, the risky
-step, happens only in deliberate dependency-update operations.
+Automated install paths are lock-exact: they reproduce the committed, reviewed
+`package-lock.json` and never resolve version ranges. A local `npm install`
+follows the lock while it agrees with `package.json`, and rewrites it when the
+two disagree; the verification below catches such rewrites. Resolution, the
+risky step, is reserved for deliberate dependency updates.
 
 ### Resolve only cooled-down releases
 
@@ -97,7 +99,7 @@ install that rewrites the lock warns immediately.
   - npm's accepted [RFC #54][] brings the same model to npm through
     `allowScripts`, version-exact entries included.
 - Release cooldowns are established practice:
-  - [pnpm resolves][] only releases older than a day by default.
+  - [pnpm defers][] releases younger than a day by default.
   - The 3-day value follows the long-standing [Renovate
     `minimumReleaseAge`][renovate] convention.
 - The control set maps onto established framework guidance:
@@ -108,7 +110,7 @@ install that rewrites the lock warns immediately.
 <!-- prettier-ignore-start -->
 [openssf]: https://github.com/ossf/package-manager-best-practices/blob/main/published/npm.md
 [pnpm]: https://pnpm.io/settings/build
-[pnpm resolves]: https://pnpm.io/settings/dependency-resolution
+[pnpm defers]: https://pnpm.io/settings/dependency-resolution
 [renovate]: https://docs.renovatebot.com/configuration-options/#minimumreleaseage
 [RFC #54]: https://github.com/npm/rfcs/blob/main/accepted/0054-make-scripts-install-opt-in.md
 [security notice]: https://github.com/open-telemetry/opentelemetry.io/issues/11210

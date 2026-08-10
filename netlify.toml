@@ -6,7 +6,7 @@ command = "npm run netlify-build:preview"
 # Keep Netlify's automatic npm install inert; the build command runs the real
 # install. Pin npm above the package engines floor before the automatic install
 # runs. Rationale: https://opentelemetry.io/site/design/supply-chain-security/
-NPM_VERSION = "11.17.0"
+NPM_VERSION = "11.19.0"
 NPM_FLAGS = "--dry-run --ignore-scripts"
 
 [context.production]
