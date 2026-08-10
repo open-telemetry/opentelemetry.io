@@ -54,6 +54,9 @@ Options:
   -e       Change or add the '$I18N_DLC_KEY' key value to the latest commit SHA
            of the corresponding English page for each selected localization page.
 
+           TIP: first fetch and pull the upstream 'main' if you want the latest
+                commit of the English page to reflect the remote HEAD.
+
   -C       Report completeness: percentage of English pages that have a translation
            for each language under TARGET_PATH. Use with -v to list missing pages.
 
@@ -222,7 +225,16 @@ function set_file_i18n_hash() {
 
 function get_last_commit_hash_for_file() {
   local f="$1"
-  git log -1 --format=%H -- "$f"
+  # Anchor to the canonical repo's main: upstream/main on a contributor's
+  # local fork checkout, origin/main in CI (where origin is the canonical repo
+  # and no upstream remote exists), falling back to plain 'main'.
+  local main_ref="main"
+  if git remote | grep -qx upstream; then
+    main_ref="upstream/main"
+  elif git remote | grep -qx origin; then
+    main_ref="origin/main"
+  fi
+  git log -1 --format=%H "$main_ref" -- "$f"
 }
 
 function update_file_i18n_hash() {
@@ -350,8 +362,8 @@ function main() {
     # if [[ -n $FLAG_VERBOSE ]]; then echo -e "All targets: $TARGETS"; fi
   fi
 
-  local PIN_COMMIT_FROM_FILE="" # commit from front matter pin in the current target file
-  local SOURCE_LAST_COMMIT=""   # latest commit of source-language version of target file
+  local LASTCOMMIT_FF=""       # commit From File (FF), i.e., $f in the loop below
+  local LASTCOMMIT_GIT=""      # last commit of `en` version of $f from git
   local FILE_COUNT=0           # Number of TLP
   local FILE_PROCESSED_COUNT=0 # Number of TLP actually listed
 
@@ -363,24 +375,24 @@ function main() {
   for f in $TARGETS; do
     ((FILE_COUNT++))
 
-    PIN_COMMIT_FROM_FILE=$(perl -ne "print \"\$1\" if /^$I18N_DLC_KEY:\\s*([a-f0-9]+)/i" "$f")
-    PIN_COMMIT="$PIN_COMMIT_FROM_FILE"
+    LASTCOMMIT_FF=$(perl -ne "print \"\$1\" if /^$I18N_DLC_KEY:\\s*([a-f0-9]+)/i" "$f")
+    LASTCOMMIT="$LASTCOMMIT_FF"
 
-    SOURCE_PATH=$(echo "$f" | sed "s/$DEFAULT_CONTENT\/.\{2,5\}\//$DEFAULT_CONTENT\/$DEFAULT_LANG\//g")
-    SOURCE_LAST_COMMIT=""
-    if [[ -e "$SOURCE_PATH" ]]; then
-      SOURCE_LAST_COMMIT=$(get_last_commit_hash_for_file "$SOURCE_PATH")
+    EN_VERSION=$(echo "$f" | sed "s/$DEFAULT_CONTENT\/.\{2,5\}\//$DEFAULT_CONTENT\/$DEFAULT_LANG\//g")
+    LASTCOMMIT_GIT=""
+    if [[ -e "$EN_VERSION" ]]; then
+      LASTCOMMIT_GIT=$(get_last_commit_hash_for_file "$EN_VERSION")
     fi
 
     if [[ $LIST_KIND == "ALL" && (-n $COMMIT_HASH_ARG || $FLAG_CHANGE_FROM_EN_LAST_COMMIT != 0) ]]; then
         ((FILE_PROCESSED_COUNT++))
         if [[ $FLAG_CHANGE_FROM_EN_LAST_COMMIT != 0 ]]; then
-          if [[ ! -e "$SOURCE_PATH" || -z "$SOURCE_LAST_COMMIT" ]]; then
-            echo "ERROR: cannot determine latest commit for default-language file: $f -> $SOURCE_PATH" >&2
+          if [[ ! -e "$EN_VERSION" || -z "$LASTCOMMIT_GIT" ]]; then
+            echo "ERROR: cannot determine latest commit for EN file: $f -> $EN_VERSION" >&2
             EXIT_STATUS=1
             continue
           fi
-          set_file_i18n_hash "$f" "$SOURCE_LAST_COMMIT"
+          set_file_i18n_hash "$f" "$LASTCOMMIT_GIT"
         else
           set_file_i18n_hash "$f" "$COMMIT_HASH_ARG"
         fi
@@ -388,16 +400,16 @@ function main() {
     fi
 
     if [[ $LIST_KIND == "NEW" ]]; then
-      if [[ -n $PIN_COMMIT_FROM_FILE ]]; then continue; fi
+      if [[ -n $LASTCOMMIT_FF ]]; then continue; fi
       ((FILE_PROCESSED_COUNT++))
       if [[ -n $COMMIT_HASH_ARG || $FLAG_CHANGE_FROM_EN_LAST_COMMIT != 0 ]]; then
         if [[ $FLAG_CHANGE_FROM_EN_LAST_COMMIT != 0 ]]; then
-          if [[ ! -e "$SOURCE_PATH" || -z "$SOURCE_LAST_COMMIT" ]]; then
-            echo "ERROR: cannot determine latest commit for default-language file: $f -> $SOURCE_PATH" >&2
+          if [[ ! -e "$EN_VERSION" || -z "$LASTCOMMIT_GIT" ]]; then
+            echo "ERROR: cannot determine latest commit for EN file: $f -> $EN_VERSION" >&2
             EXIT_STATUS=1
             continue
           fi
-          set_file_i18n_hash "$f" "$SOURCE_LAST_COMMIT" "" "key ADDED"
+          set_file_i18n_hash "$f" "$LASTCOMMIT_GIT" "" "key ADDED"
         else
           set_file_i18n_hash "$f" "$COMMIT_HASH_ARG" "" "key ADDED"
         fi
@@ -410,7 +422,7 @@ function main() {
     ## Processing $LIST_KIND DRIFTED
 
     # Does $f have an default-language version?
-    if [[ ! -e "$SOURCE_PATH" ]]; then
+    if [[ ! -e "$EN_VERSION" ]]; then
       ((FILE_PROCESSED_COUNT++))
       if [[ -z $FLAG_QUIET ]]; then
         echo -e "File not found:\t$f - $DEFAULT_LANG page was removed or renamed"
@@ -420,51 +432,51 @@ function main() {
     fi
 
     # Check default-language version for changes
-    SOURCE_DIFF=$(git diff --exit-code $EXTRA_DIFF_ARGS $PIN_COMMIT...HEAD "$SOURCE_PATH" 2>&1)
-    SOURCE_DIFF_STATUS=$?
+    DIFF=$(git diff --exit-code $EXTRA_DIFF_ARGS $LASTCOMMIT...HEAD "$EN_VERSION" 2>&1)
+    DIFF_STATUS=$?
     DRIFTED_STATUS="false"
-    if [ $SOURCE_DIFF_STATUS -gt 1 ]; then
+    if [ $DIFF_STATUS -gt 1 ]; then
       ((FILE_PROCESSED_COUNT++))
-      EXIT_STATUS=$SOURCE_DIFF_STATUS
-      echo -e "HASH\tERROR\t$f: git diff error ($SOURCE_DIFF_STATUS) or invalid hash $PIN_COMMIT. For details, use -v."
-      if [[ -n $FLAG_VERBOSE ]]; then echo "$SOURCE_DIFF"; fi
+      EXIT_STATUS=$DIFF_STATUS
+      echo -e "HASH\tERROR\t$f: git diff error ($DIFF_STATUS) or invalid hash $LASTCOMMIT. For details, use -v."
+      if [[ -n $FLAG_VERBOSE ]]; then echo "$DIFF"; fi
       continue
-    elif [[ -n "$SOURCE_DIFF" ]]; then
+    elif [[ -n "$DIFF" ]]; then
       ((FILE_PROCESSED_COUNT++))
       DRIFTED_STATUS="true"
       if [[ $FLAG_DIFF_DETAILS != 0 ]]; then
-        echo "$SOURCE_DIFF"
+        echo "$DIFF"
       elif [[ -n $COMMIT_HASH_ARG ]]; then
-        update_file_i18n_hash "$f" "$COMMIT_HASH_ARG" "$SOURCE_DIFF"
+        update_file_i18n_hash "$f" "$COMMIT_HASH_ARG" "$DIFF"
       elif [[ $FLAG_CHANGE_FROM_EN_LAST_COMMIT != 0 ]]; then
-        if [[ -z "$SOURCE_LAST_COMMIT" ]]; then
-          echo "ERROR: cannot determine latest commit for default-language file: $f -> $SOURCE_PATH" >&2
+        if [[ -z "$LASTCOMMIT_GIT" ]]; then
+          echo "ERROR: cannot determine latest commit for EN file: $f -> $EN_VERSION" >&2
           EXIT_STATUS=1
           continue
         fi
-        set_file_i18n_hash "$f" "$SOURCE_LAST_COMMIT" "$SOURCE_DIFF"
+        set_file_i18n_hash "$f" "$LASTCOMMIT_GIT" "$DIFF"
       elif [[ -z $FLAG_QUIET ]]; then
         echo -n "> Drifted file: $f"
-        if [[ -n $FLAG_VERBOSE ]]; then echo "; diff summary: $SOURCE_DIFF"; else echo; fi
+        if [[ -n $FLAG_VERBOSE ]]; then echo "; diff summary: $DIFF"; else echo; fi
       fi
-    elif [[ -z $PIN_COMMIT ]]; then
+    elif [[ -z $LASTCOMMIT ]]; then
       ((FILE_PROCESSED_COUNT++))
       local msg="New i18n file"
       if [[ -n $COMMIT_HASH_ARG ]]; then
         set_file_i18n_hash "$f" "$COMMIT_HASH_ARG" "$msg" "key ADDED"
       elif [[ $FLAG_CHANGE_FROM_EN_LAST_COMMIT != 0 ]]; then
-        if [[ -z "$SOURCE_LAST_COMMIT" ]]; then
-          echo "ERROR: cannot determine latest commit for default-language file: $f -> $SOURCE_PATH" >&2
+        if [[ -z "$LASTCOMMIT_GIT" ]]; then
+          echo "ERROR: cannot determine latest commit for EN file: $f -> $EN_VERSION" >&2
           EXIT_STATUS=1
           continue
         fi
-        set_file_i18n_hash "$f" "$SOURCE_LAST_COMMIT" "$msg" "key ADDED"
+        set_file_i18n_hash "$f" "$LASTCOMMIT_GIT" "$msg" "key ADDED"
       elif [[ -z $FLAG_QUIET ]]; then
         echo "$msg - $f"
       fi
     elif [[ $LIST_KIND == "ALL" || -n $FLAG_VERBOSE ]]; then
       ((FILE_PROCESSED_COUNT++))
-      echo -e "File is in sync\t$f - $PIN_COMMIT"
+      echo -e "File is in sync\t$f - $LASTCOMMIT"
     fi
     set_file_drifted_status "$f" $DRIFTED_STATUS
   done

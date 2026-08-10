@@ -96,7 +96,7 @@
     "fix:format:diff": "npm run _fix:format:diff -- $(npm -s run _list:diff:all)",
     "fix:format:staged": "npx prettier --write --ignore-unknown $(npm -s run _list:diff-never-empty -- --cached)",
     "fix:format": "npm run format; npm run _fix:trailing-spaces",
-    "fix:i18n:new": "node scripts/i18n/drift.mjs --from-src-latest --new",
+    "fix:i18n:new": "node scripts/i18n/drift.mjs commit --from-src-latest --new",
     "fix:i18n:status": "node scripts/i18n/drift.mjs status --write",
     "fix:i18n": "npm run fix:i18n:new && npm run fix:i18n:status -- --all",
     "fix:l10n:do-not-copy-images-etc": "npm run check:l10n:do-not-copy-images-etc -- --fix",

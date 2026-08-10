@@ -95,15 +95,15 @@ async function mainCLI() {
   console.log(diff);
   console.log(`---
 Each localized page changed by this PR must leave the PR with an accurate
-drift state; the diff above shows the corrections needed. Either sync a page
-with its English counterpart and refresh its pin with the valid
-'commit HEAD' form,
+drift state; the diff above shows the corrections needed. Sync a page with
+its English counterpart and refresh its pin — preferably to the EN page's
+latest commit on main,
+
+    npm run check:i18n -- commit --from-src-latest PATHS
+
+or to main's HEAD explicitly,
 
     npm run check:i18n -- commit HEAD PATHS
-
-or, equivalently,
-
-    npm run check:i18n -- --from-src-latest PATHS
 
 or record the remaining drift,
 

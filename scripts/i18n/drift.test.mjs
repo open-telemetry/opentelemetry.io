@@ -24,12 +24,14 @@ import {
   groupByPin,
   isDriftedStatus,
   isUnpinned,
+  mainAnchorRef,
   parsePin,
   parseStatus,
   readBaseline,
   setPinInText,
   setStatusInText,
   writeBaseline,
+  writePinsFromEnLatest,
   writeStatuses,
 } from './drift.mjs';
 
@@ -463,6 +465,227 @@ describe('classifyCliArgs()', () => {
       () => classifyCliArgs(['commit', '--check']),
       /status noun only/,
     );
+  });
+
+  it('parses commit --from-src-latest as a pin write', () => {
+    const cli = classifyCliArgs(['commit', '--from-src-latest', 'content/ja']);
+    assert.deepEqual(
+      {
+        write: cli.write,
+        useSrcLatest: cli.useSrcLatest,
+        hash: cli.hash,
+        noun: cli.noun,
+      },
+      { write: true, useSrcLatest: true, hash: null, noun: 'commit' },
+    );
+  });
+
+  it('commit --from-src-latest with --new is a tree-wide write', () => {
+    const cli = classifyCliArgs(['commit', '--from-src-latest', '--new']);
+    assert.deepEqual(
+      { write: cli.write, useSrcLatest: cli.useSrcLatest, list: cli.list },
+      { write: true, useSrcLatest: true, list: 'new' },
+    );
+  });
+
+  it('rejects --from-src-latest on nouns other than commit', () => {
+    assert.throws(
+      () => classifyCliArgs(['status', '--from-src-latest']),
+      /commit noun only/,
+    );
+    assert.throws(
+      () => classifyCliArgs(['diff', '--from-src-latest', 'content/ja']),
+      /commit noun only/,
+    );
+    // The default noun is status: a bare --from-src-latest must not silently
+    // mutate the noun to commit.
+    assert.throws(
+      () => classifyCliArgs(['--from-src-latest']),
+      /commit noun only/,
+    );
+  });
+
+  it('rejects --from-src-latest combined with a hash', () => {
+    assert.throws(
+      () =>
+        classifyCliArgs([
+          'commit',
+          '--from-src-latest',
+          'abc1234',
+          'content/ja/a.md',
+        ]),
+      /not both/,
+    );
+    assert.throws(
+      () =>
+        classifyCliArgs([
+          'commit',
+          'HEAD',
+          '--from-src-latest',
+          'content/ja/a.md',
+        ]),
+      /not both/,
+    );
+  });
+
+  it('refuses a tree-wide --from-src-latest write without paths or --new/--all', () => {
+    assert.throws(
+      () => classifyCliArgs(['commit', '--from-src-latest']),
+      /Tree-wide pin write refused/,
+    );
+  });
+});
+
+describe('writePinsFromEnLatest()', () => {
+  const repo = () => {
+    const root = mkdtempSync(path.join(tmpdir(), 'drift-src-latest-'));
+    const git = (...args) =>
+      execFileSync('git', args, {
+        cwd: root,
+        encoding: 'utf8',
+        env: { ...process.env },
+      }).trim();
+    git('init', '-q', '-b', 'main');
+    git('config', 'user.email', 'test@example.invalid');
+    git('config', 'user.name', 'Test');
+    mkdirSync(path.join(root, 'content/en/docs'), { recursive: true });
+    writeFileSync(path.join(root, 'content/en/docs/a.md'), '# EN v1\n');
+    git('add', '.');
+    git('commit', '-q', '-m', 'EN v1');
+    const mainSha = git('rev-parse', 'HEAD');
+    return { root, git, mainSha };
+  };
+  const jaPage = (sha) =>
+    `---\ntitle: a\ndefault_lang_commit: ${sha}\n---\n# ja\n`;
+  const addJaPage = (root, git, sha = '1111111') => {
+    mkdirSync(path.join(root, 'content/ja/docs'), { recursive: true });
+    writeFileSync(path.join(root, 'content/ja/docs/a.md'), jaPage(sha));
+    git('add', '.');
+    git('commit', '-q', '-m', 'ja page');
+  };
+
+  it('resolves pins against main, not the checked-out commit', async () => {
+    const { root, git, mainSha } = repo();
+    // EN changes on a feature branch only — never merged to main.
+    git('checkout', '-q', '-b', 'feature');
+    writeFileSync(path.join(root, 'content/en/docs/a.md'), '# EN v2\n');
+    git('commit', '-qam', 'EN v2 on feature');
+    const featureSha = git('rev-parse', 'HEAD');
+    assert.notEqual(featureSha, mainSha);
+    addJaPage(root, git); // pinned to the bogus 1111111
+    const report = new Map([
+      ['content/ja/docs/a.md', { status: 'drifted', sha: '1111111' }],
+    ]);
+    await writePinsFromEnLatest(root, report, { list: 'drifted' });
+    assert.match(
+      readFileSync(path.join(root, 'content/ja/docs/a.md'), 'utf8'),
+      new RegExp(`^default_lang_commit: ${mainSha}$`, 'm'),
+      'pin resolves to main, not the feature-branch HEAD',
+    );
+  });
+
+  it('default selection excludes error pages', async () => {
+    const { root, git } = repo();
+    addJaPage(root, git);
+    const report = new Map([
+      ['content/ja/docs/a.md', { status: 'error', sha: '1111111' }],
+    ]);
+    const actions = await writePinsFromEnLatest(root, report, {
+      list: 'drifted',
+    });
+    assert.deepEqual(actions, []);
+    assert.match(
+      readFileSync(path.join(root, 'content/ja/docs/a.md'), 'utf8'),
+      /^default_lang_commit: 1111111$/m,
+      'error page is left untouched',
+    );
+  });
+
+  it('--all includes error pages so broken pins can be repaired', async () => {
+    const { root, git, mainSha } = repo();
+    addJaPage(root, git);
+    const report = new Map([
+      ['content/ja/docs/a.md', { status: 'error', sha: '1111111' }],
+    ]);
+    await writePinsFromEnLatest(root, report, { list: 'all' });
+    assert.match(
+      readFileSync(path.join(root, 'content/ja/docs/a.md'), 'utf8'),
+      new RegExp(`^default_lang_commit: ${mainSha}$`, 'm'),
+      '--all re-pins the error page to main',
+    );
+  });
+
+  it('resolves pins against upstream/main when an upstream remote exists', async () => {
+    const { root, git, mainSha } = repo();
+    // Stand in for the canonical repo: a sibling checkout whose main has a
+    // newer EN revision than the local (fork) main.
+    const up = mkdtempSync(path.join(tmpdir(), 'drift-src-latest-upstream-'));
+    const ugit = (...args) =>
+      execFileSync('git', args, {
+        cwd: up,
+        encoding: 'utf8',
+        env: { ...process.env },
+      }).trim();
+    ugit('init', '-q', '-b', 'main');
+    ugit('config', 'user.email', 'test@example.invalid');
+    ugit('config', 'user.name', 'Test');
+    mkdirSync(path.join(up, 'content/en/docs'), { recursive: true });
+    writeFileSync(path.join(up, 'content/en/docs/a.md'), '# EN v2\n');
+    ugit('add', '.');
+    ugit('commit', '-q', '-m', 'EN v2 on upstream main');
+    const upSha = ugit('rev-parse', 'HEAD');
+    assert.notEqual(upSha, mainSha);
+
+    git('remote', 'add', 'upstream', up);
+    git('fetch', '-q', 'upstream');
+    addJaPage(root, git); // pinned to the bogus 1111111
+    const report = new Map([
+      ['content/ja/docs/a.md', { status: 'drifted', sha: '1111111' }],
+    ]);
+    await writePinsFromEnLatest(root, report, { list: 'drifted' });
+    assert.match(
+      readFileSync(path.join(root, 'content/ja/docs/a.md'), 'utf8'),
+      new RegExp(`^default_lang_commit: ${upSha}$`, 'm'),
+      'pin resolves to upstream/main, not the fork-local main',
+    );
+  });
+});
+
+describe('mainAnchorRef()', () => {
+  const repo = () => {
+    const root = mkdtempSync(path.join(tmpdir(), 'drift-anchor-ref-'));
+    const git = (...args) =>
+      execFileSync('git', args, {
+        cwd: root,
+        encoding: 'utf8',
+        env: { ...process.env },
+      }).trim();
+    git('init', '-q', '-b', 'main');
+    git('config', 'user.email', 'test@example.invalid');
+    git('config', 'user.name', 'Test');
+    mkdirSync(path.join(root, 'content/en/docs'), { recursive: true });
+    writeFileSync(path.join(root, 'content/en/docs/a.md'), '# EN v1\n');
+    git('add', '.');
+    git('commit', '-q', '-m', 'EN v1');
+    return { root, git };
+  };
+
+  it('defaults to main when no remotes exist', async () => {
+    const { root } = repo();
+    assert.equal(await mainAnchorRef(root), 'main');
+  });
+
+  it('prefers origin/main over main when only origin exists', async () => {
+    const { root, git } = repo();
+    git('remote', 'add', 'origin', 'https://example.invalid/origin.git');
+    assert.equal(await mainAnchorRef(root), 'origin/main');
+  });
+
+  it('prefers upstream/main over origin/main', async () => {
+    const { root, git } = repo();
+    git('remote', 'add', 'origin', 'https://example.invalid/origin.git');
+    git('remote', 'add', 'upstream', 'https://example.invalid/upstream.git');
+    assert.equal(await mainAnchorRef(root), 'upstream/main');
   });
 });
 

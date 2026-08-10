@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 // Drift-status core: answers "which localized pages have drifted from their
-// source-language counterparts?" as a library (link-check config gen, npm scripts) and a
+// EN counterparts?" as a library (link-check config gen, npm scripts) and a
 // thin CLI. Semantics match scripts/check-i18n.sh: a page with front-matter
-// pin `default_lang_commit: SHA` is drifted iff its source counterpart changed in
-// `git diff SHA...HEAD` (three-dot); a missing source counterpart is reported as
+// pin `default_lang_commit: SHA` is drifted iff its EN counterpart changed in
+// `git diff SHA...HEAD` (three-dot); a missing EN counterpart is reported as
 // `file not found`; a page without a pin is `new`. Precise mode needs history
 // back to the oldest pin (fine locally and in Housekeeping; not in shallow CI
 // checkouts — there, the link-check config gen uses its baseline overlay).
@@ -53,22 +53,17 @@ export function parseStatus(fileText) {
 
 // The one stored-status skip predicate, shared by the status writer and the
 // link-check config generation: a `true` or `file not found` status means
-// the page is presumed out of sync with source (its source counterpart changed or
+// the page is presumed out of sync with EN (its EN counterpart changed or
 // was deleted), so its outbound links are not checked.
 export function isDriftedStatus(status) {
   return status === 'true' || status === 'file not found';
 }
 
-export function sourceCounterpartOf(pagePath) {
+export function enCounterpartOf(pagePath) {
   return pagePath.replace(
     new RegExp(`^${CONTENT_DIR}/[^/]{2,5}/`),
     `${CONTENT_DIR}/${DEFAULT_LANG}/`,
   );
-}
-
-// Backward-compatible alias.
-export function enCounterpartOf(pagePath) {
-  return sourceCounterpartOf(pagePath);
 }
 
 export function groupByPin(pagePins) {
@@ -212,20 +207,18 @@ export function classifyCliArgs(args) {
   }
 
   if (cli.useSrcLatest) {
-    if (cli.noun === 'diff') {
-      throw new Error(`--from-src-latest applies to status/commit only`);
+    if (cli.noun !== 'commit') {
+      throw new Error(`--from-src-latest applies to the commit noun only`);
     }
     if (cli.hash) {
       throw new Error(`Use either --from-src-latest or HASH|HEAD, not both`);
     }
-    cli.noun = 'commit';
-    cli.write = true;
   }
 
   if (writeFlag && cli.noun !== 'status') {
     throw new Error(`--write applies to the status noun only`);
   }
-  cli.write = writeFlag || !!cli.hash;
+  cli.write = writeFlag || !!cli.hash || cli.useSrcLatest;
   if (writeFlag && cli.check) {
     throw new Error(`--check is a read-mode flag; drop it with --write`);
   }
@@ -261,23 +254,16 @@ export function classifyCliArgs(args) {
   return cli;
 }
 
-// Core engine, effects injected: `sourceExists(sourcePath)` and async
-// `changedSourceSince(sha)` -> Set of source-language pages changed in SHA...HEAD.
+// Core engine, effects injected: `enExists(enPath)` and async
+// `changedEnSince(sha)` -> Set of EN paths changed in SHA...HEAD.
 // Returns Map page -> { status, sha?, patched? } with status one of:
 // 'drifted' | 'in-sync' | 'file not found' | 'new' | 'error'.
-export async function driftReport(
-  pagePins,
-  { sourceExists, changedSourceSince, enExists, changedEnSince },
-) {
-  // Compatibility fallback for existing call sites/tests using old option keys.
-  sourceExists ??= enExists;
-  changedSourceSince ??= changedEnSince;
-
+export async function driftReport(pagePins, { enExists, changedEnSince }) {
   const report = new Map();
   const pending = new Map(); // sha -> pages awaiting that pin's diff
 
   for (const [page, pin] of pagePins) {
-    if (!sourceExists(sourceCounterpartOf(page))) {
+    if (!enExists(enCounterpartOf(page))) {
       report.set(page, { ...(pin ?? {}), status: 'file not found' });
     } else if (!pin) {
       report.set(page, { status: 'new' });
@@ -289,10 +275,10 @@ export async function driftReport(
 
   const shas = [...pending.keys()];
   await mapLimit(shas, GIT_CONCURRENCY, async (sha) => {
-    let changedSourcePages;
+    let changed;
     let status;
     try {
-      changedSourcePages = await changedSourceSince(sha);
+      changed = await changedEnSince(sha);
     } catch {
       status = 'error';
     }
@@ -301,9 +287,7 @@ export async function driftReport(
         ...pin,
         status:
           status ??
-          (changedSourcePages.has(sourceCounterpartOf(page))
-            ? 'drifted'
-            : 'in-sync'),
+          (changed.has(enCounterpartOf(page)) ? 'drifted' : 'in-sync'),
       });
     }
   });
@@ -325,14 +309,14 @@ async function mapLimit(items, limit, fn) {
 
 export function localizedPagesOf(rootDir, targets = [CONTENT_DIR]) {
   const pages = [];
-  const sourceLangPrefix = path.join(CONTENT_DIR, DEFAULT_LANG) + path.sep;
+  const enPrefix = path.join(CONTENT_DIR, DEFAULT_LANG) + path.sep;
   const walk = (dir) => {
     for (const entry of readdirSync(dir, { withFileTypes: true })) {
       const p = path.join(dir, entry.name);
       if (entry.isDirectory()) walk(p);
       else if (
         entry.name.endsWith('.md') &&
-        !p.startsWith(path.join(rootDir, sourceLangPrefix))
+        !p.startsWith(path.join(rootDir, enPrefix))
       )
         pages.push(path.relative(rootDir, p));
     }
@@ -355,8 +339,8 @@ export async function driftReportForRepo(rootDir, targets) {
     ]),
   );
   return driftReport(pagePins, {
-    sourceExists: (sourcePath) => existsSync(path.join(rootDir, sourcePath)),
-    changedSourceSince: async (sha) => {
+    enExists: (enPath) => existsSync(path.join(rootDir, enPath)),
+    changedEnSince: async (sha) => {
       const { stdout } = await execFileP(
         'git',
         [
@@ -379,8 +363,7 @@ export async function driftReportForRepo(rootDir, targets) {
 // link-check config generation overlays the pages *presumed* drifted since
 // the status baseline: the commit that the last tree-wide status write (the
 // nightly Housekeeping run) computed the stored statuses against. Locale
-// copies of source-language pages changed (or deleted) since then get skipped,
-// unless the
+// copies of EN pages changed (or deleted) since then get skipped, unless the
 // copy itself changed too (activity exemption: someone is working on it, and
 // stored-status semantics check unmarked pages anyway).
 
@@ -430,7 +413,7 @@ export async function baselineAgeDays(rootDir, sha) {
 
 // Whether a tree-wide sync that changed no statuses should refresh the
 // baseline anyway: yes when the committed baseline is missing, malformed,
-// unresolvable, or older than the refresh heartbeat. (Any status-relevant source
+// unresolvable, or older than the refresh heartbeat. (Any status-relevant EN
 // change flips a status on the next sweep and refreshes the baseline through
 // the statuses-changed arm, so a quiet stretch leaves nothing new to skip;
 // the heartbeat is a freshness bound, not a correctness need.)
@@ -454,7 +437,7 @@ export async function baselineNeedsRefresh(rootDir) {
 // (older branch, PR run) it errs older, which only widens the overlay —
 // under-checking, never a spurious red. Recording `main` itself would be
 // wrong there: a baseline newer than the tree the statuses were computed
-// against leaves the source-language changes in between covered by neither the stored
+// against leaves the EN changes in between covered by neither the stored
 // statuses nor the overlay. As an ancestor of main, the recorded SHA is also
 // always fetchable from the canonical repo (the CHECK LINKS deepen step).
 export async function writeBaseline(rootDir) {
@@ -468,25 +451,24 @@ export async function writeBaseline(rootDir) {
   return sha;
 }
 
-// Pure core: locale copies presumed drifted, given the source-language pages
-// changed since the baseline. Deleted source pages are covered too: their locale copies
+// Pure core: locale copies presumed drifted, given the EN pages changed
+// since the baseline. Deleted EN pages are covered too: their locale copies
 // still exist and are what gets reported. Copies in `changedLocalePages` are
 // exempt (activity exemption). `pageExists` is injected for testability.
 export function driftPendingPages(
-  changedSourcePages,
+  changedEnPages,
   locales,
   pageExists,
   changedLocalePages = new Set(),
 ) {
   const pages = [];
-  const sourceLangPrefix = `${CONTENT_DIR}/${DEFAULT_LANG}/`;
-  for (const sourcePath of changedSourcePages) {
+  const enPrefix = `${CONTENT_DIR}/${DEFAULT_LANG}/`;
+  for (const enPath of changedEnPages) {
     // `.md` only: no localized `.html` pages exist in the content tree; if
     // that ever changes, align this filter with pageIgnoreDirOf's
     // `.md`/`.html` mapping in scripts/lychee/config/index.mjs.
-    if (!sourcePath.startsWith(sourceLangPrefix) || !sourcePath.endsWith('.md'))
-      continue;
-    const subPath = sourcePath.slice(sourceLangPrefix.length);
+    if (!enPath.startsWith(enPrefix) || !enPath.endsWith('.md')) continue;
+    const subPath = enPath.slice(enPrefix.length);
     for (const locale of locales) {
       const localePath = `${CONTENT_DIR}/${locale}/${subPath}`;
       if (!pageExists(localePath)) continue;
@@ -499,7 +481,7 @@ export function driftPendingPages(
 
 // Repo adapter: one git diff of `content` against the baseline (two-dot,
 // vs the working tree — no merge-base needed, so a baseline-deepened
-// shallow clone suffices), split source / non-source. Throws when the baseline
+// shallow clone suffices), split EN / non-EN. Throws when the baseline
 // isn't resolvable (e.g. too-shallow clone).
 export async function driftPendingForRepo(rootDir, baseline) {
   const source = baseline
@@ -549,12 +531,12 @@ export async function driftPendingForRepo(rootDir, baseline) {
   })
     .filter((e) => e.isDirectory() && e.name !== DEFAULT_LANG)
     .map((e) => e.name);
-  const sourceLangPrefix = `${CONTENT_DIR}/${DEFAULT_LANG}/`;
+  const enPrefix = `${CONTENT_DIR}/${DEFAULT_LANG}/`;
   return driftPendingPages(
-    changed.filter((p) => p.startsWith(sourceLangPrefix)),
+    changed.filter((p) => p.startsWith(enPrefix)),
     locales,
     (p) => existsSync(path.join(rootDir, p)),
-    new Set(changed.filter((p) => !p.startsWith(sourceLangPrefix))),
+    new Set(changed.filter((p) => !p.startsWith(enPrefix))),
   );
 }
 
@@ -562,10 +544,10 @@ export async function driftPendingForRepo(rootDir, baseline) {
 // ([page, action] with action ADDED | UPDATED | REMOVED), skipping no-ops.
 
 // Persists the report's statuses (status --write, was -D): drifted -> true,
-// missing source page -> "file not found", in-sync or unpinned-in-sync -> status
+// missing EN -> "file not found", in-sync or unpinned-in-sync -> status
 // removed. Pages whose pin errored are left untouched, as are unpinned
-// pages whose source counterpart is gone (no pin line to anchor the status —
-// pin them first, e.g. with `--from-src-latest --new`).
+// pages whose EN counterpart is gone (no pin line to anchor the status —
+// pin them first, e.g. with `commit --from-src-latest --new`).
 export function writeStatuses(rootDir, report) {
   const statusOf = {
     drifted: 'true',
@@ -579,7 +561,7 @@ export function writeStatuses(rootDir, report) {
     if (status === 'file not found' && !sha) {
       console.error(
         `WARNING: ${page} has no ${I18N_DLC_KEY} key to anchor its ` +
-          `'file not found' status; pin the page first (--from-src-latest --new)`,
+          `'file not found' status; pin the page first (commit --from-src-latest --new)`,
       );
       continue;
     }
@@ -603,7 +585,19 @@ async function git(rootDir, ...args) {
   return stdout.trim();
 }
 
-// A page with no pin: `new`, or `file not found` when its source counterpart is
+// The ref that anchors "the latest commit of an EN page": upstream/main on a
+// contributor's local fork checkout (where upstream is the canonical repo),
+// origin/main in CI (where origin is the canonical repo and no upstream
+// remote exists), falling back to the plain `main` ref for clones without
+// those remotes (e.g. test repos). Same resolution as check-i18n.sh -e.
+export async function mainAnchorRef(rootDir) {
+  const remotes = (await git(rootDir, 'remote')).split('\n');
+  if (remotes.includes('upstream')) return 'upstream/main';
+  if (remotes.includes('origin')) return 'origin/main';
+  return 'main';
+}
+
+// A page with no pin: `new`, or `file not found` when its EN counterpart is
 // gone too (bash's `-n` list kind selected both — pin presence alone).
 export function isUnpinned({ status, sha }) {
   return status === 'new' || (status === 'file not found' && !sha);
@@ -620,8 +614,8 @@ function selectPagesForPinWrite(report, list) {
 }
 
 // Upserts pins (commit HASH|HEAD, was -c) on the pages the report and list
-// kind select: `new` -> unpinned pages only (as bash `-n`, source counterpart or
-// not); `drifted` (default) -> drifted and unpinned-with-source pages, as in
+// kind select: `new` -> unpinned pages only (as bash `-n`, EN counterpart or
+// not); `drifted` (default) -> drifted and unpinned-with-EN pages, as in
 // bash; `all` -> every page. As in bash, a pin
 // *update* requires the hash to be on main (adds are unchecked), and `HEAD`
 // means main's HEAD, not the checked-out commit. Unlike bash, the hash is
@@ -678,23 +672,26 @@ export async function writePins(rootDir, report, { hash, list }) {
 }
 
 export async function writePinsFromEnLatest(rootDir, report, { list }) {
-  // In source-latest mode, include error pages so broken pins can be repaired.
   const selected = [...report].filter(([, r]) =>
     list === 'all'
       ? true
       : list === 'new'
         ? isUnpinned(r)
-        : ['drifted', 'new', 'error'].includes(r.status),
+        : ['drifted', 'new'].includes(r.status),
   );
 
   const actions = [];
   const written = [];
   let hadErrors = false;
+  // Resolve against the canonical repo's main — upstream/main locally,
+  // origin/main in CI — as `commit HEAD` does: a pin must reference a commit
+  // on the default branch, never a local-only change.
+  const anchor = await mainAnchorRef(rootDir);
   for (const [page] of selected) {
-    const sourcePath = sourceCounterpartOf(page);
-    if (!existsSync(path.join(rootDir, sourcePath))) {
+    const enPath = enCounterpartOf(page);
+    if (!existsSync(path.join(rootDir, enPath))) {
       console.error(
-        `ERROR: cannot determine latest commit for source-language file: ${page} -> ${sourcePath}`,
+        `ERROR: cannot determine latest commit for EN file: ${page} -> ${enPath}`,
       );
       hadErrors = true;
       continue;
@@ -705,12 +702,13 @@ export async function writePinsFromEnLatest(rootDir, report, { list }) {
       'log',
       '-1',
       '--format=%H',
+      anchor,
       '--',
-      sourcePath,
+      enPath,
     );
     if (!resolved) {
       console.error(
-        `ERROR: cannot determine latest commit for source-language file: ${page} -> ${sourcePath}`,
+        `ERROR: cannot determine latest commit for EN file: ${page} -> ${enPath}`,
       );
       hadErrors = true;
       continue;
@@ -741,7 +739,7 @@ export async function writePinsFromEnLatest(rootDir, report, { list }) {
 const USAGE = `Usage: drift.mjs [NOUN] [OPTIONS] [--] [PATHS...]
 
 Report, and optionally update, the drift state of localized pages relative to
-their source-language counterparts. Nouns name the aspects of a page's drift state;
+their English counterparts. Nouns name the aspects of a page's drift state;
 bare nouns read, a write always carries its payload.
 
   drift.mjs [status] [PATHS...]     Read (default noun): drift report
@@ -753,13 +751,15 @@ bare nouns read, a write always carries its payload.
       --write                         persist statuses: sets
                                       drifted_from_default to true or "file not
                                       found", removes it from in-sync pages
-      --from-src-latest               commit write mode: pin each page to the
-                                      latest commit of its source counterpart
-  drift.mjs diff PATHS...           Read: source changes since each page's pin
+  drift.mjs diff PATHS...           Read: EN changes since each page's pin
   drift.mjs commit [PATHS...]       Read: print pinned commits
   drift.mjs commit HASH|HEAD PATHS  Write: upsert default_lang_commit to HASH
                                     (HEAD = main's HEAD) and sync the status of
                                     written pages
+  drift.mjs commit --from-src-latest PATHS
+                                    Write: pin each page to the latest commit
+                                    of its EN counterpart (resolved against
+                                    main) and sync the status of written pages
 
 PATHS are localized page files or directories; the default is 'content'.
 Tree-wide writes require PATHS or an explicit --all (pin writes accept --new
@@ -843,7 +843,7 @@ async function diffCLI(rootDir, cli, report) {
       'diff',
       `${sha}...HEAD`,
       '--',
-      sourceCounterpartOf(page),
+      enCounterpartOf(page),
     );
     console.log(diff);
   }
