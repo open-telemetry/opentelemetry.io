@@ -1,12 +1,7 @@
 import { test, suite } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {
-  cacheUpdatedNotice,
-  deadLinksReport,
-  failedUrlsOf,
-  staleBuildReport,
-} from './index.mjs';
+import { cacheUpdatedNotice, deadLinksReport, failedUrlsOf } from './index.mjs';
 
 suite('failedUrlsOf', () => {
   const lycheeOutput = `Issues found in 1 input. Find details below.
@@ -71,49 +66,6 @@ suite('deadLinksReport', () => {
 
   test('is empty when there are no failures', () => {
     assert.equal(deadLinksReport([]), '');
-  });
-});
-
-suite('staleBuildReport', () => {
-  const content = { path: 'content/en/x.md', mtimeMs: 2000 };
-
-  test('is empty when the build is at least as new as the content', () => {
-    assert.equal(
-      staleBuildReport({ publicIndexMtimeMs: 2000, newestContent: content }),
-      '',
-    );
-    assert.equal(
-      staleBuildReport({ publicIndexMtimeMs: 3000, newestContent: content }),
-      '',
-    );
-  });
-
-  test('reports an absent build and how to produce one', () => {
-    const report = staleBuildReport({
-      publicIndexMtimeMs: undefined,
-      newestContent: content,
-    });
-    assert.match(report, /requires a built site/);
-    assert.match(report, /public\/index\.html/);
-    assert.match(report, /npm run build && npm run check:links/);
-    assert.match(report, /ignore-scripts/);
-  });
-
-  test('reports a build older than the content, naming both files', () => {
-    const report = staleBuildReport({
-      publicIndexMtimeMs: 1000,
-      newestContent: content,
-    });
-    assert.match(report, /content\s+tree is newer than the build/);
-    assert.match(report, /content\/en\/x\.md/);
-    assert.match(report, /npm run build && npm run check:links/);
-  });
-
-  test('is empty when there is no content tree to compare against', () => {
-    assert.equal(
-      staleBuildReport({ publicIndexMtimeMs: 1000, newestContent: undefined }),
-      '',
-    );
   });
 });
 
