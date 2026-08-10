@@ -24,12 +24,12 @@ branches were affected before containment; none reached `main` or production.
 
 The attack paths that matter for this repository:
 
-- **Version resolution** — any install that resolves version ranges can pull a
+- **Version resolution**: any install that resolves version ranges can pull a
   freshly published malicious release.
-- **Lifecycle scripts** — install-time script execution turns a bad package into
+- **Lifecycle scripts**: install-time script execution turns a bad package into
   compromised contributor hosts, CI runners, and build images.
-- **Unattended installs** — CI jobs and the Netlify build image install without
-  a human watching, as do agent sessions.
+- **Unattended installs**: CI jobs and the Netlify build image install without a
+  human watching, as do agent sessions.
 
 ## Design decisions
 
@@ -38,7 +38,7 @@ install fails rather than proceeding without it.
 
 ### Minimize the dependency surface
 
-Every dependency — direct or transitive — is surface the remaining controls must
+Every dependency, direct or transitive, is surface the remaining controls must
 cover. Unused and convenience dependencies are dropped rather than carried:
 removing the unused Netlify CLI more than halved the locked dependency graph and
 cut the packages bearing install scripts from seven to three.
@@ -46,8 +46,8 @@ cut the packages bearing install scripts from seven to three.
 ### Install from the lock; resolve deliberately
 
 Every install path is lock-exact: it reproduces the committed, reviewed
-`package-lock.json` and never resolves version ranges. Resolution — the risky
-step — happens only in deliberate dependency-update operations.
+`package-lock.json` and never resolves version ranges. Resolution, the risky
+step, happens only in deliberate dependency-update operations.
 
 ### Resolve only cooled-down releases
 
@@ -61,10 +61,10 @@ need to land.
 Lifecycle scripts are default-deny: an install runs a package's scripts only
 when that exact name and version has been reviewed and allowlisted.
 Version-exact entries force a fresh review on every bump of a script-bearing
-package — a compromised patch release can't inherit its predecessor's approval.
+package: a compromised patch release can't inherit its predecessor's approval.
 
 Review records both outcomes: a needed script is approved, and an unnecessary
-one (a shipped prebuilt binary suffices) gets an explicit denial — so silence
+one (a shipped prebuilt binary suffices) gets an explicit denial, so silence
 always means unreviewed, and unreviewed fails the install. Exceptions are named
 and re-enabled inline at the point of use, never by weakening the default
 posture.
@@ -92,15 +92,18 @@ install that rewrites the lock warns immediately.
 
 ## Prior art
 
-- Default-deny lifecycle scripts is the ecosystem direction: pnpm and Yarn Berry
-  block dependency scripts by default, and npm's accepted [RFC #54][] brings the
-  same model to npm through `allowScripts` — version-exact entries included.
-- Release cooldowns are established practice: pnpm resolves only releases older
-  than a day by default, and the 3-day value follows the long-standing [Renovate
-  `minimumReleaseAge`][renovate] convention.
-- The control set maps onto [TUF's attack taxonomy][tuf] — arbitrary software
-  installation, mix-and-match, and extraneous-dependencies attacks — and the
-  lock-exact CI installs of the [OpenSSF npm guide][openssf].
+- Default-deny lifecycle scripts is the ecosystem direction:
+  - pnpm and Yarn Berry block dependency scripts by default.
+  - npm's accepted [RFC #54][] brings the same model to npm through
+    `allowScripts`, version-exact entries included.
+- Release cooldowns are established practice:
+  - pnpm resolves only releases older than a day by default.
+  - The 3-day value follows the long-standing [Renovate
+    `minimumReleaseAge`][renovate] convention.
+- The control set maps onto established framework guidance:
+  - [TUF's attack taxonomy][tuf]: arbitrary software installation,
+    mix-and-match, and extraneous-dependencies attacks.
+  - The [OpenSSF npm guide][openssf]: lock-exact CI installs.
 
 <!-- prettier-ignore-start -->
 [openssf]: https://github.com/ossf/package-manager-best-practices/blob/main/published/npm.md

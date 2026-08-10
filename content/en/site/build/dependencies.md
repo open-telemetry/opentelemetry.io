@@ -33,7 +33,7 @@ Configuration: `strict-allow-scripts` in `.npmrc`; the `allowScripts` map in
 
 ### npm version floor
 
-Installs fail when the active npm is older than the engines floor — the minimum
+Installs fail when the active npm is older than the engines floor: the minimum
 version that enforces the controls above.
 
 Configuration: `engine-strict` in `.npmrc`; `engines` in `package.json`.
@@ -48,17 +48,17 @@ Configuration: `NPM_VERSION` and `NPM_FLAGS` in `netlify.toml`.
 ## Install contracts
 
 Automated environments install lock-exact and script-free, then explicitly
-re-enable the one reviewed hook — the `hugo-extended` rebuild that fetches the
+re-enable the one reviewed hook: the `hugo-extended` rebuild that fetches the
 pinned Hugo binary. Local installs are lock-pinned too, with lifecycle scripts
 gated by the allowlist rather than disabled:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.
-- **Devcontainer**: `npm run install:safe` — the same contract, keeping optional
+- **Devcontainer**: `npm run install:safe`, the same contract, keeping optional
   dependencies.
-- **Netlify**: after the inert auto-install, the build command runs
-  `install:safe` between clean-working-tree checks, failing on lock drift or any
-  other Git-visible change.
+- **Netlify**: `npm run install:safe`, run by the build command after the inert
+  auto-install, between clean-working-tree checks; lock drift or any other
+  Git-visible change fails the build.
 - **Local**: `npm install` (lock-pinned) or `npm run install:safe`; see [local
   setup][].
 
@@ -82,8 +82,8 @@ When updating a package that has an `allowScripts` entry:
 
 ### Lock-file maintenance
 
-For contributor lock-file cases — regenerating the lock after a dependency
-change, merge conflicts, unexplained rewrites — see [local setup][].
+For contributor lock-file cases (regenerating the lock after a dependency
+change, merge conflicts, unexplained rewrites), see [local setup][].
 
 <!-- prettier-ignore-start -->
 [local setup]: /docs/contributing/development/#local-setup
