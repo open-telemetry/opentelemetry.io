@@ -97,12 +97,6 @@ npm run serve
 
 网站将通过 [localhost:1313][] 提供服务。
 
-如果你需要测试 [Netlify][] 重定向，请使用以下命令，并访问 [localhost:8888][]：
-
-```sh
-npm run serve:netlify
-```
-
 `serve` 命令是从内存中提供文件，而不是从磁盘读取。
 
 如果你在 macOS 上看到类似 `too many open files` 或 `pipe failed` 的错误，
@@ -148,8 +142,6 @@ CI 脚本在每次执行时都会拉取最新的子模块。如果你不希望�
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
-[localhost:8888]: http://localhost:8888
-[netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
 [nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating

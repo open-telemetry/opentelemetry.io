@@ -20,7 +20,7 @@ CI jobs install npm dependencies from the committed `package-lock.json`:
   rebuilds `hugo-extended` (the only dependency hook re-enabled) and then runs
   the repository's own `prepare` setup.
 - The devcontainer instead uses `npm run install:safe`: the same contract, but
-  keeping optional dependencies, which carry local tools such as `netlify-cli`.
+  keeping optional dependencies.
 
 For script details, see [npm scripts](../npm-scripts/).
 

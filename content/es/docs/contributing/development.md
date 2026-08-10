@@ -108,13 +108,6 @@ npm run serve
 
 El sitio se sirve en [localhost:1313][].
 
-Si necesitas probar las redirecciones de [Netlify][], usa el siguiente comando y
-visita el sitio en [localhost:8888][]:
-
-```sh
-npm run serve:netlify
-```
-
 El comando serve sirve archivos desde memoria, no desde disco.
 
 Si ves un error como `too many open files` o `pipe failed` en macOS, es posible
@@ -178,8 +171,6 @@ locales como (en orden alfabético):
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
-[localhost:8888]: http://localhost:8888
-[netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/es/about/previous-releases
 [nodejs-win]:
   https://docs.microsoft.com/es-es/windows/dev-environment/javascript/nodejs-on-windows

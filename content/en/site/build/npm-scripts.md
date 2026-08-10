@@ -33,7 +33,6 @@ are internal helpers and are not intended to be run directly.
 | `build`            | Build the site. Defaults to lean; see [Build kinds][].         |
 | `clean`            | Run `make clean`.                                              |
 | `serve:hugo`       | Start Hugo server with in-memory render.                       |
-| `serve:netlify`    | Start Netlify Dev using Hugo.                                  |
 | `serve`            | Start Hugo dev server (default; full render).                  |
 
 ## Checking
