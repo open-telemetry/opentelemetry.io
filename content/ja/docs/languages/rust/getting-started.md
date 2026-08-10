@@ -2,6 +2,7 @@
 title: Getting Started
 weight: 10
 default_lang_commit: a790e3cf91025305c683047b181120ab6bbae3de
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: ctrl_c eprintln LogExporter MetricExporter OnceLock rolldice SdkLoggerProvider SdkMeterProvider SdkTracerProvider SpanExporter tokio tracing
 ---
