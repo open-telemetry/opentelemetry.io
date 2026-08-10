@@ -109,6 +109,7 @@
     metrics: alpha
     logs: beta
     traces: beta
+    profiles: development
 - name: coralogixexporter
   display_name: Coralogix Exporter
   repo: contrib
@@ -279,7 +280,7 @@
   distributions:
     - contrib
   stability:
-    logs: beta
+    logs: deprecated
 - name: nopexporter
   display_name: No-op Exporter
   repo: core

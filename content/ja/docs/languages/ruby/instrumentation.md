@@ -7,8 +7,7 @@ aliases:
   - /docs/languages/ruby/context-propagation
 weight: 20
 description: OpenTelemetry Ruby計装
-default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
-drifted_from_default: true
+default_lang_commit: d03483e1d5cc696a5541f8bcc8ff97170f2f2ca1
 cSpell:ignore: SIGHUP
 ---
 
@@ -103,6 +102,24 @@ require "opentelemetry/sdk"
 def do_work
   MyAppTracer.in_span("do_work") do |span|
     # `do_work`スパンが追跡する何らかの処理を実行
+  end
+end
+```
+
+`in_span` ブロックから例外がエスケープした場合、トレーサーはデフォルトでスパンに例外を記録し、スパンステータスを `Error` に設定して、例外を再度発生させます。
+`in_span` メソッドの引数として `record_exception: false` を渡すことで、自動例外記録を無効にできます。
+
+ブロック内で例外をレスキューし、再度発生させない場合は、必要に応じてスパンステータスの設定と例外の記録を手動で行います。
+
+```ruby
+MyAppTracer.in_span("do_work") do |span|
+  begin
+    # 例外を発生させる可能性のある処理を実行
+  rescue StandardError => e
+    span.status = OpenTelemetry::Trace::Status.error(e.message)
+    span.record_exception(e)
+
+    # フォールバックを返すなど、再度発生させずに例外を処理する
   end
 end
 ```

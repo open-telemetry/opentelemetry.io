@@ -1,0 +1,20 @@
+title: opentelemetry-resource-detector-aws
+registryType: resource-detector
+language: ruby
+tags:
+  - aws
+  - resource-detector
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-resource-detector-aws/v0.7.0/resources/aws
+  docs: https://rubydoc.info/gems/opentelemetry-resource-detector-aws/0.7.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
+license: Apache-2.0
+description: AWS resource detector for OpenTelemetry
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-06-29
+package:
+  registry: gems
+  name: opentelemetry-resource-detector-aws
+  version: 0.7.0

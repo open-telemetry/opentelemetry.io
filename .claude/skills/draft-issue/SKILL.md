@@ -62,7 +62,11 @@ From `content/en/docs/contributing/issues.md`:
 - **Reference related issues and PRs** with `#1234` for the same repo, or the
   full URL for cross-repo references.
 - **Concise, actionable** descriptions; no filler.
-- Wrap body prose at 80 characters (convention, not enforced).
+
+Other guidance:
+
+- Format: do **not** hard line-wrap (prettify) issue body prose, instead let
+  GitHub flow paragraph text naturally.
 
 ## Labels {#labels}
 

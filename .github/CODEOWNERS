@@ -17,39 +17,16 @@
 # By default, docs-approvers own all files unless overridden below.
 * @open-telemetry/docs-approvers
 
-# CI/infra resources are owned by docs-maintainers, except for cspell files.
-# Keep this list in sync with the `CI/infra` label list in
-# .github/component-label-map.yml. cSpell:ignore gulpfile
-/.claude/**                     @open-telemetry/docs-maintainers
+# cspell files are docs-approver content, and prh files are locale content;
+# locale word lists and prh rule files get their locale team as owner via the
+# (later-matching) locale section below.
 /.cspell/**                     @open-telemetry/docs-approvers
 /.cspell.yml                    @open-telemetry/docs-approvers
-/.devcontainer/**               @open-telemetry/docs-maintainers
-/.editorconfig                  @open-telemetry/docs-maintainers
-/.github/**                     @open-telemetry/docs-maintainers
-/.gitpod.yml                    @open-telemetry/docs-maintainers
-/.htmltest.base.yml             @open-telemetry/docs-maintainers
-/.markdown*.*                   @open-telemetry/docs-maintainers
-/content/**/.markdownlint.yaml  @open-telemetry/docs-maintainers
-/.nvmrc                         @open-telemetry/docs-maintainers
-/.prettierignore                @open-telemetry/docs-maintainers
-/.python-version                @open-telemetry/docs-maintainers
-/.textlintrc.yml                @open-telemetry/docs-maintainers
-/.warnings-skip-list.txt        @open-telemetry/docs-maintainers
-/AGENTS.md                      @open-telemetry/docs-maintainers
-/config/**                      @open-telemetry/docs-maintainers
-/content/en/site/**             @open-telemetry/docs-maintainers
-/gulp-src/**                    @open-telemetry/docs-maintainers
-/gulpfile.js                    @open-telemetry/docs-maintainers
-/Makefile                       @open-telemetry/docs-maintainers
-/netlify/**                     @open-telemetry/docs-maintainers
-/netlify.toml                   @open-telemetry/docs-maintainers
 /prh/**                         @open-telemetry/docs-maintainers
-/scripts/**                     @open-telemetry/docs-maintainers
-/tests/**                       @open-telemetry/docs-maintainers
 
 # No-owner files. Keep this list in sync with the `no-owner-files` list in
 # .github/component-owners.yml.
-/static/refcache.json
+/.lycheecache
 
 # ------------------------------------------------------------
 # Localization teams own their locale's files.
@@ -109,3 +86,37 @@
 /content/zh/      @open-telemetry/docs-zh-approvers @open-telemetry/docs-approvers
 
 # END locale-owners
+
+# CI/infra resources are owned by docs-maintainers. Last match wins, so this
+# block follows the locale section: infra ownership holds at any depth,
+# including under content/. Keep this list in sync with the `CI/infra` label
+# list in .github/component-label-map.yml (which notes intentional omissions).
+# cSpell:ignore gulpfile
+/.claude/**                     @open-telemetry/docs-maintainers
+/.devcontainer/**               @open-telemetry/docs-maintainers
+/.editorconfig                  @open-telemetry/docs-maintainers
+/.github/**                     @open-telemetry/docs-maintainers
+/.gitpod.yml                    @open-telemetry/docs-maintainers
+/.markdown*.*                   @open-telemetry/docs-maintainers
+/content/**/.markdownlint.yaml  @open-telemetry/docs-maintainers
+/.nvmrc                         @open-telemetry/docs-maintainers
+/.prettierignore                @open-telemetry/docs-maintainers
+/.python-version                @open-telemetry/docs-maintainers
+/.textlintrc.yml                @open-telemetry/docs-maintainers
+/.warnings-skip-list.txt        @open-telemetry/docs-maintainers
+/AGENTS.md                      @open-telemetry/docs-maintainers
+/config/**                      @open-telemetry/docs-maintainers
+/content/en/site/**             @open-telemetry/docs-maintainers
+/gulp-src/**                    @open-telemetry/docs-maintainers
+/gulpfile.js                    @open-telemetry/docs-maintainers
+/lychee.base.toml               @open-telemetry/docs-maintainers
+/Makefile                       @open-telemetry/docs-maintainers
+/netlify/**                     @open-telemetry/docs-maintainers
+/netlify.toml                   @open-telemetry/docs-maintainers
+**/package-lock.json            @open-telemetry/docs-maintainers
+# The scripts map defines the CI install contract (ci:min, ci:prepare), so the
+# root manifest needs maintainer review; dependency changes already were
+# maintainer-gated via the lock rule above.
+/package.json                   @open-telemetry/docs-maintainers
+/scripts/**                     @open-telemetry/docs-maintainers
+/tests/**                       @open-telemetry/docs-maintainers

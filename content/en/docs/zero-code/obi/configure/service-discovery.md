@@ -420,7 +420,7 @@ metrics and traces.
 
 If you export instrumentation data via OpenTelemetry or Prometheus, OBI follows
 the
-[service name conventions from the OpenTelemetry operator](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#how-resource-attributes-are-calculated-from-the-pods-metadata)
+[service name conventions from the OpenTelemetry operator](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/resource-attributes.md#how-resource-attributes-are-calculated-from-the-pods-metadata)
 to improve interoperability with other instrumentation solutions.
 
 OBI uses the following criteria in this order to automatically set the service

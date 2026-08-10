@@ -2,8 +2,7 @@
 title: Docker デプロイ
 linkTitle: Docker
 aliases: [docker_deployment]
-default_lang_commit: c1e141558ab36cc1ab9f864728e4665e272ac131
-drifted_from_default: true
+default_lang_commit: 6d5bce8500b2a358ae30dd1343770bc83ac325e7
 cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 ---
 
@@ -94,8 +93,8 @@ docker compose -f docker-compose-tests.yml run traceBasedTests
 
 - ウェブストア: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
-- 負荷生成 UI: <http://localhost:8080/loadgen/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
+- OpAMP UI: <http://localhost:8080/opamp/>
 - トレーステスト UI: <http://localhost:11633/>、`make run-tracetesting` の使用時のみ
 - Flagd 設定 UI: <http://localhost:8080/feature>
 
