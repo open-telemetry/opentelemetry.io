@@ -35,7 +35,7 @@ The
 of the OpenTelemetry Prometheus exporter for .NET allows you to take this exact
 approach with your production metrics. You can use the
 [.NET Meter class](https://learn.microsoft.com/dotnet/core/diagnostics/metrics-instrumentation)
-from your application and framework code to collect metrics and export it to
+from your application and framework code to collect metrics and export them to
 both Prometheus and another exporter, such as the
 [OTLP exporter](/docs/specs/otel/protocol/exporter/).
 
@@ -102,7 +102,9 @@ public class BlogPostComments
 
 It's then a small amount of code to configure the OpenTelemetry SDK to export
 your metrics to both Prometheus and over OTLP to a backend that supports
-OpenTelemetry.
+OpenTelemetry by adding the
+[`OpenTelemetry.Exporter.Prometheus.AspNetCore`](https://www.nuget.org/packages/OpenTelemetry.Exporter.Prometheus.AspNetCore)
+NuGet package to your project.
 
 ```csharp
 using OpenTelemetry.Exporter;
@@ -114,6 +116,27 @@ using var meterProvider = Sdk.CreateMeterProviderBuilder()
     .AddOtlpExporter()
     .AddPrometheusExporter()
     .Build();
+```
+
+Your application will also need to expose the HTTP scrape endpoint that
+Prometheus will use to collect metrics from your application. This can be done
+by adding the `UseOpenTelemetryPrometheusScrapingEndpoint` extension method to
+your `IApplicationBuilder` in the `Configure` method of your `Startup` class.
+
+For example:
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+
+// Configure services here
+
+var app = builder.Build();
+
+// Configure other middleware here
+
+app.MapPrometheusScrapingEndpoint();
+
+app.Run();
 ```
 
 Using the `Meter` APIs to export metrics makes your application code more
@@ -135,7 +158,7 @@ command line flag.
 
 Then configure the OTLP exporter similarly to the code snippet above, but in
 this case you wouldn't need to use the Prometheus exporter as well. Also note
-that the OTLP exporter specified a base path for the metrics OTLP endpoint and
+that the OTLP exporter specifies a base path for the metrics OTLP endpoint and
 uses HTTP/protobuf as the protocol for the OTLP exporter.
 
 ```csharp
