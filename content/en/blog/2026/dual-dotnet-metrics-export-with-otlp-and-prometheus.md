@@ -4,7 +4,6 @@ linkTitle: dual-dotnet-metrics-export-with-otlp-and-prometheus
 date: 2026-08-10
 author: >-
   [Martin Costello](https://github.com/martincostello) (Grafana Labs)
-draft: true # TODO: remove this line once your post is ready to be published
 issue: 11227
 sig: SIG .NET
 ---
