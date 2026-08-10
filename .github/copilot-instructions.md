@@ -12,8 +12,6 @@ info here.
 
 - Install the Node.js LTS version given by `.nvmrc`: Use `nvm install` or
   `nvm install lts && nvm use lts`
-- Use npm 11.16.0 or later, as required by `package.json`; the active Node.js
-  LTS includes a compatible version
 - If Puppeteer download fails due to network issues: Set
   `export PUPPETEER_SKIP_DOWNLOAD=true`
 - Clone repository:

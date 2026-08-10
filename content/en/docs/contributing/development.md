@@ -75,9 +75,6 @@ Your development environment will be initialized via the
     nvm install lts && nvm use lts
     ```
 
-    The project requires npm 11.16.0 or later. The active Node.js LTS includes a
-    compatible version.
-
 4.  Get npm packages and other prerequisites:
 
     ```sh
