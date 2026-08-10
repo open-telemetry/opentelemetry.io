@@ -104,7 +104,7 @@ Your development environment will be initialized via the
       `postinstall` check warns when an install does this): that signals drift;
       restore the lock and investigate rather than committing the rewrite.
 
-    Site maintainers own [other lock-file maintenance][ci-install].
+    Site maintainers own [other lock-file maintenance][dep-updates].
 
 Launch your favorite IDE. {{% param what-next %}}
 
@@ -249,7 +249,8 @@ npm run check:code-excerpts
 [code-excerpter]: https://github.com/chalin/code-excerpter
 
 <!-- prettier-ignore-start -->
-[ci-install]: /site/build/ci-workflows/#dependency-installation
+[ci-install]: /site/build/dependencies/#install-contracts
+[dep-updates]: /site/build/dependencies/#updating
 [clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
 [cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers

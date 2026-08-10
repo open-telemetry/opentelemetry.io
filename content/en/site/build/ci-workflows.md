@@ -11,22 +11,9 @@ For workflows and (most of) their helper scripts, see the `workflow` and
 
 ## Dependency installation {#dependency-installation}
 
-CI jobs install npm dependencies from the committed `package-lock.json`:
-
-- `npm run ci:min` installs the locked dependency graph: no lifecycle scripts
-  run, and the install fails if `package.json` and the lock file are out of
-  sync.
-- Jobs that build the site follow the install with `npm run ci:prepare`, which
-  explicitly enables the reviewed `hugo-extended` hook to fetch the pinned Hugo
-  binary, then runs the repository's own `prepare` setup.
-- The devcontainer instead uses `npm run install:safe`: the same contract, but
-  keeping optional dependencies.
-- Netlify constrains its automatic install to a dry run with scripts disabled,
-  then runs `install:safe` between clean-working-tree checks. This catches lock
-  drift and other changes visible to Git. See [`netlify.toml`][] for the
-  controls.
-
-For script details, see [npm scripts](../npm-scripts/).
+CI jobs install npm dependencies following the site-wide
+[install contracts](../dependencies/#install-contracts): lock-exact, with
+lifecycle scripts disabled.
 
 ## PR approval labels {#pr-approval-labels}
 
@@ -499,5 +486,4 @@ The repository includes several other workflows:
 <!-- prettier-ignore-start -->
 [link checking]: ../link-checking/
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
-[`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 <!-- prettier-ignore-end -->

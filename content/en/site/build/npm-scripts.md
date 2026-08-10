@@ -146,18 +146,9 @@ are internal helpers and are not intended to be run directly.
 
 ## Notes
 
-- **Install contracts.** For which CI jobs run `ci:min` and `ci:prepare`, see
-  [Dependency installation](../ci-workflows/#dependency-installation).
-- **Release cooldown.** The committed `.npmrc` sets `min-release-age=3`, so
-  dependency resolution — including `update:packages` — only considers versions
-  published at least 3 days earlier. This gives registry-side takedowns of
-  malicious releases time to land. `npm ci` installs from the lock without
-  resolving, so the cooldown doesn't affect it.
-- **Lifecycle scripts.** The committed `.npmrc` runs package lifecycle scripts
-  only when `package.json` allows its exact name and version. When updating a
-  script-bearing package, update its `allowScripts` entry too. Installs with
-  `--ignore-scripts` run no lifecycle scripts; the allowlist governs
-  script-enabled paths such as the reviewed Hugo rebuild.
+- **Install contracts.** For which environments and CI jobs run which install
+  scripts, and the supply-chain controls governing installs, see
+  [Dependency management](../dependencies/).
 - **Link cache.** The link-check scripts read and update the committed
   `.lycheecache`. For details, see [Link checking](../link-checking/).
 - **`test:local-tools:lychee`** is the subset of `test:local-tools` that needs
@@ -175,5 +166,5 @@ are internal helpers and are not intended to be run directly.
 [dc]: ../link-checking/#double-check
 [fn]: /docs/contributing/pr-checks/#filename-check
 [locale-auto-merge]: ../ci-workflows/#locale-auto-merge
-[release cooldown]: #notes
+[release cooldown]: ../dependencies/#controls
 <!-- prettier-ignore-end -->
