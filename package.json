@@ -242,7 +242,7 @@
     "fsevents@2.3.3": true,
     "hugo-extended@0.164.0": true,
     "netlify-cli@27.1.0": true,
-    "puppeteer@25.4.0": true,
+    "puppeteer@25.5.0": true,
     "sharp@0.34.5": true,
     "unix-dgram@2.0.7": true
   }
