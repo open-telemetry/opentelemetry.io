@@ -93,11 +93,11 @@ install that rewrites the lock warns immediately.
 ## Prior art
 
 - Default-deny lifecycle scripts is the ecosystem direction:
-  - pnpm and Yarn Berry block dependency scripts by default.
+  - [pnpm][] and [Yarn][] block dependency scripts by default.
   - npm's accepted [RFC #54][] brings the same model to npm through
     `allowScripts`, version-exact entries included.
 - Release cooldowns are established practice:
-  - pnpm resolves only releases older than a day by default.
+  - [pnpm resolves][] only releases older than a day by default.
   - The 3-day value follows the long-standing [Renovate
     `minimumReleaseAge`][renovate] convention.
 - The control set maps onto established framework guidance:
@@ -107,9 +107,12 @@ install that rewrites the lock warns immediately.
 
 <!-- prettier-ignore-start -->
 [openssf]: https://github.com/ossf/package-manager-best-practices/blob/main/published/npm.md
+[pnpm]: https://pnpm.io/settings/build
+[pnpm resolves]: https://pnpm.io/settings/dependency-resolution
 [renovate]: https://docs.renovatebot.com/configuration-options/#minimumreleaseage
 [RFC #54]: https://github.com/npm/rfcs/blob/main/accepted/0054-make-scripts-install-opt-in.md
 [security notice]: https://github.com/open-telemetry/opentelemetry.io/issues/11210
 [security policy]: https://github.com/open-telemetry/opentelemetry.io/security/policy
 [tuf]: https://theupdateframework.io/docs/security/
+[Yarn]: https://yarnpkg.com/advanced/lifecycle-scripts
 <!-- prettier-ignore-end -->
