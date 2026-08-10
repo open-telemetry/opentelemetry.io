@@ -233,7 +233,7 @@
   },
   "spelling": "cSpell:ignore elemetry lycheecache loglevel minisearch mypy nowrap precheck pytest startswith -",
   "allowScripts": {
-    "fsevents@2.3.3": true,
+    "fsevents@2.3.3": false,
     "hugo-extended@0.164.0": true,
     "puppeteer@25.5.0": true
   }
