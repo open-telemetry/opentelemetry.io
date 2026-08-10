@@ -209,6 +209,12 @@
   contact: support@hyperdx.io
   oss: true
   commercial: true
+- name: IceGate by TripleCloud
+  nativeOTLP: true
+  url: https://docs.icegate.tech/en/api-reference/otlp.html
+  contact: contact@icegate.team
+  oss: true
+  commercial: true
 - name: Icinga 2
   nativeOTLP: true
   url: https://icinga.com/docs/icinga-2/latest/doc/14-features/#otlpmetrics-writer
