@@ -136,18 +136,24 @@ are internal helpers and are not intended to be run directly.
 | `ci:prepare`                   | Post-`ci:min` setup: fetch the pinned Hugo binary, then `prepare`.                        |
 | `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter.           |
 | `install:safe`                 | Lock-exact local setup: inert install keeping optional deps, then `ci:prepare`.           |
+| `is:clean`                     | Fail if the Git working tree contains tracked or untracked changes.                       |
 | `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                             |
 | `log:build`, `log:check:links` | Run the corresponding script, tee output to `tmp/`, and propagate the script's exit code. |
 | `prebuild:*`                   | Pre-`build*` hooks; each runs `_prebuild`.                                                |
-| `prepare`                      | Install step: `get:submodule`, then Docsy theme `postinstall`.                            |
+| `prepare`                      | Install step: `get:submodule`, then Docsy's lock-exact theme dependency install.          |
 | `seq`                          | Run given script names in sequence; exit on first failure.                                |
 | `update:hugo`                  | Install latest hugo-extended.                                                             |
-| `update:packages`              | Run npm-check-updates to bump deps.                                                       |
+| `update:packages`              | Run npm-check-updates to bump deps, subject to the [release cooldown][].                  |
 
 ## Notes
 
 - **Install contracts.** For which CI jobs run `ci:min` and `ci:prepare`, see
   [Dependency installation](../ci-workflows/#dependency-installation).
+- **Release cooldown.** The committed `.npmrc` sets `min-release-age=3`, so
+  dependency resolution — including `update:packages` — only considers versions
+  published at least 3 days earlier. This gives registry-side takedowns of
+  malicious releases time to land. `npm ci` installs from the lock without
+  resolving, so the cooldown doesn't affect it.
 - **Link cache.** The link-check scripts read and update the committed
   `.lycheecache`. For details, see [Link checking](../link-checking/).
 - **`test:local-tools:lychee`** is the subset of `test:local-tools` that needs
@@ -165,4 +171,5 @@ are internal helpers and are not intended to be run directly.
 [dc]: ../link-checking/#double-check
 [fn]: /docs/contributing/pr-checks/#filename-check
 [locale-auto-merge]: ../ci-workflows/#locale-auto-merge
+[release cooldown]: #notes
 <!-- prettier-ignore-end -->

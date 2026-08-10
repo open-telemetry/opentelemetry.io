@@ -36,9 +36,10 @@
     "_list:fix:*": "npm run --loglevel=warn | grep -Ee '^\\s*fix:[^:]+$' | grep -Ev \"fix:all|fix:refcache|${CMD_SKIP:-noop}\"",
     "_list:fix:for-test-and-fix": "npm -s run _list:fix:* | grep -Ev \"collector-sync|i18n|link-cache|submodule\"",
     "_list:test:compound-tests": "npm run --loglevel=warn | grep -Ee '^\\s*test:[^:]+-[^:]+$' | grep -Ev \"compound-tests|${CMD_SKIP:-noop}\"",
+    "_netlify:prepare": "npm run -s is:clean && npm run install:safe && npm run -s is:clean",
     "_pin:submodule": "scripts/pin-submodules.pl",
     "_prebuild": "npm run seq -- get:submodule cp:spec generate:config-types",
-    "_prepare:docsy": "cd themes/docsy && npm run postinstall",
+    "_prepare:docsy": "cd themes/docsy && npm run install:theme-deps",
     "_prettier:any": "npx prettier --ignore-path ''",
     "_serve:hugo": "hugo server --buildDrafts --minify",
     "_serve:netlify": "netlify dev -c \"npm run _serve:hugo -- --renderToMemory\"",
@@ -79,7 +80,7 @@
     "check:text": "npm run _check:text -- ",
     "check": "CMD_SKIP=collector-sync npm run check:all",
     "ci:min": "npm ci --ignore-scripts --omit=optional",
-    "ci:prepare": "npm rebuild hugo-extended && npm run prepare",
+    "ci:prepare": "npm rebuild --ignore-scripts=false hugo-extended && npm run prepare",
     "clean": "make clean",
     "code-excerpts": "node -e 'console.error(\"\\x1b[31mWARNING: THIS IS A DEPRECATED ALIAS, instead use: `fix:code-excerpts` or `check:code-excerpts`\\x1b[0m\")' && npm run fix:code-excerpts --",
     "cp:spec": "scripts/content-modules/cp-pages.sh",
@@ -114,6 +115,7 @@
     "generate:config:links": "node scripts/lychee/config/index.mjs",
     "get:submodule": "npm run _get:${GET:-submodule} --",
     "install:safe": "npm ci --ignore-scripts && npm run ci:prepare",
+    "is:clean": "bash -c 'o=$(git status --porcelain -uall); echo \"$o\"; [ -z \"$o\" ]'",
     "lean": "HUGO_PARAMS_TD_CHROME=shared npm run",
     "link-cache": "refcache",
     "locale-auto-merge": "node scripts/gh/locale-auto-merge/cli.mjs",
@@ -121,8 +123,8 @@
     "log:build": "bash -o pipefail -c 'mkdir -p tmp && npm run build 2>&1 | tee tmp/build-log.txt'",
     "log:check:links": "bash -o pipefail -c 'mkdir -p tmp && npm run check:links 2>&1 | tee tmp/check-links-log.txt'",
     "make:public": "make public ls-public",
-    "netlify-build:preview": "npm run seq -- build:preview diff:check",
-    "netlify-build:production": "npm run seq -- build:production diff:check",
+    "netlify-build:preview": "npm run seq -- _netlify:prepare build:preview diff:check",
+    "netlify-build:production": "npm run seq -- _netlify:prepare build:production diff:check",
     "pin:submodule": "npm run _pin:submodule -- $PIN_SKIP",
     "post_hugo": "scripts/strip-hugo-ctx.sh public",
     "postfix:submodule": "git submodule",
@@ -226,12 +228,22 @@
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
-    "node": ">=24"
+    "node": ">=24",
+    "npm": ">=11.16.0"
   },
   "private": true,
   "prettier": {
     "proseWrap": "always",
     "singleQuote": true
   },
-  "spelling": "cSpell:ignore elemetry lycheecache loglevel minisearch mypy nowrap precheck pytest startswith -"
+  "spelling": "cSpell:ignore elemetry lycheecache loglevel minisearch mypy nowrap precheck pytest startswith -",
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "fsevents@2.3.3": true,
+    "hugo-extended@0.164.0": true,
+    "netlify-cli@27.1.0": true,
+    "puppeteer@25.4.0": true,
+    "sharp@0.34.5": true,
+    "unix-dgram@2.0.7": true
+  }
 }
