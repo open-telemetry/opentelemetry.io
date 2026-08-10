@@ -14,7 +14,12 @@ import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { cacheUpdatedNotice, deadLinksReport, failedUrlsOf } from './index.mjs';
+import {
+  cacheUpdatedNotice,
+  deadLinksReport,
+  failedUrlsOf,
+  staleBuildReport,
+} from './index.mjs';
 
 const root = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -22,6 +27,19 @@ const root = path.join(
   '..',
   '..',
 );
+
+// Fail fast when the site build is absent or older than the content tree,
+// rather than link-checking a stale public/ (fs.statSync follows symlinks:
+// public/ may link to a sibling directory). Report shape and rationale live
+// in ./index.mjs (staleBuildReport).
+const staleReport = staleBuildReport({
+  publicIndexMtimeMs: mtimeMsOf(path.join(root, 'public', 'index.html')),
+  newestContent: newestFileUnder(path.join(root, 'content')),
+});
+if (staleReport) {
+  console.error(staleReport);
+  process.exit(1);
+}
 
 // The bin behind the `_check:links` npm script; invoked directly so that
 // output is captured npm-noise-free and the exit status observed; failures
@@ -85,4 +103,36 @@ function cacheModified() {
     cwd: root,
   });
   return r.status === 1;
+}
+
+// mtime (ms) of the file at p, or undefined when it doesn't exist; follows
+// symlinks.
+function mtimeMsOf(p) {
+  try {
+    return fs.statSync(p).mtimeMs;
+  } catch {
+    return undefined;
+  }
+}
+
+// Newest regular file under dir as { path, mtimeMs } with path relative to
+// the repo root, or undefined when the tree is empty or absent.
+function newestFileUnder(dir) {
+  let newest;
+  let entries;
+  try {
+    entries = fs.readdirSync(dir, { recursive: true, withFileTypes: true });
+  } catch {
+    return undefined;
+  }
+  for (const entry of entries) {
+    if (!entry.isFile()) continue;
+    const p = path.join(entry.parentPath, entry.name);
+    const mtimeMs = mtimeMsOf(p);
+    if (mtimeMs === undefined) continue;
+    if (!newest || mtimeMs > newest.mtimeMs) {
+      newest = { path: path.relative(root, p), mtimeMs };
+    }
+  }
+  return newest;
 }
