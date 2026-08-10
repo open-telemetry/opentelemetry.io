@@ -1,7 +1,7 @@
 ---
 title: Trimiterea de conținut
 description:
-  Învață cum să trimiți conținut now sau schimbat folosind interfața GitHub sau
+  Învață cum să trimiți conținut nou sau schimbat folosind interfața GitHub sau
   de pe un fork local
 aliases: [new-content]
 weight: 15
@@ -9,8 +9,8 @@ default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
 drifted_from_default: true
 ---
 
-Pentru a contribui cu conținut sau să îmbunătățești documentația existentă,
-trimite un [pull request][PR] (PR)
+Pentru a contribui cu o nouă documentație sau pentru îmbunătățirea uneia
+existente, trimite un [pull request][PR] (PR)
 
 - Dacă schimbarea ta este mică, sau ești nefamiliarizat cu [Git][], vezi cum se
   [Folosește GitHub](#changes-using-github) pentru a învăța cum să editezi o
@@ -18,7 +18,7 @@ trimite un [pull request][PR] (PR)
 - Altfel, vezi cum se [Lucreză de pe un fork local](#fork-the-repo) pentru a
   învăța cum să faci schimbări în mediul tău local de dezvoltare.
 
-## Generative AI contribution policy {#using-ai}
+## Politica de contribuție folosind IA generativă {#using-ai}
 
 > [!WARNING] **Contribuitori noi** atenție!
 >
@@ -39,7 +39,7 @@ trimite un [pull request][PR] (PR)
 > altele.
 >
 > Am implementat această cerință pentru a te ajuta să înveți în timp ce
-> contribui și pentru a ajuta întreținătorii și aprobatorii să-și protejeze
+> contribui și pentru a ajuta administratorii și aprobatorii să-și protejeze
 > timpul și capacitatea de lucru, care reprezintă o resursă limitată.
 >
 > Întreținătorii pot face o excepție, când contribuția ta este "drive-by" și
@@ -56,7 +56,7 @@ generativă][Generative AI Contribution Policy].
 [Generative AI Contribution Policy]:
   https://github.com/open-telemetry/community/blob/main/policies/genai.md
 
-## Cum să contribui
+## Cum să contribui {#how-to-contribute}
 
 Figura următoare ilustrează cum să contribui cu documentație nouă.
 
@@ -84,7 +84,7 @@ _Figura 1. Contribuții cu conținut nou._
 > [!TIP]
 >
 > Setează statusul pull request-ului tău la **Draft** pentru a înștiința
-> întreținătorii că respectivul conținut nu este încă gata pentru revizuire.
+> administratorii că respectivul conținut nu este încă gata pentru revizuire.
 > Întreținătorii pot în continuare să lase comentarii sau revizuiri, deși nu vor
 > revizui conținutul în întregime până când nu elimini statutul de draft.
 
@@ -148,7 +148,7 @@ _Figura 2. Pașii pentru deschiderea unui PR folosind GitHub._
 Înainte de a îmbina un pull request, membrii comunității OpenTelemetry îl
 revizuiesc și-l aprobă
 
-Dacă un recenzent solicită să faci modificări:
+Dacă un revizuitor solicită să faci modificări:
 
 1. Du-te la tab-ul **Files changed**.
 1. Selectează iconița creion (de editare) în oricare fișier schimbat din pull
@@ -156,8 +156,8 @@ Dacă un recenzent solicită să faci modificări:
 1. Aplică schimbările cerute. Dacă există o sugestie de cod, aplic-o.
 1. Trimite schimbările.
 
-Când revizuirea este completă, un recenzent va adăuga schimbările din PR-ul tău,
-care se vor putea vedea câteva minute mai târziu.
+Când revizuirea este completă, un revizuitor va adăuga schimbările din PR-ul
+tău, care se vor putea vedea câteva minute mai târziu.
 
 ### Rezolvarea problemelor semnalate de verificările PR-ului {#fixing-prs-in-github}
 
@@ -488,7 +488,7 @@ cât mai facil pentru noi cât și pentru tine, te rugăm să aderi la următoar
 - Asigură-te că administratorii
   [au dreptul să modifice schimbările din pull request-ul tău](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
 
-### Schimbări de la revizuitori
+### Schimbări de la revizuitori {#changes-from-reviewers}
 
 Uneori revizuitorii trimit schimbări la pull request-ul tău. Înainte de a face
 orice altă schimbare, preia acele schimbări.
@@ -510,7 +510,7 @@ orice altă schimbare, preia acele schimbări.
 Poți de asemenea să rezolvi din interfața GitHub conflictele datorate integrării
 schimbărilor .
 
-### Conflictele datorate integrării schimbărilor și rebase
+### Conflictele datorate integrării schimbărilor și rebase {#merge-conflicts-and-rebasing}
 
 Dacă alt contribuitor trimite schimbări la același fișier în alt PR, poate
 genera un conflict de integrare a schimbărilor. Trebuie să rezolvi toate aceste
@@ -578,7 +578,7 @@ conflicte în PR-ul tău.
 
    Pull request-ul nu va mai arăta vreun conflict.
 
-### Cerințe pentru integrarea schimbărilor
+### Cerințe pentru integrarea schimbărilor {#merge-requirements}
 
 Schimbările din pull request sunt integrate atunci când sunt conforme cu
 următoarele criterii:
