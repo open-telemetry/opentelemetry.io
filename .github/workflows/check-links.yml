@@ -1,6 +1,6 @@
 name: Links
 
-# cSpell:ignore minisearch lycheecache lycheeverse
+# cSpell:ignore lycheecache
 on:
   merge_group:
   pull_request:
@@ -14,34 +14,16 @@ jobs:
     name: BUILD
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { persist-credentials: false }
-
-      - name: Create NPM cache-hash input file
-        run: |
-          mkdir -p tmp
-          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
-
-      - name: Create and use reduced-dependencies package.json
-        run: |
-          jq '.devDependencies |= with_entries(
-                  select(.key | test("prefix|hugo|css|js-yaml"))
-                )
-                | .dependencies |= with_entries(
-                  select(.key | test("minisearch")))
-                | del(.optionalDependencies)' \
-            package.json > tmp/package-min.json
-          cp tmp/package-min.json package.json
 
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
           cache: npm
-          cache-dependency-path: tmp/package-ci.json
 
-      - run: |
-          npm install --omit=optional
-          git restore package.json
+      - run: npm run ci:min
+      - run: npm run ci:prepare
 
       - name: Git submodules properly pinned?
         run: |
@@ -60,14 +42,13 @@ jobs:
           path: |
             public/
             tmp/build-log.txt
-            tmp/package*.json
 
   check-links:
     name: CHECK LINKS
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { persist-credentials: false }
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with: { name: build-artifacts }
@@ -76,20 +57,8 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
-          cache-dependency-path: tmp/package-ci.json
 
-      - name: Create and use reduced-dependencies package.json
-        run: |
-          jq '.devDependencies |= with_entries(
-                  select(.key | test("js-yaml|link-cache"))
-                )
-                | del(.dependencies, .optionalDependencies)' \
-            package.json > tmp/package-min-links.json
-          cp tmp/package-min-links.json package.json
-
-      - run: |
-          npm install --omit=optional --ignore-scripts
-          git restore package.json
+      - run: npm run ci:min
 
       # Run the lychee-binary tests for real here; the general test job only
       # has the sources, so it skips them.
@@ -145,7 +114,7 @@ jobs:
     needs: check-links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { persist-credentials: false }
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with: { name: link-cache, path: tmp/link-cache }
@@ -185,7 +154,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { persist-credentials: false }
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with: { name: build-artifacts }
@@ -197,7 +166,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { persist-credentials: false }
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with: { name: build-artifacts }
