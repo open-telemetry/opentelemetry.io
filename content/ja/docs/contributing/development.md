@@ -119,6 +119,12 @@ npm run serve
 
 サイトは [localhost:1313][] でサーブされます。
 
+[Netlify][] のリダイレクトをテストする必要がある場合は、次のコマンドを実行し、[localhost:8888][] にアクセスしてください。
+
+```sh
+npm run serve:netlify
+```
+
 この `serve` コマンドは、ディスクではなくメモリ上のファイルを提供します。
 
 macOS で `too many open files` や `pipe failed` というエラーが発生する場合は、ファイルディスクリプタの制限を増やす必要があるかもしれません。
@@ -212,6 +218,8 @@ npm run check:code-excerpts
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
+[localhost:8888]: http://localhost:8888
+[netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
 [nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm-windows]: https://github.com/coreybutler/nvm-windows

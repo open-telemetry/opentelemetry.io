@@ -131,6 +131,13 @@ npm run serve
 
 Site-ul este servit la [localhost:1313][].
 
+Dacă trebuie să testezi redirecționările [Netlify][], utilizează următoarea
+comandă și accesează site-ul la [localhost:8888][]:
+
+```sh
+npm run serve:netlify
+```
+
 Comanda de servire servește fișierele din memorie, nu de pe disc.
 
 Dacă întâlnești o eroare de tipul `too many open files` sau `pipe failed` pe
@@ -242,6 +249,8 @@ npm run check:code-excerpts
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
+[localhost:8888]: http://localhost:8888
+[netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
 [nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm-windows]: https://github.com/coreybutler/nvm-windows

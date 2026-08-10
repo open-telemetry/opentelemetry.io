@@ -32,6 +32,7 @@ drifted_from_default: true
 | `build`            | サイトをビルドします。デフォルトはリーンです。[Build kinds][] を参照。 |
 | `clean`            | `make clean` を実行します。                                            |
 | `serve:hugo`       | インメモリレンダリングで Hugo サーバーを起動します。                   |
+| `serve:netlify`    | Hugo を使用して Netlify Dev を起動します。                             |
 | `serve`            | Hugo 開発サーバーを起動します（デフォルト、フルレンダリング）。        |
 
 ## チェック {#checking}
