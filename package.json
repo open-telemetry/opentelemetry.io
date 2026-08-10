@@ -10,7 +10,6 @@
     "_check:format": "npm run __check:format -- --check .",
     "_check:links--md": "npx markdown-link-check --config .markdown-link-check.json *.md",
     "_check:links": "lychee-norm-cache",
-    "_check:markdown": "npx gulp lint-md",
     "_check:registry": "npx gulp validate-registry",
     "_check:text": "npx textlint content data `ls *.md`",
     "_check:uv": "command -v uv >/dev/null || { echo '[help] The collector-sync scripts require uv. Install it: https://docs.astral.sh/uv/getting-started/installation/'; exit 1; }",
