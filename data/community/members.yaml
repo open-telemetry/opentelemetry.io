@@ -710,7 +710,6 @@ maintainers:
       - php-contrib-approvers
       - php-distro-approvers
       - php-distro-maintainers
-      - php-triagers
     html_url: https://github.com/intuibase
     avatar_url: https://avatars.githubusercontent.com/u/9551626?v=4
   - name: jack-berg
@@ -1130,6 +1129,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/1017486?v=4
   - name: MikeGoldsmith
     teams:
+      - collector-contrib-triagers
       - javascript-contrib-triagers
       - opentelemetry-python-contrib-approvers
       - proto-go-approvers
@@ -2489,9 +2489,15 @@ members:
   - name: addname
     html_url: https://github.com/addname
     avatar_url: https://avatars.githubusercontent.com/u/3360883?v=4
+  - name: ajimenez1503
+    html_url: https://github.com/ajimenez1503
+    avatar_url: https://avatars.githubusercontent.com/u/5960625?v=4
   - name: AlchemyDing
     html_url: https://github.com/AlchemyDing
     avatar_url: https://avatars.githubusercontent.com/u/88769332?v=4
+  - name: alizenhom
+    html_url: https://github.com/alizenhom
+    avatar_url: https://avatars.githubusercontent.com/u/134522290?v=4
   - name: alxbl
     html_url: https://github.com/alxbl
     avatar_url: https://avatars.githubusercontent.com/u/860411?v=4
