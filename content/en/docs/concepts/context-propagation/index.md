@@ -92,7 +92,7 @@ combinations of `POST /cart/add > GET /product` and
 | Name                            | Calls Per Second | Average Response Time |
 | ------------------------------- | ---------------- | --------------------- |
 | `* > GET /product`              | 370              | 300ms                 |
-| `POST /card/add > GET /product` | 330              | 130ms                 |
+| `POST /cart/add > GET /product` | 330              | 130ms                 |
 | `GET /checkout > GET /product`  | 40               | 1703ms                |
 
 ## Custom Context Propagation
