@@ -24,7 +24,9 @@ Configuration: `min-release-age` in `.npmrc`.
 ### Lifecycle-script allowlist
 
 Installs run a package's lifecycle scripts only when its exact name and version
-is allowlisted. Installs with `--ignore-scripts` run none, allowlisted or not.
+is allowlisted. An entry set to `false` records a reviewed denial: the package
+installs, its script is skipped. Installs with `--ignore-scripts` run none,
+allowlisted or not.
 
 Configuration: `strict-allow-scripts` in `.npmrc`; the `allowScripts` map in
 `package.json`.
@@ -45,9 +47,10 @@ Configuration: `NPM_VERSION` and `NPM_FLAGS` in `netlify.toml`.
 
 ## Install contracts
 
-Every environment installs lock-exact and script-free, then explicitly
-re-enables the one reviewed hook — the `hugo-extended` rebuild that fetches the
-pinned Hugo binary:
+Automated environments install lock-exact and script-free, then explicitly
+re-enable the one reviewed hook — the `hugo-extended` rebuild that fetches the
+pinned Hugo binary. Local installs are lock-pinned too, with lifecycle scripts
+gated by the allowlist rather than disabled:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.
@@ -74,7 +77,8 @@ cooldown applies: versions still inside the cooldown window are not offered.
 When updating a package that has an `allowScripts` entry:
 
 1. Review the new version's lifecycle scripts.
-2. Update the entry's exact version together with the dependency.
+2. Update the entry's exact version together with the dependency: `true` if the
+   script is needed, `false` to record a reviewed denial.
 
 ### Lock-file maintenance
 

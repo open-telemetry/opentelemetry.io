@@ -631,6 +631,7 @@ https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#clusterresourcequota-quota-openshift-io-v1,206,1786342364
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#status-total,206,1786342364
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1,206,1786342364
+https://docs.renovatebot.com/configuration-options/#minimumreleaseage,200,1786392389
 https://docs.roadrunner.dev/docs/logging-and-observability/otel,200,1785868421
 https://docs.rs/tower,200,1785911032
 https://docs.ruby-lang.org/en/3.4/Exception.html#method-i-full_message,200,1785868535
@@ -1723,6 +1724,7 @@ https://github.com/nhatthm,200,1786028704
 https://github.com/nhatthm/otelsql,200,1786028704
 https://github.com/nilebox,200,1785785933
 https://github.com/niwoerner,200,1785785933
+https://github.com/npm/rfcs/blob/main/accepted/0054-make-scripts-install-opt-in.md,200,1786392390
 https://github.com/nrcventura,200,1785739367
 https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating,200,1785868410
 https://github.com/nwanduka,200,1785868513
@@ -4446,6 +4448,7 @@ https://github.com/orgs/open-telemetry/teams/sig-contributor-experience-maintain
 https://github.com/os-observability/redhat-opentelemetry-collector,200,1785868408
 https://github.com/osherv,200,1785785932
 https://github.com/oshi/oshi/,200,1786028672
+https://github.com/ossf/package-manager-best-practices/blob/main/published/npm.md,200,1786392390
 https://github.com/osullivandonal,200,1785785922
 https://github.com/otterize,200,1786028699
 https://github.com/otterize/network-mapper,200,1785868423
@@ -6100,6 +6103,7 @@ https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c
 https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/dx-operational-observability/saas/monitoring/opentelemetry.html,200,1785868420
 https://thanos.io/,200,1786028698
 https://thanos.io/tip/thanos/tracing.md/#opentelemetry-otlp,200,1785739347
+https://theupdateframework.io/docs/security/,200,1786392389
 https://thrift.apache.org/,200,1786341694
 https://tinygo.org/,200,1785739374
 https://tomcat.apache.org/,200,1785785893

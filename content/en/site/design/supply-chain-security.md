@@ -4,6 +4,7 @@ description: >-
   Threat model and rationale behind the site's npm dependency supply-chain
   controls.
 weight: 20
+cSpell:ignore: cooldowns unreviewed
 ---
 
 This page records why npm dependency handling is locked down the way it is. For
@@ -35,6 +36,13 @@ The attack paths that matter for this repository:
 The recurring theme is **fail closed**: when a control can't be enforced, the
 install fails rather than proceeding without it.
 
+### Minimize the dependency surface
+
+Every dependency — direct or transitive — is surface the remaining controls must
+cover. Unused and convenience dependencies are dropped rather than carried:
+removing the unused Netlify CLI more than halved the locked dependency graph and
+cut the packages bearing install scripts from seven to three.
+
 ### Install from the lock; resolve deliberately
 
 Every install path is lock-exact: it reproduces the committed, reviewed
@@ -54,6 +62,12 @@ Lifecycle scripts are default-deny: an install runs a package's scripts only
 when that exact name and version has been reviewed and allowlisted.
 Version-exact entries force a fresh review on every bump of a script-bearing
 package — a compromised patch release can't inherit its predecessor's approval.
+
+Review records both outcomes: a needed script is approved, and an unnecessary
+one (a shipped prebuilt binary suffices) gets an explicit denial — so silence
+always means unreviewed, and unreviewed fails the install. Exceptions are named
+and re-enabled inline at the point of use, never by weakening the default
+posture.
 
 ### Fail closed on old npm
 
@@ -76,7 +90,23 @@ Inert and lock-exact are verified claims, not assumptions: clean-working-tree
 checks fail a build on lock drift or any other Git-visible change, and a local
 install that rewrites the lock warns immediately.
 
+## Prior art
+
+- Default-deny lifecycle scripts is the ecosystem direction: pnpm and Yarn Berry
+  block dependency scripts by default, and npm's accepted [RFC #54][] brings the
+  same model to npm through `allowScripts` — version-exact entries included.
+- Release cooldowns are established practice: pnpm resolves only releases older
+  than a day by default, and the 3-day value follows the long-standing [Renovate
+  `minimumReleaseAge`][renovate] convention.
+- The control set maps onto [TUF's attack taxonomy][tuf] — arbitrary software
+  installation, mix-and-match, and extraneous-dependencies attacks — and the
+  lock-exact CI installs of the [OpenSSF npm guide][openssf].
+
 <!-- prettier-ignore-start -->
+[openssf]: https://github.com/ossf/package-manager-best-practices/blob/main/published/npm.md
+[renovate]: https://docs.renovatebot.com/configuration-options/#minimumreleaseage
+[RFC #54]: https://github.com/npm/rfcs/blob/main/accepted/0054-make-scripts-install-opt-in.md
 [security notice]: https://github.com/open-telemetry/opentelemetry.io/issues/11210
 [security policy]: https://github.com/open-telemetry/opentelemetry.io/security/policy
+[tuf]: https://theupdateframework.io/docs/security/
 <!-- prettier-ignore-end -->
