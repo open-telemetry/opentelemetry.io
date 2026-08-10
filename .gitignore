@@ -13,9 +13,6 @@ node_modules/
 pnpm-lock.yaml
 tmp/
 
-# Retired submodule restored by Netlify's build cache
-/content-modules/opentelemetry-go/
-
 # macOS
 .DS_Store
 
