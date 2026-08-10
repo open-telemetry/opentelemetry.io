@@ -35,7 +35,7 @@ The
 [latest release](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/coreunstable-1.17.0-beta.1)
 of the OpenTelemetry Prometheus exporter for .NET allows you to take this exact
 approach with your production metrics. You can use the
-[.NET Meter class](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation)
+[.NET Meter class](https://learn.microsoft.com/dotnet/core/diagnostics/metrics-instrumentation)
 from your application and framework code to collect metrics and export it to
 both Prometheus and another exporter, such as the
 [OTLP exporter](/docs/specs/otel/protocol/exporter/).
@@ -102,7 +102,7 @@ public class BlogPostComments
 ```
 
 It's then a small amount of code to configure the OpenTelemetry SDK to export
-your metrics to both Prometheus and over OTLP to a back-end that supports
+your metrics to both Prometheus and over OTLP to a backend that supports
 OpenTelemetry.
 
 ```csharp
@@ -122,13 +122,13 @@ portable and uncoupled from Prometheus specific APIs. This allows you to remove
 any Prometheus client library dependencies from your application code. As well
 as making your code ready for use with the OpenTelemetry ecosystem, it also
 opens up the ability for you to use other .NET ecosystem tooling such as the
-[dotnet-counters](https://learn.microsoft.com/dotnet/core/diagnostics/dotnet-counters)
+[`dotnet-counters`](https://learn.microsoft.com/dotnet/core/diagnostics/dotnet-counters)
 tool to view metrics.
 
 ## Pushing metrics to Prometheus using OTLP
 
 Alternatively if you only have a Prometheus server and no OTLP compatible
-back-end and only want to export metrics, Prometheus itself has opt-in support
+backend and only want to export metrics, Prometheus itself has opt-in support
 for ingesting metrics pushed to it over OTLP.
 
 First ensure that you run Prometheus with the `--web.enable-otlp-receiver`
@@ -167,4 +167,4 @@ sample in the OpenTelemetry .NET repository.
 With minimal runtime overhead, the application can both push OTLP metrics and
 have Prometheus metrics pulled, allowing for both systems to be used in parallel
 until such time that you decide to go all-in with an OpenTelemetry-compatible
-back-end for your metrics.
+backend for your metrics.
