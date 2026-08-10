@@ -166,5 +166,5 @@ are internal helpers and are not intended to be run directly.
 [dc]: ../link-checking/#double-check
 [fn]: /docs/contributing/pr-checks/#filename-check
 [locale-auto-merge]: ../ci-workflows/#locale-auto-merge
-[release cooldown]: ../dependencies/#controls
+[release cooldown]: ../dependencies/#release-cooldown
 <!-- prettier-ignore-end -->
