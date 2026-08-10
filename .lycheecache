@@ -3018,6 +3018,7 @@ https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/examples,200,17
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry,200,1785134662
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Api#activity-creation-options,200,1785868410
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Api#introduction-to-opentelemetry-net-tracing-api,200,1785134663
+https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Api,200,1786357606
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.Console,200,1785868433
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.InMemory,200,1785868433
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.OpenTelemetryProtocol,200,1785134663
@@ -3156,7 +3157,11 @@ https://github.com/open-telemetry/opentelemetry-go/tree/3264bf171b1e6cd70f6be4a4
 https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/otlp,206,1785868770
 https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus,200,1785868407
 https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/zipkin,200,1785868494
+https://github.com/open-telemetry/opentelemetry-go/tree/main/log,200,1786357606
+https://github.com/open-telemetry/opentelemetry-go/tree/main/metric,200,1786357606
+https://github.com/open-telemetry/opentelemetry-go/tree/main/sdk,200,1786357606
 https://github.com/open-telemetry/opentelemetry-go/tree/main/semconv/,200,1784960565
+https://github.com/open-telemetry/opentelemetry-go/tree/main/trace,200,1786357606
 https://github.com/open-telemetry/opentelemetry-helm-charts,200,1785134660
 https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/values.yaml,200,1785868406
 https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-demo/values.yaml,200,1785134660
@@ -3383,6 +3388,7 @@ https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/otlp,20
 https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/prometheus,200,1785134673
 https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim,200,1785713005
 https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim,200,1785134659
+https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk,200,1786357606
 https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/declarative-config,200,1785739343
 https://github.com/open-telemetry/opentelemetry-java/tree/v1.64.0/exporters/zipkin,200,1785870527
 https://github.com/open-telemetry/opentelemetry-js#supported-runtimes,200,1785713005
@@ -3490,6 +3496,9 @@ https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packag
 https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-propagator-env-carrier,200,1785785939
 https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-jaeger,206,1785868770
 https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-zipkin,200,1785868495
+https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-node,200,1786357606
+https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-web,200,1786357606
+https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/sdk-metrics,200,1786357606
 https://github.com/open-telemetry/opentelemetry-kotlin#getting-started,200,1785868414
 https://github.com/open-telemetry/opentelemetry-kotlin,200,1785868409
 https://github.com/open-telemetry/opentelemetry-kotlin/issues,200,1785134695
@@ -3739,6 +3748,8 @@ https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opente
 https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-zipkin,200,1785868496
 https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-zipkin-json,200,1785868496
 https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-zipkin-proto-http,200,1785868496
+https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-api,200,1786357606
+https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-sdk,200,1786357607
 https://github.com/open-telemetry/opentelemetry-python/tree/main/propagator/opentelemetry-propagator-b3,200,1785911036
 https://github.com/open-telemetry/opentelemetry-python/tree/main/propagator/opentelemetry-propagator-jaeger,200,1785911036
 https://github.com/open-telemetry/opentelemetry-python/tree/main/shim/opentelemetry-opentracing-shim,200,1785785911
@@ -4059,6 +4070,8 @@ https://github.com/open-telemetry/opentelemetry-swift#installation,200,178513466
 https://github.com/open-telemetry/opentelemetry-swift,200,1785134663
 https://github.com/open-telemetry/opentelemetry-swift-core/blob/main/Sources/OpenTelemetrySdk/Trace/Propagation/EnvironmentContextPropagator.swift,200,1785785939
 https://github.com/open-telemetry/opentelemetry-swift-core/tree/main/Sources/Exporters/Stdout,200,1785911032
+https://github.com/open-telemetry/opentelemetry-swift-core/tree/main/Sources/OpenTelemetryApi,200,1786357606
+https://github.com/open-telemetry/opentelemetry-swift-core/tree/main/Sources/OpenTelemetrySdk,200,1786357606
 https://github.com/open-telemetry/opentelemetry-swift/blob/cc8fff2d3e72171d559f1d9a4a13d87b0f55427f/Sources/OpenTelemetryApi/OpenTelemetry.swift,200,1785134663
 https://github.com/open-telemetry/opentelemetry-swift/issues/new,200,1785134693
 https://github.com/open-telemetry/opentelemetry-swift/releases,200,1785134663
