@@ -103,13 +103,13 @@ subgraph tasks[Modificări folosind GitHub]
 direction TB
     0[ ] -.-
     1[1\. Modifică această pagină] --> 2[2\. Folosește editorul de markdown<br>din GitHub pentru a face schimbări]
-    2 --> 3[3\. Completează în Propose file change]
+    2 --> 3[3\. Completează în Propune schimbare de fișier]
 
 end
 subgraph tasks2[ ]
 direction TB
-4[4\. Selectează Propose file change] --> 5[5\. Selectează Create pull request] --> 6[6\. Completează în Open a pull request]
-6 --> 7[7\. Selectează Create pull request]
+4[4\. Selectează Propune schimbare de fișier] --> 5[5\. Selectează Creează pull request] --> 6[6\. Completează în Deschide un pull request]
+6 --> 7[7\. Selectează Creează pull request]
 end
 
 id1 --> tasks --> tasks2
@@ -134,23 +134,23 @@ _Figura 2. Pașii pentru deschiderea unui PR folosind GitHub._
 
 1. Efectuează schimbările în editorul din GitHub.
 
-1. Completează formularul **Propose file change**.
+1. Completează formularul **Propune schimbare de fișier**.
 
-1. Selectează **Propose file change**.
+1. Selectează **Propune schimbare de fișier**.
 
-1. Selectează **Create pull request**.
+1. Selectează **Creează pull request**.
 
 1. Va apărea ecranul **Open a pull request**. Descrierea ta îi ajută pe cei ce
-   revizuiesc să înțeleagă schimbările tale
+   revizuiesc să înțeleagă schimbările tale.
 
-1. Selectează **Create pull request**.
+1. Selectează **Creează pull request**.
 
 Înainte de a îmbina un pull request, membrii comunității OpenTelemetry îl
-revizuiesc și-l aprobă
+revizuiesc și-l aprobă.
 
 Dacă un revizuitor solicită să faci modificări:
 
-1. Du-te la tab-ul **Files changed**.
+1. Du-te la tab-ul **Fișiere schimbate**.
 1. Selectează iconița creion (de editare) în oricare fișier schimbat din pull
    request.
 1. Aplică schimbările cerute. Dacă există o sugestie de cod, aplic-o.
@@ -173,9 +173,9 @@ Adaugă următorul comentariu în PR-ul tău:
 Acesta va declanșa ca bot-ul OpenTelemetry să încerce să rezolve problemele de
 build. Bot-ul răspunde cu un comentariu despre progres care face referire la
 comanda de rezolvare, apoi actualizează același comentariu cu rezultatul -
-astfel că fiecare comandă de rezolvare pe care o emiți primește propriul
-comentariu de la bot. Sau poți emite una dintre următoarele comenzi de rezolvare
-pentru a trata o problemă specifică:
+fiecare comandă de rezolvare pe care o emiți primește propriul comentariu de la
+bot. Sau poți emite una dintre următoarele comenzi de rezolvare pentru a trata o
+problemă specifică:
 
 ```text
 /fix:code-excerpts
@@ -199,7 +199,7 @@ anulate este actualizat pentru a nota despre anulare.
 
 > [!TIP] Pro tip
 >
-> Poți de asemenea să rulezi comenzi `fix` local. Pentru lista completă the
+> Poți de asemenea să rulezi comenzi `fix` local. Pentru lista completă de
 > comenzi de rezolvare, rulează `npm run -s '_list:fix:*'`.
 
 ## Dezvoltare pe mediul local {#fork-the-repo}
@@ -248,7 +248,7 @@ _Figura 3. Lucrul de pe un fork local pentru a aplica modificările._
 
 ### Clonează și setează upstream-ul
 
-1. Într-o fereastră de terminal, clonează fork-ul tău și instalează dependințele
+1. Într-o fereastră de terminal, clonează fork-ul tău și instalează dependențele
    necesare:
 
    ```shell
@@ -369,9 +369,9 @@ direction TB
 end
 subgraph second [ ]
 direction TB
-5[5\. Selectează ramura ta din<br>meniul drop-down de comparație] --> 6[6\. Selectează Create Pull Request]
+5[5\. Selectează ramura ta din<br>meniul drop-down de comparație] --> 6[6\. Selectează Creează Pull Request]
 6 --> 7[7\. Adaugă o descriere<br>la PR-ul tău]
-7 --> 8[8\. Selectează Create pull request]
+7 --> 8[8\. Selectează Creează pull request]
 end
 
 first --> second
@@ -391,7 +391,7 @@ _Figura 4. Pașii pentru a deschide un PR din fork-ul tău la_
 1. Selectează **compare across forks**.
 1. Din meniul drop-down pentru **repertoriul head** , selectează fork-ul tău.
 1. Din meniul drop-down **compare**, selectează ramura ta.
-1. Selectează **Create Pull Request**.
+1. Selectează **Creează Pull Request**.
 1. Adaugă o descriere pentru pull request-ul tău:
    - **Title** (50 de caractere sau mai puțin): Creează un rezumat al intenției
      schimbărilor.
@@ -403,7 +403,7 @@ _Figura 4. Pașii pentru a deschide un PR din fork-ul tău la_
      - Dacă dorești sfaturi despre ceva specific, include în descriere orice
        întrebare la care ai vrea ca revizuitorii să se gândească
 
-1. Selectează butonul **Create pull request**.
+1. Selectează butonul **Creează pull request**.
 
 Pull request-ul tău este disponibil în secțiunea
 [Pull requests](https://github.com/open-telemetry/opentelemetry.io/pulls).
@@ -461,7 +461,7 @@ caz.
 Pentru a opri instanța locală de Hugo, mergi înapoi în terminal și tastează
 `Ctrl+C`, sau închide fereastra de terminal.
 
-### Lansări ale site-ului și previzualizări din PR
+### Lansări ale site-ului și previzualizări din PR {#site-deploys-and-pr-previews}
 
 Dacă trimiți un PR, Netlify [lansează o previzualizare][deploy preview] astfel
 că poți revizui schimbările tale. Odată ce schimbările din PR-ul sunt trimise,
@@ -473,7 +473,7 @@ Netlify lansează versiunea actualizată a site-ului pe server-ul de producție.
 Pentru a vedea log-uri despre deploy și mai multe, vizitează [panoul][dashboard]
 proiectului -- Necesită un login pe Netlify.
 
-### Îndrumări pentru PR
+### Îndrumări pentru PR {#pr-guidelines}
 
 Înainte ca schimbările dintr-un PR să fie integrate, uneori este necesar să se
 treacă prin câteva iterații de revizuire-și-editare. Pentru a face acest proces
