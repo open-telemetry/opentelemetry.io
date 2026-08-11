@@ -21,9 +21,9 @@ pinned Hugo binary. Local installs follow the lock while it agrees with
   `npm run ci:prepare`.
 - **Devcontainer**: `npm run install:safe`, the same contract, keeping optional
   dependencies.
-- **Netlify**: `npm run install:safe`, run by the build command after the
-  [inert auto-install](#inert-netlify-auto-install), between clean-working-tree
-  checks:
+- **Netlify**: `npm run install:safe`, run by the [Netlify][] build command
+  after the [inert auto-install](#inert-netlify-auto-install), between
+  clean-working-tree checks:
   - Lock drift or any other Git-visible change fails the build.
   - If the check fails on residue from a retired path (Netlify's build cache
     restores it), clear the deploy context's build cache and retry rather than
@@ -31,7 +31,7 @@ pinned Hugo binary. Local installs follow the lock while it agrees with
 - **Local**: `npm run install:safe`, or a standard `npm install`; see [local
   setup][].
 
-The nested Docsy theme setup follows the same contract: the `prepare` step
+The nested [Docsy][] theme setup follows the same contract: the `prepare` step
 invokes Docsy's own lock-exact, script-free theme-dependency install.
 
 ## Updating dependencies {#updating}
@@ -129,10 +129,12 @@ Configuration:
 <!-- prettier-ignore-start -->
 [`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
+[Docsy]: https://www.docsy.dev/
+[local setup]: /docs/contributing/development/#local-setup
+[Netlify]: https://www.netlify.com/
+[netlify-deps]: https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
-[local setup]: /docs/contributing/development/#local-setup
-[netlify-deps]: https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm
 [Renovate]: https://docs.renovatebot.com/
 [Supply-chain security]: ../../design/supply-chain-security/
 <!-- prettier-ignore-end -->

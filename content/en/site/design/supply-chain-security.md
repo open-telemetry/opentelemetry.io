@@ -16,8 +16,8 @@ reporting in the [security policy][].
 
 The August 2026 npm worm ([security notice][]) set the current posture:
 malicious versions of popular npm packages were published from compromised
-maintainer accounts. The packages' install-time lifecycle scripts executed the
-payload and propagated it using harvested credentials. Several of this
+maintainer accounts. The packages' install-time [lifecycle scripts][] executed
+the payload and propagated it using harvested credentials. Several of this
 repository's PR branches were affected before containment; none reached `main`
 or production.
 
@@ -27,8 +27,8 @@ The attack paths that matter for this repository:
   freshly published malicious release.
 - **Lifecycle scripts**: install-time script execution lets a bad package
   compromise contributor hosts, CI runners, and build images.
-- **Unattended installs**: CI jobs and the Netlify build image install without a
-  human watching, as do agent sessions.
+- **Unattended installs**: CI jobs and the [Netlify][] build image install
+  without a human watching, as do agent sessions.
 
 ## Design decisions
 
@@ -42,11 +42,11 @@ Unused and convenience dependencies are dropped rather than carried.
 
 ### Install from the lock; resolve deliberately
 
-Automated install paths are lock-exact: they reproduce the committed, reviewed
-`package-lock.json` and never resolve version ranges. A local `npm install`
-follows the lock while it agrees with `package.json`, and rewrites it when the
-two disagree; the verification below catches such rewrites. Resolution, the
-risky step, is reserved for [deliberate dependency updates][].
+Automated install paths are [lock-exact][install contracts]: they reproduce the
+committed, reviewed [`package-lock.json`][] and never resolve version ranges. A
+local `npm install` can rewrite the lock when it disagrees with `package.json`;
+the [verification below](#verify-dont-trust) catches such rewrites. Resolution,
+the risky step, is reserved for [deliberate dependency updates][].
 
 ### Resolve only cooled-down releases
 
@@ -57,38 +57,39 @@ need to land.
 
 ### Run only reviewed lifecycle scripts
 
-Lifecycle scripts are default-deny: an install runs a package's scripts only
-when that exact name and version has been reviewed and allowlisted.
-Version-exact entries force a fresh review on every bump of a script-bearing
-package: a compromised patch release can't inherit its predecessor's approval.
+Lifecycle scripts are [default-deny][script allowlist]: an install runs only
+reviewed, allowlisted scripts. Approvals are version-exact so that a compromised
+patch release can't inherit its predecessor's approval: every bump of a
+script-bearing package forces a fresh review.
 
-Review records both outcomes: a needed script is approved, and an unnecessary
+Reviews record both outcomes: a needed script is approved, and an unnecessary
 one (a shipped prebuilt binary suffices) gets an explicit denial, so silence
-always means unreviewed, and unreviewed fails the install. Approvals are
-version-exact; denials, which grant nothing, cover the package by name.
-Exceptions are named and re-enabled inline at the point of use, never by
-weakening the default posture.
+always means unreviewed, and unreviewed fails the install. Denials can be
+name-level because they grant nothing. Exceptions are named and re-enabled
+inline at the point of use, never by weakening the default posture.
 
 ### Fail closed on old npm
 
 The cooldown and script-gating controls are `.npmrc` settings that older npm
 versions silently ignore: an old npm would install without them and report
-success. An npm engines floor with strict engine checking turns that silent
+success. An [npm engines floor][] with strict engine checking turns that silent
 bypass into an install failure.
 
 ### Keep vendor auto-installs inert
 
-Netlify runs its own npm install before the build command, outside the scripts
-this repository controls. Rather than trust it, the configuration neutralizes
-it, and the build command performs the real, contract-following install. Defense
-in depth: if Netlify ever stops honoring the constraining flags, `.npmrc` still
-gates scripts, and the verification below catches what slips through.
+[Netlify][] runs its own npm install before the build command, outside the
+scripts this repository controls. Rather than trust it, the configuration
+[neutralizes it][inert auto-install], and the build command performs the real,
+contract-following install. Defense in depth: if Netlify ever stops honoring the
+constraining flags, `.npmrc` still gates scripts, and the
+[verification below](#verify-dont-trust) catches what slips through.
 
 ### Verify, don't trust
 
-Inert and lock-exact are verified claims, not assumptions: clean-working-tree
-checks fail a build on lock drift or any other Git-visible change, and a local
-install that rewrites the lock warns immediately.
+Inert and lock-exact are verified claims, not assumptions: the Netlify install
+runs between [clean-working-tree checks][install contracts] that fail the build
+on any Git-visible change, and a local install that rewrites the lock warns
+immediately.
 
 ## Prior art
 
@@ -109,11 +110,18 @@ install that rewrites the lock warns immediately.
 [control]: ../../build/dependencies/#controls
 [cooldown period]: ../../build/dependencies/#release-cooldown
 [deliberate dependency updates]: ../../build/dependencies/#updating
+[inert auto-install]: ../../build/dependencies/#inert-netlify-auto-install
+[install contracts]: ../../build/dependencies/#install-contracts
+[lifecycle scripts]: https://docs.npmjs.com/cli/using-npm/scripts
+[Netlify]: https://www.netlify.com/
+[npm engines floor]: ../../build/dependencies/#npm-version-floor
 [openssf]: https://github.com/ossf/package-manager-best-practices/blob/main/published/npm.md
+[`package-lock.json`]: https://docs.npmjs.com/cli/configuring-npm/package-lock-json
 [pnpm]: https://pnpm.io/settings/build
 [pnpm defers]: https://pnpm.io/settings/dependency-resolution
 [renovate]: https://docs.renovatebot.com/configuration-options/#minimumreleaseage
 [RFC #54]: https://github.com/npm/rfcs/blob/main/accepted/0054-make-scripts-install-opt-in.md
+[script allowlist]: ../../build/dependencies/#lifecycle-script-allowlist
 [security notice]: https://github.com/open-telemetry/opentelemetry.io/issues/11210
 [security policy]: https://github.com/open-telemetry/opentelemetry.io/security/policy
 [tuf]: https://theupdateframework.io/docs/security/
