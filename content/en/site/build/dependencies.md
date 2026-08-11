@@ -37,8 +37,10 @@ Configuration: `strict-allow-scripts` in `.npmrc`; the `allowScripts` map in
 ### npm version floor
 
 Installs fail when the active npm is older than the engines floor: the oldest
-version that supports the controls above. Known enforcement gaps in newer npm
-raise the floor over time; the comment beside `engines` tracks the next bump.
+version that supports the controls above. The floor rises as npm fixes
+enforcement gaps in those controls, and follows npm versions bundled with Node
+LTS releases, so a default toolchain passes the check; environments the site
+controls, such as Netlify, may pin a newer npm.
 
 Configuration: `engine-strict` in `.npmrc`; `engines` in `package.json`.
 
