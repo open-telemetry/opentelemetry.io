@@ -19,14 +19,14 @@ With contributions from [Daniel Gomez Blanco](https://github.com/danielgblanco)
 (New Relic).
 
 If you're building a backend or SaaS product, your users will eventually ask to
-send **logs, traces, and metrics** to their own observability stack, whether to satisfy
-compliance, manage costs, or centralize all their observability data in one
-place.
+send **logs, traces, and metrics** to their own observability stack, whether to
+satisfy compliance, manage costs, or centralize all their observability data in
+one place.
 
 Locking them into your built-in dashboards or limiting exports to certain
 vendors creates unnecessary friction. Instead, supporting export to any
-OpenTelemetry (OTel)–compatible backend is a vendor-neutral, future-proof practice
-that gives users the freedom to choose their observability stack.
+OpenTelemetry (OTel)-compatible backend is a vendor-neutral, future-proof
+practice that gives users the freedom to choose their observability stack.
 
 This post outlines how you can design your backend so users can export **full
 telemetry** (logs, traces, and metrics) to an OTel backend when they want to.
@@ -52,17 +52,16 @@ and **push** telemetry to it. You can support one, two, or all three signals
 depending on what your product generates.
 
 Many platforms that support OTel export support at least traces and logs, and an
-increasing number now ship with metrics support. Designing for all three from the
-start avoids having to retrofit later.
+increasing number now ship with metrics support. Designing for all three from
+the start avoids having to retrofit later.
 
 ## What a "Good" Telemetry System Looks Like
 
 A solid export story has a few clear properties for every signal you support:
 
 - **Vendor-neutral and OpenTelemetry-compliant:** Users can point at any
-  OTel-compatible endpoint (SigNoz, Grafana, Honeycomb, Dynatrace, an
-  [OpenTelemetry Collector](/docs/collector/) instance, etc.) without you
-  building custom integrations for each.
+  OTel-compatible endpoint — a [Collector instance](/docs/collector/) or a
+  backend directly — without building custom integrations for each.
 - **No deep custom development:** External platforms (or your users' tooling)
   can integrate using standard [OTel SDKs](/docs/languages/) and the OTLP
   protocol instead of proprietary APIs.
@@ -71,8 +70,8 @@ A solid export story has a few clear properties for every signal you support:
   IDs), so users can debug and analyze data in their own backend without losing
   context.
 
-If your design aligns with these principles for the signals you emit, you're
-aligned with how modern platforms think about observability export.
+If your design aligns with these principles for the signals you emit, you're in
+step with how modern platforms think about observability export.
 
 ## Two Contexts: Where Does Your Product Run?
 
@@ -99,10 +98,8 @@ managed services (e.g. PaaS, serverless, API gateway). The workload runs on
 _your_ infrastructure.
 
 Here, you add a **platform feature,** such as "Telemetry Drains" or
-"Observability Destinations", that lets customers configure _where_ to send
-telemetry.
-
-Your platform collects telemetry from their workload (and from your own
+"Observability Destinations" that lets customers configure _where_ to send
+telemetry. Your platform collects telemetry from their workload (and from your own
 services, like routers) and forwards it to the customer's OTLP endpoint.
 
 The export is done by your infrastructure, not by an application binary the
@@ -117,8 +114,8 @@ destinations** that your infrastructure uses to forward data.
 The [OpenTelemetry Ecosystem Registry](/ecosystem/registry/) is a good place to
 see which projects and organizations support OTel, and in what manner.
 
-Below is how several companies handle **all three signals** (or a subset) and
-what you can learn from them.
+Below is how these companies handle **all three signals** (or a subset) and what
+you can learn from them.
 
 ### The Summary: Signals Support Matrix
 
@@ -141,10 +138,10 @@ Whether customers run Kuma's control and data planes on their own Kubernetes
 clusters or VMs, it comes pre-configured to emit logs, traces, and metrics to an
 OTel backend.
 
-Users configure the export, which runs from the users' Kuma deployments, through
-the mesh policies:
+Users configure the export, which runs from their Kuma deployments, through the
+mesh policies:
 
-- **MeshAccessLog:** Routes access logs to an OTel collector (endpoint +
+- **MeshAccessLog:** Routes access logs to an OTel Collector (endpoint +
   attributes such as mesh name, start time).
 - **MeshTrace:** Handles distributed traces with configurable sampling and
   tagging.
@@ -246,8 +243,8 @@ their dashboard. From there, Cloudflare automatically pushes traces and logs
 from Workers to that destination.
 
 While metrics aren't supported yet, the trace data provides deep, end-to-end
-visibility as it records handler calls, bindings, outbound fetch and more. Users
-can also configure the sampling rate in their `wrangler.toml`.
+visibility as it records handler calls, bindings, outbound fetch calls, and
+more. Users can also configure the sampling rate in their `wrangler.toml`.
 
 Further reading:
 
@@ -376,8 +373,8 @@ signal and cannot add a push path.
 
 ## Building the Export Experience
 
-When actually implementing the export model into your product, seek to maximize
-flexibility with minimal configuration.
+When actually implementing the export model in your product, seek to maximize flexibility
+with minimal configuration.
 
 ### Let users configure an OTLP endpoint
 
@@ -392,10 +389,9 @@ Heroku's example.
 
 ### Standardize the architecture
 
-Under the hood, you have two main options: you can either use the OpenTelemetry
-SDK directly within your services to emit data, or run an internal OTel
-Collector that gathers your system's telemetry and re-exports it to the user's
-endpoint.
+Under the hood, you have two main options: use the OpenTelemetry SDK directly
+within your services to emit data, or run an internal OTel Collector that
+gathers your system's telemetry and re-exports it to the user's endpoint.
 
 Sticking to standard OpenTelemetry environment variables (like
 [`OTEL_EXPORTER_OTLP_ENDPOINT`](/docs/languages/sdk-configuration/otlp-exporter/#otel_exporter_otlp_endpoint))
@@ -422,8 +418,8 @@ store like S3 to meet compliance requirements.
 ## Routing Telemetry to the User
 
 As you design the configuration UI for your users, you'll need to decide how
-granular to get with routing telemetry data. You generally have two paths, and
-they cater to different types of users.
+granular your telemetry routing should be. You generally have two paths, each
+catering to a different type of user.
 
 ### Single Endpoint
 
@@ -468,9 +464,9 @@ Although you can [build a custom Collector binary](/docs/collector/extend/ocb/)
 that only ships vital components, deploying hundreds or thousands of Collector
 instances will become resource-intensive.
 
-Given this limitation, this architecture is usually the best fit for enterprise
-SaaS products where strong multi-tenant isolation is a strict requirement and
-customers might have complex endpoint configurations.
+Because of this tradeoff, this architecture is usually the best fit for
+enterprise SaaS products where strong multi-tenant isolation is a strict
+requirement and customers might have complex endpoint configurations.
 
 ![The Collector-per-tenant architecture provides strong isolation guarantees at
 the cost of increased resource usage.](otel-native-by-design-single.webp)
@@ -526,9 +522,9 @@ metrics), Heroku, Kuma, and Keycloak follow: **default to push, stay
 vendor-neutral, and document the contract**.
 
 Designing for all three signals using open standards from the start removes
-friction, reduces your engineering overhead, and empowers customers to best
-utilize their data on their own terms.
+friction, reduces your engineering overhead, and empowers customers to make the
+best use of their data on their own terms.
 
 If you've already implemented OTel-native export in your product, consider
-adding it to the [OpenTelemetry Ecosystem Registry](/ecosystem/registry/) — it's a
-great way to surface your work to the broader community.
+adding it to the [OpenTelemetry Ecosystem Registry](/ecosystem/registry/) — it's
+a great way to surface your work to the broader community.
