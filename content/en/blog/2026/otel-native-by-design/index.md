@@ -99,8 +99,8 @@ _your_ infrastructure.
 
 Here, you add a **platform feature,** such as "Telemetry Drains" or
 "Observability Destinations" that lets customers configure _where_ to send
-telemetry. Your platform collects telemetry from their workload (and from your own
-services, like routers) and forwards it to the customer's OTLP endpoint.
+telemetry. Your platform collects telemetry from their workload (and from your
+own services, like routers) and forwards it to the customer's OTLP endpoint.
 
 The export is done by your infrastructure, not by an application binary the
 customer runs. _Examples: Heroku, Cloudflare._
@@ -116,8 +116,6 @@ see which projects and organizations support OTel, and in what manner.
 
 Below is how these companies handle **all three signals** (or a subset) and what
 you can learn from them.
-
-### The Summary: Signals Support Matrix
 
 | Platform           | Logs | Traces | Metrics | Deployment Mode       | Notes                                   |
 | ------------------ | ---- | ------ | ------- | --------------------- | --------------------------------------- |
@@ -322,8 +320,6 @@ every poll_interval:
 
 You'd need similar state-tracking logic for metrics or trace APIs.
 
-#### Verdict
-
 Because it forces users to write custom code just to convert your API responses
 into standard formats, the pull model is workable when you have a mature,
 well-established API for a given signal. For new designs, however, it should not
@@ -373,8 +369,8 @@ signal and cannot add a push path.
 
 ## Building the Export Experience
 
-When actually implementing the export model in your product, seek to maximize flexibility
-with minimal configuration.
+When actually implementing the export model in your product, seek to maximize
+flexibility with minimal configuration.
 
 ### Let users configure an OTLP endpoint
 
