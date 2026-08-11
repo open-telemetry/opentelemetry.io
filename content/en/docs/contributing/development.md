@@ -85,7 +85,7 @@ Your development environment will be initialized via the
     npm install
     ```
 
-    Either install uses the dependency versions pinned in the committed
+    Both installs use the dependency versions pinned in the committed
     `package-lock.json`, and any lifecycle script that runs is subject to the
     reviewed allowlist. Related: [lock-file maintenance][dep-updates].
 

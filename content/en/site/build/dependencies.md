@@ -26,8 +26,10 @@ outranks both.
 Renovate applies its own cooldown to the update PRs it opens: 14 days for patch
 updates, which automerge, and 7 for the update types a human reviews.
 
-Configuration: `min-release-age` in `.npmrc`; `minimumReleaseAge` in
-`.github/renovate.json5`.
+Configuration:
+
+- `min-release-age` in `.npmrc`
+- `minimumReleaseAge` in `.github/renovate.json5`
 
 ### Lifecycle-script allowlist
 
@@ -39,8 +41,10 @@ re-enables scripts that `ignore-scripts` disables, so script-free installs run
 none, allowlisted or not, and a reviewed exception takes an explicit
 `--ignore-scripts=false` at the call site.
 
-Configuration: `strict-allow-scripts` in `.npmrc`; the `allowScripts` map in
-`package.json`.
+Configuration:
+
+- `strict-allow-scripts` in `.npmrc`
+- The `allowScripts` map in `package.json`
 
 ### npm version floor
 
@@ -50,14 +54,19 @@ enforcement gaps in those controls, and follows npm versions bundled with Node
 LTS releases, so a default toolchain passes the check; environments the site
 controls, such as Netlify, may pin a newer npm.
 
-Configuration: `engine-strict` in `.npmrc`; `engines` in `package.json`.
+Configuration:
+
+- `engine-strict` in `.npmrc`
+- `engines` in `package.json`
 
 ### Inert Netlify auto-install
 
 Netlify's automatic install is constrained to a dry run with scripts disabled,
 under a pinned npm that satisfies the version floor.
 
-Configuration: `NPM_VERSION` and `NPM_FLAGS` in `netlify.toml`.
+Configuration:
+
+- `NPM_VERSION` and `NPM_FLAGS` in `netlify.toml`
 
 ## Install contracts
 
