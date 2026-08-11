@@ -29,5 +29,11 @@
       matchPackageNames: ['hugo-extended'],
       enabled: false,
     },
+    {
+      // Version-exact allowScripts approvals (package.json) need a human to
+      // refresh the entry with the bump, so approved packages never automerge.
+      matchPackageNames: ['puppeteer'],
+      automerge: false,
+    },
   ],
 }

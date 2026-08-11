@@ -56,6 +56,10 @@ the contributor making the change:
    in PR review: a needed script as an exact-version approval, an unneeded one
    as a name-level denial (`false`, which needs no update on later bumps).
 
+Because approvals are version-exact, packages with an approval entry are
+excluded from Renovate automerge: their update PRs wait for the contributor step
+above.
+
 ### Lock-file maintenance
 
 - **You changed dependencies**: regenerate the lock as in
@@ -134,7 +138,13 @@ neutralized by [`NPM_FLAGS`][netlify-deps] in [`netlify.toml`][]:
 **Scope**: `NPM_FLAGS` is a Netlify build setting, not npm config; it applies
 only to the automatic install, never to the build command's npm runs.
 
+**Defense in depth**: the [real install][install contracts] is `npm ci`, which
+replaces `node_modules` wholesale, so auto-install or build-cache residue there
+does not survive into the build even though `node_modules` is invisible to the
+clean-working-tree checks (they see only Git-visible changes).
+
 <!-- prettier-ignore-start -->
+[install contracts]: #install-contracts
 [`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
