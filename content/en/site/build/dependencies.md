@@ -23,10 +23,11 @@ pinned Hugo binary. Local installs follow the lock while it agrees with
   dependencies.
 - **Netlify**: `npm run install:safe`, run by the build command after the
   [inert auto-install](#inert-netlify-auto-install), between clean-working-tree
-  checks; lock drift or any other Git-visible change fails the build. If the
-  check fails on residue from a retired path — Netlify's build cache restores it
-  — clear the deploy context's build cache and retry rather than ignoring the
-  path.
+  checks:
+  - Lock drift or any other Git-visible change fails the build.
+  - If the check fails on residue from a retired path (Netlify's build cache
+    restores it), clear the deploy context's build cache and retry rather than
+    ignoring the path.
 - **Local**: `npm run install:safe`, or a standard `npm install`; see [local
   setup][].
 
@@ -38,9 +39,8 @@ invokes Docsy's own lock-exact, script-free theme-dependency install.
 ### Routine updates
 
 `npm run update:packages` bumps `package.json` only. The
-[release cooldown](#release-cooldown) applies: versions still inside the
-cooldown window are not offered. Then regenerate the lock and commit both files
-together:
+[release cooldown](#release-cooldown) applies to the offered versions. Then
+regenerate the lock and commit both files together:
 
 ```sh
 npm install --package-lock-only --ignore-scripts
@@ -67,8 +67,6 @@ When updating a package that has an `allowScripts` entry:
 
 ## Supply-chain controls {#controls}
 
-All controls are configured in files committed to the repository.
-
 ### Release cooldown
 
 Version resolution ignores releases younger than the configured minimum age.
@@ -90,14 +88,15 @@ Configuration:
 ### Lifecycle-script allowlist
 
 Installs run a package's lifecycle scripts only when its exact name and version
-is allowed through the `allowScripts` allowlist:
+are listed in the `allowScripts` allowlist:
 
 - An entry set to `false` records a reviewed denial: the package installs, its
   script is skipped.
 - Denials grant nothing, so they cover the package by name, across versions.
 - The allowlist only filters: it never re-enables scripts that `ignore-scripts`
-  disables, so script-free installs run none, allowlisted or not, and a reviewed
-  exception takes an explicit `--ignore-scripts=false` at the call site.
+  disables, so script-free installs run none, allowlisted or not.
+- A reviewed exception takes an explicit `--ignore-scripts=false` at the call
+  site.
 
 Configuration:
 
@@ -109,8 +108,8 @@ Configuration:
 Installs fail when the active npm is older than the engines floor: the oldest
 version that supports the controls above. The floor rises as npm fixes
 enforcement gaps in those controls, and follows npm versions bundled with Node
-LTS releases, so a default toolchain passes the check; environments the site
-controls, such as Netlify, may pin a newer npm.
+LTS releases, so a default toolchain passes the check; site-controlled
+environments such as Netlify may pin a newer npm.
 
 Configuration:
 

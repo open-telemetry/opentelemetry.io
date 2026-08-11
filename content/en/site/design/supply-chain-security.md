@@ -15,10 +15,11 @@ reporting in the [security policy][].
 ## Threat model
 
 The August 2026 npm worm ([security notice][]) set the current posture:
-compromised maintainer accounts published malicious versions of popular
-packages, whose install-time lifecycle scripts executed the payload and
-propagated it using harvested credentials. Several of this repository's PR
-branches were affected before containment; none reached `main` or production.
+malicious versions of popular npm packages were published from compromised
+maintainer accounts. The packages' install-time lifecycle scripts executed the
+payload and propagated it using harvested credentials. Several of this
+repository's PR branches were affected before containment; none reached `main`
+or production.
 
 The attack paths that matter for this repository:
 
