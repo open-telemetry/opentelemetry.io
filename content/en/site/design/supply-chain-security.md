@@ -80,9 +80,9 @@ that silent bypass into an install failure.
 Netlify runs its [own npm install][netlify-deps] before the build command,
 outside the scripts this repository controls, and offers no way to disable it.
 So that the repository decides which install commands run, the configuration
-[neutralizes it][inert auto-install], and the build command performs the real,
-contract-following install. Defense in depth: if Netlify ever stops honoring the
-constraining flags, `.npmrc` still gates scripts, and the
+[neutralizes it][inert auto-install] and the build command performs the [real
+install][install contracts]. Defense in depth: if Netlify ever stops honoring
+the constraining flags, `.npmrc` still gates scripts, and the
 [verification below](#verify-dont-trust) catches what slips through.
 
 ### Verify, don't trust
