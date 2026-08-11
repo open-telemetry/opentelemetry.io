@@ -108,45 +108,43 @@ Configuration:
 ### npm version floor
 
 Installs fail when the active npm is older than the engines floor: the oldest
-version that supports the controls above. The floor rises as npm fixes
-enforcement gaps in those controls, and follows npm versions bundled with Node
-LTS releases, so a default toolchain passes the check; site-controlled
-environments such as Netlify may pin a newer npm.
+version that supports the controls above.
 
-Configuration:
-
-- `engine-strict` in [`.npmrc`][]
-- `engines` in [`package.json`][]
-- [`NPM_VERSION`][netlify-deps] in [`netlify.toml`][]: pins an npm that
-  satisfies the floor; Netlify's default, the npm bundled with its Node version,
-  may be older. Bump the pin at least when the floor rises.
+- **Enforcement**:
+  - `engines` in [`package.json`][] sets the floor.
+  - `engine-strict` in [`.npmrc`][] makes it fail closed.
+- **Floor policy**:
+  - The floor rises as npm fixes enforcement gaps in the controls.
+  - It follows npm versions bundled with Node LTS releases, so a default
+    toolchain passes the check.
+- **Netlify**:
+  - Netlify's Node-bundled default npm may be older than the floor;
+    [`NPM_VERSION`][netlify-deps] in [`netlify.toml`][] pins one that satisfies
+    it.
+  - Bump the pin at least when the floor rises.
 
 ### Inert Netlify auto-install
 
 Netlify's [automatic install][netlify-deps] at the start of a build is
-constrained via `NPM_FLAGS` in [`netlify.toml`][] to a dry run with scripts
-disabled:
+neutralized by [`NPM_FLAGS`][netlify-deps] in [`netlify.toml`][]:
 
 - `--dry-run`: npm resolves and logs what an install would change, but writes
   nothing.
 - `--ignore-scripts`: lifecycle scripts stay disabled by explicit instruction,
   not as a side effect of the dry run.
 
-Configuration:
-
-- [`NPM_FLAGS`][netlify-deps] in [`netlify.toml`][]: a Netlify build setting,
-  not npm config; it applies only to the automatic install and does not affect
-  the build command's npm runs.
+**Scope**: `NPM_FLAGS` is a Netlify build setting, not npm config; it applies
+only to the automatic install, never to the build command's npm runs.
 
 <!-- prettier-ignore-start -->
 [`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
-[Docsy]: https://www.docsy.dev/
-[local setup]: /docs/contributing/development/#local-setup
-[Netlify]: https://www.netlify.com/
-[netlify-deps]: https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
+[Docsy]: https://www.docsy.dev/
+[local setup]: /docs/contributing/development/#local-setup
+[netlify-deps]: https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm
+[Netlify]: https://www.netlify.com/
 [Renovate]: https://docs.renovatebot.com/
 [Supply-chain security]: ../../design/supply-chain-security/
 <!-- prettier-ignore-end -->
