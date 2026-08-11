@@ -52,28 +52,28 @@ the risky step, is reserved for [deliberate dependency updates][].
 
 Freshly published versions are the attack window: registry-side takedowns of
 malicious releases take time. Version resolution ignores releases younger than a
-[cooldown period][], trading a few days of update latency for the time takedowns
-need to land.
+[cooldown period][cooldown], trading a few days of update latency for the time
+takedowns need to land.
 
 ### Run only reviewed lifecycle scripts
 
-[Lifecycle scripts][] are [default-deny][script allowlist]: an install runs only
+[Lifecycle scripts][] are [default-deny][allowlist]: an install runs only
 reviewed, allowlisted scripts. Approvals are version-exact so that a compromised
 patch release can't inherit its predecessor's approval: every bump of a
 script-bearing package forces a fresh review.
 
-The allowlist records both review outcomes: a needed script is approved, and an
-unnecessary one (a shipped prebuilt binary suffices) gets an explicit denial.
+The [allowlist][] records both review outcomes: a needed script is approved, and
+an unnecessary one (a shipped prebuilt binary suffices) gets an explicit denial.
 Silence always means unreviewed, and unreviewed fails the install. Denials can
 be name-level because they grant nothing. Exceptions are named and re-enabled
 inline at the point of use, never by weakening the default posture.
 
 ### Fail closed on old npm
 
-The [cooldown][cooldown period] and [script-gating][script allowlist] controls
-are `.npmrc` settings that older npm versions silently ignore: an old npm would
-install without them and report success. An [npm engines floor][] with strict
-engine checking turns that silent bypass into an install failure.
+The [cooldown][] and [script-gating][allowlist] controls are `.npmrc` settings
+that older npm versions silently ignore: an old npm would install without them
+and report success. An [npm engines floor][] with strict engine checking turns
+that silent bypass into an install failure.
 
 ### Keep vendor auto-installs inert
 
@@ -108,8 +108,9 @@ Inert and lock-exact are verified claims, not assumptions:
   - The [OpenSSF npm guide][openssf]: lock-exact CI installs.
 
 <!-- prettier-ignore-start -->
+[allowlist]: ../../build/dependencies/#lifecycle-script-allowlist
 [control]: ../../build/dependencies/#controls
-[cooldown period]: ../../build/dependencies/#release-cooldown
+[cooldown]: ../../build/dependencies/#release-cooldown
 [deliberate dependency updates]: ../../build/dependencies/#updating
 [inert auto-install]: ../../build/dependencies/#inert-netlify-auto-install
 [install contracts]: ../../build/dependencies/#install-contracts
@@ -122,7 +123,6 @@ Inert and lock-exact are verified claims, not assumptions:
 [pnpm defers]: https://pnpm.io/settings/dependency-resolution
 [renovate]: https://docs.renovatebot.com/configuration-options/#minimumreleaseage
 [RFC #54]: https://github.com/npm/rfcs/blob/main/accepted/0054-make-scripts-install-opt-in.md
-[script allowlist]: ../../build/dependencies/#lifecycle-script-allowlist
 [security notice]: https://github.com/open-telemetry/opentelemetry.io/issues/11210
 [security policy]: https://github.com/open-telemetry/opentelemetry.io/security/policy
 [tuf]: https://theupdateframework.io/docs/security/
