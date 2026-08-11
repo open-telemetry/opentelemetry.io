@@ -75,10 +75,11 @@ that older npm versions silently ignore: an old npm would install without them
 and report success. An [npm engines floor][] with strict engine checking turns
 that silent bypass into an install failure.
 
-### Keep the Netlify auto-install inert
+### Neutralize the Netlify auto-install
 
-[Netlify][] runs its own npm install before the build command, outside the
-scripts this repository controls. Rather than trust it, the configuration
+Netlify runs its [own npm install][netlify-deps] before the build command,
+outside the scripts this repository controls, and offers no way to disable it.
+So that the repository decides which install commands run, the configuration
 [neutralizes it][inert auto-install], and the build command performs the real,
 contract-following install. Defense in depth: if Netlify ever stops honoring the
 constraining flags, `.npmrc` still gates scripts, and the
@@ -116,6 +117,7 @@ Inert and lock-exact are verified claims, not assumptions:
 [install contracts]: ../../build/dependencies/#install-contracts
 [lifecycle scripts]: https://docs.npmjs.com/cli/using-npm/scripts
 [Netlify]: https://www.netlify.com/
+[netlify-deps]: https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm
 [npm engines floor]: ../../build/dependencies/#npm-version-floor
 [openssf]: https://github.com/ossf/package-manager-best-practices/blob/main/published/npm.md
 [`package-lock.json`]: https://docs.npmjs.com/cli/configuring-npm/package-lock-json
