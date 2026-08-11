@@ -94,27 +94,39 @@ and `NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
 | `schemas:update`   | Update OpenTelemetry spec submodule and content.                                     |
 | `update:submodule` | Update submodules to latest remote and fetch tags.                                   |
 
+## Installing and updating dependencies
+
+| Script            | Description                                                                          |
+| ----------------- | ------------------------------------------------------------------------------------ |
+| `ci:min`          | [Lock-exact inert install][] for CI: no lifecycle scripts, no optional deps.         |
+| `ci:prepare`      | Post-`ci:min` setup: [fetch the pinned Hugo binary][], then `prepare`.               |
+| `install:safe`    | [Lock-exact local setup][]: inert install keeping optional deps, then `ci:prepare`.  |
+| `prepare`         | Install step: `get:submodule`, then Docsy's [lock-exact theme dependency install][]. |
+| `update:hugo`     | Install latest hugo-extended.                                                        |
+| `update:packages` | Run npm-check-updates to bump deps, subject to the [release cooldown][].             |
+
 ## Test and CI
 
-| Script                     | Description                                                         |
-| -------------------------- | ------------------------------------------------------------------- |
-| `diff:check`               | Warn if working tree has uncommitted changes.                       |
-| `diff:fail`                | Fail if working tree has changes (e.g. after build).                |
-| `fix-and-test:all`         | All fixes (incl. i18n), then checks; links checked once.[^fat]      |
-| `netlify-build:preview`    | Build the Netlify deploy preview.                                   |
-| `netlify-build:production` | Build the Netlify production site.                                  |
-| `test-and-fix`             | Run fix scripts (excluding i18n/link-cache/submodule), then checks. |
-| `test:all`                 | Runs `test:base` then `test:compound-tests`.                        |
-| `test:base`                | Base tests (same as `check`).                                       |
-| `test:collector-sync`      | Collector-sync tests.                                               |
-| `test:compound-tests`      | Runs compound `test:*-*` scripts.[^categories]                      |
-| `test:double-check:live`   | Live smoke check of the [double-check probe][dc].                   |
-| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.                 |
-| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.        |
-| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^categories]          |
-| `test:local-tools:lychee`  | Lychee-binary slice of `test:local-tools`.[^lychee]                 |
-| `test:public`              | Runs the `tests/public/` checks over the built site.[^categories]   |
-| `test`                     | Run the most commonly needed tests.                                 |
+| Script                     | Description                                                                 |
+| -------------------------- | --------------------------------------------------------------------------- |
+| `diff:check`               | Warn if working tree has uncommitted changes.                               |
+| `diff:fail`                | Fail if working tree has changes (e.g. after build).                        |
+| `fix-and-test:all`         | All fixes (incl. i18n), then checks; links checked once.[^fat]              |
+| `is:clean`                 | Fail if the Git working tree has changes, including untracked files.        |
+| `netlify-build:preview`    | Build the Netlify deploy preview.                                           |
+| `netlify-build:production` | Build the Netlify production site.                                          |
+| `test-and-fix`             | Run fix scripts (excluding i18n/link-cache/submodule), then checks.         |
+| `test:all`                 | Runs `test:base` then `test:compound-tests`.                                |
+| `test:base`                | Base tests (same as `check`).                                               |
+| `test:collector-sync`      | Collector-sync tests.                                                       |
+| `test:compound-tests`      | Runs compound `test:*-*` scripts.[^categories]                              |
+| `test:double-check:live`   | Live smoke check of the [double-check probe][dc].                           |
+| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.                         |
+| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.                |
+| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^categories]                  |
+| `test:local-tools:lychee`  | Lychee-binary slice of `test:local-tools`; skips when the binary is absent. |
+| `test:public`              | Runs the `tests/public/` checks over the built site.[^categories]           |
+| `test`                     | Run the most commonly needed tests.                                         |
 
 [^categories]:
     These scripts follow the test-script naming conventions; see
@@ -127,31 +139,15 @@ and `NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
     (`fix:link-cache` covers it) and `check:i18n` (redundant after `fix:i18n`
     records drift status). See [Housekeeping](../ci-workflows/#housekeeping).
 
-[^lychee]:
-    The subset of `test:local-tools` that needs the `lychee` binary (behavioral
-    fragment- and config-checking tests, plus an end-to-end drift-overlay
-    scenario). Those tests skip when the binary is absent, so `test:local-tools`
-    already covers them in the general test job; the trailing `:lychee` keeps
-    this script out of `test:compound-tests` (which matches `test:*-*`) so the
-    suite isn't run twice. The link-check CI job installs lychee and runs this
-    script to exercise them for real.
-
 ## Utilities
 
 | Script                         | Description                                                                               |
 | ------------------------------ | ----------------------------------------------------------------------------------------- |
 | `all`                          | Run all given scripts, even when some fail; exit non-zero if any failed.                  |
-| `ci:min`                       | [Lock-exact inert install][] for CI: no lifecycle scripts, no optional deps.              |
-| `ci:prepare`                   | Post-`ci:min` setup: [fetch the pinned Hugo binary][], then `prepare`.                    |
 | `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter.           |
-| `install:safe`                 | [Lock-exact local setup][]: inert install keeping optional deps, then `ci:prepare`.       |
-| `is:clean`                     | Fail if the Git working tree has changes, including untracked files.                      |
 | `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                             |
 | `log:build`, `log:check:links` | Run the corresponding script, tee output to `tmp/`, and propagate the script's exit code. |
-| `prepare`                      | Install step: `get:submodule`, then Docsy's [lock-exact theme dependency install][].      |
 | `seq`                          | Run given script names in sequence; exit on first failure.                                |
-| `update:hugo`                  | Install latest hugo-extended.                                                             |
-| `update:packages`              | Run npm-check-updates to bump deps, subject to the [release cooldown][].                  |
 
 <!-- prettier-ignore-start -->
 [build kinds]: ../#build-kinds
