@@ -547,8 +547,11 @@ https://docs.microsoft.com/windows/win32/api/winsock2/nf-winsock2-connect,200,17
 https://docs.microsoft.com/windows/win32/api/winsock2/nf-winsock2-getpeername,200,1786028735
 https://docs.microsoft.com/windows/win32/api/winsock2/nf-winsock2-getsockname,200,1786028735
 https://docs.middleware.io/open-telemetry,200,1785868420
+https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm,200,1786473193
 https://docs.netlify.com/manage/domains/secure-domains-with-https/https-ssl/#netlify-managed-certificates,200,1786341721
 https://docs.newrelic.com/docs/opentelemetry/nrdot/nrdot-collector/,200,1785868406
+https://docs.npmjs.com/cli/configuring-npm/package-lock-json,200,1786473193
+https://docs.npmjs.com/cli/using-npm/scripts,200,1786473193
 https://docs.nxlog.co/agent/current/im/otel.html,200,1785739347
 https://docs.observeinc.com/en/latest/content/send-data/apm-instrumentation/operator-auto-instrumentation.html,200,1785868423
 https://docs.odigos.io/,200,1786028699
@@ -631,6 +634,7 @@ https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#clusterresourcequota-quota-openshift-io-v1,206,1786342364
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#status-total,206,1786342364
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1,206,1786342364
+https://docs.renovatebot.com/,200,1786473193
 https://docs.renovatebot.com/configuration-options/#minimumreleaseage,200,1786392389
 https://docs.roadrunner.dev/docs/logging-and-observability/otel,200,1785868421
 https://docs.rs/tower,200,1785911032
@@ -4159,6 +4163,7 @@ https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS,
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/PULL_REQUEST_TEMPLATE.md,200,1785868416
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml,200,1785621147
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml,200,1785621147
+https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5,200,1786473194
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/collector-sync.sh,200,1785868419
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/pr-approval-labels.sh,200,1785674124
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/blog-publish-labels.yml,200,1785621150
@@ -6253,6 +6258,7 @@ https://www.dash0.com/,200,1785739347
 https://www.dash0.com/hub/integrations/int_dash0_operator/overview,200,1785868405
 https://www.docker.com/,200,1785868408
 https://www.docsend.com/,200,1785785892
+https://www.docsy.dev/,200,1786473194
 https://www.docsy.dev/docs/,200,1785713003
 https://www.docsy.dev/docs/content/adding-content/#alerts,200,1785785895
 https://www.docsy.dev/docs/content/shortcodes/#alert,200,1785739341
