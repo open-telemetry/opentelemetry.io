@@ -10,7 +10,8 @@ todo: Keep table entries sorted
 Script definitions live in the repository root
 [`package.json`](https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json).
 Run any script with `npm run <script-name>`. Scripts whose names start with `_`
-are internal helpers and are not intended to be run directly.
+are internal helpers and are not intended to be run directly; so are `NAME::pre`
+and `NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
 
 > [!NOTE] Default vs `:all` script variants
 >

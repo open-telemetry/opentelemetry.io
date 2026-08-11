@@ -118,7 +118,7 @@
     "generate:config:links": "node scripts/lychee/config/index.mjs",
     "get:submodule": "bash -c 'npm run \"_get:${GET:-submodule}\" -- \"$@\" && npm run -s _postget:submodule' -",
     "install:safe": "npm ci --ignore-scripts && npm run ci:prepare",
-    "is:clean": "bash -c 'o=$(git status --porcelain -uall); echo \"$o\"; [ -z \"$o\" ]'",
+    "is:clean": "bash -c 'o=$(git status --porcelain -uall) && { echo \"$o\"; [ -z \"$o\" ]; }'",
     "lean": "HUGO_PARAMS_TD_CHROME=shared npm run",
     "link-cache": "refcache",
     "locale-auto-merge": "node scripts/gh/locale-auto-merge/cli.mjs",
