@@ -28,8 +28,8 @@ updates that merge without human review.
 
 Configuration:
 
-- `min-release-age` in `.npmrc`
-- `minimumReleaseAge` in [`.github/renovate.json5`][renovate-config]
+- `min-release-age` in [`.npmrc`]
+- `minimumReleaseAge` in [`.github/renovate.json5`]
 
 ### Lifecycle-script allowlist
 
@@ -43,8 +43,8 @@ none, allowlisted or not, and a reviewed exception takes an explicit
 
 Configuration:
 
-- `strict-allow-scripts` in `.npmrc`
-- The `allowScripts` map in `package.json`
+- `strict-allow-scripts` in [`.npmrc`]
+- The `allowScripts` map in [`package.json`]
 
 ### npm version floor
 
@@ -56,8 +56,8 @@ controls, such as Netlify, may pin a newer npm.
 
 Configuration:
 
-- `engine-strict` in `.npmrc`
-- `engines` in `package.json`
+- `engine-strict` in [`.npmrc`]
+- `engines` in [`package.json`]
 
 ### Inert Netlify auto-install
 
@@ -66,7 +66,7 @@ under a pinned npm that satisfies the version floor.
 
 Configuration:
 
-- `NPM_VERSION` and `NPM_FLAGS` in `netlify.toml`
+- `NPM_VERSION` and `NPM_FLAGS` in [`netlify.toml`]
 
 ## Install contracts
 
@@ -123,6 +123,9 @@ When updating a package that has an `allowScripts` entry:
   and investigate rather than committing the rewrite.
 
 <!-- prettier-ignore-start -->
+[`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
+[`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
+[`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
+[`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [local setup]: /docs/contributing/development/#local-setup
-[renovate-config]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 <!-- prettier-ignore-end -->
