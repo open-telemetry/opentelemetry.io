@@ -7,11 +7,10 @@ weight: 20
 todo: Keep table entries sorted
 ---
 
-Script definitions live in the repository root
-[`package.json`](https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json).
-Run any script with `npm run <script-name>`. Scripts whose names start with `_`
-are internal helpers and are not intended to be run directly; so are `NAME::pre`
-and `NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
+Script definitions live in the repository root [`package.json`][]. Run any
+script with `npm run <script-name>`. Scripts whose names start with `_` are
+internal helpers and are not intended to be run directly; so are `NAME::pre` and
+`NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
 
 > [!NOTE] Default vs `:all` script variants
 >
@@ -22,6 +21,17 @@ and `NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
 > - `check:all`
 > - `fix:all`
 > - `test:all`
+
+## Installing and updating dependencies
+
+| Script            | Description                                                                          |
+| ----------------- | ------------------------------------------------------------------------------------ |
+| `ci:min`          | [Lock-exact inert install][] for CI: no lifecycle scripts, no optional deps.         |
+| `ci:prepare`      | Post-`ci:min` setup: [fetch the pinned Hugo binary][], then `prepare`.               |
+| `install:safe`    | [Lock-exact local setup][]: inert install keeping optional deps, then `ci:prepare`.  |
+| `prepare`         | Install step: `get:submodule`, then Docsy's [lock-exact theme dependency install][]. |
+| `update:hugo`     | Install latest hugo-extended.                                                        |
+| `update:packages` | Run npm-check-updates to bump deps, subject to the [release cooldown][].             |
 
 ## Build and serve
 
@@ -94,17 +104,6 @@ and `NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
 | `schemas:update`   | Update OpenTelemetry spec submodule and content.                                     |
 | `update:submodule` | Update submodules to latest remote and fetch tags.                                   |
 
-## Installing and updating dependencies
-
-| Script            | Description                                                                          |
-| ----------------- | ------------------------------------------------------------------------------------ |
-| `ci:min`          | [Lock-exact inert install][] for CI: no lifecycle scripts, no optional deps.         |
-| `ci:prepare`      | Post-`ci:min` setup: [fetch the pinned Hugo binary][], then `prepare`.               |
-| `install:safe`    | [Lock-exact local setup][]: inert install keeping optional deps, then `ci:prepare`.  |
-| `prepare`         | Install step: `get:submodule`, then Docsy's [lock-exact theme dependency install][]. |
-| `update:hugo`     | Install latest hugo-extended.                                                        |
-| `update:packages` | Run npm-check-updates to bump deps, subject to the [release cooldown][].             |
-
 ## Test and CI
 
 | Script                     | Description                                                                 |
@@ -141,15 +140,17 @@ and `NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
 
 ## Utilities
 
-| Script                         | Description                                                                               |
-| ------------------------------ | ----------------------------------------------------------------------------------------- |
-| `all`                          | Run all given scripts, even when some fail; exit non-zero if any failed.                  |
-| `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter.           |
-| `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                             |
-| `log:build`, `log:check:links` | Run the corresponding script, tee output to `tmp/`, and propagate the script's exit code. |
-| `seq`                          | Run given script names in sequence; exit on first failure.                                |
+| Script                         | Description                                                                       |
+| ------------------------------ | --------------------------------------------------------------------------------- |
+| `all`                          | Run all given scripts, even when some fail; exit non-zero if any failed.          |
+| `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter.   |
+| `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                     |
+| `log:build`, `log:check:links` | Run corresponding script, tee output to `tmp/`, propagate the script's exit code. |
+| `seq`                          | Run given script names in sequence; exit on first failure.                        |
 
 <!-- prettier-ignore-start -->
+[`.lycheecache`]: ../link-checking/#link-cache
+[`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [build kinds]: ../#build-kinds
 [dc]: ../link-checking/#double-check
 [fetch the pinned Hugo binary]: ../dependencies/#install-contracts
@@ -159,6 +160,5 @@ and `NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
 [lock-exact inert install]: ../dependencies/#install-contracts
 [lock-exact local setup]: ../dependencies/#install-contracts
 [lock-exact theme dependency install]: ../dependencies/#install-contracts
-[`.lycheecache`]: ../link-checking/#link-cache
 [release cooldown]: ../dependencies/#release-cooldown
 <!-- prettier-ignore-end -->
