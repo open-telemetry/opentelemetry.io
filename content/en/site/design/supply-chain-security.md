@@ -40,34 +40,32 @@ the attack path each counters, ordered roughly by when they act.
 
 **Minimize dependencies**:
 
-- Every dependency, direct or transitive, is surface the controls must cover
+- Every dependency, direct or transitive, is surface the controls must cover.
 - Unused and convenience dependencies are dropped rather than carried.
 
 ### Constrain version resolution
 
-- **Install from the lock; resolve deliberately**:
-  - Installs are [lock-exact][install contracts]: they reproduce the committed,
-    reviewed [`package-lock.json`][] and never resolve version ranges.
-  - Resolution, the risky step, is reserved for [deliberate dependency
-    updates][].
-  - The one exception: a local `npm install` can rewrite the lock when it
-    disagrees with `package.json`;
-    [verification](#keep-the-controls-themselves-honest) catches such rewrites.
+- **Install from the lock**: installs are [lock-exact][install contracts],
+  reproducing the committed, reviewed [`package-lock.json`][] without resolving
+  version ranges. The one exception: a local `npm install` can rewrite the lock
+  when it disagrees with `package.json`; [verification](#keep-controls-honest)
+  catches such rewrites.
+- **Resolve deliberately**: resolution, the risky step, is reserved for
+  [deliberate dependency updates][].
 - **Resolve only cooled-down releases**: freshly published versions are the
   attack window, so version resolution ignores releases younger than a [cooldown
   period][cooldown], trading a few days of update latency for the time
   registry-side takedowns need.
 
-### Constrain script execution
+### Run only reviewed lifecycle scripts
 
-**Run only reviewed lifecycle scripts**: [lifecycle scripts][] are
-[default-deny][allowlist]; an install runs only reviewed, allowlisted scripts.
+[Lifecycle scripts][] are [default-deny][allowlist]; an install runs only
+reviewed, allowlisted scripts.
 
 - Approvals are version-exact: a compromised patch release can't inherit its
   predecessor's approval.
-- Reviews record both outcomes, approval or explicit denial, so silence always
-  means unreviewed, and unreviewed fails the install.
-- Denials can be name-level because they grant nothing.
+- Reviews record denials too, so silence always means unreviewed, and unreviewed
+  fails the install.
 - Exceptions are named and re-enabled inline at the point of use, never by
   weakening the default posture.
 
