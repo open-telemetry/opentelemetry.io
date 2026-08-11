@@ -72,38 +72,36 @@ the contributor making the change:
 ### Release cooldown
 
 Version resolution ignores releases younger than the configured minimum age.
-Lock-exact installs (`npm ci`) don't resolve versions, so they are unaffected.
 
-npm gives project config precedence over user config, so a stricter cooldown in
-your user `.npmrc` is relaxed to the project value here; to keep yours for an
-invocation, set the `npm_config_min_release_age` environment variable, which
-outranks both.
-
-[Renovate][] applies its own cooldown to the update PRs it opens, longer for the
-updates that merge without human review.
-
-Configuration:
-
-- `min-release-age` in [`.npmrc`][]
-- `minimumReleaseAge` in [`.github/renovate.json5`][]
+- **Enforcement**: `min-release-age` in [`.npmrc`][].
+- **Scope**:
+  - Only resolving operations are affected; lock-exact installs (`npm ci`) don't
+    resolve versions.
+  - npm gives project config precedence over user config, so a stricter cooldown
+    in your user `.npmrc` is relaxed to the project value here; to keep yours
+    for an invocation, set the `npm_config_min_release_age` environment
+    variable, which outranks both.
+- **[Renovate][]**: applies its own cooldown to the update PRs it opens, set by
+  `minimumReleaseAge` in [`.github/renovate.json5`][]; longer for the updates
+  that merge without human review.
 
 ### Lifecycle-script allowlist
 
 Installs run a package's lifecycle scripts only when its exact name and version
 are listed in the `allowScripts` allowlist:
 
-- An entry set to `false` records a reviewed denial: the package installs, its
-  script is skipped.
-- Denials grant nothing, so they cover the package by name, across versions.
-- The allowlist only filters: it never re-enables scripts that `ignore-scripts`
-  disables, so script-free installs run none, allowlisted or not.
-- A reviewed exception takes an explicit `--ignore-scripts=false` at the call
-  site.
-
-Configuration:
-
-- `strict-allow-scripts` in [`.npmrc`][]
-- `allowScripts` map in [`package.json`][]
+- **Enforcement**: the `allowScripts` map in [`package.json`][], made
+  fail-closed by `strict-allow-scripts` in [`.npmrc`][].
+- **Denials**:
+  - An entry set to `false` records a reviewed denial: the package installs, its
+    script is skipped.
+  - Denials grant nothing, so they cover the package by name, across versions.
+- **Interplay with `--ignore-scripts`**:
+  - The allowlist only filters: it never re-enables scripts that
+    `ignore-scripts` disables, so script-free installs run none, allowlisted or
+    not.
+  - A reviewed exception takes an explicit `--ignore-scripts=false` at the call
+    site.
 
 ### npm version floor
 
