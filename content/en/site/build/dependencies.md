@@ -26,8 +26,10 @@ Configuration: `min-release-age` in `.npmrc`.
 Installs run a package's lifecycle scripts only when its exact name and version
 is allowlisted. An entry set to `false` records a reviewed denial: the package
 installs, its script is skipped. Denials grant nothing, so they cover the
-package by name, across versions. Installs with `--ignore-scripts` run none,
-allowlisted or not.
+package by name, across versions. The allowlist only filters: it never
+re-enables scripts that `ignore-scripts` disables, so script-free installs run
+none, allowlisted or not, and a reviewed exception takes an explicit
+`--ignore-scripts=false` at the call site.
 
 Configuration: `strict-allow-scripts` in `.npmrc`; the `allowScripts` map in
 `package.json`.

@@ -56,7 +56,7 @@
     "all": "bash -c 'x=0; for c in \"$@\"; do npm run $c || x=$((x+1)); done; ((!x)) || (echo \"ERROR: some scripts failed!\" && exit 1)' -",
     "build:full": "npm run _prebuild && npm run _build --",
     "build:lean": "npm run _prebuild && npm run -s lean -- _build",
-    "build:preview": "set -x && npm run _prebuild && npm run _build -- --minify",
+    "build:preview": "npm run _prebuild && set -x && npm run _build -- --minify",
     "build:production": "npm run _prebuild && npm run _hugo -- --minify",
     "build": "npm run \"build:${BUILD_KIND:-lean}\" --",
     "cd:public": "cd public &&",
