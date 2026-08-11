@@ -42,11 +42,12 @@ Unused and convenience dependencies are dropped rather than carried.
 
 ### Install from the lock; resolve deliberately
 
-Automated install paths are [lock-exact][install contracts]: they reproduce the
-committed, reviewed [`package-lock.json`][] and never resolve version ranges. A
-local `npm install` can rewrite the lock when it disagrees with `package.json`;
-the [verification below](#verify-dont-trust) catches such rewrites. Resolution,
-the risky step, is reserved for [deliberate dependency updates][].
+Installs are [lock-exact][install contracts]: they reproduce the committed,
+reviewed [`package-lock.json`][] and never resolve version ranges. The one
+exception: a local `npm install` can rewrite the lock when it disagrees with
+`package.json`; the [verification below](#verify-dont-trust) catches such
+rewrites. Resolution, the risky step, is reserved for [deliberate dependency
+updates][].
 
 ### Resolve only cooled-down releases
 

@@ -11,9 +11,9 @@ these controls, see [Supply-chain security][].
 
 ## Install contracts
 
-Automated environments install lock-exact and script-free, then explicitly
-re-enable the one reviewed hook: the `hugo-extended` rebuild that fetches the
-pinned Hugo binary. Per environment:
+CI, the devcontainer, and Netlify install lock-exact and script-free, then
+explicitly re-enable the one reviewed hook: the `hugo-extended` rebuild that
+fetches the pinned Hugo binary. Per environment:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.
