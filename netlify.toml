@@ -4,8 +4,8 @@ command = "npm run netlify-build:preview"
 
 [build.environment]
 # Details: https://opentelemetry.io/site/build/dependencies/#inert-netlify-auto-install
-NPM_VERSION = "11.19.0"
 NPM_FLAGS = "--dry-run --ignore-scripts"
+NPM_VERSION = "11.19.0"
 
 [context.production]
 command = "npm run netlify-build:production"
