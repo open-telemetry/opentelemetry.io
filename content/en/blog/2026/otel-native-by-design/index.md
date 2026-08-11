@@ -19,15 +19,16 @@ With contributions from [Daniel Gomez Blanco](https://github.com/danielgblanco)
 (New Relic).
 
 If you're building a backend or SaaS product, your users will eventually ask to
-send **logs, traces, and metrics** to their own observability stack, whether for
-compliance, cost, or to centralize all their observability data in one place.
+send **logs, traces, and metrics** to their own observability stack, whether to satisfy
+compliance, manage costs, or centralize all their observability data in one
+place.
 
 Locking them into your built-in dashboards or limiting exports to certain
 vendors creates unnecessary friction. Instead, supporting export to any
-OpenTelemetry (OTel)–compatible backend is a vendor-neutral, future-proof
-practice that gives users the freedom to choose their observability stack.
+OpenTelemetry (OTel)–compatible backend is a vendor-neutral, future-proof practice
+that gives users the freedom to choose their observability stack.
 
-This post outlines how to design your backend so users can export **full
+This post outlines how you can design your backend so users can export **full
 telemetry** (logs, traces, and metrics) to an OTel backend when they want to.
 
 ![Enabling telemetry export via the OTLP standard allows users to own and
@@ -36,22 +37,22 @@ choosing.](otel-native-by-design.webp)
 
 ## The Three Observability Signals
 
-OpenTelemetry defines three main signal types, all carried over the same OTLP
-protocol:
+OpenTelemetry defines three main signal types, all carried over the same
+[OTLP protocol](/docs/specs/otlp/):
 
-- **Logs:** Event records, request/access logs, and application logs with
-  timestamps and metadata.
-- **Traces:** Distributed traces and spans so users can see request flows across
-  services and correlate them with logs.
-- **Metrics:** Counters, gauges, and histograms (e.g. request rates, latency,
-  error rates).
+- **[Logs](/docs/concepts/signals/logs/):** Event records, request/access logs,
+  and application logs with timestamps and metadata.
+- **[Traces](/docs/concepts/signals/traces/):** Distributed traces and spans so
+  users can see request flows across services and correlate them with logs.
+- **[Metrics](/docs/concepts/signals/metrics/):** Counters, gauges, and
+  histograms (e.g. request rates, latency, error rates).
 
 The same export story applies to all three: let users configure an OTLP endpoint
 and **push** telemetry to it. You can support one, two, or all three signals
 depending on what your product generates.
 
-Many platforms that support OTel export support at least traces and logs; an
-increasing number support metrics as well. Designing for all three from the
+Many platforms that support OTel export support at least traces and logs, and an
+increasing number now ship with metrics support. Designing for all three from the
 start avoids having to retrofit later.
 
 ## What a "Good" Telemetry System Looks Like
@@ -60,11 +61,11 @@ A solid export story has a few clear properties for every signal you support:
 
 - **Vendor-neutral and OpenTelemetry-compliant:** Users can point at any
   OTel-compatible endpoint (SigNoz, Grafana, Honeycomb, Dynatrace, an
-  OpenTelemetry Collector instance, etc.) without you building custom
-  integrations for each.
+  [OpenTelemetry Collector](/docs/collector/) instance, etc.) without you
+  building custom integrations for each.
 - **No deep custom development:** External platforms (or your users' tooling)
-  can integrate using standard OTel SDKs and the OTLP protocol instead of
-  proprietary APIs.
+  can integrate using standard [OTel SDKs](/docs/languages/) and the OTLP
+  protocol instead of proprietary APIs.
 - **Rich context preserved:** Exported data should include metadata, timestamps,
   and trace/span correlation where available (e.g. log records linked to trace
   IDs), so users can debug and analyze data in their own backend without losing
@@ -137,7 +138,7 @@ expose configuration flags for their OTLP endpoints.
 #### Kuma
 
 Whether customers run Kuma's control and data planes on their own Kubernetes
-clusters or VMs, it comes pre-configured to emit traces, metrics, and logs to an
+clusters or VMs, it comes pre-configured to emit logs, traces, and metrics to an
 OTel backend.
 
 Users configure the export, which runs from the users' Kuma deployments, through
@@ -397,14 +398,16 @@ Collector that gathers your system's telemetry and re-exports it to the user's
 endpoint.
 
 Sticking to standard OpenTelemetry environment variables (like
-`OTEL_EXPORTER_OTLP_ENDPOINT`) makes the underlying plumbing reliable and easy
-to document and reason about.
+[`OTEL_EXPORTER_OTLP_ENDPOINT`](/docs/languages/sdk-configuration/otlp-exporter/#otel_exporter_otlp_endpoint))
+makes the underlying plumbing reliable and easy to document and reason about.
 
 ### Keep semantics consistent
 
 Beyond just OTel-based environment variables, make sure you maintain consistent
-semantics across all your signals. Document your attribute names, schemas, and
-exactly how logs and metrics relate back to trace and span IDs.
+semantics across all your signals. Document your attribute names and schemas —
+[Semantic Conventions](/docs/specs/semconv/) is a good reference for naming
+these consistently — and exactly how logs and metrics relate back to trace and
+span IDs.
 
 When a user ingests your telemetry into their observability backend, everything
 should connect end-to-end to tell the complete story.
@@ -434,9 +437,10 @@ Large-scale customers, or those managing complex observability setups, may wish
 to send telemetry signals to different platforms.
 
 OTLP natively supports this with signal-specific variables defined by the
-`OTEL_EXPORTER_<SIGNAL>_ENDPOINT` pattern, along with corresponding header
-configurations. For example, to configure a specific endpoint for logs, you
-would use the `OTEL_EXPORTER_LOGS_ENDPOINT`.
+`OTEL_EXPORTER_OTLP_<SIGNAL>_ENDPOINT` pattern, along with corresponding
+[header configurations](/docs/languages/sdk-configuration/otlp-exporter/#header-configuration).
+For example, to configure a specific endpoint for logs, you would use the
+[`OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`](/docs/languages/sdk-configuration/otlp-exporter/#otel_exporter_otlp_logs_endpoint).
 
 Exposing this per-signal routing in your application is technically optional,
 but it is a major value-add for advanced users.
@@ -446,8 +450,9 @@ but it is a major value-add for advanced users.
 Once you're pushing OTLP (for any combination of logs, traces, metrics), you
 still need to decide how to run Collectors to manage multiple tenants.
 
-Your Collector architecture needs to handle two dimensions of growth: onboarding
-more users, and the volume of new telemetry generated as you ship new features.
+Your Collector architecture needs to [scale](/docs/collector/scaling/) along two
+dimensions of growth: onboarding more users, and the volume of new telemetry
+generated as you ship new features.
 
 ### One Collector per Tenant
 
@@ -459,9 +464,9 @@ customer's export endpoint.
 This provides strong logical isolation guarantees. Slowdowns or
 misconfigurations in one customer's pipeline do not affect other customers.
 
-Although you can optimize the Collector binary by only shipping vital
-components, deploying hundreds or thousands of Collector instances will become
-resource-intensive.
+Although you can [build a custom Collector binary](/docs/collector/extend/ocb/)
+that only ships vital components, deploying hundreds or thousands of Collector
+instances will become resource-intensive.
 
 Given this limitation, this architecture is usually the best fit for enterprise
 SaaS products where strong multi-tenant isolation is a strict requirement and
@@ -476,9 +481,11 @@ Here, "static" means each tenant's pipeline and routing rules are defined
 up-front in the Collector's configuration file, rather than provisioned
 dynamically at runtime.
 
-In this architecture, all your platform's telemetry funnels into a single,
-centralized Collector. Inside, you define separate pipelines per tenant,
-ensuring that the data gets routed to the correct external endpoint.
+This is close in spirit to the
+[gateway deployment pattern](/docs/collector/deploy/gateway/): all your
+platform's telemetry funnels into a single, centralized Collector. Inside, you
+define separate pipelines per tenant, ensuring that the data gets routed to the
+correct external endpoint.
 
 This pattern works well for teams at early or moderate scale, where operating a
 single deployment is simpler than managing per-tenant instances. You only have
@@ -523,14 +530,5 @@ friction, reduces your engineering overhead, and empowers customers to best
 utilize their data on their own terms.
 
 If you've already implemented OTel-native export in your product, consider
-adding it to the [OpenTelemetry Ecosystem Registry](/ecosystem/registry/) — it's
-a great way to surface your work to the broader community.
-
-## Further Reading
-
-- [OpenTelemetry Documentation](/docs/)
-- [OpenTelemetry Ecosystem Registry](/ecosystem/registry/)
-- [OTLP Specification](/docs/specs/otlp/): protocol and semantics for logs,
-  metrics, and traces
-- [OTLP exporter configuration](/docs/languages/sdk-configuration/otlp-exporter/):
-  endpoint and per-signal options
+adding it to the [OpenTelemetry Ecosystem Registry](/ecosystem/registry/) — it's a
+great way to surface your work to the broader community.
