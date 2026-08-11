@@ -12,6 +12,9 @@
   schedule: ['before 9am on monday'],
   patch: {
     automerge: true,
+    // Automerge skips human review, so patches get a longer cooldown than
+    // the reviewed update types (minimumReleaseAge above).
+    minimumReleaseAge: '14 days',
   },
   packageRules: [
     {
