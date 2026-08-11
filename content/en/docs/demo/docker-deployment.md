@@ -41,7 +41,14 @@ make start
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose up --force-recreate --remove-orphans --detach
+docker compose \
+  --env-file .env \
+  --env-file .env.override \
+  -f compose.yaml \
+  -f compose.full.yaml \
+  -f compose.observability.yaml \
+  -f compose.extras.yaml \
+  up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
@@ -60,7 +67,13 @@ make start-minimal
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose -f docker-compose.minimal.yml up --force-recreate --remove-orphans --detach
+docker compose \
+  --env-file .env \
+  --env-file .env.override \
+  -f compose.yaml \
+  -f compose.observability.yaml \
+  -f compose.extras.yaml \
+  up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
@@ -117,7 +130,14 @@ ENVOY_PORT=8081 make start
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-ENVOY_PORT=8081 docker compose up --force-recreate --remove-orphans --detach
+ENVOY_PORT=8081 docker compose \
+  --env-file .env \
+  --env-file .env.override \
+  -f compose.yaml \
+  -f compose.full.yaml \
+  -f compose.observability.yaml \
+  -f compose.extras.yaml \
+  up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
