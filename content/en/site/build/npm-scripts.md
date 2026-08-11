@@ -20,8 +20,8 @@ script, use `npm run` _`SCRIPT_NAME`_.
 - **Default vs `:all` script variants**
   - The **`check`**, **`fix`**, and **`test`** scripts run the most commonly
     needed subscripts for each action.
-  - To run every subscript, use the **`*:all`** variants `check:all`, `fix:all`,
-    and `test:all`.
+  - The **`*:all`** variants `check:all`, `fix:all`, and `test:all` run wider
+    subscript sets; each variant's table entry states its scope.
 
 ## Installing and updating dependencies
 
@@ -31,7 +31,7 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `ci:prepare`      | Post-`ci:min` setup: [fetch the pinned Hugo binary][], then `prepare`.               |
 | `install:safe`    | [Lock-exact local setup][]: inert install keeping optional deps, then `ci:prepare`.  |
 | `prepare`         | Install step: `get:submodule`, then Docsy's [lock-exact theme dependency install][]. |
-| `update:hugo`     | Install latest hugo-extended.                                                        |
+| `update:hugo`     | Install latest hugo-extended; update its [`allowScripts` approval][] with the bump.  |
 | `update:packages` | Run npm-check-updates to bump deps, subject to the [release cooldown][].             |
 
 ## Build and serve
@@ -150,6 +150,7 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `seq`                          | Run given script names in sequence; exit on first failure.                        |
 
 <!-- prettier-ignore-start -->
+[`allowScripts` approval]: ../dependencies/#script-bearing-packages
 [`.lycheecache`]: ../link-checking/#link-cache
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [build kinds]: ../#build-kinds
