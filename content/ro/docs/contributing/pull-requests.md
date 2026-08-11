@@ -42,10 +42,10 @@ existente, trimite un [pull request][PR] (PR)
 > contribui și pentru a ajuta administratorii și aprobatorii să-și protejeze
 > timpul și capacitatea de lucru, care reprezintă o resursă limitată.
 >
-> Întreținătorii pot face o excepție, când contribuția ta este "drive-by" și
+> Administratorii pot face o excepție, când contribuția ta este "drive-by" și
 > poate fi adăugată fără prea mult efort adițional din partea lor.
 
-IA-ul generativ este permis, dar **tu ești responsabil** for **revizuirea și
+IA generativă este permisă, dar **tu ești responsabil** pentru **revizuirea și
 _validarea_** întregului conținut generat de IA &mdash; Dacă nu-l înțelegi, nu-l
 trimite!
 
@@ -85,8 +85,8 @@ _Figura 1. Contribuții cu conținut nou._
 >
 > Setează statusul pull request-ului tău la **Draft** pentru a înștiința
 > administratorii că respectivul conținut nu este încă gata pentru revizuire.
-> Întreținătorii pot în continuare să lase comentarii sau revizuiri, deși nu vor
-> revizui conținutul în întregime până când nu elimini statutul de draft.
+> Administratorii pot în continuare să lase comentarii sau revizuiri, deși nu
+> vor revizui conținutul în întregime până când nu elimini statutul de draft.
 
 ## Utilizarea GitHub {#changes-using-github}
 
@@ -126,8 +126,8 @@ class id1 k8s
 
 _Figura 2. Pașii pentru deschiderea unui PR folosind GitHub._
 
-1. Pe pagina unde vezi issue-ul, selectează opțiunea **Edit this page** din
-   panoul de navigare din partea dreaptă.
+1. Pe pagina unde vezi issue-ul, selectează opțiunea **Editează această pagină**
+   din panoul de navigare din partea dreaptă.
 
 1. Dacă nu ești un membru al proiectului, GitHub oferă opțiunea de creare a unui
    fork al repetoriului. Selectează **Fork this repository**.
@@ -140,8 +140,8 @@ _Figura 2. Pașii pentru deschiderea unui PR folosind GitHub._
 
 1. Selectează **Creează pull request**.
 
-1. Va apărea ecranul **Open a pull request**. Descrierea ta îi ajută pe cei ce
-   revizuiesc să înțeleagă schimbările tale.
+1. Va apărea ecranul **Deschide un pull request**. Descrierea ta îi ajută pe cei
+   ce revizuiesc să înțeleagă schimbările tale.
 
 1. Selectează **Creează pull request**.
 
@@ -195,7 +195,7 @@ Comanda de rezolvare trebuie să fie prima linie a comentariului tău; poți ad�
 text explicativ în liniile ce urmează. Emiterea unei noi comenzi de rezolvare în
 timp ce una rulează deja o anulează pe cea ce rulează astfel că cea mai recentă
 comandă câștigă; atunci când se poate, comentariul bot-ului asociat acțiunii
-anulate este actualizat pentru a nota despre anulare.
+anulate este actualizat pentru a indica anularea.
 
 > [!TIP] Pro tip
 >
@@ -351,8 +351,7 @@ Când ești gata să trimiți un pull request, urcă schimbările tale.
    git push origin <ramura_mea_noua>
    ```
 
-1. Odată ce schimbările sunt trimise, GitHub te înștiințează că poți creea un
-   PR.
+1. Odată ce schimbările sunt trimise, GitHub te înștiințează că poți crea un PR.
 
 ### Deschide un PR nou {#open-a-pr}
 
@@ -401,7 +400,7 @@ _Figura 4. Pașii pentru a deschide un PR din fork-ul tău la_
        închidă issue-ul menționat după ce PR-ul a fost unit. Dacă există și alte
        PR-uri conexe, menționează‑le și pe acelea.
      - Dacă dorești sfaturi despre ceva specific, include în descriere orice
-       întrebare la care ai vrea ca revizuitorii să se gândească
+       întrebare la care ai vrea ca revizuitorii să se gândească.
 
 1. Selectează butonul **Creează pull request**.
 
@@ -423,14 +422,14 @@ o previzualizare folosind [Netlify](https://www.netlify.com/).
 ### Rezolvă problemele {#fix-issues}
 
 Înainte să trimiți o schimbare la repertoriu, rulează următoarea comandă și (i)
-adresează orice problemă semnalată, (ii) trimite orice fișier schimbat de către
+remediază orice problemă semnalată, (ii) trimite orice fișier schimbat de către
 script:
 
 ```sh
 npm run test-and-fix
 ```
 
-Pentru a testa și repara separat toate probleme din fișierele tale, rulează:
+Pentru a testa și repara separat toate problemele din fișierele tale, rulează:
 
 ```sh
 npm run test # Checks but does not update any files
@@ -583,7 +582,7 @@ conflicte în PR-ul tău.
 Schimbările din pull request sunt integrate atunci când sunt conforme cu
 următoarele criterii:
 
-- Toate revizuirile făcute de aprobatori, administratori, membrii ai comitetului
+- Toate revizuirile făcute de aprobatori, administratori, membri ai comitetului
   tehnic sau experți au statusul "Approved".
 - Nici o conversație nerezolvată.
 - Să fie aprobat de către cel puțin un aprobator.

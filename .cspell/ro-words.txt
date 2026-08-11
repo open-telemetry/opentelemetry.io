@@ -18,6 +18,7 @@ contribuitoare
 contribuitori
 contribuitorii
 corecteazǎ
+crea
 creea
 creeazǎ
 depanezi
