@@ -7,8 +7,7 @@ weight: 5
 
 npm dependencies are pinned by the committed `package-lock.json`, and installs
 run only reviewed lifecycle scripts. For the threat model and rationale behind
-these controls, see
-[Supply-chain security](../../design/supply-chain-security/).
+these controls, see [Supply-chain security][]
 
 ## Supply-chain controls {#controls}
 
@@ -18,6 +17,7 @@ All controls are configured in files committed to the repository.
 
 Version resolution ignores releases younger than the configured minimum age.
 Lock-exact installs (`npm ci`) don't resolve versions, so they are unaffected.
+
 npm gives project config precedence over user config, so a stricter cooldown in
 your user `.npmrc` is relaxed to the project value here; to keep yours for an
 invocation, set the `npm_config_min_release_age` environment variable, which
@@ -28,23 +28,25 @@ updates that merge without human review.
 
 Configuration:
 
-- `min-release-age` in [`.npmrc`]
-- `minimumReleaseAge` in [`.github/renovate.json5`]
+- `min-release-age` in [`.npmrc`][]
+- `minimumReleaseAge` in [`.github/renovate.json5`][]
 
 ### Lifecycle-script allowlist
 
 Installs run a package's lifecycle scripts only when its exact name and version
-is allowlisted. An entry set to `false` records a reviewed denial: the package
-installs, its script is skipped. Denials grant nothing, so they cover the
-package by name, across versions. The allowlist only filters: it never
-re-enables scripts that `ignore-scripts` disables, so script-free installs run
-none, allowlisted or not, and a reviewed exception takes an explicit
-`--ignore-scripts=false` at the call site.
+is allowed through `allowScripts` allowlist:
+
+- An entry set to `false` records a reviewed denial: the package installs, its
+  script is skipped.
+- Denials grant nothing, so they cover the package by name, across versions.
+- The allowlist only filters: it never re-enables scripts that `ignore-scripts`
+  disables, so script-free installs run none, allowlisted or not, and a reviewed
+  exception takes an explicit `--ignore-scripts=false` at the call site.
 
 Configuration:
 
-- `strict-allow-scripts` in [`.npmrc`]
-- The `allowScripts` map in [`package.json`]
+- `strict-allow-scripts` in [`.npmrc`][]
+- `allowScripts` map in [`package.json`][]
 
 ### npm version floor
 
@@ -56,8 +58,8 @@ controls, such as Netlify, may pin a newer npm.
 
 Configuration:
 
-- `engine-strict` in [`.npmrc`]
-- `engines` in [`package.json`]
+- `engine-strict` in [`.npmrc`][]
+- `engines` in [`package.json`][]
 
 ### Inert Netlify auto-install
 
@@ -66,7 +68,7 @@ under a pinned npm that satisfies the version floor.
 
 Configuration:
 
-- `NPM_VERSION` and `NPM_FLAGS` in [`netlify.toml`]
+- `NPM_VERSION` and `NPM_FLAGS` in [`netlify.toml`][]
 
 ## Install contracts
 
@@ -128,4 +130,5 @@ When updating a package that has an `allowScripts` entry:
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [local setup]: /docs/contributing/development/#local-setup
+[Supply-chain security]: ../../design/supply-chain-security/
 <!-- prettier-ignore-end -->
