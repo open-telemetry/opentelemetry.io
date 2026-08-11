@@ -12,7 +12,7 @@ these controls, see
 
 ## Supply-chain controls {#controls}
 
-All controls are configured in files at the repository root.
+All controls are configured in files committed to the repository.
 
 ### Release cooldown
 
@@ -23,13 +23,13 @@ your user `.npmrc` is relaxed to the project value here; to keep yours for an
 invocation, set the `npm_config_min_release_age` environment variable, which
 outranks both.
 
-Renovate applies its own cooldown to the update PRs it opens: 14 days for patch
-updates, which automerge, and 7 for the update types a human reviews.
+Renovate applies its own cooldown to the update PRs it opens, longer for the
+updates that merge without human review.
 
 Configuration:
 
 - `min-release-age` in `.npmrc`
-- `minimumReleaseAge` in `.github/renovate.json5`
+- `minimumReleaseAge` in [`.github/renovate.json5`][renovate-config]
 
 ### Lifecycle-script allowlist
 
@@ -124,4 +124,5 @@ When updating a package that has an `allowScripts` entry:
 
 <!-- prettier-ignore-start -->
 [local setup]: /docs/contributing/development/#local-setup
+[renovate-config]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 <!-- prettier-ignore-end -->
