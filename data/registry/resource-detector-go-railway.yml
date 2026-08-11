@@ -1,3 +1,4 @@
+# cspell:ignore Kartik
 title: OpenTelemetry Resource Detector for Railway.com
 registryType: resource-detector
 language: go
