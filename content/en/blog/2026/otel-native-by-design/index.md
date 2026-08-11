@@ -526,9 +526,11 @@ If you've already implemented OTel-native export in your product, consider
 [adding it to OpenTelemetry Integrations](/ecosystem/integrations/#how-to-add).
 It's a great way to surface your work to the broader community.
 
+
 > [!NOTE]
 >
-> If you're reading this as an end user, not a builder: you don't have to wait
-> for your SaaS vendor to come around on this. Ask them for OTLP export
-> directly; it's a reasonable, increasingly common request, and now you have
-> this post to point them to!
+> **If you're reading this as an end user, not a builder:** you don't have to wait
+> for your SaaS vendor to come around on this. 
+>
+> Ask them for OTLP export directly; it's a reasonable, increasingly common request,
+> and now you have this post to point them to!
