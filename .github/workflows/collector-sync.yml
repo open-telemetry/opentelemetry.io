@@ -36,7 +36,6 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: 'npm'
-          cache-dependency-path: package.json
 
       - name: Use CLA approved github bot
         run: |
