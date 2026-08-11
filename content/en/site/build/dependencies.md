@@ -117,6 +117,9 @@ Configuration:
 
 - `engine-strict` in [`.npmrc`][]
 - `engines` in [`package.json`][]
+- [`NPM_VERSION`][netlify-deps] in [`netlify.toml`][]: pins an npm that
+  satisfies the floor; Netlify's default, the npm bundled with its Node version,
+  may be older. Bump the pin at least when the floor rises.
 
 ### Inert Netlify auto-install
 
@@ -131,13 +134,9 @@ disabled:
 
 Configuration:
 
-- [`netlify.toml`][]:
-  - [`NPM_FLAGS`][netlify-deps] is a Netlify build setting, not npm config: it
-    applies only to the automatic install and does not affect the build
-    command's npm runs.
-  - [`NPM_VERSION`][netlify-deps] pins an npm that satisfies the
-    [version floor](#npm-version-floor), which the Node-bundled npm that Netlify
-    defaults to can fail.
+- [`NPM_FLAGS`][netlify-deps] in [`netlify.toml`][]: a Netlify build setting,
+  not npm config; it applies only to the automatic install and does not affect
+  the build command's npm runs.
 
 <!-- prettier-ignore-start -->
 [`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
