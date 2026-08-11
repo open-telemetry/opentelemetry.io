@@ -1,6 +1,6 @@
 ---
 title: >-
-  OTel-Native by Design - Building Backends That Export to Any Observability
+  OTel-Native by Design - Building Products That Export to Any Observability
   Stack
 linkTitle: OTel-Native by Design
 date: 2026-08-11
@@ -18,17 +18,17 @@ cSpell:ignore: Ahuja Dhruv Gohain Nityananda
 With contributions from [Daniel Gomez Blanco](https://github.com/danielgblanco)
 (New Relic).
 
-If you're building a backend or SaaS product, your users will eventually ask to
-send **logs, traces, and metrics** to their own observability stack, whether to
-satisfy compliance, manage costs, or centralize all their observability data in
-one place.
+If you're building self-hosted software or a SaaS product, your users will
+eventually ask to send **logs, traces, and metrics** to their own observability
+stack, whether to satisfy compliance, manage costs, or centralize all their
+observability data in one place.
 
 Locking them into your built-in dashboards or limiting exports to certain
 vendors creates unnecessary friction. Instead, supporting export to any
 OpenTelemetry (OTel)-compatible backend is a vendor-neutral, future-proof
 practice that gives users the freedom to choose their observability stack.
 
-This post outlines how you can design your backend so users can export **full
+This post outlines how you can design your product so users can export **full
 telemetry** (logs, traces, and metrics) to an OTel backend when they want to.
 
 ![Enabling telemetry export via the OTLP standard allows users to own and
@@ -59,9 +59,10 @@ the start avoids having to retrofit later.
 
 A solid export story has a few clear properties for every signal you support:
 
-- **Vendor-neutral and OpenTelemetry-compliant:** Users can point at any
-  OTel-compatible endpoint — a [Collector instance](/docs/collector/) or a
-  backend directly — without building custom integrations for each.
+- **Vendor-neutral:** Users can point at any OTel-compatible endpoint — a
+  [Collector instance](/docs/collector/), or one of the many
+  [backends that support OTLP directly](/ecosystem/vendors/) — without building
+  custom integrations for each.
 - **No deep custom development:** External platforms (or your users' tooling)
   can integrate using standard [OTel SDKs](/docs/languages/) and the OTLP
   protocol instead of proprietary APIs.
@@ -111,11 +112,15 @@ destinations** that your infrastructure uses to forward data.
 
 ## How Others Do It
 
-The [OpenTelemetry Ecosystem Registry](/ecosystem/registry/) is a good place to
-see which projects and organizations support OTel, and in what manner.
+This post focuses on four companies — Kuma, Keycloak, Cloudflare, and Heroku —
+as representative examples across the two contexts above, but they're far from
+the only ones already exporting telemetry natively via OTLP. The
+[OpenTelemetry Integrations](/ecosystem/integrations/) page features all
+libraries and services that provide native instrumentation or first-class
+plugins.
 
-Below is how these companies handle **all three signals** (or a subset) and what
-you can learn from them.
+Below is how these four handle **all three signals** (or a subset) and what you
+can learn from them.
 
 | Platform           | Logs | Traces | Metrics | Deployment Mode       | Notes                                   |
 | ------------------ | ---- | ------ | ------- | --------------------- | --------------------------------------- |
@@ -213,18 +218,17 @@ Further reading:
 
 - [Keycloak Observability / Telemetry](https://www.keycloak.org/observability/telemetry)
 
-{{% alert title="The Common Design Pattern" %}}
-
-The recurring theme across both deployment modes is clear: **push-based export
-using OTel/OTLP is the preferred and practical pattern**. Some products expose
-one endpoint for all three signals (Keycloak, for example, uses a single shared
-endpoint), whereas others let users pick which signals to send (Heroku's
-`--signals`).
-
-Natively supporting all telemetry signals gives your users more flexibility to
-build a complete picture in their backend of choice.
-
-{{% /alert %}}
+> [!NOTE] The Common Design Pattern
+>
+> Both deployment patterns have a common, recurring theme.
+>
+> **Push-based export using OTel/OTLP is the preferred and practical pattern.**
+> Some products expose one endpoint for all three signals (Keycloak, for
+> example, uses a single shared endpoint), whereas others let users pick which
+> signals to send (Heroku's `--signals`).
+>
+> Natively supporting all telemetry signals gives your users more flexibility to
+> build a complete picture in their backend of choice.
 
 ### The Platform Approach: Cloudflare and Heroku
 
@@ -281,18 +285,14 @@ endpoint.
 
 ### The Pull Model (Custom Receivers)
 
-In a pull-based setup, you expose an API for your telemetry. The user's
-observability stack, or a custom receiver that they build, has to continuously
-poll that API, handle the pagination, and ingest the results into their own
-backend.
+Pull is the traditional way platforms have exposed telemetry: you expose an API
+for it, and the user's observability stack (or a custom receiver they build) has
+to continuously poll that API, handle pagination, and ingest the results into
+their own backend.
 
-#### Where pull works
-
-If you already have mature, well-tested APIs for logs or metrics, this design
-becomes relatively easy to set up. It also means you don't have to manage
-continuous outbound traffic from your infrastructure.
-
-#### Where pull hurts
+It's a reasonable starting point if you already have a mature, well-tested API
+for logs or metrics, since extending it is often easier than building a new push
+path. But it comes with real costs.
 
 The problem with this model is that you are shifting a significant operational
 responsibility onto your users. They must now build scalable polling systems
@@ -330,7 +330,7 @@ be the default.
 For developer-focused, real-time telemetry, OTLP push has become the dominant
 pattern.
 
-Instead of waiting to be asked, your backend (or an OpenTelemetry Collector you
+Instead of waiting to be asked, your service (or an OpenTelemetry Collector you
 run) actively exports logs, traces, and metrics directly to the user's
 configured endpoint using OTLP (over HTTP or gRPC).
 
@@ -476,8 +476,10 @@ dynamically at runtime.
 This is close in spirit to the
 [gateway deployment pattern](/docs/collector/deploy/gateway/): all your
 platform's telemetry funnels into a single, centralized Collector. Inside, you
-define separate pipelines per tenant, ensuring that the data gets routed to the
-correct external endpoint.
+define separate pipelines per tenant — the
+[routing connector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/connector/routingconnector#readme)
+is a natural fit here, directing data to the right pipeline (and therefore the
+right external endpoint) based on resource attributes like a tenant ID.
 
 This pattern works well for teams at early or moderate scale, where operating a
 single deployment is simpler than managing per-tenant instances. You only have
@@ -522,5 +524,12 @@ friction, reduces your engineering overhead, and empowers customers to make the
 best use of their data on their own terms.
 
 If you've already implemented OTel-native export in your product, consider
-adding it to the [OpenTelemetry Ecosystem Registry](/ecosystem/registry/) — it's
-a great way to surface your work to the broader community.
+[adding it to OpenTelemetry Integrations](/ecosystem/integrations/#how-to-add).
+It's a great way to surface your work to the broader community.
+
+> [!NOTE]
+>
+> If you're reading this as an end user, not a builder: you don't have to wait
+> for your SaaS vendor to come around on this. Ask them for OTLP export
+> directly; it's a reasonable, increasingly common request, and now you have
+> this post to point them to!
