@@ -3,12 +3,11 @@ title: デモのアーキテクチャ
 linkTitle: アーキテクチャ
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
-default_lang_commit: 867f1ba6a44275ce3bc7d8708765a78baaa0287f
-drifted_from_default: true
+default_lang_commit: 74d8cb2aaefe493295c6c49e2e8ef39801847880
 ---
 
 **OpenTelemetryデモ** は、異なるプログラミング言語で書かれた複数のマイクロサービスから構成されており、gRPCとHTTPを使って相互に通信を行います。
-さらに、負荷生成ツールが含まれており、[Locust](https://locust.io/)というツールを使用して、ユーザートラフィックを模擬的に生成します。
+さらに、負荷生成ツールが含まれており、[k6](https://k6.io/)を使用して、ユーザートラフィックを模擬的に生成します。
 
 ```mermaid
 graph TD
@@ -26,7 +25,7 @@ fraud-detection(不正検知):::kotlin
 frontend(フロントエンド):::typescript
 frontend-proxy(フロントエンドプロキシ <br/>&#40Envoy&#41):::cpp
 image-provider(画像プロバイダー <br/>&#40nginx&#41):::cpp
-load-generator([負荷生成ツール]):::python
+load-generator([負荷生成ツール]):::golang
 payment(支払い):::javascript
 product-catalog(商品カタログ):::golang
 quoteservice(見積サービス):::php
@@ -131,6 +130,9 @@ classDef typescript fill:#e98516,color:black;
 
 コレクターの設定は [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml) で行われており、代替のエクスポーターをここで設定することができます。
 
+オブザーバビリティスタックと合わせて実行する場合、Collector は [OpAMP エクステンション](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/opampextension)を通じてデモの OpAMP サーバーにも接続し、ヘルス、バージョン、属性、および有効な設定を報告します。
+OpAMP UI（<http://localhost:8080/opamp/>）を開き、Collector インスタンスを選択して報告されたステータスを確認してください。
+
 ```mermaid
 graph TB
 subgraph tdf[テレメトリーデータフロー]
@@ -162,11 +164,27 @@ subgraph tdf[テレメトリーデータフロー]
            oc-proc --> oc-opensearch
            oc-proc --> oc-spanmetrics
            oc-spanmetrics --> oc-prom
+
+           oc-opamp[/"OpAMP エクステンション"/]
+
        end
 
        oc-prom -->|"localhost:9090/api/v1/otlp"| pr-sc
        oc-otlp -->|gRPC| ja-col
        oc-opensearch -->|HTTP| os-http
+
+       subgraph op[OpAMP サーバー]
+           style op fill:#a6ce39,color:black;
+           op-srv["OpAMP サーバー"]
+           op-http[/"OpAMP HTTP<br/>リッスン先：<br/>localhost:8080/opamp/"/]
+
+           op-srv --> op-http
+       end
+
+       oc-opamp -->|"ステータスを報告<br/>WebSocket 経由"| op-srv
+
+       op-b{{"ブラウザ<br/>OpAMP UI"}}
+       op-http -->|"localhost:8080/opamp/"| op-b
 
        subgraph pr[Prometheus]
            style pr fill:#e75128,color:black;
