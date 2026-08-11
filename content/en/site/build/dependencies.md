@@ -1,7 +1,7 @@
 ---
 title: Dependency management
 description: >-
-  How this site installs, verifies, and updates its npm dependencies.
+  How the site installs, verifies, and updates its npm dependencies
 weight: 5
 ---
 

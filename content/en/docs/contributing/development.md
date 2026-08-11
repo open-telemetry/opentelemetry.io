@@ -17,9 +17,6 @@ cSpell:ignore: TOCSS
 > best-effort basis. For builds on Windows, you can follow steps similar to
 > those for Linux using Windows Subsystem for Linux command line [WSL][].
 
-The following instructions explain how to set up a development environment for
-this website.
-
 ## Cloud-IDE setup
 
 ### Gitpod

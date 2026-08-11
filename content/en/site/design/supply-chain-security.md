@@ -1,14 +1,12 @@
 ---
 title: Supply-chain security
 description: >-
-  Threat model and rationale behind the site's npm dependency supply-chain
-  controls.
+  Threat model and rationale behind the site's npm dependency controls
 weight: 20
 cSpell:ignore: cooldowns unreviewed
 ---
 
-This page records why npm dependency handling is locked down the way it is. For
-the controls themselves and day-to-day procedures, see
+For the controls themselves and day-to-day procedures, see
 [Dependency management](../../build/dependencies/). Neighboring security topics
 have their own homes: workflow trigger and token privileges in
 [CI workflows](../../build/ci-workflows/#security-model), and vulnerability
