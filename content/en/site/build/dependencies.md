@@ -63,8 +63,9 @@ Configuration:
 
 ### Inert Netlify auto-install
 
-Netlify's automatic install is constrained to a dry run with scripts disabled,
-under a pinned npm that satisfies the version floor.
+Netlify's [automatic install][netlify-deps] at the start of a build is
+constrained to a dry run with scripts disabled, under a pinned npm that
+satisfies the version floor.
 
 Configuration:
 
@@ -130,5 +131,6 @@ When updating a package that has an `allowScripts` entry:
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [local setup]: /docs/contributing/development/#local-setup
+[netlify-deps]: https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm
 [Supply-chain security]: ../../design/supply-chain-security/
 <!-- prettier-ignore-end -->
