@@ -4181,6 +4181,7 @@ https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/s
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.gitmodules,200,1785868418
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint-cli2.yaml,200,1785868416
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml,200,1785868416
+https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc,206,1786473395
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.prettierignore,200,1785868419
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml,200,1785713003
 https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml,200,1785785898
@@ -6672,4 +6673,3 @@ https://zio.dev/,200,1785785894
 https://ziohttp.com/,200,1785785900
 https://zipkin.io/,200,1786341691
 https://zipkin.io/zipkin-api/,200,1786341696
-https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc,206,1786473395
