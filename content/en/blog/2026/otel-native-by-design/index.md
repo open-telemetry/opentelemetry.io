@@ -115,9 +115,8 @@ destinations** that your infrastructure uses to forward data.
 This post focuses on four companies — Kuma, Keycloak, Cloudflare, and Heroku —
 as representative examples across the two contexts above, but they're far from
 the only ones already exporting telemetry natively via OTLP. The
-[OpenTelemetry Integrations](/ecosystem/integrations/) page features all
-libraries and services that provide native instrumentation or first-class
-plugins.
+[OpenTelemetry Integrations](/ecosystem/integrations/) page features libraries
+and services that provide native instrumentation or first-class plugins.
 
 Below is how these four handle **all three signals** (or a subset) and what you
 can learn from them.
@@ -220,7 +219,7 @@ Further reading:
 
 > [!NOTE] The Common Design Pattern
 >
-> Both deployment patterns have a common, recurring theme.
+> Both deployment modes have a common, recurring theme.
 >
 > **Push-based export using OTel/OTLP is the preferred and practical pattern.**
 > Some products expose one endpoint for all three signals (Keycloak, for
