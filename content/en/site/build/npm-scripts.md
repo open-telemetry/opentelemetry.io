@@ -38,26 +38,26 @@ and `NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
 
 ## Checking
 
-| Script                 | Description                                                 |
-| ---------------------- | ----------------------------------------------------------- |
-| `check:all`            | Run all check scripts in sequence.                          |
-| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                |
-| `check:codeowners`     | Verify CODEOWNERS locale section matches the registry.      |
-| `check:collector-sync` | Run collector-sync checks.                                  |
-| `check:expired`        | List expired content (by front matter).                     |
-| `check:filenames`      | [Validate file naming & detect obsolete files/folders][fn]. |
-| `check:format`         | Prettier and prose-wrap checks.                             |
-| `check:i18n`           | Validate localization front matter (`default_lang_commit`). |
-| `check:l10n`           | Run localization checks.                                    |
-| `check:links:diff`     | Lychee link check of changed files only.                    |
-| `check:links:internal` | Offline link check (internal links only); lean build first. |
-| `check:links`          | Link check the whole site with Lychee; lean build first.    |
-| `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                 |
-| `check:markdown`       | Markdown lint (content and projects).                       |
-| `check:registry`       | Validate registry YAML under `data/registry/`.              |
-| `check:spelling`       | cspell over content, data, and layout Markdown.             |
-| `check:text`           | textlint over content and data.                             |
-| `check`                | Run the most commonly needed check scripts in sequence.     |
+| Script                 | Description                                                  |
+| ---------------------- | ------------------------------------------------------------ |
+| `check:all`            | Run all check scripts in sequence.                           |
+| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                 |
+| `check:codeowners`     | Verify CODEOWNERS locale section matches the registry.       |
+| `check:collector-sync` | Run collector-sync checks.                                   |
+| `check:expired`        | List expired content (by front matter).                      |
+| `check:filenames`      | [Validate file naming & detect obsolete files/folders][fn].  |
+| `check:format`         | Prettier and prose-wrap checks.                              |
+| `check:i18n`           | Validate localization front matter (`default_lang_commit`).  |
+| `check:l10n`           | Run localization checks.                                     |
+| `check:links:diff`     | Lychee link check of changed files only.                     |
+| `check:links:internal` | Offline link check (internal links only); lean build first.  |
+| `check:links`          | [Link check][] the whole site with Lychee; lean build first. |
+| `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                  |
+| `check:markdown`       | Markdown lint (content and projects).                        |
+| `check:registry`       | Validate registry YAML under `data/registry/`.               |
+| `check:spelling`       | cspell over content, data, and layout Markdown.              |
+| `check:text`           | textlint over content and data.                              |
+| `check`                | Run the most commonly needed check scripts in sequence.      |
 
 ## Fixing
 
@@ -71,7 +71,7 @@ and `NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
 | `fix:format:staged`           | Format only staged files.                                      |
 | `fix:i18n`                    | Add/fix i18n front matter (`fix:i18n:new`, `fix:i18n:status`). |
 | `fix:l10n`                    | Apply localization fixes.                                      |
-| `fix:link-cache`              | Check links, updating the committed `.lycheecache`.            |
+| `fix:link-cache`              | Check links, updating the committed [`.lycheecache`][].        |
 | `fix:link-cache:double-check` | [Re-verify failing links with the browser probe][dc].          |
 | `fix:link-cache:refresh`      | Prune the oldest cache entries, then `fix:link-cache`.         |
 | `fix:markdown`                | Fix Markdown lint issues and trailing spaces.                  |
@@ -112,7 +112,7 @@ and `NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
 | `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.                 |
 | `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.        |
 | `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^categories]          |
-| `test:local-tools:lychee`  | Lychee-binary slice of `test:local-tools` (see Notes).              |
+| `test:local-tools:lychee`  | Lychee-binary slice of `test:local-tools`.[^lychee]                 |
 | `test:public`              | Runs the `tests/public/` checks over the built site.[^categories]   |
 | `test`                     | Run the most commonly needed tests.                                 |
 
@@ -127,44 +127,42 @@ and `NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
     (`fix:link-cache` covers it) and `check:i18n` (redundant after `fix:i18n`
     records drift status). See [Housekeeping](../ci-workflows/#housekeeping).
 
+[^lychee]:
+    The subset of `test:local-tools` that needs the `lychee` binary (behavioral
+    fragment- and config-checking tests, plus an end-to-end drift-overlay
+    scenario). Those tests skip when the binary is absent, so `test:local-tools`
+    already covers them in the general test job; the trailing `:lychee` keeps
+    this script out of `test:compound-tests` (which matches `test:*-*`) so the
+    suite isn't run twice. The link-check CI job installs lychee and runs this
+    script to exercise them for real.
+
 ## Utilities
 
 | Script                         | Description                                                                               |
 | ------------------------------ | ----------------------------------------------------------------------------------------- |
-| `all`                          | Run all given scripts, then exit with failure if any failed.                              |
-| `ci:min`                       | Lock-exact inert install for CI: no lifecycle scripts, no optional deps.                  |
-| `ci:prepare`                   | Post-`ci:min` setup: fetch the pinned Hugo binary, then `prepare`.                        |
+| `all`                          | Run all given scripts, even when some fail; exit non-zero if any failed.                  |
+| `ci:min`                       | [Lock-exact inert install][] for CI: no lifecycle scripts, no optional deps.              |
+| `ci:prepare`                   | Post-`ci:min` setup: [fetch the pinned Hugo binary][], then `prepare`.                    |
 | `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter.           |
-| `install:safe`                 | Lock-exact local setup: inert install keeping optional deps, then `ci:prepare`.           |
+| `install:safe`                 | [Lock-exact local setup][]: inert install keeping optional deps, then `ci:prepare`.       |
 | `is:clean`                     | Fail if the Git working tree has changes, including untracked files.                      |
 | `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                             |
 | `log:build`, `log:check:links` | Run the corresponding script, tee output to `tmp/`, and propagate the script's exit code. |
-| `prepare`                      | Install step: `get:submodule`, then Docsy's lock-exact theme dependency install.          |
+| `prepare`                      | Install step: `get:submodule`, then Docsy's [lock-exact theme dependency install][].      |
 | `seq`                          | Run given script names in sequence; exit on first failure.                                |
 | `update:hugo`                  | Install latest hugo-extended.                                                             |
 | `update:packages`              | Run npm-check-updates to bump deps, subject to the [release cooldown][].                  |
 
-## Notes
-
-- **Install contracts.** For which environments and CI jobs run which install
-  scripts, and the supply-chain controls governing installs, see
-  [Dependency management](../dependencies/).
-- **Link cache.** The link-check scripts read and update the committed
-  `.lycheecache`. For details, see [Link checking](../link-checking/).
-- **`test:local-tools:lychee`** is the subset of `test:local-tools` that needs
-  the `lychee` binary (behavioral fragment- and config-checking tests, plus an
-  end-to-end drift-overlay scenario). Those tests skip when the binary is
-  absent, so `test:local-tools` already covers them in the general test job; the
-  trailing `:lychee` keeps this script out of `test:compound-tests` (which
-  matches `test:*-*`) so the suite isn't run twice. The link-check CI job
-  installs lychee and runs this script to exercise them for real.
-- **`all`** runs every listed script even when one fails, then exits with a
-  non-zero status if any failed.
-
 <!-- prettier-ignore-start -->
 [build kinds]: ../#build-kinds
 [dc]: ../link-checking/#double-check
+[fetch the pinned Hugo binary]: ../dependencies/#install-contracts
 [fn]: /docs/contributing/pr-checks/#filename-check
+[link check]: ../link-checking/
 [locale-auto-merge]: ../ci-workflows/#locale-auto-merge
+[lock-exact inert install]: ../dependencies/#install-contracts
+[lock-exact local setup]: ../dependencies/#install-contracts
+[lock-exact theme dependency install]: ../dependencies/#install-contracts
+[`.lycheecache`]: ../link-checking/#link-cache
 [release cooldown]: ../dependencies/#release-cooldown
 <!-- prettier-ignore-end -->
