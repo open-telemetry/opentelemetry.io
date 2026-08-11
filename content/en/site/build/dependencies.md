@@ -2,13 +2,13 @@
 title: Dependency management
 description: >-
   How this site installs, verifies, and updates its npm dependencies.
-weight: 11
+weight: 5
 ---
 
-npm dependencies are pinned by the committed `package-lock.json`: automated
-installs reproduce the lock exactly, and lifecycle scripts are disabled except
-for a reviewed allowlist. For the threat model and rationale behind these
-controls, see [Supply-chain security](../../design/supply-chain-security/).
+npm dependencies are pinned by the committed `package-lock.json`, and installs
+run only reviewed lifecycle scripts. For the threat model and rationale behind
+these controls, see
+[Supply-chain security](../../design/supply-chain-security/).
 
 ## Supply-chain controls {#controls}
 
