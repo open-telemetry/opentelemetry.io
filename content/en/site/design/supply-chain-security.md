@@ -35,64 +35,46 @@ The attack paths that matter for this repository:
 The recurring theme is **fail closed**: when a [control][] can't be enforced,
 the install fails rather than proceeding without it.
 
-### Minimize the dependency surface
-
-Every dependency, direct or transitive, is surface the controls must cover.
-Unused and convenience dependencies are dropped rather than carried.
-
-### Install from the lock; resolve deliberately
-
-Installs are [lock-exact][install contracts]: they reproduce the committed,
-reviewed [`package-lock.json`][] and never resolve version ranges. The one
-exception: a local `npm install` can rewrite the lock when it disagrees with
-`package.json`; the [verification below](#verify-dont-trust) catches such
-rewrites. Resolution, the risky step, is reserved for [deliberate dependency
-updates][].
-
-### Resolve only cooled-down releases
-
-Freshly published versions are the attack window: registry-side takedowns of
-malicious releases take time. Version resolution ignores releases younger than a
-[cooldown period][cooldown], trading a few days of update latency for the time
-takedowns need to land.
-
-### Run only reviewed lifecycle scripts
-
-[Lifecycle scripts][] are [default-deny][allowlist]: an install runs only
-reviewed, allowlisted scripts. Approvals are version-exact so that a compromised
-patch release can't inherit its predecessor's approval: every bump of a
-script-bearing package forces a fresh review.
-
-The [allowlist][] records both review outcomes: a needed script is approved, and
-an unnecessary one (a shipped prebuilt binary suffices) gets an explicit denial.
-Silence always means unreviewed, and unreviewed fails the install. Denials can
-be name-level because they grant nothing. Exceptions are named and re-enabled
-inline at the point of use, never by weakening the default posture.
-
-### Fail closed on old npm
-
-The [cooldown][] and [script-gating][allowlist] controls are `.npmrc` settings
-that older npm versions silently ignore: an old npm would install without them
-and report success. An [npm engines floor][] with strict engine checking turns
-that silent bypass into an install failure.
-
-### Neutralize the Netlify auto-install
-
-Netlify runs its [own npm install][netlify-deps] before the build command,
-outside the scripts this repository controls, and offers no way to disable it.
-So that the repository decides which install commands run, the configuration
-[neutralizes it][inert auto-install] and the build command performs the [real
-install][install contracts]. Defense in depth: if Netlify ever stops honoring
-the constraining flags, `.npmrc` still gates scripts, and the
-[verification below](#verify-dont-trust) catches what slips through.
-
-### Verify, don't trust
-
-Inert and lock-exact are verified claims, not assumptions:
-
-- The Netlify build command runs its install between [clean-working-tree
-  checks][install contracts]; any Git-visible change fails the build.
-- A `postinstall` check warns when a local install rewrites the lock.
+- **Minimize the dependency surface**: every dependency, direct or transitive,
+  is surface the controls must cover; unused and convenience dependencies are
+  dropped rather than carried.
+- **Install from the lock; resolve deliberately**:
+  - Installs are [lock-exact][install contracts]: they reproduce the committed,
+    reviewed [`package-lock.json`][] and never resolve version ranges.
+  - Resolution, the risky step, is reserved for [deliberate dependency
+    updates][].
+  - The one exception: a local `npm install` can rewrite the lock when it
+    disagrees with `package.json`; verification (last item) catches such
+    rewrites.
+- **Resolve only cooled-down releases**: freshly published versions are the
+  attack window, so version resolution ignores releases younger than a [cooldown
+  period][cooldown], trading a few days of update latency for the time
+  registry-side takedowns need.
+- **Run only reviewed lifecycle scripts**: [lifecycle scripts][] are
+  [default-deny][allowlist]; an install runs only reviewed, allowlisted scripts.
+  - Approvals are version-exact: a compromised patch release can't inherit its
+    predecessor's approval.
+  - Reviews record both outcomes, approval or explicit denial, so silence always
+    means unreviewed, and unreviewed fails the install.
+  - Denials can be name-level because they grant nothing.
+  - Exceptions are named and re-enabled inline at the point of use, never by
+    weakening the default posture.
+- **Fail closed on old npm**: older npm versions silently ignore the
+  [cooldown][] and [script-gating][allowlist] `.npmrc` settings, installing
+  without them and reporting success; the [npm engines floor][] turns that
+  silent bypass into an install failure.
+- **Neutralize the Netlify auto-install**: Netlify's [own npm
+  install][netlify-deps] before the build command can't be disabled, so that the
+  repository decides which install commands run:
+  - The configuration [neutralizes it][inert auto-install]; the build command
+    performs the [real install][install contracts].
+  - Defense in depth: if Netlify ever stops honoring the constraining flags,
+    `.npmrc` still gates scripts, and verification catches what slips through.
+- **Verify, don't trust**: inert and lock-exact are verified claims, not
+  assumptions.
+  - The Netlify build command runs its install between [clean-working-tree
+    checks][install contracts]; any Git-visible change fails the build.
+  - A `postinstall` check warns when a local install rewrites the lock.
 
 ## Prior art
 
