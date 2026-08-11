@@ -57,23 +57,23 @@ need to land.
 
 ### Run only reviewed lifecycle scripts
 
-Lifecycle scripts are [default-deny][script allowlist]: an install runs only
+[Lifecycle scripts][] are [default-deny][script allowlist]: an install runs only
 reviewed, allowlisted scripts. Approvals are version-exact so that a compromised
 patch release can't inherit its predecessor's approval: every bump of a
 script-bearing package forces a fresh review.
 
-Reviews record both outcomes: a needed script is approved, and an unnecessary
-one (a shipped prebuilt binary suffices) gets an explicit denial, so silence
-always means unreviewed, and unreviewed fails the install. Denials can be
-name-level because they grant nothing. Exceptions are named and re-enabled
+The allowlist records both review outcomes: a needed script is approved, and an
+unnecessary one (a shipped prebuilt binary suffices) gets an explicit denial.
+Silence always means unreviewed, and unreviewed fails the install. Denials can
+be name-level because they grant nothing. Exceptions are named and re-enabled
 inline at the point of use, never by weakening the default posture.
 
 ### Fail closed on old npm
 
-The cooldown and script-gating controls are `.npmrc` settings that older npm
-versions silently ignore: an old npm would install without them and report
-success. An [npm engines floor][] with strict engine checking turns that silent
-bypass into an install failure.
+The [cooldown][cooldown period] and [script-gating][script allowlist] controls
+are `.npmrc` settings that older npm versions silently ignore: an old npm would
+install without them and report success. An [npm engines floor][] with strict
+engine checking turns that silent bypass into an install failure.
 
 ### Keep vendor auto-installs inert
 
@@ -86,10 +86,11 @@ constraining flags, `.npmrc` still gates scripts, and the
 
 ### Verify, don't trust
 
-Inert and lock-exact are verified claims, not assumptions: the Netlify install
-runs between [clean-working-tree checks][install contracts] that fail the build
-on any Git-visible change, and a local install that rewrites the lock warns
-immediately.
+Inert and lock-exact are verified claims, not assumptions:
+
+- The Netlify build command runs its install between [clean-working-tree
+  checks][install contracts]; any Git-visible change fails the build.
+- A `postinstall` check warns when a local install rewrites the lock.
 
 ## Prior art
 

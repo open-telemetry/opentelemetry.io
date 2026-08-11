@@ -48,11 +48,13 @@ npm install --package-lock-only --ignore-scripts
 
 ### Script-bearing packages
 
-When updating a package that has an `allowScripts` entry:
+When adding or updating a package that has, or needs, an `allowScripts` entry,
+the contributor making the change:
 
-1. Review the new version's lifecycle scripts.
-2. If the script is needed, update the entry's exact version together with the
-   dependency. A denial (`false`) is name-level and needs no update.
+1. Reviews the new version's lifecycle scripts.
+2. Records the outcome, committed together with the dependency change and vetted
+   in PR review: a needed script as an exact-version approval, an unneeded one
+   as a name-level denial (`false`, which needs no update on later bumps).
 
 ### Lock-file maintenance
 
