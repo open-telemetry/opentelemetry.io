@@ -36,11 +36,12 @@ The recurring theme is **fail closed**: when a [control][] can't be enforced,
 the install fails rather than proceeding without it. Decisions are grouped by
 the attack path each counters, ordered roughly by when they act.
 
-### Cut the attack surface
+### Cut attack surface
 
-- **Minimize dependencies**: every dependency, direct or transitive, is surface
-  the controls must cover; unused and convenience dependencies are dropped
-  rather than carried.
+**Minimize dependencies**:
+
+- Every dependency, direct or transitive, is surface the controls must cover
+- Unused and convenience dependencies are dropped rather than carried.
 
 ### Constrain version resolution
 
@@ -59,27 +60,29 @@ the attack path each counters, ordered roughly by when they act.
 
 ### Constrain script execution
 
-- **Run only reviewed lifecycle scripts**: [lifecycle scripts][] are
-  [default-deny][allowlist]; an install runs only reviewed, allowlisted scripts.
-  - Approvals are version-exact: a compromised patch release can't inherit its
-    predecessor's approval.
-  - Reviews record both outcomes, approval or explicit denial, so silence always
-    means unreviewed, and unreviewed fails the install.
-  - Denials can be name-level because they grant nothing.
-  - Exceptions are named and re-enabled inline at the point of use, never by
-    weakening the default posture.
+**Run only reviewed lifecycle scripts**: [lifecycle scripts][] are
+[default-deny][allowlist]; an install runs only reviewed, allowlisted scripts.
+
+- Approvals are version-exact: a compromised patch release can't inherit its
+  predecessor's approval.
+- Reviews record both outcomes, approval or explicit denial, so silence always
+  means unreviewed, and unreviewed fails the install.
+- Denials can be name-level because they grant nothing.
+- Exceptions are named and re-enabled inline at the point of use, never by
+  weakening the default posture.
 
 ### Constrain unattended installs
 
-- **Neutralize the Netlify auto-install**: Netlify's [own npm
-  install][netlify-deps] before the build command can't be disabled, so that the
-  repository decides which install commands run:
-  - The configuration [neutralizes it][inert auto-install]; the build command
-    performs the [real install][install contracts].
-  - Defense in depth: if Netlify ever stops honoring the constraining flags,
-    `.npmrc` still gates scripts, and verification catches what slips through.
+**Neutralize the Netlify auto-install**: Netlify's [own npm
+install][netlify-deps] before the build command can't be disabled, so that the
+repository decides which install commands run:
 
-### Keep the controls themselves honest
+- The configuration [neutralizes it][inert auto-install]; the build command
+  performs the [real install][install contracts].
+- Defense in depth: if Netlify ever stops honoring the constraining flags,
+  `.npmrc` still gates scripts, and verification catches what slips through.
+
+### Keep controls honest
 
 - **Fail closed on old npm**: older npm versions silently ignore the
   [cooldown][] and [script-gating][allowlist] `.npmrc` settings, installing
