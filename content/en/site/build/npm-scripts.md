@@ -7,20 +7,21 @@ weight: 20
 todo: Keep table entries sorted
 ---
 
-Script definitions live in the repository root [`package.json`][]. Run any
-script with `npm run <script-name>`. Scripts whose names start with `_` are
-internal helpers and are not intended to be run directly; so are `NAME::pre` and
-`NAME::post` scripts, the explicitly called pre and post steps of `NAME`.
+Script definitions live in the repository root [`package.json`][]. To run a
+script, use `npm run` _`SCRIPT_NAME`_.
 
-> [!NOTE] Default vs `:all` script variants
->
-> The **`check`**, **`fix`**, and **`test`** scripts run the most commonly
-> needed subscripts for each action. To run every subscript, use the **`*:all`**
-> variants:
->
-> - `check:all`
-> - `fix:all`
-> - `test:all`
+## Nomenclature
+
+- **Internal scripts**
+  - Names starting with `_` are internal helpers and are not intended to be run
+    directly.
+  - So are `NAME::pre` and `NAME::post` scripts, the explicitly called pre and
+    post steps of `NAME`.
+- **Default vs `:all` script variants**
+  - The **`check`**, **`fix`**, and **`test`** scripts run the most commonly
+    needed subscripts for each action.
+  - To run every subscript, use the **`*:all`** variants `check:all`, `fix:all`,
+    and `test:all`.
 
 ## Installing and updating dependencies
 
