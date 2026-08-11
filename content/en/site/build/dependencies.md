@@ -7,25 +7,26 @@ weight: 5
 
 npm dependencies are pinned by the committed `package-lock.json`, and installs
 run only reviewed lifecycle scripts. For the threat model and rationale behind
-these controls, see [Supply-chain security][]
+these controls, see [Supply-chain security][].
 
 ## Install contracts
 
 Automated environments install lock-exact and script-free, then explicitly
 re-enable the one reviewed hook: the `hugo-extended` rebuild that fetches the
 pinned Hugo binary. Local installs follow the lock while it agrees with
-`package.json`, with lifecycle scripts gated by the allowlist rather than
-disabled:
+`package.json`, with lifecycle scripts gated by the
+[allowlist](#lifecycle-script-allowlist) rather than disabled:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.
 - **Devcontainer**: `npm run install:safe`, the same contract, keeping optional
   dependencies.
-- **Netlify**: `npm run install:safe`, run by the build command after the inert
-  auto-install, between clean-working-tree checks; lock drift or any other
-  Git-visible change fails the build. If the check fails on residue from a
-  retired path — Netlify's build cache restores it — clear the deploy context's
-  build cache and retry rather than ignoring the path.
+- **Netlify**: `npm run install:safe`, run by the build command after the
+  [inert auto-install](#inert-netlify-auto-install), between clean-working-tree
+  checks; lock drift or any other Git-visible change fails the build. If the
+  check fails on residue from a retired path — Netlify's build cache restores it
+  — clear the deploy context's build cache and retry rather than ignoring the
+  path.
 - **Local**: `npm run install:safe`, or a standard `npm install`; see [local
   setup][].
 
@@ -36,9 +37,10 @@ invokes Docsy's own lock-exact, script-free theme-dependency install.
 
 ### Routine updates
 
-`npm run update:packages` bumps `package.json` only. The release cooldown
-applies: versions still inside the cooldown window are not offered. Then
-regenerate the lock and commit both files together:
+`npm run update:packages` bumps `package.json` only. The
+[release cooldown](#release-cooldown) applies: versions still inside the
+cooldown window are not offered. Then regenerate the lock and commit both files
+together:
 
 ```sh
 npm install --package-lock-only --ignore-scripts
@@ -77,7 +79,7 @@ your user `.npmrc` is relaxed to the project value here; to keep yours for an
 invocation, set the `npm_config_min_release_age` environment variable, which
 outranks both.
 
-Renovate applies its own cooldown to the update PRs it opens, longer for the
+[Renovate][] applies its own cooldown to the update PRs it opens, longer for the
 updates that merge without human review.
 
 Configuration:
@@ -88,7 +90,7 @@ Configuration:
 ### Lifecycle-script allowlist
 
 Installs run a package's lifecycle scripts only when its exact name and version
-is allowed through `allowScripts` allowlist:
+is allowed through the `allowScripts` allowlist:
 
 - An entry set to `false` records a reviewed denial: the package installs, its
   script is skipped.
@@ -132,5 +134,6 @@ Configuration:
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [local setup]: /docs/contributing/development/#local-setup
 [netlify-deps]: https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm
+[Renovate]: https://docs.renovatebot.com/
 [Supply-chain security]: ../../design/supply-chain-security/
 <!-- prettier-ignore-end -->
