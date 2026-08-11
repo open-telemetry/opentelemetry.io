@@ -4003,6 +4003,7 @@ https://github.com/open-telemetry/opentelemetry-specification/tree/main/specific
 https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/logs/sdk_exporters/README.md,200,1785911060
 https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/logs/sdk_exporters/stdout.md,200,1785911060
 https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/logs/supplementary-guidelines.md,200,1785911061
+https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/maturity-levels.md,200,1786444952
 https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/metrics/README.md,200,1785911062
 https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/metrics/api.md,200,1785911063
 https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/metrics/data-model.md,200,1785911063
@@ -4081,6 +4082,7 @@ https://github.com/open-telemetry/opentelemetry-specification/tree/v1.59.0/oteps
 https://github.com/open-telemetry/opentelemetry-specification/tree/v1.60.0/oteps/0035-opentelemetry-protocol.md,200,1786185576
 https://github.com/open-telemetry/opentelemetry-specification/tree/v1.60.0/oteps/0152-telemetry-schemas.md,200,1786185576
 https://github.com/open-telemetry/opentelemetry-specification/tree/v1.60.0/oteps/0232-maturity-of-otel.md#explanation,200,1786185576
+https://github.com/open-telemetry/opentelemetry-specification/tree/v1.60.0/oteps/0232-maturity-of-otel.md,200,1786444952
 https://github.com/open-telemetry/opentelemetry-specification/tree/v1.60.0/oteps/logs/0091-logs-vocabulary.md,200,1786185576
 https://github.com/open-telemetry/opentelemetry-specification/tree/v1.60.0/oteps/logs/0092-logs-vision.md,200,1786185576
 https://github.com/open-telemetry/opentelemetry-specification/tree/v1.60.0/oteps/logs/0097-log-data-model.md#appendix-a-example-mappings,200,1786185576
