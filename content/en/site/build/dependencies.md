@@ -13,9 +13,7 @@ these controls, see [Supply-chain security][].
 
 Automated environments install lock-exact and script-free, then explicitly
 re-enable the one reviewed hook: the `hugo-extended` rebuild that fetches the
-pinned Hugo binary. Local installs follow the lock while it agrees with
-`package.json`, with lifecycle scripts gated by the
-[allowlist](#lifecycle-script-allowlist) rather than disabled:
+pinned Hugo binary. Per environment:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.
@@ -28,8 +26,10 @@ pinned Hugo binary. Local installs follow the lock while it agrees with
   - If the check fails on residue from a retired path (Netlify's build cache
     restores it), clear the deploy context's build cache and retry rather than
     ignoring the path.
-- **Local**: `npm run install:safe`, or a standard `npm install`; see [local
-  setup][].
+- **Local**: `npm run install:safe`, or a standard `npm install`, which follows
+  the lock while it agrees with `package.json` and gates lifecycle scripts by
+  the [allowlist](#lifecycle-script-allowlist) rather than disabling them; see
+  [local setup][].
 
 The nested [Docsy][] theme setup follows the same contract: the `prepare` step
 invokes Docsy's own lock-exact, script-free theme-dependency install.
