@@ -121,12 +121,15 @@ Configuration:
 ### Inert Netlify auto-install
 
 Netlify's [automatic install][netlify-deps] at the start of a build is
-constrained via `NPM_FLAGS` to a dry run with scripts disabled:
+constrained via `NPM_FLAGS` in [`netlify.toml`][] to a dry run with scripts disabled:
 
 - `--dry-run`: npm resolves and logs what an install would change, but writes
   nothing.
 - `--ignore-scripts`: lifecycle scripts stay disabled by explicit instruction,
   not as a side effect of the dry run.
+
+`NPM_FLAGS` is a Netlify build setting, not npm config: it applies only to the
+automatic install and does not affect the build command's npm runs.
 
 Configuration:
 
