@@ -5,7 +5,10 @@ command = "npm run netlify-build:preview"
 [build.environment]
 # Keep Netlify's automatic npm install inert; the build command runs the real
 # install. Pin npm above the package engines floor before the automatic install
-# runs. Rationale: https://opentelemetry.io/site/design/supply-chain-security/
+# runs. NPM_FLAGS applies only to that automatic `npm install` — it is a Netlify
+# buildbot variable, not npm config, so it can't affect the build command's npm
+# runs: https://docs.netlify.com/build/configure-builds/manage-dependencies/
+# Rationale: https://opentelemetry.io/site/design/supply-chain-security/
 NPM_VERSION = "11.19.0"
 NPM_FLAGS = "--dry-run --ignore-scripts"
 

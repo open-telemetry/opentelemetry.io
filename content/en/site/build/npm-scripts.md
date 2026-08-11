@@ -74,7 +74,7 @@ are internal helpers and are not intended to be run directly.
 | `fix:link-cache:double-check` | [Re-verify failing links with the browser probe][dc].          |
 | `fix:link-cache:refresh`      | Prune the oldest cache entries, then `fix:link-cache`.         |
 | `fix:markdown`                | Fix Markdown lint issues and trailing spaces.                  |
-| `fix:submodule`               | Pin submodule revisions (same as `pin:submodule`).             |
+| `fix:submodule`               | Update, re-pin, and list submodule revisions.                  |
 | `fix:filenames`               | [Rename files & remove obsolete files/folders][fn].            |
 | `fix:dict`                    | Sort cspell word lists and normalize front matter.             |
 | `fix:expired`                 | Delete files reported by `check:expired`.                      |
