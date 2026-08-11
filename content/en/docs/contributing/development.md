@@ -75,21 +75,22 @@ Your development environment will be initialized via the
     nvm install lts && nvm use lts
     ```
 
-4.  Get npm packages and other prerequisites:
-
-    ```sh
-    npm install
-    ```
-
-    Or, for the [lock-exact, script-suppressing setup][ci-install] that the
-    devcontainer uses:
+4.  Get npm packages and other prerequisites, using the [lock-exact,
+    script-suppressing setup][ci-install] that the devcontainer uses:
 
     ```sh
     npm run install:safe
     ```
 
+    Or, use a standard install:
+
+    ```sh
+    npm install
+    ```
+
     Either install uses the dependency versions pinned in the committed
-    `package-lock.json`. Lock-file cases:
+    `package-lock.json`, and any lifecycle script that runs is subject to the
+    reviewed allowlist. Lock-file cases:
 
     - **You changed dependencies**: regenerate the lock file and commit it
       together with `package.json`:

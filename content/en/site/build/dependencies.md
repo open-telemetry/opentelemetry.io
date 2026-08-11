@@ -68,8 +68,8 @@ disabled:
   Git-visible change fails the build. If the check fails on residue from a
   retired path — Netlify's build cache restores it — clear the deploy context's
   build cache and retry rather than ignoring the path.
-- **Local**: `npm install`, or `npm run install:safe` for the automated
-  contract; see [local setup][].
+- **Local**: `npm run install:safe`, or a standard `npm install`; see [local
+  setup][].
 
 The nested Docsy theme setup follows the same contract: the `prepare` step
 invokes Docsy's own lock-exact, script-free theme-dependency install.
