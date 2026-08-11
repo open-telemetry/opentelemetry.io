@@ -75,7 +75,7 @@ that older npm versions silently ignore: an old npm would install without them
 and report success. An [npm engines floor][] with strict engine checking turns
 that silent bypass into an install failure.
 
-### Keep vendor auto-installs inert
+### Keep the Netlify auto-install inert
 
 [Netlify][] runs its own npm install before the build command, outside the
 scripts this repository controls. Rather than trust it, the configuration
