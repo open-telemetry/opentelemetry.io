@@ -1,8 +1,7 @@
 ---
-title: Build
+title: ビルド
 description: >-
-  CI/CD workflows, how to build this site, and how to perform various site
-  maintenance activities
+  CI/CD ワークフロー、このサイトのビルド方法、およびさまざまなサイトメンテナンス作業の実行方法
 weight: 40
 default_lang_commit: 74d8cb2aaefe493295c6c49e2e8ef39801847880
 ---
