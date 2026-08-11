@@ -25,22 +25,20 @@ The attack paths that matter for this repository:
 
 - **Version resolution**: any install that resolves version ranges can pull a
   freshly published malicious release.
-- **Lifecycle scripts**: install-time script execution turns a bad package into
-  compromised contributor hosts, CI runners, and build images.
+- **Lifecycle scripts**: install-time script execution lets a bad package
+  compromise contributor hosts, CI runners, and build images.
 - **Unattended installs**: CI jobs and the Netlify build image install without a
   human watching, as do agent sessions.
 
 ## Design decisions
 
-The recurring theme is **fail closed**: when a control can't be enforced, the
-install fails rather than proceeding without it.
+The recurring theme is **fail closed**: when a [control][] can't be enforced,
+the install fails rather than proceeding without it.
 
 ### Minimize the dependency surface
 
-Every dependency, direct or transitive, is surface the remaining controls must
-cover. Unused and convenience dependencies are dropped rather than carried:
-removing the unused Netlify CLI more than halved the locked dependency graph and
-cut the packages bearing install scripts from seven to three.
+Every dependency, direct or transitive, is surface the controls must cover.
+Unused and convenience dependencies are dropped rather than carried.
 
 ### Install from the lock; resolve deliberately
 
@@ -48,13 +46,13 @@ Automated install paths are lock-exact: they reproduce the committed, reviewed
 `package-lock.json` and never resolve version ranges. A local `npm install`
 follows the lock while it agrees with `package.json`, and rewrites it when the
 two disagree; the verification below catches such rewrites. Resolution, the
-risky step, is reserved for deliberate dependency updates.
+risky step, is reserved for [deliberate dependency updates][].
 
 ### Resolve only cooled-down releases
 
 Freshly published versions are the attack window: registry-side takedowns of
 malicious releases take time. Version resolution ignores releases younger than a
-cooldown period, trading a few days of update latency for the time takedowns
+[cooldown period][], trading a few days of update latency for the time takedowns
 need to land.
 
 ### Run only reviewed lifecycle scripts
@@ -108,6 +106,9 @@ install that rewrites the lock warns immediately.
   - The [OpenSSF npm guide][openssf]: lock-exact CI installs.
 
 <!-- prettier-ignore-start -->
+[control]: ../../build/dependencies/#controls
+[cooldown period]: ../../build/dependencies/#release-cooldown
+[deliberate dependency updates]: ../../build/dependencies/#updating
 [openssf]: https://github.com/ossf/package-manager-best-practices/blob/main/published/npm.md
 [pnpm]: https://pnpm.io/settings/build
 [pnpm defers]: https://pnpm.io/settings/dependency-resolution
