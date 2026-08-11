@@ -96,8 +96,14 @@ When updating a package that has an `allowScripts` entry:
 
 ### Lock-file maintenance
 
-For contributor lock-file cases (regenerating the lock after a dependency
-change, merge conflicts, unexplained rewrites), see [local setup][].
+- **You changed dependencies**: regenerate the lock as in
+  [routine updates](#routine-updates) and commit it together with
+  `package.json`.
+- **Merge conflict on the lock file**: take the `main` version and rerun the
+  regeneration command.
+- **The lock file changed, but you didn't change dependencies** (a `postinstall`
+  check warns when an install does this): that signals drift; restore the lock
+  and investigate rather than committing the rewrite.
 
 <!-- prettier-ignore-start -->
 [local setup]: /docs/contributing/development/#local-setup
