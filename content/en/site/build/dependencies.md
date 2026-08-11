@@ -18,6 +18,10 @@ All controls are configured in files at the repository root.
 
 Version resolution ignores releases younger than the configured minimum age.
 Lock-exact installs (`npm ci`) don't resolve versions, so they are unaffected.
+npm gives project config precedence over user config, so a stricter cooldown in
+your user `.npmrc` is relaxed to the project value here; to keep yours for an
+invocation, set the `npm_config_min_release_age` environment variable, which
+outranks both.
 
 Configuration: `min-release-age` in `.npmrc`.
 
