@@ -23,7 +23,11 @@ your user `.npmrc` is relaxed to the project value here; to keep yours for an
 invocation, set the `npm_config_min_release_age` environment variable, which
 outranks both.
 
-Configuration: `min-release-age` in `.npmrc`.
+Renovate applies its own cooldown to the update PRs it opens: 14 days for
+patch updates, which automerge, and 7 for the update types a human reviews.
+
+Configuration: `min-release-age` in `.npmrc`; `minimumReleaseAge` in
+`.github/renovate.json5`.
 
 ### Lifecycle-script allowlist
 
