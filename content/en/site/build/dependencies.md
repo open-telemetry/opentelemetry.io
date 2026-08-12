@@ -21,9 +21,10 @@ fetches the pinned Hugo binary. Per environment:
   dependencies.
 - **Netlify**: `npm run install:safe`, run by the [Netlify][] build command
   after the [inert auto-install](#inert-netlify-auto-install), between
-  clean-working-tree checks: lock drift or any other Git-visible change fails
-  the build. For failures on paths the install never touched, see
-  [Stale Netlify build cache](#netlify-build-cache) below.
+  clean-working-tree checks:
+  - Lock drift or any other Git-visible change fails the build.
+  - For failures on paths the install never touched, see
+    [Stale Netlify build cache](#netlify-build-cache) below.
 - **Local**: `npm run install:safe`, or a standard `npm install`, which follows
   the lock while it agrees with `package.json` and gates lifecycle scripts by
   the [allowlist](#lifecycle-script-allowlist) rather than disabling them; see
