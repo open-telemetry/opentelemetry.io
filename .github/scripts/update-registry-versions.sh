@@ -172,6 +172,10 @@ fi
 if [[ -n $(git status --porcelain) ]]; then
     echo "Versions have been updated, formatting and pushing changes."
 
+    # Registry updates can add or remove external URLs; refresh the link cache
+    # so that the PR passes the link check. Ignore link-check failures so we
+    # can still commit link-cache updates.
+    $NPM run fix:link-cache || true
     $NPM run fix:format
 
     $GIT checkout -b "$branch"

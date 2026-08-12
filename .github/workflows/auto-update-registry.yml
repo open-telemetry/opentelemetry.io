@@ -26,6 +26,28 @@ jobs:
           git config user.name otelbot
           git config user.email 197425009+otelbot@users.noreply.github.com
 
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm run ci:min
+      - run: npm run ci:prepare
+
+      - uses: ./.github/actions/install-lychee
+
+      # The drift-pending overlay used by link-check config generation diffs
+      # against the drift-status baseline; deepen the shallow clone to it.
+      # Same extraction as in check-links.yml; keep the two in sync.
+      - name: Deepen history to the drift-status baseline
+        run: |
+          sha=$(sed -n 's/^commit: \([0-9a-f]\{40\}\)$/\1/p' data/l10n-drift.yaml)
+          if [[ ! "$sha" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error file=data/l10n-drift.yaml::Expected a single 'commit: FULL_SHA' line."
+            exit 1
+          fi
+          git fetch --depth=1 origin --end-of-options "$sha"
+
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
@@ -38,6 +60,10 @@ jobs:
         env:
           # change to ${{ secrets.GITHUB_TOKEN }} and comment out the step above when testing against a fork
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+          # Authenticated github.com link checks (rate limits). Set explicitly:
+          # the link-check scripts otherwise bridge a token from `gh`, which
+          # here would be the higher-privileged App token above.
+          GITHUB_TOKEN: ${{ github.token }}
 
   report-failure:
     needs: auto-update
