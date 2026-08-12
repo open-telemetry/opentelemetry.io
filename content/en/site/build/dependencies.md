@@ -167,8 +167,9 @@ only to the automatic install, never to the build command's npm runs.
 
 Repository wiring (package scripts, CI, helper scripts, contributor docs) never
 invokes a bin as `npx BIN`: on a stale or missing `node_modules`, `npx` falls
-back to the public registry and silently executes whatever package holds that
-name.
+back to the public registry and executes whatever package holds that name. Its
+install prompt is no defense: it's skipped in non-interactive contexts and
+invites a reflexive yes elsewhere.
 
 - **Instead**:
   - Package scripts invoke dependency-provided bins directly; npm puts
