@@ -34,23 +34,31 @@ invokes Docsy's own lock-exact, script-free theme-dependency install.
 
 ### Stale Netlify build cache {#netlify-build-cache}
 
-Netlify keeps a build cache per [deploy context][]: one for production, and one
-per already-built PR, seeded from the production cache on the PR's first build.
+Netlify keeps a build cache per [deploy context][]:
+
+- One for production
+- One per already-built PR, seeded from the production cache on the PR's first
+  build.
+
 Each cache [includes a clone of the repository][], and checking out a commit
 that drops a git submodule leaves the submodule's working tree in place, so a
 removed submodule can ride a cache back into later builds as untracked residue
 and fail the clean-working-tree checks: the deploy log shows the path in a `?? `
-status line. Clear the affected [build cache][] rather than ignoring the path:
+status line.
 
-- **Production**: **Clear cache and deploy site**, under **Deploys** > **Trigger
-  deploy**.
+Clear the affected [build cache][] rather than ignoring the path:
+
+- **Production**:
+  - Clear cache and deploy site, under **Deploys** > **Trigger deploy**.
 - **Deploy Previews**: each already-built PR holds its own cache copy, untouched
-  by a production clear. Clear it from the PR's latest deploy page with
-  **Retry** > **Clear cache and retry with latest branch commit**. There is no
-  bulk clear across PRs.
+  by a production clear after the fact.
+  - Clear it from the PR's latest deploy page with **Retry** > **Clear cache and
+    retry with latest branch commit**. There is no bulk clear across PRs.
 
-When removing a git submodule, clear the production build cache as part of the
-removal, before the residue seeds per-PR caches.
+> [!IMPORTANT]
+>
+> After removing a git submodule, clear the production build cache as part of
+> the removal, before the residue seeds per-PR caches.
 
 ## Updating dependencies {#updating}
 
