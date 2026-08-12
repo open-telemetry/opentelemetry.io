@@ -163,6 +163,23 @@ neutralized by [`NPM_FLAGS`][netlify-deps] in [`netlify.toml`][]:
 **Scope**: `NPM_FLAGS` is a Netlify build setting, not npm config; it applies
 only to the automatic install, never to the build command's npm runs.
 
+### No bare npx
+
+Repository wiring (package scripts, CI, helper scripts, contributor docs) never
+invokes a bin as `npx BIN`: on a stale or missing `node_modules`, `npx` falls
+back to the public registry and silently executes whatever package holds that
+name.
+
+- **Instead**:
+  - Package scripts invoke dependency-provided bins directly; npm puts
+    `node_modules/.bin` on their `PATH`, and a missing bin fails loudly with
+    zero registry traffic.
+  - Contexts without that `PATH` entry (docs, standalone scripts) use
+    `npm exec --no -- BIN`, which never installs.
+- **Exception**: deliberate, version-pinned one-offs of published packages
+  (`npx PKG@X.Y.Z`), as run by `scripts/npx-helper.sh`.
+- **Enforcement**: review discipline; there is no automated check.
+
 **Defense in depth**: the [real install][install contracts] is `npm ci`, which
 replaces `node_modules` wholesale, so auto-install or build-cache residue there
 does not survive into the build even though `node_modules` is invisible to the
