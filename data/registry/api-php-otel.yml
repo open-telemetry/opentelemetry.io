@@ -1,5 +1,5 @@
 title: PHP API
-registryType: core
+registryType: api
 language: php
 tags:
   - php

@@ -1,6 +1,6 @@
 # cSpell:ignore Philipp Lengauer
 title: OpenTelemetry for shell scripts and GitHub actions
-registryType: core
+registryType: sdk
 language: shell
 tags:
   - shell
