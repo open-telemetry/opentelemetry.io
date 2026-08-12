@@ -506,8 +506,8 @@ another on failure.
 
 For details on how to set up `k8s-cache` using Helm, see the
 [Helm chart guide](../kubernetes-helm/#centralizing-kubernetes-metadata-with-k8s-cache).
-For cache configuration options, see [Kubernetes decorator](../../configure/metrics-traces-attributes/#kubernetes-decorator).
-
+For cache configuration options, see
+[Kubernetes decorator](../../configure/metrics-traces-attributes/#kubernetes-decorator).
 
 ## Providing an external configuration file
 
