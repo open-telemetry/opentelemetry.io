@@ -1,8 +1,6 @@
 ---
 title: Kubernetes Observability
 linkTitle: Kubernetes Observability
-date: 2026-04-23
-author: Alexandre Ferreira
 ---
 
 ## Summary
@@ -16,44 +14,15 @@ By implementing the patterns in this blueprint, organizations can expect to achi
 - Uniform metadata enrichment using OTel semantic conventions, enabling correlated investigation across metrics, logs, and traces.
 - Self-monitoring of the telemetry collection infrastructure so silent data gaps are detected before they affect incident response.
 
-### When to use OpenTelemetry-native receivers vs. Prometheus scraping
-
-Use this decision tree to choose a collection method for any signal source in the
-cluster. The guiding principle: prefer OTel-native receivers for workload,
-host, and cluster-state metrics, and fall back to Prometheus scraping (via the
-Target Allocator) for third-party components that only expose a `/metrics`
-endpoint.
-
-```mermaid
-flowchart TD
-  Start(["`What are you trying to observe?`"]) -->|"`Kubernetes object/state<br/>(pod phase, restarts, replica/node conditions)`"| Cluster["`**k8s_cluster receiver**<br/>(clusterMetrics preset)<br/>replaces kube-state-metrics`"]
-  Start -->|"`Host/node OS metrics<br/>(CPU, memory, disk, network)`"| Host["`**hostmetrics receiver**<br/>(hostMetrics preset)<br/>replaces node-exporter`"]
-  Start -->|"`Pod/container resource usage<br/>(throttling, OOM, per-container CPU/mem)`"| Kubelet["`**kubeletstats receiver**<br/>(kubeletMetrics preset)<br/>replaces cAdvisor/kubelet`"]
-  Start -->|"`Third-party/critical component<br/>(CoreDNS, CNI, Ingress, KEDA, cert-manager)`"| Q3{"`Exposes a<br/>Prometheus<br/>/metrics<br/>endpoint?`"}
-  style Q3 font-size:11px
-
-  Q3 -->|"`Yes, with a PodMonitor/ServiceMonitor CR`"| TAcr["`**Prometheus receiver + Target Allocator**<br/>matching PodMonitor/ServiceMonitor CRs`"]
-  Q3 -->|"`Yes, no CR available`"| TAann["`**Prometheus receiver + Target Allocator**<br/>via kubernetes_sd_configs + annotations`"]
-  Q3 -->|No| Native["`Use the component's native OTel receiver if one exists,<br/>otherwise export via an OTLP-capable adapter`"]
-
-  Cluster --> Enrich["`Enrich all signals with the **kubernetesAttributes** preset<br/>(OTel k8s semantic conventions)`"]
-  Host --> Enrich
-  Kubelet --> Enrich
-  TAcr --> Enrich
-  TAann --> Enrich
-```
-
 ## Background
 
 Kubernetes clusters host two classes of observable entities:
 
-1) **Workloads** — application containers and the Kubernetes primitives (Statefulset, Deployment, Daemonset, ReplicaSet, etc) managing them - emit signals via OTel SDKs, but their resource utilization and operational state (CPU throttling, OOM kills, pod phase, probe results) are only visible through Kubernetes-specific APIs. 
+1) **Workloads** — application containers and the Kubernetes primitives (Statefulset, Deployment, Daemonset, ReplicaSet, etc) managing them - emit signals via OTel SDKs, but their resource utilization and operational state (CPU throttling, OOM kills, pod phase, probe results) are only visible through Kubernetes-specific APIs. Additionally, some of those components are managed in the node level, like pods and containers, while others are managed in the cluster/control-plane level like ReplicaSet states, HPAs and so on.
 
 2) **Critical infrastructure components** - CoreDNS, CNI plugins, Ingress controllers, volume subsystems, KEDA, and similar platform services — are (generally) platform-owned, expose Prometheus metrics natively, and require dedicated scrape configurations.
 
-This blueprint focuses on *what* to collect and *how to label it*. Collector pipeline topology is referenced only when needed to observe Kubernetes specific components, recommendation of Collector Topologies for your own telemetry is documented separately
-
-// TODO: add reference to other Blueprint/documentation on collector topologies
+This blueprint focuses on *what* to collect and *how to label it*. Collector pipeline topology is referenced only when needed to observe Kubernetes specific components, recommendation of Collector Topologies for your own telemetry is documented separately in the [Managed Telemetry Platforms Blueprint](managed-telemetry-platforms-for-k8s-workloads/)
 
 ## Common Challenges
 
@@ -88,28 +57,21 @@ Some examples of what this leads to:
 
 ### 4. Telemetry Collection Infrastructure Has No Self-Monitoring
 
-The OTel Collector and its receivers are the foundation of all cluster observability. When they fail, the resulting gaps are silent - dashboards show "no data" and no alert fires on the absence of metrics.
-
-This leads to:
-
-- **A crashed cluster-metrics Collector removes all workload-state visibility**: The `k8s.pod.*` and `k8s.deployment.*` families disappear silently; operators may not notice until mid-incident.
-- **Tainted nodes have no DaemonSet Collector coverage**: GPU or spot nodes without DaemonSet tolerations have no CPU, memory, or filesystem metrics.
-- **The Collector drops data silently under backpressure**: SLO calculations based on incomplete data produce false confidence.
+Silent gaps in Collector and SDK pipelines — crashed scrapers, export failures, and data drops under backpressure — are covered in [Challenge 5](managed-telemetry-platforms-for-k8s-workloads/#challenge-5) of the [Managed Telemetry Platforms for Kubernetes Workloads](managed-telemetry-platforms-for-k8s-workloads/) blueprint.
 
 ## General Guidelines
 
-### 1. Use OTel native exporters to collect Workload and Infrastructure signals
+### 1. Use OTel native receivers to collect Workload and Infrastructure signals
 <small>Challenges Addressed: 1, 2</small>
 
-Up until recently, teams had to use Prometheus components like kube-state-metrics and node-exporter to get telemetry from workloads and resource usage.
-
-Now, the recommended best practice is to use Otel native receivers:
+This blueprint recommends the usage of Otel native receivers:
 
 | OpenTelemetry Collector component | Helm chart preset | Analog Prometheus/Kubernetes component | What it covers                                                                                                                                   |
 | --------------------------------- | ----------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **`k8s_cluster` receiver**        | `clusterMetrics`  | **kube-state-metrics**                 | Kubernetes object/state metrics from the Kubernetes API, such as pods, nodes, namespaces, workloads, quotas, and conditions.                     |
-| **`hostmetrics` receiver**        | `hostMetrics`     | **node-exporter**                      | Host/node OS metrics such as CPU, memory, filesystem, disk I/O, network, load, paging, processes, and system metrics.                            |
-| **`kubeletstats` receiver**       | `kubeletMetrics`  | **cAdvisor / kubelet metrics**         | Node, pod, container, and volume resource metrics from the kubelet. This is the closest OTel-native analog for cAdvisor-style container metrics. |
+| **`k8s_cluster` receiver**        | `clusterMetrics`  | **`kube-state-metrics`**                 | Kubernetes object/state metrics from the Kubernetes API, such as pods, nodes, namespaces, workloads, quotas, and conditions.                     |
+| **`kubeletstats` receiver**       | `kubeletMetrics`  | **cAdvisor / kubelet metrics**         | Preferred source for node, pod, and container CPU/memory (and volume) resource metrics from the kubelet.                                         |
+| **`hostmetrics` receiver**        | `hostMetrics`     | **`node-exporter`** (partial)          | Host OS metrics that `kubeletstats` does not cover — for example process, filesystem, disk I/O, network, load, and paging metrics.               |
+| **`k8s_objects` receiver**        | `kubernetesEvents` / `kubernetesObjects` | **Kubernetes Events** / object audits | Cluster events as they occur, and Kubernetes object resource state (pull and/or watch) as logs from the API server.                              |
 
 Outcomes:
 - Complete workload-level resource coverage (throttling, OOM, pod phase, probe failures) without any application code changes.
@@ -117,20 +79,24 @@ Outcomes:
 ### 2. Apply Uniform Metadata Enrichment Using OpenTelemetry Semantic Conventions
 <small>Challenges Addressed: 2</small>
 
-All telemetry signals, regardless of origin, must be enriched with OTel Kubernetes resource attributes before reaching the backend. This is done via the `k8sattributesprocessor` in the Collector, which resolves pod metadata from the Kubernetes API at collection time. Enrichment must cover well-known OTel attributes (`k8s.pod.name`, `k8s.namespace.name`, `k8s.node.name`, `k8s.deployment.name`, `k8s.cluster.name`) and organization-specific labels promoted from pod annotations (team, environment, tier).
+Telemetry that reaches the backend should carry consistent OTel Kubernetes resource attributes so signals can join without remapping. How that metadata is obtained depends on the source:
+
+- **OTel-native Kubernetes receivers** (`k8s_cluster`, `kubeletstats`, `k8s_objects`) already emit the core identity attributes (`k8s.pod.name`, `k8s.namespace.name`, `k8s.node.name`, workload UIDs, and similar). Prefer those receivers' built-in attributes rather than re-deriving them.
+- **Application OTLP and Prometheus-scraped telemetry** typically lack that context — enrich them with the `k8sattributesprocessor`, which associates data to pods and adds standard `k8s.*` attributes.
+- **Organizational labels/annotations** (team, environment, tier) are not emitted by the infra receivers; extract them via `k8sattributesprocessor` `extract.labels` / `extract.annotations` when you need them on app or pod-scoped signals.
 
 Outcomes:
-- Metrics, logs, and traces from any source join on consistent attributes with no per-query remapping.
-- Opentelemetry semantics are adhered, making adoption of Observability tools easier
+- Metrics, logs, and traces join on consistent attributes with no per-query remapping.
+- OpenTelemetry semantic conventions are adhered to, making adoption of observability tools easier
 
 ### 3. Use the OpenTelemetry Operator as the Control Plane for Collector Lifecycle and Distributed Prometheus Scraping
 <small>Challenges Addressed: 3</small>
 
 The OpenTelemetry Operator must manage all OTel Collectors in the cluster. It provides two capabilities essential for correct Kubernetes observability:
 
-**TargetAllocator**: Without coordination, each Collector replica independently discovers and scrapes *all* Prometheus targets — N replicas produce N× the data volume, making `sum(rate(...))` aggregations incorrect. The TargetAllocator acts as a single service discovery coordinator: it builds the full target list once and distributes targets across replicas such that each target is scraped by exactly one replica.
+- **`TargetAllocator`**: Without coordination, each Collector replica independently discovers and scrapes *all* Prometheus targets — N replicas produce N× the data volume, making `sum(rate(...))` aggregations incorrect. The `TargetAllocator` acts as a single service discovery coordinator: it builds the full target list once and distributes targets across replicas such that each target is scraped by exactly one replica.
 
-**`OpenTelemetryCollector` CRD**: Declares Collector configuration as a Kubernetes object, enabling GitOps workflows, versioned rollouts, and per-namespace scoping. The Operator also manages Collector deployment modes — **Deployment** for cluster-scoped scraping with TargetAllocator, **DaemonSet** for node-level collection — each appropriate for different collection patterns in this blueprint.
+- **`OpenTelemetryCollector` CRD**: Declares Collector configuration as a Kubernetes object, enabling GitOps workflows, versioned rollouts, and per-namespace scoping. The Operator also manages Collector deployment modes — **Deployment** for cluster-scoped scraping with TargetAllocator, **DaemonSet** for node-level collection — each appropriate for different collection patterns in this blueprint.
 
 The Operator additionally introduces the `Instrumentation` CRD for zero-code auto-instrumentation injection. While that is out of scope here, it makes the Operator the correct foundational dependency for the full cluster observability stack.
 
@@ -138,75 +104,107 @@ Outcomes:
 - Each Prometheus target scraped exactly once regardless of Collector replica count.
 - Collector lifecycle is managed automatically w/ autohealing
 
-### 4. Self-Monitor All Telemetry Collection Components
-<small>Challenges Addressed: 4</small>
-
-The OTel Collector and its receivers must be monitored for their own internal health metrics and alerted on using the same pipeline as primary data. 
-
-Outcomes:
-- Silent data gaps are paged before affecting incident response or SLO calculations.
-- An observability coverage SLO is enforceable (e.g., "99.9% of Availability for Observability Components").
-
-
-### 5. Provide Reference Deployment Architectures for Each Telemetry Component
-<small>Challenges Addressed: 1, 2, 3</small>
-
-While the topology of collectors are mainly managed by the Helm Chart - which already have optimized deployment types for each telemetry shape, this blueprint looks to explain why any given preset has a recoommended deployment type (daemon, singleton, etc)
-
 ## Implementation
 
-### 1. Deploy the OpenTelemetry Operator and the Collector Helm Chart
-<small>Guidelines Supported: 1, 2</small>
+Use this decision tree to choose a collection method for any signal source in the
+cluster. The guiding principle: prefer OTel-native receivers for workload,
+host, cluster-state, and Kubernetes events/object logs — those receivers already
+set core `k8s.*` (or host) identity attributes. Use `k8sattributesprocessor`
+for application OTLP and Prometheus-scraped telemetry that lack that context,
+and optionally to attach pod labels/annotations onto pod-scoped metrics.
 
-First, deploy the OTel Operator using the `opentelemetry-operator` Helm chart. The Operator and its TargetAllocator remain responsible for distributed **Prometheus scraping of critical components** (Implementation step 6).
+```mermaid
+flowchart TD
+  Start(["`What are you trying to observe?`"]) -->|"`Kubernetes object/state metrics<br/>`"| Cluster["`**k8s_cluster receiver**<br/>(clusterMetrics preset)<br/>emits k8s.* resource attrs`"]
+  Start -->|"`Node/pod/container CPU & memory<br/>`"| Kubelet["`**kubeletstats receiver**<br/>(kubeletMetrics preset)<br/>emits k8s.* resource attrs`"]
+  Start -->|"`Host OS metrics kubeletstats<br/>cannot provide<br/>(process, filesystem, disk, …)`"| Host["`**hostmetrics receiver**<br/>(hostMetrics preset)<br/>host/system attrs; node identity via resourcedetection`"]
+  Start -->|"`Kubernetes events & object<br/>resource state`"| Objects["`**k8s_objects receiver**<br/>(kubernetesEvents / kubernetesObjects presets)<br/>identity in the log payload`"]
+  Start -->|"`App OTLP or third-party<br/>Prometheus /metrics`"| Scraped["`Needs pod correlation`"]
 
-Then deploy Collectors with the `opentelemetry-collector` Helm chart. Rather than hand-writing receiver, processor, and RBAC configuration, this blueprint enables the chart's **presets** — each preset wires the matching receiver/processor into the pipeline and generates the required RBAC, volumes, and mounts automatically. The remaining steps are `values.yaml` fragments for this chart.
+  Scraped -->|"`PodMonitor/ServiceMonitor CR`"| TAcr["`**Prometheus receiver + Target Allocator**`"]
+  Scraped -->|"`Annotations / kubernetes_sd_configs`"| TAann["`**Prometheus receiver + Target Allocator**`"]
+  Scraped -->|"`OTLP from SDKs / agents`"| OTLP["`**OTLP receiver**`"]
 
-Because the native receivers have different deployment requirements (see Guideline 2), install the chart as **two releases**:
+  Cluster --> Export
+  Kubelet --> Export
+  Host --> Export
+  Objects --> Export
 
-- a single-replica **Deployment** for cluster-wide metrics (`clusterMetrics`, Step 1)
-- a **DaemonSet** for per-node host and kubelet metrics (`hostMetrics` + `kubeletMetrics`, Step 2)
+  TAcr --> K8sAttr["`**k8sattributesprocessor**<br/>pod metadata + labels/annotations`"]
+  TAann --> K8sAttr
+  OTLP --> K8sAttr
+  Kubelet -.->|"`optional: labels/annotations<br/>(and ownership attrs)`"| K8sAttr
+  K8sAttr --> Export
+```
 
-Both releases enable the `kubernetesAttributes` preset (Step 3).
+### 1. Deploy the OpenTelemetry Kube Stack
+<small>Guidelines Supported: 1, 2, 3</small>
+
+Deploy the [`opentelemetry-kube-stack`](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) Helm chart as the foundation for this blueprint. The chart installs the OpenTelemetry Operator together with a suite of Collectors managed as `OpenTelemetryCollector` CRs — so you do not need separate `opentelemetry-operator` and `opentelemetry-collector` chart releases.
+
+Out of the box, the chart deploys a **DaemonSet** collector with the presets this blueprint relies on (`hostMetrics`, `kubeletMetrics`, `kubernetesAttributes`, `kubernetesEvents`, and `clusterMetrics`, among others). Cluster-wide metrics use leader election on that DaemonSet so only one replica emits them; if leader election is not an option, use the chart's [no-leader-election alternative](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack/examples/no-leader-election-extension), which separates cluster-scoped collection. The Operator's TargetAllocator remains available for distributed Prometheus scraping of critical components (Implementation step 6).
+
+Rather than hand-writing receiver, processor, and RBAC configuration, configure collection through the chart's **presets** under `collectors.*` — each preset wires the matching receiver/processor into the pipeline and generates the required RBAC, volumes, and mounts. The remaining steps are `values.yaml` fragments for this chart.
 
 Documentation:
-- [OpenTelemetry Operator Helm chart](https://opentelemetry.io/docs/platforms/kubernetes/helm/operator/)
-- [OpenTelemetry Collector Helm chart](https://opentelemetry.io/docs/platforms/kubernetes/helm/collector/)
+- [OpenTelemetry Kube Stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack)
+- [OpenTelemetry Operator](https://opentelemetry.io/docs/platforms/kubernetes/operator/)
 - [TargetAllocator](https://opentelemetry.io/docs/platforms/kubernetes/operator/target-allocator/)
 
 ### 2. Collect Cluster-State Metrics with the `clusterMetrics` Preset
 <small>Guidelines Supported: 1, 2</small>
 
-The `k8s_cluster` receiver provides object state (pod phase, restart counts, replica state, node conditions) by watching the Kubernetes API — the OTel-native replacement for kube-state-metrics. It does not provide resource consumption; that comes from the kubelet (Step 2).
+The `k8s_cluster` receiver provides object state (pod phase, restart counts, replica state, node conditions) by watching the Kubernetes API — the OTel-native replacement for `kube-state-metrics`. It does not provide resource consumption; that comes from the kubelet (Implementation step 3).
 
-Because the receiver gathers cluster-wide telemetry, run it in a **single-replica Deployment** Collector. Multiple replicas produce duplicate data. Use the `opentelemetry-collector` Helm chart with the `clusterMetrics` preset, which adds the `k8s_cluster` receiver and the required RBAC automatically:
+Because the receiver gathers cluster-wide telemetry, only one collector replica should emit it. With `opentelemetry-kube-stack`, enable the `clusterMetrics` preset on the DaemonSet collector (`collectors.daemon.presets.clusterMetrics`); leader election ensures a single replica produces the data. If leader election is not available, use the chart's separated cluster collector instead. The preset adds the `k8s_cluster` receiver and the required RBAC automatically.
 
 This emits OTel-native equivalents such as `k8s.pod.phase`, `k8s.container.restarts`, `k8s.deployment.available`/`k8s.deployment.desired`, `k8s.node.condition_ready`, and quota/replica state.
 
 Documentation: [Cluster Metrics preset](https://opentelemetry.io/docs/platforms/kubernetes/helm/collector/#cluster-metrics-preset), [Kubernetes Cluster Receiver](https://opentelemetry.io/docs/platforms/kubernetes/collector/components/#kubernetes-cluster-receiver)
 
-### 3. Collect Host and Kubelet Metrics with the `hostMetrics` and `kubeletMetrics` Presets
+### 3. Prefer `kubeletstats` for Resource Usage; Use `hostmetrics` Only for Gaps
 <small>Guidelines Supported: 1, 2</small>
 
-Host/node OS metrics (the node-exporter replacement) come from the `hostmetrics` receiver, and node/pod/container resource consumption (the cAdvisor/kubelet replacement) comes from the `kubeletstats` receiver. Both must run **once per node**, so deploy them together in a single **DaemonSet** Collector with both presets enabled:
+Both the `kubeletstats` and `hostmetrics` receivers can report node CPU and memory. Prefer **`kubeletstats`** for node, pod, and container resource usage — it is the kubelet/cAdvisor-aligned source and avoids duplicating the same CPU/memory series from `hostmetrics`. Enable it on the kube-stack **DaemonSet** collector (`collectors.daemon.presets.kubeletMetrics`) with `metric_groups: [node, pod, container]`.
 
-The `hostMetrics` preset enables the `cpu`, `load`, `memory`, `disk`, `filesystem`, and `network` scrapers and mounts the host root filesystem at `/hostfs`. The `kubeletMetrics` preset adds the `kubeletstats` receiver (with `metric_groups: [node, pod, container]`) and its RBAC. Both presets add the necessary volumes/RBAC automatically and require a Collector image that includes the receivers (such as the Contrib distribution).
+Use **`hostmetrics`** (`collectors.daemon.presets.hostMetrics`) only for signals `kubeletstats` cannot provide — typically process metrics, plus host-level filesystem, disk I/O, network, load, and paging. When both presets are enabled, disable the overlapping `cpu` and `memory` scrapers in `hostmetrics` so those come solely from `kubeletstats`.
 
-Important: To guarantee coverage on control-plane and tainted nodes (GPU, spot), add tolerations to the DaemonSet so every node is scraped - any node without a Collector pod is a coverage gap.
+Both receivers must run **once per node** on the DaemonSet. The presets add the necessary volumes/RBAC automatically and require a Collector image that includes the receivers (such as the Contrib or `opentelemetry-collector-k8s` distribution).
+
+Important: To guarantee coverage on control-plane and tainted nodes (GPU, spot), add tolerations to the DaemonSet so every node is scraped — any node without a Collector pod is a coverage gap.
 
 Documentation: [Host Metrics preset](https://opentelemetry.io/docs/platforms/kubernetes/helm/collector/#host-metrics-preset), [Kubelet Metrics preset](https://opentelemetry.io/docs/platforms/kubernetes/helm/collector/#kubelet-metrics-preset), [Host Metrics Receiver](https://opentelemetry.io/docs/platforms/kubernetes/collector/components/#host-metrics-receiver), [Kubeletstats Receiver](https://opentelemetry.io/docs/platforms/kubernetes/collector/components/#kubeletstats-receiver)
 
-### 4. Apply Metadata Enrichment with the `kubernetesAttributes` Preset
+### 4. Collect Kubernetes Events and Object State with the `k8s_objects` Receiver
+<small>Guidelines Supported: 1, 2</small>
+
+The [`k8s_objects` receiver](https://opentelemetry.io/docs/platforms/kubernetes/collector/components/#kubernetes-objects-receiver) collects Kubernetes API data as logs. Use it for two complementary signals:
+
+- **Events** — via the `kubernetesEvents` preset (`collectors.daemon.presets.kubernetesEvents`): watches cluster events as they happen (scheduling failures, probe failures, OOM kills, volume attach errors, and similar operational signals that metrics alone often miss).
+- **Object resource state** — via the `kubernetesObjects` preset (`collectors.daemon.presets.kubernetesObjects`): periodically pulls (and optionally watches) Kubernetes objects such as pods, deployments, nodes, and related resources so you retain object state history as logs.
+
+Both presets wire the same `k8s_objects` receiver into the logs pipeline and merge object lists when enabled together. Because this is cluster-scoped data, only one collector replica should emit it — rely on kube-stack leader election on the DaemonSet, or use a single-replica Deployment/StatefulSet collector if leader election is not available.
+
+Enable `kubernetesObjects` explicitly if you need object state beyond events; configure its resource groups (`core`, `rbac`, `storage`, `networking`, `autoscaling`, and so on) to match what you want to retain, and set `watch: true` when you need near-real-time object change streams in addition to pull.
+
+Documentation: [Kubernetes Events preset](https://opentelemetry.io/docs/platforms/kubernetes/helm/collector/#kubernetes-events-preset), [Kubernetes Objects Receiver](https://opentelemetry.io/docs/platforms/kubernetes/collector/components/#kubernetes-objects-receiver)
+
+### 5. Use `k8sattributes` for App/Scrape Telemetry — and Optionally for Labels on Pod Metrics
 <small>Guidelines Supported: 2</small>
 
-Enable the `kubernetesAttributes` preset on every Collector to wire the `k8sattributesprocessor` into all pipelines and add the required RBAC. For full control over which attributes and labels are extracted, configure the processor explicitly in all pipelines:
+`k8s_cluster`, `kubeletstats`, and `k8s_objects` already emit the core Kubernetes identity attributes (`k8s.pod.name`, `k8s.namespace.name`, `k8s.node.name`, workload UIDs, and similar) from the API/kubelet. `hostmetrics` is host/system-scoped; use resource detection / node identity there, not pod enrichment. Routing those pipelines through `k8sattributesprocessor` does not meaningfully improve their built-in identity metadata.
 
-If `k8s.cluster.name` is not resolvable from cloud metadata, inject it as a static resource attribute via the `resourceprocessor`.
+Use the `kubernetesAttributes` preset (`collectors.daemon.presets.kubernetesAttributes`) where it matters most:
+
+- **Required** for application OTLP and Prometheus-scraped metrics/logs/traces that lack Kubernetes resource attributes — the processor associates by pod IP/UID and adds standard `k8s.*` metadata.
+- **Optional** on pod-scoped `kubeletstats` (and similar) when you want organizational **labels and annotations** (team, environment, tier) or ownership attributes such as `k8s.deployment.name` that the receiver does not emit.
+
+Configure `extract.labels` / `extract.annotations` explicitly for the organizational keys you care about. If `k8s.cluster.name` is not resolvable from cloud metadata, inject it as a static resource attribute via the `resourceprocessor` (or set `clusterName` in the kube-stack values).
 
 Documentation: [Kubernetes Attributes preset](https://opentelemetry.io/docs/platforms/kubernetes/helm/collector/#kubernetes-attributes-preset), [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor), [K8s semantic conventions](https://opentelemetry.io/docs/specs/semconv/resource/k8s/)
 
 
-### 5. Configure Prometheus Scraping w/ Autodiscovery 
+### 6. Configure Prometheus Scraping w/ Autodiscovery 
 <small>Guidelines Supported: 3</small>
 
 Adding manual scrape targets using the Prometheus receiver is prone to double-scraping which inflates the value of metrics making them unreliable. 
@@ -218,13 +216,6 @@ The Target Allocator works by discovering scrape targets and assigning them to e
 Whenever possible, it is preferable to configure the Target Allocator to match existing Prometheus CR like PodMonitor/ServiceMonitor, by doing this, you'll ensure that every new component will be observed by default, provided that this components declares a PodMonitor/ServiceMonitor. [Example](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#podservice-monitor-selectors).
 
 If a Prometheus CR is not available, using the Prometheus Receiver `kubernetes_sd_configs` config to scrape targets that has specific annotations is the recommended practice [Example](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md#getting-started)
-
-### 5. Enable and Monitor OTel Collector Internal Telemetry
-<small>Guidelines Supported: 4</small>
-
-Enabling self-telemetry from OTel is a recommended best practice so you can observe pipeline behavior and alert on missing telemetry, increased error in receiver/processor/exporter.
-
-Documentation: [Collector internal telemetry](https://opentelemetry.io/docs/collector/internal-telemetry/)
 
 ## Reference Architectures
 
