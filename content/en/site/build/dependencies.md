@@ -46,7 +46,7 @@ removed submodule can ride a cache back into later builds as untracked residue
 and fail the clean-working-tree checks: the deploy log shows the path in a `?? `
 status line.
 
-Clear the affected [build cache][] rather than ignoring the path:
+Clear the affected [build cache][] rather than adding the path to `.gitignore`:
 
 - **Production**:
   - Clear cache and deploy site, under **Deploys** > **Trigger deploy**.
