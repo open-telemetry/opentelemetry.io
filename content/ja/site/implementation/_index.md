@@ -1,5 +1,5 @@
 ---
-title: Implementation
+title: 実装
 description: >-
   Hugo/Docsy テンプレート、SCSS/JS カスタマイズ、パッチ、内部シムを含む、OpenTelemetry
   ウェブサイトのコードレベルの構造と規約。
