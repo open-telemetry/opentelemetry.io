@@ -177,7 +177,7 @@ name.
   - Contexts without that `PATH` entry (docs, standalone scripts) use
     `npm exec --no -- BIN`, which never installs.
 - **Exception**: deliberate, version-pinned one-offs of published packages
-  (`npx PKG@X.Y.Z`), as run by `scripts/npx-helper.sh`.
+  (`npx PKG@X.Y.Z`).
 - **Enforcement**: review discipline; there is no automated check.
 
 **Defense in depth**: the [real install][install contracts] is `npm ci`, which

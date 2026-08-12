@@ -71,8 +71,8 @@ closing table maps decisions to their enforcement.
     [neutralizes it][inert auto-install]; the build command performs the [real
     install][install contracts].
 - _A bin invoked by registry-resolvable name runs whoever claims the name when
-  the local install is stale — a squat of an unregistered bin name proved this
-  in June._
+  the local install is stale; a squat of an unregistered bin name proved this in
+  June._
   - **Invoke bins, not names**: <a id="no-bare-npx"></a> repository wiring
     [never uses bare `npx`][no bare npx]; bins come from the installed
     dependency tree or fail loudly.
