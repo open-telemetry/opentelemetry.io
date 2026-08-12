@@ -44,8 +44,8 @@ Netlify keeps a build cache per [deploy context][]:
 Each cache [includes a clone of the repository][], and checking out a commit
 that drops a git submodule leaves the submodule's working tree in place, so a
 removed submodule can ride a cache back into later builds as untracked residue
-and fail the clean-working-tree checks: the deploy log shows the path in a `?? `
-status line.
+and fail the clean-working-tree checks: the deploy log shows the path in a
+`??`-prefixed status line.
 
 Clear the affected [build cache][] rather than adding the path to `.gitignore`:
 
@@ -164,6 +164,11 @@ neutralized by [`NPM_FLAGS`][netlify-deps] in [`netlify.toml`][]:
 **Scope**: `NPM_FLAGS` is a Netlify build setting, not npm config; it applies
 only to the automatic install, never to the build command's npm runs.
 
+**Defense in depth**: the [real install][install contracts] is `npm ci`, which
+replaces `node_modules` wholesale, so auto-install or build-cache residue there
+does not survive into the build even though `node_modules` is invisible to the
+clean-working-tree checks (they see only Git-visible changes).
+
 ### No bare npx
 
 Repository wiring (package scripts, CI, helper scripts, contributor docs) never
@@ -179,11 +184,6 @@ invites a reflexive yes elsewhere.
   - Contexts without that `PATH` entry (docs, standalone scripts) use
     `npm exec --no -- BIN`, which never installs.
 - **Enforcement**: review discipline; there is no automated check.
-
-**Defense in depth**: the [real install][install contracts] is `npm ci`, which
-replaces `node_modules` wholesale, so auto-install or build-cache residue there
-does not survive into the build even though `node_modules` is invisible to the
-clean-working-tree checks (they see only Git-visible changes).
 
 <!-- prettier-ignore-start -->
 [install contracts]: #install-contracts
