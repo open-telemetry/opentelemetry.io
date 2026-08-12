@@ -21,11 +21,9 @@ fetches the pinned Hugo binary. Per environment:
   dependencies.
 - **Netlify**: `npm run install:safe`, run by the [Netlify][] build command
   after the [inert auto-install](#inert-netlify-auto-install), between
-  clean-working-tree checks:
-  - Lock drift or any other Git-visible change fails the build.
-  - If the check fails on residue from a retired path (Netlify's build cache
-    restores it), clear the deploy context's build cache and retry rather than
-    ignoring the path.
+  clean-working-tree checks: lock drift or any other Git-visible change fails
+  the build. For failures on paths the install never touched, see
+  [Stale Netlify build cache](#netlify-build-cache) below.
 - **Local**: `npm run install:safe`, or a standard `npm install`, which follows
   the lock while it agrees with `package.json` and gates lifecycle scripts by
   the [allowlist](#lifecycle-script-allowlist) rather than disabling them; see
@@ -33,6 +31,23 @@ fetches the pinned Hugo binary. Per environment:
 
 The nested [Docsy][] theme setup follows the same contract: the `prepare` step
 invokes Docsy's own lock-exact, script-free theme-dependency install.
+
+### Stale Netlify build cache {#netlify-build-cache}
+
+Netlify's [build cache][] includes the repository clone, so a retired path (for
+example, a removed git submodule) can ride the cache back into later builds as
+untracked residue and fail the clean-working-tree checks: the deploy log shows
+the path in a `?? ` status line. Clear the build cache rather than ignoring the
+path. Caches are per [deploy context][]:
+
+- **Production**: **Clear cache and deploy site**, under **Deploys** > **Trigger
+  deploy**. A PR inherits the production cache on its first build.
+- **Deploy Previews**: each already-built PR holds its own cache copy. Clear it
+  from the PR's latest deploy page with **Retry** > **Clear cache and retry with
+  latest branch commit**. There is no bulk clear across PRs.
+
+When retiring a tracked path, clear the production build cache as part of the
+retirement, before the residue seeds per-PR caches.
 
 ## Updating dependencies {#updating}
 
@@ -144,6 +159,8 @@ clean-working-tree checks (they see only Git-visible changes).
 
 <!-- prettier-ignore-start -->
 [install contracts]: #install-contracts
+[build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
+[deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
 [`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
