@@ -564,6 +564,12 @@ https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm,20
 https://docs.oracle.com/database/121/JJUCP/,200,1786028670
 https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F,200,1785868420
 https://docs.oracle.com/en/database/oracle/oracle-database/23/refrn/V-SESSION.html,200,1786341741
+https://docs.oracle.com/en/database/oracle/oracle-database/26/adfns/performance-and-scalability.html#GUID-015CA8C1-2386-4626-855D-CC546DDC1086,200,1786530625
+https://docs.oracle.com/en/database/oracle/oracle-database/26/arpls/dbms_observability.html,200,1786530625
+https://docs.oracle.com/en/database/oracle/oracle-database/26/jajdb/oracle/jdbc/OracleConnection.html#Tracing,200,1786530625
+https://docs.oracle.com/en/database/oracle/oracle-database/26/odpnt/featOpenTelemetry.html#GUID-498BB919-43C4-494F-A73B-74980C40CFF3,200,1786530625
+https://docs.oracle.com/en/database/oracle/oracle-database/26/sqlrf/SYS_CONTEXT.html,200,1786530625
+https://docs.oracle.com/en/database/oracle/oracle-database/26/tgsql/observabilitly-open-telemetry.html,200,1786530625
 https://docs.oracle.com/en/error-help/db/,200,1785911064
 https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/HttpURLConnection.html,200,1785868410
 https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ServiceLoader.html,200,1786427564
@@ -1597,14 +1603,20 @@ https://github.com/kubernetes,200,1785739349
 https://github.com/kubernetes-client/java,200,1786028672
 https://github.com/kubernetes-sigs/metrics-server,200,1786341692
 https://github.com/kubernetes/cri-api/blob/c75ef5b473bbe2d0a4fc92f82235efd665ea8e9f/pkg/apis/runtime/v1/api.proto#L1237-L1238,200,1785868537
+https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L122,200,1786530625
 https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L157C6-L157C20,206,1785870757
+https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L161,200,1786530625
 https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L233,200,1785868536
 https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L236,200,1785911066
 https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L252,200,1785911066
 https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L256,200,1785911066
 https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L40,200,1785911066
+https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L42,200,1786530625
 https://github.com/kubernetes/kubernetes/blob/8adc0f041b8e7ad1d30e29cc59c6ae7a15e19828/staging/src/k8s.io/kubelet/pkg/apis/stats/v1alpha1/types.go#L230-L233,200,1785739360
 https://github.com/kubernetes/kubernetes/blob/dbc7fe1b7fec4a76562d5e1565072a447fec5439/staging/src/k8s.io/kubelet/pkg/apis/stats/v1alpha1/types.go#L230-L233,200,1786028736
+https://github.com/kubernetes/kubernetes/blob/v1.36.3/pkg/kubelet/server/stats/summary.go#L113,200,1786530625
+https://github.com/kubernetes/kubernetes/blob/v1.36.3/pkg/kubelet/stats/cri_stats_provider.go#L299,200,1786530625
+https://github.com/kubernetes/kubernetes/blob/v1.36.3/pkg/kubelet/stats/cri_stats_provider.go#L776,200,1786530625
 https://github.com/kubernetes/website,200,1785868417
 https://github.com/kubewarden,200,1785739350
 https://github.com/kumahq,200,1785739348
@@ -1888,6 +1900,7 @@ https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9b28f76c0
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9c4165139f101a43895d9273192ddb9ae3204844/processor/filterprocessor#context-inference,200,1785868522
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9c4165139f101a43895d9273192ddb9ae3204844/processor/filterprocessor,200,1785868520
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9c4165139f101a43895d9273192ddb9ae3204844/processor/filterprocessor/README.md#basic-config,200,1785868516
+https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/e3399f435a64b0a5aea33cc8d98edfef5bf07449/receiver/oracledbreceiver/documentation.md#dbserverquery_sample,200,1786530625
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CHANGELOG.md#v01200,200,1786427560
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/README.md,200,1785868407
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/opampsupervisor/specification/README.md,200,1786427562
@@ -1903,6 +1916,7 @@ https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/rece
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/k8sclusterreceiver/documentation.md,200,1786427561
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver,200,1786427561
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver/documentation.md,200,1786427561
+https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/oracledbreceiver,200,1786530625
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/DESIGN.md,200,1785868406
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/receivercreator/README.md,200,1786341693
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.112.0/receiver/kubeletstatsreceiver/documentation.md,200,1785868536
@@ -3950,6 +3964,9 @@ https://github.com/open-telemetry/opentelemetry-specification/blob/v1.59.0/speci
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.59.0/specification/trace/api.md#span,200,1786185575
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.59.0/specification/trace/api.md#spankind,200,1786185575
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.59.0/specification/trace/sdk.md#span-processor,200,1786185576
+https://github.com/open-telemetry/opentelemetry-specification/blob/v1.60.0/oteps/0232-maturity-of-otel.md,200,1786530625
+https://github.com/open-telemetry/opentelemetry-specification/blob/v1.60.0/spec-compliance-matrix.md#logs,200,1786530625
+https://github.com/open-telemetry/opentelemetry-specification/blob/v1.60.0/specification/logs/api.md#logger,200,1786530625
 https://github.com/open-telemetry/opentelemetry-specification/issues/1413,200,1786427586
 https://github.com/open-telemetry/opentelemetry-specification/issues/3967,200,1785739361
 https://github.com/open-telemetry/opentelemetry-specification/issues/4126,200,1786427559
@@ -4373,6 +4390,7 @@ https://github.com/open-telemetry/semantic-conventions/pull/3491,200,1785739363
 https://github.com/open-telemetry/semantic-conventions/pull/3559,200,1785911066
 https://github.com/open-telemetry/semantic-conventions/pull/3646,200,1785911066
 https://github.com/open-telemetry/semantic-conventions/pull/3889,200,1785876227
+https://github.com/open-telemetry/semantic-conventions/pull/3921,200,1786530625
 https://github.com/open-telemetry/semantic-conventions/pull/625,200,1785876227
 https://github.com/open-telemetry/semantic-conventions/pull/981,200,1785868519
 https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.33.0,200,1786341739
@@ -5008,6 +5026,7 @@ https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources
 https://kubernetes.io/docs/reference/kubernetes-api/service-resources/endpoint-slice-v1/,206,1786342364
 https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/#ServiceSpec,206,1786342364
 https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/#ServiceStatus,206,1786342364
+https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#ContainerStateRunning,200,1786530625
 https://kubernetes.io/docs/reference/labels-annotations-taints/#app-kubernetes-io-instance,200,1785911060
 https://kubernetes.io/docs/reference/labels-annotations-taints/#app-kubernetes-io-name,200,1785911060
 https://kubernetes.io/docs/reference/labels-annotations-taints/#app-kubernetes-io-version,200,1785911060
@@ -5230,6 +5249,8 @@ https://news.microsoft.com/source/features/ai/ai-agents-what-they-are-and-how-th
 https://nextjs.org/,200,1785868405
 https://nextjs.org/docs/app/building-your-application/optimizing/open-telemetry,200,1786427560
 https://nginx.org/,200,1785785904
+https://node-oracledb.readthedocs.io/en/latest/api_manual/connection.html#connection.action,200,1786530625
+https://node-oracledb.readthedocs.io/en/latest/user_guide/connection_handling.html#setting-application-contexts-on-a-connection-object,200,1786530625
 https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage,200,1786427566
 https://nodejs.org/api/async_hooks.html,200,1786427566
 https://nodejs.org/api/cli.html#--importmodule,200,1786427566
