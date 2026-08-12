@@ -5,8 +5,8 @@ weight: 30
 aliases: [/docs/languages/python/automatic]
 cascade:
   collector_vers: 0.158.0
-cSpell:ignore: distro
 default_lang_commit: 2d447daa701636c3246c116d4b8c4a2f2c35de60
+cSpell:ignore: distro
 ---
 
 La instrumentación automática con Python utiliza un agente de Python que se
