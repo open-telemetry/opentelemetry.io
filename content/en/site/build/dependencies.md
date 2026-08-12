@@ -55,10 +55,9 @@ the contributor making the change:
 2. Records the outcome, committed together with the dependency change and vetted
    in PR review: a needed script as an exact-version approval, an unneeded one
    as a name-level denial (`false`, which needs no update on later bumps).
-
-Because approvals are version-exact, packages with an approval entry are
-excluded from Renovate automerge: their update PRs wait for the contributor step
-above.
+3. For a new approval, also adds the package to the Renovate automerge
+   exclusion in [`.github/renovate.json5`][]: every bump of an approved package
+   needs the steps above, so its update PRs must wait for a contributor.
 
 ### Lock-file maintenance
 
