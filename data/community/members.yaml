@@ -1791,6 +1791,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/563558?v=4
   - name: didiViking
     teams:
+      - docs-approvers
       - docs-ro-approvers
       - docs-triagers
     html_url: https://github.com/didiViking
@@ -2219,6 +2220,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/24074?v=4
   - name: thompson-tomo
     teams:
+      - lambda-extension-approvers
       - ruby-contrib-approvers
     html_url: https://github.com/thompson-tomo
     avatar_url: https://avatars.githubusercontent.com/u/19771933?v=4
