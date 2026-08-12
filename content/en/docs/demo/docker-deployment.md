@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otlphttp span_metrics Firepit
+cSpell:ignore: Firepit otlphttp span_metrics
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
