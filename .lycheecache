@@ -547,8 +547,11 @@ https://docs.microsoft.com/windows/win32/api/winsock2/nf-winsock2-connect,200,17
 https://docs.microsoft.com/windows/win32/api/winsock2/nf-winsock2-getpeername,200,1786028735
 https://docs.microsoft.com/windows/win32/api/winsock2/nf-winsock2-getsockname,200,1786028735
 https://docs.middleware.io/open-telemetry,200,1785868420
+https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm,200,1786473193
 https://docs.netlify.com/manage/domains/secure-domains-with-https/https-ssl/#netlify-managed-certificates,200,1786341721
 https://docs.newrelic.com/docs/opentelemetry/nrdot/nrdot-collector/,200,1785868406
+https://docs.npmjs.com/cli/configuring-npm/package-lock-json,200,1786473193
+https://docs.npmjs.com/cli/using-npm/scripts,200,1786473193
 https://docs.nxlog.co/agent/current/im/otel.html,200,1785739347
 https://docs.observeinc.com/en/latest/content/send-data/apm-instrumentation/operator-auto-instrumentation.html,200,1785868423
 https://docs.odigos.io/,200,1786028699
@@ -631,6 +634,8 @@ https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#clusterresourcequota-quota-openshift-io-v1,206,1786342364
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#status-total,206,1786342364
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1,206,1786342364
+https://docs.renovatebot.com/,200,1786473193
+https://docs.renovatebot.com/configuration-options/#minimumreleaseage,200,1786392389
 https://docs.roadrunner.dev/docs/logging-and-observability/otel,200,1785868421
 https://docs.rs/tower,200,1785911032
 https://docs.ruby-lang.org/en/3.4/Exception.html#method-i-full_message,200,1785868535
@@ -1723,6 +1728,7 @@ https://github.com/nhatthm,200,1786028704
 https://github.com/nhatthm/otelsql,200,1786028704
 https://github.com/nilebox,200,1785785933
 https://github.com/niwoerner,200,1785785933
+https://github.com/npm/rfcs/blob/main/accepted/0054-make-scripts-install-opt-in.md,200,1786392390
 https://github.com/nrcventura,200,1785739367
 https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating,200,1785868410
 https://github.com/nwanduka,200,1785868513
@@ -4157,6 +4163,7 @@ https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS,
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/PULL_REQUEST_TEMPLATE.md,200,1785868416
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml,200,1785621147
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml,200,1785621147
+https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5,200,1786473194
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/collector-sync.sh,200,1785868419
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/pr-approval-labels.sh,200,1785674124
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/blog-publish-labels.yml,200,1785621150
@@ -4174,6 +4181,7 @@ https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/s
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.gitmodules,200,1785868418
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint-cli2.yaml,200,1785868416
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml,200,1785868416
+https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc,206,1786473395
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.prettierignore,200,1785868419
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml,200,1785713003
 https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml,200,1785785898
@@ -4184,6 +4192,7 @@ https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/ren
 https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_shortcodes/collector-component-rows.html,200,1785868419
 https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_shortcodes/component-link.html,200,1785868419
 https://github.com/open-telemetry/opentelemetry.io/blob/main/lychee.base.toml,200,1785868419
+https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml,200,1786385654
 https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json,200,1785868419
 https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/2026/pr-fix-reusable-actions.plan.md,200,1785868418
 https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/localization.md,200,1785785898
@@ -4201,6 +4210,7 @@ https://github.com/open-telemetry/opentelemetry.io/discussions,200,1785739363
 https://github.com/open-telemetry/opentelemetry.io/fork,200,1785868416
 https://github.com/open-telemetry/opentelemetry.io/issues,200,1786341698
 https://github.com/open-telemetry/opentelemetry.io/issues/10990,200,1786028672
+https://github.com/open-telemetry/opentelemetry.io/issues/11210,200,1786391968
 https://github.com/open-telemetry/opentelemetry.io/issues/6592,200,1785868419
 https://github.com/open-telemetry/opentelemetry.io/issues/9449,200,1785739344
 https://github.com/open-telemetry/opentelemetry.io/issues/new,200,1785868416
@@ -4444,6 +4454,7 @@ https://github.com/orgs/open-telemetry/teams/sig-contributor-experience-maintain
 https://github.com/os-observability/redhat-opentelemetry-collector,200,1785868408
 https://github.com/osherv,200,1785785932
 https://github.com/oshi/oshi/,200,1786028672
+https://github.com/ossf/package-manager-best-practices/blob/main/published/npm.md,200,1786392390
 https://github.com/osullivandonal,200,1785785922
 https://github.com/otterize,200,1786028699
 https://github.com/otterize/network-mapper,200,1785868423
@@ -5780,6 +5791,8 @@ https://pkgs.alpinelinux.org/packages?name=*pecl-opentelemetry,200,1785868409
 https://pkgs.alpinelinux.org/packages?name=opentelemetry-cpp-*,200,1785785911
 https://platformengineering.org/talks-library/platform-as-a-product,200,1786028669
 https://plugins.jenkins.io/opentelemetry/,200,1785785904
+https://pnpm.io/settings/build,200,1786393643
+https://pnpm.io/settings/dependency-resolution,200,1786393643
 https://prettier.io/,200,1785739338
 https://projectcontour.io/,200,1786028699
 https://projectcontour.io/docs/main/config/tracing/,200,1786028699
@@ -6098,6 +6111,7 @@ https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c
 https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/dx-operational-observability/saas/monitoring/opentelemetry.html,200,1785868420
 https://thanos.io/,200,1786028698
 https://thanos.io/tip/thanos/tracing.md/#opentelemetry-otlp,200,1785739347
+https://theupdateframework.io/docs/security/,200,1786392389
 https://thrift.apache.org/,200,1786341694
 https://tinygo.org/,200,1785739374
 https://tomcat.apache.org/,200,1785785893
@@ -6245,6 +6259,7 @@ https://www.dash0.com/,200,1785739347
 https://www.dash0.com/hub/integrations/int_dash0_operator/overview,200,1785868405
 https://www.docker.com/,200,1785868408
 https://www.docsend.com/,200,1785785892
+https://www.docsy.dev/,200,1786473194
 https://www.docsy.dev/docs/,200,1785713003
 https://www.docsy.dev/docs/content/adding-content/#alerts,200,1785785895
 https://www.docsy.dev/docs/content/shortcodes/#alert,200,1785739341
@@ -6647,6 +6662,7 @@ https://www.youtube.com/watch?v=u6svjtGpXO4,200,1785739358
 https://www.youtube.com/watch?v=uPpZ23iu6kI,200,1785868405
 https://yaml.org/spec/1.2.2/#103-core-schema,200,1785739372
 https://yaml.org/spec/1.2.2/,200,1785739372
+https://yarnpkg.com/advanced/lifecycle-scripts,200,1786393643
 https://youtrack.jetbrains.com/issue/KT-76131,200,1785911021
 https://youtu.be/5iM8n3uCo_U?si=PJ6tFYcYED3lhAcK,200,1786028667
 https://youtu.be/9iaGG-YZw5I?si=YDjY8N4Z4zI4uKiV,200,1786028721
