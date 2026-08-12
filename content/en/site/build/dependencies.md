@@ -176,7 +176,7 @@ invokes a bin as `npx BIN`: on a stale or missing `node_modules`, `npx` falls
 back to the public registry and executes whatever package holds that name. Its
 install prompt is no defense: it's skipped in non-interactive contexts and
 invites a reflexive yes elsewhere. Localized copies of contributor docs catch up
-through [drift tracking][].
+with this rule through [drift tracking][].
 
 - **Instead**:
   - Package scripts invoke dependency-provided bins directly; npm puts
