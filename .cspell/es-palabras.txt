@@ -59,7 +59,7 @@ reformatea
 reinicios
 renderizan
 semánticamente
-sobredimensiones
+sobrediseñes
 sobrescribirlos
 subcarpeta
 subproyecto
