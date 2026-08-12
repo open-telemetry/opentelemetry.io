@@ -37,14 +37,16 @@ This check fails if you haven't [signed the CLA](../prerequisites/#cla).
 If the [Netlify](https://www.netlify.com/) build fails, select **Details** for
 more information.
 
-If the deploy log reports an untracked path that your PR doesn't touch (a
-`?? some/path` status line shortly before `"build.command" failed`), the build
-may have tripped over a stale Netlify build cache rather than your changes. Ask
-a maintainer, through a PR comment, to retry the build without its cache. If the
-failure recurs on the cache-free retry, the cache wasn't the cause: some step of
-the build is writing that path, and your changes are the first suspect. For the
-cache-clearing procedure, see
-[Dependency management](/site/build/dependencies/#netlify-build-cache).
+A `?? some/path` status line shortly before `"build.command" failed`, naming a
+path that your PR doesn't touch, suggests that the build tripped over a stale
+Netlify build cache rather than your changes:
+
+1. Ask a maintainer, through a PR comment, to retry the build without its cache.
+   For the cache-clearing procedure, see
+   [Dependency management](/site/build/dependencies/#netlify-build-cache).
+2. If the failure recurs on the cache-free retry, the cache wasn't the cause:
+   some step of the build is writing that path, and your changes are the first
+   suspect.
 
 ## GitHub PR checks {#checks}
 
