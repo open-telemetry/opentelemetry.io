@@ -270,7 +270,7 @@ ENV OTEL_INSTRUMENTATION_APACHE_HTTPCLIENT_ENABLED="true"
 COPY run.sh /usr/bin/run.sh
 ```
 
-Ese script de lanzamiento, `run.sh`, construye las flags `-javaagent` y
+Ese script de lanzamiento, `run.sh`, construye los parámetros `-javaagent` y
 `otel.resource.attributes` a partir de las variables de entorno que proporciona
 el sistema de despliegue:
 
