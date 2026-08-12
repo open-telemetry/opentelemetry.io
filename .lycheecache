@@ -381,6 +381,7 @@ https://docs.apimetrics.io/docs/export-with-opentelemetry,200,1786028699
 https://docs.astral.sh/uv/,200,1786341693
 https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html,200,1785739375
 https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-system-attributes,200,1785868538
+https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-creating-signed-url-canned-policy.html,200,1786531063
 https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/iam-access-control-overview-cwl.html#CWL_ARN_Format,200,1785739373
 https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Streams.html,200,1785785903
 https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Lambda-Insights-metrics.html,200,1785868538
@@ -389,6 +390,7 @@ https://docs.aws.amazon.com/AmazonECS/latest/developerguide/clusters.html,200,17
 https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#ecs-resource-ids,200,1785739373
 https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html,200,1785868536
 https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html,200,1785868535
+https://docs.aws.amazon.com/AmazonS3/latest/developerguide/RESTAuthentication.html#RESTAuthenticationQueryStringAuth,200,1786531063
 https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv-authentication-methods.html,200,1785868536
 https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format,200,1785868538
 https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html,200,1785868537
