@@ -34,20 +34,23 @@ invokes Docsy's own lock-exact, script-free theme-dependency install.
 
 ### Stale Netlify build cache {#netlify-build-cache}
 
-Netlify's [build cache][] includes the repository clone, so a retired path (for
-example, a removed git submodule) can ride the cache back into later builds as
-untracked residue and fail the clean-working-tree checks: the deploy log shows
-the path in a `?? ` status line. Clear the build cache rather than ignoring the
-path. Caches are per [deploy context][]:
+Netlify keeps a build cache per [deploy context][]: one for production, and one
+per already-built PR, seeded from the production cache on the PR's first build.
+Each cache [includes a clone of the repository][], and checking out a commit
+that drops a git submodule leaves the submodule's working tree in place, so a
+removed submodule can ride a cache back into later builds as untracked residue
+and fail the clean-working-tree checks: the deploy log shows the path in a `?? `
+status line. Clear the affected [build cache][] rather than ignoring the path:
 
 - **Production**: **Clear cache and deploy site**, under **Deploys** > **Trigger
-  deploy**. A PR inherits the production cache on its first build.
-- **Deploy Previews**: each already-built PR holds its own cache copy. Clear it
-  from the PR's latest deploy page with **Retry** > **Clear cache and retry with
-  latest branch commit**. There is no bulk clear across PRs.
+  deploy**.
+- **Deploy Previews**: each already-built PR holds its own cache copy, untouched
+  by a production clear. Clear it from the PR's latest deploy page with
+  **Retry** > **Clear cache and retry with latest branch commit**. There is no
+  bulk clear across PRs.
 
-When retiring a tracked path, clear the production build cache as part of the
-retirement, before the residue seeds per-PR caches.
+When removing a git submodule, clear the production build cache as part of the
+removal, before the residue seeds per-PR caches.
 
 ## Updating dependencies {#updating}
 
@@ -161,6 +164,7 @@ clean-working-tree checks (they see only Git-visible changes).
 [install contracts]: #install-contracts
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
+[includes a clone of the repository]: https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2
 [`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
