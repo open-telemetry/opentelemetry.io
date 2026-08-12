@@ -71,7 +71,7 @@ nativa.
 
 ![Diagrama de arquitectura de Skyscanner](skyscanner-architecture.png)
 
-## Configuración: empezar simple, evolucionar gradualmente {#configuration-start-simple-evolve-gradually}
+## Configuración: comenzar con lo simple, evolucionar gradualmente {#configuration-start-simple-evolve-gradually}
 
 Cuando Skyscanner desplegó los collectors por primera vez en 2021, su
 configuración era mínima: memory limiter, batch processor y un exportador OTLP
