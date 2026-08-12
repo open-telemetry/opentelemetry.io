@@ -175,7 +175,8 @@ Repository wiring (package scripts, CI, helper scripts, contributor docs) never
 invokes a bin as `npx BIN`: on a stale or missing `node_modules`, `npx` falls
 back to the public registry and executes whatever package holds that name. Its
 install prompt is no defense: it's skipped in non-interactive contexts and
-invites a reflexive yes elsewhere.
+invites a reflexive yes elsewhere. Localized copies of contributor docs catch up
+through [drift tracking][].
 
 - **Instead**:
   - Package scripts invoke dependency-provided bins directly; npm puts
@@ -189,6 +190,7 @@ invites a reflexive yes elsewhere.
 [install contracts]: #install-contracts
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
+[drift tracking]: /docs/contributing/localization/#track-changes
 [includes a clone of the repository]: https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2
 [`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
