@@ -17,9 +17,6 @@ cSpell:ignore: TOCSS
 > best-effort basis. For builds on Windows, you can follow steps similar to
 > those for Linux using Windows Subsystem for Linux command line [WSL][].
 
-The following instructions explain how to set up a development environment for
-this website.
-
 ## Cloud-IDE setup
 
 ### Gitpod
@@ -75,11 +72,22 @@ Your development environment will be initialized via the
     nvm install lts && nvm use lts
     ```
 
-4.  Get npm packages and other prerequisites:
+4.  Get npm packages and other prerequisites, using the [lock-exact,
+    script-suppressing setup][ci-install] that the devcontainer uses:
+
+    ```sh
+    npm run install:safe
+    ```
+
+    Or, use a standard install:
 
     ```sh
     npm install
     ```
+
+    Both installs use the dependency versions pinned in the committed
+    `package-lock.json`, and any lifecycle script that runs is subject to the
+    reviewed allowlist. Related: [lock-file maintenance][dep-updates].
 
 Launch your favorite IDE. {{% param what-next %}}
 
@@ -124,14 +132,9 @@ npm run serve
 
 The site is served at [localhost:1313][].
 
-If you need to test [Netlify][] redirects, use the following command and visit
-the site at [localhost:8888][]:
-
-```sh
-npm run serve:netlify
-```
-
 The serve command serves files from memory, not from disk.
+
+To test Netlify redirects, use the [deploy preview][] for your PR.
 
 If you see an error like `too many open files` or `pipe failed` under macOS, you
 might need to increase the file descriptor limit. See
@@ -229,17 +232,18 @@ npm run check:code-excerpts
 [code-excerpter]: https://github.com/chalin/code-excerpter
 
 <!-- prettier-ignore-start -->
+[ci-install]: /site/build/dependencies/#install-contracts
+[dep-updates]: /site/build/dependencies/#lock-file-maintenance
 [clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
 [cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
+[deploy preview]: ../pull-requests/#site-deploys-and-pr-previews
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
-[localhost:8888]: http://localhost:8888
-[netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
 [nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm-windows]: https://github.com/coreybutler/nvm-windows

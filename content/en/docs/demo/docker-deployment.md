@@ -131,6 +131,7 @@ in `*-no-o11y` modes):
 
 - Grafana: <http://localhost:8080/grafana/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
+- OpAMP UI: <http://localhost:8080/opamp/>
 
 The following are available only in specific deployment modes:
 
