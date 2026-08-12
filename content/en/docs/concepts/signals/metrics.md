@@ -74,7 +74,9 @@ The instrument kind is one of the following:
   only to the aggregated value.
 - **Histogram**: A client-side aggregation of values, such as request latencies.
   A histogram is a good choice if you are interested in value statistics. For
-  example: How many requests take fewer than 1s?
+  example: How many requests take fewer than 1s? For PromQL and Grafana query
+  examples, see
+  [Querying histogram metrics](/docs/compatibility/prometheus/otlp-metrics-export/#querying-histogram-metrics-in-prometheus-and-grafana).
 
 For more on synchronous and asynchronous instruments, and which kind is best
 suited for your use case, see
