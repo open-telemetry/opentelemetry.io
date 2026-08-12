@@ -457,7 +457,7 @@ consejos:
 - **Considera los filter processors desde el principio**: comprende la semántica
   de los códigos de estado de tu aplicación y filtra los "falsos positivos" de
   alto volumen para controlar los costes.
-- **No sobredimensiones la resiliencia**: para los datos de telemetría, un
+- **No sobrediseñes la resiliencia**: para los datos de telemetría, un
   procesamiento por lotes simple en memoria suele ser suficiente.
 - **Los despliegues graduales detectan problemas**: la promoción progresiva
   entre niveles de entorno proporciona una validación valiosa.
