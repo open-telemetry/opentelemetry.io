@@ -217,7 +217,7 @@ Further reading:
 
 - [Keycloak Observability / Telemetry](https://www.keycloak.org/observability/telemetry)
 
-> [!NOTE] The Common Design Pattern
+> [!NOTE] A Common Design Pattern
 >
 > Both deployment modes have a common, recurring theme.
 >
@@ -275,7 +275,7 @@ Further reading:
 - [Heroku OpenTelemetry signals and attributes](https://devcenter.heroku.com/articles/heroku-opentelemetry-signals-and-attributes-reference)
 - [Working with Heroku Telemetry Drains](https://devcenter.heroku.com/articles/working-with-heroku-telemetry-drains)
 
-## Choosing Between Pull and Push Export Models
+## Designing Your Export Model
 
 Across all three telemetry signals, the fundamental architectural question
 remains the same: will your platform enable the user to **pull** the data via an
@@ -301,8 +301,8 @@ and backfill missing data.
 Worse, achieving near real-time delivery is significantly harder, which is often
 a critical requirement for latency-sensitive signals like traces and metrics.
 
-For logs, a pull-based receiver often looks like this (e.g. [CloudWatch
-Logs–style](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/8bee89f9928b4b1f81700f9ab0e5886d428bfae6/receiver/awscloudwatchreceiver/logs.go#L293)):
+For logs, a pull-based receiver often looks like this (e.g.
+[CloudWatch Logs–style](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/8bee89f9928b4b1f81700f9ab0e5886d428bfae6/receiver/awscloudwatchreceiver/logs.go#L293)):
 
 ```text
 state: last_end_time
@@ -333,8 +333,6 @@ Instead of waiting to be asked, your service (or an OpenTelemetry Collector you
 run) actively exports logs, traces, and metrics directly to the user's
 configured endpoint using OTLP (over HTTP or gRPC).
 
-#### Where push works
-
 It uses one vendor-neutral, industry-standard protocol for all three signals.
 OTLP provides first-class support for structured data and metadata, meaning
 crucial context, such as linking specific logs to their parent trace IDs, is
@@ -344,34 +342,12 @@ From the user's perspective, it is practically plug-and-play. Any
 OTel-compatible backend can ingest the data in near real-time without requiring
 custom polling logic.
 
-#### Where push hurts
+### Building the Export Experience
 
-Here, the implementation burden shifts to your platform team: your engineers
-need to learn and adopt OpenTelemetry, and you need clear documentation on how
-users can configure their endpoints.
+When implementing the export model in your product, seek to maximize flexibility
+with minimal configuration.
 
-### The Verdict
-
-For many modern, developer-focused telemetry systems, OpenTelemetry's push model
-should be the default because it preserves rich context and delivers data in
-near real-time.
-
-Plus, it has been proven to work well at scale across cloud and self-hosted
-deployments by Cloudflare, Heroku, Kuma, and Keycloak.
-
-OpenTelemetry's independence from a particular vendor means users have the
-freedom to switch between observability vendors based on their business needs,
-without requiring a complete overhaul of their telemetry pipelines.
-
-Use the pull model primarily when you already have a dominant API for a given
-signal and cannot add a push path.
-
-## Building the Export Experience
-
-When actually implementing the export model in your product, seek to maximize
-flexibility with minimal configuration.
-
-### Let users configure an OTLP endpoint
+#### Let users configure an OTLP endpoint
 
 Start by letting users provide their own OTLP endpoint and any necessary
 authentication headers (like an ingestion key).
@@ -382,7 +358,7 @@ To allow users to control export volume, simplify data management, and reduce
 costs, let users explicitly toggle which signals they want to export — following
 Heroku's example.
 
-### Standardize the architecture
+#### Standardize the architecture
 
 Under the hood, you have two main options: use the OpenTelemetry SDK directly
 within your services to emit data, or run an internal OTel Collector that
@@ -392,7 +368,7 @@ Sticking to standard OpenTelemetry environment variables (like
 [`OTEL_EXPORTER_OTLP_ENDPOINT`](/docs/languages/sdk-configuration/otlp-exporter/#otel_exporter_otlp_endpoint))
 makes the underlying plumbing reliable and easy to document and reason about.
 
-### Keep semantics consistent
+#### Keep semantics consistent
 
 Beyond just OTel-based environment variables, make sure you maintain consistent
 semantics across all your signals. Document your attribute names and schemas —
@@ -409,6 +385,26 @@ transform and ingest it in their desired formats.
 
 For example, a user might wish to forward logs to their backend and to an object
 store like S3 to meet compliance requirements.
+
+### The Verdict
+
+For many modern, developer-focused telemetry systems, OpenTelemetry's push model
+should be the default because it preserves rich context and delivers data in
+near real-time.
+
+Plus, it has been proven to work well at scale across cloud and self-hosted
+deployments by Cloudflare, Heroku, Kuma, and Keycloak.
+
+OpenTelemetry's independence from a particular vendor means users have the
+freedom to switch between observability vendors based on their business needs,
+without requiring a complete overhaul of their telemetry pipelines.
+
+In the push export model, your platform team carries the implementation burden:
+your engineers need to learn and adopt OpenTelemetry, and you need clear
+documentation on how users can configure their endpoints.
+
+Use the pull model primarily when you already have a dominant API for a given
+signal and cannot add a push path.
 
 ## Routing Telemetry to the User
 
