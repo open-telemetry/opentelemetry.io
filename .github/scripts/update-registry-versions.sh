@@ -173,10 +173,10 @@ if [[ -n $(git status --porcelain) ]]; then
     echo "Versions have been updated, formatting and pushing changes."
 
     # npm steps run dependency-controlled code: keep the App token (GH_TOKEN)
-    # out of their env.
-    env -u GH_TOKEN $NPM run fix:link-cache ||
+    # out of their environment.
+    (unset GH_TOKEN; $NPM run fix:link-cache) ||
       echo "Link checking failed. Continuing so we can commit the link cache update."
-    env -u GH_TOKEN $NPM run fix:format
+    (unset GH_TOKEN; $NPM run fix:format)
 
     $GIT checkout -b "$branch"
     $GIT commit -a -m "$message"
