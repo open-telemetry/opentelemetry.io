@@ -136,7 +136,9 @@ That job fails if any link check fails, and hands the cache it refreshed to the
 [ci]: ../ci-workflows/
 [double-check README]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/lychee/double-check/README.md
 [drifted]: /docs/contributing/localization/#track-changes
-[`.gitattributes`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.gitattributes
+<!-- Skip-marker covers the bootstrap 404: the file first exists on main once
+  the PR introducing it (and this link) merges; harmless afterwards. -->
+[`.gitattributes`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.gitattributes?link-check=no
 [Housekeeping]: ../ci-workflows/#housekeeping
 [link cache]: #link-cache
 [Lychee]: https://lychee.cli.rs/
