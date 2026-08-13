@@ -386,39 +386,19 @@ transform and ingest it in their desired formats.
 For example, a user might wish to forward logs to their backend and to an object
 store like S3 to meet compliance requirements.
 
-### The verdict
-
-For many modern, developer-focused telemetry systems, OpenTelemetry's push model
-should be the default because it preserves rich context and delivers data in
-near real-time.
-
-Plus, it has been proven to work well at scale across cloud and self-hosted
-deployments by Cloudflare, Heroku, Kuma, and Keycloak.
-
-OpenTelemetry's independence from a particular vendor means users have the
-freedom to switch between observability vendors based on their business needs,
-without requiring a complete overhaul of their telemetry pipelines.
-
-In the push export model, your platform team carries the implementation burden:
-your engineers need to learn and adopt OpenTelemetry, and you need clear
-documentation on how users can configure their endpoints.
-
-Use the pull model primarily when you already have a dominant API for a given
-signal and cannot add a push path.
-
-## Routing telemetry to the user
+### Routing telemetry to the user
 
 As you design the configuration UI for your users, you'll need to decide how
 granular your telemetry routing should be. You generally have two paths, each
 catering to a different type of user.
 
-### Single endpoint
+#### Single endpoint
 
 For the vast majority of users, a single endpoint configuration is ideal. Here,
 the user inputs one base URL, and your exporter appends the standard OTLP paths
 (`v1/traces`, `v1/metrics`, and `v1/logs`) internally.
 
-### Per-signal endpoints
+#### Per-signal endpoints
 
 Large-scale customers, or those managing complex observability setups, may wish
 to send telemetry signals to different platforms.
@@ -432,7 +412,7 @@ For example, to configure a specific endpoint for logs, you would use the
 Exposing this per-signal routing in your application is technically optional,
 but it is a major value-add for advanced users.
 
-## Running Collectors to manage multi-tenancy
+### Running Collectors to manage multi-tenancy
 
 Once you're pushing OTLP (for any combination of logs, traces, metrics), you
 still need to decide how to run Collectors to manage multiple tenants.
@@ -441,7 +421,7 @@ Your Collector architecture needs to [scale](/docs/collector/scaling/) along two
 dimensions of growth: onboarding more users, and the volume of new telemetry
 generated as you ship new features.
 
-### One Collector per tenant
+#### One Collector per tenant
 
 If your architecture already isolates tenants at the infrastructure level, you
 can deploy a dedicated Collector instance for each customer. In this case, every
@@ -462,7 +442,7 @@ requirement and customers might have complex endpoint configurations.
 ![The Collector-per-tenant architecture provides strong isolation guarantees at
 the cost of increased resource usage.](collector-per-tenant.webp)
 
-### Shared Collector with static pipelines per tenant
+#### Shared Collector with static pipelines per tenant
 
 Here, "static" means each tenant's pipeline and routing rules are defined
 up-front in the Collector's configuration file, rather than provisioned
@@ -485,6 +465,26 @@ as your customer base grows.
 
 ![The shared Collector pattern is easier to monitor and maintain as all exports
 route through one Collector instance.](shared-collector.webp)
+
+### Push vs pull: the verdict
+
+For many modern, developer-focused telemetry systems, OpenTelemetry's push model
+should be the default because it preserves rich context and delivers data in
+near real-time.
+
+Plus, it has been proven to work well at scale across cloud and self-hosted
+deployments by Cloudflare, Heroku, Kuma, and Keycloak.
+
+OpenTelemetry's independence from a particular vendor means users have the
+freedom to switch between observability vendors based on their business needs,
+without requiring a complete overhaul of their telemetry pipelines.
+
+In the push export model, your platform team carries the implementation burden:
+your engineers need to learn and adopt OpenTelemetry, and you need clear
+documentation on how users can configure their endpoints.
+
+Use the pull model primarily when you already have a dominant API for a given
+signal and cannot add a push path.
 
 ## Putting it all together
 
