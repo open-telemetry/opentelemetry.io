@@ -6,9 +6,13 @@ description:
 argument-hint: '[optional-pr-number]'
 ---
 
-`.lycheecache` is an auto-generated file. Resolving conflicts requires first
-taking the integration branch's side, finishing the merge/rebase, then running
-`npm run fix:link-cache` to restore any URLs unique to the active branch.
+`.lycheecache` is an auto-generated file that merges with Git's `union` strategy
+(see `.gitattributes`), so merges and rebases usually complete without conflict,
+but they can leave duplicate or stale cache entries that fail the
+`CACHE updates committed?` check. In either case the recovery is the same:
+finish the merge/rebase (taking the integration branch's side for any residual
+`.lycheecache` conflict), then run `npm run fix:link-cache` to restore any URLs
+unique to the active branch and rewrite the cache clean.
 
 ## Prerequisites
 
@@ -33,12 +37,14 @@ At this point, we are ready to resolve the conflicts in the active branch:
    ask the user whether to run `git merge $BASE_BRANCH` or
    `git rebase $BASE_BRANCH`, then run it.
 
-3. If there are no conflicts: stop, we are done.
+3. If there are no conflicts: the union merge succeeded. If it changed
+   `.lycheecache`, jump to **Resolve** step 4; otherwise stop, we are done.
 
 4. Conflicts other than `.lycheecache`: resolve them with the user.
 
-5. If no `.lycheecache` conflict remains: stop, we are done. Otherwise, proceed
-   to **Resolve**.
+5. If no `.lycheecache` conflict remains: apply step 3's rule (jump to
+   **Resolve** step 4 when the merge changed `.lycheecache`, else stop).
+   Otherwise, proceed to **Resolve**.
 
 ## Resolve
 

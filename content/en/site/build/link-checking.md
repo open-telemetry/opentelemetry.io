@@ -79,9 +79,10 @@ run.
 Since the cache is routinely updated by several
 [scheduled workflows](#workflows) as well as content PRs, concurrent updates are
 merged line-by-line with Git's `union` strategy (see [`.gitattributes`][])
-rather than reported as conflicts. Any duplicate entries that such merges
-produce are benign: the next link-check run rewrites the cache in normalized
-form.
+rather than reported as conflicts. Such merges can leave duplicate or stale
+entries behind; these are benign for the checker, and the next link-check run
+rewrites the cache clean. In a PR, that rewrite must be committed to satisfy
+[`CACHE updates committed?`][pr-checks].
 
 If you add or change external links, run `npm run check:links` **before
 submitting your PR** — the site build dominates the run time — and commit the
@@ -92,12 +93,13 @@ updated `.lycheecache` along with your content changes. Otherwise the
 ## Cache refresh and housekeeping workflows {#workflows}
 
 The following workflows are scheduled daily and run a link checking command over
-a **full** build:
+a **full** build, unless noted otherwise:
 
-| Workflow                              | Link-check command                |
-| ------------------------------------- | --------------------------------- |
-| Refcache refresh                      | `log:check:links` (after pruning) |
-| [Housekeeping][] (`fix-and-test:all`) | `fix:link-cache`                  |
+| Workflow                              | Link-check command                            |
+| ------------------------------------- | --------------------------------------------- |
+| Refcache refresh                      | `log:check:links` (after pruning)             |
+| [Housekeeping][] (`fix-and-test:all`) | `fix:link-cache`                              |
+| Registry auto-update                  | `fix:link-cache` (lean build, when PR-worthy) |
 
 Refcache refresh prunes the oldest cache entries (the count is a workflow input)
 and re-runs the link check, which refreshes the cache entries for the pruned
