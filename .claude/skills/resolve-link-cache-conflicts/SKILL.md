@@ -35,16 +35,22 @@ At this point, we are ready to resolve the conflicts in the active branch:
 
 2. If merge or rebase is in progress (`git status`), skip this step. Otherwise,
    ask the user whether to run `git merge $BASE_BRANCH` or
-   `git rebase $BASE_BRANCH`, then run it.
+   `git rebase $BASE_BRANCH`, then run it. For a branch created before
+   `.gitattributes` gained the `.lycheecache` union rule, prefer rebase: merge
+   attributes resolve against the current checkout's tree, which during a rebase
+   is the updated base.
 
-3. If there are no conflicts: the union merge succeeded. If it changed
-   `.lycheecache`, jump to **Resolve** step 4; otherwise stop, we are done.
+3. If there are no conflicts, the operation completes on its own. Union merges
+   can still leave duplicate or stale `.lycheecache` entries: when the resulting
+   `.lycheecache` differs from both `$BASE_BRANCH` and `ORIG_HEAD` (the
+   pre-merge tip), jump to **Resolve** step 4. Otherwise stop, we are done.
 
 4. Conflicts other than `.lycheecache`: resolve them with the user.
 
-5. If no `.lycheecache` conflict remains: apply step 3's rule (jump to
-   **Resolve** step 4 when the merge changed `.lycheecache`, else stop).
-   Otherwise, proceed to **Resolve**.
+5. If a `.lycheecache` conflict remains, proceed to **Resolve**. Otherwise,
+   stage the resolved files and conclude the operation (**Resolve** step 2,
+   repeating for further rebase stops per **Resolve** step 3), then apply step
+   3's residue rule.
 
 ## Resolve
 

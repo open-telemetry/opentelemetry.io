@@ -51,6 +51,8 @@ registries. Supports: npm, Packagist, RubyGems, Go, NuGet, Hex, Maven.
 Deduplicates PRs by generating a SHA-1 tag from the update summary.
 
 When versions have changed, the script refreshes the [link cache][] before
-committing, since registry updates can add or remove external URLs.
+committing, since registry updates can add or remove external URLs. A transient
+failure during that refresh can leave the bot PR with `CACHE updates committed?`
+red even though links pass; comment `/fix:link-cache` on the PR to repair it.
 
 [link cache]: ../link-checking/#link-cache

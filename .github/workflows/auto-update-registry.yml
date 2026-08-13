@@ -9,6 +9,11 @@ on:
 # Declare default permissions as read only.
 permissions: read-all
 
+# Overlapping runs would race the script's existing-PR check.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
 jobs:
   auto-update:
     name: Auto-update registry versions
