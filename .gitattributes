@@ -1,6 +1,4 @@
-# The link cache is generated (one CSV line per URL) and refreshed by several
-# scheduled workflows, so concurrent updates routinely conflict. Union merge
-# keeps both sides' lines; duplicate entries are benign because the next
-# link-check pass rewrites the cache in normalized form. For details, see
+# The link cache is one line per URL, so union-merging its routinely
+# conflicting concurrent updates is safe. For details, see
 # https://opentelemetry.io/site/build/link-checking/#link-cache.
 /.lycheecache merge=union

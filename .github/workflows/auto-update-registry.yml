@@ -48,6 +48,9 @@ jobs:
           fi
           git fetch --depth=1 origin --end-of-options "$sha"
 
+      # Keep this mint below the install/build steps, next to its only
+      # consumer: dependency-controlled code must not run with the App token
+      # available.
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:

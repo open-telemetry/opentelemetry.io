@@ -76,11 +76,12 @@ control so that checks only fetch URLs that are new or whose cache entries have
 expired. Lychee caches successful results only, so failures are retried on every
 run.
 
-Since the cache is routinely updated by several scheduled workflows as well as
-content PRs, concurrent updates are merged line-by-line with Git's `union`
-strategy (see [`.gitattributes`][]) rather than reported as conflicts. Any
-duplicate entries that such merges produce are benign: the next link-check run
-rewrites the cache in normalized form.
+Since the cache is routinely updated by several
+[scheduled workflows](#workflows) as well as content PRs, concurrent updates are
+merged line-by-line with Git's `union` strategy (see [`.gitattributes`][])
+rather than reported as conflicts. Any duplicate entries that such merges
+produce are benign: the next link-check run rewrites the cache in normalized
+form.
 
 If you add or change external links, run `npm run check:links` **before
 submitting your PR** — the site build dominates the run time — and commit the
@@ -136,9 +137,7 @@ That job fails if any link check fails, and hands the cache it refreshed to the
 [ci]: ../ci-workflows/
 [double-check README]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/lychee/double-check/README.md
 [drifted]: /docs/contributing/localization/#track-changes
-<!-- Skip-marker covers the bootstrap 404: the file first exists on main once
-  the PR introducing it (and this link) merges; harmless afterwards. -->
-[`.gitattributes`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.gitattributes?link-check=no
+[`.gitattributes`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.gitattributes
 [Housekeeping]: ../ci-workflows/#housekeeping
 [link cache]: #link-cache
 [Lychee]: https://lychee.cli.rs/
