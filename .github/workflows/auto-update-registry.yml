@@ -63,7 +63,7 @@ jobs:
           #
           # `gh` calls run as otelbot via the App token; see above.
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
-          # Built-in token for the link checker.
+          # Default workflow token for the link checker, set by `permissions`
           GITHUB_TOKEN: ${{ github.token }}
 
   report-failure:
