@@ -145,22 +145,20 @@ meter.CreateObservableGauge("cpu_usage", () =>
 
 ## Batching observable measurements
 
-You can also register a callback that returns multiple measurements for multiple
-instruments:
+You can share callbacks across multiple observable instruments by passing a
+`Func<IEnumerable<Measurement<T>>>` to each `CreateObservable*` call:
 
 ```csharp
-// Register a single callback for multiple observable instruments
-var observableCounter = meter.CreateObservableCounter<long>("my_observable_counter", "items");
-var observableGauge = meter.CreateObservableGauge<double>("my_observable_gauge", "%");
+// Define callbacks that return measurements for each instrument
+static IEnumerable<Measurement<long>> ObserveCounter() =>
+    [new Measurement<long>(42, new("type", "product_a"))];
 
-meter.RegisterObservableCallback(observableInstruments =>
-{
-    // Record a value for the counter
-    observableInstruments.Observe(observableCounter, 42, new("type", "product_a"));
+static IEnumerable<Measurement<double>> ObserveGauge() =>
+    [new Measurement<double>(12.3, new("resource", "cpu"))];
 
-    // Record a value for the gauge
-    observableInstruments.Observe(observableGauge, 12.3, new("resource", "cpu"));
-}, observableCounter, observableGauge);
+// Register the callbacks with each observable instrument
+var observableCounter = meter.CreateObservableCounter<long>("my_observable_counter", ObserveCounter, "items");
+var observableGauge = meter.CreateObservableGauge<double>("my_observable_gauge", ObserveGauge, "%");
 ```
 
 ## Unit and description
