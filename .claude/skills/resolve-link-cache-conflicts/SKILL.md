@@ -1,18 +1,16 @@
 ---
 name: resolve-link-cache-conflicts
 description:
-  Skill for resolving .lycheecache merge or rebase conflicts in the current
-  branch or a specified PR.
+  Skill for recovering .lycheecache after a merge or rebase, whether from
+  residual conflicts or union-merge residue, in the current branch or a
+  specified PR.
 argument-hint: '[optional-pr-number]'
 ---
 
-`.lycheecache` is an auto-generated file that merges with Git's `union` strategy
-(see `.gitattributes`), so merges and rebases usually complete without conflict,
-but they can leave duplicate or stale cache entries that fail the
-`CACHE updates committed?` check. In either case the recovery is the same:
-finish the merge/rebase (taking the integration branch's side for any residual
-`.lycheecache` conflict), then run `npm run fix:link-cache` to restore any URLs
-unique to the active branch and rewrite the cache clean.
+`.lycheecache` is auto-generated and union-merged (policy: [Link cache][]), so
+merges and rebases usually complete without conflict but can leave residue that
+fails the `CACHE updates committed?` check. Either way, recover with the
+procedure below.
 
 ## Prerequisites
 
@@ -41,16 +39,16 @@ At this point, we are ready to resolve the conflicts in the active branch:
    is the updated base.
 
 3. If there are no conflicts, the operation completes on its own. Union merges
-   can still leave duplicate or stale `.lycheecache` entries: when the resulting
-   `.lycheecache` differs from both `$BASE_BRANCH` and `ORIG_HEAD` (the
-   pre-merge tip), jump to **Resolve** step 4. Otherwise stop, we are done.
+   can still leave residue: when `.lycheecache` now has duplicate URLs or
+   out-of-order lines (`cut -d, -f1 .lycheecache | sort | uniq -d` prints
+   duplicates, or `sort -c .lycheecache` fails), jump to **Resolve** step 4.
+   Otherwise stop, we are done.
 
 4. Conflicts other than `.lycheecache`: resolve them with the user.
 
 5. If a `.lycheecache` conflict remains, proceed to **Resolve**. Otherwise,
-   stage the resolved files and conclude the operation (**Resolve** step 2,
-   repeating for further rebase stops per **Resolve** step 3), then apply step
-   3's residue rule.
+   conclude the operation per **Resolve** steps 2-3, then apply **Preparation**
+   step 3's residue test.
 
 ## Resolve
 
@@ -88,3 +86,7 @@ At this point, we are ready to resolve the conflicts in the active branch:
 6. Push:
    - Merge: `git push`
    - Rebase: `git push --force-with-lease`
+
+<!-- prettier-ignore-start -->
+[Link cache]: https://opentelemetry.io/site/build/link-checking/#link-cache
+<!-- prettier-ignore-end -->

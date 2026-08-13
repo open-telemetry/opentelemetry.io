@@ -6,7 +6,6 @@ on:
     # At 04:31, every day
     - cron: 31 4 * * *
 
-# Declare default permissions as read only.
 permissions: read-all
 
 # Overlapping runs would race the script's existing-PR check.
@@ -59,11 +58,12 @@ jobs:
         run: |
           .github/scripts/update-registry-versions.sh
         env:
-          # Two tokens, each least-privilege for its consumer:
+          # Two tokens, one per consumer:
           #
-          # `gh` calls run as otelbot via the App token; see above.
+          # `gh` calls run as otelbot via the App token.
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
-          # Default workflow token for the link checker, set by `permissions`
+          # Default workflow token, for the link checker; its scope comes from
+          # the job's `permissions`.
           GITHUB_TOKEN: ${{ github.token }}
 
   report-failure:
