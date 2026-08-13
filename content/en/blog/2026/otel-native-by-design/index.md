@@ -301,8 +301,8 @@ and backfill missing data.
 Worse, achieving near real-time delivery is significantly harder, which is often
 a critical requirement for latency-sensitive signals like traces and metrics.
 
-For logs, a pull-based receiver often looks like this (e.g. CloudWatch
-Logs–style):
+For logs, a pull-based receiver often looks like this (e.g. [CloudWatch
+Logs–style](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/8bee89f9928b4b1f81700f9ab0e5886d428bfae6/receiver/awscloudwatchreceiver/logs.go#L293)):
 
 ```text
 state: last_end_time
