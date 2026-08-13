@@ -38,17 +38,27 @@ At this point, we are ready to resolve the conflicts in the active branch:
    attributes resolve against the current checkout's tree, which during a rebase
    is the updated base.
 
-3. If there are no conflicts, the operation completes on its own. Union merges
-   can still leave residue: when `.lycheecache` now has duplicate URLs or
-   out-of-order lines (`cut -d, -f1 .lycheecache | sort | uniq -d` prints
-   duplicates, or `sort -c .lycheecache` fails), jump to **Resolve** step 4.
-   Otherwise stop, we are done.
+3. If there are no conflicts, the operation completes on its own. Run the
+   [residue test](#residue-test), then stop: we are done.
 
 4. Conflicts other than `.lycheecache`: resolve them with the user.
 
 5. If a `.lycheecache` conflict remains, proceed to **Resolve**. Otherwise,
-   conclude the operation per **Resolve** steps 2-3, then apply **Preparation**
-   step 3's residue test.
+   conclude the operation per **Resolve** steps 2-3, then run the
+   [residue test](#residue-test).
+
+## Residue test
+
+A conflict-free union merge can still leave residue that fails the
+`CACHE updates committed?` check: duplicate URLs or out-of-order lines.
+
+```sh
+cut -d, -f1 .lycheecache | sort | uniq -d # any output: duplicate URLs
+sort -c .lycheecache                      # any error: out-of-order lines
+```
+
+If either check trips, run **Resolve** steps 4-6 to regenerate, commit, and push
+the cache.
 
 ## Resolve
 

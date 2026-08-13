@@ -26,7 +26,9 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           # Full history, so that link-check config generation can diff
-          # content against the drift-status baseline commit.
+          # content against the drift-status baseline commit. (Simpler than
+          # check-links.yml's targeted deepen; clone cost is immaterial in a
+          # daily job.)
           fetch-depth: 0
 
       - name: Use CLA approved github bot
