@@ -48,9 +48,9 @@ registries. Supports: npm, Packagist, RubyGems, Go, NuGet, Hex, Maven.
 - Locally: runs in **dry-run** mode by default. Use `-f` to force real
   execution.
 
+Deduplicates PRs by generating a SHA-1 tag from the update summary.
+
 When versions have changed, the script refreshes the [link cache][] before
 committing, since registry updates can add or remove external URLs.
-
-Deduplicates PRs by generating a SHA-1 tag from the update summary.
 
 [link cache]: ../link-checking/#link-cache
