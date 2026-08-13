@@ -4,10 +4,12 @@ http://logback.qos.ch/?http_ok,200,1786028671
 http://www.powerjob.tech/?http_ok,200,1786028671
 https://activej.io/,200,1785868409
 https://actix.rs/,200,1786427559
+https://agentic-ledger.dev/,200,1786532154
 https://agentskills.io/,200,1785868415
 https://ai.google.dev/api/generate-content,200,1785868538
 https://ai.pydantic.dev/,200,1786341721
 https://andygol-otel.netlify.app/uk/,206,1786028763
+https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2,200,1786569032
 https://anywhere.eks.amazonaws.com/docs/getting-started/optional/hostosconfig/,200,1785868409
 https://apicontext.com/,200,1785868420
 https://apisix.apache.org/,200,1786028701
@@ -480,6 +482,7 @@ https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorp
 https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request,200,1785868420
 https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork,200,1785868411
 https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository,200,1785868410
+https://docs.google.com/document/d/14p-bpofozTL4n3jy6HZH_TKjoOXvog18G1HBRqq6liE,200,1786532073
 https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w,200,1786028669
 https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY,200,1785739358
 https://docs.google.com/forms/d/e/1FAIpQLScoG279ZhRuMu8J_8BebGEVtMOS8BgD9cpQUJ6xSnNIAUtedw/viewform?usp=header,200,1786028721
@@ -548,6 +551,8 @@ https://docs.microsoft.com/windows/win32/api/winsock2/nf-winsock2-getpeername,20
 https://docs.microsoft.com/windows/win32/api/winsock2/nf-winsock2-getsockname,200,1786028735
 https://docs.middleware.io/open-telemetry,200,1785868420
 https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm,200,1786473193
+https://docs.netlify.com/build/configure-builds/troubleshooting-tips/,200,1786569032
+https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts,200,1786569032
 https://docs.netlify.com/manage/domains/secure-domains-with-https/https-ssl/#netlify-managed-certificates,200,1786341721
 https://docs.newrelic.com/docs/opentelemetry/nrdot/nrdot-collector/,200,1785868406
 https://docs.npmjs.com/cli/configuring-npm/package-lock-json,200,1786473193
@@ -1009,6 +1014,9 @@ https://github.com/Seldaek/monolog/blob/3.4.0/doc/01-usage.md#leveraging-channel
 https://github.com/SergeyKanzhelev,200,1785785936
 https://github.com/SergeyKleyman,200,1785868526
 https://github.com/ShaanveerS,200,1785868531
+https://github.com/ShekharBhardwaj,200,1786532154
+https://github.com/ShekharBhardwaj/AgenticLedger,200,1786532155
+https://github.com/ShekharBhardwaj/AgenticLedger/tree/main/docs/integrations,200,1786532155
 https://github.com/SpencerTorres,200,1785785935
 https://github.com/SumoLogic/sumologic-otel-collector,200,1785868408
 https://github.com/SylvainJuge,200,1786028731
@@ -1557,6 +1565,8 @@ https://github.com/k4ji/tracesimulationreceiver,200,1785868433
 https://github.com/kaisecheng,200,1786427588
 https://github.com/kakkoyun,200,1785739362
 https://github.com/kamphaus,200,1785868527
+https://github.com/kartikgola,200,1786520310
+https://github.com/kartikgola/opentelemetry-resource-detector-railway,200,1786520310
 https://github.com/kaspernissen,200,1786427590
 https://github.com/kaspernissen/pizza/tree/agentic-workflows,200,1785739363
 https://github.com/katzchang,200,1785739368
@@ -4848,6 +4858,7 @@ https://groups.google.com/a/opentelemetry.io/g/calendar-comms,200,1786427564
 https://groups.google.com/a/opentelemetry.io/g/calendar-demo-app,200,1785739358
 https://groups.google.com/a/opentelemetry.io/g/calendar-go,200,1785739357
 https://groups.google.com/a/opentelemetry.io/g/calendar-js,200,1785739358
+https://groups.google.com/a/opentelemetry.io/g/calendar-mainframe,200,1786532071
 https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting,200,1786427564
 https://groups.google.com/a/opentelemetry.io/g/calendar-swift,200,1786341721
 https://grpc.github.io/grpc/core/md_doc_naming.html,200,1785868534
@@ -6308,10 +6319,12 @@ https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/openj9/api/jdk8/jre/managem
 https://www.ibm.com/docs/db2-for-zos/12?topic=codes-sql,200,1785739380
 https://www.ibm.com/docs/en/instana-observability/1.0.304?topic=apis-opentelemetry,200,1785868422
 https://www.ibm.com/docs/en/instana-observability/current?topic=collectors-instana-distribution-opentelemetry-collector,200,1785868405
+https://www.ibm.com/docs/en/zos/3.2.0?topic=smf-introduction,200,1786532074
 https://www.ibm.com/products/informix,200,1785868537
 https://www.ibm.com/products/netezza,200,1785868540
 https://www.ibm.com/products/watsonx-ai,200,1786341740
 https://www.ibm.com/think/topics/ai-agents,200,1785868512
+https://www.ibm.com/think/topics/mainframe,200,1786532071
 https://www.ibm.com/uk-en/cloud/websphere-application-server,200,1785785894
 https://www.ietf.org/archive/id/draft-ietf-uuidrev-rfc4122bis-14.html#name-uuid-version-7,200,1785911059
 https://www.ietf.org/rfc/rfc4122.txt,200,1785739373
