@@ -25,17 +25,17 @@ work well together.
 When evaluating zero-code instrumentation, it helps to understand the
 fundamental architectural difference between the two approaches:
 
-- **Attach at Runtime (eBPF):** The instrumentation runs alongside your
-  application as a separate process (often on the host node). It observes the
-  application from the outside—specifically at the application, kernel, and
-  networking layers. While it may inject outgoing headers into the application's
-  memory space for trace context propagation, it does not require changes to the
-  application's build process.
+- **Runtime (eBPF):** The instrumentation runs alongside your application as a
+  separate process (often on the host node). It observes the application from
+  the outside—specifically at the application, kernel, and networking layers.
+  While it may inject outgoing headers into the application's memory space for
+  trace context propagation, it does not require changes to the application's
+  build process.
 
-- **Weave at Build Time (Compile-Time):** The instrumentation is injected into
-  the application's source or Abstract Syntax Tree (AST) during the compilation
-  process. The resulting binary contains the telemetry logic natively, meaning
-  no external runtime agent is required.
+- **Compile Time (otelc):** The instrumentation is injected into the
+  application's source during the compilation process. The resulting binary
+  contains the telemetry logic natively, meaning no external runtime agent is
+  required.
 
 ## OBI
 
@@ -80,13 +80,12 @@ executables and the OS networking layer.
 | Feature                     | OBI (eBPF)                                                                                                                      | otelc (Compile-Time)                                                                                 |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------- |
 | **Deployment Model**        | Deployed separately (e.g., Kubernetes DaemonSet, sidecar, or host agent). Zero changes to application build pipeline.           | Baked into the application binary during `go build`. Requires wrapping your build command.           |
-| **Operational Overhead**    | Requires specific Linux kernel versions, BTF, and elevated privileges (root/capabilities).                                      | No special runtime privileges, kernel features, or OS requirements needed.                           |
+| **Runtime Requirements**    | Requires specific Linux kernel versions, BTF, and elevated privileges (root/capabilities).                                      | No special runtime privileges, kernel features or OS requirements needed.                            |
 | **Signal Fidelity & Depth** | Excellent for network boundaries and protocol interactions. Cannot easily see internal function calls or custom business logic. | Deep in-process visibility. Can instrument internal functions, custom logic, and code paths.         |
-| **Language Scope**          | Polyglot (Go, Java, .NET, Python, Rust, etc.). Ideal for mixed-language fleets.                                                 | Go only.                                                                                             |
 | **Third-party Libraries**   | Sees the network calls and database queries made by dependencies.                                                               | Can instrument the internal code execution of Go module dependencies.                                |
 | **Lifecycle Management**    | Can be attached, detached, upgraded, or downgraded dynamically without application restarts.                                    | Requires an application rebuild, redeploy, and restart to change versions or remove instrumentation. |
 
-## When to use Which
+## When to Use Which
 
 ### Choose OBI if:
 
@@ -125,12 +124,3 @@ complementary and can be used together in the same environment:
 - Use **OBI** to provide infrastructure-level network observability,
   kernel-level TCP metrics, and coverage for any non-Go components or sidecars
   running in your environment.
-
-## Getting Involved
-
-Both projects are actively developed within the OpenTelemetry Community.
-
-- **OBI:** Follow development, report issues, or contribute to the
-  [OpenTelemetry eBPF Instrumentation repository](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation).
-- **otelc:** Get involved with the
-  [OpenTelemetry Go Compile-Time Instrumentation repository](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation).
