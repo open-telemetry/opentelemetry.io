@@ -151,7 +151,7 @@
   commercial: true
 - name: Dartastic.io
   nativeOTLP: true
-  url: https://dartastic.io/
+  url: https://dartastic.io/help/observatory
   contact: support@dartastic.io
   oss: false
   commercial: true
