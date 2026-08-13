@@ -29,6 +29,9 @@ The attack paths that matter for this repository:
   compromise contributor hosts, CI runners, and build images.
 - **Unattended installs**: CI jobs and the [Netlify][] build image install
   without a human watching, as do agent sessions.
+- **Name resolution**: a tool invocation that can reach the registry by name
+  (`npx`) executes whichever package holds that name when the local install is
+  stale or missing.
 
 ## Design decisions
 
@@ -67,6 +70,12 @@ closing table maps decisions to their enforcement.
   - **Neutralize the auto-install**: <a id="auto-install"></a> the configuration
     [neutralizes it][inert auto-install]; the build command performs the [real
     install][install contracts].
+- _A bin invoked by registry-resolvable name runs whoever claims the name when
+  the local install is stale; a squat of an unregistered bin name proved this in
+  June._
+  - **Invoke bins, not names**: <a id="no-bare-npx"></a> repository wiring
+    [never uses bare `npx`][no bare npx]; bins come from the installed
+    dependency tree or fail loudly.
 - _A control that silently stops being enforced is worse than none._
   - **Fail closed on old npm**: <a id="old-npm"></a> installs fail rather than
     proceed when the active npm is too old to enforce the `.npmrc` settings.
@@ -83,6 +92,7 @@ Enforcement at a glance:
 | [Resolve only cooled-down releases][]   | The [cooldown][] control, for npm and Renovate alike                                                             |
 | [Run only reviewed lifecycle scripts][] | The [allowlist][] in strict mode; unreviewed fails the install                                                   |
 | [Neutralize the auto-install][]         | The [inert auto-install][] control                                                                               |
+| [Invoke bins, not names][]              | The [no bare npx][] rule; review discipline, no mechanical control                                               |
 | [Fail closed on old npm][]              | The [npm engines floor][] with strict engine checking                                                            |
 | [Verify, don't trust][]                 | [Clean-working-tree checks][install contracts] failing the build; a `postinstall` warning on local lock rewrites |
 
@@ -111,11 +121,13 @@ Enforcement at a glance:
 [inert auto-install]: ../../build/dependencies/#inert-netlify-auto-install
 [install contracts]: ../../build/dependencies/#install-contracts
 [Install from the lock]: #lock
+[Invoke bins, not names]: #no-bare-npx
 [lifecycle scripts]: https://docs.npmjs.com/cli/using-npm/scripts
 [Minimize dependencies]: #minimize
 [netlify-deps]: https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm
 [Netlify]: https://www.netlify.com/
 [Neutralize the auto-install]: #auto-install
+[no bare npx]: ../../build/dependencies/#no-bare-npx
 [npm engines floor]: ../../build/dependencies/#npm-version-floor
 [openssf]: https://github.com/ossf/package-manager-best-practices/blob/main/published/npm.md
 [pnpm defers]: https://pnpm.io/settings/dependency-resolution

@@ -9,6 +9,7 @@ https://agentskills.io/,200,1785868415
 https://ai.google.dev/api/generate-content,200,1785868538
 https://ai.pydantic.dev/,200,1786341721
 https://andygol-otel.netlify.app/uk/,206,1786028763
+https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2,200,1786569032
 https://anywhere.eks.amazonaws.com/docs/getting-started/optional/hostosconfig/,200,1785868409
 https://apicontext.com/,200,1785868420
 https://apisix.apache.org/,200,1786028701
@@ -554,6 +555,8 @@ https://docs.microsoft.com/windows/win32/api/winsock2/nf-winsock2-getpeername,20
 https://docs.microsoft.com/windows/win32/api/winsock2/nf-winsock2-getsockname,200,1786028735
 https://docs.middleware.io/open-telemetry,200,1785868420
 https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm,200,1786473193
+https://docs.netlify.com/build/configure-builds/troubleshooting-tips/,200,1786569032
+https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts,200,1786569032
 https://docs.netlify.com/manage/domains/secure-domains-with-https/https-ssl/#netlify-managed-certificates,200,1786341721
 https://docs.newrelic.com/docs/opentelemetry/nrdot/nrdot-collector/,200,1785868406
 https://docs.npmjs.com/cli/configuring-npm/package-lock-json,200,1786473193
