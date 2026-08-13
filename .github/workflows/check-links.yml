@@ -70,8 +70,7 @@ jobs:
       # baseline; a depth-1 fetch of that commit is all the (shallow) clone
       # needs. Config generation fails if the baseline can't be resolved.
       # The extraction enforces the same 'commit: FULL_SHA' shape as
-      # BASELINE_COMMIT_RE in scripts/i18n/drift.mjs; keep the two in sync,
-      # along with the copy of this step in auto-update-registry.yml.
+      # BASELINE_COMMIT_RE in scripts/i18n/drift.mjs; keep the two in sync.
       # Kill switch: exporting DRIFT_BASELINE=HEAD on the config-generation
       # step below empties the overlay, restoring pre-overlay behavior.
       - name: Deepen history to the drift-status baseline
