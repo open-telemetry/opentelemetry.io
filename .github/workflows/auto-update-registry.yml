@@ -6,7 +6,8 @@ on:
     # At 04:31, every day
     - cron: 31 4 * * *
 
-permissions: read-all
+permissions:
+  contents: read
 
 # Overlapping runs would race the script's existing-PR check.
 concurrency:
@@ -17,14 +18,14 @@ jobs:
   auto-update:
     name: Auto-update registry versions
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     # Remove the if statement below when testing against a fork
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # The push credential is scoped to the auto-update step below.
+          persist-credentials: false
           # Full history, so that link-check config generation can diff
           # content against the drift-status baseline commit. (Simpler than
           # check-links.yml's targeted deepen; clone cost is immaterial in a
@@ -55,18 +56,31 @@ jobs:
         with:
           client-id: ${{ vars.OTELBOT_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+          # Scope the token to what the auto-update script needs: push the
+          # update branch, then open its PR.
+          permission-contents: write
+          permission-pull-requests: write
 
       - name: Auto-update
         run: |
+          # Just-in-time push credential: authenticate the remote with the App
+          # token only for this step; the cleanup step below removes it.
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           .github/scripts/update-registry-versions.sh
         env:
           # Two tokens, one per consumer:
           #
-          # `gh` calls run as otelbot via the App token.
+          # The branch push and `gh` calls run as otelbot via the App token.
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
-          # Default workflow token, for the link checker; its scope comes from
-          # the job's `permissions`.
+          # Default workflow token, for the link checker; read-only per the
+          # workflow's `permissions`.
           GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Remove push credential
+        if: always()
+        run:
+          git remote set-url origin
+          "https://github.com/${GITHUB_REPOSITORY}.git"
 
   report-failure:
     needs: auto-update
