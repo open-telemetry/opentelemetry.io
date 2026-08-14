@@ -43,6 +43,13 @@ export function runNpmRebuild({
   if (result.error) {
     error(`Unable to start the Hugo rebuild: ${result.error.message}`);
   }
+  // Report terminations so a killed attempt is never silent; it stays
+  // retryable: an attempt-scoped kill (e.g. the OOM killer picking the npm
+  // child) is as recoverable as a failed fetch, and a build cancellation
+  // signals this wrapper too.
+  if (result.signal) {
+    error(`The Hugo rebuild attempt was terminated by ${result.signal}`);
+  }
   return result.status ?? 1;
 }
 

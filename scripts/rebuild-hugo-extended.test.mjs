@@ -92,13 +92,29 @@ test('npm rebuild uses the current npm CLI and exact arguments', () => {
   );
 });
 
+test('npm rebuild reports a signal-terminated attempt', () => {
+  const errors = [];
+  const status = runNpmRebuild({
+    env: { npm_execpath: '/npm/bin/npm-cli.js' },
+    error: (message) => errors.push(message),
+    spawn: () => ({ status: null, signal: 'SIGTERM' }),
+  });
+
+  assert.equal(status, 1, 'a terminated attempt returns nonzero');
+  assert.deepEqual(
+    errors,
+    ['The Hugo rebuild attempt was terminated by SIGTERM'],
+    'the termination is reported',
+  );
+});
+
 test('Hugo rebuild retries with backoff until it succeeds', async () => {
   const { attempts, errors, logs, status, waited } = await runProbe(3);
 
   assert.equal(status, 0, 'retry policy returns zero after success');
   assert.deepEqual(attempts, [1, 2, 3], 'retry policy stops after success');
   assert.deepEqual(waited, [2, 5], 'retry policy uses the first two delays');
-  assert.deepEqual(errors, [], 'successful retry policy reports no errors');
+  assert.deepEqual(errors, [], 'the error log stays empty on success');
   assert.ok(
     logs.includes('Hugo install attempt 3/4'),
     'successful attempt is logged',
@@ -125,8 +141,8 @@ test('Hugo rebuild rejects installer control variables', async () => {
     });
 
     assert.equal(status, 1, `${name} returns nonzero`);
-    assert.deepEqual(attempts, [], `${name} permits no rebuild attempt`);
-    assert.deepEqual(waited, [], `${name} permits no retry wait`);
+    assert.deepEqual(attempts, [], `attempts stay empty under ${name}`);
+    assert.deepEqual(waited, [], `waits stay empty under ${name}`);
     assert.deepEqual(
       errors,
       [`${name} must be unset for the pinned Hugo rebuild`],
@@ -144,7 +160,7 @@ test('Hugo rebuild treats an empty control variable as unset', async () => {
 
   assert.equal(status, 0, 'an empty control variable permits the rebuild');
   assert.deepEqual(attempts, [1], 'the rebuild runs once');
-  assert.deepEqual(errors, [], 'no rejection is reported');
+  assert.deepEqual(errors, [], 'the error log stays empty');
 });
 
 test('Hugo rebuild fails fast without the npm CLI path', async () => {
@@ -155,7 +171,7 @@ test('Hugo rebuild fails fast without the npm CLI path', async () => {
       env: npmExecPath === undefined ? {} : { npm_execpath: npmExecPath },
       error: (message) => errors.push(message),
       log: () => {},
-      wait: () => assert.fail('a missing npm CLI path permits no retry wait'),
+      wait: () => assert.fail('the helper returns before the first retry wait'),
     });
 
     assert.equal(status, 1, 'missing npm CLI path returns nonzero');
