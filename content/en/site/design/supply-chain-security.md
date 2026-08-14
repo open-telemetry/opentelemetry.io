@@ -8,9 +8,10 @@ cSpell:ignore: cooldowns unreviewed
 
 For the controls themselves and day-to-day procedures, see
 [Dependency management](../../build/dependencies/). Neighboring security topics
-have their own homes: workflow trigger and token privileges in
-[CI workflows](../../build/ci-workflows/#security-model), and vulnerability
-reporting in the [security policy][].
+have their own homes: the design of the audit that verifies these controls in
+[Supply-chain audit design](../supply-chain-audit/), workflow trigger and token
+privileges in [CI workflows](../../build/ci-workflows/#security-model), and
+vulnerability reporting in the [security policy][].
 
 ## Threat model
 
@@ -94,7 +95,7 @@ Enforcement at a glance:
 | [Neutralize the auto-install][]         | The [inert auto-install][] control                                                                               |
 | [Invoke bins, not names][]              | The [no bare npx][] rule; review discipline, no mechanical control                                               |
 | [Fail closed on old npm][]              | The [npm engines floor][] with strict engine checking                                                            |
-| [Verify, don't trust][]                 | [Clean-working-tree checks][install contracts] failing the build; a `postinstall` warning on local lock rewrites |
+| [Verify, don't trust][]                 | [Supply-chain audit][], [clean-working-tree checks][install contracts], a `postinstall` warning on lock rewrites |
 
 ## Prior art
 
@@ -139,6 +140,7 @@ Enforcement at a glance:
 [Run only reviewed lifecycle scripts]: #scripts
 [security notice]: https://github.com/open-telemetry/opentelemetry.io/issues/11210
 [security policy]: https://github.com/open-telemetry/opentelemetry.io/security/policy
+[Supply-chain audit]: ../../build/dependencies/#audit
 [tuf]: https://theupdateframework.io/docs/security/
 [Verify, don't trust]: #verify
 [Yarn]: https://yarnpkg.com/advanced/lifecycle-scripts
