@@ -27,14 +27,14 @@ concrete instances of most of them in earlier drafts.
 1. **Prove from committed files alone.** The audit reads the lock, manifests,
    `.npmrc`, and `netlify.toml` (never the network or the installed tree), so it
    is fast, offline, and can't be swayed by the state it is meant to vet.
-2. **Allowlist whole shapes; don't denylist patterns.** Every denylist regex
-   over a config format eventually met a valid spelling it didn't anticipate
-   (quoted, dotted, and inline-table TOML keys all bypassed an env-key
-   denylist). Pinning the entire reviewed shape (exact key sets, exact values)
-   is stronger and usually shorter.
+2. **Allowlist whole shapes; don't denylist patterns.** Every denylist regular
+   expression over a config format eventually met a valid spelling it didn't
+   anticipate (quoted, dotted, and inline-table TOML keys all bypassed an
+   env-key denylist). Pinning the entire reviewed shape (exact key sets, exact
+   values) is stronger and usually shorter.
 3. **Parse; don't line-scan.** A format's parser defines its semantics. A line
-   regex mismodels them silently: a context table it doesn't recognize still
-   means something to Netlify.
+   regular expression mismodels them silently: a context table it doesn't
+   recognize still means something to Netlify.
 4. **Exact pins; no prefix or flag matching.** Prefix matching accepts an
    appended `&& npm install ...` rider on a script the audit trusts by name.
 5. **Fail closed on absence.** Every counting check carries a floor assertion,
@@ -66,7 +66,7 @@ inventory of assertions.
 
 | Principle               | Exemplar in the audit                                                            |
 | ----------------------- | -------------------------------------------------------------------------------- |
-| Committed files alone   | Every input is read from the repo checkout; the suite runs with no network       |
+| Committed files alone   | Every input is read from the checkout; the suite runs with no network            |
 | Allowlist whole shapes  | `netlify.toml`: top-level tables, build keys, and env key sets are `deepEqual`ed |
 | Parse, don't line-scan  | `netlify.toml` is parsed with `smol-toml` before anything is asserted            |
 | Exact pins              | The install-closure scripts are compared with `assert.equal`, never `match`      |
