@@ -17,9 +17,8 @@ const helperPath = fileURLToPath(
   new URL('rebuild-hugo-extended.mjs', import.meta.url),
 );
 
-// Deliberately literal: the content pin for the helper's UNSAFE_HUGO_ENV
-// export, which the supply-chain audit imports; a name dropped there
-// goes red here.
+// Deliberately literal: content-pins the helper's UNSAFE_HUGO_ENV export
+// so a silently dropped name goes red here.
 const expectedUnsafeHugoEnv = [
   'HUGO_BIN_PATH',
   'HUGO_FORCE_STANDARD',
@@ -152,8 +151,7 @@ test('Hugo rebuild rejects installer control variables', async () => {
 });
 
 test('Hugo rebuild treats an empty control variable as unset', async () => {
-  // Pins the documented carve-out: empty string matches the installer's
-  // falsy handling, so it must not trip the screen.
+  // Pins the empty-string carve-out documented at the helper's env screen.
   const { attempts, errors, status } = await runProbe(1, {
     HUGO_SKIP_DOWNLOAD: '',
   });
@@ -164,7 +162,7 @@ test('Hugo rebuild treats an empty control variable as unset', async () => {
 });
 
 test('Hugo rebuild fails fast without the npm CLI path', async () => {
-  // Whitespace-only is as unavailable as unset: both fail once, no retries.
+  // Whitespace-only is as unavailable as unset.
   for (const npmExecPath of [undefined, '   ']) {
     const errors = [];
     const status = await rebuildHugoExtended({

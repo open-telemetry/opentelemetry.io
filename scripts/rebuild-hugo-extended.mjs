@@ -1,8 +1,8 @@
 // Retrying wrapper around `npm rebuild hugo-extended`: the rebuild fetches
 // the pinned Hugo binary from GitHub releases on every clean install, and
 // transient fetch failures ("Hugo installation failed" / "TypeError: fetch
-// failed") otherwise fail whole Netlify deploys. Bounded backoff; refuses
-// hugo-extended installer env overrides so the rebuild stays pinned.
+// failed") otherwise fail whole Netlify deploys. Refuses hugo-extended
+// installer env overrides so the rebuild stays pinned.
 
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';

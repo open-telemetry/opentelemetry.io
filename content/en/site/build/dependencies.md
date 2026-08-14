@@ -14,8 +14,8 @@ these controls, see [Supply-chain security][].
 CI, the devcontainer, and Netlify install lock-exact and script-free, then
 explicitly re-enable the one reviewed hook: the `hugo-extended` rebuild that
 fetches the pinned Hugo binary. The rebuild runs through
-`scripts/rebuild-hugo-extended.mjs`, which retries failed binary fetches with
-bounded backoff. Per environment:
+`scripts/rebuild-hugo-extended.mjs`, which retries the fetch with bounded
+backoff. Per environment:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.
@@ -43,7 +43,7 @@ Netlify keeps a build cache per [deploy context][]:
 - One per **head branch name** for Deploy Previews, seeded from the production
   cache on the name's first build. Cache lineages die only by explicit clear:
   branch deletion is invisible to Netlify, so a branch recreated under the same
-  name -- recycled bot-branch names included -- re-attaches to the old cache.
+  name (recycled bot-branch names included) re-attaches to the old cache.
 
 Each cache [includes a clone of the repository][], and checking out a commit
 that drops a git submodule leaves the submodule's working tree in place, so a
@@ -63,9 +63,8 @@ Clear the affected [build cache][] rather than adding the path to `.gitignore`:
 > [!IMPORTANT]
 >
 > After removing a git submodule, clear the production build cache as part of
-> the removal, before the residue seeds per-branch caches -- and clear the
-> lineage of any recycled bot-branch name, which a production clear never
-> reaches.
+> the removal, before the residue seeds per-branch caches. Also clear the
+> lineage of any recycled bot-branch name; a production clear never reaches it.
 
 ## Updating dependencies {#updating}
 
