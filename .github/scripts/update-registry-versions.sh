@@ -56,16 +56,17 @@ for yaml_file in ${FILES}; do
                 curl -s "https://registry.npmjs.org/${package_name}/latest" | jq -r '.version'
                 ;;
             packagist)
-                curl -s "https://repo.packagist.org/p2/${package_name}.json" | jq -r ".packages.\"${package_name}\"[0].version"
+                curl -s "https://repo.packagist.org/p2/${package_name}.json" |
+                    jq -r --arg name "$package_name" '.packages[$name][0].version'
                 ;;
             gems)
                 curl -s "https://rubygems.org/api/v1/versions/${package_name}/latest.json" | jq -r '.version'
                 ;;
             go)
-                go list -m --versions "$package_name" | awk '{ if (NF > 1) print $NF ; else print "" }'
+                go list -m --versions -- "$package_name" | awk '{ if (NF > 1) print $NF ; else print "" }'
                 ;;
             go-collector)
-                go list -m --versions "$package_name" | awk '{ if (NF > 1) print $NF ; else print "" }'
+                go list -m --versions -- "$package_name" | awk '{ if (NF > 1) print $NF ; else print "" }'
                 ;;
             nuget)
                 lower_case_package_name=$(echo "$package_name" | tr '[:upper:]' '[:lower:]')
@@ -118,17 +119,21 @@ for yaml_file in ${FILES}; do
 
         url="$(jq -r "$json_path" <<< "$json")"
 
-        if [ -z "$url" ] || [ "$url" = "null" ]; then
+        # Registry metadata is third-party input: accept only plain https URLs,
+        # and pass the value as data (strenv) rather than as part of the yq
+        # expression.
+        if [[ ! "$url" =~ ^https://[A-Za-z0-9._~:/?#@!$\&\'\(\)*+,\;=%-]+$ ]]; then
             return
         fi
 
         # Check HTTP status (no output, no body)
-        status="$(curl -s -o /dev/null -w '%{http_code}' "$url")"
+        status="$(curl -s -o /dev/null -w '%{http_code}' -- "$url")"
 
         # Only update when status is 2xx
         case "$status" in
             2??)
-                ${UPDATE_YAML} "${setting_path} = \"$url\"" "$yaml_file"
+                export CHECKED_URL="$url"
+                ${UPDATE_YAML} "${setting_path} = strenv(CHECKED_URL)" "$yaml_file"
                 ;;
         esac
     }
@@ -151,17 +156,19 @@ for yaml_file in ${FILES}; do
         elif [ -z "$latest_version" ]; then
             echo "${yaml_file} ($registry): Could not get latest version from registry."
         elif [ -z "$current_version" ]; then
-            ${UPDATE_YAML} ".package.version = \"$latest_version\"" "$yaml_file"
+            export LATEST_VERSION="$latest_version"
+            ${UPDATE_YAML} '.package.version = strenv(LATEST_VERSION)' "$yaml_file"
             update_metadata "$name" "$registry" "$yaml_file"
             row="${yaml_file} ($registry): Version field was missing. Populated with the latest version: $latest_version"
             echo "${row}"
-            body="${body}\n- ${row}"
+            body="${body}"$'\n'"- ${row}"
         elif [ "$latest_version" != "$current_version" ]; then
-            ${UPDATE_YAML} ".package.version = \"$latest_version\"" "$yaml_file"
+            export LATEST_VERSION="$latest_version"
+            ${UPDATE_YAML} '.package.version = strenv(LATEST_VERSION)' "$yaml_file"
             update_metadata "$name" "$registry" "$yaml_file"
             row="($registry): Updated version from $current_version to $latest_version in $yaml_file"
             echo "${yaml_file} ${row}"
-            body="${body}\n- ${row}"
+            body="${body}"$'\n'"- ${row}"
         else
             echo "${yaml_file} ($registry): Version is already up to date."
         fi
@@ -196,7 +203,8 @@ if [[ -n $(git status --porcelain) ]]; then
     $GIT "${GIT_PUSH_AUTH[@]}" push --set-upstream origin "$branch"
 
     body_file=$(mktemp)
-    echo -en "${body}" >> "${body_file}"
+    # printf, not echo -e: registry-derived text must not be re-interpreted.
+    printf '%s' "${body}" >> "${body_file}"
 
     echo "Submitting auto-update PR '$message'."
     $GH pr create --title "$message" --body-file "${body_file}"
