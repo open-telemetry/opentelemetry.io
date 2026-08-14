@@ -3,8 +3,7 @@ title: SDKの設定
 linkTitle: SDKの設定
 weight: 13
 aliases: [config]
-default_lang_commit: 906771a74807a998613527841d296e49d3609a9f
-drifted_from_default: true
+default_lang_commit: 38e36ae231c523f9e54499ad6ca05de7c49501c5
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---
@@ -92,6 +91,16 @@ public class AutoConfiguredSdk {
 | `otel.sdk.disabled` | `true`の場合、OpenTelemetry SDKを無効にします。**[1]** | `false`    |
 
 **[1]**: 無効にした場合、`AutoConfiguredOpenTelemetrySdk#getOpenTelemetrySdk()`は最小限に設定されたインスタンス（例：`OpenTelemetrySdk.builder().build()`）を返します。
+
+SDKセルフモニタリングテレメトリーのプロパティ。
+
+| システムプロパティ                        | 説明                                                                                          | デフォルト |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------- | ---------- |
+| `otel.experimental.sdk.telemetry.version` | セルフモニタリングテレメトリースキーマを選択します。有効な値は`legacy`と`latest`です。**[1]** | `legacy`   |
+
+**[1]**: エクスポーターだけでなく、すべてのSDKセルフモニタリングテレメトリーのスキーマを選択します。
+バッチスパンプロセッサーとログレコードプロセッサーではメトリクス名を選択し、TracerProviderとLoggerProviderおよびPeriodicMetricReaderではセルフモニタリングメトリクスを記録するかどうかを制御します。
+設定の詳細と各コンポーネントが出力するメトリクス名については、[SDKセルフモニタリングメトリクス](../sdk/#sdk-self-monitoring-metrics)を参照してください。
 
 属性制限のプロパティ（[スパン制限](../sdk/#spanlimits)、[ログ制限](../sdk/#loglimits)を参照）。
 
