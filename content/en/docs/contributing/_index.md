@@ -18,26 +18,57 @@ cascade:
 
 ## <i class='far fa-exclamation-triangle text-warning '></i> First time contributing? {#first-time-contributing}
 
-- **[Choose an issue][]** with the following labels:
-  - [Good first issue](<{{% param _issue %}}%22good%20first%20issue%22>)
-  - [Help wanted](<{{% param _issue %}}%22help%20wanted%22>)
+If you have not yet had a non-trivial PR merged in this repository, you are a
+**first-time contributor** here. Welcome!
 
-  > [!WARNING] We do not assign issues
-  >
-  > We **_do not_ assign issues** to those who have not already made
-  > contributions to the [OpenTelemetry organization][org], unless part of a
-  > confirmed mentorship or onboarding process.
-  >
-  > [org]: https://github.com/open-telemetry
+### Choose _one_
 
-- {{% param chooseAnIssueAtYourLevel %}}
+As a first-time contributor, you can do **one** of the following:
 
-- Read our [Generative AI contribution policy](pull-requests#using-ai)
+- **Open a single issue** describing a problem or proposal, and wait for
+  maintainer feedback before doing anything else. Keep to one open issue at a
+  time.
+- **Submit a single PR** for _one_ of:
+  - An open issue labeled
+    [`good first issue`](https://github.com/open-telemetry/opentelemetry.io/labels/good%20first%20issue):
+    - If there are no such issues, check back later.
+    - **Link to the issue** from your PR description.
+      ⚠️ **NOTE**: issues are **not** claimed, reserved, or
+      [assigned](#first-time-contributing); the first adequate PR wins.
+  - A [registry](/ecosystem/registry/adding/) or
+    [vendor](/ecosystem/vendors/#how-to-add) self-addition, following the linked
+    instructions. As with all first-timer PRs: one open PR at a time.
+  - A _trivial editorial fix_ (typo, broken link) without an issue; such PRs
+    are accepted at maintainer discretion.
 
-- Want to work other issues or larger changes? [Discuss it with maintainers
-  first][].
+> [!IMPORTANT]
+> You remain a first-time contributor until a non-trivial PR of yours is
+> merged: a merged trivial fix or registry/vendor self-addition doesn't change
+> your status.
 
-[discuss it with maintainers first]: issues/#fixing-an-existing-issue
+### Answer the PR template questions
+
+Every PR opens with our
+[pull request template](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/PULL_REQUEST_TEMPLATE.md).
+First-time contributors **must** complete its checklist truthfully; PRs with an
+unaddressed or dishonestly completed checklist will be closed. As a reminder,
+the checklist asks you to confirm:
+
+> - [ ] I have read and followed the
+>   [Contributing](/docs/contributing/) docs, especially the
+>   "**First-time contributing?**" section.
+> - [ ] This PR has content that I did not fully write myself.
+>   - [ ] I used AI and I have read and followed the
+>     [Generative AI Contribution Policy](https://github.com/open-telemetry/community/blob/main/policies/genai.md).
+> - [ ] I have the experience and knowledge necessary to understand, review,
+>   and validate all content in this PR. (Yes, I can answer maintainer
+>   questions about the content of this PR, without using AI.)
+
+> [!CAUTION]
+> Issue or PR **spamming**, including **repeatedly soliciting feedback** through
+> any channel, or otherwise repeatedly disregarding this policy, can result in
+> interaction limits, being blocked, or escalation per the
+> [OpenTelemetry Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
 
 ## Jump right in!
 
