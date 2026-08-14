@@ -9,10 +9,10 @@ cSpell:ignore: mismodels
 The [supply-chain audit][] proves the repository's [dependency
 controls][controls] from committed files alone. This page records the design
 principles that keep the audit itself trustworthy: an audit that can be fooled
--- or that passes when it checks nothing -- is worse than none, because green
-then vouches for an unverified state. The principles come from adversarial
-review rounds against this audit and its [Docsy predecessor][docsy-2714], each
-round hunting inputs that violate a control yet pass the test.
+(or that passes when it checks nothing) is worse than none, because green then
+vouches for an unverified state. The principles come from adversarial review
+rounds against this audit and its [Docsy predecessor][docsy-2714], each round
+hunting inputs that violate a control yet pass the test.
 
 For which controls exist and why, see
 [Supply-chain security](../supply-chain-security/); for what to do when the
@@ -25,13 +25,13 @@ Each principle answers a way a verifier can lie; adversarial review found
 concrete instances of most of them in earlier drafts.
 
 1. **Prove from committed files alone.** The audit reads the lock, manifests,
-   `.npmrc`, and `netlify.toml` -- never the network or the installed tree -- so
-   it is fast, offline, and can't be swayed by the state it is meant to vet.
+   `.npmrc`, and `netlify.toml` (never the network or the installed tree), so it
+   is fast, offline, and can't be swayed by the state it is meant to vet.
 2. **Allowlist whole shapes; don't denylist patterns.** Every denylist regex
    over a config format eventually met a valid spelling it didn't anticipate
    (quoted, dotted, and inline-table TOML keys all bypassed an env-key
-   denylist). Pinning the entire reviewed shape -- exact key sets, exact values
-   -- is stronger and usually shorter.
+   denylist). Pinning the entire reviewed shape (exact key sets, exact values)
+   is stronger and usually shorter.
 3. **Parse; don't line-scan.** A format's parser defines its semantics. A line
    regex mismodels them silently: a context table it doesn't recognize still
    means something to Netlify.
@@ -51,9 +51,9 @@ concrete instances of most of them in earlier drafts.
 8. **Red-first.** A new check is trusted only after a deliberately broken input
    has made it fail; every closure in the audit's history was proven red before
    its green counted. A false green is worse than red.
-9. **Assertions name the expected condition** -- and, for routine fires, the
-   fix: the `allowScripts` assertion names the version a dependency bump must
-   move the entry to, so the failure message is the remediation.
+9. **Assertions name the expected condition** and, for routine fires, the fix:
+   the `allowScripts` assertion names the version a dependency bump must move
+   the entry to, so the failure message is the remediation.
 10. **State the scope boundary.** Surfaces the audit deliberately does not cover
     (workflow files, the theme's own install, build-half scripts) are named in
     the audit and the docs, so absent coverage is never mistaken for verified

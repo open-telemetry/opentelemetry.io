@@ -120,16 +120,18 @@ condition; the common cases:
   [script-bearing packages](#script-bearing-packages); the failure message names
   the version the entry must move to.
 - **You changed an install-path script, `.npmrc`, or `netlify.toml`**: that
-  failure is the point -- the audit pins the install surface so that every
-  change to it gets a deliberate review. Update the corresponding assertion
-  together with your change, and say why in the PR.
+  failure is the point. The audit pins the install surface so that every change
+  to it gets a deliberate review. Update the corresponding assertion together
+  with your change, and say why in the PR.
 
 Never loosen an assertion just to get to green: each one enforces a control on
 this page, so first work out which control your change relaxes.
 
-Out of the audit's scope: GitHub workflow files, the [Docsy][] theme's own
-dependency install (audited upstream), and the build-half npm scripts past the
-install boundary.
+Out of the audit's scope:
+
+- GitHub workflow files
+- The [Docsy][] theme's own dependency install (audited upstream)
+- The build-half npm scripts past the install boundary
 
 ### Release cooldown
 
