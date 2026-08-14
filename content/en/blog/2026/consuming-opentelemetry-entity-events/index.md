@@ -1,7 +1,7 @@
 ---
 title: What can you do with OpenTelemetry entity events?
 linkTitle: Consuming entity events
-date: 2026-08-07
+date: 2026-08-14
 author: >-
   [Matthieu Noirbusson](https://github.com/MatthieuNoirbusson) (Sensor Factory)
 issue: 10115
