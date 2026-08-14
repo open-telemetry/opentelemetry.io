@@ -63,7 +63,7 @@ the checklist asks you to confirm:
 > - [ ] I have the experience and knowledge necessary to understand, review,
 >   and validate all content in this PR. (Yes, I can answer maintainer
 >   questions about the content of this PR, without using AI.)
-
+>
 > [!CAUTION]
 > Issue or PR **spamming**, including **repeatedly soliciting feedback** through
 > any channel, or otherwise repeatedly disregarding this policy, can result in
@@ -101,10 +101,10 @@ The pages in this section describe how to contribute to OpenTelemetry
 
 For guidance on how to contribute to the OpenTelemetry project in general, see
 the community [OpenTelemetry New Contributor Guide][]. Every [OTel
-repository][org] for language implementations, the Collector, and conventions
-have their own project-specific contributing guides.
+repository](https://github.com/open-telemetry) for language implementations,
+the Collector, and conventions have their own project-specific contributing
+guides.
 
-[choose an issue]: issues/#fixing-an-existing-issue
 [issues]: issues/
 [OpenTelemetry New Contributor Guide]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor
