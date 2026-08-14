@@ -181,15 +181,13 @@ if [[ -n $(git status --porcelain) ]]; then
     $GIT checkout -b "$branch"
     $GIT commit -a -m "$message"
 
-    # Authenticate the remote only around the push: the token must not be
-    # config-resident while dependency-controlled code (the npm steps above)
-    # runs. The workflow's cleanup step is the failsafe reset.
+    # In CI, authenticate the push via a per-invocation config override: the
+    # token is never written to git config or anywhere else on disk.
     if [[ -n "$GITHUB_ACTIONS" ]]; then
-      git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-    fi
-    $GIT push --set-upstream origin "$branch"
-    if [[ -n "$GITHUB_ACTIONS" ]]; then
-      git remote set-url origin "https://github.com/${GITHUB_REPOSITORY}.git"
+      $GIT -c "remote.origin.url=https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+        push --set-upstream origin "$branch"
+    else
+      $GIT push --set-upstream origin "$branch"
     fi
 
     body_file=$(mktemp)
