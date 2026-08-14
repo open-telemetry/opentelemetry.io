@@ -66,6 +66,10 @@ closing table maps decisions to their enforcement.
     - Reviews record denials too, so silence always means unreviewed.
     - Exceptions are named and re-enabled inline at the point of use, never by
       weakening the default posture.
+- _The one re-enabled hook fetches the pinned Hugo binary; the installer honors
+  environment overrides that can repoint or unpin that fetch._
+  - **Refuse Hugo installer overrides**: <a id="hugo-env"></a> the [rebuild
+    wrapper][install contracts] refuses to run while any of them is set.
 - _Netlify's [own npm install][netlify-deps] runs unattended, outside the
   scripts this repository controls, and can't be disabled._
   - **Neutralize the auto-install**: <a id="auto-install"></a> the configuration
@@ -92,6 +96,7 @@ Enforcement at a glance:
 | [Resolve deliberately][]                | Convention, backed by the lock: an unexpected resolution rewrites it, which verification flags                   |
 | [Resolve only cooled-down releases][]   | The [cooldown][] control, for npm and Renovate alike                                                             |
 | [Run only reviewed lifecycle scripts][] | The [allowlist][] in strict mode; unreviewed fails the install                                                   |
+| [Refuse Hugo installer overrides][]     | The [rebuild wrapper][install contracts]'s environment screen, before any rebuild attempt                        |
 | [Neutralize the auto-install][]         | The [inert auto-install][] control                                                                               |
 | [Invoke bins, not names][]              | The [no bare npx][] rule; review discipline, no mechanical control                                               |
 | [Fail closed on old npm][]              | The [npm engines floor][] with strict engine checking                                                            |
@@ -133,6 +138,7 @@ Enforcement at a glance:
 [openssf]: https://github.com/ossf/package-manager-best-practices/blob/main/published/npm.md
 [pnpm defers]: https://pnpm.io/settings/dependency-resolution
 [pnpm]: https://pnpm.io/settings/build
+[Refuse Hugo installer overrides]: #hugo-env
 [renovate]: https://docs.renovatebot.com/configuration-options/#minimumreleaseage
 [Resolve deliberately]: #deliberate
 [Resolve only cooled-down releases]: #cooldown-releases
