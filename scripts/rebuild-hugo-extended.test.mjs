@@ -148,20 +148,23 @@ test('Hugo rebuild treats an empty control variable as unset', async () => {
 });
 
 test('Hugo rebuild fails fast without the npm CLI path', async () => {
-  const errors = [];
-  const status = await rebuildHugoExtended({
-    env: {},
-    error: (message) => errors.push(message),
-    log: () => {},
-    wait: () => assert.fail('a missing npm CLI path permits no retry wait'),
-  });
+  // Whitespace-only is as unavailable as unset: both fail once, no retries.
+  for (const npmExecPath of [undefined, '   ']) {
+    const errors = [];
+    const status = await rebuildHugoExtended({
+      env: npmExecPath === undefined ? {} : { npm_execpath: npmExecPath },
+      error: (message) => errors.push(message),
+      log: () => {},
+      wait: () => assert.fail('a missing npm CLI path permits no retry wait'),
+    });
 
-  assert.equal(status, 1, 'missing npm CLI path returns nonzero');
-  assert.deepEqual(
-    errors,
-    ['npm_execpath is unavailable; run this helper through npm'],
-    'missing npm CLI path is reported once',
-  );
+    assert.equal(status, 1, 'missing npm CLI path returns nonzero');
+    assert.deepEqual(
+      errors,
+      ['npm_execpath is unavailable; run this helper through npm'],
+      'missing npm CLI path is reported once',
+    );
+  }
 });
 
 // End-to-end: the entry point fires and the default rebuild reaches npm's

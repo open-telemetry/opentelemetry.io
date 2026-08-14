@@ -26,7 +26,9 @@ export function runNpmRebuild({
   error = console.error,
   spawn = spawnSync,
 } = {}) {
-  const npmExecPath = env.npm_execpath;
+  // Trimmed: a whitespace-only value is as deterministic a failure as a
+  // missing one, and must not consume the retry budget.
+  const npmExecPath = env.npm_execpath?.trim();
   if (!npmExecPath) {
     error('npm_execpath is unavailable; run this helper through npm');
     return 1;
@@ -62,7 +64,7 @@ export async function rebuildHugoExtended({
   }
 
   const rebuild = run ?? (() => runNpmRebuild({ env, error }));
-  if (!run && !env.npm_execpath) {
+  if (!run && !env.npm_execpath?.trim()) {
     // Fail before the retry loop: a missing npm CLI path is deterministic.
     return rebuild();
   }
