@@ -62,7 +62,8 @@ test('Hugo rebuild policy is bounded and rejects installer controls', () => {
 });
 
 test('npm rebuild uses the current npm CLI and exact arguments', () => {
-  const env = { npm_execpath: '/npm/bin/npm-cli.js' };
+  // Any existing file stands in for the npm CLI; spawn is mocked.
+  const env = { npm_execpath: helperPath };
   const calls = [];
   const status = runNpmRebuild({
     env,
@@ -78,7 +79,7 @@ test('npm rebuild uses the current npm CLI and exact arguments', () => {
     [
       {
         args: [
-          '/npm/bin/npm-cli.js',
+          helperPath,
           'rebuild',
           'hugo-extended',
           '--ignore-scripts=false',
@@ -94,7 +95,7 @@ test('npm rebuild uses the current npm CLI and exact arguments', () => {
 test('npm rebuild reports a signal-terminated attempt', () => {
   const errors = [];
   const status = runNpmRebuild({
-    env: { npm_execpath: '/npm/bin/npm-cli.js' },
+    env: { npm_execpath: helperPath },
     error: (message) => errors.push(message),
     spawn: () => ({ status: null, signal: 'SIGTERM' }),
   });
@@ -110,7 +111,7 @@ test('npm rebuild reports a signal-terminated attempt', () => {
 test('npm rebuild reports a failure to start', () => {
   const errors = [];
   const status = runNpmRebuild({
-    env: { npm_execpath: '/npm/bin/npm-cli.js' },
+    env: { npm_execpath: helperPath },
     error: (message) => errors.push(message),
     spawn: () => ({ error: new Error('ENOENT'), status: null }),
   });
@@ -178,8 +179,8 @@ test('Hugo rebuild treats an empty control variable as unset', async () => {
 });
 
 test('Hugo rebuild fails fast without the npm CLI path', async () => {
-  // Whitespace-only is as unavailable as unset.
-  for (const npmExecPath of [undefined, '   ']) {
+  // Whitespace-only or nonexistent is as unavailable as unset.
+  for (const npmExecPath of [undefined, '   ', '/no/such/npm-cli.js']) {
     const errors = [];
     const status = await rebuildHugoExtended({
       env: npmExecPath === undefined ? {} : { npm_execpath: npmExecPath },
