@@ -52,5 +52,5 @@ assert.strictEqual(status, expectedStatus, 'HTTP status');
 2. 短い第三引数をコンテキストとして追加してください。
    たとえば `HTTP status`、`Content-Type`、`Location`、`Request body` などです。
 3. 正規表現で意図をより明確に表現できる場合は、`includes` や連鎖した `ok` ロジックではなく `assert.match` を使用してください。
-4. 共有アサーションヘルパーは、それを使用するテストスイートと同じ場所に配置されたモジュールに入れ、ファイル間でコピーペーストしないでください。
+4. 共有アサーションヘルパーは、それを使用するテストスイートがインポートするモジュールに入れ、そのテストと同じ場所に配置し、ファイル間でコピーペーストしないでください。
    その他の小さなテスト専用ユーティリティも、モジュールが焦点を保っている限り同じモジュールに配置できます（たとえば `netlify/edge-functions/lib/test-helpers.ts` 内の `assertVaryIncludesAccept`）。
