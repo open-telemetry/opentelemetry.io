@@ -7,9 +7,22 @@ NPM=npm
 FILES="${FILES:-./data/registry/*.yml}"
 
 
+# Extra `git` arguments for the push below; none outside CI.
+GIT_PUSH_AUTH=()
+
 if [[ -n "$GITHUB_ACTIONS" ]]; then
   # Ensure that we're starting from a clean state
   git reset --hard origin/main
+
+  # Supply the App token to the push through an inline credential helper: it
+  # stays out of the command line, out of git config, and off disk. The empty
+  # value first drops any helper the runner has configured, so none of them
+  # gets offered the credential either.
+  # shellcheck disable=SC2016 # the helper body is evaluated by git, not here
+  GIT_PUSH_AUTH=(
+    -c credential.helper=
+    -c 'credential.helper=!f() { test "$1" = get && printf "username=x-access-token\npassword=%s\n" "$GH_TOKEN"; }; f'
+  )
 elif [[ "$1" != "-f" ]]; then
   # Do a dry-run when script it executed locally, unless the
   # force flag is specified (-f).
@@ -180,15 +193,7 @@ if [[ -n $(git status --porcelain) ]]; then
 
     $GIT checkout -b "$branch"
     $GIT commit -a -m "$message"
-
-    # In CI, authenticate the push via a per-invocation config override: the
-    # token is never written to git config or anywhere else on disk.
-    if [[ -n "$GITHUB_ACTIONS" ]]; then
-      $GIT -c "remote.origin.url=https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
-        push --set-upstream origin "$branch"
-    else
-      $GIT push --set-upstream origin "$branch"
-    fi
+    $GIT "${GIT_PUSH_AUTH[@]}" push --set-upstream origin "$branch"
 
     body_file=$(mktemp)
     echo -en "${body}" >> "${body_file}"
