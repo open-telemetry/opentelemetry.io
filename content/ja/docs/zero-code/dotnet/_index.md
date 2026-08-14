@@ -5,7 +5,7 @@ linkTitle: .NET
 aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
-default_lang_commit: d03483e1d5cc696a5541f8bcc8ff97170f2f2ca1
+default_lang_commit: 2d447daa701636c3246c116d4b8c4a2f2c35de60
 cSpell:ignore: coreutils HKLM iisreset Sonoma
 ---
 
@@ -228,7 +228,7 @@ IIS にデプロイされたすべてのアプリケーションに共通の環�
 
 ## NuGet パッケージ {#nuget-package}
 
-[`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained) アプリケーションを NuGet パッケージを使用して計装できます。
+[`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-as-self-contained) アプリケーションを NuGet パッケージを使用して計装できます。
 詳細については、[NuGet パッケージ](./nuget-packages)を参照してください。
 
 ## コンテナの計装 {#instrument-a-container}
