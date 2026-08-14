@@ -107,6 +107,22 @@ test('npm rebuild reports a signal-terminated attempt', () => {
   );
 });
 
+test('npm rebuild reports a failure to start', () => {
+  const errors = [];
+  const status = runNpmRebuild({
+    env: { npm_execpath: '/npm/bin/npm-cli.js' },
+    error: (message) => errors.push(message),
+    spawn: () => ({ error: new Error('ENOENT'), status: null }),
+  });
+
+  assert.equal(status, 1, 'a failed start returns nonzero');
+  assert.deepEqual(
+    errors,
+    ['Unable to start the Hugo rebuild: ENOENT'],
+    'the start failure is reported',
+  );
+});
+
 test('Hugo rebuild retries with backoff until it succeeds', async () => {
   const { attempts, errors, logs, status, waited } = await runProbe(3);
 
@@ -196,19 +212,22 @@ test('helper entry point runs the default npm rebuild', () => {
 
   const env = { ...process.env, npm_execpath: recorder };
   for (const name of expectedUnsafeHugoEnv) delete env[name];
-  const result = spawnSync(process.execPath, [helperPath], {
-    encoding: 'utf8',
-    env,
-  });
-  const recorded = JSON.parse(readFileSync(argvFile, 'utf8'));
-  rmSync(tmp, { recursive: true, force: true });
-
-  assert.equal(
-    result.status,
-    0,
-    `entry point exits successfully: ${result.stderr}`,
-  );
-  assert.match(result.stdout, /Hugo install attempt 1\/4/);
+  let recorded;
+  try {
+    const result = spawnSync(process.execPath, [helperPath], {
+      encoding: 'utf8',
+      env,
+    });
+    assert.equal(
+      result.status,
+      0,
+      `entry point exits successfully: ${result.stderr}`,
+    );
+    assert.match(result.stdout, /Hugo install attempt 1\/4/);
+    recorded = JSON.parse(readFileSync(argvFile, 'utf8'));
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
   assert.deepEqual(
     recorded,
     ['rebuild', 'hugo-extended', '--ignore-scripts=false'],
