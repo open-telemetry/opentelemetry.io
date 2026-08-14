@@ -40,8 +40,10 @@ invokes Docsy's own lock-exact, script-free theme-dependency install.
 Netlify keeps a build cache per [deploy context][]:
 
 - One for production
-- One per already-built PR, seeded from the production cache on the PR's first
-  build.
+- One per **head branch name** for Deploy Previews, seeded from the production
+  cache on the name's first build. Cache lineages die only by explicit clear:
+  branch deletion is invisible to Netlify, so a branch recreated under the same
+  name -- recycled bot-branch names included -- re-attaches to the old cache.
 
 Each cache [includes a clone of the repository][], and checking out a commit
 that drops a git submodule leaves the submodule's working tree in place, so a
@@ -53,15 +55,17 @@ Clear the affected [build cache][] rather than adding the path to `.gitignore`:
 
 - **Production**:
   - Clear cache and deploy site, under **Deploys** > **Trigger deploy**.
-- **Deploy Previews**: each already-built PR holds its own cache copy, untouched
-  by a production clear after the fact.
+- **Deploy Previews**: each already-built branch holds its own cache copy,
+  untouched by a production clear after the fact.
   - Clear it from the PR's latest deploy page with **Retry** > **Clear cache and
-    retry with latest branch commit**. There is no bulk clear across PRs.
+    retry with latest branch commit**. There is no bulk clear across branches.
 
 > [!IMPORTANT]
 >
 > After removing a git submodule, clear the production build cache as part of
-> the removal, before the residue seeds per-PR caches.
+> the removal, before the residue seeds per-branch caches -- and clear the
+> lineage of any recycled bot-branch name, which a production clear never
+> reaches.
 
 ## Updating dependencies {#updating}
 
