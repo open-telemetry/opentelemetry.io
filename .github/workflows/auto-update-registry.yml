@@ -22,9 +22,11 @@ jobs:
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          # The push credential is scoped to the auto-update step below.
+          # The push credential is scoped to the update script's push (see
+          # update-registry-versions.sh).
           persist-credentials: false
           # Full history, so that link-check config generation can diff
           # content against the drift-status baseline commit. (Simpler than
@@ -63,9 +65,6 @@ jobs:
 
       - name: Auto-update
         run: |
-          # Just-in-time push credential: authenticate the remote with the App
-          # token only for this step; the cleanup step below removes it.
-          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           .github/scripts/update-registry-versions.sh
         env:
           # Two tokens, one per consumer:
@@ -76,8 +75,11 @@ jobs:
           # workflow's `permissions`.
           GITHUB_TOKEN: ${{ github.token }}
 
+      # Failsafe: the script resets the remote after its push, but not when it
+      # aborts in between.
       - name: Remove push credential
-        if: always()
+        if: always() && steps.checkout.outcome == 'success'
+        continue-on-error: true
         run:
           git remote set-url origin
           "https://github.com/${GITHUB_REPOSITORY}.git"
