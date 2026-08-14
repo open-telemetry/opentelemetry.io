@@ -32,19 +32,18 @@ As a first-time contributor, you can do **one** of the following:
   - An open issue labeled
     [`good first issue`](https://github.com/open-telemetry/opentelemetry.io/labels/good%20first%20issue):
     - If there are no such issues, check back later.
-    - **Link to the issue** from your PR description.
-      ⚠️ **NOTE**: issues are **not** claimed, reserved, or
-      [assigned](#first-time-contributing); the first adequate PR wins.
+    - **Link to the issue** from your PR description. ⚠️ **NOTE**: issues are
+      **not** claimed, reserved, or [assigned](#first-time-contributing); the
+      first adequate PR wins.
   - A [registry](/ecosystem/registry/adding/) or
     [vendor](/ecosystem/vendors/#how-to-add) self-addition, following the linked
     instructions. As with all first-timer PRs: one open PR at a time.
-  - A _trivial editorial fix_ (typo, broken link) without an issue; such PRs
-    are accepted at maintainer discretion.
+  - A _trivial editorial fix_ (typo, broken link) without an issue; such PRs are
+    accepted at maintainer discretion.
 
-> [!IMPORTANT]
-> You remain a first-time contributor until a non-trivial PR of yours is
-> merged: a merged trivial fix or registry/vendor self-addition doesn't change
-> your status.
+> [!IMPORTANT] You remain a first-time contributor until a non-trivial PR of
+> yours is merged: a merged trivial fix or registry/vendor self-addition doesn't
+> change your status.
 
 ### Answer the PR template questions
 
@@ -54,20 +53,18 @@ First-time contributors **must** complete its checklist truthfully; PRs with an
 unaddressed or dishonestly completed checklist will be closed. As a reminder,
 the checklist asks you to confirm:
 
-> - [ ] I have read and followed the
->   [Contributing](/docs/contributing/) docs, especially the
->   "**First-time contributing?**" section.
+> - [ ] I have read and followed the [Contributing](/docs/contributing/) docs,
+>       especially the "**First-time contributing?**" section.
 > - [ ] This PR has content that I did not fully write myself.
 >   - [ ] I used AI and I have read and followed the
->     [Generative AI Contribution Policy](https://github.com/open-telemetry/community/blob/main/policies/genai.md).
-> - [ ] I have the experience and knowledge necessary to understand, review,
->   and validate all content in this PR. (Yes, I can answer maintainer
->   questions about the content of this PR, without using AI.)
+>         [Generative AI Contribution Policy](https://github.com/open-telemetry/community/blob/main/policies/genai.md).
+> - [ ] I have the experience and knowledge necessary to understand, review, and
+>       validate all content in this PR. (Yes, I can answer maintainer questions
+>       about the content of this PR, without using AI.)
 >
-> [!CAUTION]
-> Issue or PR **spamming**, including **repeatedly soliciting feedback** through
-> any channel, or otherwise repeatedly disregarding this policy, can result in
-> interaction limits, being blocked, or escalation per the
+> [!CAUTION] Issue or PR **spamming**, including **repeatedly soliciting
+> feedback** through any channel, or otherwise repeatedly disregarding this
+> policy, can result in interaction limits, being blocked, or escalation per the
 > [OpenTelemetry Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
 
 ## Jump right in!
@@ -100,10 +97,10 @@ The pages in this section describe how to contribute to OpenTelemetry
 **documentation**.
 
 For guidance on how to contribute to the OpenTelemetry project in general, see
-the community [OpenTelemetry New Contributor Guide][]. Every [OTel
-repository](https://github.com/open-telemetry) for language implementations,
-the Collector, and conventions have their own project-specific contributing
-guides.
+the community [OpenTelemetry New Contributor Guide][]. Every
+[OTel repository](https://github.com/open-telemetry) for language
+implementations, the Collector, and conventions have their own project-specific
+contributing guides.
 
 [issues]: issues/
 [OpenTelemetry New Contributor Guide]:
