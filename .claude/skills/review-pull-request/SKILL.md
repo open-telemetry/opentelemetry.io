@@ -173,7 +173,7 @@ Do not hand-edit `.lycheecache`. If a URL returns a non-200 for server reasons
 (blocked bot, LinkedIn 999, …), append `?link-check=no` (or `&link-check=no`) to
 the URL — [`pr-checks.md#handling-valid-external-links`][handling-links].
 
-For resolving merge/rebase conflicts in `.lycheecache`, see the
+For `.lycheecache` conflicts or post-merge cache residue, see the
 `resolve-link-cache-conflicts` skill.
 
 ## References
