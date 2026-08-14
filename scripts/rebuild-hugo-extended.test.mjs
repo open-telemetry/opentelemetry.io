@@ -1,6 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import {
+  mkdtempSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -29,6 +35,41 @@ const expectedUnsafeHugoEnv = [
   'HUGO_SKIP_DOWNLOAD',
   'HUGO_SKIP_VERIFY',
 ];
+
+// The installer's env surface, verified against the installed package:
+// every HUGO_* token in hugo-extended is either a screened control or a
+// reviewed non-control, so an update:hugo bump that adds a knob goes red
+// here instead of silently escaping the screen.
+test('UNSAFE_HUGO_ENV covers the installed installer env surface', () => {
+  // Log-only controls, plus a comment-only mention the installer
+  // explicitly does not honor.
+  const reviewedNonControls = ['HUGO_QUIET', 'HUGO_SILENT', 'HUGO_VERSION'];
+  const packageDir = fileURLToPath(
+    new URL('../node_modules/hugo-extended', import.meta.url),
+  );
+  const tokens = new Set();
+  const scan = (dir) => {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const entryPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        scan(entryPath);
+      } else if (/\.(mjs|cjs|js)$/.test(entry.name)) {
+        for (const [token] of readFileSync(entryPath, 'utf8').matchAll(
+          /\bHUGO_[A-Z][A-Z_]*\b/g,
+        )) {
+          tokens.add(token);
+        }
+      }
+    }
+  };
+  scan(packageDir);
+
+  assert.deepEqual(
+    [...tokens].sort(),
+    [...expectedUnsafeHugoEnv, ...reviewedNonControls].sort(),
+    'every installer HUGO_* token is a screened control or a reviewed non-control',
+  );
+});
 
 async function runProbe(succeedAt, env = {}) {
   const attempts = [];

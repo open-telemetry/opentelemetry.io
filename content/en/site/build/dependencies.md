@@ -15,7 +15,8 @@ CI, the devcontainer, and Netlify install lock-exact and script-free, then
 explicitly re-enable the one reviewed hook: the `hugo-extended` rebuild that
 fetches the pinned Hugo binary. The rebuild runs through
 `scripts/rebuild-hugo-extended.mjs`, which retries the fetch with bounded
-backoff. Per environment:
+backoff and refuses to run while any `HUGO_*` installer override is set. Per
+environment:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.

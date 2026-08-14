@@ -84,6 +84,8 @@ export async function rebuildHugoExtended({
     return rebuild();
   }
   const attemptCount = RETRY_DELAYS_SECONDS.length;
+  // Retries are cause-blind by design: classifying npm/installer output is
+  // brittle, and the bounded budget adds at most ~17s to a failing build.
   for (const [index, delay] of RETRY_DELAYS_SECONDS.entries()) {
     if (delay > 0) {
       log(`Retrying Hugo install in ${delay}s...`);
