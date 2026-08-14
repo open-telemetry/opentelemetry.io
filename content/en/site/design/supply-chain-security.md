@@ -3,7 +3,7 @@ title: Supply-chain security
 description: >-
   Threat model and rationale behind the site's npm dependency controls
 weight: 20
-cSpell:ignore: cooldowns unreviewed
+cSpell:ignore: cooldowns repoint unreviewed
 ---
 
 For the controls themselves and day-to-day procedures, see
