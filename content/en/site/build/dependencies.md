@@ -13,7 +13,9 @@ these controls, see [Supply-chain security][].
 
 CI, the devcontainer, and Netlify install lock-exact and script-free, then
 explicitly re-enable the one reviewed hook: the `hugo-extended` rebuild that
-fetches the pinned Hugo binary. Per environment:
+fetches the pinned Hugo binary. The rebuild runs through
+`scripts/rebuild-hugo-extended.mjs`, which retries transient binary-fetch
+failures with bounded backoff. Per environment:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.
