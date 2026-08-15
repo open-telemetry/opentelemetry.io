@@ -10,7 +10,7 @@ tags:
   - siem
   - notifications
   - logs
-license: MIT
+license: Apache-2.0
 description: A simple daemon for connecting Falco to your ecosystem. It takes a Falco events and forward them to different outputs in a fan-out way.
 authors: 
   - name: Falcosidekick Authors
