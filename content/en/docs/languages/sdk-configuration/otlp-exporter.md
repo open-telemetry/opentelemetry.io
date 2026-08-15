@@ -117,8 +117,8 @@ Headers are represented in a format matching to the
 [W3C Baggage](https://www.w3.org/TR/baggage/#header-content), for example
 `key1=value1,key2=value2`. Semi-colon delimited
 [metadata](https://www.w3.org/TR/baggage/#property) is not supported. For more
-details, see [Specifying headers via environment
-variables](/docs/specs/otel/protocol/exporter/#specifying-headers-via-environment-variables)
+details, see
+[Specifying headers via environment variables](/docs/specs/otel/protocol/exporter/#specifying-headers-via-environment-variables)
 in the protocol specification.
 
 ### `OTEL_EXPORTER_OTLP_HEADERS`
