@@ -1,0 +1,25 @@
+# cSpell:ignore falcosidekick otlp
+title: Falcosidekick
+registryType: application integration
+language: go
+tags:
+  - falco
+  - kubernetes
+  - runtime-security
+  - security
+  - siem
+  - notifications
+  - logs
+license: MIT
+description: A simple daemon for connecting Falco to your ecosystem. It takes a Falco events and forward them to different outputs in a fan-out way.
+authors: 
+  - name: Falcosidekick Authors
+    url: https://github.com/falcosecurity/falcosidekick
+urls:
+  repo: https://github.com/falcosecurity/falcosidekick
+  website: https://github.com/falcosecurity/falcosidekick
+  docs: https://github.com/falcosecurity/falcosidekick/blob/master/docs/outputs/otlp.md
+createdAt: '2026-08-15'
+cncfProjectLevel: graduated
+isNative: true
+isFirstParty: false
