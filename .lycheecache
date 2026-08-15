@@ -6688,7 +6688,9 @@ https://www.rfc-editor.org/rfc/rfc3986,200,1785868535
 https://www.rfc-editor.org/rfc/rfc5789.html,200,1785911060
 https://www.rfc-editor.org/rfc/rfc5952.html,200,1785739373
 https://www.rfc-editor.org/rfc/rfc7301.html,200,1785868534
+https://www.rfc-editor.org/rfc/rfc9110.html#field.content-encoding,200,1786790168
 https://www.rfc-editor.org/rfc/rfc9110.html#field.content-length,200,1785868536
+https://www.rfc-editor.org/rfc/rfc9110.html#field.content-type,200,1786790168
 https://www.rfc-editor.org/rfc/rfc9110.html#field.user-agent,200,1785868536
 https://www.rfc-editor.org/rfc/rfc9110.html#name-methods,200,1785911060
 https://www.rfc-editor.org/rfc/rfc9110.html#name-uri-origin,200,1785911060
