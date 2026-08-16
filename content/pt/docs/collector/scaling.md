@@ -1,7 +1,7 @@
 ---
 title: Escalando o Collector
 weight: 26
-cSpell:ignore: fluentd Linkerd loadbalancer loadbalancing sharded statefulset
+cSpell:ignore: fluentd Linkerd loadbalancer loadbalancing observability receivers scraping exporters Sidecars sharded statefulset
 default_lang_commit: 30b7dbbdd94cec0b2a0c99317272b103315518bf
 ---
 
