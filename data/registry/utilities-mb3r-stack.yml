@@ -1,0 +1,33 @@
+# cSpell:ignore MB3R Bering Sheaft
+
+title: MB3R Stack
+
+registryType: utilities
+
+language: go
+
+tags:
+  - opentelemetry
+  - otlp
+  - traces
+  - observability
+  - resilience
+  - chaos-engineering
+  - model-discovery
+
+urls:
+  repo: https://github.com/MB3R-Lab/mb3r-stack
+  website: https://mb3r-lab.github.io/
+
+license: MIT
+
+description: Model-based resilience toolchain that uses OpenTelemetry trace evidence to discover application topology, simulate virtual failure scenarios, and produce continuous resilience signals and pre-release risk analysis.
+
+authors:
+  - name: Anatoly Krasnovsky
+    url: https://github.com/a-a-k
+
+createdAt: 2026-08-16
+
+isNative: true
+isFirstParty: false
