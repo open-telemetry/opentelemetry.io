@@ -19,7 +19,7 @@ bara de navigație din antet.
 Când traduci pagini web din engleză, recomandăm să urmezi îndrumările oferite în
 această secțiune.
 
-### Sumar
+### Sumar {#summary}
 
 #### ✅ Ce se face {#do}
 
@@ -34,8 +34,7 @@ această secțiune.
   - **Tot** conținutul paginii și front matter dacă nu se specifică altfel
 - **Păstrează** _conținutul_, _înțelesul_, și _stilul_ textului original
 - **Trimite schimbări _incrementale_** via [pull request-uri mici](#small-prs)
-- **Întreabă** [administratori][maintainers] dacă aveți dubii sau întrebări
-  prin:
+- **Întreabă** [administratori][maintainers] dacă ai dubii sau întrebări prin:
   - [Slack][] Canalele `#otel-docs-localization` sau `#otel-comms`
   - [Discuție][Discussion], issue, sau comentariu pe PR
 
