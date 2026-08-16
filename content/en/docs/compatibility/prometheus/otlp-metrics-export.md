@@ -175,15 +175,48 @@ distributions change over time.
 
 To set up a Grafana Heatmap panel for an OpenTelemetry histogram:
 
-1. **PromQL Query**: Enter the bucket rate query:
+1. **PromQL Query**: Enter the bucket rate query (for example, for HTTP duration
+   or span metrics):
 
    ```promql
    sum(rate(http_server_request_duration_seconds_bucket[5m])) by (le)
    ```
 
-2. **Format**: Set the query format to **Time series**.
-3. **Legend**: Set the Legend format to `{{le}}` so Grafana can extract bucket
-   boundaries from the `le` label.
-4. **Panel Type**: Select **Heatmap** as the panel visualization type. Under
-   Heatmap options, choose **Calculate from data** (or **Sum of rate**) to let
-   Grafana render the distribution buckets properly.
+2. **Query Options**: In the query options below the PromQL query editor:
+   - Set **Format** to **Heatmap** (this allows Grafana to parse bucket metrics
+     into heatmap cells).
+   - Set **Legend** format to `{{le}}` so Grafana can extract bucket upper
+     boundaries from the `le` label.
+
+3. **Panel Settings**: On the panel configuration sidebar (on the right):
+   - Select **Heatmap** as the panel visualization type.
+   - Under **Calculate from data**, select **No** (unselected), because the
+     Prometheus query `rate(..._bucket[5m])` already calculates bucket rates
+     over time.
+
+### 5. Handling `le="+Inf"` bucket ordering
+
+Prometheus classic histograms include an `le="+Inf"` bucket to represent
+measurements greater than the highest numerical bucket boundary.
+
+Because Grafana sorts bucket labels string-wise by default, `le="+Inf"` can
+sometimes sort at the bottom of the heatmap y-axis (since `+` ranks before
+digits in string sorting).
+
+To ensure `+Inf` is rendered at the top of the heatmap scale, you can configure
+Prometheus `metric_relabel_configs` in `prometheus.yml` to replace `+Inf` with a
+high numeric value (such as `999`):
+
+```yaml
+scrape_configs:
+  - job_name: otlp-metrics
+    metric_relabel_configs:
+      - source_labels: [le]
+        separator: ;
+        regex: \+Inf
+        target_label: le
+        replacement: '999'
+```
+
+This relabeling rule replaces the `le="+Inf"` label value with `999`, allowing
+Grafana to sort all buckets numerically from lowest bound to highest.
