@@ -11,9 +11,10 @@ cSpell:ignore: filestorecsi kube-node-lease kube-system rdns replicaset stateful
 
 > [!NOTE]
 >
-> This page documents Config v1 fields. Config v2 uses `capture.policy` and
-> `capture.rules`; see the [Config v2 reference](../config-v2/). To convert an
-> existing file, use the [migration guide](../migrate-to-config-v2/).
+> This page uses Config v1 field names and examples. In Config v2, use
+> `capture.policy` and `capture.rules`; see the
+> [Config v2 reference](../config-v2/). To convert an existing file, use the
+> [migration guide](../migrate-to-config-v2/).
 
 The `OTEL_EBPF_AUTO_TARGET_EXE`, `OTEL_EBPF_OPEN_PORT`,
 `OTEL_EBPF_AUTO_TARGET_LANGUAGE`, and `OTEL_EBPF_TARGET_PID` environment

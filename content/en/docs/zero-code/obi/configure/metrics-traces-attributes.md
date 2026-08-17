@@ -11,7 +11,7 @@ cSpell:ignore: kube kubecache kubeconfig OpenShift replicaset statefulset
 
 > [!NOTE]
 >
-> This page documents Config v1 fields. For Config v2, see the
+> This page uses Config v1 field names and examples. For Config v2, see the
 > [Config v2 reference](../config-v2/). To convert an existing file, use the
 > [migration guide](../migrate-to-config-v2/).
 

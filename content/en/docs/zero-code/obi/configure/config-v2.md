@@ -2,42 +2,38 @@
 title: OBI Config v2 reference
 linkTitle: Config v2 reference
 description:
-  Configure standalone OBI or the OBI Collector receiver with Config v2.
+  Learn how to configure standalone OBI or the OBI Collector receiver with
+  Config v2.
 weight: 3
 # prettier-ignore
 cSpell:ignore: Aerospike jsonrpc ollama openai qwen rerank sattributes SIGUSR sqlpp
 ---
 
-Config v2 is available in OBI v0.11.0 and later. It organizes configuration by
-user intent and separates OpenTelemetry pipeline settings from OBI-specific
-capture settings. Config v1 remains supported.
+Config v2 is available in OBI v0.11.0 and later. It uses the OpenTelemetry
+declarative configuration structure. Common settings such as resources,
+sampling, and exporters remain at the root of the document, while OBI-specific
+settings are grouped under `extensions.obi`. Config v1 remains supported.
 
 If you already have a Config v1 file, use the
 [Config v1 to v2 migration guide](../migrate-to-config-v2/) instead of rewriting
 it by hand.
 
-## Choose the document shape
+## Choose a configuration structure
 
-Config v2 has a different shape for each OBI deployment mode:
+How you structure the configuration depends on how you run OBI:
 
-| Deployment             | Configuration shape                                                              | Who owns the telemetry pipeline? |
-| ---------------------- | -------------------------------------------------------------------------------- | -------------------------------- |
-| Standalone OBI         | OpenTelemetry declarative configuration with OBI settings under `extensions.obi` | OBI                              |
-| OBI Collector receiver | Receiver component body with the capture fields next to `version`                | OpenTelemetry Collector          |
+- **Standalone OBI**: Use a complete OpenTelemetry declarative configuration
+  document. Define common OpenTelemetry settings at the root of the document and
+  OBI settings under `extensions.obi`.
+- **OBI Collector receiver**: Define OBI capture settings directly under
+  `receivers.obi`. Use the Collector pipeline to configure resource enrichment,
+  processing, and export.
 
-In standalone mode, standard OpenTelemetry settings such as resources, sampling,
-and exporters are top-level fields. OBI-specific settings are under
-`extensions.obi`.
+## Configure standalone OBI
 
-In receiver mode, configure only how OBI selects workloads and captures
-telemetry. Configure enrichment, processing, and export in the Collector
-pipeline.
-
-## Standalone configuration
-
-The following minimal configuration instruments one executable and writes traces
-to standard output. Replace the executable path and configure an exporter before
-using it in production.
+The following example instruments one executable and writes traces to standard
+output. Before you use this configuration in production, replace the executable
+path and configure an exporter.
 
 ```yaml
 file_format: '1.0'
@@ -58,13 +54,13 @@ extensions:
         debug_trace_output: text
 ```
 
-Validate a standalone file before starting OBI:
+Before you start OBI, validate the configuration file:
 
 ```sh
 obi config validate ./obi-v2.yaml
 ```
 
-### Standalone document structure
+### Configuration structure
 
 ```yaml
 file_format: '1.0'
@@ -83,19 +79,19 @@ extensions:
     daemon: {}
 ```
 
-`file_format` and `extensions.obi.version` describe different schemas:
+Both version fields are required, but they identify different schemas:
 
-- `file_format: "1.0"` is the supported OpenTelemetry declarative configuration
-  version. It is required.
-- `extensions.obi.version: "2.0"` is the OBI extension version. It is also
-  required and currently accepts only `"2.0"`.
+- `file_format: "1.0"` identifies the OpenTelemetry declarative configuration
+  schema.
+- `extensions.obi.version: "2.0"` identifies the OBI configuration schema.
+  Currently, `"2.0"` is the only supported value.
 
 Do not set either field to the OBI release version.
 
 ### Supported top-level fields
 
-OBI v0.11.0 supports a defined subset of the OpenTelemetry declarative
-configuration:
+OBI v0.11.0 supports the following OpenTelemetry declarative configuration
+fields:
 
 | Field                        | Support                                                                                                                     |
 | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -117,19 +113,21 @@ resource:
       value: shop
 ```
 
-The standalone loader rejects unsupported pipeline fields rather than silently
-ignoring them. In v0.11.0, do not configure `attribute_limits`,
-`instrumentation/development`, or `logger_provider`. It also rejects
-`disabled: true`, a nonempty `distribution`, and a nonempty `propagator`.
+When you validate a standalone configuration, OBI reports an error for
+unsupported pipeline fields instead of ignoring them. In v0.11.0, do not use
+`attribute_limits`, `instrumentation/development`, or `logger_provider`. It also
+rejects `disabled: true`, a nonempty `distribution`, and a nonempty
+`propagator`.
 
-For OTLP export examples, see [Configure data export](../export-data/). The
-[migration guide](../migrate-to-config-v2/#configure-exporters) shows the Config
-v2 gRPC and HTTP exporter shapes.
+For Config v2 OTLP/gRPC and OTLP/HTTP exporter examples, see
+[Configure exporters](../migrate-to-config-v2/#configure-exporters). For general
+information about how OBI exports telemetry, see
+[Configure data export](../export-data/).
 
 ## Select workloads
 
-Use `capture.policy` and the ordered `capture.rules` list to decide which
-workloads OBI instruments.
+Use `capture.policy` and `capture.rules` to specify which workloads OBI
+instruments. OBI evaluates the rules in the order that you define them.
 
 ```yaml
 extensions:
@@ -154,16 +152,17 @@ extensions:
               exe_path_glob: ['/srv/checkout-*']
 ```
 
-`default_action` is `include` when omitted. To target only named workloads, set
-it to `exclude` and add include rules.
+If you omit `default_action`, OBI includes workloads by default. To instrument
+only the workloads that match your rules, set `default_action` to `exclude` and
+add one or more include rules.
 
-`match_order` accepts `first_match_wins` or `last_match_wins`. Runtime
-exclusions always take precedence, so place exclude rules before include rules
-with `first_match_wins`, or after include rules with `last_match_wins`.
+Set `match_order` to `first_match_wins` or `last_match_wins`. Exclusions always
+take precedence at runtime. With `first_match_wins`, place exclude rules before
+include rules. With `last_match_wins`, place exclude rules after include rules.
 
-Writing `rules: []` explicitly removes the built-in workload exclusions. Keep
-the exclusions generated by `obi config migrate` unless you intend to replace
-them.
+If you explicitly set `rules: []`, OBI removes its built-in workload exclusions.
+Keep the exclusions generated by `obi config migrate` unless you intend to
+replace them.
 
 ### Process match fields
 
@@ -177,7 +176,8 @@ them.
 | `containers_only`                 | Match only container workloads                                     |
 | `exports_otlp`                    | Match a process that exports OTLP on a given `port` and `protocol` |
 
-Glob fields contain arrays; regular-expression fields contain one expression.
+Provide an array of values for glob fields and one expression for regular
+expression fields.
 
 ### Kubernetes match fields
 
@@ -193,8 +193,8 @@ StatefulSet, Job, CronJob, owner, and container names.
 
 ### Refine a matched workload
 
-An include rule can override signal export and HTTP route settings for the
-matched workload:
+Use the `refine` block in an include rule to override signal export and HTTP
+route settings for matching workloads:
 
 ```yaml
 extensions:
@@ -225,18 +225,19 @@ extensions:
                   unmatched: path
 ```
 
-`refine` supports `exports` and `http.routes`. Nonempty `http.filters` and
-per-workload sampling aren't supported in v0.11.0. Configure global sampling
-with `tracer_provider.sampler`.
+In v0.11.0, `refine` supports `exports` and `http.routes`. It does not support a
+nonempty `http.filters` field or per-workload sampling. Configure sampling for
+all workloads with `tracer_provider.sampler`.
 
-When rules overlap, omitted refinements don't inherit values from an earlier
-matching rule. Make refinements explicit and test the result when more than one
-rule can match a workload.
+When multiple rules match a workload, a rule does not inherit refinements that
+you omit from an earlier rule. If rules can overlap, specify each refinement
+explicitly and test the resulting behavior.
 
 ## Configure capture
 
-`extensions.obi.capture` contains settings that work in both standalone and
-receiver deployments:
+Use `extensions.obi.capture` to configure how OBI selects workloads and captures
+telemetry. You can use the following settings with standalone OBI and the OBI
+Collector receiver:
 
 | Section           | Purpose                                                                                      |
 | ----------------- | -------------------------------------------------------------------------------------------- |
@@ -252,9 +253,9 @@ receiver deployments:
 
 ### Protocol instrumentation
 
-The `instrumentation` section supports HTTP, gRPC, SQL, Redis, Kafka, MongoDB,
-Couchbase, DNS, GPU, and Aerospike. Each protocol uses signal-specific
-enablement:
+Under `instrumentation`, you can configure HTTP, gRPC, SQL, Redis, Kafka,
+MongoDB, Couchbase, DNS, GPU, and Aerospike instrumentation. Enable traces and
+metrics separately for each protocol:
 
 ```yaml
 extensions:
@@ -272,34 +273,37 @@ extensions:
             metrics: true
 ```
 
-HTTP routes have separate `incoming` and `outgoing` policies. Both accept
-`patterns`, `ignored_patterns`, `ignore_mode`, `unmatched`, `wildcard_char`, and
-`max_path_segment_cardinality`. See [Configure routes](../routes-decorator/) for
-the behavior of these settings.
+Configure HTTP routes separately for incoming and outgoing requests. The
+`incoming` and `outgoing` sections both accept `patterns`, `ignored_patterns`,
+`ignore_mode`, `unmatched`, `wildcard_char`, and `max_path_segment_cardinality`.
+See [Configure routes](../routes-decorator/) for the behavior of these settings.
 
-Application filters are represented for each protocol and signal, but OBI
-v0.11.0 uses one application filter internally. All application trace and metric
-filter maps must therefore be identical. Network flow filters must also match
-each other, as must TCP statistics filters.
+Config v2 provides separate application filters for each protocol and signal.
+However, OBI v0.11.0 applies a single application filter at runtime. Use the
+same filter map for every application trace and metric filter. Also use the same
+trace and metric filter maps for network flows, and the same trace and metric
+filter maps for TCP statistics.
 
-HTTP payload extraction uses `payload_extraction.enabled`. Supported values are
-`graphql`, `elasticsearch`, `aws`, `sqlpp`, `openai`, `anthropic`, `gemini`,
-`qwen`, `bedrock`, `mcp`, `embedding`, `rerank`, `retrieval`, `ollama`,
-`openai_compatible`, `jsonrpc`, and `enrichment`. Nested blocks tune an enabled
-extractor; they don't enable it.
+To enable HTTP payload extraction, add extractors to
+`payload_extraction.enabled`. Supported values are `graphql`, `elasticsearch`,
+`aws`, `sqlpp`, `openai`, `anthropic`, `gemini`, `qwen`, `bedrock`, `mcp`,
+`embedding`, `rerank`, `retrieval`, `ollama`, `openai_compatible`, `jsonrpc`,
+and `enrichment`. Use the corresponding nested block to configure an enabled
+extractor. A nested block does not enable the extractor.
 
 ### Runtime instrumentation
 
 Use `capture.runtimes` to enable or disable Go probes, Node.js `SIGUSR1`
-injection, and Java agent attachment. Java also supports debug settings and an
-attachment timeout. Nonempty runtime `filter` fields aren't supported in
-v0.11.0; use capture rules to select workloads.
+injection, and Java agent attachment. You can also configure Java debug settings
+and an attachment timeout. OBI v0.11.0 does not support nonempty runtime
+`filter` fields. Use capture rules to select workloads instead.
 
 ### Network observability
 
-`capture.network.capture` controls network flows. `capture.network.stats`
-controls TCP statistics. The statistics `features` list supports `tcp_rtt`,
-`tcp_failed_connections`, `tcp_retransmits`, and `tcp_io`.
+Use `capture.network.capture` to configure network flow telemetry and
+`capture.network.stats` to configure TCP statistics. The `features` list for TCP
+statistics supports `tcp_rtt`, `tcp_failed_connections`, `tcp_retransmits`, and
+`tcp_io`.
 
 Enable `tcp_io` only when you need per-send and per-receive statistics because
 it can produce substantially more events than the other features. See
@@ -307,22 +311,23 @@ it can produce substantially more events than the other features. See
 
 ## Configure standalone-only features
 
-The following sections are valid only under `extensions.obi` in a standalone
-configuration:
+When you run OBI as a standalone process, you can also use the following
+sections under `extensions.obi`:
 
-- `enrich` configures Kubernetes metadata, service naming, and attribute
-  enrichment. Its Kubernetes mode is `autodetect`, `enabled`, or `disabled`.
-- `correlation` configures trace context annotation in application logs. See
-  [Correlate traces with logs](../../trace-log-correlation/).
-- `daemon` configures logging output, profiling, graceful shutdown, internal
-  metrics, and standalone Prometheus metric shaping. Use top-level `log_level`
-  for logging verbosity.
+- Use `enrich` to configure Kubernetes metadata, service naming, and attribute
+  enrichment. Set its Kubernetes mode to `autodetect`, `enabled`, or `disabled`.
+- Use `correlation` to configure trace context annotation in application logs.
+  See [Correlate traces with logs](../../trace-log-correlation/).
+- Use `daemon` to configure logging output, profiling, graceful shutdown,
+  internal metrics, and standalone Prometheus metric shaping. Set logging
+  verbosity with the top-level `log_level` field.
 
 ## Collector receiver configuration
 
-The receiver uses the fields inside standalone `capture`, flattened next to
-`version`. It doesn't include a `capture` wrapper. For example, the following is
-a receiver component body:
+In a Collector receiver configuration, place the fields that are under
+`extensions.obi.capture` in a standalone configuration directly under
+`receivers.obi`, next to `version`. Do not include the `capture` level. For
+example, the following YAML is an OBI receiver component body:
 
 ```yaml
 version: '2.0'
@@ -340,39 +345,42 @@ instrumentation:
       metrics: true
 ```
 
-Validate this component body, not the complete Collector file:
+Save the receiver component body in a separate file and validate it:
 
 ```sh
 obi config validate --mode=receiver ./obi-receiver-v2.yaml
 ```
 
-After validation, place the body under `receivers.obi` and connect `obi` to the
-Collector trace and metric pipelines.
+After validation succeeds, copy the component body under `receivers.obi` in your
+Collector configuration. Then add `obi` to the appropriate trace and metric
+pipelines.
 
-Receiver configuration rejects standalone-only `enrich`, `correlation`, and
-`daemon` settings. Use Collector processors such as `k8sattributes` for
+Do not add the standalone-only `enrich`, `correlation`, or `daemon` sections to
+the receiver configuration. Use Collector processors such as `k8sattributes` for
 enrichment, Collector service telemetry for operational settings, and Collector
-exporters for data export. For the complete setup, see
+exporters for data export. For a complete setup, see
 [Run OBI as a Collector receiver](../collector-receiver/).
 
 ## Environment variables
 
-The OBI command-line loader expands these forms before decoding YAML:
+When OBI reads a configuration file, it expands the following environment
+variable expressions before it parses the YAML:
 
 - `${VAR}` and `${env:VAR}`
 - `${VAR:-fallback}` and `${env:VAR:-fallback}`
 
-The equivalent `$()` forms are also supported. Prefix an extra `$` to keep a
-substitution expression literal.
+You can also use the equivalent `$()` forms. To preserve an expression as
+literal text, prefix it with an extra `$`.
 
-Environment variables that used Config v1 field names aren't automatically
-remapped. Add substitutions at the corresponding Config v2 paths as described in
+OBI does not automatically map Config v1 environment variable names to Config v2
+fields. To preserve an environment override, add a substitution expression at
+the corresponding Config v2 field as described in
 [Migrate environment overrides](../migrate-to-config-v2/#migrate-environment-overrides).
 
 ## Validate a configuration
 
-Validation parses the selected document shape and reports unsupported or
-conflicting fields:
+Use the validation mode that matches your deployment. The command reports
+unsupported fields and conflicting settings:
 
 ```sh
 # Standalone document
@@ -382,6 +390,6 @@ obi config validate ./obi-v2.yaml
 obi config validate --mode=receiver ./obi-receiver-v2.yaml
 ```
 
-Validation doesn't start OBI, attach eBPF programs, contact an exporter, or
-check the running kernel. After validation succeeds, verify the configuration
-with a canary deployment.
+The validation command does not start OBI, attach eBPF programs, contact an
+exporter, or check the running kernel. After validation succeeds, test the
+configuration in a canary deployment.

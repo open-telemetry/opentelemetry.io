@@ -61,12 +61,11 @@ span ID would not identify the SDK span.
 
 ## Configuration
 
-Trace-log correlation requires trace export and log enrichment or annotation for
-the selected services. The configuration fields differ between Config v1 and
-Config v2. See the [Config v2 reference](../configure/config-v2/) for the
-complete document shape, or use the
-[migration guide](../configure/migrate-to-config-v2/) to convert an existing
-Config v1 file.
+To correlate logs with traces, export traces and configure OBI to add trace
+context to logs from the selected workloads. The configuration fields differ
+between Config v1 and Config v2. If you use Config v2, see the
+[Config v2 reference](../configure/config-v2/). To convert an existing Config v1
+file, follow the [migration guide](../configure/migrate-to-config-v2/).
 
 ### Config v1
 
@@ -128,8 +127,8 @@ OBI enriches JSON and plain-text logs for services listed under
 
 ### Config v2
 
-In Config v2, log trace annotation is available only in standalone OBI and is
-disabled by default. Enable and configure it under
+With Config v2, log trace annotation is available only when you run OBI as a
+standalone process. It is disabled by default. Configure it under
 `extensions.obi.correlation.log_trace_annotation`:
 
 ```yaml

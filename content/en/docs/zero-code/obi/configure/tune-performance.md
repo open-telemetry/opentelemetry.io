@@ -11,9 +11,9 @@ cSpell:ignore: qdisc ringbuffer
 
 > [!NOTE]
 >
-> This page documents Config v1 fields. Config v2 groups these settings under
-> `capture.engine` and protocol-specific sections; see the
-> [Config v2 reference](../config-v2/). To convert an existing file, use the
+> This page uses Config v1 field names and examples. In Config v2, configure
+> these settings under `capture.engine` and the protocol-specific sections; see
+> the [Config v2 reference](../config-v2/). To convert an existing file, use the
 > [migration guide](../migrate-to-config-v2/).
 
 You can use the eBPF tracer to fine-tune OBI performance.

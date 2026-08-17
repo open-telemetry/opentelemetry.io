@@ -1,38 +1,39 @@
 ---
-title: Migrate OBI Config v1 to Config v2
+title: Migrate from OBI Config v1 to Config v2
 linkTitle: Migrate to Config v2
-description: Safely migrate an OBI Config v1 file to Config v2.
+description: Learn how to safely migrate an OBI Config v1 file to Config v2.
 weight: 4
 ---
 
 OBI v0.11.0 and later include commands to migrate and validate configuration.
-Config v1 remains supported, so you can test Config v2 and roll back without
-converting every deployment at once.
+Because Config v1 remains supported, you can migrate one deployment at a time
+and roll back if its behavior changes.
 
-This guide covers standalone OBI and the OBI Collector receiver. For the new
-document structure and supported fields, see the
+This guide explains how to migrate standalone OBI and OBI Collector receiver
+configurations. For the Config v2 structure and supported fields, see the
 [Config v2 reference](../config-v2/).
 
 ## Before you migrate
 
-Prepare a reversible rollout:
+Prepare a rollback plan before you migrate:
 
-1. Save the current Config v1 file and the exact OBI binary, image tag, or image
-   digest used by the deployment.
-2. Inventory settings supplied through environment variables, command-line
-   flags, Helm values, Kubernetes manifests, and secret injection. The migration
-   command reads only the file you pass to it.
+1. Save the current Config v1 file. Record the exact OBI binary version, image
+   tag, or image digest used by the deployment.
+2. List any settings supplied through environment variables, command-line flags,
+   Helm values, Kubernetes manifests, or secret injection. The migration command
+   reads only the file you provide.
 3. Install the target OBI v0.11.0 or later binary.
-4. Choose one instance or workload for a canary deployment.
+4. Select one representative instance or workload for a canary deployment.
 
-The migrator resolves substitution expressions in the source file. The output
-can therefore contain secret values. Write it to a private temporary directory,
-review it carefully, and don't commit secrets.
+The migration command resolves substitution expressions in the source file.
+Therefore, the generated file can contain secret values. Write the output to a
+private temporary directory, review it carefully, and do not commit secrets.
 
 ## Migrate a standalone configuration
 
-Run `obi config migrate` with exactly one Config v1 file. The generated Config
-v2 YAML goes to standard output and the migration report goes to standard error.
+The `obi config migrate` command accepts one Config v1 file. It writes the
+generated Config v2 YAML to standard output and the migration report to standard
+error.
 
 ```sh
 umask 077
@@ -43,9 +44,9 @@ obi config migrate ./obi-v1.yaml \
   2> "${migration_dir}/migration-report.txt"
 ```
 
-Continue only if the command exits with status 0. A successful report starts
-with `migrated v1 config to OBI config v2`; an error starts with
-`migration failed:`.
+Check the exit status before you use the generated file. An exit status of 0
+indicates success. A successful report starts with
+`migrated v1 config to OBI config v2`. An error starts with `migration failed:`.
 
 Then validate the generated file:
 
@@ -53,14 +54,20 @@ Then validate the generated file:
 obi config validate "${migration_dir}/obi-v2.yaml"
 ```
 
-Migration and validation exit with status 0 for success, 1 for a parsing,
-validation, or migration failure, and 2 for incorrect command usage.
+The migration and validation commands use the following exit statuses:
+
+| Status | Meaning                                      |
+| ------ | -------------------------------------------- |
+| `0`    | The command succeeded.                       |
+| `1`    | Parsing, validation, or migration failed.    |
+| `2`    | The command syntax or arguments are invalid. |
 
 ## Understand the generated structure
 
-The migrator reorganizes Config v1 by ownership:
+The migration command moves Config v1 settings to the following Config v2
+sections:
 
-| Config v1 concern                                          | Config v2 location                                                 |
+| Config v1 settings                                         | Config v2 location                                                 |
 | ---------------------------------------------------------- | ------------------------------------------------------------------ |
 | Discovery selectors                                        | `extensions.obi.capture.policy` and `extensions.obi.capture.rules` |
 | Application protocols                                      | `extensions.obi.capture.instrumentation`                           |
@@ -74,65 +81,67 @@ The migrator reorganizes Config v1 by ownership:
 | Metric export                                              | Top-level `meter_provider`                                         |
 | Resource attributes                                        | Top-level `resource`                                               |
 
-The generated file includes explicit defaults where necessary to preserve Config
-v1 behavior. Don't remove or minimize those values before the canary.
+The generated file includes explicit defaults when they are necessary to
+preserve Config v1 behavior. Keep these values unchanged until you have tested
+the configuration in a canary deployment.
 
 ## Review behavior changes
 
 ### Capture defaults and rule order
 
-A Config v1 file with no selection fields disables application capture. A newly
-authored Config v2 file defaults to including workloads. To preserve behavior,
-the migrator writes `default_action: exclude` when the Config v1 file doesn't
-select a workload.
+A Config v1 file without selection fields disables application capture. By
+contrast, a Config v2 file includes workloads by default. To preserve the Config
+v1 behavior, the migration command sets `default_action` to `exclude` when the
+source file does not select a workload.
 
-The migrator also emits built-in exclusions and may reverse effective Config v1
-include-selector order. This preserves Config v1 precedence under Config v2's
-ordered rule model. Don't reorder the generated rules without testing
-overlapping rules and workloads that match only one rule.
+The migration command also writes built-in exclusions and might reverse the
+order of Config v1 include selectors. The generated order preserves Config v1
+precedence in the Config v2 rule model. Do not reorder the rules until you have
+tested overlapping rules and workloads that match only one rule.
 
-An explicit Config v2 `rules: []` removes the built-in exclusions.
+If you explicitly set `rules: []`, OBI removes the built-in exclusions.
 
 ### Filters
 
-Config v1 has one application filter, one network filter, and one TCP statistics
-filter. Config v2 represents filters per signal and protocol, but OBI v0.11.0
-still applies one runtime filter for each of those three groups.
+Config v1 provides one filter each for application telemetry, network telemetry,
+and TCP statistics. Config v2 represents filters for each signal and protocol.
+However, OBI v0.11.0 still applies one runtime filter to each of the three
+groups.
 
-The migrator copies each Config v1 filter to every corresponding Config v2
-location. Keep the generated application trace and metric filters identical.
-Also keep the two network-flow filters identical and the two TCP-statistics
-filters identical. Validation rejects differences.
+The migration command copies each Config v1 filter to every corresponding Config
+v2 field. Keep all application trace and metric filters identical. Also use the
+same filter for both network flow signals and for both TCP statistics signals.
+Validation reports an error if these filters differ.
 
 ### HTTP routes
 
-Config v1 global route settings apply to both incoming and outgoing traffic. The
-migrator copies them to both directions under
+Global Config v1 route settings apply to incoming and outgoing traffic. The
+migration command copies them to both directions under
 `capture.instrumentation.http.routes`.
 
-Per-service route patterns become `rules[].refine.http.routes`. An explicitly
-configured per-service list replaces the global list for that direction; an
-empty list clears it. Migration rejects combinations of global and per-service
-patterns that can't retain Config v1 inheritance exactly.
+Per-service route patterns move to `rules[].refine.http.routes`. For a given
+direction, an explicit per-service list replaces the global list, and an empty
+list clears it. Migration fails when a combination of global and per-service
+patterns cannot preserve the Config v1 inheritance behavior.
 
 ### Workload refinements
 
-Config v1 selectors can carry export and route refinements. In Config v2, an
-include rule that omits a refinement resets that concern instead of inheriting
-it from an earlier matching rule. The migrator rejects selector lists that mix
-explicit and omitted `exports`, or explicit and omitted `routes`, when it can't
-preserve the result.
+Config v1 selectors can include export and route refinements. In Config v2, an
+include rule does not inherit an omitted refinement from an earlier matching
+rule. When this difference would change behavior, migration fails for selector
+lists that mix explicit and omitted `exports` or `routes` fields.
 
-Make each refinement explicit on every relevant selector, test overlaps, or
-continue using Config v1 if the deployment depends on conditional inheritance.
+To migrate these selectors, specify each refinement on every applicable selector
+and test any overlapping rules. Continue to use Config v1 if the deployment
+depends on conditional inheritance.
 
 ## Configure exporters
 
-Config v2 puts telemetry pipelines in the top-level OpenTelemetry sections.
-Automatic migration supports the OTLP/gRPC subset. It rejects endpoints or
-protocols whose meaning can't be inferred safely.
+Config v2 defines telemetry pipelines in the top-level OpenTelemetry sections.
+The migration command can generate OTLP/gRPC exporters. Migration fails if the
+command cannot determine an endpoint or protocol without changing its meaning.
 
-An OTLP/gRPC trace exporter has this shape:
+Use the following configuration for an OTLP/gRPC trace exporter:
 
 ```yaml
 tracer_provider:
@@ -145,7 +154,7 @@ tracer_provider:
               insecure: true
 ```
 
-An OTLP/gRPC metric exporter has this shape:
+Use the following configuration for an OTLP/gRPC metric exporter:
 
 ```yaml
 meter_provider:
@@ -159,8 +168,8 @@ meter_provider:
         interval: 60000
 ```
 
-If Config v1 used OTLP over HTTP, migrate the rest of the file first and add an
-HTTP exporter manually:
+If the Config v1 file uses OTLP over HTTP, migrate the other settings first.
+Then add the HTTP exporters manually:
 
 ```yaml
 tracer_provider:
@@ -180,38 +189,40 @@ meter_provider:
             encoding: protobuf
 ```
 
-Config v2 also accepts `json` as the OTLP HTTP encoding and accepts declarative
-exporter headers. Exporter authentication environment variables remain runtime
-inputs; the migrator doesn't copy their values into the file.
+For OTLP over HTTP, you can also set `encoding` to `json`. Config v2 also
+supports declarative exporter headers. Exporter authentication environment
+variables remain runtime inputs; the migration command does not copy their
+values into the generated file.
 
 ## Handle settings that need manual changes
 
-The migrator fails rather than silently dropping a setting it can't preserve.
-The error identifies the source field. The most common cases are:
+If the migration command cannot preserve a setting, it fails and identifies the
+Config v1 field in the error message. The following settings commonly require
+manual changes:
 
-| Config v1 setting                                                           | What to do                                                                                                                                                  |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `service_name`, `service_namespace`                                         | Set `service.name` or `service.namespace` as top-level `resource` attributes in standalone mode. In receiver mode, use a Collector resource processor.      |
-| `prometheus_export.path`                                                    | Use the path supported by the selected Collector or Prometheus exporter. Config v2 has no portable field for it.                                            |
-| Custom or empty `discovery.excluded_linux_system_paths`                     | Keep Config v1, or express an actual workload exclusion with `capture.rules` if that is the intended behavior.                                              |
-| `health_check`                                                              | Use deployment health checks or Collector health-check facilities.                                                                                          |
-| JVM runtime sampling interval                                               | Keep Config v1 if this tuning is required.                                                                                                                  |
-| `attributes.instance_id.dns`                                                | Keep Config v1 or move the enrichment to a Collector processor.                                                                                             |
-| `stats_wakeup_data_bytes`                                                   | Keep Config v1 if this tuning is required.                                                                                                                  |
-| Selector `name`, `namespace`, per-selector metrics, or per-selector sampler | Redesign the selector using supported match and `refine` fields, or keep Config v1.                                                                         |
-| Selector `exports.logs`                                                     | Remove it; Config v2 workload export refinements support traces and metrics only.                                                                           |
-| `ebpf.log_enricher.services`                                                | Config v2 doesn't support a separate log-annotation selector. Capture rules determine eligible workloads. Keep Config v1 if the two selections must differ. |
-| `sensitive_query_params`                                                    | Redesign the privacy policy before migration. Config v2 has no equivalent field.                                                                            |
-| Debug exporter or unsupported sampler                                       | Configure a supported OTLP exporter or sampler, or keep Config v1.                                                                                          |
-| Differing active OTLP and Prometheus instrumentation lists                  | Make protocol metric enablement consistent before migrating.                                                                                                |
+| Config v1 setting                                                           | What to do                                                                                                                                                            |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `service_name`, `service_namespace`                                         | For standalone OBI, set `service.name` or `service.namespace` as top-level `resource` attributes. For the OBI Collector receiver, use a Collector resource processor. |
+| `prometheus_export.path`                                                    | Use the path supported by the selected Collector or Prometheus exporter. Config v2 has no portable field for it.                                                      |
+| Custom or empty `discovery.excluded_linux_system_paths`                     | Keep Config v1, or express an actual workload exclusion with `capture.rules` if that is the intended behavior.                                                        |
+| `health_check.*`                                                            | Use deployment health checks or Collector health-check facilities.                                                                                                    |
+| `jvm_runtime_metrics.sampling_interval`                                     | Keep Config v1 if this tuning is required.                                                                                                                            |
+| `attributes.instance_id.dns`                                                | Keep Config v1 or move the enrichment to a Collector processor.                                                                                                       |
+| `ebpf.stats_wakeup_data_bytes`                                              | Keep Config v1 if this tuning is required.                                                                                                                            |
+| Selector `name`, `namespace`, per-selector metrics, or per-selector sampler | Redesign the selector using supported match and `refine` fields, or keep Config v1.                                                                                   |
+| Selector `exports.logs`                                                     | Config v2 workload export refinements support traces and metrics only. Remove this setting only after you verify equivalent behavior; otherwise, keep Config v1.      |
+| `ebpf.log_enricher.services`                                                | Config v2 does not support a separate log-annotation selector. Capture rules determine eligible workloads. Keep Config v1 if the two selections must differ.          |
+| `sensitive_query_params`                                                    | Redesign the privacy policy before migration. Config v2 has no equivalent field.                                                                                      |
+| Debug exporter or unsupported sampler                                       | Configure a supported OTLP exporter or sampler, or keep Config v1.                                                                                                    |
+| Differing active OTLP and Prometheus instrumentation lists                  | Make protocol metric enablement consistent before migrating.                                                                                                          |
 
-Other unsupported metric feature, histogram, exporter, and Prometheus tuning
-fields are reported individually. Resolve every reported field and rerun the
-migration; don't delete a field solely to make the command pass unless you have
-confirmed the behavior isn't needed.
+The command reports other unsupported metric features and histogram, exporter,
+or Prometheus settings individually. Review and resolve every reported field
+before you rerun the migration. Do not remove a field only to make the command
+succeed; first confirm that you do not need its behavior.
 
-Unknown Config v1 fields, already-Config-v2 documents, and input containing
-multiple YAML documents are also rejected.
+The command also rejects unknown Config v1 fields, files that already use Config
+v2, and files that contain multiple YAML documents.
 
 For example, map a deliberate standalone service identity to resource
 attributes:
@@ -225,16 +236,17 @@ resource:
       value: shop
 ```
 
-This fragment is valid only at the top level of a standalone configuration. In
-receiver mode, use a Collector resource processor instead.
+Add this fragment only at the root of a standalone configuration. For an OBI
+Collector receiver, use a Collector resource processor instead.
 
 ## Migrate environment overrides
 
-The migration command doesn't read runtime environment overrides. Config v1
-environment variables also use Config v1 names and aren't automatically rewired.
+The migration command reads the source file but does not apply OBI runtime
+environment overrides. OBI also does not automatically map Config v1 environment
+variable names to Config v2 fields.
 
-For example, replace a Config v1 override such as `OTEL_EBPF_BPF_WAKEUP_LEN=999`
-with an explicit substitution at the Config v2 path:
+For example, if your deployment sets `OTEL_EBPF_BPF_WAKEUP_LEN=999`, add an
+explicit substitution expression at the corresponding Config v2 field:
 
 ```yaml
 extensions:
@@ -246,16 +258,17 @@ extensions:
           wakeup_len: ${OTEL_EBPF_BPF_WAKEUP_LEN:-500}
 ```
 
-Config files support `${VAR}`, `${env:VAR}`, and their `:-fallback` forms. The
-equivalent `$()` forms are also supported. Prefix an extra `$` to preserve a
-literal substitution expression.
+You can use `${VAR}`, `${env:VAR}`, or their `:-fallback` forms in a
+configuration file. You can also use the equivalent `$()` forms. To preserve an
+expression as literal text, prefix it with an extra `$`.
 
-Audit command-line and deployment-level overrides the same way. Move each value
-to its Config v2 field or to the Collector pipeline that now owns it.
+Review command-line and deployment-level overrides in the same way. Move each
+value to the corresponding Config v2 field or Collector pipeline setting.
 
 ## Migrate a Collector receiver
 
-Pass only the OBI receiver's Config v1 component body to the migration command:
+Pass the OBI receiver component body to the migration command, not the complete
+Collector configuration:
 
 ```sh
 obi config migrate --mode=receiver ./obi-receiver-v1.yaml \
@@ -265,8 +278,8 @@ obi config migrate --mode=receiver ./obi-receiver-v1.yaml \
 obi config validate --mode=receiver ./obi-receiver-v2.yaml
 ```
 
-The output is a Config v2 receiver component body. It places capture fields next
-to `version` and doesn't include a `capture` wrapper:
+The command generates a Config v2 receiver component body. In this format,
+capture fields appear next to `version` without a `capture` level:
 
 ```yaml
 version: '2.0'
@@ -279,19 +292,20 @@ rules:
         open_ports: '8080'
 ```
 
-Embed that body under `receivers.obi` in the Collector configuration.
+After validation succeeds, copy the component body under `receivers.obi` in the
+Collector configuration.
 
-Receiver migration rejects standalone exporter, enrichment, correlation, daemon,
-and internal telemetry fields. Recreate those concerns with Collector exporters,
-processors, extensions, and service telemetry. See
+Receiver migration does not accept standalone exporter, enrichment, correlation,
+daemon, or internal telemetry fields. Configure the equivalent behavior with
+Collector exporters, processors, extensions, and service telemetry. See
 [Run OBI as a Collector receiver](../collector-receiver/) for a complete
 pipeline example.
 
-## Validate and canary
+## Validate and test the migration
 
-`obi config validate` verifies the YAML structure and the supported Config v2
-subset. It doesn't start OBI, contact exporters, attach eBPF programs, or check
-kernel capabilities.
+`obi config validate` verifies the YAML structure and checks that OBI supports
+the specified Config v2 fields. The command does not start OBI, contact
+exporters, attach eBPF programs, or check kernel capabilities.
 
 After validation succeeds, deploy Config v2 to one instance and compare it with
 the Config v1 deployment:
@@ -303,6 +317,6 @@ the Config v1 deployment:
 - Check OBI logs and internal metrics for errors or backpressure.
 - Exercise workloads that match overlapping selection rules.
 
-Keep the Config v1 file and previous OBI binary or image available throughout
-the canary. If behavior differs, roll back both the configuration and OBI
-version, then resolve the mismatch before expanding the rollout.
+Keep the Config v1 file and previous OBI binary or image available during the
+canary test. If behavior differs, roll back the configuration and OBI version.
+Resolve the mismatch before you continue the rollout.

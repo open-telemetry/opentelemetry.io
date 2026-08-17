@@ -200,16 +200,15 @@ inject context on new and reused HTTP/2 and gRPC connections when HTTPS isn't
 used. Using `bpf_probe_write_user` requires granting OBI `CAP_SYS_ADMIN` or
 running it as a privileged container.
 
-#### Integration with Go manual instrumentation
+#### Instrument applications that use the Go Trace API
 
-Starting with OBI v0.11.0, OBI automatically instruments applications that use
-the OpenTelemetry Go Trace API without registering an SDK. OBI discovers the
-Trace API calls and exports the resulting manual spans alongside its eBPF spans.
-Applications that already register and export through an OpenTelemetry SDK
-continue to own their SDK telemetry.
+Starting with OBI v0.11.0, OBI can instrument applications that use the
+OpenTelemetry Go Trace API without registering an SDK. When this integration is
+active, OBI detects Trace API calls and exports the resulting manual spans
+alongside its eBPF spans. Applications that already register an OpenTelemetry
+SDK continue to manage and export their own SDK telemetry.
 
-OBI activates this integration only when all of the following conditions are
-met:
+OBI activates the integration only when all of the following conditions are met:
 
 - The application uses a supported OpenTelemetry module version and checksum
   combination, without a module replacement.
@@ -217,23 +216,23 @@ met:
 - OBI can resolve the required symbols and field layouts.
 - OBI has permission to use `bpf_probe_write_user`.
 
-If any check fails, OBI doesn't activate the Auto SDK, so the application's
-global Trace API spans remain non-recording. This doesn't disable OBI's separate
-eBPF fallback: when OBI can observe Trace API calls, it may export limited
-synthetic spans. These spans include the span name, parent relationship, status,
-and some primitive attributes, but omit the instrumentation scope, events, and
-requested span kind.
+If any check fails, the Auto SDK remains inactive and spans created through the
+global Trace API remain non-recording. OBI's eBPF instrumentation continues to
+operate independently. When OBI can detect Trace API calls, it can export
+partial synthetic spans that contain the span name, parent relationship, status,
+and some primitive attributes. These spans do not include the instrumentation
+scope, events, or requested span kind.
 
-Each span exported through the Auto SDK must fit within the v0.11.0 16 KiB
-encoded payload limit. OBI v0.11.0 doesn't emit a metric or log that confirms
-activation or reports an oversized dropped payload.
+In OBI v0.11.0, the encoded payload for each span exported through the Auto SDK
+must not exceed 16 KiB. OBI does not emit a metric or log message when it
+activates the integration or drops an oversized payload.
 
-See the upstream
+For the supported combinations of module version, checksum, and architecture,
+see the
+[activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.11.0/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation).
+You can also review the upstream
 [Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.11.0/examples/go-trace-api)
-and
-[exact activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.11.0/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation),
-and the [Auto SDK](/docs/zero-code/go/autosdk) documentation for related Go
-instrumentation guidance.
+and the [Auto SDK](/docs/zero-code/go/autosdk) documentation.
 
 #### Kernel integrity mode limitations
 

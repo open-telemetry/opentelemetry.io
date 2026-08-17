@@ -7,8 +7,8 @@ weight: 70
 
 > [!NOTE]
 >
-> This page documents Config v1 fields. Config v2 sampling belongs under the
-> top-level `tracer_provider.sampler` field; see the
+> This page uses Config v1 field names and examples. In Config v2, configure
+> sampling with the top-level `tracer_provider.sampler` field; see the
 > [Config v2 reference](../config-v2/). To convert an existing file, use the
 > [migration guide](../migrate-to-config-v2/).
 

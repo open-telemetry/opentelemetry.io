@@ -8,9 +8,9 @@ cSpell:ignore: healthz
 
 > [!NOTE]
 >
-> This page documents Config v1 fields and environment variables. For Config v2,
-> see the [Config v2 reference](../config-v2/). To convert an existing file, use
-> the [migration guide](../migrate-to-config-v2/).
+> This page uses Config v1 field names, examples, and environment variables. For
+> Config v2, see the [Config v2 reference](../config-v2/). To convert an
+> existing file, use the [migration guide](../migrate-to-config-v2/).
 
 OBI can be configured via environment variables or via a YAML configuration file
 passed either with the `-config` command-line argument or the
