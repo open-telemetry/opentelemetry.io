@@ -34,16 +34,23 @@ The `opentelemetry` package is a metapackage that depends on:
 - The language-specific auto-instrumentation packages for Java, .NET, Node.js,
   and Python.
 
-Once installed, the injector adds the auto-instrumentation to every new process
-of a supported runtime on the host. Applications that were already running are
-instrumented after they are restarted. By default, telemetry is exported using
-OTLP to `localhost` on ports `4317` (gRPC) and `4318` (HTTP), so you typically
-run a local [OpenTelemetry Collector](/docs/collector/) to receive and forward
-it.
+Once installed, the injector attaches to every newly started, dynamically linked
+process on the host. It only has a visible effect on processes of a supported
+runtime, loading the matching auto-instrumentation for them; processes of
+runtimes without an OpenTelemetry SDK are left unaffected. Applications that
+were already running are instrumented after they are restarted. By default,
+telemetry is exported using OTLP to `localhost` on ports `4317` (gRPC) and
+`4318` (HTTP), so you typically run a local
+[OpenTelemetry Collector](/docs/collector/) to receive and forward it. The
+Collector itself is distributed as system packages by the
+[OpenTelemetry Collector Releases](https://github.com/open-telemetry/opentelemetry-collector-releases)
+project; integrating it into this system-package repository is tracked in
+[opentelemetry-collector-releases#1561](https://github.com/open-telemetry/opentelemetry-collector-releases/issues/1561).
 
 The Packaging and OBI SIGs also plan to deliver
 [OpenTelemetry eBPF Instrumentation](/docs/zero-code/obi/) as a system package,
-extending zero-code instrumentation to additional runtimes such as Go.
+extending zero-code instrumentation to additional runtimes such as Go, Rust, and
+C++.
 
 ## Get started
 
