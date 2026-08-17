@@ -37,8 +37,9 @@ default_lang_commit: b97d606fe6299329b8731687dc235963bf100799
 {{% homepage/intro-section image="/img/homepage/collector-pipeline.svg" imageAlt="오픈텔레메트리 개요" %}}
 
 **오픈텔레메트리(OpenTelemetry)**는 클라우드 네이티브 소프트웨어를 위한 오픈소스
-옵저버빌리티 프레임워크이다. 애플리케이션의 분산 트레이스와 메트릭을 수집하기
-위해 API, 라이브러리, 에이전트, 컬렉터 서비스를 하나의 체계로 제공한다.
+옵저버빌리티(observability) 프레임워크이다. 애플리케이션의 분산 트레이스와
+메트릭을 수집하기 위해 API, 라이브러리, 에이전트, 컬렉터 서비스를 하나의 체계로
+제공한다.
 
 오픈텔레메트리는 OpenTracing과 OpenCensus 프로젝트의 다년간의 경험을 바탕으로,
 커뮤니티의 검증된 아이디어와 모범 사례를 통합하여 만들어졌다.
@@ -52,9 +53,10 @@ default_lang_commit: b97d606fe6299329b8731687dc235963bf100799
       image="/img/homepage/data-sources.svg"
       imagePosition="left" %}}
 
-오픈텔레메트리 API와 SDK로 코드를 한 번만 계측하면 된다. 텔레메트리 데이터를
-Jaeger, Prometheus, 상용 벤더, 자체 솔루션 등 어떤 옵저버빌리티 백엔드로든
-내보낼 수 있다. 애플리케이션 코드를 수정하지 않고도 백엔드를 바꿀 수 있다.
+오픈텔레메트리 API와 SDK로 코드를 한 번만 계측(instrument)하면 된다. 텔레메트리
+데이터를 Jaeger, Prometheus, 상용 벤더, 자체 솔루션 등 어떤 옵저버빌리티
+백엔드로든 내보낼 수 있다. 애플리케이션 코드를 수정하지 않고도 백엔드를 바꿀 수
+있다.
 
 {{% /homepage/main-feature %}}
 
@@ -83,13 +85,13 @@ Jaeger, Prometheus, 상용 벤더, 자체 솔루션 등 어떤 옵저버빌리�
 {{< /homepage/main-features >}}
 
 {{< homepage/signals-showcase title="옵저버빌리티 시그널" >}}
-{{< homepage/signal name="트레이스" image="/img/homepage/signal-traces.svg" url="/docs/concepts/signals/traces/" >}}
+{{< homepage/signal name="트레이스(traces)" image="/img/homepage/signal-traces.svg" url="/docs/concepts/signals/traces/" >}}
 분산 트레이스 {{< /homepage/signal >}}
-{{< homepage/signal name="메트릭" image="/img/homepage/signal-metrics.svg" url="/docs/concepts/signals/metrics/" >}}
+{{< homepage/signal name="메트릭(metrics)" image="/img/homepage/signal-metrics.svg" url="/docs/concepts/signals/metrics/" >}}
 시간에 따른 측정값 {{< /homepage/signal >}}
-{{< homepage/signal name="로그" image="/img/homepage/signal-logs.svg" url="/docs/concepts/signals/logs/" >}}
+{{< homepage/signal name="로그(logs)" image="/img/homepage/signal-logs.svg" url="/docs/concepts/signals/logs/" >}}
 타임스탬프가 붙은 기록 {{< /homepage/signal >}}
-{{< homepage/signal name="배기지" image="/img/homepage/signal-baggage.svg" url="/docs/concepts/signals/baggage/" >}}
+{{< homepage/signal name="배기지(baggage)" image="/img/homepage/signal-baggage.svg" url="/docs/concepts/signals/baggage/" >}}
 컨텍스트 메타데이터 {{< /homepage/signal >}} {{< /homepage/signals-showcase >}}
 
 {{< homepage/otel-features title="오픈텔레메트리 기능" columns="2" >}}
