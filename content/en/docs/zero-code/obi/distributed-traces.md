@@ -208,17 +208,25 @@ Trace API calls and exports the resulting manual spans alongside its eBPF spans.
 Applications that already register and export through an OpenTelemetry SDK
 continue to own their SDK telemetry.
 
-Activation is fail-closed and depends on the exact OpenTelemetry module version
-and checksum, an unreplaced module, a supported 64-bit executable and host,
-resolvable symbols and field layouts, and permission to use
-`bpf_probe_write_user`. If any requirement isn't met, the Auto SDK remains
-inactive and the application's global Trace API spans remain non-recording. When
-OBI can still observe the Trace API calls, it may export a limited synthetic
-span with the span name, parent relationship, status, and some primitive
-attributes, but without the instrumentation scope, events, or requested span
-kind. Each application-authored span must fit in the v0.11.0 16 KiB encoded
-payload limit. OBI v0.11.0 doesn't emit a metric or log that confirms activation
-or reports an oversized dropped payload.
+OBI activates this integration only when all of the following conditions are
+met:
+
+- The application uses an exact supported OpenTelemetry module version and
+  checksum, without a module replacement.
+- The executable and host use a supported 64-bit architecture.
+- OBI can resolve the required symbols and field layouts.
+- OBI has permission to use `bpf_probe_write_user`.
+
+If any check fails, OBI doesn't activate the Auto SDK, so the application's
+global Trace API spans remain non-recording. This doesn't disable OBI's separate
+eBPF fallback: when OBI can observe Trace API calls, it may export limited
+synthetic spans. These spans include the span name, parent relationship, status,
+and some primitive attributes, but omit the instrumentation scope, events, and
+requested span kind.
+
+Each span exported through the Auto SDK must fit within the v0.11.0 16 KiB
+encoded payload limit. OBI v0.11.0 doesn't emit a metric or log that confirms
+activation or reports an oversized dropped payload.
 
 See the upstream
 [Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.11.0/examples/go-trace-api)

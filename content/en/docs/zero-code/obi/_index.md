@@ -59,23 +59,24 @@ OBI offers the following features:
 
 ## Recent highlights (v0.11.0)
 
-OBI v0.11.0 expands automatic instrumentation, configuration, runtime and
-protocol coverage, and trace-log correlation:
+OBI v0.11.0 expands automatic instrumentation, configuration capabilities,
+runtime metrics, protocol coverage, and trace-log correlation:
 
 - **OpenTelemetry Go Trace API instrumentation**: Automatically instruments Go
   applications that use the Trace API without registering an SDK
-- **Configuration v2**: Enables the declarative v2 format for standalone OBI and
-  the OBI Collector receiver while retaining Config v1 compatibility, and adds
-  `obi config validate` and `obi config migrate`
-- **Expanded Go runtime metrics**: Adds CPU, memory, scheduler, garbage
-  collection, goroutine, and histogram metrics
+- **Configuration v2**: Adds Config v2 for standalone OBI and the OBI Collector
+  receiver. Config v2 extends the OpenTelemetry declarative configuration model;
+  Config v1 remains supported. This release also adds `obi config validate` and
+  `obi config migrate`
+- **Expanded Go runtime metrics**: Adds CPU time, memory, scheduler latency,
+  garbage collection, and goroutine metrics
 - **Plain-text log correlation**: Adds configurable trace-context annotation for
   non-JSON logs, including field names, placement, and multiline selection
 - **Aerospike support**: Adds client and kernel-side Aerospike protocol
   instrumentation
 - **Broader GenAI coverage**: Adds OpenAI-compatible gateways, native Ollama
-  chat and generation, Gemini streaming responses, and richer tool, embedding,
-  rerank, and token telemetry
+  chat and generation, Gemini streaming responses, and richer telemetry for tool
+  calls, embeddings, reranking, and token usage
 - **More reliable context propagation**: Improves HTTP/2 and gRPC propagation
   for connections that existed before OBI started
 

@@ -16,9 +16,10 @@ the low cardinality routes decorator. It's very important for optimal results.
 
 ## Configuration versions
 
-OBI v0.11.0 and later support both the existing Config v1 format and the
-declarative Config v2 format for standalone OBI and the OBI Collector receiver.
-Config v1 remains supported.
+OBI v0.11.0 and later support two OBI configuration formats: Config v1 and
+Config v2. Both work with standalone OBI and the OBI Collector receiver. Config
+v2 extends the OpenTelemetry declarative configuration model. Config v1 remains
+supported.
 
 Before migrating a production deployment, review the
 [Config v1 to v2 migration guide](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.11.0/devdocs/config/version-2.0/migration.md).
@@ -31,10 +32,11 @@ obi config migrate --mode=receiver ./obi-receiver-v1.yaml > ./obi-receiver-v2.ya
 obi config validate --mode=receiver ./obi-receiver-v2.yaml
 ```
 
-The migrator does not consume environment-variable overlays and rejects settings
-it cannot preserve. In receiver mode, move standalone-only exporter, enrichment,
-correlation, daemon, and internal telemetry settings to the appropriate
-Collector pipelines, processors, and service telemetry settings.
+The migration command does not read configuration supplied through environment
+variables, and it rejects settings it cannot preserve. When migrating a receiver
+configuration, move standalone-only exporter, enrichment, correlation, daemon,
+and internal telemetry settings to the appropriate Collector pipelines,
+processors, and service telemetry settings.
 
 See the
 [Config v2 reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.11.0/devdocs/config/version-2.0/config-v2.md)
