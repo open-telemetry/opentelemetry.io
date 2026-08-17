@@ -1,7 +1,7 @@
 # cSpell:ignore voxpupuli otelcol
 title: Puppet module for OpenTelemetry Collector
 registryType: utilities
-language: puppet
+language: ruby
 tags:
   - collector
   - puppet
