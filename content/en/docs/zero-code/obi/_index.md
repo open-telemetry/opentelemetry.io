@@ -76,7 +76,7 @@ runtime metrics, protocol coverage, and trace-log correlation:
   instrumentation
 - **Broader GenAI coverage**: Adds OpenAI-compatible gateways, native Ollama
   chat and generation, Gemini streaming responses, and richer telemetry for tool
-  calls, embeddings, reranking, and token usage
+  calls, embeddings, rerank operations, and token usage
 - **More reliable context propagation**: Improves HTTP/2 and gRPC propagation
   for connections that existed before OBI started
 
