@@ -1258,6 +1258,8 @@ maintainers:
     teams:
       - browser-approvers
       - browser-maintainers
+      - semconv-browser-approvers
+      - semconv-client-approvers
     html_url: https://github.com/overbalance
     avatar_url: https://avatars.githubusercontent.com/u/16477?v=4
   - name: pavolloffay
@@ -2123,6 +2125,11 @@ approvers:
       - dotnet-instrumentation-triagers
     html_url: https://github.com/RassK
     avatar_url: https://avatars.githubusercontent.com/u/4929112?v=4
+  - name: rockdaboot
+    teams:
+      - ebpf-profiler-approvers
+    html_url: https://github.com/rockdaboot
+    avatar_url: https://avatars.githubusercontent.com/u/2087964?v=4
   - name: rogercoll
     teams:
       - collector-contrib-triagers
@@ -2938,6 +2945,9 @@ members:
   - name: pradhyum6144
     html_url: https://github.com/pradhyum6144
     avatar_url: https://avatars.githubusercontent.com/u/209258248?v=4
+  - name: pratik50
+    html_url: https://github.com/pratik50
+    avatar_url: https://avatars.githubusercontent.com/u/92214381?v=4
   - name: prestonvasquez
     html_url: https://github.com/prestonvasquez
     avatar_url: https://avatars.githubusercontent.com/u/24281431?v=4
