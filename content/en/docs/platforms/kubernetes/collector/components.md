@@ -281,7 +281,7 @@ Since Kubernetes logs normally fit a set of standard formats, a typical Filelog
 Receiver configuration for Kubernetes looks like:
 
 ```yaml
-filelog:
+file_log:
   include:
     - /var/log/pods/*/*/*.log
   exclude:
