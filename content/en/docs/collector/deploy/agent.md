@@ -71,7 +71,7 @@ receivers:
         endpoint: 0.0.0.0:4318
 
 exporters:
-  prometheusremotewrite: # the PRW exporter, to ingest metrics to backend
+  prometheus_remote_write: # the PRW exporter, to ingest metrics to backend
     endpoint: https://prw.example.com/v1/api/remote_write
     sending_queue:
       batch:
@@ -80,7 +80,7 @@ service:
   pipelines:
     metrics/prod:
       receivers: [otlp]
-      exporters: [prometheusremotewrite]
+      exporters: [prometheus_remote_write]
 ```
 
 {{% /tab %}} {{% tab Logs %}}
