@@ -129,10 +129,7 @@ need to adjust the command syntax.
    ...
    ```
 
-6. To explore the traces visually, open <http://localhost:55679/debug/tracez> in
-   your browser and select one of the traces from the table.
-
-7. Press <kbd>Control-C</kbd> to stop the Collector.
+6. Press <kbd>Control-C</kbd> to stop the Collector.
 
 ## Next steps
 
