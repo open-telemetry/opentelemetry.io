@@ -98,13 +98,13 @@ default_lang_commit: b97d606fe6299329b8731687dc235963bf100799
 
 {{< homepage/otel-feature image="/img/homepage/feature-auto-instrumentation.svg" title="자동 계측" url="/docs/concepts/instrumentation/zero-code/" >}}
 인기 프레임워크와 라이브러리를 코드 수정 없이 계측해 몇 분 만에 시작할 수 있다.
-자동 계측 에이전트가 소스 코드를 건드리지 않고 트레이스, 메트릭, 로그를
+자동 계측 에이전트가 소스 코드를 변경하지 않고 트레이스, 메트릭, 로그를
 수집한다. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-pipeline.svg" title="컬렉터 파이프라인" url="/docs/collector/" >}}
-오픈텔레메트리 컬렉터로 텔레메트리 데이터를 처리·필터링·라우팅할 수 있다. 200개
-이상의 컴포넌트를 갖춘 에이전트나 게이트웨이로 대규모 텔레메트리를 수신하고
-처리한 뒤 내보낼 수 있다. {{< /homepage/otel-feature >}}
+오픈텔레메트리 컬렉터로 텔레메트리 데이터를 프로세싱, 필터링, 라우팅할 수 있다.
+200개 이상의 컴포넌트를 갖춘 에이전트나 게이트웨이로 대규모 텔레메트리를
+수신하고 처리한 뒤 내보낼 수 있다. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-observability.svg" title="컨텍스트 전파" url="/docs/concepts/context-propagation/" >}}
 서비스 경계를 넘어 트레이스를 자동으로 연관 짓는다. 분산 컨텍스트가 요청 경로
