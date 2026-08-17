@@ -22,12 +22,13 @@ Config v1 remains supported.
 
 Before migrating a production deployment, review the
 [Config v1 to v2 migration guide](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.11.0/devdocs/config/version-2.0/migration.md).
-Use `obi config validate <path>` to validate a configuration and
+Use `obi config validate <path>` to validate a standalone configuration and
 `obi config migrate <path>` to convert a standalone Config v1 file. For an OBI
-Collector receiver configuration body, use:
+Collector receiver configuration body, use receiver mode for both commands:
 
 ```sh
-obi config migrate --mode=receiver <path>
+obi config migrate --mode=receiver ./obi-receiver-v1.yaml > ./obi-receiver-v2.yaml
+obi config validate --mode=receiver ./obi-receiver-v2.yaml
 ```
 
 The migrator does not consume environment-variable overlays and rejects settings

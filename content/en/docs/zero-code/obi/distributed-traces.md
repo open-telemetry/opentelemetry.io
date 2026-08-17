@@ -211,17 +211,21 @@ continue to own their SDK telemetry.
 Activation is fail-closed and depends on the exact OpenTelemetry module version
 and checksum, an unreplaced module, a supported 64-bit executable and host,
 resolvable symbols and field layouts, and permission to use
-`bpf_probe_write_user`. If any requirement isn't met, the application's global
-Trace API spans remain non-recording. Each application-authored span must fit in
-the v0.11.0 16 KiB encoded payload limit. OBI v0.11.0 doesn't emit a metric or
-log that confirms activation or reports an oversized dropped payload.
+`bpf_probe_write_user`. If any requirement isn't met, the Auto SDK remains
+inactive and the application's global Trace API spans remain non-recording. When
+OBI can still observe the Trace API calls, it may export a limited synthetic
+span with the span name, parent relationship, status, and some primitive
+attributes, but without the instrumentation scope, events, or requested span
+kind. Each application-authored span must fit in the v0.11.0 16 KiB encoded
+payload limit. OBI v0.11.0 doesn't emit a metric or log that confirms activation
+or reports an oversized dropped payload.
 
 See the upstream
 [Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.11.0/examples/go-trace-api)
 and
 [exact activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.11.0/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation),
-and the [Auto SDK](/docs/zero-code/go/autosdk) documentation for related
-Go instrumentation guidance.
+and the [Auto SDK](/docs/zero-code/go/autosdk) documentation for related Go
+instrumentation guidance.
 
 #### Kernel integrity mode limitations
 

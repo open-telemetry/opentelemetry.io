@@ -116,14 +116,34 @@ the earlier pass-through behavior. Field names apply to JSON and plain-text
 output and must be nonempty, distinct, and contain no whitespace, `=`, or
 control characters.
 
-In Config v2, configure the same settings under
-`extensions.obi.correlation.log_trace_annotation`.
+In Config v2, log trace annotation is available only in standalone OBI and is
+disabled by default. Enable and configure it under
+`extensions.obi.correlation.log_trace_annotation`:
+
+```yaml
+extensions:
+  obi:
+    correlation:
+      log_trace_annotation:
+        enabled: true
+        field_names:
+          trace_id: trace_id
+          span_id: span_id
+        plain_text:
+          enabled: true
+          placement: suffix
+          multiline: first_line
+```
+
+Config v2 capture selection determines which workloads are eligible for log
+annotation. The `log_trace_annotation.filter` field is reserved in v0.11.0 and
+must remain empty.
 
 ### Enabling correlation per service
 
-OBI enriches JSON logs for services listed under `ebpf.log_enricher.services`.
-Keep service selectors aligned with `discovery.instrument` so enrichment tracks
-the same processes.
+OBI enriches JSON and plain-text logs for services listed under
+`ebpf.log_enricher.services`. Keep service selectors aligned with
+`discovery.instrument` so enrichment tracks the same processes.
 
 ## Requirements
 

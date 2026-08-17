@@ -9,7 +9,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
-cSpell:ignore: Aerospike Milvus Ollama Qdrant Qwen rerank SunRPC Zilliz
+cSpell:ignore: Aerospike Ollama Qwen rerank
 ---
 
 OpenTelemetry libraries provide telemetry collection for popular programming
