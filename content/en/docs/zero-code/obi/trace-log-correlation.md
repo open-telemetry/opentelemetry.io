@@ -9,9 +9,9 @@ cSpell:ignore: BPFFS NUL PYTHONUNBUFFERED ringbuffer
 ---
 
 OpenTelemetry eBPF Instrumentation (OBI) correlates application logs with
-distributed traces by enriching JSON logs with trace context. OBI does not
-export logs; it writes enriched logs back to the same stream while traces are
-exported via OTLP.
+distributed traces by enriching JSON and plain-text logs with trace context. OBI
+does not export logs; it writes enriched logs back to the same stream while
+traces are exported via OTLP.
 
 ## Overview
 
@@ -38,8 +38,8 @@ OBI uses eBPF to inject trace context into application logs at the kernel level:
    all traced operations
 2. **Log interception**: OBI intercepts write syscalls to capture application
    logs
-3. **Context injection**: For JSON-formatted logs, OBI injects `trace_id` and
-   `span_id` fields
+3. **Context injection**: OBI injects `trace_id` and `span_id` fields into JSON
+   objects or adds configurable `key=value` fields to selected plain-text lines
 4. **Trace export**: Logs keep flowing through your existing logging pipeline
 5. **Backend linking**: Your observability backend links logs to traces using
    these IDs
@@ -51,11 +51,13 @@ binaries:
 
 - Uses kernel eBPF probes to intercept write operations
 - Maintains file descriptor caching for performance
-- Works with any logging framework that writes JSON logs
+- Works with logging frameworks that write JSON or plain text
 
-OBI preserves `trace_id` and `span_id` fields that already exist in the JSON.
-For a service detected as exporting OpenTelemetry traces directly, OBI injects
-only `trace_id`: its eBPF-generated span ID would not identify the SDK span.
+OBI preserves configured trace and span fields that already exist. JSON keys are
+matched literally; in plain text, OBI recognizes `name=value` tokens at the
+start of a line or after whitespace. For a service detected as exporting
+OpenTelemetry traces directly, OBI injects only `trace_id`: its eBPF-generated
+span ID would not identify the SDK span.
 
 ## Configuration
 
@@ -88,6 +90,34 @@ Log enrichment behavior can be further configured under `ebpf.log_enricher`:
 - `cache_size`: maximum number of cached file descriptors
 - `async_writer_workers`: number of async writer shards
 - `async_writer_channel_len`: queue size per shard
+- `field_names`: field names used to recognize and inject trace and span IDs
+- `plain_text.enabled`: whether to annotate non-JSON logs; defaults to `true`
+- `plain_text.placement`: add fields as a `prefix` or `suffix`
+- `plain_text.multiline`: annotate the `first_line`, `last_line`, or `each_line`
+  in each intercepted write
+
+For example:
+
+```yaml
+ebpf:
+  log_enricher:
+    field_names:
+      trace_id: trace_id
+      span_id: span_id
+    plain_text:
+      enabled: true
+      placement: suffix
+      multiline: first_line
+```
+
+Plain-text enrichment is enabled by default for selected services in v0.11.0.
+Set `plain_text.enabled: false` before upgrading if non-JSON writes must retain
+the earlier pass-through behavior. Field names apply to JSON and plain-text
+output and must be nonempty, distinct, and contain no whitespace, `=`, or
+control characters.
+
+In Config v2, configure the same settings under
+`extensions.obi.correlation.log_trace_annotation`.
 
 ### Enabling correlation per service
 
@@ -97,10 +127,10 @@ the same processes.
 
 ## Requirements
 
-### 1. JSON log format
+### 1. Supported log format
 
-Trace-log correlation **requires JSON-formatted logs**. OBI injects `trace_id`
-and `span_id` fields into JSON log objects:
+For JSON-formatted logs, OBI injects `trace_id` and `span_id` fields into JSON
+objects:
 
 **Before OBI**:
 
@@ -120,8 +150,17 @@ and `span_id` fields into JSON log objects:
 }
 ```
 
-Plain text logs are passed through unchanged and are **not enriched** with trace
-context.
+For plain-text logs, OBI adds lowercase, fixed-width IDs as space-separated
+`key=value` fields. Placement and multiline selection are configurable:
+
+```text
+request processed trace_id=4bf92f3577b34da6a3ce929d0e0e4736 span_id=00f067aa0ba902b7
+```
+
+Newline-delimited JSON is handled as structured JSON. OBI enriches each object
+record independently and doesn't apply plain-text annotation to valid NDJSON.
+Multiline selection operates on nonempty physical lines in one intercepted
+write; OBI doesn't reconstruct logical events across separate writes.
 
 #### Runtime buffering limitations
 
@@ -163,9 +202,10 @@ Trace-log correlation requires Linux with specific kernel features:
 - **Non-security-locked-down kernel**: Requires a kernel that is not running in
   security lockdown mode (typical for most production distributions)
 
-### 4. Framework that emits JSON logs
+### 4. Framework that emits supported logs
 
-Applications must use a logging framework configured to output JSON. Examples:
+Applications can use a logging framework configured to output JSON or plain
+text. The following JSON examples produce structured fields:
 
 {{< tabpane text=true persist=lang >}} {{% tab header="Python" lang=python %}}
 
@@ -253,7 +293,8 @@ operator decodes the body before the filter runs.
 
 ## Known limitations
 
-- **JSON only**: Plain text logs are not enriched with trace context
+- **Per-write multiline selection**: OBI doesn't reconstruct logical multiline
+  events across separate writes
 - **File descriptor cache**: Cached for performance, with configurable TTL
   (default: 30 minutes)
 - **Span-aligned only**: Logs enriched only while a span is active; logs outside
@@ -267,7 +308,9 @@ operator decodes the body before the filter runs.
 
 ### Trace context not appearing in logs
 
-1. **Verify JSON format**: Ensure application outputs valid JSON logs
+1. **Verify the configured format**: For JSON logs, ensure the application
+   outputs valid JSON. For plain text, confirm `plain_text.enabled` is `true`
+   and inspect the placement and multiline settings.
 
    ```bash
    # Check for malformed JSON

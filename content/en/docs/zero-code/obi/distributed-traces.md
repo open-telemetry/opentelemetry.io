@@ -196,16 +196,32 @@ kernel includes the functionality but is lower than 5.17.
 This type of context propagation is only supported for Go applications and uses
 eBPF user memory write support (`bpf_probe_write_user`). The advantage of this
 approach is that it works for HTTP and HTTPS. For HTTP/2 and gRPC, OBI can
-inject context only on new connections when HTTPS isn't used; reused HTTP/2/gRPC
-connections are not supported yet. The use of `bpf_probe_write_user` requires
-the OBI is granted `CAP_SYS_ADMIN` or it's configured to run as `privileged`
-container.
+inject context on new and reused HTTP/2 and gRPC connections when HTTPS isn't
+used. The use of `bpf_probe_write_user` requires the OBI is granted
+`CAP_SYS_ADMIN` or it's configured to run as `privileged` container.
 
 #### Integration with Go manual instrumentation
 
-OBI integrates automatically with manual spans using the
-[Auto SDK](/docs/zero-code/go/autosdk). See the docs on the Auto SDK to learn
-more.
+Starting with OBI v0.11.0, OBI automatically instruments applications that use
+the OpenTelemetry Go Trace API without registering an SDK. OBI discovers the
+Trace API calls and exports the resulting manual spans alongside its eBPF spans.
+Applications that already register and export through an OpenTelemetry SDK
+continue to own their SDK telemetry.
+
+Activation is fail-closed and depends on the exact OpenTelemetry module version
+and checksum, an unreplaced module, a supported 64-bit executable and host,
+resolvable symbols and field layouts, and permission to use
+`bpf_probe_write_user`. If any requirement isn't met, the application's global
+Trace API spans remain non-recording. Each application-authored span must fit in
+the v0.11.0 16 KiB encoded payload limit. OBI v0.11.0 doesn't emit a metric or
+log that confirms activation or reports an oversized dropped payload.
+
+See the upstream
+[Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.11.0/examples/go-trace-api)
+and
+[exact activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.11.0/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation),
+and the [Auto SDK](/docs/zero-code/go/autosdk) documentation for related
+Go instrumentation guidance.
 
 #### Kernel integrity mode limitations
 

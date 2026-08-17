@@ -6,7 +6,7 @@ description:
   and OpenTelemetry traces
 weight: 10
 # prettier-ignore
-cSpell:ignore: AsterixDB Chroma couchbase genai gonic jackc libcudart memcached Milvus nats pgxpool Pinecone pyserver Qdrant Qwen rerank segmentio spanmetrics sunrpc Weaviate Zilliz
+cSpell:ignore: Aerospike AsterixDB Chroma couchbase genai gonic jackc libcudart memcached Milvus nats Ollama pgxpool Pinecone pyserver Qdrant Qwen rerank segmentio spanmetrics sunrpc Weaviate Zilliz
 ---
 
 OBI can export OpenTelemetry metrics and traces to a OTLP endpoint.
@@ -16,30 +16,31 @@ OBI can export OpenTelemetry metrics and traces to a OTLP endpoint.
 OBI supports the following protocol and feature versions for traces and metrics
 instrumentation:
 
-| Area          | Supported versions                                                                              | Notes                                                                                                       |
-| :------------ | :---------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
-| HTTP          | `1.0/1.1`                                                                                       | Context propagation is supported.                                                                           |
-| HTTP          | `2.0`                                                                                           | Context propagation requires Go library-level instrumentation.                                              |
-| gRPC          | `1.0+`                                                                                          | Context propagation is supported. Long-lived connections started before OBI might use `*` for method names. |
-| MySQL         | All                                                                                             | Prepared statements created before OBI starts might not include query text.                                 |
-| PostgreSQL    | All                                                                                             | Prepared statements created before OBI starts might not include query text.                                 |
-| MSSQL         | All                                                                                             | Prepared statements created before OBI starts might not include query text.                                 |
-| Redis         | All                                                                                             | Existing connections might not include database number or `db.namespace`.                                   |
-| MongoDB       | `5.0+`                                                                                          | Compressed payloads are not supported.                                                                      |
-| Couchbase     | All                                                                                             | Bucket or collection names might be unavailable when negotiation completed before OBI started.              |
-| Memcached     | All                                                                                             | Supports the ASCII text protocol subset, excluding `quit` and meta commands.                                |
-| Kafka         | All                                                                                             | Topic name lookup might fail for fetch API versions `13+`.                                                  |
-| MQTT          | `3.1.1/5.0`                                                                                     | Payloads are not captured.                                                                                  |
-| NATS          | All                                                                                             | No additional documented version limits.                                                                    |
-| AMQP          | `1.0`                                                                                           | Only transfer performatives create spans.                                                                   |
-| SunRPC        | All                                                                                             | Supports ONC RPC over TCP; UDP isn't supported. RPCSEC_GSS hides procedure arguments.                       |
-| GraphQL       | All                                                                                             | No additional documented version limits.                                                                    |
-| Elasticsearch | `7.14+`                                                                                         | No additional documented version limits.                                                                    |
-| OpenSearch    | `3.0.0+`                                                                                        | No additional documented version limits.                                                                    |
-| AWS S3        | All                                                                                             | No additional documented version limits.                                                                    |
-| AWS SQS       | All                                                                                             | No additional documented version limits.                                                                    |
-| SQL++         | All                                                                                             | No additional documented version limits.                                                                    |
-| GenAI         | OpenAI, Anthropic, Gemini, AWS Bedrock, Qwen, MCP, embedding, rerank, and vector retrieval APIs | Provider-specific payload extraction requires the matching `ebpf.payload_extraction.http` flag.             |
+| Area          | Supported versions                                                                                                                  | Notes                                                                                                       |
+| :------------ | :---------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
+| HTTP          | `1.0/1.1`                                                                                                                           | Context propagation is supported.                                                                           |
+| HTTP          | `2.0`                                                                                                                               | Context propagation requires Go library-level instrumentation.                                              |
+| gRPC          | `1.0+`                                                                                                                              | Context propagation is supported. Long-lived connections started before OBI might use `*` for method names. |
+| MySQL         | All                                                                                                                                 | Prepared statements created before OBI starts might not include query text.                                 |
+| PostgreSQL    | All                                                                                                                                 | Prepared statements created before OBI starts might not include query text.                                 |
+| MSSQL         | All                                                                                                                                 | Prepared statements created before OBI starts might not include query text.                                 |
+| Redis         | All                                                                                                                                 | Existing connections might not include database number or `db.namespace`.                                   |
+| MongoDB       | `5.0+`                                                                                                                              | Compressed payloads are not supported.                                                                      |
+| Couchbase     | All                                                                                                                                 | Bucket or collection names might be unavailable when negotiation completed before OBI started.              |
+| Aerospike     | All                                                                                                                                 | Compressed payloads aren't parsed; record and bin values aren't captured.                                   |
+| Memcached     | All                                                                                                                                 | Supports the ASCII text protocol subset, excluding `quit` and meta commands.                                |
+| Kafka         | All                                                                                                                                 | Topic name lookup might fail for fetch API versions `13+`.                                                  |
+| MQTT          | `3.1.1/5.0`                                                                                                                         | Payloads are not captured.                                                                                  |
+| NATS          | All                                                                                                                                 | No additional documented version limits.                                                                    |
+| AMQP          | `1.0`                                                                                                                               | Only transfer performatives create spans.                                                                   |
+| SunRPC        | All                                                                                                                                 | Supports ONC RPC over TCP; UDP isn't supported. RPCSEC_GSS hides procedure arguments.                       |
+| GraphQL       | All                                                                                                                                 | No additional documented version limits.                                                                    |
+| Elasticsearch | `7.14+`                                                                                                                             | No additional documented version limits.                                                                    |
+| OpenSearch    | `3.0.0+`                                                                                                                            | No additional documented version limits.                                                                    |
+| AWS S3        | All                                                                                                                                 | No additional documented version limits.                                                                    |
+| AWS SQS       | All                                                                                                                                 | No additional documented version limits.                                                                    |
+| SQL++         | All                                                                                                                                 | No additional documented version limits.                                                                    |
+| GenAI         | OpenAI, Anthropic, Gemini, AWS Bedrock, Qwen, Ollama, OpenAI-compatible gateways, MCP, embedding, rerank, and vector retrieval APIs | Provider-specific payload extraction requires the matching `ebpf.payload_extraction.http` flag.             |
 
 Some application-level instrumentation also depends on specific runtime,
 library, or server versions:

@@ -9,7 +9,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
-cSpell:ignore: Milvus Qdrant Qwen rerank SunRPC Zilliz
+cSpell:ignore: Aerospike Milvus Ollama Qdrant Qwen rerank SunRPC Zilliz
 ---
 
 OpenTelemetry libraries provide telemetry collection for popular programming
@@ -34,7 +34,8 @@ OBI offers the following features:
   with minimal overhead
 - **Distributed tracing**: Distributed trace spans are captured and reported to
   a collector
-- **Log enrichment**: Enrich JSON logs with trace context for correlation
+- **Log enrichment**: Enrich JSON and plain-text logs with trace context for
+  correlation
 - **Kubernetes-native**: Provides configuration-free auto-instrumentation for
   Kubernetes applications
 - **Visibility into encrypted communications**: Capture transactions over
@@ -43,7 +44,7 @@ OBI offers the following features:
 - **Protocol support**: HTTP/S, gRPC, gRPC-Web, JSON-RPC, MQTT, NATS, AMQP 1.0,
   Memcached, and more
 - **Database instrumentation**: PostgreSQL (including pgx driver), MySQL, MSSQL,
-  MongoDB, Redis, Couchbase (N1QL/SQL++ and KV protocol)
+  MongoDB, Redis, Couchbase (N1QL/SQL++ and KV protocol), and Aerospike
 - **GenAI instrumentation**: Trace and metrics for OpenAI, Anthropic Claude,
   Google AI Studio (Gemini), AWS Bedrock, Qwen (DashScope), MCP over JSON-RPC,
   embedding and rerank APIs, and vector retrieval systems
@@ -56,34 +57,35 @@ OBI offers the following features:
 - **Collector integration**: Run OBI as an OpenTelemetry Collector receiver
   component
 
-## Recent highlights (v0.10.0)
+## Recent highlights (v0.11.0)
 
-OBI v0.10.0 expands distributed tracing, runtime telemetry, protocol coverage,
-and operational controls:
+OBI v0.11.0 expands automatic instrumentation, configuration, runtime and
+protocol coverage, and trace-log correlation:
 
-- **gRPC context propagation**: Added language-agnostic network-level
-  `traceparent` propagation for gRPC over HTTP/2
-- **Runtime metrics**: Added Go runtime metrics and opt-in HotSpot JVM memory
-  metrics without requiring SDK changes in the target application
-- **More network telemetry**: Added network packet, TCP retransmit, and TCP
-  socket I/O metrics
-- **SunRPC support**: Added traces and metrics for ONC RPC protocols over TCP,
-  including NFS-related programs
-- **Asynchronous Go causality**: Added experimental span links for supported Go
-  channel handoffs
-- **Safer operations and export**: Added health endpoints, Unix domain socket
-  support for health checks and OTLP export, resource-attribute selection, and
-  automatic redaction of sensitive URL query parameters
-- **Broader GenAI coverage**: Added vector retrieval telemetry for Pinecone,
-  Qdrant, Milvus, Zilliz, Chroma, and Weaviate
+- **OpenTelemetry Go Trace API instrumentation**: Automatically instruments Go
+  applications that use the Trace API without registering an SDK
+- **Configuration v2**: Enables the declarative v2 format for standalone OBI and
+  the OBI Collector receiver while retaining Config v1 compatibility, and adds
+  `obi config validate` and `obi config migrate`
+- **Expanded Go runtime metrics**: Adds CPU, memory, scheduler, garbage
+  collection, goroutine, and histogram metrics
+- **Plain-text log correlation**: Adds configurable trace-context annotation for
+  non-JSON logs, including field names, placement, and multiline selection
+- **Aerospike support**: Adds client and kernel-side Aerospike protocol
+  instrumentation
+- **Broader GenAI coverage**: Adds OpenAI-compatible gateways, native Ollama
+  chat and generation, Gemini streaming responses, and richer tool, embedding,
+  rerank, and token telemetry
+- **More reliable context propagation**: Improves HTTP/2 and gRPC propagation
+  for connections that existed before OBI started
 
 For a complete list of changes and upgrade notes, see the
-[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.10.0).
+[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.11.0).
 
 If you want to explore the upstream examples, see the
-[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.10.0/examples/nginx)
+[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.11.0/examples/nginx)
 and the
-[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.10.0/examples/apache).
+[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.11.0/examples/apache).
 
 ## How OBI works
 
