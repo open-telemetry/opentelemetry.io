@@ -25,7 +25,7 @@ existente, trimite un [pull request][PR] (PR)
 > Dacă ești un [contribuitor nou][first-time contributor], te rugăm să ții cont
 > de următoarele:
 >
-> Primele 3 contribuții către repertoriul nostru trebuie în principal să fie
+> Primele 3 contribuții către repository-ul nostru trebuie în principal să fie
 > scrise de oameni, fiind permisă doar o asistență minoră din partea
 > inteligenței artificiale.
 > ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)). Asta
@@ -35,7 +35,7 @@ existente, trimite un [pull request][PR] (PR)
 > implicare din partea IA-ului (AIL0).
 >
 > Bineînțeles, poți folosi unelte de IA pentru a adresa întrebări și pentru a
-> învăța despre repertoriul nostru, proiectul nostru, cum să contribui și multe
+> învăța despre repository-ul nostru, proiectul nostru, cum să contribui și multe
 > altele.
 >
 > Am implementat această cerință pentru a te ajuta să înveți în timp ce
@@ -65,7 +65,7 @@ flowchart LR
     subgraph first[Cum să contribui]
     direction TB
        T[ ] -.-
-       B[Creează un fork al repertoriului în GitHub] --- C[Scrie documente în markdown<br> și construiește site-ul cu Hugo]
+       B[Creează un fork al repository-ului în GitHub] --- C[Scrie documente în markdown<br> și construiește site-ul cu Hugo]
        C --- D[Împinge sursele la fork]
        D --- E[Deschide un pull request]
        E --- F[Semnează <a href="../prerequisites/#cla">CLA-ul CNCF</a>]
@@ -130,7 +130,7 @@ _Figura 2. Pașii pentru deschiderea unui PR folosind GitHub._
    din panoul de navigare din partea dreaptă.
 
 1. Dacă nu ești un membru al proiectului, GitHub oferă opțiunea de creare a unui
-   fork al repetoriului. Selectează **Fork this repository**.
+   fork al repository-ului. Selectează **Fork this repository**.
 
 1. Efectuează schimbările în editorul din GitHub.
 
@@ -215,7 +215,7 @@ pentru fiecare pas urmează.
 
 ```mermaid
 flowchart LR
-1[Fă un fork al repertoriului<br>open-telemetry/opentelemetry.io] --> 2[Creează o clonă locală<br>și setează upstream-ul]
+1[Fă un fork al repository-ului<br>open-telemetry/opentelemetry.io] --> 2[Creează o clonă locală<br>și setează upstream-ul]
 subgraph changes[Schimbările tale]
 direction TB
 S[ ] -.-
@@ -240,9 +240,9 @@ class changes,changes2 white
 
 _Figura 3. Lucrul de pe un fork local pentru a aplica modificările._
 
-### Fă un fork al repertoriului
+### Fă un fork al repository-ului
 
-1. Navighează la repertoriul
+1. Navighează la repository-ul
    [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/).
 1. Selectează **Fork**.
 
@@ -257,7 +257,7 @@ _Figura 3. Lucrul de pe un fork local pentru a aplica modificările._
    npm install
    ```
 
-1. Setează repertoriul `open-telemetry/opentelemetry.io` ca `upstream`-ul
+1. Setează repository-ul `open-telemetry/opentelemetry.io` ca `upstream`-ul
    remote:
 
    ```shell
@@ -287,7 +287,7 @@ _Figura 3. Lucrul de pe un fork local pentru a aplica modificările._
    git fetch upstream
    ```
 
-   Acest lucru te asigură că repertoriul tău local este la zi înainte să începi
+   Acest lucru te asigură că repository-ul tău local este la zi înainte să începi
    să faci modificări. Împinge schimbările de pe upstream la origin regulat
    pentru a păstra fork-ul sincronizat cu upstream-ul
 
@@ -309,7 +309,7 @@ modificat.
 
 Când ești gata să trimiți un pull request, urcă schimbările tale.
 
-1. În repertoriul tău local, verifică ce fișiere trebuie să urci:
+1. În repository-ul tău local, verifică ce fișiere trebuie să urci:
 
    ```shell
    git status
@@ -362,9 +362,9 @@ Figura 4 arată pașii pentru a deschide un PR din fork-ul tău pe
 flowchart LR
 subgraph first[ ]
 direction TB
-1[1\. Mergi la repertoriul opentelemetry.io] --> 2[2\. Selectează 'New Pull Request']
+1[1\. Mergi la repository-ul opentelemetry.io] --> 2[2\. Selectează 'New Pull Request']
 2 --> 3[3\. Selectează 'compare across forks']
-3 --> 4[4\. Selectează fork-ul tău din<br>meniul drop-down de selecție al repertoriului head]
+3 --> 4[4\. Selectează fork-ul tău din<br>meniul drop-down de selecție al repository-ului head]
 end
 subgraph second [ ]
 direction TB
@@ -384,11 +384,11 @@ class first,second white
 _Figura 4. Pașii pentru a deschide un PR din fork-ul tău la_
 [opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io).
 
-1. Într-un browser web, navighează la repertoriul
+1. Într-un browser web, navighează la repository-ul
    [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io).
 1. Selectează **New Pull Request**.
 1. Selectează **compare across forks**.
-1. Din meniul drop-down pentru **repertoriul head** , selectează fork-ul tău.
+1. Din meniul drop-down pentru **repository-ul head** , selectează fork-ul tău.
 1. Din meniul drop-down **compare**, selectează ramura ta.
 1. Selectează **Creează Pull Request**.
 1. Adaugă o descriere pentru pull request-ul tău:
@@ -480,8 +480,8 @@ cât mai facil pentru noi cât și pentru tine, te rugăm să aderi la următoar
 
 - Dacă PR-ul tău nu este un fix rapid, atunci **lucrează de pe un fork**: Apasă
   butonul [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) din
-  antetul repertoriului și clonează fork-ul local. Când ești gata, trimite un PR
-  către repertoriul upstream.
+  antetul repository-ului și clonează fork-ul local. Când ești gata, trimite un PR
+  către repository-ul upstream.
 - **Nu lucra pe ramura `main`** a fork-ului tău, creează o ramură specifică
   pentru PR.
 - Asigură-te că administratorii
@@ -529,7 +529,7 @@ conflicte în PR-ul tău.
    git push --force-with-lease origin <ramura-ta>
    ```
 
-1. Preia schimbările de pe ramura `upstream/main` a repertoriului
+1. Preia schimbările de pe ramura `upstream/main` a repository-ului
    `open-telemetry/opentelemetry.io` și integrează-le în ramura ta folosind
    rebase:
 
