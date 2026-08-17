@@ -3037,11 +3037,13 @@ https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/28
 https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases,200,1786427567
 https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/tree/main/examples/demo,200,1785868412
 https://github.com/open-telemetry/opentelemetry-dotnet/blob/core-1.15.3/src/OpenTelemetry/SuppressInstrumentationScope.cs#L12,200,1785911063
+https://github.com/open-telemetry/opentelemetry-dotnet/blob/fcd9fb6db19baf1d24373e517f6810126dd7d26a/docs/metrics/getting-started-prometheus-grafana/README.md,200,1786354351
 https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Api/Context/Propagation/EnvironmentVariableCarrier.cs,200,1785785939
 https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Prometheus.AspNetCore/README.md,200,1786427565
 https://github.com/open-telemetry/opentelemetry-dotnet/issues/4243,200,1786028671
 https://github.com/open-telemetry/opentelemetry-dotnet/releases,200,1786427565
 https://github.com/open-telemetry/opentelemetry-dotnet/releases/latest,200,1786341695
+https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/coreunstable-1.17.0-beta.1,200,1786354351
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.16.0/src/OpenTelemetry.Exporter.OpenTelemetryProtocol#environment-variables,200,1786028671
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.16.0/src/OpenTelemetry.Exporter.Zipkin#configuration-using-environment-variables,200,1786028671
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/coreunstable-1.16.0-beta.1/src/OpenTelemetry.Exporter.Prometheus.HttpListener,200,1786028671
@@ -3920,6 +3922,9 @@ https://github.com/open-telemetry/opentelemetry-specification/#license,200,17857
 https://github.com/open-telemetry/opentelemetry-specification/#project-timeline,200,1785785937
 https://github.com/open-telemetry/opentelemetry-specification/#versioning-the-specification,200,1785785937
 https://github.com/open-telemetry/opentelemetry-specification/blob/02531b063da09bca753070d8071180ca2c287117/oteps/trace/0235-sampling-threshold-in-trace-state.md?from_branch=main,200,1785868518
+https://github.com/open-telemetry/opentelemetry-specification/blob/27b10516ad3a27c12a0ab5c63456ddc95766bc68/spec-compliance-matrix.md,200,1786354351
+https://github.com/open-telemetry/opentelemetry-specification/blob/27b10516ad3a27c12a0ab5c63456ddc95766bc68/specification/compatibility/prometheus_and_openmetrics.md,200,1786354351
+https://github.com/open-telemetry/opentelemetry-specification/blob/27b10516ad3a27c12a0ab5c63456ddc95766bc68/specification/metrics/sdk_exporters/prometheus.md,200,1786354351
 https://github.com/open-telemetry/opentelemetry-specification/blob/6837311818b3cedcda4cad222804c4f98f1fe402/spec-compliance-matrix.md,200,1785885400
 https://github.com/open-telemetry/opentelemetry-specification/blob/6837311818b3cedcda4cad222804c4f98f1fe402/specification/metrics/sdk.md#cardinality-limits,200,1785885399
 https://github.com/open-telemetry/opentelemetry-specification/blob/97c826b70e2f89cfdf655d5150791f3f0c2bae19/oteps/trace/0168-sampling-propagation.md?from_branch=main,200,1786427586
@@ -5183,6 +5188,8 @@ https://learn.microsoft.com/dotnet/api/system.threading.timer.activecount,200,17
 https://learn.microsoft.com/dotnet/core/diagnostics/built-in-metrics-system-net,200,1785868406
 https://learn.microsoft.com/dotnet/core/diagnostics/compare-metric-apis#systemdiagnosticsmetrics,200,1785868406
 https://learn.microsoft.com/dotnet/core/diagnostics/distributed-tracing-concepts,200,1785868406
+https://learn.microsoft.com/dotnet/core/diagnostics/dotnet-counters,200,1786354350
+https://learn.microsoft.com/dotnet/core/diagnostics/metrics-instrumentation,200,1786354350
 https://learn.microsoft.com/dotnet/core/extensions/dependency-injection,200,1786341692
 https://learn.microsoft.com/dotnet/core/extensions/logger-message-generator#log-method-anatomy,200,1786427561
 https://learn.microsoft.com/dotnet/core/extensions/logger-message-generator,200,1786341692
@@ -5891,6 +5898,7 @@ https://prometheus.io/docs/instrumenting/content_negotiation/,200,1785785936
 https://prometheus.io/docs/instrumenting/escaping_schemes/,200,1785875437
 https://prometheus.io/docs/instrumenting/exposition_formats/#basic-info,200,1785911058
 https://prometheus.io/docs/instrumenting/exposition_formats/#comments-help-text-and-type-information,200,1785785936
+https://prometheus.io/docs/instrumenting/exposition_formats/,200,1786354350
 https://prometheus.io/docs/instrumenting/writing_clientlibs/#overall-structure,200,1785785936
 https://prometheus.io/docs/introduction/overview/,200,1786341692
 https://prometheus.io/docs/practices/naming/#metric-names,200,1785911060
@@ -5911,6 +5919,7 @@ https://prometheus.io/docs/specs/native_histograms/#gauge-histograms-vs-counter-
 https://prometheus.io/docs/specs/native_histograms/#staleness-markers,200,1786028734
 https://prometheus.io/docs/specs/native_histograms/,200,1785911058
 https://prometheus.io/docs/specs/om/open_metrics_spec/#exemplars,200,1786341720
+https://prometheus.io/docs/specs/om/open_metrics_spec_2_0/,200,1786354350
 https://prometheus.io/docs/specs/prw/remote_write_spec_2_0/,200,1786028734
 https://prometheus.io/download/,200,1785868406
 https://promlabs.com/promql-cheat-sheet/,200,1786427561
