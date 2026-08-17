@@ -64,9 +64,10 @@ runtime metrics, protocol coverage, and trace-log correlation:
 
 - **OpenTelemetry Go Trace API instrumentation**: Automatically instruments Go
   applications that use the Trace API without registering an SDK
-- **Configuration v2**: Adds Config v2 for standalone OBI and the OBI Collector
-  receiver. Config v2 extends the OpenTelemetry declarative configuration model;
-  Config v1 remains supported. This release also adds `obi config validate` and
+- **Configuration v2**: Adds [Config v2](configure/config-v2/) for standalone
+  OBI and the OBI Collector receiver. Config v2 follows the OpenTelemetry
+  declarative configuration model and adds OBI-specific settings; Config v1
+  remains supported. This release also adds `obi config validate` and
   `obi config migrate`
 - **Expanded Go runtime metrics**: Adds CPU time, memory, scheduler latency,
   garbage collection, and goroutine metrics

@@ -5,6 +5,12 @@ description: Configure OBI to export data directly to an OTLP endpoint
 weight: 1
 ---
 
+> [!NOTE]
+>
+> This page documents Config v1 fields. For Config v2, see the
+> [Config v2 reference](../config-v2/). To convert an existing file, use the
+> [migration guide](../migrate-to-config-v2/).
+
 In Direct mode OBI pushes metrics and traces directly to a remote endpoint using
 the OpenTelemetry protocol (OTLP).
 

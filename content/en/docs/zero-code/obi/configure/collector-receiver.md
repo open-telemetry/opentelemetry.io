@@ -8,6 +8,14 @@ description:
 cSpell:ignore: bpftool PERFMON
 ---
 
+> [!NOTE]
+>
+> OBI v0.11.0 and later support both configuration versions in receiver mode.
+> The receiver examples on this page use Config v1. For the Config v2 receiver
+> shape, see the
+> [Config v2 reference](../config-v2/#collector-receiver-configuration) or
+> [migrate a receiver configuration](../migrate-to-config-v2/#migrate-a-collector-receiver).
+
 Starting with version v0.5.0, OBI can run as a receiver component within the
 [OpenTelemetry Collector](/docs/collector). This integration enables you to
 leverage the Collector's powerful processing pipeline while benefiting from

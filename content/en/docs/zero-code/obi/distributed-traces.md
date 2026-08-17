@@ -197,8 +197,8 @@ This type of context propagation is only supported for Go applications and uses
 eBPF user memory write support (`bpf_probe_write_user`). The advantage of this
 approach is that it works for HTTP and HTTPS. For HTTP/2 and gRPC, OBI can
 inject context on new and reused HTTP/2 and gRPC connections when HTTPS isn't
-used. The use of `bpf_probe_write_user` requires the OBI is granted
-`CAP_SYS_ADMIN` or it's configured to run as `privileged` container.
+used. Using `bpf_probe_write_user` requires granting OBI `CAP_SYS_ADMIN` or
+running it as a privileged container.
 
 #### Integration with Go manual instrumentation
 
@@ -211,8 +211,8 @@ continue to own their SDK telemetry.
 OBI activates this integration only when all of the following conditions are
 met:
 
-- The application uses an exact supported OpenTelemetry module version and
-  checksum, without a module replacement.
+- The application uses a supported OpenTelemetry module version and checksum
+  combination, without a module replacement.
 - The executable and host use a supported 64-bit architecture.
 - OBI can resolve the required symbols and field layouts.
 - OBI has permission to use `bpf_probe_write_user`.

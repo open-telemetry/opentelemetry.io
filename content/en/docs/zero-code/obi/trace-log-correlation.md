@@ -63,7 +63,10 @@ span ID would not identify the SDK span.
 
 Trace-log correlation requires trace export and log enrichment or annotation for
 the selected services. The configuration fields differ between Config v1 and
-Config v2.
+Config v2. See the [Config v2 reference](../configure/config-v2/) for the
+complete document shape, or use the
+[migration guide](../configure/migrate-to-config-v2/) to convert an existing
+Config v1 file.
 
 ### Config v1
 

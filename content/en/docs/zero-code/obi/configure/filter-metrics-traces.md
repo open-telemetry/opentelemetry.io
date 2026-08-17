@@ -5,6 +5,12 @@ description: Configure OBI to filter metrics and traces by attribute values.
 weight: 40
 ---
 
+> [!NOTE]
+>
+> This page documents Config v1 fields. For Config v2, see the
+> [Config v2 reference](../config-v2/). To convert an existing file, use the
+> [migration guide](../migrate-to-config-v2/).
+
 You might want to restrict the reported metrics and traces to very concrete
 event types based on the values of the attributes (for example, filter network
 metrics to report only TCP traffic).

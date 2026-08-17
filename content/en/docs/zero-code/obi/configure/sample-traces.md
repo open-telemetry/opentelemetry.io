@@ -5,6 +5,13 @@ description: Configure how to sample OpenTelemetry traces.
 weight: 70
 ---
 
+> [!NOTE]
+>
+> This page documents Config v1 fields. Config v2 sampling belongs under the
+> top-level `tracer_provider.sampler` field; see the
+> [Config v2 reference](../config-v2/). To convert an existing file, use the
+> [migration guide](../migrate-to-config-v2/).
+
 OBI accepts the standard OpenTelemetry environment variables to configure the
 sampling ratio of traces.
 

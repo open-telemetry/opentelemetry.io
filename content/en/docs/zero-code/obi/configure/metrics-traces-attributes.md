@@ -9,6 +9,12 @@ weight: 30
 cSpell:ignore: kube kubecache kubeconfig OpenShift replicaset statefulset
 ---
 
+> [!NOTE]
+>
+> This page documents Config v1 fields. For Config v2, see the
+> [Config v2 reference](../config-v2/). To convert an existing file, use the
+> [migration guide](../migrate-to-config-v2/).
+
 You can configure how OBI decorates attributes for metrics and traces. Use the
 `attributes` top YAML section to enable and configure how attributes are set.
 

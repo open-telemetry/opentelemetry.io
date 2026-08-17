@@ -18,26 +18,13 @@ the low cardinality routes decorator. It's very important for optimal results.
 
 OBI v0.11.0 and later support two OBI configuration formats: Config v1 and
 Config v2. Both work with standalone OBI and the OBI Collector receiver. Config
-v2 extends the OpenTelemetry declarative configuration model. Config v1 remains
-supported.
+v2 follows the OpenTelemetry declarative configuration model and adds
+OBI-specific settings. Config v1 remains supported.
 
-Before migrating a production deployment, review the
-[Config v1 to v2 migration guide](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.11.0/devdocs/config/version-2.0/migration.md).
-Use `obi config validate <path>` to validate a standalone configuration and
-`obi config migrate <path>` to convert a standalone Config v1 file. For an OBI
-Collector receiver configuration body, use receiver mode for both commands:
+- To write a new Config v2 file, start with the
+  [Config v2 reference](config-v2/).
+- To convert an existing Config v1 file, follow the
+  [Config v1 to v2 migration guide](migrate-to-config-v2/).
 
-```sh
-obi config migrate --mode=receiver ./obi-receiver-v1.yaml > ./obi-receiver-v2.yaml
-obi config validate --mode=receiver ./obi-receiver-v2.yaml
-```
-
-The migration command does not read configuration supplied through environment
-variables, and it rejects settings it cannot preserve. When migrating a receiver
-configuration, move standalone-only exporter, enrichment, correlation, daemon,
-and internal telemetry settings to the appropriate Collector pipelines,
-processors, and service telemetry settings.
-
-See the
-[Config v2 reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.11.0/devdocs/config/version-2.0/config-v2.md)
-for the document structure and supported fields.
+Unless a page says otherwise, the remaining pages in this section document
+Config v1 fields and link to the corresponding Config v2 guidance.

@@ -8,6 +8,12 @@ description:
 weight: 80
 ---
 
+> [!NOTE]
+>
+> This page documents Config v1 fields. For Config v2, see the
+> [Config v2 reference](../config-v2/). To convert an existing file, use the
+> [migration guide](../migrate-to-config-v2/).
+
 YAML section: `internal_metrics`
 
 This component reports internal metrics about the auto-instrumentation tool's

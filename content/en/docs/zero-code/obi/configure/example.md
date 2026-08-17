@@ -5,6 +5,12 @@ description: Example OBI configuration YAML example.
 weight: 100
 ---
 
+> [!NOTE]
+>
+> This example uses Config v1. For Config v2, see the
+> [Config v2 reference](../config-v2/). To convert an existing file, use the
+> [migration guide](../migrate-to-config-v2/).
+
 ## YAML file example
 
 ```yaml
