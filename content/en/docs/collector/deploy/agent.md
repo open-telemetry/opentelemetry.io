@@ -4,7 +4,6 @@ linkTitle: Agent pattern
 description: Send signals to Collectors and then export to backends
 aliases: [/docs/collector/deployment/agent]
 weight: 200
-cSpell:ignore: prometheusremotewrite
 ---
 
 In the agent deployment pattern, telemetry signals can come from
