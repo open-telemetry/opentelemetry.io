@@ -4,7 +4,8 @@ linkTitle: Config v2 reference
 description:
   Configure standalone OBI or the OBI Collector receiver with Config v2.
 weight: 3
-cSpell:ignore: jsonrpc rerank SIGUSR sqlpp
+# prettier-ignore
+cSpell:ignore: Aerospike jsonrpc ollama openai qwen rerank sattributes SIGUSR sqlpp
 ---
 
 Config v2 is available in OBI v0.11.0 and later. It organizes configuration by
