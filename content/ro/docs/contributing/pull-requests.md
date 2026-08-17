@@ -582,7 +582,7 @@ conflicte în PR-ul tău.
 Schimbările din pull request sunt integrate atunci când sunt conforme cu
 următoarele criterii:
 
-- Toate revizuirile făcute de aprobatori, administratori, membri ai comitetului
+- Toate revizuirile făcute de aprobatori, administratori, membrii comitetului
   tehnic sau experți au statusul "Approved".
 - Nici o conversație nerezolvată.
 - Să fie aprobat de către cel puțin un aprobator.
