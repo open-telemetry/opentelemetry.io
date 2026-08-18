@@ -167,6 +167,12 @@
   contact:
   oss: true
   commercial: true
+- name: Fixter
+  nativeOTLP: true
+  url: https://docs.fixter.dev/setup/opentelemetry/
+  contact: info@fixter.dev
+  oss: false
+  commercial: true
 - name: Google Cloud Platform
   nativeOTLP: true
   url: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudexporter

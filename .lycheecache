@@ -471,6 +471,7 @@ https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Container/operat
 https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Image/operation/ImageInspect,206,1785868770
 https://docs.dynatrace.com/docs/shortlink/opentelemetry-collector,200,1786427561
 https://docs.expo.dev/get-started/create-a-project/,200,1786341691
+https://docs.fixter.dev/setup/opentelemetry/,200,1786352625
 https://docs.fluentbit.io/manual/pipeline/inputs/opentelemetry/,200,1786028699
 https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-your-membership-in-organizations/publicizing-or-hiding-organization-membership,200,1786028728
 https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#workflow_run,200,1786427569
@@ -1378,6 +1379,7 @@ https://github.com/federicobond,200,1786427595
 https://github.com/felixge,200,1786427587
 https://github.com/fengshunli,200,1786427595
 https://github.com/ferd,200,1785868529
+https://github.com/fixter-dev/fixter-collector,200,1786352625
 https://github.com/flc1125,200,1785785930
 https://github.com/flipt-io,200,1785739348
 https://github.com/flipt-io/flipt,200,1785739348
