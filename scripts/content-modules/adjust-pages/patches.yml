@@ -67,7 +67,7 @@
   notes: >-
     gnupg.org merged its chunked manual into a single page and renumbered the
     "Detached signatures" anchor; the old x135.html#AEN160 page 404s. Surfaced
-    by open-telemetry/opentelemetry.io#11364. Upstreamed fix pending in
-    open-telemetry/opamp-spec; maxVers is set past the current 0.17.0 pin
+    by open-telemetry/opentelemetry.io#11364. Upstreamed fix:
+    open-telemetry/opamp-spec#393; maxVers is set past the current 0.17.0 pin
     since opamp-spec releases by minor version, not patch — widen it further
     if 0.20.0 ships without the fix.
