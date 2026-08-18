@@ -2,8 +2,7 @@
 title: ログ
 description: イベントの記録
 weight: 3
-default_lang_commit: 1143960b75c6faceb40eb64269e68390e3237671
-drifted_from_default: true
+default_lang_commit: 74d8cb2aaefe493295c6c49e2e8ef39801847880
 cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
 
@@ -139,6 +138,39 @@ DEBUG - 2024-08-04 09:30:15 - User johndoe performed action: file_upload. Filena
 ```
 
 半構造化ログは、下流の分析で完全に活用するためには、データ取り込み時にマッピングと型変換が必要になる場合があります。
+
+## ロギングが有効かどうかの確認 {#checking-whether-logging-is-enabled}
+
+よくある質問として、アプリケーションコードでロギング呼び出しの前にロギングが有効かどうかをチェックすべきかというものがあります。
+たとえば、次のようなコードです。
+
+```text
+if (logger.Enabled(...)) {
+  logger.Info("Hello {name}", name);
+}
+```
+
+ほとんどの場合、このチェックは不要であり推奨されません。
+OpenTelemetry SDK は効率的に設計されており、ロガーが有効でない場合のロギング API の呼び出しオーバーヘッドは最小限です。
+`logger.Enabled` を追加で呼び出すと、パフォーマンスが低下し、コードが複雑になります。
+
+`Enabled` API が有用なのは、ロギング呼び出しに渡す*引数の評価*自体にコストがかかり、ロガーが有効でないときにそのコストを避けたい場合だけです。
+たとえば、本文や属性をデータベースから取得したり、高コストな操作で計算したりする必要がある場合です。
+
+```text
+if (logger.Enabled(...)) {
+  logger.Info("Order total {total}", ComputeExpensiveTotal());
+}
+```
+
+ガードする式は副作用のないものだけにしてください。
+ガードされたコードはロギングが有効なときだけ実行されます。
+副作用のあるコードや、他のロジックが依存するコードをガードすると、アプリケーションの動作がロギング設定に依存するようになり、微妙なバグの原因になりがちです。
+
+また、`Enabled` の結果は静的ではないことに注意してください。
+設定の変更に応じて結果は時間とともに変わる可能性があるため、ログレコードごとに評価すべきであり、キャッシュすべきではありません。
+
+規範的な API ガイダンスについては、[Logs API 仕様](/docs/specs/otel/logs/api/#enabled)を参照してください。
 
 ## OpenTelemetry ログコンポーネント {#opentelemetry-logging-components}
 
