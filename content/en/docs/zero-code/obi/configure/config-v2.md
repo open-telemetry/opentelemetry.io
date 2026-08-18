@@ -31,9 +31,10 @@ How you structure the configuration depends on how you run OBI:
 
 ## Configure standalone OBI
 
-The following example instruments one executable and writes traces to standard
-output. Before you use this configuration in production, replace the executable
-path and configure an exporter.
+The following example instruments one executable and prints captured spans to
+standard output for debugging. Before you use this configuration in production,
+replace the executable path, remove `debug_trace_output`, and configure an OTLP
+exporter under `tracer_provider`.
 
 ```yaml
 file_format: '1.0'
