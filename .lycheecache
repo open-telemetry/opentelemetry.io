@@ -713,6 +713,8 @@ https://embrace.io/docs/web/getting-started/,200,1787029660
 https://embrace.io/opentelemetry-for-mobile/,200,1787029662
 https://emissary-ingress.dev/,200,1786028698
 https://emissary-ingress.dev/docs/3.10/howtos/dist-tracing/,200,1786028699
+https://en.cppreference.com/w/cpp/container/set.html,200,1787030347
+https://en.cppreference.com/w/cpp/container/vector.html,200,1787030347
 https://en.wikipedia.org/,200,1786427564
 https://en.wikipedia.org/wiki/Abstract_syntax_tree,200,1786427584
 https://en.wikipedia.org/wiki/Aggregate_function#Decomposable_aggregate_functions,200,1787029642
@@ -4846,6 +4848,8 @@ https://hexdocs.pm/opentelemetry/1.3.0/otel_sampler.html#callbacks,200,178634169
 https://hexdocs.pm/phoenix/installation.html,200,1786341692
 https://hibernate.org/reactive,200,1787029632
 https://hive.apache.org/,200,1785868537
+https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2,206,1787031197
+https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97,206,1787031197
 https://hsqldb.org/,200,1785868538
 https://http.jodd.org/,200,1786028670
 https://hub.docker.com/r/otel/ebpf-instrument,200,1786427564
@@ -5145,11 +5149,13 @@ https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanis
 https://maven.org/artifact/io.opentelemetry.instrumentation/opentelemetry-okhttp-3.0,206,1787030022
 https://maven.org/artifact/io.opentelemetry.javaagent.instrumentation/opentelemetry-javaagent-finatra-2.9,206,1787030022
 https://maxdb.sap.com/,200,1785868538
+https://medium.com/@cijo.thomas/dont-wrap-opentelemetry-you-re-probably-hurting-more-than-helping-96795803abeb,206,1787031197
 https://medium.com/@horovits/fcc6c10c4987,206,1786344845
 https://medium.com/inside-picpay/observabilidade-com-hyperf-e-opentelemetry-dd698844eda,206,1786345327
 https://medium.com/mercadolibre-tech/building-a-large-scale-observability-ecosystem-1edf654b249e,206,1786345132
 https://medium.com/opentracing/merging-opentracing-and-opencensus-f0fe9c7ca6f0,206,1786345327
 https://medium.com/p/42337e994b63,200,1786345447
+https://medium.com/sicreditech/sicredis-path-for-opentelemetry-adoption-3564fc8a743a,206,1787031197
 https://memcached.org/,200,1785868538
 https://mentorship.lfx.linuxfoundation.org/project/36e3f336-ce78-4074-b833-012015eb59be,200,1785868513
 https://mentorship.lfx.linuxfoundation.org/project/3e530f5c-12f3-4321-836a-39de799a4d15,200,1785868517
@@ -5267,14 +5273,18 @@ https://npmjs.com/package/@opentelemetry/propagator-aws-xray-lambda,206,17863448
 https://npmjs.com/package/@opentelemetry/propagator-instana,206,1786344845
 https://npmjs.com/package/@opentelemetry/propagator-ot-trace,206,1786342364
 https://npmjs.com/package/@opentelemetry/resource-detector-alibaba-cloud,206,1787030022
+https://npmjs.com/package/@opentelemetry/resource-detector-aws,206,1787030902
+https://npmjs.com/package/@opentelemetry/resource-detector-azure,206,1787030902
 https://npmjs.com/package/@opentelemetry/resource-detector-container,206,1787030022
 https://npmjs.com/package/@opentelemetry/resource-detector-gcp,206,1787030022
+https://npmjs.com/package/@opentelemetry/resource-detector-github,206,1787030902
 https://npmjs.com/package/@opentelemetry/resource-detector-instana,206,1787030022
 https://npmjs.com/package/@opentelemetry/sampler-aws-xray,206,1786344845
 https://npmjs.com/package/@prisma/instrumentation,206,1786427907
 https://npmjs.com/package/@sap/opentelemetry-exporter-for-sap-cloud-logging,206,1786427907
 https://npmjs.com/package/@waitingliou/tsc-otel-instrumentation,206,1787030022
 https://npmjs.com/package/opentelemetry-instrumentation-remix,206,1786427907
+https://npmjs.com/package/opentelemetry-instrumentation-rhea,206,1787030902
 https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf,200,1787029639
 https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/,200,1786341692
 https://ocgroups.dev/cncf/group/xkrw4uk,200,1787029618
@@ -6162,6 +6172,7 @@ https://www.alibabacloud.com/help/en/arms/tracing-analysis/get-started-with-trac
 https://www.anthropic.com/,200,1785911063
 https://www.anthropic.com/research/building-effective-agents,200,1785868513
 https://www.aspecto.io/,200,1786341702
+https://www.britannica.com/dictionary/pipeline,206,1787030902
 https://www.buoyant.io/mtls-guide,200,1786341721
 https://www.causely.ai/blog/demystifying-automatic-instrumentation,200,1786028722
 https://www.causely.ai/blog/using-opentelemetry-and-the-otel-collector-for-logs-metrics-and-traces,200,1787029661
@@ -6616,5 +6627,6 @@ https://youtu.be/HY3LZOQqdig,200,1786028670
 https://youtu.be/QTeA16I_hME,200,1785885399
 https://youtube.com/@otel-official,200,1787029627
 https://zio.dev/,200,1787029632
+https://ziohttp.com/,200,1787030344
 https://zipkin.io/,200,1786341691
 https://zipkin.io/zipkin-api/,200,1786341696
