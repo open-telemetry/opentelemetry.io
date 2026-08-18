@@ -76,6 +76,13 @@ control so that checks only fetch URLs that are new or whose cache entries have
 expired. Lychee caches successful results only, so failures are retried on every
 run.
 
+Since the cache is routinely updated by several
+[scheduled workflows](#workflows) as well as content PRs, concurrent updates are
+merged line-by-line with Git's `union` strategy (see [`.gitattributes`][])
+rather than reported as conflicts. Such merges can leave duplicate or stale
+entries behind; these are benign for the checker, and the next link-check run
+rewrites the cache clean. In a PR, commit that rewrite.
+
 If you add or change external links, run `npm run check:links` **before
 submitting your PR** — the site build dominates the run time — and commit the
 updated `.lycheecache` along with your content changes. Otherwise the
@@ -84,13 +91,13 @@ updated `.lycheecache` along with your content changes. Otherwise the
 
 ## Cache refresh and housekeeping workflows {#workflows}
 
-The following workflows are scheduled daily and run a link checking command over
-a **full** build:
+The following workflows are scheduled daily and run a link checking command:
 
-| Workflow                              | Link-check command               |
-| ------------------------------------- | -------------------------------- |
-| Refcache refresh                      | `fix:link-cache` (after pruning) |
-| [Housekeeping][] (`fix-and-test:all`) | `fix:link-cache`                 |
+| Workflow                              | Link-check command                            |
+| ------------------------------------- | --------------------------------------------- |
+| Refcache refresh                      | `log:check:links` (full build, after pruning) |
+| [Housekeeping][] (`fix-and-test:all`) | `fix:link-cache` (full build)                 |
+| [Auto-update registry versions][]     | `fix:link-cache`                              |
 
 Refcache refresh prunes the oldest cache entries (the count is a workflow input)
 and re-runs the link check, which refreshes the cache entries for the pruned
@@ -125,6 +132,8 @@ That job fails if any link check fails, and hands the cache it refreshed to the
 `.lycheecache` stale.
 
 <!-- prettier-ignore-start -->
+[`.gitattributes`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.gitattributes
+[Auto-update registry versions]: ../scripts/#update-registry-versionssh
 [blog-index]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
 [Build kinds: full and lean]: ../#build-kinds
 [ci]: ../ci-workflows/

@@ -3,7 +3,7 @@ title: エクステンション
 aliases: [/docs/instrumentation/java/extensions]
 description: エクステンションは、個別のディストリビューションを作成することなくエージェントに機能を追加します。
 weight: 300
-default_lang_commit: cb8364effee3fd3f2dc33c15da7c47bde0432122
+default_lang_commit: 2d447daa701636c3246c116d4b8c4a2f2c35de60
 cSpell:ignore: Customizer Dotel myextension
 ---
 
@@ -45,7 +45,7 @@ java {
 
 dependencies {
     // BOM を使用して OpenTelemetry の依存バージョンを管理する
-    compileOnly(platform("io.opentelemetry:opentelemetry-bom:1.61.0"))
+    compileOnly(platform("io.opentelemetry:opentelemetry-bom:1.64.0"))
 
     // OpenTelemetry SDK 自動設定 SPI（エージェントが提供する）
     compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi")

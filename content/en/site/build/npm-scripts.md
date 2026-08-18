@@ -7,20 +7,32 @@ weight: 20
 todo: Keep table entries sorted
 ---
 
-Script definitions live in the repository root
-[`package.json`](https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json).
-Run any script with `npm run <script-name>`. Scripts whose names start with `_`
-are internal helpers and are not intended to be run directly.
+Script definitions live in the repository root [`package.json`][]. To run a
+script, use `npm run` _`SCRIPT_NAME`_.
 
-> [!NOTE] Default vs `:all` script variants
->
-> The **`check`**, **`fix`**, and **`test`** scripts run the most commonly
-> needed subscripts for each action. To run every subscript, use the **`*:all`**
-> variants:
->
-> - `check:all`
-> - `fix:all`
-> - `test:all`
+## Nomenclature
+
+- **Internal scripts**
+  - Names starting with `_` are internal helpers and are not intended to be run
+    directly.
+  - So are `NAME::pre` and `NAME::post` scripts, the explicitly called pre and
+    post steps of `NAME`.
+- **Default vs `:all` script variants**
+  - The **`check`**, **`fix`**, and **`test`** scripts run the most commonly
+    needed subscripts for each action.
+  - The **`*:all`** variants `check:all`, `fix:all`, and `test:all` run wider
+    subscript sets; each variant's table entry states its scope.
+
+## Installing and updating dependencies
+
+| Script            | Description                                                                          |
+| ----------------- | ------------------------------------------------------------------------------------ |
+| `ci:min`          | [Lock-exact inert install][] for CI: no lifecycle scripts, no optional deps.         |
+| `ci:prepare`      | Post-`ci:min` setup: [fetch the pinned Hugo binary][], then `prepare`.               |
+| `install:safe`    | [Lock-exact local setup][]: inert install keeping optional deps, then `ci:prepare`.  |
+| `prepare`         | Install step: `get:submodule`, then Docsy's [lock-exact theme dependency install][]. |
+| `update:hugo`     | Install latest hugo-extended; update its [`allowScripts` approval][] with the bump.  |
+| `update:packages` | Run npm-check-updates to bump deps, subject to the [release cooldown][].             |
 
 ## Build and serve
 
@@ -33,31 +45,30 @@ are internal helpers and are not intended to be run directly.
 | `build`            | Build the site. Defaults to lean; see [Build kinds][].         |
 | `clean`            | Run `make clean`.                                              |
 | `serve:hugo`       | Start Hugo server with in-memory render.                       |
-| `serve:netlify`    | Start Netlify Dev using Hugo.                                  |
 | `serve`            | Start Hugo dev server (default; full render).                  |
 
 ## Checking
 
-| Script                 | Description                                                 |
-| ---------------------- | ----------------------------------------------------------- |
-| `check:all`            | Run all check scripts in sequence.                          |
-| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                |
-| `check:codeowners`     | Verify CODEOWNERS locale section matches the registry.      |
-| `check:collector-sync` | Run collector-sync checks.                                  |
-| `check:expired`        | List expired content (by front matter).                     |
-| `check:filenames`      | [Validate file naming & detect obsolete files/folders][fn]. |
-| `check:format`         | Prettier and prose-wrap checks.                             |
-| `check:i18n`           | Validate localization front matter (`default_lang_commit`). |
-| `check:l10n`           | Run localization checks.                                    |
-| `check:links:diff`     | Lychee link check of changed files only.                    |
-| `check:links:internal` | Offline link check (internal links only); lean build first. |
-| `check:links`          | Link check the whole site with Lychee; lean build first.    |
-| `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                 |
-| `check:markdown`       | Markdown lint (content and projects).                       |
-| `check:registry`       | Validate registry YAML under `data/registry/`.              |
-| `check:spelling`       | cspell over content, data, and layout Markdown.             |
-| `check:text`           | textlint over content and data.                             |
-| `check`                | Run the most commonly needed check scripts in sequence.     |
+| Script                 | Description                                                  |
+| ---------------------- | ------------------------------------------------------------ |
+| `check:all`            | Run all check scripts in sequence.                           |
+| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                 |
+| `check:codeowners`     | Verify CODEOWNERS locale section matches the registry.       |
+| `check:collector-sync` | Run collector-sync checks.                                   |
+| `check:expired`        | List expired content (by front matter).                      |
+| `check:filenames`      | [Validate file naming & detect obsolete files/folders][fn].  |
+| `check:format`         | Prettier and prose-wrap checks.                              |
+| `check:i18n`           | Validate localization front matter (`default_lang_commit`).  |
+| `check:l10n`           | Run localization checks.                                     |
+| `check:links:diff`     | Lychee link check of changed files only.                     |
+| `check:links:internal` | Offline link check (internal links only); lean build first.  |
+| `check:links`          | [Link check][] the whole site with Lychee; lean build first. |
+| `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                  |
+| `check:markdown`       | Markdown lint (content and projects).                        |
+| `check:registry`       | Validate registry YAML under `data/registry/`.               |
+| `check:spelling`       | cspell over content, data, and layout Markdown.              |
+| `check:text`           | textlint over content and data.                              |
+| `check`                | Run the most commonly needed check scripts in sequence.      |
 
 ## Fixing
 
@@ -71,11 +82,11 @@ are internal helpers and are not intended to be run directly.
 | `fix:format:staged`           | Format only staged files.                                      |
 | `fix:i18n`                    | Add/fix i18n front matter (`fix:i18n:new`, `fix:i18n:status`). |
 | `fix:l10n`                    | Apply localization fixes.                                      |
-| `fix:link-cache`              | Check links, updating the committed `.lycheecache`.            |
+| `fix:link-cache`              | Check links, updating the committed [`.lycheecache`][].        |
 | `fix:link-cache:double-check` | [Re-verify failing links with the browser probe][dc].          |
 | `fix:link-cache:refresh`      | Prune the oldest cache entries, then `fix:link-cache`.         |
 | `fix:markdown`                | Fix Markdown lint issues and trailing spaces.                  |
-| `fix:submodule`               | Pin submodule revisions (same as `pin:submodule`).             |
+| `fix:submodule`               | Update, re-pin, and list submodule revisions.                  |
 | `fix:filenames`               | [Rename files & remove obsolete files/folders][fn].            |
 | `fix:dict`                    | Sort cspell word lists and normalize front matter.             |
 | `fix:expired`                 | Delete files reported by `check:expired`.                      |
@@ -96,25 +107,26 @@ are internal helpers and are not intended to be run directly.
 
 ## Test and CI
 
-| Script                     | Description                                                         |
-| -------------------------- | ------------------------------------------------------------------- |
-| `diff:check`               | Warn if working tree has uncommitted changes.                       |
-| `diff:fail`                | Fail if working tree has changes (e.g. after build).                |
-| `fix-and-test:all`         | All fixes (incl. i18n), then checks; links checked once.[^fat]      |
-| `netlify-build:preview`    | `build:preview` then `diff:check`.                                  |
-| `netlify-build:production` | `build:production` then `diff:check`.                               |
-| `test-and-fix`             | Run fix scripts (excluding i18n/link-cache/submodule), then checks. |
-| `test:all`                 | Runs `test:base` then `test:compound-tests`.                        |
-| `test:base`                | Base tests (same as `check`).                                       |
-| `test:collector-sync`      | Collector-sync tests.                                               |
-| `test:compound-tests`      | Runs compound `test:*-*` scripts.[^categories]                      |
-| `test:double-check:live`   | Live smoke check of the [double-check probe][dc].                   |
-| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.                 |
-| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.        |
-| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^categories]          |
-| `test:local-tools:lychee`  | Lychee-binary slice of `test:local-tools` (see Notes).              |
-| `test:public`              | Runs the `tests/public/` checks over the built site.[^categories]   |
-| `test`                     | Run the most commonly needed tests.                                 |
+| Script                     | Description                                                                 |
+| -------------------------- | --------------------------------------------------------------------------- |
+| `diff:check`               | Warn if working tree has uncommitted changes.                               |
+| `diff:fail`                | Fail if working tree has changes (e.g. after build).                        |
+| `fix-and-test:all`         | All fixes (incl. i18n), then checks; links checked once.[^fat]              |
+| `is:clean`                 | Fail if the Git working tree has changes, including untracked files.        |
+| `netlify-build:preview`    | Build the Netlify deploy preview.                                           |
+| `netlify-build:production` | Build the Netlify production site.                                          |
+| `test-and-fix`             | Run fix scripts (excluding i18n/link-cache/submodule), then checks.         |
+| `test:all`                 | Runs `test:base` then `test:compound-tests`.                                |
+| `test:base`                | Base tests (same as `check`).                                               |
+| `test:collector-sync`      | Collector-sync tests.                                                       |
+| `test:compound-tests`      | Runs compound `test:*-*` scripts.[^categories]                              |
+| `test:double-check:live`   | Live smoke check of the [double-check probe][dc].                           |
+| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.                         |
+| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.                |
+| `test:local-tools`         | Node test runner for `scripts/**/*.test.mjs`.[^categories]                  |
+| `test:local-tools:lychee`  | Lychee-binary slice of `test:local-tools`; skips when the binary is absent. |
+| `test:public`              | Runs the `tests/public/` checks over the built site.[^categories]           |
+| `test`                     | Run the most commonly needed tests.                                         |
 
 [^categories]:
     These scripts follow the test-script naming conventions; see
@@ -129,35 +141,26 @@ are internal helpers and are not intended to be run directly.
 
 ## Utilities
 
-| Script                         | Description                                                                     |
-| ------------------------------ | ------------------------------------------------------------------------------- |
-| `seq`                          | Run given script names in sequence; exit on first failure.                      |
-| `all`                          | Run all given scripts, then exit with failure if any failed.                    |
-| `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                   |
-| `prepare`                      | Install step: `get:submodule`, then Docsy theme `postinstall`.                  |
-| `prebuild:*`                   | Pre-`build*` hooks; each runs `_prebuild`.                                      |
-| `update:hugo`                  | Install latest hugo-extended.                                                   |
-| `update:packages`              | Run npm-check-updates to bump deps.                                             |
-| `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter. |
-| `log:build`, `log:check:links` | Run the corresponding script and tee output to `tmp/`.                          |
-
-## Notes
-
-- **Link cache.** The link-check scripts read and update the committed
-  `.lycheecache`. For details, see [Link checking](../link-checking/).
-- **`test:local-tools:lychee`** is the subset of `test:local-tools` that needs
-  the `lychee` binary (behavioral fragment- and config-checking tests, plus an
-  end-to-end drift-overlay scenario). Those tests skip when the binary is
-  absent, so `test:local-tools` already covers them in the general test job; the
-  trailing `:lychee` keeps this script out of `test:compound-tests` (which
-  matches `test:*-*`) so the suite isn't run twice. The link-check CI job
-  installs lychee and runs this script to exercise them for real.
-- **`all`** runs every listed script even when one fails, then exits with a
-  non-zero status if any failed.
+| Script                         | Description                                                                       |
+| ------------------------------ | --------------------------------------------------------------------------------- |
+| `all`                          | Run all given scripts, even when some fail; exit non-zero if any failed.          |
+| `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter.   |
+| `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                     |
+| `log:build`, `log:check:links` | Run corresponding script, tee output to `tmp/`, propagate the script's exit code. |
+| `seq`                          | Run given script names in sequence; exit on first failure.                        |
 
 <!-- prettier-ignore-start -->
+[`allowScripts` approval]: ../dependencies/#script-bearing-packages
+[`.lycheecache`]: ../link-checking/#link-cache
+[`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [build kinds]: ../#build-kinds
 [dc]: ../link-checking/#double-check
+[fetch the pinned Hugo binary]: ../dependencies/#install-contracts
 [fn]: /docs/contributing/pr-checks/#filename-check
+[link check]: ../link-checking/
 [locale-auto-merge]: ../ci-workflows/#locale-auto-merge
+[lock-exact inert install]: ../dependencies/#install-contracts
+[lock-exact local setup]: ../dependencies/#install-contracts
+[lock-exact theme dependency install]: ../dependencies/#install-contracts
+[release cooldown]: ../dependencies/#release-cooldown
 <!-- prettier-ignore-end -->

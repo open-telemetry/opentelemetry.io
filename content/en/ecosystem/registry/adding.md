@@ -35,6 +35,24 @@ instrumentation libraries.
 >
 > This is the only registry type that allows commercial/proprietary licenses.
 
+### `api`
+
+**Use for**: Packages that implement the OpenTelemetry API for a language: the
+interfaces and no-op implementations that instrumented code and libraries depend
+on, independent of any SDK.
+
+**Examples**: The Ruby `opentelemetry-api`, `opentelemetry-metrics-api`, and
+`opentelemetry-logs-api` gems.
+
+### `connector`
+
+**Use for**: OpenTelemetry Collector connector components, which join two
+pipelines by acting as the exporter of one and the receiver of the other,
+possibly translating between signal types.
+
+**Examples**: Count connectors, span-to-metrics connectors, or failover
+connectors.
+
 ### `core`
 
 **Use for**: Core OpenTelemetry project components only. This is never
@@ -60,6 +78,12 @@ functionality.
 health checks/pprof/zpages, or other components that augment Collector/SDK
 behavior.
 
+### `id-generator`
+
+**Use for**: SDK components that customize how trace and span IDs are generated.
+
+**Examples**: AWS X-Ray-compatible ID generators.
+
 ### `instrumentation`
 
 **Use for**: Instrumentation libraries or native instrumentations for specific
@@ -78,12 +102,24 @@ familiar logging APIs.
 SLF4J/Log4j/Logback, Python logging, JavaScript Winston/Pino, and Go
 log/slog/zap.
 
+### `metric-producer`
+
+**Use for**: SDK components that bridge metrics from third-party sources into an
+SDK metric reader.
+
 ### `processor`
 
 **Use for**: OpenTelemetry Collector processor components.
 
 **Examples**: Batch processors, attribute processors, sampling processors, or
 any component that processes telemetry data within the collector pipeline.
+
+### `propagator`
+
+**Use for**: Context propagators, which carry trace context and baggage across
+process boundaries in a specific wire format.
+
+**Examples**: B3, Jaeger, or AWS X-Ray propagators.
 
 ### `provider`
 
@@ -110,6 +146,25 @@ receives telemetry data from external sources.
 
 **Examples**: AWS resource detectors, GCP resource detectors, or any component
 that automatically detects and adds resource information to telemetry.
+
+### `sampler`
+
+**Use for**: SDK samplers, which decide which spans are recorded and exported.
+
+**Examples**: AWS X-Ray remote samplers or rule-based samplers.
+
+### `sdk`
+
+**Use for**: Packages that implement the OpenTelemetry SDK for a language.
+
+**Examples**: The Ruby `opentelemetry-sdk`, `opentelemetry-metrics-sdk`, and
+`opentelemetry-logs-sdk` gems.
+
+### `semantic-convention`
+
+**Use for**: Packages that provide semantic-convention constants for a language.
+
+**Examples**: The Ruby `opentelemetry-semantic_conventions` gem.
 
 ### `utilities`
 
