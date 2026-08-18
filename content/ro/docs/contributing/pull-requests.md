@@ -35,8 +35,8 @@ existente, trimite un [pull request][PR] (PR)
 > implicare din partea IA-ului (AIL0).
 >
 > Bineînțeles, poți folosi unelte de IA pentru a adresa întrebări și pentru a
-> învăța despre repository-ul nostru, proiectul nostru, cum să contribui și multe
-> altele.
+> învăța despre repository-ul nostru, proiectul nostru, cum să contribui și
+> multe altele.
 >
 > Am implementat această cerință pentru a te ajuta să înveți în timp ce
 > contribui și pentru a ajuta administratorii și aprobatorii să-și protejeze
@@ -287,9 +287,9 @@ _Figura 3. Lucrul de pe un fork local pentru a aplica modificările._
    git fetch upstream
    ```
 
-   Acest lucru te asigură că repository-ul tău local este la zi înainte să începi
-   să faci modificări. Împinge schimbările de pe upstream la origin regulat
-   pentru a păstra fork-ul sincronizat cu upstream-ul
+   Acest lucru te asigură că repository-ul tău local este la zi înainte să
+   începi să faci modificări. Împinge schimbările de pe upstream la origin
+   regulat pentru a păstra fork-ul sincronizat cu upstream-ul
 
 ### Creează o ramură
 
@@ -480,8 +480,8 @@ cât mai facil pentru noi cât și pentru tine, te rugăm să aderi la următoar
 
 - Dacă PR-ul tău nu este un fix rapid, atunci **lucrează de pe un fork**: Apasă
   butonul [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) din
-  antetul repository-ului și clonează fork-ul local. Când ești gata, trimite un PR
-  către repository-ul upstream.
+  antetul repository-ului și clonează fork-ul local. Când ești gata, trimite un
+  PR către repository-ul upstream.
 - **Nu lucra pe ramura `main`** a fork-ului tău, creează o ramură specifică
   pentru PR.
 - Asigură-te că administratorii
