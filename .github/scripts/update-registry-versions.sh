@@ -2,7 +2,7 @@
 
 UPDATE_YAML="yq eval -i"
 GIT=git
-GH=gh
+GH_WRITE=gh
 NPM=npm
 FILES="${FILES:-./data/registry/*.yml}"
 
@@ -31,7 +31,7 @@ elif [[ "$1" != "-f" ]]; then
   echo "Doing a dry-run when run locally. Use -f as the first argument to force execution."
   UPDATE_YAML="yq eval"
   GIT="echo > DRY RUN: git "
-  GH="echo > DRY RUN: gh "
+  GH_WRITE="echo > DRY RUN: gh "
   NPM="echo > DRY RUN: npm "
 else
   # Local execution with -f flag (force real vs. dry run)
@@ -186,11 +186,11 @@ message="Auto-update registry versions (${tag})"
 branch="otelbot/auto-update-registry-${tag}"
 
 
-existing_prs=$(gh pr list --state all --search "in:title $message")
-existing_pr_count=$(printf '%s' "$existing_prs" | awk 'END {print NR}')
+pr_search="\"$message\" in:title"
+existing_pr_count=$(gh pr list --state all --search "$pr_search" --json number --jq length)
 if [ "$existing_pr_count" -gt 0 ]; then
     echo "PR(s) already exist for '$message'"
-    gh pr list --state all --search "\"$message\" in:title"
+    gh pr list --state all --search "$pr_search"
     echo "So we won't create another. Exiting."
     exit 0
 fi
@@ -213,7 +213,7 @@ if [[ -n $(git status --porcelain) ]]; then
     printf '%s' "${body}" >> "${body_file}"
 
     echo "Submitting auto-update PR '$message'."
-    $GH pr create --title "$message" --body-file "${body_file}"
+    $GH_WRITE pr create --title "$message" --body-file "${body_file}"
 
 else
     echo "No changes detected."
