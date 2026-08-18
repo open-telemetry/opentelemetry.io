@@ -11,7 +11,7 @@ GIT_PUSH_AUTH=()
 
 if [[ -n "$GITHUB_ACTIONS" ]]; then
   if [[ -z "${GH_TOKEN:-}" ]]; then
-    echo "::error::Expected the App token in GH_TOKEN." >&2
+    echo "::error::Expected the App token in GH_TOKEN."
     exit 1
   fi
 
@@ -19,7 +19,7 @@ if [[ -n "$GITHUB_ACTIONS" ]]; then
 
   # Supply the App token only to a github.com push. Reset configured helpers
   # first, then use a host-scoped helper that keeps the token out of argv,
-  # git config, and disk, and declines a repointed origin.
+  # git config, and disk, and declines a cross-host repoint.
   # shellcheck disable=SC2016 # the helper body is evaluated by git, not here
   GIT_PUSH_AUTH=(
     -c credential.helper=
@@ -177,7 +177,8 @@ for yaml_file in ${FILES}; do
     fi
 done;
 
-# Preserve existing PR keys while making the row encoding unambiguous.
+# Preserve existing PR keys for ordinary rows while making the encoding
+# unambiguous.
 tag_input=${body//\\/\\\\}
 tag_input=${tag_input//$'\n'/\\n}
 tag=$(printf '%s\n' "${tag_input}" | sha1sum | awk '{print $1;}')
@@ -185,7 +186,8 @@ message="Auto-update registry versions (${tag})"
 branch="otelbot/auto-update-registry-${tag}"
 
 
-existing_pr_count=$(gh pr list --state all --search "in:title $message" | wc -l)
+existing_prs=$(gh pr list --state all --search "in:title $message")
+existing_pr_count=$(printf '%s' "$existing_prs" | awk 'END {print NR}')
 if [ "$existing_pr_count" -gt 0 ]; then
     echo "PR(s) already exist for '$message'"
     gh pr list --state all --search "\"$message\" in:title"
