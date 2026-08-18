@@ -2,14 +2,13 @@
 [submodule "themes/docsy"]
 	path = themes/docsy
 	url = https://github.com/google/docsy.git
-  # cSpell:disable-next-line
-	docsy-pin = v0.15.0-41-g79448e2b
+	docsy-pin = theme/v0.16.0-8-g1b92804
 	docsy-note = "2024-04-01 Switching to google/docsy.git from cncf/docsy.git since we don't have any CNCF customizations."
 	docsy-reminder = "Ensure that any tag referenced by `docsy-pin` is present in the remote repo (url), otherwise add (push) the tags to the repo."
 [submodule "content-modules/opentelemetry-specification"]
 	path = content-modules/opentelemetry-specification
 	url = https://github.com/open-telemetry/opentelemetry-specification.git
-	spec-pin = v1.59.0
+	spec-pin = v1.60.0
 [submodule "content-modules/community"]
 	path = content-modules/community
 	url = https://github.com/open-telemetry/community
@@ -21,7 +20,7 @@
 [submodule "content-modules/semantic-conventions"]
 	path = content-modules/semantic-conventions
 	url = https://github.com/open-telemetry/semantic-conventions
-	semconv-pin = v1.43.0
+	semconv-pin = v1.44.0
 [submodule "content-modules/opamp-spec"]
 	path = content-modules/opamp-spec
 	url = https://github.com/open-telemetry/opamp-spec
@@ -29,7 +28,7 @@
 [submodule "content-modules/opentelemetry-java-examples"]
 	path = content-modules/opentelemetry-java-examples
 	url = https://github.com/open-telemetry/opentelemetry-java-examples.git
-	javaexamples-pin = 5c183df
+	javaexamples-pin = e06878b
 [submodule "content-modules/opentelemetry-go-contrib"]
 	path = content-modules/opentelemetry-go-contrib
 	url = https://github.com/open-telemetry/opentelemetry-go-contrib

@@ -3,8 +3,7 @@ title: プルリクエストのチェックとテスト
 linkTitle: PR チェック & テスト
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
-drifted_from_default: true
+default_lang_commit: 38e36ae231c523f9e54499ad6ca05de7c49501c5
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -16,7 +15,7 @@ PR のチェックは次のことを検証します。
 
 > [!NOTE]
 >
-> もし何らかの PR チェックが失敗していれば、最初にローカルで `npm run fix:all` を実行することで[内容の問題を修正](../pull-requests/#fix-issues)してください。
+> もし何らかの PR チェックが失敗していれば、最初にローカルで `npm run fix` を実行することで[内容の問題を修正](../pull-requests/#fix-issues)してください。
 >
 > PRに `/fix` というコメントを追加することもできます。
 > これにより、OpenTelemetry ボットがかわりにそのコマンドを実行して、PR を更新します。
@@ -31,6 +30,13 @@ PR のチェックは次のことを検証します。
 ## Netlify deployment {#netlify-deployment}
 
 [Netlify](https://www.netlify.com/)のビルドが失敗した場合は、詳細については **Details** を選択してください。
+
+`"build.command" failed` の直前に `?? some/path` というステータス行が表示され、そのパスが PR で変更していないものである場合、ビルドが変更内容ではなく古い Netlify ビルドキャッシュに起因して失敗した可能性があります。
+
+1. PR にコメントして、メンテナーにキャッシュなしでビルドを再試行するよう依頼してください。
+   キャッシュクリアの手順については、[Dependency management](/site/build/dependencies/#netlify-build-cache)を参照してください。
+2. キャッシュなしの再試行でも失敗が再発する場合、キャッシュが原因ではありません。
+   ビルドの何らかのステップがそのパスを書き込んでおり、変更内容が最初の原因候補です。
 
 ## GitHub PR チェック {#checks}
 
@@ -89,7 +95,8 @@ PR のチェックは次のことを検証します。
 - すべての[ファイル名が kebab-case になっていること](../style-guide/#file-names)
 - 古いファイルやフォルダがリポジトリに存在しないこと (以下のリストを参照してください)
 
-このチェックが失敗した場合、`npm run fix:filenames` をローカルで実行し、新しいコミットで変更をプッシュしてください。
+各エラーアノテーションのガイダンスに従ってください。
+ローカルで修正を適用するには、`npm run fix:filenames` を実行し、新しいコミットで変更をプッシュしてください。
 
 > [!NOTE]
 >
@@ -97,26 +104,19 @@ PR のチェックは次のことを検証します。
 
 #### 古いファイルやフォルダ
 
-以下のパスは古いものとしてフラグが付き、`fix:filenames` によって削除されます。
-イシューまたは PR 番号が存在する場合、そのパスが古くなった変更の経緯を示しています。
+このチェックは以下の古いパスにフラグを付けます。
 
-- `tools/` - [Migrate code-excerpts tooling to npm package version #9638][#9638]
+- `tools/` - [code-excerpts ツールが npm パッケージに移行][#9638]されたときに削除
+- `static/refcache.json` - [Lychee への切り替え][#10911]で削除。
+  ブランチがこのファイルを復元する場合は、[古いブランチの更新手順][#10990]に従ってください。
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
+[#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
+[#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
 
 ### `BUILD` and `CHECK LINKS` {#build-and-check-links .notranslate lang=en}
 
 これらの2つのチェックは、ウェブサイトをビルドしてすべてのリンクが有効であることを検証します。
-
-外部リンクを追加または変更した場合、リンクチェッカーはそのリンクをリンクキャッシュ (`.lycheecache`) に記録します。
-キャッシュが更新されるまでこのチェックは失敗します。
-
-キャッシュを更新する最も簡単な方法は、PR に [`/fix:refcache`](../pull-requests/#fixing-prs-in-github) とコメントすることです。
-OpenTelemetry ボットがキャッシュを更新してくれます。
-
-あるいは、`npm run check:links` を実行してローカルでビルドとリンクチェックを行うこともできます。
-このコマンドはリンクキャッシュも更新します。
-キャッシュに変更があれば、新しいコミットでプッシュしてください。
 
 > [!NOTE]
 >
@@ -135,8 +135,25 @@ LinkedIn などの一部のサーバーは 999 を報告します。
 チェッカーが成功ステータスを取得できない外部リンクを手動で検証した場合は、URL にクエリパラメーター `?link-check=no` を追加して、リンクチェッカーに無視させることができます。ほかのクエリパラメーターがすでにある場合は `&link-check=no` を追加してください。
 たとえば、以下の URL は無視されます。
 
-- <https:/some-example.org?link-check=no>
-- <https:/some-example.org?other-param=value&link-check=no>
+- `https:/some-example.org?link-check=no`
+- `https:/some-example.org?other-param=value&link-check=no`
+
+`link-check=no` を追加した場合は、`last-validated=YYYY-MM-DD` パラメーターもあわせて追加して、手動で検証した日付を記録してください。
+たとえば以下のようになります。
+
+- `https:/some-example.org?link-check=no&last-validated=2026-08-02`
+
+### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
+
+外部リンクを追加または変更した場合、リンクチェッカーはそのリンクをリンクキャッシュ (`.lycheecache`) に記録します。
+更新されたキャッシュがコミットされるまでこのチェックは失敗します。
+
+キャッシュを更新する最も簡単な方法は、PR に [`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) とコメントすることです。
+OpenTelemetry ボットがキャッシュを更新してくれます。
+
+あるいは、`npm run check:links` を実行してローカルでビルドとリンクチェックを行うこともできます。
+このコマンドはリンクキャッシュも更新します。
+キャッシュに変更があれば、新しいコミットでプッシュしてください。
 
 ### `WARNINGS in build log?` {#warnings-in-build-log .notranslate lang=en}
 

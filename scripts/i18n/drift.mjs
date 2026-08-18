@@ -24,8 +24,8 @@ import { promisify } from 'node:util';
 
 const execFileP = promisify(execFile);
 
-const DEFAULT_LANG = 'en';
-const CONTENT_DIR = 'content';
+export const DEFAULT_LANG = 'en';
+export const CONTENT_DIR = 'content';
 const GIT_CONCURRENCY = 12;
 const I18N_DLC_KEY = 'default_lang_commit';
 const I18N_DLD_KEY = 'drifted_from_default';
@@ -39,6 +39,24 @@ export function parsePin(fileText) {
   const m = PIN_RE.exec(fileText);
   if (!m) return null;
   return { sha: m[1], patched: !!m.groups.patched };
+}
+
+// Stored drift status of a page: the front-matter `drifted_from_default`
+// value, or null when absent. Body occurrences of the key (e.g. the
+// localization guide's own examples) are ignored.
+export function parseStatus(fileText) {
+  const fm = FRONT_MATTER_RE.exec(fileText)?.[0];
+  if (!fm) return null;
+  const m = new RegExp(`^${I18N_DLD_KEY}:\\s*(.*?)\\s*$`, 'im').exec(fm);
+  return m ? m[1] : null;
+}
+
+// The one stored-status skip predicate, shared by the status writer and the
+// link-check config generation: a `true` or `file not found` status means
+// the page is presumed out of sync with EN (its EN counterpart changed or
+// was deleted), so its outbound links are not checked.
+export function isDriftedStatus(status) {
+  return status === 'true' || status === 'file not found';
 }
 
 export function enCounterpartOf(pagePath) {
@@ -323,6 +341,189 @@ export async function driftReportForRepo(rootDir, targets) {
   });
 }
 
+// --- Drift-pending overlay (baseline mode) ----------------------------------
+//
+// Shallow CI checkouts can't run the precise per-pin report; instead, the
+// link-check config generation overlays the pages *presumed* drifted since
+// the status baseline: the commit that the last tree-wide status write (the
+// nightly Housekeeping run) computed the stored statuses against. Locale
+// copies of EN pages changed (or deleted) since then get skipped, unless the
+// copy itself changed too (activity exemption: someone is working on it, and
+// stored-status semantics check unmarked pages anyway).
+
+export const STATUS_BASELINE_PATH = 'data/l10n-drift.yaml';
+
+// `commit:` line of the baseline file. The file lives under data/, where Hugo
+// parses everything as site data, so it must stay valid YAML; this scoped
+// regex keeps drift.mjs dependency-free (the file is bot-written, and
+// anything unexpected must fail loudly anyway). Keep the accepted shape in
+// sync with the deepen step in .github/workflows/check-links.yml, which
+// extracts the same line.
+const BASELINE_COMMIT_RE = /^commit: ([0-9a-f]{40})$/m;
+
+// Baseline lifecycle thresholds (coupled: the refresh heartbeat must stay
+// well below the staleness warning, so a healthy system — statuses changing
+// most nights, a heartbeat bump otherwise — never trips the warning).
+export const BASELINE_REFRESH_DAYS = 7;
+export const STALE_BASELINE_DAYS = 14;
+
+// Read the drift-status baseline SHA. Throws when the file is missing or
+// malformed: a silent empty overlay would false-green drift-pending pages.
+export function readBaseline(rootDir) {
+  const file = path.join(rootDir, STATUS_BASELINE_PATH);
+  if (!existsSync(file)) {
+    throw new Error(
+      `drift-status baseline file is missing: ${STATUS_BASELINE_PATH}; ` +
+        `it is written by tree-wide status syncs (npm run fix:i18n)`,
+    );
+  }
+  const match = readFileSync(file, 'utf8').match(BASELINE_COMMIT_RE);
+  if (!match) {
+    throw new Error(
+      `malformed drift-status baseline in ${STATUS_BASELINE_PATH}: ` +
+        `expected a 'commit: FULL_SHA' line`,
+    );
+  }
+  return match[1];
+}
+
+// Age in days of the given commit (its committer time vs now).
+export async function baselineAgeDays(rootDir, sha) {
+  const commitTime = Number(
+    await git(rootDir, 'log', '-1', '--format=%ct', sha),
+  );
+  return (Date.now() / 1000 - commitTime) / 86400;
+}
+
+// Whether a tree-wide sync that changed no statuses should refresh the
+// baseline anyway: yes when the committed baseline is missing, malformed,
+// unresolvable, or older than the refresh heartbeat. (Any status-relevant EN
+// change flips a status on the next sweep and refreshes the baseline through
+// the statuses-changed arm, so a quiet stretch leaves nothing new to skip;
+// the heartbeat is a freshness bound, not a correctness need.)
+export async function baselineNeedsRefresh(rootDir) {
+  let sha;
+  try {
+    sha = readBaseline(rootDir);
+  } catch {
+    return true; // missing or malformed: (re)seed it
+  }
+  try {
+    return (await baselineAgeDays(rootDir, sha)) > BASELINE_REFRESH_DAYS;
+  } catch {
+    return true; // unresolvable: replace it with a resolvable one
+  }
+}
+
+// Record the drift-status baseline: the commit the statuses just written are
+// accurate as of. That's the merge-base of HEAD and main: in the Housekeeping
+// checkout (HEAD == main) it is main's HEAD; on any checkout behind main
+// (older branch, PR run) it errs older, which only widens the overlay —
+// under-checking, never a spurious red. Recording `main` itself would be
+// wrong there: a baseline newer than the tree the statuses were computed
+// against leaves the EN changes in between covered by neither the stored
+// statuses nor the overlay. As an ancestor of main, the recorded SHA is also
+// always fetchable from the canonical repo (the CHECK LINKS deepen step).
+export async function writeBaseline(rootDir) {
+  const sha = await git(rootDir, 'merge-base', 'HEAD', 'main');
+  const content =
+    '# DO NOT EDIT — written by tree-wide drift-status syncs (npm run fix:i18n).\n' +
+    '# The `main` commit that stored drift statuses are accurate as of; the\n' +
+    "# link-check config's drift-pending overlay starts its window here.\n" +
+    `commit: ${sha}\n`;
+  writeFileSync(path.join(rootDir, STATUS_BASELINE_PATH), content);
+  return sha;
+}
+
+// Pure core: locale copies presumed drifted, given the EN pages changed
+// since the baseline. Deleted EN pages are covered too: their locale copies
+// still exist and are what gets reported. Copies in `changedLocalePages` are
+// exempt (activity exemption). `pageExists` is injected for testability.
+export function driftPendingPages(
+  changedEnPages,
+  locales,
+  pageExists,
+  changedLocalePages = new Set(),
+) {
+  const pages = [];
+  const enPrefix = `${CONTENT_DIR}/${DEFAULT_LANG}/`;
+  for (const enPath of changedEnPages) {
+    // `.md` only: no localized `.html` pages exist in the content tree; if
+    // that ever changes, align this filter with pageIgnoreDirOf's
+    // `.md`/`.html` mapping in scripts/lychee/config/index.mjs.
+    if (!enPath.startsWith(enPrefix) || !enPath.endsWith('.md')) continue;
+    const subPath = enPath.slice(enPrefix.length);
+    for (const locale of locales) {
+      const localePath = `${CONTENT_DIR}/${locale}/${subPath}`;
+      if (!pageExists(localePath)) continue;
+      if (changedLocalePages.has(localePath)) continue;
+      pages.push(localePath);
+    }
+  }
+  return pages.sort();
+}
+
+// Repo adapter: one git diff of `content` against the baseline (two-dot,
+// vs the working tree — no merge-base needed, so a baseline-deepened
+// shallow clone suffices), split EN / non-EN. Throws when the baseline
+// isn't resolvable (e.g. too-shallow clone).
+export async function driftPendingForRepo(rootDir, baseline) {
+  const source = baseline
+    ? 'the DRIFT_BASELINE override'
+    : STATUS_BASELINE_PATH;
+  baseline ??= readBaseline(rootDir);
+  let diffOut;
+  try {
+    diffOut = await git(
+      rootDir,
+      'diff',
+      '--name-only',
+      '--no-renames',
+      baseline,
+      '--',
+      CONTENT_DIR,
+    );
+  } catch (e) {
+    // Rethrow with the baseline's provenance and the local remedies; the raw
+    // git error (`fatal: bad object …`) says nothing actionable.
+    throw new Error(
+      `cannot diff against the drift-status baseline '${baseline}' ` +
+        `(from ${source}). If your clone is shallow or predates the ` +
+        `baseline, fetch it (e.g. \`git fetch upstream main\`) or override ` +
+        `it with DRIFT_BASELINE=HEAD. Underlying error: ${e.message.trim()}`,
+    );
+  }
+  const changed = diffOut.split('\n').filter(Boolean);
+
+  // A stale baseline is silent coverage loss: the overlay only widens, so a
+  // stalled Housekeeping cycle never turns anything red. Surface it — in CI
+  // also as a workflow annotation, since nobody reads a green job's log.
+  const ageDays = await baselineAgeDays(rootDir, baseline);
+  if (ageDays > STALE_BASELINE_DAYS) {
+    const msg =
+      `the drift-status baseline (from ${source}) is ` +
+      `${Math.floor(ageDays)} days old; ever more localized pages are ` +
+      `being skipped by link checking. Is the nightly Housekeeping ` +
+      `sync running and getting merged?`;
+    console.error(`WARNING: ${msg}`);
+    if (process.env.GITHUB_ACTIONS)
+      console.log(`::warning file=${STATUS_BASELINE_PATH}::${msg}`);
+  }
+
+  const locales = readdirSync(path.join(rootDir, CONTENT_DIR), {
+    withFileTypes: true,
+  })
+    .filter((e) => e.isDirectory() && e.name !== DEFAULT_LANG)
+    .map((e) => e.name);
+  const enPrefix = `${CONTENT_DIR}/${DEFAULT_LANG}/`;
+  return driftPendingPages(
+    changed.filter((p) => p.startsWith(enPrefix)),
+    locales,
+    (p) => existsSync(path.join(rootDir, p)),
+    new Set(changed.filter((p) => !p.startsWith(enPrefix))),
+  );
+}
+
 // Write operations. Both return the per-page actions they performed
 // ([page, action] with action ADDED | UPDATED | REMOVED), skipping no-ops.
 
@@ -485,6 +686,26 @@ async function statusCLI(rootDir, cli, report) {
         console.log(`${page} ${I18N_DLD_KEY} ${action}`);
     }
     console.log(`Status writes: ${actions.length} out of ${report.size}`);
+    // A tree-wide sync leaves every stored status accurate as of the
+    // checkout's merge-base with main: record that commit as the
+    // drift-status baseline (see the overlay section above). Scoped syncs
+    // (`--all` with PATHS included) refresh only the listed pages, so they
+    // must not advance the tree-wide baseline. Quiet nights don't rewrite it
+    // either (#decision @chalin 2026-07-28, 3-POV CI-3): a bump-only rewrite
+    // would make every nightly Housekeeping PR non-empty, and a no-change
+    // sweep leaves nothing new for the overlay to cover — so the write is
+    // gated on a status change, with a BASELINE_REFRESH_DAYS heartbeat as
+    // the freshness bound.
+    if (cli.list === 'all' && !cli.paths.length) {
+      if (actions.length || (await baselineNeedsRefresh(rootDir))) {
+        const sha = await writeBaseline(rootDir);
+        console.log(`Status baseline: ${sha} -> ${STATUS_BASELINE_PATH}`);
+      } else {
+        console.log(
+          `Status baseline: fresh and no status changed; not rewritten`,
+        );
+      }
+    }
     return;
   }
 
