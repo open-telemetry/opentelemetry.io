@@ -51,12 +51,10 @@ jobs:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
-          # The docs App has contents permission; the base otelbot App does
-          # not, so it cannot mint the push credential this job requires.
+          # The base otelbot App lacks contents permission; use the
+          # push-capable docs App.
           client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
-          # Scope the token to what the auto-update script needs: push the
-          # update branch, then open its PR.
           permission-contents: write
           permission-pull-requests: write
 

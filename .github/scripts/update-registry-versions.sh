@@ -166,8 +166,7 @@ for yaml_file in ${FILES}; do
     fi
 done;
 
-# Keep PR identity stable for ordinary input while encoding row separators
-# unambiguously: escape data backslashes first, then rendered newlines.
+# Preserve existing PR keys while making the row encoding unambiguous.
 tag_input=${body//\\/\\\\}
 tag_input=${tag_input//$'\n'/\\n}
 tag=$(printf '%s\n' "${tag_input}" | sha1sum | awk '{print $1;}')
