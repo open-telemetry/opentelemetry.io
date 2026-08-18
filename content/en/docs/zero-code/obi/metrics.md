@@ -41,7 +41,6 @@ Prometheus format.
 | JVM runtime | `jvm.memory.committed`                | `jvm_memory_committed_bytes`                  | Gauge     | bytes       | Current JVM memory committed, labeled by memory type and pool                                                         |
 | JVM runtime | `jvm.memory.limit`                    | `jvm_memory_limit_bytes`                      | Gauge     | bytes       | Current JVM memory limit, labeled by memory type and pool                                                             |
 | JVM runtime | `jvm.memory.used_after_last_gc`       | `jvm_memory_used_after_last_gc_bytes`         | Gauge     | bytes       | JVM memory used after the last garbage collection                                                                     |
-| JVM runtime | `obi.jvm.heap.used`                   | `obi_jvm_heap_used_bytes`                     | Gauge     | bytes       | HotSpot heap used before or after garbage collection                                                                  |
 | Network     | `obi.network.flow.bytes`              | `obi_network_flow_bytes_total`                | Counter   | bytes       | Bytes submitted from a source network endpoint to a destination network endpoint                                      |
 | Network     | `obi.network.flow.packets`            | `obi_network_flow_packets_total`              | Counter   | packets     | Packets observed from a source network endpoint to a destination network endpoint                                     |
 | Network     | `obi.network.inter.zone.bytes`        | `obi_network_inter_zone_bytes_total`          | Counter   | bytes       | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes) |
@@ -191,8 +190,7 @@ check the `attributes`->`select` section in the
 >
 > The `obi.network.flow.packets` metric supports the same attributes and
 > defaults as `obi.network.flow.bytes`. JVM memory metrics include
-> `jvm.memory.type` and `jvm.memory.pool.name`; `obi.jvm.heap.used` includes
-> `jvm.gc.phase`.
+> `jvm.memory.type` and `jvm.memory.pool.name`.
 
 ## Internal metrics
 
