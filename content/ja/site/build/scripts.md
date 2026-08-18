@@ -38,7 +38,7 @@ npm run fix:i18n:new
 ## update-registry-versions.sh {#update-registry-versionssh}
 
 上流のレジストリに問い合わせて `data/registry/*.yml` のパッケージバージョンを自動更新します。
-対応レジストリ: npm、Packagist、RubyGems、Go、NuGet、Hex、Maven。
+対応レジストリはnpm、Packagist、RubyGems、Go、NuGet、Hex、Mavenです。
 
 - CI 環境（`GITHUB_ACTIONS` が設定されている場合）: ブランチを作成し、PR をオープンします。
 - ローカル環境: デフォルトでは**ドライラン**モードで実行されます。
