@@ -123,8 +123,11 @@ for yaml_file in ${FILES}; do
 
         # Registry metadata is third-party input: accept only plain ASCII https
         # URLs (IDNs are expected in punycode), and pass the value as data
-        # (strenv) rather than as part of the yq expression.
-        if [[ ! "$url" =~ ^https://[A-Za-z0-9._~:/?#@!$\&\'\(\)*+,\;=%-]+$ ]]; then
+        # (strenv) rather than as part of the yq expression. The pattern lives
+        # in a variable so that bash applies no escape-quoting to the class,
+        # which would otherwise admit a literal backslash.
+        url_re="^https://[A-Za-z0-9._~:/?#@!\$&'()*+,;=%-]+\$"
+        if [[ ! "$url" =~ $url_re ]]; then
             return
         fi
 
