@@ -10,6 +10,11 @@ FILES="${FILES:-./data/registry/*.yml}"
 GIT_PUSH_AUTH=()
 
 if [[ -n "$GITHUB_ACTIONS" ]]; then
+  if [[ -z "${GH_TOKEN:-}" ]]; then
+    echo "::error::Expected the App token in GH_TOKEN." >&2
+    exit 1
+  fi
+
   git reset --hard origin/main
 
   # Supply the App token only to a github.com push. Reset configured helpers
@@ -114,10 +119,16 @@ for yaml_file in ${FILES}; do
 
         url="$(jq -r "$json_path" <<< "$json")"
 
-        # Treat third-party metadata as data, accepting ASCII HTTPS only (IDNs
-        # as punycode). A variable avoids Bash escape-quoting admitting `\`.
+        # Treat third-party metadata as data, accepting ASCII HTTPS without
+        # userinfo (IDNs as punycode). A variable avoids Bash escape-quoting
+        # admitting `\`.
         url_re="^https://[A-Za-z0-9._~:/?#@!\$&'()*+,;=%-]+\$"
         if [[ ! "$url" =~ $url_re ]]; then
+            return
+        fi
+        authority=${url#https://}
+        authority=${authority%%[/?#]*}
+        if [[ "$authority" == *"@"* ]]; then
             return
         fi
 
