@@ -276,23 +276,27 @@ test('manifest: the install path keeps its locked, script-free form', () => {
   assert.equal(scripts.install, undefined, 'install stays absent');
   // npm wraps every script in implicit pre<name>/post<name> hooks; a hook
   // pair outside the reviewed set is unreviewed code on a trusted name's
-  // execution path.
-  const reviewedHooks = new Set([
+  // execution path. Exact-set equality covers both directions: a scan that
+  // finds nothing fails against the non-empty reviewed set, and a hook
+  // removed from scripts must leave the reviewed set with it.
+  const reviewedHooks = [
     'precheck:collector-sync',
     'precheck:collector-sync:lint',
     'precheck:collector-sync:types',
     'prefix:collector-sync:lint',
-  ]);
+  ];
   const names = new Set(Object.keys(scripts));
-  let hookPairs = 0;
+  const foundHooks = [];
   for (const name of names) {
     for (const hook of [`pre${name}`, `post${name}`]) {
-      if (!names.has(hook)) continue;
-      hookPairs += 1;
-      assert.ok(reviewedHooks.has(hook), `${hook} is a reviewed hook`);
+      if (names.has(hook)) foundHooks.push(hook);
     }
   }
-  assert.ok(hookPairs > 0, 'hook pairs were audited');
+  assert.deepEqual(
+    foundHooks.sort(),
+    reviewedHooks.sort(),
+    'the implicit hook pairs are exactly the reviewed set',
+  );
 });
 
 // Limited anchor: these pins hold only when this suite runs, so they
