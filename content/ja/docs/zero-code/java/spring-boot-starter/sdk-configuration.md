@@ -8,7 +8,7 @@ cSpell:ignore: distro
 <!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/spring-starter"?>
 
-この Spring スターターは[設定メタデータ](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html)をサポートしており、IDE で利用可能なすべてのプロパティを確認・オートコンプリートできます。
+この Spring スターターは[設定メタデータ](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html)をサポートしており、IDE で利用可能なすべてのプロパティを確認・自動補完できます。
 
 ## 一般的な設定 {#general-configuration}
 
