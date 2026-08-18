@@ -1,0 +1,27 @@
+# cSpell:ignore deepseek dsh genai loongsuite otlp
+title: DeepSeek Harness Instrumentation
+registryType: instrumentation
+language: js
+tags:
+  - javascript
+  - instrumentation
+  - deepseek
+  - genai
+urls:
+  repo: https://github.com/loongsuite/dsh-plugin
+  docs: https://github.com/loongsuite/dsh-plugin#readme
+license: Apache 2.0
+description:
+  Instrumentation for DeepSeek Harness that converts session, agent loop, LLM,
+  and tool lifecycle events into GenAI traces and metrics over OTLP/HTTP.
+  Content capture is disabled by default.
+authors:
+  - name: LoongSuite Authors
+    url: https://github.com/loongsuite
+createdAt: 2026-08-18
+package:
+  registry: npm
+  name: '@loongsuite/dsh-plugin'
+  version: 0.1.1
+isNative: false
+isFirstParty: false
