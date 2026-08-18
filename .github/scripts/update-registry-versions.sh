@@ -185,8 +185,8 @@ fi
 if [[ -n $(git status --porcelain) ]]; then
     echo "Versions have been updated, formatting and pushing changes."
 
-    # npm steps run dependency-controlled code: keep the App token (GH_TOKEN)
-    # out of their environment.
+    # Remove the App token from each npm command's direct child environment.
+    # This limits accidental access; it is not a process-isolation boundary.
     (unset GH_TOKEN; $NPM run fix:link-cache) ||
       echo "Link checking failed. Continuing so we can commit the link cache update."
     (unset GH_TOKEN; $NPM run fix:format)
