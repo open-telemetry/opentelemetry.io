@@ -3897,6 +3897,7 @@ https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-registry
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-sdk/v1.12.1/sdk,200,1784884395
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-sdk/v1.13.0/sdk,200,1785839628
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-semantic_conventions/v1.43.0/semantic_conventions,200,1786028712
+https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-semantic_conventions/v1.44.0/semantic_conventions,200,1787028557
 https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-test-helpers/v0.9.1/test_helpers,200,1786028714
 https://github.com/open-telemetry/opentelemetry-rust#overview-of-crates,200,1786427566
 https://github.com/open-telemetry/opentelemetry-rust,200,1786028710
@@ -6058,6 +6059,7 @@ https://rubydoc.info/gems/opentelemetry-sampler-xray/0.3.0,200,1786028707
 https://rubydoc.info/gems/opentelemetry-sdk/1.12.1,200,1784884394
 https://rubydoc.info/gems/opentelemetry-sdk/1.13.0,200,1785839628
 https://rubydoc.info/gems/opentelemetry-semantic_conventions/1.43.0,200,1786028707
+https://rubydoc.info/gems/opentelemetry-semantic_conventions/1.44.0,202,1787028559
 https://rubydoc.info/gems/opentelemetry-test-helpers/0.9.1,200,1786028710
 https://rubygems.org/gems/dalli,200,1786028703
 https://rubygems.org/gems/elasticsearch,200,1785868501
