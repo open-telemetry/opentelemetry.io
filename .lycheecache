@@ -849,6 +849,7 @@ https://getcomposer.org/,200,1790747173
 https://getcomposer.org/doc/01-basic-usage.md#autoloading,200,1788327798
 https://gist.github.com/braydonk/b2381da98dc3c4fd5ac064045d556634,200,1790660786
 https://gist.github.com/fardjad/ea3c38d566c845e0b353237d3959e365,200,1790660786
+https://gist.github.com/mmat11/f3f23707e7bc9c94bce144f56276251d,200,1790868063
 https://gist.github.com/zeitlinger/09585b1ab57c454f87e6dcb9a6f50a5c,200,1788414933
 https://git-scm.com/,200,1788327796
 https://git-scm.com/book/en/v2/Getting-Started-Installing-Git,200,1788327796
@@ -3611,6 +3612,7 @@ https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemet
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.Prometheus.HttpListener,200,1788846173
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.Zipkin,200,1788846173
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation,200,1787982046
+https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/6a9df076223faff5bb94ea75f15a8e24c7a1ca0d/devdocs/trace-log-correlation.md,200,1790868063
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.12.1/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation,200,1790574430
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/discussions,200,1788241853
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues,200,1788241854
@@ -3623,6 +3625,7 @@ https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1137
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1139,200,1788241854
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1140,200,1788241855
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1157,200,1788241854
+https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2284,200,1790868063
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2793,200,1790574431
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2794,200,1790574431
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2932,200,1790574431
