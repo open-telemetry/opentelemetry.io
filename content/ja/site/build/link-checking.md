@@ -2,7 +2,7 @@
 title: リンクチェック
 weight: 12
 description: ローカルおよび CI でのサイトのリンクチェック方法。
-default_lang_commit: 9a8128b38643d2c42b1d249b42c29ebe23c6c2b7
+default_lang_commit: 67065425cb182395dfd94f3899972afc7e131761
 ---
 
 サイトのリンクチェックには **[Lychee][]** を使用しており、外部リンクの結果はコミットされたキャッシュ（[リンクキャッシュ][link cache]を参照）によって裏付けられています。
@@ -70,18 +70,23 @@ CI では、`CHECK LINKS` ジョブが最初にシャロークローンをベー
 このファイルはバージョン管理下にあるため、チェックは新しい URL またはキャッシュエントリの有効期限が切れた URL のみをフェッチします。
 Lychee は成功した結果のみをキャッシュするため、失敗は毎回リトライされます。
 
+キャッシュは複数の[スケジュール実行ワークフロー](#workflows)とコンテンツ PR によって日常的に更新されるため、同時更新は競合として報告されるのではなく、Git の `union` ストラテジー（[`.gitattributes`][] を参照）によって行単位でマージされます。
+このようなマージでは重複したエントリや古いエントリが残ることがありますが、これらはチェッカーにとっては無害であり、次回のリンクチェックの実行でキャッシュはきれいに書き直されます。
+PR ではその書き直しをコミットしてください。
+
 外部リンクを追加または変更した場合は、**PR を送信する前に** `npm run check:links` を実行し（サイトビルドが実行時間の大部分を占めます）、更新された `.lycheecache` をコンテンツの変更と一緒にコミットしてください。
 そうしないと `CACHE updates committed?` チェックが失敗します。
 復旧手順については [`CACHE updates committed?`][pr-checks] を参照してください。
 
 ## キャッシュの更新とハウスキーピングワークフロー {#workflows}
 
-以下のワークフローは毎日スケジュールされ、**フル**ビルドに対してリンクチェックコマンドを実行します。
+以下のワークフローは毎日スケジュールされ、リンクチェックコマンドを実行します。
 
-| ワークフロー                                           | リンクチェックコマンド              |
-| ------------------------------------------------------ | ----------------------------------- |
-| Refcache refresh                                       | `log:check:links`（プルーニング後） |
-| [ハウスキーピング][Housekeeping]（`fix-and-test:all`） | `fix:link-cache`                    |
+| ワークフロー                                                    | リンクチェックコマンド                          |
+| --------------------------------------------------------------- | ----------------------------------------------- |
+| Refcache refresh                                                | `log:check:links`（フルビルド、プルーニング後） |
+| [ハウスキーピング][Housekeeping]（`fix-and-test:all`）          | `fix:link-cache`（フルビルド）                  |
+| [レジストリバージョンの自動更新][Auto-update registry versions] | `fix:link-cache`                                |
 
 Refcache refresh は最も古いキャッシュエントリをプルーニングし（件数はワークフローの入力値）、リンクチェックを再実行することで、プルーニングされた URL のうちサイトでまだ使用されているもののキャッシュエントリを更新します。
 
@@ -110,6 +115,8 @@ npm run fix:link-cache:double-check
 このジョブは、実行によってコミット済みの `.lycheecache` が古くなった場合に失敗します。
 
 <!-- prettier-ignore-start -->
+[`.gitattributes`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.gitattributes
+[Auto-update registry versions]: /site/build/scripts/#update-registry-versionssh
 [blog-index]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
 [Build kinds: full and lean]: ../#build-kinds
 [ci]: ../ci-workflows/
