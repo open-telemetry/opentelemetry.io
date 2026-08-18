@@ -211,7 +211,7 @@
     "path": "0.12.7"
   },
   "optionalDependencies": {
-    "npm-check-updates": "23.0.1"
+    "npm-check-updates": "23.0.2"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "enginesNpmComment": "Floor policy: https://opentelemetry.io/site/build/dependencies/#npm-version-floor; next bump: >=11.18.0 (npm/cli#9652) once Node LTS bundles it",
