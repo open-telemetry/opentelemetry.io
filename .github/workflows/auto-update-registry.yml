@@ -62,7 +62,7 @@ jobs:
         run: |
           .github/scripts/update-registry-versions.sh
         env:
-          # Two tokens, one per consumer:
+          # Separate tokens for write operations and link checking:
           #
           # The branch push and `gh` calls run as otelbot via the App token.
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}

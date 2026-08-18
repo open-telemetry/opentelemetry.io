@@ -7,19 +7,14 @@ NPM=npm
 FILES="${FILES:-./data/registry/*.yml}"
 
 
-# Extra `git` arguments for the push below; none outside CI.
 GIT_PUSH_AUTH=()
 
 if [[ -n "$GITHUB_ACTIONS" ]]; then
-  # Ensure that we're starting from a clean state
   git reset --hard origin/main
 
-  # Supply the App token to the push through an inline credential helper: it
-  # stays out of the command line, out of git config, and off disk. The empty
-  # value first drops any helper the runner has configured, so none of them
-  # gets offered the credential either. Binding the helper to github.com keeps
-  # it from answering for some other host, should anything have repointed
-  # `origin` between checkout and the push.
+  # Supply the App token only to a github.com push. Reset configured helpers
+  # first, then use a host-scoped helper that keeps the token out of argv,
+  # git config, and disk, and declines a repointed origin.
   # shellcheck disable=SC2016 # the helper body is evaluated by git, not here
   GIT_PUSH_AUTH=(
     -c credential.helper=
@@ -42,13 +37,11 @@ body=""
 
 for yaml_file in ${FILES}; do
     echo "$yaml_file"
-    # Check if yq is installed
     if ! command -v yq &> /dev/null; then
         echo "yq could not be found, please install yq."
         exit 1
     fi
 
-    # Function to get latest version based on registry
     get_latest_version() {
         package_name=$1
         registry=$2
@@ -121,20 +114,15 @@ for yaml_file in ${FILES}; do
 
         url="$(jq -r "$json_path" <<< "$json")"
 
-        # Registry metadata is third-party input: accept only plain ASCII https
-        # URLs (IDNs are expected in punycode), and pass the value as data
-        # (strenv) rather than as part of the yq expression. The pattern lives
-        # in a variable so that bash applies no escape-quoting to the class,
-        # which would otherwise admit a literal backslash.
+        # Treat third-party metadata as data, accepting ASCII HTTPS only (IDNs
+        # as punycode). A variable avoids Bash escape-quoting admitting `\`.
         url_re="^https://[A-Za-z0-9._~:/?#@!\$&'()*+,;=%-]+\$"
         if [[ ! "$url" =~ $url_re ]]; then
             return
         fi
 
-        # Check HTTP status (no output, no body)
         status="$(curl -s -o /dev/null -w '%{http_code}' -- "$url")"
 
-        # Only update when status is 2xx
         case "$status" in
             2??)
                 export CHECKED_URL="$url"
@@ -143,7 +131,6 @@ for yaml_file in ${FILES}; do
         esac
     }
 
-    # Read package details
     name=$(yq eval '.package.name' "$yaml_file")
     registry=$(yq eval '.package.registry' "$yaml_file")
     current_version=$(yq eval '.package.version' "$yaml_file")
@@ -151,7 +138,6 @@ for yaml_file in ${FILES}; do
     if [ -z "$name" ] || [ -z "$registry" ]; then
         echo "${yaml_file}: Package name and/or registry are missing in the YAML file."
     else
-        # Get latest version
         latest_version=$(get_latest_version "$name" "$registry" || echo "Could not fetch version.")
 
         if [ "$latest_version" == "Could not fetch version." ]; then
