@@ -13,7 +13,10 @@ these controls, see [Supply-chain security][].
 
 CI, the devcontainer, and Netlify install lock-exact and script-free, then
 explicitly re-enable the one reviewed hook: the `hugo-extended` rebuild that
-fetches the pinned Hugo binary. Per environment:
+fetches the pinned Hugo binary. The rebuild runs through
+`scripts/rebuild-hugo-extended.mjs`, which retries the fetch with bounded
+backoff and refuses to run while any `HUGO_*` installer override is set. Per
+environment:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.
@@ -38,8 +41,10 @@ invokes Docsy's own lock-exact, script-free theme-dependency install.
 Netlify keeps a build cache per [deploy context][]:
 
 - One for production
-- One per already-built PR, seeded from the production cache on the PR's first
-  build.
+- One per **head branch name** for Deploy Previews, seeded from the production
+  cache on the name's first build. Cache lineages die only by explicit clear:
+  branch deletion is invisible to Netlify, so a branch recreated under the same
+  name (recycled bot-branch names included) re-attaches to the old cache.
 
 Each cache [includes a clone of the repository][], and checking out a commit
 that drops a git submodule leaves the submodule's working tree in place, so a
@@ -51,15 +56,16 @@ Clear the affected [build cache][] rather than adding the path to `.gitignore`:
 
 - **Production**:
   - Clear cache and deploy site, under **Deploys** > **Trigger deploy**.
-- **Deploy Previews**: each already-built PR holds its own cache copy, untouched
-  by a production clear after the fact.
+- **Deploy Previews**: each already-built branch holds its own cache copy,
+  untouched by a production clear after the fact.
   - Clear it from the PR's latest deploy page with **Retry** > **Clear cache and
-    retry with latest branch commit**. There is no bulk clear across PRs.
+    retry with latest branch commit**. There is no bulk clear across branches.
 
 > [!IMPORTANT]
 >
 > After removing a git submodule, clear the production build cache as part of
-> the removal, before the residue seeds per-PR caches.
+> the removal, before the residue seeds per-branch caches. Also clear the
+> lineage of any recycled bot-branch name; a production clear never reaches it.
 
 ## Updating dependencies {#updating}
 
