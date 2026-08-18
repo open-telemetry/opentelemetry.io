@@ -23,8 +23,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          # The push credential is scoped to the update script's push (see
-          # update-registry-versions.sh).
+          # Disable checkout's default auth: it would supply the push's
+          # Authorization header instead of the script's App-token helper.
           persist-credentials: false
           # Full history needed for drift-status baseline commit.
           fetch-depth: 0
