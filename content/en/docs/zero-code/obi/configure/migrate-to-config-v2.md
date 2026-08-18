@@ -6,8 +6,8 @@ weight: 4
 ---
 
 OBI v0.11.0 and later include commands to migrate and validate configuration.
-Because Config v1 remains supported, you can migrate one deployment at a time
-and roll back if its behavior changes.
+Migrate one deployment at a time, validate the generated Config v2 file, and
+test it before continuing the rollout.
 
 This guide explains how to migrate standalone OBI and OBI Collector receiver
 configurations. For the Config v2 structure and supported fields, see the
@@ -131,9 +131,9 @@ include rule does not inherit an omitted refinement from an earlier matching
 rule. When this difference would change behavior, migration fails for selector
 lists that mix explicit and omitted `exports` or `routes` fields.
 
-To migrate these selectors, specify each refinement on every applicable selector
-and test any overlapping rules. Continue to use Config v1 if the deployment
-depends on conditional inheritance.
+To migrate these selectors, make each refinement explicit on every applicable
+selector. Restructure selectors that depend on conditional inheritance so that
+each Config v2 rule is self-contained, then test any overlapping rules.
 
 ## Configure exporters
 
@@ -197,29 +197,31 @@ values into the generated file.
 ## Handle settings that need manual changes
 
 If the migration command cannot preserve a setting, it fails and identifies the
-Config v1 field in the error message. The following settings commonly require
-manual changes:
+Config v1 field in the error message. Replace or retire the unsupported behavior
+before you rerun the command. The following settings commonly require manual
+changes:
 
 | Config v1 setting                                                           | What to do                                                                                                                                                            |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `service_name`, `service_namespace`                                         | For standalone OBI, set `service.name` or `service.namespace` as top-level `resource` attributes. For the OBI Collector receiver, use a Collector resource processor. |
 | `prometheus_export.path`                                                    | Use the path supported by the selected Collector or Prometheus exporter. Config v2 has no portable field for it.                                                      |
-| Custom or empty `discovery.excluded_linux_system_paths`                     | Keep Config v1, or express an actual workload exclusion with `capture.rules` if that is the intended behavior.                                                        |
+| Custom or empty `discovery.excluded_linux_system_paths`                     | Replace path-based exclusions with workload exclusions in `capture.rules`. Remove the setting if no corresponding workload exclusion is needed.                       |
 | `health_check.*`                                                            | Use deployment health checks or Collector health-check facilities.                                                                                                    |
-| `jvm_runtime_metrics.sampling_interval`                                     | Keep Config v1 if this tuning is required.                                                                                                                            |
-| `attributes.instance_id.dns`                                                | Keep Config v1 or move the enrichment to a Collector processor.                                                                                                       |
-| `ebpf.stats_wakeup_data_bytes`                                              | Keep Config v1 if this tuning is required.                                                                                                                            |
-| Selector `name`, `namespace`, per-selector metrics, or per-selector sampler | Redesign the selector using supported match and `refine` fields, or keep Config v1.                                                                                   |
-| Selector `exports.logs`                                                     | Config v2 workload export refinements support traces and metrics only. Remove this setting only after you verify equivalent behavior; otherwise, keep Config v1.      |
-| `ebpf.log_enricher.services`                                                | Config v2 does not support a separate log-annotation selector. Capture rules determine eligible workloads. Keep Config v1 if the two selections must differ.          |
+| `jvm_runtime_metrics.sampling_interval`                                     | Remove the custom interval and test the Config v2 JVM sampling behavior.                                                                                              |
+| `attributes.instance_id.dns`                                                | Set `service.instance.id` as a top-level resource attribute or move instance identity enrichment to a Collector processor.                                            |
+| `ebpf.stats_wakeup_data_bytes`                                              | Remove the custom wakeup threshold and test performance with the Config v2 defaults.                                                                                  |
+| Selector `name`, `namespace`, per-selector metrics, or per-selector sampler | Redesign the selector with supported match and `refine` fields. Split it into explicit rules when the refinements differ.                                             |
+| Selector `exports.logs`                                                     | Remove the per-selector log export refinement. Use capture rules to select the workloads eligible for log correlation.                                                |
+| `ebpf.log_enricher.services`                                                | Replace the separate log-annotation selector with capture rules that select the eligible workloads.                                                                   |
 | `sensitive_query_params`                                                    | Redesign the privacy policy before migration. Config v2 has no equivalent field.                                                                                      |
-| Debug exporter or unsupported sampler                                       | Configure a supported OTLP exporter or sampler, or keep Config v1.                                                                                                    |
+| Debug exporter or unsupported sampler                                       | Configure a supported OTLP exporter or sampler.                                                                                                                       |
 | Differing active OTLP and Prometheus instrumentation lists                  | Make protocol metric enablement consistent before migrating.                                                                                                          |
 
 The command reports other unsupported metric features and histogram, exporter,
 or Prometheus settings individually. Review and resolve every reported field
-before you rerun the migration. Do not remove a field only to make the command
-succeed; first confirm that you do not need its behavior.
+before you rerun the migration. When a field has no direct equivalent, choose a
+supported Config v2 or Collector behavior and verify the change in the canary
+deployment.
 
 The command also rejects unknown Config v1 fields, files that already use Config
 v2, and files that contain multiple YAML documents.

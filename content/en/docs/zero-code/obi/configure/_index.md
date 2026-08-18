@@ -16,13 +16,12 @@ the low cardinality routes decorator. It's very important for optimal results.
 
 ## Configuration versions
 
-OBI v0.11.0 and later support two OBI configuration formats: Config v1 and
-Config v2. Both work with standalone OBI and the OBI Collector receiver. Config
-v2 uses the OpenTelemetry declarative configuration structure for common
-settings and places OBI-specific settings under `extensions.obi`. Config v1
-remains supported.
+Use Config v2 with OBI v0.11.0 and later. It works with standalone OBI and the
+OBI Collector receiver, uses the OpenTelemetry declarative configuration
+structure for common settings, and places OBI-specific settings under
+`extensions.obi`.
 
-- To write a new Config v2 file, start with the
+- To write a new configuration, start with the
   [Config v2 reference](config-v2/).
 - To convert an existing Config v1 file, follow the
   [Config v1 to v2 migration guide](migrate-to-config-v2/).

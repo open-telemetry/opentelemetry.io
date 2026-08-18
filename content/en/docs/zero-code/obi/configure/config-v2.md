@@ -12,7 +12,7 @@ cSpell:ignore: Aerospike jsonrpc ollama openai qwen rerank sattributes SIGUSR sq
 Config v2 is available in OBI v0.11.0 and later. It uses the OpenTelemetry
 declarative configuration structure. Common settings such as resources,
 sampling, and exporters remain at the root of the document, while OBI-specific
-settings are grouped under `extensions.obi`. Config v1 remains supported.
+settings are grouped under `extensions.obi`.
 
 If you already have a Config v1 file, use the
 [Config v1 to v2 migration guide](../migrate-to-config-v2/) instead of rewriting
