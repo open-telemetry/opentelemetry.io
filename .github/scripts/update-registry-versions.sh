@@ -166,8 +166,10 @@ for yaml_file in ${FILES}; do
     fi
 done;
 
-# We use the sha1 over all version updates to uniquely identify the PR.
-tag=$(echo "${body}" | sha1sum | awk '{print $1;}')
+# Keep PR identity stable in a canonical escaped-newline form, independent of
+# how the body file renders its line breaks.
+tag_input=${body//$'\n'/\\n}
+tag=$(printf '%s\n' "${tag_input}" | sha1sum | awk '{print $1;}')
 message="Auto-update registry versions (${tag})"
 branch="otelbot/auto-update-registry-${tag}"
 
