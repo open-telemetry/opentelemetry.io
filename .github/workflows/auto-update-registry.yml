@@ -51,8 +51,10 @@ jobs:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
-          client-id: ${{ vars.OTELBOT_CLIENT_ID }}
-          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+          # The docs App has contents permission; the base otelbot App does
+          # not, so it cannot mint the push credential this job requires.
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
           # Scope the token to what the auto-update script needs: push the
           # update branch, then open its PR.
           permission-contents: write
@@ -64,7 +66,7 @@ jobs:
         env:
           # Separate tokens for write operations and link checking:
           #
-          # The branch push and `gh` calls run as otelbot via the App token.
+          # The branch push and `gh` calls run as otelbot-docs via the App token.
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           # Default workflow token, for the link checker; read-only per the
           # workflow's `permissions`.
