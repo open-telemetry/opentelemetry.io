@@ -1,14 +1,16 @@
 ---
 name: resolve-link-cache-conflicts
 description:
-  Skill for resolving .lycheecache merge or rebase conflicts in the current
-  branch or a specified PR.
+  Skill for recovering .lycheecache after a merge or rebase, whether from
+  residual conflicts or union-merge residue, in the current branch or a
+  specified PR.
 argument-hint: '[optional-pr-number]'
 ---
 
-`.lycheecache` is an auto-generated file. Resolving conflicts requires first
-taking the integration branch's side, finishing the merge/rebase, then running
-`npm run fix:link-cache` to restore any URLs unique to the active branch.
+`.lycheecache` is auto-generated and union-merged (policy: [Link cache][]), so
+merges and rebases usually complete without conflict but can leave residue that
+fails the `CACHE updates committed?` check. Either way, recover with the
+procedure below.
 
 ## Prerequisites
 
@@ -31,14 +33,32 @@ At this point, we are ready to resolve the conflicts in the active branch:
 
 2. If merge or rebase is in progress (`git status`), skip this step. Otherwise,
    ask the user whether to run `git merge $BASE_BRANCH` or
-   `git rebase $BASE_BRANCH`, then run it.
+   `git rebase $BASE_BRANCH`, then run it. For a branch created before
+   `.gitattributes` gained the `.lycheecache` union rule, prefer rebase: merge
+   attributes resolve against the current checkout's tree, which during a rebase
+   is the updated base.
 
-3. If there are no conflicts: stop, we are done.
+3. If there are no conflicts, the operation completes on its own. Run the
+   [residue test](#residue-test), then stop: we are done.
 
 4. Conflicts other than `.lycheecache`: resolve them with the user.
 
-5. If no `.lycheecache` conflict remains: stop, we are done. Otherwise, proceed
-   to **Resolve**.
+5. If a `.lycheecache` conflict remains, proceed to **Resolve**. Otherwise,
+   conclude the operation per **Resolve** steps 2-3, then run the
+   [residue test](#residue-test).
+
+## Residue test
+
+A conflict-free union merge can still leave residue that fails the
+`CACHE updates committed?` check: duplicate URLs or out-of-order lines.
+
+```sh
+cut -d, -f1 .lycheecache | sort | uniq -d # any output: duplicate URLs
+sort -c .lycheecache                      # any error: out-of-order lines
+```
+
+If either check trips, run **Resolve** steps 4-6 to regenerate, commit, and push
+the cache.
 
 ## Resolve
 
@@ -76,3 +96,7 @@ At this point, we are ready to resolve the conflicts in the active branch:
 6. Push:
    - Merge: `git push`
    - Rebase: `git push --force-with-lease`
+
+<!-- prettier-ignore-start -->
+[Link cache]: https://opentelemetry.io/site/build/link-checking/#link-cache
+<!-- prettier-ignore-end -->

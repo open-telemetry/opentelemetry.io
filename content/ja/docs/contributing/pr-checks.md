@@ -3,7 +3,7 @@ title: プルリクエストのチェックとテスト
 linkTitle: PR チェック & テスト
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: 1ff7122fa7e1fd78714d7540b93ec70a3e72d84c
+default_lang_commit: 38e36ae231c523f9e54499ad6ca05de7c49501c5
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -30,6 +30,13 @@ PR のチェックは次のことを検証します。
 ## Netlify deployment {#netlify-deployment}
 
 [Netlify](https://www.netlify.com/)のビルドが失敗した場合は、詳細については **Details** を選択してください。
+
+`"build.command" failed` の直前に `?? some/path` というステータス行が表示され、そのパスが PR で変更していないものである場合、ビルドが変更内容ではなく古い Netlify ビルドキャッシュに起因して失敗した可能性があります。
+
+1. PR にコメントして、メンテナーにキャッシュなしでビルドを再試行するよう依頼してください。
+   キャッシュクリアの手順については、[Dependency management](/site/build/dependencies/#netlify-build-cache)を参照してください。
+2. キャッシュなしの再試行でも失敗が再発する場合、キャッシュが原因ではありません。
+   ビルドの何らかのステップがそのパスを書き込んでおり、変更内容が最初の原因候補です。
 
 ## GitHub PR チェック {#checks}
 
