@@ -17,11 +17,13 @@ if [[ -n "$GITHUB_ACTIONS" ]]; then
   # Supply the App token to the push through an inline credential helper: it
   # stays out of the command line, out of git config, and off disk. The empty
   # value first drops any helper the runner has configured, so none of them
-  # gets offered the credential either.
+  # gets offered the credential either. Binding the helper to github.com keeps
+  # it from answering for some other host, should anything have repointed
+  # `origin` between checkout and the push.
   # shellcheck disable=SC2016 # the helper body is evaluated by git, not here
   GIT_PUSH_AUTH=(
     -c credential.helper=
-    -c 'credential.helper=!f() { test "$1" = get && printf "username=x-access-token\npassword=%s\n" "$GH_TOKEN"; }; f'
+    -c 'credential.https://github.com.helper=!f() { test "$1" = get && printf "username=x-access-token\npassword=%s\n" "$GH_TOKEN"; }; f'
   )
 elif [[ "$1" != "-f" ]]; then
   # Do a dry-run when script it executed locally, unless the
@@ -119,9 +121,9 @@ for yaml_file in ${FILES}; do
 
         url="$(jq -r "$json_path" <<< "$json")"
 
-        # Registry metadata is third-party input: accept only plain https URLs,
-        # and pass the value as data (strenv) rather than as part of the yq
-        # expression.
+        # Registry metadata is third-party input: accept only plain ASCII https
+        # URLs (IDNs are expected in punycode), and pass the value as data
+        # (strenv) rather than as part of the yq expression.
         if [[ ! "$url" =~ ^https://[A-Za-z0-9._~:/?#@!$\&\'\(\)*+,\;=%-]+$ ]]; then
             return
         fi
