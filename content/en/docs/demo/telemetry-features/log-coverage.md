@@ -8,19 +8,22 @@ aliases: [log_service_features, logging-features, ../logging-features]
 | --------------- | ---------- | --------- |
 | Accounting      | .NET       | ✅        |
 | Ad              | Java       | ✅        |
+| Agent           | Python     | 🚧        |
 | Cart            | .NET       | ✅        |
-| Checkout        | Go         | 🚧        |
+| Chatbot         | Python     | 🚧        |
+| Checkout        | Go         | ✅        |
 | Currency        | C++        | ✅        |
-| Email           | Ruby       | 🚧        |
+| Email           | Ruby       | ✅        |
 | Flagd           | Go         | 🚧        |
-| Flagd-ui        | TypeScript | 🚧        |
+| Flagd-ui        | Elixir     | 🚧        |
 | Fraud Detection | Kotlin     | ✅        |
 | Frontend        | TypeScript | 🚧        |
 | Frontend Proxy  | Envoy      | ✅        |
 | Image Provider  | NGINX      | 🚧        |
-| Load Generator  | Python     | ✅        |
-| Payment         | JavaScript | 🚧        |
-| Product Catalog | Go         | 🚧        |
+| Load Generator  | Go/k6      | ✅        |
+| MCP             | Python     | 🚧        |
+| Payment         | JavaScript | ✅        |
+| Product Catalog | Go         | ✅        |
 | Quote           | PHP        | ✅        |
 | Recommendation  | Python     | ✅        |
 | Shipping        | Rust       | ✅        |
