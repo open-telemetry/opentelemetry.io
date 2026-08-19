@@ -66,6 +66,8 @@ components:
     - open-telemetry/rust-approvers
   content/en/docs/languages/swift:
     - open-telemetry/swift-approvers
+‎  content/en/docs/platforms/linux:
+    - open-telemetry/packaging-approvers
   content/en/docs/security:
     - open-telemetry/sig-security-maintainers
   content/en/docs/specs:
