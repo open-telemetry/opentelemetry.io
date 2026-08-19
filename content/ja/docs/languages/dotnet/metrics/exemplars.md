@@ -34,7 +34,7 @@ default_lang_commit: 86f0b7d243c8b1a6ac0e7ad57532c7a84b96d03c
 
 1. Jaeger の[最新のバイナリディストリビューション](https://www.jaegertracing.io/download/)をダウンロードする
 2. ローカルディレクトリに展開する
-3. `jaeger-all-in-one(.exe)` 実行ファイルを実行する:
+3. `jaeger-all-in-one(.exe)` 実行ファイルを実行する。
 
 ```shell
 ./jaeger-all-in-one --collector.otlp.enabled
@@ -44,7 +44,7 @@ default_lang_commit: 86f0b7d243c8b1a6ac0e7ad57532c7a84b96d03c
 
 1. Prometheus の[最新リリース](https://prometheus.io/download/)をダウンロードする
 2. ローカルディレクトリに展開する
-3. 必要なフィーチャーフラグを指定して Prometheus を実行する:
+3. 必要なフィーチャーフラグを指定して Prometheus を実行する。
 
 ```shell
 ./prometheus --enable-feature=exemplar-storage --web.enable-otlp-receiver
@@ -76,7 +76,7 @@ default_lang_commit: 86f0b7d243c8b1a6ac0e7ad57532c7a84b96d03c
 
 ## アプリケーションの計装 {#instrument-your-application}
 
-以下は、OpenTelemetry を使用して .NET アプリケーションを計装し、エグゼンプラーを有効にする方法の例です:
+以下は、OpenTelemetry を使用して .NET アプリケーションを計装し、エグゼンプラーを有効にする方法の例です。
 
 ```csharp
 using System;
@@ -155,7 +155,7 @@ tracerProvider.Dispose();
 4. "Exemplars" オプションをオンにしてクエリを更新する
 
 エグゼンプラーは、メトリクスチャート上にひし形のドットとして表示されます。
-エグゼンプラーをクリックすると、以下の詳細が表示されます:
+エグゼンプラーをクリックすると、以下の詳細が表示されます。
 
 - 測定値が記録されたタイムスタンプ
 - 生の値
