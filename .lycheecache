@@ -11,6 +11,7 @@ https://ai.pydantic.dev/,200,1787032238
 https://andygol-otel.netlify.app/uk/,200,1787032337
 https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2,200,1786569032
 https://anywhere.eks.amazonaws.com/docs/getting-started/optional/hostosconfig/,200,1787029611
+https://api7.ai/ai-gateway,200,1787150578
 https://apicontext.com/,200,1787029661
 https://apisix.apache.org/,200,1787032615
 https://app.netlify.com/sites/opentelemetry/overview,200,1786427565
@@ -378,6 +379,7 @@ https://doc.rust-lang.org/cargo/,200,1787029615
 https://doc.rust-lang.org/std/io/trait.Write.html,200,1787032523
 https://doc.traefik.io/traefik-hub/operations/metrics,200,1787032365
 https://doc.traefik.io/traefik/observability/tracing/opentelemetry/,200,1787029661
+https://docs.api7.ai/ai-gateway/observability/exporters,200,1787150578
 https://docs.apica.io/integrations/list-of-integrations/opentelemetry,200,1787029660
 https://docs.apimetrics.io/docs/export-with-opentelemetry,200,1787032365
 https://docs.astral.sh/uv/,200,1787032156
@@ -1095,6 +1097,8 @@ https://github.com/apache/cassandra/blob/cassandra-5.0/doc/native_protocol_v5.sp
 https://github.com/apache/dubbo,200,1787029742
 https://github.com/apache/dubbo/,200,1787029636
 https://github.com/apache/struts,200,1786427568
+https://github.com/api7,200,1787150580
+https://github.com/api7/aisix,200,1787150580
 https://github.com/argoproj/argo-workflows,200,1787032456
 https://github.com/arminru,200,1787032231
 https://github.com/arthi-arumugam-git,200,1786427576
