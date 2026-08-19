@@ -1,6 +1,6 @@
 # cSpell:ignore Dartastic Bushe
 title: Dartastic OpenTelemetry SDK for Dart
-registryType: instrumentation
+registryType: sdk
 language: dart
 tags:
   - dart
