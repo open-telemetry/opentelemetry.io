@@ -10,7 +10,7 @@ tags:
   - llm
 license: Apache-2.0
 description:
-  AISIX is an open-source AI gateway for LLMs and AI agents that natively
+  AISIX is an open source AI gateway for LLMs and AI agents that natively
   exports OTLP trace spans following the GenAI semantic conventions, alongside
   Prometheus metrics.
 authors:
