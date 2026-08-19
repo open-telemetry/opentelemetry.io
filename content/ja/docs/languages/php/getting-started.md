@@ -4,6 +4,7 @@ description: PHP 向け OpenTelemetry を使い始めましょう。
 aliases: [getting_started]
 weight: 10
 default_lang_commit: 1604e4a539552aea3cd5caff67e7c476d26ab7d6
+drifted_from_default: true
 cSpell:ignore: darwin pecl rolldice strval
 ---
 
@@ -107,7 +108,7 @@ php -S localhost:8080
 
    > [!NOTE]
    >
-   > エクステンションのインストール方法の代替手段については、[ゼロコード計装](/docs/zero-code/php/#install-the-opentelemetry-extension)で詳しく説明しています。
+   > エクステンションのインストール方法の代替手段については、[ゼロコード計装](/docs/zero-code/php/auto/#install-the-opentelemetry-extension)で詳しく説明しています。
 
 3. `php.ini` ファイルにエクステンションを追加します。
 
