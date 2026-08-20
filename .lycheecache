@@ -1460,6 +1460,7 @@ https://github.com/heroku,200,1787029673
 https://github.com/hertz-contrib/obs-opentelemetry,200,1787032531
 https://github.com/hgaol,200,1786427594
 https://github.com/hibernate/hibernate-orm,200,1787029636
+https://github.com/hilmarf,200,1787198167
 https://github.com/honeycombio/honeycomb-collector-distro,200,1786427564
 https://github.com/honeycombio/honeycomb-collector-distro/blob/main/README.md,200,1786427564
 https://github.com/honeycombio/honeycomb-opentelemetry-android,200,1787029661
@@ -2662,7 +2663,9 @@ https://github.com/open-telemetry/opentelemetry-demo,200,1787029618
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/README.md?plain=1,200,1787029619
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/accounting/,200,1787029618
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/ad/,200,1787032165
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/agent/,200,1787232661
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/cart/,200,1787032165
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/chatbot/,200,1787232661
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/checkout/,200,1787029618
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/currency/,200,1787032166
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/email/,200,1787032165
@@ -2674,6 +2677,7 @@ https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/,200
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/image-provider/,200,1787032165
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/kafka/,200,1787029618
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/load-generator/,200,1787032165
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/mcp/,200,1787232661
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml,200,1787029618
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml,200,1787029619
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/payment/,200,1787029618
@@ -2685,6 +2689,9 @@ https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/,200
 https://github.com/open-telemetry/opentelemetry-demo/issues/1601,200,1786427591
 https://github.com/open-telemetry/opentelemetry-demo/issues/3720,200,1786427590
 https://github.com/open-telemetry/opentelemetry-demo/pull/3604,200,1786427590
+https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/agent#readme,200,1787232661
+https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/chatbot#readme,200,1787232661
+https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/mcp#readme,200,1787232661
 https://github.com/open-telemetry/opentelemetry-demo/tree/main/test,200,1787029618
 https://github.com/open-telemetry/opentelemetry-dotnet,200,1787032168
 https://github.com/open-telemetry/opentelemetry-dotnet-contrib,200,1786427565
@@ -3913,6 +3920,7 @@ https://github.com/open-telemetry/opentelemetry.io/issues/11210,200,1786391968
 https://github.com/open-telemetry/opentelemetry.io/issues/6592,200,1785868419
 https://github.com/open-telemetry/opentelemetry.io/issues/9449,200,1785739344
 https://github.com/open-telemetry/opentelemetry.io/issues/new,200,1785868416
+https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra,200,1787230348
 https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing,200,1785868415
 https://github.com/open-telemetry/opentelemetry.io/pull/10911,200,1786028673
 https://github.com/open-telemetry/opentelemetry.io/pull/5891,200,1785739340
@@ -4444,6 +4452,7 @@ https://github.com/v0y4g3r,200,1787032241
 https://github.com/vercel,200,1787032615
 https://github.com/vercel/next.js/tree/canary/packages/next/src/server/lib/trace,200,1786427574
 https://github.com/vincentfree,200,1787029631
+https://github.com/viorel-alexandrescu,200,1787198167
 https://github.com/vipinvkmenon,200,1787032243
 https://github.com/vishweshbankwar,200,1787029631
 https://github.com/vitorvasc,200,1786427586
@@ -5990,6 +5999,7 @@ https://www.flipt.io/docs/configuration/observability#tracing,200,1787029661
 https://www.freedesktop.org/software/systemd/man/latest/machine-id.html,200,1787029640
 https://www.fulcrumapp.com/,200,1787032164
 https://www.gnupg.org/gph/en/manual.html#AEN161,200,1787038850
+https://www.gradio.app/,200,1787232661
 https://www.graphql-java.com/,200,1786427563
 https://www.gwtproject.org/,200,1787029632
 https://www.heroku.com/,200,1787029661
