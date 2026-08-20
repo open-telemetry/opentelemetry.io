@@ -846,6 +846,7 @@ https://gitea.io/,200,1787032251
 https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/,200,1787029608
 https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/,200,1787029617
 https://github.com/,200,1787032162
+https://github.com/123liuziming,200,1787196021
 https://github.com/AaronRM,200,1787032238
 https://github.com/AbhiPrasad,200,1787032240
 https://github.com/AlchemyDing,200,1787032240
@@ -1072,6 +1073,7 @@ https://github.com/alexandriastech,200,1787032163
 https://github.com/alexmojaki,200,1787029625
 https://github.com/alexvanboxel,200,1787032234
 https://github.com/alibaba/druid,200,1787029636
+https://github.com/alibaba/loongsuite-python,200,1787196021
 https://github.com/alibaba/opentelemetry-go-auto-instrumentation,200,1787032429
 https://github.com/alizenhom,200,1787032240
 https://github.com/alolita,206,1787033412
@@ -1624,6 +1626,7 @@ https://github.com/kyverno,200,1787029675
 https://github.com/lachmatt,200,1787032236
 https://github.com/lahsivjar,200,1787029628
 https://github.com/lalitb,200,1787029624
+https://github.com/langchain-ai/langchain,200,1787196021
 https://github.com/laurit,200,1787029624
 https://github.com/legendecas,200,1787029624
 https://github.com/lettuce-io/lettuce-core,200,1787032248
@@ -1795,6 +1798,7 @@ https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70
 https://github.com/open-telemetry/community/blob/706839937eb5886bb07da6bd9d63245839e3cc2f/guides/maintainer/popular-issues.md?from_branch=main#recommended-footnote-on-issue-templates,200,1787032428
 https://github.com/open-telemetry/community/blob/706839937eb5886bb07da6bd9d63245839e3cc2f/guides/maintainer/popular-issues.md?from_branch=main,200,1787032428
 https://github.com/open-telemetry/community/blob/898a6d5b4030a806883717dff3382c06d3dbd324/projects/packaging.md,200,1787032424
+https://github.com/open-telemetry/community/blob/8b6c5060617ced1caf4c39ff5b7318aa2e9c7569/projects/gen-ai.md,200,1787196021
 https://github.com/open-telemetry/community/blob/96374af6e5b681664d80402bdc08d9a2d439a966/governance-charter.md,200,1787032413
 https://github.com/open-telemetry/community/blob/b35f0f6c9801bfbe894211fb3d95afa3157662ec/community-members.md?from_branch=main#governance-committee,200,1787029673
 https://github.com/open-telemetry/community/blob/b35f0f6c9801bfbe894211fb3d95afa3157662ec/community-members.md?from_branch=main#technical-committee,200,1787032428
@@ -3454,6 +3458,8 @@ https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/propaga
 https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/resource/opentelemetry-resource-detector-azure,200,1787032624
 https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/resource/opentelemetry-resource-detector-containerid,200,1787032624
 https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/sdk-extension/opentelemetry-sdk-extension-aws,200,1787029748
+https://github.com/open-telemetry/opentelemetry-python-contrib/tree/v0.65b0/util/opentelemetry-util-genai,200,1787196022
+https://github.com/open-telemetry/opentelemetry-python-genai/issues/185,200,1787196022
 https://github.com/open-telemetry/opentelemetry-python-genai/tree/main/instrumentation/opentelemetry-instrumentation-genai-anthropic,200,1787032617
 https://github.com/open-telemetry/opentelemetry-python-genai/tree/main/instrumentation/opentelemetry-instrumentation-genai-claude-agent-sdk,200,1787032617
 https://github.com/open-telemetry/opentelemetry-python-genai/tree/main/instrumentation/opentelemetry-instrumentation-genai-langchain,200,1787032617
@@ -3959,6 +3965,7 @@ https://github.com/open-telemetry/oteps/pull/225,200,1787032335
 https://github.com/open-telemetry/oteps/pull/258,200,1787029638
 https://github.com/open-telemetry/oteps/pull/264,200,1787029637
 https://github.com/open-telemetry/semantic-conventions,200,1786427569
+https://github.com/open-telemetry/semantic-conventions-conformance,200,1787196022
 https://github.com/open-telemetry/semantic-conventions-genai,200,1787032251
 https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/README.md,200,1787032474
 https://github.com/open-telemetry/semantic-conventions-java,200,1786427572
@@ -4103,6 +4110,7 @@ https://github.com/open-telemetry/weaver/blob/main/schemas/semconv-syntax.md#typ
 https://github.com/open-telemetry/weaver/blob/main/schemas/semconv-syntax.md,200,1787032255
 https://github.com/open-telemetry/weaver/releases,200,1787032246
 https://github.com/open-telemetry/weaver/tree/4da6fa62e174e1f0df1a990234bd32f5018cb23a/crates/weaver_live_check?from_branch=main#readme,200,1786427585
+https://github.com/open-telemetry/weaver/tree/v0.25.1/crates/weaver_live_check,200,1787196022
 https://github.com/openai/openai-java,200,1787032248
 https://github.com/openclarity/apiclarity/tree/master/plugins/otel-collector,200,1787029738
 https://github.com/opencontainers/image-spec/blob/main/descriptor.md#digests,200,1787029639
