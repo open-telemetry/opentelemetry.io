@@ -2,6 +2,7 @@
 title: テスト
 description: チェックとテストの戦略、プロセス、テストページ。
 default_lang_commit: ee923995f520211ef16f8744ce0a9b28a24bcca9
+drifted_from_default: true
 ---
 
 このセクションには、ウェブサイトのテストやデプロイ後のライブチェックで使用されるチェックとテストの戦略、プロセス、テストページが含まれています。
