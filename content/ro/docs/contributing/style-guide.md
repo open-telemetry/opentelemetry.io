@@ -15,8 +15,8 @@ params:
     >
     > Acest site folosește formatorul [Prettier] și necesită o linie goală care să separe eticheta/titlul alertei de corpul alertei.
 
-cSpell:ignore: postgre
 default_lang_commit: a952eff2a2324c36e48dd9465407074886e22b91
+cSpell:ignore: postgre
 ---
 
 We don't have an official style guide yet, but the current OpenTelemetry
@@ -217,6 +217,5 @@ Pentru a afla cum să remediezi problemele de validare, vezi
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
 [.markdownlint-cli2.yaml]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint-cli2.yaml
-[line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [Prettier]: https://prettier.io
