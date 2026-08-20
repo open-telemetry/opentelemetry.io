@@ -2,8 +2,7 @@
 title: コンテキスト伝搬
 weight: 10
 description: 分散トレーシングを可能にするコンセプトについて学びます。
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
-drifted_from_default: true
+default_lang_commit: cc127cac40d5d6aaf48e015f1cf4dbf76bff587b
 ---
 
 コンテキスト伝搬を使用すると、[シグナル](../signals/)（[トレース](../signals/traces/)、[メトリクス](../signals/metrics/)、および[ログ](../signals/logs/)）を生成された場所に関係なく相互に関連づけることができます。
@@ -67,12 +66,12 @@ OpenTelemetry SDKは、ログをトレースと自動的に関連づけること
 ### メトリクス {#metrics}
 
 メトリクスの場合、コンテキスト伝搬により、そのコンテキスト内の測定値を集約できます。
-たとえば、すべての`GET /product`リクエストのレスポンスタイムを確認するだけでなく、`POST /cart/add > GET /product`および`GET /checkout < GET /product`といった組み合わせのメトリクスも取得できます。
+たとえば、すべての`GET /product`リクエストのレスポンスタイムを確認するだけでなく、`POST /cart/add > GET /product`および`GET /checkout > GET /product`といった組み合わせのメトリクスも取得できます。
 
 | 名前                            | 毎秒の呼び出し回数 | 平均レスポンスタイム |
 | ------------------------------- | ------------------ | -------------------- |
 | `* > GET /product`              | 370                | 300ms                |
-| `POST /card/add > GET /product` | 330                | 130ms                |
+| `POST /cart/add > GET /product` | 330                | 130ms                |
 | `GET /checkout > GET /product`  | 40                 | 1703ms               |
 
 ## カスタムコンテキスト伝搬 {#custom-context-propagation}

@@ -13,7 +13,10 @@ these controls, see [Supply-chain security][].
 
 CI, the devcontainer, and Netlify install lock-exact and script-free, then
 explicitly re-enable the one reviewed hook: the `hugo-extended` rebuild that
-fetches the pinned Hugo binary. Per environment:
+fetches the pinned Hugo binary. The rebuild runs through
+`scripts/rebuild-hugo-extended.mjs`, which retries the fetch with bounded
+backoff and refuses to run while any `HUGO_*` installer override is set. Per
+environment:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.
@@ -23,9 +26,8 @@ fetches the pinned Hugo binary. Per environment:
   after the [inert auto-install](#inert-netlify-auto-install), between
   clean-working-tree checks:
   - Lock drift or any other Git-visible change fails the build.
-  - If the check fails on residue from a retired path (Netlify's build cache
-    restores it), clear the deploy context's build cache and retry rather than
-    ignoring the path.
+  - For failures on paths the install never touched, see
+    [Stale Netlify build cache](#netlify-build-cache) below.
 - **Local**: `npm run install:safe`, or a standard `npm install`, which follows
   the lock while it agrees with `package.json` and gates lifecycle scripts by
   the [allowlist](#lifecycle-script-allowlist) rather than disabling them; see
@@ -33,6 +35,37 @@ fetches the pinned Hugo binary. Per environment:
 
 The nested [Docsy][] theme setup follows the same contract: the `prepare` step
 invokes Docsy's own lock-exact, script-free theme-dependency install.
+
+### Stale Netlify build cache {#netlify-build-cache}
+
+Netlify keeps a build cache per [deploy context][]:
+
+- One for production
+- One per **head branch name** for Deploy Previews, seeded from the production
+  cache on the name's first build. Cache lineages die only by explicit clear:
+  branch deletion is invisible to Netlify, so a branch recreated under the same
+  name (recycled bot-branch names included) re-attaches to the old cache.
+
+Each cache [includes a clone of the repository][], and checking out a commit
+that drops a git submodule leaves the submodule's working tree in place, so a
+removed submodule can ride a cache back into later builds as untracked residue
+and fail the clean-working-tree checks: the deploy log shows the path in a
+`??`-prefixed status line.
+
+Clear the affected [build cache][] rather than adding the path to `.gitignore`:
+
+- **Production**:
+  - Clear cache and deploy site, under **Deploys** > **Trigger deploy**.
+- **Deploy Previews**: each already-built branch holds its own cache copy,
+  untouched by a production clear after the fact.
+  - Clear it from the PR's latest deploy page with **Retry** > **Clear cache and
+    retry with latest branch commit**. There is no bulk clear across branches.
+
+> [!IMPORTANT]
+>
+> After removing a git submodule, clear the production build cache as part of
+> the removal, before the residue seeds per-branch caches. Also clear the
+> lineage of any recycled bot-branch name; a production clear never reaches it.
 
 ## Updating dependencies {#updating}
 
@@ -71,6 +104,34 @@ the contributor making the change:
   and investigate rather than committing the rewrite.
 
 ## Supply-chain controls {#controls}
+
+### Supply-chain audit {#audit}
+
+The supply-chain audit test, [`scripts/supply-chain-audit.test.mjs`][], verifies
+the controls below from committed files alone on every `test:local-tools` run,
+so a regressed control fails a test rather than waiting for an incident. For the
+verification principles behind the audit itself, see its
+[design page](../../design/supply-chain-audit/).
+
+When the audit fails on your PR, the assertion message states the expected
+condition; the common cases:
+
+- **You bumped a dependency that has an `allowScripts` entry**: follow
+  [script-bearing packages](#script-bearing-packages); the failure message names
+  the version the entry must move to.
+- **You changed an install-path script, `.npmrc`, or `netlify.toml`**: that
+  failure is the point. The audit pins the install surface so that every change
+  to it gets a deliberate review. Update the corresponding assertion together
+  with your change, and say why in the PR.
+
+Never loosen an assertion just to get to green: each one enforces a control on
+this page, so first work out which control your change relaxes.
+
+Out of the audit's scope:
+
+- GitHub workflow files
+- The [Docsy][] theme's own dependency install (audited upstream)
+- The build-half npm scripts past the install boundary
 
 ### Release cooldown
 
@@ -142,13 +203,35 @@ replaces `node_modules` wholesale, so auto-install or build-cache residue there
 does not survive into the build even though `node_modules` is invisible to the
 clean-working-tree checks (they see only Git-visible changes).
 
+### No bare npx
+
+Repository wiring (package scripts, CI, helper scripts, contributor docs) never
+invokes a bin as `npx BIN`: on a stale or missing `node_modules`, `npx` falls
+back to the public registry and executes whatever package holds that name. Its
+install prompt is no defense: it's skipped in non-interactive contexts and
+invites a reflexive yes elsewhere. Localized copies of contributor docs catch up
+with this rule through [drift tracking][].
+
+- **Instead**:
+  - Package scripts invoke dependency-provided bins directly; npm puts
+    `node_modules/.bin` on their `PATH`, and a missing bin fails loudly with
+    zero registry traffic.
+  - Contexts without that `PATH` entry (docs, standalone scripts) use
+    `npm exec --no -- BIN`, which never installs.
+- **Enforcement**: review discipline; there is no automated check.
+
 <!-- prettier-ignore-start -->
-[install contracts]: #install-contracts
 [`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
+[`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
+[build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
+[deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
 [Docsy]: https://www.docsy.dev/
+[drift tracking]: /docs/contributing/localization/#track-changes
+[includes a clone of the repository]: https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2
+[install contracts]: #install-contracts
 [local setup]: /docs/contributing/development/#local-setup
 [netlify-deps]: https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm
 [Netlify]: https://www.netlify.com/

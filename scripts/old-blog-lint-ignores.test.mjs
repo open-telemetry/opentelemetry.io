@@ -84,7 +84,7 @@ function run(cmd, args) {
   return { status: res.status, out: (res.stdout ?? '') + (res.stderr ?? '') };
 }
 
-const npx = (...args) => run('npx', ['--no-install', ...args]);
+const npx = (...args) => run('npm', ['exec', '--no', '--', ...args]);
 
 describe('old blog posts are ignored by lint/format tooling', () => {
   before(() => {

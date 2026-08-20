@@ -2,21 +2,36 @@
 
 UPDATE_YAML="yq eval -i"
 GIT=git
-GH=gh
+GH_WRITE=gh
 NPM=npm
 FILES="${FILES:-./data/registry/*.yml}"
 
 
+GIT_PUSH_AUTH=()
+
 if [[ -n "$GITHUB_ACTIONS" ]]; then
-  # Ensure that we're starting from a clean state
+  if [[ -z "${GH_TOKEN:-}" ]]; then
+    echo "::error::Expected the App token in GH_TOKEN."
+    exit 1
+  fi
+
   git reset --hard origin/main
+
+  # Supply the App token only to a github.com push. Reset configured helpers
+  # first, then use a host-scoped helper that keeps the token out of argv,
+  # git config, and disk, and declines a cross-host repoint.
+  # shellcheck disable=SC2016 # the helper body is evaluated by git, not here
+  GIT_PUSH_AUTH=(
+    -c credential.helper=
+    -c 'credential.https://github.com.helper=!f() { test "$1" = get && printf "username=x-access-token\npassword=%s\n" "$GH_TOKEN"; }; f'
+  )
 elif [[ "$1" != "-f" ]]; then
   # Do a dry-run when script it executed locally, unless the
   # force flag is specified (-f).
   echo "Doing a dry-run when run locally. Use -f as the first argument to force execution."
   UPDATE_YAML="yq eval"
   GIT="echo > DRY RUN: git "
-  GH="echo > DRY RUN: gh "
+  GH_WRITE="echo > DRY RUN: gh "
   NPM="echo > DRY RUN: npm "
 else
   # Local execution with -f flag (force real vs. dry run)
@@ -27,13 +42,11 @@ body=""
 
 for yaml_file in ${FILES}; do
     echo "$yaml_file"
-    # Check if yq is installed
     if ! command -v yq &> /dev/null; then
         echo "yq could not be found, please install yq."
         exit 1
     fi
 
-    # Function to get latest version based on registry
     get_latest_version() {
         package_name=$1
         registry=$2
@@ -43,16 +56,17 @@ for yaml_file in ${FILES}; do
                 curl -s "https://registry.npmjs.org/${package_name}/latest" | jq -r '.version'
                 ;;
             packagist)
-                curl -s "https://repo.packagist.org/p2/${package_name}.json" | jq -r ".packages.\"${package_name}\"[0].version"
+                curl -s "https://repo.packagist.org/p2/${package_name}.json" |
+                    jq -r --arg name "$package_name" '.packages[$name][0].version'
                 ;;
             gems)
                 curl -s "https://rubygems.org/api/v1/versions/${package_name}/latest.json" | jq -r '.version'
                 ;;
             go)
-                go list -m --versions "$package_name" | awk '{ if (NF > 1) print $NF ; else print "" }'
+                go list -m --versions -- "$package_name" | awk '{ if (NF > 1) print $NF ; else print "" }'
                 ;;
             go-collector)
-                go list -m --versions "$package_name" | awk '{ if (NF > 1) print $NF ; else print "" }'
+                go list -m --versions -- "$package_name" | awk '{ if (NF > 1) print $NF ; else print "" }'
                 ;;
             nuget)
                 lower_case_package_name=$(echo "$package_name" | tr '[:upper:]' '[:lower:]')
@@ -105,22 +119,29 @@ for yaml_file in ${FILES}; do
 
         url="$(jq -r "$json_path" <<< "$json")"
 
-        if [ -z "$url" ] || [ "$url" = "null" ]; then
+        # Treat third-party metadata as data, accepting ASCII HTTPS without
+        # userinfo (IDNs as punycode). A variable avoids Bash escape-quoting
+        # admitting `\`.
+        url_re="^https://[A-Za-z0-9._~:/?#@!\$&'()*+,;=%-]+\$"
+        if [[ ! "$url" =~ $url_re ]]; then
+            return
+        fi
+        authority=${url#https://}
+        authority=${authority%%[/?#]*}
+        if [[ "$authority" == *"@"* ]]; then
             return
         fi
 
-        # Check HTTP status (no output, no body)
-        status="$(curl -s -o /dev/null -w '%{http_code}' "$url")"
+        status="$(curl -s -o /dev/null -w '%{http_code}' -- "$url")"
 
-        # Only update when status is 2xx
         case "$status" in
             2??)
-                ${UPDATE_YAML} "${setting_path} = \"$url\"" "$yaml_file"
+                export CHECKED_URL="$url"
+                ${UPDATE_YAML} "${setting_path} = strenv(CHECKED_URL)" "$yaml_file"
                 ;;
         esac
     }
 
-    # Read package details
     name=$(yq eval '.package.name' "$yaml_file")
     registry=$(yq eval '.package.registry' "$yaml_file")
     current_version=$(yq eval '.package.version' "$yaml_file")
@@ -128,7 +149,6 @@ for yaml_file in ${FILES}; do
     if [ -z "$name" ] || [ -z "$registry" ]; then
         echo "${yaml_file}: Package name and/or registry are missing in the YAML file."
     else
-        # Get latest version
         latest_version=$(get_latest_version "$name" "$registry" || echo "Could not fetch version.")
 
         if [ "$latest_version" == "Could not fetch version." ]; then
@@ -138,33 +158,39 @@ for yaml_file in ${FILES}; do
         elif [ -z "$latest_version" ]; then
             echo "${yaml_file} ($registry): Could not get latest version from registry."
         elif [ -z "$current_version" ]; then
-            ${UPDATE_YAML} ".package.version = \"$latest_version\"" "$yaml_file"
+            export LATEST_VERSION="$latest_version"
+            ${UPDATE_YAML} '.package.version = strenv(LATEST_VERSION)' "$yaml_file"
             update_metadata "$name" "$registry" "$yaml_file"
             row="${yaml_file} ($registry): Version field was missing. Populated with the latest version: $latest_version"
             echo "${row}"
-            body="${body}\n- ${row}"
+            body="${body}"$'\n'"- ${row}"
         elif [ "$latest_version" != "$current_version" ]; then
-            ${UPDATE_YAML} ".package.version = \"$latest_version\"" "$yaml_file"
+            export LATEST_VERSION="$latest_version"
+            ${UPDATE_YAML} '.package.version = strenv(LATEST_VERSION)' "$yaml_file"
             update_metadata "$name" "$registry" "$yaml_file"
             row="($registry): Updated version from $current_version to $latest_version in $yaml_file"
             echo "${yaml_file} ${row}"
-            body="${body}\n- ${row}"
+            body="${body}"$'\n'"- ${row}"
         else
             echo "${yaml_file} ($registry): Version is already up to date."
         fi
     fi
 done;
 
-# We use the sha1 over all version updates to uniquely identify the PR.
-tag=$(echo "${body}" | sha1sum | awk '{print $1;}')
+# Preserve existing PR keys for ordinary rows while making the encoding
+# unambiguous.
+tag_input=${body//\\/\\\\}
+tag_input=${tag_input//$'\n'/\\n}
+tag=$(printf '%s\n' "${tag_input}" | sha1sum | awk '{print $1;}')
 message="Auto-update registry versions (${tag})"
 branch="otelbot/auto-update-registry-${tag}"
 
 
-existing_pr_count=$(gh pr list --state all --search "in:title $message" | wc -l)
+pr_search="\"$message\" in:title"
+existing_pr_count=$(gh pr list --state all --search "$pr_search" --json number --jq length)
 if [ "$existing_pr_count" -gt 0 ]; then
     echo "PR(s) already exist for '$message'"
-    gh pr list --state all --search "\"$message\" in:title"
+    gh pr list --state all --search "$pr_search"
     echo "So we won't create another. Exiting."
     exit 0
 fi
@@ -172,17 +198,22 @@ fi
 if [[ -n $(git status --porcelain) ]]; then
     echo "Versions have been updated, formatting and pushing changes."
 
-    $NPM run fix:format
+    # Remove the App token from each npm command's direct child environment.
+    # This limits accidental access; it is not a process-isolation boundary.
+    (unset GH_TOKEN; $NPM run fix:link-cache) ||
+      echo "Link checking failed. Continuing so we can commit the link cache update."
+    (unset GH_TOKEN; $NPM run fix:format)
 
     $GIT checkout -b "$branch"
     $GIT commit -a -m "$message"
-    $GIT push --set-upstream origin "$branch"
+    $GIT "${GIT_PUSH_AUTH[@]}" push --set-upstream origin "$branch"
 
     body_file=$(mktemp)
-    echo -en "${body}" >> "${body_file}"
+    # printf, not echo -e: registry-derived text must not be re-interpreted.
+    printf '%s' "${body}" >> "${body_file}"
 
     echo "Submitting auto-update PR '$message'."
-    $GH pr create --title "$message" --body-file "${body_file}"
+    $GH_WRITE pr create --title "$message" --body-file "${body_file}"
 
 else
     echo "No changes detected."
