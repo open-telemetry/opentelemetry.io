@@ -30,9 +30,12 @@ discutǎ
 editezi
 elimini
 emiți
+emoji
+emojiilor
 enumerează
 explorezi
 exportatorilor
+formatorul
 forțezi
 gestionezi
 informatica
@@ -66,7 +69,8 @@ postând
 prepopulată
 receptoarelor
 reconstruiește
-remediează
+remediază
+remediezi
 reobține
 repetoriului
 revizuii

@@ -8,7 +8,7 @@ params:
     > [!TIP]
     >
     > Dacă scrii conținut nou, în general, preferi să folosești această sintaxă de alertă cu citate bloc
-    > în loc de scurtcodul Docsy
+    > în loc de sintaxa  Docsy
     > [alert shortcode](https://www.docsy.dev/docs/content/shortcodes/#alert).
 
     > [!WARNING] :warning: Este necesară o linie goală!
@@ -201,7 +201,7 @@ We use [Prettier][] to enforce file formatting. Invoke it using: Folosim
 - `npm run fix:format:diff` pentru a formata doar fișierele care s-au modificat
   de la ultimul commit
 - `npm run fix:format:staged` pentru a formata doar fișierele care sunt
-  modificate pentru următoarul commit
+  modificate pentru următorul commit
 
 ## Nume de fișiere {#file-names}
 
@@ -217,5 +217,6 @@ Pentru a afla cum să remediezi problemele de validare, vezi
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
 [.markdownlint-cli2.yaml]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint-cli2.yaml
+[line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [Prettier]: https://prettier.io
