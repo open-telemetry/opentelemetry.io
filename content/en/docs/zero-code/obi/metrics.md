@@ -4,7 +4,7 @@ linkTitle: Exported metrics
 description:
   Learn about the application, runtime, and network metrics OBI can export.
 weight: 21
-cSpell:ignore: gogc replicaset statefulset stddev
+cSpell:ignore: eventloop gogc replicaset statefulset stddev
 ---
 
 The following table describes the exported metrics in both OpenTelemetry and
