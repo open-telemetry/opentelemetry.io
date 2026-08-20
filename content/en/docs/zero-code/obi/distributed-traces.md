@@ -206,7 +206,10 @@ Starting with OBI v0.11.0, OBI can instrument applications that use the
 OpenTelemetry Go Trace API without registering an SDK. When this integration is
 active, OBI detects Trace API calls and exports the resulting manual spans
 alongside its eBPF spans. Applications that already register an OpenTelemetry
-SDK continue to manage and export their own SDK telemetry.
+SDK continue to manage and export their own SDK telemetry. Registering any
+global `TracerProvider`, including by calling
+`otel.SetTracerProvider(auto.TracerProvider())`, prevents this automatic
+activation.
 
 OBI activates the integration only when all of the following conditions are met:
 
@@ -226,6 +229,14 @@ scope, events, or requested span kind.
 In OBI v0.11.0, the encoded payload for each span exported through the Auto SDK
 must not exceed 16 KiB. OBI does not emit a metric or log message when it
 activates the integration or drops an oversized payload.
+
+Known limitations and follow-up work include
+[head sampling](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2793),
+[context handoffs](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2794),
+[external and remote parents and `TraceState`](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2959),
+[larger payloads and drop observability](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2958),
+and
+[log enrichment](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2932).
 
 For the supported combinations of module version, checksum, and architecture,
 see the
