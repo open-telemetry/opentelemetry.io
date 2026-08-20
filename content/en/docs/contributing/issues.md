@@ -33,15 +33,20 @@ issue.
 
 ## CI and infrastructure issues
 
-Issues labeled [`CI/infra`][] are for **maintainers _only_**. Such issues
-concern the repository's own workflows, required checks, tooling, and settings.
-Unlike content and localization work, changes in this area can't be meaningfully
-tested from a fork (their failure modes surface in upstream CI and merge-time
-behavior), and they often depend on maintainer roadmaps and context not visible
-in the issue text. Some of that context is deliberately private: work affecting
-the site's security posture, such as hardening and embargoed fixes, isn't
-discussed publicly before it lands. Note that `triage:accepted` on such an issue
-means that the problem is confirmed, not that the work is up for grabs.
+Issues labeled [`CI/infra`][] are for **maintainers _only_**: they concern the
+repository's own workflows, required checks, tooling, and settings. Unlike
+content and localization work:
+
+- Changes in this area can't be meaningfully tested from a fork: their failure
+  modes surface in upstream CI and merge-time behavior.
+- The work often depends on maintainer roadmaps and context not visible in the
+  issue text.
+- Some of that context is deliberately private: work affecting the site's
+  security posture, such as hardening and embargoed fixes, isn't discussed
+  publicly before it lands.
+
+Note that `triage:accepted` on such an issue means that the problem is
+confirmed, not that the work is up for grabs.
 
 ## Reporting an issue
 
