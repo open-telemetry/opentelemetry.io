@@ -19,6 +19,9 @@ issue.
    > [!WARNING] Important!
    >
    > {{% param chooseAnIssueAtYourLevel %}}
+   >
+   > Issues labeled `CI/infra` are maintainer-handled; see
+   > [CI and infrastructure issues](#ci-and-infrastructure-issues).
 
 3. Read through the issue comments, if any.
 4. Ask maintainers if this issue is still relevant, and ask any questions you
@@ -27,6 +30,17 @@ issue.
    effect.
 6. Work on fixing the issue. Let maintainers know if you run into any problems.
 7. When ready, [submit your work through a pull request](../pull-requests) (PR).
+
+## CI and infrastructure issues
+
+Issues labeled [`CI/infra`][] are **maintainer-handled**: don't pick them up or
+submit PRs for them unless a maintainer invites contributions on the issue. Such
+issues concern the repository's own workflows, required checks, tooling, and
+settings. Unlike content and localization work, changes in this area can't be
+meaningfully tested from a fork (their failure modes surface in upstream CI and
+merge-time behavior), and they often depend on maintainer roadmaps and context
+not visible in the issue text. Note that `triage:accepted` on such an issue
+means that the problem is confirmed, not that the work is up for grabs.
 
 ## Reporting an issue
 
@@ -83,4 +97,6 @@ Keep the following in mind when filing an issue:
 
 <!-- markdownlint-disable link-image-reference-definitions -->
 
+[`CI/infra`]:
+  https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra
 [choose an issue]: <{{% param _issues %}}>
