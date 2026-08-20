@@ -18,9 +18,8 @@ issue.
 
    > [!WARNING] Important!
    >
-   > {{% param chooseAnIssueAtYourLevel %}}
-   >
-   > Issues labeled `CI/infra` are maintainer-handled; see
+   > {{% param chooseAnIssueAtYourLevel %}} Issues labeled `CI/infra` are
+   > maintainer-handled; see
    > [CI and infrastructure issues](#ci-and-infrastructure-issues).
 
 3. Read through the issue comments, if any.
@@ -33,7 +32,7 @@ issue.
 
 ## CI and infrastructure issues
 
-Issues labeled [`CI/infra`][] are for **maintainers _only_**: they concern the
+Issues labeled [CI/infra][] are for **maintainers _only_**: they concern the
 repository's own workflows, required checks, tooling, and settings. Unlike
 content and localization work:
 
@@ -70,15 +69,10 @@ If you have an idea for new content or a feature, but you aren't sure where it
 should go, you can still file an issue. You can also report bugs and security
 vulnerabilities.
 
-1. Go to
-   [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/) and
-   select **New issue** inside the **Issues** tab.
-
-1. Select the type of issue that best applies to your request or doubt.
-
-1. Fill out the template.
-
-1. Submit the issue.
+1. Go to GitHub and select **[New issue][]** from the **Issues** tab.
+2. Select the type of issue that best applies to your request or doubt.
+3. Fill out the template.
+4. Submit the issue.
 
 ### How to file great issues
 
@@ -96,13 +90,14 @@ Keep the following in mind when filing an issue:
 - If the new issue relates to another issue or pull request, refer to it either
   by its full URL or by the issue or pull request number prefixed with a `#`
   character. For example, `Introduced by #987654`.
-- Follow the
-  [Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
-  Respect your fellow contributors. For example, "The docs are terrible" is not
-  helpful or polite feedback.
+- Follow the [Code of Conduct][]. Respect your fellow contributors. For example,
+  "The docs are terrible" is not helpful or polite feedback.
 
+<!-- prettier-ignore-start -->
+[CI/infra]: https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra
+[Code of Conduct]: https://github.com/open-telemetry/community/blob/main/code-of-conduct.md
+[new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new/
+<!-- prettier-ignore-end -->
 <!-- markdownlint-disable link-image-reference-definitions -->
 
-[`CI/infra`]:
-  https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra
 [choose an issue]: <{{% param _issues %}}>
