@@ -5,6 +5,7 @@ description:
   posible mejora.
 weight: 10
 default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
+drifted_from_default: true
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
 ---
 
