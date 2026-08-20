@@ -18,9 +18,8 @@ issue.
 
    > [!WARNING] Important!
    >
-   > {{% param chooseAnIssueAtYourLevel %}} Issues labeled `CI/infra` are for
-   > maintainers only; see
-   > [CI and infrastructure issues](#ci-and-infrastructure-issues).
+   > {{% param chooseAnIssueAtYourLevel %}} Issues labeled [`CI/infra` are for
+   > maintainers only](#ci-and-infrastructure-issues).
 
 3. Read through the issue comments, if any.
 4. Ask maintainers if this issue is still relevant, and ask any questions you
