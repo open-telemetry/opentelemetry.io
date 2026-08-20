@@ -7,7 +7,7 @@ params:
   alertExamples: |
     > [!TIP]
     >
-    > Dacă scrii conținut nou, în general, preferi să folosești această sintaxă de alertă cu citate bloc
+    > Dacă scrii conținut nou, în general, preferă folosirea acestei sintaxe de alertă cu citate bloc
     > în loc de sintaxa Docsy
     > [alert shortcode](https://www.docsy.dev/docs/content/shortcodes/#alert).
 
@@ -103,7 +103,7 @@ Pentru detalii despre sintaxa alertelor pentru citate bloc, consultă
 
 ### Referințe de link {#link-references}
 
-Când utilizezi Markdown [reference links][], preferi forma _restrânsă_
+Când utilizezi Markdown [linkuri de referință][], preferă forma _restrânsă_
 `[text][]` în locul formei _shortcut_ `[text]`. Deși ambele sunt valide
 [CommonMark][], forma shortcut nu este recunoscută în mod constant de toate
 instrumentele Markdown. În special, dacă scrii `[exemplu]` și uiți definiția,
@@ -123,7 +123,6 @@ Acest lucru este impus de regula personalizată `no-shortcut-ref-link`. Rulează
 `npm run fix:markdown` pentru a converti automat referințele la comenzi rapide.
 
 [CommonMark]: https://spec.commonmark.org/0.31.2/#reference-link
-[reference links]: https://spec.commonmark.org/0.31.2/#reference-link
 
 ### Verificări Markdown {#markdown-standards}
 
@@ -161,7 +160,7 @@ corect. Dacă da, adaugă cuvântul într-una dintre aceste locații:
 ### Lista `cSpell:ignore` locală a paginii {#page-local-`cSpell:ignore`-list}
 
 Dacă cuvântul necunoscut apare doar pe o singură pagină sau pe câteva pagini,
-adăugă-l la o listă `cSpell:ignore` de tip page-local în partea de sus a
+adăugă-l la o listă `cSpell:ignore` de tip `page local` în partea de sus a
 paginii:
 
 ```markdown
@@ -194,8 +193,7 @@ adăugă-l în fișierul [all-words.txt][].
 
 ## Formatul fișierului {#file-format}
 
-We use [Prettier][] to enforce file formatting. Invoke it using: Folosim
-[Prettier][] pentru a impune formatarea fișierelor. Invocă-l folosind:
+Folosim [Prettier][] pentru a impune formatarea fișierelor. Invocă-l folosind:
 
 - `npm run fix:format` pentru a formata toate fișierele
 - `npm run fix:format:diff` pentru a formata doar fișierele care s-au modificat
