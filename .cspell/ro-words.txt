@@ -93,6 +93,7 @@ semnalizate
 semneazǎ
 servii
 setează
+silențios
 sincronizate
 sincronizezi
 soliciți
