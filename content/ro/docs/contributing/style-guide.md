@@ -108,7 +108,7 @@ Când utilizezi Markdown [linkuri de referință][], preferă forma _restrânsă
 [CommonMark][], forma shortcut nu este recunoscută în mod constant de toate
 instrumentele Markdown. În special, dacă scrii `[exemplu]` și uiți definiția,
 linter-ul [markdownlint][] nu te va avertiza[^md052] -- textul este redat
-silențiOS ca literal `[exemplu]` în loc de link. Cu forma restrânsă
+silențios ca literal `[exemplu]` în loc de link. Cu forma restrânsă
 `[exemplu][]`, linter-ul surprinde imediat definiția lipsă.
 
 [^md052]:
@@ -123,6 +123,7 @@ Acest lucru este impus de regula personalizată `no-shortcut-ref-link`. Rulează
 `npm run fix:markdown` pentru a converti automat referințele la comenzi rapide.
 
 [CommonMark]: https://spec.commonmark.org/0.31.2/#reference-link
+[linkuri de referință]: https://spec.commonmark.org/0.31.2/#reference-link
 
 ### Verificări Markdown {#markdown-standards}
 
