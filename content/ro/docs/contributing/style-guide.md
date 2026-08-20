@@ -8,7 +8,7 @@ params:
     > [!TIP]
     >
     > Dacă scrii conținut nou, în general, preferi să folosești această sintaxă de alertă cu citate bloc
-    > în loc de sintaxa  Docsy
+    > în loc de sintaxa Docsy
     > [alert shortcode](https://www.docsy.dev/docs/content/shortcodes/#alert).
 
     > [!WARNING] :warning: Este necesară o linie goală!
@@ -79,7 +79,7 @@ De asemenea, poți utiliza următoarele extensii Markdown:
 Poți scrie alerte folosind următoarea sintaxă extinsă:
 
 - [Markdown cu stil GitHub][GFM] (GFM) [alerts][gfm-alerts]
-- Sintaxa [apel Obsidian][] pentru titluri de alerte personalizate
+- Sintaxa [Obsidian callout][] pentru titluri de alerte personalizate
 
 Iată un exemplu pentru fiecare:
 
@@ -99,7 +99,7 @@ Pentru detalii despre sintaxa alertelor pentru citate bloc, consultă
 [GFM]: https://github.github.com/gfm/
 [Goldmark]: https://gohugo.io/configuration/markup/#goldmark
 [docsy-alerts]: https://www.docsy.dev/docs/content/adding-content/#alerts
-[apel Obsidian]: https://help.obsidian.md/callouts
+[Obsidian callout]: https://help.obsidian.md/callouts
 
 ### Referințe de link {#link-references}
 

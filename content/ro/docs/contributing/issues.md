@@ -74,7 +74,7 @@ Reține următoarele aspecte atunci când trimiți o problemă:
 - Explică impactul specific pe care problema îl are asupra utilizatorilor.
 - Limitează domeniul de aplicare al unei anumite probleme la o unitate de lucru
   rezonabilă. Pentru problemele cu un domeniu de aplicare mare, împarte-le în
-  probleme mai mici. De exemplu, „Remediază documentația de securitate” este
+  probleme mai mici. De exemplu, „Remediează documentația de securitate” este
   prea general, dar „Adaugă detalii la subiectul «Restricționare acces la
   rețea»” este suficient de specific pentru a fi acționabil.
 - Caută problemele existente pentru a vedea dacă există ceva legat sau similar
