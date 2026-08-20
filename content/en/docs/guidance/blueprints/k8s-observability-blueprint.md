@@ -156,7 +156,8 @@ flowchart TD
   Start(["`What are you trying to observe?`"]) -->|"`Kubernetes object/state metrics<br/>`"| Cluster["`**k8s_cluster receiver**<br/>(clusterMetrics preset)<br/>emits k8s.* resource attrs`"]
   Start -->|"`Node/pod/container CPU & memory<br/>`"| Kubelet["`**kubeletstats receiver**<br/>(kubeletMetrics preset)<br/>emits k8s.* resource attrs`"]
   Start -->|"`Host OS metrics kubeletstats<br/>cannot provide<br/>(process, filesystem, disk, …)`"| Host["`**hostmetrics receiver**<br/>(hostMetrics preset)<br/>host/system attrs; node identity via resourcedetection`"]
-  Start -->|"`Kubernetes events & object<br/>resource state`"| Objects["`**k8s_objects receiver**<br/>(kubernetesEvents / kubernetesObjects presets)<br/>identity in the log payload`"]
+  Start -->|"`Kubernetes object<br/>resource state`"| Objects["`**k8s_objects receiver**<br/>(kubernetesObjects preset)<br/>object state as logs`"]
+  Start -->|"`Kubernetes events<br/>(Eviction, OOM, …)`"| Events["`**k8s_events receiver**<br/>(no chart preset yet)<br/>events as logs`"]
   Start -->|"`App OTLP or third-party<br/>Prometheus /metrics`"| Scraped["`Needs pod correlation`"]
 
   Scraped -->|"`PodMonitor/ServiceMonitor CR`"| TAcr["`**Prometheus receiver + Target Allocator**`"]
@@ -167,6 +168,7 @@ flowchart TD
   Kubelet --> Export
   Host --> Export
   Objects --> Export
+  Events --> Export
 
   TAcr --> K8sAttr["`**k8sattributesprocessor**<br/>pod metadata + labels/annotations`"]
   TAann --> K8sAttr
