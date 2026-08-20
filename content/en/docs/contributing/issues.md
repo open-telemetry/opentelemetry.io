@@ -18,8 +18,8 @@ issue.
 
    > [!WARNING] Important!
    >
-   > {{% param chooseAnIssueAtYourLevel %}} Issues labeled [`CI/infra` are for
-   > maintainers only](#ci-and-infrastructure-issues).
+   > {{% param chooseAnIssueAtYourLevel %}} Issues labeled
+   > [`CI/infra` are for maintainers only](#ci-infra).
 
 3. Read through the issue comments, if any.
 4. Ask maintainers if this issue is still relevant, and ask any questions you
@@ -29,7 +29,7 @@ issue.
 6. Work on fixing the issue. Let maintainers know if you run into any problems.
 7. When ready, [submit your work through a pull request](../pull-requests) (PR).
 
-## CI and infrastructure issues
+## CI and infrastructure issues {#ci-infra}
 
 Issues labeled [CI/infra][] are for **maintainers _only_**: they concern the
 repository's own workflows, required checks, tooling, and settings. Unlike
