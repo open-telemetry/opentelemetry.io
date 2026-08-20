@@ -16,7 +16,7 @@ params:
     > Acest site folosește formatorul [Prettier] și necesită o linie goală care să separe eticheta/titlul alertei de corpul alertei.
 
 default_lang_commit: a952eff2a2324c36e48dd9465407074886e22b91
-cSpell:ignore: postgre
+cSpell:ignore: postgre silențios
 ---
 
 We don't have an official style guide yet, but the current OpenTelemetry
