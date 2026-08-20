@@ -38,12 +38,12 @@ repository's own workflows, required checks, tooling, and settings. Unlike
 content and localization work:
 
 - Changes in this area can't be meaningfully tested by non-maintainers; for
-  example,failure modes surface in upstream CI and merge-time behavior.
+  example, failure modes surface in upstream CI and merge-time behavior.
 - The work often depends on maintainer roadmaps and context not visible in the
   issue text.
 - Some context is deliberately private: work affecting the site's security
-  posture, hardening and remediation fixes, aren't discussed publicly before
-  they are merged.
+  posture (hardening and remediation fixes) isn't discussed publicly before it
+  is merged.
 
 Note that `triage:accepted` on such an issue means that the problem is
 confirmed, not that the work is up for grabs.
