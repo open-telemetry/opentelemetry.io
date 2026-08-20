@@ -8,7 +8,7 @@ cSpell:ignore: decltype labelkv noexcept nostd
 
 このサービスは、異なる通貨間で金額を変換する機能を提供します。
 
-[Currency service のソースコード](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/currency/)
+[通貨サービスのソースコード](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/currency/)
 
 ## トレース {#traces}
 
