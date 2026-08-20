@@ -2663,7 +2663,9 @@ https://github.com/open-telemetry/opentelemetry-demo,200,1787029618
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/README.md?plain=1,200,1787029619
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/accounting/,200,1787029618
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/ad/,200,1787032165
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/agent/,200,1787232661
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/cart/,200,1787032165
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/chatbot/,200,1787232661
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/checkout/,200,1787029618
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/currency/,200,1787032166
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/email/,200,1787032165
@@ -2675,6 +2677,7 @@ https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/,200
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/image-provider/,200,1787032165
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/kafka/,200,1787029618
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/load-generator/,200,1787032165
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/mcp/,200,1787232661
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml,200,1787029618
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml,200,1787029619
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/payment/,200,1787029618
@@ -2686,6 +2689,9 @@ https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/,200
 https://github.com/open-telemetry/opentelemetry-demo/issues/1601,200,1786427591
 https://github.com/open-telemetry/opentelemetry-demo/issues/3720,200,1786427590
 https://github.com/open-telemetry/opentelemetry-demo/pull/3604,200,1786427590
+https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/agent#readme,200,1787232661
+https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/chatbot#readme,200,1787232661
+https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/mcp#readme,200,1787232661
 https://github.com/open-telemetry/opentelemetry-demo/tree/main/test,200,1787029618
 https://github.com/open-telemetry/opentelemetry-dotnet,200,1787032168
 https://github.com/open-telemetry/opentelemetry-dotnet-contrib,200,1786427565
@@ -5993,6 +5999,7 @@ https://www.flipt.io/docs/configuration/observability#tracing,200,1787029661
 https://www.freedesktop.org/software/systemd/man/latest/machine-id.html,200,1787029640
 https://www.fulcrumapp.com/,200,1787032164
 https://www.gnupg.org/gph/en/manual.html#AEN161,200,1787038850
+https://www.gradio.app/,200,1787232661
 https://www.graphql-java.com/,200,1786427563
 https://www.gwtproject.org/,200,1787029632
 https://www.heroku.com/,200,1787029661
