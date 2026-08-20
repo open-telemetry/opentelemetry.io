@@ -61,7 +61,7 @@ docker compose --env-file .env --env-file .env.override \
     | Minimal | `make start-minimal` | Excludes Kafka and its dependent services (`accounting`, `fraud-detection`, `kafka`), reducing memory usage to ~3 GB |
     | No observability | `make start-no-o11y` | All services without the observability backends (Jaeger, Grafana, Prometheus, OpenSearch) |
     | Minimal, no observability | `make start-minimal-no-o11y` | Minimal services without the observability backends |
-    | Profiling | `make start-profiling` | Full mode with an eBPF profiler and the [Firepit](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/firepit/) UI for profiling data |
+    | Profiling | `make start-profiling` | Full mode with an eBPF profiler and the [Firepit](https://github.com/florianl/firepit) UI for profiling data |
     | Agentic | `make start-agentic` | Full mode with an AI agent, MCP server, and chatbot for interacting with the demo |
 
     For example, to start the demo in minimal mode:
