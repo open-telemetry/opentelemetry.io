@@ -1,7 +1,7 @@
 ---
 title: Agent Service
 linkTitle: Agent
-cSpell:ignore: fastapi httpx langchain langgraph litellm openai
+cSpell:ignore: fastapi httpx langchain langgraph openai
 ---
 
 This service provides the AI assistant for the demo. It exposes a FastAPI
