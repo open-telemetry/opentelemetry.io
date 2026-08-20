@@ -217,5 +217,7 @@ Pentru a afla cum să remediezi problemele de validare, vezi
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
 [.markdownlint-cli2.yaml]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint-cli2.yaml
+[sintaxa de sfârșit de linie]:
+  https://www.markdownguide.org/basic-syntax/#line-breaks
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [Prettier]: https://prettier.io
