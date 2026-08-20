@@ -4,56 +4,69 @@ linkTitle: Exported metrics
 description:
   Learn about the application, runtime, and network metrics OBI can export.
 weight: 21
-cSpell:ignore: gogc replicaset statefulset
+cSpell:ignore: gogc replicaset statefulset stddev
 ---
 
 The following table describes the exported metrics in both OpenTelemetry and
 Prometheus format.
 
-| Family      | Name (OTel)                           | Name (Prometheus)                             | Type      | Unit        | Description                                                                                                           |
-| ----------- | ------------------------------------- | --------------------------------------------- | --------- | ----------- | --------------------------------------------------------------------------------------------------------------------- |
-| Application | `http.client.request.duration`        | `http_client_request_duration_seconds`        | Histogram | seconds     | Duration of HTTP service calls from the client side                                                                   |
-| Application | `http.client.request.body.size`       | `http_client_request_body_size_bytes`         | Histogram | bytes       | Size of the HTTP request body as sent by the client                                                                   |
-| Application | `http.client.response.body.size`      | `http_client_response_body_size_bytes`        | Histogram | bytes       | Size of the HTTP response body as sent by the client                                                                  |
-| Application | `http.server.request.duration`        | `http_server_request_duration_seconds`        | Histogram | seconds     | Duration of HTTP service calls from the server side                                                                   |
-| Application | `http.server.request.body.size`       | `http_server_request_body_size_bytes`         | Histogram | bytes       | Size of the HTTP request body as received at the server side                                                          |
-| Application | `http.server.response.body.size`      | `http_server_response_body_size_bytes`        | Histogram | bytes       | Size of the HTTP response body as received at the server side                                                         |
-| Application | `rpc.client.call.duration`            | `rpc_client_call_duration_seconds`            | Histogram | seconds     | Duration of RPC service calls from the client side                                                                    |
-| Application | `rpc.server.call.duration`            | `rpc_server_call_duration_seconds`            | Histogram | seconds     | Duration of RPC service calls from the server side                                                                    |
-| Application | `db.client.operation.duration`        | `db_client_operation_duration_seconds`        | Histogram | seconds     | Duration of database client operations (Experimental)                                                                 |
-| Application | `messaging.client.operation.duration` | `messaging_client_operation_duration_seconds` | Histogram | seconds     | Duration of messaging client operations across supported systems such as Kafka, MQTT, NATS, and AMQP (Experimental)   |
-| Application | `messaging.process.duration`          | `messaging_process_duration_seconds`          | Histogram | seconds     | Duration of messaging process operations across supported systems such as Kafka, MQTT, NATS, and AMQP (Experimental)  |
-| Application | `gen_ai.client.operation.duration`    | `gen_ai_client_operation_duration_seconds`    | Histogram | seconds     | Duration of GenAI client operations (Experimental)                                                                    |
-| Application | `gen_ai.client.token.usage`           | `gen_ai_client_token_usage`                   | Histogram | 1           | Number of GenAI input/output tokens consumed, labeled by token type (Experimental)                                    |
-| Go runtime  | `go.memory.limit`                     | `go_memory_limit_bytes`                       | Gauge     | bytes       | Runtime memory limit configured for an instrumented Go service                                                        |
-| Go runtime  | `go.memory.gc.goal`                   | `go_memory_gc_goal_bytes`                     | Gauge     | bytes       | Current garbage-collection heap goal                                                                                  |
-| Go runtime  | `go.memory.gc.cycles`                 | `go_memory_gc_cycles_total`                   | Counter   | cycles      | Completed Go garbage-collection cycles                                                                                |
-| Go runtime  | `go.memory.gc.pause.duration`         | `go_memory_gc_pause_duration_seconds`         | Histogram | seconds     | Cumulative stop-the-world garbage-collection pause durations                                                          |
-| Go runtime  | `go.memory.used`                      | `go_memory_used_bytes`                        | Gauge     | bytes       | Memory used by stack and other runtime memory categories                                                              |
-| Go runtime  | `go.memory.allocated`                 | `go_memory_allocated_bytes_total`             | Counter   | bytes       | Cumulative allocated heap bytes                                                                                       |
-| Go runtime  | `go.memory.allocations`               | `go_memory_allocations_total`                 | Counter   | allocations | Cumulative heap allocation count                                                                                      |
-| Go runtime  | `go.cpu.time`                         | `go_cpu_time_seconds_total`                   | Counter   | seconds     | Cumulative runtime CPU time by state                                                                                  |
-| Go runtime  | `go.goroutine.count`                  | `go_goroutine_count`                          | Gauge     | goroutines  | Current goroutine count                                                                                               |
-| Go runtime  | `go.processor.limit`                  | `go_processor_limit`                          | Gauge     | threads     | Current `GOMAXPROCS` value                                                                                            |
-| Go runtime  | `go.config.gogc`                      | `go_config_gogc_percent`                      | Gauge     | percent     | Current `GOGC` heap target percentage                                                                                 |
-| Go runtime  | `go.schedule.duration`                | `go_schedule_duration_seconds`                | Histogram | seconds     | Cumulative runnable-to-running goroutine latency                                                                      |
-| JVM runtime | `jvm.memory.used`                     | `jvm_memory_used_bytes`                       | Gauge     | bytes       | Current JVM memory used, labeled by memory type and pool                                                              |
-| JVM runtime | `jvm.memory.committed`                | `jvm_memory_committed_bytes`                  | Gauge     | bytes       | Current JVM memory committed, labeled by memory type and pool                                                         |
-| JVM runtime | `jvm.memory.limit`                    | `jvm_memory_limit_bytes`                      | Gauge     | bytes       | Current JVM memory limit, labeled by memory type and pool                                                             |
-| JVM runtime | `jvm.memory.used_after_last_gc`       | `jvm_memory_used_after_last_gc_bytes`         | Gauge     | bytes       | JVM memory used after the last garbage collection                                                                     |
-| Network     | `obi.network.flow.bytes`              | `obi_network_flow_bytes_total`                | Counter   | bytes       | Bytes submitted from a source network endpoint to a destination network endpoint                                      |
-| Network     | `obi.network.flow.packets`            | `obi_network_flow_packets_total`              | Counter   | packets     | Packets observed from a source network endpoint to a destination network endpoint                                     |
-| Network     | `obi.network.inter.zone.bytes`        | `obi_network_inter_zone_bytes_total`          | Counter   | bytes       | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes) |
-| Network     | `obi.stat.tcp.rtt`                    | `obi_stat_tcp_rtt_seconds`                    | Histogram | seconds     | TCP round-trip time (RTT) latency observed between network endpoints (StatsO11y)                                      |
-| Network     | `obi.stat.tcp.failed.connections`     | `obi_stat_tcp_failed_connections_total`       | Counter   | 1           | Failed TCP connection attempts between endpoints, labeled by failure reason (StatsO11y)                               |
-| Network     | `obi.stat.tcp.retransmits`            | `obi_stat_tcp_retransmits_total`              | Counter   | 1           | TCP retransmissions observed per connection (StatsO11y)                                                               |
-| Network     | `obi.stat.tcp.io`                     | `obi_stat_tcp_io_bytes_total`                 | Counter   | bytes       | Bytes transferred at the socket layer per TCP connection and I/O direction (StatsO11y)                                |
+| Family       | Name (OTel)                           | Name (Prometheus)                             | Type      | Unit        | Description                                                                                                           |
+| ------------ | ------------------------------------- | --------------------------------------------- | --------- | ----------- | --------------------------------------------------------------------------------------------------------------------- |
+| Application  | `http.client.request.duration`        | `http_client_request_duration_seconds`        | Histogram | seconds     | Duration of HTTP service calls from the client side                                                                   |
+| Application  | `http.client.request.body.size`       | `http_client_request_body_size_bytes`         | Histogram | bytes       | Size of the HTTP request body as sent by the client                                                                   |
+| Application  | `http.client.response.body.size`      | `http_client_response_body_size_bytes`        | Histogram | bytes       | Size of the HTTP response body as sent by the client                                                                  |
+| Application  | `http.server.request.duration`        | `http_server_request_duration_seconds`        | Histogram | seconds     | Duration of HTTP service calls from the server side                                                                   |
+| Application  | `http.server.request.body.size`       | `http_server_request_body_size_bytes`         | Histogram | bytes       | Size of the HTTP request body as received at the server side                                                          |
+| Application  | `http.server.response.body.size`      | `http_server_response_body_size_bytes`        | Histogram | bytes       | Size of the HTTP response body as received at the server side                                                         |
+| Application  | `rpc.client.call.duration`            | `rpc_client_call_duration_seconds`            | Histogram | seconds     | Duration of RPC service calls from the client side                                                                    |
+| Application  | `rpc.server.call.duration`            | `rpc_server_call_duration_seconds`            | Histogram | seconds     | Duration of RPC service calls from the server side                                                                    |
+| Application  | `db.client.operation.duration`        | `db_client_operation_duration_seconds`        | Histogram | seconds     | Duration of database client operations (Experimental)                                                                 |
+| Application  | `db.server.operation.duration`        | `db_server_operation_duration_seconds`        | Histogram | seconds     | Duration of server-side Redis, Memcached, and SQL operations (Experimental)                                           |
+| Application  | `messaging.client.operation.duration` | `messaging_client_operation_duration_seconds` | Histogram | seconds     | Duration of messaging client operations across supported systems such as Kafka, MQTT, NATS, and AMQP (Experimental)   |
+| Application  | `messaging.process.duration`          | `messaging_process_duration_seconds`          | Histogram | seconds     | Duration of messaging process operations across supported systems such as Kafka, MQTT, NATS, and AMQP (Experimental)  |
+| Application  | `gen_ai.client.operation.duration`    | `gen_ai_client_operation_duration_seconds`    | Histogram | seconds     | Duration of GenAI client operations (Experimental)                                                                    |
+| Application  | `gen_ai.client.token.usage`           | `gen_ai_client_token_usage`                   | Histogram | 1           | Number of GenAI input/output tokens consumed, labeled by token type (Experimental)                                    |
+| Go runtime   | `go.memory.limit`                     | `go_memory_limit_bytes`                       | Gauge     | bytes       | Runtime memory limit configured for an instrumented Go service                                                        |
+| Go runtime   | `go.memory.gc.goal`                   | `go_memory_gc_goal_bytes`                     | Gauge     | bytes       | Current garbage-collection heap goal                                                                                  |
+| Go runtime   | `go.memory.gc.cycles`                 | `go_memory_gc_cycles_total`                   | Counter   | cycles      | Completed Go garbage-collection cycles                                                                                |
+| Go runtime   | `go.memory.gc.pause.duration`         | `go_memory_gc_pause_duration_seconds`         | Histogram | seconds     | Cumulative stop-the-world garbage-collection pause durations                                                          |
+| Go runtime   | `go.memory.used`                      | `go_memory_used_bytes`                        | Gauge     | bytes       | Memory used by stack and other runtime memory categories                                                              |
+| Go runtime   | `go.memory.allocated`                 | `go_memory_allocated_bytes_total`             | Counter   | bytes       | Cumulative allocated heap bytes                                                                                       |
+| Go runtime   | `go.memory.allocations`               | `go_memory_allocations_total`                 | Counter   | allocations | Cumulative heap allocation count                                                                                      |
+| Go runtime   | `go.cpu.time`                         | `go_cpu_time_seconds_total`                   | Counter   | seconds     | Cumulative runtime CPU time by state                                                                                  |
+| Go runtime   | `go.goroutine.count`                  | `go_goroutine_count`                          | Gauge     | goroutines  | Current goroutine count                                                                                               |
+| Go runtime   | `go.processor.limit`                  | `go_processor_limit`                          | Gauge     | threads     | Current `GOMAXPROCS` value                                                                                            |
+| Go runtime   | `go.config.gogc`                      | `go_config_gogc_percent`                      | Gauge     | percent     | Current `GOGC` heap target percentage                                                                                 |
+| Go runtime   | `go.schedule.duration`                | `go_schedule_duration_seconds`                | Histogram | seconds     | Cumulative runnable-to-running goroutine latency                                                                      |
+| JVM runtime  | `jvm.memory.used`                     | `jvm_memory_used_bytes`                       | Gauge     | bytes       | Current JVM memory used, labeled by memory type and pool                                                              |
+| JVM runtime  | `jvm.memory.committed`                | `jvm_memory_committed_bytes`                  | Gauge     | bytes       | Current JVM memory committed, labeled by memory type and pool                                                         |
+| JVM runtime  | `jvm.memory.limit`                    | `jvm_memory_limit_bytes`                      | Gauge     | bytes       | Current JVM memory limit, labeled by memory type and pool                                                             |
+| JVM runtime  | `jvm.memory.used_after_last_gc`       | `jvm_memory_used_after_last_gc_bytes`         | Gauge     | bytes       | JVM memory used after the last garbage collection                                                                     |
+| Node runtime | `nodejs.eventloop.time`               | `nodejs_eventloop_time_seconds_total`         | Counter   | seconds     | Cumulative event-loop time, labeled as `idle` or `active`                                                             |
+| Node runtime | `nodejs.eventloop.utilization`        | `nodejs_eventloop_utilization_ratio`          | Gauge     | 1           | Active share of the event loop during the last sampling interval                                                      |
+| Node runtime | `nodejs.eventloop.delay.min`          | `nodejs_eventloop_delay_min_seconds`          | Gauge     | seconds     | Minimum event-loop delay during the last sampling interval                                                            |
+| Node runtime | `nodejs.eventloop.delay.max`          | `nodejs_eventloop_delay_max_seconds`          | Gauge     | seconds     | Maximum event-loop delay during the last sampling interval                                                            |
+| Node runtime | `nodejs.eventloop.delay.mean`         | `nodejs_eventloop_delay_mean_seconds`         | Gauge     | seconds     | Mean event-loop delay during the last sampling interval                                                               |
+| Node runtime | `nodejs.eventloop.delay.stddev`       | `nodejs_eventloop_delay_stddev_seconds`       | Gauge     | seconds     | Standard deviation of event-loop delay during the last sampling interval                                              |
+| Node runtime | `nodejs.eventloop.delay.p50`          | `nodejs_eventloop_delay_p50_seconds`          | Gauge     | seconds     | 50th percentile event-loop delay during the last sampling interval                                                    |
+| Node runtime | `nodejs.eventloop.delay.p90`          | `nodejs_eventloop_delay_p90_seconds`          | Gauge     | seconds     | 90th percentile event-loop delay during the last sampling interval                                                    |
+| Node runtime | `nodejs.eventloop.delay.p99`          | `nodejs_eventloop_delay_p99_seconds`          | Gauge     | seconds     | 99th percentile event-loop delay during the last sampling interval                                                    |
+| Network      | `obi.network.flow.bytes`              | `obi_network_flow_bytes_total`                | Counter   | bytes       | Bytes submitted from a source network endpoint to a destination network endpoint                                      |
+| Network      | `obi.network.flow.packets`            | `obi_network_flow_packets_total`              | Counter   | packets     | Packets observed from a source network endpoint to a destination network endpoint                                     |
+| Network      | `obi.network.inter.zone.bytes`        | `obi_network_inter_zone_bytes_total`          | Counter   | bytes       | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes) |
+| Network      | `obi.stat.tcp.rtt`                    | `obi_stat_tcp_rtt_seconds`                    | Histogram | seconds     | TCP round-trip time (RTT) latency observed between network endpoints (StatsO11y)                                      |
+| Network      | `obi.stat.tcp.failed.connections`     | `obi_stat_tcp_failed_connections_total`       | Counter   | 1           | Failed TCP connection attempts between endpoints, labeled by failure reason (StatsO11y)                               |
+| Network      | `obi.stat.tcp.retransmits`            | `obi_stat_tcp_retransmits_total`              | Counter   | 1           | TCP retransmissions observed per connection (StatsO11y)                                                               |
+| Network      | `obi.stat.tcp.io`                     | `obi_stat_tcp_io_bytes_total`                 | Counter   | bytes       | Bytes transferred at the socket layer per TCP connection and I/O direction (StatsO11y)                                |
 
 > [!NOTE]
 >
-> v0.10.0 adopts the OpenTelemetry semantic convention names
-> `rpc.client.call.duration` and `rpc.server.call.duration`. The corresponding
-> Prometheus metric names now include `_call_` as shown in the table.
+> - v0.10.0 adopts the OpenTelemetry semantic convention names
+>   `rpc.client.call.duration` and `rpc.server.call.duration`. The corresponding
+>   Prometheus metric names include `_call_` as shown in the table.
+> - Starting with v0.12.1, server-side Redis and Memcached measurements use
+>   `db.server.operation.duration` instead of `db.client.operation.duration`.
+>   Update dashboards and alerts that query those server-side measurements.
 
 OBI can also export
 [Span metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector)
@@ -115,6 +128,8 @@ check the `attributes`->`select` section in the
 | `obi.network.flow.bytes`              | `obi.ip`                                                    | hidden                                            |
 | `db.client.operation.duration`        | `db.operation.name`                                         | shown                                             |
 | `db.client.operation.duration`        | `db.collection.name`                                        | hidden                                            |
+| `db.server.operation.duration`        | `db.operation.name`                                         | shown                                             |
+| `db.server.operation.duration`        | `db.collection.name`                                        | hidden                                            |
 | `messaging.client.operation.duration` | `messaging.system`                                          | shown                                             |
 | `messaging.client.operation.duration` | `messaging.destination.name`                                | shown                                             |
 | `messaging.process.duration`          | `messaging.system`                                          | shown                                             |
@@ -190,9 +205,21 @@ check the `attributes`->`select` section in the
 >
 > The `obi.network.flow.packets` metric supports the same attributes and
 > defaults as `obi.network.flow.bytes`. JVM memory metrics include
-> `jvm.memory.type` and `jvm.memory.pool.name`.
+> `jvm.memory.type` and `jvm.memory.pool.name`. The `nodejs.eventloop.time`
+> metric includes `nodejs.eventloop.state`, with a value of `idle` or `active`.
 
 ## Internal metrics
+
+> [!WARNING]
+>
+> OBI v0.12.1 removes Prometheus-style suffixes from four internal OTLP metric
+> names. Update OTLP queries from `obi.bpf.map.entries_total` to
+> `obi.bpf.map.entries`, from `obi.bpf.map.max_entries_total` to
+> `obi.bpf.map.max_entries`, from `obi.bpf.network.packets.total` to
+> `obi.bpf.network.packets`, and from `obi.bpf.network.ignored.packets.total` to
+> `obi.bpf.network.ignored.packets`. The corresponding Prometheus counter names
+> remain unchanged. The Prometheus gauge names become `obi_bpf_map_entries` and
+> `obi_bpf_map_max_entries`.
 
 OBI can be
 [configured to report internal metrics](../configure/internal-metrics-reporter/)

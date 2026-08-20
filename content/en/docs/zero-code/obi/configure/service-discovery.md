@@ -34,6 +34,7 @@ selection criteria for the services OBI can instrument.
 | `skip_go_specific_tracers`<br>`OTEL_EBPF_SKIP_GO_SPECIFIC_TRACERS`                                               | Disables the detection of Go specifics when the **eBPF** tracer inspects executables to be instrumented. The tracer falls back to using generic instrumentation, which is generally less efficient. Refer to the [skip go specific tracers](#skip-go-specific-tracers) section for details.                                                                           | boolean         | false                                                                                                        |
 | `exclude_otel_instrumented_services`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES`                           | Disables OBI instrumentation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                                                                                              | boolean         | true                                                                                                         |
 | `exclude_otel_instrumented_services_span_metrics`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES_SPAN_METRICS` | Disables OBI span metric/service graph metric generation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                                                                  | boolean         | false                                                                                                        |
+| `process_context_poll_interval`<br>`OTEL_EBPF_PROCESS_CONTEXT_POLL_INTERVAL`                                     | Sets how often OBI checks an instrumented process for updated resource attributes and metadata published through the experimental `OTEL_CTX` process-context mapping. Set to `0` to check only when OBI first discovers the process.                                                                                                                                  | duration        | `1s`                                                                                                         |
 
 ## Discovery services
 
@@ -423,6 +424,19 @@ publish their own telemetry data. Turn this option off if your
 application-generated telemetry data doesn't conflict with the OBI generated
 metrics and traces.
 
+## Process-context enrichment
+
+Starting with OBI v0.12.1, OBI reads string resource attributes and metadata
+from processes that publish the experimental OpenTelemetry `OTEL_CTX`
+process-context mapping. OBI checks when it first discovers a process and then
+checks for updates once per second. Explicitly configured service names and
+namespaces continue to take precedence.
+
+In Config v1, use `discovery.process_context_poll_interval` or
+`OTEL_EBPF_PROCESS_CONTEXT_POLL_INTERVAL` to change the polling interval. Set
+the interval to `0` to keep the initial check and disable later polling. Config
+v2 uses the default interval in v0.12.1 and does not expose this setting.
+
 ## Override service name and namespace
 
 If you export instrumentation data via OpenTelemetry or Prometheus, OBI follows
@@ -452,7 +466,9 @@ name and namespace:
    - `k8s.job.name`
    - `k8s.pod.name`
    - `k8s.container.name`
-5. The executable name of the instrumented process.
+5. For Java applications, the first available value from the Spring Boot
+   application name, JAR manifest title, or JAR base name.
+6. The executable name of the instrumented process.
 
 You can override the Kubernetes labels from the previous bullet 3 via
 configuration.

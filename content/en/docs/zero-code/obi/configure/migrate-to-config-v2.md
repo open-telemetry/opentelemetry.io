@@ -22,7 +22,7 @@ Prepare a rollback plan before you migrate:
 2. List any settings supplied through environment variables, command-line flags,
    Helm values, Kubernetes manifests, or secret injection. The migration command
    reads only the file you provide.
-3. Install the target OBI v0.11.0 or later binary.
+3. Install the target OBI v0.12.1 or later binary.
 4. Select one representative instance or workload for a canary deployment.
 
 The migration command resolves substitution expressions in the source file.
@@ -104,14 +104,19 @@ If you explicitly set `rules: []`, OBI removes the built-in exclusions.
 ### Filters
 
 Config v1 provides one filter each for application telemetry, network telemetry,
-and TCP statistics. Config v2 represents filters for each signal and protocol.
-However, OBI v0.11.0 still applies one runtime filter to each of the three
-groups.
+and TCP statistics. The migration command copies each Config v1 filter to every
+corresponding Config v2 field so that the generated configuration preserves the
+original behavior.
 
-The migration command copies each Config v1 filter to every corresponding Config
-v2 field. Keep all application trace and metric filters identical. Also use the
-same filter for both network flow signals and for both TCP statistics signals.
-Validation reports an error if these filters differ.
+After you establish that baseline, Config v2 lets you adjust application filters
+independently for each protocol and signal. For example, an HTTP trace filter no
+longer needs to match the HTTP metric or SQL filters. Make these changes in a
+canary deployment and compare telemetry volume and cardinality before rolling
+them out.
+
+Network flow and TCP statistics filters remain shared between traces and metrics
+in v0.12.1. Keep the two maps identical within each group. Validation reports an
+error when they differ.
 
 ### HTTP routes
 

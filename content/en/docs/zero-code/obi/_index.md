@@ -57,37 +57,39 @@ OBI offers the following features:
 - **Collector integration**: Run OBI as an OpenTelemetry Collector receiver
   component
 
-## Recent highlights (v0.11.0)
+## Recent highlights (v0.12.1)
 
-OBI v0.11.0 expands automatic instrumentation, configuration capabilities,
-runtime metrics, protocol coverage, and trace-log correlation:
+OBI v0.12.1 is the published release of the changes prepared for v0.12.0.
+Although v0.12.0 was tagged, it was not published after release validation
+failed. Install v0.12.1, which includes the intended v0.12.0 changes and the
+release correction.
 
-- **OpenTelemetry Go Trace API instrumentation**: Automatically instruments Go
-  applications that use the Trace API without registering an SDK
-- **Configuration v2**: Introduces [Config v2](configure/config-v2/) for
-  standalone OBI and the OBI Collector receiver. Config v2 uses the
-  OpenTelemetry declarative configuration structure for common settings and
-  places OBI-specific settings under `extensions.obi`. This release also adds
-  the `obi config validate` and `obi config migrate` commands
-- **Expanded Go runtime metrics**: Adds CPU time, memory, scheduler latency,
-  garbage collection, and goroutine metrics
-- **Plain-text log correlation**: Adds configurable trace-context annotation for
-  non-JSON logs, including field names, placement, and multiline selection
-- **Aerospike support**: Adds client and kernel-side Aerospike protocol
-  instrumentation
-- **Broader GenAI coverage**: Adds OpenAI-compatible gateways, native Ollama
-  chat and generation, Gemini streaming responses, and richer telemetry for tool
-  calls, embeddings, rerank operations, and token usage
-- **More reliable context propagation**: Improves HTTP/2 and gRPC propagation
-  for connections that existed before OBI started
+Notable changes include:
+
+- **Node.js manual spans**: Captures spans created with `@opentelemetry/api`
+  when the application has not registered an OpenTelemetry SDK
+- **Node.js runtime metrics**: Adds event-loop time, utilization, and delay
+  metrics
+- **More precise Config v2 filters**: Applies application filters independently
+  by protocol and signal
+- **Process-context enrichment**: Reads resource attributes and metadata that
+  instrumented processes publish through the experimental `OTEL_CTX` mapping
+- **Database server metrics**: Adds `db.server.operation.duration` for
+  server-side Redis, Memcached, and SQL operations
+- **Improved Java service names**: Uses the Spring Boot application name, JAR
+  manifest title, or JAR base name before falling back to `java`
+- **Reliability fixes**: Protects private-stack kernels from uprobe preemption,
+  avoids unsafe context propagation when a required probe cannot attach, and
+  corrects trace parenting, wrapped Go TLS connections, short-lived process log
+  enrichment, and OTLP attribute handling
 
 For a complete list of changes and upgrade notes, see the
-[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.11.0).
+[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.12.1).
 
 If you want to explore the upstream examples, see the
-[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.11.0/examples/nginx)
+[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/nginx)
 and the
-[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.11.0/examples/apache).
+[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/apache).
 
 ## How OBI works
 
@@ -109,12 +111,11 @@ OBI supports Linux environments that meet the following requirements:
 
 OBI publishes the following supported release artifacts:
 
-| Artifact                                         | Supported platforms          |
-| :----------------------------------------------- | :--------------------------- |
-| `obi` binary archive                             | Linux `amd64`, Linux `arm64` |
-| `k8s-cache` binary archive                       | Linux `amd64`, Linux `arm64` |
-| `otel/ebpf-instrument` container image           | Linux `amd64`, Linux `arm64` |
-| `otel/ebpf-instrument-k8s-cache` container image | Linux `amd64`, Linux `arm64` |
+| Artifact                                            | Supported platforms          |
+| :-------------------------------------------------- | :--------------------------- |
+| `obi` binary archive                                | Linux `amd64`, Linux `arm64` |
+| `otel/ebpf-instrument` container image              | Linux `amd64`, Linux `arm64` |
+| `otel/opentelemetry-ebpf-k8s-cache` container image | Linux `amd64`, Linux `arm64` |
 
 OBI can be deployed on standalone Linux hosts, in containers, and on Kubernetes
 when the environment meets the requirements above.

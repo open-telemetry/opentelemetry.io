@@ -38,7 +38,7 @@ Set your desired version and architecture:
 ```sh
 # Set your desired version (find latest at
 # https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases)
-VERSION=0.11.0
+VERSION=0.12.1
 
 # Determine your architecture
 # For Intel/AMD 64-bit: amd64
@@ -73,7 +73,6 @@ If verification fails, `sha256sum` reports `FAILED`. When that happens:
 The archive contains:
 
 - `obi` - Main OBI binary
-- `k8s-cache` - Kubernetes cache binary
 - `LICENSE` - Project license
 - `NOTICE` - Legal notices
 - `NOTICES/` - Third-party licenses and attributions

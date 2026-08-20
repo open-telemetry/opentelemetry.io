@@ -229,9 +229,9 @@ activates the integration or drops an oversized payload.
 
 For the supported combinations of module version, checksum, and architecture,
 see the
-[activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.11.0/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation).
+[activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.12.1/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation).
 You can also review the upstream
-[Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.11.0/examples/go-trace-api)
+[Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/go-trace-api)
 and the [Auto SDK](/docs/zero-code/go/autosdk) documentation.
 
 #### Kernel integrity mode limitations
@@ -297,6 +297,26 @@ separate channel-link option.
 
 OBI honors `OTEL_SPAN_LINK_COUNT_LIMIT` and drops invalid, duplicate, and
 self-referential links.
+
+### Capture Node.js manual spans
+
+Starting with OBI v0.12.1, OBI can capture spans that a Node.js application
+creates through `@opentelemetry/api` when the application has not registered an
+OpenTelemetry SDK. OBI exports these manual spans through its trace pipeline and
+correlates them with automatically captured server spans. If the application
+registers an SDK, OBI leaves span creation and export to that SDK.
+
+This feature is disabled by default. Existing Config v1 deployments can enable
+it with `nodejs.manual_spans: true` or `OTEL_EBPF_NODEJS_MANUAL_SPANS=true`.
+Config v2 does not expose an equivalent field in v0.12.1. Continue migrating
+deployments to Config v2 rather than retaining Config v1 solely for this
+feature.
+
+OBI must be able to reach the Node.js inspector, and the process must not
+register its own `SIGUSR1` handler. Bundled copies of `@opentelemetry/api` that
+the CommonJS loader cannot reach are not captured. Automatic client spans are
+currently siblings of manual spans under the same server span, rather than
+children of the active manual span.
 
 ### Python asyncio with uvloop
 
