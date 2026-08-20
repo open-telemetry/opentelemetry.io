@@ -3506,6 +3506,7 @@ https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-active_storage/v0.5.1/instrumentation/active_storage,200,1787032618
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-active_support/v0.12.0/instrumentation/active_support,200,1787032618
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-all/v0.95.0/instrumentation/all,200,1787032618
+https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-all/v0.96.0/instrumentation/all,200,1787116302
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-anthropic/v0.5.0/instrumentation/anthropic,200,1787032618
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-aws_lambda/v0.7.0/instrumentation/aws_lambda,200,1787032618
 https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-aws_sdk/v0.12.0/instrumentation/aws_sdk,200,1787032618
@@ -4409,6 +4410,8 @@ https://github.com/trillium-rs/trillium-opentelemetry,200,1787029748
 https://github.com/trisch-me,200,1787032238
 https://github.com/trivikr,200,1787032239
 https://github.com/tsloughter,200,1787029622
+https://github.com/tsuga-dev,200,1785928841
+https://github.com/tsuga-dev/networkdevicereceiver,200,1785928841
 https://github.com/twilio/twilio-java,200,1787029637
 https://github.com/twitter/finagle,200,1787118357
 https://github.com/twitter/finatra,200,1787029636
@@ -5514,6 +5517,7 @@ https://prometheus.io/docs/specs/prw/remote_write_spec_2_0/,200,1787032267
 https://prometheus.io/download/,200,1787029616
 https://promlabs.com/promql-cheat-sheet/,200,1787032163
 https://pt.wikipedia.org/wiki/NOP,200,1787029672
+https://pub.dev/documentation/dartastic_opentelemetry/latest/,200,1785933132
 https://pub.dev/packages/dartastic_opentelemetry,200,1787032420
 https://publicsuffix.org/,200,1787032253
 https://pubs.opengroup.org/onlinepubs/9699919799/functions/fcntl.html,200,1787032253
@@ -5588,6 +5592,7 @@ https://rubydoc.info/gems/opentelemetry-instrumentation-active_record/0.13.0,200
 https://rubydoc.info/gems/opentelemetry-instrumentation-active_storage/0.5.1,200,1787032617
 https://rubydoc.info/gems/opentelemetry-instrumentation-active_support/0.12.0,200,1787032617
 https://rubydoc.info/gems/opentelemetry-instrumentation-all/0.95.0,200,1787032617
+https://rubydoc.info/gems/opentelemetry-instrumentation-all/0.96.0,202,1787116302
 https://rubydoc.info/gems/opentelemetry-instrumentation-anthropic/0.5.0,200,1787032617
 https://rubydoc.info/gems/opentelemetry-instrumentation-aws_lambda/0.7.0,200,1787032617
 https://rubydoc.info/gems/opentelemetry-instrumentation-aws_sdk/0.12.0,200,1787032617
