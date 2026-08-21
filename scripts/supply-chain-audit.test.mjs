@@ -213,6 +213,14 @@ test('manifest: engines floor stays at or above the reviewed minimums', () => {
   );
 });
 
+test('manifest: overrides stay at the reviewed set', () => {
+  assert.deepEqual(
+    manifest.overrides,
+    { 'adm-zip': '0.6.0' },
+    'overrides match the reviewed set',
+  );
+});
+
 test('manifest: every dependency resolves through the npm registry', () => {
   const {
     dependencies = {},
