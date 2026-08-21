@@ -30,15 +30,11 @@ const readText = (relPath) =>
 const lock = readJSON('package-lock.json');
 const manifest = readJSON('package.json');
 
-// The only dependencies allowed to bypass the npm registry: two reviewed
-// markdownlint rules, commit-pinned from their author's repos. Everything
-// else must carry a registry URL and an integrity hash.
-const gitDependencyRepos = {
-  'node_modules/markdownlint-rule-link-pattern':
-    'chalin/markdownlint-rule-link-pattern',
-  'node_modules/markdownlint-rule-no-shortcut-ref-link':
-    'chalin/markdownlint-rule-no-shortcut-ref-link',
-};
+// The only dependencies allowed to bypass the npm registry: none since the
+// markdownlint rules moved to registry pins; the allowlist mechanism stays
+// for reviewed exceptions. Every package must carry a registry URL and an
+// integrity hash.
+const gitDependencyRepos = {};
 
 // Known-poisoned package@version pairs from the 2026-08 npm-worm campaign
 // (Datadog Security Labs). A denylist only ever samples: the structural
@@ -218,14 +214,16 @@ test('manifest: engines floor stays at or above the reviewed minimums', () => {
   );
 });
 
-test('manifest: git dependencies are tag-pinned to their reviewed repos', () => {
-  const { devDependencies } = manifest;
-  for (const repo of Object.values(gitDependencyRepos)) {
-    const name = repo.split('/')[1];
-    assert.match(
-      devDependencies[name] ?? '',
-      new RegExp(`^github:${repo}#(v|semver:)\\d+\\.\\d+\\.\\d+$`),
-      `${name} is tag-pinned to ${repo}`,
+test('manifest: no git-sourced dependencies', () => {
+  const { dependencies = {}, devDependencies = {} } = manifest;
+  for (const [name, spec] of [
+    ...Object.entries(dependencies),
+    ...Object.entries(devDependencies),
+  ]) {
+    assert.doesNotMatch(
+      spec,
+      /^(github:|git\+|git:)/,
+      `${name} resolves through the npm registry`,
     );
   }
 });
