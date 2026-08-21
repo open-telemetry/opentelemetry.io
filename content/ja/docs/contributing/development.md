@@ -75,7 +75,7 @@ GitHub [Codespaces][] で作業するには、下記にしたがってくださ�
     npm install
     ```
 
-    または、CI や DevContainer が使用する[厳密なロックファイル準拠でスクリプトを抑制するセットアップ][ci-install]を使用する場合は、次のコマンドを実行してください。
+    または、CI や DevContainer が使用する[ロックファイルに厳密に準拠し、スクリプトを抑制するセットアップ][ci-install]を使用する場合は、次のコマンドを実行してください。
 
     ```sh
     npm run install:safe
