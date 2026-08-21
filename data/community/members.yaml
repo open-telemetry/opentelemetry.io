@@ -27,6 +27,9 @@ governance-committee:
     html_url: https://github.com/trask
     avatar_url: https://avatars.githubusercontent.com/u/218610?v=4
 spec-sponsors:
+  - name: bogdandrutu
+    html_url: https://github.com/bogdandrutu
+    avatar_url: https://avatars.githubusercontent.com/u/1373887?v=4
   - name: cijothomas
     html_url: https://github.com/cijothomas
     avatar_url: https://avatars.githubusercontent.com/u/5232798?v=4
@@ -70,9 +73,6 @@ technical-committee:
   - name: arminru
     html_url: https://github.com/arminru
     avatar_url: https://avatars.githubusercontent.com/u/7052238?v=4
-  - name: bogdandrutu
-    html_url: https://github.com/bogdandrutu
-    avatar_url: https://avatars.githubusercontent.com/u/1373887?v=4
   - name: carlosalberto
     html_url: https://github.com/carlosalberto
     avatar_url: https://avatars.githubusercontent.com/u/260065?v=4
@@ -268,6 +268,8 @@ maintainers:
       - php-approvers
       - php-contrib-approvers
       - php-contrib-maintainers
+      - php-distro-approvers
+      - php-distro-maintainers
       - php-maintainers
       - php-triagers
     html_url: https://github.com/bobstrecansky
@@ -375,6 +377,7 @@ maintainers:
       - php-approvers
       - php-contrib-approvers
       - php-contrib-maintainers
+      - php-distro-approvers
       - php-triagers
     html_url: https://github.com/ChrisLightfootWild
     avatar_url: https://avatars.githubusercontent.com/u/106102472?v=4
@@ -707,9 +710,11 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/4930991?v=4
   - name: intuibase
     teams:
+      - php-approvers
       - php-contrib-approvers
       - php-distro-approvers
       - php-distro-maintainers
+      - php-triagers
     html_url: https://github.com/intuibase
     avatar_url: https://avatars.githubusercontent.com/u/9551626?v=4
   - name: jack-berg
@@ -2268,7 +2273,6 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/43121212?v=4
   - name: windsonsea
     teams:
-      - docs-triagers
       - docs-zh-approvers
     html_url: https://github.com/windsonsea
     avatar_url: https://avatars.githubusercontent.com/u/79828097?v=4
@@ -2474,6 +2478,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/Ugzuzg
     avatar_url: https://avatars.githubusercontent.com/u/1078004?v=4
+  - name: viorel-alexandrescu
+    teams:
+      - kotlin-triagers
+    html_url: https://github.com/viorel-alexandrescu
+    avatar_url: https://avatars.githubusercontent.com/u/147859592?v=4
   - name: yiyuan-he
     teams:
       - javascript-contrib-triagers
@@ -2702,6 +2711,9 @@ members:
   - name: hgaol
     html_url: https://github.com/hgaol
     avatar_url: https://avatars.githubusercontent.com/u/11908658?v=4
+  - name: hilmarf
+    html_url: https://github.com/hilmarf
+    avatar_url: https://avatars.githubusercontent.com/u/5467580?v=4
   - name: Horiodino
     html_url: https://github.com/Horiodino
     avatar_url: https://avatars.githubusercontent.com/u/99384392?v=4

@@ -1,0 +1,24 @@
+# cSpell:ignore aisix
+title: AISIX AI Gateway
+registryType: application integration
+language: rust
+tags:
+  - rust
+  - aisix
+  - ai
+  - gateway
+  - llm
+license: Apache-2.0
+description:
+  AISIX is an open source AI gateway for LLMs and AI agents that natively
+  exports OTLP trace spans following the GenAI semantic conventions, alongside
+  Prometheus metrics.
+authors:
+  - name: API7.ai
+    url: https://github.com/api7
+urls:
+  website: https://api7.ai/ai-gateway
+  repo: https://github.com/api7/aisix
+  docs: https://docs.api7.ai/ai-gateway/observability/exporters
+createdAt: '2026-07-30'
+isNative: true
