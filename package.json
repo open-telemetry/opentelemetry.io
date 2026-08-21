@@ -228,6 +228,6 @@
   "allowScripts": {
     "fsevents": false,
     "hugo-extended@0.164.0": true,
-    "puppeteer@25.5.0": true
+    "puppeteer@25.8.0": true
   }
 }
