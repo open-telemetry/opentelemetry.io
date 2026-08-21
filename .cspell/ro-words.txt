@@ -34,7 +34,6 @@ discutǎ
 editezi
 elimini
 emiți
-emoji
 emojiilor
 enumerează
 explorezi
@@ -93,7 +92,6 @@ semnalizate
 semneazǎ
 servii
 setează
-silențios
 sincronizate
 sincronizezi
 soliciți
