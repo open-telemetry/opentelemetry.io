@@ -9,8 +9,6 @@ https://agentskills.io/,200,1787118334
 https://ai.google.dev/api/generate-content,200,1787032254
 https://ai.pydantic.dev/,200,1787032238
 https://andygol-otel.netlify.app/uk/,200,1787032337
-https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2,200,1787118334
-https://anywhere.eks.amazonaws.com/docs/getting-started/optional/hostosconfig/,200,1787118338
 https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2,200,1786569032
 https://anywhere.eks.amazonaws.com/docs/getting-started/optional/hostosconfig/,200,1787029611
 https://api7.ai/ai-gateway,200,1787150578
@@ -435,6 +433,7 @@ https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concept
 https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html,200,1787032164
 https://docs.base14.io/category/opentelemetry-collector-setup,200,1787029660
 https://docs.bindplane.com/,200,1787029660
+https://docs.bmc.com/xwiki/bin/view/Main/Search?text=metric+ingestion+REST+API,206,1787291307
 https://docs.bronto.io/agent-setup/open-telemetry,200,1787032351
 https://docs.bugsnag.com/performance/distributed-tracing,200,1787032352
 https://docs.centreon.com/pp/integrations/plugin-packs/getting-started/how-to-guides/telegraf/,200,1787029661
@@ -1096,7 +1095,6 @@ https://github.com/apache/apisix/blob/master/apisix/plugins/opentelemetry.lua,20
 https://github.com/apache/cassandra/blob/cassandra-5.0/doc/native_protocol_v5.spec,200,1787032256
 https://github.com/apache/dubbo,200,1787029742
 https://github.com/apache/dubbo/,200,1787029636
-https://github.com/apache/struts,200,1787118356
 https://github.com/apache/struts,200,1786427568
 https://github.com/api7,200,1787150580
 https://github.com/api7/aisix,200,1787150580
@@ -1461,8 +1459,6 @@ https://github.com/heroku,200,1787029673
 https://github.com/hertz-contrib/obs-opentelemetry,200,1787032531
 https://github.com/hgaol,200,1787118349
 https://github.com/hibernate/hibernate-orm,200,1787029636
-https://github.com/honeycombio/honeycomb-collector-distro,200,1787118339
-https://github.com/honeycombio/honeycomb-collector-distro/blob/main/README.md,200,1787118340
 https://github.com/hilmarf,200,1787198167
 https://github.com/honeycombio/honeycomb-collector-distro,200,1786427564
 https://github.com/honeycombio/honeycomb-collector-distro/blob/main/README.md,200,1786427564
@@ -2689,9 +2685,6 @@ https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quote/,200,17
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/react-native-app/,200,1787029618
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendation/,200,1787032166
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/,200,1787029618
-https://github.com/open-telemetry/opentelemetry-demo/issues/1601,200,1787118393
-https://github.com/open-telemetry/opentelemetry-demo/issues/3720,200,1787118393
-https://github.com/open-telemetry/opentelemetry-demo/pull/3604,200,1787118393
 https://github.com/open-telemetry/opentelemetry-demo/issues/1601,200,1786427591
 https://github.com/open-telemetry/opentelemetry-demo/issues/3720,200,1786427590
 https://github.com/open-telemetry/opentelemetry-demo/pull/3604,200,1786427590
@@ -3910,26 +3903,6 @@ https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-mod
 https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/cp-pages.sh,200,1787118336
 https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/create-or-finalize-pr.mjs,200,1787032142
 https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/pick-branch.mjs,200,1787032142
-https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/lychee/double-check/README.md,200,1787118336
-https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs,200,1787118335
-https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration,200,1787118340
-https://github.com/open-telemetry/opentelemetry.io/branches/all?query=spec-integration,200,1787118340
-https://github.com/open-telemetry/opentelemetry.io/commits/main/,200,1787118341
-https://github.com/open-telemetry/opentelemetry.io/compare/2023.12...2024.11,200,1787118393
-https://github.com/open-telemetry/opentelemetry.io/compare/2024.12...2025.11,200,1787118393
-https://github.com/open-telemetry/opentelemetry.io/discussions,200,1787118393
-https://github.com/open-telemetry/opentelemetry.io/fork,200,1787118341
-https://github.com/open-telemetry/opentelemetry.io/issues,200,1787118341
-https://github.com/open-telemetry/opentelemetry.io/issues/10990,200,1787118341
-https://github.com/open-telemetry/opentelemetry.io/issues/11210,200,1787118337
-https://github.com/open-telemetry/opentelemetry.io/issues/6592,200,1787118335
-https://github.com/open-telemetry/opentelemetry.io/issues/9449,200,1787118337
-https://github.com/open-telemetry/opentelemetry.io/issues/new,200,1787118341
-https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing,200,1787118340
-https://github.com/open-telemetry/opentelemetry.io/pull/10911,200,1787118341
-https://github.com/open-telemetry/opentelemetry.io/pull/5891,200,1787118369
-https://github.com/open-telemetry/opentelemetry.io/pull/9291,200,1787118335
-https://github.com/open-telemetry/opentelemetry.io/pull/9638,200,1787118341
 https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/lychee/double-check/README.md,200,1786427572
 https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs,206,1786711489
 https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration,200,1785739339
@@ -5037,6 +5010,7 @@ https://npmjs.com/package/@opentelemetry/instrumentation-runtime-node,206,178703
 https://npmjs.com/package/@opentelemetry/instrumentation-socket.io,206,1787036041
 https://npmjs.com/package/@opentelemetry/instrumentation-tedious,206,1787033412
 https://npmjs.com/package/@opentelemetry/instrumentation-undici,206,1787036041
+https://npmjs.com/package/@opentelemetry/instrumentation-user-interaction,206,1787291307
 https://npmjs.com/package/@opentelemetry/instrumentation-web-exception,200,1787035620
 https://npmjs.com/package/@opentelemetry/instrumentation-winston,206,1787033412
 https://npmjs.com/package/@opentelemetry/instrumentation-xml-http-request,206,1787036041
@@ -5056,6 +5030,7 @@ https://npmjs.com/package/@opentelemetry/sampler-aws-xray,206,1787033412
 https://npmjs.com/package/@prisma/instrumentation,206,1787118750
 https://npmjs.com/package/@sap/opentelemetry-exporter-for-sap-cloud-logging,206,1787118750
 https://npmjs.com/package/@waitingliou/tsc-otel-instrumentation,206,1787030022
+https://npmjs.com/package/opentelemetry-instrumentation-remix,206,1787291307
 https://npmjs.com/package/opentelemetry-instrumentation-rhea,206,1787030902
 https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf,200,1787029639
 https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/,200,1787032143
@@ -6022,7 +5997,6 @@ https://www.flipt.io/docs/configuration/observability#tracing,200,1787029661
 https://www.freedesktop.org/software/systemd/man/latest/machine-id.html,200,1787029640
 https://www.fulcrumapp.com/,200,1787032164
 https://www.gnupg.org/gph/en/manual.html#AEN161,200,1787038850
-https://www.graphql-java.com/,200,1787118353
 https://www.gradio.app/,200,1787232661
 https://www.graphql-java.com/,200,1786427563
 https://www.gwtproject.org/,200,1787029632
