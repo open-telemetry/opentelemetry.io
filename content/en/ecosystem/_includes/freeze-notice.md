@@ -1,6 +1,3 @@
----
----
-
 > [!WARNING] Ecosystem lists are frozen
 >
 > New entries and updates to the [ecosystem](/ecosystem/) lists, including the
