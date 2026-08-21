@@ -30,9 +30,9 @@ const readText = (relPath) =>
 const lock = readJSON('package-lock.json');
 const manifest = readJSON('package.json');
 
-// Dependencies allowed to bypass the npm registry; currently none. A
-// reviewed exception populates this and relaxes the manifest
-// registry-resolution check below.
+// Dependencies allowed to bypass the npm registry in the lock check;
+// currently none. A reviewed exception populates this and must also
+// change the manifest registry-resolution check below.
 const gitDependencyRepos = {};
 
 // Known-poisoned package@version pairs from the 2026-08 npm-worm campaign
@@ -214,10 +214,15 @@ test('manifest: engines floor stays at or above the reviewed minimums', () => {
 });
 
 test('manifest: every dependency resolves through the npm registry', () => {
-  const { dependencies = {}, devDependencies = {} } = manifest;
+  const {
+    dependencies = {},
+    devDependencies = {},
+    optionalDependencies = {},
+  } = manifest;
   for (const [name, spec] of [
     ...Object.entries(dependencies),
     ...Object.entries(devDependencies),
+    ...Object.entries(optionalDependencies),
   ]) {
     assert.doesNotMatch(
       spec,
@@ -225,6 +230,26 @@ test('manifest: every dependency resolves through the npm registry', () => {
       `${name} resolves through the npm registry`,
     );
   }
+});
+
+test('manifest and lock: unscoped markdownlint-rule-link-pattern stays absent', () => {
+  // npm-security-held after GHSA-q3xp-j858-q9xf; the project's package is
+  // @pchalin/markdownlint-rule-link-pattern.
+  const unscoped = 'markdownlint-rule-link-pattern';
+  for (const [section, bag] of [
+    ['dependencies', manifest.dependencies],
+    ['devDependencies', manifest.devDependencies],
+    ['optionalDependencies', manifest.optionalDependencies],
+  ]) {
+    assert.ok(
+      !(bag && unscoped in bag),
+      `${unscoped} is absent from ${section}`,
+    );
+  }
+  assert.ok(
+    !(`node_modules/${unscoped}` in lock.packages),
+    `${unscoped} is absent from the lock`,
+  );
 });
 
 // Exact pins: prefix/flag matching would accept an appended `&& npm
