@@ -2,8 +2,7 @@
 title: Pythonの自動計装に関する問題のトラブルシューティング
 linkTitle: Troubleshooting
 weight: 40
-default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
-drifted_from_default: true
+default_lang_commit: bdfe463187e63311ab3e137f1e314acfb877fd8b
 cSpell:ignore: ASGI gunicorn uvicorn
 ---
 
@@ -157,6 +156,24 @@ async def root():
 
 ```sh
 uvicorn main:app --workers 2
+```
+
+##### Gunicornのポストフォークによるプログラム自動計装の使用 {#use-gunicorn-post-fork-for-programmatic-auto-instrumentation}
+
+Gunicornを使用している場合、`opentelemetry-instrument` のかわりにポストフォークフックの一部として[プログラム自動計装](https://github.com/open-telemetry/opentelemetry-python-contrib/blob/main/opentelemetry-instrumentation/README.rst#programmatic-auto-instrumentation)で OpenTelemetry を初期化できます。
+たとえば、`your_app.py` と同じディレクトリにある `gunicorn_config.py` ファイルで次のように設定します。
+
+```python
+from opentelemetry.instrumentation.auto_instrumentation import initialize
+
+def post_fork(server, worker):
+    initialize()
+```
+
+次のコマンドで実行します。
+
+```sh
+gunicorn --config gunicorn_config.py --workers=2 your_app:app
 ```
 
 ##### PrometheusでOTLPを直接使用 {#use-prometheus-with-direct-otlp}
