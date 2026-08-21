@@ -5,6 +5,8 @@ description: How to add entries to the registry.
 cSpell:ignore: zpages
 ---
 
+{{% include freeze-notice.md %}}
+
 Do you maintain or contribute to an integration for OpenTelemetry? We'd love to
 feature your project in the [registry](../)!
 
