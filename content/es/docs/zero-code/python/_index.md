@@ -98,5 +98,4 @@ Para ver la lista completa, consulta el
 ## Solución de problemas {#troubleshooting}
 
 Para pasos generales de solución de problemas y soluciones a problemas
-específicos, consulta
-[Solución de problemas](./troubleshooting/).
+específicos, consulta [Solución de problemas](./troubleshooting/).
