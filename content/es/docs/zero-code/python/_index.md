@@ -36,7 +36,7 @@ El paquete `opentelemetry-distro` instala la API, el SDK y las herramientas
 
 El comando `opentelemetry-bootstrap -a install` lee la lista de paquetes
 instalados en tu carpeta activa `site-packages` e instala las librerías de
-instrumentación correspondientes para esos paquetes, si corresponde. Por
+instrumentación correspondientes para esos paquetes, si procede. Por
 ejemplo, si ya instalaste el paquete `flask`, al ejecutar
 `opentelemetry-bootstrap -a install` se instalará
 `opentelemetry-instrumentation-flask` por ti. El agente de OpenTelemetry para
@@ -49,8 +49,8 @@ de instrumentación recomendadas para instalar. Para más información, consulta
 
 > [!WARNING] ¿Usas `uv`?
 >
-> Si utilizas el gestor de paquetes [uv](https://docs.astral.sh/uv/), puedes
-> tener dificultades al ejecutar `opentelemetry-bootstrap -a install`. Para más
+> Si utilizas el gestor de paquetes [uv](https://docs.astral.sh/uv/), podrías
+> experimentar problemas al ejecutar `opentelemetry-bootstrap -a install`. Para más
 > detalles, consulta [Bootstrap usando uv](troubleshooting/#bootstrap-using-uv).
 
 {#configuring-the-agent}
