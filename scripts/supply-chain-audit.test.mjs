@@ -213,11 +213,28 @@ test('manifest: engines floor stays at or above the reviewed minimums', () => {
   );
 });
 
-test('manifest: overrides stay at the reviewed set', () => {
+// npm applies overrides only while re-resolving and trusts an in-sync
+// lock as-is, so the adm-zip override (GHSA-xcpc-8h2w-3j85, via
+// hugo-extended) is pinned from the committed manifests: the lock must
+// carry the fixed version, and the override must stay justified by
+// hugo-extended's own declared range. Revisit on a hugo-extended bump;
+// drop the override (and this test) only once that range includes the
+// 0.6.0 fix (jakejarvis/hugo-extended#256).
+test('lock and manifest: the adm-zip override is applied and still needed', () => {
   assert.deepEqual(
     manifest.overrides,
     { 'adm-zip': '0.6.0' },
-    'overrides match the reviewed set',
+    'overrides carries exactly the reviewed entries',
+  );
+  assert.match(
+    lock.packages['node_modules/adm-zip'].version,
+    /^0\.6\./,
+    'the locked adm-zip carries the GHSA-xcpc-8h2w-3j85 fix',
+  );
+  assert.equal(
+    lock.packages['node_modules/hugo-extended'].dependencies['adm-zip'],
+    '^0.5.17',
+    'hugo-extended declares the adm-zip range that justifies the override',
   );
 });
 
