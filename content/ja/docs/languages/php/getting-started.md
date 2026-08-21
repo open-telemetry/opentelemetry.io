@@ -3,8 +3,7 @@ title: はじめに
 description: PHP 向け OpenTelemetry を使い始めましょう。
 aliases: [getting_started]
 weight: 10
-default_lang_commit: 1604e4a539552aea3cd5caff67e7c476d26ab7d6
-drifted_from_default: true
+default_lang_commit: af0d7e75a955c3a53c6353994d16f5ba9e8753de
 cSpell:ignore: darwin pecl rolldice strval
 ---
 

@@ -22,6 +22,9 @@ filters:
       - /src=".*?"/
       # Other:
       - /<https?:\/\/.*?>/ # Raw URLs
+      # Romanian -țios words (silențios, prețios, etc.): the terminology rule's
+      # ASCII-only \b treats ț as a word boundary, misreading the tail as iOS:
+      - /țios/
 rules:
   prh:
     rulePaths:
