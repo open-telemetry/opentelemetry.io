@@ -210,7 +210,7 @@ processors:
 
 exporters:
   # Load balance by trace ID
-  loadbalancing:
+  load_balancing:
     resolver:
       dns:
         hostname: otel-gateway-headless
@@ -226,7 +226,7 @@ service:
     traces:
       receivers: [otlp]
       processors: [memory_limiter]
-      exporters: [loadbalancing]
+      exporters: [load_balancing]
 ```
 
 ### Example gateway configuration
@@ -354,9 +354,9 @@ graph LR
     end
 
     subgraph "Agent Collectors (DaemonSet)"
-        AC1[Agent 1<br/>loadbalancing]
-        AC2[Agent 2<br/>loadbalancing]
-        AC3[Agent 3<br/>loadbalancing]
+        AC1[Agent 1<br/>load_balancing]
+        AC2[Agent 2<br/>load_balancing]
+        AC3[Agent 3<br/>load_balancing]
     end
 
     subgraph "Gateway Collectors"

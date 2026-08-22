@@ -225,11 +225,11 @@ logs to your backend.
 When OBI suppresses the original line, container log files contain a line of NUL
 bytes in its place. For writes up to 8 KiB, filter these placeholder lines
 downstream with `^[\x00\s]*$`. For example, with the OpenTelemetry Collector
-`filelog` receiver:
+`file_log` receiver:
 
 ```yaml
 receivers:
-  filelog:
+  file_log:
     include:
       - /var/log/pods/*/*/*.log
     start_at: end
