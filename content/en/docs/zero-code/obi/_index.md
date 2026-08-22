@@ -9,7 +9,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
-cSpell:ignore: Milvus Qdrant Qwen rerank SunRPC Zilliz
+cSpell:ignore: Aerospike Qwen rerank uprobe
 ---
 
 OpenTelemetry libraries provide telemetry collection for popular programming
@@ -34,7 +34,8 @@ OBI offers the following features:
   with minimal overhead
 - **Distributed tracing**: Distributed trace spans are captured and reported to
   a collector
-- **Log enrichment**: Enrich JSON logs with trace context for correlation
+- **Log enrichment**: Enrich JSON and plain-text logs with trace context for
+  correlation
 - **Kubernetes-native**: Provides configuration-free auto-instrumentation for
   Kubernetes applications
 - **Visibility into encrypted communications**: Capture transactions over
@@ -43,7 +44,7 @@ OBI offers the following features:
 - **Protocol support**: HTTP/S, gRPC, gRPC-Web, JSON-RPC, MQTT, NATS, AMQP 1.0,
   Memcached, and more
 - **Database instrumentation**: PostgreSQL (including pgx driver), MySQL, MSSQL,
-  MongoDB, Redis, Couchbase (N1QL/SQL++ and KV protocol)
+  MongoDB, Redis, Couchbase (N1QL/SQL++ and KV protocol), and Aerospike
 - **GenAI instrumentation**: Trace and metrics for OpenAI, Anthropic Claude,
   Google AI Studio (Gemini), AWS Bedrock, Qwen (DashScope), MCP over JSON-RPC,
   embedding and rerank APIs, and vector retrieval systems
@@ -56,34 +57,39 @@ OBI offers the following features:
 - **Collector integration**: Run OBI as an OpenTelemetry Collector receiver
   component
 
-## Recent highlights (v0.10.0)
+## Recent highlights (v0.12.1)
 
-OBI v0.10.0 expands distributed tracing, runtime telemetry, protocol coverage,
-and operational controls:
+OBI v0.12.1 is the published release of the changes prepared for v0.12.0.
+Although v0.12.0 was tagged, it was not published after release validation
+failed. Install v0.12.1, which includes the intended v0.12.0 changes and the
+release correction.
 
-- **gRPC context propagation**: Added language-agnostic network-level
-  `traceparent` propagation for gRPC over HTTP/2
-- **Runtime metrics**: Added Go runtime metrics and opt-in HotSpot JVM memory
-  metrics without requiring SDK changes in the target application
-- **More network telemetry**: Added network packet, TCP retransmit, and TCP
-  socket I/O metrics
-- **SunRPC support**: Added traces and metrics for ONC RPC protocols over TCP,
-  including NFS-related programs
-- **Asynchronous Go causality**: Added experimental span links for supported Go
-  channel handoffs
-- **Safer operations and export**: Added health endpoints, Unix domain socket
-  support for health checks and OTLP export, resource-attribute selection, and
-  automatic redaction of sensitive URL query parameters
-- **Broader GenAI coverage**: Added vector retrieval telemetry for Pinecone,
-  Qdrant, Milvus, Zilliz, Chroma, and Weaviate
+Notable changes include:
+
+- **Node.js manual spans**: Captures spans created with `@opentelemetry/api`
+  when the application has not registered an OpenTelemetry SDK
+- **Node.js runtime metrics**: Adds event-loop time, utilization, and delay
+  metrics
+- **More precise Config v2 filters**: Applies application filters independently
+  by protocol and signal
+- **Process-context enrichment**: Reads resource attributes and metadata that
+  instrumented processes publish through the experimental `OTEL_CTX` mapping
+- **Database server metrics**: Adds `db.server.operation.duration` for
+  server-side Redis, Memcached, and SQL operations
+- **Improved Java service names**: Uses the Spring Boot application name, JAR
+  manifest title, or JAR base name before falling back to `java`
+- **Reliability fixes**: Protects private-stack kernels from uprobe preemption,
+  avoids unsafe context propagation when a required probe cannot attach, and
+  corrects trace parenting, wrapped Go TLS connections, short-lived process log
+  enrichment, and OTLP attribute handling
 
 For a complete list of changes and upgrade notes, see the
-[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.10.0).
+[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.12.1).
 
 If you want to explore the upstream examples, see the
-[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.10.0/examples/nginx)
+[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/nginx)
 and the
-[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.10.0/examples/apache).
+[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/apache).
 
 ## How OBI works
 
@@ -105,12 +111,11 @@ OBI supports Linux environments that meet the following requirements:
 
 OBI publishes the following supported release artifacts:
 
-| Artifact                                         | Supported platforms          |
-| :----------------------------------------------- | :--------------------------- |
-| `obi` binary archive                             | Linux `amd64`, Linux `arm64` |
-| `k8s-cache` binary archive                       | Linux `amd64`, Linux `arm64` |
-| `otel/ebpf-instrument` container image           | Linux `amd64`, Linux `arm64` |
-| `otel/ebpf-instrument-k8s-cache` container image | Linux `amd64`, Linux `arm64` |
+| Artifact                                            | Supported platforms          |
+| :-------------------------------------------------- | :--------------------------- |
+| `obi` binary archive                                | Linux `amd64`, Linux `arm64` |
+| `otel/ebpf-instrument` container image              | Linux `amd64`, Linux `arm64` |
+| `otel/opentelemetry-ebpf-k8s-cache` container image | Linux `amd64`, Linux `arm64` |
 
 OBI can be deployed on standalone Linux hosts, in containers, and on Kubernetes
 when the environment meets the requirements above.
