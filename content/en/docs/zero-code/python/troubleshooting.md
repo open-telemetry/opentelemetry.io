@@ -58,7 +58,7 @@ uv add opentelemetry-distro opentelemetry-exporter-otlp
 Now, you can install the auto instrumentation:
 
 ```sh
-uv run opentelemetry-bootstrap -a requirements | uv add --requirement -
+uv run opentelemetry-bootstrap -a requirements | uv add --requirements -
 ```
 
 Finally, use `uv run` to start your application (see
