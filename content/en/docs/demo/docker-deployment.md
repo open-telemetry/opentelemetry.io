@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
+cSpell:ignore: otlphttp spanmetrics
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
@@ -72,22 +72,6 @@ docker compose -f docker-compose.minimal.yml up --force-recreate --remove-orphan
     - `flagd-ui`
     - `kafka`
 
-4. (Optional) Enable API observability-driven testing[^1]:
-
-    {{< tabpane text=true >}} {{% tab Make %}}
-
-```shell
-make run-tracetesting
-```
-
-    {{% /tab %}} {{% tab Docker %}}
-
-```shell
-docker compose -f docker-compose-tests.yml run traceBasedTests
-```
-
-    {{% /tab %}} {{< /tabpane >}}
-
 ## Verify the web store and Telemetry
 
 Once the images are built and containers are started you can access:
@@ -96,8 +80,6 @@ Once the images are built and containers are started you can access:
 - Grafana: <http://localhost:8080/grafana/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
 - OpAMP UI: <http://localhost:8080/opamp/>
-- Tracetest UI: <http://localhost:11633/>, only when using
-  `make run-tracetesting`
 - Flagd configurator UI: <http://localhost:8080/feature>
 
 ## Changing the demo's primary port number
