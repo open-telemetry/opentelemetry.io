@@ -1,100 +1,100 @@
 ---
 title: Arquitetura
 weight: 28
-default_lang_commit: 2871fe3c7fdc376e55ce84f601a54264226531bb
-drifted_from_default: true
-cSpell:ignore: fanoutconsumer probabilisticsampler zpages
+default_lang_commit: 714d6cc9c14f0cc2ef26397587388644b0e5d12f
+drifted_from_default: false
+cSpell:ignore: fanoutconsumer otlp probabilisticsampler zpages
 ---
 
 O OpenTelemetry Collector é um arquivo executável que pode receber telemetria,
-processá-la e exportá-la para múltiplos destinos, como _backends_ de
+processá-la e exportá-la para vários destinos, como _backends_ de
 observabilidade.
 
-O Collector suporta vários protocolos populares de código aberto para receber e
-enviar dados de telemetria, e oferece uma arquitetura extensível para adicionar
-mais protocolos.
+O Collector oferece suporte a vários protocolos populares de código aberto para
+receber e enviar dados, além de oferecer uma arquitetura extensível para
+adicionar mais protocolos.
 
-O recebimento, processamento e exportação de dados são feitos usando
-[_pipelines_](#pipelines). Você pode configurar o Collector para ter um ou mais
-_pipelines_.
+O recebimento, o processamento e a exportação de dados são feitos usando
+[pipelines](#pipelines). Você pode configurar o Collector com um ou mais
+pipelines.
 
 Cada _pipeline_ inclui:
 
-- Um conjunto de [_receivers_](#receivers) que coletam os dados.
-- Uma série de [_processors_](#processors) opcionais que recebem os dados dos
-  _receivers_ e os processam.
-- Um conjunto de [_exporters_](#exporters) que recebem os dados dos _processors_
-  e os enviam para fora do Collector.
+- Um conjunto de [receptores](#receivers) que coletam os dados.
+- Uma série de [processadores](#processors) opcionais que recebem os dados dos
+  receptores e os processam.
+- Um conjunto de [exportadores](#exporters) que recebem os dados dos
+  processadores e os enviam para fora do Collector.
 
-O mesmo _receiver_ pode ser incluído em múltiplos _pipelines_, e múltiplos
-_pipelines_ podem incluir o mesmo _exporter_.
+O mesmo receptor pode ser incluído em vários pipelines, e vários pipelines podem
+incluir o mesmo exportador.
 
-## Pipelines
+## Pipelines {#pipelines}
 
-Um _pipeline_ define um caminho que os dados seguem no Collector: desde a
-recepção, passando pelo processamento (ou modificação), até a exportação.
+Um pipeline define o caminho seguido pelos dados no Collector: do recebimento ao
+processamento (ou modificação) e, por fim, à exportação.
 
-Os _pipelines_ podem operar em três tipos de dados de telemetria: rastros,
-métricas e logs. O tipo de dado é uma propriedade do _pipeline_ definida por sua
-configuração. Os _receivers_, _processors_ e _exporters_ utilizados em um
-_pipeline_ devem suportar o tipo de dado específico, caso contrário a exceção
-`pipeline.ErrSignalNotSupported` é reportada quando a configuração é carregada.
+Os pipelines podem operar com três tipos de dados de telemetria: rastros,
+métricas e logs. O tipo de dados é uma propriedade do pipeline definida pela sua
+configuração. Os receptores, processadores e exportadores usados em um pipeline
+devem oferecer suporte ao tipo de dados específico; caso contrário, a exceção
+`pipeline.ErrSignalNotSupported` será informada quando a configuração for
+carregada.
 
-O diagrama a seguir representa um _pipeline_ típico:
+O diagrama a seguir representa um pipeline típico:
 
 ```mermaid
 ---
 title: Pipeline
 ---
 flowchart LR
-  R1(Receiver 1) --> P1[Processor 1]
-  R2(Receiver 2) --> P1
+  R1(Receptor 1) --> P1[Processador 1]
+  R2(Receptor 2) --> P1
   RM(...) ~~~ P1
-  RN(Receiver N) --> P1
-  P1 --> P2[Processor 2]
+  RN(Receptor N) --> P1
+  P1 --> P2[Processador 2]
   P2 --> PM[...]
-  PM --> PN[Processor N]
-  PN --> FO((distribuidor))
-  FO --> E1[[Exporter 1]]
-  FO --> E2[[Exporter 2]]
+  PM --> PN[Processador N]
+  PN --> FO((fan-out))
+  FO --> E1[[Exportador 1]]
+  FO --> E2[[Exportador 2]]
   FO ~~~ EM[[...]]
-  FO --> EN[[Exporter N]]
+  FO --> EN[[Exportador N]]
 ```
 
-Os _pipelines_ podem ter um ou mais _receivers_. Os dados de todos os
-_receivers_ são enviados para o primeiro _processor_, que processa os dados e os
-repassa para o próximo _processor_. Um _processor_ também pode descartar os
-dados caso esteja realizando amostragem ou filtragem. Esse processo continua até
-que o último _processor_ do _pipeline_ envie os dados para os _exporters_. Cada
-_exporter_ recebe uma cópia de cada elemento de dado. O último _processor_ usa
-um `fanoutconsumer` para enviar os dados para múltiplos _exporters_.
+Os pipelines podem ter um ou mais receptores. Os dados de todos os receptores
+são enviados ao primeiro processador, que os processa e os envia ao próximo
+processador. Um processador também pode descartar dados ao fazer amostragem ou
+filtragem. Esse processo continua até que o último processador envie os dados
+aos exportadores. Cada exportador recebe uma cópia de cada elemento de dados. O
+último processador usa um `fanoutconsumer` para enviar os dados a vários
+exportadores.
 
-O _pipeline_ é construído durante a inicialização do Collector com base na
-definição do _pipeline_ na configuração.
+O pipeline é construído durante a inicialização do Collector com base na
+definição do pipeline na configuração.
 
-Uma configuração típica de _pipeline_ se parece com isso:
+Uma configuração de pipeline normalmente se parece com isto:
 
 ```yaml
 service:
-  pipelines: # seção que pode conter várias subseções, uma por tubulação
-    traces: # tipo do _pipeline_
+  pipelines: # seção que pode conter várias subseções, uma por pipeline
+    traces: # tipo do pipeline
       receivers: [otlp, zipkin]
       processors: [memory_limiter]
       exporters: [otlp, zipkin]
 ```
 
-O exemplo anterior define um _pipeline_ para o tipo rastro de dado de
-telemetria, que inclui dois _receivers_, um _processor_ e dois _exporters_. O
-_receiver_ com dois _receivers_, um _processor_ e dois _exporters_.
+O exemplo anterior define um pipeline para o tipo de telemetria de rastros, com
+dois receptores, um processador e dois exportadores.
 
-### Receivers
+### Receptores {#receivers}
 
-Os _receivers_ normalmente escutam em uma porta de rede e recebem dados de
-telemetria. Eles também podem obter dados ativamente, como _scrapers_.
-Normalmente um _receiver_ é configurado para enviar os dados recebidos para um
-pipeline. No entanto, também é possível configurar o mesmo _receiver_ para
-enviar os mesmos dados recebidos para múltiplos pipelines. Isso pode ser feito
-listando o mesmo _receiver_ na chave `receivers` de vários pipelines:
+Os receptores normalmente escutam uma porta de rede e recebem dados de
+telemetria. Eles também podem obter dados ativamente, como no caso de
+_scrapers_. Em geral, um receptor é configurado para enviar os dados recebidos
+para um pipeline. No entanto, também é possível configurar o mesmo receptor para
+enviar os mesmos dados a vários pipelines. Isso pode ser feito listando o mesmo
+receptor na chave `receivers` de vários pipelines:
 
 ```yaml
 receivers:
@@ -105,54 +105,55 @@ receivers:
 
 service:
   pipelines:
-    traces: # o _pipeline_ do tipo "rastro (_traces_)"
+    traces: # um pipeline do tipo "traces"
       receivers: [otlp]
       processors: [memory_limiter]
       exporters: [otlp]
-    traces/2: # outro _pipeline_ do tipo "rastro (_traces_)"
+    traces/2: # outro pipeline do tipo "traces"
       receivers: [otlp]
       processors: [transform]
       exporters: [otlp]
 ```
 
-No exemplo acima, o _receiver_ `otlp` enviará os mesmos dados para o _pipeline_
-`traces` e para o _pipeline_ `traces/2`.
+No exemplo acima, o receptor `otlp` envia os mesmos dados aos pipelines `traces`
+e `traces/2`.
 
-> A configuração usa nomes de chaves compostas na forma `tipo[/nome]`.
+> A configuração usa nomes de chave compostos no formato `type[/name]`.
 
-Quando o Collector carrega essa configuração, o resultado se parece com este
-diagrama (parte dos _processors_ e _exporters_ foram omitidos por brevidade):
+Quando o Collector carrega essa configuração, o resultado se parece com o
+diagrama a seguir (parte dos processadores e exportadores foi omitida para
+facilitar a leitura):
 
 ```mermaid
 flowchart LR
-  R1("`#quot;opentelemetry-collector#quot; Receiver`") --> FO((distribuidor))
-  FO -->|Pipeline 'traces'| P1["`#quot;memory_limiter#quot; Processor`"]
-  FO -->|Pipeline 'traces/2'| P2["`#quot;transform#quot; Processor`"]
+  R1("`#quot;opentelemetry-collector#quot; Receptor`") --> FO((fan-out))
+  FO -->|Pipeline 'traces'| P1["`#quot;memory_limiter#quot; Processador`"]
+  FO -->|Pipeline 'traces/2'| P2["`#quot;transform#quot; Processador`"]
   P1 ~~~ M1[...]
   P2 ~~~ M2[...]
 ```
 
 > [!WARNING]
 >
-> Quando o mesmo _receiver_ é referenciado em mais de um pipeline, o Collector
-> cria apenas uma instância do _receiver_ em tempo de execução, que envia os
-> dados para um distribuidor. O distribuidor, por sua vez, envia os dados para o
-> primeiro _processor_ de cada pipeline. A propagação dos dados do _receiver_
-> para o distribuidor e depois para os _processors_ é realizada por meio de uma
-> chamada de função síncrona. Isso significa que, se um _processor_ bloquear a
-> chamada, os outros pipelines associados a esse _receiver_ serão bloqueados de
-> receber os mesmos dados, e o próprio _receiver_ para de processar e encaminhar
-> os dados recebidos.
+> Quando o mesmo receptor é referenciado em mais de um pipeline, o Collector
+> cria apenas uma instância do receptor em tempo de execução, que envia os dados
+> a um consumidor _fan-out_. Por sua vez, o consumidor _fan-out_ envia os dados
+> ao primeiro processador de cada pipeline. A propagação dos dados do receptor
+> ao consumidor _fan-out_ e, depois, aos processadores é concluída por meio de
+> uma chamada de função síncrona. Isso significa que, se um processador bloquear
+> a chamada, os outros pipelines conectados a esse receptor ficam impedidos de
+> receber os mesmos dados, e o próprio receptor deixa de processar e encaminhar
+> novos dados.
 
-### Exporters
+### Exportadores {#exporters}
 
-Os _exporters_ normalmente encaminham os dados que recebem para um destino na
-rede, mas também podem enviar os dados para outros lugares. Por exemplo, o
-_exporter_ `debug` escreve os dados de telemetria no destino de log.
+Os exportadores normalmente encaminham os dados recebidos para um destino na
+rede, mas também podem enviá-los para outros lugares. Por exemplo, o exportador
+`debug` grava a telemetria no destino de log.
 
-A configuração permite múltiplos _exporters_ do mesmo tipo, no mesmo _pipeline_.
-Por exemplo, você pode ter dois _exporters_ `otlp` definidos, cada um enviando
-para um _endpoint_ OTLP diferente:
+A configuração permite vários exportadores do mesmo tipo, inclusive no mesmo
+pipeline. Por exemplo, você pode definir dois exportadores `otlp`, cada um
+enviando para um endpoint OTLP diferente:
 
 ```yaml
 exporters:
@@ -162,8 +163,8 @@ exporters:
     endpoint: localhost:14317
 ```
 
-Um _exporter_ normalmente recebe dados de um _pipeline_. No entanto, você pode
-configurar múltiplos _pipelines_ para enviar dados para o mesmo _exporter_:
+Normalmente, um exportador recebe dados de um pipeline. No entanto, você pode
+configurar vários pipelines para enviar dados ao mesmo exportador:
 
 ```yaml
 exporters:
@@ -174,52 +175,51 @@ exporters:
 
 service:
   pipelines:
-    traces: # o _pipeline_ do tipo "rastro (_traces_)"
+    traces: # um pipeline do tipo "traces"
       receivers: [zipkin]
       processors: [memory_limiter]
       exporters: [otlp]
-    traces/2: # outro _pipeline_ do tipo "rastro (_traces_)"
+    traces/2: # outro pipeline do tipo "traces"
       receivers: [otlp]
       processors: [transform]
       exporters: [otlp]
 ```
 
-No exemplo acima, o _exporter_ `otlp` recebe dados do _pipeline_ `traces` e do
-_pipeline_ `traces/2`. Quando o Collector carrega essa configuração, o resultado
-se parece com este diagrama (parte dos _processors_ e _receivers_ foram omitidos
-por brevidade):
+No exemplo acima, o exportador `otlp` recebe dados do pipeline `traces` e do
+pipeline `traces/2`. Quando o Collector carrega essa configuração, o resultado
+se parece com o diagrama a seguir (parte dos receptores e processadores foi
+omitida para facilitar a leitura):
 
 ```mermaid
 flowchart LR
-  M1[...] ~~~ P1["`#quot;memory_limiter#quot; Processor`"]
-  M2[...] ~~~ P2["`#quot;transform#quot; Processor`"]
-  P1 -->|Pipeline 'traces'|E1[["`#quot;otlp#quot; Exporter`"]]
+  M1[...] ~~~ P1["`#quot;memory_limiter#quot; Processador`"]
+  M2[...] ~~~ P2["`#quot;transform#quot; Processador`"]
+  P1 -->|Pipeline 'traces'|E1[["`#quot;otlp#quot; Exportador`"]]
   P2 -->|Pipeline 'traces/2'|E1
 ```
 
-### Processors
+### Processadores {#processors}
 
-Um _pipeline_ pode conter _processors_ conectados em sequência. O primeiro
-_processor_ recebe os dados de um ou mais _receivers_ configurados para o
-_pipeline_, e o último _processor_ envia os dados para um ou mais _exporters_
-configurados para o _pipeline_. Todos os _processors_ entre o primeiro e o
-último recebem os dados de apenas um _processor_ anterior e enviam dados para
-apenas um _processor_ sucessor.
+Um pipeline pode conter processadores conectados sequencialmente. O primeiro
+processador recebe dados de um ou mais receptores configurados para o pipeline,
+e o último processador envia os dados a um ou mais exportadores configurados
+para o pipeline. Todos os processadores entre o primeiro e o último recebem
+dados de apenas um processador anterior e enviam dados a apenas um processador
+seguinte.
 
-Os _processors_ podem transformar os dados antes de encaminhá-los, como
-adicionar ou remover atributos de trecho. Podem também descartar os dados ao
-decidir não encaminhá-los (por exemplo, o _processor_ `probabilisticsampler`).
-Ou podem gerar novos dados.
+Os processadores podem transformar os dados antes de encaminhá-los, por exemplo,
+adicionando ou removendo atributos de spans. Eles também podem descartar dados
+ao decidir não encaminhá-los (por exemplo, o processador
+`probabilisticsampler`). Além disso, podem gerar novos dados.
 
-O mesmo nome do _processor_ pode ser referenciado na chave `processors` de
-múltiplos _pipelines_. Nesse caso, a mesma configuração é usada para cada um
-desses _processors_, mas cada _pipeline_ sempre obtém sua própria instância do
-_processor_. Cada um desses _processors_ tem seu próprio estado, e os
-_processors_ nunca são compartilhados entre _pipelines_. Por exemplo, se o
-_processor_ `transform` for usado em vários _pipelines_, cada _pipeline_ terá
-seu próprio _processor_ transform, mas cada _processor_ transform é configurado
-exatamente da mesma forma se referenciarem a mesma chave na configuração. Veja a
-seguinte configuração:
+O mesmo nome de processador pode ser referenciado na chave `processors` de
+vários pipelines. Nesse caso, a mesma configuração é usada para cada um desses
+processadores, mas cada pipeline sempre recebe sua própria instância. Cada
+processador tem seu próprio estado, e os processadores nunca são compartilhados
+entre pipelines. Por exemplo, se o processador `transform` for usado em vários
+pipelines, cada pipeline terá sua própria instância do processador, mas todas as
+instâncias serão configuradas exatamente da mesma forma quando referenciam a
+mesma chave. Veja a configuração a seguir:
 
 ```yaml
 processors:
@@ -232,26 +232,26 @@ processors:
 
 service:
   pipelines:
-    traces: # o _pipeline_ do tipo "rastro (_traces_)"
+    traces: # um pipeline do tipo "traces"
       receivers: [zipkin]
       processors: [transform]
       exporters: [otlp]
-    traces/2: # outro _pipeline_ do tipo "rastro (_traces_)"
+    traces/2: # outro pipeline do tipo "traces"
       receivers: [otlp]
       processors: [transform]
       exporters: [otlp]
 ```
 
-Quando o Collector carrega essa configuração, o resultado se parece com este
-diagrama:
+Quando o Collector carrega essa configuração, o resultado se parece com os
+diagramas a seguir:
 
 ```mermaid
 ---
 title: Pipeline "traces"
 ---
 flowchart LR
-  R1("`zipkin Receiver`") --> P1["`#quot;transform#quot; Processor`"]
-  P1 --> E1[["`#quot;otlp#quot; Exporter`"]]
+  R1("`zipkin Receptor`") --> P1["`#quot;transform#quot; Processador`"]
+  P1 --> E1[["`#quot;otlp#quot; Exportador`"]]
 ```
 
 ```mermaid
@@ -259,71 +259,71 @@ flowchart LR
 title: Pipeline "traces/2"
 ---
 flowchart LR
-  R1("`otlp Receiver`") --> P1["`#quot;transform#quot; Processor`"]
-  P1 --> E1[["`#quot;otlp#quot; Exporter`"]]
+  R1("`otlp Receptor`") --> P1["`#quot;transform#quot; Processador`"]
+  P1 --> E1[["`#quot;otlp#quot; Exportador`"]]
 ```
 
-Observe que cada _processor_ `transform` é uma instância independente, embora
-sejam configurados da mesma forma com um `send_batch_size` de `10000`.
+Observe que cada processador `transform` é uma instância independente, embora
+esteja configurado da mesma forma, com um `send_batch_size` de `10000`.
 
-> O mesmo nome do _processor_ não deve ser referenciado mais de uma vez na chave
+> O mesmo nome de processador não deve ser referenciado várias vezes na chave
 > `processors` de um único pipeline.
 
 ## Executando como agente {#running-as-an-agent}
 
-Em uma VM/container típica, as aplicações do usuário estão sendo executadas em
-alguns processos/pods com uma biblioteca OpenTelemetry. Anteriormente, a
-biblioteca fazia todo o registro, coleta, amostragem e agregação de rastros,
-métricas e logs e, em seguida, exportava os dados para outros _backends_ de
-armazenamento persistente através dos _exporters_ da biblioteca, ou os exibia em
-zpages locais. Esse padrão tem várias desvantagens, por exemplo:
+Em uma VM ou contêiner típico, os aplicativos do usuário são executados em
+processos ou pods com uma biblioteca do OpenTelemetry. Antes, a biblioteca fazia
+todo o registro, coleta, amostragem e agregação de rastros, métricas e logs, e
+então exportava esses dados para _backends_ de armazenamento persistente por
+meio dos exportadores da biblioteca ou os exibia em _zpages_. Esse padrão tem
+várias desvantagens, por exemplo:
 
-1. Para cada biblioteca OpenTelemetry, os _exporters_ e zpages precisam ser
-   reimplementados em linguagens nativas.
-2. Em algumas linguagens de programação (por exemplo, Ruby ou PHP), é difícil
-   fazer a agregação de estatísticas em processo.
-3. Para habilitar a exportação de trechos, estatísticas ou métricas do
-   OpenTelemetry, os usuários da aplicação precisam adicionar manualmente os
-   _exporters_ da biblioteca e reimplantar seus binários. Isso é especialmente
-   difícil quando um incidente ocorreu e os usuários querem usar o OpenTelemetry
-   para investigar o problema imediatamente.
+1. Para cada biblioteca do OpenTelemetry, exportadores e _zpages_ precisam ser
+   reimplementados nas linguagens nativas.
+2. Em algumas linguagens (por exemplo, Ruby ou PHP), é difícil fazer a agregação
+   de estatísticas no processo.
+3. Para habilitar a exportação de spans, estatísticas ou métricas do
+   OpenTelemetry, os usuários da aplicação precisam adicionar manualmente
+   exportadores da biblioteca e reimplantar seus binários. Isso é especialmente
+   difícil quando ocorreu um incidente e os usuários querem investigar o
+   problema imediatamente.
 4. Os usuários da aplicação precisam assumir a responsabilidade de configurar e
-   inicializar os _exporters_. Essas tarefas são suscetíveis a erros (por
-   exemplo, configurar credenciais incorretas ou recursos monitorados), e os
-   usuários podem relutar em "poluir" seu código com OpenTelemetry.
+   inicializar os exportadores. Essas tarefas são propensas a erros (por
+   exemplo, ao configurar credenciais ou recursos monitorados incorretos), e os
+   usuários podem não querer "poluir" seu código com o OpenTelemetry.
 
-Para resolver os problemas acima, você pode executar o OpenTelemetry Collector
-como um agente. O agente é executado como um _daemon_ na VM/container e pode ser
-implantado independentemente da biblioteca. Uma vez implantado e em execução, o
-agente deve ser capaz de recuperar rastros, métricas e logs da biblioteca e
+Para resolver esses problemas, você pode executar o OpenTelemetry Collector como
+um agente. O agente é executado como um daemon na VM ou no contêiner e pode ser
+implantado independentemente da biblioteca. Depois que o agente estiver em
+execução, ele poderá recuperar rastros, métricas e logs da biblioteca e
 exportá-los para outros _backends_. Também podemos dar ao agente a capacidade de
-enviar configurações (como a probabilidade de amostragem) para a biblioteca.
-Para as linguagens que não conseguem fazer a agregação de estatísticas em
-processo, elas podem enviar medições brutas e deixar o agente fazer a agregação.
+enviar configurações (como a probabilidade de amostragem) à biblioteca. Para as
+linguagens que não conseguem agregar estatísticas no processo, elas podem enviar
+medições brutas e deixar que o agente faça a agregação.
 
 ```mermaid
 flowchart LR
   subgraph S1 ["#nbsp;"]
       subgraph S2 ["#nbsp;"]
         subgraph VM [VM]
-            PR["Processo [Biblioteca]"] -->|Amostra trechos, métricas| AB[Agente Binário]
+            PR["Processo [Biblioteca]"] -->|Enviar spans, métricas| AB[Binário do agente]
             AB -->|Enviar configurações| PR
         end
-        subgraph K8s-pod [K8s Pod]
-            AC["`Contêiner de aplicativo [Biblioteca]`"] --> AS[Agente Binário]
+        subgraph K8s-pod [Pod do K8s]
+            AC["Contêiner da aplicação [Biblioteca]"] --> AS[Sidecar do agente]
             AS --> AC
         end
-        subgraph K8s-node [K8s Node]
+        subgraph K8s-node [Nó do K8s]
             subgraph Pod1 [Pod]
-                APP1[App] ~~~ APP2[App]
+                APP1[Aplicação] ~~~ APP2[Aplicação]
             end
             subgraph Pod2 [Pod]
-                APP3[App] ~~~ APP4[App]
+                APP3[Aplicação] ~~~ APP4[Aplicação]
             end
             subgraph Pod3 [Pod]
-                APP5[App] ~~~ APP6[App]
+                APP5[Aplicação] ~~~ APP6[Aplicação]
             end
-            subgraph AD [Agente Daemonset]
+            subgraph AD [DaemonSet do agente]
             end
             APP1 --> AD
             APP2 --> AD
@@ -333,8 +333,8 @@ flowchart LR
       end
       subgraph Backends ["#nbsp;"]
           AB --> BE[Backend]
-          AS --> PRM[Prometheus Backend]
-          AS --> JA[Jaeger Backend]
+          AS --> PRM[Backend Prometheus]
+          AS --> JA[Backend Jaeger]
           AD --> JA
       end
   end
@@ -347,19 +347,18 @@ classDef withLines fill:#fff,stroke:#4f62ad,color:#000000;
 classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad,color:#000000;
 ```
 
-> Para desenvolvedores e mantenedores de outras bibliotecas: adicionando
-> _receivers_ específicos, você pode configurar um agente para aceitar rastros,
-> métricas e logs de outras bibliotecas de rastreamento/monitoramento, como
-> Zipkin, Prometheus, etc. Consulte [_Receivers_](#receivers) para mais
-> detalhes.
+> Para desenvolvedores e mantenedores de outras bibliotecas: ao adicionar
+> receptores específicos, você pode configurar um agente para aceitar rastros,
+> métricas e logs de outras bibliotecas de rastreamento e monitoramento, como
+> Zipkin e Prometheus. Consulte [Receptores](#receivers) para obter detalhes.
 
-## Executando como _gateway_ {#running-as-a-gateway}
+## Executando como gateway {#running-as-a-gateway}
 
-O OpenTelemetry Collector pode ser executado como uma instância de _gateway_ e
-receber trechos e métricas exportados por um ou mais agentes ou bibliotecas, ou
-por tarefas/agentes que emitem em um dos protocolos suportados. O Collector é
-configurado para enviar dados para os _exporter(s)_ configurados. A figura a
-seguir resume a arquitetura de implantação:
+O OpenTelemetry Collector pode ser executado como uma instância de gateway,
+recebendo spans e métricas exportados por um ou mais agentes ou bibliotecas, ou
+por tarefas e agentes que emitam dados em um dos protocolos compatíveis. O
+Collector é configurado para enviar os dados aos exportadores configurados. A
+figura a seguir resume essa arquitetura de implantação:
 
 ```mermaid
 flowchart LR
@@ -369,20 +368,20 @@ flowchart LR
           subgraph VM [VM]
               PR["Processo [Biblioteca]"]
           end
-          subgraph K8s-pod [K8s Pod]
-              AC["`Contêiner de aplicativo [Biblioteca]`"]
+          subgraph K8s-pod [Pod do K8s]
+              AC["Contêiner da aplicação [Biblioteca]"]
           end
-          subgraph K8s-node [K8s Node]
+          subgraph K8s-node [Nó do K8s]
               subgraph Pod1 [Pod]
-                  APP1[App] ~~~ APP2[App]
+                  APP1[Aplicação] ~~~ APP2[Aplicação]
               end
               subgraph Pod2 [Pod]
-                  APP3[App] ~~~ APP4[App]
+                  APP3[Aplicação] ~~~ APP4[Aplicação]
               end
               subgraph Pod3 [Pod]
-                  APP5[App] ~~~ APP6[App]
+                  APP5[Aplicação] ~~~ APP6[Aplicação]
               end
-              subgraph AD [Agente Daemonset]
+              subgraph AD [DaemonSet do agente]
               end
               APP1 --> AD
               APP2 --> AD
@@ -391,7 +390,7 @@ flowchart LR
           end
         end
         subgraph S4 ["#nbsp;"]
-            PR --> OTEL["`Serviço OpenTelemetry Collector`"]
+            PR --> OTEL["Serviço do OpenTelemetry Collector"]
             AC --> OTEL
             AD --> OTEL
             OTEL ---> BE[Backend X]
@@ -399,10 +398,10 @@ flowchart LR
       end
       subgraph S5 ["#nbsp;"]
         subgraph S6 ["#nbsp;"]
-            JA[Jaeger Backend]
+            JA[Backend Jaeger]
         end
         subgraph S7 ["#nbsp;"]
-            PRM[Prometheus Backend]
+            PRM[Backend Prometheus]
         end
       end
       JA ~~~ PRM
@@ -421,5 +420,5 @@ classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad,color:#000000;
 ```
 
 O OpenTelemetry Collector também pode ser implantado em outras configurações,
-como receber dados de outros agentes ou clientes em um dos formatos suportados
-pelos seus _receivers_.
+como receber dados de outros agentes ou clientes em um dos formatos compatíveis
+com seus receptores.
