@@ -164,6 +164,9 @@ Once the images are built and containers are started you can access:
 - Web store: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
+- OpAMP UI: <http://localhost:8080/opamp/>
+- Tracetest UI: <http://localhost:11633/>, only when using
+  `make run-tracetesting`
 - Flagd configurator UI: <http://localhost:8080/feature>
 - Telemetry documentation: <http://localhost:8080/telemetry/>
 - Chatbot UI: <http://localhost:8080/chatbot/>, only when using

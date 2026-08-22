@@ -1,8 +1,10 @@
 ---
 title: PHP zero-code instrumentation
-linkTitle: PHP
-weight: 30
-aliases: [/docs/languages/php/automatic]
+linkTitle: Auto-instrumentation
+weight: 20
+aliases:
+  - /docs/languages/php/automatic
+  - /docs/zero-code/php/
 cSpell:ignore: centos democlass epel pecl phar remi
 ---
 

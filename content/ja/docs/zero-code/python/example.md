@@ -2,8 +2,7 @@
 title: 自動計装の例
 linkTitle: Example
 weight: 20
-default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
-drifted_from_default: true
+default_lang_commit: f6befc31e5602c7019a9949ccd5f7e11d845134e
 # prettier-ignore
 cSpell:ignore: Aiohttp ASGI distro instrumentor mkdir MSIE Referer Starlette venv
 ---
@@ -342,6 +341,6 @@ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS=".*session.*,se
 [semantic convention]: /docs/specs/semconv/http/http-spans/
 [api reference]: https://opentelemetry-python.readthedocs.io/en/latest/index.html
 [instrumentation]: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
-[monkey-patching]: https://stackoverflow.com/questions/5626193/what-is-monkey-patching
+[monkey-patching]: https://stackoverflow.com/questions/5626193/what-is-monkey-patching?link-check=no&last-validated=2026-08-02
 [opentracing example]: https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
 [source files]: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation

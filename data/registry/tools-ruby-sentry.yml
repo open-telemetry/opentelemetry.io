@@ -15,10 +15,10 @@ authors:
   - name: Sentry authors
     email: otel@sentry.io
 urls:
-  repo: https://github.com/getsentry/sentry-ruby/tree/6.6.2/sentry-opentelemetry
-  website: https://github.com/getsentry/sentry-ruby/tree/6.6.2/sentry-opentelemetry
+  repo: https://github.com/getsentry/sentry-ruby/tree/6.7.0/sentry-opentelemetry
+  website: https://github.com/getsentry/sentry-ruby/tree/6.7.0/sentry-opentelemetry
 createdAt: 2023-01-31
 package:
   registry: gems
   name: sentry-opentelemetry
-  version: 6.6.2
+  version: 6.7.0

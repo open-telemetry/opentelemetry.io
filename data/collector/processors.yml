@@ -229,6 +229,16 @@
   stability:
     logs: alpha
     traces: beta
+- name: queuebatchprocessor
+  display_name: queuebatchprocessor
+  repo: core
+  distributions:
+    - core
+  stability:
+    logs: development
+    metrics: development
+    profiles: development
+    traces: development
 - name: redactionprocessor
   display_name: Redaction Processor
   repo: contrib

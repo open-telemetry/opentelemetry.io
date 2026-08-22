@@ -33,7 +33,6 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: 'npm'
-          cache-dependency-path: package.json
 
       - name: Configure git
         run: |

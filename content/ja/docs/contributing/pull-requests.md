@@ -3,8 +3,7 @@ title: コンテンツの提出
 description: GitHub UI 利用して、またはローカルのフォークから、新しいコンテンツまたはコンテンツの変更を提出する方法を学びます
 aliases: [new-content]
 weight: 15
-default_lang_commit: 8013aa5f0aae284fa343311981625be6dbb25e5b
-drifted_from_default: true
+default_lang_commit: e76ca67d0f5b6906f7a9c90cde82380fc31e6e85
 ---
 
 新しいドキュメントの内容を追加や改善するには、[プルリクエスト][PR] （PR）を提出してください。
@@ -154,8 +153,8 @@ bot は修正コマンドへのリンクを含む進捗コメントで応答し�
 /fix:format
 /fix:i18n
 /fix:l10n
+/fix:link-cache
 /fix:markdown
-/fix:refcache
 /fix:submodule
 /fix:text
 ```

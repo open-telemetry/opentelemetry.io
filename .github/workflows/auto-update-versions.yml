@@ -24,9 +24,10 @@ jobs:
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
+          cache: npm
 
-      # Don't --ignore-scripts: code-excerpter needs submodules
-      - run: npm install --omit=optional
+      # No ci:prepare: the version-update scripts fetch the submodules they need.
+      - run: npm run ci:min
 
       - name: Use CLA approved github bot
         run: |
