@@ -168,6 +168,7 @@
     "@cspell/dict-pt-br": "2.4.2",
     "@cspell/dict-ro-ro": "2.0.6",
     "@cspell/dict-uk-ua": "4.0.6",
+    "@pchalin/markdownlint-rule-link-pattern": "0.3.0",
     "ajv": "8.20.0",
     "ajv-errors": "3.0.0",
     "ajv-formats": "3.0.1",
@@ -182,8 +183,7 @@
     "markdownlint": "0.41.1",
     "markdownlint-cli2": "0.23.2",
     "markdownlint-rule-helpers": "0.31.0",
-    "markdownlint-rule-link-pattern": "github:chalin/markdownlint-rule-link-pattern#semver:0.2.0",
-    "markdownlint-rule-no-shortcut-ref-link": "github:chalin/markdownlint-rule-no-shortcut-ref-link#v0.3.1",
+    "markdownlint-rule-no-shortcut-ref-link": "0.3.1",
     "prettier": "3.9.6",
     "puppeteer": "25.8.0",
     "puppeteer-core": "25.8.0",
@@ -212,6 +212,9 @@
   },
   "optionalDependencies": {
     "npm-check-updates": "23.0.2"
+  },
+  "overrides": {
+    "adm-zip": "0.6.0"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "enginesNpmComment": "Floor policy: https://opentelemetry.io/site/build/dependencies/#npm-version-floor; next bump: >=11.18.0 (npm/cli#9652) once Node LTS bundles it",
