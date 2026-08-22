@@ -61,11 +61,10 @@ ProcessDetector found resource. Resource {
 No exemplo acima, o SDK detectou o processo e também adicionou automaticamente o
 atributo `host.name=localhost` definido pela variável de ambiente.
 
-Abaixo estão instruções para que os recursos sejam detectados
-automaticamente. No entanto, pode acontecer de não existir um 
-detector para o recurso necessário. Nesse caso, use a
-variável de ambiente `OTEL_RESOURCE_ATTRIBUTES` para injetar o que for
-preciso. Além disso, é possível usar a variável de ambiente
+Abaixo estão instruções para que os recursos sejam detectados automaticamente.
+No entanto, pode acontecer de não existir um detector para o recurso necessário.
+Nesse caso, use a variável de ambiente `OTEL_RESOURCE_ATTRIBUTES` para injetar o
+que for preciso. Além disso, é possível usar a variável de ambiente
 `OTEL_SERVICE_NAME` para definir o valor do atributo de recurso `service.name`.
 Por exemplo, o script a seguir adiciona atributos de recurso de
 [Serviço][service], [Host][host] e [Sistema Operacional][os]:
@@ -92,9 +91,9 @@ EnvDetector found resource. Resource {
 ## Adicionando recursos no código {#adding-resources-in-code}
 
 Também é possível configurar recursos personalizados no código. O `NodeSDK`
-oferece uma opção de configuração para defini-los. Por exemplo, atualize
-o arquivo de instrumentação como no exemplo a seguir para definir os
-atributos `service.*`:
+oferece uma opção de configuração para defini-los. Por exemplo, atualize o
+arquivo de instrumentação como no exemplo a seguir para definir os atributos
+`service.*`:
 
 ```javascript
 ...
@@ -141,8 +140,8 @@ process.on('SIGINT', function () {
 });
 ```
 
-Para que o ID do contêiner seja detectado automaticamente, instale a
-seguinte dependência adicional:
+Para que o ID do contêiner seja detectado automaticamente, instale a seguinte
+dependência adicional:
 
 ```sh
 npm install @opentelemetry/resource-detector-container
@@ -192,11 +191,10 @@ DockerCGroupV1Detector found resource. Resource {
 }
 ```
 
-O detector extraiu o `container.id`. No entanto, note que,
-neste exemplo, os atributos de processo e os atributos definidos por
-variável de ambiente estão ausentes! Para resolver isso, ao definir a lista
-`resourceDetectors`, é necessário também especificar os detectores `envDetector`
-e `processDetector`:
+O detector extraiu o `container.id`. No entanto, note que, neste exemplo, os
+atributos de processo e os atributos definidos por variável de ambiente estão
+ausentes! Para resolver isso, ao definir a lista `resourceDetectors`, é
+necessário também especificar os detectores `envDetector` e `processDetector`:
 
 ```javascript
 const opentelemetry = require('@opentelemetry/sdk-node');
@@ -251,8 +249,8 @@ DockerCGroupV1Detector found resource. Resource {
 
 ## Próximos passos {#next-steps}
 
-Existem mais detectores de recursos que podem ser adicionados à configuração, por
-exemplo, para obter detalhes sobre o seu ambiente de [Nuvem][cloud] ou
+Existem mais detectores de recursos que podem ser adicionados à configuração,
+por exemplo, para obter detalhes sobre o seu ambiente de [Nuvem][cloud] ou
 [Implantação][deployment]. Para mais, veja os
 [pacotes nomeados `resource-detector-*` no repositório opentelemetry-js-contrib](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages).
 
