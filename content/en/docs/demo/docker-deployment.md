@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: firepit otlphttp
+cSpell:ignore: firepit Tracetest tracetesting
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
