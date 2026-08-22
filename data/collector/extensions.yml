@@ -251,7 +251,7 @@
   distributions:
     - core
   stability:
-    extension: development
+    extension: beta
 - name: oauth2clientauthextension
   display_name: OAuth2 Client Credentials Authenticator Extension
   repo: contrib

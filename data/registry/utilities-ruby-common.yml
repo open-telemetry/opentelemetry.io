@@ -1,0 +1,19 @@
+title: opentelemetry-common
+registryType: utilities
+language: ruby
+tags:
+  - utilities
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-common/v0.25.1/common
+  docs: https://rubydoc.info/gems/opentelemetry-common/0.25.1
+  website: https://github.com/open-telemetry/opentelemetry-ruby
+license: Apache-2.0
+description: Common helpers for OpenTelemetry
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09
+package:
+  registry: gems
+  name: opentelemetry-common
+  version: 0.25.1

@@ -1,17 +1,17 @@
-title: OpenTelemetry Anthropic Instrumentation
+title: opentelemetry-instrumentation-anthropic
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
-license: Apache 2.0
-description:
-  The Anthropic instrumentation is a community-maintained instrumentation for
-  the [Anthropic][anthropic-home] gem.
+license: Apache-2.0
+description: Anthropic instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/anthropic
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-anthropic/v0.5.0/instrumentation/anthropic
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-anthropic/0.5.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2025-03-26
 package:
   registry: gems

@@ -9,7 +9,9 @@ To visualize request flows, see the [Service Diagram](../architecture/).
 | ------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | [accounting](accounting/)             | .NET       | Processes incoming orders and count the sum of all orders (mock/).                                                                   |
 | [ad](ad/)                             | Java       | Provides text ads based on given context words.                                                                                      |
+| [agent](agent/)                       | Python     | Provides an AI assistant that routes user prompts through a LangGraph agent using built-in or MCP-provided shop tools.               |
 | [cart](cart/)                         | .NET       | Stores the items in the user's shopping cart in Valkey and retrieves it.                                                             |
+| [chatbot](chatbot/)                   | Python     | Provides a Gradio-based chat UI that forwards user messages to the agent service.                                                    |
 | [checkout](checkout/)                 | Go         | Retrieves user cart, prepares order and orchestrates the payment, shipping and the email notification.                               |
 | [currency](currency/)                 | C++        | Converts one money amount to another currency. Uses real values fetched from European Central Bank. It's the highest QPS service.    |
 | [email](email/)                       | Ruby       | Sends users an order confirmation email (mock/).                                                                                     |
@@ -20,6 +22,7 @@ To visualize request flows, see the [Service Diagram](../architecture/).
 | [image-provider](image-provider/)     | NGINX      | Statically hosts the product images used by the frontend.                                                                            |
 | [Kafka](kafka/)                       | Java       | Message queue connecting the checkout service to the accounting and fraud detection services.                                        |
 | [load-generator](load-generator/)     | Go/k6      | Continuously sends requests imitating realistic user shopping flows to the frontend.                                                 |
+| [mcp](mcp/)                           | Python     | Exposes the shop tools over the Model Context Protocol for the agent and other MCP-compatible clients.                               |
 | [payment](payment/)                   | JavaScript | Charges the given credit card info (mock/) with the given amount and returns a transaction ID.                                       |
 | [product-catalog](product-catalog/)   | Go         | Provides the list of products from a JSON file and ability to search products and get individual products.                           |
 | [quote](quote/)                       | PHP        | Calculates the shipping costs, based on the number of items to be shipped.                                                           |
