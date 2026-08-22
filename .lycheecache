@@ -1642,6 +1642,9 @@ https://github.com/lightstep/opentelemetry-exporter-go,200,1787032519
 https://github.com/lightstep/opentelemetry-exporter-python,200,1787032521
 https://github.com/lizthegrey,200,1787029628
 https://github.com/lmolkova,200,1786427581
+https://github.com/loongsuite,200,1787098643
+https://github.com/loongsuite/dsh-plugin#readme,200,1787098644
+https://github.com/loongsuite/dsh-plugin,200,1787098644
 https://github.com/lopes-felipe,200,1787029628
 https://github.com/lquerel,200,1787032233
 https://github.com/lucacavenaghi97,200,1787032236
@@ -4964,6 +4967,7 @@ https://npmjs.com/package/@google-cloud/opentelemetry-cloud-trace-exporter,206,1
 https://npmjs.com/package/@instana/opentelemetry-exporter,200,1787035595
 https://npmjs.com/package/@jenniferplusplus/opentelemetry-instrumentation-bullmq,206,1786427907
 https://npmjs.com/package/@jufab/opentelemetry-angular-interceptor,206,1787036041
+https://npmjs.com/package/@loongsuite/dsh-plugin,206,1787098345
 https://npmjs.com/package/@opentelemetry/baggage-log-record-processor,200,1787035629
 https://npmjs.com/package/@opentelemetry/baggage-span-processor,206,1787036041
 https://npmjs.com/package/@opentelemetry/exporter-jaeger,206,1786509202
