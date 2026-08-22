@@ -1,0 +1,21 @@
+title: OpenTelemetry Android Agent
+registryType: instrumentation
+language: android
+tags:
+  - android
+  - agent
+  - rum
+license: Apache 2.0
+description:
+  OpenTelemetry Android provides real user monitoring (RUM) and automatic
+  instrumentation for native Android applications.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-android
+  docs: /docs/platforms/client-apps/android/
+createdAt: 2026-07-10
+package:
+  registry: maven
+  name: io.opentelemetry.android/android-agent
+  version: 1.5.0
