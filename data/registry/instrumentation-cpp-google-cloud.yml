@@ -1,0 +1,20 @@
+title: Google Cloud C++ Client Libraries
+registryType: instrumentation
+language: cpp
+tags:
+  - google-cloud
+  - client-libraries
+  - c++
+license: Apache-2.0
+description:
+  The Google Cloud Client Libraries for C++ natively emit OpenTelemetry traces
+  for supported Google Cloud services.
+authors:
+  - name: Google Cloud C++ Authors
+    url: https://github.com/googleapis
+urls:
+  website: https://cloud.google.com/cpp/docs
+  repo: https://github.com/googleapis/google-cloud-cpp
+  docs: https://cloud.google.com/cpp/docs/quickstart-open-telemetry
+createdAt: '2026-08-23'
+isNative: true
