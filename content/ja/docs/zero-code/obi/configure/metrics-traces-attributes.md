@@ -4,6 +4,7 @@ linkTitle: メトリクス属性
 description: 計装された Kubernetes Pod のインスタンス ID デコレーションとメタデータを含む、報告される属性を制御するメトリクスとトレースの属性コンポーネントを設定します。
 weight: 30
 default_lang_commit: ec870712704ae037419e4e420b7fa3be04e10297
+drifted_from_default: true
 cSpell:ignore: kube kubecache kubeconfig OpenShift replicaset statefulset
 ---
 
