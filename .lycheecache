@@ -222,6 +222,8 @@ https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation
 https://cloud.google.com/compute/docs/instances/custom-hostname-vm,200,1787029640
 https://cloud.google.com/compute/docs/internal-dns#instance-fully-qualified-domain-names,200,1787032253
 https://cloud.google.com/compute/docs/metadata/querying-metadata#waitforchange,200,1787032334
+https://cloud.google.com/cpp/docs,200,1787608482
+https://cloud.google.com/cpp/docs/quickstart-open-telemetry,200,1787608475
 https://cloud.google.com/discover/what-are-ai-agents,200,1787029627
 https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/report,200,1787032252
 https://cloud.google.com/functions/docs/concepts/execution-environment,200,1787032256
@@ -1412,6 +1414,8 @@ https://github.com/google/docsy/pull/2714,200,1786734904
 https://github.com/google/pprof,200,1786028735
 https://github.com/google/pprof/tree/main/proto,200,1785739372
 https://github.com/google/sqlcommenter/issues/284,200,1786341741
+https://github.com/googleapis,200,1787608482
+https://github.com/googleapis/google-cloud-cpp,200,1787608482
 https://github.com/googleapis/google-http-java-client,200,1786427568
 https://github.com/googleapis/googleapis/blob/6a8c7914d1b79bd832b5157a09a9332e8cbd16d4/google/rpc/error_details.proto#L119,200,1787032334
 https://github.com/googleapis/googleapis/blob/6a8c7914d1b79bd832b5157a09a9332e8cbd16d4/google/rpc/error_details.proto#L40,200,1787032334
