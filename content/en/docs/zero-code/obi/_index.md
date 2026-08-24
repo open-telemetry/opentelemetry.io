@@ -9,7 +9,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
-cSpell:ignore: Aerospike Qwen rerank uprobe
+cSpell:ignore: Aerospike HotSpot OpenSearch Qwen rerank SunRPC uprobe
 ---
 
 OpenTelemetry libraries provide telemetry collection for popular programming
@@ -20,9 +20,9 @@ tracepoints to the code.
 OpenTelemetry eBPF Instrumentation (OBI) is an auto-instrumentation tool to
 easily get started with Application Observability. OBI uses eBPF to
 automatically inspect application executables and the OS networking layer, and
-capture trace spans related to web transactions and Rate Errors Duration (RED)
-metrics for Linux HTTP/S and gRPC services. All data capture occurs without any
-modifications to application code or configuration.
+capture trace spans, Rate Errors Duration (RED) metrics, runtime metrics, and
+application and network relationships for supported Linux workloads. All data
+capture occurs without any modifications to application code or configuration.
 
 OBI offers the following features:
 
@@ -41,13 +41,24 @@ OBI offers the following features:
 - **Visibility into encrypted communications**: Capture transactions over
   TLS/SSL without decryption
 - **Context propagation**: Propagate trace context across services automatically
-- **Protocol support**: HTTP/S, gRPC, gRPC-Web, JSON-RPC, MQTT, NATS, AMQP 1.0,
-  Memcached, and more
-- **Database instrumentation**: PostgreSQL (including pgx driver), MySQL, MSSQL,
-  MongoDB, Redis, Couchbase (N1QL/SQL++ and KV protocol), and Aerospike
+- **Protocol support (client and server)**: HTTP/S, HTTP/2, gRPC, Kafka, NATS,
+  MQTT, Memcached, SunRPC (including NFS), and JSON-RPC
+- **Protocol support (client only)**: AMQP 1.0 and DNS queries
+- **Database instrumentation (client and server)**: PostgreSQL (including the
+  pgx driver), MySQL, MSSQL, and Redis
+- **Database instrumentation (client only)**: MongoDB, Couchbase (N1QL/SQL++ and
+  KV protocol), Aerospike, Elasticsearch, and OpenSearch
+- **HTTP payload instrumentation**: Server-side GraphQL and client-side
+  Elasticsearch, OpenSearch, AWS S3, and AWS SQS, plus MCP over JSON-RPC on both
+  clients and servers
 - **GenAI instrumentation**: Trace and metrics for OpenAI, Anthropic Claude,
   Google AI Studio (Gemini), AWS Bedrock, Qwen (DashScope), MCP over JSON-RPC,
   embedding and rerank APIs, and vector retrieval systems
+- **Runtime metrics**: Collect Go, HotSpot JVM, and Node.js event-loop metrics
+  without SDK changes
+- **GPU instrumentation**: Capture supported CUDA runtime operations on Linux
+- **Span and service graph metrics**: Export application span metrics and
+  service-to-service relationships
 - **Low cardinality metrics**: Prometheus-compatible metrics with low
   cardinality for cost reduction
 - **Network observability**: Capture network flows between services with byte
