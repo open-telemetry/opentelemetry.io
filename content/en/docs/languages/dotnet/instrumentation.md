@@ -304,6 +304,13 @@ meterProvider.Dispose();
 loggerFactory.Dispose();
 ```
 
+> [!IMPORTANT]
+>
+> Keep the `TracerProvider` alive for as long as the application creates
+> telemetry, and explicitly dispose it during application shutdown to flush any
+> remaining telemetry. For more information, see
+> [TracerProvider management](/docs/languages/dotnet/traces/best-practices/#tracerprovider-management).
+
 For debugging and local development purposes, the example exports telemetry to
 the console. After you have finished setting up manual instrumentation, you need
 to configure an appropriate exporter to
