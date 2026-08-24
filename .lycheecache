@@ -99,6 +99,7 @@ https://central.sonatype.com/artifact/com.github.oshi/oshi-core,200,1787032550
 https://central.sonatype.com/artifact/io.opentelemetry.android/opentelemetry-android-bom,200,1787029627
 https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/openai-java-1.1,200,1787032246
 https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-alibaba-druid-1.0,200,1787029633
+https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-apache-commons-pool-2.0,200,1787566515
 https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-apache-dbcp-2.0,200,1787029632
 https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-apache-dubbo-2.7,200,1787029633
 https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-apache-httpclient-4.3,200,1787029632
@@ -251,6 +252,7 @@ https://code.visualstudio.com/docs/devcontainers/containers#_installation,200,17
 https://cohere.com/,200,1787032253
 https://commonmark.org/,200,1787032156
 https://commons.apache.org/proper/commons-dbcp/,200,1787029632
+https://commons.apache.org/proper/commons-pool/,200,1787566515
 https://community.cncf.io/,200,1787032166
 https://community.cncf.io/cloud-native-new-york-city/,200,1787029669
 https://community.cncf.io/events/details/cncf-cloud-native-community-japan-presents-japan-community-day-at-kubecon-cloudnativecon-japan-2025/,200,1787032241
@@ -6091,6 +6093,7 @@ https://thrift.apache.org/,200,1787032244
 https://tinygo.org/,200,1787029639
 https://tomcat.apache.org/,200,1787029632
 https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html,200,1786427564
+https://tomcat.apache.org/tomcat-8.5-doc/api/org/apache/tomcat/dbcp/dbcp2/BasicDataSource.html,200,1787566515
 https://tomee.apache.org/,200,1787029632
 https://tools.ietf.org/html/rfc4648#section-8,200,1787032331
 https://tools.ietf.org/html/rfc7230#section-5.4,200,1787032251
