@@ -2497,7 +2497,6 @@ https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/receiver/yanggrpcreceiver,200,1787032157
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/receiver/zipkinreceiver,200,1787032156
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/receiver/zookeeperreceiver,200,1787032156
-https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.97.0/exporter/prometheusexporter,200,1787118344
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.159.0/connector/countconnector,200,1787483158
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.159.0/connector/datadogconnector,200,1787483158
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.159.0/connector/exceptionsconnector,200,1787483158
@@ -2858,7 +2857,6 @@ https://github.com/open-telemetry/opentelemetry-collector/tree/v0.158.0/processo
 https://github.com/open-telemetry/opentelemetry-collector/tree/v0.158.0/processor/queuebatchprocessor,200,1787032149
 https://github.com/open-telemetry/opentelemetry-collector/tree/v0.158.0/receiver/nopreceiver,200,1787032154
 https://github.com/open-telemetry/opentelemetry-collector/tree/v0.158.0/receiver/otlpreceiver,200,1787032154
-https://github.com/open-telemetry/opentelemetry-collector/tree/v0.97.0/receiver/otlpreceiver,200,1787118344
 https://github.com/open-telemetry/opentelemetry-collector/tree/v0.159.0/connector/forwardconnector,200,1787483158
 https://github.com/open-telemetry/opentelemetry-collector/tree/v0.159.0/exporter/debugexporter,200,1787483167
 https://github.com/open-telemetry/opentelemetry-collector/tree/v0.159.0/exporter/nopexporter,200,1787483168
