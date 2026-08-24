@@ -230,7 +230,7 @@
     logs: alpha
     traces: beta
 - name: queuebatchprocessor
-  display_name: queuebatchprocessor
+  display_name: Queue Batch Processor
   repo: core
   distributions:
     - core
