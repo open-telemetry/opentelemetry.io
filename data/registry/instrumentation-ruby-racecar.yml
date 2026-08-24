@@ -1,19 +1,19 @@
 # cSpell:ignore racecar
-title: OpenTelemetry Racecar Instrumentation
+title: opentelemetry-instrumentation-racecar
 registryType: instrumentation
 language: ruby
 tags:
   - racecar
   - instrumentation
   - ruby
-license: Apache 2.0
-description:
-  The Racecar instrumentation is a community-maintained instrumentation for
-  Racecar, a client library for Apache Kafka.
+license: Apache-2.0
+description: Racecar instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/racecar
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-racecar/v0.7.0/instrumentation/racecar
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-racecar/0.7.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2022-10-27
 package:
   registry: gems

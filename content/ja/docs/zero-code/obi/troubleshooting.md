@@ -2,8 +2,7 @@
 title: トラブルシューティング
 description: OBI の一般的な問題やエラーのトラブルシューティング
 weight: 22
-default_lang_commit: 94498a7529f6d456201faebba59716baccf79bf8
-drifted_from_default: true
+default_lang_commit: 4c8d57fea0147ce76633951315c40a27c55fad2e
 cSpell:ignore: Clickhouse uprobe userland
 ---
 
@@ -90,8 +89,8 @@ Span #0
     Status message :
 Attributes:
      -> rpc.method: Str(/opentelemetry.proto.collector.metrics.v1.MetricsService/Export)
-     -> rpc.system: Str(grpc)
-     -> rpc.grpc.status_code: Int(0)
+     -> rpc.system.name: Str(grpc)
+     -> rpc.response.status_code: Str(OK)
      -> server.address: Str(otel-collector.default)
      -> peer.service: Str(otel-collector.default)
      -> server.port: Int(4317)

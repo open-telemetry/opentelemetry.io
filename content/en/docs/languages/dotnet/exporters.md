@@ -209,7 +209,7 @@ There are two approaches for exporting metrics to Prometheus:
 
 1. **Using OTLP Exporter (Push)**: Push metrics to Prometheus using the OTLP
    protocol. This requires
-   [Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver)
+   [Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver)
    to be enabled. This is the recommended approach for production environments
    as it supports exemplars and is stable.
 

@@ -258,7 +258,7 @@ IIS by setting the environment variables for `W3SVC` and `WAS` Windows Services.
 ## NuGet package
 
 You can instrument
-[`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained)
+[`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-as-self-contained)
 applications using the NuGet packages. See [NuGet packages](./nuget-packages)
 for more information.
 

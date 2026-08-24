@@ -30,10 +30,6 @@ aliases: [demo_screenshots]
 | --------------------------------------------- | ------------------------------------- |
 | ![Grafana-Prometheus](grafana-prometheus.png) | ![Grafana-jaeger](grafana-jaeger.png) |
 
-## Load Generator UI
-
-![load-generator-ui](load-generator-ui.png)
-
 ## Flagd Configurator
 
 | Basic view                                           | Advanced view                                              |

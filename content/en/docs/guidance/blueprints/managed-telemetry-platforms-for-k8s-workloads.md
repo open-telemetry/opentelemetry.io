@@ -1215,7 +1215,7 @@ scaling considerations][62].
 [32]:
   https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/getting-started/compatibility.md#compatibility-matrix
 [33]:
-  https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection
+  https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md
 [34]: /docs/platforms/kubernetes/operator/
 [35]: /docs/platforms/kubernetes/operator/automatic/
 [36]: /docs/zero-code/

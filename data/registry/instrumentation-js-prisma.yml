@@ -12,10 +12,10 @@ authors:
   - name: Prisma
     email: hello@prisma.io
 urls:
-  repo: https://github.com/prisma/prisma/tree/main/packages/instrumentation
+  repo: https://github.com/prisma/prisma/tree/7.9.1/packages/instrumentation
 createdAt: 2022-08-25
 package:
   registry: npm
   name: '@prisma/instrumentation'
-  version: 7.9.0
+  version: 7.9.1
 isFirstParty: true

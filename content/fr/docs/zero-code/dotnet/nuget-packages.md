@@ -2,7 +2,8 @@
 title: Utilisation des paquets NuGet OpenTelemetry.AutoInstrumentation
 linkTitle: Paquets NuGet
 weight: 40
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
+drifted_from_default: true
 cSpell:ignore: buildtasks
 ---
 
@@ -11,7 +12,7 @@ Utilisez les paquets NuGet dans les scénarios suivants :
 1. Simplifier le déploiement. Par exemple, un conteneur exécutant une seule
    application.
 1. Supporter l'instrumentation d'applications autonomes
-   ([`--self-contained`](https://learn.microsoft.com/fr-fr/dotnet/core/deploying/#publish-self-contained)).
+   ([`--self-contained`](https://learn.microsoft.com/fr-fr/dotnet/core/deploying/#publish-as-self-contained)).
 1. Faciliter l'expérimentation des développeurs avec l'instrumentation
    automatique via les paquets NuGet.
 1. Résoudre les conflits de versions entre les dépendances utilisées par
