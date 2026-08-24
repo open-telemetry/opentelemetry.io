@@ -292,6 +292,14 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/bogdandrutu
     avatar_url: https://avatars.githubusercontent.com/u/1373887?v=4
+  - name: braydonk
+    teams:
+      - collector-contrib-approvers
+      - collector-contrib-maintainers
+      - collector-contrib-triagers
+      - semconv-system-approvers
+    html_url: https://github.com/braydonk
+    avatar_url: https://avatars.githubusercontent.com/u/93549768?v=4
   - name: breedx-splk
     teams:
       - android-approvers
@@ -1753,13 +1761,6 @@ approvers:
       - semconv-client-approvers
     html_url: https://github.com/bidetofevil
     avatar_url: https://avatars.githubusercontent.com/u/860519?v=4
-  - name: braydonk
-    teams:
-      - collector-contrib-approvers
-      - collector-contrib-triagers
-      - semconv-system-approvers
-    html_url: https://github.com/braydonk
-    avatar_url: https://avatars.githubusercontent.com/u/93549768?v=4
   - name: chluknight1224
     teams:
       - docs-zh-approvers
@@ -2969,6 +2970,9 @@ members:
   - name: prestonvasquez
     html_url: https://github.com/prestonvasquez
     avatar_url: https://avatars.githubusercontent.com/u/24281431?v=4
+  - name: ps-mir
+    html_url: https://github.com/ps-mir
+    avatar_url: https://avatars.githubusercontent.com/u/1317870?v=4
   - name: rauno56
     html_url: https://github.com/rauno56
     avatar_url: https://avatars.githubusercontent.com/u/1334536?v=4

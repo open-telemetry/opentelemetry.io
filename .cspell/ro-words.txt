@@ -34,9 +34,11 @@ discutǎ
 editezi
 elimini
 emiți
+emojiilor
 enumerează
 explorezi
 exportatorilor
+formatorul
 forțezi
 franceză
 gestionezi
@@ -79,6 +81,7 @@ randează
 receptoarelor
 reconstruiește
 remediează
+remediezi
 reobține
 repetoriului
 revizuii
