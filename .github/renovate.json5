@@ -19,8 +19,11 @@
     // 3 days plus null exemptions for update types without release timestamps.
     // Repo packageRules apply after preset ones and re-apply after the patch:
     // merge above, so restoring the intended ages takes explicit later rules,
-    // scoped to timestamp-bearing update types so the exemptions stay
-    // last-match.
+    // scoped to semantic update types. Renovate reports bump updates as their
+    // semantic type plus a 'bump' pseudo-type, so these rules would steal that
+    // exemption; the trailing null rule restores it. (isLockfileUpdate has no
+    // pseudo-type, so its preset exemption never matched to begin with:
+    // an upstream matcher gap, unfixable here.)
     {
       matchDatasources: ['npm'],
       matchUpdateTypes: ['major', 'minor'],
@@ -30,6 +33,11 @@
       matchDatasources: ['npm'],
       matchUpdateTypes: ['patch'],
       minimumReleaseAge: '14 days',
+    },
+    {
+      matchDatasources: ['npm'],
+      matchUpdateTypes: ['bump'],
+      minimumReleaseAge: null,
     },
     {
       // Patch updates are typically non-breaking, so they group and automerge.
