@@ -94,16 +94,21 @@ telemetry. Getting this straight helps you choose the right approach.
 
 ### Self-hosted software
 
-Your product is an application or system (e.g., an identity server, a service
+Your product is an application or system (e.g. an identity server, a service
 mesh, a database) that customers install and run in _their_ environment (their
 data center, their cloud, their Kubernetes cluster).
 
 Here, you **instrument your product** with OpenTelemetry. When the customer
-configures an endpoint (e.g. via [environment variables](/docs/specs/otel/configuration/sdk-environment-variables/) or a config file), your
-application exports telemetry from the process they're running.
+configures an endpoint (e.g. via [environment variables](/docs/specs/otel/configuration/sdk-environment-variables/)
+or a config file), your application exports telemetry from the process
+they're running.
 
-The export happens in the customer's environment; they control the binary and
-the destination. _Examples: Keycloak, Kuma._
+Since OpenTelemetry provides [such standard configuration
+options](/docs/specs/otel/configuration/), your users can expect the same
+configuration experience they already have with any other OTel-instrumented system.
+
+The export happens in the customer's environment; they control
+the binary and the destination. _Examples: Keycloak, Kuma._
 
 ### Cloud platforms
 
