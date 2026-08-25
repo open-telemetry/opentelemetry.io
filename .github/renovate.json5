@@ -18,7 +18,7 @@
     {
       // config:best-practices (security:minimumReleaseAgeNpm) injects a 3-day
       // npm rule that overrides the global setting above; package rules apply
-      // in order, so this later rule restores the repo-wide 7 days for npm.
+      // in order, so this later rule restores the repo-wide value.
       matchDatasources: ['npm'],
       minimumReleaseAge: '7 days',
     },
