@@ -44,7 +44,9 @@ const findUnsafeTemplateMarkers = (root) => {
 };
 
 test('unsafe template marker scan covers nested HTML only', (t) => {
-  const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'otel-zgotmplz-'));
+  const fixture = fs.mkdtempSync(
+    path.join(os.tmpdir(), 'otel-template-marker-'),
+  );
   t.after(() => fs.rmSync(fixture, { recursive: true, force: true }));
 
   fs.mkdirSync(path.join(fixture, 'nested'));
