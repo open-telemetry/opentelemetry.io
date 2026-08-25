@@ -15,7 +15,7 @@ sig: SIG End User
 cSpell:ignore: Ahuja Dhruv Gohain Nityananda
 ---
 
-With contributions from [Daniel Gomez Blanco](https://github.com/danielgblanco)
+With contributions from [Dan Gomez Blanco](https://github.com/danielgblanco)
 (New Relic).
 
 If you're building self-hosted software or a SaaS product, your users will
@@ -35,9 +35,9 @@ telemetry** (logs, traces, and metrics) to an OTel backend when they want to.
 analyze their data on the platforms of their
 choosing.](cover.webp)
 
-## The three observability signals
+## The four observability signals
 
-OpenTelemetry defines three main signal types, all carried over the same
+OpenTelemetry defines four signal types, all carried over the same
 [OTLP protocol](/docs/specs/otlp/):
 
 - **[Logs](/docs/concepts/signals/logs/):** Event records, request/access logs,
@@ -46,8 +46,16 @@ OpenTelemetry defines three main signal types, all carried over the same
   users can see request flows across services and correlate them with logs.
 - **[Metrics](/docs/concepts/signals/metrics/):** Counters, gauges, and
   histograms (e.g. request rates, latency, error rates).
+- **[Profiles](/docs/concepts/signals/profiles/):** CPU, memory, and other
+  profiling data captured during code execution.
 
-The same export story applies to all three: let users configure an OTLP endpoint
+> [!NOTE] Profiles is in public alpha
+> 
+> Profiles entered [public alpha](/blog/2026/profiles-alpha/) on March 26, 2026. As a signal, OpenTelemetry intends for it to stand alongside the current three major observability signals — often regarded as the three pillars of observability — helping users troubleshoot production incidents by capturing resource usage patterns across their codebase.
+>
+> Although we exclusively focus on logs, traces, and metrics in this blog, we are interested to see how profiles take shape, and how the community puts them to use in their observability systems.
+
+The same export story applies to all three (logs, traces, and metrics): let users configure an OTLP endpoint
 and **push** telemetry to it. You can support one, two, or all three signals
 depending on what your product generates.
 
