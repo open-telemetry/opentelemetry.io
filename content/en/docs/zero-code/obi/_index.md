@@ -9,7 +9,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
-cSpell:ignore: Aerospike HotSpot Qwen rerank SunRPC uprobe
+cSpell:ignore: Aerospike HotSpot Ollama Qwen rerank SunRPC uprobe
 ---
 
 OpenTelemetry libraries provide telemetry collection for popular programming
@@ -51,9 +51,10 @@ OBI offers the following features:
 - **HTTP payload instrumentation**: Server-side GraphQL and client-side
   Elasticsearch, OpenSearch, AWS S3, and AWS SQS, plus MCP over JSON-RPC on both
   clients and servers
-- **GenAI instrumentation**: Trace and metrics for OpenAI, Anthropic Claude,
-  Google AI Studio (Gemini), AWS Bedrock, Qwen (DashScope), MCP over JSON-RPC,
-  embedding and rerank APIs, and vector retrieval systems
+- **GenAI instrumentation**: Trace and metrics for OpenAI, OpenAI-compatible
+  gateways, Ollama, Anthropic Claude, Google AI Studio (Gemini), AWS Bedrock,
+  Qwen (DashScope), MCP over JSON-RPC, embedding and rerank APIs, and vector
+  retrieval systems
 - **Runtime metrics**: Collect Go, HotSpot JVM, and Node.js event-loop metrics
   without SDK changes
 - **GPU instrumentation**: Capture supported CUDA runtime operations on Linux
