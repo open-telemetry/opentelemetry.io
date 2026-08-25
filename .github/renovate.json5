@@ -5,11 +5,13 @@
     'docker:pinDigests',
     'helpers:pinGitHubActionDigestsToSemver',
   ],
-  // config:best-practices pulls in security:minimumReleaseAgeNpm, whose 3-day
-  // npm rule would override the ages below and re-apply after the patch:
-  // merge; ignoring it lets minimumReleaseAge and patch: govern npm too. Its
-  // exemptions for timestamp-less update types are restated in packageRules.
-  // Name-coupled: an upstream rename of that preset silently re-admits it.
+  // config:best-practices pulls in security:minimumReleaseAgeNpm: its 3-day
+  // npm rule would override the ages below, re-applying even after the patch:
+  // merge. Its exemptions for timestamp-less update types (pin, replacement,
+  // rollback, ...) are deliberately not kept: fail closed, those updates wait
+  // for a human, as they already do for every other datasource.
+  //
+  // IMPORTANT: an upstream rename of the preset silently re-admits it.
   ignorePresets: ['security:minimumReleaseAgeNpm'],
   minimumReleaseAge: '7 days',
   internalChecksFilter: 'strict',
@@ -21,19 +23,6 @@
     minimumReleaseAge: '14 days',
   },
   packageRules: [
-    {
-      // Update types without release timestamps never pass an age gate (the
-      // ignored preset's own exemption, restated).
-      matchDatasources: ['npm'],
-      matchUpdateTypes: [
-        'pin',
-        'replacement',
-        'bump',
-        'lockfileUpdate',
-        'rollback',
-      ],
-      minimumReleaseAge: null,
-    },
     {
       // Patch updates are typically non-breaking, so they group and automerge.
       groupName: 'all patch versions',
