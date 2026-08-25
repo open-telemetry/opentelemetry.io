@@ -56,7 +56,7 @@ SDK は、ヘッドベースサンプリングを行ってすべてのアクテ�
 
 実装は、以下の2つの主要コンポーネントで構成されています。
 
-### 1. 「Record-Only」判定を許可するカスタムの親ベースサンプラー： {#1-a-custom-parent-based-sampler-that-allows-record-only-decisions}
+### 1. 「Record-Only」判定を許可するカスタムの親ベースサンプラー {#1-a-custom-parent-based-sampler-that-allows-record-only-decisions}
 
 ```csharp
 public class ParentBasedElseAlwaysRecordSampler : Sampler
@@ -94,7 +94,7 @@ public class ParentBasedElseAlwaysRecordSampler : Sampler
 }
 ```
 
-### 2. 失敗したアクティビティを選択的にサンプリングするテイルサンプリングプロセッサー： {#2-a-tail-sampling-processor-that-selectively-samples-failed-activities}
+### 2. 失敗したアクティビティを選択的にサンプリングするテイルサンプリングプロセッサー {#2-a-tail-sampling-processor-that-selectively-samples-failed-activities}
 
 ```csharp
 public class TailSamplingProcessor : BaseProcessor<Activity>
