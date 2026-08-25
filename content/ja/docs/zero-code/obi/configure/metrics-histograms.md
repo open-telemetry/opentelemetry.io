@@ -3,9 +3,14 @@ title: OBI の Prometheus と OpenTelemetry メトリクスヒストグラムを
 linkTitle: メトリクスヒストグラム
 description: Prometheus と OpenTelemetry のメトリクスヒストグラムを設定し、ネイティブヒストグラムおよび指数ヒストグラムを使用するかを設定します。
 weight: 60
-default_lang_commit: 2728c8fbf4f09cf3b8257a1b628a7631fc77d639
-drifted_from_default: true
+default_lang_commit: 5ccd63611a43a8c3b4a243dc995fb3755d46eafa
 ---
+
+> [!NOTE]
+>
+> このページでは Config v1 のフィールド名と例を使用しています。
+> Config v2 については [Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/)を参照してください。
+> 既存のファイルを変換するには[移行ガイド](/docs/zero-code/obi/configure/migrate-to-config-v2/)を使用してください。
 
 OBI の Prometheus および OpenTelemetry メトリクスヒストグラムを設定できます。
 ネイティブヒストグラムや指数ヒストグラムを使用することも選択できます。
@@ -93,7 +98,7 @@ otel_metrics_export:
 
 ## ネイティブヒストグラムと指数ヒストグラムを使用する {#use-native-histograms-and-exponential-histograms}
 
-Prometheus では、[Prometheus コレクターで `native-histograms` 機能を有効化](https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms) することで [ネイティブヒストグラム](https://prometheus.io/docs/concepts/metric_types/#histogram) を有効にできます。
+Prometheus では、[Prometheus コレクターで `native-histograms` 機能を有効化](https://web.archive.org/web/20250102120553/https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms) することで [ネイティブヒストグラム](https://prometheus.io/docs/concepts/metric_types/#histogram) を有効にできます。
 
 OpenTelemetry では、バケットを手動で定義するかわりに、事前定義されたヒストグラムに対して [指数ヒストグラム](/docs/specs/otel/metrics/data-model/#exponentialhistogram) を使用できます。
 標準の [OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION](/docs/specs/otel/metrics/sdk_exporters/otlp/#additional-environment-variable-configuration) 環境変数を設定してください。
