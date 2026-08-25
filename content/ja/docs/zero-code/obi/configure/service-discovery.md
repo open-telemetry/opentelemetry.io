@@ -4,6 +4,7 @@ linkTitle: サービスディスカバリー
 description: OBI のサービスディスカバリーコンポーネントが計装対象のプロセスを検索する方法を設定します。
 weight: 20
 default_lang_commit: c060ef7682b152a285d3a2f0c6a84c93ff877070
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: filestorecsi kube-node-lease kube-system rdns replicaset statefulset testserver volumepopulator
 ---

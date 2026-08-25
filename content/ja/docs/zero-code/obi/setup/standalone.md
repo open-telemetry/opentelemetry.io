@@ -4,6 +4,7 @@ linkTitle: スタンドアロン
 description: OBIをLinuxのスタンドアロンプロセスとしてセットアップして実行する方法を学びます。
 weight: 5
 default_lang_commit: aea54f0fb2574c21a52fb1dc1bb64af38ed7b948
+drifted_from_default: true
 cSpell:ignore: cyclonedx
 ---
 
