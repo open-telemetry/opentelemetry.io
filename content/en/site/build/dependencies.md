@@ -15,13 +15,15 @@ CI, the devcontainer, and Netlify install lock-exact and script-free, then
 explicitly re-enable the one reviewed hook: the `hugo-extended` rebuild that
 fetches the pinned Hugo binary. The rebuild runs through
 `scripts/rebuild-hugo-extended.mjs`, which retries the fetch with bounded
-backoff and refuses to run while any `HUGO_*` installer override is set. Per
+backoff and refuses to run while any `HUGO_*` installer override is set.
+Installs keep optional dependencies: npm delivers platform-specific binaries
+(for example, the Dart Sass compiler in `sass-embedded`) as optional
+dependencies selected by `os`/`cpu`, so omitting them breaks the build. Per
 environment:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.
-- **Devcontainer**: `npm run install:safe`, the same contract, keeping optional
-  dependencies.
+- **Devcontainer**: `npm run install:safe`, the same contract.
 - **Netlify**: `npm run install:safe`, run by the [Netlify][] build command
   after the [inert auto-install](#inert-netlify-auto-install), between
   clean-working-tree checks:

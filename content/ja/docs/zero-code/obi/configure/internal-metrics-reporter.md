@@ -4,6 +4,7 @@ linkTitle: 内部メトリクスレポーター
 description: オプションの内部メトリクスレポーターコンポーネントが、自動計装ツールの内部動作に関するメトリクスを Prometheus 形式でレポートする方法を設定する
 weight: 80
 default_lang_commit: 4c8d57fea0147ce76633951315c40a27c55fad2e
+drifted_from_default: true
 ---
 
 YAML セクション: `internal_metrics`

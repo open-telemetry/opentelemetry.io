@@ -4,6 +4,7 @@ linkTitle: エクスポートモード
 description: OTLP エンドポイントへ直接データをエクスポートするように OBI を構成する
 weight: 1
 default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
+drifted_from_default: true
 ---
 
 Direct モードでは、OBI は OpenTelemetry protocol（OTLP）を使用して、メトリクスとトレースをリモートエンドポイントへ直接プッシュします。

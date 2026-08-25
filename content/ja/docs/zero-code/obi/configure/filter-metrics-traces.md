@@ -4,6 +4,7 @@ linkTitle: データのフィルタリング
 description: 属性値でメトリクスとトレースをフィルタリングするように OBI を設定する
 weight: 40
 default_lang_commit: f7dab5cfc4d44a8c788b7e02d07ec1e1d84e3845
+drifted_from_default: true
 ---
 
 属性の値に基づいて、レポートするメトリクスやトレースを非常に具体的なイベントタイプに限定したい場合があります(たとえば、TCP トラフィックのみをレポートするようにネットワークメトリクスをフィルタリングする、など)。
