@@ -38,6 +38,7 @@ jobs:
         with:
           client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-contents: read
           permission-members: read
           permission-pull-requests: write
 
