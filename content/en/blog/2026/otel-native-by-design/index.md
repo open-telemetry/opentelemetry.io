@@ -78,6 +78,11 @@ A solid export story has a few clear properties for every signal you support:
   and trace/span correlation where available (e.g. log records linked to trace
   IDs), so users can debug and analyze data in their own backend without losing
   context.
+- **Support for Semantic Conventions:** Adherence to the [Semantic Conventions](/docs/specs/semconv/)
+  ensures that telemetry data remains standardized and is easily interpretable 
+  by any compatible backend. It also reduces the cognitive burden on the 
+  end-user to reason about how the software system works, be it a first-party 
+  or third-party system.
 
 If your design aligns with these principles for the signals you emit, you're in
 step with how modern platforms think about observability export.
