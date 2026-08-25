@@ -130,7 +130,7 @@ destinations** that your infrastructure uses to forward data.
 
 ## How others do it
 
-This post focuses on four companies — Kuma, Keycloak, Cloudflare, and Heroku —
+This post focuses on four integrations — Kuma, Keycloak, Cloudflare, and Heroku —
 as representative examples across the two contexts above, but they're far from
 the only ones already exporting telemetry natively via OTLP. The
 [OpenTelemetry Integrations](/ecosystem/integrations/) page features libraries
