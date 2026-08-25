@@ -4,6 +4,7 @@ linkTitle: メトリクスヒストグラム
 description: Prometheus と OpenTelemetry のメトリクスヒストグラムを設定し、ネイティブヒストグラムおよび指数ヒストグラムを使用するかを設定します。
 weight: 60
 default_lang_commit: 2728c8fbf4f09cf3b8257a1b628a7631fc77d639
+drifted_from_default: true
 ---
 
 OBI の Prometheus および OpenTelemetry メトリクスヒストグラムを設定できます。
