@@ -15,11 +15,21 @@
     minimumReleaseAge: '14 days',
   },
   packageRules: [
+    // security:minimumReleaseAgeNpm (config:best-practices) injects npm rules:
+    // 3 days plus null exemptions for update types without release timestamps.
+    // Repo packageRules apply after preset ones and re-apply after the patch:
+    // merge above, so restoring the intended ages takes explicit later rules,
+    // scoped to timestamp-bearing update types so the exemptions stay
+    // last-match.
     {
-      // security:minimumReleaseAgeNpm (config:best-practices) injects a 3-day
-      // npm rule; repo packageRules apply after preset ones, so this one wins.
       matchDatasources: ['npm'],
+      matchUpdateTypes: ['major', 'minor'],
       minimumReleaseAge: '7 days',
+    },
+    {
+      matchDatasources: ['npm'],
+      matchUpdateTypes: ['patch'],
+      minimumReleaseAge: '14 days',
     },
     {
       // Patch updates are typically non-breaking, so they group and automerge.
