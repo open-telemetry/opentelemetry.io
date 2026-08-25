@@ -26,11 +26,16 @@ jobs:
             const path = '.github/component-owners.yml';
             const pullRequest = context.payload.pull_request;
             const [headOwner, headRepo] = pullRequest.head.repo.full_name.split('/');
-            const [baseFile, headFile] = await Promise.all([
-              github.rest.repos.getContent({ ...context.repo, path, ref: pullRequest.base.sha }),
-              github.rest.repos.getContent({ owner: headOwner, repo: headRepo, path, ref: pullRequest.head.sha }),
-            ]);
-            return baseFile.data.sha === headFile.data.sha ? 'true' : 'false';
+            try {
+              const [baseFile, headFile] = await Promise.all([
+                github.rest.repos.getContent({ ...context.repo, path, ref: pullRequest.base.sha }),
+                github.rest.repos.getContent({ owner: headOwner, repo: headRepo, path, ref: pullRequest.head.sha }),
+              ]);
+              return baseFile.data.sha === headFile.data.sha ? 'true' : 'false';
+            } catch (error) {
+              core.warning(`Unable to verify ${path}: ${error.message}`);
+              return 'false';
+            }
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         if: steps.trusted-config.outputs.result == 'true'
