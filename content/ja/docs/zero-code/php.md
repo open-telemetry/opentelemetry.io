@@ -4,6 +4,7 @@ linkTitle: PHP
 weight: 30
 aliases: [/docs/languages/php/automatic]
 default_lang_commit: 60d50174e01d221f65af4b69ad1ae946fbc16ec8
+drifted_from_default: file not found
 cSpell:ignore: centos democlass epel pecl phar remi
 ---
 
