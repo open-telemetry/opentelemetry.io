@@ -152,8 +152,9 @@ Version resolution ignores releases younger than the configured minimum age.
 - **[Renovate][]**: applies its own cooldown to the update PRs it opens, set by
   `minimumReleaseAge` in [`.github/renovate.json5`][]; longer for the updates
   that merge without human review. Update types Renovate can't date (`pin`,
-  `replacement`, `rollback`) never clear the cooldown: they wait on the
-  [Dependency Dashboard][] for a maintainer to perform the update.
+  `replacement`, `rollback`) never clear the cooldown: their PRs open with a
+  permanently pending stability status (not a required check) and merge only
+  through normal review.
 
 ### Lifecycle-script allowlist
 
@@ -234,7 +235,6 @@ with this rule through [drift tracking][].
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
-[Dependency Dashboard]: https://docs.renovatebot.com/key-concepts/dashboard/
 [Docsy]: https://www.docsy.dev/
 [drift tracking]: /docs/contributing/localization/#track-changes
 [includes a clone of the repository]: https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2
