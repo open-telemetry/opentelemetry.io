@@ -14,9 +14,7 @@ params:
 ---
 
 [**{{% param title %}}**][LF], **<span class="text-nowrap">September 7–9,</span>
-Shanghai**. <span class="d-none d-md-inline"><br></span> Come [collaborate,
-learn, and share][blog]<span class="d-none d-sm-inline"> with the Cloud Native
-community</span>!
+Shanghai**. [Details][blog]
 
 [blog]: <{{% param blogPostURL %}}>
-[LF]: <{{% param eventUrl %}}?{{% _param utmParam %}}>
+[LF]: <{{% param eventUrl %}}register/?{{% _param utmParam %}}>
