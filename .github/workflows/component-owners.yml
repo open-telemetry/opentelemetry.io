@@ -1,9 +1,13 @@
 name: Component owners
 on:
-  pull_request_target:
+  pull_request_target: # zizmor: ignore[dangerous-triggers] Runs pinned actions against base-branch configuration without checking out PR code.
 
 permissions:
   contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   run_self:
@@ -11,8 +15,6 @@ jobs:
     name: Assign component owners
     permissions:
       contents: read
-      issues: write
-      pull-requests: write
     if: github.repository_owner == 'open-telemetry'
     steps:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
@@ -20,6 +22,8 @@ jobs:
         with:
           client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-members: read
+          permission-pull-requests: write
       - uses: dyladan/component-owners@7ff2b343629407c4dbe1c28ae66f55f723543d2b # v0.2.0
         with:
           config-file: .github/component-owners.yml
