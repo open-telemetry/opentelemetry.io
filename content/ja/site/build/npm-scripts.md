@@ -5,6 +5,7 @@ description: >-
 weight: 20
 todo: Keep table entries sorted
 default_lang_commit: b8a25353c25d781a375b51f354011248a8140113
+drifted_from_default: true
 ---
 
 スクリプトの定義はリポジトリルートの [`package.json`][] にあります。
