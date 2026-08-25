@@ -76,7 +76,7 @@ For more information about the maintainer role, see the
 
 These are the members of [@open-telemetry/docs-approvers][] (members-only):
 
--
+- [Diana Todea](https://github.com/didiViking), VictoriaMetrics
 
 For more information about the approver role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
@@ -85,10 +85,8 @@ For more information about the approver role, see the
 
 These are the members of [@open-telemetry/docs-triagers][] (members-only):
 
-- [Diana Todea](https://github.com/didiViking), VictoriaMetrics
 - [Emídio Neto](https://github.com/emdneto)
 - [Ezzio Moreira](https://github.com/EzzioMoreira)
-- [Michael Yao](https://github.com/windsonsea), DaoCloud
 - [Pratik Mahalle](https://github.com/pratik-mahalle), DrDroid
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), Grafana Labs
 
@@ -102,6 +100,7 @@ For more information about the triager role, see the
 - [Kazunori Otani](https://github.com/katzchang), Triager
 - [Masaki Sugimoto](https://github.com/Msksgm), Triager
 - [Michael Hausenblas](https://github.com/mhausenblas), Approver
+- [Michael Yao](https://github.com/windsonsea), Triager
 - [Morgan McLean](https://github.com/mtwo), Maintainer
 - [Paul Bruce](https://github.com/paulsbruce), Approver
 - [Sergey Kanzhelev](https://github.com/SergeyKanzhelev), Approver

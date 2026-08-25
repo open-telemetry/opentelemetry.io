@@ -84,6 +84,10 @@ sig:go:
       - any-glob-to-any-file:
           - content/en/docs/languages/go/**
           - content/en/docs/zero-code/go/**
+sig:go-compile-time:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/zero-code/go/compile-time/**
 sig:helm:
   - changed-files:
       - any-glob-to-any-file:

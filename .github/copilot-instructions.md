@@ -51,8 +51,6 @@ info here.
 
 - `npm run serve` -- starts Hugo development server at http://localhost:1313
 - Takes ~1.5 minutes initial build, then serves from memory with live reload
-- Alternative: `npm run serve:netlify` -- serves at http://localhost:8888 for
-  testing Netlify redirects
 - NEVER CANCEL serve startup. Set timeout to 3+ minutes for initial build.
 
 ### Critical Warnings and Known Issues
@@ -133,7 +131,6 @@ npm run build:production # Production build with minification (~1.5min)
 
 # Development server
 npm run serve            # Serve at localhost:1313 (~1.5min startup)
-npm run serve:netlify    # Serve at localhost:8888 with Netlify config
 
 # Validation and testing
 npm run check            # Run ALL validation checks (~2min)

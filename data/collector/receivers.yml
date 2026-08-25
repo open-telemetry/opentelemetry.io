@@ -282,7 +282,7 @@
   distributions:
     - contrib
   stability:
-    logs: development
+    logs: alpha
 - name: googlecloudpubsubreceiver
   display_name: Google Pub/Sub Receiver
   repo: contrib

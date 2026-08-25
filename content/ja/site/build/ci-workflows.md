@@ -4,17 +4,18 @@ description: >-
   PR のチェック、ラベル管理、その他の CI/CD プロセスを自動化する GitHub Actions ワークフロー。
 weight: 10
 default_lang_commit: bf0881aa9c57519b487bf6b5c469ca7f188dceed
+drifted_from_default: true
 ---
 
 ワークフローと（ほとんどの）ヘルパースクリプトについては、[.github][] 配下の `workflow` フォルダと `scripts` フォルダを参照してください。
 
 ## 依存関係のインストール {#dependency-installation}
 
-CI ジョブは、コミットされた `package-lock.json` から npm の依存関係をインストールします。
+CI ジョブはコミット済みの `package-lock.json` から npm の依存関係をインストールします。
 
-- `npm run ci:min` は、ロックされた依存関係グラフをインストールします。ライフサイクルスクリプトは実行されず、`package.json` とロックファイルが同期していない場合はインストールが失敗します。
-- サイトをビルドするジョブは、インストールに続けて `npm run ci:prepare` を実行します。これは `hugo-extended`（再度有効化される唯一の依存関係のフック）をリビルドし、その後リポジトリ自身の `prepare` セットアップを実行します。
-- DevContainer はこれらではなく `npm run install:safe` を使用します。動作は同じですが、`netlify-cli` などのローカルツールを含むオプションの依存関係を保持します。
+- `npm run ci:min` はロックされた依存関係グラフをインストールします。ライフサイクルスクリプトは実行されず、`package.json` とロックファイルが同期していない場合はインストールが失敗します。
+- サイトをビルドするジョブは、インストールの後に `npm run ci:prepare` を実行します。これは `hugo-extended`（再有効化された唯一の依存関係フック）をリビルドし、リポジトリ独自の `prepare` セットアップを実行します。
+- devcontainer はかわりに `npm run install:safe` を使用します。同じ動作を保証しますが、`netlify-cli` などのローカルツールを含むオプショナルな依存関係を保持します。
 
 スクリプトの詳細については、[npm スクリプト](../npm-scripts/)を参照してください。
 
@@ -222,7 +223,7 @@ sequenceDiagram
 - **`/fix:<name>`** は `npm run fix:<name>` を実行します（例: `/fix:format`）。
 - **`/fix:all`** はコマンドのセマンティクスが変更されたため `/fix` にマッピングされます（[#9291][]）。
 - **`/fix:ALL`** は `fix:all` にマッピングされ、メンテナーが `fix:all` を実行できるようにします。
-- **`/fix:refcache`**（非推奨）は `fix:refcache` の互換エイリアスを通じて引き続き実行されます。結果のコメントには `/fix:link-cache` が案内されます。
+- **`/fix:refcache`**（非推奨）は `fix:refcache` 互換エイリアスを介して引き続き実行されます。結果のコメントは `/fix:link-cache` を案内します。
 
 ディレクティブはコメントの最初の行でなければなりません。
 それ以降の行は無視されるため、その後に説明を追加できます。

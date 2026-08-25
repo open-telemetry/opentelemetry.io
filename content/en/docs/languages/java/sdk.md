@@ -2,7 +2,7 @@
 title: Manage Telemetry with SDK
 weight: 12
 aliases: [exporters]
-cSpell:ignore: autoconfigured FQCNs Interceptable okhttp
+cSpell:ignore: autoconfigured data_point FQCNs inflight Interceptable okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -1381,6 +1381,8 @@ concepts:
 - [Senders](#senders): an abstraction for a different HTTP / gRPC client
   libraries.
 - [Authentication](#authentication) options for OTLP exporters.
+- [SDK self-monitoring metrics](#sdk-self-monitoring-metrics) emitted by
+  exporters and other SDK components.
 
 #### Senders
 
@@ -1525,6 +1527,70 @@ public class OtlpAuthenticationConfig {
 }
 ```
 <!-- prettier-ignore-end -->
+
+### SDK self-monitoring metrics
+
+The Java SDK can emit self-monitoring metrics for exporters, span and log record
+processors, tracer and logger providers, and the periodic metric reader. The
+schema selection applies to OTLP exporters and to the batching span and log
+record processors. For the other components it controls whether self-monitoring
+is enabled at all rather than which names are used.
+
+OTLP exporter builders use `GlobalOpenTelemetry.getMeterProvider()` for
+self-monitoring by default. Call `setMeterProvider(...)` on a builder to use a
+different provider.
+[Zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure)
+supplies its configured SDK `MeterProvider` automatically.
+
+For programmatically built exporters, call `setInternalTelemetryVersion(...)`
+with `InternalTelemetryVersion.LEGACY` or `InternalTelemetryVersion.LATEST` to
+select the metrics schema. With zero-code SDK autoconfigure, set
+`otel.experimental.sdk.telemetry.version` to `legacy` or `latest`; its default
+is `legacy`.
+
+With [declarative configuration](../configuration/#declarative-configuration),
+SDK self-monitoring telemetry is disabled by default. To enable it, set
+`instrumentation/development.java.otel_sdk.internal_telemetry_version` to
+`legacy` or `latest`:
+
+```yaml
+instrumentation/development:
+  java:
+    otel_sdk:
+      internal_telemetry_version: latest
+```
+
+The following table summarizes the metric names emitted by each component. A
+dash indicates that the schema does not define metrics for that component.
+
+| Component                 | `legacy`                                       | `latest`                                                                                                                                                                                                                                                                         |
+| ------------------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| OTLP exporters            | `otlp.exporter.seen`, `otlp.exporter.exported` | `otel.sdk.exporter.span.inflight`, `otel.sdk.exporter.span.exported`, `otel.sdk.exporter.metric_data_point.inflight`, `otel.sdk.exporter.metric_data_point.exported`, `otel.sdk.exporter.log.inflight`, `otel.sdk.exporter.log.exported`, `otel.sdk.exporter.operation.duration` |
+| `BatchSpanProcessor`      | `queueSize`, `processedSpans`                  | `otel.sdk.processor.span.queue.capacity`, `otel.sdk.processor.span.queue.size`, `otel.sdk.processor.span.processed`                                                                                                                                                              |
+| `BatchLogRecordProcessor` | `queueSize`, `processedLogs`                   | `otel.sdk.processor.log.queue.capacity`, `otel.sdk.processor.log.queue.size`, `otel.sdk.processor.log.processed`                                                                                                                                                                 |
+| `SdkTracerProvider`       | —                                              | `otel.sdk.span.started`, `otel.sdk.span.live`                                                                                                                                                                                                                                    |
+| `SdkLoggerProvider`       | —                                              | `otel.sdk.log.created`                                                                                                                                                                                                                                                           |
+| `PeriodicMetricReader`    | —                                              | `otel.sdk.metric_reader.collection.duration`                                                                                                                                                                                                                                     |
+
+`SimpleSpanProcessor` and `SimpleLogRecordProcessor` always use the
+semantic-convention schema and record `otel.sdk.processor.span.processed` and
+`otel.sdk.processor.log.processed` respectively.
+
+The legacy exporter metrics both include a `type` attribute with a value of
+`span`, `metric`, or `log`. `otlp.exporter.exported` also includes a `success`
+attribute.
+
+The `latest` names follow the
+[SDK metric semantic conventions](/docs/specs/semconv/otel/sdk-metrics/).
+Exporter metrics include `otel.component.type`, `otel.component.name`,
+`server.address`, and `server.port`. Failed exports add `error.type` to the
+`.exported` and `.duration` metrics, but not to `.inflight` metrics. The
+`otel.sdk.exporter.operation.duration` metric also includes
+`http.response.status_code` for HTTP or `rpc.grpc.status_code` for gRPC.
+
+The legacy metrics predate the SDK metrics semantic conventions and remain the
+default for SDK autoconfigure to avoid breaking existing users. The Java SDK
+does not currently define a removal schedule for them.
 
 ### Benchmarks
 
