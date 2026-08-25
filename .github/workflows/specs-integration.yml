@@ -8,14 +8,19 @@ on:
 
 permissions:
   contents: read
-  # Needed so the "Pick integration branch" step can open a tracking issue
-  # via gh when it detects problems (e.g. stale integration branches).
-  issues: write
+
+# Overlapping runs would race updates to the integration branches.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
 
 jobs:
   update-integration-branch:
     name: Update ${{ matrix.spec }} integration branch
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write # Let the branch-selection step open tracking issues for stale branches.
     if: github.repository == 'open-telemetry/opentelemetry.io'
     strategy:
       fail-fast: false
@@ -39,6 +44,8 @@ jobs:
           # the higher privileged docs token is needed to push commits to an existing PR
           client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -46,6 +53,7 @@ jobs:
           fetch-depth: 0
           # this is needed to trigger workflows when pushing new commits to an existing PR
           token: ${{ steps.otelbot-token.outputs.token }}
+          persist-credentials: true # zizmor: ignore[artipacked] Required by this job's later git pushes.
 
       - name: Pick integration branch
         env:

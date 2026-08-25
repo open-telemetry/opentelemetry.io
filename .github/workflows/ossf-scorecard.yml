@@ -8,16 +8,20 @@ on:
     - cron: '29 0 * * 5' # once a week
   workflow_dispatch:
 
-permissions: read-all
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   analysis:
+    name: Analyze repository security posture
     runs-on: ubuntu-latest
     permissions:
-      # Needed for Code scanning upload
-      security-events: write
-      # Needed for GitHub OIDC token if publish_results is true
-      id-token: write
+      security-events: write # Upload the Scorecard SARIF to code scanning.
+      id-token: write # Publish signed Scorecard results through OIDC.
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
