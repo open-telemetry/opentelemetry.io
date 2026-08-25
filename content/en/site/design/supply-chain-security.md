@@ -110,8 +110,10 @@ Enforcement at a glance:
     `allowScripts`, version-exact entries included.
 - Release cooldowns are established practice:
   - [pnpm defers][] releases younger than a day by default.
-  - The 3-day value follows the long-standing [Renovate
-    `minimumReleaseAge`][renovate] convention.
+  - Renovate's long-standing [`minimumReleaseAge`][renovate] convention is 3
+    days, tracking npm's 72-hour unpublish window; the 7-day value here adds
+    margin for malware detection and takedown, matching cooldowns adopted
+    elsewhere in the ecosystem.
 - The control set maps onto established framework guidance:
   - [TUF's attack taxonomy][tuf]: arbitrary software installation,
     mix-and-match, and extraneous-dependencies attacks.
