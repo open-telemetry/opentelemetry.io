@@ -11,12 +11,23 @@ cascade:
   _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=state%3Aopen%20label%3A
 ---
 
-> [!TIP] Thank you for your interest!
->
-> Thank you for your interest in contributing to the OpenTelemetry docs and
-> website.
+## Thank you for your interest!
 
-## <i class='far fa-exclamation-triangle text-warning '></i> First time contributing? {#first-time-contributing}
+Thank for your interest in contributing to OpenTelemetry. Contributors help sustain OpenTelemetry, and every contribution helps make the project better for the entire community.
+
+Here is some advice to help you get started:
+
+- **Contributions can come out of necessity:** While we do appreciate regular contributors, it is alright to contribute out of necessity, such as if you find a bug in the Collector, or wish to develop a feature that your team needs.
+
+- plz file issues or contribute when you notice gaps, OTel is a big project after all
+
+- be proactive 
+
+- find something that resonates with you
+
+
+
+### <i class='far fa-exclamation-triangle text-warning '></i> First time contributing? {#first-time-contributing}
 
 - **[Choose an issue][]** with the following labels:
   - [Good first issue](<{{% param _issue %}}%22good%20first%20issue%22>)
@@ -34,7 +45,9 @@ cascade:
 
 - Read our [Generative AI contribution policy](pull-requests#using-ai)
 
-- Want to work other issues or larger changes? [Discuss it with maintainers
+- Join the [#opentelemetry-new-contributors](https://cloud-native.slack.com/archives/C09H3MNMBQV) Slack channel to learn about development etiquette and connect with other new contributors.
+
+- Want to work on other issues or larger changes? [Discuss it with maintainers
   first][].
 
 [discuss it with maintainers first]: issues/#fixing-an-existing-issue
@@ -58,7 +71,13 @@ What do you want to do?
 
 ## What can I contribute to?
 
-OpenTelemetry documentation contributors:
+Contributing to docs can be a good way to get started with the OTel project.
+
+TODO: rewrite below sections
+
+### Documentation
+
+OpenTelemetry documentation contributors can:
 
 - Improve existing or create new content
 - [Submit a blog post](blog/) or case study
@@ -68,10 +87,18 @@ OpenTelemetry documentation contributors:
 The pages in this section describe how to contribute to OpenTelemetry
 **documentation**.
 
+### Beyond Documentation 
+
 For guidance on how to contribute to the OpenTelemetry project in general, see
 the community [OpenTelemetry New Contributor Guide][]. Every [OTel
 repository][org] for language implementations, the Collector, and conventions
 have their own project-specific contributing guides.
+
+OTel Demo can be a good starting point if you wish to dip your feet into code contributions, and to get a feel for how instrumentation works. 
+
+- sig participation - helps gain insights and enables u to shape discussions 
+
+
 
 [choose an issue]: issues/#fixing-an-existing-issue
 [issues]: issues/
