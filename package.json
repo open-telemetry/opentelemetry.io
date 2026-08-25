@@ -82,7 +82,7 @@
     "check:spelling": "cspell --no-progress -c .cspell.yml content data 'layouts/**/*.md' projects/**/*.md",
     "check:text": "npm run _check:text -- ",
     "check": "CMD_SKIP=collector-sync npm run check:all",
-    "ci:min": "npm ci --ignore-scripts --omit=optional",
+    "ci:min": "npm ci --ignore-scripts",
     "ci:prepare": "node scripts/rebuild-hugo-extended.mjs && npm run prepare",
     "clean": "make clean",
     "code-excerpts": "node -e 'console.error(\"\\x1b[31mWARNING: THIS IS A DEPRECATED ALIAS, instead use: `fix:code-excerpts` or `check:code-excerpts`\\x1b[0m\")' && npm run fix:code-excerpts --",
@@ -230,6 +230,7 @@
   },
   "spelling": "cSpell:ignore elemetry lycheecache loglevel minisearch mypy nowrap precheck pytest startswith -",
   "allowScripts": {
+    "@parcel/watcher": false,
     "fsevents": false,
     "hugo-extended@0.164.0": true,
     "puppeteer@25.8.0": true

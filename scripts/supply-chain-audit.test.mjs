@@ -287,7 +287,7 @@ test('manifest: the install path keeps its locked, script-free form', () => {
   const { scripts } = manifest;
   const pins = {
     'install:safe': 'npm ci --ignore-scripts && npm run ci:prepare',
-    'ci:min': 'npm ci --ignore-scripts --omit=optional',
+    'ci:min': 'npm ci --ignore-scripts',
     'ci:prepare': 'node scripts/rebuild-hugo-extended.mjs && npm run prepare',
     '_netlify:prepare':
       'npm run -s is:clean && npm run install:safe && npm run -s is:clean',
