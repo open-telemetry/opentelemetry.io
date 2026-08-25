@@ -185,7 +185,7 @@ test('.npmrc carries exactly the reviewed npm settings', () => {
         (line) => line !== '' && !line.startsWith('#') && !line.startsWith(';'),
       )
       .sort(),
-    ['engine-strict=true', 'min-release-age=3', 'strict-allow-scripts=true'],
+    ['engine-strict=true', 'min-release-age=7', 'strict-allow-scripts=true'],
     'the npm settings match the reviewed set',
   );
 });

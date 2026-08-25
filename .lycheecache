@@ -645,6 +645,7 @@ https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1,206,1787033412
 https://docs.renovatebot.com/,200,1786473193
 https://docs.renovatebot.com/configuration-options/#minimumreleaseage,200,1787032143
+https://docs.renovatebot.com/presets-security/#securityminimumreleaseagenpm,200,1787695025
 https://docs.roadrunner.dev/docs/logging-and-observability/otel,200,1787029661
 https://docs.rs/tower,200,1787032620
 https://docs.ruby-lang.org/en/3.4/Exception.html#method-i-full_message,200,1787032251

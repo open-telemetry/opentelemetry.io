@@ -132,6 +132,8 @@ this page, so first work out which control your change relaxes.
 Out of the audit's scope:
 
 - GitHub workflow files
+- [Renovate][] configuration ([`.github/renovate.json5`][]): reviewed like code,
+  not audit-pinned
 - The [Docsy][] theme's own dependency install (audited upstream)
 - The build-half npm scripts past the install boundary
 
@@ -149,7 +151,10 @@ Version resolution ignores releases younger than the configured minimum age.
     variable, which outranks both.
 - **[Renovate][]**: applies its own cooldown to the update PRs it opens, set by
   `minimumReleaseAge` in [`.github/renovate.json5`][]; longer for the updates
-  that merge without human review.
+  that merge without human review. Update types Renovate can't date (`pin`,
+  `replacement`, `rollback`) never clear the cooldown: their PRs open with a
+  permanently pending stability status (not a required check) and merge only
+  through normal review.
 
 ### Lifecycle-script allowlist
 
