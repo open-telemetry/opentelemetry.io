@@ -26,7 +26,7 @@ default_lang_commit: f60f406894f94169947ecbd236b933ee4008354c
 
 [`ActivitySource.Name`](https://learn.microsoft.com/dotnet/api/system.diagnostics.activitysource.name) には、ドット区切りの [アッパーキャメルケース](https://en.wikipedia.org/wiki/Camel_case) を使用してください。
 多くの場合、完全修飾クラス名を使用するのがよい選択です。
-たとえば：
+たとえば次のように行います。
 
 ```csharp
 static readonly ActivitySource MyActivitySource = new("MyCompany.MyProduct.MyLibrary");
@@ -59,7 +59,7 @@ using (var activity = MyActivitySource.StartActivity("SayHello"))
 ループ内で [Activity.AddEvent](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity.addevent) を呼び出すことは避けてください。
 アクティビティは数百や数千のイベントを扱うようには設計されていません。
 より適切なモデルは[相関ログ](/docs/languages/dotnet/logs/correlation/)や [Activity.Links](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity.links) を使用することです。
-たとえば：
+たとえば次のコードのように行います。
 
 > [!WARNING]
 >
@@ -86,7 +86,7 @@ private static async Task Test()
 
 `TracerProvider` インスタンスを自分で作成する場合は、そのライフサイクルを管理してください。
 
-一般的なルールとして：
+一般的なルールとして以下が挙げられます。
 
 - [依存性注入（DI）](https://learn.microsoft.com/dotnet/core/extensions/dependency-injection)を使用するアプリケーション（たとえば [ASP.NET Core](https://learn.microsoft.com/aspnet/core) や [.NET Worker](https://learn.microsoft.com/dotnet/core/extensions/workers)）を構築している場合、ほとんどのケースでは `TracerProvider` インスタンスを作成し、DI にそのライフサイクルを管理させるべきです。
   詳しくは [Getting Started with OpenTelemetry .NET Traces in 5 Minutes - ASP.NET Core Application](/docs/languages/dotnet/traces/getting-started-aspnetcore/) チュートリアルを参照してください。
@@ -115,7 +115,7 @@ OpenTelemetry では、トレースは自動的に[ログと相関](/docs/langua
 
 ## トレースが欠落する一般的な問題 {#common-issues-that-lead-to-missing-traces}
 
-以下は、トレースが欠落する一般的な問題です：
+以下は、トレースが欠落する一般的な問題です。
 
 - `Activity` の作成に使用される `ActivitySource` が `TracerProvider` に追加されていない。
   `AddSource` メソッドを使用して、指定した `ActivitySource` からのアクティビティを有効にしてください。
