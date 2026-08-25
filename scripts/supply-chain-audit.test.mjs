@@ -30,15 +30,10 @@ const readText = (relPath) =>
 const lock = readJSON('package-lock.json');
 const manifest = readJSON('package.json');
 
-// The only dependencies allowed to bypass the npm registry: two reviewed
-// markdownlint rules, commit-pinned from their author's repos. Everything
-// else must carry a registry URL and an integrity hash.
-const gitDependencyRepos = {
-  'node_modules/markdownlint-rule-link-pattern':
-    'chalin/markdownlint-rule-link-pattern',
-  'node_modules/markdownlint-rule-no-shortcut-ref-link':
-    'chalin/markdownlint-rule-no-shortcut-ref-link',
-};
+// Dependencies allowed to bypass the npm registry in the lock check;
+// currently none. A reviewed exception populates this and must also
+// change the manifest registry-resolution check below.
+const gitDependencyRepos = {};
 
 // Known-poisoned package@version pairs from the 2026-08 npm-worm campaign
 // (Datadog Security Labs). A denylist only ever samples: the structural
@@ -218,16 +213,68 @@ test('manifest: engines floor stays at or above the reviewed minimums', () => {
   );
 });
 
-test('manifest: git dependencies are tag-pinned to their reviewed repos', () => {
-  const { devDependencies } = manifest;
-  for (const repo of Object.values(gitDependencyRepos)) {
-    const name = repo.split('/')[1];
-    assert.match(
-      devDependencies[name] ?? '',
-      new RegExp(`^github:${repo}#(v|semver:)\\d+\\.\\d+\\.\\d+$`),
-      `${name} is tag-pinned to ${repo}`,
+// npm applies overrides only while re-resolving and trusts an in-sync
+// lock as-is, so the adm-zip override (GHSA-xcpc-8h2w-3j85, via
+// hugo-extended) is pinned from the committed manifests: the lock must
+// carry the fixed version, and the override must stay justified by
+// hugo-extended's own declared range. Revisit on a hugo-extended bump;
+// drop the override (and this test) only once that range includes the
+// 0.6.0 fix (jakejarvis/hugo-extended#256).
+test('lock and manifest: the adm-zip override is applied and still needed', () => {
+  assert.deepEqual(
+    manifest.overrides,
+    { 'adm-zip': '0.6.0' },
+    'overrides carries exactly the reviewed entries',
+  );
+  assert.match(
+    lock.packages['node_modules/adm-zip'].version,
+    /^0\.6\./,
+    'the locked adm-zip carries the GHSA-xcpc-8h2w-3j85 fix',
+  );
+  assert.equal(
+    lock.packages['node_modules/hugo-extended'].dependencies['adm-zip'],
+    '^0.5.17',
+    'hugo-extended declares the adm-zip range that justifies the override',
+  );
+});
+
+test('manifest: every dependency resolves through the npm registry', () => {
+  const {
+    dependencies = {},
+    devDependencies = {},
+    optionalDependencies = {},
+  } = manifest;
+  for (const [name, spec] of [
+    ...Object.entries(dependencies),
+    ...Object.entries(devDependencies),
+    ...Object.entries(optionalDependencies),
+  ]) {
+    assert.doesNotMatch(
+      spec,
+      /^(github:|git\+|git:)/,
+      `${name} resolves through the npm registry`,
     );
   }
+});
+
+test('manifest and lock: unscoped markdownlint-rule-link-pattern stays absent', () => {
+  // npm-security-held after GHSA-q3xp-j858-q9xf; the project's package is
+  // @pchalin/markdownlint-rule-link-pattern.
+  const unscoped = 'markdownlint-rule-link-pattern';
+  for (const [section, bag] of [
+    ['dependencies', manifest.dependencies],
+    ['devDependencies', manifest.devDependencies],
+    ['optionalDependencies', manifest.optionalDependencies],
+  ]) {
+    assert.ok(
+      !(bag && unscoped in bag),
+      `${unscoped} is absent from ${section}`,
+    );
+  }
+  assert.ok(
+    !(`node_modules/${unscoped}` in lock.packages),
+    `${unscoped} is absent from the lock`,
+  );
 });
 
 // Exact pins: prefix/flag matching would accept an appended `&& npm
@@ -240,7 +287,7 @@ test('manifest: the install path keeps its locked, script-free form', () => {
   const { scripts } = manifest;
   const pins = {
     'install:safe': 'npm ci --ignore-scripts && npm run ci:prepare',
-    'ci:min': 'npm ci --ignore-scripts --omit=optional',
+    'ci:min': 'npm ci --ignore-scripts',
     'ci:prepare': 'node scripts/rebuild-hugo-extended.mjs && npm run prepare',
     '_netlify:prepare':
       'npm run -s is:clean && npm run install:safe && npm run -s is:clean',

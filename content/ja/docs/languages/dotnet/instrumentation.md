@@ -4,6 +4,7 @@ weight: 36
 aliases: [manual]
 description: OpenTelemetry .NET の計装
 default_lang_commit: 46b67485e928d406a3e5e74f024180d28583c84d
+drifted_from_default: true
 cSpell:ignore: dicelib rolldice
 ---
 
