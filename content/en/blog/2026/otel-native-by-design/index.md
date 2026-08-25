@@ -99,7 +99,7 @@ mesh, a database) that customers install and run in _their_ environment (their
 data center, their cloud, their Kubernetes cluster).
 
 Here, you **instrument your product** with OpenTelemetry. When the customer
-configures an endpoint (e.g. via a startup flag or config file), your
+configures an endpoint (e.g. via [environment variables](/docs/specs/otel/configuration/sdk-environment-variables/) or a config file), your
 application exports telemetry from the process they're running.
 
 The export happens in the customer's environment; they control the binary and
