@@ -155,9 +155,9 @@ defer func() {
 }()
 ```
 
-### golang ランタイム自動計装の追加 {#adding-golang-runtime-auto-instrumentation}
+### Goランタイム自動計装の追加 {#adding-golang-runtime-auto-instrumentation}
 
-golang ランタイムは main 関数で計装されます。
+Goランタイムは main 関数で計装されます。
 
 ```go
 err := runtime.Start(runtime.WithMinimumReadMemStatsInterval(time.Second))
