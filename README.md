@@ -67,7 +67,7 @@ These are the members of [@open-telemetry/docs-maintainers][] (members-only):
 - [Phillip Carter](https://github.com/cartermp), Salesforce
 - [Severin Neumann](https://github.com/svrnm), Bronto
 - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
-- [Vitor Vasconcellos](https://github.com/vitorvasc), DoorDash
+- [Vitor Vasconcellos](https://github.com/vitorvasc)
 
 For more information about the maintainer role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
