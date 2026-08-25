@@ -132,6 +132,8 @@ this page, so first work out which control your change relaxes.
 Out of the audit's scope:
 
 - GitHub workflow files
+- [Renovate][] configuration ([`.github/renovate.json5`][]): reviewed like code,
+  not audit-pinned
 - The [Docsy][] theme's own dependency install (audited upstream)
 - The build-half npm scripts past the install boundary
 
@@ -149,7 +151,9 @@ Version resolution ignores releases younger than the configured minimum age.
     variable, which outranks both.
 - **[Renovate][]**: applies its own cooldown to the update PRs it opens, set by
   `minimumReleaseAge` in [`.github/renovate.json5`][]; longer for the updates
-  that merge without human review.
+  that merge without human review. Update types Renovate can't date (`pin`,
+  `replacement`, `rollback`) never clear the cooldown: they wait on the
+  [Dependency Dashboard][] for a maintainer to perform the update.
 
 ### Lifecycle-script allowlist
 
@@ -230,6 +234,7 @@ with this rule through [drift tracking][].
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
+[Dependency Dashboard]: https://docs.renovatebot.com/key-concepts/dashboard/
 [Docsy]: https://www.docsy.dev/
 [drift tracking]: /docs/contributing/localization/#track-changes
 [includes a clone of the repository]: https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2
