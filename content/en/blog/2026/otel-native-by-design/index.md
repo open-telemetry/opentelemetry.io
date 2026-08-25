@@ -53,7 +53,7 @@ OpenTelemetry defines four signal types, all carried over the same
 > 
 > Profiles entered [public alpha](/blog/2026/profiles-alpha/) on March 26, 2026. As a signal, OpenTelemetry intends for it to stand alongside the current three major observability signals — often regarded as the three pillars of observability — helping users troubleshoot production incidents by capturing resource usage patterns across their codebase.
 >
-> Although we exclusively focus on logs, traces, and metrics in this blog, we are interested to see how profiles take shape, and how the community puts them to use in their observability systems.
+> Although we exclusively focus on logs, traces, and metrics in this blog, we are excited to see how profiles take shape, and how the community puts them to use in their observability systems.
 
 The same export story applies to all three (logs, traces, and metrics): let users configure an OTLP endpoint
 and **push** telemetry to it. You can support one, two, or all three signals
