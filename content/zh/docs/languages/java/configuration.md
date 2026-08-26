@@ -3,7 +3,7 @@ title: 配置 SDK
 linkTitle: 配置 SDK
 weight: 13
 aliases: [config]
-default_lang_commit: 1a0699cbd9bdf32812d3ffb67eb9997be1cc021b
+default_lang_commit: 8d6b626b3dd798de9065335d8c4cc0912959c484
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---
@@ -236,7 +236,7 @@ public class AutoConfiguredSdk {
 | 系统属性                         | 描述                                                                                                                                                                          | 默认值          |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | `otel.traces.exporter`           | 逗号分隔的跨度导出器列表。已知值包括 `otlp`、`zipkin`、`console`、`logging-otlp`、`none`。 **[1]**                                                                            | `otlp`          |
-| `otel.metrics.exporter`          | 逗号分隔的指标导出器列表。已知值包括 `otlp`、`prometheus`、`console`、`none`。 **[1]**                                                                                       | `otlp`          |
+| `otel.metrics.exporter`          | 逗号分隔的指标导出器列表。已知值包括 `otlp`、`prometheus`、`console`、`none`。 **[1]**                                                                                        | `otlp`          |
 | `otel.logs.exporter`             | 逗号分隔的日志记录导出器列表。已知值包括 `otlp`、`console`、`logging-otlp`、`none`。 **[1]**                                                                                  | `otlp`          |
 | `otel.java.exporter.memory_mode` | 如果设置为 `reusable_data`，则启用可重用内存模式（在支持该模式的导出器上）以减少内存分配。已知值包括 `reusable_data`（可重用数据）和 `immutable_data`（不可变数据）。 **[2]** | `reusable_data` |
 
