@@ -27,9 +27,9 @@ script, use `npm run` _`SCRIPT_NAME`_.
 
 | Script            | Description                                                                          |
 | ----------------- | ------------------------------------------------------------------------------------ |
-| `ci:min`          | [Lock-exact inert install][] for CI: no lifecycle scripts, no optional deps.         |
+| `ci:min`          | [Lock-exact inert install][] for CI: no lifecycle scripts.                           |
 | `ci:prepare`      | Post-`ci:min` setup: [fetch the pinned Hugo binary][], then `prepare`.               |
-| `install:safe`    | [Lock-exact local setup][]: inert install keeping optional deps, then `ci:prepare`.  |
+| `install:safe`    | [Lock-exact local setup][]: inert install, then `ci:prepare`.                        |
 | `prepare`         | Install step: `get:submodule`, then Docsy's [lock-exact theme dependency install][]. |
 | `update:hugo`     | Install latest hugo-extended; update its [`allowScripts` approval][] with the bump.  |
 | `update:packages` | Run npm-check-updates to bump deps, subject to the [release cooldown][].             |

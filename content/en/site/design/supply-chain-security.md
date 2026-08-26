@@ -110,8 +110,9 @@ Enforcement at a glance:
     `allowScripts`, version-exact entries included.
 - Release cooldowns are established practice:
   - [pnpm defers][] releases younger than a day by default.
-  - The 3-day value follows the long-standing [Renovate
-    `minimumReleaseAge`][renovate] convention.
+  - Renovate's npm [`minimumReleaseAge`][renovate] security preset sets 3 days,
+    tracking npm's 72-hour unpublish window; the longer value used here is in
+    line with cooldowns adopted elsewhere in the ecosystem.
 - The control set maps onto established framework guidance:
   - [TUF's attack taxonomy][tuf]: arbitrary software installation,
     mix-and-match, and extraneous-dependencies attacks.
@@ -139,7 +140,7 @@ Enforcement at a glance:
 [pnpm defers]: https://pnpm.io/settings/dependency-resolution
 [pnpm]: https://pnpm.io/settings/build
 [Refuse Hugo installer overrides]: #hugo-env
-[renovate]: https://docs.renovatebot.com/configuration-options/#minimumreleaseage
+[renovate]: https://docs.renovatebot.com/presets-security/#securityminimumreleaseagenpm
 [Resolve deliberately]: #deliberate
 [Resolve only cooled-down releases]: #cooldown-releases
 [RFC #54]: https://github.com/npm/rfcs/blob/main/accepted/0054-make-scripts-install-opt-in.md

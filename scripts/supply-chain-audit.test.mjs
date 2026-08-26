@@ -185,7 +185,7 @@ test('.npmrc carries exactly the reviewed npm settings', () => {
         (line) => line !== '' && !line.startsWith('#') && !line.startsWith(';'),
       )
       .sort(),
-    ['engine-strict=true', 'min-release-age=3', 'strict-allow-scripts=true'],
+    ['engine-strict=true', 'min-release-age=7', 'strict-allow-scripts=true'],
     'the npm settings match the reviewed set',
   );
 });
@@ -287,7 +287,7 @@ test('manifest: the install path keeps its locked, script-free form', () => {
   const { scripts } = manifest;
   const pins = {
     'install:safe': 'npm ci --ignore-scripts && npm run ci:prepare',
-    'ci:min': 'npm ci --ignore-scripts --omit=optional',
+    'ci:min': 'npm ci --ignore-scripts',
     'ci:prepare': 'node scripts/rebuild-hugo-extended.mjs && npm run prepare',
     '_netlify:prepare':
       'npm run -s is:clean && npm run install:safe && npm run -s is:clean',
