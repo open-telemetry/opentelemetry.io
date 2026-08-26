@@ -4,7 +4,7 @@ description: >-
   OpenTelemetry ウェブサイトのビルド、配信、検証、メンテナンスのための NPM スクリプト。
 weight: 20
 todo: Keep table entries sorted
-default_lang_commit: b8a25353c25d781a375b51f354011248a8140113
+default_lang_commit: 55db3f6bcc48358f9de9cd97f9132d1e3322ba48
 ---
 
 スクリプトの定義はリポジトリルートの [`package.json`][] にあります。
@@ -25,9 +25,9 @@ default_lang_commit: b8a25353c25d781a375b51f354011248a8140113
 
 | スクリプト        | 説明                                                                                                              |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `ci:min`          | CI 用の [Lock-exact inert install][]：ライフサイクルスクリプトなし、オプション依存なし。                          |
+| `ci:min`          | CI 用の [Lock-exact inert install][]：ライフサイクルスクリプトなし。                                              |
 | `ci:prepare`      | `ci:min` 実行後のセットアップ：[ピンされた Hugo バイナリの取得][fetch the pinned Hugo binary]、そして `prepare`。 |
-| `install:safe`    | [Lock-exact local setup][]：オプション依存を維持する inert インストール、そして `ci:prepare`。                    |
+| `install:safe`    | [Lock-exact local setup][]：inert インストール、そして `ci:prepare`。                                             |
 | `prepare`         | インストールステップ：`get:submodule` を実行し、Docsy の [lock-exact theme dependency install][]。                |
 | `update:hugo`     | 最新の hugo-extended をインストールし、バンプに伴う [`allowScripts` approval][] を更新します。                    |
 | `update:packages` | npm-check-updates を実行して依存関係を更新します（[release cooldown][] の対象）。                                 |

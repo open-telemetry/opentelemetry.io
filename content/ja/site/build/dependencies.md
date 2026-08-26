@@ -4,6 +4,7 @@ description: >-
   サイトが npm 依存関係をどのようにインストール、検証、更新するか
 weight: 5
 default_lang_commit: bdfe463187e63311ab3e137f1e314acfb877fd8b
+drifted_from_default: true
 ---
 
 npm 依存関係はコミット済みの `package-lock.json` によって固定され、インストール時にはレビュー済みのライフサイクルスクリプトのみが実行されます。
