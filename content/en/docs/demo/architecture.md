@@ -81,7 +81,7 @@ queue -->|TCP| fraud-detection
 recommendation -->|gRPC| product-catalog
 recommendation ----->|gRPC| flagd
 
-product-catalog -->postgresql
+product-catalog --> postgresql
 
 Internet -->|HTTP| frontend-proxy
 load-generator -->|HTTP| frontend-proxy
