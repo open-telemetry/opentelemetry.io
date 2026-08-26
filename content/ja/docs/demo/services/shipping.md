@@ -1,20 +1,20 @@
 ---
-title: Shipping Service
-linkTitle: Shipping
+title: 配送サービス
+linkTitle: 配送
 aliases: [shippingservice]
 default_lang_commit: e31e3b1556ecbcbc2f9a09cad6518f0eea32dd63
 cSpell:ignore: sdktrace
 ---
 
-このサービスは、Checkout Service からリクエストされた際に、料金やトラッキング情報を含む配送情報を提供する役割を担います。
+このサービスは、チェックアウトサービスからリクエストされた際に、料金やトラッキング情報を含む配送情報を提供する役割を担います。
 
-Shipping Service は [Actix Web](https://actix.rs/) と、ログのための [Tracing](https://tracing.rs/)、および OpenTelemetry ライブラリを使用して構築されています。
+配送サービスは [Actix Web](https://actix.rs/) と、ログのための [Tracing](https://tracing.rs/)、および OpenTelemetry ライブラリを使用して構築されています。
 その他のサブ依存関係はすべて `Cargo.toml` に含まれています。
 
 フレームワークやランタイムによっては、補足として [Rust のドキュメント](/docs/languages/rust/)を参照することを検討してください。
 見積もりリクエストとトラッキング ID において、非同期および同期のスパンの例をそれぞれ確認できます。
 
-[Shipping Service のソースコード](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/)
+[配送サービスのソースコード](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/)
 
 ## 計装 {#instrumentation}
 
@@ -77,7 +77,7 @@ fn init_meter_provider() -> opentelemetry_sdk::metrics::SdkMeterProvider {
 
 ### ロガープロバイダーの初期化 {#initializing-logger-provider}
 
-ログについては、Shipping Service は Tracing を使用しているため、tracing クレートから OpenTelemetry へログをブリッジするために `OpenTelemetryTracingBridge` が使用されています。
+ログについては、配送サービスは Tracing を使用しているため、tracing クレートから OpenTelemetry へログをブリッジするために `OpenTelemetryTracingBridge` が使用されています。
 
 ```rust
 fn init_logger_provider() {
@@ -135,7 +135,7 @@ async fn main() -> std::io::Result<()> {
 
 ### 計装の設定 {#instrumentation-configuration}
 
-プロバイダーの設定と初期化が完了したため、Shipping Service はサーバーサイドおよびクライアントサイドの設定中にアプリケーションを計装するために [`opentelemetry-instrumentation-actix-web` クレート](https://crates.io/crates/opentelemetry-instrumentation-actix-web)を使用します。
+プロバイダーの設定と初期化が完了したため、配送サービスはサーバーサイドおよびクライアントサイドの設定中にアプリケーションを計装するために [`opentelemetry-instrumentation-actix-web` クレート](https://crates.io/crates/opentelemetry-instrumentation-actix-web)を使用します。
 
 #### サーバーサイド {#server-side}
 
@@ -198,7 +198,7 @@ counter.add(count as u64, &[]);
 
 ### ログ {#logs}
 
-Shipping Service はログインターフェイスとして Tracing を使用しているため、Tracing のログを OpenTelemetry のログにブリッジするために `opentelemetry-appender-tracing` クレートを使用しています。
+配送サービスはログインターフェイスとして Tracing を使用しているため、Tracing のログを OpenTelemetry のログにブリッジするために `opentelemetry-appender-tracing` クレートを使用しています。
 
 アペンダーは[ロガープロバイダーの初期化](#initializing-logger-provider)時に、次の 2 行ですでに設定されています。
 
