@@ -36,14 +36,14 @@ RPM と APK パッケージは以下から提供されています。
 - [Remi repository](https://blog.remirepo.net/pages/PECL-extensions-RPM-status) -
   RPM
 - [Alpine Linux](https://pkgs.alpinelinux.org/packages?name=*pecl-opentelemetry) -
-  APK（現在は
-  [_testing_ ブランチ](https://wiki.alpinelinux.org/wiki/Repositories#Testing)にあります）
+  APK（現在は [_testing_ ブランチ](https://wiki.alpinelinux.org/wiki/Repositories#Testing)にあります）
 
 {{< tabpane text=true >}} {{% tab "RPM" %}}
 
 ```sh
-#この例は CentOS 7 向けです。PHP バージョンは
-#remi-<version> を有効にすることで変更できます。例: "yum config-manager --enable remi-php83"
+#この例は CentOS 7 向けです。
+#PHP バージョンは remi-<version> を有効にすることで変更できます。
+#例: "yum config-manager --enable remi-php83"
 yum update -y
 yum install -y epel-release yum-utils
 yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
@@ -56,9 +56,10 @@ php --ri opentelemetry
 {{% /tab %}} {{% tab "APK" %}}
 
 ```sh
-#執筆時点では、PHP 8.1 がデフォルトの PHP バージョンでした。デフォルトが変更された場合、
-#"php81" を変更する必要があるかもしれません。"apk add php<version>" で
-#PHP バージョンを選択することもできます。例: "apk add php83"
+#執筆時点では、PHP 8.1 がデフォルトの PHP バージョンでした。
+#デフォルトが変更された場合、"php81" を変更する必要があるかもしれません。
+#"apk add php<version>" で PHP バージョンを選択することもできます。
+#例: "apk add php83"
 echo "@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 apk add php php81-pecl-opentelemetry@testing
 php --ri opentelemetry
