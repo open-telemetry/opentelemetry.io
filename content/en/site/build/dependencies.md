@@ -15,13 +15,15 @@ CI, the devcontainer, and Netlify install lock-exact and script-free, then
 explicitly re-enable the one reviewed hook: the `hugo-extended` rebuild that
 fetches the pinned Hugo binary. The rebuild runs through
 `scripts/rebuild-hugo-extended.mjs`, which retries the fetch with bounded
-backoff and refuses to run while any `HUGO_*` installer override is set. Per
+backoff and refuses to run while any `HUGO_*` installer override is set.
+Installs keep optional dependencies: npm delivers platform-specific binaries
+(for example, the Dart Sass compiler in `sass-embedded`) as optional
+dependencies selected by `os`/`cpu`, so omitting them breaks the build. Per
 environment:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.
-- **Devcontainer**: `npm run install:safe`, the same contract, keeping optional
-  dependencies.
+- **Devcontainer**: `npm run install:safe`, the same contract.
 - **Netlify**: `npm run install:safe`, run by the [Netlify][] build command
   after the [inert auto-install](#inert-netlify-auto-install), between
   clean-working-tree checks:
@@ -130,6 +132,8 @@ this page, so first work out which control your change relaxes.
 Out of the audit's scope:
 
 - GitHub workflow files
+- [Renovate][] configuration ([`.github/renovate.json5`][]): reviewed like code,
+  not audit-pinned
 - The [Docsy][] theme's own dependency install (audited upstream)
 - The build-half npm scripts past the install boundary
 
@@ -147,7 +151,10 @@ Version resolution ignores releases younger than the configured minimum age.
     variable, which outranks both.
 - **[Renovate][]**: applies its own cooldown to the update PRs it opens, set by
   `minimumReleaseAge` in [`.github/renovate.json5`][]; longer for the updates
-  that merge without human review.
+  that merge without human review. Update types Renovate can't date (`pin`,
+  `replacement`, `rollback`) never clear the cooldown: their PRs open with a
+  permanently pending stability status (not a required check) and merge only
+  through normal review.
 
 ### Lifecycle-script allowlist
 
