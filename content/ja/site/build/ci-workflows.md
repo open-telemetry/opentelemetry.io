@@ -11,7 +11,7 @@ default_lang_commit: 55db3f6bcc48358f9de9cd97f9132d1e3322ba48
 ## 依存関係のインストール {#dependency-installation}
 
 CI ジョブはサイト全体の[インストール規約](../dependencies/#install-contracts)に従って npm の依存関係をインストールします。
-lock-exact かつ script-free で、ビルドジョブはレビュー済みの Hugo リビルドのみを再有効化します。
+ロック固定かつスクリプト無効で、ビルドジョブはレビュー済みの Hugo リビルドのみを再有効化します。
 
 ## PR 承認ラベル {#pr-approval-labels}
 
