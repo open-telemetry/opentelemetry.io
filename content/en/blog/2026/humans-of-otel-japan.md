@@ -6,7 +6,7 @@ author: >-
   [Yoshi Yamaguchi](https://github.com/ymotongpoo) (Grafana Labs)
 sig: End User SIG
 # prettier-ignore
-cSpell:ignore: fujikane kohei loglass mikata mixi ohira okamoto sugimoto yoshi yoshiki yuzuru
+cSpell:ignore: chikahisa fujikane kohei loglass mikata mixi ohira okamoto sugimoto yoshi yoshiki yuzuru
 ---
 
 We're back with our fifth edition of
@@ -16,7 +16,7 @@ interviewed OpenTelemetry end users and practitioners from the Japanese cloud
 native community, and learned how they got involved with OTel:
 
 - [Yuzuru Ohira](https://github.com/yuzujoe) (LayerX)
-- [Mikata](https://github.com/chmikata) (Loglass)
+- [Mikata Chikahisa](https://github.com/chmikata) (Loglass)
 - [Yoshiki Fujikane](https://github.com/ffjlabo) (CyberAgent)
 - [Takashi Okamoto](https://github.com/okamototk) (NTT DATA)
 - [Kohei Sugimoto](https://github.com/kohbis) (MIXI)
@@ -38,7 +38,7 @@ conversations.
 
 **YUZURU OHIRA:** I'm Yuzuru Ohira. I work as an engineering manager at LayerX.
 
-**MIKATA:** My name is Mikata, and I'm an SRE at Loglass.
+**MIKATA CHIKAHISA:** My name is Mikata, and I'm an SRE at Loglass.
 
 **YOSHIKI FUJIKANE:** My name is Yoshiki Fujikane, and I work as a platform
 engineer.
@@ -53,8 +53,8 @@ engineer.
 OpenTelemetry, and I've stayed involved by actually using OpenTelemetry at my
 current company.
 
-**MIKATA:** We had a project to introduce the Grafana stack, and that was my
-first encounter with OpenTelemetry.
+**MIKATA CHIKAHISA:** We had a project to introduce the Grafana stack, and that
+was my first encounter with OpenTelemetry.
 
 **YOSHIKI FUJIKANE:** To improve observability on the platform we run
 internally, we use SaaS tools like Datadog, and we're now at the stage where we
@@ -74,8 +74,8 @@ something that would fit us better, and that's when I came across OpenTelemetry.
 **YUZURU OHIRA:** To me, it's part of the system architecture — something you
 design as part of the architecture of the code you write.
 
-**MIKATA:** I think of it as essential information for showing the health status
-of a system.
+**MIKATA CHIKAHISA:** I think of it as essential information for showing the
+health status of a system.
 
 **YOSHIKI FUJIKANE:** Observability is one of the essential keys to operating a
 system. As you develop services of all sizes, years go by and knowledge about
@@ -96,7 +96,7 @@ improve it in the right direction.
 designing observability, so for me it's like a textbook — I refer to what
 OpenTelemetry implements when building my own implementations.
 
-**MIKATA:** I think of it as the standard rules and specifications for
+**MIKATA CHIKAHISA:** I think of it as the standard rules and specifications for
 expressing the health status of a system.
 
 **YOSHIKI FUJIKANE:** What is OpenTelemetry to me? That's a really hard one. For
@@ -113,8 +113,8 @@ OpenTelemetry is something that gives us a guiding principle amid all that.
 
 **YUZURU OHIRA:** I love tracing.
 
-**MIKATA:** Traces. I believe traces are the foundation of everything — the
-first, most important core part — so I really love traces.
+**MIKATA CHIKAHISA:** Traces. I believe traces are the foundation of everything
+— the first, most important core part — so I really love traces.
 
 **YOSHIKI FUJIKANE:** My favorite signal would be traces. Personally, I really
 enjoy learning how systems work, so a signal that tells me what behavior
@@ -128,3 +128,28 @@ observability for AI agents lately, so I like the
 **KOHEI SUGIMOTO:** Metrics. Among the many kinds of telemetry data, metrics can
 nicely absorb the others and contribute to things like cost optimization and
 summarization. That's why.
+
+## Join us!
+
+If you have a story to share about how you use OpenTelemetry at your
+organization, we'd love to hear from you! Ways to share:
+
+- Join the
+  [#otel-sig-end-user channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
+  on the
+  [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
+- Join our [OTel in Practice](/community/end-user/otel-in-practice/) sessions
+- Share your stories on the [OpenTelemetry blog](/docs/contributing/blog/)
+- Contact us on the
+  [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
+  for any other types of sessions you'd like to see!
+
+Be sure to follow OpenTelemetry on
+[Bluesky](https://bsky.app/profile/opentelemetry.io),
+[Mastodon](https://fosstodon.org/@opentelemetry) and
+[LinkedIn](https://www.linkedin.com/company/opentelemetry/), and share your
+stories using the **#OpenTelemetry** hashtag!
+
+And don't forget to subscribe to our
+[YouTube channel](https://youtube.com/@otel-official) for more great
+OpenTelemetry content!
