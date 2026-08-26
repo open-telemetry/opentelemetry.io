@@ -1453,14 +1453,6 @@ maintainers:
       - operator-triagers
     html_url: https://github.com/swiatekm
     avatar_url: https://avatars.githubusercontent.com/u/93588780?v=4
-  - name: theletterf
-    teams:
-      - docs-approvers
-      - docs-maintainers
-      - docs-triagers
-      - social-media-approvers
-    html_url: https://github.com/theletterf
-    avatar_url: https://avatars.githubusercontent.com/u/1773616?v=4
   - name: ThomsonTan
     teams:
       - arrow-triagers
@@ -2231,6 +2223,11 @@ approvers:
       - specs-triagers
     html_url: https://github.com/tedsuo
     avatar_url: https://avatars.githubusercontent.com/u/24074?v=4
+  - name: theletterf
+    teams:
+      - social-media-approvers
+    html_url: https://github.com/theletterf
+    avatar_url: https://avatars.githubusercontent.com/u/1773616?v=4
   - name: thompson-tomo
     teams:
       - lambda-extension-approvers
