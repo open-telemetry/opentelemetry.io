@@ -4,6 +4,7 @@ linkTitle: トレースのサンプリング
 description: OpenTelemetry トレースのサンプリング方法を設定する
 weight: 70
 default_lang_commit: f7dab5cfc4d44a8c788b7e02d07ec1e1d84e3845
+drifted_from_default: true
 ---
 
 OBI は、トレースのサンプリングレートを設定するために標準的な OpenTelemetry 環境変数を受け付けます。

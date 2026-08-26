@@ -25,8 +25,8 @@ application.
 
 ## Status and Releases
 
-The current status of the major functional components for OpenTelemetry is as
-follows:
+The current [status](/docs/specs/otel/versioning-and-stability/) of the major
+functional components for OpenTelemetry is as follows:
 
 > [!WARNING]
 >

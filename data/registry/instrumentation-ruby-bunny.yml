@@ -1,16 +1,18 @@
-title: Bunny Instrumentation
+title: opentelemetry-instrumentation-bunny
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
   - bunny
-license: Apache 2.0
-description: Bunny instrumentation for Ruby.
+license: Apache-2.0
+description: Bunny instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/bunny
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-bunny/v0.25.0/instrumentation/bunny
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-bunny/0.25.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems

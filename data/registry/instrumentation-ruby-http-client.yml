@@ -1,15 +1,17 @@
-title: HttpClient Instrumentation
+title: opentelemetry-instrumentation-http_client
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
-license: Apache 2.0
-description: HttpClient instrumentation for Ruby.
+license: Apache-2.0
+description: HttpClient instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/http_client
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-http_client/v0.29.0/instrumentation/http_client
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-http_client/0.29.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems
