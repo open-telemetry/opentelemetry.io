@@ -21,7 +21,7 @@ Here is some advice to help you get started:
 
 - **Spotted a gap? That counts too:** OpenTelemetry is a large project, and even with the best efforts of contributors and maintainers, gaps in documentation and functionality are inevitable. If you notice one, filing an issue or submitting a fix is a meaningful contribution.
 
-- **Response times may vary:** Contributors and maintainers often work on OpenTelemetry in their owntime, and are frequently juggling multiple things. Don't be discouraged if you don't hear back immediately.
+- **Response times may vary:** Contributors and maintainers often work on OpenTelemetry in their own time, and are frequently juggling multiple things. Don't be discouraged if you don't hear back immediately.
 
 - **You don't need to be an OTel expert:** Your existing skills and professional context are themselves useful. SREs, DevRel folks, and non-native English speakers all bring diverse perspectives that the project actively benefits from.
 
