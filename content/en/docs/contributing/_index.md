@@ -19,13 +19,11 @@ Here is some advice to help you get started:
 
 - **Contributions can come out of necessity:** While we do appreciate regular contributors, it is alright to contribute out of necessity, such as if you find a bug in the Collector, or wish to develop a feature that your team needs.
 
-- plz file issues or contribute when you notice gaps, OTel is a big project after all
+- **Spotted a gap? That counts too:** OpenTelemetry is a large project, and even with the best efforts of contributors and maintainers, gaps in documentation and functionality are inevitable. If you notice one, filing an issue or submitting a fix is a meaningful contribution.
 
-- be proactive 
+- **Response times may vary:** Contributors and maintainers often work on OpenTelemetry in their owntime, and are frequently juggling multiple things. Don't be discouraged if you don't hear back immediately.
 
-- find something that resonates with you
-
-
+- **You don't need to be an OTel expert:** Your existing skills and professional context are themselves useful. SREs, DevRel folks, and non-native English speakers all bring diverse perspectives that the project actively benefits from.
 
 ### <i class='far fa-exclamation-triangle text-warning '></i> First time contributing? {#first-time-contributing}
 
