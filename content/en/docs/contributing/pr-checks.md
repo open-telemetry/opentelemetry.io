@@ -37,6 +37,17 @@ This check fails if you haven't [signed the CLA](../prerequisites/#cla).
 If the [Netlify](https://www.netlify.com/) build fails, select **Details** for
 more information.
 
+A `?? some/path` status line shortly before `"build.command" failed`, naming a
+path that your PR doesn't touch, suggests that the build tripped over a stale
+Netlify build cache rather than your changes:
+
+1. Ask a maintainer, through a PR comment, to retry the build without its cache.
+   For the cache-clearing procedure, see
+   [Dependency management](/site/build/dependencies/#netlify-build-cache).
+2. If the failure recurs on the cache-free retry, the cache wasn't the cause:
+   some step of the build is writing that path, and your changes are the first
+   suspect.
+
 ## GitHub PR checks {#checks}
 
 To make sure that contributions follow our [style guide](../style-guide/) we
@@ -152,8 +163,13 @@ success status for, you can add the following query parameter to your URL to
 have the link checker ignore it: `?link-check=no` or `&link-check=no` if there
 are other query parameters. For example, the following URLs will be ignored:
 
-- <https:/some-example.org?link-check=no>
-- <https:/some-example.org?other-param=value&link-check=no>
+- `https:/some-example.org?link-check=no`
+- `https:/some-example.org?other-param=value&link-check=no`
+
+When you add `link-check=no`, record the date of your manual validation by also
+appending a `last-validated=YYYY-MM-DD` parameter, for example:
+
+- `https:/some-example.org?link-check=no&last-validated=2026-08-02`
 
 ### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
 
