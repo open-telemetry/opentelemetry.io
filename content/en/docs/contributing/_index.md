@@ -127,7 +127,7 @@ SIG participation helps you:
 - Bring your own topics and help decide the direction of the project
 
 The
-[OTel community repo](https://github.com/open-telemetry/community#specification-sigs)
+[OTel community repository](https://github.com/open-telemetry/community#specification-sigs)
 lists all active SIGs with calendar invite and Slack channel links.
 
 ### Community
