@@ -401,9 +401,9 @@ semantics across all your signals. [Semantic Conventions](/docs/specs/semconv/)
 is your reference for naming attributes and schemas consistently, and for
 exactly how logs and metrics relate back to trace and span IDs.
 [Weaver](/blog/2025/otel-weaver/), which builds on top of Semantic Conventions,
-lets you define your own attribute names and schemas, keep them in lockstep
-with evolving code and infrastructure, and maintain federated semantic
-convention registries.
+lets you define your own attribute names and schemas, keep them in lockstep with
+evolving code and infrastructure, and maintain federated semantic convention
+registries.
 
 When a user ingests your telemetry into their observability backend, everything
 should connect end-to-end to tell the complete story.
