@@ -4016,7 +4016,6 @@ https://github.com/open-telemetry/opentelemetry-specification/blob/v1.59.0/speci
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.60.0/oteps/0232-maturity-of-otel.md,200,1786530625
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.60.0/spec-compliance-matrix.md#logs,200,1786530625
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.60.0/specification/logs/api.md#logger,200,1786530625
-https://github.com/open-telemetry/opentelemetry-specification/issues/1413,200,1786427586
 https://github.com/open-telemetry/opentelemetry-specification/issues/1413,200,1787118355
 https://github.com/open-telemetry/opentelemetry-specification/issues/3967,200,1787029645
 https://github.com/open-telemetry/opentelemetry-specification/issues/4126,200,1787032166
@@ -5282,9 +5281,6 @@ https://nextjs.org/docs/app/building-your-application/optimizing/open-telemetry,
 https://nginx.org/,200,1787029739
 https://node-oracledb.readthedocs.io/en/latest/api_manual/connection.html#connection.action,200,1786530625
 https://node-oracledb.readthedocs.io/en/latest/user_guide/connection_handling.html#setting-application-contexts-on-a-connection-object,200,1786530625
-https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage,200,1786427566
-https://nodejs.org/api/async_hooks.html,200,1786427566
-https://nodejs.org/api/cli.html#--importmodule,200,1786427566
 https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage,200,1787118340
 https://nodejs.org/api/async_hooks.html,200,1787118340
 https://nodejs.org/api/cli.html#--importmodule,200,1787118340
