@@ -3,8 +3,7 @@ title: 計装
 weight: 36
 aliases: [manual]
 description: OpenTelemetry .NET の計装
-default_lang_commit: 46b67485e928d406a3e5e74f024180d28583c84d
-drifted_from_default: true
+default_lang_commit: 5ccd63611a43a8c3b4a243dc995fb3755d46eafa
 cSpell:ignore: dicelib rolldice
 ---
 
@@ -285,6 +284,11 @@ meterProvider.Dispose();
 loggerFactory.Dispose();
 ```
 
+> [!IMPORTANT]
+>
+> アプリケーションがテレメトリーを生成している間は `TracerProvider` を生存させ続け、アプリケーションのシャットダウン時に明示的に破棄して残りのテレメトリーをフラッシュしてください。
+> 詳細については、[TracerProvider management](/docs/languages/dotnet/traces/best-practices/#tracerprovider-management) を参照してください。
+
 デバッグとローカル開発のために、このサンプルではテレメトリーをコンソールにエクスポートしています。
 手動計装のセットアップが完了したら、アプリのテレメトリーデータを1つ以上のテレメトリーバックエンドに[エクスポート](/docs/languages/dotnet/exporters/)するために、適切なエクスポーターを設定する必要があります。
 
@@ -318,6 +322,12 @@ dotnet run
 
 アプリケーションで手動トレースコードを書く場所には、[`ActivitySource`](/docs/concepts/signals/traces/#tracer) を設定する必要があります。
 これにより [`Activity`](/docs/concepts/signals/traces/#spans) 要素を使用してオペレーションをトレースできるようになります。
+
+> [!IMPORTANT]
+>
+> 各 `ActivitySource` の名前は、`TracerProvider` の設定時に `AddSource` に渡した名前と一致する必要があります。
+> 一致しない場合、そのソースで作成された Activity は収集されません。
+> アプリケーションが複数の `ActivitySource` 名を定義している場合は、それぞれを `AddSource` で登録してください。
 
 通常、計装対象のアプリ/サービスごとに `ActivitySource` を一度定義することが推奨されますが、シナリオに合わせて複数の `ActivitySource` をインスタンス化することもできます。
 
