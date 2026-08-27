@@ -12,9 +12,12 @@ runs:
         echo "Branch: ${GITHUB_EVENT_PULL_REQUEST_HEAD_REF}"
       shell: bash
       env:
-        GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FULL_NAME: ${{ github.event.pull_request.head.repo.full_name }}
-        GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FORK: ${{ github.event.pull_request.head.repo.fork }}
-        GITHUB_EVENT_PULL_REQUEST_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FULL_NAME:
+          ${{ github.event.pull_request.head.repo.full_name }}
+        GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FORK:
+          ${{ github.event.pull_request.head.repo.fork }}
+        GITHUB_EVENT_PULL_REQUEST_HEAD_REF:
+          ${{ github.event.pull_request.head.ref }}
     - if: github.event_name == 'pull_request'
       run: |
         if [ "${GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FORK}" == "true" ] && [ "${GITHUB_EVENT_PULL_REQUEST_HEAD_REF}" == 'main' ]; then
@@ -24,7 +27,9 @@ runs:
         fi
       shell: bash
       env:
-        GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FORK: ${{ github.event.pull_request.head.repo.fork }}
-        GITHUB_EVENT_PULL_REQUEST_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FORK:
+          ${{ github.event.pull_request.head.repo.fork }}
+        GITHUB_EVENT_PULL_REQUEST_HEAD_REF:
+          ${{ github.event.pull_request.head.ref }}
 #
 # Inspired by https://github.com/jaegertracing/jaeger/blob/main/.github/actions/block-pr-from-main-branch
