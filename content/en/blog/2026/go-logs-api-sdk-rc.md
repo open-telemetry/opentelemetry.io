@@ -123,7 +123,7 @@ the way.
 [beta-release]: https://github.com/open-telemetry/opentelemetry-go/pull/5392
 [new-issue]:
   https://github.com/open-telemetry/opentelemetry-go/issues/new/choose
-[rc-pr]: https://github.com/open-telemetry/opentelemetry-go/pull/8879
+[rc-pr]: https://github.com/open-telemetry/opentelemetry-go/pull/8884
 [sdk-design]:
   https://github.com/open-telemetry/opentelemetry-go/blob/73b17d449376ccd8420f84fc8d5d4435ad44e0d6/sdk/log/DESIGN.md
 [sdk-alpha]: https://github.com/open-telemetry/opentelemetry-go/pull/5260
