@@ -6,6 +6,7 @@ description:
 weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
 default_lang_commit: f09627656c918ddb572c6c876beed29bb415f5ef
+drifted_from_default: true
 ---
 
 ## Remedierea unei probleme existente {#fixing-an-existing-issue}
