@@ -6,6 +6,7 @@ aliases: [/docs/languages/python/automatic]
 cascade:
   collector_vers: 0.158.0
 default_lang_commit: 2d447daa701636c3246c116d4b8c4a2f2c35de60
+drifted_from_default: true
 cSpell:ignore: distro
 ---
 
@@ -36,8 +37,8 @@ El paquete `opentelemetry-distro` instala la API, el SDK y las herramientas
 
 El comando `opentelemetry-bootstrap -a install` lee la lista de paquetes
 instalados en tu carpeta activa `site-packages` e instala las librerías de
-instrumentación correspondientes para esos paquetes, si procede. Por
-ejemplo, si ya instalaste el paquete `flask`, al ejecutar
+instrumentación correspondientes para esos paquetes, si procede. Por ejemplo, si
+ya instalaste el paquete `flask`, al ejecutar
 `opentelemetry-bootstrap -a install` se instalará
 `opentelemetry-instrumentation-flask` por ti. El agente de OpenTelemetry para
 Python utilizará monkey patching para modificar funciones de estas librerías en
@@ -50,8 +51,9 @@ de instrumentación recomendadas para instalar. Para más información, consulta
 > [!WARNING] ¿Usas `uv`?
 >
 > Si utilizas el gestor de paquetes [uv](https://docs.astral.sh/uv/), podrías
-> experimentar problemas al ejecutar `opentelemetry-bootstrap -a install`. Para más
-> detalles, consulta [Bootstrap usando uv](troubleshooting/#bootstrap-using-uv).
+> experimentar problemas al ejecutar `opentelemetry-bootstrap -a install`. Para
+> más detalles, consulta
+> [Bootstrap usando uv](troubleshooting/#bootstrap-using-uv).
 
 {#configuring-the-agent}
 
