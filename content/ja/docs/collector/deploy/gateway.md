@@ -4,36 +4,38 @@ linkTitle: ゲートウェイパターン
 description: シグナルを単一のOTLPエンドポイントに送信し、そこからバックエンドに送信する理由と方法
 aliases: [/docs/collector/deployment/gateway]
 weight: 300
-default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197 # patched
-drifted_from_default: file not found
-# prettier-ignore
-cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
+default_lang_commit: bdfe463187e63311ab3e137f1e314acfb877fd8b
+cSpell:ignore: hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---
 
-コレクターのゲートウェイデプロイメントパターンは、アプリケーション（または他のコレクター）がテレメトリーシグナルを単一のOTLPエンドポイントに送信し、そのエンドポイントが実行されている1つ以上のコレクターインスタンスによって処理される構成です。
-このコレクターインスタンスは、通常、クラスターごと、データセンターごと、またはリージョンごとに単独のサービス（たとえばKubernetesのデプロイメント）として実行されます。
+コレクターのゲートウェイデプロイメントパターンは、アプリケーションまたは他のコレクターが、テレメトリーシグナルを単一の[OTLP](/docs/specs/otlp/)エンドポイントに送信する構成です。
+このエンドポイントは、単独のサービス（たとえばKubernetesのデプロイメント）として実行される1つ以上のコレクターインスタンスによって提供されます。
+通常、エンドポイントはクラスターごと、データセンターごと、またはリージョンごとに提供されます。
 
 一般的なケースでは、アウトオブボックスのロードバランサーを使用して、コレクター間で負荷を分散できます。
 
 ![ゲートウェイデプロイメント概念](../../img/otel-gateway-sdk.svg)
 
 テレメトリーデータの処理が特定のコレクターで行われる必要があるユースケースでは、2層の設定を使用します。
-1層目のコレクターは、[Trace ID/サービス名を意識したロードバランシングエクスポーター][lb-exporter]を使用して設定され、2層目ではスケールアウトを処理するコレクターが使用されます。
-たとえば、[テイルサンプリングプロセッサー][tailsample-processor]を使用する場合、すべてのスパンが同じコレクターインスタンスに到達し、そこでそのサンプリングポリシーが適用されるように、ロードバランシングエクスポーターを使用する必要があります。
+1層目のコレクターには、[Trace ID/サービス名を意識したロードバランシングエクスポーター][lb-exporter]を使用したパイプラインを設定します。
+2層目では、各コレクターが自分に向けられたテレメトリーを受信して処理します。
+たとえば、1層目でロードバランシングエクスポーターを使用して、[テイルサンプリングプロセッサー][tailsample-processor]を設定した2層目のコレクターにデータを送信すると、あるトレースのすべてのスパンが同じコレクターインスタンスに到達し、そこでテイルサンプリングポリシーが適用されます。
 
-ロードバランシングエクスポーターを使用する場合の例を見てみましょう。
+次の図は、ロードバランシングエクスポーターを使用したこの構成を示しています。
 
 ![ロードバランシングエクスポーターを使用したゲートウェイデプロイメント](../../img/otel-gateway-lb-sdk.svg)
 
 1. アプリケーションで、SDKがOTLPデータを中央の場所に送信するように設定されます。
 2. ロードバランシングエクスポーターを使用して設定されたコレクターが、シグナルを複数のコレクターに分散します。
-3. コレクターはテレメトリーデータを1つ以上のバックエンドに送信するように設定されます。
+3. コレクターがテレメトリーデータを1つ以上のバックエンドに送信します。
 
 ## 例 {#examples}
 
+以下の例では、一般的なコンポーネントを使用してゲートウェイコレクターを設定する方法を示します。
+
 ### NGINXを「アウトオブボックス」のロードバランサーとして使用 {#nginx-as-an-out-of-the-box-load-balancer}
 
-2つのコレクター（`collector1`と`collector2`）が設定され、NGINXを使用してその間でトラフィックをロードバランシングしたい場合、次の設定を使用できます。
+3つのコレクター（`collector1`、`collector2`、`collector3`）が設定されており、NGINXを使用してそれらの間でトラフィックをロードバランシングしたい場合、次の設定を使用できます。
 
 ```nginx
 server {
@@ -68,11 +70,13 @@ server {
 upstream collector4317 {
     server collector1:4317;
     server collector2:4317;
+    server collector3:4317;
 }
 
 upstream collector4318 {
     server collector1:4318;
     server collector2:4318;
+    server collector3:4318;
 }
 ```
 
@@ -86,7 +90,7 @@ upstream collector4318 {
   他のサポートされているリゾルバーはDNSリゾルバーで、定期的に更新を確認し、IPアドレスを解決します。
   このリゾルバータイプでは、`hostname`サブキーがIPアドレスのリストを取得するために問い合わせるホスト名を指定します。
 - `routing_key`フィールドを使用するとロードバランシングエクスポーターがスパンを特定の下流のコレクターにルーティングするように指示します。
-  このフィールドを`traceID`（デフォルト）に設定すると、ロードバランシングエクスポーターは`traceID`に基づいてスパンをエクスポートします。
+  このフィールドを`traceID`に設定すると、ロードバランシングエクスポーターは`traceID`に基づいてスパンをエクスポートします。
   その他の場合、`routing_key`に`service`を設定すると、サービス名に基づいてスパンをエクスポートします。
   これは、[スパンメトリクスコネクター][spanmetrics-connector]のようなコネクターを使用する際に有用で、サービスのすべてのスパンが同じ下流のコレクターに送信され、メトリクス収集が行われ、正確な集約が保証されます。
 
@@ -177,26 +181,7 @@ service:
 
 {{% /tab %}} {{< /tabpane >}}
 
-ロードバランシングエクスポーターは、`otelcol_loadbalancer_num_backends`や`otelcol_loadbalancer_backend_latency`などのメトリクスを出力し、これらを使用してOTLPエンドポイントコレクターのヘルスとパフォーマンスを監視できます。
-
-## エージェントとゲートウェイのコレクターの組み合わせたデプロイメント {#combined-deployment-of-collectors-as-agents-and-gateways}
-
-複数のOpenTelemetryコレクターをデプロイする場合、ゲートウェイとしても[エージェント](/docs/collector/deploy/agent/)としてもコレクターを実行することがよくあります。
-
-以下の図は、このような組み合わせたデプロイメントのアーキテクチャを示しています。
-
-- エージェントデプロイメントパターンで実行されるコレクター（各ホストで実行され、Kubernetesデーモンセットのように）を使用して、ホスト上で実行されるサービスからのテレメトリーとホストのテレメトリー（ホストメトリクスやスクラップログなど）を収集します。
-- ゲートウェイデプロイメントパターンで実行されるコレクターを使用して、データの処理（たとえばフィルタリング、サンプリング、バックエンドへのエクスポートなど）を行います。
-
-![ゲートウェイ](/docs/collector/deploy/other/agent-to-gateway/otel-gateway-arch.svg)
-
-この組み合わせたデプロイメントパターンは、コレクター内でホストごとにユニークである必要があるコンポーネントや、アプリケーションが実行されている同じホストにしか利用できない情報を消費するコンポーネントを使用する場合に必要です。
-
-- [`hostmetricsreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)や[`filelogreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)のようなレシーバーは、ホストインスタンスごとにユニークである必要があります。
-  これらのレシーバーを複数実行すると、データが重複します。
-
-- [`resourcedetectionprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)のようなプロセッサーは、ホスト、コレクター、アプリケーションの情報を追加するために使用されます。
-  リモートマシン上のコレクター内でこれらを実行すると、不正確なデータが生成されます。
+ロードバランシングエクスポーターは、`otelcol_loadbalancer_num_backends`や`otelcol_loadbalancer_backend_latency`などの[メトリクス](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter#metrics)を出力し、これらを使用してOTLPエンドポイントを提供するコレクターのヘルスとパフォーマンスを監視できます。
 
 ## トレードオフ {#trade-offs}
 
@@ -236,9 +221,9 @@ OTLP内のすべてのメトリクスデータストリームには、[シング
 このエラーは、2つのジョブに同じターゲットが存在し、タイムスタンプの順序が間違っていることを示唆している可能性があります。
 たとえば：
 
-- メトリクス`M1`は、13:56:04のタイムスタンプで`100`という値を持って受信された
-- メトリクス`M1`は、13:56:24のタイムスタンプで`120`という値を持って受信された
-- メトリクス`M1`は、13:56:04のタイムスタンプで`110`という値を持って受信された
+- メトリクス`M1`は、`T1`に13:56:04のタイムスタンプで`100`という値を持って受信された
+- メトリクス`M1`は、`T2`に13:56:24のタイムスタンプで`120`という値を持って受信された
+- メトリクス`M1`は、`T3`に13:56:04のタイムスタンプで`110`という値を持って受信された
 - メトリクス`M1`は、13:56:24のタイムスタンプで`120`という値を持って受信された
 - メトリクス`M1`は、13:56:04のタイムスタンプで`110`という値を持って受信された
 
@@ -246,3 +231,7 @@ OTLP内のすべてのメトリクスデータストリームには、[シング
 
 - [Kubernetes属性プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)を使用して、異なるKubernetesリソースにラベルを追加します。
 - [リソース検出プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)を使用して、ホストからリソース情報を検出し、リソースメタデータを収集します。
+
+## 次のステップ {#next-steps}
+
+エージェントパターンとゲートウェイパターンを[組み合わせて](/docs/collector/deploy/other/agent-to-gateway/)、堅牢でスケーラブルなコレクターアーキテクチャを構築する方法を学びましょう。

@@ -13,6 +13,7 @@ params:
   oldEventUrl: >- # This now redirects to the new URL
     https://events.linuxfoundation.org/kubecon-cloudnativecon-china/reg/register/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner
 default_lang_commit: 8f68733f41ce6d7f0029edfaa14561ad95cc4aa0
+drifted_from_default: true
 ---
 
 [**{{% param title %}}**][LF]が **<span class="text-nowrap">6月10日〜11日に</span>
