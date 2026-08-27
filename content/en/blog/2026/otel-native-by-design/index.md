@@ -50,14 +50,20 @@ OpenTelemetry defines four signal types, all carried over the same
   profiling data captured during code execution.
 
 > [!NOTE] Profiles is in public alpha
-> 
-> Profiles entered [public alpha](/blog/2026/profiles-alpha/) on March 26, 2026. As a signal, OpenTelemetry intends for it to stand alongside the current three major observability signals — often regarded as the three pillars of observability — helping users troubleshoot production incidents by capturing resource usage patterns across their codebase.
 >
-> Although we exclusively focus on logs, traces, and metrics in this blog, we are excited to see how profiles take shape, and how the community puts them to use in their observability systems.
+> Profiles entered [public alpha](/blog/2026/profiles-alpha/) on March 26, 2026.
+> As a signal, OpenTelemetry intends for it to stand alongside the current three
+> major observability signals — often regarded as the three pillars of
+> observability — helping users troubleshoot production incidents by capturing
+> resource usage patterns across their codebase.
+>
+> Although we exclusively focus on logs, traces, and metrics in this blog, we
+> are excited to see how profiles take shape, and how the community puts them to
+> use in their observability systems.
 
-The same export story applies to all three (logs, traces, and metrics): let users configure an OTLP endpoint
-and **push** telemetry to it. You can support one, two, or all three signals
-depending on what your product generates.
+The same export story applies to all three (logs, traces, and metrics): let
+users configure an OTLP endpoint and **push** telemetry to it. You can support
+one, two, or all three signals depending on what your product generates.
 
 Many platforms that support OTel export support at least traces and logs, and an
 increasing number now ship with metrics support. Designing for all three from
@@ -78,11 +84,11 @@ A solid export story has a few clear properties for every signal you support:
   and trace/span correlation where available (e.g. log records linked to trace
   IDs), so users can debug and analyze data in their own backend without losing
   context.
-- **Support for Semantic Conventions:** Adherence to the [Semantic Conventions](/docs/specs/semconv/)
-  ensures that telemetry data remains standardized and is easily interpretable 
-  by any compatible backend. It also reduces the cognitive burden on the 
-  end-user to reason about how the software system works, be it a first-party 
-  or third-party system.
+- **Support for Semantic Conventions:** Adherence to the
+  [Semantic Conventions](/docs/specs/semconv/) ensures that telemetry data
+  remains standardized and is easily interpretable by any compatible backend. It
+  also reduces the cognitive burden on the end-user to reason about how the
+  software system works, be it a first-party or third-party system.
 
 If your design aligns with these principles for the signals you emit, you're in
 step with how modern platforms think about observability export.
@@ -99,16 +105,18 @@ mesh, a database) that customers install and run in _their_ environment (their
 data center, their cloud, their Kubernetes cluster).
 
 Here, you **instrument your product** with OpenTelemetry. When the customer
-configures an endpoint (e.g. via [environment variables](/docs/specs/otel/configuration/sdk-environment-variables/)
-or a config file), your application exports telemetry from the process
-they're running.
+configures an endpoint (e.g. via
+[environment variables](/docs/specs/otel/configuration/sdk-environment-variables/)
+or a config file), your application exports telemetry from the process they're
+running.
 
-Since OpenTelemetry provides [such standard configuration
-options](/docs/specs/otel/configuration/), your users can expect the same
-configuration experience they already have with any other OTel-instrumented system.
+Since OpenTelemetry provides
+[such standard configuration options](/docs/specs/otel/configuration/), your
+users can expect the same configuration experience they already have with any
+other OTel-instrumented system.
 
-The export happens in the customer's environment; they control
-the binary and the destination. _Examples: Keycloak, Kuma._
+The export happens in the customer's environment; they control the binary and
+the destination. _Examples: Keycloak, Kuma._
 
 ### Cloud platforms
 
@@ -130,8 +138,8 @@ destinations** that your infrastructure uses to forward data.
 
 ## How others do it
 
-This post focuses on four integrations — Kuma, Keycloak, Cloudflare, and Heroku —
-as representative examples across the two contexts above, but they're far from
+This post focuses on four integrations — Kuma, Keycloak, Cloudflare, and Heroku
+— as representative examples across the two contexts above, but they're far from
 the only ones already exporting telemetry natively via OTLP. The
 [OpenTelemetry Integrations](/ecosystem/integrations/) page features libraries
 and services that provide native instrumentation or first-class plugins.
@@ -389,10 +397,13 @@ makes the underlying plumbing reliable and easy to document and reason about.
 #### Keep semantics consistent
 
 Beyond just OTel-based environment variables, make sure you maintain consistent
-semantics across all your signals. Document your attribute names and schemas —
-[Semantic Conventions](/docs/specs/semconv/) is a good reference for naming
-these consistently — and exactly how logs and metrics relate back to trace and
-span IDs.
+semantics across all your signals. [Semantic Conventions](/docs/specs/semconv/)
+is your reference for naming attributes and schemas consistently, and for
+exactly how logs and metrics relate back to trace and span IDs.
+[Weaver](/blog/2025/otel-weaver/), which builds on top of Semantic Conventions,
+lets you define your own attribute names and schemas, keep them in lockstep
+with evolving code and infrastructure, and maintain federated semantic
+convention registries.
 
 When a user ingests your telemetry into their observability backend, everything
 should connect end-to-end to tell the complete story.
