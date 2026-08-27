@@ -69,9 +69,7 @@ What do you want to do?
 
 ## What can I contribute to?
 
-Contributing to docs can be a good way to get started with the OTel project.
-
-TODO: rewrite below sections
+OpenTelemetry is a large project with many ways to get involved. Documentation is one entry point, but far from the only one.
 
 ### Documentation
 
@@ -85,17 +83,44 @@ OpenTelemetry documentation contributors can:
 The pages in this section describe how to contribute to OpenTelemetry
 **documentation**.
 
-### Beyond Documentation 
+### Code contributions
 
-For guidance on how to contribute to the OpenTelemetry project in general, see
-the community [OpenTelemetry New Contributor Guide][]. Every [OTel
-repository][org] for language implementations, the Collector, and conventions
-have their own project-specific contributing guides.
+For guidance on contributing code to the OpenTelemetry project, see the community
+[OpenTelemetry New Contributor Guide][]. Every [OTel repository][org] for language
+implementations, the Collector, and conventions has its own project-specific contributing guide.
 
-OTel Demo can be a good starting point if you wish to dip your feet into code contributions, and to get a feel for how instrumentation works. 
+The [OTel Demo](https://github.com/open-telemetry/opentelemetry-demo) is a good starting
+point if you want to dip your feet into code contributions. It features 15+ services
+across multiple languages, giving you a concrete feel for how instrumentation
+works in practice across real distributed systems.
 
-- sig participation - helps gain insights and enables u to shape discussions 
+### SIG participation
 
+Joining a Special Interest Group (SIG) is one of the most effective ways to
+contribute to OTel. SIGs focus on specific areas of the project, such as
+language-specific SDKs, the Collector, end users, contributor experience, and more.
+
+SIG participation helps you:
+
+- Gain insight into current priorities within a smaller, focused section of the OpenTelemetry project
+- Connect with maintainers, approvers, and other contributors
+- Bring your own topics and help decide the direction of the project
+
+The [OTel community repo](https://github.com/open-telemetry/community#specification-sigs) lists
+all active SIGs with calendar invite and Slack channel links.
+
+### Community
+
+Contributing to OTel doesn't mean limiting yourself to writing code or docs. You can also:
+
+- Volunteer for note-taking at SIG meetings
+- Help organize community events, like the OpenTelemetry Contributor Day at KubeCon
+- Contribute to [localization efforts](localization/)
+  to help make OTel accessible to developers in different languages
+- Participate in the [End User SIG](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
+  by sharing your practitioner experience, or contribute to community podcasts like
+  [OTel Me](https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43) and
+  [OTel in Practice](https://www.youtube.com/playlist?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x)
 
 
 [choose an issue]: issues/#fixing-an-existing-issue
