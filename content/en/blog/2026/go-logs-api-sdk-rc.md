@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry Go Logs API and SDK reach release candidate status
-linkTitle: Go Logs API and SDK RC
+linkTitle: OTel Go Logs API and SDK reach RC
 date: 2026-08-31
 author: '[Robert Pająk](https://github.com/pellared) (Splunk)'
 issue: 11476
