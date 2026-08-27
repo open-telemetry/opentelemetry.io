@@ -2,8 +2,7 @@
 title: ブログ
 description: ブログ投稿する方法を学びます。
 weight: 30
-default_lang_commit: 0009192ae1f96290e0b5ecc7e800c2947d209f69
-drifted_from_default: true
+default_lang_commit: 38e36ae231c523f9e54499ad6ca05de7c49501c5
 ---
 
 [OpenTelemetry ブログ](/blog/)は OpenTelemetry に関連する可能性のある、新機能、コミュニティレポートそしてニュースを発信します。
@@ -94,13 +93,13 @@ SIG スポンサーは、Comms SIG が記事を確認する前にレビューを
 1. リポジトリルートから以下のコマンドを実行してください
 
    ```sh
-   npx hugo new content/en/blog/$(date +%Y)/short-name-for-post.md
+   npm exec --no -- hugo new content/en/blog/$(date +%Y)/short-name-for-post.md
    ```
 
    投稿に画像やその他のアセットが含まれている場合、次のコマンドを実行してください。
 
    ```sh
-   npx hugo new content/en/blog/$(date +%Y)/short-name-for-post/index.md
+   npm exec --no -- hugo new content/en/blog/$(date +%Y)/short-name-for-post/index.md
    ```
 
 2. 前のコマンドで提供したパスのマークダウンファイルを編集してください。このファイルは、[archetypes](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/)配下のブログ記事スターターから初期化されます。

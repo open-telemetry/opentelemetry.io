@@ -49,6 +49,7 @@ kubecon
 kubernetes
 laravel
 lfasiallc
+lfopensource
 lightstep
 llms
 Loffay
