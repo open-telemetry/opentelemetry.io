@@ -3,8 +3,14 @@ title: OBI 内部メトリクスレポーターを設定する
 linkTitle: 内部メトリクスレポーター
 description: オプションの内部メトリクスレポーターコンポーネントが、自動計装ツールの内部動作に関するメトリクスを Prometheus 形式でレポートする方法を設定する
 weight: 80
-default_lang_commit: 4c8d57fea0147ce76633951315c40a27c55fad2e
+default_lang_commit: 55db3f6bcc48358f9de9cd97f9132d1e3322ba48
 ---
+
+> [!NOTE]
+>
+> このページでは Config v1 のフィールド名と設定例を使用しています。
+> Config v2 については、[Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/)を参照してください。
+> 既存のファイルを変換するには、[移行ガイド](/docs/zero-code/obi/configure/migrate-to-config-v2/)を使用してください。
 
 YAML セクション: `internal_metrics`
 

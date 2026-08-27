@@ -3,6 +3,8 @@ title: Adopters
 description: Organizations that use OpenTelemetry
 ---
 
+{{% include freeze-notice.md %}}
+
 OpenTelemetry's mission is to enable effective observability for all its
 end-users. If you are thinking about adopting OpenTelemetry for your
 organization, you may be curious about other adoption journeys. The table below
