@@ -8,10 +8,6 @@ on:
 
 permissions: {}
 
-env:
-  FORCE_COLOR: 3
-  TERM: xterm
-
 jobs:
   zizmor:
     name: Zizmor Security Analysis
