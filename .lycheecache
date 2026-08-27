@@ -15236,6 +15236,7 @@ https://node-oracledb.readthedocs.io/en/latest/user_guide/connection_handling.ht
 https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage,200,1785713004
 https://nodejs.org/api/async_hooks.html,200,1785713004
 https://nodejs.org/api/cli.html#--importmodule,200,1785713004
+https://github.com/open-telemetry/opentelemetry-specification/issues/1413,200,1787118355
 https://github.com/open-telemetry/opentelemetry-specification/issues/3967,200,1787029645
 https://github.com/open-telemetry/opentelemetry-specification/issues/4126,200,1787032166
 https://github.com/open-telemetry/opentelemetry-specification/issues/5109,200,1787032409
@@ -18007,6 +18008,9 @@ https://zio.dev/,200,1785785894
 https://ziohttp.com/,200,1785785900
 https://zipkin.io/,200,1785134659
 https://zipkin.io/zipkin-api/,200,1785134665
+https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage,200,1787118340
+https://nodejs.org/api/async_hooks.html,200,1787118340
+https://nodejs.org/api/cli.html#--importmodule,200,1787118340
 https://nodejs.org/api/console.html,200,1787032553
 https://nodejs.org/api/modules.html#modules-commonjs-modules,200,1787032160
 https://nodejs.org/api/perf_hooks.html#perf_hooksmonitoreventloopdelayoptions,200,1787032255
