@@ -3,7 +3,8 @@ title: デモのアーキテクチャ
 linkTitle: アーキテクチャ
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
-default_lang_commit: 74d8cb2aaefe493295c6c49e2e8ef39801847880
+default_lang_commit: f60f406894f94169947ecbd236b933ee4008354c
+drifted_from_default: true
 ---
 
 **OpenTelemetryデモ** は、異なるプログラミング言語で書かれた複数のマイクロサービスから構成されており、gRPCとHTTPを使って相互に通信を行います。
@@ -14,8 +15,10 @@ graph TD
 subgraph サービス図
 accounting(会計):::dotnet
 ad(広告):::java
+agent(Agent):::python
 cache[(キャッシュ<br/>&#40Valkey&#41)]
 cart(カート):::dotnet
+chatbot(Chatbot):::python
 checkout(決済):::golang
 currency(通貨):::cpp
 email(メール):::ruby
@@ -26,6 +29,7 @@ frontend(フロントエンド):::typescript
 frontend-proxy(フロントエンドプロキシ <br/>&#40Envoy&#41):::cpp
 image-provider(画像プロバイダー <br/>&#40nginx&#41):::cpp
 load-generator([負荷生成ツール]):::golang
+mcp(MCP):::python
 payment(支払い):::javascript
 product-catalog(商品カタログ):::golang
 quoteservice(見積サービス):::php
@@ -37,6 +41,9 @@ postgresql[(データベース<br/>&#40PostgreSQL&#41)]
 
 accounting ---> postgresql
 
+agent -.->|HTTP| mcp
+agent -.->|HTTP| frontend
+
 ad ---->|gRPC| flagd
 
 checkout -->|gRPC| currency
@@ -45,6 +52,8 @@ checkout -->|TCP| queue
 
 cart --> cache
 cart -->|gRPC| flagd
+
+chatbot -->|HTTP| agent
 
 checkout -->|gRPC| payment
 checkout --->|HTTP| email
@@ -65,6 +74,9 @@ frontend-proxy -->|gRPC| flagd
 frontend-proxy -->|HTTP| frontend
 frontend-proxy -->|HTTP| flagd-ui
 frontend-proxy -->|HTTP| image-provider
+frontend-proxy -->|HTTP| chatbot
+
+mcp -->|HTTP| frontend
 
 payment -->|gRPC| flagd
 

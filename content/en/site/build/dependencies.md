@@ -15,13 +15,15 @@ CI, the devcontainer, and Netlify install lock-exact and script-free, then
 explicitly re-enable the one reviewed hook: the `hugo-extended` rebuild that
 fetches the pinned Hugo binary. The rebuild runs through
 `scripts/rebuild-hugo-extended.mjs`, which retries the fetch with bounded
-backoff and refuses to run while any `HUGO_*` installer override is set. Per
+backoff and refuses to run while any `HUGO_*` installer override is set.
+Installs keep optional dependencies: npm delivers platform-specific binaries
+(for example, the Dart Sass compiler in `sass-embedded`) as optional
+dependencies selected by `os`/`cpu`, so omitting them breaks the build. Per
 environment:
 
 - **CI**: `npm run ci:min`; jobs that build the site follow with
   `npm run ci:prepare`.
-- **Devcontainer**: `npm run install:safe`, the same contract, keeping optional
-  dependencies.
+- **Devcontainer**: `npm run install:safe`, the same contract.
 - **Netlify**: `npm run install:safe`, run by the [Netlify][] build command
   after the [inert auto-install](#inert-netlify-auto-install), between
   clean-working-tree checks:
@@ -105,6 +107,36 @@ the contributor making the change:
 
 ## Supply-chain controls {#controls}
 
+### Supply-chain audit {#audit}
+
+The supply-chain audit test, [`scripts/supply-chain-audit.test.mjs`][], verifies
+the controls below from committed files alone on every `test:local-tools` run,
+so a regressed control fails a test rather than waiting for an incident. For the
+verification principles behind the audit itself, see its
+[design page](../../design/supply-chain-audit/).
+
+When the audit fails on your PR, the assertion message states the expected
+condition; the common cases:
+
+- **You bumped a dependency that has an `allowScripts` entry**: follow
+  [script-bearing packages](#script-bearing-packages); the failure message names
+  the version the entry must move to.
+- **You changed an install-path script, `.npmrc`, or `netlify.toml`**: that
+  failure is the point. The audit pins the install surface so that every change
+  to it gets a deliberate review. Update the corresponding assertion together
+  with your change, and say why in the PR.
+
+Never loosen an assertion just to get to green: each one enforces a control on
+this page, so first work out which control your change relaxes.
+
+Out of the audit's scope:
+
+- GitHub workflow files
+- [Renovate][] configuration ([`.github/renovate.json5`][]): reviewed like code,
+  not audit-pinned
+- The [Docsy][] theme's own dependency install (audited upstream)
+- The build-half npm scripts past the install boundary
+
 ### Release cooldown
 
 Version resolution ignores releases younger than the configured minimum age.
@@ -119,7 +151,10 @@ Version resolution ignores releases younger than the configured minimum age.
     variable, which outranks both.
 - **[Renovate][]**: applies its own cooldown to the update PRs it opens, set by
   `minimumReleaseAge` in [`.github/renovate.json5`][]; longer for the updates
-  that merge without human review.
+  that merge without human review. Update types Renovate can't date (`pin`,
+  `replacement`, `rollback`) never clear the cooldown: their PRs open with a
+  permanently pending stability status (not a required check) and merge only
+  through normal review.
 
 ### Lifecycle-script allowlist
 
@@ -193,16 +228,17 @@ with this rule through [drift tracking][].
 - **Enforcement**: review discipline; there is no automated check.
 
 <!-- prettier-ignore-start -->
-[install contracts]: #install-contracts
-[build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
-[deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
-[drift tracking]: /docs/contributing/localization/#track-changes
-[includes a clone of the repository]: https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2
 [`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
+[`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
+[build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
+[deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
 [Docsy]: https://www.docsy.dev/
+[drift tracking]: /docs/contributing/localization/#track-changes
+[includes a clone of the repository]: https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2
+[install contracts]: #install-contracts
 [local setup]: /docs/contributing/development/#local-setup
 [netlify-deps]: https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm
 [Netlify]: https://www.netlify.com/

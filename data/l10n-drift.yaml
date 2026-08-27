@@ -1,4 +1,4 @@
 # DO NOT EDIT — written by tree-wide drift-status syncs (npm run fix:i18n).
 # The `main` commit that stored drift statuses are accurate as of; the
 # link-check config's drift-pending overlay starts its window here.
-commit: 123ef3a30290c929afac866dae2f9ab09f3778f1
+commit: acd1d8336c97e48cb27d562c060b0ba1c911c3ab
