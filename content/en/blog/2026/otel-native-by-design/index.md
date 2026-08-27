@@ -33,7 +33,7 @@ telemetry** (logs, traces, and metrics) to an OTel backend when they want to.
 
 ![Enabling telemetry export via the OTLP standard allows users to own and
 analyze their data on the platforms of their
-choosing.](cover.webp)
+choosing.](cover.png)
 
 ## The four observability signals
 
@@ -469,7 +469,7 @@ enterprise SaaS products where strong multi-tenant isolation is a strict
 requirement and customers might have complex endpoint configurations.
 
 ![The Collector-per-tenant architecture provides strong isolation guarantees at
-the cost of increased resource usage.](collector-per-tenant.webp)
+the cost of increased resource usage.](collector-per-tenant.png)
 
 #### Shared Collector with static pipelines per tenant
 
@@ -493,7 +493,7 @@ However, you must be comfortable managing a growing dynamic configuration file
 as your customer base grows.
 
 ![The shared Collector pattern is easier to monitor and maintain as all exports
-route through one Collector instance.](shared-collector.webp)
+route through one Collector instance.](shared-collector.png)
 
 ### Push vs pull: the verdict
 
