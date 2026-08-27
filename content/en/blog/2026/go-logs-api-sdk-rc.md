@@ -1,15 +1,14 @@
 ---
-title: OpenTelemetry Go logs API and SDK reach release candidate status
-linkTitle: Go logs API and SDK RC
+title: OpenTelemetry Go Logs API and SDK reach release candidate status
+linkTitle: Go Logs API and SDK RC
 date: 2026-08-31
-author: '[Robert Pająk](https://github.com/pellared)'
-draft: true
+author: '[Robert Pająk](https://github.com/pellared) (Splunk)'
 issue: 11476
 sig: SIG Go
 cSpell:ignore: logtest Pająk
 ---
 
-OpenTelemetry Go `v1.47.0-rc.1` is here. This release promotes the logs API and
+OpenTelemetry Go `v1.47.0-rc.1` is here. This release promotes the Logs API and
 SDK to release candidate (RC), the final stage before we provide stable v1
 compatibility guarantees. We believe the design is ready, and now we need the
 community to test it in real applications and integrations before those
@@ -36,15 +35,15 @@ See the [release candidate pull request][rc-pr] for the complete release notes.
 
 ## The journey to release candidate
 
-Work on the current design began in late 2023 with a [logs API and bridge
+Work on the current design began in late 2023 with a [Logs API and bridge
 prototype][api-prototype]. The prototype included benchmarks and early bridges,
 which let us test both the shape and the cost of the API before committing to
 it.
 
-The [first logs API alpha][api-alpha] followed in February 2024, and the [first
-logs SDK alpha][sdk-alpha] arrived in April. In May 2024, we published the
+The [first Logs API alpha][api-alpha] followed in February 2024, and the [first
+Logs SDK alpha][sdk-alpha] arrived in April. In May 2024, we published the
 [first beta release of the API and SDK together][beta-release]. Since then, we
-have continued to follow the evolving OpenTelemetry logs specification,
+have continued to follow the evolving OpenTelemetry Logs specification,
 broadened the API from its original bridge-focused use case to direct use, and
 refined record representation, processing, limits, lifecycle behavior, and
 performance. Recent changes included adopting the common [`attribute.Value` and
@@ -64,7 +63,7 @@ efficient as possible, while keeping them familiar to anyone who has used the
 OpenTelemetry Go trace or metrics APIs.
 
 - **Specification compliance:** The public abstractions and behavior are
-  designed to implement the OpenTelemetry logs API and SDK specifications,
+  designed to implement the OpenTelemetry Logs API and SDK specifications,
   including concurrency, context correlation, record limits, and processor and
   exporter lifecycle requirements.
 - **Robustness:** The `BatchProcessor` uses a bounded queue and keeps log
@@ -74,12 +73,12 @@ OpenTelemetry Go trace or metrics APIs.
   allocations and garbage-collection pressure. The SDK is optimized for the
   common configuration of an OTLP exporter with a batch processor.
 - **Familiarity:** Providers, instrumentation scopes, options, processors,
-  exporters, and global access follow patterns established by the trace and
-  metrics APIs, so the logs API should feel like another part of the same Go SDK
+  exporters, and global access follow patterns established by the Trace and
+  Metrics APIs, so the Logs API should feel like another part of the same Go SDK
   rather than a separate logging framework.
 
-The decisions and tradeoffs are documented in the [logs API design
-document][api-design] and [logs SDK design document][sdk-design]. These
+The decisions and tradeoffs are documented in the [Logs API design
+document][api-design] and [Logs SDK design document][sdk-design]. These
 documents also record alternatives we considered and explain choices such as the
 record representation, attribute handling, extensibility, and batching model.
 
@@ -112,7 +111,7 @@ point, or performance characteristic does not work for your use case, now is the
 time to tell us.
 
 After evaluating the feedback, we will make any necessary RC updates and then
-move the logs API and SDK to stable. Thank you to everyone who has contributed
+move the Logs API and SDK to stable. Thank you to everyone who has contributed
 designs, implementations, reviews, benchmarks, integrations, and feedback along
 the way.
 
