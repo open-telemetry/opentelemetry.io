@@ -6,7 +6,11 @@ on:
     types: [created]
 
 permissions:
-  issues: write
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.issue.number }}
+  cancel-in-progress: false
 
 env:
   ISSUE_NUM: ${{ github.event.issue.number }}
@@ -61,6 +65,8 @@ jobs:
         with:
           client-id: ${{ vars.OTELBOT_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+          permission-issues: write
+          permission-members: read
 
       - name: Check if commenter is an org member
         id: check-membership
