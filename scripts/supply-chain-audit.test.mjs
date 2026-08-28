@@ -221,16 +221,13 @@ test('workspaces: the reviewed member set, no shadow config or scripts', () => {
     }
     // npm runs a member's install-lifecycle scripts as project code, not
     // as dependency scripts, so allowScripts and strict-allow-scripts
-    // never gate them; keep that surface empty.
-    const memberScripts = Object.keys(
-      JSON.parse(readText(`${dir}/package.json`)).scripts ?? {},
-    );
+    // never gate them. Nothing invokes member scripts (installs run root
+    // scripts; the workflow calls node directly), so pin the whole
+    // surface empty rather than screening lifecycle names.
     assert.deepEqual(
-      memberScripts.filter((name) =>
-        /^(pre|post)?(install|prepare|prepublish|pack)/.test(name),
-      ),
-      [],
-      `${dir} carries no install-lifecycle scripts`,
+      JSON.parse(readText(`${dir}/package.json`)).scripts ?? {},
+      {},
+      `${dir} carries no scripts`,
     );
   }
 });
