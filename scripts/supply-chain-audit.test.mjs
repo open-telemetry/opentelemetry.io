@@ -222,6 +222,25 @@ test('nested lock home mirrors the root npm controls', () => {
   );
 });
 
+test("lock roots carry their manifests' engines", () => {
+  // The lock captures engines at generation time; a floor raised in the
+  // manifest without the reconcile run leaves the lock stale.
+  for (const [lockPath, manifestEngines] of [
+    ['package-lock.json', manifest.engines],
+    [
+      'scripts/generate-community-data/package-lock.json',
+      JSON.parse(readText('scripts/generate-community-data/package.json'))
+        .engines,
+    ],
+  ]) {
+    assert.deepEqual(
+      readJSON(lockPath).packages[''].engines,
+      manifestEngines,
+      `the ${lockPath} root engines match its manifest`,
+    );
+  }
+});
+
 test('manifest: engines floor stays at or above the reviewed minimums', () => {
   // The npm floor is the oldest version trusted to enforce the controls
   // (strict allowScripts; min-release-age-exclude support); the floor

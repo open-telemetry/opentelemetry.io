@@ -3,7 +3,7 @@ title: Supply-chain security
 description: >-
   Threat model and rationale behind the site's npm dependency controls
 weight: 20
-cSpell:ignore: cooldowns repoint unreviewed
+cSpell:ignore: automerged cooldowns repoint unreviewed
 ---
 
 For the controls themselves and day-to-day procedures, see
@@ -53,13 +53,15 @@ closing table maps decisions to their enforcement.
     rewrite a disagreeing lock; [verification](#verify) catches such rewrites.
   - **Resolve deliberately**: <a id="deliberate"></a> version resolution happens
     only in [deliberate dependency updates][], never as an install side effect;
-    bot-driven resolution is confined to the update PRs, which merge through
-    review. Renovate's weekly wholesale lock re-resolve
-    ([`lockFileMaintenance`][]) is disabled: not for want of a cooldown (the
-    npm-side [cooldown][] governs that refresh wherever a project `.npmrc`
-    reaches, and Renovate's own age check can't date it at all), but because a
-    standing tree-wide registry draw buys only routine transitive freshness,
-    while [alert-driven fixes][security updates] cover known vulnerabilities.
+    bot-driven resolution is confined to update PRs, visible and check-gated,
+    with human review everywhere except the automerged patch tier (which pays
+    for the skipped review with a longer [cooldown][]). Renovate's weekly
+    wholesale lock re-resolve ([`lockFileMaintenance`][]) is disabled: not for
+    want of a cooldown (the npm-side [cooldown][] governs that refresh wherever
+    a project `.npmrc` reaches, and Renovate's own age check can't date it at
+    all), but because a standing tree-wide registry draw buys only routine
+    transitive freshness, while [alert-driven fixes][security updates] cover
+    known vulnerabilities.
   - **Resolve only cooled-down releases**: <a id="cooldown-releases"></a> even
     deliberate resolution ignores releases younger than a [cooldown
     period][cooldown]; registry-side takedowns of malicious releases need a few

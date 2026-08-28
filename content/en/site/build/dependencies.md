@@ -243,8 +243,11 @@ version that supports the controls above.
   - `engine-strict` in [`.npmrc`][] makes it fail closed.
 - **Floor policy**:
   - The floor rises as npm fixes enforcement gaps in the controls.
-  - It follows npm versions bundled with Node LTS releases, so a default
-    toolchain passes the check.
+  - The committed `.nvmrc` pins a Node.js release whose bundled npm satisfies
+    the floor, so CI, Netlify, and `nvm`-managed local setups pass it by
+    construction; [Renovate][] keeps the pin updated. (A floating `.nvmrc` such
+    as `lts/*` can't promise this: CI runners resolve it from possibly stale
+    caches.)
 - **Netlify**:
   - Netlify's Node-bundled default npm may be older than the floor;
     [`NPM_VERSION`][netlify-deps] in [`netlify.toml`][] pins one that satisfies

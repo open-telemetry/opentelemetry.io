@@ -56,10 +56,10 @@ Your development environment will be initialized via the
     cd opentelemetry.io
     ```
 
-3.  Install or upgrade to the [**active LTS** release][nodejs-rel] of Node.js.
-    We recommend using [nvm][] to manage your Node installation. Under Linux,
-    run the following command, which will install and upgrade to the version
-    specified in the .nvmrc file:
+3.  Install or upgrade to the Node.js release pinned in the `.nvmrc` file (an
+    [active LTS][nodejs-rel] version). We recommend using [nvm][] to manage your
+    Node installation. Under Linux, run the following command, which will
+    install and upgrade to the version specified in the .nvmrc file:
 
     ```sh
     nvm install
