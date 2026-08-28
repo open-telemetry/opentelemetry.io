@@ -45,20 +45,22 @@ jobs:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
-          client-id: ${{ vars.OTELBOT_CLIENT_ID }}
-          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+          # The base otelbot App lacks contents permission; use the
+          # push-capable docs App.
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
           permission-contents: write # For the version updater's git push.
           permission-pull-requests: write
 
-      # Authenticate the push remote just in time: the App token backs both the
-      # script's `git push` (via the remote URL) and its `gh` calls (via
-      # GH_TOKEN), and is scoped to this step only.
-      - run: |
-          git remote set-url origin \
-            "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          ./scripts/auto-update/all-versions.sh
+      # Let git resolve credentials through the gh CLI (which reads GH_TOKEN
+      # from each step's env) instead of persisting the token in .git/config.
+      - run: gh auth setup-git
         env:
-          # change to ${{ secrets.GITHUB_TOKEN }} and comment out the step above when testing against a fork
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+
+      - run: ./scripts/auto-update/all-versions.sh
+        env:
+          # change to ${{ secrets.GITHUB_TOKEN }} and comment out the mint step above when testing against a fork
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
   report-failure:
