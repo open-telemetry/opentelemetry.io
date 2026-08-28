@@ -65,7 +65,11 @@ closing table maps decisions to their enforcement.
     period][cooldown]; registry-side takedowns of malicious releases need a few
     days to land. One exception, by design: [Dependabot security
     updates][security updates] override the cooldown to ship known-vulnerability
-    fixes immediately.
+    fixes immediately. The cooldown's scope is registry-resolved packages: the
+    Node toolchain pin follows the [floor policy][npm engines floor] instead,
+    since signed project builds don't share the registry's takedown-lag risk
+    (routine pin bumps still ride Renovate's age gate, as harmless defense in
+    depth).
 - _A package's install-time scripts run attacker code on contributor hosts and
   build machines: the worm's payload path._
   - **Run only reviewed lifecycle scripts**: <a id="scripts"></a> [lifecycle
