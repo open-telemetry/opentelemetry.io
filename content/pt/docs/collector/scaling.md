@@ -7,7 +7,7 @@ cSpell:ignore: exporters fluentd Linkerd loadbalancer loadbalancing observabilit
 ---
 
 Ao planejar o seu pipeline de observabilidade com o OpenTelemetry Collector,
-você deve considerar formas de escalar o pipeline à medida que a sua coleta de
+considere formas de escalar o pipeline à medida que a sua coleta de
 telemetria aumenta.
 
 As seções a seguir guiarão você pela fase de planejamento, discutindo quais
