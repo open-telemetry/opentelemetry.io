@@ -1,16 +1,16 @@
-# cSpell:ignore dynamicsampling
-title: Dynamic Sampling Processor
+# cSpell:ignore adaptivetailsampling
+title: Adaptive Tail Sampling Processor
 registryType: processor
 language: collector
 tags:
-  - dynamicsampling
+  - adaptivetailsampling
   - processor
   - collector
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/dynamicsamplingprocessor
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/adaptivetailsamplingprocessor
 license: Apache 2.0
 description:
-  The Dynamic Sampling Processor performs adaptive trace sampling using
+  The Adaptive Tail Sampling Processor performs adaptive trace sampling using
   first-match
 authors:
   - name: OpenTelemetry Authors
