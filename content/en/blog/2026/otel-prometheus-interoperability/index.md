@@ -5,8 +5,8 @@ date: 2026-08-28
 author: >-
   [Andrej Kiripolsky](https://github.com/andrejkiri) (Grafana Labs)
 draft: true # TODO: remove this line once the post is ready to be published
-issue: TODO # TODO: file an issue for this post and put its ID here (required)
-sig: TODO # TODO: name the sponsoring SIG, e.g. Prometheus Interoperability (required)
+issue: https://github.com/open-telemetry/sig-end-user/issues/280
+sig: End-User SIG
 # prettier-ignore
 cSpell:ignore: Kiripolsky
 ---
