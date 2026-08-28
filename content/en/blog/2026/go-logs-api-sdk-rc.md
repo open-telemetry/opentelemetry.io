@@ -103,12 +103,12 @@ OpenTelemetry Go repository. Include the RC version, your Go version, a minimal
 reproducer when possible, and what you expected to happen.
 
 **Feedback period:** We will wait at least 14 days after this post is published
-before releasing `v1.47.0` as stable. If significant findings require another
+before stabilizing the Logs API and SDK. If significant findings require another
 RC, we will restart the 14-day feedback period when that RC is published. This
-gives the community time to validate any substantial changes before the stable
-release.
+gives the community time to validate any substantial changes before
+stabilization.
 
-This feedback window matters. Once we release `v1.47.0` as stable, our
+This feedback window matters. Once we stabilize the Logs API and SDK, our
 [versioning policy][versioning] commits us to compatibility throughout the v1
 line. Outside its documented exceptions, we will no longer be able to fix
 problems by making breaking API changes within v1; an incompatible correction
