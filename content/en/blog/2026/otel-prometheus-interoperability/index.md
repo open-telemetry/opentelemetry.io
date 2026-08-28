@@ -202,6 +202,12 @@ infrastructure metrics. eBPF-based instrumentation (OBI) doesn't follow the same
 pattern — there it's the 1,000+ organizations that stand apart from every
 smaller band.
 
+| Metric                                                    | 1–49 (N=10) | 50–99 (N=12) | 100–999 (N=25) | 1,000+ (N=34) |
+| --------------------------------------------------------- | ----------- | ------------ | -------------- | ------------- |
+| OTel SDK adoption (application metrics)                   | 40%         | 58%          | 84%            | 62%           |
+| OTel receiver adoption (infrastructure metrics)           | 20%         | 58%          | 76%            | 53%           |
+| eBPF-based instrumentation / OBI (infrastructure metrics) | 20%         | 17%          | 20%            | 3%            |
+
 Our hypothesis is that mid-size organizations — big enough to have a dedicated
 platform effort, small enough to move without a multi-year migration plan —
 might be pushing furthest into newer OTel-native tooling.
