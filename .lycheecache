@@ -5602,7 +5602,9 @@ https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-in
 https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.30.0/opentelemetry-instrumentation-bom-2.30.0.pom,200,1787916625
 https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.31.1/opentelemetry-instrumentation-bom-2.31.1.pom,200,1787942175
 https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.64.0-alpha/opentelemetry-bom-alpha-1.64.0-alpha.pom,200,1787818840
+https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.65.0-alpha/opentelemetry-bom-alpha-1.65.0-alpha.pom,200,1787942666
 https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.64.0/opentelemetry-bom-1.64.0.pom,200,1787818840
+https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.65.0/opentelemetry-bom-1.65.0.pom,200,1787942666
 https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf,200,1787916996
 https://resteasy.dev/,200,1787916956
 https://restlet.github.io/,200,1787916956
