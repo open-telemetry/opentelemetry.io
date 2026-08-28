@@ -2565,6 +2565,12 @@ https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/pdata/pc
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/pdata/ptrace/generated_resourcespans.go,200,1787916613
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/receiver/receiver.go#L58,200,1787916612
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/receiver/receiver.go,200,1787916612
+https://github.com/open-telemetry/opentelemetry-collector/blob/v0.159.0/component/config.go,200,1787945068
+https://github.com/open-telemetry/opentelemetry-collector/blob/v0.159.0/config/configtls/README.md,200,1787945068
+https://github.com/open-telemetry/opentelemetry-collector/blob/v0.159.0/pdata/pcommon/map.go,200,1787945068
+https://github.com/open-telemetry/opentelemetry-collector/blob/v0.159.0/pdata/ptrace/generated_resourcespans.go,200,1787945068
+https://github.com/open-telemetry/opentelemetry-collector/blob/v0.159.0/receiver/receiver.go#L58,200,1787945068
+https://github.com/open-telemetry/opentelemetry-collector/blob/v0.159.0/receiver/receiver.go,200,1787945068
 https://github.com/open-telemetry/opentelemetry-collector/issues/10808,200,1787916611
 https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0,200,1787916610
 https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0,200,1787916611
@@ -5600,9 +5606,13 @@ https://refactoring.guru/design-patterns/composite,200,1787905392
 https://refactoring.guru/design-patterns/decorator,200,1787905392
 https://reference.opcfoundation.org/Core/Part26/v105/docs/,200,1787916786
 https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.30.0-alpha/opentelemetry-instrumentation-bom-alpha-2.30.0-alpha.pom,200,1787916625
+https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.31.1-alpha/opentelemetry-instrumentation-bom-alpha-2.31.1-alpha.pom,200,1787942175
 https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.30.0/opentelemetry-instrumentation-bom-2.30.0.pom,200,1787916625
+https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.31.1/opentelemetry-instrumentation-bom-2.31.1.pom,200,1787942175
 https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.64.0-alpha/opentelemetry-bom-alpha-1.64.0-alpha.pom,200,1787818840
+https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.65.0-alpha/opentelemetry-bom-alpha-1.65.0-alpha.pom,200,1787942666
 https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.64.0/opentelemetry-bom-1.64.0.pom,200,1787818840
+https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.65.0/opentelemetry-bom-1.65.0.pom,200,1787942666
 https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf,200,1787916996
 https://resteasy.dev/,200,1787916956
 https://restlet.github.io/,200,1787916956
