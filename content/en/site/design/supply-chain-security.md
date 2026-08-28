@@ -52,8 +52,9 @@ closing table maps decisions to their enforcement.
     [`package-lock.json`][]. The one exception: a local `npm install` can
     rewrite a disagreeing lock; [verification](#verify) catches such rewrites.
   - **Resolve deliberately**: <a id="deliberate"></a> version resolution happens
-    only in [deliberate dependency updates][], never as an install side effect
-    or on a bot schedule. Renovate's weekly wholesale lock re-resolve
+    only in [deliberate dependency updates][], never as an install side effect;
+    bot-driven resolution is confined to the update PRs, which merge through
+    review. Renovate's weekly wholesale lock re-resolve
     ([`lockFileMaintenance`][]) is disabled: not for want of a cooldown (the
     npm-side [cooldown][] governs that refresh wherever a project `.npmrc`
     reaches, and Renovate's own age check can't date it at all), but because a
@@ -62,7 +63,9 @@ closing table maps decisions to their enforcement.
   - **Resolve only cooled-down releases**: <a id="cooldown-releases"></a> even
     deliberate resolution ignores releases younger than a [cooldown
     period][cooldown]; registry-side takedowns of malicious releases need a few
-    days to land.
+    days to land. One exception, by design: [Dependabot security
+    updates][security updates] override the cooldown so a known-vulnerability
+    fix ships without waiting out the window.
 - _A package's install-time scripts run attacker code on contributor hosts and
   build machines: the worm's payload path._
   - **Run only reviewed lifecycle scripts**: <a id="scripts"></a> [lifecycle

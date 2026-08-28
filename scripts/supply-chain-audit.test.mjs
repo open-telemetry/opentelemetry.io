@@ -170,6 +170,24 @@ test('lock and manifest: install scripts stay inventoried in allowScripts', () =
   );
 });
 
+// The reviewed npm control set: one home for the literal; the root test
+// pins it, the nested test pins parity with the root.
+const reviewedNpmSettings = [
+  'engine-strict=true',
+  'min-release-age=7',
+  'strict-allow-scripts=true',
+];
+
+function npmrcSettings(path) {
+  return readText(path)
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(
+      (line) => line !== '' && !line.startsWith('#') && !line.startsWith(';'),
+    )
+    .sort();
+}
+
 test('.npmrc carries exactly the reviewed npm settings', () => {
   // npm takes a key's last assignment, so spot-checks can be reversed by
   // a later line, and any unpinned addition (node-options=--require ...,
@@ -178,32 +196,29 @@ test('.npmrc carries exactly the reviewed npm settings', () => {
   // lines). Each setting's rationale is documented at
   // https://opentelemetry.io/site/build/dependencies/#controls
   assert.deepEqual(
-    readText('.npmrc')
-      .split('\n')
-      .map((line) => line.trim())
-      .filter(
-        (line) => line !== '' && !line.startsWith('#') && !line.startsWith(';'),
-      )
-      .sort(),
-    ['engine-strict=true', 'min-release-age=7', 'strict-allow-scripts=true'],
+    npmrcSettings('.npmrc'),
+    reviewedNpmSettings,
     'the npm settings match the reviewed set',
   );
 });
 
-test('nested lock home carries the same reviewed npm settings', () => {
+test('nested lock home mirrors the root npm controls', () => {
   // npm project config never walks up past the nearest package.json, so
   // the nested lock home needs its own .npmrc for the controls to reach
-  // resolution and installs run from that directory.
+  // resolution and installs run from that directory. Compared against the
+  // root file, not a second literal, so the two can't drift apart silently.
   assert.deepEqual(
-    readText('scripts/generate-community-data/.npmrc')
-      .split('\n')
-      .map((line) => line.trim())
-      .filter(
-        (line) => line !== '' && !line.startsWith('#') && !line.startsWith(';'),
-      )
-      .sort(),
-    ['engine-strict=true', 'min-release-age=7', 'strict-allow-scripts=true'],
-    'the nested npm settings match the reviewed set',
+    npmrcSettings('scripts/generate-community-data/.npmrc'),
+    npmrcSettings('.npmrc'),
+    'the nested npm settings match the root settings',
+  );
+  // Same walk-up rule for the engines floor: without a local engines
+  // field, engine-strict has no floor to enforce in that directory.
+  assert.deepEqual(
+    JSON.parse(readText('scripts/generate-community-data/package.json'))
+      .engines,
+    manifest.engines,
+    'the nested engines floors match the root floors',
   );
 });
 
@@ -216,8 +231,8 @@ test('manifest: engines floor stays at or above the reviewed minimums', () => {
   assert.ok(npmFloor, 'engines.npm is a >=x.y.z floor');
   const [major, minor] = npmFloor.slice(1).map(Number);
   assert.ok(
-    major > 11 || (major === 11 && minor >= 16),
-    'engines.npm floor is at least 11.16 (allowScripts enforcement)',
+    major > 11 || (major === 11 && minor >= 18),
+    'engines.npm floor is at least 11.18 (allowScripts enforcement, min-release-age-exclude)',
   );
   assert.match(engines.node, /^>=\d+$/, 'engines.node is a major floor');
   // npm skips the root engines check entirely when devEngines is present

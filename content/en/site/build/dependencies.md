@@ -143,9 +143,15 @@ alert-driven:
 The overlap is deliberate; an occasional duplicate PR is accepted. With
 scheduled lock re-resolves [disabled by design][deliberate], these alert-driven
 paths are the only automated route for transitive fixes, so the repository-side
-setting stays on. Both paths trade the cooldown for speed: they exist to ship a
-fix _now_, so treat a younger-than-cooldown fix version as a maintainer call,
-not as pre-vetted by the [release cooldown](#release-cooldown).
+setting stays on. The two paths meet the [release cooldown](#release-cooldown)
+differently:
+
+- Dependabot security updates deliberately override every release-age gate
+  (`.npmrc` included) so that a fix ships now: a fix version younger than the
+  cooldown can land, and vetting it is the reviewing maintainer's job.
+- Renovate's PR is subject to the `.npmrc` gate when it regenerates the lock, so
+  a younger-than-cooldown fix arrives as a failed artifact update; adopting it
+  early takes the [scoped exemption](#updating) run by a maintainer.
 
 ## Supply-chain controls {#controls}
 
@@ -198,7 +204,7 @@ Version resolution ignores releases younger than the configured minimum age.
   that merge without human review. The preset-supplied 3-day npm cooldown
   (`security:minimumReleaseAgeNpm`) is excluded so that it can't override these
   ages, its age exemptions included; caution: an upstream rename of that preset
-  would silently re-admit it. Update types Renovate can't date (`pin`,
+  would silently re-admit it. Update types Renovate can't date (such as `pin`,
   `replacement`, `rollback`) never clear the cooldown: they stay parked on the
   Dependency Dashboard as pending, and open a PR only when forced from there.
 
