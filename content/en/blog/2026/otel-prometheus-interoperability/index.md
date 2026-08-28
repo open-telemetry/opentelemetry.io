@@ -11,7 +11,7 @@ draft: true # TODO: remove this line once the post is ready to be published
 issue: https://github.com/open-telemetry/sig-end-user/issues/280
 sig: End-User SIG
 # prettier-ignore
-cSpell:ignore: Ahuja Dhruv Kiripolsky Muenz
+cSpell:ignore: Ahuja Dhruv György Heorku Kiripolsky Krajcsovits Krajo Muenz textfile
 ---
 
 We ran a survey asking users of OpenTelemetry and Prometheus how they collect,
@@ -32,7 +32,7 @@ interoperability still causes friction.
 3. In application instrumentation, OTel SDKs are the most-used method at 65%
    with Prometheus SDKs at 52%, and 41% use only the OTel style of application
    instrumentation.
-4. Prometheus relabeling rules (54%) and the open-source OTel Collector (53%)
+4. Prometheus relabeling rules (54%) and the open source OTel Collector (53%)
    are the two most common processing steps, and 65% of respondents run a
    "vanilla stack" of one or both with no vendor transformation or custom
    Collector build anywhere in the pipeline.
@@ -46,7 +46,7 @@ sample:
 
 - All respondents in this analysis are active OpenTelemetry users.
 - All respondents use some flavor of Prometheus – Prometheus itself (46%), an
-  open-source Prometheus-compatible backend such as Thanos, Cortex, or Grafana
+  open source Prometheus-compatible backend such as Thanos, Cortex, or Grafana
   Mimir (42%), or a PromQL-compatible vendor product (12%).
 - Respondents' observability maturity is high. 48% describe their organization
   as having "a well-established observability practice" (Expert), 41% are
@@ -95,3 +95,113 @@ When looking at how these methods combine, the picture is clearly hybrid, not
 either/or. Nearly half of respondents are mixing Prometheus and OTel
 instrumentation styles at once for infrastructure metrics, rather than doing a
 full migration. Only Prometheus style is twice as popular as only OTel style.
+
+_*Note*: Instrumentation style describes whether a respondent uses methods
+native to one project only, or a mix of both. OTel-style includes using OTel
+receivers, Built-in OTLP push, or OpenTelemetry eBPF Instrumentation (OBI).
+Prometheus-style includes Prometheus exporters or Built-in /metrics endpoint (no
+exporter). The 4 "Other" responses are write-ins: Zabbix, Heorku Telemetry
+(likely "Heroku Telemetry"), textfile collector, Telegraf. All 4 respondents
+also selected a real Prometheus/OTel method alongside their write-in — but in
+the style table below, a write-in places a respondent in "Other" regardless of
+what else they selected._
+
+<!-- TODO: link the ongoing discussion in the sentence below (URL missing) -->
+
+_*Work in progress*: The Prometheus and OTel communities are working on making
+Prometheus exporters run as an OTel Collector distribution. The conversations
+are still ongoing. The discussion is open in this issue._
+
+## Application metrics
+
+_How do you instrument application metrics collection?_
+
+Preferences swap for application instrumentation. OTel SDKs come out on top with
+Prometheus SDKs following behind them. OBI holds roughly the same share as in
+infrastructure instrumentation.
+
+Instrumentation styles shift as well. Most participants use only OTel style
+instrumentation. That is twice as common as only Prometheus style. Fewer than a
+third mix styles.
+
+<!-- prettier-ignore-start -->
+<!-- Keeps the respondent's original "OTEl" spelling in the quote below. -->
+
+_*Note*: In application instrumentation, OTel-style includes using OTel SDKs or
+OpenTelemetry eBPF Instrumentation (OBI). Prometheus-style includes Prometheus
+SDKs. Again, there are 4 write-ins that we categorized as “Other”: already built
+exporters, Micrometer, textfile collector, jvm-exporter. 3 of the 4 also
+selected a real Prometheus/OTel method. One respondent's original write-ins,
+"Self instrumentation" and "manual instrumentation for OTEl," were recoded to
+plain OTel SDKs._
+
+<!-- prettier-ignore-end -->
+
+## Transformation
+
+_What do you use to process or transform metrics before sending them to
+storage?_
+
+Prometheus relabeling rules and the open source OTel Collector are the two most
+common processing steps with neither of them leading clearly.
+
+Most respondents run a vanilla stack: only Prometheus relabeling rules and/or
+the plain OTel Collector, with no vendor distribution and no custom-built
+Collector in the pipeline. The three vanilla patterns come out close to even.
+
+## What practitioners want improved
+
+_What would you like us to improve to make OpenTelemetry and Prometheus work
+better together?_
+
+We received 19 open-ended responses with suggestions on what to improve. Three
+themes emerged from this data — unifying Prometheus and OTel's data models
+(attributes/labels), better handling of resource attributes and metadata, and
+naming and formatting friction — alongside a few individual asks. Prometheus
+maintainers György "Krajo" Krajcsovits and Arthur Sens went through the
+responses and addressed each point below:
+
+- Unifying Prometheus and OTel's data models (attributes/labels)
+  - This is a valid ask that we recognize. We will raise it for a discussion at
+    the Prometheus Dev summit in October.
+- Resource attributes and metadata
+  - This should be addressed by the
+    [native metadata design doc](https://docs.google.com/document/d/1yYnyD7oJDvJhzFaigdniq6y302Mvp9gDcJUeAj3pJ0s/edit?tab=t.0#heading=h.5prvoamow70t).
+    One thing that we have to wait for is finishing the OTel Entities spec.
+- Naming and formatting friction
+  - Several relevant things already exist — the
+    [OpenMetrics 2.0 exposition format](https://prometheus.io/docs/specs/om/open_metrics_spec_2_0/)
+    lets OTel-style names be used directly in code, PromQL already supports
+    UTF-8 metric names, and Prometheus's OTLP receiver has
+    [configurable translation strategies](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file).
+    The pieces exist; they're just not the default yet. We have to work on this.
+- Using Prometheus native recording rules in the Collector
+  - There's an open
+    [Prometheus proposal](https://github.com/prometheus/proposals/pull/67) and
+    [proof-of-concept PR](https://github.com/prometheus/prometheus/pull/10529)
+    for scrape-time recording rules, which wouldn't need a full TSDB the way
+    recording rules do today. Since the OpenTelemetry Collector's Prometheus
+    Receiver uses Prometheus code as a Go Library, this proposal would also
+    benefit the Collector.
+- Enable MCP or agentic AI workflows
+  - Prometheus just onboarded the
+    [Prometheus MCP](https://github.com/prometheus/prometheus-mcp) project
+    repository to its GitHub org. This should enable MCP workflows for
+    Prometheus. The Prometheus community would love to see people start using it
+    and get feedback. Also, the
+    [native metadata design doc](https://docs.google.com/document/d/1yYnyD7oJDvJhzFaigdniq6y302Mvp9gDcJUeAj3pJ0s/edit?tab=t.0#heading=h.5prvoamow70t)
+    explains how we plan to make agentic AI workflows even better in Prometheus.
+
+## Interesting observations
+
+_Mid-size organizations may be furthest into OTel-native tooling_
+
+In our data, 100–999-employee organizations come out highest on OTel SDK
+adoption for application metrics and on OTel receiver adoption for
+infrastructure metrics. eBPF-based instrumentation (OBI) doesn't follow the same
+pattern — there it's the 1,000+ organizations that stand apart from every
+smaller band.
+
+Our hypothesis is that mid-size organizations — big enough to have a dedicated
+platform effort, small enough to move without a multi-year migration plan —
+might be pushing furthest into newer OTel-native tooling.
