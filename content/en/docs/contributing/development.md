@@ -1,7 +1,9 @@
 ---
 title: Development setup and commands to build, serve, and more
 linkTitle: Dev setup and more
-description: Learn how to set up a development environment for this website.
+description: >-
+  Cloud-IDE and local environment setups, and the site's build, serve, and check
+  commands
 what-next: >
   You're now ready to [build](#build), [serve](#serve), and make updates to
   website files. For details on how to submit changes, see [Submitting
@@ -56,10 +58,9 @@ Your development environment will be initialized via the
     cd opentelemetry.io
     ```
 
-3.  Install or upgrade to the Node.js release pinned in the `.nvmrc` file (an
-    [active LTS][nodejs-rel] version). We recommend using [nvm][] to manage your
-    Node installation. Under Linux, run the following command, which will
-    install and upgrade to the version specified in the .nvmrc file:
+3.  Install the Node.js release pinned in the `.nvmrc` file (an [active
+    LTS][nodejs-rel] version). We recommend [nvm][] to manage your Node
+    installation; under Linux, run:
 
     ```sh
     nvm install

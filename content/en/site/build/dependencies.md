@@ -72,8 +72,10 @@ Clear the affected [build cache][] rather than adding the path to `.gitignore`:
 ## Updating dependencies {#updating}
 
 Routine version bumps arrive as [Renovate][] PRs, gated by the
-[release cooldown](#release-cooldown). The cases below are the manual paths; in
-each, commit the regenerated lock together with any `package.json` change.
+[release cooldown](#release-cooldown), and known-vulnerability fixes arrive
+alert-driven ([Security updates](#security-updates)). The remaining cases are
+manual; in each, commit the regenerated lock together with any `package.json`
+change.
 
 ### Manifest changes {#manifest-changes}
 

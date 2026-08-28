@@ -1,8 +1,7 @@
 // Committed supply-chain audit: proves, from the committed manifests, lock,
 // .npmrc, and netlify.toml alone, that the install-hardening invariants
 // still hold, so integrity claims regenerate from this test instead of ad
-// hoc audit runs. Fast and offline. Ported from Docsy's audit (docsy#2714),
-// scoped to this repo's controls:
+// hoc audit runs. Fast and offline. The audited controls:
 // https://opentelemetry.io/site/design/supply-chain-security/
 // Out of scope: the Docsy theme-deps install (themes/docsy runs under its
 // own project config and audits itself upstream), and the build-side
@@ -399,8 +398,7 @@ test('manifest: the install path keeps its locked, script-free form', () => {
 });
 
 // Limited anchor: these pins hold only when this suite runs, so they
-// catch same-PR partial edits, not a CI wiring drop; the cross-rooted
-// suite anchor stays with the deferred docsy wiring port.
+// catch same-PR partial edits, not a CI wiring drop.
 test('manifest: the runner that carries this audit stays wired', () => {
   assert.equal(
     manifest.scripts['test:local-tools'],
