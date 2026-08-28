@@ -52,15 +52,15 @@ closing table maps decisions to their enforcement.
     [`package-lock.json`][]. The one exception: a local `npm install` can
     rewrite a disagreeing lock; [verification](#verify) catches such rewrites.
   - **Resolve deliberately**: <a id="deliberate"></a> version resolution happens
-    only in [deliberate dependency updates][], never as an install side effect;
-    bot-driven resolution is confined to update PRs, visible and check-gated
-    (the automerged patch tier trades review for a longer cooldown). Renovate's
-    weekly wholesale lock re-resolve ([`lockFileMaintenance`][]) is disabled:
-    not for want of a cooldown (the npm-side [cooldown][] reaches that refresh
-    too, wherever a project `.npmrc` governs; Renovate's own age check can't
-    date it), but because a standing tree-wide registry draw buys only routine
-    transitive freshness, while [alert-driven fixes][security updates] cover
-    known vulnerabilities.
+    only in [deliberate dependency updates][dep-updates], never as an install
+    side effect; bot-driven resolution is confined to update PRs, visible and
+    check-gated (the automerged patch tier trades review for a longer cooldown).
+    Renovate's weekly wholesale lock re-resolve ([`lockFileMaintenance`][]) is
+    disabled: not for want of a cooldown (the npm-side [cooldown][] reaches that
+    refresh too, wherever a project `.npmrc` governs; Renovate's own age check
+    can't date it), but because a standing tree-wide registry draw buys only
+    routine transitive freshness, while [alert-driven fixes][security updates]
+    cover known vulnerabilities.
   - **Resolve only cooled-down releases**: <a id="cooldown-releases"></a> even
     deliberate resolution ignores releases younger than a [cooldown
     period][cooldown]; registry-side takedowns of malicious releases need a few
@@ -99,18 +99,18 @@ closing table maps decisions to their enforcement.
 
 Enforcement at a glance:
 
-| Decision                                | Enforced by                                                                                                                                                   |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Minimize dependencies][]               | Maintainer judgment in dependency review; no mechanical control                                                                                               |
-| [Install from the lock][]               | `npm ci` in every [install contract][install contracts]                                                                                                       |
-| [Resolve deliberately][]                | Convention plus `lockFileMaintenance: {enabled: false}` in [`.github/renovate.json5`][]; an unexpected resolution rewrites the lock, which verification flags |
-| [Resolve only cooled-down releases][]   | The [cooldown][] control, for npm and Renovate alike                                                                                                          |
-| [Run only reviewed lifecycle scripts][] | The [allowlist][] in strict mode; unreviewed fails the install                                                                                                |
-| [Refuse Hugo installer overrides][]     | The [rebuild wrapper][install contracts]'s environment screen, before any rebuild attempt                                                                     |
-| [Neutralize the auto-install][]         | The [inert auto-install][] control                                                                                                                            |
-| [Invoke bins, not names][]              | The [no bare npx][] rule; review discipline, no mechanical control                                                                                            |
-| [Fail closed on old npm][]              | The [npm engines floor][] with strict engine checking                                                                                                         |
-| [Verify, don't trust][]                 | [Supply-chain audit][], [clean-working-tree checks][install contracts], a `postinstall` warning on lock rewrites                                              |
+| Decision                                | Enforced by                                                                                                      |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| [Minimize dependencies][]               | Maintainer judgment in dependency review; no mechanical control                                                  |
+| [Install from the lock][]               | `npm ci` in every [install contract][install contracts]                                                          |
+| [Resolve deliberately][]                | [Convention][dep-updates] and disabled [`lockFileMaintenance`][] in [`renovate.json5`][]                         |
+| [Resolve only cooled-down releases][]   | [Cooldown][] in npm and [Renovate][`renovate.json5`]                                                             |
+| [Run only reviewed lifecycle scripts][] | The [allowlist][] in strict mode; unreviewed fails the install                                                   |
+| [Refuse Hugo installer overrides][]     | The [rebuild wrapper][install contracts]'s environment screen, before any rebuild attempt                        |
+| [Neutralize the auto-install][]         | The [inert auto-install][] control                                                                               |
+| [Invoke bins, not names][]              | The [no bare npx][] rule; review discipline, no mechanical control                                               |
+| [Fail closed on old npm][]              | The [npm engines floor][] with strict engine checking                                                            |
+| [Verify, don't trust][]                 | [Supply-chain audit][], [clean-working-tree checks][install contracts], a `postinstall` warning on lock rewrites |
 
 ## Prior art
 
@@ -129,13 +129,13 @@ Enforcement at a glance:
   - The [OpenSSF npm guide][openssf]: lock-exact CI installs.
 
 <!-- prettier-ignore-start -->
-[`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 [`lockFileMaintenance`]: https://docs.renovatebot.com/configuration-options/#lockfilemaintenance
 [`package-lock.json`]: https://docs.npmjs.com/cli/configuring-npm/package-lock-json
+[`renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 [allowlist]: ../../build/dependencies/#lifecycle-script-allowlist
 [control]: ../../build/dependencies/#controls
 [cooldown]: ../../build/dependencies/#release-cooldown
-[deliberate dependency updates]: ../../build/dependencies/#updating
+[dep-updates]: ../../build/dependencies/#updating
 [Fail closed on old npm]: #old-npm
 [inert auto-install]: ../../build/dependencies/#inert-netlify-auto-install
 [install contracts]: ../../build/dependencies/#install-contracts
