@@ -60,7 +60,9 @@ jobs:
 
       - run: ./scripts/auto-update/all-versions.sh
         env:
-          # change to ${{ secrets.GITHUB_TOKEN }} and comment out the mint step above when testing against a fork
+          # Fork testing: drop the mint step, grant this job `contents: write`
+          # + `pull-requests: write`, and set GH_TOKEN to
+          # ${{ secrets.GITHUB_TOKEN }} here and in the setup-git step.
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
   report-failure:
