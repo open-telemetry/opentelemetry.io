@@ -94,13 +94,19 @@ go get go.opentelemetry.io/otel/sdk/log@v1.47.0-rc.1
 Then exercise the paths that matter in your environment: direct API use, logging
 bridges, custom processors or exporters, high-volume workloads, attribute
 limits, and application shutdown. OpenTelemetry Go `v1.47.0-rc.1` requires Go
-1.26; `v1.46.0` was the final release supporting Go 1.25.
+1.26.
 
 ## Please report problems now
 
 If you encounter any problems, please [open a new issue][new-issue] in the
 OpenTelemetry Go repository. Include the RC version, your Go version, a minimal
 reproducer when possible, and what you expected to happen.
+
+**Feedback period:** We will wait at least 14 days after this post is published
+before releasing `v1.47.0` as stable. If significant findings require another
+RC, we will restart the 14-day feedback period when that RC is published. This
+gives the community time to validate any substantial changes before the stable
+release.
 
 This feedback window matters. Once we release `v1.47.0` as stable, our
 [versioning policy][versioning] commits us to compatibility throughout the v1
