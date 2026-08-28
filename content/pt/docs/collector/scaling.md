@@ -171,7 +171,7 @@ do DaemonSet falha.
 
 O padrão sidecar consiste em adicionar um contêiner ao pod da carga de trabalho.
 O [OpenTelemetry Operator](/docs/platforms/kubernetes/operator/) pode adicionar
-isso automaticamente para você. Para isso, você precisará de um CR OpenTelemetry
+isso automaticamente para você. Para isso, é necessário um CR OpenTelemetry
 Collector e anotar o seu PodSpec ou Pod, dizendo ao operator para
 injetar um sidecar:
 
