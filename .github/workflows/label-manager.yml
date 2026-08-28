@@ -18,8 +18,12 @@ permissions:
   contents: read
 
 concurrency:
+  # Include the event name so a review-triggered workflow_run run never
+  # cancels an in-flight pull_request_target run (whose component-label pass
+  # would not be re-run by the canceling run).
   group:
-    ${{ github.workflow }}-${{ github.event.pull_request.number ||
+    ${{ github.workflow }}-${{ github.event_name }}-${{
+    github.event.pull_request.number ||
     github.event.workflow_run.pull_requests[0].number || github.run_id }}
   cancel-in-progress: true
 

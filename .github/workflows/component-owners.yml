@@ -31,7 +31,9 @@ jobs:
                 github.rest.repos.getContent({ ...context.repo, path, ref: pullRequest.base.sha }),
                 github.rest.repos.getContent({ owner: headOwner, repo: headRepo, path, ref: pullRequest.head.sha }),
               ]);
-              return baseFile.data.sha === headFile.data.sha ? 'true' : 'false';
+              if (baseFile.data.sha === headFile.data.sha) return 'true';
+              core.notice(`${path} differs from the base branch; skipping owner assignment for this PR.`);
+              return 'false';
             } catch (error) {
               core.warning(`Unable to verify ${path}: ${error.message}`);
               return 'false';

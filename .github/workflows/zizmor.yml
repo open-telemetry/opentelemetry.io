@@ -4,6 +4,10 @@ on:
   pull_request:
   push:
     branches: [main]
+  schedule:
+    # Weekly, per the shared-workflow consumer template: the action installs
+    # the latest zizmor, so a cadence surfaces new-rule findings between pushes.
+    - cron: 45 9 * * 5
   workflow_dispatch:
 
 permissions: {}
