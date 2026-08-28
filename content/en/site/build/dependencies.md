@@ -181,7 +181,10 @@ Version resolution ignores releases younger than the configured minimum age.
     variable, which outranks both.
 - **[Renovate][]**: applies its own cooldown to the update PRs it opens, set by
   `minimumReleaseAge` in [`.github/renovate.json5`][]; longer for the updates
-  that merge without human review. Update types Renovate can't date (`pin`,
+  that merge without human review. The preset-supplied 3-day npm cooldown
+  (`security:minimumReleaseAgeNpm`) is excluded so that it can't override these
+  ages, its age exemptions included; caution: an upstream rename of that preset
+  would silently re-admit it. Update types Renovate can't date (`pin`,
   `replacement`, `rollback`) never clear the cooldown: their PRs open with a
   permanently pending stability status (not a required check) and merge only
   through normal review.
