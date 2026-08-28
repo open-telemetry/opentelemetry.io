@@ -373,6 +373,7 @@ https://developers.google.com/style,200,1787118337
 https://developers.openai.com/api/reference/chat-completions/overview,200,1787032253
 https://developers.openai.com/api/reference/responses/overview,200,1787032253
 https://developers.openai.com/codex/config-advanced#observability-and-telemetry,200,1787032236
+https://devpod.sh/docs/developing-in-workspaces/devcontainer-json,200,1787915835
 https://devstats.cncf.io/,200,1787818853
 https://doc.akka.io/docs/akka-http/current/index.html,200,1787818861
 https://doc.akka.io/docs/akka/current/typed/index.html,200,1787818861
@@ -4920,6 +4921,7 @@ https://kafka.apache.org/,200,1787905390
 https://kafka.apache.org/documentation/streams/,200,1787118353
 https://kb.vfunction.com/installations/install/dist-agent/,200,1787905426
 https://kcdnewyork.com/,200,1787905421
+https://keda.sh/,200,1787915834
 https://keda.sh/docs/latest/integrations/opentelemetry/,206,1787905531
 https://kgateway.dev/,200,1787032364
 https://kgateway.dev/docs/envoy/latest/observability/otel-stack/,200,1787032364
