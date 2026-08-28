@@ -31,7 +31,7 @@ the root `go.opentelemetry.io/otel` package. The equivalent APIs in
 `go.opentelemetry.io/otel/log/global` are now deprecated. This brings global
 logger access in line with the patterns already used for tracers and meters.
 
-See the [release candidate pull request][rc-pr] for the complete release notes.
+See the [release candidate release][rc-release] for the complete release notes.
 
 ## The journey to release candidate
 
@@ -84,17 +84,17 @@ record representation, attribute handling, extensibility, and batching model.
 
 ## Try the RC
 
-Update both modules to the release candidate:
+Update the following modules to the release candidate:
 
 ```sh
+go get go.opentelemetry.io/otel@v1.47.0-rc.1
 go get go.opentelemetry.io/otel/log@v1.47.0-rc.1
 go get go.opentelemetry.io/otel/sdk/log@v1.47.0-rc.1
 ```
 
 Then exercise the paths that matter in your environment: direct API use, logging
 bridges, custom processors or exporters, high-volume workloads, attribute
-limits, and application shutdown. OpenTelemetry Go `v1.47.0-rc.1` requires Go
-1.26.
+limits, and application shutdown.
 
 ## Please report problems now
 
@@ -123,13 +123,13 @@ the way.
 
 [api-design]:
   https://github.com/open-telemetry/opentelemetry-go/blob/73b17d449376ccd8420f84fc8d5d4435ad44e0d6/log/DESIGN.md
-[api-alpha]: https://github.com/open-telemetry/opentelemetry-go/pull/4966
+[api-alpha]: https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.24.0
 [api-prototype]: https://github.com/open-telemetry/opentelemetry-go/pull/4725
 [batch-redesign]: https://github.com/open-telemetry/opentelemetry-go/pull/8620
-[beta-release]: https://github.com/open-telemetry/opentelemetry-go/pull/5392
+[beta-release]: https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.27.0
 [new-issue]:
   https://github.com/open-telemetry/opentelemetry-go/issues/new/choose
-[rc-pr]: https://github.com/open-telemetry/opentelemetry-go/pull/8884
+[rc-release]: https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.47.0-rc.1
 [sdk-design]:
   https://github.com/open-telemetry/opentelemetry-go/blob/73b17d449376ccd8420f84fc8d5d4435ad44e0d6/sdk/log/DESIGN.md
 [sdk-alpha]: https://github.com/open-telemetry/opentelemetry-go/pull/5260
