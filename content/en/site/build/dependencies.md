@@ -115,7 +115,18 @@ the contributor making the change:
 
   The [release cooldown](#release-cooldown) applies, with a sharp edge: an
   exact-pinned package younger than the cooldown fails the whole resolution
-  (`ETARGET`) until it ages.
+  (`ETARGET`) until it ages. When the young pin is a release you reviewed and
+  vouch for, exempt that name alone; the cooldown stays on for the rest of the
+  tree:
+
+  ```sh
+  npm_config_min_release_age_exclude=PACKAGE_NAME \
+    npm update --package-lock-only --ignore-scripts
+  ```
+
+  Replace _`PACKAGE_NAME`_ with the vouched-for package. Keep the exemption
+  per-invocation; a standing entry in [`.npmrc`][] would permanently waive the
+  cooldown for that name.
 
 ### Security updates {#security-updates}
 
