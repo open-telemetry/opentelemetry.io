@@ -52,14 +52,14 @@ const packageIocs = new Set([
   'ecto@5.0.1',
 ]);
 
-// Workspace members appear in the lock twice: a directory entry (their
-// manifest mirror) and a node_modules/ symlink; neither names a registry
-// artifact, so both are excluded from the per-package registry checks.
-// The workspace list itself is pinned below, so a new member is a
-// deliberate review event, not a silent exclusion.
-const workspaceDirs = new Set(manifest.workspaces ?? []);
+// A workspace member appears in the lock as a directory entry plus a
+// node_modules/ symlink, neither a registry artifact. Only declared
+// members are excluded (an undeclared directory entry, e.g. a file:
+// dependency, still fails the registry check), and the workspaces test
+// below pins the member list.
 const lockEntries = Object.entries(lock.packages).filter(
-  ([key, pkg]) => key !== '' && !workspaceDirs.has(key) && !pkg.link,
+  ([key, pkg]) =>
+    key !== '' && !(manifest.workspaces ?? []).includes(key) && !pkg.link,
 );
 
 // The runtime helper exports the unsafe-installer-control names; its
