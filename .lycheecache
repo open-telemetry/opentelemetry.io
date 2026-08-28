@@ -474,6 +474,7 @@ https://docs.expo.dev/get-started/create-a-project/,200,1787916623
 https://docs.fluentbit.io/manual/pipeline/inputs/opentelemetry/,200,1787917024
 https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-your-membership-in-organizations/publicizing-or-hiding-organization-membership,200,1787916690
 https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#workflow_run,200,1787916603
+https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates,200,1787928431
 https://docs.github.com/en/codespaces,200,1787818865
 https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers,200,1787818865
 https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide#alerts,200,1787916621
@@ -644,6 +645,7 @@ https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#status-total,206,1787918248
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1,206,1787918248
 https://docs.renovatebot.com/,200,1787916603
+https://docs.renovatebot.com/configuration-options/#lockfilemaintenance,200,1787928431
 https://docs.renovatebot.com/presets-security/#securityminimumreleaseagenpm,200,1787695025
 https://docs.roadrunner.dev/docs/logging-and-observability/otel,200,1787905368
 https://docs.rs/tower,200,1787916883

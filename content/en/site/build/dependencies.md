@@ -3,6 +3,7 @@ title: Dependency management
 description: >-
   How the site installs, verifies, and updates its npm dependencies
 weight: 5
+cSpell:ignore: ETARGET
 ---
 
 npm dependencies are pinned by the committed `package-lock.json`, and installs
@@ -104,6 +105,35 @@ the contributor making the change:
 - **The lock file changed, but you didn't change dependencies** (a `postinstall`
   check warns when an install does this): that signals drift; restore the lock
   and investigate rather than committing the rewrite.
+- **You want to refresh transitive dependencies**: no schedule does this
+  ([resolution is deliberate][deliberate]); refresh on demand, in each lock home
+  (the repository root and `scripts/generate-community-data/`):
+
+  ```sh
+  npm update --package-lock-only --ignore-scripts
+  ```
+
+  The [release cooldown](#release-cooldown) applies, with a sharp edge: an
+  exact-pinned package younger than the cooldown fails the whole resolution
+  (`ETARGET`) until it ages.
+
+### Security updates {#security-updates}
+
+Known-vulnerability fixes don't wait for the weekly update PRs; they arrive
+alert-driven:
+
+- **GitHub [Dependabot security updates][]**: a repository-side setting (no
+  `dependabot.yml`), able to patch direct and transitive dependencies through
+  lock-only bumps.
+- **[Renovate][] vulnerability-alert PRs**: opened immediately, for direct
+  dependencies.
+
+The overlap is deliberate; an occasional duplicate PR is accepted. With
+scheduled lock re-resolves [disabled by design][deliberate], these alert-driven
+paths are the only automated route for transitive fixes, so the repository-side
+setting stays on. A fix release younger than the
+[release cooldown](#release-cooldown) still faces the age gate at the lock step;
+whether to adopt such a fix immediately is a maintainer call.
 
 ## Supply-chain controls {#controls}
 
@@ -234,6 +264,8 @@ with this rule through [drift tracking][].
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
+[deliberate]: ../../design/supply-chain-security/#deliberate
+[Dependabot security updates]: https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
 [Docsy]: https://www.docsy.dev/
 [drift tracking]: /docs/contributing/localization/#track-changes
