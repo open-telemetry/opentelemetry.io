@@ -55,9 +55,10 @@ closing table maps decisions to their enforcement.
     only in [deliberate dependency updates][], never as an install side effect
     or on a bot schedule. Renovate's weekly wholesale lock re-resolve
     ([`lockFileMaintenance`][]) is disabled: not for want of a cooldown (the
-    [cooldown][] reaches even that refresh), but because a standing tree-wide
-    registry draw buys only routine transitive freshness, while [alert-driven
-    fixes][security updates] cover known vulnerabilities.
+    npm-side [cooldown][] governs that refresh wherever a project `.npmrc`
+    reaches, and Renovate's own age check can't date it at all), but because a
+    standing tree-wide registry draw buys only routine transitive freshness,
+    while [alert-driven fixes][security updates] cover known vulnerabilities.
   - **Resolve only cooled-down releases**: <a id="cooldown-releases"></a> even
     deliberate resolution ignores releases younger than a [cooldown
     period][cooldown]; registry-side takedowns of malicious releases need a few

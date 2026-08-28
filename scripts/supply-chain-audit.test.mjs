@@ -190,6 +190,23 @@ test('.npmrc carries exactly the reviewed npm settings', () => {
   );
 });
 
+test('nested lock home carries the same reviewed npm settings', () => {
+  // npm project config never walks up past the nearest package.json, so
+  // the nested lock home needs its own .npmrc for the controls to reach
+  // resolution and installs run from that directory.
+  assert.deepEqual(
+    readText('scripts/generate-community-data/.npmrc')
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(
+        (line) => line !== '' && !line.startsWith('#') && !line.startsWith(';'),
+      )
+      .sort(),
+    ['engine-strict=true', 'min-release-age=7', 'strict-allow-scripts=true'],
+    'the nested npm settings match the reviewed set',
+  );
+});
+
 test('manifest: engines floor stays at or above the reviewed minimums', () => {
   // The npm floor is the oldest version whose allowScripts and
   // strict-allow-scripts enforcement is trusted; the floor only rises:

@@ -112,11 +112,11 @@ the contributor making the change:
   npm update --package-lock-only --ignore-scripts
   ```
 
-  The [release cooldown](#release-cooldown) applies, with a sharp edge: an
-  exact-pinned package younger than the cooldown fails the whole resolution
-  (`ETARGET`) until it ages. When the young pin is a release you reviewed and
-  vouch for, exempt that name alone; the cooldown stays on for the rest of the
-  tree:
+  The [release cooldown](#release-cooldown) applies, with a sharp edge: a
+  dependency whose only satisfying versions are younger than the cooldown (an
+  exact pin is the common case) fails the whole resolution (`ETARGET`) until one
+  ages. When the young release is one you reviewed and vouch for, exempt that
+  name alone; the cooldown stays on for the rest of the tree:
 
   ```sh
   npm_config_min_release_age_exclude=PACKAGE_NAME \
@@ -125,7 +125,9 @@ the contributor making the change:
 
   Replace _`PACKAGE_NAME`_ with the vouched-for package. Keep the exemption
   per-invocation; a standing entry in [`.npmrc`][] would permanently waive the
-  cooldown for that name.
+  cooldown for that name. Also review the refreshed lock for major hops:
+  `npm update` honors the manifests' declared ranges, and a parent that widens a
+  range can pull a new transitive major.
 
 ### Security updates {#security-updates}
 
@@ -133,17 +135,17 @@ Known-vulnerability fixes don't wait for the weekly update PRs; they arrive
 alert-driven:
 
 - **GitHub [Dependabot security updates][]**: a repository-side setting (no
-  `dependabot.yml`), able to patch direct and transitive dependencies through
-  lock-only bumps.
+  `dependabot.yml`), able to patch direct and transitive dependencies; for npm
+  that can mean rewriting parent manifest entries, not only the lock.
 - **[Renovate][] vulnerability-alert PRs**: opened immediately, for direct
   dependencies.
 
 The overlap is deliberate; an occasional duplicate PR is accepted. With
 scheduled lock re-resolves [disabled by design][deliberate], these alert-driven
 paths are the only automated route for transitive fixes, so the repository-side
-setting stays on. A fix release younger than the
-[release cooldown](#release-cooldown) still faces the age gate at the lock step;
-whether to adopt such a fix immediately is a maintainer call.
+setting stays on. Both paths trade the cooldown for speed: they exist to ship a
+fix _now_, so treat a younger-than-cooldown fix version as a maintainer call,
+not as pre-vetted by the [release cooldown](#release-cooldown).
 
 ## Supply-chain controls {#controls}
 
@@ -181,7 +183,9 @@ Out of the audit's scope:
 
 Version resolution ignores releases younger than the configured minimum age.
 
-- **Enforcement**: `min-release-age` in [`.npmrc`][].
+- **Enforcement**: `min-release-age` in [`.npmrc`][], mirrored in each nested
+  lock home's own `.npmrc` (npm project config doesn't walk up past the nearest
+  `package.json`).
 - **Scope**:
   - Only resolving operations are affected; lock-exact installs (`npm ci`) don't
     resolve versions.
@@ -195,9 +199,8 @@ Version resolution ignores releases younger than the configured minimum age.
   (`security:minimumReleaseAgeNpm`) is excluded so that it can't override these
   ages, its age exemptions included; caution: an upstream rename of that preset
   would silently re-admit it. Update types Renovate can't date (`pin`,
-  `replacement`, `rollback`) never clear the cooldown: their PRs open with a
-  permanently pending stability status (not a required check) and merge only
-  through normal review.
+  `replacement`, `rollback`) never clear the cooldown: they stay parked on the
+  Dependency Dashboard as pending, and open a PR only when forced from there.
 
 ### Lifecycle-script allowlist
 
