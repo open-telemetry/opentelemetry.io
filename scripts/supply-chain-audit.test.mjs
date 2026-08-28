@@ -53,13 +53,17 @@ const packageIocs = new Set([
 ]);
 
 // A workspace member appears in the lock as a directory entry plus a
-// node_modules/ symlink, neither a registry artifact. Only declared
-// members are excluded (an undeclared directory entry, e.g. a file:
-// dependency, still fails the registry check), and the workspaces test
-// below pins the member list.
+// node_modules/ symlink, neither a registry artifact. Excluded from the
+// per-package checks: the directory entries of declared members, and
+// symlinks resolving to them (an undeclared directory entry, e.g. a
+// file: dependency, still fails the registry check). The workspaces
+// test below pins the member list.
+const workspaceDirs = manifest.workspaces ?? [];
 const lockEntries = Object.entries(lock.packages).filter(
   ([key, pkg]) =>
-    key !== '' && !(manifest.workspaces ?? []).includes(key) && !pkg.link,
+    key !== '' &&
+    !workspaceDirs.includes(key) &&
+    !(pkg.link && workspaceDirs.includes(pkg.resolved)),
 );
 
 // The runtime helper exports the unsafe-installer-control names; its
@@ -198,7 +202,7 @@ test('.npmrc carries exactly the reviewed npm settings', () => {
   );
 });
 
-test('workspaces: the reviewed member set, no shadow project config', () => {
+test('workspaces: the reviewed member set, no shadow config or scripts', () => {
   // npm resolves config and the lock at the workspace root, so a member
   // carrying its own .npmrc or lock would be dead weight that reads as a
   // control; and a new member widens the audited install surface, so the
@@ -215,6 +219,19 @@ test('workspaces: the reviewed member set, no shadow project config', () => {
         `${dir} defers ${shadow} to the workspace root`,
       );
     }
+    // npm runs a member's install-lifecycle scripts as project code, not
+    // as dependency scripts, so allowScripts and strict-allow-scripts
+    // never gate them; keep that surface empty.
+    const memberScripts = Object.keys(
+      JSON.parse(readText(`${dir}/package.json`)).scripts ?? {},
+    );
+    assert.deepEqual(
+      memberScripts.filter((name) =>
+        /^(pre|post)?(install|prepare|prepublish|pack)/.test(name),
+      ),
+      [],
+      `${dir} carries no install-lifecycle scripts`,
+    );
   }
 });
 

@@ -198,9 +198,9 @@ Out of the audit's scope:
 
 Version resolution ignores releases younger than the configured minimum age.
 
-- **Enforcement**: `min-release-age` in [`.npmrc`][]. Subprojects are npm
-  workspaces rather than separate lock homes, so the root `.npmrc` and lock
-  govern their resolution too.
+- **Enforcement**: `min-release-age` in [`.npmrc`][]. The
+  `scripts/generate-community-data` subproject is an npm workspace rather than a
+  separate lock home, so the root `.npmrc` and lock govern its resolution too.
 - **Scope**:
   - Only resolving operations are affected; lock-exact installs (`npm ci`) don't
     resolve versions.
