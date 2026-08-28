@@ -3,7 +3,6 @@ title: Dependency management
 description: >-
   How the site installs, verifies, and updates its npm dependencies
 weight: 5
-cSpell:ignore: ETARGET
 ---
 
 npm dependencies are pinned by the committed `package-lock.json`, and installs
