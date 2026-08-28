@@ -217,10 +217,16 @@ test('workspaces: the reviewed member set, no shadow config or scripts', () => {
   // npm resolves config and the lock at the workspace root, so a member
   // carrying its own .npmrc or lock would be dead weight that reads as a
   // control; and a new member widens the audited install surface, so the
-  // list itself is pinned.
+  // list itself is pinned. Names are org-scoped: an unscoped name in a
+  // public manifest is claimable on the registry by anyone (private:true
+  // only stops publishing from here), while @opentelemetry publishes
+  // only for the org.
+  const reviewedWorkspaces = {
+    'scripts/generate-community-data': '@opentelemetry/generate-community-data',
+  };
   assert.deepEqual(
     manifest.workspaces,
-    ['scripts/generate-community-data'],
+    Object.keys(reviewedWorkspaces),
     'the workspace list matches the reviewed set',
   );
   for (const dir of manifest.workspaces) {
@@ -248,8 +254,8 @@ test('workspaces: the reviewed member set, no shadow config or scripts', () => {
     // and the lock filter above trusts only this link key.
     assert.equal(
       member.name,
-      path.basename(dir),
-      `${dir} keeps the package name its directory and workflow selector use`,
+      reviewedWorkspaces[dir],
+      `${dir} keeps the reviewed package name its workflow selector uses`,
     );
     assert.deepEqual(
       lock.packages[dir]?.name ?? member.name,

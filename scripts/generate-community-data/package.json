@@ -1,5 +1,5 @@
 {
-  "name": "generate-community-data",
+  "name": "@opentelemetry/generate-community-data",
   "private": true,
   "type": "module",
   "dependencies": {
