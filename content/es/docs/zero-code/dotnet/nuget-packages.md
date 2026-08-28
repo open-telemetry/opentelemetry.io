@@ -3,6 +3,7 @@ title: Uso de los paquetes NuGet OpenTelemetry.AutoInstrumentation
 linkTitle: Paquetes NuGet
 weight: 40
 default_lang_commit: d1ef521ee4a777881fb99c3ec2b506e068cdec4c
+drifted_from_default: true
 cSpell:ignore: buildtasks
 ---
 

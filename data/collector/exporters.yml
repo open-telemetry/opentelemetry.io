@@ -255,9 +255,9 @@
     - contrib
     - k8s
   stability:
+    metrics: alpha
     logs: beta
     traces: beta
-    metrics: development
 - name: logicmonitorexporter
   display_name: LogicMonitor Exporter
   repo: contrib
@@ -280,7 +280,7 @@
   distributions:
     - contrib
   stability:
-    logs: beta
+    logs: deprecated
 - name: nopexporter
   display_name: No-op Exporter
   repo: core

@@ -2,6 +2,7 @@
 title: クイックスタート
 description: コレクターのセットアップとテレメトリーの収集をすぐに始めてみましょう！
 default_lang_commit: 813498074d85258c7180d137ace9e272d0149353
+drifted_from_default: true
 ---
 
 <!-- markdownlint-disable ol-prefix blanks-around-fences -->
