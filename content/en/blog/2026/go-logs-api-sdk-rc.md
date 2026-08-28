@@ -123,13 +123,16 @@ the way.
 
 [api-design]:
   https://github.com/open-telemetry/opentelemetry-go/blob/73b17d449376ccd8420f84fc8d5d4435ad44e0d6/log/DESIGN.md
-[api-alpha]: https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.24.0
+[api-alpha]:
+  https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.24.0
 [api-prototype]: https://github.com/open-telemetry/opentelemetry-go/pull/4725
 [batch-redesign]: https://github.com/open-telemetry/opentelemetry-go/pull/8620
-[beta-release]: https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.27.0
+[beta-release]:
+  https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.27.0
 [new-issue]:
   https://github.com/open-telemetry/opentelemetry-go/issues/new/choose
-[rc-release]: https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.47.0-rc.1
+[rc-release]:
+  https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.47.0-rc.1
 [sdk-design]:
   https://github.com/open-telemetry/opentelemetry-go/blob/73b17d449376ccd8420f84fc8d5d4435ad44e0d6/sdk/log/DESIGN.md
 [sdk-alpha]: https://github.com/open-telemetry/opentelemetry-go/pull/5260
