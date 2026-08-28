@@ -75,11 +75,11 @@ Two years of work on interoperability are paying off. At the same time, since
 the single largest group of responses sits at "Neither easy nor difficult",
 there is still a lot of work to be done in this area.
 
-_*Note*: The 2024 survey didn't ask respondents whether they worked for an
+_**Note**: The 2024 survey didn't ask respondents whether they worked for an
 observability vendor, so this is not an exact apples-to-apples population match.
 However, putting vendor employees back into the 2026 sample (N=108) would barely
 change the result for the ease of use rating (0%, 10%, 40%, 33%, 17% → 0%, 10%,
-41%, 33%, 16%). To keep this year’s results consistent, we decided to stick with
+41%, 33%, 16%). To keep this year's results consistent, we decided to stick with
 filtering vendor employees out._
 
 ## Infrastructure metrics
@@ -87,7 +87,7 @@ filtering vendor employees out._
 _How do you instrument infrastructure metrics collection?_
 
 Prometheus exporters are the most common single instrumentation method for
-infrastructure metrics but OTel receivers are close behind. Built-in /metrics
+infrastructure metrics but OTel receivers are close behind. Built-in `/metrics`
 endpoint, built-in OTLP push, and OpenTelemetry eBPF instrumentation (OBI)
 follow.
 
@@ -96,21 +96,20 @@ either/or. Nearly half of respondents are mixing Prometheus and OTel
 instrumentation styles at once for infrastructure metrics, rather than doing a
 full migration. Only Prometheus style is twice as popular as only OTel style.
 
-_*Note*: Instrumentation style describes whether a respondent uses methods
+_**Note**: Instrumentation style describes whether a respondent uses methods
 native to one project only, or a mix of both. OTel-style includes using OTel
 receivers, Built-in OTLP push, or OpenTelemetry eBPF Instrumentation (OBI).
-Prometheus-style includes Prometheus exporters or Built-in /metrics endpoint (no
-exporter). The 4 "Other" responses are write-ins: Zabbix, Heorku Telemetry
+Prometheus-style includes Prometheus exporters or Built-in `/metrics` endpoint
+(no exporter). The 4 "Other" responses are write-ins: Zabbix, Heorku Telemetry
 (likely "Heroku Telemetry"), textfile collector, Telegraf. All 4 respondents
 also selected a real Prometheus/OTel method alongside their write-in — but in
-the style table below, a write-in places a respondent in "Other" regardless of
+the style chart below, a write-in places a respondent in "Other" regardless of
 what else they selected._
 
-<!-- TODO: link the ongoing discussion in the sentence below (URL missing) -->
-
-_*Work in progress*: The Prometheus and OTel communities are working on making
+_**Work in progress**: The Prometheus and OTel communities are working on making
 Prometheus exporters run as an OTel Collector distribution. The conversations
-are still ongoing. The discussion is open in this issue._
+are still ongoing. The discussion is open in
+[this issue](https://github.com/open-telemetry/opentelemetry-collector-releases/issues/1618)._
 
 ## Application metrics
 
@@ -127,9 +126,9 @@ third mix styles.
 <!-- prettier-ignore-start -->
 <!-- Keeps the respondent's original "OTEl" spelling in the quote below. -->
 
-_*Note*: In application instrumentation, OTel-style includes using OTel SDKs or
+_**Note**: In application instrumentation, OTel-style includes using OTel SDKs or
 OpenTelemetry eBPF Instrumentation (OBI). Prometheus-style includes Prometheus
-SDKs. Again, there are 4 write-ins that we categorized as “Other”: already built
+SDKs. Again, there are 4 write-ins that we categorized as "Other": already built
 exporters, Micrometer, textfile collector, jvm-exporter. 3 of the 4 also
 selected a real Prometheus/OTel method. One respondent's original write-ins,
 "Self instrumentation" and "manual instrumentation for OTEl," were recoded to
@@ -212,7 +211,7 @@ Our hypothesis is that mid-size organizations — big enough to have a dedicated
 platform effort, small enough to move without a multi-year migration plan —
 might be pushing furthest into newer OTel-native tooling.
 
-_*Note*: This is an interesting observation and a hypothesis, not a confirmed
+_**Note**: This is an interesting observation and a hypothesis, not a confirmed
 finding: with 10–34 respondents per band, none of these gaps is big enough for a
 survey this size to confirm._
 
@@ -234,6 +233,23 @@ teams instrumenting their own service generally don't.
 | Platform Engineering | 69%                              | 31%               | 0%                             |
 | SRE                  | 69%                              | 31%               | 0%                             |
 
-_*Note*: Sysadmin (N=6) and Operations (N=2) respondents are excluded from this
-table — both groups are too small to interpret — leaving N=73 of the 81
+_**Note**: Sysadmin (N=6) and Operations (N=2) respondents are excluded from
+this table — both groups are too small to interpret — leaving N=73 of the 81
 respondents._
+
+## Get involved
+
+The numbers in this post show real progress: interoperability between
+OpenTelemetry and Prometheus is measurably easier than it was two years ago, and
+far fewer people now find the two hard to use together. But the single largest
+group of respondents still sits in the middle of the scale, and the open-ended
+answers point at concrete gaps — data model differences, resource attributes and
+metadata, naming and formatting friction. There is still a lot of work to do, on
+both the OpenTelemetry and the Prometheus side.
+
+Everyone is welcome to contribute. Whether you want to help shape the
+specification, work on the Collector, or simply share how this works in your own
+setup, the discussion happens in the
+[#otel-prometheus](https://cloud-native.slack.com/archives/C01LSCJBXDZ) channel
+in the CNCF Slack. Come tell us where interoperability still hurts — surveys
+like this one only capture part of the picture.
