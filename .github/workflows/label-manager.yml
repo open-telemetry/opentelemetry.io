@@ -3,12 +3,12 @@
 name: Label manager
 
 on:
-  pull_request_target:
+  pull_request_target: # zizmor: ignore[dangerous-triggers] Runs pinned actions against base-branch files without executing PR code.
     types:
       - opened
       - reopened
       - synchronize
-  workflow_run:
+  workflow_run: # zizmor: ignore[dangerous-triggers] Consumes only a validated numeric PR artifact from the unprivileged workflow.
     workflows:
       - PR review trigger
     types:
@@ -17,6 +17,16 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  # Include the event name so a review-triggered workflow_run run never
+  # cancels an in-flight pull_request_target run (whose component-label pass
+  # would not be re-run by the canceling run).
+  group:
+    ${{ github.workflow }}-${{ github.event_name }}-${{
+    github.event.pull_request.number ||
+    github.event.workflow_run.pull_requests[0].number || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   add-component-labels:
     name: Add component labels
@@ -24,31 +34,25 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: write
+      pull-requests: write # Apply component labels to the PR.
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { persist-credentials: false }
-      - uses: actions/labeler@b8dd2d9be0f68b860e7dae5dae7d772984eacd6d # v6.2.0
+      - uses: actions/labeler@bf12e9b00b37c5c0ca2b87b79b2daf7891dbda13 # v7.0.0
         with:
           configuration-path: '.github/component-label-map.yml'
 
   update-approval-labels:
     name: Update approval labels
     runs-on: ubuntu-latest
-    concurrency:
-      group:
-        pr-approval-${{ github.event.pull_request.number ||
-        github.event.workflow_run.pull_requests[0].number || github.run_id }}
-      cancel-in-progress: true
     if: >-
       github.repository_owner == 'open-telemetry' && (github.event_name !=
       'workflow_run' || github.event.workflow_run.conclusion == 'success')
     permissions:
-      actions: read
+      actions: read # Download the triggering review workflow's PR-number artifact.
       contents: read
-      pull-requests: write
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
           ref: ${{ github.event.pull_request.base.sha || github.sha }}
@@ -91,6 +95,9 @@ jobs:
         with:
           client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-contents: read
+          permission-members: read
+          permission-pull-requests: write
 
       - name: Update approval labels
         continue-on-error: true

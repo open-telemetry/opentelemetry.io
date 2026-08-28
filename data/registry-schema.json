@@ -31,15 +31,15 @@
         "provider",
         "receiver",
         "resource-detector",
+        "sampler",
         "sdk",
         "semantic-convention",
-        "sampler",
         "utilities"
       ]
     },
     "language": {
       "type": "string",
-      "description": "The programming language of the entry",
+      "description": "The programming language of the entry; use js for TypeScript projects",
       "enum": [
         "android",
         "collector",

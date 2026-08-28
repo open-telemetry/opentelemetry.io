@@ -164,7 +164,7 @@ my (@g_totals, @s_totals, @p_totals, @g_counts, @s_counts, @p_counts, @builds);
 
 for my $i (1 .. $runs) {
     print "Run $i/$runs...\n";
-    my $output = `npx hugo --cleanDestinationDir --templateMetrics 2>&1`;
+    my $output = `npm exec --no -- hugo --cleanDestinationDir --templateMetrics 2>&1`;
 
     my %metrics;
     for my $line (split /\n/, $output) {

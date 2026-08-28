@@ -1,5 +1,5 @@
 # cSpell:ignore: thoughtbot
-title: RubyLLM Instrumentation
+title: opentelemetry-instrumentation-ruby_llm
 registryType: instrumentation
 language: ruby
 tags:
@@ -8,12 +8,13 @@ tags:
   - GenAI
   - LLM
 license: MIT
-description: RubyLLM instrumentation for Ruby.
+description: Adds OpenTelemetry tracing to RubyLLM chat operations
 authors:
   - name: thoughtbot
     url: https://github.com/thoughtbot
 urls:
   repo: https://github.com/thoughtbot/opentelemetry-instrumentation-ruby_llm
+  website: https://github.com/thoughtbot/opentelemetry-instrumentation-ruby_llm
 createdAt: 2026-02-07
 package:
   registry: gems

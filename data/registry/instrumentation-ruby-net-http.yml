@@ -1,15 +1,17 @@
-title: Net::HTTP Instrumentation
+title: opentelemetry-instrumentation-net_http
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
-license: Apache 2.0
-description: Net::HTTP instrumentation for Ruby.
+license: Apache-2.0
+description: Net::HTTP instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/net_http
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-net_http/v0.29.0/instrumentation/net_http
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-net_http/0.29.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems
