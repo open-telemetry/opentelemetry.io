@@ -1,7 +1,7 @@
 // Committed supply-chain audit: proves, from the committed manifests, lock,
 // .npmrc, and netlify.toml alone, that the install-hardening invariants
 // still hold, so integrity claims regenerate from this test instead of ad
-// hoc audit runs. Fast and offline. The audited controls:
+// hoc audit runs. The audited controls:
 // https://opentelemetry.io/site/design/supply-chain-security/
 // Out of scope: the Docsy theme-deps install (themes/docsy runs under its
 // own project config and audits itself upstream), and the build-side
@@ -62,8 +62,8 @@ const lockEntries = Object.entries(lock.packages).filter(
   ([key, pkg]) => key !== '' && !workspaceDirs.has(key) && !pkg.link,
 );
 
-// One home for the unsafe-installer-control names: the runtime helper
-// exports the list; its unit test pins the content literally.
+// The runtime helper exports the unsafe-installer-control names; its
+// unit test pins the content literally.
 const unsafeHugoEnv = new Set(UNSAFE_HUGO_ENV);
 const envLeavesInstallConfigUntouched = (key) => {
   const normalized = key.toUpperCase();
@@ -76,9 +76,6 @@ const envLeavesInstallConfigUntouched = (key) => {
 };
 
 test('lock: every package is registry+integrity or an allowlisted git pin', () => {
-  // Entries outside node_modules/ (workspaces) or with link/file targets
-  // would land in the registry branch and fail closed: adding one is a
-  // deliberate audit extension, not a bug.
   let registryPackages = 0;
   for (const [key, pkg] of lockEntries) {
     if (key in gitDependencyRepos) {
@@ -177,14 +174,6 @@ test('lock and manifest: install scripts stay inventoried in allowScripts', () =
   );
 });
 
-// The reviewed npm control set: one home for the literal; the root test
-// pins it, the nested test pins parity with the root.
-const reviewedNpmSettings = [
-  'engine-strict=true',
-  'min-release-age=7',
-  'strict-allow-scripts=true',
-];
-
 function npmrcSettings(path) {
   return readText(path)
     .split('\n')
@@ -204,7 +193,7 @@ test('.npmrc carries exactly the reviewed npm settings', () => {
   // https://opentelemetry.io/site/build/dependencies/#controls
   assert.deepEqual(
     npmrcSettings('.npmrc'),
-    reviewedNpmSettings,
+    ['engine-strict=true', 'min-release-age=7', 'strict-allow-scripts=true'],
     'the npm settings match the reviewed set',
   );
 });
