@@ -63,7 +63,6 @@ These are the members of [@open-telemetry/docs-maintainers][] (members-only):
 - [Jay DeLuca](https://github.com/jaydeluca), Grafana Labs
 - [Marylia Gutierrez](https://github.com/maryliag), Grafana Labs
 - [Patrice Chalin](https://github.com/chalin), CNCF
-- [Phillip Carter](https://github.com/cartermp), Salesforce
 - [Severin Neumann](https://github.com/svrnm), Bronto
 - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
 - [Vitor Vasconcellos](https://github.com/vitorvasc)
@@ -96,6 +95,7 @@ For more information about the triager role, see the
 
 - [Austin Parker](https://github.com/austinlparker), Maintainer
 - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Maintainer
+- [Phillip Carter](https://github.com/cartermp), Maintainer
 - [jparsana](https://github.com/jparsana), Maintainer
 - [Kazunori Otani](https://github.com/katzchang), Triager
 - [Masaki Sugimoto](https://github.com/Msksgm), Triager
