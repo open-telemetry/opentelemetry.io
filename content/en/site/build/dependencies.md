@@ -147,8 +147,8 @@ setting stays on. The two paths meet the [release cooldown](#release-cooldown)
 differently:
 
 - Dependabot security updates deliberately override every release-age gate
-  (`.npmrc` included) so that a fix ships now: a fix version younger than the
-  cooldown can land, and vetting it is the reviewing maintainer's job.
+  (`.npmrc` included): a fix version younger than the cooldown can land, and
+  vetting it is the reviewing maintainer's job.
 - Renovate's PR is subject to the `.npmrc` gate when it regenerates the lock, so
   a younger-than-cooldown fix arrives as a failed artifact update; adopting it
   early takes the [scoped exemption](#updating) run by a maintainer.

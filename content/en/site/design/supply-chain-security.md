@@ -64,8 +64,8 @@ closing table maps decisions to their enforcement.
     deliberate resolution ignores releases younger than a [cooldown
     period][cooldown]; registry-side takedowns of malicious releases need a few
     days to land. One exception, by design: [Dependabot security
-    updates][security updates] override the cooldown so a known-vulnerability
-    fix ships without waiting out the window.
+    updates][security updates] override the cooldown to ship known-vulnerability
+    fixes immediately.
 - _A package's install-time scripts run attacker code on contributor hosts and
   build machines: the worm's payload path._
   - **Run only reviewed lifecycle scripts**: <a id="scripts"></a> [lifecycle

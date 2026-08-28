@@ -223,8 +223,9 @@ test('nested lock home mirrors the root npm controls', () => {
 });
 
 test('manifest: engines floor stays at or above the reviewed minimums', () => {
-  // The npm floor is the oldest version whose allowScripts and
-  // strict-allow-scripts enforcement is trusted; the floor only rises:
+  // The npm floor is the oldest version trusted to enforce the controls
+  // (strict allowScripts; min-release-age-exclude support); the floor
+  // only rises:
   // https://opentelemetry.io/site/build/dependencies/#npm-version-floor
   const { engines } = manifest;
   const npmFloor = engines.npm.match(/^>=(\d+)\.(\d+)\.(\d+)$/);
