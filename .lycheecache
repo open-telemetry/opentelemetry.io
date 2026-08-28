@@ -3202,7 +3202,10 @@ https://github.com/open-telemetry/opentelemetry-go/pull/8879,200,1787828487
 https://github.com/open-telemetry/opentelemetry-go/pull/8884,200,1787833023
 https://github.com/open-telemetry/opentelemetry-go/releases,200,1787818849
 https://github.com/open-telemetry/opentelemetry-go/releases/latest,200,1787118346
+https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.24.0,200,1787929528
+https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.27.0,200,1787929528
 https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.36.0,200,1787118344
+https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.47.0-rc.1,200,1787929528
 https://github.com/open-telemetry/opentelemetry-go/tree/3264bf171b1e6cd70f6be4a483f2bcb84eda6ccf/semconv?from_branch=main,200,1787118354
 https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/otlp,200,1787032519
 https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus,200,1787818838
