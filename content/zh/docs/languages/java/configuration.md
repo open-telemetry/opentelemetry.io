@@ -21,7 +21,7 @@ cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKC
 [零代码 SDK 自动配置](#zero-code-sdk-autoconfigure)模块通过系统属性或环境变量来配置 SDK 组件，
 同时针对属性配置不足以满足需求的情况提供了多种扩展点。
 
-> [!NOTE]
+> [!NOTE] **说明**
 >
 > - 我们推荐使用[零代码 SDK 自动配置](#zero-code-sdk-autoconfigure)模块，因为它减少了样板代码，允许无需重写代码或重新编译应用程序即可重新配置，并且具有语言互操作性。
 > - [Java 代理](/docs/zero-code/java/agent/)和
@@ -72,7 +72,7 @@ public class AutoConfiguredSdk {
 ```
 <!-- prettier-ignore-end -->
 
-> [!NOTE]
+> [!NOTE] **说明**
 >
 > - [Java 代理](/docs/zero-code/java/agent/)和
 >   [Spring 启动器](/docs/zero-code/java/spring-boot-starter/)会使用零代码
