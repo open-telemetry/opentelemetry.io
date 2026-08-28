@@ -5478,6 +5478,7 @@ https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#Sampler,200,1787818843
 https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TraceIDRatioBased,200,1787916629
 https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#WithSampler,200,1787916629
 https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.38.0,200,1787916609
+https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.43.0,200,1787941086
 https://pkg.go.dev/google.golang.org/grpc,200,1787916847
 https://pkg.go.dev/google.golang.org/grpc/credentials#PerRPCCredentials,200,1787916608
 https://pkg.go.dev/google.golang.org/grpc/internal/status#Status.WithDetails,200,1787916994
