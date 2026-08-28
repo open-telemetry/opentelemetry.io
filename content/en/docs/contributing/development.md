@@ -88,8 +88,9 @@ Your development environment will be initialized via the
     ```
 
     Both installs use the dependency versions pinned in the committed
-    `package-lock.json`, and any lifecycle script that runs is subject to the
-    reviewed allowlist. Related: [updating dependencies][dep-updates].
+    `package-lock.json`, and any dependency lifecycle script that runs is
+    subject to the reviewed allowlist. Related: [updating
+    dependencies][dep-updates].
 
 Launch your favorite IDE. {{% param what-next %}}
 

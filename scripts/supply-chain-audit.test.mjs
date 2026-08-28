@@ -55,15 +55,26 @@ const packageIocs = new Set([
 // A workspace member appears in the lock as a directory entry plus a
 // node_modules/ symlink, neither a registry artifact. Excluded from the
 // per-package checks: the directory entries of declared members, and
-// symlinks resolving to them (an undeclared directory entry, e.g. a
-// file: dependency, still fails the registry check). The workspaces
-// test below pins the member list.
+// each member's one canonical node_modules/NAME link (any other link --
+// an alias key, a file: dependency -- still fails the registry check).
+// The workspaces test below pins the member list and binds each
+// directory to its package name.
 const workspaceDirs = manifest.workspaces ?? [];
+const workspaceNameByDir = Object.fromEntries(
+  workspaceDirs.map((dir) => [
+    dir,
+    JSON.parse(readText(`${dir}/package.json`)).name,
+  ]),
+);
 const lockEntries = Object.entries(lock.packages).filter(
   ([key, pkg]) =>
     key !== '' &&
     !workspaceDirs.includes(key) &&
-    !(pkg.link && workspaceDirs.includes(pkg.resolved)),
+    !(
+      pkg.link &&
+      workspaceDirs.includes(pkg.resolved) &&
+      key === `node_modules/${workspaceNameByDir[pkg.resolved]}`
+    ),
 );
 
 // The runtime helper exports the unsafe-installer-control names; its
@@ -220,16 +231,81 @@ test('workspaces: the reviewed member set, no shadow config or scripts', () => {
       );
     }
     // npm runs a member's install-lifecycle scripts as project code, not
-    // as dependency scripts, so allowScripts and strict-allow-scripts
-    // never gate them. Nothing invokes member scripts (installs run root
-    // scripts; the workflow calls node directly), so pin the whole
-    // surface empty rather than screening lifecycle names.
+    // as dependency scripts, and links a member's bin entries onto the
+    // PATH every npm-run script uses, so allowScripts and
+    // strict-allow-scripts never gate either surface. Nothing invokes
+    // member scripts or bins (installs run root scripts; the workflow
+    // calls node directly), so pin the whole manifest key set rather
+    // than screening lifecycle names or bin spellings.
+    const member = JSON.parse(readText(`${dir}/package.json`));
     assert.deepEqual(
-      JSON.parse(readText(`${dir}/package.json`)).scripts ?? {},
-      {},
-      `${dir} carries no scripts`,
+      Object.keys(member).sort(),
+      ['dependencies', 'name', 'private', 'type'],
+      `${dir} carries exactly the reviewed manifest keys`,
+    );
+    // Bind directory, package name, and the canonical lock link to one
+    // identity: the scheduled workflow selects the member by this name,
+    // and the lock filter above trusts only this link key.
+    assert.equal(
+      member.name,
+      path.basename(dir),
+      `${dir} keeps the package name its directory and workflow selector use`,
+    );
+    assert.deepEqual(
+      lock.packages[dir]?.name ?? member.name,
+      member.name,
+      `the lock's ${dir} entry carries the member name`,
+    );
+    assert.deepEqual(
+      lock.packages[`node_modules/${member.name}`],
+      { resolved: dir, link: true },
+      `the lock links node_modules/${member.name} to ${dir} and nothing else`,
+    );
+    // The member has no synthesized install step either.
+    assert.ok(
+      !fs.existsSync(path.join(repoRoot, dir, 'binding.gyp')),
+      `${dir} has no binding.gyp (would synthesize node-gyp rebuild)`,
     );
   }
+});
+
+test('lock: no package provides a bin that shadows a trusted command', () => {
+  // npm links every package's bin entries into node_modules/.bin --
+  // --ignore-scripts does not suppress linking -- and npm-run scripts
+  // put that directory first on PATH. A bin named after a command the
+  // install and build chain trusts (node, npm, git, a shell) would
+  // hijack every later script step, so reserve those names outright.
+  const reservedBins = new Set([
+    'node',
+    'npm',
+    'npx',
+    'corepack',
+    'yarn',
+    'pnpm',
+    'git',
+    'bash',
+    'sh',
+    'perl',
+  ]);
+  let binNames = 0;
+  for (const [key, pkg] of Object.entries(lock.packages)) {
+    if (key === '' || pkg.bin === undefined) continue;
+    const keyName = key.slice(
+      key.lastIndexOf('node_modules/') + 'node_modules/'.length,
+    );
+    const names =
+      typeof pkg.bin === 'string'
+        ? [pkg.name ?? keyName.split('/').pop()]
+        : Object.keys(pkg.bin);
+    for (const name of names) {
+      binNames += 1;
+      assert.ok(
+        !reservedBins.has(name),
+        `${key} bin ${name} leaves trusted command names unshadowed`,
+      );
+    }
+  }
+  assert.ok(binNames > 0, 'lock bin entries were audited');
 });
 
 test("the lock root carries the manifest's engines", () => {
@@ -255,7 +331,21 @@ test('manifest: engines floor stays at or above the reviewed minimums', () => {
     major > 11 || (major === 11 && minor >= 18),
     'engines.npm floor is at least 11.18 (allowScripts enforcement, min-release-age-exclude)',
   );
-  assert.match(engines.node, /^>=\d+$/, 'engines.node is a major floor');
+  const nodeFloor = engines.node.match(/^>=(\d+)$/);
+  assert.ok(nodeFloor, 'engines.node is a major floor');
+  assert.ok(
+    Number(nodeFloor[1]) >= 24,
+    'engines.node floor is at least the reviewed major 24',
+  );
+  // The .nvmrc pin is what keeps the npm floor satisfied in practice
+  // (setup-node and nvm read it; its bundled npm is the active npm):
+  // pin the shape exact-semver and its major inside the engines floor.
+  const nvmrc = readText('.nvmrc').trim();
+  assert.match(nvmrc, /^\d+\.\d+\.\d+$/, '.nvmrc is an exact semver pin');
+  assert.ok(
+    Number(nvmrc.split('.')[0]) >= Number(nodeFloor[1]),
+    '.nvmrc pins a Node version inside the engines.node floor',
+  );
   // npm skips the root engines check entirely when devEngines is present
   // (@npmcli/arborist build-ideal-tree.js), so its absence is part of the
   // floor.
@@ -302,9 +392,14 @@ test('manifest: every dependency resolves through the npm registry', () => {
     ...Object.entries(devDependencies),
     ...Object.entries(optionalDependencies),
   ]) {
-    assert.doesNotMatch(
+    // Allow only registry version/range/tag spellings: a spec carrying a
+    // scheme or path (github:, git+, file:, link:, workspace:, an https
+    // tarball, ./dir) resolves outside the registry, and a file: alias
+    // for a workspace directory would otherwise ride the lock filter's
+    // workspace exclusion.
+    assert.match(
       spec,
-      /^(github:|git\+|git:)/,
+      /^[~^]?\d|^[\d*x]|^latest$|^next$/,
       `${name} resolves through the npm registry`,
     );
   }
@@ -370,10 +465,29 @@ test('manifest: the install path keeps its locked, script-free form', () => {
   for (const [name, pin] of Object.entries(pins)) {
     assert.equal(scripts[name], pin, `${name} keeps its reviewed form`);
   }
-  // Root lifecycle hooks run on local `npm install`, a documented install
-  // path: postinstall is pinned above; the rest stay absent.
-  assert.equal(scripts.preinstall, undefined, 'preinstall stays absent');
-  assert.equal(scripts.install, undefined, 'install stays absent');
+  // Root lifecycle entries run on local `npm install`, a documented
+  // install path, and strict-allow-scripts gates dependency scripts
+  // only, never the root project's. Enumerate npm's full install-time
+  // root surface explicitly -- including the standalone entries that no
+  // pre/post pairing reveals (prepublish runs on install; `dependencies`
+  // runs after node_modules changes) -- and sanction only prepare and
+  // postinstall, both pinned above.
+  for (const lifecycle of [
+    'preinstall',
+    'install',
+    'prepublish',
+    'preprepare',
+    'postprepare',
+    'dependencies',
+  ]) {
+    assert.equal(scripts[lifecycle], undefined, `${lifecycle} stays absent`);
+  }
+  // With no explicit install script, a root binding.gyp makes npm
+  // synthesize `node-gyp rebuild` as the install script.
+  assert.ok(
+    !fs.existsSync(path.join(repoRoot, 'binding.gyp')),
+    'no root binding.gyp (would synthesize node-gyp rebuild)',
+  );
   // npm wraps every script in implicit pre<name>/post<name> hooks; a hook
   // pair is unreviewed code riding a trusted name's execution path, so
   // none are sanctioned: a gating step belongs inline in the base script,
@@ -454,17 +568,17 @@ test('netlify.toml: auto-install stays inert and build commands stay pinned', ()
     '--dry-run --ignore-scripts',
     'NPM_FLAGS constrains the Netlify auto-install to resolution only',
   );
-  // NPM_VERSION is what satisfies the engines floor on Netlify; keep the
-  // two in sync without repinning on routine bumps.
-  const [pinnedMajor, pinnedMinor] =
-    build.environment.NPM_VERSION.split('.').map(Number);
-  const [floorMajor, floorMinor] = manifest.engines.npm
-    .match(/^>=(\d+)\.(\d+)\.(\d+)$/)
-    .slice(1)
-    .map(Number);
-  assert.ok(
-    pinnedMajor > floorMajor ||
-      (pinnedMajor === floorMajor && pinnedMinor >= floorMinor),
-    'NPM_VERSION satisfies the engines.npm floor',
-  );
+  // NPM_VERSION is what satisfies the engines floor on Netlify; compare
+  // all three semver components so a patch-level floor bump can't pass
+  // while npm exits EBADENGINE, and keep the two in sync without
+  // repinning on routine bumps.
+  const semver = (v) =>
+    v
+      .match(/(\d+)\.(\d+)\.(\d+)/)
+      .slice(1, 4)
+      .map(Number);
+  const pinned = semver(build.environment.NPM_VERSION);
+  const floor = semver(manifest.engines.npm);
+  const cmp = pinned.map((n, i) => n - floor[i]).find((d) => d !== 0);
+  assert.ok((cmp ?? 0) >= 0, 'NPM_VERSION satisfies the engines.npm floor');
 });
