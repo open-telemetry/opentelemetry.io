@@ -65,11 +65,12 @@ Your development environment will be initialized via the
     nvm install
     ```
 
-    To [install under Windows][nodejs-win], use [nvm-windows][]. We recommend
-    using `cmd` and not Windows PowerShell for the command below:
+    To [install under Windows][nodejs-win], use [nvm-windows][], which doesn't
+    read `.nvmrc` itself; the following command feeds it the pinned version. We
+    recommend using `cmd` and not Windows PowerShell:
 
     ```cmd
-    nvm install lts && nvm use lts
+    for /f %v in (.nvmrc) do nvm install %v && nvm use %v
     ```
 
 4.  Get npm packages and other prerequisites, using the [lock-exact,
