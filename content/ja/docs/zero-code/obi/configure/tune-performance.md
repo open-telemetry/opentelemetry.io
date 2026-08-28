@@ -4,6 +4,7 @@ linkTitle: パフォーマンスチューニング
 description: eBPF トレーサーコンポーネントが外部プロセスの HTTP および GRPC サービスを計装し、パイプラインの次のステージに転送するトレースを作成する方法を設定します。
 weight: 90
 default_lang_commit: 4c8d57fea0147ce76633951315c40a27c55fad2e
+drifted_from_default: true
 cSpell:ignore: qdisc
 ---
 
