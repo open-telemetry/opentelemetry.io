@@ -527,6 +527,14 @@ maintainers:
       - cpp-maintainers
     html_url: https://github.com/dbarker
     avatar_url: https://avatars.githubusercontent.com/u/3782873?v=4
+  - name: didiViking
+    teams:
+      - docs-approvers
+      - docs-ro-approvers
+      - docs-ro-maintainers
+      - docs-triagers
+    html_url: https://github.com/didiViking
+    avatar_url: https://avatars.githubusercontent.com/u/33810708?v=4
   - name: dmathieu
     teams:
       - collector-approvers
@@ -714,6 +722,12 @@ maintainers:
       - semconv-mainframe-maintainers
     html_url: https://github.com/gshriver
     avatar_url: https://avatars.githubusercontent.com/u/5203552?v=4
+  - name: immavalls
+    teams:
+      - docs-es-approvers
+      - docs-es-maintainers
+    html_url: https://github.com/immavalls
+    avatar_url: https://avatars.githubusercontent.com/u/4788634?v=4
   - name: inge4pres
     teams:
       - zig-approvers
@@ -1793,13 +1807,6 @@ approvers:
       - collector-releases-approvers
     html_url: https://github.com/dehaansa
     avatar_url: https://avatars.githubusercontent.com/u/563558?v=4
-  - name: didiViking
-    teams:
-      - docs-approvers
-      - docs-ro-approvers
-      - docs-triagers
-    html_url: https://github.com/didiViking
-    avatar_url: https://avatars.githubusercontent.com/u/33810708?v=4
   - name: dpauls
     teams:
       - semconv-messaging-approvers
@@ -1864,11 +1871,6 @@ approvers:
       - operator-triagers
     html_url: https://github.com/iblancasa
     avatar_url: https://avatars.githubusercontent.com/u/4806311?v=4
-  - name: immavalls
-    teams:
-      - docs-es-approvers
-    html_url: https://github.com/immavalls
-    avatar_url: https://avatars.githubusercontent.com/u/4788634?v=4
   - name: iNikem
     teams:
       - specs-trace-approvers
