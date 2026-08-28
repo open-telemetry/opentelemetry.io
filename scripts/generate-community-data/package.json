@@ -1,13 +1,7 @@
 {
+  "name": "generate-community-data",
+  "private": true,
   "type": "module",
-  "enginesComment": "Mirrors the root manifest's floors (engine-strict in the local .npmrc has no floor to enforce otherwise); parity is audited",
-  "engines": {
-    "node": ">=24",
-    "npm": ">=11.18.0"
-  },
-  "scripts": {
-    "ci:min": "npm ci --ignore-scripts --omit=optional"
-  },
   "dependencies": {
     "@octokit/rest": "22.0.1",
     "dotenv": "17.4.2",

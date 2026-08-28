@@ -1,5 +1,8 @@
 {
   "name": "opentelemetry.io",
+  "workspaces": [
+    "scripts/generate-community-data"
+  ],
   "scripts": {
     "__check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve",
     "__check:format": "prettier --ignore-unknown",

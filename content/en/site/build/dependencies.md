@@ -108,8 +108,8 @@ the contributor making the change:
 
 No schedule re-resolves the lock wholesale ([resolution is
 deliberate][deliberate]). To refresh transitive dependencies, run the following
-on demand, in each lock home (the repository root and
-`scripts/generate-community-data/`):
+on demand at the repository root (the lock also covers the
+`scripts/generate-community-data` workspace):
 
 ```sh
 npm update --package-lock-only --ignore-scripts
@@ -198,9 +198,9 @@ Out of the audit's scope:
 
 Version resolution ignores releases younger than the configured minimum age.
 
-- **Enforcement**: `min-release-age` in [`.npmrc`][], mirrored in each nested
-  lock home's own `.npmrc` (npm project config doesn't walk up past the nearest
-  `package.json`).
+- **Enforcement**: `min-release-age` in [`.npmrc`][]. Subprojects are npm
+  workspaces rather than separate lock homes, so the root `.npmrc` and lock
+  govern their resolution too.
 - **Scope**:
   - Only resolving operations are affected; lock-exact installs (`npm ci`) don't
     resolve versions.

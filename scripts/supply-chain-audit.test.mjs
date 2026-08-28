@@ -52,7 +52,15 @@ const packageIocs = new Set([
   'ecto@5.0.1',
 ]);
 
-const lockEntries = Object.entries(lock.packages).filter(([key]) => key !== '');
+// Workspace members appear in the lock twice: a directory entry (their
+// manifest mirror) and a node_modules/ symlink; neither names a registry
+// artifact, so both are excluded from the per-package registry checks.
+// The workspace list itself is pinned below, so a new member is a
+// deliberate review event, not a silent exclusion.
+const workspaceDirs = new Set(manifest.workspaces ?? []);
+const lockEntries = Object.entries(lock.packages).filter(
+  ([key, pkg]) => key !== '' && !workspaceDirs.has(key) && !pkg.link,
+);
 
 // One home for the unsafe-installer-control names: the runtime helper
 // exports the list; its unit test pins the content literally.
@@ -201,43 +209,34 @@ test('.npmrc carries exactly the reviewed npm settings', () => {
   );
 });
 
-test('nested lock home mirrors the root npm controls', () => {
-  // npm project config never walks up past the nearest package.json, so
-  // the nested lock home needs its own .npmrc for the controls to reach
-  // resolution and installs run from that directory. Compared against the
-  // root file, not a second literal, so the two can't drift apart silently.
+test('workspaces: the reviewed member set, no shadow project config', () => {
+  // npm resolves config and the lock at the workspace root, so a member
+  // carrying its own .npmrc or lock would be dead weight that reads as a
+  // control; and a new member widens the audited install surface, so the
+  // list itself is pinned.
   assert.deepEqual(
-    npmrcSettings('scripts/generate-community-data/.npmrc'),
-    npmrcSettings('.npmrc'),
-    'the nested npm settings match the root settings',
+    manifest.workspaces,
+    ['scripts/generate-community-data'],
+    'the workspace list matches the reviewed set',
   );
-  // Same walk-up rule for the engines floor: without a local engines
-  // field, engine-strict has no floor to enforce in that directory.
-  assert.deepEqual(
-    JSON.parse(readText('scripts/generate-community-data/package.json'))
-      .engines,
-    manifest.engines,
-    'the nested engines floors match the root floors',
-  );
+  for (const dir of manifest.workspaces) {
+    for (const shadow of ['.npmrc', 'package-lock.json']) {
+      assert.ok(
+        !fs.existsSync(path.join(repoRoot, dir, shadow)),
+        `${dir} defers ${shadow} to the workspace root`,
+      );
+    }
+  }
 });
 
-test("lock roots carry their manifests' engines", () => {
+test("the lock root carries the manifest's engines", () => {
   // The lock captures engines at generation time; a floor raised in the
   // manifest without the reconcile run leaves the lock stale.
-  for (const [lockPath, manifestEngines] of [
-    ['package-lock.json', manifest.engines],
-    [
-      'scripts/generate-community-data/package-lock.json',
-      JSON.parse(readText('scripts/generate-community-data/package.json'))
-        .engines,
-    ],
-  ]) {
-    assert.deepEqual(
-      readJSON(lockPath).packages[''].engines,
-      manifestEngines,
-      `the ${lockPath} root engines match its manifest`,
-    );
-  }
+  assert.deepEqual(
+    lock.packages[''].engines,
+    manifest.engines,
+    'the lock root engines match the manifest',
+  );
 });
 
 test('manifest: engines floor stays at or above the reviewed minimums', () => {

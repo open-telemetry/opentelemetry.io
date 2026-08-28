@@ -57,10 +57,9 @@ closing table maps decisions to their enforcement.
     check-gated (the automerged patch tier trades review for a longer cooldown).
     Renovate's weekly wholesale lock re-resolve ([`lockFileMaintenance`][]) is
     disabled: not for want of a cooldown (the npm-side [cooldown][] reaches that
-    refresh too, wherever a project `.npmrc` governs; Renovate's own age check
-    can't date it), but because a standing tree-wide registry draw buys only
-    routine transitive freshness, while [alert-driven fixes][security updates]
-    cover known vulnerabilities.
+    refresh too; Renovate's own age check can't date it), but because a standing
+    tree-wide registry draw buys only routine transitive freshness, while
+    [alert-driven fixes][security updates] cover known vulnerabilities.
   - **Resolve only cooled-down releases**: <a id="cooldown-releases"></a> even
     deliberate resolution ignores releases younger than a [cooldown
     period][cooldown]; registry-side takedowns of malicious releases need a few

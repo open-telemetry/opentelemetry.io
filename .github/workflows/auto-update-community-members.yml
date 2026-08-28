@@ -33,13 +33,9 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
-          cache-dependency-path: |
-            package-lock.json
-            scripts/generate-community-data/package-lock.json
 
       - name: Install dependencies
-        working-directory: ./scripts/generate-community-data
-        run: npm run ci:min
+        run: npm run ci:min -- --workspace=generate-community-data
 
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
