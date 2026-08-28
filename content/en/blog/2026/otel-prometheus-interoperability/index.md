@@ -3,10 +3,10 @@ title: 'Prometheus and OpenTelemetry interoperability in 2026: Survey results'
 linkTitle: Prometheus and OTel Survey
 date: 2026-08-28
 author: >-
-  [Dhruv Ahuja](https://github.com/dhruv-ahuja), [Andrej
+  [Dhruv Ahuja](https://github.com/dhruv-ahuja) (SigNoz), [Andrej
   Kiripolsky](https://github.com/andrejkiri) (Grafana Labs), [Ana
-  Muenz](https://github.com/TODO), [Arthur Sens](https://github.com/ArthurSens)
-  (Grafana Labs)
+  Muenz](https://github.com/vampirarte), [Arthur
+  Sens](https://github.com/ArthurSens) (Grafana Labs)
 draft: true # TODO: remove this line once the post is ready to be published
 issue: https://github.com/open-telemetry/sig-end-user/issues/280
 sig: End-User SIG
@@ -74,3 +74,24 @@ year picked "Very difficult".
 Two years of work on interoperability are paying off. At the same time, since
 the single largest group of responses sits at "Neither easy nor difficult",
 there is still a lot of work to be done in this area.
+
+_*Note*: The 2024 survey didn't ask respondents whether they worked for an
+observability vendor, so this is not an exact apples-to-apples population match.
+However, putting vendor employees back into the 2026 sample (N=108) would barely
+change the result for the ease of use rating (0%, 10%, 40%, 33%, 17% → 0%, 10%,
+41%, 33%, 16%). To keep this year’s results consistent, we decided to stick with
+filtering vendor employees out._
+
+## Infrastructure metrics
+
+_How do you instrument infrastructure metrics collection?_
+
+Prometheus exporters are the most common single instrumentation method for
+infrastructure metrics but OTel receivers are close behind. Built-in /metrics
+endpoint, built-in OTLP push, and OpenTelemetry eBPF instrumentation (OBI)
+follow.
+
+When looking at how these methods combine, the picture is clearly hybrid, not
+either/or. Nearly half of respondents are mixing Prometheus and OTel
+instrumentation styles at once for infrastructure metrics, rather than doing a
+full migration. Only Prometheus style is twice as popular as only OTel style.
