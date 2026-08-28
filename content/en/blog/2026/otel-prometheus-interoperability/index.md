@@ -211,3 +211,29 @@ smaller band.
 Our hypothesis is that mid-size organizations — big enough to have a dedicated
 platform effort, small enough to move without a multi-year migration plan —
 might be pushing furthest into newer OTel-native tooling.
+
+_*Note*: This is an interesting observation and a hypothesis, not a confirmed
+finding: with 10–34 respondents per band, none of these gaps is big enough for a
+survey this size to confirm._
+
+_Team type tracks backend choice_
+
+Platform Engineering and SRE teams lean heavily toward OSS Prometheus-compatible
+backends (Thanos, Cortex, Mimir), while Dev teams lean the other way, toward
+plain Prometheus.
+
+The dividing line looks like operational ownership rather than preference. Teams
+running metrics for a whole organization eventually outgrow a single Prometheus;
+teams instrumenting their own service generally don't.
+
+| Team type            | OSS Prometheus-compatible (N=30) | Prometheus (N=35) | PromQL-compatible vendor (N=8) |
+| -------------------- | -------------------------------- | ----------------- | ------------------------------ |
+| Dev                  | 24%                              | 71%               | 6%                             |
+| DevOps               | 23%                              | 62%               | 15%                            |
+| Observability        | 29%                              | 41%               | 29%                            |
+| Platform Engineering | 69%                              | 31%               | 0%                             |
+| SRE                  | 69%                              | 31%               | 0%                             |
+
+_*Note*: Sysadmin (N=6) and Operations (N=2) respondents are excluded from this
+table — both groups are too small to interpret — leaving N=73 of the 81
+respondents._
