@@ -7,7 +7,7 @@ aliases:
 cascade:
   vers:
     instrumentation: 2.30.0
-    otel: 1.64.0
+    otel: 1.65.0
     contrib: 1.54.0
 ---
 
