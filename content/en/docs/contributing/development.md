@@ -87,7 +87,7 @@ Your development environment will be initialized via the
 
     Both installs use the dependency versions pinned in the committed
     `package-lock.json`, and any lifecycle script that runs is subject to the
-    reviewed allowlist. Related: [lock-file maintenance][dep-updates].
+    reviewed allowlist. Related: [updating dependencies][dep-updates].
 
 Launch your favorite IDE. {{% param what-next %}}
 
@@ -233,7 +233,7 @@ npm run check:code-excerpts
 
 <!-- prettier-ignore-start -->
 [ci-install]: /site/build/dependencies/#install-contracts
-[dep-updates]: /site/build/dependencies/#lock-file-maintenance
+[dep-updates]: /site/build/dependencies/#updating
 [clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
 [cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers

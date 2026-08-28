@@ -71,15 +71,23 @@ Clear the affected [build cache][] rather than adding the path to `.gitignore`:
 
 ## Updating dependencies {#updating}
 
-### Routine updates
+Routine version bumps arrive as [Renovate][] PRs, gated by the
+[release cooldown](#release-cooldown). The cases below are the manual paths; in
+each, commit the regenerated lock together with any `package.json` change.
 
-`npm run update:packages` bumps `package.json` only. The
-[release cooldown](#release-cooldown) applies to the offered versions. Then
-regenerate the lock and commit both files together:
+### Manifest changes {#manifest-changes}
+
+Whether you edited `package.json` by hand or bumped every in-range version with
+`npm run update:packages` (the [release cooldown](#release-cooldown) applies to
+the versions offered), reconcile the lock with the changed manifest:
 
 ```sh
 npm install --package-lock-only --ignore-scripts
 ```
+
+Unlike `npm update` (below), this rewrites only what the manifest change
+requires, leaving other entries as pinned. A merge conflict on the lock file
+takes the same recipe: keep the `main` version and rerun the command.
 
 ### Script-bearing packages
 
@@ -94,40 +102,39 @@ the contributor making the change:
    in [`.github/renovate.json5`][]: every bump of an approved package needs the
    steps above, so its update PRs must wait for a contributor.
 
-### Lock-file maintenance
+### Transitive refreshes {#transitive-refresh}
 
-- **You changed dependencies**: regenerate the lock as in
-  [routine updates](#routine-updates) and commit it together with
-  `package.json`.
-- **Merge conflict on the lock file**: take the `main` version and rerun the
-  regeneration command.
-- **The lock file changed, but you didn't change dependencies** (a `postinstall`
-  check warns when an install does this): that signals drift; restore the lock
-  and investigate rather than committing the rewrite.
-- **You want to refresh transitive dependencies**: no schedule does this
-  ([resolution is deliberate][deliberate]); refresh on demand, in each lock home
-  (the repository root and `scripts/generate-community-data/`):
+No schedule re-resolves the lock wholesale ([resolution is
+deliberate][deliberate]). To refresh transitive dependencies, run the following
+on demand, in each lock home (the repository root and
+`scripts/generate-community-data/`):
 
-  ```sh
+```sh
+npm update --package-lock-only --ignore-scripts
+```
+
+The [release cooldown](#release-cooldown) applies, with a sharp edge: a
+dependency whose only satisfying versions are younger than the cooldown (an
+exact pin is the common case) fails the whole resolution (`ETARGET`) until one
+ages. When the young release is one you reviewed and vouch for, exempt that name
+alone; the cooldown stays on for the rest of the tree:
+
+```sh
+npm_config_min_release_age_exclude=PACKAGE_NAME \
   npm update --package-lock-only --ignore-scripts
-  ```
+```
 
-  The [release cooldown](#release-cooldown) applies, with a sharp edge: a
-  dependency whose only satisfying versions are younger than the cooldown (an
-  exact pin is the common case) fails the whole resolution (`ETARGET`) until one
-  ages. When the young release is one you reviewed and vouch for, exempt that
-  name alone; the cooldown stays on for the rest of the tree:
+Replace _`PACKAGE_NAME`_ with the vouched-for package. Keep the exemption
+per-invocation; a standing entry in [`.npmrc`][] would permanently waive the
+cooldown for that name. Also review the refreshed lock for major hops:
+`npm update` honors the manifests' declared ranges, and a parent that widens a
+range can pull a new transitive major.
 
-  ```sh
-  npm_config_min_release_age_exclude=PACKAGE_NAME \
-    npm update --package-lock-only --ignore-scripts
-  ```
+### Unexpected lock changes {#lock-drift}
 
-  Replace _`PACKAGE_NAME`_ with the vouched-for package. Keep the exemption
-  per-invocation; a standing entry in [`.npmrc`][] would permanently waive the
-  cooldown for that name. Also review the refreshed lock for major hops:
-  `npm update` honors the manifests' declared ranges, and a parent that widens a
-  range can pull a new transitive major.
+If the lock changed but you didn't change dependencies (a `postinstall` check
+warns when an install does this), that signals drift: restore the lock and
+investigate rather than committing the rewrite.
 
 ### Security updates {#security-updates}
 
@@ -151,7 +158,7 @@ differently:
   vetting it is the reviewing maintainer's job.
 - Renovate's PR is subject to the `.npmrc` gate when it regenerates the lock, so
   a younger-than-cooldown fix arrives as a failed artifact update; adopting it
-  early takes the [scoped exemption](#updating) run by a maintainer.
+  early takes the [scoped exemption](#transitive-refresh) run by a maintainer.
 
 ## Supply-chain controls {#controls}
 
