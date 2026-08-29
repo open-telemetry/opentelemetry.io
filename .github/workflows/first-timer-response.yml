@@ -63,8 +63,9 @@ jobs:
         id: otelbot-token
         if: steps.check-trigger.outputs.match == 'true'
         with:
-          client-id: ${{ vars.OTELBOT_CLIENT_ID }}
-          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+          # The base otelbot App lacks issues permission; use the docs App.
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
           permission-issues: write
           permission-members: read
 
