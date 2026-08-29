@@ -53,23 +53,24 @@ closing table maps decisions to their enforcement.
     rewrite a disagreeing lock; [verification](#verify) catches such rewrites.
   - **Resolve deliberately**: <a id="deliberate"></a> version resolution happens
     only in [deliberate dependency updates][dep-updates], never as an install
-    side effect; bot-driven resolution is confined to update PRs, visible and
-    check-gated (the automerged patch tier trades review for a longer cooldown).
-    Renovate's weekly wholesale lock re-resolve ([`lockFileMaintenance`][]) is
-    disabled: not for want of a cooldown (the npm-side [cooldown][] reaches that
-    refresh too; Renovate's own age check can't date it), but because a standing
-    tree-wide registry draw buys only routine transitive freshness, while
-    [alert-driven fixes][security updates] cover known vulnerabilities.
+    side effect.
+    - Bot-driven resolution is confined to update PRs, visible and check-gated;
+      the automerged patch tier trades review for a longer cooldown.
+    - Renovate's weekly wholesale lock re-resolve ([`lockFileMaintenance`][]) is
+      disabled: not for want of a cooldown (the npm-side [cooldown][] reaches
+      that refresh too; Renovate's own age check can't date it), but because a
+      standing tree-wide registry draw buys only routine transitive freshness,
+      while [alert-driven fixes][security updates] cover known vulnerabilities.
   - **Resolve only cooled-down releases**: <a id="cooldown-releases"></a> even
     deliberate resolution ignores releases younger than a [cooldown
     period][cooldown]; registry-side takedowns of malicious releases need a few
-    days to land. One exception, by design: [Dependabot security
-    updates][security updates] override the cooldown to ship known-vulnerability
-    fixes immediately. The cooldown's scope is registry-resolved packages: the
-    Node toolchain pin follows the [floor policy][npm engines floor] instead,
-    since signed project builds don't share the registry's takedown-lag risk
-    (routine pin bumps still ride Renovate's age gate, as harmless defense in
-    depth).
+    days to land.
+    - One exception, by design: [Dependabot security updates][security updates]
+      override the cooldown to ship known-vulnerability fixes immediately.
+    - The cooldown's scope is registry-resolved packages: the Node toolchain pin
+      follows the [floor policy][npm engines floor] instead, since signed
+      project builds don't share the registry's takedown-lag risk (routine pin
+      bumps still ride Renovate's age gate, as harmless defense in depth).
 - _A package's install-time scripts run attacker code on contributor hosts and
   build machines: the worm's payload path._
   - **Run only reviewed lifecycle scripts**: <a id="scripts"></a> [lifecycle
