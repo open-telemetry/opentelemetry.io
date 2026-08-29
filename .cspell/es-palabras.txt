@@ -11,8 +11,8 @@ autogenerado
 autoinstrumentación
 cardinalidad
 Cíñete
-configurarlas
 configúralo
+configurarlas
 configurarlo
 contrapresión
 correlacionan
@@ -79,9 +79,9 @@ renderizan
 semánticamente
 sobreaprovisionan
 sobreaprovisionarse
-sobrescrituras
 sobrediseñes
 sobrescribirlos
+sobrescrituras
 subcarpeta
 subproyecto
 subregión
