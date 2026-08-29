@@ -3,8 +3,7 @@ title: 配置 SDK
 linkTitle: 配置 SDK
 weight: 13
 aliases: [config]
-default_lang_commit: 83de5de552bc9c05af1f5e8769368b1e49ea45ee
-drifted_from_default: true
+default_lang_commit: 8d6b626b3dd798de9065335d8c4cc0912959c484
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---
@@ -22,14 +21,13 @@ cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKC
 [零代码 SDK 自动配置](#zero-code-sdk-autoconfigure)模块通过系统属性或环境变量来配置 SDK 组件，
 同时针对属性配置不足以满足需求的情况提供了多种扩展点。
 
-{{% alert %}} 我们推荐使用[零代码 SDK 自动配置](#zero-code-sdk-autoconfigure)模块，
-因为它减少了样板代码，允许无需重写代码或重新编译应用程序即可重新配置，
-并且具有语言互操作性。 {{% /alert %}}
-
-{{% alert %}} [Java 代理](/docs/zero-code/java/agent/)和
-[Spring 启动器](/docs/zero-code/java/spring-boot-starter/)会使用零代码 SDK 自动配置模块来自动配置 SDK ，
-并随之安装插桩组件。
-所有自动配置内容都适用于 Java 代理和 Spring 启动器用户。 {{% /alert %}}
+> [!NOTE] **说明**
+>
+> - 我们推荐使用[零代码 SDK 自动配置](#zero-code-sdk-autoconfigure)模块，因为它减少了样板代码，允许无需重写代码或重新编译应用程序即可重新配置，并且具有语言互操作性。
+> - [Java 代理](/docs/zero-code/java/agent/)和
+>   [Spring 启动器](/docs/zero-code/java/spring-boot-starter/)会使用零代码
+>   SDK 自动配置模块来自动配置 SDK，并随之安装插桩组件。所有自动配置内容都适用于
+>   Java 代理和 Spring 启动器用户。
 
 ## 编程式配置 {#programmatic-configuration}
 
@@ -74,19 +72,19 @@ public class AutoConfiguredSdk {
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert %}} [Java 代理](/docs/zero-code/java/agent/)和
-[Spring 启动器](/docs/zero-code/java/spring-boot-starter/)会使用零代码
-SDK 自动配置模块来自动配置 SDK ，并随之安装插桩组件。
-所有自动配置内容都适用于 Java 代理和 Spring 启动器用户。 {{% /alert %}}
-
-{{% alert %}} 自动配置模块注册了 Java 关闭钩子，以在适当的时候关闭 SDK。
-自动配置模块还会注册一个关闭钩子，以便在适当时机关闭 SDK。
-由于 OpenTelemetry Java [使用 `java.util.logging` 进行内部日志记录](../sdk/#internal-logging)，
-在关闭钩子期间可能会抑制某些日志记录。
-这是 JDK 本身的一个错误，而不是 OpenTelemetry Java 所能控制的。
-如果你需要在关闭钩子期间进行日志记录，请考虑使用 `System.out`，
-而非日志框架，因为日志框架本身可能会在某个关闭钩子中自行关闭，从而导致您的日志消息被抑制。
-有关更多详细信息，请参阅此 [JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253)。 {{% /alert %}}
+> [!NOTE] **说明**
+>
+> - [Java 代理](/docs/zero-code/java/agent/)和
+>   [Spring 启动器](/docs/zero-code/java/spring-boot-starter/)会使用零代码
+>   SDK 自动配置模块来自动配置 SDK，并随之安装插桩组件。所有自动配置内容都适用于
+>   Java 代理和 Spring 启动器用户。
+> - 自动配置模块注册了 Java 关闭钩子，以在适当的时候关闭 SDK。由于
+>   OpenTelemetry Java
+>   [使用 `java.util.logging` 进行内部日志记录](../sdk/#internal-logging)，在关闭钩子期间可能会抑制某些日志记录。这是
+>   JDK
+>   本身的一个错误，而不是 OpenTelemetry Java 所能控制的。如果你需要在关闭钩子期间进行日志记录，请考虑使用
+>   `System.out`，而非日志框架，因为日志框架本身可能会在某个关闭钩子中自行关闭，从而导致您的日志消息被抑制。有关更多详细信息，请参阅此
+>   [JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253)。
 
 ### 环境变量和系统属性 {#environment-variables-and-system-properties}
 
@@ -99,7 +97,7 @@ SDK 自动配置模块来自动配置 SDK ，并随之安装插桩组件。
 - 将名称转换为大写。
 - 用 `_` 替换所有的 `.` 和 `-`。
 
-例如，`otel.sdk.enabled` 系统属性等同于 `OTEL_SDK_ENABLED` 环境变量。
+例如，`otel.sdk.disabled` 系统属性等同于 `OTEL_SDK_DISABLED` 环境变量。
 
 如果某个属性同时定义为系统属性和环境变量，则系统属性优先。
 
@@ -238,7 +236,7 @@ SDK 自动配置模块来自动配置 SDK ，并随之安装插桩组件。
 | 系统属性                         | 描述                                                                                                                                                                          | 默认值          |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | `otel.traces.exporter`           | 逗号分隔的跨度导出器列表。已知值包括 `otlp`、`zipkin`、`console`、`logging-otlp`、`none`。 **[1]**                                                                            | `otlp`          |
-| `otel.metrics.exporter`          | 逗号分隔的指标导出器列表。已知值包括 `otlp`、`prometheus`、`none`。 **[1]**                                                                                                   | `otlp`          |
+| `otel.metrics.exporter`          | 逗号分隔的指标导出器列表。已知值包括 `otlp`、`prometheus`、`console`、`none`。 **[1]**                                                                                        | `otlp`          |
 | `otel.logs.exporter`             | 逗号分隔的日志记录导出器列表。已知值包括 `otlp`、`console`、`logging-otlp`、`none`。 **[1]**                                                                                  | `otlp`          |
 | `otel.java.exporter.memory_mode` | 如果设置为 `reusable_data`，则启用可重用内存模式（在支持该模式的导出器上）以减少内存分配。已知值包括 `reusable_data`（可重用数据）和 `immutable_data`（不可变数据）。 **[2]** | `reusable_data` |
 
@@ -632,13 +630,14 @@ public class CustomTextMapPropagatorProvider implements ConfigurablePropagatorPr
 | ------------------------------- | -------------------- | ------ |
 | `otel.experimental.config.file` | SDK 配置文件的路径。 | 未设置 |
 
-{{% alert title="Note" color="warning" %}}
-当指定配置文件后，[环境变量和系统属性](#environment-variables-and-system-properties)将被忽略，
-[编程式定制](#programmatic-customization)和 [SPI](#spi-service-provider-interface) 将被跳过。
-SDK 配置完全由该文件的内容决定。 {{% /alert %}}
+> [!WARNING]
+>
+> 当指定配置文件后，[环境变量和系统属性](#environment-variables-and-system-properties)将被忽略，[编程式定制](#programmatic-customization)和
+> [SPI](#spi-service-provider-interface)
+> 将被跳过。SDK 配置完全由该文件的内容决定。
 
 有关更多详细信息，请参考以下资源：
 
-- [使用文档](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#declarative-configuration)
-- [使用 Java 代理的示例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#declarative-configuration)
+- [使用文档](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/declarative-config)
+- [使用 Java 代理的示例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent-declarative-configuration)
 - [不使用 Java 代理的示例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/declarative-configuration)
