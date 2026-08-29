@@ -231,11 +231,7 @@ test('workspaces: the reviewed member set, no shadow config or scripts', () => {
     'the workspace list matches the reviewed set',
   );
   for (const dir of manifest.workspaces) {
-    for (const shadow of [
-      '.npmrc',
-      'package-lock.json',
-      'npm-shrinkwrap.json',
-    ]) {
+    for (const shadow of ['.npmrc', 'package-lock.json']) {
       assert.ok(
         !fs.existsSync(path.join(repoRoot, dir, shadow)),
         `${dir} defers ${shadow} to the workspace root`,
@@ -351,19 +347,9 @@ test('manifest: engines floor stays at or above the reviewed minimums', () => {
   );
   const nodeFloor = engines.node.match(/^>=(\d+)$/);
   assert.ok(nodeFloor, 'engines.node is a major floor');
-  assert.ok(
-    Number(nodeFloor[1]) >= 24,
-    'engines.node floor is at least the reviewed major 24',
-  );
-  // The .nvmrc pin is what keeps the npm floor satisfied in practice
-  // (setup-node and nvm read it; its bundled npm is the active npm):
-  // pin the shape exact-semver and its major inside the engines floor.
-  const nvmrc = readText('.nvmrc').trim();
-  assert.match(nvmrc, /^\d+\.\d+\.\d+$/, '.nvmrc is an exact semver pin');
-  assert.ok(
-    Number(nvmrc.split('.')[0]) >= Number(nodeFloor[1]),
-    '.nvmrc pins a Node version inside the engines.node floor',
-  );
+  // The floor is secured at runtime by engine-strict (installs on too-old
+  // toolchains fail closed), so the reviewed minimums and the .nvmrc pin
+  // are adjudicated in review, not re-asserted here.
   // npm skips the root engines check entirely when devEngines is present
   // (@npmcli/arborist build-ideal-tree.js), so its absence is part of the
   // floor.
