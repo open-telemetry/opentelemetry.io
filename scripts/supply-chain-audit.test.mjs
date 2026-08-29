@@ -214,10 +214,11 @@ test('.npmrc carries exactly the reviewed npm settings', () => {
 });
 
 test('workspaces: the reviewed member set, no shadow config or scripts', () => {
-  // npm resolves config and the lock at the workspace root, so a member
-  // carrying its own .npmrc or lock would be dead weight that reads as a
-  // control; and a new member widens the audited install surface, so the
-  // list itself is pinned. Names are org-scoped: an unscoped name in a
+  // npm resolves config and the lock at the workspace root for
+  // root-invoked installs (an install run inside the member directory
+  // answers to neither), so a member carrying its own .npmrc or lock
+  // would be dead weight that reads as a control; and a new member
+  // widens the audited install surface, so the list itself is pinned. Names are org-scoped: an unscoped name in a
   // public manifest is claimable on the registry by anyone (private:true
   // only stops publishing from here), while @opentelemetry publishes
   // only for the org.
@@ -230,7 +231,11 @@ test('workspaces: the reviewed member set, no shadow config or scripts', () => {
     'the workspace list matches the reviewed set',
   );
   for (const dir of manifest.workspaces) {
-    for (const shadow of ['.npmrc', 'package-lock.json']) {
+    for (const shadow of [
+      '.npmrc',
+      'package-lock.json',
+      'npm-shrinkwrap.json',
+    ]) {
       assert.ok(
         !fs.existsSync(path.join(repoRoot, dir, shadow)),
         `${dir} defers ${shadow} to the workspace root`,
@@ -276,11 +281,16 @@ test('workspaces: the reviewed member set, no shadow config or scripts', () => {
 });
 
 test('lock: no package provides a bin that shadows a trusted command', () => {
-  // npm links every package's bin entries into node_modules/.bin --
-  // --ignore-scripts does not suppress linking -- and npm-run scripts
-  // put that directory first on PATH. A bin named after a command the
-  // install and build chain trusts (node, npm, git, a shell) would
-  // hijack every later script step, so reserve those names outright.
+  // npm links every package's bin entries into node_modules/.bin from
+  // lock metadata alone -- --ignore-scripts does not suppress linking --
+  // and npm-run scripts put that directory first on PATH. A bin named
+  // after a command the install and build chain trusts (node, npm, git,
+  // a shell) would hijack every later script step, so reserve those
+  // names outright. npm normalizes bin on lock write (object form,
+  // basenamed keys) and its linker basenames whatever it finds, so a
+  // non-canonical spelling -- a string or array bin, a key carrying a
+  // path separator -- is a hand-edited entry hiding the linked name
+  // from this check: reject the spelling itself.
   const reservedBins = new Set([
     'node',
     'npm',
@@ -296,15 +306,17 @@ test('lock: no package provides a bin that shadows a trusted command', () => {
   let binNames = 0;
   for (const [key, pkg] of Object.entries(lock.packages)) {
     if (key === '' || pkg.bin === undefined) continue;
-    const keyName = key.slice(
-      key.lastIndexOf('node_modules/') + 'node_modules/'.length,
+    assert.ok(
+      typeof pkg.bin === 'object' && !Array.isArray(pkg.bin),
+      `${key} spells bin in npm's canonical object form`,
     );
-    const names =
-      typeof pkg.bin === 'string'
-        ? [pkg.name ?? keyName.split('/').pop()]
-        : Object.keys(pkg.bin);
-    for (const name of names) {
+    for (const name of Object.keys(pkg.bin)) {
       binNames += 1;
+      assert.doesNotMatch(
+        name,
+        /[/\\:]/,
+        `${key} bin ${name} is a basenamed key, linked as spelled`,
+      );
       assert.ok(
         !reservedBins.has(name),
         `${key} bin ${name} leaves trusted command names unshadowed`,
@@ -493,6 +505,13 @@ test('manifest: the install path keeps its locked, script-free form', () => {
   assert.ok(
     !fs.existsSync(path.join(repoRoot, 'binding.gyp')),
     'no root binding.gyp (would synthesize node-gyp rebuild)',
+  );
+  // npm prefers a root npm-shrinkwrap.json over package-lock.json, so a
+  // committed one would swap the audited lock out from under this whole
+  // suite.
+  assert.ok(
+    !fs.existsSync(path.join(repoRoot, 'npm-shrinkwrap.json')),
+    'no npm-shrinkwrap.json (package-lock.json is the audited lock)',
   );
   // npm wraps every script in implicit pre<name>/post<name> hooks; a hook
   // pair is unreviewed code riding a trusted name's execution path, so

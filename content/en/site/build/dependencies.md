@@ -214,8 +214,9 @@ Version resolution ignores releases younger than the configured minimum age.
   (`security:minimumReleaseAgeNpm`) is excluded so that it can't override these
   ages, its age exemptions included; caution: an upstream rename of that preset
   would silently re-admit it. Update types Renovate can't date (such as `pin`,
-  `replacement`, `rollback`) never clear the cooldown: they stay parked on the
-  Dependency Dashboard as pending, and open a PR only when forced from there.
+  `replacement`, `rollback`) fall outside its cooldown: their PRs open normally,
+  at most showing a permanently pending stability status (not a required check),
+  so normal review is the gate.
 
 ### Lifecycle-script allowlist
 
