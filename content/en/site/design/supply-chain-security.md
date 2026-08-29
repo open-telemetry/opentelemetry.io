@@ -53,18 +53,20 @@ closing table maps decisions to their enforcement.
     rewrite a disagreeing lock; [verification](#verify) catches such rewrites.
   - **Resolve deliberately**: <a id="deliberate"></a> version resolution happens
     only in [deliberate dependency updates][dep-updates], never as an install
-    side effect. Renovate's scheduled wholesale lock re-resolve
-    ([`lockFileMaintenance`][]) is disabled by design: a standing tree-wide
-    registry draw buys only routine transitive freshness, which [alert-driven
-    fixes][security updates] already cover.
+    side effect.
+    - Renovate's scheduled wholesale lock re-resolve ([`lockFileMaintenance`][])
+      is disabled by design: a standing tree-wide registry draw buys only
+      routine transitive freshness, which [alert-driven fixes][security updates]
+      already cover.
   - **Resolve only cooled-down releases**: <a id="cooldown-releases"></a> even
     deliberate resolution ignores releases younger than a [cooldown
     period][cooldown]; registry-side takedowns of malicious releases need a few
-    days to land. One designed exception: [Dependabot security
-    updates][security updates] ship known-vulnerability fixes immediately. The
-    cooldown covers registry-resolved packages; the Node toolchain pin follows
-    the [floor policy][npm engines floor] instead, since signed project builds
-    don't share the registry's takedown-lag risk.
+    days to land.
+    - One designed exception: [Dependabot security updates][security updates]
+      ship known-vulnerability fixes immediately.
+    - The cooldown covers registry-resolved packages; the Node toolchain pin
+      follows the [floor policy][npm engines floor] instead, since signed
+      project builds don't share the registry's takedown-lag risk.
 - _A package's install-time scripts run attacker code on contributor hosts and
   build machines: the worm's payload path._
   - **Run only reviewed lifecycle scripts**: <a id="scripts"></a> [lifecycle
