@@ -3,9 +3,15 @@ title: OBI で OpenTelemetry トレースのサンプリングを設定する
 linkTitle: トレースのサンプリング
 description: OpenTelemetry トレースのサンプリング方法を設定する
 weight: 70
-default_lang_commit: f7dab5cfc4d44a8c788b7e02d07ec1e1d84e3845
-drifted_from_default: true
+default_lang_commit: 055e4933b5a29eb283300a071158d7caa0542b1c
 ---
+
+> [!NOTE]
+>
+> このページでは Config v1 のフィールド名と例を使用しています。
+> Config v2 では、トップレベルの `tracer_provider.sampler` フィールドでサンプリングを設定します。
+> 詳細は [Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/)を参照してください。
+> 既存のファイルを変換するには、[移行ガイド](/docs/zero-code/obi/configure/migrate-to-config-v2/)を使用してください。
 
 OBI は、トレースのサンプリングレートを設定するために標準的な OpenTelemetry 環境変数を受け付けます。
 
