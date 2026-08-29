@@ -12,6 +12,7 @@ autoinstrumentación
 cardinalidad
 Cíñete
 configurarlas
+configúralo
 configurarlo
 contrapresión
 correlacionan
@@ -57,6 +58,7 @@ orquestador
 orquestadores
 parseo
 precargada
+preconfigurado
 preconstruida
 preconstruidas
 prerrellenada
@@ -78,6 +80,8 @@ semánticamente
 sobreaprovisionan
 sobreaprovisionarse
 sobrescrituras
+sobrediseñes
+sobrescribirlos
 subcarpeta
 subproyecto
 subregión
