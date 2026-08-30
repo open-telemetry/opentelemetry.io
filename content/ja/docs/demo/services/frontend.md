@@ -132,7 +132,7 @@ if (typeof window !== 'undefined') FrontendTracer();
 ```
 
 `utils/telemetry/FrontendTracer.ts` ファイルには、TracerProvider の初期化、OTLP エクスポートの確立、トレースコンテキストプロパゲーターの登録、ウェブ固有の自動計装ライブラリの登録を行うコードが含まれています。
-ブラウザーは別のドメインにある OpenTelemetry Collector にデータを送信するため、CORS ヘッダーも適切に設定されています。
+ブラウザーは別のドメインにある可能性が高い OpenTelemetry Collector にデータを送信するため、CORS ヘッダーも適切に設定されています。
 
 バックエンドサービスに `synthetic_request` 属性フラグを引き継ぐための変更の一環として、`applyCustomAttributesOnSpan` 設定関数が `instrumentation-fetch` ライブラリのカスタムスパン属性ロジックに追加されており、これによりすべてのブラウザー側のスパンにこの属性が含まれます。
 
