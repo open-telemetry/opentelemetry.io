@@ -98,7 +98,7 @@ disponível em
         a.click();
       };
 
-      // Prepare data points for charts
+      // Prepara pontos de dados para os gráficos
       return Object.keys(data.entries).map(name => ({
         name,
         dataSet: collectBenchesPerTestCase(data.entries[name]),
