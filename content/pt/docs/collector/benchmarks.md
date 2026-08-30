@@ -6,11 +6,8 @@ default_lang_commit: aa223b3558737264ac23a82018434eee23faa446
 
 <link rel="stylesheet" href="/css/benchmarks.css">
 
-A cada commit no repositório
-[opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/),
-o OpenTelemetry Collector é submetido a testes de carga. Nesses testes, o
-binário do Collector é executado com diferentes opções de configuração, uma por
-teste, enquanto tráfego é enviado por meio dele. Mais detalhes sobre o ambiente
+O OpenTelemetry Collector executa testes de carga a cada commit no repositório
+[opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/). Esses testes de carga executam o binário do Collector com várias opções de configuração por teste e enviam tráfego através do collector. Mais detalhes sobre o ambiente
 de testes estão disponíveis no próprio
 [repositório](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/testbed#opentelemetry-collector-testbed).
 
