@@ -89,7 +89,7 @@ disponível em
 
       const data = window.BENCHMARK_DATA;
 
-      // Render footer
+      // Renderiza o rodapé
       document.getElementById('dl-button').onclick = () => {
         const dataUrl = 'data:,' + JSON.stringify(data, null, 2);
         const a = document.createElement('a');
