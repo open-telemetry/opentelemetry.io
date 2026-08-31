@@ -1275,7 +1275,7 @@ silenciosamente el enriquecimiento de los atributos afectados.
 Por último, ejecutar este procesador en un Gateway provocará un mayor uso de
 memoria en cada uno de los Collectors, que escala según el tamaño del clúster.
 El procesador `k8s_attributes` mantiene en memoria metadatos relacionados con
-los Objects del clúster, y cuantos más Objects haya que almacenar en caché, más
+los objetos del clúster, y cuantos más objetos haya que almacenar en caché, más
 memoria consumirá el collector.
 
 Cuando se ejecuta como un Gateway, cada pod del Deployment o StatefulSet del
