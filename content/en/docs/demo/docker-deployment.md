@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: firepit Tracetest tracetesting
+cSpell:ignore: Firepit span_metrics
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
@@ -13,7 +13,7 @@ cSpell:ignore: firepit Tracetest tracetesting
 - [Docker Compose](https://docs.docker.com/compose/install/) v2.0.0+
 - Make (optional)
 - 6 GB of RAM for the application (or ~3 GB using
-  [minimal mode](#run-in-minimal-mode))
+  [minimal mode](#deployment-modes))
 - 14 GB of disk space
 
 ## Get and run the demo
@@ -41,18 +41,13 @@ make start
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose -f compose.yaml -f compose.full.yaml -f compose.observability.yaml -f compose.extras.yaml up --force-recreate --remove-orphans --detach
+docker compose --env-file .env --env-file .env.override \
+  -f compose.yaml -f compose.full.yaml \
+  -f compose.observability.yaml -f compose.extras.yaml \
+  up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
-
-    The demo is split across layered Compose files, and `make start` combines
-    four of them:
-
-    - `compose.yaml` — the core web store services
-    - `compose.full.yaml` — Kafka and the services that depend on it
-    - `compose.observability.yaml` — Jaeger, Prometheus, Grafana, and OpenSearch
-    - `compose.extras.yaml` — a placeholder for your own additions
 
     > [!NOTE]
     >
@@ -61,10 +56,22 @@ docker compose -f compose.yaml -f compose.full.yaml -f compose.observability.yam
     > nowhere to view the telemetry. Pass the files explicitly, as shown above,
     > or use `make start`.
 
-    ### Run in minimal mode
+    ### Deployment modes
 
-    If you have limited resources, you can start the demo without Kafka and its
-    dependent services, reducing memory usage to approximately 3 GB of RAM:
+    The demo supports several deployment modes. The default `make start` runs
+    the full demo with all services and the observability stack. Other modes
+    let you reduce resource usage or exclude certain components:
+
+    | Mode | Make target | Description |
+    | --- | --- | --- |
+    | Full | `make start` | All services and observability backends (default) |
+    | Minimal | `make start-minimal` | Excludes Kafka and its dependent services (`accounting`, `fraud-detection`, `kafka`), reducing memory usage to ~3 GB |
+    | No observability | `make start-no-o11y` | All services without the observability backends (Jaeger, Grafana, Prometheus, OpenSearch) |
+    | Minimal, no observability | `make start-minimal-no-o11y` | Minimal services without the observability backends |
+    | Profiling | `make start-profiling` | Full mode with an eBPF profiler and the [Firepit](https://github.com/florianl/firepit) UI for profiling data |
+    | Agentic | `make start-agentic` | Full mode with an AI agent, MCP server, and chatbot for interacting with the demo |
+
+    For example, to start the demo in minimal mode:
 
     {{< tabpane text=true >}} {{% tab Make %}}
 
@@ -75,17 +82,12 @@ make start-minimal
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose -f compose.yaml -f compose.observability.yaml -f compose.extras.yaml up --force-recreate --remove-orphans --detach
+docker compose --env-file .env --env-file .env.override \
+  -f compose.yaml -f compose.observability.yaml -f compose.extras.yaml \
+  up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
-
-    Minimal mode drops `compose.full.yaml`, so the following services are
-    **not** included:
-
-    - `accounting`
-    - `fraud-detection`
-    - `kafka`
 
     ### Run with the AI agent
 
@@ -101,7 +103,11 @@ make start-agentic
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose -f compose.yaml -f compose.full.yaml -f compose.observability.yaml -f compose.extras.yaml -f compose.agent.yaml up --force-recreate --remove-orphans --detach
+docker compose --env-file .env --env-file .env.override \
+  -f compose.yaml -f compose.full.yaml \
+  -f compose.observability.yaml -f compose.extras.yaml \
+  -f compose.agent.yaml \
+  up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
@@ -124,14 +130,53 @@ make start-profiling
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose -f compose.yaml -f compose.full.yaml -f compose.observability.yaml -f compose.profiling.yaml -f compose.extras.yaml up --force-recreate --remove-orphans --detach
+docker compose --env-file .env --env-file .env.override \
+  -f compose.yaml -f compose.full.yaml \
+  -f compose.observability.yaml -f compose.profiling.yaml \
+  -f compose.extras.yaml \
+  up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
 
     Profiles are then available at <http://localhost:8080/profiles/>.
 
-4. (Optional) Run the end-to-end tests[^1]:
+4. (Optional) Run telemetry sanity tests:
+
+    The demo includes a suite of telemetry sanity tests that verify each
+    service is producing traces, metrics, and logs and that they reach the
+    expected backends (Jaeger, Prometheus, OpenSearch). For details, see
+    [test/telemetry/README.md](https://github.com/open-telemetry/opentelemetry-demo/blob/main/test/telemetry/README.md).
+
+    | Test scope | Make target | Starts |
+    | --- | --- | --- |
+    | Full | `make run-telemetry-tests` | Full deployment (`make start`) |
+    | Minimal | `make run-telemetry-tests-minimal` | Minimal deployment (`make start-minimal`) |
+    | Agentic | `make run-telemetry-tests-agentic` | Agentic deployment (with agent, MCP, and chatbot) |
+
+    Each target builds the test image from `./test/telemetry`, starts the
+    corresponding deployment, runs the tests, and then tears down the demo.
+
+    {{< tabpane text=true >}} {{% tab Make %}}
+
+```shell
+make run-telemetry-tests
+```
+
+    {{% /tab %}} {{% tab Docker %}}
+
+```shell
+# The demo must be running before you start the tests.
+docker build -t opentelemetry-demo-telemetry-tests ./test/telemetry
+docker run --rm --network opentelemetry-demo \
+  --env-file .env --env-file .env.override \
+  -e TEST_SCOPE=full \
+  opentelemetry-demo-telemetry-tests
+```
+
+    {{% /tab %}} {{< /tabpane >}}
+
+5. (Optional) Run the frontend end-to-end tests[^1]:
 
     The Cypress frontend tests run against a demo that is already up:
 
@@ -144,35 +189,35 @@ make run-frontend-tests
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose -f compose.yaml -f compose.full.yaml -f compose.observability.yaml -f compose.extras.yaml -f compose.tests.yaml run frontendTests
+docker compose --env-file .env --env-file .env.override \
+  -f compose.yaml -f compose.full.yaml \
+  -f compose.observability.yaml -f compose.extras.yaml \
+  -f compose.tests.yaml \
+  run frontendTests
 ```
 
     {{% /tab %}} {{< /tabpane >}}
-
-    The telemetry tests instead assert that each service emits the expected
-    traces, metrics, and logs. This target starts the demo itself and stops it
-    again when the run finishes, so run it with the demo stopped:
-
-    ```shell
-    make run-telemetry-tests
-    ```
 
 ## Verify the web store and Telemetry
 
 Once the images are built and containers are started you can access:
 
 - Web store: <http://localhost:8080/>
+- Flagd configurator UI: <http://localhost:8080/feature>
+- Telemetry documentation (generated by Weaver):
+  <http://localhost:8080/telemetry/>
+
+The following are available when the observability stack is running (i.e., not
+in `*-no-o11y` modes):
+
 - Grafana: <http://localhost:8080/grafana/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
 - OpAMP UI: <http://localhost:8080/opamp/>
-- Tracetest UI: <http://localhost:11633/>, only when using
-  `make run-tracetesting`
-- Flagd configurator UI: <http://localhost:8080/feature>
-- Telemetry documentation: <http://localhost:8080/telemetry/>
-- Chatbot UI: <http://localhost:8080/chatbot/>, only when using
-  `make start-agentic`
-- Firepit profiling UI: <http://localhost:8080/profiles/>, only when using
-  `make start-profiling`
+
+The following are available only in specific deployment modes:
+
+- Firepit UI (profiling mode): <http://localhost:8080/profiles/>
+- Chatbot (agentic mode): <http://localhost:8080/chatbot/>
 
 ## Changing the demo's primary port number
 
@@ -191,7 +236,10 @@ ENVOY_PORT=8081 make start
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-ENVOY_PORT=8081 docker compose -f compose.yaml -f compose.full.yaml -f compose.observability.yaml -f compose.extras.yaml up --force-recreate --remove-orphans --detach
+ENVOY_PORT=8081 docker compose --env-file .env --env-file .env.override \
+  -f compose.yaml -f compose.full.yaml \
+  -f compose.observability.yaml -f compose.extras.yaml \
+  up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
@@ -239,15 +287,21 @@ with an editor.
   service:
     pipelines:
       traces:
-        exporters: [span_metrics, otlp_http/example]
+        exporters: [debug, otlp_grpc/jaeger, span_metrics, otlp_http/example]
   ```
 
 > [!NOTE]
 >
 > When merging YAML values with the Collector, objects are merged and arrays are
-> replaced. The `span_metrics` connector must be included in the array of
-> exporters for the `traces` pipeline if overridden, since the `metrics`
-> pipeline consumes it as a receiver. Leaving it out will result in an error.
+> replaced. The `span_metrics` connector bridges traces to metrics, so it must
+> be retained on traces `exporters` and metrics `receivers` when overriding
+> those pipelines — omitting it causes the collector to crash. All other
+> exporters are optional: omitting one simply stops data from being sent to that
+> backend. The upstream exporter names are:
+>
+> - **traces**: `debug`, `otlp_grpc/jaeger`, `span_metrics` _(required)_
+> - **metrics**: `debug`, `otlp_http/prometheus`
+> - **logs**: `debug`, `opensearch`
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require

@@ -2,6 +2,7 @@
 title: Instrumentación sin código para Java
 linkTitle: Java
 default_lang_commit: 775a743de4c13b03f631942893cb8466d0b888b6
+drifted_from_default: true
 aliases:
   - /docs/java/automatic_instrumentation
   - /docs/languages/java/automatic_instrumentation

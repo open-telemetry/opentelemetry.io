@@ -4,6 +4,7 @@ linkTitle: YAML の例
 description: OBI 設定 YAML の例
 weight: 100
 default_lang_commit: f7dab5cfc4d44a8c788b7e02d07ec1e1d84e3845
+drifted_from_default: true
 ---
 
 ## YAML ファイルの例 {#yaml-file-example}
