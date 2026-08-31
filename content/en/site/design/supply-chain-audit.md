@@ -58,6 +58,14 @@ concrete instances of most of them in earlier drafts.
     (workflow files, the theme's own install, build-half scripts) are named in
     the audit and the docs, so absent coverage is never mistaken for verified
     coverage.
+11. **Every check earns its keep.** Security comes from the controls' design and
+    from review, not from accreting assertions: each one taxes contributors and
+    maintainers on every touch. A check belongs here only where it detects
+    something review demonstrably cannot: an opaque, high-authority surface such
+    as the lock, or a semantic too obscure to catch by eye. Where a control
+    already fails closed at runtime, the audit doesn't re-assert it; when a
+    check's upkeep cost outgrows its detection value, trimming it is the correct
+    move, not a weakening.
 
 ## Principles in the audit
 
@@ -76,6 +84,7 @@ inventory of assertions.
 | Red-first               | Each hardening commit's PR notes the broken input that first made it fail        |
 | Assertions name the fix | `allowScripts covers hugo-extended at its locked version X`                      |
 | Stated scope boundary   | The audit's header comment names the excluded surfaces                           |
+| Checks earn their keep  | The engines floor's minimums are review-adjudicated; `engine-strict` enforces    |
 
 [audit test]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
