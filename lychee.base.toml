@@ -68,6 +68,9 @@ exclude = [
   # one) while serving 200 to a plain curl user agent. The pages are live, and
   # `www.cisco.com/` itself is reachable, so scope the rule to `/c/…/products/`.
   '^https://www\.cisco\.com/c/en/us/products/',
+  # Bot walls: 403 for lychee's user agent while the pages load in a browser.
+  '^https://engineering\.uipath\.com/',
+  '^https://stackoverflow\.com/questions/tagged/',
   '^https://github\.com/open-telemetry/opentelemetry\.io/issues/?\?q=',
   '^https://github\.com/open-telemetry/opentelemetry\.io/discussions/?\?discussions_q=',
   '^https://github\.com/search/?\?',
