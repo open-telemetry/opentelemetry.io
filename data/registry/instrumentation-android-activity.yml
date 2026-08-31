@@ -5,10 +5,17 @@ tags:
   - activity
   - instrumentation
   - android
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/activity
 license: Apache 2.0
 description:
+  Automatically captures spans for Activity lifecycle events (onCreate, onStart,
+  onResume, onPause, onStop, onDestroy).
 authors:
   - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/activity
+  docs: /docs/platforms/client-apps/android/#activity-lifecycle
 createdAt: 2026-07-12
+package:
+  registry: maven
+  name: io.opentelemetry.android.instrumentation/activity
+  version: 1.5.0

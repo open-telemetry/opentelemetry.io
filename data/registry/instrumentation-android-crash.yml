@@ -5,10 +5,17 @@ tags:
   - crash
   - instrumentation
   - android
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/crash
 license: Apache 2.0
 description:
+  Captures unhandled exceptions and reports them with stack traces, allowing
+  correlation of crashes with user sessions.
 authors:
   - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/crash
+  docs: /docs/platforms/client-apps/android/#crash-reporting
 createdAt: 2026-07-12
+package:
+  registry: maven
+  name: io.opentelemetry.android.instrumentation/crash
+  version: 1.5.0
