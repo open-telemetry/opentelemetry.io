@@ -18,7 +18,7 @@ autoservicio diseñadas para consumirse "as-a-service".
 
 Está dirigido a organizaciones que operan en entornos de nube y Kubernetes, que
 desean ofrecer una plataforma de telemetría coherente, escalable y gobernada en
-cargas de trabajo propiedad de equipos de producto altamente autónomos, logrando
+cargas de trabajo que son propiedad de equipos de producto altamente autónomos, logrando
 los siguientes resultados:
 
 - Configuración coherente de SDK e instrumentación, que mejora el tiempo de
