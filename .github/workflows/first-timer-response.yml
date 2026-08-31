@@ -6,7 +6,11 @@ on:
     types: [created]
 
 permissions:
-  issues: write
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.issue.number }}
+  cancel-in-progress: false
 
 env:
   ISSUE_NUM: ${{ github.event.issue.number }}
@@ -27,7 +31,7 @@ jobs:
       )
 
     steps:
-      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+      - uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
         with:
           egress-policy: audit
 
@@ -59,8 +63,11 @@ jobs:
         id: otelbot-token
         if: steps.check-trigger.outputs.match == 'true'
         with:
-          client-id: ${{ vars.OTELBOT_CLIENT_ID }}
-          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+          # The base otelbot App lacks issues permission; use the docs App.
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-issues: write
+          permission-members: read
 
       - name: Check if commenter is an org member
         id: check-membership

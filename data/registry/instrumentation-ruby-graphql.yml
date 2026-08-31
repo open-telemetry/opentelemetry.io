@@ -1,15 +1,17 @@
-title: GraphQL Instrumentation
+title: opentelemetry-instrumentation-graphql
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
-license: Apache 2.0
-description: GraphQL instrumentation for Ruby.
+license: Apache-2.0
+description: GraphQL instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/graphql
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-graphql/v0.32.0/instrumentation/graphql
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-graphql/0.32.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems

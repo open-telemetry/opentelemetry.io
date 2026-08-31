@@ -5,22 +5,30 @@
     'docker:pinDigests',
     'helpers:pinGitHubActionDigestsToSemver',
   ],
+  // config:best-practices pulls in security:minimumReleaseAgeNpm: its 3-day
+  // npm rule would override the ages below, re-applying even after the patch:
+  // merge. Its exemptions for timestamp-less update types (pin, replacement,
+  // rollback, ...) are deliberately not kept: fail closed, those updates wait
+  // for a human, as they already do for every other datasource.
+  //
+  // IMPORTANT: an upstream rename of the preset silently re-admits it.
+  ignorePresets: ['security:minimumReleaseAgeNpm'],
   minimumReleaseAge: '7 days',
   internalChecksFilter: 'strict',
   labels: ['dependencies'],
-  // Run once weekly as specified:
   schedule: ['before 9am on monday'],
   patch: {
     automerge: true,
+    // Automerge skips human review, so set longer cooldown
+    minimumReleaseAge: '14 days',
   },
   packageRules: [
     {
-      // Patch updates are typically non-breaking; one grouped PR can automerge.
+      // Patch updates are typically non-breaking, so they group and automerge.
       groupName: 'all patch versions',
       matchUpdateTypes: ['patch'],
     },
     {
-      // Consolidate minor updates into one PR for review.
       groupName: 'all minor versions',
       matchUpdateTypes: ['minor'],
     },
@@ -28,6 +36,12 @@
       // hugo-extended is intentionally pinned; updated manually via `npm run update:hugo`.
       matchPackageNames: ['hugo-extended'],
       enabled: false,
+    },
+    {
+      // Version-exact allowScripts approvals (package.json) need a human to
+      // refresh the entry with the bump, so approved packages never automerge.
+      matchPackageNames: ['puppeteer'],
+      automerge: false,
     },
   ],
 }
