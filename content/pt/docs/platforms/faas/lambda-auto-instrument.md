@@ -2,8 +2,8 @@
 title: Auto-instrumentação do Lambda
 weight: 11
 description: Instrumente automaticamente suas funções Lambda com o OpenTelemetry
-cSpell:ignore: Corretto regionalized
 default_lang_commit: 2930608f29463e76d08a496239c05ed75b20120e
+cSpell:ignore: Corretto
 ---
 
 A comunidade OpenTelemetry oferece camadas Lambda de instrumentação
