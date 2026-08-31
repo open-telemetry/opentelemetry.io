@@ -10491,6 +10491,9 @@ https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/
 https://docs.renovatebot.com/,200,1787916603
 https://docs.renovatebot.com/configuration-options/#minimumreleaseage,200,1787032143
 https://docs.renovatebot.com/presets-security/#securityminimumreleaseagenpm,200,1787695025
+https://docs.renovatebot.com/configuration-options/#lockfilemaintenance,200,1787928431
+https://docs.renovatebot.com/configuration-options/#minimumreleaseage,200,1787032143
+https://docs.renovatebot.com/presets-security/#securityminimumreleaseagenpm,200,1787981958
 https://docs.roadrunner.dev/docs/logging-and-observability/otel,200,1787905368
 https://docs.rs/tower,200,1787916883
 https://docs.ruby-lang.org/en/3.4/Exception.html#method-i-full_message,200,1787916963
@@ -11478,6 +11481,7 @@ https://github.com/kubernetes/kubernetes/blob/v1.36.3/pkg/kubelet/server/stats/s
 https://github.com/kubernetes/kubernetes/blob/v1.36.3/pkg/kubelet/stats/cri_stats_provider.go#L299,200,1786530625
 https://github.com/kubernetes/kubernetes/blob/v1.36.3/pkg/kubelet/stats/cri_stats_provider.go#L776,200,1786530625
 https://github.com/kubernetes/website,200,1787818841
+https://github.com/kubernetes/website,200,1787981967
 https://github.com/kubewarden,200,1787905371
 https://github.com/kumahq,200,1787905370
 https://github.com/kumoroku,200,1787916701
@@ -11779,6 +11783,7 @@ https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/rece
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver/documentation.md,200,1787916609
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/oracledbreceiver,200,1786530625
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/DESIGN.md,200,1787818837
+https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/DESIGN.md,200,1787981959
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/receivercreator/README.md,206,1787918248
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.112.0/receiver/kubeletstatsreceiver/documentation.md,200,1787916985
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.115.0/receiver/k8sclusterreceiver/documentation.md,200,1787916986
@@ -14046,7 +14051,7 @@ https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemet
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.Prometheus.AspNetCore,200,1787916791
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.Prometheus.HttpListener,200,1787916791
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.Zipkin,200,1787916792
-https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation,200,1787818861
+https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation,200,1787982046
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.11.0/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation,200,1786994875
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.11.0/devdocs/config/version-2.0/config-v2.md,200,1786994876
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.11.0/devdocs/config/version-2.0/migration.md,200,1786994876
@@ -14071,6 +14076,8 @@ https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues?q=is
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues?q=is%3Aissue+is%3Aopen+label%3A%22goal%3A+2026%22,200,1787905422
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkgs/container/opentelemetry-ebpf-instrumentation%2Febpf-instrument,200,1787818844
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases,200,1787818846
+https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkgs/container/opentelemetry-ebpf-instrumentation%2Febpf-instrument,200,1787981970
+https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases,200,1787981970
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.10.0,200,1785868413
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.11.0,200,1786994876
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.12.1,200,1787916954
@@ -14246,6 +14253,7 @@ https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/i
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md,200,1787916689
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/kafka-broker.md,200,1787029618
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/jetty.md,200,1787818842
+https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/jetty.md,200,1787981967
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/kafka-broker.md,200,1787901625
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/tomcat.md,200,1787818841
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/wildfly.md,200,1787818842
@@ -23389,6 +23397,11 @@ https://github.com/open-telemetry/opentelemetry.io/issues,200,1787818840
 https://github.com/open-telemetry/opentelemetry.io/issues/10449,206,1784355925
 https://github.com/open-telemetry/opentelemetry.io/issues/10990,200,1787818841
 https://github.com/open-telemetry/opentelemetry.io/issues/11210,200,1787818837
+https://github.com/open-telemetry/opentelemetry.io/fork,200,1787981966
+https://github.com/open-telemetry/opentelemetry.io/issues,200,1787981966
+https://github.com/open-telemetry/opentelemetry.io/issues/10449,206,1784355925
+https://github.com/open-telemetry/opentelemetry.io/issues/10990,200,1787981966
+https://github.com/open-telemetry/opentelemetry.io/issues/11210,200,1787981959
 https://github.com/open-telemetry/opentelemetry.io/issues/11377,200,1787917024
 https://github.com/open-telemetry/opentelemetry.io/issues/6592,200,1787818837
 https://github.com/open-telemetry/opentelemetry.io/issues/9449,200,1787818837
@@ -24323,6 +24336,8 @@ https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-as-self-contain
 https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained,206,1784442330
 https://learn.microsoft.com/en-us/dotnet/core/deploying/,200,1787818839
 https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation,200,1787818843
+https://learn.microsoft.com/en-us/dotnet/core/deploying/,200,1787981964
+https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation,200,1787981969
 https://learn.microsoft.com/en-us/dotnet/core/rid-catalog,200,1787916606
 https://learn.microsoft.com/en-us/nuget/resources/check-project-format#check-the-project-format,200,1787818839
 https://learn.microsoft.com/en-us/windows/wsl/install,200,1787916990
