@@ -24,6 +24,10 @@
 /.cspell.yml                    @open-telemetry/docs-approvers
 /prh/**                         @open-telemetry/docs-maintainers
 
+# Submodule metadata and the Docsy gitlink are owned by docs-maintainers.
+/.gitmodules                    @open-telemetry/docs-maintainers
+/themes/docsy                   @open-telemetry/docs-maintainers
+
 # No-owner files. Keep this list in sync with the `no-owner-files` list in
 # .github/component-owners.yml.
 /.lycheecache
