@@ -793,7 +793,7 @@ instrumentación. Esto puede implementarse siguiendo dos modelos principales:
   que los usuarios de dichas bibliotecas extiendan esta configuración según sea
   necesario.
 
-Este modelo sin operator pone a los responsables de las aplicaciones a cargo de
+Este modelo sin Operator pone a los responsables de las aplicaciones a cargo de
 usar estas imágenes de contenedor base o bibliotecas compartidas en su código.
 Aunque inicialmente puede requerir más esfuerzo que la instrumentación adjuntada
 automáticamente, proporciona un mecanismo para que los equipos de plataforma
