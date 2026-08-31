@@ -552,7 +552,7 @@ dirección del servidor según el nombre del entorno, etc.).
 Por último, dependiendo de condiciones específicas de la organización, las
 distintas señales de OpenTelemetry pueden recibir distintos requisitos no
 funcionales. Por ejemplo, debido a sus volúmenes de telemetría estables y su uso
-en alertas críticas, las métricas pueden recibir requisitos de fiabilidad más
+en alertas críticas, las métricas pueden tener requisitos de fiabilidad más
 altos que los spans, favoreciendo el descarte de datos en estos últimos antes de
 afectar a las primeras. Para adaptarse a estas condiciones, los equipos de
 plataforma pueden considerar distintas opciones, entre ellas:
