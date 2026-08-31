@@ -81,9 +81,9 @@
 /.cspell/uk-*.txt @open-telemetry/docs-uk-approvers @open-telemetry/docs-approvers
 /content/uk/      @open-telemetry/docs-uk-approvers @open-telemetry/docs-approvers
 
-# zh (unstaffed)
-/.cspell/zh-*.txt @open-telemetry/docs-zh-approvers @open-telemetry/docs-approvers
-/content/zh/      @open-telemetry/docs-zh-approvers @open-telemetry/docs-approvers
+# zh
+/.cspell/zh-*.txt @open-telemetry/docs-zh-approvers
+/content/zh/      @open-telemetry/docs-zh-approvers
 
 # END locale-owners
 
