@@ -4,8 +4,8 @@ linkTitle: Config da camada Lambda do Collector
 weight: 11
 description:
   Adicione e configure a camada Lambda do Collector à sua função Lambda
-cSpell:ignore: ADOT awsxray configmap confmap regionalized
 default_lang_commit: f49ec57e5a0ec766b07c7c8e8974c83531620af3
+cSpell:ignore: ADOT awsxray confmap
 ---
 
 A comunidade OpenTelemetry disponibiliza o Collector em uma camada Lambda
