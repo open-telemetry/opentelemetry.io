@@ -34,10 +34,10 @@ lub dla innych aplikacji.
 
 ### APM {#apm}
 
-Monitorowanie Wydajności Aplikacji (en. Application Performance Monitoring) -
-monitorowanie aplikacji, ich wydajności (szybkość, niezawodność, dostępność
-itp.) w celu wykrywania problemów, ostrzegania oraz narzędzia do znajdowania
-przyczyny źródłowej.
+Monitorowanie Wydajności Aplikacji (ang. Application Performance Monitoring)
+obejmuje monitorowanie aplikacji, ich wydajności (szybkości, niezawodności,
+dostępności itp.) w celu wykrywania problemów, ostrzeganie o nich oraz
+narzędzia do znajdowania pierwotnych przyczyn problemów
 
 ### Atrybut {#attribute}
 
@@ -94,7 +94,7 @@ plik binarny, który można wdrożyć jako agenta lub bramę.
 
 [Biblioteki instrumentacji](#instrumentation-library) oraz
 [Kolektor](#collector) oferują zestaw podstawowych funkcji, a także dedykowane
-repozytorium contrib z funkcjami dodatkowymi, w tym `Eksportery` dostawców.
+repozytorium contrib z funkcjami dodatkowymi, w tym Eksportery różnych dostawców.
 
 ### Propagacja kontekstu {#context-propagation}
 
@@ -105,7 +105,7 @@ kontekstu][context propagation].
 
 ### DAG {#dag}
 
-[Skierowany graf acykliczny][dag] (en. Directed Acyclic Graph).
+[Skierowany graf acykliczny][dag] (ang. Directed Acyclic Graph).
 
 ### Źródło danych {#data-source}
 
@@ -356,7 +356,7 @@ może być wdrożona w wielu lokalizacjach.
 
 ### Sygnał {#signal}
 
-Jedno z [Trasy](#trace), [Metryki](#metric) lub [Logi](#log). Zobacz
+Sygnałem jest trasa(#trace), metryka(#metric) lub log(#log). Zobacz
 [Sygnały][signals].
 
 ### Odcinek {#span}
