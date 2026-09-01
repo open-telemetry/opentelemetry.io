@@ -36,10 +36,10 @@ default_lang_commit: b97d606fe6299329b8731687dc235963bf100799
 
 {{% homepage/intro-section image="/img/homepage/collector-pipeline.svg" imageAlt="오픈텔레메트리 개요" %}}
 
-**오픈텔레메트리(OpenTelemetry)**는 클라우드 네이티브 소프트웨어를 위한 오픈소스
-옵저버빌리티(observability) 프레임워크이다. 애플리케이션의 분산 트레이스와
-메트릭을 수집하기 위해 API, 라이브러리, 에이전트, 컬렉터 서비스를 하나의 체계로
-제공한다.
+**오픈텔레메트리(OpenTelemetry)** 는 클라우드 네이티브 소프트웨어를 위한
+오픈소스 옵저버빌리티(observability) 프레임워크이다. 애플리케이션의 분산
+트레이스와 메트릭을 수집하기 위해 API, 라이브러리, 에이전트, 컬렉터 서비스를
+하나의 체계로 제공한다.
 
 오픈텔레메트리는 OpenTracing과 OpenCensus 프로젝트의 다년간의 경험을 바탕으로,
 커뮤니티의 검증된 아이디어와 모범 사례를 통합하여 만들어졌다.
