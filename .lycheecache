@@ -2826,15 +2826,13 @@ https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/ta
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.12.1,200,1787916954
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.7.0,200,1788241854
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/2feaeb84ef7aeeb1e57e642b46c96b965ae4b804/internal/test/integration/k8s/manifests?from_branch=main,200,1787917020
-https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/b1f159092a3743464e53e78b16f0c4d817c47e02/examples/http-header-enrichment-demo,200,1787818901
-https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/f6deabc4387de1e0bf4b2acdbc674f7601d4c7f2/internal/test/integration?from_branch=main,200,1787818902
+https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/b1f159092a3743464e53e78b16f0c4d817c47e02/examples/http-header-enrichment-demo,200,1788241854
+https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/f6deabc4387de1e0bf4b2acdbc674f7601d4c7f2/internal/test/integration?from_branch=main,200,1788241858
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.10.0/examples/apache,200,1785868413
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.10.0/examples/nginx,200,1785868413
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.11.0/examples/apache,200,1786994876
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.11.0/examples/go-trace-api,200,1786994876
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.11.0/examples/nginx,200,1786994876
-https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/b1f159092a3743464e53e78b16f0c4d817c47e02/examples/http-header-enrichment-demo,200,1788241854
-https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/f6deabc4387de1e0bf4b2acdbc674f7601d4c7f2/internal/test/integration?from_branch=main,200,1788241858
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/apache,200,1787916954
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/go-trace-api,200,1787916954
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/nginx,200,1787916954
