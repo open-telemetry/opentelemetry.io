@@ -3,8 +3,7 @@ title: DockerコンテナとしてOBIを実行する
 linkTitle: Docker
 description: OBIをDockerコンテナとしてセットアップして実行し、別のコンテナを計装する方法を学びます。
 weight: 3
-default_lang_commit: 331c76c3500213c83ace2e30a407218ddedda628
-drifted_from_default: true
+default_lang_commit: 7279d56948a75400445c97086d7b1e0da0dd0438
 cSpell:ignore: goblog
 ---
 
@@ -36,7 +35,7 @@ OBIコンテナイメージは、GitHub Actions の OIDC（OpenID Connect）プ�
 以下のコマンドを使用して、コンテナイメージの署名を検証できます。
 
 ```sh
-export VERSION=v0.9.0
+export VERSION=v0.12.1
 
 # Docker Hub のリリースイメージを検証する
 cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' otel/ebpf-instrument:${VERSION}
@@ -70,7 +69,7 @@ The following checks were performed on each of these signatures:
 コンテナがない場合は、[Goで書かれたシンプルなブログエンジンサービス](https://macias.info)を使用できます。
 
 ```sh
-export VERSION=v0.9.0
+export VERSION=v0.12.1
 docker run -p 18443:8443 --name goblog mariomac/goblog:dev
 ```
 

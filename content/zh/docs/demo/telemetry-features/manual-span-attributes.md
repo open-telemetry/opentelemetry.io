@@ -2,6 +2,7 @@
 title: 手动 Span 属性
 aliases: [manual_span_attributes, ../manual-span-attributes]
 default_lang_commit: afa0a0900a9fbd6f1a02d7ea31091a5a20cb5612
+drifted_from_default: true
 ---
 
 本页面列出了在整个 Demo 使用的所有手动 Span 属性：

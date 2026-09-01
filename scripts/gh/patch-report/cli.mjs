@@ -30,16 +30,13 @@ Options:
       --label <name>           The action as requested (e.g. the command).
       --pr-state <state>       PR state: 'open' or 'closed' ('' acts as open).
       --pr-merged <bool>       'true' when the PR is merged.
-      --not-run-reason <text>  Reason the pipeline deliberately declined to
-                               run the action, as standalone sentence(s); when
-                               set, it is relayed instead of a generation/apply
-                               outcome.
       --generate-result <r>    Result of the patch-generation job.
       --patch-skipped <bool>   'true' when generation produced no changes.
       --command-exit-status <n> Exit status of the patch-producing command.
       --apply-result <r>       Result of the apply job.
-      --hint <text>            Guidance shown when the request could not be
-                               identified (e.g. how to phrase it correctly).
+      --note <text>            Notice appended as the comment's final
+                               paragraph (e.g. a deprecation notice for the
+                               action, or guidance on phrasing a request).
   -n, --dry-run                Print the comment without posting it.
   -h, --help                   Show this help.
 
@@ -56,12 +53,11 @@ const { values } = parseArgs({
     label: { type: 'string', default: '' },
     'pr-state': { type: 'string', default: '' },
     'pr-merged': { type: 'string', default: '' },
-    'not-run-reason': { type: 'string', default: '' },
     'generate-result': { type: 'string', default: '' },
     'patch-skipped': { type: 'string', default: '' },
     'command-exit-status': { type: 'string', default: '' },
     'apply-result': { type: 'string', default: '' },
-    hint: { type: 'string', default: '' },
+    note: { type: 'string', default: '' },
     'dry-run': { type: 'boolean', short: 'n', default: false },
     help: { type: 'boolean', short: 'h' },
   },
@@ -95,7 +91,6 @@ const body = values.ack
       label: values.label,
       prState: values['pr-state'],
       prMerged: values['pr-merged'],
-      notRunReason: values['not-run-reason'],
       generateResult: values['generate-result'],
       patchSkipped: values['patch-skipped'],
       commandExitStatus: values['command-exit-status'],
@@ -103,7 +98,7 @@ const body = values.ack
       runId,
       runUrl,
       directiveUrl,
-      hint: values.hint,
+      note: values.note,
     });
 
 const commentId = values['comment-id'];

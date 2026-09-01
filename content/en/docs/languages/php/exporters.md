@@ -10,7 +10,7 @@ cSpell:ignore: fastcgi pecl
 >
 > If you use [zero-code instrumentation](/docs/zero-code/php/) you can set up
 > exporters with
-> [zero-code configuration to setup exporters](/docs/zero-code/php#configuration).
+> [zero-code configuration to setup exporters](/docs/zero-code/php/auto/#configuration).
 
 ## OTLP
 
@@ -137,19 +137,12 @@ To try out the example above, you can run
 
 ```shell
 docker run -d --name jaeger \
-  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
-  -e COLLECTOR_OTLP_ENABLED=true \
-  -p 6831:6831/udp \
-  -p 6832:6832/udp \
   -p 5778:5778 \
   -p 16686:16686 \
   -p 4317:4317 \
   -p 4318:4318 \
-  -p 14250:14250 \
-  -p 14268:14268 \
-  -p 14269:14269 \
   -p 9411:9411 \
-  jaegertracing/all-in-one:latest
+  jaegertracing/jaeger:latest
 ```
 
 ## Zipkin

@@ -1,0 +1,30 @@
+# cSpell:ignore DProvenanceKit DProvenanceOTel Langfuse foundationmodels genai otlp semconv diffable Therealdk
+title: DProvenanceKit
+registryType: instrumentation
+language: swift
+tags:
+  - swift
+  - instrumentation
+  - genai
+  - llm
+  - foundationmodels
+  - otlp
+  - ios
+  - macOS
+license: Apache 2.0
+description:
+  DProvenanceKit records on-device AI agent runs as queryable, diffable traces
+  for reasoning observability and regression testing. Its DProvenanceOTel module
+  is a dependency-free bridge that maps each trace run to an OTLP/JSON document
+  (one root span per run, child spans per step, span events per trace event) and
+  promotes Apple FoundationModels calls to gen_ai.* semantic-convention
+  attributes, exporting to Langfuse or any OTLP/HTTP collector.
+authors:
+  - name: Therealdk8890
+    url: https://github.com/Therealdk8890
+urls:
+  repo: https://github.com/Therealdk8890/DProvenanceKit
+  website: https://dprovenance.dev
+  docs: https://github.com/Therealdk8890/DProvenanceKit/blob/main/docs/otel-bridge.md
+createdAt: 2026-07-07
+isFirstParty: false

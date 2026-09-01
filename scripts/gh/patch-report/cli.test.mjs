@@ -108,6 +108,31 @@ describe('patch-report CLI', () => {
     assert.match(stderr, /mutually exclusive/);
   });
 
+  test('--note is included in the outcome body', () => {
+    const { ghArgs, status } = runCli([
+      '--pr',
+      '42',
+      '--comment-id',
+      '314159',
+      '--label',
+      'fix:refcache',
+      '--generate-result',
+      'success',
+      '--patch-skipped',
+      'false',
+      '--apply-result',
+      'success',
+      '--note',
+      'ℹ️ INFO: `/fix:refcache` is deprecated.',
+    ]);
+    assert.equal(status, 0);
+    const body = ghArgs.find((a) => a.startsWith('body='));
+    assert.match(
+      body,
+      /applied successfully.*\n\nℹ️ INFO: `\/fix:refcache` is deprecated\.$/s,
+    );
+  });
+
   test('gh failure propagates its exit code and surfaces output', () => {
     const { status, stdout } = runCli(['--ack', '--pr', '42'], { ghExit: 3 });
     assert.equal(status, 3);

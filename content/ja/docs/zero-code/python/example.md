@@ -2,7 +2,7 @@
 title: 自動計装の例
 linkTitle: Example
 weight: 20
-default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
+default_lang_commit: f6befc31e5602c7019a9949ccd5f7e11d845134e
 # prettier-ignore
 cSpell:ignore: Aiohttp ASGI distro instrumentor mkdir MSIE Referer Starlette venv
 ---
@@ -28,7 +28,7 @@ cSpell:ignore: Aiohttp ASGI distro instrumentor mkdir MSIE Referer Starlette ven
 これにより、OpenTelemetry をアプリケーションコードに統合するのに必要な作業量を減らせます。
 以下に、手動、自動、プログラムで計装された Flask ルートの違いを示します。
 
-## 手動計測サーバー {#manually-instrumented-server}
+## 手動計装サーバー {#manually-instrumented-server}
 
 `server_manual.py`
 
@@ -56,7 +56,7 @@ def server_request():
     return "served"
 ```
 
-## プログラム計測サーバー {#programmatically-instrumented-server}
+## プログラム計装サーバー {#programmatically-instrumented-server}
 
 `server_programmatic.py`
 
@@ -117,7 +117,7 @@ opentelemetry-bootstrap -a install
 
 この節では、サーバーの計装を手動で行うプロセスと、自動的に計装されたサーバーを実行するプロセスについて説明します。
 
-## 手動で計測したサーバーを実行する {#execute-the-manually-instrumented-server}
+## 手動で計装したサーバーを実行する {#execute-the-manually-instrumented-server}
 
 この例を構成するスクリプトをそれぞれ実行するために、2つの別々のコンソールでサーバーを実行します。
 
@@ -227,7 +227,7 @@ python client.py
 }
 ```
 
-自動計装は手動計測とまったく同じことをするので、両方の出力が同じであることがわかります。
+自動計装は手動計装とまったく同じことをするので、両方の出力が同じであることがわかります。
 
 ## プログラムで計装されたサーバーを実行する {#execute-the-programmatically-instrumented-server}
 
@@ -341,6 +341,6 @@ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS=".*session.*,se
 [semantic convention]: /docs/specs/semconv/http/http-spans/
 [api reference]: https://opentelemetry-python.readthedocs.io/en/latest/index.html
 [instrumentation]: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
-[monkey-patching]: https://stackoverflow.com/questions/5626193/what-is-monkey-patching
+[monkey-patching]: https://stackoverflow.com/questions/5626193/what-is-monkey-patching?link-check=no&last-validated=2026-08-02
 [opentracing example]: https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
 [source files]: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation

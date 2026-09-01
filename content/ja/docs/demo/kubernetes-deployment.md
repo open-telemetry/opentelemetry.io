@@ -2,8 +2,8 @@
 title: Kubernetesデプロイ
 linkTitle: Kubernetes
 aliases: [kubernetes_deployment]
-default_lang_commit: c1e141558ab36cc1ab9f864728e4665e272ac131
-cSpell:ignore: loadgen otlphttp spanmetrics
+default_lang_commit: 11fecfb1d12e8682c9619b3a477eccb21c736b99
+cSpell:ignore: otlphttp spanmetrics
 ---
 
 既存のKubernetesクラスターにデモをデプロイするのに役立つ[OpenTelemetry Demo Helmチャート](/docs/platforms/kubernetes/helm/demo/)を提供しています。
@@ -78,7 +78,6 @@ frontend-proxyをport-forwardで設定すると、次のURLにアクセスでき
 
 - Web store: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
-- Load Generator UI: <http://localhost:8080/loadgen/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
 - Flagd configurator UI: <http://localhost:8080/feature>
 

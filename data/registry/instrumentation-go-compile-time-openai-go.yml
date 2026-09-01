@@ -1,0 +1,19 @@
+# cSpell:ignore openai
+title: OpenTelemetry Go Compile-Time Auto-Instrumentation for `openai/openai-go`
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - instrumentation
+  - compile-time
+  - auto-instrumentation
+  - openai
+license: Apache 2.0
+description: >
+  Go compile-time auto-instrumentation plugin for the [`openai/openai-go`
+  package](https://pkg.go.dev/github.com/openai/openai-go).
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/openai/openai-go
+createdAt: 2026-07-08

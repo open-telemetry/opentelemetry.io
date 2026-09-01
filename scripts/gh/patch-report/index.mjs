@@ -21,10 +21,6 @@
  *                                       closed). '' is treated as open for
  *                                       callers that don't gate on state.
  * @property {string} [prMerged]         'true' when the PR is merged.
- * @property {string} [notRunReason]     When set, the pipeline deliberately
- *                                       declined to run the action; the reason
- *                                       to relay, as one or more standalone
- *                                       sentences.
  * @property {string} generateResult     Result of the patch-generation job:
  *                                       'success' | 'failure' | 'cancelled'.
  * @property {string} patchSkipped       'true' when generation produced no
@@ -39,9 +35,11 @@
  *                                       action; when given, the action label
  *                                       links back to it so the outcome can be
  *                                       traced to its request.
- * @property {string} [hint]             Optional caller-supplied guidance shown
- *                                       when the request could not be identified
- *                                       (e.g. how to phrase it correctly).
+ * @property {string} [note]             Optional caller-supplied notice
+ *                                       appended as the comment's final
+ *                                       paragraph (e.g. a deprecation notice
+ *                                       for the requested action, or guidance
+ *                                       on phrasing a request).
  */
 
 /**
@@ -81,11 +79,16 @@ export function buildAckComment({ directiveUrl, runId, runUrl }) {
  * @param {OutcomeInput} input
  * @returns {string} The comment body.
  */
-export function buildOutcomeComment({
+export function buildOutcomeComment(input) {
+  const body = selectOutcome(input);
+  return input.note ? `${body}\n\n${input.note}` : body;
+}
+
+/** Select the outcome message for the run described by the input. */
+function selectOutcome({
   label,
   prState,
   prMerged,
-  notRunReason,
   generateResult,
   patchSkipped,
   commandExitStatus,
@@ -93,7 +96,6 @@ export function buildOutcomeComment({
   runId,
   runUrl,
   directiveUrl,
-  hint,
 }) {
   const what = renderWhat(label, directiveUrl);
   const logs = `See [run ${runId}](${runUrl}).`;
@@ -104,25 +106,19 @@ export function buildOutcomeComment({
     return `❌ This PR ${why}, so ${what} was not run: such actions only apply to open PRs. ${logs}`;
   }
 
-  // 1. The pipeline deliberately declined to run the action.
-  if (notRunReason) {
-    return `⚠️ ${what} was not run. ${notRunReason} ${logs}`;
-  }
-
-  // 2. Patch generation did not succeed: no changes were ever captured.
+  // 1. Patch generation did not succeed: no changes were ever captured.
   if (generateResult === 'cancelled') {
     return `⚠️ ${what} was cancelled before any changes were generated. ${logs}`;
   }
   if (generateResult !== 'success') {
     if (!label) {
-      const guidance = hint ? ` ${hint}` : '';
       const req = renderWhat('', directiveUrl, 'The request');
-      return `❌ ${req} could not be processed.${guidance} ${logs}`;
+      return `❌ ${req} could not be processed. ${logs}`;
     }
     return `❌ ${what} could not be run, or its changes could not be captured. ${logs}`;
   }
 
-  // 3. Generation succeeded but produced no changes.
+  // 2. Generation succeeded but produced no changes.
   if (patchSkipped === 'true') {
     if (commandExitStatus && commandExitStatus !== '0') {
       return (
@@ -133,7 +129,7 @@ export function buildOutcomeComment({
     return `ℹ️ ${what} made no changes; nothing to commit. ${logs}`;
   }
 
-  // 4. Changes were produced: report how applying them went.
+  // 3. Changes were produced: report how applying them went.
   if (applyResult === 'cancelled') {
     return `⚠️ ${what} produced changes, but applying them was cancelled. ${logs}`;
   }

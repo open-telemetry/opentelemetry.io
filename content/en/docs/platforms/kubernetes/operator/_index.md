@@ -25,7 +25,7 @@ is an implementation of a
 The operator manages:
 
 - [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector)
-- [auto-instrumentation of the workloads using OpenTelemetry instrumentation libraries](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection)
+- [auto-instrumentation of the workloads using OpenTelemetry instrumentation libraries](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)
 
 ## Getting started
 
