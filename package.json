@@ -172,7 +172,7 @@
     "ajv-errors": "3.0.0",
     "ajv-formats": "3.0.1",
     "code-excerpter": "0.2.0",
-    "cspell": "10.0.1",
+    "cspell": "10.1.0",
     "gulp": "5.0.1",
     "hugo-extended": "0.164.0",
     "js-yaml": "5.3.0",
@@ -187,7 +187,7 @@
     "puppeteer": "25.8.0",
     "puppeteer-core": "25.8.0",
     "require-dir": "1.2.0",
-    "sass-embedded": "1.102.0",
+    "sass-embedded": "1.103.1",
     "smol-toml": "1.8.0",
     "textlint": "15.8.0",
     "textlint-filter-rule-allowlist": "4.0.0",
@@ -211,7 +211,7 @@
     "path": "0.12.7"
   },
   "optionalDependencies": {
-    "npm-check-updates": "23.0.2"
+    "npm-check-updates": "23.1.0"
   },
   "overrides": {
     "adm-zip": "0.6.0"
