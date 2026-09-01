@@ -3,12 +3,11 @@ title: トレースとログの相関
 linkTitle: トレースとログの相関
 weight: 35
 description: より迅速なデバッグとトラブルシューティングのために、OBI がアプリケーションログを分散トレースとどのように相関付けるかを学びます。
-default_lang_commit: 2728c8fbf4f09cf3b8257a1b628a7631fc77d639
-drifted_from_default: true
+default_lang_commit: 552bd64ff45ca252d1da0ca875abd1584a619d7f
 cSpell:ignore: BPFFS NUL PYTHONUNBUFFERED
 ---
 
-OpenTelemetry eBPF 計装 (OBI) は、JSON ログをトレースコンテキストで補強することで、アプリケーションログを分散トレースと相関付けます。
+OpenTelemetry eBPF 計装 (OBI) は、JSON およびプレーンテキストログをトレースコンテキストで補強することで、アプリケーションログを分散トレースと相関付けます。
 OBI はログをエクスポートしません。
 補強されたログを同じストリームに書き戻し、一方トレースは OTLP 経由でエクスポートされます。
 
@@ -32,7 +31,7 @@ OBI は eBPF を使用して、カーネルレベルでアプリケーション�
 
 1. **トレースキャプチャ**: OBI はトレースされるすべての操作についてトレースコンテキスト（トレース ID およびスパン ID）をキャプチャします
 2. **ログのインターセプト**: OBI はアプリケーションログをキャプチャするために write システムコールをインターセプトします
-3. **コンテキストの注入**: JSON 形式のログに対して、OBI は `trace_id` および `span_id` フィールドを注入します
+3. **コンテキストの注入**: OBI は JSON オブジェクトに `trace_id` および `span_id` フィールドを注入するか、選択されたプレーンテキスト行に設定可能な `key=value` フィールドを追加します
 4. **トレースのエクスポート**: ログは既存のロギングパイプラインを通じて流れ続けます
 5. **バックエンドでの紐付け**: オブザーバビリティバックエンドは、これらの ID を使用してログをトレースに紐づけます
 
@@ -42,17 +41,21 @@ OBI はアプリケーションバイナリを変更することなく、カー�
 
 - カーネルの eBPF プローブを使用して write 操作をインターセプトします
 - パフォーマンスのためにファイルディスクリプタのキャッシュを維持します
-- JSON ログを出力する任意のロギングフレームワークと連携します
+- JSON またはプレーンテキストを出力するロギングフレームワークと連携します
 
-OBI は JSON にすでに存在する `trace_id` および `span_id` フィールドを保持します。
+OBI は、すでに存在する設定済みのトレースおよびスパンフィールドを保持します。
+JSON キーはリテラルでマッチされ、プレーンテキストでは、OBI は行頭または空白の後にある `name=value` トークンを認識します。
 OpenTelemetry トレースを直接エクスポートしていると検出されたサービスに対して、OBI は `trace_id` のみを注入します。
 OBI が生成する eBPF ベースのスパン ID では SDK のスパンを特定できないためです。
 
 ## 設定 {#configuration}
 
-トレースとログの相関は、トレースエクスポートが設定され、選択されたサービスに対してログの補強が有効化されている場合に有効になります。
+ログをトレースと相関付けるには、トレースをエクスポートし、選択されたワークロードのログにトレースコンテキストを追加するよう OBI を設定します。
+設定フィールドは Config v1 と Config v2 で異なります。
+Config v2 を使用する場合は、[Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/)を参照してください。
+既存の Config v1 ファイルを変換するには、[移行ガイド](/docs/zero-code/obi/configure/migrate-to-config-v2/)に従ってください。
 
-### 基本的な設定 {#basic-configuration}
+### Config v1 {#config-v1}
 
 ```yaml
 # Enable trace export
@@ -78,18 +81,63 @@ ebpf:
 - `cache_size`: キャッシュされるファイルディスクリプタの最大数
 - `async_writer_workers`: 非同期ライターのシャード数
 - `async_writer_channel_len`: シャードごとのキューサイズ
+- `field_names`: トレース ID およびスパン ID の認識と注入に使用するフィールド名
+- `plain_text.enabled`: 非 JSON ログにアノテーションするかどうか。デフォルトは `true`
+- `plain_text.placement`: フィールドを `prefix` または `suffix` として追加する
+- `plain_text.multiline`: インターセプトされた書き込みごとに `first_line`、`last_line`、または `each_line` にアノテーションする
 
-### サービスごとに相関を有効化する {#enabling-correlation-per-service}
+たとえば:
 
-OBI は `ebpf.log_enricher.services` 配下にリストされたサービスの JSON ログを補強します。
+```yaml
+ebpf:
+  log_enricher:
+    field_names:
+      trace_id: trace_id
+      span_id: span_id
+    plain_text:
+      enabled: true
+      placement: suffix
+      multiline: first_line
+```
+
+プレーンテキスト補強は、v0.11.0 で選択されたサービスに対してデフォルトで有効になっています。
+非 JSON の書き込みが以前のパススルー動作を維持する必要がある場合は、アップグレード前に `plain_text.enabled: false` を設定してください。
+フィールド名は JSON およびプレーンテキスト出力に適用され、空でないこと、重複しないこと、空白、`=`、または制御文字を含まないことが必要です。
+
+#### サービスの選択 {#service-selection}
+
+OBI は `ebpf.log_enricher.services` 配下にリストされたサービスの JSON およびプレーンテキストログを補強します。
 補強が同じプロセスを追跡するように、サービスセレクターを `discovery.instrument` と一致させてください。
+
+### Config v2 {#config-v2}
+
+Config v2 では、ログトレースアノテーションは OBI をスタンドアロンプロセスとして実行する場合にのみ利用できます。
+デフォルトでは無効です。
+`extensions.obi.correlation.log_trace_annotation` 配下で設定してください。
+
+```yaml
+extensions:
+  obi:
+    correlation:
+      log_trace_annotation:
+        enabled: true
+        field_names:
+          trace_id: trace_id
+          span_id: span_id
+        plain_text:
+          enabled: true
+          placement: suffix
+          multiline: first_line
+```
+
+Config v2 のキャプチャ選択は、ログアノテーションの対象となるワークロードを決定します。
+`log_trace_annotation.filter` フィールドは v0.11.0 では予約済みであり、空のままにする必要があります。
 
 ## 要件 {#requirements}
 
-### 1. JSON ログ形式 {#1-json-log-format}
+### 1. サポートされるログ形式 {#1-supported-log-format}
 
-トレースとログの相関は **JSON 形式のログを必要とします**。
-OBI は JSON ログオブジェクトに `trace_id` および `span_id` フィールドを注入します。
+JSON 形式のログに対して、OBI は JSON オブジェクトに `trace_id` および `span_id` フィールドを注入します。
 
 **OBI 適用前**:
 
@@ -109,7 +157,17 @@ OBI は JSON ログオブジェクトに `trace_id` および `span_id` フィ�
 }
 ```
 
-プレーンテキストのログはそのまま通過し、トレースコンテキストでは**補強されません**。
+プレーンテキストログに対して、OBI は小文字の固定幅 ID をスペース区切りの `key=value` フィールドとして追加します。
+配置とマルチライン選択は設定可能です。
+
+```text
+request processed trace_id=4bf92f3577b34da6a3ce929d0e0e4736 span_id=00f067aa0ba902b7
+```
+
+改行区切りの JSON は構造化 JSON として処理されます。
+OBI は各オブジェクトレコードを個別に補強し、有効な NDJSON にはプレーンテキストアノテーションを適用しません。
+マルチライン選択は、1 回のインターセプトされた書き込み内の空でない物理行に対して動作します。
+OBI は個別の書き込みをまたいで論理イベントを再構成しません。
 
 #### ランタイムのバッファリングの制限 {#runtime-buffering-limitations}
 
@@ -124,7 +182,8 @@ OBI は JSON ログオブジェクトに `trace_id` および `span_id` フィ�
 
 ### 2. トレースのエクスポートとログ補強の有効化 {#2-trace-export-and-log-enrichment-enabled}
 
-トレースをエクスポートし、ログ補強を有効化する必要があります。
+トレースとログの相関には、トレースエクスポートとログ補強の両方が必要です。
+Config v1 の場合:
 
 ```yaml
 otel_traces_export:
@@ -146,10 +205,10 @@ ebpf:
 - **BPFFS マウント**: カーネルで BPF ファイルシステムが `/sys/fs/bpf` にマウントされている必要があります
 - **セキュリティロックダウンされていないカーネル**: セキュリティロックダウンモードで動作していないカーネルが必要です（ほとんどの本番ディストリビューションでは一般的）
 
-### 4. JSON ログを出力するフレームワーク {#4-framework-that-emits-json-logs}
+### 4. サポートされるログを出力するフレームワーク {#4-framework-that-emits-supported-logs}
 
-アプリケーションは JSON を出力するように設定されたロギングフレームワークを使用する必要があります。
-例:
+アプリケーションは JSON またはプレーンテキストを出力するように設定されたロギングフレームワークを使用できます。
+以下の JSON の例は構造化フィールドを生成します。
 
 {{< tabpane text=true persist=lang >}} {{% tab header="Python" lang=python %}}
 
@@ -233,7 +292,7 @@ CRI および Docker の JSON ログエンベロープは NUL を `\u0000` と�
 
 ## 既知の制限事項 {#known-limitations}
 
-- **JSON のみ**: プレーンテキストのログはトレースコンテキストで補強されません
+- **書き込み単位のマルチライン選択**: OBI は個別の書き込みをまたいで論理的なマルチラインイベントを再構成しません
 - **ファイルディスクリプタキャッシュ**: パフォーマンスのためにキャッシュされ、設定可能な TTL（デフォルト: 30 分）を持ちます
 - **スパン整合のみ**: ログはスパンがアクティブな間のみ補強されます。
   スパンのスコープ外のログは補強されません。
@@ -245,7 +304,8 @@ CRI および Docker の JSON ログエンベロープは NUL を `\u0000` と�
 
 ### トレースコンテキストがログに表示されない {#trace-context-not-appearing-in-logs}
 
-1. **JSON 形式の確認**: アプリケーションが有効な JSON ログを出力していることを確認します
+1. **設定された形式の確認**: JSON ログの場合、アプリケーションが有効な JSON を出力していることを確認します。
+   プレーンテキストの場合、`plain_text.enabled` が `true` であることを確認し、配置とマルチラインの設定を確認します。
 
    ```bash
    # Check for malformed JSON
