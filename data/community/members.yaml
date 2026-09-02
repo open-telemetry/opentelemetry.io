@@ -337,6 +337,7 @@ maintainers:
       - php-approvers
       - php-contrib-approvers
       - php-contrib-maintainers
+      - php-distro-approvers
       - php-maintainers
       - php-triagers
     html_url: https://github.com/brettmc
@@ -1386,6 +1387,7 @@ maintainers:
   - name: reyang
     teams:
       - docs-zh-approvers
+      - docs-zh-maintainers
       - proto-approvers
       - proto-maintainers
       - proto-triagers
