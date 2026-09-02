@@ -519,6 +519,9 @@ https://docs.lightstep.com/docs/about-sending-data,200,1788241858
 https://docs.linuxfoundation.org/lfx/easycla/v2-current/contributors,200,1788327797
 https://docs.locust.io/en/stable/writing-a-locustfile.html,200,1788344401
 https://docs.logz.io/docs/shipping/other/opentelemetry-data/,200,1788327853
+https://docs.linuxfoundation.org/lfx/easycla/v2-current/contributors,200,1787916620
+https://docs.locust.io/en/stable/writing-a-locustfile.html,200,1788324225
+https://docs.logz.io/docs/shipping/other/opentelemetry-data/,206,1787905531
 https://docs.lumigo.io/docs/opentelemetry,200,1788241858
 https://docs.micrometer.io/tracing/reference/api.html#_micrometer_tracing_opentelemetry_setup,200,1787916865
 https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview,200,1788241858
@@ -2691,6 +2694,7 @@ https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/react-native-
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendation/,200,1787916689
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/,200,1787981971
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/telemetry-schema/services/load_generator.yaml,200,1788344401
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/telemetry-schema/services/load_generator.yaml,200,1788324225
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/test/telemetry/README.md,200,1787982046
 https://github.com/open-telemetry/opentelemetry-demo/issues/1601,200,1788241857
 https://github.com/open-telemetry/opentelemetry-demo/issues/3720,200,1788241857
@@ -4886,6 +4890,8 @@ https://learn.microsoft.com/windows/win32/wes/defining-severity-levels,200,17882
 https://library.humio.com/falcon-logscale/log-shippers-opentelemetry.html,206,1787918248
 https://lightstep.com/blog/apm-is-dying-and-thats-okay,200,1788327796
 https://locust.io/,200,1788344406
+https://lightstep.com/blog/apm-is-dying-and-thats-okay,200,1787916619
+https://locust.io/,200,1788324225
 https://logback.qos.ch/,200,1787981967
 https://logging.apache.org/log4j/1.2/,200,1787916956
 https://logging.apache.org/log4j/2.x/,200,1787916956
