@@ -11,19 +11,19 @@ aliases: [log_service_features, logging-features, ../logging-features]
 | Agent           | Python     | 🚧        |
 | Cart            | .NET       | ✅        |
 | Chatbot         | Python     | 🚧        |
-| Checkout        | Go         | 🚧        |
+| Checkout        | Go         | ✅        |
 | Currency        | C++        | ✅        |
-| Email           | Ruby       | 🚧        |
+| Email           | Ruby       | ✅        |
 | Flagd           | Go         | 🚧        |
-| Flagd-ui        | TypeScript | 🚧        |
+| Flagd-ui        | Elixir     | 🚧        |
 | Fraud Detection | Kotlin     | ✅        |
 | Frontend        | TypeScript | 🚧        |
 | Frontend Proxy  | Envoy      | ✅        |
 | Image Provider  | NGINX      | 🚧        |
-| Load Generator  | Python     | ✅        |
+| Load Generator  | Go/k6      | ✅        |
 | MCP             | Python     | 🚧        |
-| Payment         | JavaScript | 🚧        |
-| Product Catalog | Go         | 🚧        |
+| Payment         | JavaScript | ✅        |
+| Product Catalog | Go         | ✅        |
 | Quote           | PHP        | ✅        |
 | Recommendation  | Python     | ✅        |
 | Shipping        | Rust       | ✅        |
