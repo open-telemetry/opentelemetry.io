@@ -92,6 +92,17 @@ You can deploy OBI in Kubernetes in two different ways:
 - As a sidecar container
 - As a DaemonSet
 
+> [!NOTE]
+>
+> On kernel versions 6.6.128+, 6.12.75+, 6.18.14+, and 6.19+, OBI v0.12.0+
+> requires the host's `/sys/kernel/tracing` directory to be mounted into the
+> OBI container at the same path. Without this mount, OBI cannot run its
+> FIONREAD compensation check and automatically disables trace context
+> propagation. All deployment examples in this document include this
+> mount. See
+> [Security, permissions, and capabilities](../../security/#required-host-mount-for-context-propagation)
+> for details.
+
 ### Deploy OBI as a sidecar container
 
 This is the way you can deploy OBI if you want to monitor a given service that
@@ -173,6 +184,15 @@ spec:
             # required if you want kubernetes metadata decoration
             - name: OTEL_EBPF_KUBE_METADATA_ENABLE
               value: 'true'
+          volumeMounts:
+            # required for trace context propagation, see security docs
+            - name: tracefs
+              mountPath: /sys/kernel/tracing
+      volumes:
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ```
 
 Using the wildcard approach is less error prone than specifying individual
@@ -236,6 +256,15 @@ spec:
               # required if you want kubernetes metadata decoration
             - name: OTEL_EBPF_KUBE_METADATA_ENABLE
               value: 'true'
+          volumeMounts:
+            # required for trace context propagation, see security docs
+            - name: tracefs
+              mountPath: /sys/kernel/tracing
+      volumes:
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ```
 
 For more information about the different configuration options, check the
@@ -292,6 +321,15 @@ spec:
               # required if you want kubernetes metadata decoration
             - name: OTEL_EBPF_KUBE_METADATA_ENABLE
               value: 'true'
+          volumeMounts:
+            # required for trace context propagation, see security docs
+            - name: tracefs
+              mountPath: /sys/kernel/tracing
+      volumes:
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ```
 
 ### Deploy OBI unprivileged
@@ -391,6 +429,8 @@ spec:
               mountPath: /var/run/obi
             - name: cgroup
               mountPath: /sys/fs/cgroup
+            - name: tracefs
+              mountPath: /sys/kernel/tracing
       tolerations:
         - effect: NoSchedule
           operator: Exists
@@ -402,6 +442,10 @@ spec:
         - name: cgroup
           hostPath:
             path: /sys/fs/cgroup
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -566,6 +610,8 @@ spec:
               name: obi-config
             - mountPath: /var/run/obi
               name: var-run-obi
+            - mountPath: /sys/kernel/tracing
+              name: tracefs
           env:
             # tell OBI where to find the configuration file
             - name: OTEL_EBPF_CONFIG_PATH
@@ -576,6 +622,10 @@ spec:
             name: obi-config
         - name: var-run-obi
           emptyDir: {}
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ```
 
 ## Providing secret configuration
