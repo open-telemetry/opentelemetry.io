@@ -1,7 +1,7 @@
 ---
 title: クイックスタート
 description: コレクターのセットアップとテレメトリーの収集をすぐに始めてみましょう！
-default_lang_commit: 813498074d85258c7180d137ace9e272d0149353
+default_lang_commit: 36a8a53c4a20a6d7a706539e9f3b4887327be781
 ---
 
 <!-- markdownlint-disable ol-prefix blanks-around-fences -->
@@ -113,9 +113,7 @@ export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
    ...
    ```
 
-6. トレースを視覚的に確認するには、ブラウザで <http://localhost:55679/debug/tracez> を開き、表の中から1つトレースを選択してください。
-
-7. <kbd>Control-C</kbd> を押してコレクターを停止します。
+6. <kbd>Control-C</kbd> を押して Collector を停止します。
 
 ## この次のステップ
 

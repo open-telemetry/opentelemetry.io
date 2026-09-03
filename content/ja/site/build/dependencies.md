@@ -3,7 +3,7 @@ title: 依存関係の管理
 description: >-
   サイトが npm 依存関係をどのようにインストール、検証、更新するか
 weight: 5
-default_lang_commit: bdfe463187e63311ab3e137f1e314acfb877fd8b
+default_lang_commit: d6988a2bfec7521e701d8a15d36696cbb35a129b
 drifted_from_default: true
 ---
 
@@ -15,12 +15,13 @@ npm 依存関係はコミット済みの `package-lock.json` によって固定�
 CI、devcontainer、Netlify は、ロック固定かつスクリプト無効でインストールし、その後、レビュー済みのフック1つだけを明示的に再有効化します。
 それは固定された Hugo バイナリを取得する `hugo-extended` のリビルドです。
 リビルドは `scripts/rebuild-hugo-extended.mjs` を通じて実行され、制限付きバックオフでフェッチをリトライし、`HUGO_*` インストーラーオーバーライドが設定されている間は実行を拒否します。
+インストールではオプショナルな依存関係を保持します。npm はプラットフォーム固有のバイナリ（たとえば `sass-embedded` 内の Dart Sass コンパイラー）を `os`/`cpu` で選択されるオプショナルな依存関係として配布するため、省略するとビルドが壊れます。
 環境ごとの詳細は以下のとおりです。
 
 - **CI**: `npm run ci:min` を実行します。
   サイトをビルドするジョブは続けて `npm run ci:prepare` を実行します。
 - **Devcontainer**: `npm run install:safe` を実行します。
-  同じ動作を保証しますが、オプショナルな依存関係を保持します。
+  同じ動作を保証します。
 - **Netlify**: `npm run install:safe` を実行します。
   [Netlify][] のビルドコマンドによって、[不活性な自動インストール](#inert-netlify-auto-install)の後、クリーンなワーキングツリーのチェックの間に実行されます。
   - ロックのドリフトやその他の Git で検出可能な変更があればビルドが失敗します。
@@ -112,6 +113,7 @@ PR で監査が失敗した場合、アサーションメッセージに期待�
 監査のスコープ外:
 
 - GitHub ワークフローファイル
+- [Renovate][] 設定（[`.github/renovate.json5`][]）: コードと同様にレビューされるが、監査による固定の対象外
 - [Docsy][] テーマ自身の依存関係インストール（上流で監査済み）
 - インストール境界を越えたビルド側の npm スクリプト
 
@@ -129,6 +131,7 @@ PR で監査が失敗した場合、アサーションメッセージに期待�
 - **[Renovate][]**: 開く更新 PR に独自のクールダウンを適用します。
   [`.github/renovate.json5`][] の `minimumReleaseAge` で設定されます。
   人間のレビューなしでマージされる更新にはより長い期間が設定されます。
+  Renovate が日付を判定できない更新タイプ（`pin`、`replacement`、`rollback`）はクールダウンをクリアしません。これらの PR は恒久的に保留の安定性ステータス（必須チェックではない）で開かれ、通常のレビューを経てのみマージされます。
 
 ### ライフサイクルスクリプト許可リスト {#lifecycle-script-allowlist}
 

@@ -9,6 +9,11 @@ on:
 permissions:
   contents: read
 
+# Overlapping runs would race updates to the shared automation branch.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
 jobs:
   auto-update:
     name: Auto-update community members page
@@ -28,13 +33,10 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
-          cache-dependency-path: |
-            package-lock.json
-            scripts/generate-community-data/package-lock.json
 
       - name: Install dependencies
-        working-directory: ./scripts/generate-community-data
-        run: npm run ci:min
+        run:
+          npm run ci:min -- --workspace=@opentelemetry/generate-community-data
 
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
@@ -42,6 +44,9 @@ jobs:
           # the higher privileged docs token is needed to push commits to an existing PR
           client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-contents: write
+          permission-members: read
+          permission-pull-requests: write
 
       - name: Run script
         working-directory: ./scripts/generate-community-data
@@ -65,7 +70,7 @@ jobs:
           npm run ci:prepare
           npm run fix:link-cache
 
-      - name: Create pull request
+      - name: Create pull request # zizmor: ignore[superfluous-actions] Manages the commit, update branch, and PR lifecycle.
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           add-paths: |
