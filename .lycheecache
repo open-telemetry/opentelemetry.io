@@ -516,8 +516,9 @@ https://docs.konghq.com/hub/kong-inc/opentelemetry/,206,1788241902
 https://docs.konghq.com/mesh/latest/guides/otel-metrics/,200,1787916720
 https://docs.kubewarden.io/admission-controller/latest/en/howtos/telemetry/10-opentelemetry-qs.html,200,1788241802
 https://docs.lightstep.com/docs/about-sending-data,200,1788241858
-https://docs.linuxfoundation.org/lfx/easycla/v2-current/contributors,200,1788327797
-https://docs.logz.io/docs/shipping/other/opentelemetry-data/,200,1788327853
+https://docs.linuxfoundation.org/lfx/easycla/v2-current/contributors,200,1787916620
+https://docs.locust.io/en/stable/writing-a-locustfile.html,200,1788324225
+https://docs.logz.io/docs/shipping/other/opentelemetry-data/,206,1787905531
 https://docs.lumigo.io/docs/opentelemetry,200,1788241858
 https://docs.micrometer.io/tracing/reference/api.html#_micrometer_tracing_opentelemetry_setup,200,1787916865
 https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview,200,1788241858
@@ -2689,6 +2690,7 @@ https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quote/,200,17
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/react-native-app/,200,1787981971
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendation/,200,1787916689
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/,200,1787981971
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/telemetry-schema/services/load_generator.yaml,200,1788324225
 https://github.com/open-telemetry/opentelemetry-demo/blob/main/test/telemetry/README.md,200,1787982046
 https://github.com/open-telemetry/opentelemetry-demo/issues/1601,200,1788241857
 https://github.com/open-telemetry/opentelemetry-demo/issues/3720,200,1788241857
@@ -4882,7 +4884,8 @@ https://learn.microsoft.com/windows/win32/procthread/process-working-set,200,178
 https://learn.microsoft.com/windows/win32/sysinfo/about-handles-and-objects,200,1787916983
 https://learn.microsoft.com/windows/win32/wes/defining-severity-levels,200,1788241825
 https://library.humio.com/falcon-logscale/log-shippers-opentelemetry.html,206,1787918248
-https://lightstep.com/blog/apm-is-dying-and-thats-okay,200,1788327796
+https://lightstep.com/blog/apm-is-dying-and-thats-okay,200,1787916619
+https://locust.io/,200,1788324225
 https://logback.qos.ch/,200,1787981967
 https://logging.apache.org/log4j/1.2/,200,1787916956
 https://logging.apache.org/log4j/2.x/,200,1787916956
