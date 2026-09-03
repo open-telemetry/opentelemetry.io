@@ -337,6 +337,7 @@ maintainers:
       - php-approvers
       - php-contrib-approvers
       - php-contrib-maintainers
+      - php-distro-approvers
       - php-maintainers
       - php-triagers
     html_url: https://github.com/brettmc
@@ -1386,6 +1387,7 @@ maintainers:
   - name: reyang
     teams:
       - docs-zh-approvers
+      - docs-zh-maintainers
       - proto-approvers
       - proto-maintainers
       - proto-triagers
@@ -1910,8 +1912,6 @@ approvers:
   - name: jeanbisutti
     teams:
       - docs-fr-approvers
-      - java-instrumentation-approvers
-      - java-instrumentation-triagers
     html_url: https://github.com/jeanbisutti
     avatar_url: https://avatars.githubusercontent.com/u/14811066?v=4
   - name: jinja2
