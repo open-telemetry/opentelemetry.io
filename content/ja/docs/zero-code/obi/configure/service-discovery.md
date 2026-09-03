@@ -3,11 +3,17 @@ title: OBI サービスディスカバリーの設定
 linkTitle: サービスディスカバリー
 description: OBI のサービスディスカバリーコンポーネントが計装対象のプロセスを検索する方法を設定します。
 weight: 20
-default_lang_commit: c060ef7682b152a285d3a2f0c6a84c93ff877070
-drifted_from_default: true
+default_lang_commit: 0fee5e1c7ff48dc9fb39c919c9882a9a8d8da4aa
 # prettier-ignore
 cSpell:ignore: filestorecsi kube-node-lease kube-system rdns replicaset statefulset testserver volumepopulator
 ---
+
+> [!NOTE]
+>
+> このページでは Config v1 のフィールド名と例を使用しています。
+> Config v2 では `capture.policy` と `capture.rules` を使用してください。
+> [Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/)を参照してください。
+> 既存のファイルを変換するには、[移行ガイド](/docs/zero-code/obi/configure/migrate-to-config-v2/)を使用してください。
 
 `OTEL_EBPF_AUTO_TARGET_EXE`、`OTEL_EBPF_OPEN_PORT`、`OTEL_EBPF_AUTO_TARGET_LANGUAGE`、`OTEL_EBPF_TARGET_PID` の各環境変数を使うと、単一のサービスまたは関連する一連のサービスを計装するように OBI を簡単に設定できます。
 
@@ -23,6 +29,7 @@ cSpell:ignore: filestorecsi kube-node-lease kube-system rdns replicaset stateful
 | `skip_go_specific_tracers`<br>`OTEL_EBPF_SKIP_GO_SPECIFIC_TRACERS`                                               | **eBPF** トレーサーが計装対象の実行可能ファイルを検査する際に、Go 固有の検出を無効にします。トレーサーは汎用的な計装の使用にフォールバックしますが、これは一般的に効率が劣ります。詳細は [Go 固有トレーサーのスキップ](#skip-go-specific-tracers) セクションを参照してください。                                                                   | boolean              | false                                                                                                    |
 | `exclude_otel_instrumented_services`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES`                           | すでに OpenTelemetry で計装されているサービスに対する OBI の計装を無効にします。詳細は [OTel で計装済みのサービスの除外](#exclude-otel-instrumented-services) セクションを参照してください。                                                                                                                                                       | boolean              | true                                                                                                     |
 | `exclude_otel_instrumented_services_span_metrics`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES_SPAN_METRICS` | すでに OpenTelemetry で計装されているサービスについて、OBI のスパンメトリクス／サービスグラフメトリクスの生成を無効にします。詳細は [OTel で計装済みのサービスの除外](#exclude-otel-instrumented-services) セクションを参照してください。                                                                                                          | boolean              | false                                                                                                    |
+| `process_context_poll_interval`<br>`OTEL_EBPF_PROCESS_CONTEXT_POLL_INTERVAL`                                     | 実験的な `OTEL_CTX` プロセスコンテキストマッピングを通じて公開されるリソース属性とメタデータの更新を、OBI が計装対象プロセスでチェックする頻度を設定します。`0` に設定すると、OBI がプロセスを最初に検出したときのみチェックします。                                                                                                               | duration             | `1s`                                                                                                     |
 
 ## ディスカバリーサービス {#discovery-services}
 
@@ -347,6 +354,16 @@ OBI は Kubernetes クラスター内のすべてのサービスを監視する�
 不要な設定オーバーヘッドを避けるために、OBI はメトリクスとトレースを公開する OpenTelemetry SDK の呼び出しを監視し、自身のテレメトリーデータを公開しているサービスの計装を自動的にオフにします。
 アプリケーションが生成するテレメトリーデータが OBI の生成するメトリクスやトレースと競合しない場合は、このオプションをオフにしてください。
 
+## プロセスコンテキストエンリッチメント {#process-context-enrichment}
+
+OBI v0.12.1 以降、OBI は実験的な OpenTelemetry `OTEL_CTX` プロセスコンテキストマッピングを公開するプロセスから、文字列のリソース属性とメタデータを読み取ります。
+OBI はプロセスを最初に検出したときにチェックし、その後 1 秒ごとに更新をチェックします。
+明示的に設定されたサービス名と名前空間が引き続き優先されます。
+
+Config v1 では、`discovery.process_context_poll_interval` または `OTEL_EBPF_PROCESS_CONTEXT_POLL_INTERVAL` を使用してポーリング間隔を変更します。
+間隔を `0` に設定すると、初回チェックのみを行い、以降のポーリングを無効にします。
+Config v2 では v0.12.1 のデフォルト間隔が使用され、この設定は公開されていません。
+
 ## サービス名と名前空間の上書き {#override-service-name-and-namespace}
 
 OpenTelemetry または Prometheus を介して計装データをエクスポートする場合、OBI は他の計装ソリューションとの相互運用性を向上させるために、[OpenTelemetry operator のサービス名規約](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/resource-attributes.md#how-resource-attributes-are-calculated-from-the-pods-metadata) に従います。
@@ -369,7 +386,8 @@ OBI は、サービス名と名前空間を自動的に設定するために、�
    - `k8s.job.name`
    - `k8s.pod.name`
    - `k8s.container.name`
-5. 計装対象プロセスの実行可能ファイル名。
+5. Java アプリケーションの場合、Spring Boot のアプリケーション名、JAR マニフェストタイトル、または JAR のベース名のうち、最初に利用可能な値。
+6. 計装対象プロセスの実行可能ファイル名。
 
 前述の項目 3 の Kubernetes ラベルは、設定を介して上書きできます。
 
