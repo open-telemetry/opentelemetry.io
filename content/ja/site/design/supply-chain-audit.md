@@ -4,6 +4,7 @@ description: >-
   コミット済みのサプライチェーン監査テストの背後にある検証の原則
 weight: 21
 default_lang_commit: 692ecf4d65e76d3b094eb9bf730a4cb9d5d29f4f
+drifted_from_default: true
 ---
 
 [サプライチェーン監査][supply-chain audit]は、コミット済みファイルだけからリポジトリの[依存関係制御][controls]を証明します。
