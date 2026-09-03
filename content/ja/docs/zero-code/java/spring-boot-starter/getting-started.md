@@ -1,8 +1,7 @@
 ---
 title: はじめに
 weight: 20
-default_lang_commit: a790e3cf91025305c683047b181120ab6bbae3de
-drifted_from_default: true
+default_lang_commit: 21add8ce39004043e871566b88ce97ad0eba3435
 cSpell:ignore: springboot
 ---
 
@@ -27,7 +26,7 @@ OpenTelemetryスターターを使用する際は、すべてのOpenTelemetry依
 > Mavenを使用する場合は、プロジェクト内の他のBOMよりも前にOpenTelemetry BOMをインポートしてください。
 > たとえば、`spring-boot-dependencies` BOMをインポートする場合は、OpenTelemetry BOMの後に宣言する必要があります。
 >
-> Gradleは依存関係の[最新バージョン](https://docs.gradle.org/current/userguide/dependency_resolution.html#2_perform_conflict_resolution)を選択するため、BOMの順序は重要ではありません。
+> Gradleは依存関係の[最新バージョン](https://docs.gradle.org/current/userguide/dependency_constraints_conflicts.html#sub:resolving-version-conflicts)を選択するため、BOMの順序は重要ではありません。
 
 以下の例は、Mavenを使用してOpenTelemetry BOMをインポートする方法を示しています。
 

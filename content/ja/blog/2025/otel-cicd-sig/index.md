@@ -8,7 +8,7 @@ author: >-
 canonical_url: https://www.cncf.io/blog/2024/11/04/opentelemetry-is-expanding-into-ci-cd-observability/
 issue: 5546
 sig: CI/CD Observability
-default_lang_commit: 5085f8dbc5095f2fdde7de5aa3a37f49c0cf3edc
+default_lang_commit: ded1c6de0f5ac0393d3aa6da1a7c030045d4a8ae
 # prettier-ignore
 cSpell:ignore: andrzej bäck bäckmark chacin cicd frittoli grassi helmuth horovits jemmic joao kamphaus keptn kowalski liatrio molkova robb ruech safyan sarahan shkuro skyscanner slsa stencel suereth tekton voss
 ---
@@ -22,7 +22,7 @@ OpenTelemetry の[セマンティック規約](/docs/specs/semconv/) v1.27.0 の
 ## エンジニアには CI/CD パイプラインのオブザーバビリティが必要 {#engineers-need-observability-into-their-cicd-pipelines}
 
 [CI/CD オブザーバビリティ](https://medium.com/@horovits/fcc6c10c4987)は、ソフトウェアを効率的かつ確実に本番環境へリリースするために不可欠です。
-適切に機能する CI/CD パイプラインは、[Lead Time for Changes DORA メトリクス](https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2)を短縮し、壊れたプロセスや不安定なプロセスの迅速な特定と解決を可能にすることで、ビジネス成果に直接的な影響を与えます。
+適切に機能する CI/CD パイプラインは、[Lead Time for Changes DORA メトリクス](https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2?link-check=no&last-validated=2026-08-28)を短縮し、壊れたプロセスや不安定なプロセスの迅速な特定と解決を可能にすることで、ビジネス成果に直接的な影響を与えます。
 CI/CD ワークフローにオブザーバビリティを統合することで、チームはパイプラインの健全性とパフォーマンスをリアルタイムに監視し、ボトルネックや改善が必要な領域についてのインサイトを得られます。
 
 本番環境の監視に使用されている確立されたツールを活用することで、組織はオブザーバビリティの能力をリリースサイクルにまで拡張し、ソフトウェアデリバリーへの包括的なアプローチを実現できます。
@@ -35,7 +35,7 @@ CI/CD ワークフローにオブザーバビリティを統合することで�
 ツール間の移行は、既存のダッシュボード、レポート、アラートの再実装が必要になるため、困難になります。
 
 リリースパイプラインに関わる複数のツールを統一的に監視する必要がある場合、事態はさらに困難になります。
-ここで[オープンな標準と仕様が重要](https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97)になります。
+ここで[オープンな標準と仕様が重要](https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97?link-check=no&last-validated=2026-08-28)になります。
 オープンな標準と仕様は、ツールやベンダーに依存しない共通の統一言語を作り出し、異なるツール間での一貫したオブザーバビリティを可能にし、チームが CI/CD パイプラインのパフォーマンスを明確かつ包括的に把握できるようにします。
 
 標準化の必要性は、パイプラインで何が起きているかを報告するための言語である、前述のセマンティック規約の作成に関連しています。

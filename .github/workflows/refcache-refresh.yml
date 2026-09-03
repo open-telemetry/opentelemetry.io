@@ -39,8 +39,14 @@ on:
 permissions:
   contents: read
 
+# Overlapping runs would race updates to the shared refresh branch.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
 jobs:
   refcache-refresh:
+    name: Refresh link cache
     # Only run in upstream repository, not in forks
     if: github.repository == 'open-telemetry/opentelemetry.io'
     runs-on: ubuntu-latest
@@ -59,12 +65,15 @@ jobs:
           # the higher privileged docs token is needed to push commits to an existing PR
           client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           # Needed to trigger workflows when pushing new commits to an existing PR
           token: ${{ steps.otelbot-token.outputs.token }}
+          persist-credentials: true # zizmor: ignore[artipacked] Required by this job's later git pushes.
 
       - name: Validate inputs
         run: |
@@ -77,7 +86,7 @@ jobs:
 
       - name: Checkout or create branch
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
         run: |
           if ! git ls-remote --exit-code --heads origin $BRANCH; then
             echo "IS_NEW_BRANCH=true" >> $GITHUB_ENV
@@ -123,9 +132,12 @@ jobs:
           fi
 
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-        with: { node-version-file: .nvmrc }
+        with:
+          node-version-file: .nvmrc
+          cache: npm
 
-      - run: npm install --omit=optional
+      - run: npm run ci:min
+      - run: npm run ci:prepare
 
       - uses: ./.github/actions/install-lychee
 
@@ -157,7 +169,7 @@ jobs:
             echo "DOUBLE_CHECK_NEEDED=true" >> $GITHUB_ENV
           fi
 
-      - uses: browser-actions/setup-chrome@2e1d749697dd1612b833dba4a722266286fbefcd # v2.1.2
+      - uses: browser-actions/setup-chrome@48ad923757ca74d66703209fe939badbdf80f2f4 # v2.2.0
         id: setup-chrome
         if: ${{ env.DOUBLE_CHECK_NEEDED == 'true' }}
         with:
