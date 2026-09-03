@@ -81,21 +81,23 @@
 /.cspell/uk-*.txt @open-telemetry/docs-uk-approvers @open-telemetry/docs-approvers
 /content/uk/      @open-telemetry/docs-uk-approvers @open-telemetry/docs-approvers
 
-# zh (unstaffed)
-/.cspell/zh-*.txt @open-telemetry/docs-zh-approvers @open-telemetry/docs-approvers
-/content/zh/      @open-telemetry/docs-zh-approvers @open-telemetry/docs-approvers
+# zh
+/.cspell/zh-*.txt @open-telemetry/docs-zh-approvers
+/content/zh/      @open-telemetry/docs-zh-approvers
 
 # END locale-owners
 
 # CI/infra resources are owned by docs-maintainers. Last match wins, so this
 # block follows the locale section: infra ownership holds at any depth,
-# including under content/. Keep this list in sync with the `CI/infra` label
-# list in .github/component-label-map.yml (which notes intentional omissions).
+# including under content/. Keep CI/infra paths in sync with the `CI/infra`
+# label list in .github/component-label-map.yml; submodule metadata and gitlinks
+# below are ownership-only exceptions.
 # cSpell:ignore gulpfile
 /.claude/**                     @open-telemetry/docs-maintainers
 /.devcontainer/**               @open-telemetry/docs-maintainers
 /.editorconfig                  @open-telemetry/docs-maintainers
 /.github/**                     @open-telemetry/docs-maintainers
+/.gitmodules                    @open-telemetry/docs-maintainers
 /.gitpod.yml                    @open-telemetry/docs-maintainers
 /.markdown*.*                   @open-telemetry/docs-maintainers
 /content/**/.markdownlint.yaml  @open-telemetry/docs-maintainers
@@ -120,3 +122,5 @@
 /package.json                   @open-telemetry/docs-maintainers
 /scripts/**                     @open-telemetry/docs-maintainers
 /tests/**                       @open-telemetry/docs-maintainers
+# Match the gitlink itself; a directory-only pattern would not.
+/themes/docsy                   @open-telemetry/docs-maintainers
