@@ -356,7 +356,7 @@ może być wdrożona w wielu lokalizacjach.
 
 ### Sygnał {#signal}
 
-Sygnałem jest trasa(#trace), metryka(#metric) lub log(#log). Zobacz
+Sygnałem jest [trasa](#trace), [metryka](#metric) lub [log](#log). Zobacz
 [Sygnały][signals].
 
 ### Odcinek {#span}
