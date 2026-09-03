@@ -3,7 +3,7 @@ title: Glosariusz
 description:
   Definicje i konwencje dotyczące terminów stosowanych w OpenTelemetry.
 weight: 200
-default_lang_commit: 6524d48015ecb576ef4cb4540493b9c7be51e60f
+default_lang_commit: 4f8b46449bcc2980fd81c8e726733e1df1defddd
 ---
 
 Ten glosariusz definiuje terminologię i [pojęcia](/docs/concepts/) specyficzne
@@ -63,9 +63,19 @@ bagażu][baggage].
 
 Liczba unikalnych wartości dla danego [atrybutu](#attribute) lub zestawu
 atrybutów. Wysoka liczebność oznacza wiele unikalnych wartości, co może wpływać
-na wydajność i wymagania magazynowe backendów telemetrii. Na przykład atrybut
-`user_id` miałby wysoką liczebność, natomiast atrybut `status_code` z
-wartościami takimi jak "200", "404", "500" miałby niską liczebność.
+na wydajność i wymagania magazynowe backendów telemetrii oraz na pamięć używaną
+przez SDK [metryk](#metric). Na przykład atrybut `user_id` miałby wysoką
+liczebność, natomiast atrybut `status_code` z wartościami takimi jak "200",
+"404", "500" miałby niską liczebność.
+
+### Limit liczebności {#cardinality-limit}
+
+Konfigurowalny limit liczby unikalnych kombinacji atrybutów śledzonych przez SDK
+[metryk](#metric). Ogranicza zużycie pamięci i obowiązuje dla każdego strumienia
+metryki osobno. Po osiągnięciu limitu kolejne kombinacje są agregowane w jeden
+punkt danych sygnalizujący przepełnienie i oznaczony atrybutem
+`otel.metric.overflow=true`. Zobacz
+[Limity liczebności](/docs/concepts/signals/metrics/#cardinality-limits).
 
 ### Biblioteka kliencka {#client-library}
 
