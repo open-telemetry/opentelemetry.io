@@ -1,7 +1,7 @@
 ---
 title: Help us stabilize environment variable context propagation
 linkTitle: Review environment variable carriers
-date: 2026-09-03
+date: 2026-09-07
 author: '[Robert Pająk](https://github.com/pellared) (Splunk)'
 draft: true
 issue: 11567
