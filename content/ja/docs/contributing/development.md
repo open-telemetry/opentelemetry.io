@@ -6,7 +6,7 @@ what-next: >
   これで、[ビルド](#build)、[サーブ](#serve)、Web サイトファイルの更新を行う準備が整いました。
   変更の提出方法の詳細については、[コンテンツの提出](../pull-requests)を参照してください。
 weight: 60
-default_lang_commit: 4f9b6de11b3a5062c94790b1ca2d7b0fb05114a5
+default_lang_commit: ec40cad3a7ca79640aa6a6f97264fbbe0d00aa87
 drifted_from_default: true
 cSpell:ignore: TOCSS
 ---
@@ -16,8 +16,6 @@ cSpell:ignore: TOCSS
 > ビルドは Linux ベースの環境と macOS で公式にサポートされています。
 > [DevContainers](#devcontainers) などの他の環境は、ベストエフォートベースでサポートされています。
 > Windows でのビルドについては、Windows Subsystem for Linux コマンドライン [WSL][] を使用して Linux と同様の手順に従うことができます。
-
-以下の手順では、この Web サイトの開発環境をセットアップする方法を説明します。
 
 ## クラウド IDE のセットアップ {#cloud-ide-setup}
 
@@ -70,11 +68,20 @@ GitHub [Codespaces][] で作業するには、下記にしたがってくださ�
     nvm install lts && nvm use lts
     ```
 
-4.  npm パッケージとその他の依存関係をインストールします。
+4.  DevContainer が使用する[ロックファイルに厳密に準拠し、スクリプトを抑制するセットアップ][ci-install]で、npm パッケージとその他の依存関係をインストールします。
+
+    ```sh
+    npm run install:safe
+    ```
+
+    または、標準のインストールを使用します。
 
     ```sh
     npm install
     ```
+
+    どちらのインストールでも、コミットされた `package-lock.json` に固定された依存関係のバージョンを使用し、実行されるライフサイクルスクリプトはレビュー済みの許可リストに従います。
+    関連情報: [ロックファイルのメンテナンス][dep-updates]
 
 お好みの IDE を起動してください。{{% param what-next %}}
 
@@ -119,13 +126,9 @@ npm run serve
 
 サイトは [localhost:1313][] でサーブされます。
 
-[Netlify][] のリダイレクトをテストする必要がある場合は、次のコマンドを実行し、[localhost:8888][] にアクセスしてください。
-
-```sh
-npm run serve:netlify
-```
-
 この `serve` コマンドは、ディスクではなくメモリ上のファイルを提供します。
+
+Netlify のリダイレクトをテストするには、PR の[デプロイプレビュー][deploy preview]を使用してください。
 
 macOS で `too many open files` や `pipe failed` というエラーが発生する場合は、ファイルディスクリプタの制限を増やす必要があるかもしれません。
 詳しくは [Hugo のイシューの #6109](https://github.com/gohugoio/hugo/issues/6109) を参照してください。
@@ -209,17 +212,18 @@ npm run check:code-excerpts
 [code-excerpter]: https://github.com/chalin/code-excerpter
 
 <!-- prettier-ignore-start -->
+[ci-install]: /site/build/dependencies/#install-contracts
+[dep-updates]: /site/build/dependencies/#lock-file-maintenance
 [clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
 [cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
+[deploy preview]: ../pull-requests/#site-deploys-and-pr-previews
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
-[localhost:8888]: http://localhost:8888
-[netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
 [nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm-windows]: https://github.com/coreybutler/nvm-windows

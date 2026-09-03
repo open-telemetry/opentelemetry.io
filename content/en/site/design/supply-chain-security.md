@@ -3,14 +3,15 @@ title: Supply-chain security
 description: >-
   Threat model and rationale behind the site's npm dependency controls
 weight: 20
-cSpell:ignore: cooldowns unreviewed
+cSpell:ignore: cooldowns repoint unreviewed
 ---
 
 For the controls themselves and day-to-day procedures, see
 [Dependency management](../../build/dependencies/). Neighboring security topics
-have their own homes: workflow trigger and token privileges in
-[CI workflows](../../build/ci-workflows/#security-model), and vulnerability
-reporting in the [security policy][].
+have their own homes: the design of the audit that verifies these controls in
+[Supply-chain audit design](../supply-chain-audit/), workflow trigger and token
+privileges in [CI workflows](../../build/ci-workflows/#security-model), and
+vulnerability reporting in the [security policy][].
 
 ## Threat model
 
@@ -51,11 +52,21 @@ closing table maps decisions to their enforcement.
     [`package-lock.json`][]. The one exception: a local `npm install` can
     rewrite a disagreeing lock; [verification](#verify) catches such rewrites.
   - **Resolve deliberately**: <a id="deliberate"></a> version resolution happens
-    only in [deliberate dependency updates][], never as an install side effect.
+    only in [deliberate dependency updates][dep-updates], never as an install
+    side effect.
+    - Renovate's scheduled wholesale lock re-resolve ([`lockFileMaintenance`][])
+      is disabled by design: a standing tree-wide registry draw buys only
+      routine transitive freshness, which [alert-driven fixes][security updates]
+      already cover.
   - **Resolve only cooled-down releases**: <a id="cooldown-releases"></a> even
     deliberate resolution ignores releases younger than a [cooldown
     period][cooldown]; registry-side takedowns of malicious releases need a few
     days to land.
+    - One designed exception: [Dependabot security updates][security updates]
+      ship known-vulnerability fixes immediately.
+    - The cooldown covers registry-resolved packages; the Node toolchain pin
+      follows the [floor policy][npm engines floor] instead, since signed
+      project builds don't share the registry's takedown-lag risk.
 - _A package's install-time scripts run attacker code on contributor hosts and
   build machines: the worm's payload path._
   - **Run only reviewed lifecycle scripts**: <a id="scripts"></a> [lifecycle
@@ -65,6 +76,10 @@ closing table maps decisions to their enforcement.
     - Reviews record denials too, so silence always means unreviewed.
     - Exceptions are named and re-enabled inline at the point of use, never by
       weakening the default posture.
+- _The one re-enabled hook fetches the pinned Hugo binary; the installer honors
+  environment overrides that can repoint or unpin that fetch._
+  - **Refuse Hugo installer overrides**: <a id="hugo-env"></a> the [rebuild
+    wrapper][install contracts] refuses to run while any of them is set.
 - _Netlify's [own npm install][netlify-deps] runs unattended, outside the
   scripts this repository controls, and can't be disabled._
   - **Neutralize the auto-install**: <a id="auto-install"></a> the configuration
@@ -88,13 +103,14 @@ Enforcement at a glance:
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | [Minimize dependencies][]               | Maintainer judgment in dependency review; no mechanical control                                                  |
 | [Install from the lock][]               | `npm ci` in every [install contract][install contracts]                                                          |
-| [Resolve deliberately][]                | Convention, backed by the lock: an unexpected resolution rewrites it, which verification flags                   |
-| [Resolve only cooled-down releases][]   | The [cooldown][] control, for npm and Renovate alike                                                             |
+| [Resolve deliberately][]                | [Convention][dep-updates] and disabled [`lockFileMaintenance`][] in [`renovate.json5`][]                         |
+| [Resolve only cooled-down releases][]   | [Cooldown][] in npm and [Renovate][`renovate.json5`]                                                             |
 | [Run only reviewed lifecycle scripts][] | The [allowlist][] in strict mode; unreviewed fails the install                                                   |
+| [Refuse Hugo installer overrides][]     | The [rebuild wrapper][install contracts]'s environment screen, before any rebuild attempt                        |
 | [Neutralize the auto-install][]         | The [inert auto-install][] control                                                                               |
 | [Invoke bins, not names][]              | The [no bare npx][] rule; review discipline, no mechanical control                                               |
 | [Fail closed on old npm][]              | The [npm engines floor][] with strict engine checking                                                            |
-| [Verify, don't trust][]                 | [Clean-working-tree checks][install contracts] failing the build; a `postinstall` warning on local lock rewrites |
+| [Verify, don't trust][]                 | [Supply-chain audit][], [clean-working-tree checks][install contracts], a `postinstall` warning on lock rewrites |
 
 ## Prior art
 
@@ -104,19 +120,22 @@ Enforcement at a glance:
     `allowScripts`, version-exact entries included.
 - Release cooldowns are established practice:
   - [pnpm defers][] releases younger than a day by default.
-  - The 3-day value follows the long-standing [Renovate
-    `minimumReleaseAge`][renovate] convention.
+  - Renovate's npm [`minimumReleaseAge`][renovate] security preset sets 3 days,
+    tracking npm's 72-hour unpublish window; the longer value used here is in
+    line with cooldowns adopted elsewhere in the ecosystem.
 - The control set maps onto established framework guidance:
   - [TUF's attack taxonomy][tuf]: arbitrary software installation,
     mix-and-match, and extraneous-dependencies attacks.
   - The [OpenSSF npm guide][openssf]: lock-exact CI installs.
 
 <!-- prettier-ignore-start -->
+[`lockFileMaintenance`]: https://docs.renovatebot.com/configuration-options/#lockfilemaintenance
 [`package-lock.json`]: https://docs.npmjs.com/cli/configuring-npm/package-lock-json
+[`renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 [allowlist]: ../../build/dependencies/#lifecycle-script-allowlist
 [control]: ../../build/dependencies/#controls
 [cooldown]: ../../build/dependencies/#release-cooldown
-[deliberate dependency updates]: ../../build/dependencies/#updating
+[dep-updates]: ../../build/dependencies/#updating
 [Fail closed on old npm]: #old-npm
 [inert auto-install]: ../../build/dependencies/#inert-netlify-auto-install
 [install contracts]: ../../build/dependencies/#install-contracts
@@ -132,13 +151,16 @@ Enforcement at a glance:
 [openssf]: https://github.com/ossf/package-manager-best-practices/blob/main/published/npm.md
 [pnpm defers]: https://pnpm.io/settings/dependency-resolution
 [pnpm]: https://pnpm.io/settings/build
-[renovate]: https://docs.renovatebot.com/configuration-options/#minimumreleaseage
+[Refuse Hugo installer overrides]: #hugo-env
+[renovate]: https://docs.renovatebot.com/presets-security/#securityminimumreleaseagenpm
 [Resolve deliberately]: #deliberate
 [Resolve only cooled-down releases]: #cooldown-releases
 [RFC #54]: https://github.com/npm/rfcs/blob/main/accepted/0054-make-scripts-install-opt-in.md
 [Run only reviewed lifecycle scripts]: #scripts
 [security notice]: https://github.com/open-telemetry/opentelemetry.io/issues/11210
 [security policy]: https://github.com/open-telemetry/opentelemetry.io/security/policy
+[security updates]: ../../build/dependencies/#security-updates
+[Supply-chain audit]: ../../build/dependencies/#audit
 [tuf]: https://theupdateframework.io/docs/security/
 [Verify, don't trust]: #verify
 [Yarn]: https://yarnpkg.com/advanced/lifecycle-scripts
