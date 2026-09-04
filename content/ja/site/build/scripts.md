@@ -4,6 +4,7 @@ description: >-
   ラベル管理、リンクチェック、レジストリ更新などに CI ワークフローやローカル開発で使用されるシェルスクリプト。
 weight: 30
 default_lang_commit: 1cc5320d70b48ffcf7bc62af0657bc7ef1d001a9
+drifted_from_default: true
 ---
 
 すべてのスクリプトは [`.github/scripts/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/.github/scripts) 配下にあります。
