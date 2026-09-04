@@ -5,6 +5,7 @@ weight: 40
 cascade:
   collector_vers: 0.159.0
 default_lang_commit: 126c82550c0d12caf7ab4258e1b1ab09d977fd8f
+drifted_from_default: true
 cSpell:ignore: distro
 ---
 
