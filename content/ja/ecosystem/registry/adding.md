@@ -2,10 +2,11 @@
 title: レジストリへの追加
 linkTitle: 追加
 description: レジストリにエントリーを追加する方法。
-default_lang_commit: bf0881aa9c57519b487bf6b5c469ca7f188dceed
-drifted_from_default: true
+default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
 cSpell:ignore: zpages
 ---
+
+{{% include freeze-notice.md %}}
 
 OpenTelemetry のインテグレーションをメンテナンスまたはコントリビュートしていますか？
 あなたのプロジェクトを[レジストリ](../)で紹介したいと考えています！
@@ -32,6 +33,20 @@ OpenTelemetry のインテグレーションをメンテナンスまたはコン
 >
 > これは商用/プロプライエタリライセンスが許可される唯一のレジストリタイプです。
 
+### `api` {#api}
+
+**用途**: 言語向けの OpenTelemetry API を実装するパッケージ。
+計装されたコードやライブラリが依存するインターフェイスおよび no-op 実装であり、SDK には依存しません。
+
+**例**: Ruby の `opentelemetry-api`、`opentelemetry-metrics-api`、`opentelemetry-logs-api` gem。
+
+### `connector` {#connector}
+
+**用途**: OpenTelemetry Collector のコネクターコンポーネント。
+一方のパイプラインのエクスポーターかつもう一方のレシーバーとして動作することで、2つのパイプラインを接続し、シグナルタイプ間の変換も可能です。
+
+**例**: カウントコネクター、スパンからメトリクスへのコネクター、フェイルオーバーコネクター。
+
 ### `core` {#core}
 
 **用途**: OpenTelemetry プロジェクトのコアコンポーネント専用。
@@ -51,6 +66,12 @@ OpenTelemetry のインテグレーションをメンテナンスまたはコン
 
 **例**: 認証、設定ソース/プロバイダー、サービスディスカバリ、ヘルスチェック/pprof/zpages、または Collector/SDK の動作を拡張するその他のコンポーネント。
 
+### `id-generator` {#id-generator}
+
+**用途**: トレース ID およびスパン ID の生成方法をカスタマイズする SDK コンポーネント。
+
+**例**: AWS X-Ray 互換の ID ジェネレーター。
+
 ### `instrumentation` {#instrumentation}
 
 **用途**: 特定のライブラリ/フレームワーク向けの計装ライブラリまたはネイティブ計装。
@@ -64,11 +85,21 @@ OpenTelemetry のインテグレーションをメンテナンスまたはコン
 
 **例**: Java SLF4J/Log4j/Logback、Python logging、JavaScript Winston/Pino、Go log/slog/zap などのフレームワーク向けのブリッジ/ハンドラー/アペンダー。
 
+### `metric-producer` {#metric-producer}
+
+**用途**: サードパーティのソースからのメトリクスを SDK メトリクスリーダーにブリッジする SDK コンポーネント。
+
 ### `processor` {#processor}
 
 **用途**: OpenTelemetry Collector のプロセッサーコンポーネント。
 
 **例**: バッチプロセッサー、属性プロセッサー、サンプリングプロセッサー、または Collector パイプライン内でテレメトリーデータを処理するコンポーネント。
+
+### `propagator` {#propagator}
+
+**用途**: 特定のワイヤーフォーマットでプロセス境界を越えてトレースコンテキストとバゲージを伝搬するコンテキストプロパゲーター。
+
+**例**: B3、Jaeger、または AWS X-Ray プロパゲーター。
 
 ### `provider` {#provider}
 
@@ -91,6 +122,24 @@ OpenTelemetry のインテグレーションをメンテナンスまたはコン
 **用途**: 言語固有の SDK 向けのリソースディテクター。
 
 **例**: AWS リソースディテクター、GCP リソースディテクター、またはリソース情報を自動検出してテレメトリーに付与するコンポーネント。
+
+### `sampler` {#sampler}
+
+**用途**: どのスパンを記録・エクスポートするかを決定する SDK サンプラー。
+
+**例**: AWS X-Ray リモートサンプラーまたはルールベースのサンプラー。
+
+### `sdk` {#sdk}
+
+**用途**: 言語向けの OpenTelemetry SDK を実装するパッケージ。
+
+**例**: Ruby の `opentelemetry-sdk`、`opentelemetry-metrics-sdk`、`opentelemetry-logs-sdk` gem。
+
+### `semantic-convention` {#semantic-convention}
+
+**用途**: 言語向けのセマンティック規約定数を提供するパッケージ。
+
+**例**: Ruby の `opentelemetry-semantic_conventions` gem。
 
 ### `utilities` {#utilities}
 
