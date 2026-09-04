@@ -1783,12 +1783,6 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/Cirilla-zmh
     avatar_url: https://avatars.githubusercontent.com/u/84360903?v=4
-  - name: CodeBlanch
-    teams:
-      - dotnet-approvers
-      - dotnet-triagers
-    html_url: https://github.com/CodeBlanch
-    avatar_url: https://avatars.githubusercontent.com/u/28367120?v=4
   - name: crobert-1
     teams:
       - collector-contrib-approvers
@@ -2604,6 +2598,9 @@ members:
   - name: cnnradams
     html_url: https://github.com/cnnradams
     avatar_url: https://avatars.githubusercontent.com/u/10487992?v=4
+  - name: CodeBlanch
+    html_url: https://github.com/CodeBlanch
+    avatar_url: https://avatars.githubusercontent.com/u/28367120?v=4
   - name: colelaven
     html_url: https://github.com/colelaven
     avatar_url: https://avatars.githubusercontent.com/u/82364622?v=4
