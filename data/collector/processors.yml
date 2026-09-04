@@ -2,6 +2,13 @@
 # This file is automatically updated by scripts/collector-sync
 
 ---
+- name: adaptivetailsamplingprocessor
+  display_name: Adaptive Tail Sampling Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: development
 - name: attributesprocessor
   display_name: Attributes Processor
   repo: contrib
@@ -80,13 +87,6 @@
     - k8s
   stability:
     logs: alpha
-- name: dynamicsamplingprocessor
-  display_name: Dynamic Sampling Processor
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    traces: development
 - name: filterprocessor
   display_name: Filter Processor
   repo: contrib
@@ -291,6 +291,13 @@
     logs: alpha
     metrics: alpha
     traces: alpha
+- name: signingprocessor
+  display_name: signingprocessor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
 - name: spanprocessor
   display_name: Span Processor
   repo: contrib

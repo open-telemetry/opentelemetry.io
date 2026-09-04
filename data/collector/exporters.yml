@@ -301,6 +301,7 @@
   stability:
     logs: alpha
     traces: alpha
+    metrics: development
 - name: otelarrowexporter
   display_name: OpenTelemetry Arrow Exporter
   repo: contrib
