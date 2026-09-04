@@ -127,7 +127,7 @@ observability for AI agents lately, so I like the
 
 **KOHEI SUGIMOTO:** Metrics. Among the many kinds of telemetry data, metrics can
 nicely absorb the others and contribute to things like cost optimization and
-summarization. That's why.
+summarization.
 
 ## Join us!
 
