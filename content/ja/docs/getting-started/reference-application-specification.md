@@ -68,7 +68,7 @@ cspell:ignore: uninstrumented rolldice
 - `service.*` 属性は環境変数（`OTEL_SERVICE_NAME`、`OTEL_RESOURCE_ATTRIBUTES`）で追加する必要があります。
 - その他の `resource detectors` は SDK の初期化に追加する必要があります。
 - テレメトリーのエクスポートには、`stdout`/`console` および `otlp` のエクスポーターを使用する必要があります。
-- 実装可能であれば `OTEL_LOG_LEVEL` などで OpenTelemetry コンポーネントの診断ログを有効にするオプションが必要です。
+- OpenTelemetry コンポーネントの診断ログを有効にするオプションが必要であり、理想的には `OTEL_LOG_LEVEL` などを介して実装されるのが望ましいです。
 - 使用する HTTP ライブラリに対する計装ライブラリを追加する方法が必要です。
   この計装ライブラリは HTTP の安定したセマンティック規約を使用する必要があります。
   ほとんどのシグナルをカバーするライブラリが望ましく、理想的にはトレースとメトリクスの両方に対応しているものを選びます。
