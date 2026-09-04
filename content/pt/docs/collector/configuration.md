@@ -109,12 +109,11 @@ Collector com um receiver, um processor, um exporter e três extensions.
 
 > [!WARNING]
 >
-> Embora seja geralmente preferível vincular rotas (_endpoints_) ao `localhost`
-> quando todos os clientes são locais, nossos exemplos de configuração usam o
-> endereço "não especificado" `0.0.0.0` por conveniência. O padrão do Collector
-> é `localhost`. Para detalhes sobre qualquer uma dessas escolhas como valor de
-> configuração de rota, consulte [Proteções contra ataques de negação de >
-> serviço][].
+> Embora seja geralmente preferível vincular rotas ao `localhost` quando todos
+> os clientes são locais, nossos exemplos de configuração usam o endereço "não
+> especificado" `0.0.0.0` por conveniência. O padrão do Collector é `localhost`.
+> Para detalhes sobre qualquer uma dessas escolhas como valor de configuração de
+> rota, consulte [Proteções contra ataques de negação de serviço][].
 
 [Proteções contra ataques de negação de serviço]:
   https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md#safeguards-against-denial-of-service-attacks
@@ -673,16 +672,16 @@ service:
       exporters: [zipkin]
 ```
 
-### Telemetria
+### Telemetria {#telemetry}
 
 A seção de configuração `telemetry` é onde se configura a observabilidade do
 próprio Collector. Ela consiste em duas subseções: `logs` e `metrics`. Para
 aprender como configurar esses sinais, consulte
 [Ativar telemetria interna no Collector](/docs/collector/internal-telemetry#activate-internal-telemetry-in-the-collector).
 
-## Outras informações
+## Outras informações {#other-information}
 
-### Variáveis de ambiente
+### Variáveis de ambiente {#environment-variables}
 
 O uso e a expansão de variáveis de ambiente são suportados na configuração do
 Collector. Por exemplo, para usar os valores armazenados nas variáveis de
@@ -717,7 +716,7 @@ exporters:
     namespace: $$DataVisualization
 ```
 
-### Suporte a proxy
+### Suporte a proxy {#proxy-support}
 
 Exporters que usam o pacote [`net/http`](https://pkg.go.dev/net/http) respeitam
 as seguintes variáveis de ambiente de proxy:
@@ -730,7 +729,7 @@ Se definidas no momento da inicialização do Collector, os exporters,
 independentemente do protocolo, enviarão o tráfego pelo proxy ou o ignorarão
 conforme definido por essas variáveis de ambiente.
 
-### Autenticação
+### Autenticação {#authentication}
 
 A maioria dos receivers que expõem uma porta HTTP ou gRPC pode ser protegida
 usando o mecanismo de autenticação do Collector. Da mesma forma, a maioria dos
@@ -871,7 +870,7 @@ Isso cria dois certificados:
 - Um certificado de cliente em `cert.pem`, assinado pela CA OpenTelemetry
   Example, com a chave associada em `cert-key.pem`.
 
-#### Usando certificados no Collector
+#### Usando certificados no Collector {#using-certificates-in-the-collector}
 
 Depois de obter os certificados, configure o Collector para usá-los.
 
@@ -977,7 +976,7 @@ As seguintes configurações estão disponíveis para configuração de TLS:
 
 [dcc]: /docs/concepts/components/#collector
 
-## Sobrescrever configurações
+## Sobrescrever configurações {#override-settings}
 
 É possível sobrescrever configurações do Collector usando a opção `--set`. As
 configurações definidas com este método são combinadas na configuração final
@@ -986,7 +985,7 @@ após todas as fontes `--config` serem resolvidas e combinadas.
 Os exemplos a seguir mostram como sobrescrever configurações dentro de seções
 aninhadas:
 
-### Propriedade simples
+### Propriedade simples {#simple-property}
 
 A opção `--set` sempre recebe um par chave/valor, e é usada assim:
 `--set key=value`. O equivalente em YAML disso é:
@@ -995,7 +994,7 @@ A opção `--set` sempre recebe um par chave/valor, e é usada assim:
 key: value
 ```
 
-### Chaves aninhadas complexas
+### Chaves aninhadas complexas {#complex-nested-keys}
 
 Use o duplo dois-pontos (`::`) no nome do par como separador de chave para
 referenciar valores de mapas aninhados. Por exemplo, `--set outer::inner=value`
@@ -1006,7 +1005,7 @@ outer:
   inner: value
 ```
 
-### Múltiplos valores
+### Múltiplos valores {#multiple-values}
 
 Para definir múltiplos valores, especifique múltiplas _flags_ --set, então
 `--set a=b --set c=d` se torna:
@@ -1016,7 +1015,7 @@ a: b
 c: d
 ```
 
-### Valores de array
+### Valores de array {#array-values}
 
 Arrays podem ser expressos envolvendo os valores em `[]`. Por exemplo,
 `--set "key=[a, b, c]"` é traduzido para:
@@ -1041,7 +1040,7 @@ recomendado.
 >    propriedade é "::". Por exemplo, `--set "name={a::b: c}"` é equivalente a
 >    `--set name::a::b=c`.
 
-## Incorporando outros provedores de configuração
+## Incorporando outros provedores de configuração {#embedding-other-configuration-providers}
 
 Um provedor de configuração pode fazer referências a outros provedores de
 configuração, como no exemplo a seguir:
@@ -1063,7 +1062,7 @@ service:
       exporters: [otlp_grpc]
 ```
 
-## Como verificar os componentes disponíveis em uma distribuição
+## Como verificar os componentes disponíveis em uma distribuição {#how-to-check-components-available-in-a-distribution}
 
 Use o subcomando build-info. Abaixo está um exemplo:
 
@@ -1090,7 +1089,7 @@ extensions:
   - zpages
 ```
 
-## Como examinar a configuração final
+## Como examinar a configuração final {#how-to-examine-the-final-configuration}
 
 > [!CAUTION]
 >
@@ -1108,7 +1107,7 @@ Note que, por padrão, a configuração só será exibida quando for válida, e 
 informações sensíveis serão ocultadas. Para exibir uma configuração
 potencialmente inválida, use `--validate=false`.
 
-### Como visualizar campos sensíveis
+### Como visualizar campos sensíveis {#how-to-view-sensitive-fields}
 
 Use `print-config` com `--mode=unredacted` e
 `--feature-gates=otelcol.printInitialConfig`:
@@ -1117,7 +1116,7 @@ Use `print-config` com `--mode=unredacted` e
 otelcol print-config --mode=unredacted --config=file:examples/local/otel-config.yaml
 ```
 
-### Como exibir a configuração final em formato JSON
+### Como exibir a configuração final em formato JSON {#how-to-print-the-final-configuration-in-json-format}
 
 > [!CAUTION]
 >
