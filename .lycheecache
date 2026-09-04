@@ -4199,6 +4199,8 @@ https://github.com/open-telemetry/opentelemetry-specification/blob/9a946352ecdec
 https://github.com/open-telemetry/opentelemetry-specification/blob/af2606810c19c31850738d1fd105b4eca7aa8c98/spec-compliance-matrix.md?from_branch=main#declarative-configuration,200,1788241803
 https://github.com/open-telemetry/opentelemetry-specification/blob/af2606810c19c31850738d1fd105b4eca7aa8c98/spec-compliance-matrix.md?from_branch=main,200,1787916776
 https://github.com/open-telemetry/opentelemetry-specification/blob/b72b9e1127391871eaedee841895ff9ce52d11f3/oteps/trace/0250-Composite_Samplers.md?from_branch=main,200,1787916777
+https://github.com/open-telemetry/opentelemetry-specification/blob/eec6fadba46a5002f55ff88ce4405d58a1aa4aec/spec-compliance-matrix.md,200,1788422896
+https://github.com/open-telemetry/opentelemetry-specification/blob/eec6fadba46a5002f55ff88ce4405d58a1aa4aec/specification/context/env-carriers.md,200,1788422896
 https://github.com/open-telemetry/opentelemetry-specification/blob/fd43145dde7e5192ebc59a20992d98a3e6af5553/oteps/4430-span-event-api-deprecation-plan.md,200,1787916713
 https://github.com/open-telemetry/opentelemetry-specification/blob/main/development/trace/zpages.md,200,1787981975
 https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0155-external-modules.md#contrib-components,200,1787981970
@@ -4257,6 +4259,8 @@ https://github.com/open-telemetry/opentelemetry-specification/blob/v1.59.0/speci
 https://github.com/open-telemetry/opentelemetry-specification/issues/1413,200,1787916777
 https://github.com/open-telemetry/opentelemetry-specification/issues/3967,200,1788241827
 https://github.com/open-telemetry/opentelemetry-specification/issues/4126,206,1787918248
+https://github.com/open-telemetry/opentelemetry-specification/issues/4771,200,1788422897
+https://github.com/open-telemetry/opentelemetry-specification/issues/5040,200,1788422897
 https://github.com/open-telemetry/opentelemetry-specification/issues/5109,200,1787917016
 https://github.com/open-telemetry/opentelemetry-specification/issues/530,200,1787916993
 https://github.com/open-telemetry/opentelemetry-specification/issues/617,200,1787981974
@@ -4964,6 +4968,7 @@ https://github.com/tidal,200,1787916710
 https://github.com/tiffany76,200,1787981979
 https://github.com/tigrannajaryan,200,1787916695
 https://github.com/timetinytim,200,1787981975
+https://github.com/tobert/otel-cli,200,1788422896
 https://github.com/tobiasstadler,200,1787916710
 https://github.com/tokio-rs/tracing-opentelemetry,200,1787916884
 https://github.com/tombrk,200,1787981985
