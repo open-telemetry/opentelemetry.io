@@ -1,0 +1,27 @@
+# cSpell:ignore bagowix
+title: interlock-cb
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - metrics
+  - circuit-breaker
+  - resilience
+license: MIT
+description:
+  Native OpenTelemetry metrics for interlock, a circuit breaker for Python —
+  call duration, rejected calls, state transitions, resets, and coordinated
+  storage and pipeline events.
+authors:
+  - name: bagowix
+    url: https://github.com/bagowix
+urls:
+  repo: https://github.com/bagowix/interlock
+  docs: https://bagowix.github.io/interlock/guides/observability/
+package:
+  name: interlock-cb
+  registry: pip
+createdAt: '2026-08-06'
+isNative: true
+isFirstParty: false
