@@ -632,7 +632,6 @@ https://docs.otterize.com/reference/network-mapper/helm-chart#opentelemetry-expo
 https://docs.particular.net/nservicebus/operations/opentelemetry,200,1788414914
 https://docs.particular.net/samples/open-telemetry/prometheus-grafana/#reporting-metric-values,200,1788327799
 https://docs.payara.fish/community/docs/Technical%20Documentation/MicroProfile/OpenTelemetry%20and%20OpenTracing.html,200,1788241802
-https://docs.php-http.org/en/latest/clients.html,200,1788414913
 https://docs.php-http.org/en/latest/clients.html,200,1787916628
 https://docs.pytest.org/,200,1787480976
 https://docs.python.org/3/library/gc.html#gc.get_stats,200,1787916969
@@ -773,7 +772,6 @@ https://en.wikipedia.org/wiki/Subnormal_number,200,1787916990
 https://en.wikipedia.org/wiki/Tc_%28Linux%29,200,1787916953
 https://en.wikipedia.org/wiki/Time_series_database,200,1787981969
 https://en.wikipedia.org/wiki/Unconference,200,1787917020
-https://en.wikipedia.org/wiki/Working_directory,200,1788414914
 https://en.wikipedia.org/wiki/Working_directory,200,1787916630
 https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a,206,1786509580
 https://erinmeyer.com/books/the-culture-map/,200,1788241832
@@ -856,9 +854,6 @@ https://gitea.io/,200,1787916963
 https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/,200,1788327783
 https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/,200,1787981970
 https://github.com/,200,1788327802
-https://github.com/AaronRM,200,1788414929
-https://github.com/AbhiPrasad,200,1788414931
-https://github.com/AlchemyDing,200,1788414931
 https://github.com/AaronRM,200,1787916703
 https://github.com/AbhiPrasad,200,1787916705
 https://github.com/Adii-45,200,1788493959
@@ -930,7 +925,6 @@ https://github.com/DrewCorlin/opentelemetry-node-bundler-plugins/tree/main/packa
 https://github.com/DrewCorlin/opentelemetry-node-bundler-plugins/tree/main/packages/opentelemetry-webpack-plugin-node,200,1787916952
 https://github.com/DylanRussell,200,1788414926
 https://github.com/Dynatrace/dynatrace-otel-collector,200,1788327790
-https://github.com/E-STAT,200,1788414997
 https://github.com/E-STAT,200,1787916712
 https://github.com/Eason09053360,200,1788493959
 https://github.com/Elizabeth-Mathew1,200,1787916713
@@ -3249,8 +3243,6 @@ https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/agent#readme,
 https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/chatbot#readme,200,1788414914
 https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/mcp#readme,200,1788414915
 https://github.com/open-telemetry/opentelemetry-demo/tree/main/test,200,1787981971
-https://github.com/open-telemetry/opentelemetry-dotnet,200,1788414918
-https://github.com/open-telemetry/opentelemetry-dotnet-contrib,200,1788414918
 https://github.com/open-telemetry/opentelemetry-demo/tree/main/test/telemetry,200,1787480976
 https://github.com/open-telemetry/opentelemetry-dotnet,200,1787916692
 https://github.com/open-telemetry/opentelemetry-dotnet-contrib,200,1787916692
@@ -3542,10 +3534,6 @@ https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/R
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/declarative-config-bridge/src/main/java/io/opentelemetry/instrumentation/config/bridge/ConfigPropertiesBackedDeclarativeConfigProperties.java,200,1788414912
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/contributing/javaagent-structure.md,200,1787981968
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks,200,1788327797
-https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md,200,1788414911
-https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/build.gradle.kts,200,1788414912
-https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metrics,200,1788414913
-https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md,200,1788414915
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md,200,1787916625
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/build.gradle.kts,200,1787916626
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metrics,200,1787916625
