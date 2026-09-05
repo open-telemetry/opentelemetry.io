@@ -1,5 +1,5 @@
 ---
-title: 5分で始める OpenTelemetry .NET トレース - コンソールアプリケーション
+title: トレースを始める - コンソール
 linkTitle: コンソール
 description: .NET コンソールアプリケーションで OpenTelemetry トレースを使用する方法を学びます
 weight: 10
