@@ -6,7 +6,8 @@ weight: 200
 aliases: [/docs/collector/custom-collector]
 params:
   providers-vers: v1.48.0
-default_lang_commit: 331c76c3500213c83ace2e30a407218ddedda628
+default_lang_commit: c2343a16d205913e724abb7a959ec87ff7e80f89 # patched
+drifted_from_default: true
 cSpell:ignore: darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
@@ -148,21 +149,16 @@ YAMLマニフェストファイルで、`ocb`を構成します。
          version-from-registry collector-receiver-otlp %}}
 
    providers:
-     - gomod:
-         go.opentelemetry.io/collector/confmap/provider/envprovider {{% param
-         providers-vers %}}
-     - gomod:
-         go.opentelemetry.io/collector/confmap/provider/fileprovider {{% param
-         providers-vers %}}
-     - gomod:
-         go.opentelemetry.io/collector/confmap/provider/httpprovider {{% param
-         providers-vers %}}
-     - gomod:
-         go.opentelemetry.io/collector/confmap/provider/httpsprovider {{% param
-         providers-vers %}}
-     - gomod:
-         go.opentelemetry.io/collector/confmap/provider/yamlprovider {{% param
-         providers-vers %}}
+     - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider {{%
+         version-from-registry collector-confmap-provider-envprovider %}}
+     - gomod: go.opentelemetry.io/collector/confmap/provider/fileprovider {{%
+         version-from-registry collector-confmap-provider-fileprovider %}}
+     - gomod: go.opentelemetry.io/collector/confmap/provider/httpprovider {{%
+         version-from-registry collector-confmap-provider-httpprovider %}}
+     - gomod: go.opentelemetry.io/collector/confmap/provider/httpsprovider {{%
+         version-from-registry collector-confmap-provider-httpsprovider %}}
+     - gomod: go.opentelemetry.io/collector/confmap/provider/yamlprovider {{%
+         version-from-registry collector-confmap-provider-yamlprovider %}}
    ```
 
 > [!TIP]
