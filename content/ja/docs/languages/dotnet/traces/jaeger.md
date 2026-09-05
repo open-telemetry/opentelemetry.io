@@ -112,7 +112,7 @@ Jaeger UI にアプリケーションのトレースが表示されるはずで�
 
 ## コードの理解 {#understanding-the-code}
 
-### トレースプロバイダーの設定 {#trace-provider-configuration}
+### トレーサープロバイダーの設定 {#trace-provider-configuration}
 
 アプリケーションは以下のように OpenTelemetry を設定します。
 
