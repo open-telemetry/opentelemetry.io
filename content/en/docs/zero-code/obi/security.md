@@ -76,6 +76,31 @@ OBI requires the following list of capabilities for its functionality:
 | `CAP_SYS_RESOURCE`       | Increase the amount of locked memory available, **kernels < 5.11** only                                                                                                                                                           |
 | `CAP_SYS_ADMIN`          | Library-level Go trace-context propagation via `bpf_probe_write_user()` and access to BTF data by the BPF metrics exporter                                                                                                        |
 
+## Required host mount for context propagation
+
+Starting with OBI v0.12.0, on kernel versions 6.6.128+, 6.12.75+, 6.18.14+,
+and 6.19+, OBI requires the host's `/sys/kernel/tracing` directory to be
+mounted into the OBI container at the same path. OBI uses this to run its
+FIONREAD compensation check. If this mount is missing, OBI cannot perform
+this check and automatically disables context propagation to avoid
+producing incorrect trace data.
+
+To provide this mount in Kubernetes, add the following to your Pod spec:
+
+```yaml
+spec:
+  containers:
+    - name: obi
+      volumeMounts:
+        - name: tracefs
+          mountPath: /sys/kernel/tracing
+  volumes:
+    - name: tracefs
+      hostPath:
+        path: /sys/kernel/tracing
+        type: Directory
+```
+
 ### Performance monitoring tasks
 
 Access to `CAP_PERFMON` is subject to `perf_events` access controls governed by
