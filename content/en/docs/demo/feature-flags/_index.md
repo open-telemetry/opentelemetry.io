@@ -47,6 +47,7 @@ user interface:
 | `kafkaQueueProblems`                | Kafka           | Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike.                                        |
 | `imageSlowLoad`                     | Frontend        | Utilizes envoy fault injection, produces a delay in loading of product images in the frontend.                                              |
 | `failedReadinessProbe`              | Cart            | Force the readiness probe to fail with unhealthy status, simulating a pod "NotReady" condition. Applicable for Kubernetes deployments only. |
+| `productCatalogLockContention`      | Product Catalog | Simulate database lock contention by holding an `ACCESS EXCLUSIVE` lock on the `catalog.products` table, blocking other product catalog queries.  |
 
 ## Guided Debugging Scenario
 
