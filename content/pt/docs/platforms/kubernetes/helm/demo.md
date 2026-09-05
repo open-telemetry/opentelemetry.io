@@ -2,7 +2,6 @@
 title: OpenTelemetry Demo Chart
 linkTitle: Demo Chart
 default_lang_commit: fe623719bc24346e9dcd77e9769026cf1c720cc5
-drifted_from_default: true
 ---
 
 A [Demo do OpenTelemetry](/docs/demo/) é um sistema distribuído baseado em

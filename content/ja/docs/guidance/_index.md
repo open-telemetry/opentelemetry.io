@@ -3,6 +3,7 @@ title: ブループリントとリファレンス実装
 description: 一般的な環境でOpenTelemetryを導入・実装する際のベストプラクティスに関するブループリントとサンプルアーキテクチャ
 weight: 600
 default_lang_commit: 62c8cb2f4ea2e121cab3b4880f5cdf8c21aaea13
+drifted_from_default: true
 ---
 
 OpenTelemetry を大規模に採用するには、個々のコンポーネントを設定するだけでは不十分です。
