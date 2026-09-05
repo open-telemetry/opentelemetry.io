@@ -46,8 +46,8 @@ OpenTelemetry defines four signal types, all carried over the same
   users can see request flows across services and correlate them with logs.
 - **[Metrics](/docs/concepts/signals/metrics/):** Counters, gauges, and
   histograms (e.g. request rates, latency, error rates).
-- **[Profiles](/docs/concepts/signals/profiles/):** CPU, memory, and other
-  profiling data captured during code execution.
+- **[Profiles](/docs/concepts/signals/profiles/):** samples that show
+  where applications consume resources during execution.
 
 > [!NOTE] Profiles is in public alpha
 >
