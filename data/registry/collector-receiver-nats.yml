@@ -1,0 +1,23 @@
+# cSpell:ignore natsreceiver synadia
+title: NATS Collector Receiver
+registryType: receiver
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+  - nats
+license: Apache 2.0
+description: Consumes OTLP traces, metrics, and logs off NATS subjects — Core NATS subscriptions or a JetStream durable consumer that acks after the pipeline accepts each message.
+authors:
+  - name: Erik
+    url: https://github.com/suckatrash
+  - name: Synadia
+    url: https://synadia.com
+urls:
+  repo: https://github.com/synadia-io/opentelemetry-collector-nats/tree/main/receiver/natsreceiver
+createdAt: 2026-08-19
+package:
+  registry: go-collector
+  name: github.com/synadia-io/opentelemetry-collector-nats/receiver/natsreceiver
+  version: v0.2.0

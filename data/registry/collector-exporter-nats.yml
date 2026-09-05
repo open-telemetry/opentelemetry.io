@@ -1,0 +1,23 @@
+# cSpell:ignore natsexporter synadia
+title: NATS Collector Exporter
+registryType: exporter
+language: collector
+tags:
+  - go
+  - exporter
+  - collector
+  - nats
+license: Apache 2.0
+description: Publishes OpenTelemetry traces, metrics, and logs onto NATS subjects (Core NATS or JetStream) as OTLP, with OTTL-based subject routing.
+authors:
+  - name: Erik
+    url: https://github.com/suckatrash
+  - name: Synadia
+    url: https://synadia.com
+urls:
+  repo: https://github.com/synadia-io/opentelemetry-collector-nats/tree/main/exporter/natsexporter
+createdAt: 2026-08-19
+package:
+  registry: go-collector
+  name: github.com/synadia-io/opentelemetry-collector-nats/exporter/natsexporter
+  version: v0.2.0
