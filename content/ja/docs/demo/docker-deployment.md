@@ -2,8 +2,7 @@
 title: Docker デプロイ
 linkTitle: Docker
 aliases: [docker_deployment]
-default_lang_commit: 12862017e85a7b88fbd194241af00f4dbd4ee75c
-drifted_from_default: true
+default_lang_commit: ef74cd393090313b5ad970e74d499a97505fffb8
 cSpell:ignore: Firepit otlphttp span_metrics
 ---
 
@@ -121,6 +120,7 @@ docker run --rm --network opentelemetry-demo \
 イメージがビルドされ、コンテナが開始されると以下にアクセスできるようになります。
 
 - ウェブストア: <http://localhost:8080/>
+- ロードジェネレーター UI: <http://localhost:8080/loadgen/>
 - Flagd 設定 UI: <http://localhost:8080/feature>
 - テレメトリードキュメント（Weaver で生成）:
   <http://localhost:8080/telemetry/>
