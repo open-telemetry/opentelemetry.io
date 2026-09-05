@@ -126,7 +126,7 @@ default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
 [Run only reviewed lifecycle scripts]: #scripts
 [security notice]: https://github.com/open-telemetry/opentelemetry.io/issues/11210
 [security policy]: https://github.com/open-telemetry/opentelemetry.io/security/policy
-[security updates]: ../../build/dependencies/#security-updates
+[security updates]: /site/build/dependencies/#security-updates
 [Supply-chain audit]: ../../build/dependencies/#audit
 [tuf]: https://theupdateframework.io/docs/security/
 [Verify, don't trust]: #verify
