@@ -2,7 +2,6 @@
 title: OpenTelemetry Demo Chart
 linkTitle: Demo Chart
 default_lang_commit: fe623719bc24346e9dcd77e9769026cf1c720cc5
-drifted_from_default: true
 ---
 
 [OpenTelemetry Demo](/docs/demo/) 是一个基于微服务的分布式系统，
