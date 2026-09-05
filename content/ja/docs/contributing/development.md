@@ -1,13 +1,13 @@
 ---
 title: 開発環境のセットアップとビルド、サーブなどのコマンド
 linkTitle: 開発環境セットアップなど
-description: この Web サイトの開発環境をセットアップする方法を学びます。
+description: >-
+  クラウド IDE およびローカル環境のセットアップと、サイトのビルド、サーブ、チェックコマンド
 what-next: >
   これで、[ビルド](#build)、[サーブ](#serve)、Web サイトファイルの更新を行う準備が整いました。
   変更の提出方法の詳細については、[コンテンツの提出](../pull-requests)を参照してください。
 weight: 60
-default_lang_commit: ec40cad3a7ca79640aa6a6f97264fbbe0d00aa87
-drifted_from_default: true
+default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
 cSpell:ignore: TOCSS
 ---
 
@@ -52,20 +52,20 @@ GitHub [Codespaces][] で作業するには、下記にしたがってくださ�
     cd opentelemetry.io
     ```
 
-3.  Node.js の [**Active LTS** リリース][nodejs-rel] をインストールまたはアップグレードします。
-    Node.js インストレーションの管理には [nvm][] の使用を推奨します。
-    Linux では以下のコマンドを実行してください。
-    .nvmrc ファイルで指定されたバージョンにインストールとアップグレードします。
+3.  `.nvmrc` ファイルで指定された Node.js リリース（[Active LTS][nodejs-rel] バージョン）をインストールします。
+    Node.js のインストール管理には [nvm][] を推奨します。
+    Linux では以下を実行してください。
 
     ```sh
     nvm install
     ```
 
-    Windows で [インストールする場合][nodejs-win] は、[nvm-windows][] を使用してください。
+    Windows で[インストールする場合][nodejs-win]は、[nvm-windows][] を使用してください。
+    nvm-windows は `.nvmrc` を自動的に読み取らないため、以下のコマンドで指定バージョンを渡します。
     `cmd` を使用し、Windows PowerShell を使用しないことをお勧めします。
 
     ```cmd
-    nvm install lts && nvm use lts
+    for /f %v in (.nvmrc) do nvm install %v && nvm use %v
     ```
 
 4.  DevContainer が使用する[ロックファイルに厳密に準拠し、スクリプトを抑制するセットアップ][ci-install]で、npm パッケージとその他の依存関係をインストールします。
@@ -80,8 +80,8 @@ GitHub [Codespaces][] で作業するには、下記にしたがってくださ�
     npm install
     ```
 
-    どちらのインストールでも、コミットされた `package-lock.json` に固定された依存関係のバージョンを使用し、実行されるライフサイクルスクリプトはレビュー済みの許可リストに従います。
-    関連情報: [ロックファイルのメンテナンス][dep-updates]
+    どちらのインストールでも、コミットされた `package-lock.json` に固定された依存関係のバージョンを使用し、実行される依存関係のライフサイクルスクリプトはレビュー済みの許可リストに従います。
+    関連情報: [依存関係の更新][dep-updates]
 
 お好みの IDE を起動してください。{{% param what-next %}}
 
@@ -213,7 +213,7 @@ npm run check:code-excerpts
 
 <!-- prettier-ignore-start -->
 [ci-install]: /site/build/dependencies/#install-contracts
-[dep-updates]: /site/build/dependencies/#lock-file-maintenance
+[dep-updates]: /site/build/dependencies/#updating
 [clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
 [cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
