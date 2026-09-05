@@ -47,6 +47,8 @@ user interface:
 | `kafkaQueueProblems`                | Kafka           | Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike.                                        |
 | `imageSlowLoad`                     | Frontend        | Utilizes envoy fault injection, produces a delay in loading of product images in the frontend.                                              |
 | `failedReadinessProbe`              | Cart            | Force the readiness probe to fail with unhealthy status, simulating a pod "NotReady" condition. Applicable for Kubernetes deployments only. |
+| `aiSlowResponse`                    | Agent           | Delays the agent's LLM model call, simulating LLM provider latency degradation.                                                             |
+| `aiRunawayAgent`                    | Agent           | Nudges the agent to keep calling tools instead of finishing, simulating a runaway/looping agent.                                            |
 
 ## Guided Debugging Scenario
 
