@@ -81,6 +81,12 @@
   contact:
   oss: false
   commercial: true
+- name: CardinalHQ
+  nativeOTLP: true
+  url: https://docs.cardinalhq.io
+  contact:
+  oss: true
+  commercial: true
 - name: Causely
   distribution: false
   nativeOTLP: true
