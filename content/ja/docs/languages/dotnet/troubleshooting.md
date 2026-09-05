@@ -10,19 +10,19 @@ OpenTelemetry .NET リポジトリ（[opentelemetry-dotnet][] および [opentel
 OpenTelemetry SDK が使用する `EventSource` の名前は "OpenTelemetry-Sdk" です。
 他のコンポーネントが使用する `EventSource` の名前については、各コンポーネントのドキュメントを参照してください。
 
-これらのログは [PerfView](https://github.com/microsoft/perfview) や [`dotnet-trace`][dotnet-trace] などのツールで確認できますが、SDK にはトラブルシューティングに役立つセルフ診断機能も搭載されています。
+これらのログは [PerfView](https://github.com/microsoft/perfview) や [`dotnet-trace`][dotnet-trace] などのツールで確認できますが、SDK にはトラブルシューティングに役立つ自己診断機能も搭載されています。
 
-## セルフ診断 {#self-diagnostics}
+## 自己診断 {#self-diagnostics}
 
-OpenTelemetry SDK にはセルフ診断機能が組み込まれています。
+OpenTelemetry SDK には自己診断機能が組み込まれています。
 この機能を有効にすると、すべての OpenTelemetry コンポーネント（名前が "OpenTelemetry-" で始まる EventSource）が生成する内部ログをリッスンし、ログファイルに書き込みます。
 
-セルフ診断機能は、プロセスの実行中に（プロセスを再起動せずに）有効化、変更、無効化できます。
+自己診断機能は、プロセスの実行中に（プロセスを再起動せずに）有効化、変更、無効化できます。
 SDK は10秒ごとに非排他的な読み取り専用モードで設定ファイルの読み取りを試みます。
 SDK は設定に従って新しいログを含むファイルを作成または上書きします。
 このファイルは設定された最大サイズを超えることはなく、循環的に上書きされます。
 
-セルフ診断を有効にするには、プロセスの[作業ディレクトリ](https://en.wikipedia.org/wiki/Working_directory)に移動し、以下の内容で `OTEL_DIAGNOSTICS.json` という名前の設定ファイルを作成します。
+自己診断を有効にするには、プロセスの[作業ディレクトリ](https://en.wikipedia.org/wiki/Working_directory)に移動し、以下の内容で `OTEL_DIAGNOSTICS.json` という名前の設定ファイルを作成します。
 
 ```json
 {
@@ -33,7 +33,7 @@ SDK は設定に従って新しいログを含むファイルを作成または�
 }
 ```
 
-セルフ診断を無効にするには、設定ファイルを削除します。
+自己診断を無効にするには、設定ファイルを削除します。
 
 > [!TIP]
 >
