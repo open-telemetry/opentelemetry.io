@@ -3,8 +3,7 @@ title: サプライチェーン監査の設計
 description: >-
   コミット済みのサプライチェーン監査テストの背後にある検証の原則
 weight: 21
-default_lang_commit: 692ecf4d65e76d3b094eb9bf730a4cb9d5d29f4f
-drifted_from_default: true
+default_lang_commit: 4f8b46449bcc2980fd81c8e726733e1df1defddd
 ---
 
 [サプライチェーン監査][supply-chain audit]は、コミット済みファイルだけからリポジトリの[依存関係制御][controls]を証明します。
@@ -51,6 +50,13 @@ drifted_from_default: true
    `allowScripts` アサーションは依存関係のバンプが移動先とすべきバージョンを命名するため、失敗メッセージがそのまま修正手順になります。
 10. **スコープ境界を明示する。**
     監査が意図的にカバーしない領域（ワークフローファイル、テーマ自体のインストール、ビルド側スクリプト）は監査とドキュメントに明記されており、カバレッジの不在が検証済みカバレッジと誤認されることはありません。
+11. **すべてのチェックはその存在価値を示す。**
+    セキュリティは制御の設計とレビューから生まれるのであり、アサーションの蓄積からではありません。
+    各アサーションは変更のたびにコントリビューターとメンテナーに負担をかけます。
+    チェックがここに属するのは、レビューでは明らかに検出できないものを検出する場合に限ります。
+    たとえば、不透明で高い権威性を持つロックファイルや、目視では捉えられないほど難解なセマンティクスです。
+    制御がすでに実行時にクローズドで失敗する場合、監査はそれを再度検証しません。
+    チェックの維持コストがその検出価値を上回った場合、それを削減することは弱体化ではなく正しい判断です。
 
 ## 監査における原則 {#principles-in-the-audit}
 
@@ -69,6 +75,7 @@ drifted_from_default: true
 | レッドファースト               | 各ハードニングコミットの PR は、最初に失敗させた壊れた入力を記録しています                       |
 | アサーションは修正方法を命名   | `allowScripts covers hugo-extended at its locked version X`                                      |
 | スコープ境界の明示             | 監査のヘッダーコメントに除外対象の領域が明記されています                                         |
+| チェックの存在価値             | engines フロアの最小値はレビューで判定され、`engine-strict` が強制します                         |
 
 [audit test]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [controls]: /site/build/dependencies/#controls
