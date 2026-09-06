@@ -6125,9 +6125,11 @@ https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#NodeStats,200,
 https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#PodStats,200,1787916981
 https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#VolumeStats,200,1787916981
 https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#ContainerStats,200,1787916982
+https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#FsStats,200,1788690597
 https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#MemoryStats,200,1787916982
 https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#NodeStats,200,1787916982
 https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#PodStats,200,1787916982
+https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#VolumeStats,200,1788690597
 https://pkg.go.dev/k8s.io/kubernetes@v1.19.16/pkg/kubelet/apis/stats/v1alpha1,206,1788327879
 https://pkg.go.dev/log,206,1787918248
 https://pkg.go.dev/log/slog,206,1787918248
@@ -6534,6 +6536,7 @@ https://wikipedia.org/wiki/Application_layer,200,1787916963
 https://wikipedia.org/wiki/Basic_Latin_%28Unicode_block%29#Table_of_characters,200,1787916968
 https://wikipedia.org/wiki/C%2B%2B,200,1787916965
 https://wikipedia.org/wiki/CPU_time,200,1787916991
+https://wikipedia.org/wiki/CUDA,200,1788690597
 https://wikipedia.org/wiki/C_%28programming_language%29,200,1787916965
 https://wikipedia.org/wiki/Count_noun,200,1787916968
 https://wikipedia.org/wiki/Deployment_environment,200,1788241822
