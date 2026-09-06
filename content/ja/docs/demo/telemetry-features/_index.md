@@ -3,6 +3,7 @@ title: テレメトリー機能
 linkTitle: テレメトリー機能
 aliases: [demo_features, features]
 default_lang_commit: 3560c03d5cbe845c6189e6e30441434c7760eca0
+drifted_from_default: true
 ---
 
 ## OpenTelemetry {#opentelemetry}
