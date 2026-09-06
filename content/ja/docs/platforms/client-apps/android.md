@@ -6,6 +6,7 @@ weight: 10
 vers:
   ot-android: 1.6.0
 default_lang_commit: 60d50174e01d221f65af4b69ad1ae946fbc16ec8
+drifted_from_default: true
 cSpell:ignore: inactivity
 ---
 
