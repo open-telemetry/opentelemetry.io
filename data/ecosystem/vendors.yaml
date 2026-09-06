@@ -167,6 +167,12 @@
   contact:
   oss: true
   commercial: true
+- name: Gigapipe
+  nativeOTLP: true
+  url: https://gigapipe.com/docs/api
+  contact: rita@gigapipe.com
+  oss: true
+  commercial: true
 - name: Google Cloud Platform
   nativeOTLP: true
   url: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudexporter
@@ -381,12 +387,6 @@
   nativeOTLP: true
   url: https://www.parseable.com/docs/ingest-data/otel
   contact: hi@parseable.com
-  oss: true
-  commercial: true
-- name: qryn
-  nativeOTLP: true
-  url: https://qryn.metrico.in/#/support?id=tempo-api&link-check=no
-  contact: https://github.com/lmangani
   oss: true
   commercial: true
 - name: Sentry
