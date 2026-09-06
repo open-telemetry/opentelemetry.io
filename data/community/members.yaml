@@ -1701,6 +1701,12 @@ maintainers:
     html_url: https://github.com/zacharycmontoya
     avatar_url: https://avatars.githubusercontent.com/u/13769665?v=4
 approvers:
+  - name: AaronRM
+    teams:
+      - arrow-approvers
+      - arrow-triagers
+    html_url: https://github.com/AaronRM
+    avatar_url: https://avatars.githubusercontent.com/u/437496?v=4
   - name: agagniere
     teams:
       - zig-approvers
@@ -2296,11 +2302,6 @@ approvers:
     html_url: https://github.com/zeitlinger
     avatar_url: https://avatars.githubusercontent.com/u/2832627?v=4
 triagers:
-  - name: AaronRM
-    teams:
-      - arrow-triagers
-    html_url: https://github.com/AaronRM
-    avatar_url: https://avatars.githubusercontent.com/u/437496?v=4
   - name: abhee11
     teams:
       - javascript-contrib-triagers

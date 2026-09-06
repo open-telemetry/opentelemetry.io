@@ -3,12 +3,11 @@ title: デモのアーキテクチャ
 linkTitle: アーキテクチャ
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
-default_lang_commit: 055e4933b5a29eb283300a071158d7caa0542b1c
-drifted_from_default: true
+default_lang_commit: 4c76a8ab64aef829003446e6ff8d2869c51c03a6
 ---
 
 **OpenTelemetryデモ** は、異なるプログラミング言語で書かれた複数のマイクロサービスから構成されており、gRPCとHTTPを使って相互に通信を行います。
-さらに、負荷生成ツールが含まれており、[k6](https://k6.io/)を使用して、ユーザートラフィックを模擬的に生成します。
+さらに、負荷生成ツールが含まれており、[Locust](https://locust.io/)を使用して、ユーザートラフィックを模擬的に生成します。
 
 ```mermaid
 graph TD
@@ -28,7 +27,7 @@ fraud-detection(不正検知):::kotlin
 frontend(フロントエンド):::typescript
 frontend-proxy(フロントエンドプロキシ <br/>&#40Envoy&#41):::cpp
 image-provider(画像プロバイダー <br/>&#40nginx&#41):::cpp
-load-generator([負荷生成ツール]):::golang
+load-generator([負荷生成ツール]):::python
 mcp(MCP):::python
 payment(支払い):::javascript
 product-catalog(商品カタログ):::golang
