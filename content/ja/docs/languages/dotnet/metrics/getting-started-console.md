@@ -1,5 +1,5 @@
 ---
-title: 5分で始める OpenTelemetry .NET メトリクス - コンソールアプリケーション
+title: メトリクスを始める - コンソール
 linkTitle: コンソール
 description: .NET コンソールアプリケーションで OpenTelemetry メトリクスを使う方法を学ぶ
 weight: 10
@@ -68,7 +68,7 @@ MyFruitCounter.Add(4, new("name", "lemon"), new("color", "yellow"));
 Console.WriteLine("Press any key to exit");
 Console.ReadKey();
 
-// アプリケーションが終了する前にメータープロバイダーを破棄する。
+// アプリケーションが終了する前に MeterProvider を破棄する。
 // これにより、残りのメトリクスがフラッシュされ、メトリクスパイプラインがシャットダウンされる。
 meterProvider.Dispose();
 ```
