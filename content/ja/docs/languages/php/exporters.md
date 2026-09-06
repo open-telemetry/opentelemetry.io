@@ -171,7 +171,7 @@ $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 
 ## エクスポートの遅延を最小限にする {#minimizing-export-delays}
 
-ほとんどの PHP ランタイムは同期的かつブロッキングです。
+ほとんどの PHP ランタイムは同期実行であり、処理をブロックします。
 テレメトリーデータの送信は HTTP レスポンスがユーザーに届くまでの時間を[遅延させる可能性があります](/docs/specs/otel/performance/#shutdown-and-explicit-flushing-could-block)。
 
 `fastcgi` を使用している場合は、ユーザーへのレスポンス送信後に `fastcgi_finish_request()` を呼び出すことで、テレメトリーデータの送信による遅延がリクエスト処理を妨げないようにできます。
