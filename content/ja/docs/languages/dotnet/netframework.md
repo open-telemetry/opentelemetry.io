@@ -124,7 +124,7 @@ this.tracerProvider = Sdk.CreateTracerProviderBuilder()
     .Build();
 ```
 
-トレースデータへのアノテーションの一般的な方法については、[Activity タグ](../instrumentation/#activity-tags)を参照してください。
+トレースデータへのアノテーションの一般的な方法については、[Activity にタグを追加](../instrumentation/#activity-tags)を参照してください。
 
 ### RecordException {#recordexception}
 
