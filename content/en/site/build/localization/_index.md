@@ -237,11 +237,33 @@ Keep the entries in alphabetical order.
 
 ### Code owners
 
-- In [`.github/CODEOWNERS`][], give the locale team **sole** ownership of its
-  files. Follow the guidance given in the file.
-- Keep the entries in alphabetical order.
-- **Do not** add any entries to the [`.github/component-owners.yml`][]; changes
-  to this file are no longer required as of June 2026.
+The locale section of [`.github/CODEOWNERS`][] is generated from the
+[`data/locale-teams.yaml`][] registry; don't edit it by hand.
+
+1. Add the locale to the registry, in alphabetical order, listing the mentor and
+   initial contributors as approvers:
+
+   ```yaml
+   LANG_ID:
+     maintainers: []
+     approvers: [GITHUB_HANDLE1, GITHUB_HANDLE2]
+   ```
+
+   A locale with no maintainers is [unstaffed][]: its CODEOWNERS lines also list
+   `@open-telemetry/docs-approvers` as a fallback owner until the locale
+   graduates.
+
+2. Regenerate the CODEOWNERS locale section:
+
+   ```sh
+   npm run fix:codeowners
+   ```
+
+Include both changes in the PR that adds `content/LANG_ID/`: CI requires the
+registry and the locale directories to agree.
+
+**Do not** add entries to [`.github/component-owners.yml`][]; changes to this
+file are no longer required as of June 2026.
 
 ## Step 6 — GitHub org-level setup {#gh-org}
 
@@ -327,7 +349,8 @@ requesting a review:
       and `.cspell.yml` updated
 - [ ] **Step 4** — `.prettierignore` updated (if applicable for the script)
 - [ ] **Step 5** — `.github/component-label-map.yml` (label entry) and
-      `.github/CODEOWNERS` (sole-ownership block) updated for the locale
+      `data/locale-teams.yaml` (registry entry) updated; `.github/CODEOWNERS`
+      regenerated
 - [ ] **Step 6** — Team PR opened against `open-telemetry/admin`; team members
       added manually
 - [ ] **Step 7** — Slack channel `#otel-localization-LANG_ID` created;
@@ -344,6 +367,8 @@ correct:
   errors.
 - **`npm run check:spelling`** — confirms the cspell configuration is valid and
   that no errors are introduced by the new dictionary entries.
+- **`npm run check:codeowners`** — confirms the CODEOWNERS locale section
+  matches the registry.
 - **GitHub label automation** — open a test PR that touches a file under
   `content/LANG_ID/` and confirm the `lang:LANG_ID` label is applied
   automatically.
@@ -356,6 +381,8 @@ correct:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml
 [`.github/CODEOWNERS`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
+[`data/locale-teams.yaml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
 [`.github/component-owners.yml`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
 [`projects/localization.md`]:
@@ -368,5 +395,6 @@ correct:
 [Site localization]: /docs/contributing/localization/
 [`setup-new-localization` skill]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/setup-new-localization/SKILL.md
+[unstaffed]: /docs/contributing/localization/#locale-teams
 [ISO 639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
 [CNCF Slack workspace]: https://cloud-native.slack.com
