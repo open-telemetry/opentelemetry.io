@@ -407,7 +407,7 @@ public function roll($rolls) {
 以下のようにアプリを起動し、ブラウザまたは `curl` で <http://localhost:8080/rolldice?rolls=12> にリクエストを送信します。
 
 ```sh
-php -S 8080 localhost
+php -S localhost:8080
 ```
 
 しばらくすると、`SpanExporter` によってコンソールにスパンが出力されるのが確認できます。
