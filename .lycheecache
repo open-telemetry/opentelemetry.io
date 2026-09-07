@@ -344,8 +344,10 @@ https://deno.com/,200,1788327784
 https://dev.mysql.com/doc/mysql-errors/9.0/en/error-reference-introduction.html,206,1787918248
 https://dev.mysql.com/doc/refman/9.2/en/telemetry-trace.html,206,1787918248
 https://devcenter.heroku.com/articles/dyno-metadata,200,1787916964
+https://devcenter.heroku.com/articles/heroku-opentelemetry-signals-and-attributes-reference,200,1788652899
 https://devcenter.heroku.com/articles/heroku-telemetry,200,1788241858
 https://devcenter.heroku.com/articles/opentelemetry-concepts-and-heroku,200,1788241802
+https://devcenter.heroku.com/articles/working-with-heroku-telemetry-drains,200,1788652899
 https://developer.android.com/guide/components/activities/activity-lifecycle#lifecycle-callbacks,200,1787916965
 https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels,200,1788241822
 https://developer.android.com/identity/app-set-id,200,1787916964
@@ -364,6 +366,8 @@ https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Forwarded-Host,200,1787916
 https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Forwarded-Proto,200,1787916963
 https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS,200,1787916626
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/,200,1787916626
+https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/,200,1788652899
+https://developers.cloudflare.com/workers/observability/traces/,200,1788652899
 https://developers.google.com/protocol-buffers/docs/encoding#varints,200,1787916995
 https://developers.google.com/protocol-buffers/docs/encoding,200,1787916995
 https://developers.google.com/protocol-buffers/docs/overview,200,1787916994
@@ -1294,6 +1298,7 @@ https://github.com/dehaansa,200,1787916700
 https://github.com/dengliming,200,1787916707
 https://github.com/denoland,200,1788241806
 https://github.com/denoland/deno,200,1788241805
+https://github.com/dhruv-ahuja,200,1788652899
 https://github.com/didiViking,200,1787981977
 https://github.com/dineshg13,200,1787981981
 https://github.com/discostu105,200,1787916707
@@ -1754,6 +1759,7 @@ https://github.com/nginxinc/nginx-otel/tree/main,200,1787916628
 https://github.com/nhatthm,200,1787916863
 https://github.com/nhatthm/otelsql,200,1787916865
 https://github.com/nilebox,200,1787981982
+https://github.com/nityanandagohain,200,1788652899
 https://github.com/niwoerner,200,1787981982
 https://github.com/npm/rfcs/blob/main/accepted/0054-make-scripts-install-opt-in.md,200,1788327785
 https://github.com/nrcventura,200,1787981978
@@ -1825,6 +1831,7 @@ https://github.com/open-telemetry/community/blob/main/guides/contributor/members
 https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md,200,1787916694
 https://github.com/open-telemetry/community/blob/main/policies/genai.md,200,1788327802
 https://github.com/open-telemetry/community/blob/main/project-management.md,200,1788327802
+https://github.com/open-telemetry/community/blob/main/projects/completed-projects/ci-cd.md,200,1788652895
 https://github.com/open-telemetry/community/blob/main/social-media-guide.md,200,1788327801
 https://github.com/open-telemetry/community/discussions/3098,200,1788241802
 https://github.com/open-telemetry/community/issues,200,1788241857
@@ -1909,6 +1916,7 @@ https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/1afa19b19
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/1afa19b190f2b68ffac6dd5bada4b3fd0297d0c9/processor/transformprocessor/README.md?from_branch=main#context-inference,200,1787917018
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/549e115b28292c164eb671618c0ec8b728b69d2a/processor/probabilisticsamplerprocessor/README.md?from_branch=main,200,1787916777
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/transformprocessor?from_branch=main,200,1788241857
+https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/8bee89f9928b4b1f81700f9ab0e5886d428bfae6/receiver/awscloudwatchreceiver/logs.go#L293,200,1788652900
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9b28f76c02c18f7479d10e4b6a95a21467fd85d6/processor/transformprocessor/testdata/config.yaml,200,1787981965
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9c4165139f101a43895d9273192ddb9ae3204844/processor/filterprocessor#context-inference,200,1787917021
 https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9c4165139f101a43895d9273192ddb9ae3204844/processor/filterprocessor,200,1787917018
@@ -2261,6 +2269,7 @@ https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/connector/metricsaslogsconnector,200,1787032147
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/connector/otlpjsonconnector,200,1787032147
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/connector/roundrobinconnector,200,1787032147
+https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/connector/routingconnector#readme,200,1788652900
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/connector/routingconnector,200,1787032147
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/connector/servicegraphconnector,200,1787032147
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/connector/signaltometricsconnector,200,1787032147
@@ -3072,7 +3081,12 @@ https://github.com/open-telemetry/opentelemetry-collector/blob/v0.153.0/pdata/pc
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.153.0/pdata/ptrace/generated_resourcespans.go,200,1788241813
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.153.0/receiver/receiver.go#L58,200,1788241813
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.153.0/receiver/receiver.go,200,1788241813
+https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/component/config.go,200,1788652893
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/config/configtls/README.md,200,1788327791
+https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/pdata/pcommon/map.go,200,1788652893
+https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/pdata/ptrace/generated_resourcespans.go,200,1788652893
+https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/receiver/receiver.go#L58,200,1788652893
+https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/receiver/receiver.go,200,1788652893
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.159.0/component/config.go,200,1787945068
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.159.0/config/configtls/README.md,200,1787945068
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.159.0/pdata/pcommon/map.go,200,1787945068
@@ -5307,7 +5321,10 @@ https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#suppo
 https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/,200,1788327784
 https://kubewarden.io/,200,1788241802
 https://kuma.io/,200,1788241803
+https://kuma.io/docs/2.13.x/explore/observability/,200,1788652900
+https://kuma.io/docs/2.13.x/policies/meshaccesslog/#opentelemetry,200,1788652900
 https://kuma.io/docs/2.7.x/guides/otel-metrics/,200,1788241803
+https://kuma.io/docs/latest/policies/meshtrace/,200,1788652900
 https://kyverno.io/,206,1787918248
 https://kyverno.io/docs/monitoring/opentelemetry/,206,1788241902
 https://langfuse.com/docs/opentelemetry/get-started,200,1788241858
@@ -6048,6 +6065,7 @@ https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#ParentBased,200,1787916629
 https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#Sampler,200,1787981969
 https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TraceIDRatioBased,200,1787916629
 https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#WithSampler,200,1787916629
+https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.38.0,200,1788652894
 https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.43.0,200,1787941086
 https://pkg.go.dev/google.golang.org/grpc,200,1787916847
 https://pkg.go.dev/google.golang.org/grpc/credentials#PerRPCCredentials,200,1788327786
