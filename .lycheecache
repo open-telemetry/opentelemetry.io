@@ -486,6 +486,7 @@ https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorp
 https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request,200,1788241858
 https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork,200,1788327796
 https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository,200,1788241818
+https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners,200,1788764711
 https://docs.google.com/document/d/14p-bpofozTL4n3jy6HZH_TKjoOXvog18G1HBRqq6liE,200,1788327785
 https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w,200,1787916954
 https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY,200,1788241854
@@ -4464,6 +4465,7 @@ https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml,200
 https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml,200,1788327784
 https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md,200,1787981967
 https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md,200,1788327783
+https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml,200,1788764711
 https://github.com/open-telemetry/opentelemetry.io/blob/main/data/spec-versions.yml,200,1788327784
 https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html,200,1787981966
 https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_shortcodes/collector-component-rows.html,200,1788327784
@@ -4497,6 +4499,7 @@ https://github.com/open-telemetry/opentelemetry.io/issues/new,200,1787981967
 https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra,200,1788327803
 https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing,200,1787981966
 https://github.com/open-telemetry/opentelemetry.io/pull/10911,200,1787981967
+https://github.com/open-telemetry/opentelemetry.io/pull/11516,200,1788764712
 https://github.com/open-telemetry/opentelemetry.io/pull/5891,200,1788241830
 https://github.com/open-telemetry/opentelemetry.io/pull/9291,200,1787981959
 https://github.com/open-telemetry/opentelemetry.io/pull/9638,200,1787981966
@@ -4522,6 +4525,7 @@ https://github.com/open-telemetry/opentelemetry.io/tree/main/i18n,200,1788327784
 https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs,200,1787981966
 https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages,200,1788327784
 https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge,200,1788327783
+https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-codeowners,200,1788764712
 https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/patch-report,200,1788327783
 https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/pr-fix,200,1788327783
 https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/report-failure,200,1788327783
