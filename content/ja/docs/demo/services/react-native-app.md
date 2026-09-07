@@ -98,7 +98,7 @@ const Tracer = async () => {
     instrumentations: [
       // ここでは少し注意が必要で、propagateTraceHeaderCorsUrls はモバイルアプリのコンテキストで計装を
       // 動作させるために必要です（実際には CORS リクエストを行っていないにもかかわらず）。
-      // `clearTimingResources` はウェブ専用の Performance API の使用を避けるためにオフにする必要があります
+      // `clearTimingResources` はウェブ専用の Performance API の使用を避けるためにオフにする必要があります。
       new FetchInstrumentation({
         propagateTraceHeaderCorsUrls: /.*/,
         clearTimingResources: false,
