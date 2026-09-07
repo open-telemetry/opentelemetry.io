@@ -11,14 +11,14 @@ OpenTelemetry helps you collect **traces, metrics, logs, and profiles** from you
 
 A typical OpenTelemetry setup follows these steps:
 
-1. Instrument an application
-2. Collect telemetry
-3. Export telemetry
-4. Deploy OpenTelemetry
-5. Configure a Collector
-6. Add metrics
-7. Add tracing
-8. Troubleshoot telemetry
+1. Instrument an application.
+2. Collect telemetry.
+3. Export telemetry.
+4. Deploy OpenTelemetry.
+5. Configure a Collector.
+6. Add metrics.
+7. Add tracing.
+8. Troubleshoot telemetry.
 
 The best way to get started depends on what you are responsible for.
 

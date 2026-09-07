@@ -187,8 +187,6 @@ If telemetry suddenly stops appearing in your backend, investigate the entire pa
 
 This makes it easier to determine where the problem is occurring.
 
-
-
 <!-- This is the [getting-started](..) page for you if:
 
 - You run a set of applications in production.

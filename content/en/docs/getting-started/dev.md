@@ -32,7 +32,7 @@ Choose the language used by your application:
 
 Each language has its own APIs, SDKs, instrumentation libraries, and setup instructions.
 
-If your application uses a language or framework with existing OpenTelemetry instrumentation, you can often start collecting telemetry without writing instrumentation yourself.
+If your application uses a language or framework with existing OpenTelemetry instrumentation, you can often start collecting telemetry without writing instrumentation yourself. 
 
 ## 2. Choose an instrumentation approach
 
