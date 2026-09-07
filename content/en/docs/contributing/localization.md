@@ -674,21 +674,18 @@ and coordinate a fix with its locale team.
 
 Finally, rerun `npm run check:links` and confirm that no link failures remain.
 
+<!-- prettier-ignore-start -->
 [aliases]: https://gohugo.io/content-management/urls/#aliases
-[code owner]:
-  https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
-[CODEOWNERS]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
-[`data/locale-teams.yaml`]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
+[code owner]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+[CODEOWNERS]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
+[`data/locale-teams.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
 [front matter]: https://gohugo.io/content-management/front-matter/
-[locale-codeowners README]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-codeowners
+[locale-codeowners README]: https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-codeowners
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
 [PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/
-[zh graduation PR]:
-  https://github.com/open-telemetry/opentelemetry.io/pull/11516
+[zh graduation PR]: https://github.com/open-telemetry/opentelemetry.io/pull/11516
+<!-- prettier-ignore-end -->
