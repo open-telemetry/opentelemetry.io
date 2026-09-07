@@ -3,7 +3,7 @@ title: >-
   OTel-Native by Design - Building Products That Export to Any Observability
   Stack
 linkTitle: OTel-Native by Design
-date: 2026-09-06
+date: 2026-09-07
 author:
   >- # If you have only one author, then add the single name on this line in quotes.
   [Nityananda Gohain](https://github.com/nityanandagohain) (SigNoz), [Dhruv
