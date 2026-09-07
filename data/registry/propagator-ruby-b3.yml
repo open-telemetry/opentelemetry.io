@@ -1,0 +1,20 @@
+title: opentelemetry-propagator-b3
+registryType: propagator
+language: ruby
+tags:
+  - b3
+  - propagator
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-propagator-b3/v0.24.1/propagator/b3
+  docs: https://rubydoc.info/gems/opentelemetry-propagator-b3/0.24.1
+  website: https://github.com/open-telemetry/opentelemetry-ruby
+license: Apache-2.0
+description: B3 Context Propagation Extension for the OpenTelemetry framework
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09
+package:
+  registry: gems
+  name: opentelemetry-propagator-b3
+  version: 0.24.1

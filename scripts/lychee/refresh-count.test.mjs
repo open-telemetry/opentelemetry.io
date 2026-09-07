@@ -1,6 +1,6 @@
-// The default refcache refresh/prune count lives in two places that cannot
+// The default link-cache refresh/prune count lives in two places that cannot
 // derive from each other: the `${PRUNE_N:-N}` fallback in the
-// `fix:refcache:refresh` npm script (shell), and the
+// `fix:link-cache:refresh` npm script (shell), and the
 // `number_of_entries_to_refresh` workflow-dispatch input default in
 // refcache-refresh.yml (a YAML literal). This guard keeps the copies in
 // agreement.
@@ -14,10 +14,10 @@ const read = (relPath) =>
 
 test('default refresh count agrees across package.json and refcache-refresh.yml', () => {
   const script = JSON.parse(read('../../package.json')).scripts[
-    'fix:refcache:refresh'
+    'fix:link-cache:refresh'
   ];
   const pkgMatch = script?.match(/\$\{PRUNE_N:-(\d+)\}/);
-  assert.ok(pkgMatch, 'fix:refcache:refresh has a ${PRUNE_N:-N} fallback');
+  assert.ok(pkgMatch, 'fix:link-cache:refresh has a ${PRUNE_N:-N} fallback');
 
   const workflow = read('../../.github/workflows/refcache-refresh.yml');
   const wfMatch = workflow.match(/^\s*default: &default_refresh_count (\d+)$/m);

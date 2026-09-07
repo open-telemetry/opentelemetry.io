@@ -1,0 +1,14 @@
+title: OpenTelemetry B3 Propagator
+registryType: propagator
+language: python
+tags:
+  - b3
+  - propagator
+  - python
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/propagator/opentelemetry-propagator-b3
+license: Apache 2.0
+description: This library provides a propagator for the B3 format
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

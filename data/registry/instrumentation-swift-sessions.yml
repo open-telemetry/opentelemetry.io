@@ -1,0 +1,17 @@
+title: Session Instrumentation
+registryType: instrumentation
+language: swift
+tags:
+  - Sessions
+  - instrumentation
+  - swift
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/Sessions
+license: Apache 2.0
+description:
+  Automatic session tracking for OpenTelemetry Swift applications. Creates
+  unique session identifiers, tracks session lifecycle events, and automatically
+  adds session context to all telemetry data.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

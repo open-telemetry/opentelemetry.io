@@ -73,7 +73,7 @@ services:
       - jaeger-all-in-one
 
   jaeger-all-in-one:
-    image: jaegertracing/all-in-one:latest
+    image: jaegertracing/jaeger:latest
     ports:
       - '16686:16686'
 ```

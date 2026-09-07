@@ -7,7 +7,7 @@ author: '[Kemal Akkoyun](https://github.com/kakkoyun) (Datadog)'
 issue: 10670
 sig: Go Compile-Time Instrumentation
 # prettier-ignore
-cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario GOFLAGS Haibin Martinez Momin otelc toolexec Xabier
+cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario Haibin Martinez Momin otelc toolexec Xabier
 ---
 
 If you write Java, Python, Node.js, or .NET, you have been able to add
@@ -73,35 +73,15 @@ don't own.
 The project ships a command-line tool called `otelc` that wraps the standard Go
 toolchain. The change to your build is a single line: run `otelc go build` where
 you used to run `go build`. Everything after `go` is forwarded to the toolchain,
-so the rest of your build stays the same.
+so the rest of your build stays the same, and the same swap works in a container
+build. By default, `otelc` discovers the supported libraries in your module and
+instruments them automatically, with no configuration and no code changes.
 
-Install it with `go install`:
-
-```sh
-go install go.opentelemetry.io/otelc/tool/cmd/otelc@latest
-```
-
-Then build your application through it:
-
-```sh
-otelc go build -o myapp .
-```
-
-If you'd rather not change your build command, run `otelc setup` once to prepare
-the module, then point the Go toolchain at `otelc` through `GOFLAGS` and keep
-running `go build` as usual:
-
-```sh
-otelc setup
-export GOFLAGS="${GOFLAGS} '-toolexec=otelc toolexec'"
-go build -o myapp .
-```
-
-By default, `otelc` discovers the supported libraries in your module and
-instruments them automatically, with no configuration and no code changes. The
-same swap works in a container build: install `otelc` in your build stage and
-replace the `go build` line in your `Dockerfile` with `otelc go build`. For the
-full walkthrough, see the
+To install `otelc`, build your application through it, and see the telemetry it
+produces, follow the
+[getting-started guide](/docs/zero-code/go/compile-time/getting-started/). For
+everything else — configuration, supported libraries, and troubleshooting — see
+the
 [compile-time instrumentation documentation](/docs/zero-code/go/compile-time/).
 
 ## When should you use it?

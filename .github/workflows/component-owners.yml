@@ -1,9 +1,13 @@
 name: Component owners
 on:
-  pull_request_target:
+  pull_request_target: # zizmor: ignore[dangerous-triggers] Skips the privileged action when its PR-head configuration differs from the base.
 
 permissions:
   contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   run_self:
@@ -11,16 +15,40 @@ jobs:
     name: Assign component owners
     permissions:
       contents: read
-      issues: write
-      pull-requests: write
     if: github.repository_owner == 'open-telemetry'
     steps:
+      - name: Verify component owner configuration
+        id: trusted-config
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          result-encoding: string
+          script: |
+            const path = '.github/component-owners.yml';
+            const pullRequest = context.payload.pull_request;
+            const [headOwner, headRepo] = pullRequest.head.repo.full_name.split('/');
+            try {
+              const [baseFile, headFile] = await Promise.all([
+                github.rest.repos.getContent({ ...context.repo, path, ref: pullRequest.base.sha }),
+                github.rest.repos.getContent({ owner: headOwner, repo: headRepo, path, ref: pullRequest.head.sha }),
+              ]);
+              if (baseFile.data.sha === headFile.data.sha) return 'true';
+              core.notice(`${path} differs from the base branch; skipping owner assignment for this PR.`);
+              return 'false';
+            } catch (error) {
+              core.warning(`Unable to verify ${path}: ${error.message}`);
+              return 'false';
+            }
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
+        if: steps.trusted-config.outputs.result == 'true'
         with:
           client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-contents: read
+          permission-members: read
+          permission-pull-requests: write
       - uses: dyladan/component-owners@7ff2b343629407c4dbe1c28ae66f55f723543d2b # v0.2.0
+        if: steps.trusted-config.outputs.result == 'true'
         with:
           config-file: .github/component-owners.yml
           # secrets.GITHUB_TOKEN can't be used here because

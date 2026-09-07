@@ -32,17 +32,17 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 - [`/draft-issue <issue-description>`][draft-issue]: draft a GitHub issue in the
   `opentelemetry.io` repository following issue templates, contributing
   guidelines, and the label taxonomy.
-- [`/refresh-refcache-pr-fix`][refresh-refcache-pr-fix]: fetch, review and
+- [`/refresh-link-cache-pr-fix`][refresh-link-cache-pr-fix]: fetch, review and
   attempt to fix non-2XX URLs on otelbot PRs (by default, all open `otelbot/*`
   PRs with failing link checks, or specific branches when so instructed).
-- [`/resolve-refcache-conflicts <optional-pr-number>`][resolve-refcache-conflicts]:
+- [`/resolve-link-cache-conflicts <optional-pr-number>`][resolve-link-cache-conflicts]:
   resolve `.lycheecache` merge/rebase conflicts.
 - [`/review-blog-post <blog-post-path-or-pr-number>`][review-blog-post]: review
   an OpenTelemetry blog post for front matter compliance, content conventions,
   GitHub link stability (`gh-url-hash`), spelling, and OTel terminology.
 - [`/review-pull-request <pr-number-or-url>`][review-pull-request]: review a
-  pull request for CI check semantics, CLA and approval-label workflow, refcache
-  handling, locale rules, and content quality.
+  pull request for CI check semantics, CLA and approval-label workflow,
+  link-cache handling, locale rules, and content quality.
 - [`/setup-new-localization <kickoff-issue | lang-code>`][setup-new-localization]:
   set up a new website localization end-to-end — Hugo language block, content
   mounts, cSpell word list, `lang:<lang>` labeler config and label,
@@ -85,10 +85,10 @@ See the section index below.
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/approve-registry-update/SKILL.md
 [draft-issue]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/draft-issue/SKILL.md
-[refresh-refcache-pr-fix]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/refresh-refcache-pr-fix/SKILL.md
-[resolve-refcache-conflicts]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/resolve-refcache-conflicts/SKILL.md
+[refresh-link-cache-pr-fix]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/refresh-link-cache-pr-fix/SKILL.md
+[resolve-link-cache-conflicts]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/resolve-link-cache-conflicts/SKILL.md
 [review-blog-post]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-blog-post/SKILL.md
 [review-pull-request]:

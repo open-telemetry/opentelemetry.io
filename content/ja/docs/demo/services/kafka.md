@@ -1,6 +1,6 @@
 ---
 title: Kafka
-default_lang_commit: 119208cc7b365e78d78be27a7c2d507650c73f7d
+default_lang_commit: 36a8a53c4a20a6d7a706539e9f3b4887327be781
 cSpell:ignore: Dotel
 ---
 
@@ -10,7 +10,7 @@ cSpell:ignore: Dotel
 
 ## 自動計装 {#auto-instrumentation}
 
-このサービスは、OpenTelemetry Java エージェントと組み込みの [JMX Metric Insight Module](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics/javaagent) を使用して、[Kafka ブローカーメトリクス](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/kafka-broker.md)をキャプチャし、OTLP 経由で Collector に送信します。
+このサービスは、OpenTelemetry Java エージェントと組み込みの [JMX Metric Insight Module](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics/javaagent) を使用して、[Kafka ブローカーメトリクス](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/kafka-broker.md)をキャプチャし、OTLP 経由で Collector に送信します。
 
 エージェントは `-javaagent` コマンドライン引数を使用してプロセスに渡されます。
 コマンドライン引数は `Dockerfile` 内の `KAFKA_OPTS` を通じて追加されます。

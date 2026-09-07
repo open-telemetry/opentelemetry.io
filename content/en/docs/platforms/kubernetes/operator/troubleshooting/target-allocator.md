@@ -278,7 +278,7 @@ the `StatefulSet` created for the `OpenTelemetryCollector` resource).
 > [!NOTE]
 >
 > See the
-> [Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md?plain=1#L128-L134)
+> [Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#endpoints)
 > for more information on the `/jobs` endpoint.
 
 ### Is the Target Allocator enabled? Is Prometheus service discovery enabled?
@@ -290,7 +290,7 @@ are turned on.
 One thing to remember is that just because you include the `targetAllocator`
 section in the `OpenTelemetryCollector` CR doesn't mean that it's enabled. You
 need to explicitly enable it. Furthermore, if you want to use
-[Prometheus service discovery](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md#discovery-of-prometheus-custom-resources),
+[Prometheus service discovery](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#discovery-of-prometheus-custom-resources),
 you must explicitly enable it:
 
 - Set `spec.targetAllocator.enabled` to `true`

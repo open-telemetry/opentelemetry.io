@@ -14,7 +14,7 @@ authors:
     url: https://github.com/otterize
 urls:
   website: https://github.com/otterize/network-mapper
-  docs: https://docs.otterize.com/reference/configuration/network-mapper/helm-chart#opentelemetry-exporter-parameters
+  docs: https://docs.otterize.com/reference/network-mapper/helm-chart#opentelemetry-exporter-parameters
   blog: /blog/2023/otterize-otel/
 createdAt: '2024-08-06'
 isNative: true

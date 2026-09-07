@@ -1,15 +1,17 @@
-title: Mysql2 Instrumentation
+title: opentelemetry-instrumentation-mysql2
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
-license: Apache 2.0
-description: Mysql2 instrumentation for Ruby.
+license: Apache-2.0
+description: Mysql2 instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/mysql2
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-mysql2/v0.34.0/instrumentation/mysql2
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-mysql2/0.34.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems

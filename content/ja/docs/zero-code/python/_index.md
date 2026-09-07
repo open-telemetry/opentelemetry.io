@@ -1,10 +1,10 @@
 ---
 title: Pythonゼロコード・計装
 linkTitle: Python
-weight: 30
+weight: 40
 cascade:
-  collector_vers: 0.156.0
-default_lang_commit: e2c56c20973a9b8a025fe9aa299560c2935ec97b
+  collector_vers: 0.160.0
+default_lang_commit: 635c7435bab2fbc655d08e5bb84b127e10242a7d
 cSpell:ignore: distro
 ---
 

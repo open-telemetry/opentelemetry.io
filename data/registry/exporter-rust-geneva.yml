@@ -1,0 +1,19 @@
+title: OpenTelemetry Geneva Exporter
+registryType: exporter
+language: rust
+tags:
+  - geneva
+  - exporter
+  - rust
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-rust-contrib/tree/main/opentelemetry-exporter-geneva
+license: Apache 2.0
+description:
+  The **OpenTelemetry Geneva Exporter** is designed for Microsoft products to
+  send data to public-facing end-points which route to Microsoft's internal data
+  pipeline. It is not meant to be used outside of Microsoft products and is open
+  sourced to demonstrate best practices and to be transparent about what is
+  being collected.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

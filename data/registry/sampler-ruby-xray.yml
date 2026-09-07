@@ -1,0 +1,20 @@
+title: opentelemetry-sampler-xray
+registryType: sampler
+language: ruby
+tags:
+  - xray
+  - sampler
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-sampler-xray/v0.3.0/sampler/xray
+  docs: https://rubydoc.info/gems/opentelemetry-sampler-xray/0.3.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
+license: Apache-2.0
+description: XRay Remote Sampler for the OpenTelemetry framework
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-06-29
+package:
+  registry: gems
+  name: opentelemetry-sampler-xray
+  version: 0.3.0

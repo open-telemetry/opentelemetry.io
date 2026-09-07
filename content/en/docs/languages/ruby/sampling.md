@@ -48,3 +48,58 @@ Although it is possible to configure a `TraceIdRatioBased` sampler in code, it's
 not recommended. Doing so requires you to manually set up a Tracer Provider with
 all the right configuration options, which is hard to get right compared to just
 using `OpenTelemetry::SDK.configure`.
+
+## Custom Samplers
+
+You may want to create a custom [Sampler][] that makes a decision based on a
+span's name, attribute, or other identifying criteria. Samplers are ideal when
+the information needed for the sampling decision is available at the start of
+the span. If the information needed to make the decision is not available until
+the end of the span, consider using a [Span Processor][span-processor].
+
+Below is an example for a custom Sampler class that excludes all spans with a
+`db.statement` value of `;`.
+
+This query is common for applications that use Active Record and the PostgreSQL
+(`pg` gem) together. Active Record checks for an active database connection
+every two seconds, which executes a query with just a `;` in the statement in
+`pg`. This can lead to a lot of unwanted spans.
+
+When the span meets this criteria, it is dropped. When it doesn't meet this
+criteria, the sampling decision falls back to a delegate sampler. In this case,
+the delegate sampler is a `TraceIdRatioBased` sampler.
+
+[Sampler]:
+  https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers
+[span-processor]:
+  https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/SpanProcessor
+
+```ruby
+class CustomSampler
+  def initialize(delegate)
+    @delegate = delegate
+  end
+
+  def should_sample?(trace_id:, parent_context:, links:, name:, kind:, attributes:)
+    if attributes && attributes["db.statement"] == ";"
+      OpenTelemetry::SDK::Trace::Samplers::Result.new(
+        decision: OpenTelemetry::SDK::Trace::Samplers::Decision::DROP,
+        tracestate: OpenTelemetry::Trace.current_span(parent_context).context.tracestate
+      )
+    else
+      @delegate.should_sample?(trace_id: trace_id, parent_context: parent_context,
+        links: links, name: name, kind: kind, attributes: attributes)
+    end
+  end
+
+  def description
+    "CustomSampler{#{@delegate.description}}"
+  end
+end
+
+# Then, after OpenTelemetry::SDK.configure is called, you can assign the sampler
+# to the default tracer provider.
+
+OpenTelemetry.tracer_provider.sampler = CustomSampler.new(
+  OpenTelemetry::SDK::Trace::Samplers.trace_id_ratio_based(0.5))
+```

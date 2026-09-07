@@ -1,0 +1,19 @@
+# cSpell:ignore activedirectoryinv
+title: Windows Active Directory Inventory Receiver
+registryType: receiver
+language: collector
+tags:
+  - activedirectoryinv
+  - receiver
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/activedirectoryinvreceiver
+license: Apache 2.0
+description:
+  The Windows Active Directory Inventory receiver collects inventory data from
+  Active Directory. This includes information such as computer names, user
+  names, email addresses, and location information. This receiver is only
+  supported on Windows servers.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

@@ -12,6 +12,6 @@ authors:
     url: https://github.com/google-gemini/gemini-cli
 urls:
   website: https://geminicli.com/
-  docs: https://geminicli.com/docs/cli/telemetry/#observability-with-opentelemetry
+  docs: https://geminicli.com/docs/cli/telemetry/#opentelemetry-integration
 createdAt: '2024-11-13'
 isNative: true

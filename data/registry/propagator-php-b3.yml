@@ -1,0 +1,16 @@
+title: OpenTelemetry B3 context propagation
+registryType: propagator
+language: php
+tags:
+  - B3
+  - propagator
+  - php
+license: Apache 2.0
+description:
+  B3 is a propagator that supports the specification for the header "b3" used
+  for trace context propagation across
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Extension/Propagator/B3
+createdAt: 2023-11-05

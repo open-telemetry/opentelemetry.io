@@ -276,7 +276,7 @@ annotations:
 Where `opentelemetry` is the namespace of the `Instrumentation` resource, and
 `my-instrumentation` is the name of the `Instrumentation` resource.
 
-[The possible values for the annotation can be](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md?plain=1#L151-L156):
+[The possible values for the annotation can be](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/sidecar-injection.md?plain=1#L54-L59):
 
 - "true" - inject `OpenTelemetryCollector` resource from the namespace.
 - "sidecar-for-my-app" - name of `OpenTelemetryCollector` CR instance in the

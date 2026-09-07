@@ -84,13 +84,13 @@ par des [leaders][] du marché de l'observabilité.
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry est un projet [CNCF][] en phase d'[incubation][]**.<br> Né de la
-fusion des projets OpenTracing et OpenCensus.
+**OpenTelemetry est un projet [mature][] de la [CNCF][]**.<br> Né de la fusion
+des projets OpenTracing et OpenCensus.
 
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[incubation]: https://www.cncf.io/projects/
+[mature]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}

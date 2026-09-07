@@ -3,9 +3,8 @@ title: OBI による分散トレース
 linkTitle: 分散トレース
 description: OBI の分散トレースサポートについて学びます。
 weight: 22
-default_lang_commit: 1143960b75c6faceb40eb64269e68390e3237671
-drifted_from_default: true
-cSpell:ignore: asyncio uvloop
+default_lang_commit: 126c82550c0d12caf7ab4258e1b1ab09d977fd8f
+cSpell:ignore: asyncio chanrecv chansend HPACK uvloop
 ---
 
 ## はじめに {#introduction}
@@ -13,11 +12,12 @@ cSpell:ignore: asyncio uvloop
 OBI はアプリケーションの分散トレースをサポートしますが、いくつかの制限とカーネルバージョンの制約があります。
 
 分散トレーシングは [W3C `traceparent`](https://www.w3.org/TR/trace-context/) ヘッダー値の伝搬を通じて実装されています。
-`traceparent` のコンテキスト伝搬は自動的に行われ、特に操作や設定は不要です。
+OBI は受信コンテキストを自動的に読み取ります。
+送信側のネットワークレベルでのコンテキスト伝搬はデフォルトで無効になっており、以下の説明にしたがって有効にする必要があります。
 
-OBI は受信したトレースコンテキストヘッダー値を読み取り、プログラムの実行フローを追跡し、送信される HTTP/gRPC リクエストに `traceparent` フィールドを自動的に追加することでトレースコンテキストを伝搬します。
-アプリケーションがすでに送信リクエストに `traceparent` フィールドを追加している場合、OBI は自前で生成したトレースコンテキストではなく、その値をトレーシングに使用します。
-受信側で `traceparent` コンテキスト値が見つからない場合、OBI は W3C 仕様にしたがって新たに生成します。
+適用される伝搬モードを有効にすると、OBI は受信トレースコンテキストを読み取り、プログラムの実行を追跡し、送信される HTTP または gRPC リクエストに `traceparent` を追加します。
+アプリケーションがすでに `traceparent` を追加している場合、OBI は自前で生成したコンテキストではなく、その値を使用します。
+受信コンテキストが見つからない場合、OBI は W3C 仕様にしたがって新たに生成します。
 
 スレッド、goroutine、タスク、イベントループをまたいで処理が移動する際に OBI がどのように親リクエストを選択するかについては、[トレースコンテキストの関連付け](../context-propagation/)を参照してください。
 
@@ -25,14 +25,15 @@ OBI は受信したトレースコンテキストヘッダー値を読み取り�
 
 OBI は以下の構成で分散トレーシングとコンテキスト伝搬をサポートします。
 
-| 分野                                  | サポートされるバージョンや環境                                          | 備考                                                                                                                                                                                                                                                  |
-| :------------------------------------ | :---------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ネットワークレベルのコンテキスト伝搬  | [OBI 互換性要件](/docs/zero-code/obi/#compatibility)を満たす Linux 環境 | HTTP トラフィックではプログラミング言語を問わず動作します。HTTPS の場合、伝搬は他の OBI で計装されたサービス間に限定され、プロキシや L7 ロードバランサーによって途切れる可能性があります。gRPC と HTTP/2 はネットワークレベルではサポートされません。 |
-| Go ライブラリレベルのコンテキスト伝搬 | Go `1.18+`                                                              | 最大 6 階層のネストされた goroutine までコンテキスト伝搬をサポートします。この分散トレーシング機能は、一般的な Go ライブラリレベル計装よりも最小バージョン要件が高くなっています。                                                                    |
-| Node.js の async hooks                | Node.js `8.0+`                                                          | `SIGUSR1` のカスタムハンドリングがコンテキスト伝搬を妨げる可能性があります。                                                                                                                                                                          |
-| Ruby Puma                             | Puma `5.0+` で提供される Ruby アプリケーション                          | コンテキスト伝搬サポートには Puma サーバーが必要です。                                                                                                                                                                                                |
-| Java スレッドプール                   | JDK `8+`                                                                | 文書化された追加のランタイム制約はありません。                                                                                                                                                                                                        |
-| Python asyncio                        | `uvloop` 付きの Python `3.9+`                                           | コンテキスト伝搬サポートには `uvloop` イベントループが必要です。                                                                                                                                                                                      |
+| 分野                                  | サポートされるバージョンや環境                                          | 備考                                                                                                                                                                               |
+| :------------------------------------ | :---------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ネットワークレベル HTTP/1 伝搬        | [OBI 互換性要件](/docs/zero-code/obi/#compatibility)を満たす Linux 環境 | プログラミング言語を問わず動作します。HTTPS の場合、伝搬は他の OBI で計装されたサービス間に限定され、プロキシや L7 ロードバランサーによって途切れる可能性があります。              |
+| ネットワークレベル gRPC 伝搬          | HTTP/2 上の gRPC `1.0+`                                                 | 言語を問わずストリームごとの HPACK `traceparent` ヘッダーを使用します。Go 以外の場合、OBI の起動前に確立された永続的な接続は認識されないことがあります。                           |
+| Go ライブラリレベルのコンテキスト伝搬 | Go `1.18+`                                                              | 最大 6 階層のネストされた goroutine までコンテキスト伝搬をサポートします。この分散トレーシング機能は、一般的な Go ライブラリレベル計装よりも最小バージョン要件が高くなっています。 |
+| Node.js の async hooks                | Node.js `8.0+`                                                          | `SIGUSR1` のカスタムハンドリングがコンテキスト伝搬を妨げる可能性があります。                                                                                                       |
+| Ruby Puma                             | Puma `5.0+` で提供される Ruby アプリケーション                          | コンテキスト伝搬サポートには Puma サーバーが必要です。                                                                                                                             |
+| Java スレッドプール                   | JDK `8+`                                                                | 文書化された追加のランタイム制約はありません。                                                                                                                                     |
+| Python asyncio                        | `uvloop` 付きの Python `3.9+`                                           | コンテキスト伝搬サポートには `uvloop` イベントループが必要です。                                                                                                                   |
 
 ここに記載のバージョンは、OBI が分散トレース機能で明示的にサポートするバージョンです。
 これ以外のバージョンでも動作する可能性はありますが、特に明記されない限り、文書化されたサポート範囲には含まれません。
@@ -69,10 +70,14 @@ TLS で暗号化されたトラフィック (HTTPS) では、OBI は送信され
 L7 プロキシやロードバランサーは元のパケットを破棄して下流で再送するため、TCP/IP のコンテキスト伝搬を妨げます。
 OpenTelemetry SDK で計装されたサービスからの受信トレースコンテキスト情報の解析は引き続き機能します。
 
-gRPC と HTTP/2 はネットワークレベルではサポートされません。
+gRPC の場合、OBI はストリームごとに `traceparent` HPACK ヘッダーを注入します。
+これはプログラミング言語を問わず動作し、同時に利用される HTTP/2 ストリームごとに異なるトレースコンテキストを保持します。
+OBI は gRPC に TCP オプションを使用しません。TCP オプションはコネクション単位のスコープであり、多重化されたストリームを表現できないためです。
+gRPC 以外の汎用的な HTTP/2 コンテキスト伝搬は、Go のライブラリレベル計装に限定されます。
 
 さらに細かい制御が必要な場合、`context_propagation` には `headers`、`tcp`、`headers,tcp` も指定できます。
-`http` は `headers` のエイリアスとして受け付けられます。
+以前存在した `http` エイリアスは削除されました。
+非推奨の `ip` 値は効果がありません。
 
 この種類のコンテキスト伝搬は任意のプログラミング言語で機能し、OBI を `privileged` モードで実行したり `CAP_SYS_ADMIN` を付与したりする必要はありません。
 詳細については、[分散トレースとコンテキスト伝搬](../configure/metrics-traces-attributes/)の設定セクションを参照してください。
@@ -155,14 +160,35 @@ RHEL 9.2 などの一部のパッチ済みカーネルでは、この機能が�
 
 この種類のコンテキスト伝搬は Go アプリケーションでのみサポートされており、eBPF のユーザーメモリ書き込みサポート (`bpf_probe_write_user`) を使用します。
 このアプローチの利点は、HTTP および HTTPS で動作することです。
-HTTP/2 と gRPC については、HTTPS を使用しない場合に新規接続でのみコンテキストを注入できます。
-再利用された HTTP/2/gRPC 接続はまだサポートされていません。
-`bpf_probe_write_user` の使用には OBI に `CAP_SYS_ADMIN` を付与するか、`privileged` コンテナとして実行するよう設定する必要があります。
+HTTP/2 と gRPC については、HTTPS を使用しない場合に新規および再利用された HTTP/2・gRPC 接続でコンテキストを注入できます。
+`bpf_probe_write_user` の使用には OBI に `CAP_SYS_ADMIN` を付与するか、privileged コンテナとして実行する必要があります。
 
-#### Go の手動計装との統合 {#integration-with-go-manual-instrumentation}
+#### Go Trace API を使用するアプリケーションの計装 {#instrument-applications-that-use-the-go-trace-api}
 
-OBI は [Auto SDK](/docs/zero-code/go/autosdk) を使用した手動スパンと自動的に統合されます。
-詳細は Auto SDK のドキュメントを参照してください。
+OBI v0.11.0 以降、OBI は SDK を登録せずに OpenTelemetry Go Trace API を使用するアプリケーションを計装できます。
+この統合が有効な場合、OBI は Trace API の呼び出しを検出し、生成された手動スパンを eBPF スパンとともにエクスポートします。
+すでに OpenTelemetry SDK を登録しているアプリケーションは、独自の SDK テレメトリーの管理とエクスポートを引き続き行います。
+`otel.SetTracerProvider(auto.TracerProvider())` の呼び出しを含め、グローバルな `TracerProvider` を登録すると、この自動的な有効化は抑止されます。
+
+OBI がこの統合を有効にするのは、以下の条件がすべて満たされた場合のみです。
+
+- アプリケーションがサポートされた OpenTelemetry モジュールバージョンとチェックサムの組み合わせを使用しており、モジュールの置き換えがないこと。
+- 実行可能ファイルとホストがサポートされた64ビットアーキテクチャを使用していること。
+- OBI が必要なシンボルとフィールドレイアウトを解決できること。
+- OBI に `bpf_probe_write_user` の使用権限があること。
+
+いずれかのチェックに失敗した場合、Auto SDK は無効のままとなり、グローバル Trace API を通じて生成されたスパンは記録されません。
+OBI の eBPF 計装は引き続き独立して動作します。
+OBI が Trace API の呼び出しを検出できる場合、スパン名、親子関係、ステータス、および一部のプリミティブ属性を含む部分的な合成スパンをエクスポートできます。
+これらのスパンには計装スコープ、イベント、リクエストされたスパンの種類は含まれません。
+
+OBI v0.11.0 では、Auto SDK を通じてエクスポートされる各スパンのエンコード済みペイロードは16 KiBを超えてはなりません。
+OBI は統合を有効化した際やオーバーサイズのペイロードを破棄した際に、メトリクスやログメッセージを出力しません。
+
+既知の制限と今後の作業には、[ヘッドサンプリング](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2793)、[コンテキストハンドオフ](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2794)、[外部およびリモートの親と `TraceState`](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2959)、[より大きなペイロードと破棄の可観測性](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2958)、および[ログエンリッチメント](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2932)が含まれます。
+
+サポートされるモジュールバージョン、チェックサム、アーキテクチャの組み合わせについては、[有効化の適格性マトリクス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.12.1/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation)を参照してください。
+上流の [Go Trace API の例](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/go-trace-api)と [Auto SDK](/docs/zero-code/go/autosdk) のドキュメントも参照してください。
 
 #### カーネル integrity モードの制限 {#kernel-integrity-mode-limitations}
 
@@ -198,6 +224,34 @@ services:
 ```
 
 `/sys/kernel/security/` ボリュームがマウントされていない場合、OBI は Linux カーネルが integrity モードで動作していないものとみなします。
+
+### Go チャネルスパンリンク {#go-channel-span-links}
+
+OBI は、Go チャネルを介したサポート対象のワークハンドオフに対して、実験的なレシーバー側のスパンリンクを発行します。
+送信側と受信側の両方に OBI が生成したアクティブなスパンがある場合、受信側のスパンは送信側のスパンにリンクされます。
+OBI はトレース ID、親子関係、送信側のスパンを変更しません。
+
+この動作は、OBI がターゲットバイナリのチャネルランタイムオフセットを解決できる場合、Go 固有のトレーシングとともに自動的に有効になります。
+`runtime.chansend1`、`runtime.chanrecv1`、`runtime.chanrecv2` を通じたバッファなしおよびバッファありの直接的なハンドオフがサポートされます。
+`select` を通じたチャネル操作はサポートされません。
+これらのプローブを無効にするには Go 固有のトレーサーを無効にしてください。チャネルリンク専用のオプションはありません。
+
+OBI は `OTEL_SPAN_LINK_COUNT_LIMIT` を尊重し、無効、重複、自己参照のリンクを破棄します。
+
+### Node.js の手動スパンのキャプチャ {#capture-nodejs-manual-spans}
+
+OBI v0.12.1 以降、OBI はアプリケーションが OpenTelemetry SDK を登録していない場合に、Node.js アプリケーションが `@opentelemetry/api` を通じて生成するスパンをキャプチャできます。
+OBI はこれらの手動スパンをトレースパイプラインを通じてエクスポートし、自動的にキャプチャされたサーバースパンと関連付けます。
+アプリケーションが SDK を登録している場合、OBI はスパンの生成とエクスポートをその SDK に委ねます。
+
+この機能はデフォルトで無効です。
+既存の Config v1 デプロイメントでは `nodejs.manual_spans: true` または `OTEL_EBPF_NODEJS_MANUAL_SPANS=true` で有効にできます。
+Config v2 は v0.12.1 時点で同等のフィールドを公開していません。
+この機能のためだけに Config v1 を維持するのではなく、デプロイメントの Config v2 への移行を継続してください。
+
+OBI が Node.js インスペクターに到達できる必要があり、プロセスが独自の `SIGUSR1` ハンドラーを登録してはなりません。
+CommonJS ローダーが到達できないバンドルされた `@opentelemetry/api` のコピーはキャプチャされません。
+自動クライアントスパンは現在、アクティブな手動スパンの子ではなく、同じサーバースパンの下で手動スパンの兄弟として扱われます。
 
 ### uvloop を使用した Python asyncio {#python-asyncio-with-uvloop}
 

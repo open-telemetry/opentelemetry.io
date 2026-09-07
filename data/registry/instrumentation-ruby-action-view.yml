@@ -1,16 +1,18 @@
-title: ActionView Instrumentation
+title: opentelemetry-instrumentation-action_view
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
   - action_view
-license: Apache 2.0
-description: ActionView instrumentation for Ruby.
+license: Apache-2.0
+description: ActionView instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/action_view
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-action_view/v0.13.0/instrumentation/action_view
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-action_view/0.13.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems
