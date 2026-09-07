@@ -15221,6 +15221,7 @@ https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/oteps
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/oteps/0232-maturity-of-otel.md,200,1787916611
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/spec-compliance-matrix.md,200,1787917016
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.55.0/oteps/0232-maturity-of-otel.md#alpha,200,1787916705
+https://github.com/open-telemetry/opentelemetry-specification/blob/v1.55.0/oteps/0232-maturity-of-otel.md#alpha,200,1788414931
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.58.0/oteps/0232-maturity-of-otel.md,200,1785739373
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.58.0/oteps/entities/0256-entities-data-model.md,200,1788241855
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.58.0/spec-compliance-matrix.md#logs,200,1785785939
@@ -24726,6 +24727,9 @@ https://node-oracledb.readthedocs.io/en/latest/user_guide/connection_handling.ht
 https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage,200,1787916626
 https://nodejs.org/api/async_hooks.html,200,1787916626
 https://nodejs.org/api/cli.html#--importmodule,200,1787916626
+https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage,200,1788414913
+https://nodejs.org/api/async_hooks.html,200,1788414913
+https://nodejs.org/api/cli.html#--importmodule,200,1788414913
 https://nodejs.org/api/console.html,200,1787916869
 https://nodejs.org/api/modules.html#modules-commonjs-modules,200,1787916626
 https://nodejs.org/api/perf_hooks.html#perf_hooksmonitoreventloopdelayoptions,200,1787916979
