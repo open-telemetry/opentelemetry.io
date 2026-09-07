@@ -75,8 +75,7 @@ violation.
 The **orchestration layer** turns an instrumentation request into a scheduled
 run and posts the resulting pull request back to the requester. We currently run
 this on a self-hosted multi-agent task platform, but nothing in the design
-depends on it: any orchestrator that can check out a repository, run a team of
-agents against it, and open a pull request will do. What matters is the loop
+depends on it: any orchestrator will do, as long as it can check out a repository, run a team of agents against it, and open a pull request. What matters is the loop
 structure described below, not the runner.
 
 ## Architecture
