@@ -175,7 +175,7 @@
     "cspell": "10.1.0",
     "gulp": "5.0.1",
     "hugo-extended": "0.164.0",
-    "js-yaml": "5.3.0",
+    "js-yaml": "5.4.1",
     "link-cache": "0.3.0",
     "markdown-it": "15.0.0",
     "markdown-link-check": "3.15.0",
@@ -184,8 +184,8 @@
     "markdownlint-rule-helpers": "0.31.0",
     "markdownlint-rule-no-shortcut-ref-link": "0.4.0",
     "prettier": "3.9.6",
-    "puppeteer": "25.8.0",
-    "puppeteer-core": "25.8.0",
+    "puppeteer": "25.9.0",
+    "puppeteer-core": "25.9.0",
     "require-dir": "1.2.0",
     "sass-embedded": "1.103.1",
     "smol-toml": "1.8.0",
@@ -232,6 +232,6 @@
     "@parcel/watcher": false,
     "fsevents": false,
     "hugo-extended@0.164.0": true,
-    "puppeteer@25.8.0": true
+    "puppeteer@25.9.0": true
   }
 }
