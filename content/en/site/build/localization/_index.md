@@ -12,7 +12,8 @@ onboard a new language localization. It covers both repository-level changes and
 GitHub organization-level setup.
 
 For the contributor-facing side — translation guidance, drift tracking, and
-ongoing maintenance — see [Site localization][].
+ongoing maintenance — see [Site localization][]. For an agent-run version of the
+repository-side steps, see the [`setup-new-localization` skill][].
 
 The canonical registry of active localization teams and their resources is in
 [`projects/localization.md`][].
@@ -365,5 +366,7 @@ correct:
 [kickoff issue]: /docs/contributing/localization/#kickoff
 [New localizations]: /docs/contributing/localization/#new-localizations
 [Site localization]: /docs/contributing/localization/
+[`setup-new-localization` skill]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/setup-new-localization/SKILL.md
 [ISO 639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
 [CNCF Slack workspace]: https://cloud-native.slack.com
