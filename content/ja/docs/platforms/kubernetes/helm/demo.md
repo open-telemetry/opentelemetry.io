@@ -1,8 +1,7 @@
 ---
 title: OpenTelemetryデモチャート
 linkTitle: デモチャート
-default_lang_commit: c161165987d527c1efd6bc969d7fef905946c561
-drifted_from_default: true
+default_lang_commit: 635c7435bab2fbc655d08e5bb84b127e10242a7d
 ---
 
 [OpenTelemetry Demo](/docs/demo/) は、実世界に近い環境での OpenTelemetry の実装を説明することを意図した、マイクロサービスベースの分散システムです。
@@ -38,12 +37,13 @@ kubectl port-forward svc/my-otel-demo-frontendproxy 8080:8080
 
 プロキシが公開されたら、以下のパスにアクセスすることもできます。
 
-| コンポーネント | パス                              |
-| -------------- | --------------------------------- |
-| ウェブストア   | <http://localhost:8080>           |
-| Grafana        | <http://localhost:8080/grafana>   |
-| 機能フラグUI   | <http://localhost:8080/feature>   |
-| Jaeger UI      | <http://localhost:8080/jaeger/ui> |
+| コンポーネント    | パス                              |
+| ----------------- | --------------------------------- |
+| ウェブストア      | <http://localhost:8080>           |
+| Grafana           | <http://localhost:8080/grafana>   |
+| 機能フラグUI      | <http://localhost:8080/feature>   |
+| Load Generator UI | <http://localhost:8080/loadgen>   |
+| Jaeger UI         | <http://localhost:8080/jaeger/ui> |
 
 ウェブストアからのスパンを収集するには、OpenTelemetryコレクターOTLP/HTTPレシーバーを公開する必要があります。
 
