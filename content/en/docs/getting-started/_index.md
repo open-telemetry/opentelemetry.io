@@ -36,7 +36,7 @@ If you are new to OpenTelemetry, start with [What is OpenTelemetry?](../what-is-
 
 **Your goal:** instrument an application and generate useful telemetry.
 
-Start with the [Developer Getting Started](#developer-getting-started) path.
+Start with the [Developer Getting Started](dev/) path.
 
 You will learn how to:
 
@@ -52,7 +52,7 @@ You will learn how to:
 
 **Your goal:** collect telemetry from applications and infrastructure, process it, and deliver it to your observability backend.
 
-Start with the [Operations Getting Started](#operations-getting-started) path.
+Start with the [Operations Getting Started](ops/) path.
 
 You will learn how to:
 
@@ -93,7 +93,7 @@ Operations and platform engineers primarily work on the collection, processing, 
 
 The boundaries can vary between organizations. The important point is that both sides contribute to the same observability pipeline.
 
-Start with the [Developer Getting Started](#developer-getting-started) path to instrument an application. Then continue with the [Operations Getting Started](#operations-getting-started) path to build and manage the telemetry pipeline.
+Start with the [Developer Getting Started](dev/) path to instrument an application. Then continue with the [Operations Getting Started](ops/) path to build and manage the telemetry pipeline.
 
 ---
 
