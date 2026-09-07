@@ -3,7 +3,7 @@ title: Kubernetes attributes processor reaches v1.0.0 milestone
 linkTitle: Kubernetes Processor v1
 date: 2026-09-16
 author: >-
-  [Christos Markou](https://github.com/ChrsMark)(Elastic) [Pablo
+  [Christos Markou](https://github.com/ChrsMark)(Elastic), [Pablo
   Baeyens](https://github.com/mx-psi/)(Datadog)
 cSpell:ignore: Baeyens Markou
 ---
