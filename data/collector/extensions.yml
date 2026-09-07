@@ -230,14 +230,6 @@
   stability:
     extension: alpha
   subtype: observer
-- name: kafkatopicsobserver
-  display_name: Kafka Topics Observer Extension
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    extension: deprecated
-  subtype: observer
 - name: mcp
   display_name: MCP Server
   repo: contrib
@@ -303,6 +295,13 @@
   subtype: storage
 - name: remotetapextension
   display_name: Remote Tap Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: development
+- name: sdnotifyextension
+  display_name: sd_notify Extension
   repo: contrib
   distributions:
     - contrib

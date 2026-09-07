@@ -45,5 +45,5 @@ locales:
     maintainers: []
     approvers: []
   zh:
-    maintainers: []
-    approvers: [chluknight1224, my-git9, reyang, windsonsea]
+    maintainers: [reyang]
+    approvers: [chluknight1224, my-git9, windsonsea]

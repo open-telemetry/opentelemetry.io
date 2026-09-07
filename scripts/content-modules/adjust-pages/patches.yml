@@ -55,3 +55,19 @@
     superuser.com serves a bot wall (403) to link checkers; the answer was
     verified manually. To be upstreamed to open-telemetry/semantic-conventions;
     v1.44.0 shipped without the fix, so the patch stays live through 1.44.x.
+
+- id: 2026-08-18-opamp-gnupg-manual-anchor
+  module: opamp
+  minVers: 0.17.0
+  maxVers: 0.20.0
+  file: ^tmp/opamp/index\.md$
+  search: 'https://www\.gnupg\.org/gph/en/manual/x135\.html#AEN160'
+  replace: 'https://www.gnupg.org/gph/en/manual.html#AEN161'
+  flags: g
+  notes: >-
+    gnupg.org merged its chunked manual into a single page and renumbered the
+    "Detached signatures" anchor; the old x135.html#AEN160 page 404s. Surfaced
+    by open-telemetry/opentelemetry.io#11364. Upstreamed fix:
+    open-telemetry/opamp-spec#393; maxVers is set past the current 0.17.0 pin
+    since opamp-spec releases by minor version, not patch — widen it further if
+    0.20.0 ships without the fix.

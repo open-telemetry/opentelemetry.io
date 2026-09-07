@@ -115,6 +115,7 @@
     - contrib
   stability:
     logs: development
+    metrics: development
 - name: azuremonitorreceiver
   display_name: Azure Monitor Receiver
   repo: contrib
@@ -282,7 +283,7 @@
   distributions:
     - contrib
   stability:
-    logs: development
+    logs: alpha
 - name: googlecloudpubsubreceiver
   display_name: Google Pub/Sub Receiver
   repo: contrib

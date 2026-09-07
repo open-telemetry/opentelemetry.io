@@ -28,7 +28,7 @@ cSpell:ignore: Aiohttp ASGI distro instrumentor mkdir MSIE Referer Starlette ven
 これにより、OpenTelemetry をアプリケーションコードに統合するのに必要な作業量を減らせます。
 以下に、手動、自動、プログラムで計装された Flask ルートの違いを示します。
 
-## 手動計測サーバー {#manually-instrumented-server}
+## 手動計装サーバー {#manually-instrumented-server}
 
 `server_manual.py`
 
@@ -56,7 +56,7 @@ def server_request():
     return "served"
 ```
 
-## プログラム計測サーバー {#programmatically-instrumented-server}
+## プログラム計装サーバー {#programmatically-instrumented-server}
 
 `server_programmatic.py`
 
@@ -117,7 +117,7 @@ opentelemetry-bootstrap -a install
 
 この節では、サーバーの計装を手動で行うプロセスと、自動的に計装されたサーバーを実行するプロセスについて説明します。
 
-## 手動で計測したサーバーを実行する {#execute-the-manually-instrumented-server}
+## 手動で計装したサーバーを実行する {#execute-the-manually-instrumented-server}
 
 この例を構成するスクリプトをそれぞれ実行するために、2つの別々のコンソールでサーバーを実行します。
 
@@ -227,7 +227,7 @@ python client.py
 }
 ```
 
-自動計装は手動計測とまったく同じことをするので、両方の出力が同じであることがわかります。
+自動計装は手動計装とまったく同じことをするので、両方の出力が同じであることがわかります。
 
 ## プログラムで計装されたサーバーを実行する {#execute-the-programmatically-instrumented-server}
 
