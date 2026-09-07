@@ -224,7 +224,7 @@ Try the [OpenTelemetry demo][demo].
 | Deploy a Collector                   | [Collector deployment](../collector/deploy/)                          |
 | Run OpenTelemetry in Kubernetes      | [Kubernetes](../platforms/kubernetes/)                                |
 | Understand telemetry structure       | [Semantic Conventions](../concepts/semantic-conventions/)             |
-| See OpenTelemetry in action          | [OpenTelemetry demo][demo]demo/)                                        |
+| See OpenTelemetry in action          | [OpenTelemetry demo][demo](demo/)                                     |
 
 ## Keep learning
 
