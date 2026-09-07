@@ -555,8 +555,8 @@ When an unstaffed locale gains maintainers, submit a registry PR that records
 them and regenerates the locale section of CODEOWNERS
 (`npm run fix:codeowners`). This drops the `docs-approvers` fallback from the
 locale's lines, and the locale team gates its own PRs from then on: the locale
-has **graduated**. If a locale team later becomes dormant, the inverse registry
-change restores the fallback.
+has **graduated**. For an example, see the [zh graduation PR][]. If a locale
+team later becomes dormant, the inverse registry change restores the fallback.
 
 [code owner]:
   https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
@@ -566,6 +566,8 @@ change restores the fallback.
   https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-codeowners
 [registry]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
+[zh graduation PR]:
+  https://github.com/open-telemetry/opentelemetry.io/pull/11516
 
 ### Enabling auto-merge on locale-only PRs {#auto-merge}
 
