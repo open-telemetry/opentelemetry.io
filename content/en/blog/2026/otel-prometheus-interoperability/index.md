@@ -237,6 +237,10 @@ _**Note**: Sysadmin (N=6) and Operations (N=2) respondents are excluded from
 this table — both groups are too small to interpret — leaving N=73 of the 81
 respondents._
 
+_**Note**: The same caution applies here as above, and more so: with 8 to 35
+respondents behind each backend column, and fewer still behind each team type,
+these splits are indicative rather than conclusive._
+
 ## Get involved
 
 Interoperability is measurably easier than it was two years ago, but the
