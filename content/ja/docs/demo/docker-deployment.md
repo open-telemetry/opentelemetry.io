@@ -2,9 +2,8 @@
 title: Docker デプロイ
 linkTitle: Docker
 aliases: [docker_deployment]
-default_lang_commit: 6d5bce8500b2a358ae30dd1343770bc83ac325e7
-drifted_from_default: true
-cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
+default_lang_commit: ef74cd393090313b5ad970e74d499a97505fffb8
+cSpell:ignore: Firepit otlphttp span_metrics
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
@@ -14,8 +13,8 @@ cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 - Docker
 - [Docker Compose](https://docs.docker.com/compose/install/)
   v2.0.0+
-- Make (オプション)
-- アプリケーション用に 6 GB の RAM（または[最小モード](#run-in-minimal-mode)を使う場合は約 3 GB）
+- Make（オプション）
+- アプリケーション用に 6 GB の RAM（または[最小モード](#deployment-modes)を使う場合は約 3 GB）
 - 14 GB のディスク容量
 
 ## デモの取得と実行 {#get-and-run-the-demo}
@@ -43,14 +42,30 @@ cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
    {{% /tab %}} {{% tab Docker %}}
 
    ```shell
-   docker compose up --force-recreate --remove-orphans --detach
+   docker compose --env-file .env --env-file .env.override \
+     -f compose.yaml -f compose.full.yaml \
+     -f compose.observability.yaml -f compose.extras.yaml \
+     up --force-recreate --remove-orphans --detach
    ```
 
    {{% /tab %}} {{< /tabpane >}}
 
-   ### 最小モードで実行する {#run-in-minimal-mode}
+   ### デプロイモード {#deployment-modes}
 
-   リソースが限られている場合は、Kafka とそれに依存するサービスなしでデモを開始でき、メモリ使用量を約 3 GB の RAM に削減できます。
+   デモはいくつかのデプロイモードに対応しています。
+   デフォルトの `make start` はすべてのサービスとオブザーバビリティスタックを含むフルデモを実行します。
+   他のモードではリソース使用量を削減したり、特定のコンポーネントを除外したりできます。
+
+   | モード                    | Make ターゲット              | 説明                                                                                                               |
+   | ------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+   | Full                      | `make start`                 | すべてのサービスとオブザーバビリティバックエンド（デフォルト）                                                     |
+   | Minimal                   | `make start-minimal`         | Kafka とそれに依存するサービス（`accounting`、`fraud-detection`、`kafka`）を除外し、メモリ使用量を約 3 GB に削減   |
+   | No observability          | `make start-no-o11y`         | オブザーバビリティバックエンド（Jaeger、Grafana、Prometheus、OpenSearch）なしですべてのサービスを実行              |
+   | Minimal, no observability | `make start-minimal-no-o11y` | オブザーバビリティバックエンドなしの最小サービス                                                                   |
+   | Profiling                 | `make start-profiling`       | eBPF プロファイラーとプロファイリングデータ用の [Firepit](https://github.com/florianl/firepit) UI を含むフルモード |
+   | Agentic                   | `make start-agentic`         | AI エージェント、MCP サーバー、デモ操作用チャットボットを含むフルモード                                            |
+
+   たとえば、最小モードでデモを起動するには以下を実行します。
 
    {{< tabpane text=true >}} {{% tab Make %}}
 
@@ -61,29 +76,41 @@ cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
    {{% /tab %}} {{% tab Docker %}}
 
    ```shell
-   docker compose -f docker-compose.minimal.yml up --force-recreate --remove-orphans --detach
+   docker compose --env-file .env --env-file .env.override \
+     -f compose.yaml -f compose.observability.yaml -f compose.extras.yaml \
+     up --force-recreate --remove-orphans --detach
    ```
 
    {{% /tab %}} {{< /tabpane >}}
 
-   以下のサービスは最小モードには**含まれていません**。
-   - `accounting`
-   - `fraud-detection`
-   - `flagd-ui`
-   - `kafka`
+4. （オプション）テレメトリーサニティテストを実行します。
 
-4. (オプション) API オブザーバビリティ駆動テストの有効化[^1]します。
+   デモには、各サービスがトレース、メトリクス、ログを生成し、期待されるバックエンド（Jaeger、Prometheus、OpenSearch）に到達していることを検証するテレメトリーサニティテストスイートが含まれています。
+   詳細は [test/telemetry/README.md](https://github.com/open-telemetry/opentelemetry-demo/blob/main/test/telemetry/README.md) を参照してください。
+
+   | テストスコープ | Make ターゲット                    | 起動内容                                                  |
+   | -------------- | ---------------------------------- | --------------------------------------------------------- |
+   | Full           | `make run-telemetry-tests`         | フルデプロイ（`make start`）                              |
+   | Minimal        | `make run-telemetry-tests-minimal` | 最小デプロイ（`make start-minimal`）                      |
+   | Agentic        | `make run-telemetry-tests-agentic` | Agentic デプロイ（エージェント、MCP、チャットボット付き） |
+
+   各ターゲットは `./test/telemetry` からテストイメージをビルドし、対応するデプロイを起動してテストを実行した後、デモを停止します。
 
    {{< tabpane text=true >}} {{% tab Make %}}
 
 ```shell
-make run-tracetesting
+make run-telemetry-tests
 ```
 
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose -f docker-compose-tests.yml run traceBasedTests
+# テスト開始前にデモが実行中である必要があります。
+docker build -t opentelemetry-demo-telemetry-tests ./test/telemetry
+docker run --rm --network opentelemetry-demo \
+  --env-file .env --env-file .env.override \
+  -e TEST_SCOPE=full \
+  opentelemetry-demo-telemetry-tests
 ```
 
     {{% /tab %}} {{< /tabpane >}}
@@ -93,11 +120,21 @@ docker compose -f docker-compose-tests.yml run traceBasedTests
 イメージがビルドされ、コンテナが開始されると以下にアクセスできるようになります。
 
 - ウェブストア: <http://localhost:8080/>
+- ロードジェネレーター UI: <http://localhost:8080/loadgen/>
+- Flagd 設定 UI: <http://localhost:8080/feature>
+- テレメトリードキュメント（Weaver で生成）:
+  <http://localhost:8080/telemetry/>
+
+以下はオブザーバビリティスタックが実行中の場合（`*-no-o11y` モード以外）に利用可能です。
+
 - Grafana: <http://localhost:8080/grafana/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
 - OpAMP UI: <http://localhost:8080/opamp/>
-- トレーステスト UI: <http://localhost:11633/>、`make run-tracetesting` の使用時のみ
-- Flagd 設定 UI: <http://localhost:8080/feature>
+
+以下は特定のデプロイモードでのみ利用可能です。
+
+- Firepit UI（プロファイリングモード）: <http://localhost:8080/profiles/>
+- チャットボット（Agentic モード）: <http://localhost:8080/chatbot/>
 
 ## デモのプライマリーポート番号の変更 {#changing-the-demos-primary-port-number}
 
@@ -115,7 +152,10 @@ ENVOY_PORT=8081 make start
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-ENVOY_PORT=8081 docker compose up --force-recreate --remove-orphans --detach
+ENVOY_PORT=8081 docker compose --env-file .env --env-file .env.override \
+  -f compose.yaml -f compose.full.yaml \
+  -f compose.observability.yaml -f compose.extras.yaml \
+  up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
@@ -124,15 +164,18 @@ ENVOY_PORT=8081 docker compose up --force-recreate --remove-orphans --detach
 
 おそらく、あなたがすでに所持しているオブザーバビリティバックエンド（たとえば、Jaeger、Zipkin、または[選択したベンダー](/ecosystem/vendors/)のいずれかの既存インスタンス）のデモアプリケーションとしてウェブストアを利用したいでしょう。
 
-OpenTelemetry コレクターはテレメトリーデータを複数のバックエンドに送信するのに利用可能です。
-デフォルトで、デモアプリケーションのコレクターは 2 つのファイルから設定をマージします。
+OpenTelemetry Collector はテレメトリーデータを複数のバックエンドに送信するのに利用可能です。
+デフォルトで、デモアプリケーションの Collector は以下のファイルから設定をマージします（順序通り）。
 
-- `otelcol-config.yml`
-- `otelcol-config-extras.yml`
+- `otelcol-config.yml` — ベースのレシーバー、プロセッサー、パイプライン
+- `otelcol-config-full.yml` — Kafka と PostgreSQL メトリクスレシーバー（フルモード）
+- `otelcol-config-observability.yml` — Jaeger、Prometheus、OpenSearch エクスポーター（オブザーバビリティスタック使用時）
+- `otelcol-config-extras.yml` — カスタマイズ用の空スタブ、常に最後にロード
 
 あなたのバックエンドに追加するために、エディターで [src/otel-collector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml) ファイルを開いてください。
 
-- 新しいエクスポーターを追加することで始めます。 たとえば、もしあなたのバックエンドが OTLP over HTTP をサポートしているのであれば、以下を追加してください。
+- 新しいエクスポーターを追加することで始めます。
+  たとえば、もしあなたのバックエンドが OTLP over HTTP をサポートしているのであれば、以下を追加してください。
 
   ```yaml
   exporters:
@@ -146,17 +189,24 @@ OpenTelemetry コレクターはテレメトリーデータを複数のバック
   service:
     pipelines:
       traces:
-        exporters: [spanmetrics, otlphttp/example]
+        exporters: [debug, otlp_grpc/jaeger, span_metrics, otlphttp/example]
   ```
 
 > [!NOTE]
 >
-> YAML の値をコレクターとマージすると、オブジェクトはマージされて、配列は置き換えられます。
-> `spanmetrics` エクスポーターを上書きする場合は、`traces` パイプラインのエクスポーターの配列に含める必要があります。
-> このエクスポーターを含めないとエラーが発生します。
+> YAML の値を Collector とマージすると、オブジェクトはマージされて、配列は置き換えられます。
+> `span_metrics` コネクターはトレースからメトリクスへの橋渡しを行うため、パイプラインを上書きする場合はトレースの `exporters` とメトリクスの `receivers` に残す必要があります。
+> これを省略すると Collector がクラッシュします。
+> 他のエクスポーターはすべてオプションです。
+> いずれかを省略すると、そのバックエンドへのデータ送信が停止されるだけです。
+> アップストリームのエクスポーター名は以下の通りです。
+>
+> - **traces**: `debug`、`otlp_grpc/jaeger`、`span_metrics` _（必須）_
+> - **metrics**: `debug`、`otlp_http/prometheus`
+> - **logs**: `debug`、`opensearch`
 
 ベンダーのバックエンドは認証のために追加のパラメーターを必要とするかもしれません。ドキュメントを確認してください。
-一部のバックエンドは異なるエクスポーターが必要です。それらのエクスポーターとドキュメントについて[opentelemetry-collector-contrib/exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter) で入手できます。
+一部のバックエンドは異なるエクスポーターが必要です。それらのエクスポーターとドキュメントについて [opentelemetry-collector-contrib/exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter) で入手できます。
 
 `otelcol-config-extras.yml` を更新した後に、`make start` を実行してデモを開始してください。
 しばらくして、あなたのバックエンドにトレースが流れるのも確認できるはずです。

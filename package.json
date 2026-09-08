@@ -1,5 +1,8 @@
 {
   "name": "opentelemetry.io",
+  "workspaces": [
+    "scripts/generate-community-data"
+  ],
   "scripts": {
     "__check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve",
     "__check:format": "prettier --ignore-unknown",
@@ -63,9 +66,9 @@
     "check:all": "npm run seq -- $(npm run -s _list:check:*)",
     "check:code-excerpts": "npm run _code-excerpter-over-en -- --dry-run --fail-on-update",
     "check:codeowners": "node scripts/gh/locale-codeowners/cli.mjs --check",
-    "check:collector-sync:lint": "cd scripts/collector-sync && uv run --extra dev ruff check src/",
-    "check:collector-sync:types": "cd scripts/collector-sync && uv run --extra dev mypy src/",
-    "check:collector-sync": "cd scripts/collector-sync && uv run --extra dev pytest",
+    "check:collector-sync:lint": "npm run -s _check:uv && cd scripts/collector-sync && uv run --extra dev ruff check src/",
+    "check:collector-sync:types": "npm run -s _check:uv && cd scripts/collector-sync && uv run --extra dev mypy src/",
+    "check:collector-sync": "npm run -s _check:uv && cd scripts/collector-sync && uv run --extra dev pytest",
     "check:expired": "find content -name '*.md' | xargs ./scripts/list-expired.pl",
     "check:filenames": "node scripts/validate/filenames/index.mjs",
     "check:format": "npm run _check:format && npm run _check:format:nowrap || (echo '[help] Run: npm run fix:format'; exit 1)",
@@ -93,7 +96,7 @@
     "fix:all": "npm run all -- $(npm -s run _list:fix:*)",
     "fix:code-excerpts": "npm run _code-excerpter-over-en",
     "fix:codeowners": "node scripts/gh/locale-codeowners/cli.mjs",
-    "fix:collector-sync:lint": "cd scripts/collector-sync && uv run --extra dev ruff check --fix src/",
+    "fix:collector-sync:lint": "npm run -s _check:uv && cd scripts/collector-sync && uv run --extra dev ruff check --fix src/",
     "fix:dict": "scripts/sort-cspell-words.pl .cspell/*.txt && npm run _fix:dict",
     "fix:expired": "npm run -s check:expired -- -q | xargs -r -I {} sh -c 'echo \"Deleting expired file: {}\" && rm {}'",
     "fix:filenames": "npm run check:filenames -- --fix",
@@ -130,10 +133,6 @@
     "netlify-build:production": "npm run seq -- _netlify:prepare build:production diff:check",
     "pin:submodule": "npm run _pin:submodule -- $PIN_SKIP",
     "postinstall": "git diff --quiet -- package-lock.json || echo '⚠️ package-lock.json differs after this install. If you changed dependencies, commit the lock together with package.json; otherwise restore the lock and investigate before committing.'",
-    "precheck:collector-sync:lint": "npm run -s _check:uv",
-    "precheck:collector-sync:types": "npm run -s _check:uv",
-    "precheck:collector-sync": "npm run -s _check:uv",
-    "prefix:collector-sync:lint": "npm run -s _check:uv",
     "prepare": "npm run seq -- get:submodule _prepare:docsy",
     "schemas:update": "npm run update:submodule -- content-modules/opentelemetry-specification",
     "seq": "bash -c 'for cmd in \"$@\"; do npm run $cmd || exit 1; done' - ",
@@ -173,7 +172,7 @@
     "ajv-errors": "3.0.0",
     "ajv-formats": "3.0.1",
     "code-excerpter": "0.2.0",
-    "cspell": "10.0.1",
+    "cspell": "10.1.0",
     "gulp": "5.0.1",
     "hugo-extended": "0.164.0",
     "js-yaml": "5.3.0",
@@ -188,7 +187,7 @@
     "puppeteer": "25.8.0",
     "puppeteer-core": "25.8.0",
     "require-dir": "1.2.0",
-    "sass-embedded": "1.102.0",
+    "sass-embedded": "1.103.1",
     "smol-toml": "1.8.0",
     "textlint": "15.8.0",
     "textlint-filter-rule-allowlist": "4.0.0",
@@ -212,16 +211,16 @@
     "path": "0.12.7"
   },
   "optionalDependencies": {
-    "npm-check-updates": "23.0.2"
+    "npm-check-updates": "23.1.0"
   },
   "overrides": {
     "adm-zip": "0.6.0"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
-  "enginesNpmComment": "Floor policy: https://opentelemetry.io/site/build/dependencies/#npm-version-floor; next bump: >=11.18.0 (npm/cli#9652) once Node LTS bundles it",
+  "enginesNpmComment": "Floor policy: https://opentelemetry.io/site/build/dependencies/#npm-version-floor; 11.18 floor: npm/cli#9652 fix, plus min-release-age-exclude (added in 11.17); Node LTS bundles 11.19+ since 24.20.0",
   "engines": {
     "node": ">=24",
-    "npm": ">=11.16.0"
+    "npm": ">=11.18.0"
   },
   "private": true,
   "prettier": {

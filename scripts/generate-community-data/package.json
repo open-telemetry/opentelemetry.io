@@ -1,8 +1,7 @@
 {
+  "name": "@opentelemetry/generate-community-data",
+  "private": true,
   "type": "module",
-  "scripts": {
-    "ci:min": "npm ci --ignore-scripts --omit=optional"
-  },
   "dependencies": {
     "@octokit/rest": "22.0.1",
     "dotenv": "17.4.2",

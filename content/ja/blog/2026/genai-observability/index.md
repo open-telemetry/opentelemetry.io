@@ -6,6 +6,7 @@ author: '[James Newton-King](https://github.com/jamesnk) (Microsoft)'
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/9707
 sig: SIG GenAI Observability
 default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
+drifted_from_default: true
 cSpell:ignore: genai
 ---
 

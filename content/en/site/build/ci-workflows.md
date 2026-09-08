@@ -23,7 +23,7 @@ labels on pull requests:
 | Workflow file                      | Trigger                               | Privileges                                   |
 | ---------------------------------- | ------------------------------------- | -------------------------------------------- |
 | [`pr-review-trigger.yml`][trigger] | `pull_request_review`                 | Minimal (no secrets)                         |
-| [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run` | App token for label edits and org/team reads |
+| [`label-manager.yml`][labels]      | `pull_request_target`, `workflow_run` | App token for label edits and org/team reads |
 | [`blog-publish-labels.yml`][blog]  | `schedule` (daily 7 AM UTC)           | App token + `SLACK_WEBHOOK_URL` secret       |
 
 [trigger]:
@@ -67,8 +67,8 @@ latest date — all content must be ready before merging.
 #### Script operating modes
 
 The [`pr-approval-labels.sh`][script] script processes a single PR (set via the
-`PR` environment variable). It is called by `pr-approval-labels.yml` on PR
-events and by [`blog-publish-check.sh`][batch-script] in batch mode.
+`PR` environment variable). It is called by `label-manager.yml` on PR events and
+by [`blog-publish-check.sh`][batch-script] in batch mode.
 
 [script]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/pr-approval-labels.sh
@@ -93,19 +93,19 @@ To work around this limitation, the system uses a
 
 1. **`pr-review-trigger`** runs on every review submission/dismissal. It saves
    the PR number as an artifact and exits — no secrets needed.
-2. **`pr-approval-labels`** is triggered by `workflow_run` (when the trigger
-   workflow completes). It runs in the base repository context with full access
-   to the GitHub App token, downloads the artifact, and updates labels.
+2. **`label-manager`** is triggered by `workflow_run` (when the trigger workflow
+   completes). It runs in the base repository context with full access to the
+   GitHub App token, downloads the artifact, and updates labels.
 
-For content changes (`opened`, `reopened`, `synchronize`), the
-`pr-approval-labels` workflow is triggered directly via `pull_request_target`.
+For content changes (`opened`, `reopened`, `synchronize`), the `label-manager`
+workflow is triggered directly via `pull_request_target`.
 
 ```mermaid
 sequenceDiagram
     participant R as Reviewer
     participant GH as GitHub
     participant T as pr-review-trigger
-    participant L as pr-approval-labels
+    participant L as label-manager
 
     R->>GH: Submits review (approve/request changes/dismiss)
 
@@ -127,7 +127,7 @@ sequenceDiagram
 sequenceDiagram
     participant A as Author
     participant GH as GitHub
-    participant L as pr-approval-labels
+    participant L as label-manager
 
     A->>GH: Opens/updates PR
 
@@ -143,11 +143,10 @@ sequenceDiagram
 - **`pr-review-trigger`**: intentionally minimal — no secrets, no privileged
   permissions. Ignores `review.state == "commented"` since comments don't affect
   approvals.
-- **`pr-approval-labels`**: runs with a GitHub App token
-  (`OTELBOT_DOCS_CLIENT_ID` / `OTELBOT_DOCS_PRIVATE_KEY`) that has permissions
-  to read org/team membership and edit PR labels. Uses `pull_request_target` and
-  `workflow_run` to ensure it always executes in the trusted base repository
-  context.
+- **`label-manager`**: runs with a GitHub App token (`OTELBOT_DOCS_CLIENT_ID` /
+  `OTELBOT_DOCS_PRIVATE_KEY`) that has permissions to read org/team membership
+  and edit PR labels. Uses `pull_request_target` and `workflow_run` to ensure it
+  always executes in the trusted base repository context.
 - **`blog-publish-labels`**: runs on a schedule with a GitHub App token and the
   `SLACK_WEBHOOK_URL` secret. Always executes in the trusted base repository
   context (schedule events have no fork variant).
