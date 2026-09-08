@@ -239,17 +239,11 @@ respondents._
 
 ## Get involved
 
-The numbers in this post show real progress: interoperability between
-OpenTelemetry and Prometheus is measurably easier than it was two years ago, and
-far fewer people now find the two hard to use together. But the single largest
-group of respondents still sits in the middle of the scale, and the open-ended
-answers point at concrete gaps — data model differences, resource attributes and
-metadata, naming and formatting friction. There is still a lot of work to do, on
-both the OpenTelemetry and the Prometheus side.
+Interoperability is measurably easier than it was two years ago, but the
+open-ended answers point at concrete gaps — data model differences, resource
+attributes and metadata, naming and formatting friction. There is still a lot of
+work to do, on both the OpenTelemetry and the Prometheus side.
 
-Everyone is welcome to contribute. Whether you want to help shape the
-specification, work on the Collector, or simply share how this works in your own
-setup, the discussion happens in the
+Everyone is welcome to contribute. The discussion happens in the
 [#otel-prometheus](https://cloud-native.slack.com/archives/C01LSCJBXDZ) channel
-in the CNCF Slack. Come tell us where interoperability still hurts — surveys
-like this one only capture part of the picture.
+in the CNCF Slack.
