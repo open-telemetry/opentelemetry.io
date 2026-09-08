@@ -108,15 +108,28 @@ can remain in the same trace. This makes `otel-cli` a concrete consumer of the
 carrier contract, while OpenTelemetry language implementations provide the
 underlying building blocks for instrumented applications and libraries.
 
+### Shell scripts
+
+[Thoth][] provides OpenTelemetry instrumentation for shell scripts as well as
+GitHub Actions. For shell scripts, sourcing its `otel.sh` file initializes the
+project's SDK and automatic instrumentation. It creates a root span for the
+script, creates spans for supported commands, and continues instrumentation into
+child shells and executable scripts that use a shebang. It can also inject W3C
+`traceparent` headers through supported HTTP clients such as `curl` and `wget`.
+
+Thoth propagates `TRACEPARENT` and `TRACESTATE` through child-process
+environments. This makes it useful prior art for both shell instrumentation and
+the environment carrier specification.
+
 ### GitHub Actions
 
 Environment propagation for GitHub Actions is not only hypothetical. Two
 independent community projects illustrate different approaches:
 
-- [Thoth][] provides workflow-level and job-level instrumentation. Its job-level
-  instrumentation runs on the GitHub runner, injects instrumentation into shell,
-  Node.js, Docker, and composite action steps, and uses `TRACEPARENT` and
-  `TRACESTATE` to continue context into child processes.
+- Thoth also provides workflow-level and job-level instrumentation. Its
+  job-level instrumentation runs on the GitHub runner, injects instrumentation
+  into shell, Node.js, Docker, and composite action steps, and uses
+  `TRACEPARENT` and `TRACESTATE` to continue context into child processes.
 - [Run with Telemetry][] wraps a particular command in a span and places the
   resulting `TRACEPARENT` in that command's environment. Its optional
   `job-as-parent` mode lets the generated command span join a trace representing
@@ -237,4 +250,4 @@ consistently across language implementations, tools, and workflow platforms.
 [stabilization-issue]:
   https://github.com/open-telemetry/opentelemetry-specification/issues/5040
 [Thoth]:
-  https://github.com/plengauer/Thoth/blob/f1837aa22450dd691359f1dd05bcc6aec41162dd/README.md#automatic-instrumentation-of-github-actions
+  https://github.com/plengauer/Thoth/blob/f1837aa22450dd691359f1dd05bcc6aec41162dd/README.md#automatic-instrumentation-of-shell-scrips
