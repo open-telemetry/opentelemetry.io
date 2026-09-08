@@ -47,7 +47,7 @@ inicialização a frio (_cold start_) do Lambda.
 Recomendamos habilitar a auto-instrumentação apenas para as
 bibliotecas/_frameworks_ realmente usados pela sua aplicação.
 
-Para habilitar apenas instrumentações específicas, você pode usar as seguintes
+Para habilitar apenas instrumentações específicas, é possível usar as seguintes
 variáveis de ambiente:
 
 - `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED`: quando definida como false,
