@@ -30,7 +30,7 @@ adicionar isso primeiro.
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
-A camada Lambda oferece suporte aos runtimes Lambda Java 8, 11 e 17 (Corretto).
+A camada Lambda oferece suporte aos _runtimes_ Lambda Java 8, 11 e 17 (Corretto).
 Para mais informações sobre as versões Java suportadas, consulte a
 [documentação do OpenTelemetry Java](/docs/languages/java/).
 
