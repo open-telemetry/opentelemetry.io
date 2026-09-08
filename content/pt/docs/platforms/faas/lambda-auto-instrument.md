@@ -30,8 +30,8 @@ adicionar isso primeiro.
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
-A camada Lambda oferece suporte aos _runtimes_ Lambda Java 8, 11 e 17 (Corretto).
-Para mais informações sobre as versões Java suportadas, consulte a
+A camada Lambda oferece suporte aos _runtimes_ Lambda Java 8, 11 e 17
+(Corretto). Para mais informações sobre as versões Java suportadas, consulte a
 [documentação do OpenTelemetry Java](/docs/languages/java/).
 
 **Observação:** o agente de auto-instrumentação Java está incluído na camada
@@ -123,9 +123,9 @@ regiões disponíveis.
 
 ## Configure os exportadores do seu SDK {#configure-your-sdk-exporters}
 
-Os exportadores padrão usados pelas camadas Lambda funcionam sem qualquer alteração
-quando há um Collector embutido com receptores gRPC/HTTP. As variáveis de
-ambiente não precisam ser atualizadas. No entanto, há diferentes níveis de
+Os exportadores padrão usados pelas camadas Lambda funcionam sem qualquer
+alteração quando há um Collector embutido com receptores gRPC/HTTP. As variáveis
+de ambiente não precisam ser atualizadas. No entanto, há diferentes níveis de
 suporte a protocolos e valores padrão por linguagem, documentados abaixo.
 
 {{< tabpane text=true >}} {{% tab Java %}}
@@ -135,8 +135,8 @@ suporte a protocolos e valores padrão por linguagem, documentados abaixo.
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-A variável de ambiente `OTEL_EXPORTER_OTLP_PROTOCOL` não é suportada. O exportador
-fixo usa o protocolo `http/protobuf`
+A variável de ambiente `OTEL_EXPORTER_OTLP_PROTOCOL` não é suportada. O
+exportador fixo usa o protocolo `http/protobuf`
 `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
 
 {{% /tab %}} {{% tab Python %}}
