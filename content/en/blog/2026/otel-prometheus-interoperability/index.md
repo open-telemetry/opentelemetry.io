@@ -99,8 +99,6 @@ either/or. Nearly half of respondents are mixing Prometheus and OTel
 instrumentation styles at once for infrastructure metrics, rather than doing a
 full migration. Only Prometheus style is twice as popular as only OTel style.
 
-![Pie chart of infrastructure instrumentation styles: mix 49.4%, only Prometheus-style 30.4%, only OTel-style 15.2%, other 5.1%](infrastructure-instrumentation-styles.png)
-
 _**Note**: Instrumentation style describes whether a respondent uses methods
 native to one project only, or a mix of both. OTel-style includes using OTel
 receivers, Built-in OTLP push, or OpenTelemetry eBPF Instrumentation (OBI).
@@ -108,8 +106,10 @@ Prometheus-style includes Prometheus exporters or Built-in `/metrics` endpoint
 (no exporter). The 4 "Other" responses are write-ins: Zabbix, Heorku Telemetry
 (likely "Heroku Telemetry"), textfile collector, Telegraf. All 4 respondents
 also selected a real Prometheus/OTel method alongside their write-in — but in
-the style chart above, a write-in places a respondent in "Other" regardless of
+the style chart below, a write-in places a respondent in "Other" regardless of
 what else they selected._
+
+![Pie chart of infrastructure instrumentation styles: mix 49.4%, only Prometheus-style 30.4%, only OTel-style 15.2%, other 5.1%](infrastructure-instrumentation-styles.png)
 
 _**Work in progress**: The Prometheus and OTel communities are working on making
 Prometheus exporters run as an OTel Collector distribution. The conversations
