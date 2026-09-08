@@ -201,6 +201,8 @@ infrastructure metrics. eBPF-based instrumentation (OBI) doesn't follow the same
 pattern — there it's the 1,000+ organizations that stand apart from every
 smaller band.
 
+Adoption by organization size:
+
 | Metric                                                    | 1–49 (N=10) | 50–99 (N=12) | 100–999 (N=25) | 1,000+ (N=34) |
 | --------------------------------------------------------- | ----------- | ------------ | -------------- | ------------- |
 | OTel SDK adoption (application metrics)                   | 40%         | 58%          | 84%            | 62%           |
@@ -224,6 +226,8 @@ plain Prometheus.
 The dividing line looks like operational ownership rather than preference. Teams
 running metrics for a whole organization eventually outgrow a single Prometheus;
 teams instrumenting their own service generally don't.
+
+Backend choice by team type:
 
 | Team type            | OSS Prometheus-compatible (N=30) | Prometheus (N=35) | PromQL-compatible vendor (N=8) |
 | -------------------- | -------------------------------- | ----------------- | ------------------------------ |
