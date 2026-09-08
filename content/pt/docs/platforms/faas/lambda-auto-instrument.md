@@ -45,7 +45,7 @@ o código da sua aplicação. Isso pode ter um impacto negativo no tempo de
 inicialização a frio (_cold start_) do Lambda.
 
 Recomendamos habilitar a auto-instrumentação apenas para as
-bibliotecas/frameworks realmente usados pela sua aplicação.
+bibliotecas/_frameworks_ realmente usados pela sua aplicação.
 
 Para habilitar apenas instrumentações específicas, você pode usar as seguintes
 variáveis de ambiente:
