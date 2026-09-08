@@ -81,6 +81,8 @@ API.
 
 ## Where environment carriers help
 
+### SDKs and command-line tools
+
 Language SDKs can use this mechanism whenever an instrumented application starts
 another process. It is also useful for tools that add telemetry without
 requiring every command to implement process management itself.
@@ -96,11 +98,40 @@ If `make` or a process that it launches uses a compatible OpenTelemetry SDK,
 that process can extract the propagated context and create child spans in the
 same trace.
 
-CI/CD instrumentation can apply the same pattern. An integration for GitHub
-Actions could create spans for a workflow, job, or step and inject the relevant
-context into the environment of each executed command. Instrumented build and
-test tools could then attach their spans to the CI/CD trace instead of starting
-unrelated traces.
+### Jenkins
+
+The [Jenkins OpenTelemetry plugin][] provides a concrete example in an
+established CI system. It exposes the current `TRACEPARENT` and `TRACESTATE` in
+the environment of shell, batch, and PowerShell steps, alongside `TRACE_ID` and
+`SPAN_ID`. An OpenTelemetry-aware build or test tool invoked by a step can use
+that context to connect its spans to the Jenkins pipeline trace.
+
+The plugin also has a configuration option for exporting selected `OTEL_*` SDK
+configuration variables to downstream tools. These variables solve a different
+problem: `TRACEPARENT` and `TRACESTATE` carry trace context, while variables
+such as `OTEL_EXPORTER_OTLP_ENDPOINT` configure how the downstream process
+handles telemetry.
+
+### GitHub Actions
+
+Environment propagation for GitHub Actions is not only hypothetical. Two
+independent community projects illustrate different approaches:
+
+- [Thoth][] provides workflow-level and job-level instrumentation. Its job-level
+  instrumentation runs on the GitHub runner, injects instrumentation into shell,
+  Node.js, Docker, and composite action steps, and uses `TRACEPARENT` and
+  `TRACESTATE` to continue context into child processes.
+- [Run with Telemetry][] wraps a particular command in a span and places the
+  resulting `TRACEPARENT` in that command's environment. It can be used with the
+  OpenTelemetry Collector GitHub Actions receiver so that the workflow or job
+  span becomes the parent of the command span.
+
+These projects are useful prior art, but they are not built-in GitHub features
+or official OpenTelemetry project components. A stable environment carrier
+specification would give projects like these, SDKs, and build tools one
+interoperable contract instead of requiring pairwise integrations.
+
+### Argo Workflows
 
 [Argo Workflows][] is another useful example. Argo models workflow steps as
 containers running on Kubernetes. A workflow integration could inject the
@@ -187,12 +218,18 @@ consistently across SDKs, tools, and workflow platforms.
 [Argo Workflows]: https://github.com/argoproj/argo-workflows
 [env-carrier-spec]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/eec6fadba46a5002f55ff88ce4405d58a1aa4aec/specification/context/env-carriers.md
+[Jenkins OpenTelemetry plugin]:
+  https://github.com/jenkinsci/opentelemetry-plugin/blob/6f67e4ab1d1513f7f513d7570907dd341094a74d/docs/job-traces.md#environment-variables-for-trace-context-propagation-and-integrations
 [new-spec-issue]:
   https://github.com/open-telemetry/opentelemetry-specification/issues/new/choose
 [otel-cli]: https://github.com/tobert/otel-cli
+[Run with Telemetry]:
+  https://github.com/krzko/run-with-telemetry/blob/c2636c369317450dfd825ae4b67760d49600ca18/README.md#environment-variables-injection
 [sdk-tracker]:
   https://github.com/open-telemetry/opentelemetry-specification/issues/4771
 [specification compliance matrix]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/eec6fadba46a5002f55ff88ce4405d58a1aa4aec/spec-compliance-matrix.md
 [stabilization-issue]:
   https://github.com/open-telemetry/opentelemetry-specification/issues/5040
+[Thoth]:
+  https://github.com/plengauer/Thoth/blob/f1837aa22450dd691359f1dd05bcc6aec41162dd/README.md#automatic-instrumentation-of-github-actions
