@@ -62,14 +62,15 @@ _How easy or difficult is it to use OpenTelemetry and Prometheus together?_
 This year, we asked the same question as in the similar 2024 survey to see
 whether end users saw progress in interoperability.
 
-<!-- TODO: add the ease-of-use comparison chart here, e.g.
-![Distribution of ease-of-use ratings in 2024 and 2026](ease-of-use.png) -->
+![Grouped bar chart comparing ease-of-use ratings in 2024 and 2026: very difficult 7% to 0%, somewhat difficult 22% to 10%, neutral 37% to 40%, somewhat easy 26% to 33%, very easy 8% to 17%](ease-of-use-breakdown.png)
 
 The average rating rose by 0.5 point, from 3.1 to 3.6 — the equivalent of half
 the respondents moving up a whole category. The clearest movement is at the
 difficult end of the scale: the share of respondents who found the two hard to
 use together dropped to roughly a third of its 2024 level. Also, nobody this
 year picked "Very difficult".
+
+![Bar chart of the average ease-of-use rating: 3.1 in 2024 and 3.6 in 2026 on a five-point scale](ease-of-use-average.png)
 
 Two years of work on interoperability are paying off. At the same time, since
 the single largest group of responses sits at "Neither easy nor difficult",
@@ -91,10 +92,14 @@ infrastructure metrics but OTel receivers are close behind. Built-in `/metrics`
 endpoint, built-in OTLP push, and OpenTelemetry eBPF instrumentation (OBI)
 follow.
 
+![Bar chart of infrastructure instrumentation methods: Prometheus exporters 72%, OTel receivers 57%, built-in /metrics endpoint 43%, built-in OTLP push 26%, OBI 12%, other 5%, don't collect 2%](infrastructure-instrumentation-methods.png)
+
 When looking at how these methods combine, the picture is clearly hybrid, not
 either/or. Nearly half of respondents are mixing Prometheus and OTel
 instrumentation styles at once for infrastructure metrics, rather than doing a
 full migration. Only Prometheus style is twice as popular as only OTel style.
+
+![Pie chart of infrastructure instrumentation styles: mix 49.4%, only Prometheus-style 30.4%, only OTel-style 15.2%, other 5.1%](infrastructure-instrumentation-styles.png)
 
 _**Note**: Instrumentation style describes whether a respondent uses methods
 native to one project only, or a mix of both. OTel-style includes using OTel
@@ -103,7 +108,7 @@ Prometheus-style includes Prometheus exporters or Built-in `/metrics` endpoint
 (no exporter). The 4 "Other" responses are write-ins: Zabbix, Heorku Telemetry
 (likely "Heroku Telemetry"), textfile collector, Telegraf. All 4 respondents
 also selected a real Prometheus/OTel method alongside their write-in — but in
-the style chart below, a write-in places a respondent in "Other" regardless of
+the style chart above, a write-in places a respondent in "Other" regardless of
 what else they selected._
 
 _**Work in progress**: The Prometheus and OTel communities are working on making
@@ -119,9 +124,13 @@ Preferences swap for application instrumentation. OTel SDKs come out on top with
 Prometheus SDKs following behind them. OBI holds roughly the same share as in
 infrastructure instrumentation.
 
+![Bar chart of application instrumentation methods: OTel SDKs 65%, Prometheus SDKs 52%, OBI 12%, other 5%, don't collect 6%](application-instrumentation-methods.png)
+
 Instrumentation styles shift as well. Most participants use only OTel style
 instrumentation. That is twice as common as only Prometheus style. Fewer than a
 third mix styles.
+
+![Pie chart of application instrumentation styles: only OTel-style 41.3%, mix 30.7%, only Prometheus-style 22.7%, other 5.3%](application-instrumentation-styles.png)
 
 <!-- prettier-ignore-start -->
 <!-- Keeps the respondent's original "OTEl" spelling in the quote below. -->
@@ -144,9 +153,13 @@ storage?_
 Prometheus relabeling rules and the open source OTel Collector are the two most
 common processing steps with neither of them leading clearly.
 
+![Bar chart of metrics transformation tools: Prometheus relabeling and recording rules 54%, open source OTel Collector 53%, vendor distribution of the Collector 11%, custom-built Collector 10%, nothing 15%](metrics-transformation-tools.png)
+
 Most respondents run a vanilla stack: only Prometheus relabeling rules and/or
 the plain OTel Collector, with no vendor distribution and no custom-built
 Collector in the pipeline. The three vanilla patterns come out close to even.
+
+![Pie chart of vanilla stack patterns: other 34.6%, mix 23.5%, only open source Collector 22.2%, only Prometheus relabeling and recording rules 19.8%](vanilla-stack-breakdown.png)
 
 ## What practitioners want improved
 
