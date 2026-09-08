@@ -53,7 +53,7 @@ variáveis de ambiente:
 - `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED`: quando definida como `false`,
   desabilita a auto-instrumentação na camada, exigindo que cada instrumentação
   seja habilitada individualmente.
-- `OTEL_INSTRUMENTATION_<NAME>_ENABLED`: defina como true para habilitar a
+- `OTEL_INSTRUMENTATION_<NAME>_ENABLED`: defina como `true` para habilitar a
   auto-instrumentação de uma biblioteca ou framework específico. Substitua
   `<NAME>` pela instrumentação que deseja habilitar. Para a lista de
   instrumentações disponíveis, consulte [Suprimindo instrumentação específica do
