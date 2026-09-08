@@ -73,7 +73,7 @@ especially important when several processes run concurrently and belong to
 different spans. Treating propagation variables as startup input also avoids
 relying on mutations to the parent process's global environment.
 
-## Where environment carriers help
+## Use cases and implementations
 
 ### OpenTelemetry SDKs
 
