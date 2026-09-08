@@ -1533,6 +1533,7 @@ https://github.com/jeanbisutti,200,1787981979
 https://github.com/jeffhostetler,200,1787916786
 https://github.com/jenkinsci,200,1787916868
 https://github.com/jenkinsci/opentelemetry-plugin/,200,1787916868
+https://github.com/jenkinsci/opentelemetry-plugin/blob/6f67e4ab1d1513f7f513d7570907dd341094a74d/docs/job-traces.md#environment-variables-for-trace-context-propagation-and-integrations,200,1788853758
 https://github.com/jenniferplusplus/opentelemetry-instrumentation-bullmq,200,1787916871
 https://github.com/jerbly,200,1787916697
 https://github.com/jfinal/jfinal,200,1787916957
@@ -1614,6 +1615,7 @@ https://github.com/krakend/krakend-otel,200,1788241804
 https://github.com/krisztianfekete,200,1787981981
 https://github.com/krnowak,200,1787981981
 https://github.com/krol3,200,1787981980
+https://github.com/krzko/run-with-telemetry/blob/c2636c369317450dfd825ae4b67760d49600ca18/README.md#environment-variables-injection,200,1788853758
 https://github.com/ktorio/ktor,200,1787916956
 https://github.com/kubernetes,200,1788241805
 https://github.com/kubernetes-client/java,200,1787916956
@@ -4241,6 +4243,7 @@ https://github.com/pkanal,200,1787916702
 https://github.com/playframework/play-ws,200,1787916957
 https://github.com/playframework/playframework,200,1787916957
 https://github.com/plengauer,200,1787916886
+https://github.com/plengauer/Thoth/blob/f1837aa22450dd691359f1dd05bcc6aec41162dd/README.md#automatic-instrumentation-of-github-actions,200,1788853758
 https://github.com/plengauer/opentelemetry-bash,200,1787916886
 https://github.com/pmcollins,200,1787916702
 https://github.com/povilasv,200,1787916702
