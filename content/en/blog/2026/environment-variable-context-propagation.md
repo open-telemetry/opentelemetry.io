@@ -3,7 +3,6 @@ title: Help us stabilize environment variable context propagation
 linkTitle: Review environment variable carriers
 date: 2026-09-10
 author: '[Robert Pająk](https://github.com/pellared) (Splunk)'
-draft: true
 issue: 11567
 sig: CI/CD Observability
 ---
