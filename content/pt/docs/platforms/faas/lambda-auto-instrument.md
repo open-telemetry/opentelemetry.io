@@ -121,7 +121,7 @@ ser usadas na região em que foram publicadas. Certifique-se de usar a camada na
 mesma região das suas funções Lambda. A comunidade publica camadas em todas as
 regiões disponíveis.
 
-## Configure os exporters do seu SDK {#configure-your-sdk-exporters}
+## Configure os exportadores do seu SDK {#configure-your-sdk-exporters}
 
 Os exporters padrão usados pelas camadas Lambda funcionam sem qualquer alteração
 quando há um Collector embutido com receivers gRPC/HTTP. As variáveis de
