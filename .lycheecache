@@ -2819,12 +2819,7 @@ https://github.com/open-telemetry/opentelemetry-collector/blob/v0.153.0/pdata/pc
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.153.0/pdata/ptrace/generated_resourcespans.go,200,1788241813
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.153.0/receiver/receiver.go#L58,200,1788241813
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.153.0/receiver/receiver.go,200,1788241813
-https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/component/config.go,200,1788891320
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/config/configtls/README.md,200,1788327791
-https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/pdata/pcommon/map.go,200,1788891320
-https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/pdata/ptrace/generated_resourcespans.go,200,1788891320
-https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/receiver/receiver.go#L58,200,1788891321
-https://github.com/open-telemetry/opentelemetry-collector/blob/v0.158.0/receiver/receiver.go,200,1788891321
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.159.0/component/config.go,200,1787945068
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.159.0/config/configtls/README.md,200,1787945068
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.159.0/pdata/pcommon/map.go,200,1787945068
@@ -5785,7 +5780,6 @@ https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#ParentBased,200,1788414914
 https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#Sampler,200,1787981969
 https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TraceIDRatioBased,200,1788414914
 https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#WithSampler,200,1788414914
-https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.38.0,200,1788891327
 https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.43.0,200,1787941086
 https://pkg.go.dev/google.golang.org/grpc,200,1787916847
 https://pkg.go.dev/google.golang.org/grpc/credentials#PerRPCCredentials,200,1788327786

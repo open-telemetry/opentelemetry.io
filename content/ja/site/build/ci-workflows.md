@@ -3,7 +3,7 @@ title: CI ワークフロー
 description: >-
   PR のチェック、ラベル管理、その他の CI/CD プロセスを自動化する GitHub Actions ワークフロー。
 weight: 10
-default_lang_commit: 55db3f6bcc48358f9de9cd97f9132d1e3322ba48
+default_lang_commit: 669d1a40e56ed2dd914d48340b31e16a83610d40
 ---
 
 ワークフローと（ほとんどの）ヘルパースクリプトについては、[.github][] 配下の `workflow` フォルダと `scripts` フォルダを参照してください。
@@ -20,7 +20,7 @@ CI ジョブはサイト全体の[インストール規約](../dependencies/#ins
 | ワークフローファイル               | トリガー                              | 権限                                            |
 | ---------------------------------- | ------------------------------------- | ----------------------------------------------- |
 | [`pr-review-trigger.yml`][trigger] | `pull_request_review`                 | 最小限（シークレットなし）                      |
-| [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run` | ラベル編集と org/team 読み取り用の App トークン |
+| [`label-manager.yml`][labels]      | `pull_request_target`, `workflow_run` | ラベル編集と org/team 読み取り用の App トークン |
 | [`blog-publish-labels.yml`][blog]  | `schedule`（毎日 7 AM UTC）           | App トークン + `SLACK_WEBHOOK_URL` シークレット |
 
 [trigger]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-review-trigger.yml
@@ -53,7 +53,7 @@ PR に異なる日付を持つ複数のファイルが含まれる場合、ラ�
 #### スクリプトの動作モード {#script-operating-modes}
 
 [`pr-approval-labels.sh`][script] スクリプトは、単一の PR を処理します（`PR` 環境変数で設定）。
-PR イベント時に `pr-approval-labels.yml` から呼び出されるほか、バッチモードでは [`blog-publish-check.sh`][batch-script] から呼び出されます。
+PR イベント時に `label-manager.yml` から呼び出されるほか、バッチモードでは [`blog-publish-check.sh`][batch-script] から呼び出されます。
 
 [script]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/pr-approval-labels.sh
 [batch-script]: https://github.com/open-telemetry/opentelemetry.io/blob/248cc6f/.github/scripts/blog-publish-check.sh
@@ -71,17 +71,17 @@ GitHub の `pull_request_review` イベントには `_target` バリアントが
 
 1. **`pr-review-trigger`** はすべてのレビュー送信/却下時に実行されます。
    PR 番号をアーティファクトとして保存して終了します。シークレットは不要です。
-2. **`pr-approval-labels`** は `workflow_run`（トリガーワークフローの完了時）によってトリガーされます。
+2. **`label-manager`** は `workflow_run`（トリガーワークフローの完了時）によってトリガーされます。
    ベースリポジトリのコンテキストで GitHub App トークンへのフルアクセスを持って実行され、アーティファクトをダウンロードしてラベルを更新します。
 
-コンテンツの変更（`opened`、`reopened`、`synchronize`）については、`pr-approval-labels` ワークフローは `pull_request_target` を介して直接トリガーされます。
+コンテンツの変更（`opened`、`reopened`、`synchronize`）については、`label-manager` ワークフローは `pull_request_target` を介して直接トリガーされます。
 
 ```mermaid
 sequenceDiagram
     participant R as レビュアー
     participant GH as GitHub
     participant T as pr-review-trigger
-    participant L as pr-approval-labels
+    participant L as label-manager
 
     R->>GH: レビューを送信（承認/変更要求/却下）
 
@@ -103,7 +103,7 @@ sequenceDiagram
 sequenceDiagram
     participant A as 作成者
     participant GH as GitHub
-    participant L as pr-approval-labels
+    participant L as label-manager
 
     A->>GH: PR をオープン/更新
 
@@ -118,7 +118,7 @@ sequenceDiagram
 
 - **`pr-review-trigger`**: 意図的に最小限 — シークレットなし、特権パーミッションなし。
   コメントは承認に影響しないため、`review.state == "commented"` を無視します。
-- **`pr-approval-labels`**: GitHub App トークン（`OTELBOT_DOCS_CLIENT_ID` / `OTELBOT_DOCS_PRIVATE_KEY`）で実行され、org/team メンバーシップの読み取りと PR ラベルの編集の権限を持ちます。
+- **`label-manager`**: GitHub App トークン（`OTELBOT_DOCS_CLIENT_ID` / `OTELBOT_DOCS_PRIVATE_KEY`）で実行され、org/team メンバーシップの読み取りと PR ラベルの編集の権限を持ちます。
   `pull_request_target` と `workflow_run` を使用して、常に信頼されたベースリポジトリのコンテキストで実行されます。
 - **`blog-publish-labels`**: GitHub App トークンと `SLACK_WEBHOOK_URL` シークレットを使用してスケジュールで実行されます。
   常に信頼されたベースリポジトリのコンテキストで実行されます（スケジュールイベントにはフォークバリアントがありません）。

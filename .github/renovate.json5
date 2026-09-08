@@ -5,26 +5,19 @@
     'docker:pinDigests',
     'helpers:pinGitHubActionDigestsToSemver',
   ],
-  // config:best-practices pulls in security:minimumReleaseAgeNpm: its 3-day
-  // npm rule would override the ages below, re-applying even after the patch:
-  // merge. Its exemptions for timestamp-less update types (pin, replacement,
-  // rollback, ...) are deliberately not kept: fail closed, those updates wait
-  // for a human, as they already do for every other datasource.
-  //
-  // IMPORTANT: an upstream rename of the preset silently re-admits it.
+  // For details about this repo's settings, see
+  // https://opentelemetry.io/site/build/dependencies/
   ignorePresets: ['security:minimumReleaseAgeNpm'],
   minimumReleaseAge: '7 days',
-  internalChecksFilter: 'strict',
+  lockFileMaintenance: { enabled: false },
   labels: ['dependencies'],
   schedule: ['before 9am on monday'],
   patch: {
     automerge: true,
-    // Automerge skips human review, so set longer cooldown
     minimumReleaseAge: '14 days',
   },
   packageRules: [
     {
-      // Patch updates are typically non-breaking, so they group and automerge.
       groupName: 'all patch versions',
       matchUpdateTypes: ['patch'],
     },
@@ -33,13 +26,12 @@
       matchUpdateTypes: ['minor'],
     },
     {
-      // hugo-extended is intentionally pinned; updated manually via `npm run update:hugo`.
+      // Updated via `npm run update:hugo`.
       matchPackageNames: ['hugo-extended'],
       enabled: false,
     },
     {
-      // Version-exact allowScripts approvals (package.json) need a human to
-      // refresh the entry with the bump, so approved packages never automerge.
+      // allowScripts approvals are version-exact.
       matchPackageNames: ['puppeteer'],
       automerge: false,
     },
