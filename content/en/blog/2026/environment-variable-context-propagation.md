@@ -116,10 +116,8 @@ project's SDK and automatic instrumentation. It creates a root span for the
 script, creates spans for supported commands, and continues instrumentation into
 child shells and executable scripts that use a shebang. It can also inject W3C
 `traceparent` headers through supported HTTP clients such as `curl` and `wget`.
-
 Thoth propagates `TRACEPARENT` and `TRACESTATE` through child-process
-environments. This makes it useful prior art for both shell instrumentation and
-the environment carrier specification.
+environments.
 
 ### GitHub Actions
 
@@ -134,12 +132,6 @@ independent community projects illustrate different approaches:
   resulting `TRACEPARENT` in that command's environment. Its optional
   `job-as-parent` mode lets the generated command span join a trace representing
   the wider job.
-
-These projects are useful prior art, but they are not built-in GitHub features
-or official OpenTelemetry project components. A stable environment carrier
-specification would give projects like these, language implementations, and
-build tools a shared carrier contract. End-to-end interoperability still depends
-on both sides using compatible propagators.
 
 ### Jenkins
 
