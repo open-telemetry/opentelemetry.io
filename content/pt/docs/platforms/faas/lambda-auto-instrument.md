@@ -50,7 +50,7 @@ bibliotecas/_frameworks_ realmente usados pela sua aplicação.
 Para habilitar apenas instrumentações específicas, é possível usar as seguintes
 variáveis de ambiente:
 
-- `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED`: quando definida como false,
+- `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED`: quando definida como `false`,
   desabilita a auto-instrumentação na camada, exigindo que cada instrumentação
   seja habilitada individualmente.
 - `OTEL_INSTRUMENTATION_<NAME>_ENABLED`: defina como true para habilitar a
