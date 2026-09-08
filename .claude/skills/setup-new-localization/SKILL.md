@@ -36,6 +36,9 @@ Either way, derive these; don't ask for them as separate arguments:
 [kickoff-example]:
   https://github.com/open-telemetry/opentelemetry.io/issues/9577
 
+The maintainer guide `content/en/site/build/localization/_index.md` is the
+human-facing version of these steps; keep the two in step.
+
 > [!NOTE]
 >
 > Most lists below are ordered alphabetically by `<lang>` (English `en` stays
@@ -199,7 +202,9 @@ admin repo — see [Out-of-repo](#out-of-repo-create-the-org-teams)). Under the
 Fill `approvers` with whatever roles are already known — even partial — rather
 than leaving it empty waiting to assess contributions. Empty `maintainers` marks
 the locale **unstaffed**: its CODEOWNERS lines fall back to
-`@open-telemetry/docs-approvers`.
+`@open-telemetry/docs-approvers`. Semantics (unstaffed, fallback, graduation):
+`content/en/docs/contributing/localization.md` § Locale teams, code owners, and
+staffing.
 
 ### i. Regenerate CODEOWNERS
 
