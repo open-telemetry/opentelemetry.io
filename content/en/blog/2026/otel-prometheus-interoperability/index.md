@@ -112,7 +112,7 @@ Prometheus-style includes Prometheus exporters or Built-in `/metrics` endpoint
 (no exporter). The 4 "Other" responses are write-ins: Zabbix, Heorku Telemetry
 (likely "Heroku Telemetry"), textfile collector, Telegraf. All 4 respondents
 also selected a real Prometheus/OTel method alongside their write-in — but in
-the style chart below, a write-in places a respondent in "Other" regardless of
+the style chart above, a write-in places a respondent in "Other" regardless of
 what else they selected._
 
 _**Work in progress**: The Prometheus and OTel communities are working on making
