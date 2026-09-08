@@ -78,10 +78,10 @@ there is still a lot of work to be done in this area.
 
 _**Note**: The 2024 survey didn't ask respondents whether they worked for an
 observability vendor, so this is not an exact apples-to-apples population match.
-However, putting vendor employees back into the 2026 sample (N=108) would barely
-change the result for the ease of use rating (0%, 10%, 40%, 33%, 17% → 0%, 10%,
-41%, 33%, 16%). To keep this year's results consistent, we decided to stick with
-filtering vendor employees out._
+However, putting vendor employees back into the 2026 sample (n = 108) would
+barely change the result for the ease of use rating (0%, 10%, 40%, 33%, 17% →
+0%, 10%, 41%, 33%, 16%). To keep this year's results consistent, we decided to
+stick with filtering vendor employees out._
 
 ## Infrastructure metrics
 
@@ -216,11 +216,11 @@ smaller band.
 
 Adoption by organization size:
 
-| Metric                                                    | 1–49 (N=10) | 50–99 (N=12) | 100–999 (N=25) | 1,000+ (N=34) |
-| --------------------------------------------------------- | ----------- | ------------ | -------------- | ------------- |
-| OTel SDK adoption (application metrics)                   | 40%         | 58%          | 84%            | 62%           |
-| OTel receiver adoption (infrastructure metrics)           | 20%         | 58%          | 76%            | 53%           |
-| eBPF-based instrumentation / OBI (infrastructure metrics) | 20%         | 17%          | 20%            | 3%            |
+| Metric                                                    | 1–49 (n = 10) | 50–99 (n = 12) | 100–999 (n = 25) | 1,000+ (n = 34) |
+| --------------------------------------------------------- | ------------- | -------------- | ---------------- | --------------- |
+| OTel SDK adoption (application metrics)                   | 40%           | 58%            | 84%              | 62%             |
+| OTel receiver adoption (infrastructure metrics)           | 20%           | 58%            | 76%              | 53%             |
+| eBPF-based instrumentation / OBI (infrastructure metrics) | 20%           | 17%            | 20%              | 3%              |
 
 Our hypothesis is that mid-size organizations — big enough to have a dedicated
 platform effort, small enough to move without a multi-year migration plan —
@@ -242,16 +242,16 @@ teams instrumenting their own service generally don't.
 
 Backend choice by team type:
 
-| Team type            | OSS Prometheus-compatible (N=30) | Prometheus (N=35) | PromQL-compatible vendor (N=8) |
-| -------------------- | -------------------------------- | ----------------- | ------------------------------ |
-| Dev                  | 24%                              | 71%               | 6%                             |
-| DevOps               | 23%                              | 62%               | 15%                            |
-| Observability        | 29%                              | 41%               | 29%                            |
-| Platform Engineering | 69%                              | 31%               | 0%                             |
-| SRE                  | 69%                              | 31%               | 0%                             |
+| Team type            | OSS Prometheus-compatible (n = 30) | Prometheus (n = 35) | PromQL-compatible vendor (n = 8) |
+| -------------------- | ---------------------------------- | ------------------- | -------------------------------- |
+| Dev                  | 24%                                | 71%                 | 6%                               |
+| DevOps               | 23%                                | 62%                 | 15%                              |
+| Observability        | 29%                                | 41%                 | 29%                              |
+| Platform Engineering | 69%                                | 31%                 | 0%                               |
+| SRE                  | 69%                                | 31%                 | 0%                               |
 
-_**Note**: Sysadmin (N=6) and Operations (N=2) respondents are excluded from
-this table — both groups are too small to interpret — leaving N=73 of the 81
+_**Note**: Sysadmin (n = 6) and Operations (n = 2) respondents are excluded from
+this table — both groups are too small to interpret — leaving n = 73 of the 81
 respondents._
 
 _**Note**: The same caution applies here as above, and more so: with 8 to 35
