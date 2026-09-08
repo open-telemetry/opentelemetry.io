@@ -123,8 +123,8 @@ regiões disponíveis.
 
 ## Configure os exportadores do seu SDK {#configure-your-sdk-exporters}
 
-Os exporters padrão usados pelas camadas Lambda funcionam sem qualquer alteração
-quando há um Collector embutido com receivers gRPC/HTTP. As variáveis de
+Os exportadores padrão usados pelas camadas Lambda funcionam sem qualquer alteração
+quando há um Collector embutido com receptores gRPC/HTTP. As variáveis de
 ambiente não precisam ser atualizadas. No entanto, há diferentes níveis de
 suporte a protocolos e valores padrão por linguagem, documentados abaixo.
 
