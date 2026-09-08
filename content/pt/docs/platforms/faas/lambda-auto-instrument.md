@@ -108,8 +108,8 @@ adicionar e configurar as camadas de instrumentação e do Collector, e então
 habilitar os rastros.
 
 1. Abra a função Lambda que deseja instrumentar no console da AWS.
-2. Na seção Layers do Designer, escolha Add a layer.
-3. Em specify an ARN, cole o ARN da camada e escolha Add.
+2. Na seção "Layers" do "Designer", escolha "Add a layer".
+3. Em "specify an ARN", cole o ARN da camada e escolha "Add".
 
 Encontre o
 [lançamento mais recente da camada de instrumentação](https://github.com/open-telemetry/opentelemetry-lambda/releases)
