@@ -5,7 +5,7 @@ date: 2026-08-28
 author: >-
   [Dhruv Ahuja](https://github.com/dhruv-ahuja) (SigNoz), [Andrej
   Kiripolsky](https://github.com/andrejkiri) (Grafana Labs), [Ana
-  Muenz](https://github.com/vampirarte), [Arthur
+  Muenz](https://github.com/vampirarte) (Independent), [Arthur
   Sens](https://github.com/ArthurSens) (Grafana Labs)
 draft: true # TODO: remove this line once the post is ready to be published
 issue: https://github.com/open-telemetry/sig-end-user/issues/280
