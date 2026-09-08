@@ -73,30 +73,40 @@ especially important when several processes run concurrently and belong to
 different spans. Treating propagation variables as startup input also avoids
 relying on mutations to the parent process's global environment.
 
-An SDK can expose this capability through an environment-specific carrier,
-getter and setter, or another language-appropriate API. The specification does
-not make the SDK responsible for starting processes. Application code or
-instrumentation still passes the prepared environment to the relevant process
-API.
-
 ## Where environment carriers help
 
-### SDKs and command-line tools
+### Language SDKs
 
-Language SDKs can use this mechanism whenever an instrumented application starts
-another process. It is also useful for tools that add telemetry without
-requiring every command to implement process management itself.
+Language SDKs can provide the reusable layer that connects a process environment
+to the configured `TextMapPropagator`. An SDK can expose an environment-specific
+carrier, getter and setter, or another language-appropriate API. Instrumentation
+can then extract the incoming context at process startup and inject the current
+context into a copied environment before starting a child.
 
-For example, [otel-cli][] can run a command inside a span and propagate trace
-context to that command through environment variables:
+This API is deliberately separate from process management. The SDK provides the
+carrier and propagation operations, while application code or instrumentation
+starts the child and passes the prepared environment to the relevant process
+API. Because the carrier delegates to the configured propagator, integrations do
+not need format-specific parsing for W3C Trace Context, W3C Baggage, B3, or
+other supported text-map formats.
+
+### Command-line tools such as otel-cli
+
+A command-line tool can apply the same pattern without requiring every shell
+script to use an SDK directly. For example, [otel-cli][] can create a span
+around a command and propagate the new current context to that command through
+its environment:
 
 ```console
 otel-cli exec --service build --name compile -- make all
 ```
 
-If `make` or a process that it launches uses a compatible OpenTelemetry SDK,
-that process can extract the propagated context and create child spans in the
-same trace.
+When an incoming `TRACEPARENT` is present, `otel-cli` uses it as the parent of
+the span it creates. If `make`, a process that it launches, or another
+`otel-cli` invocation extracts the propagated context, its spans can remain in
+the same trace. This makes `otel-cli` a concrete consumer of the carrier
+contract, while SDKs provide the underlying building blocks for instrumented
+applications and libraries.
 
 ### GitHub Actions
 
