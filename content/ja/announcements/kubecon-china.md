@@ -1,24 +1,21 @@
 ---
-title: KubeCon + CloudNativeCon China 2025
-linkTitle: KubeCon China 2025
-date: 2025-05-20
-expiryDate: 2025-06-11 # keep
-weight: 20250611
+title: KubeCon + CloudNativeCon China 2026
+linkTitle: KubeCon China 2026
+date: 2026-08-25
+expiryDate: 2026-09-09 # keep
+weight: 20260909
 params:
-  # As of 2026-01-26, LF reports the event through lfasiallc.com
+  # As of 2026-08-25, LF reports the event through lfopensource.cn
   eventUrl: &eventUrl >-
-    https://www.lfasiallc.com/kubecon-cloudnativecon-openinfra-summit-china/
-  blogPostURL: /blog/2025/kubecon-china/
-  # This is the old URL. Keeping for now. TODO: remove after 2026-08-31
-  oldEventUrl: >- # This now redirects to the new URL
-    https://events.linuxfoundation.org/kubecon-cloudnativecon-china/reg/register/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner
-default_lang_commit: 8f68733f41ce6d7f0029edfaa14561ad95cc4aa0
-drifted_from_default: true
+    https://www.lfopensource.cn/kubecon-cloudnativecon-openinfra-summit-pytorch-conference-china/
+  # Use this when the blog post is ready:
+  # blogPostURL: /blog/2026/kubecon-china/
+  blogPostURL: *eventUrl
+default_lang_commit: 552bd64ff45ca252d1da0ca875abd1584a619d7f
 ---
 
-[**{{% param title %}}**][LF]が **<span class="text-nowrap">6月10日〜11日に</span>
-香港で開催**。
-<span class="d-none d-md-inline"><br></span> <span class="d-none d-sm-inline">Cloud Native コミュニティと一緒に</span>[協力し、学び、共有しましょう][blog]！
+[**{{% param title %}}**][LF] · <span class="text-nowrap">9月7日〜9日</span> ·
+上海 · [詳細][blog]
 
 [blog]: <{{% param blogPostURL %}}>
-[LF]: <{{% param eventUrl %}}?{{% _param utmParam %}}>
+[LF]: <{{% param eventUrl %}}register/?{{% _param utmParam %}}>

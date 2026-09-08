@@ -7,8 +7,8 @@ cSpell:ignore: exporters fluentd Linkerd loadbalancer loadbalancing observabilit
 ---
 
 Ao planejar o seu pipeline de observabilidade com o OpenTelemetry Collector,
-considere formas de escalar o pipeline à medida que a sua coleta de
-telemetria aumenta.
+considere formas de escalar o pipeline à medida que a sua coleta de telemetria
+aumenta.
 
 As seções a seguir guiarão você pela fase de planejamento, discutindo quais
 componentes escalar, como determinar quando é hora de escalar e como executar o
@@ -172,8 +172,8 @@ do DaemonSet falha.
 O padrão sidecar consiste em adicionar um contêiner ao pod da carga de trabalho.
 O [OpenTelemetry Operator](/docs/platforms/kubernetes/operator/) pode adicionar
 isso automaticamente para você. Para isso, é necessário um CR OpenTelemetry
-Collector e anotar o seu PodSpec ou Pod, dizendo ao operator para
-injetar um sidecar:
+Collector e anotar o seu PodSpec ou Pod, dizendo ao operator para injetar um
+sidecar:
 
 ```yaml
 ---
