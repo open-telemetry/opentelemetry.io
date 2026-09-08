@@ -75,13 +75,14 @@ relying on mutations to the parent process's global environment.
 
 ## Where environment carriers help
 
-### Language SDKs
+### OpenTelemetry SDKs
 
-Language SDKs can provide the reusable layer that connects a process environment
-to the configured `TextMapPropagator`. An SDK can expose an environment-specific
-carrier, getter and setter, or another language-appropriate API. Instrumentation
-can then extract the incoming context at process startup and inject the current
-context into a copied environment before starting a child.
+OpenTelemetry SDKs can provide the reusable layer that connects a process
+environment to the configured `TextMapPropagator`. An OpenTelemetry SDK can
+expose an environment-specific carrier, getter and setter, or another
+language-appropriate API. Instrumentation can then extract the incoming context
+at process startup and inject the current context into a copied environment
+before starting a child.
 
 This API is deliberately separate from process management. The SDK provides the
 carrier and propagation operations, while application code or instrumentation
