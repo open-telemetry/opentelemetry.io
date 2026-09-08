@@ -156,25 +156,17 @@ The mechanism also applies to batch schedulers, ETL systems, test runners, and
 other environments where work is connected through process creation rather than
 a request protocol.
 
-## Operational and security considerations
+## Security and limitations
 
 Environment variables are accessible to all code running in a process. On some
 systems they may also be visible to other processes or users with sufficient
-permissions. Do not use context propagation environment variables for secrets or
-other sensitive information. In particular, review baggage before passing it to
-an untrusted child and remove entries that should not cross that trust boundary.
+permissions. Do not use propagation variables for secrets, and review baggage
+before passing it across a trust boundary. Receiving processes must treat the
+context as untrusted input and let the configured propagator validate it.
 
-The receiving process must also treat propagated context as untrusted input. The
-relevant propagator validates its values; the environment carrier must not
-duplicate or replace that validation.
-
-Environment carriers are not:
-
-- A replacement for propagation through HTTP, RPC, or messaging systems.
-- The same as the `OTEL_*` environment variables used to configure an SDK.
-- A mechanism that creates spans by itself.
-- A requirement for an SDK to start child processes.
-- Automatic propagation between containers or Kubernetes Pods.
+An environment carrier only transports context. It does not create spans,
+configure an SDK, replace propagation through network protocols, or propagate
+automatically between containers or Kubernetes Pods.
 
 ## Why we are asking now
 
