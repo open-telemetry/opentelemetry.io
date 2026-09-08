@@ -16,7 +16,7 @@ OpenTelemetry (ADOT), que reúne a instrumentação e o Collector em um só paco
 ## Adicione o ARN da camada Lambda do OTel Collector {#add-the-arn-of-the-otel-collector-lambda-layer}
 
 Depois de instrumentar sua aplicação, adicione a camada Lambda do Collector para
-coletar e enviar seus dados ao backend escolhido.
+coletar e enviar seus dados ao _backend_ escolhido.
 
 Encontre o
 [lançamento mais recente da camada do Collector](https://github.com/open-telemetry/opentelemetry-lambda/releases)
