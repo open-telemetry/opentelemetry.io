@@ -98,20 +98,6 @@ If `make` or a process that it launches uses a compatible OpenTelemetry SDK,
 that process can extract the propagated context and create child spans in the
 same trace.
 
-### Jenkins
-
-The [Jenkins OpenTelemetry plugin][] provides a concrete example in an
-established CI system. It exposes the current `TRACEPARENT` and `TRACESTATE` in
-the environment of shell, batch, and PowerShell steps, alongside `TRACE_ID` and
-`SPAN_ID`. An OpenTelemetry-aware build or test tool invoked by a step can use
-that context to connect its spans to the Jenkins pipeline trace.
-
-The plugin also has a configuration option for exporting selected `OTEL_*` SDK
-configuration variables to downstream tools. These variables solve a different
-problem: `TRACEPARENT` and `TRACESTATE` carry trace context, while variables
-such as `OTEL_EXPORTER_OTLP_ENDPOINT` configure how the downstream process
-handles telemetry.
-
 ### GitHub Actions
 
 Environment propagation for GitHub Actions is not only hypothetical. Two
@@ -130,6 +116,20 @@ These projects are useful prior art, but they are not built-in GitHub features
 or official OpenTelemetry project components. A stable environment carrier
 specification would give projects like these, SDKs, and build tools one
 interoperable contract instead of requiring pairwise integrations.
+
+### Jenkins
+
+The [Jenkins OpenTelemetry plugin][] provides a concrete example in an
+established CI system. It exposes the current `TRACEPARENT` and `TRACESTATE` in
+the environment of shell, batch, and PowerShell steps, alongside `TRACE_ID` and
+`SPAN_ID`. An OpenTelemetry-aware build or test tool invoked by a step can use
+that context to connect its spans to the Jenkins pipeline trace.
+
+The plugin also has a configuration option for exporting selected `OTEL_*` SDK
+configuration variables to downstream tools. These variables solve a different
+problem: `TRACEPARENT` and `TRACESTATE` carry trace context, while variables
+such as `OTEL_EXPORTER_OTLP_ENDPOINT` configure how the downstream process
+handles telemetry.
 
 ### Argo Workflows
 
