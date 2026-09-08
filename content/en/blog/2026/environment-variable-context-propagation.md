@@ -19,7 +19,7 @@ The OpenTelemetry specification now has a release candidate for using
 standardizes how OpenTelemetry context and baggage can move between processes
 when protocol headers or message metadata are not available.
 
-Before we mark this specification Stable, we want feedback from SDK
+Before we mark this specification Stable, we want feedback from language
 implementers, tool authors, platform engineers, and users operating real CI/CD,
 batch, and command-line workloads.
 
@@ -75,39 +75,39 @@ relying on mutations to the parent process's global environment.
 
 ## Use cases and implementations
 
-### OpenTelemetry SDKs
+### OpenTelemetry language implementations
 
-OpenTelemetry SDKs can provide the reusable layer that connects a process
-environment to the configured `TextMapPropagator`. An OpenTelemetry SDK can
-expose an environment-specific carrier, getter and setter, or another
-language-appropriate API. Instrumentation can then extract the incoming context
-at process startup and inject the current context into a copied environment
-before starting a child.
+OpenTelemetry language implementations can expose an environment-specific
+carrier, getter and setter, or another language-appropriate helper for use with
+a configured `TextMapPropagator`. Depending on the language, these helpers may
+live in an API, SDK, or contrib package. Instrumentation can use them to extract
+the incoming context at process startup and inject the current context into a
+copied environment before starting a child.
 
-This API is deliberately separate from process management. The SDK provides the
-carrier and propagation operations, while application code or instrumentation
-starts the child and passes the prepared environment to the relevant process
-API. Because the carrier delegates to the configured propagator, integrations do
-not need format-specific parsing for W3C Trace Context, W3C Baggage, B3, or
-other supported text-map formats.
+This support is deliberately separate from process management. The language
+implementation provides the carrier helpers, while application code or
+instrumentation starts the child and passes the prepared environment to the
+relevant process API. Because the carrier delegates to the configured
+propagator, integrations do not need format-specific parsing for W3C Trace
+Context, W3C Baggage, B3, or other supported text-map formats.
 
 ### Command-line tools such as otel-cli
 
 A command-line tool can apply the same pattern without requiring every shell
-script to use an SDK directly. For example, [otel-cli][] can create a span
-around a command and propagate the new current context to that command through
-its environment:
+script to integrate with an OpenTelemetry API directly. With tracing configured,
+for example by setting an OTLP endpoint, [otel-cli][] can create a span around a
+command and inject that span's `TRACEPARENT` into the command's environment:
 
 ```console
 otel-cli exec --service build --name compile -- make all
 ```
 
-When an incoming `TRACEPARENT` is present, `otel-cli` uses it as the parent of
-the span it creates. If `make`, a process that it launches, or another
-`otel-cli` invocation extracts the propagated context, its spans can remain in
-the same trace. This makes `otel-cli` a concrete consumer of the carrier
-contract, while SDKs provide the underlying building blocks for instrumented
-applications and libraries.
+By default, when a valid incoming `TRACEPARENT` is present, `otel-cli` uses it
+as the parent of the span it creates. If `make`, a process that it launches, or
+another `otel-cli` invocation extracts the propagated `TRACEPARENT`, its spans
+can remain in the same trace. This makes `otel-cli` a concrete consumer of the
+carrier contract, while OpenTelemetry language implementations provide the
+underlying building blocks for instrumented applications and libraries.
 
 ### GitHub Actions
 
@@ -125,8 +125,9 @@ independent community projects illustrate different approaches:
 
 These projects are useful prior art, but they are not built-in GitHub features
 or official OpenTelemetry project components. A stable environment carrier
-specification would give projects like these, SDKs, and build tools one
-interoperable contract instead of requiring pairwise integrations.
+specification would give projects like these, language implementations, and
+build tools a shared carrier contract. End-to-end interoperability still depends
+on both sides using compatible propagators.
 
 ### Jenkins
 
@@ -146,11 +147,11 @@ handles telemetry.
 
 [Argo Workflows][] is another useful example. Argo models workflow steps as
 containers running on Kubernetes. A workflow integration could inject the
-current context into each container's environment, where an SDK or a tool such
-as `otel-cli` could extract it. Because separate Kubernetes Pods do not inherit
-one another's process environments, the workflow integration would need to
-perform that injection explicitly. Inside a container, the same carrier can
-continue the context through any child processes it starts.
+current context into each container's environment, where instrumented code or a
+tool such as `otel-cli` could extract it. Because separate Kubernetes Pods do
+not inherit one another's process environments, the workflow integration would
+need to perform that injection explicitly. Inside a container, the same carrier
+can continue the context through any child processes it starts.
 
 The mechanism also applies to batch schedulers, ETL systems, test runners, and
 other environments where work is connected through process creation rather than
@@ -180,7 +181,8 @@ portable, secure, and implementable to mark the document Stable. In particular,
 we would value feedback on these questions:
 
 - Do the normalization rules work for your operating systems and runtimes?
-- Can your SDK expose extraction and injection in a language-appropriate way?
+- Can your language implementation expose extraction and injection in a
+  language-appropriate way?
 - Is the process-startup and child-environment guidance clear enough?
 - Does the model work for CI/CD systems such as GitHub Actions and Argo
   Workflows, as well as batch and command-line tooling?
@@ -196,10 +198,11 @@ a problem, report it where it can be acted on:
 
 - For unclear or incorrect requirements, portability problems, missing use
   cases, or specification-level security concerns, [open an issue in the
-  OpenTelemetry Specification repository][new-spec-issue]. Link the new issue
-  from [stabilization issue #5040][stabilization-issue].
-- For behavior specific to one language SDK, open an issue in that SDK's
-  repository and cross-reference [the implementation tracker][sdk-tracker].
+  OpenTelemetry Specification repository][new-spec-issue]. Add a comment to
+  [stabilization issue #5040][stabilization-issue] linking the new issue.
+- For behavior specific to one language implementation, open an issue in that
+  implementation's repository and cross-reference [the implementation
+  tracker][sdk-tracker].
 - For behavior specific to a tool or workflow platform, open an issue in that
   project's repository. If it also reveals a gap in the specification, create a
   specification issue and connect the two.
@@ -210,13 +213,13 @@ and actual behavior, and a minimal example when possible. Please also call out
 whether the problem involves concurrent children, name normalization, or a
 security boundary.
 
-If your review finds no blocker, react to the stabilization issue with a
-thumbs-up. Add a comment when you can share concrete implementation or
+React to the stabilization issue with a thumbs-up to help prioritize the work.
+Add a comment when you find a blocker or can share concrete implementation or
 production experience; comments containing only "+1" do not help us evaluate the
 specification.
 
 Your feedback now will help ensure that Stable means this mechanism works
-consistently across SDKs, tools, and workflow platforms.
+consistently across language implementations, tools, and workflow platforms.
 
 [Argo Workflows]: https://github.com/argoproj/argo-workflows
 [env-carrier-spec]:
