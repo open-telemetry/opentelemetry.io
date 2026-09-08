@@ -146,9 +146,9 @@ independent community projects illustrate different approaches:
 
 The [Jenkins OpenTelemetry plugin][] provides a concrete example in an
 established CI system. It exposes the current `TRACEPARENT` and `TRACESTATE` in
-the environment of shell, batch, and PowerShell steps, alongside `TRACE_ID` and
-`SPAN_ID`. An OpenTelemetry-aware build or test tool invoked by a step can use
-that context to connect its spans to the Jenkins pipeline trace.
+the environment of shell, batch, and PowerShell steps. An OpenTelemetry-aware
+build or test tool invoked by a step can use that context to connect its spans
+to the Jenkins pipeline trace.
 
 The plugin also has a configuration option for exporting selected `OTEL_*` SDK
 configuration variables to downstream tools. These variables solve a different
