@@ -42,12 +42,12 @@ para armazenar seu token de autorização.
 
 ### Atualize os exporters padrão {#update-the-default-exporters}
 
-No arquivo `config.yaml`, adicione seu(s) exporter(s) preferido(s), caso ainda
-não estejam presentes. Configure o(s) exporter(s) com as variáveis de ambiente
+No arquivo `config.yaml`, adicione seu(s) exportador(es) preferido(s), caso ainda
+não estejam presentes. Configure o(s) exportador(es) com as variáveis de ambiente
 definidas para os tokens de acesso na etapa anterior.
 
-**Sem uma variável de ambiente definida para os exporters, a configuração padrão
-só permite emitir dados usando o exporter `debug`.** Veja a configuração padrão:
+**Sem uma variável de ambiente definida para os exportadores, a configuração padrão
+só permite exportar dados usando o exportador `debug`.** Veja a configuração padrão:
 
 ```yaml
 receivers:
