@@ -5,12 +5,12 @@ weight: 50
 cSpell:ignore: corehost netfx pjanotti's TRACEFILE
 ---
 
-## Pasos generales
+## Pasos generales {#general-steps}
 
 Si encuentras algún problema con OpenTelemetry .NET Automatic Instrumentation,
 hay varios pasos que pueden ayudarte a comprenderlo.
 
-### Habilitar el registro detallado
+### Habilitar el registro detallado {#enable-detailed-logging}
 
 Los registros de depuración detallados pueden ayudarte a solucionar problemas de
 instrumentación y adjuntarse a las incidencias de este proyecto para facilitar
@@ -29,7 +29,7 @@ Después de obtener los registros, elimina la variable de entorno
 `OTEL_LOG_LEVEL` o establécela en un nivel menos detallado para evitar una
 sobrecarga innecesaria.
 
-### Habilitar el seguimiento del host
+### Habilitar el seguimiento del host {#enable-host-tracing}
 
 El [seguimiento del host](https://github.com/dotnet/runtime/blob/edd23fcb1b350cb1a53fa409200da55e9c33e99e/docs/design/features/host-tracing.md#host-tracing)
 puede utilizarse para recopilar la información necesaria para investigar
@@ -43,9 +43,9 @@ COREHOST_TRACEFILE=corehost_verbose_tracing.log
 
 A continuación, reinicia la aplicación para recopilar los registros.
 
-## Problemas comunes
+## Problemas comunes {#common-issues}
 
-### No se genera telemetría
+### No se genera telemetría {#no-telemetry-is-produced}
 
 No se genera telemetría. No hay registros en la
 [ubicación](../configuration#internal-logs) de los registros internos de
@@ -57,7 +57,7 @@ registros.
 La razón más común es que la aplicación instrumentada no tiene permisos para
 cargar los ensamblados de OpenTelemetry .NET Automatic Instrumentation.
 
-### No se pudo instalar el paquete 'OpenTelemetry.AutoInstrumentation.Runtime.Native'
+### No se pudo instalar el paquete 'OpenTelemetry.AutoInstrumentation.Runtime.Native' {#could-not-install-package-opentelemetryautoinstrumentationruntimenative}
 
 Al añadir los paquetes NuGet al proyecto, aparece un mensaje de error similar
 a este:
@@ -70,7 +70,7 @@ Los paquetes NuGet no admiten proyectos `csproj` de estilo antiguo. Implementa
 la instrumentación automática en la máquina en lugar de utilizar paquetes NuGet
 o migra el proyecto al estilo SDK `csproj`.
 
-### Problemas de rendimiento
+### Problemas de rendimiento {#performance-issues}
 
 Si se produce un uso elevado de CPU, asegúrate de no haber habilitado la
 instrumentación automática de forma global mediante el establecimiento de las
@@ -81,7 +81,7 @@ variables de entorno
 [`OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES`](../configuration#global-settings) para
 excluir aplicaciones de la instrumentación automática.
 
-### La herramienta CLI `dotnet` se bloquea
+### La herramienta CLI `dotnet` se bloquea {#dotnet-cli-tool-is-crashing}
 
 Al ejecutar una aplicación, por ejemplo con `dotnet run`, aparecen mensajes de
 error similares al siguiente:
@@ -105,7 +105,7 @@ sesión de terminal independiente.
 Consulta [#1744](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1744)
 para obtener más información.
 
-### Conflictos de versiones de ensamblados
+### Conflictos de versiones de ensamblados {#assembly-version-conflicts}
 
 Mensaje de error similar al siguiente:
 
@@ -178,9 +178,9 @@ Consulta [#2269](https://github.com/open-telemetry/opentelemetry-dotnet-instrume
 y [#2296](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2296)
 para obtener más información.
 
-### No se encontró un ensamblado en AdditionalDeps
+### No se encontró un ensamblado en AdditionalDeps {#assembly-in-additionaldeps-was-not-found}
 
-#### Síntomas
+#### Síntomas {#symptoms}
 
 Aparece un mensaje de error similar al siguiente:
 
@@ -193,9 +193,9 @@ Esto podría estar relacionado con los siguientes problemas:
 - [#1744](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1744)
 - [#2181](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2181)
 
-## Otros problemas
+## Otros problemas {#other-issues}
 
 Si encuentras un problema que no aparece en esta página, consulta los
-[Pasos generales](#pasos-generales) para recopilar información de diagnóstico
+[Pasos generales](#general-steps) para recopilar información de diagnóstico
 adicional.
 Esto puede ayudar a facilitar la solución del problema.
