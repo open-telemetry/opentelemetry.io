@@ -122,9 +122,9 @@ independent community projects illustrate different approaches:
   Node.js, Docker, and composite action steps, and uses `TRACEPARENT` and
   `TRACESTATE` to continue context into child processes.
 - [Run with Telemetry][] wraps a particular command in a span and places the
-  resulting `TRACEPARENT` in that command's environment. It can be used with the
-  OpenTelemetry Collector GitHub Actions receiver so that the workflow or job
-  span becomes the parent of the command span.
+  resulting `TRACEPARENT` in that command's environment. Its optional
+  `job-as-parent` mode lets the generated command span join a trace representing
+  the wider job.
 
 These projects are useful prior art, but they are not built-in GitHub features
 or official OpenTelemetry project components. A stable environment carrier
