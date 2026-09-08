@@ -135,7 +135,7 @@ suporte a protocolos e valores padrão por linguagem, documentados abaixo.
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-A variável de ambiente `OTEL_EXPORTER_OTLP_PROTOCOL` não é suportada. O exporter
+A variável de ambiente `OTEL_EXPORTER_OTLP_PROTOCOL` não é suportada. O exportador
 fixo usa o protocolo `http/protobuf`
 `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
 
