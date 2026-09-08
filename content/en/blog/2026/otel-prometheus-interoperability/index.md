@@ -57,7 +57,7 @@ sample:
 
 ## Ease of use change over time
 
-_How easy or difficult is it to use OpenTelemetry and Prometheus together?_
+**How easy or difficult is it to use OpenTelemetry and Prometheus together?**
 
 This year, we asked the same question as in the similar 2024 survey to see
 whether end users saw progress in interoperability.
@@ -72,11 +72,13 @@ Two years of work on interoperability are paying off. At the same time, since
 the single largest group of responses sits at "Neither easy nor difficult",
 there is still a lot of work to be done in this area.
 
-{{% row %}} {{% column %}}
-![Grouped bar chart comparing ease-of-use ratings in 2024 and 2026: very difficult 7% to 0%, somewhat difficult 22% to 10%, neutral 37% to 40%, somewhat easy 26% to 33%, very easy 8% to 17%](ease-of-use-breakdown.png)
-{{% /column %}} {{% column %}}
-![Bar chart of the average ease-of-use rating: 3.1 in 2024 and 3.6 in 2026 on a five-point scale](ease-of-use-average.png)
-{{% /column %}} {{% /row %}}
+<div style="display: flex; flex-wrap: wrap; gap: 1rem;
+            width: 110%; max-width: 110%; margin-left: -5%;">
+  <img src="ease-of-use-breakdown.png" alt="Grouped bar chart comparing ease-of-use ratings in 2024 and 2026: very difficult 7% to 0%, somewhat difficult 22% to 10%, neutral 37% to 40%, somewhat easy 26% to 33%, very easy 8% to 17%"
+       style="flex: 1 1 45%; min-width: 17rem;">
+  <img src="ease-of-use-average.png" alt="Bar chart of the average ease-of-use rating: 3.1 in 2024 and 3.6 in 2026 on a five-point scale"
+       style="flex: 1 1 45%; min-width: 17rem;">
+</div>
 
 _**Note**: The 2024 survey didn't ask respondents whether they worked for an
 observability vendor, so this is not an exact apples-to-apples population match.
@@ -87,7 +89,7 @@ stick with filtering vendor employees out._
 
 ## Infrastructure metrics
 
-_How do you instrument infrastructure metrics collection?_
+**How do you instrument infrastructure metrics collection?**
 
 Prometheus exporters are the most common single instrumentation method for
 infrastructure metrics but OTel receivers are close behind. Built-in `/metrics`
@@ -99,11 +101,13 @@ either/or. Nearly half of respondents are mixing Prometheus and OTel
 instrumentation styles at once for infrastructure metrics, rather than doing a
 full migration. Only Prometheus style is twice as popular as only OTel style.
 
-{{% row %}} {{% column %}}
-![Bar chart of infrastructure instrumentation methods: Prometheus exporters 72%, OTel receivers 57%, built-in /metrics endpoint 43%, built-in OTLP push 26%, OBI 12%, other 5%, don't collect 2%](infrastructure-instrumentation-methods.png)
-{{% /column %}} {{% column %}}
-![Pie chart of infrastructure instrumentation styles: mix 49.4%, only Prometheus-style 30.4%, only OTel-style 15.2%, other 5.1%](infrastructure-instrumentation-styles.png)
-{{% /column %}} {{% /row %}}
+<div style="display: flex; flex-wrap: wrap; gap: 1rem;
+            width: 110%; max-width: 110%; margin-left: -5%;">
+  <img src="infrastructure-instrumentation-methods.png" alt="Bar chart of infrastructure instrumentation methods: Prometheus exporters 72%, OTel receivers 57%, built-in /metrics endpoint 43%, built-in OTLP push 26%, OBI 12%, other 5%, don't collect 2%"
+       style="flex: 1 1 45%; min-width: 17rem;">
+  <img src="infrastructure-instrumentation-styles.png" alt="Pie chart of infrastructure instrumentation styles: mix 49.4%, only Prometheus-style 30.4%, only OTel-style 15.2%, other 5.1%"
+       style="flex: 1 1 45%; min-width: 17rem;">
+</div>
 
 _**Note**: Instrumentation style describes whether a respondent uses methods
 native to one project only, or a mix of both. OTel-style includes using OTel
@@ -122,7 +126,7 @@ are still ongoing. The discussion is open in
 
 ## Application metrics
 
-_How do you instrument application metrics collection?_
+**How do you instrument application metrics collection?**
 
 Preferences swap for application instrumentation. OTel SDKs come out on top with
 Prometheus SDKs following behind them. OBI holds roughly the same share as in
@@ -132,11 +136,13 @@ Instrumentation styles shift as well. Most participants use only OTel style
 instrumentation. That is twice as common as only Prometheus style. Fewer than a
 third mix styles.
 
-{{% row %}} {{% column %}}
-![Bar chart of application instrumentation methods: OTel SDKs 65%, Prometheus SDKs 52%, OBI 12%, other 5%, don't collect 6%](application-instrumentation-methods.png)
-{{% /column %}} {{% column %}}
-![Pie chart of application instrumentation styles: only OTel-style 41.3%, mix 30.7%, only Prometheus-style 22.7%, other 5.3%](application-instrumentation-styles.png)
-{{% /column %}} {{% /row %}}
+<div style="display: flex; flex-wrap: wrap; gap: 1rem;
+            width: 110%; max-width: 110%; margin-left: -5%;">
+  <img src="application-instrumentation-methods.png" alt="Bar chart of application instrumentation methods: OTel SDKs 65%, Prometheus SDKs 52%, OBI 12%, other 5%, don't collect 6%"
+       style="flex: 1 1 45%; min-width: 17rem;">
+  <img src="application-instrumentation-styles.png" alt="Pie chart of application instrumentation styles: only OTel-style 41.3%, mix 30.7%, only Prometheus-style 22.7%, other 5.3%"
+       style="flex: 1 1 45%; min-width: 17rem;">
+</div>
 
 <!-- prettier-ignore-start -->
 <!-- Keeps the respondent's original "OTEl" spelling in the quote below. -->
@@ -153,8 +159,8 @@ plain OTel SDKs._
 
 ## Transformation
 
-_What do you use to process or transform metrics before sending them to
-storage?_
+**What do you use to process or transform metrics before sending them to
+storage?**
 
 Prometheus relabeling rules and the open source OTel Collector are the two most
 common processing steps with neither of them leading clearly.
@@ -163,16 +169,18 @@ Most respondents run a vanilla stack: only Prometheus relabeling rules and/or
 the plain OTel Collector, with no vendor distribution and no custom-built
 Collector in the pipeline. The three vanilla patterns come out close to even.
 
-{{% row %}} {{% column %}}
-![Bar chart of metrics transformation tools: Prometheus relabeling and recording rules 54%, open source OTel Collector 53%, vendor distribution of the Collector 11%, custom-built Collector 10%, nothing 15%](metrics-transformation-tools.png)
-{{% /column %}} {{% column %}}
-![Pie chart of vanilla stack patterns: other 34.6%, mix 23.5%, only open source Collector 22.2%, only Prometheus relabeling and recording rules 19.8%](vanilla-stack-breakdown.png)
-{{% /column %}} {{% /row %}}
+<div style="display: flex; flex-wrap: wrap; gap: 1rem;
+            width: 110%; max-width: 110%; margin-left: -5%;">
+  <img src="metrics-transformation-tools.png" alt="Bar chart of metrics transformation tools: Prometheus relabeling and recording rules 54%, open source OTel Collector 53%, vendor distribution of the Collector 11%, custom-built Collector 10%, nothing 15%"
+       style="flex: 1 1 45%; min-width: 17rem;">
+  <img src="vanilla-stack-breakdown.png" alt="Pie chart of vanilla stack patterns: other 34.6%, mix 23.5%, only open source Collector 22.2%, only Prometheus relabeling and recording rules 19.8%"
+       style="flex: 1 1 45%; min-width: 17rem;">
+</div>
 
 ## What practitioners want improved
 
-_What would you like us to improve to make OpenTelemetry and Prometheus work
-better together?_
+**What would you like us to improve to make OpenTelemetry and Prometheus work
+better together?**
 
 We received 19 open-ended responses with suggestions on what to improve. Three
 themes emerged from this data — unifying Prometheus and OTel's data models
@@ -214,7 +222,7 @@ responses and addressed each point below:
 
 ## Interesting observations
 
-_Mid-size organizations may be furthest into OTel-native tooling_
+**Mid-size organizations may be furthest into OTel-native tooling**
 
 In our data, 100–999-employee organizations come out highest on OTel SDK
 adoption for application metrics and on OTel receiver adoption for
@@ -224,11 +232,12 @@ smaller band.
 
 Adoption by organization size:
 
-| Metric                                                    | 1–49<br>(n = 10) | 50–99<br>(n = 12) | 100–999<br>(n = 25) | 1,000+<br>(n = 34) |
-| --------------------------------------------------------- | ---------------- | ----------------- | ------------------- | ------------------ |
-| OTel SDK adoption (application metrics)                   | 40%              | 58%               | 84%                 | 62%                |
-| OTel receiver adoption (infrastructure metrics)           | 20%              | 58%               | 76%                 | 53%                |
-| eBPF-based instrumentation / OBI (infrastructure metrics) | 20%              | 17%               | 20%                 | 3%                 |
+| Organization size | OTel SDKs<br>(application) | OTel receivers<br>(infrastructure) | eBPF / OBI<br>(infrastructure) |
+| ----------------- | -------------------------- | ---------------------------------- | ------------------------------ |
+| 1–49 (n = 10)     | 40%                        | 20%                                | 20%                            |
+| 50–99 (n = 12)    | 58%                        | 58%                                | 17%                            |
+| 100–999 (n = 25)  | 84%                        | 76%                                | 20%                            |
+| 1,000+ (n = 34)   | 62%                        | 53%                                | 3%                             |
 
 Our hypothesis is that mid-size organizations — big enough to have a dedicated
 platform effort, small enough to move without a multi-year migration plan —
@@ -238,7 +247,7 @@ _**Note**: This is an interesting observation and a hypothesis, not a confirmed
 finding: with 10–34 respondents per band, none of these gaps is big enough for a
 survey this size to confirm._
 
-_Team type tracks backend choice_
+**Team type tracks backend choice**
 
 Platform Engineering and SRE teams lean heavily toward OSS Prometheus-compatible
 backends (Thanos, Cortex, Mimir), while Dev teams lean the other way, toward
@@ -248,15 +257,16 @@ The dividing line looks like operational ownership rather than preference. Teams
 running metrics for a whole organization eventually outgrow a single Prometheus;
 teams instrumenting their own service generally don't.
 
-Backend choice by team type:
+Backend choice by team type — OSS Prometheus-compatible (n = 30), Prometheus (n
+= 35), PromQL-compatible vendor (n = 8):
 
-| Team type            | OSS Prometheus-compatible<br>(n = 30) | Prometheus<br>(n = 35) | PromQL-compatible vendor<br>(n = 8) |
-| -------------------- | ------------------------------------- | ---------------------- | ----------------------------------- |
-| Dev                  | 24%                                   | 71%                    | 6%                                  |
-| DevOps               | 23%                                   | 62%                    | 15%                                 |
-| Observability        | 29%                                   | 41%                    | 29%                                 |
-| Platform Engineering | 69%                                   | 31%                    | 0%                                  |
-| SRE                  | 69%                                   | 31%                    | 0%                                  |
+| Team type            | OSS Prometheus-compatible | Prometheus | PromQL-compatible vendor |
+| -------------------- | ------------------------- | ---------- | ------------------------ |
+| Dev                  | 24%                       | 71%        | 6%                       |
+| DevOps               | 23%                       | 62%        | 15%                      |
+| Observability        | 29%                       | 41%        | 29%                      |
+| Platform Engineering | 69%                       | 31%        | 0%                       |
+| SRE                  | 69%                       | 31%        | 0%                       |
 
 _**Note**: Sysadmin (n = 6) and Operations (n = 2) respondents are excluded from
 this table — both groups are too small to interpret — leaving n = 73 of the 81
