@@ -15,8 +15,8 @@ params:
   blogPostURL: *eventUrl
 ---
 
-[**{{% param title %}}**][LF] · <span class="text-nowrap">Nov 9–12</span> · Salt
-Lake City · [Details][blog]
+[**{{% param title %}}**][LF] **·** <span class="text-nowrap">Nov 9–12</span>
+**·** Salt Lake City **·** [Details][blog]
 
 [blog]: <{{% param blogPostURL %}}>
 [LF]: <{{% param eventUrl %}}register/?{{% _param utmParam %}}>
