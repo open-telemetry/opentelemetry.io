@@ -205,12 +205,19 @@ An environment carrier only transports propagation fields. It does not create
 spans, configure an SDK, replace propagation through network protocols, or
 propagate automatically between containers or Kubernetes Pods.
 
-## Why we are asking now
+## Please report problems now
 
 The document is currently marked Release Candidate. Implementations are
 available in several OpenTelemetry languages, and current coverage is recorded
 in the [specification compliance matrix][]. Broader implementation work is
 tracked in [SDK implementation tracker issue 4771][sdk-tracker].
+
+**Feedback period:** We will wait until at least November 2, 2026, and until at
+least 14 days have passed without a new related issue being reported before
+stabilizing the specification. If significant findings require specification
+updates, we will restart the 14-day feedback period when those updates are
+available for review. This gives the community time to validate any substantial
+changes before stabilization.
 
 We now want to determine whether the requirements are sufficiently clear,
 portable, secure, and implementable to mark the document Stable. In particular,
@@ -224,15 +231,6 @@ we would value feedback on these questions:
   Workflows, as well as batch and command-line tooling?
 - Are any concurrency, security, or trust-boundary concerns missing?
 - Does any requirement lead different implementations to incompatible behavior?
-
-**Feedback period:** We will wait until at least November 2, 2026, and until at
-least 14 days have passed without a new related issue being reported before
-stabilizing the specification. If significant findings require specification
-updates, we will restart the 14-day feedback period when those updates are
-available for review. This gives the community time to validate any substantial
-changes before stabilization.
-
-## Review the specification and report issues
 
 Please read the [environment variable carrier specification][env-carrier-spec]
 and evaluate it against an implementation or a concrete use case. When you find
