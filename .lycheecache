@@ -381,13 +381,10 @@ https://doc.rust-lang.org/std/io/trait.Write.html,200,1787916794
 https://doc.traefik.io/traefik-hub/operations/metrics,200,1788846160
 https://doc.traefik.io/traefik/observability/tracing/opentelemetry/,200,1788241802
 https://docs.agentmark.co/observe/overview,206,1784373840
-https://docs.api7.ai/ai-gateway/observability/exporters,200,1787916774
-https://docs.apica.io/integrations/list-of-integrations/opentelemetry,200,1788241859
-https://docs.apimetrics.io/docs/export-with-opentelemetry,200,1787916775
-https://docs.appdynamics.com/latest/en/application-monitoring/splunk-appdynamics-for-opentelemetry,200,1785053465
 https://docs.api7.ai/ai-gateway/observability/exporters,200,1788846160
 https://docs.apica.io/integrations/list-of-integrations/opentelemetry,200,1788241859
 https://docs.apimetrics.io/docs/export-with-opentelemetry,200,1788846160
+https://docs.appdynamics.com/latest/en/application-monitoring/splunk-appdynamics-for-opentelemetry,200,1785053465
 https://docs.astral.sh/uv/,200,1788327797
 https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html,200,1788241823
 https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-system-attributes,200,1787916968
@@ -4041,7 +4038,6 @@ https://github.com/open-telemetry/opentelemetry-specification/blob/v1.59.0/speci
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.60.0/oteps/0232-maturity-of-otel.md,200,1786530625
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.60.0/spec-compliance-matrix.md#logs,200,1786530625
 https://github.com/open-telemetry/opentelemetry-specification/blob/v1.60.0/specification/logs/api.md#logger,200,1786530625
-https://github.com/open-telemetry/opentelemetry-specification/issues/1413,200,1787916777
 https://github.com/open-telemetry/opentelemetry-specification/issues/1413,200,1788846198
 https://github.com/open-telemetry/opentelemetry-specification/issues/3967,200,1788241827
 https://github.com/open-telemetry/opentelemetry-specification/issues/4126,206,1787918248
