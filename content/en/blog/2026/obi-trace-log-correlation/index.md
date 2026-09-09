@@ -1,12 +1,11 @@
 ---
 title: Zero-code trace-log correlation with OBI
 linkTitle: Zero-code trace-log correlation with OBI
-date: 2026-08-25
+date: 2026-09-09
 author: >-
   [Mattia Meleleo](https://github.com/mmat11) (Coralogix)
 sig: SIG eBPF Instrumentation
-# prettier-ignore
-cSpell:ignore: asyncio casgstatus kprobe kprobes Mattia Meleleo PYTHONUNBUFFERED uprobe writev
+cSpell:ignore: Mattia Meleleo PYTHONUNBUFFERED writev
 ---
 
 You get paged. A trace shows a request failing in one of your services, and you
@@ -14,21 +13,24 @@ know the answer is in the logs — but which log lines belong to _that_ request?
 If the service never adopted structured logging with trace context, the honest
 answer is: you grep by timestamp and hope.
 
-Injecting trace context into logs traditionally means touching every service:
-adding an SDK, configuring the logger to emit `trace_id` and `span_id`, and
-redeploying.
 [OpenTelemetry eBPF Instrumentation (OBI)](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation)
-now does this from the kernel instead. It intercepts your application's log
-writes as they happen, looks up the trace context of the thread doing the
-writing, and re-emits the log line with `trace_id` and `span_id` injected — no
-code changes, no redeploys, no logging library requirements.
+can now add that missing trace context to the logs your services already write.
+Your applications don't change: no SDK, no logging-library configuration, no
+application rebuild or redeploy.
 
-This post explains how it works, because the "how" is the interesting part:
-correlating a `write()` syscall with a distributed trace touches goroutine
-scheduling, event-loop internals, and thread pools — and eBPF lets us follow all
-of them.
+The boundaries up front: it applies to logs written to stdout or stderr — the
+streams your container runtime captures — and a line is annotated when OBI has
+active trace context for the request being served at the moment of the write.
+What you roll out is an OBI configuration change and a one-line filter in your
+log pipeline.
 
-## What you get
+Under the hood, OBI already knows — through eBPF — which request each thread is
+serving at the moment it writes a log line; that's the entire trick. The
+correlation fields are added before the container logging pipeline receives the
+line. The rest of this post covers what changes in practice, what the feature
+requires from your environment, and how to enable it.
+
+## What changes during an incident
 
 Your application writes this:
 
@@ -48,9 +50,14 @@ The container log ends up with this:
 }
 ```
 
-The IDs are the same ones OBI reports on the spans for that request, so your
-backend can link both signals directly. It works for JSON logs, NDJSON, and
-plain text — free-form lines get a `key=value` annotation:
+The IDs are the same ones OBI reports on the spans for that request, so
+correlation works in both directions: paste the `trace_id` from a failed trace
+into your log search and get exactly the log lines for that request, or copy the
+`trace_id` from a suspicious log line into your trace backend and land on the
+trace it belongs to.
+
+It works for JSON logs, NDJSON, and plain text — free-form lines get a
+`key=value` annotation:
 
 ```text
 payment authorized trace_id=4bf92f3577b34da6a3ce929d0e0e4736 span_id=00f067aa0ba902b7
@@ -59,129 +66,63 @@ payment authorized trace_id=4bf92f3577b34da6a3ce929d0e0e4736 span_id=00f067aa0ba
 If your logger already emits one of the configured fields, OBI preserves it and
 only fills in what's missing.
 
-## How it works
+Here it is end to end, on a small demo: an uninstrumented Go `frontend` that
+calls an uninstrumented Go `backend`, each logging one JSON line per request,
+plus OBI and Jaeger — four containers total. No OpenTelemetry SDK anywhere in
+the application code.
 
-### A shared map of "what is this thread doing right now"
+A single request to the frontend produces one distributed trace in Jaeger — OBI
+also propagates the trace context between the two services, so the frontend and
+backend spans join under one trace:
 
-OBI already watches every service's network traffic, so at any moment it knows
-which trace and span a thread is serving. The log enricher builds on a small,
-pinned BPF map called `traces_ctx_v1` that captures exactly that:
+![Jaeger showing the frontend and backend spans of one trace](jaeger-trace.png)
 
-- **Key**: the kernel thread ID (`pid_tgid`)
-- **Value**: 16 bytes of trace ID + 8 bytes of span ID
+Both services logged plain JSON with no trace fields; OBI injected matching
+context — the same `trace_id` in both services, each with its own `span_id`:
 
-When OBI's tracers see an HTTP request or a client call start on a thread, they
-write the active context into the map; when the request finishes, they delete
-it. The map is pinned to the BPF filesystem under a
-[documented name and layout](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/6a9df076223faff5bb94ea75f15a8e24c7a1ca0d/devdocs/trace-profile-correlation.md#data-model),
-so other components can read the same context.
+![Enriched logs from both services carrying the same trace ID](logs-and-trace.png)
 
-### Intercepting the write
+Searching Jaeger for the `trace_id` from either log line lands on exactly the
+trace shown above.
 
-The enricher attaches kprobes to the kernel functions where container log output
-actually flows — `tty_write` for containers attached to a pseudo-terminal and
-`pipe_write` for the default case, where the container runtime reads stdout
-through a pipe — with two helper probes to recover the file descriptor for
-`write()` and `writev()` calls. When a tracked process writes a log line, the
-BPF program:
+## Is this a fit for your environment?
 
-1. Looks up `traces_ctx_v1` for the calling thread.
-2. Copies the log line (up to 8 KiB, including multi-segment `writev()`
-   payloads) into a ring buffer event together with the trace context.
-3. Overwrites the original user-space buffer with NUL bytes, so the container
-   runtime captures a blank placeholder line instead of the un-enriched
-   duplicate.
+Check these before you plan a rollout:
 
-In user space, OBI parses the line — JSON, NDJSON, or plain text — injects the
-missing fields, and appends the enriched line to the same pty or pipe the
-application was writing to. From the container runtime's point of view, the
-application simply logged a line with trace context in it. Writes are fanned out
-to parallel workers sharded by output file, so ordering is preserved per log
-stream. The placeholder lines are trivially dropped in your log shipper with a
-single filter.
+- **Log destination.** Enrichment covers logs written to stdout or stderr and
+  captured by the container runtime. Logs written directly to files or shipped
+  over the network by an in-process appender are not covered.
+- **Active trace context.** A line is enriched only when it is written while OBI
+  is tracing a request on that service — an HTTP or gRPC request, a client call,
+  or a database operation in flight. Startup messages and background-job logs
+  pass through unchanged.
+- **Kernel and privileges.** OBI's log enricher needs `CAP_SYS_ADMIN` and a
+  kernel that is not in lockdown mode. Enriching the common `write()` path
+  requires Linux 6.0 or later; on older kernels only `writev()`-based writes are
+  enriched, so coverage depends on how your runtime's logger writes.
+- **Synchronous logging.** The link between a log line and a request relies on
+  the write happening from the thread serving the request. Go, Java, and Ruby
+  loggers do this by default. Node.js stdout is asynchronous when backed by a
+  pipe — the default in containers — so under write backpressure occasional
+  lines can miss or carry stale context. Python needs `PYTHONUNBUFFERED=1`; .NET
+  needs a synchronous console writer.
+  [Java virtual threads are not enriched yet](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2284);
+  platform-thread workloads are unaffected.
+- **Services instrumented with an OTel SDK.** Enrichment works there too, and is
+  useful when the SDK exports traces but not logs: OBI injects only `trace_id`,
+  because the span IDs OBI generates would not match the SDK's — and a wrong
+  span link is worse than none. You can still find the transaction in the logs
+  by trace ID.
+- **Configuration version.** With version 1 configuration you select exactly
+  which services get log enrichment. With version 2 configuration (as of OBI
+  v0.13.0), enabling `correlation.log_trace_annotation` applies to all workloads
+  OBI instruments — per-service selection for log enrichment is not supported
+  there yet.
 
-The whole flow, end to end:
+## Enable it
 
-```mermaid
-flowchart TD
-  subgraph APP["&nbsp;Application&nbsp;"]
-    A["Request thread logs<br/>{#quot;msg#quot;:#quot;test#quot;}"]
-  end
-
-  subgraph KERNEL["&nbsp;OBI — eBPF&nbsp;"]
-    H["tty_write / pipe_write hook"]
-    M[("traces_ctx_v1<br/>thread&nbsp;→&nbsp;trace&nbsp;context")]
-  end
-
-  subgraph OBI["&nbsp;OBI — userspace&nbsp;"]
-    C["Classify log format<br/>JSON / NDJSON / plain text"]
-    E["Inject trace context"]
-    C --> E
-  end
-
-  subgraph LOG["&nbsp;Container log&nbsp;"]
-    P["␀␀␀␀␀␀␀␀<br/>(dropped by filter)"]
-    L["{#quot;msg#quot;:#quot;test#quot;,<br/>#quot;trace_id#quot;:#quot;4bf92f…#quot;}"]
-  end
-
-  A ==>|"1 — write()"| KERNEL
-  H -->|"2 — look up thread"| M
-  H -->|"3 — blank buffer<br/>bpf_probe_write_user()"| P
-  H ==>|"4 — line + context + fd"| C
-  E ==>|"5 — enriched line, written<br/>to /proc/#lt;pid#gt;/fd/#lt;fd#gt;"| L
-
-  classDef store fill:#efe7ff,stroke:#8b6fc9,stroke-width:1.5px
-  classDef ghost fill:#f4f4f4,stroke:#a0a0a0,stroke-dasharray:6 4,color:#666
-  classDef good fill:#e8f5e9,stroke:#2e7d32,stroke-width:1.5px
-  class M store
-  class P ghost
-  class L good
-  style APP fill:#f8fafc,stroke:#94a3b8
-  style KERNEL fill:#eef2ff,stroke:#6366f1
-  style OBI fill:#f8fafc,stroke:#94a3b8
-  style LOG fill:#f8fafc,stroke:#94a3b8
-```
-
-### The hard part: the thread is not the request
-
-Keying trace context by thread ID works only if the thread that read the request
-is the thread that writes the log. Modern runtimes break that assumption
-constantly:
-
-- **Go** multiplexes goroutines across OS threads; a handler can migrate
-  mid-request.
-- **Node.js** interleaves many in-flight requests on one event-loop thread.
-- **Java** servers accept a request on one thread and process it on a pool
-  worker.
-- **Ruby (Puma)** has a reactor thread that reads requests for busy workers.
-- **Python (asyncio)** can switch tasks at any `await`.
-
-OBI keeps `traces_ctx_v1` accurate by hooking the exact point in each runtime
-where "which request is this thread serving" changes:
-
-| Runtime | Refresh point                                                                                                                                              |
-| ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Go      | `runtime.casgstatus` — fires on every goroutine status transition, so the map follows the goroutine to whichever thread it lands on                        |
-| Node.js | An `async_hooks` before-callback hook signals BPF, which re-resolves the trace from the request's socket before every JS callback runs                     |
-| Java    | A lightweight agent intercepts `Executor`/`Runnable`/`ForkJoinTask` handoffs and tells BPF the parent-child thread relationship                            |
-| Ruby    | A probe on Puma's work-queue pop propagates the reactor thread's context to the worker picking up the request                                              |
-| Python  | Probes on asyncio's task-step machinery re-bind the context on every task switch, including `asyncio.create_task` children and `asyncio.to_thread` workers |
-
-The Go case is a good example of the approach. When a goroutine transitions to
-_running_, a uprobe on the runtime's status-change function checks whether that
-goroutine has an in-flight server request, client call, or database operation,
-and refreshes the map entry for the OS thread it just landed on. When the
-handler returns, the entry is deleted. This way a log write resolves to the
-right span even after the goroutine has migrated to a different OS thread.
-
-## Turning it on
-
-The enricher is opt-in per service. Select services under `ebpf.log_enricher`
-(or `extensions.obi.correlation.log_trace_annotation` in version 2 of the
-configuration).
-
-For a service that logs JSON, selecting it is all it takes — OBI enriches every
-JSON object it writes:
+The enricher is opt-in. With version 1 configuration, select the services under
+`ebpf.log_enricher` — for a service that logs JSON, this is all it takes:
 
 ```yaml
 ebpf:
@@ -206,57 +147,68 @@ ebpf:
       multiline: first_line
 ```
 
+With version 2 configuration, enable it under
+`extensions.obi.correlation.log_trace_annotation`:
+
+```yaml
+extensions:
+  obi:
+    version: '2.0'
+    correlation:
+      log_trace_annotation:
+        enabled: true
+        field_names:
+          trace_id: trace_id
+          span_id: span_id
+        plain_text:
+          enabled: true
+          placement: suffix
+          multiline: first_line
+```
+
+As of v0.13.0 this applies to all workloads OBI instruments — per-service
+selection is only available in version 1 configuration. The `plain_text` and
+`field_names` options are available in both versions.
+
 The injected field names default to `trace_id` and `span_id` and are
 configurable via `field_names`, so the output matches whatever your log pipeline
-already expects. If OBI detects that a service exports OTel traces on its own,
-it injects only `trace_id`: the span IDs OBI generates would not match the
-SDK's, and a wrong span link is worse than none.
+already expects.
 
-## Seeing it work
+One pipeline change is required: for each enriched line, the original
+un-enriched line is replaced by a blank placeholder (NUL bytes) in the container
+log, and the enriched line is appended in its place. Add a filter to your log
+shipper that drops the blank placeholder lines — a single rule that matches
+all-NUL records.
 
-To show the full picture we ran a small two-service demo: an uninstrumented Go
-`frontend` that calls an uninstrumented Go `backend`, each logging one JSON line
-per request with `log/slog`, plus OBI and Jaeger — four containers total. No
-OpenTelemetry SDK anywhere in the application code.
+## Before enabling it in production
 
-A single `curl` to the frontend produces one distributed trace in Jaeger — OBI
-also propagates the trace context between the two services, so the frontend and
-backend spans join under one trace:
+Behavior to account for in your rollout plan:
 
-![Jaeger showing the frontend and backend spans of one trace](jaeger-trace.png)
-
-And this is what the container logs look like. Both services logged plain `slog`
-JSON with no trace fields; OBI injected matching context — the same `trace_id`
-in both services, each with its own `span_id`:
-
-![Enriched logs from both services carrying the same trace ID](logs-and-trace.png)
-
-Searching Jaeger for the `trace_id` from either log line lands on exactly the
-trace shown above — correlation works in both directions, log to trace and trace
-to log.
-
-## Limitations and future work
-
-- **Logs must be written synchronously from the request thread** — buffered or
-  background logging breaks the link. Go, Node.js, Java, and Ruby do this by
-  default; Python needs `PYTHONUNBUFFERED=1`, .NET a synchronous console writer.
-- **[Java virtual threads are not enriched yet.](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2284)**
-  The carrier thread ID doesn't identify the request, and a wrong attribution is
-  worse than a missing one. Platform-thread enrichment is unaffected.
-- **Writes are capped at 8 KiB** per `write()`/`writev()` call; larger writes
-  pass through un-enriched.
-- **It needs `CAP_SYS_ADMIN`** and a kernel that is not in lockdown mode,
-  because rewriting the user-space buffer uses `bpf_probe_write_user`.
+- **Large writes are split.** A single `write()` or `writev()` larger than 8 KiB
+  is not enriched intact: the captured prefix is re-emitted with trace context
+  while the remainder reaches the log stream separately, without enrichment —
+  one logical record can become two. If your services routinely emit very large
+  log lines, measure before enabling.
+- **Roll out incrementally.** Enable one low-risk service first and check two
+  things in your log backend: the blank placeholder lines are being dropped by
+  your filter, and log lines appear once — not duplicated, not split. Then
+  expand. Rolling back is removing the service from the enricher configuration;
+  the application is untouched in either direction.
 
 ## Try it
 
-Trace-log correlation ships in OBI today. Point it at one service, add the
-placeholder filter to your collector, and your existing logs — with no code
-changes and no redeploy — start carrying the trace IDs you needed during the
-last incident.
+Trace-log correlation ships in
+[OBI v0.13.0](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.13.0).
+Point it at one service, add the placeholder filter to your log shipper, and
+your existing logs — with no application rebuild or redeploy — start carrying
+the trace IDs you needed during the last incident.
 
+- Run the demo from this post yourself:
+  [docker compose example](https://gist.github.com/mmat11/f3f23707e7bc9c94bce144f56276251d)
 - [OBI documentation](/docs/zero-code/obi/)
 - [OBI repository](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation)
+- Curious how it works under the hood? The eBPF internals live in the
+  [developer documentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/6a9df076223faff5bb94ea75f15a8e24c7a1ca0d/devdocs/trace-log-correlation.md)
 - Questions or feedback: the
   [#otel-ebpf-instrumentation](https://cloud-native.slack.com/archives/C06DQ7S2YEP)
   channel on the CNCF Slack
