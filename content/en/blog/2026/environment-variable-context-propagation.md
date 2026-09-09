@@ -10,14 +10,20 @@ sig: CI/CD Observability
 A trace does not always cross a network boundary. A workflow runner starts a
 shell, the shell launches a build tool, and the build tool starts test
 processes. Batch and data-processing systems create similar chains of child
-processes. Without a shared way to carry trace context across these boundaries,
-spans from each process can end up in separate traces.
+processes. Without a shared way to pass trace information across these
+boundaries, spans from each process can end up in separate traces.
+
+If [context propagation][] is new to you, it is the mechanism that carries
+information from one service or process to the next. For tracing, this includes
+the trace and span identifiers that let new spans join the same trace. It can
+also carry baggage: application-defined key-value pairs that are passed to
+downstream work.
 
 The OpenTelemetry specification now has a release candidate for using
 [environment variables as context propagation carriers][env-carrier-spec]. It
-standardizes how propagators can use environment variables to carry trace
-context, baggage, and other cross-cutting concern data between processes when
-protocol headers or message metadata are not available.
+standardizes how propagators can use environment variables to carry data such as
+trace context and baggage between processes when protocol headers or message
+metadata are not available.
 
 Before we mark this specification Stable, we want feedback from language
 implementers, tool authors, platform engineers, and users operating real CI/CD,
@@ -25,16 +31,11 @@ batch, and command-line workloads.
 
 ## What is an environment variable carrier?
 
-A carrier is the medium through which a propagator reads and writes propagation
-values. The [OpenTelemetry Propagators API][propagators-api] uses `Context` as a
-container for cross-cutting concern data. During injection, a propagator
-retrieves a value such as `SpanContext` or `Baggage` from `Context` and writes
-the corresponding fields to the carrier. During extraction, it reads those
-fields and returns a derived `Context` containing the extracted value.
-
-HTTP headers are a familiar carrier, but a string-to-string environment can also
-be one. The release candidate applies the existing `TextMapPropagator` model to
-environment variables.
+A carrier is the place where propagation data is stored while it moves between
+services or processes. HTTP headers are a familiar carrier. A process
+environment can also be a carrier because environment variable names and values
+are strings. The release candidate defines how the existing `TextMapPropagator`
+model applies to environment variables.
 
 For example, when using the W3C Trace Context and W3C Baggage propagators, the
 propagation fields are represented by environment variables such as:
@@ -45,10 +46,16 @@ TRACESTATE=vendorname=opaquevalue
 BAGGAGE=build.id=42,repository.name=example
 ```
 
-The environment carrier does not parse these values. It treats them as opaque
-strings. The configured propagator remains responsible for selecting field
-names, validating values, and applying propagation-format-specific behavior.
-This keeps the carrier usable with W3C formats as well as formats such as B3.
+The [OpenTelemetry Propagators API][propagators-api] calls writing these fields
+to a carrier **injection** and reading them **extraction**. A propagator gets
+the relevant value from the current `Context` object. For tracing, that value is
+`SpanContext`; for baggage, it is `Baggage`. Extraction returns a new `Context`
+containing the value read from the carrier.
+
+The environment carrier does not interpret these values; it treats them as plain
+strings. The configured propagator remains responsible for choosing field names
+and validating and parsing values. This keeps the carrier usable with W3C
+formats as well as formats such as B3.
 
 Environment variable names have more restrictions than HTTP header names, so the
 specification defines a normalization algorithm. It converts ASCII letters to
@@ -59,8 +66,9 @@ name does not start with a digit. For example:
 x-b3-traceid -> X_B3_TRACEID
 ```
 
-The rules also define which names `Get`, `Set`, and `Keys` operate on, including
-behavior on case-insensitive platforms such as Windows.
+The rules apply consistently when an implementation reads (`Get`), writes
+(`Set`), or lists (`Keys`) environment variables, including on case-insensitive
+platforms such as Windows.
 
 ## How propagation works between processes
 
@@ -84,20 +92,18 @@ relying on mutations to the parent process's global environment.
 
 ### OpenTelemetry language implementations
 
-OpenTelemetry language implementations can expose an environment-specific
-carrier, getter and setter, or another language-appropriate helper for use with
-a configured `TextMapPropagator`. Depending on the language, these helpers may
-live in an API, SDK, or contrib package. Instrumentation can use them to extract
-incoming values into a `Context` at process startup and inject propagation
-fields from the current `Context` into a copied environment before starting a
-child.
+OpenTelemetry language implementations can provide helpers that let a configured
+`TextMapPropagator` read from and write to a process environment. Depending on
+the language, a helper might be a carrier type, a getter and setter, or another
+language-appropriate API. It may live in an API, SDK, or contrib package.
+Instrumentation can use these helpers to extract incoming values at process
+startup and inject fields into a copied environment before starting a child.
 
-This support is deliberately separate from process management. The language
-implementation provides the carrier helpers, while application code or
-instrumentation starts the child and passes the prepared environment to the
-relevant process API. Because the carrier delegates to the configured
-propagator, integrations do not need format-specific parsing for W3C Trace
-Context, W3C Baggage, B3, or other supported text-map formats.
+These helpers do not start child processes. Application code or instrumentation
+starts the child and passes the prepared environment to the relevant process
+API. The configured propagator handles its propagation format, so integrations
+do not need to parse W3C Trace Context, W3C Baggage, B3, or other supported
+formats themselves.
 
 ### Command-line tools such as otel-cli
 
@@ -113,9 +119,10 @@ otel-cli exec --service build --name compile -- make all
 By default, when a valid incoming `TRACEPARENT` is present, `otel-cli` uses it
 as the parent of the span it creates. If `make`, a process that it launches, or
 another `otel-cli` invocation extracts the propagated `TRACEPARENT`, its spans
-can remain in the same trace. This makes `otel-cli` a concrete consumer of the
-carrier contract, while OpenTelemetry language implementations provide the
-underlying building blocks for instrumented applications and libraries.
+can remain in the same trace. This is a practical example of using environment
+variables to continue a trace across command boundaries. OpenTelemetry language
+implementations provide the same underlying building blocks for instrumented
+applications and libraries.
 
 ### Shell scripts
 
@@ -160,12 +167,12 @@ handles telemetry.
 
 [Argo Workflows][] is another useful example. Argo models workflow steps as
 containers running on Kubernetes. A workflow integration could inject the
-propagation fields from the current `Context` into each container's environment,
-where instrumented code or a tool such as `otel-cli` could extract them. Because
-separate Kubernetes Pods do not inherit one another's process environments, the
-workflow integration would need to perform that injection explicitly. Inside a
-container, the same carrier can pass propagation fields to any child processes
-it starts.
+propagation fields into each container's environment. Instrumented code or a
+tool such as `otel-cli` could then extract those fields and continue the trace.
+Because separate Kubernetes Pods do not inherit one another's process
+environments, the workflow integration would need to perform that injection
+explicitly. Inside a container, the same carrier can pass propagation fields to
+any child processes it starts.
 
 The mechanism also applies to batch schedulers, ETL systems, test runners, and
 other environments where work is connected through process creation rather than
@@ -180,10 +187,9 @@ before passing it across a trust boundary. Receiving processes must treat the
 propagation fields as untrusted input and let the configured propagator validate
 them.
 
-An environment carrier only transports fields representing trace context,
-baggage, or other cross-cutting concern data. It does not create spans,
-configure an SDK, replace propagation through network protocols, or propagate
-automatically between containers or Kubernetes Pods.
+An environment carrier only transports propagation fields. It does not create
+spans, configure an SDK, replace propagation through network protocols, or
+propagate automatically between containers or Kubernetes Pods.
 
 ## Why we are asking now
 
@@ -203,8 +209,7 @@ we would value feedback on these questions:
 - Does the model work for CI/CD systems such as GitHub Actions and Argo
   Workflows, as well as batch and command-line tooling?
 - Are any concurrency, security, or trust-boundary concerns missing?
-- Does any normative requirement lead different implementations to incompatible
-  behavior?
+- Does any requirement lead different implementations to incompatible behavior?
 
 ## Review the specification and report issues
 
@@ -238,6 +243,7 @@ Your feedback now will help ensure that Stable means this mechanism works
 consistently across language implementations, tools, and workflow platforms.
 
 [Argo Workflows]: https://github.com/argoproj/argo-workflows
+[context propagation]: /docs/concepts/context-propagation/
 [env-carrier-spec]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/eec6fadba46a5002f55ff88ce4405d58a1aa4aec/specification/context/env-carriers.md
 [Jenkins OpenTelemetry plugin]:
