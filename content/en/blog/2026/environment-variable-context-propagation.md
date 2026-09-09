@@ -225,6 +225,13 @@ we would value feedback on these questions:
 - Are any concurrency, security, or trust-boundary concerns missing?
 - Does any requirement lead different implementations to incompatible behavior?
 
+**Feedback period:** We will wait until at least November 2, 2026, and until at
+least 14 days have passed without a new related issue being reported before
+stabilizing the specification. If significant findings require specification
+updates, we will restart the 14-day feedback period when those updates are
+available for review. This gives the community time to validate any substantial
+changes before stabilization.
+
 ## Review the specification and report issues
 
 Please read the [environment variable carrier specification][env-carrier-spec]
