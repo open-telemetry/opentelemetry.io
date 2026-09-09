@@ -169,7 +169,7 @@
   commercial: true
 - name: Gigapipe
   nativeOTLP: true
-  url: https://gigapipe.com/docs/api
+  url: https://gigapipe.com/opentelemetry
   contact: rita@gigapipe.com
   oss: true
   commercial: true
