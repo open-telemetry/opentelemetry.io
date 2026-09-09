@@ -1,14 +1,15 @@
 ---
 title: Componentes importantes para Kubernetes
 linkTitle: Componentes
+default_lang_commit: 30b7dbbdd94cec0b2a0c99317272b103315518bf
 # prettier-ignore
 cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics k8sattributes kubelet kubeletstats replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
-default_lang_commit: 30b7dbbdd94cec0b2a0c99317272b103315518bf
 ---
 
-O [OpenTelemetry Collector](/docs/collector/) oferece suporte a muitos _receivers_ (receptores)
-e _processors_ (processadores) diferentes para facilitar o monitoramento do Kubernetes. Esta seção
-aborda os componentes mais importantes para coletar os dados do Kubernetes e enriquecê-los.
+O [OpenTelemetry Collector](/docs/collector/) oferece suporte a muitos
+_receivers_ (receptores) e _processors_ (processadores) diferentes para
+facilitar o monitoramento do Kubernetes. Esta seção aborda os componentes mais
+importantes para coletar os dados do Kubernetes e enriquecê-los.
 
 Componentes abordados nesta página:
 
@@ -20,8 +21,8 @@ Componentes abordados nesta página:
   aplicação escritos em stdout/stderr.
 - [Kubernetes Cluster Receiver](#kubernetes-cluster-receiver): coleta métricas e
   eventos de entidade a nível do cluster.
-- [Kubernetes Objects Receiver](#kubernetes-objects-receiver): coleta objetos
-  do servidor de API do Kubernetes, como por exemplo eventos.
+- [Kubernetes Objects Receiver](#kubernetes-objects-receiver): coleta objetos do
+  servidor de API do Kubernetes, como por exemplo eventos.
 - [Prometheus Receiver](#prometheus-receiver): recebe métricas no formato
   [Prometheus](https://prometheus.io/).
 - [Host Metrics Receiver](#host-metrics-receiver): coleta métricas do _host_ dos
@@ -34,26 +35,27 @@ mas qualquer _receiver_ compatível com seus dados é apropriado.
 ## Kubernetes Attributes Processor
 
 | Padrão de implantação | Utilizável |
-| --------------------- | --------- |
-| DaemonSet (agente)    | Sim       |
-| Deployment (gateway)  | Sim       |
-| Sidecar             | Não       |
+| --------------------- | ---------- |
+| DaemonSet (agente)    | Sim        |
+| Deployment (gateway)  | Sim        |
+| Sidecar               | Não        |
 
-O Kubernetes Attributes Processor descobre automaticamente os pods do Kubernetes,
-extrai seus metadados e adiciona esses metadados aos rastros, métricas e logs como
-_resource attributes_ (atributos de recurso).
+O Kubernetes Attributes Processor descobre automaticamente os pods do
+Kubernetes, extrai seus metadados e adiciona esses metadados aos rastros,
+métricas e logs como _resource attributes_ (atributos de recurso).
 
 **O Kubernetes Attributes Processor é um dos componentes mais importantes para
 um Collector em execução no Kubernetes. Qualquer Collector que receba dados de
-aplicação deve usá-lo.** Ao adicionar contexto do Kubernetes à sua telemetria,
-o Kubernetes Attributes Processor permite correlacionar os rastros, métricas e logs 
-da sua aplicação com a telemetria do Kubernetes, como métricas e rastros de pods.
+aplicação deve usá-lo.** Ao adicionar contexto do Kubernetes à sua telemetria, o
+Kubernetes Attributes Processor permite correlacionar os rastros, métricas e
+logs da sua aplicação com a telemetria do Kubernetes, como métricas e rastros de
+pods.
 
 O Kubernetes Attributes Processor usa a API do Kubernetes para descobrir todos
 os pods em execução em um cluster e mantém um registro de seus endereços IP,
 UIDs de pod e outros metadados relevantes. Por padrão, os dados que passam pelo
-_processor_ são associados a um pod pelo endereço IP da requisição recebida, mas é
-possível configurar outras regras. Como o _processor_ usa a API do Kubernetes,
+_processor_ são associados a um pod pelo endereço IP da requisição recebida, mas
+é possível configurar outras regras. Como o _processor_ usa a API do Kubernetes,
 ele requer permissões especiais (veja o exemplo abaixo). Caso estiver usando o
 [Helm chart do OpenTelemetry Collector](/docs/platforms/kubernetes/helm/collector/),
 é possível usar o
@@ -70,8 +72,8 @@ Os seguintes atributos são adicionados por padrão:
 - `k8s.node.name`
 
 O Kubernetes Attributes Processor também pode definir atributos de recurso
-personalizados para rastros, métricas e logs usando as _labels_ e as anotações do
-Kubernetes adicionados aos pods e namespaces.
+personalizados para rastros, métricas e logs usando as _labels_ e as anotações
+do Kubernetes adicionados aos pods e namespaces.
 
 ```yaml
 k8sattributes:
@@ -123,10 +125,10 @@ Kubernetes. Para detalhes, veja
 Para detalhes de configuração do Kubernetes Attributes Processor, veja
 [Kubernetes Attributes Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor).
 
-Como o _processor_ usa a API do Kubernetes, ele precisa das permissão correta para
-funcionar adequadamente. Para a maioria dos casos de uso, é necessário conceder à _service account_ (conta de
-serviço) que executa o Collector as seguintes permissões por meio de um
-ClusterRole.
+Como o _processor_ usa a API do Kubernetes, ele precisa das permissão correta
+para funcionar adequadamente. Para a maioria dos casos de uso, é necessário
+conceder à _service account_ (conta de serviço) que executa o Collector as
+seguintes permissões por meio de um ClusterRole.
 
 ```yaml
 apiVersion: v1
@@ -182,11 +184,11 @@ roleRef:
 
 ## Kubeletstats Receiver
 
-| Padrão de implantação | Utilizável                                                       |
+| Padrão de implantação | Utilizável                                                      |
 | --------------------- | --------------------------------------------------------------- |
-| DaemonSet (agente)    | Preferível                                                    |
+| DaemonSet (agente)    | Preferível                                                      |
 | Deployment (gateway)  | Sim, mas coletará métricas somente do nó em que está implantado |
-| Sidecar             | Não                                                             |
+| Sidecar               | Não                                                             |
 
 Cada nó do Kubernetes executa um kubelet que inclui um servidor de API. O
 Kubeletstats Receiver se conecta a esse kubelet por meio do servidor de API para
@@ -222,9 +224,9 @@ Para detalhes específicos sobre quais métricas são coletadas, veja
 Para detalhes de configuração específicos, veja
 [Kubeletstats Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver).
 
-Como o _processor_ usa a API do Kubernetes, ele precisa da permissão correta para
-funcionar. Para a maioria dos casos de uso, é necessário conceder à conta de
-serviço que executa o Collector as seguintes permissões por meio de um
+Como o _processor_ usa a API do Kubernetes, ele precisa da permissão correta
+para funcionar. Para a maioria dos casos de uso, é necessário conceder à conta
+de serviço que executa o Collector as seguintes permissões por meio de um
 ClusterRole.
 
 ```yaml
@@ -259,26 +261,28 @@ subjects:
 
 ## Filelog Receiver
 
-| Padrão de implantação | Utilizável                                                   |
+| Padrão de implantação | Utilizável                                                  |
 | --------------------- | ----------------------------------------------------------- |
-| DaemonSet (agente)    | Preferível                                                |
+| DaemonSet (agente)    | Preferível                                                  |
 | Deployment (gateway)  | Sim, mas coletará logs somente do nó em que está implantado |
-| Sidecar             | Sim, mas isso seria considerado uma configuração avançada   |
+| Sidecar               | Sim, mas isso seria considerado uma configuração avançada   |
 
-O Filelog Receiver acompanha (_tail_) e analisa (_parse_) logs a partir de arquivos. Embora não
-seja um receiver específico para Kubernetes, ainda é a solução de fato para
-coletar qualquer log do Kubernetes.
+O Filelog Receiver acompanha (_tail_) e analisa (_parse_) logs a partir de
+arquivos. Embora não seja um receiver específico para Kubernetes, ainda é a
+solução de fato para coletar qualquer log do Kubernetes.
 
 O Filelog Receiver é composto por Operadores encadeados entre si para processar
 um log. Cada Operador tem uma responsabilidade simples, como analisar um
-_timestamp_ ou um JSON. Configurar um Filelog Receiver não é trivial. Caso esteja usando o
+_timestamp_ ou um JSON. Configurar um Filelog Receiver não é trivial. Caso
+esteja usando o
 [Helm chart do OpenTelemetry Collector](/docs/platforms/kubernetes/helm/collector/),
 é possível usar o
 [preset `logsCollection`](/docs/platforms/kubernetes/helm/collector/#logs-collection-preset)
 para começar.
 
 Como os logs do Kubernetes normalmente seguem um conjunto de formatos padrão,
-uma configuração típica de Filelog Receiver para Kubernetes se parece com o seguinte:
+uma configuração típica de Filelog Receiver para Kubernetes se parece com o
+seguinte:
 
 ```yaml
 filelog:
@@ -318,7 +322,7 @@ spec:
       containers:
         - name: opentelemetry-collector
           ...
-          volumeMounts: 
+          volumeMounts:
             ...
             # Monta os volumes no contêiner do Collector
             - name: varlogpods
@@ -342,18 +346,18 @@ spec:
 
 ## Kubernetes Cluster Receiver
 
-| Padrão de implantação | Utilizável                                                |
+| Padrão de implantação | Utilizável                                               |
 | --------------------- | -------------------------------------------------------- |
 | DaemonSet (agente)    | Sim, mas resultará em dados duplicados                   |
 | Deployment (gateway)  | Sim, mas mais de uma réplica resulta em dados duplicados |
-| Sidecar             | Não                                                      |
+| Sidecar               | Não                                                      |
 
 O Kubernetes Cluster Receiver coleta métricas e eventos de entidade sobre o
-cluster como um todo, usando o servidor de API do Kubernetes. Use esse _receiver_
-para responder perguntas sobre fases de pods, condições de nós e outras
-questões a nível de cluster. Como o _receiver_ reúne telemetria para o cluster
-como um todo, basta uma instância do _receiver_ em todo o cluster para coletar
-todos os dados.
+cluster como um todo, usando o servidor de API do Kubernetes. Use esse
+_receiver_ para responder perguntas sobre fases de pods, condições de nós e
+outras questões a nível de cluster. Como o _receiver_ reúne telemetria para o
+cluster como um todo, basta uma instância do _receiver_ em todo o cluster para
+coletar todos os dados.
 
 Existem diferentes métodos de autenticação, mas normalmente se usa uma conta de
 serviço. A conta de serviço também precisa das permissões adequadas para obter
@@ -363,9 +367,10 @@ dados do servidor de API do Kubernetes (veja abaixo). Caso esteja usando o
 [preset `clusterMetrics`](/docs/platforms/kubernetes/helm/collector/#cluster-metrics-preset)
 para começar.
 
-Para condições de nós, o _receiver_ coleta apenas `Ready` por padrão, mas ele pode ser
-configurado para coletar mais condições. O _receiver_ também pode ser configurado para
-reportar um conjunto de recursos alocáveis, como `cpu` e `memory`:
+Para condições de nós, o _receiver_ coleta apenas `Ready` por padrão, mas ele
+pode ser configurado para coletar mais condições. O _receiver_ também pode ser
+configurado para reportar um conjunto de recursos alocáveis, como `cpu` e
+`memory`:
 
 ```yaml
 k8s_cluster:
@@ -383,9 +388,9 @@ Para saber mais sobre as métricas coletadas, veja
 Para detalhes de configuração, veja
 [Kubernetes Cluster Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver).
 
-Como o _processor_ usa a API do Kubernetes, ele precisa da permissão correta para
-funcionar. Para a maioria dos casos de uso, é necessário conceder à conta de
-serviço que executa o Collector as seguintes permissões por meio de um
+Como o _processor_ usa a API do Kubernetes, ele precisa da permissão correta
+para funcionar. Para a maioria dos casos de uso, é necessário conceder à conta
+de serviço que executa o Collector as seguintes permissões por meio de um
 ClusterRole.
 
 ```yaml
@@ -473,18 +478,18 @@ subjects:
 
 ## Kubernetes Objects Receiver
 
-| Padrão de implantação | Utilizável                                                |
+| Padrão de implantação | Utilizável                                               |
 | --------------------- | -------------------------------------------------------- |
 | DaemonSet (agente)    | Sim, mas resultará em dados duplicados                   |
 | Deployment (gateway)  | Sim, mas mais de uma réplica resulta em dados duplicados |
-| Sidecar             | Não                                                      |
+| Sidecar               | Não                                                      |
 
-O Kubernetes Objects Receiver coleta, por _pulling_ ou por _watching_,
-objetos do servidor de API do Kubernetes. O caso de uso mais comum para esse
-_receiver_ é observar (_watching_) eventos do Kubernetes, mas ele pode ser usado
-para coletar qualquer tipo de objeto do Kubernetes. Como o _receiver_ reúne
-telemetria para o cluster como um todo, basta uma instância do _receiver_ em todo
-o cluster para coletar todos os dados.
+O Kubernetes Objects Receiver coleta, por _pulling_ ou por _watching_, objetos
+do servidor de API do Kubernetes. O caso de uso mais comum para esse _receiver_
+é observar (_watching_) eventos do Kubernetes, mas ele pode ser usado para
+coletar qualquer tipo de objeto do Kubernetes. Como o _receiver_ reúne
+telemetria para o cluster como um todo, basta uma instância do _receiver_ em
+todo o cluster para coletar todos os dados.
 
 Atualmente, apenas uma conta de serviço pode ser usada para autenticação. A
 conta de serviço também precisa das permissões adequadas para obter dados do
@@ -570,8 +575,8 @@ volumeattachments                              storage.k8s.io/v1                
 Para detalhes específicos de configuração, veja
 [Kubernetes Objects Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver).
 
-Como o _processor_ usa a API do Kubernetes, ele precisa da permissão correta para
-funcionar. Como contas de serviço são a única opção de autenticação, é
+Como o _processor_ usa a API do Kubernetes, ele precisa da permissão correta
+para funcionar. Como contas de serviço são a única opção de autenticação, é
 necessário conceder à conta de serviço o acesso adequado. Para cada objeto que
 quiser coletar, é preciso garantir que o nome dele esteja adicionado ao _cluster
 role_. Por exemplo, para coletar pods, o _cluster role_ ficaria assim:
@@ -614,19 +619,20 @@ subjects:
 ## Prometheus Receiver
 
 | Padrão de implantação | Utilizável |
-| --------------------- | --------- |
-| DaemonSet (agente)    | Sim       |
-| Deployment (gateway)  | Sim       |
-| Sidecar             | Não       |
+| --------------------- | ---------- |
+| DaemonSet (agente)    | Sim        |
+| Deployment (gateway)  | Sim        |
+| Sidecar               | Não        |
 
 O Prometheus é um formato de métricas comum tanto para o Kubernetes quanto para
-serviços em execução nele. O _receiver_ do Prometheus é um substituto mínimo para a
-coleta dessas métricas. Ele suporta o conjunto completo de
+serviços em execução nele. O _receiver_ do Prometheus é um substituto mínimo
+para a coleta dessas métricas. Ele suporta o conjunto completo de
 [opções do `scrape_config`](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config)
 do Prometheus.
 
-Existem alguns recursos avançados do Prometheus que o _receiver_ não suporta. O _receiver_ retorna um erro se o YAML/código de configuração contiver
-algum dos seguintes itens:
+Existem alguns recursos avançados do Prometheus que o _receiver_ não suporta. O
+_receiver_ retorna um erro se o YAML/código de configuração contiver algum dos
+seguintes itens:
 
 - `alert_config.alertmanagers`
 - `alert_config.relabel_configs`
@@ -643,11 +649,11 @@ o que significa que existem detalhes importantes a considerar ao usá-lo:
 
 - O Collector não consegue escalar automaticamente o processo de _scraping_
   quando múltiplas réplicas do Collector são executadas.
-- Ao executar múltiplas réplicas do Collector com a mesma configuração, ele fará o
-  _scraping_ dos destinos (_targets_) múltiplas vezes.
-- Os usuários precisam configurar cada réplica com uma configuração de _scraping_
-  diferente caso queiram fazer o particionamento (_sharding_) manual do processo de
-  _scraping_.
+- Ao executar múltiplas réplicas do Collector com a mesma configuração, ele fará
+  o _scraping_ dos destinos (_targets_) múltiplas vezes.
+- Os usuários precisam configurar cada réplica com uma configuração de
+  _scraping_ diferente caso queiram fazer o particionamento (_sharding_) manual
+  do processo de _scraping_.
 
 Para facilitar a configuração do Prometheus _receiver_, o OpenTelemetry Operator
 inclui um componente opcional chamado
@@ -660,9 +666,9 @@ Para mais informações sobre o design do _receiver_, veja
 
 ## Host Metrics Receiver
 
-| Padrão de implantação | Utilizável                                                     |
+| Padrão de implantação | Utilizável                                                    |
 | --------------------- | ------------------------------------------------------------- |
-| DaemonSet (agente)    | Preferível                                                  |
+| DaemonSet (agente)    | Preferível                                                    |
 | Deployment (gateway)  | Sim, mas coleta métricas somente do nó em que está implantado |
 | _Sidecar_             | Não                                                           |
 
@@ -699,7 +705,8 @@ Para detalhes específicos sobre quais métricas são coletadas e detalhes de
 configuração específicos, veja
 [Host Metrics Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver).
 
-Caso precisar configurar o componente manualmente, não se esqueça de montar o volume `hostfs` para coletar as métricas do nó, e não do contêiner.
+Caso precisar configurar o componente manualmente, não se esqueça de montar o
+volume `hostfs` para coletar as métricas do nó, e não do contêiner.
 
 ```yaml
 ---
