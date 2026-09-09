@@ -4,8 +4,8 @@ description:
   오픈텔레메트리(OpenTelemetry)가 무엇이고 무엇이 아닌지에 대한 간략한 설명.
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
 weight: 150
-cSpell:ignore: youtube
 default_lang_commit: ee9a3aeb6501bb788a03571f08be856dfdedc4d5
+cSpell:ignore: youtube
 ---
 
 오픈텔레메트리(OpenTelemetry)는 다음과 같다.
