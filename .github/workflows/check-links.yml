@@ -1,6 +1,5 @@
 name: Links
 
-# cSpell:ignore lycheecache
 on:
   merge_group:
   pull_request:
@@ -99,8 +98,7 @@ jobs:
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: link-cache
-          path: .lycheecache
-          include-hidden-files: true
+          path: link-cache.jsonc
           if-no-files-found: error
 
       - name: Lychee summary
@@ -126,13 +124,13 @@ jobs:
 
       - name: All link-cache updates committed?
         run: |
-          committed=.lycheecache
-          generated=tmp/link-cache/.lycheecache
+          committed=link-cache.jsonc
+          generated=tmp/link-cache/link-cache.jsonc
           # Accept only regular files: fails when the artifact is missing (no
           # false green) and never writes through a PR-controlled symlink.
           if [[ -L "$committed" || -L "$generated" ||
                 ! -f "$committed" || ! -f "$generated" ]]; then
-            echo "::error title=Invalid link cache::Expected regular .lycheecache files."
+            echo "::error title=Invalid link cache::Expected regular link-cache.jsonc files."
             exit 1
           fi
           if cmp --silent "$committed" "$generated"; then
@@ -140,15 +138,15 @@ jobs:
             exit 0
           fi
           git --no-pager diff --no-index --stat "$committed" "$generated" || true
-          echo "::error title=Link cache is stale::All links check out, but this PR leaves the committed link cache (.lycheecache) stale. For recovery steps, see the step summary."
+          echo "::error title=Link cache is stale::All links check out, but this PR leaves the committed link cache (link-cache.jsonc) stale. For recovery steps, see the step summary."
           {
             echo "## Link cache is stale"
             echo
             echo "All links check out ✅ — but this PR leaves the committed link cache"
-            echo "(\`.lycheecache\`) stale. To fix, either:"
+            echo "(\`link-cache.jsonc\`) stale. To fix, either:"
             echo
             echo "- Comment \`/fix:link-cache\` on this PR — the bot updates the cache for you; or"
-            echo "- Run \`npm run check:links\` locally, then commit the modified \`.lycheecache\`."
+            echo "- Run \`npm run check:links\` locally, then commit the modified \`link-cache.jsonc\`."
             echo
             echo "For details, see [\`CACHE updates committed?\`](https://opentelemetry.io/docs/contributing/pr-checks/#cache-updates-committed)."
           } >> "$GITHUB_STEP_SUMMARY"

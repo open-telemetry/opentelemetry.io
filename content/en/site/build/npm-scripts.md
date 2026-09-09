@@ -82,7 +82,7 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `fix:format:staged`           | Format only staged files.                                      |
 | `fix:i18n`                    | Add/fix i18n front matter (`fix:i18n:new`, `fix:i18n:status`). |
 | `fix:l10n`                    | Apply localization fixes.                                      |
-| `fix:link-cache`              | Check links, updating the committed [`.lycheecache`][].        |
+| `fix:link-cache`              | Check links, updating the committed [`link-cache.jsonc`][].    |
 | `fix:link-cache:double-check` | [Re-verify failing links with the browser probe][dc].          |
 | `fix:link-cache:refresh`      | Prune the oldest cache entries, then `fix:link-cache`.         |
 | `fix:markdown`                | Fix Markdown lint issues and trailing spaces.                  |
@@ -151,7 +151,7 @@ script, use `npm run` _`SCRIPT_NAME`_.
 
 <!-- prettier-ignore-start -->
 [`allowScripts` approval]: ../dependencies/#script-bearing-packages
-[`.lycheecache`]: ../link-checking/#link-cache
+[`link-cache.jsonc`]: ../link-checking/#link-cache
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [build kinds]: ../#build-kinds
 [dc]: ../link-checking/#double-check

@@ -2,42 +2,45 @@
 // Lychee-reported link failures into committed link-cache entries. Process
 // wiring lives in ./cli.mjs; probe and cache-entry semantics in ./README.md.
 
-import { sortCacheText } from 'link-cache/check/index.mjs';
+// Deep import of the package's cache codec (no side effects). link-cache has
+// no CLI or public API yet for recording a named resolver's result; this is
+// the interim path, kept to its own serializer so the file stays canonical.
+import { parseOwned, serializeOwned } from 'link-cache/lib/cache.mjs';
 import { STATUS_OK_BY_ANALYSIS, isHttp2XX } from './get-url-status.mjs';
 
 // Probe status marker for URLs whose probe errored out (null status).
 export const UNVERIFIED = 'UNVERIFIED';
 
-// Cache lines (`url,206,epoch`) for the probe results that resolved.
-export function cacheLinesFor(results, nowEpoch) {
+// Provenance recorded on the entries this driver writes (the `via` field).
+export const VIA = 'double-check';
+
+// Owned-cache entries (result 206, via double-check) for the probe results
+// that resolved.
+export function cacheEntriesFor(results, nowEpoch) {
   return results
     .filter(({ status }) => isHttp2XX(status))
-    .map(({ url }) => `${csvField(url)},${STATUS_OK_BY_ANALYSIS},${nowEpoch}`);
+    .map(({ url }) => ({
+      url,
+      result: STATUS_OK_BY_ANALYSIS,
+      ts: nowEpoch,
+      via: VIA,
+      comments: [],
+    }));
 }
 
-// URL as a .lycheecache CSV field: quoted only when it contains a comma or a
-// double quote, with embedded quotes doubled (RFC 4180).
-export function csvField(url) {
-  if (!/[",]/.test(url)) return url;
-  return `"${url.replaceAll('"', '""')}"`;
-}
-
-// The (possibly quoted) URL field of a cache line, in its as-written form.
-function lineUrlField(line) {
-  const match = line.match(/^"(?:[^"]|"")*"|^[^,]*/);
-  return match[0];
-}
-
-// Cache text with the new lines merged in (an existing entry for the same
-// URL is replaced), normalized the way lychee-norm-cache leaves the file
-// (C-locale sort, trailing newline).
-export function mergedCacheText(cacheText, newLines) {
-  if (newLines.length === 0) return cacheText;
-  const newUrls = new Set(newLines.map(lineUrlField));
-  const keptLines = cacheText
-    .split('\n')
-    .filter((line) => line !== '' && !newUrls.has(lineUrlField(line)));
-  return sortCacheText([...keptLines, ...newLines].join('\n') + '\n');
+// Owned-cache text with the new entries merged in: an existing entry for the
+// same URL (typically the failure word the check just recorded) is replaced.
+// Serialized by link-cache's own codec, so the result is what a check run
+// would write.
+export function mergedCacheText(cacheText, newEntries, nowEpoch) {
+  if (newEntries.length === 0) return cacheText;
+  const owned = parseOwned(cacheText, { now: nowEpoch });
+  const newUrls = new Set(newEntries.map(({ url }) => url));
+  const entries = owned.entries.filter(({ url }) => !newUrls.has(url));
+  return serializeOwned({
+    entries: [...entries, ...newEntries],
+    trailing: owned.trailing,
+  });
 }
 
 // False-green guard: the Lychee summary line declares an error count; if it

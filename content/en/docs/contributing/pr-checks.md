@@ -174,7 +174,7 @@ appending a `last-validated=YYYY-MM-DD` parameter, for example:
 ### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
 
 If you added or changed an external link, the link checker records it in the
-link cache (`.lycheecache`), and this check fails until the updated cache is
+link cache (`link-cache.jsonc`), and this check fails until the updated cache is
 committed.
 
 The easiest way to update it is to comment

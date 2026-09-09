@@ -29,9 +29,10 @@ const readText = (relPath) =>
 const lock = readJSON('package-lock.json');
 const manifest = readJSON('package.json');
 
-// Dependencies allowed to bypass the npm registry in the lock check;
-// currently none. A reviewed exception populates this.
-const gitDependencyRepos = {};
+// Dependencies allowed to bypass the npm registry in the lock check, as
+// reviewed exceptions. link-cache: unreleased 0.6.0, pinned to a commit until
+// the registry release (then drop the entry with the registry swap).
+const gitDependencyRepos = { 'node_modules/link-cache': 'chalin/link-cache' };
 
 // Known-poisoned package@version pairs from the 2026-08 npm-worm campaign
 // (Datadog Security Labs). A denylist only ever samples: the structural

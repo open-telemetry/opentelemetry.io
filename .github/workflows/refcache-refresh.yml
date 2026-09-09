@@ -1,10 +1,10 @@
 name: Refcache refresh
 
 # Creates (or updates) the PR that refreshes a number of the oldest entries in
-# the link-check response cache (.lycheecache, aka the link cache). We say "the
-# PR", because there can be at most one such PR at a time. We refresh by first
-# pruning the oldest N entries, then running the link checker to update the
-# cache. N is set via the workflow_dispatch input.
+# the committed link cache (link-cache.jsonc, maintained by the link-cache npm
+# package). We say "the PR", because there can be at most one such PR at a
+# time. We refresh by first pruning the oldest N entries, then running the link
+# checker to update the cache. N is set via the workflow_dispatch input.
 #
 # If the PR branch already exists, then by default we only merge from `main`.
 # To force further pruning of the existing PR branch, invoke with
@@ -52,6 +52,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BRANCH: otelbot/refcache-refresh
+      CACHE_FILE: link-cache.jsonc
+      CACHE_SELF_HEALED: 'false'
       DEFAULT_REFRESH_COUNT: *default_refresh_count
       DOUBLE_CHECK_NEEDED: 'false'
       IS_NEW_BRANCH: 'false'
@@ -123,7 +125,24 @@ jobs:
           fi
           previous=$(git rev-parse HEAD)
           git fetch origin
-          git $merge_or_rebase origin/main
+          if ! git $merge_or_rebase origin/main; then
+            # A merge conflict confined to the link cache self-heals: take
+            # main's whole cache file. That voids this branch's pending
+            # refresh (main's entries keep their old timestamps), so the prune
+            # step redoes it. Any wider conflict, or a rebase conflict, needs
+            # a human.
+            conflicts=$(git diff --name-only --diff-filter=U)
+            if [[ "$merge_or_rebase" == "merge" && "$conflicts" == "$CACHE_FILE" ]]; then
+              echo "Cache-only merge conflict: taking main's version and re-pruning."
+              git checkout --theirs "$CACHE_FILE"
+              git add "$CACHE_FILE"
+              git commit --no-edit
+              echo "CACHE_SELF_HEALED=true" >> $GITHUB_ENV
+            else
+              echo "::error::$merge_or_rebase from main conflicts ($conflicts): resolve manually."
+              exit 1
+            fi
+          fi
           if [ "$(git rev-parse HEAD)" != "$previous" ]; then
             DELAYED_PUSH_CMD="git push $push_args origin $BRANCH"
             echo "We'll push later, after committing the link-cache updates."
@@ -142,7 +161,9 @@ jobs:
       - uses: ./.github/actions/install-lychee
 
       - name: Prune link cache
-        if: ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' }}
+        if:
+          ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' ||
+          env.CACHE_SELF_HEALED == 'true' }}
         run: |
           echo "Oldest entry before pruning, then pruning $REFRESH_COUNT oldest link-cache entries:"
           npm run link-cache -- --list 1 --prune $REFRESH_COUNT

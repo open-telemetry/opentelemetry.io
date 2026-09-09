@@ -2,7 +2,7 @@
 // Run the site link check (lychee-norm-cache) and make the outcome
 // actionable:
 //
-// - Success that updates the committed .lycheecache: print a loud notice so
+// - Success that updates the committed link-cache.jsonc: print a loud notice so
 //   the cache change gets committed with the PR.
 // - Failure with genuinely dead links: name them and say that nothing
 //   cache-side can fix them (also in the step summary when run in CI).
@@ -78,10 +78,10 @@ function appendToStepSummary(report) {
   );
 }
 
-// True when .lycheecache has unstaged changes — the local analogue of the CI
+// True when link-cache.jsonc has unstaged changes — the local analogue of the CI
 // `CACHE updates committed?` verdict (see .github/workflows/check-links.yml).
 function cacheModified() {
-  const r = spawnSync('git', ['diff', '--quiet', '--', '.lycheecache'], {
+  const r = spawnSync('git', ['diff', '--quiet', '--', 'link-cache.jsonc'], {
     cwd: root,
   });
   return r.status === 1;
