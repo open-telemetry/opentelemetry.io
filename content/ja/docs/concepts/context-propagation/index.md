@@ -2,7 +2,7 @@
 title: コンテキスト伝搬
 weight: 10
 description: 分散トレーシングを可能にするコンセプトについて学びます。
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
+default_lang_commit: cc127cac40d5d6aaf48e015f1cf4dbf76bff587b
 ---
 
 コンテキスト伝搬を使用すると、[シグナル](../signals/)（[トレース](../signals/traces/)、[メトリクス](../signals/metrics/)、および[ログ](../signals/logs/)）を生成された場所に関係なく相互に関連づけることができます。
@@ -36,7 +36,7 @@ OpenTelemetryは、いくつかの公式のプロパゲーターをメンテナ�
 ## 例 {#example}
 
 `Frontend`というサービスは、`POST /cart/add`や`GET /checkout/`などのさまざまなHTTPエンドポイントを提供し、`GET /product`というHTTPエンドポイントを介して下流サービスである`Product Catalog`にアクセスしてユーザーがカートに追加したい商品や決済対象の一部である商品の詳細を取得します。
-`Frontend`からのリクストのコンテキスト内で`Product Catalog`サービスのアクティビティを把握するために、コンテキスト（ここではトレースIDと「親ID」としてのスパンID）はW3C TraceContext仕様で定義されている`traceparent`ヘッダーを使用して伝搬されます。
+`Frontend`からのリクエストのコンテキスト内で`Product Catalog`サービスのアクティビティを把握するために、コンテキスト（ここではトレースIDと「親ID」としてのスパンID）はW3C TraceContext仕様で定義されている`traceparent`ヘッダーを使用して伝搬されます。
 これはつまり、IDがヘッダーのフィールドに埋め込まれていることを意味します。
 
 ```text
@@ -66,12 +66,12 @@ OpenTelemetry SDKは、ログをトレースと自動的に関連づけること
 ### メトリクス {#metrics}
 
 メトリクスの場合、コンテキスト伝搬により、そのコンテキスト内の測定値を集約できます。
-たとえば、すべての`GET /product`リクエストのレスポンスタイムを確認するだけでなく、`POST /cart/add > GET /product`および`GET /checkout < GET /product`といった組み合わせのメトリクスも取得できます。
+たとえば、すべての`GET /product`リクエストのレスポンスタイムを確認するだけでなく、`POST /cart/add > GET /product`および`GET /checkout > GET /product`といった組み合わせのメトリクスも取得できます。
 
 | 名前                            | 毎秒の呼び出し回数 | 平均レスポンスタイム |
 | ------------------------------- | ------------------ | -------------------- |
 | `* > GET /product`              | 370                | 300ms                |
-| `POST /card/add > GET /product` | 330                | 130ms                |
+| `POST /cart/add > GET /product` | 330                | 130ms                |
 | `GET /checkout > GET /product`  | 40                 | 1703ms               |
 
 ## カスタムコンテキスト伝搬 {#custom-context-propagation}

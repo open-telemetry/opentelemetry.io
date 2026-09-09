@@ -20,6 +20,7 @@ ebpf
 eerzho
 EMEA
 errorf
+ETARGET
 excerpter
 favicons
 flagd
@@ -49,6 +50,7 @@ kubecon
 kubernetes
 laravel
 lfasiallc
+lfopensource
 lightstep
 llms
 Loffay

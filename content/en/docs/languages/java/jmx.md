@@ -160,7 +160,7 @@ For more details, see the
 [JMX Scraper documentation](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper).
 
 > [!NOTE] If you're migrating from the deprecated JMX Metric Gatherer, see the
-> [migration guide](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migrating-from-jmx-metric-gatherer).
+> [migration guide](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migration-from-jmx-gatherer).
 
 ## Custom Metric Mappings
 
@@ -250,7 +250,7 @@ java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://myapp.example.com:9999
 
 - [JMX Scraper Documentation](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper) -
   Complete configuration reference and examples
-- [JMX Scraper Migration Guide](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migrating-from-jmx-metric-gatherer) -
+- [JMX Scraper Migration Guide](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migration-from-jmx-gatherer) -
   Migrating from the deprecated JMX Metric Gatherer
 - [JMX Metrics (Java agent)](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md) -
   Java agent JMX metrics documentation

@@ -115,6 +115,7 @@
     - contrib
   stability:
     logs: development
+    metrics: development
 - name: azuremonitorreceiver
   display_name: Azure Monitor Receiver
   repo: contrib
@@ -181,6 +182,13 @@
     logs: alpha
     metrics: alpha
     traces: alpha
+- name: dnscheckreceiver
+  display_name: DNS Check Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: development
 - name: dockerstatsreceiver
   display_name: Docker Stats Receiver
   repo: contrib
@@ -275,7 +283,7 @@
   distributions:
     - contrib
   stability:
-    logs: development
+    logs: alpha
 - name: googlecloudpubsubreceiver
   display_name: Google Pub/Sub Receiver
   repo: contrib

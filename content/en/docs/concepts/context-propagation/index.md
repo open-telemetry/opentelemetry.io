@@ -87,12 +87,12 @@ In the case of metrics, context propagation enables you to aggregate
 measurements in that context. For example, instead of only looking at the
 response time of all the `GET /product` requests, you can also get metrics for
 combinations of `POST /cart/add > GET /product` and
-`GET /checkout < GET /product`.
+`GET /checkout > GET /product`.
 
 | Name                            | Calls Per Second | Average Response Time |
 | ------------------------------- | ---------------- | --------------------- |
 | `* > GET /product`              | 370              | 300ms                 |
-| `POST /card/add > GET /product` | 330              | 130ms                 |
+| `POST /cart/add > GET /product` | 330              | 130ms                 |
 | `GET /checkout > GET /product`  | 40               | 1703ms                |
 
 ## Custom Context Propagation

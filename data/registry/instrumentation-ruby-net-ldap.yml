@@ -1,17 +1,17 @@
-title: OpenTelemetry Net::LDAP Instrumentation
+title: opentelemetry-instrumentation-net_ldap
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
-license: Apache 2.0
-description:
-  The OpenTelemetry Net::LDAP Ruby gem is a community maintained instrumentation
-  for [Net::LDAP][net-ldap-home].
+license: Apache-2.0
+description: Net::LDAP instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/net_ldap
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-net_ldap/v0.2.0/instrumentation/net_ldap
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-net_ldap/0.2.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2025-03-26
 package:
   registry: gems

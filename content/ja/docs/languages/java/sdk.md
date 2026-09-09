@@ -2,8 +2,8 @@
 title: SDKによるテレメトリーの管理
 weight: 12
 aliases: [exporters]
-default_lang_commit: 4c8d57fea0147ce76633951315c40a27c55fad2e
-cSpell:ignore: Interceptable okhttp
+default_lang_commit: 73ebe319188f1d3800b62c349d9f39cf9c21e657
+cSpell:ignore: data_point inflight Interceptable okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -1250,6 +1250,7 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 
 - [センダー](#senders)：異なるHTTP / gRPCクライアントライブラリの抽象化
 - OTLPエクスポーターの[認証](#authentication)オプション
+- エクスポーターやその他のSDKコンポーネントが発行する[SDK自己監視メトリクス](#sdk-self-monitoring-metrics)
 
 #### Senders {#senders}
 
@@ -1376,6 +1377,55 @@ public class OtlpAuthenticationConfig {
 }
 ```
 <!-- prettier-ignore-end -->
+
+### SDK自己監視メトリクス {#sdk-self-monitoring-metrics}
+
+Java SDKは、エクスポーター、スパンおよびログレコードプロセッサー、トレーサーおよびロガープロバイダー、周期的メトリクスリーダーの自己監視メトリクスを発行できます。
+スキーマの選択はOTLPエクスポーターとバッチスパンおよびログレコードプロセッサーに適用されます。
+その他のコンポーネントでは、使用される名前ではなく、自己監視自体が有効かどうかを制御します。
+
+OTLPエクスポータービルダーはデフォルトで自己監視に `GlobalOpenTelemetry.getMeterProvider()` を使用します。
+別のプロバイダーを使用するには、ビルダーで `setMeterProvider(...)` を呼び出してください。
+[ゼロコードSDK自動設定](../configuration/#zero-code-sdk-autoconfigure)は設定済みのSDK `MeterProvider` を自動的に供給します。
+
+プログラム的に構築したエクスポーターの場合、`setInternalTelemetryVersion(...)` に `InternalTelemetryVersion.LEGACY` または `InternalTelemetryVersion.LATEST` を渡してメトリクスのスキーマを選択します。
+ゼロコードSDK自動設定では、`otel.experimental.sdk.telemetry.version` を `legacy` または `latest` に設定します。
+デフォルトは `legacy` です。
+
+[宣言型設定](../configuration/#declarative-configuration)では、SDK自己監視テレメトリーはデフォルトで無効です。
+有効にするには、`instrumentation/development.java.otel_sdk.internal_telemetry_version` を `legacy` または `latest` に設定します。
+
+```yaml
+instrumentation/development:
+  java:
+    otel_sdk:
+      internal_telemetry_version: latest
+```
+
+以下の表は、各コンポーネントが発行するメトリクス名をまとめたものです。
+ダッシュは、そのスキーマがそのコンポーネントのメトリクスを定義していないことを示します。
+
+| コンポーネント            | `legacy`                                       | `latest`                                                                                                                                                                                                                                                                         |
+| ------------------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| OTLPエクスポーター        | `otlp.exporter.seen`, `otlp.exporter.exported` | `otel.sdk.exporter.span.inflight`, `otel.sdk.exporter.span.exported`, `otel.sdk.exporter.metric_data_point.inflight`, `otel.sdk.exporter.metric_data_point.exported`, `otel.sdk.exporter.log.inflight`, `otel.sdk.exporter.log.exported`, `otel.sdk.exporter.operation.duration` |
+| `BatchSpanProcessor`      | `queueSize`, `processedSpans`                  | `otel.sdk.processor.span.queue.capacity`, `otel.sdk.processor.span.queue.size`, `otel.sdk.processor.span.processed`                                                                                                                                                              |
+| `BatchLogRecordProcessor` | `queueSize`, `processedLogs`                   | `otel.sdk.processor.log.queue.capacity`, `otel.sdk.processor.log.queue.size`, `otel.sdk.processor.log.processed`                                                                                                                                                                 |
+| `SdkTracerProvider`       | —                                              | `otel.sdk.span.started`, `otel.sdk.span.live`                                                                                                                                                                                                                                    |
+| `SdkLoggerProvider`       | —                                              | `otel.sdk.log.created`                                                                                                                                                                                                                                                           |
+| `PeriodicMetricReader`    | —                                              | `otel.sdk.metric_reader.collection.duration`                                                                                                                                                                                                                                     |
+
+`SimpleSpanProcessor` と `SimpleLogRecordProcessor` は常にセマンティック規約スキーマを使用し、それぞれ `otel.sdk.processor.span.processed` と `otel.sdk.processor.log.processed` を記録します。
+
+レガシーエクスポーターメトリクスには、`span`、`metric`、`log` のいずれかの値を持つ `type` 属性が含まれます。
+`otlp.exporter.exported` にはさらに `success` 属性も含まれます。
+
+`latest` の名前は[SDKメトリクスセマンティック規約](/docs/specs/semconv/otel/sdk-metrics/)に従います。
+エクスポーターメトリクスには `otel.component.type`、`otel.component.name`、`server.address`、`server.port` が含まれます。
+エクスポートの失敗時には `.exported` および `.duration` メトリクスに `error.type` が追加されますが、`.inflight` メトリクスには追加されません。
+`otel.sdk.exporter.operation.duration` メトリクスには、HTTPの場合は `http.response.status_code`、gRPCの場合は `rpc.grpc.status_code` も含まれます。
+
+レガシーメトリクスはSDKメトリクスセマンティック規約より前に作られたもので、既存ユーザーの動作を壊さないようにSDK自動設定のデフォルトとして維持されています。
+Java SDKは現在、これらの削除スケジュールを定義していません。
 
 ### ベンチマーク {#benchmarks}
 

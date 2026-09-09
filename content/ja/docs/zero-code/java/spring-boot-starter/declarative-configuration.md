@@ -1,8 +1,7 @@
 ---
 title: 宣言的設定
 weight: 25
-default_lang_commit: 0bfcaf7e0a3d58dfa7db4f4e22f965e5de758e69
-drifted_from_default: true
+default_lang_commit: 867f1ba6a44275ce3bc7d8708765a78baaa0287f
 cSpell:ignore: Customizer Dotel genai sqlcommenter
 ---
 
@@ -17,6 +16,8 @@ cSpell:ignore: Customizer Dotel genai sqlcommenter
 > [!WARNING]
 >
 > 宣言的設定は実験的機能です。
+
+宣言的設定が Spring Boot スターターにどのように組み込まれているかの背景については、ブログ記事 [The Voyage of a Small Environment Variable](/blog/2026/spring-boot-declarative-config/) を参照してください。
 
 ## サポートされるバージョン {#supported-versions}
 
