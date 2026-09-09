@@ -5,6 +5,9 @@ date: 2026-09-09
 expiryDate: 2026-11-12 # keep
 weight: 20261112
 params:
+  # CNCF's campaign parameters for this event, source adjusted for this site
+  utmParam: >-
+    utm_source=opentelemetry&utm_medium=ribbon-banner&utm_campaign=KubeCon-CloudNativeCon-NA-2026&utm_content=hero
   eventUrl: &eventUrl >-
     https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
   # Use this when the blog post is ready:
