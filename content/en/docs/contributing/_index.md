@@ -140,7 +140,7 @@ can also:
 - Contribute to [localization efforts](localization/) to help make OTel
   accessible to developers in different languages
 - Participate in the
-  [End User SIG](https://cloud-native.slack.com/archives/C01RT3MSWGZ) by sharing
+  [End-User SIG](https://cloud-native.slack.com/archives/C01RT3MSWGZ) by sharing
   your practitioner experience, or contribute to community podcasts like
   [OTel Me](https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43)
   and
