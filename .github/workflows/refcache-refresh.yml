@@ -161,7 +161,9 @@ jobs:
       - uses: ./.github/actions/install-lychee
 
       - name: Prune link cache
-        if: ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' || env.CACHE_SELF_HEALED == 'true' }}
+        if:
+          ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' ||
+          env.CACHE_SELF_HEALED == 'true' }}
         run: |
           echo "Oldest entry before pruning, then pruning $REFRESH_COUNT oldest link-cache entries:"
           npm run link-cache -- --list 1 --prune $REFRESH_COUNT

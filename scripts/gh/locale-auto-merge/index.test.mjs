@@ -170,7 +170,10 @@ describe('locale-auto-merge: evaluateEligibility', () => {
   });
 
   test('no-owner link-cache.jsonc does not block, but is not a locale', () => {
-    const r = evaluateEligibility(['content/ja/a.md', 'link-cache.jsonc'], known);
+    const r = evaluateEligibility(
+      ['content/ja/a.md', 'link-cache.jsonc'],
+      known,
+    );
     assert.deepEqual(r, { eligible: true, locales: ['ja'], offending: [] });
   });
 

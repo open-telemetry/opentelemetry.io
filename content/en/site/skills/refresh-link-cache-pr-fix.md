@@ -61,8 +61,8 @@ confirmed the URL is not otherwise healthy.
 ## Resolve failing links
 
 1. Build the site and check links: `npm run log:check:links`. This also updates
-   `.lycheecache` and captures the check log that the double-check step below
-   reads. See LinkedIn note below.
+   `link-cache.jsonc` and captures the check log that the double-check step
+   below reads. See LinkedIn note below.
 2. If the check passes, [wrap up the PR](#wrap-up).
 3. **Otherwise**, list the failing URLs and their statuses from the check output
    (for the CI run, see the PR's failing `CHECK LINKS` job log).
@@ -104,9 +104,9 @@ confirmed the URL is not otherwise healthy.
    actions, and only those. For page content under `content/`, edit English
    pages only: **never edit localized page content**.
 
-7. Run `npm run log:check:links` to re-check links and refresh `.lycheecache`
-   after those source-link changes. If a localized page still fails, refresh its
-   [drift status][] instead of editing it:
+7. Run `npm run log:check:links` to re-check links and refresh
+   `link-cache.jsonc` after those source-link changes. If a localized page still
+   fails, refresh its [drift status][] instead of editing it:
 
    ```sh
    npm run fix:i18n:status -- PATHS_TO_FAILING_LOCALIZED_PAGES
@@ -123,8 +123,8 @@ Once the link check passes on the PR being processed:
 
 1. Share the link-check summary in your reply (URLs re-checked or fixed, and
    final status counts when shown).
-2. If `.lycheecache` changed, commit and push to upstream _`TARGET_BRANCH`_. Use
-   the link-check summary as the commit-message body (plain text; if the URL
+2. If `link-cache.jsonc` changed, commit and push to upstream _`TARGET_BRANCH`_.
+   Use the link-check summary as the commit-message body (plain text; if the URL
    list is long, include only the counts): it remains visible in the PR's commit
    history even after a squash merge.
 3. Unless the skill invocation asks for no comment (e.g., it includes “no
