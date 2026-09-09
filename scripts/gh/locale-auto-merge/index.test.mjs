@@ -104,7 +104,7 @@ describe('locale-auto-merge: localeForPath', () => {
 
   test('returns null for paths outside the locale-owned set', () => {
     assert.equal(localeForPath('layouts/partials/head.html', LOCALES), null);
-    assert.equal(localeForPath('.lycheecache', LOCALES), null);
+    assert.equal(localeForPath('link-cache.jsonc', LOCALES), null);
     assert.equal(localeForPath('content/ja', LOCALES), null);
   });
 });
@@ -169,13 +169,13 @@ describe('locale-auto-merge: evaluateEligibility', () => {
     });
   });
 
-  test('no-owner .lycheecache does not block, but is not a locale', () => {
-    const r = evaluateEligibility(['content/ja/a.md', '.lycheecache'], known);
+  test('no-owner link-cache.jsonc does not block, but is not a locale', () => {
+    const r = evaluateEligibility(['content/ja/a.md', 'link-cache.jsonc'], known);
     assert.deepEqual(r, { eligible: true, locales: ['ja'], offending: [] });
   });
 
-  test('.lycheecache alone is ineligible (no locale touched)', () => {
-    const r = evaluateEligibility(['.lycheecache'], known);
+  test('link-cache.jsonc alone is ineligible (no locale touched)', () => {
+    const r = evaluateEligibility(['link-cache.jsonc'], known);
     assert.equal(r.eligible, false);
     assert.deepEqual(r.locales, []);
     assert.deepEqual(r.offending, []);
@@ -203,13 +203,13 @@ describe('locale-auto-merge: evaluateEligibility', () => {
   test('onFile callback classifies each path', () => {
     const seen = [];
     evaluateEligibility(
-      ['content/ja/a.md', '.lycheecache', 'layouts/x.html'],
+      ['content/ja/a.md', 'link-cache.jsonc', 'layouts/x.html'],
       known,
       (f) => seen.push(f),
     );
     assert.deepEqual(seen, [
       { path: 'content/ja/a.md', kind: 'locale', locale: 'ja' },
-      { path: '.lycheecache', kind: 'shared', locale: null },
+      { path: 'link-cache.jsonc', kind: 'shared', locale: null },
       { path: 'layouts/x.html', kind: 'offending', locale: null },
     ]);
   });
@@ -628,7 +628,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           files: [
             { path: 'content/ja/a.md' },
             { path: 'content/pt/b.md' },
-            { path: '.lycheecache' },
+            { path: 'link-cache.jsonc' },
           ],
           autoMergeRequest: null,
         },
@@ -821,7 +821,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           files: [
             { path: 'content/ja/a.md' },
             { path: 'content/pt/b.md' },
-            { path: '.lycheecache' },
+            { path: 'link-cache.jsonc' },
           ],
           autoMergeRequest: null,
         },
@@ -839,7 +839,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
       logs.some((m) => m === '[file] ✓ locale-owned (pt): content/pt/b.md'),
     );
     assert.ok(
-      logs.some((m) => m === '[file] ✓ shared (no owner): .lycheecache'),
+      logs.some((m) => m === '[file] ✓ shared (no owner): link-cache.jsonc'),
     );
     assert.ok(
       logs.some((m) =>

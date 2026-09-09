@@ -20,6 +20,8 @@ tmp/
 scripts/collector.yaml
 assets/jsconfig.json
 /lychee.toml
+# Derived from link-cache.jsonc by lychee-norm-cache
+/.lycheecache
 /.netlify
 
 # IntelliJ

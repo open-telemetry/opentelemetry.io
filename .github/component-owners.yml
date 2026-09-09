@@ -93,5 +93,5 @@ components:
     - open-telemetry/python-approvers
 
   # No-owner files:
-  .lycheecache:
+  link-cache.jsonc:
     - open-telemetry/docs-approvers
