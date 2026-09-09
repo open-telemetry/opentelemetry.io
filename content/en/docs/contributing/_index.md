@@ -21,8 +21,7 @@ Here is some advice to help you get started:
 
 - **Contributions can come out of necessity:** While we do appreciate regular
   contributors, it is alright to contribute out of necessity, such as if you
-  find a bug in the Collector, or wish to develop a feature your team
-  needs.
+  find a bug in the Collector, or wish to develop a feature your team needs.
 
 - **Spotted a gap? That counts too:** OpenTelemetry is a large project, and even
   with the best efforts of contributors and maintainers, gaps in documentation
