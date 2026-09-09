@@ -6019,6 +6019,21 @@
     "when": "2026-09-01T05:50:19Z",
     "via": "lychee",
   },
+  "https://github.com/chalin/link-cache#readme": {
+    "result": 200,
+    "when": "2026-09-09T15:26:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/chalin/link-cache/blob/main/docs/cache-format.md": {
+    "result": 200,
+    "when": "2026-09-09T15:26:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/chalin/link-cache/blob/main/docs/operating-model.md": {
+    "result": 200,
+    "when": "2026-09-09T15:26:26Z",
+    "via": "lychee",
+  },
   "https://github.com/chluknight1224": {
     "result": 200,
     "when": "2026-09-03T05:55:26Z",
