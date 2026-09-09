@@ -83,6 +83,14 @@ The intended lifecycle follows the way process environments already work:
 5. The application starts the child with the modified environment, and the cycle
    repeats.
 
+```mermaid
+flowchart TD
+    A["Extract context<br/>from environment"] --> B["Create spans<br/>and do work"]
+    B --> C["Copy environment<br/>and inject context"]
+    C --> D["Start child with<br/>copied environment"]
+    D -.->|repeat in child| A
+```
+
 Applications should use a separate environment copy for each child. This is
 especially important when several processes run concurrently and belong to
 different spans. Treating propagation variables as startup input also avoids
@@ -169,10 +177,16 @@ handles telemetry.
 containers running on Kubernetes. A workflow integration could inject the
 propagation fields into each container's environment. Instrumented code or a
 tool such as `otel-cli` could then extract those fields and continue the trace.
-Because separate Kubernetes Pods do not inherit one another's process
-environments, the workflow integration would need to perform that injection
-explicitly. Inside a container, the same carrier can pass propagation fields to
-any child processes it starts.
+
+```mermaid
+flowchart TD
+    C["Workflow integration"] -->|injects fields| A["Container in Pod A<br/>own environment"]
+    C -->|injects fields| B["Container in Pod B<br/>own environment"]
+```
+
+Each target container needs a separate injection because Kubernetes Pods do not
+inherit one another's process environments. Inside a container, the same carrier
+can pass propagation fields to any child processes it starts.
 
 The mechanism also applies to batch schedulers, ETL systems, test runners, and
 other environments where work is connected through process creation rather than
