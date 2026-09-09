@@ -36,7 +36,7 @@ OpenTelemetryは、いくつかの公式のプロパゲーターをメンテナ�
 ## 例 {#example}
 
 `Frontend`というサービスは、`POST /cart/add`や`GET /checkout/`などのさまざまなHTTPエンドポイントを提供し、`GET /product`というHTTPエンドポイントを介して下流サービスである`Product Catalog`にアクセスしてユーザーがカートに追加したい商品や決済対象の一部である商品の詳細を取得します。
-`Frontend`からのリクストのコンテキスト内で`Product Catalog`サービスのアクティビティを把握するために、コンテキスト（ここではトレースIDと「親ID」としてのスパンID）はW3C TraceContext仕様で定義されている`traceparent`ヘッダーを使用して伝搬されます。
+`Frontend`からのリクエストのコンテキスト内で`Product Catalog`サービスのアクティビティを把握するために、コンテキスト（ここではトレースIDと「親ID」としてのスパンID）はW3C TraceContext仕様で定義されている`traceparent`ヘッダーを使用して伝搬されます。
 これはつまり、IDがヘッダーのフィールドに埋め込まれていることを意味します。
 
 ```text

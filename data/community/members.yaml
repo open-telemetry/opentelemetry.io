@@ -1031,6 +1031,8 @@ maintainers:
       - android-approvers
       - android-maintainers
       - android-triagers
+      - dart-approvers
+      - dart-maintainers
       - semconv-android-approvers
       - semconv-client-approvers
       - semconv-mobile-approvers
@@ -1162,6 +1164,12 @@ maintainers:
       - sig-contributor-experience-triagers
     html_url: https://github.com/maryliag
     avatar_url: https://avatars.githubusercontent.com/u/1017486?v=4
+  - name: michaelbushe
+    teams:
+      - dart-approvers
+      - dart-maintainers
+    html_url: https://github.com/michaelbushe
+    avatar_url: https://avatars.githubusercontent.com/u/168178?v=4
   - name: MikeGoldsmith
     teams:
       - collector-contrib-triagers
@@ -1406,6 +1414,12 @@ maintainers:
       - ruby-contrib-maintainers
     html_url: https://github.com/robbkidd
     avatar_url: https://avatars.githubusercontent.com/u/517302?v=4
+  - name: robert-northmind
+    teams:
+      - dart-approvers
+      - dart-maintainers
+    html_url: https://github.com/robert-northmind
+    avatar_url: https://avatars.githubusercontent.com/u/59053438?v=4
   - name: robertlaurin
     teams:
       - ruby-approvers
@@ -1701,6 +1715,12 @@ maintainers:
     html_url: https://github.com/zacharycmontoya
     avatar_url: https://avatars.githubusercontent.com/u/13769665?v=4
 approvers:
+  - name: AaronRM
+    teams:
+      - arrow-approvers
+      - arrow-triagers
+    html_url: https://github.com/AaronRM
+    avatar_url: https://avatars.githubusercontent.com/u/437496?v=4
   - name: agagniere
     teams:
       - zig-approvers
@@ -1783,12 +1803,6 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/Cirilla-zmh
     avatar_url: https://avatars.githubusercontent.com/u/84360903?v=4
-  - name: CodeBlanch
-    teams:
-      - dotnet-approvers
-      - dotnet-triagers
-    html_url: https://github.com/CodeBlanch
-    avatar_url: https://avatars.githubusercontent.com/u/28367120?v=4
   - name: crobert-1
     teams:
       - collector-contrib-approvers
@@ -1912,8 +1926,6 @@ approvers:
   - name: jeanbisutti
     teams:
       - docs-fr-approvers
-      - java-instrumentation-approvers
-      - java-instrumentation-triagers
     html_url: https://github.com/jeanbisutti
     avatar_url: https://avatars.githubusercontent.com/u/14811066?v=4
   - name: jinja2
@@ -2304,11 +2316,6 @@ approvers:
     html_url: https://github.com/zeitlinger
     avatar_url: https://avatars.githubusercontent.com/u/2832627?v=4
 triagers:
-  - name: AaronRM
-    teams:
-      - arrow-triagers
-    html_url: https://github.com/AaronRM
-    avatar_url: https://avatars.githubusercontent.com/u/437496?v=4
   - name: abhee11
     teams:
       - javascript-contrib-triagers
@@ -2519,6 +2526,9 @@ members:
   - name: addname
     html_url: https://github.com/addname
     avatar_url: https://avatars.githubusercontent.com/u/3360883?v=4
+  - name: Adii-45
+    html_url: https://github.com/Adii-45
+    avatar_url: https://avatars.githubusercontent.com/u/90207171?v=4
   - name: ajimenez1503
     html_url: https://github.com/ajimenez1503
     avatar_url: https://avatars.githubusercontent.com/u/5960625?v=4
@@ -2606,6 +2616,9 @@ members:
   - name: cnnradams
     html_url: https://github.com/cnnradams
     avatar_url: https://avatars.githubusercontent.com/u/10487992?v=4
+  - name: CodeBlanch
+    html_url: https://github.com/CodeBlanch
+    avatar_url: https://avatars.githubusercontent.com/u/28367120?v=4
   - name: colelaven
     html_url: https://github.com/colelaven
     avatar_url: https://avatars.githubusercontent.com/u/82364622?v=4
@@ -2624,6 +2637,9 @@ members:
   - name: dao-jun
     html_url: https://github.com/dao-jun
     avatar_url: https://avatars.githubusercontent.com/u/21362791?v=4
+  - name: darkraider01
+    html_url: https://github.com/darkraider01
+    avatar_url: https://avatars.githubusercontent.com/u/95766741?v=4
   - name: davidwitten
     html_url: https://github.com/davidwitten
     avatar_url: https://avatars.githubusercontent.com/u/3642085?v=4
@@ -2651,6 +2667,9 @@ members:
   - name: drewby
     html_url: https://github.com/drewby
     avatar_url: https://avatars.githubusercontent.com/u/192652?v=4
+  - name: Eason09053360
+    html_url: https://github.com/Eason09053360
+    avatar_url: https://avatars.githubusercontent.com/u/185830721?v=4
   - name: edsoncelio
     html_url: https://github.com/edsoncelio
     avatar_url: https://avatars.githubusercontent.com/u/5833278?v=4
