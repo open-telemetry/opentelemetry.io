@@ -12,10 +12,13 @@ based on existing product IDs the user is browsing.
 
 ## Instrumentation
 
-<!-- YOUR WORDS: Spring Boot 4 app, gRPC via Spring gRPC, telemetry via Micrometer
-and the spring-boot-starter-opentelemetry starter, no Java agent. Endpoints, resource
-attributes and service name come from the OTEL_* environment variables, which Spring Boot
-maps itself. Only telemetry setting in application.yaml is the sampling probability. -->
+This service is a Spring Boot 4 application that uses Spring gRPC for
+communication. Rather than using a standalone Java agent, the service produces
+its own traces, metrics and logs using Micrometer and the
+`spring-boot-starter-opentelemetry` starter. Endpoints, service names, and
+resource attributes come from the standard `OTEL_*` environment variables mapped
+by Spring Boot. The only telemetry setting in `application.yaml` is the sampling
+probability.
 
 ```yaml
 management:
@@ -28,14 +31,16 @@ management:
 
 ### gRPC spans
 
-<!-- YOUR WORDS: Spring gRPC registers Micrometer observation interceptors on the server
-and on every client channel, so the ListRecommendations server span and the ListProducts
-client span exist without code, with W3C trace context propagated. -->
+Spring gRPC registers Micrometer observation interceptors on the server and on
+every client channel. Because of this, the `ListRecommendations` server span and
+the `ListProducts` client span exist without any custom code, with W3C trace
+context propagated automatically.
 
 ### Add attributes to the current span
 
-<!-- YOUR WORDS: the current span comes from the Micrometer Tracing Tracer; tag keeps the
-value type; done in listRecommendations for the server span. -->
+To add attributes to the current span, it is retrieved from the Micrometer
+Tracing `Tracer`. A tag keeps the value type. This is done inside
+`listRecommendations` for the server span.
 
 ```java
 Span span = tracer.currentSpan();
@@ -46,9 +51,11 @@ if (span != null) {
 
 ### Create new spans
 
-<!-- YOUR WORDS: tracer.nextSpan() plus tracer.withSpan(span) for get_product_list, ended
-in a finally block. Micrometer spans only take scalar tags, so the one array attribute
-(demo.product.filtered.list) is set through the OpenTelemetry API on the same span. -->
+Custom spans are generated using `tracer.nextSpan()` and scoped using
+`tracer.withSpan(span)` for the `get_product_list` operation, which ends in a
+`finally` block. Because Micrometer spans only take scalar tags, the array
+attribute `demo.product.filtered.list` is set through the OpenTelemetry API on
+the same span.
 
 ```java
 Span span = tracer.nextSpan().name("get_product_list").start();
@@ -70,8 +77,9 @@ io.opentelemetry.api.trace.Span.current().setAttribute(FILTERED_LIST, recommende
 
 ### Custom metrics
 
-<!-- YOUR WORDS: a Micrometer Counter on the auto-configured MeterRegistry; the OTLP
-registry keeps the dotted name, so it arrives as demo.recommendation.requests. -->
+Custom application metrics use a Micrometer `Counter` on the auto-configured
+`MeterRegistry`. The OTLP registry keeps the dotted name, so it arrives as
+`demo.recommendation.requests`.
 
 ```java
 Counter.builder("demo.recommendation.requests")
@@ -83,15 +91,16 @@ Counter.builder("demo.recommendation.requests")
 
 ### Auto-instrumented metrics
 
-<!-- YOUR WORDS: Spring Boot's Micrometer auto-configuration binds the JVM and system
-meters (memory, GC, threads, CPU), exported next to the counter; they show the memory
-growth when the recommendationCacheFailure flag is on. -->
+Spring Boot's Micrometer auto-configuration automatically binds JVM and system
+meters for memory, GC, threads, and CPU. These are exported next to the counter,
+and they show memory growth when the `recommendationCacheFailure` flag is on.
 
 ## Logs
 
-<!-- YOUR WORDS: Logback; console keeps Spring Boot's default pattern with trace and span
-ids; the OpenTelemetry Logback appender exports the same records over OTLP; the appender is
-connected to the auto-configured OpenTelemetry instance once at startup. -->
+Logging goes through Logback. The console keeps Spring Boot's default pattern
+with trace and span IDs, while the OpenTelemetry Logback appender exports the
+same records over OTLP. The appender connects to the auto-configured
+OpenTelemetry instance once at startup.
 
 ```java
 @Component
