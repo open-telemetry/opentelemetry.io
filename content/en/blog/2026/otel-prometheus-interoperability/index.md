@@ -222,7 +222,7 @@ responses and addressed each point below:
 
 ## Interesting observations
 
-**Mid-size organizations may be furthest into OTel-native tooling**
+### Mid-size organizations may be furthest into OTel-native tooling
 
 In our data, 100–999-employee organizations come out highest on OTel SDK
 adoption for application metrics and on OTel receiver adoption for
@@ -247,7 +247,7 @@ _**Note**: This is an interesting observation and a hypothesis, not a confirmed
 finding: with 10–34 respondents per band, none of these gaps is big enough for a
 survey this size to confirm._
 
-**Team type tracks backend choice**
+### Team type tracks backend choice
 
 Platform Engineering and SRE teams lean heavily toward OSS Prometheus-compatible
 backends (Thanos, Cortex, Mimir), while Dev teams lean the other way, toward
