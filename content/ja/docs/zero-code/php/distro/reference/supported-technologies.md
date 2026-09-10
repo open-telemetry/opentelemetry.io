@@ -54,22 +54,22 @@ OpenTelemetry の互換性を継承し、ネイティブコンポーネントに
 
 ## 同梱の自動計装パッケージ {#included-auto-instrumentation-packages}
 
-| Name                | Included from distro version | Package                                                                                                                     |
-| ------------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `curl`              | 1.0                          | [open-telemetry/opentelemetry-auto-curl](https://packagist.org/packages/open-telemetry/opentelemetry-auto-curl)             |
-| `http-async-client` | 1.0                          | [open-telemetry/opentelemetry-auto-http-async](https://packagist.org/packages/open-telemetry/opentelemetry-auto-http-async) |
-| `laravel`           | 1.0                          | [open-telemetry/opentelemetry-auto-laravel](https://packagist.org/packages/open-telemetry/opentelemetry-auto-laravel)       |
-| `mysqli`            | 1.0                          | [open-telemetry/opentelemetry-auto-mysqli](https://packagist.org/packages/open-telemetry/opentelemetry-auto-mysqli)         |
-| `pdo`               | 1.0                          | [open-telemetry/opentelemetry-auto-pdo](https://packagist.org/packages/open-telemetry/opentelemetry-auto-pdo)               |
-| `postgresql`        | 1.2                          | [open-telemetry/opentelemetry-auto-postgresql](https://packagist.org/packages/open-telemetry/opentelemetry-auto-postgresql) |
-| `psr18`             | 0.5                          | [open-telemetry/opentelemetry-auto-psr18](https://packagist.org/packages/open-telemetry/opentelemetry-auto-psr18)           |
-| `slim`              | 1.0                          | [open-telemetry/opentelemetry-auto-slim](https://packagist.org/packages/open-telemetry/opentelemetry-auto-slim)             |
+| 名前                | ディストロバージョン | パッケージ                                                                                                                  |
+| ------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `curl`              | 1.0                  | [open-telemetry/opentelemetry-auto-curl](https://packagist.org/packages/open-telemetry/opentelemetry-auto-curl)             |
+| `http-async-client` | 1.0                  | [open-telemetry/opentelemetry-auto-http-async](https://packagist.org/packages/open-telemetry/opentelemetry-auto-http-async) |
+| `laravel`           | 1.0                  | [open-telemetry/opentelemetry-auto-laravel](https://packagist.org/packages/open-telemetry/opentelemetry-auto-laravel)       |
+| `mysqli`            | 1.0                  | [open-telemetry/opentelemetry-auto-mysqli](https://packagist.org/packages/open-telemetry/opentelemetry-auto-mysqli)         |
+| `pdo`               | 1.0                  | [open-telemetry/opentelemetry-auto-pdo](https://packagist.org/packages/open-telemetry/opentelemetry-auto-pdo)               |
+| `postgresql`        | 1.2                  | [open-telemetry/opentelemetry-auto-postgresql](https://packagist.org/packages/open-telemetry/opentelemetry-auto-postgresql) |
+| `psr18`             | 0.5                  | [open-telemetry/opentelemetry-auto-psr18](https://packagist.org/packages/open-telemetry/opentelemetry-auto-psr18)           |
+| `slim`              | 1.0                  | [open-telemetry/opentelemetry-auto-slim](https://packagist.org/packages/open-telemetry/opentelemetry-auto-slim)             |
 
 ## 同梱のメトリクスパッケージ {#included-metrics-packages}
 
-| Included from distro version | Package                                                                                                                     | Emitted metrics                          |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
-| 0.6.0                        | [open-telemetry/opentelemetry-metrics-runtime](https://packagist.org/packages/open-telemetry/opentelemetry-metrics-runtime) | PHP memory usage, GC cycles, peak memory |
+| ディストロバージョン | パッケージ                                                                                                                  | 出力メトリクス                           |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| 0.6.0                | [open-telemetry/opentelemetry-metrics-runtime](https://packagist.org/packages/open-telemetry/opentelemetry-metrics-runtime) | PHP memory usage, GC cycles, peak memory |
 
 ## 追加のランタイム機能 {#additional-runtime-features}
 
