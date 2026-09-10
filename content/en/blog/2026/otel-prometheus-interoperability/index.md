@@ -41,7 +41,7 @@ interoperability still causes friction.
 
 From 186 people who responded, 81 passed our screening for active
 OpenTelemetry-for-metrics users on a Prometheus-adjacent backend. We also
-filtered out observability vendor employees to focus on end users. The analyzed
+filtered out observability vendor employees to focus on end users. In the analyzed
 sample:
 
 - All respondents in this analysis are active OpenTelemetry users.
