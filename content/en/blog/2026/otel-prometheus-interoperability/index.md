@@ -253,8 +253,8 @@ Platform Engineering and SRE teams lean heavily toward OSS Prometheus-compatible
 backends (Thanos, Cortex, Mimir), while Dev teams lean the other way, toward
 plain Prometheus.
 
-The dividing line looks like operational ownership rather than preference. Teams
-running metrics for a whole organization eventually outgrow a single Prometheus;
+Here, the dividing line looks like operational ownership rather than preference. Teams
+running metrics for a whole organization eventually outgrow a single Prometheus deployment, whereas
 teams instrumenting their own service generally don't.
 
 Backend choice by team type — OSS Prometheus-compatible (n = 30), Prometheus (n
