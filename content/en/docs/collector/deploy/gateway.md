@@ -16,9 +16,10 @@ as a standalone service, for example, in a Kubernetes deployment. Typically, an
 endpoint is provided per cluster, per data center, or per region.
 
 In general, you can use an out-of-the-box load balancer to distribute the load
-among the Collectors:
+among the Collectors. In this single-tier pattern, the load balancer is external
+to the Collector instances:
 
-![Gateway deployment concept](../../img/otel-gateway-sdk.svg)
+![Single-tier gateway where an application sends OTLP through an external load balancer to Collector replicas and then a backend](../../img/otel-gateway-sdk.svg)
 
 For use cases where telemetry data must be processed in a specific Collector,
 use a two-tiered setup. The first tier Collector has a pipeline configured with
@@ -30,14 +31,16 @@ with the [tail sampling processor][tailsample-processor] so all spans for a
 given trace reach the same Collector instance where the tail sampling policy is
 applied.
 
-The following diagram shows this setup using the load-balancing exporter:
+The following diagram shows this two-tier setup. Unlike the external load
+balancer in the preceding diagram, the component labeled **Load Balancer** here
+is a first-tier Collector running the load-balancing exporter:
 
-![Gateway deployment with load-balancing exporter](../../img/otel-gateway-lb-sdk.svg)
+![Two-tier gateway where an application sends OTLP to a first-tier Collector using the load-balancing exporter, which routes to second-tier Collector replicas and then a backend](../../img/otel-gateway-lb-sdk.svg)
 
 1. In the app, the SDK is configured to send OTLP data to a central location.
-2. A Collector is configured to use the load-balancing exporter to distribute
-   signals to a group of Collectors.
-3. The Collectors send telemetry data to one or more backends.
+2. A first-tier Collector is configured to use the load-balancing exporter to
+   distribute signals to a group of second-tier Collectors.
+3. The second-tier Collectors send telemetry data to one or more backends.
 
 ## Examples
 
