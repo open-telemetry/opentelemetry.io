@@ -50,7 +50,7 @@ sample:
   Mimir (42%), or a PromQL-compatible vendor product (12%).
 - Respondents' observability maturity is high. 48% describe their organization
   as having "a well-established observability practice" (Expert), 41% are
-  "setting up an observability practice" (Intermediate). Only 11% consider
+  "setting up an observability practice" (Intermediate), while only 11% consider
   themselves beginners in observability.
 - Organizations skew large. 42% have 1,000+ employees, 31% have 100–999, 15% have
   50–99, and 12% report having under 50.
