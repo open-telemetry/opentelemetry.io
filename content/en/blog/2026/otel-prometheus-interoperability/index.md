@@ -23,9 +23,9 @@ interoperability still causes friction.
 
 1. Interoperability has measurably improved since our
    [2024 survey](/blog/2024/prometheus-compatibility-survey/): the average
-   ease-of-use rating rose from 3.1 to 3.6, the equivalent of half the
-   respondents moving up a whole category, and the share of respondents finding
-   the two hard to use together fell from 29% to 10%.
+   ease-of-use rating rose from 3.1 to 3.6, the equivalent of one in two
+   respondents rating a whole category higher, and the share of respondents
+   finding the two hard to use together fell from 29% to 10%.
 2. In infrastructure instrumentation, Prometheus exporters remain the most-used
    method (72%) with OTel receivers close behind (57%), and nearly half of
    respondents run both at once rather than migrating from one to the other.
@@ -62,18 +62,17 @@ analyzed sample:
 This year, we asked the same question as in the similar 2024 survey to see
 whether end users saw progress in interoperability.
 
-The average rating rose by 0.5 point, from 3.1 to 3.6 — the equivalent of half
-the respondents moving up a whole category. The clearest movement is at the
-difficult end of the scale: the share of respondents who found the two hard to
-use together dropped to roughly a third of its 2024 level. Also, nobody this
-year picked "Very difficult".
+The average rating rose by 0.5 point, from 3.1 to 3.6. The clearest movement is
+at the difficult end of the scale: the share of respondents who found the two
+hard to use together dropped to roughly a third of its 2024 level. Also, nobody
+this year picked "Very difficult".
 
 Two years of work on interoperability is paying off. At the same time, since the
 single largest group of responses sits at "Neither easy nor difficult", there is
 still a lot of work to be done in this area.
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem;
-            width: 110%; max-width: 110%; margin-left: -5%;">
+            width: 105%; max-width: 105%; margin-left: -2.5%;">
   <img src="ease-of-use-breakdown.png" alt="Grouped bar chart comparing ease-of-use ratings in 2024 and 2026: very difficult 7% to 0%, somewhat difficult 22% to 10%, neutral 37% to 40%, somewhat easy 26% to 33%, very easy 8% to 17%"
        style="flex: 1 1 45%; min-width: 17rem;">
   <img src="ease-of-use-average.png" alt="Bar chart of the average ease-of-use rating: 3.1 in 2024 and 3.6 in 2026 on a five-point scale"
@@ -102,7 +101,7 @@ instrumentation styles at once for infrastructure metrics, rather than doing a
 full migration. Only Prometheus style is twice as popular as only OTel style.
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem;
-            width: 110%; max-width: 110%; margin-left: -5%;">
+            width: 105%; max-width: 105%; margin-left: -2.5%;">
   <img src="infrastructure-instrumentation-methods.png" alt="Bar chart of infrastructure instrumentation methods: Prometheus exporters 72%, OTel receivers 57%, built-in /metrics endpoint 43%, built-in OTLP push 26%, OBI 12%, other 5%, don't collect 2%"
        style="flex: 1 1 45%; min-width: 17rem;">
   <img src="infrastructure-instrumentation-styles.png" alt="Pie chart of infrastructure instrumentation styles: mix 49.4%, only Prometheus-style 30.4%, only OTel-style 15.2%, other 5.1%"
@@ -137,7 +136,7 @@ instrumentation. That is twice as common as only Prometheus style. Fewer than a
 third mix styles.
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem;
-            width: 110%; max-width: 110%; margin-left: -5%;">
+            width: 105%; max-width: 105%; margin-left: -2.5%;">
   <img src="application-instrumentation-methods.png" alt="Bar chart of application instrumentation methods: OTel SDKs 65%, Prometheus SDKs 52%, OBI 12%, other 5%, don't collect 6%"
        style="flex: 1 1 45%; min-width: 17rem;">
   <img src="application-instrumentation-styles.png" alt="Pie chart of application instrumentation styles: only OTel-style 41.3%, mix 30.7%, only Prometheus-style 22.7%, other 5.3%"
@@ -170,7 +169,7 @@ the plain OTel Collector, with no vendor distribution and no custom-built
 Collector in the pipeline. The three vanilla patterns come out close to even.
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem;
-            width: 110%; max-width: 110%; margin-left: -5%;">
+            width: 105%; max-width: 105%; margin-left: -2.5%;">
   <img src="metrics-transformation-tools.png" alt="Bar chart of metrics transformation tools: Prometheus relabeling and recording rules 54%, open source OTel Collector 53%, vendor distribution of the Collector 11%, custom-built Collector 10%, nothing 15%"
        style="flex: 1 1 45%; min-width: 17rem;">
   <img src="vanilla-stack-breakdown.png" alt="Pie chart of vanilla stack patterns: other 34.6%, mix 23.5%, only open source Collector 22.2%, only Prometheus relabeling and recording rules 19.8%"
