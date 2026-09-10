@@ -127,7 +127,7 @@ receivers:
         endpoint: 0.0.0.0:4317
 
 exporters:
-  loadbalancing:
+  load_balancing:
     protocol:
       otlp:
         tls:
@@ -143,7 +143,7 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [loadbalancing]
+      exporters: [load_balancing]
 ```
 
 {{% /tab %}} {{% tab DNS %}}
@@ -156,7 +156,7 @@ receivers:
         endpoint: 0.0.0.0:4317
 
 exporters:
-  loadbalancing:
+  load_balancing:
     protocol:
       otlp:
         tls:
@@ -169,7 +169,7 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [loadbalancing]
+      exporters: [load_balancing]
 ```
 
 {{% /tab %}} {{% tab "DNS with service" %}}
@@ -182,7 +182,7 @@ receivers:
         endpoint: 0.0.0.0:4317
 
 exporters:
-  loadbalancing:
+  load_balancing:
     routing_key: service
     protocol:
       otlp:
@@ -197,7 +197,7 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [loadbalancing]
+      exporters: [load_balancing]
 ```
 
 {{% /tab %}} {{< /tabpane >}}
