@@ -95,11 +95,10 @@ You can deploy OBI in Kubernetes in two different ways:
 > [!NOTE]
 >
 > On kernel versions 6.6.128+, 6.12.75+, 6.18.14+, and 6.19+, OBI v0.12.0+
-> requires the host's `/sys/kernel/tracing` directory to be mounted into the
-> OBI container at the same path. Without this mount, OBI cannot run its
-> FIONREAD compensation check and automatically disables trace context
-> propagation. All deployment examples in this document include this
-> mount. See
+> requires the host's `/sys/kernel/tracing` directory to be mounted into the OBI
+> container at the same path. Without this mount, OBI cannot run its FIONREAD
+> compensation check and automatically disables trace context propagation. All
+> deployment examples in this document include this mount. See
 > [Security, permissions, and capabilities](../../security/#required-host-mount-for-context-propagation)
 > for details.
 

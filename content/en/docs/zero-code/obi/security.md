@@ -78,12 +78,12 @@ OBI requires the following list of capabilities for its functionality:
 
 ## Required host mount for context propagation
 
-Starting with OBI v0.12.0, on kernel versions 6.6.128+, 6.12.75+, 6.18.14+,
-and 6.19+, OBI requires the host's `/sys/kernel/tracing` directory to be
-mounted into the OBI container at the same path. OBI uses this to run its
-FIONREAD compensation check. If this mount is missing, OBI cannot perform
-this check and automatically disables context propagation to avoid
-producing incorrect trace data.
+Starting with OBI v0.12.0, on kernel versions 6.6.128+, 6.12.75+, 6.18.14+, and
+6.19+, OBI requires the host's `/sys/kernel/tracing` directory to be mounted
+into the OBI container at the same path. OBI uses this to run its FIONREAD
+compensation check. If this mount is missing, OBI cannot perform this check and
+automatically disables context propagation to avoid producing incorrect trace
+data.
 
 To provide this mount in Kubernetes, add the following to your Pod spec:
 
