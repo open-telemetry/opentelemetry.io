@@ -3933,6 +3933,7 @@ https://github.com/open-telemetry/opentelemetry-specification/blob/af2606810c19c
 https://github.com/open-telemetry/opentelemetry-specification/blob/af2606810c19c31850738d1fd105b4eca7aa8c98/spec-compliance-matrix.md?from_branch=main,200,1788846197
 https://github.com/open-telemetry/opentelemetry-specification/blob/b72b9e1127391871eaedee841895ff9ce52d11f3/oteps/trace/0250-Composite_Samplers.md?from_branch=main,200,1788846197
 https://github.com/open-telemetry/opentelemetry-specification/blob/ce9394dc3dd53bb182611d2f3ba1e8f53975e905/specification/context/api-propagators.md#operations,200,1788886907
+https://github.com/open-telemetry/opentelemetry-specification/blob/ce9394dc3dd53bb182611d2f3ba1e8f53975e905/specification/context/api-propagators.md#textmap-propagator,200,1789039334
 https://github.com/open-telemetry/opentelemetry-specification/blob/eec6fadba46a5002f55ff88ce4405d58a1aa4aec/spec-compliance-matrix.md,200,1788873821
 https://github.com/open-telemetry/opentelemetry-specification/blob/eec6fadba46a5002f55ff88ce4405d58a1aa4aec/specification/context/env-carriers.md,200,1788422896
 https://github.com/open-telemetry/opentelemetry-specification/blob/fd43145dde7e5192ebc59a20992d98a3e6af5553/oteps/4430-span-event-api-deprecation-plan.md,200,1788846195
