@@ -31,11 +31,16 @@ batch, and command-line workloads.
 
 ## What is an environment variable carrier?
 
-A carrier is the place where propagation data is stored while it moves between
-services or processes. HTTP headers are a familiar carrier. A process
-environment can also be a carrier because environment variable names and values
-are strings. The release candidate defines how the existing `TextMapPropagator`
-model applies to environment variables.
+A carrier is the medium used to pass propagation data between services or
+processes. A propagator writes propagation fields to the carrier and reads them
+on the receiving side. HTTP headers are a familiar carrier. When one process
+starts another, the child process's environment can play the same role:
+propagation fields are written before the child starts and read during its
+initialization.
+
+The release candidate defines rules to make this work consistently across
+platforms. In the specification, the propagator type used with string key-value
+carriers is called a [`TextMapPropagator`][text-map-propagator].
 
 For example, when using the W3C Trace Context and W3C Baggage propagators, the
 propagation fields are represented by environment variables such as:
@@ -46,11 +51,14 @@ TRACESTATE=vendorname=opaquevalue
 BAGGAGE=build.id=42,repository.name=example
 ```
 
-The [OpenTelemetry Propagators API][propagators-api] calls writing these fields
-to a carrier **injection** and reading them **extraction**. A propagator gets
-the relevant value from the current `Context` object. For tracing, that value is
-`SpanContext`; for baggage, it is `Baggage`. Extraction returns a new `Context`
-containing the value read from the carrier.
+The [OpenTelemetry Propagators API][propagators-api] calls writing propagation
+fields to a carrier **injection** and reading them **extraction**.
+
+Inside a process, OpenTelemetry holds propagation data in a `Context`. For
+tracing, that data includes `SpanContext`; it can also include `Baggage`. During
+injection, a propagator reads data from the current `Context` and writes it to
+the carrier. During extraction, it reads the carrier and returns a new `Context`
+containing that data.
 
 The environment carrier does not interpret these values; it treats them as plain
 strings. The configured propagator remains responsible for choosing field names
@@ -100,8 +108,8 @@ relying on mutations to the parent process's global environment.
 ### OpenTelemetry language implementations
 
 OpenTelemetry language implementations can provide helpers that let a configured
-`TextMapPropagator` read from and write to a process environment. Depending on
-the language, a helper might be a carrier type, a getter and setter, or another
+propagator read from and write to a process environment. Depending on the
+language, a helper might be a carrier type, a getter and setter, or another
 language-appropriate API. It may live in an API, SDK, or contrib package.
 Instrumentation can use these helpers to extract incoming values at process
 startup and inject fields into a copied environment before starting a child.
@@ -279,5 +287,7 @@ consistently across language implementations, tools, and workflow platforms.
   https://github.com/open-telemetry/opentelemetry-specification/blob/eec6fadba46a5002f55ff88ce4405d58a1aa4aec/spec-compliance-matrix.md
 [stabilization-issue]:
   https://github.com/open-telemetry/opentelemetry-specification/issues/5040
+[text-map-propagator]:
+  https://github.com/open-telemetry/opentelemetry-specification/blob/ce9394dc3dd53bb182611d2f3ba1e8f53975e905/specification/context/api-propagators.md#textmap-propagator
 [Thoth]:
   https://github.com/plengauer/Thoth/blob/f1837aa22450dd691359f1dd05bcc6aec41162dd/README.md#automatic-instrumentation-of-shell-scrips
