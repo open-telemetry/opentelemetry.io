@@ -41,8 +41,8 @@ interoperability still causes friction.
 
 From 186 people who responded, 81 passed our screening for active
 OpenTelemetry-for-metrics users on a Prometheus-adjacent backend. We also
-filtered out observability vendor employees to focus on end users. In the analyzed
-sample:
+filtered out observability vendor employees to focus on end users. In the
+analyzed sample:
 
 - All respondents are active OpenTelemetry users.
 - All respondents use some flavor of Prometheus – Prometheus itself (46%), an
@@ -52,8 +52,8 @@ sample:
   as having "a well-established observability practice" (Expert), 41% are
   "setting up an observability practice" (Intermediate), while only 11% consider
   themselves beginners in observability.
-- Organizations skew large. 42% have 1,000+ employees, 31% have 100–999, 15% have
-  50–99, and 12% report having under 50.
+- Organizations skew large. 42% have 1,000+ employees, 31% have 100–999, 15%
+  have 50–99, and 12% report having under 50.
 
 ## Ease of use change over time
 
@@ -68,9 +68,9 @@ difficult end of the scale: the share of respondents who found the two hard to
 use together dropped to roughly a third of its 2024 level. Also, nobody this
 year picked "Very difficult".
 
-Two years of work on interoperability is paying off. At the same time, since
-the single largest group of responses sits at "Neither easy nor difficult",
-there is still a lot of work to be done in this area.
+Two years of work on interoperability is paying off. At the same time, since the
+single largest group of responses sits at "Neither easy nor difficult", there is
+still a lot of work to be done in this area.
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem;
             width: 110%; max-width: 110%; margin-left: -5%;">
@@ -253,9 +253,10 @@ Platform Engineering and SRE teams lean heavily toward OSS Prometheus-compatible
 backends (Thanos, Cortex, Mimir), while Dev teams lean the other way, toward
 plain Prometheus.
 
-Here, the dividing line looks like operational ownership rather than preference. Teams
-running metrics for a whole organization eventually outgrow a single Prometheus deployment, whereas
-teams instrumenting their own service generally don't.
+Here, the dividing line looks like operational ownership rather than preference.
+Teams running metrics for a whole organization eventually outgrow a single
+Prometheus deployment, whereas teams instrumenting their own service generally
+don't.
 
 Backend choice by team type — OSS Prometheus-compatible (n = 30), Prometheus (n
 = 35), PromQL-compatible vendor (n = 8):
@@ -270,7 +271,8 @@ Backend choice by team type — OSS Prometheus-compatible (n = 30), Prometheus (
 
 _**Note**: Sysadmin (n = 6) and Operations (n = 2) respondents are excluded from
 this table — both groups are too small to interpret — leaving n = 73 of the 81
-respondents. As with the previous breakdown, the per-band numbers here (8 to 35) are too small to draw firm conclusions._
+respondents. As with the previous breakdown, the per-band numbers here (8 to 35)
+are too small to draw firm conclusions._
 
 ## Get involved
 
