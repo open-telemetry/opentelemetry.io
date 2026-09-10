@@ -270,9 +270,7 @@ Backend choice by team type — OSS Prometheus-compatible (n = 30), Prometheus (
 
 _**Note**: Sysadmin (n = 6) and Operations (n = 2) respondents are excluded from
 this table — both groups are too small to interpret — leaving n = 73 of the 81
-respondents. The same caution applies here as above, and more so: with 8 to 35
-respondents behind each backend column, and fewer still behind each team type,
-these splits are indicative rather than conclusive._
+respondents. As with the previous breakdown, the per-band numbers here (8 to 35) are too small to draw firm conclusions._
 
 ## Get involved
 
