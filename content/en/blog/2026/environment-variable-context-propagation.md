@@ -19,7 +19,7 @@ the trace and span identifiers that let new spans join the same trace. It can
 also carry baggage: application-defined key-value pairs that are passed to
 downstream work.
 
-The OpenTelemetry specification now has a release candidate for using
+The OpenTelemetry Specification now has a release candidate for using
 [environment variables as context propagation carriers][env-carrier-spec]. It
 standardizes how propagators can use environment variables to carry data such as
 trace context and baggage between processes when protocol headers or message
