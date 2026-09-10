@@ -2,7 +2,7 @@
 title: Recommendation Service
 linkTitle: Recommendation
 aliases: [recommendationservice]
-cSpell:ignore: cpython instrumentor NOTSET
+cSpell:ignore: Logback Micrometer
 ---
 
 This service is responsible to get a list of recommended products for the user
@@ -10,130 +10,96 @@ based on existing product IDs the user is browsing.
 
 [Recommendation service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendation/)
 
-## Auto-instrumentation
+## Instrumentation
 
-This Python based service, makes use of the OpenTelemetry auto-instrumentor for
-Python, accomplished by leveraging the `opentelemetry-instrument` Python wrapper
-to run the scripts. This can be done in the `ENTRYPOINT` command for the
-service's `Dockerfile`.
+<!-- YOUR WORDS: Spring Boot 4 app, gRPC via Spring gRPC, telemetry via Micrometer
+and the spring-boot-starter-opentelemetry starter, no Java agent. Endpoints, resource
+attributes and service name come from the OTEL_* environment variables, which Spring Boot
+maps itself. Only telemetry setting in application.yaml is the sampling probability. -->
 
-```dockerfile
-ENTRYPOINT [ "opentelemetry-instrument", "python", "recommendation_server.py" ]
+```yaml
+management:
+  tracing:
+    sampling:
+      probability: 1.0
 ```
 
 ## Traces
 
-### Initializing Tracing
+### gRPC spans
 
-The OpenTelemetry SDK is initialized in the `__main__` code block. This code
-will create a tracer provider, and establish a Span Processor to use. Export
-endpoints, resource attributes, and service name are automatically set by the
-OpenTelemetry auto instrumentor based on environment variables.
+<!-- YOUR WORDS: Spring gRPC registers Micrometer observation interceptors on the server
+and on every client channel, so the ListRecommendations server span and the ListProducts
+client span exist without code, with W3C trace context propagated. -->
 
-```python
-tracer = trace.get_tracer_provider().get_tracer("recommendation")
-```
+### Add attributes to the current span
 
-### Add attributes to auto-instrumented spans
+<!-- YOUR WORDS: the current span comes from the Micrometer Tracing Tracer; tag keeps the
+value type; done in listRecommendations for the server span. -->
 
-Within the execution of auto-instrumented code you can get current span from
-context.
-
-```python
-span = trace.get_current_span()
-```
-
-Adding attributes to a span is accomplished using `set_attribute` on the span
-object. In the `ListRecommendations` function an attribute is added to the span.
-
-```python
-span.set_attribute("app.products_recommended.count", len(prod_list))
+```java
+Span span = tracer.currentSpan();
+if (span != null) {
+  span.tag("demo.product.recommended.count", productIds.size());
+}
 ```
 
 ### Create new spans
 
-New spans can be created and placed into active context using
-`start_as_current_span` from an OpenTelemetry Tracer object. When used in
-conjunction with a `with` block, the span will automatically be ended when the
-block ends execution. This is done in the `get_product_list` function.
+<!-- YOUR WORDS: tracer.nextSpan() plus tracer.withSpan(span) for get_product_list, ended
+in a finally block. Micrometer spans only take scalar tags, so the one array attribute
+(demo.product.filtered.list) is set through the OpenTelemetry API on the same span. -->
 
-```python
-with tracer.start_as_current_span("get_product_list") as span:
+```java
+Span span = tracer.nextSpan().name("get_product_list").start();
+try (Tracer.SpanInScope ignored = tracer.withSpan(span)) {
+  ...
+} catch (RuntimeException e) {
+  span.error(e);
+  throw e;
+} finally {
+  span.end();
+}
+```
+
+```java
+io.opentelemetry.api.trace.Span.current().setAttribute(FILTERED_LIST, recommended);
 ```
 
 ## Metrics
 
-### Initializing Metrics
-
-The OpenTelemetry SDK is initialized in the `__main__` code block. This code
-will create a meter provider. Export endpoints, resource attributes, and service
-name are automatically set by the OpenTelemetry auto instrumentor based on
-environment variables.
-
-```python
-meter = metrics.get_meter_provider().get_meter("recommendation")
-```
-
 ### Custom metrics
 
-The following custom metrics are currently available:
+<!-- YOUR WORDS: a Micrometer Counter on the auto-configured MeterRegistry; the OTLP
+registry keeps the dotted name, so it arrives as demo.recommendation.requests. -->
 
-- `app_recommendations_counter`: Cumulative count of # recommended products per
-  service call
+```java
+Counter.builder("demo.recommendation.requests")
+    .description("Counts the total number of given recommendations")
+    .baseUnit("{recommendation}")
+    .tag("recommendation.type", "catalog")
+    .register(meterRegistry);
+```
 
 ### Auto-instrumented metrics
 
-The following metrics are available through auto-instrumentation, courtesy of
-the `opentelemetry-instrumentation-system-metrics`, which is installed as part
-of `opentelemetry-bootstrap` on building the recommendation service Docker
-image:
-
-- `runtime.cpython.cpu_time`
-- `runtime.cpython.memory`
-- `runtime.cpython.gc_count`
+<!-- YOUR WORDS: Spring Boot's Micrometer auto-configuration binds the JVM and system
+meters (memory, GC, threads, CPU), exported next to the counter; they show the memory
+growth when the recommendationCacheFailure flag is on. -->
 
 ## Logs
 
-### Initializing logs
+<!-- YOUR WORDS: Logback; console keeps Spring Boot's default pattern with trace and span
+ids; the OpenTelemetry Logback appender exports the same records over OTLP; the appender is
+connected to the auto-configured OpenTelemetry instance once at startup. -->
 
-The OpenTelemetry SDK is initialized in the `__main__` code block. The following
-code creates a logger provider with a batch processor, an OTLP log exporter, and
-a logging handler. Finally, it creates a logger for use throughout the
-application.
-
-```python
-logger_provider = LoggerProvider(
-    resource=Resource.create(
-        {
-            'service.name': service_name,
-        }
-    ),
-)
-set_logger_provider(logger_provider)
-log_exporter = OTLPLogExporter(insecure=True)
-logger_provider.add_log_record_processor(BatchLogRecordProcessor(log_exporter))
-handler = LoggingHandler(level=logging.NOTSET, logger_provider=logger_provider)
-
-logger = logging.getLogger('main')
-logger.addHandler(handler)
+```java
+@Component
+class OpenTelemetryAppenderInitializer implements InitializingBean {
+  ...
+  @Override
+  public void afterPropertiesSet() {
+    OpenTelemetryAppender.install(this.openTelemetry);
+  }
+}
 ```
-
-### Create log records
-
-Create logs using the logger. Examples can be found in `ListRecommendations` and
-`get_product_list` functions.
-
-```python
-logger.info(f"Receive ListRecommendations for product ids:{prod_list}")
-```
-
-As you can see, after the initialization, log records can be created in the same
-way as in standard Python. OpenTelemetry libraries automatically add a trace ID
-and span ID for each log record and, in this way, enable correlating logs and
-traces.
-
-### Notes
-
-Logs for Python are still experimental, and some changes can be expected. The
-implementation in this service follows the
-[Python log example](https://github.com/open-telemetry/opentelemetry-python/blob/stable/docs/examples/logs/example.py).
