@@ -62,7 +62,7 @@ analyzed sample:
 This year, we asked the same question as in the similar 2024 survey to see
 whether end users saw progress in interoperability.
 
-The average rating rose by 0.5 point, from 3.1 to 3.6 — as though every second
+The average rating rose by 0.5 point, from 3.1 to 3.6 — as if every second
 respondent had moved up a full category. The clearest movement is at the
 difficult end of the scale: the share of respondents who found the two hard to
 use together dropped to roughly a third of its 2024 level. Also, nobody this
