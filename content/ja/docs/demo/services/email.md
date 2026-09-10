@@ -120,7 +120,7 @@ $logger = OpenTelemetry.logger_provider.logger(name: "email")
 ### 構造化ログの出力 {#emitting-structured-logs}
 
 ロガーの `on_emit` メソッドを使用して構造化ログを書き込むことができます。
-`severity_text`（例: `INFO`、`ERROR`）、人間が読める `body`、そして後でログをクエリする際に役立つ `app.email.recipient` 属性を含めます。
+`severity_text`（例: `INFO`、`ERROR`）、人間が読める `body`、そしてのちにログをクエリする際に役立つ `app.email.recipient` 属性を含めます。
 
 ```ruby
 $logger.on_emit(
