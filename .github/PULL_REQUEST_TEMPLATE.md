@@ -2,8 +2,7 @@
 
 - [ ] I have read and followed the [Contributing](https://opentelemetry.io/docs/contributing/) docs, especially the "**First-time contributing?**" section.
 - [ ] This PR has content that I did not fully write myself.
-  - [ ] I used AI and I have read and followed the [Generative AI Contribution Policy](https://github.com/open-telemetry/community/blob/main/policies/genai.md).
-  - [ ] If this is one of my first 3 contributions, my content is primarily human-written with only minor AI assistance, and my PR description is entirely human-written, as required by our [Generative AI contribution policy](https://opentelemetry.io/docs/contributing/pull-requests/#using-ai).
+- [ ] I used AI and I have read and followed the [Generative AI Contribution Policy](https://opentelemetry.io/docs/contributing/pull-requests/#using-ai).
 - [ ] I have the experience and knowledge necessary to understand, review, and validate all content in this PR.[^I-know-my-stuff]
 
 [^I-know-my-stuff]:
