@@ -44,7 +44,7 @@ OpenTelemetry-for-metrics users on a Prometheus-adjacent backend. We also
 filtered out observability vendor employees to focus on end users. In the analyzed
 sample:
 
-- All respondents in this analysis are active OpenTelemetry users.
+- All respondents are active OpenTelemetry users.
 - All respondents use some flavor of Prometheus – Prometheus itself (46%), an
   open source Prometheus-compatible backend such as Thanos, Cortex, or Grafana
   Mimir (42%), or a PromQL-compatible vendor product (12%).
