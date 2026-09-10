@@ -74,13 +74,12 @@ platforms such as Windows.
 
 The intended lifecycle follows the way process environments already work:
 
-1. A child process receives environment variables when it starts.
-2. During initialization, configured propagators extract values from that
-   environment into a `Context`.
-3. The application creates spans and performs work using that `Context`.
-4. Before starting another child, the application copies the environment and
+1. During initialization, configured propagators extract values from the
+   environment the child process received at startup into a `Context`.
+2. The application creates spans and performs work using that `Context`.
+3. Before starting another child, the application copies the environment and
    injects propagation fields from its current `Context` into that copy.
-5. The application starts the child with the modified environment, and the cycle
+4. The application starts the child with the modified environment, and the cycle
    repeats.
 
 ```mermaid
