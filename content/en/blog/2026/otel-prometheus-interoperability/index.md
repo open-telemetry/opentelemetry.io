@@ -68,7 +68,7 @@ difficult end of the scale: the share of respondents who found the two hard to
 use together dropped to roughly a third of its 2024 level. Also, nobody this
 year picked "Very difficult".
 
-Two years of work on interoperability are paying off. At the same time, since
+Two years of work on interoperability is paying off. At the same time, since
 the single largest group of responses sits at "Neither easy nor difficult",
 there is still a lot of work to be done in this area.
 
