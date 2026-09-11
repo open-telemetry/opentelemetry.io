@@ -4,7 +4,7 @@ linkTitle: Collector
 default_lang_commit: fe623719bc24346e9dcd77e9769026cf1c720cc5
 ---
 
-O [OpenTelemetry Collector](/docs/collector/) é uma forma agnóstico a fornecedores
+O [OpenTelemetry Collector](/docs/collector/) é uma forma agnóstica a fornecedores
 de receber, processar e exportar dados de telemetria. Embora o Collector
 possa ser usado em diversos contextos, esta documentação foca em como usá-lo
 para monitorar Kubernetes e os serviços em execução no Kubernetes. Para uma
