@@ -92,7 +92,7 @@ val otel: OpenTelemetry = createOpenTelemetry {
 
 ### 属性の制限 {#attribute-limits}
 
-[属性の制限](/docs/specs/otel/common/#attribute-limits)は、属性の数と文字数における属性値の長さを制限します。
+[属性の制限](/docs/specs/otel/common/#attribute-limits)は、属性の数と属性値の文字数を制限します。
 以下のようにグローバルに設定できます。
 
 ```kotlin
