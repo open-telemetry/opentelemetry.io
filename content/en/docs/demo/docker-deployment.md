@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: Firepit otlphttp span_metrics
+cSpell:ignore: Firepit span_metrics
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
@@ -49,6 +49,13 @@ docker compose --env-file .env --env-file .env.override \
 
     {{% /tab %}} {{< /tabpane >}}
 
+    > [!NOTE]
+    >
+    > A bare `docker compose up` loads only `compose.yaml`. That starts the web
+    > store, but without Kafka or any of the observability backends, so there is
+    > nowhere to view the telemetry. Pass the files explicitly, as shown above,
+    > or use `make start`.
+
     ### Deployment modes
 
     The demo supports several deployment modes. The default `make start` runs
@@ -82,6 +89,58 @@ docker compose --env-file .env --env-file .env.override \
 
     {{% /tab %}} {{< /tabpane >}}
 
+    ### Run with the AI agent
+
+    The agent, MCP server, and chatbot are not started by default. To add
+    them[^1]:
+
+    {{< tabpane text=true >}} {{% tab Make %}}
+
+```shell
+make start-agentic
+```
+
+    {{% /tab %}} {{% tab Docker %}}
+
+```shell
+docker compose --env-file .env --env-file .env.override \
+  -f compose.yaml -f compose.full.yaml \
+  -f compose.observability.yaml -f compose.extras.yaml \
+  -f compose.agent.yaml \
+  up --force-recreate --remove-orphans --detach
+```
+
+    {{% /tab %}} {{< /tabpane >}}
+
+    This adds the Chatbot UI at <http://localhost:8080/chatbot/>. By default the
+    agent replays recorded LLM responses (`USE_VCR=True`), so no API key is
+    required. To talk to a real LLM, set `LLM_BASE_URL`, `LLM_MODEL`, and
+    `API_KEY` in `.env.override`.
+
+    ### Run with continuous profiling
+
+    To add the eBPF profiler and the Firepit profiling UI[^1]:
+
+    {{< tabpane text=true >}} {{% tab Make %}}
+
+```shell
+make start-profiling
+```
+
+    {{% /tab %}} {{% tab Docker %}}
+
+```shell
+docker compose --env-file .env --env-file .env.override \
+  -f compose.yaml -f compose.full.yaml \
+  -f compose.observability.yaml -f compose.profiling.yaml \
+  -f compose.extras.yaml \
+  up --force-recreate --remove-orphans --detach
+```
+
+    {{% /tab %}} {{< /tabpane >}}
+
+    Profiles are then available at <http://localhost:8080/profiles/>.
+
 4. (Optional) Run telemetry sanity tests:
 
     The demo includes a suite of telemetry sanity tests that verify each
@@ -113,6 +172,28 @@ docker run --rm --network opentelemetry-demo \
   --env-file .env --env-file .env.override \
   -e TEST_SCOPE=full \
   opentelemetry-demo-telemetry-tests
+```
+
+    {{% /tab %}} {{< /tabpane >}}
+
+5. (Optional) Run the frontend end-to-end tests[^1]:
+
+    The Cypress frontend tests run against a demo that is already up:
+
+    {{< tabpane text=true >}} {{% tab Make %}}
+
+```shell
+make run-frontend-tests
+```
+
+    {{% /tab %}} {{% tab Docker %}}
+
+```shell
+docker compose --env-file .env --env-file .env.override \
+  -f compose.yaml -f compose.full.yaml \
+  -f compose.observability.yaml -f compose.extras.yaml \
+  -f compose.tests.yaml \
+  run frontendTests
 ```
 
     {{% /tab %}} {{< /tabpane >}}
@@ -171,15 +252,21 @@ backend you already have (e.g., an existing instance of Jaeger, Zipkin, or one
 of the [vendors of your choice](/ecosystem/vendors/)).
 
 OpenTelemetry Collector can be used to export telemetry data to multiple
-backends. By default, the collector in the demo application merges the
-configuration from the following files (in order):
+backends. The collector in the demo application layers its configuration from
+several files, each merged on top of the previous one. Which files are loaded
+depends on how you start the demo:
 
-- `otelcol-config.yml` — base receivers, processors, and pipelines
-- `otelcol-config-full.yml` — Kafka and PostgreSQL metric receivers (full mode)
-- `otelcol-config-observability.yml` — Jaeger, Prometheus, and OpenSearch
-  exporters (when using the observability stack)
-- `otelcol-config-extras.yml` — empty stub for customizations, always loaded
-  last
+- `otelcol-config.yml` — the base configuration, always loaded
+- `otelcol-config-full.yml` — adds the receivers for services that only run in
+  the full demo, such as Kafka
+- `otelcol-config-observability.yml` — wires up the bundled backends (Jaeger,
+  Prometheus, and OpenSearch)
+- `otelcol-config-extras.yml` — your own additions, always loaded last
+
+`make start` and `make start-minimal` load all four files. Starting the demo
+without the observability stack loads fewer of them, but
+`otelcol-config-extras.yml` is always applied last, so your changes take
+precedence in every mode.
 
 To add your backend, open the file
 [src/otel-collector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml)
@@ -190,7 +277,7 @@ with an editor.
 
   ```yaml
   exporters:
-    otlphttp/example:
+    otlp_http/example:
       endpoint: <your-endpoint-url>
   ```
 
@@ -201,7 +288,7 @@ with an editor.
   service:
     pipelines:
       traces:
-        exporters: [debug, otlp_grpc/jaeger, span_metrics, otlphttp/example]
+        exporters: [debug, otlp_grpc/jaeger, span_metrics, otlp_http/example]
   ```
 
 > [!NOTE]
