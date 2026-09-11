@@ -125,20 +125,21 @@ Outcomes:
 
 
 
-### 3. Use the OpenTelemetry Operator as the Control Plane for Collector Lifecycle and Distributed Prometheus Scraping
+### 3. Use the OpenTelemetry Operator as the Collector Control Plane, and scrape Prometheus targets node-locally
 
 Challenges Addressed: 3
 
-The OpenTelemetry Operator must manage all OTel Collectors in the cluster. It provides two capabilities essential for correct Kubernetes observability:
+The OpenTelemetry Operator must manage all OTel Collectors in the cluster. The `OpenTelemetryCollector` CRD declares Collector configuration as a Kubernetes object, enabling GitOps workflows, versioned rollouts, and the deployment modes this blueprint uses — **DaemonSet** for per-node collection and optional **Deployment** for cluster-scoped work when leader election is not available.
 
-- `TargetAllocator`: Without coordination, each Collector replica independently discovers and scrapes *all* Prometheus targets — N replicas produce N× the data volume, making `sum(rate(...))` aggregations incorrect. The `TargetAllocator` acts as a single service discovery coordinator: it builds the full target list once and distributes targets across replicas such that each target is scraped by exactly one replica.
-- `OpenTelemetryCollector` **CRD**: Declares Collector configuration as a Kubernetes object, enabling GitOps workflows, versioned rollouts, and per-namespace scoping. The Operator also manages Collector deployment modes — **Deployment** for cluster-scoped scraping with TargetAllocator, **DaemonSet** for node-level collection — each appropriate for different collection patterns in this blueprint.
+Scraping Prometheus-native cluster components (CoreDNS, CNI plugins, Ingress controllers, KEDA, cert-manager, and similar `/metrics` endpoints) does **not** require the Target Allocator. Each DaemonSet Collector pod should discover and scrape only targets on **its own node**, using Kubernetes pod service discovery filtered by `spec.nodeName` (kube-stack injects `${OTEL_K8S_NODE_NAME}` on DaemonSet collectors). Pods opt in with the classic Prometheus annotations (`prometheus.io/scrape=true`, plus optional `prometheus.io/port`, `prometheus.io/path`, and `prometheus.io/scheme`).
+
+Because a given pod lives on exactly one node, each target is scraped by exactly one Collector replica — no cluster-wide target list, no Target Allocator, and no double-scraping from overlapping ServiceMonitor/PodMonitor jobs. Do not combine this node-local pattern with Target Allocator (or any other cluster-wide scrape) against the same endpoints.
 
 The Operator additionally introduces the `Instrumentation` CRD for zero-code auto-instrumentation injection. While that is out of scope here, it makes the Operator the correct foundational dependency for the full cluster observability stack.
 
 Outcomes:
 
-- Each Prometheus target scraped exactly once regardless of Collector replica count.
+- Each Prometheus target scraped exactly once, by the Collector on the node where the target runs.
 - Collector lifecycle is managed automatically w/ autohealing
 
 
@@ -163,8 +164,7 @@ flowchart TD
   Start -->|"`Container stdout/stderr logs<br/>`"| Logs["`**filelog receiver**<br/>(logsCollection preset)<br/>tails /var/log/pods`"]
   Start -->|"`App OTLP or third-party<br/>Prometheus /metrics`"| Scraped["`Needs pod correlation`"]
 
-  Scraped -->|"`PodMonitor/ServiceMonitor CR`"| TAcr["`**Prometheus receiver + Target Allocator**`"]
-  Scraped -->|"`Annotations / kubernetes_sd_configs`"| TAann["`**Prometheus receiver + Target Allocator**`"]
+  Scraped -->|"`prometheus.io/scrape annotation`"| Prom["`**prometheus receiver on DaemonSet**<br/>node-local SD (spec.nodeName)`"]
   Scraped -->|"`OTLP from SDKs / agents`"| OTLP["`**OTLP receiver**`"]
 
   Cluster --> Export
@@ -173,8 +173,7 @@ flowchart TD
   Objects --> Export
   Events --> Export
 
-  TAcr --> K8sAttr["`**k8sattributesprocessor**<br/>pod metadata + labels/annotations`"]
-  TAann --> K8sAttr
+  Prom --> K8sAttr["`**k8sattributesprocessor**<br/>pod metadata + labels/annotations`"]
   OTLP --> K8sAttr
   Logs --> K8sAttr
   Kubelet -.->|"`optional: labels/annotations<br/>(and ownership attrs)`"| K8sAttr
@@ -191,7 +190,7 @@ Guidelines Supported: 1, 2, 3
 
 Deploy the `opentelemetry-kube-stack` Helm chart as the foundation for this blueprint. The chart installs the OpenTelemetry Operator together with a suite of Collectors managed as `OpenTelemetryCollector` CRs — so you do not need separate `opentelemetry-operator` and `opentelemetry-collector` chart releases.
 
-Out of the box, the chart deploys a **DaemonSet** collector with the presets this blueprint relies on (`hostMetrics`, `kubeletMetrics`, `kubernetesAttributes`, `kubernetesEvents`, and `clusterMetrics`, `logsCollection`, among others). Cluster-wide metrics use leader election on that DaemonSet so only one replica emits them; if leader election is not an option, use the chart's no-leader-election alternative, which separates cluster-scoped collection. The Operator's TargetAllocator remains available for distributed Prometheus scraping of critical components (Implementation step 6).
+Out of the box, the chart deploys a **DaemonSet** collector with the presets this blueprint relies on (`hostMetrics`, `kubeletMetrics`, `kubernetesAttributes`, `kubernetesEvents`, and `clusterMetrics`, `logsCollection`, among others). Cluster-wide metrics use leader election on that DaemonSet so only one replica emits them; if leader election is not an option, use the chart's no-leader-election alternative, which separates cluster-scoped collection. The same DaemonSet scrapes Prometheus-native components on the local node (Implementation step 6).
 
 Rather than hand-writing receiver, processor, and RBAC configuration, configure collection through the chart's **presets** under `collectors.`* — each preset wires the matching receiver/processor into the pipeline and generates the required RBAC, volumes, and mounts. The remaining steps are `values.yaml` fragments for this chart.
 
@@ -200,7 +199,6 @@ Documentation:
 - [OpenTelemetry Kube Stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack)
 - [No-leader-election alternative setup](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack/examples/no-leader-election-extension)
 - [OpenTelemetry Operator](https://opentelemetry.io/docs/platforms/kubernetes/operator/)
-- [TargetAllocator](https://opentelemetry.io/docs/platforms/kubernetes/operator/target-allocator/)
 
 
 
@@ -284,25 +282,22 @@ Documentation:
 
 
 
-### 6. Configure Prometheus Scraping w/ Autodiscovery
+### 6. Scrape Prometheus-native components node-locally on the DaemonSet
 
 Guidelines Supported: 3
 
-Adding manual scrape targets using the Prometheus receiver is prone to double-scraping which inflates the value of metrics making them unreliable. 
+Manual, cluster-wide scrape targets on the Prometheus receiver are prone to double-scraping, which inflates metric values and makes them unreliable. The Target Allocator solves that by sharding targets across Collector replicas, but it is unnecessary when every Collector already runs as a DaemonSet.
 
-The recommended implementation is to configure the Target Allocator to match your Metrics collectors. It overrides existing scrape_configs in the Prometheus Receiver, making the definition of scrape targets centralized.
+The recommended implementation is the kube-stack DaemonSet pattern: the Prometheus receiver uses Kubernetes pod service discovery restricted to the local node (`spec.nodeName=${OTEL_K8S_NODE_NAME}`). Each Collector pod scrapes only annotated pods on that node. A pod lives on one node, so it is scraped once.
 
-The Target Allocator works by discovering scrape targets and assigning them to existing Opentelemetry collectors by spreading the workload and ensuring no double-scraping happens.
+Out of the box, kube-stack loads `collectors.daemon.scrape_configs_file: daemon_scrape_configs.yaml`, which already includes a job for pods carrying `prometheus.io/scrape=true` (and honors `prometheus.io/port`, `prometheus.io/path`, and `prometheus.io/scheme`). To get the same behavior without the scrape file, set `scrape_configs_file: ""` and enable `collectors.daemon.presets.prometheus.podAnnotations` — those presets are mutually exclusive with `scrape_configs_file` and require `mode: daemonset`.
 
-Whenever possible, it is preferable to configure the Target Allocator to match existing Prometheus CR like PodMonitor/ServiceMonitor, by doing this, you'll ensure that every new component will be observed by default, provided that this components declares a PodMonitor/ServiceMonitor.
-
-If a Prometheus CR is not available, using the Prometheus Receiver `kubernetes_sd_configs` config to scrape targets that has specific annotations is the recommended practice.
+Ensure critical cluster components (CoreDNS, CNI plugins, Ingress controllers, KEDA, cert-manager, and similar) expose a `/metrics` endpoint and carry `prometheus.io/scrape=true`. Do **not** also scrape those same endpoints via Target Allocator, ServiceMonitor, or PodMonitor — overlapping discovery is what reintroduces double-scraping.
 
 Documentation:
 
-- [Target Allocator PodMonitor/ServiceMonitor selectors](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#podservice-monitor-selectors)
+- [OpenTelemetry Kube Stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack)
 - [Prometheus Receiver getting started](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md#getting-started)
-- [TargetAllocator](https://opentelemetry.io/docs/platforms/kubernetes/operator/target-allocator/)
 
 
 
