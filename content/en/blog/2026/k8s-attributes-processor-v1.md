@@ -15,7 +15,7 @@ v1.0.0! You can try it out on your custom distro, and it is also available as
 part of the latest opentelemetry-collector-contrib and
 opentelemetry-collector-k8s distro releases.
 
-Being v1.0.0 means the component now is verified to fulfill the
+Being v1.0.0 means the component is now verified to fulfill the
 ['stable' stability criteria](https://github.com/open-telemetry/opentelemetry-collector/blob/7d1c25d46b14cce04a820d92a4ce462bf7a04b0b/docs/component-stability.md#stable)
 including requirements around testing, benchmarking, documentation and telemetry
 stability. It also ensures you can redistribute it as a Go library or as part of
