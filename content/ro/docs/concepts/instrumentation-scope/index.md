@@ -14,11 +14,11 @@ a distinge o sursă de telemetrie de alta.
 
 Un domeniu este identificat printr-un tuplu
 `(name, version, schema_url, attributes)`, unde `version`, `schema_url` și
-`attributes` sunt opționale. Câmpul `name` trebuie să identifice în mod unic
+`attributes` sunt opționale. Câmpul `name` ar trebui să identifice în mod unic
 unitatea logică de software — de exemplu, numele complet calificat al unei
 biblioteci, clase sau al unui modul.
 
-Specifică domeniul atunci când obții un _tracer_, un _meter_ sau un _logger_ de
+Specifici domeniul atunci când obții un _tracer_, un _meter_ sau un _logger_ de
 la un furnizor (_provider_). Fiecare _span_, metrică și înregistrare de jurnal
 produsă de acea instanță este apoi marcată cu domeniul respectiv:
 
@@ -33,10 +33,9 @@ produsă de acea instanță este apoi marcată cu domeniul respectiv:
 ## De ce sunt importante domeniile {#why-scopes-matter}
 
 În sistemul _backend_ de observabilitate, poți filtra, grupa și compara datele
-de telemetrie în funcție de domeniu. Acest lucru permite identificarea versiunii
-de bibliotecă ce cauzează latență, izolarea semnalelor provenite de la un anumit
-modul sau compararea comportamentului între versiuni diferite ale aceleiași
-componente.
+de telemetrie în funcție de domeniu. Acest lucru permite identificarea versiunii unei biblioteci
+care cauzează latență, izolarea semnalelor provenite de la un anumit modul sau compararea
+comportamentului între versiuni diferite ale aceleiași componente.
 
 ## Domenii într-o urmă {#scopes-in-a-trace}
 
