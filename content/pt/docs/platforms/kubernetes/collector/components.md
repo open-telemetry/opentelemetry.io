@@ -7,7 +7,7 @@ cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics
 ---
 
 O [OpenTelemetry Collector](/docs/collector/) oferece suporte a muitos
-_receivers_ (receptores) e _processors_ (processadores) diferentes para
+_receivers_ e _processors_ diferentes para
 facilitar o monitoramento do Kubernetes. Esta seção aborda os componentes mais
 importantes para coletar os dados do Kubernetes e enriquecê-los.
 
@@ -42,7 +42,7 @@ mas qualquer _receiver_ compatível com seus dados é apropriado.
 
 O Kubernetes Attributes Processor descobre automaticamente os pods do
 Kubernetes, extrai seus metadados e adiciona esses metadados aos rastros,
-métricas e logs como _resource attributes_ (atributos de recurso).
+métricas e logs como atributos de recurso.
 
 **O Kubernetes Attributes Processor é um dos componentes mais importantes para
 um Collector em execução no Kubernetes. Qualquer Collector que receba dados de
