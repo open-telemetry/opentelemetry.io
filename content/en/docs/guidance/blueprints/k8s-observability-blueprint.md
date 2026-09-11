@@ -34,7 +34,7 @@ Documentation:
 
 
 
-### 1. Workload Telemetry Is Incomplete
+### 1. Workload telemetry is incomplete
 
 CPU throttling, OOM kills, pod phase transitions, and probe failures are not emitted by application code. They are only accessible through the Kubernetes API server, sources the platform team must explicitly collect.
 
