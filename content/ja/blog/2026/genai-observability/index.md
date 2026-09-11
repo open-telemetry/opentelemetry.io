@@ -5,8 +5,7 @@ date: 2026-05-14
 author: '[James Newton-King](https://github.com/jamesnk) (Microsoft)'
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/9707
 sig: SIG GenAI Observability
-default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
-drifted_from_default: true
+default_lang_commit: f2a4b7cb9db81fb72aebf4019f6974ce8ede59de
 cSpell:ignore: genai
 ---
 
@@ -32,7 +31,7 @@ GenAI 操作の記録方法を標準化しており、呼び出されたモデ�
 ただし、多くのコーディングアシスタントが OpenTelemetry によるモニタリングをサポートしています。
 
 - [VS Code Copilot](https://code.visualstudio.com/docs/copilot/guides/monitoring-agents) は、エージェントとのやり取りごとにトレース、メトリクス、イベントを出力します。
-- [OpenAI Codex](https://developers.openai.com/codex/config-advanced#observability-and-telemetry) は、API リクエスト、ツール呼び出し、セッションについて、構造化ログイベントと OTel メトリクスをエクスポートします。
+- [OpenAI Codex](https://learn.chatgpt.com/docs/config-file/config-advanced#__codexlocalizedvalueprops__codextranslations-u0087-observability-and-telemetry) は、API リクエスト、ツール呼び出し、セッションについて、構造化ログイベントと OTel メトリクスをエクスポートします。
 - [Claude Code](https://code.claude.com/docs/en/monitoring-usage) は OTel でメトリクスとログイベントをエクスポートし、トレース対応はベータ版で提供されています。
 
 すでに使っているツールをモニタリングするだけでなく、自分の GenAI アプリケーションに OpenTelemetry を組み込めば、LLM とのやり取りの様子を可視化できます。
