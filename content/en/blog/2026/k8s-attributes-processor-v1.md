@@ -77,7 +77,7 @@ users, for which we have written a
 [summary of the changes and migration guide](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/42e6adb99d409af1935536652e633d49c98e77cd/processor/k8sattributesprocessor#semantic-conventions-compatibility)
 to help with updates.
 
-This milestone paves the way for more components to follow and more help from
+This milestone paves the way for more components to follow, and more help from
 the community will be much appreciated. If you want to help the OpenTelemetry
 Collector move towards its more stable future, there's still
 [a lot to do](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/44130).
