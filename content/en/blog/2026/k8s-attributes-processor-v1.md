@@ -62,7 +62,7 @@ Conventions reached the Release Candidate state and in June 2026
 This allowed the Kubernetes attributes processor to enrich the telemetry with
 stable K8s attributes, ensuring the component's telemetry remains stable going
 forward. Along with the
-[long running work](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/44483)
+[long-running work](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/44483)
 to make the component meet the stability requirements, the component
 [went through the graduation process](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/49274).
 After several weeks of communications and endorsements from end users that use
