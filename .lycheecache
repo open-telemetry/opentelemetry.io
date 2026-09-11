@@ -1545,6 +1545,7 @@ https://github.com/jeanbisutti,200,1787981979
 https://github.com/jeffhostetler,200,1788846167
 https://github.com/jenkinsci,200,1787916868
 https://github.com/jenkinsci/opentelemetry-plugin/,200,1787916868
+https://github.com/jenkinsci/opentelemetry-plugin/blob/6f67e4ab1d1513f7f513d7570907dd341094a74d/docs/job-traces.md#environment-variables-for-trace-context-propagation-and-integrations,200,1788853758
 https://github.com/jenniferplusplus/opentelemetry-instrumentation-bullmq,200,1787916871
 https://github.com/jerbly,200,1788414923
 https://github.com/jfinal/jfinal,200,1787916957
@@ -1626,6 +1627,7 @@ https://github.com/krakend/krakend-otel,200,1788241804
 https://github.com/krisztianfekete,200,1787981981
 https://github.com/krnowak,200,1787981981
 https://github.com/krol3,200,1787981980
+https://github.com/krzko/run-with-telemetry/blob/c2636c369317450dfd825ae4b67760d49600ca18/README.md#environment-variables-injection,200,1788853758
 https://github.com/ktorio/ktor,200,1787916956
 https://github.com/kubernetes,200,1788241805
 https://github.com/kubernetes-client/java,200,1787916956
@@ -3947,6 +3949,10 @@ https://github.com/open-telemetry/opentelemetry-specification/blob/9a946352ecdec
 https://github.com/open-telemetry/opentelemetry-specification/blob/af2606810c19c31850738d1fd105b4eca7aa8c98/spec-compliance-matrix.md?from_branch=main#declarative-configuration,200,1788241803
 https://github.com/open-telemetry/opentelemetry-specification/blob/af2606810c19c31850738d1fd105b4eca7aa8c98/spec-compliance-matrix.md?from_branch=main,200,1788846197
 https://github.com/open-telemetry/opentelemetry-specification/blob/b72b9e1127391871eaedee841895ff9ce52d11f3/oteps/trace/0250-Composite_Samplers.md?from_branch=main,200,1788846197
+https://github.com/open-telemetry/opentelemetry-specification/blob/ce9394dc3dd53bb182611d2f3ba1e8f53975e905/specification/context/api-propagators.md#operations,200,1788886907
+https://github.com/open-telemetry/opentelemetry-specification/blob/ce9394dc3dd53bb182611d2f3ba1e8f53975e905/specification/context/api-propagators.md#textmap-propagator,200,1789039334
+https://github.com/open-telemetry/opentelemetry-specification/blob/eec6fadba46a5002f55ff88ce4405d58a1aa4aec/spec-compliance-matrix.md,200,1788873821
+https://github.com/open-telemetry/opentelemetry-specification/blob/eec6fadba46a5002f55ff88ce4405d58a1aa4aec/specification/context/env-carriers.md,200,1788422896
 https://github.com/open-telemetry/opentelemetry-specification/blob/fd43145dde7e5192ebc59a20992d98a3e6af5553/oteps/4430-span-event-api-deprecation-plan.md,200,1788846195
 https://github.com/open-telemetry/opentelemetry-specification/blob/main/development/trace/zpages.md,200,1787981975
 https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0155-external-modules.md#contrib-components,200,1787981970
@@ -4005,6 +4011,8 @@ https://github.com/open-telemetry/opentelemetry-specification/blob/v1.59.0/speci
 https://github.com/open-telemetry/opentelemetry-specification/issues/1413,200,1788846198
 https://github.com/open-telemetry/opentelemetry-specification/issues/3967,200,1788241827
 https://github.com/open-telemetry/opentelemetry-specification/issues/4126,206,1787918248
+https://github.com/open-telemetry/opentelemetry-specification/issues/4771,200,1788422897
+https://github.com/open-telemetry/opentelemetry-specification/issues/5040,200,1788422897
 https://github.com/open-telemetry/opentelemetry-specification/issues/5109,200,1787917016
 https://github.com/open-telemetry/opentelemetry-specification/issues/530,200,1787916993
 https://github.com/open-telemetry/opentelemetry-specification/issues/617,200,1787981974
@@ -4554,6 +4562,8 @@ https://github.com/pkanal,200,1788414928
 https://github.com/playframework/play-ws,200,1787916957
 https://github.com/playframework/playframework,200,1787916957
 https://github.com/plengauer,200,1787916886
+https://github.com/plengauer/Thoth/blob/f1837aa22450dd691359f1dd05bcc6aec41162dd/README.md#automatic-instrumentation-of-github-actions,200,1788853758
+https://github.com/plengauer/Thoth/blob/f1837aa22450dd691359f1dd05bcc6aec41162dd/README.md#automatic-instrumentation-of-shell-scrips,200,1788873821
 https://github.com/plengauer/opentelemetry-bash,200,1787916886
 https://github.com/pmcollins,200,1788414928
 https://github.com/povilasv,200,1788414928
@@ -4747,7 +4757,8 @@ https://github.com/tidal,200,1788414996
 https://github.com/tiffany76,200,1787981979
 https://github.com/tigrannajaryan,200,1788414922
 https://github.com/timetinytim,200,1787981975
-https://github.com/tobiasstadler,200,1788414996
+https://github.com/tobert/otel-cli,200,1788422896
+https://github.com/tobiasstadler,200,1787916710
 https://github.com/tokio-rs/tracing-opentelemetry,200,1787916884
 https://github.com/tombrk,200,1787981985
 https://github.com/tonglil,200,1787916886
