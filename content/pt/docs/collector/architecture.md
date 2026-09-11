@@ -2,7 +2,6 @@
 title: Arquitetura
 weight: 28
 default_lang_commit: 714d6cc9c14f0cc2ef26397587388644b0e5d12f
-drifted_from_default: false
 cSpell:ignore: fanoutconsumer probabilisticsampler zpages
 ---
 
