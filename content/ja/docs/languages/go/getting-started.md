@@ -2,6 +2,7 @@
 title: Getting Started（入門）
 weight: 10
 default_lang_commit: 869b2bb90ca9e54d8d98e7815e66111b577165eb
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: autoexport chan fatalln funcs intn itoa otelhttp rolldice stdouttrace strconv
 ---
