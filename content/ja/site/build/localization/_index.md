@@ -4,13 +4,14 @@ linkTitle: ローカリゼーションのセットアップ
 description: >-
   OpenTelemetry ウェブサイトに新しい言語のローカリゼーションをオンボーディングするための、メンテナー向けステップバイステップガイド。
 weight: 50
-default_lang_commit: 346b2912021b98de4349f80753c829d9223a1f25
+default_lang_commit: 3c1e6e89077b2afbb9a3ffd5ff61a132b53152aa
 ---
 
 このガイドでは、OTel ウェブサイトのメンテナーが新しい言語のローカリゼーションをオンボーディングするために必要なすべての変更手順を説明します。
 リポジトリレベルの変更と GitHub 組織レベルのセットアップの両方を扱います。
 
 コントリビューター向けの情報（翻訳ガイダンス、差分の追跡、継続的なメンテナンス）については、[Site localization][] を参照してください。
+リポジトリ側のステップをエージェントで実行するバージョンについては、[`setup-new-localization` skill][] を参照してください。
 
 アクティブなローカリゼーションチームとそのリソースの正式なレジストリは [`projects/localization.md`][] にあります。
 
@@ -214,11 +215,27 @@ lang:LANG_ID:
 
 ### コードオーナー {#code-owners}
 
-- [`.github/CODEOWNERS`][] で、ロケールチームにそのファイルの**単独**所有権を付与します。
-  ファイル内に記載されているガイダンスに従ってください。
-- エントリはアルファベット順に配置してください。
-- [`.github/component-owners.yml`][] にはエントリを**追加しないでください**。
-  2026年6月時点で、このファイルへの変更は不要になっています。
+[`.github/CODEOWNERS`][] のロケールセクションは [`data/locale-teams.yaml`][] レジストリから生成されます。手動で編集しないでください。
+
+1. レジストリにロケールをアルファベット順で追加し、メンターと初期コントリビューターを承認者として記載します。
+
+   ```yaml
+   LANG_ID:
+     maintainers: []
+     approvers: [GITHUB_HANDLE1, GITHUB_HANDLE2]
+   ```
+
+   メンテナーが不在のロケールは[未配置][unstaffed]です。そのロケールが昇格するまで、CODEOWNERS の行にはフォールバックオーナーとして `@open-telemetry/docs-approvers` も記載されます。
+
+2. CODEOWNERS のロケールセクションを再生成します。
+
+   ```sh
+   npm run fix:codeowners
+   ```
+
+`content/LANG_ID/` を追加する PR に、両方の変更を含めてください。CI はレジストリとロケールディレクトリの一致を要求します。
+
+[`.github/component-owners.yml`][] にはエントリを**追加しないでください**。2026年6月時点で、このファイルへの変更は不要になっています。
 
 ## ステップ 6 — GitHub 組織レベルのセットアップ {#gh-org}
 
@@ -290,7 +307,7 @@ lang:LANG_ID:
 - [ ] **ステップ 3** — cSpell を設定した。
       辞書をインストールした（またはロケールを `ignorePaths` に追加した）、`.cspell/LANG_ID-words.txt` にカスタム単語リストを作成した、`.cspell.yml` を更新した
 - [ ] **ステップ 4** — `.prettierignore` を更新した（スクリプトに該当する場合）
-- [ ] **ステップ 5** — `.github/component-label-map.yml`（ラベルエントリ）と `.github/CODEOWNERS`（単独所有権ブロック）をロケール用に更新した
+- [ ] **ステップ 5** — `.github/component-label-map.yml`（ラベルエントリ）と `data/locale-teams.yaml`（レジストリエントリ）を更新した。`.github/CODEOWNERS` を再生成した
 - [ ] **ステップ 6** — `open-telemetry/admin` にチーム PR を作成した。
       チームメンバーを手動で追加した
 - [ ] **ステップ 7** — Slack チャンネル `#otel-localization-LANG_ID` を作成した。
@@ -303,12 +320,14 @@ lang:LANG_ID:
 
 - **`npm run build`** — Hugo がエラーなしで新しい言語を認識することを確認します。
 - **`npm run check:spelling`** — cspell の設定が有効であり、新しい辞書エントリによってエラーが発生していないことを確認します。
+- **`npm run check:codeowners`** — CODEOWNERS のロケールセクションがレジストリと一致していることを確認します。
 - **GitHub ラベルの自動化** — `content/LANG_ID/` 配下のファイルに触れるテスト PR を作成し、`lang:LANG_ID` ラベルが自動的に付与されることを確認します。
 
 [`.cspell.yml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml
 [`.prettierignore`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.prettierignore
 [`.github/component-label-map.yml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml
 [`.github/CODEOWNERS`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
+[`data/locale-teams.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
 [`.github/component-owners.yml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
 [`projects/localization.md`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/localization.md
 [`config/_default/module-template.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
@@ -316,5 +335,7 @@ lang:LANG_ID:
 [kickoff issue]: /docs/contributing/localization/#kickoff
 [New localizations]: /docs/contributing/localization/#new-localizations
 [Site localization]: /docs/contributing/localization/
+[`setup-new-localization` skill]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/setup-new-localization/SKILL.md
+[unstaffed]: /docs/contributing/localization/#locale-teams
 [ISO 639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
 [CNCF Slack workspace]: https://cloud-native.slack.com
