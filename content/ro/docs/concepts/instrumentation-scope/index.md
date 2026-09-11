@@ -35,7 +35,8 @@ produsă de acea instanță este apoi marcată cu domeniul respectiv:
 În sistemul _backend_ de observabilitate, poți filtra, grupa și compara datele
 de telemetrie în funcție de domeniu. Acest lucru permite identificarea versiunii
 unei biblioteci care cauzează latență, izolarea semnalelor provenite de la un
-anumit modul sau compararea comportamentului între versiuni diferite ale aceleiași componente.
+anumit modul sau compararea comportamentului între versiuni diferite ale
+aceleiași componente.
 
 ## Domenii într-o urmă {#scopes-in-a-trace}
 
