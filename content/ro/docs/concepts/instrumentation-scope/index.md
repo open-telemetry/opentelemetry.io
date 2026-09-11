@@ -1,0 +1,54 @@
+---
+title: Domeniul de instrumentare
+weight: 80
+---
+
+[Domeniul de instrumentare](/docs/specs/otel/common/instrumentation-scope/) este o
+unitate logică de software cu care sunt asociate datele de telemetrie emise. Acesta
+poate reprezenta un modul, un pachet, o clasă, o bibliotecă sau un framework —
+orice delimitare semnificativă pe care un dezvoltator o alege pentru a distinge
+o sursă de telemetrie de alta.
+
+## Cum se definește un domeniu {#how-a-scope-is-defined}
+
+Un domeniu este identificat printr-un tuplu `(name, version, schema_url, attributes)`,
+unde `version`, `schema_url` și `attributes` sunt opționale. Câmpul `name` trebuie
+să identifice în mod unic unitatea logică de software — de exemplu, numele complet
+calificat al unei biblioteci, clase sau al unui modul.
+
+Specifică domeniul atunci când obții un *tracer*, un *meter* sau un *logger*
+de la un furnizor (*provider*). Fiecare *span*, metrică și înregistrare de jurnal
+produsă de acea instanță este apoi marcată cu domeniul respectiv:
+
+- **Pentru biblioteci și framework-uri**: utilizează numele complet calificat și
+versiunea bibliotecii ca domeniu. Dacă scrii o bibliotecă de instrumentare
+pentru o bibliotecă ce nu dispune de suport nativ OpenTelemetry, utilizează
+numele și versiunea bibliotecii de instrumentare însăși.
+
+- **Pentru codul aplicației**: o alegere comună este numele clasei sau al
+modulului, cum ar fi `CheckoutService`.  
+
+## De ce sunt importante domeniile {#why-scopes-matter}
+
+În sistemul *backend* de observabilitate, poți filtra, grupa și compara datele
+de telemetrie în funcție de domeniu. Acest lucru permite identificarea versiunii
+de bibliotecă ce cauzează latență, izolarea semnalelor provenite de la un anumit
+modul sau compararea comportamentului între versiuni diferite ale aceleiași
+componente.
+
+## Domenii într-o urmă {#scopes-in-a-trace}
+
+Diagrama următoare prezintă o urmă (*trace*) care conține *span*-uri din șase
+domenii de instrumentare diferite, marcate prin culori și identificate în legendă:
+
+- Domeniul `http-framework` generează *span*-ul rădăcină `/api/placeOrder`.
+- Domeniul `CheckoutService` generează `CheckoutService::placeOrder`,
+  `CheckoutService::prepareOrderItems` și `CheckoutService::checkout`. Toate
+  cele trei *span*-uri partajează același domeniu de instrumentare deoarece sunt
+  create de aceeași instanță de *tracer*, obținută cu numele `CheckoutService`. 
+- Domeniile `CartService` și `ProductService` generează fiecare câte un span din
+  componentele respective ale aplicației.
+- Domeniile `Cache library` și `DB library` generează span-uri din codul bibliotecilor,
+  grupate în funcție de numele și versiunea bibliotecii.
+
+![Diagramă de tip cascadă a urmăririi, cu span-uri colorate în funcție de domeniul de instrumentare. O legendă din partea de jos asociază fiecare culoare cu numele domeniului corespunzător.](spans-with-instrumentation-scope.svg)
