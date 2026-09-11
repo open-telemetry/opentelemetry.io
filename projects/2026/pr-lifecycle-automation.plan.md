@@ -2,7 +2,6 @@
 title: Redesign of PR lifecycle automation
 custodian: '[Vitor Vasconcellos](https://github.com/vitorvasc)'
 status: draft
-cSpell:ignore: unstaffed
 ---
 
 ## Context {#context}
