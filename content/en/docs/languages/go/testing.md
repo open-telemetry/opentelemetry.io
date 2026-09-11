@@ -15,7 +15,7 @@ Use the `tracetest` package to capture spans in memory during tests.
 
 Ensure you have the right packages installed:
 
-```bash
+```sh
 go get go.opentelemetry.io/otel/sdk/trace \
   go.opentelemetry.io/otel/sdk/trace/tracetest
 ```
