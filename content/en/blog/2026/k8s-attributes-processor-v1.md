@@ -81,5 +81,5 @@ This milestone paves the way for more components to follow, and more help from
 the community will be much appreciated. If you want to help the OpenTelemetry
 Collector move towards its more stable future, there's still
 [a lot to do](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/44130).
-Join us with your feedback and thoughts, or ask the maintainers how you could help in
-more direct ways.
+Join us with your feedback and thoughts, or ask the maintainers how you could
+help in more direct ways.
