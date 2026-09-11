@@ -54,4 +54,4 @@ legendă:
 - Domeniile `Cache library` și `DB library` generează span-uri din codul
   bibliotecilor, grupate în funcție de numele și versiunea bibliotecii.
 
-![Diagramă de tip cascadă a urmăririi, cu span-uri colorate în funcție de domeniul de instrumentare. O legendă din partea de jos asociază fiecare culoare cu numele domeniului corespunzător.](spans-with-instrumentation-scope.svg)
+![Diagramă de tip cascadă a urmăririi, cu span-uri colorate în funcție de domeniul de instrumentare. O legendă din partea de jos asociază fiecare culoare cu numele domeniului corespunzător.](ro-spans-with-instrumentation-scope.svg)
