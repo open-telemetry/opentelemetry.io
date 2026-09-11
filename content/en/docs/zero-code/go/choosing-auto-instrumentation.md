@@ -40,8 +40,8 @@ fundamental architectural difference between the two approaches:
 ## OBI
 
 [OpenTelemetry eBPF Instrumentation (OBI)](/docs/zero-code/obi/) uses eBPF
-([What is eBPF?](https://ebpf.io/what-is-ebpf)) to automatically inspect application
-executables and the OS networking layer.
+([What is eBPF?](https://ebpf.io/what-is-ebpf)) to automatically inspect
+application executables and the OS networking layer.
 
 - **How it hooks in:** Deploys eBPF probes in the Linux kernel and the
   application to capture trace spans and metrics as system calls and network
@@ -54,8 +54,10 @@ executables and the OS networking layer.
 - **Telemetry produced:** Excels at capturing traces (incoming and outgoing
   spans for HTTP/S, gRPC, database queries), RED (Rate, Errors, Duration)
   metrics, network flows, and log enrichment. It captures what enters and leaves
-  the process, but internal spans specific to the
-  application's frameworks or libraries still need to be manually specified by the user, either by modifying the application code or by manually defining code sections in a configuration file.
+  the process, but internal spans specific to the application's frameworks or
+  libraries still need to be manually specified by the user, either by modifying
+  the application code or by manually defining code sections in a configuration
+  file.
 
 ## otelc
 
@@ -99,7 +101,9 @@ executables and the OS networking layer.
 - **You are running on Linux:** You operate in a Linux environment (inside or
   outside of Kubernetes) and can deploy an agent with the necessary privileges
   to observe your processes. OBI provides selectors for instrumenting by
-  executable name, open port(s), and process PID, as well as Container, Pod, Deployment, Namespace, and metadata labels in containerized scenarios (Docker/Kubernetes), making it flexible for various deployment scenarios.
+  executable name, open port(s), and process PID, as well as Container, Pod,
+  Deployment, Namespace, and metadata labels in containerized scenarios
+  (Docker/Kubernetes), making it flexible for various deployment scenarios.
 
 ### Choose otelc if:
 
