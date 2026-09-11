@@ -621,7 +621,7 @@
   contact: owen@velodb.io
 - name: Oodle AI
   nativeOTLP: true
-  url: https://docs.oodle.ai/integrations/metrics/otel/
+  url: https://docs.oodle.ai/integrations/opentelemetry/
   contact: support@oodle.ai
   oss: false
   commercial: true
