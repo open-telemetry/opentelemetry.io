@@ -114,11 +114,10 @@ O
 é um componente altamente recomendado para qualquer Collector que receba
 telemetria de pods do Kubernetes. Esse _processor_ descobre automaticamente os
 pods do Kubernetes, extrai seus metadados, como o nome do pod ou nome do nó, e
-adiciona esses metadados a spans, métricas e logs como atributos de recurso
-(_resource attributes_). Ao adicionar contexto do Kubernetes à sua telemetria, o
-Kubernetes Attributes Processor permite correlacionar rastros, métricas e logs
-da sua aplicação com a telemetria do Kubernetes, como as métricas e rastros de
-pods.
+adiciona esses metadados a spans, métricas e logs como atributos de recurso. Ao
+adicionar contexto do Kubernetes à sua telemetria, o Kubernetes Attributes
+Processor permite correlacionar rastros, métricas e logs da sua aplicação com a
+telemetria do Kubernetes, como as métricas e rastros de pods.
 
 ### Kubeletstats Receiver
 
