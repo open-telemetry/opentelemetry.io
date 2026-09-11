@@ -2,8 +2,7 @@
 title: ブループリントとリファレンス実装
 description: 一般的な環境でOpenTelemetryを導入・実装する際のベストプラクティスに関するブループリントとサンプルアーキテクチャ
 weight: 600
-default_lang_commit: 62c8cb2f4ea2e121cab3b4880f5cdf8c21aaea13
-drifted_from_default: true
+default_lang_commit: 4c76a8ab64aef829003446e6ff8d2869c51c03a6
 ---
 
 OpenTelemetry を大規模に採用するには、個々のコンポーネントを設定するだけでは不十分です。
@@ -29,3 +28,8 @@ OpenTelemetry をデプロイする単一の「正しい」方法はないため
 - [リファレンス実装](https://github.com/open-telemetry/sig-end-user/issues/new?template=reference_implementation.yml)
 
 [標準テンプレート](https://github.com/open-telemetry/sig-end-user/tree/main/architecture)に沿った高品質なドキュメントの作成から、最終的な公式ドキュメントへのコントリビューションまで、End User SIG メンバーが一連のプロセスを案内します。
+
+> [!NOTE]
+>
+> まず [End User SIG リポジトリ](https://github.com/open-telemetry/sig-end-user)で提案イシューを提出し、レビューおよび承認を受けてから、[opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に対してドキュメントのプルリクエストを作成してください。
+> 提案から公開までの完全なコントリビューションワークフローは、[ブループリントおよびリファレンス実装のコントリビューションプロセス](https://github.com/open-telemetry/sig-end-user/blob/main/architecture/README.md)に記載されています。

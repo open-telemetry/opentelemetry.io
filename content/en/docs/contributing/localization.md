@@ -422,8 +422,9 @@ with the task list given below:
      - [ ] Update Hugo config for `LANG_ID`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
-     - [ ] Create org-level group for `LANG_ID` approvers
-     - [ ] Update components owners for `content/LANG_ID`
+     - [ ] Create org-level teams for `LANG_ID` approvers and maintainers
+     - [ ] Add the locale to `data/locale-teams.yaml` and run
+           `npm run fix:codeowners`
    - [ ] Create an issue to track the localization of the **glossary**. Add the
          issue number here. For details, see
          [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
@@ -440,8 +441,8 @@ localization project started.
 [homepage]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
-After your first PR is merged, maintainers will set up the issue label, the
-org-level group and the component owners.
+After your first PR is merged, maintainers will set up the issue label and the
+org-level teams.
 
 ### 4. Localize the glossary {#glossary}
 
@@ -511,12 +512,48 @@ when **Spelling** has no natural-language dictionary to add.
   - Under `dictionaries`, add the same `name` value as in the step above (not
     the file path).
 
+#### Teams and code owners
+
+Add the new locale to [`data/locale-teams.yaml`][] and run
+`npm run fix:codeowners` to regenerate the locale section of CODEOWNERS. Include
+these changes in the locale's first PR: CI requires the registry to agree with
+the locale directories under `content/`. A new locale usually starts
+[unstaffed](#locale-teams), so its CODEOWNERS lines carry the `docs-approvers`
+fallback until the locale [graduates](#locale-teams).
+
 #### Other tooling support
 
 - Prettier support: if `LANG_ID` isn't well supported by Prettier, add ignore
   rules to `.prettierignore`
 
 ## Approver and maintainer guidance
+
+### Locale teams, code owners, and staffing {#locale-teams}
+
+Each locale has `docs-LANG_ID-approvers` and `docs-LANG_ID-maintainers` GitHub
+teams; maintainers are also approvers. The approvers team is the [code owner][]
+of the locale's paths, so a locale approver's review satisfies the required
+code-owner review of a locale-only PR. Locale maintainers can also
+[auto-merge](#auto-merge) such PRs.
+
+The expected membership of locale teams is recorded in the
+[`data/locale-teams.yaml`][] registry, which also drives the locale section of
+the repository's [CODEOWNERS][] file. Membership changes are proposed as PRs
+against the registry, giving an audit trail, and applied to the live teams by an
+org admin. For the generator and the conventions it encodes, see the
+[locale-codeowners README][].
+
+A locale without maintainers is **unstaffed**: its CODEOWNERS lines list
+`@open-telemetry/docs-approvers` as a fallback owner, so docs approvers can
+review and unblock the locale's PRs. A docs maintainer then merges such PRs
+manually, since [auto-merge](#auto-merge) requires locale maintainers.
+
+When an unstaffed locale gains maintainers, submit a registry PR that records
+them and regenerates the locale section of CODEOWNERS
+(`npm run fix:codeowners`). This drops the `docs-approvers` fallback from the
+locale's lines, and the locale team gates its own PRs from then on: the locale
+has **graduated**. For an example, see the [zh graduation PR][]. If a locale
+team later becomes dormant, the inverse registry change restores the fallback.
 
 ### Enabling auto-merge on locale-only PRs {#auto-merge}
 
@@ -637,11 +674,18 @@ and coordinate a fix with its locale team.
 
 Finally, rerun `npm run check:links` and confirm that no link failures remain.
 
+<!-- prettier-ignore-start -->
 [aliases]: https://gohugo.io/content-management/urls/#aliases
+[code owner]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+[CODEOWNERS]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
+[`data/locale-teams.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
 [front matter]: https://gohugo.io/content-management/front-matter/
+[locale-codeowners README]: https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-codeowners
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
 [PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/
+[zh graduation PR]: https://github.com/open-telemetry/opentelemetry.io/pull/11516
+<!-- prettier-ignore-end -->
