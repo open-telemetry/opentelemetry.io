@@ -1473,7 +1473,7 @@ information on its `Resource`.
 
 The resource semantic convention keys and well-known values are defined by the
 OpenTelemetry semantic conventions package:
-[`go.opentelemetry.io/otel/semconv/v1.38.0`](https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.38.0).
+[`go.opentelemetry.io/otel/semconv/v1.43.0`](https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.43.0).
 
 Let's create a function to read the field values from a `BackendSystem` instance
 and write them as attributes into a `pcommon.Resource` instance. Open the
@@ -1535,7 +1535,7 @@ import (
 
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	"go.opentelemetry.io/otel/semconv/v1.38.0"
+	"go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 type Atm struct {
@@ -1985,7 +1985,7 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	"go.opentelemetry.io/otel/semconv/v1.38.0"
+	"go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 type Atm struct {
@@ -2396,7 +2396,7 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	 "go.opentelemetry.io/otel/semconv/v1.38.0"
+	 "go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 type Atm struct {

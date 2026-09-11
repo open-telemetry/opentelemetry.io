@@ -1,7 +1,9 @@
 ---
 title: Development setup and commands to build, serve, and more
 linkTitle: Dev setup and more
-description: Learn how to set up a development environment for this website.
+description: >-
+  Cloud-IDE and local environment setups, and the site's build, serve, and check
+  commands
 what-next: >
   You're now ready to [build](#build), [serve](#serve), and make updates to
   website files. For details on how to submit changes, see [Submitting
@@ -16,9 +18,6 @@ cSpell:ignore: TOCSS
 > environments, such as [DevContainers](#devcontainers), are supported on a
 > best-effort basis. For builds on Windows, you can follow steps similar to
 > those for Linux using Windows Subsystem for Linux command line [WSL][].
-
-The following instructions explain how to set up a development environment for
-this website.
 
 ## Cloud-IDE setup
 
@@ -59,27 +58,39 @@ Your development environment will be initialized via the
     cd opentelemetry.io
     ```
 
-3.  Install or upgrade to the [**active LTS** release][nodejs-rel] of Node.js.
-    We recommend using [nvm][] to manage your Node installation. Under Linux,
-    run the following command, which will install and upgrade to the version
-    specified in the .nvmrc file:
+3.  Install the Node.js release pinned in the `.nvmrc` file (an [active
+    LTS][nodejs-rel] version). We recommend [nvm][] to manage your Node
+    installation; under Linux, run:
 
     ```sh
     nvm install
     ```
 
-    To [install under Windows][nodejs-win], use [nvm-windows][]. We recommend
-    using `cmd` and not Windows PowerShell for the command below:
+    To [install under Windows][nodejs-win], use [nvm-windows][], which doesn't
+    read `.nvmrc` itself; the following command feeds it the pinned version. We
+    recommend using `cmd` and not Windows PowerShell:
 
     ```cmd
-    nvm install lts && nvm use lts
+    for /f %v in (.nvmrc) do nvm install %v && nvm use %v
     ```
 
-4.  Get npm packages and other prerequisites:
+4.  Get npm packages and other prerequisites, using the [lock-exact,
+    script-suppressing setup][ci-install] that the devcontainer uses:
+
+    ```sh
+    npm run install:safe
+    ```
+
+    Or, use a standard install:
 
     ```sh
     npm install
     ```
+
+    Both installs use the dependency versions pinned in the committed
+    `package-lock.json`, and any dependency lifecycle script that runs is
+    subject to the reviewed allowlist. Related: [updating
+    dependencies][dep-updates].
 
 Launch your favorite IDE. {{% param what-next %}}
 
@@ -124,14 +135,9 @@ npm run serve
 
 The site is served at [localhost:1313][].
 
-If you need to test [Netlify][] redirects, use the following command and visit
-the site at [localhost:8888][]:
-
-```sh
-npm run serve:netlify
-```
-
 The serve command serves files from memory, not from disk.
+
+To test Netlify redirects, use the [deploy preview][] for your PR.
 
 If you see an error like `too many open files` or `pipe failed` under macOS, you
 might need to increase the file descriptor limit. See
@@ -229,17 +235,18 @@ npm run check:code-excerpts
 [code-excerpter]: https://github.com/chalin/code-excerpter
 
 <!-- prettier-ignore-start -->
+[ci-install]: /site/build/dependencies/#install-contracts
+[dep-updates]: /site/build/dependencies/#updating
 [clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
 [cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
+[deploy preview]: ../pull-requests/#site-deploys-and-pr-previews
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
-[localhost:8888]: http://localhost:8888
-[netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
 [nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm-windows]: https://github.com/coreybutler/nvm-windows

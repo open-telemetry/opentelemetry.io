@@ -3,8 +3,7 @@ title: 自動計装の注入
 linkTitle: 自動計装
 weight: 11
 description: OpenTelemetryオペレーターを使用した自動計装の実装。
-default_lang_commit: 869b2bb90ca9e54d8d98e7815e66111b577165eb
-drifted_from_default: true
+default_lang_commit: f6befc31e5602c7019a9949ccd5f7e11d845134e
 # prettier-ignore
 cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA replicaset statefulset
 ---
@@ -30,7 +29,7 @@ Helmチャートを使用する場合は、自己証明書を生成するオプ�
 コレクターを使用しない場合、次のセクションに進んでください。
 
 オペレーターは、オペレーターが管理するコレクターのインスタンスを作成するために使用される[OpenTelemetryコレクターのカスタムリソース定義 (CRD)](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md)です。
-次の例では、コレクターをDeploymentとしてデプロイします（デフォルト）が、他の[deploymentモード](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes)も使用できます。
+次の例では、コレクターをDeploymentとしてデプロイします（デフォルト）が、他の[deploymentモード](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/deployment-modes.md)も使用できます。
 
 `Deployment` モードを使用する場合、オペレーターはコレクターと対話に使用できるサービスも作成します。
 サービス名は `OpenTelemetryCollector` リソース名に `-collector` を付与したものです。
@@ -481,7 +480,7 @@ Instrumentationオブジェクトが作成されたので、クラスターは�
 - `"false"` - 注入しません。
 
 あるいは、名前空間にアノテーションを追加することで、その名前空間内のすべてのサービスが自動計装をオプトインすることもできます。
-より詳細については、[オペレーターの自動計装ドキュメント](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)を参照してください。
+より詳細については、[オペレーターの自動計装ドキュメント](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)を参照してください。
 
 ### Goサービスのオプトイン {#opt-in-a-go-service}
 

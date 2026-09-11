@@ -36,8 +36,8 @@ there are no images, or a `short-name/index.md` directory when there are.
 Scaffold from the archetype with Hugo:
 
 ```sh
-npx hugo new content/en/blog/$(date +%Y)/short-name.md             # no images
-npx hugo new content/en/blog/$(date +%Y)/short-name/index.md       # with images
+npm exec --no -- hugo new content/en/blog/$(date +%Y)/short-name.md       # no images
+npm exec --no -- hugo new content/en/blog/$(date +%Y)/short-name/index.md # with images
 ```
 
 ## Front matter

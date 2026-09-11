@@ -7,15 +7,17 @@ body_class: otel-mermaid-max-width
 
 **OpenTelemetry Demo** is composed of microservices written in different
 programming languages that talk to each other over gRPC and HTTP; and a load
-generator which uses [k6](https://k6.io/) to fake user traffic.
+generator which uses [Locust](https://locust.io/) to fake user traffic.
 
 ```mermaid
 graph TD
 subgraph Service Diagram
 accounting(Accounting):::dotnet
 ad(Ad):::java
+agent(Agent):::python
 cache[(Cache<br/>&#40Valkey&#41)]
 cart(Cart):::dotnet
+chatbot(Chatbot):::python
 checkout(Checkout):::golang
 currency(Currency):::cpp
 email(Email):::ruby
@@ -25,7 +27,8 @@ fraud-detection(Fraud Detection):::kotlin
 frontend(Frontend):::typescript
 frontend-proxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
 image-provider(Image Provider <br/>&#40nginx&#41):::cpp
-load-generator([Load Generator]):::golang
+load-generator([Load Generator]):::python
+mcp(MCP):::python
 payment(Payment):::javascript
 product-catalog(Product Catalog):::golang
 quote(Quote):::php
@@ -33,63 +36,70 @@ recommendation(Recommendation):::python
 shipping(Shipping):::rust
 queue[(queue<br/>&#40Kafka&#41)]:::java
 react-native-app(React Native App):::typescript
-postgresql[(Database<br/>&#40PostgreSQL&#41)]
+postgresql[(astronomy-db<br/>&#40PostgreSQL&#41)]
 
-accounting ---> postgresql
+chatbot -->|HTTP| agent
+agent -.->|HTTP| frontend
+agent -.->|HTTP| mcp
 
-ad ---->|gRPC| flagd
+ad --->|gRPC| flagd
 
 checkout -->|gRPC| currency
 checkout -->|gRPC| cart
-checkout -->|TCP| queue
-
 cart --> cache
-cart -->|gRPC| flagd
+cart --->|gRPC| flagd
 
-checkout -->|gRPC| payment
+checkout --->|gRPC| payment
 checkout --->|HTTP| email
-checkout -->|gRPC| product-catalog
+checkout -->|TCP| queue
+checkout ---->|gRPC| product-catalog
 checkout -->|HTTP| shipping
+shipping -->|HTTP| quote
 
-fraud-detection -->|gRPC| flagd
+fraud-detection --->|gRPC| flagd
 
 frontend -->|gRPC| ad
+frontend ---->|gRPC| cart
 frontend -->|gRPC| currency
-frontend -->|gRPC| cart
 frontend -->|gRPC| checkout
 frontend -->|HTTP| shipping
-frontend ---->|gRPC| recommendation
 frontend -->|gRPC| product-catalog
+frontend --->|gRPC| recommendation
 
 frontend-proxy -->|gRPC| flagd
-frontend-proxy -->|HTTP| frontend
 frontend-proxy -->|HTTP| flagd-ui
 frontend-proxy -->|HTTP| image-provider
+frontend-proxy -->|HTTP| frontend
+frontend-proxy -->|HTTP| chatbot
 
-payment -->|gRPC| flagd
+mcp -->|HTTP| frontend
 
-queue -->|TCP| accounting
+payment --->|gRPC| flagd
+
 queue -->|TCP| fraud-detection
 
-recommendation -->|gRPC| flagd
 recommendation -->|gRPC| product-catalog
+recommendation ----->|gRPC| flagd
 
-shipping -->|HTTP| quote
+product-catalog --> postgresql
 
 Internet -->|HTTP| frontend-proxy
 load-generator -->|HTTP| frontend-proxy
 react-native-app -->|HTTP| frontend-proxy
+accounting --> postgresql
+queue -->|TCP| accounting
+
 end
 
-classDef dotnet fill:#178600,color:white;
+classDef dotnet fill:#311a7f,color:white;
 classDef cpp fill:#f34b7d,color:white;
 classDef elixir fill:#b294bb,color:black;
 classDef golang fill:#00add8,color:black;
 classDef java fill:#b07219,color:white;
 classDef javascript fill:#f1e05a,color:black;
-classDef kotlin fill:#560ba1,color:white;
-classDef php fill:#4f5d95,color:white;
-classDef python fill:#3572A5,color:white;
+classDef kotlin fill:#6b57ff,color:white;
+classDef php fill:#4F5B93,color:white;
+classDef python fill:#82b043,color:white;
 classDef ruby fill:#701516,color:white;
 classDef rust fill:#dea584,color:black;
 classDef typescript fill:#e98516,color:black;
@@ -112,15 +122,15 @@ subgraph Service Legend
   typescriptsvc(TypeScript):::typescript
 end
 
-classDef dotnet fill:#178600,color:white;
+classDef dotnet fill:#311a7f,color:white;
 classDef cpp fill:#f34b7d,color:white;
 classDef elixir fill:#b294bb,color:black;
 classDef golang fill:#00add8,color:black;
 classDef java fill:#b07219,color:white;
 classDef javascript fill:#f1e05a,color:black;
-classDef kotlin fill:#560ba1,color:white;
-classDef php fill:#4f5d95,color:white;
-classDef python fill:#3572A5,color:white;
+classDef kotlin fill:#6b57ff,color:white;
+classDef php fill:#4F5B93,color:white;
+classDef python fill:#82b043,color:white;
 classDef ruby fill:#701516,color:white;
 classDef rust fill:#dea584,color:black;
 classDef typescript fill:#e98516,color:black;
@@ -135,6 +145,13 @@ demo applications.
 The collector is configured in
 [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml),
 alternative exporters can be configured here.
+
+When running with the observability stack, the Collector also connects to the
+demo's OpAMP server through the
+[OpAMP extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/opampextension)
+and reports its health, version, attributes, and effective configuration. Open
+the OpAMP UI at <http://localhost:8080/opamp/> and select the Collector instance
+to view the reported status.
 
 ```mermaid
 graph TB
@@ -168,11 +185,26 @@ subgraph tdf[Telemetry Data Flow]
             oc-proc --> oc-spanmetrics
             oc-spanmetrics --> oc-prom
 
+            oc-opamp[/"OpAMP Extension"/]
+
         end
 
         oc-prom -->|"localhost:9090/api/v1/otlp"| pr-sc
         oc-otlp -->|gRPC| ja-col
         oc-opensearch -->|HTTP| os-http
+
+        subgraph op[OpAMP Server]
+            style op fill:#a6ce39,color:black;
+            op-srv["OpAMP Server"]
+            op-http[/"OpAMP HTTP<br/>listening on<br/>localhost:8080/opamp/"/]
+
+            op-srv --> op-http
+        end
+
+        oc-opamp -->|"reports status<br/>over WebSocket"| op-srv
+
+        op-b{{"Browser<br/>OpAMP UI"}}
+        op-http -->|"localhost:8080/opamp/"| op-b
 
         subgraph pr[Prometheus]
             style pr fill:#e75128,color:black;

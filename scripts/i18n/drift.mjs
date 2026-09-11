@@ -24,8 +24,8 @@ import { promisify } from 'node:util';
 
 const execFileP = promisify(execFile);
 
-const DEFAULT_LANG = 'en';
-const CONTENT_DIR = 'content';
+export const DEFAULT_LANG = 'en';
+export const CONTENT_DIR = 'content';
 const GIT_CONCURRENCY = 12;
 const I18N_DLC_KEY = 'default_lang_commit';
 const I18N_DLD_KEY = 'drifted_from_default';

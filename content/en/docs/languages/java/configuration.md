@@ -140,6 +140,19 @@ Properties for disabling the [SDK](../sdk/#opentelemetrysdk):
 returns a minimally configured instance (for example,
 `OpenTelemetrySdk.builder().build()`).
 
+Properties for SDK self-monitoring telemetry:
+
+| System property                           | Description                                                                                      | Default  |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------ | -------- |
+| `otel.experimental.sdk.telemetry.version` | Select the self-monitoring telemetry schema. Valid values are `legacy` and `latest`. See **[1]** | `legacy` |
+
+**[1]**: Selects the schema for all SDK self-monitoring telemetry, not only
+exporters. For the batching span and log record processors it selects the metric
+names; for the tracer and logger providers and the periodic metric reader it
+controls whether self-monitoring metrics are recorded at all. See
+[SDK self-monitoring metrics](../sdk/#sdk-self-monitoring-metrics) for
+configuration details and for the metric names emitted by each component.
+
 Properties for attribute limits (see [span limits](../sdk/#spanlimits),
 [log limits](../sdk/#loglimits)):
 
@@ -296,6 +309,8 @@ Properties for setting exporters:
 
 Properties for `otlp` span, metric, and log exporters:
 
+<!-- markdownlint-disable MD055 MD056 -->
+<!-- prettier-ignore-start -->
 | System property                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                          | Default                                                                                                                    |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | `otel.{signal}.exporter=otlp`                              | Select the OpenTelemetry exporter for {signal}.                                                                                                                                                                                                                                                                                                                                                                                      |                                                                                                                            |
@@ -318,6 +333,9 @@ Properties for `otlp` span, metric, and log exporters:
 | `otel.exporter.otlp.metrics.temporality.preference`        | The preferred output aggregation temporality. Options include `DELTA`, `LOWMEMORY`, and `CUMULATIVE`. If `CUMULATIVE`, all instruments will have cumulative temporality. If `DELTA`, counter (sync and async) and histograms will be delta, up down counters (sync and async) will be cumulative. If `LOWMEMORY`, sync counter and histograms will be delta, async counter and up down counters (sync and async) will be cumulative. | `CUMULATIVE`                                                                                                               |
 | `otel.exporter.otlp.metrics.default.histogram.aggregation` | The preferred default histogram aggregation. Options include `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM` and `EXPLICIT_BUCKET_HISTOGRAM`.                                                                                                                                                                                                                                                                                                   | `EXPLICIT_BUCKET_HISTOGRAM`                                                                                                |
 | `otel.java.exporter.otlp.retry.disabled`                   | If `false`, retry when transient errors occur. **[2]**                                                                                                                                                                                                                                                                                                                                                                               | `false`                                                                                                                    |
+{.java-configuration-exporter-table}
+<!-- prettier-ignore-end -->
+<!-- markdownlint-enable MD055 MD056 -->
 
 **NOTE:** The text placeholder `{signal}` refers to the supported
 [OpenTelemetry Signal](/docs/concepts/signals/). Valid values include `traces`,

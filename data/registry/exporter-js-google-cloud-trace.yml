@@ -15,4 +15,4 @@ createdAt: 2020-04-01
 package:
   registry: npm
   name: '@google-cloud/opentelemetry-cloud-trace-exporter'
-  version: 3.0.0
+  version: 3.1.0

@@ -33,7 +33,7 @@ monitoring with OpenTelemetry:
 
 - [VS Code Copilot](https://code.visualstudio.com/docs/copilot/guides/monitoring-agents)
   emits traces, metrics, and events for every agent interaction.
-- [OpenAI Codex](https://developers.openai.com/codex/config-advanced#observability-and-telemetry)
+- [OpenAI Codex](https://learn.chatgpt.com/docs/config-file/config-advanced#__codexlocalizedvalueprops__codextranslations-u0087-observability-and-telemetry)
   exports structured log events and OTel metrics for API requests, tool calls,
   and sessions.
 - [Claude Code](https://code.claude.com/docs/en/monitoring-usage) exports
