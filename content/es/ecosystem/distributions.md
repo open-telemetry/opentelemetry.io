@@ -5,6 +5,7 @@ description:
   Lista de distribuciones de OpenTelemetry de código abierto mantenidas por
   terceros.
 default_lang_commit: 8e30c42cfbbc8c5d04ea8715e0c312fd4aa50ab0
+drifted_from_default: true
 ---
 
 Las [distribuciones][] de OpenTelemetry permiten personalizar los

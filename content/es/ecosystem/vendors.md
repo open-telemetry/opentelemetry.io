@@ -3,6 +3,7 @@ title: Proveedores
 description: Proveedores que admiten OpenTelemetry de forma nativa
 aliases: [/vendors]
 default_lang_commit: 8e30c42cfbbc8c5d04ea8715e0c312fd4aa50ab0
+drifted_from_default: true
 ---
 
 Lista no exhaustiva de organizaciones que ofrecen soluciones que utilizan
