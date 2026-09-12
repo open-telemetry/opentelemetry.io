@@ -12,6 +12,14 @@
       margin-bottom: 0.2rem;
     }
 
+    // Long package paths must be able to shrink within the card instead of
+    // widening the viewport on narrow screens.
+    .card-title > a {
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+
     &-body {
       flex: 1;
     }
