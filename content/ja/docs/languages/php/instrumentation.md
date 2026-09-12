@@ -3,8 +3,7 @@ title: 計装
 weight: 20
 aliases: [manual]
 description: OpenTelemetry PHP の手動計装
-default_lang_commit: 9229908e7b567bc9c3f6352a5a8922caf5c1ac1c
-drifted_from_default: true
+default_lang_commit: 86b0bf27288675614c8ab4052b2d564117fc42d4
 cSpell:ignore: guzzlehttp
 ---
 
