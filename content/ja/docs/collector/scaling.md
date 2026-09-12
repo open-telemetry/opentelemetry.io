@@ -2,6 +2,7 @@
 title: コレクターのスケーリング
 weight: 26
 default_lang_commit: 453013b113080a48166f412215176d345d2bf958
+drifted_from_default: true
 cSpell:ignore: fluentd Linkerd loadbalancer loadbalancing statefulset
 ---
 

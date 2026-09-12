@@ -4,6 +4,7 @@ linkTitle: OTLPエクスポーター
 weight: 20
 aliases: [otlp-exporter-configuration]
 default_lang_commit: 8c95bffcf7243a916f79a0d525cf55b6a3d34ad7
+drifted_from_default: true
 ---
 
 {{% include "env-var-note.md" %}}
