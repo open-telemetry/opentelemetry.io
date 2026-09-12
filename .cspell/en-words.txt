@@ -36,6 +36,7 @@ lifecycles
 lockdown
 microservices
 multiplatform
+otelc
 pageinfo
 parentbased
 paymentservice
@@ -57,6 +58,7 @@ subtag
 sunsetting
 tabpane
 timeframe
+toolexec
 uids
 unconference
 undercount
