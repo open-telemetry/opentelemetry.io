@@ -1,22 +1,35 @@
 ---
 title: テスト
-default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
-cSpell:ignore: Tracetest
+default_lang_commit: a44df6dd383b504864f60165b21459b7f5e005c5
+cSpell:ignore: pytest
 ---
 
-現在、このリポジトリにはフロントエンドとバックエンドの両サービスのE2Eテストが含まれています。
-フロントエンドでは、[Cypress](https://www.cypress.io/)を使用しており、Webストアの各フローを実行します。
-一方、バックエンドサービスでは、統合テストのメインテストフレームワークとして[AVA](https://avajs.dev)を使用しており、トレースベースのテストには[Tracetest](https://tracetest.io/)を使用しています。
+デモリポジトリには、2つのエンドツーエンドテストスイートが含まれており、どちらもルートディレクトリから `make` で実行します。
 
-すべてのテストを実行する場合は、ルートディレクトリから `make run-tests` を実行します。
+## フロントエンドテスト {#frontend-tests}
 
-特定のテストスイートのみを実行したい場合は、テストの種類ごとに各種テストのコマンドを実行します[^1]:
+フロントエンドテストは [Cypress](https://www.cypress.io/) を使用して、ウェブストアの主要なフローを実行します。
+ホームページの閲覧、商品ページの表示、チェックアウトの完了などが含まれます。
+デモが起動した状態で実行します。
 
-- **フロントエンドのテスト**: `docker compose run frontendTests`
-- **バックエンドのテスト**:
-  - 統合テスト: `docker compose run integrationTests`
-  - トレースベーステスト: `docker compose run traceBasedTests`
+```shell
+make run-frontend-tests
+```
 
-詳細な情報については、[Service Testing](https://github.com/open-telemetry/opentelemetry-demo/tree/main/test)を参照してください。
+## テレメトリーテスト {#telemetry-tests}
 
-[^1]: {{% param notes.docker-compose-v2 %}}
+テレメトリーテストは、コンテナ化された [pytest](https://docs.pytest.org/) スイートで、各サービスが想定どおりのシグナルを配信しているかを確認します。
+サービスを直接検査するのではなく、デモに同梱されているバックエンドに問い合わせます。
+トレースには Jaeger、メトリクスには Prometheus、ログには OpenSearch を使用します。
+各サービスが出力するシグナルは [`test/telemetry/services.py`](https://github.com/open-telemetry/opentelemetry-demo/blob/main/test/telemetry/services.py) で宣言されています。
+
+以下の各ターゲットはデモを起動し、スイートを実行した後、デモを停止します。
+デモが停止した状態で実行してください。
+
+```shell
+make run-telemetry-tests           # すべてのサービス
+make run-telemetry-tests-minimal   # ミニマルモードのみ
+make run-telemetry-tests-agentic   # エージェント、MCP、チャットボット
+```
+
+詳細については、[Telemetry Sanity Tests](https://github.com/open-telemetry/opentelemetry-demo/tree/main/test/telemetry) を参照してください。

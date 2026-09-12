@@ -115,6 +115,7 @@
     - contrib
   stability:
     logs: development
+    metrics: development
 - name: azuremonitorreceiver
   display_name: Azure Monitor Receiver
   repo: contrib

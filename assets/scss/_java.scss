@@ -1,4 +1,10 @@
+@use 'td/support/fa';
+
 // Java-SDK page content styles
+
+.java-configuration-exporter-table code {
+  overflow-wrap: anywhere;
+}
 
 .config-option {
   padding-inline-start: 1.5em;
@@ -20,13 +26,13 @@
       &::after {
         color: $secondary;
         @extend .fas;
-        content: fa-content($nbsp + $fa-var-plus-circle);
+        content: fa.fa-content($nbsp + fa.$var-plus-circle);
       }
     }
 
     &[open] summary::after {
       @extend .fas;
-      content: fa-content($nbsp + $fa-var-minus-circle);
+      content: fa.fa-content($nbsp + fa.$var-minus-circle);
     }
   }
 }

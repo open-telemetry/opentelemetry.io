@@ -6,22 +6,27 @@ on:
     # At 03:00 UTC, every day
     - cron: 0 3 * * *
 
-# Declare default permissions as read only.
-permissions: read-all
+permissions:
+  contents: read
+
+# Do not overlap branch, issue, and PR updates.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
 
 jobs:
   sync-collector-docs:
     name: Sync Collector component documentation
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
-      issues: write
+      contents: write # Supply checkout credentials for the generated branch push.
     # Only run on official repo, not forks
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: true # zizmor: ignore[artipacked] Required by collector-sync.sh's later git push.
 
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -48,6 +53,8 @@ jobs:
         with:
           client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-issues: write
+          permission-pull-requests: write
 
       - name: Sync collector documentation
         run: bash .github/scripts/collector-sync.sh
