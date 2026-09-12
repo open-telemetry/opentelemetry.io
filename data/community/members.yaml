@@ -2024,11 +2024,6 @@ approvers:
       - semconv-rpc-approvers
     html_url: https://github.com/matt-hensley
     avatar_url: https://avatars.githubusercontent.com/u/130569?v=4
-  - name: maxday
-    teams:
-      - lambda-extension-approvers
-    html_url: https://github.com/maxday
-    avatar_url: https://avatars.githubusercontent.com/u/864493?v=4
   - name: michel-laterman
     teams:
       - opamp-go-approvers
@@ -2117,11 +2112,6 @@ approvers:
       - helm-triagers
     html_url: https://github.com/povilasv
     avatar_url: https://avatars.githubusercontent.com/u/22289110?v=4
-  - name: pragmaticivan
-    teams:
-      - lambda-extension-approvers
-    html_url: https://github.com/pragmaticivan
-    avatar_url: https://avatars.githubusercontent.com/u/301291?v=4
   - name: priettt
     teams:
       - kotlin-approvers
@@ -2422,6 +2412,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/kirrg001
     avatar_url: https://avatars.githubusercontent.com/u/1160712?v=4
+  - name: marcschaeferger
+    teams:
+      - helm-triagers
+    html_url: https://github.com/marcschaeferger
+    avatar_url: https://avatars.githubusercontent.com/u/70487171?v=4
   - name: mhennoch
     teams:
       - javascript-contrib-triagers
@@ -2472,11 +2467,6 @@ triagers:
       - docs-triagers
     html_url: https://github.com/pratik-mahalle
     avatar_url: https://avatars.githubusercontent.com/u/124587957?v=4
-  - name: puckpuck
-    teams:
-      - helm-triagers
-    html_url: https://github.com/puckpuck
-    avatar_url: https://avatars.githubusercontent.com/u/1296118?v=4
   - name: punya
     teams:
       - javascript-contrib-triagers
@@ -2837,6 +2827,9 @@ members:
   - name: justinfoote
     html_url: https://github.com/justinfoote
     avatar_url: https://avatars.githubusercontent.com/u/3170392?v=4
+  - name: kartikgola
+    html_url: https://github.com/kartikgola
+    avatar_url: https://avatars.githubusercontent.com/u/11961841?v=4
   - name: kbrockhoff
     html_url: https://github.com/kbrockhoff
     avatar_url: https://avatars.githubusercontent.com/u/1822996?v=4
@@ -2921,6 +2914,9 @@ members:
   - name: mauriciovasquezbernal
     html_url: https://github.com/mauriciovasquezbernal
     avatar_url: https://avatars.githubusercontent.com/u/13031921?v=4
+  - name: maxday
+    html_url: https://github.com/maxday
+    avatar_url: https://avatars.githubusercontent.com/u/864493?v=4
   - name: maynk
     html_url: https://github.com/maynk
     avatar_url: https://avatars.githubusercontent.com/u/9286568?v=4
@@ -3014,6 +3010,9 @@ members:
   - name: pradhyum6144
     html_url: https://github.com/pradhyum6144
     avatar_url: https://avatars.githubusercontent.com/u/209258248?v=4
+  - name: pragmaticivan
+    html_url: https://github.com/pragmaticivan
+    avatar_url: https://avatars.githubusercontent.com/u/301291?v=4
   - name: pratik50
     html_url: https://github.com/pratik50
     avatar_url: https://avatars.githubusercontent.com/u/92214381?v=4
