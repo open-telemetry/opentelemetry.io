@@ -4,6 +4,7 @@ linkTitle: セキュリティ
 description: OBI が必要とする権限とケーパビリティ
 weight: 22
 default_lang_commit: 813498074d85258c7180d137ace9e272d0149353
+drifted_from_default: true
 cSpell:ignore: BPF_PROG_TYPE_KPROBE CAP_PERFMON eksctl
 ---
 

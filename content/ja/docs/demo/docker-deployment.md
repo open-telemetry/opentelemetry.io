@@ -3,6 +3,7 @@ title: Docker デプロイ
 linkTitle: Docker
 aliases: [docker_deployment]
 default_lang_commit: ef74cd393090313b5ad970e74d499a97505fffb8
+drifted_from_default: true
 cSpell:ignore: Firepit otlphttp span_metrics
 ---
 
