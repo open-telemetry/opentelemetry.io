@@ -115,6 +115,26 @@ deadlocks described in [Python issue 6721](https://bugs.python.org/issue6721).
 
 #### Workarounds
 
+Initializing OpenTelemetry after the server forks is the preferred workaround.
+Each worker then has its own SDK components and resource, avoiding shared
+background threads and locks and giving each metrics writer a distinct resource
+identity.
+
+If the SDK must be initialized before the fork, use OpenTelemetry Python SDK
+1.44.0 or later and enable the process resource detector before starting the
+server:
+
+```sh
+export OTEL_EXPERIMENTAL_RESOURCE_DETECTORS=process
+```
+
+The SDK automatically generates a unique `service.instance.id` and refreshes
+process-dependent resource attributes after a fork. With the process detector
+enabled, each worker therefore reports its own `process.pid` and
+`service.instance.id`. Avoid configuring one shared `service.instance.id` for
+multiple workers; metrics producers are expected to follow the
+[single-writer principle](/docs/specs/otel/metrics/data-model/#single-writer).
+
 There are some workarounds for pre-fork servers with OpenTelemetry. The
 following table summarizes the current support of signal export by different
 auto-instrumented web server gateway stacks that have been pre-forked with
