@@ -1,9 +1,9 @@
 ---
-title: Choosing Your Zero Code Auto Instrumentation for Go
-linkTitle: Choosing Auto Instrumentation
+title: Choosing zero-code auto instrumentation for Go
+linkTitle: Choosing auto instrumentation
 description:
   'A guide to choosing between OpenTelemetry eBPF Instrumentation (OBI) and Go
-  Compile-Time Instrumentation (otelc) for Go applications.'
+  compile-time instrumentation (otelc) for Go applications.'
 weight: 15
 ---
 
@@ -16,11 +16,15 @@ This guide compares
 [OpenTelemetry Go Compile-Time Instrumentation](/docs/zero-code/go/compile-time/)
 (`otelc`) to help you choose the right tool for your environment.
 
+> **Note:** For information on the Go auto-instrumentation SDK, see
+> [Auto Instrumentation](/docs/zero-code/go/autosdk/). This guide specifically
+> focuses on comparing the eBPF and compile-time zero-code approaches.
+
 This is a decision guide, not a ranking. Both projects are official
 OpenTelemetry components. In many setups, they solve different problems or even
 work well together.
 
-## The Two Mental Models
+## The two mental models
 
 When evaluating zero-code instrumentation, it helps to understand the
 fundamental architectural difference between the two approaches:
@@ -40,8 +44,8 @@ fundamental architectural difference between the two approaches:
 ## OBI
 
 [OpenTelemetry eBPF Instrumentation (OBI)](/docs/zero-code/obi/) uses eBPF
-([What is eBPF?](https://ebpf.io/what-is-ebpf)) to automatically inspect application
-executables and the OS networking layer.
+([What is eBPF?](https://ebpf.io/what-is-ebpf)) to automatically inspect
+application executables and the OS networking layer.
 
 - **How it hooks in:** Deploys eBPF probes in the Linux kernel and the
   application to capture trace spans and metrics as system calls and network
@@ -54,18 +58,21 @@ executables and the OS networking layer.
 - **Telemetry produced:** Excels at capturing traces (incoming and outgoing
   spans for HTTP/S, gRPC, database queries), RED (Rate, Errors, Duration)
   metrics, network flows, and log enrichment. It captures what enters and leaves
-  the process, but internal spans specific to the
-  application's frameworks or libraries still need to be manually specified by the user, either by modifying the application code or by manually defining code sections in a configuration file.
+  the process, but internal spans specific to the application's frameworks or
+  libraries still need to be manually specified by the user, either by modifying
+  the application code or by manually defining code sections in a configuration
+  file.
 
 ## otelc
 
 [OpenTelemetry Go Compile-Time Instrumentation](/docs/zero-code/go/compile-time/)
-(`otelc`)
+(`otelc`) uses the Go toolchain's `-toolexec` mechanism to automatically inject
+OpenTelemetry instrumentation directly into your application binary during the
+compilation process.
 
-- **How it hooks in:** Uses the Go toolchain's `-toolexec` mechanism to
-  intercept the compilation of packages, matches functions against
-  instrumentation rules, and injects OpenTelemetry hooks directly into the
-  compiled binary.
+- **How it hooks in:** Intercepts the compilation of packages, matches functions
+  against instrumentation rules, and injects OpenTelemetry hooks directly into
+  the compiled binary.
 - **Language coverage:** Go only.
 - **Operational requirements:** Requires access to the Go build pipeline.
   Because the instrumentation is baked into the binary, it runs anywhere the Go
@@ -85,7 +92,7 @@ executables and the OS networking layer.
 | **Third-party Libraries**   | Sees the network calls and database queries made by dependencies.                                                               | Can instrument the internal code execution of Go module dependencies.                                |
 | **Lifecycle Management**    | Can be attached, detached, upgraded, or downgraded dynamically without application restarts.                                    | Requires an application rebuild, redeploy, and restart to change versions or remove instrumentation. |
 
-## When to Use Which
+## When to use which
 
 ### Choose OBI if:
 
@@ -99,7 +106,9 @@ executables and the OS networking layer.
 - **You are running on Linux:** You operate in a Linux environment (inside or
   outside of Kubernetes) and can deploy an agent with the necessary privileges
   to observe your processes. OBI provides selectors for instrumenting by
-  executable name, open port(s), and process PID, as well as Container, Pod, Deployment, Namespace, and metadata labels in containerized scenarios (Docker/Kubernetes), making it flexible for various deployment scenarios.
+  executable name, open port(s), and process PID, as well as Container, Pod,
+  Deployment, Namespace, and metadata labels in containerized scenarios
+  (Docker/Kubernetes), making it flexible for various deployment scenarios.
 
 ### Choose otelc if:
 
@@ -113,7 +122,7 @@ executables and the OS networking layer.
   privileges, eBPF capabilities, or specific kernel versions (e.g., certain
   serverless or highly locked-down container environments).
 
-### Using Them Together
+### Using them together
 
 Because these tools operate at different layers of the stack, they are
 complementary and can be used together in the same environment:
