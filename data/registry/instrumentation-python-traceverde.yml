@@ -1,5 +1,5 @@
 # cSpell:ignore genai openai langchain crewai Kshitij Thakkar
-title: TraceVerde (genai-otel-instrument)
+title: genai-otel-instrument
 registryType: instrumentation
 language: python
 tags:
