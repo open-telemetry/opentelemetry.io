@@ -372,6 +372,7 @@ https://developers.google.com/protocol-buffers/docs/proto3,200,1787916995
 https://developers.google.com/style,200,1788327797
 https://developers.openai.com/api/reference/chat-completions/overview,200,1787916966
 https://developers.openai.com/api/reference/responses/overview,200,1787916965
+https://developers.openai.com/codex/config-advanced#observability-and-telemetry,200,1788891321
 https://devpod.sh/docs/developing-in-workspaces/devcontainer-json,200,1788327811
 https://devstats.cncf.io/,200,1787981979
 https://doc.akka.io/docs/akka-http/current/index.html,200,1787981986
@@ -773,6 +774,7 @@ https://en.wikipedia.org/wiki/Tc_%28Linux%29,200,1787916953
 https://en.wikipedia.org/wiki/Time_series_database,200,1787981969
 https://en.wikipedia.org/wiki/Unconference,200,1787917020
 https://en.wikipedia.org/wiki/Working_directory,200,1788846173
+https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a,200,1788891322
 https://erinmeyer.com/books/the-culture-map/,200,1788241832
 https://events.humanitix.com/otelunplugged-eu2026,200,1787917021
 https://events.linuxfoundation.org/,200,1788414916
@@ -1168,6 +1170,7 @@ https://github.com/bobstrecansky,200,1787981976
 https://github.com/bogdan-st,200,1787981975
 https://github.com/bogdandrutu,200,1788414921
 https://github.com/boostchicken,200,1788414932
+https://github.com/bourbonkk,200,1789012066
 https://github.com/bpftrace/bpftrace,200,1787981986
 https://github.com/brancz,200,1788414997
 https://github.com/braydonk,200,1788414922
@@ -1441,6 +1444,7 @@ https://github.com/grafana/grafana-ansible-collection/tree/main/roles/openteleme
 https://github.com/grafana/grafana-opentelemetry-dotnet,200,1788241861
 https://github.com/grafana/grafana-opentelemetry-java,200,1788327849
 https://github.com/grafana/oats,200,1787916951
+https://github.com/grafana/xk6,200,1788891321
 https://github.com/gramidt,200,1788414934
 https://github.com/graphaelli/execreceiver,200,1788846167
 https://github.com/grcevski,200,1788414923
@@ -1541,6 +1545,7 @@ https://github.com/jeanbisutti,200,1787981979
 https://github.com/jeffhostetler,200,1788846167
 https://github.com/jenkinsci,200,1787916868
 https://github.com/jenkinsci/opentelemetry-plugin/,200,1787916868
+https://github.com/jenkinsci/opentelemetry-plugin/blob/6f67e4ab1d1513f7f513d7570907dd341094a74d/docs/job-traces.md#environment-variables-for-trace-context-propagation-and-integrations,200,1788853758
 https://github.com/jenniferplusplus/opentelemetry-instrumentation-bullmq,200,1787916871
 https://github.com/jerbly,200,1788414923
 https://github.com/jfinal/jfinal,200,1787916957
@@ -1622,6 +1627,7 @@ https://github.com/krakend/krakend-otel,200,1788241804
 https://github.com/krisztianfekete,200,1787981981
 https://github.com/krnowak,200,1787981981
 https://github.com/krol3,200,1787981980
+https://github.com/krzko/run-with-telemetry/blob/c2636c369317450dfd825ae4b67760d49600ca18/README.md#environment-variables-injection,200,1788853758
 https://github.com/ktorio/ktor,200,1787916956
 https://github.com/kubernetes,200,1788241805
 https://github.com/kubernetes-client/java,200,1787916956
@@ -1671,6 +1677,7 @@ https://github.com/mahboubii/grpcmetrics,200,1787916802
 https://github.com/mahendrabishnoi2,200,1787981982
 https://github.com/marandaneto,200,1788414927
 https://github.com/marcalff,200,1788414922
+https://github.com/marcschaeferger,200,1789098447
 https://github.com/marctc,200,1788414927
 https://github.com/mariomac,200,1787981978
 https://github.com/marketplace/actions/continuous-benchmark,200,1787981959
@@ -1786,6 +1793,7 @@ https://github.com/open-telemetry/community#mailing-lists,200,1788327782
 https://github.com/open-telemetry/community#sig-browser,200,1788414916
 https://github.com/open-telemetry/community#sig-packaging,200,1787917015
 https://github.com/open-telemetry/community#special-interest-groups,200,1788327784
+https://github.com/open-telemetry/community#specification-sigs,200,1788891321
 https://github.com/open-telemetry/community,200,1787981976
 https://github.com/open-telemetry/community/#sig-cicd,200,1788241803
 https://github.com/open-telemetry/community/#special-interest-groups,200,1787982046
@@ -1828,6 +1836,7 @@ https://github.com/open-telemetry/community/blob/main/guides/contributor/members
 https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md,200,1788414920
 https://github.com/open-telemetry/community/blob/main/policies/genai.md,200,1788327802
 https://github.com/open-telemetry/community/blob/main/project-management.md,200,1788327802
+https://github.com/open-telemetry/community/blob/main/projects/completed-projects/ci-cd.md,200,1788891323
 https://github.com/open-telemetry/community/blob/main/social-media-guide.md,200,1788327801
 https://github.com/open-telemetry/community/discussions/3098,200,1788241802
 https://github.com/open-telemetry/community/issues,200,1788241857
@@ -3930,6 +3939,10 @@ https://github.com/open-telemetry/opentelemetry-specification/blob/9a946352ecdec
 https://github.com/open-telemetry/opentelemetry-specification/blob/af2606810c19c31850738d1fd105b4eca7aa8c98/spec-compliance-matrix.md?from_branch=main#declarative-configuration,200,1788241803
 https://github.com/open-telemetry/opentelemetry-specification/blob/af2606810c19c31850738d1fd105b4eca7aa8c98/spec-compliance-matrix.md?from_branch=main,200,1788846197
 https://github.com/open-telemetry/opentelemetry-specification/blob/b72b9e1127391871eaedee841895ff9ce52d11f3/oteps/trace/0250-Composite_Samplers.md?from_branch=main,200,1788846197
+https://github.com/open-telemetry/opentelemetry-specification/blob/ce9394dc3dd53bb182611d2f3ba1e8f53975e905/specification/context/api-propagators.md#operations,200,1788886907
+https://github.com/open-telemetry/opentelemetry-specification/blob/ce9394dc3dd53bb182611d2f3ba1e8f53975e905/specification/context/api-propagators.md#textmap-propagator,200,1789039334
+https://github.com/open-telemetry/opentelemetry-specification/blob/eec6fadba46a5002f55ff88ce4405d58a1aa4aec/spec-compliance-matrix.md,200,1788873821
+https://github.com/open-telemetry/opentelemetry-specification/blob/eec6fadba46a5002f55ff88ce4405d58a1aa4aec/specification/context/env-carriers.md,200,1788422896
 https://github.com/open-telemetry/opentelemetry-specification/blob/fd43145dde7e5192ebc59a20992d98a3e6af5553/oteps/4430-span-event-api-deprecation-plan.md,200,1788846195
 https://github.com/open-telemetry/opentelemetry-specification/blob/main/development/trace/zpages.md,200,1787981975
 https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0155-external-modules.md#contrib-components,200,1787981970
@@ -3988,6 +4001,8 @@ https://github.com/open-telemetry/opentelemetry-specification/blob/v1.59.0/speci
 https://github.com/open-telemetry/opentelemetry-specification/issues/1413,200,1788846198
 https://github.com/open-telemetry/opentelemetry-specification/issues/3967,200,1788241827
 https://github.com/open-telemetry/opentelemetry-specification/issues/4126,206,1787918248
+https://github.com/open-telemetry/opentelemetry-specification/issues/4771,200,1788422897
+https://github.com/open-telemetry/opentelemetry-specification/issues/5040,200,1788422897
 https://github.com/open-telemetry/opentelemetry-specification/issues/5109,200,1787917016
 https://github.com/open-telemetry/opentelemetry-specification/issues/530,200,1787916993
 https://github.com/open-telemetry/opentelemetry-specification/issues/617,200,1787981974
@@ -4505,6 +4520,8 @@ https://github.com/pkanal,200,1788414928
 https://github.com/playframework/play-ws,200,1787916957
 https://github.com/playframework/playframework,200,1787916957
 https://github.com/plengauer,200,1787916886
+https://github.com/plengauer/Thoth/blob/f1837aa22450dd691359f1dd05bcc6aec41162dd/README.md#automatic-instrumentation-of-github-actions,200,1788853758
+https://github.com/plengauer/Thoth/blob/f1837aa22450dd691359f1dd05bcc6aec41162dd/README.md#automatic-instrumentation-of-shell-scrips,200,1788873821
 https://github.com/plengauer/opentelemetry-bash,200,1787916886
 https://github.com/pmcollins,200,1788414928
 https://github.com/povilasv,200,1788414928
@@ -4674,6 +4691,7 @@ https://github.com/surpradhan,200,1788846162
 https://github.com/surpradhan/otel-agent-audit,200,1788846162
 https://github.com/sveltejs/,200,1787916875
 https://github.com/sveltejs/kit,200,1787916874
+https://github.com/svencowart,200,1789184770
 https://github.com/svrnm,200,1788414921
 https://github.com/swaldman/c3p0,200,1788241814
 https://github.com/swiatekm,200,1788414924
@@ -4698,7 +4716,8 @@ https://github.com/tidal,200,1788414996
 https://github.com/tiffany76,200,1787981979
 https://github.com/tigrannajaryan,200,1788414922
 https://github.com/timetinytim,200,1787981975
-https://github.com/tobiasstadler,200,1788414996
+https://github.com/tobert/otel-cli,200,1788422896
+https://github.com/tobiasstadler,200,1787916710
 https://github.com/tokio-rs/tracing-opentelemetry,200,1787916884
 https://github.com/tombrk,200,1787981985
 https://github.com/tonglil,200,1787916886
@@ -4809,6 +4828,7 @@ https://github.com/yumosx,200,1787981985
 https://github.com/yuriolisa,200,1788414929
 https://github.com/yurishkuro,200,1787981985
 https://github.com/yurishkuro/opentracing-tutorial/tree/master/python,200,1788414911
+https://github.com/yuzurihaaa,200,1789012066
 https://github.com/zacharycmontoya,200,1788414926
 https://github.com/zalando,200,1788846169
 https://github.com/zalando/otelcol-lightstep-receiver,200,1788846169
@@ -4908,6 +4928,8 @@ https://hexdocs.pm/opentelemetry/1.3.0/otel_sampler.html#callbacks,200,178841491
 https://hexdocs.pm/phoenix/installation.html,200,1788414913
 https://hibernate.org/reactive,200,1787981986
 https://hive.apache.org/,200,1787916966
+https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2,200,1788891321
+https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97,200,1788891321
 https://hsqldb.org/,200,1787916966
 https://http.jodd.org/,200,1787916956
 https://hub.docker.com/r/otel/ebpf-instrument,200,1788327798
@@ -5906,8 +5928,10 @@ https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-in
 https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.31.1/opentelemetry-instrumentation-bom-2.31.1.pom,200,1787942175
 https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.64.0-alpha/opentelemetry-bom-alpha-1.64.0-alpha.pom,200,1787981966
 https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.65.0-alpha/opentelemetry-bom-alpha-1.65.0-alpha.pom,200,1787942666
+https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.66.0-alpha/opentelemetry-bom-alpha-1.66.0-alpha.pom,200,1789147605
 https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.64.0/opentelemetry-bom-1.64.0.pom,200,1787981966
 https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.65.0/opentelemetry-bom-1.65.0.pom,200,1787942666
+https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.66.0/opentelemetry-bom-1.66.0.pom,200,1789147605
 https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf,200,1787916996
 https://resteasy.dev/,200,1787916956
 https://restlet.github.io/,200,1787916956

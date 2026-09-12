@@ -38,7 +38,7 @@ default_lang_commit: 3aa0f7a25cd2f7878cad1665e67937c5e9c70694
 
 **OpenTelemetry** to otwartoźródłowy framework obserwowalności dla
 oprogramowania chmurowego. Dostarcza jednolity zestaw interfejsów API,
-bibliotek, agentów i usług kolektorów do przechwytywania rozproszonych śladów i
+bibliotek, agentów i usług Kolektora do przechwytywania rozproszonych tras i
 metryk z Twojej aplikacji.
 
 OpenTelemetry czerpie z wieloletniego doświadczenia projektów OpenTracing i
@@ -65,7 +65,7 @@ modyfikowania kodu aplikacji.
       image="/img/homepage/unified-signals.svg"
       imagePosition="right" %}}
 
-Koreluj ślady, metryki i logi ze współdzielonym kontekstem, który przepływa
+Koreluj trasy, metryki i logi ze współdzielonym kontekstem, który przepływa
 przez całą ścieżkę zapytania. Uzyskaj pełny obraz zachowania aplikacji we
 wszystkich komponentach i usługach.
 
@@ -86,12 +86,12 @@ ich potrzebujesz.
 {{< /homepage/main-features >}}
 
 {{< homepage/signals-showcase title="Sygnały obserwowalności" >}}
-{{< homepage/signal name="Ślady" image="/img/homepage/signal-traces.svg" url="/docs/concepts/signals/traces/" >}}
-Ślady rozproszone {{< /homepage/signal >}}
+{{< homepage/signal name="Trasy" image="/img/homepage/signal-traces.svg" url="/docs/concepts/signals/traces/" >}}
+Trasy rozproszone {{< /homepage/signal >}}
 {{< homepage/signal name="Metryki" image="/img/homepage/signal-metrics.svg" url="/docs/concepts/signals/metrics/" >}}
 Pomiary w czasie {{< /homepage/signal >}}
 {{< homepage/signal name="Logi" image="/img/homepage/signal-logs.svg" url="/docs/concepts/signals/logs/" >}}
-Rekordy ze znacznikiem czasu {{< /homepage/signal >}}
+Rekordy logów {{< /homepage/signal >}}
 {{< homepage/signal name="Bagaż" image="/img/homepage/signal-baggage.svg" url="/docs/concepts/signals/baggage/" >}}
 Metadane kontekstowe {{< /homepage/signal >}} {{< /homepage/signals-showcase >}}
 
@@ -99,18 +99,18 @@ Metadane kontekstowe {{< /homepage/signal >}} {{< /homepage/signals-showcase >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-auto-instrumentation.svg" title="Automatyczna instrumentacja" url="/docs/concepts/instrumentation/zero-code/" >}}
 Zacznij w kilka minut dzięki instrumentacji bez pisania kodu dla popularnych
-frameworków i bibliotek. Agenty automatycznej instrumentacji przechwytują ślady,
+frameworków i bibliotek. Agenty automatycznej instrumentacji przechwytują trasy,
 metryki i logi bez modyfikowania kodu źródłowego. {{< /homepage/otel-feature >}}
 
-{{< homepage/otel-feature image="/img/homepage/feature-pipeline.svg" title="Potok kolektora" url="/docs/collector/" >}}
-Przetwarzaj, filtruj i kieruj dane telemetryczne za pomocą kolektora
+{{< homepage/otel-feature image="/img/homepage/feature-pipeline.svg" title="Potok Kolektora" url="/docs/collector/" >}}
+Przetwarzaj, filtruj i kieruj dane telemetryczne za pomocą Kolektora
 OpenTelemetry. Wdrażaj jako agenta lub bramę do odbierania, przetwarzania i
 eksportowania telemetrii na dużą skalę z ponad 200 komponentami.
 {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-observability.svg" title="Propagacja kontekstu" url="/docs/concepts/context-propagation/" >}}
-Automatycznie koreluj ślady między granicami usług. Rozproszony kontekst
-przepływa przez całą ścieżkę zapytań, łącząc logi, metryki i ślady w
+Automatycznie koreluj trasy między granicami usług. Rozproszony kontekst
+przepływa przez całą ścieżkę zapytań, łącząc logi, metryki i trasy w
 ujednolicony widok. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-multi-language.svg" title="Wsparcie wielu języków" url="/docs/languages/" >}}
@@ -119,7 +119,7 @@ Natywne SDK dla ponad 12 języków, w tym Java, Kotlin, Python, Go, JavaScript,
 wsparciem OpenTelemetry. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-production-ready.svg" title="Stabilne i gotowe do produkcji" url="/status/" >}}
-Interfejsy API śledzenia i metryk są stabilne we wszystkich głównych językach.
+Interfejsy API trasowania i metryk są stabilne we wszystkich głównych językach.
 Tysiące organizacji używa OpenTelemetry w produkcji. Wspierane przez CNCF i
 głównych dostawców chmurowych. {{< /homepage/otel-feature >}}
 
@@ -133,7 +133,7 @@ zapewnia długoterminową stabilność i rozwój napędzany przez społeczność
 
 {{< homepage/ecosystem-stats title="Ekosystem OpenTelemetry" >}}
 {{< homepage/stat type="languages" label="Języki" url="/docs/languages/" >}}
-{{< homepage/stat type="collector" label="Komponenty kolektora" url="/docs/collector/" >}}
+{{< homepage/stat type="collector" label="Komponenty Kolektora" url="/docs/collector/" >}}
 {{< homepage/stat type="registry" label="Integracje" url="/ecosystem/registry/" >}}
 {{< homepage/stat type="vendors" label="Dostawcy" url="/ecosystem/vendors/" >}}
 {{< /homepage/ecosystem-stats >}}
