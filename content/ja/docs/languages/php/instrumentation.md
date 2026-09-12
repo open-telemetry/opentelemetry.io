@@ -3,7 +3,7 @@ title: 計装
 weight: 20
 aliases: [manual]
 description: OpenTelemetry PHP の手動計装
-default_lang_commit: 9229908e7b567bc9c3f6352a5a8922caf5c1ac1c
+default_lang_commit: 86b0bf27288675614c8ab4052b2d564117fc42d4
 cSpell:ignore: guzzlehttp
 ---
 
@@ -407,7 +407,7 @@ public function roll($rolls) {
 以下のようにアプリを起動し、ブラウザまたは `curl` で <http://localhost:8080/rolldice?rolls=12> にリクエストを送信します。
 
 ```sh
-php -S 8080 localhost
+php -S localhost:8080
 ```
 
 しばらくすると、`SpanExporter` によってコンソールにスパンが出力されるのが確認できます。

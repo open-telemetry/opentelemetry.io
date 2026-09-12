@@ -2,6 +2,7 @@
 title: service.criticality を使用したテイルベースサンプリング
 linkTitle: テイルサンプリング
 default_lang_commit: 8fd99e125e5510385b18b541d97c283e28f76ef2
+drifted_from_default: true
 ---
 
 この例では、OpenTelemetry Collector においてインテリジェントなテイルベースのサンプリング決定を行うために、リソース属性 [`service.criticality`](/docs/specs/semconv/resource/service/#service) を使用する方法を示します。
