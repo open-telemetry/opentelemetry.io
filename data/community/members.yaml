@@ -309,6 +309,7 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-maintainers
       - collector-contrib-triagers
+      - semconv-network-approvers
       - semconv-system-approvers
     html_url: https://github.com/braydonk
     avatar_url: https://avatars.githubusercontent.com/u/93549768?v=4
@@ -544,13 +545,11 @@ maintainers:
       - collector-triagers
       - docs-fr-approvers
       - docs-fr-maintainers
-      - ebpf-profiler-approvers
       - go-approvers
       - go-maintainers
       - go-triagers
       - packaging-approvers
       - packaging-maintainers
-      - sig-developer-experience-approvers
     html_url: https://github.com/dmathieu
     avatar_url: https://avatars.githubusercontent.com/u/9347?v=4
   - name: dmitryax
@@ -1729,6 +1728,11 @@ approvers:
       - zig-approvers
     html_url: https://github.com/agagniere
     avatar_url: https://avatars.githubusercontent.com/u/8630600?v=4
+  - name: ajimenez1503
+    teams:
+      - semconv-network-approvers
+    html_url: https://github.com/ajimenez1503
+    avatar_url: https://avatars.githubusercontent.com/u/5960625?v=4
   - name: alexmojaki
     teams:
       - semconv-genai-approvers
@@ -2220,6 +2224,11 @@ approvers:
       - semconv-mobile-approvers
     html_url: https://github.com/surbhiia
     avatar_url: https://avatars.githubusercontent.com/u/138259843?v=4
+  - name: svencowart
+    teams:
+      - semconv-network-approvers
+    html_url: https://github.com/svencowart
+    avatar_url: https://avatars.githubusercontent.com/u/8366524?v=4
   - name: SylvainJuge
     teams:
       - java-instrumentation-approvers
@@ -2539,9 +2548,6 @@ members:
   - name: Adii-45
     html_url: https://github.com/Adii-45
     avatar_url: https://avatars.githubusercontent.com/u/90207171?v=4
-  - name: ajimenez1503
-    html_url: https://github.com/ajimenez1503
-    avatar_url: https://avatars.githubusercontent.com/u/5960625?v=4
   - name: AlchemyDing
     html_url: https://github.com/AlchemyDing
     avatar_url: https://avatars.githubusercontent.com/u/88769332?v=4

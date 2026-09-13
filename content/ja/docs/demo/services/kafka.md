@@ -1,6 +1,7 @@
 ---
 title: Kafka
 default_lang_commit: 36a8a53c4a20a6d7a706539e9f3b4887327be781
+drifted_from_default: true
 cSpell:ignore: Dotel
 ---
 
