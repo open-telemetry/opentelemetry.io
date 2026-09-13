@@ -2,26 +2,28 @@
 title: Supported libraries
 description: Libraries and frameworks instrumented out of the box.
 weight: 10
-cSpell:ignore: gonic logrus openai runtimemetrics segmentio sirupsen
+# prettier-ignore
+cSpell:ignore: anthropics gonic logrus openai runtimemetrics segmentio sirupsen
 ---
 
 The tool ships instrumentation packages for the following libraries and
 frameworks. When your application or its dependencies use one of them, the
 matching instrumentation is injected automatically at build time.
 
-| Library or framework    | Import path                             | Instrumented operations        |
-| ----------------------- | --------------------------------------- | ------------------------------ |
-| HTTP (standard library) | `net/http`                              | Client and server requests     |
-| gRPC                    | `google.golang.org/grpc`                | Client and server calls        |
-| SQL databases           | `database/sql`                          | Database calls                 |
-| Gin                     | `github.com/gin-gonic/gin`              | Server requests                |
-| Redis                   | `github.com/redis/go-redis/v9`          | Client commands                |
-| MongoDB                 | `go.mongodb.org/mongo-driver/mongo`     | Client commands                |
-| Kafka                   | `github.com/segmentio/kafka-go`         | Produced and consumed messages |
-| OpenAI                  | `github.com/openai/openai-go` (v1 – v3) | Client calls                   |
-| Kubernetes client       | `k8s.io/client-go/tools/cache`          | Informer cache operations      |
-| slog (standard library) | `log/slog`                              | Log records                    |
-| Logrus                  | `github.com/sirupsen/logrus`            | Log records                    |
+| Library or framework    | Import path                              | Instrumented operations        |
+| ----------------------- | ---------------------------------------- | ------------------------------ |
+| HTTP (standard library) | `net/http`                               | Client and server requests     |
+| gRPC                    | `google.golang.org/grpc`                 | Client and server calls        |
+| SQL databases           | `database/sql`                           | Database calls                 |
+| Gin                     | `github.com/gin-gonic/gin`               | Server requests                |
+| Redis                   | `github.com/redis/go-redis/v9`           | Client commands                |
+| MongoDB                 | `go.mongodb.org/mongo-driver/mongo`      | Client commands                |
+| Kafka                   | `github.com/segmentio/kafka-go`          | Produced and consumed messages |
+| OpenAI                  | `github.com/openai/openai-go` (v1 – v3)  | Client calls                   |
+| Anthropic               | `github.com/anthropics/anthropic-sdk-go` | Client calls                   |
+| Kubernetes client       | `k8s.io/client-go/tools/cache`           | Informer cache operations      |
+| slog (standard library) | `log/slog`                               | Log records                    |
+| Logrus                  | `github.com/sirupsen/logrus`             | Log records                    |
 
 HTTP and gRPC instrumentation produce spans and metrics, including automatic
 [context propagation](/docs/concepts/context-propagation/) between services.

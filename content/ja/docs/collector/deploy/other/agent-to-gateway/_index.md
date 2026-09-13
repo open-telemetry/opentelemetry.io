@@ -3,7 +3,7 @@ title: エージェントからゲートウェイへのデプロイメントパ�
 linkTitle: エージェントからゲートウェイへのパターン
 description: エージェントとゲートウェイを組み合わせた Collector デプロイメントの作成方法とその理由
 weight: 100
-default_lang_commit: 1143960b75c6faceb40eb64269e68390e3237671
+default_lang_commit: 77207ae357ec6a3296c28aae8bf4378181f25eb2
 drifted_from_default: true
 cSpell:ignore: cumulativetodelta loadbalancingexporter
 ---
@@ -116,7 +116,7 @@ receivers:
         endpoint: 0.0.0.0:4317
 
   # ホストメトリクスを収集
-  hostmetrics:
+  host_metrics:
     scrapers:
       cpu:
       memory:
@@ -152,7 +152,7 @@ service:
       processors: [memory_limiter, resourcedetection]
       exporters: [otlp]
     metrics:
-      receivers: [otlp, hostmetrics]
+      receivers: [otlp, host_metrics]
       processors: [memory_limiter, resourcedetection]
       exporters: [otlp]
     logs:

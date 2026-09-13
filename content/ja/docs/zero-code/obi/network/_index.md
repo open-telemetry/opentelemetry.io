@@ -3,8 +3,8 @@ title: ネットワークメトリクス
 linkTitle: ネットワーク
 description: OBI をポイントツーポイントのネットワークメトリクスの観察用に設定する
 weight: 8
-default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
-cSpell:ignore: replicaset statefulset
+default_lang_commit: 84d7cf19e9f7f44ea889f8e148b37bc71116ef31
+cSpell:ignore: OpenShift replicaset statefulset
 ---
 
 OpenTelemetry eBPF 計装は、異なるエンドポイント間のネットワークメトリクスを提供するように設定できます。
@@ -16,7 +16,7 @@ OBI ネットワークメトリクスの使用を開始するには、[クイッ
 
 ## ネットワークメトリクス {#network-metrics}
 
-OBI は 2 種類のネットワークメトリクスファミリーを提供します。
+OBI はバイトおよびパケットのフローメトリクスと、ゾーン間バイトメトリクスを提供します。
 
 **フローメトリクス**: アプリケーションの観点から、異なるエンドポイント間で送受信されたバイト数をキャプチャします。
 
@@ -24,53 +24,68 @@ OBI は 2 種類のネットワークメトリクスファミリーを提供し�
 - `obi_network_flow_bytes_total`（Prometheus エンドポイントでエクスポートする場合）
 - 有効にするには、[OTEL_EBPF_METRICS_FEATURES](../configure/export-data/) 設定オプションに `network` オプションを追加します。
 
+**フローパケットメトリクス**: エンドポイント間で送受信されたパケット数をカウントします。
+
+- `obi.network.flow.packets`（OpenTelemetry 経由でエクスポートする場合）
+- `obi_network_flow_packets_total`（Prometheus エンドポイントでエクスポートする場合）
+- 有効にするには、[OTEL_EBPF_METRICS_FEATURES](../configure/export-data/) に `network_flow_packets` オプションを追加します。
+
 **ゾーン間メトリクス**: アプリケーションの観点から、異なるアベイラビリティゾーン間で送受信されたバイト数をキャプチャします。
 
 - `obi.network.inter.zone.bytes`（OpenTelemetry 経由でエクスポートする場合）
 - `obi_network_inter_zone_bytes_total`（Prometheus エンドポイントでエクスポートする場合）
-- 有効にするには、[OTEL_EBPF_METRICS_FEATURES](../configure/export-data/) 設定オプションに `network` オプションを追加します。
+- 有効にするには、[OTEL_EBPF_METRICS_FEATURES](../configure/export-data/) 設定オプションに `network_inter_zone` オプションを追加します。
 
 > [!NOTE]
 >
 > メトリクスはホストの視点からキャプチャされるため、ネットワークスタックのオーバーヘッド（プロトコルヘッダーなど）が含まれます。
 
+デフォルトでは、ネットワークフローバイトについて以下の属性のみが報告されます。
+`k8s.src.owner.name`、`k8s.src.namespace`、`k8s.dst.owner.name`、`k8s.dst.namespace`、`k8s.cluster.name` です。
+
+ゾーン間バイトメトリクスのデフォルト属性は、`k8s.cluster.name`、`src.zone`、`dst.zone` です。
+
 ## メトリクス属性 {#metric-attributes}
 
 ネットワークメトリクスには、以下の属性でラベルが付けられます。
 
-| 属性                                        | 説明                                                                                                                                                                                          |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `obi.ip` / `obi_ip`                         | メトリクスを出力した OBI インスタンスのローカル IP アドレス                                                                                                                                   |
-| `direction`                                 | 受信トラフィックは `ingress`、送信トラフィックは `egress`                                                                                                                                     |
-| `iface`                                     | ネットワークインターフェイス名                                                                                                                                                                |
-| `src.address`                               | 送信元 IP アドレス（エグレスはローカル、イングレスはリモート）                                                                                                                                |
-| `src.port`                                  | 送信元ポート（エグレスはローカル、イングレスはリモート）                                                                                                                                      |
-| `src.name`                                  | 送信元サービス名（サービスディスカバリーで解決）                                                                                                                                              |
-| `service.name`                              | 計装済みエンドポイントに関連付けられたローカルサービス名                                                                                                                                      |
-| `service.namespace`                         | 計装済みエンドポイントに関連付けられたローカルサービス名前空間                                                                                                                                |
-| `src.cidr`                                  | 送信元 CIDR（設定済みの場合）                                                                                                                                                                 |
-| `dst.address`                               | 宛先 IP アドレス（エグレスはリモート、イングレスはローカル）                                                                                                                                  |
-| `dst.port`                                  | 宛先ポート（エグレスはリモート、イングレスはローカル）                                                                                                                                        |
-| `dst.name`                                  | 宛先サービス名（サービスディスカバリーで解決）                                                                                                                                                |
-| `service.peer.name`                         | 宛先エンドポイントに関連付けられたリモートピアサービス名                                                                                                                                      |
-| `service.peer.namespace`                    | 宛先エンドポイントに関連付けられたリモートピアサービス名前空間                                                                                                                                |
-| `dst.cidr`                                  | 宛先 CIDR（設定済みの場合）                                                                                                                                                                   |
-| `transport`                                 | トランスポートプロトコル: `tcp`、`udp`                                                                                                                                                        |
-| `k8s.src.namespace` / `k8s_src_namespace`   | 送信元名前空間名                                                                                                                                                                              |
-| `k8s.src.name` / `k8s_src_name`             | 送信元 Pod 名                                                                                                                                                                                 |
-| `k8s.src.type` / `k8s_src_type`             | 送信元ワークロードタイプ: `pod`、`replicaset`、`deployment`、`statefulset`、`daemonset`、`job`、`cronjob`、`node`                                                                             |
-| `k8s.src.owner.name` / `k8s_src_owner_name` | 送信元ワークロードオーナー名                                                                                                                                                                  |
-| `k8s.src.owner.type` / `k8s_src_owner_type` | 送信元ワークロードオーナータイプ: `replicaset`、`deployment`、`statefulset`、`daemonset`、`job`、`cronjob`、`node`                                                                            |
-| `k8s.src.node.ip` / `k8s_src_node_ip`       | 送信元ノード IP アドレス                                                                                                                                                                      |
-| `k8s.src.node.name` / `k8s_src_node_name`   | 送信元ノード名                                                                                                                                                                                |
-| `k8s.dst.namespace` / `k8s_dst_namespace`   | 宛先名前空間名                                                                                                                                                                                |
-| `k8s.dst.name` / `k8s_dst_name`             | 宛先 Pod 名                                                                                                                                                                                   |
-| `k8s.dst.type` / `k8s_dst_type`             | 宛先ワークロードタイプ: `pod`、`replicaset`、`deployment`、`statefulset`、`daemonset`、`job`、`cronjob`、`node`                                                                               |
-| `k8s.dst.owner.name` / `k8s_dst_owner_name` | 宛先ワークロードオーナー名                                                                                                                                                                    |
-| `k8s.dst.owner.type` / `k8s_dst_owner_type` | 宛先ワークロードオーナータイプ: `replicaset`、`deployment`、`statefulset`、`daemonset`、`job`、`cronjob`、`node`                                                                              |
-| `k8s.dst.node.ip` / `k8s_dst_node_ip`       | 宛先ノード IP アドレス                                                                                                                                                                        |
-| `k8s.dst.node.name` / `k8s_dst_node_name`   | 宛先ノード名                                                                                                                                                                                  |
-| `k8s.cluster.name` / `k8s_cluster_name`     | Kubernetes クラスター名。OBI は Google Cloud、Microsoft Azure、Amazon Web Services 上で自動検出できます。その他のプロバイダーの場合は、`OTEL_EBPF_KUBE_CLUSTER_NAME` プロパティを設定します。 |
+| 属性                                              | 説明                                                                                                                                                                                                                       |
+| ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `direction`                                       | 受信トラフィックは `ingress`、送信トラフィックは `egress`                                                                                                                                                                  |
+| `dst.address`                                     | 宛先 IP アドレス（エグレスはリモート、イングレスはローカル）                                                                                                                                                               |
+| `dst.cidr`                                        | 宛先 CIDR（設定済みの場合）                                                                                                                                                                                                |
+| `dst.name`                                        | 宛先サービス名（サービスディスカバリーで解決）                                                                                                                                                                             |
+| `dst.port`                                        | 宛先ポート（エグレスはリモート、イングレスはローカル）                                                                                                                                                                     |
+| `dst.zone` / `dst_zone`                           | 宛先クラウドアベイラビリティゾーンの名前                                                                                                                                                                                   |
+| `iface`                                           | ネットワークインターフェイス名                                                                                                                                                                                             |
+| `k8s.cluster.name` / `k8s_cluster_name`           | Kubernetes クラスター名。OBI はノードラベル、OpenShift インフラストラクチャメタデータ、Google Cloud、Microsoft Azure、Amazon Web Services を確認します。検出を上書きするには、`OTEL_EBPF_KUBE_CLUSTER_NAME` を設定します。 |
+| `k8s.dst.name` / `k8s_dst_name`                   | 宛先 Pod 名                                                                                                                                                                                                                |
+| `k8s.dst.namespace` / `k8s_dst_namespace`         | 宛先名前空間名                                                                                                                                                                                                             |
+| `k8s.dst.node.ip` / `k8s_dst_node_ip`             | 宛先ノード IP アドレス                                                                                                                                                                                                     |
+| `k8s.dst.node.name` / `k8s_dst_node_name`         | 宛先ノード名                                                                                                                                                                                                               |
+| `k8s.dst.owner.name` / `k8s_dst_owner_name`       | 宛先ワークロードオーナー名                                                                                                                                                                                                 |
+| `k8s.dst.owner.type` / `k8s_dst_owner_type`       | 宛先ワークロードオーナータイプ: `replicaset`、`deployment`、`statefulset`、`daemonset`、`job`、`cronjob`、`node`                                                                                                           |
+| `k8s.dst.type` / `k8s_dst_type`                   | 宛先ワークロードタイプ: `pod`、`replicaset`、`deployment`、`statefulset`、`daemonset`、`job`、`cronjob`、`node`                                                                                                            |
+| `k8s.src.name` / `k8s_src_name`                   | 送信元 Pod 名                                                                                                                                                                                                              |
+| `k8s.src.namespace` / `k8s_src_namespace`         | 送信元名前空間名                                                                                                                                                                                                           |
+| `k8s.src.node.ip` / `k8s_src_node_ip`             | 送信元ノード IP アドレス                                                                                                                                                                                                   |
+| `k8s.src.node.name` / `k8s_src_node_name`         | 送信元ノード名                                                                                                                                                                                                             |
+| `k8s.src.owner.name` / `k8s_src_owner_name`       | 送信元ワークロードオーナー名                                                                                                                                                                                               |
+| `k8s.src.owner.type` / `k8s_src_owner_type`       | 送信元ワークロードオーナータイプ: `replicaset`、`deployment`、`statefulset`、`daemonset`、`job`、`cronjob`、`node`                                                                                                         |
+| `k8s.src.type` / `k8s_src_type`                   | 送信元ワークロードタイプ: `pod`、`replicaset`、`deployment`、`statefulset`、`daemonset`、`job`、`cronjob`、`node`                                                                                                          |
+| `network.protocol.name` / `network_protocol_name` | ネットワークプロトコル名（例: `http` または `https`）                                                                                                                                                                      |
+| `network.type` / `network_type`                   | ネットワークタイプ（例: `ipv4` または `ipv6`）                                                                                                                                                                             |
+| `obi.ip` / `obi_ip`                               | メトリクスを出力した OBI インスタンスのローカル IP アドレス                                                                                                                                                                |
+| `service.name`                                    | 計装済みエンドポイントに関連付けられたローカルサービス名                                                                                                                                                                   |
+| `service.namespace`                               | 計装済みエンドポイントに関連付けられたローカルサービス名前空間                                                                                                                                                             |
+| `service.peer.name`                               | 宛先エンドポイントに関連付けられたリモートピアサービス名                                                                                                                                                                   |
+| `service.peer.namespace`                          | 宛先エンドポイントに関連付けられたリモートピアサービス名前空間                                                                                                                                                             |
+| `src.address`                                     | 送信元 IP アドレス（エグレスはローカル、イングレスはリモート）                                                                                                                                                             |
+| `src.cidr`                                        | 送信元 CIDR（設定済みの場合）                                                                                                                                                                                              |
+| `src.name`                                        | 送信元サービス名（サービスディスカバリーで解決）                                                                                                                                                                           |
+| `src.port`                                        | 送信元ポート（エグレスはローカル、イングレスはリモート）                                                                                                                                                                   |
+| `src.zone` / `src_zone`                           | 送信元クラウドアベイラビリティゾーンの名前                                                                                                                                                                                 |
+| `transport`                                       | トランスポートプロトコル: `tcp`、`udp`                                                                                                                                                                                     |
 
 ## メトリクスの削減 {#metric-reduction}
 

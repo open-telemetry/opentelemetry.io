@@ -2,7 +2,7 @@
 <!doctype html>
 <html itemscope itemtype="http://schema.org/WebPage"
     {{- with .Site.Language.Direction }} dir="{{ . }}" {{- end -}}
-    {{ with .Site.Language.Lang }} lang="{{ . }}" {{- end }} {{/**/ -}}
+    {{ with .Site.Language.Name }} lang="{{ . }}" {{- end }} {{/**/ -}}
     class="no-js"
     {{- $darkMode := partialCached "dark-mode-config.html" "dark-mode-global" -}}
     {{- if $darkMode.enable }} data-theme-init{{ end }}>
@@ -10,6 +10,7 @@
     {{ partial "head.html" . }}
   </head>
   <body class="td-{{ .Kind }}{{ with .Page.Params.body_class }} {{ . }}{{ end }}">
+    {{ partial "llms-directive.html" . -}}
     <header>
       {{ partial "navbar.html" . }}
     </header>

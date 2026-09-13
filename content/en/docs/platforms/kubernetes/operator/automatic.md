@@ -48,7 +48,7 @@ The Operator provides a
 which is used to create an instance of the Collector that the Operator manages.
 The following example deploys the Collector as a deployment (the default), but
 there are other
-[deployment modes](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes)
+[deployment modes](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/deployment-modes.md)
 that can be used.
 
 When using the `Deployment` mode the operator will also create a Service that
@@ -577,7 +577,7 @@ The possible values for the annotation can be
 
 Alternatively, the annotation can be added to a namespace, which will result in
 all services in that namespace to opt-in to automatic instrumentation. See the
-[Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)
+[Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)
 for more details.
 
 ### Opt-in a Go Service

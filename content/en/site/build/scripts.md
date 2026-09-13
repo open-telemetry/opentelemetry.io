@@ -18,38 +18,10 @@ front matter field. If pages are missing it, the script outputs a fix command:
 npm run fix:i18n:new
 ```
 
-## check-links-shard.sh
-
-Runs link checking for a specific shard by appending a shard-specific
-`IgnoreDirs` regular expression to the generated `.htmltest.yml`.
-
-```sh
-.github/scripts/check-links-shard.sh [-qk] <shard-id> <shard-regex>
-```
-
-| Flag | Description                                                    |
-| ---- | -------------------------------------------------------------- |
-| `-h` | Show help                                                      |
-| `-k` | Keep generated `.htmltest.yml` (default: delete after the run) |
-| `-q` | Quiet mode                                                     |
-
-## check-refcache.sh
-
-Compares shard-specific `refcache.json` files against the main
-`static/refcache.json` to detect cache inconsistencies after link checking.
-
-```sh
-.github/scripts/check-refcache.sh [directory]
-```
-
-Default directory: `tmp/check-refcache`. If differences are found, the script
-suggests running `npm run fix:refcache` or adding a `/fix:refcache` comment to
-the PR.
-
 ## pr-approval-labels.sh
 
 Manages PR approval labels based on review state and file ownership. Called by
-the [`pr-approval-labels` workflow](../ci-workflows/#pr-approval-labels).
+the [`label-manager` workflow](../ci-workflows/#pr-approval-labels).
 
 **How it works:**
 
@@ -77,3 +49,15 @@ registries. Supports: npm, Packagist, RubyGems, Go, NuGet, Hex, Maven.
   execution.
 
 Deduplicates PRs by generating a SHA-1 tag from the update summary.
+
+When versions have changed, the script refreshes the [link cache][] before
+committing, since registry updates can add or remove external URLs. A transient
+failure during that refresh can leave the bot PR with `CACHE updates committed?`
+red even though links pass; comment [`/fix:link-cache`][] on the PR to repair
+it. If instead the update introduced a genuinely broken URL, the bot PR arrives
+red on the link check itself; fix the URL rather than rerunning the cache fix.
+
+<!-- prettier-ignore-start -->
+[`/fix:link-cache`]: /docs/contributing/pull-requests/#fixing-prs-in-github
+[link cache]: ../link-checking/#link-cache
+<!-- prettier-ignore-end -->

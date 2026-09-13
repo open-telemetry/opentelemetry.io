@@ -2,6 +2,7 @@
 title: Atributos de span manuales
 aliases: [manual_span_attributes, ../manual-span-attributes]
 default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
+drifted_from_default: true
 ---
 
 Esta página lista los Atributos de Span manuales utilizados en la demo:

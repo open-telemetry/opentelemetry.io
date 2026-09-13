@@ -1,0 +1,14 @@
+title: thrift
+registryType: instrumentation
+language: java
+tags:
+  - thrift
+  - instrumentation
+  - java
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/thrift-0.13
+license: Apache 2.0
+description:
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

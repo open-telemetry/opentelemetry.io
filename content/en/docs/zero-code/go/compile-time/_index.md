@@ -15,8 +15,8 @@ required.
 
 > [!NOTE]
 >
-> This project is under active development and is not yet ready for production
-> use. To follow progress or get involved, visit the
+> This project is stable and ready for production use as of v1.0.0. To follow
+> development or get involved, visit the
 > [opentelemetry-go-compile-instrumentation repository](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation).
 
 ## How it works
