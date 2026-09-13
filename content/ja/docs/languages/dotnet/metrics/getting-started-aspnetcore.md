@@ -119,7 +119,7 @@ builder.Services.AddOpenTelemetry()
 2. `ConfigureResource()` でサービス情報を含むリソースを設定する
 3. `WithMetrics()` でメトリクスの収集を設定する
 4. `AddAspNetCoreInstrumentation()` で ASP.NET Core の自動計装を追加する
-5. コンソールエクスポーターを毎秒メトリクスをエクスポートするように設定する
+5. コンソールエクスポーターが毎秒メトリクスをエクスポートするように設定する
 
 ### ASP.NET Core の計装 {#aspnet-core-instrumentation}
 
