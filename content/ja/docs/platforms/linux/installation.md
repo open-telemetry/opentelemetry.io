@@ -46,7 +46,7 @@ sudo dnf install opentelemetry
 ## インストールの確認 {#verify-the-installation}
 
 サポートされている言語で書かれたアプリケーションを再起動するか、新しいアプリケーションを起動して、設定した送信先にテレメトリーが送信されていることを確認します。
-[送信先を設定する](../configuration/)までは、テレメトリーは OTLP を使用して `localhost` のポート `4317`（gRPC）および `4318`（HTTP）に送信されるため、データを確認するにはそこでリッスンしている [Collector](/docs/collector/) または他の OTLP レシーバーが必要です。
+[送信先を設定する](../configuration/)までは、テレメトリーは OTLP を使用して `localhost` のポート `4317`（gRPC）および `4318`（HTTP）に送信されるため、データを確認するにはそこでリッスンしている[コレクター](/docs/collector/)または他の OTLP レシーバーが必要です。
 
 ## 個別の言語のインストール {#install-individual-languages}
 
@@ -60,4 +60,4 @@ sudo dnf install opentelemetry
 
 ## 次のステップ {#next-steps}
 
-- [設定](../configuration/)：テレメトリーを Collector またはバックエンドに送信し、計装対象を制御します。
+- [設定](../configuration/)：テレメトリーをコレクターまたはバックエンドに送信し、計装対象を制御します。

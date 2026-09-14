@@ -26,8 +26,8 @@ OpenTelemetry Operator のおかげで高度に自動化されている [Kuberne
 サポートされているランタイムのプロセスにのみ作用し、対応する自動計装を読み込みます。
 OpenTelemetry SDK がないランタイムのプロセスには影響しません。
 すでに実行中のアプリケーションは、再起動後に計装されます。
-デフォルトでは、テレメトリーは OTLP を使用して `localhost` のポート `4317`（gRPC）および `4318`（HTTP）にエクスポートされるため、通常はローカルの [OpenTelemetry Collector](/docs/collector/) を実行してテレメトリーを受信し、転送します。
-Collector 自体は [OpenTelemetry Collector Releases](https://github.com/open-telemetry/opentelemetry-collector-releases) プロジェクトによってシステムパッケージとして配布されています。
+デフォルトでは、テレメトリーは OTLP を使用して `localhost` のポート `4317`（gRPC）および `4318`（HTTP）にエクスポートされるため、通常はローカルの [OpenTelemetry コレクター](/docs/collector/)を実行してテレメトリーを受信し、転送します。
+コレクター自体は [OpenTelemetry Collector Releases](https://github.com/open-telemetry/opentelemetry-collector-releases) プロジェクトによってシステムパッケージとして配布されています。
 このシステムパッケージリポジトリへの統合は [opentelemetry-collector-releases#1561](https://github.com/open-telemetry/opentelemetry-collector-releases/issues/1561) で追跡されています。
 
 Packaging SIG と OBI SIG は、[OpenTelemetry eBPF Instrumentation](/docs/zero-code/obi/) もシステムパッケージとして提供し、Go、Rust、C++ などの追加ランタイムにゼロコード計装を拡張する予定です。
@@ -35,7 +35,7 @@ Packaging SIG と OBI SIG は、[OpenTelemetry eBPF Instrumentation](/docs/zero-
 ## はじめに {#get-started}
 
 - [インストール](installation/)：リポジトリを追加し、Debian、Ubuntu、Fedora、または RHEL とその派生ディストリビューションにパッケージをインストールします。
-- [設定](configuration/)：インジェクターが Collector またはバックエンドを参照するよう設定し、計装対象を調整します。
+- [設定](configuration/)：インジェクターがコレクターまたはバックエンドを参照するよう設定し、計装対象を調整します。
 
 ## ステータスと制限事項 {#status-and-limitations}
 
@@ -48,7 +48,7 @@ Packaging SIG と OBI SIG は、[OpenTelemetry eBPF Instrumentation](/docs/zero-
 >
 > - APT および YUM リポジトリは現在 GitHub Pages 上でホストされていますが、これは**最終的な提供場所ではありません**。
 > - パッケージは**まだ署名されていない**ため、インストール手順では署名検証を無効にしています。
-> - [OpenTelemetry Collector](/docs/collector/) はまだベースのメタパッケージに含まれていないため、現時点では別途インストールして実行する必要があります。
+> - [OpenTelemetry コレクター](/docs/collector/)はまだベースのメタパッケージに含まれていないため、現時点では別途インストールして実行する必要があります。
 >
 > Packaging SIG はエンドユーザーからのフィードバックを積極的に求めています。
 > パッケージを試して、[opentelemetry-packaging](https://github.com/open-telemetry/opentelemetry-packaging) リポジトリにイシューを報告してください。

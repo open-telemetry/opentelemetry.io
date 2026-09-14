@@ -1,7 +1,7 @@
 ---
 title: 設定
 weight: 20
-description: OpenTelemetry Injector の参照先を Collector
+description: OpenTelemetry Injector の参照先をコレクター
   またはバックエンドに変更し、Linux ホスト上で計装する対象を制御します。
 default_lang_commit: 6fa8e87cacb431b31061635fcddb55990e80538a
 ---
@@ -11,7 +11,7 @@ default_lang_commit: 6fa8e87cacb431b31061635fcddb55990e80538a
 
 ## エクスポート先の設定 {#set-the-export-destination}
 
-推奨されるセットアップは、テレメトリーを受信してバックエンドに転送するローカルの [OpenTelemetry Collector](/docs/collector/) をホスト上で実行することです。
+推奨されるセットアップは、テレメトリーを受信してバックエンドに転送するローカルの [OpenTelemetry コレクター](/docs/collector/)をホスト上で実行することです。
 
 テレメトリーを別の場所に送信するには、設定ファイルを使用する方法が推奨されます。
 一から書く必要はほとんどありません。
@@ -25,7 +25,7 @@ OTEL_CONFIG_FILE=/etc/opentelemetry/config.yaml
 > [!NOTE]
 >
 > .NET の場合、ファイルベースの設定には `OTEL_EXPERIMENTAL_FILE_BASED_CONFIGURATION_ENABLED=true` も必要です。
-> これがないと、設定ファイルは無視されます。
+> これがないと、設定ファイルは警告なく無視されます。
 
 設定の変更を反映するには、アプリケーションを再起動してください。
 
@@ -45,14 +45,14 @@ OTEL_EXPORTER_OTLP_HEADERS=api-key=REPLACE_ME
 
 設定の変更を反映するには、アプリケーションを再起動してください。
 
-## ローカル Collector の実行 {#run-a-local-collector}
+## ローカルコレクターの実行 {#run-a-local-collector}
 
-ホスト上で [Collector](/docs/collector/) を実行すると、アプリケーションのエクスポート設定をシンプルに保てます。
-アプリケーションは OTLP を `localhost` に送信し、Collector がバッチ処理、リトライ、1つ以上のバックエンドへのルーティングを処理します。
-現時点では Collector は別途インストールして実行する必要があります。
+ホスト上で[コレクター](/docs/collector/)を実行すると、アプリケーションのエクスポート設定をシンプルに保てます。
+アプリケーションは OTLP を `localhost` に送信し、コレクターがバッチ処理、リトライ、1つ以上のバックエンドへのルーティングを処理します。
+現時点ではコレクターは別途インストールして実行する必要があります。
 ベースの `opentelemetry` メタパッケージにはまだ含まれていません。
 
 ## 次のステップ {#next-steps}
 
-- [OpenTelemetry Collector](/docs/collector/) の詳細を学ぶ。
+- [OpenTelemetry コレクター](/docs/collector/)の詳細を学ぶ。
 - 利用可能な [SDK 環境変数](/docs/languages/sdk-configuration/)を確認する。
