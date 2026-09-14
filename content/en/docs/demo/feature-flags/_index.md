@@ -32,24 +32,24 @@ user interface:
 
 ## Implemented feature flags
 
-| Feature Flag                   | Service(s)                | Description                                                                                                                                      |
-| ------------------------------ | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `adFailure`                    | Ad                        | Generate an error for `GetAds` 1/10th of the time                                                                                                |
-| `adHighCpu`                    | Ad                        | Trigger high cpu load in the ad service. If you want to demo cpu throttling, set cpu resource limits                                             |
-| `adManualGc`                   | Ad                        | Trigger full manual garbage collections in the ad service                                                                                        |
-| `cartFailure`                  | Cart                      | Send the selected percentage of `EmptyCart` calls to a failing cart store                                                                        |
-| `emailMemoryLeak`              | Email                     | Simulate a memory leak in the `email` service. The variant sets how much each confirmation email body is padded.                                 |
-| `failedReadinessProbe`         | Cart                      | Force the readiness probe to fail with unhealthy status, simulating a pod "NotReady" condition. Applicable for Kubernetes deployments only.      |
-| `imageSlowLoad`                | Frontend                  | Utilizes envoy fault injection, produces a delay in loading of product images in the frontend. The variant sets the delay.                       |
-| `intlShippingSlowdown`         | Shipping                  | Delay non-US shipping requests by the selected number of seconds, simulating overseas shipping latency. US addresses are unaffected.             |
-| `kafkaQueueProblems`           | Checkout, Fraud Detection | Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike.                                             |
-| `loadGeneratorTraffic`         | Load Generator            | Enable synthetic traffic from the load generator. Turn it off to pause all load generator scenarios.                                             |
-| `loadGeneratorVUs`             | Load Generator            | Number of concurrent virtual users driving the load generator's HTTP scenario. Changing it restarts k6 on the next poll.                         |
-| `paymentFailure`               | Payment                   | Generate an error for the selected percentage of `charge` calls.                                                                                 |
-| `paymentUnreachable`           | Checkout                  | Use a bad address when calling the Payment service to make it seem like the Payment service is unavailable.                                      |
-| `productCatalogFailure`        | Product Catalog           | Generate an error for `GetProduct` requests with product ID: `OLJCESPC7Z`                                                                        |
+| Feature Flag                 | Service(s)                | Description                                                                                                                                 |
+| ---------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `adFailure`                  | Ad                        | Generate an error for `GetAds` 1/10th of the time                                                                                           |
+| `adHighCpu`                  | Ad                        | Trigger high cpu load in the ad service. If you want to demo cpu throttling, set cpu resource limits                                        |
+| `adManualGc`                 | Ad                        | Trigger full manual garbage collections in the ad service                                                                                   |
+| `cartFailure`                | Cart                      | Send the selected percentage of `EmptyCart` calls to a failing cart store                                                                   |
+| `emailMemoryLeak`            | Email                     | Simulate a memory leak in the `email` service. The variant sets how much each confirmation email body is padded.                            |
+| `failedReadinessProbe`       | Cart                      | Force the readiness probe to fail with unhealthy status, simulating a pod "NotReady" condition. Applicable for Kubernetes deployments only. |
+| `imageSlowLoad`              | Frontend                  | Utilizes envoy fault injection, produces a delay in loading of product images in the frontend. The variant sets the delay.                  |
+| `intlShippingSlowdown`       | Shipping                  | Delay non-US shipping requests by the selected number of seconds, simulating overseas shipping latency. US addresses are unaffected.        |
+| `kafkaQueueProblems`         | Checkout, Fraud Detection | Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike.                                        |
+| `loadGeneratorTraffic`       | Load Generator            | Enable synthetic traffic from the load generator. Turn it off to pause all load generator scenarios.                                        |
+| `loadGeneratorVUs`           | Load Generator            | Number of concurrent virtual users driving the load generator's HTTP scenario. Changing it restarts k6 on the next poll.                    |
+| `paymentFailure`             | Payment                   | Generate an error for the selected percentage of `charge` calls.                                                                            |
+| `paymentUnreachable`         | Checkout                  | Use a bad address when calling the Payment service to make it seem like the Payment service is unavailable.                                 |
+| `productCatalogFailure`      | Product Catalog           | Generate an error for `GetProduct` requests with product ID: `OLJCESPC7Z`                                                                   |
 | `productCatalogLockContention` | Product Catalog           | Simulate database lock contention by holding an `ACCESS EXCLUSIVE` lock on the `catalog.products` table, blocking other product catalog queries. |
-| `recommendationCacheFailure`   | Recommendation            | Create a memory leak due to an exponentially growing cache. Roughly half of requests trigger growth.                                             |
+| `recommendationCacheFailure` | Recommendation            | Create a memory leak due to an exponentially growing cache. Roughly half of requests trigger growth.                                        |
 
 ## Guided Debugging Scenario
 
