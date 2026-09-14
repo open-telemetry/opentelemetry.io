@@ -9,6 +9,7 @@ license: MIT
 description: Go contrib plugin for the labstack/echo package.
 authors:
   - name: LabStack
+    url: https://github.com/labstack
 urls:
   repo: https://github.com/labstack/echo-opentelemetry
 createdAt: 2020-06-08
