@@ -1,18 +1,18 @@
 # Community
 
 community_introduce: >-
-  {{ .Site.Title }}는 커뮤니티 구성원 누구나 사용하고, 개선하고, 즐길 수 있는 오픈소스
-  프로젝트이다. 여러분의 참여를 기다린다.
+  {{ .Site.Title }}는 커뮤니티 구성원 누구나 사용하고, 개선하고, 즐길 수 있는
+  오픈소스 프로젝트이다. 여러분의 참여를 기다린다.
 
 community_learn: 학습과 교류
 community_using: >-
-  {{ .Site.Title }}를 사용 중이거나 사용하려고 하는가? 자세한 내용은
-  여기에서 확인할 수 있다:
+  {{ .Site.Title }}를 사용 중이거나 도입을 검토하는 경우, 자세한 내용은 아래에서
+  확인할 수 있다:
 
 community_develop: 개발과 기여
 community_contribute: >-
-  {{ .Site.Title }} 문서 기여 방법은
-  [기여하기](/docs/contributing/)에서 확인 할 수 있다. 기타 유용한 링크는 다음과 같다:
+  {{ .Site.Title }} 문서 기여 방법은 [기여하기](/docs/contributing/)에서 확인할
+  수 있다. 기타 유용한 링크는 다음과 같다:
 
 community_how_to: 문서 스타일 가이드와 그 밖의 내용은 다음을 참고한다.
 community_guideline: 기여하기
