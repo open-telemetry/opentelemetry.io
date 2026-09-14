@@ -3,7 +3,7 @@ title: 依存関係の管理
 description: >-
   サイトが npm 依存関係をどのようにインストール、検証、更新するか
 weight: 5
-default_lang_commit: d6988a2bfec7521e701d8a15d36696cbb35a129b
+default_lang_commit: aac3db2d7779c644ad981d0797e0028738698826
 ---
 
 npm 依存関係はコミット済みの `package-lock.json` によって固定され、インストール時にはレビュー済みのライフサイクルスクリプトのみが実行されます。
@@ -62,15 +62,22 @@ Netlify は[デプロイコンテキスト][deploy context]ごとにビルドキ
 
 ## 依存関係の更新 {#updating}
 
-### 通常の更新 {#routine-updates}
+通常のバージョンアップは [Renovate][] PR として届き、[リリースクールダウン](#release-cooldown)でゲートされます。
+既知の脆弱性修正はアラート駆動で届きます（[セキュリティ更新](#security-updates)）。
+残りのケースは手動です。
+いずれの場合も、再生成したロックファイルを `package.json` の変更と一緒にコミットしてください。
 
-`npm run update:packages` は `package.json` のみを更新します。
-提供されるバージョンには[リリースクールダウン](#release-cooldown)が適用されます。
-その後、ロックファイルを再生成し、両方のファイルをまとめてコミットします。
+### マニフェストの変更 {#manifest-changes}
+
+`package.json` を手動で編集した場合でも、`npm run update:packages` で範囲内のすべてのバージョンをアップした場合でも（提供されるバージョンには[リリースクールダウン](#release-cooldown)が適用されます）、変更されたマニフェストに合わせてロックファイルを同期します。
 
 ```sh
 npm install --package-lock-only --ignore-scripts
 ```
+
+`npm update`（後述）とは異なり、このコマンドはマニフェストの変更に必要な部分のみを書き換え、他のエントリは固定されたままにします。
+ロックファイルのマージコンフリクトも同じ方法で解決します。
+`main` のバージョンを採用し、上記のコマンドを再実行してください。
 
 ### スクリプトを持つパッケージ {#script-bearing-packages}
 
@@ -82,12 +89,53 @@ npm install --package-lock-only --ignore-scripts
 3. 新しい承認の場合、[`.github/renovate.json5`][] の Renovate 自動マージ除外リストにもそのパッケージを追加する。
    承認済みパッケージのすべてのバージョンアップには上記の手順が必要なため、その更新 PR はコントリビューターを待つ必要がある。
 
-### ロックファイルのメンテナンス {#lock-file-maintenance}
+### 推移的依存関係のリフレッシュ {#transitive-refresh}
 
-- **依存関係を変更した場合**: [通常の更新](#routine-updates)と同様にロックファイルを再生成し、`package.json` と一緒にコミットする。
-- **ロックファイルのマージコンフリクト**: `main` のバージョンを採用し、再生成コマンドを再実行する。
-- **依存関係を変更していないのにロックファイルが変更された場合**（`postinstall` チェックがインストール時にこれを検出すると警告します）: ドリフトを示しています。
-  ロックファイルを復元し、リライトをコミットするのではなく調査してください。
+ロックファイル全体を再解決するスケジュールはありません（[解決は意図的][deliberate]）。
+推移的依存関係をリフレッシュするには、リポジトリルートで以下をオンデマンドで実行します（ロックファイルは `scripts/generate-community-data` ワークスペースもカバーしています）。
+
+```sh
+npm update --package-lock-only --ignore-scripts
+```
+
+[リリースクールダウン](#release-cooldown)が適用されますが、注意すべきエッジケースがあります。
+満たせるバージョンがすべてクールダウンより新しい依存関係（正確なピン指定がよくあるケースです）は、いずれかのバージョンが経過期間を超えるまで解決全体が失敗します（`ETARGET`）。
+レビュー済みで問題ないと判断した新しいリリースの場合は、その名前だけを除外します。
+クールダウンはツリーの残りの部分には引き続き適用されます。
+
+```sh
+npm_config_min_release_age_exclude=PACKAGE_NAME \
+  npm update --package-lock-only --ignore-scripts
+```
+
+_`PACKAGE_NAME`_ を問題ないと判断したパッケージ名に置き換えてください。
+除外は呼び出しごとに指定してください。
+[`.npmrc`][] に恒久的なエントリを追加すると、その名前に対するクールダウンが永続的に免除されます。
+また、リフレッシュ後のロックファイルでメジャーバージョンの変更を確認してください。
+`npm update` はマニフェストに宣言された範囲に従うため、親パッケージが範囲を広げると新しい推移的メジャーバージョンが入る可能性があります。
+
+### 予期しないロックファイルの変更 {#lock-drift}
+
+依存関係を変更していないのにロックファイルが変更された場合（`postinstall` チェックがインストール時にこれを検出すると警告します）、ドリフトを示しています。
+ロックファイルを復元し、リライトをコミットするのではなく調査してください。
+
+### セキュリティ更新 {#security-updates}
+
+既知の脆弱性修正は、週次の更新 PR を待たずにアラート駆動で届きます。
+
+- **GitHub の [Dependabot security updates][]**: リポジトリ側の設定（`dependabot.yml` は不要）で、直接的および推移的依存関係にパッチを適用できます。
+  npm の場合、ロックファイルだけでなく親のマニフェストエントリの書き換えが必要になることがあります。
+- **[Renovate][] の脆弱性アラート PR**: 直接的依存関係に対して即座にオープンされます。
+
+重複は意図的なものであり、まれに PR が重複することは許容されています。
+スケジュールされたロックの再解決は[設計上無効][deliberate]であるため、これらのアラート駆動のパスが推移的修正の唯一の自動化されたルートです。
+そのためリポジトリ側の設定は有効のままにしています。
+2つのパスは[リリースクールダウン](#release-cooldown)に対して異なる挙動を示します。
+
+- Dependabot security updates は、すべてのリリース経過期間ゲート（`.npmrc` を含む）を意図的にオーバーライドします。
+  クールダウンより新しい修正バージョンがランドする可能性があり、その検証はレビューするメンテナーの責任です。
+- Renovate の PR は、ロックファイルを再生成する際に `.npmrc` のゲートの対象となるため、クールダウンより新しい修正は失敗したアーティファクト更新として届きます。
+  早期に採用するには、メンテナーが[スコープ付き除外](#transitive-refresh)を実行する必要があります。
 
 ## サプライチェーン制御 {#controls}
 
@@ -121,6 +169,7 @@ PR で監査が失敗した場合、アサーションメッセージに期待�
 バージョン解決では、設定された最小経過期間より新しいリリースは無視されます。
 
 - **適用**: [`.npmrc`][] の `min-release-age`。
+  `scripts/generate-community-data` サブプロジェクトは独立したロックホームではなく npm ワークスペースであるため、ルートの `.npmrc` とロックファイルがその解決も管理します。
 - **スコープ**:
   - 影響を受けるのはバージョン解決操作のみです。
     ロック固定インストール（`npm ci`）はバージョンを解決しません。
@@ -130,7 +179,10 @@ PR で監査が失敗した場合、アサーションメッセージに期待�
 - **[Renovate][]**: 開く更新 PR に独自のクールダウンを適用します。
   [`.github/renovate.json5`][] の `minimumReleaseAge` で設定されます。
   人間のレビューなしでマージされる更新にはより長い期間が設定されます。
-  Renovate が日付を判定できない更新タイプ（`pin`、`replacement`、`rollback`）はクールダウンをクリアしません。これらの PR は恒久的に保留の安定性ステータス（必須チェックではない）で開かれ、通常のレビューを経てのみマージされます。
+  プリセット提供の3日間の npm クールダウン（`security:minimumReleaseAgeNpm`）は、これらの期間をオーバーライドできないよう（その経過期間の免除を含め）除外されています。
+  注意: そのプリセットの上流での名前変更は、暗黙的にクールダウンを再適用させます。
+  Renovate が日付を判定できない更新タイプ（`pin`、`replacement`、`rollback` など）はクールダウンの対象外です。
+  それらの PR は通常どおりオープンされ、恒久的に保留の安定性ステータス（必須チェックではない）が表示される場合があり、通常のレビューがゲートとなります。
 
 ### ライフサイクルスクリプト許可リスト {#lifecycle-script-allowlist}
 
@@ -157,7 +209,9 @@ engines フロアとは、上記の制御をサポートする最も古いバー
   - [`.npmrc`][] の `engine-strict` によりフェイルクローズドとなります。
 - **フロアポリシー**:
   - npm が制御の適用ギャップを修正するたびにフロアは引き上げられます。
-  - Node LTS リリースにバンドルされる npm バージョンに準拠するため、デフォルトのツールチェーンでチェックを通過できます。
+  - コミット済みの `.nvmrc` は、バンドルされている npm がフロアを満たす Node.js リリースを固定しているため、CI、Netlify、`nvm` 管理のローカルセットアップは構造上これを満たします。
+    [Renovate][] がこの固定値を最新に保ちます。
+    （`lts/*` のようなフローティングな `.nvmrc` ではこれを保証できません。CI ランナーは古い可能性のあるキャッシュから解決します。）
 - **Netlify**:
   - Netlify の Node バンドルのデフォルト npm はフロアより古い場合があります。
     [`netlify.toml`][] の [`NPM_VERSION`][netlify-deps] でフロアを満たすバージョンを固定しています。
@@ -199,6 +253,8 @@ engines フロアとは、上記の制御をサポートする最も古いバー
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
+[deliberate]: ../../design/supply-chain-security/#deliberate
+[Dependabot security updates]: https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
 [Docsy]: https://www.docsy.dev/
 [drift tracking]: /docs/contributing/localization/#track-changes

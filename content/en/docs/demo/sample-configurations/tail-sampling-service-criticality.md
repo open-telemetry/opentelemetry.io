@@ -122,7 +122,7 @@ service:
           memory_limiter,
           transform/sanitize_spans,
           gen_ai_normalizer,
-          transform/redact_sensitive_data
+          transform/redact_sensitive_data,
           tail_sampling,
         ]
       exporters: [otlp_grpc/jaeger, debug, span_metrics]

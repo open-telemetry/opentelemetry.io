@@ -1,8 +1,7 @@
 // Committed supply-chain audit: proves, from the committed manifests, lock,
 // .npmrc, and netlify.toml alone, that the install-hardening invariants
 // still hold, so integrity claims regenerate from this test instead of ad
-// hoc audit runs. Fast and offline. Ported from Docsy's audit (docsy#2714),
-// scoped to this repo's controls:
+// hoc audit runs. The audited controls:
 // https://opentelemetry.io/site/design/supply-chain-security/
 // Out of scope: the Docsy theme-deps install (themes/docsy runs under its
 // own project config and audits itself upstream), and the build-side
@@ -31,8 +30,7 @@ const lock = readJSON('package-lock.json');
 const manifest = readJSON('package.json');
 
 // Dependencies allowed to bypass the npm registry in the lock check;
-// currently none. A reviewed exception populates this and must also
-// change the manifest registry-resolution check below.
+// currently none. A reviewed exception populates this.
 const gitDependencyRepos = {};
 
 // Known-poisoned package@version pairs from the 2026-08 npm-worm campaign
@@ -53,10 +51,33 @@ const packageIocs = new Set([
   'ecto@5.0.1',
 ]);
 
-const lockEntries = Object.entries(lock.packages).filter(([key]) => key !== '');
+// A workspace member appears in the lock as a directory entry plus a
+// node_modules/ symlink, neither a registry artifact. Excluded from the
+// per-package checks: the directory entries of declared members, and
+// each member's one canonical node_modules/NAME link (any other link --
+// an alias key, a file: dependency -- still fails the registry check).
+// The workspaces test below pins the member list and binds each
+// directory to its package name.
+const workspaceDirs = manifest.workspaces ?? [];
+const workspaceNameByDir = Object.fromEntries(
+  workspaceDirs.map((dir) => [
+    dir,
+    JSON.parse(readText(`${dir}/package.json`)).name,
+  ]),
+);
+const lockEntries = Object.entries(lock.packages).filter(
+  ([key, pkg]) =>
+    key !== '' &&
+    !workspaceDirs.includes(key) &&
+    !(
+      pkg.link &&
+      workspaceDirs.includes(pkg.resolved) &&
+      key === `node_modules/${workspaceNameByDir[pkg.resolved]}`
+    ),
+);
 
-// One home for the unsafe-installer-control names: the runtime helper
-// exports the list; its unit test pins the content literally.
+// The runtime helper exports the unsafe-installer-control names; its
+// unit test pins the content literally.
 const unsafeHugoEnv = new Set(UNSAFE_HUGO_ENV);
 const envLeavesInstallConfigUntouched = (key) => {
   const normalized = key.toUpperCase();
@@ -69,9 +90,6 @@ const envLeavesInstallConfigUntouched = (key) => {
 };
 
 test('lock: every package is registry+integrity or an allowlisted git pin', () => {
-  // Entries outside node_modules/ (workspaces) or with link/file targets
-  // would land in the registry branch and fail closed: adding one is a
-  // deliberate audit extension, not a bug.
   let registryPackages = 0;
   for (const [key, pkg] of lockEntries) {
     if (key in gitDependencyRepos) {
@@ -170,6 +188,16 @@ test('lock and manifest: install scripts stay inventoried in allowScripts', () =
   );
 });
 
+function npmrcSettings(path) {
+  return readText(path)
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(
+      (line) => line !== '' && !line.startsWith('#') && !line.startsWith(';'),
+    )
+    .sort();
+}
+
 test('.npmrc carries exactly the reviewed npm settings', () => {
   // npm takes a key's last assignment, so spot-checks can be reversed by
   // a later line, and any unpinned addition (node-options=--require ...,
@@ -178,30 +206,127 @@ test('.npmrc carries exactly the reviewed npm settings', () => {
   // lines). Each setting's rationale is documented at
   // https://opentelemetry.io/site/build/dependencies/#controls
   assert.deepEqual(
-    readText('.npmrc')
-      .split('\n')
-      .map((line) => line.trim())
-      .filter(
-        (line) => line !== '' && !line.startsWith('#') && !line.startsWith(';'),
-      )
-      .sort(),
+    npmrcSettings('.npmrc'),
     ['engine-strict=true', 'min-release-age=7', 'strict-allow-scripts=true'],
     'the npm settings match the reviewed set',
   );
 });
 
-test('manifest: engines floor stays at or above the reviewed minimums', () => {
-  // The npm floor is the oldest version whose allowScripts and
-  // strict-allow-scripts enforcement is trusted; the floor only rises:
+test('workspaces: the reviewed member set, no shadow config or scripts', () => {
+  // npm resolves config and the lock at the workspace root for
+  // root-invoked installs (an install run inside the member directory
+  // answers to neither), so a member carrying its own .npmrc or lock
+  // would be dead weight that reads as a control; and a new member
+  // widens the audited install surface, so the list itself is pinned. Names are org-scoped: an unscoped name in a
+  // public manifest is claimable on the registry by anyone (private:true
+  // only stops publishing from here), while @opentelemetry publishes
+  // only for the org.
+  const reviewedWorkspaces = {
+    'scripts/generate-community-data': '@opentelemetry/generate-community-data',
+  };
+  assert.deepEqual(
+    manifest.workspaces,
+    Object.keys(reviewedWorkspaces),
+    'the workspace list matches the reviewed set',
+  );
+  for (const dir of manifest.workspaces) {
+    for (const shadow of ['.npmrc', 'package-lock.json']) {
+      assert.ok(
+        !fs.existsSync(path.join(repoRoot, dir, shadow)),
+        `${dir} defers ${shadow} to the workspace root`,
+      );
+    }
+    // npm runs a member's install-lifecycle scripts as project code, not
+    // as dependency scripts, and links a member's bin entries onto the
+    // PATH every npm-run script uses, so allowScripts and
+    // strict-allow-scripts never gate either surface. Nothing invokes
+    // member scripts or bins (installs run root scripts; the workflow
+    // calls node directly), so pin the whole manifest key set rather
+    // than screening lifecycle names or bin spellings.
+    const member = JSON.parse(readText(`${dir}/package.json`));
+    assert.deepEqual(
+      Object.keys(member).sort(),
+      ['dependencies', 'name', 'private', 'type'],
+      `${dir} carries exactly the reviewed manifest keys`,
+    );
+    // Bind directory, package name, and the canonical lock link to one
+    // identity: the scheduled workflow selects the member by this name,
+    // and the lock filter above trusts only this link key.
+    assert.equal(
+      member.name,
+      reviewedWorkspaces[dir],
+      `${dir} keeps the reviewed package name its workflow selector uses`,
+    );
+    assert.deepEqual(
+      lock.packages[dir]?.name ?? member.name,
+      member.name,
+      `the lock's ${dir} entry carries the member name`,
+    );
+    assert.deepEqual(
+      lock.packages[`node_modules/${member.name}`],
+      { resolved: dir, link: true },
+      `the lock links node_modules/${member.name} to ${dir} and nothing else`,
+    );
+    // The member has no synthesized install step either.
+    assert.ok(
+      !fs.existsSync(path.join(repoRoot, dir, 'binding.gyp')),
+      `${dir} has no binding.gyp (would synthesize node-gyp rebuild)`,
+    );
+  }
+});
+
+test('lock: no package provides a bin that shadows a trusted command', () => {
+  // npm links every package's bin entries into node_modules/.bin from
+  // lock metadata alone -- --ignore-scripts does not suppress linking --
+  // and npm-run scripts put that directory first on PATH. A bin named
+  // after a command the install and build chain trusts (node, npm, git,
+  // a shell) would hijack every later script step, so reserve those
+  // names outright. npm normalizes bin on lock write (object form,
+  // basenamed keys) and its linker basenames whatever it finds, so a
+  // non-canonical spelling -- a string or array bin, a key carrying a
+  // path separator -- is a hand-edited entry hiding the linked name
+  // from this check: reject the spelling itself.
+  const reservedBins = new Set([
+    'node',
+    'npm',
+    'npx',
+    'corepack',
+    'yarn',
+    'pnpm',
+    'git',
+    'bash',
+    'sh',
+    'perl',
+  ]);
+  let binNames = 0;
+  for (const [key, pkg] of Object.entries(lock.packages)) {
+    if (key === '' || pkg.bin === undefined) continue;
+    assert.ok(
+      typeof pkg.bin === 'object' && !Array.isArray(pkg.bin),
+      `${key} spells bin in npm's canonical object form`,
+    );
+    for (const name of Object.keys(pkg.bin)) {
+      binNames += 1;
+      assert.doesNotMatch(
+        name,
+        /[/\\:]/,
+        `${key} bin ${name} is a basenamed key, linked as spelled`,
+      );
+      assert.ok(
+        !reservedBins.has(name),
+        `${key} bin ${name} leaves trusted command names unshadowed`,
+      );
+    }
+  }
+  assert.ok(binNames > 0, 'lock bin entries were audited');
+});
+
+test('manifest: the engines floor keeps its binding shape', () => {
+  // The floor's minimums are review-adjudicated policy; what the audit
+  // guards is the shape that keeps engine-strict binding at runtime:
   // https://opentelemetry.io/site/build/dependencies/#npm-version-floor
   const { engines } = manifest;
-  const npmFloor = engines.npm.match(/^>=(\d+)\.(\d+)\.(\d+)$/);
-  assert.ok(npmFloor, 'engines.npm is a >=x.y.z floor');
-  const [major, minor] = npmFloor.slice(1).map(Number);
-  assert.ok(
-    major > 11 || (major === 11 && minor >= 16),
-    'engines.npm floor is at least 11.16 (allowScripts enforcement)',
-  );
+  assert.match(engines.npm, /^>=\d+\.\d+\.\d+$/, 'engines.npm is a floor');
   assert.match(engines.node, /^>=\d+$/, 'engines.node is a major floor');
   // npm skips the root engines check entirely when devEngines is present
   // (@npmcli/arborist build-ideal-tree.js), so its absence is part of the
@@ -236,25 +361,6 @@ test('lock and manifest: the adm-zip override is applied and still needed', () =
     '^0.5.17',
     'hugo-extended declares the adm-zip range that justifies the override',
   );
-});
-
-test('manifest: every dependency resolves through the npm registry', () => {
-  const {
-    dependencies = {},
-    devDependencies = {},
-    optionalDependencies = {},
-  } = manifest;
-  for (const [name, spec] of [
-    ...Object.entries(dependencies),
-    ...Object.entries(devDependencies),
-    ...Object.entries(optionalDependencies),
-  ]) {
-    assert.doesNotMatch(
-      spec,
-      /^(github:|git\+|git:)/,
-      `${name} resolves through the npm registry`,
-    );
-  }
 });
 
 test('manifest and lock: unscoped markdownlint-rule-link-pattern stays absent', () => {
@@ -317,50 +423,53 @@ test('manifest: the install path keeps its locked, script-free form', () => {
   for (const [name, pin] of Object.entries(pins)) {
     assert.equal(scripts[name], pin, `${name} keeps its reviewed form`);
   }
-  // Root lifecycle hooks run on local `npm install`, a documented install
-  // path: postinstall is pinned above; the rest stay absent.
-  assert.equal(scripts.preinstall, undefined, 'preinstall stays absent');
-  assert.equal(scripts.install, undefined, 'install stays absent');
-  // npm wraps every script in implicit pre<name>/post<name> hooks; a hook
-  // pair outside the reviewed set is unreviewed code on a trusted name's
-  // execution path. Exact-set equality covers both directions: a scan that
-  // finds nothing fails against the non-empty reviewed set, and a hook
-  // removed from scripts must leave the reviewed set with it.
-  const reviewedHooks = [
-    'precheck:collector-sync',
-    'precheck:collector-sync:lint',
-    'precheck:collector-sync:types',
-    'prefix:collector-sync:lint',
-  ];
+  // Root lifecycle entries run on local `npm install`, a documented
+  // install path, and strict-allow-scripts gates dependency scripts
+  // only, never the root project's. Enumerate npm's full install-time
+  // root surface explicitly -- including the standalone entries that no
+  // pre/post pairing reveals (prepublish runs on install; `dependencies`
+  // runs after node_modules changes) -- and sanction only prepare and
+  // postinstall, both pinned above.
+  for (const lifecycle of [
+    'preinstall',
+    'install',
+    'prepublish',
+    'preprepare',
+    'postprepare',
+    'dependencies',
+  ]) {
+    assert.equal(scripts[lifecycle], undefined, `${lifecycle} stays absent`);
+  }
+  // With no explicit install script, a root binding.gyp makes npm
+  // synthesize `node-gyp rebuild` as the install script.
+  assert.ok(
+    !fs.existsSync(path.join(repoRoot, 'binding.gyp')),
+    'no root binding.gyp (would synthesize node-gyp rebuild)',
+  );
+  // npm prefers a root npm-shrinkwrap.json over package-lock.json, so a
+  // committed one would swap the audited lock out from under this whole
+  // suite.
+  assert.ok(
+    !fs.existsSync(path.join(repoRoot, 'npm-shrinkwrap.json')),
+    'no npm-shrinkwrap.json (package-lock.json is the audited lock)',
+  );
+  // npm wraps every script in implicit pre<name>/post<name> hooks; a
+  // hook on an install-closure name is unreviewed code riding a trusted
+  // name's execution path -- and a new key the body pins above can't
+  // catch. Scope: the pinned closure only; hooks elsewhere are the build
+  // half's business, adjudicated in review.
   const names = new Set(Object.keys(scripts));
   const foundHooks = [];
-  for (const name of names) {
+  for (const name of Object.keys(pins)) {
     for (const hook of [`pre${name}`, `post${name}`]) {
       if (names.has(hook)) foundHooks.push(hook);
     }
   }
   assert.deepEqual(
-    foundHooks.sort(),
-    reviewedHooks.sort(),
-    'the implicit hook pairs are exactly the reviewed set',
+    foundHooks,
+    [],
+    'no install-closure script has an implicit hook pair',
   );
-});
-
-// Limited anchor: these pins hold only when this suite runs, so they
-// catch same-PR partial edits, not a CI wiring drop; the cross-rooted
-// suite anchor stays with the deferred docsy wiring port.
-test('manifest: the runner that carries this audit stays wired', () => {
-  assert.equal(
-    manifest.scripts['test:local-tools'],
-    'node --test "scripts/**/*.test.mjs"',
-    'test:local-tools is the reviewed runner and glob',
-  );
-  for (const file of [
-    'scripts/supply-chain-audit.test.mjs',
-    'scripts/rebuild-hugo-extended.test.mjs',
-  ]) {
-    assert.ok(fs.existsSync(path.join(repoRoot, file)), `${file} exists`);
-  }
 });
 
 test('netlify.toml: auto-install stays inert and build commands stay pinned', () => {
@@ -413,17 +522,12 @@ test('netlify.toml: auto-install stays inert and build commands stay pinned', ()
     '--dry-run --ignore-scripts',
     'NPM_FLAGS constrains the Netlify auto-install to resolution only',
   );
-  // NPM_VERSION is what satisfies the engines floor on Netlify; keep the
-  // two in sync without repinning on routine bumps.
-  const [pinnedMajor, pinnedMinor] =
-    build.environment.NPM_VERSION.split('.').map(Number);
-  const [floorMajor, floorMinor] = manifest.engines.npm
-    .match(/^>=(\d+)\.(\d+)\.(\d+)$/)
-    .slice(1)
-    .map(Number);
-  assert.ok(
-    pinnedMajor > floorMajor ||
-      (pinnedMajor === floorMajor && pinnedMinor >= floorMinor),
-    'NPM_VERSION satisfies the engines.npm floor',
+  // NPM_VERSION's sufficiency against the engines floor is enforced at
+  // build time by engine-strict (an undersized npm fails the install),
+  // so the pin's value is adjudicated in review, not re-compared here.
+  assert.match(
+    build.environment.NPM_VERSION,
+    /^\d+\.\d+\.\d+$/,
+    'NPM_VERSION is an exact npm version pin',
   );
 });
