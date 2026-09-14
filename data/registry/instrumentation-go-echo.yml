@@ -10,6 +10,6 @@ description: Go contrib plugin for the labstack/echo package.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/github.com/labstack/echo
+  repo: https://github.com/labstack/echo-opentelemetry
 createdAt: 2020-06-08
 isFirstParty: false
