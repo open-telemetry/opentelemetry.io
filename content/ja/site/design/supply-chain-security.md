@@ -3,8 +3,7 @@ title: サプライチェーンセキュリティ
 description: >-
   サイトの npm 依存関係制御の背景にある脅威モデルと根拠
 weight: 20
-default_lang_commit: ec40cad3a7ca79640aa6a6f97264fbbe0d00aa87
-drifted_from_default: true
+default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
 ---
 
 制御の詳細と日常の手順については、[Dependency management](../../build/dependencies/) を参照してください。
@@ -40,9 +39,16 @@ drifted_from_default: true
   - **ロックファイルからインストールする**: <a id="lock"></a> インストールは[ロック完全一致][install contracts]で行われ、コミット済みでレビュー済みの [`package-lock.json`][] を再現します。
     唯一の例外として、ローカルの `npm install` は不一致のロックファイルを書き換えることがあります。
     [検証](#verify)がそのような書き換えを検出します。
-  - **意図的に解決する**: <a id="deliberate"></a> バージョン解決は[意図的な依存関係更新][deliberate dependency updates]でのみ行われ、インストールの副作用としては行われません。
+  - **意図的に解決する**: <a id="deliberate"></a> バージョン解決は[意図的な依存関係更新][dep-updates]でのみ行われ、インストールの副作用としては行われません。
+    - Renovate のスケジュールされたロック一括再解決（[`lockFileMaintenance`][]）は設計上無効化されています。
+      ツリー全体でレジストリから常時取得しても、得られるのは定期的な推移的依存の更新にすぎず、それは[アラート駆動の修正][security updates]がすでにカバーしています。
   - **クールダウン済みのリリースのみを解決する**: <a id="cooldown-releases"></a> 意図的な解決であっても、[クールダウン期間][cooldown]より新しいリリースは無視します。
     悪意あるリリースのレジストリ側での削除には数日かかります。
+    - 設計上の例外が一つあります。
+      [Dependabot セキュリティアップデート][security updates]は、既知の脆弱性修正を即座に配信します。
+    - クールダウンはレジストリで解決されるパッケージを対象としています。
+      Node ツールチェーンのピンはかわりに[フロアポリシー][npm engines floor]に従います。
+      署名済みのプロジェクトビルドはレジストリの削除遅延リスクを共有しないためです。
 - _パッケージのインストール時スクリプトは、コントリビューターのホストやビルドマシン上で攻撃者のコードを実行する。これがワームのペイロード経路だった。_
   - **レビュー済みのライフサイクルスクリプトのみを実行する**: <a id="scripts"></a> [lifecycle scripts][] は[デフォルト拒否][allowlist]です。
     - 承認はバージョン完全一致であるため、侵害されたパッチリリースが前のバージョンの承認を引き継ぐことはできません。
@@ -66,8 +72,8 @@ drifted_from_default: true
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Minimize dependencies][]               | 依存関係レビュー時のメンテナーの判断。機械的な制御はなし                                                                                             |
 | [Install from the lock][]               | すべての[インストール契約][install contracts]での `npm ci`                                                                                           |
-| [Resolve deliberately][]                | 慣例に基づく。ロックファイルが裏付け: 予期しない解決はロックファイルを書き換え、検証がそれを検出する                                                 |
-| [Resolve only cooled-down releases][]   | npm と Renovate の両方に対する[クールダウン][cooldown]制御                                                                                           |
+| [Resolve deliberately][]                | [慣例][dep-updates]と [`renovate.json5`][] での無効化された [`lockFileMaintenance`][]                                                                |
+| [Resolve only cooled-down releases][]   | npm と [Renovate][`renovate.json5`] での[クールダウン][cooldown]                                                                                     |
 | [Run only reviewed lifecycle scripts][] | 厳格モードの[許可リスト][allowlist]。未レビューの場合はインストールが失敗する                                                                        |
 | [Refuse Hugo installer overrides][]     | [リビルドラッパー][install contracts]の環境スクリーン。リビルド試行前に実行                                                                          |
 | [Neutralize the auto-install][]         | [自動インストール無効化][inert auto-install]制御                                                                                                     |
@@ -90,11 +96,13 @@ drifted_from_default: true
   - [OpenSSF npm ガイド][openssf]: ロック完全一致の CI インストール。
 
 <!-- prettier-ignore-start -->
+[`lockFileMaintenance`]: https://docs.renovatebot.com/configuration-options/#lockfilemaintenance
 [`package-lock.json`]: https://docs.npmjs.com/cli/configuring-npm/package-lock-json
+[`renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
 [allowlist]: ../../build/dependencies/#lifecycle-script-allowlist
 [control]: ../../build/dependencies/#controls
 [cooldown]: ../../build/dependencies/#release-cooldown
-[deliberate dependency updates]: ../../build/dependencies/#updating
+[dep-updates]: ../../build/dependencies/#updating
 [Fail closed on old npm]: #old-npm
 [inert auto-install]: ../../build/dependencies/#inert-netlify-auto-install
 [install contracts]: ../../build/dependencies/#install-contracts
@@ -118,6 +126,7 @@ drifted_from_default: true
 [Run only reviewed lifecycle scripts]: #scripts
 [security notice]: https://github.com/open-telemetry/opentelemetry.io/issues/11210
 [security policy]: https://github.com/open-telemetry/opentelemetry.io/security/policy
+[security updates]: /site/build/dependencies/#security-updates
 [Supply-chain audit]: ../../build/dependencies/#audit
 [tuf]: https://theupdateframework.io/docs/security/
 [Verify, don't trust]: #verify
