@@ -118,7 +118,7 @@ service:
       receivers: [otlp]
       processors:
         [
-          resourcedetection,
+          resource_detection,
           memory_limiter,
           transform/sanitize_spans,
           tail_sampling,
