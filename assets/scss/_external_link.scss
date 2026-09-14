@@ -1,3 +1,5 @@
+@use 'td/support/fa';
+
 // External-link icon after an external link
 //
 // To ensure that the external-link icon word-wraps along with the preceding
@@ -15,7 +17,7 @@ $nbsp: \00A0;
   @include font-size(60%);
   opacity: 0.8;
   vertical-align: text-top;
-  content: fa-content($nbsp + $fa-var-external-link-alt);
+  content: fa.fa-content($nbsp + fa.$var-external-link-alt);
 }
 
 .td-sidebar-nav a[target='_blank']:after,

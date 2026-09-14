@@ -84,6 +84,10 @@ sig:go:
       - any-glob-to-any-file:
           - content/en/docs/languages/go/**
           - content/en/docs/zero-code/go/**
+sig:go-compile-time:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/zero-code/go/compile-time/**
 sig:helm:
   - changed-files:
       - any-glob-to-any-file:
@@ -146,16 +150,16 @@ CI/infra: # including config
   - changed-files:
       - any-glob-to-any-file:
           # Maintainer note: keep .github/CODEOWNERS in sync with this list.
-          # Entries are maintainer-owned unless indicated otherwise.
+          # Entries are maintainer-owned unless indicated otherwise. Word lists
+          # (.cspell/) and prose rules (prh/) are content, not infra, so they
+          # are deliberately omitted.
           # cSpell:ignore gulpfile
           - .claude/**
-          - .cspell/** # owned by docs-approvers
           - .cspell.yml # owned by docs-approvers
           - .devcontainer/**
           - .editorconfig
           - .github/**
           - .gitpod.yml
-          - .htmltest.base.yml
           - .markdown*.*
           - content/**/.markdownlint.yaml
           - .nvmrc
@@ -168,10 +172,12 @@ CI/infra: # including config
           - content/en/site/**
           - gulp-src/**
           - gulpfile.js
+          - lychee.base.toml
           - Makefile
           - netlify/**
           - netlify.toml
-          - prh/**
+          - '**/package-lock.json'
+          - package.json # scripts map defines the CI install contract
           - scripts/**
           - tests/**
 
@@ -179,5 +185,6 @@ dependencies:
   - changed-files:
       - any-glob-to-any-file:
           - package.json
+          - '**/package-lock.json'
           - .gitmodules
           - content-modules/**

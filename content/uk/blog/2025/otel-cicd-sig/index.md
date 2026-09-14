@@ -9,6 +9,7 @@ canonical_url: https://www.cncf.io/blog/2024/11/04/opentelemetry-is-expanding-in
 issue: 5546
 sig: CI/CD Observability
 default_lang_commit: f09627656c918ddb572c6c876beed29bb415f5ef
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: cicd frittoli horovits jemmic keptn liatrio opentelemetrys skyscanner slsa tekton Бекмарк Верт Воссу Кальво Камфаус Кідд Молькова Сараан Сталнекер Стенцелю Суерет Траск Фріттолі Часін
 ---

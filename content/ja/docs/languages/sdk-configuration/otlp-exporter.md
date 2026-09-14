@@ -3,7 +3,8 @@ title: OTLPエクスポーター設定
 linkTitle: OTLPエクスポーター
 weight: 20
 aliases: [otlp-exporter-configuration]
-default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
+default_lang_commit: 8c95bffcf7243a916f79a0d525cf55b6a3d34ad7
+drifted_from_default: true
 ---
 
 {{% include "env-var-note.md" %}}
@@ -33,6 +34,10 @@ OTLP/HTTPの場合、この環境変数が設定されると、SDKのエクス�
 - トレース: `"http://my-api-endpoint/v1/traces"`
 - メトリクス: `"http://my-api-endpoint/v1/metrics"`
 - ログ: `"http://my-api-endpoint/v1/logs"`
+
+OTLP/gRPCの場合、エンドポイントの値はgRPCターゲットです。
+gRPCのエンドポイント値に `/v1/traces`、`/v1/metrics`、`/v1/logs` などのOTLP/HTTPシグナルパスを追加しないでください。
+gRPCエクスポーターは、設定されたターゲットに接続した後、各シグナルに対してOTLP protobufサービスメソッドを使用します。
 
 ### `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` {#otel_exporter_otlp_traces_endpoint}
 

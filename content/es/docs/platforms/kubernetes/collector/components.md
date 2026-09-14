@@ -2,6 +2,7 @@
 title: Componentes importantes para Kubernetes
 linkTitle: Componentes
 default_lang_commit: 4e426662aa975d6b3d5c2c2fe450f160415d1a3a
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: alertmanagers asignador filelog horizontalpodautoscalers hostfs hostmetrics k8sattributes kubelet kubeletstats paginación replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---

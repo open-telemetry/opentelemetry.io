@@ -1,13 +1,6 @@
 ---
 title: 'Adobe: An OpenTelemetry pipeline designed for simplicity at scale'
 linkTitle: Adobe
-author: >-
-  [Johanna Öjeling](https://github.com/johannaojeling) (Grafana Labs), [Juliano
-  Costa](https://github.com/julianocosta89) (Datadog), [Tristan
-  Sloughter](https://github.com/tsloughter) (community), [Damien
-  Mathieu](https://github.com/dmathieu) (Elastic), [Bogdan
-  Stancu](https://github.com/bogdan-st) (Adobe)
-sig: End-User
 cSpell:ignore: Sloughter Öjeling
 ---
 
