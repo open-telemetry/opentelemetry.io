@@ -858,8 +858,10 @@ plugins {
 }
 
 dependencies {
-  // Use BOM to manage versions (recommended)
-  compileOnly(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))
+  // The alpha instrumentation BOM manages the javaagent and instrumentation
+  // artifacts as well as everything in opentelemetry-bom, so no OpenTelemetry
+  // dependency below needs a version
+  compileOnly(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}-alpha"))
 
   // Core extension dependencies (provided by agent at runtime)
   compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi")
@@ -867,8 +869,8 @@ dependencies {
   compileOnly("io.opentelemetry:opentelemetry-api")
 
   // Additional dependencies for custom instrumentation
-  compileOnly("io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api:{{% param vers.instrumentation %}}-alpha")
-  compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator:{{% param vers.instrumentation %}}-alpha")
+  compileOnly("io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api")
+  compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator")
   compileOnly("net.bytebuddy:byte-buddy:1.15.10")
 
   // Auto-service for @AutoService annotation
