@@ -145,7 +145,7 @@ cSpell:ignore: Comms contribfest
 
 SIG が共同所有するドキュメント（コレクター、デモ、言語固有など）を変更する PR は、ドキュメント承認者による承認と SIG 承認者による承認の 2 つの承認を目指す必要があります。
 
-- ドキュメント承認者は PR に `sig:<name>` ラベルを付与し、SIG `-approvers` グループのタグ付与します
+- ドキュメント承認者は PR に `sig:<name>` ラベルを付与し、SIG `-approvers` グループのタグを付与します
 - ドキュメント承認者が PR を承認した後、[`sig-approval-missing`](https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing) ラベルを追加します。
   これにより SIG に対応を促します
 - SIG の承認が一定期間（通常 2 週間、緊急の場合は短縮可能）内に得られない場合、ドキュメントメンテナーの判断でマージできます
