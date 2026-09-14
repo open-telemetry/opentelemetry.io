@@ -2,13 +2,14 @@
 title: Solución de problemas de instrumentación automática de .NET
 linkTitle: Solución de problemas
 weight: 50
-cSpell:ignore: corehost netfx pjanotti's TRACEFILE
+default_lang_commit: f7b06a7
+cSpell:ignore: corehost netfx TRACEFILE pjanotti redirección
 ---
 
 ## Pasos generales {#general-steps}
 
 Si encuentras algún problema con OpenTelemetry .NET Automatic Instrumentation,
-hay varios pasos que pueden ayudarte a comprenderlo.
+hay varios pasos que pueden ayudarte a entenderlo.
 
 ### Habilitar el registro detallado {#enable-detailed-logging}
 
@@ -16,9 +17,10 @@ Los registros de depuración detallados pueden ayudarte a solucionar problemas d
 instrumentación y adjuntarse a las incidencias de este proyecto para facilitar
 la investigación.
 
-Para obtener los registros detallados de OpenTelemetry .NET Automatic Instrumentation,
-establece la variable de entorno [`OTEL_LOG_LEVEL`](../configuration#internal-logs)
-en `debug` antes de que se inicie el proceso instrumentado.
+Para obtener los registros detallados de OpenTelemetry .NET Automatic
+Instrumentation, establece la variable de entorno
+[`OTEL_LOG_LEVEL`](../configuration#internal-logs) en `debug` antes de que se
+inicie el proceso instrumentado.
 
 De forma predeterminada, la librería escribe los archivos de registro en
 [ubicaciones](../configuration#internal-logs) predefinidas. Si es necesario,
@@ -26,12 +28,13 @@ cambia la ubicación predeterminada actualizando la variable de entorno
 `OTEL_DOTNET_AUTO_LOG_DIRECTORY`.
 
 Después de obtener los registros, elimina la variable de entorno
-`OTEL_LOG_LEVEL` o establécela en un nivel menos detallado para evitar una
+`OTEL_LOG_LEVEL` o cambia su valor a un nivel menos detallado para evitar una
 sobrecarga innecesaria.
 
 ### Habilitar el seguimiento del host {#enable-host-tracing}
 
-El [seguimiento del host](https://github.com/dotnet/runtime/blob/edd23fcb1b350cb1a53fa409200da55e9c33e99e/docs/design/features/host-tracing.md#host-tracing)
+El
+[seguimiento del host](https://github.com/dotnet/runtime/blob/edd23fcb1b350cb1a53fa409200da55e9c33e99e/docs/design/features/host-tracing.md#host-tracing)
 puede utilizarse para recopilar la información necesaria para investigar
 problemas relacionados con diversos casos, como ensamblados que no se
 encuentran. Establece las siguientes variables de entorno:
@@ -59,8 +62,8 @@ cargar los ensamblados de OpenTelemetry .NET Automatic Instrumentation.
 
 ### No se pudo instalar el paquete 'OpenTelemetry.AutoInstrumentation.Runtime.Native' {#could-not-install-package-opentelemetryautoinstrumentationruntimenative}
 
-Al añadir los paquetes NuGet al proyecto, aparece un mensaje de error similar
-a este:
+Al añadir los paquetes NuGet al proyecto, aparece un mensaje de error similar a
+este:
 
 ```txt
 Could not install package 'OpenTelemetry.AutoInstrumentation.Runtime.Native 1.6.0'. You are trying to install this package into a project that targets '.NETFramework,Version=v4.7.2', but the package does not contain any assembly references or content files that are compatible with that framework. For more information, contact the package author.
@@ -102,7 +105,8 @@ Por lo tanto, si utilizas una de estas versiones, te recomendamos ejecutar
 `dotnet build` antes de instrumentar la sesión de terminal o llamarlo en una
 sesión de terminal independiente.
 
-Consulta [#1744](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1744)
+Consulta
+[#1744](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1744)
 para obtener más información.
 
 ### Conflictos de versiones de ensamblados {#assembly-version-conflicts}
@@ -131,7 +135,8 @@ obtener instrucciones sobre cómo añadirlo a la aplicación, consulta
 [Uso de los paquetes NuGet de OpenTelemetry.AutoInstrumentation](../nuget-packages).
 
 Como alternativa, añade únicamente los paquetes en conflicto al proyecto. Las
-siguientes dependencias son utilizadas por OpenTelemetry .NET Automatic Instrumentation:
+siguientes dependencias son utilizadas por OpenTelemetry .NET Automatic
+Instrumentation:
 
 - [OpenTelemetry.AutoInstrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj)
 - [OpenTelemetry.AutoInstrumentation.AdditionalDeps](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/c27acd9bd0f82de47217fba660d9f979e0a0cc2d/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Build.props)
@@ -150,7 +155,8 @@ controlar mediante la configuración
 
 Si la aplicación ya incluye redirecciones de enlace para ensamblados utilizados
 por la instrumentación automática, esta redirección automática puede fallar;
-consulta [#2833](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2833).
+consulta
+[#2833](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2833).
 Comprueba si alguna redirección de enlace existente impide la redirección a las
 versiones enumeradas en
 [netfx_assembly_redirection.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/62b4a6a855608a925caeea95752167df5a0960a0/src/OpenTelemetry.AutoInstrumentation.Native/netfx_assembly_redirection.h).
@@ -158,24 +164,28 @@ versiones enumeradas en
 Para que funcione la redirección automática anterior, hay dos situaciones
 específicas que requieren que los ensamblados utilizados para instrumentar
 aplicaciones de .NET Framework —los que se encuentran en la carpeta `netfx` del
-directorio de instalación— también se instalen en la Global Assembly Cache (GAC):
+directorio de instalación— también se instalen en la Global Assembly Cache
+(GAC):
 
 1. [**Instrumentación mediante monkey patch**](https://en.wikipedia.org/wiki/Monkey_patch)
    de ensamblados cargados como independientes del dominio.
 2. Redirección de ensamblados para aplicaciones con nombres seguros si la
-   aplicación también incluye versiones diferentes de algunos ensamblados que
-   se distribuyen en la carpeta `netfx`.
+   aplicación también incluye versiones diferentes de algunos ensamblados que se
+   distribuyen en la carpeta `netfx`.
 
 Si tienes problemas en una de las situaciones anteriores, vuelve a ejecutar el
 comando `Install-OpenTelemetryCore` desde el módulo de instalación de PowerShell
-para asegurarte de que las instalaciones necesarias en la GAC estén actualizadas.
+para asegurarte de que las instalaciones necesarias en la GAC estén
+actualizadas.
 
 Para obtener más información sobre el uso de la GAC por parte de la
 instrumentación automática, consulta el
 [comentario de pjanotti](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1906#issuecomment-1376292814).
 
-Consulta [#2269](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2269)
-y [#2296](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2296)
+Consulta
+[#2269](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2269)
+y
+[#2296](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2296)
 para obtener más información.
 
 ### No se encontró un ensamblado en AdditionalDeps {#assembly-in-additionaldeps-was-not-found}
@@ -197,5 +207,4 @@ Esto podría estar relacionado con los siguientes problemas:
 
 Si encuentras un problema que no aparece en esta página, consulta los
 [Pasos generales](#general-steps) para recopilar información de diagnóstico
-adicional.
-Esto puede ayudar a facilitar la solución del problema.
+adicional. Esto puede ayudar a facilitar la solución del problema.
