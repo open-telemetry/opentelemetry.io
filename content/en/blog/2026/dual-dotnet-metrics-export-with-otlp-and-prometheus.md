@@ -148,13 +148,15 @@ opens up the ability for you to use other .NET ecosystem tooling such as the
 tool to view metrics.
 
 If your application only uses a native Prometheus client such as
-[prometheus-net](https://github.com/prometheus-net/prometheus-net) today then you
-will need to gradually migrate to using the `Meter` APIs first. How long this
-migration will take will depend on the complexity of your existing Prometheus
-instrumentation and the resources available to you to make the appropriate changes.
+[prometheus-net](https://github.com/prometheus-net/prometheus-net) today then
+you will need to gradually migrate to using the `Meter` APIs first. How long
+this migration will take will depend on the complexity of your existing
+Prometheus instrumentation and the resources available to you to make the
+appropriate changes.
 
-Some challenges you may encounter during this migration may include the following
-Prometheus features which do not have direct equivalents in the `Meter` APIs:
+Some challenges you may encounter during this migration may include the
+following Prometheus features which do not have direct equivalents in the
+`Meter` APIs:
 
 - The Prometheus summary data type is not supported;
 - Native histograms are not supported.
