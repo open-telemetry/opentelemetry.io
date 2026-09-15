@@ -2792,7 +2792,7 @@ https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemet
 https://github.com/open-telemetry/opentelemetry-dotnet/issues/4243,200,1789400713
 https://github.com/open-telemetry/opentelemetry-dotnet/releases,200,1789400642
 https://github.com/open-telemetry/opentelemetry-dotnet/releases/latest,200,1789400642
-https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/coreunstable-1.17.0-beta.1,200,1789467676
+https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/coreunstable-1.18.0-beta.1,200,1789467676
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.16.0/src/OpenTelemetry.Exporter.OpenTelemetryProtocol#environment-variables,200,1789400713
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.16.0/src/OpenTelemetry.Exporter.Zipkin#configuration-using-environment-variables,200,1789400714
 https://github.com/open-telemetry/opentelemetry-dotnet/tree/coreunstable-1.16.0-beta.1/src/OpenTelemetry.Exporter.Prometheus.HttpListener,200,1789400714

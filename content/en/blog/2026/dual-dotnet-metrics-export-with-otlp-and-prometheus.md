@@ -31,7 +31,7 @@ visibility in either system for observing metrics or driving alerting.
 ## Using the OpenTelemetry Prometheus exporter for .NET
 
 The
-[latest release](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/coreunstable-1.17.0-beta.1)
+[latest release](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/coreunstable-1.18.0-beta.1)
 of the OpenTelemetry Prometheus exporter for .NET allows you to take this exact
 approach with your production metrics. You can use the
 [.NET Meter class](https://learn.microsoft.com/dotnet/core/diagnostics/metrics-instrumentation)
