@@ -12,7 +12,7 @@ default_lang_commit: 5f6c57b59b2c0d705b50c089eeed8c2ef2eaff55
 | エージェント           | Python     | 🚧        |
 | カート                 | .NET       | ✅        |
 | チャットボット         | Python     | 🚧        |
-| チェックアウト         | Go         | ✅        |
+| 決済                   | Go         | ✅        |
 | 通貨                   | C++        | ✅        |
 | メール                 | Ruby       | ✅        |
 | Flagd                  | Go         | 🚧        |
@@ -21,16 +21,16 @@ default_lang_commit: 5f6c57b59b2c0d705b50c089eeed8c2ef2eaff55
 | フロントエンド         | TypeScript | 🚧        |
 | フロントエンドプロキシ | Envoy      | ✅        |
 | 画像プロバイダー       | NGINX      | 🚧        |
-| 負荷生成               | Python     | ✅        |
+| 負荷生成ツール         | Python     | ✅        |
 | MCP                    | Python     | 🚧        |
-| 決済                   | JavaScript | ✅        |
+| 支払い                 | JavaScript | ✅        |
 | 商品カタログ           | Go         | ✅        |
-| 見積                   | PHP        | ✅        |
+| 見積サービス           | PHP        | ✅        |
 | レコメンデーション     | Python     | ✅        |
 | 配送                   | Rust       | ✅        |
 
-絵文字の凡例:
+絵文字の凡例：
 
-- 完了: ✅
-- 該当なし: 🔕
-- 未対応: 🚧
+- 対応済み：✅
+- 該当なし：🔕
+- 未対応：🚧
