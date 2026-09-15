@@ -1173,6 +1173,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/168178?v=4
   - name: MikeGoldsmith
     teams:
+      - collector-contrib-approvers
       - collector-contrib-triagers
       - javascript-contrib-triagers
       - opentelemetry-python-contrib-approvers
