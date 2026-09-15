@@ -4,6 +4,7 @@ linkTitle: 計装
 description: OpenTelemetry .NET で利用できるさまざまな種類のメトリクス計装について学ぶ
 weight: 50
 default_lang_commit: 669d1a40e56ed2dd914d48340b31e16a83610d40
+drifted_from_default: true
 cSpell:ignore: updowncounter
 ---
 
