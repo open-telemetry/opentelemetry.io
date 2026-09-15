@@ -1,14 +1,13 @@
 ---
 title: Load Generator
 aliases: [loadgenerator]
-cSpell:ignore: baggage goroutines loadgenerator otelHeaders xk6
+# prettier-ignore
+cSpell:ignore: gevent instrumentor instrumentors loadgenerator locustfile urllib
 ---
 
-The load generator is based on [k6](https://k6.io), a Go load testing tool that
-runs test scenarios written in JavaScript. By default it will simulate users
-requesting several different routes from the frontend. All of its OpenTelemetry
-instrumentation comes from the Go SDK, embedded in the k6 binary by the
-`xk6-otel` extension described below.
+The load generator is based on the Python load testing framework
+[Locust](https://locust.io). By default it will simulate users requesting
+several different routes from the frontend.
 
 [Load generator source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/load-generator/)
 
@@ -16,82 +15,83 @@ instrumentation comes from the Go SDK, embedded in the k6 binary by the
 
 ### Initializing Tracing
 
-Tracing in the load generator is provided by a custom
-[xk6](https://github.com/grafana/xk6) extension (`xk6-otel`) that wraps the
-OpenTelemetry Go SDK and exposes it to k6 JavaScript scripts. The extension is
-compiled into the k6 binary at image build time.
+Since this service is a
+[locustfile](https://docs.locust.io/en/stable/writing-a-locustfile.html), the
+OpenTelemetry SDK is initialized after the import statements. This code will
+create a tracer provider, and establish a Span Processor to use. Export
+endpoints, resource attributes, and service name are automatically set using
+[OpenTelemetry environment variables](/docs/specs/otel/configuration/sdk-environment-variables/).
 
-The extension initializes a `TracerProvider` backed by an OTLP HTTP exporter on
-first use. The collector endpoint, protocol, resource attributes, and service
-name are read from the standard
-[OpenTelemetry environment variables](/docs/specs/otel/configuration/sdk-environment-variables/)
-(`OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_PROTOCOL`,
-`OTEL_RESOURCE_ATTRIBUTES`, and `OTEL_SERVICE_NAME`).
-
-### Creating Spans
-
-Scripts import the `Tracer` class from the `k6/x/otel` module and create spans
-manually around each simulated user action:
-
-```javascript
-import { Tracer } from 'k6/x/otel';
-
-const tracer = new Tracer();
-
-function browseProduct() {
-  const span = tracer.startSpan('user_browse_product', {
-    'product.id': product,
-  });
-  http.get(`${BASE_URL}/api/products/${product}`, {
-    headers: otelHeaders(span.traceParent()),
-  });
-  span.end();
-}
+```python
+tracer_provider = TracerProvider()
+trace.set_tracer_provider(tracer_provider)
+tracer_provider.add_span_processor(BatchSpanProcessor(OTLPSpanExporter(insecure=True)))
 ```
 
-The `startSpan(name, attrs?)` method starts a new client span and returns an
-object with three methods:
+### Adding instrumentation libraries
 
-- `traceParent()` — returns the W3C `traceparent` header value for the span,
-  used to propagate trace context to backend services.
-- `log(message)` — emits a correlated OTel log record tied to the span's trace
-  and span IDs.
-- `end()` — ends the span and flushes it to the exporter.
+To add instrumentation libraries you need to import the Instrumentors for each
+library in your Python code. Locust uses the `Requests`, `URLLib3`, and `Jinja2`
+libraries, so we will import their Instrumentors.
+
+```python
+from opentelemetry.instrumentation.jinja2 import Jinja2Instrumentor
+from opentelemetry.instrumentation.requests import RequestsInstrumentor
+from opentelemetry.instrumentation.urllib3 import URLLib3Instrumentor
+```
+
+The Instrumentors are initialized by calling `instrument()` directly, rather
+than through `opentelemetry-instrument`, to avoid errors caused by Locust's use
+of gevent monkey-patching.
+
+```python
+Jinja2Instrumentor().instrument()
+RequestsInstrumentor().instrument()
+URLLib3Instrumentor().instrument()
+```
+
+Once initialized, every Locust request made by this load generator will have its
+own trace with a span for each of the `Requests` and `URLLib3` libraries.
+
+### Manual spans
+
+Each simulated user action (browsing a product, viewing the cart, checking out,
+and so on) also gets its own manual span, created with
+`tracer.start_as_current_span`. Attributes such as `demo.product.id`,
+`demo.ad.category`, and `demo.cart.items.count` are attached where relevant.
+These attributes are declared for `service.load_generator` in the
+[telemetry schema](https://github.com/open-telemetry/opentelemetry-demo/blob/main/telemetry-schema/services/load_generator.yaml).
 
 ## Metrics
 
-The load generator emits two kinds of metrics:
-
-- **k6 built-in test metrics** (request duration, error rate, throughput, etc.)
-  are exported to the OpenTelemetry Collector via k6's built-in `opentelemetry`
-  output (`--out opentelemetry`). The output protocol and collector endpoint are
-  configured via the `K6_OTEL_EXPORTER_PROTOCOL` and
-  `K6_OTEL_HTTP_EXPORTER_ENDPOINT` environment variables.
-- **Go runtime metrics** (memory, garbage collection, goroutines) are emitted by
-  the `xk6-otel` extension using the OpenTelemetry `runtime` instrumentation.
+A `MeterProvider` is configured with a `PeriodicExportingMetricReader` and an
+OTLP exporter. The `SystemMetricsInstrumentor` uses it to report process-level
+system metrics (CPU, memory, and so on) for the load generator itself.
 
 ## Logs
 
-Log records are emitted by calling `span.log(message)` on any active span. The
-`xk6-otel` extension injects the span's trace and span IDs into each log record.
+A `LoggerProvider` batches and exports log records over OTLP. The standard
+library's `logging` module is attached to it through a `LoggingHandler`, and
+`LoggingInstrumentor` injects the active trace and span IDs into each log
+record, so calls like `logging.info(...)` throughout the locustfile show up
+correlated with their span.
 
 ## Baggage
 
-OpenTelemetry Baggage is used by the load generator to indicate that traces are
-synthetically generated. Each outgoing HTTP request carries a `baggage` header
-and a `traceparent` header constructed by the `otelHeaders` helper:
+OpenTelemetry Baggage is used by the load generator to indicate that its traces
+are synthetically generated. This is done in the `on_start` function by creating
+a context object containing the baggage items, and attaching that context for
+all tasks run by the simulated user.
 
-```javascript
-function otelHeaders(traceParent, extra) {
-  return Object.assign(
-    {
-      baggage: `synthetic_request=true,session.id=${sessionId}`,
-      traceparent: traceParent,
-    },
-    extra,
-  );
-}
+```python
+ctx = baggage.set_baggage("session.id", session_id)
+ctx = baggage.set_baggage("synthetic_request", "true", context=ctx)
+context.attach(ctx)
 ```
+
+The context is attached outside of any span's `with` block: attaching it inside
+a span's context manager would cause that span's exit to detach the baggage as
+well, silently discarding it for the rest of the user's session.
 
 Baggage on its own doesn't mark the telemetry. Each backend service reads the
 `synthetic_request` entry out of the incoming baggage and copies it onto its own

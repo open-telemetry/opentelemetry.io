@@ -1,6 +1,7 @@
 ---
 title: Dashboard de flujo de datos del Collector
 default_lang_commit: b98ab730de1f866d89a065fdac22b0ae123ec10c
+drifted_from_default: true
 cSpell:ignore: reinicios
 ---
 

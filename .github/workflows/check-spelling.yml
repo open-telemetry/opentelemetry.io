@@ -7,6 +7,11 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group:
+    ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   spelling-check:
     name: SPELLING check
@@ -30,13 +35,13 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { persist-credentials: false }
       # Note: FIX_CMD runs fine without setup-node
-      - run: npm run ${{ env.FIX_CMD }}
+      - run: npm run ${FIX_CMD}
       - name: Any changed files?
         run: |
           CHANGES=`git status --porcelain`
           if [[ $CHANGES ]]; then
-            echo "Add comment '/${{ env.FIX_CMD }}' to your PR in GitHub,"
-            echo "or locally run 'npm run ${{ env.FIX_CMD }}' and commit the changes:"
+            echo "Add comment '/${FIX_CMD}' to your PR in GitHub,"
+            echo "or locally run 'npm run ${FIX_CMD}' and commit the changes:"
             echo "$CHANGES"
             exit 1
           else

@@ -196,16 +196,54 @@ kernel includes the functionality but is lower than 5.17.
 This type of context propagation is only supported for Go applications and uses
 eBPF user memory write support (`bpf_probe_write_user`). The advantage of this
 approach is that it works for HTTP and HTTPS. For HTTP/2 and gRPC, OBI can
-inject context only on new connections when HTTPS isn't used; reused HTTP/2/gRPC
-connections are not supported yet. The use of `bpf_probe_write_user` requires
-the OBI is granted `CAP_SYS_ADMIN` or it's configured to run as `privileged`
-container.
+inject context on new and reused HTTP/2 and gRPC connections when HTTPS isn't
+used. Using `bpf_probe_write_user` requires granting OBI `CAP_SYS_ADMIN` or
+running it as a privileged container.
 
-#### Integration with Go manual instrumentation
+#### Instrument applications that use the Go Trace API
 
-OBI integrates automatically with manual spans using the
-[Auto SDK](/docs/zero-code/go/autosdk). See the docs on the Auto SDK to learn
-more.
+Starting with OBI v0.11.0, OBI can instrument applications that use the
+OpenTelemetry Go Trace API without registering an SDK. When this integration is
+active, OBI detects Trace API calls and exports the resulting manual spans
+alongside its eBPF spans. Applications that already register an OpenTelemetry
+SDK continue to manage and export their own SDK telemetry. Registering any
+global `TracerProvider`, including by calling
+`otel.SetTracerProvider(auto.TracerProvider())`, prevents this automatic
+activation.
+
+OBI activates the integration only when all of the following conditions are met:
+
+- The application uses a supported OpenTelemetry module version and checksum
+  combination, without a module replacement.
+- The executable and host use a supported 64-bit architecture.
+- OBI can resolve the required symbols and field layouts.
+- OBI has permission to use `bpf_probe_write_user`.
+
+If any check fails, the Auto SDK remains inactive and spans created through the
+global Trace API remain non-recording. OBI's eBPF instrumentation continues to
+operate independently. When OBI can detect Trace API calls, it can export
+partial synthetic spans that contain the span name, parent relationship, status,
+and some primitive attributes. These spans do not include the instrumentation
+scope, events, or requested span kind.
+
+In OBI v0.11.0, the encoded payload for each span exported through the Auto SDK
+must not exceed 16 KiB. OBI does not emit a metric or log message when it
+activates the integration or drops an oversized payload.
+
+Known limitations and follow-up work include
+[head sampling](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2793),
+[context handoffs](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2794),
+[external and remote parents and `TraceState`](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2959),
+[larger payloads and drop observability](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2958),
+and
+[log enrichment](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2932).
+
+For the supported combinations of module version, checksum, and architecture,
+see the
+[activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.12.1/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation).
+You can also review the upstream
+[Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/go-trace-api)
+and the [Auto SDK](/docs/zero-code/go/autosdk) documentation.
 
 #### Kernel integrity mode limitations
 
@@ -270,6 +308,26 @@ separate channel-link option.
 
 OBI honors `OTEL_SPAN_LINK_COUNT_LIMIT` and drops invalid, duplicate, and
 self-referential links.
+
+### Capture Node.js manual spans
+
+Starting with OBI v0.12.1, OBI can capture spans that a Node.js application
+creates through `@opentelemetry/api` when the application has not registered an
+OpenTelemetry SDK. OBI exports these manual spans through its trace pipeline and
+correlates them with automatically captured server spans. If the application
+registers an SDK, OBI leaves span creation and export to that SDK.
+
+This feature is disabled by default. Existing Config v1 deployments can enable
+it with `nodejs.manual_spans: true` or `OTEL_EBPF_NODEJS_MANUAL_SPANS=true`.
+Config v2 does not expose an equivalent field in v0.12.1. Continue migrating
+deployments to Config v2 rather than retaining Config v1 solely for this
+feature.
+
+OBI must be able to reach the Node.js inspector, and the process must not
+register its own `SIGUSR1` handler. Bundled copies of `@opentelemetry/api` that
+the CommonJS loader cannot reach are not captured. Automatic client spans are
+currently siblings of manual spans under the same server span, rather than
+children of the active manual span.
 
 ### Python asyncio with uvloop
 
