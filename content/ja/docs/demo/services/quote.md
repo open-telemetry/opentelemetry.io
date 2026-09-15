@@ -1,19 +1,19 @@
 ---
-title: 見積もりサービス
-linkTitle: 見積もり
+title: 見積サービス
+linkTitle: 見積
 aliases: [quoteservice]
 default_lang_commit: c8967d335d0f4cef827a920bcd229ad797c65a35
 cSpell:ignore: getquote
 ---
 
 このサービスは、発送される商品の点数に基づいて送料を計算する役割を担います。
-見積もりサービスは、配送サービスから HTTP 経由で呼び出されます。
+見積サービスは、配送サービスから HTTP 経由で呼び出されます。
 
-見積もりサービスは、Slim フレームワークと依存性注入を管理するための php-di を使用して実装されています。
+見積サービスは、Slim フレームワークと依存性注入を管理するための php-di を使用して実装されています。
 
 PHP の計装は、使用するフレームワークによって異なる場合があります。
 
-[見積もりサービスのソースコード](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quote/)
+[見積サービスのソースコード](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quote/)
 
 ## トレース {#traces}
 
@@ -110,6 +110,6 @@ $counter->add(1, ['number_of_items' => $numberOfItems]);
 
 ## ログ {#logs}
 
-見積もりサービスは、見積もりが計算された後にログメッセージを出力します。
+見積サービスは、見積もりが計算された後にログメッセージを出力します。
 Monolog ログパッケージは、Monolog のログを OpenTelemetry 形式に変換する[ログブリッジ](/docs/concepts/signals/logs/#log-appender--bridge)で設定されています。
 このロガーに送信されたログは、グローバルに設定された OpenTelemetry ロガーを介してエクスポートされます。
