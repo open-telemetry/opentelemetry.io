@@ -252,7 +252,7 @@ mode: deployment
 image:
   repository: otel/opentelemetry-collector-k8s
 
-# Queremos apenas um destes coletores - mais que isso produziria dados duplicados
+# Queremos apenas um destes Collectors - mais que isso produziria dados duplicados
 replicaCount: 1
 
 presets:
