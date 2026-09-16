@@ -672,7 +672,7 @@ Para mais informações sobre o design do _receiver_, veja
 | Deployment (gateway)  | Sim, mas coleta métricas somente do nó em que está implantado |
 | Sidecar               | Não                                                           |
 
-O Host Metrics Receiver coleta métricas de um host usando diversos _scrapers_.
+O Host Metrics Receiver coleta métricas de um _host_ usando diversos _scrapers_.
 Há alguma sobreposição com o [Kubeletstats Receiver](#kubeletstats-receiver),
 então, ao usar os dois, pode valer a pena desabilitar essas métricas duplicadas.
 
