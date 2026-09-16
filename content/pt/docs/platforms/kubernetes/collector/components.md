@@ -677,7 +677,7 @@ Há alguma sobreposição com o [Kubeletstats Receiver](#kubeletstats-receiver),
 então, ao usar os dois, pode valer a pena desabilitar essas métricas duplicadas.
 
 No Kubernetes, o _receiver_ precisa de acesso ao volume `hostfs` para funcionar
-corretamente. Caso estiver usando o
+corretamente. Caso esteja usando o
 [Helm chart do OpenTelemetry Collector](/docs/platforms/kubernetes/helm/collector/),
 é possível usar o
 [preset `hostMetrics`](/docs/platforms/kubernetes/helm/collector/#host-metrics-preset)
