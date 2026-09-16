@@ -12,6 +12,7 @@ params:
   # blogPostURL: /blog/2026/kubecon-china/
   blogPostURL: *eventUrl
 default_lang_commit: 552bd64ff45ca252d1da0ca875abd1584a619d7f
+drifted_from_default: true
 ---
 
 [**{{% param title %}}**][LF] · <span class="text-nowrap">9月7日〜9日</span> ·
