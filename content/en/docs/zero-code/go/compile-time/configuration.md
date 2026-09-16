@@ -4,7 +4,7 @@ description:
   Configure the otelc tool and the telemetry produced by instrumented
   applications.
 weight: 20
-cSpell:ignore: nethttp otelc
+cSpell:ignore: nethttp
 ---
 
 Configuration happens at two points: build time, where you control how the
