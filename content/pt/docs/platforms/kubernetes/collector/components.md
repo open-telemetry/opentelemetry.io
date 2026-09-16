@@ -493,7 +493,7 @@ todo o cluster para coletar todos os dados.
 
 Atualmente, apenas uma conta de serviço pode ser usada para autenticação. A
 conta de serviço também precisa das permissões adequadas para obter dados do
-servidor de API do Kubernetes (veja abaixo). Caso estiver usando o
+servidor de API do Kubernetes (veja abaixo). Caso esteja usando o
 [Helm chart do OpenTelemetry Collector](/docs/platforms/kubernetes/helm/collector/)
 para ingerir eventos, é possível usar o
 [preset `kubernetesEvents`](/docs/platforms/kubernetes/helm/collector/#cluster-metrics-preset)
