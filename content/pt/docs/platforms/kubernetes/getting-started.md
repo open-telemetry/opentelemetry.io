@@ -165,7 +165,7 @@ image:
   repository: otel/opentelemetry-collector-k8s
 
 presets:
-  # habilita o k8sattributesprocessor e o adiciona às pipelines dos rastros, métricas e logs
+  # habilita o k8sattributesprocessor e o adiciona às pipelines de rastros, métricas e logs
   kubernetesAttributes:
     enabled: true
   # habilita o kubeletstatsreceiver e o adiciona às pipelines de métricas
