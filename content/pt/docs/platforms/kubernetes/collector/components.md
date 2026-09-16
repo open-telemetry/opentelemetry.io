@@ -56,7 +56,7 @@ os pods em execução em um cluster e mantém um registro de seus endereços IP,
 UIDs de pod e outros metadados relevantes. Por padrão, os dados que passam pelo
 _processor_ são associados a um pod pelo endereço IP da requisição recebida, mas
 é possível configurar outras regras. Como o _processor_ usa a API do Kubernetes,
-ele requer permissões especiais (veja o exemplo abaixo). Caso estiver usando o
+ele requer permissões especiais (veja o exemplo abaixo). Caso esteja usando o
 [Helm chart do OpenTelemetry Collector](/docs/platforms/kubernetes/helm/collector/),
 é possível usar o
 [preset `kubernetesAttributes`](/docs/platforms/kubernetes/helm/collector/#kubernetes-attributes-preset)
