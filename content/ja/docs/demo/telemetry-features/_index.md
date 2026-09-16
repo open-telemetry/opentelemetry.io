@@ -2,8 +2,7 @@
 title: テレメトリー機能
 linkTitle: テレメトリー機能
 aliases: [demo_features, features]
-default_lang_commit: 3560c03d5cbe845c6189e6e30441434c7760eca0
-drifted_from_default: true
+default_lang_commit: a44df6dd383b504864f60165b21459b7f5e005c5
 ---
 
 ## OpenTelemetry {#opentelemetry}
@@ -39,7 +38,7 @@ drifted_from_default: true
 
 ## その他のコンポーネント {#other-components}
 
-- **[Envoy](https://www.envoyproxy.io/)**：Envoy は、フロントエンドやフィーチャーフラグサービスなどのユーザー向け Web インターフェイスのリバースプロキシとして使用されます。
-- **[k6](https://k6.io)**：合成負荷生成ツールを使用してウェブサイト上で現実的な使用パターンを作成するバックグラウンドジョブです。
+- **[Envoy](https://www.envoyproxy.io/)**：Envoy は、フロントエンドやロードジェネレーター、フィーチャーフラグサービスなどのユーザー向け Web インターフェイスのリバースプロキシとして使用されます。
+- **[Locust](https://locust.io)**：合成負荷生成ツールを使用してウェブサイト上で現実的な使用パターンを作成するバックグラウンドジョブです。
 - **[OpenFeature](https://openfeature.dev)**：アプリケーション内の機能の有効化と無効化を可能にするフィーチャーフラグ API および SDK です。
 - **[flagd](https://flagd.dev)**：デモアプリケーション内のフィーチャーフラグを管理するために使用されるフィーチャーフラグデーモンです。
