@@ -205,7 +205,7 @@ execução no seu cluster, coletando telemetria de cada nó!
 
 O próximo passo para coletar telemetria do Kubernetes é implantar uma instância
 do Collector em Deployment, para reunir a telemetria relacionada ao cluster como
-um todo. Uma implementação com exatamente uma réplica garante que não sejam
+um todo. Um Deployment com exatamente uma réplica garante que não sejam
 produzidos dados duplicados.
 
 Esta instância do Collector usará os seguintes componentes:
