@@ -7,9 +7,9 @@ cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics
 ---
 
 O [OpenTelemetry Collector](/docs/collector/) oferece suporte a muitos
-_receivers_ e _processors_ diferentes para
-facilitar o monitoramento do Kubernetes. Esta seção aborda os componentes mais
-importantes para coletar os dados do Kubernetes e enriquecê-los.
+_receivers_ e _processors_ diferentes para facilitar o monitoramento do
+Kubernetes. Esta seção aborda os componentes mais importantes para coletar os
+dados do Kubernetes e enriquecê-los.
 
 Componentes abordados nesta página:
 
