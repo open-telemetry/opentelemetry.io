@@ -9,7 +9,7 @@ cSpell:ignore: behaviour
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/resources-intro "an OTP Release" %}}
+{{% docs/languages/resources-intro "OTP リリース" %}}
 
 ## リソース検出器の使用 {#using-resource-detectors}
 
