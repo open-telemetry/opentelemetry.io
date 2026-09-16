@@ -240,8 +240,8 @@ O Helm chart do OpenTelemetry Collector simplifica a configuração de todos ess
 componentes em uma instalação do Collector como Deployment. Ele também cuida de
 todos os detalhes específicos do Kubernetes, como RBAC e _mounts_.
 
-Uma ressalva: por padrão, o chart não envia os dados para nenhum backend. Para
-realmente usar os dados em um backend de sua preferência, é necessário
+Uma ressalva: por padrão, o chart não envia os dados para nenhum _backend_. Para
+realmente usar os dados em um _backend_ de sua preferência, é necessário
 configurar um _exporter_ manualmente.
 
 Vamos usar o `values.yaml` a seguir:
