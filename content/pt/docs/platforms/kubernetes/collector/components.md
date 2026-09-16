@@ -705,7 +705,7 @@ Para detalhes específicos sobre quais métricas são coletadas e detalhes de
 configuração específicos, veja
 [Host Metrics Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver).
 
-Caso precisar configurar o componente manualmente, não se esqueça de montar o
+Caso precise configurar o componente manualmente, não se esqueça de montar o
 volume `hostfs` para coletar as métricas do nó, e não do contêiner.
 
 ```yaml
