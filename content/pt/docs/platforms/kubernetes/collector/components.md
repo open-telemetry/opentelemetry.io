@@ -125,7 +125,7 @@ Kubernetes. Para detalhes, veja
 Para detalhes de configuração do Kubernetes Attributes Processor, veja
 [Kubernetes Attributes Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor).
 
-Como o _processor_ usa a API do Kubernetes, ele precisa das permissão correta
+Como o _processor_ usa a API do Kubernetes, ele precisa da permissão correta
 para funcionar adequadamente. Para a maioria dos casos de uso, é necessário
 conceder à _service account_ (conta de serviço) que executa o Collector as
 seguintes permissões por meio de um ClusterRole.
