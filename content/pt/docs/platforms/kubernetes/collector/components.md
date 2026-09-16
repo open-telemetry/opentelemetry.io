@@ -285,7 +285,7 @@ uma configuração típica de Filelog Receiver para Kubernetes se parece com o
 seguinte:
 
 ```yaml
-filelog:
+file_log:
   include:
     - /var/log/pods/*/*/*.log
   exclude:
