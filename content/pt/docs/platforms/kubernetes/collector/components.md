@@ -73,7 +73,7 @@ Os seguintes atributos são adicionados por padrão:
 
 O Kubernetes Attributes Processor também pode definir atributos de recurso
 personalizados para rastros, métricas e logs usando as _labels_ e as anotações
-do Kubernetes adicionados aos pods e namespaces.
+do Kubernetes adicionadas aos pods e namespaces.
 
 ```yaml
 k8sattributes:
