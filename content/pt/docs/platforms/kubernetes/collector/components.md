@@ -670,7 +670,7 @@ Para mais informações sobre o design do _receiver_, veja
 | --------------------- | ------------------------------------------------------------- |
 | DaemonSet (agente)    | Preferível                                                    |
 | Deployment (gateway)  | Sim, mas coleta métricas somente do nó em que está implantado |
-| _Sidecar_             | Não                                                           |
+| Sidecar               | Não                                                           |
 
 O Host Metrics Receiver coleta métricas de um host usando diversos _scrapers_.
 Há alguma sobreposição com o [Kubeletstats Receiver](#kubeletstats-receiver),
