@@ -5,6 +5,7 @@ description: シグナルを単一のOTLPエンドポイントに送信し、そ
 aliases: [/docs/collector/deployment/gateway]
 weight: 300
 default_lang_commit: bdfe463187e63311ab3e137f1e314acfb877fd8b
+drifted_from_default: true
 cSpell:ignore: hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---
 

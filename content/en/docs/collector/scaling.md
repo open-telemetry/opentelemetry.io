@@ -387,7 +387,7 @@ receivers:
 processors:
 
 exporters:
-  loadbalancing:
+  load_balancing:
     protocol:
       otlp:
     resolver:
@@ -401,5 +401,5 @@ service:
         - otlp
       processors: []
       exporters:
-        - loadbalancing
+        - load_balancing
 ```

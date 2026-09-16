@@ -1,13 +1,13 @@
 ---
 title: 開発環境のセットアップとビルド、サーブなどのコマンド
 linkTitle: 開発環境セットアップなど
-description: この Web サイトの開発環境をセットアップする方法を学びます。
+description: >-
+  クラウド IDE およびローカル環境のセットアップと、サイトのビルド、サーブ、チェックコマンド
 what-next: >
   これで、[ビルド](#build)、[サーブ](#serve)、Web サイトファイルの更新を行う準備が整いました。
   変更の提出方法の詳細については、[コンテンツの提出](../pull-requests)を参照してください。
 weight: 60
-default_lang_commit: bf0881aa9c57519b487bf6b5c469ca7f188dceed
-drifted_from_default: true
+default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
 cSpell:ignore: TOCSS
 ---
 
@@ -16,8 +16,6 @@ cSpell:ignore: TOCSS
 > ビルドは Linux ベースの環境と macOS で公式にサポートされています。
 > [DevContainers](#devcontainers) などの他の環境は、ベストエフォートベースでサポートされています。
 > Windows でのビルドについては、Windows Subsystem for Linux コマンドライン [WSL][] を使用して Linux と同様の手順に従うことができます。
-
-以下の手順では、この Web サイトの開発環境をセットアップする方法を説明します。
 
 ## クラウド IDE のセットアップ {#cloud-ide-setup}
 
@@ -54,47 +52,36 @@ GitHub [Codespaces][] で作業するには、下記にしたがってくださ�
     cd opentelemetry.io
     ```
 
-3.  Node.js の [**Active LTS** リリース][nodejs-rel] をインストールまたはアップグレードします。
-    Node.js インストレーションの管理には [nvm][] の使用を推奨します。
-    Linux では以下のコマンドを実行してください。
-    .nvmrc ファイルで指定されたバージョンにインストールとアップグレードします。
+3.  `.nvmrc` ファイルで指定された Node.js リリース（[Active LTS][nodejs-rel] バージョン）をインストールします。
+    Node.js のインストール管理には [nvm][] を推奨します。
+    Linux では以下を実行してください。
 
     ```sh
     nvm install
     ```
 
-    Windows で [インストールする場合][nodejs-win] は、[nvm-windows][] を使用してください。
+    Windows で[インストールする場合][nodejs-win]は、[nvm-windows][] を使用してください。
+    nvm-windows は `.nvmrc` を自動的に読み取らないため、以下のコマンドで指定バージョンを渡します。
     `cmd` を使用し、Windows PowerShell を使用しないことをお勧めします。
 
     ```cmd
-    nvm install lts && nvm use lts
+    for /f %v in (.nvmrc) do nvm install %v && nvm use %v
     ```
 
-4.  npm パッケージとその他の依存関係をインストールします。
-
-    ```sh
-    npm install
-    ```
-
-    または、CI や DevContainer が使用する[ロックファイルに厳密に準拠し、スクリプトを抑制するセットアップ][ci-install]を使用する場合は、次のコマンドを実行してください。
+4.  DevContainer が使用する[ロックファイルに厳密に準拠し、スクリプトを抑制するセットアップ][ci-install]で、npm パッケージとその他の依存関係をインストールします。
 
     ```sh
     npm run install:safe
     ```
 
-    どちらのインストールでも、コミットされた `package-lock.json` に固定された依存関係のバージョンを使用します。
-    ロックファイルに関するケースは以下のとおりです。
-    - **依存関係を変更した場合**: ロックファイルを再生成し、`package.json` と一緒にコミットしてください。
+    または、標準のインストールを使用します。
 
-      ```sh
-      npm install --package-lock-only --ignore-scripts
-      ```
+    ```sh
+    npm install
+    ```
 
-    - **ロックファイルにマージコンフリクトが発生した場合**: `main` のバージョンを採用し、上記のコマンドを再実行してください。
-    - **依存関係を変更していないのにロックファイルが変更された場合**（`postinstall` チェックがインストール時にこれを検知すると警告します）: これはドリフトを示しています。
-      書き換えをコミットするのではなく、ロックファイルを復元して調査してください。
-
-    サイトメンテナーは[その他のロックファイルのメンテナンス][ci-install]を管理しています。
+    どちらのインストールでも、コミットされた `package-lock.json` に固定された依存関係のバージョンを使用し、実行される依存関係のライフサイクルスクリプトはレビュー済みの許可リストに従います。
+    関連情報: [依存関係の更新][dep-updates]
 
 お好みの IDE を起動してください。{{% param what-next %}}
 
@@ -139,13 +126,9 @@ npm run serve
 
 サイトは [localhost:1313][] でサーブされます。
 
-[Netlify][] のリダイレクトをテストする必要がある場合は、次のコマンドを実行し、[localhost:8888][] にアクセスしてください。
-
-```sh
-npm run serve:netlify
-```
-
 この `serve` コマンドは、ディスクではなくメモリ上のファイルを提供します。
+
+Netlify のリダイレクトをテストするには、PR の[デプロイプレビュー][deploy preview]を使用してください。
 
 macOS で `too many open files` や `pipe failed` というエラーが発生する場合は、ファイルディスクリプタの制限を増やす必要があるかもしれません。
 詳しくは [Hugo のイシューの #6109](https://github.com/gohugoio/hugo/issues/6109) を参照してください。
@@ -229,18 +212,18 @@ npm run check:code-excerpts
 [code-excerpter]: https://github.com/chalin/code-excerpter
 
 <!-- prettier-ignore-start -->
-[ci-install]: /site/build/ci-workflows/#dependency-installation
+[ci-install]: /site/build/dependencies/#install-contracts
+[dep-updates]: /site/build/dependencies/#updating
 [clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
 [cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
+[deploy preview]: ../pull-requests/#site-deploys-and-pr-previews
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
-[localhost:8888]: http://localhost:8888
-[netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
 [nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
