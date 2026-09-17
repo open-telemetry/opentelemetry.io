@@ -132,8 +132,8 @@ Preferences swap for application instrumentation. OTel SDKs come out on top with
 Prometheus SDKs following behind them. OBI holds roughly the same share as in
 infrastructure instrumentation.
 
-Instrumentation styles shift as well. Most participants use only OTel style
-instrumentation. That is twice as common as only Prometheus style. Fewer than a
+Instrumentation styles shift as well. The largest share of participants (41%) use only
+OTel style instrumentation, nearly twice as common as only Prometheus style. Fewer than a
 third mix styles.
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem;
