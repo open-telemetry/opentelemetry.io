@@ -14,8 +14,8 @@ hay varios pasos que pueden ayudarte a entenderlo.
 ### Habilitar el registro detallado {#enable-detailed-logging}
 
 Los registros de depuración detallados pueden ayudarte a solucionar problemas de
-instrumentación y puedes adjuntarlos a las incidencias de este proyecto para facilitar
-la investigación.
+instrumentación y puedes adjuntarlos a las incidencias de este proyecto para
+facilitar la investigación.
 
 Para obtener los registros detallados de OpenTelemetry .NET Automatic
 Instrumentation, establece la variable de entorno
@@ -157,8 +157,8 @@ Si la aplicación ya incluye redirecciones de versiones de ensamblado utilizados
 por la instrumentación automática, esta redirección automática puede fallar;
 consulta
 [#2833](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2833).
-Comprueba si alguna redirección de ensamblado existente impide la redirección a las
-versiones enumeradas en
+Comprueba si alguna redirección de ensamblado existente impide la redirección a
+las versiones enumeradas en
 [netfx_assembly_redirection.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/62b4a6a855608a925caeea95752167df5a0960a0/src/OpenTelemetry.AutoInstrumentation.Native/netfx_assembly_redirection.h).
 
 Para que funcione la redirección automática anterior, hay dos situaciones
@@ -169,9 +169,9 @@ directorio de instalación— también se instalen en la Global Assembly Cache
 
 1. [**Instrumentación mediante técnicas de monkey patching**](https://en.wikipedia.org/wiki/Monkey_patch)
    de ensamblados cargados como independientes del dominio.
-2. Redirección de ensamblados para aplicaciones firmadas con nombre seguro (_strong-named_) si la
-   aplicación también incluye versiones diferentes de algunos ensamblados que se
-   distribuyen en la carpeta `netfx`.
+2. Redirección de ensamblados para aplicaciones firmadas con nombre seguro
+   (_strong-named_) si la aplicación también incluye versiones diferentes de
+   algunos ensamblados que se distribuyen en la carpeta `netfx`.
 
 Si tienes problemas en una de las situaciones anteriores, vuelve a ejecutar el
 comando `Install-OpenTelemetryCore` desde el módulo de instalación de PowerShell
