@@ -177,6 +177,9 @@ Collector in the pipeline. The three vanilla patterns come out close to even.
        style="flex: 1 1 45%; min-width: 17rem;">
 </div>
 
+_**Note**: "Other" combines respondents who do no transformation at all (15%, n=12)
+with those using a vendor distribution or custom-built Collector (20%, n=16)._
+
 ## What practitioners want improved
 
 **What would you like us to improve to make OpenTelemetry and Prometheus work
