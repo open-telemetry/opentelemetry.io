@@ -1,6 +1,6 @@
 ---
-title: Solución de problemas de instrumentación automática de .NET
-linkTitle: Solución de problemas
+title: Resolución de problemas de la instrumentación automática en .NET
+linkTitle: Resolución de problemas
 weight: 50
 default_lang_commit: f7b06a7
 cSpell:ignore: corehost netfx pjanotti redirección TRACEFILE
@@ -14,7 +14,7 @@ hay varios pasos que pueden ayudarte a entenderlo.
 ### Habilitar el registro detallado {#enable-detailed-logging}
 
 Los registros de depuración detallados pueden ayudarte a solucionar problemas de
-instrumentación y adjuntarse a las incidencias de este proyecto para facilitar
+instrumentación y puedes adjuntarlos a las incidencias de este proyecto para facilitar
 la investigación.
 
 Para obtener los registros detallados de OpenTelemetry .NET Automatic
@@ -153,11 +153,11 @@ utilizadas por la instrumentación automática. Este comportamiento se puede
 controlar mediante la configuración
 [`OTEL_DOTNET_AUTO_NETFX_REDIRECT_ENABLED`](../configuration).
 
-Si la aplicación ya incluye redirecciones de enlace para ensamblados utilizados
+Si la aplicación ya incluye redirecciones de versiones de ensamblado utilizados
 por la instrumentación automática, esta redirección automática puede fallar;
 consulta
 [#2833](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2833).
-Comprueba si alguna redirección de enlace existente impide la redirección a las
+Comprueba si alguna redirección de ensamblado existente impide la redirección a las
 versiones enumeradas en
 [netfx_assembly_redirection.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/62b4a6a855608a925caeea95752167df5a0960a0/src/OpenTelemetry.AutoInstrumentation.Native/netfx_assembly_redirection.h).
 
@@ -167,9 +167,9 @@ aplicaciones de .NET Framework —los que se encuentran en la carpeta `netfx` de
 directorio de instalación— también se instalen en la Global Assembly Cache
 (GAC):
 
-1. [**Instrumentación mediante monkey patch**](https://en.wikipedia.org/wiki/Monkey_patch)
+1. [**Instrumentación mediante técnicas de monkey patching**](https://en.wikipedia.org/wiki/Monkey_patch)
    de ensamblados cargados como independientes del dominio.
-2. Redirección de ensamblados para aplicaciones con nombres seguros si la
+2. Redirección de ensamblados para aplicaciones firmadas con nombre seguro (_strong-named_) si la
    aplicación también incluye versiones diferentes de algunos ensamblados que se
    distribuyen en la carpeta `netfx`.
 
@@ -207,4 +207,4 @@ Esto podría estar relacionado con los siguientes problemas:
 
 Si encuentras un problema que no aparece en esta página, consulta los
 [Pasos generales](#general-steps) para recopilar información de diagnóstico
-adicional. Esto puede ayudar a facilitar la solución del problema.
+adicional. Esto puede ayudar a facilitar su resolución.
