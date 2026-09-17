@@ -37,7 +37,9 @@ approach with your production metrics. You can use the
 [.NET Meter class](https://learn.microsoft.com/dotnet/core/diagnostics/metrics-instrumentation)
 from your application and framework code to collect metrics and export them to
 both Prometheus and another exporter, such as the
-[OTLP exporter](/docs/specs/otel/protocol/exporter/).
+[OTLP exporter](/docs/specs/otel/protocol/exporter/), provided by the
+[`OpenTelemetry.Exporter.OpenTelemetryProtocol`](https://www.nuget.org/packages/OpenTelemetry.Exporter.OpenTelemetryProtocol)
+NuGet package.
 
 The Prometheus exporter is effectively a
 [Prometheus client library](https://prometheus.io/docs/instrumenting/clientlibs/)
@@ -107,6 +109,7 @@ OpenTelemetry by adding the
 NuGet package to your project.
 
 ```csharp
+using OpenTelemetry;
 using OpenTelemetry.Exporter;
 using OpenTelemetry.Metrics;
 
@@ -156,10 +159,10 @@ appropriate changes.
 
 Some challenges you may encounter during this migration may include the
 following Prometheus features which do not have direct equivalents in the
-`Meter` APIs:
+`Meter` APIs, and are therefore not supported:
 
-- The Prometheus summary data type is not supported;
-- Native histograms are not supported.
+- the Prometheus summary data type;
+- native histograms.
 
 ## Pushing metrics to Prometheus using OTLP
 
@@ -176,6 +179,7 @@ that the OTLP exporter specifies a base path for the metrics OTLP endpoint and
 uses HTTP/protobuf as the protocol for the OTLP exporter.
 
 ```csharp
+using OpenTelemetry;
 using OpenTelemetry.Exporter;
 using OpenTelemetry.Metrics;
 
