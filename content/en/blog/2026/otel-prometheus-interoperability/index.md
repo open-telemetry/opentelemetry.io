@@ -1,7 +1,7 @@
 ---
 title: 'Prometheus and OpenTelemetry interoperability in 2026: Survey results'
 linkTitle: Prometheus and OTel Survey
-date: 2026-08-28
+date: 2026-09-21
 author: >-
   [Dhruv Ahuja](https://github.com/dhruv-ahuja) (SigNoz), [Andrej
   Kiripolsky](https://github.com/andrejkiri) (Grafana Labs), [Ana
