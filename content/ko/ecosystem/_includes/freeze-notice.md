@@ -2,7 +2,7 @@
 default_lang_commit: 42ef3b8c965480f4d58b173ed95fcb05fbc7d429
 ---
 
-> [!WARNING] 에코시스템 목록은 동결되었음
+> [!WARNING] 에코시스템 목록의 수정은 동결됨
 >
 > 관리자가 각 목록의 향후 방향을 논의하는 동안
 > [레지스트리](/ecosystem/registry/)를 포함한 [에코시스템](/ecosystem/) 목록에
