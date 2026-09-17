@@ -1,7 +1,7 @@
 ---
 title: 'Dual-exporting .NET metrics with OTLP and Prometheus'
 linkTitle: Dual-exporting .NET metrics
-date: 2026-08-10
+date: 2026-09-18
 author: >-
   [Martin Costello](https://github.com/martincostello) (Grafana Labs)
 issue: 11227
