@@ -8,9 +8,10 @@ cSpell:ignore: baeyens
 
 The OpenTelemetry project is excited to announce the 2026 OpenTelemetry
 Governance Committee (GC) election. Nominations are due by 16 October 2026 23:59
-UTC. The list of eligible candidates will be shared on 19 October 2026. Voting
-will take place between 26 October 2026 00:00 UTC and 29 October 2026 end of
-day, and the final election results will be announced 30 October 2026.
+AoE. The list of eligible candidates will be shared on 19 October 2026. Voting
+will take place between 26 October 2026 12:00 UTC and 28 October 2026 end of
+day AoE (29 October 2026 11:59 UTC), and the final election results will be
+announced 30 October 2026.
 
 ## Vote!
 
@@ -24,14 +25,14 @@ terms.
 If you have made contributions to our ecosystem not measured by the automatic
 process, you can
 [request an exception](https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main#elections)
-before 23:59 UTC on 23 October 2026 to participate in the election. See the
+before 23:59 AoE on 23 October 2026 to participate in the election. See the
 [voter roll](https://github.com/open-telemetry/community/blob/f7b99ef75580e4d88159e66730e1b8bc6719ce30%5E/elections/2026/voters-roll.csv)
 with all members of standing and approved exceptions. Approved exceptions will
 be added to the roll continuously.
 
-Voting will be open between 26 October 2026 12:00 UTC and 29 October 2026, end
-of day, [Anywhere on Earth](https://en.wikipedia.org/wiki/Anywhere_on_Earth) (30
-October 2026 12:00 UTC) on
+Voting will be open between 26 October 2026 12:00 UTC and 28 October 2026, end
+of day, [Anywhere on Earth](https://en.wikipedia.org/wiki/Anywhere_on_Earth) (29
+October 2026 11:59 UTC) on
 [Helios Voting](https://vote.heliosvoting.org/helios/elections/TBD/view); voters
 will need to sign in with their GitHub account.
 
@@ -49,7 +50,7 @@ refer to the
 [charter document](https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main).
 You may nominate yourself (or others!) by submitting a Pull Request against the
 [list of candidates](https://github.com/open-telemetry/community/blob/1b7d0d85924677149593a18639ce0b897ed4751f/elections/2026/governance-committee-candidates.md?from_branch=main)
-by 16 October 2026 23:59 UTC — see the detailed requirements under
+by 16 October 2026 23:59 AoE — see the detailed requirements under
 [nominations](https://github.com/open-telemetry/community/blob/55c58353ce8651dbb5269ca91bb6dde5b47bac2e/elections/2026/governance-committee-election.md?from_branch=main#nominations)
 for the Governance Committee election.
 
