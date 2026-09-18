@@ -3,8 +3,7 @@ title: サイトのローカリゼーション
 description: 非英語ローカリゼーションのサイトページの作成と管理
 linkTitle: ローカリゼーション
 weight: 25
-default_lang_commit: d5226a763e8d2f8a04ad16927d4e5961686a3b5e
-drifted_from_default: true
+default_lang_commit: 3c1e6e89077b2afbb9a3ffd5ff61a132b53152aa
 cSpell:ignore: Dowair shortcodes
 ---
 
@@ -350,8 +349,9 @@ OpenTelemetryウェブサイトの新しいローカリゼーションを始め�
      - [ ] Update Hugo config for `LANG_ID`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
-     - [ ] Create org-level group for `LANG_ID` approvers
-     - [ ] Update components owners for `content/LANG_ID`
+     - [ ] Create org-level teams for `LANG_ID` approvers and maintainers
+     - [ ] Add the locale to `data/locale-teams.yaml` and run
+           `npm run fix:codeowners`
    - [ ] Create an issue to track the localization of the **glossary**. Add the
          issue number here. For details, see
          [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
@@ -364,7 +364,7 @@ OpenTelemetryウェブサイトの新しいローカリゼーションを始め�
 
 [homepage]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
-最初のPRがマージされた後、メンテナーはイシューラベル、組織レベルのグループ、およびコンポーネント所有者を設定します。
+最初のPRがマージされた後、メンテナーはイシューラベルと組織レベルのチームを設定します。
 
 ### 4. 用語集をローカライズする {#glossary}
 
@@ -423,11 +423,40 @@ NPM パッケージ [@cspell/dict-LANG_ID][] として利用可能な [cSpell �
   - `dictionaryDefinitions` の下に、`name`（たとえば `LANG_ID-words`）と `path`（たとえば `.cspell/LANG_ID-words.txt`）を持つエントリを追加します。
   - `dictionaries` の下に、上記のステップと同じ `name` の値を追加します（ファイルパスではありません）。
 
+#### チームとコードオーナー {#teams-and-code-owners}
+
+新しいロケールを [`data/locale-teams.yaml`][] に追加し、`npm run fix:codeowners` を実行して CODEOWNERS のロケールセクションを再生成します。
+これらの変更はそのロケールの最初の PR に含めてください。
+CI はレジストリが `content/` 配下のロケールディレクトリと一致することを要求します。
+新しいロケールは通常[未配置](#locale-teams)の状態で始まるため、そのロケールが[昇格](#locale-teams)するまで、CODEOWNERS の行には `docs-approvers` のフォールバックが記載されます。
+
 #### その他のツールサポート {#other-tooling-support}
 
 - Prettierサポート：`LANG_ID`がPrettierで十分にサポートされていない場合は、`.prettierignore`に無視ルールを追加します
 
 ## 承認者およびメンテナー向けガイダンス {#approver-and-maintainer-guidance}
+
+### ロケールチーム、コードオーナー、配置状況 {#locale-teams}
+
+各ロケールには `docs-LANG_ID-approvers` と `docs-LANG_ID-maintainers` の GitHub チームがあります。
+メンテナーは承認者も兼ねます。
+承認者チームはそのロケールのパスの[コードオーナー][code owner]であるため、ロケール承認者のレビューはロケール限定の PR に必要なコードオーナーのレビューを満たします。
+ロケールのメンテナーは、そのような PR を[自動マージ](#auto-merge)することもできます。
+
+ロケールチームの想定されるメンバーは [`data/locale-teams.yaml`][] レジストリに記録されており、このレジストリはリポジトリの [CODEOWNERS][] ファイルのロケールセクションも生成します。
+メンバーの変更はレジストリに対する PR として提案されるため、監査証跡が残ります。
+実際のチームへの反映は組織の管理者が行います。
+ジェネレーターとそれが体現している規約については、[locale-codeowners README][] を参照してください。
+
+メンテナーがいないロケールは**未配置**です。
+その CODEOWNERS の行にはフォールバックオーナーとして `@open-telemetry/docs-approvers` が記載されるため、ドキュメントの承認者がそのロケールの PR をレビューしてブロックを解除できます。
+[自動マージ](#auto-merge)にはロケールのメンテナーが必要なため、このような PR はドキュメントのメンテナーが手動でマージします。
+
+未配置のロケールにメンテナーが加わったら、そのメンテナーを記録して CODEOWNERS のロケールセクションを再生成する（`npm run fix:codeowners`）レジストリの PR を提出してください。
+これによりそのロケールの行から `docs-approvers` のフォールバックが外れ、以降はロケールチームが自身の PR を管理するようになります。
+これがロケールの**昇格**です。
+例については [zh の昇格 PR][zh graduation PR] を参照してください。
+ロケールチームが後に活動を停止した場合は、レジストリを逆方向に変更することでフォールバックが復活します。
 
 ### ロケール限定の PR で自動マージを有効にする {#auto-merge}
 
@@ -526,11 +555,18 @@ npm run fix:i18n:status -- PATHS_TO_FAILING_LOCALIZED_PAGES
 
 最後に、`npm run check:links` を再実行して、リンクの失敗が残っていないことを確認してください。
 
+<!-- prettier-ignore-start -->
 [aliases]: https://gohugo.io/content-management/urls/#aliases
+[code owner]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+[CODEOWNERS]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
+[`data/locale-teams.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
 [front matter]: https://gohugo.io/content-management/front-matter/
+[locale-codeowners README]: https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-codeowners
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
 [PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/
+[zh graduation PR]: https://github.com/open-telemetry/opentelemetry.io/pull/11516
+<!-- prettier-ignore-end -->
