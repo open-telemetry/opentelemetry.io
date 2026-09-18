@@ -8,7 +8,8 @@ tags:
   - collector
 license: Apache 2.0
 description:
-  The sd_notify extension integrates the collector with the sd_notify(3) protocol.
+  The sd_notify extension integrates the collector with the sd_notify(3)
+  protocol.
 authors:
   - name: OpenTelemetry Authors
 urls:
