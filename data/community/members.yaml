@@ -1791,6 +1791,12 @@ approvers:
       - semconv-feature-flag-approvers
     html_url: https://github.com/beeme1mr
     avatar_url: https://avatars.githubusercontent.com/u/682996?v=4
+  - name: benjoseph-grafana
+    teams:
+      - android-approvers
+      - android-triagers
+    html_url: https://github.com/benjoseph-grafana
+    avatar_url: https://avatars.githubusercontent.com/u/282287660?v=4
   - name: bertysentry
     teams:
       - docs-fr-approvers
@@ -2135,6 +2141,11 @@ approvers:
       - semconv-messaging-approvers
     html_url: https://github.com/pyohannes
     avatar_url: https://avatars.githubusercontent.com/u/16337442?v=4
+  - name: rads-1996
+    teams:
+      - python-genai-approvers
+    html_url: https://github.com/rads-1996
+    avatar_url: https://avatars.githubusercontent.com/u/22488539?v=4
   - name: raphael-theriault-swi
     teams:
       - javascript-approvers
@@ -2872,6 +2883,9 @@ members:
   - name: kpratyus
     html_url: https://github.com/kpratyus
     avatar_url: https://avatars.githubusercontent.com/u/95214718?v=4
+  - name: Krishnachaitanyakc
+    html_url: https://github.com/Krishnachaitanyakc
+    avatar_url: https://avatars.githubusercontent.com/u/22275437?v=4
   - name: krisztianfekete
     html_url: https://github.com/krisztianfekete
     avatar_url: https://avatars.githubusercontent.com/u/103492698?v=4
