@@ -4,8 +4,7 @@ linkTitle: ゲートウェイパターン
 description: シグナルを単一のOTLPエンドポイントに送信し、そこからバックエンドに送信する理由と方法
 aliases: [/docs/collector/deployment/gateway]
 weight: 300
-default_lang_commit: bdfe463187e63311ab3e137f1e314acfb877fd8b
-drifted_from_default: true
+default_lang_commit: 98f910ef53d1e7f45002e7303b2af4da15282b21
 cSpell:ignore: hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---
 
@@ -13,22 +12,24 @@ cSpell:ignore: hostnames loadbalancer loadbalancing resourcedetectionprocessor
 このエンドポイントは、単独のサービス（たとえばKubernetesのデプロイメント）として実行される1つ以上のコレクターインスタンスによって提供されます。
 通常、エンドポイントはクラスターごと、データセンターごと、またはリージョンごとに提供されます。
 
-一般的なケースでは、アウトオブボックスのロードバランサーを使用して、コレクター間で負荷を分散できます。
+一般的なケースでは、アウトオブボックスのロードバランサーを使用して、Collector間で負荷を分散できます。
+このシングルティアパターンでは、ロードバランサーはCollectorインスタンスの外部に配置されます。
 
-![ゲートウェイデプロイメント概念](../../img/otel-gateway-sdk.svg)
+![アプリケーションが外部ロードバランサーを介してOTLPをCollectorレプリカに送信し、その後バックエンドに送信するシングルティアゲートウェイ](../../img/otel-gateway-sdk.svg)
 
 テレメトリーデータの処理が特定のコレクターで行われる必要があるユースケースでは、2層の設定を使用します。
 1層目のコレクターには、[Trace ID/サービス名を意識したロードバランシングエクスポーター][lb-exporter]を使用したパイプラインを設定します。
 2層目では、各コレクターが自分に向けられたテレメトリーを受信して処理します。
 たとえば、1層目でロードバランシングエクスポーターを使用して、[テイルサンプリングプロセッサー][tailsample-processor]を設定した2層目のコレクターにデータを送信すると、あるトレースのすべてのスパンが同じコレクターインスタンスに到達し、そこでテイルサンプリングポリシーが適用されます。
 
-次の図は、ロードバランシングエクスポーターを使用したこの構成を示しています。
+次の図は、この2層構成を示しています。
+前の図の外部ロードバランサーとは異なり、ここで**Load Balancer**と表示されているコンポーネントは、ロードバランシングエクスポーターを実行する1層目のCollectorです。
 
-![ロードバランシングエクスポーターを使用したゲートウェイデプロイメント](../../img/otel-gateway-lb-sdk.svg)
+![アプリケーションがOTLPをロードバランシングエクスポーターを使用した1層目のCollectorに送信し、それが2層目のCollectorレプリカにルーティングした後バックエンドに送信する2層ゲートウェイ](../../img/otel-gateway-lb-sdk.svg)
 
 1. アプリケーションで、SDKがOTLPデータを中央の場所に送信するように設定されます。
-2. ロードバランシングエクスポーターを使用して設定されたコレクターが、シグナルを複数のコレクターに分散します。
-3. コレクターがテレメトリーデータを1つ以上のバックエンドに送信します。
+2. 1層目のCollectorが、ロードバランシングエクスポーターを使用して、シグナルを2層目のCollectorグループに分散します。
+3. 2層目のCollectorがテレメトリーデータを1つ以上のバックエンドに送信します。
 
 ## 例 {#examples}
 
@@ -107,7 +108,7 @@ receivers:
         endpoint: 0.0.0.0:4317
 
 exporters:
-  loadbalancing:
+  load_balancing:
     protocol:
       otlp:
         tls:
@@ -123,7 +124,7 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [loadbalancing]
+      exporters: [load_balancing]
 ```
 
 {{% /tab %}} {{% tab DNS %}}
@@ -136,7 +137,7 @@ receivers:
         endpoint: 0.0.0.0:4317
 
 exporters:
-  loadbalancing:
+  load_balancing:
     protocol:
       otlp:
         tls:
@@ -149,7 +150,7 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [loadbalancing]
+      exporters: [load_balancing]
 ```
 
 {{% /tab %}} {{% tab "DNS with service" %}}
@@ -162,7 +163,7 @@ receivers:
         endpoint: 0.0.0.0:4317
 
 exporters:
-  loadbalancing:
+  load_balancing:
     routing_key: service
     protocol:
       otlp:
@@ -177,7 +178,7 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [loadbalancing]
+      exporters: [load_balancing]
 ```
 
 {{% /tab %}} {{< /tabpane >}}
