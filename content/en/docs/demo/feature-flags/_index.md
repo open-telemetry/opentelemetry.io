@@ -48,6 +48,7 @@ user interface:
 | `paymentFailure`             | Payment                   | Generate an error for the selected percentage of `charge` calls.                                                                            |
 | `paymentUnreachable`         | Checkout                  | Use a bad address when calling the Payment service to make it seem like the Payment service is unavailable.                                 |
 | `productCatalogFailure`      | Product Catalog           | Generate an error for `GetProduct` requests with product ID: `OLJCESPC7Z`                                                                   |
+| `productCatalogLockContention` | Product Catalog           | Simulate database lock contention by holding an `ACCESS EXCLUSIVE` lock on the `catalog.products` table, blocking other product catalog queries. |
 | `recommendationCacheFailure` | Recommendation            | Create a memory leak due to an exponentially growing cache. Roughly half of requests trigger growth.                                        |
 
 ## Guided Debugging Scenario
