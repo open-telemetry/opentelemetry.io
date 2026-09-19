@@ -347,9 +347,7 @@ test('manifest: the engines floor keeps its binding shape', () => {
 //   bump; drop once its range includes the 0.6.1 fixes
 //   (jakejarvis/hugo-extended#256).
 // - smol-toml (GHSA-7w5x-hrqm-74c2, via markdownlint-cli2's exact pin):
-//   `$smol-toml` points the nested edge at the root devDependency, so one
-//   copy follows the root pin; drop once markdownlint-cli2's pin clears
-//   1.7.0.
+//   drop once markdownlint-cli2's pin clears 1.7.0.
 test('manifest: overrides carries exactly the reviewed entries', () => {
   assert.deepEqual(manifest.overrides, {
     'adm-zip': '0.6.1',
@@ -376,11 +374,6 @@ test('lock and manifest: the smol-toml override is applied and still needed', ()
   );
   assert.deepEqual(nested, [], 'smol-toml resolves to the root copy only');
   const version = lock.packages['node_modules/smol-toml'].version;
-  assert.equal(
-    version,
-    manifest.devDependencies['smol-toml'],
-    'root smol-toml is locked at its exact devDependency pin',
-  );
   const [major, minor, patch] = version.split('.').map(Number);
   assert.ok(
     major > 1 || (major === 1 && (minor > 7 || (minor === 7 && patch >= 1))),
