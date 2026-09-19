@@ -174,9 +174,9 @@ docker run --rm --network opentelemetry-demo \
 
 5. （オプション）フロントエンドのエンドツーエンドテストを実行[^1]します。
 
-   Cypress フロントエンドテストは、起動済みのデモに対して実行します。
+Cypress フロントエンドテストは、起動済みのデモに対して実行します。
 
-   {{< tabpane text=true >}} {{% tab Make %}}
+{{< tabpane text=true >}} {{% tab Make %}}
 
 ```shell
 make run-frontend-tests
