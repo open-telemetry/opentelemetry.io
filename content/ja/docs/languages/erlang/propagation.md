@@ -10,7 +10,8 @@ cSpell:ignore: elli
 ## 自動コンテキスト伝搬 {#automatic-context-propagation}
 
 分散トレースは単一のサービスを超えて広がるため、スパン間の親子関係を作成するためにサービス間でコンテキストを伝搬する必要があります。
-これにはサービス間の[_コンテキスト伝搬_](/docs/specs/otel/overview/#context-propagation)が必要であり、トレースの識別子がリモートプロセスに送信されるメカニズムです。
+これにはサービス間の[_コンテキスト伝搬_](/docs/specs/otel/overview/#context-propagation)が必要です。
+これは、トレースの識別子をリモートプロセスに送信する仕組みです。
 
 [Phoenix](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_phoenix)、[Cowboy](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_cowboy)、[Elli](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_elli) などの HTTP フレームワークおよびサーバーの計装ライブラリや、[Tesla](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_tesla) などのクライアントは、グローバルに登録されたプロパゲーターを使用してコンテキストを自動的に注入または抽出します。
 デフォルトで使用されるグローバルプロパゲーターは、W3C [Trace Context](https://w3c.github.io/trace-context/) と [Baggage](https://www.w3.org/TR/baggage/) フォーマットです。
