@@ -353,8 +353,7 @@ test('lock and manifest: the adm-zip override is applied and still needed', () =
   );
 });
 
-// GHSA-7w5x-hrqm-74c2; root already carries the fixed line, so `$smol-toml`
-// dedupes onto it. Drop with the override once markdownlint-cli2's pin
+// GHSA-7w5x-hrqm-74c2; drop with the override once markdownlint-cli2's pin
 // clears 1.7.0.
 test('lock and manifest: the smol-toml override is applied and still needed', () => {
   const nested = Object.keys(lock.packages).filter((key) =>
