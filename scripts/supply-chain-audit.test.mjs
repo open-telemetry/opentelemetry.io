@@ -54,8 +54,8 @@ const packageIocs = new Set([
 // A workspace member appears in the lock as a directory entry plus a
 // node_modules/ symlink, neither a registry artifact. Excluded from the
 // per-package checks: the directory entries of declared members, and
-// each member's one canonical node_modules/NAME link (any other link --
-// an alias key, a file: dependency -- still fails the registry check).
+// each member's one canonical node_modules/NAME link (any other link, such
+// as an alias key or a file: dependency, still fails the registry check).
 // The workspaces test below pins the member list and binds each
 // directory to its package name.
 const workspaceDirs = manifest.workspaces ?? [];
@@ -164,7 +164,7 @@ test('lock and manifest: install scripts stay inventoried in allowScripts', () =
     );
     // Coverage takes one of the two reviewed forms: a name-level denial
     // (false, version-independent) or an exact-version approval that must
-    // track the locked version -- a stale pin fails npm ci under
+    // track the locked version. A stale pin fails npm ci under
     // strict-allow-scripts, and this assertion names the fix in the bump
     // PR itself.
     if (allowScripts[name] === false) {
@@ -267,7 +267,6 @@ test('workspaces: the reviewed member set, no shadow config or scripts', () => {
       { resolved: dir, link: true },
       `the lock links node_modules/${member.name} to ${dir} and nothing else`,
     );
-    // The member has no synthesized install step either.
     assert.ok(
       !fs.existsSync(path.join(repoRoot, dir, 'binding.gyp')),
       `${dir} has no binding.gyp (would synthesize node-gyp rebuild)`,
@@ -277,14 +276,14 @@ test('workspaces: the reviewed member set, no shadow config or scripts', () => {
 
 test('lock: no package provides a bin that shadows a trusted command', () => {
   // npm links every package's bin entries into node_modules/.bin from
-  // lock metadata alone -- --ignore-scripts does not suppress linking --
+  // lock metadata alone (--ignore-scripts does not suppress linking),
   // and npm-run scripts put that directory first on PATH. A bin named
   // after a command the install and build chain trusts (node, npm, git,
   // a shell) would hijack every later script step, so reserve those
   // names outright. npm normalizes bin on lock write (object form,
   // basenamed keys) and its linker basenames whatever it finds, so a
-  // non-canonical spelling -- a string or array bin, a key carrying a
-  // path separator -- is a hand-edited entry hiding the linked name
+  // non-canonical spelling (a string or array bin, a key carrying a
+  // path separator) is a hand-edited entry hiding the linked name
   // from this check: reject the spelling itself.
   const reservedBins = new Set([
     'node',
@@ -338,9 +337,6 @@ test('manifest: the engines floor keeps its binding shape', () => {
   );
 });
 
-// npm applies overrides only while re-resolving and trusts an in-sync
-// lock as-is, so each override's effect is asserted from the lock.
-
 // GHSA-xcpc-8h2w-3j85, GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc; drop with
 // the override once hugo-extended's range includes 0.6.1
 // (jakejarvis/hugo-extended#256).
@@ -348,7 +344,7 @@ test('lock and manifest: the adm-zip override is applied and still needed', () =
   assert.match(
     lock.packages['node_modules/adm-zip'].version,
     /^0\.6\.[1-9]\d*$/,
-    'the locked adm-zip carries the 0.6.1 fixes',
+    'locked adm-zip carries the 0.6.1 fixes',
   );
   assert.equal(
     lock.packages['node_modules/hugo-extended'].dependencies['adm-zip'],
@@ -398,12 +394,10 @@ test('manifest and lock: unscoped markdownlint-rule-link-pattern stays absent', 
   );
 });
 
-// Exact pins: prefix/flag matching would accept an appended `&& npm
-// install ...` rider on a script other checks trust by name. The pinned
-// set is the install closure: every script reachable by fixed name from
-// the Netlify commands and the install contract, up to (not including)
-// the build:* half, whose scripts execute the site build's repo code
-// wholesale and change under normal development.
+// The pinned set is the install closure: every script reachable by fixed
+// name from the Netlify commands and the install contract, up to (not
+// including) the build:* half, whose scripts execute the site build's
+// repo code wholesale and change under normal development.
 test('manifest: the install path keeps its locked, script-free form', () => {
   const { scripts } = manifest;
   const pins = {
@@ -441,9 +435,9 @@ test('manifest: the install path keeps its locked, script-free form', () => {
   // Root lifecycle entries run on local `npm install`, a documented
   // install path, and strict-allow-scripts gates dependency scripts
   // only, never the root project's. Enumerate npm's full install-time
-  // root surface explicitly -- including the standalone entries that no
+  // root surface explicitly, including the standalone entries that no
   // pre/post pairing reveals (prepublish runs on install; `dependencies`
-  // runs after node_modules changes) -- and sanction only prepare and
+  // runs after node_modules changes), and sanction only prepare and
   // postinstall, both pinned above.
   for (const lifecycle of [
     'preinstall',
@@ -470,7 +464,7 @@ test('manifest: the install path keeps its locked, script-free form', () => {
   );
   // npm wraps every script in implicit pre<name>/post<name> hooks; a
   // hook on an install-closure name is unreviewed code riding a trusted
-  // name's execution path -- and a new key the body pins above can't
+  // name's execution path, and a new key the body pins above can't
   // catch. Scope: the pinned closure only; hooks elsewhere are the build
   // half's business, adjudicated in review.
   const names = new Set(Object.keys(scripts));
@@ -488,9 +482,6 @@ test('manifest: the install path keeps its locked, script-free form', () => {
 });
 
 test('netlify.toml: auto-install stays inert and build commands stay pinned', () => {
-  // Parsed, not line-scanned: TOML admits too many valid spellings
-  // (quoted, dotted, and inline-table keys, context tables) for a line
-  // regex to screen, so pin the whole build surface as an allowlist.
   // NPM_FLAGS is what constrains the auto-install to resolution only:
   // https://opentelemetry.io/site/build/dependencies/#inert-netlify-auto-install
   const config = parseToml(readText('netlify.toml'));
