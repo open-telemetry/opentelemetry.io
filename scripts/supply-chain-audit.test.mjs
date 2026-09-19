@@ -339,19 +339,25 @@ test('manifest: the engines floor keeps its binding shape', () => {
 });
 
 // npm applies overrides only while re-resolving and trusts an in-sync
-// lock as-is, so the adm-zip override (GHSA-xcpc-8h2w-3j85, then
-// GHSA-vwc7-r8mq-g2x9 and GHSA-7q85-xj36-vmfc, via hugo-extended) is
-// pinned from the committed manifests: the lock must carry the fixed
-// version, and the override must stay justified by hugo-extended's own
-// declared range. Revisit on a hugo-extended bump; drop the override (and
-// this test) only once that range includes the 0.6.1 fixes
-// (jakejarvis/hugo-extended#256).
+// lock as-is, so each override is pinned from the committed manifests:
+// the lock must carry the fixed version, and the override must stay
+// justified by the parent's own declared range. The reviewed entries:
+// - adm-zip (GHSA-xcpc-8h2w-3j85, then GHSA-vwc7-r8mq-g2x9 and
+//   GHSA-7q85-xj36-vmfc, via hugo-extended): revisit on a hugo-extended
+//   bump; drop once its range includes the 0.6.1 fixes
+//   (jakejarvis/hugo-extended#256).
+// - smol-toml (GHSA-7w5x-hrqm-74c2, via markdownlint-cli2's exact pin):
+//   `$smol-toml` points the nested edge at the root devDependency, so one
+//   copy follows the root pin; drop once markdownlint-cli2's pin clears
+//   1.7.0.
+test('manifest: overrides carries exactly the reviewed entries', () => {
+  assert.deepEqual(manifest.overrides, {
+    'adm-zip': '0.6.1',
+    'smol-toml': '$smol-toml',
+  });
+});
+
 test('lock and manifest: the adm-zip override is applied and still needed', () => {
-  assert.deepEqual(
-    manifest.overrides,
-    { 'adm-zip': '0.6.1' },
-    'overrides carries exactly the reviewed entries',
-  );
   assert.match(
     lock.packages['node_modules/adm-zip'].version,
     /^0\.6\.[1-9]\d*$/,
@@ -361,6 +367,29 @@ test('lock and manifest: the adm-zip override is applied and still needed', () =
     lock.packages['node_modules/hugo-extended'].dependencies['adm-zip'],
     '^0.5.17',
     'hugo-extended declares the adm-zip range that justifies the override',
+  );
+});
+
+test('lock and manifest: the smol-toml override is applied and still needed', () => {
+  const nested = Object.keys(lock.packages).filter((key) =>
+    key.endsWith('/node_modules/smol-toml'),
+  );
+  assert.deepEqual(nested, [], 'smol-toml resolves to the root copy only');
+  const version = lock.packages['node_modules/smol-toml'].version;
+  assert.equal(
+    version,
+    manifest.devDependencies['smol-toml'],
+    'root smol-toml is locked at its exact devDependency pin',
+  );
+  const [major, minor, patch] = version.split('.').map(Number);
+  assert.ok(
+    major > 1 || (major === 1 && (minor > 7 || (minor === 7 && patch >= 1))),
+    'locked smol-toml clears the GHSA-7w5x-hrqm-74c2 range (<= 1.7.0)',
+  );
+  assert.equal(
+    lock.packages['node_modules/markdownlint-cli2'].dependencies['smol-toml'],
+    '1.7.0',
+    'markdownlint-cli2 declares the exact smol-toml pin that justifies the override',
   );
 });
 
