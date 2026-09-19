@@ -10,7 +10,7 @@ cSpell:ignore: stackdriver
 
 {{% docs/languages/index-intro rust /%}}
 
-## Crates {#crates}
+## クレート {#crates}
 
 OpenTelemetry for Rust は以下のクレートを公開しています。
 

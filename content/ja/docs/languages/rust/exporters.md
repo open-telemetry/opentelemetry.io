@@ -8,7 +8,7 @@ default_lang_commit: 2b88c43e50fb99c601ededa24b1f3a461fef9ac0
 
 ## OTLP エンドポイント {#otlp-endpoint}
 
-トレースデータを OTLP エンドポイント（[Collector](/docs/collector) や Jaeger など）に送信するには、[opentelemetry-otlp](https://crates.io/crates/opentelemetry-otlp) のようなエクスポータークレートを使用します。
+トレースデータを OTLP エンドポイント（[コレクター](/docs/collector) や Jaeger など）に送信するには、[opentelemetry-otlp](https://crates.io/crates/opentelemetry-otlp) のようなエクスポータークレートを使用します。
 
 たとえば、[Getting Started](../getting-started/) のサイコロサーバーに新しい依存関係を追加して更新できます。
 
