@@ -2089,6 +2089,7 @@ https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exte
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/opampextension,200,1789450940
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/pprofextension,200,1789450939
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/remotetapextension,200,1789450939
+https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sdnotifyextension,200,1789450939
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sigv4authextension,200,1789450939
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/solarwindsapmsettingsextension,200,1789450940
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/storage/dbstorage,200,1789450938
@@ -5588,6 +5589,7 @@ https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/ext
 https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension,200,1789400519
 https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/pprofextension,200,1789400519
 https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/remotetapextension,200,1789400519
+https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/sdnotifyextension,200,1789400519
 https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/sigv4authextension,200,1789400519
 https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/solarwindsapmsettingsextension,200,1789400519
 https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage/dbstorage,200,1789400518
