@@ -4,7 +4,7 @@ description:
   Capture telemetry from a Go application without writing any instrumentation
   code.
 weight: 5
-cSpell:ignore: GOFLAGS otelc toolexec
+cSpell:ignore: GOFLAGS
 ---
 
 This page shows you how to build a Go application with compile-time
