@@ -2705,6 +2705,7 @@ https://github.com/open-telemetry/opentelemetry-collector/blob/v0.153.0/pdata/pt
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.153.0/receiver/receiver.go#L58,200,1789401264
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.153.0/receiver/receiver.go,200,1789401264
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.160.0/component/config.go,200,1789796451
+https://github.com/open-telemetry/opentelemetry-collector/blob/v0.160.0/config/configtls/README.md,200,1789882829
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.160.0/pdata/pcommon/map.go,200,1789796451
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.160.0/pdata/ptrace/generated_resourcespans.go,200,1789796451
 https://github.com/open-telemetry/opentelemetry-collector/blob/v0.160.0/receiver/receiver.go#L58,200,1789796452
