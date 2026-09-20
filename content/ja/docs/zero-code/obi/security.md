@@ -3,7 +3,7 @@ title: OBI のセキュリティ、権限、ケーパビリティ
 linkTitle: セキュリティ
 description: OBI が必要とする権限とケーパビリティ
 weight: 22
-default_lang_commit: 83dbea34b16a9b3ddce3fa42857f2a35d2ace5b6
+default_lang_commit: 98f910ef53d1e7f45002e7303b2af4da15282b21
 cSpell:ignore: BPF_PROG_TYPE_KPROBE CAP_PERFMON eksctl
 ---
 
@@ -66,13 +66,13 @@ OBI は機能のために以下のケーパビリティのリストを必要と�
 | `CAP_SYS_RESOURCE`       | ロックされたメモリの量を増やします。**カーネル 5.11 未満** でのみ必要です                                                                                                                                                                          |
 | `CAP_SYS_ADMIN`          | `bpf_probe_write_user()` を用いたライブラリレベルの Go トレースコンテキスト伝搬と、BPF メトリクスエクスポーターによる BTF データへのアクセスに使用されます                                                                                         |
 
-## トレースコンテキスト伝搬に必要なホストマウント {#required-host-mount-for-context-propagation}
+## コンテキスト伝搬に必要なホストマウント {#required-host-mount-for-context-propagation}
 
-カーネルバージョン 6.6.128+、6.12.75+、6.18.14+、および 6.19+ では、OBI v0.12.0 以降はホストの `/sys/kernel/tracing` ディレクトリを同じパスで OBI コンテナにマウントする必要があります。
-OBI はこれを使って FIONREAD 補償チェックを実行します。
-このマウントがないと、OBI はこのチェックを実行できず、誤ったトレースデータを生成しないようトレースコンテキスト伝搬を自動的に無効化します。
+OBI v0.12.0 以降、カーネルバージョン 6.6.128 以上、6.12.75 以上、6.18.14 以上、および 6.19 以上では、ホストの `/sys/kernel/tracing` ディレクトリを同じパスで OBI コンテナにマウントする必要があります。
+OBI はこのディレクトリを使用して FIONREAD 補正チェックを実行します。
+このマウントがない場合、OBI はチェックを実行できず、不正確なトレースデータの生成を避けるためにコンテキスト伝搬を自動的に無効化します。
 
-Kubernetes でこのマウントを提供するには、Pod 仕様に次のように追加します。
+Kubernetes でこのマウントを提供するには、Pod スペックに以下を追加します。
 
 ```yaml
 spec:
