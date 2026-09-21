@@ -100,7 +100,7 @@ SIG prioritize work and check its progress.
 That example comes from one language. For HTTP clients, we can already look
 wider, because several languages have scenarios in the conformance project.
 
-{{< figure src="across-implementations.png" alt="Matrix of HTTP client attributes against instrumentations from .NET, Go, Java, JavaScript, PHP, Python, and Ruby. The four required attributes, http.request.method, server.address, server.port, and url.full, are present in nearly every instrumentation. The two recommended attributes, network.peer.address and network.protocol.version, are present in far fewer." caption="Selected HTTP client attributes observed in conformance test runs across seven languages, grouped by requirement level. Results reflect the tested versions, configurations, and scenarios." >}}
+{{< figure src="across-implementations.png" alt="Matrix of HTTP client attributes against instrumentations from .NET, Go, Java, JavaScript, PHP, Python, and Ruby. The four required attributes, http.request.method, server.address, server.port, and url.full, are present in nearly every instrumentation. The two recommended attributes, network.peer.address and network.protocol.version, are present in far fewer." caption="Selected HTTP client attributes observed in conformance test runs across seven languages, grouped by requirement level." >}}
 
 In this snapshot, the four required attributes shown were observed in nearly
 every tested instrumentation. The two recommended attributes shown were less
