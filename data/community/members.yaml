@@ -1775,6 +1775,12 @@ approvers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/amazingakai
     avatar_url: https://avatars.githubusercontent.com/u/93782497?v=4
+  - name: aranhave
+    teams:
+      - android-approvers
+      - android-triagers
+    html_url: https://github.com/aranhave
+    avatar_url: https://avatars.githubusercontent.com/u/281904176?v=4
   - name: ArthurSens
     teams:
       - collector-contrib-approvers
@@ -2995,6 +3001,9 @@ members:
   - name: nenadnoveljic
     html_url: https://github.com/nenadnoveljic
     avatar_url: https://avatars.githubusercontent.com/u/18366081?v=4
+  - name: Nik-Reddy
+    html_url: https://github.com/Nik-Reddy
+    avatar_url: https://avatars.githubusercontent.com/u/41942071?v=4
   - name: nilebox
     html_url: https://github.com/nilebox
     avatar_url: https://avatars.githubusercontent.com/u/6176360?v=4

@@ -3,8 +3,7 @@ title: トレースとログの相関
 linkTitle: トレースとログの相関
 weight: 35
 description: より迅速なデバッグとトラブルシューティングのために、OBI がアプリケーションログを分散トレースとどのように相関付けるかを学びます。
-default_lang_commit: 552bd64ff45ca252d1da0ca875abd1584a619d7f
-drifted_from_default: true
+default_lang_commit: b2cbf3f2c569f1d68f0d2624a23359dc348283f5
 cSpell:ignore: BPFFS NUL PYTHONUNBUFFERED
 ---
 
@@ -268,11 +267,11 @@ OBI はログをその場で補強します。
 
 OBI が元の行を抑制すると、コンテナログファイルにはその行のかわりに NUL バイトの行が含まれます。
 8 KiB 以下の書き込みの場合、`^[\x00\s]*$` を使用してこれらのプレースホルダー行を下流でフィルタリングしてください。
-たとえば、OpenTelemetry Collector の `filelog` レシーバーの場合は次のようにします。
+たとえば、OpenTelemetry Collector の `file_log` レシーバーの場合は次のようにします。
 
 ```yaml
 receivers:
-  filelog:
+  file_log:
     include:
       - /var/log/pods/*/*/*.log
     start_at: end
