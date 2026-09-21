@@ -1,7 +1,7 @@
 ---
 title: Announcing the 2026 OpenTelemetry Governance Committee Election
 linkTitle: 2026 GC Election
-date: 2026-09-15
+date: 2026-09-21
 author: OpenTelemetry Governance Committee
 cSpell:ignore: baeyens
 ---
