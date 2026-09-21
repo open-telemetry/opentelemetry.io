@@ -26,7 +26,7 @@ If you have made contributions to our ecosystem not measured by the automatic
 process, you can
 [request an exception](https://github.com/open-telemetry/community/blob/12e094130fc85f8990d5c0ccf1493004848baa0f/governance-charter.md?from_branch=main#elections)
 before 23:59 AoE on 23 October 2026 to participate in the election. See the
-[voter roll](https://github.com/open-telemetry/community/blob/main/elections/2026/voters-roll.csv)
+[voter roll](https://github.com/open-telemetry/community/blob/03f8ce83a6443bdf74da15d5b2f24e52e337da5a/elections/2026/voters-roll.csv)
 with all members of standing and approved exceptions. Approved exceptions will
 be added to the roll continuously.
 
