@@ -99,7 +99,8 @@ follow.
 When looking at how these methods combine, the picture is clearly hybrid, not
 either/or. Nearly half of respondents are mixing Prometheus and OTel
 instrumentation styles at once for infrastructure metrics, rather than doing a
-full migration. Only Prometheus style is twice as popular as only OTel style.
+full migration. Among respondents using a single instrumentation style,
+Prometheus-only style is twice as popular as OTel-only style.
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem;
             width: 100%; max-width: 100%;">
@@ -132,9 +133,9 @@ Preferences swap for application instrumentation. OTel SDKs come out on top with
 Prometheus SDKs following behind them. OBI holds roughly the same share as in
 infrastructure instrumentation.
 
-Instrumentation styles shift as well. The largest share of participants (41%) use only
-OTel style instrumentation, nearly twice as common as only Prometheus style. Fewer than a
-third mix styles.
+Instrumentation styles shift as well. The largest share of participants (41%)
+use only OTel style instrumentation, nearly twice as common as only Prometheus
+style. Fewer than a third mix styles.
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem;
             width: 100%; max-width: 100%;">
@@ -177,8 +178,9 @@ Collector in the pipeline. The three vanilla patterns come out close to even.
        style="flex: 1 1 45%; min-width: 17rem;">
 </div>
 
-_**Note**: "Other" combines respondents who do no transformation at all (15%, n=12)
-with those using a vendor distribution or custom-built Collector (20%, n=16)._
+_**Note**: "Other" combines respondents who do no transformation at all (15%,
+n=12) with those using a vendor distribution or custom-built Collector (20%,
+n=16)._
 
 ## What practitioners want improved
 
@@ -186,16 +188,18 @@ with those using a vendor distribution or custom-built Collector (20%, n=16)._
 better together?**
 
 We received 19 open-ended responses with suggestions on what to improve. Three
-themes emerged from this data — unifying Prometheus and OTel's data models
+themes emerged from this data: unification of Prometheus and OTel's data models
 (attributes/labels), better handling of resource attributes and metadata, and
-naming and formatting friction — alongside a few individual asks. Prometheus
-maintainers György "Krajo" Krajcsovits and Arthur Sens went through the
-responses and addressed each point below:
+naming and formatting friction. There were also a few individual asks.
+Prometheus maintainers
+[György "Krajo" Krajcsovits](https://github.com/krajorama) and
+[Arthur Sens](https://github.com/ArthurSens) went through the responses and
+addressed each point below:
 
 - Unifying Prometheus and OTel's data models (attributes/labels)
   - This is a valid ask that we recognize. We will raise it for a discussion at
     the Prometheus Dev summit in October.
-- Resource attributes and metadata
+- Resource attributes and metadata gaps
   - This should be addressed by the
     [native metadata design doc](https://docs.google.com/document/d/1yYnyD7oJDvJhzFaigdniq6y302Mvp9gDcJUeAj3pJ0s/edit?tab=t.0#heading=h.5prvoamow70t).
     One thing that we have to wait for is finishing the OTel Entities spec.
@@ -227,11 +231,10 @@ responses and addressed each point below:
 
 ### Mid-size organizations may be furthest into OTel-native tooling
 
-In our data, 100–999-employee organizations come out highest on OTel SDK
-adoption for application metrics and on OTel receiver adoption for
-infrastructure metrics. eBPF-based instrumentation (OBI) doesn't follow the same
-pattern — there it's the 1,000+ organizations that stand apart from every
-smaller band.
+In our data, organizations with 100–999 employees have the highest OTel SDK
+adoption for application metrics and OTel receiver adoption for infrastructure
+metrics. eBPF-based instrumentation (OBI) doesn't follow the same pattern —
+there, it's the 1,000+ organizations that stand apart from every smaller band.
 
 Adoption by organization size:
 
@@ -280,9 +283,9 @@ are too small to draw firm conclusions._
 ## Get involved
 
 Interoperability is measurably easier than it was two years ago, but the
-open-ended answers point at concrete gaps — data model differences, resource
-attributes and metadata, naming and formatting friction. There is still a lot of
-work to do, on both the OpenTelemetry and the Prometheus side.
+open-ended answers point to concrete gaps — data model differences, resource
+attributes and metadata gaps, and naming and formatting friction. There is still
+a lot of work to do on both the OpenTelemetry and the Prometheus side.
 
 Everyone is welcome to contribute. The discussion happens in the
 [#otel-prometheus](https://cloud-native.slack.com/archives/C01LSCJBXDZ) channel
