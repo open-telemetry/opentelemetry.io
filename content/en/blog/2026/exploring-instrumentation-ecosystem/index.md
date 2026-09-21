@@ -93,9 +93,10 @@ or custom telemetry still needs to be visible.
 
 The Java SIG is already using this to track progress towards the Java agent's
 3.0 release. The database conventions have stabilized, and we've made progress
-on RPC and messaging. The Java agent adopted stable HTTP conventions in [2.0](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v2.0.0), but
-the audit surfaced gaps that we fixed along the way. Seeing those gaps helps the
-SIG prioritize work and check its progress.
+on RPC and messaging. The Java agent adopted stable HTTP conventions in
+[2.0](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v2.0.0),
+but the audit surfaced gaps that we fixed along the way. Seeing those gaps helps
+the SIG prioritize work and check its progress.
 
 That example comes from one language. For HTTP clients, we can already look
 wider, because several languages have scenarios in the conformance project.
