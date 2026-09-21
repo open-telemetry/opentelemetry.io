@@ -304,21 +304,28 @@ Further reading:
 ## Designing your export model
 
 Across the three essential telemetry signals, the fundamental architectural
-question remains the same: will your platform require the user to **poll an API 
-for the data** at regular intervals, or will it **deliver the telemetry 
+question remains the same: will your platform require the user to **poll an API
+for the data** at regular intervals, or will it **deliver the telemetry
 directly** to a user-defined endpoint?
 
 ### The classic approach: custom polling APIs
 
 Platforms have traditionally exposed telemetry by providing APIs that users must
-poll at regular intervals, handle pagination for, and ingest the results into 
+poll at regular intervals, handle pagination for, and ingest the results into
 their own backends.
 
-It's a reasonable starting point if you already have a mature, well-tested API for logs or metrics, since extending it is often easier than building a new push path. But it comes with real costs:
+It's a reasonable starting point if you already have a mature, well-tested API
+for logs or metrics, since extending it is often easier than building a new push
+path. But it comes with real costs:
 
-- You shift a significant operational responsibility onto your users. They must now build scalable polling systems that can manage polling intervals, paginate API responses, retry on failures, and backfill missing data.
-- Users might build custom solutions that don't scale, don't adhere to your standards, and require significant upkeep on their end as your API schema develops alongside your platform.
-- Achieving near real-time delivery becomes significantly harder, which is often a critical requirement for latency-sensitive signals like traces and metrics.
+- You shift a significant operational responsibility onto your users. They must
+  now build scalable polling systems that can manage polling intervals, paginate
+  API responses, retry on failures, and backfill missing data.
+- Users might build custom solutions that don't scale, don't adhere to your
+  standards, and require significant upkeep on their end as your API schema
+  develops alongside your platform.
+- Achieving near real-time delivery becomes significantly harder, which is often
+  a critical requirement for latency-sensitive signals like traces and metrics.
 
 For logs, a pull-based implementation often looks like this (e.g.
 [CloudWatch Logs–style](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/8bee89f9928b4b1f81700f9ab0e5886d428bfae6/receiver/awscloudwatchreceiver/logs.go#L293)):
@@ -339,7 +346,9 @@ every poll_interval:
 Here, you would need similar state-tracking logic for the metrics or trace APIs.
 
 Because it forces users to write custom code just to convert your API responses
-into standard formats, the custom polling model is workable when you cannot reach for a more standardized approach like Prometheus, for every supported signal.
+into standard formats, the custom polling model is workable when you cannot
+reach for a more standardized approach like Prometheus, for every supported
+signal.
 
 For new designs, however, it should not be the default.
 
@@ -357,8 +366,8 @@ meaning you avoid reimplementing telemetry delivery logic for each distinct
 signal you support.
 
 Further, OTLP provides first-class support for structured data and metadata,
-helping it automatically preserve crucial context, such as linking specific
-log records to their parent trace IDs.
+helping it automatically preserve crucial context, such as linking specific log
+records to their parent trace IDs.
 
 From the user's perspective, it is practically plug-and-play. Any
 OTel-compatible backend can ingest the data in near real-time without requiring
