@@ -3,9 +3,8 @@ title: Pythonゼロコード・計装
 linkTitle: Python
 weight: 40
 cascade:
-  collector_vers: 0.160.0
-default_lang_commit: 635c7435bab2fbc655d08e5bb84b127e10242a7d
-drifted_from_default: true
+  collector_vers: 0.161.0
+default_lang_commit: b29b316cfb9928e89446b704502a07c17767005d
 cSpell:ignore: distro
 ---
 
