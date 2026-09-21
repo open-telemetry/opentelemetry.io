@@ -33,7 +33,7 @@ specification in June 2019 and its core conventions didn't reach stable until
 November 2023. Database started at around the same time and didn't get there
 until May 2025.
 
-{{< figure src="semconv-timeline.png" alt="Timeline comparing two semantic convention domains. HTTP enters the specification in June 2019, its core conventions reach stable in November 2023, and legacy attributes are listed in December 2023. Database enters in May 2019, goes through an attribute migration in May 2024, reaches release candidate in October 2024, and reaches stable in May 2025." caption="Timeline of the HTTP and database semantic conventions, from entering the specification to a stable set of core conventions" >}}
+{{< figure src="semconv-timeline.png" alt="Timeline comparing two semantic convention domains. HTTP enters the specification in June 2019, its core conventions reach stable in November 2023, and legacy attributes are listed in December 2023. Database enters in May 2019, goes through an attribute migration in May 2024, reaches release candidate in October 2024, and reaches stable in May 2025." caption="Timeline of the HTTP and database semantic conventions, from entering the specification to a stable set of core conventions." >}}
 
 The instrumentation libraries across the ecosystem then have to catch up, which
 makes a stable convention more of a starting point rather than a finish line.
@@ -93,7 +93,7 @@ or custom telemetry still needs to be visible.
 
 The Java SIG is already using this to track progress towards the Java agent's
 3.0 release. The database conventions have stabilized, and we've made progress
-on RPC and messaging. The Java agent adopted stable HTTP conventions in 2.0, but
+on RPC and messaging. The Java agent adopted stable HTTP conventions in [2.0](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v2.0.0), but
 the audit surfaced gaps that we fixed along the way. Seeing those gaps helps the
 SIG prioritize work and check its progress.
 
@@ -225,9 +225,9 @@ other compatibility claims, which will need their own checks.
 
 We have a published Java agent instrumentation catalog and workstreams in
 progress for other languages and components. What we still need to work through
-is how to make this information reusable across the ecosystem — and we'd like
-other SIGs thinking about the same question, and about what evidence would
-actually be useful to their users.
+is how to make this information reusable across the ecosystem. We'd like to hear
+from other SIGs thinking about the same question: what evidence would actually
+be useful to their users?
 
 If you maintain instrumentation, start with one component. What do its source,
 configuration, documentation, and tests already tell you? What could be
