@@ -9,8 +9,8 @@ cSpell:ignore: baeyens
 The OpenTelemetry project is excited to announce the 2026 OpenTelemetry
 Governance Committee (GC) election. Nominations are due by 16 October 2026 23:59
 AoE. The list of eligible candidates will be shared on 19 October 2026. Voting
-will take place between 26 October 2026 12:00 UTC and 28 October 2026 end of
-day AoE (29 October 2026 11:59 UTC), and the final election results will be
+will take place between 26 October 2026 12:00 UTC and 28 October 2026 end of day
+AoE (29 October 2026 11:59 UTC), and the final election results will be
 announced 30 October 2026.
 
 ## Vote!
@@ -33,8 +33,8 @@ be added to the roll continuously.
 Voting will be open between 26 October 2026 12:00 UTC and 28 October 2026, end
 of day, [Anywhere on Earth](https://en.wikipedia.org/wiki/Anywhere_on_Earth) (29
 October 2026 11:59 UTC) on
-[Helios Voting](https://vote.heliosvoting.org/helios/elections/9bad2b3c-d2df-4634-b801-a6926fdd2251/view); voters
-will need to sign in with their GitHub account.
+[Helios Voting](https://vote.heliosvoting.org/helios/elections/9bad2b3c-d2df-4634-b801-a6926fdd2251/view);
+voters will need to sign in with their GitHub account.
 
 For more information, see the
 [OpenTelemetry 2026 Governance Committee election](https://github.com/open-telemetry/community/blob/65ca9aa67c4790e2c39984f9356b349c87861ab8/elections/2026/governance-committee-election.md?from_branch=main).
