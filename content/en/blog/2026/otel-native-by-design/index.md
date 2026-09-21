@@ -303,12 +303,12 @@ Further reading:
 
 ## Designing your export model
 
-Across all three telemetry signals, the fundamental architectural question
-remains the same: will your platform enable the user to **pull** the data via an
-API that the user polls at an interval, or **push** it to a user-configured
-endpoint.
+Across the three essential telemetry signals, the fundamental architectural
+question remains the same: will your platform require the user to **poll an API 
+for the data** at regular intervals, or will it **deliver the telemetry 
+directly** to a user-defined endpoint?
 
-### The pull model (custom receivers)
+### The classic approach: custom polling APIs
 
 Pull is the traditional way platforms have exposed telemetry: you expose an API
 for it, and the user's observability stack (or a custom receiver they build) has
@@ -359,10 +359,13 @@ Instead of waiting to be asked, your service (or an OpenTelemetry Collector you
 run) actively exports logs, traces, and metrics directly to the user's
 configured endpoint using OTLP (over HTTP or gRPC).
 
-It uses one vendor-neutral, industry-standard protocol for all three signals.
-OTLP provides first-class support for structured data and metadata, meaning
-crucial context, such as linking specific logs to their parent trace IDs, is
-preserved automatically.
+It uses one vendor-neutral, industry-standard protocol for all telemetry,
+meaning you avoid re-implementing telemetry delivery logic for each distinct
+signal you support.
+
+Further, OTLP provides first-class support for structured data and metadata,
+helping it automatically preserve crucial context, such as linking specific
+log records to their parent trace IDs.
 
 From the user's perspective, it is practically plug-and-play. Any
 OTel-compatible backend can ingest the data in near real-time without requiring
