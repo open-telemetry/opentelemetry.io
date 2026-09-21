@@ -5,7 +5,7 @@ weight: 100
 aliases:
   - /docs/collector/trace-receiver
   - /docs/collector/building/receiver
-default_lang_commit: 11fecfb1d12e8682c9619b3a477eccb21c736b99
+default_lang_commit: 3899955672f4abc64710cad23217b76528d7a961
 # prettier-ignore
 cSpell:ignore: backendsystem crand debugexporter mapstructure pcommon pdata ptrace rcvr resourcespans struct tailtracer telemetrygen uber
 ---
@@ -1244,7 +1244,7 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
 `BackendSystem` エンティティには、[オペレーティングシステム](/docs/specs/semconv/resource/os/)と[クラウド](/docs/specs/semconv/resource/cloud/)に関連する情報を表すフィールドがあります。
 リソースセマンティック規約で指定された属性名と値を使用して、この情報をその `Resource` に表現します。
 
-リソースセマンティック規約のキーとよく知られた値は、OpenTelemetry セマンティック規約パッケージ [`go.opentelemetry.io/otel/semconv/v1.38.0`](https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.38.0) で定義されています。
+リソースセマンティック規約のキーとよく知られた値は、OpenTelemetry セマンティック規約パッケージ [`go.opentelemetry.io/otel/semconv/v1.43.0`](https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.43.0) で定義されています。
 
 `BackendSystem` インスタンスからフィールド値を読み取り、それらを属性として `pcommon.Resource` インスタンスに書き込む関数を作成しましょう。
 `tailtracer/model.go` ファイルを開き、次の関数を追加してください。
@@ -1299,7 +1299,7 @@ import (
 
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	"go.opentelemetry.io/otel/semconv/v1.38.0"
+	"go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 type Atm struct {
@@ -1684,7 +1684,7 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	"go.opentelemetry.io/otel/semconv/v1.38.0"
+	"go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 type Atm struct {
@@ -2079,7 +2079,7 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	 "go.opentelemetry.io/otel/semconv/v1.38.0"
+	 "go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 type Atm struct {

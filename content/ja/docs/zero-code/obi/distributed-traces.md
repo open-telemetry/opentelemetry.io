@@ -3,8 +3,7 @@ title: OBI による分散トレース
 linkTitle: 分散トレース
 description: OBI の分散トレースサポートについて学びます。
 weight: 22
-default_lang_commit: 84d7cf19e9f7f44ea889f8e148b37bc71116ef31
-drifted_from_default: true
+default_lang_commit: 126c82550c0d12caf7ab4258e1b1ab09d977fd8f
 cSpell:ignore: asyncio chanrecv chansend HPACK uvloop
 ---
 
@@ -161,14 +160,35 @@ RHEL 9.2 などの一部のパッチ済みカーネルでは、この機能が�
 
 この種類のコンテキスト伝搬は Go アプリケーションでのみサポートされており、eBPF のユーザーメモリ書き込みサポート (`bpf_probe_write_user`) を使用します。
 このアプローチの利点は、HTTP および HTTPS で動作することです。
-HTTP/2 と gRPC については、HTTPS を使用しない場合に新規接続でのみコンテキストを注入できます。
-再利用された HTTP/2/gRPC 接続はまだサポートされていません。
-`bpf_probe_write_user` の使用には OBI に `CAP_SYS_ADMIN` を付与するか、`privileged` コンテナとして実行するよう設定する必要があります。
+HTTP/2 と gRPC については、HTTPS を使用しない場合に新規および再利用された HTTP/2・gRPC 接続でコンテキストを注入できます。
+`bpf_probe_write_user` の使用には OBI に `CAP_SYS_ADMIN` を付与するか、privileged コンテナとして実行する必要があります。
 
-#### Go の手動計装との統合 {#integration-with-go-manual-instrumentation}
+#### Go Trace API を使用するアプリケーションの計装 {#instrument-applications-that-use-the-go-trace-api}
 
-OBI は [Auto SDK](/docs/zero-code/go/autosdk) を使用した手動スパンと自動的に統合されます。
-詳細は Auto SDK のドキュメントを参照してください。
+OBI v0.11.0 以降、OBI は SDK を登録せずに OpenTelemetry Go Trace API を使用するアプリケーションを計装できます。
+この統合が有効な場合、OBI は Trace API の呼び出しを検出し、生成された手動スパンを eBPF スパンとともにエクスポートします。
+すでに OpenTelemetry SDK を登録しているアプリケーションは、独自の SDK テレメトリーの管理とエクスポートを引き続き行います。
+`otel.SetTracerProvider(auto.TracerProvider())` の呼び出しを含め、グローバルな `TracerProvider` を登録すると、この自動的な有効化は抑止されます。
+
+OBI がこの統合を有効にするのは、以下の条件がすべて満たされた場合のみです。
+
+- アプリケーションがサポートされた OpenTelemetry モジュールバージョンとチェックサムの組み合わせを使用しており、モジュールの置き換えがないこと。
+- 実行可能ファイルとホストがサポートされた64ビットアーキテクチャを使用していること。
+- OBI が必要なシンボルとフィールドレイアウトを解決できること。
+- OBI に `bpf_probe_write_user` の使用権限があること。
+
+いずれかのチェックに失敗した場合、Auto SDK は無効のままとなり、グローバル Trace API を通じて生成されたスパンは記録されません。
+OBI の eBPF 計装は引き続き独立して動作します。
+OBI が Trace API の呼び出しを検出できる場合、スパン名、親子関係、ステータス、および一部のプリミティブ属性を含む部分的な合成スパンをエクスポートできます。
+これらのスパンには計装スコープ、イベント、リクエストされたスパンの種類は含まれません。
+
+OBI v0.11.0 では、Auto SDK を通じてエクスポートされる各スパンのエンコード済みペイロードは16 KiBを超えてはなりません。
+OBI は統合を有効化した際やオーバーサイズのペイロードを破棄した際に、メトリクスやログメッセージを出力しません。
+
+既知の制限と今後の作業には、[ヘッドサンプリング](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2793)、[コンテキストハンドオフ](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2794)、[外部およびリモートの親と `TraceState`](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2959)、[より大きなペイロードと破棄の可観測性](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2958)、および[ログエンリッチメント](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2932)が含まれます。
+
+サポートされるモジュールバージョン、チェックサム、アーキテクチャの組み合わせについては、[有効化の適格性マトリクス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.12.1/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation)を参照してください。
+上流の [Go Trace API の例](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/go-trace-api)と [Auto SDK](/docs/zero-code/go/autosdk) のドキュメントも参照してください。
 
 #### カーネル integrity モードの制限 {#kernel-integrity-mode-limitations}
 
@@ -217,6 +237,21 @@ OBI はトレース ID、親子関係、送信側のスパンを変更しませ�
 これらのプローブを無効にするには Go 固有のトレーサーを無効にしてください。チャネルリンク専用のオプションはありません。
 
 OBI は `OTEL_SPAN_LINK_COUNT_LIMIT` を尊重し、無効、重複、自己参照のリンクを破棄します。
+
+### Node.js の手動スパンのキャプチャ {#capture-nodejs-manual-spans}
+
+OBI v0.12.1 以降、OBI はアプリケーションが OpenTelemetry SDK を登録していない場合に、Node.js アプリケーションが `@opentelemetry/api` を通じて生成するスパンをキャプチャできます。
+OBI はこれらの手動スパンをトレースパイプラインを通じてエクスポートし、自動的にキャプチャされたサーバースパンと関連付けます。
+アプリケーションが SDK を登録している場合、OBI はスパンの生成とエクスポートをその SDK に委ねます。
+
+この機能はデフォルトで無効です。
+既存の Config v1 デプロイメントでは `nodejs.manual_spans: true` または `OTEL_EBPF_NODEJS_MANUAL_SPANS=true` で有効にできます。
+Config v2 は v0.12.1 時点で同等のフィールドを公開していません。
+この機能のためだけに Config v1 を維持するのではなく、デプロイメントの Config v2 への移行を継続してください。
+
+OBI が Node.js インスペクターに到達できる必要があり、プロセスが独自の `SIGUSR1` ハンドラーを登録してはなりません。
+CommonJS ローダーが到達できないバンドルされた `@opentelemetry/api` のコピーはキャプチャされません。
+自動クライアントスパンは現在、アクティブな手動スパンの子ではなく、同じサーバースパンの下で手動スパンの兄弟として扱われます。
 
 ### uvloop を使用した Python asyncio {#python-asyncio-with-uvloop}
 

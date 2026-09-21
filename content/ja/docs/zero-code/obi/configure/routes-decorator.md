@@ -3,9 +3,14 @@ title: OBI ルートデコレーターを設定する
 linkTitle: ルートデコレーター
 description: OBI がパイプラインの次のステージにデータを送信する前に、ルートデコレーターコンポーネントを設定します。
 weight: 50
-default_lang_commit: 2728c8fbf4f09cf3b8257a1b628a7631fc77d639
-drifted_from_default: true
+default_lang_commit: ec40cad3a7ca79640aa6a6f97264fbbe0d00aa87
 ---
+
+> [!NOTE]
+>
+> このページでは Config v1 のフィールド名と例を使用しています。
+> Config v2 については、[Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/)を参照してください。
+> 既存のファイルを変換するには、[移行ガイド](/docs/zero-code/obi/configure/migrate-to-config-v2/)を使用してください。
 
 YAML セクション: `routes`
 

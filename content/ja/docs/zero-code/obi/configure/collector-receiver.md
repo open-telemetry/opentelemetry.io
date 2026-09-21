@@ -3,10 +3,15 @@ title: OpenTelemetry Collector レシーバーとしての OBI
 linkTitle: Collector レシーバー
 weight: 75
 description: テレメトリーを一元的に処理するために、OBI を OpenTelemetry Collector のレシーバーコンポーネントとして使用する方法を学びます。
-default_lang_commit: 4aa05a4d65591e780952439f45415c597f3047dd
-drifted_from_default: true
+default_lang_commit: 12862017e85a7b88fbd194241af00f4dbd4ee75c
 cSpell:ignore: bpftool PERFMON
 ---
+
+> [!NOTE]
+>
+> OBI v0.11.0 以降は、OBI Collector レシーバーの Config v1 と Config v2 の両方をサポートしています。
+> このページの例では Config v1 を使用しています。
+> Config v2 でレシーバーを設定するには、[Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/#collector-receiver-configuration)を参照するか、[レシーバーの移行手順](/docs/zero-code/obi/configure/migrate-to-config-v2/#migrate-a-collector-receiver)に従ってください。
 
 v0.5.0 以降、OBI は [OpenTelemetry Collector](/docs/collector) 内でレシーバーコンポーネントとして動作できます。
 この統合により、OBI のゼロコード eBPF 計装の利点を享受しながら、Collector の強力な処理パイプラインを活用できます。

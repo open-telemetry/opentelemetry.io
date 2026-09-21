@@ -3,7 +3,7 @@ title: OTLPエクスポーター設定
 linkTitle: OTLPエクスポーター
 weight: 20
 aliases: [otlp-exporter-configuration]
-default_lang_commit: 8c95bffcf7243a916f79a0d525cf55b6a3d34ad7
+default_lang_commit: 98f910ef53d1e7f45002e7303b2af4da15282b21
 ---
 
 {{% include "env-var-note.md" %}}
@@ -111,6 +111,11 @@ OTLP/HTTP を使う場合は、通常 `v1/profiles` で終わります。
 ## ヘッダーの設定 {#header-configuration}
 
 以下の環境変数を使用すると、gRPC または HTTP リクエストの発信時に追加するヘッダーを、キーと値のペアのリストとして設定できます。
+
+ヘッダーは [W3C Baggage](https://www.w3.org/TR/baggage/#header-content) に準拠した形式で表現されます。
+たとえば `key1=value1,key2=value2` のように指定します。
+セミコロン区切りの[メタデータ](https://www.w3.org/TR/baggage/#property)はサポートされていません。
+詳細については、プロトコル仕様の[環境変数によるヘッダーの指定](/docs/specs/otel/protocol/exporter/#specifying-headers-via-environment-variables)を参照してください。
 
 ### `OTEL_EXPORTER_OTLP_HEADERS` {#otel_exporter_otlp_headers}
 

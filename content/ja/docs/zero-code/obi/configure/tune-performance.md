@@ -3,10 +3,16 @@ title: OBI のパフォーマンスを設定する
 linkTitle: パフォーマンスチューニング
 description: eBPF トレーサーコンポーネントが外部プロセスの HTTP および GRPC サービスを計装し、パイプラインの次のステージに転送するトレースを作成する方法を設定します。
 weight: 90
-default_lang_commit: 4c8d57fea0147ce76633951315c40a27c55fad2e
-drifted_from_default: true
+default_lang_commit: 36a8a53c4a20a6d7a706539e9f3b4887327be781
 cSpell:ignore: qdisc
 ---
+
+> [!NOTE]
+>
+> このページでは Config v1 のフィールド名と設定例を使用しています。
+> Config v2 では、これらの設定を `capture.engine` およびプロトコル固有のセクションで構成してください。
+> 詳細は [Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/) を参照してください。
+> 既存のファイルを変換するには、[移行ガイド](/docs/zero-code/obi/configure/migrate-to-config-v2/) を使用してください。
 
 eBPF トレーサーを使用して、OBI のパフォーマンスを細かく調整できます。
 

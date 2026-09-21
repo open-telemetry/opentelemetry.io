@@ -10,8 +10,9 @@ info here.
 
 **Environment Setup:**
 
-- Install the Node.js LTS version given by `.nvmrc`: Use `nvm install` or
-  `nvm install lts && nvm use lts`
+- Install the Node.js version pinned in `.nvmrc`: `nvm install` (for Windows,
+  see
+  [Development setup](https://opentelemetry.io/docs/contributing/development/))
 - If Puppeteer download fails due to network issues: Set
   `export PUPPETEER_SKIP_DOWNLOAD=true`
 - Clone repository:

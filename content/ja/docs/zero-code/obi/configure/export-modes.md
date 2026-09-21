@@ -3,9 +3,14 @@ title: OBI のエクスポートモードを構成する
 linkTitle: エクスポートモード
 description: OTLP エンドポイントへ直接データをエクスポートするように OBI を構成する
 weight: 1
-default_lang_commit: dc2fb5771163265cb804a39b1dacc536b95bdb96
-drifted_from_default: true
+default_lang_commit: 7279d56948a75400445c97086d7b1e0da0dd0438
 ---
+
+> [!NOTE]
+>
+> このページでは Config v1 のフィールド名と例を使用しています。
+> Config v2 については、[Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/)を参照してください。
+> 既存のファイルを変換するには、[移行ガイド](/docs/zero-code/obi/configure/migrate-to-config-v2/)を使用してください。
 
 Direct モードでは、OBI は OpenTelemetry protocol（OTLP）を使用して、メトリクスとトレースをリモートエンドポイントへ直接プッシュします。
 

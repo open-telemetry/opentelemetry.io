@@ -1,8 +1,7 @@
 ---
 title: テスト
 description: チェックとテストの戦略、プロセス、テストページ。
-default_lang_commit: ee923995f520211ef16f8744ce0a9b28a24bcca9
-drifted_from_default: true
+default_lang_commit: d6988a2bfec7521e701d8a15d36696cbb35a129b
 ---
 
 このセクションには、ウェブサイトのテストやデプロイ後のライブチェックで使用されるチェックとテストの戦略、プロセス、テストページが含まれています。
@@ -23,6 +22,10 @@ drifted_from_default: true
   `public/` がない場合にスキップする規約に従ってください。
   これらは意図的に `test:compound-tests`（ビルドを行わない）から除外されており、かわりに CI で既存のビルドアーティファクトを再利用するジョブで実行されます。
 - **`test:*:live`** スクリプトは、デプロイ済みのライブサイトに対するオプションのチェックです。
+
+複合テストスイートのうち、`test:local-tools` は[サプライチェーン監査](../build/dependencies/#audit)も実行します。
+コミット済みのインストール強化制御がリグレッションした場合に失敗します。
+発生時の対処方法はそのページに記載されています。
 
 ## テストアサーション {#test-assertions}
 

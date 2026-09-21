@@ -1,11 +1,16 @@
 ---
-title: OBI 設定 YAML の例
-linkTitle: YAML の例
-description: OBI 設定 YAML の例
+title: OBI Config v1 YAML の例
+linkTitle: Config v1 YAML の例
+description: OBI の Config v1 YAML ファイルの例
 weight: 100
-default_lang_commit: f7dab5cfc4d44a8c788b7e02d07ec1e1d84e3845
-drifted_from_default: true
+default_lang_commit: 12862017e85a7b88fbd194241af00f4dbd4ee75c
 ---
+
+> [!NOTE]
+>
+> このページでは Config v1 のフィールド名と例を使用しています。
+> Config v2 については [Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/)を参照してください。
+> 既存のファイルを変換するには[移行ガイド](/docs/zero-code/obi/configure/migrate-to-config-v2/)を参照してください。
 
 ## YAML ファイルの例 {#yaml-file-example}
 
