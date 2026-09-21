@@ -73,9 +73,6 @@ Explorer brings that information together in a version-specific view. For Java
 instrumentation, you can inspect its described telemetry and configuration
 options, then compare releases to understand what an upgrade could change.
 
-That tells you what the instrumentation describes. To find out whether it
-delivers that telemetry in practice, we need to run it.
-
 ## What happens when we look across implementations?
 
 Knowing what one component describes is a start. To understand where
