@@ -7,7 +7,6 @@ author: >-
 issue: 11806
 sig: Comms
 body_class: otel-figure-captions
-# prettier-ignore
 cSpell:ignore: Isaika Karimot workstreams
 ---
 
