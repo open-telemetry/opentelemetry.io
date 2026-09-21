@@ -45,7 +45,7 @@ OpenTelemetry defines four signal types, all carried over the the standard
 - **[Traces](/docs/concepts/signals/traces/):** Distributed traces and spans so
   users can see request flows across services and correlate them with logs.
 - **[Metrics](/docs/concepts/signals/metrics/):** Counters, gauges, and
-  histograms (e.g. request rates, latency, error rates).
+  histograms (e.g., request rates, latency, error rates).
 - **[Profiles](/docs/concepts/signals/profiles/):** samples that show where
   applications consume resources during execution.
 
@@ -81,7 +81,7 @@ A solid export story has a few clear properties for every signal you support:
   can integrate using standard [OTel SDKs](/docs/languages/) and the OTLP
   protocol instead of proprietary APIs.
 - **Rich context preserved:** Exported data should include metadata, timestamps,
-  and trace/span correlation where available (e.g. log records linked to trace
+  and trace/span correlation where available (e.g., log records linked to trace
   IDs), so users can debug and analyze data in their own backend without losing
   context.
 - **Support for Semantic Conventions:** Adherence to the
@@ -100,12 +100,12 @@ telemetry. Getting this straight helps you choose the right approach.
 
 ### Self-hosted software
 
-Your product is an application or system (e.g. an identity server, a service
+Your product is an application or system (e.g., an identity server, a service
 mesh, a database) that customers install and run in _their_ environment (their
 data center, their cloud, their Kubernetes cluster).
 
 Here, you **instrument your product** with OpenTelemetry. When the customer
-configures an endpoint (e.g. via
+configures an endpoint (e.g., via
 [environment variables](/docs/specs/otel/configuration/sdk-environment-variables/)
 or a config file), your application exports telemetry from the process they're
 running.
@@ -121,7 +121,7 @@ the destination. _Examples: Keycloak, Kuma._
 ### Cloud platforms
 
 Your product is a platform where customers deploy their _own_ apps or use your
-managed services (e.g. PaaS, serverless, API gateway). The workload runs on
+managed services (e.g., PaaS, serverless, API gateway). The workload runs on
 _your_ infrastructure.
 
 Here, you add a **platform feature,** such as "Telemetry Drains" or
@@ -327,7 +327,7 @@ path. But it comes with real costs:
 - Achieving near real-time delivery becomes significantly harder, which is often
   a critical requirement for latency-sensitive signals like traces and metrics.
 
-For logs, a pull-based implementation often looks like this (e.g.
+For logs, a pull-based implementation often looks like this (e.g.,
 [CloudWatch Logs–style](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/8bee89f9928b4b1f81700f9ab0e5886d428bfae6/receiver/awscloudwatchreceiver/logs.go#L293)):
 
 ```text
@@ -352,7 +352,7 @@ signal.
 
 For new designs, however, it should not be the default.
 
-### The push model (OTLP)
+### The push model: OTLP
 
 For developer-focused, real-time telemetry, OTLP push has become the dominant
 pattern.
