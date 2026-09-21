@@ -37,8 +37,8 @@ choosing.](cover.png)
 
 ## The four observability signals
 
-OpenTelemetry defines four signal types, all carried over the same
-[OTLP protocol](/docs/specs/otlp/):
+OpenTelemetry defines four signal types, all carried over the the standard
+[OpenTelemetry Protocol (OTLP)](/docs/specs/otlp/):
 
 - **[Logs](/docs/concepts/signals/logs/):** Event records, request/access logs,
   and application logs with timestamps and metadata.
