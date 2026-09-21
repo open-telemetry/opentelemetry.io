@@ -185,7 +185,7 @@ can instrument any code that runs on the JVM, including code loaded dynamically
 or from external sources. However, it comes with some overhead due to the
 bytecode transformation process.
 
-In real implementations, [ByteBuddy](https://bytebuddy.net/#/) is the go-to
+In real implementations, [ByteBuddy](https://bytebuddy.net/) is the go-to
 library for bytecode instrumentation in Java, providing a powerful and flexible
 API for creating Java agents. It abstracts away much of the complexity of
 bytecode manipulation and provides a clean, type-safe way to define

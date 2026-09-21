@@ -1,19 +1,19 @@
 # cSpell:ignore rdkafka
-title: OpenTelemetry rdkafka Instrumentation
+title: opentelemetry-instrumentation-rdkafka
 registryType: instrumentation
 language: ruby
 tags:
   - rdkafka
   - instrumentation
   - ruby
-license: Apache 2.0
-description:
-  The rdkafka instrumentation is a community-maintained instrumentation for
-  rdkafka, a client library for Apache Kafka.
+license: Apache-2.0
+description: Rdkafka instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/rdkafka
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-rdkafka/v0.10.0/instrumentation/rdkafka
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-rdkafka/0.10.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2022-10-27
 package:
   registry: gems

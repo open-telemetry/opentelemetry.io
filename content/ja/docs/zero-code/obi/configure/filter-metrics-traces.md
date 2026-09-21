@@ -3,8 +3,14 @@ title: 属性値でメトリクスとトレースをフィルタリングする
 linkTitle: データのフィルタリング
 description: 属性値でメトリクスとトレースをフィルタリングするように OBI を設定する
 weight: 40
-default_lang_commit: f7dab5cfc4d44a8c788b7e02d07ec1e1d84e3845
+default_lang_commit: 5ccd63611a43a8c3b4a243dc995fb3755d46eafa
 ---
+
+> [!NOTE]
+>
+> このページでは Config v1 のフィールド名と例を使用しています。
+> Config v2 については [Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/)を参照してください。
+> 既存のファイルを変換するには[移行ガイド](/docs/zero-code/obi/configure/migrate-to-config-v2/)を使用してください。
 
 属性の値に基づいて、レポートするメトリクスやトレースを非常に具体的なイベントタイプに限定したい場合があります(たとえば、TCP トラフィックのみをレポートするようにネットワークメトリクスをフィルタリングする、など)。
 

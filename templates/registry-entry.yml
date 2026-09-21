@@ -1,7 +1,7 @@
 # cSpell:ignore # add words unknown to cspell, remove this line if not required
 title: My OpenTelemetry Integration # the name of your project
 registryType: <exporter/core/instrumentation> # See https://opentelemetry.io/ecosystem/registry/adding/#registry-types for all possible values and definitions
-language: <js/go/dotnet/etc. or collector for collector plugins>
+language: <js/go/dotnet/etc. or collector for collector plugins> # use js for TypeScript projects
 tags:
   - <other useful search terms>
 urls:

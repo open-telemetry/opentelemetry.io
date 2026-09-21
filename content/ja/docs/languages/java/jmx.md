@@ -2,8 +2,7 @@
 title: JMX メトリクス
 weight: 14
 description: OpenTelemetry を使用して JMX MBean からメトリクスを収集します
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a # patched
-drifted_from_default: true
+default_lang_commit: 74fa543b9ca16f44324ed611f0bed4ebef7899ad
 cSpell:ignore: jconsole jmxremote mbean visualvm wildfly
 ---
 
@@ -140,7 +139,7 @@ Java エージェントと同じプロパティ（ターゲットシステム、
 
 詳細は [JMX Scraper ドキュメント](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper) を参照してください。
 
-> [!NOTE] 非推奨となった JMX Metric Gatherer から移行する場合は、[移行ガイド](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migrating-from-jmx-metric-gatherer) を参照してください。
+> [!NOTE] 非推奨となった JMX Metric Gatherer から移行する場合は、[移行ガイド](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migration-from-jmx-gatherer) を参照してください。
 
 ## カスタムメトリクスマッピング {#custom-metric-mappings}
 
@@ -222,7 +221,7 @@ java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://myapp.example.com:9999
 ## 追加リソース {#additional-resources}
 
 - [JMX Scraper ドキュメント](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper) - 完全な設定リファレンスと例
-- [JMX Scraper 移行ガイド](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migrating-from-jmx-metric-gatherer) - 非推奨となった JMX Metric Gatherer からの移行
+- [JMX Scraper 移行ガイド](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migration-from-jmx-gatherer) - 非推奨となった JMX Metric Gatherer からの移行
 - [JMX メトリクス（Java エージェント）](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md) - Java エージェントの JMX メトリクスドキュメント
 - [定義済みターゲットシステム](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference) - 人気のあるフレームワーク向けの組み込みメトリクスセット
 - [Java エージェントドキュメント](/docs/zero-code/java/agent/) - 一般的な Java エージェントの設定

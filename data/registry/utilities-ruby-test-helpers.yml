@@ -1,0 +1,19 @@
+title: opentelemetry-test-helpers
+registryType: utilities
+language: ruby
+tags:
+  - utilities
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-test-helpers/v0.9.1/test_helpers
+  docs: https://rubydoc.info/gems/opentelemetry-test-helpers/0.9.1
+  website: https://github.com/open-telemetry/opentelemetry-ruby
+license: Apache-2.0
+description: A collection of helpers for testing OpenTelemetry Ruby
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09
+package:
+  registry: gems
+  name: opentelemetry-test-helpers
+  version: 0.9.1

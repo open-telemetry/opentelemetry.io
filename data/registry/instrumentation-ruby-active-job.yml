@@ -1,16 +1,18 @@
-title: ActiveJob Instrumentation
+title: opentelemetry-instrumentation-active_job
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
   - active_job
-license: Apache 2.0
-description: ActiveJob instrumentation for Ruby.
+license: Apache-2.0
+description: ActiveJob instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/active_job
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-active_job/v0.13.0/instrumentation/active_job
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-active_job/0.13.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems

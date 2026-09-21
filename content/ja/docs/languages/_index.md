@@ -5,7 +5,7 @@ weight: 250
 aliases: [/docs/instrumentation]
 redirects:
   - { from: 'net/*', to: 'dotnet/:splat' }
-default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
+default_lang_commit: 0c6808821dcfca1219d422dc752bdd071aaede4b
 ---
 
 OpenTelemetryのコード[計装][instrumentation]は、以下の[ステータスとリリース](#status-and-releases)の表に記載されている言語でサポートされています。
@@ -18,7 +18,7 @@ Kubernetesを使用している場合は、[OpenTelemetry Operator for Kubernete
 
 ## ステータスとリリース {#status-and-releases}
 
-OpenTelemetryの主要な機能コンポーネントの現在のステータスは以下の通りです。
+OpenTelemetryの主要な機能コンポーネントの現在の[ステータス](/docs/specs/otel/versioning-and-stability/)は以下の通りです。
 
 > [!WARNING]
 >

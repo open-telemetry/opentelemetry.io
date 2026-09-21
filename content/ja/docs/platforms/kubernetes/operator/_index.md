@@ -10,8 +10,7 @@ redirects:
   - { from: /docs/operator/*, to: ':splat' }
   - { from: /docs/k8s-operator/*, to: ':splat' }
   - { from: /docs/platforms/kubernetes-operator/*, to: ':splat' }
-default_lang_commit: 8db50c269e4c19d13ff6e32e2cf16a872e45402a
-drifted_from_default: true
+default_lang_commit: 6d5bce8500b2a358ae30dd1343770bc83ac325e7
 ---
 
 ## はじめに {#introduction}
@@ -21,7 +20,7 @@ drifted_from_default: true
 Operatorは以下を管理します。
 
 - [OpenTelemetryコレクター](https://github.com/open-telemetry/opentelemetry-collector)
-- [OpenTelemetryの計装ライブラリを使用したワークロードの自動計装](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection)
+- [OpenTelemetryの計装ライブラリを使用したワークロードの自動計装](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/auto-instrumentation/README.md)
 
 ## Getting started {#getting-started}
 

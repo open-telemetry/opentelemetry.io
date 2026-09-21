@@ -21,7 +21,7 @@ locales:
     maintainers: []
     approvers: [badhon495, sajibAdhi]
   es:
-    maintainers: [theletterf]
+    maintainers: [immavalls]
     approvers: [krol3, mx-psi]
   fr:
     maintainers: [chalin, codeboten, dmathieu, marcalff]
@@ -45,5 +45,5 @@ locales:
     maintainers: []
     approvers: []
   zh:
-    maintainers: []
-    approvers: [chluknight1224, my-git9, reyang, windsonsea]
+    maintainers: [reyang]
+    approvers: [chluknight1224, my-git9, windsonsea]

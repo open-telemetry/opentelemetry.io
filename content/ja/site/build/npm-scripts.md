@@ -4,22 +4,33 @@ description: >-
   OpenTelemetry ウェブサイトのビルド、配信、検証、メンテナンスのための NPM スクリプト。
 weight: 20
 todo: Keep table entries sorted
-default_lang_commit: e87b1c4543d287bc4509225d102588c0f2670eae
-drifted_from_default: true
+default_lang_commit: 55db3f6bcc48358f9de9cd97f9132d1e3322ba48
 ---
 
-スクリプトの定義はリポジトリルートの [`package.json`](https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json) にあります。
-`npm run <script-name>` で任意のスクリプトを実行できます。
-名前が `_` で始まるスクリプトは内部ヘルパーであり、直接実行することを想定していません。
+スクリプトの定義はリポジトリルートの [`package.json`][] にあります。
+スクリプトを実行するには、`npm run` _`SCRIPT_NAME`_ を使用してください。
 
-> [!NOTE] デフォルトと `:all` スクリプトバリアント
->
-> **`check`**、**`fix`**、**`test`** スクリプトは、各アクションでもっとも一般的に必要とされるサブスクリプトを実行します。
-> すべてのサブスクリプトを実行するには、**`*:all`** バリアントを使用してください。
->
-> - `check:all`
-> - `fix:all`
-> - `test:all`
+## 命名規則 {#nomenclature}
+
+- **内部スクリプト**
+  - 名前が `_` で始まるスクリプトは内部ヘルパーであり、直接実行することを想定していません。
+  - `NAME::pre` および `NAME::post` スクリプトも同様です。
+    これらは `NAME` の明示的に呼び出される前処理・後処理ステップです。
+- **デフォルトと `:all` スクリプトバリアント**
+  - **`check`**、**`fix`**、**`test`** スクリプトは、各アクションでもっとも一般的に必要とされるサブスクリプトを実行します。
+  - **`*:all`** バリアント `check:all`、`fix:all`、`test:all` は、より広範なサブスクリプトセットを実行します。
+    各バリアントのテーブルエントリにスコープが記載されています。
+
+## 依存関係のインストールと更新 {#installing-and-updating-dependencies}
+
+| スクリプト        | 説明                                                                                                              |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `ci:min`          | CI 用の [Lock-exact inert install][]：ライフサイクルスクリプトなし。                                              |
+| `ci:prepare`      | `ci:min` 実行後のセットアップ：[ピンされた Hugo バイナリの取得][fetch the pinned Hugo binary]、そして `prepare`。 |
+| `install:safe`    | [Lock-exact local setup][]：inert インストール、そして `ci:prepare`。                                             |
+| `prepare`         | インストールステップ：`get:submodule` を実行し、Docsy の [lock-exact theme dependency install][]。                |
+| `update:hugo`     | 最新の hugo-extended をインストールし、バンプに伴う [`allowScripts` approval][] を更新します。                    |
+| `update:packages` | npm-check-updates を実行して依存関係を更新します（[release cooldown][] の対象）。                                 |
 
 ## ビルドと配信 {#build-and-serve}
 
@@ -32,55 +43,54 @@ drifted_from_default: true
 | `build`            | サイトをビルドします。デフォルトはリーンです。[Build kinds][] を参照。 |
 | `clean`            | `make clean` を実行します。                                            |
 | `serve:hugo`       | インメモリレンダリングで Hugo サーバーを起動します。                   |
-| `serve:netlify`    | Hugo を使用して Netlify Dev を起動します。                             |
 | `serve`            | Hugo 開発サーバーを起動します（デフォルト、フルレンダリング）。        |
 
 ## チェック {#checking}
 
-| スクリプト             | 説明                                                                     |
-| ---------------------- | ------------------------------------------------------------------------ |
-| `check:all`            | すべてのチェックスクリプトを順番に実行します。                           |
-| `check:code-excerpts`  | コード抜粋をチェックし、更新が必要な場合は失敗します。                   |
-| `check:codeowners`     | CODEOWNERS のロケールセクションがレジストリと一致することを検証します。  |
-| `check:collector-sync` | collector-sync チェックを実行します。                                    |
-| `check:expired`        | 期限切れのコンテンツ（フロントマターに基づく）をリストします。           |
-| `check:filenames`      | [ファイル名の検証と廃止されたファイル/フォルダの検出][fn]。              |
-| `check:format`         | Prettier と prose-wrap のチェック。                                      |
-| `check:i18n`           | ローカリゼーションフロントマター（`default_lang_commit`）を検証します。  |
-| `check:l10n`           | ローカリゼーションチェックを実行します。                                 |
-| `check:links:diff`     | 変更されたファイルのみの Lychee リンクチェック（パイロット）。           |
-| `check:links:htmltest` | htmltest でサイト全体をリンクチェックします。最初にリーンビルドを実行。  |
-| `check:links:lychee`   | Lychee でサイト全体をリンクチェックします。最初にリーンビルドを実行。    |
-| `check:links`          | サイト全体をリンクチェック（htmltest、デフォルト）。最初にリーンビルド。 |
-| `check:markdown:specs` | `tmp/` 内の仕様フラグメントの Markdown lint。                            |
-| `check:markdown`       | Markdown lint（コンテンツおよびプロジェクト）。                          |
-| `check:registry`       | `data/registry/` 配下のレジストリ YAML を検証します。                    |
-| `check:spelling`       | コンテンツ、データ、レイアウト Markdown に対する cspell。                |
-| `check:text`           | コンテンツとデータに対する textlint。                                    |
-| `check`                | もっとも一般的に必要なチェックスクリプトを順番に実行します。             |
+| スクリプト             | 説明                                                                          |
+| ---------------------- | ----------------------------------------------------------------------------- |
+| `check:all`            | すべてのチェックスクリプトを順番に実行します。                                |
+| `check:code-excerpts`  | コード抜粋をチェックし、更新が必要な場合は失敗します。                        |
+| `check:codeowners`     | CODEOWNERS のロケールセクションがレジストリと一致することを検証します。       |
+| `check:collector-sync` | collector-sync チェックを実行します。                                         |
+| `check:expired`        | 期限切れのコンテンツ（フロントマターに基づく）をリストします。                |
+| `check:filenames`      | [ファイル名の検証と廃止されたファイル/フォルダの検出][fn]。                   |
+| `check:format`         | Prettier と prose-wrap のチェック。                                           |
+| `check:i18n`           | ローカリゼーションフロントマター（`default_lang_commit`）を検証します。       |
+| `check:l10n`           | ローカリゼーションチェックを実行します。                                      |
+| `check:links:diff`     | 変更されたファイルのみの Lychee リンクチェック。                              |
+| `check:links:internal` | オフラインリンクチェック（内部リンクのみ）。最初にリーンビルドを実行。        |
+| `check:links`          | Lychee でサイト全体を[リンクチェック][link check]。最初にリーンビルドを実行。 |
+| `check:markdown:specs` | `tmp/` 内の仕様フラグメントの Markdown lint。                                 |
+| `check:markdown`       | Markdown lint（コンテンツおよびプロジェクト）。                               |
+| `check:registry`       | `data/registry/` 配下のレジストリ YAML を検証します。                         |
+| `check:spelling`       | コンテンツ、データ、レイアウト Markdown に対する cspell。                     |
+| `check:text`           | コンテンツとデータに対する textlint。                                         |
+| `check`                | もっとも一般的に必要なチェックスクリプトを順番に実行します。                  |
 
 ## 修正 {#fixing}
 
-| スクリプト                | 説明                                                                        |
-| ------------------------- | --------------------------------------------------------------------------- |
-| `fix`                     | もっとも一般的に必要な修正スクリプトを実行します。                          |
-| `fix:code-excerpts`       | コード抜粋を更新します。                                                    |
-| `fix:codeowners`          | レジストリから CODEOWNERS ロケールセクションを再生成します。                |
-| `fix:all`                 | すべての修正スクリプトを実行します。                                        |
-| `fix:format`              | Prettier を適用し、末尾の空白を削除します。                                 |
-| `fix:format:staged`       | ステージングされたファイルのみをフォーマットします。                        |
-| `fix:i18n`                | i18n フロントマターを追加/修正します（`fix:i18n:new`、`fix:i18n:status`）。 |
-| `fix:l10n`                | ローカリゼーションの修正を適用します。                                      |
-| `fix:markdown`            | Markdown lint の問題と末尾の空白を修正します。                              |
-| `fix:refcache`            | refcache をプルーンし、リンクチェックを再実行します（refcache を更新）。    |
-| `fix:refcache:refresh`    | カウントに基づいて refcache をプルーンします。                              |
-| `fix:submodule`           | サブモジュールのリビジョンをピンします（`pin:submodule` と同じ）。          |
-| `fix:filenames`           | [ファイルのリネームと廃止されたファイル/フォルダの削除][fn]。               |
-| `fix:dict`                | cspell ワードリストをソートし、フロントマターを正規化します。               |
-| `fix:expired`             | `check:expired` で報告されたファイルを削除します。                          |
-| `fix:text`                | --fix 付きで textlint を実行します。                                        |
-| `fix:collector-sync:lint` | --fix 付きで collector-sync 内の ruff を実行します。                        |
-| `format`                  | Prettier write のエイリアス（コンテンツおよび nowrap パス）。               |
+| スクリプト                    | 説明                                                                        |
+| ----------------------------- | --------------------------------------------------------------------------- |
+| `fix`                         | もっとも一般的に必要な修正スクリプトを実行します。                          |
+| `fix:code-excerpts`           | コード抜粋を更新します。                                                    |
+| `fix:codeowners`              | レジストリから CODEOWNERS ロケールセクションを再生成します。                |
+| `fix:all`                     | すべての修正スクリプトを実行します。                                        |
+| `fix:format`                  | Prettier を適用し、末尾の空白を削除します。                                 |
+| `fix:format:staged`           | ステージングされたファイルのみをフォーマットします。                        |
+| `fix:i18n`                    | i18n フロントマターを追加/修正します（`fix:i18n:new`、`fix:i18n:status`）。 |
+| `fix:l10n`                    | ローカリゼーションの修正を適用します。                                      |
+| `fix:link-cache`              | リンクチェックを実行し、コミット済みの [`.lycheecache`][] を更新します。    |
+| `fix:link-cache:double-check` | [ブラウザプローブで失敗したリンクを再検証します][dc]。                      |
+| `fix:link-cache:refresh`      | もっとも古いキャッシュエントリをプルーンし、`fix:link-cache` を実行します。 |
+| `fix:markdown`                | Markdown lint の問題と末尾の空白を修正します。                              |
+| `fix:submodule`               | サブモジュールの更新、再ピン、リビジョンの一覧表示。                        |
+| `fix:filenames`               | [ファイルのリネームと廃止されたファイル/フォルダの削除][fn]。               |
+| `fix:dict`                    | cspell ワードリストをソートし、フロントマターを正規化します。               |
+| `fix:expired`                 | `check:expired` で報告されたファイルを削除します。                          |
+| `fix:text`                    | --fix 付きで textlint を実行します。                                        |
+| `fix:collector-sync:lint`     | --fix 付きで collector-sync 内の ruff を実行します。                        |
+| `format`                      | Prettier write のエイリアス（コンテンツおよび nowrap パス）。               |
 
 ## サブモジュールとコンテンツ {#submodules-and-content}
 
@@ -95,64 +105,59 @@ drifted_from_default: true
 
 ## テストと CI {#test-and-ci}
 
-| スクリプト                 | 説明                                                                             |
-| -------------------------- | -------------------------------------------------------------------------------- |
-| `diff:check`               | ワーキングツリーにコミットされていない変更がある場合に警告します。               |
-| `diff:fail`                | ワーキングツリーに変更がある場合に失敗します（例: ビルド後）。                   |
-| `fix-and-test:all`         | すべての修正（i18n を含む）を実行し、その後チェック。リンクチェックは1回。[^fat] |
-| `netlify-build:preview`    | `build:preview` を実行し、その後 `diff:check`。                                  |
-| `netlify-build:production` | `build:production` を実行し、その後 `diff:check`。                               |
-| `test-and-fix`             | 修正スクリプト（i18n/refcache/submodule を除く）を実行し、その後チェック。       |
-| `test:all`                 | `test:base` を実行し、その後 `test:compound-tests`。                             |
-| `test:base`                | 基本テスト（`check` と同じ）。                                                   |
-| `test:collector-sync`      | collector-sync テスト。                                                          |
-| `test:compound-tests`      | 複合 `test:*-*` スクリプトを実行します。[^categories]                            |
-| `test:edge-functions:live` | 任意の `node:test` ライブスイート。`--help` をサポート。                         |
-| `test:edge-functions`      | `netlify/edge-functions/**/*.test.ts` に対する Node テストランナー。             |
-| `test:local-tools`         | `scripts/**/*.test.mjs` に対する Node テストランナー。[^categories]              |
-| `test:local-tools:lychee`  | `test:local-tools` の lychee バイナリスライス（注記を参照）。                    |
-| `test:public`              | ビルドされたサイトに対して `tests/public/` チェックを実行します。[^categories]   |
-| `test`                     | もっとも一般的に必要なテストを実行します。                                       |
+| スクリプト                 | 説明                                                                              |
+| -------------------------- | --------------------------------------------------------------------------------- |
+| `diff:check`               | ワーキングツリーにコミットされていない変更がある場合に警告します。                |
+| `diff:fail`                | ワーキングツリーに変更がある場合に失敗します（例: ビルド後）。                    |
+| `fix-and-test:all`         | すべての修正（i18n を含む）を実行し、その後チェック。リンクチェックは1回。[^fat]  |
+| `is:clean`                 | Git のワーキングツリーに未追跡ファイルを含む変更がある場合に失敗します。          |
+| `netlify-build:preview`    | Netlify デプロイプレビューをビルドします。                                        |
+| `netlify-build:production` | Netlify プロダクションサイトをビルドします。                                      |
+| `test-and-fix`             | 修正スクリプト（i18n/link-cache/submodule を除く）を実行し、その後チェック。      |
+| `test:all`                 | `test:base` を実行し、その後 `test:compound-tests`。                              |
+| `test:base`                | 基本テスト（`check` と同じ）。                                                    |
+| `test:collector-sync`      | collector-sync テスト。                                                           |
+| `test:compound-tests`      | 複合 `test:*-*` スクリプトを実行します。[^categories]                             |
+| `test:double-check:live`   | [double-check プローブ][dc]のライブスモークチェック。                             |
+| `test:edge-functions:live` | 任意の `node:test` ライブスイート。`--help` をサポート。                          |
+| `test:edge-functions`      | `netlify/edge-functions/**/*.test.ts` に対する Node テストランナー。              |
+| `test:local-tools`         | `scripts/**/*.test.mjs` に対する Node テストランナー。[^categories]               |
+| `test:local-tools:lychee`  | `test:local-tools` の lychee バイナリスライス。バイナリ不在時はスキップされます。 |
+| `test:public`              | ビルドされたサイトに対して `tests/public/` チェックを実行します。[^categories]    |
+| `test`                     | もっとも一般的に必要なテストを実行します。                                        |
 
 [^categories]:
     これらのスクリプトはテストスクリプトの命名規則に従います。
     [テストカテゴリ](/site/testing/#test-categories)を参照してください。
 
 [^fat]:
-    ハウスキーピングのデフォルト: コンテンツ修正の後に `fix:refcache`（プルーンしてからリンクチェック）を実行します。
+    ハウスキーピングのデフォルト: コンテンツ修正の後に `fix:link-cache`（リンクチェックを実行し、リンクキャッシュを更新）を実行します。
     keep-going `all` ランナーを使用してすべての修正を記録します。
-    チェックフェーズは `check:links`（`fix:refcache` がカバー）と `check:i18n`（`fix:i18n` がドリフトステータスを記録した後は冗長）を除外します。
+    チェックフェーズは `check:links`（`fix:link-cache` がカバー）と `check:i18n`（`fix:i18n` がドリフトステータスを記録した後は冗長）を除外します。
     [ハウスキーピング](../ci-workflows/#housekeeping)を参照してください。
 
 ## ユーティリティ {#utilities}
 
-| スクリプト                     | 説明                                                                         |
-| ------------------------------ | ---------------------------------------------------------------------------- |
-| `seq`                          | 指定されたスクリプト名を順番に実行します。最初の失敗で終了。                 |
-| `all`                          | 指定されたすべてのスクリプトを実行し、いずれかが失敗した場合は失敗で終了。   |
-| `locale-auto-merge`            | [ロケール自動マージヘルパー CLI][locale-auto-merge]（`--help`）。            |
-| `prepare`                      | インストールステップ: `get:submodule` を実行し、Docsy テーマの npm install。 |
-| `prebuild:*`                   | `build*` の前に実行されるフック。各フックは `_prebuild` を実行。             |
-| `update:hugo`                  | 最新の hugo-extended をインストールします。                                  |
-| `update:packages`              | npm-check-updates を実行して依存関係を更新します。                           |
-| `generate:config:links`        | `.htmltest.base.yml` から git 無視の `.htmltest.yml` を生成します。          |
-| `generate:config:links:lychee` | `lychee.base.toml` から git 無視の `lychee.toml` を生成します。              |
-| `log:build`、`log:check:links` | 対応するスクリプトを実行し、出力を `tmp/` に tee します。                    |
+| スクリプト                     | 説明                                                                                             |
+| ------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `all`                          | 指定されたすべてのスクリプトを実行し、失敗があっても続行。いずれかが失敗した場合は非ゼロで終了。 |
+| `generate:config:links`        | `lychee.base.toml` とページフロントマターから git 無視の `lychee.toml` を生成します。            |
+| `locale-auto-merge`            | [ロケール自動マージヘルパー CLI][locale-auto-merge]（`--help`）。                                |
+| `log:build`、`log:check:links` | 対応するスクリプトを実行し、出力を `tmp/` に tee し、スクリプトの終了コードを伝搬します。        |
+| `seq`                          | 指定されたスクリプト名を順番に実行します。最初の失敗で終了。                                     |
 
-## 注記 {#notes}
-
-- **refcache のメンテナンス**は htmltest 固有です。
-  詳細は [Refcache](/site/build/link-checking/#refcache) を参照してください。
-- **Lychee リンクチェック（パイロット）。**
-  `:lychee` と `:diff` スクリプトは、htmltest のより高速な代替として [Lychee](https://github.com/lycheeverse/lychee) を実行し、そのカバレッジを反映します。
-  `lychee.toml` を生成し、refcache から `.lycheecache` を自動的に（再）シードします。
-  Lychee は [#10449](https://github.com/open-telemetry/opentelemetry.io/issues/10449) で評価される間、非ブロッキングの [CI パイロット](../ci-workflows/#other-workflows)として実行されます。
-- **`test:local-tools:lychee`** は `test:local-tools` のうち `lychee` バイナリを必要とするサブセット（動作フラグメントおよび設定チェックテスト）です。
-  バイナリが存在しない場合はそれらのテストはスキップされるため、`test:local-tools` は一般的なテストジョブですでにカバーしています。
-  末尾の `:lychee` はこのスクリプトを `test:compound-tests`（`test:*-*` にマッチ）から除外し、スイートが2回実行されないようにします。
-  リンクチェック CI ジョブは lychee をインストールし、このスクリプトを実行して実際にテストを実行します。
-- **`all`** はリスト内のスクリプトを1つが失敗してもすべて実行し、いずれかが失敗した場合は非ゼロステータスで終了します。
-
+<!-- prettier-ignore-start -->
+[`allowScripts` approval]: /site/build/dependencies/#script-bearing-packages
+[`.lycheecache`]: /site/build/link-checking/#link-cache
+[`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [build kinds]: /site/build/#build-kinds
+[dc]: /site/build/link-checking/#double-check
+[fetch the pinned Hugo binary]: /site/build/dependencies/#install-contracts
 [fn]: /docs/contributing/pr-checks/#filename-check
-[locale-auto-merge]: ../ci-workflows/#locale-auto-merge
+[link check]: /site/build/link-checking/
+[locale-auto-merge]: /site/build/ci-workflows/#locale-auto-merge
+[lock-exact inert install]: /site/build/dependencies/#install-contracts
+[lock-exact local setup]: /site/build/dependencies/#install-contracts
+[lock-exact theme dependency install]: /site/build/dependencies/#install-contracts
+[release cooldown]: /site/build/dependencies/#release-cooldown
+<!-- prettier-ignore-end -->

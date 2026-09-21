@@ -5,6 +5,7 @@ description:
   implementar OpenTelemetry en entornos comunes
 weight: 600
 default_lang_commit: f7e86e5d33326b4e2a0f06b81ab25d515c4f54c2
+drifted_from_default: true
 ---
 
 Adoptar OpenTelemetry a escala no es solo cuestión de configurar componentes

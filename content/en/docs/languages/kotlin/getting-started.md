@@ -22,6 +22,12 @@ supported platforms and their prerequisites are listed below:
 | iOS        | 16.0         |
 | JavaScript | ES5          |
 
+> [!NOTE]
+>
+> For iOS and JavaScript targets, your project must use a Kotlin version at
+> least as new as the one OpenTelemetry Kotlin was built with. For details, see
+> [KT-76131](https://youtrack.jetbrains.com/issue/KT-76131).
+
 ### API stability
 
 The API is currently subject to breaking changes without notice and most symbols

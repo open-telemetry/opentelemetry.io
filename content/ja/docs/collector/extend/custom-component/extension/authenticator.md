@@ -5,8 +5,7 @@ weight: 100
 aliases:
   - /docs/collector/custom-auth
   - /docs/collector/building/authenticator-extension
-default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db # patched
-drifted_from_default: true
+default_lang_commit: f304b22c356b4ad4046b8ce5550ddf503a510d69
 cSpell:ignore: configauth oidc
 ---
 
@@ -122,4 +121,4 @@ service:
 [builder]: https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
 [client authenticators]: https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#readme-client-authenticators
 [extensions]: /docs/collector/configuration/#extensions
-[sa]: https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators
+[sa]: https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#readme-server-authenticators

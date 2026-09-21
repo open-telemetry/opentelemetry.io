@@ -379,7 +379,7 @@ will replace the value of headers such as `session-id` and `set-cookie` with
 [instrumentation]:
   https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
 [monkey-patching]:
-  https://stackoverflow.com/questions/5626193/what-is-monkey-patching
+  https://stackoverflow.com/questions/5626193/what-is-monkey-patching?link-check=no&last-validated=2026-08-02
 [opentracing example]:
   https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
 [source files]:

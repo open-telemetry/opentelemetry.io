@@ -5,8 +5,8 @@ aliases:
   - scenarios
   - services/feature-flag
   - services/featureflagservice
-default_lang_commit: 8fd99e125e5510385b18b541d97c283e28f76ef2
-cSpell:ignore: loadgenerator OLJCESPC7Z
+default_lang_commit: 68992866a957386e428a4d63ec884ea9dc7570b6
+cSpell:ignore: OLJCESPC7Z
 ---
 
 デモは、異なるシナリオのシミュレートするために利用可能ないくつかのフィーチャーフラグを提供しています。
@@ -22,25 +22,27 @@ cSpell:ignore: loadgenerator OLJCESPC7Z
 
 ## 実装済みフィーチャーフラグ {#implemented-feature-flags}
 
-| フィーチャーフラグ                  | サービス           | 説明                                                                                                                                   |
-| ----------------------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `adServiceFailure`                  | 広告               | 10分の1の確率で `GetAds` のエラーを生成します                                                                                          |
-| `adServiceManualGc`                 | 広告               | 広告サービスで完全手動のガベージコレクションを引き起こします                                                                           |
-| `adServiceHighCpu`                  | 広告               | 広告サービスで CPU を高負荷にします。 CPU スロットリングをデモしたい場合は、CPUリソース制限を設定します                                |
-| `cartServiceFailure`                | カート             | `EmptyCart` が呼び出されるたびにエラーを生成します                                                                                     |
-| `emailMemoryLeak`                   | Eメール            | `email` サービスでメモリリークをシミュレートします                                                                                     |
-| `productCatalogFailure`             | 商品カタログ       | 商品 ID: `OLJCESPC7Z` の `GetProduct` リクエストに対してエラーを生成します                                                             |
-| `recommendationServiceCacheFailure` | レコメンデーション | 指数関数的に増大するキャッシュによりメモリリークが発生します。 1.4 倍のペースで増加し、リクエストの 50% がその増加を引き起こします     |
-| `paymentServiceFailure`             | 支払い             | `charge` メソッドを呼び出すときに、エラーを発生させます                                                                                |
-| `paymentServiceUnreachable`         | 決済               | 支払いサービスを呼び出すときに支払いサービスが利用できないように見せるために、不正アドレスを使用します                                 |
-| `loadgeneratorFloodHomepage`        | 負荷生成ツール     | 大量のリクエストでホームページにフラッディングを開始します。 これは状態である flagd JSON の変更で設定可能です                          |
-| `kafkaQueueProblems`                | キュー             | Kafka キューに過負荷がかかり、同時にコンシューマー側の遅延も発生し、ラグの急増を引き起こします                                         |
-| `imageSlowLoad`                     | フロントエンド     | Envoy フォールトインジェクションを利用し、フロントエンドでの製品画像の読み込みに遅延を発生させます                                     |
-| `failedReadinessProbe`              | カート             | レディネスプローブを失敗させ、ステータスを異常にし、Pod の "NotReady" 状態を再現します。 Kubernetes デプロイメントにのみ適用されます。 |
+| フィーチャーフラグ           | サービス                 | 説明                                                                                                                                    |
+| ---------------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `adFailure`                  | 広告                     | 10分の1の確率で `GetAds` のエラーを生成します                                                                                           |
+| `adHighCpu`                  | 広告                     | 広告サービスで CPU を高負荷にします。 CPU スロットリングをデモしたい場合は、CPU リソース制限を設定します                                |
+| `adManualGc`                 | 広告                     | 広告サービスで完全手動のガベージコレクションを引き起こします                                                                            |
+| `cartFailure`                | カート                   | 選択された割合の `EmptyCart` 呼び出しを、障害が発生するカートストアに送信します                                                         |
+| `emailMemoryLeak`            | Eメール                  | `email` サービスでメモリリークをシミュレートします。 バリアントは、各確認メール本文がどの程度パディングされるかを設定します             |
+| `failedReadinessProbe`       | カート                   | レディネスプローブを失敗させ、ステータスを異常にし、Pod の "NotReady" 状態を再現します。 Kubernetes デプロイメントにのみ適用されます。  |
+| `imageSlowLoad`              | フロントエンド           | Envoy フォールトインジェクションを利用し、フロントエンドでの製品画像の読み込みに遅延を発生させます。 バリアントは遅延時間を設定します。 |
+| `intlShippingSlowdown`       | 配送                     | 米国外の配送リクエストを選択された秒数だけ遅延させ、海外配送の遅延をシミュレートします。 米国内の住所は影響を受けません。               |
+| `kafkaQueueProblems`         | チェックアウト、不正検知 | Kafka キューに過負荷がかかり、同時にコンシューマー側の遅延も発生し、ラグの急増を引き起こします                                          |
+| `loadGeneratorTraffic`       | 負荷生成ツール           | 負荷生成ツールからの合成トラフィックを有効にします。 オフにすると、すべての負荷生成シナリオが一時停止します。                           |
+| `loadGeneratorVUs`           | 負荷生成ツール           | 負荷生成ツールの HTTP シナリオを実行する同時仮想ユーザー数です。 変更すると、次回のポーリング時に k6 が再起動されます。                 |
+| `paymentFailure`             | 支払い                   | 選択された割合の `charge` 呼び出しに対してエラーを生成します                                                                            |
+| `paymentUnreachable`         | チェックアウト           | 支払いサービスを呼び出すときに支払いサービスが利用できないように見せるために、不正アドレスを使用します                                  |
+| `productCatalogFailure`      | 商品カタログ             | 商品 ID: `OLJCESPC7Z` の `GetProduct` リクエストに対してエラーを生成します                                                              |
+| `recommendationCacheFailure` | レコメンデーション       | 指数関数的に増大するキャッシュによりメモリリークが発生します。 リクエストのおよそ半数がその増加を引き起こします                         |
 
 ## ガイド付きデバッグシナリオ {#guided-debugging-scenario}
 
-`recommendationServiceCacheFailure` シナリオには、OpenTelemetry を使用してメモリリークをデバッグする方法を理解するのに役立つ[専用のウォークスルードキュメント](recommendation-cache/)があります。
+`recommendationCacheFailure` シナリオには、OpenTelemetry を使用してメモリリークをデバッグする方法を理解するのに役立つ[専用のウォークスルードキュメント](recommendation-cache/)があります。
 
 ## フィーチャーフラグアーキテクチャ {#feature-flag-architecture}
 

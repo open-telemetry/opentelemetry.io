@@ -2,7 +2,7 @@
 title: Kubernetesデプロイ
 linkTitle: Kubernetes
 aliases: [kubernetes_deployment]
-default_lang_commit: c1e141558ab36cc1ab9f864728e4665e272ac131
+default_lang_commit: ef74cd393090313b5ad970e74d499a97505fffb8
 cSpell:ignore: loadgen otlphttp spanmetrics
 ---
 

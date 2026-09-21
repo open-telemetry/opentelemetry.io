@@ -28,6 +28,10 @@ conventions that also drive their auto-discovery:
   build artifact.
 - **`test:*:live`** scripts are optional checks against a deployed, live site.
 
+Among the compound-test suites, `test:local-tools` also carries the
+[supply-chain audit](../build/dependencies/#audit), which fails when a committed
+install-hardening control regresses; that page covers what to do when it fires.
+
 ## Test assertions
 
 ### Goal
