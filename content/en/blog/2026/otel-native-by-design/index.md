@@ -310,24 +310,17 @@ directly** to a user-defined endpoint?
 
 ### The classic approach: custom polling APIs
 
-Pull is the traditional way platforms have exposed telemetry: you expose an API
-for it, and the user's observability stack (or a custom receiver they build) has
-to continuously poll that API, handle pagination, and ingest the results into
-their own backend.
+Platforms have traditionally exposed telemetry by providing APIs that users must
+poll at regular intervals, handle pagination for, and ingest the results into 
+their own backends.
 
-It's a reasonable starting point if you already have a mature, well-tested API
-for logs or metrics, since extending it is often easier than building a new push
-path. But it comes with real costs.
+It's a reasonable starting point if you already have a mature, well-tested API for logs or metrics, since extending it is often easier than building a new push path. But it comes with real costs:
 
-The problem with this model is that you are shifting a significant operational
-responsibility onto your users. They must now build scalable polling systems
-that can manage polling intervals, paginate API responses, retry on failures,
-and backfill missing data.
+- You shift a significant operational responsibility onto your users. They must now build scalable polling systems that can manage polling intervals, paginate API responses, retry on failures, and backfill missing data.
+- Users might build custom solutions that don't scale, don't adhere to your standards, and require significant upkeep on their end as your API schema develops alongside your platform.
+- Achieving near real-time delivery becomes significantly harder, which is often a critical requirement for latency-sensitive signals like traces and metrics.
 
-Worse, achieving near real-time delivery is significantly harder, which is often
-a critical requirement for latency-sensitive signals like traces and metrics.
-
-For logs, a pull-based receiver often looks like this (e.g.
+For logs, a pull-based implementation often looks like this (e.g.
 [CloudWatch Logs–style](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/8bee89f9928b4b1f81700f9ab0e5886d428bfae6/receiver/awscloudwatchreceiver/logs.go#L293)):
 
 ```text
@@ -343,12 +336,12 @@ every poll_interval:
   while next_token != null
 ```
 
-You'd need similar state-tracking logic for metrics or trace APIs.
+Here, you would need similar state-tracking logic for the metrics or trace APIs.
 
 Because it forces users to write custom code just to convert your API responses
-into standard formats, the pull model is workable when you have a mature,
-well-established API for a given signal. For new designs, however, it should not
-be the default.
+into standard formats, the custom polling model is workable when you cannot reach for a more standardized approach like Prometheus, for every supported signal.
+
+For new designs, however, it should not be the default.
 
 ### The push model (OTLP)
 
@@ -360,7 +353,7 @@ run) actively exports logs, traces, and metrics directly to the user's
 configured endpoint using OTLP (over HTTP or gRPC).
 
 It uses one vendor-neutral, industry-standard protocol for all telemetry,
-meaning you avoid re-implementing telemetry delivery logic for each distinct
+meaning you avoid reimplementing telemetry delivery logic for each distinct
 signal you support.
 
 Further, OTLP provides first-class support for structured data and metadata,
