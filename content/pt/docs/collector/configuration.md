@@ -4,9 +4,9 @@ weight: 20
 description:
   Aprenda a configurar o Collector para atender às necessidades de
   observabilidade
-default_lang_commit: 30b7dbbdd94cec0b2a0c99317272b103315518bf
+default_lang_commit: a12d86209bb807217742cc14e0a29095beaf978f
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey initca oidc pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
+cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey initca oidc pprof prodevent spanevents unredacted upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -501,7 +501,7 @@ exporters:
     namespace: default
 
   # Fontes de dados: métricas
-  prometheusremotewrite:
+  prometheus_remote_write:
     endpoint: http://prometheus.example.com:9411/api/prom/push
     # Ao usar o Prometheus oficial (executando via Docker)
     # endpoint: 'http://prometheus:9090/api/v1/write', adicione:
