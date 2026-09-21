@@ -809,6 +809,8 @@ https://events.linuxfoundation.org/open-observability-summit-otel-community-day/
 https://events.linuxfoundation.org/open-observability-summit-otel-community-day/program/schedule/,200,1789401254
 https://events.linuxfoundation.org/open-source-summit-north-america/,200,1789401254
 https://explorer.opentelemetry.io/,200,1789400950
+https://explorer.opentelemetry.io/collector,200,1790004562
+https://explorer.opentelemetry.io/java-agent,200,1790004561
 https://explorer.opentelemetry.io/java-agent/configuration/builder,200,1789400951
 https://explorer.opentelemetry.io/java-agent/instrumentation,200,1789400643
 https://explorer.opentelemetry.io/java-agent/instrumentation/latest,200,1789400951
@@ -1860,6 +1862,8 @@ https://github.com/open-telemetry/community/pull/2162,200,1789401260
 https://github.com/open-telemetry/community/pull/2293,200,1789450980
 https://github.com/open-telemetry/community/pull/3000,200,1789401255
 https://github.com/open-telemetry/community/pull/3021,200,1789401264
+https://github.com/open-telemetry/community/pull/3435,200,1790004562
+https://github.com/open-telemetry/community/pull/3452,200,1790004563
 https://github.com/open-telemetry/community/pull/3517,200,1789401256
 https://github.com/open-telemetry/community/tree/fa6a4b68cf63438b760419124b0abfbe4ae238ed#sig-arrow,200,1789400950
 https://github.com/open-telemetry/community/tree/main/mission-vision-values.md,200,1789401268
@@ -2984,6 +2988,7 @@ https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.
 https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/nginx,200,1789450955
 https://github.com/open-telemetry/opentelemetry-ebpf-profiler,200,1789450954
 https://github.com/open-telemetry/opentelemetry-ecosystem-explorer,200,1789450977
+https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/blob/9893616a9042eaf2670882e5e55fad4ab12584cf/projects/ux-research-and-info-arc/user-interview-synthesis.md,200,1790004561
 https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issues/154,200,1789450978
 https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22Collector%20Ecosystem%22,200,1789450978
 https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/issues?q=sort%3Aupdated-desc%20is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22,200,1789450977
@@ -3141,6 +3146,7 @@ https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagen
 https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent-declarative-configuration,200,1789400637
 https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native,200,1789400711
 https://github.com/open-telemetry/opentelemetry-java-instrumentation,200,1789623757
+https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/e661d314d032e30aea0db8b4030a64a20aae17ae/docs/instrumentation-list.yaml?from_branch=main,200,1790004560
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/RELEASING.md#release-cadence,200,1789400634
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/declarative-config-bridge/src/main/java/io/opentelemetry/instrumentation/config/bridge/ConfigPropertiesBackedDeclarativeConfigProperties.java,200,1789400643
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/contributing/javaagent-structure.md,200,1789400712
@@ -3163,6 +3169,7 @@ https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v1.0.1
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v2.29.0/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/EmbeddedConfigFile.java#L66-L82,200,1789450976
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues,200,1789400704
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/1060,200,1789450980
+https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/13468,200,1790004561
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/14083,200,1789450976
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7413,206,1789402288
 https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases,200,1789400638
@@ -4165,6 +4172,7 @@ https://github.com/open-telemetry/oteps/pull/225,200,1789401073
 https://github.com/open-telemetry/oteps/pull/258,200,1789400956
 https://github.com/open-telemetry/oteps/pull/264,200,1789400956
 https://github.com/open-telemetry/semantic-conventions,200,1789796432
+https://github.com/open-telemetry/semantic-conventions-conformance,200,1790004561
 https://github.com/open-telemetry/semantic-conventions-genai,200,1789401082
 https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/README.md,200,1789450940
 https://github.com/open-telemetry/semantic-conventions-java,200,1789400637
