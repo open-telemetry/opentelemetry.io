@@ -1802,6 +1802,10 @@ https://github.com/open-telemetry/community/?tab=readme-ov-file#calendar,200,178
 https://github.com/open-telemetry/community/?tab=readme-ov-file#cross-cutting-sigs,200,1789401257
 https://github.com/open-telemetry/community/?tab=readme-ov-file#implementation-sigs,200,1789401257
 https://github.com/open-telemetry/community/?tab=readme-ov-file#sig-mainframes,200,1789450978
+https://github.com/open-telemetry/community/blob/03f8ce83a6443bdf74da15d5b2f24e52e337da5a/elections/2026/voters-roll.csv,200,1790003425
+https://github.com/open-telemetry/community/blob/12e094130fc85f8990d5c0ccf1493004848baa0f/governance-charter.md?from_branch=main#elections,200,1790003425
+https://github.com/open-telemetry/community/blob/12e094130fc85f8990d5c0ccf1493004848baa0f/governance-charter.md?from_branch=main#members-of-standing,200,1790003425
+https://github.com/open-telemetry/community/blob/12e094130fc85f8990d5c0ccf1493004848baa0f/governance-charter.md?from_branch=main,200,1790003425
 https://github.com/open-telemetry/community/blob/184336e3d39010eb22496d97a01cc2120763c929/projects/k8s-semconv.md,200,1789401252
 https://github.com/open-telemetry/community/blob/1b7d0d85924677149593a18639ce0b897ed4751f/elections/2025/governance-committee-candidates.md?from_branch=main,200,1789401257
 https://github.com/open-telemetry/community/blob/25f027532a6e9b503d6eb4dd3db0a98eb3b5f1cb/guides/contributor/membership.md#member,200,1789400950
@@ -1817,6 +1821,9 @@ https://github.com/open-telemetry/community/blob/55c58353ce8651dbb5269ca91bb6dde
 https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main#elections,200,1789401257
 https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main#members-of-standing,200,1789401257
 https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main,200,1789401257
+https://github.com/open-telemetry/community/blob/65ca9aa67c4790e2c39984f9356b349c87861ab8/elections/2026/governance-committee-candidates.md?from_branch=main,200,1790003425
+https://github.com/open-telemetry/community/blob/65ca9aa67c4790e2c39984f9356b349c87861ab8/elections/2026/governance-committee-election.md?from_branch=main#nominations,200,1790003425
+https://github.com/open-telemetry/community/blob/65ca9aa67c4790e2c39984f9356b349c87861ab8/elections/2026/governance-committee-election.md?from_branch=main,200,1790003425
 https://github.com/open-telemetry/community/blob/706839937eb5886bb07da6bd9d63245839e3cc2f/guides/maintainer/popular-issues.md?from_branch=main#recommended-footnote-on-issue-templates,200,1789401263
 https://github.com/open-telemetry/community/blob/706839937eb5886bb07da6bd9d63245839e3cc2f/guides/maintainer/popular-issues.md?from_branch=main,200,1789401258
 https://github.com/open-telemetry/community/blob/898a6d5b4030a806883717dff3382c06d3dbd324/projects/packaging.md,200,1789401251
@@ -6063,6 +6070,7 @@ https://vertx.io/docs/vertx-kafka-client/java/,200,1789400645
 https://vertx.io/docs/vertx-redis-client/java/,200,1789400645
 https://vertx.io/docs/vertx-rx/java2/,200,1789400645
 https://vertx.io/docs/vertx-web/java/,200,1789400645
+https://vote.heliosvoting.org/helios/elections/9bad2b3c-d2df-4634-b801-a6926fdd2251/view,200,1790003425
 https://vote.heliosvoting.org/helios/elections/f94a7c58-990b-11f0-a16d-5270fb641b4c/view,200,1789401251
 https://vunetsystems.com/vuapp360/,200,1789537323
 https://w3c.github.io/trace-context-amqp/,200,1789401145
