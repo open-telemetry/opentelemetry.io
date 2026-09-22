@@ -3988,6 +3988,7 @@ https://github.com/open-telemetry/opentelemetry-specification/tree/main/specific
 https://github.com/open-telemetry/opentelemetry-specification/tree/v1.61.0/oteps/0035-opentelemetry-protocol.md,200,1789403413
 https://github.com/open-telemetry/opentelemetry-specification/tree/v1.61.0/oteps/0152-telemetry-schemas.md,200,1789403414
 https://github.com/open-telemetry/opentelemetry-specification/tree/v1.61.0/oteps/0232-maturity-of-otel.md,200,1789403412
+https://github.com/open-telemetry/opentelemetry-specification/tree/v1.61.0/oteps/entities/0264-resource-and-entities.md,200,1790073263
 https://github.com/open-telemetry/opentelemetry-specification/tree/v1.61.0/oteps/logs/0091-logs-vocabulary.md,200,1789403413
 https://github.com/open-telemetry/opentelemetry-specification/tree/v1.61.0/oteps/logs/0092-logs-vision.md,200,1789403413
 https://github.com/open-telemetry/opentelemetry-specification/tree/v1.61.0/oteps/logs/0097-log-data-model.md#appendix-a-example-mappings,200,1789403413
