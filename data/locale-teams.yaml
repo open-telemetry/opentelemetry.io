@@ -21,7 +21,7 @@ locales:
     maintainers: []
     approvers: [badhon495, sajibAdhi]
   es:
-    maintainers: [theletterf]
+    maintainers: [immavalls]
     approvers: [krol3, mx-psi]
   fr:
     maintainers: [chalin, codeboten, dmathieu, marcalff]

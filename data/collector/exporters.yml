@@ -274,13 +274,6 @@
   stability:
     logs: beta
     traces: beta
-- name: mezmoexporter
-  display_name: Mezmo Exporter
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    logs: deprecated
 - name: nopexporter
   display_name: No-op Exporter
   repo: core
