@@ -10,8 +10,6 @@ body_class: otel-figure-captions
 cSpell:ignore: Isaika Karimot workstreams
 ---
 
-![Cover image showing an illustrated landscape of observability data flowing between clusters of services.](cover.png)
-
 OpenTelemetry has a lot of pieces: APIs, SDKs, a protocol, semantic conventions,
 instrumentation, and tools like the Collector. The APIs and protocol define how
 telemetry is created and exchanged, while instrumentation is what actually
