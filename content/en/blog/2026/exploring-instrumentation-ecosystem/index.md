@@ -7,7 +7,7 @@ author: >-
 issue: 11806
 sig: Comms
 body_class: otel-figure-captions
-cSpell:ignore: Isaika Karimot workstreams
+cSpell:ignore: Isiaka Karimot workstreams
 ---
 
 OpenTelemetry has a lot of pieces: APIs, SDKs, a protocol, semantic conventions,
@@ -65,7 +65,7 @@ will produce. Which spans and metrics does it describe? Which attributes come
 with them? Which signals require configuration, and what changed since the
 version you're running?
 
-Karimot Isaika's recent [user research][research] highlighted how people piece
+Karimot Isiaka's recent [user research][research] highlighted how people piece
 together these answers from documentation, repositories, and release notes. The
 Explorer brings that information together in a version-specific view. For Java
 instrumentation, you can inspect its described telemetry and configuration
