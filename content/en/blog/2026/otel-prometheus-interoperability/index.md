@@ -7,7 +7,6 @@ author: >-
   Kiripolsky](https://github.com/andrejkiri) (Grafana Labs), [Ana
   Muenz](https://github.com/vampirarte) (Independent), [Arthur
   Sens](https://github.com/ArthurSens) (Grafana Labs)
-draft: true # TODO: remove this line once the post is ready to be published
 issue: https://github.com/open-telemetry/sig-end-user/issues/280
 sig: End-User SIG
 # prettier-ignore
