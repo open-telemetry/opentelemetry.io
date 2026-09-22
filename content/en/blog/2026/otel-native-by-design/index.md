@@ -46,7 +46,7 @@ OpenTelemetry defines four signal types, all carried over the standard
   users can see request flows across services and correlate them with logs.
 - **[Metrics](/docs/concepts/signals/metrics/):** Counters, gauges, and
   histograms (e.g., request rates, latency, error rates).
-- **[Profiles](/docs/concepts/signals/profiles/):** samples that show where
+- **[Profiles](/docs/concepts/signals/profiles/):** Samples that show where
   applications consume resources during execution.
 
 > [!NOTE] Profiles is in public alpha
@@ -154,7 +154,7 @@ can learn from them.
 | Cloudflare Workers | Yes  | Yes    | No\*    | Platform              | \*Metrics export not yet supported      |
 | Heroku             | Yes  | Yes    | Yes     | Platform              | User chooses signals via `--signals`    |
 
-### The self-hosted approach: Kuma & Keycloak
+### The self-hosted approach: Kuma and Keycloak
 
 If your users deploy your software into their own environments, the best
 practice is to ship the application pre-instrumented with OpenTelemetry and
@@ -345,10 +345,9 @@ every poll_interval:
 
 Here, you would need similar state-tracking logic for the metrics or trace APIs.
 
-Because it forces users to write custom code just to convert your API responses
-into standard formats, the custom polling model is workable when you cannot
-reach for a more standardized approach like Prometheus, for every supported
-signal.
+Despite forcing users to write custom code to convert your API responses into standard formats,
+the custom polling model is workable for every supported signal when you cannot reach for a more
+standardized approach like Prometheus.
 
 For new designs, however, it should not be the default.
 
@@ -534,7 +533,7 @@ summary of the key architectural and design steps to follow:
   attribute/schema semantics per signal so users can confidently rely on the
   data in their backends.
 - Choose a Collector topology: one Collector per tenant for strong isolation, or
-  a shared Collector with per-tenant pipelines for lesser operational overhead.
+  a shared Collector with per-tenant pipelines for lower operational overhead.
 - Provide an example config or env var snippet so users can get started quickly.
 
 The points above also encapsulate the golden rules that Cloudflare (except for
@@ -551,7 +550,7 @@ It's a great way to surface your work to the broader community.
 
 > [!NOTE]
 >
-> **If you're reading this as an end user, not a builder:** you don't have to
+> **If you're reading this as an end-user, not a builder:** you don't have to
 > wait for your SaaS vendor to come around on this.
 >
 > Ask them for OTLP export directly; it's a reasonable, increasingly common
