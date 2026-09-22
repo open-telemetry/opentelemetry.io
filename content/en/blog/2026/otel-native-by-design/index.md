@@ -345,9 +345,9 @@ every poll_interval:
 
 Here, you would need similar state-tracking logic for the metrics or trace APIs.
 
-Despite forcing users to write custom code to convert your API responses into standard formats,
-the custom polling model is workable for every supported signal when you cannot reach for a more
-standardized approach like Prometheus.
+Despite forcing users to write custom code to convert your API responses into
+standard formats, the custom polling model is workable for every supported
+signal when you cannot reach for a more standardized approach like Prometheus.
 
 For new designs, however, it should not be the default.
 
@@ -501,16 +501,27 @@ route through one Collector instance.](shared-collector.png)
 
 ### Custom polling APIs vs OTLP: the verdict
 
-When the choice is between making your users poll custom APIs and letting them ingest over a shared standard, most modern, developer-focused platforms should opt for the latter. Reach for custom polling APIs if standardization isn't an option.
+When the choice is between making your users poll custom APIs and letting them
+ingest over a shared standard, most modern, developer-focused platforms should
+opt for the latter. Reach for custom polling APIs if standardization isn't an
+option.
 
-OpenTelemetry's unified protocol preserves rich context, delivers data in near real-time, and has been proven at scale across cloud and self-hosted deployments by Cloudflare, Heroku, Kuma, and Keycloak.
-Plus, OpenTelemetry's independence from a particular vendor means users have the
-freedom to switch between observability backends based on their business needs,
-without requiring a complete overhaul of their telemetry pipelines.
+OpenTelemetry's unified protocol preserves rich context, delivers data in near
+real-time, and has been proven at scale across cloud and self-hosted deployments
+by Cloudflare, Heroku, Kuma, and Keycloak. Plus, OpenTelemetry's independence
+from a particular vendor means users have the freedom to switch between
+observability backends based on their business needs, without requiring a
+complete overhaul of their telemetry pipelines.
 
-OpenTelemetry adoption does not come for free, though, as your team must invest time to learn and implement OpenTelemetry, and build necessary documentation to guide users and internal teams on best practices.
+OpenTelemetry adoption does not come for free, though, as your team must invest
+time to learn and implement OpenTelemetry, and build necessary documentation to
+guide users and internal teams on best practices.
 
-Because of OTel's rising adoption across the observability landscape — the project recently [graduated from CNCF](https://www.cncf.io/announcements/2026/05/21/cloud-native-computing-foundation-announces-opentelemetrys-graduation-solidifying-status-as-the-de-facto-observability-standard/) — this upfront investment will pay dividends as you integrate tools in your platform that rely on OpenTelemetry to export their own telemetry.
+Because of OTel's rising adoption across the observability landscape — the
+project recently
+[graduated from CNCF](https://www.cncf.io/announcements/2026/05/21/cloud-native-computing-foundation-announces-opentelemetrys-graduation-solidifying-status-as-the-de-facto-observability-standard/)
+— this upfront investment will pay dividends as you integrate tools in your
+platform that rely on OpenTelemetry to export their own telemetry.
 
 ## Putting it all together
 
