@@ -1292,6 +1292,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/47814950?v=4
   - name: NameHaibinZhang
     teams:
+      - ebpf-instrumentation-approvers
       - go-compile-instrumentation-approvers
       - go-compile-instrumentation-maintainers
       - go-compile-instrumentation-triagers
