@@ -37,7 +37,7 @@ choosing.](cover.png)
 
 ## The four observability signals
 
-OpenTelemetry defines four signal types, all carried over the the standard
+OpenTelemetry defines four signal types, all carried over the standard
 [OpenTelemetry Protocol (OTLP)](/docs/specs/otlp/):
 
 - **[Logs](/docs/concepts/signals/logs/):** Event records, request/access logs,
@@ -316,7 +316,7 @@ their own backends.
 
 It's a reasonable starting point if you already have a mature, well-tested API
 for logs or metrics, since extending it is often easier than building a new push
-path. But it comes with real costs:
+path. However, it comes with real costs:
 
 - You shift a significant operational responsibility onto your users. They must
   now build scalable polling systems that can manage polling intervals, paginate
@@ -352,7 +352,7 @@ signal.
 
 For new designs, however, it should not be the default.
 
-### The push model: OTLP
+### The standards-oriented approach: OTLP
 
 For developer-focused, real-time telemetry, OTLP push has become the dominant
 pattern.
@@ -500,25 +500,18 @@ as your customer base grows.
 ![The shared Collector pattern is easier to monitor and maintain as all exports
 route through one Collector instance.](shared-collector.png)
 
-### Push vs pull: the verdict
+### Custom polling APIs vs OTLP: the verdict
 
-For many modern, developer-focused telemetry systems, OpenTelemetry's push model
-should be the default because it preserves rich context and delivers data in
-near real-time.
+When the choice is between making your users poll custom APIs and letting them ingest over a shared standard, most modern, developer-focused platforms should opt for the latter. Reach for custom polling APIs if standardization isn't an option.
 
-Plus, it has been proven to work well at scale across cloud and self-hosted
-deployments by Cloudflare, Heroku, Kuma, and Keycloak.
-
-OpenTelemetry's independence from a particular vendor means users have the
-freedom to switch between observability vendors based on their business needs,
+OpenTelemetry's unified protocol preserves rich context, delivers data in near real-time, and has been proven at scale across cloud and self-hosted deployments by Cloudflare, Heroku, Kuma, and Keycloak.
+Plus, OpenTelemetry's independence from a particular vendor means users have the
+freedom to switch between observability backends based on their business needs,
 without requiring a complete overhaul of their telemetry pipelines.
 
-In the push export model, your platform team carries the implementation burden:
-your engineers need to learn and adopt OpenTelemetry, and you need clear
-documentation on how users can configure their endpoints.
+OpenTelemetry adoption does not come for free, though, as your team must invest time to learn and implement OpenTelemetry, and build necessary documentation to guide users and internal teams on best practices.
 
-Use the pull model primarily when you already have a dominant API for a given
-signal and cannot add a push path.
+Because of OTel's rising adoption across the observability landscape — the project recently [graduated from CNCF](https://www.cncf.io/announcements/2026/05/21/cloud-native-computing-foundation-announces-opentelemetrys-graduation-solidifying-status-as-the-de-facto-observability-standard/) — this upfront investment will pay dividends as you integrate tools in your platform that rely on OpenTelemetry to export their own telemetry.
 
 ## Putting it all together
 
