@@ -3,6 +3,7 @@ title: Glossary
 description:
   Definitions and conventions for telemetry terms as used in OpenTelemetry.
 weight: 200
+cSpell:ignore: OTTL
 ---
 
 This glossary defines terms and [concepts](/docs/concepts/) that are new to the
@@ -303,7 +304,8 @@ Short for [OpenTelemetry Protocol](/docs/specs/otlp/).
 
 ### OTTL
 
-Short for [OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md).
+Short for
+[OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md).
 
 ### Propagators
 
