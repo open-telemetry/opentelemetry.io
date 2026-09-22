@@ -301,6 +301,10 @@ An acronym for [OpenTelemetry Enhancement Proposal][].
 
 Short for [OpenTelemetry Protocol](/docs/specs/otlp/).
 
+### OTTL
+
+Short for [OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md).
+
 ### Propagators
 
 Used to serialize and deserialize specific parts of telemetry data such as span
