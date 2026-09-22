@@ -42,7 +42,8 @@ user interface:
 | `failedReadinessProbe`       | Cart                      | Force the readiness probe to fail with unhealthy status, simulating a pod "NotReady" condition. Applicable for Kubernetes deployments only. |
 | `imageSlowLoad`              | Frontend                  | Utilizes envoy fault injection, produces a delay in loading of product images in the frontend. The variant sets the delay.                  |
 | `intlShippingSlowdown`       | Shipping                  | Delay non-US shipping requests by the selected number of seconds, simulating overseas shipping latency. US addresses are unaffected.        |
-| `kafkaQueueProblems`         | Checkout, Fraud Detection | Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike.                                        |
+| `kafkaConsumerDead`          | Fraud Detection           | Fraud-detection leaves the orders consumer group (unsubscribes and stops polling). Checkout continues producing, so consumer group empties and lag accumulates. Reversible by toggling the flag. |
+| `kafkaQueueProblems`         | Checkout, Fraud Detection | Throttle the fraud-detection consumer by sleeping N ms per record. Consumer drains slower than producer writes, causing lag to climb. Tune the per-record delay live from the flag.                |
 | `loadGeneratorTraffic`       | Load Generator            | Enable synthetic traffic from the load generator. Turn it off to pause all load generator scenarios.                                        |
 | `loadGeneratorVUs`           | Load Generator            | Number of concurrent virtual users driving the load generator's HTTP scenario. Changing it restarts k6 on the next poll.                    |
 | `paymentFailure`             | Payment                   | Generate an error for the selected percentage of `charge` calls.                                                                            |
