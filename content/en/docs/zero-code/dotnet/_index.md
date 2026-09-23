@@ -78,17 +78,15 @@ download_dir="$(mktemp -d "${TMPDIR:-/tmp}/otel-dotnet-auto-installer.XXXXXX")"
 installer="$download_dir/otel-dotnet-auto-install.sh"
 trap 'rm -rf "$download_dir"' 0
 
-curl -sSfL "https://github.com/$repository/releases/download/$version/otel-dotnet-auto-install.sh" -o "$installer"
-
-# Verify the installer before executing it
-gh release verify-asset "$version" "$installer" --repo "$repository"
-gh attestation verify "$installer" \
-  --repo "$repository" \
-  --signer-workflow "$release_workflow" \
-  --source-ref "refs/tags/$version"
-
-# Install core files; the installer verifies the downloaded ZIP archive
-VERSION="$version" sh "$installer"
+# Download, verify, and run the installer as a single conditional chain so a
+# failed download or verification prevents the installer from running
+curl -sSfL "https://github.com/$repository/releases/download/$version/otel-dotnet-auto-install.sh" -o "$installer" &&
+  gh release verify-asset "$version" "$installer" --repo "$repository" &&
+  gh attestation verify "$installer" \
+    --repo "$repository" \
+    --signer-workflow "$release_workflow" \
+    --source-ref "refs/tags/$version" &&
+  VERSION="$version" sh "$installer"
 
 # Enable execution for the instrumentation script
 chmod +x $HOME/.otel-dotnet-auto/instrument.sh
