@@ -255,9 +255,9 @@
     - contrib
     - k8s
   stability:
+    metrics: alpha
     logs: beta
     traces: beta
-    metrics: development
 - name: logicmonitorexporter
   display_name: LogicMonitor Exporter
   repo: contrib
@@ -274,13 +274,6 @@
   stability:
     logs: beta
     traces: beta
-- name: mezmoexporter
-  display_name: Mezmo Exporter
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    logs: beta
 - name: nopexporter
   display_name: No-op Exporter
   repo: core
@@ -301,6 +294,7 @@
   stability:
     logs: alpha
     traces: alpha
+    metrics: development
 - name: otelarrowexporter
   display_name: OpenTelemetry Arrow Exporter
   repo: contrib

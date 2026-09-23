@@ -3,7 +3,7 @@ title: エージェントからゲートウェイへのデプロイメントパ�
 linkTitle: エージェントからゲートウェイへのパターン
 description: エージェントとゲートウェイを組み合わせた Collector デプロイメントの作成方法とその理由
 weight: 100
-default_lang_commit: 1143960b75c6faceb40eb64269e68390e3237671
+default_lang_commit: 98f910ef53d1e7f45002e7303b2af4da15282b21
 cSpell:ignore: cumulativetodelta loadbalancingexporter
 ---
 
@@ -115,7 +115,7 @@ receivers:
         endpoint: 0.0.0.0:4317
 
   # ホストメトリクスを収集
-  hostmetrics:
+  host_metrics:
     scrapers:
       cpu:
       memory:
@@ -151,7 +151,7 @@ service:
       processors: [memory_limiter, resourcedetection]
       exporters: [otlp]
     metrics:
-      receivers: [otlp, hostmetrics]
+      receivers: [otlp, host_metrics]
       processors: [memory_limiter, resourcedetection]
       exporters: [otlp]
     logs:
@@ -179,7 +179,7 @@ processors:
 
 exporters:
   # トレース ID によるロードバランシング
-  loadbalancing:
+  load_balancing:
     resolver:
       dns:
         hostname: otel-gateway-headless
@@ -195,7 +195,7 @@ service:
     traces:
       receivers: [otlp]
       processors: [memory_limiter]
-      exporters: [loadbalancing]
+      exporters: [load_balancing]
 ```
 
 ### ゲートウェイ設定例 {#example-gateway-configuration}
@@ -308,9 +308,9 @@ graph LR
     end
 
     subgraph "エージェント Collector (DaemonSet)"
-        AC1[エージェント 1<br/>loadbalancing]
-        AC2[エージェント 2<br/>loadbalancing]
-        AC3[エージェント 3<br/>loadbalancing]
+        AC1[エージェント 1<br/>load_balancing]
+        AC2[エージェント 2<br/>load_balancing]
+        AC3[エージェント 3<br/>load_balancing]
     end
 
     subgraph "ゲートウェイ Collector"

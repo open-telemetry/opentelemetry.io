@@ -66,8 +66,15 @@ Examples:
 - Redis command `HSET map password "secret"` will appear as
   `HSET map password ?` in the exported span.
 
-This behavior is turned on by default for all database instrumentations. Use the
-following property to disable it:
+This behavior is turned on by default for all database instrumentations.
+
+> [!WARNING] :warning: Disabling this feature is NOT recommended.
+>
+> Doing so may cause sensitive information, including personally identifiable
+> information (PII) or security credentials, to leak outside your application
+> perimeter.
+
+Use the following property to disable it:
 
 {{% config_option
 name="otel.instrumentation.common.db-statement-sanitizer.enabled"

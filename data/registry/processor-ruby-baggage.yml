@@ -1,0 +1,20 @@
+title: opentelemetry-processor-baggage
+registryType: processor
+language: ruby
+tags:
+  - baggage
+  - processor
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-processor-baggage/v0.6.0/processor/baggage
+  docs: https://rubydoc.info/gems/opentelemetry-processor-baggage/0.6.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
+license: Apache-2.0
+description: Baggage Span Processor for the OpenTelemetry framework
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-06-29
+package:
+  registry: gems
+  name: opentelemetry-processor-baggage
+  version: 0.6.0

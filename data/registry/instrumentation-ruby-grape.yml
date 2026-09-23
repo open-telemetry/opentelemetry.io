@@ -1,18 +1,18 @@
-title: OpenTelemetry Grape Instrumentation
+title: opentelemetry-instrumentation-grape
 registryType: instrumentation
 language: ruby
 tags:
   - grape
   - instrumentation
   - ruby
-license: Apache 2.0
-description:
-  The Grape instrumentation is a community-maintained instrumentation for Grape,
-  a REST-like API framework for Ruby.
+license: Apache-2.0
+description: Grape instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/grape
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-grape/v0.7.0/instrumentation/grape
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-grape/0.7.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2022-10-27
 package:
   registry: gems

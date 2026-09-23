@@ -4,6 +4,7 @@ linkTitle: エクスポートされるメトリクス
 description: OBI がエクスポートできる HTTP/gRPC メトリクスについて学びます。
 weight: 21
 default_lang_commit: 53f798ca0e698ca5270ac7c63f02e2083ba9f257
+drifted_from_default: true
 cSpell:ignore: replicaset statefulset
 ---
 

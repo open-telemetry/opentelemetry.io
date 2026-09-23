@@ -62,7 +62,7 @@ and the OTLP gRPC endpoint (`4317`):
 docker run -d --rm --name jaeger \
   -p 16686:16686 \
   -p 4317:4317 \
-  jaegertracing/all-in-one:latest
+  jaegertracing/jaeger:latest
 ```
 
 By default, the OTLP exporter sends data to `http://localhost:4317`, which

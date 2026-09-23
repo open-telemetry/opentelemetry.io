@@ -2,9 +2,9 @@
 title: 設定
 weight: 20
 description: ニーズに合わせてコレクターを設定する方法を確認してください
-default_lang_commit: ad6f8d1e5179464d22f7e9cdf9fe86bc53f550e5
+default_lang_commit: 5ec6f9be2f6645aca56794b24524a6f5316613b6
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey hostmetrics initca oidc pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
+cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey initca oidc pprof prodevent spanevents unredacted upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -258,7 +258,7 @@ receivers:
     endpoint: 0.0.0.0:8006
 
   # データソース: メトリクス
-  hostmetrics:
+  host_metrics:
     scrapers:
       cpu:
       disk:
@@ -461,7 +461,7 @@ exporters:
     namespace: default
 
   # データソース: メトリクス
-  prometheusremotewrite:
+  prometheus_remote_write:
     endpoint: http://prometheus.example.com:9411/api/prom/push
     # 公式の Prometheus (Docker経由で動作) の
     # エンドポイントを使う場合は: 'http://prometheus:9090/api/v1/write' 次を追加

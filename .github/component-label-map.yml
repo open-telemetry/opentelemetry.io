@@ -84,6 +84,10 @@ sig:go:
       - any-glob-to-any-file:
           - content/en/docs/languages/go/**
           - content/en/docs/zero-code/go/**
+sig:go-compile-time:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/zero-code/go/compile-time/**
 sig:helm:
   - changed-files:
       - any-glob-to-any-file:
@@ -156,7 +160,6 @@ CI/infra: # including config
           - .editorconfig
           - .github/**
           - .gitpod.yml
-          - .htmltest.base.yml
           - .markdown*.*
           - content/**/.markdownlint.yaml
           - .nvmrc
@@ -169,9 +172,12 @@ CI/infra: # including config
           - content/en/site/**
           - gulp-src/**
           - gulpfile.js
+          - lychee.base.toml
           - Makefile
           - netlify/**
           - netlify.toml
+          - '**/package-lock.json'
+          - package.json # scripts map defines the CI install contract
           - scripts/**
           - tests/**
 
@@ -179,5 +185,6 @@ dependencies:
   - changed-files:
       - any-glob-to-any-file:
           - package.json
+          - '**/package-lock.json'
           - .gitmodules
           - content-modules/**

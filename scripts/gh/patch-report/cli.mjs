@@ -34,8 +34,9 @@ Options:
       --patch-skipped <bool>   'true' when generation produced no changes.
       --command-exit-status <n> Exit status of the patch-producing command.
       --apply-result <r>       Result of the apply job.
-      --hint <text>            Guidance shown when the request could not be
-                               identified (e.g. how to phrase it correctly).
+      --note <text>            Notice appended as the comment's final
+                               paragraph (e.g. a deprecation notice for the
+                               action, or guidance on phrasing a request).
   -n, --dry-run                Print the comment without posting it.
   -h, --help                   Show this help.
 
@@ -56,7 +57,7 @@ const { values } = parseArgs({
     'patch-skipped': { type: 'string', default: '' },
     'command-exit-status': { type: 'string', default: '' },
     'apply-result': { type: 'string', default: '' },
-    hint: { type: 'string', default: '' },
+    note: { type: 'string', default: '' },
     'dry-run': { type: 'boolean', short: 'n', default: false },
     help: { type: 'boolean', short: 'h' },
   },
@@ -97,7 +98,7 @@ const body = values.ack
       runId,
       runUrl,
       directiveUrl,
-      hint: values.hint,
+      note: values.note,
     });
 
 const commentId = values['comment-id'];

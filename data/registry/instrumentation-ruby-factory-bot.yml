@@ -1,17 +1,17 @@
-title: OpenTelemetry FactoryBot Instrumentation
+title: opentelemetry-instrumentation-factory_bot
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
-license: Apache 2.0
-description:
-  The FactoryBot instrumentation is a community-maintained instrumentation for
-  the FactoryBot gem.
+license: Apache-2.0
+description: FactoryBot instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/factory_bot
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-factory_bot/v0.2.0/instrumentation/factory_bot
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-factory_bot/0.2.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2025-03-26
 package:
   registry: gems

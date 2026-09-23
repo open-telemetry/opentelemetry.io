@@ -148,7 +148,7 @@ When building your own authenticator, you have two options:
 [builder]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
 [client authenticators]:
-  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
+  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#readme-client-authenticators
 [extensions]: /docs/collector/configuration/#extensions
 [sa]:
-  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators
+  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#readme-server-authenticators
