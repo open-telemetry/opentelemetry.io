@@ -120,19 +120,15 @@ Each worker then has its own SDK components and resource, avoiding shared
 background threads and locks and giving each metrics writer a distinct resource
 identity.
 
-If the SDK must be initialized before the fork, use OpenTelemetry Python SDK
-1.44.0 or later and enable the process resource detector before starting the
-server:
-
-```sh
-export OTEL_EXPERIMENTAL_RESOURCE_DETECTORS=process
-```
-
-The SDK automatically generates a unique `service.instance.id` and refreshes
-process-dependent resource attributes after a fork. With the process detector
-enabled, each worker therefore reports its own `process.pid` and
-`service.instance.id`. Avoid configuring one shared `service.instance.id` for
-multiple workers; metrics producers are expected to follow the
+With OpenTelemetry Python SDK 1.44.0 or later, the SDK automatically generates a
+unique `service.instance.id` resource attribute for each Python process and
+regenerates it, along with other configured process-dependent resource
+attributes, in forked child processes. This gives each worker a distinct metrics
+stream identity without enabling the optional process resource detector. It does
+not restore inherited background threads or resolve locks; initialize the SDK
+after the fork to avoid those issues. Avoid configuring one shared
+`service.instance.id` for multiple workers; metrics producers are expected to
+follow the
 [single-writer principle](/docs/specs/otel/metrics/data-model/#single-writer).
 
 There are some workarounds for pre-fork servers with OpenTelemetry. The
