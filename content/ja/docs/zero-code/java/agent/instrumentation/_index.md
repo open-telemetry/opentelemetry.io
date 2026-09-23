@@ -3,6 +3,7 @@ title: 計装の設定
 linkTitle: 計装の設定
 weight: 100
 default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
+drifted_from_default: true
 cSpell:ignore: enduser hset serverlessapis
 ---
 

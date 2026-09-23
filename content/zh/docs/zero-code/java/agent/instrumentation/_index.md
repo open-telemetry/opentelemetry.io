@@ -2,6 +2,7 @@
 title: 插桩配置
 linkTitle: 插桩配置
 default_lang_commit: 5b82e8f9c057d4d4961d41091a4bc75fc9b5b37c
+drifted_from_default: true
 weight: 100
 cSpell:ignore: enduser hset serverlessapis
 ---
