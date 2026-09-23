@@ -92,7 +92,7 @@ or custom telemetry still needs to be visible.
 The Java SIG is already using this to track progress towards the Java agent's
 3.0 release. The database conventions have stabilized, and we've made progress
 on RPC and messaging. The Java agent adopted stable HTTP conventions in
-[2.0](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v2.0.0),
+[2.0][java-instrumentation-v2.0.0],
 but the audit surfaced gaps that we fixed along the way. Seeing those gaps helps
 the SIG prioritize work and check its progress.
 
@@ -244,6 +244,7 @@ integration should look like.
 [explorer]: https://explorer.opentelemetry.io/
 [java]: https://explorer.opentelemetry.io/java-agent
 [collector]: https://explorer.opentelemetry.io/collector
+[java-instrumentation-v2.0.0]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v2.0.0
 [project]: https://github.com/open-telemetry/opentelemetry-ecosystem-explorer
 [research]:
   https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/blob/9893616a9042eaf2670882e5e55fad4ab12584cf/projects/ux-research-and-info-arc/user-interview-synthesis.md
