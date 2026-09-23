@@ -61,14 +61,14 @@ file.
 
 ## Markdown
 
-Site pages are written in the Markdown syntax supported by the [Goldmark]
+Site pages are written in the Markdown syntax supported by the [Goldmark][]
 Markdown renderer. For the full list of supported Markdown extensions, see
-[Goldmark].
+[Goldmark][].
 
 You can also use the following Markdown extensions:
 
 - [Alerts](#alerts)
-- [Emojis]: for the complete list of available emojis, see [Emojis] from the
+- [Emojis][]: for the complete list of available emojis, see [Emojis][] from the
   Hugo docs.
 
 [Emojis]: https://gohugo.io/quick-reference/emojis/
@@ -90,38 +90,74 @@ These render as:
 
 {{% _param alertExamples %}}
 
-For details about Hugo's blockquote alert syntax, see [Alerts][hugo-alerts] from
-the Hugo docs.
+For details about the blockquote alert syntax, see [Alerts][docsy-alerts] from
+the Docsy docs.
 
 [gfm-alerts]:
   https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide#alerts
 [GFM]: https://github.github.com/gfm/
 [Goldmark]: https://gohugo.io/configuration/markup/#goldmark
-[hugo-alerts]: https://gohugo.io/render-hooks/blockquotes/#alerts
+[docsy-alerts]: https://www.docsy.dev/docs/content/adding-content/#alerts
 [Obsidian callout]: https://help.obsidian.md/callouts
+
+### Link references
+
+When using Markdown [reference links][], prefer the _collapsed_ form `[text][]`
+over the _shortcut_ form `[text]`. While both are valid [CommonMark][], the
+shortcut form is not consistently recognized by all Markdown tools. In
+particular, if you write `[example]` and forget the definition, the
+[markdownlint][] linter won't warn you[^md052] -- the text silently renders as
+literal `[example]` instead of a link. With the collapsed form `[example][]`,
+the linter catches the missing definition immediately.
+
+[^md052]:
+    Specifically, the built-in [MD052][] rule (`reference-links-images`) only
+    checks collapsed and full reference forms by default. Its `shortcut_syntax`
+    option can include shortcut references, but it doesn't work well in
+    practice.
+
+[MD052]: https://github.com/DavidAnson/markdownlint/blob/main/doc/md052.md
+
+This is enforced by the `no-shortcut-ref-link` custom rule. Run
+`npm run fix:markdown` to convert shortcut references automatically.
+
+[CommonMark]: https://spec.commonmark.org/0.31.2/#reference-link
+[reference links]: https://spec.commonmark.org/0.31.2/#reference-link
 
 ### Markdown checks {#markdown-standards}
 
 To enforce standards and consistency for Markdown files, all files should follow
-certain rules, enforced by [markdownlint]. For a full list, check the
-[.markdownlint.yaml] and [.markdownlint-cli2.yaml] files.
+certain rules, enforced by [markdownlint][]. For a full list, check the
+[.markdownlint.yaml][] and [.markdownlint-cli2.yaml][] files.
+
+When legitimate exceptions to a rule exist, use `markdownlint-disable` directive
+to suppress the rule warnings. For details, see the
+[markdownlint documentation](https://github.com/DavidAnson/markdownlint#configuration).
 
 We also enforce Markdown [file format](#file-format) and strip files of trailing
-whitespace. This precludes the [line break syntax] of 2+ spaces; use `<br>`
+whitespace. This precludes the [line break syntax][] of 2+ spaces; use `<br>`
 instead or reformat your text.
 
 ## Spell checking
 
 Use [CSpell](https://github.com/streetsidesoftware/cspell) to make sure that all
-your text is spelled correctly. For a list of words that are specific to the
-OpenTelemetry website, see the
-[`.cspell.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml)
-file.
+your text is spelled correctly.
 
-If `cspell` indicates an "Unknown word" error, check whether you wrote the word
-correctly. If so, add the word to the `cSpell:ignore` section at the top of your
-file. If no such section exists, you can add it to the front matter of a
-Markdown file:
+If `cspell` reports an "Unknown word", check whether you wrote the word
+correctly. If so, add the word to one of these locations:
+
+- A page-local `cSpell:ignore` list in the page front matter. For details, see
+  below.
+- Your locale-specific word list file
+- The general [all-words.txt][] word list
+
+[all-words.txt]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell/all-words.txt
+
+### Page-local `cSpell:ignore` list
+
+If the unknown word appears only on a single or a few pages, add it to a
+page-local `cSpell:ignore` list in the page front matter:
 
 ```markdown
 ---
@@ -130,18 +166,30 @@ cSpell:ignore: <word>
 ---
 ```
 
-For any other file, add `cSpell:ignore <word>` in a comment line appropriate for
-the file's context. For a [registry](/ecosystem/registry/) entry YAML file, it
-might look like this:
+For non-Markdown files, add `cSpell:ignore <word>` in a comment line appropriate
+for the file. For example, in a [registry](/ecosystem/registry/) entry YAML
+file, it might look like this:
 
 ```yaml
 # cSpell:ignore <word>
 title: registryEntryTitle
 ```
 
+### Word list files
+
+If the unknown word appears in multiple pages or is a technical term, add it to
+your locale-specific word list file. Word list files are located in the
+[.cspell/][] directory.
+
+If the word is spelled correctly in all locales, such as `opamp`, add it to the
+[all-words.txt][] file.
+
+[.cspell/]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell/
+
 ## File format
 
-We use [Prettier] to enforce file formatting. Invoke it using:
+We use [Prettier][] to enforce file formatting. Invoke it using:
 
 - `npm run fix:format` to format all files
 - `npm run fix:format:diff` to format only the files that have changed since the

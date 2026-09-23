@@ -77,7 +77,7 @@ function helloWorld() {
 
 In the same way, we have implemented tracing support for some of the most
 important `interfaces/libraries/frameworks` that are parts of
-[Contrib](https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation)
+[Contrib](https://github.com/open-telemetry/opentelemetry-php-contrib/tree/2b6a02f67d85f7f94ebc285d2c08c3523d26e093/src/Instrumentation?from_branch=main)
 repository. Each `auto-instrumentation` package uses above `hook` function in
 order to register and provide tracing functionality. One missing thing, not
 mentioned yet is an `API` `SDK` used to create traces and other necessary

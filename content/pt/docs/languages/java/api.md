@@ -12,7 +12,8 @@ logBridgeWarning: >
   Elas não são destinadas ao uso do usuário final como alternativas para Log4j /
   SLF4J / Logback / etc.
 default_lang_commit: dabd30226437f71ca1eca69f9e8f04926a042bae # patched
-cSpell:ignore: kotlint Logback updowncounter
+drifted_from_default: true
+cSpell:ignore: kotlint updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

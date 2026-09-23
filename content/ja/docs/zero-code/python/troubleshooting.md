@@ -2,7 +2,7 @@
 title: Pythonの自動計装に関する問題のトラブルシューティング
 linkTitle: Troubleshooting
 weight: 40
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+default_lang_commit: bdfe463187e63311ab3e137f1e314acfb877fd8b
 cSpell:ignore: ASGI gunicorn uvicorn
 ---
 
@@ -46,13 +46,13 @@ apk add build-base
 まず、適切なパッケージをインストール（またはプロジェクトファイルに追加して `uv sync` を実行）します。
 
 ```sh
-uv pip install opentelemetry-distro opentelemetry-exporter-otlp
+uv add opentelemetry-distro opentelemetry-exporter-otlp
 ```
 
 これで、自動計装をインストールできます。
 
 ```sh
-uv run opentelemetry-bootstrap -a requirements | uv pip install --requirement -
+uv run opentelemetry-bootstrap -a requirements | uv add --requirement -
 ```
 
 最後に、 `uv run` を使用してアプリケーションを起動します（[エージェントの設定](/docs/zero-code/python/#configuring-the-agent)を参照してください）。
@@ -156,6 +156,24 @@ async def root():
 
 ```sh
 uvicorn main:app --workers 2
+```
+
+##### Gunicornのポストフォークによるプログラム自動計装の使用 {#use-gunicorn-post-fork-for-programmatic-auto-instrumentation}
+
+Gunicornを使用している場合、`opentelemetry-instrument` のかわりにポストフォークフックの一部として[プログラム自動計装](https://github.com/open-telemetry/opentelemetry-python-contrib/blob/main/opentelemetry-instrumentation/README.rst#programmatic-auto-instrumentation)で OpenTelemetry を初期化できます。
+たとえば、`your_app.py` と同じディレクトリにある `gunicorn_config.py` ファイルで次のように設定します。
+
+```python
+from opentelemetry.instrumentation.auto_instrumentation import initialize
+
+def post_fork(server, worker):
+    initialize()
+```
+
+次のコマンドで実行します。
+
+```sh
+gunicorn --config gunicorn_config.py --workers=2 your_app:app
 ```
 
 ##### PrometheusでOTLPを直接使用 {#use-prometheus-with-direct-otlp}

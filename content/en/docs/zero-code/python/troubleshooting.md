@@ -52,13 +52,13 @@ First, install the appropriate packages (or add them to your project file and
 run `uv sync`):
 
 ```sh
-uv pip install opentelemetry-distro opentelemetry-exporter-otlp
+uv add opentelemetry-distro opentelemetry-exporter-otlp
 ```
 
 Now, you can install the auto instrumentation:
 
 ```sh
-uv run opentelemetry-bootstrap -a requirements | uv pip install --requirement -
+uv run opentelemetry-bootstrap -a requirements | uv add --requirement -
 ```
 
 Finally, use `uv run` to start your application (see
@@ -175,6 +175,26 @@ Then, run the server with:
 
 ```sh
 uvicorn main:app --workers 2
+```
+
+##### Use Gunicorn post-fork for programmatic auto-instrumentation
+
+If using Gunicorn, then you can initialize OpenTelemetry with
+[programmatic auto-instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/blob/main/opentelemetry-instrumentation/README.rst#programmatic-auto-instrumentation)
+as part of your post-fork hooks, instead of with `opentelemetry-instrument`. For
+example, in a file `gunicorn_config.py` that is alongside `your_app.py`:
+
+```python
+from opentelemetry.instrumentation.auto_instrumentation import initialize
+
+def post_fork(server, worker):
+    initialize()
+```
+
+Then, run with:
+
+```sh
+gunicorn --config gunicorn_config.py --workers=2 your_app:app
 ```
 
 ##### Use Prometheus with direct OTLP

@@ -1,5 +1,6 @@
 ---
-title: Pull request checks
+title: Pull request checks and tests
+linkTitle: PR checks & tests
 description: Learn how to make your pull request successfully pass all checks
 weight: 40
 ---
@@ -18,9 +19,9 @@ a set of checks are executed. The PR checks verify that:
 >
 > If any of the PR checks fails, try to
 > [fix content issues](../pull-requests/#fix-issues) first by running
-> `npm run fix:all` locally.
+> `npm run fix` locally.
 >
-> You can also add the comment `/fix:all` to your PR. This will trigger the
+> You can also add the comment `/fix` to your PR. This will trigger the
 > OpenTelemetry Bot to run that command on your behalf and update the PR. Make
 > sure that you pull those changes locally.
 >
@@ -36,14 +37,33 @@ This check fails if you haven't [signed the CLA](../prerequisites/#cla).
 If the [Netlify](https://www.netlify.com/) build fails, select **Details** for
 more information.
 
+A `?? some/path` status line shortly before `"build.command" failed`, naming a
+path that your PR doesn't touch, suggests that the build tripped over a stale
+Netlify build cache rather than your changes:
+
+1. Ask a maintainer, through a PR comment, to retry the build without its cache.
+   For the cache-clearing procedure, see
+   [Dependency management](/site/build/dependencies/#netlify-build-cache).
+2. If the failure recurs on the cache-free retry, the cache wasn't the cause:
+   some step of the build is writing that path, and your changes are the first
+   suspect.
+
 ## GitHub PR checks {#checks}
 
 To make sure that contributions follow our [style guide](../style-guide/) we
 have implemented a set of checks that verify style guide rules and fail if they
 find any issues.
 
-The following list describes current checks and what you can do to fix related
-errors:
+The sections below describe current checks and what you can do to fix related
+errors.
+
+> [!NOTE]
+>
+> Only recent blog posts are checked. For details, see [Old blogs are not
+> updated][old-blogs]. In particular, while old posts are rendered to the
+> website, the checks listed below do not apply to old blogs.
+
+[old-blogs]: ../blog/#old-blogs-are-not-updated
 
 ### `TEXT linter` {.notranslate lang=en}
 
@@ -66,16 +86,19 @@ the suggested changes manually.
 
 ### `SPELLING check` {.notranslate lang=en}
 
-This check verifies that
-[all words are spelled correctly](../style-guide/#spell-checking).
+This check verifies that [all words are spelled correctly][spell checking] in
+all locales.
 
-If this check fails, run `npm run check:spelling` locally to see the misspelled
-words. If a word is spelled correctly, you may need to add it to the
-`cSpell:ignore` section in the front matter of the file.
+If the check fails, run `npm run check:spelling` locally to list issues. To add
+or change allowed words, see [Spell checking][] in the style guide.
+
+[Spell checking]: ../style-guide/#spell-checking
 
 ### `CSPELL` check {.notranslate lang=en}
 
-This check will verify that all words in your cSpell ignore list are normalized.
+This check verifies that cSpell `cSpell:ignore` lists in front matter are
+normalized and that `.cspell/*.txt` word lists are sorted (see
+`npm run fix:dict`).
 
 If this check fails, run `npm run fix:dict` locally and push the changes in a
 new commit.
@@ -90,18 +113,33 @@ new commit.
 
 ### `FILENAME check` {.notranslate lang=en}
 
-This check verifies that all
-[file names are in kebab-case](../style-guide/#file-names).
+This check verifies that:
 
-If this check fails, run `npm run fix:filenames` locally and push the changes in
-a new commit.
+- All [file names are in kebab-case](../style-guide/#file-names)
+- No obsolete files or folders exist in the repository (see list below)
+
+Follow the guidance in each error annotation. To apply fixes locally, run
+`npm run fix:filenames` and push the changes in a new commit.
+
+> [!NOTE]
+>
+> `fix:filenames` may **delete** obsolete files or folders.
+
+#### Obsolete files and folders
+
+The check flags these obsolete paths:
+
+- `tools/` - removed when [code-excerpts tooling moved to an npm package][#9638]
+- `static/refcache.json` - removed in the [switch to Lychee][#10911]. If your
+  branch restores it, follow the [stale-branch update instructions][#10990].
+
+[#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
+[#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
+[#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
 These two checks build the website and verify that all links are valid.
-
-To build and check links locally, run `npm run check:links`. This command also
-updates the reference cache. Push any changes to the refcache in a new commit.
 
 > [!NOTE]
 >
@@ -113,7 +151,7 @@ updates the reference cache. Push any changes to the refcache in a new commit.
 You need to fix the URLs reported as **invalid** (HTTP status **404**), by the
 link checker.
 
-#### Handling valid external links
+#### Handling valid external links {#handling-valid-external-links}
 
 The link checker will sometimes get an HTTP status other than 200 (success) by
 servers that block checkers. Such servers will often return an HTTP status in
@@ -125,28 +163,33 @@ success status for, you can add the following query parameter to your URL to
 have the link checker ignore it: `?link-check=no` or `&link-check=no` if there
 are other query parameters. For example, the following URLs will be ignored:
 
-- <https:/some-example.org?link-check=no>
-- <https:/some-example.org?other-param=value&link-check=no>
+- `https:/some-example.org?link-check=no`
+- `https:/some-example.org?other-param=value&link-check=no`
 
-> [!TIP] Maintainers tip
->
-> Maintainers can run the following script immediately after having run the link
-> checker to have Puppeteer attempt to validate links with non-ok statuses:
->
-> ```sh
-> ./scripts/double-check-refcache-4XX.mjs
-> ```
->
-> Use the `-f` flag to also validate URL fragments (anchors) in external links,
-> which `htmltest` doesn't do. We don't currently run this often, so you will
-> probably want to limit the number of updated entries using the `-m N` flag.
-> For usage info, run with `-h`.
+When you add `link-check=no`, record the date of your manual validation by also
+appending a `last-validated=YYYY-MM-DD` parameter, for example:
+
+- `https:/some-example.org?link-check=no&last-validated=2026-08-02`
+
+### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
+
+If you added or changed an external link, the link checker records it in the
+link cache (`.lycheecache`), and this check fails until the updated cache is
+committed.
+
+The easiest way to update it is to comment
+[`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) on your PR — the
+OpenTelemetry bot updates the cache for you.
+
+Alternatively, you can build and check links locally, by running
+`npm run check:links`. This command also updates the link cache. Push any
+changes to the cache in a new commit.
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 
-If this check fails, review the `BUILD and CHECK LINKS` log, under the
-`npm run log:check:links` step, for any other potential issues. Ask maintainers
-for help, if you are unsure how to recover.
+If this check fails, review the `BUILD` log, under the `npm run log:build` step,
+for any other potential issues. Ask maintainers for help, if you are unsure how
+to recover.
 
 #### Always use a path for site-local links {#avoid-external-site-local-links}
 
@@ -166,7 +209,8 @@ Using local paths ensures that:
   tab, which is not the desired behavior for site-local navigation
 - Localization link processing works as expected: links are automatically
   prefixed with the appropriate language code
-- Local paths are easier to link-check and don't unnecessarily fill the refcache
+- Local paths are easier to link-check and don't unnecessarily fill the link
+  cache
 
 <details>
 <summary>Note to maintainers</summary>
@@ -176,6 +220,22 @@ The following code enforces the link requirement described in this section:
 - The render-link hook that emits this warning:
   [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
 - The script that auto-converts full URLs to local paths:
-  [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
+  [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
 
 </details>
+
+### `LOCALIZATION` guidelines {.notranslate lang=en #localization}
+
+This check enforces mechanically-verifiable
+[localization guidelines](../localization/), such as
+[not copying images and other assets](../localization/#images) across
+localizations, that are not already covered by other checks.
+
+If this check fails, run `npm run fix:l10n` locally and push the changes in a
+new commit.
+
+### `TEST (excluding test:base)` {.notranslate lang=en}
+
+Runs `npm run test:compound-tests`, which executes the compound `test:*-*` NPM
+scripts (for example, Netlify edge-function tests). It does **not** run
+`test:base`.

@@ -25,13 +25,13 @@ application.
 
 ## Status and Releases
 
-The current status of the major functional components for OpenTelemetry is as
-follows:
+The current [status](/docs/specs/otel/versioning-and-stability/) of the major
+functional components for OpenTelemetry is as follows:
 
 > [!WARNING]
 >
 > Regardless of an API/SDK's status, if your instrumentation relies on [semantic
-> conventions][semconv] that are marked as [Experimental] in the [semantic
+> conventions][semconv] that are marked as [Experimental][] in the [semantic
 > conventions specification][semconv-spec], your data flow might be subject to
 > **breaking changes**.
 >

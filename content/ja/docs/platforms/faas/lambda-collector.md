@@ -3,8 +3,7 @@ title: Lambdaコレクター設定
 linkTitle: Lambdaコレクター設定
 weight: 11
 description: コレクターLambdaレイヤーをあなたのLambdaに追加して設定する
-default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309 # patched
-drifted_from_default: true
+default_lang_commit: dd98ac8ecbbb60996860f62ec1f9eeb63a408a34
 cSpell:ignore: ADOT awsxray configmap confmap
 ---
 

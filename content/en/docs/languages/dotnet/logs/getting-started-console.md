@@ -4,7 +4,7 @@ linkTitle: Console
 description: Learn how to use OpenTelemetry Logs in a .NET Console application
 weight: 10
 # prettier-ignore
-cSpell:ignore: brandName companyName Contoso Listeria monocytogenes OTLP productDescription recallReasonDescription
+cSpell:ignore: brandName companyName Contoso Listeria monocytogenes productDescription recallReasonDescription
 ---
 
 This guide will show you how to get started with OpenTelemetry .NET Logs in a

@@ -24,10 +24,10 @@ easier. It does the following:
   [custom resource (CR)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
 - Manages the configuration of a fleet of OpenTelemetry Collectors via
   [OpAMP](/docs/specs/opamp/) integration, supported by the
-  [`OpAMPBridge`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opampbridges.md)
+  [`OpAMPBridge`](https://github.com/open-telemetry/opentelemetry-operator/blob/6022a4fef5b60f8812069a54bac44e631ef5ec8c/docs/api/opampbridges.md?from_branch=main)
   custom resource.
 - Provides
-  [integration with the Prometheus Operator's `PodMonitor` and `ServiceMonitor` CRs](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator).
+  [integration with the Prometheus Operator's `PodMonitor` and `ServiceMonitor` CRs](https://github.com/open-telemetry/opentelemetry-operator/tree/de81a64ae8d7d2f4f48945049d8ef9ad3509f89e/cmd/otel-allocator?from_branch=main).
 - Injects and configures
   [autoinstrumentation](https://www.honeycomb.io/blog/what-is-auto-instrumentation)
   into your pods, supported by the
@@ -62,7 +62,7 @@ configuration files, the Collector managed by the OTel Operator does not.
 
 To get around this, you could merge the multiple Collector configs through some
 external tool beforehand. For example, if you
-[were deploying the Operator via Helm](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator),
+[were deploying the Operator via Helm](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/2c6541c9914ea7ad82c00884af7fc28385fd522d/charts/opentelemetry-operator?from_branch=main),
 you could technically
 [pass it multiple Collector config files using multiple --values flags](https://stackoverflow.com/a/56653384)
 and let [Helm](https://helm.sh) do the merging for you.
@@ -122,9 +122,9 @@ exporters:
 ```
 
 For more info, see the
-[full example](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/02-otel-collector-ls.yml),
+[full example](https://github.com/avillela/otel-target-allocator-talk/blob/4c0eb425c90187d584c9d03b51ad918b377014a3/src/resources/02-otel-collector-ls.yml?from_branch=main),
 along with the
-[instructions](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
+[instructions](https://github.com/avillela/otel-target-allocator-talk/tree/1f49e53e0b3bfc0399913ee0a1e44e61ad7a4752?tab=readme-ov-file&from_branch=main#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
 
 ### Q3: Is the Operator version at parity with the Collector version?
 
@@ -153,7 +153,7 @@ developers to develop and test. It contains a base set of components–i.e.
 
 If you want access to more components than the ones offered by core, you can use
 the Collector's
-[Kubernetes Distribution](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-k8s)
+[Kubernetes Distribution](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/b590e8bc74a5aacca1236f02b10bafeb4959dd96/distributions/otelcol-k8s?from_branch=main)
 instead. This distribution is made specifically to be used in a Kubernetes
 cluster to monitor Kubernetes and services running in Kubernetes. It contains a
 subset of components from
@@ -202,7 +202,7 @@ to authenticate against that private registry. For more info on how to use
 [the instructions](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
 
 For more info, check out the
-[OpenTelemetryCollector CR API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md).
+[OpenTelemetryCollector CR API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/f6b0d947a4c48444a0483b3b0dcaf1e60c4458d6/docs/api/opentelemetrycollectors.md?from_branch=main).
 
 ### Q5: Does the Target Allocator work for all deployment types?
 
@@ -223,13 +223,13 @@ install the Prometheus Operator just to use these two CRs with the Target
 Allocator.
 
 The easiest way to install the
-[`PodMonitor`](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api-reference/api.md#monitoring.coreos.com/v1.PodMonitor)
+[`PodMonitor`](https://github.com/prometheus-operator/prometheus-operator/blob/5e8d9c51281b62da75b9faa48d7f99a4d0a9ea79/Documentation/api-reference/api.md?from_branch=main#monitoring.coreos.com/v1.PodMonitor)
 and
-[`ServiceMonitor`](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api-reference/api.md#monitoring.coreos.com/v1.ServiceMonitor)
+[`ServiceMonitor`](https://github.com/prometheus-operator/prometheus-operator/blob/5e8d9c51281b62da75b9faa48d7f99a4d0a9ea79/Documentation/api-reference/api.md?from_branch=main#monitoring.coreos.com/v1.ServiceMonitor)
 CRs is to grab a copy of the individual
-[PodMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml)
+[PodMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/ad05cfdbbf20b84325f41018e55eddbd841ec9da/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml?from_branch=main)
 and
-[ServiceMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-servicemonitors.yaml)
+[ServiceMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/ad05cfdbbf20b84325f41018e55eddbd841ec9da/charts/kube-prometheus-stack/charts/crds/crds/crd-servicemonitors.yaml?from_branch=main)
 [custom resource definitions (CRDs)](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/),
 like this:
 
@@ -240,7 +240,7 @@ kubectl --context kind-otel-target-allocator-talk apply -f https://raw.githubuse
 ```
 
 See my
-[example of the OpenTelemetry Operator’s Target Allocator with `ServiceMonitor`](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
+[example of the OpenTelemetry Operator’s Target Allocator with `ServiceMonitor`](https://github.com/avillela/otel-target-allocator-talk/tree/1f49e53e0b3bfc0399913ee0a1e44e61ad7a4752?tab=readme-ov-file&from_branch=main#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
 
 ### Q7: Do I need to create a service account to use the Target Allocator?
 
@@ -265,7 +265,7 @@ and associate the `ClusterRole` to the `ServiceAccount` via
 `ClusterRoleBinding`.
 
 See the
-[Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#rbac)
+[Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/tree/de81a64ae8d7d2f4f48945049d8ef9ad3509f89e/cmd/otel-allocator?from_branch=main#rbac)
 for more on Target Allocator RBAC configuration.
 
 > **NOTE:** This will be automated fully in the near future (see accompanying
@@ -322,7 +322,7 @@ yourself (see
 [Q7](#q7-do-i-need-to-create-a-service-account-to-use-the-target-allocator)).
 
 For more info, check out the
-[Target Allocator API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md).
+[Target Allocator API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/20d055590028d991e2cd241cbf21723e5609d842/docs/api/targetallocators.md?from_branch=main).
 
 ### Q10: Is there a version lag between the OTel Operator auto-instrumentation and auto-instrumentation of supported languages?
 

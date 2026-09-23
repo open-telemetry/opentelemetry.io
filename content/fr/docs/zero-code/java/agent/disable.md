@@ -2,7 +2,7 @@
 title: Suppression d'instrumentation spécifique
 linkTitle: Suppression d'instrumentation
 weight: 11
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
 drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: akka armeria clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logmanager mojarra mybatis myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
@@ -52,7 +52,7 @@ spécifiques.
 
 {{% config_option name="otel.instrumentation.[name].enabled" %}} Définissez à
 `false` pour supprimer l'instrumentation de l'agent pour des bibliothèques
-spécifiques, où [name] est le nom d'instrumentation correspondant :
+spécifiques, où `[name]` est le nom d'instrumentation correspondant :
 {{% /config_option %}}
 
 | Bibliothèque/Framework                           | Nom de l'instrumentation                    |

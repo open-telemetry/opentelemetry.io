@@ -2,7 +2,7 @@
 title: Manage Telemetry with SDK
 weight: 12
 aliases: [exporters]
-cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
+cSpell:ignore: autoconfigured data_point FQCNs inflight Interceptable okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -1381,6 +1381,8 @@ concepts:
 - [Senders](#senders): an abstraction for a different HTTP / gRPC client
   libraries.
 - [Authentication](#authentication) options for OTLP exporters.
+- [SDK self-monitoring metrics](#sdk-self-monitoring-metrics) emitted by
+  exporters and other SDK components.
 
 #### Senders
 
@@ -1391,8 +1393,8 @@ cases in the Java ecosystem:
 - Java 11+ brings the built-in `java.net.http.HttpClient`, but
   `opentelemetry-java` needs to support Java 8+ users, and this can't be used to
   export via `gRPC` because there is no support for trailer headers.
-- [OkHttp](https://square.github.io/okhttp/) provides a powerful HTTP client
-  with support for trailer headers, but depends on the kotlin standard library.
+- [OkHttp](https://lysine.dev/okhttp/) provides a powerful HTTP client with
+  support for trailer headers, but depends on the kotlin standard library.
 - [grpc-java](https://github.com/grpc/grpc-java) provides its own
   `ManagedChannel` abstraction with various
   [transport implementations](https://github.com/grpc/grpc-java#transport), but
@@ -1526,9 +1528,169 @@ public class OtlpAuthenticationConfig {
 ```
 <!-- prettier-ignore-end -->
 
-### Testing
+### SDK self-monitoring metrics
 
-TODO: document tools available for testing the SDK
+The Java SDK can emit self-monitoring metrics for exporters, span and log record
+processors, tracer and logger providers, and the periodic metric reader. The
+schema selection applies to OTLP exporters and to the batching span and log
+record processors. For the other components it controls whether self-monitoring
+is enabled at all rather than which names are used.
+
+OTLP exporter builders use `GlobalOpenTelemetry.getMeterProvider()` for
+self-monitoring by default. Call `setMeterProvider(...)` on a builder to use a
+different provider.
+[Zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure)
+supplies its configured SDK `MeterProvider` automatically.
+
+For programmatically built exporters, call `setInternalTelemetryVersion(...)`
+with `InternalTelemetryVersion.LEGACY` or `InternalTelemetryVersion.LATEST` to
+select the metrics schema. With zero-code SDK autoconfigure, set
+`otel.experimental.sdk.telemetry.version` to `legacy` or `latest`; its default
+is `legacy`.
+
+With [declarative configuration](../configuration/#declarative-configuration),
+SDK self-monitoring telemetry is disabled by default. To enable it, set
+`instrumentation/development.java.otel_sdk.internal_telemetry_version` to
+`legacy` or `latest`:
+
+```yaml
+instrumentation/development:
+  java:
+    otel_sdk:
+      internal_telemetry_version: latest
+```
+
+The following table summarizes the metric names emitted by each component. A
+dash indicates that the schema does not define metrics for that component.
+
+| Component                 | `legacy`                                       | `latest`                                                                                                                                                                                                                                                                         |
+| ------------------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| OTLP exporters            | `otlp.exporter.seen`, `otlp.exporter.exported` | `otel.sdk.exporter.span.inflight`, `otel.sdk.exporter.span.exported`, `otel.sdk.exporter.metric_data_point.inflight`, `otel.sdk.exporter.metric_data_point.exported`, `otel.sdk.exporter.log.inflight`, `otel.sdk.exporter.log.exported`, `otel.sdk.exporter.operation.duration` |
+| `BatchSpanProcessor`      | `queueSize`, `processedSpans`                  | `otel.sdk.processor.span.queue.capacity`, `otel.sdk.processor.span.queue.size`, `otel.sdk.processor.span.processed`                                                                                                                                                              |
+| `BatchLogRecordProcessor` | `queueSize`, `processedLogs`                   | `otel.sdk.processor.log.queue.capacity`, `otel.sdk.processor.log.queue.size`, `otel.sdk.processor.log.processed`                                                                                                                                                                 |
+| `SdkTracerProvider`       | —                                              | `otel.sdk.span.started`, `otel.sdk.span.live`                                                                                                                                                                                                                                    |
+| `SdkLoggerProvider`       | —                                              | `otel.sdk.log.created`                                                                                                                                                                                                                                                           |
+| `PeriodicMetricReader`    | —                                              | `otel.sdk.metric_reader.collection.duration`                                                                                                                                                                                                                                     |
+
+`SimpleSpanProcessor` and `SimpleLogRecordProcessor` always use the
+semantic-convention schema and record `otel.sdk.processor.span.processed` and
+`otel.sdk.processor.log.processed` respectively.
+
+The legacy exporter metrics both include a `type` attribute with a value of
+`span`, `metric`, or `log`. `otlp.exporter.exported` also includes a `success`
+attribute.
+
+The `latest` names follow the
+[SDK metric semantic conventions](/docs/specs/semconv/otel/sdk-metrics/).
+Exporter metrics include `otel.component.type`, `otel.component.name`,
+`server.address`, and `server.port`. Failed exports add `error.type` to the
+`.exported` and `.duration` metrics, but not to `.inflight` metrics. The
+`otel.sdk.exporter.operation.duration` metric also includes
+`http.response.status_code` for HTTP or `rpc.grpc.status_code` for gRPC.
+
+The legacy metrics predate the SDK metrics semantic conventions and remain the
+default for SDK autoconfigure to avoid breaking existing users. The Java SDK
+does not currently define a removal schedule for them.
+
+### Benchmarks
+
+The SDK publishes [JMH](https://github.com/openjdk/jmh) benchmark results to
+[open-telemetry.github.io/opentelemetry-java/benchmarks/](https://open-telemetry.github.io/opentelemetry-java/benchmarks/).
+Benchmarks run on every commit to `main` using a dedicated bare-metal runner to
+minimize noise. The results include tools for date filtering and series
+selection, along with links to the benchmark source code where Javadoc
+elaborates on what is benchmarked and why.
+
+Current benchmarks cover the **record path** for all three signals — the hot
+path that application threads exercise on every span start/end, metric
+measurement, or log emit:
+
+| Benchmark                                    | Dimensions                                                                              |
+| -------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [`SpanRecordBenchmark`][span-record-src]     | span size, concurrent threads                                                           |
+| [`MetricRecordBenchmark`][metric-record-src] | instrument type + aggregation, aggregation temporality, cardinality, concurrent threads |
+| [`LogRecordBenchmark`][log-record-src]       | log record size, concurrent threads                                                     |
+
+> [!NOTE]
+>
+> Benchmarks for the **export path** (batch processor flush, exporter I/O, etc.)
+> are planned but lower priority, since export occurs off the hot path.
 
 [JSON file encoding]:
   /docs/specs/otel/protocol/file-exporter/#json-file-serialization
+[span-record-src]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/SpanRecordBenchmark.java
+[metric-record-src]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/MetricRecordBenchmark.java
+[log-record-src]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/all/src/jmh/java/io/opentelemetry/sdk/LogRecordBenchmark.java
+
+### Testing
+
+The `io.opentelemetry:opentelemetry-sdk-testing` artifact provides utilities for
+asserting on telemetry produced by your code, without exporting data to any
+backend.
+
+The following components are available:
+
+| Class                                                                                                                                                                                   | Description                                                                                                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [OpenTelemetryExtension](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit5/OpenTelemetryExtension.html)                  | JUnit 5 extension that sets up an `OpenTelemetrySdk` with in-memory exporters and W3C trace context propagation, registers it as `GlobalOpenTelemetry`, and resets all captured telemetry before each test. |
+| [OpenTelemetryRule](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/junit4/OpenTelemetryRule.html)                            | JUnit 4 equivalent of `OpenTelemetryExtension`. Cannot be used as `@ClassRule`.                                                                                                                             |
+| [OpenTelemetryAssertions](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/assertj/OpenTelemetryAssertions.html)               | Extends AssertJ with OTel-aware `assertThat()` overloads for `SpanData`, `MetricData`, `LogRecordData`, `Attributes`, and `EventData`. Use via `import static ...OpenTelemetryAssertions.assertThat`.       |
+| [InMemorySpanExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemorySpanExporter.html)                    | Captures exported spans in memory.                                                                                                                                                                          |
+| [InMemoryMetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryMetricReader.html)                    | Reads aggregated metrics in memory.                                                                                                                                                                         |
+| [InMemoryLogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemoryLogRecordExporter.html)          | Captures exported log records in memory.                                                                                                                                                                    |
+| [TestClock](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/time/TestClock.html)                                              | Mutable `Clock` for controlling time in tests. Pass to `SdkTracerProvider.builder().setClock(...)`.                                                                                                         |
+| [TestSpanData](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/trace/TestSpanData.html)                                       | Immutable builder for constructing `SpanData` instances in tests without running real instrumentation.                                                                                                      |
+| [TestLogRecordData](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/logs/TestLogRecordData.html)                              | Immutable builder for constructing `LogRecordData` instances in tests.                                                                                                                                      |
+| [SettableContextStorageProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/context/SettableContextStorageProvider.html) | `ContextStorageProvider` that lets you swap `ContextStorage` at runtime; useful for testing context propagation behavior.                                                                                   |
+
+#### JUnit 5
+
+`OpenTelemetryExtension` is the recommended starting point for JUnit 5.
+
+```java
+class CoolTest {
+  @RegisterExtension
+  static final OpenTelemetryExtension otelTesting = OpenTelemetryExtension.create();
+
+  private final Tracer tracer = otelTesting.getOpenTelemetry().getTracer("test");
+
+  @Test
+  void test() {
+    tracer.spanBuilder("name").startSpan().end();
+    assertThat(otelTesting.getSpans())
+        .satisfiesExactly(span -> assertThat(span).hasName("name"));
+  }
+}
+```
+
+Access raw telemetry with `getSpans()`, `getMetrics()`, and `getLogRecords()`.
+Use `assertTraces()` for fluent trace-level assertions via `TracesAssert`.
+Telemetry is automatically reset before each test; `clearSpans()`,
+`clearMetrics()`, and `clearLogRecords()` are available for mid-test resets.
+
+#### JUnit 4
+
+`OpenTelemetryRule` provides the same API for JUnit 4:
+
+```java
+public class CoolTest {
+  @Rule public OpenTelemetryRule otelTesting = OpenTelemetryRule.create();
+
+  private Tracer tracer;
+
+  @Before
+  public void setUp() {
+    tracer = otelTesting.getOpenTelemetry().getTracer("test");
+  }
+
+  @Test
+  public void test() {
+    tracer.spanBuilder("name").startSpan().end();
+    assertThat(otelTesting.getSpans())
+        .satisfiesExactly(span -> assertThat(span).hasName("name"));
+  }
+}
+```

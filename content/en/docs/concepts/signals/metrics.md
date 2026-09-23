@@ -111,6 +111,85 @@ by the SDK. You can customize which metric instruments are to be processed or
 ignored. You can also customize aggregation and what attributes you want to
 report on metrics.
 
+## Cardinality limits
+
+The **cardinality** of a metric is the number of unique attribute combinations
+reported for it. Because the SDK keeps a separate aggregation state (a data
+point) in memory for each unique combination, cardinality drives the memory cost
+of metrics. Unlike logs, this cost scales with the number of distinct attribute
+combinations rather than with request volume, so high-cardinality attributes,
+such as user IDs or raw URL paths, can cause unbounded memory growth.
+
+To protect applications from this, the OpenTelemetry metrics SDK enforces a
+**cardinality limit**: a maximum number of unique attribute combinations tracked
+per metric stream. The default is 2000 and can be overridden with a
+[View](#views).
+
+When the limit is reached, additional attribute combinations are not dropped
+outright. Instead, their measurements are aggregated into a single **overflow
+data point** identified by the attribute `otel.metric.overflow=true`. This
+design has three important properties:
+
+- **No measurements are lost.** Only the attributes are dropped; the recorded
+  values are folded into the overflow data point, so the metric's overall total
+  stays correct.
+- **Memory is bounded.** The SDK never tracks more than the configured number of
+  combinations.
+- **Overflow is observable.** Every SDK uses the same
+  `otel.metric.overflow=true` marker, so a single query can detect overflow
+  across services, languages, and backends.
+
+The trade-off is that any query that **filters or groups by an attribute** on an
+overflowed metric undercounts, because the measurements folded into overflow no
+longer carry that attribute.
+
+This is easy to underestimate, because overflow replaces the **entire**
+attribute combination, not just its high-cardinality part. Suppose a request
+counter records `url.path` (high cardinality) together with `success` (a
+boolean). Once the stream overflows, a measurement for
+`{url.path=/checkout, success=false}` is folded into the single overflow data
+point `{otel.metric.overflow=true}`, dropping `success` along with `url.path`. A
+query for `success=false` then misses that measurement, even though `success` on
+its own is as low-cardinality as an attribute can be. An error-rate alert built
+on `success=false` can therefore stop firing, while the metric's overall total
+stays correct.
+
+### What the limit does not apply to
+
+The cardinality limit applies only to attributes supplied when recording
+measurements through the metrics API. It does **not** apply to:
+
+- [Resource](/docs/concepts/resources/) attributes, such as `service.name` or
+  `service.instance.id`.
+- Instrumentation scope attributes set when a [Meter](#meter) is created.
+
+Values in Resource and instrumentation scope attributes are recorded on every
+data point, including the overflow one, so they remain reliably queryable even
+during overflow. This is not a reason to relocate measurement attributes to work
+around the limit. Attributes should be placed according to what they describe: a
+Resource describes the entity producing telemetry, instrumentation scope
+describes the instrumenting library, and measurement attributes describe an
+individual measurement. When attributes are modeled this way, context that is
+constant for the lifetime of the process, such as service name, environment, or
+region, naturally belongs in the Resource, where it also stays queryable under
+overflow.
+
+### Temporality and cardinality limits
+
+For synchronous instruments,
+[aggregation temporality](/docs/specs/otel/metrics/data-model/#temporality)
+determines how quickly the SDK can reclaim aggregation state, and therefore how
+quickly the limit is reached:
+
+- With **delta** temporality, the SDK resets state after each cycle, so the
+  limit bounds only the combinations active within a single cycle.
+- With **cumulative** temporality, the SDK retains state across cycles, so once
+  the limit is reached, new combinations keep overflowing until the process
+  restarts.
+
+Asynchronous instruments follow different rules that are beyond the scope of
+this overview.
+
 ## Language Support
 
 Metrics are a [stable](/docs/specs/otel/versioning-and-stability/#stable) signal

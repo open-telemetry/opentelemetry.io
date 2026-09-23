@@ -439,7 +439,7 @@ Start your app as follows, and then send it requests by visiting
 <http://localhost:8080/rolldice?rolls=12> with your browser or `curl`.
 
 ```sh
-php -S 8080 localhost
+php -S localhost:8080
 ```
 
 After a while, you should see the spans printed in the console by the
@@ -798,7 +798,7 @@ $queue = [
     'job2',
     'job3',
 ];
-$reader = $meterProvider
+$meterProvider
     ->getMeter('demo_meter')
     ->createObservableGauge('queued', 'jobs', 'The number of jobs enqueued')
     ->observe(static function (ObserverInterface $observer) use (&$queue): void {

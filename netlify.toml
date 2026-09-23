@@ -2,6 +2,12 @@
 publish = "public"
 command = "npm run netlify-build:preview"
 
+[build.environment]
+# Details: https://opentelemetry.io/site/build/dependencies/#inert-netlify-auto-install
+NPM_FLAGS = "--dry-run --ignore-scripts"
+# Details: https://opentelemetry.io/site/build/dependencies/#npm-version-floor
+NPM_VERSION = "11.19.0"
+
 [context.production]
 command = "npm run netlify-build:production"
 
@@ -15,10 +21,23 @@ from = "https://blog.opentelemetry.io/*"
 to = "https://opentelemetry.io/blog/:splat"
 force = true
 
-[[headers]]
-  for = "/schemas/:version"
-  [headers.values]
-    content-type = "application/yaml"
+[[edge_functions]]
+function = "registry-component-redirect"
+path = "/ecosystem/registry/*"
+
+[[edge_functions]]
+function = "markdown-negotiation"
+path = "/*"
+
+[[edge_functions]]
+function = "schema-analytics"
+path = "/schemas/*"
+
+[[edge_functions]]
+function = "asset-tracking"
+pattern = "/(.*)\\.(md|txt)$"
+
+# cSpell:ignore nosniff sameorigin
 
 [[headers]]
   for = "/*"

@@ -15,9 +15,9 @@ through nested lower-level contexts.
 
 To simplify this process, the OpenTelemetry community is excited to announce
 OTTL
-[context inference](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md#context-inference)
+[context inference](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/1afa19b190f2b68ffac6dd5bada4b3fd0297d0c9/processor/transformprocessor/README.md?from_branch=main#context-inference)
 support for the
-[transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor).
+[transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/transformprocessor?from_branch=main).
 This feature removes the need for users to understand the underlying context
 concept of OTTL, allowing them to focus solely on their data. It also improves
 statement processing efficiency by automatically selecting the most appropriate
@@ -34,7 +34,7 @@ format.
 ### Basic configuration
 
 The
-[basic configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md#basic-config)
+[basic configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/1afa19b190f2b68ffac6dd5bada4b3fd0297d0c9/processor/transformprocessor/README.md?from_branch=main#basic-config)
 style simplifies configuration by allowing users to list all statements
 together, without worrying about OTTL contexts or extra configuration
 structures. This style support statements from multiple OTTL contexts and does
@@ -77,7 +77,7 @@ using OTTL.
 ### Advanced configuration
 
 The context-inferred
-[advanced configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md#advanced-config)
+[advanced configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/1afa19b190f2b68ffac6dd5bada4b3fd0297d0c9/processor/transformprocessor/README.md?from_branch=main#advanced-config)
 style closely resembles the existing format and allows users to leverage the
 benefits of context inference while providing granular control over statement
 configurations, such as `error_mode` and `conditions`. For example, consider the
@@ -135,7 +135,7 @@ allows the use of additional configuration keys such as `error_mode` and
 `conditions`. It supports statements from multiple OTTL contexts. However,
 unlike the basic configuration style, it may require splitting them into
 separate configuration groups (see
-[advanced config](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor#advanced-config)).
+[advanced config](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/transformprocessor?from_branch=main#advanced-config)).
 In terms of performance, the advanced configuration is slightly faster than the
 basic configuration, making it a better choice for complex scenarios or
 configurations with a high number of statements.

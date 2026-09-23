@@ -3,58 +3,39 @@ title: イシュー
 description: 既存イシューの修正方法、またはバグ、セキュリティ、潜在的な改善の報告方法
 weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
-_issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
-default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9 # patched
-drifted_from_default: true
+default_lang_commit: f60f406894f94169947ecbd236b933ee4008354c
 ---
-
-<style>
-  /* Force all list to be compact. */
-  li > p {
-    margin-bottom: 0;
-  }
-
-  /* Style "first time" alert */
-  .alert--first-timer {
-    margin: 0.5rem 0 !important;
-
-    > blockquote {
-      margin-top: 1rem;
-      margin-bottom: 0;
-      border-left-color: var(--bs-warning);
-      background-color: var(--bs-danger-bg-subtle);
-      > *:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-</style>
 
 ## 既存のイシューの修正 {#fixing-an-existing-issue}
 
-OTel を改善するための最も良い方法の 1 つは、既存のイシューを修正することです。
+ドキュメントを改善するための最も良い方法の 1 つは、既存のイシューを修正することです。
 
 1. [issues]({{% param _issues %}}) のリストを参照してください。
-2. 作業したいイシューを選択してください。短時間で修正できるものが理想です。
+2. 作業したいイシューを選択してください。
 
-   <a id="first-issue"></a>
-   {{% alert title="最初のコントリビュートですか？" color="primary alert--first-timer" %}}
-
-   以下のラベルのイシューを選択してください。
-   - [Good first issue](<{{% param _issue %}}%22good+first+issue%22>)
-   - [Help wanted](<{{% param _issue %}}%3A%22help+wanted%22>)
-
-   > **NOTE**: メンターシップやオンボーディングプロセスの一部でない限り、私たちは、[OpenTelemetry organization][org] にまだコントリビュートしたことがない人に**イシューをアサインしません**。
+   > [!WARNING] 重要！
    >
-   > [org]: https://github.com/open-telemetry
-
-   {{% /alert %}}
+   > {{% param chooseAnIssueAtYourLevel %}} [`CI/infra` ラベルが付いたイシューはメンテナー専用です](#ci-infra)。
 
 3. イシューにコメントがある場合、内容を読んでください。
 4. このイシューがまだ関係あるかをメンテナーに尋ね、明らかにしたい質問がある場合はイシューにコメントを投稿して質問してください。
 5. この旨のコメントを追加して、問題に取り組む意向を共有してください。
 6. イシューの修正に取り組みましょう。問題が発生した場合は、メンテナーに知らせてください。
-7. 準備ができれば、[プルリクエストを通じてあなたの作業を提出してください](../pull-requests)。
+7. 準備ができれば、[プルリクエストを通じてあなたの作業を提出してください](../pull-requests)（PR）。
+
+## CI とインフラストラクチャのイシュー {#ci-infra}
+
+[CI/infra][] ラベルが付いたイシューは**メンテナー*専用***です。
+リポジトリ自体のワークフロー、必須チェック、ツール、設定に関するものです。
+コンテンツやローカリゼーションの作業とは異なり、以下の特徴があります。
+
+- この領域の変更は、メンテナー以外が有意義にテストすることができません。
+  たとえば、障害モードは上流の CI やマージ時の動作で表面化します。
+- 作業はメンテナーのロードマップやイシューのテキストからは見えないコンテキストに依存することが多いです。
+- 一部のコンテキストは意図的に非公開です。
+  サイトのセキュリティ体制に影響する作業（堅牢化や修正）は、マージされるまで公には議論されません。
+
+このようなイシューに `triage:accepted` が付いている場合、問題が確認されたことを意味するのであり、作業を誰でも自由に引き受けられるという意味ではありません。
 
 ## イシューの報告 {#reporting-an-issue}
 
@@ -73,7 +54,7 @@ OTel を改善するための最も良い方法の 1 つは、既存のイシュ
 新しいコンテンツや機能のアイデアを持っているが、どこに配置すべきかわからない場合、イシューに提出できます。
 バグとセキュリティの脆弱性も同様に報告できます。
 
-1. [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/) に行って **Issues** タブ内の **New issue** を選択してください。
+1. GitHub に行って **Issues** タブから **[New issue][]** を選択してください。
 2. 要望または疑問に最も適したイシューの種類を選択してください。
 3. テンプレートに入力してください。
 4. イシューを提出してください。
@@ -87,4 +68,15 @@ OTel を改善するための最も良い方法の 1 つは、既存のイシュ
 - イシューの範囲は合理的な範囲に制限してください。問題の範囲が大きい場合は、小さなイシューに分割してください。たとえば、「セキュリティドキュメントを修正する」は広すぎますが、「『ネットワークアクセスの制限』のトピックに詳細を追加する」は具体的で実行しやすいです。
 - 新しいイシューに関連していて似たようなイシューが存在していないか探してください。
 - 新しいイシューがほかのイシューやプルリクエストに関連している場合は、該当する URL 全文を記載するか、`#` をつけてイシュー番号やプルリクエスト番号を記述してください。たとえば、`Introduced by #987654` です。
-- [Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md) に従ってください。ほかのコントリビューターを尊重しましょう。「このドキュメントはひどい」のような発言は、有益でも礼儀正しくもありません。
+- [Code of Conduct][] に従ってください。
+  ほかのコントリビューターを尊重しましょう。
+  「このドキュメントはひどい」のような発言は、有益でも礼儀正しくもありません。
+
+<!-- prettier-ignore-start -->
+[CI/infra]: https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra
+[Code of Conduct]: https://github.com/open-telemetry/community/blob/main/code-of-conduct.md
+[new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new/
+<!-- prettier-ignore-end -->
+<!-- markdownlint-disable link-image-reference-definitions -->
+
+[choose an issue]: <{{% param _issues %}}>

@@ -39,7 +39,7 @@ We saw a few common themes this month across our three sessions:
 - OpenTelemetry adoption & enablement
 - [Connectors](https://github.com/open-telemetry/opentelemetry-collector/pull/6140)
   (Collector)
-- [Service Graph Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/servicegraphprocessor)
+- [Service Graph Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/d02d376f20a67762c85766590249911b77198b8b/processor/servicegraphprocessor?from_branch=main)
   (Collector)
 - Signal correlation (e.g., metrics/traces correlation, logs/traces correlation)
 
@@ -54,7 +54,7 @@ Below is a summary of this month’s discussions.
 #### 1- OpenTelemetry Transformation Language (OTTL)
 
 **Q:** Will exporters support
-[OTTL](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl)
+[OTTL](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/6f6508287432467610c3385020845f1bac937532/pkg/ottl?from_branch=main)
 (a language for transforming OpenTelemetry data)? Use case: data needs to be
 transformed, but don’t want to do it in a processor.
 
@@ -63,7 +63,7 @@ exporters; however, this may be a use case for either
 [connectors](https://github.com/open-telemetry/opentelemetry-collector/pull/6140)
 (a new Collector component that acts as an exporter/receiver pair to join
 pipelines together) or the
-[routing processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/routingprocessor).
+[routing processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/71fc94173de0ee2cf1bd9d38d4c16ea20722a362/processor/routingprocessor?from_branch=main).
 A routing processor reads data from an HTTP request or attribute, and routes it
 to a specified exporter.
 
@@ -73,7 +73,7 @@ to a specified exporter.
 metrics, and send the data to a visualization tool?
 
 **A:** The
-[Service Graph Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/servicegraphprocessor)
+[Service Graph Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/d02d376f20a67762c85766590249911b77198b8b/processor/servicegraphprocessor?from_branch=main)
 generates a service graph. This processor is still in alpha, and as a result,
 some known issues around the Service Graph regarding the dependency mapping. One
 span doesn’t have the entire context, and in order to get the complete picture,
@@ -92,7 +92,7 @@ soon. For more info, see the
 [Connector PR](https://github.com/open-telemetry/opentelemetry-collector/pull/6372).
 
 Another approach would be to use a
-[routing processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/routingprocessor).
+[routing processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/71fc94173de0ee2cf1bd9d38d4c16ea20722a362/processor/routingprocessor?from_branch=main).
 A routing processor reads data from an HTTP request or attribute, and routes it
 to a specified exporter. This is done by making new network connections, which
 can make this approach inefficient.
@@ -126,7 +126,7 @@ Collectors.
   processed. If there’s one namespace where there’s more data that comes in with
   [personally identifiable information (PII)](https://www.investopedia.com/terms/p/personally-identifiable-information-pii.asp),
   you might want to have a dedicated Collector for that namespace that uses the
-  [attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/attributesprocessor/README.md).
+  [attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/ecf97200a5140932805ed4a4cc66f2927e2cfb8e/processor/attributesprocessor/README.md?from_branch=main).
 
 ### OpenTelemetry Adoption & Enablement
 

@@ -42,7 +42,7 @@ If you're currently using a Zipkin exporter, you have two migration paths:
   [Zipkin's OTLP ingestion support](https://github.com/openzipkin-contrib/zipkin-otel).
 - **Use the Collector**: Route your OTLP data through the OpenTelemetry
   Collector with its
-  [Zipkin exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/zipkinexporter).
+  [Zipkin exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/exporter/zipkinexporter?from_branch=main).
 
 ## Questions?
 

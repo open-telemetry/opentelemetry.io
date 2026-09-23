@@ -14,7 +14,7 @@
     {{- end -}}
     {{- $number = printf "%d+" $count -}}
   {{- else if eq $type "vendors" -}}
-    {{- $vendors := site.Data.ecosystem.vendors -}}
+    {{- $vendors := hugo.Data.ecosystem.vendors -}}
     {{- $number = printf "%d+" (len $vendors) -}}
   {{- else if eq $type "registry" -}}
     {{- $registryFiles := readDir "data/registry" -}}
@@ -30,12 +30,16 @@
   {{- end -}}
 {{- end -}}
 
+{{ $anchor := partial "hooks/render-link.html" (dict
+    "ctx" (dict
+      "Destination" $url
+      "PageInner" .Page
+      "Text" $number))
+-}}
+
 <div class="ecosystem-stat">
   <div class="ecosystem-stat__number">
-    {{- with $url }}<a href="{{ . }}">{{ end -}}
-    {{ $number }}
-    {{- with $url }}</a>{{ end -}}
+    {{- $anchor -}}
   </div>
   <div class="ecosystem-stat__label">{{ $label }}</div>
 </div>
-

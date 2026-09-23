@@ -2,8 +2,7 @@
 title: 謝辞
 description: 本サイトの内容に関するソースへの謝辞
 aliases: [/acknowledgements, /docs/acknowledgements]
-default_lang_commit: 722beb5b9ecf8a603b2f5ae6128e3c3509f52fcf # patched
-drifted_from_default: true
+default_lang_commit: 85b6f72b42aced80182f3d482c0231c7d136488b
 cSpell:ignore: Pigram
 ---
 

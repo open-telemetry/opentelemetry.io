@@ -4,7 +4,7 @@
     "componentName" "propagation.md")
 -}}
 
-{{ $langName := (index $.Site.Data.instrumentation $langIndex).name | default "" -}}
+{{ $langName := (index hugo.Data.instrumentation $langIndex).name | default "" -}}
 
 {{ $args := dict
     "_dot" .

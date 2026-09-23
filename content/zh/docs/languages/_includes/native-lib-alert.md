@@ -1,5 +1,6 @@
 ---
 default_lang_commit: 788277e362bc602b72a90aa9191f9c05c403458e
+drifted_from_default: true
 ---
 
 {{ if $noIntegrations }}

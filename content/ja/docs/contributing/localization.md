@@ -3,12 +3,11 @@ title: サイトのローカリゼーション
 description: 非英語ローカリゼーションのサイトページの作成と管理
 linkTitle: ローカリゼーション
 weight: 25
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25 # patched
-drifted_from_default: true
+default_lang_commit: 3c1e6e89077b2afbb9a3ffd5ff61a132b53152aa
 cSpell:ignore: Dowair shortcodes
 ---
 
-OTel のウェブサイトは、ページのローカリゼーションをサポートするために、Hugo の [multilingual framework] をサポートしています。
+OTel のウェブサイトは、ページのローカリゼーションをサポートするために、Hugo の [multilingual framework][] をサポートしています。
 デフォルトの言語は英語であり、米国英語がデフォルト（暗黙の）ローカリゼーションとして設定されています。
 対応する言語の数は増えており、トップナビゲーションの言語ドロップダウンメニューから確認できます。
 
@@ -31,8 +30,8 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
 - 原文の _内容_、 _意味_、 _スタイル_ を **変更しないこと**
 - [小さなプルリクエスト](#small-prs) で **段階的に作業を提出すること**
 - もしなにか疑問等があれば、以下の方法で [メンテナー][maintainers] に **質問すること**
-  - [Slack] の `#otel-docs-localization` か `#otel-comms` の各チャンネル
-  - [Discussion]やイシュー、あるいはPRコメント
+  - [Slack][] の `#otel-docs-localization` か `#otel-comms` の各チャンネル
+  - [Discussion][] やイシュー、あるいは PR コメント
 
 [Discussion]: https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
 
@@ -43,20 +42,38 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
 <div class="border-start border-warning bg-warning-subtle">
 
 - **翻訳**
+  - `TIP`、`WARNING` などの [アラートタイプ](../style-guide/#alerts)。
+    これは [`MARKDOWN` linter][] ルールによって強制されます。
+  - コードブロックとインラインコード（この `inline code example` のようなもの）を含むコード
   - このレポジトリ内のリソースの **ファイルやディレクトリ** の名前
-  - [見出しID](#headings) を含む [リンク](#links) [^*]
-  - `inline code-spans` のようなインラインコードスパン
-  - `notranslate`（CSSクラスとして）でマークされたMarkdown の要素、特に[見出し](#headings)に対して
   - [すべきこと](#do) で指示されていない [フロントマター][front matter] のフィールド。特に、`aliases` は翻訳しないこと。よくわからない場合はメンテナーに質問すること。
-  - ソースコード
-- [画像内のテキストを翻訳する](#images) 場合以外で **画像ファイルのコピー** をすること。
+  - [リンク](#links)。これには [見出し ID](#headings) [^*] が含まれます
+  - `notranslate`（通常は CSS クラスとして）でマークされた Markdown の要素、特に[見出し](#headings)に対して
+- [アセット内のテキストをローカライズする](#images) 場合以外で **画像やその他のアセットのコピー** をすること。
 - 新規に追加したり変更すること
   - 原文で意図した意味と異なる **内容**
   - 表示の **スタイル**。たとえば _フォーマット_、_レイアウト_、_デザイン_ スタイル（タイポグラフィ、文字の大文字小文字、空白など）。
 
 [^*]: ありえる例外に関しては [リンク](#links) を参照のこと。
 
+[`MARKDOWN` linter]: ../pr-checks/#markdown-linter
+
 </div>
+
+#### AI ツールの使用 {#ai-tools}
+
+翻訳を支援するために生成 AI ツール（ChatGPT、Gemini など）を使用する場合は、OpenTelemetry [Generative AI Contribution Policy][genai-policy] と Linux Foundation [Generative AI Policy][lf-ai-policy] にしたがう必要があります。
+特に、次の点に注意してください。
+
+- [プルリクエストテンプレート][pull request template]の該当するチェックボックスをオンにして、AI を使用したことを**開示する**。
+- すべての AI 生成翻訳の正確性を**レビューして検証する**。
+  提出するコンテンツにはあなたが責任を負います。
+- 自分でレビューおよび検証できない AI 生成翻訳（たとえば、自分が十分に習熟していない言語での提出）は**提出しない**。
+  これは大きなレビューボトルネックを生み出すため、メンテナーの負担を抑えるために PR がクローズされる可能性があります。
+
+[genai-policy]: https://github.com/open-telemetry/community/blob/main/policies/genai.md
+[lf-ai-policy]: https://www.linuxfoundation.org/legal/generative-ai
+[pull request template]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/PULL_REQUEST_TEMPLATE.md
 
 ### 見出しID {#headings}
 
@@ -70,18 +87,16 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
 ### リンク {#links}
 
 リンク参照を **翻訳しないで** ください。
-これは外部リンク、ウェブサイトのページへのパス、[画像](#images)のようなセクションローカルのリソースにも当てはまります。
+これは外部リンク、ウェブサイトのページへのパス、[画像やその他のアセット](#images)のようなセクションローカルのリソースにも当てはまります。
 
 唯一の例外は、外部ページ（<https://en.wikipedia.org>など）へのリンクで、あなたのロケール固有のバージョンがある場合です。
 多くの場合、これはURLの`en`をあなたのロケールの言語コードに置き換えることを意味します。
 
-{{% alert title="Note" %}}
-
-OTelウェブサイトのリポジトリには、Hugoがドキュメントページを参照する絶対リンクパスを変換するために使用するカスタムの render-link フックがあります。
-**`/docs/some-page` 形式のリンク** は、リンクをレンダリングするときに、パスの先頭にページの言語コードを付けることで、 **ロケール固有になります** 。
-たとえば、先ほどのサンプルのパスは、日本語のページからレンダリングされた場合には `/ja/docs/some-page` となります。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> OTel ウェブサイトのリポジトリには、Hugo がドキュメントページを参照する絶対リンクパスを変換するために使用するカスタムの render-link フックがあります。
+> **`/docs/some-page` 形式のリンク** は、リンクをレンダリングするときに、パスの先頭にページの言語コードを付けることで、**ロケール固有になります**。
+> たとえば、先ほどのサンプルのパスは、日本語のページからレンダリングされた場合には `/ja/docs/some-page` となります。
 
 ### リンク定義ラベル {#link-labels}
 
@@ -109,17 +124,19 @@ OTelウェブサイトのリポジトリには、Hugoがドキュメントペー
 [labels]: https://spec.commonmark.org/0.31.2/#link-label
 [link definitions]: https://spec.commonmark.org/0.31.2/#link-reference-definitions
 
-### 画像とダイアグラム {#images}
+### 画像とその他のアセット {#images}
 
-画像そのもの[^shared-images]のテキストをローカライズしない限り、画像ファイルのコピーを **作成しない** でください。
+- ファイル自体のテキストをローカライズする場合を除き、画像、動画、その他のコンテンツ以外のアセットファイルのコピーを **作成しない** でください。
+  - Hugo は、サイトのローカリゼーション間で共有される画像ファイルをレンダリングする方法についてスマートです。
+    つまり、Hugo は _単一の_ 画像ファイルを出力し、それをロケール間で共有します。
+    詳細は [Page bundles][] を参照してください。
+  - これは [`LOCALIZATION` guidelines][l10n-check] チェックによって強制されます。
 
-[Mermaid][] ダイアグラム内のテキストは **翻訳して** ください。
+- [Mermaid][] ダイアグラム内のテキストは **翻訳して** ください。
 
-[^shared-images]:
-    Hugoは、サイトのローカライゼーション間で共有される画像ファイルをレンダリングする方法についてスマートです。
-    つまり、Hugoは _単一の_ 画像ファイルを出力し、それをロケール間で共有します。
-
+[l10n-check]: ../pr-checks/#localization
 [Mermaid]: https://mermaid.js.org
+[Page bundles]: https://gohugo.io/content-management/multilingual/#page-bundles
 
 ### インクルードファイル {#includes}
 
@@ -127,14 +144,12 @@ OTelウェブサイトのリポジトリには、Hugoがドキュメントペー
 
 ### ショートコード {#shortcodes}
 
-{{% alert title="Note" %}}
-
-2025年2月現在、私たちは共有ページのコンテンツをサポートする手段として、ショートコードから[インクルードファイル](#includes)への移行を進めています。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> 2025 年 2 月現在、私たちは共有ページのコンテンツをサポートする手段として、ショートコードから[インクルードファイル](#includes)への移行を進めています。
 
 一部の基本ショートコードには英語のテキストが含まれており、ローカリゼーションが必要になる場合があります。
-特に、[layouts/_shortcodes/docs] に含まれるものについては、その傾向が強いです。
+特に、[layouts/_shortcodes/docs][] に含まれるものについては、その傾向が強いです。
 
 ローカリゼーションしたショートコードを作成する必要がある場合は、`layouts/_shortcodes/xx` に配置してください。
 ここで `xx` はローカリゼーション対象の言語コードを指します。
@@ -169,8 +184,9 @@ default_lang_commit: <デフォルト言語の最新コミットハッシュ値>
 
 ```console
 $ npm run check:i18n
-1       1       content/en/docs/platforms/kubernetes/_index.md - content/zh/docs/platforms/kubernetes/_index.md
+> Drifted file: content/zh/docs/platforms/kubernetes/_index.md
 ...
+DRIFTED files: 361 out of 990
 ```
 
 以下のようにパスを追加することで、1 つまたはそれ以上のローカライゼーションするページに対象を絞れます。
@@ -181,11 +197,12 @@ npm run check:i18n -- content/zh
 
 ### 変更の詳細をみる {#viewing-change-details}
 
-更新が必要なローカリゼーションページについて、`-d` フラグとローカリゼーションページへのパスを追加して差分を見るか、パスを省略して対応するページのすべての差分を見ることができます。
+更新が必要なローカリゼーションページについて、`diff` サブコマンドとローカリゼーションページへのパスを指定して差分を見ることができます。
 たとえば、以下のようになります。
 
 ```console
-$ npm run check:i18n -- -d content/zh/docs/platforms/kubernetes
+$ npm run check:i18n -- diff content/zh/docs/platforms/kubernetes
+# content/zh/docs/platforms/kubernetes/_index.md: drifted from 1ca30b4d
 diff --git a/content/en/docs/platforms/kubernetes/_index.md b/content/en/docs/platforms/kubernetes/_index.md
 index 3592df5d..c7980653 100644
 --- a/content/en/docs/platforms/kubernetes/_index.md
@@ -204,49 +221,71 @@ index 3592df5d..c7980653 100644
 
 ローカリゼーションのページを作成する際は、`default_lang_commit` をページのフロントマターに追加し、`main` ブランチの適切なコミットハッシュを指定することを忘れないでください。
 
-翻訳ページが`main` における `<hash>` 時点の英語ページに基づいている場合、以下のコマンドを実行すると、`default_lang_commit` をコミット `<hash>` の値で自動的にページのフロントマターに追加できます。
-ページが `main` の `HEAD` に同期している場合、引数として `Head` を指定できます。
+翻訳ページが`main` における `<HASH>` 時点の英語ページに基づいている場合、以下のコマンドを実行すると、`default_lang_commit` をコミット `<HASH>` の値で自動的にページのフロントマターに追加できます。
+ページが `main` の `HEAD` に同期している場合、引数として `HEAD` を指定できます。
 たとえば、以下のように実行します。
 
 ```sh
-npm run check:i18n -- -n -c 1ca30b4d content/ja
-npm run check:i18n -- -n -c HEAD content/zh/docs/concepts
+npm run check:i18n -- commit 1ca30b4d --new content/ja
+npm run check:i18n -- commit HEAD --new content/zh/docs/concepts
 ```
 
 ハッシュキーを欠落しているローカリゼーションしたページのファイル一覧にするには、次を実行してください。
 
 ```sh
-npm run check:i18n -- -n
+npm run check:i18n -- --new
 ```
 
 ### 既存のページの `default_lang_commit` を更新する {#updating-default_lang_commit-for-existing-pages}
 
-対応する英語のページに変更に合わせてローカリゼーションページを更新する際、`default_lang_commit` のコミットハッシュも忘れずに確認してください。
+対応する英語のページに変更に合わせてローカリゼーションページを更新する際、`default_lang_commit` のコミットハッシュも忘れずに更新してください。
 
-{{% alert title="ヒント" %}}
+> [!TIP]
+>
+> ローカリゼーションページが `main` の `HEAD` にある英語版と対応するようになった場合、`npm run check:i18n -- commit HEAD <PATH-TO-YOUR-PAGE>` を実行してください。
+> `default_lang_commit` のハッシュが更新され、ページの[乖離の状況](#drift-status)も同時にクリアされます。
 
-ローカリゼーションページが `main` の `HEAD` にある英語版と対応するようになった場合、フロントマター内のコミットハッシュの値を消去し、前のセクションであった **add** コマンドを実行して、`default_lang_commit` フィールドの値を自動的に更新してください。
-
-{{% /alert %}}
-
-乖離したローカリゼーションページをまとめて更新した場合、`-c` フラグに続いてコミットハッシュまたは 'HEAD' を指定することで、それらのファイルのコミットハッシュを `main@HEAD` に更新できます。
+乖離したローカリゼーションページをまとめて更新した場合、`commit` サブコマンドに続いてコミットハッシュまたは 'HEAD' を指定することで、それらのファイルのコミットハッシュを `main@HEAD` に更新できます。
 
 ```sh
-npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
-npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
+npm run check:i18n -- commit <HASH> <PATH-TO-YOUR-UPDATED-FILES>
+npm run check:i18n -- commit HEAD <PATH-TO-YOUR-UPDATED-FILES>
 ```
 
-{{% alert title="重要" %}}
+> [!IMPORTANT]
+>
+> `HEAD` をハッシュ指定子として使用すると、スクリプトは**ローカル環境**における `main` の HEAD のハッシュを使用します。
+> `main` を GitHub 上の HEAD に対応したい場合、必ず `main` のフェッチとプルをしてください。
 
-`HEAD` をハッシュ指定子として使用すると、スクリプトは**ローカル環境**における `main` の HEAD のハッシュを使用します。
-`main` を GitHub 上の HEAD に対応したい場合、必ず `main` のフェッチとプルをしてください。
+### ローカリゼーションページへのパッチ適用 {#patched}
 
-{{% /alert %}}
+[ビルドの修正](#keep-checks-green)では、ローカリゼーションページを英語の対応ページと同期せずに編集する必要がある場合があります。
+たとえば、共有のショートコードが変更された後にショートコードの呼び出しを修正する場合です。
+修正がロケールをまたぐかどうかにかかわらず、この方法で修正されたローカリゼーションページは**パッチ済み**としてマークしてください。
+
+- 修正に必要な編集のみを行い、ページに他の変更を加えないでください。
+- ページの `default_lang_commit` 行の末尾に `# patched` YAML コメントを追加してください。
+
+  ```yaml
+  default_lang_commit: abc4567... # patched
+  ```
+
+このマーカーはこのような機械的な修正に限定されており、[意味的な変更](#semantic-changes)では使用しません。
+このマーカーは、ページが同期されずに修正されたことをそのページのロケールチームに伝えます。
+ハッシュ値は最後の同期ポイントを記録したままです。
+マーカーは、ページのハッシュが次に[更新](#updating-default_lang_commit-for-existing-pages)された際に削除されます。
 
 ### 乖離の状況 {#drift-status}
 
-`npm run fix:i18n:status` を実行して、ローカライズ対象ページが原文から乖離した場合にフロントマターフィールド `drifted_from_default` を追加します。
-このフィールドは近いうちに、英語版のページと比較してドリフトしたページの上部にバナーを表示するために使われるようになります。
+フロントマターフィールド `drifted_from_default` は、ローカリゼーションページが乖離していることを示します。
+このフィールドが設定されたページの上部には「outdated」バナーが表示され、リンクチェッカーがそのページをスキップするため、乖離したページの古いリンクが CI を失敗させることがなくなります。
+リンクチェッカーはこのフィールドを待たずに、最後のツリー全体のステータス同期以降に変更された英語ページのロケールコピーも[乖離保留](/site/build/link-checking/#configuration)としてスキップします。
+
+毎日の [Housekeeping 実行](/site/build/ci-workflows/#housekeeping)がツリー全体でこのフィールドを同期します。
+PR は変更しないページの乖離状況を更新しません。
+PR が変更する各ページは、`I18N check` が要求するとおり、正確な乖離状態で PR から出る必要があります。
+ページを英語の対応ページと同期して[ピンを更新する](#updating-default_lang_commit-for-existing-pages)か（ステータスは同じ書き込みでクリアされます）、残りの乖離を `npm run fix:i18n:status -- <PATHS>` で記録してください。
+ピンは `main` 上のコミットのみを指すことができるため、同じ PR で行われた英語の変更に同期したページは、それらの変更がマージされるまで残りの乖離を記録します。
 
 ### スクリプトのヘルプ {#script-help}
 
@@ -254,22 +293,20 @@ npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 
 ## 新しいローカリゼーション {#new-localizations}
 
-OTelウェブサイトの新しいローカリゼーションを始めることに興味がありますか？
+OTel ウェブサイトの新しいローカリゼーションを始めることに興味がありますか？
 メンテナーにあなたの興味を伝えましょう。
-たとえば、GitHubディスカッションやSlackの`#otel-docs-localization`チャンネルを経由することが挙げられます。
+たとえば、GitHub ディスカッションや Slack の `#otel-docs-localization` チャンネルを経由することが挙げられます。
 このセクションでは、新しいローカリゼーションを開始する際の手順について説明します。
 
-{{% alert title="Note" %}}
-
-新しいローカリゼーションを開始するために、OpenTelemetryプロジェクトの既存のコントリビューターである必要はありません。
-しかし、[OpenTelemetry GitHub organization](https://github.com/open-telemetry/)のメンバーまたはローカリゼーションの承認者グループのメンバーとして追加されるには、[メンバーシップガイドライン][membership guidelines]に概説されている確立されたメンバーおよび承認者になるための要件を満たす必要があります。
-
-承認者ステータスを獲得する前は、ローカリゼーションPRへの承認を「LGTM」（Looks Good To Me）コメントを追加することで示すことができます。
-この立ち上げ段階では、メンテナーはあなたがすでに承認者であるかのようにあなたのレビューを扱います。
+> [!NOTE]
+>
+> 新しいローカリゼーションを開始するために、OpenTelemetry プロジェクトの既存のコントリビューターである必要はありません。
+> しかし、[OpenTelemetry GitHub organization](https://github.com/open-telemetry/) のメンバーまたはローカリゼーションの承認者グループのメンバーとして追加されるには、[メンバーシップガイドライン][membership guidelines]に概説されている確立されたメンバーおよび承認者になるための要件を満たす必要があります。
+>
+> 承認者ステータスを獲得する前は、ローカリゼーション PR への承認を「LGTM」（Looks Good To Me）コメントを追加することで示すことができます。
+> この立ち上げ段階では、メンテナーはあなたがすでに承認者であるかのようにあなたのレビューを扱います。
 
 [membership guidelines]: https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
-
-{{% /alert %}}
 
 ### 1. ローカリゼーションチームを結成する {#team}
 
@@ -309,11 +346,12 @@ OpenTelemetryウェブサイトの新しいローカリゼーションを始め�
          For details, see
          [Localize the homepage](https://opentelemetry.io/docs/contributing/localization/#homepage).
    - [ ] OTel maintainers:
-     - [ ] Update `hugo.yaml`
+     - [ ] Update Hugo config for `LANG_ID`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
-     - [ ] Create org-level group for `LANG_ID` approvers
-     - [ ] Update components owners for `content/LANG_ID`
+     - [ ] Create org-level teams for `LANG_ID` approvers and maintainers
+     - [ ] Add the locale to `data/locale-teams.yaml` and run
+           `npm run fix:codeowners`
    - [ ] Create an issue to track the localization of the **glossary**. Add the
          issue number here. For details, see
          [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
@@ -326,7 +364,7 @@ OpenTelemetryウェブサイトの新しいローカリゼーションを始め�
 
 [homepage]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
-最初のPRがマージされた後、メンテナーはイシューラベル、組織レベルのグループ、およびコンポーネント所有者を設定します。
+最初のPRがマージされた後、メンテナーはイシューラベルと組織レベルのチームを設定します。
 
 ### 4. 用語集をローカライズする {#glossary}
 
@@ -341,42 +379,56 @@ OpenTelemetryウェブサイトの新しいローカリゼーションを始め�
 
 ### 5. 残りのサイトページを小さな増分でローカライズする {#rest}
 
-用語が確立されたら、残りのサイトページをローカライズできます。<a id="small-prs"></a>
+用語が確立されたら、残りのサイトページをローカライズできます。
 
-{{% alert title="小さなPRを提出する" color="primary" %}}
-
-ローカリゼーションチームは、**小さな増分**で作業を提出する必要があります。
-つまり、[PR][PRs]は小さく保ち、できれば1つまたは少数の小さなファイルに限定してください。
-小さなPRはレビューが簡単で、通常はより早くマージされます。
-
-{{% /alert %}}
+> [!IMPORTANT] 小さな PR を提出する <a id="small-prs"></a>
+>
+> ローカリゼーションチームは、**小さな増分**で作業を提出する必要があります。
+> つまり、[PR][PRs] は小さく保ち、できれば 1 つまたは少数の小さなファイルに限定してください。
+> 小さな PR はレビューが簡単で、通常はより早くマージされます。
 
 ### OTelメンテナーチェックリスト {#otel-maintainer-checklist}
 
 #### Hugo {#hugo}
 
-`hugo.yaml`を更新します。`LANG_ID`の適切なエントリを以下に追加します。
+`LANG_ID` の Hugo config を更新します。
+`LANG_ID` の適切なエントリを以下に追加します。
 
-- `languages`
-- `module.mounts`。最低限、`content`用の単一の`source`-`target`エントリを追加します。ロケールに十分なコンテンツがある場合にのみ、`en`フォールバックページのエントリの追加を検討してください。
+- `config/_default/hugo.yaml` の `languages`
+- `config/_default/module-template.yaml` 経由の `module.mounts`。
+  最低限、`content` 用の単一の `source`-`target` エントリを追加します。
+  ロケールに十分なコンテンツがある場合にのみ、`en` フォールバックページのエントリの追加を検討してください。
 
 #### スペルチェック {#spelling}
 
-NPMパッケージ[@cspell/dict-LANG_ID][]として利用可能な[cSpell辞書][cSpell dictionaries]を探します。
+NPM パッケージ [@cspell/dict-LANG_ID][] として利用可能な [cSpell 辞書][cSpell dictionaries] を探します。
 方言や地域に辞書がない場合は、最も近い地域のものを選んでください。
 
-辞書が利用できない場合は、このサブセクションの残りをスキップします。
-それ以外の場合は以下を実施してください。
-
-- 開発依存関係としてNPMパッケージを追加します。例：`npm install --save-dev @cspell/dict-bn`
-- `.cspell/LANG_ID-words.txt`を作成して、`LANG_ID`用のサイトローカル辞書単語を保存します。
-- `.cspell.yml`に以下のエントリを追加します。
-  - `import`
-  - `dictionaryDefinitions`
-  - `dictionaries`：ここに2つのエントリを追加します。1つは`LANG_ID`、もう1つは`LANG_ID-words.txt`です
+- **辞書が利用できる場合**:
+  - 開発依存関係として NPM パッケージを追加します。
+    例: `npm install --save-dev @cspell/dict-bn`
+  - [`.cspell.yml`][] で、パッケージの `cspell-ext.json` を `import:` の下に追加し、辞書の ID（たとえば `bn`、`es-es`、`pl_pl`）を `dictionaries:` の下に追加します。
+- **その言語の辞書が利用できない場合**は、その言語の `import` を追加しないでください。
+  cSpell がそのロケールの Markdown を英語としてスペルチェックしようとしないように、[`.cspell.yml`][] の `ignorePaths` リストに `content/LANG_ID` を追加します。
 
 [cSpell dictionaries]: https://github.com/streetsidesoftware/cspell-dicts
 [@cspell/dict-LANG_ID]: https://www.npmjs.com/search?q=%40cspell%2Fdict
+[`.cspell.yml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml
+
+#### 単語リスト {#word-list}
+
+**スペルチェック**で追加する自然言語辞書がない場合でも、新しいロケールごとに `.cspell/LANG_ID-words.txt` を作成します（最初は空で構いません）。
+
+- [`.cspell.yml`][] で、このファイルを登録して有効化します。
+  - `dictionaryDefinitions` の下に、`name`（たとえば `LANG_ID-words`）と `path`（たとえば `.cspell/LANG_ID-words.txt`）を持つエントリを追加します。
+  - `dictionaries` の下に、上記のステップと同じ `name` の値を追加します（ファイルパスではありません）。
+
+#### チームとコードオーナー {#teams-and-code-owners}
+
+新しいロケールを [`data/locale-teams.yaml`][] に追加し、`npm run fix:codeowners` を実行して CODEOWNERS のロケールセクションを再生成します。
+これらの変更はそのロケールの最初の PR に含めてください。
+CI はレジストリが `content/` 配下のロケールディレクトリと一致することを要求します。
+新しいロケールは通常[未配置](#locale-teams)の状態で始まるため、そのロケールが[昇格](#locale-teams)するまで、CODEOWNERS の行には `docs-approvers` のフォールバックが記載されます。
 
 #### その他のツールサポート {#other-tooling-support}
 
@@ -384,60 +436,137 @@ NPMパッケージ[@cspell/dict-LANG_ID][]として利用可能な[cSpell辞書]
 
 ## 承認者およびメンテナー向けガイダンス {#approver-and-maintainer-guidance}
 
-### 意味的な変更を含むPRは複数のロケールにまたがるべきではない {#prs-should-not-span-locales}
+### ロケールチーム、コードオーナー、配置状況 {#locale-teams}
+
+各ロケールには `docs-LANG_ID-approvers` と `docs-LANG_ID-maintainers` の GitHub チームがあります。
+メンテナーは承認者も兼ねます。
+承認者チームはそのロケールのパスの[コードオーナー][code owner]であるため、ロケール承認者のレビューはロケール限定の PR に必要なコードオーナーのレビューを満たします。
+ロケールのメンテナーは、そのような PR を[自動マージ](#auto-merge)することもできます。
+
+ロケールチームの想定されるメンバーは [`data/locale-teams.yaml`][] レジストリに記録されており、このレジストリはリポジトリの [CODEOWNERS][] ファイルのロケールセクションも生成します。
+メンバーの変更はレジストリに対する PR として提案されるため、監査証跡が残ります。
+実際のチームへの反映は組織の管理者が行います。
+ジェネレーターとそれが体現している規約については、[locale-codeowners README][] を参照してください。
+
+メンテナーがいないロケールは**未配置**です。
+その CODEOWNERS の行にはフォールバックオーナーとして `@open-telemetry/docs-approvers` が記載されるため、ドキュメントの承認者がそのロケールの PR をレビューしてブロックを解除できます。
+[自動マージ](#auto-merge)にはロケールのメンテナーが必要なため、このような PR はドキュメントのメンテナーが手動でマージします。
+
+未配置のロケールにメンテナーが加わったら、そのメンテナーを記録して CODEOWNERS のロケールセクションを再生成する（`npm run fix:codeowners`）レジストリの PR を提出してください。
+これによりそのロケールの行から `docs-approvers` のフォールバックが外れ、以降はロケールチームが自身の PR を管理するようになります。
+これがロケールの**昇格**です。
+例については [zh の昇格 PR][zh graduation PR] を参照してください。
+ロケールチームが後に活動を停止した場合は、レジストリを逆方向に変更することでフォールバックが復活します。
+
+### ロケール限定の PR で自動マージを有効にする {#auto-merge}
+
+ロケールのメンテナーチームのメンバーは、ロケール限定の PR に対して `/auto-merge`（または `/auto-merge:enable`、無効にするには `/auto-merge:disable`）とコメントすることで [GitHub の自動マージ][GitHub auto-merge] を有効にできます。
+このディレクティブは、先頭にテキストや空白がない独立した行に記述し、コメントの最初または最後の非空白行として配置する必要があります。
+指定は最大 1 回までです。
+たとえば、次のように記述できます。
+
+```text
+LGTM
+/auto-merge
+```
+
+これにより、確立されたローカリゼーションチームがドキュメントメンテナーを待つことなく自分たちの PR をマージできるようになります。
+GitHub、ブランチ保護、CODEOWNERS ルールは引き続きマージを制御しており、PR はすべての必要なレビューが完了しチェックが通った場合にのみマージされます。
+
+自動マージコメントは、変更されたすべてのファイルがあなたがメンテナンスしているロケールに属している場合にのみ受け入れられます。
+そのため、共有コンテンツや英語コンテンツの変更には使用できません。
+適用条件とコマンドの詳細は、[ヘルパー README][helper README] を参照してください。
+
+[GitHub auto-merge]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
+[helper README]: https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
+
+### PR は複数のロケールにまたがるべきではない {#prs-should-not-span-locales}
+
+一般的な原則として、PR は複数のロケールにまたがるべきではありません。
+つまり、変更するページは最大で 1 つのロケールに限定すべきです。
+唯一の例外はこのセクションで説明します。
+
+#### 意味的な変更 {#semantic-changes}
 
 承認者は、ドキュメントページに**意味的な**変更を加える[PR][PRs]が複数のロケールにまたがらないようにする必要があります。
-意味的な変更とは、ページコンテンツの _意味_ に影響を与える変更です。
+意味的な変更とは、ページコンテンツの _意味_、つまり読者が理解し行動する内容に影響を与える変更です。
+コードブロック、コマンド、設定サンプルもそのコンテンツの一部です。
+これらは[翻訳しません](#do-not)が、それらへの編集は同様に意味的な変更です。
 私たちのドキュメントの[ローカリゼーションプロセス](.)により、ロケールの承認者は、時期を見て、英語の編集内容を確認し、その変更がそのロケールに適切かどうか、およびそのロケールにどのように組み込むのが最善かを判断します。
 変更が必要な場合、ロケールの承認者は独自のロケール固有のPRを通じて変更を行います。
 
-### ロケール間での純粋に編集上の変更は問題ない {#patch-locale-links}
+> [!NOTE] コンテンツに影響しないメンテナンス
+>
+> ロケールをまたぐルールはページの**コンテンツ**を対象としています。
+> メンテナーは、サイト全体のツール、設定、フロントマター、マークアップの更新を含む、ロケールをまたがざるを得ない、コンテンツに影響しない変更を提出することがあります。
+> これには[乖離状況](#drift-status)の記録管理（自動化された PR と手動のステータスのみの編集の両方）も含まれます。
+> このような変更はローカリゼーションページの意味を変更しません。
 
-**純粋に編集上の**ページ更新とは、既存のコンテンツに影響を**与えない**変更のことで、複数のロケールにまたがって行うことができます。
-これらには以下が含まれます。
+#### ビルドをグリーンに保つ {#keep-checks-green}
 
-- **リンクのメンテナンス**：ページが移動または削除された際の壊れたリンクパスの修正。
-- **リソースの更新**：移動した外部リソースへのリンクの更新。
-- **対象を絞ったコンテンツの追加**：乖離したファイルに対して、ファイル全体の更新が現実的でない場合の特定の新しい定義やセクションの追加。
+ローカリゼーションページの**コンテンツ**を変更する PR が複数のロケールにまたがることが許されるのは、サイトのビルドをグリーンに保つために厳密に必要な場合のみです。
+このような**ビルドの修正**は、共有のショートコード、インクルードファイル、データソースの変更後などに、ローカリゼーションページのサイトビルドの破損を修復します。
+ページの[乖離状況](#drift-status)はリンクチェックからのみ保護し、Hugo のビルドからは保護しません。
+修正したすべてのローカリゼーションページを[パッチ済み](#patched)としてマークしてください。
+
+ローカリゼーションページでのリンクチェックの失敗はこれに該当**しません**。
+解決方法については[リンクの修正とリソースの更新](#link-fixes-and-resource-updates)を参照してください。
+
+乖離状況の記録管理にも同じ最小限の修正ルールが適用されます。
+失敗するチェックが `drifted_from_default` の更新を要求している場合、そのチェックが報告するページのみを更新してください。
+毎日の [Housekeeping 実行](/site/build/ci-workflows/#housekeeping)が残りを完了させます。
+ステータスのみの編集は[コンテンツに影響しないメンテナンス](#semantic-changes)です。
+
+ローカリゼーションページのコンテンツへのその他の変更は、そのロケールにとっての**意味的な**変更として扱ってください。
+これには、乖離したページへの対象を絞ったコンテンツの追加（新しい用語集の用語の追加など）も含まれます。
 
 #### リンクの修正とリソースの更新 {#link-fixes-and-resource-updates}
 
-たとえば、英語のドキュメントへの変更により、非英語のロケールでリンクチェックの失敗が発生することがあります。
-これはドキュメントページが移動または削除された場合に発生します。
+英語のドキュメントへの変更により、非英語のロケールでリンクチェックの失敗が発生することがあります。
+これはドキュメントページやそのセクションが移動または削除された場合に発生します。
+移動した外部リソースへのリンクも同様に失敗する可能性があります。
+このような失敗は英語のページでのみ修正してください。
+**リンクを修正するためにローカリゼーションページのコンテンツを編集しないでください**。
+[乖離の追跡](#track-changes)が古くなったローカリゼーションのコピーをロケールチームにフラグを立て、リンクの修正を含む調整は各チームに委ねられます。
 
-このような状況では、リンクチェックに失敗するパスを持つ各非英語ページに対して以下の更新を行います。
+まず、英語側で失敗しているリンクを修正して影響を封じ込めてください。
+リンクターゲットの状況によっては追加の緩和策があります。
 
-- 新しいページパスへのリンク参照を更新します。
-- `default_lang_commit`フロントマター行の末尾に`# patched`というYAMLコメントを追加します。
-- ファイルに他の変更を加えないでください。
-- `npm run check:links`を再実行して、リンクの失敗が残っていないことを確認します。
+- **ページが移動された場合**：移動された英語ページが古いパスの [alias][aliases] を宣言していることを確認してください。
+  alias は以前公開されたリンクを機能させ続けますが、サイト訪問者に対してのみです。
+  alias はサーバーサイドリダイレクトとして公開され、リンクチェッカーはビルドされたサイトの正規ページパスに対してリンクを解決します。
+  そのため、古いパスへのリンクは英語のページでも修正が必要です。
+- **セクションがページ内で移動された場合**：セクションへのリンクが機能し続けるよう[見出し ID](#headings) を保持してください。
+  alias はページパスをリダイレクトするため、フラグメントには対応できません。
 
-**移動した**（ただし、意味的には**変更されていない**）リソース（GitHubファイルなど）への _外部リンク_ がリンクチェックの失敗を引き起こす場合は、以下を検討してください。
+その他の状況（セクションが別のページに移動された場合、外部リソースが移動された場合、ターゲットが削除された場合）には、このような緩和策はありません。
+英語のリンクを修正することが英語側の修正のすべてです。
+削除されたターゲットの場合、リンクしている各ページで代替のターゲットを選択するかリファレンスを削除することを意味します。
 
-- refcacheから壊れたリンクを削除する
-- このセクションで説明した方法を使用して、すべてのロケールでリンクを更新する
+次に、乖離の処理にローカリゼーションページを任せてください。
+英語のページを修正するとそのローカリゼーションされたコピーが[乖離](#drift-status)し、リンクチェッカーは乖離したコピーをスキップします。
+ローカリゼーションページのリンクチェックがまだ失敗する場合は、乖離状況を直接更新してください。
 
-#### 乖離したファイルへの対象を絞ったコンテンツ追加 {#targeted-content-additions}
+```sh
+npm run fix:i18n:status -- PATHS_TO_FAILING_LOCALIZED_PAGES
+```
 
-英語版から乖離したローカライズファイルに特定の新しいコンテンツを追加する場合、ファイル全体を更新するかわりに、対象を絞った更新を行うことができます。
-たとえば、英語の用語集に「cardinality」のような新しい用語が追加された場合、他の乖離したコンテンツに対処することなく、その用語だけをローカライズした用語集に追加することができます。
+まれに、ローカリゼーションページにのみ存在する失敗リンクがある場合は、報告してそのロケールチームと連携して修正してください。
 
-以下は、この対象を絞った更新のワークフローの例です。
+最後に、`npm run check:links` を再実行して、リンクの失敗が残っていないことを確認してください。
 
-- ローカライズした用語集ファイルに「cardinality」定義ブロックだけを追加する
-- フロントマターの`default_lang_commit`行の末尾に`# patched`というコメントを追加して更新する
-- 他のすべての既存コンテンツは変更しない
-- PRの説明に以下を明確に文書化する
-  - 追加された特定のコンテンツ（「cardinality」定義）
-  - ファイルが他のコンテンツについては依然として乖離していること
-  - 対象を絞った更新の理論的根拠（例：「完全なファイルの同期を必要とせずに、ローカライズした読者に重要な新しい用語を提供する」）
-
-このアプローチにより、英語版との完全な同期のために将来的に注意が必要であることを認識しながら、ローカライズコンテンツを段階的に改善することができます。
-
+<!-- prettier-ignore-start -->
+[aliases]: https://gohugo.io/content-management/urls/#aliases
+[code owner]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+[CODEOWNERS]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
+[`data/locale-teams.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
 [front matter]: https://gohugo.io/content-management/front-matter/
+[locale-codeowners README]: https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-codeowners
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
 [PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/
+[zh graduation PR]: https://github.com/open-telemetry/opentelemetry.io/pull/11516
+<!-- prettier-ignore-end -->

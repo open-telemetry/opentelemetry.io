@@ -5,6 +5,8 @@ description:
 aliases: [/integrations]
 ---
 
+{{% include freeze-notice.md %}}
+
 The mission of OpenTelemetry is
 [to enable effective observability by making high-quality, portable telemetry ubiquitous](/community/mission/).
 In other words, observability should be built in into the software you develop.
@@ -44,9 +46,9 @@ have a CNCF logo beside their name.
 
 ## Adding your integration {#how-to-add}
 
-To have your library, service, or app listed, [submit a PR] with an entry added
-to the [registry](/ecosystem/registry/adding). The entry should include the
-following:
+To have your library, service, or app listed, [submit a PR][] with an entry
+added to the [registry](/ecosystem/registry/adding). The entry should include
+the following:
 
 - Link to the main page of your library, service, or app
 - Link to the documentation that explains how enable observability using

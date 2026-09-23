@@ -54,12 +54,12 @@ For you, the end-user, it means your feedback is more visible. Instead of your
 of data that helps give the issue more weight.
 
 To make this change stick, we’ve rolled out a few things. We’ve published
-[recommendations](https://github.com/open-telemetry/community/blob/main/guides/maintainer/popular-issues.md)
+[recommendations](https://github.com/open-telemetry/community/blob/706839937eb5886bb07da6bd9d63245839e3cc2f/guides/maintainer/popular-issues.md?from_branch=main)
 for OpenTelemetry maintainers on how to manage and interpret these reactions,
 and our website now has a section explaining
 [what this means for end-users](/community/end-user/issue-participation/).
 You'll also see a friendly reminder in a new footnote on
-[issue templates](https://github.com/open-telemetry/community/blob/main/guides/maintainer/popular-issues.md#recommended-footnote-on-issue-templates)
+[issue templates](https://github.com/open-telemetry/community/blob/706839937eb5886bb07da6bd9d63245839e3cc2f/guides/maintainer/popular-issues.md?from_branch=main#recommended-footnote-on-issue-templates)
 across all OTel repositories. If you're opening a new issue, please leave that
 footer in place so that others have first-hand access to this advice.
 

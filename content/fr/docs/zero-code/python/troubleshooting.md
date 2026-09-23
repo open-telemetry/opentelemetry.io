@@ -2,7 +2,7 @@
 title: Dépannage des problèmes d'instrumentation automatique de Python
 linkTitle: Dépannage
 weight: 40
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
 drifted_from_default: true
 ---
 
@@ -54,13 +54,13 @@ Tout d'abord, installez les paquets appropriés (ou ajoutez-les à votre fichier
 de projet et exécutez `uv sync`) :
 
 ```sh
-uv pip install opentelemetry-distro opentelemetry-exporter-otlp
+uv add opentelemetry-distro opentelemetry-exporter-otlp
 ```
 
 Maintenant, vous pouvez installer l'auto-instrumentation :
 
 ```sh
-uv run opentelemetry-bootstrap -a requirements | uv pip install --requirement -
+uv run opentelemetry-bootstrap -a requirements | uv add --requirement -
 ```
 
 Enfin, utilisez `uv run` pour démarrer votre application (voir

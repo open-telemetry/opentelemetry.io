@@ -6,6 +6,8 @@ author: '[Jack Berg](https://github.com/jack-berg)'
 canonical_url: https://newrelic.com/blog/best-practices/opentelemetry-histograms
 ---
 
+<!-- markdownlint-configure-file {"no-shortcut-ref-link": {"ignore_pattern": "^-?\\d+(,\\d+)+$"}} -->
+
 Histograms are a powerful tool in the observability tool belt. OpenTelemetry
 supports histograms because of their ability to efficiently capture and transmit
 distributions of measurements, enabling statistical calculations like

@@ -1,0 +1,14 @@
+title: spdlog OpenTelemetry sink
+registryType: instrumentation
+language: cpp
+tags:
+  - spdlog
+  - instrumentation
+  - cpp
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/spdlog
+license: Apache 2.0
+description:
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

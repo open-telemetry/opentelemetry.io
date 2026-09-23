@@ -115,7 +115,7 @@ Happy coding!
 [calendar]:
   https://github.com/open-telemetry/community?tab=readme-ov-file#calendar
 [membership]:
-  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+  https://github.com/open-telemetry/community/blob/25f027532a6e9b503d6eb4dd3db0a98eb3b5f1cb/guides/contributor/membership.md?from_branch=main
 [contrib]: /docs/contributing
 [localization]: /docs/contributing/localization/
 [repos]: https://github.com/orgs/open-telemetry/repositories

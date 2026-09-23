@@ -18,11 +18,19 @@ aliases: [demo_features, features]
   and sending the generated traces and metrics to the OpenTelemetry Collector
   via gRPC. The received traces are then exported to the logs and to Jaeger;
   received metrics and exemplars are exported to logs and Prometheus.
+- **[OpAMP](/docs/specs/opamp/)**: the OpenTelemetry Collector reports health,
+  version, attributes, and effective configuration to the demo's OpAMP server.
+  You can view the reported status in the OpAMP UI at
+  <http://localhost:8080/opamp/>.
+- **SDK Self-Observability**: select services opt in to the experimental
+  `otel.sdk.*` internal metrics emitted by the OpenTelemetry SDKs themselves,
+  visualized in the
+  [Self-Observability dashboard](/docs/demo/self-observability-dashboard/).
 
 ## Observability Solutions
 
-- **[Grafana](https://grafana.com/)**: all metric dashboards are stored in
-  Grafana.
+- **[Grafana](https://github.com/grafana/grafana)**: all metric dashboards are
+  stored in Grafana.
 - **[Jaeger](https://www.jaegertracing.io/)**: all generated traces are being
   sent to Jaeger.
 - **[OpenSearch](https://opensearch.org/)**: all generated logs are sent to Data
@@ -55,7 +63,3 @@ aliases: [demo_features, features]
   that allows for the enabling and disabling of features in the application.
 - **[flagd](https://flagd.dev)**: a feature flagging daemon that is used to
   manage feature flags in the demo application.
-- **[llm](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/llm/)**:
-  a mock Large Language Model (LLM) that adheres to
-  [OpenAI's Chat Completions API](https://platform.openai.com/docs/api-reference/chat/create)
-  format and answers questions about a product.

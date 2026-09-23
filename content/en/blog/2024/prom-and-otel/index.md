@@ -29,7 +29,7 @@ want to show you how OTel supports Prometheus, specifically in a Kubernetes
 environment. You'll learn:
 
 - How the OTel Collector's
-  [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
+  [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/dbdb56d285d860849323346d58c83b14c1ed6c62/receiver/prometheusreceiver?from_branch=main)
   can be used to ingest Prometheus metrics.
 - Alternative methods for Prometheus metric collection through OTel-native
   options such as the K8s cluster receiver and Kubelet stats receiver.
@@ -89,7 +89,7 @@ then forward them to your chosen backend.
 ![Diagram showing the different components of the OTel Collector](OTel-collector-refresher.png)
 
 The
-[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
+[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/dbdb56d285d860849323346d58c83b14c1ed6c62/receiver/prometheusreceiver?from_branch=main)
 allows you to collect metrics from any software that exposes Prometheus metrics.
 It serves as a drop-in replacement for Prometheus to scrape your services, and
 supports the
@@ -105,7 +105,7 @@ format.
 
 Something to consider with this component is that it is under active
 development; as such, it has several
-[limitations](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md#%EF%B8%8F-warning),
+[limitations](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/c9585747e97d1ba5a0aae3bee72eaf76438951f4/receiver/prometheusreceiver/README.md?from_branch=main#%EF%B8%8F-warning),
 including that it’s a stateful component. Additionally, it is not recommended to
 use this component when multiple replicas of the Collector are run _without the
 target allocator_, because in this state:
@@ -118,11 +118,11 @@ target allocator_, because in this state:
 
 For exporting metrics from the OTel Collector to Prometheus, you have the
 following options: the
-[Prometheus exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter#prometheus-exporter),
+[Prometheus exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/exporter/prometheusexporter?from_branch=main#prometheus-exporter),
 and the
-[Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/prometheusremotewriteexporter/README.md).
+[Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/f4661d486acbbef5c4fb071adafe5818035d2512/exporter/prometheusremotewriteexporter/README.md?from_branch=main).
 You can also use the
-[OTLP HTTP exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter),
+[OTLP HTTP exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/f306288b57856f7668e541a49d9945c3c707b7a3/exporter/otlphttpexporter?from_branch=main),
 which comes with the Collector by default, and use Prometheus' native OTLP
 endpoint. Note that
 [Prometheus also now supports OTLP natively](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/).
@@ -130,7 +130,7 @@ endpoint. Note that
 The Prometheus exporter allows you to ship data in the Prometheus format, which
 is then scraped by a Prometheus server. It's used to report metrics via the
 Prometheus scrape HTTP endpoint. You can learn more by trying out this
-[example](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/examples/prometheus).
+[example](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/7d7b6c6baf807d74ab3360a459ccbecebc0b1eef/examples/prometheus?from_branch=main).
 However, the scraping won't really scale, as all the metrics are sent in a
 single scrape.
 
@@ -250,7 +250,7 @@ sequenceDiagram
 
 The Target Allocator’s second job is to provide the discovery of Prometheus
 Operator CRs, namely the
-[ServiceMonitor and PodMonitor](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#target-allocator).
+[ServiceMonitor and PodMonitor](https://github.com/open-telemetry/opentelemetry-operator/tree/de81a64ae8d7d2f4f48945049d8ef9ad3509f89e/cmd/otel-allocator?from_branch=main#target-allocator).
 
 In the past, all Prometheus scrape configurations had to be done via the
 Prometheus Receiver. When the Target Allocator’s service discovery feature is
@@ -281,9 +281,9 @@ cluster to use the Target Allocator for Prometheus CR discovery, the TA does
 require that the ServiceMonitor and PodMonitor be installed. These CRs are
 bundled with Prometheus Operator; however, they can be installed standalone as
 well. The easiest way to do this is to grab a copy of the individual
-[PodMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml)
+[PodMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/ad05cfdbbf20b84325f41018e55eddbd841ec9da/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml?from_branch=main)
 and
-[ServiceMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-servicemonitors.yaml)
+[ServiceMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/ad05cfdbbf20b84325f41018e55eddbd841ec9da/charts/kube-prometheus-stack/charts/crds/crds/crd-servicemonitors.yaml?from_branch=main)
 custom resource definitions (CRDs).
 
 OTel supports the PodMonitor and ServiceMonitor Prometheus resources because
@@ -294,7 +294,7 @@ ecosystem.
 PodMonitor and ServiceMonitor are limited to collecting metrics from pods, and
 are unable to scrape other endpoints, such as the kubelet. In that case, you
 still have to rely on Prometheus scrape configs in the Collector’s
-[Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md).
+[Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/c9585747e97d1ba5a0aae3bee72eaf76438951f4/receiver/prometheusreceiver/README.md?from_branch=main).
 
 ### Configuration
 
@@ -453,7 +453,7 @@ and
 [ClusterRoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding).
 
 The following is an example RBAC configuration taken from the
-[OTel Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#rbac).
+[OTel Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/tree/de81a64ae8d7d2f4f48945049d8ef9ad3509f89e/cmd/otel-allocator?from_branch=main#rbac).
 It includes the ServiceAccount, ClusterRole, and ClusterRoleBinding
 configurations:
 
@@ -579,21 +579,21 @@ Kubernetes metrics.
 
 Receiving data:
 
-- [Kubernetes Cluster Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver):
+- [Kubernetes Cluster Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/k8sclusterreceiver?from_branch=main):
   collects cluster-level metrics and entity events from the
   [Kubernetes API server](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
-- [Kubernetes Objects Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver):
+- [Kubernetes Objects Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/k8sobjectsreceiver?from_branch=main):
   collects (pull/watch) objects from the Kubernetes API server
-- [Kubelet Stats Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver):
+- [Kubelet Stats Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/kubeletstatsreceiver?from_branch=main):
   pulls metrics from the
   [Kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
   and sends it down the metric pipeline for further processing
-- [Host Metrics Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver):
+- [Host Metrics Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/hostmetricsreceiver?from_branch=main):
   scrapes system metrics from hosts that make up the cluster
 
 Processing data:
 
-- [Kubernetes Attributes Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor):
+- [Kubernetes Attributes Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/k8sattributesprocessor?from_branch=main):
   adds Kubernetes context, thereby
 - enabling you to correlate application telemetry with your Kubernetes telemetry
 - – considered one of the most important components for monitoring Kubernetes

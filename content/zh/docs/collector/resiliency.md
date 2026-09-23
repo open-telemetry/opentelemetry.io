@@ -2,6 +2,7 @@
 title: 自适应性
 description: 如何配置一个具有自适应性的 OTel Collector 数据管道
 default_lang_commit: 6eddc725571667e112a41aa7422bcd4c69764503
+drifted_from_default: true
 ---
 
 OpenTelemetry Collector 通过组件和配置设计，旨在尽可能减少遥测数据在处理和导出过程中的丢失。

@@ -14,7 +14,7 @@ day, and the final election results will be announced 31 October 2025.
 ## Vote!
 
 If you are a
-[member of standing](https://github.com/open-telemetry/community/blob/main/governance-charter.md#members-of-standing)
+[member of standing](https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main#members-of-standing)
 in the OpenTelemetry community, we invite you to participate with your vote in
 this election to ensure that the community is well-represented in the Governance
 Committee. In this election five people must be elected, each with two-year
@@ -22,7 +22,7 @@ terms.
 
 If you have made contributions to our ecosystem not measured by the automatic
 process, you can
-[request an exception](https://github.com/open-telemetry/community/blob/main/governance-charter.md#elections)
+[request an exception](https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main#elections)
 before 23:59 UTC on 24 October 2025 to participate in the election. See the
 [voter roll](https://github.com/open-telemetry/community/blob/f7b99ef75580e4d88159e66730e1b8bc6719ce30%5E/elections/2025/voters-roll.csv)
 with all members of standing and approved exceptions. Approved exceptions will
@@ -37,7 +37,7 @@ Voting will be open between 27 October 2025
 voters will need to sign in with their GitHub account.
 
 For more information, see the
-[OpenTelemetry 2025 Governance Committee election](https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-election.md).
+[OpenTelemetry 2025 Governance Committee election](https://github.com/open-telemetry/community/blob/55c58353ce8651dbb5269ca91bb6dde5b47bac2e/elections/2025/governance-committee-election.md?from_branch=main).
 
 ## Interested in joining the Governance Committee?
 
@@ -47,11 +47,11 @@ running for a seat on the Governance Committee. You can read about the
 Governance Committee's role in
 [this blog](/blog/2019/opentelemetry-governance-committee-explained/) post or
 refer to the
-[charter document](https://github.com/open-telemetry/community/blob/master/governance-charter.md).
+[charter document](https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main).
 You may nominate yourself (or others!) by submitting a Pull Request against the
-[list of candidates](https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-candidates.md)
+[list of candidates](https://github.com/open-telemetry/community/blob/1b7d0d85924677149593a18639ce0b897ed4751f/elections/2025/governance-committee-candidates.md?from_branch=main)
 by 17 October 2025 23:59 UTC — see the detailed requirements under
-[nominations](https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-election.md#nominations)
+[nominations](https://github.com/open-telemetry/community/blob/55c58353ce8651dbb5269ca91bb6dde5b47bac2e/elections/2025/governance-committee-election.md?from_branch=main#nominations)
 for the Governance Committee election.
 
 We would like to thank the GC members whose term expires this year; they have

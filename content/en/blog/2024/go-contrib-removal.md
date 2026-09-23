@@ -36,7 +36,7 @@ project board.
 ## Why are those modules going to be removed?
 
 As described in the Go Contrib
-[contributions guidelines](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/CONTRIBUTING.md#code-owners),
+[contributions guidelines](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/57e5a3a8b5c44d96d1f67bcf52e3a33b983c1a79/CONTRIBUTING.md?from_branch=main#code-owners),
 all Contrib modules require a code owner so that the code is not abandoned. Code
 owners have the responsibility of maintaining the component, responding to
 issues, and reviewing pull requests.
@@ -47,7 +47,7 @@ To become a code owner of one of the modules, you need to be a member of the
 OpenTelemetry organization and have a good working knowledge of the code you
 seek to maintain. To become a member of OpenTelemetry in GitHub, see the
 requirements in
-[Community membership](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#requirements).
+[Community membership](https://github.com/open-telemetry/community/blob/25f027532a6e9b503d6eb4dd3db0a98eb3b5f1cb/guides/contributor/membership.md?from_branch=main#requirements).
 
 If you satisfy all requirements,
 [open an issue](https://github.com/open-telemetry/opentelemetry-go-contrib/issues/new?assignees=&labels=&projects=&template=owner.md&title=).

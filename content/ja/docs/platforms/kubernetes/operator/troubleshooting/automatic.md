@@ -1,6 +1,6 @@
 ---
 title: 自動計装
-default_lang_commit: 99a39c5e4e51daba968bfbb3eb078be4a14ad363
+default_lang_commit: c060ef7682b152a285d3a2f0c6a84c93ff877070
 cSpell:ignore: PYTHONPATH
 ---
 
@@ -161,7 +161,6 @@ Containers:
       OTEL_POD_IP:                                        (v1:status.podIP)
       OTEL_METRICS_EXPORTER:                             console,otlp_proto_http
       OTEL_LOGS_EXPORTER:                                otlp_proto_http
-      OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED:  true
       PYTHONPATH:                                        /otel-auto-instrumentation-python/opentelemetry/instrumentation/auto_instrumentation:/otel-auto-instrumentation-python
       OTEL_TRACES_EXPORTER:                              otlp
       OTEL_EXPORTER_OTLP_TRACES_PROTOCOL:                http/protobuf
@@ -255,7 +254,7 @@ annotations:
 
 ここでの `opentelemetry` は `Instrumentation` リソースの名前空間で、`my-instrumentation` は `Instrumentation` リソースの名前です。
 
-[アノテーションに利用できる値は次のとおりです](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md?plain=1#L151-L156)。
+[アノテーションに利用できる値は次のとおりです](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/sidecar-injection.md?plain=1#L54-L59)。
 
 - "true" - 名前空間から `OpenTelemetryCollector` リソースを挿入する。
 - "sidecar-for-my-app" - 現在の名前空間内の `OpenTelemetryCollector` カスタムリソースインスタンスの名前。

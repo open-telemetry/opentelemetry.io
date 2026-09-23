@@ -16,7 +16,7 @@ JavaScript SDKでは、いくつかの[ヘッドサンプラー](/docs/concepts/
 ## TraceIDRatioBasedSampler {#traceidratiobasedsampler}
 
 サンプリングを行う際に最も一般的に使用されるヘッドサンプラーは、TraceIdRatioBasedSamplerです。
-このサンプラーは、パラメータとして渡される割合のトレースを決定論的にサンプリングします。
+このサンプラーは、パラメーターとして渡される割合のトレースを決定論的にサンプリングします。
 
 ### 環境変数 {#environment-variables}
 

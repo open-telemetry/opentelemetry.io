@@ -10,7 +10,7 @@ weight: 15
 To contribute new or improve existing documentation, submit a [pull request][PR]
 (PR):
 
-- If your change is small, or you're unfamiliar with [Git], see
+- If your change is small, or you're unfamiliar with [Git][], see
   [Using GitHub](#changes-using-github) to learn how to edit a page.
 - Otherwise, see [Work from a local fork](#fork-the-repo) to learn how to make
   changes in your own local development environment.
@@ -19,7 +19,7 @@ To contribute new or improve existing documentation, submit a [pull request][PR]
 
 > [!WARNING] **First time contributors** take note!
 >
-> If you are a [first-time contributor], please note the following:
+> If you are a [first-time contributor][], please note the following:
 >
 > Your first 3 contributions to our repository must be primarily human-written,
 > with only minor AI assistance allowed
@@ -159,24 +159,33 @@ failures, like formatting issues, can be fixed automatically.
 Add the following comment to your PR:
 
 ```text
-/fix:all
+/fix
 ```
 
-This will trigger the OpenTelemetry bot to try to fix build issues. Or you can
-issue one of the following fix commands to address a specific failure:
+This will trigger the OpenTelemetry bot to try to fix build issues. The bot
+replies with a progress comment that links back to your fix command, then
+updates that same comment with the result — so each fix command you issue gets
+its own bot comment. Or you can issue one of the following fix commands to
+address a specific failure:
 
 ```text
-fix:dict
-fix:expired
-fix:filenames
-fix:format
-fix:htmltest-config
-fix:i18n
-fix:markdown
-fix:refcache
-fix:submodule
-fix:text
+/fix:code-excerpts
+/fix:dict
+/fix:expired
+/fix:filenames
+/fix:format
+/fix:i18n
+/fix:l10n
+/fix:link-cache
+/fix:markdown
+/fix:submodule
+/fix:text
 ```
+
+The fix command must be the first line of your comment; you can add explanatory
+text on the lines that follow. Issuing a new fix command while one is already
+running cancels the in-progress run so that the latest command wins; when
+possible, the cancelled run's bot comment is updated to note the cancellation.
 
 > [!TIP] Pro tip
 >
@@ -188,7 +197,7 @@ fix:text
 If you're more experienced with Git, or if your changes are larger than a few
 lines, work from a local fork.
 
-Make sure you have [`git` installed] on your computer. You can also use a user
+Make sure you have [`git` installed][] on your computer. You can also use a user
 interface for Git.
 
 Figure 3 shows the steps to follow when you work from a local fork. The details
@@ -407,8 +416,8 @@ npm run test-and-fix
 To separately test and fix all issues with your files, run:
 
 ```sh
-npm run test    # Checks but does not update any files
-npm run fix:all # May update files
+npm run test # Checks but does not update any files
+npm run fix  # May update files
 ```
 
 To list available NPM scripts, run `npm run`. See [PR checks](../pr-checks) for

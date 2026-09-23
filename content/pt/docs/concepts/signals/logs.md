@@ -3,6 +3,7 @@ title: Logs
 description: Um registro de um evento.
 weight: 3
 default_lang_commit: 53606c1471278a89ebf8344fb8cfaa79ab6916a2
+drifted_from_default: true
 cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
 

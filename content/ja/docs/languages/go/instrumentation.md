@@ -5,8 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: OpenTelemetry Goのマニュアルインストルメンテーション
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
-drifted_from_default: true
+default_lang_commit: 3899955672f4abc64710cad23217b76528d7a961
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 ---
 
@@ -41,7 +40,7 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.43.0"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -93,6 +92,11 @@ func main() {
 ```
 
 これで`tracer`にアクセスして、コードを手動計装できます。
+
+> [!WARNING]
+>
+> eBPF ベースの [Go ゼロコード計装](/docs/zero-code/go) ([OBI](/docs/zero-code/obi) など) と共に手動スパンを追加する場合は、グローバルトレーサープロバイダーを設定しないでください。
+> 詳細については、[Auto SDK](/docs/zero-code/go/autosdk) のドキュメントをご覧ください。
 
 ### スパンの作成 {#creating-spans}
 
@@ -180,7 +184,7 @@ span.SetAttributes(myKey.String("a value"))
 #### セマンティック属性 {#semantic-attributes}
 
 セマンティック属性は、HTTPメソッド、ステータスコード、ユーザーエージェントなどの一般的な概念について、複数の言語、フレームワーク、ランタイム間で共有される属性キーのセットを提供するために[OpenTelemetry仕様][OpenTelemetry Specification]によって定義された属性です。
-これらの属性は`go.opentelemetry.io/otel/semconv/v1.37.0`パッケージで利用できます。
+これらの属性は`go.opentelemetry.io/otel/semconv/v1.43.0`パッケージで利用できます。
 
 詳細については、[トレースセマンティック規約][Trace semantic conventions]を参照してください。
 
@@ -295,11 +299,7 @@ OpenTelemetry Goは現在、次の計装をサポートしています。
 
 ### メトリクスの初期化 {#initialize-metrics}
 
-{{% alert %}}
-
-ライブラリを計装している場合は、この手順をスキップしてください。
-
-{{% /alert %}}
+> [!NB] ライブラリを計装している場合は、**この手順をスキップしてください**。
 
 アプリで[メトリクス](/docs/concepts/signals/metrics/)を有効にするには、[`Meter`](/docs/concepts/signals/metrics/#meter)を作成できる初期化済みの[`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider)が必要です。
 
@@ -334,7 +334,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 func main() {
@@ -430,6 +430,19 @@ SDKがエクスポートするとき、作成時に計装に提供されたコ�
 
 このような場合、後処理で一連のデルタを集約するのではなく、累積値を直接観測する方が良いことがよくあります（同期例）。
 
+### 同期計装のパフォーマンス最適化 {#performance-optimization-for-synchronous-instruments}
+
+同期計装では、`Enabled` メソッドを使用して、属性や値を計算するなどの重い操作を行う前に、計装が有効かどうかを確認できます。
+
+```go
+if apiCounter.Enabled(ctx) {
+    // 属性や値を計算します
+    apiCounter.Add(ctx, 1, metric.WithAttributes(attributes...))
+}
+```
+
+これにより、メータープロバイダーが設定されていない場合や、ビューがメトリクスを破棄するよう設定されている場合に、計装がパフォーマンスに対して悪影響を与えないようになります。
+
 ### カウンターの使用 {#using-counters}
 
 カウンターは、非負の増加する値を測定するために使用できます。
@@ -453,7 +466,9 @@ func init() {
 		panic(err)
 	}
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		apiCounter.Add(r.Context(), 1)
+		if apiCounter.Enabled(r.Context()) {
+			apiCounter.Add(r.Context(), 1)
+		}
 
 		// API呼び出しで何らかの作業を行います
 	})
@@ -490,13 +505,19 @@ func init() {
 func addItem() {
 	// コレクションにアイテムを追加するコード
 
-	itemsCounter.Add(context.Background(), 1)
+	ctx := context.Background()
+	if itemsCounter.Enabled(ctx) {
+		itemsCounter.Add(ctx, 1)
+	}
 }
 
 func removeItem() {
 	// コレクションからアイテムを削除するコード
 
-	itemsCounter.Add(context.Background(), -1)
+	ctx := context.Background()
+	if itemsCounter.Enabled(ctx) {
+		itemsCounter.Add(ctx, -1)
+	}
 }
 ```
 
@@ -552,7 +573,9 @@ func init() {
 func recordFanSpeed() {
 	ctx := context.Background()
 	for fanSpeed := range fanSpeedSubscription {
-		speedGauge.Record(ctx, fanSpeed)
+		if speedGauge.Enabled(ctx) {
+			speedGauge.Record(ctx, fanSpeed)
+		}
 	}
 }
 ```
@@ -586,7 +609,9 @@ func init() {
 		// API呼び出しで何らかの作業を行います
 
 		duration := time.Since(start)
-		histogram.Record(r.Context(), duration.Seconds())
+		if histogram.Enabled(r.Context()) {
+			histogram.Record(r.Context(), duration.Seconds())
+		}
 	})
 }
 ```
@@ -715,7 +740,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 func init() {
@@ -924,7 +949,7 @@ import (
 	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 func main() {

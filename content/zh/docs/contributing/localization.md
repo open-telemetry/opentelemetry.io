@@ -8,7 +8,7 @@ drifted_from_default: true
 cSpell:ignore: Dowair shortcodes
 ---
 
-OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化。
+OTel 网站使用 Hugo 的 [multilingual framework][] 来支持页面的本地化。
 英语是默认语言，而美式英语是默认的本地化语言形式。
 随着其他语言的本地化的增加，你可以从顶部导航栏中的语言下拉菜单中看到这些语言。
 
@@ -31,8 +31,8 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
 - 保留原文的**内容**、**含义**以及**风格**
 - **渐进式**提交[小的 PR](#small-prs)
 - 如果你有任何疑问或问题，请通过以下方式**咨询**[维护人员][Maintainers]：
-  - [Slack] 上的 `#otel-docs-localization` 或 `#otel-comms` 频道
-  - [Discussion]、Issue 或者 PR 评论
+  - [Slack][] 上的 `#otel-docs-localization` 或 `#otel-comms` 频道
+  - [Discussion][]、Issue 或者 PR 评论
 
 [Discussion]: https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
 
@@ -132,7 +132,7 @@ OTel 网站的仓库中有一个自定义的 render-link 钩子，Hugo 会用它
 {{% /alert %}}
 
 一些基础短代码包含你可能需要进行本地化处理的英文文本
--- 尤其是那些包含在 [layouts/_shortcodes/docs] 中的短代码，这种情况更为明显。
+-- 尤其是那些包含在 [layouts/_shortcodes/docs][] 中的短代码，这种情况更为明显。
 如果你需要创建某个短代码的本地化版本，可将其放置在 `layouts/_shortcodes/xx` 目录下，
 其中 `xx` 是你所在地区的语言代码。之后，使用与原始基础短代码相同的相对路径。
 
@@ -335,7 +335,7 @@ PR 的认可。在此启动阶段，维护者会将你的评论视为正式审�
 
 {{% alert title="请提交小型 PR" color="primary" %}}
 
-本地化团队应**以小步迭代的方式**提交工作。也就是说，保持 [PRs] 简洁，最好只包含一个或几个小文件。
+本地化团队应**以小步迭代的方式**提交工作。也就是说，保持 [PRs][] 简洁，最好只包含一个或几个小文件。
 小型 PR 更易于审查，因此通常能更快合并。
 
 {{% /alert %}}
@@ -377,7 +377,7 @@ PR 的认可。在此启动阶段，维护者会将你的评论视为正式审�
 
 ### 含语义变更的 PR 不应跨语言提交 {#prs-should-not-span-locales}
 
-Approver 应确保对文档页面进行**语义变更**的 [PRs] 不跨多个语言版本。
+Approver 应确保对文档页面进行**语义变更**的 [PRs][] 不跨多个语言版本。
 语义变更是指影响页面**内容含义**的修改。我们的文档[本地化流程](.)确保每种语言的
 Approver 会在适当的时候审查英文修改，以确定是否适用于其本地化版本，并决定如何整合。
 

@@ -3,6 +3,7 @@ title: Adicionar ao registro
 linkTitle: Adicionar
 description: Como adicionar entradas ao registro.
 default_lang_commit: 420ac1ce889c2da720dc8fe273617c5c5441a2b4 # patched
+drifted_from_default: true
 cSpell:ignore: zpages
 ---
 
@@ -15,7 +16,7 @@ seguinte modelo: [registry-entry.yml][].
 
 Certifique-se de que os nomes e descrições do seu projeto sigam as nossas
 [marketing guidelines][] e estejam alinhados com as diretrizes de marca e
-[trademark usage guidelines] da Linux Foundation.
+[trademark usage guidelines][] da Linux Foundation.
 
 ## Tipos de registro {#registry-types}
 

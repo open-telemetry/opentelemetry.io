@@ -65,7 +65,7 @@ wanted to focus on:
    OTLP exporter.
 2. Individual Go modules that the Collector components rely upon must also be
    marked as stable as per the project's
-   [versioning guidelines](https://github.com/open-telemetry/opentelemetry-collector/blob/main/VERSIONING.md#general-go-api-considerations).
+   [versioning guidelines](https://github.com/open-telemetry/opentelemetry-collector/blob/f0c7a8b5077040e9946020ed3496fe8d262009fd/VERSIONING.md?from_branch=main#general-go-api-considerations).
 
 Aside from this, there were a few areas the contributors wanted to improve based
 on user feedback:
@@ -79,7 +79,7 @@ on user feedback:
 - Overall documentation befitting of a stable piece of critical infrastructure.
 
 The
-[roadmap](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/ga-roadmap.md)
+[roadmap](https://github.com/open-telemetry/opentelemetry-collector/blob/af92ca87d82026e700c29eea922f23e3a8aff2dc/docs/ga-roadmap.md?from_branch=main)
 was published in the Collector's repository and milestones were created to track
 the work underway. To ensure the effort can be successful, the scope of the
 deliverable was limited to provide:

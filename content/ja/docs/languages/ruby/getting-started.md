@@ -3,7 +3,7 @@ title: Getting Started
 description: 5分以内にあなたのアプリからテレメトリを取得します！
 aliases: [getting_started]
 weight: 10
-default_lang_commit: 646aedf04033f2d955dbdfb20f5e912c3cc89482
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 cSpell:ignore: darwin rolldice sinatra struct truffleruby
 ---
 
@@ -18,9 +18,9 @@ cSpell:ignore: darwin rolldice sinatra struct truffleruby
 - CRuby >= `3.1`, JRuby >= `9.3.2.0`, または TruffleRuby >= `22.1`
 - [Bundler](https://bundler.io/)
 
-{{% alert  title="Warning" color="warning" %}}
-試験中ですが、`jruby` と `truffleruby` のサポートは現時点ではベストエフォートベースです。
-{{% /alert %}}
+> [!WARNING]
+>
+> 試験中ですが、`jruby` と `truffleruby` のサポートは現時点ではベストエフォートベースです。
 
 ## アプリケーションの例 {#example-application}
 

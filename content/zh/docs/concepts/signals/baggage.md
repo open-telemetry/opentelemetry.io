@@ -3,6 +3,7 @@ title: Baggage（行李）
 weight: 4
 description: 在信号之间传递的上下文信息。
 default_lang_commit: 8a5b880c16d49257a147c2c3ec4a6ef6fcee8e20
+drifted_from_default: true
 ---
 
 在 OpenTelemetry 中，Baggage 是在 Span 之间传递的上下文信息。Baggage 是一个键值对存储，

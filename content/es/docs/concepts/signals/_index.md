@@ -4,6 +4,7 @@ description: Conozca las categorías de telemetría compatibles con OpenTelemetr
 aliases: [data-sources, otel-concepts]
 weight: 11
 default_lang_commit: c370886c9926e6cab3738ababbf6ff5692899bbd
+drifted_from_default: true
 ---
 
 El propósito de OpenTelemetry es recopilar, procesar y exportar

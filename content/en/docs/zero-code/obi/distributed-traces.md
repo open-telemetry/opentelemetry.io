@@ -3,6 +3,7 @@ title: Distributed traces with OBI
 linkTitle: Distributed traces
 description: Learn about OBI's distributed traces support.
 weight: 22
+cSpell:ignore: asyncio chanrecv chansend HPACK uvloop
 ---
 
 ## Introduction
@@ -10,18 +11,42 @@ weight: 22
 OBI supports distributed traces for applications with some limitations and
 kernel version restrictions.
 
-The distributed tracing is implemented through the propagation of the
-[W3C `traceparent`](https://www.w3.org/TR/trace-context/) header value.
-`traceparent` context propagation is automatic and it doesn't require any action
-or configuration.
+Distributed tracing is implemented through the propagation of the
+[W3C `traceparent`](https://www.w3.org/TR/trace-context/) header value. OBI
+reads incoming context automatically. Outgoing network-level context propagation
+is disabled by default and must be enabled as described below.
 
-OBI reads any incoming trace context header values, tracks the program execution
-flow and propagates the trace context by automatically adding the `traceparent`
-field in outgoing HTTP/gRPC requests. If an application has already added the
-`traceparent` field in outgoing requests, OBI uses that value for tracing
-instead its own generated trace context. If OBI cannot find an incoming
-`traceparent` context value, it generates one according to the W3C
-specification.
+With the applicable propagation mode enabled, OBI reads incoming trace context,
+tracks program execution, and adds `traceparent` to outgoing HTTP or gRPC
+requests. If an application already added `traceparent`, OBI uses that value
+instead of its own generated context. If OBI can't find incoming context, it
+generates one according to the W3C specification.
+
+For details about how OBI chooses the parent request when work moves across
+threads, goroutines, tasks, or event loops, see
+[trace context association](../context-propagation/).
+
+## Compatibility
+
+OBI supports distributed tracing and context propagation in the following
+configurations:
+
+| Area                                 | Supported versions or environments                                                                    | Notes                                                                                                                                                                                |
+| :----------------------------------- | :---------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Network-level HTTP/1 propagation     | Linux environments that meet the [OBI compatibility requirements](/docs/zero-code/obi/#compatibility) | Works across programming languages. For HTTPS, propagation is limited to other OBI-instrumented services and can be disrupted by proxies or L7 load balancers.                       |
+| Network-level gRPC propagation       | gRPC `1.0+` over HTTP/2                                                                               | Uses per-stream HPACK `traceparent` headers across languages. Non-Go persistent connections established before OBI starts might not be recognized.                                   |
+| Go library-level context propagation | Go `1.18+`                                                                                            | Supports goroutine context propagation up to 6 nested goroutine levels. This distributed tracing feature has a higher minimum version than general Go library-level instrumentation. |
+| Node.js async hooks                  | Node.js `8.0+`                                                                                        | Custom handling of `SIGUSR1` can interfere with context propagation.                                                                                                                 |
+| Ruby Puma                            | Ruby applications served by Puma `5.0+`                                                               | Context propagation support requires the Puma server.                                                                                                                                |
+| Java thread pools                    | JDK `8+`                                                                                              | No additional documented runtime constraints.                                                                                                                                        |
+| Python asyncio                       | Python `3.9+` with `uvloop`                                                                           | Context propagation support requires the `uvloop` event loop.                                                                                                                        |
+
+The versions listed here are the versions OBI explicitly supports for
+distributed tracing features. Other versions might also work, but they are not
+part of the documented support scope unless stated otherwise. In particular, the
+Go `1.18+` requirement here applies to distributed tracing and context
+propagation; other OBI Go library-level instrumentation has a lower minimum
+version.
 
 ## Implementation
 
@@ -69,7 +94,16 @@ disrupt the TCP/IP context propagation, because the original packets are
 discarded and replayed downstream. Parsing incoming trace context information
 from OpenTelemetry SDK instrumented services still works.
 
-gRPC and HTTP/2 are not supported at the moment.
+For gRPC, OBI injects a per-stream `traceparent` HPACK header. This works across
+programming languages and preserves distinct trace contexts for concurrent
+HTTP/2 streams. OBI does not use TCP options for gRPC because TCP options are
+connection-scoped and can't represent multiple multiplexed streams. Generic
+non-gRPC HTTP/2 context propagation remains limited to Go library
+instrumentation.
+
+If you need finer control, `context_propagation` also accepts `headers`, `tcp`,
+and `headers,tcp`. The former `http` alias has been removed. The deprecated `ip`
+value has no effect.
 
 This type of context propagation works for any programming language and doesn't
 require that OBI runs in `privileged` mode or has `CAP_SYS_ADMIN` granted. For
@@ -161,15 +195,55 @@ kernel includes the functionality but is lower than 5.17.
 
 This type of context propagation is only supported for Go applications and uses
 eBPF user memory write support (`bpf_probe_write_user`). The advantage of this
-approach is that it works for HTTP/HTTP2/HTTPS and gRPC with some limitations,
-however the use of `bpf_probe_write_user` requires the OBI is granted
-`CAP_SYS_ADMIN` or it's configured to run as `privileged` container.
+approach is that it works for HTTP and HTTPS. For HTTP/2 and gRPC, OBI can
+inject context on new and reused HTTP/2 and gRPC connections when HTTPS isn't
+used. Using `bpf_probe_write_user` requires granting OBI `CAP_SYS_ADMIN` or
+running it as a privileged container.
 
-#### Integration with Go manual instrumentation
+#### Instrument applications that use the Go Trace API
 
-OBI integrates automatically with manual spans using the
-[Auto SDK](/docs/zero-code/go/autosdk). See the docs on the Auto SDK to learn
-more.
+Starting with OBI v0.11.0, OBI can instrument applications that use the
+OpenTelemetry Go Trace API without registering an SDK. When this integration is
+active, OBI detects Trace API calls and exports the resulting manual spans
+alongside its eBPF spans. Applications that already register an OpenTelemetry
+SDK continue to manage and export their own SDK telemetry. Registering any
+global `TracerProvider`, including by calling
+`otel.SetTracerProvider(auto.TracerProvider())`, prevents this automatic
+activation.
+
+OBI activates the integration only when all of the following conditions are met:
+
+- The application uses a supported OpenTelemetry module version and checksum
+  combination, without a module replacement.
+- The executable and host use a supported 64-bit architecture.
+- OBI can resolve the required symbols and field layouts.
+- OBI has permission to use `bpf_probe_write_user`.
+
+If any check fails, the Auto SDK remains inactive and spans created through the
+global Trace API remain non-recording. OBI's eBPF instrumentation continues to
+operate independently. When OBI can detect Trace API calls, it can export
+partial synthetic spans that contain the span name, parent relationship, status,
+and some primitive attributes. These spans do not include the instrumentation
+scope, events, or requested span kind.
+
+In OBI v0.11.0, the encoded payload for each span exported through the Auto SDK
+must not exceed 16 KiB. OBI does not emit a metric or log message when it
+activates the integration or drops an oversized payload.
+
+Known limitations and follow-up work include
+[head sampling](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2793),
+[context handoffs](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2794),
+[external and remote parents and `TraceState`](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2959),
+[larger payloads and drop observability](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2958),
+and
+[log enrichment](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2932).
+
+For the supported combinations of module version, checksum, and architecture,
+see the
+[activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.12.1/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation).
+You can also review the upstream
+[Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/go-trace-api)
+and the [Auto SDK](/docs/zero-code/go/autosdk) documentation.
 
 #### Kernel integrity mode limitations
 
@@ -217,3 +291,56 @@ services:
 
 If the `/sys/kernel/security/` volume is not mounted, OBI assumes that the Linux
 Kernel is not running in integrity mode.
+
+### Go channel span links
+
+OBI emits experimental receiver-side span links for supported work handoffs
+through Go channels. When both the send and receive sides have active
+OBI-generated spans, the receiver span links to the sender span. OBI doesn't
+change trace IDs, parent-child relationships, or the sender span.
+
+This behavior is enabled automatically with Go-specific tracing when OBI can
+resolve the target binary's channel runtime offsets. Direct unbuffered and
+buffered handoffs through `runtime.chansend1`, `runtime.chanrecv1`, and
+`runtime.chanrecv2` are supported. Channel operations through `select` aren't
+supported. Disable Go-specific tracers to disable these probes; there is no
+separate channel-link option.
+
+OBI honors `OTEL_SPAN_LINK_COUNT_LIMIT` and drops invalid, duplicate, and
+self-referential links.
+
+### Capture Node.js manual spans
+
+Starting with OBI v0.12.1, OBI can capture spans that a Node.js application
+creates through `@opentelemetry/api` when the application has not registered an
+OpenTelemetry SDK. OBI exports these manual spans through its trace pipeline and
+correlates them with automatically captured server spans. If the application
+registers an SDK, OBI leaves span creation and export to that SDK.
+
+This feature is disabled by default. Existing Config v1 deployments can enable
+it with `nodejs.manual_spans: true` or `OTEL_EBPF_NODEJS_MANUAL_SPANS=true`.
+Config v2 does not expose an equivalent field in v0.12.1. Continue migrating
+deployments to Config v2 rather than retaining Config v1 solely for this
+feature.
+
+OBI must be able to reach the Node.js inspector, and the process must not
+register its own `SIGUSR1` handler. Bundled copies of `@opentelemetry/api` that
+the CommonJS loader cannot reach are not captured. Automatic client spans are
+currently siblings of manual spans under the same server span, rather than
+children of the active manual span.
+
+### Python asyncio with uvloop
+
+Starting with v0.7.0, OBI supports context propagation for Python asyncio
+workloads running on [`uvloop`](https://github.com/MagicStack/uvloop). This
+enables distributed tracing of asynchronous Python services that use the
+`uvloop` event loop, in addition to the standard `asyncio` support.
+
+The context propagation at network level applies to Python applications running
+on `uvloop`, allowing OBI to automatically instrument and propagate trace
+context for asynchronous operations. No additional configuration is required
+beyond enabling context propagation as described in the
+[introduction](#introduction).
+
+To use OBI with Python asyncio and `uvloop`, ensure your Python application is
+configured to use `uvloop` as the event loop implementation.

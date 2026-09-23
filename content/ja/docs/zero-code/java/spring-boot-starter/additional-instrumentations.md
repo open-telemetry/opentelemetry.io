@@ -1,7 +1,7 @@
 ---
 title: 追加の計装
 weight: 60
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
 ---
 
 OpenTelemetry Spring Bootスターターは、追加の計装で拡張できる[すぐに使える計装](../out-of-the-box-instrumentation)を提供します。
@@ -26,9 +26,31 @@ OpenTelemetry Spring Bootスターターは、追加の計装で拡張できる[
 
 OpenTelemetryアペンダーのその他の設定オプションは、[Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)計装ライブラリで確認できます。
 
-| システムプロパティ                            | 型      | デフォルト | 説明                                                                              |
-| --------------------------------------------- | ------- | ---------- | --------------------------------------------------------------------------------- |
-| `otel.instrumentation.log4j-appender.enabled` | Boolean | true       | `OpenTelemetry` インスタンスでLog4j OpenTelemetryアペンダーの設定を有効にします。 |
+{{< tabpane text=true >}} {{% tab "プロパティ" %}}
+
+`OpenTelemetry` インスタンスで Log4j OpenTelemetry アペンダーの設定を有効にします。
+
+```yaml
+otel:
+  instrumentation:
+    log4j-appender:
+      enabled: true # default: true
+```
+
+{{% /tab %}} {{% tab "宣言的な設定" %}}
+
+[宣言的な設定](../declarative-configuration/)では、一元化された計装リストを使用して Log4j を有効または無効にします。
+
+```yaml
+otel:
+  distribution:
+    spring_starter:
+      instrumentation:
+        disabled:
+          - log4j_appender
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ## 計装ライブラリ {#instrumentation-libraries}
 

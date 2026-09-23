@@ -5,6 +5,8 @@ weight: 20
 aliases: [otlp-exporter-configuration]
 ---
 
+{{% include "env-var-note.md" %}}
+
 ## Endpoint Configuration
 
 The following environment variables let you configure an OTLP/gRPC or OTLP/HTTP
@@ -33,6 +35,11 @@ and logs, the following URLs are constructed from the example above:
 - Traces: `"http://my-api-endpoint/v1/traces"`
 - Metrics: `"http://my-api-endpoint/v1/metrics"`
 - Logs: `"http://my-api-endpoint/v1/logs"`
+
+For OTLP/gRPC, endpoint values are gRPC targets. Do not append OTLP/HTTP signal
+paths such as `/v1/traces`, `/v1/metrics`, or `/v1/logs` to gRPC endpoint
+values; gRPC exporters use the OTLP protobuf service method for each signal
+after connecting to the configured target.
 
 ### `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`
 
@@ -105,6 +112,14 @@ ends with `v1/profiles` when using OTLP/HTTP.
 
 The following environment variables let you configure additional headers as a
 list of key-value pairs to add in outgoing gRPC or HTTP requests.
+
+Headers are represented in a format matching to the
+[W3C Baggage](https://www.w3.org/TR/baggage/#header-content), for example
+`key1=value1,key2=value2`. Semi-colon delimited
+[metadata](https://www.w3.org/TR/baggage/#property) is not supported. For more
+details, see
+[Specifying headers via environment variables](/docs/specs/otel/protocol/exporter/#specifying-headers-via-environment-variables)
+in the protocol specification.
 
 ### `OTEL_EXPORTER_OTLP_HEADERS`
 

@@ -1,5 +1,6 @@
 ---
 default_lang_commit: 3c38c3392fc74f8f071a7a0179fbd141faa7dc40
+drifted_from_default: true
 ---
 
 Esta é a documentação do OpenTelemetry para a linguagem {{ $name }}. O

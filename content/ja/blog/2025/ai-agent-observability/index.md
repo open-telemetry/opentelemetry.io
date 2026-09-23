@@ -7,7 +7,7 @@ linkTitle: AI Agent Observability
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/6389
 sig: SIG GenAI Observability
 date: 2025-03-06
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
 cSpell:ignore: genai Guangya PydanticAI Sujay
 ---
 
@@ -46,7 +46,7 @@ AIエージェントの場合、その非決定論的な性質から、テレメ
 
 AIエージェントのエコシステムが成熟し続けるにつれて、標準化された強固なオブザーバビリティの必要性がより明らかになってきています。
 いくつかのフレームワークが組み込みの計装を提供する一方で、他のフレームワークはオブザーバビリティツールとの統合に依存しています。
-この断片的な状況は、[生成AIオブザーバビリティプロジェクト](https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md)とOpenTelemetryの新たなセマンティック規約の重要性を強調しています。
+この断片的な状況は、[生成AIオブザーバビリティプロジェクト](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main)とOpenTelemetryの新たなセマンティック規約の重要性を強調しています。
 これらは、テレメトリーデータがどのように収集され報告されるかを統一することを目的としています。
 
 ### AIエージェントアプリケーションとAIエージェントフレームワークの比較
@@ -68,7 +68,7 @@ AIエージェントのエコシステムが成熟し続けるにつれて、標
 
 ### 標準化されたセマンティック規約の確立
 
-今日、OpenTelemetry内の[生成AIオブザーバビリティプロジェクト](https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md)は、AIエージェントのオブザーバビリティを標準化するためのセマンティック規約の定義に積極的に取り組んでいます。
+今日、OpenTelemetry内の[生成AIオブザーバビリティプロジェクト](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main)は、AIエージェントのオブザーバビリティを標準化するためのセマンティック規約の定義に積極的に取り組んでいます。
 この取り組みは、主に次のようなものによって推進されています。
 
 - **エージェントアプリケーションのセマンティック規約** - AIエージェントアプリケーションのセマンティック規約の草案は、[OpenTelemetryのセマンティック規約リポジトリ](https://github.com/open-telemetry/semantic-conventions/issues/1732)での議論の一部として、すでに確立され、最終化されています。
@@ -123,8 +123,8 @@ CrewAIのようないくつかのAIエージェントフレームワークは、
 
 OpenTelemetryで計装を公開するには、2つのオプションがあります。
 
-- オプション1: [Traceloop OpenTelemetry Instrumentation](https://github.com/traceloop/openllmetry/tree/main/packages)、[Langtrace OpenTelemetry Instrumentation](https://github.com/Scale3-Labs/langtrace-python-sdk/tree/main/src/langtrace_python_sdk/instrumentation)などのように、あなた自身のリポジトリ/パッケージにある外部計装。
-- オプション 2: [instrumentation-genai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai) などのように、OpenTelemetry が所有するリポジトリにある外部計装。
+- オプション1: [Traceloop OpenTelemetry Instrumentation](https://github.com/traceloop/openllmetry/tree/c2974c94f593df42353ad48c9170d039ab1a0c3f/packages?from_branch=main)、[Langtrace OpenTelemetry Instrumentation](https://github.com/Scale3-Labs/langtrace-python-sdk/tree/462a04b361f62314fb6d2d873cd866959152aa35/src/langtrace_python_sdk/instrumentation?from_branch=main)などのように、あなた自身のリポジトリ/パッケージにある外部計装。
+- オプション 2: [instrumentation-genai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/5560324cff80148de07324715aef5efa1e6242c1/instrumentation-genai?from_branch=main) などのように、OpenTelemetry が所有するリポジトリにある外部計装。
 
 どちらのオプションもうまくいきますが、長期的なゴールは、Traceloopが今OpenTelemetryに[計装コードを寄付](https://github.com/open-telemetry/community/issues/2571)しようとしているように、OpenTelemetry所有のリポジトリでコードをホストすることです。
 
@@ -160,7 +160,7 @@ OpenTelemetryで計装を公開するには、2つのオプションがありま
 
 ## OpenTelemetryのGenAI SIGの役割
 
-[OpenTelemetryのGenAI Special Interest Group (SIG)](https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md)は、以下のような重要な分野をカバーする[GenAI semantic conventions](/docs/specs/semconv/gen-ai/)を積極的に定義しています。
+[OpenTelemetryのGenAI Special Interest Group (SIG)](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main)は、以下のような重要な分野をカバーする[GenAI semantic conventions](/docs/specs/semconv/gen-ai/)を積極的に定義しています。
 
 - LLMやモデルのセマンティック規約
 - VectorDBのセマンティック規約
@@ -174,4 +174,4 @@ AIエージェントのオブザーバビリティに対する標準化された
 みなさんの洞察と貢献は、AIのオブザーバビリティの未来を形作る助けとなり、より透明で効果的なAIエコシステムを育成します。
 
 生成AIオブザーバビリティの業界標準の未来を形作る手助けをするこの機会をお見逃しなく！
-[CNCF Slack](https://slack.cncf.io) `#otel-genai-instrumentation` チャンネル、または [GenAI SIG meeting](https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md#meeting-times) にご参加ください。
+[CNCF Slack](https://slack.cncf.io) `#otel-genai-instrumentation` チャンネル、または [GenAI SIG meeting](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main#meeting-times) にご参加ください。

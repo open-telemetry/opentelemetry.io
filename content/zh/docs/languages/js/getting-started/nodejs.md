@@ -2,6 +2,7 @@
 title: Node.js
 description: 5 分钟内为你的应用获取遥测数据！
 default_lang_commit: 6ffcc4d3f434c2af67e1983ec732fc700052a93d
+drifted_from_default: true
 aliases: [/docs/js/getting_started/nodejs]
 weight: 10
 cSpell:ignore: autoinstrumentations rolldice

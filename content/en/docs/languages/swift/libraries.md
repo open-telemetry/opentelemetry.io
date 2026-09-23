@@ -116,18 +116,18 @@ defined in `URLSessionInstrumentationConfiguration`:
 
 - `createdRequest: ((URLRequest, Span) -> Void)?`
 
-  Called after request is created, it allows to add extra information to the
+  Called after request is created, it allows you to add extra information to the
   Span.
 
 - `receivedResponse: ((URLResponse, DataOrFile?, Span) -> Void)?`
 
-  Called after response is received, it allows to add extra information to the
-  Span.
+  Called after response is received, it allows you to add extra information to
+  the Span.
 
 - `receivedError: ((Error, DataOrFile?, HTTPStatus, Span) -> Void)?`
 
-  Called after an error is received, it allows to add extra information to the
-  Span.
+  Called after an error is received, it allows you to add extra information to
+  the Span.
 
 Below is an example of initialization.
 `URLSessionInstrumentationConfiguration`'s construction can be passed the

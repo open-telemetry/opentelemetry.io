@@ -22,7 +22,7 @@ following actions:
   to any posts older than 90 days. CNCF is backing up all public channel
   histories. If you have private channels or direct messages that you would like
   to keep, follow the
-  [CNCF guide](https://github.com/cncf/foundation/blob/main/policies-guidance/slack-backup.md)
+  [CNCF guide](https://github.com/cncf/foundation/blob/268daffb181e0cb2bc36947039c0400c68e506f7/policies-guidance/slack-backup.md?from_branch=main)
   to export and store the content locally.
 - **Back up files.** If you have files stored in Slack, they will be deleted!
   Download and save them to GitHub or Google Docs before Friday.

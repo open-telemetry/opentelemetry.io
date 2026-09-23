@@ -4,7 +4,7 @@ linkTitle: OpenTelemetry Community Awards Winners
 date: 2025-11-12
 author: OpenTelemetry Governance Committee
 # prettier-ignore
-cSpell:ignore: brettmc ChrsMark jsuereth Markou Pająk pellared Suereth Todea Vasconcellos vitorvasc
+cSpell:ignore: brettmc ChrsMark jsuereth Markou Pająk pellared Suereth Todea Vasconcellos
 ---
 
 We are excited to announce the winners of the second **OpenTelemetry Community

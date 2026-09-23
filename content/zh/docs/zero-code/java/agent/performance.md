@@ -3,6 +3,7 @@ title: 性能
 description: OpenTelemetry Java 代理的性能参考
 aliases: [/docs/languages/java/performance]
 default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4 # patched
+drifted_from_default: true
 weight: 400
 cSpell:ignore: Dotel
 ---

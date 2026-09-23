@@ -82,8 +82,8 @@ Resource associated with Activity:
 You can also add custom resources in code by attaching them to a
 `ResourceBuilder`.
 
-The following example builds on the [getting started] sample and adds two custom
-resources, `environment.name` and `team.name` in code:
+The following example builds on the [getting started][] sample and adds two
+custom resources, `environment.name` and `team.name` in code:
 
 ```csharp
 using System.Diagnostics;
@@ -165,7 +165,7 @@ code, the values in code take precedence.
 ## Next steps
 
 There are more resource detectors you can add to your configuration, for example
-to get details about your [Cloud] environment or [Deployment][].
+to get details about your [Cloud][] environment or [Deployment][].
 
 [getting started]: /docs/languages/dotnet/getting-started/
 [host]: /docs/specs/semconv/resource/host/

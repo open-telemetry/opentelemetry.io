@@ -47,7 +47,7 @@ You need to enable `opentelemetry` plugin and modify collector configuration in
 
 We assume that you have already deployed the OpenTelemetry Collector on the same
 node as the APISIX and enabled the
-[OTLP HTTP Receiver](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md).
+[OTLP HTTP Receiver](https://github.com/open-telemetry/opentelemetry-collector/blob/b3125cea266d6453df1bd48a17686f752f7d07d9/receiver/otlpreceiver/README.md?from_branch=main).
 
 > Need help completing deployment of the OpenTelemetry Collector? See the
 > scenario [Example](#example) below.

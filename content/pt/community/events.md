@@ -1,7 +1,8 @@
 ---
 title: Eventos
-default_lang_commit: 4f38b130938b017a283457de2404a4cd0fd77819
-cSpell:ignore: cloudnativecon
+default_lang_commit: 4f38b130938b017a283457de2404a4cd0fd77819 # patched
+drifted_from_default: true
+weight: 30
 ---
 
 A comunidade OpenTelemetry participa e organiza diversos eventos ao longo do ano
@@ -11,7 +12,7 @@ projeto e se conectar com a comunidade de observabilidade mais ampla.
 
 ## Eventos Futuros {#upcoming-events}
 
-{{< community-event-list >}}
+{{% community-events %}}
 
 ## Principais Eventos da Comunidade {#key-community-events}
 
@@ -26,7 +27,7 @@ implementação no mundo real. Esses eventos incluem:
 - Sessões de perguntas e respostas com a comunidade
 
 Encontre todos os eventos virtuais do SIG End-User e junte-se à comunidade em
-[community.cncf.io/opentelemetry/](https://community.cncf.io/opentelemetry/).
+[Open Community Groups](https://ocgroups.dev/cncf/group/xkrw4uk).
 
 ### KubeCon + CloudNativeCon {#kubecon-cloudnativecon}
 

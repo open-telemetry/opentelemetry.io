@@ -55,7 +55,7 @@ spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTe
 
 To learn more, see
 [Spring Boot Starter](/docs/zero-code/java/spring-boot-starter/). You can use
-[opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
+[opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/6f6e932bbeb8f7826dfe2ade71c901271ea76091/spring-native?from_branch=main)
 to run a Spring Boot Native Image application and look at the generated logs as
 well as HTTP and database telemetry data.
 

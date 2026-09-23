@@ -60,3 +60,21 @@ rules:
   - expected: アノテーション
     patterns:
       - 注釈
+  - expected: コンテナ
+    patterns:
+      - コンテナー
+  - expected: バイナリ
+    patterns:
+      - バイナリー
+  - expected: ライブラリ
+    patterns:
+      - ライブラリー
+  - expected: ユーザー
+    patterns:
+      - /ユーザ(?!ー)/
+  - expected: サーバー
+    patterns:
+      - /サーバ(?!ー)/
+  - expected: パラメーター
+    patterns:
+      - /パラメータ(?!ー)/

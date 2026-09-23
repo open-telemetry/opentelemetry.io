@@ -1,0 +1,42 @@
+{{ $source := .Get "source" | default "agent" -}}
+{{ $gettingStarted := readFile "examples/otel-config/examples/otel-getting-started.yaml" -}}
+
+<div class="dc-converter card p-3 my-4" data-source="{{ $source }}" data-getting-started="{{ $gettingStarted | htmlEscape }}">
+  <p class="text-body-secondary mb-3">
+    Paste your existing configuration below to generate the equivalent
+    declarative configuration YAML. You can fill in any combination of inputs.
+  </p>
+
+  <div class="row mb-3">
+    <div class="col-md-6 mb-3 mb-md-0">
+      <label for="dc-input-props" class="form-label">System properties{{ if eq $source "spring" }} / application.properties{{ end }}</label>
+      <textarea id="dc-input-props" class="form-control font-monospace" rows="6"
+        placeholder="otel.instrumentation.jdbc.enabled=false&#10;otel.instrumentation.kafka.experimental-span-attributes=true"></textarea>
+    </div>
+    <div class="col-md-6">
+      <label for="dc-input-env" class="form-label">Environment variables</label>
+      <textarea id="dc-input-env" class="form-control font-monospace" rows="6"
+        placeholder="OTEL_INSTRUMENTATION_JDBC_ENABLED=false&#10;OTEL_SERVICE_NAME=my-app"></textarea>
+    </div>
+  </div>
+
+  {{ if eq $source "spring" -}}
+  <div class="mb-3">
+    <label for="dc-input-yaml" class="form-label">application.yaml</label>
+    <textarea id="dc-input-yaml" class="form-control font-monospace" rows="6"
+      placeholder="otel:&#10;  instrumentation:&#10;    jdbc:&#10;      enabled: false"></textarea>
+  </div>
+  {{ end -}}
+
+  <div class="mb-3">
+    <label for="dc-output" class="form-label">Declarative Configuration output</label>
+    <textarea id="dc-output" class="form-control font-monospace" rows="12" readonly></textarea>
+    <button id="dc-copy" class="btn btn-sm btn-outline-secondary mt-2">
+      Copy to clipboard
+    </button>
+  </div>
+
+  <div id="dc-warnings" class="alert alert-warning d-none mb-0"></div>
+</div>
+
+{{ partial "script.html" (dict "src" "js/dcConverter.js") -}}

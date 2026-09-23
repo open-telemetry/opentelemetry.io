@@ -1,6 +1,7 @@
 ---
 title: Contexto
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
+drifted_from_default: true
 description: Documentação da API de Contexto do OpenTelemetry JavaScript
 aliases: [api/context]
 weight: 60
@@ -16,7 +17,7 @@ contexto do OpenTelemetry para JavaScript e como ela é usada.
 Mais informações:
 
 - [Especificação de Contexto](/docs/specs/otel/context/)
-- [Referência da API de Contexto](https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api._opentelemetry_api.ContextAPI.html)
+- [Referência da API de Contexto](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.ContextAPI.html)
 
 ## Gerenciador de Contexto {#context-manager}
 

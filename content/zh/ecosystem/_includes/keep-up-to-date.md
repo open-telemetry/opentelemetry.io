@@ -1,5 +1,6 @@
 ---
 default_lang_commit: b13d5dd3a9f288ab64d2af98c0b4ec1694499ef3
+drifted_from_default: true
 ---
 
 ## 保持 {{ $1 }} 信息的更新 {#keeping-up-to-date}

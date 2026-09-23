@@ -57,6 +57,22 @@ script for your operating system.
 
 Download and run the `.sh` script:
 
+> [!NOTE]
+>
+> For air-gapped environments, use the `LOCAL_PATH` variable to provide the
+> installation file directly:
+>
+> ```shell
+> LOCAL_PATH=<PATH_TO_INSTALLER> sh ./otel-dotnet-auto-install.sh
+> ```
+>
+> Alternatively, use `DOWNLOAD_DIR` to provide a folder with files, and the
+> install script determines the correct file to use:
+>
+> ```shell
+> DOWNLOAD_DIR=<PATH_TO_FOLDER_WITH_FILES> sh ./otel-dotnet-auto-install.sh
+> ```
+
 ```shell
 # Download the bash script
 curl -sSfL https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh -O
@@ -71,7 +87,7 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 . $HOME/.otel-dotnet-auto/instrument.sh
 
 # Run your application with instrumentation
-OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
+OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=staging,service.version=1.0.0 ./MyNetApp
 ```
 
 > [!IMPORTANT]
@@ -242,7 +258,7 @@ IIS by setting the environment variables for `W3SVC` and `WAS` Windows Services.
 ## NuGet package
 
 You can instrument
-[`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained)
+[`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-as-self-contained)
 applications using the NuGet packages. See [NuGet packages](./nuget-packages)
 for more information.
 
@@ -266,7 +282,7 @@ To see the full range of configuration options, see
 >
 > Automatic log to trace correlation provided by OpenTelemetry .NET Automatic
 > Instrumentation currently works only for .NET applications using
-> `Microsoft.Extensions.Logging`. For more details, see [#2310].
+> `Microsoft.Extensions.Logging`. For more details, see [#2310][].
 
 [#2310]:
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2310
@@ -337,8 +353,8 @@ On Windows, use the PowerShell module as an Administrator.
 
 > [!IMPORTANT] Version note
 >
-> Windows [PowerShell Desktop][] (v5.1) is required. Other [versions], including
-> PowerShell Core (v6.0+) are not supported at this time.
+> Windows [PowerShell Desktop][] (v5.1) is required. Other [versions][],
+> including PowerShell Core (v6.0+) are not supported at this time.
 
 [PowerShell Desktop]:
   https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions

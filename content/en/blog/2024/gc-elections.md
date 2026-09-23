@@ -14,7 +14,7 @@ and the final election results will be announced 25 October 2024.
 ## Vote!
 
 If you are a
-[member of standing](https://github.com/open-telemetry/community/blob/main/governance-charter.md#members-of-standing)
+[member of standing](https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main#members-of-standing)
 in the OpenTelemetry community, we invite you to participate with your vote in
 this election to ensure that the community is well-represented in the Governance
 Committee. In this election four people must be elected, each with two-year
@@ -32,7 +32,7 @@ UTC on
 voters will need to sign in with their GitHub account.
 
 For more information, see the
-[OpenTelemetry 2024 Governance Committee election](https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-election.md).
+[OpenTelemetry 2024 Governance Committee election](https://github.com/open-telemetry/community/blob/0ec5d72c67357a8739bcd29852016e59e4189f8a/elections/2024/governance-committee-election.md?from_branch=main).
 
 ## Interested in joining the Governance Committee?
 
@@ -42,11 +42,11 @@ running for a seat on the Governance Committee. You can read about the
 Governance Committee's role in
 [this blog](/blog/2019/opentelemetry-governance-committee-explained/) post or
 refer to the
-[charter document](https://github.com/open-telemetry/community/blob/master/governance-charter.md).
+[charter document](https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main).
 You may nominate yourself (or others!) by submitting a Pull Request against the
-[list of candidates](https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-candidates.md)
+[list of candidates](https://github.com/open-telemetry/community/blob/fe12ecb89802550b4d3daa9a30646157c540b391/elections/2024/governance-committee-candidates.md?from_branch=main)
 by 11 October 2024 23:59 UTC — see the detailed requirements under
-[nominations](https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-election.md#nominations)
+[nominations](https://github.com/open-telemetry/community/blob/0ec5d72c67357a8739bcd29852016e59e4189f8a/elections/2024/governance-committee-election.md?from_branch=main#nominations)
 for the Governance Committee election.
 
 We would like to thank the GC members who have helped grow OpenTelemetry, and

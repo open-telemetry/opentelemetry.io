@@ -3,13 +3,13 @@ title: コレクターのインストール
 linkTitle: インストール
 aliases: [installation]
 weight: 2
-default_lang_commit: ec1657d18d8e1c63bf353049e8a7bf7e65c3e9cb
+default_lang_commit: 50b023ac3dcf1f780650d90152dbadc9bdc9dd8a
 ---
 
 OpenTelemetryコレクターはさまざまなオペレーティングシステムやアーキテクチャにデプロイできます。
-以下の手順は、コレクターの最新の安定版をダウンロードしてインストールする方法を示しています。
+以下の手順は、お使いの環境向けにコレクターの最新の安定版をダウンロードしてインストールする方法を示しています。
 
-OpenTelemetryコレクターに適用可能なデプロイメントモデル、コンポーネント、リポジトリについてよく知らない場合は、まず[データ収集][Data Collection]と[デプロイ方法][Deployment Methods]のページを確認してください。
+始める前に、[デプロイメントパターン][deployment patterns]、[コンポーネント][components]、[設定][configuration]を含む、コレクターの基本について理解していることを確認してください。
 
 ## ソースからビルドする {#build-from-source}
 
@@ -22,5 +22,6 @@ make install-tools
 make otelcorecol
 ```
 
-[data collection]: /docs/concepts/components/#collector
-[deployment methods]: /docs/collector/deploy/
+[deployment patterns]: /docs/collector/deploy/
+[components]: /docs/collector/components/
+[configuration]: /docs/collector/configuration/

@@ -5,6 +5,12 @@ description: Configure OBI to export data directly to an OTLP endpoint
 weight: 1
 ---
 
+> [!NOTE]
+>
+> This page uses Config v1 field names and examples. For Config v2, see the
+> [Config v2 reference](../config-v2/). To convert an existing file, use the
+> [migration guide](../migrate-to-config-v2/).
+
 In Direct mode OBI pushes metrics and traces directly to a remote endpoint using
 the OpenTelemetry protocol (OTLP).
 
@@ -55,11 +61,11 @@ properties to export metrics, traces, or both.
 Run OBI with a named configuration file:
 
 ```shell
-ebpf-instrument -config instrument-config.yml
+obi -config instrument-config.yml
 ```
 
 or
 
 ```shell
-OTEL_EBF_CONFIG_PATH=instrument-config.yml ebpf-instrument
+OTEL_EBPF_CONFIG_PATH=instrument-config.yml obi
 ```

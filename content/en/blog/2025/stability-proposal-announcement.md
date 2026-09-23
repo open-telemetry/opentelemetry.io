@@ -74,7 +74,7 @@ OpenTelemetry has grown into a massive, complex ecosystem. We support four
 different telemetry signals (tracing, metrics, logs, and profiles) across more
 than a dozen programming languages. Each language has its own runtime
 requirements and execution environments. The
-[specification compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md)
+[specification compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/af2606810c19c31850738d1fd105b4eca7aa8c98/spec-compliance-matrix.md?from_branch=main)
 shows just how much we're trying to accomplish – and it's overwhelming.
 
 This complexity creates real barriers to adoption. Organizations ready to deploy

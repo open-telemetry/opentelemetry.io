@@ -1,0 +1,14 @@
+title: Prometheus Remote Write Exporter
+registryType: exporter
+language: python
+tags:
+  - python
+  - exporter
+license: Apache 2.0
+description: OpenTelemetry Prometheus Remote Write Exporter.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/exporter/opentelemetry-exporter-prometheus-remote-write
+createdAt: 2025-03-26
+isFirstParty: false

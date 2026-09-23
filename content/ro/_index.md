@@ -3,8 +3,6 @@ title: OpenTelemetry
 description: >-
   Telemetrie de înaltă calitate, omniprezentă și portabilă pentru a permite o
   observabilitate eficientă
-outputs:
-  - HTML
 developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
@@ -65,8 +63,8 @@ software-ul tău, apoi transmite-le către o varietate de instrumente de analiz�
 
 {{% blocks/feature icon="fas fa-magic" title="Drop-in Instrumentation & Integrations" %}}
 
-OpenTelemetry [se integrează] cu multe biblioteci și framework-uri, și suportă
-[instrumentarea] _bazată pe cod și zero-code_ .
+OpenTelemetry [se integrează][] cu multe biblioteci și framework-uri, și suportă
+[instrumentarea][] _bazată pe cod și zero-code_ .
 
 [instrumentarea]: /docs/concepts/instrumentation/
 [se integrează]: /ecosystem/integrations/
@@ -75,8 +73,8 @@ OpenTelemetry [se integrează] cu multe biblioteci și framework-uri, și suport
 
 {{% blocks/feature icon="fab fa-github" title="Open Source, Vendor Neutral" %}}
 
-100% gratuit și open source, OpenTelemetry este [adoptat] și susținut de [lideri
-din industrie] din domeniul observabilității.
+100% gratuit și open source, OpenTelemetry este [adoptat][] și susținut de
+[lideri din industrie][] din domeniul observabilității.
 
 [adoptat]: /ecosystem/adopters/
 [lideri din industrie]: /ecosystem/vendors/
@@ -87,13 +85,13 @@ din industrie] din domeniul observabilității.
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry este un proiect [CNCF][] de [incubare][]**.<br> Format printr-o
-fuziune ale proiectelor OpenTracing și OpenCensus.
+**OpenTelemetry este un proiect [matur][] al [CNCF][]-ului**.<br> Format
+printr-o fuziune ale proiectelor OpenTracing și OpenCensus.
 
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[incubare]: https://www.cncf.io/projects/
+[matur]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}

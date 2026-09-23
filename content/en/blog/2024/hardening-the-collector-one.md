@@ -53,23 +53,23 @@ default endpoints for OTLP/gRPC and OTLP/HTTP are now `localhost:4317` and
 `localhost:4318` respectively. The full list of components affected by this
 change is:
 
-- [`otlp` receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver#otlp-receiver)
-- [`awsfirehose` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awsfirehosereceiver#aws-kinesis-data-firehose-receiver)
-- [`awsxray` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awsxrayreceiver#aws-x-ray-receiver)
-- [`influxdb` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/influxdbreceiver#influxdb-receiver)
-- [`jaeger` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jaegerreceiver#jaeger-receiver)
-- [`loki` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/lokireceiver#loki-receiver)
+- [`otlp` receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/f306288b57856f7668e541a49d9945c3c707b7a3/receiver/otlpreceiver?from_branch=main#otlp-receiver)
+- [`awsfirehose` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/awsfirehosereceiver?from_branch=main#aws-kinesis-data-firehose-receiver)
+- [`awsxray` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/f8bb0009b577560cf5453f12755fc3ca03bbf0b3/receiver/awsxrayreceiver?from_branch=main#aws-x-ray-receiver)
+- [`influxdb` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/influxdbreceiver?from_branch=main#influxdb-receiver)
+- [`jaeger` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/jaegerreceiver?from_branch=main#jaeger-receiver)
+- [`loki` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/eecc5bb1d3a518a8b1000a0d43dc72926b1b7179/receiver/lokireceiver?from_branch=main#loki-receiver)
 - [`opencensus` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/e228ef6c18aa2f05b2173f20be0578f714d0128b/receiver/opencensusreceiver#opencensus-receiver)
 - [`sapm` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/6a2bd15cc941859767c7043a0597b8b0f6dd9f64/receiver/sapmreceiver#sapm-receiver)
-- [`signalfx` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/signalfxreceiver#signalfx-receiver)
-- [`skywalking` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/skywalkingreceiver#skywalking-receiver)
-- [`splunk_hec` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/splunkhecreceiver#splunk-hec-receiver)
-- [`zipkin` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver#zipkin-receiver)
-- [`zookeeper` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zookeeperreceiver#zookeeper-receiver)
-- [`awsproxy` extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/awsproxy#aws-proxy)
-- [`health_check` extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/healthcheckextension#health-check)
-- [`jaegerremotesampling` extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/jaegerremotesampling#jaegers-remote-sampling-extension)
-- [`remotetap` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/remotetapprocessor#remote-tap-processor)
+- [`signalfx` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/signalfxreceiver?from_branch=main#signalfx-receiver)
+- [`skywalking` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/skywalkingreceiver?from_branch=main#skywalking-receiver)
+- [`splunk_hec` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/splunkhecreceiver?from_branch=main#splunk-hec-receiver)
+- [`zipkin` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/zipkinreceiver?from_branch=main#zipkin-receiver)
+- [`zookeeper` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/zookeeperreceiver?from_branch=main#zookeeper-receiver)
+- [`awsproxy` extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/extension/awsproxy?from_branch=main#aws-proxy)
+- [`health_check` extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/extension/healthcheckextension?from_branch=main#health-check)
+- [`jaegerremotesampling` extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/extension/jaegerremotesampling?from_branch=main#jaegers-remote-sampling-extension)
+- [`remotetap` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/remotetapprocessor?from_branch=main#remote-tap-processor)
 
 When in doubt, check the specific components' documentation to see the new
 default values.

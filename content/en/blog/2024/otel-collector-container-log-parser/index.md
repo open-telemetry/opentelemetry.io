@@ -6,7 +6,7 @@ author: '[Christos Markou](https://github.com/ChrsMark) (Elastic)'
 cSpell:ignore: Christos containerd filelog Jaglowski kube Markou
 ---
 
-[Filelog receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)
+[Filelog receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/72087f655403778da46f4168dca2433fa0775098/receiver/filelogreceiver?from_branch=main)
 is one of the most commonly used components of the
 [OpenTelemetry Collector](/docs/collector), as indicated by the most recent
 [survey](/blog/2024/otel-collector-survey/#otel-components-usage). According to
@@ -31,10 +31,10 @@ to properly parse them:
 3. Extract known metadata relying on predefined patterns.
 
 Such advanced sequence of operations can be handled by chaining the proper
-[stanza](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/stanza)
+[stanza](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/pkg/stanza?from_branch=main)
 operators together. The end result is rather complex. This configuration
 complexity can be mitigated by using the corresponding
-[helm chart preset](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector#configuration-for-kubernetes-container-logs).
+[helm chart preset](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/8ba8e06485a1ce9fb137b8cfd29f2d8093c8f0ea/charts/opentelemetry-collector?from_branch=main#configuration-for-kubernetes-container-logs).
 However, despite having the preset, it can still be challenging for users to
 maintain and troubleshoot such advanced configurations.
 
@@ -72,7 +72,7 @@ follow the CRI logging format) but with a small difference in the timestamp
 format.
 
 To properly handle these 3 different formats you need 3 different routes of
-[stanza](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/stanza)
+[stanza](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/pkg/stanza?from_branch=main)
 operators as we can see in the
 [container parser operator issue](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/31959).
 
@@ -192,7 +192,7 @@ future.
 ## Conclusion: container logs parsing is now easier with filelog receiver
 
 Eager to learn more about the container parser? Visit the official
-[documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/container.md)
+[documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/ae0d64c4c2131c7a4308417fa9549d984347dadc/pkg/stanza/docs/operators/container.md?from_branch=main)
 and if you give it a try let us know what you think. Don't hesitate to reach out
 to us in the official CNCF [Slack workspace](https://slack.cncf.io/) and
 specifically the `#otel-collector` channel.

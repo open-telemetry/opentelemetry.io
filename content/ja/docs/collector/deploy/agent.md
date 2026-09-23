@@ -4,7 +4,7 @@ linkTitle: エージェントパターン
 description: コレクターにシグナルを送信し、そこからバックエンドにエクスポートする
 aliases: [/docs/collector/deployment/agent]
 weight: 200
-default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197 # patched
+default_lang_commit: 2b88c43e50fb99c601ededa24b1f3a461fef9ac0
 ---
 
 エージェントデプロイメントパターンでは、テレメトリーシグナルは次の場所から送信できます。
@@ -66,7 +66,7 @@ receivers:
         endpoint: 0.0.0.0:4318
 
 exporters:
-  prometheusremotewrite: # PRWエクスポーター、メトリクスをバックエンドに取り込む
+  prometheus_remote_write: # PRWエクスポーター、メトリクスをバックエンドに取り込む
     endpoint: https://prw.example.com/v1/api/remote_write
     sending_queue:
       batch:
@@ -75,7 +75,7 @@ service:
   pipelines:
     metrics/prod:
       receivers: [otlp]
-      exporters: [prometheusremotewrite]
+      exporters: [prometheus_remote_write]
 ```
 
 {{% /tab %}} {{% tab Logs %}}

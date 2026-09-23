@@ -269,6 +269,12 @@ other component in your pipeline, it’s important to verify the following:
 - How is the next hop configured?
 - Are there any network policies that prevent data from getting in or out?
 
+## Troubleshooting in Kubernetes environments
+
+When running the OpenTelemetry Collector on Kubernetes, you can use
+[ephemeral debug containers](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/#ephemeral-container)
+to investigate Collector-related issues.
+
 ## Common Collector issues
 
 This section covers how to resolve common Collector issues.

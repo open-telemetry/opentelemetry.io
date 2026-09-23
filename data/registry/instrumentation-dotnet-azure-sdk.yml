@@ -9,13 +9,15 @@ tags:
   - azure-sdk
   - azure
 license: MIT
-description: Instrumentation for Azure SDK for .NET (Track 2 libraries).
+description:
+  Azure SDK for .NET (Track 2 libraries) natively emits distributed traces using
+  System.Diagnostics APIs, which is the official OpenTelemetry API for .NET.
 authors:
   - name: Microsoft Azure Authors
     url: https://github.com/Azure
 urls:
   website: https://github.com/Azure/azure-sdk-for-net # to work on the integrations page as well
-  docs: https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable
+  docs: https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/Diagnostics.md#opentelemetry-configuration
   repo: https://github.com/Azure/azure-sdk-for-net
 createdAt: 2021-12-16
 isNative: true

@@ -2,7 +2,7 @@
 title: 术语表
 description: OpenTelemetry 中遥测术语的定义与惯例。
 weight: 200
-default_lang_commit: 7535ae5560fb961cbf02df25f92af65fb9c7c745
+default_lang_commit: 7535ae5560fb961cbf02df25f92af65fb9c7c745 # patched
 drifted_from_default: true
 ---
 
@@ -59,10 +59,10 @@ OpenTelemetry 中对[元数据](#metadata)的术语。为产生遥测数据的�
 
 ### Collector
 
-[OpenTelemetry Collector]，简称 Collector，是一个与厂商无关的遥测数据接收、处理和导出实现。
+[OpenTelemetry Collector][]，简称 Collector，是一个与厂商无关的遥测数据接收、处理和导出实现。
 一个可部署为代理或网关的单一二进制程序。
 
-> **拼写提示**：在指代 [OpenTelemetry Collector] 时，请始终将 “Collector” 大写。
+> **拼写提示**：在指代 [OpenTelemetry Collector][] 时，请始终将 “Collector” 大写。
 > 如果用作形容词，可直接使用 “Collector”，例如 “Collector 配置”。
 
 [OpenTelemetry Collector]: /docs/collector/
@@ -98,7 +98,7 @@ OpenTelemetry 中对[元数据](#metadata)的术语。为产生遥测数据的�
 
 ### 分发版本 {#distribution}
 
-是对上游 OpenTelemetry 仓库的封装，包含一些自定义内容。参见 [Distributions]。
+是对上游 OpenTelemetry 仓库的封装，包含一些自定义内容。参见 [Distributions][]。
 
 ### 实体 {#entity}
 
@@ -184,7 +184,7 @@ OpenTelemetry 将这些键值对称为[属性](#attribute)。此外，
 ### 可观测性后端 {#observability-backend}
 
 可观测性平台中的组件，负责接收、处理、存储和查询遥测数据。示例包括开源工具如
-[Jaeger] 和 [Prometheus]，以及商业产品。OpenTelemetry 本身不是一个可观测性后端。
+[Jaeger][] 和 [Prometheus][]，以及商业产品。OpenTelemetry 本身不是一个可观测性后端。
 
 ### 可观测性前端 {#observability-frontend}
 
@@ -251,12 +251,12 @@ OpenTelemetry 协议的缩写。参见 [/docs/specs/otlp/](/docs/specs/otlp/)。
 
 ### Proto
 
-语言无关的接口类型。参见 [opentelemetry-proto]。
+语言无关的接口类型。参见 [opentelemetry-proto][]。
 
 ### 接收器 {#receiver}
 
 在 [Collector](/docs/collector/configuration/#receivers)
-中定义如何接收遥测数据的组件。接收器可以是推送型或拉取型。参见 [Receiver]。
+中定义如何接收遥测数据的组件。接收器可以是推送型或拉取型。参见 [Receiver][]。
 
 ### 请求 {#request}
 
@@ -299,7 +299,7 @@ OpenTelemetry [API](#api) 的遥测 SDK，也是一种[库](#library)。
 
 ### Span
 
-表示一次[追踪](#trace)中的单个操作。参见 [Span]。
+表示一次[追踪](#trace)中的单个操作。参见 [Span][]。
 
 ### Span 链接 {#span-link}
 
@@ -325,7 +325,7 @@ Span 之间因果关系的链接。详细信息参见
 
 ### Tracer
 
-负责创建 [Span](#span) 的组件。参见 [Tracer]。
+负责创建 [Span](#span) 的组件。参见 [Tracer][]。
 
 ### 事务 {#transaction}
 
@@ -333,7 +333,7 @@ Span 之间因果关系的链接。详细信息参见
 
 ### zPages
 
-一种进程内的替代导出方式。启用后，它会在后台收集和聚合追踪与指标数据，并在网页中提供展示。参见 [zPages]。
+一种进程内的替代导出方式。启用后，它会在后台收集和聚合追踪与指标数据，并在网页中提供展示。参见 [zPages][]。
 
 [attribute]: /docs/specs/otel/common/#attributes
 [baggage]: /docs/specs/otel/baggage/api/

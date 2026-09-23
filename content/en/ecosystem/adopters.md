@@ -3,6 +3,8 @@ title: Adopters
 description: Organizations that use OpenTelemetry
 ---
 
+{{% include freeze-notice.md %}}
+
 OpenTelemetry's mission is to enable effective observability for all its
 end-users. If you are thinking about adopting OpenTelemetry for your
 organization, you may be curious about other adoption journeys. The table below
@@ -22,7 +24,7 @@ OpenTelemetry for [Observability](/docs/concepts/observability-primer/).
 ## Adding your organization as an adopter {#how-to-add}
 
 To have your organization listed, submit a PR with an entry added to the
-[adopters list]. The entry should include the following:
+[adopters list][]. The entry should include the following:
 
 - Link to a blog post or other resource that describes how your organization
   makes use of OpenTelemetry

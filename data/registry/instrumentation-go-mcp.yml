@@ -1,0 +1,24 @@
+title: MCP Server Instrumentation
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - instrumentation
+  - mcp
+  - model-context-protocol
+  - gen-ai
+license: MIT
+description: >-
+  OpenTelemetry middleware for Go MCP servers built with the official go-sdk.
+  Instruments every incoming method call with spans and duration histograms,
+  following the OTel semantic conventions for MCP. Covers both protocol-level
+  errors and application-level tool handler errors.
+authors:
+  - name: Olga Safonova
+    url: https://github.com/olgasafonova
+urls:
+  repo: https://github.com/olgasafonova/mcp-otel-go
+  docs: https://pkg.go.dev/github.com/olgasafonova/mcp-otel-go/mcpotel
+createdAt: 2026-02-21
+isNative: false
+isFirstParty: false

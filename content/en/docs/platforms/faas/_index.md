@@ -8,7 +8,7 @@ redirects: [{ from: /docs/faas/*, to: ':splat' }] # cSpell:disable-line
 ---
 
 Functions as a Service (FaaS) is an important serverless compute platform for
-[cloud native apps]. However, platform quirks usually mean these applications
+[cloud native apps][]. However, platform quirks usually mean these applications
 have slightly different monitoring guidance and requirements than applications
 running on Kubernetes or Virtual Machines.
 

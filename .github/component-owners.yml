@@ -1,4 +1,6 @@
-# This file is used to define the owners of the content modules in the OpenTelemetry repository.
+# This file defines suggested reviewers for component-owned files.
+# For required reviewers, see .github/CODEOWNERS.
+
 components:
   content-modules:
     - open-telemetry/docs-maintainers
@@ -38,6 +40,8 @@ components:
     - open-telemetry/browser-approvers
   content/en/docs/platforms/faas:
     - open-telemetry/lambda-extension-approvers
+  content/en/docs/platforms/linux:
+    - open-telemetry/packaging-approvers
   content/en/docs/languages/cpp:
     - open-telemetry/cpp-approvers
   content/en/docs/languages/erlang:
@@ -71,6 +75,8 @@ components:
   content/en/docs/zero-code/go:
     - open-telemetry/go-approvers
     - open-telemetry/go-instrumentation-approvers
+  content/en/docs/zero-code/go/compile-time:
+    - open-telemetry/go-compile-instrumentation-approvers
   content/en/docs/zero-code/java:
     - open-telemetry/java-approvers
     - open-telemetry/java-instrumentation-approvers
@@ -86,28 +92,6 @@ components:
   content/en/docs/zero-code/python:
     - open-telemetry/python-approvers
 
-  ## Localization Teams
-  content/bn:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-bn-approvers
-  content/es:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-es-approvers
-  content/fr:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-fr-approvers
-  content/ja:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-ja-approvers
-  content/pt:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-pt-approvers
-  content/ro:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-ro-approvers
-  content/uk:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-uk-approvers
-  content/zh:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-zh-approvers
+  # No-owner files:
+  .lycheecache:
+    - open-telemetry/docs-approvers

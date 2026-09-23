@@ -3,6 +3,13 @@
 {{ $title := .Get "title" -}}
 {{ $url := .Get "url" -}}
 
+{{ $anchor := partial "hooks/render-link.html" (dict
+    "ctx" (dict
+      "Destination" $url
+      "PageInner" .Page
+      "Text" $title))
+-}}
+
 <div class="otel-feature">
   {{- if $image -}}
   <div class="otel-feature__icon">
@@ -21,12 +28,9 @@
   </div>
   {{- end -}}
   <h3 class="otel-feature__title">
-    {{- with $url }}<a href="{{ . }}">{{ end -}}
-    {{ $title }}
-    {{- with $url }}</a>{{ end -}}
+    {{- $anchor -}}
   </h3>
   <div class="otel-feature__description">
     {{ .Inner | .Page.RenderString }}
   </div>
 </div>
-

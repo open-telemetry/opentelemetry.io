@@ -83,7 +83,7 @@ We structured two types of tests based on
 - End-to-end tests
 
 The tests are organized into
-[26 trace-based tests for 10 services](https://github.com/open-telemetry/opentelemetry-demo/tree/main/test/tracetesting).
+[26 trace-based tests for 10 services](https://github.com/open-telemetry/opentelemetry-demo/tree/5f83ad187000e861c6bfd6ee392d2de6be7c8702/test/tracetesting?from_branch=main).
 These trace-based tests in the `tracetesting` directory are ported from AVA and
 Cypress and test both the operation outcome and the traces.
 
@@ -95,9 +95,9 @@ responses, and ensure that the resulting observability trace matches the
 expected behavior.
 
 One example is an
-[integration test](https://github.com/open-telemetry/opentelemetry-demo/blob/main/test/tracetesting/currency-service/convert.yaml)
+[integration test](https://github.com/open-telemetry/opentelemetry-demo/blob/62d1d9be11e63e824605d349cfeda37f0a0479b7/test/tracetesting/currency-service/convert.yaml?from_branch=main)
 made against the
-[currency service](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/currencyservice)
+[currency service](https://github.com/open-telemetry/opentelemetry-demo/tree/e3548c621744514f48e71d7ada96632edd345545/src/currencyservice?from_branch=main)
 to check if the currency conversion operation is returning correctly. Here’s a
 simplified YAML definition of the trace-based test:
 
@@ -166,7 +166,7 @@ through the services.
 
 For these tests, we considered a scenario based on the main use case of the
 demo: “_a user buying a product_” executed against the
-[Front-end service](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/frontend)
+[Front-end service](https://github.com/open-telemetry/opentelemetry-demo/tree/79227c47898b0d4e1b96d0fff205d48faba11551/src/frontend?from_branch=main)
 APIs that execute the following operations:
 
 - While entering the shop, the user sees:
@@ -180,7 +180,7 @@ APIs that execute the following operations:
   products and clean the shopping cart.
 
 Since this test is a sequence of smaller tests, we created
-[a transaction](https://github.com/open-telemetry/opentelemetry-demo/blob/main/test/tracetesting/frontend-service/all.yaml)
+[a transaction](https://github.com/open-telemetry/opentelemetry-demo/blob/62d1d9be11e63e824605d349cfeda37f0a0479b7/test/tracetesting/frontend-service/all.yaml?from_branch=main)
 that defines the tests that will be run:
 
 ```yaml
@@ -207,11 +207,11 @@ screenshot of a trace for this operation:
 ![checkout service formatted](./checkout-formatted.png)
 
 In this operation, we can see inner calls to multiple services, like
-[Frontend](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/frontend),
-[CheckoutService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/checkoutservice),
-[CartService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/cart/),
-[ProductCatalogService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/productcatalogservice),
-[CurrencyService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/currencyservice),
+[Frontend](https://github.com/open-telemetry/opentelemetry-demo/tree/79227c47898b0d4e1b96d0fff205d48faba11551/src/frontend?from_branch=main),
+[CheckoutService](https://github.com/open-telemetry/opentelemetry-demo/tree/0a39d4446596318ede4248c9442c690244e6501c/src/checkoutservice?from_branch=main),
+[CartService](https://github.com/open-telemetry/opentelemetry-demo/tree/193eaa36824403f24e3fdb744a9a746e17a0b3c2/src/cart?from_branch=main),
+[ProductCatalogService](https://github.com/open-telemetry/opentelemetry-demo/tree/8cb101d461f737beff7d3b804e97c78a7f47f6fa/src/productcatalogservice?from_branch=main),
+[CurrencyService](https://github.com/open-telemetry/opentelemetry-demo/tree/e3548c621744514f48e71d7ada96632edd345545/src/currencyservice?from_branch=main),
 and others.
 
 This is a good scenario for a trace-based test where we can check if the output
@@ -222,16 +222,16 @@ triggered during the checkout:
 - _“The frontend has been called with success”_, checking the output of the test
   trigger;
 - _“The order was placed”_, checking if the
-  [CheckoutService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/checkoutservice)
+  [CheckoutService](https://github.com/open-telemetry/opentelemetry-demo/tree/0a39d4446596318ede4248c9442c690244e6501c/src/checkoutservice?from_branch=main)
   was called and emitted spans correctly;
 - _“The user was charged”_, checking if the
-  [PaymentService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/paymentservice)
+  [PaymentService](https://github.com/open-telemetry/opentelemetry-demo/tree/4c8e43f219ae8d2c302fb9d6c78164017c3314bc/src/paymentservice?from_branch=main)
   was called and emitted spans correctly;
 - _“The product was shipped”_, checking if the
-  [ShippingService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/shippingservice)
+  [ShippingService](https://github.com/open-telemetry/opentelemetry-demo/tree/fca8fd1374081a3df2699f08cf5784dab16919a3/src/shippingservice?from_branch=main)
   was called and emitted spans correctly;
 - _“The cart was emptied”_, checking if the
-  [CartService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/cart/)
+  [CartService](https://github.com/open-telemetry/opentelemetry-demo/tree/193eaa36824403f24e3fdb744a9a746e17a0b3c2/src/cart?from_branch=main)
   was called and emitted spans correctly.
 
 The final result was the following test YAML, which triggers the Checkout
@@ -348,7 +348,7 @@ and
 [this discussion](https://github.com/open-telemetry/opentelemetry-demo/pull/905#discussion_r1207101535).
 
 One curious case was the behavior of the
-[EmailService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/emailservice).
+[EmailService](https://github.com/open-telemetry/opentelemetry-demo/tree/969fe3bb0165a6f9e4684a0c69abb7d156fef230/src/emailservice?from_branch=main).
 When building tests for the first time and calling it directly with the payload
 provided by AVA tests, traces were generated for the service indicating success,
 but with an HTTP `500` error, as can be seen in Jaeger.
@@ -401,7 +401,7 @@ correctly as seen here:
 This type of case is interesting because it could happen in other real-world
 scenarios, and with the help of the tests and telemetry data, we were able to
 pinpoint and solve it. In the case of
-[this test](https://github.com/open-telemetry/opentelemetry-demo/blob/main/test/tracetesting/email-service/confirmation.yaml),
+[this test](https://github.com/open-telemetry/opentelemetry-demo/blob/62d1d9be11e63e824605d349cfeda37f0a0479b7/test/tracetesting/email-service/confirmation.yaml?from_branch=main),
 we opted out of using the same pattern as the Checkout service.
 
 ## Conclusion

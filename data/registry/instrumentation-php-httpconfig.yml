@@ -1,0 +1,14 @@
+title: OpenTelemetry HTTP configuration
+registryType: instrumentation
+language: php
+tags:
+  - php
+  - instrumentation
+license: Apache 2.0
+description: Provides configuration options for HTTP instrumentation packages.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/HttpConfig
+createdAt: 2025-03-26
+isFirstParty: false

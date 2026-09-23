@@ -209,7 +209,7 @@ There are two approaches for exporting metrics to Prometheus:
 
 1. **Using OTLP Exporter (Push)**: Push metrics to Prometheus using the OTLP
    protocol. This requires
-   [Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver)
+   [Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver)
    to be enabled. This is the recommended approach for production environments
    as it supports exemplars and is stable.
 
@@ -275,34 +275,30 @@ var meterProvider = Sdk.CreateMeterProviderBuilder()
     .Build();
 ```
 
-{{% alert title=Note %}}
-
-Make sure Prometheus is started with the OTLP receiver enabled:
-
-```sh
-./prometheus --web.enable-otlp-receiver
-```
-
-Or when using Docker:
-
-```sh
-docker run -p 9090:9090 prom/prometheus --web.enable-otlp-receiver
-```
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Make sure Prometheus is started with the OTLP receiver enabled:
+>
+> ```sh
+> ./prometheus --web.enable-otlp-receiver
+> ```
+>
+> Or when using Docker:
+>
+> ```sh
+> docker run -p 9090:9090 prom/prometheus --web.enable-otlp-receiver
+> ```
 
 #### Using Prometheus Exporter (Pull/Scrape) {#prometheus-exporter}
 
 This approach exposes a metrics endpoint in your application (e.g., `/metrics`)
 that Prometheus scrapes at regular intervals.
 
-{{% alert color="warning" title="Warning" %}}
-
-This exporter is still under development and doesn't support exemplars. For
-production environments, consider using the
-[OTLP exporter approach](#prometheus-otlp) instead.
-
-{{% /alert %}}
+> [!WARNING]
+>
+> This exporter is still under development and doesn't support exemplars. For
+> production environments, consider using the
+> [OTLP exporter approach](#prometheus-otlp) instead.
 
 ##### Dependencies {#prometheus-dependencies}
 

@@ -5,6 +5,7 @@ aliases: [/docs/concepts/sdk-configuration]
 redirects: [{ from: /docs/concepts/sdk-configuration/*, to: ':splat' }]
 weight: 1
 default_lang_commit: 3e474f0f2a7976bf2637b12dab240ed84c1712b7
+drifted_from_default: true
 ---
 
 Os SDKs do OpenTelemetry oferecem suporte à configuração em cada linguagem e por

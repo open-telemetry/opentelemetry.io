@@ -3,6 +3,7 @@ title: Despliegue con Docker
 linkTitle: Docker
 aliases: [docker_deployment]
 default_lang_commit: 6bf06ddb9fc057dd6e8092f26d988ffe7b1af5ed
+drifted_from_default: true
 cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 ---
 
@@ -46,7 +47,7 @@ docker compose up --force-recreate --remove-orphans --detach
 
     {{% /tab %}} {{< /tabpane >}}
 
-4.  (Opcional) Habilita las pruebas basadas en observabilidad de API[^1]:
+4. (Opcional) Habilita las pruebas basadas en observabilidad de API[^1]:
 
     {{< tabpane text=true >}} {{% tab Make %}}
 

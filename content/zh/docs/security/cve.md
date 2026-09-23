@@ -1,7 +1,7 @@
 ---
 title: 常见漏洞与暴露（CVE）
 weight: 100
-default_lang_commit: f35b3300574b428f94dfeeca970d93c5a6ddbf35
+default_lang_commit: f35b3300574b428f94dfeeca970d93c5a6ddbf35 # patched
 drifted_from_default: true
 ---
 
@@ -21,6 +21,8 @@ CVE 列表。原始数据存放在 [sig-security](https://github.com/open-teleme
   <tbody>
   </tbody>
 </table>
+
+<!-- markdownlint-disable no-shortcut-ref-link -->
 
 <script id="main-script">
   'use strict';

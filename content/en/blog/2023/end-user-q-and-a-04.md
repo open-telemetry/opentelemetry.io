@@ -8,6 +8,8 @@ body_class: otel-with-contributions-from
 cSpell:ignore: Aronoff autoscaler codepath fluentbit k8sattributesprocessor kubelet spanmetrics statefulset
 ---
 
+<!-- markdownlint-configure-file {"no-shortcut-ref-link": {"ignore_pattern": "^(and|is|our)$"}} -->
+
 With contributions from [Adriana Villela](https://github.com/avillela)
 (Lightstep from ServiceNow).
 
@@ -29,7 +31,7 @@ In this session, Jacob shared:
 
 - How he approached migrating to OpenTelemetry from OpenTracing and OpenCensus
 - What the
-  [`TargetAllocator`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md)
+  [`TargetAllocator`](https://github.com/open-telemetry/opentelemetry-operator/blob/ac5bae83adb06d320b49239cec50469c0db784df/cmd/otel-allocator/README.md?from_branch=main)
   is, and how he's using it today
 - Why you might not want to deploy your Collector as a sidecar
 
@@ -223,10 +225,10 @@ like logging for local development, and tracing for distributed development."
 Kubernetes now has the ability to emit OTel traces natively, and Jacob is
 interested in seeing if the traces they get from those are sufficient for
 generating better Kubernetes metrics using the
-[spanmetrics processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanmetricsprocessor).
+[spanmetrics processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/b01fd364d01962e666dc347eb13421053ea93bac/processor/spanmetricsprocessor?from_branch=main).
 
 > **NOTE:** The spanmetrics processor is deprecated, and the
-> [spanmetrics connector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanmetricsprocessor)
+> [spanmetrics connector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/b01fd364d01962e666dc347eb13421053ea93bac/processor/spanmetricsprocessor?from_branch=main)
 > should be used instead.
 
 "I'm very focused on infrastructure metrics, like Kubernetes infrastructure
@@ -256,7 +258,7 @@ does not require running a Prometheus instance; however, Prometheus CRDs need to
 exist in order for the Target Allocator to pick them up.
 
 From the
-[docs](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#prometheuscr-specifics):
+[docs](https://github.com/open-telemetry/opentelemetry-operator/tree/de81a64ae8d7d2f4f48945049d8ef9ad3509f89e/cmd/otel-allocator?from_branch=main#prometheuscr-specifics):
 
 > The Prometheus CRDs also have to exist for the Allocator to pick them up. The
 > best place to get them is from prometheus-operator:
@@ -274,7 +276,7 @@ solution such as [Thanos](https://github.com/thanos-io/thanos#) or
 components that you'll need to monitor.
 
 "In OTel, we tack on this
-[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md)
+[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/c9585747e97d1ba5a0aae3bee72eaf76438951f4/receiver/prometheusreceiver/README.md?from_branch=main)
 to get all this data, but because we want to be more efficient than Prometheus,
 because we don’t need to store the data, we have this component called the
 Target Allocator, which goes to do the service discovery from Prometheus," says
@@ -326,18 +328,18 @@ generated? One of a bunch of things."
 ### Kubernetes modes on OTel
 
 The OTel Operator supports four
-[deployment modes](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md)
+[deployment modes](https://github.com/open-telemetry/opentelemetry-operator/blob/f6b0d947a4c48444a0483b3b0dcaf1e60c4458d6/docs/api/opentelemetrycollectors.md?from_branch=main)
 for the OTel Collector in Kubernetes:
 
 - [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) -
   see example
-  [ingress/00-install.yaml](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/ingress/00-install.yaml)
+  [ingress/00-install.yaml](https://github.com/open-telemetry/opentelemetry-operator/blob/107d2c31a61f1cea3a1d6b21241c5fee7ff79f41/tests/e2e/ingress/00-install.yaml?from_branch=main)
 - [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) -
   see example
-  [daemonset-features/01-install.yaml](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/daemonset-features/01-install.yaml)
+  [daemonset-features/01-install.yaml](https://github.com/open-telemetry/opentelemetry-operator/blob/f6b0d947a4c48444a0483b3b0dcaf1e60c4458d6/tests/e2e/daemonset-features/01-install.yaml?from_branch=main)
 - [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/) -
   see example
-  [smoke-statefulset/00-install.yaml](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/smoke-statefulset/00-install.yaml)
+  [smoke-statefulset/00-install.yaml](https://github.com/open-telemetry/opentelemetry-operator/blob/6d2f18b0ac0303aff2b904c2de76296cea60fbf9/tests/e2e/smoke-statefulset/00-install.yaml?from_branch=main)
 - [Sidecar](https://www.techtarget.com/searchapparchitecture/tip/The-reasons-to-use-or-not-use-sidecars-in-Kubernetes) -
   see example
   [instrumentation-python/00-install-collector.yaml](https://github.com/open-telemetry/opentelemetry-operator/blob/cd1d136a539820a87bbc26fa2d8ff1fb821bbcf1/tests/e2e/instrumentation-python/00-install-collector.yaml)
@@ -357,7 +359,7 @@ and you also have limited capabilities. He says, "If you’re making Kubernetes
 APIs calls or attribute enrichment, that’s the thing that would get
 exponentially expensive if you’re running as a sidecar." He shares an example:
 "...if you have sidecar [Collector using the
-[k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)]
+[k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/k8sattributesprocessor?from_branch=main)]
 on 10k pods, then that’s 10k API calls made to the K8s API. That's expensive."
 
 On the other hand, if you have five pods deployed on StatefulSets, "that's not
@@ -482,7 +484,7 @@ Here's how to connect with us:
 - [OTel in Practice sessions](/community/end-user/otel-in-practice/)
 - [Monthly interview/feedback sessions](/community/end-user/interviews-feedback/)
 - [OpenTelemetry on LinkedIn](https://www.linkedin.com/groups/14081251)
-- [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/main/README.md#submitting-a-blog-post)
+- [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/368f811f81c27798a031b4c92024ecdd65cddc19/README.md?from_branch=main#submitting-a-blog-post)
 
 Be sure to follow OpenTelemetry on
 [Mastodon](https://fosstodon.org/@opentelemetry) and

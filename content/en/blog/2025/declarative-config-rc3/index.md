@@ -103,12 +103,12 @@ hear your feedback on this latest version of the schema!
 [configtls]: https://pkg.go.dev/go.opentelemetry.io/collector/config/configtls
 [severity-levels]: /docs/specs/otel/logs/data-model/#field-severitynumber
 [otel-config-schema]:
-  https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
+  https://github.com/open-telemetry/opentelemetry-configuration/tree/6b306495d6285dacfa815b24115f69f0743f9ad1/schema?from_branch=main
 [schema]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0-rc.3/opentelemetry_configuration.json
 [contrib-doc]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/CONTRIBUTING.md#project-tooling
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/1905936912045de1cb6ef04d13afe912f462dbe2/CONTRIBUTING.md?from_branch=main#project-tooling
 [version-docs]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#experimental-features
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/0a18b0c19ba656c22aa2a8dab65d03380fcc2802/VERSIONING.md?from_branch=main#experimental-features
 [schema-docs]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#opentelemetryconfiguration
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/28784d4ea2054f95affe3912189ccd51ee6aea3a/schema-docs.md?from_branch=main#opentelemetryconfiguration

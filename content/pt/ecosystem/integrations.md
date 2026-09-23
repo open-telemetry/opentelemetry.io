@@ -3,7 +3,8 @@ title: Integrações
 description:
   Bibliotecas, serviços e aplicações com suporte nativo para o OpenTelemetry.
 aliases: [/integrations]
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
+default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4 # patched
+drifted_from_default: true
 ---
 
 A missão do OpenTelemetry é
@@ -48,7 +49,7 @@ possuem o logotipo da CNCF ao lado de seus nomes.
 
 ## Adicionando sua integração {#how-to-add}
 
-Para que sua biblioteca, serviço ou aplicativo seja listado, [envie um PR] com
+Para que sua biblioteca, serviço ou aplicativo seja listado, [envie um PR][] com
 uma entrada adicionada ao [registro](/ecosystem/registry/adding). A entrada deve
 incluir o seguinte:
 

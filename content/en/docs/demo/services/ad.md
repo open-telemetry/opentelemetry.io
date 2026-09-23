@@ -102,6 +102,68 @@ meter
   .build();
 ```
 
+### Bridging non-OTel custom metrics (Prometheus client library)
+
+The Ad service also exposes a small set of custom metrics using the
+[Prometheus Java client library](https://github.com/prometheus/client_java)
+rather than the OpenTelemetry SDK. These metrics are exposed on a separate HTTP
+endpoint (`/metrics` on `AD_PROMETHEUS_PORT`, default `9465`) and scraped by the
+OpenTelemetry Collector's
+[`prometheus` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver),
+which forwards them into the same pipeline as the OTel SDK metrics:
+
+```java
+private static final Counter adsServedCounter =
+    Counter.builder()
+        .name("demo_ad_served_total")
+        .help("Total number of ads served, labeled by category")
+        .labelNames("category")
+        .register();
+
+HTTPServer prometheusServer =
+    HTTPServer.builder().port(prometheusPort).buildAndStart();
+```
+
+> [!NOTE]
+>
+> This is intentionally included to illustrate a **common pattern during OTel
+> adoption**: organizations frequently already own significant Prometheus
+> instrumentation -- in libraries, third-party exporters, or legacy services --
+> and want to ingest those metrics into an OpenTelemetry-native pipeline without
+> rewriting everything upfront. The Collector's `prometheus` receiver is the
+> bridge that makes this possible.
+
+The Collector configuration that wires this up:
+
+```yaml
+receivers:
+  prometheus/ad:
+    config:
+      scrape_configs:
+        - job_name: ad
+          scrape_interval: 10s
+          static_configs:
+            - targets: ['ad:${env:AD_PROMETHEUS_PORT}']
+```
+
+> [!TIP]
+>
+> **Recommendation**: treat this as a _transitional_ pattern. For new custom
+> metrics, use the OpenTelemetry SDK directly. For existing Prometheus-client
+> metrics, migrate incrementally as you touch the surrounding code, or in a
+> focused refactor.
+>
+> Common challenges when mixing OpenTelemetry and Prometheus telemetry:
+>
+> - **Identity misalignment**: `service.name` and `service.instance.id` may not
+>   align across the two pipelines.
+> - **Dual mental models**: Prometheus and OTel use different concepts (labels
+>   vs. attributes, different semantic conventions) with separate APIs,
+>   ingestion pipelines, and potentially different enrichment rules.
+> - **Inconsistent code**: mixing Prometheus client calls for older metrics with
+>   OTel API calls for newer ones leaves the codebase without a single idiomatic
+>   style.
+
 ### Current Metrics Produced
 
 Note that all the metric names below appear in Prometheus/Grafana with `.`
@@ -111,9 +173,14 @@ characters transformed to `_`.
 
 The following custom metrics are currently available:
 
-- `app.ads.ad_requests`: A counter of ad requests with dimensions describing
-  whether the request was targeted with context keys or not, and whether the
-  response was targeted or random ads.
+- `app.ads.ad_requests` (OpenTelemetry SDK): A counter of ad requests with
+  dimensions describing whether the request was targeted with context keys or
+  not, and whether the response was targeted or random ads.
+- `demo_ad_served_total` (Prometheus client library, scraped by the Collector):
+  A counter of ads served, labeled by `category` (e.g. `telescopes`,
+  `binoculars`, `random`). See
+  [Bridging non-OTel custom metrics](#bridging-non-otel-custom-metrics-prometheus-client-library)
+  above.
 
 #### Auto-instrumented metrics
 

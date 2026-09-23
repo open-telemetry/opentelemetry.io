@@ -11,7 +11,7 @@ candidates running for one of the five available seats. We encourage all voters
 to take a moment and review all candidates, picking the one that best represents
 your interest. You can find their pictures, profile link, and descriptions on
 the
-[candidates page](https://github.com/open-telemetry/community/blob/main/elections/2023/governance-committee-candidates.md),
+[candidates page](https://github.com/open-telemetry/community/blob/fe12ecb89802550b4d3daa9a30646157c540b391/elections/2023/governance-committee-candidates.md?from_branch=main),
 but here are their names:
 
 - Austin Parker

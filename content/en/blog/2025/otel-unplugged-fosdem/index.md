@@ -25,7 +25,7 @@ the OpenTelemetry unconference that we
 
 ## What is OTel Unplugged?
 
-OTel Unplugged is an OpenTelemetry [unconference] and project roadmapping
+OTel Unplugged is an OpenTelemetry [unconference][] and project roadmapping
 session. An unconference is like a conference, only instead of a speaker track,
 we have a series of breakout sessions where attendees get to pick the topics. If
 you are an end user, this is a great opportunity to connect with maintainers and
@@ -57,7 +57,7 @@ This year's OTel Unplugged EU is hosted by Grafana Labs, with the agenda
 organized and run by the OpenTelemetry [Governance Committee][].
 
 [Governance Committee]:
-  https://github.com/open-telemetry/community/blob/main/community-members.md#governance-committee
+  https://github.com/open-telemetry/community/blob/b35f0f6c9801bfbe894211fb3d95afa3157662ec/community-members.md?from_branch=main#governance-committee
 [OTel Unplugged]: https://events.humanitix.com/otelunplugged-eu2026
 [sponsorship prospectus]:
   https://drive.google.com/file/d/1C4e7OevZ5vXyZLjxZif9Mi06A6uPNH7K/view

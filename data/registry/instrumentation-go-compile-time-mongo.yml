@@ -1,0 +1,21 @@
+title:
+  OpenTelemetry Go Compile-Time Auto-Instrumentation for
+  `go.mongodb.org/mongo-driver/mongo`
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - instrumentation
+  - compile-time
+  - auto-instrumentation
+  - mongodb
+license: Apache 2.0
+description: >
+  Go compile-time auto-instrumentation plugin for the
+  [`go.mongodb.org/mongo-driver/mongo`
+  package](https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo).
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/go.mongodb.org/mongo-driver/mongo
+createdAt: 2026-06-29

@@ -40,7 +40,7 @@ What this `Dockerfile` does:
 
 - Pull a base image with NGINX 1.23.1 pre-installed
 - Install `unzip`
-- Download the [opentelemetry-webserver-sdk-x64-linux] package
+- Download the [opentelemetry-webserver-sdk-x64-linux][] package
 - Unpack the package, put it into `/opt` & run `./install.sh`
 - Add the dependencies at `/opt/opentelemetry-webserver-sdk/sdk_lib/lib` to the
   library path (`LD_LIBRARY_PATH`)
@@ -355,7 +355,7 @@ Within a few moments you should have five docker containers up and running:
 - Backend
 
 Send a few requests to the frontend with `curl localhost:8000` and then check
-the Jaeger UI in your browser at [localhost:16686]. You should see traces going
+the Jaeger UI in your browser at [localhost:16686][]. You should see traces going
 from frontend to NGINX to backend.
 
 The frontend trace should indicate an error, since NGINX is forwarding the
@@ -374,7 +374,7 @@ you run into any problems, [create an issue][].
 [create an issue]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues
 [full list of directives]:
-  https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module#configuration-1
+  https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/5009fb7c0428ab7e3c18dd8eb283482ac77de932/instrumentation/otel-webserver-module?from_branch=main#configuration-1
 [localhost:16686]: http://localhost:16686
 [opentelemetry-webserver-sdk-x64-linux]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/releases/download/webserver%2Fv1.0.0/opentelemetry-webserver-sdk-x64-linux.tgz.zip

@@ -1,0 +1,25 @@
+# cSpell:ignore Hodgson
+title: motel
+registryType: utilities
+language: go
+tags:
+  - traces
+  - metrics
+  - logs
+  - testing
+  - synthetic
+  - generator
+urls:
+  repo: https://github.com/andrewh/motel
+license: Apache 2.0
+description: |
+  motel generates synthetic OpenTelemetry signals (traces, metrics,
+  and logs) from a YAML topology definition. Describe your distributed system
+  architecture and motel produces faithful telemetry without requiring live
+  services. Import real traces to reverse-engineer topologies, simulate failures
+  and latency spikes with time-windowed scenarios, and choose from traffic
+  patterns.
+authors:
+  - name: Andrew Hodgson
+    url: https://github.com/andrewh
+createdAt: 2026-02-21

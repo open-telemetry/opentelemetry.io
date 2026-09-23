@@ -5,7 +5,7 @@ date: 2024-07-10
 author: '[Tiffany Hrabusa](https://github.com/tiffany76)'
 sig: Communications SIG
 # prettier-ignore
-cSpell:ignore: Alhamdani Censhare EBPF Hrabusa Husni Huxing Jiahang Krom Sianturi Wanqi Zhang Zihao Ziyi
+cSpell:ignore: Alhamdani Censhare Husni Huxing Jiahang Krom Sianturi Wanqi Zhang Zihao Ziyi
 ---
 
 Join members of the OpenTelemetry community at

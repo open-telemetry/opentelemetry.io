@@ -21,7 +21,7 @@ can find
 [designated attributes for reporting CI/CD pipelines](/docs/specs/semconv/registry/attributes/cicd/).
 
 This is the result of the hard work of the
-[CI/CD Observability Special Interest Group (SIG) within OpenTelemetry](https://github.com/open-telemetry/community/blob/main/projects/completed-projects/ci-cd.md).
+[CI/CD Observability Special Interest Group (SIG) within OpenTelemetry](https://github.com/open-telemetry/community/blob/514a684953f114217c7b673471969b3ddec5f3a2/projects/completed-projects/ci-cd.md?from_branch=main).
 As we accomplish this core milestone for the first phase, we thought it’d be a
 good time to share it with the world.
 
@@ -30,7 +30,7 @@ good time to share it with the world.
 [CI/CD observability](https://medium.com/@horovits/fcc6c10c4987) is essential
 for ensuring that software is released to production efficiently and reliably.
 Well-functioning CI/CD pipelines directly impact business outcomes by shortening
-[Lead Time for Changes DORA metric](https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2)
+[Lead Time for Changes DORA metric](https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2?link-check=no&last-validated=2026-08-28)
 and enabling fast identification and resolution of broken or flaky processes. By
 integrating observability into CI/CD workflows, teams can monitor the health and
 performance of their pipelines in real time, gaining insights into bottlenecks
@@ -53,7 +53,7 @@ dashboards, reports, and alerts.
 
 Things become even more challenging when you need to monitor multiple tools
 involved in the release pipeline in a uniform manner. This is where
-[open standards and specifications become critical](https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97).
+[open standards and specifications become critical](https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97?link-check=no&last-validated=2026-08-28).
 They create a common uniform language, one which is tool- and vendor-agnostic,
 enabling cohesive observability across different tools and allowing teams to
 maintain a clear and comprehensive view of their CI/CD pipeline performance.
@@ -89,7 +89,7 @@ With the feedback from the Technical Oversight Committee and others within the
 CNCF, we’ve taken the path of asking the mandate to start a dedicated Working
 Group for the topic under OpenTelemetry’s Semantic Conventions SIG (SIG SemConv
 in short). With their blessing, we
-[launched the formal CI/CD Observability SIG](https://github.com/open-telemetry/community/blob/main/projects/completed-projects/ci-cd.md)
+[launched the formal CI/CD Observability SIG](https://github.com/open-telemetry/community/blob/514a684953f114217c7b673471969b3ddec5f3a2/projects/completed-projects/ci-cd.md?from_branch=main)
 to formalize our previous Slack group discussions and goals.
 
 ## OpenTelemetry’s CI/CD Observability SIG
@@ -183,7 +183,7 @@ Variable Context Propagation, which was just approved and merged. This OTEP sets
 the foundation for writing the specification.
 
 Since we’ve made progress on our initial milestones, we’ve updated the
-[CI/CD Observability SIG milestones for the remainder of 2024](https://github.com/open-telemetry/community/blob/main/projects/completed-projects/ci-cd.md).
+[CI/CD Observability SIG milestones for the remainder of 2024](https://github.com/open-telemetry/community/blob/514a684953f114217c7b673471969b3ddec5f3a2/projects/completed-projects/ci-cd.md?from_branch=main).
 Our goal is to finish out as many of the defined milestones as possible by the
 end of the year. Notably, we’re focused on:
 

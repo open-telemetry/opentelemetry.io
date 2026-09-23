@@ -9,7 +9,7 @@ logBridgeWarning: >
   它们并非供终端用户用作 Log4j、SLF4J、Logback 等日志框架的替代品。
 default_lang_commit: 7c6d317a1ed969bd03f0aa8297f068ca29c2b459 # patched
 drifted_from_default: true
-cSpell:ignore: Dotel kotlint Logback updowncounter
+cSpell:ignore: Dotel kotlint updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -563,7 +563,7 @@ public class OpenTelemetryUsage {
 {{% alert title="Java agent" %}} Java agent 是一种特殊情况，其中 `GlobalOpenTelemetry` 由 agent 进行设置。
 只需调用 `GlobalOpenTelemetry.get()` 即可访问 `OpenTelemetry` 实例。
 
-了解更多关于[使用自定义手动插桩扩展 Java agent] 的信息(/docs/zero-code/Java/agent/api/)。
+了解更多关于[使用自定义手动插桩扩展 Java agent](/docs/zero-code/Java/agent/api/)的信息。
 {{% /alert %}}
 
 [GlobalOpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html)

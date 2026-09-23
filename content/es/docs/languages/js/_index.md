@@ -6,7 +6,7 @@ description: >-
   en JavaScript (para Node.js y el navegador).
 aliases: [/js, /js/metrics, /js/tracing]
 weight: 20
-default_lang_commit: 546f3e88ca3673de8aad69358d416256d1fe6411
+default_lang_commit: 546f3e88ca3673de8aad69358d416256d1fe6411 # patched
 drifted_from_default: true
 ---
 
@@ -41,7 +41,7 @@ OpenTelemetry en JavaScript consta de los siguientes repositorios:
 Si tienes preguntas sobre OpenTelemetry JavaScript, por favor comunícate a
 través de
 [Discusiones de GitHub](https://github.com/open-telemetry/opentelemetry-js/discussions)
-o el canal [#otel-js] en [Slack de la CNCF](https://slack.cncf.io/).
+o el canal `#otel-js` en [Slack de la CNCF](https://slack.cncf.io/).
 
 Si deseas contribuir a OpenTelemetry en JavaScript, consulta las
 [instrucciones de contribución](https://github.com/open-telemetry/opentelemetry-js/blob/main/CONTRIBUTING.md)

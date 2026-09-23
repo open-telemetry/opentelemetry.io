@@ -1,6 +1,6 @@
 <!-- cSpell:ignore: cond -->
 {{/* Common variables */ -}}
-{{ $data := sort (sort $.Site.Data.ecosystem.distributions "components") "name" "asc" -}}
+{{ $data := sort (sort hugo.Data.ecosystem.distributions "components") "name" "asc" -}}
 {{ $filter := .Get "filter" -}}
 {{ $otelRepoUrl := "github.com/open-telemetry/opentelemetry-collector-releases" -}}
 

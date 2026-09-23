@@ -176,5 +176,5 @@ good fit for today. Keeping the responsibilities separate lets OTTL focus on
 transforming existing log records while the unroll processor handles expansion
 
 The unroll processor is now available in the official
-[OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/unrollprocessor).
+[OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/unrollprocessor?from_branch=main).
 Please feel free to create issues and test it out for your logs pipelines.

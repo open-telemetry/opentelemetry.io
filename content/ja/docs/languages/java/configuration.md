@@ -3,8 +3,7 @@ title: SDKの設定
 linkTitle: SDKの設定
 weight: 13
 aliases: [config]
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
-drifted_from_default: true
+default_lang_commit: 2b88c43e50fb99c601ededa24b1f3a461fef9ac0
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---
@@ -21,20 +20,10 @@ cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKC
 
 [ゼロコードSDK自動設定](#zero-code-sdk-autoconfigure)モジュールは、システムプロパティまたは環境変数を通じてSDKコンポーネントを設定し、プロパティが不十分な場合のさまざまな拡張ポイントを提供します。
 
-{{% alert %}}
-
-[ゼロコードSDK自動設定](#zero-code-sdk-autoconfigure)モジュールの使用を推奨します。
-これにより定型コードが削減され、コードの書き直しやアプリケーションの再コンパイルなしに再設定が可能になり、言語の相互運用性があります。
-
-{{% /alert %}}
-
-{{% alert %}}
-
-[Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。
-
-すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
-
-{{% /alert %}}
+> [!NOTE] **Notes**
+>
+> - [ゼロコードSDK自動設定](#zero-code-sdk-autoconfigure)モジュールの使用を推奨します。これにより定型コードが削減され、コードの書き直しやアプリケーションの再コンパイルなしに再設定が可能になり、言語の相互運用性があります。
+> - [Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
 
 ## プログラム設定 {#programmatic-configuration}
 
@@ -74,22 +63,10 @@ public class AutoConfiguredSdk {
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert %}}
-
-[Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。
-すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
-
-{{% /alert %}}
-
-{{% alert %}}
-
-自動設定モジュールは、適切なときにSDKをシャットダウンするためにJavaシャットダウンフックを登録します。
-OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#internal-logging)するため、シャットダウンフック中に一部のログが抑制される可能性があります。
-これはJDK自体のバグであり、OpenTelemetry Javaの制御下にあるものではありません。
-シャットダウンフック中にログが必要な場合は、シャットダウンフック内で自身をシャットダウンしてログメッセージを抑制する可能性があるログフレームワークではなく、`System.out`の使用を検討してください。
-詳細については、この[JDKバグ](https://bugs.openjdk.java.net/browse/JDK-8161253)を参照してください。
-
-{{% /alert %}}
+> [!NOTE] **Notes**
+>
+> - [Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
+> - 自動設定モジュールは、適切なときにSDKをシャットダウンするためにJavaシャットダウンフックを登録します。OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#internal-logging)するため、シャットダウンフック中に一部のログが抑制される可能性があります。これはJDK自体のバグであり、OpenTelemetry Javaの制御下にあるものではありません。シャットダウンフック中にログが必要な場合は、シャットダウンフック内で自身をシャットダウンしてログメッセージを抑制する可能性があるログフレームワークではなく、`System.out`の使用を検討してください。詳細については、この[JDKバグ](https://bugs.openjdk.java.net/browse/JDK-8161253)を参照してください。
 
 ### 環境変数とシステムプロパティ {#environment-variables-and-system-properties}
 
@@ -114,6 +91,16 @@ OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#inter
 | `otel.sdk.disabled` | `true`の場合、OpenTelemetry SDKを無効にします。**[1]** | `false`    |
 
 **[1]**: 無効にした場合、`AutoConfiguredOpenTelemetrySdk#getOpenTelemetrySdk()`は最小限に設定されたインスタンス（例：`OpenTelemetrySdk.builder().build()`）を返します。
+
+SDKセルフモニタリングテレメトリーのプロパティ。
+
+| システムプロパティ                        | 説明                                                                                          | デフォルト |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------- | ---------- |
+| `otel.experimental.sdk.telemetry.version` | セルフモニタリングテレメトリースキーマを選択します。有効な値は`legacy`と`latest`です。**[1]** | `legacy`   |
+
+**[1]**: エクスポーターだけでなく、すべてのSDKセルフモニタリングテレメトリーのスキーマを選択します。
+バッチスパンプロセッサーとログレコードプロセッサーではメトリクス名を選択し、TracerProviderとLoggerProviderおよびPeriodicMetricReaderではセルフモニタリングメトリクスを記録するかどうかを制御します。
+設定の詳細と各コンポーネントが出力するメトリクス名については、[SDKセルフモニタリングメトリクス](../sdk/#sdk-self-monitoring-metrics)を参照してください。
 
 属性制限のプロパティ（[スパン制限](../sdk/#spanlimits)、[ログ制限](../sdk/#loglimits)を参照）。
 
@@ -229,7 +216,7 @@ OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#inter
 | システムプロパティ               | 目的                                                                                                                                                                                          | デフォルト      |
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | `otel.traces.exporter`           | スパンエクスポーターのカンマ区切りリスト。既知の値には`otlp`、`zipkin`、`console`、`logging-otlp`、`none`が含まれます。**[1]**                                                                | `otlp`          |
-| `otel.metrics.exporter`          | メトリクスエクスポーターのカンマ区切りリスト。既知の値には`otlp`、`prometheus`、`none`が含まれます。**[1]**                                                                                   | `otlp`          |
+| `otel.metrics.exporter`          | メトリクスエクスポーターのカンマ区切りリスト。既知の値には`otlp`、`prometheus`、`console`、`none`が含まれます。**[1]**                                                                        | `otlp`          |
 | `otel.logs.exporter`             | ログレコードエクスポーターのカンマ区切りリスト。既知の値には`otlp`、`console`、`logging-otlp`、`none`が含まれます。**[1]**                                                                    | `otlp`          |
 | `otel.java.exporter.memory_mode` | `reusable_data`の場合、アロケーションを削減するために（サポートするエクスポーターで）再利用可能メモリモードを有効にします。既知の値には`reusable_data`、`immutable_data`が含まれます。**[2]** | `reusable_data` |
 
@@ -245,6 +232,8 @@ OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#inter
 
 `otlp`スパン、メトリクス、ログエクスポーターのプロパティ。
 
+<!-- markdownlint-disable MD055 MD056 -->
+<!-- prettier-ignore-start -->
 | システムプロパティ                                         | 説明                                                                                                                                                                                                                                                                                                                                                                                                                   | デフォルト                                                                                                                  |
 | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `otel.{signal}.exporter=otlp`                              | {signal}用のOpenTelemetryエクスポーターを選択します。                                                                                                                                                                                                                                                                                                                                                                  |                                                                                                                             |
@@ -267,6 +256,9 @@ OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#inter
 | `otel.exporter.otlp.metrics.temporality.preference`        | 希望する出力集約時間性。オプションには`DELTA`、`LOWMEMORY`、`CUMULATIVE`が含まれます。`CUMULATIVE`の場合、すべての計装が累積時間性を持ちます。`DELTA`の場合、カウンター（同期および非同期）とヒストグラムがデルタ、アップダウンカウンター（同期および非同期）が累積になります。`LOWMEMORY`の場合、同期カウンターとヒストグラムがデルタ、非同期カウンターとアップダウンカウンター（同期および非同期）が累積になります。 | `CUMULATIVE`                                                                                                                |
 | `otel.exporter.otlp.metrics.default.histogram.aggregation` | 希望するデフォルトヒストグラム集約。オプションには`BASE2_EXPONENTIAL_BUCKET_HISTOGRAM`と`EXPLICIT_BUCKET_HISTOGRAM`が含まれます。                                                                                                                                                                                                                                                                                      | `EXPLICIT_BUCKET_HISTOGRAM`                                                                                                 |
 | `otel.java.exporter.otlp.retry.disabled`                   | `false`の場合、一時的なエラーが発生したときにリトライします。**[2]**                                                                                                                                                                                                                                                                                                                                                   | `false`                                                                                                                     |
+{.java-configuration-exporter-table}
+<!-- prettier-ignore-end -->
+<!-- markdownlint-enable MD055 MD056 -->
 
 **注意**: テキストプレースホルダー`{signal}`は、サポートされている[OpenTelemetry Signal](/docs/concepts/signals/)を指します。有効な値には`traces`、`metrics`、`logs`が含まれます。シグナル固有の設定は汎用バージョンよりも優先されます。
 たとえば、`otel.exporter.otlp.endpoint`と`otel.exporter.otlp.traces.endpoint`の両方を設定した場合、後者が優先されます。
@@ -623,15 +615,13 @@ public class CustomTextMapPropagatorProvider implements ConfigurablePropagatorPr
 | ------------------------------- | ----------------------- | ---------- |
 | `otel.experimental.config.file` | SDK設定ファイルのパス。 | 未設定     |
 
-{{% alert title="注意" color="warning" %}}
-
-設定ファイルが指定された場合、[環境変数とシステムプロパティ](#environment-variables-and-system-properties)は無視され、[プログラムカスタマイゼーション](#programmatic-customization)と[SPIs](#spi-service-provider-interface)はスキップされます。
-ファイルの内容のみがSDK設定を決定します。
-
-{{% /alert %}}
+> [!WARNING]
+>
+> 設定ファイルが指定された場合、[環境変数とシステムプロパティ](#environment-variables-and-system-properties)は無視され、[プログラムカスタマイゼーション](#programmatic-customization)と[SPIs](#spi-service-provider-interface)はスキップされます。
+> ファイルの内容のみがSDK設定を決定します。
 
 詳細については、以下のリソースを参照してください。
 
-- [使用ドキュメント](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#declarative-configuration)
-- [Javaエージェントでの例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#declarative-configuration)
+- [使用ドキュメント](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/declarative-config)
+- [Javaエージェントでの例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent-declarative-configuration)
 - [Javaエージェントなしでの例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/declarative-configuration)

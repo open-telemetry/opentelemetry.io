@@ -38,7 +38,7 @@ have been released with several major changes to be aware of:
 - The host metrics receiver has removed deprecated metrics for process memory.
 - The promtail receiver has been removed from collector-contrib.
 - The Jaeger exporters are now deprecated, to be removed in a future release.
-- [Connectors](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md)
+- [Connectors](https://github.com/open-telemetry/opentelemetry-collector/blob/9fd84668bb02d15e0b055516b7eaefc988e0b33a/connector/README.md?from_branch=main)
   have been added! These are components that act as exporters and receivers,
   allowing you to route data through pipelines. Please see the component docs
   for more information.

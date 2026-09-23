@@ -7,7 +7,7 @@ cSpell:ignore: marylia
 ---
 
 We are delighted to announce the results of the
-[2025 OpenTelemetry Governance Committee Election](https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-election.md)!
+[2025 OpenTelemetry Governance Committee Election](https://github.com/open-telemetry/community/blob/55c58353ce8651dbb5269ca91bb6dde5b47bac2e/elections/2025/governance-committee-election.md?from_branch=main)!
 
 The OpenTelemetry project continues to bring together an exceptionally vibrant
 community, who are shaping the future of observability with their contributions.

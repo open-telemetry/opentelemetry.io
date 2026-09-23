@@ -1,4 +1,4 @@
-# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip Kelkoo loveholidays HDFC Akbank
+# cSpell:ignore Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip Kelkoo loveholidays HDFC Akbank
 - name: Akbank
   url: https://www.akbank.com/
   components: [Collector, Operator, Java, .NET]
@@ -26,6 +26,12 @@
   reference: 'https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c29'
   referenceTitle: blog post
   contact: https://github.com/ethicalmohit
+- name: Capital One
+  url: https://www.capitalone.com/
+  components: [Collector Contrib, Java, Python, Go, Javascript, Lambda]
+  reference: 'https://colocatedeventsna2025.sched.com/event/28D7q'
+  referenceTitle: presentation
+  contact: ''
 - name: Care.com
   url: https://www.care.com
   components: [Collector, Go, Java, JavaScript, .NET]
@@ -52,12 +58,6 @@
   components: [Ruby]
   reference: ''
   contact: ''
-- name: Dyte
-  url: https://dyte.io
-  components: [Go, JavaScript]
-  reference: 'https://dyte.io/blog/opentelemetry-at-dyte-part-i/'
-  referenceTitle: blog post
-  contact: https://github.com/ethicalmohit
 - name: eBay
   url: https://www.ebay.com
   components: [Collector, Java, JavaScript, Go]
@@ -67,8 +67,7 @@
 - name: EcoBee
   url: https://www.ecobee.com/
   components: [Collector, Java]
-  reference: https://www.honeycomb.io/blog/bees-working-together-how-ecobees-engineers-adopted-honeycomb-for-visibility-into-system-optimization-and-customer-experience
-  referenceTitle: blog post
+  reference: ''
   contact: ''
 - name: Farfetch
   url: https://www.farfetch.com/

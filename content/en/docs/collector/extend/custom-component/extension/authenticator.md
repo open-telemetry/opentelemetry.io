@@ -12,8 +12,8 @@ The OpenTelemetry Collector allows you to connect receivers and exporters to
 authenticators so you can authenticate incoming connections at the receiver side
 and add authentication data to outgoing requests at the exporter side.
 
-Authenticators are implemented through [extensions]. This document guides you on
-implementing your own authenticators. If you want to learn how to use an
+Authenticators are implemented through [extensions][]. This document guides you
+on implementing your own authenticators. If you want to learn how to use an
 existing authenticator, see the documentation for that specific authenticator.
 You can find a list of existing authenticators in the
 [registry](/ecosystem/registry/) on this website.
@@ -29,7 +29,7 @@ channel at the [CNCF Slack workspace](https://slack.cncf.io).
 
 ## Architecture
 
-[Authenticators] in OpenTelemetry are just like any other extension, but they
+[Authenticators][] in OpenTelemetry are just like any other extension, but they
 also have to implement one or more specific interfaces that define how
 authentication is performed (for example, authenticating HTTP or gRPC requests).
 Use [server authenticators][sa] with receivers to intercept HTTP and gRPC
@@ -125,7 +125,7 @@ it easier for them to troubleshoot authentication problems.
 
 ### Client authenticators
 
-[Client authenticators] are extensions with extra functions that implement one
+[Client authenticators][] are extensions with extra functions that implement one
 or more of the defined interfaces. Each authenticator receives an object that
 allows it to inject authentication data. For instance, the HTTP client
 authenticator provides an
@@ -148,7 +148,7 @@ When building your own authenticator, you have two options:
 [builder]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
 [client authenticators]:
-  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
+  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#readme-client-authenticators
 [extensions]: /docs/collector/configuration/#extensions
 [sa]:
-  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators
+  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#readme-server-authenticators

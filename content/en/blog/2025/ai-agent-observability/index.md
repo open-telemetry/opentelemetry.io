@@ -58,7 +58,7 @@ As AI agent ecosystems continue to mature, the need for standardized and robust
 observability has become more apparent. While some frameworks offer built-in
 instrumentation, others rely on integration with observability tools. This
 fragmented landscape underscores the importance of the
-[GenAI observability project](https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md)
+[GenAI observability project](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main)
 and OpenTelemetry’s emerging semantic conventions, which aim to unify how
 telemetry data is collected and reported.
 
@@ -85,7 +85,7 @@ frameworks**:
 ### Establishing a standardized semantic convention
 
 Today, the
-[GenAI observability project](https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md)
+[GenAI observability project](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main)
 within OpenTelemetry is actively working on defining semantic conventions to
 standardize AI agent observability. This effort is primarily driven by:
 
@@ -171,11 +171,11 @@ configured to emit telemetry per OpenTelemetry semantic conventions.
 For publishing instrumentation with OpenTelemetry, there are two options:
 
 - Option 1: External instrumentation in your own repository/package, like
-  [Traceloop OpenTelemetry Instrumentation](https://github.com/traceloop/openllmetry/tree/main/packages),
-  [Langtrace OpenTelemetry Instrumentation](https://github.com/Scale3-Labs/langtrace-python-sdk/tree/main/src/langtrace_python_sdk/instrumentation)
+  [Traceloop OpenTelemetry Instrumentation](https://github.com/traceloop/openllmetry/tree/c2974c94f593df42353ad48c9170d039ab1a0c3f/packages?from_branch=main),
+  [Langtrace OpenTelemetry Instrumentation](https://github.com/Scale3-Labs/langtrace-python-sdk/tree/462a04b361f62314fb6d2d873cd866959152aa35/src/langtrace_python_sdk/instrumentation?from_branch=main)
   etc.
 - Option 2: External instrumentation in OpenTelemetry owned repository, like
-  [instrumentation-genai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai)
+  [instrumentation-genai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/5560324cff80148de07324715aef5efa1e6242c1/instrumentation-genai?from_branch=main)
   etc.
 
 Both options work well, but the long term goal is to host the code in
@@ -232,7 +232,7 @@ Looking ahead, AI agent observability will continue to evolve with:
 ## Role of OpenTelemetry's GenAI SIG
 
 The
-[GenAI Special Interest Group (SIG) in OpenTelemetry](https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md)
+[GenAI Special Interest Group (SIG) in OpenTelemetry](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main)
 is actively defining [GenAI semantic conventions](/docs/specs/semconv/gen-ai/)
 that cover key areas such as:
 
@@ -256,4 +256,4 @@ transparent and effective AI ecosystem.
 Don’t miss this opportunity to help shape the future of industry standards for
 GenAI Observability! Join us on the [CNCF Slack](https://slack.cncf.io)
 `#otel-genai-instrumentation` channel, or by attending a
-[GenAI SIG meeting](https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md#meeting-times).
+[GenAI SIG meeting](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main#meeting-times).

@@ -2,6 +2,7 @@
 title: Noțiuni de bază pentru dezvoltatori
 linkTitle: Dev
 default_lang_commit: 205bb879ae80ebcd0e719947e55b32e104f7090e
+drifted_from_default: true
 ---
 
 Aceasta este pagina [noțiuni de bază](..) potrivită ție dacă:

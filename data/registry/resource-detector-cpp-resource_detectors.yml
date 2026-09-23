@@ -1,0 +1,13 @@
+title: resource_detectors
+registryType: resource-detector
+language: cpp
+tags:
+  - resource-detector
+  - cpp
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-cpp/tree/main/resource_detectors/
+license: Apache 2.0
+description:
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

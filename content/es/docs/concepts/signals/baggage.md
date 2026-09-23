@@ -3,6 +3,7 @@ title: Baggage
 weight: 4
 description: Información contextual que se pasa entre señales.
 default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
+drifted_from_default: true
 cSpell:ignore: embedidas
 ---
 

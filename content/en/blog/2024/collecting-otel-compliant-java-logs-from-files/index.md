@@ -34,7 +34,7 @@ This is a true turnkey solution:
 - No code or dependency changes, just a few configuration adjustments typical
   for production deployment.
 - No complex field mapping in the log collector. Just use the
-  [OTLP/JSON connector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/otlpjsonconnector)
+  [OTLP/JSON connector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/connector/otlpjsonconnector?from_branch=main)
   to ingest the payload.
 - Automatic correlation between logs, traces, and metrics.
 
@@ -53,7 +53,7 @@ This blog post shows how to set up this solution step by step.
 > [!NOTE]
 >
 > Blog post instructions can easily get outdated. In case of issues, check this
-> [sample application deployed on Kubernetes](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md),
+> [sample application deployed on Kubernetes](https://github.com/open-telemetry/opentelemetry-java-examples/blob/022fdfb8bdfb95a4e9d424af41441b7188b7d347/logging-k8s-stdout-otlp-json/README.md?from_branch=main),
 > which is continuously updated and tested against the latest versions.
 
 No code changes needed. Continue using your preferred logging library, including
@@ -75,9 +75,9 @@ logger.atInfo().
 Export the logs captured by the OTel Java instrumentation to stdout using the
 OTel JSON format (aka [OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding)).
 Configuration parameters for
-[Logback](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/javaagent)
+[Logback](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/afc68b59e011138621bff449432e88de79c54d1f/instrumentation/logback/logback-appender-1.0/javaagent?from_branch=main)
 and
-[Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/javaagent)
+[Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/afc68b59e011138621bff449432e88de79c54d1f/instrumentation/log4j/log4j-appender-2.17/javaagent?from_branch=main)
 are optional but recommended.
 
 ```bash
@@ -304,7 +304,7 @@ After the pipeline works end-to-end, ensure production readiness:
 ## Configure an OpenTelemetry Collector in Kubernetes to handle container logs
 
 To support Kubernetes and container specifics, add the built-in
-[`container`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/container.md)
+[`container`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/ae0d64c4c2131c7a4308417fa9549d984347dadc/pkg/stanza/docs/operators/container.md?from_branch=main)
 parsing step in the pipeline without needing specific mapping configuration.
 
 Replace `<<namespace>>`, `<<pod_name>>`, and `<<container_name>>` with the
@@ -367,7 +367,7 @@ balance by providing highly contextualized logs that can be correlated with
 traces and metrics.
 
 If any of the steps are unclear or you encounter issues, check this
-[sample application deployed on Kubernetes](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md),
+[sample application deployed on Kubernetes](https://github.com/open-telemetry/opentelemetry-java-examples/blob/022fdfb8bdfb95a4e9d424af41441b7188b7d347/logging-k8s-stdout-otlp-json/README.md?from_branch=main),
 which is continuously updated and tested against the latest versions.
 
 Any feedback or questions? Reach out on

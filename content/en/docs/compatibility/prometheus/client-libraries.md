@@ -1,0 +1,1968 @@
+---
+title: Prometheus client libraries vs. OpenTelemetry
+linkTitle: Client libraries
+cSpell:ignore: hvac
+---
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+
+> [!NOTE]
+>
+> This page covers Java and Go. Examples for other languages are planned.
+
+This guide is for developers familiar with the
+[Prometheus client libraries](https://prometheus.io/docs/instrumenting/clientlibs/)
+who want to understand equivalent patterns in the OpenTelemetry metrics API and
+SDK. It covers the most common patterns, but is not exhaustive.
+
+## Conceptual differences
+
+Before looking at code, it helps to understand a few structural differences
+between the two systems. The
+[Prometheus and OpenMetrics Compatibility](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)
+specification documents the complete translation rules between the two systems.
+This section covers the differences most relevant to writing new instrumentation
+code.
+
+### Registry (MeterProvider)
+
+In Prometheus, metrics register to a registry — by default a global one. You can
+declare a metric anywhere in your code, and it becomes available for scraping
+once registered. The exporter (HTTP server or OTLP push) is attached to the
+registry as a separate, independent step.
+
+In OpenTelemetry, `MeterProvider` and `Meter` are part of the metrics API. You
+obtain a `Meter` — scoped to your library or component — from a `MeterProvider`,
+and create instruments from that `Meter`. How those measurements are processed —
+which exporters receive them, how they are aggregated, on what schedule — is
+determined by the SDK bound to the `MeterProvider` and its configuration, which
+is separate from the instrumentation code itself (see
+[API and SDK](#otel-api-and-sdk)).
+
+Like Prometheus, OpenTelemetry supports both a global `MeterProvider` (requiring
+no explicit wiring from instrumentation code) and explicit `MeterProvider`
+instances that can be passed to libraries which support them.
+
+### Label names (attributes)
+
+Prometheus requires label _names_ to be declared at metric creation time. Label
+_values_ are bound at record time, via `labelValues(...)`.
+
+OpenTelemetry has no upfront label declaration. Attribute keys and values are
+both provided together at the time of the measurement via `Attributes`.
+
+### Naming conventions
+
+Prometheus uses `snake_case` metric names. Counter names end in `_total`. By
+convention, Prometheus metric names are prefixed with the application or library
+name to avoid collisions (for example, `smart_home_hvac_on_seconds_total`),
+since all metrics share a flat global namespace.
+
+OpenTelemetry conventionally uses
+[dotted names](/docs/specs/semconv/general/naming/). Ownership and namespacing
+are captured in the instrumentation scope (the `Meter` name, for example
+`smart.home`), so metric names themselves do not need a prefix (for example,
+`hvac.on`). When exporting to Prometheus, the exporter translates names: dots
+become underscores, unit abbreviations expand to full words (for example, `s` →
+`seconds`), and counters receive a `_total` suffix. An OpenTelemetry counter
+named `hvac.on` with unit `s` is exported as `hvac_on_seconds_total`. See the
+[compatibility specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)
+for the complete set of name translation rules. The translation strategy is
+configurable — for example, to preserve UTF-8 characters or suppress unit and
+type suffixes. See the
+[Prometheus exporter](/docs/specs/otel/metrics/sdk_exporters/prometheus/)
+configuration reference for details.
+
+### Stateful and callback instruments
+
+Both systems support two recording modes:
+
+- **Prometheus** distinguishes _stateful_ instruments (`Counter`, `Gauge`),
+  which maintain their own accumulated value, from function-based instruments,
+  which invoke a callback at scrape time to return the current value. The naming
+  varies by client library (`GaugeFunc`/`CounterFunc` in Go;
+  `GaugeWithCallback`/`CounterWithCallback` in Java).
+- **OpenTelemetry** calls these _synchronous_ (counter, histogram, etc.) and
+  _asynchronous_ (observed via a registered callback). The semantics are the
+  same.
+
+Note also that Prometheus `Gauge` covers two distinct OTel instrument types:
+`Gauge` for non-additive values (such as temperature) and `UpDownCounter` for
+additive values that can increase or decrease (such as active connections). See
+[Gauge](#gauge) for details.
+
+### OTel: API and SDK
+
+OpenTelemetry separates instrumentation from configuration with a two-layer
+design: an **API** package and an **SDK** package. The API defines the
+interfaces used to record metrics. The SDK provides the implementation — the
+concrete provider, exporters, and processing pipeline.
+
+Instrumentation code should depend only on the API. The SDK is configured once
+at application startup and wired to an API reference that gets passed to the
+rest of the codebase. This keeps instrumentation library code decoupled from any
+specific SDK version and makes it straightforward to swap in a no-op
+implementation for testing.
+
+### OTel: Instrumentation scope
+
+Prometheus metrics are global: every metric in a process shares the same flat
+namespace, identified only by name and labels.
+
+OpenTelemetry scopes each group of instruments to a `Meter`, identified by a
+name and optional version (for example, `smart.home`). When exporting to
+Prometheus, the scope name and version are added as `otel_scope_name` and
+`otel_scope_version` labels on every metric point. Any additional scope
+attributes are also added as labels, named `otel_scope_[attr name]`. These
+labels appear automatically and may be unfamiliar to users coming from
+Prometheus. They can be suppressed via the exporter's `without_scope_info`
+option — see the
+[Prometheus exporter](/docs/specs/otel/metrics/sdk_exporters/prometheus/)
+configuration reference for details. Note that suppressing scope info is only
+safe when each metric name is produced by a single scope. If two scopes emit a
+metric with the same name, the scope labels are the only thing distinguishing
+them; without those labels, you get duplicate time series with no way to
+differentiate their origin, which produces invalid output in Prometheus.
+
+### OTel: Aggregation temporality
+
+Prometheus metrics are always cumulative. OpenTelemetry supports both cumulative
+and delta temporality, but the Prometheus exporter enforces cumulative for all
+instruments. For developers migrating from Prometheus, this is transparent — the
+behavior you already rely on is preserved.
+
+### OTel: Resource attributes
+
+Prometheus identifies scrape targets using `job` and `instance` labels, which
+are added by the Prometheus server at scrape time.
+
+OpenTelemetry has a `Resource` — structured metadata attached to all telemetry
+from a process, with attributes such as `service.name` and
+`service.instance.id`. When exporting to Prometheus, the exporter maps resource
+attributes to the `job` and `instance` labels, with any remaining attributes
+exposed in a `target_info` metric (`target_info` is an OpenMetrics 1.0
+convention — if you currently emit it manually from Prometheus, the OTel
+equivalent is to set resource attributes). See the
+[compatibility specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)
+for the exact mapping rules. The `target_info` metric can be suppressed via
+`without_target_info`, and specific resource attributes can be promoted to
+metric-level labels via `with_resource_constant_labels`. See the
+[Prometheus exporter](/docs/specs/otel/metrics/sdk_exporters/prometheus/)
+configuration reference for details.
+
+## Initialization {#initialization}
+
+The examples below cover the two main deployment patterns: exposing a Prometheus
+scrape endpoint and pushing to an OTLP endpoint.
+
+### Expose a Prometheus scrape endpoint
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+Prometheus
+
+<?code-excerpt "src/main/java/otel/PrometheusScrapeInit.java"?>
+
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.Counter;
+import io.prometheus.metrics.exporter.httpserver.HTTPServer;
+import java.io.IOException;
+
+public class PrometheusScrapeInit {
+  public static void main(String[] args) throws IOException, InterruptedException {
+    // Create a counter and register it with the default PrometheusRegistry.
+    Counter doorOpens =
+        Counter.builder()
+            .name("door_opens_total")
+            .help("Total number of times a door has been opened")
+            .labelNames("door")
+            .register();
+
+    // Start the HTTP server; Prometheus scrapes http://localhost:9464/metrics.
+    HTTPServer server = HTTPServer.builder().port(9464).buildAndStart();
+    Runtime.getRuntime().addShutdownHook(new Thread(server::close));
+
+    doorOpens.labelValues("front").inc();
+
+    Thread.currentThread().join(); // sleep forever
+  }
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "src/main/java/otel/OtelScrapeInit.java"?>
+
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.LongCounter;
+import io.opentelemetry.api.metrics.Meter;
+import io.opentelemetry.exporter.prometheus.PrometheusHttpServer;
+import io.opentelemetry.sdk.OpenTelemetrySdk;
+import io.opentelemetry.sdk.metrics.SdkMeterProvider;
+
+public class OtelScrapeInit {
+  // Preallocate attribute keys and, when values are static, entire Attributes objects.
+  private static final AttributeKey<String> DOOR = AttributeKey.stringKey("door");
+  private static final Attributes FRONT_DOOR = Attributes.of(DOOR, "front");
+
+  public static void main(String[] args) throws InterruptedException {
+    // Configure the SDK: register a Prometheus reader that serves /metrics.
+    OpenTelemetrySdk sdk =
+        OpenTelemetrySdk.builder()
+            .setMeterProvider(
+                SdkMeterProvider.builder()
+                    .registerMetricReader(PrometheusHttpServer.builder().setPort(9464).build())
+                    .build())
+            .build();
+    Runtime.getRuntime().addShutdownHook(new Thread(sdk::close));
+
+    // Instrumentation code uses the OpenTelemetry API type, not the SDK type directly.
+    OpenTelemetry openTelemetry = sdk;
+
+    // Metrics are served at http://localhost:9464/metrics.
+    Meter meter = openTelemetry.getMeter("smart.home");
+    LongCounter doorOpens =
+        meter
+            .counterBuilder("door.opens")
+            .setDescription("Total number of times a door has been opened")
+            .build();
+
+    doorOpens.add(1, FRONT_DOOR);
+
+    Thread.currentThread().join(); // sleep forever
+  }
+}
+```
+
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
+Prometheus
+
+<?code-excerpt "prometheus_scrape_init.go"?>
+
+```go
+package main
+
+import (
+	"net/http"
+
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+)
+
+func main() {
+	// Create a counter and register it with a custom registry.
+	reg := prometheus.NewRegistry()
+	doorOpens := prometheus.NewCounterVec(prometheus.CounterOpts{
+		Name: "door_opens_total",
+		Help: "Total number of times a door has been opened",
+	}, []string{"door"})
+	reg.MustRegister(doorOpens)
+
+	// Prometheus scrapes http://localhost:9464/metrics.
+	http.Handle("/metrics", promhttp.HandlerFor(reg, promhttp.HandlerOpts{}))
+	go http.ListenAndServe(":9464", nil) //nolint:errcheck
+
+	doorOpens.WithLabelValues("front").Inc()
+
+	select {} // sleep forever
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "otel_scrape_init.go"?>
+
+```go
+package main
+
+import (
+	"context"
+	"net/http"
+
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/exporters/prometheus"
+	"go.opentelemetry.io/otel/metric"
+	sdkmetric "go.opentelemetry.io/otel/sdk/metric"
+)
+
+func main() {
+	ctx := context.Background()
+	// Configure the SDK: register a Prometheus reader that serves /metrics.
+	exporter, err := prometheus.New()
+	if err != nil {
+		panic(err)
+	}
+	provider := sdkmetric.NewMeterProvider(sdkmetric.WithReader(exporter))
+	defer provider.Shutdown(ctx) //nolint:errcheck
+
+	// Metrics are served at http://localhost:9464/metrics.
+	http.Handle("/metrics", promhttp.Handler())
+	go http.ListenAndServe(":9464", nil) //nolint:errcheck
+
+	// Instrumentation code uses the API, not the SDK, directly.
+	meter := provider.Meter("smart.home")
+	doorOpens, err := meter.Int64Counter("door.opens",
+		metric.WithDescription("Total number of times a door has been opened"))
+	if err != nil {
+		panic(err)
+	}
+
+	doorOpens.Add(ctx, 1, metric.WithAttributes(attribute.String("door", "front")))
+
+	select {} // sleep forever
+}
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+### Push metrics to an OTLP endpoint
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+Prometheus
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt "src/main/java/otel/PrometheusOtlpInit.java"?>
+
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.Counter;
+import io.prometheus.metrics.exporter.opentelemetry.OpenTelemetryExporter;
+
+public class PrometheusOtlpInit {
+  public static void main(String[] args) throws Exception {
+    // Create a counter and register it with the default PrometheusRegistry.
+    Counter doorOpens =
+        Counter.builder()
+            .name("door_opens_total")
+            .help("Total number of times a door has been opened")
+            .labelNames("door")
+            .register();
+
+    // Start the OTLP exporter. It reads from the default PrometheusRegistry and
+    // pushes metrics to the configured endpoint on a fixed interval.
+    OpenTelemetryExporter exporter =
+        OpenTelemetryExporter.builder()
+            .protocol("http/protobuf")
+            .endpoint("http://localhost:4318")
+            .intervalSeconds(60)
+            .buildAndStart();
+    Runtime.getRuntime().addShutdownHook(new Thread(exporter::close));
+
+    doorOpens.labelValues("front").inc();
+
+    Thread.currentThread().join(); // sleep forever
+  }
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "src/main/java/otel/OtelOtlpInit.java"?>
+
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.metrics.LongCounter;
+import io.opentelemetry.api.metrics.Meter;
+import io.opentelemetry.exporter.otlp.http.metrics.OtlpHttpMetricExporter;
+import io.opentelemetry.sdk.OpenTelemetrySdk;
+import io.opentelemetry.sdk.metrics.SdkMeterProvider;
+import io.opentelemetry.sdk.metrics.export.PeriodicMetricReader;
+import java.time.Duration;
+
+public class OtelOtlpInit {
+  public static void main(String[] args) throws InterruptedException {
+    // Configure the SDK: export metrics over OTLP/HTTP on a fixed interval.
+    OpenTelemetrySdk sdk =
+        OpenTelemetrySdk.builder()
+            .setMeterProvider(
+                SdkMeterProvider.builder()
+                    .registerMetricReader(
+                        PeriodicMetricReader.builder(
+                                OtlpHttpMetricExporter.builder()
+                                    .setEndpoint("http://localhost:4318")
+                                    .build())
+                            .setInterval(Duration.ofSeconds(60))
+                            .build())
+                    .build())
+            .build();
+    Runtime.getRuntime().addShutdownHook(new Thread(sdk::close));
+
+    // Instrumentation code uses the OpenTelemetry API type, not the SDK type directly.
+    OpenTelemetry openTelemetry = sdk;
+
+    Meter meter = openTelemetry.getMeter("smart.home");
+    LongCounter doorOpens =
+        meter
+            .counterBuilder("door.opens")
+            .setDescription("Total number of times a door has been opened")
+            .build();
+
+    doorOpens.add(1);
+
+    Thread.currentThread().join(); // sleep forever
+  }
+}
+```
+
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
+Prometheus
+
+The Prometheus Go client library does not include an OTLP push exporter.
+
+OpenTelemetry
+
+<?code-excerpt "otel_otlp_init.go"?>
+
+```go
+package main
+
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp"
+	"go.opentelemetry.io/otel/metric"
+	sdkmetric "go.opentelemetry.io/otel/sdk/metric"
+)
+
+func main() {
+	ctx := context.Background()
+	// Configure the SDK: export metrics over OTLP/HTTP on a fixed interval.
+	// The endpoint defaults to localhost:4318 and can be configured via
+	// the OTEL_EXPORTER_OTLP_ENDPOINT environment variable.
+	exporter, err := otlpmetrichttp.New(ctx)
+	if err != nil {
+		panic(err)
+	}
+	provider := sdkmetric.NewMeterProvider(
+		sdkmetric.WithReader(sdkmetric.NewPeriodicReader(exporter)),
+	)
+	defer provider.Shutdown(ctx) //nolint:errcheck
+
+	meter := provider.Meter("smart.home")
+	doorOpens, err := meter.Int64Counter("door.opens",
+		metric.WithDescription("Total number of times a door has been opened"))
+	if err != nil {
+		panic(err)
+	}
+
+	doorOpens.Add(ctx, 1, metric.WithAttributes(attribute.String("door", "front")))
+
+	select {} // sleep forever
+}
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+## Counter {#counter}
+
+A counter records monotonically increasing values. Prometheus `Counter` maps to
+the OpenTelemetry `Counter` instrument.
+
+- **Unit encoding**: Prometheus encodes the unit in the metric name
+  (`hvac_on_seconds_total`). OpenTelemetry separates the name (`hvac.on`) from
+  the unit (`s`), and the Prometheus exporter appends the unit suffix
+  automatically.
+
+### Counter
+
+The Prometheus `Counter` includes two series-management features that have no
+OpenTelemetry equivalent:
+
+- **Series pre-initialization**: Prometheus clients can pre-initialize label
+  value combinations so they appear in scrape output with value 0 before any
+  recording occurs. OpenTelemetry has no equivalent; data points first appear on
+  the first `add()` call.
+- **Pre-bound series**: Prometheus clients let you cache the result of
+  `labelValues()` to pre-bind to a specific label value combination. Subsequent
+  calls go directly to the data point, skipping the internal series lookup.
+  OpenTelemetry has no equivalent, though it is
+  [under discussion](https://github.com/open-telemetry/opentelemetry-specification/issues/4126).
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+Prometheus
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt "src/main/java/otel/PrometheusCounter.java"?>
+
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.Counter;
+
+public class PrometheusCounter {
+  public static void counterUsage() {
+    Counter hvacOnTime =
+        Counter.builder()
+            .name("hvac_on_seconds_total")
+            .help("Total time the HVAC system has been running, in seconds")
+            .labelNames("zone")
+            .register();
+
+    // Pre-bind to label value sets: subsequent calls go directly to the data point,
+    // skipping the internal series lookup.
+    var upstairs = hvacOnTime.labelValues("upstairs");
+    var downstairs = hvacOnTime.labelValues("downstairs");
+
+    upstairs.inc(127.5);
+    downstairs.inc(3600.0);
+
+    // Pre-initialize zones so they appear in /metrics with value 0 on startup.
+    hvacOnTime.initLabelValues("basement");
+  }
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "src/main/java/otel/OtelCounter.java"?>
+
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.DoubleCounter;
+import io.opentelemetry.api.metrics.Meter;
+
+public class OtelCounter {
+  // Preallocate attribute keys and, when values are static, entire Attributes objects.
+  private static final AttributeKey<String> ZONE = AttributeKey.stringKey("zone");
+  private static final Attributes UPSTAIRS = Attributes.of(ZONE, "upstairs");
+  private static final Attributes DOWNSTAIRS = Attributes.of(ZONE, "downstairs");
+
+  public static void counterUsage(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    // HVAC on-time is fractional — use ofDoubles() to get a DoubleCounter.
+    // No upfront label declaration: attributes are provided at record time.
+    DoubleCounter hvacOnTime =
+        meter
+            .counterBuilder("hvac.on")
+            .setDescription("Total time the HVAC system has been running")
+            .setUnit("s")
+            .ofDoubles()
+            .build();
+
+    hvacOnTime.add(127.5, UPSTAIRS);
+    hvacOnTime.add(3600.0, DOWNSTAIRS);
+  }
+}
+```
+
+Key differences:
+
+- `inc(value)` → `add(value)`. Unlike Prometheus, OpenTelemetry requires an
+  explicit value — there is no bare `inc()` shorthand.
+- OpenTelemetry distinguishes `LongCounter` (integers, the default) from
+  `DoubleCounter` (via `.ofDoubles()`, for fractional values). Prometheus uses a
+  single `Counter` type.
+- Preallocate `AttributeKey` instances (always) and `Attributes` objects (when
+  values are static) to avoid per-call allocation on the hot path.
+
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
+Prometheus
+
+<?code-excerpt "prometheus_counter.go"?>
+
+```go
+package main
+
+import "github.com/prometheus/client_golang/prometheus"
+
+var hvacOnTime = prometheus.NewCounterVec(prometheus.CounterOpts{
+	Name: "hvac_on_seconds_total",
+	Help: "Total time the HVAC system has been running, in seconds",
+}, []string{"zone"})
+
+func prometheusCounterUsage(reg *prometheus.Registry) {
+	reg.MustRegister(hvacOnTime)
+
+	// Pre-bind to label value sets: subsequent calls avoid the series lookup.
+	upstairs := hvacOnTime.WithLabelValues("upstairs")
+	downstairs := hvacOnTime.WithLabelValues("downstairs")
+
+	upstairs.Add(127.5)
+	downstairs.Add(3600.0)
+
+	// Pre-initialize a series so it appears in /metrics with value 0.
+	hvacOnTime.WithLabelValues("basement")
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "otel_counter.go"?>
+
+```go
+package main
+
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/metric"
+)
+
+// Preallocate attribute options when values are static to avoid per-call allocation.
+var (
+	zoneUpstairsOpts   = []metric.AddOption{metric.WithAttributes(attribute.String("zone", "upstairs"))}
+	zoneDownstairsOpts = []metric.AddOption{metric.WithAttributes(attribute.String("zone", "downstairs"))}
+)
+
+func otelCounterUsage(ctx context.Context, meter metric.Meter) {
+	// No upfront label declaration: attributes are provided at record time.
+	hvacOnTime, err := meter.Float64Counter("hvac.on",
+		metric.WithDescription("Total time the HVAC system has been running"),
+		metric.WithUnit("s"))
+	if err != nil {
+		panic(err)
+	}
+
+	hvacOnTime.Add(ctx, 127.5, zoneUpstairsOpts...)
+	hvacOnTime.Add(ctx, 3600.0, zoneDownstairsOpts...)
+}
+```
+
+Key differences:
+
+- `Add(value)` → `Add(ctx, value, metric.WithAttributes(...))`. All instrument
+  calls require a `context.Context` as the first argument.
+- In Go, `meter.Float64Counter` and `meter.Int64Counter` are separate methods.
+  Prometheus uses a single `Counter` type.
+- Instrument creation returns `(Instrument, error)` and the error must be
+  handled.
+
+{{% /tab %}} {{< /tabpane >}}
+
+### Callback (async) counter
+
+Use a callback counter (an asynchronous counter in OpenTelemetry) when the total
+is maintained by an external source — such as a device or runtime — and you want
+to observe it at collection time rather than increment it yourself.
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+Prometheus
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt "src/main/java/otel/PrometheusCounterCallback.java"?>
+
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.CounterWithCallback;
+
+public class PrometheusCounterCallback {
+  public static void counterCallbackUsage() {
+    // Each zone has its own smart energy meter tracking cumulative joule totals.
+    // Use a callback counter to report those values at scrape time without
+    // maintaining separate counters in application code.
+    CounterWithCallback.builder()
+        .name("energy_consumed_joules_total")
+        .help("Total energy consumed in joules")
+        .labelNames("zone")
+        .callback(
+            callback -> {
+              callback.call(SmartHomeDevices.totalEnergyJoules("upstairs"), "upstairs");
+              callback.call(SmartHomeDevices.totalEnergyJoules("downstairs"), "downstairs");
+            })
+        .register();
+  }
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "src/main/java/otel/OtelCounterCallback.java"?>
+
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.Meter;
+
+public class OtelCounterCallback {
+  private static final AttributeKey<String> ZONE = AttributeKey.stringKey("zone");
+  private static final Attributes UPSTAIRS = Attributes.of(ZONE, "upstairs");
+  private static final Attributes DOWNSTAIRS = Attributes.of(ZONE, "downstairs");
+
+  public static void counterCallbackUsage(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    // Each zone has its own smart energy meter tracking cumulative joule totals.
+    // Use an asynchronous counter to report those values when a MetricReader
+    // collects metrics, without maintaining separate counters in application code.
+    meter
+        .counterBuilder("energy.consumed")
+        .setDescription("Total energy consumed")
+        .setUnit("J")
+        .ofDoubles()
+        .buildWithCallback(
+            measurement -> {
+              measurement.record(SmartHomeDevices.totalEnergyJoules("upstairs"), UPSTAIRS);
+              measurement.record(SmartHomeDevices.totalEnergyJoules("downstairs"), DOWNSTAIRS);
+            });
+  }
+}
+```
+
+Key differences:
+
+- OpenTelemetry distinguishes integer and floating-point counters;
+  `.ofDoubles()` selects the floating-point variant. Prometheus
+  `CounterWithCallback` always uses floating-point values.
+
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
+Prometheus
+
+<?code-excerpt "prometheus_counter_callback.go"?>
+
+```go
+package main
+
+import "github.com/prometheus/client_golang/prometheus"
+
+type energyCollector struct{ desc *prometheus.Desc }
+
+func newEnergyCollector() *energyCollector {
+	return &energyCollector{desc: prometheus.NewDesc(
+		"energy_consumed_joules_total",
+		"Total energy consumed in joules",
+		[]string{"zone"}, nil,
+	)}
+}
+
+func (c *energyCollector) Describe(ch chan<- *prometheus.Desc) { ch <- c.desc }
+func (c *energyCollector) Collect(ch chan<- prometheus.Metric) {
+	ch <- prometheus.MustNewConstMetric(c.desc, prometheus.CounterValue, totalEnergyJoules("upstairs"), "upstairs")
+	ch <- prometheus.MustNewConstMetric(c.desc, prometheus.CounterValue, totalEnergyJoules("downstairs"), "downstairs")
+}
+
+func prometheusCounterCallbackUsage(reg *prometheus.Registry) {
+	// Each zone has its own smart energy meter tracking cumulative joule totals.
+	// Implement prometheus.Collector to report those values at scrape time.
+	reg.MustRegister(newEnergyCollector())
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "otel_counter_callback.go"?>
+
+```go
+package main
+
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/metric"
+)
+
+var (
+	zoneUpstairs   = attribute.String("zone", "upstairs")
+	zoneDownstairs = attribute.String("zone", "downstairs")
+)
+
+func otelCounterCallbackUsage(meter metric.Meter) {
+	// Each zone has its own smart energy meter tracking cumulative joule totals.
+	// Use an observable counter to report those values when metrics are collected.
+	_, err := meter.Float64ObservableCounter("energy.consumed",
+		metric.WithDescription("Total energy consumed"),
+		metric.WithUnit("J"),
+		metric.WithFloat64Callback(func(_ context.Context, o metric.Float64Observer) error {
+			o.Observe(totalEnergyJoules("upstairs"), metric.WithAttributes(zoneUpstairs))
+			o.Observe(totalEnergyJoules("downstairs"), metric.WithAttributes(zoneDownstairs))
+			return nil
+		}))
+	if err != nil {
+		panic(err)
+	}
+}
+```
+
+Key differences:
+
+- The Prometheus example implements `prometheus.Collector` with `Describe` and
+  `Collect` methods to report labeled counter values.
+- OpenTelemetry distinguishes `Float64ObservableCounter` from
+  `Int64ObservableCounter`.
+
+{{% /tab %}} {{< /tabpane >}}
+
+## Gauge {#gauge}
+
+A gauge records an instantaneous value that can increase or decrease. Prometheus
+uses a single `Gauge` type for all such values, but OpenTelemetry distinguishes
+between **additive** and **non-additive** values when choosing the right
+instrument:
+
+- **Non-additive** values cannot be meaningfully summed across instances — for
+  example, temperature: adding readings from three room sensors doesn't produce
+  a useful number. These map to OTel `Gauge` and `ObservableGauge`.
+- **Additive** values can be meaningfully summed across instances — for example,
+  connected device counts summed across service instances give a useful total.
+  These map to OTel `UpDownCounter` and `ObservableUpDownCounter`.
+
+This distinction applies to all gauge patterns: abs, inc and dec, and callback
+variants. See the
+[instrument selection guide](/docs/specs/otel/metrics/supplementary-guidelines/#instrument-selection)
+for a fuller explanation.
+
+### Gauge — abs
+
+Use this pattern for values recorded as an absolute value — such as a
+configuration value or a device setpoint. Prometheus `Gauge` maps to the
+OpenTelemetry `Gauge` instrument.
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+Prometheus
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt "src/main/java/otel/PrometheusGauge.java"?>
+
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.Gauge;
+
+public class PrometheusGauge {
+  public static void gaugeUsage() {
+    Gauge thermostatSetpoint =
+        Gauge.builder()
+            .name("thermostat_setpoint_celsius")
+            .help("Target temperature set on the thermostat")
+            .labelNames("zone")
+            .register();
+
+    thermostatSetpoint.labelValues("upstairs").set(22.5);
+    thermostatSetpoint.labelValues("downstairs").set(20.0);
+  }
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "src/main/java/otel/OtelGauge.java"?>
+
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.DoubleGauge;
+import io.opentelemetry.api.metrics.Meter;
+
+public class OtelGauge {
+  // Preallocate attribute keys and, when values are static, entire Attributes objects.
+  private static final AttributeKey<String> ZONE = AttributeKey.stringKey("zone");
+  private static final Attributes UPSTAIRS = Attributes.of(ZONE, "upstairs");
+  private static final Attributes DOWNSTAIRS = Attributes.of(ZONE, "downstairs");
+
+  public static void gaugeUsage(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    DoubleGauge thermostatSetpoint =
+        meter
+            .gaugeBuilder("thermostat.setpoint")
+            .setDescription("Target temperature set on the thermostat")
+            .setUnit("Cel")
+            .build();
+
+    thermostatSetpoint.set(22.5, UPSTAIRS);
+    thermostatSetpoint.set(20.0, DOWNSTAIRS);
+  }
+}
+```
+
+Key differences:
+
+- `set(value)` → `set(value, attributes)`. The method name is the same.
+- OpenTelemetry distinguishes `LongGauge` (integers, via `.ofLongs()`) from
+  `DoubleGauge` (the default). Prometheus uses a single `Gauge` type.
+- Preallocate `AttributeKey` instances (always) and `Attributes` objects (when
+  values are static) to avoid per-call allocation on the hot path.
+
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
+Prometheus
+
+<?code-excerpt "prometheus_gauge.go"?>
+
+```go
+package main
+
+import "github.com/prometheus/client_golang/prometheus"
+
+var thermostatSetpoint = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+	Name: "thermostat_setpoint_celsius",
+	Help: "Target temperature set on the thermostat",
+}, []string{"zone"})
+
+func prometheusGaugeUsage(reg *prometheus.Registry) {
+	reg.MustRegister(thermostatSetpoint)
+
+	thermostatSetpoint.WithLabelValues("upstairs").Set(22.5)
+	thermostatSetpoint.WithLabelValues("downstairs").Set(20.0)
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "otel_gauge.go"?>
+
+```go
+package main
+
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/metric"
+)
+
+// Preallocate attribute options when values are static to avoid per-call allocation.
+var (
+	zoneUpstairsGaugeOpts   = []metric.RecordOption{metric.WithAttributes(attribute.String("zone", "upstairs"))}
+	zoneDownstairsGaugeOpts = []metric.RecordOption{metric.WithAttributes(attribute.String("zone", "downstairs"))}
+)
+
+func otelGaugeUsage(ctx context.Context, meter metric.Meter) {
+	thermostatSetpoint, err := meter.Float64Gauge("thermostat.setpoint",
+		metric.WithDescription("Target temperature set on the thermostat"),
+		metric.WithUnit("Cel"))
+	if err != nil {
+		panic(err)
+	}
+
+	thermostatSetpoint.Record(ctx, 22.5, zoneUpstairsGaugeOpts...)
+	thermostatSetpoint.Record(ctx, 20.0, zoneDownstairsGaugeOpts...)
+}
+```
+
+Key differences:
+
+- `Set(value)` → `Record(ctx, value, metric.WithAttributes(...))`.
+- In Go, `meter.Float64Gauge` and `meter.Int64Gauge` are separate methods.
+  Prometheus uses a single `Gauge` type.
+
+{{% /tab %}} {{< /tabpane >}}
+
+### Callback gauge — abs
+
+Use a callback gauge (an asynchronous gauge in OpenTelemetry) when a
+non-additive value is maintained externally — such as a sensor reading — and you
+want to observe it at collection time rather than track it yourself.
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+Prometheus
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt "src/main/java/otel/PrometheusGaugeCallback.java"?>
+
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.GaugeWithCallback;
+
+public class PrometheusGaugeCallback {
+  public static void gaugeCallbackUsage() {
+    // Temperature sensors maintain their own readings in firmware.
+    // Use a callback gauge to report those values at scrape time without
+    // maintaining a separate gauge in application code.
+    GaugeWithCallback.builder()
+        .name("room_temperature_celsius")
+        .help("Current temperature in the room")
+        .labelNames("room")
+        .callback(
+            callback -> {
+              callback.call(SmartHomeDevices.livingRoomTemperatureCelsius(), "living_room");
+              callback.call(SmartHomeDevices.bedroomTemperatureCelsius(), "bedroom");
+            })
+        .register();
+  }
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "src/main/java/otel/OtelGaugeCallback.java"?>
+
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.Meter;
+
+public class OtelGaugeCallback {
+  private static final AttributeKey<String> ROOM = AttributeKey.stringKey("room");
+  private static final Attributes LIVING_ROOM = Attributes.of(ROOM, "living_room");
+  private static final Attributes BEDROOM = Attributes.of(ROOM, "bedroom");
+
+  public static void gaugeCallbackUsage(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    // Temperature sensors maintain their own readings in firmware.
+    // Use an asynchronous gauge to report those values when a MetricReader
+    // collects metrics, without maintaining separate gauges in application code.
+    meter
+        .gaugeBuilder("room.temperature")
+        .setDescription("Current temperature in the room")
+        .setUnit("Cel")
+        .buildWithCallback(
+            measurement -> {
+              measurement.record(SmartHomeDevices.livingRoomTemperatureCelsius(), LIVING_ROOM);
+              measurement.record(SmartHomeDevices.bedroomTemperatureCelsius(), BEDROOM);
+            });
+  }
+}
+```
+
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
+Prometheus
+
+<?code-excerpt "prometheus_gauge_callback.go"?>
+
+```go
+package main
+
+import "github.com/prometheus/client_golang/prometheus"
+
+type temperatureCollector struct{ desc *prometheus.Desc }
+
+func newTemperatureCollector() *temperatureCollector {
+	return &temperatureCollector{desc: prometheus.NewDesc(
+		"room_temperature_celsius",
+		"Current temperature in the room",
+		[]string{"room"}, nil,
+	)}
+}
+
+func (c *temperatureCollector) Describe(ch chan<- *prometheus.Desc) { ch <- c.desc }
+func (c *temperatureCollector) Collect(ch chan<- prometheus.Metric) {
+	ch <- prometheus.MustNewConstMetric(c.desc, prometheus.GaugeValue, livingRoomTemperatureCelsius(), "living_room")
+	ch <- prometheus.MustNewConstMetric(c.desc, prometheus.GaugeValue, bedroomTemperatureCelsius(), "bedroom")
+}
+
+func prometheusGaugeCallbackUsage(reg *prometheus.Registry) {
+	// Temperature sensors maintain their own readings in firmware.
+	// Implement prometheus.Collector to report those values at scrape time.
+	reg.MustRegister(newTemperatureCollector())
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "otel_gauge_callback.go"?>
+
+```go
+package main
+
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/metric"
+)
+
+var (
+	roomLivingRoom = attribute.String("room", "living_room")
+	roomBedroom    = attribute.String("room", "bedroom")
+)
+
+func otelGaugeCallbackUsage(meter metric.Meter) {
+	// Temperature sensors maintain their own readings in firmware.
+	// Use an observable gauge to report those values when metrics are collected.
+	_, err := meter.Float64ObservableGauge("room.temperature",
+		metric.WithDescription("Current temperature in the room"),
+		metric.WithUnit("Cel"),
+		metric.WithFloat64Callback(func(_ context.Context, o metric.Float64Observer) error {
+			o.Observe(livingRoomTemperatureCelsius(), metric.WithAttributes(roomLivingRoom))
+			o.Observe(bedroomTemperatureCelsius(), metric.WithAttributes(roomBedroom))
+			return nil
+		}))
+	if err != nil {
+		panic(err)
+	}
+}
+```
+
+Key differences:
+
+- The Prometheus example implements `prometheus.Collector` with `Describe` and
+  `Collect` methods to report labeled gauge values.
+
+{{% /tab %}} {{< /tabpane >}}
+
+### Gauge — inc and dec
+
+Prometheus `Gauge` supports incrementing and decrementing for values that change
+gradually — such as the number of connected devices or active sessions.
+OpenTelemetry `Gauge` records absolute values only; this pattern maps to the
+OpenTelemetry `UpDownCounter` instrument.
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+Prometheus
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt "src/main/java/otel/PrometheusUpDownCounter.java"?>
+
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.Gauge;
+
+public class PrometheusUpDownCounter {
+  public static void upDownCounterUsage() {
+    // Prometheus uses Gauge for values that can increase or decrease.
+    Gauge devicesConnected =
+        Gauge.builder()
+            .name("devices_connected")
+            .help("Number of smart home devices currently connected")
+            .labelNames("device_type")
+            .register();
+
+    // Increment when a device connects, decrement when it disconnects.
+    devicesConnected.labelValues("thermostat").inc();
+    devicesConnected.labelValues("thermostat").inc();
+    devicesConnected.labelValues("lock").inc();
+    devicesConnected.labelValues("lock").dec();
+  }
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "src/main/java/otel/OtelUpDownCounter.java"?>
+
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.LongUpDownCounter;
+import io.opentelemetry.api.metrics.Meter;
+
+public class OtelUpDownCounter {
+  // Preallocate attribute keys and, when values are static, entire Attributes objects.
+  private static final AttributeKey<String> DEVICE_TYPE = AttributeKey.stringKey("device_type");
+  private static final Attributes THERMOSTAT = Attributes.of(DEVICE_TYPE, "thermostat");
+  private static final Attributes LOCK = Attributes.of(DEVICE_TYPE, "lock");
+
+  public static void upDownCounterUsage(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    LongUpDownCounter devicesConnected =
+        meter
+            .upDownCounterBuilder("devices.connected")
+            .setDescription("Number of smart home devices currently connected")
+            .build();
+
+    // add() accepts positive and negative values.
+    devicesConnected.add(1, THERMOSTAT);
+    devicesConnected.add(1, THERMOSTAT);
+    devicesConnected.add(1, LOCK);
+    devicesConnected.add(-1, LOCK);
+  }
+}
+```
+
+Key differences:
+
+- `inc()` / `dec()` → `add(1)` / `add(-1)`. `add()` accepts both positive and
+  negative values.
+- The Prometheus type is `Gauge`; the OpenTelemetry type is `LongUpDownCounter`
+  (or `DoubleUpDownCounter` via `.ofDoubles()`).
+
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
+Prometheus
+
+<?code-excerpt "prometheus_up_down_counter.go"?>
+
+```go
+package main
+
+import "github.com/prometheus/client_golang/prometheus"
+
+// Prometheus uses Gauge for values that can increase or decrease.
+var devicesConnected = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+	Name: "devices_connected",
+	Help: "Number of smart home devices currently connected",
+}, []string{"device_type"})
+
+func prometheusUpDownCounterUsage(reg *prometheus.Registry) {
+	reg.MustRegister(devicesConnected)
+
+	// Increment when a device connects, decrement when it disconnects.
+	devicesConnected.WithLabelValues("thermostat").Inc()
+	devicesConnected.WithLabelValues("thermostat").Inc()
+	devicesConnected.WithLabelValues("lock").Inc()
+	devicesConnected.WithLabelValues("lock").Dec()
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "otel_up_down_counter.go"?>
+
+```go
+package main
+
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/metric"
+)
+
+// Preallocate attribute options when values are static to avoid per-call allocation.
+var (
+	deviceThermostatAddOpts = []metric.AddOption{metric.WithAttributes(attribute.String("device_type", "thermostat"))}
+	deviceLockAddOpts       = []metric.AddOption{metric.WithAttributes(attribute.String("device_type", "lock"))}
+)
+
+func otelUpDownCounterUsage(ctx context.Context, meter metric.Meter) {
+	devicesConnected, err := meter.Int64UpDownCounter("devices.connected",
+		metric.WithDescription("Number of smart home devices currently connected"))
+	if err != nil {
+		panic(err)
+	}
+
+	// Add() accepts positive and negative values.
+	devicesConnected.Add(ctx, 1, deviceThermostatAddOpts...)
+	devicesConnected.Add(ctx, 1, deviceThermostatAddOpts...)
+	devicesConnected.Add(ctx, 1, deviceLockAddOpts...)
+	devicesConnected.Add(ctx, -1, deviceLockAddOpts...)
+}
+```
+
+Key differences:
+
+- `Inc()` / `Dec()` → `Add(ctx, 1, ...)` / `Add(ctx, -1, ...)`. `Add()` accepts
+  both positive and negative values.
+- The Prometheus type is `Gauge`; the OpenTelemetry type is `Int64UpDownCounter`
+  (or `Float64UpDownCounter` via `meter.Float64UpDownCounter`).
+
+{{% /tab %}} {{< /tabpane >}}
+
+### Callback gauge — inc and dec
+
+Use a callback gauge (an asynchronous up-down counter in OpenTelemetry) when an
+additive count that would otherwise be tracked with `inc()`/`dec()` is
+maintained externally — such as by a device manager or connection pool — and you
+want to observe it at collection time.
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+Prometheus
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt "src/main/java/otel/PrometheusUpDownCounterCallback.java"?>
+
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.GaugeWithCallback;
+
+public class PrometheusUpDownCounterCallback {
+  public static void upDownCounterCallbackUsage() {
+    // The device manager maintains the count of connected devices.
+    // Use a callback gauge to report that value at scrape time.
+    GaugeWithCallback.builder()
+        .name("devices_connected")
+        .help("Number of smart home devices currently connected")
+        .labelNames("device_type")
+        .callback(
+            callback -> {
+              callback.call(SmartHomeDevices.connectedDeviceCount("thermostat"), "thermostat");
+              callback.call(SmartHomeDevices.connectedDeviceCount("lock"), "lock");
+            })
+        .register();
+  }
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "src/main/java/otel/OtelUpDownCounterCallback.java"?>
+
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.Meter;
+
+public class OtelUpDownCounterCallback {
+  private static final AttributeKey<String> DEVICE_TYPE = AttributeKey.stringKey("device_type");
+  private static final Attributes THERMOSTAT = Attributes.of(DEVICE_TYPE, "thermostat");
+  private static final Attributes LOCK = Attributes.of(DEVICE_TYPE, "lock");
+
+  public static void upDownCounterCallbackUsage(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    // The device manager maintains the count of connected devices.
+    // Use an asynchronous up-down counter to report that value when a MetricReader
+    // collects metrics.
+    meter
+        .upDownCounterBuilder("devices.connected")
+        .setDescription("Number of smart home devices currently connected")
+        .buildWithCallback(
+            measurement -> {
+              measurement.record(SmartHomeDevices.connectedDeviceCount("thermostat"), THERMOSTAT);
+              measurement.record(SmartHomeDevices.connectedDeviceCount("lock"), LOCK);
+            });
+  }
+}
+```
+
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
+Prometheus
+
+<?code-excerpt "prometheus_up_down_counter_callback.go"?>
+
+```go
+package main
+
+import "github.com/prometheus/client_golang/prometheus"
+
+type deviceCountCollector struct{ desc *prometheus.Desc }
+
+func newDeviceCountCollector() *deviceCountCollector {
+	return &deviceCountCollector{desc: prometheus.NewDesc(
+		"devices_connected",
+		"Number of smart home devices currently connected",
+		[]string{"device_type"}, nil,
+	)}
+}
+
+func (c *deviceCountCollector) Describe(ch chan<- *prometheus.Desc) { ch <- c.desc }
+func (c *deviceCountCollector) Collect(ch chan<- prometheus.Metric) {
+	ch <- prometheus.MustNewConstMetric(c.desc, prometheus.GaugeValue, float64(connectedDeviceCount("thermostat")), "thermostat")
+	ch <- prometheus.MustNewConstMetric(c.desc, prometheus.GaugeValue, float64(connectedDeviceCount("lock")), "lock")
+}
+
+func prometheusUpDownCounterCallbackUsage(reg *prometheus.Registry) {
+	// The device manager maintains the count of connected devices.
+	// Implement prometheus.Collector to report those values at scrape time.
+	reg.MustRegister(newDeviceCountCollector())
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "otel_up_down_counter_callback.go"?>
+
+```go
+package main
+
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/metric"
+)
+
+var (
+	deviceThermostat = attribute.String("device_type", "thermostat")
+	deviceLock       = attribute.String("device_type", "lock")
+)
+
+func otelUpDownCounterCallbackUsage(meter metric.Meter) {
+	// The device manager maintains the count of connected devices.
+	// Use an observable up-down counter to report that value when metrics are collected.
+	_, err := meter.Int64ObservableUpDownCounter("devices.connected",
+		metric.WithDescription("Number of smart home devices currently connected"),
+		metric.WithInt64Callback(func(_ context.Context, o metric.Int64Observer) error {
+			o.Observe(int64(connectedDeviceCount("thermostat")), metric.WithAttributes(deviceThermostat))
+			o.Observe(int64(connectedDeviceCount("lock")), metric.WithAttributes(deviceLock))
+			return nil
+		}))
+	if err != nil {
+		panic(err)
+	}
+}
+```
+
+Key differences:
+
+- The Prometheus example implements `prometheus.Collector` with `Describe` and
+  `Collect` methods to report labeled gauge values.
+- `Int64ObservableUpDownCounter` uses `metric.WithInt64Callback`.
+
+{{% /tab %}} {{< /tabpane >}}
+
+## Histogram {#histogram}
+
+A histogram records the distribution of a set of measurements, tracking the
+count of observations, their sum, and the number that fall within configurable
+bucket boundaries.
+
+Both Prometheus and OpenTelemetry support classic (explicit-bucket) histograms
+and native (base2 exponential) histograms. Prometheus also has a `Summary` type,
+which has no direct OTel equivalent — see [Summary](#summary) below.
+
+Prometheus `Histogram` maps to the OpenTelemetry `Histogram` instrument.
+
+### Classic (explicit) histogram
+
+Both systems support classic histograms, where fixed bucket boundaries partition
+observations into discrete ranges.
+
+- **Bucket configuration**: Prometheus declares bucket boundaries on the
+  instrument itself at creation time. In OpenTelemetry, bucket boundaries are
+  set on the instrument as a hint that can be overridden or replaced by views
+  configured at the SDK level. This separation keeps instrumentation code
+  independent of collection configuration. If no boundaries are specified and no
+  view is configured, the SDK uses a default set designed for millisecond-scale
+  latency
+  (`[0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000]`),
+  which is likely wrong for second-scale measurements. Always provide boundaries
+  or configure a view when migrating existing histograms.
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+Prometheus
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt "src/main/java/otel/PrometheusHistogram.java"?>
+
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.Histogram;
+
+public class PrometheusHistogram {
+  public static void histogramUsage() {
+    Histogram deviceCommandDuration =
+        Histogram.builder()
+            .name("device_command_duration_seconds")
+            .help("Time to receive acknowledgment from a smart home device")
+            .labelNames("device_type")
+            .classicUpperBounds(0.1, 0.25, 0.5, 1.0, 2.5, 5.0)
+            .register();
+
+    deviceCommandDuration.labelValues("thermostat").observe(0.35);
+    deviceCommandDuration.labelValues("lock").observe(0.85);
+  }
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "src/main/java/otel/OtelHistogram.java"?>
+
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.DoubleHistogram;
+import io.opentelemetry.api.metrics.Meter;
+import java.util.List;
+
+public class OtelHistogram {
+  // Preallocate attribute keys and, when values are static, entire Attributes objects.
+  private static final AttributeKey<String> DEVICE_TYPE = AttributeKey.stringKey("device_type");
+  private static final Attributes THERMOSTAT = Attributes.of(DEVICE_TYPE, "thermostat");
+  private static final Attributes LOCK = Attributes.of(DEVICE_TYPE, "lock");
+
+  public static void histogramUsage(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    // setExplicitBucketBoundariesAdvice() sets default boundaries as a hint to the SDK.
+    // Views configured at the SDK level take precedence over this advice.
+    DoubleHistogram deviceCommandDuration =
+        meter
+            .histogramBuilder("device.command.duration")
+            .setDescription("Time to receive acknowledgment from a smart home device")
+            .setUnit("s")
+            .setExplicitBucketBoundariesAdvice(List.of(0.1, 0.25, 0.5, 1.0, 2.5, 5.0))
+            .build();
+
+    deviceCommandDuration.record(0.35, THERMOSTAT);
+    deviceCommandDuration.record(0.85, LOCK);
+  }
+}
+```
+
+Key differences:
+
+- `observe(value)` → `record(value, attributes)`.
+- OpenTelemetry distinguishes `LongHistogram` (integers, via `.ofLongs()`) from
+  `DoubleHistogram` (the default). Prometheus uses a single `Histogram` type.
+- Preallocate `AttributeKey` instances (always) and `Attributes` objects (when
+  values are static) to avoid per-call allocation on the hot path.
+- SDK views can override the boundaries set by
+  `setExplicitBucketBoundariesAdvice()`, and can also configure other aspects of
+  histogram collection such as attribute filtering, min/max recording, and
+  instrument renaming.
+
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
+Prometheus
+
+<?code-excerpt "prometheus_histogram.go"?>
+
+```go
+package main
+
+import "github.com/prometheus/client_golang/prometheus"
+
+var deviceCommandDuration = prometheus.NewHistogramVec(prometheus.HistogramOpts{
+	Name:    "device_command_duration_seconds",
+	Help:    "Time to receive acknowledgment from a smart home device",
+	Buckets: []float64{0.1, 0.25, 0.5, 1.0, 2.5, 5.0},
+}, []string{"device_type"})
+
+func prometheusHistogramUsage(reg *prometheus.Registry) {
+	reg.MustRegister(deviceCommandDuration)
+
+	deviceCommandDuration.WithLabelValues("thermostat").Observe(0.35)
+	deviceCommandDuration.WithLabelValues("lock").Observe(0.85)
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "otel_histogram.go"?>
+
+```go
+package main
+
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/metric"
+)
+
+// Preallocate attribute options when values are static to avoid per-call allocation.
+var (
+	deviceThermostatOpts = []metric.RecordOption{metric.WithAttributes(attribute.String("device_type", "thermostat"))}
+	deviceLockOpts       = []metric.RecordOption{metric.WithAttributes(attribute.String("device_type", "lock"))}
+)
+
+func otelHistogramUsage(ctx context.Context, meter metric.Meter) {
+	// WithExplicitBucketBoundaries sets default boundaries as a hint to the SDK.
+	// Views configured at the SDK level take precedence over this hint.
+	deviceCommandDuration, err := meter.Float64Histogram("device.command.duration",
+		metric.WithDescription("Time to receive acknowledgment from a smart home device"),
+		metric.WithUnit("s"),
+		metric.WithExplicitBucketBoundaries(0.1, 0.25, 0.5, 1.0, 2.5, 5.0))
+	if err != nil {
+		panic(err)
+	}
+
+	deviceCommandDuration.Record(ctx, 0.35, deviceThermostatOpts...)
+	deviceCommandDuration.Record(ctx, 0.85, deviceLockOpts...)
+}
+```
+
+Key differences:
+
+- `Observe(value)` → `Record(ctx, value, metric.WithAttributes(...))`.
+- In Go, `metric.WithExplicitBucketBoundaries(...)` is variadic (not a slice).
+  Prometheus uses a `Buckets` field in `HistogramOpts`.
+- SDK views can override the boundaries set by `WithExplicitBucketBoundaries()`,
+  and can also configure other aspects of histogram collection such as attribute
+  filtering, min/max recording, and instrument renaming.
+
+{{% /tab %}} {{< /tabpane >}}
+
+### Native (base2 exponential) histogram
+
+Both systems support native (base2 exponential) histograms, which automatically
+adjust bucket boundaries to cover the observed range without requiring manual
+configuration.
+
+- **Format selection**: Prometheus instruments can emit classic format only,
+  native format only, or both simultaneously — enabling gradual migration
+  without instrumentation changes. In OpenTelemetry, format selection is
+  configured outside instrumentation code — on the exporter or via a view — so
+  instrumentation code requires no changes either way.
+- **Instrumentation code**: The OpenTelemetry instrumentation code is identical
+  for classic and native histograms. The same `record()` calls produce either
+  format depending on how the SDK is configured.
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+Prometheus
+
+In Prometheus, the histogram format is controlled at instrument creation time.
+The example below uses `.nativeOnly()` to restrict to native format; omitting it
+would emit both classic and native formats simultaneously:
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt "src/main/java/otel/PrometheusHistogramNative.java"?>
+
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.Histogram;
+
+public class PrometheusHistogramNative {
+  public static void nativeHistogramUsage() {
+    Histogram deviceCommandDuration =
+        Histogram.builder()
+            .name("device_command_duration_seconds")
+            .help("Time to receive acknowledgment from a smart home device")
+            .labelNames("device_type")
+            .nativeOnly()
+            .register();
+
+    deviceCommandDuration.labelValues("thermostat").observe(0.35);
+    deviceCommandDuration.labelValues("lock").observe(0.85);
+  }
+}
+```
+
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
+Prometheus
+
+In Prometheus, setting `NativeHistogramBucketFactor` enables native histograms
+alongside the classic bucket configuration — both formats are reported
+simultaneously:
+
+<?code-excerpt "prometheus_histogram_native.go"?>
+
+```go
+package main
+
+import "github.com/prometheus/client_golang/prometheus"
+
+var nativeDeviceCommandDuration = prometheus.NewHistogramVec(prometheus.HistogramOpts{
+	Name:                        "device_command_duration_seconds",
+	Help:                        "Time to receive acknowledgment from a smart home device",
+	NativeHistogramBucketFactor: 1.1,
+}, []string{"device_type"})
+
+func nativeHistogramUsage(reg *prometheus.Registry) {
+	reg.MustRegister(nativeDeviceCommandDuration)
+
+	nativeDeviceCommandDuration.WithLabelValues("thermostat").Observe(0.35)
+	nativeDeviceCommandDuration.WithLabelValues("lock").Observe(0.85)
+}
+```
+
+Key differences:
+
+- `NativeHistogramBucketFactor` must be set to a value greater than 1.0 to
+  enable native histograms in Go — it is not optional. Setting it to 0 (the zero
+  value) disables native histograms entirely. The value controls the maximum
+  ratio between consecutive bucket boundaries; smaller values give finer
+  resolution at the cost of more buckets. To approximate the same bucket density
+  as the commonly used value of `1.1`, set `MaxScale: 3` on
+  `AggregationBase2ExponentialHistogram`.
+
+{{% /tab %}} {{< /tabpane >}}
+
+In OpenTelemetry, the instrumentation code is identical to the classic histogram
+case. The base2 exponential format is configured separately, outside the
+instrumentation layer.
+
+The preferred approach is to configure it on the metric exporter. This applies
+to all histograms exported through that exporter without touching
+instrumentation code:
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt "src/main/java/otel/OtelHistogramExponentialExporter.java"?>
+
+```java
+package otel;
+
+import io.opentelemetry.exporter.otlp.http.metrics.OtlpHttpMetricExporter;
+import io.opentelemetry.sdk.metrics.Aggregation;
+import io.opentelemetry.sdk.metrics.InstrumentType;
+import io.opentelemetry.sdk.metrics.export.DefaultAggregationSelector;
+
+public class OtelHistogramExponentialExporter {
+  static OtlpHttpMetricExporter createExporter() {
+    // Configure the exporter to use exponential histograms for all histogram instruments.
+    // This is the preferred approach — it applies globally without modifying instrumentation code.
+    return OtlpHttpMetricExporter.builder()
+        .setEndpoint("http://localhost:4318")
+        .setDefaultAggregationSelector(
+            DefaultAggregationSelector.getDefault()
+                .with(InstrumentType.HISTOGRAM, Aggregation.base2ExponentialBucketHistogram()))
+        .build();
+  }
+}
+```
+
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt "otel_histogram_exponential_exporter.go" region="createExponentialExporter"?>
+
+```go
+package main
+
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp"
+	sdkmetric "go.opentelemetry.io/otel/sdk/metric"
+)
+
+func createExponentialExporter(ctx context.Context) (*otlpmetrichttp.Exporter, error) {
+	// Configure the exporter to use exponential histograms for all histogram instruments.
+	// This is the preferred approach — it applies globally without modifying instrumentation code.
+	return otlpmetrichttp.New(ctx,
+		otlpmetrichttp.WithAggregationSelector(func(ik sdkmetric.InstrumentKind) sdkmetric.Aggregation {
+			if ik == sdkmetric.InstrumentKindHistogram {
+				return sdkmetric.AggregationBase2ExponentialHistogram{}
+			}
+			return sdkmetric.DefaultAggregationSelector(ik)
+		}),
+	)
+}
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+For more granular control — for example, to use base2 exponential histograms for
+specific instruments while keeping explicit buckets for others — configure a
+view instead:
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt "src/main/java/otel/OtelHistogramExponentialView.java"?>
+
+```java
+package otel;
+
+import io.opentelemetry.sdk.metrics.Aggregation;
+import io.opentelemetry.sdk.metrics.InstrumentSelector;
+import io.opentelemetry.sdk.metrics.SdkMeterProvider;
+import io.opentelemetry.sdk.metrics.View;
+
+public class OtelHistogramExponentialView {
+  static SdkMeterProvider createMeterProvider() {
+    // Use a view for per-instrument control — select a specific instrument by name
+    // to use exponential histograms while keeping explicit buckets for others.
+    return SdkMeterProvider.builder()
+        .registerView(
+            InstrumentSelector.builder().setName("device.command.duration").build(),
+            View.builder().setAggregation(Aggregation.base2ExponentialBucketHistogram()).build())
+        .build();
+  }
+}
+```
+
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt "otel_histogram_exponential.go" region="createExponentialView"?>
+
+```go
+func createExponentialView() sdkmetric.View {
+	// Use a view for per-instrument control — select a specific instrument by name
+	// to use exponential histograms while keeping explicit buckets for others.
+	return sdkmetric.NewView(
+		sdkmetric.Instrument{Name: "device.command.duration"},
+		sdkmetric.Stream{Aggregation: sdkmetric.AggregationBase2ExponentialHistogram{}!},
+	)
+}
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+### Summary {#summary}
+
+Prometheus `Summary` computes quantiles client-side at scrape time and exposes
+them as labeled time series (for example, `{quantile="0.95"}`). OpenTelemetry
+has no direct equivalent.
+
+For quantile estimation, a **base2 exponential histogram** is the recommended
+replacement: it automatically adjusts bucket boundaries to cover the observed
+range, and `histogram_quantile()` in PromQL can compute quantiles with bounded
+errors at query time. Unlike `Summary`, the results can be aggregated across
+instances. See
+[Native (base2 exponential) histogram](#native-base2-exponential-histogram).
+
+If you only need count and sum — not quantiles — a histogram with no explicit
+bucket boundaries captures those statistics with minimal overhead. The examples
+below show this simpler approach.
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+Prometheus
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt "src/main/java/otel/PrometheusSummary.java"?>
+
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.Summary;
+
+public class PrometheusSummary {
+  public static void summaryUsage() {
+    Summary deviceCommandDuration =
+        Summary.builder()
+            .name("device_command_duration_seconds")
+            .help("Time to receive acknowledgment from a smart home device")
+            .labelNames("device_type")
+            .quantile(0.5, 0.05)
+            .quantile(0.95, 0.01)
+            .quantile(0.99, 0.001)
+            .register();
+
+    deviceCommandDuration.labelValues("thermostat").observe(0.35);
+    deviceCommandDuration.labelValues("lock").observe(0.85);
+  }
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "src/main/java/otel/OtelHistogramAsSummary.java"?>
+
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.DoubleHistogram;
+import io.opentelemetry.api.metrics.Meter;
+import java.util.List;
+
+public class OtelHistogramAsSummary {
+  private static final AttributeKey<String> DEVICE_TYPE = AttributeKey.stringKey("device_type");
+  private static final Attributes THERMOSTAT = Attributes.of(DEVICE_TYPE, "thermostat");
+  private static final Attributes LOCK = Attributes.of(DEVICE_TYPE, "lock");
+
+  public static void summaryReplacement(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    // No explicit bucket boundaries: captures count and sum, a good stand-in for most
+    // Summary use cases. For quantile estimation, add boundaries that bracket your thresholds.
+    DoubleHistogram deviceCommandDuration =
+        meter
+            .histogramBuilder("device.command.duration")
+            .setDescription("Time to receive acknowledgment from a smart home device")
+            .setUnit("s")
+            .setExplicitBucketBoundariesAdvice(List.of())
+            .build();
+
+    deviceCommandDuration.record(0.35, THERMOSTAT);
+    deviceCommandDuration.record(0.85, LOCK);
+  }
+}
+```
+
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
+Prometheus
+
+<?code-excerpt "prometheus_summary.go"?>
+
+```go
+package main
+
+import "github.com/prometheus/client_golang/prometheus"
+
+var summaryDeviceCommandDuration = prometheus.NewSummaryVec(prometheus.SummaryOpts{
+	Name:       "device_command_duration_seconds",
+	Help:       "Time to receive acknowledgment from a smart home device",
+	Objectives: map[float64]float64{0.5: 0.05, 0.95: 0.01, 0.99: 0.001},
+}, []string{"device_type"})
+
+func summaryUsage(reg *prometheus.Registry) {
+	reg.MustRegister(summaryDeviceCommandDuration)
+
+	summaryDeviceCommandDuration.WithLabelValues("thermostat").Observe(0.35)
+	summaryDeviceCommandDuration.WithLabelValues("lock").Observe(0.85)
+}
+```
+
+OpenTelemetry
+
+<?code-excerpt "otel_histogram_as_summary.go"?>
+
+```go
+package main
+
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/metric"
+)
+
+// Preallocate attribute options when values are static to avoid per-call allocation.
+var (
+	summaryThermostatOpts = []metric.RecordOption{metric.WithAttributes(attribute.String("device_type", "thermostat"))}
+	summaryLockOpts       = []metric.RecordOption{metric.WithAttributes(attribute.String("device_type", "lock"))}
+)
+
+func summaryReplacement(ctx context.Context, meter metric.Meter) {
+	// No explicit bucket boundaries: captures count and sum only.
+	// For quantile estimation, prefer a base2 exponential histogram instead.
+	deviceCommandDuration, err := meter.Float64Histogram("device.command.duration",
+		metric.WithDescription("Time to receive acknowledgment from a smart home device"),
+		metric.WithUnit("s"),
+		metric.WithExplicitBucketBoundaries()) // no boundaries
+	if err != nil {
+		panic(err)
+	}
+
+	deviceCommandDuration.Record(ctx, 0.35, summaryThermostatOpts...)
+	deviceCommandDuration.Record(ctx, 0.85, summaryLockOpts...)
+}
+```
+
+{{% /tab %}} {{< /tabpane >}}

@@ -2,8 +2,8 @@
 title: 管理
 description: OpenTelemetry Collectorのデプロイメントを大規模に管理する方法
 weight: 23
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-cSpell:ignore: hostmetrics opampsupervisor
+default_lang_commit: 453013b113080a48166f412215176d345d2bf958
+cSpell:ignore: opampsupervisor
 ---
 
 このドキュメントでは、OpenTelemetry コレクターのデプロイを大規模に管理する方法について説明します。
@@ -33,21 +33,23 @@ OpenTelemetryのコンテキストでは、タスク _4.ヘルスとパフォー
 
 オブザーバビリティベンダーやクラウドプロバイダーは、エージェント管理に独自のソリューションを提供しています。
 オープンソースのオブザーバビリティの領域では、エージェント管理に使用できる新しい標準があります。
-[Open Agent Management Protocol] (OpAMP)です。
+[Open Agent Management Protocol][] (OpAMP)です。
 
 [OpAMPの仕様][OpAMP specification]では、テレメトリーデータエージェントのフリート管理方法を定義しています。
 これらのエージェントは、[OpenTelemetry コレクター](/docs/collector/)、Fluent Bit、または他のエージェントを任意の組み合わせで使用できます。
 
-> **注意** 「エージェント」という用語は、ここではOpAMPに応答するOpenTelemetryコンポーネントの総称として使われています。
+> [!NOTE]
+>
+> 「エージェント」という用語は、ここではOpAMPに応答するOpenTelemetryコンポーネントの総称として使われています。
 > つまりコレクターはもちろん、SDKコンポーネントでもありえます。
 
 OpAMPは、HTTPとWebSocketでの通信をサポートするクライアント/サーバープロトコルです。
 
-- **OpAMPサーバ**はコントロールプレーンの一部であり、オーケストレータとして機能し、テレメトリーエージェントのフリートを管理します。
+- **OpAMPサーバー**はコントロールプレーンの一部であり、オーケストレータとして機能し、テレメトリーエージェントのフリートを管理します。
 - **OpAMPクライアント**はデータプレーンの一部です。
   OpAMPのクライアント側は、たとえば[OpenTelemetry コレクターにおけるOpAMPサポート][opamp-in-otel-collector]のように、インプロセスで実装できます。
   OpAMPのクライアント側は、アウトオブプロセスで実装することもできます。
-  この場合、OpAMPサーバとのOpAMP固有の通信を行い、同時にテレメトリーエージェントを制御するスーパーバイザーを使用できます。
+  この場合、OpAMPサーバーとのOpAMP固有の通信を行い、同時にテレメトリーエージェントを制御するスーパーバイザーを使用できます。
   スーパーバイザーやテレメトリー通信はOpAMPの一部ではないことに注意してください。
 
 具体的な設定を見てみましょう。
@@ -57,14 +59,14 @@ OpAMPは、HTTPとWebSocketでの通信をサポートするクライアント/�
 1. OpenTelemetry コレクターが、次のようなパイプラインで構成されているとする
    - (A) ダウンストリームのソースからシグナルを受信する
    - (B) シグナルをアップストリームの宛先にエクスポートする。ここではコレクター自体のテレメトリーを含む可能性がある。（OpAMP `own_xxx` 接続設定で表されます）。
-1. サーバ側のOpAMPパートを実装するコントロールプレーンと、クライアント側のOpAMPを実装するコレクター（またはコレクターを制御するスーパーバイザー）の間の双方向のOpAMP制御フロー。
+1. サーバー側のOpAMPパートを実装するコントロールプレーンと、クライアント側のOpAMPを実装するコレクター（またはコレクターを制御するスーパーバイザー）の間の双方向のOpAMP制御フロー。
 
 ### 試してみてください {#try-it-out}
 
 [GoによるOpAMPプロトコル実装][opamp-go]を使えば、簡単なOpAMPセットアップを自分で試すことができます。
 以下のチュートリアルでは、Go 1.22以上が必要です。
 
-OpAMPサーバの例で構成されるシンプルなOpAMPコントロールプレーンをセットアップし、OpenTelemetryコレクターを[OpAMPスーパーバイザー][opamp-supervisor]を使って接続させます。
+OpAMPサーバーの例で構成されるシンプルなOpAMPコントロールプレーンをセットアップし、OpenTelemetryコレクターを[OpAMPスーパーバイザー][opamp-supervisor]を使って接続させます。
 
 #### ステップ1 - OpAMPサーバーの起動 {#step-1---start-the-opamp-server}
 
@@ -93,7 +95,7 @@ OpAMPスーパーバイザーが管理できるOpenTelemetryコレクターの�
 `opampsupervisor` バイナリは、OpenTelemetry コレクター [`cmd/opampsupervisor` タグが付いたリリース][tags]からダウンロード可能なアセットとして入手できます。
 OSとチップセットに基づいて命名されたアセットのリストがありますので、あなたの構成に合うものをダウンロードしてください。
 
-{{< tabpane text=true >}}。
+{{< tabpane text=true >}}
 
 {{% tab "Linux (AMD 64)" %}}
 
@@ -170,12 +172,10 @@ storage:
   directory: ./storage
 ```
 
-{{% alert color="primary" title="NOTE" %}}
-
-`$OTEL_COLLECTOR_BINARY` を実際のファイルパスに置き換えてください。
-たとえば、LinuxまたはmacOSでは、コレクターを `/usr/local/bin/` にインストールした場合、 `$OTEL_COLLECTOR_BINARY` を `/usr/local/bin/otelcol` に置き換えます。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> `$OTEL_COLLECTOR_BINARY` を実際のファイルパスに置き換えてください。
+> たとえば、LinuxまたはmacOSでは、コレクターを `/usr/local/bin/` にインストールした場合、 `$OTEL_COLLECTOR_BINARY` を `/usr/local/bin/otelcol` に置き換えます。
 
 #### ステップ5 - OpAMPスーパーバイザーの実行 {#step-5---run-the-opamp-supervisor}
 
@@ -187,7 +187,7 @@ $ ./opampsupervisor --config=./supervisor.yaml
 {"level":"info","ts":1745154644.74608,"logger":"supervisor","caller":"supervisor/supervisor.go:1086","msg":"No last received remote config found"}
 ```
 
-すべてがうまくいっていれば、[http://localhost:4321/](http://localhost:4321/)にアクセスし、OpAMPサーバのUIにアクセスできるはずです。
+すべてがうまくいっていれば、[http://localhost:4321/](http://localhost:4321/)にアクセスし、OpAMPサーバーのUIにアクセスできるはずです。
 スーパーバイザーが管理するエージェントの中に、あなたのコレクターが表示されているはずです。
 
 ![OpAMPの設定例](../img/opamp-server-ui.png)
@@ -198,7 +198,7 @@ $ ./opampsupervisor --config=./supervisor.yaml
 
 ```yaml
 receivers:
-  hostmetrics:
+  host_metrics:
     collection_interval: 10s
     scrapers:
       cpu:
@@ -211,7 +211,7 @@ exporters:
 service:
   pipelines:
     metrics:
-      receivers: [hostmetrics]
+      receivers: [host_metrics]
       exporters: [debug]
 ```
 

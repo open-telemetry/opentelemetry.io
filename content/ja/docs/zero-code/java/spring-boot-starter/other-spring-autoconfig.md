@@ -1,7 +1,7 @@
 ---
 title: その他のSpring自動設定
 weight: 70
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+default_lang_commit: 21add8ce39004043e871566b88ce97ad0eba3435
 cSpell:ignore: autoconfigurations
 ---
 
@@ -13,7 +13,7 @@ OpenTelemetry Spring スターターを使用するかわりに、OpenTelemetry 
 ## Zipkin スターター {#zipkin-starter}
 
 OpenTelemetry Zipkin Exporter スターターは、分散トレーシングの設定に必要な `opentelemetry-api`、`opentelemetry-sdk`、`opentelemetry-extension-annotations`、`opentelemetry-logging-exporter`、`opentelemetry-spring-boot-autoconfigurations` および Spring フレームワークスターターを含むスターターパッケージです。
-また、[opentelemetry-exporters-zipkin](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/zipkin)アーティファクトと対応するエクスポーター自動設定も提供します。
+また、[opentelemetry-exporters-zipkin](https://github.com/open-telemetry/opentelemetry-java/tree/v1.64.0/exporters/zipkin)アーティファクトと対応するエクスポーター自動設定も提供します。
 
 実行時にクラスパスにエクスポーターが存在し、Spring アプリケーションコンテキストにエクスポーターの Spring Bean が存在しない場合、エクスポーター Bean が初期化され、アクティブなトレーサープロバイダー内のシンプルスパンプロセッサーに追加されます。
 詳細については、[実装 (OpenTelemetryAutoConfiguration.java)](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java)を参照してください。
@@ -42,6 +42,29 @@ dependencies {
 
 ### 設定 {#configurations}
 
-| プロパティ                     | デフォルト値 | ConditionalOnClass   |
-| ------------------------------ | ------------ | -------------------- |
-| `otel.exporter.zipkin.enabled` | true         | `ZipkinSpanExporter` |
+{{< tabpane text=true >}} {{% tab "プロパティ" %}}
+
+Zipkin エクスポーターを有効にします（クラスパスに `ZipkinSpanExporter` が必要です）。
+
+```yaml
+otel:
+  exporter:
+    zipkin:
+      enabled: true # デフォルト: true
+```
+
+{{% /tab %}} {{% tab "宣言的設定" %}}
+
+[宣言的設定](../declarative-configuration/)では、Zipkin エクスポーターは `tracer_provider.processors` 配下の標準的な[宣言的設定スキーマ](/docs/languages/sdk-configuration/declarative-configuration/)の一部として設定されます。
+
+```yaml
+otel:
+  tracer_provider:
+    processors:
+      - batch:
+          exporter:
+            zipkin:
+              endpoint: http://localhost:9411/api/v2/spans
+```
+
+{{% /tab %}} {{< /tabpane >}}

@@ -81,7 +81,7 @@ Here we are viewing the metric `db_sql_latency_milliseconds_sum` on Prometheus.
 ![example of Prometheus UI](prometheus-example.png)
 
 More otelsql generated metrics options can be found on the
-[otelsql document](https://github.com/XSAM/otelsql/blob/main/README.md#metric-instruments).
+[otelsql document](https://github.com/XSAM/otelsql/blob/60175c288b74731b8f4b70d909c295efe7c2cc98/README.md?from_branch=main#metric-instruments).
 
 ## Understand the example
 

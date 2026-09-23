@@ -35,13 +35,14 @@ File an issue in one of our repositories.
 
 <div class="{{% param btn-class %}}">
 
-- [Review issues][projects]
+- [Review issues][issues]
 
 </div>
 
 [Learn more](issue-participation/) about how we track reactions to issues.
 
-[projects]: https://github.com/orgs/open-telemetry/projects
+[issues]:
+  https://github.com/search?q=is%3Aissue+is%3Aopen+org%3Aopen-telemetry+&type=issues
 
 ## Chat on Slack {#slack}
 
@@ -53,12 +54,12 @@ out there and can answer your questions.
 Any channel starting with `#otel-` is good, but some of the channels you might
 want to keep an eye on are:
 
-- [#opentelemetry]
-- [#otel-semantic-conventions]
-- [#otel-community-demo]
-- [#otel-vendor]
+- [#opentelemetry][]
+- [#otel-semantic-conventions][]
+- [#otel-community-demo][]
+- [#otel-vendor][]
 
-Not sure where to ask? Post to [#otel-sig-end-user], and we will help you find
+Not sure where to ask? Post to [#otel-sig-end-user][], and we will help you find
 the right channel.
 
 <div class="{{% param btn-class %}}">
@@ -77,6 +78,7 @@ we've run previously:
 - [Contributor Experience Survey](/blog/2025/contribex-survey-results/)
 - [Developer Experience Survey](/blog/2025/devex-survey/)
 - [Docs Usability Survey](/blog/2024/otel-docs-survey/)
+
 <!--➡️ TODO: Turn links into embeds-->
 
 [Learn more](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys)
@@ -105,7 +107,7 @@ channel. If you want to talk about your experience with OpenTelemetry,
 
 If you're interested in being a part of any of these programs, have any
 questions or tips on how to improve end user feedback collection, or just want
-to say hi, let us know in [#otel-sig-end-user] in CNCF Slack! Not there yet?
+to say hi, let us know in [#otel-sig-end-user][] in CNCF Slack! Not there yet?
 [Join us][cncf-slack]!
 
 > [!NOTE] For OpenTelemetry contributors

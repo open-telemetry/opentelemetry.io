@@ -4,7 +4,7 @@ description:
   Definiciones y convenciones para términos de telemetría tal como se usan en
   OpenTelemetry.
 weight: 200
-default_lang_commit: 530c8fd130c93dd95e9638c8919518dbbc9c6b0a
+default_lang_commit: 530c8fd130c93dd95e9638c8919518dbbc9c6b0a # patched
 drifted_from_default: true
 ---
 
@@ -61,8 +61,8 @@ atributos][attribute].
 
 El componente de una plataforma de observabilidad que es responsable de recibir,
 procesar, almacenar y consultar datos de telemetría. Ejemplos incluyen
-herramientas de código abierto herramientas de código abierto como [Jaeger] y
-[Prometheus], así como ofertas comerciales. OpenTelemetry no es un backend de
+herramientas de código abierto herramientas de código abierto como [Jaeger][] y
+[Prometheus][], así como ofertas comerciales. OpenTelemetry no es un backend de
 observabilidad.
 
 ### Baggage
@@ -114,11 +114,11 @@ tendría baja cardinalidad.
 
 ### Collector
 
-El [OpenTelemetry Collector], o Collector para abreviar, es una implementación
+El [OpenTelemetry Collector][], o Collector para abreviar, es una implementación
 independiente de proveedores de cómo recibir, procesar y exportar datos de
 telemetría. Un binario que puede ser desplegado como un agente o gateway.
 
-> **Ortografía**: Cuando se refiere al [OpenTelemetry Collector], siempre
+> **Ortografía**: Cuando se refiere al [OpenTelemetry Collector][], siempre
 > capitalizar Collector. Use just "Collector" si se está usando Collector como
 > un adjetivo &mdash; por ejemplo, "Collector configuration".
 
@@ -225,7 +225,7 @@ A veces se utiliza para referirse a una colección de
 [Registros de Log](#log-record). Puede ser ambiguo ya que a veces se utiliza
 [Log](#log) para referirse a un solo [Registro de Log](#log-record). Donde la
 ambigüedad es posible, se utilizan cuantificadores adicionales, por ejemplo,
-`Registro de Log`. Ver [Log].
+`Registro de Log`. Ver [Log][].
 
 ### Metadatos {#metadata}
 
@@ -265,7 +265,7 @@ Precursor a OpenTelemetry. Para más detalles, ver
 
 ### OpenTelemetry
 
-Formado a través de un [merger] de los proyectos [OpenTracing](#opentracing) y
+Formado a través de un [merger][] de los proyectos [OpenTracing](#opentracing) y
 [OpenCensus](#opencensus), OpenTelemetry &mdash; el tema de este sitio web
 &mdash; es una colección de [APIs](#api), [SDKs](#sdk), y herramientas que
 puedes usar para [instrumentar](/docs/concepts/instrumentation/), generar,
@@ -301,7 +301,7 @@ Abreviatura para [OpenTelemetry Collector](#collector).
 
 ### OTEP
 
-Abreviatura para [OpenTelemetry Enhancement Proposal].
+Abreviatura para [OpenTelemetry Enhancement Proposal][].
 
 > **Ortografía**: Escribe "OTEPs" como forma plural. No escribas `OTep` ni
 > `otep` en descriptions.
@@ -328,7 +328,7 @@ como contexto de span y [Baggage](#baggage) en [Spans](#span). Ver
 
 ### Proto
 
-Tipos de interfaz independientes del lenguaje. Ver [opentelemetry-proto].
+Tipos de interfaz independientes del lenguaje. Ver [opentelemetry-proto][].
 
 ### Receptor {#receiver}
 

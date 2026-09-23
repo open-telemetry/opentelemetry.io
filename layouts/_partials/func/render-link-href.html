@@ -1,0 +1,2 @@
+{{- $anchor := partial "hooks/render-link.html" (dict "ctx" .) -}}
+{{- replaceRE `(?s).*href="([^"]+)".*` "$1" $anchor -}}

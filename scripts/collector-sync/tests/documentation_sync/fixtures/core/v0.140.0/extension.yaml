@@ -1,0 +1,12 @@
+distribution: core
+version: v0.140.0
+repository: opentelemetry-collector
+component_type: extension
+components:
+  - name: memorylimiterextension
+    metadata:
+      status:
+        distributions: []
+        stability:
+          development:
+            - extension

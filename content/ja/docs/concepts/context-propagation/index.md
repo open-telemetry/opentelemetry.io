@@ -2,7 +2,7 @@
 title: コンテキスト伝搬
 weight: 10
 description: 分散トレーシングを可能にするコンセプトについて学びます。
-default_lang_commit: 2eff1a357d20c7b9ba6e07f8c5b1ac057ac005c7
+default_lang_commit: cc127cac40d5d6aaf48e015f1cf4dbf76bff587b
 ---
 
 コンテキスト伝搬を使用すると、[シグナル](../signals/)（[トレース](../signals/traces/)、[メトリクス](../signals/metrics/)、および[ログ](../signals/logs/)）を生成された場所に関係なく相互に関連づけることができます。
@@ -35,8 +35,8 @@ OpenTelemetryは、いくつかの公式のプロパゲーターをメンテナ�
 
 ## 例 {#example}
 
-`Frontend`というサービスは、`POST /cart/add`や`GET /checkout/`などのさまざまなHTTPエンドポイントを提供し、`GET /product`というHTTPエンドポイントを介して下流サービスである`Product Catalog`にアクセスしてユーザーがカードに追加したい商品や決済対象の一部である商品の詳細を取得します。
-`Frontend`からのリクストのコンテキスト内で`Product Catalog`サービスのアクティビティを把握するために、コンテキスト（ここではトレースIDと「親ID」としてのスパンID）はW3C TraceContext仕様で定義されている`traceparent`ヘッダーを使用して伝搬されます。
+`Frontend`というサービスは、`POST /cart/add`や`GET /checkout/`などのさまざまなHTTPエンドポイントを提供し、`GET /product`というHTTPエンドポイントを介して下流サービスである`Product Catalog`にアクセスしてユーザーがカートに追加したい商品や決済対象の一部である商品の詳細を取得します。
+`Frontend`からのリクエストのコンテキスト内で`Product Catalog`サービスのアクティビティを把握するために、コンテキスト（ここではトレースIDと「親ID」としてのスパンID）はW3C TraceContext仕様で定義されている`traceparent`ヘッダーを使用して伝搬されます。
 これはつまり、IDがヘッダーのフィールドに埋め込まれていることを意味します。
 
 ```text
@@ -66,12 +66,12 @@ OpenTelemetry SDKは、ログをトレースと自動的に関連づけること
 ### メトリクス {#metrics}
 
 メトリクスの場合、コンテキスト伝搬により、そのコンテキスト内の測定値を集約できます。
-たとえば、すべての`GET /product`リクエストのレスポンスタイムを確認するだけでなく、`POST /cart/add > GET /product`および`GET /checkout < GET /product`といった組み合わせのメトリクスも取得できます。
+たとえば、すべての`GET /product`リクエストのレスポンスタイムを確認するだけでなく、`POST /cart/add > GET /product`および`GET /checkout > GET /product`といった組み合わせのメトリクスも取得できます。
 
 | 名前                            | 毎秒の呼び出し回数 | 平均レスポンスタイム |
 | ------------------------------- | ------------------ | -------------------- |
 | `* > GET /product`              | 370                | 300ms                |
-| `POST /card/add > GET /product` | 330                | 130ms                |
+| `POST /cart/add > GET /product` | 330                | 130ms                |
 | `GET /checkout > GET /product`  | 40                 | 1703ms               |
 
 ## カスタムコンテキスト伝搬 {#custom-context-propagation}
@@ -83,7 +83,7 @@ OpenTelemetry SDKは、ログをトレースと自動的に関連づけること
 - 送信側では、コンテキストはキャリアに[注入](/docs/specs/otel/context/api-propagators/#inject)されます。
   たとえば、HTTPリクエストのヘッダーに注入されます。
   それ以外の場合では、リクエストのメタデータを保存できる場所を見つける必要があります。
-- 受診側では、コンテキストはキャリアから[抽出](/docs/specs/otel/context/api-propagators/#extract)されます。
+- 受信側では、コンテキストはキャリアから[抽出](/docs/specs/otel/context/api-propagators/#extract)されます。
   HTTPの場合は、ヘッダーから取得されます。
   それ以外の場合は、送信側でコンテキストを保存するために選択した場所を選択します。
 
@@ -110,17 +110,17 @@ OpenTelemetry SDKは、ログをトレースと自動的に関連づけること
   信頼できないソースからのコンテキストを無視またはサニタイズすることを検討してください。
 - **送信コンテキスト**: 外部サービスに伝搬する内容に注意してください
   内部のトレースID、スパンID、またはバゲッジアイテムによって、内部アーキテクチャやビジネスロジックに関する機密情報が漏洩する可能性があります。
-  プロぱゲーターを構成して、外部またはパブリック向けのエンドポイントにコンテキストを送信しないようにすることを検討してください。
+  プロパゲーターを構成して、外部またはパブリック向けのエンドポイントにコンテキストを送信しないようにすることを検討してください。
 
-### バゲージ {#baggage}
+### バゲッジ {#baggage}
 
-[バゲージ](../signals/baggage/)を使用すると、任意のキーと値のペアを伝搬できます。
-このデータはサービスの境界を超えて伝搬されるため、バゲージに機密情報（ユーザー資格情報、APIキー、またはPIIなど）を含めないでください。
+[バゲッジ](../signals/baggage/)を使用すると、任意のキーと値のペアを伝搬できます。
+このデータはサービスの境界を超えて伝搬されるため、バゲッジに機密情報（ユーザー資格情報、APIキー、またはPIIなど）を含めないでください。
 ログに記録されたり、信頼できない下流サービスに送信されたりする可能性があります。
 
 ## 言語SDKでのサポート {#language-sdk-support}
 
-OpenTelemetry APIおよびSDKの個々の言語特有の実装については、それぞれのドキュメントページでコンテキスト伝搬のsパオートに関する詳細を確認できます。
+OpenTelemetry APIおよびSDKの個々の言語特有の実装については、それぞれのドキュメントページでコンテキスト伝搬のサポートに関する詳細を確認できます。
 
 - [C++](/docs/languages/cpp/instrumentation/#context-propagation)
 - .NET
@@ -134,12 +134,10 @@ OpenTelemetry APIおよびSDKの個々の言語特有の実装については、
 - Rust
 - Swift
 
-{{% alert title="Help wanted" color="secondary" %}}
-
-.NET、Rust、Swift言語の場合、コンテキスト伝搬に関する言語固有のドキュメントが不足しています。
-これらの言語のいずれかを知っていて、協力に興味がある場合は、[貢献方法を確認してください](/docs/contributing/)！
-
-{{% /alert %}}
+> [!IMPORTANT] Help wanted
+>
+> .NET、Rust、Swift言語の場合、コンテキスト伝搬に関する言語固有のドキュメントが不足しています。
+> これらの言語のいずれかを知っていて、協力に興味がある場合は、[貢献方法を確認してください](/docs/contributing/)！
 
 ## 仕様 {#specification}
 

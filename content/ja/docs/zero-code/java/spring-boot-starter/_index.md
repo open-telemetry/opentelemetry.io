@@ -5,7 +5,7 @@ aliases:
   - /docs/languages/java/automatic/spring-boot
   - /docs/zero-code/java/agent/spring-boot
   - /docs/zero-code/java/spring-boot
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
 ---
 
 [Spring Boot](https://spring.io/projects/spring-boot) アプリケーションを OpenTelemetry で計装するには、2つのオプションを使用できます。
@@ -17,3 +17,4 @@ default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
    - OpenTelemetry Javaエージェントの**起動オーバーヘッド**が要件を超えている場合
    - OpenTelemetry Javaエージェントが他のエージェントと動作しない可能性があるため、Java 監視エージェントがすでに使用されている場合
    - OpenTelemetry Javaエージェントでは動作しないOpenTelemetry Spring Bootスターターを設定するための**Spring Boot 設定ファイル**(`application.properties`、`application.yml`)
+   - `application.yaml` 内の構造化された YAML 形式を用いた **[宣言的設定](declarative-configuration/)**

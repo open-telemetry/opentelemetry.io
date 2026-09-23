@@ -171,7 +171,6 @@ Containers:
       OTEL_POD_IP:                                        (v1:status.podIP)
       OTEL_METRICS_EXPORTER:                             console,otlp_proto_http
       OTEL_LOGS_EXPORTER:                                otlp_proto_http
-      OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED:  true
       PYTHONPATH:                                        /otel-auto-instrumentation-python/opentelemetry/instrumentation/auto_instrumentation:/otel-auto-instrumentation-python
       OTEL_TRACES_EXPORTER:                              otlp
       OTEL_EXPORTER_OTLP_TRACES_PROTOCOL:                http/protobuf
@@ -277,7 +276,7 @@ annotations:
 Where `opentelemetry` is the namespace of the `Instrumentation` resource, and
 `my-instrumentation` is the name of the `Instrumentation` resource.
 
-[The possible values for the annotation can be](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md?plain=1#L151-L156):
+[The possible values for the annotation can be](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/collector/sidecar-injection.md?plain=1#L54-L59):
 
 - "true" - inject `OpenTelemetryCollector` resource from the namespace.
 - "sidecar-for-my-app" - name of `OpenTelemetryCollector` CR instance in the

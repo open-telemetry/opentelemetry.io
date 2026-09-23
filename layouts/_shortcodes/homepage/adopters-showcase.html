@@ -5,8 +5,8 @@
 {{ $ctaText := .Get "ctaText" | default "View all adopters" -}}
 {{ $ctaUrl := .Get "ctaUrl" | default "/ecosystem/adopters/" -}}
 
-{{ $featuredAdopters := site.Data.ecosystem.featured_adopters -}}
-{{ $regularAdopters := site.Data.ecosystem.adopters -}}
+{{ $featuredAdopters := hugo.Data.ecosystem.featured_adopters -}}
+{{ $regularAdopters := hugo.Data.ecosystem.adopters -}}
 {{ $adopters := $featuredAdopters | default $regularAdopters -}}
 {{ $sortedAdopters := sort $adopters "name" -}}
 
@@ -18,7 +18,12 @@
       {{ end }}
       <div class="adopters-showcase__grid">
         {{- range first (int $limit) $sortedAdopters -}}
-        {{- $linkUrl := .reference | default .url -}}
+        {{ $linkUrl := .reference | default .url -}}
+        {{ $linkUrl = partial "func/render-link-href.html" (dict
+              "Destination" $linkUrl
+              "PageInner" $.Page
+              "Text" .name)
+        -}}
         <a href="{{ $linkUrl }}" class="adopters-showcase__item{{ if not .logo }} adopters-showcase__item--text{{ end }}" target="_blank" rel="noopener" title="{{ .name }}{{ if .reference }} - {{ .referenceTitle }}{{ end }}">
           {{- if .logo -}}
           <img src="{{ .logo }}" alt="{{ .name }} logo" loading="lazy">
@@ -30,10 +35,14 @@
       </div>
       {{- if $showCta }}
       <div class="adopters-showcase__cta">
+        {{ $ctaUrl = partial "func/render-link-href.html" (dict
+              "Destination" $ctaUrl
+              "PageInner" .Page
+              "Text" $ctaText)
+        -}}
         <a href="{{ $ctaUrl }}" class="btn btn-primary">{{ $ctaText }} →</a>
       </div>
       {{- end }}
     </div>
   </div>
 </section>
-

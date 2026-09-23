@@ -16,6 +16,8 @@ Follow the instructions in the [Getting Started - Node.js][], so that you have
 the files `package.json`, `app.js` (or `app.ts`) and `instrumentation.mjs` (or
 `instrumentation.ts`).
 
+{{% include esm-support-note.md %}}
+
 ## Process & Environment Resource Detection
 
 Out of the box, the Node.js SDK detects [process and process runtime
@@ -247,7 +249,8 @@ DockerCGroupV1Detector found resource. Resource {
 ## Next steps
 
 There are more resource detectors you can add to your configuration, for example
-to get details about your [Cloud] environment or [Deployment]. For more, see the
+to get details about your [Cloud][] environment or [Deployment][]. For more, see
+the
 [packages named `resource-detector-*` in the opentelemetry-js-contrib repository](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages).
 
 [getting started - node.js]: /docs/languages/js/getting-started/nodejs/

@@ -2,7 +2,7 @@
 {{ $noPrefix := default false (.Get 1) -}}
 
 {{ with $name -}}
-  {{ with index $.Site.Data.registry . -}}
+  {{ with index hugo.Data.registry . -}}
     {{ with .package.version -}}
       {{ if $noPrefix -}}
         {{ strings.TrimLeft "v" . -}}
