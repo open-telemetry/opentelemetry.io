@@ -6,8 +6,7 @@ weight: 200
 aliases: [/docs/collector/custom-collector]
 params:
   providers-vers: v1.48.0
-# prettier-ignore
-cSpell:ignore: chipset darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
+cSpell:ignore: chipset debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
 The OpenTelemetry Collector has five official
