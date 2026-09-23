@@ -230,8 +230,8 @@ and Npgsql's
 Because `SET` and `RESET` are real PostgreSQL statements, an observer polling
 during their short execution can theoretically sample them. Cleanup is deferred
 while a transaction is failed so that `ROLLBACK` can run first, then executed as
-the recovery action ends successfully.
-Npgsql 10+ COPY operations are covered through its
+the recovery action ends successfully. Npgsql 10+ COPY operations are covered
+through its
 [`TraceCopyStart` lifecycle](https://github.com/npgsql/npgsql/blob/d3768398c17877b3a916c3c4d87e8e11698991fc/src/Npgsql/Internal/NpgsqlConnector.cs#L2964-L2980).
 Multiplexing is not supported: `application_name` is physical-session state,
 while Npgsql can write multiple logical commands to the same connector in one
