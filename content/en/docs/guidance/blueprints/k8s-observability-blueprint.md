@@ -114,7 +114,7 @@ blueprint.
 
 **Challenges addressed:** 1, 2
 
-This blueprint recommends the usage of Otel native receivers:
+This blueprint recommends the usage of OTel native receivers:
 
 | OpenTelemetry Collector component | Helm chart preset   | Analog Prometheus/Kubernetes component | What it covers                                                                                                                     |
 | --------------------------------- | ------------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -130,7 +130,7 @@ Outcomes:
 - Complete workload-level resource coverage (throttling, OOM, pod phase, probe
   failures) without any application code changes.
 
-### 2. Apply uniform metadata enrichment using openTelemetry semantic conventions
+### 2. Apply uniform metadata enrichment using OpenTelemetry semantic conventions
 
 **Challenges addressed:** 2
 
@@ -386,5 +386,5 @@ reintroduces double-scraping.
 
 ## Reference architectures
 
-> If you have a production-grade Opentelemetry architecture and would like to be
-> featured in this page, please get in touch with the Otel End-User SIG!
+> If you have a production-grade OpenTelemetry architecture and would like to be
+> featured in this page, please get in touch with the OTel End-User SIG!
