@@ -1,6 +1,7 @@
 ---
 title: Kubernetes Observability
 linkTitle: Kubernetes Observability
+---
 
 ## Summary
 
