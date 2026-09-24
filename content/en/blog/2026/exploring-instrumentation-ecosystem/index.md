@@ -1,6 +1,6 @@
 ---
 title: Exploring the OpenTelemetry Instrumentation Ecosystem
-linkTitle: Ecosystem Explorer
+linkTitle: Ecosystem Explorer Project Update
 date: 2026-09-21
 author: >-
   [Jay DeLuca](https://github.com/jaydeluca) (Grafana Labs)
