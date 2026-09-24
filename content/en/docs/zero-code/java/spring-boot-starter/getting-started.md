@@ -34,7 +34,7 @@ starter.
 > have to declare it after the OpenTelemetry BOMs.
 >
 > Gradle selects the
-> [latest version](https://docs.gradle.org/current/userguide/dependency_resolution.html#2_perform_conflict_resolution)
+> [latest version](https://docs.gradle.org/current/userguide/dependency_constraints_conflicts.html#sub:resolving-version-conflicts)
 > of a dependency when multiple BOMs, so the order of BOMs is not important.
 
 The following example shows how to import the OpenTelemetry BOMs using Maven:

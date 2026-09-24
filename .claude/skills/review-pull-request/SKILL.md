@@ -15,7 +15,7 @@ effort: medium
 
 Review workflow for pull requests in `open-telemetry/opentelemetry.io`. The
 contributing guide and the per-check decoder in [`pr-checks.md`][pr-checks] are
-the authoritative sources — when this skill drifts from them, trust them.
+the authoritative sources; when this skill drifts from them, trust them.
 
 For blog-specific rules (`gh-url-hash`, author front matter, publish-date
 gating), defer to the sibling `review-blog-post` skill. For label drafting
@@ -83,8 +83,9 @@ validates and the local fix command. Caveats:
 - Submodules: non-maintainer PRs should not touch them; a maintainer fixes
   before merge — [`sig-practices.md#general`][general].
 - Locale span: semantic changes are per-locale; page-content changes may span
-  locales only to keep checks green (such fixes append `# patched` to
-  `default_lang_commit`); content-neutral maintenance is exempt —
+  locales only as [build fixes][keep-green] (marked `# patched`); link-check
+  failures on localized pages never qualify and take a [drift-status
+  refresh][link-fixes] instead. Content-neutral maintenance is exempt —
   [`localization.md#prs-should-not-span-locales`][locale-span].
 
 **Branch state**
@@ -123,8 +124,8 @@ Walk this checklist before writing the review:
 - [ ] Netlify preview builds.
 - [ ] Each failing `check-*` assessed against [`pr-checks.md#checks`][checks].
 - [ ] Linked issue is `triage:accepted` (or this is an auto/hotfix PR).
-- [ ] Does not span locales — or does so only for checks-green fixes (marked
-      `# patched`) or content-neutral maintenance.
+- [ ] Does not span locales — or does so only for [build fixes][keep-green]
+      (marked `# patched`) or content-neutral maintenance.
 - [ ] First-time-contributor AI checklist in the PR description is filled in and
       looks human-written.
 - [ ] No unrelated changes bundled.
@@ -172,7 +173,7 @@ Do not hand-edit `.lycheecache`. If a URL returns a non-200 for server reasons
 (blocked bot, LinkedIn 999, …), append `?link-check=no` (or `&link-check=no`) to
 the URL — [`pr-checks.md#handling-valid-external-links`][handling-links].
 
-For resolving merge/rebase conflicts in `.lycheecache`, see the
+For `.lycheecache` conflicts or post-merge cache residue, see the
 `resolve-link-cache-conflicts` skill.
 
 ## References
@@ -186,22 +187,22 @@ Source-of-truth files — read on demand:
   [`localization.md`][localization], [`issues.md`][issues] — process rules
   deep-linked above.
 
-[pr-checks]: ../../../content/en/docs/contributing/pr-checks.md
+<!-- prettier-ignore-start -->
+[cache-check]: ../../../content/en/docs/contributing/pr-checks.md#cache-updates-committed
 [checks]: ../../../content/en/docs/contributing/pr-checks.md#checks
 [cla]: ../../../content/en/docs/contributing/pr-checks.md#easy-cla
-[cache-check]:
-  ../../../content/en/docs/contributing/pr-checks.md#cache-updates-committed
-[handling-links]:
-  ../../../content/en/docs/contributing/pr-checks.md#handling-valid-external-links
+[co-owned]: ../../../content/en/docs/contributing/sig-practices.md#co-owned-prs
+[general]: ../../../content/en/docs/contributing/sig-practices.md#general
+[handling-links]: ../../../content/en/docs/contributing/pr-checks.md#handling-valid-external-links
+[issues]: ../../../content/en/docs/contributing/issues.md
+[keep-green]: ../../../content/en/docs/contributing/localization.md#keep-checks-green
+[link-fixes]: ../../../content/en/docs/contributing/localization.md#link-fixes-and-resource-updates
+[locale-span]: ../../../content/en/docs/contributing/localization.md#prs-should-not-span-locales
+[localization]: ../../../content/en/docs/contributing/localization.md
 [npm-scripts]: ../../../content/en/site/build/npm-scripts.md
+[pr-checks]: ../../../content/en/docs/contributing/pr-checks.md
+[prs]: ../../../content/en/docs/contributing/sig-practices.md#prs
 [pull-requests]: ../../../content/en/docs/contributing/pull-requests.md
 [sig-practices]: ../../../content/en/docs/contributing/sig-practices.md
-[localization]: ../../../content/en/docs/contributing/localization.md
-[issues]: ../../../content/en/docs/contributing/issues.md
-[prs]: ../../../content/en/docs/contributing/sig-practices.md#prs
-[co-owned]: ../../../content/en/docs/contributing/sig-practices.md#co-owned-prs
-[translation]:
-  ../../../content/en/docs/contributing/sig-practices.md#translation-prs
-[general]: ../../../content/en/docs/contributing/sig-practices.md#general
-[locale-span]:
-  ../../../content/en/docs/contributing/localization.md#prs-should-not-span-locales
+[translation]: ../../../content/en/docs/contributing/sig-practices.md#translation-prs
+<!-- prettier-ignore-end -->

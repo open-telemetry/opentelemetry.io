@@ -77,11 +77,10 @@ with the following command:
 
 ```sh
 docker run -d --name jaeger \
-  -e COLLECTOR_OTLP_ENABLED=true \
   -p 16686:16686 \
   -p 14317:4317 \
   -p 14318:4318 \
-  jaegertracing/all-in-one:1.41
+  jaegertracing/jaeger:latest
 ```
 
 Once the container is up and running, you can access Jaeger UI via this URL:
@@ -1474,7 +1473,7 @@ information on its `Resource`.
 
 The resource semantic convention keys and well-known values are defined by the
 OpenTelemetry semantic conventions package:
-[`go.opentelemetry.io/otel/semconv/v1.38.0`](https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.38.0).
+[`go.opentelemetry.io/otel/semconv/v1.43.0`](https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.43.0).
 
 Let's create a function to read the field values from a `BackendSystem` instance
 and write them as attributes into a `pcommon.Resource` instance. Open the
@@ -1536,7 +1535,7 @@ import (
 
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	"go.opentelemetry.io/otel/semconv/v1.38.0"
+	"go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 type Atm struct {
@@ -1986,7 +1985,7 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	"go.opentelemetry.io/otel/semconv/v1.38.0"
+	"go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 type Atm struct {
@@ -2397,7 +2396,7 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	 "go.opentelemetry.io/otel/semconv/v1.38.0"
+	 "go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 type Atm struct {

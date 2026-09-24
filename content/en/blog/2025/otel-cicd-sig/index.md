@@ -30,7 +30,7 @@ good time to share it with the world.
 [CI/CD observability](https://medium.com/@horovits/fcc6c10c4987) is essential
 for ensuring that software is released to production efficiently and reliably.
 Well-functioning CI/CD pipelines directly impact business outcomes by shortening
-[Lead Time for Changes DORA metric](https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2)
+[Lead Time for Changes DORA metric](https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2?link-check=no&last-validated=2026-08-28)
 and enabling fast identification and resolution of broken or flaky processes. By
 integrating observability into CI/CD workflows, teams can monitor the health and
 performance of their pipelines in real time, gaining insights into bottlenecks
@@ -53,7 +53,7 @@ dashboards, reports, and alerts.
 
 Things become even more challenging when you need to monitor multiple tools
 involved in the release pipeline in a uniform manner. This is where
-[open standards and specifications become critical](https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97).
+[open standards and specifications become critical](https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97?link-check=no&last-validated=2026-08-28).
 They create a common uniform language, one which is tool- and vendor-agnostic,
 enabling cohesive observability across different tools and allowing teams to
 maintain a clear and comprehensive view of their CI/CD pipeline performance.

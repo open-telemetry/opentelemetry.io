@@ -4,9 +4,9 @@ description: テレメトリーデータを受信、処理、エクスポート�
 aliases: [collector/about]
 sidebar_root_for: children
 cascade:
-  vers: 0.157.0
+  vers: 0.161.0
 weight: 270
-default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
+default_lang_commit: 6e67616e5c74801be694df6abd7eb93c9881309b
 ---
 
 ![Jaeger、OTLP、Prometheusを統合したOpenTelemetryコレクターのダイアグラム](img/otel-collector.svg)

@@ -71,4 +71,4 @@ In both cases, `.RegularPages` is used to render the announcements:
   above), the announcement ending soonest appears at the top.
 
 [default page order]:
-  https://gohugo.io/methods/page/regularpages/#default-sort-order
+  https://gohugo.io/quick-reference/glossary/#default-sort-order

@@ -3,7 +3,7 @@ title: Programmatic configuration
 weight: 35
 vers:
   contrib: 1.54.0
-cSpell:ignore: customizer
+cSpell:ignore: customizer fileconfig
 ---
 
 <?code-excerpt path-base="examples/java/spring-starter"?>
@@ -117,3 +117,62 @@ public class CustomAuth {
   }
 }
 ```
+
+## Read instrumentation configuration programmatically
+
+> [!NOTE]
+>
+> Requires the OpenTelemetry Spring Boot starter version 2.30.0 or later.
+
+Instrumentation modules read their configuration through a `ConfigProvider`
+bean, whether you configured it via `application.properties` /
+`application.yaml` or via
+[declarative configuration](../declarative-configuration/). Autowire the
+`ConfigProvider` bean directly if you need to read an instrumentation
+configuration value from your own code:
+
+When declarative configuration is enabled, the `otelProperties`
+(`ConfigProperties`) bean is provided only as a compatibility bridge. It is
+deprecated and will be removed in 3.0; use `ConfigProvider` instead.
+
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/spring-declarative-configuration"?>
+
+<?code-excerpt "src/main/java/io/opentelemetry/examples/fileconfig/ReadInstrumentationConfig.java" from="package"?>
+
+```java
+package io.opentelemetry.examples.fileconfig;
+
+import io.opentelemetry.api.incubator.config.ConfigProvider;
+import io.opentelemetry.api.incubator.config.DeclarativeConfigProperties;
+import org.springframework.stereotype.Component;
+
+/** Example of reading instrumentation configuration from application code. */
+@Component
+public class ReadInstrumentationConfig {
+
+  private final ConfigProvider configProvider;
+
+  public ReadInstrumentationConfig(ConfigProvider configProvider) {
+    this.configProvider = configProvider;
+  }
+
+  public boolean isDbQuerySanitizationEnabled() {
+    DeclarativeConfigProperties dbConfig =
+        configProvider
+            .getInstrumentationConfig()
+            .get("java")
+            .get("common")
+            .get("db")
+            .get("query_sanitization");
+    return dbConfig.getBoolean("enabled", true);
+  }
+}
+```
+
+The keys under `getInstrumentationConfig()` follow the same
+`instrumentation/development.java.*` structure used by
+[declarative configuration](../declarative-configuration/#instrumentation-configuration),
+regardless of whether you set the value via an `otel.instrumentation.*` property
+or declarative YAML — see the
+[mapping table](../declarative-configuration/#instrumentation-configuration) for
+how property names translate to this structure.
