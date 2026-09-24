@@ -20,6 +20,8 @@ console.
 Ensure that you have the following installed locally:
 
 - [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 6+
+- [GitHub CLI](https://cli.github.com/), used to verify the installer and
+  downloaded artifacts
 
 ## Example Application
 
@@ -113,44 +115,12 @@ or PowerShell scripts.
 
 > **Note**: PowerShell commands require elevated (administrator) privileges.
 
-1. Download installation scripts from [Releases][] of the
-   `opentelemetry-dotnet-instrumentation` repository:
+1. Follow the platform-specific [setup instructions](../#setup) to securely
+   download, verify, and install the automatic instrumentation. Complete the
+   instructions through the installation of the core files, but don't run the
+   example application shown there.
 
-   {{< tabpane text=true >}} {{% tab Unix-shell %}}
-
-   ```sh
-   curl -L -O https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh
-   ```
-
-   {{% /tab %}} {{% tab PowerShell - Windows %}}
-
-   ```powershell
-   $module_url = "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/OpenTelemetry.DotNet.Auto.psm1"
-   $download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
-   Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
-   ```
-
-   {{% /tab %}} {{< /tabpane >}}
-
-2. Execute following script to download automatic instrumentation for your
-   development environment:
-
-   {{< tabpane text=true >}} {{% tab Unix-shell %}}
-
-   ```sh
-   ./otel-dotnet-auto-install.sh
-   ```
-
-   {{% /tab %}} {{% tab PowerShell - Windows %}}
-
-   ```powershell
-   Import-Module $download_path
-   Install-OpenTelemetryCore
-   ```
-
-   {{% /tab %}} {{< /tabpane >}}
-
-3. Set and export variables that specify a [console exporter][], then execute
+2. Set and export variables that specify a [console exporter][], then execute
    script configuring other necessary environment variables using a notation
    suitable for your shell/terminal environment &mdash; we illustrate a notation
    for bash-like shells and PowerShell:
@@ -160,7 +130,7 @@ or PowerShell scripts.
    ```sh
    export OTEL_TRACES_EXPORTER=console \
      OTEL_METRICS_EXPORTER=console \
-     OTEL_LOGS_EXPORTER=console
+     OTEL_LOGS_EXPORTER=console \
      OTEL_SERVICE_NAME=RollDiceService
    . $HOME/.otel-dotnet-auto/instrument.sh
    ```
@@ -176,7 +146,7 @@ or PowerShell scripts.
 
    {{% /tab %}} {{< /tabpane >}}
 
-4. Run your **application** once again:
+3. Run your **application** once again:
 
    ```sh
    dotnet run
@@ -184,13 +154,13 @@ or PowerShell scripts.
 
    Note the output from the `dotnet run`.
 
-5. From _another_ terminal, send a request using `curl`:
+4. From _another_ terminal, send a request using `curl`:
 
    ```sh
    curl localhost:8080/rolldice
    ```
 
-6. After about 30 sec, stop the server process.
+5. After about 30 sec, stop the server process.
 
 At this point, you should see trace and log output from the server and client
 that looks something like this (output is line-wrapped for readability):
@@ -303,5 +273,3 @@ For more:
 [configure .NET Automatic Instrumentation]: ../configuration
 [console exporter]:
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#internal-logs
-[releases]:
-  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases
