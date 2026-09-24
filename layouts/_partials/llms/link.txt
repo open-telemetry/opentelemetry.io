@@ -1,0 +1,13 @@
+{{- $page := .page -}}
+{{- $title := $page.LinkTitle -}}
+{{- with .title -}}
+  {{- $title = . -}}
+{{- end -}}
+{{- with .format -}}
+  {{- $description := $page.Description | plainify | strings.TrimSpace | replaceRE `\s+` " " -}}
+  {{- $suffix := "" -}}
+  {{- with $description -}}
+    {{- $suffix = printf ": %s" . -}}
+  {{- end -}}
+  {{- printf "- [%s](%s)%s\n" ($title | plainify | strings.TrimSpace) .Permalink $suffix | safeHTML -}}
+{{- end -}}
