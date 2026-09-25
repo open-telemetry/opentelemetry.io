@@ -96,6 +96,9 @@ compilation process.
 
 ### Choose OBI if:
 
+- **You prioritize ease of deployment and immediate feedback:** Deploying the
+  OBI agent allows you to collect telemetry without modifying your software
+  development lifecycle (SDLC) or build processes.
 - **You have a mixed-language fleet:** You want a single, unified
   auto-instrumentation tool that works across Go, Java, Python, .NET, and more.
 - **You lack build pipeline access:** You do not own the build process, use
@@ -114,6 +117,9 @@ compilation process.
 
 - **You own the Go build pipeline:** You have full control over how your Go
   services are compiled and deployed.
+- **You require instrumentation guarantees:** You can write tests during the
+  build phase to ensure the telemetry being collected is accurate before
+  deployment.
 - **You need maximum span fidelity:** You require deep, in-process tracing of
   business logic and internal application states.
 - **You want to trace third-party internals:** You need visibility into the
@@ -121,6 +127,9 @@ compilation process.
 - **Your runtime is restricted:** You operate in environments that restrict root
   privileges, eBPF capabilities, or specific kernel versions (e.g., certain
   serverless or highly locked-down container environments).
+- **You need a platform-agnostic solution:** Your application must run on
+  Windows, Linux, or macOS, or on specialized architectures that the Go runtime
+  already supports.
 
 ### Using them together
 
@@ -132,3 +141,6 @@ complementary and can be used together in the same environment:
 - Use **OBI** to provide infrastructure-level network observability,
   kernel-level TCP metrics, and coverage for any non-Go components or sidecars
   running in your environment.
+
+Both Special Interest Groups (SIGs) plan to improve interoperability between
+these two tools in the future.
