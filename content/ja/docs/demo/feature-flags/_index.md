@@ -6,6 +6,7 @@ aliases:
   - services/feature-flag
   - services/featureflagservice
 default_lang_commit: 68992866a957386e428a4d63ec884ea9dc7570b6
+drifted_from_default: true
 cSpell:ignore: OLJCESPC7Z
 ---
 
