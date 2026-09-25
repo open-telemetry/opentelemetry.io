@@ -15,6 +15,27 @@
   }
 }
 
+// Opt-in figure captions (`body_class: otel-figure-captions`). Hugo's built-in
+// figure shortcode emits a bare <figcaption>, which neither Bootstrap nor Docsy
+// styles, so captions otherwise render as ordinary body text.
+.td-blog.otel-figure-captions {
+  .td-content {
+    figure {
+      margin-bottom: 1.5rem;
+    }
+    figcaption {
+      @extend .small;
+      color: var(--bs-secondary-color);
+      margin-top: 0.5rem;
+      line-height: 1.4;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
 .ot-integration-badge {
   @extend .btn;
   @extend .shadow;
