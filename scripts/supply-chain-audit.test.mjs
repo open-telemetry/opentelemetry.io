@@ -417,11 +417,11 @@ test('manifest: the install path keeps its locked, script-free form', () => {
     '_diff:check': 'git diff --name-only --exit-code',
     prepare: 'npm run seq -- get:submodule _prepare:docsy',
     'get:submodule':
-      'bash -c \'npm run "_get:${GET:-submodule}" -- "$@" && npm run -s _postget:submodule\' -',
+      'bash -c \'npm run "_get:${GET:-submodule}" -- "$@" && npm run -s get:submodule::post\' -',
     '_get:submodule':
       'set -x && git submodule update --init ${DEPTH:- --depth 999}',
     '_get:no': 'echo SKIPPING get operation',
-    '_postget:submodule':
+    'get:submodule::post':
       'npm run -s _git:submodule-status && echo && scripts/update-semconv-mounts.pl',
     '_git:submodule-status': 'git submodule',
     '_prepare:docsy': 'cd themes/docsy && npm run install:theme-deps',
