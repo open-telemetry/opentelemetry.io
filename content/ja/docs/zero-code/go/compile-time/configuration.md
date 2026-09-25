@@ -3,7 +3,7 @@ title: 設定
 description: otelc ツールと、計装されたアプリケーションが生成するテレメトリーを設定します。
 weight: 20
 default_lang_commit: 1fef2df9c49cb4b2192665ef5b1df5746507cecb
-cSpell:ignore: nethttp otelc
+cSpell:ignore: nethttp
 ---
 
 設定は2つのポイントで行います。
