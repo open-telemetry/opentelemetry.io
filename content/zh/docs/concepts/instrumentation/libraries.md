@@ -4,6 +4,7 @@ description: 了解如何为你的库添加原生插桩。
 aliases: [../instrumenting-library]
 weight: 40
 default_lang_commit: deb98d0648c4833d9e9d77d42e91e2872658b50c
+drifted_from_default: true
 ---
 
 OpenTelemetry 为许多库提供了[插桩库][instrumentation libraries]，
