@@ -1,6 +1,6 @@
 // Docsy style customization and overrides
 
-.td-content img:not(.img-initial) {
+.td-content img:not(.img-initial):not([src*='img.shields.io']) {
   display: block;
   border: $border-width solid $border-color;
   margin-bottom: $paragraph-margin-bottom;
