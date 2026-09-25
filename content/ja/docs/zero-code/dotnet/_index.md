@@ -113,7 +113,7 @@ SKIP_RELEASE_VERIFICATION=true DOWNLOAD_DIR=<PATH_TO_FOLDER_WITH_FILES> sh ./ote
 
 Windows では、管理者として PowerShell モジュールを使用します。
 
-> [!NOTE] Requirements
+> [!NOTE] 要件
 >
 > Windows
 > [PowerShell Desktop](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions)
