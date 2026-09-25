@@ -147,6 +147,8 @@ For more background on what `k8s-cache` is and when to use it, see the
 [Kubernetes setup guide](../kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache).
 For cache configuration options, see
 [Kubernetes decorator](../../configure/metrics-traces-attributes/#kubernetes-decorator).
+[Kubernetes setup guide](kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache).
+For cache configuration options, see [Kubernetes decorator](../configure/metrics-traces-attributes/#kubernetes-decorator).
 
 ## Providing secrets to the Helm configuration
 
