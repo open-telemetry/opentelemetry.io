@@ -43,6 +43,12 @@ collector_component_stability_footnote: >-
   component stability
   definitions](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
 
+# Distribution tables
+distributions_table_header_name: Name
+distributions_table_header_components: Components
+distributions_table_header_learn_more: Learn more
+distributions_table_footnote: Listed alphabetically
+
 # Config types accordion
 config_types_search_label: Search types and properties
 config_types_filter_all: All
