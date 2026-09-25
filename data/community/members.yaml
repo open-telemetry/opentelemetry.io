@@ -33,9 +33,6 @@ spec-sponsors:
   - name: cijothomas
     html_url: https://github.com/cijothomas
     avatar_url: https://avatars.githubusercontent.com/u/5232798?v=4
-  - name: codeboten
-    html_url: https://github.com/codeboten
-    avatar_url: https://avatars.githubusercontent.com/u/223565?v=4
   - name: dyladan
     html_url: https://github.com/dyladan
     avatar_url: https://avatars.githubusercontent.com/u/1612643?v=4
@@ -57,9 +54,6 @@ spec-sponsors:
   - name: Oberon00
     html_url: https://github.com/Oberon00
     avatar_url: https://avatars.githubusercontent.com/u/849039?v=4
-  - name: pellared
-    html_url: https://github.com/pellared
-    avatar_url: https://avatars.githubusercontent.com/u/5067549?v=4
   - name: svrnm
     html_url: https://github.com/svrnm
     avatar_url: https://avatars.githubusercontent.com/u/1519757?v=4
@@ -76,6 +70,9 @@ technical-committee:
   - name: carlosalberto
     html_url: https://github.com/carlosalberto
     avatar_url: https://avatars.githubusercontent.com/u/260065?v=4
+  - name: codeboten
+    html_url: https://github.com/codeboten
+    avatar_url: https://avatars.githubusercontent.com/u/223565?v=4
   - name: dashpole
     html_url: https://github.com/dashpole
     avatar_url: https://avatars.githubusercontent.com/u/3262098?v=4
@@ -88,6 +85,9 @@ technical-committee:
   - name: lmolkova
     html_url: https://github.com/lmolkova
     avatar_url: https://avatars.githubusercontent.com/u/2347409?v=4
+  - name: pellared
+    html_url: https://github.com/pellared
+    avatar_url: https://avatars.githubusercontent.com/u/5067549?v=4
   - name: reyang
     html_url: https://github.com/reyang
     avatar_url: https://avatars.githubusercontent.com/u/17327289?v=4
@@ -449,6 +449,7 @@ maintainers:
       - proto-approvers
       - proto-triagers
       - specs-approvers
+      - specs-maintainers
       - specs-triagers
     html_url: https://github.com/codeboten
     avatar_url: https://avatars.githubusercontent.com/u/223565?v=4
@@ -1292,6 +1293,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/47814950?v=4
   - name: NameHaibinZhang
     teams:
+      - ebpf-instrumentation-approvers
       - go-compile-instrumentation-approvers
       - go-compile-instrumentation-maintainers
       - go-compile-instrumentation-triagers
@@ -1913,6 +1915,7 @@ approvers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-triagers
       - operator-approvers
       - operator-triagers
     html_url: https://github.com/iblancasa
