@@ -43,10 +43,10 @@
 -}}
 {{ end }}
 
-Name[^1]     | Components |  Learn more
+{{ i18n "distributions_table_header_name" | default "Name" }}[^1] | {{ i18n "distributions_table_header_components" | default "Components" }} | {{ i18n "distributions_table_header_learn_more" | default "Learn more" }}
 ------------ | ---------- |  ----------
 {{- range $data }}
 [{{ .name }}]({{ .url }}) | {{ delimit (sort .components) ", " }} | [{{ replace .docsUrl "https://" "" }}]({{ .docsUrl }})
 {{- end }}
 
-[^1]: Listed alphabetically
+[^1]: {{ i18n "distributions_table_footnote" | default "Listed alphabetically" }}
