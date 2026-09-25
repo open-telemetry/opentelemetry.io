@@ -369,7 +369,7 @@ your YAML configuration or via environment variables.
 
 To enable this feature, you must provide extra permissions to the OBI Pod. See
 the
-["Configuring Kubernetes metadata decoration section" in the "Running OBI in Kubernetes"](../../setup/kubernetes/)
+["Configuring Kubernetes metadata decoration section" in the "Running OBI in Kubernetes"](../setup/kubernetes/)
 page.
 
 If you set this option to `true`, OBI decorates metrics and traces with
@@ -480,6 +480,12 @@ When set, OBI fetches Kubernetes metadata from an external `k8s-cache` service
 over gRPC instead of running its own informers against the Kubernetes API
 server. This is recommended on large clusters and DaemonSet deployments to avoid
 overloading the Kubernetes API.
+
+For details on how to set up the `k8s-cache` service, see the
+[Kubernetes setup guide](../setup/kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache)
+or the
+[Helm chart guide](../setup/kubernetes-helm/#centralizing-kubernetes-metadata-with-k8s-cache).
+
 
 ### Service name template
 
