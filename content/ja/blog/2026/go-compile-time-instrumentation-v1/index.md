@@ -7,7 +7,7 @@ issue: 10670
 sig: Go Compile-Time Instrumentation
 default_lang_commit: ec870712704ae037419e4e420b7fa3be04e10297
 # prettier-ignore
-cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario Haibin Martinez Momin otelc toolexec Xabier
+cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario Haibin Martinez Momin Xabier
 ---
 
 Java、Python、Node.js、.NETで開発している場合、コードを編集せずにOpenTelemetryをアプリケーションへ追加することが長年可能で、起動時にエージェントをアタッチすれば、テレメトリーの送信が始まります。
