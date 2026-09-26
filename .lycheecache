@@ -2016,6 +2016,7 @@ https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/27885,2
 https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/34427,200,1787917023
 https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39650,200,1788241859
 https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41791,200,1787917021
+https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/42485,200,1790418712
 https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/42491,200,1787917021
 https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/44130,200,1788241857
 https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/44483,200,1789464773
@@ -5411,6 +5412,7 @@ https://github.com/open-telemetry/semantic-conventions/issues/2197,200,178791698
 https://github.com/open-telemetry/semantic-conventions/issues/3119,200,1788241856
 https://github.com/open-telemetry/semantic-conventions/issues/3120,200,1788241856
 https://github.com/open-telemetry/semantic-conventions/issues/3558,200,1787916986
+https://github.com/open-telemetry/semantic-conventions/issues/4064,200,1790418712
 https://github.com/open-telemetry/semantic-conventions/issues/new,200,1787916962
 https://github.com/open-telemetry/semantic-conventions/pull/1075,200,1788846202
 https://github.com/open-telemetry/semantic-conventions/pull/1383,200,1788241805
@@ -6093,6 +6095,9 @@ https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#resourcereq
 https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#statefulsetspec-v1-apps,200,1787916982
 https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#statefulsetstatus-v1-apps,200,1787916982
 https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#storageclass-v1-storage-k8s-io,200,1787916964
+https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.35/#podspec-v1-core,200,1790418712
+https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.35/#podstatus-v1-core,200,1790418712
+https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.35/#resourcerequirements-v1-core,200,1790418712
 https://kubernetes.io/docs/reference/kubectl/,200,1788414932
 https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-claim-v1/#PersistentVolumeClaimSpec,200,1787916982
 https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-claim-v1/#PersistentVolumeClaimStatus,200,1787916965
@@ -6108,6 +6113,7 @@ https://kubernetes.io/docs/reference/labels-annotations-taints/#app-kubernetes-i
 https://kubernetes.io/docs/reference/labels-annotations-taints/,200,1787916982
 https://kubernetes.io/docs/reference/networking/virtual-ips/#traffic-distribution,200,1787916965
 https://kubernetes.io/docs/reference/node/node-status/#condition,200,1787916965
+https://kubernetes.io/docs/tasks/configure-pod-container/assign-pod-level-resources/,200,1790418711
 https://kubernetes.io/docs/tasks/configure-pod-container/resize-container-resources/,200,1787916982
 https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/#ephemeral-container,200,1788327785
 https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#support-for-metrics-apis,200,1787916982
@@ -6879,6 +6885,7 @@ https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#ContainerStats
 https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#FsStats,200,1787916981
 https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#NodeStats,200,1787916982
 https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#PodStats,200,1787916981
+https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#RlimitStats,200,1790418711
 https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#VolumeStats,200,1787916981
 https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#ContainerStats,200,1787916982
 https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#FsStats,200,1788690597
