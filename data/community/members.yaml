@@ -151,6 +151,13 @@ maintainers:
       - specs-semconv-maintainers
     html_url: https://github.com/AlexanderWert
     avatar_url: https://avatars.githubusercontent.com/u/866830?v=4
+  - name: amazingakai
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/amazingakai
+    avatar_url: https://avatars.githubusercontent.com/u/93782497?v=4
   - name: amy-super
     teams:
       - sig-contributor-experience-approvers
@@ -1092,6 +1099,12 @@ maintainers:
       - weaver-package-triagers
     html_url: https://github.com/lquerel
     avatar_url: https://avatars.githubusercontent.com/u/657994?v=4
+  - name: lucacavenaghi97
+    teams:
+      - ecosystem-explorer-approvers
+      - ecosystem-explorer-maintainers
+    html_url: https://github.com/lucacavenaghi97
+    avatar_url: https://avatars.githubusercontent.com/u/247595880?v=4
   - name: lzchen
     teams:
       - opentelemetry-python-contrib-approvers
@@ -1771,12 +1784,6 @@ approvers:
       - swift-triagers
     html_url: https://github.com/alolita
     avatar_url: https://avatars.githubusercontent.com/u/1942529?v=4
-  - name: amazingakai
-    teams:
-      - go-compile-instrumentation-approvers
-      - go-compile-instrumentation-triagers
-    html_url: https://github.com/amazingakai
-    avatar_url: https://avatars.githubusercontent.com/u/93782497?v=4
   - name: aranhave
     teams:
       - android-approvers
@@ -2015,11 +2022,6 @@ approvers:
       - dotnet-instrumentation-triagers
     html_url: https://github.com/lachmatt
     avatar_url: https://avatars.githubusercontent.com/u/92367255?v=4
-  - name: lucacavenaghi97
-    teams:
-      - ecosystem-explorer-approvers
-    html_url: https://github.com/lucacavenaghi97
-    avatar_url: https://avatars.githubusercontent.com/u/247595880?v=4
   - name: lukas-reining
     teams:
       - semconv-feature-flag-approvers
@@ -3164,6 +3166,9 @@ members:
   - name: sumo-drosiek
     html_url: https://github.com/sumo-drosiek
     avatar_url: https://avatars.githubusercontent.com/u/58699848?v=4
+  - name: szelese
+    html_url: https://github.com/szelese
+    avatar_url: https://avatars.githubusercontent.com/u/168640623?v=4
   - name: tensorchen
     html_url: https://github.com/tensorchen
     avatar_url: https://avatars.githubusercontent.com/u/16510475?v=4
