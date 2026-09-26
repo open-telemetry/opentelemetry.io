@@ -187,7 +187,11 @@ async fn roll_dice(_: Request<hyper::body::Incoming>) -> Result<Response<Full<By
     get_roll_counter().add(1, &[KeyValue::new("roll.value", random_number as i64)]);
 
     // Logs: emit a structured log event via the tracing bridge
-    tracing::info!(name: "roll_dice", roll.value = random_number, message = "Player rolled the dice");
+    tracing::info!(
+        name: "roll_dice",
+        { roll.value = random_number },
+        "Player rolled the dice"
+    );
 
     Ok(Response::new(Full::new(Bytes::from(
         random_number.to_string(),
@@ -412,7 +416,11 @@ tracing_subscriber::registry()
 In `roll_dice()`, a structured log event is emitted:
 
 ```rust
-tracing::info!(name: "roll_dice", roll.value = random_number, message = "Player rolled the dice");
+tracing::info!(
+    name: "roll_dice",
+    { roll.value = random_number },
+    "Player rolled the dice"
+);
 ```
 
 Along with the span and metric, you'll now see log records on the console:
