@@ -2045,6 +2045,10 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/280193?v=4
   - name: matt-hensley
     teams:
+      - dotnet-approvers
+      - dotnet-contrib-approvers
+      - dotnet-contrib-triagers
+      - dotnet-triagers
       - semconv-rpc-approvers
     html_url: https://github.com/matt-hensley
     avatar_url: https://avatars.githubusercontent.com/u/130569?v=4
@@ -2148,6 +2152,12 @@ approvers:
       - kotlin-triagers
     html_url: https://github.com/priettt
     avatar_url: https://avatars.githubusercontent.com/u/26326883?v=4
+  - name: ps-mir
+    teams:
+      - go-approvers
+      - go-triagers
+    html_url: https://github.com/ps-mir
+    avatar_url: https://avatars.githubusercontent.com/u/1317870?v=4
   - name: psx95
     teams:
       - java-approvers
@@ -2244,6 +2254,14 @@ approvers:
       - semconv-db-approvers
     html_url: https://github.com/sourabh1007
     avatar_url: https://avatars.githubusercontent.com/u/6362382?v=4
+  - name: stevejgordon
+    teams:
+      - dotnet-approvers
+      - dotnet-contrib-approvers
+      - dotnet-contrib-triagers
+      - dotnet-triagers
+    html_url: https://github.com/stevejgordon
+    avatar_url: https://avatars.githubusercontent.com/u/3669103?v=4
   - name: steverao
     teams:
       - java-instrumentation-approvers
@@ -2459,6 +2477,7 @@ triagers:
     avatar_url: https://avatars.githubusercontent.com/u/13435893?v=4
   - name: marcschaeferger
     teams:
+      - go-triagers
       - helm-triagers
     html_url: https://github.com/marcschaeferger
     avatar_url: https://avatars.githubusercontent.com/u/70487171?v=4
@@ -2902,6 +2921,9 @@ members:
   - name: kpratyus
     html_url: https://github.com/kpratyus
     avatar_url: https://avatars.githubusercontent.com/u/95214718?v=4
+  - name: krapie
+    html_url: https://github.com/krapie
+    avatar_url: https://avatars.githubusercontent.com/u/70474071?v=4
   - name: Krishnachaitanyakc
     html_url: https://github.com/Krishnachaitanyakc
     avatar_url: https://avatars.githubusercontent.com/u/22275437?v=4
@@ -3064,9 +3086,6 @@ members:
   - name: prestonvasquez
     html_url: https://github.com/prestonvasquez
     avatar_url: https://avatars.githubusercontent.com/u/24281431?v=4
-  - name: ps-mir
-    html_url: https://github.com/ps-mir
-    avatar_url: https://avatars.githubusercontent.com/u/1317870?v=4
   - name: rauno56
     html_url: https://github.com/rauno56
     avatar_url: https://avatars.githubusercontent.com/u/1334536?v=4
