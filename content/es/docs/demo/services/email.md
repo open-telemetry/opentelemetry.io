@@ -1,21 +1,21 @@
 ---
-title: Servicio de Correo 
-linkTitle: Correo 
+title: Servicio de Correo
+linkTitle: Correo
 aliases: [emailservice]
-default_lang_commit:
+cSpell:ignore: sinatra
 ---
 
 # Servicio de Correo
 
 ---
 
-Este servicio manda una confirmacion via correo cuando una orden es realizada.
+Este servicio envía una confirmación por correo cuando se realiza una orden.
 
-[Fuente servicio de correo](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/email/)
+[Código fuente del servicio de correo](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/email/)
 
-## Inicializando las Trazas
+## Inicializando las trazas
 
-Vas a requerir el OpenTelemetry core SDK y un exportador para Ruby, tambien una gema para auto instrumentar las librerias (ejemplo: Sinatra).
+Necesitarás el SDK core de OpenTelemetry y un exportador para Ruby, además de una gema para autoinstrumentar las librerías (ej.: Sinatra).
 
 ```ruby
 require "opentelemetry/sdk"
@@ -23,7 +23,7 @@ require "opentelemetry/exporter/otlp"
 require "opentelemetry/instrumentation/sinatra"
 ```
 
-El SDK de Ruby usa las variables de entorno de OpenTelemetry para configurar el exportador OTLP, los atributes de los recursos y el nombre del servicio de manera automatica. Cuando se inicializa el OpenTelemetry SDK tendras que especificar que librerias que contengan instrumentacion automatica vas a utilizar (ejemplo: Sinatra).
+El SDK de Ruby usa las variables de entorno de OpenTelemetry para configurar el exportador OTLP, los atributos de los recursos y el nombre del servicio de manera automática. Cuando se inicializa el SDK de OpenTelemetry, tendrás que especificar qué librerías con instrumentación automática vas a utilizar (ej.: Sinatra).
 
 ```ruby
 OpenTelemetry::SDK.configure do |c|
@@ -31,17 +31,17 @@ OpenTelemetry::SDK.configure do |c|
 end
 ```
 
-## Trazas 
+## Trazas
 
-### Agrega attributes a las trazas auto instrumentadas
+### Agregar atributos a los spans autoinstrumentados
 
-Dentro de la ejecucion del codigo auto instrumentado puedes acceder a la traza actual por el contexto
+Dentro de la ejecución del código autoinstrumentado puedes acceder al span actual desde el contexto.
 
 ```ruby
 current_span = OpenTelemetry::Trace.current_span
 ```
 
-Agregar multiples attributes a una traza es posible usando `add_attributes` en el objecto de la traza.
+Agregar múltiples atributos a un span es posible usando `add_attributes` en el objeto del span.
 
 ```ruby
 current_span.add_attributes({
@@ -49,15 +49,15 @@ current_span.add_attributes({
 })
 ```
 
-Agregar un unico atribute es posible usando `set_attribute` en el objeto de la traza
+Agregar un único atributo es posible usando `set_attribute` en el objeto del span.
 
 ```ruby
 span.set_attribute("app.email.recipient", data.email)
 ```
 
-### Crear nuevas trazas
+### Crear nuevos spans
 
-Nuevas trazas pueden ser creadas y colocadas en el contexto activo utilizando `in_span` desde un objeto de OpenTelemetry Tracer. Cuando se usan en conjunto con un bloque `do..end`, las trazas automaticamente terminaran junto con la ejecucion del bloque.
+Se pueden crear nuevos spans y colocarlos en el contexto activo utilizando `in_span` desde un objeto `Tracer` de OpenTelemetry. Cuando se usa junto con un bloque `do..end`, los spans terminan automáticamente junto con la ejecución del bloque.
 
 ```ruby
 tracer = OpenTelemetry.tracer_provider.tracer('email')
@@ -66,23 +66,18 @@ tracer.in_span("send_email") do |span|
 end
 ```
 
-## Metricas
+## Métricas
 
-### Inicializando Metricas
+### Inicializando métricas
 
-The OpenTelemetry Metrics SDK and OTLP metrics exporter are initialized at root
-level in the `email_server.rb` file. You first need the `require` statements to
-access them.
+Los exportadores del SDK de métricas de OpenTelemetry y OTLP se inicializan en la raíz del demo con el archivo `email_server.rb`. Primero necesitas incluir las librerías usando `require` para hacer uso de ellas.
 
 ```ruby
 require "opentelemetry-metrics-sdk"
 require "opentelemetry-exporter-otlp-metrics"
 ```
 
-The Ruby SDK uses OpenTelemetry standard environment variables to configure OTLP
-export, resource attributes, and service name automatically. When initializing
-the OpenTelemetry Metrics SDK, you also need to configure a meter provider and a
-metric reader.
+El SDK para Ruby de OpenTelemetry hace uso de las variables de entorno para configurar los exportadores OTLP, los atributos de recursos y los nombres de servicios de manera automática. Cuando se inicializa el SDK, también deberás configurar dos cosas: un proveedor de métricas y un lector de métricas.
 
 ```ruby
 otlp_metric_exporter = OpenTelemetry::Exporter::OTLP::Metrics::MetricsExporter.new
@@ -90,10 +85,44 @@ OpenTelemetry.meter_provider.add_metric_reader(otlp_metric_exporter)
 meter = OpenTelemetry.meter_provider.meter("email")
 ```
 
-With the meter provider you now have access to the meter, which can be used to
-create a global metric (ie: `counter`).
+Con el proveedor de métricas tendrás acceso al medidor, que te permitirá crear una métrica global (ej.: `counter` o contador).
 
 ```ruby
 $confirmation_counter = meter.create_counter("app.confirmation.counter", unit: "1", description: "Counts the number of order confirmation emails sent")
 ```
 
+### Métricas personalizadas
+
+En el demo podrás encontrar la métrica:
+
+- `app.confirmation.counter`: Contador acumulativo del número de órdenes confirmadas con un correo enviado
+
+## Logs
+
+### Inicializando logs
+
+Los exportadores del SDK de logs de OpenTelemetry y OTLP se inicializan en la raíz del demo con el archivo `email_server.rb`. Primero necesitas incluir las librerías usando `require` para hacer uso de ellas.
+
+```ruby
+require "opentelemetry-logs-sdk"
+require "opentelemetry-exporter-otlp-logs"
+```
+
+El SDK para Ruby de OpenTelemetry hace uso de las variables de entorno para configurar los exportadores OTLP, los atributos de recursos y los nombres de servicios de manera automática. Cuando se inicializa el SDK, también deberás configurar un proveedor global para tus logs.
+
+```ruby
+$logger = OpenTelemetry.logger_provider.logger(name: "email")
+```
+
+### Generar logs con estructura
+
+Puedes usar el método `on_emit` para escribir logs con estructura. Incluye los atributos `severity_text` (ej.: `INFO`, `ERROR`), un `body` claro y un atributo como `app.email.recipient`; estos te pueden ayudar a buscar logs más adelante.
+
+```ruby
+$logger.on_emit(
+  timestamp: Time.now,
+  severity_text: "INFO",
+  body: "Order confirmation email sent",
+  attributes: { "app.email.recipient" => data.email }
+)
+```
