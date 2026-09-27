@@ -4,6 +4,7 @@ linkTitle: コンパイル時
 description: ビルド時にコードを変更せずに Go アプリケーションを計装します。
 weight: 20
 default_lang_commit: 1fef2df9c49cb4b2192665ef5b1df5746507cecb
+drifted_from_default: true
 cSpell:ignore: otelc toolexec
 ---
 

@@ -50,6 +50,7 @@ rearchitecture
 recommendationservice
 runbook
 runbooks
+SDLC
 servlet
 shippingservice
 stdoutmetric
