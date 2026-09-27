@@ -5,7 +5,6 @@ description: ビルド時にコードを変更せずに Go アプリケーショ
 weight: 20
 default_lang_commit: 1fef2df9c49cb4b2192665ef5b1df5746507cecb
 drifted_from_default: true
-cSpell:ignore: otelc toolexec
 ---
 
 Go のコンパイル時計装は、ビルド中にアプリケーションを自動的に計装し、ソースコードを変更することなく、多くの人気のあるライブラリやフレームワークからテレメトリーをキャプチャします。

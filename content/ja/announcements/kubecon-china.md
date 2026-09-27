@@ -11,12 +11,11 @@ params:
   # Use this when the blog post is ready:
   # blogPostURL: /blog/2026/kubecon-china/
   blogPostURL: *eventUrl
-default_lang_commit: 552bd64ff45ca252d1da0ca875abd1584a619d7f
-drifted_from_default: true
+default_lang_commit: 2b88c43e50fb99c601ededa24b1f3a461fef9ac0
 ---
 
-[**{{% param title %}}**][LF] · <span class="text-nowrap">9月7日〜9日</span> ·
-上海 · [詳細][blog]
+[**{{% param title %}}**][LF] • <span class="text-nowrap">9月7日〜9日</span> •
+上海 • [詳細][blog]
 
 [blog]: <{{% param blogPostURL %}}>
 [LF]: <{{% param eventUrl %}}register/?{{% _param utmParam %}}>

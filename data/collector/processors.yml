@@ -157,10 +157,10 @@
     - contrib
     - k8s
   stability:
-    logs: beta
-    metrics: beta
-    traces: beta
     profiles: development
+    logs: stable
+    metrics: stable
+    traces: stable
 - name: logdedupprocessor
   display_name: Log DeDuplication Processor
   repo: contrib
@@ -282,6 +282,13 @@
     metrics: beta
     traces: beta
     profiles: development
+- name: rollingspanlatencyprocessor
+  display_name: rollingspanlatencyprocessor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: development
 - name: schemaprocessor
   display_name: Schema Processor
   repo: contrib
@@ -292,7 +299,7 @@
     metrics: alpha
     traces: alpha
 - name: signingprocessor
-  display_name: signingprocessor
+  display_name: Signing Processor
   repo: contrib
   distributions:
     - contrib
