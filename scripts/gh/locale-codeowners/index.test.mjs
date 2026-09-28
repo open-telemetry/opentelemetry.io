@@ -296,10 +296,11 @@ describe('locale-codeowners: fetchLiveRegistry + replaceLocalesBlock', () => {
       ...base,
       'docs-uk-approvers': ['newbie'],
     });
-    assert.ok(
-      out.includes('  uk:\n    maintainers: []\n    approvers: [newbie]\n'),
+    assert.match(
+      out,
+      /  uk:\n    maintainers: \[\]\n    approvers: \[newbie\]\n/,
     );
-    assert.ok(out.startsWith(header));
+    assert.strictEqual(out.slice(0, header.length), header, 'Registry header');
   });
 
   test('removal', () => {
@@ -307,7 +308,7 @@ describe('locale-codeowners: fetchLiveRegistry + replaceLocalesBlock', () => {
       ...base,
       'docs-ja-approvers': ['katzchang', 'kohbis'],
     });
-    assert.ok(out.includes('approvers: [kohbis]\n'));
+    assert.match(out, /approvers: \[kohbis\]\n/);
   });
 
   test('role move: approver promoted to maintainer', () => {
@@ -316,8 +317,8 @@ describe('locale-codeowners: fetchLiveRegistry + replaceLocalesBlock', () => {
       'docs-ja-maintainers': ['katzchang', 'kohbis'],
       'docs-ja-approvers': ['katzchang', 'kohbis', 'kota-sakuma'],
     });
-    assert.ok(out.includes('maintainers: [katzchang, kohbis]\n'));
-    assert.ok(out.includes('approvers: [kota-sakuma]\n'));
+    assert.match(out, /maintainers: \[katzchang, kohbis\]\n/);
+    assert.match(out, /approvers: \[kota-sakuma\]\n/);
   });
 
   test('a fetch failure produces nothing', () => {
@@ -337,8 +338,8 @@ describe('locale-codeowners: fetchLiveRegistry + replaceLocalesBlock', () => {
     const block = genLocalesBlock({
       locales: { ja: { maintainers: ['null', '12345'], approvers: ['ok-1'] } },
     });
-    assert.ok(block.includes('maintainers: ["null", "12345"]'));
-    assert.ok(block.includes('approvers: [ok-1]'));
+    assert.match(block, /maintainers: \["null", "12345"\]/);
+    assert.match(block, /approvers: \[ok-1\]/);
   });
 
   test('replaceLocalesBlock rejects unexpected layouts', () => {

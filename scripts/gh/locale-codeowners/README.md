@@ -43,8 +43,11 @@ npm run check:codeowners  # verify it is up to date (used by CI)
 `sync-teams.mjs` refreshes the registry's `locales:` map from the live teams;
 the scheduled Housekeeping run does this daily, then `fix:codeowners`
 regenerates CODEOWNERS, so drift becomes a normal reviewable PR. Merging that PR
-ratifies the live state; if the drift is unwanted, an org admin reverts the live
-team and the next run drops the diff.
+ratifies the live state. If the drift is unwanted, have an org admin revert the
+live team membership, then inspect the next Housekeeping result. If that run
+produces no changes, Housekeeping leaves the existing PR unchanged; close the
+stale PR manually. Otherwise, verify that the updated PR no longer contains the
+rejected roster changes before merging.
 
 - Reads each team's **direct** membership (GraphQL `membership: IMMEDIATE`); the
   aggregated parent roster would fold child-team members in.

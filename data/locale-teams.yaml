@@ -9,9 +9,12 @@
 # Membership changes require a PR against this file (audit trail). The daily
 # Housekeeping run refreshes this file from the live teams' direct membership
 # (`npm run _fix:locale-teams`), so out-of-band changes surface as a PR:
-# merging it ratifies the live state; if the change is unwanted, an org admin
-# reverts the live team and the next run drops the diff. Automation only reads
-# team membership. Notes:
+# merging it ratifies the live state. If the change is unwanted, have an org
+# admin revert the live team membership, then inspect the next Housekeeping
+# result. A run with no changes leaves the existing PR unchanged; close the
+# stale PR manually. Otherwise, verify that the updated PR no longer contains
+# the rejected roster changes before merging. Automation only reads team
+# membership. Notes:
 #
 # - `maintainers` and `approvers` list *direct* members of the corresponding
 #   `docs-<locale>-maintainers` / `-approvers` teams. GitHub also reports
