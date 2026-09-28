@@ -180,7 +180,7 @@ DaemonSet collectors). Pods opt in with the classic Prometheus annotations
 Because a given pod lives on exactly one node, each target is scraped by exactly
 one Collector replica, meaning there's no cluster-wide target list, no Target Allocator, and no
 double-scraping from overlapping ServiceMonitor/PodMonitor jobs. Do not combine
-this node-local pattern with Target Allocator (or any other cluster-wide scrape)
+this daemonset pattern with Target Allocator (or any other cluster-wide scrape)
 against the same endpoints.
 
 The Operator additionally introduces the `Instrumentation` CRD for zero-code
@@ -352,7 +352,7 @@ Important: Never use a custom label where the
 [K8s semantic conventions](/docs/specs/semconv/resource/k8s/) has an option for
 it already.
 
-### 6. Scrape Prometheus-native components node-locally on the DaemonSet
+### 6. Scrape Prometheus-native components on each node via DaemonSet mode
 
 **Guidelines supported:** 3
 
