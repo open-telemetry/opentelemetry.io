@@ -326,7 +326,11 @@ It runs as a three-stage pipeline:
    Unlike the `/fix` pipeline, the whole run is trusted: the schedule and
    dispatch triggers only ever execute default-branch code. A failing command
    fails the job, but any fixes it produced are still published, with a
-   partial-results warning in the PR body.
+   partial-results warning in the PR body. With the default command, it first
+   refreshes the locale team registry (`data/locale-teams.yaml`) from the live
+   teams' direct membership, using a read-only, members-scoped app token that
+   later steps never see; drift then lands in the same PR as the regenerated
+   CODEOWNERS. A failed refresh leaves the registry untouched and fails the job.
 2. **`publish-patch`**: calls the [`reusable-patch-pr.yml`][] workflow — the
    sibling of [`reusable-apply-patch.yml`][] for callers without a PR context —
    which force-pushes the patch to the stable `otelbot/housekeeping` branch,

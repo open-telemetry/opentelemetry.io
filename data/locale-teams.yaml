@@ -6,8 +6,12 @@
 #
 # cSpell:disable
 #
-# Membership changes require a PR against this file (audit trail), applied to
-# the live teams by an org admin. Notes:
+# Membership changes require a PR against this file (audit trail). The daily
+# Housekeeping run refreshes this file from the live teams' direct membership
+# (`npm run _fix:locale-teams`), so out-of-band changes surface as a PR:
+# merging it ratifies the live state; if the change is unwanted, an org admin
+# reverts the live team and the next run drops the diff. Automation only reads
+# team membership. Notes:
 #
 # - `maintainers` and `approvers` list *direct* members of the corresponding
 #   `docs-<locale>-maintainers` / `-approvers` teams. GitHub also reports
