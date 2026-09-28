@@ -17,6 +17,7 @@ const repoRoot = path.resolve(
 );
 const publicDir = path.join(repoRoot, 'public');
 const rootIndexPath = path.join(publicDir, 'llms.txt');
+// Keep in sync with non-English languages in config/_default/hugo.yaml.
 const locales = ['bn', 'es', 'fr', 'ja', 'ko', 'pl', 'pt', 'ro', 'uk', 'zh'];
 const nonDocPrefixes = [
   '/blog',

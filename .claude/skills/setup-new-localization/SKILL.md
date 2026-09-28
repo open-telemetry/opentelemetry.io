@@ -71,6 +71,10 @@ Then add the block under `languages:`, in alphabetical order:
     description: <translated site description>
 ```
 
+Add `<lang>` to the alphabetized `locales` list in
+`tests/public/llms-txt.test.mjs`. The built-site test verifies the locale's
+`llms.txt` exists and its links are not mixed into the English root index.
+
 ### b. `config/_default/module-template.yaml` — content mounts
 
 Copy the `## <lang>` block from an existing language (e.g. `## ja`) into
@@ -276,6 +280,7 @@ this PR, but you can't merge it.
 ```bash
 npm run check:codeowners                  # "up to date"
 npm run check:format                      # passes
+npm run build && npm run test:public      # locale llms.txt is published
 git diff --name-only                      # exactly the files below, nothing more
 git diff --name-only | grep component-owners.yml && echo "BUG: do not touch" || echo OK
 gh label list -R open-telemetry/opentelemetry.io | grep "lang:<lang>"  # label exists
@@ -284,6 +289,7 @@ gh label list -R open-telemetry/opentelemetry.io | grep "lang:<lang>"  # label e
 Expected changed/added paths:
 
 - `config/_default/hugo.yaml`
+- `tests/public/llms-txt.test.mjs`
 - `config/_default/module-template.yaml`
 - `content/<lang>/.gitkeep` (new)
 - `.cspell.yml`
