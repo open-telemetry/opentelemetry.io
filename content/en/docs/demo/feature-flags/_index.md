@@ -5,7 +5,7 @@ aliases:
   - scenarios
   - services/feature-flag
   - services/featureflagservice
-cSpell:ignore: OLJCESPC7Z
+cSpell:ignore: loadgenerator OLJCESPC7Z
 ---
 
 The demo provides several feature flags that you can use to simulate different
@@ -37,6 +37,8 @@ user interface:
 | `adFailure`                  | Ad                        | Generate an error for `GetAds` 1/10th of the time                                                                                           |
 | `adHighCpu`                  | Ad                        | Trigger high cpu load in the ad service. If you want to demo cpu throttling, set cpu resource limits                                        |
 | `adManualGc`                 | Ad                        | Trigger full manual garbage collections in the ad service                                                                                   |
+| `aiRunawayAgent`             | Agent                     | Nudges the agent to keep calling tools instead of finishing, simulating a runaway/looping agent.                                            |
+| `aiSlowResponse`             | Agent                     | Delays the agent's LLM model call, simulating LLM provider latency degradation.                                                             |
 | `cartFailure`                | Cart                      | Send the selected percentage of `EmptyCart` calls to a failing cart store                                                                   |
 | `emailMemoryLeak`            | Email                     | Simulate a memory leak in the `email` service. The variant sets how much each confirmation email body is padded.                            |
 | `failedReadinessProbe`       | Cart                      | Force the readiness probe to fail with unhealthy status, simulating a pod "NotReady" condition. Applicable for Kubernetes deployments only. |
