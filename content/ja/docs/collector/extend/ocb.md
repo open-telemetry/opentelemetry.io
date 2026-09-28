@@ -7,6 +7,7 @@ aliases: [/docs/collector/custom-collector]
 params:
   providers-vers: v1.48.0
 default_lang_commit: 331c76c3500213c83ace2e30a407218ddedda628
+drifted_from_default: true
 cSpell:ignore: darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
