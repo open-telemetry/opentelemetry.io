@@ -28,9 +28,9 @@ achieve:
 Kubernetes clusters host two classes of observable entities:
 
 1. **Workloads** are application containers and the Kubernetes primitives
-   (Statefulset, Deployment, Daemonset, ReplicaSet, etc) that manage them. They emit
-   signals using OTel SDKs, but their resource utilization and operational state
-   (CPU throttling, OOM kills, pod phase, probe results) are only visible
+   (Statefulset, Deployment, Daemonset, ReplicaSet, etc) that manage them. They
+   emit signals using OTel SDKs, but their resource utilization and operational
+   state (CPU throttling, OOM kills, pod phase, probe results) are only visible
    through Kubernetes-specific APIs. Additionally, some of those components are
    managed in the node level, like pods and containers, while others are managed
    in the cluster/control-plane level like ReplicaSet states, HPAs and so on.
@@ -73,9 +73,9 @@ Each scraper attaches different label schemas (`pod_name`, `pod`,
 
 This leads to:
 
-- **Disjointed infra telemetry from app telemetry**: Cognitive load on
-  operators increases when troubleshooting if a certain issue is caused by the app/container or
-  infra/resources
+- **Disjointed infra telemetry from app telemetry**: Cognitive load on operators
+  increases when troubleshooting if a certain issue is caused by the
+  app/container or infra/resources
 - **Alert rules break silently on scraper changes**: An alert written against
   `pod_name` stops matching when a new scraper uses `pod`.
 - **Organizational context is absent**: Team ownership, environment, and tier
@@ -121,7 +121,7 @@ This blueprint recommends the usage of OTel native receivers:
 | `k8s_cluster` **receiver**        | `clusterMetrics`    | `kube-state-metrics`                   | Kubernetes object/state metrics from the Kubernetes API, such as pods, nodes, namespaces, workloads, quotas, and conditions.       |
 | `kubeletstats` **receiver**       | `kubeletMetrics`    | **cAdvisor / kubelet metrics**         | Preferred source for node, pod, and container CPU/memory (and volume) resource metrics from the kubelet.                           |
 | `hostmetrics` **receiver**        | `hostMetrics`       | `node-exporter` (partial)              | Host OS metrics that `kubeletstats` does not cover — for example process, filesystem, disk I/O, network, load, and paging metrics. |
-| `filelog` **receiver**            | `logsCollection`    | Fluent Bit / node log agents           | Container stdout/stderr written by the runtime under `/var/log/pods/*/*/*.log`. Collect once per node using a DaemonSet.             |
+| `filelog` **receiver**            | `logsCollection`    | Fluent Bit / node log agents           | Container stdout/stderr written by the runtime under `/var/log/pods/*/*/*.log`. Collect once per node using a DaemonSet.           |
 | `k8s_objects` **receiver**        | `kubernetesObjects` | N/A                                    | Kubernetes object resource state (pull and/or watch) as logs from the API server.                                                  |
 | `k8s_events` **receiver**         | `kubernetesEvents`  | N/A                                    | Cluster events as they occur (Eviction, OOM, etc)                                                                                  |
 
@@ -178,10 +178,10 @@ DaemonSet collectors). Pods opt in with the classic Prometheus annotations
 `prometheus.io/path`, and `prometheus.io/scheme`).
 
 Because a given pod lives on exactly one node, each target is scraped by exactly
-one Collector replica, meaning there's no cluster-wide target list, no Target Allocator, and no
-double-scraping from overlapping ServiceMonitor/PodMonitor jobs. Do not combine
-this daemonset pattern with Target Allocator (or any other cluster-wide scrape)
-against the same endpoints.
+one Collector replica, meaning there's no cluster-wide target list, no Target
+Allocator, and no double-scraping from overlapping ServiceMonitor/PodMonitor
+jobs. Do not combine this daemonset pattern with Target Allocator (or any other
+cluster-wide scrape) against the same endpoints.
 
 The Operator additionally introduces the `Instrumentation` CRD for zero-code
 auto-instrumentation injection. While that is out of scope here, it makes the
@@ -279,8 +279,9 @@ the `k8s_cluster` receiver and the required RBAC automatically.
 This emits OTel-native equivalents such as `k8s.pod.phase`,
 `k8s.container.restarts`, `k8s.deployment.available`/`k8s.deployment.desired`,
 `k8s.node.condition_ready`, `k8s.pod.status_reason` and
-`k8s.container.status.reason`. Although they are optional, status reason metrics are especially important for
-understanding why a pod might be failing. See the `k8s_cluster`
+`k8s.container.status.reason`. Although they are optional, status reason metrics
+are especially important for understanding why a pod might be failing. See the
+`k8s_cluster`
 [receiver optional metrics documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/k8sclusterreceiver/documentation.md#optional-metrics)
 for how to enable them.
 
@@ -293,10 +294,11 @@ Both the `kubeletstats`
 and `hostmetrics`
 [receiver](/docs/platforms/kubernetes/collector/components/#host-metrics-receiver)
 can report node CPU and memory. Prefer `kubeletstats` for node, pod, and
-container resource usage because it is the kubelet/cAdvisor-aligned source and avoids
-duplicating the same CPU/memory series from `hostmetrics`. Enable it on the
-kube-stack **DaemonSet** collector (`collectors.daemon.presets.kubeletMetrics`)
-with `metric_groups: [node, pod, container]`.
+container resource usage because it is the kubelet/cAdvisor-aligned source and
+avoids duplicating the same CPU/memory series from `hostmetrics`. Enable it on
+the kube-stack **DaemonSet** collector
+(`collectors.daemon.presets.kubeletMetrics`) with
+`metric_groups: [node, pod, container]`.
 
 Use `hostmetrics`
 [preset](/docs/platforms/kubernetes/helm/collector/#host-metrics-preset) only
@@ -320,17 +322,17 @@ complementary signals:
 
 - **Events** from the `kubernetesEvents`
   [preset](/docs/platforms/kubernetes/helm/collector/#kubernetes-events-preset):
-  Watch cluster events as they happen, including scheduling failures, probe failures,
-  OOM kills, volume attach errors, and similar operational signals that metrics
-  alone often miss.
+  Watch cluster events as they happen, including scheduling failures, probe
+  failures, OOM kills, volume attach errors, and similar operational signals
+  that metrics alone often miss.
 - **Object resource state** from the `kubernetesObjects`
   [preset](/docs/platforms/kubernetes/collector/components/#kubernetes-objects-receiver):
   Periodically pull (and optionally watch) Kubernetes objects such as pods,
   deployments, nodes, and related resources so you retain object state history
   as logs.
 
-Important: Both signals must run as a Deployment (single-replica). Use leader-election
-for multiple replica resiliency, if needed.
+Important: Both signals must run as a Deployment (single-replica). Use
+leader-election for multiple replica resiliency, if needed.
 
 ### 5. Use `k8sattributesprocessor` to enrich telemetry with required and optional organizational labels
 
@@ -385,5 +387,6 @@ reintroduces double scraping.
 
 ## Reference implementations
 
-> If you have a production-grade OpenTelemetry architecture that implements this blueprint and would like to be
-> featured on this page, open an issue in the [End-User SIG repository](https://github.com/open-telemetry/sig-end-user/issues)!
+> If you have a production-grade OpenTelemetry architecture that implements this
+> blueprint and would like to be featured on this page, open an issue in the
+> [End-User SIG repository](https://github.com/open-telemetry/sig-end-user/issues)!
