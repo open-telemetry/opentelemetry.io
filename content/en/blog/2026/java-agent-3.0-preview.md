@@ -1,45 +1,41 @@
 ---
 title: The OpenTelemetry Java agent 3.0 is almost here — preview it today
 linkTitle: Preview the OpenTelemetry Java agent 3.0
-date: 2026-09-21
+date: 2026-09-28
 draft: true
 author: >-
   [Jay DeLuca](https://github.com/jaydeluca) (Grafana Labs)
 sig: SIG Java
 # prettier-ignore
-cSpell:ignore: Hystrix invokedynamic Twilio
+cSpell:ignore: Dotel Hystrix invokedynamic Twilio
 ---
 
 The **`2.32.0`** release of the [OpenTelemetry Java agent][java-agent] is now
 out and serves as the release candidate for **3.0**, which is targeted for
-**October 2026**. You can preview the new behavior now, before it becomes the
-default.
+**October 2026**. Some behavior may still change before 3.0, but you can preview
+the new behavior now, before it becomes the default.
 
-Give it a try against your dashboards, alerts, and downstream pipelines, and
-[let us know what breaks][issues]. Your feedback will help us catch migration
-problems before 3.0 ships.
+3.0 changes telemetry, configuration, and instrumentation defaults. Database and
+code conventions become stable defaults, messaging and RPC move to newer
+experimental conventions, and some capture settings and instrumentation defaults
+change. [What to check](#what-to-check) covers each area.
 
-The preview is not a complete specification of the final 3.0 release; some
-behavior may still change before release.
-
-## What's changing
-
-3.0 brings changes to telemetry, configuration, and instrumentation defaults.
-Database and code conventions become stable defaults; messaging and RPC move to
-newer conventions that are still experimental.
-
-| Change area                      | What to check                                                          |
-| -------------------------------- | ---------------------------------------------------------------------- |
-| Attribute and metric conventions | Queries, grouping keys, value filters, and thresholds                  |
-| Messaging traces                 | Span names, parent relationships, and receive/process metrics          |
-| Database endpoint identity       | Service graphs and grouping by `server.address`                        |
-| Capture settings and defaults    | Captured log fields, expected instrumentation, and application startup |
+Try it against your dashboards, alerts, and downstream pipelines, and [let us
+know what breaks][issues] before 3.0 is finalized.
 
 ## Try the preview
 
-Choose environment variables or [declarative configuration][decl-config] in the
-examples below. The YAML snippets are fragments to merge into your existing
-configuration file; keep your resource, exporter, and other settings.
+Since you are already reviewing your agent configuration, this is a good time to
+try [declarative configuration][decl-config], which is still experimental in the
+Java agent. It describes the SDK and instrumentation in a single YAML file,
+passed with `-Dotel.config.file=/path/to/otel-config.yaml`. To get started,
+paste your current settings into the [configuration converter][dc-converter], or
+build a file with the Ecosystem Explorer's [configuration
+builder][explorer-builder].
+
+The examples below show declarative configuration first, with environment
+variables in the second tab. The YAML snippets are fragments to merge into your
+existing configuration file; keep your resource, exporter, and other settings.
 
 ### Step 1: Compare old and new telemetry
 
@@ -49,15 +45,7 @@ metrics together:
 
 {{< tabpane text=true >}}
 
-{{% tab header="Environment variables" %}}
-
-```text
-OTEL_INSTRUMENTATION_COMMON_V3_PREVIEW=false
-OTEL_SEMCONV_STABILITY_OPT_IN=database/dup,code/dup
-OTEL_SEMCONV_STABILITY_PREVIEW=messaging/dup,rpc/dup,service.peer/dup
-```
-
-{{% /tab %}} {{% tab header="Declarative configuration" %}}
+{{% tab header="Declarative configuration" %}}
 
 ```yaml
 instrumentation/development:
@@ -68,6 +56,14 @@ instrumentation/development:
       v3_preview: false
       semconv_stability:
         preview: [messaging/dup, rpc/dup, service.peer/dup]
+```
+
+{{% /tab %}} {{% tab header="Environment variables" %}}
+
+```text
+OTEL_INSTRUMENTATION_COMMON_V3_PREVIEW=false
+OTEL_SEMCONV_STABILITY_OPT_IN=database/dup,code/dup
+OTEL_SEMCONV_STABILITY_PREVIEW=messaging/dup,rpc/dup,service.peer/dup
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -86,53 +82,13 @@ Use the new fields to update and validate your queries.
 > one name and kind, and `/dup` uses the newer convention for those. Compare
 > attributes and metrics with `/dup`, and inspect trace structure separately.
 
-### Step 2: Test the new conventions alone
+### Step 2: Run as 3.0
 
-Remove `/dup` from the domain settings to test the new telemetry on its own:
-
-{{< tabpane text=true >}}
-
-{{% tab header="Environment variables" %}}
-
-```text
-OTEL_INSTRUMENTATION_COMMON_V3_PREVIEW=false
-OTEL_SEMCONV_STABILITY_OPT_IN=database,code
-OTEL_SEMCONV_STABILITY_PREVIEW=messaging,rpc,service.peer
-```
-
-{{% /tab %}} {{% tab header="Declarative configuration" %}}
-
-```yaml
-instrumentation/development:
-  general:
-    stability_opt_in_list: 'database,code'
-  java:
-    common:
-      v3_preview: false
-      semconv_stability:
-        preview: [messaging, rpc, service.peer]
-```
-
-{{% /tab %}} {{< /tabpane >}}
-
-Check values and units as well as names: a threshold expressed in milliseconds
-needs conversion when its metric moves to seconds. Confirm that dashboards and
-alerts work without the legacy fields.
-
-### Step 3: Test configuration and instrumentation defaults
-
-Next, test the broader changes with the umbrella flag:
+Next, turn on the umbrella flag to test the conventions and defaults together:
 
 {{< tabpane text=true >}}
 
-{{% tab header="Environment variables" %}}
-
-```text
-OTEL_INSTRUMENTATION_COMMON_V3_PREVIEW=true
-OTEL_SEMCONV_STABILITY_PREVIEW=rpc,service.peer
-```
-
-{{% /tab %}} {{% tab header="Declarative configuration" %}}
+{{% tab header="Declarative configuration" %}}
 
 ```yaml
 instrumentation/development:
@@ -143,6 +99,13 @@ instrumentation/development:
         preview: [rpc, service.peer]
 ```
 
+{{% /tab %}} {{% tab header="Environment variables" %}}
+
+```text
+OTEL_INSTRUMENTATION_COMMON_V3_PREVIEW=true
+OTEL_SEMCONV_STABILITY_PREVIEW=rpc,service.peer
+```
+
 {{% /tab %}} {{< /tabpane >}}
 
 The umbrella enables the newer database, code, and messaging conventions and
@@ -150,8 +113,14 @@ The umbrella enables the newer database, code, and messaging conventions and
 separate preview setting shown above; their opt-in tokens are ignored when the
 umbrella is on.
 
-Check application startup, captured fields, missing spans and metrics, and query
-results.
+Check application startup, captured fields, and missing spans and metrics.
+Confirm that dashboards and alerts work without the legacy fields, checking
+values and units as well as names: a threshold expressed in milliseconds needs
+conversion when its metric moves to seconds.
+
+If something breaks and you can't tell whether a convention or a default change
+caused it, turn the umbrella off and remove `/dup` from the step 1 settings to
+test the new conventions alone.
 
 ## What to check
 
@@ -187,50 +156,47 @@ The operation now comes first, and its name reflects the client API. The old
 `messaging.operation.type`: for a Kafka poll, the name is `poll` and the type is
 `receive`.
 
-**Parent relationships change too.** The diagram shows a single Kafka message
-with its producer context propagated, no ambient consumer span, and receive
-spans enabled. Solid arrows run from parent to child; dashed arrows point from a
-span to the context it links to.
+**Parent relationships change in some setups.** Whether your traces look
+different depends on how your consumer runs:
 
-```mermaid
-flowchart TB
-  accTitle: Kafka span relationships before and after the preview
-  accDescr: With no ambient consumer span, the legacy receive span parents processing. In the preview, the producer parents processing and the receive span is separate. Dashed arrows show span links to the producer.
-  subgraph legacy["Legacy"]
-    direction TB
-    oldSend["orders publish · PRODUCER"]
-    oldReceive["orders receive · CONSUMER"]
-    oldProcess["orders process · CONSUMER"]
-    oldReceive --> oldProcess
-    oldProcess -.-> oldSend
-  end
-  subgraph preview["Preview"]
-    direction TB
-    newSend["send orders · PRODUCER"]
-    newReceive["poll orders · CLIENT"]
-    newProcess["process orders · CONSUMER"]
-    newSend --> newProcess
-    newProcess -.-> newSend
-    newReceive -.-> newSend
-  end
+| Your setup                                                | Legacy                                                           | Preview                                                                    |
+| --------------------------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Receive spans off (the default)                           | Process span is a child of the send span                         | Unchanged, plus a link to the send span                                    |
+| Receive spans off, messages processed inside another span | Process span is a child of the send span                         | Process span is a child of the active span and only links to the send span |
+| Receive spans on                                          | Process span is a child of the receive span, in a separate trace | Process span is a child of the send span, in the same trace                |
+
+The second row is the one most likely to surprise you: if your application
+processes messages inside its own span, for example a scheduled job or a method
+annotated with `@WithSpan`, consumer work leaves the producer's trace.
+
+With receive spans on, a trace view changes like this:
+
+```text
+Legacy                                   Preview
+trace A                                  trace A
+  orders publish        PRODUCER           send orders            PRODUCER
+                                             └─ process orders    CONSUMER
+trace B                                  trace B
+  orders receive        CONSUMER           poll orders            CLIENT
+    └─ orders process   CONSUMER             (link → send orders)
+         (link → orders publish)
 ```
 
-The process span no longer takes the receive span as its parent. In this
-example, it continues the producer's trace and also links to the message
-creation context. When an ambient span exists, that span becomes the parent
-instead; the link to the message creation context remains. An enabled receive
-span represents the client operation separately and changes from `CONSUMER` to
-`CLIENT`.
+In the preview, the process span also links to the send span, even when that
+span is its parent. The poll span now represents the client operation on its
+own, and its kind changes from `CONSUMER` to `CLIENT`.
 
 Receive spans remain opt-in. Receive metrics are recorded independently of that
 span setting, so you do not need to enable poll spans to measure receive
 operations. The metric names also change:
 
-- `messaging.publish.duration` and `messaging.receive.duration` become
-  `messaging.client.operation.duration`.
-- `messaging.receive.messages` becomes `messaging.client.consumed.messages`.
-- `messaging.client.sent.messages` and `messaging.process.duration` measure sent
-  messages and processing time.
+| Legacy metric                | Preview metric                        |
+| ---------------------------- | ------------------------------------- |
+| `messaging.publish.duration` | `messaging.client.operation.duration` |
+| `messaging.receive.duration` | `messaging.client.operation.duration` |
+| `messaging.receive.messages` | `messaging.client.consumed.messages`  |
+| _(none)_                     | `messaging.client.sent.messages`      |
+| _(none)_                     | `messaging.process.duration`          |
 
 ### Database endpoint identity
 
@@ -252,13 +218,7 @@ To capture only `order.id` from those structured fields:
 
 {{< tabpane text=true >}}
 
-{{% tab header="Environment variables" %}}
-
-```text
-OTEL_INSTRUMENTATION_COMMON_LOGGING_STRUCTURED_ATTRIBUTES_INCLUDED=order.id
-```
-
-{{% /tab %}} {{% tab header="Declarative configuration" %}}
+{{% tab header="Declarative configuration" %}}
 
 ```yaml
 instrumentation/development:
@@ -267,6 +227,12 @@ instrumentation/development:
       logging:
         structured_attributes:
           included: [order.id]
+```
+
+{{% /tab %}} {{% tab header="Environment variables" %}}
+
+```text
+OTEL_INSTRUMENTATION_COMMON_LOGGING_STRUCTURED_ATTRIBUTES_INCLUDED=order.id
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -335,6 +301,10 @@ time to address problems before 3.0 becomes the default.
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues
 [decl-config]: /docs/zero-code/java/agent/declarative-configuration/
 [explorer]: https://explorer.opentelemetry.io/
+[dc-converter]:
+  /docs/zero-code/java/agent/declarative-configuration/#convert-your-existing-configuration
+[explorer-builder]:
+  https://explorer.opentelemetry.io/java-agent/configuration/builder
 [messaging-1.24]:
   https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/messaging/messaging-spans.md
 [messaging-1.43]:
