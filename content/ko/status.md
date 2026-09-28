@@ -15,7 +15,7 @@ default_lang_commit: 1f83b9ffa3ecdd5e2b507379cc259e5678596c7f
 명세(specification)에서의 시그널 상태는 특정 언어 SDK에서의 시그널 상태와 다를
 수 있다.
 
-## 언어 API 및 SDK {#language-apis--sdks}
+## 언어 API 및 SDK
 
 [언어 API 또는 SDK](/docs/languages/)의 개발 상태, 또는 성숙도에 대해서는 다음
 표를 참고한다.
