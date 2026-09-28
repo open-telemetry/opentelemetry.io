@@ -3,7 +3,7 @@ title: トラブルシューティング
 description: Go コンパイル時計装の問題を診断します。
 weight: 50
 default_lang_commit: 13eed4c86de528f6824a9a2010fa7ad3f63743fc
-cSpell:ignore: otelc
+drifted_from_default: true
 ---
 
 ## デバッグログの有効化 {#enable-debug-logging}
