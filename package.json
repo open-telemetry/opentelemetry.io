@@ -24,6 +24,7 @@
     "_fail": "exit 1",
     "_fix:dict": "npm run -s __find:md:not-old-blog -- content layouts projects | xargs -0 scripts/normalize-cspell-front-matter.pl",
     "_fix:format:diff": "npm run __check:format -- --write",
+    "_fix:locale-teams": "node scripts/gh/locale-codeowners/sync-teams.mjs && prettier --write data/locale-teams.yaml && npm run fix:codeowners",
     "_fix:trailing-spaces": "npm run -s __find:md:not-old-blog -- content | xargs -0 perl -i -pe 's/[ \t]+$//g'",
     "_get:no": "echo SKIPPING get operation",
     "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 999}",
