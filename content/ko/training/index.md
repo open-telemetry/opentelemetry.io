@@ -31,8 +31,8 @@ cSpell:ignore: otca
 
 ## 강좌 {#courses}
 
-[Cloud Native Training Courses for OpenTelemetry][CNTCOT]에서 제공하는 Linux
-Foundation의 **무료** 강좌이다.
+Linux Foundation에서 제공하는 [Cloud Native Training Courses for
+OpenTelemetry][CNTCOT] **무료** 과정이다.
 
 <div class="card--course-wrapper">
 <div class="card card--course" style="width: 20rem">
