@@ -204,31 +204,11 @@ receivers already set core `k8s.*` (or host) identity attributes. Use
 Prometheus-scraped telemetry that lack that context, and optionally to attach
 pod labels/annotations onto pod-scoped metrics.
 
-```mermaid
-flowchart TD
-  Start(["`What are you trying to observe?`"]) -->|"`Kubernetes object/state metrics<br/>`"| Cluster["`**k8s_cluster receiver**<br/>(clusterMetrics preset)<br/>emits k8s.* resource attrs`"]
-  Start -->|"`Node/pod/container CPU & memory<br/>`"| Kubelet["`**kubeletstats receiver**<br/>(kubeletMetrics preset)<br/>emits k8s.* resource attrs`"]
-  Start -->|"`Host OS metrics kubeletstats<br/>cannot provide<br/>(process, filesystem, disk, …)`"| Host["`**hostmetrics receiver**<br/>(hostMetrics preset)<br/>host/system attrs; node identity via resourcedetection`"]
-  Start -->|"`Kubernetes object<br/>resource state`"| Objects["`**k8s_objects receiver**<br/>(kubernetesObjects preset)<br/>object state as logs`"]
-  Start -->|"`Kubernetes events<br/>(Eviction, OOM, …)`"| Events["`**k8s_events receiver**<br/>(no chart preset yet)<br/>events as logs`"]
-  Start -->|"`Container stdout/stderr logs<br/>`"| Logs["`**filelog receiver**<br/>(logsCollection preset)<br/>tails /var/log/pods`"]
-  Start -->|"`App OTLP or third-party<br/>Prometheus /metrics`"| Scraped["`Needs pod correlation`"]
+The following diagram shows the resulting architecture with the chart's
+default values: one DaemonSet Collector per node, node-local receivers on every
+node, and cluster-scoped receivers running only on the elected leader.
 
-  Scraped -->|"`prometheus.io/scrape annotation`"| Prom["`**prometheus receiver on DaemonSet**<br/>node-local SD (spec.nodeName)`"]
-  Scraped -->|"`OTLP from SDKs / agents`"| OTLP["`**OTLP receiver**`"]
-
-  Cluster --> Export
-  Kubelet --> Export
-  Host --> Export
-  Objects --> Export
-  Events --> Export
-
-  Prom --> K8sAttr["`**k8sattributesprocessor**<br/>pod metadata + labels/annotations`"]
-  OTLP --> K8sAttr
-  Logs --> K8sAttr
-  Kubelet -.->|"`optional: labels/annotations<br/>(and ownership attrs)`"| K8sAttr
-  K8sAttr --> Export
-```
+![Kubernetes cluster observability with the OpenTelemetry kube-stack](./k8s-otel-kube-stack-architecture.png)
 
 ### 1. Deploy the opentelemetry-kube-stack
 
