@@ -57,7 +57,7 @@ the legacy block is eventually removed.
 The second was to let both definitions live in one file and update mdatagen to
 handle name conflicts. That costs users nothing and gives component maintainers
 a single `metadata.yaml` file to work with, but it meant changing mdatagen
-itself in the collector core repo before the scraper work could begin.
+itself in the collector core repository before the scraper work could begin.
 
 The System SIG chose the second: versioned metrics, with feature gates driving
 the migration. The rest of this post is what it looks like for a component
@@ -141,7 +141,7 @@ mdatagen to define what the generated Go code looks like. This was to ensure
 that naming clashes wouldn't happen when you have two metrics of the same name,
 for example, `process.cpu.utilization` vs `process.cpu.utilization@v1`. The
 update allows mdatagen to generate code for the two different metrics without
-any clashes. This work was done in the Collector core repo; see
+any clashes. This work was done in the Collector core repository; see
 [the mdatagen versioned metrics PR](https://github.com/open-telemetry/opentelemetry-collector/pull/15309).
 
 Finally, the System SIG defined rules that we must follow for versioned metrics.
@@ -318,8 +318,8 @@ See
 Being able to version metrics and give them a migration path unblocks the
 broader plan to stabilise the hostmetrics receiver. The process scraper is the
 first component to use it, but the mechanism lives in mdatagen in the Collector
-core repo, so any component facing a semantic convention change can now follow
-the same path.
+core repository, so any component facing a semantic convention change can now
+follow the same path.
 
 The System SIG is working towards promoting the system namespace to RC in
 semantic conventions – the `system.*` metrics covering CPU, memory, disk,
