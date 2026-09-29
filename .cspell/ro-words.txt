@@ -123,3 +123,4 @@ urmǎrirea
 valideze
 verificatoarele
 verificatorul
+vizualizezi
