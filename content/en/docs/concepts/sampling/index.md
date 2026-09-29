@@ -102,6 +102,14 @@ Head sampling is a sampling technique used to make a sampling decision as early
 as possible. A decision to sample or drop a span or trace is not made by
 inspecting the trace as a whole.
 
+By default, OpenTelemetry SDKs use
+[`ParentBased(root=AlwaysOn)`](/docs/specs/otel/trace/sdk/#built-in-samplers).
+This samples every new root span, while child spans follow their parent's
+sampling decision. Consequently, the default does not reduce the volume of newly
+started traces. However, if an incoming parent context is marked as not sampled,
+that decision is respected. To sample only a fraction of new traces, configure a
+different root sampler.
+
 A widely supported form of head sampling uses a
 [`ParentBased`](/docs/specs/otel/trace/sdk/#parentbased) sampler with
 [`TraceIdRatioBased`](/docs/specs/otel/trace/sdk/#traceidratiobased) for root
