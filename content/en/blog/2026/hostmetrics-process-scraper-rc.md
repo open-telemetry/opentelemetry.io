@@ -8,6 +8,7 @@ author: >-
   [Dónal O'Sullivan](https://github.com/osullivandonal)(Elastic)
 issue: 11728
 sig: System
+# prettier-ignore
 cSpell:ignore: Dónal hostmetrics iowait mdatagen otelcontribcol processscraper
 ---
 
