@@ -37,7 +37,7 @@ ce vor fi propagate de la un serviciu la altul.
 
 Propagarea este gestionată de obicei de librăriile de instrumentare și este
 transparentă pentru utilizator. În situația în care ai nevoie să propagi manual
-contextul, poțu utilizata
+contextul, poți utilizata
 [API-ul Propagators](/docs/specs/otel/context/api-propagators/).
 
 OpenTelemetry întreține mai mulți propagatori oficiali. Propagatorul implicit
@@ -84,10 +84,10 @@ posibil să se vadă cele două cereri ca segmente ale unei singure urme.
 
 SDK-urile OpenTelemetry pot corela automat jurnalele cu trasele. Acest lucru
 înseamnă că pot insera informații de context (ID-ul urmei, ID-ul intervalului)
-într-o înregistrare de jurnal. Acest lucru nu numai că vă permite să vizualizați
-jurnalele în contextul urmei și al intervalului cărora le aparțin, dar îți
-permite, de asemenea, să vizualizezi jurnalele care fac parte din același
-context, chiar și dincolo de limitele serviciilor sau ale unităților de
+într-o înregistrare de jurnal. Acest lucru nu numai că îți permite să
+vizualizezi jurnalele în contextul urmei și al intervalului cărora le aparțin,
+dar îți permite, de asemenea, să vizualizezi jurnalele care fac parte din
+același context, chiar și dincolo de limitele serviciilor sau ale unităților de
 execuție.
 
 ### Metrici
