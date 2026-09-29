@@ -96,11 +96,7 @@ resources for observability instead, either with a vendor or compute when
 self-hosting, depending on your observability backend, the nature of your data,
 and your attempts to sample effectively.
 
-## Head Sampling
-
-Head sampling is a sampling technique used to make a sampling decision as early
-as possible. A decision to sample or drop a span or trace is not made by
-inspecting the trace as a whole.
+## Default behavior
 
 By default, OpenTelemetry SDKs use
 [`ParentBased(root=AlwaysOn)`](/docs/specs/otel/trace/sdk/#built-in-samplers).
@@ -109,6 +105,12 @@ sampling decision. Consequently, the default does not reduce the volume of newly
 started traces. However, if an incoming parent context is marked as not sampled,
 that decision is respected. To sample only a fraction of new traces, configure a
 different root sampler.
+
+## Head Sampling
+
+Head sampling is a sampling technique used to make a sampling decision as early
+as possible. A decision to sample or drop a span or trace is not made by
+inspecting the trace as a whole.
 
 A widely supported form of head sampling uses a
 [`ParentBased`](/docs/specs/otel/trace/sdk/#parentbased) sampler with
