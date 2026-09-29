@@ -2,9 +2,8 @@
 title: Servicio de Correo
 linkTitle: Correo
 aliases: [emailservice]
-cSpell:ignore: sinatra
 default_lang_commit: 1c87256b0c7b72f3040249ab65eaefc7eb066280
-cSpell:ignore: autoinstrumentar autoinstrumentados autoinstrumentado
+cSpell:ignore: autoinstrumentado autoinstrumentados autoinstrumentar sinatra
 ---
 
 Este servicio envía una confirmación por correo cuando se realiza una orden.
