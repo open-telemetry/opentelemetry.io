@@ -3,7 +3,8 @@ title: はじめに
 description: 計装コードを書かずに Go アプリケーションからテレメトリーをキャプチャします。
 weight: 5
 default_lang_commit: c9a73abce6f8c4b1ee1bdb244ed1ce6ce7192f04
-cSpell:ignore: GOFLAGS otelc toolexec
+drifted_from_default: true
+cSpell:ignore: GOFLAGS
 ---
 
 このページでは、コンパイル時計装を使用して Go アプリケーションをビルドし、生成されるテレメトリーを確認する方法を説明します。
