@@ -1,0 +1,32 @@
+# cSpell:ignore: faststream
+title: FastStream
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - messaging
+  - kafka
+  - rabbitmq
+  - nats
+  - redis
+  - mqtt
+license: Apache-2.0
+description:
+  FastStream is an asynchronous Python framework for building event-driven
+  services on Kafka, RabbitMQ, NATS, Redis and MQTT. It ships built-in
+  OpenTelemetry tracing and metrics for publishers and subscribers following
+  the messaging semantic conventions.
+authors:
+  - name: FastStream maintainers
+    url: https://github.com/ag2ai/faststream
+package:
+  name: faststream
+  registry: pip
+  version: 0.7.7
+urls:
+  website: https://faststream.ag2.ai/
+  repo: https://github.com/ag2ai/faststream
+  docs: https://faststream.ag2.ai/latest/getting-started/observability/opentelemetry/
+createdAt: '2026-09-30'
+isNative: true
