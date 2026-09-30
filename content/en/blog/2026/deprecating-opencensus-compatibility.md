@@ -2,11 +2,10 @@
 title: Deprecating OpenCensus compatibility requirements
 linkTitle: Deprecating OpenCensus compatibility
 date: 2026-06-23
-author:
-  '[Krishna Chaitanya Kalluri](https://github.com/Krishnachaitanyakc) (Meta)'
+author: '[Krishna Chaitanya Balusu](https://github.com/Krishnachaitanyakc)'
 issue: https://github.com/open-telemetry/opentelemetry-specification/pull/5138
 sig: Specification
-cSpell:ignore: Chaitanya Kalluri Krishna
+cSpell:ignore: Balusu Chaitanya Krishna
 ---
 
 On June 12, 2026, the OpenTelemetry Specification project merged
