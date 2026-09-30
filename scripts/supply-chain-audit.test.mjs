@@ -179,8 +179,6 @@ test('lock and manifest: install scripts stay inventoried in allowScripts', () =
     covered.add(`${name}@${pkg.version}`);
   }
   assert.ok(withInstallScript > 0, 'install-script packages were audited');
-  // The reverse direction: no stale or speculative allowScripts entries
-  // beyond what the lock needs.
   assert.deepEqual(
     Object.keys(allowScripts).sort(),
     [...covered].sort(),

@@ -217,7 +217,7 @@
     "adm-zip": "0.6.1"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
-  "enginesNpmComment": "Floor policy: https://opentelemetry.io/site/build/dependencies/#npm-version-floor; 11.18 floor: npm/cli#9652 fix, plus min-release-age-exclude (added in 11.17); Node LTS bundles 11.19+ since 24.20.0",
+  "enginesNpmComment": "Floor policy: https://opentelemetry.io/site/build/dependencies/#npm-version-floor. The 11.18 floor brings the npm/cli#9652 fix and min-release-age-exclude (added in 11.17); Node LTS bundles 11.19+ since 24.20.0.",
   "engines": {
     "node": ">=24",
     "npm": ">=11.18.0"
