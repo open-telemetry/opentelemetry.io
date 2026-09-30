@@ -4523,7 +4523,7 @@ https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS,
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/PULL_REQUEST_TEMPLATE.md,200,1787981966
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml,200,1788327784
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml,200,1788327782
-https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5,200,1788327783
+https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.jsonc,200,1790791578
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/collector-sync.sh,200,1788327784
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/pr-approval-labels.sh,200,1788327782
 https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/blog-publish-labels.yml,200,1788327782
