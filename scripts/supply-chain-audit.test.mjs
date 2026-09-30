@@ -1,11 +1,14 @@
 // Committed supply-chain audit: proves, from the committed manifests, lock,
 // .npmrc, and netlify.toml alone, that the install-hardening invariants
 // still hold, so integrity claims regenerate from this test instead of ad
-// hoc audit runs. The audited controls:
+// hoc audit runs. Audited controls: the design page,
 // https://opentelemetry.io/site/design/supply-chain-security/
-// Out of scope: the Docsy theme-deps install (themes/docsy runs under its
-// own project config and audits itself upstream), and the build-side
-// scripts past the install boundary (see the pin-boundary comment below).
+//
+// Out of scope (the same list as the build docs' "Out of the audit's
+// scope"): GitHub workflow files; the Renovate configuration, reviewed
+// like code; the Docsy theme-deps install (themes/docsy runs under its own
+// project config and audits itself upstream); and the build-side scripts
+// past the install boundary (see the pin-boundary comment below).
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -36,7 +39,6 @@ const gitDependencyRepos = {};
 // Known-poisoned package@version pairs from the 2026-08 npm-worm campaign
 // (Datadog Security Labs). A denylist only ever samples: the structural
 // checks (registry + integrity, allowlists) are the load-bearing part.
-// Refresh this list when intentionally updating dependencies.
 const packageIocs = new Set([
   'keyv@6.0.0',
   '@cacheable/net@2.1.1',
@@ -161,9 +163,10 @@ test('lock and manifest: install scripts stay inventoried in allowScripts', () =
     const name = key.slice(
       key.lastIndexOf('node_modules/') + 'node_modules/'.length,
     );
-    // A stale exact-version approval fails npm ci under
-    // strict-allow-scripts; this assertion names the fix in the bump PR
-    // itself.
+    // A stale exact-version approval fails where scripts are enabled: the
+    // hugo-extended rebuild in install:safe and any plain local install
+    // (every npm ci here runs --ignore-scripts, which bypasses the strict
+    // preflight). This assertion names the fix in the bump PR itself.
     if (allowScripts[name] === false) {
       covered.add(name);
       continue;
