@@ -90,7 +90,7 @@ val otel: OpenTelemetry = createOpenTelemetry {
 ```
 
 By default, the SDK always sets `service.name`, `service.version`, and
-`telemetry.sdk.*`. These can be overriden by supplying your own value.
+`telemetry.sdk.*`. These can be overridden by supplying your own value.
 
 ## Limits
 
