@@ -87,9 +87,12 @@ the versions offered), reconcile the lock with the changed manifest:
 npm install --package-lock-only --ignore-scripts
 ```
 
-Unlike `npm update` (below), this rewrites only what the manifest change
-requires, leaving other entries as pinned. A merge conflict on the lock file
-takes the same recipe: keep the `main` version and rerun the command.
+Unlike `npm update` (below), this leaves entries the change doesn't reach as
+pinned. It does re-resolve a replaced package's own transitive dependencies
+(those no other package depends on) to the newest versions their ranges and the
+cooldown admit, so review the whole lock delta, not only the lines you edited
+for. A merge conflict on the lock file takes the same recipe: keep the `main`
+version and rerun the command.
 
 ### Script-bearing packages
 
@@ -114,6 +117,16 @@ on demand at the repository root (the lock also covers the
 ```sh
 npm update --package-lock-only --ignore-scripts
 ```
+
+To move named packages only, the manual route for an advisory whose fix is in
+range but which no bot PR carries, list them:
+
+```sh
+npm update --package-lock-only --ignore-scripts PACKAGE_NAME
+```
+
+Replace _`PACKAGE_NAME`_ with the package (or packages) to refresh; nothing else
+in the lock moves.
 
 The [release cooldown](#release-cooldown) applies, with a sharp edge: a
 dependency whose only satisfying versions are younger than the cooldown (an
@@ -152,8 +165,10 @@ alert-driven:
 The overlap is deliberate; an occasional duplicate PR is accepted. With
 scheduled lock re-resolves [disabled by design][deliberate], these alert-driven
 paths are the only automated route for transitive fixes, so the repository-side
-setting stays on. The two paths meet the [release cooldown](#release-cooldown)
-differently:
+setting stays on. When neither opens a PR (an `npm audit` finding with an
+in-range fix and no alert, for example), a maintainer refreshes the package
+[by name](#transitive-refresh). The two paths meet the
+[release cooldown](#release-cooldown) differently:
 
 - Dependabot security updates deliberately override every release-age gate
   (`.npmrc` included): a fix version younger than the cooldown can land, and
