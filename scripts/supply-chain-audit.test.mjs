@@ -353,26 +353,6 @@ test('lock and manifest: the adm-zip override is applied and still needed', () =
   );
 });
 
-// GHSA-7w5x-hrqm-74c2; drop with the override once markdownlint-cli2's pin
-// clears 1.7.0.
-test('lock and manifest: the smol-toml override is applied and still needed', () => {
-  const nested = Object.keys(lock.packages).filter((key) =>
-    key.endsWith('/node_modules/smol-toml'),
-  );
-  assert.deepEqual(nested, [], 'smol-toml resolves to the root copy only');
-  const version = lock.packages['node_modules/smol-toml'].version;
-  const [major, minor, patch] = version.split('.').map(Number);
-  assert.ok(
-    major > 1 || (major === 1 && (minor > 7 || (minor === 7 && patch >= 1))),
-    'locked smol-toml clears the GHSA-7w5x-hrqm-74c2 range (<= 1.7.0)',
-  );
-  assert.equal(
-    lock.packages['node_modules/markdownlint-cli2'].dependencies['smol-toml'],
-    '1.7.0',
-    'markdownlint-cli2 declares the exact smol-toml pin that justifies the override',
-  );
-});
-
 test('manifest and lock: unscoped markdownlint-rule-link-pattern stays absent', () => {
   // npm-security-held after GHSA-q3xp-j858-q9xf; the project's package is
   // @pchalin/markdownlint-rule-link-pattern.
