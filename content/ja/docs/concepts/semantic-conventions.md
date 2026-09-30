@@ -3,6 +3,7 @@ title: セマンティック規約
 description: さまざまな種類の操作やデータの共通の名前
 weight: 30
 default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+drifted_from_default: true
 ---
 
 OpenTelemetryは[セマンティック規約](/docs/specs/semconv/)を定義していて、セマンティック属性と呼ばれることもあります。
