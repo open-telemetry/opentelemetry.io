@@ -12,7 +12,7 @@ Go アプリケーションに対して、OpenTelemetry はソースコードを
 
 このガイドでは、[OpenTelemetry eBPF Instrumentation（OBI）](/docs/zero-code/obi/)と[OpenTelemetry Go コンパイル時計装](/docs/zero-code/go/compile-time/)（`otelc`）を比較し、環境に適したツールの選択を支援します。
 
-> **Note:** Go の自動計装 SDK については、[自動計装](/docs/zero-code/go/autosdk/)を参照してください。
+> **Note:** Go の自動計装 SDK については、[Auto SDK](/docs/zero-code/go/autosdk/)を参照してください。
 > このガイドは eBPF とコンパイル時のゼロコードアプローチの比較に焦点を当てています。
 
 これは意思決定ガイドであり、ランキングではありません。
