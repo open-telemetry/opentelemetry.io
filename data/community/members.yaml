@@ -464,6 +464,8 @@ maintainers:
     teams:
       - demo-approvers
       - demo-maintainers
+      - helm-approvers
+      - helm-triagers
     html_url: https://github.com/cyrille-leclerc
     avatar_url: https://avatars.githubusercontent.com/u/459691?v=4
   - name: damemi
@@ -1523,11 +1525,9 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/93588780?v=4
   - name: ThomsonTan
     teams:
-      - arrow-triagers
       - cpp-approvers
       - cpp-contrib-approvers
       - cpp-contrib-maintainers
-      - cpp-maintainers
     html_url: https://github.com/ThomsonTan
     avatar_url: https://avatars.githubusercontent.com/u/1041795?v=4
   - name: tiffany76
@@ -2851,6 +2851,9 @@ members:
   - name: ishleenk17
     html_url: https://github.com/ishleenk17
     avatar_url: https://avatars.githubusercontent.com/u/102962586?v=4
+  - name: itssaharsh
+    html_url: https://github.com/itssaharsh
+    avatar_url: https://avatars.githubusercontent.com/u/71026625?v=4
   - name: james-bebbington
     html_url: https://github.com/james-bebbington
     avatar_url: https://avatars.githubusercontent.com/u/568630?v=4
@@ -3067,6 +3070,9 @@ members:
   - name: perk
     html_url: https://github.com/perk
     avatar_url: https://avatars.githubusercontent.com/u/1143849?v=4
+  - name: peschinskiy
+    html_url: https://github.com/peschinskiy
+    avatar_url: https://avatars.githubusercontent.com/u/7569513?v=4
   - name: petern48
     html_url: https://github.com/petern48
     avatar_url: https://avatars.githubusercontent.com/u/115442597?v=4
