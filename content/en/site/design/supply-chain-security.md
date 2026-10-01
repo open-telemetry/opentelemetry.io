@@ -103,8 +103,8 @@ Enforcement at a glance:
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | [Minimize dependencies][]               | Maintainer judgment in dependency review; no mechanical control                                                  |
 | [Install from the lock][]               | `npm ci` in every [install contract][install contracts]                                                          |
-| [Resolve deliberately][]                | [Convention][dep-updates] and disabled [`lockFileMaintenance`][] in [`renovate.json5`][]                         |
-| [Resolve only cooled-down releases][]   | [Cooldown][] in npm and [Renovate][`renovate.json5`]                                                             |
+| [Resolve deliberately][]                | [Convention][dep-updates] and disabled [`lockFileMaintenance`][] in [`renovate.jsonc`][]                         |
+| [Resolve only cooled-down releases][]   | [Cooldown][] in npm and [Renovate][`renovate.jsonc`]                                                             |
 | [Run only reviewed lifecycle scripts][] | The [allowlist][] in strict mode; unreviewed fails the install                                                   |
 | [Refuse Hugo installer overrides][]     | The [rebuild wrapper][install contracts]'s environment screen, before any rebuild attempt                        |
 | [Neutralize the auto-install][]         | The [inert auto-install][] control                                                                               |
@@ -131,7 +131,7 @@ Enforcement at a glance:
 <!-- prettier-ignore-start -->
 [`lockFileMaintenance`]: https://docs.renovatebot.com/configuration-options/#lockfilemaintenance
 [`package-lock.json`]: https://docs.npmjs.com/cli/configuring-npm/package-lock-json
-[`renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
+[`renovate.jsonc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.jsonc
 [allowlist]: ../../build/dependencies/#lifecycle-script-allowlist
 [control]: ../../build/dependencies/#controls
 [cooldown]: ../../build/dependencies/#release-cooldown

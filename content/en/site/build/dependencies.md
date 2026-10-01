@@ -101,7 +101,7 @@ the contributor making the change:
    in PR review: a needed script as an exact-version approval, an unneeded one
    as a name-level denial (`false`, which needs no update on later bumps).
 3. For a new approval, also adds the package to the Renovate automerge exclusion
-   in [`.github/renovate.json5`][]: every bump of an approved package needs the
+   in [`.github/renovate.jsonc`][]: every bump of an approved package needs the
    steps above, so its update PRs must wait for a contributor.
 
 ### Transitive refreshes {#transitive-refresh}
@@ -189,7 +189,7 @@ this page, so first work out which control your change relaxes.
 Out of the audit's scope:
 
 - GitHub workflow files
-- [Renovate][] configuration ([`.github/renovate.json5`][]): reviewed like code,
+- [Renovate][] configuration ([`.github/renovate.jsonc`][]): reviewed like code,
   not audit-pinned
 - The [Docsy][] theme's own dependency install (audited upstream)
 - The build-half npm scripts past the install boundary
@@ -209,7 +209,7 @@ Version resolution ignores releases younger than the configured minimum age.
     for an invocation, set the `npm_config_min_release_age` environment
     variable, which outranks both.
 - **[Renovate][]**: applies its own cooldown to the update PRs it opens, set by
-  `minimumReleaseAge` in [`.github/renovate.json5`][]; longer for the updates
+  `minimumReleaseAge` in [`.github/renovate.jsonc`][]; longer for the updates
   that merge without human review. The preset-supplied 3-day npm cooldown
   (`security:minimumReleaseAgeNpm`) is excluded so that it can't override these
   ages, its age exemptions included; caution: an upstream rename of that preset
@@ -293,7 +293,7 @@ with this rule through [drift tracking][].
 - **Enforcement**: review discipline; there is no automated check.
 
 <!-- prettier-ignore-start -->
-[`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
+[`.github/renovate.jsonc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.jsonc
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
