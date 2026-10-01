@@ -4,6 +4,7 @@ description:
   Obtenez la télémétrie pour votre application en moins de 5 minutes !
 weight: 5
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+drifted_from_default: true
 cSpell:ignore: ASPNETCORE rolldice
 ---
 
