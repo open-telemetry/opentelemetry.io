@@ -125,7 +125,7 @@ test('lock and manifest: install scripts stay inventoried in allowScripts', () =
     // A stale exact-version approval fails where scripts are enabled: the
     // hugo-extended rebuild in install:safe and any plain local install
     // (every npm ci here runs --ignore-scripts, which bypasses the strict
-    // preflight). This assertion names the fix in the bump PR itself.
+    // preflight).
     if (allowScripts[name] === false) {
       covered.add(name);
       continue;
@@ -428,8 +428,7 @@ test('netlify.toml: auto-install stays inert and build commands stay pinned', ()
   // The build table is the execution surface: command and any ignore
   // command run in the build container, and [build.environment] feeds
   // every build process (NPM_CONFIG_* outranks .npmrc, NODE_OPTIONS
-  // injects code, HUGO_* steers the installer). Pinning the exact key
-  // sets forbids ignore, plugins, and any env addition wholesale.
+  // injects code, HUGO_* steers the installer).
   const { build, context } = config;
   assert.deepEqual(
     Object.keys(build).sort(),

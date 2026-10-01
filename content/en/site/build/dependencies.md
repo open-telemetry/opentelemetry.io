@@ -27,7 +27,7 @@ environment:
 - **Devcontainer**: `npm run install:safe`, the same contract.
 - **Netlify**: `npm run install:safe`, run by the [Netlify][] build command
   after the [inert auto-install](#inert-netlify-auto-install), between
-  clean-working-tree checks:
+  clean-working-tree checks.
   - Lock drift or any other Git-visible change fails the build.
   - For failures on paths the install never touched, see
     [Stale Netlify build cache](#netlify-build-cache) below.
@@ -80,7 +80,7 @@ change.
 
 ### Manifest changes {#manifest-changes}
 
-Whether you edited `package.json` by hand or bumped every in-range version with
+Whether you edited `package.json` by hand or bumped every version with
 `npm run update:packages` (the [release cooldown](#release-cooldown) applies to
 the versions offered), reconcile the lock with the changed manifest:
 
@@ -89,7 +89,7 @@ npm install --package-lock-only --ignore-scripts
 ```
 
 Unlike `npm update` (below), this leaves entries the change doesn't reach as
-pinned. It does re-resolve a replaced package's own transitive dependencies
+pinned. It can also re-resolve a replaced package's own transitive dependencies
 (those no other package depends on) to the newest versions their ranges and the
 cooldown admit, so review the whole lock delta, not only the lines you edited
 for. A merge conflict on the lock file takes the same recipe: keep the `main`
@@ -119,15 +119,15 @@ on demand at the repository root (the lock also covers the
 npm update --package-lock-only --ignore-scripts
 ```
 
-To move named packages only, the manual route for an advisory whose fix is in
-range but which no bot PR carries, list them:
+To refresh named packages only, list them:
 
 ```sh
 npm update --package-lock-only --ignore-scripts PACKAGE_NAME
 ```
 
-Replace _`PACKAGE_NAME`_ with the package (or packages) to refresh; nothing else
-in the lock moves.
+Replace _`PACKAGE_NAME`_ with the package (or packages) to refresh. npm also
+moves whatever the selected versions require, so review the whole lock delta
+here too.
 
 The [release cooldown](#release-cooldown) applies, with a sharp edge: a
 dependency whose only satisfying versions are younger than the cooldown (an
@@ -168,7 +168,7 @@ scheduled lock re-resolves [disabled by design][deliberate], these alert-driven
 paths are the only automated route for transitive fixes, so the repository-side
 setting stays on. When neither opens a PR (an `npm audit` finding with an
 in-range fix and no alert, for example), a maintainer refreshes the package
-[by name](#transitive-refresh). The two paths meet the
+[by name](#transitive-refresh): the manual route. The two paths meet the
 [release cooldown](#release-cooldown) differently:
 
 - Dependabot security updates deliberately override every release-age gate
@@ -241,9 +241,9 @@ are listed in the `allowScripts` allowlist:
 
 - **Enforcement**: the `allowScripts` map in [`package.json`][], made
   fail-closed by `strict-allow-scripts` in [`.npmrc`][].
-- **Where it fires**: only on a script-enabled install: the one hook the
-  [install contracts](#install-contracts) re-enable (an explicit
-  `--ignore-scripts=false` at the call site), and a local `npm install` run
+- **Where it fires**: on script-enabled installs only, which here means the one
+  hook the [install contracts](#install-contracts) re-enable (an explicit
+  `--ignore-scripts=false` at the call site) and a local `npm install` run
   without `--ignore-scripts`. Every other install is script-free, allowlisted or
   not, so that hook is what keeps the gate exercised.
 - **Denials**:
@@ -262,9 +262,10 @@ version that supports the controls above.
 
 - **Enforcement**:
   - `engines` in [`package.json`][] sets the floor.
-  - `engine-strict` in [`.npmrc`][] makes it fail closed: an npm below the floor
-    lacks part of the enforcement the controls rely on and warns about none of
-    it, so the `EBADENGINE` error is the only signal.
+  - `engine-strict` in [`.npmrc`][] makes it fail closed. Without it, a
+    below-floor npm only warns (`EBADENGINE`) and installs anyway, and the part
+    that matters is silent: it runs the install scripts `allowScripts` denies,
+    without a word about the field it doesn't understand.
 - **Floor policy**:
   - The floor rises as npm fixes enforcement gaps in the controls.
   - The committed `.nvmrc` pins a Node.js release whose bundled npm satisfies
