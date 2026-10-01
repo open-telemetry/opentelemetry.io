@@ -9,9 +9,8 @@ cSpell:ignore: mismodels
 The [supply-chain audit][] proves the repository's [dependency
 controls][controls] from committed files alone. An audit that can be fooled (or
 that passes when it checks nothing) is worse than none, because green then
-vouches for an unverified state. The principles below come from adversarial
-review rounds against this audit and its [Docsy predecessor][docsy-2714], each
-round hunting inputs that violate a control yet pass the test.
+vouches for an unverified state. Each principle below closes one way the audit
+could pass while a control is violated.
 
 For which controls exist and why, see
 [Supply-chain security](../supply-chain-security/); for what to do when the
@@ -19,8 +18,6 @@ audit fails on your PR, see the [audit section][supply-chain audit] of the
 dependency docs.
 
 ## Principles
-
-Each principle answers a way a verifier can lie.
 
 1. **Prove from committed files alone.** The audit reads the lock, manifests,
    `.npmrc`, and `netlify.toml` (never the network or the installed tree), so it
@@ -85,6 +82,5 @@ inventory of assertions.
 [audit test]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [controls]: ../../build/dependencies/#controls
-[docsy-2714]: https://github.com/google/docsy/pull/2714
 [out-of-scope]: ../../build/dependencies/#audit-out-of-scope
 [supply-chain audit]: ../../build/dependencies/#audit
