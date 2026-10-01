@@ -266,8 +266,9 @@ version that supports the controls above.
   - `engines` in [`package.json`][] sets the floor. Below it, npm lacks some or
     all of the allowlist's enforcement, or the `min-release-age-exclude` setting
     that the [transitive-refresh exemption](#transitive-refresh) relies on; the
-    comment beside `engines` names the releases. An npm that doesn't know the
-    `allowScripts` field says nothing about it and runs every install script.
+    comment beside `engines` names the releases. Versions without `allowScripts`
+    support ignore the field silently, so a script-enabled install runs every
+    install script.
   - `engine-strict` in [`.npmrc`][] turns npm's `EBADENGINE` warning into a
     refusal.
 - **Floor policy**:
