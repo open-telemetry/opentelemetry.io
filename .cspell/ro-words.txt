@@ -36,6 +36,7 @@ elimini
 emiți
 emojiilor
 enumerează
+eșantionare
 explorezi
 exportatorilor
 formatorul

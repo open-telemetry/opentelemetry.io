@@ -1,21 +1,21 @@
 ---
-title: Sampling
+title: Eșantionare
 description:
-  Learn about sampling and the different sampling options available in
-  OpenTelemetry.
+  Învață despre eșantionare și diferitele opțiuni disponibile în OpenTelemetry.
 weight: 80
+default_lang_commit: 7fdabd2ed2c394ad4cbff90314c2f12eea6db1d9
 ---
 
-With [traces](/docs/concepts/signals/traces), you can observe requests as they
-move from one service to another in a distributed system. Tracing is highly
-practical for both high-level and in-depth analysis of systems.
+Cu [urme](/docs/concepts/signals/traces), poți observa cum cererile circulă de
+la un serviciu la altul într-un sistem distribuit. Urmărirea este extrem de
+utilă atât pentru analiza de ansamblu, cât și pentru cea detaliată a sistemelor.
 
-However, if the large majority of your requests are successful and finish with
-acceptable latency and no errors, you do not need 100% of your traces to
-meaningfully observe your applications and systems. You just need the right
-sampling.
+Totuși, dacă marea majoritate a cererilor sunt reușite și se finalizează cu o
+latență acceptabilă și fără erori, nu ai nevoie de 100% din urme pentru a
+monitoriza eficient aplicațiile și sistemele tale. Ai nevoie doar de o
+eșantionare adecvată.
 
-![Illustration shows that not all data needs to be traced, and that a sample of data is sufficient.](traces-venn-diagram.svg)
+![Ilustrația arată că nu toate datele au nevoie să fie urmărite și că un eșantion din date este suficient.](traces-venn-diagram.svg)
 
 ## Terminology
 
