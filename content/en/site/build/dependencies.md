@@ -89,12 +89,14 @@ the versions offered), reconcile the lock with the changed manifest:
 npm install --package-lock-only --ignore-scripts
 ```
 
-Unlike `npm update` (below), this leaves entries the change doesn't reach as
-pinned. It can also re-resolve a replaced package's own transitive dependencies
-(those no other package depends on) to the newest versions their ranges and the
-cooldown admit, so review the whole lock delta, not only the entries your edit
-targeted. A merge conflict on the lock file takes the same recipe: keep the
-`main` version and rerun the command.
+Unlike `npm update` (below), this command rewrites only the lock entries your
+manifest edit affects. That can be more than the packages you edited: when a
+bumped package is replaced, its own transitive dependencies (those no other
+package depends on) are re-resolved to the newest versions their ranges and the
+cooldown admit, so review the whole lock delta.
+
+A merge conflict on the lock file takes the same recipe: keep the `main` version
+and rerun the command.
 
 ### Script-bearing packages
 
@@ -120,7 +122,7 @@ on demand at the repository root (the lock also covers the
 npm update --package-lock-only --ignore-scripts
 ```
 
-To refresh named packages, name them:
+To refresh only some packages, name them:
 
 ```sh
 npm update --package-lock-only --ignore-scripts PACKAGE_NAME
@@ -130,7 +132,7 @@ Replace _`PACKAGE_NAME`_ with the package (or packages) to refresh.
 
 Either way, review the whole refreshed lock: npm also moves whatever the
 selected versions require, and because it honors the manifests' declared ranges,
-a parent that widens a range can pull a new transitive major.
+a parent that widens a range can pull in a new transitive major.
 
 The [release cooldown](#release-cooldown) applies, with a sharp edge: a
 dependency whose only satisfying versions are younger than the cooldown (an
@@ -263,10 +265,9 @@ version that supports the controls above.
 - **Enforcement**:
   - `engines` in [`package.json`][] sets the floor. Below it, npm lacks some or
     all of the allowlist's enforcement, or the `min-release-age-exclude` setting
-    the [transitive-refresh exemption](#transitive-refresh) relies on; the
-    manifest's comment on the floor names the releases. An npm that doesn't know
-    the `allowScripts` field says nothing about it and runs every install
-    script.
+    that the [transitive-refresh exemption](#transitive-refresh) relies on; the
+    comment beside `engines` names the releases. An npm that doesn't know the
+    `allowScripts` field says nothing about it and runs every install script.
   - `engine-strict` in [`.npmrc`][] turns npm's `EBADENGINE` warning into a
     refusal.
 - **Floor policy**:

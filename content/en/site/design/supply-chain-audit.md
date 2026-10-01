@@ -80,7 +80,7 @@ inventory of assertions.
 | Red-first               | Each hardening commit's PR notes the broken input that first made it fail                             |
 | Assertions name the fix | `allowScripts covers hugo-extended at its locked version X`                                           |
 | Stated scope boundary   | The audit's header comment names the excluded surfaces                                                |
-| Checks earn their keep  | The engines floor's shape is asserted, not its values: `engine-strict` enforces those at install time |
+| Checks earn their keep  | The engines floor's shape is asserted, not its values; `engine-strict` enforces those at install time |
 
 [audit test]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs

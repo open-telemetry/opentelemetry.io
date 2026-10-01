@@ -1,7 +1,7 @@
 // Committed supply-chain audit: proves, from the committed manifests, lock,
 // .npmrc, and netlify.toml alone, that the install-hardening invariants
 // still hold, so integrity claims regenerate from this test instead of ad
-// hoc audit runs. Audited controls: the security design page,
+// hoc audit runs. Audited controls: the supply-chain security page,
 // https://opentelemetry.io/site/design/supply-chain-security/
 //
 // Out of scope: GitHub workflow files, the Renovate configuration, the Docsy
