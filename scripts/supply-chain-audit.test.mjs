@@ -1,14 +1,13 @@
 // Committed supply-chain audit: proves, from the committed manifests, lock,
 // .npmrc, and netlify.toml alone, that the install-hardening invariants
 // still hold, so integrity claims regenerate from this test instead of ad
-// hoc audit runs. Audited controls: the design page,
+// hoc audit runs. Audited controls: the security design page,
 // https://opentelemetry.io/site/design/supply-chain-security/
 //
-// Out of scope (the same list as the build docs' "Out of the audit's
-// scope"): GitHub workflow files; the Renovate configuration, reviewed
-// like code; the Docsy theme-deps install (themes/docsy runs under its own
-// project config and audits itself upstream); and the build-side scripts
-// past the install boundary (see the pin-boundary comment below).
+// Out of scope: GitHub workflow files, the Renovate configuration, the Docsy
+// theme-deps install, and the build-side scripts past the install boundary
+// (see the pin-boundary comment below). Why each:
+// https://opentelemetry.io/site/build/dependencies/#audit-out-of-scope
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -88,9 +87,8 @@ test('lock: every package is registry+integrity or an allowlisted git pin', () =
       const keyName = key.slice(
         key.lastIndexOf('node_modules/') + 'node_modules/'.length,
       );
-      // npm trusts only the identity baked into the registry URL
-      // (@npmcli/arborist script-allowed.js), so bind key, name field, and
-      // URL to one identity; aliases are not in use, and adding one is a
+      // Identity is the one npm trusts (@npmcli/arborist script-allowed.js):
+      // key, name field, and URL bound together; adding an alias is a
       // deliberate review event.
       assert.ok(
         pkg.name === undefined || pkg.name === keyName,
@@ -122,14 +120,13 @@ test('lock and manifest: install scripts stay inventoried in allowScripts', () =
     const name = key.slice(
       key.lastIndexOf('node_modules/') + 'node_modules/'.length,
     );
-    // A stale exact-version approval fails where scripts are enabled: the
-    // hugo-extended rebuild in install:safe and any plain local install
-    // (every npm ci here runs --ignore-scripts, which bypasses the strict
-    // preflight).
     if (allowScripts[name] === false) {
       covered.add(name);
       continue;
     }
+    // A stale approval fails at the hugo-extended rebuild step and on
+    // script-enabled local installs:
+    // https://opentelemetry.io/site/build/dependencies/#lifecycle-script-allowlist
     assert.equal(
       allowScripts[`${name}@${pkg.version}`],
       true,
@@ -174,10 +171,9 @@ test('workspaces: the reviewed member set, no shadow config or scripts', () => {
   // from inside the member directory included (npm walks up to the root),
   // so a member carrying its own .npmrc or lock would be dead weight that
   // reads as a control; and a new member widens the audited install
-  // surface, so the list itself is pinned. Names are org-scoped: an
-  // unscoped name in a public manifest is claimable on the registry by
-  // anyone (private:true only stops publishing from here), while
-  // @opentelemetry publishes only for the org.
+  // surface, so the list itself is pinned. Names stay under @opentelemetry:
+  // an unscoped name in a public manifest is claimable on the registry
+  // (private:true only stops publishing from here).
   const reviewedWorkspaces = {
     'scripts/generate-community-data': '@opentelemetry/generate-community-data',
   };
@@ -278,8 +274,8 @@ test('lock: no package provides a bin that shadows a trusted command', () => {
 });
 
 test('manifest: the engines floor keeps its binding shape', () => {
-  // The floor's minimums are review-adjudicated policy; what the audit
-  // guards is the shape that keeps engine-strict binding at runtime:
+  // The audit guards the shape that keeps engine-strict binding; the floor's
+  // values are review-adjudicated:
   // https://opentelemetry.io/site/build/dependencies/#npm-version-floor
   const { engines } = manifest;
   assert.match(engines.npm, /^>=\d+\.\d+\.\d+$/, 'engines.npm is a floor');
@@ -385,8 +381,6 @@ test('manifest: the install path keeps its locked, script-free form', () => {
   ]) {
     assert.equal(scripts[lifecycle], undefined, `${lifecycle} stays absent`);
   }
-  // With no explicit install script, a root binding.gyp makes npm
-  // synthesize `node-gyp rebuild` as the install script.
   assert.ok(
     !fs.existsSync(path.join(repoRoot, 'binding.gyp')),
     'no root binding.gyp (would synthesize node-gyp rebuild)',
@@ -463,8 +457,7 @@ test('netlify.toml: auto-install stays inert and build commands stay pinned', ()
     'NPM_FLAGS constrains the Netlify auto-install to resolution only',
   );
   // NPM_VERSION's sufficiency against the engines floor is enforced at
-  // build time by engine-strict (an undersized npm fails the install),
-  // so the pin's value is adjudicated in review, not re-compared here.
+  // build time by engine-strict, so only the pin's shape is checked here.
   assert.match(
     build.environment.NPM_VERSION,
     /^\d+\.\d+\.\d+$/,

@@ -9,9 +9,9 @@ cSpell:ignore: mismodels
 The [supply-chain audit][] proves the repository's [dependency
 controls][controls] from committed files alone. An audit that can be fooled (or
 that passes when it checks nothing) is worse than none, because green then
-vouches for an unverified state. The principles come from adversarial review
-rounds against this audit and its [Docsy predecessor][docsy-2714], each round
-hunting inputs that violate a control yet pass the test.
+vouches for an unverified state. The principles below come from adversarial
+review rounds against this audit and its [Docsy predecessor][docsy-2714], each
+round hunting inputs that violate a control yet pass the test.
 
 For which controls exist and why, see
 [Supply-chain security](../supply-chain-security/); for what to do when the
@@ -43,8 +43,7 @@ Each principle answers a way a verifier can lie.
    audit binds all three together; checking only the fields npm distrusts
    green-lights a mismatch npm would act on.
 7. **One home per invariant.** A list asserted in two files drifts; the audit
-   imports shared values from their owning module (the Hugo installer's
-   env-override names come from the rebuild helper), and that module's unit test
+   imports shared values from their owning module, and that module's unit test
    pins the content.
 8. **Red-first.** A new check is trusted only after a deliberately broken input
    has made it fail; every closure in the audit's history was proven red before
@@ -52,10 +51,9 @@ Each principle answers a way a verifier can lie.
 9. **Assertions name the expected condition** and, for routine fires, the fix:
    the `allowScripts` assertion names the version a dependency bump must move
    the entry to, so the failure message is the remediation.
-10. **State the scope boundary.** Surfaces the audit deliberately does not cover
-    (workflow files, the theme's own install, build-half scripts) are named in
-    the audit and the docs, so absent coverage is never mistaken for verified
-    coverage.
+10. **State the scope boundary.** The surfaces the audit deliberately does not
+    cover are named in the audit and in the [dependency docs][out-of-scope], so
+    absent coverage is never mistaken for verified coverage.
 11. **Every check earns its keep.** Security comes from the controls' design and
     from review, not from accreting assertions: each one taxes contributors and
     maintainers on every touch. A check belongs here only where it detects
@@ -76,7 +74,7 @@ inventory of assertions.
 | Allowlist whole shapes  | `netlify.toml`: top-level tables, build keys, and env key sets are `deepEqual`ed |
 | Parse, don't line-scan  | `netlify.toml` is parsed with `smol-toml` before anything is asserted            |
 | Exact pins              | The install-closure scripts are compared with `assert.equal`, never `match`      |
-| Fail closed on absence  | `registryPackages > 0`: an empty lock can't pass the registry check vacuously    |
+| Fail closed on absence  | `registryPackages > 0`                                                           |
 | Identity npm trusts     | Each registry entry's `resolved` URL must name its own package and version       |
 | One home per invariant  | `UNSAFE_HUGO_ENV` is imported from `rebuild-hugo-extended.mjs`                   |
 | Red-first               | Each hardening commit's PR notes the broken input that first made it fail        |
@@ -88,4 +86,5 @@ inventory of assertions.
   https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [controls]: ../../build/dependencies/#controls
 [docsy-2714]: https://github.com/google/docsy/pull/2714
+[out-of-scope]: ../../build/dependencies/#audit-out-of-scope
 [supply-chain audit]: ../../build/dependencies/#audit

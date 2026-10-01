@@ -1,10 +1,10 @@
 ---
 title: Dependency management
 description: >-
-  Install, verify, and update the site's npm dependencies under its supply-chain
-  controls.
+  Install contracts, update recipes, and the supply-chain controls on the site's
+  npm dependencies
 weight: 5
-cSpell:ignore: EBADENGINE USERCONFIG
+cSpell:ignore: EBADENGINE
 ---
 
 npm dependencies are pinned by the committed `package-lock.json`, and installs
@@ -92,9 +92,9 @@ npm install --package-lock-only --ignore-scripts
 Unlike `npm update` (below), this leaves entries the change doesn't reach as
 pinned. It can also re-resolve a replaced package's own transitive dependencies
 (those no other package depends on) to the newest versions their ranges and the
-cooldown admit, so review the whole lock delta, not only the lines you edited
-for. A merge conflict on the lock file takes the same recipe: keep the `main`
-version and rerun the command.
+cooldown admit, so review the whole lock delta, not only the entries your edit
+targeted. A merge conflict on the lock file takes the same recipe: keep the
+`main` version and rerun the command.
 
 ### Script-bearing packages
 
@@ -120,15 +120,18 @@ on demand at the repository root (the lock also covers the
 npm update --package-lock-only --ignore-scripts
 ```
 
-To refresh named packages, list them:
+To refresh named packages, name them:
 
 ```sh
 npm update --package-lock-only --ignore-scripts PACKAGE_NAME
 ```
 
-Replace _`PACKAGE_NAME`_ with the package (or packages) to refresh. npm also
-moves whatever the selected versions require, so review the whole lock delta
-here too.
+Replace _`PACKAGE_NAME`_ with the package (or packages) to refresh.
+
+Either way, review the whole refreshed lock, not only the named entries: npm
+also moves whatever the selected versions require, it honors the manifests'
+declared ranges, and a parent that widens a range can pull a new transitive
+major.
 
 The [release cooldown](#release-cooldown) applies, with a sharp edge: a
 dependency whose only satisfying versions are younger than the cooldown (an
@@ -141,11 +144,8 @@ npm_config_min_release_age_exclude=PACKAGE_NAME \
   npm update --package-lock-only --ignore-scripts
 ```
 
-Replace _`PACKAGE_NAME`_ with the vouched-for package. Keep the exemption
-per-invocation; a standing entry in [`.npmrc`][] would permanently waive the
-cooldown for that name. Also review the refreshed lock for major hops:
-`npm update` honors the manifests' declared ranges, and a parent that widens a
-range can pull a new transitive major.
+Keep the exemption per-invocation; a standing entry in [`.npmrc`][] would
+permanently waive the cooldown for that name.
 
 ### Unexpected lock changes {#lock-drift}
 
@@ -167,8 +167,7 @@ alert-driven:
 The overlap is deliberate; an occasional duplicate PR is accepted. With
 scheduled lock re-resolves [disabled by design][deliberate], these alert-driven
 paths are the only automated route for transitive fixes, so the repository-side
-setting stays on. When neither opens a PR (an `npm audit` finding with an
-in-range fix and no alert, for example), a maintainer refreshes the package
+setting stays on. When neither opens a PR, a maintainer refreshes the package
 [by name](#transitive-refresh): the manual route. The two paths meet the
 [release cooldown](#release-cooldown) differently:
 
@@ -203,7 +202,7 @@ condition; the common cases:
 Never loosen an assertion just to get to green: each one enforces a control on
 this page, so first work out which control your change relaxes.
 
-Out of the audit's scope:
+Out of the audit's scope: <a id="audit-out-of-scope"></a>
 
 - GitHub workflow files
 - [Renovate][] configuration ([`.github/renovate.jsonc`][]): reviewed like code,
@@ -242,18 +241,18 @@ are listed in the `allowScripts` allowlist:
 
 - **Enforcement**: the `allowScripts` map in [`package.json`][], made
   fail-closed by `strict-allow-scripts` in [`.npmrc`][].
-- **Where it fires**: on script-enabled installs only, which here means the one
-  hook the [install contracts](#install-contracts) re-enable (an explicit
-  `--ignore-scripts=false` at the call site) and a local `npm install` run
+- **Where it fires**: on script-enabled installs only, which here means the
+  `hugo-extended` rebuild step of the [install contracts](#install-contracts),
+  where npm checks the whole installed tree, and a local `npm install` run
   without `--ignore-scripts`.
 - **Denials**:
   - An entry set to `false` records a reviewed denial: the package installs, its
     script is skipped.
   - Denials grant nothing, so they cover the package by name, across versions.
-- **Local masking**: `ignore-scripts=true` in your user `.npmrc` makes a local
-  install script-free too, so the gate never fires; to check the repository's
-  own posture, run the install with `NPM_CONFIG_USERCONFIG` pointing at an empty
-  file.
+- **Local masking**: `ignore-scripts=true` in your user `.npmrc` makes a plain
+  local `npm install` script-free, so that path skips the allowlist; the rebuild
+  step still evaluates it, so `npm run install:safe` checks the repository's
+  posture regardless of your user config.
 
 ### npm version floor
 
@@ -261,11 +260,14 @@ Installs fail when the active npm is older than the engines floor: the oldest
 version that supports the controls above.
 
 - **Enforcement**:
-  - `engines` in [`package.json`][] sets the floor. Below it, some or all of the
-    allowlist's enforcement is missing, and npm warns about none of that; the
-    manifest's comment names the release that closed each gap.
+  - `engines` in [`package.json`][] sets the floor. Below it, npm lacks some or
+    all of the allowlist's enforcement, or the `min-release-age-exclude` setting
+    the [transitive-refresh exemption](#transitive-refresh) relies on; the
+    manifest's comment on the floor names the releases. An npm that doesn't know
+    the `allowScripts` field says nothing about it and runs every install
+    script.
   - `engine-strict` in [`.npmrc`][] turns npm's `EBADENGINE` warning into a
-    refusal, so a below-floor npm can't install at all.
+    refusal.
 - **Floor policy**:
   - The floor rises as npm fixes enforcement gaps in the controls.
   - The committed `.nvmrc` pins a Node.js release whose bundled npm satisfies
