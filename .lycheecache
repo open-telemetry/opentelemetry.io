@@ -2997,9 +2997,6 @@ https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.161.0/
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.161.0/receiver/yanggrpcreceiver,200,1789637215
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.161.0/receiver/zipkinreceiver,200,1789637215
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.161.0/receiver/zookeeperreceiver,200,1789637215
-https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.97.0/exporter/prometheusexporter,200,1790747174
-https://github.com/open-telemetry/opentelemetry-collector-releases,200,1790747175
-https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-contrib/README.md,200,1790747177
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.162.0/connector/countconnector,200,1790829742
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.162.0/connector/datadogconnector,200,1790829742
 https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.162.0/connector/exceptionsconnector,200,1790829742
@@ -3397,7 +3394,6 @@ https://github.com/open-telemetry/opentelemetry-collector/tree/v0.161.0/processo
 https://github.com/open-telemetry/opentelemetry-collector/tree/v0.161.0/processor/queuebatchprocessor,200,1789536136
 https://github.com/open-telemetry/opentelemetry-collector/tree/v0.161.0/receiver/nopreceiver,200,1789536136
 https://github.com/open-telemetry/opentelemetry-collector/tree/v0.161.0/receiver/otlpreceiver,200,1789536136
-https://github.com/open-telemetry/opentelemetry-collector/tree/v0.97.0/receiver/otlpreceiver,200,1790747174
 https://github.com/open-telemetry/opentelemetry-collector/tree/v0.162.0/connector/forwardconnector,200,1790829742
 https://github.com/open-telemetry/opentelemetry-collector/tree/v0.162.0/exporter/debugexporter,200,1790829737
 https://github.com/open-telemetry/opentelemetry-collector/tree/v0.162.0/exporter/nopexporter,200,1790829736
