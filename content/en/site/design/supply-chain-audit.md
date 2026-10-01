@@ -20,8 +20,7 @@ dependency docs.
 
 ## Principles
 
-Each principle answers a way a verifier can lie; adversarial review found
-concrete instances of most of them in earlier drafts.
+Each principle answers a way a verifier can lie.
 
 1. **Prove from committed files alone.** The audit reads the lock, manifests,
    `.npmrc`, and `netlify.toml` (never the network or the installed tree), so it

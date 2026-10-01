@@ -1,7 +1,8 @@
 ---
 title: Dependency management
 description: >-
-  How the site installs, verifies, and updates its npm dependencies
+  Install, verify, and update the site's npm dependencies under its supply-chain
+  controls.
 weight: 5
 cSpell:ignore: EBADENGINE USERCONFIG
 ---
@@ -119,7 +120,7 @@ on demand at the repository root (the lock also covers the
 npm update --package-lock-only --ignore-scripts
 ```
 
-To refresh named packages only, list them:
+To refresh named packages, list them:
 
 ```sh
 npm update --package-lock-only --ignore-scripts PACKAGE_NAME
@@ -244,8 +245,7 @@ are listed in the `allowScripts` allowlist:
 - **Where it fires**: on script-enabled installs only, which here means the one
   hook the [install contracts](#install-contracts) re-enable (an explicit
   `--ignore-scripts=false` at the call site) and a local `npm install` run
-  without `--ignore-scripts`. Every other install is script-free, allowlisted or
-  not, so that hook is what keeps the gate exercised.
+  without `--ignore-scripts`.
 - **Denials**:
   - An entry set to `false` records a reviewed denial: the package installs, its
     script is skipped.
@@ -261,11 +261,11 @@ Installs fail when the active npm is older than the engines floor: the oldest
 version that supports the controls above.
 
 - **Enforcement**:
-  - `engines` in [`package.json`][] sets the floor.
-  - `engine-strict` in [`.npmrc`][] makes it fail closed. Without it, a
-    below-floor npm only warns (`EBADENGINE`) and installs anyway, and the part
-    that matters is silent: it runs the install scripts `allowScripts` denies,
-    without a word about the field it doesn't understand.
+  - `engines` in [`package.json`][] sets the floor. Below it, some or all of the
+    allowlist's enforcement is missing, and npm warns about none of that; the
+    manifest's comment names the release that closed each gap.
+  - `engine-strict` in [`.npmrc`][] turns npm's `EBADENGINE` warning into a
+    refusal, so a below-floor npm can't install at all.
 - **Floor policy**:
   - The floor rises as npm fixes enforcement gaps in the controls.
   - The committed `.nvmrc` pins a Node.js release whose bundled npm satisfies
