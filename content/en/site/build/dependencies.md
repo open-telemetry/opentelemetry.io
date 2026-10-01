@@ -203,8 +203,8 @@ this page, so first work out which control your change relaxes.
 
 Out of the audit's scope: <a id="audit-out-of-scope"></a>
 
-- GitHub workflow files: their [security model][ci-security] is reviewed on its
-  own
+- GitHub workflow files: trigger and token privileges are reviewed per workflow,
+  in [CI workflows][ci-security]
 - [Renovate][] configuration ([`.github/renovate.jsonc`][]): reviewed like code,
   not audit-pinned
 - The [Docsy][] theme's own dependency install (audited upstream)
@@ -320,11 +320,11 @@ with this rule through [drift tracking][].
 <!-- prettier-ignore-start -->
 [`.github/renovate.jsonc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.jsonc
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
-[ci-security]: ../ci-workflows/#security-model
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
+[ci-security]: ../ci-workflows/#security-model
 [deliberate]: ../../design/supply-chain-security/#deliberate
 [Dependabot security updates]: https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts

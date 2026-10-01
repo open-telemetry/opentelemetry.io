@@ -6,7 +6,7 @@
 //
 // Out of scope: GitHub workflow files, the Renovate configuration, the Docsy
 // theme's own dependency install, and the build-half npm scripts past the
-// install boundary (the pin-boundary comment below marks it). Why each:
+// install boundary (the install-closure comment below marks it). Why each:
 // https://opentelemetry.io/site/build/dependencies/#audit-out-of-scope
 
 import test from 'node:test';
