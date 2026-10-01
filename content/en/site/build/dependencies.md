@@ -92,8 +92,8 @@ npm install --package-lock-only --ignore-scripts
 Unlike `npm update` (below), this command rewrites only the lock entries your
 manifest edit affects. That can be more than the packages you edited: when a
 bumped package is replaced, its own transitive dependencies (those no other
-package depends on) are re-resolved to the newest versions their ranges and the
-cooldown admit, so review the whole lock delta.
+package depends on) can be re-resolved to the newest versions their ranges and
+the cooldown admit, so review the whole lock delta.
 
 A merge conflict on the lock file takes the same recipe: keep the `main` version
 and rerun the command.

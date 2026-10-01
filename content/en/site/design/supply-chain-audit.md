@@ -9,8 +9,8 @@ cSpell:ignore: mismodels
 The [supply-chain audit][] proves the repository's [dependency
 controls][controls] from committed files alone. An audit that can be fooled (or
 that passes when it checks nothing) is worse than none, because green then
-vouches for an unverified state. Each principle below closes one way the audit
-could pass while a control is violated.
+vouches for an unverified state. The principles below keep the audit from
+passing while a control is violated, and keep it worth running.
 
 For which controls exist and why, see
 [Supply-chain security](../supply-chain-security/); for what to do when the
@@ -22,11 +22,11 @@ dependency docs.
 1. **Prove from committed files alone.** The audit reads the lock, manifests,
    `.npmrc`, and `netlify.toml` (never the network or the installed tree), so it
    is fast, offline, and can't be swayed by the state it is meant to vet.
-2. **Allowlist whole shapes; don't denylist patterns.** Every denylist regular
-   expression over a config format eventually met a valid spelling it didn't
-   anticipate (quoted, dotted, and inline-table TOML keys all bypassed an
-   env-key denylist). Pinning the entire reviewed shape (exact key sets, exact
-   values) is stronger and usually shorter.
+2. **Allowlist whole shapes; don't denylist patterns.** A denylist regular
+   expression over a config format misses the valid spellings it doesn't list
+   (quoted, dotted, and inline-table TOML keys all bypass an env-key denylist).
+   Pinning the entire reviewed shape (exact key sets, exact values) is stronger
+   and usually shorter.
 3. **Parse; don't line-scan.** A format's parser defines its semantics. A line
    regular expression mismodels them silently: a context table it doesn't
    recognize still means something to Netlify.
@@ -43,8 +43,7 @@ dependency docs.
    imports shared values from their owning module, and that module's unit test
    pins the content.
 8. **Red-first.** A new check is trusted only after a deliberately broken input
-   has made it fail; every closure in the audit's history was proven red before
-   its green counted. A false green is worse than red.
+   has made it fail. A false green is worse than red.
 9. **Assertions name the expected condition** and, for routine fires, the fix:
    the `allowScripts` assertion names the version a dependency bump must move
    the entry to, so the failure message is the remediation.
