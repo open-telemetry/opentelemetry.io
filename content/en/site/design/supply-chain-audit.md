@@ -72,19 +72,19 @@ concrete instances of most of them in earlier drafts.
 One exemplar per principle; the [test file][audit test] is the authoritative
 inventory of assertions.
 
-| Principle               | Exemplar in the audit                                                            |
-| ----------------------- | -------------------------------------------------------------------------------- |
-| Committed files alone   | Every input is read from the checkout; the suite runs with no network            |
-| Allowlist whole shapes  | `netlify.toml`: top-level tables, build keys, and env key sets are `deepEqual`ed |
-| Parse, don't line-scan  | `netlify.toml` is parsed with `smol-toml` before anything is asserted            |
-| Exact pins              | The install-closure scripts are compared with `assert.equal`, never `match`      |
-| Fail closed on absence  | `registryPackages > 0` floors; a version-less lock entry fails the IOC check     |
-| Identity npm trusts     | Each registry entry's `resolved` URL must name its own package and version       |
-| One home per invariant  | `UNSAFE_HUGO_ENV` is imported from `rebuild-hugo-extended.mjs`                   |
-| Red-first               | Each hardening commit's PR notes the broken input that first made it fail        |
-| Assertions name the fix | `allowScripts covers hugo-extended at its locked version X`                      |
-| Stated scope boundary   | The audit's header comment names the excluded surfaces                           |
-| Checks earn their keep  | The engines floor's minimums are review-adjudicated; `engine-strict` enforces    |
+| Principle               | Exemplar in the audit                                                                                                                            |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Committed files alone   | Every input is read from the checkout; the suite runs with no network                                                                            |
+| Allowlist whole shapes  | `netlify.toml`: top-level tables, build keys, and env key sets are `deepEqual`ed                                                                 |
+| Parse, don't line-scan  | `netlify.toml` is parsed with `smol-toml` before anything is asserted                                                                            |
+| Exact pins              | The install-closure scripts are compared with `assert.equal`, never `match`                                                                      |
+| Fail closed on absence  | `registryPackages > 0` and `withInstallScript > 0` floors; an entry without a `resolved` URL or `integrity` hash fails rather than being skipped |
+| Identity npm trusts     | Each registry entry's `resolved` URL must name its own package and version                                                                       |
+| One home per invariant  | `UNSAFE_HUGO_ENV` is imported from `rebuild-hugo-extended.mjs`                                                                                   |
+| Red-first               | Each hardening commit's PR notes the broken input that first made it fail                                                                        |
+| Assertions name the fix | `allowScripts covers hugo-extended at its locked version X`                                                                                      |
+| Stated scope boundary   | The audit's header comment names the excluded surfaces                                                                                           |
+| Checks earn their keep  | The engines floor's minimums are review-adjudicated; `engine-strict` enforces                                                                    |
 
 [audit test]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs

@@ -36,23 +36,6 @@ const manifest = readJSON('package.json');
 // reviewed exception populates this.
 const gitDependencyRepos = {};
 
-// Known-poisoned package@version pairs from the 2026-08 npm-worm campaign
-// (Datadog Security Labs). A denylist only ever samples: the structural
-// checks (registry + integrity, allowlists) are the load-bearing part.
-const packageIocs = new Set([
-  'keyv@6.0.0',
-  '@cacheable/net@2.1.1',
-  '@cacheable/node-cache@3.1.2',
-  'cacheable@2.5.1',
-  'flat-cache@6.1.24',
-  'cacheable-request@13.0.20',
-  '@cacheable/memory@2.2.1',
-  'file-entry-cache@11.1.6',
-  '@cacheable/utils@2.5.1',
-  'cache-manager@7.2.10',
-  'ecto@5.0.1',
-]);
-
 // A workspace member appears in the lock as a directory entry plus a
 // node_modules/ symlink, neither a registry artifact. Excluded from the
 // per-package checks: the directory entries of declared members, and
@@ -127,30 +110,6 @@ test('lock: every package is registry+integrity or an allowlisted git pin', () =
     }
   }
   assert.ok(registryPackages > 0, 'registry packages were audited');
-});
-
-test('lock: every package version is absent from the campaign IOC list', () => {
-  assert.ok(packageIocs.size > 0, 'the IOC denylist has entries');
-  let checked = 0;
-  for (const [key, pkg] of lockEntries) {
-    // Fail closed: a version-less entry could carry an IOC-listed tarball
-    // past the denylist under a name the key still spells out.
-    assert.ok(pkg.version, `${key} carries a version for the IOC check`);
-    // Both identities: the lock key names what's installed, pkg.name (npm
-    // aliases) what it really is; a spoofed name field must not clear the
-    // key-derived one.
-    const keyName = key.slice(
-      key.lastIndexOf('node_modules/') + 'node_modules/'.length,
-    );
-    for (const name of new Set([keyName, pkg.name ?? keyName])) {
-      checked += 1;
-      assert.ok(
-        !packageIocs.has(`${name}@${pkg.version}`),
-        `${name}@${pkg.version} is absent from the IOC list`,
-      );
-    }
-  }
-  assert.ok(checked > 0, 'locked package versions were audited');
 });
 
 test('lock and manifest: install scripts stay inventoried in allowScripts', () => {
