@@ -177,7 +177,7 @@ async fn roll_dice(_: Request<hyper::body::Incoming>) -> Result<Response<Full<By
     get_roll_counter().add(1, &[KeyValue::new("roll.value", random_number as i64)]);
 
     // ログ: tracingブリッジ経由で構造化ログイベントを送出する
-    tracing::info!(name: "roll_dice", roll.value = random_number, message = "Player rolled the dice");
+    tracing::info!(name: "roll_dice", { roll.value = random_number }, "Player rolled the dice");
 
     Ok(Response::new(Full::new(Bytes::from(
         random_number.to_string(),
@@ -394,7 +394,7 @@ tracing_subscriber::registry()
 `roll_dice()` の中では、構造化されたログイベントが出力されます。
 
 ```rust
-tracing::info!(name: "roll_dice", roll.value = random_number, message = "Player rolled the dice");
+tracing::info!(name: "roll_dice", { roll.value = random_number }, "Player rolled the dice");
 ```
 
 スパンやメトリクスとともに、ログレコードがコンソールに表示されるようになります。
