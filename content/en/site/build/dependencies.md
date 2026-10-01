@@ -128,10 +128,9 @@ npm update --package-lock-only --ignore-scripts PACKAGE_NAME
 
 Replace _`PACKAGE_NAME`_ with the package (or packages) to refresh.
 
-Either way, review the whole refreshed lock, not only the named entries: npm
-also moves whatever the selected versions require, it honors the manifests'
-declared ranges, and a parent that widens a range can pull a new transitive
-major.
+Either way, review the whole refreshed lock: npm also moves whatever the
+selected versions require, and because it honors the manifests' declared ranges,
+a parent that widens a range can pull a new transitive major.
 
 The [release cooldown](#release-cooldown) applies, with a sharp edge: a
 dependency whose only satisfying versions are younger than the cooldown (an
@@ -204,11 +203,13 @@ this page, so first work out which control your change relaxes.
 
 Out of the audit's scope: <a id="audit-out-of-scope"></a>
 
-- GitHub workflow files
+- GitHub workflow files: their [security model][ci-security] is reviewed on its
+  own
 - [Renovate][] configuration ([`.github/renovate.jsonc`][]): reviewed like code,
   not audit-pinned
 - The [Docsy][] theme's own dependency install (audited upstream)
-- The build-half npm scripts past the install boundary
+- The build-half npm scripts past the install boundary: they run the site's own
+  code wholesale and change under normal development
 
 ### Release cooldown
 
@@ -319,6 +320,7 @@ with this rule through [drift tracking][].
 <!-- prettier-ignore-start -->
 [`.github/renovate.jsonc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.jsonc
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
+[ci-security]: ../ci-workflows/#security-model
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs

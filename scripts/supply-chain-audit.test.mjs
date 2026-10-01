@@ -5,8 +5,8 @@
 // https://opentelemetry.io/site/design/supply-chain-security/
 //
 // Out of scope: GitHub workflow files, the Renovate configuration, the Docsy
-// theme-deps install, and the build-side scripts past the install boundary
-// (see the pin-boundary comment below). Why each:
+// theme's own dependency install, and the build-half npm scripts past the
+// install boundary (the pin-boundary comment below marks it). Why each:
 // https://opentelemetry.io/site/build/dependencies/#audit-out-of-scope
 
 import test from 'node:test';
@@ -87,9 +87,8 @@ test('lock: every package is registry+integrity or an allowlisted git pin', () =
       const keyName = key.slice(
         key.lastIndexOf('node_modules/') + 'node_modules/'.length,
       );
-      // Identity is the one npm trusts (@npmcli/arborist script-allowed.js):
-      // key, name field, and URL bound together; adding an alias is a
-      // deliberate review event.
+      // Identity per @npmcli/arborist script-allowed.js; adding an alias is
+      // a deliberate review event.
       assert.ok(
         pkg.name === undefined || pkg.name === keyName,
         `${key} is not an alias`,
@@ -274,8 +273,7 @@ test('lock: no package provides a bin that shadows a trusted command', () => {
 });
 
 test('manifest: the engines floor keeps its binding shape', () => {
-  // The audit guards the shape that keeps engine-strict binding; the floor's
-  // values are review-adjudicated:
+  // The floor's values are policy, not audited here:
   // https://opentelemetry.io/site/build/dependencies/#npm-version-floor
   const { engines } = manifest;
   assert.match(engines.npm, /^>=\d+\.\d+\.\d+$/, 'engines.npm is a floor');
@@ -328,8 +326,7 @@ test('manifest and lock: unscoped markdownlint-rule-link-pattern stays absent', 
 
 // The pinned set is the install closure: every script reachable by fixed
 // name from the Netlify commands and the install contract, up to (not
-// including) the build:* half, whose scripts execute the site build's
-// repo code wholesale and change under normal development.
+// including) the build:* half.
 test('manifest: the install path keeps its locked, script-free form', () => {
   const { scripts } = manifest;
   const pins = {
@@ -456,8 +453,8 @@ test('netlify.toml: auto-install stays inert and build commands stay pinned', ()
     '--dry-run --ignore-scripts',
     'NPM_FLAGS constrains the Netlify auto-install to resolution only',
   );
-  // NPM_VERSION's sufficiency against the engines floor is enforced at
-  // build time by engine-strict, so only the pin's shape is checked here.
+  // NPM_VERSION's sufficiency is the floor's job at build time:
+  // https://opentelemetry.io/site/build/dependencies/#npm-version-floor
   assert.match(
     build.environment.NPM_VERSION,
     /^\d+\.\d+\.\d+$/,
