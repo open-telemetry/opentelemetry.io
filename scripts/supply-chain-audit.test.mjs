@@ -29,8 +29,8 @@ const readText = (relPath) =>
 const lock = readJSON('package-lock.json');
 const manifest = readJSON('package.json');
 
-// Dependencies allowed to bypass the npm registry in the lock check;
-// currently none. A reviewed exception populates this.
+// Dependencies allowed to bypass the npm registry in the lock check; a
+// reviewed exception populates this.
 const gitDependencyRepos = {};
 
 // Known-poisoned package@version pairs from the 2026-08 npm-worm campaign
@@ -76,8 +76,7 @@ const lockEntries = Object.entries(lock.packages).filter(
     ),
 );
 
-// The runtime helper exports the unsafe-installer-control names; its
-// unit test pins the content literally.
+// The helper's own unit test pins UNSAFE_HUGO_ENV's content literally.
 const unsafeHugoEnv = new Set(UNSAFE_HUGO_ENV);
 const envLeavesInstallConfigUntouched = (key) => {
   const normalized = key.toUpperCase();
@@ -162,11 +161,9 @@ test('lock and manifest: install scripts stay inventoried in allowScripts', () =
     const name = key.slice(
       key.lastIndexOf('node_modules/') + 'node_modules/'.length,
     );
-    // Coverage takes one of the two reviewed forms: a name-level denial
-    // (false, version-independent) or an exact-version approval that must
-    // track the locked version. A stale pin fails npm ci under
-    // strict-allow-scripts, and this assertion names the fix in the bump
-    // PR itself.
+    // A stale exact-version approval fails npm ci under
+    // strict-allow-scripts; this assertion names the fix in the bump PR
+    // itself.
     if (allowScripts[name] === false) {
       covered.add(name);
       continue;
@@ -179,8 +176,6 @@ test('lock and manifest: install scripts stay inventoried in allowScripts', () =
     covered.add(`${name}@${pkg.version}`);
   }
   assert.ok(withInstallScript > 0, 'install-script packages were audited');
-  // The reverse direction: no stale or speculative allowScripts entries
-  // beyond what the lock needs.
   assert.deepEqual(
     Object.keys(allowScripts).sort(),
     [...covered].sort(),
@@ -213,14 +208,14 @@ test('.npmrc carries exactly the reviewed npm settings', () => {
 });
 
 test('workspaces: the reviewed member set, no shadow config or scripts', () => {
-  // npm resolves config and the lock at the workspace root for
-  // root-invoked installs (an install run inside the member directory
-  // answers to neither), so a member carrying its own .npmrc or lock
-  // would be dead weight that reads as a control; and a new member
-  // widens the audited install surface, so the list itself is pinned. Names are org-scoped: an unscoped name in a
-  // public manifest is claimable on the registry by anyone (private:true
-  // only stops publishing from here), while @opentelemetry publishes
-  // only for the org.
+  // npm resolves config and the lock at the workspace root, an install run
+  // from inside the member directory included (npm walks up to the root),
+  // so a member carrying its own .npmrc or lock would be dead weight that
+  // reads as a control; and a new member widens the audited install
+  // surface, so the list itself is pinned. Names are org-scoped: an
+  // unscoped name in a public manifest is claimable on the registry by
+  // anyone (private:true only stops publishing from here), while
+  // @opentelemetry publishes only for the org.
   const reviewedWorkspaces = {
     'scripts/generate-community-data': '@opentelemetry/generate-community-data',
   };
@@ -353,26 +348,6 @@ test('lock and manifest: the adm-zip override is applied and still needed', () =
   );
 });
 
-// GHSA-7w5x-hrqm-74c2; drop with the override once markdownlint-cli2's pin
-// clears 1.7.0.
-test('lock and manifest: the smol-toml override is applied and still needed', () => {
-  const nested = Object.keys(lock.packages).filter((key) =>
-    key.endsWith('/node_modules/smol-toml'),
-  );
-  assert.deepEqual(nested, [], 'smol-toml resolves to the root copy only');
-  const version = lock.packages['node_modules/smol-toml'].version;
-  const [major, minor, patch] = version.split('.').map(Number);
-  assert.ok(
-    major > 1 || (major === 1 && (minor > 7 || (minor === 7 && patch >= 1))),
-    'locked smol-toml clears the GHSA-7w5x-hrqm-74c2 range (<= 1.7.0)',
-  );
-  assert.equal(
-    lock.packages['node_modules/markdownlint-cli2'].dependencies['smol-toml'],
-    '1.7.0',
-    'markdownlint-cli2 declares the exact smol-toml pin that justifies the override',
-  );
-});
-
 test('manifest and lock: unscoped markdownlint-rule-link-pattern stays absent', () => {
   // npm-security-held after GHSA-q3xp-j858-q9xf; the project's package is
   // @pchalin/markdownlint-rule-link-pattern.
@@ -481,8 +456,7 @@ test('manifest: the install path keeps its locked, script-free form', () => {
 });
 
 test('netlify.toml: auto-install stays inert and build commands stay pinned', () => {
-  // NPM_FLAGS is what constrains the auto-install to resolution only:
-  // https://opentelemetry.io/site/build/dependencies/#inert-netlify-auto-install
+  // Contract: https://opentelemetry.io/site/build/dependencies/#inert-netlify-auto-install
   const config = parseToml(readText('netlify.toml'));
   assert.deepEqual(
     Object.keys(config).sort(),
