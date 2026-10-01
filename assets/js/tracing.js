@@ -7,7 +7,7 @@ import {
 import {
   CompositePropagator,
   W3CBaggagePropagator,
-  W3CTraceContextPropagator
+  W3CTraceContextPropagator,
 } from '@opentelemetry/core';
 import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
@@ -38,10 +38,7 @@ trace.setGlobalTracerProvider(tracerProvider);
 context.setGlobalContextManager(new ZoneContextManager().enable());
 
 const propagator = new CompositePropagator({
-  propagators: [
-    new W3CTraceContextPropagator(),
-    new W3CBaggagePropagator(),
-  ],
+  propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
 });
 propagation.setGlobalPropagator(propagator);
 
