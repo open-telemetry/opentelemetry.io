@@ -3,6 +3,7 @@ title: Dependency management
 description: >-
   How the site installs, verifies, and updates its npm dependencies
 weight: 5
+cSpell:ignore: EBADENGINE USERCONFIG
 ---
 
 npm dependencies are pinned by the committed `package-lock.json`, and installs
@@ -250,6 +251,14 @@ are listed in the `allowScripts` allowlist:
     not.
   - A reviewed exception takes an explicit `--ignore-scripts=false` at the call
     site.
+  - So the allowlist is evaluated only where scripts are on: the
+    [install contracts](#install-contracts)' `hugo-extended` rebuild, and a
+    plain local `npm install`. Without a re-enabling site, every install would
+    be script-free and an unapproved bump would install green with the gate
+    never exercised.
+  - An `ignore-scripts=true` in your user `.npmrc` masks the gate locally the
+    same way; to verify the repository's own posture, run the install with
+    `NPM_CONFIG_USERCONFIG` pointing at an empty file.
 
 ### npm version floor
 
@@ -261,6 +270,10 @@ version that supports the controls above.
   - `engine-strict` in [`.npmrc`][] makes it fail closed.
 - **Floor policy**:
   - The floor rises as npm fixes enforcement gaps in the controls.
+  - Failing closed, not warning, is the point: an npm below the floor enforces
+    the allowlist partially or not at all and says nothing about it; on a
+    script-enabled install the scripts just run, so `EBADENGINE` is the only
+    signal a maintainer gets.
   - The committed `.nvmrc` pins a Node.js release whose bundled npm satisfies
     the floor, so CI, Netlify, and `nvm`-managed local setups pass it by
     construction; [Renovate][] keeps the pin updated. (A floating `.nvmrc` such
