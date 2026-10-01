@@ -241,24 +241,19 @@ are listed in the `allowScripts` allowlist:
 
 - **Enforcement**: the `allowScripts` map in [`package.json`][], made
   fail-closed by `strict-allow-scripts` in [`.npmrc`][].
+- **Where it fires**: only on a script-enabled install: the one hook the
+  [install contracts](#install-contracts) re-enable (an explicit
+  `--ignore-scripts=false` at the call site), and a local `npm install` run
+  without `--ignore-scripts`. Every other install is script-free, allowlisted or
+  not, so that hook is what keeps the gate exercised.
 - **Denials**:
   - An entry set to `false` records a reviewed denial: the package installs, its
     script is skipped.
   - Denials grant nothing, so they cover the package by name, across versions.
-- **Interplay with `--ignore-scripts`**:
-  - The allowlist only filters: it never re-enables scripts that
-    `ignore-scripts` disables, so script-free installs run none, allowlisted or
-    not.
-  - A reviewed exception takes an explicit `--ignore-scripts=false` at the call
-    site.
-  - So the allowlist is evaluated only where scripts are on: the
-    [install contracts](#install-contracts)' `hugo-extended` rebuild, and a
-    plain local `npm install`. Without a re-enabling site, every install would
-    be script-free and an unapproved bump would install green with the gate
-    never exercised.
-  - An `ignore-scripts=true` in your user `.npmrc` masks the gate locally the
-    same way; to verify the repository's own posture, run the install with
-    `NPM_CONFIG_USERCONFIG` pointing at an empty file.
+- **Local masking**: `ignore-scripts=true` in your user `.npmrc` makes a local
+  install script-free too, so the gate never fires; to check the repository's
+  own posture, run the install with `NPM_CONFIG_USERCONFIG` pointing at an empty
+  file.
 
 ### npm version floor
 
@@ -267,13 +262,11 @@ version that supports the controls above.
 
 - **Enforcement**:
   - `engines` in [`package.json`][] sets the floor.
-  - `engine-strict` in [`.npmrc`][] makes it fail closed.
+  - `engine-strict` in [`.npmrc`][] makes it fail closed: an npm below the floor
+    lacks part of the enforcement the controls rely on and warns about none of
+    it, so the `EBADENGINE` error is the only signal.
 - **Floor policy**:
   - The floor rises as npm fixes enforcement gaps in the controls.
-  - Failing closed, not warning, is the point: an npm below the floor enforces
-    the allowlist partially or not at all and says nothing about it; on a
-    script-enabled install the scripts just run, so `EBADENGINE` is the only
-    signal a maintainer gets.
   - The committed `.nvmrc` pins a Node.js release whose bundled npm satisfies
     the floor, so CI, Netlify, and `nvm`-managed local setups pass it by
     construction; [Renovate][] keeps the pin updated. (A floating `.nvmrc` such
