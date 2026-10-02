@@ -3,7 +3,8 @@ title: 依存関係の管理
 description: >-
   サイトが npm 依存関係をどのようにインストール、検証、更新するか
 weight: 5
-default_lang_commit: aac3db2d7779c644ad981d0797e0028738698826
+default_lang_commit: 7fdabd2ed2c394ad4cbff90314c2f12eea6db1d9
+drifted_from_default: true
 ---
 
 npm 依存関係はコミット済みの `package-lock.json` によって固定され、インストール時にはレビュー済みのライフサイクルスクリプトのみが実行されます。
@@ -86,7 +87,7 @@ npm install --package-lock-only --ignore-scripts
 1. 新しいバージョンのライフサイクルスクリプトをレビューする。
 2. 結果を、依存関係の変更と一緒にコミットし、PR レビューで検証する。
    必要なスクリプトは正確なバージョン承認として、不要なスクリプトは名前レベルの拒否（`false`、以降のバージョンアップ時に更新不要）として記録する。
-3. 新しい承認の場合、[`.github/renovate.json5`][] の Renovate 自動マージ除外リストにもそのパッケージを追加する。
+3. 新しい承認の場合、[`.github/renovate.jsonc`][] の Renovate 自動マージ除外リストにもそのパッケージを追加する。
    承認済みパッケージのすべてのバージョンアップには上記の手順が必要なため、その更新 PR はコントリビューターを待つ必要がある。
 
 ### 推移的依存関係のリフレッシュ {#transitive-refresh}
@@ -160,7 +161,7 @@ PR で監査が失敗した場合、アサーションメッセージに期待�
 監査のスコープ外:
 
 - GitHub ワークフローファイル
-- [Renovate][] 設定（[`.github/renovate.json5`][]）: コードと同様にレビューされるが、監査による固定の対象外
+- [Renovate][] 設定（[`.github/renovate.jsonc`][]）: コードと同様にレビューされるが、監査による固定の対象外
 - [Docsy][] テーマ自身の依存関係インストール（上流で監査済み）
 - インストール境界を越えたビルド側の npm スクリプト
 
@@ -177,7 +178,7 @@ PR で監査が失敗した場合、アサーションメッセージに期待�
     特定の呼び出しで自分の設定を維持するには、`npm_config_min_release_age` 環境変数を設定してください。
     この変数は両方の設定より優先されます。
 - **[Renovate][]**: 開く更新 PR に独自のクールダウンを適用します。
-  [`.github/renovate.json5`][] の `minimumReleaseAge` で設定されます。
+  [`.github/renovate.jsonc`][] の `minimumReleaseAge` で設定されます。
   人間のレビューなしでマージされる更新にはより長い期間が設定されます。
   プリセット提供の3日間の npm クールダウン（`security:minimumReleaseAgeNpm`）は、これらの期間をオーバーライドできないよう（その経過期間の免除を含め）除外されています。
   注意: そのプリセットの上流での名前変更は、暗黙的にクールダウンを再適用させます。
@@ -247,7 +248,7 @@ engines フロアとは、上記の制御をサポートする最も古いバー
   自動化されたチェックはありません。
 
 <!-- prettier-ignore-start -->
-[`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
+[`.github/renovate.jsonc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.jsonc
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json

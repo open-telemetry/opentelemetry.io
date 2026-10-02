@@ -49,7 +49,7 @@ jobs:
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          # this is needed to do the rebase below
+          # this is needed to merge from main below
           fetch-depth: 0
           # this is needed to trigger workflows when pushing new commits to an existing PR
           token: ${{ steps.otelbot-token.outputs.token }}
@@ -78,7 +78,20 @@ jobs:
         run: |
           previous=$(git rev-parse HEAD)
           git fetch origin
-          git merge origin/main
+          if ! git merge origin/main; then
+            # Taking main's cache is safe: the link-check step below re-adds
+            # this branch's entries.
+            conflicts=$(git diff --name-only --diff-filter=U | tr '\n' ' ' | sed 's/ $//')
+            if [[ "$conflicts" == "link-cache.jsonc" ]]; then
+              echo "Cache-only merge conflict: taking main's version."
+              git checkout --theirs link-cache.jsonc
+              git add link-cache.jsonc
+              git commit --no-edit
+            else
+              echo "::error::merge from main conflicts ($conflicts): resolve manually."
+              exit 1
+            fi
+          fi
           if [ "$(git rev-parse HEAD)" != "$previous" ]; then
             git push
           fi
