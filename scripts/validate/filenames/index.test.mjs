@@ -2,6 +2,7 @@
 
 import { describe, test, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -193,6 +194,49 @@ describe('temp-fixture checks', () => {
       findObsoletePaths(OBSOLETE_PATHS, { cwd }).map((entry) => entry.path),
       ['tools', 'static/refcache.json'],
     );
+  });
+
+  // A `tracked` entry is about git state, not the filesystem: the path may
+  // legitimately exist as a derived file; what's obsolete is committing it.
+  test('a tracked entry is reported only while git tracks the path, and fixed by untracking', () => {
+    const git = (...args) =>
+      execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
+    git('init', '-q');
+    git('config', 'user.email', 'test@example.invalid');
+    git('config', 'user.name', 'Test');
+    const tracked = OBSOLETE_PATHS.filter((entry) => entry.tracked);
+    assert.deepEqual(
+      tracked.map((entry) => entry.path),
+      ['.lycheecache'],
+      'the derived link cache is the tracked-kind entry',
+    );
+    fs.writeFileSync(
+      path.join(cwd, '.lycheecache'),
+      'https://a.example/,200,1\n',
+    );
+    assert.deepEqual(
+      findObsoletePaths(tracked, { cwd }),
+      [],
+      'an untracked derived file is not a violation',
+    );
+    git('add', '.lycheecache');
+    git('commit', '-q', '-m', 'track the csv');
+    assert.deepEqual(
+      findObsoletePaths(tracked, { cwd }).map((entry) => entry.path),
+      ['.lycheecache'],
+      'a tracked derived file is reported',
+    );
+    fixViolations({
+      obsolete: findObsoletePaths(tracked, { cwd }),
+      cwd,
+      log() {},
+    });
+    assert.equal(git('ls-files', '--', '.lycheecache'), '', 'untracked');
+    assert.ok(
+      fs.existsSync(path.join(cwd, '.lycheecache')),
+      'file kept on disk',
+    );
+    assert.deepEqual(findObsoletePaths(tracked, { cwd }), [], 'fixed');
   });
 });
 

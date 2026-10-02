@@ -132,10 +132,16 @@ The check flags these obsolete paths:
 - `tools/` - removed when [code-excerpts tooling moved to an npm package][#9638]
 - `static/refcache.json` - removed in the [switch to Lychee][#10911]. If your
   branch restores it, follow the [stale-branch update instructions][#10990].
+- `.lycheecache` as a **tracked** file - untracked when the committed link cache
+  became [`link-cache.jsonc`][#11649]; the CSV is now derived per run and
+  git-ignored. If your branch still commits it, merge in the latest `main`,
+  resolving the modify/delete conflict with `git rm .lycheecache`, then run
+  `npm run check:links` and commit `link-cache.jsonc` instead.
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
 [#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
 [#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
+[#11649]: https://github.com/open-telemetry/opentelemetry.io/pull/11649
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 

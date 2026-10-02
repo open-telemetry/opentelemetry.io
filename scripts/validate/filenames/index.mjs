@@ -5,10 +5,11 @@
 // Usage:
 //   node scripts/validate/filenames/index.mjs [--fix]
 //
-// With --fix, obsolete paths are DELETED and non-kebab-case names are
-// renamed. Without --fix, the command exits non-zero when violations are
-// found.
+// With --fix, obsolete paths are DELETED (a tracked-kind entry is untracked
+// instead) and non-kebab-case names are renamed. Without --fix, the command
+// exits non-zero when violations are found.
 
+import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -29,7 +30,9 @@ export const KEBAB_CASE_MESSAGE =
 // Paths deleted from `main` that PRs occasionally reintroduce, usually the
 // sign of a stale branch. This table is canonical; the "Obsolete files and
 // folders" list of content/en/docs/contributing/pr-checks.md mirrors it for
-// contributors (drift-guarded by index.test.mjs).
+// contributors (drift-guarded by index.test.mjs). A `tracked` entry is
+// obsolete as a committed file only: it may exist locally as a derived
+// artifact, so the check asks git rather than the filesystem.
 export const OBSOLETE_PATHS = [
   {
     path: 'tools',
@@ -43,6 +46,15 @@ export const OBSOLETE_PATHS = [
       'Obsolete file: deleted when link checking switched to Lychee (PR #10911). ' +
       'Your branch is probably stale: update it by merging in the latest `main`. ' +
       'For details, see https://github.com/open-telemetry/opentelemetry.io/issues/10990',
+  },
+  {
+    path: '.lycheecache',
+    tracked: true,
+    message:
+      'Obsolete tracked file: the committed link cache is `link-cache.jsonc` (PR #11649); ' +
+      '`.lycheecache` is derived per run and git-ignored. Your branch is probably stale: ' +
+      'merge in the latest `main`, resolving a modify/delete conflict on `.lycheecache` with ' +
+      '`git rm .lycheecache`, then run `npm run check:links`.',
   },
 ];
 
@@ -93,13 +105,26 @@ export function findObsoletePaths(
   obsolete = OBSOLETE_PATHS,
   { cwd = '.' } = {},
 ) {
-  return obsolete.filter((entry) => pathExists(path.join(cwd, entry.path)));
+  return obsolete.filter((entry) =>
+    entry.tracked
+      ? isTracked(entry.path, cwd)
+      : pathExists(path.join(cwd, entry.path)),
+  );
 }
 
 // True when the path exists, even as a dangling symlink (which fs.existsSync
 // follows and so misses).
 function pathExists(p) {
   return !!fs.lstatSync(p, { throwIfNoEntry: false });
+}
+
+// True when git tracks the path; false outside a repository.
+function isTracked(p, cwd) {
+  const r = spawnSync('git', ['ls-files', '--error-unmatch', '--', p], {
+    cwd,
+    stdio: 'ignore',
+  });
+  return r.status === 0;
 }
 
 /**
@@ -147,7 +172,15 @@ export function fixViolations({
     plannedDestinations.add(to);
   }
 
-  for (const { path: p } of obsolete) {
+  for (const { path: p, tracked } of obsolete) {
+    if (tracked) {
+      log(`Untracking obsolete path: ${p}`);
+      spawnSync('git', ['rm', '-q', '--cached', '--', p], {
+        cwd,
+        stdio: 'inherit',
+      });
+      continue;
+    }
     log(`Removing obsolete path: ${p}`);
     fs.rmSync(path.join(cwd, p), { recursive: true, force: true });
   }
