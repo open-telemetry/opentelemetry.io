@@ -101,6 +101,11 @@ under `attributes.select`. It controls trace decoration such as `db.query.text`,
 `graphql.document`, `url.query`, GenAI payload attributes, and
 `db.response.error`.
 
+Since v0.14.0, `service.peer.name`, `http.request.body.size`,
+`http.response.body.size`, and `obi.http.response.observed` are also opt-in span
+attributes. Add only the ones your trace processors require. For example, a
+service graph processor that uses `service.peer.name` can select it explicitly:
+
 ```yaml
 attributes:
   select:
@@ -108,6 +113,7 @@ attributes:
       include:
         - db.query.text
         - db.response.error
+        - service.peer.name
 ```
 
 `url.query` is enabled by default when an HTTP request contains a query string.
@@ -136,6 +142,10 @@ Because these values can contain sensitive payloads, they require an exact entry
 in `attributes.select.traces.include`; wildcard entries such as `gen_ai.*` don't
 enable them.
 
+When OBI cannot resolve a peer name, it omits `service.peer.name` rather than
+emitting an empty value. Parsed span attributes with unknown values are likewise
+omitted; this does not change resource attributes or metric labels.
+
 ### `db.response.error` {#db-response-error}
 
 `db.response.error` is not part of the OpenTelemetry semantic conventions. OBI
@@ -162,10 +172,25 @@ YAML section: `ebpf`
 You can configure the component under the `ebpf` section of your YAML
 configuration or via environment variables.
 
-| YAML<br>environment variable                                     | Description                                                                                                                                                                                      | Type    | Default  |
-| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | -------- |
-| `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`     | Controls trace context propagation method. Accepted: `all`, `headers`, `tcp`, `headers,tcp`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
-| `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS` | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                                | boolean | false    |
+| YAML<br>environment variable                                       | Description                                                                                                                                                                                      | Type    | Default  |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | -------- |
+| `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`       | Controls trace context propagation method. Accepted: `all`, `headers`, `tcp`, `headers,tcp`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
+| `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS`   | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                                | boolean | false    |
+| `populate_trace_context`<br>`OTEL_EBPF_BPF_POPULATE_TRACE_CONTEXT` | Populates the pinned `traces_ctx_v1` map for external trace-profile correlation and Go channel handoff fallback. OBI's log enricher and Node.js manual span bridge enable it automatically.      | boolean | false    |
+
+### Pinned trace context map
+
+Starting with v0.14.0, OBI does not populate `traces_ctx_v1` by default. If an
+external profiler reads this map to correlate profiles with traces, enable it:
+
+```yaml
+ebpf:
+  populate_trace_context: true
+```
+
+This also restores the map-based fallback for Go channel span links. Enabling
+the map is unnecessary when using OBI's log enricher or Node.js manual span
+bridge, which enable it automatically.
 
 ### Context propagation
 
