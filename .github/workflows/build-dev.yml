@@ -49,10 +49,9 @@ jobs:
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: build-log-etc
-          include-hidden-files: true # for .lycheecache
           path: |
             tmp/build-log.txt
-            .lycheecache
+            link-cache.jsonc
 
   check-link-cache:
     name: LINK CACHE updates?
