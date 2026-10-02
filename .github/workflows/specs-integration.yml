@@ -62,9 +62,6 @@ jobs:
 
       - name: Checkout or create branch
         run: |
-          # Keep the merge helper from this workflow's own revision: the
-          # integration branch checked out below may predate it.
-          cp scripts/git/merge-from-main.sh "$RUNNER_TEMP/"
           if ! git ls-remote --exit-code --heads origin "$BRANCH"; then
             git checkout -b "$BRANCH" origin/main
             git push -u origin "$BRANCH"
@@ -81,9 +78,21 @@ jobs:
         run: |
           previous=$(git rev-parse HEAD)
           git fetch origin
-          # A cache-only merge conflict self-heals by taking main's cache; the
-          # link-check step below re-adds this branch's entries.
-          "$RUNNER_TEMP/merge-from-main.sh"
+          if ! git merge origin/main; then
+            # A merge conflict confined to the link cache self-heals: take
+            # main's whole cache file; the link-check step below re-adds this
+            # branch's entries. Any wider conflict needs a human.
+            conflicts=$(git diff --name-only --diff-filter=U)
+            if [[ "$conflicts" == "link-cache.jsonc" ]]; then
+              echo "Cache-only merge conflict: taking main's version."
+              git checkout --theirs link-cache.jsonc
+              git add link-cache.jsonc
+              git commit --no-edit
+            else
+              echo "::error::merge from main conflicts ($conflicts): resolve manually."
+              exit 1
+            fi
+          fi
           if [ "$(git rev-parse HEAD)" != "$previous" ]; then
             git push
           fi

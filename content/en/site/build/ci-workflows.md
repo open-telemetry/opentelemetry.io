@@ -348,11 +348,10 @@ It runs as a three-stage pipeline:
 > The [`refcache-refresh.yml`][] workflow also runs daily and touches
 > `link-cache.jsonc`, so the two bot PRs can conflict depending on merge order.
 > Conflicts self-heal: the housekeeping branch is rebuilt from `main` on each
-> run, and `refcache-refresh` merges `main` through
-> `scripts/git/merge-from-main.sh`, which takes `main`'s cache on a cache-only
-> conflict (the workflow then re-prunes). Migrating `refcache-refresh` onto the
-> reusable patch actions — eliminating such conflicts by construction — is
-> tracked in the [project plan][].
+> run, and `refcache-refresh` merges `main`, taking `main`'s file and re-pruning
+> on a cache-only conflict. Migrating `refcache-refresh` onto the reusable patch
+> actions — eliminating such conflicts by construction — is tracked in the
+> [project plan][].
 
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 [housekeeping]:
@@ -398,10 +397,10 @@ for the upstream spec repositories (which `auto-update-versions.yml` therefore
 excludes). It runs one matrix job per upstream repository: between releases,
 each job tracks unreleased upstream changes through a draft PR ("integration
 branch"); once upstream releases, it finalizes that branch and PR into the
-release PR. Each run merges `main` into the long-lived integration branch
-through `scripts/git/merge-from-main.sh`, so a conflict confined to
-`link-cache.jsonc` (both sides update the cache daily) self-heals by taking
-`main`'s cache; the run's own link check re-adds the branch's entries.
+release PR. Each run merges `main` into the long-lived integration branch; a
+conflict confined to `link-cache.jsonc` (both sides update the cache daily)
+self-heals by taking `main`'s cache, and the run's own link check re-adds the
+branch's entries.
 
 | Matrix job | Upstream repository           | Branch slug |
 | ---------- | ----------------------------- | ----------- |
