@@ -3,7 +3,7 @@ title: メトリクス計装
 linkTitle: 計装
 description: OpenTelemetry .NET で利用できるさまざまな種類のメトリクス計装について学ぶ
 weight: 50
-default_lang_commit: 669d1a40e56ed2dd914d48340b31e16a83610d40
+default_lang_commit: 6dae53b63ae3197dcc140fddcc867ac635541799
 cSpell:ignore: updowncounter
 ---
 
@@ -134,25 +134,6 @@ meter.CreateObservableGauge("cpu_usage", () =>
     // 現在の CPU 使用率を取得する
     return new Measurement<double>(GetCurrentCpuUsage());
 }, "%", "Current CPU usage percentage");
-```
-
-## オブザーバブルな測定値のバッチ処理 {#batching-observable-measurements}
-
-複数の計装に対して複数の測定値を返すコールバックを登録することもできます。
-
-```csharp
-// 複数のオブザーバブル計装に対して単一のコールバックを登録する
-var observableCounter = meter.CreateObservableCounter<long>("my_observable_counter", "items");
-var observableGauge = meter.CreateObservableGauge<double>("my_observable_gauge", "%");
-
-meter.RegisterObservableCallback(observableInstruments =>
-{
-    // カウンターの値を記録する
-    observableInstruments.Observe(observableCounter, 42, new("type", "product_a"));
-
-    // ゲージの値を記録する
-    observableInstruments.Observe(observableGauge, 12.3, new("resource", "cpu"));
-}, observableCounter, observableGauge);
 ```
 
 ## 単位と説明 {#unit-and-description}

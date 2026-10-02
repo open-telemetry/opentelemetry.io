@@ -831,13 +831,6 @@
     metrics: development
     profiles: development
     traces: development
-- name: wavefrontreceiver
-  display_name: Wavefront Receiver
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    metrics: deprecated
 - name: webhookeventreceiver
   display_name: Webhook Event Receiver
   repo: contrib

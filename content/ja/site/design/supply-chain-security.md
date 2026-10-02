@@ -3,7 +3,7 @@ title: サプライチェーンセキュリティ
 description: >-
   サイトの npm 依存関係制御の背景にある脅威モデルと根拠
 weight: 20
-default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
+default_lang_commit: 7fdabd2ed2c394ad4cbff90314c2f12eea6db1d9
 ---
 
 制御の詳細と日常の手順については、[Dependency management](../../build/dependencies/) を参照してください。
@@ -72,8 +72,8 @@ default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Minimize dependencies][]               | 依存関係レビュー時のメンテナーの判断。機械的な制御はなし                                                                                             |
 | [Install from the lock][]               | すべての[インストール契約][install contracts]での `npm ci`                                                                                           |
-| [Resolve deliberately][]                | [慣例][dep-updates]と [`renovate.json5`][] での無効化された [`lockFileMaintenance`][]                                                                |
-| [Resolve only cooled-down releases][]   | npm と [Renovate][`renovate.json5`] での[クールダウン][cooldown]                                                                                     |
+| [Resolve deliberately][]                | [慣例][dep-updates]と [`renovate.jsonc`][] での無効化された [`lockFileMaintenance`][]                                                                |
+| [Resolve only cooled-down releases][]   | npm と [Renovate][`renovate.jsonc`] での[クールダウン][cooldown]                                                                                     |
 | [Run only reviewed lifecycle scripts][] | 厳格モードの[許可リスト][allowlist]。未レビューの場合はインストールが失敗する                                                                        |
 | [Refuse Hugo installer overrides][]     | [リビルドラッパー][install contracts]の環境スクリーン。リビルド試行前に実行                                                                          |
 | [Neutralize the auto-install][]         | [自動インストール無効化][inert auto-install]制御                                                                                                     |
@@ -98,7 +98,7 @@ default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
 <!-- prettier-ignore-start -->
 [`lockFileMaintenance`]: https://docs.renovatebot.com/configuration-options/#lockfilemaintenance
 [`package-lock.json`]: https://docs.npmjs.com/cli/configuring-npm/package-lock-json
-[`renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
+[`renovate.jsonc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.jsonc
 [allowlist]: ../../build/dependencies/#lifecycle-script-allowlist
 [control]: ../../build/dependencies/#controls
 [cooldown]: ../../build/dependencies/#release-cooldown
