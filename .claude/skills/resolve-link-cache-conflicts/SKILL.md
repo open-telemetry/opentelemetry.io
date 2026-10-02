@@ -1,8 +1,8 @@
 ---
 name: resolve-link-cache-conflicts
 description:
-  Skill for resolving link-cache.jsonc conflicts during a merge or rebase, in
-  the current branch or a specified PR.
+  Resolve link-cache.jsonc conflicts during a merge or rebase, in the current
+  branch or a specified PR
 argument-hint: '[optional-pr-number]'
 ---
 
@@ -38,8 +38,8 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
    cache: resolve it with `git rm .lycheecache`.
 
 5. If a `link-cache.jsonc` conflict remains, proceed to **Resolve**. Otherwise,
-   stage the files resolved in step 4 and conclude the operation (**Resolve**
-   step 2): we are done.
+   stage the files resolved in step 4 and continue per **Resolve** steps 2-3 (a
+   rebase may stop again on a later commit).
 
 ## Resolve
 
@@ -67,11 +67,11 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
    conflicted on that stop, run Preparation step 4 first.
 
 4. After the entire rebase/merge completes, validate the resolved file with
-   `npm run link-cache` (prints a summary; exits 1 on a duplicate entry or
-   invalid JSONC, in under a second), then run `npm run fix:link-cache` once to
-   normalize it. Note: the latter runs a Hugo build (lean by default) and link
-   check, which needs network, installed npm dependencies, and populated
-   submodules, and can take several minutes.
+   `npm run link-cache` (rejects invalid JSONC and the duplicates [The owned
+   cache][cache-format] § Shape says it detects), then run
+   `npm run fix:link-cache` once to normalize it. Note: the latter runs a Hugo
+   build (lean by default) and link check, which needs network, installed npm
+   dependencies, and populated submodules, and can take several minutes.
 
 5. Commit the changes, if any:
 

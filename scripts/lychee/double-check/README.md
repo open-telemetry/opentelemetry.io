@@ -34,13 +34,16 @@ plain HTTP status, it:
 
 Synthetic statuses:
 
-- `206` ("OK by analysis"): resolved by inspection rather than HTTP status. This
-  is the status the driver records in `link-cache.jsonc`, with provenance
-  `"via": "double-check"` (206s imported from the old CSV read `via: lychee`);
-  such entries age out through the refresh workflow's normal pruning, like any
-  other entry. The driver replaces an entry whole, so a comment or `expires` on
-  the failure entry it supersedes is not carried over.
+- `206` ("OK by analysis"): resolved by inspection rather than HTTP status.
 - `422`: page fetched, but the URL fragment was not found.
+
+What the driver writes to `link-cache.jsonc`, for each URL it resolved:
+
+- A `206` entry with provenance `"via": "double-check"`. Entries imported from
+  the pre-0.6.0 CSV read `via: lychee` instead: the CSV carried no provenance.
+- The entry replaces the URL's existing one whole (typically the failure the
+  check just recorded); a comment or `expires` on the replaced entry is not
+  carried over.
 
 When neither `CI` nor `CHROME_PATH` is set, URLs that remain unresolved are
 retried in a visible browser window.

@@ -70,13 +70,11 @@ commit might not exist upstream.
 ## Link cache <a id="refcache"></a>
 
 External-link check results are cached in **`link-cache.jsonc`**, the committed
-cache that the [link-cache][] package maintains: checks only fetch URLs that are
-new, whose entries are older than Lychee's `max_cache_age`, or whose last result
-was a failure. Each check run derives Lychee's own cache file, `.lycheecache`
-(git-ignored), from the committed cache and folds Lychee's results back into it.
-For the file's format, including how to seed an entry by hand, see [The owned
-cache][cache-format]; for what a run serves and re-checks, see [Operating
-model][].
+cache that the [link-cache][] package maintains; Lychee's own cache file,
+`.lycheecache`, is derived from it per run and git-ignored. For the file's
+format, including how to seed an entry by hand, see [The owned
+cache][cache-format]; for which URLs a check run fetches and which it serves
+from the cache, see [Operating model][].
 
 The cache is routinely updated by several [scheduled workflows](#workflows) as
 well as content PRs, so concurrent updates can conflict under Git's 3-way merge,
@@ -115,12 +113,10 @@ Since a [cached failure is re-fetched on every run](#link-cache), links to such
 sites would otherwise fail the link check on every run.
 
 The **double-check** tooling re-verifies Lychee-reported failures through a
-browser-grade probe. URLs that the probe resolves are recorded in
-`link-cache.jsonc` with the synthetic status `206` ("OK by analysis") and
-provenance `double-check` (the 206s imported from the CSV read `via: lychee`,
-since the CSV carried no provenance); URLs it can't resolve keep the failure the
-check recorded, for triage in the refresh PR. The Refcache refresh workflow runs
-it after the link check; to run it locally over a captured log:
+browser-grade probe and records the URLs it resolves in `link-cache.jsonc` with
+the synthetic status `206` ("OK by analysis"); URLs it can't resolve keep the
+failure the check recorded, for triage in the refresh PR. The Refcache refresh
+workflow runs it after the link check; to run it locally over a captured log:
 
 ```sh
 npm run log:check:links
