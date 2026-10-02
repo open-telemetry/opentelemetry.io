@@ -132,10 +132,15 @@ The check flags these obsolete paths:
 - `tools/` - removed when [code-excerpts tooling moved to an npm package][#9638]
 - `static/refcache.json` - removed in the [switch to Lychee][#10911]. If your
   branch restores it, follow the [stale-branch update instructions][#10990].
+- `.lycheecache` as a **tracked** file - untracked when the committed link cache
+  [became `link-cache.jsonc`][#11649]. If your branch still commits it, follow
+  the [update instructions][#11928].
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
 [#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
 [#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
+[#11649]: https://github.com/open-telemetry/opentelemetry.io/pull/11649
+[#11928]: https://github.com/open-telemetry/opentelemetry.io/issues/11928
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
@@ -174,16 +179,19 @@ appending a `last-validated=YYYY-MM-DD` parameter, for example:
 ### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
 
 If you added or changed an external link, the link checker records it in the
-link cache (`.lycheecache`), and this check fails until the updated cache is
+link cache (`link-cache.jsonc`), and this check fails until the updated cache is
 committed.
 
-The easiest way to update it is to comment
-[`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) on your PR — the
-OpenTelemetry bot updates the cache for you.
+If your branch predates `link-cache.jsonc`, first update it from `main`; for
+how, including a conflict on the cache file itself, see the [update
+instructions][#11928]. Then, either:
 
-Alternatively, you can build and check links locally, by running
-`npm run check:links`. This command also updates the link cache. Push any
-changes to the cache in a new commit.
+- Comment [`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) on your PR
+  — the OpenTelemetry bot updates the cache for you (on a branch that predates
+  `link-cache.jsonc`, the bot refuses and points to the same instructions); or
+- Build and check links locally: `npm run install:safe`, then
+  `npm run check:links`, which also updates the link cache. Push the cache
+  changes from a passing run in a new commit.
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 
