@@ -445,7 +445,7 @@
   commercial: true
 - name: Splunk
   nativeOTLP: true
-  url: https://docs.splunk.com/Observability/gdi/opentelemetry/opentelemetry.html
+  url: https://help.splunk.com/en/?resourceId=gdi_opentelemetry_opentelemetry
   contact:
   oss: false
   commercial: true

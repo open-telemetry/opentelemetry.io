@@ -6,7 +6,7 @@ date: 2025-01-24
 author: OpenTelemetry Governance Committee
 issue: https://github.com/open-telemetry/community/issues/2509
 sig: Governance Committee
-cSpell:ignore: instrgen quesma toolexec
+cSpell:ignore: instrgen quesma
 ---
 
 Standards are only useful if they're widely adopted, and adoption is only

@@ -5,6 +5,8 @@ description:
   List of open source OpenTelemetry distributions maintained by third parties.
 ---
 
+{{% include freeze-notice.md %}}
+
 OpenTelemetry [distributions][] are a way of customizing OpenTelemetry
 [components][] so that they're easier to deploy and use with specific
 observability backends.

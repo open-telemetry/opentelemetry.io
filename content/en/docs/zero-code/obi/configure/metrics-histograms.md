@@ -7,6 +7,12 @@ description:
 weight: 60
 ---
 
+> [!NOTE]
+>
+> This page uses Config v1 field names and examples. For Config v2, see the
+> [Config v2 reference](../config-v2/). To convert an existing file, use the
+> [migration guide](../migrate-to-config-v2/).
+
 You can configure OBI Prometheus and OpenTelemetry metrics histograms. You can
 also choose to use native histograms and exponential histograms.
 

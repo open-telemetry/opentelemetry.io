@@ -2,7 +2,6 @@
 title: Helping localization teams merge their own PRs
 custodian: [Patrice Chalin](https://github.com/chalin)
 status: See "Status details" section below.
-cSpell:ignore: dyladan
 ---
 
 > **Plan conventions.** This plan is kept intentionally lean and free of design
@@ -148,7 +147,7 @@ maintainers, ideally via a `/auto-merge:enable`-style comment handled by a bot.
   (least-privilege).
 
 - **Renovate is the existence proof.** This repo runs Mend's Renovate App
-  ([`.github/renovate.json5`][renovate-config]), which can [automerge passing
+  ([`.github/renovate.jsonc`][renovate-config]), which can [automerge passing
   PRs][renovate-automerge]. Its default mechanism,
   [`platformAutomerge`][renovate-platform-automerge], is exactly ours: it
   **enables GitHub-native auto-merge** rather than merging itself. Renovate can
@@ -205,7 +204,7 @@ maintainers, ideally via a `/auto-merge:enable`-style comment handled by a bot.
 [otelbot-sig]:
   https://github.com/open-telemetry/community/blob/main/assets.md#otelbot-sig-specific
 [renovate-config]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.jsonc
 [renovate-automerge]:
   https://docs.renovatebot.com/faq/#automatically-merge-passing-pull-requests
 [renovate-platform-automerge]:

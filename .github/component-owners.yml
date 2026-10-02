@@ -40,6 +40,8 @@ components:
     - open-telemetry/browser-approvers
   content/en/docs/platforms/faas:
     - open-telemetry/lambda-extension-approvers
+  content/en/docs/platforms/linux:
+    - open-telemetry/packaging-approvers
   content/en/docs/languages/cpp:
     - open-telemetry/cpp-approvers
   content/en/docs/languages/erlang:

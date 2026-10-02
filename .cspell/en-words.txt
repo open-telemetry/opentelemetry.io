@@ -36,6 +36,7 @@ lifecycles
 lockdown
 microservices
 multiplatform
+otelc
 pageinfo
 parentbased
 paymentservice
@@ -49,6 +50,7 @@ rearchitecture
 recommendationservice
 runbook
 runbooks
+SDLC
 servlet
 shippingservice
 stdoutmetric
@@ -57,6 +59,7 @@ subtag
 sunsetting
 tabpane
 timeframe
+toolexec
 uids
 unconference
 undercount
@@ -65,5 +68,6 @@ undercounts
 unitless
 unsampled
 unshallow
+unstaffed
 upstreamed
 upstreaming

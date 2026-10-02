@@ -117,7 +117,7 @@ Next, you’ll use the OpenTelemetry PHP extension to
    > [!NOTE]
    >
    > Alternative methods of installing the extension are detailed in
-   > [zero-code instrumentation](/docs/zero-code/php/#install-the-opentelemetry-extension).
+   > [zero-code instrumentation](/docs/zero-code/php/auto/#install-the-opentelemetry-extension).
 
 3. Add the extension to your `php.ini` file:
 
