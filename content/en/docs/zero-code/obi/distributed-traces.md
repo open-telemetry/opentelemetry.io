@@ -31,15 +31,15 @@ threads, goroutines, tasks, or event loops, see
 OBI supports distributed tracing and context propagation in the following
 configurations:
 
-| Area                                 | Supported versions or environments                                                                    | Notes                                                                                                                                                                                |
-| :----------------------------------- | :---------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Network-level HTTP/1 propagation     | Linux environments that meet the [OBI compatibility requirements](/docs/zero-code/obi/#compatibility) | Works across programming languages. For HTTPS, propagation is limited to other OBI-instrumented services and can be disrupted by proxies or L7 load balancers.                       |
-| Network-level gRPC propagation       | gRPC `1.0+` over HTTP/2                                                                               | Uses per-stream HPACK `traceparent` headers across languages. Non-Go persistent connections established before OBI starts might not be recognized.                                   |
-| Go library-level context propagation | Go `1.18+`                                                                                            | Supports goroutine context propagation up to 6 nested goroutine levels. This distributed tracing feature has a higher minimum version than general Go library-level instrumentation. |
-| Node.js async hooks                  | Node.js `8.0+`                                                                                        | Custom handling of `SIGUSR1` can interfere with context propagation.                                                                                                                 |
-| Ruby Puma                            | Ruby applications served by Puma `5.0+`                                                               | Context propagation support requires the Puma server.                                                                                                                                |
-| Java thread pools                    | JDK `8+`                                                                                              | No additional documented runtime constraints.                                                                                                                                        |
-| Python asyncio                       | Python `3.9+` with `uvloop`                                                                           | Context propagation support requires the `uvloop` event loop.                                                                                                                        |
+| Area                                      | Supported versions or environments                                                                    | Notes                                                                                                                                                                                |
+| :---------------------------------------- | :---------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Network-level HTTP/1 propagation          | Linux environments that meet the [OBI compatibility requirements](/docs/zero-code/obi/#compatibility) | Works across programming languages. For HTTPS, propagation is limited to other OBI-instrumented services and can be disrupted by proxies or L7 load balancers.                       |
+| Network-level HTTP/2 and gRPC propagation | Plaintext HTTP/2, including gRPC `1.0+`                                                               | Uses per-stream HPACK `traceparent` headers across languages. Generic encrypted HTTP/2 cannot inject context at the network layer.                                                   |
+| Go library-level context propagation      | Go `1.18+`                                                                                            | Supports goroutine context propagation up to 6 nested goroutine levels. This distributed tracing feature has a higher minimum version than general Go library-level instrumentation. |
+| Node.js async hooks                       | Node.js `8.0+`                                                                                        | Custom handling of `SIGUSR1` can interfere with context propagation.                                                                                                                 |
+| Ruby Puma                                 | Ruby applications served by Puma `5.0+`                                                               | Context propagation support requires the Puma server.                                                                                                                                |
+| Java thread pools                         | JDK `8+`                                                                                              | No additional documented runtime constraints.                                                                                                                                        |
+| Python asyncio                            | GIL-enabled, 64-bit CPython `3.9`–`3.14`                                                              | Supports the standard asyncio event loop and `uvloop`, with the limitations described below.                                                                                         |
 
 The versions listed here are the versions OBI explicitly supports for
 distributed tracing features. Other versions might also work, but they are not
@@ -94,12 +94,11 @@ disrupt the TCP/IP context propagation, because the original packets are
 discarded and replayed downstream. Parsing incoming trace context information
 from OpenTelemetry SDK instrumented services still works.
 
-For gRPC, OBI injects a per-stream `traceparent` HPACK header. This works across
-programming languages and preserves distinct trace contexts for concurrent
-HTTP/2 streams. OBI does not use TCP options for gRPC because TCP options are
-connection-scoped and can't represent multiple multiplexed streams. Generic
-non-gRPC HTTP/2 context propagation remains limited to Go library
-instrumentation.
+For plaintext HTTP/2, including gRPC, OBI injects and reads per-stream
+`traceparent` HPACK headers across programming languages. TCP options are
+connection-scoped and cannot represent multiple multiplexed streams. Generic
+encrypted HTTP/2 cannot inject context at the network layer; Go library-level
+instrumentation can inject before encryption.
 
 If you need finer control, `context_propagation` also accepts `headers`, `tcp`,
 and `headers,tcp`. The former `http` alias has been removed. The deprecated `ip`
