@@ -24,9 +24,10 @@ for applications whose routes OBI cannot harvest.
 You can configure the component under the `routes` section of your YAML
 configuration or with environment variables.
 
-You must configure this section in the YAML file. If you don't provide a
-`routes` section, OBI creates a default routes pipeline stage and uses the
-`heuristic` routes decorator.
+To customize route decoration, configure this section in the YAML file. If you
+don't provide a `routes` section, OBI creates a default routes pipeline stage
+and uses the `heuristic` routes decorator. To disable framework route harvesting
+for selected languages, set `discovery.disabled_route_harvesters`.
 
 For example:
 

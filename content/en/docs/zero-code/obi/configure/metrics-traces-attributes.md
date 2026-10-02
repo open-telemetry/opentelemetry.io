@@ -45,10 +45,10 @@ attributes:
         - obi.ip
         - src.name
         - dst.port
-    sql_client_duration:
-      # report all the possible attributes but db_statement
+    db_client_operation_duration:
+      # report all the possible attributes but db.query.text
       include: ['*']
-      exclude: ['db_statement']
+      exclude: ['db.query.text']
     http_client_request_duration:
       # report the default attribute set but exclude the Kubernetes Pod information
       exclude: ['k8s.pod.*']
@@ -615,7 +615,7 @@ And the following table describes the metrics and their associated groups.
 | `k8s_app_meta` | `rpc.client.call.duration`            | `rpc_client_call_duration_seconds`            |
 | `k8s_app_meta` | `rpc.server.call.duration`            | `rpc_server_call_duration_seconds`            |
 | `k8s_app_meta` | `db.client.operation.duration`        | `db_client_operation_duration_seconds`        |
-| `k8s_app_meta` | `gpu.kernel.launch.calls`             | `gpu_kernel_launch_calls_total`               |
-| `k8s_app_meta` | `gpu.kernel.grid.size`                | `gpu_kernel_grid_size_total`                  |
-| `k8s_app_meta` | `gpu.kernel.block.size`               | `gpu_kernel_block_size_total`                 |
-| `k8s_app_meta` | `gpu.memory.allocations`              | `gpu_memory_allocations_bytes_total`          |
+| `k8s_app_meta` | `gpu.cuda.kernel.launch.calls`        | `gpu_cuda_kernel_launch_calls_total`          |
+| `k8s_app_meta` | `gpu.cuda.kernel.grid.size`           | `gpu_cuda_kernel_grid_size`                   |
+| `k8s_app_meta` | `gpu.cuda.kernel.block.size`          | `gpu_cuda_kernel_block_size`                  |
+| `k8s_app_meta` | `gpu.cuda.memory.allocations`         | `gpu_cuda_memory_allocations_bytes_total`     |

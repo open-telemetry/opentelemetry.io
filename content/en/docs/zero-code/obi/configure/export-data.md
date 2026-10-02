@@ -94,13 +94,15 @@ size is 262144 bytes per request direction; capture remains disabled by default.
 
 OBI supports GPU instrumentation when the environment meets the
 [OBI compatibility requirements](/docs/zero-code/obi/#compatibility) and the
-application uses a supported CUDA runtime library.
+application uses a supported CUDA runtime or driver library. GPU monitoring
+reports application GPU work, rather than device health metrics such as GPU
+utilization or temperature.
 
-| Requirement          | Supported                      |
-| :------------------- | :----------------------------- |
-| Operating system     | Linux                          |
-| CPU architecture     | `amd64`, `arm64`               |
-| CUDA runtime library | `libcudart.so` for CUDA `7.0+` |
+| Requirement      | Supported                      |
+| :--------------- | :----------------------------- |
+| Operating system | Linux                          |
+| CPU architecture | `amd64`, `arm64`               |
+| CUDA libraries   | `libcudart.so` or `libcuda.so` |
 
 OBI instruments the following CUDA operations:
 
@@ -111,10 +113,13 @@ OBI instruments the following CUDA operations:
 | `cudaMalloc`       |
 | `cudaMemcpy`       |
 | `cudaMemcpyAsync`  |
+| `cuLaunchKernel`   |
+| `cuLaunchKernelEx` |
+| `cuGraphLaunch`    |
 
-GPU instrumentation only applies to applications that use the supported CUDA
-runtime library and operations listed above. Other GPU APIs, frameworks, or
-libraries are outside the documented support scope unless stated otherwise.
+OBI also observes selected memory, stream, event, and device-introspection
+calls. For the complete API list and metrics, see the
+[v0.14.0 GPU monitoring reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.14.0/devdocs/gpu-monitoring.md).
 
 ## Common metrics configuration
 

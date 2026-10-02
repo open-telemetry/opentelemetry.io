@@ -25,11 +25,11 @@ To enable network metrics, set the following option in your OBI configuration:
 Environment variables:
 
 ```bash
-export OTEL_EBPF_NETWORK_METRICS=true
+export OTEL_EBPF_METRICS_FEATURES=network
 ```
 
-Network metrics requires metrics to be decorated with Kubernetes metadata. To
-enable this feature, set the following option in your OBI configuration:
+Kubernetes metadata is optional, but enables workload labels on the network
+metrics. To enable it, set:
 
 Environment variables:
 
@@ -52,10 +52,40 @@ metrics:
 
 ```yaml
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: obi
+---
+apiVersion: v1
 kind: ServiceAccount
 metadata:
   namespace: obi
   name: obi
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: obi-network
+rules:
+  - apiGroups: ['apps']
+    resources: ['replicasets']
+    verbs: ['list', 'watch']
+  - apiGroups: ['']
+    resources: ['pods', 'services', 'nodes']
+    verbs: ['list', 'watch']
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: obi-network
+subjects:
+  - kind: ServiceAccount
+    name: obi
+    namespace: obi
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: obi-network
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -64,11 +94,15 @@ metadata:
   name: obi-config
 data:
   obi-config.yml: |
+    metrics:
+      features: [network]
     network:
-      enable: true
+      print_flows: true
     attributes:
       kubernetes:
-        enable: true
+        enable: 'true'
+    prometheus_export:
+      port: 9090
 ---
 apiVersion: apps/v1
 kind: DaemonSet
@@ -88,11 +122,8 @@ spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       containers:
-        - name: obi-config
-          configMap:
-            name: obi-config
         - name: obi
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.14.0
           securityContext:
             privileged: true
           volumeMounts:
@@ -101,16 +132,26 @@ spec:
           env:
             - name: OTEL_EBPF_CONFIG_PATH
               value: '/config/obi-config.yml'
+      volumes:
+        - name: obi-config
+          configMap:
+            name: obi-config
 ```
 
-Some observations about this configuration:
+Save the manifest as `obi-network.yml`, then apply it:
 
-- The container image uses the latest under-development
-  `otel/ebpf-instrument:main` image.
-- OBI needs to run as a DaemonSet, as it is requires only one OBI instance per
-  node
-- To listen to network packets on the host, OBI requires the `hostNetwork: true`
-  permission
+```sh
+kubectl apply -f obi-network.yml
+```
+
+This configuration:
+
+- Uses the v0.14.0 release image and one OBI Pod per node.
+- Grants read access to Kubernetes metadata for workload labels.
+- Uses `hostNetwork: true` to observe host network interfaces.
+- Exposes Prometheus metrics on port 9090 and prints flows for the verification
+  step below. Disable `network.print_flows` after verification if you do not
+  need the log output.
 
 ### Verify network metrics generation
 
@@ -139,7 +180,7 @@ to configure the OpenTelemetry exporter.
 
 ### Allowed attributes
 
-Be default, OBI includes the following [attributes](./) in the
+By default, OBI includes the following [attributes](./) in the
 `obi.network.flow.bytes` metric:
 
 - `k8s.src.owner.name`
@@ -154,18 +195,20 @@ cardinality explosion.
 For example:
 
 ```yaml
-network:
-  allowed_attributes:
-    - k8s.src.owner.name
-    - k8s.src.owner.type
-    - k8s.dst.owner.name
-    - k8s.dst.owner.type
+attributes:
+  select:
+    obi_network_flow_bytes:
+      include:
+        - k8s.src.owner.name
+        - k8s.src.owner.type
+        - k8s.dst.owner.name
+        - k8s.dst.owner.type
 ```
 
 The equivalent Prometheus metric would be:
 
 ```text
-obi.network.flow.bytes:
+obi_network_flow_bytes_total:
   k8s_src_owner_name="frontend"
   k8s_src_owner_type="deployment"
   k8s_dst_owner_name="backend"
@@ -201,7 +244,7 @@ network:
 Then, the equivalent Prometheus metric would be:
 
 ```text
-obi_network_flow_bytes:
+obi_network_flow_bytes_total:
   src_cidr="cluster-internal"
   dst_cidr="private"
 ```
