@@ -5,13 +5,15 @@
 // `--root-dir public` handling stays in one place.
 //
 // Runs lychee directly, not through lychee-norm-cache (which always checks the
-// whole of public/), so it reads whatever .lycheecache the last full check
-// derived and never updates the committed link-cache.jsonc.
+// whole of public/), so it derives lychee's .lycheecache from the committed
+// link-cache.jsonc itself (a stale derivative from an earlier run would vouch
+// for URLs the owned file has since dropped) and never folds results back.
 
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { mappedHtmlFiles } from '../changed-html/index.mjs';
+import { projectCache } from './project-cache.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 
@@ -30,6 +32,8 @@ if (files.length === 0) {
 
 console.log(`Checking ${files.length} changed page(s) with lychee:`);
 for (const f of files) console.log(`  - ${path.relative(process.cwd(), f)}`);
+
+projectCache();
 
 const res = spawnSync(path.join(here, '..', 'check', 'index.sh'), files, {
   stdio: 'inherit',
