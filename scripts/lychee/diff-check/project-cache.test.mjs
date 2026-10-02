@@ -71,3 +71,19 @@ describe('projectCache', () => {
     }
   });
 });
+
+describe('wiring drift guard', () => {
+  it('index.mjs derives the CSV before it spawns lychee', () => {
+    // The projection is what keeps a stale derived CSV from vouching for
+    // dropped URLs; a refactor that loses the call would leave these unit
+    // tests green, so the entry point's order is pinned here.
+    const source = readFileSync(
+      new URL('./index.mjs', import.meta.url),
+      'utf8',
+    );
+    const call = source.search(/^projectCache\(\);$/m);
+    const spawn = source.search(/^const res = spawnSync\(/m);
+    assert.ok(call > 0, 'index.mjs calls projectCache()');
+    assert.ok(spawn > call, 'projection precedes the lychee spawn');
+  });
+});

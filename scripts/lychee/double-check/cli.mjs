@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
+import { OWNED_FILE } from 'link-cache/lib/cache.mjs';
 import { failedUrlsOf } from '../check-report/index.mjs';
 import { getUrlStatus } from './get-url-status.mjs';
 import {
@@ -26,7 +27,7 @@ const root = path.join(
   '..',
   '..',
 );
-const cachePath = path.join(root, 'link-cache.jsonc');
+const cachePath = path.join(root, OWNED_FILE);
 
 const defaultLogFile = path.join('tmp', 'check-links-log.txt');
 const usage = `Usage: cli.mjs [options] [LYCHEE_LOG_FILE]
