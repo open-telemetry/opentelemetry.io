@@ -6,9 +6,10 @@ name: Refcache refresh
 # time. We refresh by first pruning the oldest N entries, then running the link
 # checker to update the cache. N is set via the workflow_dispatch input.
 #
-# If the PR branch already exists, then by default we only merge from `main`.
-# To force further pruning of the existing PR branch, invoke with
-# `prune_more_in_same_PR` set to true. If the branch exists but has no open PR
+# If the PR branch already exists, then by default we only merge from `main`
+# (a cache-only merge conflict is resolved by taking main's cache, which voids
+# the pending refresh, so that run prunes again). To force further pruning of
+# the existing PR branch, invoke with `prune_more_in_same_PR` set to true. If the branch exists but has no open PR
 # (e.g., the PR was closed without deleting the branch), the branch is reset
 # to `origin/main` and treated as a new branch, so that pruning runs.
 #
@@ -126,11 +127,9 @@ jobs:
           previous=$(git rev-parse HEAD)
           git fetch origin
           if ! git $merge_or_rebase origin/main; then
-            # A merge conflict confined to the link cache self-heals: take
-            # main's whole cache file. That voids this branch's pending
-            # refresh (main's entries keep their old timestamps), so the prune
-            # step redoes it. Any wider conflict, or a rebase conflict, needs
-            # a human.
+            # Taking main's cache is safe: the next check regenerates what this
+            # branch needed. It voids the pending refresh, so the prune step
+            # redoes it when CACHE_SELF_HEALED is set.
             conflicts=$(git diff --name-only --diff-filter=U)
             if [[ "$merge_or_rebase" == "merge" && "$conflicts" == "$CACHE_FILE" ]]; then
               echo "Cache-only merge conflict: taking main's version and re-pruning."

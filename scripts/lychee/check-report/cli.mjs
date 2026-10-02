@@ -89,7 +89,7 @@ function appendToStepSummary(report) {
   );
 }
 
-// True when link-cache.jsonc has unstaged changes — the local analogue of the CI
+// True when link-cache.jsonc has unstaged changes -- the local analogue of the CI
 // `CACHE updates committed?` verdict (see .github/workflows/check-links.yml).
 function cacheModified() {
   const r = spawnSync('git', ['diff', '--quiet', '--', 'link-cache.jsonc'], {
