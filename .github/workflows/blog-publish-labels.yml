@@ -26,7 +26,7 @@ jobs:
     if: github.repository_owner == 'open-telemetry'
     permissions:
       contents: read
-      pull-requests: write
+      pull-requests: write # Update publish-readiness labels on blog PRs.
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -38,6 +38,9 @@ jobs:
         with:
           client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-contents: read
+          permission-members: read
+          permission-pull-requests: write
 
       - name: Update blog publish labels
         continue-on-error: true
@@ -55,15 +58,19 @@ jobs:
         if:
           github.event_name == 'workflow_dispatch' &&
           github.event.inputs.force_notify == 'true'
+        env:
+          LABELED_PRS_OUTPUT_FILE: ${{ github.workspace }}/labeled-prs.json
+          REPOSITORY: ${{ github.repository }}
         run: |
-          printf '{"number": 9000, "title": "[blog] Test post: first blog ready to publish", "url": "https://github.com/${{ github.repository }}/pull/9000"}\n' \
-            >> "${{ github.workspace }}/labeled-prs.json"
-          printf '{"number": 9001, "title": "[blog] Test post: second blog ready to publish", "url": "https://github.com/${{ github.repository }}/pull/9001"}\n' \
-            >> "${{ github.workspace }}/labeled-prs.json"
+          printf '{"number": 9000, "title": "[blog] Test post: first blog ready to publish", "url": "https://github.com/%s/pull/9000"}\n' "${REPOSITORY}" \
+            >> "${LABELED_PRS_OUTPUT_FILE}"
+          printf '{"number": 9001, "title": "[blog] Test post: second blog ready to publish", "url": "https://github.com/%s/pull/9001"}\n' "${REPOSITORY}" \
+            >> "${LABELED_PRS_OUTPUT_FILE}"
 
       - name: Notify Slack
         if: hashFiles('labeled-prs.json') != ''
         env:
+          LABELED_PRS_OUTPUT_FILE: ${{ github.workspace }}/labeled-prs.json
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           # Builds a bulleted list of PRs and sends it as one webhook call.
@@ -72,7 +79,7 @@ jobs:
           # use {{pr_list}} in the message step.
           pr_list_file=$(mktemp)
           jq -r -Rs '[split("\n")[] | select(length > 0) | fromjson | "\u2022 #\(.number): \(.title) \u2014 \(.url)"] | join("\n")' \
-            "${{ github.workspace }}/labeled-prs.json" > "${pr_list_file}"
+            "${LABELED_PRS_OUTPUT_FILE}" > "${pr_list_file}"
           payload=$(jq -nc --rawfile pr_list "${pr_list_file}" '{"pr_list": $pr_list}')
           rm -f "${pr_list_file}"
           curl --fail --silent --show-error \

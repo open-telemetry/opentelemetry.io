@@ -108,6 +108,7 @@ telemetrie
 traducă
 traduci
 tranzacţie
+tuplu
 urci
 urmǎrirea
 valideze

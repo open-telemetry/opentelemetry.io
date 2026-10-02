@@ -6,20 +6,26 @@ on:
     # hourly at minute 10
     - cron: 10 * * * *
 
-permissions: read-all
+permissions:
+  contents: read
+
+# Overlapping runs would race updates to version branches.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
 
 jobs:
   auto-update:
     name: Auto-update versions
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     if: github.repository == 'open-telemetry/opentelemetry.io'
     env:
       DEPTH: --depth 999 # submodule clone depth
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
@@ -34,15 +40,29 @@ jobs:
           git config user.name otelbot
           git config user.email 197425009+otelbot@users.noreply.github.com
 
+      # Minted only after dependency preparation so that no write credential is
+      # present while `npm` lifecycle scripts run.
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
-          client-id: ${{ vars.OTELBOT_CLIENT_ID }}
-          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+          # The base otelbot App lacks contents permission; use the
+          # push-capable docs App.
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-contents: write # For the version updater's git push.
+          permission-pull-requests: write
+
+      # Let git resolve credentials through the gh CLI (which reads GH_TOKEN
+      # from each step's env) instead of persisting the token in .git/config.
+      - run: gh auth setup-git
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - run: ./scripts/auto-update/all-versions.sh
         env:
-          # change to ${{ secrets.GITHUB_TOKEN }} and comment out the step above when testing against a fork
+          # Fork testing: drop the mint step, grant this job `contents: write`
+          # + `pull-requests: write`, and set GH_TOKEN to
+          # ${{ secrets.GITHUB_TOKEN }} here and in the setup-git step.
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
   report-failure:

@@ -72,7 +72,7 @@ Kubernetesのテレメトリーを収集する最初のステップは、ノー�
 要件ではないですが、ノード上で実行されているアプリケーションが、そのトレース、メトリクス、ログを同じノード上で実行されているコレクターに送信することは一般的なプラクティスです。
 これにより、ネットワークの相互作用がシンプルに保たれ、`k8sattributes` プロセッサーを使用してKubernetesのメタデータを簡単に相関させることができます。
 
-### Kubernetes属性プロセッサー (Kubernetes Atributes Processor) {#kubernetes-attributes-processor}
+### Kubernetes属性プロセッサー (Kubernetes Attributes Processor) {#kubernetes-attributes-processor}
 
 [Kubernetes属性プロセッサー](/docs/platforms/kubernetes/collector/components/#kubernetes-attributes-processor)は、Kubernetesポッドからテレメトリーを受信するコレクターで強く推奨されるコンポーネントです。
 このプロセッサーは、Kubernetesポッドを自動的に検出し、ポッド名やノード名などのメタデータを抽出し、抽出したメタデータをリソース属性としてスパン、メトリクス、ログに追加します。

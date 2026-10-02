@@ -304,6 +304,13 @@ meterProvider.Dispose();
 loggerFactory.Dispose();
 ```
 
+> [!IMPORTANT]
+>
+> Keep the `TracerProvider` alive for as long as the application creates
+> telemetry, and explicitly dispose it during application shutdown to flush any
+> remaining telemetry. For more information, see
+> [TracerProvider management](/docs/languages/dotnet/traces/best-practices/#tracerprovider-management).
+
 For debugging and local development purposes, the example exports telemetry to
 the console. After you have finished setting up manual instrumentation, you need
 to configure an appropriate exporter to
@@ -351,6 +358,13 @@ Anywhere in your application where you write manual tracing code should
 configure an [`ActivitySource`](/docs/concepts/signals/traces/#tracer), which
 will be how you trace operations with
 [`Activity`](/docs/concepts/signals/traces/#spans) elements.
+
+> [!IMPORTANT]
+>
+> The name of each `ActivitySource` must match a name passed to `AddSource` when
+> configuring the `TracerProvider`; otherwise, activities created by that source
+> aren't collected. If your application defines multiple `ActivitySource` names,
+> register each one with `AddSource`.
 
 It’s generally recommended to define `ActivitySource` once per app/service that
 is been instrumented, but you can instantiate several `ActivitySource`s if that
