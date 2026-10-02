@@ -1534,6 +1534,11 @@
     "when": "2026-09-29T05:45:40Z",
     "via": "lychee",
   },
+  "https://dartastic.io/help/observatory": {
+    "result": 200,
+    "when": "2026-10-02T20:33:35Z",
+    "via": "lychee",
+  },
   "https://datatracker.ietf.org/doc/draft-ietf-httpbis-safe-method-w-body/?include_text=1": {
     "result": 200,
     "when": "2026-09-28T05:47:55Z",
