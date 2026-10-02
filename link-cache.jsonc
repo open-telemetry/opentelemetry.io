@@ -23909,6 +23909,11 @@
     "when": "2026-09-07T07:05:12Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry.io/pull/11649": {
+    "result": 200,
+    "when": "2026-10-02T16:41:43Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry.io/pull/5891": {
     "result": 200,
     "when": "2026-09-01T05:50:30Z",
