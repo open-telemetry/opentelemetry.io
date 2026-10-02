@@ -496,7 +496,7 @@ spec:
       serviceAccountName: obi # needs list/watch on pods, nodes, services
       containers:
         - name: k8s-cache
-          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:latest
+          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:v0.14.0
           ports:
             - containerPort: 50055
               name: grpc

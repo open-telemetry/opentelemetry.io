@@ -239,9 +239,9 @@ and
 
 For the supported combinations of module version, checksum, and architecture,
 see the
-[activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.12.1/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation).
+[activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.14.0/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation).
 You can also review the upstream
-[Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/go-trace-api)
+[Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.14.0/examples/go-trace-api)
 and the [Auto SDK](/docs/zero-code/go/autosdk) documentation.
 
 #### Kernel integrity mode limitations
@@ -319,7 +319,7 @@ registers an SDK, OBI leaves span creation and export to that SDK.
 
 This feature is disabled by default. Existing Config v1 deployments can enable
 it with `nodejs.manual_spans: true` or `OTEL_EBPF_NODEJS_MANUAL_SPANS=true`.
-Config v2 does not expose an equivalent field in v0.12.1. Continue migrating
+Config v2 does not expose an equivalent field in v0.14.0. Continue migrating
 deployments to Config v2 rather than retaining Config v1 solely for this
 feature.
 
