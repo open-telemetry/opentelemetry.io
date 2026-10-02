@@ -17,12 +17,14 @@ export function preMigrationTree(cwd) {
   const r = spawnSync(
     'git',
     ['ls-files', '--error-unmatch', '--', '.lycheecache'],
-    {
-      cwd,
-      stdio: 'ignore',
-    },
+    { cwd, stdio: ['ignore', 'ignore', 'pipe'], encoding: 'utf8' },
   );
-  return r.status === 0;
+  if (r.status === 0) return true;
+  if (r.status === 1) return false;
+  // Any other outcome is a git failure, not evidence of a migrated tree.
+  throw new Error(
+    `git ls-files failed: ${r.stderr?.trim() || r.error?.message || `exit ${r.status}`}`,
+  );
 }
 
 export function preMigrationNotice() {

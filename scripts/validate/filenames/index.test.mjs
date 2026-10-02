@@ -53,6 +53,8 @@ describe('temp-fixture checks', () => {
   // A fresh fixture per test keeps the tests below order-independent.
   beforeEach(() => {
     cwd = fs.mkdtempSync(path.join(os.tmpdir(), 'filenames-test-'));
+    // The tracked-kind check asks git, so every fixture is a repository.
+    execFileSync('git', ['init', '-q'], { cwd });
     fs.mkdirSync(path.join(cwd, 'content/a_b'), { recursive: true });
     fs.writeFileSync(path.join(cwd, 'content/a_b/c_d.md'), '');
     fs.writeFileSync(path.join(cwd, 'content/a_b/_index.md'), '');
@@ -196,19 +198,17 @@ describe('temp-fixture checks', () => {
     );
   });
 
-  // A `tracked` entry is about git state, not the filesystem: the path may
-  // legitimately exist as a derived file; what's obsolete is committing it.
+  // Tracked-kind entry (see OBSOLETE_PATHS): a git fixture, not the filesystem.
   test('a tracked entry is reported only while git tracks the path, and fixed by untracking', () => {
     const git = (...args) =>
       execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
-    git('init', '-q');
     git('config', 'user.email', 'test@example.invalid');
     git('config', 'user.name', 'Test');
     const tracked = OBSOLETE_PATHS.filter((entry) => entry.tracked);
     assert.deepEqual(
       tracked.map((entry) => entry.path),
       ['.lycheecache'],
-      'the derived link cache is the tracked-kind entry',
+      'derived link cache is the tracked-kind entry',
     );
     fs.writeFileSync(
       path.join(cwd, '.lycheecache'),
@@ -237,6 +237,44 @@ describe('temp-fixture checks', () => {
       'file kept on disk',
     );
     assert.deepEqual(findObsoletePaths(tracked, { cwd }), [], 'fixed');
+  });
+
+  test('a refused untrack throws instead of reporting a fix', () => {
+    const git = (...args) =>
+      execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
+    git('config', 'user.email', 'test@example.invalid');
+    git('config', 'user.name', 'Test');
+    const tracked = OBSOLETE_PATHS.filter((entry) => entry.tracked);
+    const csv = path.join(cwd, '.lycheecache');
+    // Committed, staged and working-tree contents all differ: git refuses
+    // `rm --cached` without --force.
+    fs.writeFileSync(csv, 'a,200,1\n');
+    git('add', '.lycheecache');
+    git('commit', '-q', '-m', 'csv');
+    fs.writeFileSync(csv, 'b,200,1\n');
+    git('add', '.lycheecache');
+    fs.writeFileSync(csv, 'c,200,1\n');
+    assert.throws(
+      () =>
+        fixViolations({
+          obsolete: findObsoletePaths(tracked, { cwd }),
+          cwd,
+          log() {},
+        }),
+      /\.lycheecache/,
+      'refusal surfaces',
+    );
+    assert.notEqual(git('ls-files', '--', '.lycheecache'), '', 'still tracked');
+  });
+
+  test('a git failure is an error, not "not tracked"', () => {
+    const tracked = OBSOLETE_PATHS.filter((entry) => entry.tracked);
+    fs.writeFileSync(path.join(cwd, '.git', 'index'), 'not an index');
+    assert.throws(
+      () => findObsoletePaths(tracked, { cwd }),
+      /git ls-files/,
+      'git failure surfaces',
+    );
   });
 });
 

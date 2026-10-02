@@ -147,9 +147,7 @@ suite('wiring drift guard', () => {
 });
 
 suite('preMigrationTree', () => {
-  // A branch from before the owned cache: no link-cache.jsonc, a tracked
-  // .lycheecache. Running the check there would regenerate the CSV in
-  // lychee-norm-cache's legacy mode and commit a file main has deleted.
+  // Trees around the guard's predicate (rationale: preMigrationTree).
   const fixture = ({ owned, trackedCsv }) => {
     const cwd = fs.mkdtempSync(path.join(os.tmpdir(), 'check-report-tree-'));
     const git = (...args) =>
@@ -201,6 +199,20 @@ suite('preMigrationTree', () => {
         preMigrationTree(f.cwd),
         false,
         'derived CSV is not a stale-branch sign',
+      );
+    } finally {
+      f.cleanup();
+    }
+  });
+
+  test('a git failure is an error, not a migrated tree', () => {
+    const f = fixture({ owned: false, trackedCsv: true });
+    try {
+      fs.writeFileSync(path.join(f.cwd, '.git', 'index'), 'not an index');
+      assert.throws(
+        () => preMigrationTree(f.cwd),
+        /git ls-files/,
+        'git failure surfaces',
       );
     } finally {
       f.cleanup();

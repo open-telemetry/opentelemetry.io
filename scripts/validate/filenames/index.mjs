@@ -96,7 +96,8 @@ export function findBadFilenames(dirs = SCAN_DIRS, { cwd = '.' } = {}) {
 }
 
 /**
- * Returns the entries of `obsolete` whose path exists under cwd.
+ * Returns the entries of `obsolete` that are present under cwd: on the
+ * filesystem, or in git's index for a `tracked` entry.
  *
  * @param {typeof OBSOLETE_PATHS} [obsolete]
  * @param {{ cwd?: string }} [options]
@@ -118,22 +119,28 @@ function pathExists(p) {
   return !!fs.lstatSync(p, { throwIfNoEntry: false });
 }
 
-// True when git tracks the path; false outside a repository.
+// True when git tracks the path. Exit 1 is git's "not tracked"; anything
+// else (no repository, unreadable index) is an error, since reading it as
+// "not tracked" would silently disable the check.
 function isTracked(p, cwd) {
   const r = spawnSync('git', ['ls-files', '--error-unmatch', '--', p], {
     cwd,
-    stdio: 'ignore',
+    stdio: ['ignore', 'ignore', 'pipe'],
+    encoding: 'utf8',
   });
-  return r.status === 0;
+  if (r.status === 0) return true;
+  if (r.status === 1) return false;
+  throw new Error(
+    `git ls-files failed for ${p}: ${r.stderr?.trim() || r.error?.message || `exit ${r.status}`}`,
+  );
 }
 
 /**
- * Deletes obsolete paths and renames kebab-case violations (underscores to
- * dashes). The full rename plan is validated before anything is deleted or
- * renamed, so a collision — with an existing path or between two planned
- * renames — throws while the tree is still untouched. Renames are applied
- * deepest-first so that renaming a directory doesn't invalidate the paths of
- * violations nested inside it.
+ * Deletes obsolete paths (a `tracked` entry is untracked instead, its file
+ * kept) and renames kebab-case violations (underscores to dashes). The full
+ * rename plan is validated before anything is deleted or renamed, so a
+ * collision, with an existing path or between two planned renames, throws
+ * while the tree is still untouched; so does a refused untrack.
  *
  * @param {{
  *   badNames?: string[],
@@ -175,10 +182,16 @@ export function fixViolations({
   for (const { path: p, tracked } of obsolete) {
     if (tracked) {
       log(`Untracking obsolete path: ${p}`);
-      spawnSync('git', ['rm', '-q', '--cached', '--', p], {
+      const r = spawnSync('git', ['rm', '-q', '--cached', '--', p], {
         cwd,
-        stdio: 'inherit',
+        stdio: ['ignore', 'ignore', 'pipe'],
+        encoding: 'utf8',
       });
+      if (r.status !== 0) {
+        throw new Error(
+          `could not untrack ${p}: ${r.stderr?.trim() || r.error?.message || `exit ${r.status}`}`,
+        );
+      }
       continue;
     }
     log(`Removing obsolete path: ${p}`);
