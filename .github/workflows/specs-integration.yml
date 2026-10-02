@@ -62,6 +62,9 @@ jobs:
 
       - name: Checkout or create branch
         run: |
+          # Keep the merge helper from this workflow's own revision: the
+          # integration branch checked out below may predate it.
+          cp scripts/git/merge-from-main.sh "$RUNNER_TEMP/"
           if ! git ls-remote --exit-code --heads origin "$BRANCH"; then
             git checkout -b "$BRANCH" origin/main
             git push -u origin "$BRANCH"
@@ -80,7 +83,7 @@ jobs:
           git fetch origin
           # A cache-only merge conflict self-heals by taking main's cache; the
           # link-check step below re-adds this branch's entries.
-          scripts/git/merge-from-main.sh
+          "$RUNNER_TEMP/merge-from-main.sh"
           if [ "$(git rev-parse HEAD)" != "$previous" ]; then
             git push
           fi

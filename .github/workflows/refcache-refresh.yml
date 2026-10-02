@@ -89,6 +89,9 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
         run: |
+          # Keep the merge helper from this workflow's own revision: the bot
+          # branch checked out below may predate it.
+          cp scripts/git/merge-from-main.sh "$RUNNER_TEMP/"
           if ! git ls-remote --exit-code --heads origin $BRANCH; then
             echo "IS_NEW_BRANCH=true" >> $GITHUB_ENV
             git checkout -b $BRANCH origin/main
@@ -129,7 +132,7 @@ jobs:
             # A cache-only merge conflict self-heals (main's file is taken,
             # voiding this branch's pending refresh, so the prune step redoes
             # it when CACHE_SELF_HEALED is set); anything wider stops here.
-            scripts/git/merge-from-main.sh
+            "$RUNNER_TEMP/merge-from-main.sh"
           fi
           if [ "$(git rev-parse HEAD)" != "$previous" ]; then
             DELAYED_PUSH_CMD="git push $push_args origin $BRANCH"
