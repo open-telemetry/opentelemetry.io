@@ -60,7 +60,6 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `check:format`         | Prettier and prose-wrap checks.                              |
 | `check:i18n`           | Validate localization front matter (`default_lang_commit`).  |
 | `check:l10n`           | Run localization checks.                                     |
-| `check:links:diff`     | Lychee link check of changed files only.                     |
 | `check:links:internal` | Offline link check (internal links only); lean build first.  |
 | `check:links`          | [Link check][] the whole site with Lychee; lean build first. |
 | `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                  |
@@ -82,7 +81,7 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `fix:format:staged`           | Format only staged files.                                      |
 | `fix:i18n`                    | Add/fix i18n front matter (`fix:i18n:new`, `fix:i18n:status`). |
 | `fix:l10n`                    | Apply localization fixes.                                      |
-| `fix:link-cache`              | Check links, updating the committed [`.lycheecache`][].        |
+| `fix:link-cache`              | Check links, updating the committed [`link-cache.jsonc`][].    |
 | `fix:link-cache:double-check` | [Re-verify failing links with the browser probe][dc].          |
 | `fix:link-cache:refresh`      | Prune the oldest cache entries, then `fix:link-cache`.         |
 | `fix:markdown`                | Fix Markdown lint issues and trailing spaces.                  |
@@ -145,13 +144,14 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | ------------------------------ | --------------------------------------------------------------------------------- |
 | `all`                          | Run all given scripts, even when some fail; exit non-zero if any failed.          |
 | `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter.   |
+| `link-cache`                   | Inspect or prune the committed [`link-cache.jsonc`][] (`-- --help`).              |
 | `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                     |
 | `log:build`, `log:check:links` | Run corresponding script, tee output to `tmp/`, propagate the script's exit code. |
 | `seq`                          | Run given script names in sequence; exit on first failure.                        |
 
 <!-- prettier-ignore-start -->
 [`allowScripts` approval]: ../dependencies/#script-bearing-packages
-[`.lycheecache`]: ../link-checking/#link-cache
+[`link-cache.jsonc`]: ../link-checking/#link-cache
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [build kinds]: ../#build-kinds
 [dc]: ../link-checking/#double-check
