@@ -230,12 +230,11 @@ must:
   path
 - Grant the `CAP_NET_ADMIN` capability to the OBI container
 
-Network-level propagation supports gRPC by injecting and parsing per-stream
-`traceparent` HPACK headers. TCP-option propagation is not used for gRPC because
-HTTP/2 multiplexes multiple trace contexts over one connection. Generic non-gRPC
-HTTP/2 context propagation remains limited to Go library instrumentation. For
-non-Go gRPC services, persistent connections established before OBI starts might
-not be recognized for propagation.
+Network-level propagation supports plaintext HTTP/2, including gRPC, by
+injecting and parsing per-stream `traceparent` HPACK headers. TCP-option
+propagation is not used for HTTP/2 because it multiplexes multiple trace
+contexts over one connection. Generic encrypted HTTP/2 cannot inject at the
+network layer; Go library-level instrumentation can inject before encryption.
 
 For an example of how to configure distributed traces in Kubernetes, see our
 [Distributed traces with OBI](../../distributed-traces/) guide.

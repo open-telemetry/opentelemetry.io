@@ -137,10 +137,10 @@ OBI supports Linux environments that meet the following requirements:
 
 OBI publishes the following supported release artifacts:
 
-| Artifact                                         | Supported platforms          |
-| :----------------------------------------------- | :--------------------------- |
-| `obi` binary archive                             | Linux `amd64`, Linux `arm64` |
-| `otel/ebpf-instrument` container image           | Linux `amd64`, Linux `arm64` |
+| Artifact                                            | Supported platforms          |
+| :-------------------------------------------------- | :--------------------------- |
+| `obi` binary archive                                | Linux `amd64`, Linux `arm64` |
+| `otel/ebpf-instrument` container image              | Linux `amd64`, Linux `arm64` |
 | `otel/opentelemetry-ebpf-k8s-cache` container image | Linux `amd64`, Linux `arm64` |
 
 OBI can be deployed on standalone Linux hosts, in containers, and on Kubernetes
