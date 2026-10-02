@@ -73,19 +73,21 @@ commit might not exist upstream.
 
 External-link check results are cached in **`link-cache.jsonc`**, the committed
 cache that the [link-cache][] package maintains: checks only fetch URLs that are
-new, whose entries have expired, or whose last result was a failure. Each check
-run derives Lychee's own cache file, `.lycheecache` (git-ignored), from the
-committed cache and folds Lychee's results back into it. For the file's format,
-including how to seed an entry by hand, see [The owned cache][cache-format]; for
-what a run serves and re-checks, see [Operating model][].
+new, whose entries are older than Lychee's `max_cache_age`, or whose last result
+was a failure. Each check run derives Lychee's own cache file, `.lycheecache`
+(git-ignored), from the committed cache and folds Lychee's results back into it.
+For the file's format, including how to seed an entry by hand, see [The owned
+cache][cache-format]; for what a run serves and re-checks, see [Operating
+model][].
 
 The cache is routinely updated by several [scheduled workflows](#workflows) as
 well as content PRs, so concurrent updates can conflict under Git's 3-way merge,
-distinct URLs included when both sides insert into the same sorted gap (a hunk
-can then split an entry). When the branch's cache changes are routine check
-results, take `main`'s whole file and rerun the check, which re-adds whatever
-the branch needs; otherwise follow the conflict rules in [The owned
-cache][cache-format], then rerun the check to normalize the file.
+distinct URLs included: both sides inserting into the same sorted gap, or one
+side pruning an entry the other refreshed or inserted beside (a hunk can then
+split an entry). When the branch's cache changes are routine check results, take
+`main`'s whole file and rerun the check, which re-adds whatever the branch
+needs; otherwise follow the conflict rules in [The owned cache][cache-format],
+then rerun the check to normalize the file.
 
 If you add or change external links, run `npm run check:links` **before
 submitting your PR** — the site build dominates the run time — and commit the
@@ -117,9 +119,10 @@ sites would otherwise fail the link check on every run.
 The **double-check** tooling re-verifies Lychee-reported failures through a
 browser-grade probe. URLs that the probe resolves are recorded in
 `link-cache.jsonc` with the synthetic status `206` ("OK by analysis") and
-provenance `double-check`; URLs it can't resolve keep the failure the check
-recorded, for triage in the refresh PR. The Refcache refresh workflow runs it
-after the link check; to run it locally over a captured log:
+provenance `double-check` (the 206s imported from the CSV read `via: lychee`,
+since the CSV carried no provenance); URLs it can't resolve keep the failure the
+check recorded, for triage in the refresh PR. The Refcache refresh workflow runs
+it after the link check; to run it locally over a captured log:
 
 ```sh
 npm run log:check:links

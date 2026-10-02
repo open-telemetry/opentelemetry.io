@@ -6,11 +6,9 @@ description:
 argument-hint: '[optional-pr-number]'
 ---
 
-`link-cache.jsonc` is the committed link cache (policy: [Link cache][]). Its
-entries are sorted by URL, so a conflict means both sides changed the same URL,
-or each inserted a different URL into the same gap; in the latter case a hunk
-can split an entry across the markers. Resolve per [The owned
-cache][cache-format] § Shape, then rerun the check to normalize the file.
+`link-cache.jsonc` is the committed link cache; for why concurrent updates
+conflict, see [Link cache][]. Resolve per [The owned cache][cache-format] §
+Shape, then rerun the check to normalize the file.
 
 ## Prerequisites
 
@@ -35,7 +33,9 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
 
 3. If there are no conflicts, the operation completes on its own: we are done.
 
-4. Conflicts other than `link-cache.jsonc`: resolve them with the user.
+4. Conflicts other than `link-cache.jsonc`: resolve them with the user. A
+   modify/delete conflict on `.lycheecache` means the branch predates the owned
+   cache: resolve it with `git rm .lycheecache`.
 
 5. If a `link-cache.jsonc` conflict remains, proceed to **Resolve**. Otherwise,
    stage the files resolved in step 4 and conclude the operation (**Resolve**
@@ -43,11 +43,9 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
 
 ## Resolve
 
-1. Resolve each conflict hunk per [The owned cache][cache-format] § Shape:
-   reassemble each entry whole, then keep both entries for distinct URLs; choose
-   one complete entry when both sides changed the same URL (prefer
-   `$BASE_BRANCH`'s, unless the branch's entry is a deliberate seed); keep
-   exactly one `"URL": {` line per URL.
+1. Resolve each conflict hunk per [The owned cache][cache-format] § Shape,
+   reassembling any entry a hunk split; when both sides changed the same URL,
+   prefer `$BASE_BRANCH`'s entry unless the branch's is a deliberate seed.
 
    When the branch's cache changes are all routine check results (no seeds),
    taking `$BASE_BRANCH`'s whole file is a valid shortcut, since the next check
@@ -65,13 +63,14 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
      before continuing.
 
 3. Rebase only: for each subsequent rebase stop that conflicts on
-   `link-cache.jsonc`, repeat Resolve steps 1–2. If other paths are also
+   `link-cache.jsonc`, repeat Resolve steps 1-2. If other paths are also
    conflicted on that stop, run Preparation step 4 first.
 
-4. Run `npm run fix:link-cache` once, after the entire rebase/merge completes:
-   it validates the resolved file (a duplicate entry or invalid JSONC fails the
-   run) and normalizes it. Note: this runs a Hugo build (lean by default) and
-   link check, which needs network, installed npm dependencies, and populated
+4. After the entire rebase/merge completes, validate the resolved file with
+   `npm run link-cache` (prints a summary; exits 1 on a duplicate entry or
+   invalid JSONC, in under a second), then run `npm run fix:link-cache` once to
+   normalize it. Note: the latter runs a Hugo build (lean by default) and link
+   check, which needs network, installed npm dependencies, and populated
    submodules, and can take several minutes.
 
 5. Commit the changes, if any:

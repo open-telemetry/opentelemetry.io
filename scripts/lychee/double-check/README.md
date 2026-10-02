@@ -36,8 +36,10 @@ Synthetic statuses:
 
 - `206` ("OK by analysis"): resolved by inspection rather than HTTP status. This
   is the status the driver records in `link-cache.jsonc`, with provenance
-  `"via": "double-check"`; such entries age out through the refresh workflow's
-  normal pruning, like any other entry.
+  `"via": "double-check"` (206s imported from the old CSV read `via: lychee`);
+  such entries age out through the refresh workflow's normal pruning, like any
+  other entry. The driver replaces an entry whole, so a comment or `expires` on
+  the failure entry it supersedes is not carried over.
 - `422`: page fetched, but the URL fragment was not found.
 
 When neither `CI` nor `CHROME_PATH` is set, URLs that remain unresolved are

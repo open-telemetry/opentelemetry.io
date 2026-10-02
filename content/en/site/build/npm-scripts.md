@@ -145,6 +145,7 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | ------------------------------ | --------------------------------------------------------------------------------- |
 | `all`                          | Run all given scripts, even when some fail; exit non-zero if any failed.          |
 | `generate:config:links`        | Generate git-ignored `lychee.toml` from `lychee.base.toml` + page front matter.   |
+| `link-cache`                   | Inspect or prune the committed [`link-cache.jsonc`][] (`-- --help`).              |
 | `locale-auto-merge`            | [Locale auto-merge helper CLI][locale-auto-merge] (`--help`).                     |
 | `log:build`, `log:check:links` | Run corresponding script, tee output to `tmp/`, propagate the script's exit code. |
 | `seq`                          | Run given script names in sequence; exit on first failure.                        |
