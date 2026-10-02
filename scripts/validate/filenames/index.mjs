@@ -52,9 +52,8 @@ export const OBSOLETE_PATHS = [
     tracked: true,
     message:
       'Obsolete tracked file: the committed link cache is `link-cache.jsonc` (PR #11649); ' +
-      '`.lycheecache` is derived per run and git-ignored. Your branch is probably stale: ' +
-      'merge in the latest `main`, resolving a modify/delete conflict on `.lycheecache` with ' +
-      '`git rm .lycheecache`, then run `npm run check:links`.',
+      '`.lycheecache` is derived per run and git-ignored. Untrack it: `npm run fix:filenames` ' +
+      '(or comment `/fix:filenames`), then run `npm run check:links` and commit `link-cache.jsonc`.',
   },
 ];
 
@@ -97,7 +96,8 @@ export function findBadFilenames(dirs = SCAN_DIRS, { cwd = '.' } = {}) {
 
 /**
  * Returns the entries of `obsolete` that are present under cwd: on the
- * filesystem, or in git's index for a `tracked` entry.
+ * filesystem, or in git's index for a `tracked` entry (throws when git cannot
+ * answer).
  *
  * @param {typeof OBSOLETE_PATHS} [obsolete]
  * @param {{ cwd?: string }} [options]
@@ -179,21 +179,22 @@ export function fixViolations({
     plannedDestinations.add(to);
   }
 
-  for (const { path: p, tracked } of obsolete) {
-    if (tracked) {
-      log(`Untracking obsolete path: ${p}`);
-      const r = spawnSync('git', ['rm', '-q', '--cached', '--', p], {
-        cwd,
-        stdio: ['ignore', 'ignore', 'pipe'],
-        encoding: 'utf8',
-      });
-      if (r.status !== 0) {
-        throw new Error(
-          `could not untrack ${p}: ${r.stderr?.trim() || r.error?.message || `exit ${r.status}`}`,
-        );
-      }
-      continue;
+  // Untracking can be refused (a partially staged file), so it goes first,
+  // while nothing has been deleted or renamed yet.
+  for (const { path: p } of obsolete.filter((entry) => entry.tracked)) {
+    log(`Untracking obsolete path: ${p}`);
+    const r = spawnSync('git', ['rm', '-q', '--cached', '--', p], {
+      cwd,
+      stdio: ['ignore', 'ignore', 'pipe'],
+      encoding: 'utf8',
+    });
+    if (r.status !== 0) {
+      throw new Error(
+        `could not untrack ${p}: ${r.stderr?.trim() || r.error?.message || `exit ${r.status}`}`,
+      );
     }
+  }
+  for (const { path: p } of obsolete.filter((entry) => !entry.tracked)) {
     log(`Removing obsolete path: ${p}`);
     fs.rmSync(path.join(cwd, p), { recursive: true, force: true });
   }

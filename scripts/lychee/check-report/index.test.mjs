@@ -1,16 +1,7 @@
 import { test, suite } from 'node:test';
 import assert from 'node:assert/strict';
-import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
-import os from 'node:os';
-import path from 'node:path';
-import {
-  cacheUpdatedNotice,
-  deadLinksReport,
-  failedUrlsOf,
-  preMigrationNotice,
-  preMigrationTree,
-} from './index.mjs';
+import { cacheUpdatedNotice, deadLinksReport, failedUrlsOf } from './index.mjs';
 
 suite('failedUrlsOf', () => {
   const lycheeOutput = `Issues found in 1 input. Find details below.
@@ -143,88 +134,5 @@ suite('wiring drift guard', () => {
         `pr-checks.md declares the {#${anchor}} anchor`,
       );
     }
-  });
-});
-
-suite('preMigrationTree', () => {
-  // Trees around the guard's predicate (rationale: preMigrationTree).
-  const fixture = ({ owned, trackedCsv }) => {
-    const cwd = fs.mkdtempSync(path.join(os.tmpdir(), 'check-report-tree-'));
-    const git = (...args) =>
-      execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
-    git('init', '-q');
-    git('config', 'user.email', 'test@example.invalid');
-    git('config', 'user.name', 'Test');
-    if (owned) fs.writeFileSync(path.join(cwd, 'link-cache.jsonc'), '{\n}\n');
-    fs.writeFileSync(
-      path.join(cwd, '.lycheecache'),
-      'https://a.example/,200,1\n',
-    );
-    if (trackedCsv) {
-      git('add', '.lycheecache');
-      git('commit', '-q', '-m', 'csv');
-    }
-    return {
-      cwd,
-      cleanup: () => fs.rmSync(cwd, { recursive: true, force: true }),
-    };
-  };
-
-  test('detects a tracked CSV without the owned file', () => {
-    const f = fixture({ owned: false, trackedCsv: true });
-    try {
-      assert.equal(
-        preMigrationTree(f.cwd),
-        true,
-        'pre-migration tree detected',
-      );
-    } finally {
-      f.cleanup();
-    }
-  });
-
-  test('is false once the owned file exists, tracked CSV or not', () => {
-    const f = fixture({ owned: true, trackedCsv: true });
-    try {
-      assert.equal(preMigrationTree(f.cwd), false, 'migrated tree accepted');
-    } finally {
-      f.cleanup();
-    }
-  });
-
-  test('is false for a derived, untracked CSV alone', () => {
-    const f = fixture({ owned: false, trackedCsv: false });
-    try {
-      assert.equal(
-        preMigrationTree(f.cwd),
-        false,
-        'derived CSV is not a stale-branch sign',
-      );
-    } finally {
-      f.cleanup();
-    }
-  });
-
-  test('a git failure is an error, not a migrated tree', () => {
-    const f = fixture({ owned: false, trackedCsv: true });
-    try {
-      fs.writeFileSync(path.join(f.cwd, '.git', 'index'), 'not an index');
-      assert.throws(
-        () => preMigrationTree(f.cwd),
-        /git ls-files/,
-        'git failure surfaces',
-      );
-    } finally {
-      f.cleanup();
-    }
-  });
-
-  test('the notice tells the user to merge main and how to resolve the CSV', () => {
-    assert.match(preMigrationNotice(), /merge .*main/i, 'merge main');
-    assert.match(
-      preMigrationNotice(),
-      /git rm \.lycheecache/,
-      'resolution command',
-    );
   });
 });

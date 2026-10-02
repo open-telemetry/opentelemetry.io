@@ -14,13 +14,7 @@ import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import {
-  cacheUpdatedNotice,
-  deadLinksReport,
-  failedUrlsOf,
-  preMigrationNotice,
-  preMigrationTree,
-} from './index.mjs';
+import { cacheUpdatedNotice, deadLinksReport, failedUrlsOf } from './index.mjs';
 
 const root = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -37,11 +31,6 @@ const root = path.join(
 // Output streams through as it arrives — the run takes minutes (site build +
 // link check), so buffering it until exit would leave the terminal frozen —
 // while a copy accumulates for the dead-link parse.
-if (preMigrationTree(root)) {
-  console.error(preMigrationNotice());
-  process.exit(1);
-}
-
 const bin = path.join(root, 'node_modules', '.bin', 'lychee-norm-cache');
 const child = spawn(bin, process.argv.slice(2), {
   cwd: root,
