@@ -139,6 +139,56 @@ describe('merge-from-main.sh', () => {
     }
   });
 
+  it('heals both cache paths at once: JSONC added on both sides, CSV cut over', () => {
+    const r = gitRepo({ [CSV]: 'https://a.example/,200,1759276800\n' });
+    try {
+      r.git('rm', '-q', CSV);
+      r.write(OWNED, owned('https://a.example/', 'https://m.example/'));
+      r.commitAll('main: migrate the cache');
+      r.git('checkout', '-q', 'branch');
+      r.write(
+        CSV,
+        'https://a.example/,200,1759276800\nhttps://b.example/,200,1\n',
+      );
+      r.write(OWNED, owned('https://a.example/', 'https://b.example/'));
+      r.commitAll('branch: cache, both files');
+      const res = r.merge();
+      assert.equal(res.status, 0, `exit 0\n${res.stdout}${res.stderr}`);
+      assert.equal(r.has(CSV), false, 'derived CSV dropped with main');
+      assert.equal(
+        r.read(OWNED),
+        owned('https://a.example/', 'https://m.example/'),
+        "owned cache is main's",
+      );
+      assert.equal(r.git('status', '--porcelain'), '', 'merge committed');
+    } finally {
+      r.cleanup();
+    }
+  });
+
+  it('fails closed when the merge itself fails without conflicts', () => {
+    const r = gitRepo({ [OWNED]: owned('https://a.example/') });
+    try {
+      r.write(OWNED, owned('https://a.example/', 'https://m.example/'));
+      r.commitAll('main: cache');
+      r.git('checkout', '-q', 'branch');
+      // An uncommitted edit to a file the merge must update makes git refuse.
+      r.write(OWNED, owned('https://a.example/', 'https://dirty.example/'));
+      const before = r.git('rev-parse', 'HEAD');
+      const res = r.merge();
+      assert.equal(res.status, 1, 'exit 1');
+      assert.match(
+        res.stdout + res.stderr,
+        /::error::.*without conflicts/,
+        'names the cause',
+      );
+      assert.equal(r.git('rev-parse', 'HEAD'), before, 'HEAD unchanged');
+      assert.equal(r.githubEnv(), '', 'no self-heal flag');
+    } finally {
+      r.cleanup();
+    }
+  });
+
   it('leaves a wider conflict for a human', () => {
     const r = gitRepo({ [OWNED]: owned('https://a.example/'), 'x.md': 'x\n' });
     try {

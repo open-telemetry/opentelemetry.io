@@ -40,6 +40,8 @@ done
 
 echo "Cache-only merge conflict: taking $BASE_REF's cache."
 for f in $conflicts; do
+  # `git restore --source` would be shorter but refuses an unmerged path that
+  # BASE_REF lacks (the modify/delete cutover shape); resolve each explicitly.
   if git cat-file -e "$BASE_REF:$f" 2>/dev/null; then
     git checkout --theirs -- "$f"
     git add -- "$f"
