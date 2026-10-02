@@ -4,7 +4,6 @@ linkTitle: Agent pattern
 description: Send signals to Collectors and then export to backends
 aliases: [/docs/collector/deployment/agent]
 weight: 200
-cSpell:ignore: prometheusremotewrite
 ---
 
 In the agent deployment pattern, telemetry signals can come from
@@ -71,7 +70,7 @@ receivers:
         endpoint: 0.0.0.0:4318
 
 exporters:
-  prometheusremotewrite: # the PRW exporter, to ingest metrics to backend
+  prometheus_remote_write: # the PRW exporter, to ingest metrics to backend
     endpoint: https://prw.example.com/v1/api/remote_write
     sending_queue:
       batch:
@@ -80,7 +79,7 @@ service:
   pipelines:
     metrics/prod:
       receivers: [otlp]
-      exporters: [prometheusremotewrite]
+      exporters: [prometheus_remote_write]
 ```
 
 {{% /tab %}} {{% tab Logs %}}

@@ -92,6 +92,7 @@
   repo: contrib
   distributions:
     - contrib
+    - k8s
   stability:
     extension: alpha
 - name: datadogextension
@@ -134,6 +135,13 @@
   stability:
     extension: beta
   subtype: storage
+- name: filetelemetrypolicyextension
+  display_name: File Telemetry Policy Extension
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    extension: development
 - name: googleclientauthextension
   display_name: Google Client Auth Extension
   repo: contrib
@@ -306,7 +314,7 @@
   distributions:
     - contrib
   stability:
-    extension: development
+    extension: alpha
 - name: sigv4authextension
   display_name: SigV4 Authenticator Extension
   repo: contrib

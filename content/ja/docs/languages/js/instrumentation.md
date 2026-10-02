@@ -1356,7 +1356,7 @@ const myMeter = opentelemetry.metrics.getMeter(
 `instrumentation-scope-name`と`instrumentation-scope-version`の値は、パッケージ、モジュール、またはクラス名など、[計装スコープ](/docs/concepts/instrumentation-scope/)を一意に識別する必要があります。
 名前は必須ですが、バージョンはオプションであるにもかかわらず推奨されます。
 
-アプリケーションで必要なときに`getMeter`を呼び出すことが、メーターインスタンスアプリケーションの残りの部分にエクスポートするよりも一般的に推奨されます。
+アプリケーションで必要なときに`getMeter`を呼び出すことが、メーターインスタンスをアプリケーションの残りの部分にエクスポートするよりも一般的に推奨されます。
 これは、他の必要な依存関係が関与している場合のより複雑なアプリケーションロードの問題を回避するのに役立ちます。
 
 [サンプルアプリケーション](#example-app)の場合、適切な計装スコープでメーターを取得できる場所が2つあります。
@@ -1687,7 +1687,7 @@ counter.add(1, { 'some.optional.attribute': 'some value' });
 
 #### 例 {#examples}
 
-すべてのメトリクスタイプで属性をフィルタリング場合。
+すべてのメトリクスタイプで属性をフィルタリングする場合。
 
 ```js
 const limitAttributesView = {

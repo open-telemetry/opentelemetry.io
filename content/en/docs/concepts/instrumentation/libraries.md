@@ -404,13 +404,20 @@ requests, logs, and so on. Use a typical application, with popular frameworks
 and libraries and all tracing enabled when trying out your instrumentation.
 Check out how libraries similar to yours show up.
 
-For unit testing, you can usually mock or fake `SpanProcessor` and
-`SpanExporter` as in the following Java example:
+For unit testing, prefer an in-memory exporter or equivalent testing utility
+provided by your language's OpenTelemetry SDK. In-memory exporters collect
+telemetry in-process, allowing tests to inspect emitted spans, metrics, or logs
+without running an external backend. If your SDK does not provide one, use a
+mock or fake exporter or processor.
+
+The following Java example uses
+[`InMemorySpanExporter`][java-in-memory-span-exporter] from the
+`opentelemetry-sdk-testing` artifact:
 
 ```java
 @Test
 public void checkInstrumentation() {
-  SpanExporter exporter = new TestExporter();
+  InMemorySpanExporter exporter = InMemorySpanExporter.create();
 
   Tracer tracer = OpenTelemetrySdk.builder()
            .setTracerProvider(SdkTracerProvider.builder()
@@ -418,21 +425,12 @@ public void checkInstrumentation() {
            .getTracer("test");
   // run test ...
 
-  validateSpans(exporter.exportedSpans);
-}
-
-class TestExporter implements SpanExporter {
-  public final List<SpanData> exportedSpans = Collections.synchronizedList(new ArrayList<>());
-
-  @Override
-  public CompletableResultCode export(Collection<SpanData> spans) {
-    exportedSpans.addAll(spans);
-    return CompletableResultCode.ofSuccess();
-  }
-  ...
+  validateSpans(exporter.getFinishedSpanItems());
 }
 ```
 
 [instrumentation libraries]:
   /docs/specs/otel/overview/#instrumentation-libraries
+[java-in-memory-span-exporter]:
+  https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemorySpanExporter.html
 [span events]: /docs/specs/otel/trace/api/#add-events

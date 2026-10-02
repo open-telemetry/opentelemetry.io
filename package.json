@@ -175,15 +175,15 @@
     "cspell": "10.2.0",
     "gulp": "5.0.1",
     "hugo-extended": "0.164.0",
-    "js-yaml": "5.4.1",
+    "js-yaml": "5.4.2",
     "link-cache": "0.6.0",
-    "markdown-it": "15.0.0",
+    "markdown-it": "15.0.2",
     "markdown-link-check": "3.15.0",
     "markdownlint": "0.41.1",
-    "markdownlint-cli2": "0.23.2",
+    "markdownlint-cli2": "0.23.3",
     "markdownlint-rule-helpers": "0.31.0",
     "markdownlint-rule-no-shortcut-ref-link": "0.4.0",
-    "prettier": "3.9.6",
+    "prettier": "3.9.9",
     "puppeteer": "25.9.0",
     "puppeteer-core": "25.9.0",
     "require-dir": "1.2.0",
@@ -214,10 +214,10 @@
     "npm-check-updates": "23.1.0"
   },
   "overrides": {
-    "adm-zip": "0.6.0"
+    "adm-zip": "0.6.1"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
-  "enginesNpmComment": "Floor policy: https://opentelemetry.io/site/build/dependencies/#npm-version-floor; 11.18 floor: npm/cli#9652 fix, plus min-release-age-exclude (added in 11.17); Node LTS bundles 11.19+ since 24.20.0",
+  "enginesNpmComment": "Floor policy: https://opentelemetry.io/site/build/dependencies/#npm-version-floor (11.18 closes the allowScripts enforcement gaps of npm/cli#9652; min-release-age-exclude arrived in 11.17; Node LTS bundles 11.19+ since 24.20.0)",
   "engines": {
     "node": ">=24",
     "npm": ">=11.18.0"
