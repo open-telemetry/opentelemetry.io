@@ -3,7 +3,7 @@ title: 計装
 aliases: [manual]
 weight: 20
 description: OpenTelemetry Pythonの手動計装
-default_lang_commit: 0e8c0ce298a66ea2cb968c0e978e4589ceeb84c6
+default_lang_commit: 09bba5d336b5b8d93e4e94530cbe51cdb83bd7d7
 cSpell:ignore: millis ottrace textmap
 ---
 
@@ -392,6 +392,31 @@ logging.getLogger(__name__).info("This is an OpenTelemetry log record!")
 - [ログ仕様](/docs/specs/otel/logs/)
 - [Python Logs APIドキュメント](https://opentelemetry-python.readthedocs.io/en/latest/api/_logs.html)
 - [Python Logs SDKドキュメント](https://opentelemetry-python.readthedocs.io/en/latest/sdk/_logs.html)
+
+## セマンティック規約の安定性 {#semantic-convention-stability}
+
+Python の[計装ライブラリ](/docs/languages/python/libraries/)は、環境変数 `OTEL_SEMCONV_STABILITY_OPT_IN` をサポートしています。
+この変数を使用すると、計装が安定版のセマンティック規約を出力するか、以前の実験的な規約を出力するか、あるいは移行中に両方を出力するかを制御できます。
+
+HTTP とデータベースのサポートは、OpenTelemetry Python 1.44.0 / 0.65b0 から利用可能です。
+この変数はカンマ区切りの値のリストを受け付けます。
+
+- `http`: 新しい安定版の HTTP およびネットワーキング規約を出力し、以前計装が出力していた古い実験的な HTTP およびネットワーキング規約の出力を停止します。
+- `http/dup`: 古い規約と安定版の HTTP およびネットワーキング規約の両方を出力し、シームレスな移行を可能にします。
+- `database`: 新しい安定版のデータベース規約を出力し、以前計装が出力していた古い実験的なデータベース規約の出力を停止します。
+- `database/dup`: 古い規約と安定版のデータベース規約の両方を出力し、シームレスな移行を可能にします。
+- `gen_ai_latest_experimental`: 古い GenAI 規約のかわりに、計装がサポートする最新の実験的な GenAI 規約を出力します。
+
+変数が設定されていない場合、計装はデフォルトで以前の実験的な規約を出力し続けます。
+値とその `/dup` バリアントの両方が存在する場合は、`/dup` バリアントが優先されます。
+
+たとえば次のようにします。
+
+```shell
+export OTEL_SEMCONV_STABILITY_OPT_IN=http/dup,database
+```
+
+パッケージ固有の詳細については、[opentelemetry-python-contrib Read the Docs](https://opentelemetry-python-contrib.readthedocs.io/) で個々の計装のドキュメントを参照してください。
 
 ## 次のステップ {#next-steps}
 
