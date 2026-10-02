@@ -60,7 +60,6 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `check:format`         | Prettier and prose-wrap checks.                              |
 | `check:i18n`           | Validate localization front matter (`default_lang_commit`).  |
 | `check:l10n`           | Run localization checks.                                     |
-| `check:links:diff`     | Lychee link check of changed files only.                     |
 | `check:links:internal` | Offline link check (internal links only); lean build first.  |
 | `check:links`          | [Link check][] the whole site with Lychee; lean build first. |
 | `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                  |

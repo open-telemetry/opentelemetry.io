@@ -28,12 +28,10 @@ npm run check:links
 | ---------------------- | ------------------------------------------------------------ |
 | `check:links`          | Whole site                                                   |
 | `check:links:internal` | Whole site, offline (no external links)                      |
-| `check:links:diff`     | Changed files only (doesn't update the [link cache][])       |
 | `fix:link-cache`       | Alias of `check:links`; use it to refresh the [link cache][] |
 
 The `check:links` and `check:links:internal` scripts run over a build of
-`BUILD_KIND`; `check:links:diff` checks files from the existing `public/` build.
-For details, see [Build kinds: full and lean][].
+`BUILD_KIND`. For details, see [Build kinds: full and lean][].
 
 ## Configuration
 

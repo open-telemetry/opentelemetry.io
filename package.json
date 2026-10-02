@@ -75,7 +75,6 @@
     "check:i18n": "node scripts/i18n/drift.mjs",
     "check:l10n:do-not-copy-images-etc": "node scripts/validate/l10n-do-not-copy-images-etc/index.mjs",
     "check:l10n": "npm run seq -- check:l10n:do-not-copy-images-etc",
-    "check:links:diff": "npm run generate:config:links && node scripts/lychee/diff-check/index.mjs",
     "check:links:internal": "npm run _precheck:links && npm run _check:links -- --offline",
     "check:links": "npm run _precheck:links && node scripts/lychee/check-report/cli.mjs",
     "check:markdown:specs": "npm run -s check:markdown:specs::pre && markdownlint-cli2 'tmp/(otel|otlp|semconv)/**/*.md'",
