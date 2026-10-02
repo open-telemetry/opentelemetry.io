@@ -123,13 +123,27 @@ jobs:
         # checkout shallow and break history-dependent fixers (fix:i18n).
         env:
           HEAD_REF: refs/pull/${{ github.event.issue.number }}/head
+          # The head's link-cache pin, from its manifest as text (nothing from
+          # the head runs); a copied-in owned file alone doesn't prove the pin.
+          READ_PIN: |
+            let text = '';
+            process.stdin.on('data', (chunk) => (text += chunk));
+            process.stdin.on('end', () => {
+              let pin = '';
+              try {
+                pin = JSON.parse(text).devDependencies?.['link-cache'] ?? '';
+              } catch {}
+              console.log(pin);
+            });
         run: |
           git fetch --quiet origin "$HEAD_REF"
-          if git cat-file -e FETCH_HEAD:link-cache.jsonc 2>/dev/null; then
+          pin=$(git show FETCH_HEAD:package.json 2>/dev/null | node -e "$READ_PIN")
+          if git cat-file -e FETCH_HEAD:link-cache.jsonc 2>/dev/null &&
+             [[ -n "$pin" && "$pin" != 0.3.* ]]; then
             echo "stale=false" >> "$GITHUB_OUTPUT"
           else
             echo "stale=true" >> "$GITHUB_OUTPUT"
-            echo "::error::PR head predates link-cache.jsonc; update the branch from main first."
+            echo "::error::PR head predates the owned link cache (link-cache@${pin:-none}); update the branch from main first."
             exit 1
           fi
 
