@@ -81,7 +81,7 @@ jobs:
           if ! git merge origin/main; then
             # Taking main's cache is safe: the link-check step below re-adds
             # this branch's entries.
-            conflicts=$(git diff --name-only --diff-filter=U)
+            conflicts=$(git diff --name-only --diff-filter=U | tr '\n' ' ' | sed 's/ $//')
             if [[ "$conflicts" == "link-cache.jsonc" ]]; then
               echo "Cache-only merge conflict: taking main's version."
               git checkout --theirs link-cache.jsonc

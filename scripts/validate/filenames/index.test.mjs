@@ -53,7 +53,7 @@ describe('temp-fixture checks', () => {
   // A fresh fixture per test keeps the tests below order-independent.
   beforeEach(() => {
     cwd = fs.mkdtempSync(path.join(os.tmpdir(), 'filenames-test-'));
-    // The tracked-kind check asks git, so every fixture is a repository.
+    // The `tracked` check asks git, so every fixture is a repository.
     execFileSync('git', ['init', '-q'], { cwd });
     fs.mkdirSync(path.join(cwd, 'content/a_b'), { recursive: true });
     fs.writeFileSync(path.join(cwd, 'content/a_b/c_d.md'), '');
@@ -198,7 +198,7 @@ describe('temp-fixture checks', () => {
     );
   });
 
-  // Tracked-kind entry (see OBSOLETE_PATHS): a git fixture, not the filesystem.
+  // `tracked` entry (see OBSOLETE_PATHS): a git fixture, not the filesystem.
   test('a tracked entry is reported only while git tracks the path, and fixed by untracking', () => {
     const git = (...args) =>
       execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
@@ -208,7 +208,7 @@ describe('temp-fixture checks', () => {
     assert.deepEqual(
       tracked.map((entry) => entry.path),
       ['.lycheecache'],
-      'derived link cache is the tracked-kind entry',
+      'derived link cache is the `tracked` entry',
     );
     fs.writeFileSync(
       path.join(cwd, '.lycheecache'),
@@ -217,14 +217,14 @@ describe('temp-fixture checks', () => {
     assert.deepEqual(
       findObsoletePaths(tracked, { cwd }),
       [],
-      'an untracked derived file is not a violation',
+      'untracked derived file is not a violation',
     );
     git('add', '.lycheecache');
     git('commit', '-q', '-m', 'track the csv');
     assert.deepEqual(
       findObsoletePaths(tracked, { cwd }).map((entry) => entry.path),
       ['.lycheecache'],
-      'a tracked derived file is reported',
+      'tracked derived file is reported',
     );
     fixViolations({
       obsolete: findObsoletePaths(tracked, { cwd }),
@@ -264,7 +264,11 @@ describe('temp-fixture checks', () => {
       /\.lycheecache/,
       'refusal surfaces',
     );
-    assert.notEqual(git('ls-files', '--', '.lycheecache'), '', 'still tracked');
+    assert.notEqual(
+      git('ls-files', '--', '.lycheecache'),
+      '',
+      'file remains tracked',
+    );
   });
 
   test('a git failure is an error, not "not tracked"', () => {

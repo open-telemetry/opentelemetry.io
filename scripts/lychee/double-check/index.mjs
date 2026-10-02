@@ -31,6 +31,7 @@ export function cacheEntriesFor(results, nowEpoch) {
 // Owned-cache text with the new entries merged in: an existing entry for the
 // same URL (typically the failure word the check just recorded) is replaced
 // whole; the text is normalized on the way out; no entries means no change.
+// Throws on a malformed cache.
 export function mergedCacheText(cacheText, newEntries, nowEpoch) {
   if (newEntries.length === 0) return cacheText;
   const owned = parseOwned(cacheText, { now: nowEpoch });

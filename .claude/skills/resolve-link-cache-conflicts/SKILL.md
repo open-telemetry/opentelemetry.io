@@ -1,7 +1,7 @@
 ---
 name: resolve-link-cache-conflicts
 description:
-  Resolve link-cache.jsonc conflicts during a merge or rebase, in the current
+  Resolve link-cache.jsonc conflicts in a merge or rebase, for the current
   branch or a specified PR. Use when a merge or rebase stops on
   link-cache.jsonc, or on a modify/delete conflict on .lycheecache from a branch
   that predates the owned cache.
@@ -36,8 +36,7 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
 
 4. Conflicts other than `link-cache.jsonc`: resolve them with the user. A
    modify/delete conflict on `.lycheecache` means the branch predates the owned
-   cache: resolve it with `git rm .lycheecache`; the branch's own cache
-   additions are gone with it, so **Resolve** steps 4-6 are needed too.
+   cache: resolve it with `git rm .lycheecache`.
 
 5. If a `link-cache.jsonc` conflict remains, proceed to **Resolve**. Otherwise,
    stage the files resolved in step 4 and continue per **Resolve** steps 2-3 (a
@@ -69,13 +68,14 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
    `link-cache.jsonc`, repeat Resolve steps 1-2. If other paths are also
    conflicted on that stop, run Preparation step 4 first.
 
-4. After the entire rebase/merge completes, run `npm run install:safe` if the
-   operation changed `package.json` (a branch crossing the owned-cache cutover
-   does), then validate the resolved file with `npm run link-cache` (exits 1 on
-   a malformed file), and run `npm run fix:link-cache` once to normalize it.
-   Note: the latter runs a Hugo build (lean by default) and link check, which
-   needs network, installed npm dependencies, and populated submodules, and can
-   take several minutes.
+4. After the entire rebase/merge completes:
+   - `npm run install:safe` if the operation changed `package.json` (a branch
+     crossing the owned-cache cutover does).
+   - `npm run link-cache` to validate the resolved file (exits 1 on a malformed
+     file).
+   - `npm run fix:link-cache` once, to normalize it. This runs a Hugo build
+     (lean by default) and link check, which needs network, installed npm
+     dependencies, and populated submodules, and can take several minutes.
 
 5. Commit the changes, if any:
 

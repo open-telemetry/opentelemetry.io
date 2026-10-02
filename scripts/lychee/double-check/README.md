@@ -39,8 +39,7 @@ Synthetic statuses:
 
 What the driver writes to `link-cache.jsonc`, for each URL it resolved:
 
-- A `206` entry with provenance `"via": "double-check"`. Entries imported from
-  the pre-0.6.0 CSV read `via: lychee` instead: the CSV carried no provenance.
+- A `206` entry with provenance `"via": "double-check"`.
 - The entry replaces the URL's existing one whole (typically the failure the
   check just recorded); a comment or `expires` on the replaced entry is not
   carried over.
