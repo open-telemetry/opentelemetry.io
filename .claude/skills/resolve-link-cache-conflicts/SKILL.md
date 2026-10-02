@@ -2,13 +2,14 @@
 name: resolve-link-cache-conflicts
 description:
   Resolve link-cache.jsonc conflicts during a merge or rebase, in the current
-  branch or a specified PR
+  branch or a specified PR. Use when a merge or rebase stops on
+  link-cache.jsonc, or on a modify/delete conflict on .lycheecache from a branch
+  that predates the owned cache.
 argument-hint: '[optional-pr-number]'
 ---
 
 `link-cache.jsonc` is the committed link cache; for why concurrent updates
-conflict, see [Link cache][]. Resolve per [The owned cache][cache-format] §
-Shape, then rerun the check to normalize the file.
+conflict, see [Link cache][].
 
 ## Prerequisites
 
@@ -35,11 +36,13 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
 
 4. Conflicts other than `link-cache.jsonc`: resolve them with the user. A
    modify/delete conflict on `.lycheecache` means the branch predates the owned
-   cache: resolve it with `git rm .lycheecache`.
+   cache: resolve it with `git rm .lycheecache`; the branch's own cache
+   additions are gone with it, so **Resolve** steps 4-6 are needed too.
 
 5. If a `link-cache.jsonc` conflict remains, proceed to **Resolve**. Otherwise,
    stage the files resolved in step 4 and continue per **Resolve** steps 2-3 (a
-   rebase may stop again on a later commit).
+   rebase may stop again on a later commit), then steps 4-6 if step 4 removed
+   `.lycheecache`.
 
 ## Resolve
 
@@ -67,8 +70,7 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
    conflicted on that stop, run Preparation step 4 first.
 
 4. After the entire rebase/merge completes, validate the resolved file with
-   `npm run link-cache` (rejects invalid JSONC and the duplicates [The owned
-   cache][cache-format] § Shape says it detects), then run
+   `npm run link-cache` (exits 1 on a malformed file), then run
    `npm run fix:link-cache` once to normalize it. Note: the latter runs a Hugo
    build (lean by default) and link check, which needs network, installed npm
    dependencies, and populated submodules, and can take several minutes.

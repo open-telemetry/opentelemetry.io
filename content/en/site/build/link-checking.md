@@ -74,7 +74,9 @@ cache that the [link-cache][] package maintains; Lychee's own cache file,
 `.lycheecache`, is derived from it per run and git-ignored. For the file's
 format, including how to seed an entry by hand, see [The owned
 cache][cache-format]; for which URLs a check run fetches and which it serves
-from the cache, see [Operating model][].
+from the cache, see [Operating model][]. Hand edits are for deliberate seeds
+only; for a URL that merely blocks link checkers, append `?link-check=no` to it
+instead (see [Handling valid external links][]).
 
 The cache is routinely updated by several [scheduled workflows](#workflows) as
 well as content PRs, so concurrent updates can conflict under Git's 3-way merge,
@@ -109,8 +111,8 @@ URLs that are still used in the site.
 
 Some sites serve valid pages to browsers but turn away plain HTTP clients like
 Lychee (bot walls, crates.io's unconditional 404s, npmjs.com signin redirects).
-Since a [cached failure is re-fetched on every run](#link-cache), links to such
-sites would otherwise fail the link check on every run.
+Since a cached failure is [re-fetched on every run][Operating model], links to
+such sites would otherwise fail the check each time.
 
 The **double-check** tooling re-verifies Lychee-reported failures through a
 browser-grade probe and records the URLs it resolves in `link-cache.jsonc` with
@@ -142,6 +144,7 @@ That job fails if any link check fails, and hands the cache it refreshed to the
 [ci]: ../ci-workflows/
 [double-check README]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/lychee/double-check/README.md
 [drifted]: /docs/contributing/localization/#track-changes
+[Handling valid external links]: /docs/contributing/pr-checks/#handling-valid-external-links
 [Housekeeping]: ../ci-workflows/#housekeeping
 [link cache]: #link-cache
 [link-cache]: https://github.com/chalin/link-cache#readme

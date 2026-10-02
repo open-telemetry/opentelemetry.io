@@ -69,6 +69,9 @@ describe(
           join(site, 'lychee.toml'),
           'extensions = ["html"]\nexclude_path = ["/public/blog/2022/"]\n',
         );
+        // The owned cache selects the helper's owned-file mode, the one the
+        // site runs; without it the helper falls back to legacy CSV mode.
+        writeFileSync(join(site, 'link-cache.jsonc'), '{}\n');
 
         const result = spawnSync('node', [bin, '--offline'], {
           cwd: site,
