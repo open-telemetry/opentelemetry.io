@@ -10609,6 +10609,11 @@
     "when": "2026-09-08T05:42:44Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sdnotifyextension": {
+    "result": 200,
+    "when": "2026-10-02T21:01:39Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sigv4authextension": {
     "result": 200,
     "when": "2026-09-08T05:42:45Z",
@@ -30627,6 +30632,11 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/remotetapextension": {
     "result": 200,
     "when": "2026-09-08T05:42:41Z",
+    "via": "lychee",
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/sdnotifyextension": {
+    "result": 200,
+    "when": "2026-10-02T21:01:39Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/sigv4authextension": {
