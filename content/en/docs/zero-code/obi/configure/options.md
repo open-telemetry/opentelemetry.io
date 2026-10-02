@@ -181,6 +181,7 @@ the following formats:
 - **`text`**: Prints a concise line of text
 - **`json`**: Prints a compact JSON object
 - **`json_indent`**: Prints an indented JSON object
+- **`counter`**: Prints a count of instrumented traces
 
 ## System capabilities
 

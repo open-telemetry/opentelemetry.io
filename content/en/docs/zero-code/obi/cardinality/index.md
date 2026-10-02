@@ -18,6 +18,11 @@ might be produced by a default OBI installation. It is divided into several
 sections for each type of metric that OBI can produce, as each metric family can
 be selectively enabled or disabled.
 
+The numerical case study below is an illustrative snapshot, not a prediction for
+v0.14.0. This release adds metric families and an `error_type` label to HTTP
+duration and body-size Prometheus series. Include those dimensions when
+estimating cardinality for a current deployment.
+
 For simplicity, the formulas below assume a single cluster. You should multiply
 the cardinality for each of your clusters.
 
@@ -265,8 +270,14 @@ The calculation is similar to network metrics but with higher cardinality:
 
 - `traces_spanmetrics_latency`: histogram with 15 + 2 buckets
 - `traces_spanmetrics_calls_total`: counter
-- `traces_spanmetrics_size_total`: counter
-- `traces_spanmetrics_response_size_total`: counter
+- `traces_spanmetrics_size_total`: counter from the deprecated
+  `application_span_sizes` feature
+- `traces_spanmetrics_response_size_total`: counter from the deprecated
+  `application_span_sizes` feature
+
+Span metrics are optional; enable either the deprecated `application_span`
+format or `application_span_otel` for current OpenTelemetry names. The
+`application_span_sizes` counters are deprecated without a replacement.
 
 Attributes that might add cardinality to each metric are:
 

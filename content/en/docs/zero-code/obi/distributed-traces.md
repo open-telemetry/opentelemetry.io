@@ -138,7 +138,7 @@ spec:
         limits:
           memory: 120Mi
       terminationMessagePolicy: FallbackToLogsOnError
-      image: 'docker.io/otel/ebpf-instrument:main'
+      image: 'docker.io/otel/ebpf-instrument:v0.14.0'
       imagePullPolicy: 'Always'
       env:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
@@ -265,8 +265,9 @@ Verify the Linux Kernel **lockdown** mode by running the following command:
 cat /sys/kernel/security/lockdown
 ```
 
-If that file exists and the mode is anything other than `[none]`, OBI cannot
-perform context propagation and distributed tracing is disabled.
+If that file exists and the mode is anything other than `[none]`, Go
+library-level context propagation that writes to user memory is unavailable.
+Network-level propagation can still work where its other requirements are met.
 
 #### Distributed tracing for Go in containerized environments (including Kubernetes)
 
@@ -281,7 +282,7 @@ configuration, which ensures OBI has sufficient information to determine the
 services:
   ...
   obi:
-    image: 'docker.io/otel/ebpf-instrument:main'
+    image: 'docker.io/otel/ebpf-instrument:v0.14.0'
     environment:
       OTEL_EBPF_CONFIG_PATH: "/configs/obi-config.yml"
     volumes:
@@ -331,10 +332,10 @@ children of the active manual span.
 
 ### Python asyncio with uvloop
 
-Starting with v0.7.0, OBI supports context propagation for Python asyncio
-workloads running on [`uvloop`](https://github.com/MagicStack/uvloop). This
-enables distributed tracing of asynchronous Python services that use the
-`uvloop` event loop, in addition to the standard `asyncio` support.
+OBI supports context propagation for Python asyncio workloads using either the
+standard event loop or [`uvloop`](https://github.com/MagicStack/uvloop). It
+supports GIL-enabled, 64-bit CPython 3.9 through 3.14. Free-threaded builds are
+not supported.
 
 The context propagation at network level applies to Python applications running
 on `uvloop`, allowing OBI to automatically instrument and propagate trace
@@ -342,5 +343,5 @@ context for asynchronous operations. No additional configuration is required
 beyond enabling context propagation as described in the
 [introduction](#introduction).
 
-To use OBI with Python asyncio and `uvloop`, ensure your Python application is
-configured to use `uvloop` as the event loop implementation.
+On `uvloop`, `asyncio.start_server()` is not correlated because its accept path
+runs in C without a probed task context.

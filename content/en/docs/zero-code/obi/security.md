@@ -214,7 +214,7 @@ Set the required capabilities and start OBI:
 
 ```shell
 sudo setcap cap_bpf,cap_net_raw+ep ./bin/obi
-OTEL_EBPF_NETWORK_METRICS=1 OTEL_EBPF_NETWORK_PRINT_FLOWS=1 bin/obi
+OTEL_EBPF_METRICS_FEATURES=network OTEL_EBPF_NETWORK_PRINT_FLOWS=1 bin/obi
 ```
 
 ### Network metrics via traffic control
@@ -229,7 +229,7 @@ Set the required capabilities and start OBI:
 
 ```shell
 sudo setcap cap_bpf,cap_net_admin,cap_perfmon+ep ./bin/obi
-OTEL_EBPF_NETWORK_METRICS=1 OTEL_EBPF_NETWORK_PRINT_FLOWS=1 OTEL_EBPF_NETWORK_SOURCE=tc bin/obi
+OTEL_EBPF_METRICS_FEATURES=network OTEL_EBPF_NETWORK_PRINT_FLOWS=1 OTEL_EBPF_NETWORK_SOURCE=tc bin/obi
 ```
 
 ### Application observability
@@ -266,7 +266,7 @@ Set the required capabilities and start OBI:
 
 ```shell
 sudo setcap cap_bpf,cap_checkpoint_restore,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace,cap_net_admin+ep ./bin/obi
-OTEL_EBPF_CONTEXT_PROPAGATION=all OTEL_EBPF_OPEN_PORT=8080 OTEL_EBPF_TRACE_PRINTER=text bin/obi
+OTEL_EBPF_BPF_CONTEXT_PROPAGATION=all OTEL_EBPF_OPEN_PORT=8080 OTEL_EBPF_TRACE_PRINTER=text bin/obi
 ```
 
 ## Internal eBPF tracer capability requirement reference

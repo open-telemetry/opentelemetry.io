@@ -7,8 +7,10 @@ weight: 21
 cSpell:ignore: eventloop gogc replicaset statefulset stddev
 ---
 
-The following table describes the exported metrics in both OpenTelemetry and
-Prometheus format.
+The following table shows selected exported metrics in OpenTelemetry and
+Prometheus format. For the complete v0.14.0 metric definitions, including MCP,
+GPU, and runtime metrics, see the
+[OBI telemetry catalog](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.14.0/site/docs/metrics.md).
 
 | Family       | Name (OTel)                           | Name (Prometheus)                             | Type      | Unit        | Description                                                                                                           |
 | ------------ | ------------------------------------- | --------------------------------------------- | --------- | ----------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -239,10 +241,10 @@ in Prometheus Format.
 | Name                                    | Type       | Description                                                                              |
 | --------------------------------------- | ---------- | ---------------------------------------------------------------------------------------- |
 | `obi_ebpf_tracer_flushes`               | Histogram  | Length of the groups of traces flushed from the eBPF tracer to the next pipeline stage   |
-| `obi_metric_exports_total`              | Counter    | Length of the metric batches submitted to the remote OTel collector                      |
-| `obi_metric_export_errors_total`        | CounterVec | Error count on each failed OTel metric export, by error type                             |
-| `obi_trace_exports_total`               | Counter    | Length of the trace batches submitted to the remote OTel collector                       |
-| `obi_trace_export_errors_total`         | CounterVec | Error count on each failed OTel trace export, by error type                              |
+| `obi_otel_metric_exports_total`         | Counter    | Length of the metric batches submitted to the remote OTel collector                      |
+| `obi_otel_metric_export_errors_total`   | CounterVec | Error count on each failed OTel metric export, by error type                             |
+| `obi_otel_trace_exports_total`          | Counter    | Length of the trace batches submitted to the remote OTel collector                       |
+| `obi_otel_trace_export_errors_total`    | CounterVec | Error count on each failed OTel trace export, by error type                              |
 | `obi_prometheus_http_requests_total`    | CounterVec | Number of requests towards the Prometheus Scrape endpoint, faceted by HTTP port and path |
 | `obi_bpf_network_ignored_packets_total` | Counter    | Number of network packets dropped by OBI network filters before flow accounting          |
 | `obi_instrumented_processes`            | GaugeVec   | Instrumented processes by OBI, with process name                                         |
