@@ -2,8 +2,7 @@
 title: はじめに
 description: 5分以内にアプリケーションのテレメトリーを取得しましょう！
 weight: 5
-default_lang_commit: b8a25353c25d781a375b51f354011248a8140113
-drifted_from_default: true
+default_lang_commit: a6d209663d7f45dde5497371fc5d5f7d6f441acf
 cSpell:ignore: ASPNETCORE rolldice
 ---
 
@@ -18,6 +17,7 @@ cSpell:ignore: ASPNETCORE rolldice
 以下がローカルにインストールされていることを確認してください。
 
 - [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 6以上
+- [GitHub CLI](https://cli.github.com/)、インストーラーとダウンロードしたアーティファクトの検証に使用します
 
 ## サンプルアプリケーション {#example-application}
 
@@ -104,42 +104,10 @@ dotnet run
 
 > **Note**: PowerShell コマンドには管理者権限が必要です。
 
-1. `opentelemetry-dotnet-instrumentation` リポジトリの [Releases][] からインストールスクリプトをダウンロードします。
+1. プラットフォーム固有の[セットアップ手順](../#setup)に従い、自動計装を安全にダウンロード、検証、インストールします。
+   コアファイルのインストールまでの手順を完了してください。ただし、そこに記載されているサンプルアプリケーションは実行しないでください。
 
-   {{< tabpane text=true >}} {{% tab Unix-shell %}}
-
-   ```sh
-   curl -L -O https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh
-   ```
-
-   {{% /tab %}} {{% tab PowerShell - Windows %}}
-
-   ```powershell
-   $module_url = "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/OpenTelemetry.DotNet.Auto.psm1"
-   $download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
-   Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
-   ```
-
-   {{% /tab %}} {{< /tabpane >}}
-
-2. 以下のスクリプトを実行して、開発環境用の自動計装をダウンロードします。
-
-   {{< tabpane text=true >}} {{% tab Unix-shell %}}
-
-   ```sh
-   ./otel-dotnet-auto-install.sh
-   ```
-
-   {{% /tab %}} {{% tab PowerShell - Windows %}}
-
-   ```powershell
-   Import-Module $download_path
-   Install-OpenTelemetryCore
-   ```
-
-   {{% /tab %}} {{< /tabpane >}}
-
-3. [コンソールエクスポーター][console exporter]を指定する変数を設定してエクスポートし、シェルやターミナル環境に適した表記法を使用して、その他の必要な環境変数を設定するスクリプトを実行します。
+2. [コンソールエクスポーター][console exporter]を指定する変数を設定してエクスポートし、シェルやターミナル環境に適した表記法を使用して、その他の必要な環境変数を設定するスクリプトを実行します。
    ここでは bash 系シェルと PowerShell の表記法を示します。
 
    {{< tabpane text=true >}} {{% tab Unix-shell %}}
@@ -147,7 +115,7 @@ dotnet run
    ```sh
    export OTEL_TRACES_EXPORTER=console \
      OTEL_METRICS_EXPORTER=console \
-     OTEL_LOGS_EXPORTER=console
+     OTEL_LOGS_EXPORTER=console \
      OTEL_SERVICE_NAME=RollDiceService
    . $HOME/.otel-dotnet-auto/instrument.sh
    ```
@@ -163,7 +131,7 @@ dotnet run
 
    {{% /tab %}} {{< /tabpane >}}
 
-4. **アプリケーション**をもう一度実行します。
+3. **アプリケーション**をもう一度実行します。
 
    ```sh
    dotnet run
@@ -171,13 +139,13 @@ dotnet run
 
    `dotnet run` の出力に注目してください。
 
-5. *別の*ターミナルから、`curl` を使用してリクエストを送信します。
+4. *別の*ターミナルから、`curl` を使用してリクエストを送信します。
 
    ```sh
    curl localhost:8080/rolldice
    ```
 
-6. 約30秒後、サーバープロセスを停止します。
+5. 約30秒後、サーバープロセスを停止します。
 
 この時点で、以下のようなトレースとログの出力がサーバーとクライアントから表示されるはずです（読みやすいように出力は折り返されています）。
 
@@ -285,4 +253,3 @@ Value: Sum: 1330.4766000000002 Count: 5 Min: 50.0333 Max: 465.7936
 [logs]: /docs/concepts/signals/logs/
 [configure .NET Automatic Instrumentation]: ../configuration
 [console exporter]: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#internal-logs
-[releases]: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases
