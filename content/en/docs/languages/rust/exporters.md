@@ -14,9 +14,8 @@ Jaeger) you'll want to use an exporter crate, such as
 For example, you can update the [Getting Started](../getting-started/) dice
 server by adding the new dependency:
 
-```toml
-[dependencies]
-opentelemetry-otlp = { version = "{{% version-from-registry exporter-rust-otlp %}}", features = ["grpc-tonic"] }
+```console
+$ cargo add opentelemetry-otlp --features grpc-tonic
 ```
 
 Next, update `init_tracer_provider` in `dice_server.rs` to configure the
