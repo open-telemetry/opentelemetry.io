@@ -19,7 +19,7 @@ export const FIX_REFCACHE_COMPAT_MESSAGE =
   'ℹ️ INFO: `/fix:refcache` is deprecated. Use `/fix:link-cache` moving forward.';
 
 // Posted instead of running a fixer on a PR head that predates the owned link
-// cache. TODO(cutover): NNNN = the anchor issue, posted at merge time.
+// cache. TODO(NNNN): NNNN = the anchor issue, posted at merge time.
 export const STALE_HEAD_MESSAGE =
   '❌ This branch predates the committed `link-cache.jsonc`, so the bot did not ' +
   'run the fix. Update the branch from `main`, then comment again. For how, see ' +

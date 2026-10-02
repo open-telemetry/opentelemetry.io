@@ -136,8 +136,8 @@ jobs:
               console.log(pin);
             });
         run: |
-          git fetch --quiet origin "$HEAD_REF"
-          pin=$(git show FETCH_HEAD:package.json 2>/dev/null | node -e "$READ_PIN")
+          git fetch --quiet origin "$HEAD_REF" || true
+          pin=$( { git show FETCH_HEAD:package.json 2>/dev/null || true; } | node -e "$READ_PIN")
           if git cat-file -e FETCH_HEAD:link-cache.jsonc 2>/dev/null &&
              [[ -n "$pin" && "$pin" != 0.3.* ]]; then
             echo "stale=false" >> "$GITHUB_OUTPUT"

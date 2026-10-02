@@ -140,7 +140,10 @@ The check flags these obsolete paths:
 [#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
 [#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
 [#11649]: https://github.com/open-telemetry/opentelemetry.io/pull/11649
-[#NNNN]: https://github.com/open-telemetry/opentelemetry.io/issues/NNNN
+
+<!-- TODO(NNNN): point #NNNN at the anchor issue (issues/NNNN), posted at merge time. -->
+
+[#NNNN]: https://github.com/open-telemetry/opentelemetry.io/pull/11649
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
@@ -182,18 +185,16 @@ If you added or changed an external link, the link checker records it in the
 link cache (`link-cache.jsonc`), and this check fails until the updated cache is
 committed.
 
-The easiest way to update it is to comment
-[`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) on your PR — the
-OpenTelemetry bot updates the cache for you.
+If your branch predates `link-cache.jsonc`, first update it from `main`; for
+how, including a conflict on the cache file itself, see the [update
+instructions][#NNNN]. Then, either:
 
-Alternatively, you can build and check links locally, by running
-`npm run check:links`. This command also updates the link cache. Push the cache
-changes from a passing run in a new commit.
-
-If your branch predates `link-cache.jsonc`, update it from `main` first (the bot
-refuses `/fix` commands on such a branch); for how, see the [update
-instructions][#NNNN]. If updating conflicts on `link-cache.jsonc` itself, take
-`main`'s version of the file and rerun the check.
+- Comment [`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) on your PR
+  — the OpenTelemetry bot updates the cache for you (on a branch that predates
+  `link-cache.jsonc`, the bot refuses and points to the same instructions); or
+- Build and check links locally: `npm run install:safe`, then
+  `npm run check:links`, which also updates the link cache. Push the cache
+  changes from a passing run in a new commit.
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 

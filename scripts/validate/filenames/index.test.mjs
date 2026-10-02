@@ -342,15 +342,20 @@ describe('repo-wide sanity', () => {
         `docs list the path ${p}`,
       );
       // Issue/PR references appear as `#N` or as GitHub issue/pull URLs.
+      // `NNNN` is the cutover issue's placeholder until merge time; the docs
+      // must carry it (as `#NNNN`) so the replacement reaches both at once.
       const refs = new Set([
         ...(message.match(/#\d+/g) ?? []),
-        ...[...message.matchAll(/\/(?:issues|pull)\/(\d+)/g)].map(
+        ...[...message.matchAll(/\/(?:issues|pull)\/(\d+|NNNN)/g)].map(
           (m) => `#${m[1]}`,
         ),
       ]);
+      // Cited in the list text itself: a reference-style link definition
+      // alone (`[#N]: url`) would satisfy a plain includes() check.
+      const listText = section.split(/^\[#/m)[0];
       for (const ref of refs) {
         assert.ok(
-          section.includes(ref),
+          listText.includes(`[${ref}]`),
           `docs cite ${ref}, referenced by the message for ${p}`,
         );
       }

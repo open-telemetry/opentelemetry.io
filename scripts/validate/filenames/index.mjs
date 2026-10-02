@@ -50,7 +50,7 @@ export const OBSOLETE_PATHS = [
   {
     path: '.lycheecache',
     tracked: true,
-    // TODO(cutover): NNNN = the anchor issue, posted at merge time.
+    // TODO(NNNN): NNNN = the anchor issue, posted at merge time.
     message:
       'Obsolete tracked file: the committed link cache is now `link-cache.jsonc` (PR #11649). ' +
       'Untrack it with `npm run fix:filenames`. For the full update procedure, see ' +
