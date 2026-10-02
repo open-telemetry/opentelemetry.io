@@ -21,7 +21,7 @@ npm run fix:i18n:new
 ## pr-approval-labels.sh
 
 Manages PR approval labels based on review state and file ownership. Called by
-the [`pr-approval-labels` workflow](../ci-workflows/#pr-approval-labels).
+the [`label-manager` workflow](../ci-workflows/#pr-approval-labels).
 
 **How it works:**
 

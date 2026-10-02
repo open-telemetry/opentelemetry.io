@@ -21,14 +21,14 @@ locales:
     maintainers: []
     approvers: [badhon495, sajibAdhi]
   es:
-    maintainers: [theletterf]
+    maintainers: [immavalls]
     approvers: [krol3, mx-psi]
   fr:
     maintainers: [chalin, codeboten, dmathieu, marcalff]
     approvers: [bertysentry, jeanbisutti]
   ja:
-    maintainers: [katzchang, Msksgm, ymotongpoo]
-    approvers: [kohbis, kota-sakuma]
+    maintainers: [katzchang, kohbis, Msksgm, ymotongpoo]
+    approvers: [kota-sakuma]
   ko:
     maintainers: []
     approvers: [abel9851, hellices, Kimcheolhui, krapie, seokho-son]
@@ -45,5 +45,5 @@ locales:
     maintainers: []
     approvers: []
   zh:
-    maintainers: []
-    approvers: [chluknight1224, my-git9, reyang, windsonsea]
+    maintainers: [reyang]
+    approvers: [chluknight1224, my-git9, windsonsea]

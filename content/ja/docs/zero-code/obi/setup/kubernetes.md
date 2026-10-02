@@ -3,7 +3,7 @@ title: KubernetesにOBIをデプロイする
 linkTitle: Kubernetes
 description: KubernetesにOBIをデプロイする方法を学びます。
 weight: 4
-default_lang_commit: b99f2517225610f456997fac229f46e4aa7e7d10
+default_lang_commit: 0a410d00f789607f64e6e71b785b9c027305117b
 # prettier-ignore
 cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefulset
 ---
@@ -83,6 +83,13 @@ Kubernetesには、2つの異なる方法でOBIをデプロイできます。
 - サイドカーコンテナとして
 - DaemonSetとして
 
+> [!NOTE]
+>
+> カーネルバージョン 6.6.128+、6.12.75+、6.18.14+、および 6.19+ では、OBI v0.12.0+ はホストの `/sys/kernel/tracing` ディレクトリを同じパスでOBIコンテナにマウントする必要があります。
+> このマウントがないと、OBIはFIONREAD補償チェックを実行できず、トレースコンテキスト伝搬が自動的に無効化されます。
+> このドキュメントのすべてのデプロイメント例にはこのマウントが含まれています。
+> 詳細については、[セキュリティ、権限、およびケーパビリティ](../../security/#required-host-mount-for-context-propagation)を参照してください。
+
 ### OBIをサイドカーコンテナとしてデプロイする {#deploying-obi-as-a-sidecar-container}
 
 こちらは、すべてのホストにデプロイされていない可能性のある特定のサービスを監視したい場合にOBIをデプロイする方法であり、各サービスインスタンスごとに1つのOBIインスタンスをデプロイする必要があります。
@@ -152,6 +159,15 @@ spec:
             # Kubernetesメタデータデコレーションが必要な場合
             - name: OTEL_EBPF_KUBE_METADATA_ENABLE
               value: 'true'
+          volumeMounts:
+            # トレースコンテキスト伝搬に必要、セキュリティドキュメントを参照
+            - name: tracefs
+              mountPath: /sys/kernel/tracing
+      volumes:
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ```
 
 ワイルドカードを使うアプローチは、個別の実行可能ファイル名やポートを指定するよりエラーが少なくなります。
@@ -208,6 +224,15 @@ spec:
               # Kubernetesメタデータデコレーションが必要な場合
             - name: OTEL_EBPF_KUBE_METADATA_ENABLE
               value: 'true'
+          volumeMounts:
+            # トレースコンテキスト伝搬に必要、セキュリティドキュメントを参照
+            - name: tracefs
+              mountPath: /sys/kernel/tracing
+      volumes:
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ```
 
 異なる構成オプションの詳細については、このドキュメントの[構成](../../configure/options/)セクションを確認してください。
@@ -259,6 +284,15 @@ spec:
               # Kubernetesメタデータデコレーションが必要な場合
             - name: OTEL_EBPF_KUBE_METADATA_ENABLE
               value: 'true'
+          volumeMounts:
+            # トレースコンテキスト伝搬に必要、セキュリティドキュメントを参照
+            - name: tracefs
+              mountPath: /sys/kernel/tracing
+      volumes:
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ```
 
 ### OBIを非特権でデプロイする {#deploying-obi-unprivileged}
@@ -339,6 +373,8 @@ spec:
               mountPath: /var/run/obi
             - name: cgroup
               mountPath: /sys/fs/cgroup
+            - name: tracefs
+              mountPath: /sys/kernel/tracing
       tolerations:
         - effect: NoSchedule
           operator: Exists
@@ -350,6 +386,10 @@ spec:
         - name: cgroup
           hostPath:
             path: /sys/fs/cgroup
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -499,6 +539,8 @@ spec:
               name: obi-config
             - mountPath: /var/run/obi
               name: var-run-obi
+            - mountPath: /sys/kernel/tracing
+              name: tracefs
           env:
             # OBIに構成ファイルの場所を伝える
             - name: OTEL_EBPF_CONFIG_PATH
@@ -509,6 +551,10 @@ spec:
             name: obi-config
         - name: var-run-obi
           emptyDir: {}
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ```
 
 ## 秘密情報の提供 {#providing-secret-configuration}

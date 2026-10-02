@@ -3,10 +3,15 @@ title: OBI のメトリクスとトレースの属性を設定する
 linkTitle: メトリクス属性
 description: 計装された Kubernetes Pod のインスタンス ID デコレーションとメタデータを含む、報告される属性を制御するメトリクスとトレースの属性コンポーネントを設定します。
 weight: 30
-default_lang_commit: ec870712704ae037419e4e420b7fa3be04e10297
-drifted_from_default: true
+default_lang_commit: d6988a2bfec7521e701d8a15d36696cbb35a129b
 cSpell:ignore: kube kubecache kubeconfig OpenShift replicaset statefulset
 ---
+
+> [!NOTE]
+>
+> このページでは Config v1 のフィールド名と例を使用しています。
+> Config v2 については [Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/) を参照してください。
+> 既存のファイルを変換するには [移行ガイド](/docs/zero-code/obi/configure/migrate-to-config-v2/) を使用してください。
 
 OBI がメトリクスとトレースの属性をどのように装飾するかを設定できます。
 属性の設定や有効化には、トップレベルの YAML セクション `attributes` を使用します。

@@ -137,10 +137,10 @@ npm test                # Full test run including link checking
 
 If your patch was created while fixing a link-cache PR (e.g., the
 `otelbot/refcache-refresh` branch), commit the changes to `patches.yml` together
-with the updated `.lycheecache`, then force-push with lease:
+with the updated `link-cache.jsonc`, then force-push with lease:
 
 ```sh
-git add scripts/content-modules/adjust-pages/patches.yml .lycheecache
+git add scripts/content-modules/adjust-pages/patches.yml link-cache.jsonc
 git commit -m "Patch content modules and refresh the link cache"
 git push --force-with-lease
 ```

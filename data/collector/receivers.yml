@@ -115,6 +115,7 @@
     - contrib
   stability:
     logs: development
+    metrics: development
 - name: azuremonitorreceiver
   display_name: Azure Monitor Receiver
   repo: contrib
@@ -830,13 +831,6 @@
     metrics: development
     profiles: development
     traces: development
-- name: wavefrontreceiver
-  display_name: Wavefront Receiver
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    metrics: deprecated
 - name: webhookeventreceiver
   display_name: Webhook Event Receiver
   repo: contrib

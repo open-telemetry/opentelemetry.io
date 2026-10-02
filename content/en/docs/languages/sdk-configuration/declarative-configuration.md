@@ -48,9 +48,9 @@ Recommended configuration file:
 # vars defined in https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/.
 #
 # For schema documentation, including required properties, semantics, default behavior, etc,
-# see: https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md
+# see: https://opentelemetry.io/docs/specs/otel-config/types/
 
-file_format: "1.1"
+file_format: "1.2"
 
 resource:
   # Read resource attributes from the OTEL_RESOURCE_ATTRIBUTES environment variable.

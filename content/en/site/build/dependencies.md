@@ -1,8 +1,10 @@
 ---
 title: Dependency management
 description: >-
-  How the site installs, verifies, and updates its npm dependencies
+  Install contracts, update recipes, and the supply-chain controls on the site's
+  npm dependencies
 weight: 5
+cSpell:ignore: EBADENGINE
 ---
 
 npm dependencies are pinned by the committed `package-lock.json`, and installs
@@ -26,7 +28,7 @@ environment:
 - **Devcontainer**: `npm run install:safe`, the same contract.
 - **Netlify**: `npm run install:safe`, run by the [Netlify][] build command
   after the [inert auto-install](#inert-netlify-auto-install), between
-  clean-working-tree checks:
+  clean-working-tree checks.
   - Lock drift or any other Git-visible change fails the build.
   - For failures on paths the install never touched, see
     [Stale Netlify build cache](#netlify-build-cache) below.
@@ -71,15 +73,30 @@ Clear the affected [build cache][] rather than adding the path to `.gitignore`:
 
 ## Updating dependencies {#updating}
 
-### Routine updates
+Routine version bumps arrive as [Renovate][] PRs, gated by the
+[release cooldown](#release-cooldown), and known-vulnerability fixes arrive
+alert-driven ([Security updates](#security-updates)). The remaining cases are
+manual; in each, commit the regenerated lock together with any `package.json`
+change.
 
-`npm run update:packages` bumps `package.json` only. The
-[release cooldown](#release-cooldown) applies to the offered versions. Then
-regenerate the lock and commit both files together:
+### Manifest changes {#manifest-changes}
+
+Whether you edited `package.json` by hand or bumped every version with
+`npm run update:packages` (the [release cooldown](#release-cooldown) applies to
+the versions offered), reconcile the lock with the changed manifest:
 
 ```sh
 npm install --package-lock-only --ignore-scripts
 ```
+
+Unlike `npm update` (below), this command rewrites only the lock entries your
+manifest edit affects. That can be more than the packages you edited: when a
+bumped package is replaced, its own transitive dependencies (those no other
+package depends on) can be re-resolved to the newest versions their ranges and
+the cooldown admit, so review the whole lock delta.
+
+A merge conflict on the lock file takes the same recipe: keep the `main` version
+and rerun the command.
 
 ### Script-bearing packages
 
@@ -91,19 +108,76 @@ the contributor making the change:
    in PR review: a needed script as an exact-version approval, an unneeded one
    as a name-level denial (`false`, which needs no update on later bumps).
 3. For a new approval, also adds the package to the Renovate automerge exclusion
-   in [`.github/renovate.json5`][]: every bump of an approved package needs the
+   in [`.github/renovate.jsonc`][]: every bump of an approved package needs the
    steps above, so its update PRs must wait for a contributor.
 
-### Lock-file maintenance
+### Transitive refreshes {#transitive-refresh}
 
-- **You changed dependencies**: regenerate the lock as in
-  [routine updates](#routine-updates) and commit it together with
-  `package.json`.
-- **Merge conflict on the lock file**: take the `main` version and rerun the
-  regeneration command.
-- **The lock file changed, but you didn't change dependencies** (a `postinstall`
-  check warns when an install does this): that signals drift; restore the lock
-  and investigate rather than committing the rewrite.
+No schedule re-resolves the lock wholesale ([resolution is
+deliberate][deliberate]). To refresh transitive dependencies, run the following
+on demand at the repository root (the lock also covers the
+`scripts/generate-community-data` workspace):
+
+```sh
+npm update --package-lock-only --ignore-scripts
+```
+
+To refresh only some packages, name them:
+
+```sh
+npm update --package-lock-only --ignore-scripts PACKAGE_NAME
+```
+
+Replace _`PACKAGE_NAME`_ with the package (or packages) to refresh.
+
+Either way, review the whole refreshed lock: npm also moves whatever the
+selected versions require, and because it honors the manifests' declared ranges,
+a parent that widens a range can pull in a new transitive major.
+
+The [release cooldown](#release-cooldown) applies, with a sharp edge: a
+dependency whose only satisfying versions are younger than the cooldown (an
+exact pin is the common case) fails the whole resolution (`ETARGET`) until one
+ages. When the young release is one you reviewed and vouch for, exempt that name
+alone; the cooldown stays on for the rest of the tree:
+
+```sh
+npm_config_min_release_age_exclude=PACKAGE_NAME \
+  npm update --package-lock-only --ignore-scripts
+```
+
+Keep the exemption per-invocation; a standing entry in [`.npmrc`][] would
+permanently waive the cooldown for that name.
+
+### Unexpected lock changes {#lock-drift}
+
+If the lock changed but you didn't change dependencies (a `postinstall` check
+warns when an install does this), that signals drift: restore the lock and
+investigate rather than committing the rewrite.
+
+### Security updates {#security-updates}
+
+Known-vulnerability fixes don't wait for the weekly update PRs; they arrive
+alert-driven:
+
+- **GitHub [Dependabot security updates][]**: a repository-side setting (no
+  `dependabot.yml`), able to patch direct and transitive dependencies; for npm
+  that can mean rewriting parent manifest entries, not only the lock.
+- **[Renovate][] vulnerability-alert PRs**: opened immediately, for direct
+  dependencies.
+
+The overlap is deliberate; an occasional duplicate PR is accepted. With
+scheduled lock re-resolves [disabled by design][deliberate], these alert-driven
+paths are the only automated route for transitive fixes, so the repository-side
+setting stays on. When neither opens a PR, a maintainer refreshes the package
+[by name](#transitive-refresh): the manual route. The two paths meet the
+[release cooldown](#release-cooldown) differently:
+
+- Dependabot security updates deliberately override every release-age gate
+  (`.npmrc` included): a fix version younger than the cooldown can land, and
+  vetting it is the reviewing maintainer's job.
+- Renovate's PR is subject to the `.npmrc` gate when it regenerates the lock, so
+  a younger-than-cooldown fix arrives as a failed artifact update; adopting it
+  early takes the [scoped exemption](#transitive-refresh) run by a maintainer.
 
 ## Supply-chain controls {#controls}
 
@@ -129,19 +203,23 @@ condition; the common cases:
 Never loosen an assertion just to get to green: each one enforces a control on
 this page, so first work out which control your change relaxes.
 
-Out of the audit's scope:
+Out of the audit's scope: <a id="audit-out-of-scope"></a>
 
-- GitHub workflow files
-- [Renovate][] configuration ([`.github/renovate.json5`][]): reviewed like code,
+- GitHub workflow files: trigger and token privileges are reviewed per workflow,
+  in [CI workflows][ci-security]
+- [Renovate][] configuration ([`.github/renovate.jsonc`][]): reviewed like code,
   not audit-pinned
 - The [Docsy][] theme's own dependency install (audited upstream)
-- The build-half npm scripts past the install boundary
+- The build-half npm scripts past the install boundary: they run the site's own
+  code wholesale and change under normal development
 
 ### Release cooldown
 
 Version resolution ignores releases younger than the configured minimum age.
 
-- **Enforcement**: `min-release-age` in [`.npmrc`][].
+- **Enforcement**: `min-release-age` in [`.npmrc`][]. The
+  `scripts/generate-community-data` subproject is an npm workspace rather than a
+  separate lock home, so the root `.npmrc` and lock govern its resolution too.
 - **Scope**:
   - Only resolving operations are affected; lock-exact installs (`npm ci`) don't
     resolve versions.
@@ -150,11 +228,14 @@ Version resolution ignores releases younger than the configured minimum age.
     for an invocation, set the `npm_config_min_release_age` environment
     variable, which outranks both.
 - **[Renovate][]**: applies its own cooldown to the update PRs it opens, set by
-  `minimumReleaseAge` in [`.github/renovate.json5`][]; longer for the updates
-  that merge without human review. Update types Renovate can't date (`pin`,
-  `replacement`, `rollback`) never clear the cooldown: their PRs open with a
-  permanently pending stability status (not a required check) and merge only
-  through normal review.
+  `minimumReleaseAge` in [`.github/renovate.jsonc`][]; longer for the updates
+  that merge without human review. The preset-supplied 3-day npm cooldown
+  (`security:minimumReleaseAgeNpm`) is excluded so that it can't override these
+  ages, its age exemptions included; caution: an upstream rename of that preset
+  would silently re-admit it. Update types Renovate can't date (such as `pin`,
+  `replacement`, `rollback`) fall outside its cooldown: their PRs open normally,
+  at most showing a permanently pending stability status (not a required check),
+  so normal review is the gate.
 
 ### Lifecycle-script allowlist
 
@@ -163,16 +244,18 @@ are listed in the `allowScripts` allowlist:
 
 - **Enforcement**: the `allowScripts` map in [`package.json`][], made
   fail-closed by `strict-allow-scripts` in [`.npmrc`][].
+- **Where it fires**: on script-enabled installs only, which here means the
+  `hugo-extended` rebuild step of the [install contracts](#install-contracts),
+  where npm checks the whole installed tree, and a local `npm install` run
+  without `--ignore-scripts`.
 - **Denials**:
   - An entry set to `false` records a reviewed denial: the package installs, its
     script is skipped.
   - Denials grant nothing, so they cover the package by name, across versions.
-- **Interplay with `--ignore-scripts`**:
-  - The allowlist only filters: it never re-enables scripts that
-    `ignore-scripts` disables, so script-free installs run none, allowlisted or
-    not.
-  - A reviewed exception takes an explicit `--ignore-scripts=false` at the call
-    site.
+- **Local masking**: `ignore-scripts=true` in your user `.npmrc` makes a plain
+  local `npm install` script-free, so that path skips the allowlist; the rebuild
+  step still evaluates it, so `npm run install:safe` checks the repository's
+  posture regardless of your user config.
 
 ### npm version floor
 
@@ -180,12 +263,21 @@ Installs fail when the active npm is older than the engines floor: the oldest
 version that supports the controls above.
 
 - **Enforcement**:
-  - `engines` in [`package.json`][] sets the floor.
-  - `engine-strict` in [`.npmrc`][] makes it fail closed.
+  - `engines` in [`package.json`][] sets the floor. Below it, npm lacks some or
+    all of the allowlist's enforcement, or the `min-release-age-exclude` setting
+    that the [transitive-refresh exemption](#transitive-refresh) relies on; the
+    comment beside `engines` names the releases. Versions without `allowScripts`
+    support ignore the field silently, so a script-enabled install runs every
+    install script.
+  - `engine-strict` in [`.npmrc`][] turns npm's `EBADENGINE` warning into a
+    refusal.
 - **Floor policy**:
   - The floor rises as npm fixes enforcement gaps in the controls.
-  - It follows npm versions bundled with Node LTS releases, so a default
-    toolchain passes the check.
+  - The committed `.nvmrc` pins a Node.js release whose bundled npm satisfies
+    the floor, so CI, Netlify, and `nvm`-managed local setups pass it by
+    construction; [Renovate][] keeps the pin updated. (A floating `.nvmrc` such
+    as `lts/*` can't promise this: CI runners resolve it from possibly stale
+    caches.)
 - **Netlify**:
   - Netlify's Node-bundled default npm may be older than the floor;
     [`NPM_VERSION`][netlify-deps] in [`netlify.toml`][] pins one that satisfies
@@ -228,12 +320,15 @@ with this rule through [drift tracking][].
 - **Enforcement**: review discipline; there is no automated check.
 
 <!-- prettier-ignore-start -->
-[`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
+[`.github/renovate.jsonc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.jsonc
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
+[ci-security]: ../ci-workflows/#security-model
+[deliberate]: ../../design/supply-chain-security/#deliberate
+[Dependabot security updates]: https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
 [Docsy]: https://www.docsy.dev/
 [drift tracking]: /docs/contributing/localization/#track-changes

@@ -6,8 +6,7 @@ weight: 200
 aliases: [/docs/collector/custom-collector]
 params:
   providers-vers: v1.48.0
-# prettier-ignore
-cSpell:ignore: chipset darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
+cSpell:ignore: chipset debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
 The OpenTelemetry Collector has five official
@@ -64,20 +63,12 @@ https://github.com/open-telemetry/opentelemetry-collector-releases/releases/down
 chmod +x ocb
 ```
 
-{{% /tab %}} {{% tab "macOS (AMD 64)" %}}
+{{% /tab %}} {{% tab "macOS" %}}
 
 ```sh
-curl --proto '=https' --tlsv1.2 -fL -o ocb \
-https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/cmd%2Fbuilder%2F{{% version-from-registry collector-builder %}}/ocb_{{% version-from-registry collector-builder noPrefix %}}_darwin_amd64
-chmod +x ocb
-```
-
-{{% /tab %}} {{% tab "macOS (ARM 64)" %}}
-
-```sh
-curl --proto '=https' --tlsv1.2 -fL -o ocb \
-https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/cmd%2Fbuilder%2F{{% version-from-registry collector-builder %}}/ocb_{{% version-from-registry collector-builder noPrefix %}}_darwin_arm64
-chmod +x ocb
+brew tap open-telemetry/tap
+brew trust open-telemetry/tap
+brew install ocb
 ```
 
 {{% /tab %}} {{% tab "Windows (AMD 64)" %}}
