@@ -1,34 +1,47 @@
 import { test, suite } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  cacheLinesFor,
+  cacheEntriesFor,
   checkProbeResults,
   checkReportConsistency,
-  csvField,
   mergedCacheText,
   summaryReport,
   UNVERIFIED,
+  VIA,
 } from './index.mjs';
 
-suite('cacheLinesFor', () => {
-  const now = 1754_000_000;
+const now = 1754_000_000; // 2025-07-31T22:13:20Z
 
-  test('writes a 206 line for each URL the probe resolved', () => {
-    const lines = cacheLinesFor(
+function entry(url, result, via = VIA) {
+  return { url, result, ts: now, via, comments: [] };
+}
+
+function owned(...entries) {
+  const lines = entries.map(
+    ({ url, result, when, via }) =>
+      `  ${JSON.stringify(url)}: {\n    "result": ${JSON.stringify(result)},\n` +
+      `    "when": "${when}",\n    "via": "${via}",\n  },`,
+  );
+  return `{\n${lines.join('\n')}\n}\n`;
+}
+
+suite('cacheEntriesFor', () => {
+  test('writes a 206 double-check entry for each URL the probe resolved', () => {
+    const entries = cacheEntriesFor(
       [
         { url: 'https://blocked.test/page', status: 200 },
         { url: 'https://crates.io/crates/foo', status: 206 },
       ],
       now,
     );
-    assert.deepEqual(lines, [
-      `https://blocked.test/page,206,${now}`,
-      `https://crates.io/crates/foo,206,${now}`,
+    assert.deepEqual(entries, [
+      entry('https://blocked.test/page', 206),
+      entry('https://crates.io/crates/foo', 206),
     ]);
   });
 
   test('skips URLs that the probe could not resolve', () => {
-    const lines = cacheLinesFor(
+    const entries = cacheEntriesFor(
       [
         { url: 'https://gone.test/', status: 404 },
         { url: 'https://frag.test/#nope', status: 422 },
@@ -37,59 +50,65 @@ suite('cacheLinesFor', () => {
       ],
       now,
     );
-    assert.deepEqual(lines, [`https://ok.test/,206,${now}`]);
+    assert.deepEqual(entries, [entry('https://ok.test/', 206)]);
   });
 
   test('is empty when nothing resolved', () => {
     assert.deepEqual(
-      cacheLinesFor([{ url: 'https://gone.test/', status: 404 }], now),
+      cacheEntriesFor([{ url: 'https://gone.test/', status: 404 }], now),
       [],
     );
   });
 });
 
-suite('csvField', () => {
-  test('leaves ordinary URLs bare', () => {
-    assert.equal(csvField('https://a.test/b?c=d#e'), 'https://a.test/b?c=d#e');
-  });
-
-  test('quotes URLs containing a comma', () => {
-    assert.equal(
-      csvField('https://en.wikipedia.org/wiki/A,_B_and_C'),
-      '"https://en.wikipedia.org/wiki/A,_B_and_C"',
-    );
-  });
-
-  test('quotes and escapes URLs containing a double quote', () => {
-    assert.equal(csvField('https://a.test/"x"'), '"https://a.test/""x"""');
-  });
-});
-
 suite('mergedCacheText', () => {
-  test('inserts new lines in C-locale sort order', () => {
-    const cache = 'https://a.test/,200,1\nhttps://c.test/,200,2\n';
-    const merged = mergedCacheText(cache, ['https://b.test/,206,3']);
-    assert.equal(
-      merged,
-      'https://a.test/,200,1\nhttps://b.test/,206,3\nhttps://c.test/,200,2\n',
+  const a = {
+    url: 'https://a.test/',
+    result: 200,
+    when: '2025-01-01T00:00:00Z',
+    via: 'lychee',
+  };
+  const c = {
+    url: 'https://c.test/',
+    result: 200,
+    when: '2025-01-02T00:00:00Z',
+    via: 'lychee',
+  };
+  const b206 = {
+    url: 'https://b.test/',
+    result: 206,
+    when: '2025-07-31T22:13:20Z',
+    via: VIA,
+  };
+
+  test('inserts new entries in URL order, in the owned-file shape', () => {
+    const merged = mergedCacheText(
+      owned(a, c),
+      [entry('https://b.test/', 206)],
+      now,
     );
+    assert.equal(merged, owned(a, b206, c));
   });
 
   test('returns the cache unchanged when there is nothing to add', () => {
-    const cache = 'https://a.test/,200,1\n';
-    assert.equal(mergedCacheText(cache, []), cache);
+    const cache = owned(a);
+    assert.equal(mergedCacheText(cache, [], now), cache);
   });
 
-  test('replaces an existing entry for the same URL', () => {
-    const cache = 'https://a.test/,404,1\nhttps://b.test/,200,2\n';
-    const merged = mergedCacheText(cache, ['https://a.test/,206,3']);
-    assert.equal(merged, 'https://a.test/,206,3\nhttps://b.test/,200,2\n');
+  test('replaces the failure entry the check recorded for the same URL', () => {
+    const bErr = { ...b206, result: 'error', via: 'lychee' };
+    const merged = mergedCacheText(
+      owned(a, bErr),
+      [entry('https://b.test/', 206)],
+      now,
+    );
+    assert.equal(merged, owned(a, b206));
   });
 
-  test('replaces an existing entry for the same quoted URL', () => {
-    const cache = '"https://a.test/x,y",404,1\n';
-    const merged = mergedCacheText(cache, ['"https://a.test/x,y",206,3']);
-    assert.equal(merged, '"https://a.test/x,y",206,3\n');
+  test('rejects a malformed cache rather than rewriting it', () => {
+    assert.throws(() =>
+      mergedCacheText('', [entry('https://b.test/', 206)], now),
+    );
   });
 });
 
