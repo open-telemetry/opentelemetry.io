@@ -21214,6 +21214,46 @@
     "when": "2026-09-29T05:46:19Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.1/README.md#maturity-level": {
+    "result": 200,
+    "when": "2026-10-02T22:55:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.1/examples/README.md": {
+    "result": 200,
+    "when": "2026-10-02T22:55:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.1/opentelemetry/proto": {
+    "result": 200,
+    "when": "2026-10-02T22:55:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.1/opentelemetry/proto/collector": {
+    "result": 200,
+    "when": "2026-10-02T22:55:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.1/opentelemetry/proto/collector/logs/v1/logs_service.proto": {
+    "result": 200,
+    "when": "2026-10-02T22:55:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.1/opentelemetry/proto/collector/metrics/v1/metrics_service.proto": {
+    "result": 200,
+    "when": "2026-10-02T22:55:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.1/opentelemetry/proto/collector/profiles/v1development/profiles_service.proto": {
+    "result": 200,
+    "when": "2026-10-02T22:55:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.11.1/opentelemetry/proto/collector/trace/v1/trace_service.proto": {
+    "result": 200,
+    "when": "2026-10-02T22:55:25Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-python": {
     "result": 200,
     "when": "2026-09-30T05:46:15Z",
@@ -31739,9 +31779,19 @@
     "when": "2026-09-30T05:46:10Z",
     "via": "lychee",
   },
+  "https://pkg.go.dev/google.golang.org/genproto/googleapis/rpc/status#Status": {
+    "result": 200,
+    "when": "2026-10-02T22:55:24Z",
+    "via": "lychee",
+  },
   "https://pkg.go.dev/google.golang.org/grpc": {
     "result": 200,
     "when": "2026-09-24T05:42:45Z",
+    "via": "lychee",
+  },
+  "https://pkg.go.dev/google.golang.org/grpc/codes": {
+    "result": 200,
+    "when": "2026-10-02T22:55:24Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/google.golang.org/grpc/credentials#PerRPCCredentials": {
