@@ -19,8 +19,10 @@ describe('parseFixDirective', () => {
   });
 
   test('the stale-head message names the recovery', () => {
-    assert.match(STALE_HEAD_MESSAGE, /Update the branch from `main`/);
+    assert.match(STALE_HEAD_MESSAGE, /Update branch/);
+    assert.match(STALE_HEAD_MESSAGE, /upstream\/main/);
     assert.match(STALE_HEAD_MESSAGE, /git rm \.lycheecache/);
+    assert.match(STALE_HEAD_MESSAGE, /install:safe/);
   });
 
   test('bare /fix runs the fix script', () => {

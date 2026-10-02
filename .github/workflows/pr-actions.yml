@@ -119,11 +119,12 @@ jobs:
         # Runs from the default-branch checkout, before the PR head's own
         # scripts take over: such a head would rewrite the obsolete
         # `.lycheecache` and leave the PR in a modify/delete conflict with
-        # main. Read-only probe of the merge ref.
+        # main. Read-only; a plain fetch, since --depth would make the whole
+        # checkout shallow and break history-dependent fixers (fix:i18n).
         env:
           HEAD_REF: refs/pull/${{ github.event.issue.number }}/head
         run: |
-          git fetch --quiet --depth=1 origin "$HEAD_REF"
+          git fetch --quiet origin "$HEAD_REF"
           if git cat-file -e FETCH_HEAD:link-cache.jsonc 2>/dev/null; then
             echo "stale=false" >> "$GITHUB_OUTPUT"
           else

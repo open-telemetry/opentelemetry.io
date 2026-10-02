@@ -193,7 +193,9 @@ changes to the cache in a new commit.
 Either way, if your branch predates `link-cache.jsonc`, update it from `main`
 first (the bot refuses `/fix` commands on such a branch): a stale branch's own
 link check would rewrite the obsolete `.lycheecache` and leave the PR in a
-modify/delete conflict with `main`.
+modify/delete conflict with `main`. After updating, run `npm run install:safe`
+before a local link check: the updated branch pins a newer `link-cache`, and the
+previously installed one would still write the obsolete file.
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 

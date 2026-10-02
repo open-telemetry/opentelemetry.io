@@ -69,11 +69,13 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
    `link-cache.jsonc`, repeat Resolve steps 1-2. If other paths are also
    conflicted on that stop, run Preparation step 4 first.
 
-4. After the entire rebase/merge completes, validate the resolved file with
-   `npm run link-cache` (exits 1 on a malformed file), then run
-   `npm run fix:link-cache` once to normalize it. Note: the latter runs a Hugo
-   build (lean by default) and link check, which needs network, installed npm
-   dependencies, and populated submodules, and can take several minutes.
+4. After the entire rebase/merge completes, run `npm run install:safe` if the
+   operation changed `package.json` (a branch crossing the owned-cache cutover
+   does), then validate the resolved file with `npm run link-cache` (exits 1 on
+   a malformed file), and run `npm run fix:link-cache` once to normalize it.
+   Note: the latter runs a Hugo build (lean by default) and link check, which
+   needs network, installed npm dependencies, and populated submodules, and can
+   take several minutes.
 
 5. Commit the changes, if any:
 

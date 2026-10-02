@@ -24,9 +24,10 @@ export const FIX_REFCACHE_COMPAT_MESSAGE =
 export const STALE_HEAD_MESSAGE =
   '❌ This branch predates the committed `link-cache.jsonc`, so `/fix` commands ' +
   'would rewrite the obsolete `.lycheecache` and conflict with `main`. ' +
-  'Update the branch from `main` first (the **Update branch** button, or ' +
-  '`git merge main`, resolving a `.lycheecache` modify/delete conflict with ' +
-  '`git rm .lycheecache`), then comment again.';
+  "Update the branch first: the PR page's **Update branch** button, or " +
+  '`git fetch upstream && git merge upstream/main` (if git reports a ' +
+  'modify/delete conflict on `.lycheecache`, resolve it with `git rm .lycheecache`), ' +
+  'then `npm run install:safe` before any local link check. Then comment again.';
 
 // The first line of the comment must be exactly `/fix` optionally followed by
 // one or more `:segment` parts, where a segment is one or more of `-_0-9a-zA-Z`.
