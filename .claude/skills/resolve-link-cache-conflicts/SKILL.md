@@ -37,7 +37,9 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
 
 4. Conflicts other than `link-cache.jsonc`: resolve them with the user.
 
-5. If a `link-cache.jsonc` conflict remains, proceed to **Resolve**.
+5. If a `link-cache.jsonc` conflict remains, proceed to **Resolve**. Otherwise,
+   stage the files resolved in step 4 and conclude the operation (**Resolve**
+   step 2): we are done.
 
 ## Resolve
 
