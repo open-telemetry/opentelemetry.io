@@ -5,6 +5,8 @@ description:
 aliases: [/integrations]
 ---
 
+{{% include freeze-notice.md %}}
+
 The mission of OpenTelemetry is
 [to enable effective observability by making high-quality, portable telemetry ubiquitous](/community/mission/).
 In other words, observability should be built in into the software you develop.

@@ -1,16 +1,18 @@
 name: Refcache refresh
 
 # Creates (or updates) the PR that refreshes a number of the oldest entries in
-# the link-check response cache (.lycheecache, aka the link cache). We say "the
-# PR", because there can be at most one such PR at a time. We refresh by first
-# pruning the oldest N entries, then running the link checker to update the
-# cache. N is set via the workflow_dispatch input.
+# the committed link cache (link-cache.jsonc, maintained by the link-cache npm
+# package). We say "the PR", because there can be at most one such PR at a
+# time. We refresh by first pruning the oldest N entries, then running the link
+# checker to update the cache. N is set via the workflow_dispatch input.
 #
-# If the PR branch already exists, then by default we only merge from `main`.
-# To force further pruning of the existing PR branch, invoke with
-# `prune_more_in_same_PR` set to true. If the branch exists but has no open PR
-# (e.g., the PR was closed without deleting the branch), the branch is reset
-# to `origin/main` and treated as a new branch, so that pruning runs.
+# If the PR branch already exists, then by default we only merge from `main`;
+# a cache-only merge conflict is resolved by taking main's cache, which voids
+# the pending refresh, so the run prunes again. To force further pruning of
+# the existing PR branch, invoke with `prune_more_in_same_PR` set to true. If
+# the branch exists but has no open PR (e.g., the PR was closed without
+# deleting the branch), the branch is reset to `origin/main` and treated as a
+# new branch, so that pruning runs.
 #
 # When pruning ran but the run ends with no commits to open a PR from, the
 # run fails: an empty refresh after pruning means the workflow is broken.
@@ -39,13 +41,21 @@ on:
 permissions:
   contents: read
 
+# Overlapping runs would race updates to the shared refresh branch.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
 jobs:
   refcache-refresh:
+    name: Refresh link cache
     # Only run in upstream repository, not in forks
     if: github.repository == 'open-telemetry/opentelemetry.io'
     runs-on: ubuntu-latest
     env:
       BRANCH: otelbot/refcache-refresh
+      CACHE_FILE: link-cache.jsonc
+      CACHE_SELF_HEALED: 'false'
       DEFAULT_REFRESH_COUNT: *default_refresh_count
       DOUBLE_CHECK_NEEDED: 'false'
       IS_NEW_BRANCH: 'false'
@@ -59,12 +69,15 @@ jobs:
           # the higher privileged docs token is needed to push commits to an existing PR
           client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           # Needed to trigger workflows when pushing new commits to an existing PR
           token: ${{ steps.otelbot-token.outputs.token }}
+          persist-credentials: true # zizmor: ignore[artipacked] Required by this job's later git pushes.
 
       - name: Validate inputs
         run: |
@@ -77,7 +90,7 @@ jobs:
 
       - name: Checkout or create branch
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
         run: |
           if ! git ls-remote --exit-code --heads origin $BRANCH; then
             echo "IS_NEW_BRANCH=true" >> $GITHUB_ENV
@@ -114,7 +127,21 @@ jobs:
           fi
           previous=$(git rev-parse HEAD)
           git fetch origin
-          git $merge_or_rebase origin/main
+          if ! git $merge_or_rebase origin/main; then
+            # Taking main's cache is safe: the next check regenerates what this
+            # branch needed (the header says why the prune step then reruns).
+            conflicts=$(git diff --name-only --diff-filter=U | tr '\n' ' ' | sed 's/ $//')
+            if [[ "$merge_or_rebase" == "merge" && "$conflicts" == "$CACHE_FILE" ]]; then
+              echo "Cache-only merge conflict: taking main's version and re-pruning."
+              git checkout --theirs "$CACHE_FILE"
+              git add "$CACHE_FILE"
+              git commit --no-edit
+              echo "CACHE_SELF_HEALED=true" >> $GITHUB_ENV
+            else
+              echo "::error::$merge_or_rebase from main conflicts ($conflicts): resolve manually."
+              exit 1
+            fi
+          fi
           if [ "$(git rev-parse HEAD)" != "$previous" ]; then
             DELAYED_PUSH_CMD="git push $push_args origin $BRANCH"
             echo "We'll push later, after committing the link-cache updates."
@@ -133,7 +160,9 @@ jobs:
       - uses: ./.github/actions/install-lychee
 
       - name: Prune link cache
-        if: ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' }}
+        if:
+          ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' ||
+          env.CACHE_SELF_HEALED == 'true' }}
         run: |
           echo "Oldest entry before pruning, then pruning $REFRESH_COUNT oldest link-cache entries:"
           npm run link-cache -- --list 1 --prune $REFRESH_COUNT
@@ -160,7 +189,7 @@ jobs:
             echo "DOUBLE_CHECK_NEEDED=true" >> $GITHUB_ENV
           fi
 
-      - uses: browser-actions/setup-chrome@2e1d749697dd1612b833dba4a722266286fbefcd # v2.1.2
+      - uses: browser-actions/setup-chrome@48ad923757ca74d66703209fe939badbdf80f2f4 # v2.2.0
         id: setup-chrome
         if: ${{ env.DOUBLE_CHECK_NEEDED == 'true' }}
         with:

@@ -28,12 +28,10 @@ npm run check:links
 | ---------------------- | ------------------------------------------------------------ |
 | `check:links`          | Whole site                                                   |
 | `check:links:internal` | Whole site, offline (no external links)                      |
-| `check:links:diff`     | Changed files only                                           |
 | `fix:link-cache`       | Alias of `check:links`; use it to refresh the [link cache][] |
 
 The `check:links` and `check:links:internal` scripts run over a build of
-`BUILD_KIND`; `check:links:diff` checks files from the existing `public/` build.
-For details, see [Build kinds: full and lean][].
+`BUILD_KIND`. For details, see [Build kinds: full and lean][].
 
 ## Configuration
 
@@ -71,26 +69,39 @@ commit might not exist upstream.
 
 ## Link cache <a id="refcache"></a>
 
-External-link check results are cached in `.lycheecache`, which is under version
-control so that checks only fetch URLs that are new or whose cache entries have
-expired. Lychee caches successful results only, so failures are retried on every
-run.
+External-link check results are cached in **`link-cache.jsonc`**, the committed
+cache that the [link-cache][] package maintains; Lychee's own cache file,
+`.lycheecache`, is derived from it per run and git-ignored. For the file's
+format, including how to seed an entry by hand, see [The owned
+cache][cache-format]; for which URLs a check run fetches and which it serves
+from the cache, see [Operating model][]. Hand edits are for deliberate seeds
+only; for a URL that merely blocks link checkers, append `?link-check=no` to it
+instead (see [Handling valid external links][]).
+
+The cache is routinely updated by several [scheduled workflows](#workflows) as
+well as content PRs, so concurrent updates can conflict under Git's 3-way merge,
+distinct URLs included: both sides inserting into the same sorted gap, or one
+side pruning an entry the other refreshed or inserted beside (a hunk can then
+split an entry). When the branch's cache changes are routine check results, take
+`main`'s whole file and rerun the check, which re-adds whatever the branch
+needs; otherwise follow the conflict rules in [The owned cache][cache-format],
+then rerun the check to normalize the file.
 
 If you add or change external links, run `npm run check:links` **before
 submitting your PR** — the site build dominates the run time — and commit the
-updated `.lycheecache` along with your content changes. Otherwise the
+updated `link-cache.jsonc` along with your content changes. Otherwise the
 `CACHE updates committed?` check will fail; for recovery steps, see
 [`CACHE updates committed?`][pr-checks].
 
 ## Cache refresh and housekeeping workflows {#workflows}
 
-The following workflows are scheduled daily and run a link checking command over
-a **full** build:
+The following workflows are scheduled daily and run a link checking command:
 
-| Workflow                              | Link-check command                |
-| ------------------------------------- | --------------------------------- |
-| Refcache refresh                      | `log:check:links` (after pruning) |
-| [Housekeeping][] (`fix-and-test:all`) | `fix:link-cache`                  |
+| Workflow                              | Link-check command                            |
+| ------------------------------------- | --------------------------------------------- |
+| Refcache refresh                      | `log:check:links` (full build, after pruning) |
+| [Housekeeping][] (`fix-and-test:all`) | `fix:link-cache` (full build)                 |
+| [Auto-update registry versions][]     | `fix:link-cache`                              |
 
 Refcache refresh prunes the oldest cache entries (the count is a workflow input)
 and re-runs the link check, which refreshes the cache entries for the pruned
@@ -100,12 +111,13 @@ URLs that are still used in the site.
 
 Some sites serve valid pages to browsers but turn away plain HTTP clients like
 Lychee (bot walls, crates.io's unconditional 404s, npmjs.com signin redirects).
-Since [failures are never cached](#link-cache), links to such sites would
-otherwise fail the link check on every run once their cache entries expire.
+Since a cached failure is [re-fetched on every run][Operating model], links to
+such sites would otherwise fail the check each time.
 
 The **double-check** tooling re-verifies Lychee-reported failures through a
-browser-grade probe. URLs that the probe resolves are recorded in `.lycheecache`
-with the synthetic status `206` ("OK by analysis"). The Refcache refresh
+browser-grade probe and records the URLs it resolves in `link-cache.jsonc` with
+the synthetic status `206` ("OK by analysis"); URLs it can't resolve keep the
+failure the check recorded, for triage in the refresh PR. The Refcache refresh
 workflow runs it after the link check; to run it locally over a captured log:
 
 ```sh
@@ -122,18 +134,23 @@ The [`check-links.yml` workflow][ci] builds the site once (lean) and shares that
 artifact with the `CHECK LINKS` job, so local runs and CI check the same build.
 That job fails if any link check fails, and hands the cache it refreshed to the
 `CACHE updates committed?` job, which fails if the run left the committed
-`.lycheecache` stale.
+`link-cache.jsonc` stale.
 
 <!-- prettier-ignore-start -->
+[Auto-update registry versions]: ../scripts/#update-registry-versionssh
 [blog-index]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
 [Build kinds: full and lean]: ../#build-kinds
+[cache-format]: https://github.com/chalin/link-cache/blob/main/docs/cache-format.md
 [ci]: ../ci-workflows/
 [double-check README]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/lychee/double-check/README.md
 [drifted]: /docs/contributing/localization/#track-changes
+[Handling valid external links]: /docs/contributing/pr-checks/#handling-valid-external-links
 [Housekeeping]: ../ci-workflows/#housekeeping
 [link cache]: #link-cache
+[link-cache]: https://github.com/chalin/link-cache#readme
 [Lychee]: https://lychee.cli.rs/
 [lychee-install]: https://lychee.cli.rs/guides/getting-started/
+[Operating model]: https://github.com/chalin/link-cache/blob/main/docs/operating-model.md
 [`lychee.base.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/lychee.base.toml
 [pr-checks]: /docs/contributing/pr-checks/#cache-updates-committed
 <!-- prettier-ignore-end -->
