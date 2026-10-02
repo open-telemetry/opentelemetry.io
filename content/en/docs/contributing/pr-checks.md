@@ -133,14 +133,14 @@ The check flags these obsolete paths:
 - `static/refcache.json` - removed in the [switch to Lychee][#10911]. If your
   branch restores it, follow the [stale-branch update instructions][#10990].
 - `.lycheecache` as a **tracked** file - untracked when the committed link cache
-  [became `link-cache.jsonc`][#11649]. If your branch still commits it, untrack
-  it (`npm run fix:filenames`, or comment `/fix:filenames`), then run
-  `npm run check:links` and commit `link-cache.jsonc` instead.
+  [became `link-cache.jsonc`][#11649]. If your branch still commits it, follow
+  the [update instructions][#NNNN].
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
 [#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
 [#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
 [#11649]: https://github.com/open-telemetry/opentelemetry.io/pull/11649
+[#NNNN]: https://github.com/open-telemetry/opentelemetry.io/issues/NNNN
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
@@ -187,15 +187,13 @@ The easiest way to update it is to comment
 OpenTelemetry bot updates the cache for you.
 
 Alternatively, you can build and check links locally, by running
-`npm run check:links`. This command also updates the link cache. Push any
-changes to the cache in a new commit.
+`npm run check:links`. This command also updates the link cache. Push the cache
+changes from a passing run in a new commit.
 
-Either way, if your branch predates `link-cache.jsonc`, update it from `main`
-first (the bot refuses `/fix` commands on such a branch): a stale branch's own
-link check would rewrite the obsolete `.lycheecache` and leave the PR in a
-modify/delete conflict with `main`. After updating, run `npm run install:safe`
-before a local link check: the updated branch pins a newer `link-cache`, and the
-previously installed one would still write the obsolete file.
+If your branch predates `link-cache.jsonc`, update it from `main` first (the bot
+refuses `/fix` commands on such a branch); for how, see the [update
+instructions][#NNNN]. If updating conflicts on `link-cache.jsonc` itself, take
+`main`'s version of the file and rerun the check.
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 

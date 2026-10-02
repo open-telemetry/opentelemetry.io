@@ -114,7 +114,7 @@ jobs:
         # usage hint) on the PR.
         run: node scripts/gh/pr-fix/cli.mjs --comment "$COMMENT"
 
-      - name: Refuse a PR head that predates the owned link cache
+      - name: Refuse a PR head that predates link-cache.jsonc
         id: head
         # Runs from the default-branch checkout, before the PR head's own
         # scripts take over: such a head would rewrite the obsolete
@@ -143,7 +143,7 @@ jobs:
             echo "stale=false" >> "$GITHUB_OUTPUT"
           else
             echo "stale=true" >> "$GITHUB_OUTPUT"
-            echo "::error::PR head predates the owned link cache (link-cache@${pin:-none}); update the branch from main first."
+            echo "::error::PR head predates link-cache.jsonc; update the branch from main first."
             exit 1
           fi
 

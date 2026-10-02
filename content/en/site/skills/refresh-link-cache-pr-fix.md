@@ -124,9 +124,12 @@ Once the link check passes on the PR being processed:
 1. Share the link-check summary in your reply (URLs re-checked or fixed, and
    final status counts when shown).
 2. If `link-cache.jsonc` changed, commit and push to upstream _`TARGET_BRANCH`_.
-   Use the link-check summary as the commit-message body (plain text; if the URL
-   list is long, include only the counts): it remains visible in the PR's commit
-   history even after a squash merge.
+   A later bot run that hits a cache-only merge conflict takes `main`'s file,
+   dropping these edits; the refresh lane re-runs the double-check afterwards,
+   the spec-integration lanes don't. Use the link-check summary as the
+   commit-message body (plain text; if the URL list is long, include only the
+   counts): it remains visible in the PR's commit history even after a squash
+   merge.
 3. Unless the skill invocation asks for no comment (e.g., it includes “no
    comment” or “silent”), add a comment to the PR
    (`gh pr comment <num> --body '…'`) consisting of:

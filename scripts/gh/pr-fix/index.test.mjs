@@ -18,11 +18,12 @@ describe('parseFixDirective', () => {
     assert.ok(INVALID_DIRECTIVE_MESSAGE.includes(DIRECTIVE_HINT));
   });
 
-  test('the stale-head message names the recovery', () => {
-    assert.match(STALE_HEAD_MESSAGE, /Update branch/);
-    assert.match(STALE_HEAD_MESSAGE, /upstream\/main/);
-    assert.match(STALE_HEAD_MESSAGE, /git rm \.lycheecache/);
-    assert.match(STALE_HEAD_MESSAGE, /install:safe/);
+  test('the stale-head message links the recovery home', () => {
+    assert.match(STALE_HEAD_MESSAGE, /update the branch from `main`/i);
+    assert.match(
+      STALE_HEAD_MESSAGE,
+      /opentelemetry\.io\/issues\/\d+|issues\/NNNN/,
+    );
   });
 
   test('bare /fix runs the fix script', () => {

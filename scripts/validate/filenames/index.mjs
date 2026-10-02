@@ -5,7 +5,7 @@
 // Usage:
 //   node scripts/validate/filenames/index.mjs [--fix]
 //
-// With --fix, obsolete paths are DELETED (a tracked-kind entry is untracked
+// With --fix, obsolete paths are DELETED (a `tracked` entry is untracked
 // instead) and non-kebab-case names are renamed. Without --fix, the command
 // exits non-zero when violations are found.
 
@@ -50,10 +50,11 @@ export const OBSOLETE_PATHS = [
   {
     path: '.lycheecache',
     tracked: true,
+    // TODO(cutover): NNNN = the anchor issue, posted at merge time.
     message:
-      'Obsolete tracked file: the committed link cache is `link-cache.jsonc` (PR #11649); ' +
-      '`.lycheecache` is derived per run and git-ignored. Untrack it: `npm run fix:filenames` ' +
-      '(or comment `/fix:filenames`), then run `npm run check:links` and commit `link-cache.jsonc`.',
+      'Obsolete tracked file: the committed link cache is now `link-cache.jsonc` (PR #11649). ' +
+      'Untrack it with `npm run fix:filenames`. For the full update procedure, see ' +
+      'https://github.com/open-telemetry/opentelemetry.io/issues/NNNN',
   },
 ];
 

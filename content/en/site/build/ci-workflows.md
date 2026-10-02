@@ -268,7 +268,12 @@ It runs as a four-stage pipeline:
 1. **`ack`** (trusted): as soon as a directive is received, replies with a 🔄
    in-progress comment that links to the directive comment and to the run.
 2. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
-   command, and uploads a patch artifact (`site.patch`), up to 1024 KB.
+   command, and uploads a patch artifact (`site.patch`), up to 1024 KB. Before
+   the checkout, a trusted step refuses a PR head that predates
+   `link-cache.jsonc` (its own link check would recreate the obsolete
+   `.lycheecache`); the outcome comment then tells the author to update the
+   branch. The step is inline shell, untested, and goes once no open PR predates
+   the switch.
 3. **`apply-patch`** (trusted): calls the [`reusable-apply-patch.yml`][]
    workflow — resolved from the default branch, never from the PR — which
    applies the patch with a GitHub App token and pushes a commit to the PR

@@ -148,7 +148,7 @@ jobs:
             echo "- Comment \`/fix:link-cache\` on this PR — the bot updates the cache for you; or"
             echo "- Run \`npm run check:links\` locally, then commit the modified \`link-cache.jsonc\`."
             echo
-            echo "If your branch predates \`link-cache.jsonc\`, update it from \`main\` first."
+            echo "If your branch predates \`link-cache.jsonc\`, update it from \`main\` first: https://github.com/open-telemetry/opentelemetry.io/issues/NNNN"
             echo
             echo "For details, see [\`CACHE updates committed?\`](https://opentelemetry.io/docs/contributing/pr-checks/#cache-updates-committed)."
           } >> "$GITHUB_STEP_SUMMARY"
