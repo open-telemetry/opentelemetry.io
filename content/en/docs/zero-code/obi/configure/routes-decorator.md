@@ -15,6 +15,12 @@ weight: 50
 
 YAML section: `routes`
 
+OBI v0.14.0 can harvest framework-defined HTTP routes from Django, FastAPI,
+Flask, Rails, .NET, Symfony, Laravel, and Slim applications. When a framework
+route is available, it provides a low-cardinality `http.route` without requiring
+you to list that route in `patterns`. Configure patterns or the heuristic mode
+for applications whose routes OBI cannot harvest.
+
 You can configure the component under the `routes` section of your YAML
 configuration or with environment variables.
 

@@ -69,39 +69,53 @@ OBI offers the following features:
 - **Collector integration**: Run OBI as an OpenTelemetry Collector receiver
   component
 
-## Recent highlights (v0.12.1)
+## Recent highlights (v0.14.0)
 
-OBI v0.12.1 is the published release of the changes prepared for v0.12.0.
-Although v0.12.0 was tagged, it was not published after release validation
-failed. Install v0.12.1, which includes the intended v0.12.0 changes and the
-release correction.
+OBI v0.14.0 expands instrumentation and improves trace-context propagation:
 
-Notable changes include:
+- **Broader coverage**: Added AWS SNS instrumentation, MCP metrics, generic
+  Python asyncio server support, and GPU and runtime metrics for more runtimes
+- **Framework routes**: Harvests routes from Django, FastAPI, Flask, Rails,
+  .NET, Symfony, Laravel, and Slim applications
+- **Propagation**: Improves HTTP/2 and gRPC trace-context propagation
+- **Permissions**: Most probes can attach without `CAP_SYS_ADMIN`; features that
+  write to application memory still require it
+- **Telemetry schema**: Publishes the full schema and promotes HTTP and SQL span
+  groups to stable status
 
-- **Node.js manual spans**: Captures spans created with `@opentelemetry/api`
-  when the application has not registered an OpenTelemetry SDK
-- **Node.js runtime metrics**: Adds event-loop time, utilization, and delay
-  metrics
-- **More precise Config v2 filters**: Applies application filters independently
-  by protocol and signal
-- **Process-context enrichment**: Reads resource attributes and metadata that
-  instrumented processes publish through the experimental `OTEL_CTX` mapping
-- **Database server metrics**: Adds `db.server.operation.duration` for
-  server-side Redis, Memcached, and SQL operations
-- **Improved Java service names**: Uses the Spring Boot application name, JAR
-  manifest title, or JAR base name before falling back to `java`
-- **Reliability fixes**: Protects private-stack kernels from uprobe preemption,
-  avoids unsafe context propagation when a required probe cannot attach, and
-  corrects trace parenting, wrapped Go TLS connections, short-lived process log
-  enrichment, and OTLP attribute handling
-
-For a complete list of changes and upgrade notes, see the
-[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.12.1).
+For behavior changes that may affect dashboards and trace processing, see the
+[v0.14.0 upgrade notes](#upgrade-notes-for-v0140) and
+[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.14.0).
 
 If you want to explore the upstream examples, see the
-[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/nginx)
+[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.14.0/examples/nginx)
 and the
-[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/apache).
+[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.14.0/examples/apache).
+
+## Upgrade notes for v0.14.0
+
+- HTTP duration and body-size metrics now include `error.type` by default on
+  failed requests. Their Prometheus series gain an `error_type` label, with an
+  empty value on successful requests. Review dashboards and alert queries that
+  depend on the old series.
+- The OTLP span metrics no longer copy `host.id` to each data point. The value
+  remains a resource attribute and in `target_info`; OBI's Prometheus exporter
+  is unchanged. Consumers that flatten OTLP resources into Prometheus labels
+  should check their `host_id` queries.
+- `service.peer.name`, `http.request.body.size`, `http.response.body.size`, and
+  `obi.http.response.observed` are now opt-in span attributes. Select them with
+  [`attributes.select.traces.include`](configure/metrics-traces-attributes/)
+  when needed; service graph processors may need `service.peer.name`.
+- The pinned `traces_ctx_v1` map is no longer populated by default. External
+  trace-profile correlation and the Go channel handoff fallback can be restored
+  with
+  [`ebpf.populate_trace_context: true`](configure/metrics-traces-attributes/).
+- Target declarations still take precedence over resource metadata. Resolved
+  target metadata now takes precedence over the agent's own
+  `OTEL_RESOURCE_ATTRIBUTES`, with values merged per key.
+- Elastic Cloud client spans and database-operation metrics now include
+  `db.namespace` from `X-Found-Handling-Cluster`. Existing metric series may
+  split by cluster. AWS SQS spans no longer include `aws.extended_request_id`.
 
 ## How OBI works
 
@@ -123,10 +137,10 @@ OBI supports Linux environments that meet the following requirements:
 
 OBI publishes the following supported release artifacts:
 
-| Artifact                                            | Supported platforms          |
-| :-------------------------------------------------- | :--------------------------- |
-| `obi` binary archive                                | Linux `amd64`, Linux `arm64` |
-| `otel/ebpf-instrument` container image              | Linux `amd64`, Linux `arm64` |
+| Artifact                                         | Supported platforms          |
+| :----------------------------------------------- | :--------------------------- |
+| `obi` binary archive                             | Linux `amd64`, Linux `arm64` |
+| `otel/ebpf-instrument` container image           | Linux `amd64`, Linux `arm64` |
 | `otel/opentelemetry-ebpf-k8s-cache` container image | Linux `amd64`, Linux `arm64` |
 
 OBI can be deployed on standalone Linux hosts, in containers, and on Kubernetes

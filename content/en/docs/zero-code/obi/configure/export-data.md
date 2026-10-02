@@ -44,6 +44,7 @@ instrumentation:
 | Elasticsearch | `7.14+`                                                                                                                             | No additional documented version limits.                                                                    |
 | OpenSearch    | `3.0.0+`                                                                                                                            | No additional documented version limits.                                                                    |
 | AWS S3        | All                                                                                                                                 | No additional documented version limits.                                                                    |
+| AWS SNS       | All | Client instrumentation added in v0.14.0. |
 | AWS SQS       | All                                                                                                                                 | No additional documented version limits.                                                                    |
 | SQL++         | All                                                                                                                                 | No additional documented version limits.                                                                    |
 | GenAI         | OpenAI, Anthropic, Gemini, AWS Bedrock, Qwen, Ollama, OpenAI-compatible gateways, MCP, embedding, rerank, and vector retrieval APIs | Provider-specific payload extraction requires the matching `ebpf.payload_extraction.http` flag.             |
@@ -134,7 +135,6 @@ metrics:
 | YAML<br>environment variable               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Type            | Default           |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------- |
 | `features`<br>`OTEL_EBPF_METRICS_FEATURES` | The list of metric groups OBI exports data for, refer to [metrics export features](#metrics-export-features). Accepted values `all`, `*`, `application`, `application_span`, `application_span_otel`, `application_span_sizes`, `application_host`, `application_runtime`, `application_service_graph`, `network`, `network_flow_packets`, `network_inter_zone`, `stats`, `stats_tcp_rtt`, `stats_tcp_failed_connections`, `stats_tcp_retransmits`, `stats_tcp_io`, and `ebpf`. | list of strings | `["application"]` |
-
 ### Metrics export features
 
 The OBI metrics exporter can export the following metrics data groups for
@@ -187,7 +187,6 @@ processes matching entries in the [metrics discovery](./) configuration.
 >
 > Prometheus metric names remain unchanged. Update OTLP queries and dashboards
 > when you upgrade to v0.11.0.
-
 ### Per-application metrics export features
 
 Additionally, OBI allows you to override global metrics export features on a
@@ -364,7 +363,6 @@ otel_traces_export:
 | `protocol`<br>`OTEL_EXPORTER_OTLP_TRACES_PROTOCOL`<br>`OTEL_EXPORTER_OTLP_PROTOCOL` | The protocol transport/encoding of the OpenTelemetry endpoint, refer to [traces export protocol](#traces-export-protocol). [Accepted values](/docs/languages/sdk-configuration/otlp-exporter/#otel_exporter_otlp_protocol) `http/json`, `http/protobuf`, and `grpc`. | string          | Inferred from port usage                                                                                     |
 | `insecure_skip_verify`<br>`OTEL_EBPF_INSECURE_SKIP_VERIFY`                          | If `true`, OBI skips verifying and accepts any server certificate. Only override this setting for non-production environments.                                                                                                                                       | boolean         | `false`                                                                                                      |
 | `instrumentations`<br>`OTEL_EBPF_TRACES_INSTRUMENTATIONS`                           | The list of instrumentation OBI collects data for, refer to [traces instrumentation](#traces-instrumentation) section.                                                                                                                                               | list of strings | `http`, `grpc`, `sql`, `redis`, `kafka`, `mqtt`, `nats`, `amqp`, `mongo`, `couchbase`, `memcached`, `sunrpc` |
-
 ### Traces export protocol
 
 If you don't set a protocol OBI sets the protocol as follows:

@@ -75,6 +75,17 @@ and
 which you can enable via the [features](../configure/options/) configuration
 option.
 
+In v0.14.0, the `application` feature includes the HTTP body-size histograms.
+Use `application_red` instead if you only want RED metrics, or combine
+`application_red` and `application_sizes` in the same feature list. See
+[metrics export features](../configure/export-data/#metrics-export-features).
+
+HTTP duration and body-size metrics now include `error.type` on failed requests
+by default. Their Prometheus series have an `error_type` label, with an empty
+value for successful requests. Update dashboards and alerts that match the old
+series. OTLP span metrics no longer put `host.id` on each data point; it remains
+on the resource and in `target_info`. OBI's Prometheus exporter is unaffected.
+
 ## Attributes of OBI metrics
 
 For the sake of brevity, the metrics and attributes in this list use the OTel
