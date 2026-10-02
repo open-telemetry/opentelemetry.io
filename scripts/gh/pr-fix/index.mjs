@@ -18,6 +18,16 @@ export const FIX_ALL_COMPAT_MESSAGE =
 export const FIX_REFCACHE_COMPAT_MESSAGE =
   'ℹ️ INFO: `/fix:refcache` is deprecated. Use `/fix:link-cache` moving forward.';
 
+// Posted instead of running a fixer on a PR head that predates the owned link
+// cache: that head's own `check:links` would rewrite the obsolete `.lycheecache`
+// and leave the PR in a modify/delete conflict with main.
+export const STALE_HEAD_MESSAGE =
+  '❌ This branch predates the committed `link-cache.jsonc`, so `/fix` commands ' +
+  'would rewrite the obsolete `.lycheecache` and conflict with `main`. ' +
+  'Update the branch from `main` first (the **Update branch** button, or ' +
+  '`git merge main`, resolving a `.lycheecache` modify/delete conflict with ' +
+  '`git rm .lycheecache`), then comment again.';
+
 // The first line of the comment must be exactly `/fix` optionally followed by
 // one or more `:segment` parts, where a segment is one or more of `-_0-9a-zA-Z`.
 // Any following lines are ignored.

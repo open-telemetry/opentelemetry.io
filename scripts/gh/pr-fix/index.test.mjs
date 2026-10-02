@@ -6,6 +6,7 @@ import fs from 'node:fs';
 
 import {
   DIRECTIVE_HINT,
+  STALE_HEAD_MESSAGE,
   FIX_ALL_COMPAT_MESSAGE,
   FIX_REFCACHE_COMPAT_MESSAGE,
   INVALID_DIRECTIVE_MESSAGE,
@@ -15,6 +16,11 @@ import {
 describe('parseFixDirective', () => {
   test('the invalid-directive message includes the directive hint', () => {
     assert.ok(INVALID_DIRECTIVE_MESSAGE.includes(DIRECTIVE_HINT));
+  });
+
+  test('the stale-head message names the recovery', () => {
+    assert.match(STALE_HEAD_MESSAGE, /Update the branch from `main`/);
+    assert.match(STALE_HEAD_MESSAGE, /git rm \.lycheecache/);
   });
 
   test('bare /fix runs the fix script', () => {

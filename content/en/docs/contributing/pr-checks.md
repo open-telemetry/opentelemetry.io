@@ -133,9 +133,8 @@ The check flags these obsolete paths:
 - `static/refcache.json` - removed in the [switch to Lychee][#10911]. If your
   branch restores it, follow the [stale-branch update instructions][#10990].
 - `.lycheecache` as a **tracked** file - untracked when the committed link cache
-  became [`link-cache.jsonc`][#11649]; the CSV is now derived per run and
-  git-ignored. If your branch still commits it, merge in the latest `main`,
-  resolving the modify/delete conflict with `git rm .lycheecache`, then run
+  [became `link-cache.jsonc`][#11649]. If your branch still commits it, untrack
+  it (`npm run fix:filenames`, or comment `/fix:filenames`), then run
   `npm run check:links` and commit `link-cache.jsonc` instead.
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
@@ -190,6 +189,11 @@ OpenTelemetry bot updates the cache for you.
 Alternatively, you can build and check links locally, by running
 `npm run check:links`. This command also updates the link cache. Push any
 changes to the cache in a new commit.
+
+Either way, if your branch predates `link-cache.jsonc`, update it from `main`
+first (the bot refuses `/fix` commands on such a branch): a stale branch's own
+link check would rewrite the obsolete `.lycheecache` and leave the PR in a
+modify/delete conflict with `main`.
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 
