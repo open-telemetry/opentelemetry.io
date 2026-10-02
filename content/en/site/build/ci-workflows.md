@@ -146,7 +146,10 @@ sequenceDiagram
 - **`label-manager`**: runs with a GitHub App token (`OTELBOT_DOCS_CLIENT_ID` /
   `OTELBOT_DOCS_PRIVATE_KEY`) that has permissions to read org/team membership
   and edit PR labels. Uses `pull_request_target` and `workflow_run` to ensure it
-  always executes in the trusted base repository context.
+  always executes in the trusted base repository context. The `pr-number`
+  artifact it downloads comes from the PR's own copy of `pr-review-trigger`, so
+  it is untrusted input: extracted outside the checkout and accepted only as an
+  integer PR number.
 - **`blog-publish-labels`**: runs on a schedule with a GitHub App token and the
   `SLACK_WEBHOOK_URL` secret. Always executes in the trusted base repository
   context (schedule events have no fork variant).
