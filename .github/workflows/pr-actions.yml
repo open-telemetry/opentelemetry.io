@@ -249,8 +249,8 @@ jobs:
           STALE_HEAD: ${{ needs.generate-patch.outputs.stale_head }}
         # The note is owned by the directive parser; this checkout is of the
         # default branch, so the derived text is trusted (the parser only ever
-        # returns its own constants, never comment text). STALE_HEAD is a
-        # trusted pre-checkout step's output, read before any PR code ran.
+        # returns its own constants, never comment text; STALE_HEAD, an
+        # untrusted-job output, only selects one of them).
         run: |
           note=$(node -e 'import("./scripts/gh/pr-fix/index.mjs").then((m) => {
             if (process.env.STALE_HEAD === "true") return console.log(m.STALE_HEAD_MESSAGE);
