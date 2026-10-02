@@ -15,6 +15,6 @@ resources:
 
 - [Trace semantic conventions](/docs/specs/semconv/general/trace/)
 - [Metric semantic conventions](/docs/specs/semconv/general/metrics/)
-- [Log semantic conventions](/docs/specs/semconv/general/logs/)
+- [Log attributes](/docs/specs/semconv/registry/attributes/log/)
 - [Profiles semantic conventions](/docs/specs/semconv/general/profiles/)
 - [Resource semantic conventions](/docs/specs/semconv/resource/)

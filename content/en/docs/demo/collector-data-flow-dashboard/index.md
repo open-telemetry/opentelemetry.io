@@ -11,7 +11,7 @@ capabilities of the OpenTelemetry demo application, offering a solid foundation
 for users to build upon. Collector Data Flow Dashboard provides valuable
 guidance on which metrics to monitor. Users can tailor their own dashboard
 variations by adding necessary metrics specific to their use cases, such as
-memory_delimiter processor or other data flow indicators. This demo dashboard
+memory_limiter processor or other data flow indicators. This demo dashboard
 serves as a starting point, enabling users to explore diverse usage scenarios
 and adapt the tool to their unique monitoring needs.
 
@@ -37,7 +37,7 @@ associated with these metrics is "otelcol," and the job name is labeled as
 Labels serve as a valuable tool for identifying specific metric sets (such as
 exporter, receiver, or job), enabling differentiation among metric sets within
 the overall namespace. It is important to note that you will only encounter
-refused metrics if the memory limits, as defined in the memory delimiter
+refused metrics if the memory limits, as defined in the memory_limiter
 processor, are exceeded.
 
 ### Ingress Traces Pipeline

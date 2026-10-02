@@ -274,13 +274,15 @@
   stability:
     logs: beta
     traces: beta
-- name: mezmoexporter
-  display_name: Mezmo Exporter
+- name: natsexporter
+  display_name: NATS Exporter
   repo: contrib
   distributions:
     - contrib
   stability:
-    logs: deprecated
+    logs: development
+    metrics: development
+    traces: development
 - name: nopexporter
   display_name: No-op Exporter
   repo: core
@@ -301,6 +303,7 @@
   stability:
     logs: alpha
     traces: alpha
+    metrics: development
 - name: otelarrowexporter
   display_name: OpenTelemetry Arrow Exporter
   repo: contrib

@@ -3,8 +3,7 @@ title: ヘルパースクリプト
 description: >-
   ラベル管理、リンクチェック、レジストリ更新などに CI ワークフローやローカル開発で使用されるシェルスクリプト。
 weight: 30
-default_lang_commit: 1cc5320d70b48ffcf7bc62af0657bc7ef1d001a9
-drifted_from_default: true
+default_lang_commit: ded1c6de0f5ac0393d3aa6da1a7c030045d4a8ae
 ---
 
 すべてのスクリプトは [`.github/scripts/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/.github/scripts) 配下にあります。
@@ -21,7 +20,7 @@ npm run fix:i18n:new
 ## pr-approval-labels.sh {#pr-approval-labelssh}
 
 レビュー状態とファイルオーナーシップに基づいて PR の承認ラベルを管理します。
-[`pr-approval-labels` ワークフロー](../ci-workflows/#pr-approval-labels)から呼び出されます。
+[`label-manager` ワークフロー](../ci-workflows/#pr-approval-labels)から呼び出されます。
 
 **動作の仕組み：**
 
