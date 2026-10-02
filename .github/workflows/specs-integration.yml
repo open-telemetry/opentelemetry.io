@@ -78,7 +78,9 @@ jobs:
         run: |
           previous=$(git rev-parse HEAD)
           git fetch origin
-          git merge origin/main
+          # A cache-only merge conflict self-heals by taking main's cache; the
+          # link-check step below re-adds this branch's entries.
+          scripts/git/merge-from-main.sh
           if [ "$(git rev-parse HEAD)" != "$previous" ]; then
             git push
           fi
