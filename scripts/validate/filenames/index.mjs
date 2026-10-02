@@ -50,11 +50,10 @@ export const OBSOLETE_PATHS = [
   {
     path: '.lycheecache',
     tracked: true,
-    // TODO(NNNN): NNNN = the anchor issue, posted at merge time.
     message:
       'Obsolete tracked file: the committed link cache is now `link-cache.jsonc` (PR #11649). ' +
       'Untrack it with `npm run fix:filenames`. For the full update procedure, see ' +
-      'https://github.com/open-telemetry/opentelemetry.io/issues/NNNN',
+      'https://github.com/open-telemetry/opentelemetry.io/issues/11928',
   },
 ];
 

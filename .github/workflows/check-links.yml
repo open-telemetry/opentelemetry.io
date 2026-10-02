@@ -145,8 +145,7 @@ jobs:
             echo "All links check out ✅ — but this PR leaves the committed link cache"
             echo "(\`link-cache.jsonc\`) stale."
             echo
-            # TODO(NNNN): NNNN = the anchor issue, posted at merge time.
-            echo "If your branch predates \`link-cache.jsonc\`, first update it from \`main\` (how: https://github.com/open-telemetry/opentelemetry.io/issues/NNNN). Then, either:"
+            echo "If your branch predates \`link-cache.jsonc\`, first update it from \`main\` (how: https://github.com/open-telemetry/opentelemetry.io/issues/11928). Then, either:"
             echo
             echo "- Comment \`/fix:link-cache\` on this PR — the bot updates the cache for you; or"
             echo "- Run \`npm run install:safe\` then \`npm run check:links\` locally, and commit the modified \`link-cache.jsonc\`."

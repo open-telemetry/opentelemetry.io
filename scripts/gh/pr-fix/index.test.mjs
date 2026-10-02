@@ -20,10 +20,7 @@ describe('parseFixDirective', () => {
 
   test('the stale-head message links the recovery home', () => {
     assert.match(STALE_HEAD_MESSAGE, /update the branch from `main`/i);
-    assert.match(
-      STALE_HEAD_MESSAGE,
-      /opentelemetry\.io\/issues\/\d+|issues\/NNNN/,
-    );
+    assert.match(STALE_HEAD_MESSAGE, /opentelemetry\.io\/issues\/11928/);
   });
 
   test('bare /fix runs the fix script', () => {

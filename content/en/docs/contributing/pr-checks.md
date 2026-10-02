@@ -134,16 +134,13 @@ The check flags these obsolete paths:
   branch restores it, follow the [stale-branch update instructions][#10990].
 - `.lycheecache` as a **tracked** file - untracked when the committed link cache
   [became `link-cache.jsonc`][#11649]. If your branch still commits it, follow
-  the [update instructions][#NNNN].
+  the [update instructions][#11928].
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
 [#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
 [#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
 [#11649]: https://github.com/open-telemetry/opentelemetry.io/pull/11649
-
-<!-- TODO(NNNN): point #NNNN at the anchor issue (issues/NNNN), posted at merge time. -->
-
-[#NNNN]: https://github.com/open-telemetry/opentelemetry.io/pull/11649
+[#11928]: https://github.com/open-telemetry/opentelemetry.io/issues/11928
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
@@ -187,7 +184,7 @@ committed.
 
 If your branch predates `link-cache.jsonc`, first update it from `main`; for
 how, including a conflict on the cache file itself, see the [update
-instructions][#NNNN]. Then, either:
+instructions][#11928]. Then, either:
 
 - Comment [`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) on your PR
   — the OpenTelemetry bot updates the cache for you (on a branch that predates
