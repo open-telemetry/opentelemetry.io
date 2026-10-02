@@ -4,6 +4,7 @@ aliases: [refresh-refcache-pr-fix]
 description: >-
   otelbot の PR で失敗するリンクチェックを解決する方法。
 default_lang_commit: 116a47a010450c408dd4ec774cd849df4b1c2ddb
+drifted_from_default: true
 ---
 
 以下の手順に従って、[対象の otelbot PR](#target-prs) で失敗するリンクチェックを解決します。
