@@ -80,10 +80,12 @@ including how to seed an entry by hand, see [The owned cache][cache-format]; for
 what a run serves and re-checks, see [Operating model][].
 
 The cache is routinely updated by several [scheduled workflows](#workflows) as
-well as content PRs. Concurrent updates to distinct URLs merge cleanly under
-Git's normal 3-way merge; for the rare same-URL conflict, follow the conflict
-rules in [The owned cache][cache-format], then rerun the check to normalize the
-file.
+well as content PRs, so concurrent updates can conflict under Git's 3-way merge,
+distinct URLs included when both sides insert into the same sorted gap (a hunk
+can then split an entry). When the branch's cache changes are routine check
+results, take `main`'s whole file and rerun the check, which re-adds whatever
+the branch needs; otherwise follow the conflict rules in [The owned
+cache][cache-format], then rerun the check to normalize the file.
 
 If you add or change external links, run `npm run check:links` **before
 submitting your PR** — the site build dominates the run time — and commit the
@@ -109,8 +111,8 @@ URLs that are still used in the site.
 
 Some sites serve valid pages to browsers but turn away plain HTTP clients like
 Lychee (bot walls, crates.io's unconditional 404s, npmjs.com signin redirects).
-Since [failures are never cached](#link-cache), links to such sites would
-otherwise fail the link check on every run once their cache entries expire.
+Since a [cached failure is re-fetched on every run](#link-cache), links to such
+sites would otherwise fail the link check on every run.
 
 The **double-check** tooling re-verifies Lychee-reported failures through a
 browser-grade probe. URLs that the probe resolves are recorded in

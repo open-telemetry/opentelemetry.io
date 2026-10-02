@@ -7,10 +7,10 @@ argument-hint: '[optional-pr-number]'
 ---
 
 `link-cache.jsonc` is the committed link cache (policy: [Link cache][]). Its
-field-per-line entries merge cleanly for distinct URLs, so a conflict means both
-sides changed the same URL, or one side's entry landed next to the other's.
-Resolve per [The owned cache][cache-format] § Shape, then rerun the check to
-normalize the file.
+entries are sorted by URL, so a conflict means both sides changed the same URL,
+or each inserted a different URL into the same gap; in the latter case a hunk
+can split an entry across the markers. Resolve per [The owned
+cache][cache-format] § Shape, then rerun the check to normalize the file.
 
 ## Prerequisites
 
@@ -41,14 +41,15 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
 
 ## Resolve
 
-1. Resolve each conflict hunk per [The owned cache][cache-format] § Shape: keep
-   both entries for distinct URLs; choose one complete entry when both sides
-   changed the same URL (prefer `$BASE_BRANCH`'s, unless the branch's entry is a
-   deliberate seed); keep exactly one `"URL": {` line per URL.
+1. Resolve each conflict hunk per [The owned cache][cache-format] § Shape:
+   reassemble each entry whole, then keep both entries for distinct URLs; choose
+   one complete entry when both sides changed the same URL (prefer
+   `$BASE_BRANCH`'s, unless the branch's entry is a deliberate seed); keep
+   exactly one `"URL": {` line per URL.
 
    When the branch's cache changes are all routine check results (no seeds),
-   taking `$BASE_BRANCH`'s whole file is a valid shortcut — the next check run
-   re-adds anything the branch needs:
+   taking `$BASE_BRANCH`'s whole file is a valid shortcut, since the next check
+   run re-adds anything the branch needs:
 
    | Operation                                   | Command                                  |
    | ------------------------------------------- | ---------------------------------------- |
@@ -68,8 +69,8 @@ If `$ARGUMENTS` is a PR number, then check out the PR branch with:
 4. Run `npm run fix:link-cache` once, after the entire rebase/merge completes:
    it validates the resolved file (a duplicate entry or invalid JSONC fails the
    run) and normalizes it. Note: this runs a Hugo build (lean by default) and
-   link check — requires network, installed npm dependencies, and populated
-   submodules; can take several minutes.
+   link check, which needs network, installed npm dependencies, and populated
+   submodules, and can take several minutes.
 
 5. Commit the changes, if any:
 
