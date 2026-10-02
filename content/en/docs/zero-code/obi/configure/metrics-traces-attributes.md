@@ -486,7 +486,6 @@ For details on how to set up the `k8s-cache` service, see the
 or the
 [Helm chart guide](../setup/kubernetes-helm/#centralizing-kubernetes-metadata-with-k8s-cache).
 
-
 ### Service name template
 
 You can template service names using Go templates. This lets you create
