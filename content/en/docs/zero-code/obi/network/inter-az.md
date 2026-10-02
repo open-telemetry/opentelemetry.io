@@ -45,7 +45,7 @@ example, source/destination pods or nodes), adding zone attributes would impact
 the cardinality of the metric, even for traffic within the same availability
 zone.
 
-## Use the `obi.network.inter.zone` metric
+## Use the `obi.network.inter.zone.bytes` metric
 
 Using a separate metric for inter-zone traffic reduces the metric cardinality
 impact of collecting this data, because the `src.zone` and `dst.zone` attributes

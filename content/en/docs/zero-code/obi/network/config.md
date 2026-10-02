@@ -48,16 +48,16 @@ To enable network metrics, add one of the following `features` to the
 first-level
 [metrics section](../../configure/export-data/#metrics-export-features):
 
-- `network` enables the `obi_network_flow_bytes` metric: the number of bytes
+- `network` enables the `obi.network.flow.bytes` metric: the number of bytes
   between two endpoints of your cluster
-- `network_inter_zone` enables `obi_network_inter_zone_bytes` metric: the number
-  of bytes between different availability zones in your Cloud cluster
+- `network_inter_zone` enables the `obi.network.inter.zone.bytes` metric: the
+  number of bytes between different availability zones in your Cloud cluster
 
 > [!CAUTION]
 >
-> The `obi_network_inter_zone_bytes` specification is currently in experimental
-> and only available for Kubernetes cluster. The specification is not final and
-> future version of OBI may introduce breaking changes.
+> The `obi.network.inter.zone.bytes` specification is currently experimental and
+> only available for Kubernetes clusters. The specification is not final, and
+> future versions of OBI may introduce breaking changes.
 
 | YAML     | Environment variable       | Type   | Default         |
 | -------- | -------------------------- | ------ | --------------- |
@@ -165,7 +165,7 @@ If you set this property via environment variable each entry must be separated
 by a comma, for example:
 
 ```sh
-OTEL_BPF_NETWORK_EXCLUDE_INTERFACES=lo,/^veth/
+OTEL_EBPF_NETWORK_EXCLUDE_INTERFACES=lo,/^veth/
 ```
 
 | YAML        | Environment variable          | Type     | Default |
