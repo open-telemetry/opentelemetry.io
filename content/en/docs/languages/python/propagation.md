@@ -88,12 +88,14 @@ def hello():
     # Example: Log headers received in the request in API 2
     headers = dict(request.headers)
     print(f"Received headers: {headers}")
-    carrier ={'traceparent': headers['Traceparent']}
+    # Propagators look up lowercase header names, so normalize the keys and
+    # hand over the whole carrier. Picking out single headers would silently
+    # drop the incoming tracestate.
+    carrier = {key.lower(): value for key, value in headers.items()}
     ctx = TraceContextTextMapPropagator().extract(carrier=carrier)
     print(f"Received context: {ctx}")
 
-    b2 ={'baggage': headers['Baggage']}
-    ctx2 = W3CBaggagePropagator().extract(b2, context=ctx)
+    ctx2 = W3CBaggagePropagator().extract(carrier, context=ctx)
     print(f"Received context2: {ctx2}")
 
     # Start a new span
