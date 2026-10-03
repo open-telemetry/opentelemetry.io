@@ -62,7 +62,8 @@ Network metrics are labeled with the following attributes:
 
 | Attribute                                         | Description                                                                                                                                                                                                  |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `direction`                                       | `ingress` for incoming traffic, `egress` for outgoing traffic                                                                                                                                                |
+| `direction`                                       | Flow direction relative to the connection: `request`, `response`, or `unknown`                                                                                                                               |
+| `iface.direction`                                 | `ingress` or `egress` relative to the observed network interface                                                                                                                                             |
 | `dst.address`                                     | Destination IP address (remote for egress, local for ingress)                                                                                                                                                |
 | `dst.cidr`                                        | Destination CIDR (if configured)                                                                                                                                                                             |
 | `dst.name`                                        | Destination service name (resolved from service discovery)                                                                                                                                                   |
@@ -103,35 +104,30 @@ Network metrics are labeled with the following attributes:
 For high-cardinality reductions, the network metrics are pre-aggregated at the
 process level to reduce the number of metrics sent to the metrics backend.
 
-By default, all metrics are aggregated by the following attributes:
-
-- `direction`
-- `transport`
-- `src.address`
-- `dst.address`
-- `src.port`
-- `dst.port`
-
-You can specify which attributes are allowed in the OBI configuration, to
-aggregate the metric by them.
+The metric's selected attributes determine the aggregation keys. OBI leaves many
+high-cardinality attributes, including endpoint addresses and ports, out by
+default. See the [exported metrics](../metrics/) page for the default selection.
+Configure additional keys under `attributes.select`.
 
 For example, to aggregate network metrics by source and destination Kubernetes
 owner (instead of the default individual pod names), you can use the following
 configuration:
 
 ```yaml
-network:
-  allowed_attributes:
-    - k8s.src.owner.name
-    - k8s.dst.owner.name
-    - k8s.src.owner.type
-    - k8s.dst.owner.type
+attributes:
+  select:
+    obi_network_flow_bytes:
+      include:
+        - k8s.src.owner.name
+        - k8s.dst.owner.name
+        - k8s.src.owner.type
+        - k8s.dst.owner.type
 ```
 
 Then, the equivalent Prometheus metric would be:
 
 ```text
-obi_network_flow_bytes:
+obi_network_flow_bytes_total:
   k8s_src_owner_name="frontend"
   k8s_src_owner_type="deployment"
   k8s_dst_owner_name="backend"
@@ -166,7 +162,7 @@ network:
 Then, the equivalent Prometheus metric would be:
 
 ```text
-obi_network_flow_bytes:
+obi_network_flow_bytes_total:
   src_cidr="cluster-internal"
   dst_cidr="private"
 ```

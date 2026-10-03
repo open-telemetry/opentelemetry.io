@@ -3,7 +3,7 @@ title: OBI security, permissions, and capabilities
 linkTitle: Security
 description: Privileges and capabilities required by OBI
 weight: 22
-cSpell:ignore: BPF_PROG_TYPE_KPROBE CAP_PERFMON eksctl
+cSpell:ignore: BPF_PROG_TYPE_KPROBE CAP_PERFMON eksctl kprobes tracefs uprobes
 ---
 
 OBI needs access to various Linux interfaces to instrument applications, such as
@@ -74,7 +74,7 @@ OBI requires the following list of capabilities for its functionality:
 | `CAP_CHECKPOINT_RESTORE` | Access to symlinks in the `/proc` filesystem, used by OBI to obtain various process and system information.                                                                                                                       |
 | `CAP_SYS_PTRACE`         | Access to `/proc/pid/exe` and executable modules, used by OBI to scan executable symbols and instrument different parts of a program.                                                                                             |
 | `CAP_SYS_RESOURCE`       | Increase the amount of locked memory available, **kernels < 5.11** only                                                                                                                                                           |
-| `CAP_SYS_ADMIN`          | Library-level Go trace-context propagation via `bpf_probe_write_user()` and access to BTF data by the BPF metrics exporter                                                                                                        |
+| `CAP_SYS_ADMIN`          | Features that use `bpf_probe_write_user()`, including library-level Go trace-context propagation, and access to BTF data by the BPF metrics exporter. Most probe attachment no longer requires it.                                |
 
 ## Required host mount for context propagation
 
@@ -115,18 +115,19 @@ and more comprehensively under
 Some Linux distributions define higher levels for `kernel.perf_event_paranoid`,
 for example Debian based distributions
 [also use](https://lwn.net/Articles/696216/) `kernel.perf_event_paranoid=3`,
-which disallows access to `perf_event_open()` without `CAP_SYS_ADMIN`. If you
-are running on a distribution with `kernel.perf_event_paranoid` setting higher
-than `2`, you can either modify your configuration to lower it to `2` or use
-`CAP_SYS_ADMIN` instead of `CAP_PERFMON`.
+which can block `perf_event_open()` without `CAP_SYS_ADMIN`. Starting with
+v0.14.0, OBI falls back to tracefs when PMU access is blocked, so most uprobes
+and kprobes can still attach without `CAP_SYS_ADMIN`. Features that write to
+application memory with `bpf_probe_write_user()` still require `CAP_SYS_ADMIN`.
+If tracefs is unavailable, adjust the host security policy or grant the
+capability required for the feature you use.
 
 ### Deploy on AKS/EKS
 
-Both AKS and EKS environments come with kernels that by default set
-`sys.perf_event_paranoid > 1`, which means OBI needs `CAP_SYS_ADMIN` to work,
-refer to the section on how to
-[monitor task performance](#performance-monitoring-tasks) for further
-information.
+AKS and EKS kernels may set `kernel.perf_event_paranoid > 1`. OBI v0.14.0 can
+fall back to tracefs for most probe attachment in this case. For features that
+need PMU access or `bpf_probe_write_user()`, consult
+[performance monitoring tasks](#performance-monitoring-tasks).
 
 If you prefer to use just `CAP_PERFMON`, you can configure your node to set
 `kernel.perf_event_paranoid = 1`. We've provided a few examples of how to do
@@ -213,7 +214,7 @@ Set the required capabilities and start OBI:
 
 ```shell
 sudo setcap cap_bpf,cap_net_raw+ep ./bin/obi
-OTEL_EBPF_NETWORK_METRICS=1 OTEL_EBPF_NETWORK_PRINT_FLOWS=1 bin/obi
+OTEL_EBPF_METRICS_FEATURES=network OTEL_EBPF_NETWORK_PRINT_FLOWS=1 bin/obi
 ```
 
 ### Network metrics via traffic control
@@ -228,7 +229,7 @@ Set the required capabilities and start OBI:
 
 ```shell
 sudo setcap cap_bpf,cap_net_admin,cap_perfmon+ep ./bin/obi
-OTEL_EBPF_NETWORK_METRICS=1 OTEL_EBPF_NETWORK_PRINT_FLOWS=1 OTEL_EBPF_NETWORK_SOURCE=tc bin/obi
+OTEL_EBPF_METRICS_FEATURES=network OTEL_EBPF_NETWORK_PRINT_FLOWS=1 OTEL_EBPF_NETWORK_SOURCE=tc bin/obi
 ```
 
 ### Application observability
@@ -245,7 +246,7 @@ Required capabilities:
 Set the required capabilities and start OBI:
 
 ```shell
-sudo setcap cap_bpf,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace+ep ./bin/obi
+sudo setcap cap_bpf,cap_checkpoint_restore,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace+ep ./bin/obi
 OTEL_EBPF_OPEN_PORT=8080 OTEL_EBPF_TRACE_PRINTER=text bin/obi
 ```
 
@@ -264,8 +265,8 @@ Required capabilities:
 Set the required capabilities and start OBI:
 
 ```shell
-sudo setcap cap_bpf,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace,cap_net_admin+ep ./bin/obi
-OTEL_EBPF_CONTEXT_PROPAGATION=all OTEL_EBPF_OPEN_PORT=8080 OTEL_EBPF_TRACE_PRINTER=text bin/obi
+sudo setcap cap_bpf,cap_checkpoint_restore,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace,cap_net_admin+ep ./bin/obi
+OTEL_EBPF_BPF_CONTEXT_PROPAGATION=all OTEL_EBPF_OPEN_PORT=8080 OTEL_EBPF_TRACE_PRINTER=text bin/obi
 ```
 
 ## Internal eBPF tracer capability requirement reference

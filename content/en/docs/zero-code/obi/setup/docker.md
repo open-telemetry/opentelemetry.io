@@ -26,9 +26,10 @@ otel/ebpf-instrument:main
 
 The OBI container must be configured in following way:
 
-- run as a **privileged** container, or as a container with the `SYS_ADMIN`
-  capability (but this last option might not work in some container
-  environments)
+- Run as a **privileged** container for the example below, or grant the
+  [capabilities required by the enabled features](../../security/). Most probes
+  in v0.14.0 do not require `SYS_ADMIN`; Go library-level context propagation
+  and other user-memory-write features still do.
 - Use the `host` PID namespace to allow accessing to the processes in other
   containers.
 
@@ -44,25 +45,13 @@ You can verify the signature of the container image using the following
 commands:
 
 ```sh
-export VERSION=v0.12.1
+export VERSION=v0.14.0
 
 # Verify a release image from Docker Hub
 cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' otel/ebpf-instrument:${VERSION}
 
 # Verify the same release from GHCR
 cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/ebpf-instrument:${VERSION}
-```
-
-Here is an example output:
-
-```log
-Verification for index.docker.io/otel/ebpf-instrument:main --
-The following checks were performed on each of these signatures:
-  - The cosign claims were validated
-  - Existence of the claims in the transparency log was verified offline
-  - The code-signing certificate was verified using trusted certificate authority certificates
-
-[{"critical":{"identity":{"docker-reference":"index.docker.io/otel/ebpf-instrument:main"},"image":{"docker-manifest-digest":"sha256:55426a2bbb8003573a961697888aa770a1f5f67fcda2276dc2187d1faf7181fe"},"type":"https://sigstore.dev/cosign/sign/v1"},"optional":{}}]
 ```
 
 Successful verification reports that the Cosign claims were validated and shows
@@ -80,7 +69,7 @@ don't have one, you can use this
 [simple blog engine service written in Go](https://macias.info):
 
 ```sh
-export VERSION=v0.12.1
+export VERSION=v0.14.0
 docker run -p 18443:8443 --name goblog mariomac/goblog:dev
 ```
 
@@ -98,8 +87,8 @@ export OTEL_EBPF_OPEN_PORT=8443
 
 OBI needs to be run with the following settings:
 
-- in `--privileged` mode, or with `SYS_ADMIN` capability (despite `SYS_ADMIN`
-  might not be enough privileges in some container environments)
+- in `--privileged` mode for this example, or with the capabilities required by
+  the enabled features
 - the host PID namespace, with the option `--pid=host`.
 
 ```sh
@@ -149,7 +138,7 @@ services:
       - '18443:8443'
 
   autoinstrumenter:
-    image: otel/ebpf-instrument:main
+    image: otel/ebpf-instrument:v0.14.0
     pid: 'host'
     privileged: true
     environment:
