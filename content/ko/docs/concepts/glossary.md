@@ -385,7 +385,7 @@ availability) 및 확장성(scalability)을 위해 하나의 [서비스](#servic
 ### 명세 {#specification}
 
 모든 구현체가 따라야 하는 언어 간 공통 요구사항과 기대사항을 설명한다.
-[명세][Specification]을 참고한다.
+[명세][Specification]를 참고한다.
 
 ### 상태 {#status}
 
