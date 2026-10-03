@@ -2,6 +2,7 @@
 title: 手動スパン属性
 aliases: [manual_span_attributes, ../manual-span-attributes]
 default_lang_commit: 3560c03d5cbe845c6189e6e30441434c7760eca0
+drifted_from_default: true
 ---
 
 このページでは、デモ全体で使用される手動スパン属性を一覧にしています。
