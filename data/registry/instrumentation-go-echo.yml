@@ -5,12 +5,20 @@ language: go
 tags:
   - go
   - instrumentation
+  - echo
 license: MIT
-description: Go contrib plugin for the labstack/echo package.
+description:
+  OpenTelemetry middleware (traces and metrics) for the Echo web framework,
+  maintained by the Echo authors. Use `github.com/labstack/echo-otel/v5` for
+  Echo v5 and `github.com/labstack/echo-otel/v4` for Echo v4.
 authors:
   - name: LabStack
     url: https://github.com/labstack
 urls:
-  repo: https://github.com/labstack/echo-opentelemetry
+  repo: https://github.com/labstack/echo-otel
 createdAt: 2020-06-08
-isFirstParty: false
+isFirstParty: true
+package:
+  registry: go
+  name: github.com/labstack/echo-otel/v5
+  version: v5.0.0
