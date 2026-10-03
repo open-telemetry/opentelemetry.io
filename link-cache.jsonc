@@ -23229,6 +23229,11 @@
     "when": "2026-09-14T16:30:12Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.61.0/oteps/entities/0264-resource-and-entities.md": {
+    "result": 200,
+    "when": "2026-10-02T19:32:35Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.61.0/oteps/logs/0091-logs-vocabulary.md": {
     "result": 200,
     "when": "2026-09-14T16:30:13Z",
