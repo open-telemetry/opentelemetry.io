@@ -1,0 +1,15 @@
+{{- $description := .Description | plainify | strings.TrimSpace | replaceRE `\s+` " " -}}
+{{- printf "# %s\n" (.Site.Title | strings.TrimSpace) -}}
+{{- with $description -}}
+  {{- printf "\n> %s\n" . -}}
+{{- end -}}
+{{- printf "\n## Site index\n\n" -}}
+{{- partial "llms/link.txt" (dict
+  "page" .
+  "format" (.OutputFormats.Get "markdown")
+  "title" "Home page"
+) -}}
+{{- range .Pages.ByWeight -}}
+  {{- $format := cond .IsSection (.OutputFormats.Get "LLMS") (.OutputFormats.Get "markdown") -}}
+  {{- partial "llms/link.txt" (dict "page" . "format" $format) -}}
+{{- end -}}

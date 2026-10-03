@@ -60,6 +60,10 @@ pl:
     description: Strona projektu OpenTelemetry
 ```
 
+Add `LANG_ID` to the `locales` list in `tests/public/llms-txt.test.mjs`, keeping
+the list alphabetized. The built-site test checks that each non-English locale
+publishes its own `llms.txt` and is absent from the English root index.
+
 ### Step 1b. Translation File
 
 Within the `i18n` directory, create a new file named `LANG_ID.yaml` (for
@@ -341,7 +345,8 @@ Update [`projects/localization.md`][] with the new locale's information:
 Use this checklist to confirm that every setup step is complete before
 requesting a review:
 
-- [ ] **Step 1** — Language entry added to `config/_default/hugo.yaml`
+- [ ] **Step 1** — Language entry added to `config/_default/hugo.yaml` and
+      `tests/public/llms-txt.test.mjs` updated
 - [ ] **Step 2** — Content mounts added to
       `config/_default/module-template.yaml`
 - [ ] **Step 3** — cSpell configured: dictionary installed (or locale added to
@@ -365,6 +370,8 @@ correct:
 
 - **`npm run build`** — confirms Hugo recognizes the new language without
   errors.
+- **`npm run test:public`** — after the build, confirms the new locale publishes
+  a `llms.txt` index and remains separate from the English root index.
 - **`npm run check:spelling`** — confirms the cspell configuration is valid and
   that no errors are introduced by the new dictionary entries.
 - **`npm run check:codeowners`** — confirms the CODEOWNERS locale section

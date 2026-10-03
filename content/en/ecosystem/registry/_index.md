@@ -15,7 +15,7 @@ weight: 20
 # =============================================================================
 
 aliases: [/registry/*]
-outputs: [HTML, markdown, JSON]
+outputs: [HTML, markdown, JSON, LLMS]
 
 # TODO(chalin): move the following comment into the site docs, then add a link
 # to it here. Old /ecosystem/registry/<component> URLs are handled by the
