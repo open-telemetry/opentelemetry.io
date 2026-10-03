@@ -4319,6 +4319,11 @@
     "when": "2026-09-02T05:43:22Z",
     "via": "lychee",
   },
+  "https://github.com/123liuziming": {
+    "result": 200,
+    "when": "2026-10-02T21:00:25Z",
+    "via": "lychee",
+  },
   "https://github.com/AaronRM": {
     "result": 200,
     "when": "2026-09-08T05:43:21Z",
@@ -5462,6 +5467,11 @@
   "https://github.com/alibaba/druid": {
     "result": 200,
     "when": "2026-10-02T19:05:04Z",
+    "via": "lychee",
+  },
+  "https://github.com/alibaba/loongsuite-python": {
+    "result": 200,
+    "when": "2026-10-02T21:00:25Z",
     "via": "lychee",
   },
   "https://github.com/alibaba/opentelemetry-go-auto-instrumentation": {
@@ -8309,6 +8319,11 @@
     "when": "2026-10-02T19:05:18Z",
     "via": "lychee",
   },
+  "https://github.com/langchain-ai/langchain": {
+    "result": 200,
+    "when": "2026-10-02T21:00:25Z",
+    "via": "lychee",
+  },
   "https://github.com/laurit": {
     "result": 200,
     "when": "2026-10-02T19:05:18Z",
@@ -9232,6 +9247,11 @@
   "https://github.com/open-telemetry/community/blob/898a6d5b4030a806883717dff3382c06d3dbd324/projects/packaging.md": {
     "result": 200,
     "when": "2026-09-29T05:45:40Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/community/blob/8b6c5060617ced1caf4c39ff5b7318aa2e9c7569/projects/gen-ai.md": {
+    "result": 200,
+    "when": "2026-10-02T21:00:26Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/community/blob/96374af6e5b681664d80402bdc08d9a2d439a966/governance-charter.md": {
@@ -21559,6 +21579,16 @@
     "when": "2026-09-28T05:47:29Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/v0.65b0/util/opentelemetry-util-genai": {
+    "result": 200,
+    "when": "2026-10-02T21:00:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-python-genai/issues/185": {
+    "result": 200,
+    "when": "2026-10-02T21:00:25Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-python-genai/tree/main/instrumentation/opentelemetry-instrumentation-genai-anthropic": {
     "result": 200,
     "when": "2026-09-24T05:43:16Z",
@@ -24892,6 +24922,11 @@
   "https://github.com/open-telemetry/weaver/tree/4da6fa62e174e1f0df1a990234bd32f5018cb23a/crates/weaver_live_check?from_branch=main#readme": {
     "result": 200,
     "when": "2026-09-08T05:43:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/weaver/tree/v0.25.1/crates/weaver_live_check": {
+    "result": 200,
+    "when": "2026-10-02T21:00:25Z",
     "via": "lychee",
   },
   "https://github.com/openai/openai-java": {
