@@ -36,6 +36,7 @@ elimini
 emiți
 emojiilor
 enumerează
+eșantionare
 explorezi
 exportatorilor
 formatorul
@@ -91,7 +92,7 @@ semantică
 semnalizate
 semneazǎ
 servii
-setează
+seteaz
 sincronizate
 sincronizezi
 soliciți
@@ -114,3 +115,9 @@ urmǎrirea
 valideze
 verificatoarele
 verificatorul
+eșantionată
+neeșantionată
+eșantionat
+eșantionator
+neeșantionat
+eșantionează
