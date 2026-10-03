@@ -2,7 +2,7 @@
 title: Recommendation Service
 linkTitle: Recommendation
 aliases: [recommendationservice]
-cSpell:ignore: cpython instrumentor NOTSET
+cSpell:ignore: Logback
 ---
 
 This service is responsible to get a list of recommended products for the user
@@ -10,130 +10,133 @@ based on existing product IDs the user is browsing.
 
 [Recommendation service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendation/)
 
-## Auto-instrumentation
+## Instrumentation
 
-This Python based service, makes use of the OpenTelemetry auto-instrumentor for
-Python, accomplished by leveraging the `opentelemetry-instrument` Python wrapper
-to run the scripts. This can be done in the `ENTRYPOINT` command for the
-service's `Dockerfile`.
+This service is a Spring Boot 4 application that uses Spring gRPC for
+communication. Rather than the Java agent, it uses the
+[OpenTelemetry Spring Boot starter](/docs/zero-code/java/spring-boot-starter/),
+which configures the OpenTelemetry SDK and makes it available as an
+`OpenTelemetry` bean. Export endpoints, resource attributes, and the service
+name come from the standard `OTEL_*` environment variables.
 
-```dockerfile
-ENTRYPOINT [ "opentelemetry-instrument", "python", "recommendation_server.py" ]
+```groovy
+implementation platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:${opentelemetryInstrumentationVersion}")
+implementation "io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter"
 ```
 
 ## Traces
 
-### Initializing Tracing
+### gRPC spans
 
-The OpenTelemetry SDK is initialized in the `__main__` code block. This code
-will create a tracer provider, and establish a Span Processor to use. Export
-endpoints, resource attributes, and service name are automatically set by the
-OpenTelemetry auto instrumentor based on environment variables.
+The starter does not instrument gRPC, so the service adds the
+[gRPC instrumentation library](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/grpc-1.6/library/README.md)
+and registers its interceptors as Spring gRPC global interceptors. This creates
+the `ListRecommendations` server span and the `ListProducts` client span, and
+propagates the trace context to the product catalog service.
 
-```python
-tracer = trace.get_tracer_provider().get_tracer("recommendation")
+```java
+@Bean
+GrpcTelemetry grpcTelemetry(OpenTelemetry openTelemetry) {
+  return GrpcTelemetry.create(openTelemetry);
+}
+
+@Bean
+@GlobalServerInterceptor
+ServerInterceptor grpcTelemetryServerInterceptor(GrpcTelemetry grpcTelemetry) {
+  return grpcTelemetry.createServerInterceptor();
+}
+
+@Bean
+@GlobalClientInterceptor
+ClientInterceptor grpcTelemetryClientInterceptor(GrpcTelemetry grpcTelemetry) {
+  return grpcTelemetry.createClientInterceptor();
+}
 ```
 
-### Add attributes to auto-instrumented spans
+### Add attributes to the current span
 
-Within the execution of auto-instrumented code you can get current span from
-context.
+Inside the gRPC handler, the current span is the server span created by the
+interceptor. In `listRecommendations` an attribute is added to it.
 
-```python
-span = trace.get_current_span()
-```
-
-Adding attributes to a span is accomplished using `set_attribute` on the span
-object. In the `ListRecommendations` function an attribute is added to the span.
-
-```python
-span.set_attribute("app.products_recommended.count", len(prod_list))
+```java
+Span.current().setAttribute("demo.product.recommended.count", productIds.size());
 ```
 
 ### Create new spans
 
-New spans can be created and placed into active context using
-`start_as_current_span` from an OpenTelemetry Tracer object. When used in
-conjunction with a `with` block, the span will automatically be ended when the
-block ends execution. This is done in the `get_product_list` function.
+The service gets a `Tracer` from the `OpenTelemetry` bean. The `getProductList`
+method creates the `get_product_list` span with `spanBuilder`, puts it into
+context with `makeCurrent`, and ends it in a `finally` block. An exception is
+recorded on the span and sets its status to error. The recommended products are
+recorded as a string array attribute, `demo.product.filtered.list`.
 
-```python
-with tracer.start_as_current_span("get_product_list") as span:
+```java
+Tracer tracer = openTelemetry.getTracer("recommendation");
+
+Span span = tracer.spanBuilder("get_product_list").startSpan();
+try (Scope ignored = span.makeCurrent()) {
+  ...
+  span.setAttribute(FILTERED_LIST, recommended);
+} catch (RuntimeException e) {
+  span.recordException(e);
+  span.setStatus(StatusCode.ERROR);
+  throw e;
+} finally {
+  span.end();
+}
 ```
 
 ## Metrics
 
-### Initializing Metrics
+### Initializing metrics
 
-The OpenTelemetry SDK is initialized in the `__main__` code block. This code
-will create a meter provider. Export endpoints, resource attributes, and service
-name are automatically set by the OpenTelemetry auto instrumentor based on
-environment variables.
+The service gets a `Meter` from the same `OpenTelemetry` bean and builds its
+counter.
 
-```python
-meter = metrics.get_meter_provider().get_meter("recommendation")
+```java
+LongCounter recommendations =
+    openTelemetry
+        .getMeter("recommendation")
+        .counterBuilder("demo.recommendation.requests")
+        .setDescription("Counts the total number of given recommendations")
+        .setUnit("{recommendation}")
+        .build();
 ```
 
-### Custom metrics
+Every request adds the number of products it recommended.
 
-The following custom metrics are currently available:
+```java
+recommendations.add(productIds.size(), CATALOG_RECOMMENDATION);
+```
 
-- `app_recommendations_counter`: Cumulative count of # recommended products per
-  service call
+### Current metrics produced
 
-### Auto-instrumented metrics
+Note that all the metric names below appear in Prometheus/Grafana with `.`
+characters transformed to `_`.
 
-The following metrics are available through auto-instrumentation, courtesy of
-the `opentelemetry-instrumentation-system-metrics`, which is installed as part
-of `opentelemetry-bootstrap` on building the recommendation service Docker
-image:
+#### Custom metrics
 
-- `runtime.cpython.cpu_time`
-- `runtime.cpython.memory`
-- `runtime.cpython.gc_count`
+- `demo.recommendation.requests`: A counter of recommended products, with the
+  `recommendation.type` attribute set to `catalog`.
+
+#### Auto-instrumented metrics
+
+- [Runtime metrics for the JVM](/docs/specs/semconv/runtime/jvm-metrics/), from
+  the starter. They show the memory growth when the `recommendationCacheFailure`
+  feature flag is on.
+- [Latency metrics for RPCs](/docs/specs/semconv/rpc/rpc-metrics/), from the
+  gRPC instrumentation library, for both the server and the client calls.
+- [SDK self-observability metrics](/docs/specs/semconv/otel/sdk-metrics/),
+  because the service sets `OTEL_EXPERIMENTAL_SDK_TELEMETRY_VERSION=latest`. See
+  the [Self-Observability Dashboard](/docs/demo/self-observability-dashboard/).
 
 ## Logs
 
-### Initializing logs
+The service logs through SLF4J and Logback, the Spring Boot default. The starter
+installs the OpenTelemetry Logback appender itself, so the service needs no
+logging configuration. Log records are exported over OTLP with the trace and
+span IDs of the active span.
 
-The OpenTelemetry SDK is initialized in the `__main__` code block. The following
-code creates a logger provider with a batch processor, an OTLP log exporter, and
-a logging handler. Finally, it creates a logger for use throughout the
-application.
-
-```python
-logger_provider = LoggerProvider(
-    resource=Resource.create(
-        {
-            'service.name': service_name,
-        }
-    ),
-)
-set_logger_provider(logger_provider)
-log_exporter = OTLPLogExporter(insecure=True)
-logger_provider.add_log_record_processor(BatchLogRecordProcessor(log_exporter))
-handler = LoggingHandler(level=logging.NOTSET, logger_provider=logger_provider)
-
-logger = logging.getLogger('main')
-logger.addHandler(handler)
+```java
+logger.info("Receive ListRecommendations for product ids:{}", productIds);
 ```
-
-### Create log records
-
-Create logs using the logger. Examples can be found in `ListRecommendations` and
-`get_product_list` functions.
-
-```python
-logger.info(f"Receive ListRecommendations for product ids:{prod_list}")
-```
-
-As you can see, after the initialization, log records can be created in the same
-way as in standard Python. OpenTelemetry libraries automatically add a trace ID
-and span ID for each log record and, in this way, enable correlating logs and
-traces.
-
-### Notes
-
-Logs for Python are still experimental, and some changes can be expected. The
-implementation in this service follows the
-[Python log example](https://github.com/open-telemetry/opentelemetry-python/blob/stable/docs/examples/logs/example.py).
