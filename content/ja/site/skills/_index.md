@@ -4,6 +4,7 @@ linkTitle: スキル
 description: サイトのメンテナンス時にエージェントとメンテナーが使用するスキル。
 weight: 22
 default_lang_commit: 116a47a010450c408dd4ec774cd849df4b1c2ddb
+drifted_from_default: true
 cSpell:ignore: agentskills
 ---
 

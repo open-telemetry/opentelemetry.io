@@ -4,6 +4,7 @@ description: >-
   サイトの npm 依存関係制御の背景にある脅威モデルと根拠
 weight: 20
 default_lang_commit: 7fdabd2ed2c394ad4cbff90314c2f12eea6db1d9
+drifted_from_default: true
 ---
 
 制御の詳細と日常の手順については、[Dependency management](../../build/dependencies/) を参照してください。

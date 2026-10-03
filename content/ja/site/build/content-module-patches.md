@@ -4,6 +4,7 @@ description: >-
   リリース間でコンテンツモジュールの一時的なパッチを作成・管理する方法。
 weight: 15
 default_lang_commit: 74d8cb2aaefe493295c6c49e2e8ef39801847880
+drifted_from_default: true
 ---
 
 このサイトで公開されている仕様ページ（OTel 仕様、OTLP、セマンティック規約、OpAMP）は、[`content-modules/`][content-modules] 配下の git サブモジュールとして管理されている上流リポジトリから取得されます。
