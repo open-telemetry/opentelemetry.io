@@ -1,0 +1,24 @@
+title: Apica AI & LLM Observability
+registryType: application integration
+language: all
+tags:
+  - ai
+  - agents
+  - genai
+  - llm
+  - tracing
+  - telemetry
+license: proprietary
+description:
+  Apica AI & LLM Observability natively ingests OpenTelemetry GenAI semantic
+  conventions (OTLP/HTTP, OTLP/gRPC) to deliver end-to-end multi-agent tracing,
+  real-time token cost attribution, latency monitoring, and in-flight telemetry
+  pipeline controls.
+authors:
+  - name: Apica Inc.
+    url: https://github.com/apica
+urls:
+  website: https://www.apica.io/ai-llm-observability/
+  docs: https://docs.apica.io
+createdAt: '2026-09-18'
+isNative: true
