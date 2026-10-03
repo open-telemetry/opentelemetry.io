@@ -1,0 +1,12 @@
+title: OpenTelemetry Python SDK
+registryType: sdk
+language: python
+tags:
+  - python
+license: Apache 2.0
+description: The OpenTelemetry SDK for Python.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-sdk
+createdAt: 2020-02-04

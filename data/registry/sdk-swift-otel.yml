@@ -1,0 +1,15 @@
+title: OpenTelemetry-Swift-Sdk
+registryType: sdk
+language: swift
+tags:
+  - swift
+  - ios
+  - macOS
+  - tvOS
+license: Apache 2.0
+description: The OpenTelemetry SDK for Swift.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-swift-core/tree/main/Sources/OpenTelemetrySdk
+createdAt: 2021-06-22

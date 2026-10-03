@@ -1,0 +1,13 @@
+title: JavaScript SDK Trace Node
+registryType: sdk
+language: js
+tags:
+  - javascript
+  - node.js
+license: Apache 2.0
+description: The OpenTelemetry SDK for JavaScript
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-node
+createdAt: 2020-02-04

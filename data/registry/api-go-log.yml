@@ -1,0 +1,12 @@
+title: Log API
+registryType: core
+language: go
+tags:
+  - go
+license: Apache 2.0
+description: The OpenTelemetry Log API for Go.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-go/tree/main/log
+createdAt: 2020-02-04
