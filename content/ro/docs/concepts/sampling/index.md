@@ -17,20 +17,20 @@ eșantionare adecvată.
 
 ![Ilustrația arată că nu toate datele au nevoie să fie urmărite și că un eșantion din date este suficient.](traces-venn-diagram.svg)
 
-## Terminology
+## Terminologie
 
-It's important to use consistent terminology when discussing sampling. A trace
-or span is considered "sampled" or "not sampled":
+Este important să folosim terminologia în mod consecvent când discutăm despre eșantionare. O urmă sau un interval
+sunt considerate "eșantionate" sau "neeșantionate".
 
-- **Sampled**: A trace or span is processed and exported. Because it is chosen
-  by the sampler as a representative of the population, it is considered
-  "sampled".
-- **Not sampled**: A trace or span is not processed or exported. Because it is
-  not chosen by the sampler, it is considered "not sampled".
+- **Eșantionat**: O urmă sau interval este procesat și exportat. Pentru că este ales
+  de către eșantionator ca un reprezentant la populării, este considerat
+  "eșantionat".
+- **Neeșantionat**: O urmă sau interval nu este procesat și exportat. Pentru că nu este
+  ales de către eșantionator, este considerat "neeșantionat".
 
-Sometimes, the definitions of these terms get mixed up. You might find someone
-states that they are "sampling out data" or that data not processed or exported
-is considered "sampled". These are incorrect statements.
+Uneori, definițiile acestor termeni sunt încurcate. Poți găsi că cineva afirmă că
+"eșantionează date" sau că date care nu sunt procesate sau exportate sunt considerate
+"eșantionate". Acestea sunt afirmații incorecte.
 
 ## Why sampling?
 
