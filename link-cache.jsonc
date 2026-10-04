@@ -31794,6 +31794,11 @@
     "when": "2026-09-30T05:46:19Z",
     "via": "lychee",
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.32.0-alpha/opentelemetry-instrumentation-bom-alpha-2.32.0-alpha.pom": {
+    "result": 200,
+    "when": "2026-10-03T20:02:27Z",
+    "via": "lychee",
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.30.0/opentelemetry-instrumentation-bom-2.30.0.pom": {
     "result": 200,
     "when": "2026-09-03T05:55:12Z",
@@ -31802,6 +31807,11 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.31.1/opentelemetry-instrumentation-bom-2.31.1.pom": {
     "result": 200,
     "when": "2026-09-30T05:46:19Z",
+    "via": "lychee",
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.32.0/opentelemetry-instrumentation-bom-2.32.0.pom": {
+    "result": 200,
+    "when": "2026-10-03T20:02:27Z",
     "via": "lychee",
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.66.0-alpha/opentelemetry-bom-alpha-1.66.0-alpha.pom": {

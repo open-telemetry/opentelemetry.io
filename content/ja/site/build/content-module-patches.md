@@ -3,8 +3,7 @@ title: コンテンツモジュールのパッチ
 description: >-
   リリース間でコンテンツモジュールの一時的なパッチを作成・管理する方法。
 weight: 15
-default_lang_commit: 74d8cb2aaefe493295c6c49e2e8ef39801847880
-drifted_from_default: true
+default_lang_commit: 49a4a61076ca6c7369666e858be884cd157f7d3c
 ---
 
 このサイトで公開されている仕様ページ（OTel 仕様、OTLP、セマンティック規約、OpAMP）は、[`content-modules/`][content-modules] 配下の git サブモジュールとして管理されている上流リポジトリから取得されます。
@@ -117,10 +116,10 @@ npm test                # リンクチェックを含むフルテストの実行
 
 ### 3. コミットとプッシュ {#3-commit-and-push}
 
-リンクキャッシュ PR（例: `otelbot/refcache-refresh` ブランチ）の修正中にパッチを作成した場合は、`patches.yml` への変更と更新された `.lycheecache` をまとめてコミットし、lease 付きで force-push します。
+リンクキャッシュ PR（例: `otelbot/refcache-refresh` ブランチ）の修正中にパッチを作成した場合は、`patches.yml` への変更と更新された `link-cache.jsonc` をまとめてコミットし、lease 付きで force-push します。
 
 ```sh
-git add scripts/content-modules/adjust-pages/patches.yml .lycheecache
+git add scripts/content-modules/adjust-pages/patches.yml link-cache.jsonc
 git commit -m "Patch content modules and refresh the link cache"
 git push --force-with-lease
 ```
