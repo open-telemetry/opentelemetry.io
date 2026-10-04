@@ -1,8 +1,7 @@
 ---
 title: 内部テレメトリー
 weight: 25
-default_lang_commit: 5085f8dbc5095f2fdde7de5aa3a37f49c0cf3edc
-drifted_from_default: true
+default_lang_commit: f1a074a1d8dc390c2abcac98ad671f38d0c73d88
 cSpell:ignore: alloc batchprocessor journalctl lowmemory otelconf otelgrpc
 ---
 
@@ -438,6 +437,8 @@ service:
 | `http.server.request.body.size`                       | HTTP サーバーリクエストボディーのサイズを測定します。     | Counter   |
 | `http.server.request.duration`                        | HTTP サーバーリクエストの継続時間を測定します。           | Histogram |
 | `http.server.response.body.size`                      | HTTP サーバーレスポンスボディーのサイズを測定します。     | Counter   |
+| `otelcol_exporter_enqueue_size`                       | 送信キューに追加されたリクエスト内のユニット数。          | Histogram |
+| `otelcol_exporter_enqueue_size_bytes`                 | 送信キューに追加されたリクエスト内のバイト数。            | Histogram |
 | `otelcol_processor_batch_batch_`<br>`send_size_bytes` | 送信されたバッチ内のバイト数。                            | Histogram |
 | `rpc.client.call.duration`                            | アウトバウンド RPC の継続時間を測定します。               | Histogram |
 | `rpc.server.call.duration`                            | インバウンド RPC の継続時間を測定します。                 | Histogram |
