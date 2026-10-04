@@ -3,8 +3,7 @@ title: エージェントとメンテナー向けのスキル
 linkTitle: スキル
 description: サイトのメンテナンス時にエージェントとメンテナーが使用するスキル。
 weight: 22
-default_lang_commit: 116a47a010450c408dd4ec774cd849df4b1c2ddb
-drifted_from_default: true
+default_lang_commit: 49a4a61076ca6c7369666e858be884cd157f7d3c
 cSpell:ignore: agentskills
 ---
 
@@ -33,7 +32,7 @@ cSpell:ignore: agentskills
 - [`/refresh-link-cache-pr-fix`][refresh-link-cache-pr-fix]:
   otelbot PR 上の非 2XX URL を取得、レビュー、修正を試みます（デフォルトではリンクチェックが失敗しているすべてのオープンな `otelbot/*` PR、または指示された特定のブランチ）。
 - [`/resolve-link-cache-conflicts <optional-pr-number>`][resolve-link-cache-conflicts]:
-  `.lycheecache` のマージ/リベースの競合を解決します。
+  `link-cache.jsonc` のマージ/リベースの競合を解決します。
 - [`/review-blog-post <blog-post-path-or-pr-number>`][review-blog-post]:
   OpenTelemetry のブログ投稿をフロントマター準拠、コンテンツ規約、GitHub リンクの安定性（`gh-url-hash`）、スペル、OTel 用語についてレビューします。
 - [`/review-pull-request <pr-number-or-url>`][review-pull-request]:

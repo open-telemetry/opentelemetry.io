@@ -3,13 +3,12 @@ title: サプライチェーンセキュリティ
 description: >-
   サイトの npm 依存関係制御の背景にある脅威モデルと根拠
 weight: 20
-default_lang_commit: 7fdabd2ed2c394ad4cbff90314c2f12eea6db1d9
-drifted_from_default: true
+default_lang_commit: 49a4a61076ca6c7369666e858be884cd157f7d3c
 ---
 
 制御の詳細と日常の手順については、[Dependency management](../../build/dependencies/) を参照してください。
 関連するセキュリティトピックにはそれぞれ専用のページがあります。
-これらの制御を検証する監査の設計については [Supply-chain audit design](/site/design/supply-chain-audit/) を、ワークフローのトリガーとトークン権限については [CI workflows](../../build/ci-workflows/#security-model) を、脆弱性の報告については [security policy][] を参照してください。
+これらの制御を検証する監査の設計については [Supply-chain audit design](/site/design/supply-chain-audit/) を、ワークフローのトリガー、トークン権限、信頼されない入力については [CI workflows](../../build/ci-workflows/#security-model) を、脆弱性の報告については [security policy][] を参照してください。
 
 ## 脅威モデル {#threat-model}
 
