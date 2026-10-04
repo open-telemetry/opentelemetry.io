@@ -5,8 +5,9 @@ aliases:
   - scenarios
   - services/feature-flag
   - services/featureflagservice
-default_lang_commit: 68992866a957386e428a4d63ec884ea9dc7570b6
-cSpell:ignore: OLJCESPC7Z
+default_lang_commit: b03c5611921dc1742d0e66f19ddd56002dbb51e0
+drifted_from_default: true
+cSpell:ignore: loadgenerator OLJCESPC7Z
 ---
 
 デモは、異なるシナリオのシミュレートするために利用可能ないくつかのフィーチャーフラグを提供しています。
@@ -27,6 +28,8 @@ cSpell:ignore: OLJCESPC7Z
 | `adFailure`                  | 広告                     | 10分の1の確率で `GetAds` のエラーを生成します                                                                                           |
 | `adHighCpu`                  | 広告                     | 広告サービスで CPU を高負荷にします。 CPU スロットリングをデモしたい場合は、CPU リソース制限を設定します                                |
 | `adManualGc`                 | 広告                     | 広告サービスで完全手動のガベージコレクションを引き起こします                                                                            |
+| `aiRunawayAgent`             | エージェント             | エージェントが終了せずツールを呼び出し続けるように仕向け、暴走やループするエージェントをシミュレートします。                            |
+| `aiSlowResponse`             | エージェント             | エージェントの LLM モデル呼び出しを遅延させ、LLM プロバイダーのレイテンシー劣化をシミュレートします。                                   |
 | `cartFailure`                | カート                   | 選択された割合の `EmptyCart` 呼び出しを、障害が発生するカートストアに送信します                                                         |
 | `emailMemoryLeak`            | Eメール                  | `email` サービスでメモリリークをシミュレートします。 バリアントは、各確認メール本文がどの程度パディングされるかを設定します             |
 | `failedReadinessProbe`       | カート                   | レディネスプローブを失敗させ、ステータスを異常にし、Pod の "NotReady" 状態を再現します。 Kubernetes デプロイメントにのみ適用されます。  |
