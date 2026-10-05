@@ -2,8 +2,7 @@
 title: リンクチェック
 weight: 12
 description: ローカルおよび CI でのサイトのリンクチェック方法。
-default_lang_commit: 67065425cb182395dfd94f3899972afc7e131761
-drifted_from_default: true
+default_lang_commit: bf53e16042a4ec7ae37779f944c49d1cde3719d3
 ---
 
 サイトのリンクチェックには **[Lychee][]** を使用しており、外部リンクの結果はコミットされたキャッシュ（[リンクキャッシュ][link cache]を参照）によって裏付けられています。
@@ -28,11 +27,9 @@ npm run check:links
 | ---------------------- | ------------------------------------------------------------------------------ |
 | `check:links`          | サイト全体                                                                     |
 | `check:links:internal` | サイト全体、オフライン（外部リンクなし）                                       |
-| `check:links:diff`     | 変更されたファイルのみ                                                         |
 | `fix:link-cache`       | `check:links` のエイリアス。[リンクキャッシュ][link cache]を更新するために使用 |
 
 `check:links` と `check:links:internal` スクリプトは `BUILD_KIND` のビルドに対して実行されます。
-`check:links:diff` は既存の `public/` ビルドのファイルをチェックします。
 詳細は[フルビルドとリーンビルド][Build kinds: full and lean]を参照してください。
 
 ## 設定 {#configuration}
@@ -67,15 +64,19 @@ CI では、`CHECK LINKS` ジョブが最初にシャロークローンをベー
 
 ## リンクキャッシュ {#link-cache}
 
-外部リンクのチェック結果は `.lycheecache` にキャッシュされます。
-このファイルはバージョン管理下にあるため、チェックは新しい URL またはキャッシュエントリの有効期限が切れた URL のみをフェッチします。
-Lychee は成功した結果のみをキャッシュするため、失敗は毎回リトライされます。
+外部リンクのチェック結果は **`link-cache.jsonc`** にキャッシュされます。
+このファイルは [link-cache][] パッケージが管理するコミット済みキャッシュです。
+Lychee 独自のキャッシュファイル `.lycheecache` は実行ごとにそこから導出され、git 管理外です。
+ファイルのフォーマット（エントリを手動でシードする方法を含む）については[所有キャッシュ][cache-format]を、チェック実行がどの URL をフェッチしどの URL をキャッシュから提供するかについては[オペレーティングモデル][Operating model]を参照してください。
+手動編集は意図的なシード専用です。
+単にリンクチェッカーをブロックする URL の場合は、かわりに `?link-check=no` を URL に付加してください（[有効な外部リンクの対処][Handling valid external links]を参照）。
 
-キャッシュは複数の[スケジュール実行ワークフロー](#workflows)とコンテンツ PR によって日常的に更新されるため、同時更新は競合として報告されるのではなく、Git の `union` ストラテジー（[`.gitattributes`][] を参照）によって行単位でマージされます。
-このようなマージでは重複したエントリや古いエントリが残ることがありますが、これらはチェッカーにとっては無害であり、次回のリンクチェックの実行でキャッシュはきれいに書き直されます。
-PR ではその書き直しをコミットしてください。
+キャッシュは複数の[スケジュール実行ワークフロー](#workflows)とコンテンツ PR によって日常的に更新されるため、同時更新は Git の 3 ウェイマージで競合する可能性があります。
+異なる URL であっても、両サイドが同じソート位置のギャップに挿入したり、一方がプルーニングしたエントリをもう一方がリフレッシュまたは隣に挿入した場合（ハンクがエントリを分割することがあります）に競合が発生します。
+ブランチのキャッシュ変更が通常のチェック結果である場合は、`main` のファイル全体を取得してチェックを再実行すれば、ブランチに必要なものが再追加されます。
+それ以外の場合は[所有キャッシュ][cache-format]の競合ルールに従い、チェックを再実行してファイルを正規化してください。
 
-外部リンクを追加または変更した場合は、**PR を送信する前に** `npm run check:links` を実行し（サイトビルドが実行時間の大部分を占めます）、更新された `.lycheecache` をコンテンツの変更と一緒にコミットしてください。
+外部リンクを追加または変更した場合は、**PR を送信する前に** `npm run check:links` を実行し（サイトビルドが実行時間の大部分を占めます）、更新された `link-cache.jsonc` をコンテンツの変更と一緒にコミットしてください。
 そうしないと `CACHE updates committed?` チェックが失敗します。
 復旧手順については [`CACHE updates committed?`][pr-checks] を参照してください。
 
@@ -94,10 +95,10 @@ Refcache refresh は最も古いキャッシュエントリをプルーニング
 ### 失敗したリンクのダブルチェック {#double-check}
 
 一部のサイトはブラウザには有効なページを提供しますが、Lychee のようなプレーンな HTTP クライアントを拒否します（ボットウォール、crates.io の無条件 404、npmjs.com のサインインリダイレクト）。
-[失敗はキャッシュされない](#link-cache)ため、そのようなサイトへのリンクは、キャッシュエントリの有効期限が切れるたびにリンクチェックで失敗することになります。
+キャッシュされた失敗は[毎回の実行で再フェッチされる][Operating model]ため、そのようなサイトへのリンクはチェックのたびに失敗することになります。
 
-**ダブルチェック**ツールは、Lychee が報告した失敗をブラウザグレードのプローブで再検証します。
-プローブが解決した URL は `.lycheecache` に合成ステータス `206`（「OK by analysis」）で記録されます。
+**ダブルチェック**ツールは、Lychee が報告した失敗をブラウザグレードのプローブで再検証し、解決した URL を `link-cache.jsonc` に合成ステータス `206`（「OK by analysis」）で記録します。
+解決できない URL は、チェックが記録した失敗のまま残り、refresh PR でトリアージされます。
 Refcache refresh ワークフローはリンクチェックの後にダブルチェックを実行します。
 キャプチャされたログに対してローカルで実行するには、以下を使用します。
 
@@ -113,20 +114,23 @@ npm run fix:link-cache:double-check
 
 [`check-links.yml` ワークフロー][ci]はサイトを一度（リーン）ビルドし、そのアーティファクトを `CHECK LINKS` ジョブと共有するため、ローカルでの実行と CI は同じビルドをチェックします。
 リンクチェックが失敗するとそのジョブは失敗し、更新されたキャッシュを `CACHE updates committed?` ジョブに渡します。
-このジョブは、実行によってコミット済みの `.lycheecache` が古くなった場合に失敗します。
+このジョブは、実行によってコミット済みの `link-cache.jsonc` が古くなった場合に失敗します。
 
 <!-- prettier-ignore-start -->
-[`.gitattributes`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.gitattributes
-[Auto-update registry versions]: /site/build/scripts/#update-registry-versionssh
+[Auto-update registry versions]: ../scripts/#update-registry-versionssh
 [blog-index]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
 [Build kinds: full and lean]: ../#build-kinds
+[cache-format]: https://github.com/chalin/link-cache/blob/main/docs/cache-format.md
 [ci]: ../ci-workflows/
 [double-check README]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/lychee/double-check/README.md
 [drifted]: /docs/contributing/localization/#track-changes
+[Handling valid external links]: /docs/contributing/pr-checks/#handling-valid-external-links
 [Housekeeping]: ../ci-workflows/#housekeeping
 [link cache]: #link-cache
+[link-cache]: https://github.com/chalin/link-cache#readme
 [Lychee]: https://lychee.cli.rs/
 [lychee-install]: https://lychee.cli.rs/guides/getting-started/
+[Operating model]: https://github.com/chalin/link-cache/blob/main/docs/operating-model.md
 [`lychee.base.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/lychee.base.toml
 [pr-checks]: /docs/contributing/pr-checks/#cache-updates-committed
 <!-- prettier-ignore-end -->
