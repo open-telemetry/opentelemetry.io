@@ -1040,8 +1040,8 @@ import (
 	"context"
 	"fmt"
 
-	"go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp"
-	"go.opentelemetry.io/otel/log/global"
+  "go.opentelemetry.io/otel"
+  "go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp"
 	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/resource"
 	semconv "go.opentelemetry.io/otel/semconv/v1.43.0"
@@ -1070,11 +1070,11 @@ func main() {
 		}
 	}()
 
-	// Register as global logger provider so that it can be accessed global.LoggerProvider.
+	// Register as global logger provider so that it can be accessed log.LoggerProvider.
 	// Most log bridges use the global logger provider as default.
 	// If the global logger provider is not set then a no-op implementation
 	// is used, which fails to generate data.
-	global.SetLoggerProvider(loggerProvider)
+	otel.SetLoggerProvider(loggerProvider)
 }
 
 func newResource() (*resource.Resource, error) {
