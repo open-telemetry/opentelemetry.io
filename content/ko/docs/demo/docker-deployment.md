@@ -206,15 +206,15 @@ docker compose --env-file .env --env-file .env.override \
 이미지가 빌드되고 컨테이너가 시작되면 다음 항목에 접근할 수 있다.
 
 - 웹 스토어: <http://localhost:8080/>
-- Load Generator UI: <http://localhost:8080/loadgen/>
-- Flagd configurator UI: <http://localhost:8080/feature>
+- 부하 생성기 UI(Load Generator UI): <http://localhost:8080/loadgen/>
+- Flagd 구성기 UI(Flagd configurator UI): <http://localhost:8080/feature>
 - 텔레메트리 문서(Weaver에서 생성): <http://localhost:8080/telemetry/>
 
 옵저버빌리티 스택이 실행 중일 때(즉, `*-no-o11y` 모드가 아닐 때) 다음 항목에
 접근할 수 있다.
 
 - 그라파나(Grafana): <http://localhost:8080/grafana/>
-- Jaeger UI: <http://localhost:8080/jaeger/ui/>
+- 예거(Jaeger) UI: <http://localhost:8080/jaeger/ui/>
 - OpAMP UI: <http://localhost:8080/opamp/>
 
 다음 항목은 특정 배포 모드에서만 접근할 수 있다.
