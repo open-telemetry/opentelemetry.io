@@ -27,7 +27,7 @@ OpenTelemetry (OTel)-compatible backend is a vendor-neutral, future-proof
 practice that gives users the freedom to choose their observability stack.
 
 This post outlines how you can design your product so users can export **full
-telemetry** (logs, traces, and metrics) to an OTel backend when they want to.
+This post outlines how you can design your product so users can export their logs, traces, and metrics to an OTel backend when they want to.
 
 ![Enabling telemetry export via the OTLP standard allows users to own and
 analyze their data on the platforms of their
