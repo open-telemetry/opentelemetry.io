@@ -7,7 +7,7 @@ default_lang_commit: 4309389695c38fee3cb6e68bf1186e4a99d5da4c
 ---
 
 기존 쿠버네티스 클러스터에 데모를 배포하는 데 도움이 되도록
-[오픈텔레메트리 데모 Helm 차트](/docs/platforms/kubernetes/helm/demo/)를
+[오픈텔레메트리(OpenTelemetry) 데모 Helm 차트](/docs/platforms/kubernetes/helm/demo/)를
 제공한다.
 
 차트를 사용하려면 [Helm](https://helm.sh)을 설치해야 한다. 시작하려면 Helm
@@ -66,7 +66,7 @@ helm template opentelemetry-demo open-telemetry/opentelemetry-demo --namespace o
 
 데모 애플리케이션을 사용하려면 서비스를 쿠버네티스 클러스터 외부에 노출해야
 한다. `kubectl port-forward` 명령어를 사용하거나, 필요에 따라 배포한
-인그레스 리소스와 함께 서비스 유형(예: 로드밸런서)을 구성하여 서비스를
+인그레스(Ingress) 리소스와 함께 서비스 유형(예: 로드밸런서)을 구성하여 서비스를
 로컬 시스템에 노출할 수 있다.
 
 ### kubectl port-forward를 사용하여 서비스 노출하기 {#expose-services-using-kubectl-port-forward}
@@ -99,20 +99,20 @@ frontend-proxy 포트 포워딩을 설정하면 다음 항목에 접근할 수 �
 > 추가 구성 옵션을 지정할 수 있도록 Helm 차트를 설치할 때 values 파일을 사용하는
 > 것을 권장한다.
 
-#### 인그레스(Ingress) 리소스 구성하기 {#configure-ingress-resources}
+#### 인그레스 리소스 구성하기 {#configure-ingress-resources}
 
 > [!NOTE]
 >
-> 쿠버네티스 클러스터에는 로드밸런서 서비스 유형 또는 인그레스(Ingress) 리소스를
+> 쿠버네티스 클러스터에는 로드밸런서 서비스 유형 또는 인그레스 리소스를
 > 활성화하는 데 필요한 인프라 컴포넌트가 없을 수 있다. 이러한 구성 옵션을
 > 사용하기 전에 클러스터가 필요한 기능을 지원하는지 확인한다.
 
 각 데모 컴포넌트(예: frontend-proxy)는 쿠버네티스 서비스 유형을 구성하는 방법을
-제공한다. 기본적으로 인그레스 리소스는 생성되지 않지만 각 컴포넌트의
-`ingress` 속성을 통해 활성화하고 구성할 수 있다.
+제공한다. 기본적으로 인그레스 리소스는 생성되지 않지만 각 컴포넌트의 `ingress`
+속성을 통해 활성화하고 구성할 수 있다.
 
-frontend-proxy 컴포넌트가 인그레스 리소스를 사용하도록 구성하려면
-values 파일에 다음 내용을 지정한다.
+frontend-proxy 컴포넌트가 인그레스 리소스를 사용하도록 구성하려면 values 파일에
+다음 내용을 지정한다.
 
 ```yaml
 components:
@@ -149,10 +149,10 @@ components:
 
 #### 브라우저 텔레메트리 구성하기 {#configure-browser-telemetry}
 
-브라우저의 스팬을 올바르게 수집하려면 오픈텔레메트리(OpenTelemetry) 컬렉터가
-노출된 위치도 지정해야 한다. frontend-proxy는 `/otlp-http` 경로 접두사를
-사용하여 컬렉터로 연결되는 경로를 정의한다. frontend 컴포넌트에 다음 환경 변수를
-설정하여 컬렉터 엔드포인트를 구성할 수 있다.
+브라우저의 스팬을 올바르게 수집하려면 오픈텔레메트리 컬렉터가 노출된 위치도
+지정해야 한다. frontend-proxy는 `/otlp-http` 경로 접두사를 사용하여 컬렉터로
+연결되는 경로를 정의한다. frontend 컴포넌트에 다음 환경 변수를 설정하여 컬렉터
+엔드포인트를 구성할 수 있다.
 
 ```yaml
 components:
@@ -168,8 +168,8 @@ components:
 또는 [원하는 벤더](/ecosystem/vendors/))를 위한 데모 애플리케이션으로 활용하려는
 경우가 많다.
 
-Helm 차트는 오픈텔레메트리(OpenTelemetry) 컬렉터 구성을 제공한다. 추가한 모든
-내용은 기본 구성에 병합된다.
+Helm 차트는 오픈텔레메트리 컬렉터 구성을 제공한다. 추가한 모든 내용은 기본
+구성에 병합된다.
 
 사용자 정의 파일(예: `my-values-file.yaml`)을 만들고 원하는 파이프라인에 자체
 익스포터를 추가할 수 있다.
