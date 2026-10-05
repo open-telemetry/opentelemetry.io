@@ -27,7 +27,8 @@ OpenTelemetry (OTel)-compatible backend is a vendor-neutral, future-proof
 practice that gives users the freedom to choose their observability stack.
 
 This post outlines how you can design your product so users can export **full
-This post outlines how you can design your product so users can export their logs, traces, and metrics to an OTel backend when they want to.
+This post outlines how you can design your product so users can export their
+logs, traces, and metrics to an OTel backend when they want to.
 
 ![Enabling telemetry export via the OTLP standard allows users to own and
 analyze their data on the platforms of their
@@ -50,9 +51,9 @@ OpenTelemetry defines four signal types, all carried over the standard
 > [!NOTE] Profiles is in public alpha
 >
 > Profiles entered [public alpha](/blog/2026/profiles-alpha/) on March 26, 2026.
-> As a signal, OpenTelemetry intends for profiles to stand alongside the current three
-> major observability signals, helping users troubleshoot production incidents by capturing
-> resource usage patterns across their codebase.
+> As a signal, OpenTelemetry intends for profiles to stand alongside the current
+> three major observability signals, helping users troubleshoot production
+> incidents by capturing resource usage patterns across their codebase.
 >
 > Although we exclusively focus on logs, traces, and metrics in this blog, we
 > are excited to see how profiles take shape, and how the community puts them to
