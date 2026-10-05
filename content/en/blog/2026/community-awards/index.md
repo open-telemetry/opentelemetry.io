@@ -1,12 +1,11 @@
 ---
 title: OpenTelemetry Community Awards 2026
-linkTitle: Thank an OpenTelemetry contributor! 
+linkTitle: Thank an OpenTelemetry contributor!
 date: 2026-10-01
 sig: End-User SIG
-author: OpenTelemetry Community Managers 
-draft: true # TODO: remove this line once your post is ready to be published
-issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details (Required)
+author: OpenTelemetry Community Managers
 ---
+
 We are delighted to announce the **3rd annual OpenTelemetry Community Awards**
 this year!
 
