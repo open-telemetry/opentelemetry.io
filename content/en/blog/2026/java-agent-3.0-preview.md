@@ -2,7 +2,6 @@
 title: The OpenTelemetry Java agent 3.0 is almost here — preview it today
 linkTitle: Preview the OpenTelemetry Java agent 3.0
 date: 2026-10-05
-draft: true
 author: >-
   [Jay DeLuca](https://github.com/jaydeluca) (Grafana Labs)
 sig: SIG Java
