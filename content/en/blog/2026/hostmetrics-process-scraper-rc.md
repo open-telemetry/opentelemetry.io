@@ -305,8 +305,8 @@ dashboards. If they emit the RC metrics only, do their queries return what they
 expect, and do their dashboards still render? Where they don't, the RC period is
 the window to update them. You can report any feedback you have to the System
 SIG Slack channel
-[#otel-system-metrics](https://cloud-native.slack.com/archives/C05CTFE9U4A) on
-the [CNCF Slack](https://slack.cncf.io/).
+[#otel-system-metrics](https://cloud-native.slack.com/archives/C05CTFE9U4A?link-check=no&last-validated=2026-10-05)
+on the [CNCF Slack](https://slack.cncf.io/).
 
 Once the six months have passed, we can move the process scraper to stable. That
 means verifying it satisfies the
