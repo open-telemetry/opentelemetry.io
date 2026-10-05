@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Double-check driver: re-verify Lychee-reported link failures with the
 // browser-grade probe, and record each resolved URL in the committed link
-// cache (.lycheecache) as a synthetic-206 entry. Rationale:
+// cache (link-cache.jsonc) as a synthetic-206 entry. Rationale:
 // content/en/site/build/link-checking.md, "Double-check of failing links".
 // Options and arguments: run with --help. File map and probe behavior:
 // ./README.md.
@@ -10,10 +10,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
+import { OWNED_FILE } from 'link-cache/lib/cache.mjs';
 import { failedUrlsOf } from '../check-report/index.mjs';
 import { getUrlStatus } from './get-url-status.mjs';
 import {
-  cacheLinesFor,
+  cacheEntriesFor,
   checkProbeResults,
   checkReportConsistency,
   mergedCacheText,
@@ -26,14 +27,14 @@ const root = path.join(
   '..',
   '..',
 );
-const cachePath = path.join(root, '.lycheecache');
+const cachePath = path.join(root, OWNED_FILE);
 
 const defaultLogFile = path.join('tmp', 'check-links-log.txt');
 const usage = `Usage: cli.mjs [options] [LYCHEE_LOG_FILE]
 
 Re-verify the link failures reported in LYCHEE_LOG_FILE, a captured
 \`check:links\` log (default: ${defaultLogFile}, where \`log:check:links\`
-tees it), and record each resolved URL in .lycheecache.
+tees it), and record each resolved URL in link-cache.jsonc.
 
 Options:
   --expect-failures  Fail unless at least one failure line was parsed from
@@ -98,14 +99,15 @@ for (const { status, url } of failures) {
 }
 checkProbeResults(results);
 
-const lines = cacheLinesFor(results, Math.floor(Date.now() / 1000));
-if (lines.length > 0) {
+const now = Math.floor(Date.now() / 1000);
+const entries = cacheEntriesFor(results, now);
+if (entries.length > 0) {
   const cacheText = fs.readFileSync(cachePath, 'utf8');
-  fs.writeFileSync(cachePath, mergedCacheText(cacheText, lines));
+  fs.writeFileSync(cachePath, mergedCacheText(cacheText, entries, now));
   console.log(
-    `Recorded ${lines.length} browser-verified (206) entr${
-      lines.length === 1 ? 'y' : 'ies'
-    } in .lycheecache.`,
+    `Recorded ${entries.length} browser-verified (206) entr${
+      entries.length === 1 ? 'y' : 'ies'
+    } in link-cache.jsonc.`,
   );
 }
 console.log(summaryReport(results));
