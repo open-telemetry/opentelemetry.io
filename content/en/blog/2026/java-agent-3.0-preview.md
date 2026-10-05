@@ -6,7 +6,6 @@ draft: true
 author: >-
   [Jay DeLuca](https://github.com/jaydeluca) (Grafana Labs)
 sig: SIG Java
-# prettier-ignore
 cSpell:ignore: Dotel enduser Hystrix invokedynamic Twilio
 ---
 
