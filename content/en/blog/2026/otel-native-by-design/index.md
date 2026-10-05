@@ -3,12 +3,10 @@ title: >-
   OTel-Native by Design - Building Products That Export to Any Observability
   Stack
 linkTitle: OTel-Native by Design
-date: 2026-09-22
-author:
-  >- # If you have only one author, then add the single name on this line in quotes.
+date: 2026-10-08
+author: >-
   [Nityananda Gohain](https://github.com/nityanandagohain) (SigNoz), [Dhruv
   Ahuja](https://github.com/dhruv-ahuja) (SigNoz)
-draft: true # TODO: remove this line once your post is ready to be published
 body_class: otel-with-contributions-from
 issue: 10300
 sig: SIG End User
