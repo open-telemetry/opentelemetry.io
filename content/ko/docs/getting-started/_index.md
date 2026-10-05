@@ -10,8 +10,8 @@ default_lang_commit: 6c5fa98db5cb963c9605406c4190eb7af2ee9322
 
 <div class="l-get-started-buttons justify-content-start mt-3 ms-3">
 
-- [Dev](dev/)
-- [Ops](ops/)
+- [개발](dev/)
+- [운영](ops/)
 
 </div>
 
