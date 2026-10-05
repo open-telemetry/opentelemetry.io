@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Community Awards 2026
 linkTitle: Thank an OpenTelemetry contributor!
-date: 2026-10-01
+date: 2026-10-05
 sig: End-User SIG
 author: OpenTelemetry Community Managers
 ---
@@ -13,7 +13,7 @@ This project and its newly minted status as a _graduated_ CNCF project would not
 be possible without many, many awesome humans who contribute their time, knowledge,
 and skills to further develop and improve the field of observability.
 
-Whether it’s through code, documentation, project management, outreach, content
+Whether it's through code, documentation, project management, outreach, content
 creation, adoption, or simply helping others answer technical questions on our
 [CNCF Slack](https://slack.cncf.io/), we want to recognize these contributions
 and the people behind them.
