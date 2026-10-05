@@ -18,13 +18,9 @@ might be produced by a default OBI installation. It is divided into several
 sections for each type of metric that OBI can produce, as each metric family can
 be selectively enabled or disabled.
 
-The numerical case study below is an illustrative snapshot, not a prediction for
-v0.14.0. This release adds metric families and an `error_type` label to HTTP
-duration and body-size Prometheus series. Include those dimensions when
-estimating cardinality for a current deployment.
-
-For simplicity, the formulas below assume a single cluster. You should multiply
-the cardinality for each of your clusters.
+The worked series counts below assume one cluster, classic Prometheus
+histograms, and OBI's default bucket boundaries. Native histograms and OTLP
+histograms have different representations. Estimate each cluster separately.
 
 ## Terminology
 
@@ -77,10 +73,9 @@ cardinality, but we can't just multiply them because not all the server
 instances accept the same HTTP routes.
 
 The following formula could provide an extremely rough maximum limit, but in
-[our measurements](#case-study-cardinality-of-opentelemetry-demo), the actual
-cardinality was 2 orders of magnitude lower than the calculation. For this
-reason we recommend a measure-oriented approach rather than trying to calculate
-cardinality beforehand.
+[our measurements](#case-study-cardinality-of-opentelemetry-demo), the observed
+cardinality was much lower than the calculation. For this reason, measure the
+exported series alongside any estimate.
 
 However, here is a list of factors that can influence the overall cardinality:
 
@@ -93,6 +88,7 @@ However, here is a list of factors that can influence the overall cardinality:
   to other applications:
   - `http.client.request.duration`
   - `http.client.request.body.size`
+  - `http.client.response.body.size`
   - `rpc.client.call.duration`
   - `db.client.operation.duration`
   - `messaging.client.operation.duration`
@@ -101,11 +97,17 @@ However, here is a list of factors that can influence the overall cardinality:
   from other applications:
   - `http.server.request.duration`
   - `http.server.request.body.size`
+  - `http.server.response.body.size`
   - `rpc.server.call.duration`
-- **HistogramBuckets** need to be accounted and multiply each metric, as every
-  Application-level metric is an histogram. The buckets are configurable in OBI,
-  but the default number is 15 for duration metrics and 11 for body size
-  metrics, plus 2 more metrics (histogram sum and count).
+- **Error types**: in v0.14.0, HTTP duration and body-size Prometheus series
+  have an `error_type` label. A successful request has an empty value. Multiple
+  error types for the same operation, endpoint, and status code create separate
+  series. Count the values observed in your deployment rather than multiplying
+  every HTTP series by a fixed factor.
+- **HistogramBuckets** need to be accounted for, as each application metric in
+  this example is a histogram. OBI's defaults have 15 explicit duration bucket
+  boundaries and 10 body-size boundaries. Prometheus adds a `+Inf` bucket, sum,
+  and count, producing 18 or 13 series per attribute combination, respectively.
 - **Operations** is equivalent to the functionality that is invoked. In HTTP
   services, it would group the HTTP method and the HTTP route, in RPC it is the
   RPC method name.
@@ -138,8 +140,8 @@ components are external:
 The pessimistic calculation would be:
 
 ```text
-#Instances * #MetricNames * #HistoBuckets * #Operations * #Endpoints * #ReturnCodes =
-= 2 * 5 * 177/3 * 37/3 =2771
+#Instances * #MetricNames * #HistogramSeries * #Operations * #Endpoints * #ReturnCodes
+= 2 * 5 * 18 * 7 * 3 * 7 = 26,460
 ```
 
 The numbers taken as reference:
@@ -154,18 +156,20 @@ The numbers taken as reference:
     - `http.client.request.duration`
     - `http.client.request.body.size`
     - `db.client.operation.duration`
-- 17 histogram metrics, as most metrics are duration-based
+- 18 series per duration histogram (15 explicit buckets, `+Inf`, sum, and
+  count), using the duration histogram size as a pessimistic bound; the
+  body-size histogram has 13 series
 - 7 operations: RPC Add/List/Delete, HTTP PUT, SQL Insert/Select/Delete
 - 3 endpoints: backend, Identity provider, and DB
 - 7 Return codes: RPC OK/Err, HTTP 200/401/500, SQL OK/Err
 
-It might appear that cardinality should not grow beyond 163. However this number
-is not realistic nor accurate since some multipliers might not apply to the
-whole system. For example, SQL methods should not multiply to the RPC and HTTP
-metrics.
+This bound is deliberately loose: SQL operations do not multiply RPC and HTTP
+metrics, and only the client or server emits each metric. It also assumes one
+`error_type` value per HTTP status code; additional error types can split those
+series further.
 
-In this simple scenario, we can manually count more the maximum cardinality to
-396, which is far less than the initial count of 2771:
+Under these assumptions, we can count 417 series from the five listed metrics,
+far fewer than the pessimistic bound of 26,460:
 
 | #   | Instance | Metric                          | Endpoint      | Operation  | Code |
 | --- | -------- | ------------------------------- | ------------- | ---------- | ---- |
@@ -199,35 +203,37 @@ multiply the metrics instances by the histogram buckets, plus histogram `_count`
 and `_sum`:
 
 - 3 body-size metric instances x 13 = 39
-- 21 duration metric instances x 17 = 357
+- 21 duration metric instances x 18 = 378
 
-Total accounted cardinality: **396**
+Total accounted cardinality: **417**
 
-The above example illustrates that it's difficult to provide one formula to
-calculate the cardinality impact. We were able to count the exact cardinality of
-a very simple example where all information is known. This exercise would be
-impossible in a large Kubernetes cluster where we have little or no information
-about the applications and how they are interconnected.
+The example illustrates why one formula does not predict deployment cardinality.
+Even this count depends on the enabled metrics and label values. In a larger
+Kubernetes cluster, measure the exported series to account for the actual
+workload connections and attributes.
 
 ## Network-level metrics
 
-It is simpler to calculate network-level metrics than application-level metrics,
-as OBI only provides a single Counter: `obi.network.flow.bytes`. However the
-cardinality also depend on how much your applications are interconnected.
+It is simpler to estimate network-level metrics than application-level metrics.
+The `network` feature exports the `obi.network.flow.bytes` counter. You can also
+enable packet and inter-zone byte counters separately. Cardinality depends on
+which endpoints communicate and which attributes you select.
 
 The default attributes for `obi.network.flow.bytes` are:
 
-- Direction (request/response)
-- Source and destination endpoint owners in Kubernetes: `k8s_src_owner_name`,
-  `k8s_dst_owner_name`, `k8s_src_owner_type`, `k8s_dst_owner_type`,
-  `k8s_src_namespace`, `k8s_dst_namespace`
+- Source and destination endpoint owners and namespaces in Kubernetes:
+  `k8s_src_owner_name`, `k8s_dst_owner_name`, `k8s_src_namespace`, and
+  `k8s_dst_namespace`
 - `k8s_cluster_name`: unique for each cluster. We assume a single cluster, as
   for the rest of metrics.
+
+The `direction` and Kubernetes owner-type attributes are hidden by default. If
+you select them, account for their distinct values in the estimate.
 
 The simplified, pessimistic formula, would be:
 
 ```text
-#Directions * #SourceOwners * #DestinationOwners
+#SourceOwners * #DestinationOwners
 ```
 
 We've assumed that all the source owners are connected to all the destination
@@ -235,7 +241,9 @@ owners. It's more realistic to apply a connection factor, for example a cluster
 with 100 Deployments/DaemonSets/StatefulSets, where each owner is connected to 2
 other owners on average, would have a cardinality of:
 
-2 directions x 100 SourceOwners x 2 Destination Owners = **400**
+100 source owners x 2 destination owners = **200** series for the byte counter.
+Selecting `direction` could double this to **400** if both `request` and
+`response` values occur. Additional metric features also add series.
 
 ## Service Graph metrics
 
@@ -259,25 +267,26 @@ Each metric also has the following attributes:
 
 The calculation is similar to network metrics but with higher cardinality:
 
-- Instead of a single counter metric, we are reporting a set of
-  metrics/histograms with an overall cardinality of 36, two 15+2 histograms + 2
-  counters.
+- Instead of a network byte counter, we are reporting a set of
+  metrics/histograms with an overall cardinality of 38, two 18-series histograms
+  and two counters.
 - Instead of aggregating by the owner of an instance, for example Deployment,
   the client is the instance that submits a request, while the server might be
   the Owner, as it's usually accessed through a single service instance.
 
 ## Span metrics
 
-- `traces_spanmetrics_latency`: histogram with 15 + 2 buckets
-- `traces_spanmetrics_calls_total`: counter
-- `traces_spanmetrics_size_total`: counter from the deprecated
-  `application_span_sizes` feature
-- `traces_spanmetrics_response_size_total`: counter from the deprecated
-  `application_span_sizes` feature
+With the optional `application_span_otel` feature, OBI exports:
 
-Span metrics are optional; enable either the deprecated `application_span`
-format or `application_span_otel` for current OpenTelemetry names. The
-`application_span_sizes` counters are deprecated without a replacement.
+- `traces.span.metrics.duration`: histogram with 15 explicit buckets, `+Inf`,
+  sum, and count when exported through Prometheus
+- `traces.span.metrics.calls`: counter
+
+The deprecated `application_span` feature uses the older
+`traces_spanmetrics_latency` and `traces_spanmetrics_calls_total` names. The
+deprecated `application_span_sizes` feature adds two size counters without a
+replacement. See
+[metrics export features](../configure/export-data/#metrics-export-features).
 
 Attributes that might add cardinality to each metric are:
 
@@ -289,7 +298,7 @@ Attributes that might add cardinality to each metric are:
 Maximum cardinality could be roughly calculated as:
 
 ```text
-19 metric buckets * 3 span kinds * #Instances * #Operations * #ReturnCodes
+19 metric series * 3 span kinds * #Instances * #Operations * #ReturnCodes
 ```
 
 As depicted in the
@@ -300,10 +309,12 @@ subset of the total routes.
 
 ## Case study: cardinality of OpenTelemetry Demo
 
-In this section we calculate the cardinality of the
-[OpenTelemetry Demo](/docs/demo/architecture/) deployed in a local cluster of 3
-nodes. We disabled all the bundled OpenTelemetry instrumentation in the example
-applications, and deployed OBI to perform the instrumentation.
+The measurements below came from one earlier deployment of the
+[OpenTelemetry Demo](/docs/demo/architecture/) in a local three-node cluster.
+Its bundled OpenTelemetry instrumentation was disabled and OBI performed the
+instrumentation. These counts have not been remeasured with v0.14.0. Use the
+queries to inspect your deployment and include its enabled metric families and
+selected attributes when estimating current cardinality.
 
 ### Measure application-level metrics
 
@@ -311,7 +322,7 @@ As most instrumented instances are both client and services, we ignore the
 `#instances` argument in the formula to be more accurate:
 
 ```text
-#MetricNames * (#HistoBuckets+2) * #Operations * #Endpoints * #ReturnCodes
+#MetricNames * #HistogramSeries * #Operations * #Endpoints * #ReturnCodes
 ```
 
 To minimize the effects of attributes influencing non-linearly in the final
@@ -320,8 +331,9 @@ separately (HTTP, gRPC and Kafka).
 
 **HTTP metrics:**
 
-- 4 metrics: client, server, request size, and time
-- 15 histogram buckets on average
+- 4 HTTP histogram metrics included in this example
+- 15 explicit histogram buckets, `+Inf`, sum, and count, as a pessimistic
+  per-metric bound
 - Known operations: 75, measured from a running OTel Demo with the PromQL query:
   `group by (http_request_method, http_route)({__name__=~"http_.*"})`
 - 26 endpoints, measured from a running OTel Demo with the PromQL query:
@@ -329,10 +341,15 @@ separately (HTTP, gRPC and Kafka).
 - 6 response status codes: 200, 301, 308, 403, 408 and 504, extracted from the
   running OTel demo
 
+The v0.14.0 `application` feature can export six HTTP histogram families: client
+and server duration, request body size, and response body size. Include the
+families your deployment actually emits rather than reusing the four-metric
+factor from this earlier snapshot.
+
 The total, maximum calculated limit for HTTP metrics is:
 
 ```text
-4 x 15 x 75 x 26 x 6 =~ 702,000
+4 x 18 x 75 x 26 x 6 = 842,400
 ```
 
 This shows how ineffective the formula is for the application-level metrics, as
@@ -343,22 +360,23 @@ types:
 
 ### Measure network-level metrics
 
-For network-level metrics, if we assume 2 directions (request/response) and the
-21 deployments asking for information to all the 21 deployments, we get the
-following cardinality numbers:
+For the byte counter with default attributes, if each of the 21 demo deployments
+communicates with all 21 deployments, the owner-pair estimate is:
 
-2×21×21 = 882
+21 × 21 = 441
 
-Knowing the architecture, we could get a lower estimation if we only count the
-arrows in the architecture diagram, and assume they are both directions:
+Counting only the 29 connections in the architecture diagram gives a lower
+estimate:
 
-2x29 = 58
+29 owner pairs
+
+If `direction` is selected and only `request` and `response` occur for every
+owner pair, these estimates double to 882 and 58 series, respectively. An
+`unknown` direction value could add more.
 
 Network metrics measure the OpenTelemetry Demo connections, other internal
-cluster connections, and instrumentation traffic, so the real cardinality is
-higher:
-
-`count(obi_network_flow_bytes_total)` **→ 330**
+cluster connections, and instrumentation traffic. Query the current total with
+`count(obi_network_flow_bytes_total)`.
 
 We can group traffic between namespaces to get a better idea of which part
 belongs to the OpenTelemetry demo with the following query:
@@ -367,7 +385,8 @@ belongs to the OpenTelemetry demo with the following query:
 count(obi_network_flow_bytes_total) by (k8s_src_namespace, k8s_dst_namespace)
 ```
 
-Which returns the following information:
+The earlier snapshot recorded the following namespace pairs, totaling 312
+series:
 
 | k8s_src_namespace | k8s_dst_namespace | count |
 | ----------------- | ----------------- | ----- |
@@ -394,8 +413,8 @@ Kubernetes management.
 Network metrics are often used to build service graphs, but the actual Service
 graph metrics would have a different shape:
 
-- Instead of a single counter metric, we have 2 counter metrics and 2 more
-  histogram metrics with 16+2 buckets.
+- Instead of the network byte counter, we have two counter metrics and two
+  histogram metrics with 15 explicit buckets, `+Inf`, sum, and count.
 - Service Graph metrics usually ignore internal Kubernetes traffic or any
   traffic from instances that are not instrumented at an application level.
 
@@ -410,4 +429,5 @@ an analytical number was difficult due to the high number of involved
 parameters. We can get a correct measurement of the cardinality measuring it
 with PromQL:
 
-`count({__name__=~".*spanmetrics.*"})` **→ 3900**
+`count({__name__=~".*spanmetrics.*"})` **→ 3900** in the earlier deployment. For
+`application_span_otel`, query `traces_span_metrics_.*` instead.
