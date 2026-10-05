@@ -2,7 +2,7 @@
 title: Troubleshooting
 description: Troubleshooting OBI common issues and errors
 weight: 22
-cSpell:ignore: Clickhouse uprobe uprobes userland
+cSpell:ignore: Clickhouse kprobes tracefs uprobe uprobes userland
 ---
 
 On this page, you can learn how to diagnose and resolve common OBI errors and

@@ -6,7 +6,7 @@ description:
   and OpenTelemetry traces
 weight: 10
 # prettier-ignore
-cSpell:ignore: Aerospike AsterixDB Chroma couchbase genai gonic jackc libcudart memcached Milvus nats Ollama pgxpool Pinecone pyserver Qdrant Qwen rerank segmentio spanmetrics sunrpc Weaviate Zilliz
+cSpell:ignore: Aerospike aerospike AsterixDB Chroma couchbase genai gonic jackc libcuda libcudart memcached Milvus nats Ollama pgxpool Pinecone pyserver Qdrant Qwen rerank segmentio spanmetrics sunrpc Weaviate Zilliz
 ---
 
 > [!NOTE]

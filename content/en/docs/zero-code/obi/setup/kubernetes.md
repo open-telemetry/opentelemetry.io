@@ -4,7 +4,7 @@ linkTitle: Kubernetes
 description: Learn how to deploy OBI in Kubernetes.
 weight: 4
 # prettier-ignore
-cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefulset
+cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefulset tracefs
 ---
 
 > [!NOTE]
