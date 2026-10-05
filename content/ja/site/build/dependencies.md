@@ -108,7 +108,7 @@ npm update --package-lock-only --ignore-scripts
 npm update --package-lock-only --ignore-scripts PACKAGE_NAME
 ```
 
-_`PACKAGE_NAME`_ をリフレッシュするパッケージ名に置き換えてください。
+_`PACKAGE_NAME`_ をリフレッシュするパッケージ名（複数指定可）に置き換えてください。
 
 いずれの場合も、リフレッシュ後のロック全体をレビューしてください。
 npm は選択されたバージョンが必要とするものも移動させます。
