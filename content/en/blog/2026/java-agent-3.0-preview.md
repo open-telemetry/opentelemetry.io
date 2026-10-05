@@ -1,19 +1,19 @@
 ---
 title: The OpenTelemetry Java agent 3.0 is almost here — preview it today
 linkTitle: Preview the OpenTelemetry Java agent 3.0
-date: 2026-09-28
+date: 2026-10-05
 draft: true
 author: >-
   [Jay DeLuca](https://github.com/jaydeluca) (Grafana Labs)
 sig: SIG Java
 # prettier-ignore
-cSpell:ignore: Dotel Hystrix invokedynamic Twilio
+cSpell:ignore: Dotel enduser Hystrix invokedynamic Twilio
 ---
 
-The **`2.32.0`** release of the [OpenTelemetry Java agent][java-agent] is now
-out and serves as the release candidate for **3.0**, which is targeted for
-**October 2026**. Some behavior may still change before 3.0, but you can preview
-the new behavior now, before it becomes the default.
+The **[2.32.0 release][release-2.32.0]** of the [OpenTelemetry Java
+agent][java-agent] is now out and serves as the release candidate for **3.0**,
+which is targeted for **October 2026**. Some behavior may still change before
+3.0, but you can preview the new behavior now, before it becomes the default.
 
 3.0 changes telemetry, configuration, and instrumentation defaults. Database and
 code conventions become stable defaults, messaging and RPC move to newer
@@ -39,9 +39,10 @@ existing configuration file; keep your resource, exporter, and other settings.
 
 ### Step 1: Compare old and new telemetry
 
-Start in a test deployment with the domains relevant to your application. With
-the umbrella preview flag off, append `/dup` to emit old and new attributes and
-metrics together:
+Start in a test deployment and capture baseline telemetry before enabling any
+preview settings. Then choose the domains relevant to your application. With the
+umbrella preview flag off, append `/dup` to emit old and new attributes, and
+metrics where dual emission is supported, together:
 
 {{< tabpane text=true >}}
 
@@ -78,11 +79,13 @@ For example, a JDBC span can carry both naming schemes:
 
 Use the new fields to update and validate your queries.
 
-> **Dual emission does not preserve both trace shapes.** A span still has only
-> one name and kind, and `/dup` uses the newer convention for those. Compare
-> attributes and metrics with `/dup`, and inspect trace structure separately.
+> **Dual emission does not preserve every legacy metric or both trace shapes.**
+> Database connection-pool metrics switch to the new names and units even with
+> `database/dup`. A span still has only one name and kind, and `/dup` uses the
+> newer convention for those. Use your baseline capture to compare metrics and
+> trace structure as well as the attributes emitted together.
 
-### Step 2: Run as 3.0
+### Step 2: Test the combined preview
 
 Next, turn on the umbrella flag to test the conventions and defaults together:
 
@@ -129,12 +132,14 @@ test the new conventions alone.
 The JDBC example above shows attribute renames, but a key rename alone will not
 fix every query:
 
+- **Names:** `db.client.connections.max` becomes `db.client.connection.limit`;
+  replacing `connections` with `connection` alone is not enough.
 - **Values:** `db.system: "mssql"` becomes
   `db.system.name: "microsoft.sql_server"`.
 - **Types:** gRPC's numeric `rpc.grpc.status_code: 0` becomes the string
   `rpc.response.status_code: "OK"`.
-- **Units:** database connection-pool and RPC duration metrics move from
-  milliseconds to seconds.
+- **Units:** database connection-pool duration metrics and RPC duration metrics
+  move from milliseconds to seconds.
 - **Consolidation:** `code.namespace` and `code.function` consolidate into
   `code.function.name`.
 
@@ -156,20 +161,25 @@ The operation now comes first, and its name reflects the client API. The old
 `messaging.operation.type`: for a Kafka poll, the name is `poll` and the type is
 `receive`.
 
-**Parent relationships change in some setups.** Whether your traces look
-different depends on how your consumer runs:
+**Parent relationships change in some setups.** For Kafka processing one message
+at a time, with the producer context propagated in the message, the parent
+depends on how your consumer runs:
 
 | Your setup                                                | Legacy                                                           | Preview                                                                    |
 | --------------------------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| Receive spans off (the default)                           | Process span is a child of the send span                         | Unchanged, plus a link to the send span                                    |
+| Receive spans off (the default), no active span           | Process span is a child of the send span                         | Unchanged, plus a link to the send span                                    |
 | Receive spans off, messages processed inside another span | Process span is a child of the send span                         | Process span is a child of the active span and only links to the send span |
-| Receive spans on                                          | Process span is a child of the receive span, in a separate trace | Process span is a child of the send span, in the same trace                |
+| Receive spans on, no active span                          | Process span is a child of the receive span, in a separate trace | Process span is a child of the send span, in the same trace                |
 
 The second row is the one most likely to surprise you: if your application
 processes messages inside its own span, for example a scheduled job or a method
-annotated with `@WithSpan`, consumer work leaves the producer's trace.
+annotated with `@WithSpan`, consumer work leaves the producer's trace. In the
+preview, that active span also takes precedence when receive spans are enabled.
+Batch process spans can link to multiple messages and do not follow this
+single-message parent model.
 
-With receive spans on, a trace view changes like this:
+With receive spans on and no active consumer-side span, the single-message
+example looks like this:
 
 ```text
 Legacy                                   Preview
@@ -188,7 +198,8 @@ own, and its kind changes from `CONSUMER` to `CLIENT`.
 
 Receive spans remain opt-in. Receive metrics are recorded independently of that
 span setting, so you do not need to enable poll spans to measure receive
-operations. The metric names also change:
+operations. Where legacy messaging metrics were emitted, as in Pulsar, the
+convention changes are:
 
 | Legacy metric                | Preview metric                        |
 | ---------------------------- | ------------------------------------- |
@@ -197,6 +208,10 @@ operations. The metric names also change:
 | `messaging.receive.messages` | `messaging.client.consumed.messages`  |
 | _(none)_                     | `messaging.client.sent.messages`      |
 | _(none)_                     | `messaging.process.duration`          |
+
+Kafka gains the preview instruments in this table; it did not emit the legacy
+instruments listed here. Do not expect `messaging/dup` to produce both sets for
+Kafka.
 
 ### Database endpoint identity
 
@@ -245,11 +260,24 @@ broaden capture.
 
 Other default changes may be visible in your telemetry or at startup:
 
-| What you may notice after enabling the preview | What to check                                                              |
-| ---------------------------------------------- | -------------------------------------------------------------------------- |
-| Additional structured log attributes           | Review the common `.included` / `.excluded` selectors                      |
-| Missing Hibernate, Hystrix, or Twilio spans    | These instrumentations default to off; explicitly re-enable those you need |
-| Startup fails when using the Zipkin exporter   | Zipkin exporter support is removed in preview mode; switch to OTLP         |
+| What you may notice after enabling the preview                | What to check                                                              |
+| ------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Additional structured log attributes                          | Review the common `.included` / `.excluded` selectors                      |
+| Missing Hibernate, Hystrix, or Twilio spans                   | These instrumentations default to off; explicitly re-enable those you need |
+| Agent/SDK initialization fails when using the Zipkin exporter | Zipkin exporter support is removed in preview mode; switch to OTLP         |
+
+### Identity capture
+
+If you capture user identity attributes, update the capture settings as well as
+queries. The umbrella preview ignores the old
+`otel.instrumentation.common.enduser.*.enabled` settings. Capture remains
+opt-in: use `otel.instrumentation.common.user.name.enabled=true` and
+`otel.instrumentation.common.user.roles.enabled=true` for the fields you need.
+
+- `enduser.id` becomes `user.name`.
+- `enduser.role`, a comma-separated string, becomes `user.roles`, a string
+  array.
+- `enduser.scope` has no replacement and is no longer captured.
 
 ### For extension and distribution maintainers
 
@@ -295,6 +323,8 @@ Review the proposed changes against real data before applying them.
 versions, and a small example of the unexpected behavior. Testing now gives us
 time to address problems before 3.0 becomes the default.
 
+[release-2.32.0]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v2.32.0
 [java-agent]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation
 [issues]:
