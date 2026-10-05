@@ -115,7 +115,7 @@ don't have OCB installed, see the
 - [OCB](/docs/collector/extend/ocb/) installed and available on your PATH
 - A local checkout of the
   [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation)
-  repository checked out at v0.14.0
+  repository at v0.6.0 or later
 - [Docker](https://docs.docker.com/get-started/get-docker/) (for generating eBPF
   files) or a C compiler, clang, and eBPF headers
 
