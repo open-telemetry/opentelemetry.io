@@ -23,7 +23,8 @@ Please take a moment to nominate individuals who have made a notable impact to
 OpenTelemetry over the past year. Everyone can nominate anyone in the community, 
 whether they are a contributor, an end-user, or a community member. 
 
-[Submit your nominations online]() by **midnight UTC on October 30, 2026**[^1]. You may 
+[Submit your nominations online](https://forms.gle/5VdubDKjf7KuNKdL7) by 
+**midnight UTC on October 30, 2026**[^1]. You may 
 nominate up to five individuals, but please only submit one nomination per form. 
 
 Winners will be announced at [KubeCon + CloudNativeCon North America 2026](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/register/).
