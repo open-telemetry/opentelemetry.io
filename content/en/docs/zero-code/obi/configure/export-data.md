@@ -98,11 +98,12 @@ application uses a supported CUDA runtime or driver library. GPU monitoring
 reports application GPU work, rather than device health metrics such as GPU
 utilization or temperature.
 
-| Requirement      | Supported                      |
-| :--------------- | :----------------------------- |
-| Operating system | Linux                          |
-| CPU architecture | `amd64`, `arm64`               |
-| CUDA libraries   | `libcudart.so` or `libcuda.so` |
+| Requirement          | Supported                      |
+| :------------------- | :----------------------------- |
+| Operating system     | Linux                          |
+| CPU architecture     | `amd64`, `arm64`               |
+| CUDA runtime library | `libcudart.so` for CUDA `7.0+` |
+| CUDA driver library  | `libcuda.so`                   |
 
 OBI instruments the following CUDA operations:
 
