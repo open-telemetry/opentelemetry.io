@@ -111,7 +111,7 @@ don't have OCB installed, see the
 
 **Requirements:**
 
-- [Go](https://go.dev) toolchain 1.27.1, as declared by the v0.14.0 OBI source
+- [Go](https://go.dev) 1.26 or later
 - [OCB](/docs/collector/extend/ocb/) installed and available on your PATH
 - A local checkout of the
   [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation)
