@@ -436,7 +436,7 @@ namespaces continue to take precedence.
 In Config v1, use `discovery.process_context_poll_interval` or
 `OTEL_EBPF_PROCESS_CONTEXT_POLL_INTERVAL` to change the polling interval. Set
 the interval to `0` to keep the initial check and disable later polling. Config
-v2 uses the default interval in v0.14.0 and does not expose this setting.
+v2 uses the default interval and does not expose this setting.
 
 ## Override service name and namespace
 

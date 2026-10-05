@@ -319,9 +319,8 @@ registers an SDK, OBI leaves span creation and export to that SDK.
 
 This feature is disabled by default. Existing Config v1 deployments can enable
 it with `nodejs.manual_spans: true` or `OTEL_EBPF_NODEJS_MANUAL_SPANS=true`.
-Config v2 does not expose an equivalent field in v0.14.0. Continue migrating
-deployments to Config v2 rather than retaining Config v1 solely for this
-feature.
+Config v2 does not expose an equivalent field. Continue migrating deployments to
+Config v2 rather than retaining Config v1 solely for this feature.
 
 OBI must be able to reach the Node.js inspector, and the process must not
 register its own `SIGUSR1` handler. Bundled copies of `@opentelemetry/api` that

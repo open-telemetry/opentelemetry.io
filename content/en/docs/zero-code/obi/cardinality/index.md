@@ -99,11 +99,11 @@ However, here is a list of factors that can influence the overall cardinality:
   - `http.server.request.body.size`
   - `http.server.response.body.size`
   - `rpc.server.call.duration`
-- **Error types**: in v0.14.0, HTTP duration and body-size Prometheus series
-  have an `error_type` label. A successful request has an empty value. Multiple
-  error types for the same operation, endpoint, and status code create separate
-  series. Count the values observed in your deployment rather than multiplying
-  every HTTP series by a fixed factor.
+- **Error types**: starting with v0.14.0, HTTP duration and body-size Prometheus
+  series have an `error_type` label. A successful request has an empty value.
+  Multiple error types for the same operation, endpoint, and status code create
+  separate series. Count the values observed in your deployment rather than
+  multiplying every HTTP series by a fixed factor.
 - **HistogramBuckets** need to be accounted for, as each application metric in
   this example is a histogram. OBI's defaults have 15 explicit duration bucket
   boundaries and 10 body-size boundaries. Prometheus adds a `+Inf` bucket, sum,
@@ -316,9 +316,9 @@ subset of the total routes.
 The measurements below came from one earlier deployment of the
 [OpenTelemetry Demo](/docs/demo/architecture/) in a local three-node cluster.
 Its bundled OpenTelemetry instrumentation was disabled and OBI performed the
-instrumentation. These counts have not been remeasured with v0.14.0. Use the
-queries to inspect your deployment and include its enabled metric families and
-selected attributes when estimating current cardinality.
+instrumentation. These counts represent that deployment. Use the queries to
+inspect your deployment and include its enabled metric families and selected
+attributes when estimating current cardinality.
 
 ### Measure application-level metrics
 
@@ -345,10 +345,10 @@ separately (HTTP, gRPC and Kafka).
 - 6 response status codes: 200, 301, 308, 403, 408 and 504, extracted from the
   running OTel demo
 
-The v0.14.0 `application` feature can export six HTTP histogram families: client
-and server duration, request body size, and response body size. Include the
-families your deployment actually emits rather than reusing the four-metric
-factor from this earlier snapshot.
+Starting with v0.14.0, the `application` feature can export six HTTP histogram
+families: client and server duration, request body size, and response body size.
+Include the families your deployment actually emits rather than reusing the
+four-metric factor from this earlier snapshot.
 
 The total, maximum calculated limit for HTTP metrics is:
 

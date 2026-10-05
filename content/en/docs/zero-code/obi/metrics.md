@@ -77,9 +77,9 @@ and
 which you can enable via the [features](../configure/options/) configuration
 option.
 
-In v0.14.0, the `application` feature includes the HTTP body-size histograms.
-Use `application_red` instead if you only want RED metrics, or combine
-`application_red` and `application_sizes` in the same feature list. See
+Starting with v0.14.0, the `application` feature includes the HTTP body-size
+histograms. Use `application_red` instead if you only want RED metrics, or
+combine `application_red` and `application_sizes` in the same feature list. See
 [metrics export features](../configure/export-data/#metrics-export-features).
 
 HTTP duration and body-size metrics now include `error.type` on failed requests

@@ -114,8 +114,8 @@ longer needs to match the HTTP metric or SQL filters. Make these changes in a
 canary deployment and compare telemetry volume and cardinality before rolling
 them out.
 
-Network flow and TCP statistics filters remain shared between traces and metrics
-in v0.14.0. Keep the two maps identical within each group. Validation reports an
+Network flow and TCP statistics filters remain shared between traces and
+metrics. Keep the two maps identical within each group. Validation reports an
 error when they differ.
 
 ### HTTP routes

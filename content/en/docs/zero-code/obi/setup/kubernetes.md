@@ -346,11 +346,11 @@ a set of Linux
 comprehensive list of capabilities required by OBI can be found in
 [Security, permissions and capabilities](../../security/).
 
-OBI v0.14.0 falls back to tracefs for most probe attachment when host policy
-blocks PMU access through `perf_event_open()`. `CAP_SYS_ADMIN` is still needed
-for features that use `bpf_probe_write_user()`, including Go library-level
-context propagation. See [Security](../../security/) for feature-specific
-capabilities and host policy guidance.
+Starting with v0.14.0, OBI falls back to tracefs for most probe attachment when
+host policy blocks PMU access through `perf_event_open()`. `CAP_SYS_ADMIN` is
+still needed for features that use `bpf_probe_write_user()`, including Go
+library-level context propagation. See [Security](../../security/) for
+feature-specific capabilities and host policy guidance.
 
 An example of a OBI unprivileged container configuration can be found below:
 

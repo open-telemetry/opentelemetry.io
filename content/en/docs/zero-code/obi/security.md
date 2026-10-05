@@ -124,9 +124,9 @@ capability required for the feature you use.
 
 ### Deploy on AKS/EKS
 
-AKS and EKS kernels may set `kernel.perf_event_paranoid > 1`. OBI v0.14.0 can
-fall back to tracefs for most probe attachment in this case. For features that
-need PMU access or `bpf_probe_write_user()`, consult
+AKS and EKS kernels may set `kernel.perf_event_paranoid > 1`. Starting with
+v0.14.0, OBI can fall back to tracefs for most probe attachment. For features
+that need PMU access or `bpf_probe_write_user()`, consult
 [performance monitoring tasks](#performance-monitoring-tasks).
 
 If you prefer to use just `CAP_PERFMON`, you can configure your node to set

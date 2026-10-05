@@ -27,9 +27,9 @@ otel/ebpf-instrument:main
 The OBI container must be configured in following way:
 
 - Run as a **privileged** container for the example below, or grant the
-  [capabilities required by the enabled features](../../security/). Most probes
-  in v0.14.0 do not require `SYS_ADMIN`; Go library-level context propagation
-  and other user-memory-write features still do.
+  [capabilities required by the enabled features](../../security/). Starting
+  with v0.14.0, most probes do not require `SYS_ADMIN`; Go library-level context
+  propagation and other user-memory-write features still do.
 - Use the `host` PID namespace to allow accessing to the processes in other
   containers.
 
