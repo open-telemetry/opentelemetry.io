@@ -1,9 +1,9 @@
 ---
 title:
-  'Versioned metrics: shipping the first Release Candidate metrics in
+  'Versioned metrics: Shipping the first Release Candidate metrics in
   hostmetrics'
 linkTitle: Versioned metrics in hostmetrics
-date: 2026-09-29
+date: 2026-10-13
 author: >-
   [Dónal O'Sullivan](https://github.com/osullivandonal)(Elastic)
 issue: 11728
@@ -132,8 +132,10 @@ process.cpu.utilization@v1:
   attributes: [cpu.mode]
 ```
 
-> **Note**: You may notice the example here uses `stability: beta`. This is due
-> to mdatagen not defining a stability level for RC, so here we are using beta
+> [!NOTE]
+>
+> You may notice the example here uses `stability: beta`. This is due to
+> mdatagen not defining a stability level for RC, so here we are using beta
 > since the next stability level after beta is stable.
 
 Next we updated the templates to handle versioned metrics. Templates are used in
@@ -301,7 +303,10 @@ System SIG wants the community to try the process scraper at RC, which gives end
 users time to find out whether the RC metrics and attributes break their
 dashboards. If they emit the RC metrics only, do their queries return what they
 expect, and do their dashboards still render? Where they don't, the RC period is
-the window to update them.
+the window to update them. You can report any feedback you have to the System
+SIG Slack channel
+[#otel-system-metrics](https://cloud-native.slack.com/archives/C05CTFE9U4A) on
+the [CNCF Slack](https://slack.cncf.io/).
 
 Once the six months have passed, we can move the process scraper to stable. That
 means verifying it satisfies the
