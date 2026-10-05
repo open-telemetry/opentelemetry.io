@@ -223,9 +223,9 @@ The default attributes for `obi.network.flow.bytes` are:
 
 - `direction`: `request`, `response`, or `unknown`.
 - Source and destination endpoint owner names, owner types, and namespaces when
-  Kubernetes metadata is enabled: `k8s_src_owner_name`,
-  `k8s_src_owner_type`, `k8s_src_namespace`, `k8s_dst_owner_name`,
-  `k8s_dst_owner_type`, and `k8s_dst_namespace`.
+  Kubernetes metadata is enabled: `k8s_src_owner_name`, `k8s_src_owner_type`,
+  `k8s_src_namespace`, `k8s_dst_owner_name`, `k8s_dst_owner_type`, and
+  `k8s_dst_namespace`.
 - `k8s_cluster_name`: unique for each cluster. We assume a single cluster, as
   for the rest of metrics. This attribute also requires Kubernetes metadata.
 
@@ -365,8 +365,8 @@ types:
 ### Measure network-level metrics
 
 For the byte counter with default attributes, if each of the 21 demo deployments
-communicates with all 21 deployments and both `request` and `response` occur
-for every owner pair, the estimate is:
+communicates with all 21 deployments and both `request` and `response` occur for
+every owner pair, the estimate is:
 
 2 × 21 × 21 = 882 series
 
