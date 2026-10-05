@@ -183,16 +183,20 @@ to configure the OpenTelemetry exporter.
 By default, OBI includes the following [attributes](./) in the
 `obi.network.flow.bytes` metric:
 
+- `direction`
 - `k8s.src.owner.name`
+- `k8s.src.owner.type`
 - `k8s.src.namespace`
 - `k8s.dst.owner.name`
+- `k8s.dst.owner.type`
 - `k8s.dst.namespace`
 - `k8s.cluster.name`
 
-OBI only includes a subset of the available attributes to avoid leading to a
-cardinality explosion.
+The Kubernetes attributes require Kubernetes metadata. OBI only includes a
+subset of the available attributes to avoid leading to a cardinality explosion.
 
-For example:
+For example, to report only the owner names and types, excluding the default
+`direction`, namespace, and cluster labels:
 
 ```yaml
 attributes:
@@ -215,9 +219,8 @@ obi_network_flow_bytes_total:
   k8s_dst_owner_type="deployment"
 ```
 
-The previous example would aggregate the `obi.network.flow.bytes` value by
-source and destination Kubernetes owner name and type, instead of individual pod
-names.
+This example aggregates `obi.network.flow.bytes` by source and destination
+Kubernetes owner name and type.
 
 ## CIDR configuration
 

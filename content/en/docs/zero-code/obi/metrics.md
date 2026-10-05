@@ -148,7 +148,7 @@ check the `attributes`->`select` section in the
 | `messaging.process.duration`          | `messaging.system`                                          | shown                                             |
 | `messaging.process.duration`          | `messaging.destination.name`                                | shown                                             |
 | `obi.network.flow.bytes`              | `client.port`                                               | hidden                                            |
-| `obi.network.flow.bytes`              | `direction`                                                 | hidden                                            |
+| `obi.network.flow.bytes`              | `direction`                                                 | shown                                             |
 | `obi.network.flow.bytes`              | `dst.address`                                               | hidden                                            |
 | `obi.network.flow.bytes`              | `dst.cidr`                                                  | shown if the `cidrs` configuration section exists |
 | `obi.network.flow.bytes`              | `dst.name`                                                  | hidden                                            |
@@ -160,14 +160,14 @@ check the `attributes`->`select` section in the
 | `obi.network.flow.bytes`              | `k8s.dst.namespace`                                         | shown if Kubernetes is enabled                    |
 | `obi.network.flow.bytes`              | `k8s.dst.node.ip`                                           | hidden                                            |
 | `obi.network.flow.bytes`              | `k8s.dst.node.name`                                         | hidden                                            |
-| `obi.network.flow.bytes`              | `k8s.dst.owner.type`                                        | hidden                                            |
+| `obi.network.flow.bytes`              | `k8s.dst.owner.type`                                        | shown if Kubernetes is enabled                    |
 | `obi.network.flow.bytes`              | `k8s.dst.type`                                              | hidden                                            |
 | `obi.network.flow.bytes`              | `k8s.dst.owner.name`                                        | shown if Kubernetes is enabled                    |
 | `obi.network.flow.bytes`              | `k8s.src.name`                                              | hidden                                            |
 | `obi.network.flow.bytes`              | `k8s.src.namespace`                                         | shown if Kubernetes is enabled                    |
 | `obi.network.flow.bytes`              | `k8s.src.node.ip`                                           | hidden                                            |
 | `obi.network.flow.bytes`              | `k8s.src.owner.name`                                        | shown if Kubernetes is enabled                    |
-| `obi.network.flow.bytes`              | `k8s.src.owner.type`                                        | hidden                                            |
+| `obi.network.flow.bytes`              | `k8s.src.owner.type`                                        | shown if Kubernetes is enabled                    |
 | `obi.network.flow.bytes`              | `k8s.src.type`                                              | hidden                                            |
 | `obi.network.flow.bytes`              | `server.port`                                               | hidden                                            |
 | `obi.network.flow.bytes`              | `src.address`                                               | hidden                                            |

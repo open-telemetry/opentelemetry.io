@@ -221,19 +221,22 @@ which endpoints communicate and which attributes you select.
 
 The default attributes for `obi.network.flow.bytes` are:
 
-- Source and destination endpoint owners and namespaces in Kubernetes:
-  `k8s_src_owner_name`, `k8s_dst_owner_name`, `k8s_src_namespace`, and
-  `k8s_dst_namespace`
+- `direction`: `request`, `response`, or `unknown`.
+- Source and destination endpoint owner names, owner types, and namespaces when
+  Kubernetes metadata is enabled: `k8s_src_owner_name`,
+  `k8s_src_owner_type`, `k8s_src_namespace`, `k8s_dst_owner_name`,
+  `k8s_dst_owner_type`, and `k8s_dst_namespace`.
 - `k8s_cluster_name`: unique for each cluster. We assume a single cluster, as
-  for the rest of metrics.
+  for the rest of metrics. This attribute also requires Kubernetes metadata.
 
-The `direction` and Kubernetes owner-type attributes are hidden by default. If
-you select them, account for their distinct values in the estimate.
+In these examples, each owner count represents a distinct namespace, owner name,
+and owner type combination, so owner type needs no separate multiplier. Count
+the distinct `direction` values observed for each owner pair.
 
 The simplified, pessimistic formula, would be:
 
 ```text
-#SourceOwners * #DestinationOwners
+#Directions * #SourceOwners * #DestinationOwners
 ```
 
 We've assumed that all the source owners are connected to all the destination
@@ -241,9 +244,10 @@ owners. It's more realistic to apply a connection factor, for example a cluster
 with 100 Deployments/DaemonSets/StatefulSets, where each owner is connected to 2
 other owners on average, would have a cardinality of:
 
-100 source owners x 2 destination owners = **200** series for the byte counter.
-Selecting `direction` could double this to **400** if both `request` and
-`response` values occur. Additional metric features also add series.
+2 directions x 100 source owners x 2 destination owners = **400** series for the
+byte counter if both `request` and `response` occur for every owner pair. An
+`unknown` direction value could add more. Additional metric features also add
+series.
 
 ## Service Graph metrics
 
@@ -361,18 +365,18 @@ types:
 ### Measure network-level metrics
 
 For the byte counter with default attributes, if each of the 21 demo deployments
-communicates with all 21 deployments, the owner-pair estimate is:
+communicates with all 21 deployments and both `request` and `response` occur
+for every owner pair, the estimate is:
 
-21 × 21 = 441
+2 × 21 × 21 = 882 series
 
-Counting only the 29 connections in the architecture diagram gives a lower
-estimate:
+Counting only the 29 connections in the architecture diagram, with both
+directions for each, gives a lower estimate:
 
-29 owner pairs
+2 × 29 = 58 series
 
-If `direction` is selected and only `request` and `response` occur for every
-owner pair, these estimates double to 882 and 58 series, respectively. An
-`unknown` direction value could add more.
+The default `direction` attribute can also have an `unknown` value, which could
+add more series. Count owners with different namespaces or types separately.
 
 Network metrics measure the OpenTelemetry Demo connections, other internal
 cluster connections, and instrumentation traffic. Query the current total with

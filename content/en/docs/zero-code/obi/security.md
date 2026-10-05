@@ -261,11 +261,13 @@ Required capabilities:
 - `CAP_NET_RAW`
 - `CAP_SYS_PTRACE`
 - `CAP_NET_ADMIN`
+- `CAP_SYS_ADMIN` for Go library-level trace context propagation on kernels 5.10
+  and later
 
 Set the required capabilities and start OBI:
 
 ```shell
-sudo setcap cap_bpf,cap_checkpoint_restore,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace,cap_net_admin+ep ./bin/obi
+sudo setcap cap_bpf,cap_checkpoint_restore,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace,cap_net_admin,cap_sys_admin+ep ./bin/obi
 OTEL_EBPF_BPF_CONTEXT_PROPAGATION=all OTEL_EBPF_OPEN_PORT=8080 OTEL_EBPF_TRACE_PRINTER=text bin/obi
 ```
 

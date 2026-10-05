@@ -49,8 +49,9 @@ availability zones, from the application point of view.
 > The metrics are captured from the host perspective, so they include the
 > overhead of the network stack (protocol headers, etc.).
 
-By default, only the following attributes are reported for network flow bytes:
-`k8s.src.owner.name`, `k8s.src.namespace`, `k8s.dst.owner.name`,
+By default, network flow bytes include `direction`. When Kubernetes metadata is
+enabled, they also include `k8s.src.owner.name`, `k8s.src.owner.type`,
+`k8s.src.namespace`, `k8s.dst.owner.name`, `k8s.dst.owner.type`,
 `k8s.dst.namespace`, and `k8s.cluster.name`.
 
 For the inter-zone bytes metric, the default attributes are `k8s.cluster.name`,
@@ -109,9 +110,9 @@ high-cardinality attributes, including endpoint addresses and ports, out by
 default. See the [exported metrics](../metrics/) page for the default selection.
 Configure additional keys under `attributes.select`.
 
-For example, to aggregate network metrics by source and destination Kubernetes
-owner (instead of the default individual pod names), you can use the following
-configuration:
+For example, to aggregate network metrics only by source and destination
+Kubernetes owner name and type, you can use the following configuration. It
+replaces the default attribute selection, including `direction`:
 
 ```yaml
 attributes:
@@ -134,9 +135,9 @@ obi_network_flow_bytes_total:
   k8s_dst_owner_type="deployment"
 ```
 
-The previous example would aggregate the `obi.network.flow.bytes` value by
-source and destination Kubernetes owner name and type, instead of individual pod
-names.
+This example aggregates `obi.network.flow.bytes` by source and destination
+Kubernetes owner name and type. It omits the default direction, namespace, and
+cluster labels.
 
 ## CIDR-based metrics
 
