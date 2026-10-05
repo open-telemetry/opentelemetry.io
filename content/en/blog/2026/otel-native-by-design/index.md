@@ -26,7 +26,6 @@ vendors creates unnecessary friction. Instead, supporting export to any
 OpenTelemetry (OTel)-compatible backend is a vendor-neutral, future-proof
 practice that gives users the freedom to choose their observability stack.
 
-This post outlines how you can design your product so users can export **full
 This post outlines how you can design your product so users can export their
 logs, traces, and metrics to an OTel backend when they want to.
 
