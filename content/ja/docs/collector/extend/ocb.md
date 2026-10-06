@@ -6,9 +6,8 @@ weight: 200
 aliases: [/docs/collector/custom-collector]
 params:
   providers-vers: v1.48.0
-default_lang_commit: 331c76c3500213c83ace2e30a407218ddedda628
-drifted_from_default: true
-cSpell:ignore: darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
+default_lang_commit: b03c5611921dc1742d0e66f19ddd56002dbb51e0
+cSpell:ignore: debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
 OpenTelemetry Collectorには、特定のコンポーネントが事前に構成された5つの公式[ディストリビューション](/docs/collector/distributions/)があります。
@@ -55,20 +54,12 @@ https://github.com/open-telemetry/opentelemetry-collector-releases/releases/down
 chmod +x ocb
 ```
 
-{{% /tab %}} {{% tab "macOS (AMD 64)" %}}
+{{% /tab %}} {{% tab "macOS" %}}
 
 ```sh
-curl --proto '=https' --tlsv1.2 -fL -o ocb \
-https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/cmd%2Fbuilder%2F{{% version-from-registry collector-builder %}}/ocb_{{% version-from-registry collector-builder noPrefix %}}_darwin_amd64
-chmod +x ocb
-```
-
-{{% /tab %}} {{% tab "macOS (ARM 64)" %}}
-
-```sh
-curl --proto '=https' --tlsv1.2 -fL -o ocb \
-https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/cmd%2Fbuilder%2F{{% version-from-registry collector-builder %}}/ocb_{{% version-from-registry collector-builder noPrefix %}}_darwin_arm64
-chmod +x ocb
+brew tap open-telemetry/tap
+brew trust open-telemetry/tap
+brew install ocb
 ```
 
 {{% /tab %}} {{% tab "Windows (AMD 64)" %}}
