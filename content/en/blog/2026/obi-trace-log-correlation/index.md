@@ -1,7 +1,7 @@
 ---
 title: Zero-code trace-log correlation with OBI
 linkTitle: Zero-code trace-log correlation with OBI
-date: 2026-10-01
+date: 2026-10-06
 author: >-
   [Mattia Meleleo](https://github.com/mmat11) (Coralogix)
 sig: SIG eBPF Instrumentation
