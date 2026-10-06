@@ -19184,6 +19184,11 @@
     "when": "2026-09-25T11:04:54Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v2.32.0": {
+    "result": 200,
+    "when": "2026-10-05T17:57:27Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/3c573ea4492a5f25e0f482eb523f829d318d0027/declarative-config-bridge?from_branch=main": {
     "result": 200,
     "when": "2026-09-08T05:43:19Z",
@@ -24467,6 +24472,11 @@
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.41.0/docs/gen-ai/gen-ai-tool-definitions.json": {
     "result": 200,
     "when": "2026-09-28T05:47:56Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.43.0/docs/messaging/messaging-spans.md": {
+    "result": 200,
+    "when": "2026-10-05T17:57:27Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/semantic-conventions/issues": {
