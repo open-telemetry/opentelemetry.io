@@ -1470,6 +1470,12 @@ maintainers:
       - semconv-mainframe-maintainers
     html_url: https://github.com/rrschulze
     avatar_url: https://avatars.githubusercontent.com/u/140042958?v=4
+  - name: scottgerring
+    teams:
+      - rust-approvers
+      - rust-maintainers
+    html_url: https://github.com/scottgerring
+    avatar_url: https://avatars.githubusercontent.com/u/474021?v=4
   - name: SergeyKleyman
     teams:
       - php-distro-approvers
@@ -2218,11 +2224,6 @@ approvers:
       - network-triagers
     html_url: https://github.com/samiura
     avatar_url: https://avatars.githubusercontent.com/u/86324446?v=4
-  - name: scottgerring
-    teams:
-      - rust-approvers
-    html_url: https://github.com/scottgerring
-    avatar_url: https://avatars.githubusercontent.com/u/474021?v=4
   - name: simi
     teams:
       - ruby-contrib-approvers
