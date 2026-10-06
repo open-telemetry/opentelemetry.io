@@ -174,7 +174,7 @@
     "code-excerpter": "0.2.0",
     "cspell": "10.2.0",
     "gulp": "5.0.1",
-    "hugo-extended": "0.164.0",
+    "hugo-extended": "0.166.0",
     "js-yaml": "5.4.2",
     "link-cache": "0.6.0",
     "markdown-it": "15.0.2",
@@ -231,7 +231,7 @@
   "allowScripts": {
     "@parcel/watcher": false,
     "fsevents": false,
-    "hugo-extended@0.164.0": true,
+    "hugo-extended@0.166.0": true,
     "puppeteer@25.9.0": true
   }
 }
