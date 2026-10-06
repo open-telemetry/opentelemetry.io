@@ -1,5 +1,5 @@
 ---
-title: '2026年の Prometheus と OpenTelemetry の相互運用性：サーベイ結果'
+title: '2026年の Prometheus と OpenTelemetry の相互運用性：調査結果'
 linkTitle: Prometheus と OTel のサーベイ
 date: 2026-09-22
 author: >-
