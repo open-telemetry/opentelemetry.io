@@ -142,8 +142,8 @@ fix every query:
 
 ### Database endpoint identity
 
-For database migration details, start with the
-[database semantic convention stability migration guide][db-migration].
+For database migration details, start with the [database semantic convention
+stability migration guide][db-migration].
 
 For supported database clients, `server.address` describes the configured
 target, while `network.peer.address` identifies the endpoint actually contacted,
