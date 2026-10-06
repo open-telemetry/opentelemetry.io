@@ -1,5 +1,7 @@
 {{ $source := .Get "source" | default "agent" -}}
-{{ $gettingStarted := readFile "examples/otel-config/examples/otel-getting-started.yaml" -}}
+{{/* Real path, not the `examples/otel-config` symlink: Hugo 0.166+ reads
+  through project symlinks as empty. */ -}}
+{{ $gettingStarted := readFile "content-modules/opentelemetry-configuration/examples/otel-getting-started.yaml" -}}
 
 <div class="dc-converter card p-3 my-4" data-source="{{ $source }}" data-getting-started="{{ $gettingStarted | htmlEscape }}">
   <p class="text-body-secondary mb-3">
