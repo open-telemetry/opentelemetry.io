@@ -14,26 +14,25 @@ which is targeted for **October 2026**. Some behavior may still change before
 3.0, but you can preview the new behavior now, before it becomes the default.
 
 3.0 changes telemetry, configuration, and instrumentation defaults. Database and
-code conventions become stable defaults, messaging and RPC move to newer
-experimental conventions, and some capture settings and instrumentation defaults
+code conventions become stable defaults, messaging adopts newer conventions that
+are still experimental, and some capture settings and instrumentation defaults
 change. [What to check](#what-to-check) covers each area.
 
 Try it against your dashboards, alerts, and downstream pipelines, and [let us
-know what breaks][issues] before 3.0 is finalized.
+know of any issues][issues] before 3.0 is finalized.
 
 ## Try the preview
 
-Since you are already reviewing your agent configuration, this is a good time to
-try [declarative configuration][decl-config], which is still experimental in the
-Java agent. It describes the SDK and instrumentation in a single YAML file,
-passed with `-Dotel.config.file=/path/to/otel-config.yaml`. To get started,
-paste your current settings into the [configuration converter][dc-converter], or
-build a file with the Ecosystem Explorer's [configuration
-builder][explorer-builder].
+The examples below show environment variables and [declarative
+configuration][decl-config]. Declarative configuration support in the Java agent
+is experimental. If you choose to try it, the [configuration
+converter][dc-converter] and the Ecosystem Explorer's [configuration
+builder][explorer-builder] can help you get started. Pass the YAML file with
+`-Dotel.config.file=/path/to/otel-config.yaml`.
 
-The examples below show declarative configuration first, with environment
-variables in the second tab. The YAML snippets are fragments to merge into your
-existing configuration file; keep your resource, exporter, and other settings.
+Environment variables appear first, with declarative configuration in the second
+tab. The YAML snippets are fragments to merge into your existing configuration
+file; keep your resource, exporter, and other settings.
 
 ### Step 1: Compare old and new telemetry
 
@@ -44,7 +43,15 @@ metrics where dual emission is supported, together:
 
 {{< tabpane text=true >}}
 
-{{% tab header="Declarative configuration" %}}
+{{% tab header="Environment variables" %}}
+
+```text
+OTEL_INSTRUMENTATION_COMMON_V3_PREVIEW=false
+OTEL_SEMCONV_STABILITY_OPT_IN=database/dup,code/dup
+OTEL_SEMCONV_STABILITY_PREVIEW=messaging/dup
+```
+
+{{% /tab %}} {{% tab header="Declarative configuration" %}}
 
 ```yaml
 instrumentation/development:
@@ -54,29 +61,28 @@ instrumentation/development:
     common:
       v3_preview: false
       semconv_stability:
-        preview: [messaging/dup, rpc/dup, service.peer/dup]
-```
-
-{{% /tab %}} {{% tab header="Environment variables" %}}
-
-```text
-OTEL_INSTRUMENTATION_COMMON_V3_PREVIEW=false
-OTEL_SEMCONV_STABILITY_OPT_IN=database/dup,code/dup
-OTEL_SEMCONV_STABILITY_PREVIEW=messaging/dup,rpc/dup,service.peer/dup
+        preview: [messaging/dup]
 ```
 
 {{% /tab %}} {{< /tabpane >}}
 
-For example, a JDBC span can carry both naming schemes:
+For example, consider a PostgreSQL JDBC connection to database `orders`,
+configured to use the `public` schema. With dual emission, a span can carry both
+naming schemes:
 
-| Legacy attribute                       | Preview attribute                       |
+| Legacy attribute                       | Stable attribute                        |
 | -------------------------------------- | --------------------------------------- |
 | `db.system: "postgresql"`              | `db.system.name: "postgresql"`          |
-| `db.name: "orders"`                    | `db.namespace: "orders"`                |
+| `db.name: "orders"`                    | `db.namespace: "orders\|public"`        |
 | `db.statement: "SELECT * FROM orders"` | `db.query.text: "SELECT * FROM orders"` |
 
-Use the new fields to update and validate your queries.
+Here, `db.namespace` combines the database and schema as `orders|public`, while
+`db.name` contains only `orders`. Check values as well as keys when updating
+your queries. Keep your existing database and schema settings when trying the
+preview; `public` is simply the schema chosen for this example.
 
+> [!NOTE]
+>
 > **Dual emission does not preserve every legacy metric or both trace shapes.**
 > Database connection-pool metrics switch to the new names and units even with
 > `database/dup`. A span still has only one name and kind, and `/dup` uses the
@@ -89,30 +95,25 @@ Next, turn on the umbrella flag to test the conventions and defaults together:
 
 {{< tabpane text=true >}}
 
-{{% tab header="Declarative configuration" %}}
+{{% tab header="Environment variables" %}}
+
+```text
+OTEL_INSTRUMENTATION_COMMON_V3_PREVIEW=true
+```
+
+{{% /tab %}} {{% tab header="Declarative configuration" %}}
 
 ```yaml
 instrumentation/development:
   java:
     common:
       v3_preview: true
-      semconv_stability:
-        preview: [rpc, service.peer]
-```
-
-{{% /tab %}} {{% tab header="Environment variables" %}}
-
-```text
-OTEL_INSTRUMENTATION_COMMON_V3_PREVIEW=true
-OTEL_SEMCONV_STABILITY_PREVIEW=rpc,service.peer
 ```
 
 {{% /tab %}} {{< /tabpane >}}
 
 The umbrella enables the newer database, code, and messaging conventions and
-**disables `/dup` for those domains**. RPC and `service.peer` require the
-separate preview setting shown above; their opt-in tokens are ignored when the
-umbrella is on.
+**disables `/dup` for those domains**.
 
 Check application startup, captured fields, and missing spans and metrics.
 Confirm that dashboards and alerts work without the legacy fields, checking
@@ -134,10 +135,8 @@ fix every query:
   replacing `connections` with `connection` alone is not enough.
 - **Values:** `db.system: "mssql"` becomes
   `db.system.name: "microsoft.sql_server"`.
-- **Types:** gRPC's numeric `rpc.grpc.status_code: 0` becomes the string
-  `rpc.response.status_code: "OK"`.
-- **Units:** database connection-pool duration metrics and RPC duration metrics
-  move from milliseconds to seconds.
+- **Units:** database connection-pool duration metrics move from milliseconds to
+  seconds.
 - **Consolidation:** `code.namespace` and `code.function` consolidate into
   `code.function.name`.
 
@@ -169,12 +168,12 @@ depends on how your consumer runs:
 | Receive spans off, messages processed inside another span | Process span is a child of the send span                         | Process span is a child of the active span and only links to the send span |
 | Receive spans on, no active span                          | Process span is a child of the receive span, in a separate trace | Process span is a child of the send span, in the same trace                |
 
-The second row is the one most likely to surprise you: if your application
-processes messages inside its own span, for example a scheduled job or a method
-annotated with `@WithSpan`, consumer work leaves the producer's trace. In the
-preview, that active span also takes precedence when receive spans are enabled.
-Batch process spans can link to multiple messages and do not follow this
-single-message parent model.
+When message processing runs inside an active application span, such as a
+scheduled job span or a method span created by `@WithSpan`, the preview makes
+that span the parent of the process span. The process span links to the
+producer's span instead of using it as its parent. This also applies when
+receive spans are enabled. Batch process spans can link to multiple messages and
+do not follow this single-message parent model.
 
 With receive spans on and no active consumer-side span, the single-message
 example looks like this:
@@ -194,10 +193,10 @@ In the preview, the process span also links to the send span, even when that
 span is its parent. The poll span now represents the client operation on its
 own, and its kind changes from `CONSUMER` to `CLIENT`.
 
-Receive spans remain opt-in. Receive metrics are recorded independently of that
-span setting, so you do not need to enable poll spans to measure receive
-operations. Where legacy messaging metrics were emitted, as in Pulsar, the
-convention changes are:
+Receive spans remain opt-in. For Kafka in 2.32.0, enabling receive telemetry
+also enables poll-duration metrics. With it disabled, the preview still records
+consumed-message counts during processing, along with process duration. Where
+legacy messaging metrics were emitted, as in Pulsar, the convention changes are:
 
 | Legacy metric                | Preview metric                        |
 | ---------------------------- | ------------------------------------- |
@@ -213,11 +212,12 @@ Kafka.
 
 ### Database endpoint identity
 
-`server.address` describes the configured target, while `network.peer.address`
-identifies the endpoint actually contacted, where available. For a cluster, the
-configured target can be a list of endpoints instead of a single host. Review
-service graphs and dashboards grouped by `server.address`: their grouping may
-change even though the attribute name has not.
+For supported database clients, `server.address` describes the configured
+target, while `network.peer.address` identifies the endpoint actually contacted,
+where available. For a cluster, the configured target can be a list of endpoints
+instead of a single host. Review service graphs and dashboards grouped by
+`server.address`: their grouping may change even though the attribute name has
+not.
 
 ### Capture settings and instrumentation defaults
 
@@ -231,7 +231,13 @@ To capture only `order.id` from those structured fields:
 
 {{< tabpane text=true >}}
 
-{{% tab header="Declarative configuration" %}}
+{{% tab header="Environment variables" %}}
+
+```text
+OTEL_INSTRUMENTATION_COMMON_LOGGING_STRUCTURED_ATTRIBUTES_INCLUDED=order.id
+```
+
+{{% /tab %}} {{% tab header="Declarative configuration" %}}
 
 ```yaml
 instrumentation/development:
@@ -242,19 +248,14 @@ instrumentation/development:
           included: [order.id]
 ```
 
-{{% /tab %}} {{% tab header="Environment variables" %}}
-
-```text
-OTEL_INSTRUMENTATION_COMMON_LOGGING_STRUCTURED_ATTRIBUTES_INCLUDED=order.id
-```
-
 {{% /tab %}} {{< /tabpane >}}
 
 The common `.included` / `.excluded` selectors replace the old source-specific
 structured-field capture settings, which are ignored in preview mode. Review the
 emitted fields when migrating: the new selectors support glob patterns, so `*`
-means "include everything." Copying `*` from a legacy literal-name list can
-broaden capture.
+means "include everything." When migrating other capture settings that used
+literal-name lists, such as messaging `capture-headers`, copying `*` into the
+corresponding `.included` selector can broaden capture.
 
 Other default changes may be visible in your telemetry or at startup:
 
