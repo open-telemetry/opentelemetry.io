@@ -23,21 +23,22 @@ trimitere și de primire sau a
 [unității de execuție](/docs/specs/otel/glossary/#execution-unit), pentru a
 corela un semnal cu altul.
 
-Când serviciul A apelează serviciul B, serviciul A include un ID de urmă și
-un ID de interval ca parte a contextului. serviciul B folosește aceste valori
+Când serviciul A apelează serviciul B, serviciul A include un ID de urmă și un
+ID de interval ca parte a contextului. serviciul B folosește aceste valori
 pentru a crea un nou interval în cadrul aceleiași urme, setând intervalul din
-serviciul A ca părinte. Acest lucru face posibilă urmărirea fluxului complet
-al unei solicitări peste limitele serviciilor.
+serviciul A ca părinte. Acest lucru face posibilă urmărirea fluxului complet al
+unei solicitări peste limitele serviciilor.
 
 ## Propagare {#propagation}
 
-Propagarea este mecanismul care transferă contextul între servicii și procese. Acesta
-serializează și deserializează obiectul context și oferă informațiile relevante
-ce vor fi propagate de la un serviciu la altul.
+Propagarea este mecanismul care transferă contextul între servicii și procese.
+Acesta serializează și deserializează obiectul context și oferă informațiile
+relevante ce vor fi propagate de la un serviciu la altul.
 
 Propagarea este gestionată de obicei de librăriile de instrumentare și este
 transparentă pentru utilizator. În cazul în care ai nevoie să propagi manual
-contextul, poți folosi [API-ul Propagators](/docs/specs/otel/context/api-propagators/).
+contextul, poți folosi
+[API-ul Propagators](/docs/specs/otel/context/api-propagators/).
 
 OpenTelemetry întreține mai mulți propagatori oficiali. Propagatorul implicit
 utilizează anteturile definite de specificația
@@ -51,9 +52,9 @@ aval, „Product Catalog”, prin intermediul unui punct final HTTP „GET /prod
 pentru a primi detalii despre produsele pe care un utilizator dorește să le
 adauge în coș sau care fac parte din procesul de finalizare a comenzii. Pentru a
 înțelege activitățile din serviciul „Product Catalog” în contextul solicitărilor
-provenite de la „Frontend”, contextul (aici: ID-ul de urmă și ID-ul de
-interval ca „ID părinte”) este propagat folosind antetul „traceparent”, așa cum
-este definit în specificația W3C TraceContext. Aceasta înseamnă că ID-urile sunt
+provenite de la „Frontend”, contextul (aici: ID-ul de urmă și ID-ul de interval
+ca „ID părinte”) este propagat folosind antetul „traceparent”, așa cum este
+definit în specificația W3C TraceContext. Aceasta înseamnă că ID-urile sunt
 încorporate în câmpurile antetului:
 
 ```text
@@ -143,10 +144,10 @@ Atunci când serviciul tău interacționează cu servicii externe (servicii pe c
 nu le deții sau în care nu ai încredere), ia în considerare următoarele:
 
 - **Contextul primit**: Fii precaut atunci când accepți context din surse
-  externe. Actorii malițioși ar putea trimite antete de urmă falsificate
-  pentru a manipula datele de urmă sau pentru a exploata eventual
-  vulnerabilități în procesul de analiză a contextului. S-ar putea să dorești să
-  ignori sau să sanitizezi contextul primit din surse străine.
+  externe. Actorii malițioși ar putea trimite antete de urmă falsificate pentru
+  a manipula datele de urmă sau pentru a exploata eventual vulnerabilități în
+  procesul de analiză a contextului. S-ar putea să dorești să ignori sau să
+  sanitizezi contextul primit din surse străine.
 - **Contextul trimis**: Fii atent la ceea ce transmiți către serviciile externe.
   ID-urile interne de urmă, ID-urile de interval sau elementele de bagaj ar
   putea dezvălui informații sensibile despre arhitectura internă sau logica de
