@@ -58,9 +58,9 @@ cSpell:ignore: Ahuja Dhruv György Heorku Kiripolsky Krajcsovits Krajo Muenz tex
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem;
             width: 100%; max-width: 100%;">
-  <img src="ease-of-use-breakdown.png" alt="Grouped bar chart comparing ease-of-use ratings in 2024 and 2026: very difficult 7% to 0%, somewhat difficult 22% to 10%, neutral 37% to 40%, somewhat easy 26% to 33%, very easy 8% to 17%"
+  <img src="/blog/2026/otel-prometheus-interoperability/ease-of-use-breakdown.png" alt="Grouped bar chart comparing ease-of-use ratings in 2024 and 2026: very difficult 7% to 0%, somewhat difficult 22% to 10%, neutral 37% to 40%, somewhat easy 26% to 33%, very easy 8% to 17%"
        style="flex: 1 1 45%; min-width: 17rem;">
-  <img src="ease-of-use-average.png" alt="Bar chart of the average ease-of-use rating: 3.1 in 2024 and 3.6 in 2026 on a five-point scale"
+  <img src="/blog/2026/otel-prometheus-interoperability/ease-of-use-average.png" alt="Bar chart of the average ease-of-use rating: 3.1 in 2024 and 3.6 in 2026 on a five-point scale"
        style="flex: 1 1 45%; min-width: 17rem;">
 </div>
 
@@ -81,9 +81,9 @@ Prometheus エクスポーターはインフラストラクチャメトリクス
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem;
             width: 100%; max-width: 100%;">
-  <img src="infrastructure-instrumentation-methods.png" alt="Bar chart of infrastructure instrumentation methods: Prometheus exporters 72%, OTel receivers 57%, built-in /metrics endpoint 43%, built-in OTLP push 26%, OBI 12%, other 5%, don't collect 2%"
+  <img src="/blog/2026/otel-prometheus-interoperability/infrastructure-instrumentation-methods.png" alt="Bar chart of infrastructure instrumentation methods: Prometheus exporters 72%, OTel receivers 57%, built-in /metrics endpoint 43%, built-in OTLP push 26%, OBI 12%, other 5%, don't collect 2%"
        style="flex: 1 1 45%; min-width: 17rem;">
-  <img src="infrastructure-instrumentation-styles.png" alt="Pie chart of infrastructure instrumentation styles: mix 49.4%, only Prometheus-style 30.4%, only OTel-style 15.2%, other 5.1%"
+  <img src="/blog/2026/otel-prometheus-interoperability/infrastructure-instrumentation-styles.png" alt="Pie chart of infrastructure instrumentation styles: mix 49.4%, only Prometheus-style 30.4%, only OTel-style 15.2%, other 5.1%"
        style="flex: 1 1 45%; min-width: 17rem;">
 </div>
 
@@ -112,9 +112,9 @@ OBI はインフラストラクチャ計装とほぼ同じシェアを占めて�
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem;
             width: 100%; max-width: 100%;">
-  <img src="application-instrumentation-methods.png" alt="Bar chart of application instrumentation methods: OTel SDKs 65%, Prometheus SDKs 52%, OBI 12%, other 5%, don't collect 6%"
+  <img src="/blog/2026/otel-prometheus-interoperability/application-instrumentation-methods.png" alt="Bar chart of application instrumentation methods: OTel SDKs 65%, Prometheus SDKs 52%, OBI 12%, other 5%, don't collect 6%"
        style="flex: 1 1 45%; min-width: 17rem;">
-  <img src="application-instrumentation-styles.png" alt="Pie chart of application instrumentation styles: only OTel-style 41.3%, mix 30.7%, only Prometheus-style 22.7%, other 5.3%"
+  <img src="/blog/2026/otel-prometheus-interoperability/application-instrumentation-styles.png" alt="Pie chart of application instrumentation styles: only OTel-style 41.3%, mix 30.7%, only Prometheus-style 22.7%, other 5.3%"
        style="flex: 1 1 45%; min-width: 17rem;">
 </div>
 
@@ -142,9 +142,9 @@ Prometheus リラベリングルールのみ、またはプレーンな OTel Col
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem;
             width: 100%; max-width: 100%;">
-  <img src="metrics-transformation-tools.png" alt="Bar chart of metrics transformation tools: Prometheus relabeling and recording rules 54%, open source OTel Collector 53%, vendor distribution of the Collector 11%, custom-built Collector 10%, nothing 15%"
+  <img src="/blog/2026/otel-prometheus-interoperability/metrics-transformation-tools.png" alt="Bar chart of metrics transformation tools: Prometheus relabeling and recording rules 54%, open source OTel Collector 53%, vendor distribution of the Collector 11%, custom-built Collector 10%, nothing 15%"
        style="flex: 1 1 45%; min-width: 17rem;">
-  <img src="vanilla-stack-breakdown.png" alt="Pie chart of vanilla stack patterns: other 34.6%, mix 23.5%, only open source Collector 22.2%, only Prometheus relabeling and recording rules 19.8%"
+  <img src="/blog/2026/otel-prometheus-interoperability/vanilla-stack-breakdown.png" alt="Pie chart of vanilla stack patterns: other 34.6%, mix 23.5%, only open source Collector 22.2%, only Prometheus relabeling and recording rules 19.8%"
        style="flex: 1 1 45%; min-width: 17rem;">
 </div>
 
