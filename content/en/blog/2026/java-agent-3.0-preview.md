@@ -140,6 +140,18 @@ fix every query:
 - **Consolidation:** `code.namespace` and `code.function` consolidate into
   `code.function.name`.
 
+### Database endpoint identity
+
+For database migration details, start with the
+[database semantic convention stability migration guide][db-migration].
+
+For supported database clients, `server.address` describes the configured
+target, while `network.peer.address` identifies the endpoint actually contacted,
+where available. For a cluster, the configured target can be a list of endpoints
+instead of a single host. Review service graphs and dashboards grouped by
+`server.address`: their grouping may change even though the attribute name has
+not.
+
 ### Messaging trace structure
 
 Messaging moves from semantic conventions [v1.24][messaging-1.24] to
@@ -209,15 +221,6 @@ legacy messaging metrics were emitted, as in Pulsar, the convention changes are:
 Kafka gains the preview instruments in this table; it did not emit the legacy
 instruments listed here. Do not expect `messaging/dup` to produce both sets for
 Kafka.
-
-### Database endpoint identity
-
-For supported database clients, `server.address` describes the configured
-target, while `network.peer.address` identifies the endpoint actually contacted,
-where available. For a cluster, the configured target can be a list of endpoints
-instead of a single host. Review service graphs and dashboards grouped by
-`server.address`: their grouping may change even though the attribute name has
-not.
 
 ### Capture settings and instrumentation defaults
 
@@ -338,3 +341,4 @@ time to address problems before 3.0 becomes the default.
   https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/messaging/messaging-spans.md
 [messaging-1.43]:
   https://github.com/open-telemetry/semantic-conventions/blob/v1.43.0/docs/messaging/messaging-spans.md
+[db-migration]: /docs/specs/semconv/non-normative/db-migration/
