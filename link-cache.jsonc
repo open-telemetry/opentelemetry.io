@@ -1319,6 +1319,16 @@
     "when": "2026-09-28T05:47:57Z",
     "via": "lychee",
   },
+  "https://connectrpc.com/docs/go/headers-and-trailers/": {
+    "result": 200,
+    "when": "2026-10-06T10:36:24Z",
+    "via": "lychee",
+  },
+  "https://connectrpc.com/docs/protocol/": {
+    "result": 200,
+    "when": "2026-10-06T10:36:24Z",
+    "via": "lychee",
+  },
   "https://connectrpc.com/docs/protocol/#error-codes": {
     "result": 200,
     "when": "2026-09-28T05:47:57Z",
@@ -3547,6 +3557,16 @@
   "https://dubbo.apache.org/en/overview/reference/protocols/triple-spec/#311-request": {
     "result": 200,
     "when": "2026-09-28T05:47:57Z",
+    "via": "lychee",
+  },
+  "https://dubbo.apache.org/en/overview/reference/protocols/triple-spec/#322-requests": {
+    "result": 200,
+    "when": "2026-10-06T10:36:24Z",
+    "via": "lychee",
+  },
+  "https://dubbo.apache.org/en/overview/reference/protocols/triple-spec/#323-responses": {
+    "result": 200,
+    "when": "2026-10-06T10:36:24Z",
     "via": "lychee",
   },
   "https://ebpf.io/": {
@@ -7357,6 +7377,11 @@
   "https://github.com/grpc/grpc-java#transport": {
     "result": 200,
     "when": "2026-10-02T19:05:06Z",
+    "via": "lychee",
+  },
+  "https://github.com/grpc/grpc/blob/v1.75.0/doc/PROTOCOL-HTTP2.md#requests": {
+    "result": 200,
+    "when": "2026-10-06T10:36:24Z",
     "via": "lychee",
   },
   "https://github.com/grpc/grpc/blob/v1.75.0/doc/statuscodes.md": {
@@ -24659,6 +24684,11 @@
     "when": "2026-09-29T05:46:31Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/3924": {
+    "result": 200,
+    "when": "2026-10-06T10:36:25Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/4064": {
     "result": 200,
     "when": "2026-10-02T19:32:36Z",
@@ -27299,9 +27329,19 @@
     "when": "2026-09-30T05:46:13Z",
     "via": "lychee",
   },
+  "https://grpc.io/docs/guides/metadata/": {
+    "result": 200,
+    "when": "2026-10-06T10:36:24Z",
+    "via": "lychee",
+  },
   "https://grpc.io/docs/guides/opentelemetry-metrics/": {
     "result": 200,
     "when": "2026-10-02T19:04:56Z",
+    "via": "lychee",
+  },
+  "https://grpc.io/docs/what-is-grpc/core-concepts/#rpc-life-cycle": {
+    "result": 200,
+    "when": "2026-10-06T10:36:24Z",
     "via": "lychee",
   },
   "https://guava.dev/releases/10.0/api/docs/com/google/common/util/concurrent/ListenableFuture.html": {
