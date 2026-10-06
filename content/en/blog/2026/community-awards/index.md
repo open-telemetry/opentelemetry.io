@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Community Awards 2026
 linkTitle: Thank an OpenTelemetry contributor!
-date: 2026-10-05
+date: 2026-10-07
 sig: End-User SIG
 author: OpenTelemetry Community Managers
 ---
