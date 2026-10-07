@@ -6639,6 +6639,16 @@
     "when": "2026-09-08T05:42:41Z",
     "via": "lychee",
   },
+  "https://github.com/docsy/docsy/blob/main/docsy.dev/content/en/docs/deployment/chrome.md": {
+    "result": 200,
+    "when": "2026-10-07T11:09:44Z",
+    "via": "lychee",
+  },
+  "https://github.com/docsy/docsy/issues/2596": {
+    "result": 200,
+    "when": "2026-10-07T11:09:44Z",
+    "via": "lychee",
+  },
   "https://github.com/dol": {
     "result": 200,
     "when": "2026-09-29T05:45:40Z",
