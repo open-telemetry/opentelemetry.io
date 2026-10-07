@@ -6639,6 +6639,16 @@
     "when": "2026-09-08T05:42:41Z",
     "via": "lychee",
   },
+  "https://github.com/docsy/docsy/blob/main/docsy.dev/content/en/docs/deployment/chrome.md": {
+    "result": 200,
+    "when": "2026-10-07T11:09:44Z",
+    "via": "lychee",
+  },
+  "https://github.com/docsy/docsy/issues/2596": {
+    "result": 200,
+    "when": "2026-10-07T11:09:44Z",
+    "via": "lychee",
+  },
   "https://github.com/dol": {
     "result": 200,
     "when": "2026-09-29T05:45:40Z",
@@ -23819,6 +23829,11 @@
     "when": "2026-09-02T05:43:04Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/check-build-log.sh": {
+    "result": 200,
+    "when": "2026-10-07T08:23:56Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages/patches.yml": {
     "result": 200,
     "when": "2026-09-02T05:43:04Z",
@@ -34307,6 +34322,11 @@
   "https://www.docsy.dev/docs/content/shortcodes/#alert": {
     "result": 200,
     "when": "2026-09-30T05:46:18Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/tags/hugo/": {
+    "result": 200,
+    "when": "2026-10-07T08:51:00Z",
     "via": "lychee",
   },
   "https://www.dropwizard.io/en/latest/manual/views.html": {
