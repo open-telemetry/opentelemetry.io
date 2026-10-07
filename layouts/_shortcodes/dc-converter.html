@@ -1,7 +1,9 @@
 {{ $source := .Get "source" | default "agent" -}}
-{{/* Real path, not the `examples/otel-config` symlink: since Hugo 0.165,
-  `readFile` through that symlink returns an empty string. */ -}}
-{{ $gettingStarted := readFile "content-modules/opentelemetry-configuration/examples/otel-getting-started.yaml" -}}
+{{ $gettingStartedPath := "content-modules/opentelemetry-configuration/examples/otel-getting-started.yaml" -}}
+{{ $gettingStarted := readFile $gettingStartedPath -}}
+{{ if not $gettingStarted -}}
+  {{ warnf "dc-converter: %s is empty or missing" $gettingStartedPath -}}
+{{ end -}}
 
 <div class="dc-converter card p-3 my-4" data-source="{{ $source }}" data-getting-started="{{ $gettingStarted | htmlEscape }}">
   <p class="text-body-secondary mb-3">
