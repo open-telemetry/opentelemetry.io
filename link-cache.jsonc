@@ -34329,11 +34329,6 @@
     "when": "2026-10-07T08:51:00Z",
     "via": "lychee",
   },
-  "https://www.docsy.dev/tags/upgrade/": {
-    "result": 200,
-    "when": "2026-10-07T08:23:56Z",
-    "via": "lychee",
-  },
   "https://www.dropwizard.io/en/latest/manual/views.html": {
     "result": 200,
     "when": "2026-09-28T05:47:15Z",

@@ -120,18 +120,17 @@ Two settings name a Hugo version:
 - `module.hugoVersion.min` in [`module-template.yaml`][], a floor: below it,
   Hugo warns, and the [build-log check][] turns the warning into a CI failure.
 
-The floor rises when the site comes to depend on a Hugo change. Hugo 0.166.0
-fixed its glob engine (`**/` no longer matches zero directories), and the mount
-`files` patterns are written against the fixed semantics, so the floor is
-0.166.0.
+The floor rises when the site comes to depend on a Hugo change. For example, the
+mount `files` patterns assume Hugo 0.166.0's fixed glob engine (`**/` no longer
+matches zero directories).
 
 To bump Hugo:
 
 1. Work through the [Docsy upgrade guides][] for the Hugo range.
 2. Set the `hugo-extended` version in `package.json` and
-   [reconcile the lock](#manifest-changes). (`npm run update:hugo` is the
-   script-enabled form: with `strict-allow-scripts`, it fails until step 3 is
-   done.)
+   [reconcile the lock](#manifest-changes). (`npm run update:hugo` installs the
+   latest version instead, with scripts enabled; `strict-allow-scripts` fails it
+   unless the approval already names that version.)
 3. Update the [`allowScripts` approval](#script-bearing-packages), then run
    `npm run install:safe` to fetch the pinned binary through the reviewed hook.
 4. Raise `hugoVersion.min` if the site now depends on a change in that range.

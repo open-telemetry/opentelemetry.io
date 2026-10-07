@@ -1,9 +1,10 @@
 // Fails when any README.md renders as a page. Every README in the mounted
 // content modules is renamed, remapped, or excluded before Hugo sees it, so a
-// `readme/` directory in the output means one of those steps stopped working
-// (why that can happen silently: site/build/dependencies.md § Hugo). It checks
-// output paths only: a README given a `slug` or `url`, or a build missing its
-// root `index.html`, passes.
+// `readme/` directory in the output means one of those steps stopped working,
+// which the build doesn't report (one such case, Hugo 0.166's glob change:
+// https://opentelemetry.io/site/build/dependencies/#hugo). It checks output
+// paths only, so a README given a `slug` or `url` passes; without a root
+// `index.html`, the check skips.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
