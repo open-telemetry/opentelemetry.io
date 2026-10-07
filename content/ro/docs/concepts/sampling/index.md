@@ -17,7 +17,7 @@ eșantionare adecvată.
 
 ![Ilustrația arată că nu toate datele au nevoie să fie urmărite și că un eșantion din date este suficient.](traces-venn-diagram.svg)
 
-## Terminologie
+## Terminologie {#terminology}
 
 Este important să folosim terminologia în mod consecvent când discutăm despre eșantionare. O urmă sau un interval
 sunt considerate "eșantionate" sau "neeșantionate".
@@ -32,22 +32,23 @@ Uneori, definițiile acestor termeni sunt încurcate. Poți găsi că cineva afi
 "eșantionează date" sau că date care nu sunt procesate sau exportate sunt considerate
 "eșantionate". Acestea sunt afirmații incorecte.
 
-## Why sampling?
+## De ce eșantionare? {#why-sampling}
 
-Sampling is one of the most effective ways to reduce the costs of observability
-without losing visibility. Although there are other ways to lower costs, such as
-filtering or aggregating data, these other methods do not adhere to the concept
-of representativeness, which is crucial when performing in-depth analysis of
-application or system behavior.
+Eșantionarea este una dintre cele mai folositoare metode de a reduce costurile de monitorizare
+fără a pierde vizibilitate. Deși sunt alte metode de a scădea costuri, precum filtrare
+și agregarea datelor, aceste alternative nu aderă la conceptul de reprezentativitate,
+care este crucial când faci o analiză în profunzime a comportamentului unei aplicații
+sau sistem.
 
-Representativeness is the principle that a smaller group can accurately
-represent a larger group. Additionally, representativeness can be mathematically
-verified, meaning that you can have high confidence that a smaller sample of
-data accurately represents the larger group.
+Reprezentativitatea este principiul că un grup mai mic poate reprezenta cu acuratețe
+un grup mai mare. În plus, reprezentativitatea poate fi verificată matematic, ceea
+ce înseamnă că poți avea o încredere ridicată în faptul că un eșantion mai mic de date
+reprezintă cu acuratețe grupul mai mare.
 
-Additionally, the more data you generate, the less data you actually need to
-have a representative sample. For high-volume systems, it is quite common for a
-sampling rate of 1% or lower to very accurately represent the other 99% of data.
+De asemenea, cu cât generezi mai multe date, cu atât mai puține ai nevoie pentru a avea
+un eșantion reprezentativ. În cazul sistemelor cu volum mare de date, este destul de comun
+ca o rată de eșantionare de 1% sau mai puțin pentru a reprezenta cu mare acuratețe restul
+de 99% din date.
 
 ### When to sample
 

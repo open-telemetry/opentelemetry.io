@@ -37,6 +37,10 @@ emiți
 emojiilor
 enumerează
 eșantionare
+eșantionat
+eșantionată
+eșantionator
+eșantionează
 explorezi
 exportatorilor
 formatorul
@@ -67,6 +71,8 @@ migrare
 migrezi
 multilingvist
 nedeterministe
+neeșantionat
+neeșantionată
 nelansate
 nespecificate
 nestandard
@@ -115,9 +121,3 @@ urmǎrirea
 valideze
 verificatoarele
 verificatorul
-eșantionată
-neeșantionată
-eșantionat
-eșantionator
-neeșantionat
-eșantionează
