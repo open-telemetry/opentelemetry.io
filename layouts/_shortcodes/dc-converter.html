@@ -1,5 +1,5 @@
 {{ $source := .Get "source" | default "agent" -}}
-{{/* Real path, not the `examples/otel-config` symlink: since Hugo 0.166,
+{{/* Real path, not the `examples/otel-config` symlink: since Hugo 0.165,
   `readFile` through that symlink returns an empty string. */ -}}
 {{ $gettingStarted := readFile "content-modules/opentelemetry-configuration/examples/otel-getting-started.yaml" -}}
 
