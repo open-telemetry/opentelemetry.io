@@ -34314,6 +34314,11 @@
     "when": "2026-09-30T05:46:18Z",
     "via": "lychee",
   },
+  "https://www.docsy.dev/tags/hugo/": {
+    "result": 200,
+    "when": "2026-10-07T08:51:00Z",
+    "via": "lychee",
+  },
   "https://www.docsy.dev/tags/upgrade/": {
     "result": 200,
     "when": "2026-10-07T08:23:56Z",
