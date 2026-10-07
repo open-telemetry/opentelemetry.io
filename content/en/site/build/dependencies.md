@@ -111,6 +111,26 @@ the contributor making the change:
    in [`.github/renovate.jsonc`][]: every bump of an approved package needs the
    steps above, so its update PRs must wait for a contributor.
 
+### Hugo {#hugo}
+
+Hugo is pinned twice, and the two pins stay equal:
+
+- `hugo-extended` in [`package.json`][], exact: the binary every build uses.
+- `module.hugoVersion.min` in [`module-template.yaml`][]: the floor Hugo
+  enforces, with a warning that the [build-log check][] turns into a failure.
+
+The site is validated only at the pinned version, and a Hugo minor can change
+the generated site without failing the build (0.166.0: its new glob engine
+matches mount `files` patterns differently, and template reads through a symlink
+return empty), so the floor is the tested version, not the theme's declared
+minimum.
+
+To bump Hugo: `npm run update:hugo` (or edit the version and
+[reconcile the lock](#manifest-changes)), update the
+[`allowScripts` approval](#script-bearing-packages), set `hugoVersion.min` to
+the same version, and work through the [Docsy upgrade guide][] for the Hugo
+range.
+
 ### Transitive refreshes {#transitive-refresh}
 
 No schedule re-resolves the lock wholesale ([resolution is
@@ -322,14 +342,17 @@ with this rule through [drift tracking][].
 <!-- prettier-ignore-start -->
 [`.github/renovate.jsonc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.jsonc
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
+[`module-template.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
+[build-log check]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/check-build-log.sh
 [ci-security]: ../ci-workflows/#security-model
 [deliberate]: ../../design/supply-chain-security/#deliberate
 [Dependabot security updates]: https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
+[Docsy upgrade guide]: https://www.docsy.dev/tags/upgrade/
 [Docsy]: https://www.docsy.dev/
 [drift tracking]: /docs/contributing/localization/#track-changes
 [includes a clone of the repository]: https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2

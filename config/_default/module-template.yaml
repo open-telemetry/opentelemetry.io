@@ -3,7 +3,8 @@
 
 hugoVersion:
   extended: true
-  min: 0.160.1
+  # Same version as the `hugo-extended` pin; why: site/build/dependencies.md § Hugo
+  min: 0.166.0
 mounts:
   ## en
   - source: content/en
