@@ -187,7 +187,7 @@
     "puppeteer": "25.9.0",
     "puppeteer-core": "25.9.0",
     "require-dir": "1.2.0",
-    "sass-embedded": "1.103.1",
+    "sass-embedded": "1.105.0",
     "smol-toml": "1.8.0",
     "textlint": "15.8.0",
     "textlint-filter-rule-allowlist": "4.0.0",
