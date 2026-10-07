@@ -38,7 +38,7 @@ locales:
     approvers: [kota-sakuma]
   ko:
     maintainers: []
-    approvers: []
+    approvers: [abel9851, krapie]
   pl:
     maintainers: []
     approvers: [andrzej-stencel, Kielek, pellared]
