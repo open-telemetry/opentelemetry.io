@@ -31,7 +31,7 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `ci:prepare`      | Post-`ci:min` setup: [fetch the pinned Hugo binary][], then `prepare`.               |
 | `install:safe`    | [Lock-exact local setup][]: inert install, then `ci:prepare`.                        |
 | `prepare`         | Install step: `get:submodule`, then Docsy's [lock-exact theme dependency install][]. |
-| `update:hugo`     | Install latest hugo-extended; then the rest of the [Hugo bump][].                    |
+| `update:hugo`     | Install latest hugo-extended, scripts enabled; the [Hugo bump][] lists the steps.    |
 | `update:packages` | Run npm-check-updates to bump deps, subject to the [release cooldown][].             |
 
 ## Build and serve

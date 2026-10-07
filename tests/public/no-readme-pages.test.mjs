@@ -1,11 +1,8 @@
 // Guards the built site against README pages. Every README.md in the mounted
-// content modules is either remapped to a section index (the semconv mounts)
-// or excluded, so a `readme/` page in the output means a mount pattern stopped
-// matching. Hugo 0.166.0's new glob engine did exactly that to `**/README.md`
-// and the build stayed green: the leak is only visible in the output.
-//
-// It reads the built site, so it skips when `public/` is absent (convention of
-// `tests/public/`, run via `test:public`).
+// content modules is renamed or remapped to a section index, or excluded,
+// before Hugo sees it, so a `readme/` page in the output means one of those
+// steps stopped working. Hugo 0.166.0's glob change did exactly that with a
+// green build (site/build/dependencies.md § Hugo).
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -41,6 +38,6 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     const leaked = readmeDirs(publicDir).map((d) =>
       path.relative(publicDir, d),
     );
-    assert.deepEqual(leaked, [], `README pages leaked: ${leaked.join(', ')}`);
+    assert.deepEqual(leaked, [], 'no README pages in the built site');
   });
 }

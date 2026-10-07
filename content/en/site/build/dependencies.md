@@ -113,23 +113,28 @@ the contributor making the change:
 
 ### Hugo {#hugo}
 
-Hugo is pinned twice, and the two pins stay equal:
+Two settings name a Hugo version:
 
-- `hugo-extended` in [`package.json`][], exact: the binary every build uses.
-- `module.hugoVersion.min` in [`module-template.yaml`][]: the floor Hugo
-  enforces, with a warning that the [build-log check][] turns into a failure.
+- `hugo-extended` in [`package.json`][], an exact pin: the binary every build
+  uses, and the only version the site is validated at.
+- `module.hugoVersion.min` in [`module-template.yaml`][], a floor: below it,
+  Hugo warns, and the [build-log check][] turns the warning into a CI failure.
 
-The site is validated only at the pinned version, and a Hugo minor can change
-the generated site without failing the build (0.166.0: its new glob engine
-matches mount `files` patterns differently, and template reads through a symlink
-return empty), so the floor is the tested version, not the theme's declared
-minimum.
+The floor rises when the site comes to depend on a Hugo change. Hugo 0.166.0
+fixed its glob engine (`**/` no longer matches zero directories), and the mount
+`files` patterns are written against the fixed semantics, so the floor is
+0.166.0.
 
-To bump Hugo: `npm run update:hugo` (or edit the version and
-[reconcile the lock](#manifest-changes)), update the
-[`allowScripts` approval](#script-bearing-packages), set `hugoVersion.min` to
-the same version, and work through the [Docsy upgrade guide][] for the Hugo
-range.
+To bump Hugo:
+
+1. Work through the [Docsy upgrade guides][] for the Hugo range.
+2. Set the `hugo-extended` version in `package.json` and
+   [reconcile the lock](#manifest-changes). (`npm run update:hugo` is the
+   script-enabled form: with `strict-allow-scripts`, it fails until step 3 is
+   done.)
+3. Update the [`allowScripts` approval](#script-bearing-packages), then run
+   `npm run install:safe` to fetch the pinned binary through the reviewed hook.
+4. Raise `hugoVersion.min` if the site now depends on a change in that range.
 
 ### Transitive refreshes {#transitive-refresh}
 
@@ -352,7 +357,7 @@ with this rule through [drift tracking][].
 [deliberate]: ../../design/supply-chain-security/#deliberate
 [Dependabot security updates]: https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
-[Docsy upgrade guide]: https://www.docsy.dev/tags/upgrade/
+[Docsy upgrade guides]: https://www.docsy.dev/tags/hugo/
 [Docsy]: https://www.docsy.dev/
 [drift tracking]: /docs/contributing/localization/#track-changes
 [includes a clone of the repository]: https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2
