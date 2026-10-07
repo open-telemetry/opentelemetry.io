@@ -2,7 +2,7 @@
 [submodule "themes/docsy"]
 	path = themes/docsy
 	url = https://github.com/docsy/docsy.git
-	docsy-pin = theme/v0.17.0-73-gc28d39c5
+	docsy-pin = theme/v0.17.0-84-g05eb7b46
 	docsy-note = "2026-09-21 Switching to docsy/docsy.git from google/docsy.git following the project's move to its own GitHub org (Docsy 0.18)."
 	docsy-reminder = "Ensure that any tag referenced by `docsy-pin` is present in the remote repo (url), otherwise add (push) the tags to the repo."
 [submodule "content-modules/opentelemetry-specification"]
