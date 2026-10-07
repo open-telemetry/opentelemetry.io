@@ -1,6 +1,6 @@
 {{ $source := .Get "source" | default "agent" -}}
-{{/* Real path, not the `examples/otel-config` symlink: Hugo 0.166+ reads
-  through project symlinks as empty. */ -}}
+{{/* Real path, not the `examples/otel-config` symlink: since Hugo 0.166,
+  `readFile` through that symlink returns an empty string. */ -}}
 {{ $gettingStarted := readFile "content-modules/opentelemetry-configuration/examples/otel-getting-started.yaml" -}}
 
 <div class="dc-converter card p-3 my-4" data-source="{{ $source }}" data-getting-started="{{ $gettingStarted | htmlEscape }}">
