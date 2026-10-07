@@ -1849,6 +1849,12 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/Cirilla-zmh
     avatar_url: https://avatars.githubusercontent.com/u/84360903?v=4
+  - name: constanca-m
+    teams:
+      - collector-contrib-approvers
+      - collector-contrib-triagers
+    html_url: https://github.com/constanca-m
+    avatar_url: https://avatars.githubusercontent.com/u/113898685?v=4
   - name: crobert-1
     teams:
       - collector-contrib-approvers
@@ -1981,7 +1987,6 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/22205748?v=4
   - name: JonasKunz
     teams:
-      - java-instrumentation-approvers
       - java-instrumentation-triagers
       - semconv-sdk-health-approvers
     html_url: https://github.com/JonasKunz
@@ -2403,11 +2408,6 @@ triagers:
       - sig-contributor-experience-triagers
     html_url: https://github.com/bogdan-st
     avatar_url: https://avatars.githubusercontent.com/u/102800531?v=4
-  - name: constanca-m
-    teams:
-      - collector-contrib-triagers
-    html_url: https://github.com/constanca-m
-    avatar_url: https://avatars.githubusercontent.com/u/113898685?v=4
   - name: d4nyll
     teams:
       - javascript-contrib-triagers
