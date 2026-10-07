@@ -1,8 +1,7 @@
-// Guards the built site against README pages. Every README.md in the mounted
-// content modules is renamed or remapped to a section index, or excluded,
-// before Hugo sees it, so a `readme/` page in the output means one of those
-// steps stopped working. Hugo 0.166.0's glob change did exactly that with a
-// green build (site/build/dependencies.md § Hugo).
+// Fails when any README.md renders as a page. Every README in the mounted
+// content modules is renamed, remapped, or excluded before Hugo sees it, so a
+// `readme/` directory in the output means one of those steps stopped working
+// (why that can happen silently: site/build/dependencies.md § Hugo).
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -38,6 +37,6 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     const leaked = readmeDirs(publicDir).map((d) =>
       path.relative(publicDir, d),
     );
-    assert.deepEqual(leaked, [], 'no README pages in the built site');
+    assert.deepEqual(leaked, [], 'README pages are excluded from the built site');
   });
 }
