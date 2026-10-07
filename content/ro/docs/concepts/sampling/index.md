@@ -50,15 +50,14 @@ un eșantion reprezentativ. În cazul sistemelor cu volum mare de date, este des
 ca o rată de eșantionare de 1% sau mai puțin pentru a reprezenta cu mare acuratețe restul
 de 99% din date.
 
-### When to sample
+### Când să eșantionezi {#when-to-sample}
 
-Consider sampling if you meet any of the following criteria:
+Ia în considerare eșantionarea dacă îndeplinești oricare dintre următoarele criterii:
 
-- You generate 1000 or more traces per second.
-- Most of your trace data represents healthy traffic with little variation in
-  data.
-- You have some common criteria, like errors or high latency, that usually means
-  something is wrong.
+- Generezi 1000 sau mai multe urme pe secundă.
+- Majoritatea datelor de urme reprezintă trafic funcțional cu o variație mică în date.
+- Ai niște criterii comune, precum erori și latență mare, ceea ce înseamnă de obicei
+  că ceva este în neregulă
 - You have domain-specific criteria you can use to determine relevant data
   beyond errors and latency.
 - You can describe some common rules that determine if data should be sampled or
