@@ -2,7 +2,7 @@
 {{ $gettingStartedPath := "content-modules/opentelemetry-configuration/examples/otel-getting-started.yaml" -}}
 {{ $gettingStarted := readFile $gettingStartedPath -}}
 {{ if not $gettingStarted -}}
-  {{ warnf "dc-converter: %s is empty or missing" $gettingStartedPath -}}
+  {{ warnf "%s: %s is empty or missing" .Name $gettingStartedPath -}}
 {{ end -}}
 
 <div class="dc-converter card p-3 my-4" data-source="{{ $source }}" data-getting-started="{{ $gettingStarted | htmlEscape }}">
