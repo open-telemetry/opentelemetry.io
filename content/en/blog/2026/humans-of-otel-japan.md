@@ -127,6 +127,19 @@ observability for AI agents lately, so I like the
 nicely absorb the others and contribute to things like cost optimization and
 summarization.
 
+## Wrapping up
+
+This was the first Humans of OpenTelemetry from KubeCon + CloudNativeCon Japan.
+Each person came to OpenTelemetry by a different path: working at an
+observability vendor, introducing the Grafana stack, evaluating the Collector,
+welcoming a common standard across vendors, and looking for a better fit than
+SaaS tools. Traces were the favorite signal for three of the five, with metrics
+and the Generative AI semantic conventions also getting some love.
+
+Many thanks to Yuzuru, Mikata, Yoshiki, Takashi, and Kohei for sharing their
+stories. We hope to bring Humans of OpenTelemetry back to Japan at future
+events!
+
 ## Join us!
 
 If you have a story to share about how you use OpenTelemetry at your
