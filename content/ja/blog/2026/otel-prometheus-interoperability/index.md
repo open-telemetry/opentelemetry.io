@@ -15,7 +15,7 @@ cSpell:ignore: Ahuja Dhruv György Heorku Kiripolsky Krajcsovits Krajo Muenz tex
 ---
 
 私たちは OpenTelemetry と Prometheus のユーザーを対象に、メトリクスの収集、処理、保存の方法を尋ねるサーベイを実施しました。
-目標は、憶測ではなく実際の利用データに基づいて、エコシステムがどこまで進んだか、そして相互運用性にまだ摩擦が残っているかを理解することでした。
+目標は、憶測ではなく実際の利用データに基づいて、エコシステムがどこまで進んだか、そして相互運用性にいまだ摩擦が残っているかを理解することでした。
 
 ## 主なポイント {#key-takeaways}
 
@@ -229,5 +229,5 @@ _**Note**: Sysadmin (n = 6) と Operations (n = 2) の回答者はこのテー�
 相互運用性は2年前と比較して測定可能な改善を遂げていますが、自由回答は具体的なギャップ（データモデルの違い、リソース属性とメタデータのギャップ、命名とフォーマットの摩擦）を指し示しています。
 OpenTelemetry 側と Prometheus 側の両方で、まだ多くの作業が必要です。
 
-誰でも貢献を歓迎します。
+どなたの貢献も歓迎します。
 議論は CNCF Slack の [#otel-prometheus](https://cloud-native.slack.com/archives/C01LSCJBXDZ) チャンネルで行われています。
