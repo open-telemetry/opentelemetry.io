@@ -1,7 +1,7 @@
 ---
 title: The Humans of OpenTelemetry - KubeCon Japan 2026
 linkTitle: Humans of OTel Japan 2026
-date: 2026-08-26
+date: 2026-10-15
 author: >-
   [Yoshi Yamaguchi](https://github.com/ymotongpoo) (Grafana Labs)
 sig: End User SIG
@@ -22,17 +22,15 @@ native community, and learned how they got involved with OTel:
 - [Kohei Sugimoto](https://github.com/kohbis) (MIXI)
 
 The interviews were conducted in Japanese, and the transcript below is an
-English translation.
-
-<!-- TODO: Embed the YouTube recording once the edited footage is published. -->
+English translation. We'll add the video recording to this post once it's
+published.
 
 Thanks to everyone who has contributed to OpenTelemetry to date. We look forward
 to your continued contributions in 2026 and beyond! 🎉
 
 ## Transcript
 
-If reading is more your thing, check out the following transcript of our
-conversations.
+Here's what they had to say.
 
 ### 1- Meet the Humans of OTel
 
@@ -140,6 +138,9 @@ organization, we'd love to hear from you! Ways to share:
   [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
 - Join our [OTel in Practice](/community/end-user/otel-in-practice/) sessions
 - Share your stories on the [OpenTelemetry blog](/docs/contributing/blog/)
+- Propose a
+  [blueprint or reference implementation](/docs/guidance/#how-to-contribute)
+  based on your experience
 - Contact us on the
   [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
   for any other types of sessions you'd like to see!
