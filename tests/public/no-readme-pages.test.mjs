@@ -37,6 +37,10 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     const leaked = readmeDirs(publicDir).map((d) =>
       path.relative(publicDir, d),
     );
-    assert.deepEqual(leaked, [], 'README pages are excluded from the built site');
+    assert.deepEqual(
+      leaked,
+      [],
+      'README pages are excluded from the built site',
+    );
   });
 }
