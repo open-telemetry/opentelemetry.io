@@ -164,8 +164,9 @@ npm run fix:markdown     # Auto-fix markdown issues
 
 ### Hugo-Specific Details
 
-- Uses Hugo v0.148.2 with extended features
-- Theme: Docsy (Google's documentation theme)
+- Uses the `hugo-extended` version pinned in `package.json` (0.166.0 at this
+  writing)
+- Theme: Docsy, a Linux Foundation project
 - Multilingual support enabled for 8+ languages
 - Content mounting from submodules defined in
   `config/_default/module-template.yaml`
