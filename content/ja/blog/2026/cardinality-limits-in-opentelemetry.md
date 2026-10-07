@@ -31,12 +31,12 @@ SDK は属性値の完全なセットごとに測定値を集約します。
 
 たとえば、このリクエストカウンターには4つの一意な組み合わせがあります。
 
-| `http.route` | `success` | Count |
-| ------------ | --------- | ----- |
-| `/home`      | `true`    | 130   |
-| `/home`      | `false`   | 2     |
-| `/cart`      | `true`    | 50    |
-| `/cart`      | `false`   | 1     |
+| `http.route` | `success` | カウント |
+| ------------ | --------- | -------- |
+| `/home`      | `true`    | 130      |
+| `/home`      | `false`   | 2        |
+| `/cart`      | `true`    | 50       |
+| `/cart`      | `false`   | 1        |
 
 このメトリクスストリームのカーディナリティは4です。
 `tenant_id` のような高カーディナリティの属性を追加すると、組み合わせの数は非常に急速に増加します。
@@ -66,7 +66,7 @@ SDK は属性値の完全なセットごとに測定値を集約します。
 
 ここで覚えておくべきことがあります。
 オーバーフローは、高カーディナリティを引き起こした属性だけでなく、**属性の組み合わせ全体**に影響します。
-`success` のような低カーディナリティの属性であっても、その測定値がオーバーフローに集約されると、フィルタリングやグループ化に対して信頼できなくなります。
+真偽値の `success` のような低カーディナリティの属性であっても、その測定値がオーバーフローに集約されると、フィルタリングやグループ化に対して信頼できなくなります。
 
 ## 本番環境への影響 {#the-production-implications}
 
@@ -228,10 +228,9 @@ count by (__name__, job) (
 
 - [カーディナリティ制限](/docs/concepts/signals/metrics/#cardinality-limits):
   制限から免除されるものやテンポラリティがどのように影響するかなど、コンセプトの完全なドキュメント
-- [OpenTelemetry Metrics SDK specification: Cardinality
-  Limits][spec-cardinality]
+- [OpenTelemetry メトリクス SDK 仕様：カーディナリティ制限][spec-cardinality]
 - [Metrics That Lie: Understanding OpenTelemetry's Cardinality Capping and Its Implications](https://youtu.be/QTeA16I_hME),
-  my KubeCon EU 2026 lightning talk
+  筆者による KubeCon EU 2026 のライトニングトーク
 
 [spec-cardinality]: https://github.com/open-telemetry/opentelemetry-specification/blob/6837311818b3cedcda4cad222804c4f98f1fe402/specification/metrics/sdk.md#cardinality-limits
 [spec-compliance]: https://github.com/open-telemetry/opentelemetry-specification/blob/6837311818b3cedcda4cad222804c4f98f1fe402/spec-compliance-matrix.md
