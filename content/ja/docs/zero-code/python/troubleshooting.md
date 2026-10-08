@@ -2,8 +2,7 @@
 title: Pythonの自動計装に関する問題のトラブルシューティング
 linkTitle: Troubleshooting
 weight: 40
-default_lang_commit: bdfe463187e63311ab3e137f1e314acfb877fd8b
-drifted_from_default: true
+default_lang_commit: 4b2fa5c404644a6ab7a68cb6848c65d32263aa53
 cSpell:ignore: ASGI gunicorn uvicorn
 ---
 
@@ -100,6 +99,14 @@ gunicorn myapp.main:app --workers 4
 [Python issue 6721](https://bugs.python.org/issue6721) で説明されているフォークとデッドロックも参照してください。
 
 #### 回避策 {#workarounds}
+
+サーバーのフォーク後に OpenTelemetry を初期化することが推奨される回避策です。
+各ワーカーが独自の SDK コンポーネントとリソースを持つようになり、共有されたバックグラウンドスレッドやロックを回避し、各メトリクスライターに固有のリソースアイデンティティを付与できます。
+
+OpenTelemetry Python SDK 1.44.0 以降では、SDK は各 Python プロセスに対して一意の `service.instance.id` リソース属性を自動生成し、フォークされた子プロセス内で他の設定済みプロセス依存リソース属性とともに再生成します。
+これにより、オプションのプロセスリソースディテクターを有効にしなくても、各ワーカーに固有のメトリクスストリームアイデンティティが付与されます。
+ただし、継承されたバックグラウンドスレッドの復元やロックの解決は行われません。これらの問題を回避するには、フォーク後に SDK を初期化してください。
+複数のワーカーに対して1つの共有 `service.instance.id` を設定することは避けてください。メトリクスプロデューサーは [single-writer principle](/docs/specs/otel/metrics/data-model/#single-writer) に従うことが期待されます。
 
 OpenTelemetryでプリフォークサーバーを使用するためのいくつかの回避策があります。
 次の表は、複数のワーカーでプリフォークされた、さまざまな自動計装Webサーバーゲートウェイスタックによるシグナルエクスポートの現在のサポートをまとめています。
