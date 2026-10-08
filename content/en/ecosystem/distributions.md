@@ -55,6 +55,7 @@ To have your distribution listed, [submit a PR][] with an entry added to the
 [components]: /docs/concepts/components/
 [distributions]: /docs/concepts/distributions/
 [vendor]: ../vendors/
+
 <!--
 [distributions list]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml
