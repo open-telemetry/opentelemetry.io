@@ -1724,6 +1724,11 @@
     "when": "2026-09-28T05:47:55Z",
     "via": "lychee",
   },
+  "https://devcenter.heroku.com/articles/heroku-opentelemetry-signals-and-attributes-reference": {
+    "result": 200,
+    "when": "2026-10-08T10:38:07Z",
+    "via": "lychee",
+  },
   "https://devcenter.heroku.com/articles/heroku-telemetry": {
     "result": 200,
     "when": "2026-10-03T05:48:37Z",
@@ -1732,6 +1737,11 @@
   "https://devcenter.heroku.com/articles/opentelemetry-concepts-and-heroku": {
     "result": 200,
     "when": "2026-10-02T19:05:07Z",
+    "via": "lychee",
+  },
+  "https://devcenter.heroku.com/articles/working-with-heroku-telemetry-drains": {
+    "result": 200,
+    "when": "2026-10-08T10:38:06Z",
     "via": "lychee",
   },
   "https://developer.android.com/guide/components/activities/activity-lifecycle#lifecycle-callbacks": {
@@ -1822,6 +1832,16 @@
   "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/": {
     "result": 200,
     "when": "2026-10-08T05:47:38Z",
+    "via": "lychee",
+  },
+  "https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/": {
+    "result": 200,
+    "when": "2026-10-08T10:38:06Z",
+    "via": "lychee",
+  },
+  "https://developers.cloudflare.com/workers/observability/traces/": {
+    "result": 200,
+    "when": "2026-10-08T10:38:06Z",
     "via": "lychee",
   },
   "https://developers.google.com/protocol-buffers/docs/encoding": {
@@ -8924,6 +8944,11 @@
     "when": "2026-10-02T19:05:23Z",
     "via": "lychee",
   },
+  "https://github.com/nityanandagohain": {
+    "result": 200,
+    "when": "2026-10-08T10:38:07Z",
+    "via": "lychee",
+  },
   "https://github.com/niwoerner": {
     "result": 200,
     "when": "2026-10-02T19:05:23Z",
@@ -9777,6 +9802,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/transformprocessor?from_branch=main": {
     "result": 200,
     "when": "2026-10-03T05:48:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/8bee89f9928b4b1f81700f9ab0e5886d428bfae6/receiver/awscloudwatchreceiver/logs.go#L293": {
+    "result": 200,
+    "when": "2026-10-08T10:38:07Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9b28f76c02c18f7479d10e4b6a95a21467fd85d6/processor/transformprocessor/testdata/config.yaml": {
@@ -11512,6 +11542,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.156.0/receiver/jmxreceiver": {
     "result": 200,
     "when": "2026-10-02T19:05:14Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/connector/routingconnector#readme": {
+    "result": 200,
+    "when": "2026-10-08T10:38:07Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.160.0/connector/countconnector": {
@@ -26889,9 +26924,24 @@
     "when": "2026-10-02T19:05:07Z",
     "via": "lychee",
   },
+  "https://kuma.io/docs/2.13.x/explore/observability/": {
+    "result": 200,
+    "when": "2026-10-08T10:38:07Z",
+    "via": "lychee",
+  },
+  "https://kuma.io/docs/2.13.x/policies/meshaccesslog/#opentelemetry": {
+    "result": 200,
+    "when": "2026-10-08T10:38:07Z",
+    "via": "lychee",
+  },
   "https://kuma.io/docs/2.7.x/guides/otel-metrics/": {
     "result": 200,
     "when": "2026-10-02T19:05:08Z",
+    "via": "lychee",
+  },
+  "https://kuma.io/docs/latest/policies/meshtrace/": {
+    "result": 200,
+    "when": "2026-10-08T10:38:07Z",
     "via": "lychee",
   },
   "https://kyverno.io/": {
