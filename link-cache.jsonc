@@ -33124,6 +33124,11 @@
     "when": "2026-09-30T05:46:18Z",
     "via": "lychee",
   },
+  "https://www.docsy.dev/docs/content/plugins/#add-a-custom-script": {
+    "result": 200,
+    "when": "2026-10-08T13:29:59Z",
+    "via": "lychee",
+  },
   "https://www.docsy.dev/docs/content/shortcodes/#alert": {
     "result": 200,
     "when": "2026-09-30T05:46:18Z",
