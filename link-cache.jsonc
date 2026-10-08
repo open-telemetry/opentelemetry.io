@@ -2876,7 +2876,12 @@
   },
   "https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F": {
     "result": "error",
-    "when": "2026-10-07T05:47:58Z",
+    "when": "2026-10-08T04:33:11Z",
+    "via": "lychee",
+  },
+  "https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-opentelemetry.html#GUID-4D941163-F357-4839-8B06-688876D4C61F": {
+    "result": 200,
+    "when": "2026-10-08T04:35:42Z",
     "via": "lychee",
   },
   "https://docs.oracle.com/en/database/oracle/oracle-database/23/refrn/V-SESSION.html": {
