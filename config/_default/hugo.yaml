@@ -17,6 +17,10 @@ languages:
     locale: en-US
     params:
       description: The OpenTelemetry Project Site
+      docsy:
+        plugins:
+          # Other locales' blog indexes still inline this script.
+          blog-sidebar-years: { enable: true }
   bn:
     label: বাংলা
     params:

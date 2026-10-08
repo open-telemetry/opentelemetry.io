@@ -1,0 +1,5 @@
+{{ $entry := .Plugin -}}
+{{ if ne .Page.Path "/blog" -}}
+  {{ $entry = merge $entry (dict "enable" false) -}}
+{{ end -}}
+{{ return $entry -}}
