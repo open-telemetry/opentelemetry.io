@@ -44,6 +44,9 @@ through OpenTelemetry, see [Integrations](/ecosystem/integrations/).
 If your organization provides a solution that consumes OpenTelemetry to offer
 **Observability to end users**, see [Vendors](/ecosystem/vendors).
 
+# TODO: remove spaces to fix shortcode formatting before uncommenting
+{ { % include keep-up-to-date.md adopter % } }
+
 [adopters list]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml
 [form]: https://forms.gle/K3pKmQdTc2eevLJv9
