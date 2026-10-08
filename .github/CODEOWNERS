@@ -73,9 +73,9 @@
 /.cspell/pt-*.txt @open-telemetry/docs-pt-approvers
 /content/pt/      @open-telemetry/docs-pt-approvers
 
-# ro (unstaffed)
-/.cspell/ro-*.txt @open-telemetry/docs-ro-approvers @open-telemetry/docs-approvers
-/content/ro/      @open-telemetry/docs-ro-approvers @open-telemetry/docs-approvers
+# ro
+/.cspell/ro-*.txt @open-telemetry/docs-ro-approvers
+/content/ro/      @open-telemetry/docs-ro-approvers
 
 # uk (unstaffed)
 /.cspell/uk-*.txt @open-telemetry/docs-uk-approvers @open-telemetry/docs-approvers
