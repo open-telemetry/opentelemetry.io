@@ -1,5 +1,5 @@
 // Checks the blog sidebar year-group expander, a site-owned Docsy plugin
-// (assets/js/plugins/blog-sidebar-years.js, registered for `en` in
+// (assets/js/plugins/otel-blog-sidebar-years.js, registered for `en` in
 // config/_default/hugo.yaml):
 //
 // - en blog index pages load the plugin script exactly once, with no inline
@@ -25,7 +25,7 @@ const repoRoot = path.resolve(
 const publicDir = path.join(repoRoot, 'public');
 
 const pluginScriptRE =
-  /<script\b[^>]*\bsrc="[^"]*\/js\/plugins\/blog-sidebar-years\.[0-9a-f]+\.js"[^>]*>/g;
+  /<script\b[^>]*\bsrc="[^"]*\/js\/plugins\/otel-blog-sidebar-years\.[0-9a-f]+\.js"[^>]*>/g;
 const inlineScriptRE = /<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi;
 const docsyPluginRE = (name) =>
   new RegExp(`<script\\b[^>]*\\bsrc="[^"]*/js/plugins/${name}\\.`);

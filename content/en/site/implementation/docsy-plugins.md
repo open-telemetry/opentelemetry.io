@@ -8,11 +8,15 @@ The site ships some of its own scripts as [Docsy plugins][]. Docsy emits each
 enabled plugin once, at the end of the page body, from a fingerprinted file with
 subresource integrity.
 
-| Plugin               | Effect                                                             | Loads on   | Languages |
-| -------------------- | ------------------------------------------------------------------ | ---------- | --------- |
-| `blog-sidebar-years` | Opens the blog sidebar's groups for the current and previous years | Blog index | `en`      |
+| Plugin                    | Effect                                                             | Loads on   | Languages |
+| ------------------------- | ------------------------------------------------------------------ | ---------- | --------- |
+| `otel-blog-sidebar-years` | Opens the blog sidebar's groups for the current and previous years | Blog index | `en`      |
 
 ## Plugin files
+
+Prefix site plugin names with `otel-`: Docsy matches plugin files by name, and a
+site file shadows the theme's, so the prefix keeps a future Docsy plugin from
+colliding with ours.
 
 For a plugin named _`NAME`_:
 
@@ -24,7 +28,7 @@ For a plugin named _`NAME`_:
   `config/_default/hugo.yaml`; under a language's `params`, the plugin loads for
   that language only.
 - **Tests**: check the built pages, as
-  `tests/public/blog-sidebar-years.test.mjs` does.
+  `tests/public/otel-blog-sidebar-years.test.mjs` does.
 
 For the file contract, see Docsy's [Add a custom script][Docsy plugins]. Docsy
 marks plugin authoring as experimental.

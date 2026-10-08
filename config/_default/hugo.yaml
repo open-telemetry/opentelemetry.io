@@ -20,7 +20,7 @@ languages:
       docsy:
         plugins:
           # Other locales' blog indexes still inline this script.
-          blog-sidebar-years: { enable: true }
+          otel-blog-sidebar-years: { enable: true }
   bn:
     label: বাংলা
     params:
