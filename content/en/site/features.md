@@ -18,4 +18,4 @@ Markdown output for content pages and HTTP negotiation for
   folder for logic and tests.
 - References:
   [opentelemetry.io#9449](https://github.com/open-telemetry/opentelemetry.io/issues/9449),
-  [docsy#2596](https://github.com/google/docsy/issues/2596)
+  [docsy#2596](https://github.com/docsy/docsy/issues/2596)
