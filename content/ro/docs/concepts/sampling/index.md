@@ -19,45 +19,48 @@ eșantionare adecvată.
 
 ## Terminologie {#terminology}
 
-Este important să folosim terminologia în mod consecvent când discutăm despre eșantionare. O urmă sau un interval
-sunt considerate "eșantionate" sau "neeșantionate".
+Este important să folosim terminologia în mod consecvent când discutăm despre
+eșantionare. O urmă sau un interval sunt considerate "eșantionate" sau
+"neeșantionate".
 
-- **Eșantionat**: O urmă sau interval este procesat și exportat. Pentru că este ales
-  de către eșantionator ca un reprezentant la populării, este considerat
+- **Eșantionat**: O urmă sau interval este procesat și exportat. Pentru că este
+  ales de către eșantionator ca un reprezentant la populării, este considerat
   "eșantionat".
-- **Neeșantionat**: O urmă sau interval nu este procesat și exportat. Pentru că nu este
-  ales de către eșantionator, este considerat "neeșantionat".
+- **Neeșantionat**: O urmă sau interval nu este procesat și exportat. Pentru că
+  nu este ales de către eșantionator, este considerat "neeșantionat".
 
-Uneori, definițiile acestor termeni sunt încurcate. Poți găsi că cineva afirmă că
-"eșantionează date" sau că date care nu sunt procesate sau exportate sunt considerate
-"eșantionate". Acestea sunt afirmații incorecte.
+Uneori, definițiile acestor termeni sunt încurcate. Poți găsi că cineva afirmă
+că "eșantionează date" sau că date care nu sunt procesate sau exportate sunt
+considerate "eșantionate". Acestea sunt afirmații incorecte.
 
 ## De ce eșantionare? {#why-sampling}
 
-Eșantionarea este una dintre cele mai folositoare metode de a reduce costurile de monitorizare
-fără a pierde vizibilitate. Deși sunt alte metode de a scădea costuri, precum filtrare
-și agregarea datelor, aceste alternative nu aderă la conceptul de reprezentativitate,
-care este crucial când faci o analiză în profunzime a comportamentului unei aplicații
-sau sistem.
+Eșantionarea este una dintre cele mai folositoare metode de a reduce costurile
+de monitorizare fără a pierde vizibilitate. Deși sunt alte metode de a scădea
+costuri, precum filtrare și agregarea datelor, aceste alternative nu aderă la
+conceptul de reprezentativitate, care este crucial când faci o analiză în
+profunzime a comportamentului unei aplicații sau sistem.
 
-Reprezentativitatea este principiul că un grup mai mic poate reprezenta cu acuratețe
-un grup mai mare. În plus, reprezentativitatea poate fi verificată matematic, ceea
-ce înseamnă că poți avea o încredere ridicată în faptul că un eșantion mai mic de date
-reprezintă cu acuratețe grupul mai mare.
+Reprezentativitatea este principiul că un grup mai mic poate reprezenta cu
+acuratețe un grup mai mare. În plus, reprezentativitatea poate fi verificată
+matematic, ceea ce înseamnă că poți avea o încredere ridicată în faptul că un
+eșantion mai mic de date reprezintă cu acuratețe grupul mai mare.
 
-De asemenea, cu cât generezi mai multe date, cu atât mai puține ai nevoie pentru a avea
-un eșantion reprezentativ. În cazul sistemelor cu volum mare de date, este destul de comun
-ca o rată de eșantionare de 1% sau mai puțin pentru a reprezenta cu mare acuratețe restul
-de 99% din date.
+De asemenea, cu cât generezi mai multe date, cu atât mai puține ai nevoie pentru
+a avea un eșantion reprezentativ. În cazul sistemelor cu volum mare de date,
+este destul de comun ca o rată de eșantionare de 1% sau mai puțin pentru a
+reprezenta cu mare acuratețe restul de 99% din date.
 
 ### Când să eșantionezi {#when-to-sample}
 
-Ia în considerare eșantionarea dacă îndeplinești oricare dintre următoarele criterii:
+Ia în considerare eșantionarea dacă îndeplinești oricare dintre următoarele
+criterii:
 
 - Generezi 1000 sau mai multe urme pe secundă.
-- Majoritatea datelor de urme reprezintă trafic funcțional cu o variație mică în date.
-- Ai niște criterii comune, precum erori și latență mare, ceea ce înseamnă de obicei
-  că ceva este în neregulă
+- Majoritatea datelor de urme reprezintă trafic funcțional cu o variație mică în
+  date.
+- Ai niște criterii comune, precum erori și latență mare, ceea ce înseamnă de
+  obicei că ceva este în neregulă
 - You have domain-specific criteria you can use to determine relevant data
   beyond errors and latency.
 - You can describe some common rules that determine if data should be sampled or
@@ -71,30 +74,31 @@ Finally, consider your overall budget. If you have limited budget for
 observability, but can afford to spend time to effectively sample, then sampling
 can generally be worth it.
 
-### When not to sample
+### Când să nu eșantionezi {#when-not-to-sample}
 
-Sampling might not be appropriate for you. You might want to avoid sampling if
-you meet any of the following criteria:
+Eșantionarea s-ar putea să nu fie adecvată pentru tine. S-ar putea să-ți dorești
+să eviți eșantionarea dacă îndeplinești oricare dintre următoarele criterii:
 
-- You generate very little data (tens of small traces per second or lower).
-- You only use observability data in aggregate, and can thus pre-aggregate data.
-- You are bound by circumstances such as regulation that prohibit dropping data
-  (and cannot route unsampled data to low-cost storage).
+- Generezi foarte puține date (zeci de urme mici pe secundă sau mai puțin).
+- Folosești datele de monitorizare în agregat, așadar poți pre-agrega date.
+- Ești constrâns de circumstanțe precum reglementări care interzic ștergerea
+  datelor (și nu poți ruta date neeșantionate către medii de stocare ce au
+  costuri mici).
 
-Finally, consider the following three costs associated with sampling:
+În final, consideră următoarele trei costuri asociate eșantionării:
 
-1. The direct cost of compute to effectively sample data, such as a tail
-   sampling proxy.
-2. The indirect engineering cost of maintaining effective sampling methodologies
-   as more applications, systems, and data are involved.
-3. The indirect opportunity cost of missing critical information with
-   ineffective sampling techniques.
+1. Costul computațional direct pentru a eșantiona eficient date, precum un proxy
+   de eșantionare de coadă.
+2. Costul indirect de inginerie pentru a menține metodologii de eșantionare
+   eficiente cu cât mai multe aplicații, sisteme și date sunt impșicate.
+3. Costul indirect al oportunității de a rata informații critice cu metode
+   ineficiente de eșantionare.
 
-Sampling, while effective at reducing observability costs, might introduce other
-unexpected costs if not performed well. It could be cheaper to allocate more
-resources for observability instead, either with a vendor or compute when
-self-hosting, depending on your observability backend, the nature of your data,
-and your attempts to sample effectively.
+Eșantionarea, deși este eficientă la reducerea costurilor de monitorizare, ar
+putea introduce alte costuri neașteptate dacă nu este efectuată bine. Ar fi mai
+ieftin să aloci mai multe resurse pentru monitorizare în loc, fie printr-un
+vendor sau computațional când tu găzduiești, depinzând de backend-ul de
+monitorizare, natura datelor tale și încercările tale de a eșantiona eficient.
 
 ## Head Sampling
 
