@@ -285,9 +285,10 @@ Valid values are:
 - `http/protobuf` to use OTLP/HTTP + protobuf
 - `http/json` to use OTLP/HTTP + JSON
 
-## Metrics configuration
+## Metrics-specific configuration
 
-The following environment variables configure OTLP metrics exporter behaviors.
+The following environment variables configure exporter options that are
+exclusive to metrics.
 
 ### `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`
 
