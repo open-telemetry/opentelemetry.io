@@ -1510,8 +1510,6 @@ maintainers:
       - docs-approvers
       - docs-maintainers
       - docs-triagers
-      - ecosystem-explorer-approvers
-      - ecosystem-explorer-maintainers
       - proto-approvers
       - proto-triagers
       - sig-contributor-experience-approvers
@@ -1756,6 +1754,11 @@ approvers:
       - arrow-triagers
     html_url: https://github.com/AaronRM
     avatar_url: https://avatars.githubusercontent.com/u/437496?v=4
+  - name: abel9851
+    teams:
+      - docs-ko-approvers
+    html_url: https://github.com/abel9851
+    avatar_url: https://avatars.githubusercontent.com/u/66953834?v=4
   - name: agagniere
     teams:
       - zig-approvers
@@ -1899,12 +1902,6 @@ approvers:
       - erlang-contrib-approvers
     html_url: https://github.com/ferd
     avatar_url: https://avatars.githubusercontent.com/u/111141?v=4
-  - name: flc1125
-    teams:
-      - go-approvers
-      - go-triagers
-    html_url: https://github.com/flc1125
-    avatar_url: https://avatars.githubusercontent.com/u/14297703?v=4
   - name: geekdave
     teams:
       - semconv-oracle-cloud-approvers
@@ -2017,6 +2014,11 @@ approvers:
       - docs-ja-approvers
     html_url: https://github.com/kota-sakuma
     avatar_url: https://avatars.githubusercontent.com/u/98725121?v=4
+  - name: krapie
+    teams:
+      - docs-ko-approvers
+    html_url: https://github.com/krapie
+    avatar_url: https://avatars.githubusercontent.com/u/70474071?v=4
   - name: krol3
     teams:
       - docs-es-approvers
@@ -2423,6 +2425,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/facostaembrace
     avatar_url: https://avatars.githubusercontent.com/u/108752213?v=4
+  - name: flc1125
+    teams:
+      - go-triagers
+    html_url: https://github.com/flc1125
+    avatar_url: https://avatars.githubusercontent.com/u/14297703?v=4
   - name: Frapschen
     teams:
       - collector-contrib-triagers
@@ -2930,9 +2937,6 @@ members:
   - name: kpratyus
     html_url: https://github.com/kpratyus
     avatar_url: https://avatars.githubusercontent.com/u/95214718?v=4
-  - name: krapie
-    html_url: https://github.com/krapie
-    avatar_url: https://avatars.githubusercontent.com/u/70474071?v=4
   - name: Krishnachaitanyakc
     html_url: https://github.com/Krishnachaitanyakc
     avatar_url: https://avatars.githubusercontent.com/u/22275437?v=4
@@ -3161,6 +3165,9 @@ members:
   - name: shivanshuraj1333
     html_url: https://github.com/shivanshuraj1333
     avatar_url: https://avatars.githubusercontent.com/u/26167974?v=4
+  - name: soheilxor
+    html_url: https://github.com/soheilxor
+    avatar_url: https://avatars.githubusercontent.com/u/22220356?v=4
   - name: sokoide
     html_url: https://github.com/sokoide
     avatar_url: https://avatars.githubusercontent.com/u/1452761?v=4
@@ -3239,9 +3246,6 @@ members:
   - name: wph95
     html_url: https://github.com/wph95
     avatar_url: https://avatars.githubusercontent.com/u/2732352?v=4
-  - name: xsoheilalizadeh
-    html_url: https://github.com/xsoheilalizadeh
-    avatar_url: https://avatars.githubusercontent.com/u/22220356?v=4
   - name: yuluo-yx
     html_url: https://github.com/yuluo-yx
     avatar_url: https://avatars.githubusercontent.com/u/77964041?v=4
