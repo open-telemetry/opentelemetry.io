@@ -107,7 +107,7 @@ Hugo をバージョンアップするには、以下の手順を実行します
 
 1. 対象となる Hugo のバージョン範囲について [Docsy のアップグレードガイド][Docsy upgrade guides]に沿って作業する。
 2. `package.json` の `hugo-extended` のバージョンを設定し、[ロックファイルを同期する](#manifest-changes)。
-   （`npm run update:hugo` は代わりに最新バージョンを、スクリプトを有効にした状態でインストールします。承認がすでにそのバージョンを指定していない限り、`strict-allow-scripts` によって失敗します。）
+   （`npm run update:hugo` はかわりに最新バージョンを、スクリプトを有効にした状態でインストールします。承認がすでにそのバージョンを指定していない限り、`strict-allow-scripts` によって失敗します。）
 3. [`allowScripts` の承認](#script-bearing-packages)を更新し、`npm run install:safe` を実行して、レビュー済みのフックを通じてピン指定されたバイナリを取得する。
 4. サイトがその範囲内の変更に依存するようになった場合は、`hugoVersion.min` を引き上げる。
 
