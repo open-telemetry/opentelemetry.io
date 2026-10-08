@@ -5,8 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: OpenTelemetry Goのマニュアルインストルメンテーション
-default_lang_commit: 3899955672f4abc64710cad23217b76528d7a961
-drifted_from_default: true
+default_lang_commit: 4b2fa5c404644a6ab7a68cb6848c65d32263aa53
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 ---
 
@@ -946,8 +945,8 @@ import (
 	"context"
 	"fmt"
 
+	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp"
-	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/resource"
 	semconv "go.opentelemetry.io/otel/semconv/v1.43.0"
@@ -976,11 +975,11 @@ func main() {
 		}
 	}()
 
-	// global.LoggerProviderにアクセスできるように、グローバルロガープロバイダーとして登録します
+	// log.LoggerProviderにアクセスできるように、グローバルロガープロバイダーとして登録します
 	// ほとんどのログブリッジは、デフォルトとしてグローバルロガープロバイダーを使用します
 	// グローバルロガープロバイダーが設定されていない場合、no-op実装が使用され、
 	// データの生成に失敗します
-	global.SetLoggerProvider(loggerProvider)
+	otel.SetLoggerProvider(loggerProvider)
 }
 
 func newResource() (*resource.Resource, error) {
