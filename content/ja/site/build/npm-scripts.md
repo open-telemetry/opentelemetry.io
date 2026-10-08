@@ -4,8 +4,7 @@ description: >-
   OpenTelemetry ウェブサイトのビルド、配信、検証、メンテナンスのための NPM スクリプト。
 weight: 20
 todo: Keep table entries sorted
-default_lang_commit: 49a4a61076ca6c7369666e858be884cd157f7d3c
-drifted_from_default: true
+default_lang_commit: 1338cb2423fbaba7da27b8e94d00293aac6922cc
 ---
 
 スクリプトの定義はリポジトリルートの [`package.json`][] にあります。
@@ -30,7 +29,7 @@ drifted_from_default: true
 | `ci:prepare`      | `ci:min` 実行後のセットアップ：[ピンされた Hugo バイナリの取得][fetch the pinned Hugo binary]、そして `prepare`。 |
 | `install:safe`    | [Lock-exact local setup][]：inert インストール、そして `ci:prepare`。                                             |
 | `prepare`         | インストールステップ：`get:submodule` を実行し、Docsy の [lock-exact theme dependency install][]。                |
-| `update:hugo`     | 最新の hugo-extended をインストールし、バンプに伴う [`allowScripts` approval][] を更新します。                    |
+| `update:hugo`     | 最新の hugo-extended をインストールし、スクリプトを有効化します。手順は [Hugo bump][] を参照してください。        |
 | `update:packages` | npm-check-updates を実行して依存関係を更新します（[release cooldown][] の対象）。                                 |
 
 ## ビルドと配信 {#build-and-serve}
@@ -148,7 +147,7 @@ drifted_from_default: true
 | `seq`                          | 指定されたスクリプト名を順番に実行します。最初の失敗で終了。                                     |
 
 <!-- prettier-ignore-start -->
-[`allowScripts` approval]: /site/build/dependencies/#script-bearing-packages
+[Hugo bump]: ../dependencies/#hugo
 [`link-cache.jsonc`]: ../link-checking/#link-cache
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [build kinds]: /site/build/#build-kinds
