@@ -38,13 +38,17 @@ registering trace context propagators, and registering auto-instrumentation of
 network requests.
 
 ```typescript
+import { trace, context, propagation } from '@opentelemetry/api';
 import {
   CompositePropagator,
   W3CBaggagePropagator,
   W3CTraceContextPropagator,
 } from '@opentelemetry/core';
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
-import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
+import {
+  BatchSpanProcessor,
+  TracerProvider,
+  StackContextManager,
+} from '@opentelemetry/sdk-trace';
 import { XMLHttpRequestInstrumentation } from '@opentelemetry/instrumentation-xml-http-request';
 import { FetchInstrumentation } from '@opentelemetry/instrumentation-fetch';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
@@ -78,29 +82,29 @@ const Tracer = async () => {
     [ATTR_DEVICE_ID]: getDeviceId(),
   });
 
-  const provider = new WebTracerProvider({
+  const provider = new TracerProvider({
     resource,
     spanProcessors: [
-      new BatchSpanProcessor(
-        new OTLPTraceExporter({
+      new BatchSpanProcessor({
+        exporter: new OTLPTraceExporter({
           url: `http://${localhost}:${process.env.EXPO_PUBLIC_FRONTEND_PROXY_PORT}/otlp-http/v1/traces`,
         }),
-        {
-          scheduledDelayMillis: 500,
-        },
-      ),
+        scheduledDelayMillis: 500,
+      }),
       new SessionIdProcessor(),
     ],
   });
 
-  provider.register({
-    propagator: new CompositePropagator({
+  context.setGlobalContextManager(new StackContextManager());
+  propagation.setGlobalPropagator(
+    new CompositePropagator({
       propagators: [
         new W3CBaggagePropagator(),
         new W3CTraceContextPropagator(),
       ],
     }),
-  });
+  );
+  trace.setGlobalTracerProvider(provider);
 
   registerInstrumentations({
     instrumentations: [
