@@ -25,11 +25,6 @@ missing [let us know][].
 For guidance on how to write and submit a blog post, see
 [Submit a blog post](https://opentelemetry.io/docs/contributing/blog/).
 
-### Add a project to the OpenTelemetry [Registry][]
-
-For details on how to add a project to the OpenTelemetry Registry, see [Adding
-to the registry][].
-
 ## Contributing
 
 See the [Contributing](https://opentelemetry.io/docs/contributing) page in our
@@ -118,7 +113,6 @@ already contributed][contributors]!
 - Documentation: [CC-BY-4.0](LICENSE)
 - Code: [Apache-2.0](LICENSE-CODE)
 
-[adding to the registry]: https://opentelemetry.io/ecosystem/registry/adding/
 [let us know]:
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [@open-telemetry/docs-approvers]:
