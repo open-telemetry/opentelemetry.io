@@ -2,8 +2,8 @@
 title: 用語集
 description: OpenTelemetry で使用されるテレメトリー用語の定義と規則
 weight: 200
-default_lang_commit: 6ef946a85afe66ba52174df13dad8345a3566d20
-drifted_from_default: true
+default_lang_commit: 1338cb2423fbaba7da27b8e94d00293aac6922cc
+cSpell:ignore: OTTL
 ---
 
 この用語集は、OpenTelemetry プロジェクトに対して新しい、用語と[概念](/docs/concepts/)を定義し、オブザーバビリティの分野で一般的に使われている OpenTelemetry 特有の使用法を明確にします。
@@ -261,6 +261,10 @@ OpenTelemetry の前身です。
 ### OTLP {#otlp}
 
 [OpenTelemetryプロトコル](/docs/specs/otlp/)の略称。
+
+### OTTL {#ottl}
+
+[OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md)の略称。
 
 ### プロパゲーター {#propagators}
 
