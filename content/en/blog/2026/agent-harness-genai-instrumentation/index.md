@@ -326,20 +326,20 @@ The same runner produces the other artifact we rely on. To see how much of the
 GenAI spec a generated plugin actually covers, we use the
 [semantic-conventions-conformance](https://github.com/open-telemetry/semantic-conventions-conformance)
 project, whose reduction step turns a run into a coverage matrix: which
-conventions a plugin satisfies, which it misses, and which it emits but
-shouldn't. Coverage is measurement rather than gating, so those runs are the
-`--report-only` kind — a missing attribute is recorded, not a build break.
+registry-defined attributes a plugin emits and which it misses. Coverage is
+measurement rather than gating, so those runs are the `--report-only` kind — a
+missing attribute is recorded, not a build break.
 
 ![Coverage matrix for invoke-agent internal spans across fourteen generated instrumentations, with the GenAI attributes grouped by requirement level: required, conditionally required, recommended, and opt-in](invoke-agent-internal-spans.png)
 
-The matrix is also how we notice the _opposite_ failure: attributes an agent
-emitted that the registry does not define. We do not suppress those findings.
-Accepting one means declaring it in `expected_violations` with its finding `id`
-and a written reason — and because a declared violation that Weaver stops
-reporting also fails the run, a suppression cannot quietly outlive the gap that
-justified it. Coverage is scored only over registry-defined attributes, so an
-extension can never inflate a plugin's number. Extensions that recur across
-frameworks become candidates for upstream semconv proposals.
+Separately, Weaver live-check reports attributes an agent emitted that the
+registry does not define as `missing_attribute` violations. We do not suppress
+those findings. Accepting one means declaring it in `expected_violations` with
+its finding `id` and a written reason — and because a declared violation that
+Weaver stops reporting also fails the run, a suppression cannot quietly outlive
+the gap that justified it. Coverage is scored only over registry-defined
+attributes, so an extension can never inflate a plugin's number. Extensions that
+recur across frameworks become candidates for upstream semconv proposals.
 
 One of those extensions is a known deviation rather than a considered choice.
 The CrewAI plugin currently emits its framework-specific attributes under
