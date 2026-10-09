@@ -215,7 +215,7 @@ step we want humans spending time on.
 
 The second is that the agents map framework objects onto shared GenAI utilities
 instead of writing attribute names themselves.
-[`opentelemetry-util-genai`](https://github.com/open-telemetry/opentelemetry-python-genai/tree/59e6efe6c0be45a9da78f8f3c21c5d6ac4488ed1/util/opentelemetry-util-genai)
+[`opentelemetry-util-genai`](https://github.com/open-telemetry/opentelemetry-python-genai/tree/main/util/opentelemetry-util-genai)
 now lives in the OpenTelemetry Python GenAI repository. Its
 `handler.invoke_local_agent()` method creates an `AgentInvocation` for an agent
 running in the same process.
