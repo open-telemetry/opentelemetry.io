@@ -1797,6 +1797,8 @@ approvers:
     teams:
       - android-approvers
       - android-triagers
+      - swift-approvers
+      - swift-triagers
     html_url: https://github.com/aranhave
     avatar_url: https://avatars.githubusercontent.com/u/281904176?v=4
   - name: ArthurSens
@@ -1830,6 +1832,8 @@ approvers:
     teams:
       - android-approvers
       - android-triagers
+      - swift-approvers
+      - swift-triagers
     html_url: https://github.com/benjoseph-grafana
     avatar_url: https://avatars.githubusercontent.com/u/282287660?v=4
   - name: bertysentry
@@ -1837,11 +1841,6 @@ approvers:
       - docs-fr-approvers
     html_url: https://github.com/bertysentry
     avatar_url: https://avatars.githubusercontent.com/u/32521698?v=4
-  - name: cartermp
-    teams:
-      - social-media-approvers
-    html_url: https://github.com/cartermp
-    avatar_url: https://avatars.githubusercontent.com/u/6309070?v=4
   - name: chluknight1224
     teams:
       - docs-zh-approvers
@@ -2316,11 +2315,6 @@ approvers:
       - specs-triagers
     html_url: https://github.com/tedsuo
     avatar_url: https://avatars.githubusercontent.com/u/24074?v=4
-  - name: theletterf
-    teams:
-      - social-media-approvers
-    html_url: https://github.com/theletterf
-    avatar_url: https://avatars.githubusercontent.com/u/1773616?v=4
   - name: thompson-tomo
     teams:
       - lambda-extension-approvers
@@ -3126,6 +3120,9 @@ members:
   - name: rsvarma95
     html_url: https://github.com/rsvarma95
     avatar_url: https://avatars.githubusercontent.com/u/16488421?v=4
+  - name: s3onghyun
+    html_url: https://github.com/s3onghyun
+    avatar_url: https://avatars.githubusercontent.com/u/204841166?v=4
   - name: Saber-W
     html_url: https://github.com/Saber-W
     avatar_url: https://avatars.githubusercontent.com/u/33282704?v=4
@@ -3192,6 +3189,9 @@ members:
   - name: thc1006
     html_url: https://github.com/thc1006
     avatar_url: https://avatars.githubusercontent.com/u/84045975?v=4
+  - name: theletterf
+    html_url: https://github.com/theletterf
+    avatar_url: https://avatars.githubusercontent.com/u/1773616?v=4
   - name: thisthat
     html_url: https://github.com/thisthat
     avatar_url: https://avatars.githubusercontent.com/u/992621?v=4
