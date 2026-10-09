@@ -1,0 +1,202 @@
+---
+title: Eșantionare
+description:
+  Învață despre eșantionare și diferitele opțiuni disponibile în OpenTelemetry.
+weight: 80
+default_lang_commit: 7fdabd2ed2c394ad4cbff90314c2f12eea6db1d9
+---
+
+Cu [urme](/docs/concepts/signals/traces), poți observa cum cererile circulă de
+la un serviciu la altul într-un sistem distribuit. Urmărirea este extrem de
+utilă atât pentru analiza de ansamblu, cât și pentru cea detaliată a sistemelor.
+
+Totuși, dacă marea majoritate a cererilor sunt reușite și se finalizează cu o
+latență acceptabilă și fără erori, nu ai nevoie de 100% din urme pentru a
+monitoriza eficient aplicațiile și sistemele tale. Ai nevoie doar de o
+eșantionare adecvată.
+
+![Ilustrația arată că nu toate datele au nevoie să fie urmărite și că un eșantion din date este suficient.](traces-venn-diagram.svg)
+
+## Terminologie {#terminology}
+
+Este important să folosim terminologia în mod consecvent când discutăm despre
+eșantionare. O urmă sau un interval sunt considerate "eșantionate" sau
+"neeșantionate".
+
+- **Eșantionat**: O urmă sau interval este procesat și exportat. Pentru că este
+  ales de către eșantionator ca un reprezentant la populării, este considerat
+  "eșantionat".
+- **Neeșantionat**: O urmă sau interval nu este procesat și exportat. Pentru că
+  nu este ales de către eșantionator, este considerat "neeșantionat".
+
+Uneori, definițiile acestor termeni sunt încurcate. Poți găsi că cineva afirmă
+că "eșantionează date" sau că date care nu sunt procesate sau exportate sunt
+considerate "eșantionate". Acestea sunt afirmații incorecte.
+
+## De ce eșantionare? {#why-sampling}
+
+Eșantionarea este una dintre cele mai folositoare metode de a reduce costurile
+de monitorizare fără a pierde vizibilitate. Deși sunt alte metode de a scădea
+costuri, precum filtrare și agregarea datelor, aceste alternative nu aderă la
+conceptul de reprezentativitate, care este crucial când faci o analiză în
+profunzime a comportamentului unei aplicații sau sistem.
+
+Reprezentativitatea este principiul că un grup mai mic poate reprezenta cu
+acuratețe un grup mai mare. În plus, reprezentativitatea poate fi verificată
+matematic, ceea ce înseamnă că poți avea o încredere ridicată în faptul că un
+eșantion mai mic de date reprezintă cu acuratețe grupul mai mare.
+
+De asemenea, cu cât generezi mai multe date, cu atât mai puține ai nevoie pentru
+a avea un eșantion reprezentativ. În cazul sistemelor cu volum mare de date,
+este destul de comun ca o rată de eșantionare de 1% sau mai puțin pentru a
+reprezenta cu mare acuratețe restul de 99% din date.
+
+### Când să eșantionezi {#when-to-sample}
+
+Ia în considerare eșantionarea dacă îndeplinești oricare dintre următoarele
+criterii:
+
+- Generezi 1000 sau mai multe urme pe secundă.
+- Majoritatea datelor de urme reprezintă trafic funcțional cu o variație mică în
+  date.
+- Ai niște criterii comune, precum erori și latență mare, ceea ce înseamnă de
+  obicei că ceva este în neregulă
+- You have domain-specific criteria you can use to determine relevant data
+  beyond errors and latency.
+- You can describe some common rules that determine if data should be sampled or
+  dropped.
+- You have a way to tell your services apart, so that high- and low-volume
+  services are sampled differently.
+- You have the ability to route unsampled data (for "just in case" scenarios) to
+  low-cost storage systems.
+
+Finally, consider your overall budget. If you have limited budget for
+observability, but can afford to spend time to effectively sample, then sampling
+can generally be worth it.
+
+### Când să nu eșantionezi {#when-not-to-sample}
+
+Eșantionarea s-ar putea să nu fie adecvată pentru tine. S-ar putea să-ți dorești
+să eviți eșantionarea dacă îndeplinești oricare dintre următoarele criterii:
+
+- Generezi foarte puține date (zeci de urme mici pe secundă sau mai puțin).
+- Folosești datele de monitorizare în agregat, așadar poți pre-agrega date.
+- Ești constrâns de circumstanțe precum reglementări care interzic ștergerea
+  datelor (și nu poți ruta date neeșantionate către medii de stocare ce au
+  costuri mici).
+
+În final, consideră următoarele trei costuri asociate eșantionării:
+
+1. Costul computațional direct pentru a eșantiona eficient date, precum un proxy
+   de eșantionare de coadă.
+2. Costul indirect de inginerie pentru a menține metodologii de eșantionare
+   eficiente cu cât mai multe aplicații, sisteme și date sunt impșicate.
+3. Costul indirect al oportunității de a rata informații critice cu metode
+   ineficiente de eșantionare.
+
+Eșantionarea, deși este eficientă la reducerea costurilor de monitorizare, ar
+putea introduce alte costuri neașteptate dacă nu este efectuată bine. Ar fi mai
+ieftin să aloci mai multe resurse pentru monitorizare în loc, fie printr-un
+vendor sau computațional când tu găzduiești, depinzând de backend-ul de
+monitorizare, natura datelor tale și încercările tale de a eșantiona eficient.
+
+## Head Sampling
+
+Head sampling is a sampling technique used to make a sampling decision as early
+as possible. A decision to sample or drop a span or trace is not made by
+inspecting the trace as a whole.
+
+For example, the most common form of head sampling is
+[Consistent Probability Sampling](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-sampling-decision).
+This is also referred to as Deterministic Sampling. In this case, a sampling
+decision is made based on the trace ID and the desired percentage of traces to
+sample. This ensures that whole traces are sampled - no missing spans - at a
+consistent rate, such as 5% of all traces.
+
+The upsides to head sampling are:
+
+- Easy to understand
+- Easy to configure
+- Efficient
+- Can be done at any point in the trace collection pipeline
+
+The primary downside to head sampling is that it is not possible to make a
+sampling decision based on data in the entire trace. For example, you cannot
+ensure that all traces with an error within them are sampled with head sampling
+alone. For this situation and many others, you need tail sampling.
+
+## Tail Sampling
+
+Tail sampling is where the decision to sample a trace takes place by considering
+all or most of the spans within the trace. Tail Sampling gives you the option to
+sample your traces based on specific criteria derived from different parts of a
+trace, which isn’t an option with Head Sampling.
+
+![Illustration shows how spans originate from a root span. After the spans are complete, the tail sampling processor makes a sampling decision.](tail-sampling-process.svg)
+
+Some examples of how you can use Tail Sampling include:
+
+- Always sampling traces that contain an error
+- Sampling traces based on overall latency
+- Sampling traces based on the presence or value of specific attributes on one
+  or more spans in a trace; for example, sampling more traces originating from a
+  newly deployed service
+- Applying different sampling rates to traces based on certain criteria, such as
+  when traces only come from low-volume services versus traces with high-volume
+  services.
+
+As you can see, tail sampling allows for a much higher degree of sophistication
+in how you sample data. For larger systems that must sample telemetry, it is
+almost always necessary to use Tail Sampling to balance data volume with the
+usefulness of that data.
+
+There are three primary downsides to tail sampling today:
+
+1. Tail sampling can be difficult to implement. Depending on the kind of
+   sampling techniques available to you, it is not always a "set and forget"
+   kind of thing. As your systems change, so too will your sampling strategies.
+   For a large and sophisticated distributed system, rules that implement
+   sampling strategies can also be large and sophisticated.
+2. Tail sampling can be difficult to operate. The component(s) that implement
+   tail sampling must be stateful systems that can accept and store a large
+   amount of data. Depending on traffic patterns, this can require dozens or
+   even hundreds of compute nodes that all utilize resources differently.
+   Furthermore, a tail sampler might need to "fall back" to less computationally
+   intensive sampling techniques if it is unable to keep up with the volume of
+   data it is receiving. Because of these factors, it is critical to monitor
+   tail-sampling components to ensure that they have the resources they need to
+   make the correct sampling decisions.
+3. Tail samplers often end up as vendor-specific technology today. If you're
+   using a paid vendor for Observability, the most effective tail sampling
+   options available to you might be limited to what the vendor offers.
+
+Finally, for some systems, tail sampling might be used in conjunction with Head
+Sampling. For example, a set of services that produce an extremely high volume
+of trace data might first use head sampling to sample only a small percentage of
+traces, and then later in the telemetry pipeline use tail sampling to make more
+sophisticated sampling decisions before exporting to a backend. This is often
+done in the interest of protecting the telemetry pipeline from being overloaded.
+
+## Support
+
+### Collector
+
+The OpenTelemetry Collector includes the following sampling processors:
+
+- [Probabilistic Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
+- [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
+
+### Language SDKs
+
+For the individual language-specific implementations of the OpenTelemetry API &
+SDK, you will find support for sampling in the respective documentation pages:
+
+{{% sampling-support-list " " %}}
+
+### Vendors
+
+Many [vendors](/ecosystem/vendors) offer comprehensive sampling solutions that
+incorporate head sampling, tail sampling, and other features that can support
+sophisticated sampling needs. These solutions may also be optimized specifically
+for the vendor's backend. If you are sending telemetry to a vendor, consider
+using their sampling solutions.

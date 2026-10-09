@@ -39,6 +39,11 @@ elimini
 emiți
 emojiilor
 enumerează
+eșantionare
+eșantionat
+eșantionată
+eșantionator
+eșantionează
 explorezi
 exportatorilor
 formatorul
@@ -70,6 +75,8 @@ migrare
 migrezi
 multilingvist
 nedeterministe
+neeșantionat
+neeșantionată
 nelansate
 nespecificate
 nestandard
@@ -100,7 +107,7 @@ semantică
 semnalizate
 semneazǎ
 servii
-setează
+seteaz
 sincronizate
 sincronizezi
 soliciți
