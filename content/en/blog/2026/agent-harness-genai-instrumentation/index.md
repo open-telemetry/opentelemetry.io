@@ -300,7 +300,6 @@ Each sample entity comes back augmented with findings:
   "live_check_result": {
     "all_advice": [
       {
-        "type": "PolicyFinding",
         "id": "span_status_ok_set_by_instrumentation",
         "context": { "status_code": "ok" },
         "message": "Span 'execute_tool ping' has status.code='ok'; instrumentations must leave status UNSET on success (OK is reserved for application code).",
