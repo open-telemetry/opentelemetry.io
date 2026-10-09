@@ -10,7 +10,7 @@ author: >-
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/11367
 sig: 'Semantic Conventions and Instrumentation: GenAI'
 # prettier-ignore
-cSpell:ignore: BFCL crewai Dify genai Huxing inspectable loongsuite Rego Zhang Ziming
+cSpell:ignore: BFCL crewai Dify genai Huxing inspectable kwargs loongsuite Rego Zhang Ziming
 ---
 
 Writing instrumentation is the unglamorous half of observability. You have to
@@ -75,8 +75,9 @@ violation.
 The **orchestration layer** turns an instrumentation request into a scheduled
 run and posts the resulting pull request back to the requester. We currently run
 this on a self-hosted multi-agent task platform, but nothing in the design
-depends on it: any orchestrator will do, as long as it can check out a repository, run a team of agents against it, and open a pull request. What matters is the loop
-structure described below, not the runner.
+depends on it: any orchestrator will do, as long as it can check out a
+repository, run a team of agents against it, and open a pull request. What
+matters is the loop structure described below, not the runner.
 
 ## Architecture
 
@@ -212,45 +213,48 @@ A human reviewing the pull request can check that list against the framework's
 own API surface without reading the whole diff — which is exactly the review
 step we want humans spending time on.
 
-The second is that the agents do not hand-write attribute names. Instead they
-map framework objects onto the typed invocation objects from
-[`opentelemetry-util-genai`](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/v0.65b0/util/opentelemetry-util-genai),
-and let that shared layer emit the spans, metrics, and events:
+The second is that the agents map framework objects onto shared GenAI utilities
+instead of writing attribute names themselves.
+[`opentelemetry-util-genai`](https://github.com/open-telemetry/opentelemetry-python-genai/tree/59e6efe6c0be45a9da78f8f3c21c5d6ac4488ed1/util/opentelemetry-util-genai)
+now lives in the OpenTelemetry Python GenAI repository. Its
+`handler.invoke_local_agent()` method creates an `AgentInvocation` for an agent
+running in the same process.
+
+The following minimal wrapper adapts our CrewAI example to that upstream API; it
+is not an excerpt from the original generated plugin. Here, `wrapped` is the
+original bound `Agent.execute_task` method, `instance` is the CrewAI agent, and
+`args` and `kwargs` are the method's arguments. Wrapper registration and SDK
+configuration are omitted:
 
 ```python
-return InvokeAgentInvocation(
-    provider=CREWAI_PROVIDER,
-    agent_id=_agent_id(agent),
-    agent_name=role,
-    agent_description=goal if capture_content else None,
-    request_model=_agent_model(agent),
-    response_model_name=_agent_model(agent),
-    input_messages=(
-        [InputMessage(role="user", parts=input_parts)] if input_parts else []
-    ),
-    system_instruction=(
-        _message_parts(backstory) if capture_content else None
-    ),
-    ...
-)
+from opentelemetry.util.genai.handler import get_telemetry_handler
+
+
+def wrap_execute_task(wrapped, instance, args, kwargs):
+    handler = get_telemetry_handler()
+    with handler.invoke_local_agent(agent_name=instance.role) as invocation:
+        invocation.agent_id = str(instance.id)
+        if invocation.should_capture_content:
+            invocation.agent_description = instance.goal
+        return wrapped(*args, **kwargs)
 ```
 
-This matters more than it looks. An agent asked to "set the right GenAI
-attributes" will invent attribute names that read plausibly and fail
-conformance. An agent asked to populate `InvokeAgentInvocation` can only get the
-_mapping_ wrong, not the _schema_ — and a wrong mapping is something Weaver can
-see. Content capture stays behind the standard opt-in, so prompts and
-completions are only recorded when the operator asks for them.
+The utility starts an `INTERNAL` span, makes it current during the call, and
+ends it when the context manager exits. If the wrapped method raises an
+exception, the utility records the failure and lets the exception propagate. The
+wrapper checks `should_capture_content` before copying the agent's goal, which
+may contain user-provided instructions.
 
-That shared layer is the GenAI utility package from OpenTelemetry Python Contrib
-plus our own extensions, maintained as an open, deliberately additive fork at
-[alibaba/loongsuite-python](https://github.com/alibaba/loongsuite-python). When
-these plugins were written, upstream covered the single model call, so the
-agent, tool, retrieval and memory types — `InvokeAgentInvocation` among them —
-started out as ours. Upstream has since grown its own equivalents
-(`AgentInvocation`, `ToolInvocation`, `WorkflowInvocation`,
-`EmbeddingInvocation`), and converging on them is part of the upstreaming work
-described below.
+Shared utilities handle attribute names and telemetry lifecycle, but the
+instrumentation still needs to map the framework's data correctly. We validate
+those mappings with tests and human review as well as Weaver's registry checks.
+
+The original generated plugins used our extensions to the earlier utility
+package in
+[alibaba/loongsuite-python](https://github.com/alibaba/loongsuite-python),
+including the fork-specific `InvokeAgentInvocation` type. The example above uses
+the upstream API so readers can start with OpenTelemetry's utilities. Migrating
+the plugins to those APIs is part of the upstreaming work described below.
 
 ## Verifying the output with Weaver
 
@@ -405,22 +409,17 @@ review sits at the plan stage and not only at the pull request.
 
 Two things are clear from the runs so far.
 
-The first is that **spec quality matters more than model quality**. The sharper
-the GenAI semantic conventions get, the less the agents argue with each other
-about edge cases, and the cleaner the resulting telemetry is. Every ambiguity in
-the spec becomes a place where two agents can both be defensibly right and the
-loop stalls.
+The first is that **clear semantic conventions make instrumentation easier to
+review**. They settle choices such as attribute names and span kinds, leaving
+the agents to map each framework's operations to those definitions.
 
-Concretely: the conventions that generate the fewest disagreements are the ones
-whose value has exactly one possible source — `gen_ai.tool.name` and
-`gen_ai.tool.call.id` map one-to-one from the tool-call object, and
-`gen_ai.usage.input_tokens` / `gen_ai.usage.output_tokens` are typed integers
-the provider reports directly. The ones that generate the most are where the
-spec names an intent and leaves the mapping to the author: which of a
-framework's concepts counts as an `invoke_agent` operation (CrewAI alone has
-crews, tasks, agents and flows to map onto it), and whether an agent invocation
-is a `client` or an `internal` span — our own coverage matrix has plugins
-landing on both sides of that choice.
+Some values have a direct source: `gen_ai.tool.name` and `gen_ai.tool.call.id`
+come from the tool-call object, while `gen_ai.usage.input_tokens` and
+`gen_ai.usage.output_tokens` come from the provider's usage data. Other mappings
+need more judgment. CrewAI exposes crews, tasks, agents, and flows; the
+instrumentation must decide which of their operations represent an
+`invoke_agent` operation and which need a different span. That decision requires
+human review.
 
 The second is that **the mechanical conformance check is load-bearing**. Without
 it, the loop has no termination condition and the agents drift toward telemetry
