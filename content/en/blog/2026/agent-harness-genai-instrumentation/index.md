@@ -350,17 +350,11 @@ counts only registry-defined attributes, so custom extensions do not raise a
 plugin's score. If several frameworks need the same attribute that the registry
 does not define, we propose adding it to the GenAI semantic conventions.
 
-One of those extensions is a known deviation rather than a considered choice.
-The CrewAI plugin currently emits its framework-specific attributes under
-`gen_ai.crewai.*`, and the
-[attribute naming guidance](/docs/specs/semconv/general/naming/) advises against
-exactly that: reusing an existing OpenTelemetry namespace as the prefix for a
-company- or framework-specific attribute risks a clash if OpenTelemetry later
-uses the same name for something else. We would rather raise it than quietly
-rename it, because the question underneath it is general — where should
-framework-specific GenAI signals live, so that a reader can tell at a glance
-which attributes are spec and which are ours? That is a question for the SIG,
-and it is one our own generated plugins keep running into.
+The Coding Agent added `gen_ai.crewai.*` attributes to the CrewAI plugin for
+details absent from the GenAI semantic conventions; because
+[OpenTelemetry's naming guidance](/docs/specs/semconv/general/naming/) warns
+that this prefix could clash with future standard attributes, future prompts
+should require agents to emit only registry-defined GenAI attributes.
 
 ## What we've shipped so far
 
