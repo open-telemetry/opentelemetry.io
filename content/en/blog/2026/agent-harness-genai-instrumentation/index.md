@@ -10,7 +10,7 @@ author: >-
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/11367
 sig: 'Semantic Conventions and Instrumentation: GenAI'
 # prettier-ignore
-cSpell:ignore: BFCL crewai Dify genai Huxing inspectable kwargs loongsuite Rego Zhang Ziming
+cSpell:ignore: BFCL crewai Dify genai Huxing kwargs loongsuite Rego Zhang Ziming
 ---
 
 Instrumenting a GenAI framework means finding suitable extension points, mapping
@@ -178,10 +178,10 @@ Reviewers can check those targets against the framework's API.
 
 The second is that the agents map framework objects onto shared GenAI utilities
 instead of writing attribute names themselves.
-[`opentelemetry-util-genai`](https://github.com/open-telemetry/opentelemetry-python-genai/tree/main/util/opentelemetry-util-genai)
-now lives in the OpenTelemetry Python GenAI repository. Its
-`handler.invoke_local_agent()` method creates an `AgentInvocation` for an agent
-running in the same process.
+[`opentelemetry-util-genai`](https://github.com/open-telemetry/opentelemetry-python-genai)
+now lives in the OpenTelemetry Python GenAI repository under
+`util/opentelemetry-util-genai`. Its `handler.invoke_local_agent()` method
+creates an `AgentInvocation` for an agent running in the same process.
 
 The following minimal wrapper adapts our CrewAI example to that upstream API; it
 is not an excerpt from the original generated plugin. Here, `wrapped` is the
