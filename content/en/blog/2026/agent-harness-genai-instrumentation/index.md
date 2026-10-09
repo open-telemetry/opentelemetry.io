@@ -357,14 +357,13 @@ and it is one our own generated plugins keep running into.
 
 We have used this system to drive end-to-end instrumentation development for a
 range of GenAI frameworks, agent SDKs, and agent benchmarks. The generated
-plugins live in
-[`instrumentation-loongsuite`](https://github.com/alibaba/loongsuite-python) in
-Loongsuite Python, Alibaba's Apache-2.0 distribution of the OpenTelemetry Python
-instrumentation, and each was reviewed by a human at the pull-request stage.
-They currently cover frameworks and SDKs including CrewAI, LangChain, LangGraph,
-LiteLLM, AutoGen, AgentScope, Dify, Google ADK, the Claude Agent SDK, the
-Microsoft Agent Framework, MCP, and mem0, alongside agent benchmarks such as
-BFCL-v4, WebArena, and MiniSWEAgent.
+plugins live in the `instrumentation-loongsuite` packages in Loongsuite Python,
+Alibaba's Apache-2.0 distribution of the OpenTelemetry Python instrumentation,
+and each was reviewed by a human at the pull-request stage. They currently cover
+frameworks and SDKs including CrewAI, LangChain, LangGraph, LiteLLM, AutoGen,
+AgentScope, Dify, Google ADK, the Claude Agent SDK, the Microsoft Agent
+Framework, MCP, and mem0, alongside agent benchmarks such as BFCL-v4, WebArena,
+and MiniSWEAgent.
 
 Because they are validated against the GenAI semantic conventions before
 merging, the telemetry they produce is consistent across frameworks — which is
@@ -433,9 +432,9 @@ way, or if you'd like to help improve the semantic conventions that drive it:
 - Join the
   [GenAI Semantic Conventions and Instrumentation SIG](https://github.com/open-telemetry/community/blob/8b6c5060617ced1caf4c39ff5b7318aa2e9c7569/projects/gen-ai.md)
   discussions to help shape what gets standardized next.
-- Try the generated plugins in
-  [Loongsuite Python](https://github.com/alibaba/loongsuite-python) and tell us
-  where they fall short.
+- Contribute to
+  [OpenTelemetry Python GenAI](https://github.com/open-telemetry/opentelemetry-python-genai)
+  as the generated instrumentations move upstream.
 
 The goal is not to remove humans from the loop, but to move them from writing
 instrumentation to deciding what good instrumentation looks like.
