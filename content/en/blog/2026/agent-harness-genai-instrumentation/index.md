@@ -41,10 +41,10 @@ Manually authored instrumentation has two recurring problems.
 First, it is slow: even an experienced contributor needs days to instrument a
 non-trivial framework correctly.
 
-Second, it is drifty: every author makes slightly different choices about which
-attributes to set, which units to use, and which operations deserve a span. The
-result is telemetry that "looks like" OpenTelemetry but is hard to query
-consistently across frameworks.
+Second, it is inconsistent: every author makes slightly different choices about
+which attributes to set, which units to use, and which operations deserve a
+span. The result is telemetry that "looks like" OpenTelemetry but is hard to
+query consistently across frameworks.
 
 LLMs are now good enough at reading code to identify the right hooks in a
 framework, and the GenAI semantic conventions are finally detailed enough to act
@@ -192,7 +192,7 @@ workflow definition.
 
 ## What the generated instrumentation looks like
 
-Two design choices keep the generated code from drifting, and both of them are
+Two design choices make the generated code more consistent, and both of them are
 constraints on the Coding Agent rather than instructions in a prompt.
 
 The first is that `execution-plan.md` fixes the instrumentation points before
@@ -325,11 +325,10 @@ Each sample entity comes back augmented with findings:
 That finding is worth reading closely, because nobody on our side wrote the rule
 it came from. "An instrumentation must not set span status to OK" is one of the
 domain-agnostic advice policies the runner ships, and the Coding Agent tripped
-over it on a tool span. The exit code is the load-bearing part: it turns "does
-this telemetry conform?" into something the loop can branch on, which is the
-only reason the loop has a termination condition at all. Without it, we were
-asking one model to grade another model's telemetry — a loop that always
-converges, but not on correctness.
+over it on a tool span. The exit code lets the loop reject telemetry that fails
+the check and send the work back to the Coding Agent. Without it, we were asking
+one model to grade another model's telemetry — a loop that always converges, but
+not on correctness.
 
 The same runner produces the other artifact we rely on. To see how much of the
 GenAI spec a generated plugin actually covers, we use the
@@ -422,9 +421,9 @@ instrumentation must decide which of their operations represent an
 `invoke_agent` operation and which need a different span. That decision requires
 human review.
 
-The second is that **the mechanical conformance check is load-bearing**. Without
-it, the loop has no termination condition and the agents drift toward telemetry
-that looks right.
+The second is that **the automated conformance check tells the agents when to
+stop**. Without it, they could accept telemetry that looks right but violates
+the conventions.
 
 If you maintain a GenAI framework and would like instrumentation written this
 way, or if you'd like to help improve the semantic conventions that drive it:
