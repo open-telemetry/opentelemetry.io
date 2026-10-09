@@ -5,6 +5,7 @@ description:
   규칙
 weight: 200
 default_lang_commit: 6524d48015ecb576ef4cb4540493b9c7be51e60f
+drifted_from_default: true
 ---
 
 이 용어집은 오픈텔레메트리(OpenTelemetry) 프로젝트에서 새롭게 정의된 용어와
@@ -385,7 +386,7 @@ availability) 및 확장성(scalability)을 위해 하나의 [서비스](#servic
 ### 명세 {#specification}
 
 모든 구현체가 따라야 하는 언어 간 공통 요구사항과 기대사항을 설명한다.
-[명세][Specification]을 참고한다.
+[명세][Specification]를 참고한다.
 
 ### 상태 {#status}
 

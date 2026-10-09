@@ -146,7 +146,10 @@ sequenceDiagram
 - **`label-manager`**: runs with a GitHub App token (`OTELBOT_DOCS_CLIENT_ID` /
   `OTELBOT_DOCS_PRIVATE_KEY`) that has permissions to read org/team membership
   and edit PR labels. Uses `pull_request_target` and `workflow_run` to ensure it
-  always executes in the trusted base repository context.
+  always executes in the trusted base repository context. The downloaded
+  `pr-number` artifact comes from the PR's own copy of `pr-review-trigger`, so
+  it is untrusted input: extracted outside the checkout and accepted only as an
+  integer PR number.
 - **`blog-publish-labels`**: runs on a schedule with a GitHub App token and the
   `SLACK_WEBHOOK_URL` secret. Always executes in the trusted base repository
   context (schedule events have no fork variant).
@@ -268,7 +271,12 @@ It runs as a four-stage pipeline:
 1. **`ack`** (trusted): as soon as a directive is received, replies with a 🔄
    in-progress comment that links to the directive comment and to the run.
 2. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
-   command, and uploads a patch artifact (`site.patch`), up to 1024 KB.
+   command, and uploads a patch artifact (`site.patch`), up to 1024 KB. Before
+   the checkout, a trusted step refuses a PR head that predates
+   `link-cache.jsonc` or still pins the CSV-only `link-cache` (its own link
+   check would recreate the obsolete `.lycheecache`); the outcome comment then
+   tells the author to update the branch. The step is inline shell, untested,
+   and goes once no open PR predates the switch.
 3. **`apply-patch`** (trusted): calls the [`reusable-apply-patch.yml`][]
    workflow — resolved from the default branch, never from the PR — which
    applies the patch with a GitHub App token and pushes a commit to the PR
@@ -326,7 +334,11 @@ It runs as a three-stage pipeline:
    Unlike the `/fix` pipeline, the whole run is trusted: the schedule and
    dispatch triggers only ever execute default-branch code. A failing command
    fails the job, but any fixes it produced are still published, with a
-   partial-results warning in the PR body.
+   partial-results warning in the PR body. With the default command, it first
+   refreshes the locale team registry (`data/locale-teams.yaml`) from the live
+   teams' direct membership, using a read-only, members-scoped app token that
+   later steps never see; drift then lands in the same PR as the regenerated
+   CODEOWNERS. A failed refresh leaves the registry untouched and fails the job.
 2. **`publish-patch`**: calls the [`reusable-patch-pr.yml`][] workflow — the
    sibling of [`reusable-apply-patch.yml`][] for callers without a PR context —
    which force-pushes the patch to the stable `otelbot/housekeeping` branch,
@@ -346,10 +358,12 @@ It runs as a three-stage pipeline:
 > [!NOTE]
 >
 > The [`refcache-refresh.yml`][] workflow also runs daily and touches
-> `.lycheecache`, so the two bot PRs can conflict depending on merge order.
-> Conflicts self-heal, since both branches sync from `main` on each run.
-> Migrating `refcache-refresh` onto the reusable patch actions — eliminating
-> such conflicts by construction — is tracked in the [project plan][].
+> `link-cache.jsonc`, so the two bot PRs can conflict depending on merge order.
+> Conflicts self-heal: the housekeeping branch is rebuilt from `main` on each
+> run, and `refcache-refresh` merges `main`, taking `main`'s file and re-pruning
+> on a cache-only conflict. Migrating `refcache-refresh` onto the reusable patch
+> actions — eliminating such conflicts by construction — is tracked in the
+> [project plan][].
 
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 [housekeeping]:
@@ -395,7 +409,10 @@ for the upstream spec repositories (which `auto-update-versions.yml` therefore
 excludes). It runs one matrix job per upstream repository: between releases,
 each job tracks unreleased upstream changes through a draft PR ("integration
 branch"); once upstream releases, it finalizes that branch and PR into the
-release PR.
+release PR. Each run merges `main` into the long-lived integration branch; a
+conflict confined to `link-cache.jsonc` (both sides update the cache daily)
+self-heals by taking `main`'s cache, and the run's own link check re-adds the
+branch's entries.
 
 | Matrix job | Upstream repository           | Branch slug |
 | ---------- | ----------------------------- | ----------- |

@@ -1,9 +1,11 @@
 ---
 title: 依存関係の管理
 description: >-
-  サイトが npm 依存関係をどのようにインストール、検証、更新するか
+  サイトの npm 依存関係に対するインストール時の動作、更新手順、サプライチェーン制御
 weight: 5
-default_lang_commit: aac3db2d7779c644ad981d0797e0028738698826
+default_lang_commit: bf53e16042a4ec7ae37779f944c49d1cde3719d3
+drifted_from_default: true
+cSpell:ignore: EBADENGINE
 ---
 
 npm 依存関係はコミット済みの `package-lock.json` によって固定され、インストール時にはレビュー済みのライフサイクルスクリプトのみが実行されます。
@@ -69,13 +71,16 @@ Netlify は[デプロイコンテキスト][deploy context]ごとにビルドキ
 
 ### マニフェストの変更 {#manifest-changes}
 
-`package.json` を手動で編集した場合でも、`npm run update:packages` で範囲内のすべてのバージョンをアップした場合でも（提供されるバージョンには[リリースクールダウン](#release-cooldown)が適用されます）、変更されたマニフェストに合わせてロックファイルを同期します。
+`package.json` を手動で編集した場合でも、`npm run update:packages` ですべてのバージョンをアップした場合でも（提供されるバージョンには[リリースクールダウン](#release-cooldown)が適用されます）、変更されたマニフェストに合わせてロックファイルを同期します。
 
 ```sh
 npm install --package-lock-only --ignore-scripts
 ```
 
-`npm update`（後述）とは異なり、このコマンドはマニフェストの変更に必要な部分のみを書き換え、他のエントリは固定されたままにします。
+`npm update`（後述）とは異なり、このコマンドはマニフェスト編集の影響を受けるロックエントリのみを書き換えます。
+ただし、編集したパッケージだけにとどまらない場合があります。
+バンプされたパッケージが置き換えられると、そのパッケージ固有の推移的依存関係（他のパッケージが依存していないもの）が、範囲とクールダウンが許す最新バージョンに再解決される可能性があるため、ロックの差分全体をレビューしてください。
+
 ロックファイルのマージコンフリクトも同じ方法で解決します。
 `main` のバージョンを採用し、上記のコマンドを再実行してください。
 
@@ -86,7 +91,7 @@ npm install --package-lock-only --ignore-scripts
 1. 新しいバージョンのライフサイクルスクリプトをレビューする。
 2. 結果を、依存関係の変更と一緒にコミットし、PR レビューで検証する。
    必要なスクリプトは正確なバージョン承認として、不要なスクリプトは名前レベルの拒否（`false`、以降のバージョンアップ時に更新不要）として記録する。
-3. 新しい承認の場合、[`.github/renovate.json5`][] の Renovate 自動マージ除外リストにもそのパッケージを追加する。
+3. 新しい承認の場合、[`.github/renovate.jsonc`][] の Renovate 自動マージ除外リストにもそのパッケージを追加する。
    承認済みパッケージのすべてのバージョンアップには上記の手順が必要なため、その更新 PR はコントリビューターを待つ必要がある。
 
 ### 推移的依存関係のリフレッシュ {#transitive-refresh}
@@ -98,6 +103,18 @@ npm install --package-lock-only --ignore-scripts
 npm update --package-lock-only --ignore-scripts
 ```
 
+特定のパッケージだけをリフレッシュするには、名前を指定します。
+
+```sh
+npm update --package-lock-only --ignore-scripts PACKAGE_NAME
+```
+
+_`PACKAGE_NAME`_ をリフレッシュするパッケージ名（複数指定可）に置き換えてください。
+
+いずれの場合も、リフレッシュ後のロック全体をレビューしてください。
+npm は選択されたバージョンが必要とするものも移動させます。
+また、マニフェストの宣言された範囲に従うため、親が範囲を広げると新しい推移的メジャーバージョンが入る可能性があります。
+
 [リリースクールダウン](#release-cooldown)が適用されますが、注意すべきエッジケースがあります。
 満たせるバージョンがすべてクールダウンより新しい依存関係（正確なピン指定がよくあるケースです）は、いずれかのバージョンが経過期間を超えるまで解決全体が失敗します（`ETARGET`）。
 レビュー済みで問題ないと判断した新しいリリースの場合は、その名前だけを除外します。
@@ -108,11 +125,8 @@ npm_config_min_release_age_exclude=PACKAGE_NAME \
   npm update --package-lock-only --ignore-scripts
 ```
 
-_`PACKAGE_NAME`_ を問題ないと判断したパッケージ名に置き換えてください。
 除外は呼び出しごとに指定してください。
 [`.npmrc`][] に恒久的なエントリを追加すると、その名前に対するクールダウンが永続的に免除されます。
-また、リフレッシュ後のロックファイルでメジャーバージョンの変更を確認してください。
-`npm update` はマニフェストに宣言された範囲に従うため、親パッケージが範囲を広げると新しい推移的メジャーバージョンが入る可能性があります。
 
 ### 予期しないロックファイルの変更 {#lock-drift}
 
@@ -130,6 +144,7 @@ _`PACKAGE_NAME`_ を問題ないと判断したパッケージ名に置き換え
 重複は意図的なものであり、まれに PR が重複することは許容されています。
 スケジュールされたロックの再解決は[設計上無効][deliberate]であるため、これらのアラート駆動のパスが推移的修正の唯一の自動化されたルートです。
 そのためリポジトリ側の設定は有効のままにしています。
+どちらも PR を出さない場合は、メンテナーがパッケージを[名前で指定してリフレッシュ](#transitive-refresh)します（手動ルート）。
 2つのパスは[リリースクールダウン](#release-cooldown)に対して異なる挙動を示します。
 
 - Dependabot security updates は、すべてのリリース経過期間ゲート（`.npmrc` を含む）を意図的にオーバーライドします。
@@ -157,12 +172,12 @@ PR で監査が失敗した場合、アサーションメッセージに期待�
 グリーンにするためだけにアサーションを緩和しないでください。
 各アサーションはこのページの制御を強制しているため、まず変更によってどの制御が緩和されるかを把握してください。
 
-監査のスコープ外:
+監査のスコープ外: <a id="audit-out-of-scope"></a>
 
-- GitHub ワークフローファイル
-- [Renovate][] 設定（[`.github/renovate.json5`][]）: コードと同様にレビューされるが、監査による固定の対象外
+- GitHub ワークフローファイル: トリガーとトークン権限はワークフローごとにレビューされます（[CI ワークフロー][ci-security]を参照）
+- [Renovate][] 設定（[`.github/renovate.jsonc`][]）: コードと同様にレビューされるが、監査による固定の対象外
 - [Docsy][] テーマ自身の依存関係インストール（上流で監査済み）
-- インストール境界を越えたビルド側の npm スクリプト
+- インストール境界を越えたビルド側の npm スクリプト: サイト自身のコードを丸ごと実行し、通常の開発で変更される
 
 ### リリースクールダウン {#release-cooldown}
 
@@ -177,7 +192,7 @@ PR で監査が失敗した場合、アサーションメッセージに期待�
     特定の呼び出しで自分の設定を維持するには、`npm_config_min_release_age` 環境変数を設定してください。
     この変数は両方の設定より優先されます。
 - **[Renovate][]**: 開く更新 PR に独自のクールダウンを適用します。
-  [`.github/renovate.json5`][] の `minimumReleaseAge` で設定されます。
+  [`.github/renovate.jsonc`][] の `minimumReleaseAge` で設定されます。
   人間のレビューなしでマージされる更新にはより長い期間が設定されます。
   プリセット提供の3日間の npm クールダウン（`security:minimumReleaseAgeNpm`）は、これらの期間をオーバーライドできないよう（その経過期間の免除を含め）除外されています。
   注意: そのプリセットの上流での名前変更は、暗黙的にクールダウンを再適用させます。
@@ -190,14 +205,14 @@ PR で監査が失敗した場合、アサーションメッセージに期待�
 
 - **適用**: [`package.json`][] の `allowScripts` マップ。
   [`.npmrc`][] の `strict-allow-scripts` によりフェイルクローズドとなります。
+- **評価されるタイミング**: スクリプト有効のインストール時のみです。
+  具体的には、[インストール時の動作](#install-contracts)の `hugo-extended` リビルドステップ（npm がインストール済みツリー全体をチェックする）と、`--ignore-scripts` なしで実行されるローカルの `npm install` です。
 - **拒否**:
   - `false` に設定されたエントリは、レビュー済みの拒否を記録します。
     パッケージはインストールされますが、そのスクリプトはスキップされます。
   - 拒否は何も許可しないため、バージョンをまたいで名前単位でパッケージをカバーします。
-- **`--ignore-scripts` との相互作用**:
-  - 許可リストはフィルタリングのみを行います。
-    `ignore-scripts` が無効にしたスクリプトを再有効化することは決してないため、スクリプト無効のインストールでは許可リストの有無にかかわらず何も実行されません。
-  - レビュー済みの例外は、呼び出し箇所で明示的に `--ignore-scripts=false` を指定する必要があります。
+- **ローカルでのマスキング**: ユーザーの `.npmrc` で `ignore-scripts=true` を設定すると、通常のローカル `npm install` はスクリプト無効になるため、許可リストの評価をスキップします。
+  ただし、リビルドステップは引き続き許可リストを評価するため、`npm run install:safe` はユーザー設定に関係なくリポジトリの態勢をチェックします。
 
 ### npm バージョンフロア {#npm-version-floor}
 
@@ -206,7 +221,10 @@ engines フロアとは、上記の制御をサポートする最も古いバー
 
 - **適用**:
   - [`package.json`][] の `engines` がフロアを設定します。
-  - [`.npmrc`][] の `engine-strict` によりフェイルクローズドとなります。
+    フロアを下回る npm は、許可リストの適用機能の一部または全部、および[推移的リフレッシュの除外](#transitive-refresh)が依存する `min-release-age-exclude` 設定を欠いています。
+    `engines` の横のコメントにリリースが記載されています。
+    `allowScripts` をサポートしないバージョンはこのフィールドを黙って無視するため、スクリプト有効のインストールではすべてのインストールスクリプトが実行されます。
+  - [`.npmrc`][] の `engine-strict` が npm の `EBADENGINE` 警告を拒否に変えます。
 - **フロアポリシー**:
   - npm が制御の適用ギャップを修正するたびにフロアは引き上げられます。
   - コミット済みの `.nvmrc` は、バンドルされている npm がフロアを満たす Node.js リリースを固定しているため、CI、Netlify、`nvm` 管理のローカルセットアップは構造上これを満たします。
@@ -247,12 +265,13 @@ engines フロアとは、上記の制御をサポートする最も古いバー
   自動化されたチェックはありません。
 
 <!-- prettier-ignore-start -->
-[`.github/renovate.json5`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5
+[`.github/renovate.jsonc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.jsonc
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
+[ci-security]: ../ci-workflows/#security-model
 [deliberate]: ../../design/supply-chain-security/#deliberate
 [Dependabot security updates]: https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
