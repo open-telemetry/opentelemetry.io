@@ -434,7 +434,7 @@ test('netlify.toml: auto-install stays inert and build commands stay pinned', ()
   );
   assert.deepEqual(
     context,
-    { production: { command: 'npm run netlify-build:production' } },
+    parseToml('production.command = "npm run netlify-build:production"'),
     'context tables hold exactly the reviewed production command',
   );
   assert.deepEqual(
