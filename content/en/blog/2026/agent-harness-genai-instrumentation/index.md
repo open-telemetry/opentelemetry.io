@@ -429,7 +429,7 @@ If you maintain a GenAI framework and would like instrumentation written this
 way, or if you'd like to help improve the semantic conventions that drive it:
 
 - File an issue on the
-  [semantic conventions repository](https://github.com/open-telemetry/semantic-conventions)
+  [GenAI semantic conventions repository](https://github.com/open-telemetry/semantic-conventions-genai)
   if you spot a gap our agents are likely to hit.
 - Join the
   [GenAI Semantic Conventions and Instrumentation SIG](https://github.com/open-telemetry/community/blob/8b6c5060617ced1caf4c39ff5b7318aa2e9c7569/projects/gen-ai.md)
