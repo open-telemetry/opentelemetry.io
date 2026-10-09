@@ -123,13 +123,15 @@ about.
 - **Team Lead Agent** — initializes the run, sequences the other agents, and
   owns the loop's state.
 - **Instrumentation Research Agent** — clones the target framework, studies its
-  architecture and extension points, surveys existing implementations, and
-  produces a research report listing candidate instrumentation strategies.
+  architecture, and looks first for public extension points such as hooks and
+  callbacks. It surveys existing implementations and produces a research report
+  listing candidate instrumentation strategies, considering method wrapping only
+  when those extension points cannot observe the required lifecycle.
 - **Plan Review Agent** — scores the candidates on complexity, maintainability,
   and coverage, picks the best one, and writes a fine-grained
-  `execution-plan.md` specifying which methods to wrap and where each attribute
-  should come from. This is essentially a spec-generation step, and it is the
-  natural point for a human to review.
+  `execution-plan.md` specifying which extension points to use and where each
+  attribute should come from. This is essentially a spec-generation step, and it
+  is the natural point for a human to review.
 - **Coding Agent** — implements `execution-plan.md` against the GenAI semantic
   conventions, using the shared GenAI utilities.
 - **Code Review & Test Validation Agent** — reviews the generated code, writes
@@ -193,9 +195,16 @@ workflow definition.
 Two design choices keep the generated code from drifting, and both of them are
 constraints on the Coding Agent rather than instructions in a prompt.
 
-The first is that `execution-plan.md` fixes the hook set before any code is
-written. In the generated CrewAI plugin, that plan shows up as an explicit,
-reviewable list of wrap targets:
+The first is that `execution-plan.md` fixes the instrumentation points before
+any code is written. The Coding Agent is not told to wrap methods: the research
+stage prefers public hooks and callbacks when they cover the required lifecycle.
+For example, the OpenAI Agents SDK exposes lifecycle hooks, so that strategy
+takes priority there. The CrewAI plugin shown here supports versions back to
+0.80, where public callbacks did not expose the complete start/end lifecycle
+needed for these spans, so its plan selected method wrapping. Newer CrewAI
+releases provide a broader event-listener API; for those versions, that native
+API should be evaluated first. The wrapping plan shows up as an explicit,
+reviewable list of targets:
 
 ```python
 _CREWAI_UNINSTRUMENT_TARGETS = (
