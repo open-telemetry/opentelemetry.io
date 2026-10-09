@@ -230,7 +230,7 @@
     "proseWrap": "always",
     "singleQuote": true
   },
-  "spelling": "cSpell:ignore elemetry loglevel minisearch mypy nowrap precheck pytest startswith -",
+  "spelling": "cSpell:ignore elemetry GHSA jqrq katex loglevel minisearch mypy nowrap pmpm precheck pytest startswith -",
   "allowScripts": {
     "@parcel/watcher": false,
     "fsevents": false,
