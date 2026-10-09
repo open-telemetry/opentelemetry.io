@@ -1,0 +1,14 @@
+title: JavaScript API
+registryType: api
+language: js
+tags:
+  - javascript
+  - node.js
+  - browser
+license: Apache 2.0
+description: The OpenTelemetry API for JavaScript (Browser and Node)
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/api
+createdAt: 2020-02-04
