@@ -12,15 +12,18 @@ is a non-exhaustive list of
 [_end-user_ organizations](https://www.cncf.io/enduser/) that have adopted
 OpenTelemetry for [Observability](/docs/concepts/observability-primer/).
 
+<!---
 > [!TIP] Help us showcase the growing OpenTelemetry community!
 >
 > If your company is using OpenTelemetry in production or experimentation, we’d
 > love to add you to the official adopters list. You can either
 > [submit a PR](#how-to-add) or fill out the [Join the OpenTelemetry Adopters
 > List][form] form.
+-->
 
 {{% ecosystem/adopters-table %}}
 
+<!--
 ## Adding your organization as an adopter {#how-to-add}
 
 To have your organization listed, submit a PR with an entry added to the
@@ -41,8 +44,10 @@ through OpenTelemetry, see [Integrations](/ecosystem/integrations/).
 If your organization provides a solution that consumes OpenTelemetry to offer
 **Observability to end users**, see [Vendors](/ecosystem/vendors).
 
-{{% include keep-up-to-date.md adopter %}}
+# TODO: remove spaces to fix shortcode formatting before uncommenting
+{ { % include keep-up-to-date.md adopter % } }
 
 [adopters list]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml
 [form]: https://forms.gle/K3pKmQdTc2eevLJv9
+-->
