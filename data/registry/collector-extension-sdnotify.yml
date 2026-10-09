@@ -1,0 +1,21 @@
+# cSpell:ignore sdnotify sdnotifyextension
+title: sd_notify Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+license: Apache 2.0
+description:
+  The sd_notify extension integrates the collector with the sd_notify(3)
+  protocol.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sdnotifyextension
+createdAt: 2026-09-18
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/sdnotifyextension
+  version: v0.159.0
