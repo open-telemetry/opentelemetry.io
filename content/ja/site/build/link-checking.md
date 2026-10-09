@@ -3,6 +3,7 @@ title: リンクチェック
 weight: 12
 description: ローカルおよび CI でのサイトのリンクチェック方法。
 default_lang_commit: 67065425cb182395dfd94f3899972afc7e131761
+drifted_from_default: true
 ---
 
 サイトのリンクチェックには **[Lychee][]** を使用しており、外部リンクの結果はコミットされたキャッシュ（[リンクキャッシュ][link cache]を参照）によって裏付けられています。
