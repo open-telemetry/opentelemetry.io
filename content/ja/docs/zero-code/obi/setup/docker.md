@@ -4,6 +4,7 @@ linkTitle: Docker
 description: OBIをDockerコンテナとしてセットアップして実行し、別のコンテナを計装する方法を学びます。
 weight: 3
 default_lang_commit: 7279d56948a75400445c97086d7b1e0da0dd0438
+drifted_from_default: true
 cSpell:ignore: goblog
 ---
 
