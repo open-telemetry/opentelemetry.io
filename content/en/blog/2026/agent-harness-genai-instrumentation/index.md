@@ -342,13 +342,13 @@ missing attribute is recorded, not a build break.
 ![Coverage matrix for invoke-agent internal spans across fourteen generated instrumentations, with the GenAI attributes grouped by requirement level: required, conditionally required, recommended, and opt-in](invoke-agent-internal-spans.png)
 
 Separately, Weaver live-check reports attributes an agent emitted that the
-registry does not define as `missing_attribute` violations. We do not suppress
-those findings. Accepting one means declaring it in `expected_violations` with
-its finding `id` and a written reason — and because a declared violation that
-Weaver stops reporting also fails the run, a suppression cannot quietly outlive
-the gap that justified it. Coverage is scored only over registry-defined
-attributes, so an extension can never inflate a plugin's number. Extensions that
-recur across frameworks become candidates for upstream semconv proposals.
+registry does not define as `missing_attribute` violations. When we temporarily
+accept a known violation, we list its finding `id` and the reason in
+`expected_violations`. The run also fails if Weaver stops reporting that
+violation, telling us that the entry is stale and should be removed. Coverage
+counts only registry-defined attributes, so custom extensions do not raise a
+plugin's score. Extensions that recur across frameworks become candidates for
+upstream semconv proposals.
 
 One of those extensions is a known deviation rather than a considered choice.
 The CrewAI plugin currently emits its framework-specific attributes under
