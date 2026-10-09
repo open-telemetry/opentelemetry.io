@@ -347,8 +347,8 @@ accept a known violation, we list its finding `id` and the reason in
 `expected_violations`. The run also fails if Weaver stops reporting that
 violation, telling us that the entry is stale and should be removed. Coverage
 counts only registry-defined attributes, so custom extensions do not raise a
-plugin's score. Extensions that recur across frameworks become candidates for
-upstream semconv proposals.
+plugin's score. If several frameworks need the same attribute that the registry
+does not define, we propose adding it to the GenAI semantic conventions.
 
 One of those extensions is a known deviation rather than a considered choice.
 The CrewAI plugin currently emits its framework-specific attributes under
