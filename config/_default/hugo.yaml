@@ -188,8 +188,8 @@ params:
         icon: fas fa-image
         desc: Official OpenTelemetry logos
       - name: Meeting Recordings
-        url: https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s
-        icon: fas fa-video
+       url: https://zoom-lfx.platform.linuxfoundation.org/meetings/opentelemetry?view=week
+    icon: fas fa-video
         desc: Watch our meeting recordings on Zoom Cloud
       - name: Site analytics
         url: https://lookerstudio.google.com/s/tSTKxK1ECeU
