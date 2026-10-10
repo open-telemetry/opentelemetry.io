@@ -24,7 +24,7 @@ Fluent Bit, etc.) sending to one or more open source or commercial backends.
   runs and collects out of the box.
 - _Performance_: Highly stable and performant under varying loads and
   configurations.
-- _Observability_: An exemplar of an observable service.
+- _Observability_: An example of an observable service.
 - _Extensibility_: Customizable without touching the core code.
 - _Unification_: Single codebase, deployable as an agent or collector with
   support for traces, metrics, and logs.
