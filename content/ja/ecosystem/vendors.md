@@ -2,8 +2,7 @@
 title: ベンダー
 description: OpenTelemetry をネイティブにサポートするベンダー
 aliases: [/vendors]
-default_lang_commit: 5ccd63611a43a8c3b4a243dc995fb3755d46eafa
-drifted_from_default: true
+default_lang_commit: f5b3c44e7ed3e98a7307379e8c867750dd2f1dea
 ---
 
 {{% include freeze-notice.md %}}
@@ -17,6 +16,7 @@ drifted_from_default: true
 
 {{% ecosystem/vendor-table %}}
 
+<!--
 ## 組織の追加 {#how-to-add}
 
 組織をリストに追加するには、[ベンダーリスト][vendors list]にエントリを追加した [PR を提出][submit a PR]してください。
@@ -36,6 +36,9 @@ OpenTelemetry を通じてオブザーバブルなライブラリ、サービス
 
 [submit a PR]: /docs/contributing/pull-requests/
 
-{{% include keep-up-to-date.md vendor %}}
+# TODO: remove spaces to fix shortcode formatting before uncommenting
+{ { % include keep-up-to-date.md vendor % } }
 
-[vendors list]: https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml
+[vendors list]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml
+-->
