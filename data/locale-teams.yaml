@@ -6,8 +6,15 @@
 #
 # cSpell:disable
 #
-# Membership changes require a PR against this file (audit trail), applied to
-# the live teams by an org admin. Notes:
+# Membership changes require a PR against this file (audit trail). The daily
+# Housekeeping run refreshes this file from the live teams' direct membership
+# (`npm run _fix:locale-teams`), so out-of-band changes surface as a PR:
+# merging it ratifies the live state. If the change is unwanted, have an org
+# admin revert the live team membership, then inspect the next Housekeeping
+# result. A run with no changes leaves the existing PR unchanged; close the
+# stale PR manually. Otherwise, verify that the updated PR no longer contains
+# the rejected roster changes before merging. Automation only reads team
+# membership. Notes:
 #
 # - `maintainers` and `approvers` list *direct* members of the corresponding
 #   `docs-<locale>-maintainers` / `-approvers` teams. GitHub also reports
@@ -31,7 +38,7 @@ locales:
     approvers: [kota-sakuma]
   ko:
     maintainers: []
-    approvers: [abel9851, hellices, Kimcheolhui, krapie, seokho-son]
+    approvers: [abel9851, krapie]
   pl:
     maintainers: []
     approvers: [andrzej-stencel, Kielek, pellared]
@@ -39,8 +46,8 @@ locales:
     maintainers: [emdneto, EzzioMoreira, jpkrohling, maryliag, vitorvasc]
     approvers: [joaopgrassi]
   ro:
-    maintainers: []
-    approvers: [didiViking]
+    maintainers: [didiViking]
+    approvers: []
   uk:
     maintainers: []
     approvers: []

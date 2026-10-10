@@ -44,6 +44,7 @@ have a CNCF logo beside their name.
 
 {{% ecosystem/integrations-table "application integrations" %}}
 
+<!--
 ## Adding your integration {#how-to-add}
 
 To have your library, service, or app listed, [submit a PR][] with an entry
@@ -69,4 +70,6 @@ the following:
 
 [submit a PR]: /docs/contributing/pull-requests/
 
-{{% include keep-up-to-date.md integration %}}
+# TODO: remove spaces to fix shortcode formatting before uncommenting
+{ { % include keep-up-to-date.md integration % } }
+-->
