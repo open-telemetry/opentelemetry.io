@@ -2,8 +2,7 @@
 title: はじめに
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
-default_lang_commit: f8e6af4e73e9d550e8aeb582392458c77f93d440
-drifted_from_default: true
+default_lang_commit: b83edac6fdc7da4c53d10ce00c2f78d9aea0c89b
 cSpell:ignore: rolldice
 ---
 
@@ -98,16 +97,17 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: "4.83.1"),
-        .package(url: "https://github.com/open-telemetry/opentelemetry-swift", from: "1.0.0"),
+        .package(url: "https://github.com/open-telemetry/opentelemetry-swift-core.git", from: "2.4.1"),
+        .package(url: "https://github.com/open-telemetry/opentelemetry-swift.git", from: "2.4.1"),
     ],
     targets: [
         .executableTarget(
             name: "DiceApp",
             dependencies: [
                 .product(name: "Vapor", package: "vapor"),
-                .product(name: "OpenTelemetryApi", package: "opentelemetry-swift"),
-                .product(name: "OpenTelemetrySdk", package: "opentelemetry-swift"),
-                .product(name: "StdoutExporter", package: "opentelemetry-swift"),
+                .product(name: "OpenTelemetryApi", package: "opentelemetry-swift-core"),
+                .product(name: "OpenTelemetrySdk", package: "opentelemetry-swift-core"),
+                .product(name: "StdoutExporter", package: "opentelemetry-swift-core"),
                 .product(name: "ResourceExtension", package: "opentelemetry-swift"),
             ],
             path: "."
@@ -129,7 +129,7 @@ import ResourceExtension
 enum Entrypoint {
     static func main() async throws {
 
-        let spanExporter = StdoutExporter();
+        let spanExporter = StdoutSpanExporter()
         let spanProcessor = SimpleSpanProcessor(spanExporter: spanExporter)
         let resources = DefaultResources().get()
 
