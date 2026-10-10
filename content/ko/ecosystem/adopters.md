@@ -2,6 +2,7 @@
 title: 도입 사례
 description: 오픈텔레메트리를 사용하는 조직
 default_lang_commit: 42ef3b8c965480f4d58b173ed95fcb05fbc7d429
+drifted_from_default: true
 ---
 
 {{% include freeze-notice.md %}}

@@ -3,6 +3,7 @@ title: レジストリへの追加
 linkTitle: 追加
 description: レジストリにエントリーを追加する方法。
 default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
+drifted_from_default: true
 cSpell:ignore: zpages
 ---
 
