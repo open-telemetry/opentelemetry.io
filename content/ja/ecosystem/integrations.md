@@ -2,8 +2,7 @@
 title: インテグレーション
 description: OpenTelemetry をファーストパーティでサポートするライブラリ、サービス、アプリケーション。
 aliases: [/integrations]
-default_lang_commit: 301a68c0bc3a170adfc8f1384f6788c8cebbf322
-drifted_from_default: true
+default_lang_commit: f5b3c44e7ed3e98a7307379e8c867750dd2f1dea
 ---
 
 {{% include freeze-notice.md %}}
@@ -32,6 +31,7 @@ OpenTelemetry によるネイティブライブラリ計装は、ユーザーに
 
 {{% ecosystem/integrations-table "application integrations" %}}
 
+<!--
 ## インテグレーションの追加 {#how-to-add}
 
 ライブラリ、サービス、またはアプリケーションをリストに掲載するには、[レジストリ](/ecosystem/registry/adding)にエントリを追加した [PR を提出][submit a PR]してください。
@@ -50,4 +50,6 @@ OpenTelemetry によるネイティブライブラリ計装は、ユーザーに
 
 [submit a PR]: /docs/contributing/pull-requests/
 
-{{% include keep-up-to-date.md integration %}}
+# TODO: remove spaces to fix shortcode formatting before uncommenting
+{ { % include keep-up-to-date.md integration % } }
+-->
