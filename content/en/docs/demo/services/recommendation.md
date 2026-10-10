@@ -13,11 +13,16 @@ based on existing product IDs the user is browsing.
 ## Instrumentation
 
 This service is a Spring Boot 4 application that uses Spring gRPC for
-communication. Rather than the Java agent, it uses the
+communication. It uses the
 [OpenTelemetry Spring Boot starter](/docs/zero-code/java/spring-boot-starter/),
 which configures the OpenTelemetry SDK and makes it available as an
-`OpenTelemetry` bean. Export endpoints, resource attributes, and the service
-name come from the standard `OTEL_*` environment variables.
+`OpenTelemetry` bean, to show an alternative to the Java agent. Export
+endpoints, resource attributes, and the service name come from the standard
+`OTEL_*` environment variables.
+
+The Java agent remains the default choice for Spring Boot applications, and the
+[ad service](../ad/) uses it. The starter page explains when the starter is the
+better fit.
 
 ```groovy
 implementation platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:${opentelemetryInstrumentationVersion}")
