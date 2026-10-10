@@ -9,7 +9,7 @@ cascade:
     自分の能力を超えたイシューに取り組むことは避けてください。
   _issues: https://github.com/open-telemetry/opentelemetry.io/issues
   _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=state%3Aopen%20label%3A
-default_lang_commit: 0a410d00f789607f64e6e71b785b9c027305117b
+default_lang_commit: c752bba3c9b63ba044c50d991c575295fb8a75f4
 ---
 
 ## 関心をお寄せいただきありがとうございます！ {#thank-you-for-your-interest}

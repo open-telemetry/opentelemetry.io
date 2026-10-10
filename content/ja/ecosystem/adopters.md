@@ -2,6 +2,7 @@
 title: 採用企業
 description: OpenTelemetry を利用している組織
 default_lang_commit: d6988a2bfec7521e701d8a15d36696cbb35a129b
+drifted_from_default: true
 ---
 
 {{% include freeze-notice.md %}}
