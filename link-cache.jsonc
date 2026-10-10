@@ -9894,6 +9894,11 @@
     "when": "2026-10-03T05:48:34Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/k8sclusterreceiver/documentation.md#optional-metrics": {
+    "result": 200,
+    "when": "2026-10-02T19:52:44Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver": {
     "result": 200,
     "when": "2026-10-03T05:48:34Z",
@@ -9907,6 +9912,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/DESIGN.md": {
     "result": 200,
     "when": "2026-09-30T05:46:20Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md#getting-started": {
+    "result": 200,
+    "when": "2026-10-02T19:52:44Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/receivercreator/README.md": {
@@ -16477,6 +16487,16 @@
   "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-ebpf-instrumentation": {
     "result": 200,
     "when": "2026-09-30T05:46:13Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack": {
+    "result": 200,
+    "when": "2026-10-02T19:52:44Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack/examples/no-leader-election-extension": {
+    "result": 200,
+    "when": "2026-10-02T19:52:44Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator": {
