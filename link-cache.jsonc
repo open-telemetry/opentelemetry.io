@@ -9794,6 +9794,11 @@
     "when": "2026-09-23T07:01:16Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/47fd6d863a675e4e653418084645cccbc16aeb8b/receiver/hostmetricsreceiver/internal/scraper/processscraper/metadata.yaml?plain=1#L187": {
+    "result": 200,
+    "when": "2026-10-02T20:57:55Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/549e115b28292c164eb671618c0ec8b728b69d2a/processor/probabilisticsamplerprocessor/README.md?from_branch=main": {
     "result": 200,
     "when": "2026-09-08T05:43:17Z",
@@ -10037,6 +10042,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/44483": {
     "result": 200,
     "when": "2026-09-15T09:32:53Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/45592": {
+    "result": 200,
+    "when": "2026-10-02T20:57:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/45740": {
@@ -14234,9 +14244,19 @@
     "when": "2026-10-08T05:47:37Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/71f0462d5460ad3055201fd0f17658e56362d63a/docs/rfcs/semconv-feature-gates.md#handling-conflicts-during-double-publishing": {
+    "result": 200,
+    "when": "2026-10-02T20:57:55Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/7d1c25d46b14cce04a820d92a4ce462bf7a04b0b/docs/component-stability.md#stable": {
     "result": 200,
     "when": "2026-09-15T09:32:52Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/ac085a4d9f1bdaf3eb90aaebc9a3815f4e00954d/featuregate/README.md?plain=1#L1": {
+    "result": 200,
+    "when": "2026-10-02T20:57:55Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/README.md#compatibility": {
@@ -14469,6 +14489,11 @@
     "when": "2026-09-15T09:32:53Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/pull/15309": {
+    "result": 200,
+    "when": "2026-10-02T20:57:57Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0": {
     "result": 200,
     "when": "2026-10-03T05:48:23Z",
@@ -14477,6 +14502,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0": {
     "result": 200,
     "when": "2026-10-03T05:48:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/62cdad2ea133239380b44d20d84eb26e114779b6/cmd/mdatagen?from_branch=main": {
+    "result": 200,
+    "when": "2026-10-02T20:57:55Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector/tree/d25efc7e2f31a3ba5347d0725a22d7bed1b4015d/cmd/builder?from_branch=main": {
@@ -22327,6 +22357,11 @@
   "https://github.com/open-telemetry/semantic-conventions/pull/3646": {
     "result": 200,
     "when": "2026-09-29T05:46:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3758": {
+    "result": 200,
+    "when": "2026-10-02T20:57:57Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/3889": {
