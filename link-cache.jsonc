@@ -1494,6 +1494,11 @@
     "when": "2026-10-03T05:48:22Z",
     "via": "lychee",
   },
+  "https://creativecommons.org/licenses/by/4.0/deed.uk": {
+    "result": 200,
+    "when": "2026-10-02T20:34:33Z",
+    "via": "lychee",
+  },
   "https://cri-o.io/": {
     "result": 200,
     "when": "2026-10-09T05:48:35Z",
@@ -15819,6 +15824,16 @@
     "when": "2026-10-03T05:48:31Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.10.0/examples/apache": {
+    "result": 200,
+    "when": "2026-10-02T20:34:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.10.0/examples/nginx": {
+    "result": 200,
+    "when": "2026-10-02T20:34:33Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/apache": {
     "result": 200,
     "when": "2026-09-28T05:47:11Z",
@@ -21134,6 +21149,11 @@
     "when": "2026-10-03T05:48:36Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/9bd13bd/projects/landing-page-redesign.md?from_branch=main": {
+    "result": 200,
+    "when": "2026-10-02T20:34:33Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/9bd13bd7b3ecd76093fa980c44dc10b5611b4ee0/projects/landing-page-redesign.md?from_branch=main": {
     "result": 200,
     "when": "2026-10-03T05:48:28Z",
@@ -21227,6 +21247,11 @@
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml": {
     "result": 200,
     "when": "2026-10-03T05:48:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.json5": {
+    "result": "error",
+    "when": "2026-10-02T20:34:28Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.jsonc": {
@@ -24862,6 +24887,21 @@
   "https://helm.sh/docs/intro/install/": {
     "result": 200,
     "when": "2026-10-03T05:48:24Z",
+    "via": "lychee",
+  },
+  "https://helm.sh/uk/": {
+    "result": 200,
+    "when": "2026-10-02T20:34:33Z",
+    "via": "lychee",
+  },
+  "https://helm.sh/uk/docs/": {
+    "result": 200,
+    "when": "2026-10-02T20:34:33Z",
+    "via": "lychee",
+  },
+  "https://helm.sh/uk/docs/intro/install/": {
+    "result": 200,
+    "when": "2026-10-02T20:34:33Z",
     "via": "lychee",
   },
   "https://help.obsidian.md/callouts": {
@@ -31272,6 +31312,16 @@
   "https://ucum.org/ucum.html#para-curly": {
     "result": 200,
     "when": "2026-09-29T05:46:23Z",
+    "via": "lychee",
+  },
+  "https://uk.wikipedia.org/wiki/%D0%9C%D0%B0%D0%B2%D0%BF%D0%BE%D0%BB%D0%B0%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F": {
+    "result": 200,
+    "when": "2026-10-02T20:34:33Z",
+    "via": "lychee",
+  },
+  "https://uk.wikipedia.org/wiki/%D0%A1%D0%BF%D1%80%D1%8F%D0%BC%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9_%D0%B0%D1%86%D0%B8%D0%BA%D0%BB%D1%96%D1%87%D0%BD%D0%B8%D0%B9_%D0%B3%D1%80%D0%B0%D1%84": {
+    "result": 200,
+    "when": "2026-10-02T20:34:33Z",
     "via": "lychee",
   },
   "https://undertow.io/": {
