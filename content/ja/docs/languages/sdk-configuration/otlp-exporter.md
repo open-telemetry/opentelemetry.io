@@ -3,8 +3,8 @@ title: OTLPエクスポーター設定
 linkTitle: OTLPエクスポーター
 weight: 20
 aliases: [otlp-exporter-configuration]
-default_lang_commit: 98f910ef53d1e7f45002e7303b2af4da15282b21
-drifted_from_default: true
+default_lang_commit: 6f4576bc4128278688d3400c5b2dfda0bb1d1491
+cSpell:ignore: lowmemory
 ---
 
 {{% include "env-var-note.md" %}}
@@ -280,3 +280,35 @@ OTLP/HTTP を使う場合は、通常 `v1/profiles` で終わります。
 - OTLP/gRPCを使う場合は `grpc`
 - OTLP/HTTP + protobuf を使う場合は `http/protobuf`
 - OTLP/HTTP + JSON を使う場合は `http/json`
+
+## メトリクス固有の設定 {#metrics-specific-configuration}
+
+以下の環境変数は、メトリクス専用のエクスポーターオプションを設定します。
+
+### `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` {#otel_exporter_otlp_metrics_temporality_preference}
+
+計装の種類に基づいて、エクスポーターの集約テンポラリティの設定を行います。
+
+**デフォルト値:** `cumulative`
+
+**例:** `export OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE=delta`
+
+指定できる値は以下です。
+
+- すべての計装の種類に対して累積集約テンポラリティを使う場合は `cumulative`
+- カウンター、非同期カウンター、およびヒストグラムにデルタ集約テンポラリティを使い、アップダウンカウンターおよび非同期アップダウンカウンターには累積を使う場合は `delta`
+- 同期カウンターおよびヒストグラムにデルタ集約テンポラリティを使い、それ以外には累積を使う場合は `lowmemory`
+
+### `OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION` {#otel_exporter_otlp_metrics_default_histogram_aggregation}
+
+ヒストグラム計装のデフォルトの集約方法を設定します。
+
+**デフォルト値:** `explicit_bucket_histogram`
+
+**例:**
+`export OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION=base2_exponential_bucket_histogram`
+
+指定できる値は以下です。
+
+- 明示的バケットヒストグラム集約を使う場合は `explicit_bucket_histogram`
+- base2指数バケットヒストグラム集約を使う場合は `base2_exponential_bucket_histogram`
