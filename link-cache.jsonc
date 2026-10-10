@@ -16809,6 +16809,11 @@
     "when": "2026-09-30T05:46:20Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation": {
+    "result": 200,
+    "when": "2026-10-02T20:13:55Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/activej-http-6.0": {
     "result": 200,
     "when": "2026-09-24T05:43:02Z",
