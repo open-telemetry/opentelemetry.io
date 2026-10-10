@@ -3,14 +3,14 @@ title: Servicio de Correo
 linkTitle: Correo
 aliases: [emailservice]
 default_lang_commit: 1c87256b0c7b72f3040249ab65eaefc7eb066280
-cSpell:ignore: autoinstrumentado autoinstrumentados autoinstrumentar sinatra
+cSpell:ignore: autoinstrumentado autoinstrumentados sinatra
 ---
 
 Este servicio envía una confirmación por correo cuando se realiza una orden.
 
 [Código fuente del servicio de correo](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/email/)
 
-## Inicializando las trazas
+## Inicializando las trazas {#initializing-tracing}
 
 Necesitarás el SDK core de OpenTelemetry y un exportador para Ruby, además de
 una gema para autoinstrumentar las librerías (ej.: Sinatra).
@@ -33,9 +33,9 @@ OpenTelemetry::SDK.configure do |c|
 end
 ```
 
-## Trazas
+## Trazas {#traces}
 
-### Agregar atributos a los spans autoinstrumentados
+### Agregar atributos a los spans autoinstrumentados {#add-attributes-spans}
 
 Dentro de la ejecución del código autoinstrumentado puedes acceder al span
 actual desde el contexto.
@@ -60,7 +60,7 @@ span.
 span.set_attribute("app.email.recipient", data.email)
 ```
 
-### Crear nuevos spans
+### Crear nuevos spans {#create-new-spans}
 
 Se pueden crear nuevos spans y colocarlos en el contexto activo utilizando
 `in_span` desde un objeto `Tracer` de OpenTelemetry. Cuando se usa junto con un
@@ -74,9 +74,9 @@ tracer.in_span("send_email") do |span|
 end
 ```
 
-## Métricas
+## Métricas {#metrics}
 
-### Inicializando métricas
+### Inicializando métricas {#initializing-metrics}
 
 Los exportadores del SDK de métricas de OpenTelemetry y OTLP se inicializan en
 la raíz del demo con el archivo `email_server.rb`. Primero necesitas incluir las
@@ -105,16 +105,16 @@ una métrica global (ej.: `counter` o contador).
 $confirmation_counter = meter.create_counter("app.confirmation.counter", unit: "1", description: "Counts the number of order confirmation emails sent")
 ```
 
-### Métricas personalizadas
+### Métricas personalizadas {#custom-metrics}
 
 En el demo podrás encontrar la métrica:
 
 - `app.confirmation.counter`: Contador acumulativo del número de órdenes
   confirmadas con un correo enviado
 
-## Logs
+## Logs {#logs}
 
-### Inicializando logs
+### Inicializando logs {#initializing-logs}
 
 Los exportadores del SDK de logs de OpenTelemetry y OTLP se inicializan en la
 raíz del demo con el archivo `email_server.rb`. Primero necesitas incluir las
@@ -134,7 +134,7 @@ configurar un proveedor global para tus logs.
 $logger = OpenTelemetry.logger_provider.logger(name: "email")
 ```
 
-### Generar logs con estructura
+### Generar logs con estructura {#emit-structured-logs}
 
 Puedes usar el método `on_emit` para escribir logs con estructura. Incluye los
 atributos `severity_text` (ej.: `INFO`, `ERROR`), un `body` claro y un atributo
