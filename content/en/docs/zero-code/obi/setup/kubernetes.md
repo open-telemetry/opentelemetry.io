@@ -4,7 +4,7 @@ linkTitle: Kubernetes
 description: Learn how to deploy OBI in Kubernetes.
 weight: 4
 # prettier-ignore
-cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefulset
+cSpell:ignore: containerd goblog kubeadm microk8s replicaset statefulset tracefs
 ---
 
 > [!NOTE]
@@ -171,7 +171,7 @@ spec:
               name: https
         # Sidecar container with OBI - the eBPF auto-instrumentation tool
         - name: obi
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.14.0
           securityContext: # Privileges are required to install the eBPF probes
             privileged: true
           env:
@@ -207,7 +207,7 @@ pod, you can specify the executable name or open port instead of using the
 wildcard.
 
 The following example instruments the `goblog` pod by attaching OBI as a
-container (image available at `otel/ebpf-instrument:main`). The
+container (image available at `otel/ebpf-instrument:v0.14.0`). The
 auto-instrumentation tool is configured to forward metrics and traces to
 OpenTelemetry Collector, which is accessible behind the `otelcol` service in the
 same namespace:
@@ -243,7 +243,7 @@ spec:
               name: https
         # Sidecar container with OBI - the eBPF auto-instrumentation tool
         - name: obi
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.14.0
           securityContext: # Privileges are required to install the eBPF probes
             privileged: true
           env:
@@ -308,7 +308,7 @@ spec:
       serviceAccountName: obi # required if you want kubernetes metadata decoration
       containers:
         - name: autoinstrument
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.14.0
           securityContext:
             privileged: true
           env:
@@ -333,12 +333,9 @@ spec:
 
 ### Deploy OBI unprivileged
 
-In all of the examples so far, `privileged:true` or the `SYS_ADMIN` Linux
-capability was used in the OBI deployment's `securityContext` section. While
-this works in all circumstances, there are ways to deploy OBI in Kubernetes with
-reduced privileges if your security configuration requires you to do so. Whether
-this is possible depends on the Kubernetes version you have and the underlying
-container runtime used (e.g. **Containerd**, **CRI-O** or **Docker**).
+The examples above run OBI with `privileged: true`. You can instead grant the
+capabilities required by the enabled features. Whether this works depends on
+your Kubernetes version, container runtime, and host security policy.
 
 The following guide is based on tests performed mainly by running `containerd`
 with `GKE`, `kubeadm`, `k3s`, `microk8s` and `kind`.
@@ -349,27 +346,11 @@ a set of Linux
 comprehensive list of capabilities required by OBI can be found in
 [Security, permissions and capabilities](../../security/).
 
-**Note** Loading BPF programs requires that OBI is able to read the Linux
-performance events, or at least be able to execute the Linux Kernel API
-`perf_event_open()`.
-
-This permission is granted by `CAP_PERFMON` or more liberally through
-`CAP_SYS_ADMIN`. Since both `CAP_PERFMON` and `CAP_SYS_ADMIN` grant OBI the
-permission to read performance events, you should use `CAP_PERFMON` because it
-grants lesser permissions. However, at system level, the access to the
-performance events is controlled through the setting
-`kernel.perf_event_paranoid`, which you can read or write by using `sysctl` or
-by modifying the file `/proc/sys/kernel/perf_event_paranoid`. The default
-setting for `kernel.perf_event_paranoid` is typically `2`, which is documented
-under the `perf_event_paranoid` section in the
-[kernel documentation](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt).
-Some Linux distributions define higher levels for `kernel.perf_event_paranoid`,
-for example Debian based distributions
-[also use](https://lwn.net/Articles/696216/) `kernel.perf_event_paranoid=3`,
-which disallows access to `perf_event_open()` without `CAP_SYS_ADMIN`. If you
-are running on a distribution with `kernel.perf_event_paranoid` setting higher
-than `2`, you can either modify your configuration to lower it to `2` or use
-`CAP_SYS_ADMIN` instead of `CAP_PERFMON`.
+Starting with v0.14.0, OBI falls back to tracefs for most probe attachment when
+host policy blocks PMU access through `perf_event_open()`. `CAP_SYS_ADMIN` is
+still needed for features that use `bpf_probe_write_user()`, including Go
+library-level context propagation. See [Security](../../security/) for
+feature-specific capabilities and host policy guidance.
 
 An example of a OBI unprivileged container configuration can be found below:
 
@@ -397,7 +378,7 @@ spec:
       containers:
         - name: obi
           terminationMessagePolicy: FallbackToLogsOnError
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.14.0
           env:
             - name: OTEL_EBPF_TRACE_PRINTER
               value: "text"
@@ -420,7 +401,7 @@ spec:
                 - DAC_READ_SEARCH     # <-- Important. Allows OBI to open ELF files.
                 - PERFMON             # <-- Important. Allows OBI to load BPF programs.
                 #- SYS_RESOURCE       # <-- pre 5.11 only. Allows OBI to increase the amount of locked memory.
-                #- SYS_ADMIN          # <-- Required for Go application trace context propagation, or if kernel.perf_event_paranoid >= 3 on Debian distributions.
+                #- SYS_ADMIN          # <-- Required for Go library-level context propagation and other features that use bpf_probe_write_user().
               drop:
                 - ALL
           volumeMounts:
@@ -515,7 +496,7 @@ spec:
       serviceAccountName: obi # needs list/watch on pods, nodes, services
       containers:
         - name: k8s-cache
-          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:latest
+          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:v0.14.0
           ports:
             - containerPort: 50055
               name: grpc
@@ -598,7 +579,7 @@ spec:
       hostPID: true #important!
       containers:
         - name: obi
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.14.0
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true

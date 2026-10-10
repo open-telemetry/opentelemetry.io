@@ -7,8 +7,10 @@ weight: 21
 cSpell:ignore: eventloop gogc replicaset statefulset stddev
 ---
 
-The following table describes the exported metrics in both OpenTelemetry and
-Prometheus format.
+The following table shows selected exported metrics in OpenTelemetry and
+Prometheus format. For the complete v0.14.0 metric definitions, including MCP,
+GPU, and runtime metrics, see the
+[OBI telemetry catalog](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.14.0/site/docs/metrics.md).
 
 | Family       | Name (OTel)                           | Name (Prometheus)                             | Type      | Unit        | Description                                                                                                           |
 | ------------ | ------------------------------------- | --------------------------------------------- | --------- | ----------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -75,6 +77,17 @@ and
 which you can enable via the [features](../configure/options/) configuration
 option.
 
+Starting with v0.14.0, the `application` feature includes the HTTP body-size
+histograms. Use `application_red` instead if you only want RED metrics, or
+combine `application_red` and `application_sizes` in the same feature list. See
+[metrics export features](../configure/export-data/#metrics-export-features).
+
+HTTP duration and body-size metrics now include `error.type` on failed requests
+by default. Their Prometheus series have an `error_type` label, with an empty
+value for successful requests. Update dashboards and alerts that match the old
+series. OTLP span metrics no longer put `host.id` on each data point; it remains
+on the resource and in `target_info`. OBI's Prometheus exporter is unaffected.
+
 ## Attributes of OBI metrics
 
 For the sake of brevity, the metrics and attributes in this list use the OTel
@@ -135,7 +148,7 @@ check the `attributes`->`select` section in the
 | `messaging.process.duration`          | `messaging.system`                                          | shown                                             |
 | `messaging.process.duration`          | `messaging.destination.name`                                | shown                                             |
 | `obi.network.flow.bytes`              | `client.port`                                               | hidden                                            |
-| `obi.network.flow.bytes`              | `direction`                                                 | hidden                                            |
+| `obi.network.flow.bytes`              | `direction`                                                 | shown                                             |
 | `obi.network.flow.bytes`              | `dst.address`                                               | hidden                                            |
 | `obi.network.flow.bytes`              | `dst.cidr`                                                  | shown if the `cidrs` configuration section exists |
 | `obi.network.flow.bytes`              | `dst.name`                                                  | hidden                                            |
@@ -147,14 +160,14 @@ check the `attributes`->`select` section in the
 | `obi.network.flow.bytes`              | `k8s.dst.namespace`                                         | shown if Kubernetes is enabled                    |
 | `obi.network.flow.bytes`              | `k8s.dst.node.ip`                                           | hidden                                            |
 | `obi.network.flow.bytes`              | `k8s.dst.node.name`                                         | hidden                                            |
-| `obi.network.flow.bytes`              | `k8s.dst.owner.type`                                        | hidden                                            |
+| `obi.network.flow.bytes`              | `k8s.dst.owner.type`                                        | shown if Kubernetes is enabled                    |
 | `obi.network.flow.bytes`              | `k8s.dst.type`                                              | hidden                                            |
 | `obi.network.flow.bytes`              | `k8s.dst.owner.name`                                        | shown if Kubernetes is enabled                    |
 | `obi.network.flow.bytes`              | `k8s.src.name`                                              | hidden                                            |
 | `obi.network.flow.bytes`              | `k8s.src.namespace`                                         | shown if Kubernetes is enabled                    |
 | `obi.network.flow.bytes`              | `k8s.src.node.ip`                                           | hidden                                            |
 | `obi.network.flow.bytes`              | `k8s.src.owner.name`                                        | shown if Kubernetes is enabled                    |
-| `obi.network.flow.bytes`              | `k8s.src.owner.type`                                        | hidden                                            |
+| `obi.network.flow.bytes`              | `k8s.src.owner.type`                                        | shown if Kubernetes is enabled                    |
 | `obi.network.flow.bytes`              | `k8s.src.type`                                              | hidden                                            |
 | `obi.network.flow.bytes`              | `server.port`                                               | hidden                                            |
 | `obi.network.flow.bytes`              | `src.address`                                               | hidden                                            |
@@ -228,10 +241,10 @@ in Prometheus Format.
 | Name                                    | Type       | Description                                                                              |
 | --------------------------------------- | ---------- | ---------------------------------------------------------------------------------------- |
 | `obi_ebpf_tracer_flushes`               | Histogram  | Length of the groups of traces flushed from the eBPF tracer to the next pipeline stage   |
-| `obi_metric_exports_total`              | Counter    | Length of the metric batches submitted to the remote OTel collector                      |
-| `obi_metric_export_errors_total`        | CounterVec | Error count on each failed OTel metric export, by error type                             |
-| `obi_trace_exports_total`               | Counter    | Length of the trace batches submitted to the remote OTel collector                       |
-| `obi_trace_export_errors_total`         | CounterVec | Error count on each failed OTel trace export, by error type                              |
+| `obi_otel_metric_exports_total`         | Counter    | Length of the metric batches submitted to the remote OTel collector                      |
+| `obi_otel_metric_export_errors_total`   | CounterVec | Error count on each failed OTel metric export, by error type                             |
+| `obi_otel_trace_exports_total`          | Counter    | Length of the trace batches submitted to the remote OTel collector                       |
+| `obi_otel_trace_export_errors_total`    | CounterVec | Error count on each failed OTel trace export, by error type                              |
 | `obi_prometheus_http_requests_total`    | CounterVec | Number of requests towards the Prometheus Scrape endpoint, faceted by HTTP port and path |
 | `obi_bpf_network_ignored_packets_total` | Counter    | Number of network packets dropped by OBI network filters before flow accounting          |
 | `obi_instrumented_processes`            | GaugeVec   | Instrumented processes by OBI, with process name                                         |

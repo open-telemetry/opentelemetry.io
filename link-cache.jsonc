@@ -15689,6 +15689,21 @@
     "when": "2026-09-28T05:47:10Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.14.0/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation": {
+    "result": 200,
+    "when": "2026-10-05T14:50:37Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.14.0/devdocs/gpu-monitoring.md": {
+    "result": 200,
+    "when": "2026-10-05T14:50:37Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.14.0/site/docs/metrics.md": {
+    "result": 200,
+    "when": "2026-10-05T14:50:37Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/discussions": {
     "result": 200,
     "when": "2026-10-03T05:48:26Z",
@@ -15799,6 +15814,11 @@
     "when": "2026-09-28T05:47:10Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.14.0": {
+    "result": 200,
+    "when": "2026-10-05T14:50:38Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.7.0": {
     "result": 200,
     "when": "2026-10-03T05:48:30Z",
@@ -15832,6 +15852,21 @@
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/nginx": {
     "result": 200,
     "when": "2026-09-28T05:47:11Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.14.0/examples/apache": {
+    "result": 200,
+    "when": "2026-10-05T14:50:37Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.14.0/examples/go-trace-api": {
+    "result": 200,
+    "when": "2026-10-05T14:50:37Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.14.0/examples/nginx": {
+    "result": 200,
+    "when": "2026-10-05T14:50:37Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-ebpf-profiler": {

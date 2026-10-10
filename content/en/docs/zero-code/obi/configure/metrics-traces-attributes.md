@@ -45,10 +45,10 @@ attributes:
         - obi.ip
         - src.name
         - dst.port
-    sql_client_duration:
-      # report all the possible attributes but db_statement
+    db_client_operation_duration:
+      # report all the possible attributes but db.query.text
       include: ['*']
-      exclude: ['db_statement']
+      exclude: ['db.query.text']
     http_client_request_duration:
       # report the default attribute set but exclude the Kubernetes Pod information
       exclude: ['k8s.pod.*']
@@ -101,6 +101,11 @@ under `attributes.select`. It controls trace decoration such as `db.query.text`,
 `graphql.document`, `url.query`, GenAI payload attributes, and
 `db.response.error`.
 
+Since v0.14.0, `service.peer.name`, `http.request.body.size`,
+`http.response.body.size`, and `obi.http.response.observed` are also opt-in span
+attributes. Add only the ones your trace processors require. For example, a
+service graph processor that uses `service.peer.name` can select it explicitly:
+
 ```yaml
 attributes:
   select:
@@ -108,6 +113,7 @@ attributes:
       include:
         - db.query.text
         - db.response.error
+        - service.peer.name
 ```
 
 `url.query` is enabled by default when an HTTP request contains a query string.
@@ -136,6 +142,10 @@ Because these values can contain sensitive payloads, they require an exact entry
 in `attributes.select.traces.include`; wildcard entries such as `gen_ai.*` don't
 enable them.
 
+When OBI cannot resolve a peer name, it omits `service.peer.name` rather than
+emitting an empty value. Parsed span attributes with unknown values are likewise
+omitted; this does not change resource attributes or metric labels.
+
 ### `db.response.error` {#db-response-error}
 
 `db.response.error` is not part of the OpenTelemetry semantic conventions. OBI
@@ -162,10 +172,25 @@ YAML section: `ebpf`
 You can configure the component under the `ebpf` section of your YAML
 configuration or via environment variables.
 
-| YAML<br>environment variable                                     | Description                                                                                                                                                                                      | Type    | Default  |
-| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | -------- |
-| `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`     | Controls trace context propagation method. Accepted: `all`, `headers`, `tcp`, `headers,tcp`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
-| `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS` | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                                | boolean | false    |
+| YAML<br>environment variable                                       | Description                                                                                                                                                                                      | Type    | Default  |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | -------- |
+| `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`       | Controls trace context propagation method. Accepted: `all`, `headers`, `tcp`, `headers,tcp`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
+| `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS`   | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                                | boolean | false    |
+| `populate_trace_context`<br>`OTEL_EBPF_BPF_POPULATE_TRACE_CONTEXT` | Populates the pinned `traces_ctx_v1` map for external trace-profile correlation and Go channel handoff fallback. OBI's log enricher and Node.js manual span bridge enable it automatically.      | boolean | false    |
+
+### Pinned trace context map
+
+Starting with v0.14.0, OBI does not populate `traces_ctx_v1` by default. If an
+external profiler reads this map to correlate profiles with traces, enable it:
+
+```yaml
+ebpf:
+  populate_trace_context: true
+```
+
+This also restores the map-based fallback for Go channel span links. Enabling
+the map is unnecessary when using OBI's log enricher or Node.js manual span
+bridge, which enable it automatically.
 
 ### Context propagation
 
@@ -205,12 +230,11 @@ must:
   path
 - Grant the `CAP_NET_ADMIN` capability to the OBI container
 
-Network-level propagation supports gRPC by injecting and parsing per-stream
-`traceparent` HPACK headers. TCP-option propagation is not used for gRPC because
-HTTP/2 multiplexes multiple trace contexts over one connection. Generic non-gRPC
-HTTP/2 context propagation remains limited to Go library instrumentation. For
-non-Go gRPC services, persistent connections established before OBI starts might
-not be recognized for propagation.
+Network-level propagation supports plaintext HTTP/2, including gRPC, by
+injecting and parsing per-stream `traceparent` HPACK headers. TCP-option
+propagation is not used for HTTP/2 because it multiplexes multiple trace
+contexts over one connection. Generic encrypted HTTP/2 cannot inject at the
+network layer; Go library-level instrumentation can inject before encryption.
 
 For an example of how to configure distributed traces in Kubernetes, see our
 [Distributed traces with OBI](../../distributed-traces/) guide.
@@ -590,7 +614,7 @@ And the following table describes the metrics and their associated groups.
 | `k8s_app_meta` | `rpc.client.call.duration`            | `rpc_client_call_duration_seconds`            |
 | `k8s_app_meta` | `rpc.server.call.duration`            | `rpc_server_call_duration_seconds`            |
 | `k8s_app_meta` | `db.client.operation.duration`        | `db_client_operation_duration_seconds`        |
-| `k8s_app_meta` | `gpu.kernel.launch.calls`             | `gpu_kernel_launch_calls_total`               |
-| `k8s_app_meta` | `gpu.kernel.grid.size`                | `gpu_kernel_grid_size_total`                  |
-| `k8s_app_meta` | `gpu.kernel.block.size`               | `gpu_kernel_block_size_total`                 |
-| `k8s_app_meta` | `gpu.memory.allocations`              | `gpu_memory_allocations_bytes_total`          |
+| `k8s_app_meta` | `gpu.cuda.kernel.launch.calls`        | `gpu_cuda_kernel_launch_calls_total`          |
+| `k8s_app_meta` | `gpu.cuda.kernel.grid.size`           | `gpu_cuda_kernel_grid_size`                   |
+| `k8s_app_meta` | `gpu.cuda.kernel.block.size`          | `gpu_cuda_kernel_block_size`                  |
+| `k8s_app_meta` | `gpu.cuda.memory.allocations`         | `gpu_cuda_memory_allocations_bytes_total`     |
