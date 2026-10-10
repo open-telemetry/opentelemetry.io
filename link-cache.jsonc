@@ -32059,6 +32059,11 @@
     "when": "2026-10-02T19:05:40Z",
     "via": "lychee",
   },
+  "https://www.freedesktop.org/software/systemd/man/latest/systemd.journal-fields.html": {
+    "result": 200,
+    "when": "2026-10-10T10:34:41Z",
+    "via": "lychee",
+  },
   "https://www.fulcrumapp.com/": {
     "result": 200,
     "when": "2026-10-08T05:47:38Z",
