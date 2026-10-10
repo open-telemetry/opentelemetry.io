@@ -3,6 +3,7 @@ title: 통합
 description: 오픈텔레메트리를 직접 지원하는 라이브러리, 서비스 및 앱
 aliases: [/integrations]
 default_lang_commit: 42ef3b8c965480f4d58b173ed95fcb05fbc7d429
+drifted_from_default: true
 ---
 
 {{% include freeze-notice.md %}}

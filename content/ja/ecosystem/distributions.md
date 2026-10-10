@@ -3,6 +3,7 @@ title: サードパーティディストリビューション
 linkTitle: ディストリビューション
 description: サードパーティが保守するオープンソースの OpenTelemetry ディストリビューションの一覧。
 default_lang_commit: 5ccd63611a43a8c3b4a243dc995fb3755d46eafa
+drifted_from_default: true
 ---
 
 {{% include freeze-notice.md %}}
