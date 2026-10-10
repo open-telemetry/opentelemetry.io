@@ -3,6 +3,7 @@ title: 서드파티 배포판
 linkTitle: 배포판
 description: 서드파티가 유지 관리하는 오픈소스 오픈텔레메트리 배포판 목록
 default_lang_commit: 42ef3b8c965480f4d58b173ed95fcb05fbc7d429
+drifted_from_default: true
 ---
 
 {{% include freeze-notice.md %}}
