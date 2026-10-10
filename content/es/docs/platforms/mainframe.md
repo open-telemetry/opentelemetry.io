@@ -17,7 +17,7 @@ frontends web y móviles, microservicios y plataformas en la nube que dependen d
 los sistemas de registro del mainframe.
 
 Esta sección explica cómo se integran los mainframes en una estrategia de
-observabilidad basada en OpenTelemetry y señala orientación sobre cómo
+observabilidad basada en OpenTelemetry y orienta como 
 integrarlos con tus pipelines de telemetría existentes.
 
 ## Audiencia {#audience}
@@ -135,7 +135,7 @@ En un contexto de mainframe, el Collector a menudo se ejecuta **fuera de la
 plataforma** (por ejemplo, en servidores Linux o contenedores) y actúa como
 **puente** entre:
 
-- Las fuentes de telemetría específicas del mainframe, y
+- Las fuentes de telemetría específicas del mainframe.
 - Tus backends de observabilidad empresariales (plataformas de métricas/logs,
   backends de trazas, herramientas de APM, SIEMs y data lakes).
 
