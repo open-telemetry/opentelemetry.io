@@ -3,7 +3,7 @@ title: SDKの設定
 linkTitle: SDKの設定
 weight: 13
 aliases: [config]
-default_lang_commit: 38e36ae231c523f9e54499ad6ca05de7c49501c5
+default_lang_commit: 2b88c43e50fb99c601ededa24b1f3a461fef9ac0
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---
@@ -232,6 +232,8 @@ SDKセルフモニタリングテレメトリーのプロパティ。
 
 `otlp`スパン、メトリクス、ログエクスポーターのプロパティ。
 
+<!-- markdownlint-disable MD055 MD056 -->
+<!-- prettier-ignore-start -->
 | システムプロパティ                                         | 説明                                                                                                                                                                                                                                                                                                                                                                                                                   | デフォルト                                                                                                                  |
 | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `otel.{signal}.exporter=otlp`                              | {signal}用のOpenTelemetryエクスポーターを選択します。                                                                                                                                                                                                                                                                                                                                                                  |                                                                                                                             |
@@ -254,6 +256,9 @@ SDKセルフモニタリングテレメトリーのプロパティ。
 | `otel.exporter.otlp.metrics.temporality.preference`        | 希望する出力集約時間性。オプションには`DELTA`、`LOWMEMORY`、`CUMULATIVE`が含まれます。`CUMULATIVE`の場合、すべての計装が累積時間性を持ちます。`DELTA`の場合、カウンター（同期および非同期）とヒストグラムがデルタ、アップダウンカウンター（同期および非同期）が累積になります。`LOWMEMORY`の場合、同期カウンターとヒストグラムがデルタ、非同期カウンターとアップダウンカウンター（同期および非同期）が累積になります。 | `CUMULATIVE`                                                                                                                |
 | `otel.exporter.otlp.metrics.default.histogram.aggregation` | 希望するデフォルトヒストグラム集約。オプションには`BASE2_EXPONENTIAL_BUCKET_HISTOGRAM`と`EXPLICIT_BUCKET_HISTOGRAM`が含まれます。                                                                                                                                                                                                                                                                                      | `EXPLICIT_BUCKET_HISTOGRAM`                                                                                                 |
 | `otel.java.exporter.otlp.retry.disabled`                   | `false`の場合、一時的なエラーが発生したときにリトライします。**[2]**                                                                                                                                                                                                                                                                                                                                                   | `false`                                                                                                                     |
+{.java-configuration-exporter-table}
+<!-- prettier-ignore-end -->
+<!-- markdownlint-enable MD055 MD056 -->
 
 **注意**: テキストプレースホルダー`{signal}`は、サポートされている[OpenTelemetry Signal](/docs/concepts/signals/)を指します。有効な値には`traces`、`metrics`、`logs`が含まれます。シグナル固有の設定は汎用バージョンよりも優先されます。
 たとえば、`otel.exporter.otlp.endpoint`と`otel.exporter.otlp.traces.endpoint`の両方を設定した場合、後者が優先されます。

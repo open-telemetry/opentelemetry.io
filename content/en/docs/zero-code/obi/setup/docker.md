@@ -163,3 +163,31 @@ generate traces:
 ```sh
 docker compose -f compose-example.yml up
 ```
+
+## Context propagation
+
+The examples above don't enable context propagation. If you set
+`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`, also mount the following host paths into
+the OBI container:
+
+- `/sys/kernel/tracing`: on kernels 6.6.128+, 6.12.75+, 6.18.14+, and 6.19+, OBI
+  needs this mount to run its FIONREAD compensation check. Without it, OBI
+  disables context propagation. For details, see
+  [Required host mount for context propagation](../../security/#required-host-mount-for-context-propagation).
+- `/sys/fs/cgroup`: OBI uses this path to listen to newly created sockets.
+  Without it, some requests might not have their context propagated. For
+  details, see [Distributed traces](../../distributed-traces/).
+
+```yaml
+services:
+  autoinstrumenter:
+    image: otel/ebpf-instrument:main
+    pid: 'host'
+    privileged: true
+    volumes:
+      - /sys/kernel/tracing:/sys/kernel/tracing
+      - /sys/fs/cgroup:/sys/fs/cgroup
+    environment:
+      OTEL_EBPF_OPEN_PORT: 8443
+      OTEL_EBPF_BPF_CONTEXT_PROPAGATION: headers
+```

@@ -3,9 +3,11 @@ actualizeazǎ
 actualizezi
 adaugǎ
 agnostice
+agregi
 aprobatorii
 aprobatorilor
 aprobatorul
+asiguri
 aspirațional
 autogenerat
 bifând
@@ -27,6 +29,7 @@ creea
 creeazǎ
 depanezi
 descriptorilor
+deserializează
 deții
 dezvoltatori
 dezvoltatorii
@@ -43,6 +46,7 @@ forțezi
 franceză
 gestionezi
 identificatorii
+incluzi
 informatica
 informatică
 instrumenteze
@@ -75,7 +79,11 @@ observabilității
 oprii
 partajezi
 postând
+poți
 prepopulată
+propagatoarele
+propagatorul
+propagi
 randată
 randează
 receptoarelor
@@ -87,6 +95,7 @@ repetoriului
 revizuii
 revizuitori
 revizuitorii
+sanitizezi
 semantică
 semnalizate
 semneazǎ
@@ -108,8 +117,10 @@ telemetrie
 traducă
 traduci
 tranzacţie
+tuplu
 urci
 urmǎrirea
 valideze
 verificatoarele
 verificatorul
+vizualizezi
