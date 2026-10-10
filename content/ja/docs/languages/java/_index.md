@@ -9,12 +9,12 @@ redirects:
   - { from: /docs/java/*, to: ':splat' }
 cascade:
   vers:
-    instrumentation: 2.31.1
-    otel: 1.65.0
+    instrumentation: 2.32.0
+    otel: 1.66.0
     contrib: 1.60.0
     semconv: 1.44.0
 weight: 150
-default_lang_commit: 6ebb7334b0d849d64488cf5b9b1819d4afa5bab9
+default_lang_commit: f1a074a1d8dc390c2abcac98ad671f38d0c73d88
 drifted_from_default: true
 ---
 
