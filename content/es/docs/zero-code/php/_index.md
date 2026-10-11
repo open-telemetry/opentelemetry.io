@@ -30,7 +30,7 @@ Usa [OpenTelemetry PHP Distro](distro/) cuando:
 
 - Despliegues en Linux y quieras una instalación gestionada por paquetes (`deb`,
   `rpm`, `apk`)
-- Necesites una incorporación sin código sin modificar el código de la
-  aplicación ni Composer
+- Busques instrumentación sin código, sin tener que modificar la aplicación ni
+  Composer
 - Quieras valores predeterminados optimizados para producción (exportación en
   segundo plano, spans inferidos, OpAMP)
