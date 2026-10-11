@@ -1,8 +1,7 @@
 ---
 title: 採用企業
 description: OpenTelemetry を利用している組織
-default_lang_commit: d6988a2bfec7521e701d8a15d36696cbb35a129b
-drifted_from_default: true
+default_lang_commit: f5b3c44e7ed3e98a7307379e8c867750dd2f1dea
 ---
 
 {{% include freeze-notice.md %}}
@@ -11,13 +10,16 @@ OpenTelemetry の使命は、すべてのエンドユーザーに効果的なオ
 あなたの組織で OpenTelemetry の採用を検討している場合、他の組織の採用事例に興味があるかもしれません。
 以下の表は、[オブザーバビリティ](/docs/concepts/observability-primer/)のために OpenTelemetry を採用した[_エンドユーザー_ 組織](https://www.cncf.io/enduser/)の一部をまとめたものです。
 
+<!---
 > [!TIP] 成長する OpenTelemetry コミュニティの紹介にご協力ください！
 >
 > あなたの企業が本番環境や実験的な用途で OpenTelemetry を使用している場合、公式の採用企業一覧への追加を歓迎します。
 > [PR を送る](#how-to-add)か、[Join the OpenTelemetry Adopters List][form] フォームに記入してください。
+-->
 
 {{% ecosystem/adopters-table %}}
 
+<!--
 ## 採用企業として組織を追加する {#how-to-add}
 
 組織を掲載するには、 [採用企業一覧][adopters list] にエントリーを追加する PR を送ってください。
@@ -32,7 +34,10 @@ OpenTelemetry の使命は、すべてのエンドユーザーに効果的なオ
 
 あなたの組織が OpenTelemetry を利用して**エンドユーザーにオブザーバビリティを提供する**ソリューションを提供している場合は、[ベンダー](/ecosystem/vendors)をご覧ください。
 
-{{% include keep-up-to-date.md adopter %}}
+# TODO: remove spaces to fix shortcode formatting before uncommenting
+{ { % include keep-up-to-date.md adopter % } }
 
-[adopters list]: https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml
+[adopters list]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml
 [form]: https://forms.gle/K3pKmQdTc2eevLJv9
+-->
