@@ -6,8 +6,7 @@ type: default
 layout: registry
 body_class: registry td-content
 weight: 20
-default_lang_commit: bf0881aa9c57519b487bf6b5c469ca7f188dceed
-drifted_from_default: true
+default_lang_commit: f5b3c44e7ed3e98a7307379e8c867750dd2f1dea
 ---
 
 {{% blocks/lead color="dark" %}}
@@ -22,10 +21,13 @@ drifted_from_default: true
 
 {{% blocks/section color="white pb-0" type="container-lg" %}}
 
+{{% include freeze-notice.md %}}
+
 > [!NOTE]
 >
 > OpenTelemetry レジストリでは、計装ライブラリ、Collector コンポーネント、ユーティリティ、その他の OpenTelemetry エコシステムで役立つプロジェクトを検索できます。
-> プロジェクトのメンテナーは、[自分のプロジェクトを OpenTelemetry レジストリに追加](adding/)できます。
+>
+> <!-- プロジェクトのメンテナーは、[自分のプロジェクトを OpenTelemetry レジストリに追加](adding/)できます。 -->
 
 {{% /blocks/lead %}}
 
