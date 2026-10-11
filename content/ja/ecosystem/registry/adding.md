@@ -2,21 +2,20 @@
 title: レジストリへの追加
 linkTitle: 追加
 description: レジストリにエントリーを追加する方法。
-default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
-drifted_from_default: true
+default_lang_commit: f5b3c44e7ed3e98a7307379e8c867750dd2f1dea
 cSpell:ignore: zpages
 ---
 
 {{% include freeze-notice.md %}}
 
-OpenTelemetry のインテグレーションをメンテナンスまたはコントリビュートしていますか？
+<!-- OpenTelemetry のインテグレーションをメンテナンスまたはコントリビュートしていますか？
 あなたのプロジェクトを[レジストリ](../)で紹介したいと考えています！
 
 プロジェクトを追加するには、[プルリクエスト][pull request]を送信してください。
 [data/registry][] にプロジェクトのデータファイルを作成する必要があります。
 テンプレートとして [registry-entry.yml][] を使用してください。
 
-プロジェクト名と説明が[マーケティングガイドライン][marketing guidelines]に準拠し、Linux Foundation のブランディングおよび[商標使用ガイドライン][trademark usage guidelines]に沿っていることを確認してください。
+プロジェクト名と説明が[マーケティングガイドライン][marketing guidelines]に準拠し、Linux Foundation のブランディングおよび[商標使用ガイドライン][trademark usage guidelines]に沿っていることを確認してください。 -->
 
 ## レジストリタイプ {#registry-types}
 
@@ -148,8 +147,10 @@ OpenTelemetry のインテグレーションをメンテナンスまたはコン
 
 **例**: テストユーティリティ、デバッグツール、移行ツール、または OpenTelemetry の利用を支援するヘルパーライブラリ。
 
+<!--
 [data/registry]: https://github.com/open-telemetry/opentelemetry.io/tree/main/data/registry
 [pull request]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 [registry-entry.yml]: https://github.com/open-telemetry/opentelemetry.io/tree/main/templates/registry-entry.yml
 [marketing guidelines]: /community/marketing-guidelines/
 [trademark usage guidelines]: https://www.linuxfoundation.org/legal/trademark-usage
+  -->
