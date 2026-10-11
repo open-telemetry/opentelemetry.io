@@ -1569,6 +1569,11 @@
     "when": "2026-09-29T05:46:22Z",
     "via": "lychee",
   },
+  "https://datatracker.ietf.org/doc/html/rfc3986#section-4.3": {
+    "result": 200,
+    "when": "2026-10-11T10:35:13Z",
+    "via": "lychee",
+  },
   "https://datatracker.ietf.org/doc/html/rfc4122#section-3": {
     "result": 200,
     "when": "2026-09-29T05:46:21Z",
