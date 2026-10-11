@@ -3,6 +3,7 @@ title: インテグレーション
 description: OpenTelemetry をファーストパーティでサポートするライブラリ、サービス、アプリケーション。
 aliases: [/integrations]
 default_lang_commit: 301a68c0bc3a170adfc8f1384f6788c8cebbf322
+drifted_from_default: true
 ---
 
 {{% include freeze-notice.md %}}
