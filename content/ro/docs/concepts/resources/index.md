@@ -11,7 +11,7 @@ default_lang_commit: f5b3c44e7ed3e98a7307379e8c867750dd2f1dea
 Dacă utilizezi [Jaeger](https://www.jaegertracing.io/) ca backend de
 observabilitate, atributele de resursă sunt grupate în fila **Process**:
 
-![O captură de ecran din Jaeger care prezintă un exemplu de atribute de resursă asociate unui trace](screenshot-jaeger-resources.png)
+![O captură de ecran din Jaeger care prezintă un exemplu de atribute de resursă asociate unui trace](ro-screenshot-jaeger-resources.png)
 
 O resursă este asociată unui `TracerProvider` sau `MetricProvider` în momentul
 creării acestora, în timpul inițializării. Această asociere nu mai poate fi
