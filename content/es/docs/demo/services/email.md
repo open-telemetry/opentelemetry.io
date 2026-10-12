@@ -117,7 +117,7 @@ En el demo podrás encontrar la métrica:
 ### Inicializando logs {#initializing-logs}
 
 Los exportadores del SDK de logs de OpenTelemetry y OTLP se inicializan en la
-raíz del demo con el archivo `email_server.rb`. Primero necesitas incluir las
+raíz de la demo con el archivo `email_server.rb`. Primero necesitas incluir las
 librerías usando `require` para hacer uso de ellas.
 
 ```ruby
