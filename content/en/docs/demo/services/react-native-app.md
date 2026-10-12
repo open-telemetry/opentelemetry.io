@@ -95,7 +95,7 @@ const Tracer = async () => {
     ],
   });
 
-  context.setGlobalContextManager(new StackContextManager());
+  context.setGlobalContextManager(new StackContextManager().enable());
   propagation.setGlobalPropagator(
     new CompositePropagator({
       propagators: [
