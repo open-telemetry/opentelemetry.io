@@ -2,7 +2,7 @@
 title: Servicio de Correo
 linkTitle: Correo
 aliases: [emailservice]
-default_lang_commit: 1c87256b0c7b72f3040249ab65eaefc7eb066280
+default_lang_commit: b48363c14a5a607749d12ca9ffe6d79739a3d3cc
 cSpell:ignore: autoinstrumentado autoinstrumentados sinatra
 ---
 
