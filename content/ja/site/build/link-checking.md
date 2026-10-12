@@ -63,6 +63,7 @@ CI では、`CHECK LINKS` ジョブが最初にシャロークローンをベー
 ローカルで記録されたコミットは upstream に存在しない可能性があります。
 
 ## リンクキャッシュ {#link-cache}
+
 <a id="refcache"></a>
 
 外部リンクのチェック結果は **`link-cache.jsonc`** にキャッシュされます。
