@@ -4,6 +4,7 @@ description: >-
   CI/CD ワークフロー、このサイトのビルド方法、およびさまざまなサイトメンテナンス作業の実行方法
 weight: 40
 default_lang_commit: 74d8cb2aaefe493295c6c49e2e8ef39801847880
+drifted_from_default: true
 ---
 
 このセクションでは、OpenTelemetry ウェブサイトのビルド、デプロイ、メンテナンスプロセスを支える CI/CD ワークフロー、NPM スクリプト、ヘルパースクリプトについて説明します。

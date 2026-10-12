@@ -31,7 +31,7 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `ci:prepare`      | Post-`ci:min` setup: [fetch the pinned Hugo binary][], then `prepare`.               |
 | `install:safe`    | [Lock-exact local setup][]: inert install, then `ci:prepare`.                        |
 | `prepare`         | Install step: `get:submodule`, then Docsy's [lock-exact theme dependency install][]. |
-| `update:hugo`     | Install latest hugo-extended; update its [`allowScripts` approval][] with the bump.  |
+| `update:hugo`     | Install latest hugo-extended, scripts enabled; the [Hugo bump][] lists the steps.    |
 | `update:packages` | Run npm-check-updates to bump deps, subject to the [release cooldown][].             |
 
 ## Build and serve
@@ -150,7 +150,7 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `seq`                          | Run given script names in sequence; exit on first failure.                        |
 
 <!-- prettier-ignore-start -->
-[`allowScripts` approval]: ../dependencies/#script-bearing-packages
+[Hugo bump]: ../dependencies/#hugo
 [`link-cache.jsonc`]: ../link-checking/#link-cache
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [build kinds]: ../#build-kinds
