@@ -14484,6 +14484,11 @@
     "when": "2026-10-03T05:48:27Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1659": {
+    "result": 200,
+    "when": "2026-10-12T10:42:28Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2284": {
     "result": 200,
     "when": "2026-10-02T20:59:11Z",
@@ -20934,6 +20939,11 @@
     "when": "2026-10-02T19:32:36Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/4121": {
+    "result": 200,
+    "when": "2026-10-12T10:42:28Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "result": 200,
     "when": "2026-09-28T05:47:54Z",
@@ -21087,6 +21097,11 @@
   "https://github.com/open-telemetry/semantic-conventions/pull/3646": {
     "result": 200,
     "when": "2026-09-29T05:46:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3828": {
+    "result": 200,
+    "when": "2026-10-12T10:42:28Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/3889": {
