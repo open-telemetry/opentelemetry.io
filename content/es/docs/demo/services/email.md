@@ -6,7 +6,7 @@ default_lang_commit: 1c87256b0c7b72f3040249ab65eaefc7eb066280
 cSpell:ignore: autoinstrumentado autoinstrumentados sinatra
 ---
 
-Este servicio envía una confirmación por correo cuando se realiza una orden.
+Este servicio envía una confirmación por correo cuando se realiza un pedido.
 
 [Código fuente del servicio de correo](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/email/)
 
