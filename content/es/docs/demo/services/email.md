@@ -80,7 +80,7 @@ end
 
 Los exportadores del SDK de métricas de OpenTelemetry y OTLP se inicializan en
 la raíz de la demo con el archivo `email_server.rb`. Primero necesitas incluir las
-librerías usando `require` para hacer uso de ellas.
+librerías usando `require` para usarlas.
 
 ```ruby
 require "opentelemetry-metrics-sdk"
