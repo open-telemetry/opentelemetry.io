@@ -10,6 +10,7 @@ author: >-
 issue: https://github.com/open-telemetry/sig-end-user/issues/280
 sig: End-User SIG
 default_lang_commit: 8f5064028cc6eeb3e2a8b60593f5f9784e6b6a6a
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: Ahuja Dhruv György Heorku Kiripolsky Krajcsovits Krajo Muenz textfile
 ---
