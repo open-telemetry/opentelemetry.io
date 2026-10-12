@@ -4,6 +4,7 @@ linkTitle: Demo
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
+default_lang_commit: a459c277ddca991f34713849f13328de01222930
 ---
 
 Bun venit la documentația demo-ului [OpenTelemetry](/ecosystem/demo/), care
@@ -22,24 +23,25 @@ Doreşti să implementezi demo-ul și să îl vezi în acțiune? Începe de aici
 Doreşti să înțelegi cum funcționează instrumentarea pentru un anumit limbaj?
 Începe de aici.
 
-| Limbaj   | Instrumentare automaticǎ                                                                                                                                | Instrumentarea librǎriilor                                                                    | Instrumentare manualǎ                                                                       |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| .NET       | [Servicii de contabilitate](services/accounting/)                                                                                                               | [Serviciu de coș](services/cart/)                                                               | [Serviciu de coș](services/cart/)                                                               |
-| C++        |                                                                                                                                                          |                                                                                              | [Serviciu de schimb valutar](services/currency/)                                                       |
-| Elixir     |                                                                                                                                                          | [Serviciu Flagd-UI](services/flagd-ui/)                                                       |                                                                                              |
-| Go         |                                                                                                                                                          | [Serviciu de checkout](services/checkout/), [Serviciu de catalog de produse](services/product-catalog/) | [Serviciu de checkout](services/checkout/), [Serviciu de catalog de produse](services/product-catalog/) |
-| Java       | [Serviciu de publicitate](services/ad/)                                                                                                                               |                                                                                              | [Serviciu de publicitate](services/ad/)                                                                   |
-| JavaScript | [Serviciu de plată](services/payment/)                                                                                                                     |                                                                                              | [Serviciu de plată](services/payment/)                                                         |
-| TypeScript |                                                                                                                                                          | [Frontend](services/frontend/), [Aplicație React Native](services/react-native-app/)               | [Frontend](services/frontend/)                                                               |
-| Kotlin     |                                                                                                                                                          | [Serviciu de detectare a fraudelor](services/fraud-detection/)                                         |                                                                                              |
-| PHP        |                                                                                                                                                          | [Serviciu de ofertare](services/quote/)                                                             | [Serviciu de ofertare](services/quote/)                                                             |
-| Python     | [Serviciu de recomandare](services/recommendation/), [Serviciu de reprezentare](services/agent/), [Serviciu de chatbot](services/chatbot/), [Serviciu MCP](services/mcp/) |                                                                                              | [Serviciu de recomandare](services/recommendation/)                                           |
-| Ruby       |                                                                                                                                                          | [Serviciu de email](services/email/)                                                             | [Serviciu de email](services/email/)                                                             |
-| Rust       |                                                                                                                                                          | [Serviciu de expediere](services/shipping/)                                                       | [Serviciu de expediere](services/shipping/)                                                       |
+| Limbaj     | Instrumentare automaticǎ                                                                                                                                                  | Instrumentarea librǎriilor                                                                              | Instrumentare manualǎ                                                                                   |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| .NET       | [Servicii de contabilitate](services/accounting/)                                                                                                                         | [Serviciu de coș](services/cart/)                                                                       | [Serviciu de coș](services/cart/)                                                                       |
+| C++        |                                                                                                                                                                           |                                                                                                         | [Serviciu de schimb valutar](services/currency/)                                                        |
+| Elixir     |                                                                                                                                                                           | [Serviciu Flagd-UI](services/flagd-ui/)                                                                 |                                                                                                         |
+| Go         |                                                                                                                                                                           | [Serviciu de checkout](services/checkout/), [Serviciu de catalog de produse](services/product-catalog/) | [Serviciu de checkout](services/checkout/), [Serviciu de catalog de produse](services/product-catalog/) |
+| Java       | [Serviciu de publicitate](services/ad/)                                                                                                                                   |                                                                                                         | [Serviciu de publicitate](services/ad/)                                                                 |
+| JavaScript | [Serviciu de plată](services/payment/)                                                                                                                                    |                                                                                                         | [Serviciu de plată](services/payment/)                                                                  |
+| TypeScript |                                                                                                                                                                           | [Frontend](services/frontend/), [Aplicație React Native](services/react-native-app/)                    | [Frontend](services/frontend/)                                                                          |
+| Kotlin     |                                                                                                                                                                           | [Serviciu de detectare a fraudelor](services/fraud-detection/)                                          |                                                                                                         |
+| PHP        |                                                                                                                                                                           | [Serviciu de ofertare](services/quote/)                                                                 | [Serviciu de ofertare](services/quote/)                                                                 |
+| Python     | [Serviciu de recomandare](services/recommendation/), [Serviciu de reprezentare](services/agent/), [Serviciu de chatbot](services/chatbot/), [Serviciu MCP](services/mcp/) |                                                                                                         | [Serviciu de recomandare](services/recommendation/)                                                     |
+| Ruby       |                                                                                                                                                                           | [Serviciu de email](services/email/)                                                                    | [Serviciu de email](services/email/)                                                                    |
+| Rust       |                                                                                                                                                                           | [Serviciu de expediere](services/shipping/)                                                             | [Serviciu de expediere](services/shipping/)                                                             |
 
 ## Documentația serviciului {#service-documentation}
 
-Informații specifice despre modul în care OpenTelemetry este implementat în fiecare serviciu pot fi găsite aici:
+Informații specifice despre modul în care OpenTelemetry este implementat în
+fiecare serviciu pot fi găsite aici:
 
 - [Servicii de contabilitate](services/accounting/)
 - [Serviciu de publicitate](services/ad/)
@@ -62,13 +64,14 @@ Informații specifice despre modul în care OpenTelemetry este implementat în f
 ## Scenarii cu indicatori de funcționalitate {#feature-flag-scenarios}
 
 Cum poți rezolva probleme folosind OpenTelemetry? Aceste
-[scenarii bazate pe indicatori de funcționalitate](feature-flags/) te ghidează prin câteva
-probleme preconfigurate și îți arată cum să interpretezi datele OpenTelemetry pentru
-a le rezolva.
+[scenarii bazate pe indicatori de funcționalitate](feature-flags/) te ghidează
+prin câteva probleme preconfigurate și îți arată cum să interpretezi datele
+OpenTelemetry pentru a le rezolva.
 
 ## Referinţă {#reference}
 
-Documentație de referință a proiectului, precum cerințe și matrici de funcționalități.
+Documentație de referință a proiectului, precum cerințe și matrici de
+funcționalități.
 
 - [Arhitectură](architecture/)
 - [Dezvoltare](development/)

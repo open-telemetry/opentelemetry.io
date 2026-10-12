@@ -10,6 +10,7 @@ aprobatorul
 asiguri
 aspirațional
 autogenerat
+automaticǎ
 bifând
 calificatori
 colaboreze
@@ -34,6 +35,7 @@ deții
 dezvoltatori
 dezvoltatorii
 discutǎ
+doreşti
 editezi
 elimini
 emiți
@@ -63,7 +65,9 @@ intervalurilor
 întreab-o
 întreținători
 întreținătorii
+librǎriilor
 limitezi
+manualǎ
 mărești
 microservicii
 migrare
@@ -88,6 +92,7 @@ randată
 randează
 receptoarelor
 reconstruiește
+referinţă
 remediează
 remediezi
 reobține
