@@ -4,7 +4,8 @@ description: >-
   OpenTelemetry ウェブサイトのビルド、配信、検証、メンテナンスのための NPM スクリプト。
 weight: 20
 todo: Keep table entries sorted
-default_lang_commit: 55db3f6bcc48358f9de9cd97f9132d1e3322ba48
+default_lang_commit: 49a4a61076ca6c7369666e858be884cd157f7d3c
+drifted_from_default: true
 ---
 
 スクリプトの定義はリポジトリルートの [`package.json`][] にあります。
@@ -58,7 +59,6 @@ default_lang_commit: 55db3f6bcc48358f9de9cd97f9132d1e3322ba48
 | `check:format`         | Prettier と prose-wrap のチェック。                                           |
 | `check:i18n`           | ローカリゼーションフロントマター（`default_lang_commit`）を検証します。       |
 | `check:l10n`           | ローカリゼーションチェックを実行します。                                      |
-| `check:links:diff`     | 変更されたファイルのみの Lychee リンクチェック。                              |
 | `check:links:internal` | オフラインリンクチェック（内部リンクのみ）。最初にリーンビルドを実行。        |
 | `check:links`          | Lychee でサイト全体を[リンクチェック][link check]。最初にリーンビルドを実行。 |
 | `check:markdown:specs` | `tmp/` 内の仕様フラグメントの Markdown lint。                                 |
@@ -70,27 +70,27 @@ default_lang_commit: 55db3f6bcc48358f9de9cd97f9132d1e3322ba48
 
 ## 修正 {#fixing}
 
-| スクリプト                    | 説明                                                                        |
-| ----------------------------- | --------------------------------------------------------------------------- |
-| `fix`                         | もっとも一般的に必要な修正スクリプトを実行します。                          |
-| `fix:code-excerpts`           | コード抜粋を更新します。                                                    |
-| `fix:codeowners`              | レジストリから CODEOWNERS ロケールセクションを再生成します。                |
-| `fix:all`                     | すべての修正スクリプトを実行します。                                        |
-| `fix:format`                  | Prettier を適用し、末尾の空白を削除します。                                 |
-| `fix:format:staged`           | ステージングされたファイルのみをフォーマットします。                        |
-| `fix:i18n`                    | i18n フロントマターを追加/修正します（`fix:i18n:new`、`fix:i18n:status`）。 |
-| `fix:l10n`                    | ローカリゼーションの修正を適用します。                                      |
-| `fix:link-cache`              | リンクチェックを実行し、コミット済みの [`.lycheecache`][] を更新します。    |
-| `fix:link-cache:double-check` | [ブラウザプローブで失敗したリンクを再検証します][dc]。                      |
-| `fix:link-cache:refresh`      | もっとも古いキャッシュエントリをプルーンし、`fix:link-cache` を実行します。 |
-| `fix:markdown`                | Markdown lint の問題と末尾の空白を修正します。                              |
-| `fix:submodule`               | サブモジュールの更新、再ピン、リビジョンの一覧表示。                        |
-| `fix:filenames`               | [ファイルのリネームと廃止されたファイル/フォルダの削除][fn]。               |
-| `fix:dict`                    | cspell ワードリストをソートし、フロントマターを正規化します。               |
-| `fix:expired`                 | `check:expired` で報告されたファイルを削除します。                          |
-| `fix:text`                    | --fix 付きで textlint を実行します。                                        |
-| `fix:collector-sync:lint`     | --fix 付きで collector-sync 内の ruff を実行します。                        |
-| `format`                      | Prettier write のエイリアス（コンテンツおよび nowrap パス）。               |
+| スクリプト                    | 説明                                                                         |
+| ----------------------------- | ---------------------------------------------------------------------------- |
+| `fix`                         | もっとも一般的に必要な修正スクリプトを実行します。                           |
+| `fix:code-excerpts`           | コード抜粋を更新します。                                                     |
+| `fix:codeowners`              | レジストリから CODEOWNERS ロケールセクションを再生成します。                 |
+| `fix:all`                     | すべての修正スクリプトを実行します。                                         |
+| `fix:format`                  | Prettier を適用し、末尾の空白を削除します。                                  |
+| `fix:format:staged`           | ステージングされたファイルのみをフォーマットします。                         |
+| `fix:i18n`                    | i18n フロントマターを追加/修正します（`fix:i18n:new`、`fix:i18n:status`）。  |
+| `fix:l10n`                    | ローカリゼーションの修正を適用します。                                       |
+| `fix:link-cache`              | リンクチェックを実行し、コミット済みの [`link-cache.jsonc`][] を更新します。 |
+| `fix:link-cache:double-check` | [ブラウザプローブで失敗したリンクを再検証します][dc]。                       |
+| `fix:link-cache:refresh`      | もっとも古いキャッシュエントリをプルーンし、`fix:link-cache` を実行します。  |
+| `fix:markdown`                | Markdown lint の問題と末尾の空白を修正します。                               |
+| `fix:submodule`               | サブモジュールの更新、再ピン、リビジョンの一覧表示。                         |
+| `fix:filenames`               | [ファイルのリネームと廃止されたファイル/フォルダの削除][fn]。                |
+| `fix:dict`                    | cspell ワードリストをソートし、フロントマターを正規化します。                |
+| `fix:expired`                 | `check:expired` で報告されたファイルを削除します。                           |
+| `fix:text`                    | --fix 付きで textlint を実行します。                                         |
+| `fix:collector-sync:lint`     | --fix 付きで collector-sync 内の ruff を実行します。                         |
+| `format`                      | Prettier write のエイリアス（コンテンツおよび nowrap パス）。                |
 
 ## サブモジュールとコンテンツ {#submodules-and-content}
 
@@ -142,13 +142,14 @@ default_lang_commit: 55db3f6bcc48358f9de9cd97f9132d1e3322ba48
 | ------------------------------ | ------------------------------------------------------------------------------------------------ |
 | `all`                          | 指定されたすべてのスクリプトを実行し、失敗があっても続行。いずれかが失敗した場合は非ゼロで終了。 |
 | `generate:config:links`        | `lychee.base.toml` とページフロントマターから git 無視の `lychee.toml` を生成します。            |
+| `link-cache`                   | コミット済みの [`link-cache.jsonc`][] を検査またはプルーンします（`-- --help`）。                |
 | `locale-auto-merge`            | [ロケール自動マージヘルパー CLI][locale-auto-merge]（`--help`）。                                |
 | `log:build`、`log:check:links` | 対応するスクリプトを実行し、出力を `tmp/` に tee し、スクリプトの終了コードを伝搬します。        |
 | `seq`                          | 指定されたスクリプト名を順番に実行します。最初の失敗で終了。                                     |
 
 <!-- prettier-ignore-start -->
 [`allowScripts` approval]: /site/build/dependencies/#script-bearing-packages
-[`.lycheecache`]: /site/build/link-checking/#link-cache
+[`link-cache.jsonc`]: ../link-checking/#link-cache
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [build kinds]: /site/build/#build-kinds
 [dc]: /site/build/link-checking/#double-check

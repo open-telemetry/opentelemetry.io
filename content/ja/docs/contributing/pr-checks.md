@@ -3,7 +3,7 @@ title: プルリクエストのチェックとテスト
 linkTitle: PR チェック & テスト
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: 38e36ae231c523f9e54499ad6ca05de7c49501c5
+default_lang_commit: f1a074a1d8dc390c2abcac98ad671f38d0c73d88
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -109,10 +109,14 @@ PR のチェックは次のことを検証します。
 - `tools/` - [code-excerpts ツールが npm パッケージに移行][#9638]されたときに削除
 - `static/refcache.json` - [Lychee への切り替え][#10911]で削除。
   ブランチがこのファイルを復元する場合は、[古いブランチの更新手順][#10990]に従ってください。
+- `.lycheecache` を**トラッキング対象**としたファイル - コミットされたリンクキャッシュが [`link-cache.jsonc` に変更][#11649]された際にトラッキング対象外になりました。
+  ブランチがまだこのファイルをコミットしている場合は、[更新手順][#11928]に従ってください。
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
 [#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
 [#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
+[#11649]: https://github.com/open-telemetry/opentelemetry.io/pull/11649
+[#11928]: https://github.com/open-telemetry/opentelemetry.io/issues/11928
 
 ### `BUILD` and `CHECK LINKS` {#build-and-check-links .notranslate lang=en}
 
@@ -145,15 +149,16 @@ LinkedIn などの一部のサーバーは 999 を報告します。
 
 ### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
 
-外部リンクを追加または変更した場合、リンクチェッカーはそのリンクをリンクキャッシュ (`.lycheecache`) に記録します。
+外部リンクを追加または変更した場合、リンクチェッカーはそのリンクをリンクキャッシュ (`link-cache.jsonc`) に記録します。
 更新されたキャッシュがコミットされるまでこのチェックは失敗します。
 
-キャッシュを更新する最も簡単な方法は、PR に [`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) とコメントすることです。
-OpenTelemetry ボットがキャッシュを更新してくれます。
+ブランチが `link-cache.jsonc` より前のものである場合は、まず `main` から更新してください。
+キャッシュファイル自体のコンフリクトを含む更新方法については、[更新手順][#11928]を参照してください。
+その後、以下のいずれかを実行してください。
 
-あるいは、`npm run check:links` を実行してローカルでビルドとリンクチェックを行うこともできます。
-このコマンドはリンクキャッシュも更新します。
-キャッシュに変更があれば、新しいコミットでプッシュしてください。
+- PR に [`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) とコメントすると、OpenTelemetry ボットがキャッシュを更新してくれます（`link-cache.jsonc` より前のブランチでは、ボットは処理を拒否し、同じ更新手順を案内します）。
+- ローカルでビルドとリンクチェックを行います。`npm run install:safe` を実行してから、`npm run check:links` を実行してください。このコマンドはリンクキャッシュも更新します。
+  パスしたランからのキャッシュの変更を新しいコミットでプッシュしてください。
 
 ### `WARNINGS in build log?` {#warnings-in-build-log .notranslate lang=en}
 
