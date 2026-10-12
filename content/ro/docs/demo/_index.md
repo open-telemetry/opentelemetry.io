@@ -13,19 +13,19 @@ prin care poți vedea OpenTelemetry în acțiune.
 
 ## Rularea demo-ului {#running-the-demo}
 
-Doreşti să implementezi demo-ul și să îl vezi în acțiune? Începe de aici.
+Vrei să implementezi demo-ul și să îl vezi în acțiune? Începe de aici.
 
 - [Docker](docker-deployment/)
 - [Kubernetes](kubernetes-deployment/)
 
 ## Referință privind funcționalitățile specifice limbajelor {#language-feature-reference}
 
-Doreşti să înțelegi cum funcționează instrumentarea pentru un anumit limbaj?
-Începe de aici.
+Vrei să înțelegi cum funcționează instrumentarea pentru un anumit limbaj? Începe
+de aici.
 
 | Limbaj     | Instrumentare automaticǎ                                                                                                                                                  | Instrumentarea librǎriilor                                                                              | Instrumentare manualǎ                                                                                   |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| .NET       | [Servicii de contabilitate](services/accounting/)                                                                                                                         | [Serviciu de coș](services/cart/)                                                                       | [Serviciu de coș](services/cart/)                                                                       |
+| .NET       | [Serviciu de contabilitate](services/accounting/)                                                                                                                         | [Serviciu de coș](services/cart/)                                                                       | [Serviciu de coș](services/cart/)                                                                       |
 | C++        |                                                                                                                                                                           |                                                                                                         | [Serviciu de schimb valutar](services/currency/)                                                        |
 | Elixir     |                                                                                                                                                                           | [Serviciu Flagd-UI](services/flagd-ui/)                                                                 |                                                                                                         |
 | Go         |                                                                                                                                                                           | [Serviciu de checkout](services/checkout/), [Serviciu de catalog de produse](services/product-catalog/) | [Serviciu de checkout](services/checkout/), [Serviciu de catalog de produse](services/product-catalog/) |
@@ -43,7 +43,7 @@ Doreşti să înțelegi cum funcționează instrumentarea pentru un anumit limba
 Informații specifice despre modul în care OpenTelemetry este implementat în
 fiecare serviciu pot fi găsite aici:
 
-- [Servicii de contabilitate](services/accounting/)
+- [Serviciu de contabilitate](services/accounting/)
 - [Serviciu de publicitate](services/ad/)
 - [Serviciu de reprezentare](services/agent/)
 - [Serviciu de coș](services/cart/)
@@ -61,12 +61,12 @@ fiecare serviciu pot fi găsite aici:
 - [Serviciu de furnizare a imaginilor](services/image-provider/)
 - [Aplicație React Native](services/react-native-app/)
 
-## Scenarii cu indicatori de funcționalitate {#feature-flag-scenarios}
+## Scenarii cu feature flags {#feature-flag-scenarios}
 
 Cum poți rezolva probleme folosind OpenTelemetry? Aceste
-[scenarii bazate pe indicatori de funcționalitate](feature-flags/) te ghidează
-prin câteva probleme preconfigurate și îți arată cum să interpretezi datele
-OpenTelemetry pentru a le rezolva.
+[scenarii bazate pe feature flags](feature-flags/) te ghidează prin câteva
+probleme preconfigurate și îți arată cum să interpretezi datele OpenTelemetry
+pentru a le rezolva.
 
 ## Referinţă {#reference}
 
@@ -75,7 +75,7 @@ funcționalități.
 
 - [Arhitectură](architecture/)
 - [Dezvoltare](development/)
-- [Referință pentru steagurile de caracteristici](feature-flags/)
+- [Referință pentru feature flags](feature-flags/)
 - [Matrice de caracteristici bazată pe metrici](telemetry-features/metric-coverage/)
 - [Cerințe](./requirements/)
 - [Capturi de ecran](screenshots/)
