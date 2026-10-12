@@ -134,7 +134,7 @@ configurar un proveedor global para tus logs.
 $logger = OpenTelemetry.logger_provider.logger(name: "email")
 ```
 
-### Generar logs con estructura {#emit-structured-logs}
+### Generar logs estructurados {#emit-structured-logs}
 
 Puedes usar el método `on_emit` para escribir logs con estructura. Incluye los
 atributos `severity_text` (ej.: `INFO`, `ERROR`), un `body` claro y un atributo
