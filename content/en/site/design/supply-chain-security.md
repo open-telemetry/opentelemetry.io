@@ -9,9 +9,10 @@ cSpell:ignore: cooldowns repoint unreviewed
 For the controls themselves and day-to-day procedures, see
 [Dependency management](../../build/dependencies/). Neighboring security topics
 have their own homes: the design of the audit that verifies these controls in
-[Supply-chain audit design](../supply-chain-audit/), workflow trigger and token
-privileges in [CI workflows](../../build/ci-workflows/#security-model), and
-vulnerability reporting in the [security policy][].
+[Supply-chain audit design](../supply-chain-audit/), workflow triggers, token
+privileges, and untrusted inputs in
+[CI workflows](../../build/ci-workflows/#security-model), and vulnerability
+reporting in the [security policy][].
 
 ## Threat model
 

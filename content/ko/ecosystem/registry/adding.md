@@ -3,6 +3,7 @@ title: 레지스트리에 등록하기
 linkTitle: 등록
 description: 레지스트리에 항목을 추가하는 방법
 default_lang_commit: 42ef3b8c965480f4d58b173ed95fcb05fbc7d429
+drifted_from_default: true
 cSpell:ignore: zpages
 ---
 
