@@ -2,7 +2,6 @@
 title: Recommendation Service
 linkTitle: Recommendation
 aliases: [recommendationservice]
-cSpell:ignore: Logback
 ---
 
 This service is responsible to get a list of recommended products for the user
