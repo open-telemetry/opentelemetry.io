@@ -3,8 +3,7 @@ title: 依存関係の管理
 description: >-
   サイトの npm 依存関係に対するインストール時の動作、更新手順、サプライチェーン制御
 weight: 5
-default_lang_commit: bf53e16042a4ec7ae37779f944c49d1cde3719d3
-drifted_from_default: true
+default_lang_commit: f0f60aff064f269589ed414f37fe7559c8602ef9
 cSpell:ignore: EBADENGINE
 ---
 
@@ -93,6 +92,24 @@ npm install --package-lock-only --ignore-scripts
    必要なスクリプトは正確なバージョン承認として、不要なスクリプトは名前レベルの拒否（`false`、以降のバージョンアップ時に更新不要）として記録する。
 3. 新しい承認の場合、[`.github/renovate.jsonc`][] の Renovate 自動マージ除外リストにもそのパッケージを追加する。
    承認済みパッケージのすべてのバージョンアップには上記の手順が必要なため、その更新 PR はコントリビューターを待つ必要がある。
+
+### Hugo {#hugo}
+
+Hugo のバージョンを指定する設定は 2 つあります。
+
+- [`package.json`][] の `hugo-extended`：正確なピン指定です。すべてのビルドが使用するバイナリであり、サイトが検証されている唯一のバージョンです。
+- [`module-template.yaml`][] の `module.hugoVersion.min`：下限です。これを下回ると Hugo が警告を出し、[ビルドログチェック][build-log check]がその警告を CI の失敗に変えます。
+
+サイトが Hugo の変更に依存するようになると、下限が引き上げられます。
+たとえば、マウントの `files` パターンは、Hugo 0.166.0 で修正された glob エンジン（`**/` がゼロ個のディレクトリにマッチしなくなった）を前提としています。
+
+Hugo をバージョンアップするには、以下の手順を実行します。
+
+1. 対象となる Hugo のバージョン範囲について [Docsy のアップグレードガイド][Docsy upgrade guides]に沿って作業する。
+2. `package.json` の `hugo-extended` のバージョンを設定し、[ロックファイルを同期する](#manifest-changes)。
+   （`npm run update:hugo` はかわりに最新バージョンを、スクリプトを有効にした状態でインストールします。承認がすでにそのバージョンを指定していない限り、`strict-allow-scripts` によって失敗します。）
+3. [`allowScripts` の承認](#script-bearing-packages)を更新し、`npm run install:safe` を実行して、レビュー済みのフックを通じてピン指定されたバイナリを取得する。
+4. サイトがその範囲内の変更に依存するようになった場合は、`hugoVersion.min` を引き上げる。
 
 ### 推移的依存関係のリフレッシュ {#transitive-refresh}
 
@@ -267,14 +284,17 @@ engines フロアとは、上記の制御をサポートする最も古いバー
 <!-- prettier-ignore-start -->
 [`.github/renovate.jsonc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/renovate.jsonc
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
+[`module-template.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
+[build-log check]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/check-build-log.sh
 [ci-security]: ../ci-workflows/#security-model
 [deliberate]: ../../design/supply-chain-security/#deliberate
 [Dependabot security updates]: https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
+[Docsy upgrade guides]: https://www.docsy.dev/tags/hugo/
 [Docsy]: https://www.docsy.dev/
 [drift tracking]: /docs/contributing/localization/#track-changes
 [includes a clone of the repository]: https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2
