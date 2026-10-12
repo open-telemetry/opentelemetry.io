@@ -79,7 +79,7 @@ end
 ### Inicializando métricas {#initializing-metrics}
 
 Los exportadores del SDK de métricas de OpenTelemetry y OTLP se inicializan en
-la raíz del demo con el archivo `email_server.rb`. Primero necesitas incluir las
+la raíz de la demo con el archivo `email_server.rb`. Primero necesitas incluir las
 librerías usando `require` para hacer uso de ellas.
 
 ```ruby
