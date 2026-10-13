@@ -56,15 +56,17 @@ Copy the following file into an empty directory and call it `index.html`.
 
 ### Installation
 
-To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`,
+To create traces in the browser, you will need `@opentelemetry/sdk-trace`,
 and the instrumentation `@opentelemetry/instrumentation-document-load`:
 
 ```shell
 npm init -y
 npm install @opentelemetry/api \
-  @opentelemetry/sdk-trace-web \
-  @opentelemetry/instrumentation-document-load \
-  @opentelemetry/context-zone
+  @opentelemetry/core \
+  @opentelemetry/sdk-trace \
+  @opentelemetry/context-zone \
+  @opentelemetry/instrumentation \
+  @opentelemetry/instrumentation-document-load
 ```
 
 ### Initialization and Configuration
@@ -110,19 +112,27 @@ which brings the instrumentation to trace document load:
 
 ```js
 /* document-load.ts|js file - the code snippet is the same for both the languages */
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
-import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
+import { context, propagation, trace } from '@opentelemetry/api';
+import { TracerProvider } from '@opentelemetry/sdk-trace';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
+import { CompositePropagator, W3CBaggagePropagator, W3CTraceContextPropagator } from '@opentelemetry/core';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
+import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 
-const provider = new WebTracerProvider();
+const tracerProvider = new TracerProvider();
+trace.setGlobalTracerProvider(tracerProvider);
 
-provider.register({
-  // Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional
-  contextManager: new ZoneContextManager(),
+const contextManager = new ZoneContextManager().enable();
+context.setGlobalContextManager(contextManager);
+
+const propagator = new CompositePropagator({
+  propagators: [
+    new W3CTraceContextPropagator(),
+    new W3CBaggagePropagator(),
+  ],
 });
+propagation.setGlobalPropagator(propagator);
 
-// Registering instrumentations
 registerInstrumentations({
   instrumentations: [new DocumentLoadInstrumentation()],
 });
@@ -156,25 +166,35 @@ the following code snippet:
 
 ```js
 /* document-load.ts|js file - the code is the same for both the languages */
+import { context, propagation, trace } from '@opentelemetry/api';
 import {
   ConsoleSpanExporter,
   SimpleSpanProcessor,
-} from '@opentelemetry/sdk-trace-base';
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
-import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
+  TracerProvider
+} from '@opentelemetry/sdk-trace';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
+import { CompositePropagator, W3CBaggagePropagator, W3CTraceContextPropagator } from '@opentelemetry/core';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
+import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 
-const provider = new WebTracerProvider({
-  spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
+const tracerProvider = new TracerProvider({
+  spanProcessors: [
+    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() })
+  ],
 });
+trace.setGlobalTracerProvider(tracerProvider);
 
-provider.register({
-  // Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional
-  contextManager: new ZoneContextManager(),
+const contextManager = new ZoneContextManager().enable();
+context.setGlobalContextManager(contextManager);
+
+const propagator = new CompositePropagator({
+  propagators: [
+    new W3CTraceContextPropagator(),
+    new W3CBaggagePropagator(),
+  ],
 });
+propagation.setGlobalPropagator(propagator);
 
-// Registering instrumentations
 registerInstrumentations({
   instrumentations: [new DocumentLoadInstrumentation()],
 });
