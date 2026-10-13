@@ -75,7 +75,7 @@ processors:
 ## Queuebatch configuration
 
 These considerations led to a new implementation known as
-"queuebatch", madee available for use inside the exporter through its
+"queuebatch", made available for use inside the exporter through its
 `exporterhelper` interface which is the unit responsible for common
 queueing, batching, retry, timeout, and observability functions in
 most exporters.
