@@ -117,10 +117,11 @@ if (typeof window !== 'undefined') FrontendTracer();
 ```
 
 The `utils/telemetry/FrontendTracer.ts` file contains code to initialize a
-TracerProvider, establish an OTLP export, register trace context propagators,
-and register web specific auto-instrumentation libraries. Since the browser will
-send data to an OpenTelemetry Collector that will likely be on a separate
-domain, CORS headers are also setup accordingly.
+`TracerProvider`, establish an OTLP export, register the context manager and
+trace context propagators globally through the `context`, `propagation`, and
+`trace` APIs, and register web specific auto-instrumentation libraries. Since
+the browser will send data to an OpenTelemetry Collector that will likely be on
+a separate domain, CORS headers are also setup accordingly.
 
 As part of the changes to carry over the `synthetic_request` attribute flag for
 the backend services, the `applyCustomAttributesOnSpan` configuration function

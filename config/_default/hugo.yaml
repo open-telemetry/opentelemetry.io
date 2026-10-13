@@ -99,7 +99,7 @@ outputFormats:
     notAlternative: true
 
 outputs:
-  home: [HTML, markdown, RSS]
+  home: [HTML, markdown, RSS, LLMS]
   page: [HTML, markdown]
   section: [HTML, markdown]
 
@@ -112,7 +112,7 @@ cascade:
 
   # Enable redirects for site root (and not locales)
   - outputs:
-      # This must match the equivalent of [outputs.home, LLMS, redirects]
+      # This must match the equivalent of [outputs.home, redirects]
       [HTML, markdown, RSS, LLMS, redirects]
     target:
       kind: home

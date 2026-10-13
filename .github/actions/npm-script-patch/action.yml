@@ -85,7 +85,9 @@ runs:
       env:
         MAX_PATCH_SIZE_KB: ${{ inputs.max-patch-size-kb }}
       run: |
-        git diff > site.patch
+        # Against HEAD, not the index: a fixer may stage (fix:filenames
+        # untracks an obsolete path with `git rm --cached`).
+        git diff HEAD > site.patch
 
         if [ ! -s site.patch ]; then
           echo "No changes detected. Skipping patch."

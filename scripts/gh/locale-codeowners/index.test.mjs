@@ -5,8 +5,13 @@ import {
   BEGIN_MARKER,
   DOCS_APPROVERS,
   END_MARKER,
+  fetchDirectMembers,
+  fetchLiveRegistry,
   genLocaleSection,
+  genLocalesBlock,
   isStaffed,
+  normalizeTeams,
+  replaceLocalesBlock,
   updateCodeowners,
   validateRegistry,
 } from './index.mjs';
@@ -134,6 +139,214 @@ describe('locale-codeowners: validateRegistry', () => {
       validateRegistry(registry, { localeDirs: ['bn', 'ja'] }).some((p) =>
         p.includes('no content/ directory'),
       ),
+    );
+  });
+});
+
+// Fake `gh api graphql` runner: `teams` maps slug -> logins, or a function
+// returning a raw { stdout, stderr, status } response.
+function fakeGh(teams, calls = []) {
+  return (args) => {
+    const query = args.find((a) => a.startsWith('query='));
+    const slug = args.find((a) => a.startsWith('slug=')).slice(5);
+    calls.push({ query, slug });
+    const t = teams[slug];
+    if (typeof t === 'function') return t();
+    const team =
+      t === undefined
+        ? null
+        : {
+            members: {
+              totalCount: t.length,
+              pageInfo: { hasNextPage: false },
+              nodes: t.map((login) => ({ login })),
+            },
+          };
+    return {
+      stdout: JSON.stringify({ data: { organization: { team } } }),
+      status: 0,
+    };
+  };
+}
+
+describe('locale-codeowners: fetchDirectMembers', () => {
+  test('asks GraphQL for direct (IMMEDIATE) members only', () => {
+    const calls = [];
+    const runGh = fakeGh({ 'docs-ja-approvers': ['a', 'b'] }, calls);
+    assert.deepEqual(fetchDirectMembers({ runGh, team: 'docs-ja-approvers' }), [
+      'a',
+      'b',
+    ]);
+    assert.match(calls[0].query, /membership: IMMEDIATE/);
+  });
+
+  test('fails on a gh error', () => {
+    const runGh = fakeGh({
+      t: () => ({ stdout: '', stderr: 'HTTP 403', status: 1 }),
+    });
+    assert.throws(() => fetchDirectMembers({ runGh, team: 't' }), /403/);
+  });
+
+  test('fails on a missing or unreadable team (null, exit 0)', () => {
+    const runGh = fakeGh({});
+    assert.throws(
+      () => fetchDirectMembers({ runGh, team: 'docs-xx-approvers' }),
+      /not found or not readable/,
+    );
+  });
+
+  test('fails on GraphQL errors and unparsable output', () => {
+    const errors = fakeGh({
+      t: () => ({ stdout: '{"errors":[{"message":"boom"}]}', status: 0 }),
+    });
+    assert.throws(
+      () => fetchDirectMembers({ runGh: errors, team: 't' }),
+      /boom/,
+    );
+    const junk = fakeGh({ t: () => ({ stdout: 'oops', status: 0 }) });
+    assert.throws(
+      () => fetchDirectMembers({ runGh: junk, team: 't' }),
+      /unparsable/,
+    );
+  });
+
+  test('fails on incomplete pagination', () => {
+    const page = (extra) => () => ({
+      stdout: JSON.stringify({
+        data: {
+          organization: {
+            team: {
+              members: {
+                totalCount: 2,
+                pageInfo: { hasNextPage: false, ...extra },
+                nodes: [{ login: 'a' }],
+              },
+            },
+          },
+        },
+      }),
+      status: 0,
+    });
+    // totalCount 2 but one node returned
+    assert.throws(
+      () => fetchDirectMembers({ runGh: fakeGh({ t: page() }), team: 't' }),
+      /incomplete/,
+    );
+    assert.throws(
+      () =>
+        fetchDirectMembers({
+          runGh: fakeGh({ t: page({ hasNextPage: true }) }),
+          team: 't',
+        }),
+      /incomplete/,
+    );
+  });
+});
+
+describe('locale-codeowners: normalizeTeams', () => {
+  test('approvers exclude maintainers; both sorted case-insensitively', () => {
+    assert.deepEqual(
+      normalizeTeams({
+        maintainers: ['ymotongpoo', 'Msksgm', 'katzchang'],
+        approvers: ['ymotongpoo', 'kota-sakuma', 'Msksgm', 'kohbis'],
+      }),
+      {
+        maintainers: ['katzchang', 'Msksgm', 'ymotongpoo'],
+        approvers: ['kohbis', 'kota-sakuma'],
+      },
+    );
+  });
+
+  test('the overlap match ignores login case', () => {
+    assert.deepEqual(
+      normalizeTeams({ maintainers: ['Alice'], approvers: ['alice', 'bob'] })
+        .approvers,
+      ['bob'],
+    );
+  });
+});
+
+describe('locale-codeowners: fetchLiveRegistry + replaceLocalesBlock', () => {
+  const header = '# header\n# comments stay\n\n';
+  const file =
+    header +
+    'locales:\n' +
+    '  ja:\n    maintainers: [katzchang]\n    approvers: [kohbis, kota-sakuma]\n' +
+    '  uk:\n    maintainers: []\n    approvers: []\n';
+  const sync = (teams) =>
+    replaceLocalesBlock(
+      file,
+      genLocalesBlock(
+        fetchLiveRegistry({ runGh: fakeGh(teams), locales: ['uk', 'ja'] }),
+      ),
+    );
+  const base = {
+    'docs-ja-maintainers': ['katzchang'],
+    'docs-ja-approvers': ['katzchang', 'kohbis', 'kota-sakuma'],
+    'docs-uk-maintainers': [],
+    'docs-uk-approvers': [],
+  };
+
+  test('no drift leaves the file byte-identical (maintainers repeated in approvers)', () => {
+    assert.equal(sync(base), file);
+  });
+
+  test('addition', () => {
+    const out = sync({
+      ...base,
+      'docs-uk-approvers': ['newbie'],
+    });
+    assert.match(
+      out,
+      /  uk:\n    maintainers: \[\]\n    approvers: \[newbie\]\n/,
+    );
+    assert.strictEqual(out.slice(0, header.length), header, 'Registry header');
+  });
+
+  test('removal', () => {
+    const out = sync({
+      ...base,
+      'docs-ja-approvers': ['katzchang', 'kohbis'],
+    });
+    assert.match(out, /approvers: \[kohbis\]\n/);
+  });
+
+  test('role move: approver promoted to maintainer', () => {
+    const out = sync({
+      ...base,
+      'docs-ja-maintainers': ['katzchang', 'kohbis'],
+      'docs-ja-approvers': ['katzchang', 'kohbis', 'kota-sakuma'],
+    });
+    assert.match(out, /maintainers: \[katzchang, kohbis\]\n/);
+    assert.match(out, /approvers: \[kota-sakuma\]\n/);
+  });
+
+  test('a fetch failure produces nothing', () => {
+    const { 'docs-uk-approvers': _, ...missing } = base;
+    assert.throws(() => sync(missing), /docs-uk-approvers/);
+  });
+
+  test('output passes registry validation', () => {
+    const live = fetchLiveRegistry({
+      runGh: fakeGh({ ...base, 'docs-ja-maintainers': ['Zed', 'amy'] }),
+      locales: ['ja', 'uk'],
+    });
+    assert.deepEqual(validateRegistry(live), []);
+  });
+
+  test('quotes logins that YAML would coerce', () => {
+    const block = genLocalesBlock({
+      locales: { ja: { maintainers: ['null', '12345'], approvers: ['ok-1'] } },
+    });
+    assert.match(block, /maintainers: \["null", "12345"\]/);
+    assert.match(block, /approvers: \[ok-1\]/);
+  });
+
+  test('replaceLocalesBlock rejects unexpected layouts', () => {
+    assert.throws(() => replaceLocalesBlock('# nothing', 'x'), /locales/);
+    assert.throws(
+      () => replaceLocalesBlock('locales:\n  a: 1\nother: 2\n', 'x'),
+      /after/,
     );
   });
 });

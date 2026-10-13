@@ -72,7 +72,7 @@ suite('deadLinksReport', () => {
 suite('cacheUpdatedNotice', () => {
   test('says the cache was updated and how to commit it', () => {
     const notice = cacheUpdatedNotice();
-    assert.match(notice, /\.lycheecache/);
+    assert.match(notice, /link-cache\.jsonc/);
     assert.match(notice, /commit/i);
   });
 });

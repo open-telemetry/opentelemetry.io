@@ -9,8 +9,8 @@ const RULE = '='.repeat(74);
 export function cacheUpdatedNotice() {
   return [
     RULE,
-    'NOTE: the link check updated the committed link cache (.lycheecache).',
-    'Commit the modified .lycheecache together with your content changes;',
+    'NOTE: the link check updated the committed link cache (link-cache.jsonc).',
+    'Commit the modified link-cache.jsonc together with your content changes;',
     "otherwise the 'CACHE updates committed?' job will fail on your PR.",
     RULE,
   ].join('\n');
