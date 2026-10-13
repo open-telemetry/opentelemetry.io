@@ -4,6 +4,7 @@ description: >-
   CI/CD workflows, how to build this site, and how to perform various site
   maintenance activities
 weight: 40
+cSpell:ignore: otelwebtelemetry
 ---
 
 This section documents the CI/CD workflows, NPM scripts, and helper scripts that
@@ -36,6 +37,24 @@ Most checks that force a fresh build first, such as link-checking, use
 `BUILD_KIND`. For details about the link checking scripts, see
 [Link checking](./link-checking/).
 
+## Website tracing
+
+The site instruments itself with the OpenTelemetry JS SDK
+([`assets/js/tracing.js`][]): page loads, user interactions, and `fetch`/XHR
+calls produce spans, exported to `otelwebtelemetry.com` and to the browser
+console.
+
+Tracing is enabled only when Netlify supplies `SITE_NAME=opentelemetry`, the
+official site's identity across production, deploy previews, and branch deploys.
+Builds elsewhere (local, CI, a fork's own Netlify site) omit the script. The
+gate selects the deployment; it does not authenticate it.
+
+To exercise tracing in a local build, set the variable yourself:
+`SITE_NAME=opentelemetry npm run build:preview`. Do not set it in
+[`netlify.toml`][], which forks inherit.
+
 <!-- prettier-ignore-start -->
+[`assets/js/tracing.js`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/assets/js/tracing.js
 [Chrome build modes]: https://github.com/docsy/docsy/blob/main/docsy.dev/content/en/docs/deployment/chrome.md
+[`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 <!-- prettier-ignore-end -->
