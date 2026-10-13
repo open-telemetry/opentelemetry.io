@@ -2,8 +2,7 @@
 title: サードパーティディストリビューション
 linkTitle: ディストリビューション
 description: サードパーティが保守するオープンソースの OpenTelemetry ディストリビューションの一覧。
-default_lang_commit: 5ccd63611a43a8c3b4a243dc995fb3755d46eafa
-drifted_from_default: true
+default_lang_commit: 86176b5ce89da875add2a77296131397f7a7ca31
 ---
 
 {{% include freeze-notice.md %}}
@@ -18,6 +17,7 @@ OpenTelemetry の[ディストリビューション][distributions]は、特定�
 
 {{% ecosystem/distributions-table filter="non-collector" %}}
 
+<!--
 ## ディストリビューションの追加 {#how-to-add}
 
 ディストリビューションをリストに追加するには、[ディストリビューションリスト][distributions list]にエントリを追加した [PR を提出][submit a PR]してください。
@@ -36,9 +36,15 @@ OpenTelemetry の[ディストリビューション][distributions]は、特定�
 
 [submit a PR]: /docs/contributing/pull-requests/
 
-{{% include keep-up-to-date.md distribution %}}
+# TODO: remove spaces to fix shortcode formatting before uncommenting
+{ { % include keep-up-to-date.md distribution % } }
+-->
 
 [components]: /docs/concepts/components/
 [distributions]: /docs/concepts/distributions/
-[distributions list]: https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml
 [vendor]: ../vendors/
+
+<!--
+[distributions list]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml
+-->
