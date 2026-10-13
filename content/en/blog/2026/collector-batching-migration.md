@@ -56,7 +56,7 @@ stabilized. By then, `batchprocessor` users had identified three major
 limitations of the design, wanting:
 
 1. Control over size limits, to set limits in terms of _bytes_
-2. Control over concurrency, to set limits on concurrent request coutn limit
+2. Control over concurrency, to set limits on concurrent request count limit.
 3. Control over back-pressure and error propagation.
 
 Independently from these matters, `batchprocessor` added partitioning, the
