@@ -14,7 +14,7 @@ import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { resourceFromAttributes } from '@opentelemetry/resources';
 import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions';
-import { ZoneContextManager } from '@opentelemetry/context-zone-peer-dep';
+import { ZoneContextManager } from '@opentelemetry/context-zone';
 
 const collectorOptions = {
   url: 'https://otelwebtelemetry.com/v1/traces',
@@ -44,7 +44,7 @@ propagation.setGlobalPropagator(propagator);
 
 registerInstrumentations({
   instrumentations: [getWebAutoInstrumentations({})],
-  tracerProvider: provider,
+  tracerProvider,
 });
 
-module.export = provider.getTracer('otel-web');
+module.export = tracerProvider.getTracer('otel-web');
