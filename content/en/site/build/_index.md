@@ -46,8 +46,8 @@ console.
 
 Tracing is enabled only when Netlify supplies `SITE_NAME=opentelemetry`, the
 official site's identity across production, deploy previews, and branch deploys.
-Builds elsewhere (local, CI, a fork's own Netlify site) omit the script. The
-gate selects the deployment; it does not authenticate it.
+Builds elsewhere (local, CI, a fork's own Netlify site) omit the script. This is
+a simple deployment gate, not an authentication mechanism.
 
 To exercise tracing in a local build, set the variable yourself:
 `SITE_NAME=opentelemetry npm run build:preview`. Do not set it in
