@@ -212,7 +212,7 @@ be removed from the Collector codebase at that time.
 
 Until then, several immediate steps are available to developers:
 
-1. Confgure exporter `sending_queue` instead of `batchprocessor`. Most
+1. Configure exporter `sending_queue` instead of `batchprocessor`. Most
    exporters already support this feature. By configuring your own
    settings the change of default has no effect.
 2. Use `queuebatchprocessor` instead of `batchprocessor`.
