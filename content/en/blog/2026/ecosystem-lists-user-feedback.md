@@ -4,7 +4,7 @@ linkTitle: Share your ecosystem list needs
 date: 2026-10-08
 author: '[Severin Neumann](https://github.com/svrnm)'
 draft: true
-issue: 11377
+issue: 12078
 sig: Communications SIG # Confirm sponsorship before submitting.
 ---
 
