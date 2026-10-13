@@ -2,6 +2,7 @@ import { context, propagation, trace } from '@opentelemetry/api';
 import {
   ConsoleSpanExporter,
   SimpleSpanProcessor,
+  StackContextManager,
   TracerProvider,
 } from '@opentelemetry/sdk-trace';
 import {
@@ -14,7 +15,6 @@ import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { resourceFromAttributes } from '@opentelemetry/resources';
 import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions';
-import { ZoneContextManager } from '@opentelemetry/context-zone-peer-dep';
 
 const collectorOptions = {
   url: 'https://otelwebtelemetry.com/v1/traces',
@@ -35,7 +35,7 @@ const tracerProvider = new TracerProvider({
 });
 trace.setGlobalTracerProvider(tracerProvider);
 
-context.setGlobalContextManager(new ZoneContextManager().enable());
+context.setGlobalContextManager(new StackContextManager().enable());
 
 const propagator = new CompositePropagator({
   propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
@@ -44,7 +44,5 @@ propagation.setGlobalPropagator(propagator);
 
 registerInstrumentations({
   instrumentations: [getWebAutoInstrumentations({})],
-  tracerProvider: provider,
+  tracerProvider,
 });
-
-module.export = provider.getTracer('otel-web');

@@ -1,4 +1,4 @@
-{{ if hugo.IsProduction -}}
+{{ if eq (os.Getenv "SITE_NAME") "opentelemetry" -}}
   {{ partial "script.html" (dict "src" "js/tracing.js") -}}
 {{ end -}}
 {{ partial "script.html" (dict "src" "js/navScroll.js") -}}
