@@ -22,13 +22,13 @@ initialize the SDK and auto-instrumentation based on standard
 for OTLP export, resource attributes, and service name.
 
 ```javascript
-const {NodeSDK} = require('@opentelemetry/sdk-node');
+const { NodeSDK } = require('@opentelemetry/sdk-node');
 // ... other require() calls elided for brevity.
 
 const sdk = new NodeSDK({
   traceExporter: new OTLPTraceExporter(),
   logRecordProcessors: [
-    new BatchLogRecordProcessor({ exporter: new OTLPLogExporter() })
+    new BatchLogRecordProcessor({ exporter: new OTLPLogExporter() }),
   ],
   instrumentations: getNodeAutoInstrumentations(),
   metricReader: new PeriodicExportingMetricReader({
@@ -130,11 +130,19 @@ logic that way every browser-side span will include it.
 
 ```typescript
 import { context, propagation, trace } from '@opentelemetry/api';
-import { CompositePropagator, W3CBaggagePropagator, W3CTraceContextPropagator } from '@opentelemetry/core';
+import {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} from '@opentelemetry/core';
 import { BatchSpanProcessor, TracerProvider } from '@opentelemetry/sdk-trace';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
-import { defaultResource, resourceFromAttributes, detectResources } from '@opentelemetry/resources';
+import {
+  defaultResource,
+  resourceFromAttributes,
+  detectResources,
+} from '@opentelemetry/resources';
 import { browserDetector } from '@opentelemetry/opentelemetry-browser-detector';
 import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
@@ -150,10 +158,12 @@ const FrontendTracer = async () => {
   const { ZoneContextManager } = await import('@opentelemetry/context-zone');
 
   let resource = defaultResource()
-    .merge(resourceFromAttributes({
-      [ATTR_SERVICE_NAME]: NEXT_PUBLIC_OTEL_SERVICE_NAME,
-    }))
-    .merge(detectResources({detectors: [browserDetector]}));
+    .merge(
+      resourceFromAttributes({
+        [ATTR_SERVICE_NAME]: NEXT_PUBLIC_OTEL_SERVICE_NAME,
+      }),
+    )
+    .merge(detectResources({ detectors: [browserDetector] }));
 
   const tracerProvider = new TracerProvider({
     resource,
@@ -161,7 +171,9 @@ const FrontendTracer = async () => {
       new SessionIdProcessor(),
       new BatchSpanProcessor({
         exporter: new OTLPTraceExporter({
-          url: NEXT_PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT || 'http://localhost:4318/v1/traces',
+          url:
+            NEXT_PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT ||
+            'http://localhost:4318/v1/traces',
         }),
         scheduledDelayMillis: 500,
       }),
@@ -173,10 +185,7 @@ const FrontendTracer = async () => {
   context.setGlobalContextManager(contextManager);
 
   const propagator = new CompositePropagator({
-    propagators: [
-      new W3CBaggagePropagator(),
-      new W3CTraceContextPropagator(),
-    ],
+    propagators: [new W3CBaggagePropagator(), new W3CTraceContextPropagator()],
   });
   propagation.setGlobalPropagator(propagator);
 

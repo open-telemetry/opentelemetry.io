@@ -66,7 +66,7 @@ import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici';
 
 const sdk = new NodeSDK({
   spanProcessors: [
-    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() })
+    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() }),
   ],
   instrumentations: [new UndiciInstrumentation()],
 });
@@ -92,7 +92,7 @@ import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici';
 
 const sdk = new NodeSDK({
   spanProcessors: [
-    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() })
+    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() }),
   ],
   instrumentations: [new UndiciInstrumentation()],
 });
@@ -481,7 +481,7 @@ import {
 
 const sdk = new NodeSDK({
   spanProcessors: [
-    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() })
+    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() }),
   ],
 });
 

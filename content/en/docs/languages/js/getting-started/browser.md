@@ -56,8 +56,8 @@ Copy the following file into an empty directory and call it `index.html`.
 
 ### Installation
 
-To create traces in the browser, you will need `@opentelemetry/sdk-trace`,
-and the instrumentation `@opentelemetry/instrumentation-document-load`:
+To create traces in the browser, you will need `@opentelemetry/sdk-trace`, and
+the instrumentation `@opentelemetry/instrumentation-document-load`:
 
 ```shell
 npm init -y
@@ -115,7 +115,11 @@ which brings the instrumentation to trace document load:
 import { context, propagation, trace } from '@opentelemetry/api';
 import { TracerProvider } from '@opentelemetry/sdk-trace';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
-import { CompositePropagator, W3CBaggagePropagator, W3CTraceContextPropagator } from '@opentelemetry/core';
+import {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} from '@opentelemetry/core';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 
@@ -126,10 +130,7 @@ const contextManager = new ZoneContextManager().enable();
 context.setGlobalContextManager(contextManager);
 
 const propagator = new CompositePropagator({
-  propagators: [
-    new W3CTraceContextPropagator(),
-    new W3CBaggagePropagator(),
-  ],
+  propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
 });
 propagation.setGlobalPropagator(propagator);
 
@@ -170,16 +171,20 @@ import { context, propagation, trace } from '@opentelemetry/api';
 import {
   ConsoleSpanExporter,
   SimpleSpanProcessor,
-  TracerProvider
+  TracerProvider,
 } from '@opentelemetry/sdk-trace';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
-import { CompositePropagator, W3CBaggagePropagator, W3CTraceContextPropagator } from '@opentelemetry/core';
+import {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} from '@opentelemetry/core';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 
 const tracerProvider = new TracerProvider({
   spanProcessors: [
-    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() })
+    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() }),
   ],
 });
 trace.setGlobalTracerProvider(tracerProvider);
@@ -188,10 +193,7 @@ const contextManager = new ZoneContextManager().enable();
 context.setGlobalContextManager(contextManager);
 
 const propagator = new CompositePropagator({
-  propagators: [
-    new W3CTraceContextPropagator(),
-    new W3CBaggagePropagator(),
-  ],
+  propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
 });
 propagation.setGlobalPropagator(propagator);
 

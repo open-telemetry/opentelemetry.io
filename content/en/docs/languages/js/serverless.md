@@ -58,31 +58,39 @@ const {
   BatchSpanProcessor,
   TracerProvider,
 } = require('@opentelemetry/sdk-trace');
-const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-http');
+const {
+  OTLPTraceExporter,
+} = require('@opentelemetry/exporter-trace-otlp-http');
 const { registerInstrumentations } = require('@opentelemetry/instrumentation');
 const {
   getNodeAutoInstrumentations,
 } = require('@opentelemetry/auto-instrumentations-node');
-const { CompositePropagator, W3CBaggagePropagator, W3CTraceContextPropagator } = require('@opentelemetry/core');
-const { AsyncLocalStorageContextManager } = require('@opentelemetry/context-async-hooks');
+const {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} = require('@opentelemetry/core');
+const {
+  AsyncLocalStorageContextManager,
+} = require('@opentelemetry/context-async-hooks');
 
 api.diag.setLogger(new api.DiagConsoleLogger(), api.DiagLogLevel.ALL);
 
 const exporter = new OTLPTraceExporter({ url: '<backend_url>' });
 const tracerProvider = new TracerProvider({
-  spanProcessors: [
-    new BatchSpanProcessor({ exporter })
-  ],
+  spanProcessors: [new BatchSpanProcessor({ exporter })],
 });
 api.trace.setGlobalTracerProvider(tracerProvider);
 
 api.context.setGlobalContextManager(
-  new AsyncLocalStorageContextManager().enable()
+  new AsyncLocalStorageContextManager().enable(),
 );
 
-api.propagation.setGlobalPropagator(new CompositePropagator({
-  propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
-}));
+api.propagation.setGlobalPropagator(
+  new CompositePropagator({
+    propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
+  }),
+);
 
 registerInstrumentations({
   instrumentations: [
@@ -241,13 +249,21 @@ const {
   BatchSpanProcessor,
   TracerProvider,
 } = require('@opentelemetry/sdk-trace');
-const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-http');
+const {
+  OTLPTraceExporter,
+} = require('@opentelemetry/exporter-trace-otlp-http');
 const { registerInstrumentations } = require('@opentelemetry/instrumentation');
 const {
   getNodeAutoInstrumentations,
 } = require('@opentelemetry/auto-instrumentations-node');
-const { CompositePropagator, W3CBaggagePropagator, W3CTraceContextPropagator } = require('@opentelemetry/core');
-const { AsyncLocalStorageContextManager } = require('@opentelemetry/context-async-hooks');
+const {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} = require('@opentelemetry/core');
+const {
+  AsyncLocalStorageContextManager,
+} = require('@opentelemetry/context-async-hooks');
 
 api.diag.setLogger(new api.DiagConsoleLogger(), api.DiagLogLevel.ALL);
 
@@ -260,18 +276,22 @@ const tracerProvider = new TracerProvider({
     [ATTR_SERVICE_NAME]: '<your function name>',
   }),
   spanProcessors: [
-    new BatchSpanProcessor({ exporter: new OTLPTraceExporter(collectorOptions) }),
+    new BatchSpanProcessor({
+      exporter: new OTLPTraceExporter(collectorOptions),
+    }),
   ],
 });
 api.trace.setGlobalTracerProvider(tracerProvider);
 
 api.context.setGlobalContextManager(
-  new AsyncLocalStorageContextManager().enable()
+  new AsyncLocalStorageContextManager().enable(),
 );
 
-api.propagation.setGlobalPropagator(new CompositePropagator({
-  propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
-}));
+api.propagation.setGlobalPropagator(
+  new CompositePropagator({
+    propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
+  }),
+);
 
 registerInstrumentations({
   instrumentations: [getNodeAutoInstrumentations()],

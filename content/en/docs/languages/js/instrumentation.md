@@ -384,17 +384,14 @@ const tracerProvider = new TracerProvider({
   resource,
   spanProcessors: [
     new BatchSpanProcessor({ exporter: new ConsoleSpanExporter() }),
-  ]
+  ],
 });
 trace.setGlobalTracerProvider(tracerProvider);
 
 context.setGlobalContextManager(new StackContextManager().enable());
 
 const propagator = new CompositePropagator({
-  propagators: [
-    new W3CBaggagePropagator(),
-    new W3CTraceContextPropagator(),
-  ],
+  propagators: [new W3CBaggagePropagator(), new W3CTraceContextPropagator()],
 });
 propagation.setGlobalPropagator(propagator);
 ```
@@ -1230,7 +1227,7 @@ const {
 trace.setGlobalTracerProvider(
   new TracerProvider({
     spanProcessors: [
-      new BatchSpanProcessor({ exporter: new ConsoleSpanExporter() })
+      new BatchSpanProcessor({ exporter: new ConsoleSpanExporter() }),
     ],
   }),
 );
