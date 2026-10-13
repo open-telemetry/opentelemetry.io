@@ -1509,6 +1509,7 @@ maintainers:
     teams:
       - docs-approvers
       - docs-maintainers
+      - docs-ro-approvers
       - docs-triagers
       - proto-approvers
       - proto-triagers
