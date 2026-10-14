@@ -16674,6 +16674,11 @@
     "when": "2026-10-02T19:05:05Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/3.x/migration-guide.md#opentelemetrysdk-trace-web-package-removed": {
+    "result": 200,
+    "when": "2026-10-14T13:53:28Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/esm-support.md": {
     "result": 200,
     "when": "2026-10-02T19:05:05Z",
