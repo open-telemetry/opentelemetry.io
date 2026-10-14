@@ -12,11 +12,10 @@ feature.
 
 ## Deployment gate
 
-Load the tracer for every deploy of the project's Netlify site, production,
-deploy previews, and branch deploys alike, and for nothing else. The template
-recognizes that site by the `SITE_NAME` build variable Netlify sets. Features
-states [when the tracer loads](/site/features/#website-telemetry); this page
-says why that is the gate.
+Load the tracer for
+[every deploy of the project's Netlify site](/site/features/#website-telemetry)
+and for no other deploy. The body-end partial recognizes that site by the
+`SITE_NAME` build variable Netlify sets.
 
 - Previews must trace. Gating on the site's identity, not the Hugo environment,
   puts production, deploy previews, and branch deploys on the same footing, so a

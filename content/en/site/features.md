@@ -27,14 +27,13 @@ The site instruments page loads, user interactions, and `fetch`/XHR calls with
 the OpenTelemetry JS SDK. Spans are exported over OTLP to `otelwebtelemetry.com`
 and printed in the browser console.
 
-Telemetry (tracer) code is enabled for Netlify builds: production, preview, and
-branch deploys; a fork's own Netlify site does not trace.
+Telemetry (tracer) code is enabled for Netlify builds: production, deploy
+previews, and branch deploys; a fork's own Netlify site does not trace.
 
 - Status: active
 - Design: [Website telemetry](../design/telemetry/)
 - Implementation: [`assets/js/tracing.js`][], loaded by
-  `layouts/_partials/hooks/body-end.html`, which enables tracing when Netlify's
-  `SITE_NAME` is set to `opentelemetry`.
+  `layouts/_partials/hooks/body-end.html`
 - Local build: [Build and serve](../build/npm-scripts/#build-and-serve)
 
 <!-- prettier-ignore-start -->

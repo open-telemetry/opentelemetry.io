@@ -48,7 +48,8 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `serve`            | Start Hugo dev server (default; full render).                  |
 
 To build or serve the site with [website telemetry][], set the `SITE_NAME`
-environment variable to `opentelemetry`:
+environment variable to `opentelemetry`; your local browsing then exports spans
+to the project collector, as production does:
 
 ```sh
 SITE_NAME=opentelemetry npm run serve
