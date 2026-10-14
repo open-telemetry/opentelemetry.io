@@ -20169,6 +20169,11 @@
     "when": "2026-10-02T17:58:08Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry.io/issues/2842": {
+    "result": 200,
+    "when": "2026-10-14T18:02:48Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry.io/issues/6592": {
     "result": 200,
     "when": "2026-09-30T05:46:22Z",
