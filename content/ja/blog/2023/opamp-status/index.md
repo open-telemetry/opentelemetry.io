@@ -41,7 +41,7 @@ OTel エンドユーザーや Collector コントリビューターとの議論�
 > [!NOTE]
 >
 > 詳しくは、
-> [OpAMP for OpenTelemetry Collector ドキュメント](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/85c75369612717542acf07ff7bd2700af80dd0d4/cmd/opampsupervisor/specification?from_branch=main)
+> [OpenTelemetry Collector 向け OpAMP ドキュメント](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/85c75369612717542acf07ff7bd2700af80dd0d4/cmd/opampsupervisor/specification?from_branch=main)
 > をご覧ください。
 > このドキュメントでは、コードの重複を最小限に抑えながら両方のオプションを実装する方法が説明されています。
 
@@ -54,8 +54,8 @@ OTel エンドユーザーや Collector コントリビューターとの議論�
 
 ## OpAMP エクステンション {#opamp-extension}
 
-[OpenTelemetry Collector OpAMP エクステンション](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/16594)は、Collector 内に OpAMP クライアントを実装し、OpAMP を通じた Collector インスタンスの管理において、スタンドアロンモデルと監視付きモデルの両方で使用されます。
-スーパーバイザーと連携する場合の OpAMP エクステンションの機能は、スーパーバイザーの設計ドキュメントの一部として定義されており、エクステンションは主にスーパーバイザーにブートストラップ情報を提供し、Collector の実効設定を通信する役割を担います。
+[OpenTelemetry Collector OpAMP エクステンション](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/16594)は、Collector 内に OpAMP クライアントを実装する予定であり、OpAMP を通じた Collector インスタンスの管理において、スタンドアロンモデルと監視付きモデルの両方で使用される予定です。
+スーパーバイザーと連携する場合の OpAMP エクステンションの機能は、スーパーバイザーの設計ドキュメントの一部として定義されており、エクステンションは主にスーパーバイザーにブートストラップ情報を提供し、Collector の実効設定を通信する役割を担うことになります。
 
 ## OpAMP スーパーバイザー {#opamp-supervisor}
 
@@ -77,7 +77,7 @@ OTel では、[Kubernetes 向け OpenTelemetry Operator](/docs/platforms/kuberne
 > [!NOTE]
 >
 > 現時点では、Helm chart によるデプロイのサポートはありません。
-> ただし、コントリビュートをご希望の方は歓迎します。
+> ただし、どなたのコントリビュートも歓迎します。
 
 OpAMP ブリッジは OTel の [SIG Kubernetes Operator](https://docs.google.com/document/d/1Unbs2qp_j5kp8FfL_lRH-ld7i5EOQpsq0I4djkOOSL4/) が開発したバイナリで、Kubernetes クラスター内の OpenTelemetry Collector リソースのプールを維持する責任を担います。
 ブリッジは OpAMP オペレーターサーバーのクライアントとして機能し、Collector プールの実効設定を報告し、Collector プールのリモート設定を可能にします。
