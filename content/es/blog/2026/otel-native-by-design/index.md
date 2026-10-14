@@ -1,8 +1,8 @@
 ---
 title: >-
-  OTel-Native por Diseño - Construyendo Productos que Exporten a Cualquier
+  Diseño Nativo con OTel - Construyendo Productos que Exporten a Cualquier
   Stack
-linkTitle: OTel-Native por Diseño
+linkTitle: Diseño Nativo con OTel
 date: 2026-10-08
 author: >-
   [Nityananda Gohain](https://github.com/nityanandagohain) (SigNoz), [Dhruv
@@ -43,3 +43,9 @@ OpenTelemetry define cuatro tipos de señales, todas usan el estándar [OpenTele
 La misma historia de exportar aplica a las tres (logs, trazas, y métricas): Permitiendo a los usuarios configurar su OTLP endpoint y **enviando** telemetría. Puedes añadir soporte a una, dos, o las tres señales dependiendo de tu producto.
 
 Muchas plataformas que soportan exportar vía OTel incluyen al menos trazas y logs, y con un gran número en aumento incluyendo métricas. Diseñando con las tres señales desde un inicio evita adaptar más tarde.
+## Como un "buen" sistema de telemetria se ve
+
+Una historia solida para exportar cada senal tiene pocas propiedades que debes de considerar:
+
+- **Proovedor Agnóstico:** Los usuarios pueden cambiar a cualquier endpoint compatible con OTel, un [Collector instance](/docs/collector/), uno de los muchos
+  [backends que soportal OTLP directamente](/ecosystem/vendors/) — sin construir integraciones personalizandas.
