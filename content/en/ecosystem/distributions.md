@@ -23,6 +23,7 @@ distributions and the component they customize. For
 
 {{% ecosystem/distributions-table filter="non-collector" %}}
 
+<!--
 ## Adding your distribution {#how-to-add}
 
 To have your distribution listed, [submit a PR][] with an entry added to the
@@ -47,10 +48,15 @@ To have your distribution listed, [submit a PR][] with an entry added to the
 
 [submit a PR]: /docs/contributing/pull-requests/
 
-{{% include keep-up-to-date.md distribution %}}
+# TODO: remove spaces to fix shortcode formatting before uncommenting
+{ { % include keep-up-to-date.md distribution % } }
+-->
 
 [components]: /docs/concepts/components/
 [distributions]: /docs/concepts/distributions/
+[vendor]: ../vendors/
+
+<!--
 [distributions list]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml
-[vendor]: ../vendors/
+-->
