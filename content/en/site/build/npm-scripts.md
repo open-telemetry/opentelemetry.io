@@ -47,15 +47,19 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `serve:hugo`       | Start Hugo server with in-memory render.                       |
 | `serve`            | Start Hugo dev server (default; full render).                  |
 
-To include [website tracing](../#website-tracing) in a local build, set the
-variable Netlify sets for the official site:
+When changing the tracing setup itself ([`assets/js/tracing.js`][] or its
+dependencies), a local build is the fast loop before the deploy preview. Hugo
+includes the tracer only for the official site, so set the variable Netlify sets
+there:
 
 ```sh
 SITE_NAME=opentelemetry npm run build:preview
 ```
 
-Do not add it to `netlify.toml`: forks inherit that file, and tracing their
-deployments is what the gate exists to prevent.
+Then open the built page and check the browser console. Do not add the variable
+to `netlify.toml`: forks inherit that file, and tracing their deployments is
+what the gate exists to prevent. For the gate itself, see
+[Website tracing](../#website-tracing).
 
 ## Checking
 
@@ -161,6 +165,7 @@ deployments is what the gate exists to prevent.
 
 <!-- prettier-ignore-start -->
 [Hugo bump]: ../dependencies/#hugo
+[`assets/js/tracing.js`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/assets/js/tracing.js
 [`link-cache.jsonc`]: ../link-checking/#link-cache
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [build kinds]: ../#build-kinds

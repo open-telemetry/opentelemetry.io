@@ -54,11 +54,8 @@ root, not a parent-child chain. For this site's telemetry that is acceptable.
 ## Collector
 
 Spans are exported over OTLP/HTTP to `https://otelwebtelemetry.com/v1/traces`,
-and to the browser console through `ConsoleSpanExporter`.
-
-As of October 2026, the collector rejects every export with
-`400 unknown field "flags" in v1.Span`: it predates OTLP 1.1, which added
-`span.flags`, and the site's exporter has emitted that field since January 2024.
-Whether to update the collector, drop the console exporter, or retire tracing
-altogether is under maintainer discussion; this page describes the design as it
-stands.
+and to the browser console through `ConsoleSpanExporter`. The collector is
+maintained outside this repository; its OTLP version and the site's exporter
+version are not pinned together, so an exporter upgrade can emit fields the
+collector does not yet accept. The export failure is logged to the console and
+does not affect the page.
