@@ -19804,55 +19804,75 @@
     "when": "2026-10-03T05:48:28Z",
     "via": "lychee",
   },
+  // Seeded pending open-telemetry/opentelemetry.io#12088; this target lands with the merge.
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/approve-registry-update/SKILL.md": {
-    "result": "error",
-    "when": "2026-10-14T06:16:19Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-10-14T06:29:29Z",
+    "via": "manual",
+    "expires": "2026-10-21",
   },
+  // Seeded pending open-telemetry/opentelemetry.io#12088; this target lands with the merge.
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/draft-issue/SKILL.md": {
-    "result": "error",
-    "when": "2026-10-14T06:16:19Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-10-14T06:29:29Z",
+    "via": "manual",
+    "expires": "2026-10-21",
   },
+  // Seeded pending open-telemetry/opentelemetry.io#12088; this target lands with the merge.
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/refresh-link-cache-pr-fix/SKILL.md": {
-    "result": "error",
-    "when": "2026-10-14T06:16:19Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-10-14T06:29:29Z",
+    "via": "manual",
+    "expires": "2026-10-21",
   },
+  // Seeded pending open-telemetry/opentelemetry.io#12088; this target lands with the merge.
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/resolve-link-cache-conflicts/SKILL.md": {
-    "result": "error",
-    "when": "2026-10-14T06:16:19Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-10-14T06:29:29Z",
+    "via": "manual",
+    "expires": "2026-10-21",
   },
+  // Seeded pending open-telemetry/opentelemetry.io#12088; this target lands with the merge.
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/review-blog-post/SKILL.md": {
-    "result": "error",
-    "when": "2026-10-14T06:16:19Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-10-14T06:29:29Z",
+    "via": "manual",
+    "expires": "2026-10-21",
   },
+  // Seeded pending open-telemetry/opentelemetry.io#12088; this target lands with the merge.
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/review-pull-request/SKILL.md": {
-    "result": "error",
-    "when": "2026-10-14T06:16:19Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-10-14T06:29:29Z",
+    "via": "manual",
+    "expires": "2026-10-21",
   },
+  // Seeded pending open-telemetry/opentelemetry.io#12088; this target lands with the merge.
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/setup-new-localization/SKILL.md": {
-    "result": "error",
-    "when": "2026-10-14T06:16:19Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-10-14T06:29:29Z",
+    "via": "manual",
+    "expires": "2026-10-21",
   },
+  // Seeded pending open-telemetry/opentelemetry.io#12088; this target lands with the merge.
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/update-git-submodule/SKILL.md": {
-    "result": "error",
-    "when": "2026-10-14T06:16:19Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-10-14T06:29:29Z",
+    "via": "manual",
+    "expires": "2026-10-21",
   },
+  // Seeded pending open-telemetry/opentelemetry.io#12088; this target lands with the merge.
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/update-i18n-drift-status/SKILL.md": {
-    "result": "error",
-    "when": "2026-10-14T06:16:19Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-10-14T06:29:29Z",
+    "via": "manual",
+    "expires": "2026-10-21",
   },
+  // Seeded pending open-telemetry/opentelemetry.io#12088; this target lands with the merge.
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/update-old-blog-ignores/SKILL.md": {
-    "result": "error",
-    "when": "2026-10-14T06:16:19Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-10-14T06:29:29Z",
+    "via": "manual",
+    "expires": "2026-10-21",
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/hooks/hooks.json": {
     "result": 200,
@@ -20274,10 +20294,12 @@
     "when": "2026-10-03T05:48:34Z",
     "via": "lychee",
   },
+  // Seeded pending open-telemetry/opentelemetry.io#12088; this target lands with the merge.
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/.agents/skills": {
-    "result": "error",
-    "when": "2026-10-14T06:16:19Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-10-14T06:29:29Z",
+    "via": "manual",
+    "expires": "2026-10-21",
   },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/.claude/skills": {
     "result": 200,
