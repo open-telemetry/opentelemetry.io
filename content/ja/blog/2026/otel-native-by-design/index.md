@@ -9,7 +9,7 @@ author: >-
 body_class: otel-with-contributions-from
 issue: 10300
 sig: SIG End User
-default_lang_commit: b83edac6fdc7da4c53d10ce00c2f78d9aea0c89b
+default_lang_commit: cb07a7f2f522075ab85baaca6b23625cad38b30f
 cSpell:ignore: Ahuja Dhruv Gohain Nityananda
 ---
 
@@ -399,8 +399,8 @@ OTel のオブザーバビリティ分野での採用が拡大していること
 
 3つすべてのシグナルに対してオープンスタンダードを使用した設計を最初から行うことで、摩擦を取り除き、エンジニアリングのオーバーヘッドを削減し、顧客が自分自身の条件でデータを最大限に活用できるようにします。
 
-プロダクトに OTel ネイティブのエクスポートをすでに実装している場合は、[OpenTelemetry Integrations への追加](/ecosystem/integrations/#how-to-add)を検討してください。
-より広いコミュニティにあなたの成果を公開する素晴らしい方法です。
+<!-- プロダクトに OTel ネイティブのエクスポートをすでに実装している場合は、[OpenTelemetry Integrations への追加](/ecosystem/integrations/#how-to-add)を検討してください。
+より広いコミュニティにあなたの成果を公開する素晴らしい方法です。 -->
 
 > [!NOTE]
 >
