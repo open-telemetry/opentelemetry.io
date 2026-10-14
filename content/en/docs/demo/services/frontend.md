@@ -56,7 +56,7 @@ the application using `npm start`.
 
 ```json
 "scripts": {
-  "start": "node --require ./utils/telemetry/Instrumentation.js server.js",
+  "start": "node --require ./Instrumentation.js server.js",
 },
 ```
 
