@@ -36,16 +36,6 @@ Most checks that force a fresh build first, such as link-checking, use
 `BUILD_KIND`. For details about the link checking scripts, see
 [Link checking](./link-checking/).
 
-### Website tracing
-
-The [website tracing](../features/#website-tracing) script is a build input of
-the same kind as `BUILD_KIND`: Hugo includes it when the `SITE_NAME` environment
-variable is `opentelemetry`, which Netlify sets for every build of the official
-site. Builds elsewhere (local, CI, a fork's own Netlify site) omit it. For the
-rationale, see [Design: Website tracing](../design/tracing/); for exercising
-tracing in a local build, see [Build and serve][].
-
 <!-- prettier-ignore-start -->
-[Build and serve]: ./npm-scripts/#build-and-serve
 [Chrome build modes]: https://github.com/docsy/docsy/blob/main/docsy.dev/content/en/docs/deployment/chrome.md
 <!-- prettier-ignore-end -->

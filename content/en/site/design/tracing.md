@@ -29,7 +29,7 @@ identified by the `SITE_NAME` build variable equal to `opentelemetry`.
 - `SITE_NAME` is on the Hugo `security.funcs.getenv` allowlist; `os.Getenv`
   returns an empty string when it is unset, which fails the gate.
 - Local builds exercise tracing by setting the variable explicitly:
-  [Website tracing](/site/build/#website-tracing) under Build kinds.
+  [Build and serve](/site/build/npm-scripts/#build-and-serve).
 
 ## Context manager
 

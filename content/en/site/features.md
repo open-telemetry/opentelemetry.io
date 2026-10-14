@@ -28,11 +28,11 @@ interactions, and `fetch`/XHR calls produce spans, exported over OTLP to
 `otelwebtelemetry.com` and to the browser console. Tracing runs only on the
 official site's Netlify deployments, previews included.
 
-- Status: active; whether to keep it is under maintainer discussion
+- Status: active
 - Design: [Website tracing](../design/tracing/)
 - Implementation: [`assets/js/tracing.js`][], loaded by
   `layouts/_partials/hooks/body-end.html`
-- Build: [Website tracing](../build/#website-tracing) under Build kinds
+- Local build: [Build and serve](../build/npm-scripts/#build-and-serve)
 
 <!-- prettier-ignore-start -->
 [`assets/js/tracing.js`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/assets/js/tracing.js

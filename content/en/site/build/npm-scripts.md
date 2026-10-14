@@ -59,7 +59,7 @@ SITE_NAME=opentelemetry npm run build:preview
 Then open the built page and check the browser console. Do not add the variable
 to `netlify.toml`: forks inherit that file, and tracing their deployments is
 what the gate exists to prevent. For the gate itself, see
-[Website tracing](../#website-tracing).
+[Design: Website tracing](../../design/tracing/).
 
 ## Checking
 
