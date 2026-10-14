@@ -1,9 +1,9 @@
 ---
 title: Website telemetry
 description: >-
-  How tracing is gated to the project's Netlify site, production and previews
-  alike; why context propagation stays Zone-free; and why exporter and collector
-  versions are not pinned together
+  Why the tracer loads for every deploy of the project's Netlify site and no
+  other, why context propagation stays Zone-free, and how an export failure
+  shows when the collector lags the exporter
 weight: 30
 ---
 
@@ -24,27 +24,25 @@ says why that is the gate.
 - Forks must not trace. A fork deployed to its own Netlify site has its own
   `SITE_NAME`, so it inherits the gate but not the tracing.
 - This is a simple deployment gate, not an authentication mechanism. Netlify's
-  value is not changeable from the repository, but anyone who controls their own
-  build can set any variable. Rejecting fabricated telemetry is the collector's
-  job, not the site's.
-- `SITE_NAME` is on the Hugo `security.funcs.getenv` allowlist; when the
-  variable is unset, `os.Getenv` returns an empty string and the gate fails
-  closed. A local build opts in by setting it:
-  [Build and serve](/site/build/npm-scripts/#build-and-serve).
+  value is not changeable, but anyone who controls their own build can set any
+  variable. Rejecting fabricated telemetry is the collector's job, not the
+  site's.
+- An unset `SITE_NAME` fails the gate closed, with no signal; a Netlify site
+  rename would do the same until the template follows. A local build opts in by
+  setting the variable
+  ([Build and serve](/site/build/npm-scripts/#build-and-serve)).
 
 ## Context manager
 
-Use `StackContextManager`, the synchronous context manager the SDK ships in
-`@opentelemetry/sdk-trace`, rather than `ZoneContextManager`.
+Use `StackContextManager` from `@opentelemetry/sdk-trace`, the package the JS
+SDK's [3.x migration guide][] names as the `sdk-trace-web` replacement, rather
+than `ZoneContextManager`.
 
 - `zone.js` patches the common async APIs in the browser (`Promise`, timers,
-  event listeners) and adds about 12 KB gzipped to every page. Its context
+  event listeners) and adds about 13 KB gzipped to every page. Its context
   propagation through callbacks is real, but it cannot cross native
   `async`/`await`, and a static site with one or two fetches per page has no use
   for it.
-- The JS SDK's 3.x migration guide places `StackContextManager` in
-  `@opentelemetry/sdk-trace` and retires `@opentelemetry/sdk-trace-web`; the
-  site follows that path.
 
 Context does not propagate automatically across an `await` or into an unbound
 callback: a span started there is its own root unless the code passes the parent
@@ -53,10 +51,15 @@ For this site's telemetry that is acceptable.
 
 ## Collector
 
-The collector behind the export is maintained outside this repository, and its
-OTLP version is not pinned to the site's exporter version, so an exporter
-upgrade can emit fields the collector does not yet accept. An export failure
-does not affect the page. The SDK does not report it (no diagnostic logger is
-configured), so the only trace of it is the browser's own network error for the
-failed request; the spans the console exporter prints say nothing about whether
-the collector accepted them.
+The collector behind the export has a different owner and release train from the
+site, so its OTLP version is not pinned to the site's exporter version, and an
+exporter upgrade can emit fields the collector does not yet accept. An export
+failure does not affect the page. The SDK does not report it (no diagnostic
+logger is configured), so the only sign of it is the browser's own record of the
+rejected request, in the DevTools network panel (Chromium consoles log it too;
+Firefox's does not); the spans the console exporter prints say nothing about
+whether the collector accepted them.
+
+<!-- prettier-ignore-start -->
+[3.x migration guide]: https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/3.x/migration-guide.md#opentelemetrysdk-trace-web-package-removed
+<!-- prettier-ignore-end -->

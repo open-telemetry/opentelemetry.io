@@ -54,10 +54,9 @@ environment variable to `opentelemetry`:
 SITE_NAME=opentelemetry npm run serve
 ```
 
-Prefer a full build over a lean one when comparing against production: shared
-chrome changes what the page fetches, so a lean build's telemetry differs.
-
-[website telemetry]: ../../features/#website-telemetry
+Prefer a full build over a [lean][build kinds] one when comparing telemetry with
+production's: shared chrome changes what the page fetches, so a lean build's
+telemetry differs.
 
 ## Checking
 
@@ -175,4 +174,5 @@ chrome changes what the page fetches, so a lean build's telemetry differs.
 [lock-exact local setup]: ../dependencies/#install-contracts
 [lock-exact theme dependency install]: ../dependencies/#install-contracts
 [release cooldown]: ../dependencies/#release-cooldown
+[website telemetry]: ../../features/#website-telemetry
 <!-- prettier-ignore-end -->
