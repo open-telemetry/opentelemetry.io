@@ -47,13 +47,17 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `serve:hugo`       | Start Hugo server with in-memory render.                       |
 | `serve`            | Start Hugo dev server (default; full render).                  |
 
-To build or serve the site with [website telemetry][], set the `SITE_NAME` environment variable to `opentelemetry`. For example, use `serve` or any non-lean build:
+To build or serve the site with [website telemetry][], set the `SITE_NAME`
+environment variable to `opentelemetry`:
 
 ```sh
-SITE_NAME=opentelemetry npm run build:preview
+SITE_NAME=opentelemetry npm run serve
 ```
 
-[website telemetry]: ../../design/features/#website-telemetry
+Prefer a full build over a lean one when comparing against production: shared
+chrome changes what the page fetches, so a lean build's telemetry differs.
+
+[website telemetry]: ../../features/#website-telemetry
 
 ## Checking
 
@@ -159,7 +163,6 @@ SITE_NAME=opentelemetry npm run build:preview
 
 <!-- prettier-ignore-start -->
 [Hugo bump]: ../dependencies/#hugo
-[`assets/js/tracing.js`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/assets/js/tracing.js
 [`link-cache.jsonc`]: ../link-checking/#link-cache
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [build kinds]: ../#build-kinds

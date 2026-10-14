@@ -1,18 +1,19 @@
 ---
-title: Website tracing
+title: Website telemetry
 description: >-
   How tracing is gated to the official site, why context propagation stays
   Zone-free, and why exporter and collector versions are not pinned together
 weight: 30
 ---
 
-Design notes for the [website tracing](/site/features/#website-tracing) feature.
+Design notes for the [website telemetry](/site/features/#website-telemetry)
+feature.
 
 ## Deployment gate
 
 Load the tracer only when the build is for the official site, which the template
 recognizes by the `SITE_NAME` build variable Netlify sets. Features states
-[when the tracer loads](/site/features/#website-tracing); this page says why
+[when the tracer loads](/site/features/#website-telemetry); this page says why
 that is the gate.
 
 - Previews must trace. Gating on the site's identity, not the Hugo environment,

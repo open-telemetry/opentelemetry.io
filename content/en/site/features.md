@@ -31,7 +31,7 @@ Telemetry (tracer) code is enabled for Netlify builds: production, preview, and
 branch deploys; a fork's own Netlify site does not trace.
 
 - Status: active
-- Design: [Website tracing](../design/tracing/)
+- Design: [Website telemetry](../design/telemetry/)
 - Implementation: [`assets/js/tracing.js`][], loaded by
   `layouts/_partials/hooks/body-end.html`, which enables tracing when Netlify's
   `SITE_NAME` is set to `opentelemetry`.
