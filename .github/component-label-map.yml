@@ -154,6 +154,7 @@ CI/infra: # including config
           # (.cspell/) and prose rules (prh/) are content, not infra, so they
           # are deliberately omitted.
           # cSpell:ignore gulpfile
+          - .agents/**
           - .claude/**
           - .cspell.yml # owned by docs-approvers
           - .devcontainer/**

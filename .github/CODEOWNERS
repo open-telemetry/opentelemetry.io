@@ -93,6 +93,7 @@
 # label list in .github/component-label-map.yml; submodule metadata and gitlinks
 # below are ownership-only exceptions.
 # cSpell:ignore gulpfile
+/.agents/**                     @open-telemetry/docs-maintainers
 /.claude/**                     @open-telemetry/docs-maintainers
 /.devcontainer/**               @open-telemetry/docs-maintainers
 /.editorconfig                  @open-telemetry/docs-maintainers

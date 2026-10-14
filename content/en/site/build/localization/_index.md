@@ -394,7 +394,7 @@ correct:
 [New localizations]: /docs/contributing/localization/#new-localizations
 [Site localization]: /docs/contributing/localization/
 [`setup-new-localization` skill]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/setup-new-localization/SKILL.md
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/setup-new-localization/SKILL.md
 [unstaffed]: /docs/contributing/localization/#locale-teams
 [ISO 639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
 [CNCF Slack workspace]: https://cloud-native.slack.com
