@@ -25,8 +25,8 @@ Markdown output for content pages and HTTP negotiation for
 
 > [!NOTE]
 >
-> Website telemetry is paused until the project's new collector is ready. This
-> entry describes the feature as designed.
+> Website telemetry is paused until the project's new collector is ready
+> ([#2842][]). This entry describes the feature as designed.
 
 The site instruments page loads, user interactions, and `fetch`/XHR calls with
 the OpenTelemetry JS SDK. Spans are exported over OTLP to `otelwebtelemetry.com`
@@ -42,5 +42,6 @@ previews, and branch deploys; a fork's own Netlify site does not trace.
 - Local build: [Build and serve](../build/npm-scripts/#build-and-serve)
 
 <!-- prettier-ignore-start -->
+[#2842]: https://github.com/open-telemetry/opentelemetry.io/issues/2842
 [`assets/js/tracing.js`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/assets/js/tracing.js
 <!-- prettier-ignore-end -->
