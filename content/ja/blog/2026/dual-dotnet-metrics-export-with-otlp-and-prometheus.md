@@ -51,7 +51,7 @@ flowchart LR
     EP -->|"メトリクスレスポンス（テキスト形式）"| P
 
     OE -->|"OTLP エクスポートリクエスト"| OTB
-    OTB -->|"OTLP レスポンス/ack"| OE
+    OTB -->|"OTLP レスポンス/確認応答"| OE
 ```
 
 .NET アプリケーションコードで `Meter` クラスとともに `Counter<T>`、`Gauge<T>`、`Histogram<T>` の計装のみを使用することで、.NET OpenTelemetry SDK と専用の Prometheus クライアントの両方を使わずにメトリクスを収集できます。
@@ -73,7 +73,7 @@ public class BlogPostComments
 }
 ```
 
-OpenTelemetry をサポートするバックエンドに対して、Prometheus と OTLP の両方にメトリクスをエクスポートするよう OpenTelemetry SDK を設定するには、[`OpenTelemetry.Exporter.Prometheus.AspNetCore`](https://www.nuget.org/packages/OpenTelemetry.Exporter.Prometheus.AspNetCore) NuGet パッケージをプロジェクトに追加するだけで、わずかなコードで実現できます。
+Prometheus へのエクスポートと、OpenTelemetry をサポートするバックエンドへの OTLP 経由のエクスポートの両方を行うように OpenTelemetry SDK を設定するには、[`OpenTelemetry.Exporter.Prometheus.AspNetCore`](https://www.nuget.org/packages/OpenTelemetry.Exporter.Prometheus.AspNetCore) NuGet パッケージをプロジェクトに追加するだけで、わずかなコードで実現できます。
 
 ```csharp
 using OpenTelemetry;
