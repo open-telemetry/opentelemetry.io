@@ -25,8 +25,10 @@ Markdown output for content pages and HTTP negotiation for
 
 The site instruments itself with the OpenTelemetry JS SDK: page loads, user
 interactions, and `fetch`/XHR calls produce spans, exported over OTLP to
-`otelwebtelemetry.com` and to the browser console. Tracing runs only on the
-official site's Netlify deployments, previews included.
+`otelwebtelemetry.com` and to the browser console. The tracer loads when the
+`SITE_NAME` build variable is the official site's, which Netlify sets for its
+production, preview, and branch deploys; a fork's own Netlify site does not
+trace.
 
 - Status: active
 - Design: [Website tracing](../design/tracing/)

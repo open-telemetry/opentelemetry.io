@@ -49,16 +49,16 @@ script, use `npm run` _`SCRIPT_NAME`_.
 
 When changing the tracing setup itself ([`assets/js/tracing.js`][] or its
 dependencies), a local build is the fast loop before the deploy preview. Hugo
-includes the tracer only for the official site, so set the variable Netlify sets
-there:
+includes the tracer only when `SITE_NAME` is the official site's, so set it for
+the build:
 
 ```sh
 SITE_NAME=opentelemetry npm run build:preview
 ```
 
-Then open the built page and check the browser console. Do not add the variable
-to `netlify.toml`: forks inherit that file, and tracing their deployments is
-what the gate exists to prevent. For the gate itself, see
+The output lands in `public/` with root-relative script paths, so serve that
+directory rather than opening the files directly, then check the browser console
+for the tracer's span output. For the gate itself, see
 [Design: Website tracing](../../design/tracing/).
 
 ## Checking
