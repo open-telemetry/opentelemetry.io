@@ -4,6 +4,7 @@ description: >-
   Brief summaries of notable site features with links to their primary
   references.
 weight: 20
+cSpell:ignore: otelwebtelemetry
 ---
 
 ## Agent-friendly content delivery
@@ -19,3 +20,20 @@ Markdown output for content pages and HTTP negotiation for
 - References:
   [opentelemetry.io#9449](https://github.com/open-telemetry/opentelemetry.io/issues/9449),
   [docsy#2596](https://github.com/docsy/docsy/issues/2596)
+
+## Website tracing
+
+The site instruments itself with the OpenTelemetry JS SDK: page loads, user
+interactions, and `fetch`/XHR calls produce spans, exported over OTLP to
+`otelwebtelemetry.com` and to the browser console. Tracing runs only on the
+official site's Netlify deployments, previews included.
+
+- Status: active; whether to keep it is under maintainer discussion
+- Design: [Website tracing](../design/tracing/)
+- Implementation: [`assets/js/tracing.js`][], loaded by
+  `layouts/_partials/hooks/body-end.html`
+- Build: [Website tracing](../build/#website-tracing) under Build kinds
+
+<!-- prettier-ignore-start -->
+[`assets/js/tracing.js`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/assets/js/tracing.js
+<!-- prettier-ignore-end -->

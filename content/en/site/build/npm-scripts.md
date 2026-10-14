@@ -47,6 +47,16 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `serve:hugo`       | Start Hugo server with in-memory render.                       |
 | `serve`            | Start Hugo dev server (default; full render).                  |
 
+To include [website tracing](../#website-tracing) in a local build, set the
+variable Netlify sets for the official site:
+
+```sh
+SITE_NAME=opentelemetry npm run build:preview
+```
+
+Do not add it to `netlify.toml`: forks inherit that file, and tracing their
+deployments is what the gate exists to prevent.
+
 ## Checking
 
 | Script                 | Description                                                  |

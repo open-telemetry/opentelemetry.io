@@ -4,7 +4,6 @@ description: >-
   CI/CD workflows, how to build this site, and how to perform various site
   maintenance activities
 weight: 40
-cSpell:ignore: otelwebtelemetry
 ---
 
 This section documents the CI/CD workflows, NPM scripts, and helper scripts that
@@ -37,24 +36,16 @@ Most checks that force a fresh build first, such as link-checking, use
 `BUILD_KIND`. For details about the link checking scripts, see
 [Link checking](./link-checking/).
 
-## Website tracing
+### Website tracing
 
-The site instruments itself with the OpenTelemetry JS SDK
-([`assets/js/tracing.js`][]): page loads, user interactions, and `fetch`/XHR
-calls produce spans, exported to `otelwebtelemetry.com` and to the browser
-console.
-
-Tracing is enabled only when Netlify supplies `SITE_NAME=opentelemetry`, the
-official site's identity across production, deploy previews, and branch deploys.
-Builds elsewhere (local, CI, a fork's own Netlify site) omit the script. This is
-a simple deployment gate, not an authentication mechanism.
-
-To exercise tracing in a local build, set the variable yourself:
-`SITE_NAME=opentelemetry npm run build:preview`. Do not set it in
-[`netlify.toml`][], which forks inherit.
+The [website tracing](../features/#website-tracing) script is a build input of
+the same kind as `BUILD_KIND`: Hugo includes it when the `SITE_NAME` environment
+variable is `opentelemetry`, which Netlify sets for every build of the official
+site. Builds elsewhere (local, CI, a fork's own Netlify site) omit it. For the
+rationale, see [Design: Website tracing](../design/tracing/); for exercising
+tracing in a local build, see [Build and serve][].
 
 <!-- prettier-ignore-start -->
-[`assets/js/tracing.js`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/assets/js/tracing.js
+[Build and serve]: ./npm-scripts/#build-and-serve
 [Chrome build modes]: https://github.com/docsy/docsy/blob/main/docsy.dev/content/en/docs/deployment/chrome.md
-[`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
 <!-- prettier-ignore-end -->
