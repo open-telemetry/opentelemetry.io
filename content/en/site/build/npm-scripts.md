@@ -49,7 +49,9 @@ script, use `npm run` _`SCRIPT_NAME`_.
 
 To build or serve the site with [website telemetry][], set the `SITE_NAME`
 environment variable to `opentelemetry`; your local browsing then exports spans
-to the project collector, as production does:
+to the project collector, as production does. While telemetry is
+[paused][website telemetry], the tracer include is absent from
+`layouts/_partials/hooks/body-end.html` and this has no effect:
 
 ```sh
 SITE_NAME=opentelemetry npm run serve

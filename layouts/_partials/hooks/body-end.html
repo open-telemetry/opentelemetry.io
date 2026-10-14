@@ -1,5 +1,4 @@
-{{ if eq (os.Getenv "SITE_NAME") "opentelemetry" -}}
-  {{ partial "script.html" (dict "src" "js/tracing.js") -}}
-{{ end -}}
+{{/* Website telemetry is paused; the tracer include returns with the new
+  collector. Status: /site/features/#website-telemetry */ -}}
 {{ partial "script.html" (dict "src" "js/navScroll.js") -}}
 {{ partial "script.html" (dict "src" "js/imageZoom.js") -}}
