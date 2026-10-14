@@ -86,7 +86,7 @@ OpenTelemetry エコシステムが成長するにつれ、ユーザーが基本
 概念実証である [Instrumentation Explorer][] は、Java エージェントに対してこれがどのように見えるかをすでに示しています。
 計装を調べたり、出力されるテレメトリーを確認したり、バージョンや設定間で動作を比較したりできます。
 
-この取り組みを推進し、より広範なプロジェクトのきっかけとなったオリジナルの Java Instrumentation Explorer プロトタイプを作成した [Jay DeLuca (@jaydeluca)][Jay DeLuca] に特別な称賛を送ります。
+この取り組みを推進し、より広範なプロジェクトのきっかけとなったオリジナルの Java Instrumentation Explorer プロトタイプを作成した [Jay DeLuca (@jaydeluca)][Jay DeLuca] には特別な称賛を贈ります。
 
 [Ecosystem Explorer]: https://github.com/open-telemetry/community/pull/3000
 [OpenTelemetry Registry]: /ecosystem/registry/
@@ -123,7 +123,7 @@ Opentelemetry.io を管理する [Communications SIG][] も今年成長しまし
 新しいメンテナーを**2人**、新しい承認者を**2人**追加し、トリアージャーの役割を新設して**6人**の新しいトリアージャーを迎えました。
 
 15人のグループは、2026年も引き続き OpenTelemetry ウェブサイトとドキュメントの管理を担っていくことに意欲的です。
-新規・経験者を問わず、コントリビューターの皆さんを支援できることを楽しみにしています！
+新しいコントリビューターも経験豊富なコントリビューターも支援できることを楽しみにしています！
 
 [Communications SIG]: https://github.com/open-telemetry/opentelemetry.io#roles
 
