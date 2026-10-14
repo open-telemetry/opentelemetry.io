@@ -22,10 +22,9 @@ and for no other deploy. The body-end partial recognizes that site by the
   change to tracing shows in its deploy preview.
 - Forks must not trace. A fork deployed to its own Netlify site has its own
   `SITE_NAME`, so it inherits the gate but not the tracing.
-- This is a simple deployment gate, not an authentication mechanism. Netlify's
-  value is not changeable, but anyone who controls their own build can set any
-  variable. Rejecting fabricated telemetry is the collector's job, not the
-  site's.
+- This is a simple deployment gate. Netlify's value is not changeable, but
+  anyone who controls their own build can set any variable. Rejecting
+  fabricated telemetry is the collector's job, not the site's.
 - An unset `SITE_NAME` fails the gate closed, with no signal; a Netlify site
   rename would do the same until the template follows. A local build opts in by
   setting the variable
