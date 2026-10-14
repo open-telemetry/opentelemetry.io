@@ -23,10 +23,10 @@ Markdown output for content pages and HTTP negotiation for
 
 ## Website telemetry
 
-> [!NOTE] Website telemetry is paused
+> [!NOTE]
 >
-> Telemetry is off until the project's new collector is ready. This entry
-> describes the feature as designed.
+> Website telemetry is paused until the project's new collector is ready. This
+> entry describes the feature as designed.
 
 The site instruments page loads, user interactions, and `fetch`/XHR calls with
 the OpenTelemetry JS SDK. Spans are exported over OTLP to `otelwebtelemetry.com`
