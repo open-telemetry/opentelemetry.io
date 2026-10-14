@@ -1,3 +1,4 @@
+acceseazǎ
 actualizeaz
 actualizeazǎ
 actualizezi
@@ -102,6 +103,7 @@ revizuii
 revizuitori
 revizuitorii
 sanitizezi
+selecteazǎ
 semantică
 semnalizate
 semneazǎ
