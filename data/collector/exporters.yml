@@ -274,6 +274,15 @@
   stability:
     logs: beta
     traces: beta
+- name: natsexporter
+  display_name: NATS Exporter
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+    metrics: development
+    traces: development
 - name: nopexporter
   display_name: No-op Exporter
   repo: core

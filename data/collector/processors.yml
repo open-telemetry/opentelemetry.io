@@ -182,9 +182,9 @@
   distributions:
     - contrib
   stability:
-    logs: development
-    metrics: development
-    traces: development
+    logs: alpha
+    metrics: alpha
+    traces: alpha
 - name: memorylimiterprocessor
   display_name: Memory Limiter Processor
   repo: core
@@ -337,6 +337,15 @@
     - k8s
   stability:
     traces: beta
+- name: telemetrypolicyprocessor
+  display_name: Telemetry Policy Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+    metrics: development
+    traces: development
 - name: transformprocessor
   display_name: Transform Processor
   repo: contrib
