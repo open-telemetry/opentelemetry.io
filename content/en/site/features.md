@@ -23,11 +23,10 @@ Markdown output for content pages and HTTP negotiation for
 
 ## Website telemetry
 
-> [!WARNING] Paused since 2026-10-14
+> [!NOTE] Paused since 2026-10-14
 >
-> Website telemetry is off until the project's new collector is ready: the
-> tracer include in `layouts/_partials/hooks/body-end.html` is commented out.
-> The rest of this entry describes the feature as designed.
+> Website telemetry is off until the project's new collector is ready. This
+> entry describes the feature as designed.
 
 The site instruments page loads, user interactions, and `fetch`/XHR calls with
 the OpenTelemetry JS SDK. Spans are exported over OTLP to `otelwebtelemetry.com`
