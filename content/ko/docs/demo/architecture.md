@@ -4,6 +4,7 @@ linkTitle: 아키텍처
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
 default_lang_commit: 4309389695c38fee3cb6e68bf1186e4a99d5da4c
+drifted_from_default: true
 ---
 
 **오픈텔레메트리(OpenTelemetry) 데모** 는 서로 간에 gRPC 및 HTTP로 통신하는
