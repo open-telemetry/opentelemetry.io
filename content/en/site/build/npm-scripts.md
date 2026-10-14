@@ -48,9 +48,8 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `serve`            | Start Hugo dev server (default; full render).                  |
 
 When changing the tracing setup itself ([`assets/js/tracing.js`][] or its
-dependencies), a local build is the fast loop before the deploy preview. Hugo
-includes the tracer only when `SITE_NAME` is the official site's, so set it for
-the build:
+dependencies), build a tracing-enabled preview locally as the fast loop before
+the deploy preview:
 
 ```sh
 SITE_NAME=opentelemetry npm run build:preview
