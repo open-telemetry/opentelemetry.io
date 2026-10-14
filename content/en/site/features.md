@@ -21,18 +21,20 @@ Markdown output for content pages and HTTP negotiation for
   [opentelemetry.io#9449](https://github.com/open-telemetry/opentelemetry.io/issues/9449),
   [docsy#2596](https://github.com/docsy/docsy/issues/2596)
 
-## Website tracing
+## Website telemetry
 
 The site instruments page loads, user interactions, and `fetch`/XHR calls with
 the OpenTelemetry JS SDK. Spans are exported over OTLP to `otelwebtelemetry.com`
-and printed in the browser console. The tracer loads when the `SITE_NAME` build
-variable is the official site's, which Netlify sets for its production, preview,
-and branch deploys; a fork's own Netlify site does not trace.
+and printed in the browser console.
+
+Telemetry (tracer) code is enabled for Netlify builds: production, preview, and
+branch deploys; a fork's own Netlify site does not trace.
 
 - Status: active
 - Design: [Website tracing](../design/tracing/)
 - Implementation: [`assets/js/tracing.js`][], loaded by
-  `layouts/_partials/hooks/body-end.html`
+  `layouts/_partials/hooks/body-end.html`, which enables tracing when Netlify's
+  `SITE_NAME` is set to `opentelemetry`.
 - Local build: [Build and serve](../build/npm-scripts/#build-and-serve)
 
 <!-- prettier-ignore-start -->

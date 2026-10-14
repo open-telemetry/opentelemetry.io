@@ -47,18 +47,13 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `serve:hugo`       | Start Hugo server with in-memory render.                       |
 | `serve`            | Start Hugo dev server (default; full render).                  |
 
-When changing the tracing setup itself ([`assets/js/tracing.js`][] or its
-dependencies), build a tracing-enabled preview locally as the fast loop before
-the deploy preview:
+To build or serve the site with [website telemetry][], set the `SITE_NAME` environment variable to `opentelemetry`. For example, use `serve` or any non-lean build:
 
 ```sh
 SITE_NAME=opentelemetry npm run build:preview
 ```
 
-The output lands in `public/` with root-relative script paths, so serve that
-directory rather than opening the files directly, then check the browser console
-for the tracer's span output. For the gate itself, see
-[Design: Website tracing](../../design/tracing/).
+[website telemetry]: ../../design/features/#website-telemetry
 
 ## Checking
 
