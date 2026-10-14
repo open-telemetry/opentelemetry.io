@@ -20184,6 +20184,11 @@
     "when": "2026-09-30T05:46:22Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry.io/issues/9559": {
+    "result": 200,
+    "when": "2026-10-14T18:58:00Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry.io/issues/new": {
     "result": 200,
     "when": "2026-09-30T05:46:20Z",
