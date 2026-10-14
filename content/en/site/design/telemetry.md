@@ -1,9 +1,9 @@
 ---
 title: Website telemetry
 description: >-
-  How tracing is gated to the project's Netlify site, why context propagation
-  stays Zone-free, and why exporter and collector versions are not pinned
-  together
+  How tracing is gated to the project's Netlify site, production and previews
+  alike; why context propagation stays Zone-free; and why exporter and collector
+  versions are not pinned together
 weight: 30
 ---
 
@@ -12,8 +12,9 @@ feature.
 
 ## Deployment gate
 
-Load the tracer only when the build is for the project's own Netlify site, which
-the template recognizes by the `SITE_NAME` build variable Netlify sets. Features
+Load the tracer for every deploy of the project's Netlify site, production,
+deploy previews, and branch deploys alike, and for nothing else. The template
+recognizes that site by the `SITE_NAME` build variable Netlify sets. Features
 states [when the tracer loads](/site/features/#website-telemetry); this page
 says why that is the gate.
 
