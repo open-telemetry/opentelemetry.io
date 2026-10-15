@@ -287,7 +287,7 @@ suite('partitionFailures', () => {
 });
 
 suite('missingPagesReport', () => {
-  test('counts the distinct pages, lists each source with its targets, links the docs', () => {
+  test('counts the listed links, lists each source with its targets, links the docs', () => {
     const helm = '/es/docs/zero-code/obi/setup/kubernetes-helm';
     const report = missingPagesReport([
       {
@@ -298,7 +298,7 @@ suite('missingPagesReport', () => {
     ]);
     assert.match(
       report,
-      /links point at 1 page\(s\) missing from the production build:/,
+      /2 link\(s\) to page\(s\) missing from the production build:/,
     );
     assert.doesNotMatch(report, /draft/);
     assert.match(report, /\/es\/docs\/zero-code\/obi\/network\/quickstart\//);

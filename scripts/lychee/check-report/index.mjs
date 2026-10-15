@@ -127,11 +127,11 @@ export function partitionFailures(output, { production = false } = {}) {
 // Report for a production-build check that found links into pages the build
 // doesn't contain. The remedy lives at the linked PR-check entry.
 export function missingPagesReport(groups) {
-  const n = new Set(groups.flatMap((g) => g.targets)).size;
+  const n = groups.reduce((sum, g) => sum + g.targets.length, 0);
   if (n === 0) return '';
   return [
     RULE,
-    `ERROR: links point at ${n} page(s) missing from the production build:`,
+    `ERROR: ${n} link(s) to page(s) missing from the production build:`,
     '',
     ...groups.flatMap(({ source, targets }) => [
       `  ${source}`,
