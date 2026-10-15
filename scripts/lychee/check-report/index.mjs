@@ -52,11 +52,11 @@ export function deadLinksReport(failures) {
   ].join('\n');
 }
 
-// Missing-page failures from an offline lychee run over public/: directory
-// targets (a page URL, not a file) that the build didn't produce, grouped
-// under the source page that links to them. Both sides as site paths
-// (`/docs/x/`), derived from the `/public/` segment of the paths lychee
-// prints. Missing fragments and missing files stay with the generic report.
+// Pages a production build didn't produce, from an offline lychee run over
+// its public/: `file://` targets reported as missing, grouped under the source
+// page that links to them, both as site paths (`/docs/x/`). Fragments and
+// queries belong to the link, not the page; missing fragments on existing
+// pages stay with the generic report.
 export function missingPagesOf(output) {
   const bySource = new Map();
   let source = null;
@@ -70,39 +70,42 @@ export function missingPagesOf(output) {
       /^\[[A-Z0-9]+\] file:\/\/(\S+\/public\/\S*) \(at \d+:\d+\) \| (File not found|Cannot find index file)/,
     );
     if (!failure || !source) continue;
-    const target = decodeURIComponent(failure[1]);
-    if (/\.[a-z0-9]+$/i.test(target)) continue; // a file, not a page
-    const sitePath = sitePathOf(target);
+    const target = sitePathOf(failure[1]);
     const targets = bySource.get(source) ?? [];
-    if (!targets.includes(sitePath)) targets.push(sitePath);
+    if (!targets.includes(target)) targets.push(target);
     bySource.set(source, targets);
   }
   return [...bySource].map(([source, targets]) => ({ source, targets }));
 }
 
-// `/abs/checkout/public/docs/x/index.html` -> `/docs/x/`; the last `/public/`
-// is the build output, whatever the checkout path contains.
+// `/abs/checkout/public/docs/x/index.html#frag` -> `/docs/x/`: the build
+// output is the last `/public/`, whatever the checkout path contains. A target
+// that names a file (`/docs/x.pdf`) keeps its form; a dotted directory
+// (`/docs/v1.2`) is indistinguishable by text and comes out as a file path.
 function sitePathOf(fsPath) {
-  const i = fsPath.lastIndexOf('/public/');
-  return (
-    fsPath
-      .slice(i + '/public'.length)
-      .replace(/\/index\.html$/, '')
-      .replace(/\/?$/, '/') || '/'
-  );
+  const path = decodeSafely(fsPath.replace(/[?#].*$/, ''));
+  const i = path.lastIndexOf('/public/');
+  const rel = path.slice(i + '/public'.length).replace(/\/index\.html$/, '');
+  if (/\.[a-z0-9]+$/i.test(rel)) return rel;
+  return rel.replace(/\/?$/, '/') || '/';
+}
+
+function decodeSafely(s) {
+  try {
+    return decodeURIComponent(s);
+  } catch {
+    return s;
+  }
 }
 
 // Every failure split into the missing-page groups and the rest, so a run
-// with both kinds reports both.
-export function partitionFailures(output) {
-  const missingPages = missingPagesOf(output);
+// with both kinds reports both. Only a production run classifies: a build
+// that includes drafts has no unpublished pages to be missing.
+export function partitionFailures(output, { production = false } = {}) {
+  const missingPages = production ? missingPagesOf(output) : [];
   const covered = new Set(missingPages.flatMap(({ targets }) => targets));
   const other = failedUrlsOf(output).filter(
-    ({ url }) =>
-      !(
-        url.startsWith('file://') &&
-        covered.has(sitePathOf(decodeURIComponent(url)))
-      ),
+    ({ url }) => !(url.startsWith('file://') && covered.has(sitePathOf(url))),
   );
   return { missingPages, other };
 }
@@ -116,14 +119,14 @@ export function missingPagesReport(groups) {
   return [
     RULE,
     `ERROR: ${n} link(s) point at page(s) that the production build doesn't`,
-    'contain (drafts or future-dated pages).',
+    'contain.',
     '',
     ...groups.flatMap(({ source, targets }) => [
       `  ${source}`,
       ...targets.map((t) => `    → ${t}`),
     ]),
     '',
-    'See https://opentelemetry.io/docs/contributing/pr-checks/#check-links-production-internal',
+    'For how to fix this, see https://opentelemetry.io/docs/contributing/pr-checks/#check-links-production-internal',
     RULE,
   ].join('\n');
 }

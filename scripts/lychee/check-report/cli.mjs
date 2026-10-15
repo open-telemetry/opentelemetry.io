@@ -5,12 +5,13 @@
 // - Success that updates the committed link-cache.jsonc: print a loud notice so
 //   the cache change gets committed with the PR.
 // - Failure with genuinely dead links: name them and say that nothing
-//   cache-side can fix them (also in the step summary when run in CI).
-// - Failure of the offline production-build check: name the pages that
-//   production doesn't serve, under the pages that link to them.
+//   cache-side can fix them.
+// - With `--production` (the production-build check): name the pages the build
+//   didn't produce, under the pages that link to them.
+// Both reports also land in the step summary when run in CI.
 //
 // Used by `check:links` and `check:links:production-internal`, locally and in
-// CI; lychee arguments pass through. The `CHECK LINKS` PR job is the
+// CI; other arguments pass through to lychee. The `CHECK LINKS` PR job is the
 // exception: it invokes `_check:links` directly.
 
 import { spawn, spawnSync } from 'node:child_process';
@@ -33,17 +34,23 @@ const root = path.join(
 
 // The bin behind the `_check:links` npm script; invoked directly so that
 // output is captured npm-noise-free and the exit status observed; failures
-// are parsed for dead links. Kept in sync with package.json by the wiring
+// are parsed for the reports. Kept in sync with package.json by the wiring
 // drift guard in ./index.test.mjs.
 //
 // Output streams through as it arrives — the run takes minutes (site build +
 // link check), so buffering it until exit would leave the terminal frozen —
-// while a copy accumulates for the dead-link parse.
+// while a copy accumulates for the reports.
+const args = process.argv.slice(2);
+const production = args.includes('--production');
 const bin = path.join(root, 'node_modules', '.bin', 'lychee-norm-cache');
-const child = spawn(bin, process.argv.slice(2), {
-  cwd: root,
-  stdio: ['inherit', 'pipe', 'pipe'],
-});
+const child = spawn(
+  bin,
+  args.filter((a) => a !== '--production'),
+  {
+    cwd: root,
+    stdio: ['inherit', 'pipe', 'pipe'],
+  },
+);
 let output = '';
 child.stdout.setEncoding('utf8');
 child.stderr.setEncoding('utf8');
@@ -64,7 +71,7 @@ child.on('close', (code) => {
   if (status === 0) {
     if (cacheModified()) console.log(cacheUpdatedNotice());
   } else {
-    const { missingPages, other } = partitionFailures(output);
+    const { missingPages, other } = partitionFailures(output, { production });
     for (const [report, title] of [
       [missingPagesReport(missingPages), 'Links into unpublished pages'],
       [deadLinksReport(other), 'Unreachable links'],

@@ -357,8 +357,8 @@ export const STATUS_BASELINE_PATH = 'data/l10n-drift.yaml';
 // parses everything as site data, so it must stay valid YAML; this scoped
 // regex keeps drift.mjs dependency-free (the file is bot-written, and
 // anything unexpected must fail loudly anyway). Keep the accepted shape in
-// sync with the deepen step in .github/workflows/check-links.yml, which
-// extracts the same line.
+// sync with the deepen steps in .github/workflows/check-links.yml, which
+// extract the same line.
 const BASELINE_COMMIT_RE = /^commit: ([0-9a-f]{40})$/m;
 
 // Baseline lifecycle thresholds (coupled: the refresh heartbeat must stay

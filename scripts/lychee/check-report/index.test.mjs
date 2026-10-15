@@ -115,7 +115,7 @@ suite('wiring drift guard', () => {
   });
 
   test('pr-checks anchors cited outside built HTML exist in pr-checks.md', () => {
-    // check-links.yml and deadLinksReport() hardcode production pr-checks
+    // check-links.yml and the reports hardcode production pr-checks
     // URLs that lychee never sees (YAML / terminal surfaces); guard their
     // anchors against explicit {#…} heading ids in pr-checks.md. Cited
     // headings carry explicit ids so rewording can't break the URLs.
@@ -179,16 +179,30 @@ suite('missingPagesOf', () => {
     assert.deepEqual(missingPagesOf('🔍 9 Total 🚫 0 Errors\n'), []);
   });
 
-  test('leaves missing fragments and missing files to the generic report', () => {
-    // Lychee reports all three as file:// failures; only the directory-shaped
-    // target with no index is a page the build didn't produce.
+  test('leaves missing fragments to the generic report; files keep their path', () => {
     const out = `[${root}/public/docs/a/index.html]:
 [ERROR] file://${root}/public/docs/b#nope (at 1:22) | Cannot find fragment
 [ERROR] file://${root}/public/docs/x.pdf (at 1:55) | File not found. Check if file exists and path is correct
 [ERROR] file://${root}/public/docs/missing (at 1:85) | File not found. Check if file exists and path is correct
 `;
     assert.deepEqual(missingPagesOf(out), [
-      { source: '/docs/a/', targets: ['/docs/missing/'] },
+      { source: '/docs/a/', targets: ['/docs/x.pdf', '/docs/missing/'] },
+    ]);
+  });
+
+  test('reports a page once whatever fragment, query, or index.html the link carries', () => {
+    const out = `[${root}/public/docs/a/index.html]:
+[ERROR] file://${root}/public/docs/draft#sec (at 1:1) | File not found. Check if file exists and path is correct
+[ERROR] file://${root}/public/docs/draft?q=1 (at 1:2) | File not found. Check if file exists and path is correct
+[ERROR] file://${root}/public/docs/draft/index.html (at 1:3) | File not found. Check if file exists and path is correct
+[ERROR] file://${root}/public/docs/v1.2 (at 1:4) | File not found. Check if file exists and path is correct
+[ERROR] file://${root}/public/docs/caf%E9 (at 1:5) | File not found. Check if file exists and path is correct
+`;
+    assert.deepEqual(missingPagesOf(out), [
+      {
+        source: '/docs/a/',
+        targets: ['/docs/draft/', '/docs/v1.2', '/docs/caf%E9/'],
+      },
     ]);
   });
 
@@ -211,7 +225,9 @@ suite('partitionFailures', () => {
 [404] https://gone.test/ (at 1:20) | Rejected status code: 404 Not Found
 [ERROR] file://${root}/public/docs/b#nope (at 1:40) | Cannot find fragment
 `;
-    const { missingPages, other } = partitionFailures(out);
+    const { missingPages, other } = partitionFailures(out, {
+      production: true,
+    });
     assert.deepEqual(missingPages, [
       { source: '/docs/a/', targets: ['/docs/draft/'] },
     ]);
@@ -219,6 +235,15 @@ suite('partitionFailures', () => {
       { status: '404', url: 'https://gone.test/' },
       { status: 'ERROR', url: `file://${root}/public/docs/b#nope` },
     ]);
+  });
+
+  test('classifies nothing outside a production run: that build has the drafts', () => {
+    const out = `[/site/public/docs/a/index.html]:
+[ERROR] file:///site/public/docs/colector (at 1:1) | File not found. Check if file exists and path is correct
+`;
+    const { missingPages, other } = partitionFailures(out);
+    assert.deepEqual(missingPages, []);
+    assert.equal(other.length, 1);
   });
 });
 
@@ -234,13 +259,16 @@ suite('missingPagesReport', () => {
       report,
       /1 link\(s\) point at page\(s\) that the production build/,
     );
-    assert.match(report, /\(drafts or future-dated pages\)\./);
+    assert.doesNotMatch(report, /draft/);
     assert.match(report, /\/es\/docs\/zero-code\/obi\/network\/quickstart\//);
     assert.match(
       report,
       /→ \/es\/docs\/zero-code\/obi\/setup\/kubernetes-helm\//,
     );
-    assert.match(report, /pr-checks\/#check-links-production-internal/);
+    assert.match(
+      report,
+      /For how to fix this, see https:\/\/[^ ]*pr-checks\/#check-links-production-internal/,
+    );
   });
 
   test('is empty when there are no missing pages', () => {
