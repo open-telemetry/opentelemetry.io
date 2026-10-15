@@ -238,7 +238,7 @@ This check enforces mechanically-verifiable
 [localization guidelines](../localization/), such as
 [not copying images and other assets](../localization/#images) across
 localizations and
-[not marking localized pages as drafts](../localization/#drafts), that are not
+[not setting `draft` on localized pages](../localization/#drafts), that are not
 already covered by other checks.
 
 If this check fails, follow the remedy in its output. For rules that have a fix,

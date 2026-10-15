@@ -1,20 +1,18 @@
 #!/usr/bin/env node
-// Localization guideline check: localized pages are never drafts.
+// Localization guideline check: localized pages never set `draft`.
 //
-// A localized page marked `draft: true` owns its path in its locale, so it
-// blocks the English fallback there, yet the production build omits it. Once
-// the English page is published, readers of that locale get a 404 instead of
-// the English page. The rule is unconditional (it doesn't look at the English
-// page's state) so that publishing an English page never obliges its author
-// to fix localized front matter. Guideline:
-// https://opentelemetry.io/docs/contributing/localization/#drafts
+// Enforces https://opentelemetry.io/docs/contributing/localization/#drafts:
+// a localized page must not have a `draft` front-matter field, whatever its
+// value, at any depth (a `cascade` block included).
 //
 // Usage:
 //   node scripts/validate/l10n-no-drafts/index.mjs
 //
-// Exits non-zero when a localized page sets `draft: true` in its front matter,
-// at the top level or inside a `cascade` block. There is no --fix: whether to
-// publish the translation or remove the page is an editorial choice.
+// Exits non-zero when a localized page has a `draft` field. There is no --fix:
+// whether to publish the translation or remove the page is an editorial choice.
+//
+// The scan is lexical, one line-anchored match per front-matter line, so a
+// flow-style mapping (`cascade: {draft: true}`) is not detected.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -25,10 +23,8 @@ const DOC_URL =
 
 const FRONT_MATTER_RE = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/;
 
-// Any `draft: true` key in the front matter, at any indentation, so that a
-// `cascade` block drafting a whole section is caught too. Hugo also reads a
-// quoted "true" as true.
-const DRAFT_TRUE_RE = /^\s*draft:\s*["']?true["']?\s*(?:#.*)?$/m;
+// A `draft` key at any indentation, as a mapping entry or a list item.
+const DRAFT_KEY_RE = /^\s*(?:-\s+)?["']?draft["']?\s*:/im;
 
 // True for a non-English content page path (content/<lang>/**/*.md).
 export function isLocalizedPagePath(p) {
@@ -37,21 +33,20 @@ export function isLocalizedPagePath(p) {
   return !!m && m[1] !== 'en';
 }
 
-// True when the page text has a YAML front-matter block that sets
-// `draft: true` (top level or cascaded). Body text is never considered.
-export function isDraftPage(text) {
+// True when the page's YAML front matter has a `draft` key. Body text is
+// never considered.
+export function hasDraftKey(text) {
   const fm = FRONT_MATTER_RE.exec(text)?.[1];
-  return !!fm && DRAFT_TRUE_RE.test(fm);
+  return !!fm && DRAFT_KEY_RE.test(fm);
 }
 
-// Pure rule: given candidate file paths and a minimal fs API
-// ({ readFileSync }), returns the localized draft pages. Dependency-injected
-// so it is unit-testable without touching the real filesystem.
+// Returns the localized pages among `files` that have a `draft` key, reading
+// them through `fsApi.readFileSync`.
 export function findDraftPages(files, fsApi) {
   return files.filter(
     (file) =>
       isLocalizedPagePath(file) &&
-      isDraftPage(fsApi.readFileSync(file, 'utf8')),
+      hasDraftKey(fsApi.readFileSync(file, 'utf8')),
   );
 }
 
@@ -84,21 +79,19 @@ function main() {
   const violations = findDraftPages(collectLocalizedPages('content'), fs);
 
   if (violations.length === 0) {
-    console.log('✓ no-drafts: no localized page is a draft.');
+    console.log('✓ no-drafts: no localized page has a `draft` field.');
     return 0;
   }
 
   console.log(
-    `no-drafts: found ${violations.length} localized page(s) marked \`draft: true\`:`,
+    `no-drafts: found ${violations.length} localized page(s) with a \`draft\` front-matter field:`,
   );
   for (const file of violations) {
     console.log(`  ${file}`);
   }
   console.log(
-    `\nLocalized pages must not be drafts: a draft blocks the English fallback for its path` +
-      `\nwithout being published, so readers get a 404 once the English page is published.` +
-      `\nRemove \`draft: true\` to publish the translation, or remove the page until its English` +
-      `\nversion is published.` +
+    `\nLocalized pages never set \`draft\`. Remove the field; if the English page is still` +
+      `\nunpublished, remove the localized page instead.` +
       `\nSee ${DOC_URL}`,
   );
   return 1;
