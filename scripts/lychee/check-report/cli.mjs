@@ -20,9 +20,8 @@ import { fileURLToPath } from 'node:url';
 import {
   cacheUpdatedNotice,
   deadLinksReport,
-  failedUrlsOf,
-  missingPagesOf,
   missingPagesReport,
+  partitionFailures,
 } from './index.mjs';
 
 const root = path.join(
@@ -65,16 +64,14 @@ child.on('close', (code) => {
   if (status === 0) {
     if (cacheModified()) console.log(cacheUpdatedNotice());
   } else {
-    const missing = missingPagesOf(output);
-    const report = missing.length
-      ? missingPagesReport(missing)
-      : deadLinksReport(failedUrlsOf(output));
-    if (report) {
+    const { missingPages, other } = partitionFailures(output);
+    for (const [report, title] of [
+      [missingPagesReport(missingPages), 'Links into unpublished pages'],
+      [deadLinksReport(other), 'Unreachable links'],
+    ]) {
+      if (!report) continue;
       console.log(report);
-      appendToStepSummary(
-        report,
-        missing.length ? 'Links into unpublished pages' : 'Unreachable links',
-      );
+      appendToStepSummary(report, title);
     }
   }
   // Not process.exit(status): a hard exit can drop buffered stdout/stderr

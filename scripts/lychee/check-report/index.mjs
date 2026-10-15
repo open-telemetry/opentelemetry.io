@@ -52,36 +52,59 @@ export function deadLinksReport(failures) {
   ].join('\n');
 }
 
-// Missing-page failures from an offline lychee run over public/: `file://`
-// targets that the build didn't produce, grouped under the source page that
-// links to them. Both sides as site paths (`/docs/x/`), derived from the
-// `/public/` segment of the paths lychee prints.
+// Missing-page failures from an offline lychee run over public/: directory
+// targets (a page URL, not a file) that the build didn't produce, grouped
+// under the source page that links to them. Both sides as site paths
+// (`/docs/x/`), derived from the `/public/` segment of the paths lychee
+// prints. Missing fragments and missing files stay with the generic report.
 export function missingPagesOf(output) {
   const bySource = new Map();
   let source = null;
   for (const line of output.split('\n')) {
-    const header = line.match(/^\[(\S+\/public\/.*?)\]:$/);
+    const header = line.match(/^\[(.*\/public\/.*)\]:$/);
     if (header) {
       source = sitePathOf(header[1]);
       continue;
     }
-    const failure = line.match(/^\[[A-Z0-9]+\] file:\/\/(\S+\/public\/\S*)/);
+    const failure = line.match(
+      /^\[[A-Z0-9]+\] file:\/\/(\S+\/public\/\S*) \(at \d+:\d+\) \| (File not found|Cannot find index file)/,
+    );
     if (!failure || !source) continue;
-    const target = sitePathOf(failure[1]);
+    const target = decodeURIComponent(failure[1]);
+    if (/\.[a-z0-9]+$/i.test(target)) continue; // a file, not a page
+    const sitePath = sitePathOf(target);
     const targets = bySource.get(source) ?? [];
-    if (!targets.includes(target)) targets.push(target);
+    if (!targets.includes(sitePath)) targets.push(sitePath);
     bySource.set(source, targets);
   }
   return [...bySource].map(([source, targets]) => ({ source, targets }));
 }
 
+// `/abs/checkout/public/docs/x/index.html` -> `/docs/x/`; the last `/public/`
+// is the build output, whatever the checkout path contains.
 function sitePathOf(fsPath) {
+  const i = fsPath.lastIndexOf('/public/');
   return (
     fsPath
-      .replace(/^.*?\/public(?=\/|$)/, '')
+      .slice(i + '/public'.length)
       .replace(/\/index\.html$/, '')
       .replace(/\/?$/, '/') || '/'
   );
+}
+
+// Every failure split into the missing-page groups and the rest, so a run
+// with both kinds reports both.
+export function partitionFailures(output) {
+  const missingPages = missingPagesOf(output);
+  const covered = new Set(missingPages.flatMap(({ targets }) => targets));
+  const other = failedUrlsOf(output).filter(
+    ({ url }) =>
+      !(
+        url.startsWith('file://') &&
+        covered.has(sitePathOf(decodeURIComponent(url)))
+      ),
+  );
+  return { missingPages, other };
 }
 
 // Report for a production-build check that found links into pages the build
@@ -93,7 +116,7 @@ export function missingPagesReport(groups) {
   return [
     RULE,
     `ERROR: ${n} link(s) point at page(s) that the production build doesn't`,
-    'contain (drafts or future-dated pages):',
+    'contain (drafts or future-dated pages).',
     '',
     ...groups.flatMap(({ source, targets }) => [
       `  ${source}`,

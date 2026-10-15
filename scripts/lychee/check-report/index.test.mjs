@@ -7,6 +7,7 @@ import {
   failedUrlsOf,
   missingPagesOf,
   missingPagesReport,
+  partitionFailures,
 } from './index.mjs';
 
 suite('failedUrlsOf', () => {
@@ -177,6 +178,48 @@ suite('missingPagesOf', () => {
     assert.deepEqual(missingPagesOf(http), []);
     assert.deepEqual(missingPagesOf('🔍 9 Total 🚫 0 Errors\n'), []);
   });
+
+  test('leaves missing fragments and missing files to the generic report', () => {
+    // Lychee reports all three as file:// failures; only the directory-shaped
+    // target with no index is a page the build didn't produce.
+    const out = `[${root}/public/docs/a/index.html]:
+[ERROR] file://${root}/public/docs/b#nope (at 1:22) | Cannot find fragment
+[ERROR] file://${root}/public/docs/x.pdf (at 1:55) | File not found. Check if file exists and path is correct
+[ERROR] file://${root}/public/docs/missing (at 1:85) | File not found. Check if file exists and path is correct
+`;
+    assert.deepEqual(missingPagesOf(out), [
+      { source: '/docs/a/', targets: ['/docs/missing/'] },
+    ]);
+  });
+
+  test('tolerates spaces in the checkout path and an earlier /public/ segment', () => {
+    const odd = '/home/public/site work';
+    const out = `[${odd}/public/docs/a/index.html]:
+[ERROR] file://${odd.replace(' ', '%20')}/public/docs/draft (at 1:1) | File not found. Check if file exists and path is correct
+`;
+    assert.deepEqual(missingPagesOf(out), [
+      { source: '/docs/a/', targets: ['/docs/draft/'] },
+    ]);
+  });
+});
+
+suite('partitionFailures', () => {
+  test('splits missing pages from every other failure, so both get reported', () => {
+    const root = '/site';
+    const out = `[${root}/public/docs/a/index.html]:
+[ERROR] file://${root}/public/docs/draft (at 1:1) | File not found. Check if file exists and path is correct
+[404] https://gone.test/ (at 1:20) | Rejected status code: 404 Not Found
+[ERROR] file://${root}/public/docs/b#nope (at 1:40) | Cannot find fragment
+`;
+    const { missingPages, other } = partitionFailures(out);
+    assert.deepEqual(missingPages, [
+      { source: '/docs/a/', targets: ['/docs/draft/'] },
+    ]);
+    assert.deepEqual(other, [
+      { status: '404', url: 'https://gone.test/' },
+      { status: 'ERROR', url: `file://${root}/public/docs/b#nope` },
+    ]);
+  });
 });
 
 suite('missingPagesReport', () => {
@@ -191,7 +234,7 @@ suite('missingPagesReport', () => {
       report,
       /1 link\(s\) point at page\(s\) that the production build/,
     );
-    assert.match(report, /\(drafts or future-dated pages\)/);
+    assert.match(report, /\(drafts or future-dated pages\)\./);
     assert.match(report, /\/es\/docs\/zero-code\/obi\/network\/quickstart\//);
     assert.match(
       report,
