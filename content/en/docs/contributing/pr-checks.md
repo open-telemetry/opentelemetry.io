@@ -105,18 +105,6 @@ Using local paths ensures that:
 - Local paths are easier to link-check and don't unnecessarily fill the link
   cache
 
-<details>
-<summary>Note to maintainers</summary>
-
-The following code enforces the link requirement described in this section:
-
-- The `no-otel-io-external-urls` rule in
-  [`.markdownlint.yaml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml)
-- The script that auto-converts full URLs to local paths:
-  [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
-
-</details>
-
 ### `SPELLING check` {.notranslate lang=en}
 
 This check verifies that [all words are spelled correctly][spell checking] in
