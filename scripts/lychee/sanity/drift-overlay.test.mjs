@@ -315,7 +315,7 @@ describe(
       assert.equal(findError(result, 'gone-pending'), null, 'link passes');
     });
 
-    test('fragment link into an in-sync page is still red', () => {
+    test('missing fragment on an in-sync locale page is red', () => {
       assert.match(
         findError(result, 'gone-control') ?? '',
         /fragment/i,
@@ -323,7 +323,7 @@ describe(
       );
     });
 
-    test('fragment link into a missing sibling of a drifted page is red', () => {
+    test('fragment link to a missing sibling of a drifted page is red', () => {
       assert.match(
         findError(result, 'gone-sibling') ?? '',
         /File not found/,
@@ -331,7 +331,7 @@ describe(
       );
     });
 
-    test('fragment link into a drifted page the build omitted is red', () => {
+    test('fragment link to a drifted page the build omitted is red', () => {
       assert.ok(
         lycheeToml.includes('/public/xx/docs/stored-unbuilt/index\\.html$'),
         'exclude_path covers the unbuilt page',
@@ -347,7 +347,7 @@ describe(
       );
     });
 
-    test('fragment link into an EN page is still red', () => {
+    test('missing fragment on an existing EN page is red', () => {
       assert.match(
         findError(result, 'gone-en') ?? '',
         /fragment/i,
@@ -363,12 +363,9 @@ describe(
       );
     });
 
-    test('no other reds: the six expected errors are the only ones', () => {
-      assert.equal(
-        result.errors,
-        6,
-        'exactly the exempted + control pages and the four fallback-page links are red',
-      );
+    test('no other reds: only the expected errors', () => {
+      // 6 = both-edited + control + the fallback page's four red links.
+      assert.equal(result.errors, 6, 'error count equals the expected reds');
     });
   },
 );
