@@ -4,8 +4,8 @@ weight: 12
 description: How the site's links are checked, locally and in CI.
 ---
 
-The site is link-checked with **[Lychee][]**, backed by a committed cache of
-external-link results (see [Link cache][]).
+The site is link-checked with **[Lychee][]**, backed by a committed
+[cache of external-link results](#link-cache).
 
 > [!NOTE] Installing Lychee locally is optional
 >
@@ -24,14 +24,32 @@ npm run check:links
 
 ## Common commands
 
-| Command                | Checking scope                                               |
-| ---------------------- | ------------------------------------------------------------ |
-| `check:links`          | Whole site                                                   |
-| `check:links:internal` | Whole site, offline (no external links)                      |
-| `fix:link-cache`       | Alias of `check:links`; use it to refresh the [link cache][] |
+| Command                           | Checking scope                                                    |
+| --------------------------------- | ----------------------------------------------------------------- |
+| `check:links`                     | Whole site                                                        |
+| `check:links:internal`            | Whole site, offline (no external links)                           |
+| `check:links:production-internal` | [Production build](#production-internal), internal links, offline |
+| `fix:link-cache`                  | Alias of `check:links`; use it to refresh the [link cache][]      |
 
 The `check:links` and `check:links:internal` scripts run over a build of
-`BUILD_KIND`. For details, see [Build kinds: full and lean][].
+`BUILD_KIND`. For details, see [Build kinds: full and lean][build-kinds].
+
+## Links into unpublished pages {#production-internal}
+
+Non-production [site builds][build-kinds] include **draft** and **future-dated**
+pages, and production builds omit them. A link into such a page therefore works
+in a deploy preview and passes `check:links`, yet returns 404 on the production
+site. The `check:links:production-internal` script catches this: it runs an
+offline check over a [lean][build-kinds] production build, and reports each page
+that links to a target the build didn't produce. For the contributor's view of a
+failure, see
+[`CHECK LINKS (production, internal)`][pr-check-production-internal].
+
+The production check complements `check:links`. Links from pages that the
+[configuration](#configuration) excludes, drifted localized pages in particular,
+go unchecked in both. External links, and the [link cache](#link-cache) that
+records their results, belong to `check:links`: an offline run fetches nothing,
+so it has no results to record.
 
 ## Configuration
 
@@ -58,7 +76,7 @@ deleted) since the **drift-status baseline**, the main-branch commit recorded in
 `data/l10n-drift.yaml` by tree-wide status syncs (`npm run fix:i18n`). A copy
 that itself changed since the baseline stays checked: someone is working on it.
 Config generation fails when the baseline is missing or can't be resolved; in
-CI, the `CHECK LINKS` job first deepens its shallow clone to the baseline
+CI, the link-check jobs first deepen their shallow clones to the baseline
 commit; locally, fetch the missing history (`git fetch upstream main`) or
 override the baseline: `DRIFT_BASELINE=HEAD npm run check:links` empties the
 overlay (stored-status skips still apply).
@@ -130,16 +148,19 @@ behavior and setup, see the [double-check README][].
 
 ## In CI
 
-The [`check-links.yml` workflow][ci] builds the site once (lean) and shares that
-artifact with the `CHECK LINKS` job, so local runs and CI check the same build.
-That job fails if any link check fails, and hands the cache it refreshed to the
-`CACHE updates committed?` job, which fails if the run left the committed
-`link-cache.jsonc` stale.
+The [`check-links.yml` workflow][ci] builds the site (lean) in its `BUILD` job
+and shares that artifact with the `CHECK LINKS` job, so local runs and CI check
+the same build. That job fails if any link check fails, and hands the cache it
+refreshed to the `CACHE updates committed?` job, which fails if the run left the
+committed `link-cache.jsonc` stale.
+
+The `CHECK LINKS (production, internal)` job runs beside `BUILD`, with its own
+build: it runs [`check:links:production-internal`](#production-internal).
 
 <!-- prettier-ignore-start -->
 [Auto-update registry versions]: ../scripts/#update-registry-versionssh
 [blog-index]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
-[Build kinds: full and lean]: ../#build-kinds
+[build-kinds]: ../#build-kinds
 [cache-format]: https://github.com/chalin/link-cache/blob/main/docs/cache-format.md
 [ci]: ../ci-workflows/
 [double-check README]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/lychee/double-check/README.md
@@ -152,5 +173,6 @@ That job fails if any link check fails, and hands the cache it refreshed to the
 [lychee-install]: https://lychee.cli.rs/guides/getting-started/
 [Operating model]: https://github.com/chalin/link-cache/blob/main/docs/operating-model.md
 [`lychee.base.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/lychee.base.toml
+[pr-check-production-internal]: /docs/contributing/pr-checks/#check-links-production-internal
 [pr-checks]: /docs/contributing/pr-checks/#cache-updates-committed
 <!-- prettier-ignore-end -->
