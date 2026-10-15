@@ -210,9 +210,9 @@ to recover.
 #### Always use a path for site-local links {#avoid-external-site-local-links}
 
 When linking to pages within the OpenTelemetry website, use local paths instead
-of external links. The build will emit a warning if you don't.
+of external links. The [`MARKDOWN linter`](#markdown-linter) reports full URLs.
 
-To address the build warning, keep only the path part of the full URL:
+To address the lint error, keep only the path part of the full URL:
 
 | ❌ Don't use                              | ✅ Use instead    |
 | ----------------------------------------- | ----------------- |

@@ -48,9 +48,10 @@ The production check complements `check:links`; it doesn't replace it. Links
 from pages that the [configuration](#configuration) excludes, drifted localized
 pages in particular, go unchecked in both. External links, and the
 [link cache](#link-cache) that records their results, belong to `check:links`:
-an offline run fetches nothing and leaves the cache as it found it. Offline also
+an offline run fetches nothing, so it has no results to record. Offline also
 skips site-local links written as full `https://opentelemetry.io/...` URLs; the
-build [warns on those][site-local], whichever page they point at.
+[Markdown lint][site-local] rejects those in page content, whichever page they
+point at.
 
 ## Configuration
 
@@ -156,8 +157,7 @@ refreshed to the `CACHE updates committed?` job, which fails if the run left the
 committed `link-cache.jsonc` stale.
 
 The `CHECK LINKS (production, internal)` job runs beside `BUILD`, with its own
-build: it runs [`check:links:production-internal`](#production-internal). It
-checks offline because `CHECK LINKS` already covers the external links.
+build: it runs [`check:links:production-internal`](#production-internal).
 
 <!-- prettier-ignore-start -->
 [Auto-update registry versions]: ../scripts/#update-registry-versionssh
