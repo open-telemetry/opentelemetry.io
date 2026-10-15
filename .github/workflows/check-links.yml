@@ -180,9 +180,9 @@ jobs:
           node-version-file: .nvmrc
       - run: npm run test:public
 
-  # https://opentelemetry.io/site/build/link-checking/#production
+  # https://opentelemetry.io/site/build/link-checking/#production-internal
   check-links-production:
-    name: CHECK LINKS (production)
+    name: CHECK LINKS (production, internal)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -208,4 +208,4 @@ jobs:
           git fetch --depth=1 origin --end-of-options "$sha"
 
       - name: Build as production does, then check links
-        run: npm run check:links:production
+        run: npm run check:links:production-internal

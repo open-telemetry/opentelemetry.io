@@ -24,25 +24,25 @@ npm run check:links
 
 ## Common commands
 
-| Command                  | Checking scope                                               |
-| ------------------------ | ------------------------------------------------------------ |
-| `check:links`            | Whole site                                                   |
-| `check:links:internal`   | Whole site, offline (no external links)                      |
-| `check:links:production` | [Unpublished pages](#production), offline                    |
-| `fix:link-cache`         | Alias of `check:links`; use it to refresh the [link cache][] |
+| Command                           | Checking scope                                                    |
+| --------------------------------- | ----------------------------------------------------------------- |
+| `check:links`                     | Whole site                                                        |
+| `check:links:internal`            | Whole site, offline (no external links)                           |
+| `check:links:production-internal` | [Production build](#production-internal), internal links, offline |
+| `fix:link-cache`                  | Alias of `check:links`; use it to refresh the [link cache][]      |
 
 The `check:links` and `check:links:internal` scripts run over a build of
 `BUILD_KIND`. For details, see [Build kinds: full and lean][build-kinds].
 
-## Links into unpublished pages {#production}
+## Links into unpublished pages {#production-internal}
 
 Non-production [site builds][build-kinds] include **draft** and **future-dated**
 pages, and production builds omit them. A link into such a page therefore works
 in a deploy preview and passes `check:links`, yet returns 404 on the production
-site. The `check:links:production` script catches this: it runs an offline check
-over a [lean][build-kinds] production build, where unpublished pages don't
-exist. For how contributors read and fix its failures, see
-[`CHECK LINKS (production)`][pr-check-production].
+site. The `check:links:production-internal` script catches this: it runs an
+offline check over a [lean][build-kinds] production build, where unpublished
+pages don't exist. For how contributors read and fix its failures, see
+[`CHECK LINKS (production, internal)`][pr-check-production-internal].
 
 The production check complements `check:links`; it doesn't replace it. Links
 from pages that the [configuration](#configuration) excludes, drifted localized
@@ -155,9 +155,9 @@ the same build. That job fails if any link check fails, and hands the cache it
 refreshed to the `CACHE updates committed?` job, which fails if the run left the
 committed `link-cache.jsonc` stale.
 
-The `CHECK LINKS (production)` job runs beside `BUILD`, with its own build: it
-runs [`check:links:production`](#production). It checks offline because
-`CHECK LINKS` already covers the external links.
+The `CHECK LINKS (production, internal)` job runs beside `BUILD`, with its own
+build: it runs [`check:links:production-internal`](#production-internal). It
+checks offline because `CHECK LINKS` already covers the external links.
 
 <!-- prettier-ignore-start -->
 [Auto-update registry versions]: ../scripts/#update-registry-versionssh
@@ -175,7 +175,7 @@ runs [`check:links:production`](#production). It checks offline because
 [lychee-install]: https://lychee.cli.rs/guides/getting-started/
 [Operating model]: https://github.com/chalin/link-cache/blob/main/docs/operating-model.md
 [`lychee.base.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/lychee.base.toml
-[pr-check-production]: /docs/contributing/pr-checks/#check-links-production
+[pr-check-production-internal]: /docs/contributing/pr-checks/#check-links-production-internal
 [site-local]: /docs/contributing/pr-checks/#avoid-external-site-local-links
 [pr-checks]: /docs/contributing/pr-checks/#cache-updates-committed
 <!-- prettier-ignore-end -->

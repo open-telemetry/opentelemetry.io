@@ -448,8 +448,8 @@ production server.
 
 > **Note**: PR previews include _draft pages_ and future-dated pages, but
 > production builds do not; the
-> [`CHECK LINKS (production)`](../pr-checks/#check-links-production) check
-> catches links into them.
+> [`CHECK LINKS (production, internal)`](../pr-checks/#check-links-production-internal)
+> check catches links into them.
 
 To see deploy logs and more, visit the project's [dashboard][] -- Netlify login
 required.
