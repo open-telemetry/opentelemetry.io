@@ -1,6 +1,7 @@
 ---
 title: React Native アプリ
 default_lang_commit: a44df6dd383b504864f60165b21459b7f5e005c5
+drifted_from_default: true
 ---
 
 React Native アプリは、Android および iOS デバイスのユーザーがデモのサービスと対話するためのモバイル UI を提供します。

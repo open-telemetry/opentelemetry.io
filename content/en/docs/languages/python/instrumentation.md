@@ -427,6 +427,43 @@ logging.getLogger(__name__).info("This is an OpenTelemetry log record!")
 - [Python Logs API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/_logs.html)
 - [Python Logs SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/_logs.html)
 
+## Semantic convention stability
+
+Python [instrumentation libraries](/docs/languages/python/libraries/) support
+the `OTEL_SEMCONV_STABILITY_OPT_IN` environment variable. Use it to control
+whether instrumentations emit stable semantic conventions, the previous
+experimental conventions, or both while you migrate.
+
+HTTP and database support is available as of OpenTelemetry Python 1.44.0 /
+0.65b0. The variable accepts a comma-separated list of values:
+
+- `http`: emit the new, stable HTTP and networking conventions, and stop
+  emitting the old experimental HTTP and networking conventions that the
+  instrumentation emitted previously.
+- `http/dup`: emit both the old and the stable HTTP and networking conventions,
+  allowing for a seamless transition.
+- `database`: emit the new, stable database conventions, and stop emitting the
+  old experimental database conventions that the instrumentation emitted
+  previously.
+- `database/dup`: emit both the old and the stable database conventions,
+  allowing for a seamless transition.
+- `gen_ai_latest_experimental`: emit the latest experimental GenAI conventions
+  supported by the instrumentation, instead of the older GenAI conventions.
+
+If the variable is unset, instrumentations continue to emit the previous
+experimental conventions by default. When both a value and its `/dup` variant
+are present, the `/dup` variant takes precedence.
+
+For example:
+
+```shell
+export OTEL_SEMCONV_STABILITY_OPT_IN=http/dup,database
+```
+
+For package-specific details, see the documentation for individual
+instrumentations on
+[opentelemetry-python-contrib Read the Docs](https://opentelemetry-python-contrib.readthedocs.io/).
+
 ## Next Steps
 
 You’ll also want to configure an appropriate exporter to

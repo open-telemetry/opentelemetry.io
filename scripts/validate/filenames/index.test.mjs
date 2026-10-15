@@ -2,6 +2,7 @@
 
 import { describe, test, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -52,6 +53,8 @@ describe('temp-fixture checks', () => {
   // A fresh fixture per test keeps the tests below order-independent.
   beforeEach(() => {
     cwd = fs.mkdtempSync(path.join(os.tmpdir(), 'filenames-test-'));
+    // The `tracked` check asks git, so every fixture is a repository.
+    execFileSync('git', ['init', '-q'], { cwd });
     fs.mkdirSync(path.join(cwd, 'content/a_b'), { recursive: true });
     fs.writeFileSync(path.join(cwd, 'content/a_b/c_d.md'), '');
     fs.writeFileSync(path.join(cwd, 'content/a_b/_index.md'), '');
@@ -194,6 +197,89 @@ describe('temp-fixture checks', () => {
       ['tools', 'static/refcache.json'],
     );
   });
+
+  // `tracked` entry (see OBSOLETE_PATHS): a git fixture, not the filesystem.
+  test('a tracked entry is reported only while git tracks the path, and fixed by untracking', () => {
+    const git = (...args) =>
+      execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
+    git('config', 'user.email', 'test@example.invalid');
+    git('config', 'user.name', 'Test');
+    const tracked = OBSOLETE_PATHS.filter((entry) => entry.tracked);
+    assert.deepEqual(
+      tracked.map((entry) => entry.path),
+      ['.lycheecache'],
+      'derived link cache is the `tracked` entry',
+    );
+    fs.writeFileSync(
+      path.join(cwd, '.lycheecache'),
+      'https://a.example/,200,1\n',
+    );
+    assert.deepEqual(
+      findObsoletePaths(tracked, { cwd }),
+      [],
+      'untracked derived file is not a violation',
+    );
+    git('add', '.lycheecache');
+    git('commit', '-q', '-m', 'track the csv');
+    assert.deepEqual(
+      findObsoletePaths(tracked, { cwd }).map((entry) => entry.path),
+      ['.lycheecache'],
+      'tracked derived file is reported',
+    );
+    fixViolations({
+      obsolete: findObsoletePaths(tracked, { cwd }),
+      cwd,
+      log() {},
+    });
+    assert.equal(git('ls-files', '--', '.lycheecache'), '', 'untracked');
+    assert.ok(
+      fs.existsSync(path.join(cwd, '.lycheecache')),
+      'file kept on disk',
+    );
+    assert.deepEqual(findObsoletePaths(tracked, { cwd }), [], 'fixed');
+  });
+
+  test('a refused untrack throws instead of reporting a fix', () => {
+    const git = (...args) =>
+      execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
+    git('config', 'user.email', 'test@example.invalid');
+    git('config', 'user.name', 'Test');
+    const tracked = OBSOLETE_PATHS.filter((entry) => entry.tracked);
+    const csv = path.join(cwd, '.lycheecache');
+    // Committed, staged and working-tree contents all differ: git refuses
+    // `rm --cached` without --force.
+    fs.writeFileSync(csv, 'a,200,1\n');
+    git('add', '.lycheecache');
+    git('commit', '-q', '-m', 'csv');
+    fs.writeFileSync(csv, 'b,200,1\n');
+    git('add', '.lycheecache');
+    fs.writeFileSync(csv, 'c,200,1\n');
+    assert.throws(
+      () =>
+        fixViolations({
+          obsolete: findObsoletePaths(tracked, { cwd }),
+          cwd,
+          log() {},
+        }),
+      /\.lycheecache/,
+      'refusal surfaces',
+    );
+    assert.notEqual(
+      git('ls-files', '--', '.lycheecache'),
+      '',
+      'file remains tracked',
+    );
+  });
+
+  test('a git failure is an error, not "not tracked"', () => {
+    const tracked = OBSOLETE_PATHS.filter((entry) => entry.tracked);
+    fs.writeFileSync(path.join(cwd, '.git', 'index'), 'not an index');
+    assert.throws(
+      () => findObsoletePaths(tracked, { cwd }),
+      /git ls-files/,
+      'git failure surfaces',
+    );
+  });
 });
 
 describe('escapeAnnotation', () => {
@@ -262,9 +348,12 @@ describe('repo-wide sanity', () => {
           (m) => `#${m[1]}`,
         ),
       ]);
+      // Cited in the list text itself: a reference-style link definition
+      // alone (`[#N]: url`) would satisfy a plain includes() check.
+      const listText = section.split(/^\[#/m)[0];
       for (const ref of refs) {
         assert.ok(
-          section.includes(ref),
+          listText.includes(`[${ref}]`),
           `docs cite ${ref}, referenced by the message for ${p}`,
         );
       }

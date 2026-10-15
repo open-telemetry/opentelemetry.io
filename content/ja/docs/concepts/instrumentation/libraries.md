@@ -2,7 +2,7 @@
 title: ライブラリ
 description: ライブラリにネイティブ計装を追加する方法を紹介します。
 weight: 40
-default_lang_commit: 8d115a9df96c52dbbb3f96c05a843390d90a9800
+default_lang_commit: 849387f51615f3f2127385cae60454ced8c4560c
 ---
 
 OpenTelemetryは、多くのライブラリに[計装ライブラリ][instrumentation libraries]を提供していて、これは通常、ライブラリフックやモンキーパッチライブラリコードを通して行われます。
@@ -321,12 +321,16 @@ OpenTelemetry にはさまざまな自動計装があるので、あなたの計
 計装を試すときは、一般的なフレームワークとライブラリを使い、すべてのトレースを有効にした典型的なアプリケーションを使ってください。
 あなたのライブラリと似たライブラリがどのように表示されるかをチェックしてください。
 
-ユニットテストでは、次の Java の例のように通常、`SpanProcessor`と`SpanExporter`をモックまたはフェイクできます。
+ユニットテストでは、使用している言語の OpenTelemetry SDK が提供するインメモリエクスポーターか、同等のテストユーティリティを使うことをおすすめします。
+インメモリエクスポーターはプロセス内でテレメトリーを収集するため、外部バックエンドを実行せずに、送出されたスパン、メトリクス、ログをテストで検査できます。
+SDK がインメモリエクスポーターを提供していない場合は、モックまたはフェイクのエクスポーターやプロセッサーを使用してください。
+
+次の Java の例は、`opentelemetry-sdk-testing` アーティファクトの [`InMemorySpanExporter`][java-in-memory-span-exporter] を使用しています。
 
 ```java
 @Test
 public void checkInstrumentation() {
-  SpanExporter exporter = new TestExporter();
+  InMemorySpanExporter exporter = InMemorySpanExporter.create();
 
   Tracer tracer = OpenTelemetrySdk.builder()
            .setTracerProvider(SdkTracerProvider.builder()
@@ -334,20 +338,10 @@ public void checkInstrumentation() {
            .getTracer("test");
   // テストを実行...
 
-  validateSpans(exporter.exportedSpans);
-}
-
-class TestExporter implements SpanExporter {
-  public final List<SpanData> exportedSpans = Collections.synchronizedList(new ArrayList<>());
-
-  @Override
-  public CompletableResultCode export(Collection<SpanData> spans) {
-    exportedSpans.addAll(spans);
-    return CompletableResultCode.ofSuccess();
-  }
-  ...
+  validateSpans(exporter.getFinishedSpanItems());
 }
 ```
 
 [instrumentation libraries]: /docs/specs/otel/overview/#instrumentation-libraries
+[java-in-memory-span-exporter]: https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-testing/latest/io/opentelemetry/sdk/testing/exporter/InMemorySpanExporter.html
 [span events]: /docs/specs/otel/trace/api/#add-events

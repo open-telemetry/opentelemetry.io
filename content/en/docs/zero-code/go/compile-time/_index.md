@@ -3,7 +3,6 @@ title: Go compile-time instrumentation
 linkTitle: Compile-time
 description: Instrument Go applications at build time, without code changes.
 weight: 20
-cSpell:ignore: otelc toolexec
 ---
 
 Compile-time instrumentation for Go automatically instruments your application

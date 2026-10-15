@@ -56,6 +56,7 @@ guidance offered in this section.
     particular for [headings](#headings)
 - Create **copies of images and other assets**, unless you
   [localize text in them](#images)
+- Mark a localized page as a **[draft](#drafts)**
 - Add new or change:
   - **Content** that would be different from the originally intended meaning
   - Presentation **style**, including: _formatting_, _layout_, and _design_
@@ -163,6 +164,24 @@ This would be translated in French as:
 [l10n-check]: ../pr-checks/#localization
 [Mermaid]: https://mermaid.js.org
 [Page bundles]: https://gohugo.io/content-management/multilingual/#page-bundles
+
+### Draft pages {#drafts}
+
+Do **not** mark a localized page as a draft (`draft: true`), even when the
+English page is one. For docs pages, where your locale has no translation the
+site serves the English page at the same path (the English **fallback**). A
+localized draft takes that path but is omitted from the production build, so
+once the English page is published, readers of your locale get a 404 instead of
+it. Because the rule holds whether or not the English page is a draft,
+publishing an English page never leaves a localized draft behind. Translate a
+page once its English version is published.
+
+This is enforced by the [`WARNINGS in build log?`][warnings-check] check. To fix
+a flagged page: if its English page is published, drop `draft: true` and mark
+the page as [patched](#patched) unless you sync it in the same change;
+otherwise, remove the localized page until the English page is published.
+
+[warnings-check]: ../pr-checks/#localized-drafts
 
 ### Include files {#includes}
 
@@ -308,10 +327,11 @@ npm run check:i18n -- commit HEAD <PATH-TO-YOUR-UPDATED-FILES>
 
 ### Patching localized pages {#patched}
 
-[Build fixes](#keep-checks-green) sometimes require editing a localized page
-without syncing it to its English counterpart: for example, repairing a
-shortcode invocation after the shared shortcode changed. Mark each localized
-page fixed in this way as **patched**, whether or not the fix spans locales:
+Some fixes edit a localized page without syncing it to its English counterpart:
+[build fixes](#keep-checks-green), such as repairing a shortcode invocation
+after the shared shortcode changed, and fixes that a check requires, such as
+dropping a [draft](#drafts) flag. Mark each localized page fixed in this way as
+**patched**, whether or not the fix spans locales:
 
 - Make only the edits that the fix requires — no other changes to the page.
 - Append the `# patched` YAML comment to the page's `default_lang_commit` line:

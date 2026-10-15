@@ -58,7 +58,7 @@ For each failing check, match `<workflow-name> / <job-name>` against
 [`pr-checks.md`][pr-checks] — every check has a section describing what it
 validates and the local fix command. Caveats:
 
-- A stale `.lycheecache` fails `CACHE updates committed?`, not `CHECK LINKS`
+- A stale `link-cache.jsonc` fails `CACHE updates committed?`, not `CHECK LINKS`
   (see [Link cache](#refcache)).
 - Fork PRs can hit token-scope limits that look like check failures but are
   permissions artifacts. Read the log before concluding.
@@ -146,8 +146,8 @@ Walk this checklist before writing the review:
 
 **Link cache and links**
 
-- [ ] `.lycheecache` updates (if any) committed in the PR.
-- [ ] No hand-edits to `.lycheecache`.
+- [ ] `link-cache.jsonc` updates (if any) committed in the PR.
+- [ ] No hand-edits to `link-cache.jsonc` beyond deliberate seeds.
 - [ ] Unreachable-but-valid URLs use `?link-check=no` (see
       [Link cache](#refcache)).
 
@@ -163,18 +163,20 @@ Then structure the review as:
 
 ## Link cache {#refcache}
 
-`.lycheecache` is the committed cache of successful external-link checks.
+`link-cache.jsonc` is the committed cache of external-link check results.
 `npm run check:links` updates it as a side effect — authors commit the updated
 file themselves ([`pr-checks.md#cache-updates-committed`][cache-check]). The
 `Links / CACHE updates committed?` job fails if the on-branch cache is stale
 relative to what the link check produced.
 
-Do not hand-edit `.lycheecache`. If a URL returns a non-200 for server reasons
-(blocked bot, LinkedIn 999, …), append `?link-check=no` (or `&link-check=no`) to
-the URL — [`pr-checks.md#handling-valid-external-links`][handling-links].
+Hand edits to `link-cache.jsonc` are for deliberate seeds only (a `manual` entry
+with a rationale comment, per [the owned cache][cache-format]). If a URL returns
+a non-200 for server reasons (blocked bot, LinkedIn 999, …), append
+`?link-check=no` (or `&link-check=no`) to the URL —
+[`pr-checks.md#handling-valid-external-links`][handling-links].
 
-For `.lycheecache` conflicts or post-merge cache residue, see the
-`resolve-link-cache-conflicts` skill.
+For `link-cache.jsonc` merge conflicts, see the `resolve-link-cache-conflicts`
+skill.
 
 ## References
 
@@ -189,6 +191,7 @@ Source-of-truth files — read on demand:
 
 <!-- prettier-ignore-start -->
 [cache-check]: ../../../content/en/docs/contributing/pr-checks.md#cache-updates-committed
+[cache-format]: https://github.com/chalin/link-cache/blob/main/docs/cache-format.md
 [checks]: ../../../content/en/docs/contributing/pr-checks.md#checks
 [cla]: ../../../content/en/docs/contributing/pr-checks.md#easy-cla
 [co-owned]: ../../../content/en/docs/contributing/sig-practices.md#co-owned-prs

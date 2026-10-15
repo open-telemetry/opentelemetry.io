@@ -43,7 +43,7 @@ jobs:
       comment_id: ${{ steps.ack.outputs.comment_id }}
 
     steps:
-      - uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+      - uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -96,9 +96,10 @@ jobs:
       action_exit_status: ${{ steps.patch.outputs.action_exit_status }}
       patch_name: pr-fix-${{ github.run_id }}
       patch_skipped: ${{ steps.patch.outputs.patch_skipped }}
+      stale_head: ${{ steps.head.outputs.stale }}
 
     steps:
-      - uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+      - uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -112,6 +113,39 @@ jobs:
         # fails this step; the `report` job then comments the outcome (with a
         # usage hint) on the PR.
         run: node scripts/gh/pr-fix/cli.mjs --comment "$COMMENT"
+
+      - name: Refuse a PR head that predates link-cache.jsonc
+        id: head
+        # Runs from the default-branch checkout, before the PR head's own
+        # scripts take over: such a head would rewrite the obsolete
+        # `.lycheecache` and leave the PR in a modify/delete conflict with
+        # main. Read-only; a plain fetch, since --depth would make the whole
+        # checkout shallow and break history-dependent fixers (fix:i18n).
+        env:
+          HEAD_REF: refs/pull/${{ github.event.issue.number }}/head
+          # The head's link-cache pin, from its manifest as text (nothing from
+          # the head runs); a copied-in owned file alone doesn't prove the pin.
+          READ_PIN: |
+            let text = '';
+            process.stdin.on('data', (chunk) => (text += chunk));
+            process.stdin.on('end', () => {
+              let pin = '';
+              try {
+                pin = JSON.parse(text).devDependencies?.['link-cache'] ?? '';
+              } catch {}
+              console.log(pin);
+            });
+        run: |
+          git fetch --quiet origin "$HEAD_REF" || true
+          pin=$( { git show FETCH_HEAD:package.json 2>/dev/null || true; } | node -e "$READ_PIN")
+          if git cat-file -e FETCH_HEAD:link-cache.jsonc 2>/dev/null &&
+             [[ -n "$pin" && "$pin" != 0.3.* ]]; then
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+            echo "::error::PR head predates link-cache.jsonc; update the branch from main first."
+            exit 1
+          fi
 
       - run: gh pr checkout "$PR_NUM" -b "pr-action-${RANDOM}"
         env:
@@ -171,7 +205,7 @@ jobs:
       contents: read # checkout
 
     steps:
-      - uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+      - uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
         with:
           egress-policy: audit
 
@@ -212,11 +246,14 @@ jobs:
           COMMAND_EXIT_STATUS:
             ${{ needs.generate-patch.outputs.action_exit_status }}
           APPLY_RESULT: ${{ needs.apply-patch.result }}
+          STALE_HEAD: ${{ needs.generate-patch.outputs.stale_head }}
         # The note is owned by the directive parser; this checkout is of the
         # default branch, so the derived text is trusted (the parser only ever
-        # returns its own constants, never comment text).
+        # returns its own constants, never comment text; STALE_HEAD, an
+        # untrusted-job output, only selects one of them).
         run: |
           note=$(node -e 'import("./scripts/gh/pr-fix/index.mjs").then((m) => {
+            if (process.env.STALE_HEAD === "true") return console.log(m.STALE_HEAD_MESSAGE);
             const d = m.parseFixDirective(process.env.COMMENT);
             console.log(d.valid ? (d.info ?? "") : m.DIRECTIVE_HINT);
           })')

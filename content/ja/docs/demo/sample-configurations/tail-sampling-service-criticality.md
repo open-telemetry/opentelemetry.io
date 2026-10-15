@@ -1,7 +1,7 @@
 ---
 title: service.criticality を使用したテイルベースサンプリング
 linkTitle: テイルサンプリング
-default_lang_commit: 8fd99e125e5510385b18b541d97c283e28f76ef2
+default_lang_commit: 98f910ef53d1e7f45002e7303b2af4da15282b21
 ---
 
 この例では、OpenTelemetry Collector においてインテリジェントなテイルベースのサンプリング決定を行うために、リソース属性 [`service.criticality`](/docs/specs/semconv/resource/service/#service) を使用する方法を示します。
@@ -112,8 +112,14 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [resourcedetection, memory_limiter, transform, tail_sampling]
-      exporters: [otlp, debug, spanmetrics]
+      processors:
+        [
+          resourcedetection,
+          memory_limiter,
+          transform/sanitize_spans,
+          tail_sampling,
+        ]
+      exporters: [otlp_grpc/jaeger, debug, span_metrics]
 ```
 
 ## どのように動くか {#how-it-works}
