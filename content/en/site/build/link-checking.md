@@ -4,8 +4,8 @@ weight: 12
 description: How the site's links are checked, locally and in CI.
 ---
 
-The site is link-checked with **[Lychee][]**, backed by a committed cache of
-external-link results (see [Link cache][]).
+The site is link-checked with **[Lychee][]**, backed by a committed [cache of
+external-link results](#link-cache).
 
 > [!NOTE] Installing Lychee locally is optional
 >
