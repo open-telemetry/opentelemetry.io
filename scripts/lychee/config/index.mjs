@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 // Generate `lychee.toml` = `lychee.base.toml` (hand-maintained, committed) +
 // an `exclude_path` block derived from page front matter
-// (`link_check_exclude_path` patterns and `drifted_from_default` pages). For
-// the configuration model and front-matter semantics, see:
+// (`link_check_exclude_path` patterns and `drifted_from_default` pages), plus
+// fragment-only `exclude` entries for links into drifted pages, spliced into
+// the base's `exclude` array at its marker line. For the configuration model
+// and front-matter semantics, see:
 // https://opentelemetry.io/site/build/link-checking/#configuration
 //
 // Stored drift statuses are only as fresh as the last nightly Housekeeping
@@ -112,10 +114,43 @@ export function translate(pattern) {
   return `/public/${body.replace(/\$$/, '')}`;
 }
 
+// Map a page directory (`^DIR/$`, as from pageIgnoreDirOf) to a lychee
+// `exclude` regex matching links INTO that page that carry a fragment. A
+// drifted copy can lack sections its EN counterpart gained, so such links can
+// fail through no fault of their author. Lychee resolves a directory link to
+// `…/DIR#fragment` (no slash); the slash and `index.html` forms are matched
+// too. Fragment-less links stay checked.
+export function fragmentExcludeOf(dir) {
+  const body = dir.replace(/^\^/, '').replace(/\/\$$/, '');
+  const escaped = body.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return `/public/${escaped}(/(index\\.html)?)?#`;
+}
+
+// The line in `lychee.base.toml`'s `exclude` array that the generated fragment
+// excludes replace (TOML allows only one `exclude` key).
+export const EXCLUDE_MARKER =
+  '# --- GENERATED: drifted-page fragment excludes ---';
+
+// Replace the base's marker line with the given `exclude` entries; throws
+// unless the marker occurs exactly once.
+export function withFragmentExcludes(baseText, entries) {
+  const lines = baseText.split('\n');
+  const at = lines.flatMap((l, i) => (l.trim() === EXCLUDE_MARKER ? [i] : []));
+  if (at.length !== 1) {
+    throw new Error(
+      `lychee.base.toml: expected one '${EXCLUDE_MARKER}' marker line in the exclude array, found ${at.length}`,
+    );
+  }
+  lines.splice(at[0], 1, ...entries.map((e) => `  '${e}',`));
+  return lines.join('\n');
+}
+
 // Collect and translate the exclude_path entries for the given pages, given as
 // [filePath, fileText] pairs, plus any drift-pending ignore dirs: front-matter
 // patterns first (in file order), then drifted-page directories (sorted), then
-// drift-pending directories (sorted); de-duplicated, first-seen order.
+// drift-pending directories (sorted); de-duplicated, first-seen order. The
+// drifted and drift-pending pages also yield `fragmentExcludes`, in the same
+// order.
 export function toExcludePaths(pages, driftPendingDirs = []) {
   const patterns = [];
   const drifted = [];
@@ -131,7 +166,10 @@ export function toExcludePaths(pages, driftPendingDirs = []) {
   const entries = [
     ...new Set([...patterns, ...drifted, ...driftPending].map(translate)),
   ];
-  return { patterns, drifted, driftPending, entries };
+  const fragmentExcludes = [
+    ...new Set([...drifted, ...driftPending].map(fragmentExcludeOf)),
+  ];
+  return { patterns, drifted, driftPending, entries, fragmentExcludes };
 }
 
 // --- generation --------------------------------------------------------------
@@ -160,13 +198,12 @@ async function mainCLI() {
     .map(pageIgnoreDirOf)
     .filter(Boolean);
 
-  const { patterns, drifted, driftPending, entries } = toExcludePaths(
-    contentPages(rootDir),
-    driftPendingDirs,
-  );
+  const { patterns, drifted, driftPending, entries, fragmentExcludes } =
+    toExcludePaths(contentPages(rootDir), driftPendingDirs);
 
+  const base = readFileSync(path.join(rootDir, 'lychee.base.toml'), 'utf8');
   const lines = [
-    readFileSync(path.join(rootDir, 'lychee.base.toml'), 'utf8'),
+    withFragmentExcludes(base, fragmentExcludes),
     '# --- exclude_path (GENERATED) ---',
     '# Pages the link checker skips (blog pagination, old blog posts, drifted',
     '# localized pages), derived from content front matter. Do not edit here;',
@@ -182,7 +219,8 @@ async function mainCLI() {
   console.error(
     `Translated ${patterns.length} front-matter + ${drifted.length} drifted-page ` +
       `+ ${driftPending.length} drift-pending patterns -> ` +
-      `${entries.length} exclude_path entries.`,
+      `${entries.length} exclude_path entries, ` +
+      `${fragmentExcludes.length} fragment excludes.`,
   );
   console.error('Generated lychee.toml.');
 }

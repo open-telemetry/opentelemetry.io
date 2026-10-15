@@ -55,8 +55,8 @@ so it has no results to record.
 
 Lychee runs over the built site (`public/`) using the generated, git-ignored
 `lychee.toml`. The `generate:config:links` script derives it from
-[`lychee.base.toml`][] plus an `exclude_path` block computed from page front
-matter, which has two sources:
+[`lychee.base.toml`][] plus exclusions computed from page front matter, which
+has two sources:
 
 - **`link_check_exclude_path`** — a list of site-relative path regexes for pages
   the link checker must skip, such as blog pagination and old blog posts; see
@@ -65,21 +65,25 @@ matter, which has two sources:
   path segment such as `ja/`.
 - **`drifted_from_default`** — [drifted localized pages][drifted], status `true`
   (EN counterpart changed) or `file not found` (EN counterpart deleted). Links
-  _from_ such a page aren't checked, since they may be stale, but the page
-  remains a valid link target: inbound links from in-sync pages, including
-  fragments, are still validated.
+  _from_ such a page aren't checked, since they may be stale. The page remains a
+  valid link target: inbound links are still validated, except for their
+  fragments. A drifted page can lack sections that its English counterpart has
+  since gained, so a link into such a section, for example from an English page
+  shown as a locale fallback, would otherwise fail through no fault of its
+  author.
 
 Stored drift statuses are only as fresh as the last nightly [Housekeeping][]
 status sync (as merged, so the window can exceed a day), so the generator also
-skips **drift-pending** pages: locale copies of English pages changed (or
-deleted) since the **drift-status baseline**, the main-branch commit recorded in
-`data/l10n-drift.yaml` by tree-wide status syncs (`npm run fix:i18n`). A copy
-that itself changed since the baseline stays checked: someone is working on it.
-Config generation fails when the baseline is missing or can't be resolved; in
-CI, the link-check jobs first deepen their shallow clones to the baseline
-commit; locally, fetch the missing history (`git fetch upstream main`) or
-override the baseline: `DRIFT_BASELINE=HEAD npm run check:links` empties the
-overlay (stored-status skips still apply).
+treats **drift-pending** pages as drifted: locale copies of English pages
+changed (or deleted) since the **drift-status baseline**, the main-branch commit
+recorded in `data/l10n-drift.yaml` by tree-wide status syncs
+(`npm run fix:i18n`). A copy that itself changed since the baseline stays
+checked: someone is working on it. Config generation fails when the baseline is
+missing or can't be resolved; in CI, the link-check jobs first deepen their
+shallow clones to the baseline commit; locally, fetch the missing history
+(`git fetch upstream main`) or override the baseline:
+`DRIFT_BASELINE=HEAD npm run check:links` empties the overlay (stored-status
+skips still apply).
 
 A local tree-wide status sync (`npm run fix:i18n`) can rewrite
 `data/l10n-drift.yaml`; leave that rewrite uncommitted — a locally recorded

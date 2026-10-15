@@ -32,7 +32,12 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { lycheeAvailable, runLychee, findError } from './run-lychee.mjs';
+import {
+  lycheeAvailable,
+  runLychee,
+  findError,
+  wasExcluded,
+} from './run-lychee.mjs';
 
 const skip = lycheeAvailable() ? false : 'lychee binary is not on PATH';
 
@@ -89,6 +94,18 @@ const validHtml = [
   '</body></html>',
 ].join('\n');
 
+// A checked page with no content source, like an EN page rendered as a locale
+// fallback, linking into sections that its locale's targets lack.
+const fallbackHtml = [
+  '<!doctype html><html><body>',
+  '<a href="../stored-true/#gone-stored">into a stored-drifted page</a>',
+  '<a href="/xx/docs/en-edited/#gone-pending">into a drift-pending page</a>',
+  '<a href="../control/#gone-control">into an in-sync page</a>',
+  '<a href="../stored-true/">into a drifted page, no fragment</a>',
+  '<a href="../stored-true-gone/#gone-sibling">into a missing page</a>',
+  '</body></html>',
+].join('\n');
+
 // Committed as the baseline: every EN page and locale copy in sync.
 const baselineFiles = {
   'content/en/docs/en-edited.md': contentPage('EN, edited after baseline'),
@@ -131,6 +148,7 @@ const publicFiles = {
   'public/xx/docs/stored-fnf/index.html': brokenHtml('missing-stored-fnf'),
   'public/xx/docs/control/index.html': brokenHtml('missing-control'),
   'public/en/docs/control/index.html': validHtml,
+  'public/xx/docs/fallback/index.html': fallbackHtml,
 };
 
 describe(
@@ -209,12 +227,12 @@ describe(
     after(() => rmSync(dir, { recursive: true, force: true }));
 
     test('sanity: exactly the non-excluded pages are scanned', () => {
-      // 3 = the two checked broken-link pages (both-edited, control) + the EN
-      // control's valid link: an exact count distinguishes "excluded" from
-      // "accidentally not scanned". (exclude_path prunes lychee's input set,
-      // so path-excluded pages never appear in excluded_map; the count is the
-      // observable.)
-      assert.equal(result.total, 3, 'link count matches the checked pages');
+      // 8 = the two checked broken-link pages (both-edited, control) + the EN
+      // control's valid link + the fallback page's five links: an exact count
+      // distinguishes "excluded" from "accidentally not scanned". (exclude_path
+      // prunes lychee's input set, so path-excluded pages never appear in
+      // excluded_map; the count is the observable.)
+      assert.equal(result.total, 8, 'link count matches the checked pages');
       assert.equal(
         findError(result, '/en/docs/target/#known-anchor'),
         null,
@@ -290,11 +308,43 @@ describe(
       );
     });
 
-    test('no other reds: the two expected errors are the only ones', () => {
+    test('fragment link into a stored-drifted page is excluded', () => {
+      assert.equal(findError(result, 'gone-stored'), null, 'no error');
+      assert.ok(wasExcluded(result, 'gone-stored'), 'link is excluded');
+    });
+
+    test('fragment link into a drift-pending page is excluded', () => {
+      assert.equal(findError(result, 'gone-pending'), null, 'no error');
+      assert.ok(wasExcluded(result, 'gone-pending'), 'link is excluded');
+    });
+
+    test('fragment link into an in-sync page is still red', () => {
+      assert.ok(
+        findError(result, 'gone-control'),
+        'missing fragment on an in-sync target is an error',
+      );
+    });
+
+    test('fragment link into a missing sibling of a drifted page is red', () => {
+      assert.ok(
+        findError(result, 'gone-sibling'),
+        'missing page is an error despite the drifted-page prefix',
+      );
+    });
+
+    test('only fragment links into drifted pages are excluded', () => {
+      assert.equal(
+        result.excludes,
+        2,
+        'the fragment-less link into the drifted page stays checked',
+      );
+    });
+
+    test('no other reds: the four expected errors are the only ones', () => {
       assert.equal(
         result.errors,
-        2,
-        'exactly the exempted + control pages are red',
+        4,
+        'exactly the exempted + control pages and the two fallback-page links are red',
       );
     });
   },

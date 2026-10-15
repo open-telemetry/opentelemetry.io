@@ -1,7 +1,8 @@
 # Lychee link-checker configuration (BASE FILE).
 #
 # `lychee.toml` is GENERATED from this file plus an `exclude_path` block
-# computed from page front matter. Edit THIS base; do not edit the generated
+# computed from page front matter, and drifted-page entries spliced into
+# `exclude` at its marker line. Edit THIS base; do not edit the generated
 # `lychee.toml` (gitignored). Regenerate with: npm run generate:config:links
 #
 # cSpell:disable
@@ -117,4 +118,8 @@ exclude = [
   '^https://docs\.alauda\.io/.*#',
   # Google Docs heading anchors (`#heading=h.…`) are client-rendered.
   '^https://docs\.google\.com/document/d/.+#',
+
+  # Fragment links into drifted localized pages: the generator replaces the
+  # marker below with one entry per drifted or drift-pending page.
+  # --- GENERATED: drifted-page fragment excludes ---
 ]

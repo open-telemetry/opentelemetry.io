@@ -6,13 +6,16 @@ import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+  EXCLUDE_MARKER,
   FRONT_MATTER_KEY,
   driftedIgnoreDirOf,
   excludePathPatternsOf,
+  fragmentExcludeOf,
   frontMatterOf,
   pageIgnoreDirOf,
   toExcludePaths,
   translate,
+  withFragmentExcludes,
 } from './index.mjs';
 
 describe('frontMatterOf()', () => {
@@ -208,6 +211,73 @@ describe('translated subtree pattern matches old blog posts in every locale', ()
   });
 });
 
+describe('fragmentExcludeOf()', () => {
+  const pattern = fragmentExcludeOf('^es/docs/setup/kubernetes/$');
+  const re = new RegExp(pattern);
+  const uri = (tail) => `file:///repo/public/es/docs/setup/kubernetes${tail}`;
+
+  test('maps a page directory to a fragment-only `exclude` regex', () => {
+    assert.equal(
+      pattern,
+      '/public/es/docs/setup/kubernetes(/(index\\.html)?)?#',
+    );
+  });
+
+  for (const tail of ['#sec', '/#sec', '/index.html#sec']) {
+    test(`matches a fragment link: …kubernetes${tail}`, () =>
+      assert.match(uri(tail), re));
+  }
+
+  for (const tail of ['', '/', '/index.html', '-helm#sec', '-helm/#sec']) {
+    test(`does not match …kubernetes${tail}`, () =>
+      assert.doesNotMatch(uri(tail), re));
+  }
+
+  test('escapes regex metacharacters in the path', () => {
+    assert.equal(
+      fragmentExcludeOf('^xx/docs/v1.2/$'),
+      '/public/xx/docs/v1\\.2(/(index\\.html)?)?#',
+    );
+  });
+});
+
+describe('withFragmentExcludes()', () => {
+  const base = ['exclude = [', "  '/api/?$',", EXCLUDE_MARKER, ']', ''].join(
+    '\n',
+  );
+
+  test('replaces the marker line with the entries', () => {
+    assert.equal(
+      withFragmentExcludes(base, ['/public/a(/(index\\.html)?)?#']),
+      [
+        'exclude = [',
+        "  '/api/?$',",
+        "  '/public/a(/(index\\.html)?)?#',",
+        ']',
+        '',
+      ].join('\n'),
+    );
+  });
+
+  test('removes the marker line when there are no entries', () => {
+    assert.equal(
+      withFragmentExcludes(base, []),
+      ['exclude = [', "  '/api/?$',", ']', ''].join('\n'),
+    );
+  });
+
+  test('throws when the marker is missing', () => {
+    assert.throws(() => withFragmentExcludes('exclude = []\n', []), /marker/);
+  });
+
+  test('throws when the marker appears more than once', () => {
+    assert.throws(
+      () => withFragmentExcludes(`${base}${EXCLUDE_MARKER}\n`, []),
+      /marker/,
+    );
+  });
+});
+
 describe('toExcludePaths()', () => {
   const page = (fm) => `---\n${fm}\n---\n\nBody.\n`;
 
@@ -259,6 +329,25 @@ describe('toExcludePaths()', () => {
     assert.deepEqual(entries, [
       '/public/zh/docs/demo/index\\.html$',
       '/public/ja/docs/demo/index\\.html$',
+    ]);
+  });
+
+  test('fragment excludes cover drifted and drift-pending pages only', () => {
+    const pages = [
+      [
+        'content/en/blog/_index.md',
+        page(`${FRONT_MATTER_KEY}:\n  - ^(../)?blog/2019/`),
+      ],
+      ['content/zh/docs/demo/index.md', page('drifted_from_default: true')],
+      ['content/ja/docs/plain.md', page('title: In sync')],
+    ];
+    const { fragmentExcludes } = toExcludePaths(pages, [
+      '^zh/docs/demo/$', // already stored-drifted
+      '^ja/docs/pending/$',
+    ]);
+    assert.deepEqual(fragmentExcludes, [
+      '/public/zh/docs/demo(/(index\\.html)?)?#',
+      '/public/ja/docs/pending(/(index\\.html)?)?#',
     ]);
   });
 });
