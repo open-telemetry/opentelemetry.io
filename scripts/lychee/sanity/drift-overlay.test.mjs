@@ -9,9 +9,6 @@
 // test spans them: a page each unit believes is excluded must actually not
 // turn the lychee run red, and, as the control, a page nothing excludes must.
 //
-// The fixture is declarative (file map -> tmpdir, in the spirit of Hugo's
-// IntegrationTestBuilder).
-//
 // Skips cleanly when the `lychee` binary is absent from PATH.
 
 import { test, describe, before, after } from 'node:test';
@@ -98,6 +95,7 @@ const fallbackHtml = [
   '<a href="../stored-true/">into a drifted page, no fragment</a>',
   '<a href="../stored-true-gone/#gone-sibling">into a missing page</a>',
   '<a href="../stored-unbuilt/#gone-unbuilt">into a drifted page the build omitted</a>',
+  '<a href="/en/docs/target/#gone-en">into an EN page</a>',
   '</body></html>',
 ].join('\n');
 
@@ -226,12 +224,12 @@ describe(
     after(() => rmSync(dir, { recursive: true, force: true }));
 
     test('sanity: exactly the non-excluded pages are scanned', () => {
-      // 9 = the two checked broken-link pages (both-edited, control) + the EN
-      // control's valid link + the fallback page's six links: an exact count
+      // 10 = the two checked broken-link pages (both-edited, control) + the EN
+      // control's valid link + the fallback page's seven links: an exact count
       // distinguishes "excluded" from "accidentally not scanned". (exclude_path
       // prunes lychee's input set, so path-excluded pages never appear in
       // excluded_map; the count is the observable.)
-      assert.equal(result.total, 9, 'link count matches the checked pages');
+      assert.equal(result.total, 10, 'link count matches the checked pages');
       assert.equal(
         findError(result, '/en/docs/target/#known-anchor'),
         null,
@@ -349,6 +347,14 @@ describe(
       );
     });
 
+    test('fragment link into an EN page is still red', () => {
+      assert.match(
+        findError(result, 'gone-en') ?? '',
+        /fragment/i,
+        'fragment is checked on an EN target',
+      );
+    });
+
     test('only fragment links into built drifted pages are excluded', () => {
       assert.equal(
         result.excludes,
@@ -357,11 +363,11 @@ describe(
       );
     });
 
-    test('no other reds: the five expected errors are the only ones', () => {
+    test('no other reds: the six expected errors are the only ones', () => {
       assert.equal(
         result.errors,
-        5,
-        'exactly the exempted + control pages and the three fallback-page links are red',
+        6,
+        'exactly the exempted + control pages and the four fallback-page links are red',
       );
     });
   },

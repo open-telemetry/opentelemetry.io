@@ -51,11 +51,10 @@ export function parseStatus(fileText) {
   return m ? m[1] : null;
 }
 
-// The one stored-status skip predicate, shared by the status writer and the
-// link-check config generation: a `true` or `file not found` status means
-// the page is presumed out of sync with EN (its EN counterpart changed or
-// was deleted), so its outbound links, and fragment links into it, are not
-// checked.
+// The one stored-status predicate, shared by the status writer and the
+// link-check config generation: a `true` or `file not found` status marks
+// the page as presumed out of sync with EN (its EN counterpart changed or
+// was deleted).
 export function isDriftedStatus(status) {
   return status === 'true' || status === 'file not found';
 }
