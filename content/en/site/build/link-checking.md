@@ -32,16 +32,16 @@ npm run check:links
 | `fix:link-cache`         | Alias of `check:links`; use it to refresh the [link cache][] |
 
 The `check:links` and `check:links:internal` scripts run over a build of
-`BUILD_KIND`. For details, see [Build kinds: full and lean][].
+`BUILD_KIND`. For details, see [Build kinds: full and lean][build-kinds].
 
 ## Links into unpublished pages {#production}
 
-Site builds include **draft** and **future-dated** pages, except the production
-build, which omits them. A link into such a page therefore works in a deploy
-preview and passes `check:links`, yet returns 404 on the production site. The
-`check:links:production` script catches this: it runs an offline check over a
-[lean](../#build-kinds) production build, where unpublished pages don't exist.
-For how contributors read and fix its failures, see
+Non-production [site builds][build-kinds] include **draft** and **future-dated**
+pages, and production builds omit them. A link into such a page therefore works
+in a deploy preview and passes `check:links`, yet returns 404 on the production
+site. The `check:links:production` script catches this: it runs an offline check
+over a [lean][build-kinds] production build, where unpublished pages don't
+exist. For how contributors read and fix its failures, see
 [`CHECK LINKS (production)`][pr-check-production].
 
 The production check complements `check:links`; it doesn't replace it. Links
@@ -161,7 +161,7 @@ runs [`check:links:production`](#production).
 <!-- prettier-ignore-start -->
 [Auto-update registry versions]: ../scripts/#update-registry-versionssh
 [blog-index]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
-[Build kinds: full and lean]: ../#build-kinds
+[build-kinds]: ../#build-kinds
 [cache-format]: https://github.com/chalin/link-cache/blob/main/docs/cache-format.md
 [ci]: ../ci-workflows/
 [double-check README]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/lychee/double-check/README.md
