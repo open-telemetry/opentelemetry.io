@@ -2,11 +2,9 @@
 // Generate `lychee.toml` = `lychee.base.toml` (hand-maintained, committed) +
 // an `exclude_path` block derived from page front matter
 // (`link_check_exclude_path` patterns and `drifted_from_default` pages), plus
-// fragment-only `exclude` entries for links into drifted pages, spliced into
-// the base's `exclude` array. Drift-pending pages (changed since the recorded
-// status baseline) count as drifted; drift semantics live in
-// scripts/i18n/drift.mjs. For the configuration model and front-matter
-// semantics, see:
+// fragment-only `exclude` entries for links into drifted pages. Drift-pending
+// pages count as drifted (semantics: scripts/i18n/drift.mjs). For the
+// configuration model and front-matter semantics, see:
 // https://opentelemetry.io/site/build/link-checking/#configuration
 //
 // Usage: node scripts/lychee/config/index.mjs (npm run generate:config:links)
@@ -58,7 +56,7 @@ export function excludePathPatternsOf(frontMatter, filePath) {
 }
 
 // If the page is a stored-drifted localized page (`drifted_from_default`
-// status `true` or `file not found` — the shared predicate in drift.mjs),
+// status `true` or `file not found`, the shared predicate in drift.mjs),
 // return an end-anchored regex for its output directory relative to
 // `public/`; otherwise return undefined.
 export function driftedIgnoreDirOf(pageText, filePath) {
@@ -92,7 +90,7 @@ const pageDirOf = (dir) => dir.replace(/^\^/, '').replace(/\/\$$/, '');
 // Translate one site-relative exclude regex into a lychee `exclude_path`
 // regex. Front matter expresses paths relative to the site root, while
 // `exclude_path` matches the absolute path of each input file, so every
-// pattern is re-anchored (verbatim: they are regexes) onto the `/public/`
+// pattern is re-anchored verbatim (they are regexes) onto the `/public/`
 // path segment, accounting for Hugo's pretty-URL `index.html` page files:
 //
 //   `^bn/docs/demo/$`        (a single page)   -> /public/bn/docs/demo/index\.html$
@@ -100,7 +98,7 @@ const pageDirOf = (dir) => dir.replace(/^\^/, '').replace(/\/\$$/, '');
 //
 // Anchoring on `/public/` (here and in fragmentExcludeOf) assumes that no
 // site URL has a `public` path segment, so the build directory is the only
-// match; the site has none.
+// match.
 export function translate(pattern) {
   const body = pattern.replace(/^\^/, '');
   if (body.endsWith('/$')) {
@@ -198,8 +196,8 @@ async function mainCLI() {
     .map(pageIgnoreDirOf)
     .filter(Boolean);
 
-  // The build precedes generation (`_precheck:links`), so `public/` is the
-  // build the check runs over, production or not.
+  // Every entry point builds before generating, so `public/` is the build the
+  // check runs over, production or not.
   const isBuilt = (dir) =>
     existsSync(path.join(rootDir, 'public', dir, 'index.html'));
 

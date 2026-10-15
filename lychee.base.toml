@@ -119,7 +119,7 @@ exclude = [
   # Google Docs heading anchors (`#heading=h.…`) are client-rendered.
   '^https://docs\.google\.com/document/d/.+#',
 
-  # Fragment links into drifted localized pages: the generator replaces the
-  # marker below with one entry per drifted or drift-pending page.
+  # Fragment links into drifted or drift-pending localized pages: GENERATED,
+  # one entry per page, in place of the marker line.
   # --- GENERATED: drifted-page fragment excludes ---
 ]

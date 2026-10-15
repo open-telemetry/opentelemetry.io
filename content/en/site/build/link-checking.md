@@ -58,35 +58,37 @@ Lychee runs over the built site (`public/`) using the generated, git-ignored
 [`lychee.base.toml`][] plus exclusions computed from two front-matter fields:
 
 - **`link_check_exclude_path`**: site-relative path regexes for pages that the
-  link checker must skip, such as blog pagination and old blog posts; see
-  [`content/en/blog/_index.md`][blog-index].
+  link checker must skip, such as blog pagination and old blog posts; for an
+  example, see [`content/en/blog/_index.md`][blog-index].
   - To cover every locale, start a pattern with `^(../)?`: the optional `../`
     matches a two-letter locale path segment such as `ja/`.
 - **`drifted_from_default`**: marks [drifted localized pages][drifted], with
   status `true` (EN counterpart changed) or `file not found` (EN counterpart
   deleted).
   - Links _from_ a drifted page aren't checked, since they may be stale.
-  - Links _into_ it that carry a fragment are skipped: the page can lack
-    sections that its English counterpart has since gained, and English pages
-    shown as locale fallbacks still link to those sections. Fragment-less links,
-    and any link into a page the build omitted, stay checked.
+  - Fragment links _into_ a drifted page are skipped: the page can lack sections
+    that its English counterpart has since gained, and English pages shown as
+    locale fallbacks still link to those sections. Fragment-less links, and any
+    link into a page the build omitted, stay checked.
 
 Stored drift statuses lag English changes until the next [Housekeeping][] status
 sync is merged, so the generator also treats **drift-pending** pages as drifted:
 
-- **Drift-pending page**: a locale copy of an English page changed or deleted
-  since the drift-status baseline, unless the copy itself changed since then
-  (someone is working on it).
+- **Drift-pending page**: a locale copy whose English page changed or was
+  deleted since the drift-status baseline, unless the copy itself changed since
+  then (someone is working on it).
 - **Drift-status baseline**: the `main` commit recorded in
-  `data/l10n-drift.yaml` by tree-wide status syncs (`npm run fix:i18n`).
-  - A local sync can rewrite that file; leave the rewrite uncommitted, since the
-    recorded commit might not exist upstream.
-  - Config generation fails when the baseline is missing or can't be resolved.
-    CI jobs fetch the baseline commit first; locally, either:
-    - Fetch the missing history: `git fetch upstream main`.
-    - Override the baseline: `DRIFT_BASELINE=HEAD npm run check:links` compares
-      against the current commit, so only uncommitted English changes count as
-      drift-pending (stored statuses still apply).
+  `data/l10n-drift.yaml` by tree-wide status syncs (`npm run fix:i18n`). A local
+  sync can rewrite that file; leave the rewrite uncommitted, since the recorded
+  commit might not exist upstream.
+
+Config generation fails when the baseline is missing or can't be resolved. CI
+jobs fetch the baseline commit first; locally, either:
+
+- Fetch the missing history: `git fetch upstream main`.
+- Override the baseline: `DRIFT_BASELINE=HEAD npm run check:links` compares
+  against the current commit, so only uncommitted English changes count as
+  drift-pending (stored statuses still apply).
 
 ## Link cache <a id="refcache"></a>
 
@@ -109,7 +111,7 @@ needs; otherwise follow the conflict rules in [The owned cache][cache-format],
 then rerun the check to normalize the file.
 
 If you add or change external links, run `npm run check:links` **before
-submitting your PR** — the site build dominates the run time — and commit the
+submitting your PR** (the site build dominates the run time) and commit the
 updated `link-cache.jsonc` along with your content changes. Otherwise the
 `CACHE updates committed?` check will fail; for recovery steps, see
 [`CACHE updates committed?`][pr-checks].

@@ -7,10 +7,10 @@
 // Each seam is unit-tested elsewhere (scripts/i18n/drift.test.mjs,
 // scripts/lychee/config/index.test.mjs, index.test.mjs here), but only this
 // test spans them: a page each unit believes is excluded must actually not
-// turn the lychee run red, and — the control — a page nothing excludes must.
+// turn the lychee run red, and, as the control, a page nothing excludes must.
 //
 // The fixture is declarative (file map -> tmpdir, in the spirit of Hugo's
-// IntegrationTestBuilder); the copy step below says how the real code gets in.
+// IntegrationTestBuilder).
 //
 // Skips cleanly when the `lychee` binary is absent from PATH.
 
@@ -41,8 +41,6 @@ const skip = lycheeAvailable() ? false : 'lychee binary is not on PATH';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '../../..');
 
-// --- declarative fixture helpers ---------------------------------------------
-
 // Write a { relativePath: content } file map under dir, creating directories.
 function writeFiles(dir, files) {
   for (const [relPath, content] of Object.entries(files)) {
@@ -67,8 +65,6 @@ function git(dir, ...args) {
     },
   }).trim();
 }
-
-// --- fixture content ----------------------------------------------------------
 
 const pin = 'default_lang_commit: 0123456789abcdef0123456789abcdef01234567';
 
@@ -357,7 +353,7 @@ describe(
       assert.equal(
         result.excludes,
         2,
-        'fragment-less link into the drifted page stays checked',
+        'two fragment links into built drifted pages are excluded',
       );
     });
 

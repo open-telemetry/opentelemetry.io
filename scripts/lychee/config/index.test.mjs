@@ -226,7 +226,14 @@ describe('fragmentExcludeOf()', () => {
       assert.match(uri(tail), re));
   }
 
-  for (const tail of ['', '/', '/index.html', '-helm#sec', '-helm/#sec']) {
+  for (const tail of [
+    '',
+    '/',
+    '/index.html',
+    '-helm#sec',
+    '-helm/#sec',
+    '/sub/#sec',
+  ]) {
     test(`does not match …kubernetes${tail}`, () =>
       assert.doesNotMatch(uri(tail), re));
   }
@@ -355,7 +362,11 @@ describe('toExcludePaths()', () => {
       ['content/zh/docs/unbuilt.md', page('drifted_from_default: true')],
     ];
     const isBuilt = (dir) => dir === 'zh/docs/demo';
-    const { entries, fragmentExcludes } = toExcludePaths(pages, [], isBuilt);
+    const { entries, fragmentExcludes } = toExcludePaths(
+      pages,
+      ['^ja/docs/pending-unbuilt/$'],
+      isBuilt,
+    );
     assert.deepEqual(fragmentExcludes, [
       '/public/zh/docs/demo(/(index\\.html)?)?#',
     ]);
@@ -364,8 +375,9 @@ describe('toExcludePaths()', () => {
       [
         '/public/zh/docs/demo/index\\.html$',
         '/public/zh/docs/unbuilt/index\\.html$',
+        '/public/ja/docs/pending-unbuilt/index\\.html$',
       ],
-      'exclude_path still covers the unbuilt page',
+      'exclude_path still covers the unbuilt pages',
     );
   });
 });
