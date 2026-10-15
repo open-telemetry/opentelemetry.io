@@ -2,7 +2,6 @@ import { test, suite } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {
-  ROOT_MARKDOWN_GLOB,
   cacheUpdatedNotice,
   deadLinksReport,
   failedUrlsOf,
@@ -96,25 +95,21 @@ suite('cacheUpdatedNotice', () => {
 });
 
 suite('wiring drift guard', () => {
-  test('the production script opts into the missing-pages report', () => {
+  test('every check:links variant reaches the wrapper through _check:links', () => {
     const pkg = JSON.parse(
       fs.readFileSync(new URL('../../../package.json', import.meta.url)),
+    );
+    // npm appends `-- ARGS` to the end of the script, so the flags land on
+    // the wrapper only if it is the script's last command.
+    assert.match(pkg.scripts['_check:links'], /check-report\/cli\.mjs$/);
+    assert.match(pkg.scripts['check:links'], /npm run _check:links$/);
+    assert.match(
+      pkg.scripts['check:links:internal'],
+      /npm run _check:links -- --offline$/,
     );
     assert.match(
       pkg.scripts['check:links:production-internal'],
-      /check-report\/cli\.mjs --offline --production$/,
-    );
-  });
-
-  test('_check:links still is the bin that cli.mjs invokes directly, with the same extra input', () => {
-    // cli.mjs spawns the bin directly and appends the root-Markdown glob; see
-    // its bin comment.
-    const pkg = JSON.parse(
-      fs.readFileSync(new URL('../../../package.json', import.meta.url)),
-    );
-    assert.equal(
-      pkg.scripts['_check:links'],
-      `lychee-norm-cache ${ROOT_MARKDOWN_GLOB}`,
+      /npm run _check:links -- --offline --production$/,
     );
   });
 

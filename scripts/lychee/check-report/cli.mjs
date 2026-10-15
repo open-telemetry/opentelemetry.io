@@ -24,10 +24,9 @@ const root = path.join(
   '..',
 );
 
-// The bin behind the `_check:links` npm script; invoked directly so that
-// output is captured npm-noise-free and the exit status observed; failures
-// are parsed for the reports. Kept in sync with package.json by the wiring
-// drift guard in ./index.test.mjs.
+// The link-cache bin, invoked by path so that output is captured
+// npm-noise-free and the exit status observed; failures are parsed for the
+// reports.
 //
 // Output streams through as it arrives: a link check can take minutes, and
 // buffering it until exit would leave the terminal frozen.

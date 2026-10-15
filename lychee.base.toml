@@ -36,6 +36,8 @@ exclude = [
   '/docs/languages/dotnet/(metrics-api|traces-api)/?',
   '/opencensus/?$',                                 # compatibility/migration redirect
   '/../docs/specs/?$',                             # non-default locale spec redirect
+  # Root AGENTS.md links into the Docsy submodule, absent from the CI link-check checkout.
+  '/themes/docsy/AGENTS\.md$',
   # JS accordion: #type-* anchors are client-side only (spec PR #5192).
   # Optional slash: lychee resolves dir URLs to …/types#fragment (no slash).
   '/docs/specs/otel-config/types/?#type-',
