@@ -140,9 +140,12 @@ export function withFragmentExcludes(baseText, entries) {
 // [filePath, fileText] pairs, plus any drift-pending ignore dirs: front-matter
 // patterns first (in file order), then drifted-page directories (sorted), then
 // drift-pending directories (sorted); de-duplicated, first-seen order. Also
-// returns `fragmentExcludes` for the drifted and drift-pending pages that
-// `isBuilt(DIR)` accepts, in the same order: a page absent from the build
-// keeps failing as a missing page.
+// returns `fragmentExcludes`, lychee `exclude` regexes for fragment links into
+// the drifted and drift-pending pages that `isBuilt(DIR)` accepts, in the same
+// order. A lychee `exclude` drops the whole matching link, page check
+// included, so the gate is what keeps the skip fragment-only: a page present
+// in the build is known to exist, and only its fragment goes unchecked; a
+// page absent from the build keeps failing as a missing page.
 export function toExcludePaths(
   pages,
   driftPendingDirs = [],
