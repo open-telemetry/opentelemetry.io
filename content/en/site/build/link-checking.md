@@ -45,11 +45,11 @@ that links to a target the build didn't produce. For the contributor's view of a
 failure, see
 [`CHECK LINKS (production, internal)`][pr-check-production-internal].
 
-The production check complements `check:links`; it doesn't replace it. Links
-from pages that the [configuration](#configuration) excludes, drifted localized
-pages in particular, go unchecked in both. External links, and the
-[link cache](#link-cache) that records their results, belong to `check:links`:
-an offline run fetches nothing, so it has no results to record.
+The production check complements `check:links`. Links from pages that the
+[configuration](#configuration) excludes, drifted localized pages in particular,
+go unchecked in both. External links, and the [link cache](#link-cache) that
+records their results, belong to `check:links`: an offline run fetches nothing,
+so it has no results to record.
 
 ## Configuration
 
@@ -76,7 +76,7 @@ deleted) since the **drift-status baseline**, the main-branch commit recorded in
 `data/l10n-drift.yaml` by tree-wide status syncs (`npm run fix:i18n`). A copy
 that itself changed since the baseline stays checked: someone is working on it.
 Config generation fails when the baseline is missing or can't be resolved; in
-CI, the `CHECK LINKS` job first deepens its shallow clone to the baseline
+CI, the link-check jobs first deepen their shallow clones to the baseline
 commit; locally, fetch the missing history (`git fetch upstream main`) or
 override the baseline: `DRIFT_BASELINE=HEAD npm run check:links` empties the
 overlay (stored-status skips still apply).

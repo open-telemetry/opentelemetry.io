@@ -116,7 +116,8 @@ jobs:
         run: |
           committed=link-cache.jsonc
           generated=tmp/link-cache/link-cache.jsonc
-          # A missing artifact must fail, not pass as "nothing to compare".
+          # A missing artifact must fail, not pass as "nothing to compare"; a
+          # symlinked cache could alias the generated one and compare equal.
           if [[ -L "$committed" || -L "$generated" ||
                 ! -f "$committed" || ! -f "$generated" ]]; then
             echo "::error title=Invalid link cache::Expected regular link-cache.jsonc files."
