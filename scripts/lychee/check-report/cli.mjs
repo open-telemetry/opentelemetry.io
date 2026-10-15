@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
+  ROOT_MARKDOWN_GLOB,
   cacheUpdatedNotice,
   deadLinksReport,
   missingPagesReport,
@@ -36,7 +37,7 @@ const offline = args.includes('--offline');
 const bin = path.join(root, 'node_modules', '.bin', 'lychee-norm-cache');
 const child = spawn(
   bin,
-  args.filter((a) => a !== '--production'),
+  [...args.filter((a) => a !== '--production'), ROOT_MARKDOWN_GLOB],
   {
     cwd: root,
     stdio: ['inherit', 'pipe', 'pipe'],

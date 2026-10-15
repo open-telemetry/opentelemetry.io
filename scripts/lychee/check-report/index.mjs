@@ -6,6 +6,12 @@ import { fileURLToPath } from 'node:url';
 
 const RULE = '='.repeat(74);
 
+// Extra lychee input beside `public/`: the repository's root Markdown files
+// (README, CONTRIBUTING, ...), which Hugo doesn't render. Lychee expands the
+// glob itself, so no shell is needed; the `_check:links` npm script passes the
+// same glob (the wiring drift guard in ./index.test.mjs keeps them equal).
+export const ROOT_MARKDOWN_GLOB = '*.md';
+
 // Loud end-of-run notice for a successful check that modified the committed
 // link cache.
 export function cacheUpdatedNotice() {

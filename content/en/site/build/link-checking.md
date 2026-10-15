@@ -26,8 +26,8 @@ npm run check:links
 
 | Command                           | Checking scope                                                    |
 | --------------------------------- | ----------------------------------------------------------------- |
-| `check:links`                     | Whole site                                                        |
-| `check:links:internal`            | Whole site, offline (no external links)                           |
+| `check:links`                     | Whole site, plus the repository's root Markdown files             |
+| `check:links:internal`            | Same scope, offline (no external links)                           |
 | `check:links:production-internal` | [Production build](#production-internal), internal links, offline |
 | `fix:link-cache`                  | Alias of `check:links`; use it to refresh the [link cache][]      |
 
@@ -53,9 +53,11 @@ so it has no results to record.
 
 ## Configuration
 
-Lychee runs over the built site (`public/`) using the generated, git-ignored
-`lychee.toml`. The `generate:config:links` script derives it from
-[`lychee.base.toml`][] plus exclusions computed from two front-matter fields:
+Lychee runs over the built site (`public/`), plus the repository's root Markdown
+files (`README.md`, `CONTRIBUTING.md`, and the like, which Hugo doesn't render),
+using the generated, git-ignored `lychee.toml`. The `generate:config:links`
+script derives it from [`lychee.base.toml`][] plus exclusions computed from two
+front-matter fields:
 
 - **`link_check_exclude_path`**: site-relative path regexes for pages that the
   link checker must skip, such as blog pagination and old blog posts; for an
