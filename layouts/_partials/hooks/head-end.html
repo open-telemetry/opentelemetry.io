@@ -1,11 +1,17 @@
-{{ if and .Draft .File (ne .Language.Name "en") -}}
-  {{/* A draft owns its path in its locale yet is omitted from production, so it
-    blocks the English fallback: /docs/contributing/localization/#drafts. The
-    path test skips en pages mounted into this locale as fallbacks. */ -}}
-  {{ $localeDir := printf "%s/content/%s/" hugo.WorkingDir .Language.Name -}}
-  {{ if hasPrefix .File.Filename $localeDir -}}
-    {{ warnf "Localized page content/%s/%s is a draft: remove `draft`, or remove the page while its English version is unpublished. See https://opentelemetry.io/docs/contributing/localization/#drafts" .Language.Name .File.Path -}}
-  {{ end -}}
+{{ $defaultLang := "en" -}}
+
+{{/* Non-English pages: the page's path under content/, and whether the file is
+  an English page mounted into this locale as a fallback. */ -}}
+{{ $isLocalized := and (ne .Language.Name $defaultLang) .File -}}
+{{ $pagePath := "" -}}
+{{ $isFallback := false -}}
+{{ if $isLocalized -}}
+  {{ $pagePath = strings.TrimPrefix (add hugo.WorkingDir "/content/") .File.Filename -}}
+  {{ $isFallback = hasPrefix $pagePath $defaultLang -}}
+{{ end -}}
+
+{{ if and $isLocalized .Draft (not $isFallback) -}}
+  {{ warnf "Non-English pages cannot be a draft: content/%s. See https://opentelemetry.io/docs/contributing/localization/#drafts" $pagePath -}}
 {{ end -}}
 
 {{ with .Params.canonical_url -}}
@@ -15,21 +21,12 @@
 {{- else -}}
 
   {{ $canonicalURL := .Permalink -}}
-
-  {{ $defaultLang := "en" -}}
-  {{ if and (ne .Language.Name $defaultLang) .File -}}
-    {{/* This page is in a non-default-language section */ -}}
-    {{ $pagePath := strings.TrimPrefix (add hugo.WorkingDir "/content/") .File.Filename -}}
-    {{ if hasPrefix $pagePath $defaultLang -}}
-
-      {{/* This page is actually a default-language fallback page. Use the link
-      to the origin of the fallback page as canonical reference. */ -}}
-
-      {{ $translationPages := where .Translations "Lang" $defaultLang -}}
-      {{ $translation := index $translationPages 0 -}}
-      {{ with $translation -}}
-        {{ $canonicalURL = .Permalink -}}
-      {{ end -}}
+  {{ if $isFallback -}}
+    {{/* Use the origin of the fallback page as canonical reference. */ -}}
+    {{ $translationPages := where .Translations "Lang" $defaultLang -}}
+    {{ $translation := index $translationPages 0 -}}
+    {{ with $translation -}}
+      {{ $canonicalURL = .Permalink -}}
     {{ end -}}
   {{ end -}}
   <link rel="canonical" href="{{ $canonicalURL }}" data-proofer-ignore>
