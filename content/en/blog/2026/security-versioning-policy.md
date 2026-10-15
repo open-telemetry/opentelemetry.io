@@ -14,20 +14,16 @@ Recheck the final policy, obtain sponsor review, and update the date before
 removing draft: true. This announcement is written for publication after adoption. -->
 
 OpenTelemetry has updated its client versioning policy to make room for security
-fixes that need to change behavior. Stable software development kits (SDKs) and
-Contrib components, such as instrumentation libraries and exporters, can now
-make narrowly scoped, necessary security changes in minor or patch releases,
-even when those changes affect existing users. Public API compatibility remains
-protected.
+fixes that need to change behavior. Stable SDKs and Contrib components, such as
+instrumentation libraries and exporters, can now make narrowly scoped, necessary
+security changes in minor or patch releases, even when those changes affect
+existing users. Public API compatibility remains protected.
 
 The intent is to help users receive security improvements within the major
 version they already use. Some upgrades may require configuration or operational
-changes; release notes must explain the impact and what to do.
+changes. In such cases, release notes must explain the impact and what to do.
 
-The [policy change][policy-pr] applies across OpenTelemetry language clients. It
-does not change the Collector's separate versioning policy, and it does not
-itself introduce new limits or defaults. Those require their own specification
-and implementation work.
+The [policy change][policy-pr] applies across OpenTelemetry language clients.
 
 ## Why stability needs a path for security fixes
 
