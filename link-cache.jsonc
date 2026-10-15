@@ -6139,6 +6139,11 @@
     "when": "2026-10-09T05:48:45Z",
     "via": "lychee",
   },
+  "https://github.com/chmikata": {
+    "result": 200,
+    "when": "2026-10-02T20:34:18Z",
+    "via": "lychee",
+  },
   "https://github.com/christiand93": {
     "result": 200,
     "when": "2026-10-10T05:46:19Z",
@@ -7047,6 +7052,11 @@
   "https://github.com/ferd": {
     "result": 200,
     "when": "2026-10-09T05:48:43Z",
+    "via": "lychee",
+  },
+  "https://github.com/ffjlabo": {
+    "result": 200,
+    "when": "2026-10-02T20:34:18Z",
     "via": "lychee",
   },
   "https://github.com/flc1125": {
@@ -9032,6 +9042,11 @@
   "https://github.com/oertl": {
     "result": 200,
     "when": "2026-10-10T05:45:40Z",
+    "via": "lychee",
+  },
+  "https://github.com/okamototk": {
+    "result": 200,
+    "when": "2026-10-02T20:34:18Z",
     "via": "lychee",
   },
   "https://github.com/olgasafonova": {
@@ -23197,6 +23212,11 @@
   "https://github.com/yurishkuro/opentracing-tutorial/tree/master/python": {
     "result": 200,
     "when": "2026-10-08T05:47:39Z",
+    "via": "lychee",
+  },
+  "https://github.com/yuzujoe": {
+    "result": 200,
+    "when": "2026-10-02T20:34:18Z",
     "via": "lychee",
   },
   "https://github.com/yuzurihaaa": {
