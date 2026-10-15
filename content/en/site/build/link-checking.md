@@ -156,7 +156,8 @@ refreshed to the `CACHE updates committed?` job, which fails if the run left the
 committed `link-cache.jsonc` stale.
 
 The `CHECK LINKS (production)` job runs beside `BUILD`, with its own build: it
-runs [`check:links:production`](#production).
+runs [`check:links:production`](#production). It checks offline because
+`CHECK LINKS` already covers the external links.
 
 <!-- prettier-ignore-start -->
 [Auto-update registry versions]: ../scripts/#update-registry-versionssh

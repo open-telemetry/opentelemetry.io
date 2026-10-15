@@ -180,9 +180,7 @@ jobs:
           node-version-file: .nvmrc
       - run: npm run test:public
 
-  # Links into pages that production omits (drafts, future-dated pages):
-  # https://opentelemetry.io/site/build/link-checking/#production. Runs beside
-  # BUILD, not after it; offline, since CHECK LINKS covers external links.
+  # https://opentelemetry.io/site/build/link-checking/#production
   check-links-production:
     name: CHECK LINKS (production)
     runs-on: ubuntu-latest
