@@ -146,6 +146,11 @@ The check flags these obsolete paths:
 
 These two checks build the website and verify that its links are valid.
 
+> [!NOTE]
+>
+> For information on warnings about site-local links, see
+> [Always use a path for site-local links](#avoid-external-site-local-links).
+
 #### Fix 404s
 
 You need to fix the URLs reported as **invalid** (HTTP status **404**), by the
@@ -202,6 +207,39 @@ instructions][#11928]. Then, either:
 If this check fails, review the `BUILD` log, under the `npm run log:build` step,
 for any other potential issues. Ask maintainers for help, if you are unsure how
 to recover.
+
+#### Always use a path for site-local links {#avoid-external-site-local-links}
+
+When linking to pages within the OpenTelemetry website, use local paths instead
+of external links. The build will emit a warning if you don't.
+
+To address the build warning, keep only the path part of the full URL:
+
+| ❌ Don't use                              | ✅ Use instead    |
+| ----------------------------------------- | ----------------- |
+| `https://opentelemetry.io/docs/concepts/` | `/docs/concepts/` |
+| `https://www.opentelemetry.io/blog/...`   | `/blog/...`       |
+
+Using local paths ensures that:
+
+- Site-local pages open in the same browser tab: external links open in a new
+  tab, which is not the desired behavior for site-local navigation
+- Localization link processing works as expected: links are automatically
+  prefixed with the appropriate language code
+- Local paths are easier to link-check and don't unnecessarily fill the link
+  cache
+
+<details>
+<summary>Note to maintainers</summary>
+
+The following code enforces the link requirement described in this section:
+
+- The render-link hook that emits this warning:
+  [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
+- The script that auto-converts full URLs to local paths:
+  [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
+
+</details>
 
 ### `LOCALIZATION` guidelines {.notranslate lang=en #localization}
 
