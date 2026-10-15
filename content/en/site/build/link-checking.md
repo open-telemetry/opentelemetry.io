@@ -4,8 +4,8 @@ weight: 12
 description: How the site's links are checked, locally and in CI.
 ---
 
-The site is link-checked with **[Lychee][]**, backed by a committed [cache of
-external-link results](#link-cache).
+The site is link-checked with **[Lychee][]**, backed by a committed
+[cache of external-link results](#link-cache).
 
 > [!NOTE] Installing Lychee locally is optional
 >
@@ -28,7 +28,7 @@ npm run check:links
 | ------------------------ | ------------------------------------------------------------ |
 | `check:links`            | Whole site                                                   |
 | `check:links:internal`   | Whole site, offline (no external links)                      |
-| `check:links:production` | [Production build](#production), offline                     |
+| `check:links:production` | [Unpublished pages](#production), offline                    |
 | `fix:link-cache`         | Alias of `check:links`; use it to refresh the [link cache][] |
 
 The `check:links` and `check:links:internal` scripts run over a build of
@@ -44,12 +44,11 @@ preview and passes `check:links`, yet returns 404 on the production site. The
 where unpublished pages don't exist. For how contributors read and fix its
 failures, see [`CHECK LINKS (production)`][pr-check-production].
 
-The production check is a complement to `check:links`, not a replacement. It
-checks fewer pages (the unpublished ones are absent) and only site-internal
-links, so a link into a draft or future-dated page fails there and nowhere else.
-External links, and the [link cache](#link-cache) that records their results,
-belong to `check:links`: an offline run fetches nothing and leaves the cache as
-it found it.
+The production check complements `check:links`; it doesn't replace it. Links
+from pages that the [configuration](#configuration) excludes, drifted localized
+pages in particular, go unchecked in both. External links, and the
+[link cache](#link-cache) that records their results, belong to `check:links`:
+an offline run fetches nothing and leaves the cache as it found it.
 
 ## Configuration
 
@@ -148,14 +147,14 @@ behavior and setup, see the [double-check README][].
 
 ## In CI
 
-The [`check-links.yml` workflow][ci] builds the site once (lean) and shares that
-artifact with the `CHECK LINKS` job, so local runs and CI check the same build.
-That job fails if any link check fails, and hands the cache it refreshed to the
-`CACHE updates committed?` job, which fails if the run left the committed
-`link-cache.jsonc` stale.
+The [`check-links.yml` workflow][ci] builds the site (lean) in its `BUILD` job
+and shares that artifact with the `CHECK LINKS` job, so local runs and CI check
+the same build. That job fails if any link check fails, and hands the cache it
+refreshed to the `CACHE updates committed?` job, which fails if the run left the
+committed `link-cache.jsonc` stale.
 
-The same workflow runs `CHECK LINKS (production)`, the CI form of
-[`check:links:production`](#production), as its own job beside `BUILD`.
+The `CHECK LINKS (production)` job runs beside `BUILD`, with its own build: it
+runs [`check:links:production`](#production).
 
 <!-- prettier-ignore-start -->
 [Auto-update registry versions]: ../scripts/#update-registry-versionssh

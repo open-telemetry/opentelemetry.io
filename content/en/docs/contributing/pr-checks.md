@@ -144,7 +144,7 @@ The check flags these obsolete paths:
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
-These two checks build the website and verify that all links are valid.
+These two checks build the website and verify that its links are valid.
 
 > [!NOTE]
 >
@@ -180,9 +180,8 @@ appending a `last-validated=YYYY-MM-DD` parameter, for example:
 
 This check verifies site-internal links over a build of the site as production
 builds it. A link that it reports as `File not found`, while the target renders
-in the deploy preview, points at a draft or future-dated page: the preview
-includes such pages, the production site doesn't. Either link to a published
-page instead, or publish the target first. For the check's scope, see
+in the deploy preview, points at a draft or future-dated page. Either link to a
+published page instead, or publish the target first. For the check's scope, see
 [Links into unpublished pages](/site/build/link-checking/#production).
 
 ### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
