@@ -40,9 +40,9 @@ Site builds include **draft** and **future-dated** pages, except the production
 build, which omits them. A link into such a page therefore works in a deploy
 preview and passes `check:links`, yet returns 404 on the production site. The
 `check:links:production` script catches this: it runs an offline check over a
-[lean production build][Build kinds: full and lean] (`build:production:lean`),
-where unpublished pages don't exist. For how contributors read and fix its
-failures, see [`CHECK LINKS (production)`][pr-check-production].
+[lean][Build kinds: full and lean] production build, where unpublished pages
+don't exist. For how contributors read and fix its failures, see
+[`CHECK LINKS (production)`][pr-check-production].
 
 The production check complements `check:links`; it doesn't replace it. Links
 from pages that the [configuration](#configuration) excludes, drifted localized

@@ -36,17 +36,16 @@ script, use `npm run` _`SCRIPT_NAME`_.
 
 ## Build and serve
 
-| Script                  | Description                                                    |
-| ----------------------- | -------------------------------------------------------------- |
-| `build:full`            | Build the full site. For details, see [Build kinds][].         |
-| `build:lean`            | Do a lean build of the site. For details, see [Build kinds][]. |
-| `build:preview`         | Full build with minification (e.g. for Netlify preview).       |
-| `build:production:lean` | Lean production build. For details, see [Build kinds][].       |
-| `build:production`      | Production Hugo build with minification.                       |
-| `build`                 | Build the site. Defaults to lean; see [Build kinds][].         |
-| `clean`                 | Run `make clean`.                                              |
-| `serve:hugo`            | Start Hugo server with in-memory render.                       |
-| `serve`                 | Start Hugo dev server (default; full render).                  |
+| Script             | Description                                                    |
+| ------------------ | -------------------------------------------------------------- |
+| `build:full`       | Build the full site. For details, see [Build kinds][].         |
+| `build:lean`       | Do a lean build of the site. For details, see [Build kinds][]. |
+| `build:preview`    | Full build with minification (e.g. for Netlify preview).       |
+| `build:production` | Production Hugo build with minification.                       |
+| `build`            | Build the site. Defaults to lean; see [Build kinds][].         |
+| `clean`            | Run `make clean`.                                              |
+| `serve:hugo`       | Start Hugo server with in-memory render.                       |
+| `serve`            | Start Hugo dev server (default; full render).                  |
 
 To build or serve the site with [website telemetry][], set the `SITE_NAME`
 environment variable to `opentelemetry`; your local browsing then exports spans
