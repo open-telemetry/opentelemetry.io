@@ -66,11 +66,12 @@ Lychee runs over the built site (`public/`) using the generated, git-ignored
   status `true` (EN counterpart changed) or `file not found` (EN counterpart
   deleted).
   - Links _from_ a drifted page aren't checked, since they may be stale.
-  - Links _into_ a drifted page are checked, except for their fragments: the
-    page can lack sections that its English counterpart has since gained, and
-    English pages shown as [locale fallbacks][] still link to those sections. A
-    link into a drifted page that the build omitted still fails as a missing
-    page. For how the generator implements this, and why that is safe, see
+  - Fragment links _into_ a drifted page are skipped when the page is in the
+    build and is its URL's only content file; otherwise they're checked in full.
+    Net effect: the page is known to exist and only its fragment goes unchecked.
+    That is what drift calls for: the page can lack sections that its English
+    counterpart has since gained, and English pages shown as [locale
+    fallbacks][] still link to those sections. Implementation:
     `toExcludePaths()` in `scripts/lychee/config/index.mjs`.
 
 Stored drift statuses lag English changes until the next [Housekeeping][] status
