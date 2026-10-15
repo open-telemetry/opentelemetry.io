@@ -2,8 +2,8 @@
 #
 # `lychee.toml` is GENERATED from this file plus an `exclude_path` block
 # computed from page front matter, and drifted-page entries spliced into
-# `exclude` at its marker line. Edit THIS base; do not edit the generated
-# `lychee.toml` (gitignored). Regenerate with: npm run generate:config:links
+# `exclude`. Edit THIS base; do not edit the generated `lychee.toml`
+# (gitignored). Regenerate with: npm run generate:config:links
 #
 # cSpell:disable
 

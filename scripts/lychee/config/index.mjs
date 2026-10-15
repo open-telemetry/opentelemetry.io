@@ -3,8 +3,8 @@
 // an `exclude_path` block derived from page front matter
 // (`link_check_exclude_path` patterns and `drifted_from_default` pages), plus
 // fragment-only `exclude` entries for links into drifted pages, spliced into
-// the base's `exclude` array at its marker line. For the configuration model
-// and front-matter semantics, see:
+// the base's `exclude` array. For the configuration model and front-matter
+// semantics, see:
 // https://opentelemetry.io/site/build/link-checking/#configuration
 //
 // Stored drift statuses are only as fresh as the last nightly Housekeeping
@@ -114,20 +114,19 @@ export function translate(pattern) {
   return `/public/${body.replace(/\$$/, '')}`;
 }
 
-// Map a page directory (`^DIR/$`, as from pageIgnoreDirOf) to a lychee
-// `exclude` regex matching links INTO that page that carry a fragment. A
-// drifted copy can lack sections its EN counterpart gained, so such links can
-// fail through no fault of their author. Lychee resolves a directory link to
-// `…/DIR#fragment` (no slash); the slash and `index.html` forms are matched
-// too. Fragment-less links stay checked.
+// Map a page directory (`^DIR/$`, as from pageIgnoreDirOf; DIR is taken
+// literally and regex-escaped) to a lychee `exclude` regex matching only
+// fragment links into that page: `DIR#…` (the form lychee resolves directory
+// links to), `DIR/#…`, and `DIR/index.html#…`.
 export function fragmentExcludeOf(dir) {
   const body = dir.replace(/^\^/, '').replace(/\/\$$/, '');
   const escaped = body.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return `/public/${escaped}(/(index\\.html)?)?#`;
 }
 
-// The line in `lychee.base.toml`'s `exclude` array that the generated fragment
-// excludes replace (TOML allows only one `exclude` key).
+// Placeholder line in `lychee.base.toml`'s `exclude` array for the generated
+// fragment excludes (TOML allows only one `exclude` key, so they can't be
+// appended).
 export const EXCLUDE_MARKER =
   '# --- GENERATED: drifted-page fragment excludes ---';
 
@@ -148,9 +147,9 @@ export function withFragmentExcludes(baseText, entries) {
 // Collect and translate the exclude_path entries for the given pages, given as
 // [filePath, fileText] pairs, plus any drift-pending ignore dirs: front-matter
 // patterns first (in file order), then drifted-page directories (sorted), then
-// drift-pending directories (sorted); de-duplicated, first-seen order. The
-// drifted and drift-pending pages also yield `fragmentExcludes`, in the same
-// order.
+// drift-pending directories (sorted); de-duplicated, first-seen order. Also
+// returns `fragmentExcludes` for the drifted and drift-pending pages, in the
+// same order.
 export function toExcludePaths(pages, driftPendingDirs = []) {
   const patterns = [];
   const drifted = [];
