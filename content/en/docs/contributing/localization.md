@@ -694,12 +694,6 @@ and coordinate a fix with its locale team.
 
 Finally, rerun `npm run check:links` and confirm that no link failures remain.
 
-Adding a section to an English page, and linking to it, needs none of these
-fixes. Localized copies of the page that predate the section lack it, but those
-copies are drifted, and the link checker doesn't validate fragments of links
-into drifted pages. For details, see
-[Link checking: Configuration](/site/build/link-checking/#configuration).
-
 <!-- prettier-ignore-start -->
 [aliases]: https://gohugo.io/content-management/urls/#aliases
 [code owner]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
