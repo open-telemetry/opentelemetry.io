@@ -3,30 +3,17 @@
 // an `exclude_path` block derived from page front matter
 // (`link_check_exclude_path` patterns and `drifted_from_default` pages), plus
 // fragment-only `exclude` entries for links into drifted pages, spliced into
-// the base's `exclude` array. For the configuration model and front-matter
+// the base's `exclude` array. Drift-pending pages (changed since the recorded
+// status baseline) count as drifted; drift semantics live in
+// scripts/i18n/drift.mjs. For the configuration model and front-matter
 // semantics, see:
 // https://opentelemetry.io/site/build/link-checking/#configuration
-//
-// Stored drift statuses are only as fresh as the last nightly Housekeeping
-// sync, so the generator also excludes the locale copies of English pages
-// changed since the recorded status baseline ("drift pending" — the pages
-// that the next nightly sync will mark drifted). Drift semantics, the
-// baseline, and the activity exemption live in scripts/i18n/drift.mjs; this
-// script only maps the resulting pages to lychee exclude patterns.
-//
-// Front matter expresses paths relative to the site root, while lychee's
-// `exclude_path` matches the absolute path of each input file it scans. So
-// every pattern is re-anchored (verbatim — they are regexes) onto the
-// `/public/` path segment, accounting for Hugo's pretty-URL `index.html` page
-// files:
-//
-//   `^bn/docs/demo/$`        (a single page)   -> /public/bn/docs/demo/index\.html$
-//   `^(../)?blog/20(19|2.)/` (a whole subtree) -> /public/(../)?blog/20(19|2.)/
 //
 // Usage: node scripts/lychee/config/index.mjs (npm run generate:config:links)
 //        DRIFT_BASELINE=<commit> overrides the committed baseline (local use)
 
 import {
+  existsSync,
   readdirSync,
   readFileSync,
   realpathSync,
@@ -44,8 +31,6 @@ import {
 
 export const FRONT_MATTER_KEY = 'link_check_exclude_path';
 
-// --- pure helpers (unit-tested) ---------------------------------------------
-
 // Extract the front-matter text of a page, or undefined if there is none.
 export function frontMatterOf(text) {
   const m = text.match(/^---\n(.*?)\n---/s);
@@ -53,12 +38,13 @@ export function frontMatterOf(text) {
 }
 
 // Return the page's `link_check_exclude_path` patterns ([] if absent). Throws
-// on YAML or shape errors so a malformed config fails the generation loudly
-// (the htmltest-era extractor warned and skipped, silently dropping config).
+// on YAML or shape errors: a malformed config must fail the generation, not
+// drop the patterns silently.
 export function excludePathPatternsOf(frontMatter, filePath) {
   if (!new RegExp(`^${FRONT_MATTER_KEY}:`, 'm').test(frontMatter)) return [];
   const fm = yamlLoad(frontMatter);
   const patterns = fm[FRONT_MATTER_KEY];
+  // A blank pattern would translate to `/public/`, excluding every page.
   if (
     !Array.isArray(patterns) ||
     patterns.length === 0 ||
@@ -84,16 +70,14 @@ export function driftedIgnoreDirOf(pageText, filePath) {
 // relative to `public/`, or undefined for paths that aren't standalone output
 // pages (fragments, non-content paths).
 export function pageIgnoreDirOf(filePath) {
-  // Strip the leading 'content/' source prefix.
   let p = filePath.replace(/^\.\//, '');
   if (!p.startsWith('content/')) return;
   p = p.slice('content/'.length);
 
-  // Skip files under underscore-prefixed directories (e.g. '_includes'): they
-  // are fragments, not standalone output pages.
+  // Files under underscore-prefixed directories (e.g. '_includes') are
+  // fragments, not standalone output pages.
   if (/(^|\/)_[^/]+\//.test(p)) return;
 
-  // Map the source file to its pretty-URL output directory.
   const m = p.match(/^(.*)\/(?:_index|index)\.(?:md|html)$/);
   p = m
     ? m[1] // section or leaf bundle: directory is the URL
@@ -102,15 +86,22 @@ export function pageIgnoreDirOf(filePath) {
   return `^${p}/$`;
 }
 
-// Translate one site-relative exclude regex into a lychee `exclude_path` regex
-// anchored onto the `/public/` path segment (see the header comment).
+// Strip pageIgnoreDirOf's anchors: `^DIR/$` -> `DIR`.
+const pageDirOf = (dir) => dir.replace(/^\^/, '').replace(/\/\$$/, '');
+
+// Translate one site-relative exclude regex into a lychee `exclude_path`
+// regex. Front matter expresses paths relative to the site root, while
+// `exclude_path` matches the absolute path of each input file, so every
+// pattern is re-anchored (verbatim: they are regexes) onto the `/public/`
+// path segment, accounting for Hugo's pretty-URL `index.html` page files:
+//
+//   `^bn/docs/demo/$`        (a single page)   -> /public/bn/docs/demo/index\.html$
+//   `^(../)?blog/20(19|2.)/` (a whole subtree) -> /public/(../)?blog/20(19|2.)/
 export function translate(pattern) {
   const body = pattern.replace(/^\^/, '');
   if (body.endsWith('/$')) {
-    // a single page bundle: that directory's index.html
     return `/public/${body.slice(0, -1)}index\\.html$`;
   }
-  // trailing `/` (subtree) or arbitrary tail (substring) — anchor onto /public/
   return `/public/${body.replace(/\$$/, '')}`;
 }
 
@@ -119,8 +110,7 @@ export function translate(pattern) {
 // fragment links into that page: `DIR#…` (the form lychee resolves directory
 // links to), `DIR/#…`, and `DIR/index.html#…`.
 export function fragmentExcludeOf(dir) {
-  const body = dir.replace(/^\^/, '').replace(/\/\$$/, '');
-  const escaped = body.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const escaped = pageDirOf(dir).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return `/public/${escaped}(/(index\\.html)?)?#`;
 }
 
@@ -148,9 +138,14 @@ export function withFragmentExcludes(baseText, entries) {
 // [filePath, fileText] pairs, plus any drift-pending ignore dirs: front-matter
 // patterns first (in file order), then drifted-page directories (sorted), then
 // drift-pending directories (sorted); de-duplicated, first-seen order. Also
-// returns `fragmentExcludes` for the drifted and drift-pending pages, in the
-// same order.
-export function toExcludePaths(pages, driftPendingDirs = []) {
+// returns `fragmentExcludes` for the drifted and drift-pending pages that
+// `isBuilt(DIR)` accepts, in the same order: a page absent from the build
+// keeps failing as a missing page.
+export function toExcludePaths(
+  pages,
+  driftPendingDirs = [],
+  isBuilt = () => true,
+) {
   const patterns = [];
   const drifted = [];
   for (const [filePath, text] of pages) {
@@ -166,12 +161,14 @@ export function toExcludePaths(pages, driftPendingDirs = []) {
     ...new Set([...patterns, ...drifted, ...driftPending].map(translate)),
   ];
   const fragmentExcludes = [
-    ...new Set([...drifted, ...driftPending].map(fragmentExcludeOf)),
+    ...new Set(
+      [...drifted, ...driftPending]
+        .filter((dir) => isBuilt(pageDirOf(dir)))
+        .map(fragmentExcludeOf),
+    ),
   ];
   return { patterns, drifted, driftPending, entries, fragmentExcludes };
 }
-
-// --- generation --------------------------------------------------------------
 
 function* contentPages(rootDir) {
   const contentDir = path.join(rootDir, 'content');
@@ -197,8 +194,13 @@ async function mainCLI() {
     .map(pageIgnoreDirOf)
     .filter(Boolean);
 
+  // The build precedes generation (`_precheck:links`), so `public/` is the
+  // build the check runs over, production or not.
+  const isBuilt = (dir) =>
+    existsSync(path.join(rootDir, 'public', dir, 'index.html'));
+
   const { patterns, drifted, driftPending, entries, fragmentExcludes } =
-    toExcludePaths(contentPages(rootDir), driftPendingDirs);
+    toExcludePaths(contentPages(rootDir), driftPendingDirs, isBuilt);
 
   const base = readFileSync(path.join(rootDir, 'lychee.base.toml'), 'utf8');
   const lines = [

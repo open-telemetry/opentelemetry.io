@@ -10,9 +10,7 @@
 // turn the lychee run red, and — the control — a page nothing excludes must.
 //
 // The fixture is declarative (file map -> tmpdir, in the spirit of Hugo's
-// IntegrationTestBuilder). The real script files are copied into the fixture
-// repo unmodified — `generate:config:links` derives the repo root from its
-// own location — so the chain under test is the working tree's actual code.
+// IntegrationTestBuilder); the copy step below says how the real code gets in.
 //
 // Skips cleanly when the `lychee` binary is absent from PATH.
 
@@ -103,10 +101,11 @@ const fallbackHtml = [
   '<a href="../control/#gone-control">into an in-sync page</a>',
   '<a href="../stored-true/">into a drifted page, no fragment</a>',
   '<a href="../stored-true-gone/#gone-sibling">into a missing page</a>',
+  '<a href="../stored-unbuilt/#gone-unbuilt">into a drifted page the build omitted</a>',
   '</body></html>',
 ].join('\n');
 
-// Committed as the baseline: every EN page and locale copy in sync.
+// Committed as the baseline; the stored-status cases carry their status here.
 const baselineFiles = {
   'content/en/docs/en-edited.md': contentPage('EN, edited after baseline'),
   'content/xx/docs/en-edited.md': contentPage('Copy of en-edited', `${pin}\n`),
@@ -131,6 +130,11 @@ const baselineFiles = {
   'content/xx/docs/stored-fnf.md': contentPage(
     'Copy whose EN is long gone',
     `${pin}\ndrifted_from_default: file not found\n`,
+  ),
+  // Drifted, but with no built output (as a production build omits pages).
+  'content/xx/docs/stored-unbuilt.md': contentPage(
+    'Copy marked drifted, absent from the build',
+    `${pin}\ndrifted_from_default: true\n`,
   ),
   'content/en/docs/control.md': contentPage('EN, untouched'),
   'content/xx/docs/control.md': contentPage('Copy of control', `${pin}\n`),
@@ -175,7 +179,6 @@ describe(
       }
       symlinkSync(join(repoRoot, 'node_modules'), join(dir, 'node_modules'));
 
-      // Baseline commit: everything in sync.
       writeFiles(dir, baselineFiles);
       git(dir, 'init', '--quiet');
       git(dir, 'add', '-A');
@@ -227,12 +230,12 @@ describe(
     after(() => rmSync(dir, { recursive: true, force: true }));
 
     test('sanity: exactly the non-excluded pages are scanned', () => {
-      // 8 = the two checked broken-link pages (both-edited, control) + the EN
-      // control's valid link + the fallback page's five links: an exact count
+      // 9 = the two checked broken-link pages (both-edited, control) + the EN
+      // control's valid link + the fallback page's six links: an exact count
       // distinguishes "excluded" from "accidentally not scanned". (exclude_path
       // prunes lychee's input set, so path-excluded pages never appear in
       // excluded_map; the count is the observable.)
-      assert.equal(result.total, 8, 'link count matches the checked pages');
+      assert.equal(result.total, 9, 'link count matches the checked pages');
       assert.equal(
         findError(result, '/en/docs/target/#known-anchor'),
         null,
@@ -309,42 +312,60 @@ describe(
     });
 
     test('fragment link into a stored-drifted page is excluded', () => {
-      assert.equal(findError(result, 'gone-stored'), null, 'no error');
       assert.ok(wasExcluded(result, 'gone-stored'), 'link is excluded');
+      assert.equal(findError(result, 'gone-stored'), null, 'link passes');
     });
 
     test('fragment link into a drift-pending page is excluded', () => {
-      assert.equal(findError(result, 'gone-pending'), null, 'no error');
       assert.ok(wasExcluded(result, 'gone-pending'), 'link is excluded');
+      assert.equal(findError(result, 'gone-pending'), null, 'link passes');
     });
 
     test('fragment link into an in-sync page is still red', () => {
-      assert.ok(
-        findError(result, 'gone-control'),
-        'missing fragment on an in-sync target is an error',
+      assert.match(
+        findError(result, 'gone-control') ?? '',
+        /fragment/i,
+        'fragment is checked on an in-sync target',
       );
     });
 
     test('fragment link into a missing sibling of a drifted page is red', () => {
-      assert.ok(
-        findError(result, 'gone-sibling'),
-        'missing page is an error despite the drifted-page prefix',
+      assert.match(
+        findError(result, 'gone-sibling') ?? '',
+        /File not found/,
+        'page existence is checked despite the drifted-page prefix',
       );
     });
 
-    test('only fragment links into drifted pages are excluded', () => {
+    test('fragment link into a drifted page the build omitted is red', () => {
+      assert.ok(
+        lycheeToml.includes('/public/xx/docs/stored-unbuilt/index\\.html$'),
+        'exclude_path covers the unbuilt page',
+      );
+      assert.ok(
+        !lycheeToml.includes('/public/xx/docs/stored-unbuilt('),
+        'fragment exclude is withheld for the unbuilt page',
+      );
+      assert.match(
+        findError(result, 'gone-unbuilt') ?? '',
+        /File not found/,
+        'page existence is checked for an unbuilt drifted page',
+      );
+    });
+
+    test('only fragment links into built drifted pages are excluded', () => {
       assert.equal(
         result.excludes,
         2,
-        'the fragment-less link into the drifted page stays checked',
+        'fragment-less link into the drifted page stays checked',
       );
     });
 
-    test('no other reds: the four expected errors are the only ones', () => {
+    test('no other reds: the five expected errors are the only ones', () => {
       assert.equal(
         result.errors,
-        4,
-        'exactly the exempted + control pages and the two fallback-page links are red',
+        5,
+        'exactly the exempted + control pages and the three fallback-page links are red',
       );
     });
   },

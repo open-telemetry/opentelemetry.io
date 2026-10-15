@@ -66,9 +66,10 @@ Lychee runs over the built site (`public/`) using the generated, git-ignored
   status `true` (EN counterpart changed) or `file not found` (EN counterpart
   deleted).
   - Links _from_ a drifted page aren't checked, since they may be stale.
-  - Links _into_ it are checked, but not their fragments: the page can lack
+  - Links _into_ it that carry a fragment are skipped: the page can lack
     sections that its English counterpart has since gained, and English pages
-    shown as locale fallbacks still link to those sections.
+    shown as locale fallbacks still link to those sections. Fragment-less links,
+    and any link into a page the build omitted, stay checked.
 
 Stored drift statuses lag English changes until the next [Housekeeping][] status
 sync is merged, so the generator also treats **drift-pending** pages as drifted:
@@ -83,8 +84,9 @@ sync is merged, so the generator also treats **drift-pending** pages as drifted:
   - Config generation fails when the baseline is missing or can't be resolved.
     CI jobs fetch the baseline commit first; locally, either:
     - Fetch the missing history: `git fetch upstream main`.
-    - Override the baseline: `DRIFT_BASELINE=HEAD npm run check:links` treats no
-      page as drift-pending (stored statuses still apply).
+    - Override the baseline: `DRIFT_BASELINE=HEAD npm run check:links` compares
+      against the current commit, so only uncommitted English changes count as
+      drift-pending (stored statuses still apply).
 
 ## Link cache <a id="refcache"></a>
 

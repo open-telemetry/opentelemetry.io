@@ -1,6 +1,6 @@
-// Unit tests for the front-matter -> lychee `exclude_path` generator
-// (./index.mjs), including preservation of the `(../)?` locale prefix that
-// lets a single pattern cover every locale.
+// Unit tests for the lychee config generator (./index.mjs): the front-matter
+// and drift-derived `exclude_path` entries, and the fragment-only `exclude`
+// entries for drifted pages.
 
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
@@ -68,8 +68,6 @@ describe('excludePathPatternsOf()', () => {
     );
   });
 
-  // A blank pattern would translate to `/public/`, excluding every page and
-  // false-greening the whole check.
   test('throws on an empty-string pattern', () => {
     assert.throws(
       () => excludePathPatternsOf(`${FRONT_MATTER_KEY}: ['']`, 'f.md'),
@@ -349,5 +347,25 @@ describe('toExcludePaths()', () => {
       '/public/zh/docs/demo(/(index\\.html)?)?#',
       '/public/ja/docs/pending(/(index\\.html)?)?#',
     ]);
+  });
+
+  test('a drifted page absent from the build gets no fragment exclude', () => {
+    const pages = [
+      ['content/zh/docs/demo/index.md', page('drifted_from_default: true')],
+      ['content/zh/docs/unbuilt.md', page('drifted_from_default: true')],
+    ];
+    const isBuilt = (dir) => dir === 'zh/docs/demo';
+    const { entries, fragmentExcludes } = toExcludePaths(pages, [], isBuilt);
+    assert.deepEqual(fragmentExcludes, [
+      '/public/zh/docs/demo(/(index\\.html)?)?#',
+    ]);
+    assert.deepEqual(
+      entries,
+      [
+        '/public/zh/docs/demo/index\\.html$',
+        '/public/zh/docs/unbuilt/index\\.html$',
+      ],
+      'exclude_path still covers the unbuilt page',
+    );
   });
 });
