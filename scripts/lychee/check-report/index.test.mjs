@@ -187,8 +187,11 @@ suite('missingPagesReport', () => {
         targets: ['/es/docs/zero-code/obi/setup/kubernetes-helm/'],
       },
     ]);
-    assert.match(report, /1 link points at a page that the production build/);
-    assert.match(report, /\(a draft or future-dated page\)/);
+    assert.match(
+      report,
+      /1 link\(s\) point at page\(s\) that the production build/,
+    );
+    assert.match(report, /\(drafts or future-dated pages\)/);
     assert.match(report, /\/es\/docs\/zero-code\/obi\/network\/quickstart\//);
     assert.match(
       report,

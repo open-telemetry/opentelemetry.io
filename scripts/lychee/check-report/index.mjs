@@ -90,14 +90,10 @@ function sitePathOf(fsPath) {
 export function missingPagesReport(groups) {
   const n = groups.reduce((sum, g) => sum + g.targets.length, 0);
   if (n === 0) return '';
-  const [count, pages, kinds] =
-    n === 1
-      ? ['1 link points', 'a page', 'a draft or future-dated page']
-      : [`${n} links point`, 'pages', 'drafts or future-dated pages'];
   return [
     RULE,
-    `ERROR: ${count} at ${pages} that the production build doesn't contain`,
-    `(${kinds}):`,
+    `ERROR: ${n} link(s) point at page(s) that the production build doesn't`,
+    'contain (drafts or future-dated pages):',
     '',
     ...groups.flatMap(({ source, targets }) => [
       `  ${source}`,
