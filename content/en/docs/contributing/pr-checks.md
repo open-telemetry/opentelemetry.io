@@ -178,10 +178,10 @@ appending a `last-validated=YYYY-MM-DD` parameter, for example:
 
 ### `CHECK LINKS (production)` {.notranslate lang=en #check-links-production}
 
-This check verifies internal links over a build of the site as production builds
-it. A link that it reports as `File not found`, while the target renders in the
-deploy preview, points at a draft or future-dated page. Either link to a
-published page instead, or publish the target first. For the check's scope, see
+A link that this check reports as `File not found`, while the target renders in
+the deploy preview, points at a draft or future-dated page. Either link to a
+published page instead, or publish the target first. For what the check builds
+and covers, see
 [Links into unpublished pages](/site/build/link-checking/#production).
 
 ### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
