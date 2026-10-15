@@ -6,8 +6,9 @@
 //
 // Each seam is unit-tested elsewhere (scripts/i18n/drift.test.mjs,
 // scripts/lychee/config/index.test.mjs, index.test.mjs here), but only this
-// test spans them: a page each unit believes is excluded must actually not
-// turn the lychee run red, and, as the control, a page nothing excludes must.
+// test spans them: a page, or a fragment link into a drifted page, that each
+// unit believes is excluded must actually not turn the lychee run red, and, as
+// the control, an unexcluded counterpart must.
 //
 // Skips cleanly when the `lychee` binary is absent from PATH.
 
@@ -86,7 +87,7 @@ const validHtml = [
 ].join('\n');
 
 // A checked page with no content source, like an EN page rendered as a locale
-// fallback, linking into sections that its locale's targets lack.
+// fallback.
 const fallbackHtml = [
   '<!doctype html><html><body>',
   '<a href="../stored-true/#gone-stored">into a stored-drifted page</a>',
@@ -96,10 +97,11 @@ const fallbackHtml = [
   '<a href="../stored-true-gone/#gone-sibling">into a missing page</a>',
   '<a href="../stored-unbuilt/#gone-unbuilt">into a drifted page the build omitted</a>',
   '<a href="/en/docs/target/#gone-en">into an EN page</a>',
+  '<a href="../stored-shadowed/#gone-shadowed">into a section that shadows a drifted leaf</a>',
   '</body></html>',
 ].join('\n');
 
-// Committed as the baseline; the stored-status cases carry their status here.
+// Committed as the baseline.
 const baselineFiles = {
   'content/en/docs/en-edited.md': contentPage('EN, edited after baseline'),
   'content/xx/docs/en-edited.md': contentPage('Copy of en-edited', `${pin}\n`),
@@ -130,6 +132,17 @@ const baselineFiles = {
     'Copy marked drifted, absent from the build',
     `${pin}\ndrifted_from_default: true\n`,
   ),
+  // A drifted leaf beside an in-sync section at the same URL: Hugo serves the
+  // section, so the built page isn't the drifted one.
+  'content/en/docs/stored-shadowed/_index.md': contentPage('EN section'),
+  'content/xx/docs/stored-shadowed/_index.md': contentPage(
+    'In-sync copy of the section',
+    `${pin}\n`,
+  ),
+  'content/xx/docs/stored-shadowed.md': contentPage(
+    'Stale leaf whose EN is long gone',
+    `${pin}\ndrifted_from_default: file not found\n`,
+  ),
   'content/en/docs/control.md': contentPage('EN, untouched'),
   'content/xx/docs/control.md': contentPage('Copy of control', `${pin}\n`),
 };
@@ -144,6 +157,11 @@ const publicFiles = {
   'public/xx/docs/both-edited/index.html': brokenHtml('missing-both-edited'),
   'public/xx/docs/stored-true/index.html': brokenHtml('missing-stored-true'),
   'public/xx/docs/stored-fnf/index.html': brokenHtml('missing-stored-fnf'),
+  // The unbuilt page's directory exists (a built child), its index.html doesn't.
+  'public/xx/docs/stored-unbuilt/child/index.html':
+    '<!doctype html><html><body></body></html>',
+  'public/xx/docs/stored-shadowed/index.html':
+    '<!doctype html><html><body><h2 id="kept">S</h2></body></html>',
   'public/xx/docs/control/index.html': brokenHtml('missing-control'),
   'public/en/docs/control/index.html': validHtml,
   'public/xx/docs/fallback/index.html': fallbackHtml,
@@ -224,12 +242,12 @@ describe(
     after(() => rmSync(dir, { recursive: true, force: true }));
 
     test('sanity: exactly the non-excluded pages are scanned', () => {
-      // 10 = the two checked broken-link pages (both-edited, control) + the EN
-      // control's valid link + the fallback page's seven links: an exact count
+      // 11 = the two checked broken-link pages (both-edited, control) + the EN
+      // control's valid link + the fallback page's eight links: an exact count
       // distinguishes "excluded" from "accidentally not scanned". (exclude_path
       // prunes lychee's input set, so path-excluded pages never appear in
       // excluded_map; the count is the observable.)
-      assert.equal(result.total, 10, 'link count matches the checked pages');
+      assert.equal(result.total, 11, 'link count matches the checked pages');
       assert.equal(
         findError(result, '/en/docs/target/#known-anchor'),
         null,
@@ -342,8 +360,24 @@ describe(
       );
       assert.match(
         findError(result, 'gone-unbuilt') ?? '',
-        /File not found/,
+        /Cannot find index file/,
         'page existence is checked for an unbuilt drifted page',
+      );
+    });
+
+    test('drifted leaf shadowed by an in-sync section: missing fragment is red', () => {
+      assert.ok(
+        lycheeToml.includes('/public/xx/docs/stored-shadowed/index\\.html$'),
+        'exclude_path covers the shadowed leaf',
+      );
+      assert.ok(
+        !lycheeToml.includes('/public/xx/docs/stored-shadowed('),
+        'fragment exclude is withheld for a directory two pages claim',
+      );
+      assert.match(
+        findError(result, 'gone-shadowed') ?? '',
+        /fragment/i,
+        'fragment is checked on the section Hugo serves',
       );
     });
 
@@ -364,8 +398,8 @@ describe(
     });
 
     test('no other reds: only the expected errors', () => {
-      // 6 = both-edited + control + the fallback page's four red links.
-      assert.equal(result.errors, 6, 'error count equals the expected reds');
+      // 7 = both-edited + control + the fallback page's five red links.
+      assert.equal(result.errors, 7, 'error count equals the expected reds');
     });
   },
 );

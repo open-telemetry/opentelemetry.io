@@ -42,7 +42,7 @@ export function excludePathPatternsOf(frontMatter, filePath) {
   if (!new RegExp(`^${FRONT_MATTER_KEY}:`, 'm').test(frontMatter)) return [];
   const fm = yamlLoad(frontMatter);
   const patterns = fm[FRONT_MATTER_KEY];
-  // A blank pattern would translate to `/public/`, excluding every page.
+  // An empty pattern would translate to `/public/`, excluding every page.
   if (
     !Array.isArray(patterns) ||
     patterns.length === 0 ||
@@ -56,7 +56,7 @@ export function excludePathPatternsOf(frontMatter, filePath) {
 }
 
 // If the page is a stored-drifted localized page (`drifted_from_default`
-// status `true` or `file not found`, the shared predicate in drift.mjs),
+// status `true` or `file not found`, per isDriftedStatus in drift.mjs),
 // return an end-anchored regex for its output directory relative to
 // `public/`; otherwise return undefined.
 export function driftedIgnoreDirOf(pageText, filePath) {
@@ -107,10 +107,10 @@ export function translate(pattern) {
   return `/public/${body.replace(/\$$/, '')}`;
 }
 
-// Map a page directory (`^DIR/$`, as from pageIgnoreDirOf; DIR is taken
-// literally and regex-escaped) to a lychee `exclude` regex matching only
-// fragment links into that page: `DIR#…` (the form lychee resolves directory
-// links to), `DIR/#…`, and `DIR/index.html#…`; anchored as in translate().
+// Map a page directory (`^DIR/$`, as from pageIgnoreDirOf) to a lychee
+// `exclude` regex matching only fragment links into that page: `DIR#…` (the
+// form lychee resolves directory links to), `DIR/#…`, and `DIR/index.html#…`.
+// DIR is matched literally (regex-escaped), with anchoring as in translate().
 export function fragmentExcludeOf(dir) {
   const escaped = pageDirOf(dir).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return `/public/${escaped}(/(index\\.html)?)?#`;
@@ -136,29 +136,36 @@ export function withFragmentExcludes(baseText, entries) {
   return lines.join('\n');
 }
 
-// Collect and translate the exclude_path entries for the given pages, given as
-// [filePath, fileText] pairs, plus any drift-pending ignore dirs: front-matter
-// patterns first (in file order), then drifted-page directories (sorted), then
-// drift-pending directories (sorted); de-duplicated, first-seen order. Also
-// returns `fragmentExcludes`, lychee `exclude` regexes for fragment links into
-// the drifted and drift-pending pages that `isBuilt(DIR)` accepts, in the same
-// order. A lychee `exclude` drops the whole matching link, page check
-// included, so the gate is what keeps the skip fragment-only: a page present
-// in the build is known to exist, and only its fragment goes unchecked; a
-// page absent from the build keeps failing as a missing page.
+// Collect and translate the exclude_path entries for the given pages
+// ([filePath, fileText] pairs) plus any drift-pending ignore dirs:
+// front-matter patterns first (in file order), then drifted-page directories
+// (sorted), then drift-pending directories (sorted), de-duplicated in
+// first-seen order. Also returns `fragmentExcludes`, lychee `exclude` regexes
+// for fragment links into the drifted and drift-pending pages, in the same
+// order, gated as follows. A lychee `exclude` drops the whole matching link,
+// page check included, so the skip stays fragment-only only when the page
+// lychee would have checked is the drifted page itself, known to exist:
+// `isBuilt(DIR)` must accept the directory (by default nothing is, so a caller
+// supplies the gate), and the drifted page must be its directory's only
+// content file (a leaf beside a same-path section is shadowed: Hugo serves
+// the section). A page failing either test gets no fragment exclude, so a
+// missing page keeps failing and a served in-sync page keeps its fragments
+// checked.
 export function toExcludePaths(
   pages,
   driftPendingDirs = [],
-  isBuilt = () => true,
+  isBuilt = () => false,
 ) {
   const patterns = [];
   const drifted = [];
+  const claims = new Map(); // output directory -> content files mapping to it
   for (const [filePath, text] of pages) {
+    const dir = pageIgnoreDirOf(filePath);
+    if (dir) claims.set(dir, (claims.get(dir) ?? 0) + 1);
     const fm = frontMatterOf(text);
     if (fm === undefined) continue;
     patterns.push(...excludePathPatternsOf(fm, filePath));
-    const dir = driftedIgnoreDirOf(text, filePath);
-    if (dir) drifted.push(dir);
+    if (dir && isDriftedStatus(parseStatus(text))) drifted.push(dir);
   }
   drifted.sort();
   const driftPending = [...driftPendingDirs].sort();
@@ -168,7 +175,7 @@ export function toExcludePaths(
   const fragmentExcludes = [
     ...new Set(
       [...drifted, ...driftPending]
-        .filter((dir) => isBuilt(pageDirOf(dir)))
+        .filter((dir) => claims.get(dir) === 1 && isBuilt(pageDirOf(dir)))
         .map(fragmentExcludeOf),
     ),
   ];
@@ -212,8 +219,8 @@ async function mainCLI() {
     withFragmentExcludes(base, fragmentExcludes),
     '# --- exclude_path (GENERATED) ---',
     '# Pages the link checker skips (blog pagination, old blog posts, drifted',
-    '# localized pages), derived from content front matter. Do not edit here;',
-    '# regenerate with:',
+    '# localized pages), derived from page front matter and drift status. Do',
+    '# not edit here; regenerate with:',
     '#   npm run generate:config:links',
     'exclude_path = [',
     ...entries.map((e) => `  '${e}',`),

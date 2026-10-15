@@ -68,10 +68,10 @@ Lychee runs over the built site (`public/`) using the generated, git-ignored
   - Links _from_ a drifted page aren't checked, since they may be stale.
   - Links _into_ a drifted page are checked, except for their fragments: the
     page can lack sections that its English counterpart has since gained, and
-    English pages shown as locale fallbacks still link to those sections. A link
-    into a page the build omitted still fails as a missing page. How the
-    generator realizes this with Lychee's whole-link `exclude`, and why that is
-    safe: `scripts/lychee/config/index.mjs`.
+    English pages shown as [locale fallbacks][] still link to those sections. A
+    link into a drifted page that the build omitted still fails as a missing
+    page. For how the generator implements this, and why that is safe, see
+    `toExcludePaths()` in `scripts/lychee/config/index.mjs`.
 
 Stored drift statuses lag English changes until the next [Housekeeping][] status
 sync is merged, so the generator also treats **drift-pending** pages as drifted:
@@ -175,6 +175,7 @@ build: it runs [`check:links:production-internal`](#production-internal).
 [Handling valid external links]: /docs/contributing/pr-checks/#handling-valid-external-links
 [Housekeeping]: ../ci-workflows/#housekeeping
 [link cache]: #link-cache
+[locale fallbacks]: ../localization/#hugo-mounts
 [link-cache]: https://github.com/chalin/link-cache#readme
 [Lychee]: https://lychee.cli.rs/
 [lychee-install]: https://lychee.cli.rs/guides/getting-started/

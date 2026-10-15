@@ -344,22 +344,55 @@ describe('toExcludePaths()', () => {
         page(`${FRONT_MATTER_KEY}:\n  - ^(../)?blog/2019/`),
       ],
       ['content/zh/docs/demo/index.md', page('drifted_from_default: true')],
+      ['content/ja/docs/pending.md', page('title: Copy, EN changed since')],
       ['content/ja/docs/plain.md', page('title: In sync')],
     ];
-    const { fragmentExcludes } = toExcludePaths(pages, [
-      '^zh/docs/demo/$', // already stored-drifted
-      '^ja/docs/pending/$',
-    ]);
+    const { fragmentExcludes } = toExcludePaths(
+      pages,
+      [
+        '^zh/docs/demo/$', // already stored-drifted
+        '^ja/docs/pending/$',
+      ],
+      () => true,
+    );
     assert.deepEqual(fragmentExcludes, [
       '/public/zh/docs/demo(/(index\\.html)?)?#',
       '/public/ja/docs/pending(/(index\\.html)?)?#',
     ]);
   });
 
+  test('fragment excludes are off unless the caller supplies the build gate', () => {
+    const pages = [
+      ['content/zh/docs/demo/index.md', page('drifted_from_default: true')],
+    ];
+    assert.deepEqual(toExcludePaths(pages).fragmentExcludes, []);
+  });
+
+  test('a drifted page shadowed by a same-directory page gets no fragment exclude', () => {
+    const pages = [
+      ['content/xx/docs/dup.md', page('drifted_from_default: file not found')],
+      ['content/xx/docs/dup/_index.md', page('title: In-sync section')],
+      ['content/xx/docs/solo.md', page('drifted_from_default: true')],
+    ];
+    const { entries, fragmentExcludes } = toExcludePaths(pages, [], () => true);
+    assert.deepEqual(fragmentExcludes, [
+      '/public/xx/docs/solo(/(index\\.html)?)?#',
+    ]);
+    assert.deepEqual(
+      entries,
+      [
+        '/public/xx/docs/dup/index\\.html$',
+        '/public/xx/docs/solo/index\\.html$',
+      ],
+      'exclude_path covers the shadowed page',
+    );
+  });
+
   test('a drifted page absent from the build gets no fragment exclude', () => {
     const pages = [
       ['content/zh/docs/demo/index.md', page('drifted_from_default: true')],
       ['content/zh/docs/unbuilt.md', page('drifted_from_default: true')],
+      ['content/ja/docs/pending-unbuilt.md', page('title: Copy, EN changed')],
     ];
     const isBuilt = (dir) => dir === 'zh/docs/demo';
     const { entries, fragmentExcludes } = toExcludePaths(
@@ -377,7 +410,7 @@ describe('toExcludePaths()', () => {
         '/public/zh/docs/unbuilt/index\\.html$',
         '/public/ja/docs/pending-unbuilt/index\\.html$',
       ],
-      'exclude_path still covers the unbuilt pages',
+      'exclude_path covers the unbuilt pages',
     );
   });
 });
