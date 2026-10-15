@@ -335,6 +335,7 @@ maintainers:
       - kotlin-triagers
       - semconv-android-approvers
       - semconv-client-approvers
+      - semconv-client-side-approvers
       - semconv-log-approvers
       - semconv-mobile-approvers
     html_url: https://github.com/breedx-splk
@@ -455,6 +456,7 @@ maintainers:
       - docs-fr-maintainers
       - proto-approvers
       - proto-triagers
+      - shared-workflows-approvers
       - specs-approvers
       - specs-maintainers
       - specs-triagers
@@ -999,6 +1001,7 @@ maintainers:
       - dotnet-instrumentation-triagers
       - dotnet-maintainers
       - dotnet-triagers
+      - shared-workflows-approvers
     html_url: https://github.com/Kielek
     avatar_url: https://avatars.githubusercontent.com/u/5972917?v=4
   - name: kmos
@@ -1509,6 +1512,7 @@ maintainers:
     teams:
       - docs-approvers
       - docs-maintainers
+      - docs-ro-approvers
       - docs-triagers
       - proto-approvers
       - proto-triagers
@@ -2595,6 +2599,9 @@ members:
   - name: abhide
     html_url: https://github.com/abhide
     avatar_url: https://avatars.githubusercontent.com/u/2238473?v=4
+  - name: Abhimanyu9988
+    html_url: https://github.com/Abhimanyu9988
+    avatar_url: https://avatars.githubusercontent.com/u/32825278?v=4
   - name: AbhiPrasad
     html_url: https://github.com/AbhiPrasad
     avatar_url: https://avatars.githubusercontent.com/u/18689448?v=4
