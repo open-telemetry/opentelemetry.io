@@ -112,10 +112,10 @@ For teams adopting an SDK or Contrib update:
    testing and rollout. If a temporary override is available and necessary,
    understand its security implications and plan to remove it.
 
-Keeping OpenTelemetry current remains important. This policy gives maintainers a
-clearer way to deliver necessary protections, and gives users the information to
-adopt them deliberately. Protecting the application that produces telemetry is
-part of providing observability people can depend on.
+This policy gives maintainers a clearer way to deliver necessary protections,
+and gives users the information to adopt them deliberately. Protecting the
+application that produces telemetry is part of providing observability people
+can depend on.
 
 [policy-pr]:
   https://github.com/open-telemetry/opentelemetry-specification/pull/5357
