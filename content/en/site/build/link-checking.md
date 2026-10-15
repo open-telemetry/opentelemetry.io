@@ -44,6 +44,13 @@ preview and passes `check:links`, yet returns 404 on the production site. The
 where unpublished pages don't exist. For how contributors read and fix its
 failures, see [`CHECK LINKS (production)`][pr-check-production].
 
+The production check is a complement to `check:links`, not a replacement. It
+checks fewer pages (the unpublished ones are absent) and only site-internal
+links, so a link into a draft or future-dated page fails there and nowhere else.
+External links, and the [link cache](#link-cache) that records their results,
+belong to `check:links`: an offline run fetches nothing and leaves the cache as
+it found it.
+
 ## Configuration
 
 Lychee runs over the built site (`public/`) using the generated, git-ignored
