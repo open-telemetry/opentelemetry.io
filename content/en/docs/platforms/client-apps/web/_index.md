@@ -63,8 +63,8 @@ Replace the local address with your OTLP/HTTP endpoint when deploying.
 
 Configure the receiver to accept requests from your application's origin using
 CORS. An HTTPS application also needs an HTTPS telemetry endpoint. See
-[Exporter configuration](/docs/languages/js/exporters/#configure-cors-headers). Any
-headers configured in browser code are visible to users, so do not include
+[Exporter configuration](/docs/languages/js/exporters/#configure-cors-headers).
+Any headers configured in browser code are visible to users, so do not include
 private credentials in the application bundle.
 
 ## Configuration
