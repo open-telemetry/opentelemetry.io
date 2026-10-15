@@ -286,7 +286,7 @@ security:
   funcs: # cspell:disable-line
     getenv: # cspell:disable-line
       # Netlify build env var
-      - ^(BRANCH|BUILD_ID|COMMIT_REF|CONTEXT|DEPLOY_ID|NETLIFY|PULL_REQUEST|REVIEW_ID)$
+      - ^(BRANCH|BUILD_ID|COMMIT_REF|CONTEXT|DEPLOY_ID|NETLIFY|PULL_REQUEST|REVIEW_ID|SITE_NAME)$
 #
 # mounts: are defined in module-template.yaml. See that file for processing
 # details. For information about Hugo config directories and files, see:

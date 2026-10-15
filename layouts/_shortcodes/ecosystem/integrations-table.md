@@ -15,7 +15,7 @@ Name[^1]     | OSS | Component |  Learn more
 {{ $lang := cond
     (eq .language "collector")
     (dict "name" "Collector")
-    (index hugo.Data.instrumentation .language)
+    (index $languages .language)
 -}}
 {{ $cncfTag := cond
     (isset . "cncfProjectLevel")

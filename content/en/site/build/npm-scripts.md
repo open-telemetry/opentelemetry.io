@@ -47,6 +47,18 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `serve:hugo`       | Start Hugo server with in-memory render.                       |
 | `serve`            | Start Hugo dev server (default; full render).                  |
 
+To build or serve the site with [website telemetry][], set the `SITE_NAME`
+environment variable to `opentelemetry`; your local browsing then exports spans
+to the project collector, as production does:
+
+```sh
+SITE_NAME=opentelemetry npm run serve
+```
+
+Prefer a full build over a [lean][build kinds] one when comparing telemetry with
+production's: shared chrome changes what the page fetches, so a lean build's
+telemetry differs.
+
 ## Checking
 
 | Script                 | Description                                                  |
@@ -163,4 +175,5 @@ script, use `npm run` _`SCRIPT_NAME`_.
 [lock-exact local setup]: ../dependencies/#install-contracts
 [lock-exact theme dependency install]: ../dependencies/#install-contracts
 [release cooldown]: ../dependencies/#release-cooldown
+[website telemetry]: ../../features/#website-telemetry
 <!-- prettier-ignore-end -->
