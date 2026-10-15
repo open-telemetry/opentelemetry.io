@@ -180,18 +180,15 @@ suite('missingPagesOf', () => {
 });
 
 suite('missingPagesReport', () => {
-  test('names the production-only cause, each source with its targets, and the docs', () => {
+  test('classifies the targets, lists each source with its targets, links the docs', () => {
     const report = missingPagesReport([
       {
         source: '/es/docs/zero-code/obi/network/quickstart/',
         targets: ['/es/docs/zero-code/obi/setup/kubernetes-helm/'],
       },
     ]);
-    assert.match(
-      report,
-      /1 link points? at a page that production doesn't serve/,
-    );
-    assert.match(report, /draft or future-dated/);
+    assert.match(report, /1 link points at a page that the production build/);
+    assert.match(report, /\(a draft or future-dated page\)/);
     assert.match(report, /\/es\/docs\/zero-code\/obi\/network\/quickstart\//);
     assert.match(
       report,

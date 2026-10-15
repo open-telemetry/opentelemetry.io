@@ -84,6 +84,39 @@ If any issues are found, run `npm run fix:markdown` to fix most issues
 automatically. For any remaining issues, run `npm run check:markdown` and apply
 the suggested changes manually.
 
+#### Always use a path for site-local links {#avoid-external-site-local-links}
+
+When linking to pages within the OpenTelemetry website, use local paths instead
+of external links; this check reports full URLs.
+
+To address the lint error, keep only the path part of the full URL:
+
+| ❌ Don't use                              | ✅ Use instead    |
+| ----------------------------------------- | ----------------- |
+| `https://opentelemetry.io/docs/concepts/` | `/docs/concepts/` |
+| `https://www.opentelemetry.io/blog/...`   | `/blog/...`       |
+
+Using local paths ensures that:
+
+- Site-local pages open in the same browser tab: external links open in a new
+  tab, which is not the desired behavior for site-local navigation
+- Localization link processing works as expected: links are automatically
+  prefixed with the appropriate language code
+- Local paths are easier to link-check and don't unnecessarily fill the link
+  cache
+
+<details>
+<summary>Note to maintainers</summary>
+
+The following code enforces the link requirement described in this section:
+
+- The `no-otel-io-external-urls` rule in
+  [`.markdownlint.yaml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml)
+- The script that auto-converts full URLs to local paths:
+  [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
+
+</details>
+
 ### `SPELLING check` {.notranslate lang=en}
 
 This check verifies that [all words are spelled correctly][spell checking] in
@@ -148,7 +181,7 @@ These two checks build the website and verify that its links are valid.
 
 > [!NOTE]
 >
-> For information on warnings about site-local links, see
+> For links to pages of this website, see
 > [Always use a path for site-local links](#avoid-external-site-local-links).
 
 #### Fix 404s
@@ -179,8 +212,7 @@ appending a `last-validated=YYYY-MM-DD` parameter, for example:
 ### `CHECK LINKS (production, internal)` {#check-links-production-internal .notranslate lang=en}
 
 This check fails when a page links to a **draft** or **future-dated** page: such
-a page renders in the deploy preview, but the production site omits it. The
-check's report lists each linking page with the targets it can't reach. Either
+a page renders in the deploy preview, but the production site omits it. Either
 link to a published page instead, or publish the target first. For what the
 check builds and covers, see
 [Links into unpublished pages](/site/build/link-checking/#production-internal).
@@ -207,39 +239,6 @@ instructions][#11928]. Then, either:
 If this check fails, review the `BUILD` log, under the `npm run log:build` step,
 for any other potential issues. Ask maintainers for help, if you are unsure how
 to recover.
-
-#### Always use a path for site-local links {#avoid-external-site-local-links}
-
-When linking to pages within the OpenTelemetry website, use local paths instead
-of external links. The [`MARKDOWN linter`](#markdown-linter) reports full URLs.
-
-To address the lint error, keep only the path part of the full URL:
-
-| ❌ Don't use                              | ✅ Use instead    |
-| ----------------------------------------- | ----------------- |
-| `https://opentelemetry.io/docs/concepts/` | `/docs/concepts/` |
-| `https://www.opentelemetry.io/blog/...`   | `/blog/...`       |
-
-Using local paths ensures that:
-
-- Site-local pages open in the same browser tab: external links open in a new
-  tab, which is not the desired behavior for site-local navigation
-- Localization link processing works as expected: links are automatically
-  prefixed with the appropriate language code
-- Local paths are easier to link-check and don't unnecessarily fill the link
-  cache
-
-<details>
-<summary>Note to maintainers</summary>
-
-The following code enforces the link requirement described in this section:
-
-- The render-link hook that emits this warning:
-  [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
-- The script that auto-converts full URLs to local paths:
-  [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
-
-</details>
 
 ### `LOCALIZATION` guidelines {.notranslate lang=en #localization}
 

@@ -85,24 +85,26 @@ function sitePathOf(fsPath) {
 }
 
 // Report for a production-build check that found links into pages the build
-// doesn't contain; empty when there are none.
+// doesn't contain; empty when there are none. The remedy lives at the linked
+// PR-check entry.
 export function missingPagesReport(groups) {
   const n = groups.reduce((sum, g) => sum + g.targets.length, 0);
   if (n === 0) return '';
-  const count = n === 1 ? '1 link points' : `${n} links point`;
+  const [count, pages, kinds] =
+    n === 1
+      ? ['1 link points', 'a page', 'a draft or future-dated page']
+      : [`${n} links point`, 'pages', 'drafts or future-dated pages'];
   return [
     RULE,
-    `ERROR: ${count} at a page that production doesn't serve:`,
+    `ERROR: ${count} at ${pages} that the production build doesn't contain`,
+    `(${kinds}):`,
     '',
     ...groups.flatMap(({ source, targets }) => [
       `  ${source}`,
       ...targets.map((t) => `    → ${t}`),
     ]),
     '',
-    'The target renders in the deploy preview but is a draft or future-dated',
-    'page, so production omits it. Link to a published page instead, or publish',
-    'the target first. See',
-    'https://opentelemetry.io/docs/contributing/pr-checks/#check-links-production-internal',
+    'See https://opentelemetry.io/docs/contributing/pr-checks/#check-links-production-internal',
     RULE,
   ].join('\n');
 }
