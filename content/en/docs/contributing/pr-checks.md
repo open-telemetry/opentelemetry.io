@@ -237,10 +237,12 @@ The following code enforces the link requirement described in this section:
 This check enforces mechanically-verifiable
 [localization guidelines](../localization/), such as
 [not copying images and other assets](../localization/#images) across
-localizations, that are not already covered by other checks.
+localizations and
+[not marking localized pages as drafts](../localization/#drafts), that are not
+already covered by other checks.
 
-If this check fails, run `npm run fix:l10n` locally and push the changes in a
-new commit.
+If this check fails, follow the remedy in its output. For rules that have a fix,
+run `npm run fix:l10n` locally and push the changes in a new commit.
 
 ### `TEST (excluding test:base)` {.notranslate lang=en}
 

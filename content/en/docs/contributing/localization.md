@@ -56,6 +56,7 @@ guidance offered in this section.
     particular for [headings](#headings)
 - Create **copies of images and other assets**, unless you
   [localize text in them](#images)
+- Mark a localized page as a [draft](#drafts), even when the English page is one
 - Add new or change:
   - **Content** that would be different from the originally intended meaning
   - Presentation **style**, including: _formatting_, _layout_, and _design_
@@ -163,6 +164,17 @@ This would be translated in French as:
 [l10n-check]: ../pr-checks/#localization
 [Mermaid]: https://mermaid.js.org
 [Page bundles]: https://gohugo.io/content-management/multilingual/#page-bundles
+
+### Draft pages {#drafts}
+
+Do **not** mark a localized page as a draft (`draft: true`), even when the
+English page is one. A localized page owns its path in your locale, so a draft
+blocks the English fallback there while the production build omits the draft
+itself: once the English page is published, readers of your locale get a 404
+instead of the English page. Translate a page once its English version is
+published.
+
+- This is enforced by a [`LOCALIZATION` guidelines][l10n-check] check.
 
 ### Include files {#includes}
 
