@@ -148,10 +148,10 @@ That job fails if any link check fails, and hands the cache it refreshed to the
 `CACHE updates committed?` job, which fails if the run left the committed
 `link-cache.jsonc` stale.
 
-The same workflow also builds the site as production does and shares that second
-artifact with the `CHECK LINKS (production)` job, the CI form of
-[`check:links:production`](#production). The job checks internal links only:
-external links were already checked over the first build.
+The same workflow runs `CHECK LINKS (production)`, the CI form of
+[`check:links:production`](#production), as its own job beside `BUILD`: it
+builds the site as production does and checks internal links only, since
+external links are already checked over the first build.
 
 <!-- prettier-ignore-start -->
 [Auto-update registry versions]: ../scripts/#update-registry-versionssh
