@@ -5,12 +5,12 @@ date: 2026-10-15
 author: '[Robert Pająk](https://github.com/pellared)'
 draft: true
 issue: 12105
-sig: Sponsorship pending
+sig: Specification
 cSpell:ignore: Pająk
 ---
 
 <!-- Publication draft: do not publish before specification PR #5357 is merged.
-Recheck the final policy, confirm SIG sponsorship, and update the date before
+Recheck the final policy, obtain sponsor review, and update the date before
 removing draft: true. This announcement is written for publication after adoption. -->
 
 OpenTelemetry has updated its client versioning policy to make room for security
