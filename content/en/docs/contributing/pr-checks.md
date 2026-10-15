@@ -176,6 +176,14 @@ appending a `last-validated=YYYY-MM-DD` parameter, for example:
 
 - `https:/some-example.org?link-check=no&last-validated=2026-08-02`
 
+### `CHECK LINKS (production)` {.notranslate lang=en #check-links-production}
+
+This check verifies site-internal links over a build of the site **as production
+builds it**, which omits draft and future-dated pages. A link that this check
+reports as `File not found`, while its target renders in the deploy preview,
+points at such a page: the preview includes drafts, the production site doesn't.
+Either link to a published page instead, or publish the target first.
+
 ### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
 
 If you added or changed an external link, the link checker records it in the

@@ -26,6 +26,7 @@ when unset.
 | `build:full`               | full         | yes           | no     |
 | `build:lean`               | lean         | yes           | no     |
 | `build:preview`            | full         | yes           | yes    |
+| `build:production:lean`    | lean         | no            | yes    |
 | `build:production`         | full         | no            | yes    |
 | `log:build` (CI artifact)  | `BUILD_KIND` | yes           | no     |
 | `netlify-build:preview`    | full         | yes           | yes    |

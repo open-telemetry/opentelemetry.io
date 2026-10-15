@@ -24,14 +24,26 @@ npm run check:links
 
 ## Common commands
 
-| Command                | Checking scope                                               |
-| ---------------------- | ------------------------------------------------------------ |
-| `check:links`          | Whole site                                                   |
-| `check:links:internal` | Whole site, offline (no external links)                      |
-| `fix:link-cache`       | Alias of `check:links`; use it to refresh the [link cache][] |
+| Command                  | Checking scope                                               |
+| ------------------------ | ------------------------------------------------------------ |
+| `check:links`            | Whole site                                                   |
+| `check:links:internal`   | Whole site, offline (no external links)                      |
+| `check:links:production` | [Production build](#production), offline                     |
+| `fix:link-cache`         | Alias of `check:links`; use it to refresh the [link cache][] |
 
 The `check:links` and `check:links:internal` scripts run over a build of
 `BUILD_KIND`. For details, see [Build kinds: full and lean][].
+
+## Links into unpublished pages {#production}
+
+Site builds include **draft** and **future-dated** pages, except the production
+build, which omits them. A link into such a page therefore works in a deploy
+preview and passes `check:links`, yet returns 404 on the production site. The
+`check:links:production` script catches this: it runs an offline check over a
+[lean production build][Build kinds: full and lean] (`build:production:lean`),
+where unpublished pages don't exist. A link that this check reports as
+`File not found` while the target renders in your preview points at a draft or
+future-dated page.
 
 ## Configuration
 
@@ -135,6 +147,11 @@ artifact with the `CHECK LINKS` job, so local runs and CI check the same build.
 That job fails if any link check fails, and hands the cache it refreshed to the
 `CACHE updates committed?` job, which fails if the run left the committed
 `link-cache.jsonc` stale.
+
+The same workflow also builds the site as production does and shares that second
+artifact with the `CHECK LINKS (production)` job, the CI form of
+[`check:links:production`](#production). The job checks internal links only:
+external links were already checked over the first build.
 
 <!-- prettier-ignore-start -->
 [Auto-update registry versions]: ../scripts/#update-registry-versionssh

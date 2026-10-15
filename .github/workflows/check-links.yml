@@ -179,3 +179,37 @@ jobs:
         with:
           node-version-file: .nvmrc
       - run: npm run test:public
+
+  # Production omits drafts and future-dated pages; the BUILD job's build
+  # includes them, so a link into such a page passes CHECK LINKS and 404s in
+  # production. This job builds the site as production does and checks its
+  # internal links; it runs beside BUILD rather than after it, so it adds no
+  # wall time. Offline: CHECK LINKS already covers the external links.
+  check-links-production:
+    name: CHECK LINKS (production)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm run ci:min
+      - run: npm run ci:prepare
+      - uses: ./.github/actions/install-lychee
+
+      # Same baseline deepening as CHECK LINKS: config generation needs it.
+      - name: Deepen history to the drift-status baseline
+        run: |
+          sha=$(sed -n 's/^commit: \([0-9a-f]\{40\}\)$/\1/p' data/l10n-drift.yaml)
+          if [[ ! "$sha" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error file=data/l10n-drift.yaml::Expected a single 'commit: FULL_SHA' line."
+            exit 1
+          fi
+          git fetch --depth=1 origin --end-of-options "$sha"
+
+      - name: Build as production does, then check links
+        run: npm run check:links:production

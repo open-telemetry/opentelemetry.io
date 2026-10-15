@@ -36,16 +36,17 @@ script, use `npm run` _`SCRIPT_NAME`_.
 
 ## Build and serve
 
-| Script             | Description                                                    |
-| ------------------ | -------------------------------------------------------------- |
-| `build:full`       | Build the full site. For details, see [Build kinds][].         |
-| `build:lean`       | Do a lean build of the site. For details, see [Build kinds][]. |
-| `build:preview`    | Full build with minification (e.g. for Netlify preview).       |
-| `build:production` | Production Hugo build with minification.                       |
-| `build`            | Build the site. Defaults to lean; see [Build kinds][].         |
-| `clean`            | Run `make clean`.                                              |
-| `serve:hugo`       | Start Hugo server with in-memory render.                       |
-| `serve`            | Start Hugo dev server (default; full render).                  |
+| Script                  | Description                                                             |
+| ----------------------- | ----------------------------------------------------------------------- |
+| `build:full`            | Build the full site. For details, see [Build kinds][].                  |
+| `build:lean`            | Do a lean build of the site. For details, see [Build kinds][].          |
+| `build:preview`         | Full build with minification (e.g. for Netlify preview).                |
+| `build:production:lean` | Lean production build (no drafts or future pages); see [Build kinds][]. |
+| `build:production`      | Production Hugo build with minification.                                |
+| `build`                 | Build the site. Defaults to lean; see [Build kinds][].                  |
+| `clean`                 | Run `make clean`.                                                       |
+| `serve:hugo`            | Start Hugo server with in-memory render.                                |
+| `serve`                 | Start Hugo dev server (default; full render).                           |
 
 To build or serve the site with [website telemetry][], set the `SITE_NAME`
 environment variable to `opentelemetry`; your local browsing then exports spans
@@ -61,25 +62,26 @@ telemetry differs.
 
 ## Checking
 
-| Script                 | Description                                                  |
-| ---------------------- | ------------------------------------------------------------ |
-| `check:all`            | Run all check scripts in sequence.                           |
-| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                 |
-| `check:codeowners`     | Verify CODEOWNERS locale section matches the registry.       |
-| `check:collector-sync` | Run collector-sync checks.                                   |
-| `check:expired`        | List expired content (by front matter).                      |
-| `check:filenames`      | [Validate file naming & detect obsolete files/folders][fn].  |
-| `check:format`         | Prettier and prose-wrap checks.                              |
-| `check:i18n`           | Validate localization front matter (`default_lang_commit`).  |
-| `check:l10n`           | Run localization checks.                                     |
-| `check:links:internal` | Offline link check (internal links only); lean build first.  |
-| `check:links`          | [Link check][] the whole site with Lychee; lean build first. |
-| `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                  |
-| `check:markdown`       | Markdown lint (content and projects).                        |
-| `check:registry`       | Validate registry YAML under `data/registry/`.               |
-| `check:spelling`       | cspell over content, data, and layout Markdown.              |
-| `check:text`           | textlint over content and data.                              |
-| `check`                | Run the most commonly needed check scripts in sequence.      |
+| Script                   | Description                                                                                |
+| ------------------------ | ------------------------------------------------------------------------------------------ |
+| `check:all`              | Run all check scripts in sequence.                                                         |
+| `check:code-excerpts`    | Check code excerpts, fail if updates needed.                                               |
+| `check:codeowners`       | Verify CODEOWNERS locale section matches the registry.                                     |
+| `check:collector-sync`   | Run collector-sync checks.                                                                 |
+| `check:expired`          | List expired content (by front matter).                                                    |
+| `check:filenames`        | [Validate file naming & detect obsolete files/folders][fn].                                |
+| `check:format`           | Prettier and prose-wrap checks.                                                            |
+| `check:i18n`             | Validate localization front matter (`default_lang_commit`).                                |
+| `check:l10n`             | Run localization checks.                                                                   |
+| `check:links:internal`   | Offline link check (internal links only); lean build first.                                |
+| `check:links:production` | Offline link check over a lean production build: catches [links into unpublished pages][]. |
+| `check:links`            | [Link check][] the whole site with Lychee; lean build first.                               |
+| `check:markdown:specs`   | Markdown lint for spec fragments in `tmp/`.                                                |
+| `check:markdown`         | Markdown lint (content and projects).                                                      |
+| `check:registry`         | Validate registry YAML under `data/registry/`.                                             |
+| `check:spelling`         | cspell over content, data, and layout Markdown.                                            |
+| `check:text`             | textlint over content and data.                                                            |
+| `check`                  | Run the most commonly needed check scripts in sequence.                                    |
 
 ## Fixing
 
@@ -170,6 +172,7 @@ telemetry differs.
 [fetch the pinned Hugo binary]: ../dependencies/#install-contracts
 [fn]: /docs/contributing/pr-checks/#filename-check
 [link check]: ../link-checking/
+[links into unpublished pages]: ../link-checking/#production
 [locale-auto-merge]: ../ci-workflows/#locale-auto-merge
 [lock-exact inert install]: ../dependencies/#install-contracts
 [lock-exact local setup]: ../dependencies/#install-contracts
