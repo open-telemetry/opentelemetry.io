@@ -2,6 +2,8 @@
 // messages that make a link-check outcome actionable. Process wiring lives in
 // ./cli.mjs; tests in ./index.test.mjs.
 
+import { fileURLToPath } from 'node:url';
+
 const RULE = '='.repeat(74);
 
 // Loud end-of-run notice for a successful check that modified the committed
@@ -54,8 +56,8 @@ export function deadLinksReport(failures) {
 
 // Pages a production build didn't produce, from an offline lychee run over
 // its public/: `file://` targets reported as missing, grouped under the source
-// page that links to them, both as site paths (`/docs/x/`). Missing fragments
-// on existing pages stay with the generic report.
+// page that links to them, both as paths under public/. Missing fragments on
+// existing pages stay with the generic report.
 export function missingPagesOf(output) {
   return groupMissingPages(output).groups;
 }
@@ -67,17 +69,18 @@ function groupMissingPages(output) {
   const consumed = new Set();
   let source = null;
   for (const line of output.split('\n')) {
-    const header = line.match(/^\[(.*\/public\/.*)\]:$/);
+    const header = line.match(/^\[(.*)\]:$/);
     if (header) {
       source = sitePathOf(header[1]);
       continue;
     }
     const failure = line.match(
-      /^\[[A-Z0-9]+\] (file:\/\/\S+\/public(?:\/\S*)?) \(at \d+:\d+\) \| (File not found|Cannot find index file)/,
+      /^\[[A-Z0-9]+\] (file:\/\/\S+) \(at \d+:\d+\) \| (File not found|Cannot find index file)/,
     );
     if (!failure || !source) continue;
+    const target = sitePathOf(filePathOf(failure[1]));
+    if (!target) continue;
     consumed.add(failure[1]);
-    const target = sitePathOf(failure[1]);
     const targets = bySource.get(source) ?? [];
     if (!targets.includes(target)) targets.push(target);
     bySource.set(source, targets);
@@ -88,25 +91,19 @@ function groupMissingPages(output) {
   };
 }
 
-// `/abs/checkout/public/docs/x/index.html#frag` -> `/docs/x/`: the build
-// output is the last `/public` segment, whatever the checkout path contains.
-// A target that names a file (`/docs/x.pdf`) keeps its form; a dotted
-// directory (`/docs/v1.2`) is indistinguishable by text and comes out the same
-// way.
+// `/abs/checkout/public/docs/x` -> `/docs/x`; null outside a public/ directory.
 function sitePathOf(fsPath) {
-  const path = decodeSafely(fsPath.replace(/[?#].*$/, ''));
-  const rel = path
-    .replace(/^.*\/public(?=\/|$)/, '')
-    .replace(/\/index\.html$/, '');
-  if (/\.[a-z0-9]+$/i.test(rel)) return rel;
-  return rel.replace(/\/?$/, '/');
+  const i = fsPath.indexOf('/public/');
+  return i < 0 ? null : fsPath.slice(i + '/public'.length);
 }
 
-function decodeSafely(s) {
+// Query and fragment drop out; a URL that isn't a well-formed file: URL maps
+// nowhere (and stays with the generic report).
+function filePathOf(url) {
   try {
-    return decodeURIComponent(s);
+    return fileURLToPath(url);
   } catch {
-    return s;
+    return '';
   }
 }
 

@@ -197,8 +197,8 @@ appending a `last-validated=YYYY-MM-DD` parameter, for example:
 This check fails when a page links to a **draft** or **future-dated** page: such
 a page renders in the deploy preview, but the production site omits it. Either
 link to a published page instead, or publish the target first. If `CHECK LINKS`
-reports the same link, the target doesn't exist at all: fix the link. For what
-the check builds and covers, see
+reports the same page as missing, it doesn't exist at all: fix the link. For
+what the check builds and covers, see
 [Links into unpublished pages](/site/build/link-checking/#production-internal).
 
 ### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}

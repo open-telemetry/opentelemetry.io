@@ -28,9 +28,9 @@ const root = path.join(
 // are parsed for the reports. Kept in sync with package.json by the wiring
 // drift guard in ./index.test.mjs.
 //
-// Output streams through as it arrives — the run takes minutes (site build +
-// link check), so buffering it until exit would leave the terminal frozen —
-// while a copy accumulates for the reports.
+// Output streams through as it arrives: a link check can take minutes, and
+// buffering it until exit would leave the terminal frozen. A copy accumulates
+// for the reports.
 const args = process.argv.slice(2);
 const production = args.includes('--production');
 const bin = path.join(root, 'node_modules', '.bin', 'lychee-norm-cache');

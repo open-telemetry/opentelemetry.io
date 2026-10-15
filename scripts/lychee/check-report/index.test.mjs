@@ -162,15 +162,15 @@ suite('missingPagesOf', () => {
 🔍 275770 Total (in 8s 800ms) 🔗 74449 Unique ✅ 183749 OK 🚫 3 Errors 👻 92020 Excluded
 `;
 
-  test('groups missing targets under their source pages, as site paths', () => {
+  test('groups missing targets under their source pages, as paths under public/', () => {
     assert.deepEqual(missingPagesOf(offlineOutput), [
       {
-        source: '/es/docs/zero-code/obi/network/quickstart/',
-        targets: ['/es/docs/zero-code/obi/setup/kubernetes-helm/'],
+        source: '/es/docs/zero-code/obi/network/quickstart/index.html',
+        targets: ['/es/docs/zero-code/obi/setup/kubernetes-helm'],
       },
       {
-        source: '/docs/collector/',
-        targets: ['/docs/collector/deploy/choose/'],
+        source: '/docs/collector/index.html',
+        targets: ['/docs/collector/deploy/choose'],
       },
     ]);
   });
@@ -181,49 +181,38 @@ suite('missingPagesOf', () => {
     assert.deepEqual(missingPagesOf('🔍 9 Total 🚫 0 Errors\n'), []);
   });
 
-  test('leaves missing fragments to the generic report; files keep their path', () => {
+  test('leaves missing fragments to the generic report', () => {
     const out = `[${root}/public/docs/a/index.html]:
 [ERROR] file://${root}/public/docs/b#nope (at 1:22) | Cannot find fragment
 [ERROR] file://${root}/public/docs/x.pdf (at 1:55) | File not found. Check if file exists and path is correct
 [ERROR] file://${root}/public/docs/missing (at 1:85) | File not found. Check if file exists and path is correct
 `;
     assert.deepEqual(missingPagesOf(out), [
-      { source: '/docs/a/', targets: ['/docs/x.pdf', '/docs/missing/'] },
-    ]);
-  });
-
-  test('reports a page once whatever fragment, query, or index.html the link carries', () => {
-    const out = `[${root}/public/docs/a/index.html]:
-[ERROR] file://${root}/public/docs/draft#sec (at 1:1) | File not found. Check if file exists and path is correct
-[ERROR] file://${root}/public/docs/draft?q=1 (at 1:2) | File not found. Check if file exists and path is correct
-[ERROR] file://${root}/public/docs/draft/index.html (at 1:3) | File not found. Check if file exists and path is correct
-[ERROR] file://${root}/public/docs/v1.2 (at 1:4) | File not found. Check if file exists and path is correct
-[ERROR] file://${root}/public/docs/caf%E9 (at 1:5) | File not found. Check if file exists and path is correct
-`;
-    assert.deepEqual(missingPagesOf(out), [
       {
-        source: '/docs/a/',
-        targets: ['/docs/draft/', '/docs/v1.2', '/docs/caf%E9/'],
+        source: '/docs/a/index.html',
+        targets: ['/docs/x.pdf', '/docs/missing'],
       },
     ]);
   });
 
-  test('splits at the public/ segment, not at a segment that merely starts with it', () => {
-    const out = `[/repo/public/docs/public-page/index.html]:
-[ERROR] file:///repo/public/docs/publication (at 1:1) | File not found. Check if file exists and path is correct
+  test('reports a page once whatever fragment or query the link carries; decodes the path', () => {
+    const out = `[${root}/public/docs/a/index.html]:
+[ERROR] file://${root}/public/docs/draft#sec (at 1:1) | File not found. Check if file exists and path is correct
+[ERROR] file://${root}/public/docs/draft?q=1 (at 1:2) | File not found. Check if file exists and path is correct
+[ERROR] file://${root}/public/docs/caf%C3%A9 (at 1:5) | File not found. Check if file exists and path is correct
 `;
     assert.deepEqual(missingPagesOf(out), [
-      { source: '/docs/public-page/', targets: ['/docs/publication/'] },
+      { source: '/docs/a/index.html', targets: ['/docs/draft', '/docs/café'] },
     ]);
   });
 
-  test('tolerates spaces in the checkout path and an earlier /public/ segment', () => {
-    const odd = '/home/public/site work';
-    const out = `[${odd}/public/docs/a/index.html]:
-[ERROR] file://${odd.replace(' ', '%20')}/public/docs/draft (at 1:1) | File not found. Check if file exists and path is correct
+  test('cuts at the first public/ directory; later ones belong to the site path', () => {
+    const out = `[/repo/public/docs/public/a/index.html]:
+[ERROR] file:///repo/public/docs/publication (at 1:1) | File not found. Check if file exists and path is correct
+[ERROR] file:///elsewhere/docs/b (at 1:2) | File not found. Check if file exists and path is correct
 `;
     assert.deepEqual(missingPagesOf(out), [
-      { source: '/docs/a/', targets: ['/docs/draft/'] },
+      { source: '/docs/public/a/index.html', targets: ['/docs/publication'] },
     ]);
   });
 });
@@ -240,7 +229,7 @@ suite('partitionFailures', () => {
       production: true,
     });
     assert.deepEqual(missingPages, [
-      { source: '/docs/a/', targets: ['/docs/draft/'] },
+      { source: '/docs/a/index.html', targets: ['/docs/draft'] },
     ]);
     assert.deepEqual(other, [
       { status: '404', url: 'https://gone.test/' },
@@ -256,21 +245,25 @@ suite('partitionFailures', () => {
     const { missingPages, other } = partitionFailures(out, {
       production: true,
     });
-    assert.deepEqual(missingPages, [{ source: '/a/', targets: ['/docs/p/'] }]);
+    assert.deepEqual(missingPages, [
+      { source: '/a/index.html', targets: ['/docs/p'] },
+    ]);
     assert.deepEqual(other, [
       { status: 'ERROR', url: 'file:///s/public/docs/p#bad' },
     ]);
   });
 
-  test('reports a missing site root', () => {
+  test('leaves a malformed file: URL to the generic report', () => {
     const out = `[/s/public/a/index.html]:
-[ERROR] file:///s/public (at 1:1) | Cannot find index file within directory: An index file (index.html) is required
+[ERROR] file:///s/public/docs/caf%E9 (at 1:1) | File not found. Check if file exists and path is correct
 `;
     const { missingPages, other } = partitionFailures(out, {
       production: true,
     });
-    assert.deepEqual(missingPages, [{ source: '/a/', targets: ['/'] }]);
-    assert.deepEqual(other, []);
+    assert.deepEqual(missingPages, []);
+    assert.deepEqual(other, [
+      { status: 'ERROR', url: 'file:///s/public/docs/caf%E9' },
+    ]);
   });
 
   test('classifies nothing outside a production run: that build has the drafts', () => {
@@ -287,8 +280,8 @@ suite('missingPagesReport', () => {
   test('classifies the targets, lists each source with its targets, links the docs', () => {
     const report = missingPagesReport([
       {
-        source: '/es/docs/zero-code/obi/network/quickstart/',
-        targets: ['/es/docs/zero-code/obi/setup/kubernetes-helm/'],
+        source: '/es/docs/zero-code/obi/network/quickstart/index.html',
+        targets: ['/es/docs/zero-code/obi/setup/kubernetes-helm'],
       },
     ]);
     assert.match(
@@ -299,7 +292,7 @@ suite('missingPagesReport', () => {
     assert.match(report, /\/es\/docs\/zero-code\/obi\/network\/quickstart\//);
     assert.match(
       report,
-      /→ \/es\/docs\/zero-code\/obi\/setup\/kubernetes-helm\//,
+      /→ \/es\/docs\/zero-code\/obi\/setup\/kubernetes-helm/,
     );
     assert.match(
       report,
