@@ -1,6 +1,7 @@
 ---
 title: Funciones como servicio
 linkTitle: FaaS
+cSpell:ignore: precompiladas
 description: >-
   OpenTelemetry admite varios métodos de monitorización de funciones como
   servicio ofrecidas por distintos proveedores de nube
