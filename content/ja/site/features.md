@@ -4,6 +4,7 @@ description: >-
   主要なサイト機能の概要と、それぞれの主なリファレンスへのリンク。
 weight: 20
 default_lang_commit: 1338cb2423fbaba7da27b8e94d00293aac6922cc
+drifted_from_default: true
 ---
 
 ## エージェントフレンドリーなコンテンツ配信 {#agent-friendly-content-delivery}
