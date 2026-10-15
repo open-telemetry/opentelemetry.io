@@ -180,11 +180,9 @@ jobs:
           node-version-file: .nvmrc
       - run: npm run test:public
 
-  # Production omits drafts and future-dated pages; the BUILD job's build
-  # includes them, so a link into such a page passes CHECK LINKS and 404s in
-  # production. This job builds the site as production does and checks its
-  # internal links; it runs beside BUILD rather than after it, so it adds no
-  # wall time. Offline: CHECK LINKS already covers the external links.
+  # Links into pages that production omits (drafts, future-dated pages):
+  # https://opentelemetry.io/site/build/link-checking/#production. Runs beside
+  # BUILD, not after it; offline, since CHECK LINKS covers external links.
   check-links-production:
     name: CHECK LINKS (production)
     runs-on: ubuntu-latest

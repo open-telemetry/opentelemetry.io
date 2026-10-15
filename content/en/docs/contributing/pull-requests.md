@@ -446,10 +446,9 @@ If you submit a PR, Netlify creates a [deploy preview][] so that you can review
 your changes. Once your PR is merged, Netlify deploys the updated site to the
 production server.
 
-> **Note**: PR previews include _draft pages_, but production builds do not. A
-> link to a draft page works in the preview and fails on the production site;
-> the [`CHECK LINKS (production)`](../pr-checks/#check-links-production) check
-> catches such links.
+> **Note**: PR previews include _draft pages_, but production builds do not; the
+> [`CHECK LINKS (production)`](../pr-checks/#check-links-production) check
+> catches links into them.
 
 To see deploy logs and more, visit the project's [dashboard][] -- Netlify login
 required.

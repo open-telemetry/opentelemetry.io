@@ -41,9 +41,8 @@ build, which omits them. A link into such a page therefore works in a deploy
 preview and passes `check:links`, yet returns 404 on the production site. The
 `check:links:production` script catches this: it runs an offline check over a
 [lean production build][Build kinds: full and lean] (`build:production:lean`),
-where unpublished pages don't exist. A link that this check reports as
-`File not found` while the target renders in your preview points at a draft or
-future-dated page.
+where unpublished pages don't exist. For how contributors read and fix its
+failures, see [`CHECK LINKS (production)`][pr-check-production].
 
 ## Configuration
 
@@ -149,9 +148,7 @@ That job fails if any link check fails, and hands the cache it refreshed to the
 `link-cache.jsonc` stale.
 
 The same workflow runs `CHECK LINKS (production)`, the CI form of
-[`check:links:production`](#production), as its own job beside `BUILD`: it
-builds the site as production does and checks internal links only, since
-external links are already checked over the first build.
+[`check:links:production`](#production), as its own job beside `BUILD`.
 
 <!-- prettier-ignore-start -->
 [Auto-update registry versions]: ../scripts/#update-registry-versionssh
@@ -169,5 +166,6 @@ external links are already checked over the first build.
 [lychee-install]: https://lychee.cli.rs/guides/getting-started/
 [Operating model]: https://github.com/chalin/link-cache/blob/main/docs/operating-model.md
 [`lychee.base.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/lychee.base.toml
+[pr-check-production]: /docs/contributing/pr-checks/#check-links-production
 [pr-checks]: /docs/contributing/pr-checks/#cache-updates-committed
 <!-- prettier-ignore-end -->
