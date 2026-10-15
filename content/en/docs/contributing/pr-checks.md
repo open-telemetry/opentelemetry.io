@@ -84,27 +84,6 @@ If any issues are found, run `npm run fix:markdown` to fix most issues
 automatically. For any remaining issues, run `npm run check:markdown` and apply
 the suggested changes manually.
 
-#### Always use a path for site-local links {#avoid-external-site-local-links}
-
-When linking to pages within the OpenTelemetry website, use local paths instead
-of external links; this check reports full URLs.
-
-To address the lint error, keep only the path part of the full URL:
-
-| ❌ Don't use                              | ✅ Use instead    |
-| ----------------------------------------- | ----------------- |
-| `https://opentelemetry.io/docs/concepts/` | `/docs/concepts/` |
-| `https://www.opentelemetry.io/blog/...`   | `/blog/...`       |
-
-Using local paths ensures that:
-
-- Site-local pages open in the same browser tab: external links open in a new
-  tab, which is not the desired behavior for site-local navigation
-- Localization link processing works as expected: links are automatically
-  prefixed with the appropriate language code
-- Local paths are easier to link-check and don't unnecessarily fill the link
-  cache
-
 ### `SPELLING check` {.notranslate lang=en}
 
 This check verifies that [all words are spelled correctly][spell checking] in
