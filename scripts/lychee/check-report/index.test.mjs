@@ -1,7 +1,13 @@
 import { test, suite } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { cacheUpdatedNotice, deadLinksReport, failedUrlsOf } from './index.mjs';
+import {
+  cacheUpdatedNotice,
+  deadLinksReport,
+  failedUrlsOf,
+  missingPagesOf,
+  missingPagesReport,
+} from './index.mjs';
 
 suite('failedUrlsOf', () => {
   const lycheeOutput = `Issues found in 1 input. Find details below.
@@ -116,9 +122,11 @@ suite('wiring drift guard', () => {
       new URL('../../../.github/workflows/check-links.yml', import.meta.url),
       'utf8',
     );
-    const report = deadLinksReport([{ status: '404', url: 'https://x.test/' }]);
+    const reports =
+      deadLinksReport([{ status: '404', url: 'https://x.test/' }]) +
+      missingPagesReport([{ source: '/a/', targets: ['/b/'] }]);
     const anchors = [
-      ...(workflow + report).matchAll(/pr-checks\/#([a-z0-9-]+)/g),
+      ...(workflow + reports).matchAll(/pr-checks\/#([a-z0-9-]+)/g),
     ].map((m) => m[1]);
     assert.ok(anchors.length > 0, 'at least one pr-checks anchor is cited');
     const doc = fs.readFileSync(
@@ -134,5 +142,65 @@ suite('wiring drift guard', () => {
         `pr-checks.md declares the {#${anchor}} anchor`,
       );
     }
+  });
+});
+
+suite('missingPagesOf', () => {
+  const root = '/home/runner/work/opentelemetry.io/opentelemetry.io';
+  const offlineOutput = `Issues found in 2 inputs. Find details below.
+
+[${root}/public/es/docs/zero-code/obi/network/quickstart/index.html]:
+[ERROR] file://${root}/public/es/docs/zero-code/obi/setup/kubernetes-helm (at 14:10) | File not found. Check if file exists and path is correct
+
+[${root}/public/docs/collector/index.html]:
+[ERROR] file://${root}/public/docs/collector/deploy/choose (at 3:7) | Cannot find index file within directory: An index file (index.html) is required
+[ERROR] file://${root}/public/docs/collector/deploy/choose (at 9:7) | Cannot find index file within directory: An index file (index.html) is required
+
+🔍 275770 Total (in 8s 800ms) 🔗 74449 Unique ✅ 183749 OK 🚫 3 Errors 👻 92020 Excluded
+`;
+
+  test('groups missing targets under their source pages, as site paths', () => {
+    assert.deepEqual(missingPagesOf(offlineOutput), [
+      {
+        source: '/es/docs/zero-code/obi/network/quickstart/',
+        targets: ['/es/docs/zero-code/obi/setup/kubernetes-helm/'],
+      },
+      {
+        source: '/docs/collector/',
+        targets: ['/docs/collector/deploy/choose/'],
+      },
+    ]);
+  });
+
+  test('ignores non-file failures and is empty for a clean run', () => {
+    const http = `[${root}/public/docs/index.html]:\n[404] https://gone.test/ (at 1:1) | Rejected status code: 404 Not Found\n`;
+    assert.deepEqual(missingPagesOf(http), []);
+    assert.deepEqual(missingPagesOf('🔍 9 Total 🚫 0 Errors\n'), []);
+  });
+});
+
+suite('missingPagesReport', () => {
+  test('names the production-only cause, each source with its targets, and the docs', () => {
+    const report = missingPagesReport([
+      {
+        source: '/es/docs/zero-code/obi/network/quickstart/',
+        targets: ['/es/docs/zero-code/obi/setup/kubernetes-helm/'],
+      },
+    ]);
+    assert.match(
+      report,
+      /1 link points? at a page that production doesn't serve/,
+    );
+    assert.match(report, /draft or future-dated/);
+    assert.match(report, /\/es\/docs\/zero-code\/obi\/network\/quickstart\//);
+    assert.match(
+      report,
+      /→ \/es\/docs\/zero-code\/obi\/setup\/kubernetes-helm\//,
+    );
+    assert.match(report, /pr-checks\/#check-links-production-internal/);
+  });
+
+  test('is empty when there are no missing pages', () => {
+    assert.equal(missingPagesReport([]), '');
   });
 });

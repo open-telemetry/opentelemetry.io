@@ -40,8 +40,9 @@ Non-production [site builds][build-kinds] include **draft** and **future-dated**
 pages, and production builds omit them. A link into such a page therefore works
 in a deploy preview and passes `check:links`, yet returns 404 on the production
 site. The `check:links:production-internal` script catches this: it runs an
-offline check over a [lean][build-kinds] production build, where unpublished
-pages don't exist. For how contributors read and fix its failures, see
+offline check over a [lean][build-kinds] production build, and reports each page
+that links to a target the build didn't produce. For the contributor's view of a
+failure, see
 [`CHECK LINKS (production, internal)`][pr-check-production-internal].
 
 The production check complements `check:links`; it doesn't replace it. Links

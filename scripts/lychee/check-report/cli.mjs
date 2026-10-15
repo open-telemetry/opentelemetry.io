@@ -6,15 +6,24 @@
 //   the cache change gets committed with the PR.
 // - Failure with genuinely dead links: name them and say that nothing
 //   cache-side can fix them (also in the step summary when run in CI).
+// - Failure of the offline production-build check: name the pages that
+//   production doesn't serve, under the pages that link to them.
 //
-// Used by `check:links` — locally and in CI. The check-links.yml PR checks
-// are the exception: they invoke `_check:links` directly.
+// Used by `check:links` and `check:links:production-internal`, locally and in
+// CI; lychee arguments pass through. The `CHECK LINKS` PR job is the
+// exception: it invokes `_check:links` directly.
 
 import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { cacheUpdatedNotice, deadLinksReport, failedUrlsOf } from './index.mjs';
+import {
+  cacheUpdatedNotice,
+  deadLinksReport,
+  failedUrlsOf,
+  missingPagesOf,
+  missingPagesReport,
+} from './index.mjs';
 
 const root = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -56,10 +65,16 @@ child.on('close', (code) => {
   if (status === 0) {
     if (cacheModified()) console.log(cacheUpdatedNotice());
   } else {
-    const report = deadLinksReport(failedUrlsOf(output));
+    const missing = missingPagesOf(output);
+    const report = missing.length
+      ? missingPagesReport(missing)
+      : deadLinksReport(failedUrlsOf(output));
     if (report) {
       console.log(report);
-      appendToStepSummary(report);
+      appendToStepSummary(
+        report,
+        missing.length ? 'Links into unpublished pages' : 'Unreachable links',
+      );
     }
   }
   // Not process.exit(status): a hard exit can drop buffered stdout/stderr
@@ -69,12 +84,12 @@ child.on('close', (code) => {
 
 // In CI (e.g., a bot `fix:link-cache` run), surface the report in the
 // workflow step summary as well.
-function appendToStepSummary(report) {
+function appendToStepSummary(report, title) {
   const summaryPath = process.env.GITHUB_STEP_SUMMARY;
   if (!summaryPath) return;
   fs.appendFileSync(
     summaryPath,
-    `### Unreachable links\n\n\`\`\`text\n${report}\n\`\`\`\n`,
+    `### ${title}\n\n\`\`\`text\n${report}\n\`\`\`\n`,
   );
 }
 

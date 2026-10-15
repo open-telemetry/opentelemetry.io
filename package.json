@@ -77,7 +77,7 @@
     "check:l10n:do-not-copy-images-etc": "node scripts/validate/l10n-do-not-copy-images-etc/index.mjs",
     "check:l10n": "npm run seq -- check:l10n:do-not-copy-images-etc",
     "check:links:internal": "npm run _precheck:links && npm run _check:links -- --offline",
-    "check:links:production-internal": "npm run -s lean -- build:production && npm run generate:config:links && npm run _check:links -- --offline",
+    "check:links:production-internal": "npm run -s lean -- build:production && npm run generate:config:links && node scripts/lychee/check-report/cli.mjs --offline",
     "check:links": "npm run _precheck:links && node scripts/lychee/check-report/cli.mjs",
     "check:markdown:specs": "npm run -s check:markdown:specs::pre && markdownlint-cli2 'tmp/(otel|otlp|semconv)/**/*.md'",
     "check:markdown:specs::pre": "mkdir -p tmp && cp .markdownlint-for-specs.yml tmp/.markdownlint.yml",
