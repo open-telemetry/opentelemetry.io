@@ -97,6 +97,10 @@ const pageDirOf = (dir) => dir.replace(/^\^/, '').replace(/\/\$$/, '');
 //
 //   `^bn/docs/demo/$`        (a single page)   -> /public/bn/docs/demo/index\.html$
 //   `^(../)?blog/20(19|2.)/` (a whole subtree) -> /public/(../)?blog/20(19|2.)/
+//
+// Anchoring on `/public/` (here and in fragmentExcludeOf) assumes that no
+// site URL has a `public` path segment, so the build directory is the only
+// match; the site has none.
 export function translate(pattern) {
   const body = pattern.replace(/^\^/, '');
   if (body.endsWith('/$')) {
@@ -108,7 +112,7 @@ export function translate(pattern) {
 // Map a page directory (`^DIR/$`, as from pageIgnoreDirOf; DIR is taken
 // literally and regex-escaped) to a lychee `exclude` regex matching only
 // fragment links into that page: `DIR#…` (the form lychee resolves directory
-// links to), `DIR/#…`, and `DIR/index.html#…`.
+// links to), `DIR/#…`, and `DIR/index.html#…`; anchored as in translate().
 export function fragmentExcludeOf(dir) {
   const escaped = pageDirOf(dir).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return `/public/${escaped}(/(index\\.html)?)?#`;
