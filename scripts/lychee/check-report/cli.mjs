@@ -2,15 +2,14 @@
 // Run the site link check (lychee-norm-cache) and make the outcome
 // actionable: a notice when the committed link cache changed, and reports
 // that name what failed and where the fix is (also in the CI step summary).
-// `--production` is this wrapper's flag; other arguments pass through to
-// lychee.
+// `--production` is this wrapper's flag; other arguments, extra inputs
+// included, pass through to lychee.
 
 import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  ROOT_MARKDOWN_GLOB,
   cacheUpdatedNotice,
   deadLinksReport,
   missingPagesReport,
@@ -36,7 +35,7 @@ const offline = args.includes('--offline');
 const bin = path.join(root, 'node_modules', '.bin', 'lychee-norm-cache');
 const child = spawn(
   bin,
-  [...args.filter((a) => a !== '--production'), ROOT_MARKDOWN_GLOB],
+  args.filter((a) => a !== '--production'),
   {
     cwd: root,
     stdio: ['inherit', 'pipe', 'pipe'],

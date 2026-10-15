@@ -12,7 +12,7 @@
     "_check:format:any": "npm run __check:format -- --check --ignore-path ''",
     "_check:format:nowrap": "npm run __check:format:nowrap -- content/ja content/uk content/zh",
     "_check:format": "npm run __check:format -- --check .",
-    "_check:links": "npm run generate:config:links && node scripts/lychee/check-report/cli.mjs",
+    "_check:links": "npm run generate:config:links && node scripts/lychee/check-report/cli.mjs *.md",
     "_check:registry": "gulp validate-registry",
     "_check:text": "textlint content data `ls *.md`",
     "_check:uv": "command -v uv >/dev/null || { echo '[help] The collector-sync scripts require uv. Install it: https://docs.astral.sh/uv/getting-started/installation/'; exit 1; }",
