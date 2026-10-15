@@ -54,11 +54,17 @@ export function deadLinksReport(failures) {
 
 // Pages a production build didn't produce, from an offline lychee run over
 // its public/: `file://` targets reported as missing, grouped under the source
-// page that links to them, both as site paths (`/docs/x/`). Fragments and
-// queries belong to the link, not the page; missing fragments on existing
-// pages stay with the generic report.
+// page that links to them, both as site paths (`/docs/x/`). Missing fragments
+// on existing pages stay with the generic report.
 export function missingPagesOf(output) {
+  return groupMissingPages(output).groups;
+}
+
+// The groups plus the failure URLs they consumed, as lychee printed them, so
+// partitionFailures can keep every other failure.
+function groupMissingPages(output) {
   const bySource = new Map();
+  const consumed = new Set();
   let source = null;
   for (const line of output.split('\n')) {
     const header = line.match(/^\[(.*\/public\/.*)\]:$/);
@@ -67,27 +73,33 @@ export function missingPagesOf(output) {
       continue;
     }
     const failure = line.match(
-      /^\[[A-Z0-9]+\] file:\/\/(\S+\/public\/\S*) \(at \d+:\d+\) \| (File not found|Cannot find index file)/,
+      /^\[[A-Z0-9]+\] (file:\/\/\S+\/public(?:\/\S*)?) \(at \d+:\d+\) \| (File not found|Cannot find index file)/,
     );
     if (!failure || !source) continue;
+    consumed.add(failure[1]);
     const target = sitePathOf(failure[1]);
     const targets = bySource.get(source) ?? [];
     if (!targets.includes(target)) targets.push(target);
     bySource.set(source, targets);
   }
-  return [...bySource].map(([source, targets]) => ({ source, targets }));
+  return {
+    groups: [...bySource].map(([source, targets]) => ({ source, targets })),
+    consumed,
+  };
 }
 
 // `/abs/checkout/public/docs/x/index.html#frag` -> `/docs/x/`: the build
-// output is the last `/public/`, whatever the checkout path contains. A target
-// that names a file (`/docs/x.pdf`) keeps its form; a dotted directory
-// (`/docs/v1.2`) is indistinguishable by text and comes out as a file path.
+// output is the last `/public` segment, whatever the checkout path contains.
+// A target that names a file (`/docs/x.pdf`) keeps its form; a dotted
+// directory (`/docs/v1.2`) is indistinguishable by text and comes out the same
+// way.
 function sitePathOf(fsPath) {
   const path = decodeSafely(fsPath.replace(/[?#].*$/, ''));
-  const i = path.lastIndexOf('/public/');
-  const rel = path.slice(i + '/public'.length).replace(/\/index\.html$/, '');
+  const rel = path
+    .slice(path.lastIndexOf('/public') + '/public'.length)
+    .replace(/\/index\.html$/, '');
   if (/\.[a-z0-9]+$/i.test(rel)) return rel;
-  return rel.replace(/\/?$/, '/') || '/';
+  return rel.replace(/\/?$/, '/');
 }
 
 function decodeSafely(s) {
@@ -99,15 +111,13 @@ function decodeSafely(s) {
 }
 
 // Every failure split into the missing-page groups and the rest, so a run
-// with both kinds reports both. Only a production run classifies: a build
-// that includes drafts has no unpublished pages to be missing.
+// with both kinds reports both; `production` turns the grouping on.
 export function partitionFailures(output, { production = false } = {}) {
-  const missingPages = production ? missingPagesOf(output) : [];
-  const covered = new Set(missingPages.flatMap(({ targets }) => targets));
-  const other = failedUrlsOf(output).filter(
-    ({ url }) => !(url.startsWith('file://') && covered.has(sitePathOf(url))),
-  );
-  return { missingPages, other };
+  const { groups, consumed } = production
+    ? groupMissingPages(output)
+    : { groups: [], consumed: new Set() };
+  const other = failedUrlsOf(output).filter(({ url }) => !consumed.has(url));
+  return { missingPages: groups, other };
 }
 
 // Report for a production-build check that found links into pages the build

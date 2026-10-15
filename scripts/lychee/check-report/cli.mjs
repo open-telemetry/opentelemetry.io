@@ -1,18 +1,9 @@
 #!/usr/bin/env node
 // Run the site link check (lychee-norm-cache) and make the outcome
-// actionable:
-//
-// - Success that updates the committed link-cache.jsonc: print a loud notice so
-//   the cache change gets committed with the PR.
-// - Failure with genuinely dead links: name them and say that nothing
-//   cache-side can fix them.
-// - With `--production` (the production-build check): name the pages the build
-//   didn't produce, under the pages that link to them.
-// Both reports also land in the step summary when run in CI.
-//
-// Used by `check:links` and `check:links:production-internal`, locally and in
-// CI; other arguments pass through to lychee. The `CHECK LINKS` PR job is the
-// exception: it invokes `_check:links` directly.
+// actionable: a notice when the committed link cache changed, and reports
+// that name what failed and where the fix is (also in the CI step summary).
+// `--production` is this wrapper's flag; other arguments pass through to
+// lychee.
 
 import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';

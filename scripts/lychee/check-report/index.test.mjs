@@ -85,10 +85,18 @@ suite('cacheUpdatedNotice', () => {
 });
 
 suite('wiring drift guard', () => {
+  test('the production script opts into the missing-pages report', () => {
+    const pkg = JSON.parse(
+      fs.readFileSync(new URL('../../../package.json', import.meta.url)),
+    );
+    assert.match(
+      pkg.scripts['check:links:production-internal'],
+      /check-report\/cli\.mjs --offline --production$/,
+    );
+  });
+
   test('_check:links still is the bin that cli.mjs invokes directly', () => {
-    // cli.mjs spawns node_modules/.bin/lychee-norm-cache directly (see its
-    // bin comment for why); this guard fails if the canonical _check:links
-    // script moves off that bare bin, forcing reconciliation.
+    // cli.mjs spawns the bin directly; see its bin comment.
     const pkg = JSON.parse(
       fs.readFileSync(new URL('../../../package.json', import.meta.url)),
     );
@@ -96,9 +104,7 @@ suite('wiring drift guard', () => {
   });
 
   test('the job that cacheUpdatedNotice() cites exists in check-links.yml', () => {
-    // The notice names a CI job. Workflow YAML and terminal strings never
-    // enter the built site, so lychee can't catch drift between the two —
-    // this guard does.
+    // Workflow YAML and terminal strings never enter the built site.
     const jobName = 'CACHE updates committed?';
     assert.ok(
       cacheUpdatedNotice().includes(jobName),
@@ -115,10 +121,8 @@ suite('wiring drift guard', () => {
   });
 
   test('pr-checks anchors cited outside built HTML exist in pr-checks.md', () => {
-    // check-links.yml and the reports hardcode production pr-checks
-    // URLs that lychee never sees (YAML / terminal surfaces); guard their
-    // anchors against explicit {#…} heading ids in pr-checks.md. Cited
-    // headings carry explicit ids so rewording can't break the URLs.
+    // Anchors cited from YAML and terminal strings, checked against the
+    // explicit {#…} heading ids in pr-checks.md.
     const workflow = fs.readFileSync(
       new URL('../../../.github/workflows/check-links.yml', import.meta.url),
       'utf8',
@@ -235,6 +239,31 @@ suite('partitionFailures', () => {
       { status: '404', url: 'https://gone.test/' },
       { status: 'ERROR', url: `file://${root}/public/docs/b#nope` },
     ]);
+  });
+
+  test('keeps a missing fragment on a page whose other link is a missing page', () => {
+    const out = `[/s/public/a/index.html]:
+[ERROR] file:///s/public/docs/p (at 1:1) | File not found. Check if file exists and path is correct
+[ERROR] file:///s/public/docs/p#bad (at 1:2) | Cannot find fragment
+`;
+    const { missingPages, other } = partitionFailures(out, {
+      production: true,
+    });
+    assert.deepEqual(missingPages, [{ source: '/a/', targets: ['/docs/p/'] }]);
+    assert.deepEqual(other, [
+      { status: 'ERROR', url: 'file:///s/public/docs/p#bad' },
+    ]);
+  });
+
+  test('reports a missing site root', () => {
+    const out = `[/s/public/a/index.html]:
+[ERROR] file:///s/public (at 1:1) | Cannot find index file within directory: An index file (index.html) is required
+`;
+    const { missingPages, other } = partitionFailures(out, {
+      production: true,
+    });
+    assert.deepEqual(missingPages, [{ source: '/a/', targets: ['/'] }]);
+    assert.deepEqual(other, []);
   });
 
   test('classifies nothing outside a production run: that build has the drafts', () => {

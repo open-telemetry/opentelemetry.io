@@ -184,7 +184,7 @@ jobs:
       - run: npm run ci:prepare
       - uses: ./.github/actions/install-lychee
 
-      # Same step as CHECK LINKS: generation needs the baseline commit in history.
+      # Same step as CHECK LINKS, for the same reason.
       - name: Deepen history to the drift-status baseline
         run: |
           sha=$(sed -n 's/^commit: \([0-9a-f]\{40\}\)$/\1/p' data/l10n-drift.yaml)
