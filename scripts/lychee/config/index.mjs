@@ -147,10 +147,9 @@ export function withFragmentExcludes(baseText, entries) {
 // lychee would have checked is the drifted page itself, known to exist:
 // `isBuilt(DIR)` must accept the directory (by default nothing is, so a caller
 // supplies the gate), and the drifted page must be its directory's only
-// content file (a leaf beside a same-path section is shadowed: Hugo serves
-// the section). A page failing either test gets no fragment exclude, so a
-// missing page keeps failing and a served in-sync page keeps its fragments
-// checked.
+// content file (a leaf beside a same-path section is shadowed by it). A page
+// failing either test gets no fragment exclude, so a missing page keeps
+// failing and a served in-sync page keeps its fragments checked.
 export function toExcludePaths(
   pages,
   driftPendingDirs = [],
@@ -208,8 +207,13 @@ async function mainCLI() {
 
   // Every entry point builds before generating, so `public/` is the build the
   // check runs over, production or not.
-  const isBuilt = (dir) =>
-    existsSync(path.join(rootDir, 'public', dir, 'index.html'));
+  const publicDir = path.join(rootDir, 'public');
+  if (!existsSync(publicDir)) {
+    console.error(
+      'No public/ build found: no fragment excludes generated (build first).',
+    );
+  }
+  const isBuilt = (dir) => existsSync(path.join(publicDir, dir, 'index.html'));
 
   const { patterns, drifted, driftPending, entries, fragmentExcludes } =
     toExcludePaths(contentPages(rootDir), driftPendingDirs, isBuilt);
