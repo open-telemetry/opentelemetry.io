@@ -1,7 +1,7 @@
 {{ $defaultLang := "en" -}}
 
-{{/* Non-English pages: the page's path under content/, and whether the file is
-  an English page mounted into this locale as a fallback. */ -}}
+{{/* A page under content/en/ rendered in another language is an English page
+  mounted into the locale as a fallback. */ -}}
 {{ $isLocalized := and (ne .Language.Name $defaultLang) .File -}}
 {{ $pagePath := "" -}}
 {{ $isFallback := false -}}
@@ -11,7 +11,7 @@
 {{ end -}}
 
 {{ if and $isLocalized .Draft (not $isFallback) -}}
-  {{ warnf "Non-English pages cannot be a draft: content/%s. See https://opentelemetry.io/docs/contributing/localization/#drafts" $pagePath -}}
+  {{ warnf "Localized pages must not be drafts: content/%s. See https://opentelemetry.io/docs/contributing/localization/#drafts" $pagePath -}}
 {{ end -}}
 
 {{ with .Params.canonical_url -}}
@@ -22,7 +22,7 @@
 
   {{ $canonicalURL := .Permalink -}}
   {{ if $isFallback -}}
-    {{/* Use the origin of the fallback page as canonical reference. */ -}}
+    {{/* A fallback page duplicates its English origin, so the origin is canonical. */ -}}
     {{ $translationPages := where .Translations "Lang" $defaultLang -}}
     {{ $translation := index $translationPages 0 -}}
     {{ with $translation -}}

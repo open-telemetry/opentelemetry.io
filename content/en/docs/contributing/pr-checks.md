@@ -232,7 +232,7 @@ The following code enforces the link requirement described in this section:
 
 </details>
 
-#### Localized pages are never drafts {#localized-drafts}
+#### Never mark a localized page as a draft {#localized-drafts}
 
 The build warns about a localized page marked as a draft. For the rule and the
 remedy, see [Draft pages](../localization/#drafts).
