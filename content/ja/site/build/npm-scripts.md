@@ -4,8 +4,7 @@ description: >-
   OpenTelemetry ウェブサイトのビルド、配信、検証、メンテナンスのための NPM スクリプト。
 weight: 20
 todo: Keep table entries sorted
-default_lang_commit: 1338cb2423fbaba7da27b8e94d00293aac6922cc
-drifted_from_default: true
+default_lang_commit: 0f387a04d1d4029af5139505eb4c1f780ae238cc
 ---
 
 スクリプトの定義はリポジトリルートの [`package.json`][] にあります。
@@ -45,6 +44,16 @@ drifted_from_default: true
 | `clean`            | `make clean` を実行します。                                            |
 | `serve:hugo`       | インメモリレンダリングで Hugo サーバーを起動します。                   |
 | `serve`            | Hugo 開発サーバーを起動します（デフォルト、フルレンダリング）。        |
+
+[ウェブサイトテレメトリー][website telemetry]を有効にしてサイトをビルドまたは配信するには、環境変数 `SITE_NAME` を `opentelemetry` に設定します。
+これにより、ローカルでのブラウジングがプロダクションと同様にプロジェクトの Collector にスパンをエクスポートします。
+
+```sh
+SITE_NAME=opentelemetry npm run serve
+```
+
+テレメトリーをプロダクションと比較する場合は、[リーン][build kinds]ビルドよりもフルビルドを推奨します。
+共有クロームがページの取得内容を変えるため、リーンビルドのテレメトリーは異なります。
 
 ## チェック {#checking}
 
@@ -161,4 +170,5 @@ drifted_from_default: true
 [lock-exact local setup]: /site/build/dependencies/#install-contracts
 [lock-exact theme dependency install]: /site/build/dependencies/#install-contracts
 [release cooldown]: /site/build/dependencies/#release-cooldown
+[website telemetry]: ../../features/#website-telemetry
 <!-- prettier-ignore-end -->
