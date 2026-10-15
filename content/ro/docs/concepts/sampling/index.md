@@ -177,26 +177,27 @@ traces, and then later in the telemetry pipeline use tail sampling to make more
 sophisticated sampling decisions before exporting to a backend. This is often
 done in the interest of protecting the telemetry pipeline from being overloaded.
 
-## Support
+## Suport {#support}
 
-### Collector
+### Colector {#collector}
 
-The OpenTelemetry Collector includes the following sampling processors:
+Colectorul OpenTelemetry include următorii procesatori de eșantioane:
 
-- [Probabilistic Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
-- [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
+- [Procesatorul de eșantioane probabilistic](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
+- [Procesatorul de eșantioane de coadă](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
 
-### Language SDKs
+### SDK-uri pentru limbaj
 
-For the individual language-specific implementations of the OpenTelemetry API &
-SDK, you will find support for sampling in the respective documentation pages:
+Pentru implementarea specifică unui limbaj a API-ului și SDK-ului OpenTelemetry,
+vei găsi suport pentru eșantionare în paginile de documentație corespondente:
 
 {{% sampling-support-list " " %}}
 
-### Vendors
+### Furnizori {#vendors}
 
-Many [vendors](/ecosystem/vendors) offer comprehensive sampling solutions that
-incorporate head sampling, tail sampling, and other features that can support
-sophisticated sampling needs. These solutions may also be optimized specifically
-for the vendor's backend. If you are sending telemetry to a vendor, consider
-using their sampling solutions.
+Mulți [furnizori](/ecosystem/vendors) oferă soluții de eșantionare complete care
+incorporează eșantionare de cap, eșantionare de coadă cât și alte
+funcționalități care pot deservi nevoi sofisticate de eșantionare. Aceste
+soluții ar putea fi optimizate specific pentru backend-ul furnizorului. Dacă
+trimiți telemetrie către un furnizor, ia în considerare utilizarea soluțiilor
+lor eșantionare.

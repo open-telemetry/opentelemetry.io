@@ -36,6 +36,7 @@ elimini
 emiți
 emojiilor
 enumerează
+eșantioane
 eșantionare
 eșantionat
 eșantionată
@@ -83,6 +84,7 @@ oprii
 partajezi
 postând
 prepopulată
+procesatori
 randată
 randează
 receptoarelor
