@@ -31,7 +31,7 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `ci:prepare`      | Post-`ci:min` setup: [fetch the pinned Hugo binary][], then `prepare`.               |
 | `install:safe`    | [Lock-exact local setup][]: inert install, then `ci:prepare`.                        |
 | `prepare`         | Install step: `get:submodule`, then Docsy's [lock-exact theme dependency install][]. |
-| `update:hugo`     | Install latest hugo-extended; update its [`allowScripts` approval][] with the bump.  |
+| `update:hugo`     | Install latest hugo-extended, scripts enabled; the [Hugo bump][] lists the steps.    |
 | `update:packages` | Run npm-check-updates to bump deps, subject to the [release cooldown][].             |
 
 ## Build and serve
@@ -46,6 +46,18 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `clean`            | Run `make clean`.                                              |
 | `serve:hugo`       | Start Hugo server with in-memory render.                       |
 | `serve`            | Start Hugo dev server (default; full render).                  |
+
+To build or serve the site with [website telemetry][], set the `SITE_NAME`
+environment variable to `opentelemetry`; your local browsing then exports spans
+to the project collector, as production does:
+
+```sh
+SITE_NAME=opentelemetry npm run serve
+```
+
+Prefer a full build over a [lean][build kinds] one when comparing telemetry with
+production's: shared chrome changes what the page fetches, so a lean build's
+telemetry differs.
 
 ## Checking
 
@@ -150,7 +162,7 @@ script, use `npm run` _`SCRIPT_NAME`_.
 | `seq`                          | Run given script names in sequence; exit on first failure.                        |
 
 <!-- prettier-ignore-start -->
-[`allowScripts` approval]: ../dependencies/#script-bearing-packages
+[Hugo bump]: ../dependencies/#hugo
 [`link-cache.jsonc`]: ../link-checking/#link-cache
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [build kinds]: ../#build-kinds
@@ -163,4 +175,5 @@ script, use `npm run` _`SCRIPT_NAME`_.
 [lock-exact local setup]: ../dependencies/#install-contracts
 [lock-exact theme dependency install]: ../dependencies/#install-contracts
 [release cooldown]: ../dependencies/#release-cooldown
+[website telemetry]: ../../features/#website-telemetry
 <!-- prettier-ignore-end -->

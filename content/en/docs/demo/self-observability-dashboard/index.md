@@ -14,9 +14,9 @@ span, log, and metric pipelines.
 
 SDK self-observability is opt-in and still experimental, and is enabled through
 SDK configuration on a per-service basis. In the demo, the `ad`,
-`fraud-detection`, and `kafka` services opt in. The dashboard is driven by a
-`Service` template variable, so any additional service that opts in appears
-automatically.
+`fraud-detection`, `kafka`, and `recommendation` services opt in. The dashboard
+is driven by a `Service` template variable, so any additional service that opts
+in appears automatically.
 
 ## Accessing the dashboard
 

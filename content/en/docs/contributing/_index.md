@@ -13,7 +13,7 @@ cascade:
 
 ## Thank you for your interest!
 
-Thank for your interest in contributing to OpenTelemetry. Contributors help
+Thank you for your interest in contributing to OpenTelemetry. Contributors help
 sustain OpenTelemetry, and every contribution helps make the project better for
 the entire community.
 

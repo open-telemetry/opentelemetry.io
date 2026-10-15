@@ -26,7 +26,7 @@
       "matchUpdateTypes": ["minor"],
     },
     {
-      // Updated via `npm run update:hugo`.
+      // Bumped by hand: https://opentelemetry.io/site/build/dependencies/#hugo
       "matchPackageNames": ["hugo-extended"],
       "enabled": false,
     },
