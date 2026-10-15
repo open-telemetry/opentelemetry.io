@@ -29,10 +29,10 @@ const root = path.join(
 // drift guard in ./index.test.mjs.
 //
 // Output streams through as it arrives: a link check can take minutes, and
-// buffering it until exit would leave the terminal frozen. A copy accumulates
-// for the reports.
+// buffering it until exit would leave the terminal frozen.
 const args = process.argv.slice(2);
 const production = args.includes('--production');
+const offline = args.includes('--offline');
 const bin = path.join(root, 'node_modules', '.bin', 'lychee-norm-cache');
 const child = spawn(
   bin,
@@ -68,7 +68,7 @@ child.on('close', (code) => {
         missingPagesReport(missingPages),
         'Links into pages missing from the production build',
       ],
-      [deadLinksReport(other), 'Unreachable links'],
+      [deadLinksReport(other, { offline }), 'Unreachable links'],
     ]) {
       if (!report) continue;
       console.log(report);

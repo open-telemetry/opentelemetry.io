@@ -33,23 +33,29 @@ export function failedUrlsOf(output) {
 }
 
 // Report for a failed check whose links are genuinely dead; empty when there
-// are no failures.
-export function deadLinksReport(failures) {
+// are no failures. Offline, every failure is a `file:` target, so the advice
+// on transient statuses and the external-link opt-out doesn't apply.
+export function deadLinksReport(failures, { offline = false } = {}) {
   if (failures.length === 0) return '';
   const count =
     failures.length === 1 ? '1 link is' : `${failures.length} links are`;
+  const advice = offline
+    ? ['Fix or remove these links.']
+    : [
+        'Note: TIMEOUT, ERROR, and 5xx statuses can be transient — if in doubt,',
+        'rerun the check before fixing.',
+        '',
+        'Fix or remove these links. For a URL that you have verified manually',
+        'but that blocks link checkers, append `?link-check=no` — see',
+        'https://opentelemetry.io/docs/contributing/pr-checks/#handling-valid-external-links',
+      ];
   return [
     RULE,
     `ERROR: ${count} genuinely unreachable — nothing cache-side to fix:`,
     '',
     ...failures.map(({ status, url }) => `  [${status}] ${url}`),
     '',
-    'Note: TIMEOUT, ERROR, and 5xx statuses can be transient — if in doubt,',
-    'rerun the check before fixing.',
-    '',
-    'Fix or remove these links. For a URL that you have verified manually',
-    'but that blocks link checkers, append `?link-check=no` — see',
-    'https://opentelemetry.io/docs/contributing/pr-checks/#handling-valid-external-links',
+    ...advice,
     RULE,
   ].join('\n');
 }
@@ -97,8 +103,8 @@ function sitePathOf(fsPath) {
   return i < 0 ? null : fsPath.slice(i + '/public'.length);
 }
 
-// Query and fragment drop out; a URL that isn't a well-formed file: URL maps
-// nowhere (and stays with the generic report).
+// Query and fragment drop out; a URL that isn't a well-formed `file:` URL maps
+// nowhere.
 function filePathOf(url) {
   try {
     return fileURLToPath(url);
@@ -108,7 +114,8 @@ function filePathOf(url) {
 }
 
 // Every failure split into the missing-page groups and the rest, so a run
-// with both kinds reports both.
+// with both kinds reports both. Without `production` nothing is classified:
+// that build has the drafts.
 export function partitionFailures(output, { production = false } = {}) {
   const { groups, consumed } = production
     ? groupMissingPages(output)
@@ -120,12 +127,11 @@ export function partitionFailures(output, { production = false } = {}) {
 // Report for a production-build check that found links into pages the build
 // doesn't contain. The remedy lives at the linked PR-check entry.
 export function missingPagesReport(groups) {
-  const n = groups.reduce((sum, g) => sum + g.targets.length, 0);
+  const n = new Set(groups.flatMap((g) => g.targets)).size;
   if (n === 0) return '';
   return [
     RULE,
-    `ERROR: ${n} link(s) point at page(s) that the production build doesn't`,
-    'contain.',
+    `ERROR: links point at ${n} page(s) missing from the production build:`,
     '',
     ...groups.flatMap(({ source, targets }) => [
       `  ${source}`,

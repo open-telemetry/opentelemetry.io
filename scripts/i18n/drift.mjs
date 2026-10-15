@@ -423,7 +423,7 @@ export async function baselineNeedsRefresh(rootDir) {
 // wrong there: a baseline newer than the tree the statuses were computed
 // against leaves the EN changes in between covered by neither the stored
 // statuses nor the overlay. As an ancestor of main, the recorded SHA is also
-// always fetchable from the canonical repo (the link-check jobs' deepen step).
+// always fetchable from the canonical repo (the link-check jobs' deepen steps).
 export async function writeBaseline(rootDir) {
   const sha = await git(rootDir, 'merge-base', 'HEAD', 'main');
   const content =

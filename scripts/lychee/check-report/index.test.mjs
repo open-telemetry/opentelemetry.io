@@ -71,6 +71,16 @@ suite('deadLinksReport', () => {
     assert.match(report, /1 link is genuinely unreachable/);
   });
 
+  test('offline, drops the advice that only applies to external links', () => {
+    const report = deadLinksReport(
+      [{ status: 'ERROR', url: 'file:///s/public/docs/a#gone' }],
+      { offline: true },
+    );
+    assert.match(report, /1 link is genuinely unreachable/);
+    assert.match(report, /Fix or remove these links\./);
+    assert.doesNotMatch(report, /transient|link-check=no/);
+  });
+
   test('is empty when there are no failures', () => {
     assert.equal(deadLinksReport([]), '');
   });
@@ -277,16 +287,18 @@ suite('partitionFailures', () => {
 });
 
 suite('missingPagesReport', () => {
-  test('classifies the targets, lists each source with its targets, links the docs', () => {
+  test('counts the distinct pages, lists each source with its targets, links the docs', () => {
+    const helm = '/es/docs/zero-code/obi/setup/kubernetes-helm';
     const report = missingPagesReport([
       {
         source: '/es/docs/zero-code/obi/network/quickstart/index.html',
-        targets: ['/es/docs/zero-code/obi/setup/kubernetes-helm'],
+        targets: [helm],
       },
+      { source: '/es/docs/zero-code/obi/index.html', targets: [helm] },
     ]);
     assert.match(
       report,
-      /1 link\(s\) point at page\(s\) that the production build/,
+      /links point at 1 page\(s\) missing from the production build:/,
     );
     assert.doesNotMatch(report, /draft/);
     assert.match(report, /\/es\/docs\/zero-code\/obi\/network\/quickstart\//);
