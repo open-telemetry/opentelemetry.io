@@ -26,14 +26,16 @@ const { NodeSDK } = require('@opentelemetry/sdk-node');
 // ... other require() calls elided for brevity.
 
 const sdk = new NodeSDK({
-  traceExporter: new OTLPTraceExporter(),
+  instrumentations: getNodeAutoInstrumentations(),
+  spanProcessors: [
+    new BatchSpanProcessor({ exporter: new OTLPTraceExporter() }),
+  ],
   logRecordProcessors: [
     new BatchLogRecordProcessor({ exporter: new OTLPLogExporter() }),
   ],
-  instrumentations: getNodeAutoInstrumentations(),
-  metricReader: new PeriodicExportingMetricReader({
-    exporter: new OTLPMetricExporter(),
-  }),
+  metricReaders: [
+    new PeriodicExportingMetricReader({ exporter: new OTLPMetricExporter() }),
+  ],
   resourceDetectors: [
     containerDetector,
     envDetector,
@@ -179,15 +181,17 @@ const FrontendTracer = async () => {
       }),
     ],
   });
+
+  context.setGlobalContextManager(new ZoneContextManager().enable());
+  propagation.setGlobalPropagator(
+    new CompositePropagator({
+      propagators: [
+        new W3CBaggagePropagator(),
+        new W3CTraceContextPropagator(),
+      ],
+    }),
+  );
   trace.setGlobalTracerProvider(tracerProvider);
-
-  const contextManager = new ZoneContextManager().enable();
-  context.setGlobalContextManager(contextManager);
-
-  const propagator = new CompositePropagator({
-    propagators: [new W3CBaggagePropagator(), new W3CTraceContextPropagator()],
-  });
-  propagation.setGlobalPropagator(propagator);
 
   registerInstrumentations({
     tracerProvider,
