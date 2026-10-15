@@ -64,7 +64,10 @@ child.on('close', (code) => {
   } else {
     const { missingPages, other } = partitionFailures(output, { production });
     for (const [report, title] of [
-      [missingPagesReport(missingPages), 'Links into unpublished pages'],
+      [
+        missingPagesReport(missingPages),
+        'Links into pages missing from the production build',
+      ],
       [deadLinksReport(other), 'Unreachable links'],
     ]) {
       if (!report) continue;

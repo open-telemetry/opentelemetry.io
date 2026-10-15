@@ -96,7 +96,7 @@ function groupMissingPages(output) {
 function sitePathOf(fsPath) {
   const path = decodeSafely(fsPath.replace(/[?#].*$/, ''));
   const rel = path
-    .slice(path.lastIndexOf('/public') + '/public'.length)
+    .replace(/^.*\/public(?=\/|$)/, '')
     .replace(/\/index\.html$/, '');
   if (/\.[a-z0-9]+$/i.test(rel)) return rel;
   return rel.replace(/\/?$/, '/');
@@ -111,7 +111,7 @@ function decodeSafely(s) {
 }
 
 // Every failure split into the missing-page groups and the rest, so a run
-// with both kinds reports both; `production` turns the grouping on.
+// with both kinds reports both.
 export function partitionFailures(output, { production = false } = {}) {
   const { groups, consumed } = production
     ? groupMissingPages(output)
@@ -121,8 +121,7 @@ export function partitionFailures(output, { production = false } = {}) {
 }
 
 // Report for a production-build check that found links into pages the build
-// doesn't contain; empty when there are none. The remedy lives at the linked
-// PR-check entry.
+// doesn't contain. The remedy lives at the linked PR-check entry.
 export function missingPagesReport(groups) {
   const n = groups.reduce((sum, g) => sum + g.targets.length, 0);
   if (n === 0) return '';

@@ -121,8 +121,6 @@ suite('wiring drift guard', () => {
   });
 
   test('pr-checks anchors cited outside built HTML exist in pr-checks.md', () => {
-    // Anchors cited from YAML and terminal strings, checked against the
-    // explicit {#…} heading ids in pr-checks.md.
     const workflow = fs.readFileSync(
       new URL('../../../.github/workflows/check-links.yml', import.meta.url),
       'utf8',
@@ -207,6 +205,15 @@ suite('missingPagesOf', () => {
         source: '/docs/a/',
         targets: ['/docs/draft/', '/docs/v1.2', '/docs/caf%E9/'],
       },
+    ]);
+  });
+
+  test('splits at the public/ segment, not at a segment that merely starts with it', () => {
+    const out = `[/repo/public/docs/public-page/index.html]:
+[ERROR] file:///repo/public/docs/publication (at 1:1) | File not found. Check if file exists and path is correct
+`;
+    assert.deepEqual(missingPagesOf(out), [
+      { source: '/docs/public-page/', targets: ['/docs/publication/'] },
     ]);
   });
 

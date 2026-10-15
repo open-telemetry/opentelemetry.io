@@ -184,7 +184,8 @@ jobs:
       - run: npm run ci:prepare
       - uses: ./.github/actions/install-lychee
 
-      # Same step as CHECK LINKS, for the same reason.
+      # Config generation needs the drift-status baseline commit in history:
+      # https://opentelemetry.io/site/build/link-checking/#configuration
       - name: Deepen history to the drift-status baseline
         run: |
           sha=$(sed -n 's/^commit: \([0-9a-f]\{40\}\)$/\1/p' data/l10n-drift.yaml)
