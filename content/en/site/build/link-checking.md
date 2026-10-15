@@ -48,10 +48,7 @@ The production check complements `check:links`; it doesn't replace it. Links
 from pages that the [configuration](#configuration) excludes, drifted localized
 pages in particular, go unchecked in both. External links, and the
 [link cache](#link-cache) that records their results, belong to `check:links`:
-an offline run fetches nothing, so it has no results to record. Offline also
-skips site-local links written as full `https://opentelemetry.io/...` URLs; the
-[Markdown lint][site-local] rejects those in page content, whichever page they
-point at.
+an offline run fetches nothing, so it has no results to record.
 
 ## Configuration
 
@@ -176,6 +173,5 @@ build: it runs [`check:links:production-internal`](#production-internal).
 [Operating model]: https://github.com/chalin/link-cache/blob/main/docs/operating-model.md
 [`lychee.base.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/lychee.base.toml
 [pr-check-production-internal]: /docs/contributing/pr-checks/#check-links-production-internal
-[site-local]: /docs/contributing/pr-checks/#avoid-external-site-local-links
 [pr-checks]: /docs/contributing/pr-checks/#cache-updates-committed
 <!-- prettier-ignore-end -->
