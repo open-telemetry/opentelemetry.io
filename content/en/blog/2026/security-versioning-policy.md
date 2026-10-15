@@ -1,7 +1,7 @@
 ---
 title: Strengthening OpenTelemetry security while preserving API stability
 linkTitle: Versioning and security fixes
-date: 2026-10-15
+date: 2026-10-22
 author: '[Robert Pająk](https://github.com/pellared) (Splunk)'
 draft: true
 issue: 12105
