@@ -29,7 +29,14 @@ describe('findWorkflowReferences', () => {
     assert.equal(refs[0].ref, 'scripts/a/b.mjs');
   });
 
-  test('finds a local composite-action or reusable-workflow use', () => {
+  test('finds a self-repository composite-action or reusable-workflow use', () => {
+    const refs = findWorkflowReferences('        uses: $/.github/actions/foo');
+    assert.deepEqual(refs, [
+      { kind: 'action', ref: '$/.github/actions/foo', line: 1 },
+    ]);
+  });
+
+  test('finds a workspace-relative use', () => {
     const refs = findWorkflowReferences('        uses: ./.github/actions/foo');
     assert.deepEqual(refs, [
       { kind: 'action', ref: './.github/actions/foo', line: 1 },
@@ -42,7 +49,7 @@ describe('findWorkflowReferences', () => {
 
   test('ignores commented-out lines', () => {
     const yaml = [
-      '#     uses: ./.github/workflows/reusable.yml',
+      '#     uses: $/.github/workflows/reusable.yml',
       '   # run: node scripts/old/cli.mjs',
     ].join('\n');
     assert.deepEqual(findWorkflowReferences(yaml), []);
@@ -66,6 +73,13 @@ describe('candidatePaths', () => {
 
   test('action directory: action.yml or action.yaml', () => {
     assert.deepEqual(
+      candidatePaths({ kind: 'action', ref: '$/.github/actions/foo' }),
+      ['.github/actions/foo/action.yml', '.github/actions/foo/action.yaml'],
+    );
+  });
+
+  test('workspace-relative action directory: same candidates', () => {
+    assert.deepEqual(
       candidatePaths({ kind: 'action', ref: './.github/actions/foo' }),
       ['.github/actions/foo/action.yml', '.github/actions/foo/action.yaml'],
     );
@@ -73,7 +87,7 @@ describe('candidatePaths', () => {
 
   test('reusable workflow: the file itself', () => {
     assert.deepEqual(
-      candidatePaths({ kind: 'action', ref: './.github/workflows/r.yml' }),
+      candidatePaths({ kind: 'action', ref: '$/.github/workflows/r.yml' }),
       ['.github/workflows/r.yml'],
     );
   });
@@ -83,6 +97,17 @@ describe('every workflow references files that exist', () => {
   const files = readdirSync(workflowsDir).filter((f) => /\.ya?ml$/.test(f));
 
   assert.ok(files.length > 0, 'expected to find workflow files');
+
+  // Guards the guard: a reference syntax the extractor doesn't recognize would
+  // otherwise pass every file vacuously.
+  test('at least one same-repository use is found across workflows', () => {
+    const actionRefs = files
+      .flatMap((file) =>
+        findWorkflowReferences(readFileSync(`${workflowsDir}${file}`, 'utf8')),
+      )
+      .filter((reference) => reference.kind === 'action');
+    assert.ok(actionRefs.length > 0, 'same-repository uses are extracted');
+  });
 
   for (const file of files) {
     test(file, () => {
