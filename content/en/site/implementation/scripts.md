@@ -30,8 +30,7 @@ subresource-integrity hash. Two kinds of template load them:
 ## Blog sidebar entry opener
 
 `blog-sidebar-entry-opener.js` is the one body-end script gated to a page and
-the one that acts on the sidebar. What it relies on holds for any script of
-either kind.
+the one that acts on the sidebar.
 
 ### Gating to the blog index
 
@@ -41,16 +40,21 @@ page's `.Path`, which is the same in every locale: `{{ if eq .Path "/blog" }}`.
 A `.Path` gate can't single out the first page of a paginated list. Hugo renders
 a list's pager pages from the one section page, so `.Path`, `.RelPermalink` and
 `.Pages` are identical on `/blog/` and `/blog/page/2/`, and the current slice is
-reachable only through `.Paginator`. Calling `.Paginator` on a list page that
-Docsy's template leaves unpaginated, such as an empty blog, paginates it and
-publishes a `page/1/` alias. The opener therefore loads on every pager page and
-skips them at runtime, by testing `location.pathname` for `/page/`.
+known only to the pager (`.Paginator`, or what `.Paginate` returned). Calling
+`.Paginator` on a list page that Docsy's template leaves unpaginated, such as an
+empty blog, paginates it and publishes a `page/1/` alias. The opener therefore
+loads on every pager page and skips them at runtime, by testing
+`location.pathname` for `/page/`.
 
 ### Acting on the sidebar
 
 The site uses Docsy's cached sidebar (`ui.sidebar_cache_limit: 1`): one nav per
 sidebar root, shipped hidden (`d-none`) with no active state. Docsy's
 `chrome-nav.js` hydrates it at `DOMContentLoaded`: it applies the active state
-and reveals the nav. A body-end script runs during parsing, before that, so it
-can set sidebar state before the sidebar appears; the opener checks its two year
-groups then. With JavaScript disabled, the sidebar stays hidden.
+and reveals the nav. The blog index, like every section's landing page, carries
+that nav inline in both [build kinds](../../build/#build-kinds), so a body-end
+script there runs during parsing, before the reveal, and can set sidebar state
+before the sidebar appears; the opener checks its two year groups then. In a
+lean build, other pages carry a placeholder instead, which `chrome-nav.js` fills
+after fetching the nav, too late for a body-end script. With JavaScript
+disabled, the sidebar stays hidden.
