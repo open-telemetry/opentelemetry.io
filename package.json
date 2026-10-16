@@ -76,7 +76,7 @@
     "check:l10n": "npm run seq -- check:l10n:do-not-copy-images-etc",
     "check:links:internal": "npm run build && npm run _check:links -- --offline",
     "check:links:production-internal": "npm run -s lean -- build:production && npm run _check:links -- --offline --production",
-    "check:links": "npm run build && npm run _check:links",
+    "check:links": "npm run build && npm run _check:links --",
     "check:markdown:specs": "npm run -s check:markdown:specs::pre && markdownlint-cli2 'tmp/(otel|otlp|semconv)/**/*.md'",
     "check:markdown:specs::pre": "mkdir -p tmp && cp .markdownlint-for-specs.yml tmp/.markdownlint.yml",
     "check:markdown": "markdownlint-cli2 '*.md' '{content,projects}/**/*.md'",

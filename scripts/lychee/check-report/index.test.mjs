@@ -100,13 +100,13 @@ suite('wiring drift guard', () => {
       fs.readFileSync(new URL('../../../package.json', import.meta.url)),
     );
     // npm appends `-- ARGS` to the end of the script, so the flags land on
-    // the wrapper only if it is the script's last command; the root-Markdown
-    // input rides with it.
+    // the wrapper only if it is the script's last command, and a caller's own
+    // flags only if the script ends in `--`.
     assert.match(
       pkg.scripts['_check:links'],
       /node scripts\/lychee\/check-report\/cli\.mjs \*\.md$/,
     );
-    assert.match(pkg.scripts['check:links'], /npm run _check:links$/);
+    assert.match(pkg.scripts['check:links'], /npm run _check:links --$/);
     assert.match(
       pkg.scripts['check:links:internal'],
       /npm run _check:links -- --offline$/,

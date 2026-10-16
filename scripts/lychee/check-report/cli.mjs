@@ -23,9 +23,8 @@ const root = path.join(
   '..',
 );
 
-// The link-cache bin, invoked by path so that output is captured
-// npm-noise-free and the exit status observed; failures are parsed for the
-// reports.
+// The link-cache bin, invoked by path so that its output is captured
+// npm-noise-free.
 //
 // Output streams through as it arrives: a link check can take minutes, and
 // buffering it until exit would leave the terminal frozen.
