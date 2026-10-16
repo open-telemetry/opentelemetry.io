@@ -212,9 +212,10 @@
   "overrides": {
     "adm-zip": "0.6.1",
     "katex": "^0.19.0",
+    "prh": "^6.1.0",
     "smol-toml": "$smol-toml"
   },
-  "overridesComment": "Security fixes blocked by parent constraints: katex (GHSA-238p-pmpm-9mq7, micromark-extension-math) and smol-toml (GHSA-r4xh-jqrq-34v2, markdownlint-cli2). Remove each override when its parents admit patched releases. Keep the root smol-toml pin while its reference override is needed.",
+  "overridesComment": "Security fixes blocked by parent constraints: adm-zip (GHSA-7q85-xj36-vmfc and two older ones, hugo-extended; guarded by scripts/supply-chain-audit.test.mjs), katex (GHSA-238p-pmpm-9mq7, micromark-extension-math), prh (GHSA-hp3w-g68c-fv3c in sprintf-js via js-yaml 3; textlint-rule-prh) and smol-toml (GHSA-r4xh-jqrq-34v2, markdownlint-cli2). Remove each override when its parents admit patched releases. Keep the root smol-toml pin while its reference override is needed.",
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "enginesNpmComment": "Floor policy: https://opentelemetry.io/site/build/dependencies/#npm-version-floor (11.18 closes the allowScripts enforcement gaps of npm/cli#9652; min-release-age-exclude arrived in 11.17; Node LTS bundles 11.19+ since 24.20.0)",
   "engines": {
