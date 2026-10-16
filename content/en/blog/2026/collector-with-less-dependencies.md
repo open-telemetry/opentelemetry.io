@@ -44,7 +44,7 @@ environment.
 Additionally, the Collector has included support for the
 [OpenTelemetry Configuration Schema](https://github.com/open-telemetry/opentelemetry-configuration/)
 since version
-[v0.128.0](https://github.com/open-telemetry/opentelemetry-collector/blob/5177a6a85ca3783068077e25aec6cebbe1d50d1f/CHANGELOG.md?from_branch=main#v1340v01280).
+[v0.128.0](https://github.com/open-telemetry/opentelemetry-collector/blob/main/CHANGELOG.md#v1340v01280).
 This is done via the include of the
 [otelconf](https://pkg.go.dev/go.opentelemetry.io/contrib/otelconf/v0.3.0)
 package, which also supports configuring resource detectors. Until now, the
