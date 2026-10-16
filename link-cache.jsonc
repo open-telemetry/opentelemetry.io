@@ -9879,6 +9879,41 @@
     "when": "2026-10-15T05:43:58Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/b21bf1a21be57988b655aa03ff664dbb250d6a99/CHANGELOG.md": {
+    "result": 200,
+    "when": "2026-10-16T22:42:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/b21bf1a21be57988b655aa03ff664dbb250d6a99/pkg/ottl/LANGUAGE.md": {
+    "result": 200,
+    "when": "2026-10-16T22:42:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/b21bf1a21be57988b655aa03ff664dbb250d6a99/pkg/ottl/contexts/xprofile/README.md": {
+    "result": 200,
+    "when": "2026-10-16T22:42:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/b21bf1a21be57988b655aa03ff664dbb250d6a99/pkg/ottl/documentation.md#feature-gates": {
+    "result": 200,
+    "when": "2026-10-16T22:42:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/b21bf1a21be57988b655aa03ff664dbb250d6a99/pkg/ottl/ottlfuncs/README.md#function-stability": {
+    "result": 200,
+    "when": "2026-10-16T22:42:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/b21bf1a21be57988b655aa03ff664dbb250d6a99/pkg/ottl/ottlfuncs/README.md#promotion-to-standard": {
+    "result": 200,
+    "when": "2026-10-16T22:42:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/b21bf1a21be57988b655aa03ff664dbb250d6a99/pkg/ottl/xottl/ottlfuncs/README.md": {
+    "result": 200,
+    "when": "2026-10-16T22:42:31Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CHANGELOG.md#v01200": {
     "result": 200,
     "when": "2026-10-03T05:48:22Z",
@@ -10099,9 +10134,39 @@
     "when": "2026-10-10T05:46:14Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/47305": {
+    "result": 200,
+    "when": "2026-10-16T22:42:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/47306": {
+    "result": 200,
+    "when": "2026-10-16T22:42:32Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/49274": {
     "result": 200,
     "when": "2026-10-10T05:45:36Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/50217": {
+    "result": 200,
+    "when": "2026-10-16T22:42:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/50927": {
+    "result": 200,
+    "when": "2026-10-16T22:42:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/51068": {
+    "result": 200,
+    "when": "2026-10-16T22:42:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues?q=is%3Aopen+is%3Aissue+label%3Apkg%2Fottl": {
+    "result": 200,
+    "when": "2026-10-16T22:42:31Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/35139": {
@@ -10122,6 +10187,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/49152": {
     "result": 200,
     "when": "2026-10-10T05:45:37Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/51236": {
+    "result": 200,
+    "when": "2026-10-16T22:42:32Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.111.0": {
@@ -10172,6 +10242,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/ab56dd45ea2240f7014470bcc31c1b3fafc1ef19/receiver/windowsperfcountersreceiver?from_branch=main": {
     "result": 200,
     "when": "2026-10-10T05:45:36Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/b21bf1a21be57988b655aa03ff664dbb250d6a99/pkg/ottl": {
+    "result": 200,
+    "when": "2026-10-16T22:42:31Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/cb1f1bb54ee849b4c569eb8f6a950c0f9c7c6d43/receiver/pprofreceiver?from_branch=main": {
@@ -14317,6 +14392,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector/blob/ac085a4d9f1bdaf3eb90aaebc9a3815f4e00954d/featuregate/README.md?plain=1#L1": {
     "result": 200,
     "when": "2026-10-02T20:57:55Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/ebfdf90d82abe991c69554b31f2efc4a96622803/docs/component-stability.md#stable": {
+    "result": 200,
+    "when": "2026-10-16T22:42:31Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/README.md#compatibility": {
