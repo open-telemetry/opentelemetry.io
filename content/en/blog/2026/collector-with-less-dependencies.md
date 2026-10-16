@@ -43,9 +43,7 @@ environment.
 
 Additionally, the Collector has included support for the
 [OpenTelemetry Configuration Schema](https://github.com/open-telemetry/opentelemetry-configuration/)
-since version
-[v0.128.0](https://github.com/open-telemetry/opentelemetry-collector/blob/main/CHANGELOG.md#v1340v01280).
-This is done via the include of the
+since version v0.128.0. This is done via the include of the
 [otelconf](https://pkg.go.dev/go.opentelemetry.io/contrib/otelconf/v0.3.0)
 package, which also supports configuring resource detectors. Until now, the
 manifest had no way to say "I only want these detectors".
