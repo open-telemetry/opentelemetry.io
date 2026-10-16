@@ -6,6 +6,8 @@ author: >-
   [Alex Boten](https://github.com/codeboten) (Grafana Labs)
 issue:
 # sig:
+# prettier-ignore
+cSpell:ignore: otelconf trimpath
 ---
 
 There are many reasons for building your own OpenTelemetry Collector
