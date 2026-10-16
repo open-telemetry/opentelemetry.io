@@ -185,7 +185,7 @@ describe('lychee input filtering and exclusion', { skip }, () => {
       assert.equal(
         result.errors,
         0,
-        'the .md input is not scanned, so its dead link is not an error',
+        '.md file in a walked directory is not scanned, so its dead link is not an error',
       );
     } finally {
       rmSync(dir, { recursive: true, force: true });
@@ -212,7 +212,7 @@ describe('lychee input filtering and exclusion', { skip }, () => {
       assert.equal(
         result.errors,
         1,
-        'the named .md input is scanned, so its dead link is an error',
+        'named .md input is scanned, so its dead link is an error',
       );
     } finally {
       rmSync(dir, { recursive: true, force: true });
