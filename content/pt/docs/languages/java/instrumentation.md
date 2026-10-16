@@ -8,8 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: Ecossistema de Instrumentação no OpenTelemetry Java
-default_lang_commit: 4690071352ffd91e2ec874546aeca3ac68775bad
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -29,13 +28,16 @@ usuários finais e tópicos relacionados à instrumentação:
   telemetria para operações padrão.
 - [Instrumentação de Log](#log-instrumentation), que é utilizada para obter logs
   de um _framework_ de _logging_ existente no Java para o OpenTelemetry.
+- [Métricas JMX](../jmx/) para monitorar métricas da JVM e de aplicações por
+  meio de MBeans JMX.
 
-{{% alert %}} Embora as
-[categorias de instrumentação](#instrumentation-categories) enumerem diversas
-opções para instrumentar uma aplicação, nós recomendamos que os usuários iniciem
-com o [Agente Java](#zero-code-java-agent). O agente Java possui uma instalação
-simples, e automaticamente detecta e instala instrumentação de uma vasta
-biblioteca. {{% /alert %}}
+> [!NOTE]
+>
+> Embora as [categorias de instrumentação](#instrumentation-categories) enumerem
+> diversas opções para instrumentar uma aplicação, nós recomendamos que os
+> usuários iniciem com o [Agente Java](#zero-code-java-agent). O agente Java
+> possui uma instalação simples, e automaticamente detecta e instala
+> instrumentação de uma vasta biblioteca.
 
 ## Categorias de instrumentação {#instrumentation-categories}
 
@@ -146,18 +148,19 @@ OpenTelemetry.
 
 Shims mantidos no ecossistema OpenTelemetry Java:
 
-| Descrição                                                                                                   | Documentação                                                                                                                                                                     | Sinal(s)          | Artefato                                                                                                                        |
-| ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Bridge [OpenTracing](https://opentracing.io/) no OpenTelemetry                                              | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim)                                                                                       | Rastros           | `io.opentelemetry:opentelemetry-opentracing-shim:{{% param vers.otel %}}`                                                       |
-| Bridge [Opencensus](https://opencensus.io/) no OpenTelemetry                                                | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim)                                                                                        | Rastros, Métricas | `io.opentelemetry:opentelemetry-opencensus-shim:{{% param vers.otel %}}-alpha`                                                  |
-| Bridge [Micrometer](https://micrometer.io/) no OpenTelemetry                                                | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/micrometer/micrometer-1.5/library)                                      | Métricas          | `io.opentelemetry.instrumentation:opentelemetry-micrometer-1.5:{{% param vers.instrumentation %}}-alpha`                        |
-| Bridge [JMX](https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html) no OpenTelemetry | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md)                                                  | Métricas          | `io.opentelemetry.instrumentation:opentelemetry-jmx-metrics:{{% param vers.instrumentation %}}-alpha`                           |
-| Bridge OpenTelemetry no [Prometheus Java client](https://github.com/prometheus/client_java)                 | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/prometheus-client-bridge)                                                                       | Métricas          | `io.opentelemetry.contrib:opentelemetry-prometheus-client-bridge:{{% param vers.contrib %}}-alpha`                              |
-| Bridge OpenTelemetry no [Micrometer](https://micrometer.io/)                                                | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/micrometer-meter-provider)                                                                      | Métricas          | `io.opentelemetry.contrib:opentelemetry-micrometer-meter-provider:{{% param vers.contrib %}}-alpha`                             |
-| Bridge [Log4j](https://logging.apache.org/log4j/2.x/index.html) no OpenTelemetry                            | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library)                                      | Logs              | `io.opentelemetry.instrumentation:opentelemetry-log4j-appender-2.17:{{% param vers.instrumentation %}}-alpha`                   |
-| Bridge [Logback](https://logback.qos.ch/) no OpenTelemetry                                                  | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/library)                                   | Logs              | `io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0:{{% param vers.instrumentation %}}-alpha`                  |
-| Bridge OpenTelemetry context no [Log4j](https://logging.apache.org/log4j/2.x/index.html)                    | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure) | Context           | `io.opentelemetry.instrumentation:opentelemetry-log4j-context-data-2.17-autoconfigure:{{% param vers.instrumentation %}}-alpha` |
-| Bridge OpenTelemetry context no [Logback](https://logback.qos.ch/)                                          | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-mdc-1.0/library)                                        | Context           | `io.opentelemetry.instrumentation:opentelemetry-logback-mdc-1.0:{{% param vers.instrumentation %}}-alpha`                       |
+| Descrição                                                                                                           | Documentação                                                                                                                                                                               | Sinal(s)          | Artefato                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Bridge [OpenTracing](https://opentracing.io/) no OpenTelemetry                                                      | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim)                                                                                                 | Rastros           | `io.opentelemetry:opentelemetry-opentracing-shim:{{% param vers.otel %}}`                                                       |
+| Bridge [Opencensus](https://opencensus.io/) no OpenTelemetry                                                        | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim)                                                                                                  | Rastros, Métricas | `io.opentelemetry:opentelemetry-opencensus-shim:{{% param vers.otel %}}-alpha`                                                  |
+| Bridge [Micrometer](https://micrometer.io/) no OpenTelemetry                                                        | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/micrometer/micrometer-1.5/library)                                                | Métricas          | `io.opentelemetry.instrumentation:opentelemetry-micrometer-1.5:{{% param vers.instrumentation %}}-alpha`                        |
+| Bridge [JMX](https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html) no OpenTelemetry         | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md), [guia de métricas JMX](../jmx/)                           | Métricas          | `io.opentelemetry.instrumentation:opentelemetry-jmx-metrics:{{% param vers.instrumentation %}}-alpha`                           |
+| Bridge OpenTelemetry no [Prometheus Java SimpleClient](https://github.com/prometheus/client_java/tree/simpleclient) | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/prometheus-client-bridge)                                                                                 | Métricas          | `io.opentelemetry.contrib:opentelemetry-prometheus-client-bridge:{{% param vers.contrib %}}-alpha`                              |
+| Bridge OpenTelemetry no [Prometheus Java PrometheusRegistry](https://github.com/prometheus/client_java)             | [Javadoc do PrometheusMetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-prometheus/latest/io/opentelemetry/exporter/prometheus/PrometheusMetricReader.html) | Métricas          | `io.opentelemetry:opentelemetry-exporter-prometheus:{{% param vers.otel %}}-alpha`                                              |
+| Bridge OpenTelemetry no [Micrometer](https://micrometer.io/)                                                        | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/micrometer-meter-provider)                                                                                | Métricas          | `io.opentelemetry.contrib:opentelemetry-micrometer-meter-provider:{{% param vers.contrib %}}-alpha`                             |
+| Bridge [Log4j](https://logging.apache.org/log4j/2.x/index.html) no OpenTelemetry                                    | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library)                                                | Logs              | `io.opentelemetry.instrumentation:opentelemetry-log4j-appender-2.17:{{% param vers.instrumentation %}}-alpha`                   |
+| Bridge [Logback](https://logback.qos.ch/) no OpenTelemetry                                                          | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/library)                                             | Logs              | `io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0:{{% param vers.instrumentation %}}-alpha`                  |
+| Bridge OpenTelemetry context no [Log4j](https://logging.apache.org/log4j/2.x/index.html)                            | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure)           | Context           | `io.opentelemetry.instrumentation:opentelemetry-log4j-context-data-2.17-autoconfigure:{{% param vers.instrumentation %}}-alpha` |
+| Bridge OpenTelemetry context no [Logback](https://logback.qos.ch/)                                                  | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-mdc-1.0/library)                                                  | Context           | `io.opentelemetry.instrumentation:opentelemetry-logback-mdc-1.0:{{% param vers.instrumentation %}}-alpha`                       |
 
 ## Propagação de Contexto {#context-propagation}
 
@@ -264,10 +267,8 @@ Correlação de Logs com rastros está disponível instalando um [shim](#shims) 
 conectar o contexto do OpenTelemetry no log framework. Veja os items "Bridge
 OpenTelemetry contexto em Log4j", "Bridge OpenTelemetry contexto em Logback".
 
-{{% alert title="Nota" %}}
-
-Um exemplo completo de instrumentação de logs utilizando stdout está disponível
-no
-[repositório de exemplos em Java](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Um exemplo completo de instrumentação de logs utilizando stdout está
+> disponível no
+> [repositório de exemplos em Java](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).
