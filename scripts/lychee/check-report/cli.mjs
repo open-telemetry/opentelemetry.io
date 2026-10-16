@@ -78,8 +78,7 @@ child.on('close', (code) => {
   process.exitCode = status;
 });
 
-// In CI (e.g., a bot `fix:link-cache` run), surface the report in the
-// workflow step summary as well.
+// In CI, surface the report in the workflow step summary as well.
 function appendToStepSummary(report, title) {
   const summaryPath = process.env.GITHUB_STEP_SUMMARY;
   if (!summaryPath) return;
@@ -89,7 +88,7 @@ function appendToStepSummary(report, title) {
   );
 }
 
-// True when link-cache.jsonc has unstaged changes: the local analogue of the CI
+// True when link-cache.jsonc has unstaged changes: an early read of the CI
 // `CACHE updates committed?` verdict (see .github/workflows/check-links.yml).
 function cacheModified() {
   const r = spawnSync('git', ['diff', '--quiet', '--', 'link-cache.jsonc'], {

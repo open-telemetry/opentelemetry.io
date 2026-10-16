@@ -99,22 +99,28 @@ suite('wiring drift guard', () => {
     const pkg = JSON.parse(
       fs.readFileSync(new URL('../../../package.json', import.meta.url)),
     );
-    // npm appends `-- ARGS` to the end of the script, so the flags land on
-    // the wrapper only if it is the script's last command, and a caller's own
-    // flags only if the script ends in `--`.
-    assert.match(
+    // npm appends a caller's arguments (those after its `--`) to the end of
+    // the script, so they reach the wrapper only when the script's last
+    // command is the wrapper itself or an `npm run` carrying its own `--`: a
+    // nested `npm run` without one consumes them as npm options. Exact
+    // strings: a drift guard, not a shell parser.
+    assert.equal(
       pkg.scripts['_check:links'],
-      /node scripts\/lychee\/check-report\/cli\.mjs \*\.md$/,
+      'npm run generate:config:links && node scripts/lychee/check-report/cli.mjs *.md',
     );
-    assert.match(pkg.scripts['check:links'], /npm run _check:links --$/);
-    assert.match(
+    assert.equal(
+      pkg.scripts['check:links'],
+      'npm run build && npm run _check:links --',
+    );
+    assert.equal(
       pkg.scripts['check:links:internal'],
-      /npm run _check:links -- --offline$/,
+      'npm run build && npm run _check:links -- --offline',
     );
-    assert.match(
+    assert.equal(
       pkg.scripts['check:links:production-internal'],
-      /npm run _check:links -- --offline --production$/,
+      'npm run -s lean -- build:production && npm run _check:links -- --offline --production',
     );
+    assert.equal(pkg.scripts['fix:link-cache'], 'npm run check:links --');
   });
 
   test('the job that cacheUpdatedNotice() cites exists in check-links.yml', () => {

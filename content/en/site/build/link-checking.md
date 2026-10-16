@@ -24,12 +24,12 @@ npm run check:links
 
 ## Common commands
 
-| Command                           | Checking scope                                                    |
-| --------------------------------- | ----------------------------------------------------------------- |
-| `check:links`                     | Whole site, plus the repository's root Markdown files             |
-| `check:links:internal`            | Same scope, offline (no external links)                           |
-| `check:links:production-internal` | [Production build](#production-internal), internal links, offline |
-| `fix:link-cache`                  | Alias of `check:links`; use it to refresh the [link cache][]      |
+| Command                           | Checking scope                                                      |
+| --------------------------------- | ------------------------------------------------------------------- |
+| `check:links`                     | Whole site, plus the repository's root Markdown files               |
+| `check:links:internal`            | Same scope, offline (no external links)                             |
+| `check:links:production-internal` | Same scope over a [production build](#production-internal), offline |
+| `fix:link-cache`                  | Alias of `check:links`; use it to refresh the [link cache][]        |
 
 The `check:links` and `check:links:internal` scripts run over a build of
 `BUILD_KIND`. For details, see [Build kinds: full and lean][build-kinds].
