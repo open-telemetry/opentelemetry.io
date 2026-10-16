@@ -277,9 +277,9 @@ It runs as a four-stage pipeline:
      branch; only the npm script it runs is PR code.
    - Before the checkout, a trusted step refuses a PR head that predates
      `link-cache.jsonc` or still pins the CSV-only `link-cache` (its own link
-     check would recreate the obsolete `.lycheecache`); the outcome comment
-     then tells the author to update the branch. The step is inline shell,
-     untested, and goes once no open PR predates the switch.
+     check would recreate the obsolete `.lycheecache`); the outcome comment then
+     tells the author to update the branch. The step is inline shell, untested,
+     and goes once no open PR predates the switch.
 3. **`apply-patch`** (trusted): calls the [`reusable-apply-patch.yml`][]
    workflow — resolved from the default branch, never from the PR — which
    applies the patch with a GitHub App token and pushes a commit to the PR
