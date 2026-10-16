@@ -105,8 +105,9 @@ jobs:
 
       - name: Run housekeeping command and generate patch
         id: patch
-        # Default-branch only (trusted; cf. pr-actions). Non-zero exit is OK—
-        # fixes still publish; residual failures fail in report-failure below.
+        # Trusted (cf. pr-actions): scheduled runs execute main; dispatch runs
+        # the maintainer-selected ref. Non-zero exit is OK—fixes still publish;
+        # residual failures fail in report-failure below.
         uses: $/.github/actions/npm-script-patch
         env:
           # Authenticated github.com link checks (rate limits) in fix:link-cache;

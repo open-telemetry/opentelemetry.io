@@ -274,7 +274,8 @@ It runs as a four-stage pipeline:
    command, and uploads a patch artifact (`site.patch`), up to 1024 KB.
    - The [npm-script-patch][] action that does so is referenced with GitHub's
      same-repository `$/` syntax, so its definition comes from the default
-     branch; only the npm script it runs is PR code.
+     branch; dependency installation and the fix command still run the PR's
+     code.
    - Before the checkout, a trusted step refuses a PR head that predates
      `link-cache.jsonc` or still pins the CSV-only `link-cache` (its own link
      check would recreate the obsolete `.lycheecache`); the outcome comment then
@@ -334,14 +335,15 @@ It runs as a three-stage pipeline:
 
 1. **`generate-patch`**: runs the housekeeping command via the
    [npm-script-patch][] action and uploads the changes as a patch artifact.
-   Unlike the `/fix` pipeline, the whole run is trusted: the schedule and
-   dispatch triggers only ever execute default-branch code. A failing command
-   fails the job, but any fixes it produced are still published, with a
-   partial-results warning in the PR body. With the default command, it first
-   refreshes the locale team registry (`data/locale-teams.yaml`) from the live
-   teams' direct membership, using a read-only, members-scoped app token that
-   later steps never see; drift then lands in the same PR as the regenerated
-   CODEOWNERS. A failed refresh leaves the registry untouched and fails the job.
+   Unlike the `/fix` pipeline, the whole run is trusted: scheduled runs execute
+   `main`, and a dispatch (write access required) runs the maintainer-selected
+   ref. A failing command fails the job, but any fixes it produced are still
+   published, with a partial-results warning in the PR body. With the default
+   command, it first refreshes the locale team registry
+   (`data/locale-teams.yaml`) from the live teams' direct membership, using a
+   read-only, members-scoped app token that later steps never see; drift then
+   lands in the same PR as the regenerated CODEOWNERS. A failed refresh leaves
+   the registry untouched and fails the job.
 2. **`publish-patch`**: calls the [`reusable-patch-pr.yml`][] workflow — the
    sibling of [`reusable-apply-patch.yml`][] for callers without a PR context —
    which force-pushes the patch to the stable `otelbot/housekeeping` branch,

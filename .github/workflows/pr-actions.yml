@@ -153,12 +153,10 @@ jobs:
 
       - name: Run PR action and generate patch
         id: patch
-        # Untrusted: runs the resolved npm script and captures any changes as a
-        # patch artifact. Has no write permissions or secrets.
-        # NOTE: the `$/` reference resolves this action's definition from the
-        # default branch, not from the PR branch checked out above; the npm
-        # script it runs is still the PR's own code, so never add secrets or
-        # write permissions to this job.
+        # Untrusted: the `$/` reference resolves this action's definition from
+        # the default branch, not from the PR branch checked out above, but
+        # dependency installation and the fix command still run the PR's code;
+        # never add secrets or write permissions to this job.
         uses: $/.github/actions/npm-script-patch
         with:
           command: ${{ steps.extract.outputs.command }}

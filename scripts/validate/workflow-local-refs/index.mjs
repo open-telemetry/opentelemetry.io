@@ -34,7 +34,7 @@ export function findWorkflowReferences(yamlText) {
   const lines = yamlText.split('\n');
 
   lines.forEach((line, index) => {
-    if (line.trimStart().startsWith('#')) return; // skip comments
+    if (line.trimStart().startsWith('#')) return;
 
     const script = line.match(SCRIPT_RE);
     if (script) {
@@ -63,6 +63,6 @@ export function candidatePaths({ kind, ref }) {
   if (kind === 'script') return [ref];
 
   const target = ref.replace(/^[$.]\//, '');
-  if (/\.ya?ml$/.test(target)) return [target]; // reusable workflow file
-  return [`${target}/action.yml`, `${target}/action.yaml`]; // composite action
+  if (/\.ya?ml$/.test(target)) return [target];
+  return [`${target}/action.yml`, `${target}/action.yaml`];
 }
