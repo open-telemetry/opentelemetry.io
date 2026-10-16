@@ -335,6 +335,7 @@ maintainers:
       - kotlin-triagers
       - semconv-android-approvers
       - semconv-client-approvers
+      - semconv-client-side-approvers
       - semconv-log-approvers
       - semconv-mobile-approvers
     html_url: https://github.com/breedx-splk
@@ -455,6 +456,7 @@ maintainers:
       - docs-fr-maintainers
       - proto-approvers
       - proto-triagers
+      - shared-workflows-approvers
       - specs-approvers
       - specs-maintainers
       - specs-triagers
@@ -999,6 +1001,7 @@ maintainers:
       - dotnet-instrumentation-triagers
       - dotnet-maintainers
       - dotnet-triagers
+      - shared-workflows-approvers
     html_url: https://github.com/Kielek
     avatar_url: https://avatars.githubusercontent.com/u/5972917?v=4
   - name: kmos
@@ -2058,6 +2061,11 @@ approvers:
       - ebpf-instrumentation-approvers
     html_url: https://github.com/marctc
     avatar_url: https://avatars.githubusercontent.com/u/280193?v=4
+  - name: mateenali66
+    teams:
+      - cpp-approvers
+    html_url: https://github.com/mateenali66
+    avatar_url: https://avatars.githubusercontent.com/u/67343899?v=4
   - name: matt-hensley
     teams:
       - dotnet-approvers
@@ -2118,6 +2126,7 @@ approvers:
     teams:
       - collector-contrib-triagers
       - demo-approvers
+      - semconv-system-approvers
     html_url: https://github.com/osullivandonal
     avatar_url: https://avatars.githubusercontent.com/u/92297851?v=4
   - name: owent
@@ -2596,6 +2605,9 @@ members:
   - name: abhide
     html_url: https://github.com/abhide
     avatar_url: https://avatars.githubusercontent.com/u/2238473?v=4
+  - name: Abhimanyu9988
+    html_url: https://github.com/Abhimanyu9988
+    avatar_url: https://avatars.githubusercontent.com/u/32825278?v=4
   - name: AbhiPrasad
     html_url: https://github.com/AbhiPrasad
     avatar_url: https://avatars.githubusercontent.com/u/18689448?v=4
@@ -2974,9 +2986,6 @@ members:
   - name: martinjt
     html_url: https://github.com/martinjt
     avatar_url: https://avatars.githubusercontent.com/u/1699587?v=4
-  - name: mateenali66
-    html_url: https://github.com/mateenali66
-    avatar_url: https://avatars.githubusercontent.com/u/67343899?v=4
   - name: mateuszrzeszutek
     html_url: https://github.com/mateuszrzeszutek
     avatar_url: https://avatars.githubusercontent.com/u/69198463?v=4
@@ -3136,6 +3145,9 @@ members:
   - name: sanketmehta28
     html_url: https://github.com/sanketmehta28
     avatar_url: https://avatars.githubusercontent.com/u/20374164?v=4
+  - name: SatoshiKamiyama
+    html_url: https://github.com/SatoshiKamiyama
+    avatar_url: https://avatars.githubusercontent.com/u/55924931?v=4
   - name: scbjans
     html_url: https://github.com/scbjans
     avatar_url: https://avatars.githubusercontent.com/u/27202540?v=4

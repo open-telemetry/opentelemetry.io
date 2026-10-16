@@ -1,6 +1,7 @@
 ---
 title: セルフオブザーバビリティダッシュボード
 default_lang_commit: 98edce30d9f5ea1302ae983d86b178077586471e
+drifted_from_default: true
 ---
 
 OpenTelemetry SDK は、SDK 自体の動作を表す内部メトリクス（実験的な [`otel.sdk.*` セマンティック規約](/docs/specs/semconv/otel/sdk-metrics/)を使用）を出力できます。

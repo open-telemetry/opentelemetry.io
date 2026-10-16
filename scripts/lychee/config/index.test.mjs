@@ -1,18 +1,21 @@
-// Unit tests for the front-matter -> lychee `exclude_path` generator
-// (./index.mjs), including preservation of the `(../)?` locale prefix that
-// lets a single pattern cover every locale.
+// Unit tests for the lychee config generator (./index.mjs): the front-matter
+// and drift-derived `exclude_path` entries, and the fragment-only `exclude`
+// entries for drifted pages.
 
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+  EXCLUDE_MARKER,
   FRONT_MATTER_KEY,
   driftedIgnoreDirOf,
   excludePathPatternsOf,
+  fragmentExcludeOf,
   frontMatterOf,
   pageIgnoreDirOf,
   toExcludePaths,
   translate,
+  withFragmentExcludes,
 } from './index.mjs';
 
 describe('frontMatterOf()', () => {
@@ -65,8 +68,6 @@ describe('excludePathPatternsOf()', () => {
     );
   });
 
-  // A blank pattern would translate to `/public/`, excluding every page and
-  // false-greening the whole check.
   test('throws on an empty-string pattern', () => {
     assert.throws(
       () => excludePathPatternsOf(`${FRONT_MATTER_KEY}: ['']`, 'f.md'),
@@ -208,6 +209,80 @@ describe('translated subtree pattern matches old blog posts in every locale', ()
   });
 });
 
+describe('fragmentExcludeOf()', () => {
+  const pattern = fragmentExcludeOf('^es/docs/setup/kubernetes/$');
+  const re = new RegExp(pattern);
+  const uri = (tail) => `file:///repo/public/es/docs/setup/kubernetes${tail}`;
+
+  test('maps a page directory to a fragment-only `exclude` regex', () => {
+    assert.equal(
+      pattern,
+      '/public/es/docs/setup/kubernetes(/(index\\.html)?)?#',
+    );
+  });
+
+  for (const tail of ['#sec', '/#sec', '/index.html#sec']) {
+    test(`matches a fragment link: …kubernetes${tail}`, () =>
+      assert.match(uri(tail), re));
+  }
+
+  for (const tail of [
+    '',
+    '/',
+    '/index.html',
+    '-helm#sec',
+    '-helm/#sec',
+    '/sub/#sec',
+  ]) {
+    test(`does not match …kubernetes${tail}`, () =>
+      assert.doesNotMatch(uri(tail), re));
+  }
+
+  test('escapes regex metacharacters in the path', () => {
+    assert.equal(
+      fragmentExcludeOf('^xx/docs/v1.2/$'),
+      '/public/xx/docs/v1\\.2(/(index\\.html)?)?#',
+    );
+  });
+});
+
+describe('withFragmentExcludes()', () => {
+  const base = ['exclude = [', "  '/api/?$',", EXCLUDE_MARKER, ']', ''].join(
+    '\n',
+  );
+
+  test('replaces the marker line with the entries', () => {
+    assert.equal(
+      withFragmentExcludes(base, ['/public/a(/(index\\.html)?)?#']),
+      [
+        'exclude = [',
+        "  '/api/?$',",
+        "  '/public/a(/(index\\.html)?)?#',",
+        ']',
+        '',
+      ].join('\n'),
+    );
+  });
+
+  test('removes the marker line when there are no entries', () => {
+    assert.equal(
+      withFragmentExcludes(base, []),
+      ['exclude = [', "  '/api/?$',", ']', ''].join('\n'),
+    );
+  });
+
+  test('throws when the marker is missing', () => {
+    assert.throws(() => withFragmentExcludes('exclude = []\n', []), /marker/);
+  });
+
+  test('throws when the marker appears more than once', () => {
+    assert.throws(
+      () => withFragmentExcludes(`${base}${EXCLUDE_MARKER}\n`, []),
+      /marker/,
+    );
+  });
+});
+
 describe('toExcludePaths()', () => {
   const page = (fm) => `---\n${fm}\n---\n\nBody.\n`;
 
@@ -260,5 +335,82 @@ describe('toExcludePaths()', () => {
       '/public/zh/docs/demo/index\\.html$',
       '/public/ja/docs/demo/index\\.html$',
     ]);
+  });
+
+  test('fragment excludes cover drifted and drift-pending pages only', () => {
+    const pages = [
+      [
+        'content/en/blog/_index.md',
+        page(`${FRONT_MATTER_KEY}:\n  - ^(../)?blog/2019/`),
+      ],
+      ['content/zh/docs/demo/index.md', page('drifted_from_default: true')],
+      ['content/ja/docs/pending.md', page('title: Copy, EN changed since')],
+      ['content/ja/docs/plain.md', page('title: In sync')],
+    ];
+    const { fragmentExcludes } = toExcludePaths(
+      pages,
+      [
+        '^zh/docs/demo/$', // already stored-drifted
+        '^ja/docs/pending/$',
+      ],
+      () => true,
+    );
+    assert.deepEqual(fragmentExcludes, [
+      '/public/zh/docs/demo(/(index\\.html)?)?#',
+      '/public/ja/docs/pending(/(index\\.html)?)?#',
+    ]);
+  });
+
+  test('fragment excludes are off unless the caller supplies the build gate', () => {
+    const pages = [
+      ['content/zh/docs/demo/index.md', page('drifted_from_default: true')],
+    ];
+    assert.deepEqual(toExcludePaths(pages).fragmentExcludes, []);
+  });
+
+  test('a drifted page shadowed by a same-directory page gets no fragment exclude', () => {
+    const pages = [
+      ['content/xx/docs/dup.md', page('drifted_from_default: file not found')],
+      ['content/xx/docs/dup/_index.md', page('title: In-sync section')],
+      ['content/xx/docs/solo.md', page('drifted_from_default: true')],
+    ];
+    const { entries, fragmentExcludes } = toExcludePaths(pages, [], () => true);
+    assert.deepEqual(fragmentExcludes, [
+      '/public/xx/docs/solo(/(index\\.html)?)?#',
+    ]);
+    assert.deepEqual(
+      entries,
+      [
+        '/public/xx/docs/dup/index\\.html$',
+        '/public/xx/docs/solo/index\\.html$',
+      ],
+      'exclude_path covers the shadowed page',
+    );
+  });
+
+  test('a drifted page absent from the build gets no fragment exclude', () => {
+    const pages = [
+      ['content/zh/docs/demo/index.md', page('drifted_from_default: true')],
+      ['content/zh/docs/unbuilt.md', page('drifted_from_default: true')],
+      ['content/ja/docs/pending-unbuilt.md', page('title: Copy, EN changed')],
+    ];
+    const isBuilt = (dir) => dir === 'zh/docs/demo';
+    const { entries, fragmentExcludes } = toExcludePaths(
+      pages,
+      ['^ja/docs/pending-unbuilt/$'],
+      isBuilt,
+    );
+    assert.deepEqual(fragmentExcludes, [
+      '/public/zh/docs/demo(/(index\\.html)?)?#',
+    ]);
+    assert.deepEqual(
+      entries,
+      [
+        '/public/zh/docs/demo/index\\.html$',
+        '/public/zh/docs/unbuilt/index\\.html$',
+        '/public/ja/docs/pending-unbuilt/index\\.html$',
+      ],
+      'exclude_path covers the unbuilt pages',
+    );
   });
 });
