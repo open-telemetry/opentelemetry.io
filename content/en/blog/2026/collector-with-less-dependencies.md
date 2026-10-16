@@ -75,7 +75,7 @@ dist:
   description: OpenTelemetry Collector
   version: 0.163.1
   output_path: ./_build
-  build_tags: "omit_detector_system"
+  build_tags: 'omit_detector_system'
 ```
 
 Each detector can be disabled via a `omit_` flag, which allows the Collector to
