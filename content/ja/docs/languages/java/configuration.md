@@ -4,6 +4,7 @@ linkTitle: SDKの設定
 weight: 13
 aliases: [config]
 default_lang_commit: 2b88c43e50fb99c601ededa24b1f3a461fef9ac0
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---

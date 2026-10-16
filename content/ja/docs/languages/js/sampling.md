@@ -3,6 +3,7 @@ title: サンプリング
 weight: 80
 description: 生成されるテレメトリの量を削減する
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+drifted_from_default: true
 ---
 
 [サンプリング](/docs/concepts/sampling/)は、システムによって生成されるトレースの量を制限するプロセスです。
