@@ -10,7 +10,7 @@ author: >-
   Makwana](https://github.com/VihasMakwana) (Elastic)
 sig: Collector SIG
 # prettier-ignore
-cSpell:ignore: benchstat braydonk fileconsumer filelog Kains Makwana Stencel Vihas
+cSpell:ignore: benchstat Braydon braydonk fileconsumer filelog Kains Makwana Stencel Vihas
 ---
 
 If you run the [filelog receiver][filelog] with a `storage` extension, the
@@ -128,4 +128,4 @@ comment on
 [#43266](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/43266).
 
 [filelog]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/701867a218d0590a3e95c920388b7fb65aa3dd1d/receiver/filelogreceiver
