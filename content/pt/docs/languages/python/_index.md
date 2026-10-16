@@ -4,16 +4,15 @@ description: >-
   <img width="35" class="img-initial otel-icon"
   src="/img/logos/32x32/Python_SDK.svg" alt="Python"> Uma implementação
   específica de linguagem do OpenTelemetry em Python.
-weight: 22
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
-drifted_from_default: true
+weight: 190
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 {{% docs/languages/index-intro python /%}}
 
 ## Suporte de Versão {#status-and-releases}
 
-O OpenTelemetry suporta a versão Python 3.9 e superiores.
+O OpenTelemetry suporta a versão Python 3.10 e superiores.
 
 ## Instalação {#installation}
 
@@ -54,7 +53,7 @@ instrumentação, implementações de rastreadores, etc., visite o
 Há algumas funcionalidades que ainda não foram lançadas no PyPI. Nessa situação,
 você pode querer instalar os pacotes diretamente do repositório. Isso pode ser
 feito clonando o repositório e fazendo uma
-[instalação editável](https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs):
+[instalação editável](https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs):
 
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-python.git
