@@ -456,6 +456,7 @@ maintainers:
       - docs-fr-maintainers
       - proto-approvers
       - proto-triagers
+      - shared-workflows-approvers
       - specs-approvers
       - specs-maintainers
       - specs-triagers
@@ -1000,6 +1001,7 @@ maintainers:
       - dotnet-instrumentation-triagers
       - dotnet-maintainers
       - dotnet-triagers
+      - shared-workflows-approvers
     html_url: https://github.com/Kielek
     avatar_url: https://avatars.githubusercontent.com/u/5972917?v=4
   - name: kmos
