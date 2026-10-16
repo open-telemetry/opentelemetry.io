@@ -95,22 +95,32 @@ suite('cacheUpdatedNotice', () => {
 });
 
 suite('wiring drift guard', () => {
-  test('the production script opts into the missing-pages report', () => {
+  test('every check:links variant reaches the wrapper through _check:links', () => {
     const pkg = JSON.parse(
       fs.readFileSync(new URL('../../../package.json', import.meta.url)),
     );
-    assert.match(
+    // npm appends a caller's arguments (those after its `--`) to the end of
+    // the script, so they reach the wrapper only when the script's last
+    // command is the wrapper itself or an `npm run` carrying its own `--`: a
+    // nested `npm run` without one consumes them as npm options. Exact
+    // strings: a drift guard, not a shell parser.
+    assert.equal(
+      pkg.scripts['_check:links'],
+      'npm run generate:config:links && node scripts/lychee/check-report/cli.mjs *.md',
+    );
+    assert.equal(
+      pkg.scripts['check:links'],
+      'npm run build && npm run _check:links --',
+    );
+    assert.equal(
+      pkg.scripts['check:links:internal'],
+      'npm run build && npm run _check:links -- --offline',
+    );
+    assert.equal(
       pkg.scripts['check:links:production-internal'],
-      /check-report\/cli\.mjs --offline --production$/,
+      'npm run -s lean -- build:production && npm run _check:links -- --offline --production',
     );
-  });
-
-  test('_check:links still is the bin that cli.mjs invokes directly', () => {
-    // cli.mjs spawns the bin directly; see its bin comment.
-    const pkg = JSON.parse(
-      fs.readFileSync(new URL('../../../package.json', import.meta.url)),
-    );
-    assert.equal(pkg.scripts['_check:links'], 'lychee-norm-cache');
+    assert.equal(pkg.scripts['fix:link-cache'], 'npm run check:links --');
   });
 
   test('the job that cacheUpdatedNotice() cites exists in check-links.yml', () => {
