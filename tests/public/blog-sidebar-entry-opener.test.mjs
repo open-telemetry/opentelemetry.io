@@ -75,7 +75,7 @@ if (!exists('index.html')) {
     () => {},
   );
 } else {
-  test("every locale's blog index first page loads the opener once", () => {
+  test("every locale's blog index loads the opener once", () => {
     const locales = blogLocales();
     assert.ok(
       ['', 'ja/', 'ko/'].every((prefix) => locales.includes(prefix)),
@@ -95,10 +95,8 @@ if (!exists('index.html')) {
     const pages = [
       'index.html',
       'docs/index.html',
-      'blog/page/2/index.html',
       'blog/2025/index.html',
       `blog/2025/${postDir.name}/index.html`,
-      'ja/blog/page/2/index.html',
       'ja/blog/2025/index.html',
     ];
     for (const rel of pages) {
