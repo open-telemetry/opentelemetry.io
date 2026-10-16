@@ -33,7 +33,7 @@
     {
       // allowScripts approvals are version-exact, so every puppeteer bump
       // needs a human commit; isolating the pair keeps the shared groups
-      // mergeable as-is (and never automerges these).
+      // mergeable as-is.
       "matchPackageNames": ["puppeteer", "puppeteer-core"],
       "groupName": "puppeteer",
       "automerge": false,
