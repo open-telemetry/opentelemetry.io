@@ -53,13 +53,9 @@ so it has no results to record.
 
 ## Configuration
 
-Lychee runs over the built site (`public/`), plus the repository's root Markdown
-files (`README.md`, `CONTRIBUTING.md`, and the like, which Hugo doesn't render;
-the `*.md` input of the `_check:links` script), using the generated, git-ignored
-`lychee.toml`. Lychee's `extensions` filter applies to directory walks only, so
-those explicitly named files are checked despite `extensions = ["html"]`. The
-`generate:config:links` script derives the configuration from
-[`lychee.base.toml`][] plus exclusions computed from two front-matter fields:
+The link check reads the generated, git-ignored `lychee.toml`, which the
+`generate:config:links` script derives from [`lychee.base.toml`][] plus
+exclusions computed from two front-matter fields:
 
 - **`link_check_exclude_path`**: site-relative path regexes for pages that the
   link checker must skip, such as blog pagination and old blog posts; for an
