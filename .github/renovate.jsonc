@@ -31,8 +31,12 @@
       "enabled": false,
     },
     {
-      // allowScripts approvals are version-exact.
-      "matchPackageNames": ["puppeteer"],
+      // Restores Renovate's own group:puppeteer, which the shared group rules
+      // above override (keep this rule below them), and keeps it off automerge:
+      // https://opentelemetry.io/site/build/dependencies/#script-bearing-packages
+      // puppeteer-core moves in lockstep with puppeteer.
+      "matchPackageNames": ["puppeteer", "puppeteer-core"],
+      "groupName": "Puppeteer",
       "automerge": false,
     },
   ],

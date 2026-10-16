@@ -74,7 +74,7 @@ telemetry differs.
 | `check:l10n`                      | Run localization checks.                                                    |
 | `check:links:internal`            | Offline link check (internal links only); lean build first.                 |
 | `check:links:production-internal` | [Offline check of internal links over a lean production build][prod-check]. |
-| `check:links`                     | [Link check][] the whole site with Lychee; lean build first.                |
+| `check:links`                     | [Link check][] with Lychee; lean build first.                               |
 | `check:markdown:specs`            | Markdown lint for spec fragments in `tmp/`.                                 |
 | `check:markdown`                  | Markdown lint (content and projects).                                       |
 | `check:registry`                  | Validate registry YAML under `data/registry/`.                              |
