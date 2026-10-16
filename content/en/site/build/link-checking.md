@@ -24,12 +24,12 @@ npm run check:links
 
 ## Common commands
 
-| Command                           | Checking scope                                                    |
-| --------------------------------- | ----------------------------------------------------------------- |
-| `check:links`                     | Whole site                                                        |
-| `check:links:internal`            | Whole site, offline (no external links)                           |
-| `check:links:production-internal` | [Production build](#production-internal), internal links, offline |
-| `fix:link-cache`                  | Alias of `check:links`; use it to refresh the [link cache][]      |
+| Command                           | Checking scope                                                      |
+| --------------------------------- | ------------------------------------------------------------------- |
+| `check:links`                     | Whole site, plus the repository's root Markdown files               |
+| `check:links:internal`            | Same scope, offline (no external links)                             |
+| `check:links:production-internal` | Same scope over a [production build](#production-internal), offline |
+| `fix:link-cache`                  | Alias of `check:links`; use it to refresh the [link cache][]        |
 
 The `check:links` and `check:links:internal` scripts run over a build of
 `BUILD_KIND`. For details, see [Build kinds: full and lean][build-kinds].
@@ -53,9 +53,9 @@ so it has no results to record.
 
 ## Configuration
 
-Lychee runs over the built site (`public/`) using the generated, git-ignored
-`lychee.toml`. The `generate:config:links` script derives it from
-[`lychee.base.toml`][] plus exclusions computed from two front-matter fields:
+The link check reads the generated, git-ignored `lychee.toml`, which the
+`generate:config:links` script derives from [`lychee.base.toml`][] plus
+exclusions computed from two front-matter fields:
 
 - **`link_check_exclude_path`**: site-relative path regexes for pages that the
   link checker must skip, such as blog pagination and old blog posts; for an
