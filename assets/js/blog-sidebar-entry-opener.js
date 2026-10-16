@@ -1,12 +1,15 @@
-// Opens the blog sidebar's two newest year groups on the blog index's first
-// page; pager pages (`/page/N/`) are skipped at runtime, Hugo rendering them
-// from the same section page. Runs at body end, before Docsy's chrome-nav.js
-// reveals the sidebar, so the groups are open when it appears. Expects Docsy's
-// sidebar tree (sidebar-tree.html): `#td-section-nav` holding the section's
-// root link `a.tree-root`, each year entry a checkbox toggled by a `<label>`
-// wrapping the year's link. Groups are found through their links, not Docsy's
-// checkbox IDs, which vary by language; missing markup is reported to the
-// console, not skipped.
+// Opens the two newest year groups in the blog sidebar on the blog index's
+// first page. Loaded on every blog list page; pager pages are skipped here
+// (why: site/implementation/scripts).
+//
+// Runs at body end, before Docsy's chrome-nav.js reveals the sidebar, so the
+// groups are already open when it appears.
+//
+// Expects Docsy's sidebar tree (sidebar-tree.html):
+// - `#td-section-nav` holds the section's root link, `a.tree-root`;
+// - each year entry is a checkbox toggled by a `<label>` wrapping the year's
+//   link, found through the link because checkbox IDs vary by language.
+// Missing markup is reported to the console, not skipped.
 
 function openNewestYearGroups() {
   const nav = document.getElementById('td-section-nav');
