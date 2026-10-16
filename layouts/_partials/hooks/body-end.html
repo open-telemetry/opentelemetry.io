@@ -5,3 +5,7 @@
 */ -}}
 {{ partial "script.html" (dict "src" "js/navScroll.js") -}}
 {{ partial "script.html" (dict "src" "js/imageZoom.js") -}}
+{{/* `.Path` is `/blog` in every locale; only the first page needs the opener. */ -}}
+{{ if and (eq .Path "/blog") (eq .Paginator.PageNumber 1) -}}
+  {{ partial "script.html" (dict "src" "js/blog-sidebar-entry-opener.js") -}}
+{{ end -}}
