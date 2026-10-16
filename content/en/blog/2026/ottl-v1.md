@@ -6,7 +6,7 @@ author: '[Tyler Helmuth](https://github.com/TylerHelmuth) (Grafana Labs)'
 draft: true # TODO: remove once the Collector release ships
 issue: 12163
 sig: Collector SIG
-cSpell:ignore: Genesys Helmuth OTTL ottl SigNoz xottl xprofile
+cSpell:ignore: Genesys Helmuth ottl SigNoz xottl xprofile
 ---
 
 The
