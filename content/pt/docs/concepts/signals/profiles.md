@@ -2,16 +2,10 @@
 title: Perfis
 weight: 5
 description: Um registro do uso de recursos no nível do código.
-default_lang_commit: 274bf95abd0cbad3ad9f95b4426f282466cdaade
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
-**Status**: [Em desenvolvimento](/docs/specs/otel/document-status/)
-
-> [!NOTE]
->
-> O sinal de perfis ainda é experimental e está em desenvolvimento ativo.
-> Alterações incompatíveis podem ser introduzidas em versões futuras.
+**Status**: [Alpha](/docs/specs/otel/document-status/)
 
 Um **perfil** é uma **coleção** de amostras e metadados associados que mostra
 onde as aplicações consomem recursos durante a execução. Uma amostra registra
