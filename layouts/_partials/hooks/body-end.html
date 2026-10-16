@@ -5,7 +5,8 @@
 */ -}}
 {{ partial "script.html" (dict "src" "js/navScroll.js") -}}
 {{ partial "script.html" (dict "src" "js/imageZoom.js") -}}
-{{/* `.Path` is `/blog` in every locale. */ -}}
-{{ if and (eq .Path "/blog") (eq .Paginator.PageNumber 1) -}}
+{{/* `.Path` is `/blog` in every locale. An empty blog (ko) is never paginated,
+  and asking it for `.Paginator` would publish a `page/1` stub. */ -}}
+{{ if and (eq .Path "/blog") (or (not .Pages) (eq .Paginator.PageNumber 1)) -}}
   {{ partial "script.html" (dict "src" "js/blog-sidebar-entry-opener.js") -}}
 {{ end -}}
