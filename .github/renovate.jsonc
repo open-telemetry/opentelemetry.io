@@ -31,9 +31,8 @@
       "enabled": false,
     },
     {
-      // allowScripts approvals are version-exact, so every puppeteer bump
-      // needs a human commit; isolating the pair keeps the shared groups
-      // mergeable as-is.
+      // allowScripts approvals are version-exact:
+      // https://opentelemetry.io/site/build/dependencies/#script-bearing-packages
       "matchPackageNames": ["puppeteer", "puppeteer-core"],
       "groupName": "puppeteer",
       "automerge": false,
