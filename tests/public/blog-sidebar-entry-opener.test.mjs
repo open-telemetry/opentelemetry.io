@@ -1,16 +1,15 @@
 // Checks the blog sidebar entry opener (assets/js/blog-sidebar-entry-opener.js)
-// as the build emits it from the body-end hook, and the sidebar structure the
-// script relies on:
+// as the build emits it, and the sidebar structure the script relies on:
 //
-// - every locale's blog index first page loads the script exactly once; later
-//   pages, year and post pages, and non-blog pages don't;
+// - every locale's blog index first page loads the script exactly once, and
+//   sampled later, year, post and non-blog pages don't;
 // - the en blog index carries no inline copy of the opener (ja and ko keep
 //   theirs until their locale sync);
-// - in the blog sidebar, each year link sits inside a label tied to a checkbox,
-//   which is how the script opens a group.
+// - the blog sidebar's root link and year groups, each a link inside a label
+//   tied to a checkbox, are where the script looks for them.
 //
 // It reads the built site, so it skips when `public/` is absent. Patterns allow
-// the unquoted attributes of a minified build.
+// the unquoted attributes of a minified build and any attribute order.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -25,10 +24,25 @@ const repoRoot = path.resolve(
 );
 const publicDir = path.join(repoRoot, 'public');
 
-// Fingerprinted in production builds, plain otherwise.
+// Minified and fingerprinted in production builds, plain otherwise.
 const openerScriptRE =
-  /<script\b[^>]*\bsrc="?[^"\s>]*\/js\/blog-sidebar-entry-opener(\.[0-9a-f]+)?\.js"?[\s>]/g;
+  /<script\b[^>]*\bsrc="?[^"\s>]*\/js\/blog-sidebar-entry-opener(\.min)?(\.[0-9a-f]+)?\.js"?[\s>]/g;
 const inlineScriptRE = /<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi;
+// The old snippet's checkbox IDs, or the opener's own lookup.
+const inlineOpenerRE = /m-blog|td-section-nav/;
+
+// A lookahead per attribute keeps a tag matcher independent of attribute order.
+const attrAhead = (name, value) => `(?=[^>]*\\b${name}="?${value}"?[\\s/>])`;
+const rootLinkRE = (href) =>
+  new RegExp(
+    `<a\\b${attrAhead('href', href)}(?=[^>]*\\bclass="[^"]*\\btree-root\\b)`,
+  );
+const yearLabelRE = (href) =>
+  new RegExp(
+    `<label\\b(?=[^>]*\\bfor="?([^"\\s>]+)"?[\\s>])[^>]*>\\s*<a\\b${attrAhead('href', href)}`,
+  );
+const checkboxRE = (id) =>
+  new RegExp(`<input\\b${attrAhead('type', 'checkbox')}${attrAhead('id', id)}`);
 
 const exists = (rel) => fs.existsSync(path.join(publicDir, rel));
 const read = (rel) => {
@@ -38,14 +52,15 @@ const read = (rel) => {
 const openerCount = (html) => html.match(openerScriptRE)?.length ?? 0;
 const inlineCount = (html) =>
   [...html.matchAll(inlineScriptRE)].filter(([, body]) =>
-    body.includes('m-blog'),
+    inlineOpenerRE.test(body),
   ).length;
-const yearLabelFor = (html, href) =>
-  html.match(
-    new RegExp(
-      `<label\\s+for="?([^"\\s>]+)"?\\s*>\\s*<a\\b[^>]*\\bhref="?${href}"?[\\s>]`,
-    ),
-  )?.[1];
+const sectionNav = (html) => {
+  const nav = html.match(
+    /<nav\b(?=[^>]*\bid="?td-section-nav"?[\s>])[\s\S]*?<\/nav>/,
+  )?.[0];
+  assert.ok(nav, 'sidebar section nav is built');
+  return nav;
+};
 
 // Path prefixes of the built blog indexes: '' for en, 'ja/' and so on.
 const blogLocales = () =>
@@ -53,13 +68,10 @@ const blogLocales = () =>
     (prefix) => exists(`${prefix}blog/index.html`),
   );
 
-// A locale's blog year sections, newest first, as the sidebar lists them.
 const blogYears = (prefix) =>
   fs
     .readdirSync(path.join(publicDir, `${prefix}blog`))
-    .filter((name) => /^\d{4}$/.test(name))
-    .sort()
-    .reverse();
+    .filter((name) => /^\d{4}$/.test(name));
 
 if (!exists('index.html')) {
   test(
@@ -103,24 +115,28 @@ if (!exists('index.html')) {
     assert.equal(
       inlineCount(read('blog/index.html')),
       0,
-      'blog/index.html has no inline copy',
+      'blog/index.html is free of inline openers',
     );
   });
 
-  test('blog sidebar ties each year link to a checkbox', () => {
+  test('blog sidebar has the root link and year groups the script keys on', () => {
     for (const prefix of ['', 'ja/']) {
-      const html = read(`${prefix}blog/index.html`);
+      const nav = sectionNav(read(`${prefix}blog/index.html`));
+      const root = `/${prefix}blog/`;
+      assert.match(
+        nav,
+        rootLinkRE(root),
+        `${root} is the nav's tree-root link`,
+      );
       const years = blogYears(prefix);
       assert.ok(years.length >= 2, `${prefix}blog has two or more years`);
       for (const year of years) {
-        const href = `/${prefix}blog/${year}/`;
-        const id = yearLabelFor(html, href);
-        assert.ok(id, `${href} link is inside a label`);
+        const href = `${root}${year}/`;
+        const id = nav.match(yearLabelRE(href))?.[1];
+        assert.ok(id, `${href} link is a label's child`);
         assert.match(
-          html,
-          new RegExp(
-            `<input\\b[^>]*\\btype="?checkbox"?[^>]*\\bid="?${id}"?[\\s/>]`,
-          ),
+          nav,
+          checkboxRE(id),
           `${href} label's control is a checkbox`,
         );
       }

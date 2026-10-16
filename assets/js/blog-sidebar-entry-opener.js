@@ -1,8 +1,7 @@
-// Opens the blog sidebar's two newest year groups. Loaded at body end on blog
-// index first pages only (hooks/body-end.html): the sidebar is parsed by then,
-// and Docsy's chrome-nav.js reveals it later, groups already open. Groups are
-// found through their links, not Docsy's checkbox IDs, which are
-// language-prefixed.
+// Opens the blog sidebar's two newest year groups. Runs at body end, before
+// Docsy's chrome-nav.js reveals the sidebar, so the groups are open when it
+// appears. Groups are found through their links, not Docsy's checkbox IDs,
+// which vary by language.
 
 const nav = document.getElementById('td-section-nav');
 const root = nav?.querySelector('a.tree-root');
