@@ -1,8 +1,9 @@
 # Lychee link-checker configuration (BASE FILE).
 #
 # `lychee.toml` is GENERATED from this file plus an `exclude_path` block
-# computed from page front matter. Edit THIS base; do not edit the generated
-# `lychee.toml` (gitignored). Regenerate with: npm run generate:config:links
+# computed from page front matter, and drifted-page fragment excludes spliced
+# into `exclude`. Edit THIS base; do not edit the generated `lychee.toml`
+# (gitignored). Regenerate with: npm run generate:config:links
 #
 # cSpell:disable
 
@@ -13,7 +14,7 @@ no_progress = true
 extensions = ["html"]       # skip the llms *.md outputs
 timeout = 15
 max_retries = 0
-include_fragments = "full"  # check anchors too; this setting is an enum, not a boolean
+include_fragments = "full"  # an enum, not a boolean
 index_files = ["index.html"]  # resolve Hugo pretty-URL dir links to index.html for fragment checks
 
 # npmjs 429s at lychee's default pacing. Registry data links both host forms,
@@ -117,4 +118,8 @@ exclude = [
   '^https://docs\.alauda\.io/.*#',
   # Google Docs heading anchors (`#heading=h.…`) are client-rendered.
   '^https://docs\.google\.com/document/d/.+#',
+
+  # Fragment links into drifted or drift-pending localized pages: GENERATED,
+  # one entry per page, in place of the marker line.
+  # --- GENERATED: drifted-page fragment excludes ---
 ]

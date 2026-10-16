@@ -6,13 +6,9 @@
 //
 // Each seam is unit-tested elsewhere (scripts/i18n/drift.test.mjs,
 // scripts/lychee/config/index.test.mjs, index.test.mjs here), but only this
-// test spans them: a page each unit believes is excluded must actually not
-// turn the lychee run red, and — the control — a page nothing excludes must.
-//
-// The fixture is declarative (file map -> tmpdir, in the spirit of Hugo's
-// IntegrationTestBuilder). The real script files are copied into the fixture
-// repo unmodified — `generate:config:links` derives the repo root from its
-// own location — so the chain under test is the working tree's actual code.
+// test spans them: a page, or a fragment link into a drifted page, that each
+// unit believes is excluded must actually not turn the lychee run red, and, as
+// the control, an unexcluded counterpart must.
 //
 // Skips cleanly when the `lychee` binary is absent from PATH.
 
@@ -32,13 +28,16 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { lycheeAvailable, runLychee, findError } from './run-lychee.mjs';
+import {
+  lycheeAvailable,
+  runLychee,
+  findError,
+  wasExcluded,
+} from './run-lychee.mjs';
 
 const skip = lycheeAvailable() ? false : 'lychee binary is not on PATH';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '../../..');
-
-// --- declarative fixture helpers ---------------------------------------------
 
 // Write a { relativePath: content } file map under dir, creating directories.
 function writeFiles(dir, files) {
@@ -65,8 +64,6 @@ function git(dir, ...args) {
   }).trim();
 }
 
-// --- fixture content ----------------------------------------------------------
-
 const pin = 'default_lang_commit: 0123456789abcdef0123456789abcdef01234567';
 
 function contentPage(title, extraFrontMatter = '') {
@@ -89,7 +86,22 @@ const validHtml = [
   '</body></html>',
 ].join('\n');
 
-// Committed as the baseline: every EN page and locale copy in sync.
+// A checked page with no content source, like an EN page rendered as a locale
+// fallback.
+const fallbackHtml = [
+  '<!doctype html><html><body>',
+  '<a href="../stored-true/#gone-stored">into a stored-drifted page</a>',
+  '<a href="/xx/docs/en-edited/#gone-pending">into a drift-pending page</a>',
+  '<a href="../control/#gone-control">into an in-sync page</a>',
+  '<a href="../stored-true/">into a drifted page, no fragment</a>',
+  '<a href="../stored-true-gone/#gone-sibling">into a missing page</a>',
+  '<a href="../stored-unbuilt/#gone-unbuilt">into a drifted page the build omitted</a>',
+  '<a href="/en/docs/target/#gone-en">into an EN page</a>',
+  '<a href="../stored-shadowed/#gone-shadowed">into a section that shadows a drifted leaf</a>',
+  '</body></html>',
+].join('\n');
+
+// Committed as the baseline.
 const baselineFiles = {
   'content/en/docs/en-edited.md': contentPage('EN, edited after baseline'),
   'content/xx/docs/en-edited.md': contentPage('Copy of en-edited', `${pin}\n`),
@@ -115,6 +127,22 @@ const baselineFiles = {
     'Copy whose EN is long gone',
     `${pin}\ndrifted_from_default: file not found\n`,
   ),
+  // Drifted, but with no built output (as a production build omits pages).
+  'content/xx/docs/stored-unbuilt.md': contentPage(
+    'Copy marked drifted, absent from the build',
+    `${pin}\ndrifted_from_default: true\n`,
+  ),
+  // A drifted leaf beside an in-sync section at the same URL: Hugo serves the
+  // section, so the built page isn't the drifted one.
+  'content/en/docs/stored-shadowed/_index.md': contentPage('EN section'),
+  'content/xx/docs/stored-shadowed/_index.md': contentPage(
+    'In-sync copy of the section',
+    `${pin}\n`,
+  ),
+  'content/xx/docs/stored-shadowed.md': contentPage(
+    'Stale leaf whose EN is long gone',
+    `${pin}\ndrifted_from_default: file not found\n`,
+  ),
   'content/en/docs/control.md': contentPage('EN, untouched'),
   'content/xx/docs/control.md': contentPage('Copy of control', `${pin}\n`),
 };
@@ -129,8 +157,14 @@ const publicFiles = {
   'public/xx/docs/both-edited/index.html': brokenHtml('missing-both-edited'),
   'public/xx/docs/stored-true/index.html': brokenHtml('missing-stored-true'),
   'public/xx/docs/stored-fnf/index.html': brokenHtml('missing-stored-fnf'),
+  // The unbuilt page's directory exists (a built child), its index.html doesn't.
+  'public/xx/docs/stored-unbuilt/child/index.html':
+    '<!doctype html><html><body></body></html>',
+  'public/xx/docs/stored-shadowed/index.html':
+    '<!doctype html><html><body><h2 id="kept">S</h2></body></html>',
   'public/xx/docs/control/index.html': brokenHtml('missing-control'),
   'public/en/docs/control/index.html': validHtml,
+  'public/xx/docs/fallback/index.html': fallbackHtml,
 };
 
 describe(
@@ -157,7 +191,6 @@ describe(
       }
       symlinkSync(join(repoRoot, 'node_modules'), join(dir, 'node_modules'));
 
-      // Baseline commit: everything in sync.
       writeFiles(dir, baselineFiles);
       git(dir, 'init', '--quiet');
       git(dir, 'add', '-A');
@@ -209,12 +242,12 @@ describe(
     after(() => rmSync(dir, { recursive: true, force: true }));
 
     test('sanity: exactly the non-excluded pages are scanned', () => {
-      // 3 = the two checked broken-link pages (both-edited, control) + the EN
-      // control's valid link: an exact count distinguishes "excluded" from
-      // "accidentally not scanned". (exclude_path prunes lychee's input set,
-      // so path-excluded pages never appear in excluded_map; the count is the
-      // observable.)
-      assert.equal(result.total, 3, 'link count matches the checked pages');
+      // 11 = the two checked broken-link pages (both-edited, control) + the EN
+      // control's valid link + the fallback page's eight links: an exact count
+      // distinguishes "excluded" from "accidentally not scanned". (exclude_path
+      // prunes lychee's input set, so path-excluded pages never appear in
+      // excluded_map; the count is the observable.)
+      assert.equal(result.total, 11, 'link count matches the checked pages');
       assert.equal(
         findError(result, '/en/docs/target/#known-anchor'),
         null,
@@ -290,12 +323,83 @@ describe(
       );
     });
 
-    test('no other reds: the two expected errors are the only ones', () => {
-      assert.equal(
-        result.errors,
-        2,
-        'exactly the exempted + control pages are red',
+    test('fragment link into a stored-drifted page is excluded', () => {
+      assert.ok(wasExcluded(result, 'gone-stored'), 'link is excluded');
+      assert.equal(findError(result, 'gone-stored'), null, 'link passes');
+    });
+
+    test('fragment link into a drift-pending page is excluded', () => {
+      assert.ok(wasExcluded(result, 'gone-pending'), 'link is excluded');
+      assert.equal(findError(result, 'gone-pending'), null, 'link passes');
+    });
+
+    test('missing fragment on an in-sync locale page is red', () => {
+      assert.match(
+        findError(result, 'gone-control') ?? '',
+        /fragment/i,
+        'fragment is checked on an in-sync target',
       );
+    });
+
+    test('fragment link to a missing sibling of a drifted page is red', () => {
+      assert.match(
+        findError(result, 'gone-sibling') ?? '',
+        /File not found/,
+        'page existence is checked despite the drifted-page prefix',
+      );
+    });
+
+    test('fragment link to a drifted page the build omitted is red', () => {
+      assert.ok(
+        lycheeToml.includes('/public/xx/docs/stored-unbuilt/index\\.html$'),
+        'exclude_path covers the unbuilt page',
+      );
+      assert.ok(
+        !lycheeToml.includes('/public/xx/docs/stored-unbuilt('),
+        'fragment exclude is withheld for the unbuilt page',
+      );
+      assert.match(
+        findError(result, 'gone-unbuilt') ?? '',
+        /Cannot find index file/,
+        'page existence is checked for an unbuilt drifted page',
+      );
+    });
+
+    test('drifted leaf shadowed by an in-sync section: missing fragment is red', () => {
+      assert.ok(
+        lycheeToml.includes('/public/xx/docs/stored-shadowed/index\\.html$'),
+        'exclude_path covers the shadowed leaf',
+      );
+      assert.ok(
+        !lycheeToml.includes('/public/xx/docs/stored-shadowed('),
+        'fragment exclude is withheld for a directory two pages claim',
+      );
+      assert.match(
+        findError(result, 'gone-shadowed') ?? '',
+        /fragment/i,
+        'fragment is checked on the section Hugo serves',
+      );
+    });
+
+    test('missing fragment on an existing EN page is red', () => {
+      assert.match(
+        findError(result, 'gone-en') ?? '',
+        /fragment/i,
+        'fragment is checked on an EN target',
+      );
+    });
+
+    test('only fragment links into built drifted pages are excluded', () => {
+      assert.equal(
+        result.excludes,
+        2,
+        'two fragment links into built drifted pages are excluded',
+      );
+    });
+
+    test('no other reds: only the expected errors', () => {
+      // 7 = both-edited + control + the fallback page's five red links.
+      assert.equal(result.errors, 7, 'error count equals the expected reds');
     });
   },
 );
