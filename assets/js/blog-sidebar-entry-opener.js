@@ -1,9 +1,10 @@
 // Opens the two newest year groups in the blog sidebar on the blog index's
 // first page. Loaded on every blog list page; pager pages are skipped here
-// (why: site/implementation/scripts).
+// (why: https://opentelemetry.io/site/implementation/scripts/).
 //
-// Runs at body end, before Docsy's chrome-nav.js reveals the sidebar, so the
-// groups are already open when it appears.
+// The sidebar is in the HTML but hidden until Docsy's chrome-nav.js unhides it
+// at DOMContentLoaded; this runs at body end, so the groups are already open
+// when the sidebar appears.
 //
 // Expects Docsy's sidebar tree (sidebar-tree.html):
 // - `#td-section-nav` holds the section's root link, `a.tree-root`;
