@@ -4,18 +4,19 @@ linkTitle: Share your ecosystem list needs
 date: 2026-10-20
 author: '[Severin Neumann](https://github.com/svrnm)'
 issue: 12078
-sig: Communications SIG 
+sig: Communications SIG
 ---
 
 Do you use OpenTelemetry's registry or ecosystem lists? **[Comment on the
 issue][issue] and tell us which pages you need and why.**
 
-We are reviewing the future of these pages. Understanding how people use them will help us focus our efforts within the maintainer time available.
+We are reviewing the future of these pages. Understanding how people use them
+will help us focus our efforts within the maintainer time available.
 
 ## Which pages are affected?
 
-We have frozen new entries and updates to the following lists while we consider retiring
-or changing them:
+We have frozen new entries and updates to the following lists while we consider
+retiring or changing them:
 
 - [Registry](/ecosystem/registry/): libraries, Collector components, and other
   tools for using and extending OpenTelemetry.
@@ -27,7 +28,9 @@ or changing them:
 - [Adopters](/ecosystem/adopters/): organizations using OpenTelemetry.
 
 The [issue][issue] describes the current direction for each list, including
-retiring the registry in favor of the [OpenTelemetry Ecosystem Explorer](https://explorer.opentelemetry.io/). The future of the other lists is still being discussed.
+retiring the registry in favor of the
+[OpenTelemetry Ecosystem Explorer](https://explorer.opentelemetry.io/). The
+future of the other lists is still being discussed.
 
 ## Why we need your input
 
