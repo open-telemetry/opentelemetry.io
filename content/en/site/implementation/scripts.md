@@ -1,8 +1,9 @@
 ---
 title: Site scripts
 description: >-
-  Where the site's own JavaScript loads, how it is gated to pages, and what Hugo
-  pagination and Docsy's sidebar hydration mean for it
+  Where the site's own JavaScript loads, how a script is gated to a page, and
+  what Hugo pagination and Docsy's sidebar hydration mean for one that acts on
+  the sidebar
 cSpell:ignore: subresource
 ---
 
@@ -17,30 +18,6 @@ subresource-integrity hash. Two kinds of template load them:
 - **Shortcodes**, for scripts a feature needs on the pages that use it, for
   example the registry search form and the config-types accordion.
 
-The rest of this page covers the body-end hook.
-
-## Gating on pages
-
-The hook renders on every page, so a script that applies to one page is gated on
-the page's `.Path`, which is the same in every locale (`/blog` for the blog
-index).
-
-Hugo renders a paginated list's pages from the one section page: `.Path`,
-`.RelPermalink` and `.Pages` are identical on `/blog/` and `/blog/page/2/`, and
-the current slice is reachable only through `.Paginator`. Calling `.Paginator`
-on a list page that Docsy's template leaves unpaginated, such as an empty blog,
-paginates it and publishes a `page/1/` alias. A script that applies to the first
-page only therefore checks `location.pathname` for `/page/` at runtime.
-
-## Timing against the sidebar
-
-The site uses Docsy's cached sidebar (`ui.sidebar_cache_limit: 1`): one nav per
-sidebar root, shipped hidden (`d-none`) with no active state. Docsy's
-`chrome-nav.js` hydrates it at `DOMContentLoaded`: it applies the active state
-and reveals the nav. A plain script at body end runs during parsing, before
-that, so it can set sidebar state before the sidebar appears. With JavaScript
-disabled, the sidebar stays hidden.
-
 ## Body-end scripts
 
 | Script                         | Pages                                          | Purpose                                                                                                            |
@@ -49,3 +26,31 @@ disabled, the sidebar stays hidden.
 | `imageZoom.js`                 | All                                            | Click-to-zoom for content images                                                                                   |
 | `navScroll.js`                 | All                                            | Meant to scroll the sidebar's active entry into view; inert today, since the active state is applied after it runs |
 | `tracing.js`                   | Netlify builds, when unpaused                  | [Website telemetry](../../features/#website-telemetry), paused                                                     |
+
+## Blog sidebar entry opener
+
+`blog-sidebar-entry-opener.js` is the one body-end script gated to a page and
+the one that acts on the sidebar. What it relies on holds for any script of
+either kind.
+
+### Gating to the blog index
+
+The body-end hook renders on every page, so the opener is gated there on the
+page's `.Path`, which is the same in every locale: `{{ if eq .Path "/blog" }}`.
+
+A `.Path` gate can't single out the first page of a paginated list. Hugo renders
+a list's pager pages from the one section page, so `.Path`, `.RelPermalink` and
+`.Pages` are identical on `/blog/` and `/blog/page/2/`, and the current slice is
+reachable only through `.Paginator`. Calling `.Paginator` on a list page that
+Docsy's template leaves unpaginated, such as an empty blog, paginates it and
+publishes a `page/1/` alias. The opener therefore loads on every pager page and
+skips them at runtime, by testing `location.pathname` for `/page/`.
+
+### Acting on the sidebar
+
+The site uses Docsy's cached sidebar (`ui.sidebar_cache_limit: 1`): one nav per
+sidebar root, shipped hidden (`d-none`) with no active state. Docsy's
+`chrome-nav.js` hydrates it at `DOMContentLoaded`: it applies the active state
+and reveals the nav. A body-end script runs during parsing, before that, so it
+can set sidebar state before the sidebar appears; the opener checks its two year
+groups then. With JavaScript disabled, the sidebar stays hidden.
