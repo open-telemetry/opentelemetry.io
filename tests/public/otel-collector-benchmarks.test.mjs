@@ -26,7 +26,7 @@ const CHARTJS_SRC = /\/js\/vendor\/chart-2\.9\.2[.\w-]*\.js/;
 const CHARTJS_CDN = /cdn\.jsdelivr\.net\/npm\/chart\.js@/;
 const DATA_SRC =
   /open-telemetry\.github\.io\/opentelemetry-collector-contrib\/benchmarks\/loadtests\/data\.js/;
-const INLINE_ID = /<script\b[^>]*\bid=["']main-script["']/;
+const INLINE_ID = /<script\b[^>]*\bid=["']?main-script["'\s>]/;
 
 const PAGES = {
   en: 'docs/collector/benchmarks/index.html',
@@ -37,8 +37,14 @@ const PAGES = {
 
 const read = (rel) => fs.readFileSync(path.join(publicDir, rel), 'utf8');
 const scriptTags = (html) => html.match(/<script\b[^>]*>/gi) ?? [];
+// Values may be unquoted: the production build minifies the HTML.
 const attr = (tag, name) =>
-  tag.match(new RegExp(`\\b${name}=["']([^"']*)["']`, 'i'))?.[1] ?? '';
+  tag
+    .match(new RegExp(`\\b${name}=(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, 'i'))
+    ?.slice(1)
+    .find((v) => v !== undefined) ?? '';
+const hasAttr = (tag, name) =>
+  new RegExp(`\\s${name}(?=[\\s=>])`, 'i').test(tag);
 const tagsWithSrc = (html, re) =>
   scriptTags(html).filter((t) => re.test(attr(t, 'src')));
 
@@ -77,7 +83,7 @@ if (!fs.existsSync(path.join(publicDir, PAGES.en))) {
     assert.equal(tagsWithSrc(html, DATA_SRC).length, 1, 'data.js appears once');
     assert.ok(chart < data && data < plugin, 'script order is preserved');
     for (const tag of [tags[chart], tags[data], tags[plugin]]) {
-      assert.equal(attr(tag, 'defer'), '', 'script loads synchronously');
+      assert.ok(!hasAttr(tag, 'defer'), 'script loads synchronously');
     }
   });
 
@@ -106,14 +112,19 @@ if (!fs.existsSync(path.join(publicDir, PAGES.en))) {
   test("theme plugins survive the site plugin's registration", () => {
     assert.match(
       read(PAGES.enMermaid),
-      /data-docsy-plugin=["']mermaid["']/,
+      /data-docsy-plugin=["']?mermaid["'\s>]/,
       'mermaid plugin is configured on an en diagram page',
     );
+    const clickToCopy = tagsWithSrc(
+      read(PAGES.en),
+      /\/js\/plugins\/click-to-copy[.\w-]*\.js/,
+    );
     assert.equal(
-      tagsWithSrc(read(PAGES.en), /\/js\/plugins\/click-to-copy[.\w-]*\.js/)
-        .length,
+      clickToCopy.length,
       1,
       'click-to-copy plugin loads on the en benchmarks page',
     );
+    // Docsy defers click-to-copy: the positive case for the defer check above.
+    assert.ok(hasAttr(clickToCopy[0], 'defer'), 'click-to-copy is deferred');
   });
 }
