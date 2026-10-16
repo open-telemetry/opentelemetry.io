@@ -5,7 +5,7 @@
 */ -}}
 {{ partial "script.html" (dict "src" "js/navScroll.js") -}}
 {{ partial "script.html" (dict "src" "js/imageZoom.js") -}}
-{{/* `.Path` is `/blog` in every locale. */ -}}
+{{/* Gating: /site/implementation/scripts/#gating-on-pages */ -}}
 {{ if eq .Path "/blog" -}}
   {{ partial "script.html" (dict "src" "js/blog-sidebar-entry-opener.js") -}}
 {{ end -}}

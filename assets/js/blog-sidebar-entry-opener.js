@@ -1,6 +1,6 @@
 // Opens the two newest year groups in the blog sidebar on the blog index's
-// first page. Loaded on every blog list page; pager pages are skipped here
-// (why: https://opentelemetry.io/site/implementation/scripts/).
+// first page. Loaded on the blog index and its pager pages; pager pages are
+// skipped here (why: https://opentelemetry.io/site/implementation/scripts/).
 //
 // This script runs at body end, when the sidebar is in the HTML but still
 // hidden: Docsy's chrome-nav.js unhides it at DOMContentLoaded, so the year
@@ -8,11 +8,13 @@
 //
 // Expects Docsy's sidebar tree (sidebar-tree.html):
 // - `#td-section-nav` holds the section's root link, `a.tree-root`;
-// - each year entry is a checkbox toggled by a `<label>` wrapping the year's
-//   link, found through the link because checkbox IDs vary by language.
-// Missing markup is reported to the console, not skipped.
+// - year links are the root link's path plus `YYYY/`;
+// - each is wrapped in a `<label>` that toggles the year's checkbox (found
+//   through the link because checkbox IDs vary by language).
+// A missing tree root or year checkbox is reported to the console.
 
 function openNewestYearGroups() {
+  if (location.pathname.includes('/page/')) return;
   const nav = document.getElementById('td-section-nav');
   const root = nav?.querySelector('a.tree-root');
   if (!root) {
@@ -37,4 +39,4 @@ function openNewestYearGroups() {
   }
 }
 
-if (!location.pathname.includes('/page/')) openNewestYearGroups();
+openNewestYearGroups();

@@ -46,8 +46,7 @@ const recentDir = recentBlogDir();
 const recentYear = path.basename(recentDir);
 const recentPost = `${recentDir}/zz-old-blog-ignore-test/index.md`;
 
-// The newest existing blog-year folder that the tools must ignore: the current
-// and previous years are recent, old years are those <= currentYear - 2.
+// The newest existing blog-year folder that the tools must ignore.
 function oldBlogDir() {
   for (let year = new Date().getFullYear() - 2; year >= 2019; year--) {
     const dir = `content/en/blog/${year}`;
