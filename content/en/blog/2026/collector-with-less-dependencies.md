@@ -6,7 +6,6 @@ author: >-
   [Alex Boten](https://github.com/codeboten) (Grafana Labs)
 issue:
 # sig:
-# prettier-ignore
 cSpell:ignore: otelconf trimpath
 ---
 
@@ -31,7 +30,7 @@ Limiting components is great, but as a user
 [reported recently](https://github.com/open-telemetry/opentelemetry-collector/issues/16075),
 resource detectors can also cause unexpected dependencies to bloat the size of
 the binary with code you never use. Resource detectors are used to
-[automatically inject resource attributes](https://opentelemetry.io/docs/specs/otel/resource/sdk/#detecting-resource-information-from-the-environment)
+[automatically inject resource attributes](/docs/specs/otel/resource/sdk/#detecting-resource-information-from-the-environment)
 into the telemetry a process produces. They are great in cloud environments,
 where you want to have as much information as possible about the deployment of
 your applications and services.
@@ -45,7 +44,7 @@ environment.
 Additionally, the Collector has included support for the
 [OpenTelemetry Configuration Schema](https://github.com/open-telemetry/opentelemetry-configuration/)
 since version
-[v0.128.0](https://github.com/open-telemetry/opentelemetry-collector/blob/main/CHANGELOG.md#v1340v01280).
+[v0.128.0](https://github.com/open-telemetry/opentelemetry-collector/blob/5177a6a85ca3783068077e25aec6cebbe1d50d1f/CHANGELOG.md?from_branch=main#v1340v01280).
 This is done via the include of the
 [otelconf](https://pkg.go.dev/go.opentelemetry.io/contrib/otelconf/v0.3.0)
 package, which also supports configuring resource detectors. Until now, the
@@ -69,7 +68,7 @@ and to the
 detectors can now be omitted at compile time. For example, the following
 configuration will omit the system resource detector:
 
-```
+```yaml
 dist:
   module: github.com/open-telemetry/opentelemetry-collector-releases/core
   name: otelcol
@@ -135,7 +134,7 @@ distribution
 [manifest](https://github.com/open-telemetry/opentelemetry-collector-releases/blob/e3bd087aedd311e3b1a5cdbb4c4f82043f02f1f2/distributions/otelcol-k8s/manifest.yaml)
 with and without the resource configuration above:
 
-```
+```sh
 $ ocb --config ./manifest.yaml
 $ ls -alh ./_build/otelcol-k8s
 -rwxr-xr-x@ 1 alexboten  alexboten   182M Oct 16 14:25 ./_build/otelcol-k8s
