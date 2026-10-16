@@ -55,35 +55,43 @@ so it has no results to record.
 
 Lychee runs over the built site (`public/`) using the generated, git-ignored
 `lychee.toml`. The `generate:config:links` script derives it from
-[`lychee.base.toml`][] plus an `exclude_path` block computed from page front
-matter, which has two sources:
+[`lychee.base.toml`][] plus exclusions computed from two front-matter fields:
 
-- **`link_check_exclude_path`** — a list of site-relative path regexes for pages
-  the link checker must skip, such as blog pagination and old blog posts; see
-  [`content/en/blog/_index.md`][blog-index]. Start a pattern with `^(../)?` to
-  have it cover every locale: the optional `../` matches a two-letter locale
-  path segment such as `ja/`.
-- **`drifted_from_default`** — [drifted localized pages][drifted], status `true`
-  (EN counterpart changed) or `file not found` (EN counterpart deleted). Links
-  _from_ such a page aren't checked, since they may be stale, but the page
-  remains a valid link target: inbound links from in-sync pages, including
-  fragments, are still validated.
+- **`link_check_exclude_path`**: site-relative path regexes for pages that the
+  link checker must skip, such as blog pagination and old blog posts; for an
+  example, see [`content/en/blog/_index.md`][blog-index].
+  - To cover every locale, start a pattern with `^(../)?`: the optional `../`
+    matches a two-letter locale path segment such as `ja/`.
+- **`drifted_from_default`**: marks [drifted localized pages][drifted], with
+  status `true` (EN counterpart changed) or `file not found` (EN counterpart
+  deleted).
+  - Links _from_ a drifted page aren't checked, since they may be stale.
+  - Fragment links _into_ a drifted page are skipped when the page is in the
+    build and is its URL's only content file; otherwise they're checked in full.
+    Net effect: the page is known to exist and only its fragment goes unchecked.
+    That is what drift calls for: the page can lack sections that its English
+    counterpart has since gained, and English pages shown as [locale
+    fallbacks][] still link to those sections. Implementation:
+    `toExcludePaths()` in `scripts/lychee/config/index.mjs`.
 
-Stored drift statuses are only as fresh as the last nightly [Housekeeping][]
-status sync (as merged, so the window can exceed a day), so the generator also
-skips **drift-pending** pages: locale copies of English pages changed (or
-deleted) since the **drift-status baseline**, the main-branch commit recorded in
-`data/l10n-drift.yaml` by tree-wide status syncs (`npm run fix:i18n`). A copy
-that itself changed since the baseline stays checked: someone is working on it.
-Config generation fails when the baseline is missing or can't be resolved; in
-CI, the link-check jobs first deepen their shallow clones to the baseline
-commit; locally, fetch the missing history (`git fetch upstream main`) or
-override the baseline: `DRIFT_BASELINE=HEAD npm run check:links` empties the
-overlay (stored-status skips still apply).
+Stored drift statuses lag English changes until the next [Housekeeping][] status
+sync is merged, so the generator also treats **drift-pending** pages as drifted:
 
-A local tree-wide status sync (`npm run fix:i18n`) can rewrite
-`data/l10n-drift.yaml`; leave that rewrite uncommitted — a locally recorded
-commit might not exist upstream.
+- **Drift-pending page**: a locale copy whose English page changed or was
+  deleted since the drift-status baseline, unless the copy itself changed since
+  then (someone is working on it).
+- **Drift-status baseline**: the `main` commit recorded in
+  `data/l10n-drift.yaml` by tree-wide status syncs (`npm run fix:i18n`). A local
+  sync can rewrite that file; leave the rewrite uncommitted, since the recorded
+  commit might not exist upstream.
+
+Config generation fails when the baseline is missing or can't be resolved. CI
+jobs fetch the baseline commit first; locally, either:
+
+- Fetch the missing history: `git fetch upstream main`.
+- Override the baseline: `DRIFT_BASELINE=HEAD npm run check:links` compares
+  against the current commit, so only uncommitted English changes count as
+  drift-pending (stored statuses still apply).
 
 ## Link cache <a id="refcache"></a>
 
@@ -106,7 +114,7 @@ needs; otherwise follow the conflict rules in [The owned cache][cache-format],
 then rerun the check to normalize the file.
 
 If you add or change external links, run `npm run check:links` **before
-submitting your PR** — the site build dominates the run time — and commit the
+submitting your PR** (the site build dominates the run time) and commit the
 updated `link-cache.jsonc` along with your content changes. Otherwise the
 `CACHE updates committed?` check will fail; for recovery steps, see
 [`CACHE updates committed?`][pr-checks].
@@ -168,6 +176,7 @@ build: it runs [`check:links:production-internal`](#production-internal).
 [Handling valid external links]: /docs/contributing/pr-checks/#handling-valid-external-links
 [Housekeeping]: ../ci-workflows/#housekeeping
 [link cache]: #link-cache
+[locale fallbacks]: ../localization/#hugo-mounts
 [link-cache]: https://github.com/chalin/link-cache#readme
 [Lychee]: https://lychee.cli.rs/
 [lychee-install]: https://lychee.cli.rs/guides/getting-started/
