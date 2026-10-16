@@ -76,8 +76,6 @@ jobs:
           fi
           git fetch --depth=1 origin --end-of-options "$sha"
 
-      - run: npm run generate:config:links
-
       - name: Check links
         env:
           GITHUB_TOKEN: ${{ github.token }}
