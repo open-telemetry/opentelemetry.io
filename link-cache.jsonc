@@ -25969,6 +25969,11 @@
     "when": "2026-10-08T05:47:38Z",
     "via": "lychee",
   },
+  "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-trace.SpanExporter.html": {
+    "result": 200,
+    "when": "2026-10-16T00:01:58Z",
+    "via": "lychee",
+  },
   "https://open-telemetry.github.io/otel-arrow/compare/": {
     "result": 200,
     "when": "2026-10-09T05:48:25Z",
@@ -31602,6 +31607,11 @@
   "https://www.npmjs.com/package/@opentelemetry/sdk-node": {
     "result": 206,
     "when": "2026-09-30T06:17:14Z",
+    "via": "lychee",
+  },
+  "https://www.npmjs.com/package/@opentelemetry/sdk-trace": {
+    "result": 200,
+    "when": "2026-10-16T00:01:58Z",
     "via": "lychee",
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-trace-node": {
