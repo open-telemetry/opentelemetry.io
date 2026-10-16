@@ -10049,6 +10049,11 @@
     "when": "2026-09-29T05:45:46Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/43266": {
+    "result": 200,
+    "when": "2026-10-16T10:35:30Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/44130": {
     "result": 200,
     "when": "2026-10-03T05:48:28Z",
@@ -10089,9 +10094,19 @@
     "when": "2026-09-29T05:45:47Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/45097": {
+    "result": 200,
+    "when": "2026-10-16T10:35:31Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/49152": {
     "result": 200,
     "when": "2026-10-10T05:45:37Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/52037": {
+    "result": 200,
+    "when": "2026-10-16T10:35:30Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.111.0": {
@@ -10132,6 +10147,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/6aff35ab5351482a4664f29a7d5428cedcf61a92/connector/routingconnector?from_branch=main": {
     "result": 200,
     "when": "2026-10-02T19:05:00Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/701867a218d0590a3e95c920388b7fb65aa3dd1d/receiver/filelogreceiver": {
+    "result": 200,
+    "when": "2026-10-16T10:35:29Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/ab56dd45ea2240f7014470bcc31c1b3fafc1ef19/receiver/sqlserverreceiver?from_branch=main": {
