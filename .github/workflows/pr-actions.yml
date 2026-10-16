@@ -155,10 +155,11 @@ jobs:
         id: patch
         # Untrusted: runs the resolved npm script and captures any changes as a
         # patch artifact. Has no write permissions or secrets.
-        # NOTE: after `gh pr checkout` above, this local action's definition
-        # resolves from the PR branch — treat the action itself as untrusted;
-        # never add secrets or write permissions to this job.
-        uses: ./.github/actions/npm-script-patch
+        # NOTE: the `$/` reference resolves this action's definition from the
+        # default branch, not from the PR branch checked out above; the npm
+        # script it runs is still the PR's own code, so never add secrets or
+        # write permissions to this job.
+        uses: $/.github/actions/npm-script-patch
         with:
           command: ${{ steps.extract.outputs.command }}
           patch-name: pr-fix-${{ github.run_id }}
@@ -170,7 +171,7 @@ jobs:
     if: needs.generate-patch.outputs.patch_skipped == 'false'
     # A reusable workflow (resolved from the default branch, never from the PR)
     # so that no PR-controlled code can run with write credentials.
-    uses: ./.github/workflows/reusable-apply-patch.yml
+    uses: $/.github/workflows/reusable-apply-patch.yml
     # GITHUB_TOKEN grants forwarded to the reusable workflow (its jobs cannot
     # exceed these); see that workflow for how its steps authenticate.
     permissions:

@@ -107,7 +107,7 @@ jobs:
         id: patch
         # Default-branch only (trusted; cf. pr-actions). Non-zero exit is OK—
         # fixes still publish; residual failures fail in report-failure below.
-        uses: ./.github/actions/npm-script-patch
+        uses: $/.github/actions/npm-script-patch
         env:
           # Authenticated github.com link checks (rate limits) in fix:link-cache;
           # step-level env reaches the composite action's steps.
@@ -141,7 +141,7 @@ jobs:
     # Publish whatever fixes were captured, even when the command itself
     # failed (always() lets this run despite the failed gate step above).
     if: always() && needs.generate-patch.outputs.patch_skipped == 'false'
-    uses: ./.github/workflows/reusable-patch-pr.yml
+    uses: $/.github/workflows/reusable-patch-pr.yml
     permissions:
       contents: write # push the patch branch
       pull-requests: write # create the PR
@@ -169,7 +169,7 @@ jobs:
     name: Report failure
     needs: [generate-patch, publish-patch]
     if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
-    uses: ./.github/workflows/reusable-report-failure.yml
+    uses: $/.github/workflows/reusable-report-failure.yml
     permissions:
       issues: write # Pass through for failure tracking issues
       contents: read
