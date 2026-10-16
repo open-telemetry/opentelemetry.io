@@ -13,7 +13,7 @@ Você pode usar duas opções para instrumentar aplicações
 
 1. A opção padrão para instrumentar aplicações Spring Boot é o
    [**OpenTelemetry Java agent**](../agent) com instrumentação de _bytecode_:
-   - **Mais instrumentação pronta para uso** do que o starter do OpenTelemetry
+   - **Mais instrumentação pronta para uso** do que o _starter_ do OpenTelemetry
 2. O **OpenTelemetry Spring Boot starter** pode ajudar você com:
    - Aplicações **Spring Boot Native image** para as quais o OpenTelemetry Java
      agent não funciona
