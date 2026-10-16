@@ -42,9 +42,9 @@ before the sidebar appears. With JavaScript disabled, the sidebar stays hidden.
 
 ## Body-end scripts
 
-| Script                         | Pages                  | Purpose                                                        |
-| ------------------------------ | ---------------------- | -------------------------------------------------------------- |
-| `blog-sidebar-entry-opener.js` | Blog index, first page | Opens the two newest year groups in the sidebar                |
-| `imageZoom.js`                 | All                    | Click-to-zoom for content images                               |
-| `navScroll.js`                 | All                    | Scrolls the sidebar's active entry into view                   |
-| `tracing.js`                   | All, Netlify builds    | [Website telemetry](../../features/#website-telemetry), paused |
+| Script                         | Pages                  | Purpose                                                                                                            |
+| ------------------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `blog-sidebar-entry-opener.js` | Blog index, first page | Opens the two newest year groups in the sidebar                                                                    |
+| `imageZoom.js`                 | All                    | Click-to-zoom for content images                                                                                   |
+| `navScroll.js`                 | All                    | Meant to scroll the sidebar's active entry into view; inert today, since the active state is applied after it runs |
+| `tracing.js`                   | All, Netlify builds    | [Website telemetry](../../features/#website-telemetry), paused                                                     |

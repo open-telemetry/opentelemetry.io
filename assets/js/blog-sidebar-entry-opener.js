@@ -37,4 +37,4 @@ function openNewestYearGroups() {
   }
 }
 
-if (!/\/page\/\d+\/$/.test(location.pathname)) openNewestYearGroups();
+if (!location.pathname.includes('/page/')) openNewestYearGroups();
