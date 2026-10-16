@@ -2,13 +2,93 @@
 title: Exporters
 aliases: [exporting_data]
 weight: 50
-default_lang_commit: 351727ae36f706eb80583ada2b589de263aa72c2
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 # prettier-ignore
-cSpell:ignore: otlplog otlploggrpc otlploghttp otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp stdoutlog stdouttrace
+cSpell:ignore: autoexport otlplog otlploggrpc otlploghttp otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp sdkmetric sdktrace stdoutlog stdouttrace
 ---
 
 {{% docs/languages/exporters/intro %}}
+
+## Configuração automática de exporters com variáveis de ambiente {#automatic-exporter-configuration-with-environment-variables}
+
+Você pode utilizar o pacote
+[`go.opentelemetry.io/contrib/exporters/autoexport`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport)
+para configurar exporters automaticamente utilizando as
+[variáveis de ambiente padrão do OpenTelemetry](/docs/specs/otel/configuration/sdk-environment-variables/).
+
+Este pacote fornece funções de fábrica que leem as variáveis de ambiente de
+**seleção de exporter** para selecionar e inicializar o exporter apropriado em
+tempo de execução:
+
+| Função                                                                                                   | Variável de ambiente    | Descrição                   |
+| -------------------------------------------------------------------------------------------------------- | ----------------------- | --------------------------- |
+| [`NewSpanExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewSpanExporter) | `OTEL_TRACES_EXPORTER`  | Cria um exporter de rastros |
+| [`NewMetricReader`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewMetricReader) | `OTEL_METRICS_EXPORTER` | Cria um leitor de métricas  |
+| [`NewLogExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewLogExporter)   | `OTEL_LOGS_EXPORTER`    | Cria um exporter de logs    |
+
+Os valores suportados para as variáveis de seleção são `otlp` (padrão) e `none`.
+Para `OTEL_METRICS_EXPORTER`, `prometheus` também é suportado. Uma vez que um
+exporter é selecionado, sua configuração (endpoint, cabeçalhos, tempo limite,
+protocolo, etc.) é lida a partir das
+[variáveis de ambiente padrão do exporter OTLP](/docs/languages/sdk-configuration/otlp-exporter/)
+pelo pacote do exporter OTLP subjacente.
+
+Exemplo de uso:
+
+```go
+import (
+	"context"
+
+	"go.opentelemetry.io/contrib/exporters/autoexport"
+	sdkmetric "go.opentelemetry.io/otel/sdk/metric"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+)
+
+func main() {
+	ctx := context.Background()
+
+	// Create trace exporter using environment variables
+	spanExporter, err := autoexport.NewSpanExporter(ctx)
+	if err != nil {
+		// handle error
+	}
+
+	// Create trace provider with the exporter
+	tracerProvider := sdktrace.NewTracerProvider(
+		sdktrace.WithBatcher(spanExporter),
+	)
+
+	// Create metric reader using environment variables
+	metricReader, err := autoexport.NewMetricReader(ctx)
+	if err != nil {
+		// handle error
+	}
+
+	// Create meter provider with the reader
+	meterProvider := sdkmetric.NewMeterProvider(
+		sdkmetric.WithReader(metricReader),
+	)
+}
+```
+
+> [!NOTE]
+>
+> Os pacotes padrão de exporters OTLP (`otlptracegrpc`, `otlptracehttp`, etc.)
+> já leem a maioria das variáveis de ambiente OTLP, como
+> `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_HEADERS`,
+> `OTEL_EXPORTER_OTLP_TIMEOUT` e `OTEL_EXPORTER_OTLP_COMPRESSION`.
+>
+> O pacote `autoexport` adiciona suporte às **variáveis de seleção de exporter**
+> (`OTEL_TRACES_EXPORTER`, `OTEL_METRICS_EXPORTER`, `OTEL_LOGS_EXPORTER`), que
+> escolhem _qual_ implementação de exporter utilizar. Essa separação mantém os
+> binários menores, pois não inclui dependências de exporters (como gRPC), a
+> menos que sejam importadas explicitamente.
+>
+> Observe também que `OTEL_SDK_DISABLED` ainda não é suportada pelo SDK de Go.
+
+Para uma visão geral completa de quais variáveis de ambiente são suportadas pelo
+SDK de Go e pelos pacotes contrib, consulte a
+[matriz de conformidade da especificação do OpenTelemetry](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
 
 ## Console
 
@@ -61,11 +141,10 @@ rastros em um contêiner Docker:
 
 ```shell
 docker run -d --name jaeger \
-  -e COLLECTOR_OTLP_ENABLED=true \
   -p 16686:16686 \
   -p 4317:4317 \
   -p 4318:4318 \
-  jaegertracing/all-in-one:latest
+  jaegertracing/jaeger:latest
 ```
 
 ### Métricas OTLP via HTTP {#otlp-metrics-over-http}
