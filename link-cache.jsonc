@@ -1829,6 +1829,11 @@
     "when": "2026-10-15T05:44:45Z",
     "via": "lychee",
   },
+  "https://developer.mozilla.org/docs/Web/Security/Subresource_Integrity": {
+    "result": 200,
+    "when": "2026-10-16T00:43:10Z",
+    "via": "lychee",
+  },
   "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS": {
     "result": 200,
     "when": "2026-10-08T05:47:38Z",
@@ -32184,6 +32189,11 @@
   "https://www.docsy.dev/docs/content/adding-content/#alerts": {
     "result": 200,
     "when": "2026-09-30T05:46:18Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/docs/content/plugins/#add-a-custom-script": {
+    "result": 200,
+    "when": "2026-10-16T00:43:10Z",
     "via": "lychee",
   },
   "https://www.docsy.dev/docs/content/shortcodes/#alert": {
