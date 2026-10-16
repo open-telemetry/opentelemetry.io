@@ -1,8 +1,7 @@
 ---
 title: Arquitetura
 weight: 28
-default_lang_commit: 2871fe3c7fdc376e55ce84f601a54264226531bb
-drifted_from_default: true
+default_lang_commit: 714d6cc9c14f0cc2ef26397587388644b0e5d12f
 cSpell:ignore: fanoutconsumer probabilisticsampler zpages
 ---
 
@@ -29,7 +28,7 @@ Cada _pipeline_ inclui:
 O mesmo _receiver_ pode ser incluído em múltiplos _pipelines_, e múltiplos
 _pipelines_ podem incluir o mesmo _exporter_.
 
-## Pipelines
+## Pipelines {#pipelines}
 
 Um _pipeline_ define um caminho que os dados seguem no Collector: desde a
 recepção, passando pelo processamento (ou modificação), até a exportação.
@@ -87,7 +86,7 @@ O exemplo anterior define um _pipeline_ para o tipo rastro de dado de
 telemetria, que inclui dois _receivers_, um _processor_ e dois _exporters_. O
 _receiver_ com dois _receivers_, um _processor_ e dois _exporters_.
 
-### Receivers
+### Receivers {#receivers}
 
 Os _receivers_ normalmente escutam em uma porta de rede e recebem dados de
 telemetria. Eles também podem obter dados ativamente, como _scrapers_.
@@ -144,7 +143,7 @@ flowchart LR
 > receber os mesmos dados, e o próprio _receiver_ para de processar e encaminhar
 > os dados recebidos.
 
-### Exporters
+### Exporters {#exporters}
 
 Os _exporters_ normalmente encaminham os dados que recebem para um destino na
 rede, mas também podem enviar os dados para outros lugares. Por exemplo, o
@@ -197,7 +196,7 @@ flowchart LR
   P2 -->|Pipeline 'traces/2'|E1
 ```
 
-### Processors
+### Processors {#processors}
 
 Um _pipeline_ pode conter _processors_ conectados em sequência. O primeiro
 _processor_ recebe os dados de um ou mais _receivers_ configurados para o

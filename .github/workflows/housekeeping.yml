@@ -53,7 +53,7 @@ jobs:
       command_exit_status: ${{ steps.patch.outputs.action_exit_status }}
 
     steps:
-      - uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+      - uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: audit
 
@@ -64,10 +64,42 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      # Refresh data/locale-teams.yaml from the live direct membership of the
+      # locale teams; the default command's fix:codeowners then regenerates
+      # CODEOWNERS from it, so drift lands in the patch as one reviewable PR.
+      # Read-only towards GitHub. The token is passed to the sync step only,
+      # never to the npm scripts that run afterwards. Failures here must not
+      # block the other fixes, so both steps continue on error and the gate
+      # step below fails the job once the patch has been captured.
+      - name: Set up Node.js
+        if: ${{ (inputs.command || 'fix-and-test:all') == 'fix-and-test:all' }}
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+
+      - name: Create locale teams read token
+        id: teams-token
+        if: ${{ (inputs.command || 'fix-and-test:all') == 'fix-and-test:all' }}
+        continue-on-error: true
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-members: read
+
+      - name: Sync locale team registry
+        id: sync
+        if: ${{ (inputs.command || 'fix-and-test:all') == 'fix-and-test:all' }}
+        # A failed sync leaves the registry untouched.
+        continue-on-error: true
+        run: node scripts/gh/locale-codeowners/sync-teams.mjs
+        env:
+          GH_TOKEN: ${{ steps.teams-token.outputs.token }}
+
       # Needed by the check:collector-sync scripts that the default command
       # runs; uv resolves the Python toolchain and project deps on first use.
       - name: Install uv
-        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
         with:
           enable-cache: true
 
@@ -92,6 +124,15 @@ jobs:
         run: |
           echo "Housekeeping command failed with exit status $EXIT_STATUS." \
             "Any fixes it produced are still published as a PR."
+          exit 1
+
+      - name: Fail on locale team sync failure
+        if: >-
+          always() && (steps.teams-token.outcome == 'failure' ||
+          steps.sync.outcome == 'failure')
+        run: |
+          echo "The locale team registry sync failed (see the earlier steps)." \
+            "Other fixes are still published as a PR."
           exit 1
 
   publish-patch:

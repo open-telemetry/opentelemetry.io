@@ -9,6 +9,12 @@ weight: 30
 cSpell:ignore: kube kubecache kubeconfig OpenShift replicaset statefulset
 ---
 
+> [!NOTE]
+>
+> This page uses Config v1 field names and examples. For Config v2, see the
+> [Config v2 reference](../config-v2/). To convert an existing file, use the
+> [migration guide](../migrate-to-config-v2/).
+
 You can configure how OBI decorates attributes for metrics and traces. Use the
 `attributes` top YAML section to enable and configure how attributes are set.
 
@@ -474,6 +480,11 @@ When set, OBI fetches Kubernetes metadata from an external `k8s-cache` service
 over gRPC instead of running its own informers against the Kubernetes API
 server. This is recommended on large clusters and DaemonSet deployments to avoid
 overloading the Kubernetes API.
+
+For details on how to set up the `k8s-cache` service, see the
+[Kubernetes setup guide](../../setup/kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache)
+or the
+[Helm chart guide](../../setup/kubernetes-helm/#centralizing-kubernetes-metadata-with-k8s-cache).
 
 ### Service name template
 

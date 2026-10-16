@@ -1,7 +1,7 @@
 ---
 title: コレクターのスケーリング
 weight: 26
-default_lang_commit: 453013b113080a48166f412215176d345d2bf958
+default_lang_commit: 5c22cf6079a4d8b0c01abe4244565b0f193cf9cc
 cSpell:ignore: fluentd Linkerd loadbalancer loadbalancing statefulset
 ---
 
@@ -302,7 +302,7 @@ receivers:
 processors:
 
 exporters:
-  loadbalancing:
+  load_balancing:
     protocol:
       otlp:
     resolver:
@@ -316,5 +316,5 @@ service:
         - otlp
       processors: []
       exporters:
-        - loadbalancing
+        - load_balancing
 ```

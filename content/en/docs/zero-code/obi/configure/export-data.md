@@ -6,40 +6,47 @@ description:
   and OpenTelemetry traces
 weight: 10
 # prettier-ignore
-cSpell:ignore: AsterixDB Chroma couchbase genai gonic jackc libcudart memcached Milvus nats pgxpool Pinecone pyserver Qdrant Qwen rerank segmentio spanmetrics sunrpc Weaviate Zilliz
+cSpell:ignore: Aerospike AsterixDB Chroma couchbase genai gonic jackc libcudart memcached Milvus nats Ollama pgxpool Pinecone pyserver Qdrant Qwen rerank segmentio spanmetrics sunrpc Weaviate Zilliz
 ---
 
-OBI can export OpenTelemetry metrics and traces to a OTLP endpoint.
+> [!NOTE]
+>
+> This page uses Config v1 field names and examples. For Config v2, see the
+> [Config v2 reference](../config-v2/). To convert an existing file, use the
+> [migration guide](../migrate-to-config-v2/).
+
+OBI can export OpenTelemetry metrics and traces to an OTLP endpoint.
 
 ## Instrumentation compatibility
 
 OBI supports the following protocol and feature versions for traces and metrics
 instrumentation:
 
-| Area          | Supported versions                                                                              | Notes                                                                                                       |
-| :------------ | :---------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
-| HTTP          | `1.0/1.1`                                                                                       | Context propagation is supported.                                                                           |
-| HTTP          | `2.0`                                                                                           | Context propagation requires Go library-level instrumentation.                                              |
-| gRPC          | `1.0+`                                                                                          | Context propagation is supported. Long-lived connections started before OBI might use `*` for method names. |
-| MySQL         | All                                                                                             | Prepared statements created before OBI starts might not include query text.                                 |
-| PostgreSQL    | All                                                                                             | Prepared statements created before OBI starts might not include query text.                                 |
-| MSSQL         | All                                                                                             | Prepared statements created before OBI starts might not include query text.                                 |
-| Redis         | All                                                                                             | Existing connections might not include database number or `db.namespace`.                                   |
-| MongoDB       | `5.0+`                                                                                          | Compressed payloads are not supported.                                                                      |
-| Couchbase     | All                                                                                             | Bucket or collection names might be unavailable when negotiation completed before OBI started.              |
-| Memcached     | All                                                                                             | Supports the ASCII text protocol subset, excluding `quit` and meta commands.                                |
-| Kafka         | All                                                                                             | Topic name lookup might fail for fetch API versions `13+`.                                                  |
-| MQTT          | `3.1.1/5.0`                                                                                     | Payloads are not captured.                                                                                  |
-| NATS          | All                                                                                             | No additional documented version limits.                                                                    |
-| AMQP          | `1.0`                                                                                           | Only transfer performatives create spans.                                                                   |
-| SunRPC        | All                                                                                             | Supports ONC RPC over TCP; UDP isn't supported. RPCSEC_GSS hides procedure arguments.                       |
-| GraphQL       | All                                                                                             | No additional documented version limits.                                                                    |
-| Elasticsearch | `7.14+`                                                                                         | No additional documented version limits.                                                                    |
-| OpenSearch    | `3.0.0+`                                                                                        | No additional documented version limits.                                                                    |
-| AWS S3        | All                                                                                             | No additional documented version limits.                                                                    |
-| AWS SQS       | All                                                                                             | No additional documented version limits.                                                                    |
-| SQL++         | All                                                                                             | No additional documented version limits.                                                                    |
-| GenAI         | OpenAI, Anthropic, Gemini, AWS Bedrock, Qwen, MCP, embedding, rerank, and vector retrieval APIs | Provider-specific payload extraction requires the matching `ebpf.payload_extraction.http` flag.             |
+| Area          | Supported versions                                                                                                                  | Notes                                                                                                       |
+| :------------ | :---------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
+| HTTP          | `1.0/1.1`                                                                                                                           | Context propagation is supported.                                                                           |
+| HTTP          | `2.0`                                                                                                                               | Context propagation requires Go library-level instrumentation.                                              |
+| gRPC          | `1.0+`                                                                                                                              | Context propagation is supported. Long-lived connections started before OBI might use `*` for method names. |
+| MySQL         | All                                                                                                                                 | Prepared statements created before OBI starts might not include query text.                                 |
+| PostgreSQL    | All                                                                                                                                 | Prepared statements created before OBI starts might not include query text.                                 |
+| MSSQL         | All                                                                                                                                 | Prepared statements created before OBI starts might not include query text.                                 |
+| Redis         | All                                                                                                                                 | Existing connections might not include database number or `db.namespace`.                                   |
+| MongoDB       | `5.0+`                                                                                                                              | Compressed payloads are not supported.                                                                      |
+| Couchbase     | All                                                                                                                                 | Bucket or collection names might be unavailable when negotiation completed before OBI started.              |
+| Aerospike     | All                                                                                                                                 | Compressed payloads aren't parsed; record and bin values aren't captured.                                   |
+| Memcached     | All                                                                                                                                 | Supports the ASCII text protocol subset, excluding `quit` and meta commands.                                |
+| Kafka         | All                                                                                                                                 | Topic name lookup might fail for fetch API versions `13+`.                                                  |
+| MQTT          | `3.1.1/5.0`                                                                                                                         | Payloads are not captured.                                                                                  |
+| NATS          | All                                                                                                                                 | No additional documented version limits.                                                                    |
+| AMQP          | `1.0`                                                                                                                               | Only transfer performatives create spans.                                                                   |
+| SunRPC        | All                                                                                                                                 | Supports ONC RPC over TCP; UDP isn't supported. RPCSEC_GSS hides procedure arguments.                       |
+| GraphQL       | All                                                                                                                                 | No additional documented version limits.                                                                    |
+| Elasticsearch | `7.14+`                                                                                                                             | No additional documented version limits.                                                                    |
+| OpenSearch    | `3.0.0+`                                                                                                                            | No additional documented version limits.                                                                    |
+| AWS S3        | All                                                                                                                                 | No additional documented version limits.                                                                    |
+| AWS SQS       | All                                                                                                                                 | No additional documented version limits.                                                                    |
+| SQL++         | All                                                                                                                                 | No additional documented version limits.                                                                    |
+| GenAI         | OpenAI, Anthropic, Gemini, AWS Bedrock, Qwen, Ollama, OpenAI-compatible gateways, MCP, embedding, rerank, and vector retrieval APIs | Provider-specific payload extraction requires the matching `ebpf.payload_extraction.http` flag.             |
 
 Some application-level instrumentation also depends on specific runtime,
 library, or server versions:
@@ -124,9 +131,9 @@ metrics:
   features: ['network', 'network_inter_zone']
 ```
 
-| YAML<br>environment variable               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Type            | Default           |
-| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------- |
-| `features`<br>`OTEL_EBPF_METRICS_FEATURES` | The list of metric groups OBI exports data for, refer to [metrics export features](#metrics-export-features). Accepted values `all`, `*`, `application`, `application_span`, `application_span_otel`, `application_span_sizes`, `application_host`, `application_runtime`, `application_jvm`, `application_service_graph`, `network`, `network_flow_packets`, `network_inter_zone`, `stats`, `stats_tcp_rtt`, `stats_tcp_failed_connections`, `stats_tcp_retransmits`, `stats_tcp_io`, and `ebpf`. | list of strings | `["application"]` |
+| YAML<br>environment variable               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Type            | Default           |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------- |
+| `features`<br>`OTEL_EBPF_METRICS_FEATURES` | The list of metric groups OBI exports data for, refer to [metrics export features](#metrics-export-features). Accepted values `all`, `*`, `application`, `application_span`, `application_span_otel`, `application_span_sizes`, `application_host`, `application_runtime`, `application_service_graph`, `network`, `network_flow_packets`, `network_inter_zone`, `stats`, `stats_tcp_rtt`, `stats_tcp_failed_connections`, `stats_tcp_retransmits`, `stats_tcp_io`, and `ebpf`. | list of strings | `["application"]` |
 
 ### Metrics export features
 
@@ -136,14 +143,13 @@ processes matching entries in the [metrics discovery](./) configuration.
 - `all` or `*`: All metric groups (convenience option for enabling all metrics)
 - `application`: Application-level metrics.
 - `application_host`: Application-level host metrics for host-based pricing.
-- `application_runtime`: Go runtime metrics collected from instrumented Go
-  services. Refer to [runtime metrics](#runtime-metrics).
-- `application_jvm`: HotSpot JVM memory metrics. You must also enable
-  `jvm_runtime_metrics`. Refer to [runtime metrics](#runtime-metrics).
+- `application_runtime`: Go runtime, HotSpot JVM memory, and Node.js event-loop
+  metrics collected from instrumented services. Refer to
+  [runtime metrics](#runtime-metrics).
 - `application_span`: Application-level trace span metrics in legacy format
   (like `traces_spanmetrics_latency`); `spanmetrics` is not separate.
 - `application_span_otel`: Application-level trace span metrics in OpenTelemetry
-  format (like `traces_span_metrics_calls_total`); `span_metrics` is separate.
+  format (like `traces.span.metrics.calls`); `span_metrics` is separate.
 - `application_span_sizes`: Application-level trace span metrics reporting
   information about request and response sizes.
 - `application_service_graph`: Application-level service graph metrics. It's
@@ -167,6 +173,20 @@ processes matching entries in the [metrics discovery](./) configuration.
   higher overhead than the other stats features.
 - `ebpf`: eBPF runtime metrics for loaded probes and maps, exposed through the
   Prometheus exporter and internal metrics reporter.
+
+> [!NOTE]
+>
+> Starting in v0.11.0, direct OTLP export uses OpenTelemetry dot notation for
+> the following metric names:
+>
+> - `target_info` is now `target.info`.
+> - `traces_target_info` is now `traces.target.info`.
+> - `traces_host_info` is now `traces.host.info`.
+> - `traces_span_metrics_calls_total` is now `traces.span.metrics.calls`.
+> - `traces_span_metrics_duration` is now `traces.span.metrics.duration`.
+>
+> Prometheus metric names remain unchanged. Update OTLP queries and dashboards
+> when you upgrade to v0.11.0.
 
 ### Per-application metrics export features
 
@@ -214,26 +234,31 @@ discovery:
 OBI can collect runtime metrics without requiring SDK changes in the target
 process.
 
-Enable Go runtime metrics with the `application_runtime` metrics feature. OBI
-reports values after the target completes a garbage-collection cycle, so a new
-process might not emit these metrics immediately. Changes to `GOGC`,
-`GOMEMLIMIT`, or `GOMAXPROCS` appear after the next completed cycle.
+Enable Go, HotSpot JVM, and Node.js runtime metrics with the
+`application_runtime` metrics feature. Go runtime values are reported after the
+target completes a garbage-collection cycle, so a new process might not emit
+these metrics immediately. Changes to `GOGC`, `GOMEMLIMIT`, or `GOMAXPROCS`
+appear after the next completed cycle.
 
-JVM runtime metrics require both the `application_jvm` metrics feature and
-`jvm_runtime_metrics.enabled: true`:
+For Node.js, OBI samples event-loop time, utilization, and delay once per
+second. Event-loop time and utilization require Node.js 14.10 or later. Delay
+metrics require Node.js 16.14 or later. OBI reports the main-thread event loop
+only, and the inspector must be reachable for OBI to inject the runtime metrics
+agent.
+
+Use `jvm_runtime_metrics.sampling_interval` to control how often OBI samples
+HotSpot JVM memory metrics:
 
 ```yaml
 metrics:
-  features: [application_jvm]
+  features: [application_runtime]
 jvm_runtime_metrics:
-  enabled: true
   sampling_interval: 1s
 ```
 
-| YAML<br>environment variable                                       | Description                                             | Type     | Default |
-| ------------------------------------------------------------------ | ------------------------------------------------------- | -------- | ------- |
-| `enabled`<br>`OBI_JVM_RUNTIME_METRICS_ENABLED`                     | Enables HotSpot JVM runtime metric collection.          | boolean  | `false` |
-| `sampling_interval`<br>`OBI_JVM_RUNTIME_METRICS_SAMPLING_INTERVAL` | Sets how often OBI samples enabled JVM runtime metrics. | Duration | `1s`    |
+| YAML<br>environment variable                                       | Description                                     | Type     | Default |
+| ------------------------------------------------------------------ | ----------------------------------------------- | -------- | ------- |
+| `sampling_interval`<br>`OBI_JVM_RUNTIME_METRICS_SAMPLING_INTERVAL` | Sets how often OBI samples JVM runtime metrics. | Duration | `1s`    |
 
 ## OpenTelemetry metrics exporter component
 

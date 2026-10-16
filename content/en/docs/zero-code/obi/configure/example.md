@@ -1,9 +1,15 @@
 ---
-title: OBI configuration YAML example
-linkTitle: YAML example
-description: Example OBI configuration YAML example.
+title: OBI Config v1 YAML example
+linkTitle: Config v1 YAML example
+description: Example Config v1 YAML file for OBI.
 weight: 100
 ---
+
+> [!NOTE]
+>
+> This page uses Config v1 field names and examples. For Config v2, see the
+> [Config v2 reference](../config-v2/). To convert an existing file, use the
+> [migration guide](../migrate-to-config-v2/).
 
 ## YAML file example
 

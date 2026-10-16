@@ -10,8 +10,9 @@ info here.
 
 **Environment Setup:**
 
-- Install the Node.js LTS version given by `.nvmrc`: Use `nvm install` or
-  `nvm install lts && nvm use lts`
+- Install the Node.js version pinned in `.nvmrc`: `nvm install` (for Windows,
+  see
+  [Development setup](https://opentelemetry.io/docs/contributing/development/))
 - If Puppeteer download fails due to network issues: Set
   `export PUPPETEER_SKIP_DOWNLOAD=true`
 - Clone repository:
@@ -163,8 +164,8 @@ npm run fix:markdown     # Auto-fix markdown issues
 
 ### Hugo-Specific Details
 
-- Uses Hugo v0.148.2 with extended features
-- Theme: Docsy (Google's documentation theme)
+- Uses the `hugo-extended` version pinned in `package.json`
+- Theme: Docsy
 - Multilingual support enabled for 8+ languages
 - Content mounting from submodules defined in
   `config/_default/module-template.yaml`

@@ -7,4 +7,5 @@ desserializar
 mentoria
 reagregação
 serialização
+subcaminhos
 verbosidade

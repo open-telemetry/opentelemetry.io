@@ -3,7 +3,7 @@ title: Configuration
 weight: 20
 description: Learn how to configure the Collector to suit your needs
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey initca oidc pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
+cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey initca oidc pprof prodevent spanevents unredacted upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -494,7 +494,7 @@ exporters:
     namespace: default
 
   # Data sources: metrics
-  prometheusremotewrite:
+  prometheus_remote_write:
     endpoint: http://prometheus.example.com:9411/api/prom/push
     # When using the official Prometheus (running via Docker)
     # endpoint: 'http://prometheus:9090/api/v1/write', add:

@@ -21,7 +21,7 @@ APIは、主要なオブザーバビリティシグナル全体にわたって�
 
 APIは以下のトップレベルコンポーネントで構成されています。
 
-- [Context](#context-api)：アプリケーション全体およびアプリケーション境界を越えてコンテキストを伝搬するためのスタンドアロンAPI（トレースコンテキストとバゲージを含む）
+- [Context](#context-api)：アプリケーション全体およびアプリケーション境界を越えてコンテキストを伝搬するためのスタンドアロンAPI（トレースコンテキストとバゲッジを含む）
 - [TracerProvider](#tracerprovider)：トレースのAPIエントリポイント
 - [MeterProvider](#meterprovider)：メトリクスのAPIエントリポイント
 - [LoggerProvider](#loggerprovider)：ログのAPIエントリポイント
@@ -207,7 +207,7 @@ public class InjectContextUsage {
   private static final TextMapSetter<HttpRequest.Builder> TEXT_MAP_SETTER = new HttpRequestSetter();
 
   public static void injectContextUsage() throws Exception {
-    // w3cトレースコンテキストとw3cバゲージを伝播するContextPropagatorsインスタンスを作成
+    // w3cトレースコンテキストとw3cバゲッジを伝播するContextPropagatorsインスタンスを作成
     ContextPropagators propagators =
         ContextPropagators.create(
             TextMapPropagator.composite(
@@ -267,7 +267,7 @@ public class ExtractContextUsage {
   private static final TextMapGetter<HttpExchange> TEXT_MAP_GETTER = new HttpRequestGetter();
 
   public static void extractContextUsage() throws Exception {
-    // w3cトレースコンテキストとw3cバゲージを伝播するContextPropagatorsインスタンスを作成
+    // w3cトレースコンテキストとw3cバゲッジを伝播するContextPropagatorsインスタンスを作成
     ContextPropagators propagators =
         ContextPropagators.create(
             TextMapPropagator.composite(
@@ -331,7 +331,7 @@ public class ExtractContextUsage {
 
 ## OpenTelemetry API {#opentelemetry-api}
 
-`io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}` アーティファクトには、トレース、メトリクス、ログ、no-op実装、バゲージ、主要な`TextMapPropagator`実装、および[context API](#context-api)への依存関係を含むOpenTelemetry APIが含まれています。
+`io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}` アーティファクトには、トレース、メトリクス、ログ、no-op実装、バゲッジ、主要な`TextMapPropagator`実装、および[context API](#context-api)への依存関係を含むOpenTelemetry APIが含まれています。
 
 ### プロバイダーとスコープ {#providers-and-scopes}
 
@@ -1514,11 +1514,11 @@ public class SemanticAttributesUsage {
 ### Baggage {#baggage}
 
 [Baggage](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/Baggage.html)は、分散リクエストまたはワークフロー実行に関連付けられたアプリケーション定義のキー値ペアのバンドルです。
-バゲージキーと値は文字列で、値にはオプションの文字列メタデータがあります。テレメトリーは、スパン、メトリクス、ログレコードに属性としてエントリを追加するよう[SDK](../sdk/)を設定することにより、バゲージからのデータで強化できます。
-バゲージAPIは[context](#context)の上に構築されており、スパンコンテキストがアプリケーション全体およびスレッド間で暗黙的に渡されることを可能にします。
-コンテキストAPIの使用ガイダンスのほとんどはバゲージに適用されます。
+バゲッジキーと値は文字列で、値にはオプションの文字列メタデータがあります。テレメトリーは、スパン、メトリクス、ログレコードに属性としてエントリを追加するよう[SDK](../sdk/)を設定することにより、バゲッジからのデータで強化できます。
+バゲッジAPIは[context](#context)の上に構築されており、スパンコンテキストがアプリケーション全体およびスレッド間で暗黙的に渡されることを可能にします。
+コンテキストAPIの使用ガイダンスのほとんどはバゲッジに適用されます。
 
-バゲージは、[W3CBaggagePropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/propagation/W3CBaggagePropagator.html)でアプリケーション境界を越えて伝搬されます（詳細については[TextMapPropagator](../sdk/#textmappropagator)を参照）。
+バゲッジは、[W3CBaggagePropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/propagation/W3CBaggagePropagator.html)でアプリケーション境界を越えて伝搬されます（詳細については[TextMapPropagator](../sdk/#textmappropagator)を参照）。
 
 以下のコードスニペットは`Baggage` API使用法を調査します。
 
@@ -1541,14 +1541,14 @@ public class BaggageUsage {
   private static final Attributes WIDGET_RED_CIRCLE = Util.WIDGET_RED_CIRCLE;
 
   public static void baggageUsage() {
-    // Baggage.current()で現在のバゲージにアクセス
+    // Baggage.current()で現在のバゲッジにアクセス
     // 出力 => context baggage: {}
     Baggage currentBaggage = Baggage.current();
     System.out.println("current baggage: " + asString(currentBaggage));
     // ...またはContextから
     currentBaggage = Baggage.fromContext(current());
 
-    // バゲージには、データの操作と読み取りのためのさまざまなメソッドがあります。
+    // バゲッジには、データの操作と読み取りのためのさまざまなメソッドがあります。
     // ビルダーに変換してエントリを追加:
     Baggage newBaggage =
         Baggage.current().toBuilder()
@@ -1569,19 +1569,19 @@ public class BaggageUsage {
     // エントリを反復:
     newBaggage.forEach((s, baggageEntry) -> {});
 
-    // 現在のバゲージはまだ新しいエントリを含まない
+    // 現在のバゲッジはまだ新しいエントリを含まない
     // 出力 => context baggage: {}
     System.out.println("current baggage: " + asString(Baggage.current()));
 
-    // Baggage.makeCurrent()を呼び出すと、スコープが閉じられるまでBaggage.current()がバゲージに設定され、
+    // Baggage.makeCurrent()を呼び出すと、スコープが閉じられるまでBaggage.current()がバゲッジに設定され、
     // その後Baggage.current()はBaggage.makeCurrent()が呼び出される前の状態に復元されます。
     try (Scope scope = newBaggage.makeCurrent()) {
-      // 現在のバゲージに追加された値が含まれる
+      // 現在のバゲッジに追加された値が含まれる
       // 出力 => context baggage: {shopId=abc123(), shopName=opentelemetry-demo(metadata)}
       System.out.println("current baggage: " + asString(Baggage.current()));
     }
 
-    // 現在のバゲージにもう新しいエントリが含まれない:
+    // 現在のバゲッジにもう新しいエントリが含まれない:
     // 出力 => context baggage: {}
     System.out.println("current baggage: " + asString(Baggage.current()));
   }
