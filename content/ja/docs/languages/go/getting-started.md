@@ -3,6 +3,7 @@ title: Getting Started by Example（実例で学ぶ入門）
 description: 5分以内でアプリケーションのテレメトリーを取得しましょう！
 weight: 10
 default_lang_commit: 5c22cf6079a4d8b0c01abe4244565b0f193cf9cc
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: autoexport chan fatalln funcs intn itoa otelhttp rolldice stdouttrace strconv
 ---

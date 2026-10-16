@@ -3,6 +3,7 @@ title: サンプルによる入門
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
 default_lang_commit: c2f1762937a709892f60dece2e238d35d8a4d103
+drifted_from_default: true
 ---
 
 <?code-excerpt path-base="examples/java/getting-started"?>

@@ -2,6 +2,7 @@
 title: Exporters
 weight: 50
 default_lang_commit: f49ec57e5a0ec766b07c7c8e8974c83531620af3
+drifted_from_default: true
 description: Processe e exporte seus dados de telemetria
 cSpell:ignore: csps
 ---

@@ -3,6 +3,7 @@ title: Propagação
 description: Propagação de contexto para o SDK JS
 weight: 65
 default_lang_commit: 2b99811a310f2749a5b6389f5e4d654a4f2e2f8e
+drifted_from_default: true
 cSpell:ignore: desserializado rolldice
 ---
 
