@@ -1,0 +1,8 @@
+{{/* Loads the plugin on the Collector benchmarks page only. `.Path` is the
+  page's logical path, the same in every language. Shim contract:
+  https://www.docsy.dev/docs/content/plugins/#adjust-a-plugin-per-page */ -}}
+{{ $entry := .Plugin -}}
+{{ if ne .Page.Path "/docs/collector/benchmarks" -}}
+  {{ $entry = merge $entry (dict "enable" false) -}}
+{{ end -}}
+{{ return $entry -}}

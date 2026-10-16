@@ -1,0 +1,26 @@
+{{/* Dependencies of the Collector benchmarks plugin, emitted before its script:
+  Chart.js, vendored at build time on the entry's version pin and served with
+  SRI, then the benchmark data, a per-commit remote script that can't be
+  vendored. Both load synchronously so the plugin finds `Chart` and
+  `window.BENCHMARK_DATA` defined. File contract:
+  https://www.docsy.dev/docs/content/plugins/#plugin-files */ -}}
+{{ $version := .Plugin.version -}}
+{{ if not $version -}}
+  {{ errorf "params.docsy.plugins.otel-collector-benchmarks.version is empty: pin the Chart.js version there." -}}
+{{ else -}}
+  {{ $url := printf "https://cdn.jsdelivr.net/npm/chart.js@%s/dist/Chart.min.js" $version -}}
+  {{ with try (resources.GetRemote $url) -}}
+    {{ with .Err -}}
+      {{ errorf "Could not retrieve Chart.js %s from the CDN. Reason: %s." $version . -}}
+    {{ else with .Value -}}
+      {{/* Keyed by version: resources.Copy caches by target name. */ -}}
+      {{ $lib := resources.Copy (printf "js/vendor/chart-%s.js" $version) . | fingerprint -}}
+      <script src="{{ $lib.RelPermalink }}" integrity="{{ $lib.Data.Integrity }}" crossorigin="anonymous"></script>
+      {{- "\n" -}}
+    {{ else -}}
+      {{ errorf "Chart.js %s was not found on the CDN." $version -}}
+    {{ end -}}
+  {{ end -}}
+  <script src="https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js"></script>
+  {{- "\n" -}}
+{{ end -}}
