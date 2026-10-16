@@ -77,7 +77,6 @@ telemetry differs.
 | `check:links`                     | [Link check][] with Lychee; lean build first.                               |
 | `check:markdown:specs`            | Markdown lint for spec fragments in `tmp/`.                                 |
 | `check:markdown`                  | Markdown lint (content and projects).                                       |
-| `check:registry`                  | Validate registry YAML under `data/registry/`.                              |
 | `check:spelling`                  | cspell over content, data, and layout Markdown.                             |
 | `check:text`                      | textlint over content and data.                                             |
 | `check`                           | Run the most commonly needed check scripts in sequence.                     |
