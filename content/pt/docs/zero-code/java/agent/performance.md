@@ -8,7 +8,7 @@ cSpell:ignore: Dotel
 ---
 
 O Java agent do OpenTelemetry instrumenta sua aplicação sendo executado dentro
-da mesma Máquina Virtual Java (JVM). Como qualquer outro agente de software, o
+da mesma Máquina Virtual Java (JVM). Como qualquer outro agente de _software_, o
 Java agent requer recursos do sistema, como CPU, memória e largura de banda de
 rede. O uso de recursos pelo agente é chamado de _overhead_ do agente ou
 _overhead_ de desempenho. O Java agent do OpenTelemetry tem um impacto mínimo no
@@ -19,10 +19,10 @@ Alguns fatores que podem aumentar o _overhead_ do agente são ambientais, como a
 arquitetura física da máquina, a frequência da CPU, a quantidade e a velocidade
 da memória, a temperatura do sistema e a contenção de recursos. Outros fatores
 incluem virtualização e conteinerização, o sistema operacional e suas
-bibliotecas, a versão e o fornecedor da JVM, as configurações da JVM, o design
-algorítmico do software monitorado e as dependências de software.
+bibliotecas, a versão e o fornecedor da JVM, as configurações da JVM, o _design_
+algorítmico do _software_ monitorado e as dependências de _software_.
 
-Devido à complexidade do software moderno e à ampla diversidade de cenários de
+Devido à complexidade do _software_ moderno e à ampla diversidade de cenários de
 implantação, é impossível chegar a uma estimativa única de _overhead_ do agente.
 Para descobrir o _overhead_ de qualquer agente de instrumentação em uma
 determinada implantação, é necessário realizar experimentos e coletar medições
@@ -166,9 +166,9 @@ de teste, realize o seguinte:
 ### Criar uma bateria de testes realistas {#create-a-battery-of-realistic-tests}
 
 Projete os testes executados no ambiente de testes para se assemelharem o máximo
-possível às cargas de trabalho típicas. Por exemplo, se alguns _endpoints_ de
-API REST do seu serviço forem suscetíveis a altos volumes de requisições, crie
-um teste que simule um tráfego de rede intenso.
+possível às cargas de trabalho típicas. Por exemplo, se algumas rotas de API
+REST do seu serviço forem suscetíveis a altos volumes de requisições, crie um
+teste que simule um tráfego de rede intenso.
 
 Para aplicações Java, utilize uma fase de aquecimento (_warm-up_) antes de
 iniciar as medições. A JVM é uma máquina altamente dinâmica que realiza um
