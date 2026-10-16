@@ -3,7 +3,7 @@ title: 機能
 description: >-
   主要なサイト機能の概要と、それぞれの主なリファレンスへのリンク。
 weight: 20
-default_lang_commit: 60d50174e01d221f65af4b69ad1ae946fbc16ec8
+default_lang_commit: 1338cb2423fbaba7da27b8e94d00293aac6922cc
 drifted_from_default: true
 ---
 
@@ -17,4 +17,4 @@ drifted_from_default: true
 - 実装: `netlify/edge-functions/markdown-negotiation.ts` 配下のロジックとテスト用フォルダー。
 - リファレンス:
   [opentelemetry.io#9449](https://github.com/open-telemetry/opentelemetry.io/issues/9449),
-  [docsy#2596](https://github.com/google/docsy/issues/2596)
+  [docsy#2596](https://github.com/docsy/docsy/issues/2596)
