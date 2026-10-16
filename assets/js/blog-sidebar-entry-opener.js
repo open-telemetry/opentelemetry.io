@@ -2,9 +2,9 @@
 // first page. Loaded on every blog list page; pager pages are skipped here
 // (why: https://opentelemetry.io/site/implementation/scripts/).
 //
-// The sidebar is in the HTML but hidden until Docsy's chrome-nav.js unhides it
-// at DOMContentLoaded; this runs at body end, so the groups are already open
-// when the sidebar appears.
+// This script runs at body end, when the sidebar is in the HTML but still
+// hidden: Docsy's chrome-nav.js unhides it at DOMContentLoaded, so the year
+// groups are already open when the sidebar appears.
 //
 // Expects Docsy's sidebar tree (sidebar-tree.html):
 // - `#td-section-nav` holds the section's root link, `a.tree-root`;
