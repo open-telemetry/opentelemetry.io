@@ -1,6 +1,6 @@
 ---
-title: Site scripts and Docsy plugins
-linkTitle: Scripts and plugins
+title: Docsy plugins and site scripts
+linkTitle: Plugins and scripts
 description: >-
   Where the site's own JavaScript loads, how a script is gated to a page, and
   what each gated script relies on
@@ -11,29 +11,20 @@ cSpell:ignore: subresource
 The site adds a few scripts of its own to Docsy's, under `assets/js/`. Three
 kinds of template load them:
 
-- **Hooks**: the body-end hook, `layouts/_partials/hooks/body-end.html`, for
-  scripts that run on every page or on a gated subset of them; the head-end
-  hook, for the Kapa widget's pre-initialization.
-- **Shortcodes**, for scripts a feature needs on the pages that use it, for
-  example the registry search form and the config-types accordion.
 - **Docsy's plugin loader**, for the scripts under `assets/js/plugins/`, which
   follow Docsy's [custom-script contract][Docsy plugins] under names with the
   `otel-` prefix. A plugin that renders into markup of its own is gated by a
   shortcode: the shortcode owns the markup and marks the page, so the page that
   shows the markup is the page that loads the script, in every language.
+- **Hooks**: the body-end hook, `layouts/_partials/hooks/body-end.html`, for
+  scripts that run on every page or on a gated subset of them; the head-end
+  hook, for the Kapa widget's pre-initialization.
+- **Shortcodes**, for scripts a feature needs on the pages that use it, for
+  example the registry search form and the config-types accordion.
 
 Hooks and shortcodes load a script through the `script.html` partial: Hugo's
 `js.Build` bundles each file, and production builds also minify and fingerprint
 it and emit a subresource-integrity hash.
-
-## Body-end scripts
-
-| Script                         | Pages                                          | Purpose                                                                                                            |
-| ------------------------------ | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `blog-sidebar-entry-opener.js` | Blog index and pager pages (acts on the first) | Opens the two newest year groups in the sidebar                                                                    |
-| `imageZoom.js`                 | All                                            | Click-to-zoom for content images                                                                                   |
-| `navScroll.js`                 | All                                            | Meant to scroll the sidebar's active entry into view; inert today, since the active state is applied after it runs |
-| `tracing.js`                   | Netlify builds, when unpaused                  | [Website telemetry](../../features/#website-telemetry), paused                                                     |
 
 ## Plugins
 
@@ -87,6 +78,15 @@ from the English page, copy its `benchmark_data_url` param, and link the data
 from the prose as the English page does: the tests accept either delivery mode
 per page, never both or neither. Languages without their own copy serve the
 English page and convert with it.
+
+## Body-end scripts
+
+| Script                         | Pages                                          | Purpose                                                                                                            |
+| ------------------------------ | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `blog-sidebar-entry-opener.js` | Blog index and pager pages (acts on the first) | Opens the two newest year groups in the sidebar                                                                    |
+| `imageZoom.js`                 | All                                            | Click-to-zoom for content images                                                                                   |
+| `navScroll.js`                 | All                                            | Meant to scroll the sidebar's active entry into view; inert today, since the active state is applied after it runs |
+| `tracing.js`                   | Netlify builds, when unpaused                  | [Website telemetry](../../features/#website-telemetry), paused                                                     |
 
 ## Blog sidebar entry opener
 

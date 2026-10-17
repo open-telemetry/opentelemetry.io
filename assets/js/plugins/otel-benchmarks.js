@@ -1,5 +1,5 @@
 // Chart renderer of the `benchmarks` shortcode:
-// /site/implementation/scripts-and-plugins/#benchmarks. Assumes, when it runs:
+// /site/implementation/plugins-and-scripts/#benchmarks. Assumes, when it runs:
 // - `Chart`: Chart.js 2, vendored by the plugin's companion
 // - `window.BENCHMARK_DATA`: a github-action-benchmark data.js, loaded by the
 //   companion
