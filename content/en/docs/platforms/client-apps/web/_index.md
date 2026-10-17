@@ -11,8 +11,8 @@ can investigate what happens in your application from the browser's perspective.
 > [!WARNING]
 >
 > The Browser SDK and instrumentations are experimental. Releases can include
-> breaking changes. The examples below use `@opentelemetry/browser-sdk` 0.5.0
-> and `@opentelemetry/browser-instrumentation` 0.8.2.
+> breaking changes. See the [Browser repository documentation][browser] for
+> current setup and configuration.
 
 ## Features
 
@@ -33,7 +33,7 @@ the browser, before your application or other libraries modify browser APIs.
 ### Install packages
 
 ```sh
-npm install @opentelemetry/browser-sdk@0.5.0 @opentelemetry/browser-instrumentation@0.8.2 @opentelemetry/api@^1.9.1
+npm install @opentelemetry/browser-sdk @opentelemetry/browser-instrumentation @opentelemetry/api
 ```
 
 ### Initialize the SDK
@@ -81,9 +81,9 @@ private credentials in the application bundle.
 | `disabled`         | Disable SDK initialization.                  |
 | `logLevel`         | Diagnostic logging level.                    |
 
-In SDK 0.5.0, setting `logLevel` to `DEBUG` switches the quick-start exporters
-to console output instead of OTLP. Leave it unset to use the default `INFO`
-level and export to your receiver.
+Setting `logLevel` to `DEBUG` switches the quick-start exporters to console
+output instead of OTLP. Leave it unset to use the default `INFO` level and
+export to your receiver.
 
 For custom resources, processors, exporters, or configuration per signal, use
 `startBrowserSdk`. The package also provides separate entry points for logs and
