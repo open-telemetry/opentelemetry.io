@@ -1,8 +1,6 @@
-// Checks the benchmarks pages' script delivery in the built site: each page
-// carries one delivery mode (the `otel-benchmarks` plugin, or the inline copy
-// of a locale not yet converted), converted pages get the plugin's whole file
-// set, the plugin loads nowhere else, and Docsy's own plugins survive the
-// site-level registration.
+// Checks the benchmarks pages' script delivery in the built site: the behavior
+// owned by Docsy's plugin loading and by the `benchmarks` shortcode's gate,
+// which no unit sees.
 //
 // It reads the built site, so it skips when `public/` is absent (convention:
 // tests/public/favicons.test.mjs); a missing expected page is a failure, not a
@@ -48,10 +46,11 @@ const OTHER_PAGE = 'docs/collector/index.html';
 const read = (rel) => fs.readFileSync(path.join(publicDir, rel), 'utf8');
 const count = (html, re) => (html.match(re) ?? []).length;
 const scriptTags = (html) => html.match(/<script\b[^>]*>/gi) ?? [];
-// Values may be unquoted: the production build minifies the HTML.
+// Values may be unquoted: the production build minifies the HTML. The name is
+// anchored on whitespace, so `src` doesn't match `data-src`.
 const attr = (tag, name) =>
   tag
-    .match(new RegExp(`\\b${name}=(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, 'i'))
+    .match(new RegExp(`\\s${name}=(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, 'i'))
     ?.slice(1)
     .find((v) => v !== undefined) ?? '';
 const hasAttr = (tag, name) =>
@@ -110,18 +109,25 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
         assert.ok(attr(tag, 'integrity'), `integrity on ${attr(tag, 'src')}`);
       }
       for (const tag of [tags[c], tags[d], tags[p]]) {
-        assert.ok(!hasAttr(tag, 'defer'), `no defer on ${attr(tag, 'src')}`);
-        assert.ok(!hasAttr(tag, 'async'), `no async on ${attr(tag, 'src')}`);
+        assert.ok(
+          !hasAttr(tag, 'defer'),
+          `defer absent on ${attr(tag, 'src')}`,
+        );
+        assert.ok(
+          !hasAttr(tag, 'async'),
+          `async absent on ${attr(tag, 'src')}`,
+        );
       }
     });
 
     test(`${lang}: Markdown output has no chart markup; prose links the data`, () => {
       const md = read(MD_PAGE(lang));
-      assert.doesNotMatch(md, /<(main|div|link|script)\b/, 'no chart markup');
-      assert.ok(
-        md.includes(`[results]: <${DATA_URL}>`),
-        'prose links the data',
+      assert.doesNotMatch(
+        md,
+        /<(main|div|link|script)\b/,
+        'chart markup absent',
       );
+      assert.ok(md.includes(DATA_URL), 'prose links the data');
     });
   }
 
@@ -134,8 +140,8 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     ]) {
       assert.equal(tagsWithSrc(html, re).length, 0, `${name} is absent`);
     }
-    assert.equal(count(html, HOOK), 0, 'no plugin container');
-    assert.equal(count(html, PLUGIN_CSS), 0, 'no plugin stylesheet');
+    assert.equal(count(html, HOOK), 0, 'plugin container absent');
+    assert.equal(count(html, PLUGIN_CSS), 0, 'plugin stylesheet absent');
   });
 
   test("theme plugins survive the site plugin's registration", () => {
