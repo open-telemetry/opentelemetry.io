@@ -38,9 +38,11 @@ $chart-gap: 2rem; // between one chart and the next title
     overflow-x: auto;
   }
 
-  // The renderer sets the wrapper's height from the chart's own layout.
   .otel-chart-wrapper {
     min-width: $chart-min-width;
-    position: relative;
+  }
+
+  .benchmark-chart {
+    width: 100%;
   }
 }

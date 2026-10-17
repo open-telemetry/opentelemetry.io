@@ -25,9 +25,6 @@ const COLORS = [
   '#410472',
 ];
 
-// Height of a chart's plot area; the legend and axis add theirs below it.
-const PLOT_HEIGHT = 300;
-
 function init() {
   function collectBenchesPerTestCase(entries) {
     const byGroup = new Map();
@@ -175,24 +172,15 @@ function renderAllCharts(dataSets) {
       },
       legend: {
         display: true,
-        position: 'bottom',
+        position: 'right',
       },
-      // The wrapper's height is set from the chart's own layout below.
-      maintainAspectRatio: false,
     };
 
-    const chart = new Chart(canvas, {
+    new Chart(canvas, {
       type: 'line',
       data,
       options,
     });
-
-    // Size the chart to its plot plus whatever the legend and axis need, so a
-    // long legend adds rows instead of taking the plot's room.
-    const { chartArea } = chart;
-    const belowPlot = chart.height - chartArea.bottom;
-    wrapper.style.height = `${PLOT_HEIGHT + chartArea.top + belowPlot}px`;
-    chart.resize();
   }
 
   function renderBenchSet(name, benchSet, main) {
