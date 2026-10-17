@@ -1,27 +1,26 @@
-// Styles for the markup the otel-benchmarks renderer creates; the stock
-// github-action-benchmark page's rules, scoped to the plugin's container.
+// Styles for the markup the otel-benchmarks renderer creates.
+
+$charts-gap-above: 3rem; // Docsy's section rhythm
+$charts-max-width: 1000px; // the stock page's chart width; keeps wide columns readable
+$set-gap: 0.5rem;
 
 [data-otel-benchmarks] {
-  max-width: 1012px;
-  margin: 3rem auto 0;
+  margin-top: $charts-gap-above;
 
   .benchmark-set {
-    margin: 8px 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    margin-block: $set-gap;
   }
 
+  // Chart.js sizes a chart to its parent; a column flex item stretches to the
+  // parent's width, a centered one shrinks to the canvas's intrinsic size.
   .benchmark-graphs {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
   }
 
   .benchmark-chart {
-    max-width: 1000px;
+    width: 100%;
+    max-width: $charts-max-width;
   }
 }
