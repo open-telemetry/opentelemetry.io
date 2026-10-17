@@ -31,16 +31,14 @@ it and emit a subresource-integrity hash.
 | -------------------- | ------------------------------------- | ------------------------------------------------------- |
 | `otel-benchmarks.js` | Pages with the `benchmarks` shortcode | Renders a repository's benchmark history as line charts |
 
-## Benchmarks
+### Benchmarks plugin {#benchmarks}
 
 `otel-benchmarks.js` is a fork of the renderer that [github-action-benchmark][]
 publishes with a repository's benchmark history (a `data.js` on its `gh-pages`
 branch); the action documents the data's shape nowhere else, so that [stock
 renderer][] is the reference for it. The fork adds the Collector testbed's
 grouping and filtering of benches. The language pages for JavaScript and Python
-still carry the stock renderer inline.
-
-### Files
+still carry the stock renderer inline. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container and records the page's `benchmark_data_url` front-matter param in
@@ -69,7 +67,7 @@ still carry the stock renderer inline.
 - **Tests**, `tests/public/otel-benchmarks.test.mjs`: the built pages, in both
   output formats, across converted, unconverted and fallback languages.
 
-### Localized pages
+#### Localized pages
 
 A page's localized copies keep inlining the script until they convert. To
 convert a copy, replace its markup and `<script>` tags with the shortcode line
@@ -87,12 +85,12 @@ English page and convert with it.
 | `navScroll.js`                 | All                                            | Meant to scroll the sidebar's active entry into view; inert today, since the active state is applied after it runs |
 | `tracing.js`                   | Netlify builds, when unpaused                  | [Website telemetry](../../features/#website-telemetry), paused                                                     |
 
-## Blog sidebar entry opener
+### Blog sidebar entry opener
 
 `blog-sidebar-entry-opener.js` is the one body-end script gated to a page and
 the one that acts on the sidebar.
 
-### Gating to the blog index
+#### Gating to the blog index
 
 The body-end hook renders on every page, so the opener is gated there on the
 page's `.Path`, which is the same in every locale: `{{ if eq .Path "/blog" }}`.
@@ -106,7 +104,7 @@ empty blog, paginates it and publishes a `page/1/` alias. The opener therefore
 loads on every pager page and skips them at runtime, by testing
 `location.pathname` for `/page/`.
 
-### Acting on the sidebar
+#### Acting on the sidebar
 
 The site uses Docsy's cached sidebar (`ui.sidebar_cache_limit: 1`): one nav per
 sidebar root, shipped hidden (`d-none`) with no active state. Docsy's
