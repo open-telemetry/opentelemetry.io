@@ -28,10 +28,10 @@ const CHARTJS_SRC = /\/js\/vendor\/chart-2\.9\.2[.\w-]*\.js/;
 const CHARTJS_CDN = /cdn\.jsdelivr\.net\/npm\/chart\.js@/;
 const DATA_SRC =
   /open-telemetry\.github\.io\/opentelemetry-collector-contrib\/benchmarks\/loadtests\/data\.js/;
-const INLINE_ID = /<script\b[^>]*\bid=["']?main-script["'\s>]/g;
-const MAIN_ID = /<main\b[^>]*\bid=["']?main["'\s>]/g;
+const INLINE_ID = /<script\b[^>]*\bid=["']?main-script(?=["'\s>])/g;
+const MAIN_ID = /<main\b[^>]*\bid=["']?main(?=["'\s>])/g;
 const BUTTON =
-  /<button\b[^>]*\bid=["']?dl-button["'\s>][^>]*>([^<]*)<\/button>/g;
+  /<button\b[^>]*\bid=["']?dl-button(?=["'\s>])[^>]*>([^<]*)<\/button>/g;
 const POWERED_BY_LINK = String.raw`<a\b[^>]*>github-action-benchmark</a>`;
 
 // The Collector benchmarks page per language. Languages without their own copy
