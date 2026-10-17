@@ -2,14 +2,13 @@
 title: Getting Started by Example（実例で学ぶ入門）
 description: 5分以内でアプリケーションのテレメトリーを取得しましょう！
 weight: 10
-default_lang_commit: 5c22cf6079a4d8b0c01abe4244565b0f193cf9cc
-drifted_from_default: true
+default_lang_commit: 67a2f014da28cd56bcadc56c94d7037398547329
 # prettier-ignore
 cSpell:ignore: autoexport chan fatalln funcs intn itoa otelhttp rolldice stdouttrace strconv
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/go/dice/instrumented"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/dice/instrumented"?>
 
 このページでは、GoにおけるOpenTelemetryの始め方を紹介します。
 
